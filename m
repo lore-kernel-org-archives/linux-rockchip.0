@@ -1,45 +1,61 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM: dts: rockchip: disable gmac by default in rk3288.dtsi
-Date: Sat, 14 Mar 2015 19:40:21 +0100
-Message-ID: <27431752.zqze5zkeW3@phil>
-References: <1426294532-32078-1-git-send-email-amstan@chromium.org> <1426294532-32078-2-git-send-email-amstan@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] ARM: rockchip: small fixes for 4.0-rc
+Date: Sun, 15 Mar 2015 00:57:29 +0100
+Message-ID: <3637038.xZyfPJIQzf@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1426294532-32078-2-git-send-email-amstan@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandru M Stan <amstan@chromium.org>
-Cc: roger.chen@rock-chips.com, dianders@chromium.org, peppe.cavallaro@st.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kever.yang@rock-chips.com, eddie.cai@rock-chips.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 13. M=E4rz 2015, 17:55:32 schrieb Alexandru M Stan:
-> This block should not be enabled by default or else if the kconfig is=
- set,
-> it will try to load/probe even if there's no phy connected.
->=20
-> Signed-off-by: Alexandru M Stan <amstan@chromium.org>
+Hi Arnd, Olof,
 
-applied to my fixes branch
+a small issue surfaced with the new gmac node on rk3288 which is missing a
+	status = "disabled";
+in the rk3288.dtsi and thus enabling the mac unconditionally.
+The second patch in that branch simply adds a rockchip regexp to MAINTAINERS, so
+that it also matches stuff like the (slightly) new rockchip drm stuff.
 
+So if acceptable, please pull
 
 Thanks
 Heiko
 
-> ---
->  arch/arm/boot/dts/rk3288.dtsi | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288=
-=2Edtsi
-> index d771f68..eccc78d 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -411,6 +411,7 @@
->  			"mac_clk_rx", "mac_clk_tx",
->  			"clk_mac_ref", "clk_mac_refout",
->  			"aclk_mac", "pclk_mac";
-> +		status =3D "disabled";
->  	};
->=20
->  	usb_host0_ehci: usb@ff500000 {
+
+The following changes since commit c517d838eb7d07bbe9507871fab3931deccff539:
+
+  Linux 4.0-rc1 (2015-02-22 18:21:14 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.0-rockchip-armfixes1
+
+for you to fetch changes up to 54b0bc602541fcc2dd9f2480623c00552e0b220e:
+
+  ARM: dts: rockchip: disable gmac by default in rk3288.dtsi (2015-03-14 19:35:26 +0100)
+
+----------------------------------------------------------------
+Adding a default-disabled state to the new gmac node and an
+update to the MAINTAINERS entry adding a rockchip regexp entry.
+
+----------------------------------------------------------------
+Alexandru M Stan (1):
+      ARM: dts: rockchip: disable gmac by default in rk3288.dtsi
+
+Heiko Stuebner (1):
+      MAINTAINERS: add rockchip regexp to the ARM/Rockchip entry
+
+ MAINTAINERS                   | 1 +
+ arch/arm/boot/dts/rk3288.dtsi | 1 +
+ 2 files changed, 2 insertions(+)
