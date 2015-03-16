@@ -1,96 +1,169 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command
- errors
-Date: Mon, 16 Mar 2015 14:56:13 +0900
-Message-ID: <5506707D.40708@samsung.com>
-References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
- <5502CA4E.9060401@samsung.com>
- <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: fix some problem
+Date: Mon, 16 Mar 2015 14:43:17 +0800
+Message-ID: <55067B85.2060707@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: multipart/mixed; boundary="===============1113487727=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Doug.
+This is a multi-part message in MIME format.
+--===============1113487727==
+Content-Type: multipart/alternative;
+ boundary="------------080803020502050609020606"
 
-On 03/14/2015 05:27 AM, Doug Anderson wrote:
-> Hi,
-> 
-> On Fri, Mar 13, 2015 at 4:30 AM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
->> Hi, Doug.
->>
->> On 03/11/2015 12:48 AM, Doug Anderson wrote:
->>> The dw_mmc driver enables HLE errors as part of DW_MCI_ERROR_FLAGS but
->>> nothing in the interrupt handler actually handles them and ACKs them.
->>> That means that if we ever get an HLE error we'll just keep getting
->>> interrupts and we'll wedge things.
->>>
->>> We really don't expect HLE errors but if we ever get them we shouldn't
->>> silently ignore them.
->>>
->>> Note that I have seen HLE errors while constantly ejecting and
->>> inserting cards (ejecting while inserting, etc).
->>
->> Right, It is occurred when card inserting/ejecting.(This case is the case of removable card.)
->> Did you test with eMMC? We needs to consider how control HLE error.
-> 
-> I'm running it on systems with eMMC, SD Cards, and SDIO WiFi.  HLE
-> doesn't show up in normal circumstances, only in ejecting the SD card
-> at the wrong time.  ...since you can't eject eMMC, I didn't see
-> problems there.
+This is a multi-part message in MIME format.
+--------------080803020502050609020606
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
 
-When card is inserting/removing, HLE is often occurred.
-Since there is some request into queue when card is removed.(in my understanding.)
-It's also related with controlling clock.
+Hi Dave
+     Those patch I think is good, do you plan to land them?
 
-> 
->> But I think this patch can't solve all of HLE problem.
-> 
-> Agreed.  HLE means that the controller is pretty wedged and (as I
-> understand it) means that there's something else we're doing wrong
-> elsewhere in the dw_mmc driver (like writing more data to an already
-> busy controller).  We should probably track down and find those cases,
-> too.
-> 
-> I agree also that this code probably won't fix the controller in all
-> cases of HLE errors.  ...but I'm not 100% certain of the best way to
-> really do that, do you know?
-> 
-> ...but in any case the absolute worst thing to do is what the driver
-> is already doing: unmask the HLE interrupt but never handle it
-> anywhere...  My patch is at least better than that...
+     patchs:
+         [1] = drm/rockchip: Only alloc a kmap for fbdev gem object 
+(http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html)
+         [2] = drm/rockchip: vop: fix vop vsync/hsync polarity 
+(https://lkml.org/lkml/2015/1/21/914)
+         [3] = drm/rockchip: vop use is_enabled instead of dpms mode 
+(https://lkml.org/lkml/2015/1/22/186)
+         [4] = drm/rockchip: vop: set vop enabled after enable iommu 
+(https://lkml.org/lkml/2015/1/22/187)
+         [5] = drm/rockchip: vop: power off until vop standby take 
+effect (https://lkml.org/lkml/2015/2/4/1)
 
-Agreed, your patch should be at least better than now.
-But if pending is set HLE error bit,
-it should hit the cases of DW_MCI_DATA_ERROR_FLAGS & DW_MCI_CMD_ERROR_FLAGS.
-and i think send_stop_abort() can't run, doesn't?
-(If HLE is occurred at non-removable card, controller can't do anything.)
+The following changes since commit 03be70050c85768e9ce7c0d0887110d1b629e127:
 
-If i can reproduce HLE error, i can check more detailedly.(Trying to reproduce it.)
-I don't find fully solution yet. But finding the solution is my or our(?) part/role in future.
-Actually, i'm using the ctrl reset at my local tree, when HLE error is occurred.
-(Also it's not solution..)
-According to TRM, "HLE is raised, software then has to reload the command."
-We needs to consider how reload the command without lost previous request.
+   Merge tag 'topic/drm-misc-2015-03-10' of 
+git://anongit.freedesktop.org/drm-intel into drm-next (2015-03-11 
+12:15:06 +1000)
 
-> 
-> If you have another suggested way to make HLE error handling better
-> (or avoid them to begin with) I'm happy to test!  :)
+are available in the git repository at:
 
-I will try to find HLE error handling..if you also have other opinion, let me know, plz.
-I needs to listen other opinion, it's great helpful to me.. :)
 
-Thank you a lot!
+   https://github.com/markyzq/kernel-drm-rockchip.git drm_next
 
-Best Regards,
-Jaehoon Chung
+for you to fetch changes up to 1067219b27e29e925e7bdbb85b72c4c2bec0267e:
 
-> 
-> 
-> -Doug
-> 
+   drm/rockchip: vop: power off until vop standby take effect 
+(2015-03-16 13:50:57 +0800)
+
+----------------------------------------------------------------
+Daniel Kurtz (1):
+       drm/rockchip: Only alloc a kmap for fbdev gem object
+
+Mark Yao (4):
+       drm/rockchip: vop: fix vop vsync/hsync polarity
+       drm/rockchip: vop use is_enabled instead of dpms mode
+       drm/rockchip: vop: set vop enabled after enable iommu
+       drm/rockchip: vop: power off until vop standby take effect
+
+  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |    2 +-
+  drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |   17 ++--
+  drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |    3 +-
+  drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  118 
+++++++++++++++++++-------
+  4 files changed, 102 insertions(+), 38 deletions(-)
+
+-- 
+Mark
+E-mail:mark.yao@rock-chips.com
+
+
+--------------080803020502050609020606
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    Hi Dave<br>
+    &nbsp;&nbsp;&nbsp; Those patch I think is good, do you plan to land them?<br>
+    &nbsp;&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; patchs:<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [1] = drm/rockchip: Only alloc a kmap for fbdev gem object
+    (<a class="moz-txt-link-freetext" href="http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html">http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html</a>)<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [2] = drm/rockchip: vop: fix vop vsync/hsync polarity
+    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/21/914">https://lkml.org/lkml/2015/1/21/914</a>)<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [3] = drm/rockchip: vop use is_enabled instead of dpms mode
+    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/22/186">https://lkml.org/lkml/2015/1/22/186</a>)<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [4] = drm/rockchip: vop: set vop enabled after enable iommu
+    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/22/187">https://lkml.org/lkml/2015/1/22/187</a>)<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [5] = drm/rockchip: vop: power off until vop standby take
+    effect (<span style="color: rgb(0, 128, 0); font-family: arial,
+      sans-serif; font-size: 13px; font-style: normal; font-variant:
+      normal; font-weight: normal; letter-spacing: normal; line-height:
+      normal; orphans: auto; text-align: start; text-indent: 0px;
+      text-transform: none; white-space: normal; widows: auto;
+      word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      background-color: rgb(255, 255, 255); display: inline !important;
+      float: none;"></span><a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/2/4/1">https://lkml.org/lkml/2015/2/4/1</a>)<br>
+    <br>
+    The following changes since commit
+    03be70050c85768e9ce7c0d0887110d1b629e127:<br>
+    <br>
+    &nbsp; Merge tag 'topic/drm-misc-2015-03-10' of
+    git://anongit.freedesktop.org/drm-intel into drm-next (2015-03-11
+    12:15:06 +1000)<br>
+    <br>
+    are available in the git repository at:<br>
+    <br>
+    <br>
+    &nbsp; <a class="moz-txt-link-freetext" href="https://github.com/markyzq/kernel-drm-rockchip.git">https://github.com/markyzq/kernel-drm-rockchip.git</a> drm_next<br>
+    <br>
+    for you to fetch changes up to
+    1067219b27e29e925e7bdbb85b72c4c2bec0267e:<br>
+    <br>
+    &nbsp; drm/rockchip: vop: power off until vop standby take effect
+    (2015-03-16 13:50:57 +0800)<br>
+    <br>
+    ----------------------------------------------------------------<br>
+    Daniel Kurtz (1):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: Only alloc a kmap for fbdev gem object<br>
+    <br>
+    Mark Yao (4):<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: fix vop vsync/hsync polarity<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop use is_enabled instead of dpms mode<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: set vop enabled after enable iommu<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: power off until vop standby take effect<br>
+    <br>
+    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |&nbsp;&nbsp;&nbsp; 2 +-<br>
+    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_gem.c&nbsp;&nbsp; |&nbsp;&nbsp; 17 ++--<br>
+    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_gem.h&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 3 +-<br>
+    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_vop.c&nbsp;&nbsp; |&nbsp; 118
+    ++++++++++++++++++-------<br>
+    &nbsp;4 files changed, 102 insertions(+), 38 deletions(-)<br>
+    <br>
+    <pre class="moz-signature" cols="72">-- 
+Mark
+<a class="moz-txt-link-abbreviated" href="mailto:E-mail:mark.yao@rock-chips.com">E-mail:mark.yao@rock-chips.com</a> </pre>
+  </body>
+</html>
+
+--------------080803020502050609020606--
+
+--===============1113487727==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1113487727==--
