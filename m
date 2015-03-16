@@ -1,169 +1,162 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: fix some problem
-Date: Mon, 16 Mar 2015 14:43:17 +0800
-Message-ID: <55067B85.2060707@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Mon, 16 Mar 2015 15:05:59 +0100
+Message-ID: <CAPDyKFq_WMJfqNGuxwN7xPmhv2X6-+G1zXpdD6zYDkDe7-Jo2A@mail.gmail.com>
+References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
+	<1426112117-18220-2-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1113487727=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1426112117-18220-2-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Mark Brown <broonie@kernel.org>, Alexandru Stan <amstan@chromium.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, Johan Rudholm <johan.rudholm@axis.com>, Adrian Hunter <adrian.hunter@intel.com>, Tim Kryger <tim.kryger@gmail.com>, Andrew Gabbasov <andrew_gabbasov@mentor.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============1113487727==
-Content-Type: multipart/alternative;
- boundary="------------080803020502050609020606"
+On 11 March 2015 at 23:15, Doug Anderson <dianders@chromium.org> wrote:
+> This adds logic to the MMC core to set VQMMC.  This is expected to be
+> called by MMC drivers like dw_mmc as part of (or instead of) their
+> start_signal_voltage_switch() callback.
+>
+> A few notes:
+>
+> * When setting the signal voltage to 3.3V we do our best to make VQMMC
+>   and VMMC match.  It's been reported that this makes some old cards
+>   happy since they were tested back in the day before UHS when VQMMC
+>   and VMMC were provided by the same regulator.  A nice side effect of
+>   this is that we don't end up on the hairy edge of VQMMC (2.7V),
+>   which some EEs claim is a little too close to the minimum for
+>   comfort.
+>
+> * When setting the signal voltage to 1.8V or 1.2V we aim for that
+>   specific voltage instead of picking the lowest one in the range.
+>
+> * We very purposely don't print errors in mmc_regulator_set_vqmmc().
+>   There are cases where the MMC core will try several different
+>   voltages and we don't want to pollute the logs.
+>
+> Signed-off-by: Doug Anderson <dianders@chromium.org>
+> Reviewed-by: Andrew Bresticker <abrestic@chromium.org>
+> ---
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2:
+> - Now use existing regulator_set_voltage_tol() function.
+>
+>  drivers/mmc/core/core.c  | 51 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/mmc/host.h |  7 +++++++
+>  2 files changed, 58 insertions(+)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 23f10f7..1d3b84e 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -1394,6 +1394,57 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>  }
+>  EXPORT_SYMBOL_GPL(mmc_regulator_set_ocr);
+>
+> +static int mmc_regulator_set_voltage_if_supported(struct regulator *regulator,
+> +                                                 int new_uV, int tol_uV)
+> +{
+> +       /*
+> +        * Check if supported first to avoid errors since we may try several
+> +        * signal levels during power up and don't want to show errors.
+> +        */
+> +       if (!regulator_is_supported_voltage_tol(regulator, new_uV, tol_uV))
+> +               return -EINVAL;
+> +
+> +       return regulator_set_voltage_tol(regulator, new_uV, tol_uV);
+> +}
+> +
+> +/**
+> + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
+> + *
+> + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as possible.
+> + * That will match the behavior of old boards where VQMMC and VMMC were supplied
+> + * by the same supply.  The Bus Operating conditions for 3.3V signaling in the
+> + * SD card spec also define VQMMC in terms of VMMC.
+> + *
+> + * For 1.2V and 1.8V signaling we'll try to get as close as possible to the
+> + * requested voltage.  This is definitely a good idea for UHS where there's a
+> + * separate regulator on the card that's trying to make 1.8V and it's best if
+> + * we match.
+> + *
+> + * This function is expected to be used by a controller's
+> + * start_signal_voltage_switch() function.
+> + */
+> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
+> +{
+> +       /* If no vqmmc supply then we can't change the voltage */
+> +       if (IS_ERR(mmc->supply.vqmmc))
+> +               return -EINVAL;
+> +
+> +       switch (ios->signal_voltage) {
+> +       case MMC_SIGNAL_VOLTAGE_120:
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                       1200000, 100000);
 
-This is a multi-part message in MIME format.
---------------080803020502050609020606
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+Is 1V the lowest possible value? How did you get to that?
 
-Hi Dave
-     Those patch I think is good, do you plan to land them?
+> +       case MMC_SIGNAL_VOLTAGE_180:
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                       1800000, 100000);
 
-     patchs:
-         [1] = drm/rockchip: Only alloc a kmap for fbdev gem object 
-(http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html)
-         [2] = drm/rockchip: vop: fix vop vsync/hsync polarity 
-(https://lkml.org/lkml/2015/1/21/914)
-         [3] = drm/rockchip: vop use is_enabled instead of dpms mode 
-(https://lkml.org/lkml/2015/1/22/186)
-         [4] = drm/rockchip: vop: set vop enabled after enable iommu 
-(https://lkml.org/lkml/2015/1/22/187)
-         [5] = drm/rockchip: vop: power off until vop standby take 
-effect (https://lkml.org/lkml/2015/2/4/1)
+Is 1V the lowest possible value? How did you get to that?
 
-The following changes since commit 03be70050c85768e9ce7c0d0887110d1b629e127:
+> +       case MMC_SIGNAL_VOLTAGE_330:
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                       regulator_get_voltage(mmc->supply.vmmc), 300000);
 
-   Merge tag 'topic/drm-misc-2015-03-10' of 
-git://anongit.freedesktop.org/drm-intel into drm-next (2015-03-11 
-12:15:06 +1000)
+Why 3V? Shouldn't it be 2.7V? How will else those SoC that for example
+supports 2.9V only work?
 
-are available in the git repository at:
+> +       default:
+> +               return -EINVAL;
+> +       }
+> +}
+> +EXPORT_SYMBOL_GPL(mmc_regulator_set_vqmmc);
+> +
+>  #endif /* CONFIG_REGULATOR */
+>
+>  int mmc_regulator_get_supply(struct mmc_host *mmc)
+> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+> index 0c8cbe5..edd7d59 100644
+> --- a/include/linux/mmc/host.h
+> +++ b/include/linux/mmc/host.h
+> @@ -416,6 +416,7 @@ int mmc_regulator_get_ocrmask(struct regulator *supply);
+>  int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>                         struct regulator *supply,
+>                         unsigned short vdd_bit);
+> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios);
+>  #else
+>  static inline int mmc_regulator_get_ocrmask(struct regulator *supply)
+>  {
+> @@ -428,6 +429,12 @@ static inline int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>  {
+>         return 0;
+>  }
+> +
+> +static inline int mmc_regulator_set_vqmmc(struct mmc_host *mmc,
+> +                                         struct mmc_ios *ios)
+> +{
+> +       return -EINVAL;
+> +}
+>  #endif
+>
+>  int mmc_regulator_get_supply(struct mmc_host *mmc);
 
+One more thought,s as for the vmmc regulator we have a
+"regulator_enabled" member in the mmc_host. Should we add a similar
+member for vqmmc? That would prevent host drivers from keeping track
+of this state themselves.
 
-   https://github.com/markyzq/kernel-drm-rockchip.git drm_next
+Kind regards
+Uffe
 
-for you to fetch changes up to 1067219b27e29e925e7bdbb85b72c4c2bec0267e:
-
-   drm/rockchip: vop: power off until vop standby take effect 
-(2015-03-16 13:50:57 +0800)
-
-----------------------------------------------------------------
-Daniel Kurtz (1):
-       drm/rockchip: Only alloc a kmap for fbdev gem object
-
-Mark Yao (4):
-       drm/rockchip: vop: fix vop vsync/hsync polarity
-       drm/rockchip: vop use is_enabled instead of dpms mode
-       drm/rockchip: vop: set vop enabled after enable iommu
-       drm/rockchip: vop: power off until vop standby take effect
-
-  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |    2 +-
-  drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |   17 ++--
-  drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |    3 +-
-  drivers/gpu/drm/rockchip/rockchip_drm_vop.c   |  118 
-++++++++++++++++++-------
-  4 files changed, 102 insertions(+), 38 deletions(-)
-
--- 
-Mark
-E-mail:mark.yao@rock-chips.com
-
-
---------------080803020502050609020606
-Content-Type: text/html; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-
-<html>
-  <head>
-
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    Hi Dave<br>
-    &nbsp;&nbsp;&nbsp; Those patch I think is good, do you plan to land them?<br>
-    &nbsp;&nbsp;&nbsp; <br>
-    &nbsp;&nbsp;&nbsp; patchs:<br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [1] = drm/rockchip: Only alloc a kmap for fbdev gem object
-    (<a class="moz-txt-link-freetext" href="http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html">http://lkml.iu.edu/hypermail/linux/kernel/1501.1/02169.html</a>)<br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [2] = drm/rockchip: vop: fix vop vsync/hsync polarity
-    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/21/914">https://lkml.org/lkml/2015/1/21/914</a>)<br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [3] = drm/rockchip: vop use is_enabled instead of dpms mode
-    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/22/186">https://lkml.org/lkml/2015/1/22/186</a>)<br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [4] = drm/rockchip: vop: set vop enabled after enable iommu
-    (<a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/1/22/187">https://lkml.org/lkml/2015/1/22/187</a>)<br>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [5] = drm/rockchip: vop: power off until vop standby take
-    effect (<span style="color: rgb(0, 128, 0); font-family: arial,
-      sans-serif; font-size: 13px; font-style: normal; font-variant:
-      normal; font-weight: normal; letter-spacing: normal; line-height:
-      normal; orphans: auto; text-align: start; text-indent: 0px;
-      text-transform: none; white-space: normal; widows: auto;
-      word-spacing: 0px; -webkit-text-stroke-width: 0px;
-      background-color: rgb(255, 255, 255); display: inline !important;
-      float: none;"></span><a class="moz-txt-link-freetext" href="https://lkml.org/lkml/2015/2/4/1">https://lkml.org/lkml/2015/2/4/1</a>)<br>
-    <br>
-    The following changes since commit
-    03be70050c85768e9ce7c0d0887110d1b629e127:<br>
-    <br>
-    &nbsp; Merge tag 'topic/drm-misc-2015-03-10' of
-    git://anongit.freedesktop.org/drm-intel into drm-next (2015-03-11
-    12:15:06 +1000)<br>
-    <br>
-    are available in the git repository at:<br>
-    <br>
-    <br>
-    &nbsp; <a class="moz-txt-link-freetext" href="https://github.com/markyzq/kernel-drm-rockchip.git">https://github.com/markyzq/kernel-drm-rockchip.git</a> drm_next<br>
-    <br>
-    for you to fetch changes up to
-    1067219b27e29e925e7bdbb85b72c4c2bec0267e:<br>
-    <br>
-    &nbsp; drm/rockchip: vop: power off until vop standby take effect
-    (2015-03-16 13:50:57 +0800)<br>
-    <br>
-    ----------------------------------------------------------------<br>
-    Daniel Kurtz (1):<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: Only alloc a kmap for fbdev gem object<br>
-    <br>
-    Mark Yao (4):<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: fix vop vsync/hsync polarity<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop use is_enabled instead of dpms mode<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: set vop enabled after enable iommu<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; drm/rockchip: vop: power off until vop standby take effect<br>
-    <br>
-    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |&nbsp;&nbsp;&nbsp; 2 +-<br>
-    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_gem.c&nbsp;&nbsp; |&nbsp;&nbsp; 17 ++--<br>
-    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_gem.h&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; 3 +-<br>
-    &nbsp;drivers/gpu/drm/rockchip/rockchip_drm_vop.c&nbsp;&nbsp; |&nbsp; 118
-    ++++++++++++++++++-------<br>
-    &nbsp;4 files changed, 102 insertions(+), 38 deletions(-)<br>
-    <br>
-    <pre class="moz-signature" cols="72">-- 
-Mark
-<a class="moz-txt-link-abbreviated" href="mailto:E-mail:mark.yao@rock-chips.com">E-mail:mark.yao@rock-chips.com</a> </pre>
-  </body>
-</html>
-
---------------080803020502050609020606--
-
---===============1113487727==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============1113487727==--
+> --
+> 2.2.0.rc0.207.ga3a616c
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
