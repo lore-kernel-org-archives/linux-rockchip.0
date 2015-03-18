@@ -1,45 +1,58 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
-Date: Tue, 17 Mar 2015 12:28:34 +0100
-Message-ID: <CAPDyKFqGYqNCbGGzw7orXLT+pkxK5LMUDTYWju405tqynPMyCQ@mail.gmail.com>
-References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
-	<1426112117-18220-2-git-send-email-dianders@chromium.org>
-	<CAPDyKFq_WMJfqNGuxwN7xPmhv2X6-+G1zXpdD6zYDkDe7-Jo2A@mail.gmail.com>
-	<CAD=FV=U-YnT5jF5MFC==hANXGPqVpV3iLMPu85TrQ4dNDsWeCA@mail.gmail.com>
-	<CAPDyKFpG=q88QEkuAgoLqkZU40Kx7dB7PmnXHqEt0EtbYvR_Cg@mail.gmail.com>
-	<20150317103829.GA28806@sirena.org.uk>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [GIT PULL 1/2] ARM: rockchip: soc code changes for 4.1
+Date: Wed, 18 Mar 2015 17:41:15 +0100
+Message-ID: <2684132.lK2CyBin0M@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20150317103829.GA28806@sirena.org.uk>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Alexandru Stan <amstan@chromium.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, Johan Rudholm <johan.rudholm@axis.com>, Adrian Hunter <adrian.hunter@intel.com>, Tim Kryger <tim.kryger@gmail.com>, Andrew Gabbasov <andrew_gabbasov@mentor.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kerne>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 17 March 2015 at 11:38, Mark Brown <broonie@kernel.org> wrote:
-> On Tue, Mar 17, 2015 at 11:23:33AM +0100, Ulf Hansson wrote:
->> On 16 March 2015 at 16:12, Doug Anderson <dianders@chromium.org> wrote:
->
->> > * Try to set the voltage to exactly 1,200,000 uV (1.2V).
->> > * If you can't get 1.2V exactly, a tolerance ("tol") of 100,000 uV
->> > (.1V) is OK.
->> > * In other words, 1.1V - 1.3V are OK, but aim for 1.2V
->
->> So what happens in the case when 1.3V and 1.1V, but not 1.2V. Which
->> value will be used? Is that algorithm defined by the regulator core or
->> does it depend per regulator implementation?
->
-> It's done in the core.  It first tries to hit the target voltage to the
-> maximum (picking the lowest voltage in that range) then tries to pick
-> the lowest voltage to the target, though that's an implementation detail
-> and we really should be trying to get as close as possible to the
-> target.  We don't do that yet because it can be expensive to work out so
-> we do the current thing which is cheap and mostly good enough.
+Hi Arnd, Olof,
 
-Okay, so that seems to work well for our 1.1V->1.3V case.
+some soc code changes for 4.1 . I hope the tag explains it, so please pull
 
-Thanks!
 
-Kind regards
-Uffe
+Thanks
+Heiko
+
+The following changes since commit c517d838eb7d07bbe9507871fab3931deccff539:
+
+  Linux 4.0-rc1 (2015-02-22 18:21:14 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-soc1
+
+for you to fetch changes up to a0307d186f5015ee3d77e209e5c06190cbf02478:
+
+  ARM: rockchip: disable watchdog during suspend (2015-03-11 22:41:02 +0100)
+
+----------------------------------------------------------------
+Some suspend improvements reducing resume time and making sure the
+watchdog does not reset after 12 hours and a change to constify and
+staticize some smp parts.
+
+----------------------------------------------------------------
+Chris Zhong (2):
+      ARM: rockchip: decrease the wait time for resume
+      ARM: rockchip: disable watchdog during suspend
+
+Krzysztof Kozlowski (1):
+      ARM: rockchip: Constify struct regmap_config and staticize local function
+
+ arch/arm/mach-rockchip/platsmp.c |  4 ++--
+ arch/arm/mach-rockchip/pm.c      | 14 +++++++++++---
+ arch/arm/mach-rockchip/pm.h      |  6 ++++++
+ 3 files changed, 19 insertions(+), 5 deletions(-)
