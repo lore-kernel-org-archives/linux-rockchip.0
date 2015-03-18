@@ -1,11 +1,13 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [GIT PULL 1/2] ARM: rockchip: soc code changes for 4.1
-Date: Wed, 18 Mar 2015 17:41:15 +0100
-Message-ID: <2684132.lK2CyBin0M@diego>
+Subject: [GIT PULL 2/2] ARM: rockchip: dts changes for 4.1
+Date: Wed, 18 Mar 2015 17:43:43 +0100
+Message-ID: <2772656.J2ocM9VFb6@diego>
+References: <2684132.lK2CyBin0M@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <2684132.lK2CyBin0M@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,11 +23,12 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Arnd, Olof,
 
-some soc code changes for 4.1 . I hope the tag explains it, so please pull
+some new peripherals, a new board and adding pmic supplies, please pull
 
 
 Thanks
 Heiko
+
 
 The following changes since commit c517d838eb7d07bbe9507871fab3931deccff539:
 
@@ -33,26 +36,40 @@ The following changes since commit c517d838eb7d07bbe9507871fab3931deccff539:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-soc1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-dts1
 
-for you to fetch changes up to a0307d186f5015ee3d77e209e5c06190cbf02478:
+for you to fetch changes up to 91d5cb737287642b75e47790a28a43cd0efd80cb:
 
-  ARM: rockchip: disable watchdog during suspend (2015-03-11 22:41:02 +0100)
-
-----------------------------------------------------------------
-Some suspend improvements reducing resume time and making sure the
-watchdog does not reset after 12 hours and a change to constify and
-staticize some smp parts.
+  ARM: dts: rockchip: complete rk3288-evb pmic supplies (2015-03-13 00:07:39 +0100)
 
 ----------------------------------------------------------------
-Chris Zhong (2):
-      ARM: rockchip: decrease the wait time for resume
-      ARM: rockchip: disable watchdog during suspend
+This adds and enables the usbphy nodes on the rk3288 boards and enables
+the gmac on the firefly board. A new board the Popmetal-rk3288 is also
+added. And finally the pmic supplies for act8846 based boards are added,
+as the act8865/act8846 driver gained supply handling in the regulator tree.
 
-Krzysztof Kozlowski (1):
-      ARM: rockchip: Constify struct regmap_config and staticize local function
+----------------------------------------------------------------
+Andy Yan (2):
+      dt-bindings: add root compatible property for PopMetal board
+      ARM: dts: add rk3288 PopMetal board
 
- arch/arm/mach-rockchip/platsmp.c |  4 ++--
- arch/arm/mach-rockchip/pm.c      | 14 +++++++++++---
- arch/arm/mach-rockchip/pm.h      |  6 ++++++
- 3 files changed, 19 insertions(+), 5 deletions(-)
+Heiko Stuebner (4):
+      ARM: dts: rockchip: enable usbphy on rk3288-firefly
+      ARM: dts: rockchip: enable gmac on rk3288-firefly
+      ARM: dts: rockchip: add input supplies for the act8846 on Radxa Rock
+      ARM: dts: rockchip: complete rk3288-evb pmic supplies
+
+Yunzhi Li (2):
+      ARM: dts: rockchip: add rk3288 usb PHY
+      ARM: dts: rockchip: Enable usb PHY on rk3288-evb board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+ arch/arm/boot/dts/rk3188-radxarock.dts             |  16 +
+ arch/arm/boot/dts/rk3288-evb-act8846.dts           |  10 +
+ arch/arm/boot/dts/rk3288-evb-rk808.dts             |   7 +
+ arch/arm/boot/dts/rk3288-evb.dtsi                  |  13 +
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  20 +
+ arch/arm/boot/dts/rk3288-popmetal.dts              | 447 +++++++++++++++++++++
+ arch/arm/boot/dts/rk3288.dtsi                      |  35 ++
+ 8 files changed, 552 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rk3288-popmetal.dts
