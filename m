@@ -1,75 +1,54 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [GIT PULL 2/2] ARM: rockchip: dts changes for 4.1
-Date: Wed, 18 Mar 2015 17:43:43 +0100
-Message-ID: <2772656.J2ocM9VFb6@diego>
-References: <2684132.lK2CyBin0M@diego>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Wed, 18 Mar 2015 21:09:33 -0700
+Message-ID: <CAD=FV=X=1=AnXCGgWWkJDcHLO-MfVqsSB2aJxi3WOgWJhD_ggA@mail.gmail.com>
+References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
+	<1426112117-18220-2-git-send-email-dianders@chromium.org>
+	<CAPDyKFq_WMJfqNGuxwN7xPmhv2X6-+G1zXpdD6zYDkDe7-Jo2A@mail.gmail.com>
+	<CAD=FV=U-YnT5jF5MFC==hANXGPqVpV3iLMPu85TrQ4dNDsWeCA@mail.gmail.com>
+	<CAPDyKFpG=q88QEkuAgoLqkZU40Kx7dB7PmnXHqEt0EtbYvR_Cg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <2684132.lK2CyBin0M@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFpG=q88QEkuAgoLqkZU40Kx7dB7PmnXHqEt0EtbYvR_Cg@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Alexandru Stan <amstan@chromium.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, Johan Rudholm <johan.rudholm@axis.com>, Adrian Hunter <adrian.hunter@intel.com>, Tim Kryger <tim.kryger@gmail.com>, Andrew Gabbasov <andrew_gabbasov@mentor.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Olof,
+Ulf,
 
-some new peripherals, a new board and adding pmic supplies, please pull
+On Tue, Mar 17, 2015 at 3:23 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>> This will get us within .3V of whatever vmmc is.  If vmmc is 3.3V, it
+>> will allow vqmmc of 3.0V - 3.6V.
+>>
+>> This _seems_ sane to me and given any sane system design we should be
+>> fine here, I think.  I can't see someone designing a system where
+>> vqmmc was not within .3V of vmmc, can you?  If we think someone will
+>> actually build a system where vmmc is 3.3V and vqmmc can't go higher
+>> than 2.7V then we'll either need to increase the tolerance here or add
+>> a new asymmetric system call like my original patches did.
+>
+> I know about SoC that supports 3.4V vmmc and 2.9V vqmmc.
+>
+> What I think we need is the option to have a policy here. We need to
+> allow voltage levels stated by the spec and at the same time try chose
+> the one best suited. That's not being accomplished here.
+>
+> Moreover, I wonder whether it's okay (from spec perspective) to have
+> vqmmc at a higher voltage level than vmmc. I don't think that's
+> allowed, but I might be wrong.
+
+OK, so sounds like I need to add a regulator_set_voltage_tol2()
+function that takes in an upper tolerance and a lower.  We can use the
+same rough implementation in the core we have today (if Mark is OK
+with that) with regulator_set_voltage_tol() but just allow it to be
+asymmetric.
+
+From what I see in the spec for 3.3V cards are supposed to react to a
+high signal that is .625 * VDD - VDD + .3
 
 
-Thanks
-Heiko
+I might not be able to get to this till next week, though...
 
-
-The following changes since commit c517d838eb7d07bbe9507871fab3931deccff539:
-
-  Linux 4.0-rc1 (2015-02-22 18:21:14 -0800)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-dts1
-
-for you to fetch changes up to 91d5cb737287642b75e47790a28a43cd0efd80cb:
-
-  ARM: dts: rockchip: complete rk3288-evb pmic supplies (2015-03-13 00:07:39 +0100)
-
-----------------------------------------------------------------
-This adds and enables the usbphy nodes on the rk3288 boards and enables
-the gmac on the firefly board. A new board the Popmetal-rk3288 is also
-added. And finally the pmic supplies for act8846 based boards are added,
-as the act8865/act8846 driver gained supply handling in the regulator tree.
-
-----------------------------------------------------------------
-Andy Yan (2):
-      dt-bindings: add root compatible property for PopMetal board
-      ARM: dts: add rk3288 PopMetal board
-
-Heiko Stuebner (4):
-      ARM: dts: rockchip: enable usbphy on rk3288-firefly
-      ARM: dts: rockchip: enable gmac on rk3288-firefly
-      ARM: dts: rockchip: add input supplies for the act8846 on Radxa Rock
-      ARM: dts: rockchip: complete rk3288-evb pmic supplies
-
-Yunzhi Li (2):
-      ARM: dts: rockchip: add rk3288 usb PHY
-      ARM: dts: rockchip: Enable usb PHY on rk3288-evb board
-
- Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
- arch/arm/boot/dts/rk3188-radxarock.dts             |  16 +
- arch/arm/boot/dts/rk3288-evb-act8846.dts           |  10 +
- arch/arm/boot/dts/rk3288-evb-rk808.dts             |   7 +
- arch/arm/boot/dts/rk3288-evb.dtsi                  |  13 +
- arch/arm/boot/dts/rk3288-firefly.dtsi              |  20 +
- arch/arm/boot/dts/rk3288-popmetal.dts              | 447 +++++++++++++++++++++
- arch/arm/boot/dts/rk3288.dtsi                      |  35 ++
- 8 files changed, 552 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-popmetal.dts
+-Doug
