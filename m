@@ -1,42 +1,56 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH 00/15] iommu: Move domain allocation into drivers
-Date: Fri, 20 Mar 2015 17:24:18 +0800
-Message-ID: <1426843458.23931.17.camel@mtksdaap41>
-References: <1422316305-19216-1-git-send-email-joro@8bytes.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Fri, 20 Mar 2015 11:55:50 +0100
+Message-ID: <CAPDyKFroe9N3j9oMWKknH5huv7j8fkrBr5UKjjp190hkqNsNRg@mail.gmail.com>
+References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
+	<1426112117-18220-2-git-send-email-dianders@chromium.org>
+	<CAPDyKFq_WMJfqNGuxwN7xPmhv2X6-+G1zXpdD6zYDkDe7-Jo2A@mail.gmail.com>
+	<CAD=FV=U-YnT5jF5MFC==hANXGPqVpV3iLMPu85TrQ4dNDsWeCA@mail.gmail.com>
+	<CAPDyKFpG=q88QEkuAgoLqkZU40Kx7dB7PmnXHqEt0EtbYvR_Cg@mail.gmail.com>
+	<CAD=FV=X=1=AnXCGgWWkJDcHLO-MfVqsSB2aJxi3WOgWJhD_ggA@mail.gmail.com>
+	<CAPDyKFrkznbW7k_=BDo99jJhWzDbUgbeU+MXWB_E_UWXh=56Eg@mail.gmail.com>
+	<20150319113646.GQ2869@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1422316305-19216-1-git-send-email-joro@8bytes.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: iommu@lists.linux-foundation.org, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Stephen Warren <swarren@wwwdotorg.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Alex Williamson <alex.williamson@redhat.com>, Kukjin Kim <kgene@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, jroedel@suse.de, linux-tegra@vger.kernel.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org, Hiroshi Doyu <hdoyu@nvidia.com>, Tomasz Figa <tfiga@chromium.org>, Yong Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?= <yong.wu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <20150319113646.GQ2869@sirena.org.uk>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Alexandru Stan <amstan@chromium.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, Johan Rudholm <johan.rudholm@axis.com>, Adrian Hunter <adrian.hunter@intel.com>, Tim Kryger <tim.kryger@gmail.com>, Andrew Gabbasov <andrew_gabbasov@mentor.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kerne>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2015-01-27 at 00:51 +0100, Joerg Roedel wrote:
-> From: Joerg Roedel <jroedel@suse.de>
-> 
-> Hi,
-> 
-> here is patch-set to replace the existing domain_init and
-> domain_destroy iommu-ops with the new domain_alloc and
-> domain_free callbacks
-> 
-> The new callbacks move the allocation of iommu domains into
-> the iommu driver, allowing them to put a generic
-> iommu_domain struct into their own domain struct. This makes
-> domain handling in the drivers more cache efficient and
-> prepares the introduction of default domains in another
-> patch-set.
+On 19 March 2015 at 12:36, Mark Brown <broonie@kernel.org> wrote:
+> On Thu, Mar 19, 2015 at 12:14:11PM +0100, Ulf Hansson wrote:
+>
+>> Agree. Moreover we need that API to also pick the closest value to
+>> target, when trying the range "target->minimum". I also believe it
+>
+> The implementation *should* do that anyway, it's just not trivial to
+> implement in an efficient fashion with the current information we have
+> from drivers.
 
-Hi Joerg,
+The APIs regulator_count_voltages() and regulator_list_voltage(), are
+currently used from the mmc core to find out which voltages that is
+supported (with 0.1V granularity). Then that information can be used
+when trying to set a new voltage.
 
-What's the status of this patchset?
-While porting MTK IOMMU driver[1], we need to use a global variable
-because we need to do dma_alloc_coherent in our domain_init. I think we
-can remove that global variable if we base on this series.
+But I guess such a wrapper API is out of the question?
 
-Joe.C
+Anyway, I get the feeling that we will need to do the same for this case.
 
-[1]
-http://lists.infradead.org/pipermail/linux-arm-kernel/2015-March/328461.html
+>
+>> would be good to allow both upper and lower limits to be zero.
+>
+> The lower limit can be zero already though it isn't clear to me that
+> this is useful.  Setting an upper limit of zero seems nonsensical, an
+> upper limit that is lower than the lower limit isn't terribly obvious
+> and removing the upper limit isn't safe - it means that we'll happily
+> oversupply things which is a road to physical damage.
+
+I am not sure I follow here. In the regulator_set_voltage_tol() you
+can only specifiy one limit (tolerance?). What Dough proposed was to
+add a new API which can have both a low tolerance value and a high
+tolerance value.
+
+Kind regards
+Uffe
