@@ -1,88 +1,42 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
-Date: Thu, 19 Mar 2015 11:36:46 +0000
-Message-ID: <20150319113646.GQ2869@sirena.org.uk>
-References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
- <1426112117-18220-2-git-send-email-dianders@chromium.org>
- <CAPDyKFq_WMJfqNGuxwN7xPmhv2X6-+G1zXpdD6zYDkDe7-Jo2A@mail.gmail.com>
- <CAD=FV=U-YnT5jF5MFC==hANXGPqVpV3iLMPu85TrQ4dNDsWeCA@mail.gmail.com>
- <CAPDyKFpG=q88QEkuAgoLqkZU40Kx7dB7PmnXHqEt0EtbYvR_Cg@mail.gmail.com>
- <CAD=FV=X=1=AnXCGgWWkJDcHLO-MfVqsSB2aJxi3WOgWJhD_ggA@mail.gmail.com>
- <CAPDyKFrkznbW7k_=BDo99jJhWzDbUgbeU+MXWB_E_UWXh=56Eg@mail.gmail.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH 00/15] iommu: Move domain allocation into drivers
+Date: Fri, 20 Mar 2015 17:24:18 +0800
+Message-ID: <1426843458.23931.17.camel@mtksdaap41>
+References: <1422316305-19216-1-git-send-email-joro@8bytes.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0731255419863074195=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPDyKFrkznbW7k_=BDo99jJhWzDbUgbeU+MXWB_E_UWXh=56Eg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andrew Gabbasov <andrew_gabbasov-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Seungwon Jeon <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tim Kryger <tim.kryger-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Johan Rudholm <johan.rudholm-VrBV9hrLPhE@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier.martinez-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1422316305-19216-1-git-send-email-joro@8bytes.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>
+Cc: iommu@lists.linux-foundation.org, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Stephen Warren <swarren@wwwdotorg.org>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Alex Williamson <alex.williamson@redhat.com>, Kukjin Kim <kgene@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, jroedel@suse.de, linux-tegra@vger.kernel.org, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org, Hiroshi Doyu <hdoyu@nvidia.com>, Tomasz Figa <tfiga@chromium.org>, Yong Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?= <yong.wu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Tue, 2015-01-27 at 00:51 +0100, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
+> 
+> Hi,
+> 
+> here is patch-set to replace the existing domain_init and
+> domain_destroy iommu-ops with the new domain_alloc and
+> domain_free callbacks
+> 
+> The new callbacks move the allocation of iommu domains into
+> the iommu driver, allowing them to put a generic
+> iommu_domain struct into their own domain struct. This makes
+> domain handling in the drivers more cache efficient and
+> prepares the introduction of default domains in another
+> patch-set.
 
---===============0731255419863074195==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="+hz2tM55CCA8Ej21"
-Content-Disposition: inline
+Hi Joerg,
 
+What's the status of this patchset?
+While porting MTK IOMMU driver[1], we need to use a global variable
+because we need to do dma_alloc_coherent in our domain_init. I think we
+can remove that global variable if we base on this series.
 
---+hz2tM55CCA8Ej21
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Joe.C
 
-On Thu, Mar 19, 2015 at 12:14:11PM +0100, Ulf Hansson wrote:
-
-> Agree. Moreover we need that API to also pick the closest value to
-> target, when trying the range "target->minimum". I also believe it
-
-The implementation *should* do that anyway, it's just not trivial to
-implement in an efficient fashion with the current information we have
-=66rom drivers.
-
-> would be good to allow both upper and lower limits to be zero.
-
-The lower limit can be zero already though it isn't clear to me that
-this is useful.  Setting an upper limit of zero seems nonsensical, an
-upper limit that is lower than the lower limit isn't terribly obvious
-and removing the upper limit isn't safe - it means that we'll happily
-oversupply things which is a road to physical damage.
-
---+hz2tM55CCA8Ej21
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVCrTNAAoJECTWi3JdVIfQt3sH/2eaSSvoyZOHqeqD0EBGzVsK
-AnlyVjHBrgJSmTNb1QCs1Luy4WV5ACtVWz8FytizSkfjmaaYwMHiR17S7meDYlxi
-SwRhRqW5PvSGHtahAF7vAk8W2ix2ZsSyhJmo1ZntTXUszPmgvgSvW3GWHZ4L1KPz
-hKhkPxSw1gIuukQ818GZq9CwSR3DBtluvfuTp7OXZTzmEM2XSxPtqfT+k3xNjs/Y
-z7J4dJtbacmfuxOzQv2HQTZwmzWkW9FAwKc7XnDrPK4Wi/nMXttMxDo8SdNOpN6E
-nJ8eunD9nXnufl8qGGHmFCF4XaqoRHt0+9s1EB5XpjHu00QbYdlIn+58deSfDZo=
-=hQFZ
------END PGP SIGNATURE-----
-
---+hz2tM55CCA8Ej21--
-
-
---===============0731255419863074195==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0731255419863074195==--
+[1]
+http://lists.infradead.org/pipermail/linux-arm-kernel/2015-March/328461.html
