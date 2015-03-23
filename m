@@ -1,62 +1,28 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] CHROMIUM: iommu: rockchip: Make sure that page table
-	state is coherent
-Date: Mon, 23 Mar 2015 17:38:45 +0900
-Message-ID: <CAAFQd5Abk6X7AVTFaNuUSiShn31pzwwTE3VjfLnE4kyziAjy2A@mail.gmail.com>
-References: <1423480761-33453-1-git-send-email-tfiga@chromium.org>
-	<20150303133659.GD10502@8bytes.org>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 00/15] iommu: Move domain allocation into drivers
+Date: Mon, 23 Mar 2015 12:49:21 +0100
+Message-ID: <20150323114921.GM4441@8bytes.org>
+References: <1422316305-19216-1-git-send-email-joro@8bytes.org>
+ <1426843458.23931.17.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20150303133659.GD10502-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1426843458.23931.17.camel@mtksdaap41>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, jroedel-l3A5Bk7waGM@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yong Wu =?utf-8?B?KOWQtOWLhyk=?= <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Sorry, I had to dig my way out through my backlog.
+Hi Yingjoe,
 
-On Tue, Mar 3, 2015 at 10:36 PM, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org> wrote:
-> On Mon, Feb 09, 2015 at 08:19:21PM +0900, Tomasz Figa wrote:
->> Even though the code uses the dt_lock spin lock to serialize mapping
->> operation from different threads, it does not protect from IOMMU
->> accesses that might be already taking place and thus altering state
->> of the IOTLB. This means that current mapping code which first zaps
->> the page table and only then updates it with new mapping which is
->> prone to mentioned race.
->
-> Could you elabortate a bit on the race and why it is sufficient to zap
-> only the first and the last iova? From the description and the comments
-> in the patch this is not clear to me.
+On Fri, Mar 20, 2015 at 05:24:18PM +0800, Yingjoe Chen wrote:
+> What's the status of this patchset?
+> While porting MTK IOMMU driver[1], we need to use a global variable
+> because we need to do dma_alloc_coherent in our domain_init. I think we
+> can remove that global variable if we base on this series.
 
-Let's start with why it's sufficient to zap only first and last iova.
+I plan to send out a new version this week.
 
-While unmapping, the driver zaps all iovas belonging to the mapping,
-so the page tables not used by any mapping won't be cached. Now when
-the driver creates a mapping it might end up occupying several page
-tables. However, since the mapping area is virtually contiguous, only
-the first and last page table can be shared with different mappings.
-This means that only first and last iovas can be already cached. In
-fact, we could detect if first and last page tables are shared and do
-not zap at all, but this wouldn't really optimize too much. Why
-invalidating one iova is enough to invalidate the whole page table is
-unclear to me as well, but it seems to be the correct way on this
-hardware.
 
-As for the race, it's also kind of explained by the above. The already
-running hardware can trigger page table look-ups in the IOMMU and so
-caching of the page table between our zapping and updating its
-contents. With this patch zapping is performed after updating the page
-table so the race is gone.
-
-Best regards,
-Tomasz
+	Joerg
