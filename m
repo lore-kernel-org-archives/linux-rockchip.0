@@ -1,40 +1,62 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Don't send clock off command if power is off
-Date: Sun, 22 Mar 2015 14:59:27 -0700
-Message-ID: <CAD=FV=VUG54vk9xD9zEnaP_rQcL4cWLOHuy76aMRta0OOsLn1g@mail.gmail.com>
-References: <1426874420-25103-1-git-send-email-dianders@chromium.org>
-	<CAGOxZ52OWucMh_HjWnZnhN=c7C3TXeQ4aV-GAe5XXtRbu0r2Kg@mail.gmail.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] CHROMIUM: iommu: rockchip: Make sure that page table
+	state is coherent
+Date: Mon, 23 Mar 2015 17:38:45 +0900
+Message-ID: <CAAFQd5Abk6X7AVTFaNuUSiShn31pzwwTE3VjfLnE4kyziAjy2A@mail.gmail.com>
+References: <1423480761-33453-1-git-send-email-tfiga@chromium.org>
+	<20150303133659.GD10502@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAGOxZ52OWucMh_HjWnZnhN=c7C3TXeQ4aV-GAe5XXtRbu0r2Kg@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Alim Akhtar <alim.akhtar@gmail.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20150303133659.GD10502-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Alim,
+Sorry, I had to dig my way out through my backlog.
 
-On Sun, Mar 22, 2015 at 5:16 AM, Alim Akhtar <alim.akhtar@gmail.com> wrote:
->>         case MMC_POWER_OFF:
->> -               /* Turn clock off before power goes down */
->> -               dw_mci_setup_bus(slot, false);
->> +               /* Turn clock off before power goes down; only if powered */
->> +               if (slot->host->vqmmc_enabled)
->> +                       dw_mci_setup_bus(slot, false);
->>
-> vqmmc_enabled is always _true_ when entering MMC_POWER_OFF case..right?
-> Is this done for extra protection? Or do you have a case where vqmmc
-> is OFF and driver still calls dw_mci_setup_bus from here?
+On Tue, Mar 3, 2015 at 10:36 PM, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org> wrote:
+> On Mon, Feb 09, 2015 at 08:19:21PM +0900, Tomasz Figa wrote:
+>> Even though the code uses the dt_lock spin lock to serialize mapping
+>> operation from different threads, it does not protect from IOMMU
+>> accesses that might be already taking place and thus altering state
+>> of the IOTLB. This means that current mapping code which first zaps
+>> the page table and only then updates it with new mapping which is
+>> prone to mentioned race.
+>
+> Could you elabortate a bit on the race and why it is sufficient to zap
+> only the first and the last iova? From the description and the comments
+> in the patch this is not clear to me.
 
-Hmm.  I know I got it into the debugger in at least one reboot case
-where it was failing to turn the clock off.  I thought I confirmed it
-was the core trying to call MMC_POWER_OFF when the power was already
-off, but now I'm less certain.  I looked back at my debug session and
-I don't see where I got that evidence.  :-/  Certainly if I put a
-printout here right now I can't see my code making a difference.
+Let's start with why it's sufficient to zap only first and last iova.
 
-Unfortunately the crash was a very rare one, so I may have to go back
-to the drawing board here...
+While unmapping, the driver zaps all iovas belonging to the mapping,
+so the page tables not used by any mapping won't be cached. Now when
+the driver creates a mapping it might end up occupying several page
+tables. However, since the mapping area is virtually contiguous, only
+the first and last page table can be shared with different mappings.
+This means that only first and last iovas can be already cached. In
+fact, we could detect if first and last page tables are shared and do
+not zap at all, but this wouldn't really optimize too much. Why
+invalidating one iova is enough to invalidate the whole page table is
+unclear to me as well, but it seems to be the correct way on this
+hardware.
 
--Doug
+As for the race, it's also kind of explained by the above. The already
+running hardware can trigger page table look-ups in the IOMMU and so
+caching of the page table between our zapping and updating its
+contents. With this patch zapping is performed after updating the page
+table so the race is gone.
+
+Best regards,
+Tomasz
