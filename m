@@ -1,52 +1,122 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Wed, 25 Mar 2015 17:51:57 +0100
-Message-ID: <1427302317.3441.65.camel@pengutronix.de>
-References: <4184159.j0iXe39dFB@phil> <2619686.csNBBFyt8W@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2619686.csNBBFyt8W@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: [PATCH 00/16 v2] iommu: Move domain allocation into drivers
+Date: Thu, 26 Mar 2015 13:43:03 +0100
+Message-ID: <1427373799-18662-1-git-send-email-joro@8bytes.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: iommu@lists.linux-foundation.org
+Cc: Will Deacon <will.deacon@arm.com>, Kukjin Kim <kgene@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Heiko Stuebner <heiko@sntech.de>, Hiroshi Doyu <hdoyu@nvidia.com>, Stephen Warren <swarren@wwwdotorg.org>, Thierry Reding <thierry.reding@gmail.com>, Alexandre Courbot <gnurou@gmail.com>, Alex Williamson <alex.williamson@redhat.com>, Arnd Bergmann <arnd@arndb.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, Joerg Roedel <joro@8bytes.org>, jroedel@suse.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, den 23.03.2015, 19:17 +0100 schrieb Heiko Stuebner:
-> Hi Philipp,
->=20
-> Am Donnerstag, 12. M=C3=A4rz 2015, 21:45:19 schrieb Heiko Stuebner:
-> > At least the Rockchip variant of the dw_hdmi can have controllable =
-power
-> > supplies providing 1.0 and 1.8V. Therefore add the possibility for =
-the
-> > generic bridge driver to enable supplies provided by the hw-specifi=
-c
-> > drivers.
-> >=20
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->=20
-> does this look ok now?
+Changes v1-v2:
 
-Yes, thank you.
-Acked-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+	* Rebased to v4.0-rc5
+	* Converted domain-types to a bit-field
 
-> And as we talked about in Chemnitz, who will be taking such bridge-re=
-lated=20
-> changes, as you mentioned some last bridge-patches going through Thie=
-rry.
+Hi,
 
-Indeed, recent drm/bridge fixes were merged through the drm/panel tree.
-Thierry, will you continue to do that or should I collect the dw_hdmi
-patches?
+here is patch-set to replace the existing domain_init and
+domain_destroy iommu-ops with the new domain_alloc and
+domain_free callbacks
 
-regards
-Philipp
+The new callbacks move the allocation of iommu domains into
+the iommu driver, allowing them to put a generic
+iommu_domain struct into their own domain struct. This makes
+domain handling in the drivers more cache efficient and
+prepares the introduction of default domains in another
+patch-set.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+While at it, this patch-set also introduces domain types.
+These are internal to the iommu core code for now, there are
+three of them:
+
+	* DMA-API domains
+	* Identity mapped domains
+	* Domains unmanaged by the iommu-core, used for
+	  iommu-api so that the users can create their own
+	  mappings
+
+The patches have been compile tested for x86, ARM and PPC
+and runtime tested on x86 (Intel VT-d and AMD IOMMU).
+
+Please review.
+
+Thanks,
+
+	Joerg
+
+Joerg Roedel (15):
+  iommu: Introduce domain_alloc and domain_free iommu_ops
+  iommu: Introduce iommu domain types
+  iommu/amd: Make use of domain_alloc and domain_free
+  iommu/vt-d: Make use of domain_alloc and domain_free
+  iommu/omap: Make use of domain_alloc and domain_free
+  iommu/arm-smmu: Make use of domain_alloc and domain_free
+  iommu/exynos: Make use of domain_alloc and domain_free
+  iommu/tegra-smmu: Make use of domain_alloc and domain_free
+  iommu/tegra-gart: Make use of domain_alloc and domain_free
+  iommu/msm: Make use of domain_alloc and domain_free
+  iommu/shmobile: Make use of domain_alloc and domain_free
+  iommu/ipmmu-vmsa: Make use of domain_alloc and domain_free
+  iommu/rockchip: Make use of domain_alloc and domain_free
+  iommu/fsl: Make use of domain_alloc and domain_free
+  iommu: Remove domain_init and domain_free iommu_ops
+
+ drivers/iommu/amd_iommu.c       | 84 +++++++++++++++++++++------------------
+ drivers/iommu/amd_iommu_types.h |  7 ++--
+ drivers/iommu/arm-smmu.c        | 46 +++++++++++++---------
+ drivers/iommu/exynos-iommu.c    | 87 ++++++++++++++++++++++-------------------
+ drivers/iommu/fsl_pamu_domain.c | 60 +++++++++++++++-------------
+ drivers/iommu/fsl_pamu_domain.h |  2 +-
+ drivers/iommu/intel-iommu.c     | 48 +++++++++++++----------
+ drivers/iommu/iommu.c           | 20 ++--------
+ drivers/iommu/ipmmu-vmsa.c      | 43 +++++++++++---------
+ drivers/iommu/msm_iommu.c       | 73 +++++++++++++++++-----------------
+ drivers/iommu/omap-iommu.c      | 49 +++++++++++++----------
+ drivers/iommu/rockchip-iommu.c  | 40 +++++++++++--------
+ drivers/iommu/shmobile-iommu.c  | 40 +++++++++++--------
+ drivers/iommu/tegra-gart.c      | 67 +++++++++++++++++++++----------
+ drivers/iommu/tegra-smmu.c      | 41 ++++++++++---------
+ include/linux/iommu.h           | 17 ++++++--
+ 16 files changed, 407 insertions(+), 317 deletions(-)
+
+-- 
+1.8.4.5
+Joerg Roedel (16):
+  iommu: Introduce domain_alloc and domain_free iommu_ops
+  iommu: Introduce iommu domain types
+  iommu: Only allow iommu_map/unmap for paging domains
+  iommu/amd: Make use of domain_alloc and domain_free
+  iommu/vt-d: Make use of domain_alloc and domain_free
+  iommu/omap: Make use of domain_alloc and domain_free
+  iommu/arm-smmu: Make use of domain_alloc and domain_free
+  iommu/exynos: Make use of domain_alloc and domain_free
+  iommu/tegra-smmu: Make use of domain_alloc and domain_free
+  iommu/tegra-gart: Make use of domain_alloc and domain_free
+  iommu/msm: Make use of domain_alloc and domain_free
+  iommu/shmobile: Make use of domain_alloc and domain_free
+  iommu/ipmmu-vmsa: Make use of domain_alloc and domain_free
+  iommu/rockchip: Make use of domain_alloc and domain_free
+  iommu/fsl: Make use of domain_alloc and domain_free
+  iommu: Remove domain_init and domain_free iommu_ops
+
+ drivers/iommu/amd_iommu.c       | 84 +++++++++++++++++++++------------------
+ drivers/iommu/amd_iommu_types.h |  7 ++--
+ drivers/iommu/arm-smmu.c        | 46 +++++++++++++---------
+ drivers/iommu/exynos-iommu.c    | 87 ++++++++++++++++++++++-------------------
+ drivers/iommu/fsl_pamu_domain.c | 60 +++++++++++++++-------------
+ drivers/iommu/fsl_pamu_domain.h |  2 +-
+ drivers/iommu/intel-iommu.c     | 48 +++++++++++++----------
+ drivers/iommu/iommu.c           | 26 +++++-------
+ drivers/iommu/ipmmu-vmsa.c      | 41 ++++++++++---------
+ drivers/iommu/msm_iommu.c       | 73 +++++++++++++++++-----------------
+ drivers/iommu/omap-iommu.c      | 49 +++++++++++++----------
+ drivers/iommu/rockchip-iommu.c  | 40 +++++++++++--------
+ drivers/iommu/shmobile-iommu.c  | 39 ++++++++++--------
+ drivers/iommu/tegra-gart.c      | 67 +++++++++++++++++++++----------
+ drivers/iommu/tegra-smmu.c      | 41 ++++++++++---------
+ include/linux/iommu.h           | 33 ++++++++++++++--
+ 16 files changed, 427 insertions(+), 316 deletions(-)
+
+-- 
+1.9.1
