@@ -1,65 +1,75 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: [PATCH 0/3] Improve dw-hdmi CTS/N setting
-Date: Fri, 27 Mar 2015 11:13:20 +0000
-Message-ID: <20150327111320.GA4019@n2100.arm.linux.org.uk>
+From: Russell King <rmk+kernel@arm.linux.org.uk>
+Subject: [PATCH 1/3] drm: bridge/dw_hdmi: combine
+ hdmi_set_clock_regenerator_n() and hdmi_regenerate_cts()
+Date: Fri, 27 Mar 2015 11:13:45 +0000
+Message-ID: <E1YbSCv-0007yz-Qj@rmk-PC.arm.linux.org.uk>
+References: <20150327111320.GA4019@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20150327111320.GA4019@n2100.arm.linux.org.uk>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, mmind00@googlemail.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, dianders@chromium.org, marcheu@chromium.org, Andy Yan <andy.yan@rock-chips.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, mmind00@googlemail.com, David Airlie <airlied@linux.ie>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, dianders@chromium.org, djkurtz@chromium.org, Philipp Zabel <p.zabel@pengutronix.de>, marcheu@chromium.org, Andy Yan <andy.yan@rock-chips.com>, mark.yao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-QWxsLAoKVGhpcyBpcyBhIG1pbmktc2VyaWVzIHRvIHRyeSBhbmQgbW92ZSBhdWRpbyBzdXBwb3J0
-IGZvciB0aGUgRGVzaWdud2FyZQpIRE1JIGJyaWRnZSBhbG9uZy4KClRoZXJlIGFyZSB0d28ga25v
-d24gdmVyc2lvbnMgb2YgdGhlIERlc2lnbndhcmUgSERNSSBhdWRpbzoKCi0gVGhlIFJvY2tjaGlw
-IHZlcnNpb24sIHdoaWNoIGlzIGJhc2VkIHVwb24gZmVlZGluZyB0aGUgSERNSSBibG9jayBJMlMK
-ICBzdHJlYW0ocyksIHdoaWNoIGRvZXNuJ3QgaGF2ZSBhbnkgb24tYm9hcmQgRE1BIHN1cHBvcnQu
-Ci0gVGhlIEZyZWVzY2FsZSB2ZXJzaW9uLCB3aGljaCBvbmx5IGhhcyBBSEIgRE1BIHN1cHBvcnQu
-CgpUaGVyZSBhcmUgdHdvIGRyaXZlcnMgYXJvdW5kIGF0IHByZXNlbnQsIG9uZSB3aGljaCBJJ3Zl
-IGhhZCB3aGljaCBpcwpBTFNBIGJhc2VkIGR1ZSB0byBpdHMgc2ltcGxpY2l0eSBmb3IgdGhlIEZy
-ZWVzY2FsZSB2ZXJzaW9uIG9mIHRoZSBJUCwKYW5kIG9uZSB3aGljaCBpcyBBU29DIGJhc2VkIGZy
-b20gWWFraXIgWWFuZyBmb3IgdGhlIFJvY2tjaGlwIHZlcnNpb24uCgpUaGVyZSBpcyBzb21lIGNv
-bW1vbmFsaXR5IGJldHdlZW4gdGhlIHR3byBkcml2ZXJzIC0gZm9yIGV4YW1wbGUsIHRoZQpzZXR1
-cCBvZiB0aGUgQ1RTL04gdmFsdWVzIGlzIHZlcnkgc2ltaWxhciwgYWx0aG91Z2ggbm90IGlkZW50
-aWNhbC4KCkkgaGF2ZSBiZWVuIHJldmlld2luZyAod2hlbiB0aW1lIHBlcm1pdHMpIHRoZSBwYXRj
-aGVzIGZyb20gWWFraXIgWWFuZywKYW5kIG1ha2luZyByZWNvbW1lbmRhdGlvbnMgdG8gdHJ5IGFu
-ZCBleHRyYWN0IHRoZSBjb21tb24gcGFydHMgb2YgdGhlCmRyaXZlci4gIFRoaXMgaXMgdGhlIHBh
-dGNoIHNldCBJIGNhbWUgdXAgd2l0aCAobWVudGlvbmVkIGluCjIwMTUwMjAyMTMwOTIwLkdDODY1
-NkBuMjEwMC5hcm0ubGludXgub3JnLnVrKS4KCllha2lyIG1lcmdlZCBzb21lIG9mIG15IGlkZWFz
-IGludG8gaGlzIHBhdGNoIHNldCAtIGZvciBleGFtcGxlLCBZYWtpcgpZYW5nJ3MgImRybTogYnJp
-ZGdlL2R3X2hkbWk6IGNvbWJpbmUgaGRtaV9zZXRfY2xvY2tfcmVnZW5lcmF0b3JfbigpIGFuZApo
-ZG1pX3JlZ2VuZXJhdGVfY3RzKCkiIGlzIHZlcnkgY2xvc2UgdG8gdGhlIHZlcnNpb24gd2hpY2gg
-SSBjYW1lIHVwCndpdGguCgpZYWtpciBZYW5nIGRpZG4ndCBpbmNsdWRlIHRoZSBtdXRleCBwYXRj
-aCwgd2hpY2ggSSd2ZSBpbmNsdWRlZCBoZXJlIC0KaXQgcmVhbGx5IGlzIG5lY2Vzc2FyeSBiZWNh
-dXNlIHdlIGhhdmUgcG90ZW50aWFsbHkgdHdvIGRpZmZlcmVudAp0aHJlYWRzIHdoaWNoIGNhbiBj
-aGFuZ2UgdGhlIENUUy9OIHZhbHVlcyAtIGEgY2hhbmdlIG9mIHRoZSB2aWRlbyBtb2RlCnZzIGEg
-Y2hhbmdlIGluIHRoZSBhdWRpbyBkcml2ZXIuCgpUaGUgbGFzdCBwYXRjaCBpcyBhZGp1c3Rpbmcg
-dGhlIENUUy9OIHNldHRpbmcgb3JkZXIgLSBJIGhhdmUgb25seSBnb25lCmFzIGZhciBhcyB3aGF0
-IHdlIGtub3cgd29ya3MgZm9yIGlNWDYsIGFuZCB0aGlzIGlzIGFsc28gaWRlbnRpY2FsIHRvCllh
-a2lyIFlhbmcncyBwYXRjaC4KClRoZSBpZGVudGljYWwgbmF0dXJlIGlzIGhhcmRseSBzdXJwcmlz
-aW5nOyBteSBwYXRjaGVzIHdlcmUgZGVyaXZlZCBmcm9tCmEgcHJldmlvdXMgc2V0IG9mIGhpcyBw
-YXRjaGVzICh3aGljaCBJIGFja25vd2xlZGdlIGluIHRoZSBjb21taXQgbWVzc2FnZXMpCmFuZCBJ
-IGRldGFpbGVkIGluIHRoZSBhYm92ZSBtZXNzYWdlIHdoYXQgSSB3YW50ZWQgdG8gc2VlLgoKV2hh
-dCBJIHdvdWxkIGxpa2UgdG8gc2VlIGlzIHRoYXQgLSBhcyB3ZSBhcmUgZWZmZWN0aXZlbHkgaW4g
-YWdyZWVtZW50Cm92ZXIgdHdvIG9mIHRoZXNlIHBhdGNoZXMgLSB3ZSBnZXQgdGhlc2UgcGF0Y2hl
-cyBtZXJnZWQgcmF0aGVyIHRoYW4KaGF2aW5nIHRvIHJlcGVhdGVkbHkgc2VlIHRoZW0uICBJZiB0
-aGVyZSdzIGFueSBvYmplY3Rpb24sIHBsZWFzZSBsZXQgbWUKa25vdywgb3RoZXJ3aXNlIEknbGwg
-Y29sbGVjdCBhY2tzIGFuZCBzZW5kIHRoZW0gdG8gRGF2aWQuCgogZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9kd19oZG1pLmMgfCAzNCArKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tCiAx
-IGZpbGUgY2hhbmdlZCwgMTkgaW5zZXJ0aW9ucygrKSwgMTUgZGVsZXRpb25zKC0pCgotLSAKRlRU
-QyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDEwLjVNYnBzIGRvd24g
-NDAwa2JwcyB1cAphY2NvcmRpbmcgdG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Combine these two functions into a single implementation.  These two
+functions are called consecutively anyway.  Idea from a patch by
+Yakir Yang.
+
+Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+---
+ drivers/gpu/drm/bridge/dw_hdmi.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
+index cd6a70647e32..78363552d80e 100644
+--- a/drivers/gpu/drm/bridge/dw_hdmi.c
++++ b/drivers/gpu/drm/bridge/dw_hdmi.c
+@@ -177,19 +177,16 @@ static void hdmi_mask_writeb(struct dw_hdmi *hdmi, u8 data, unsigned int reg,
+ 	hdmi_modb(hdmi, data << shift, mask, reg);
+ }
+ 
+-static void hdmi_set_clock_regenerator_n(struct dw_hdmi *hdmi,
+-					 unsigned int value)
++static void hdmi_set_cts_n(struct dw_hdmi *hdmi, unsigned int cts,
++			   unsigned int n)
+ {
+-	hdmi_writeb(hdmi, value & 0xff, HDMI_AUD_N1);
+-	hdmi_writeb(hdmi, (value >> 8) & 0xff, HDMI_AUD_N2);
+-	hdmi_writeb(hdmi, (value >> 16) & 0x0f, HDMI_AUD_N3);
++	hdmi_writeb(hdmi, n & 0xff, HDMI_AUD_N1);
++	hdmi_writeb(hdmi, (n >> 8) & 0xff, HDMI_AUD_N2);
++	hdmi_writeb(hdmi, (n >> 16) & 0x0f, HDMI_AUD_N3);
+ 
+ 	/* nshift factor = 0 */
+ 	hdmi_modb(hdmi, 0, HDMI_AUD_CTS3_N_SHIFT_MASK, HDMI_AUD_CTS3);
+-}
+ 
+-static void hdmi_regenerate_cts(struct dw_hdmi *hdmi, unsigned int cts)
+-{
+ 	/* Must be set/cleared first */
+ 	hdmi_modb(hdmi, 0, HDMI_AUD_CTS3_CTS_MANUAL, HDMI_AUD_CTS3);
+ 
+@@ -355,8 +352,7 @@ static void hdmi_set_clk_regenerator(struct dw_hdmi *hdmi,
+ 		__func__, hdmi->sample_rate, hdmi->ratio,
+ 		pixel_clk, clk_n, clk_cts);
+ 
+-	hdmi_set_clock_regenerator_n(hdmi, clk_n);
+-	hdmi_regenerate_cts(hdmi, clk_cts);
++	hdmi_set_cts_n(hdmi, clk_cts, clk_n);
+ }
+ 
+ static void hdmi_init_clk_regenerator(struct dw_hdmi *hdmi)
+-- 
+1.8.3.1
