@@ -1,88 +1,75 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [GIT PULL 1/2] ARM: rockchip: soc code changes for 4.1
-Date: Thu, 26 Mar 2015 18:41:44 +0100
-Message-ID: <9711811.dP5TtE1nVp@phil>
-References: <2684132.lK2CyBin0M@diego>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH v4 1/4] mmc: dw_mmc: Don't try to enable the CD until we're
+ sure we're not deferring
+Date: Fri, 27 Mar 2015 14:55:17 +0900
+Message-ID: <5514F0C5.7080509@samsung.com>
+References: <1426112117-18220-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2684132.lK2CyBin0M@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1426112117-18220-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Seungwon Jeon <tgih.jun@samsung.com>
+Cc: Mark Brown <broonie@kernel.org>, Alexandru Stan <amstan@chromium.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, javier.martinez@collabora.co.uk, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, chris@printf.net, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 18. M=E4rz 2015, 17:41:15 schrieb Heiko St=FCbner:
-> Hi Arnd, Olof,
-> =
+Hi, Doug.
 
-> some soc code changes for 4.1 . I hope the tag explains it, so please pull
+This patch is not related with [patch 2/4~4/4].
+"[PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()" is discussing..
+So i think if you're ok, i will pick this one [PATCH v4 1/4]. how about?
 
-as heard in Arnd's talk on ELC yesterday, I'm supposed to ping after one we=
-ek =
+Best Regards,
+Jaehoon Chung
 
-of inactivity, so any news on these two pulls? :-)
-
-
-Thanks
-Heiko
-
-> =
-
-> =
-
-> Thanks
-> Heiko
-> =
-
-> The following changes since commit c517d838eb7d07bbe9507871fab3931deccff5=
-39:
-> =
-
->   Linux 4.0-rc1 (2015-02-22 18:21:14 -0800)
-> =
-
-> are available in the git repository at:
-> =
-
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-> tags/v4.1-rockchip-soc1
-> =
-
-> for you to fetch changes up to a0307d186f5015ee3d77e209e5c06190cbf02478:
-> =
-
->   ARM: rockchip: disable watchdog during suspend (2015-03-11 22:41:02 +01=
-00)
-> =
-
-> ----------------------------------------------------------------
-> Some suspend improvements reducing resume time and making sure the
-> watchdog does not reset after 12 hours and a change to constify and
-> staticize some smp parts.
-> =
-
-> ----------------------------------------------------------------
-> Chris Zhong (2):
->       ARM: rockchip: decrease the wait time for resume
->       ARM: rockchip: disable watchdog during suspend
-> =
-
-> Krzysztof Kozlowski (1):
->       ARM: rockchip: Constify struct regmap_config and staticize local
-> function
-> =
-
->  arch/arm/mach-rockchip/platsmp.c |  4 ++--
->  arch/arm/mach-rockchip/pm.c      | 14 +++++++++++---
->  arch/arm/mach-rockchip/pm.h      |  6 ++++++
->  3 files changed, 19 insertions(+), 5 deletions(-)
+On 03/12/2015 07:15 AM, Doug Anderson wrote:
+> If dw_mci_init_slot() returns that we got a probe deferral then it may
+> leave slot->mmc as NULL.  That will cause dw_mci_enable_cd() to crash
+> when it calls mmc_gpio_get_cd().
+> 
+> Fix this by moving the call of dw_mci_enable_cd() until we're sure
+> that we're good.  Note that if we have more than one slot and one
+> defers (but the others don't) things won't work so well.  ...but
+> that's not a new thing and everyone has already agreed that multislot
+> support ought to be removed from dw_mmc eventually anyway since it is
+> unused, untested, and you can see several bugs like this by inspecting
+> the code.
+> 
+> Fixes: bcafaf5470f0 ("mmc: dw_mmc: Only enable CD after setup and only if needed")
+> Signed-off-by: Doug Anderson <dianders@chromium.org>
+> ---
+> Changes in v4:
+> - Defer vs. card detect fix patch new for v4.
+> 
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  drivers/mmc/host/dw_mmc.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 47dfd0e..e2811cf 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -2863,9 +2863,6 @@ int dw_mci_probe(struct dw_mci *host)
+>  			init_slots++;
+>  	}
+>  
+> -	/* Now that slots are all setup, we can enable card detect */
+> -	dw_mci_enable_cd(host);
+> -
+>  	if (init_slots) {
+>  		dev_info(host->dev, "%d slots initialized\n", init_slots);
+>  	} else {
+> @@ -2874,6 +2871,9 @@ int dw_mci_probe(struct dw_mci *host)
+>  		goto err_dmaunmap;
+>  	}
+>  
+> +	/* Now that slots are all setup, we can enable card detect */
+> +	dw_mci_enable_cd(host);
+> +
+>  	if (host->quirks & DW_MCI_QUIRK_IDMAC_DTO)
+>  		dev_info(host->dev, "Internal DMAC interrupt fix enabled.\n");
+>  
+> 
