@@ -1,113 +1,68 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command
- errors
-Date: Mon, 30 Mar 2015 09:55:32 +0900
-Message-ID: <55189F04.8000404@samsung.com>
-References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
- <5502CA4E.9060401@samsung.com>
- <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
- <5506707D.40708@samsung.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 0/3] Improve dw-hdmi CTS/N setting
+Date: Mon, 30 Mar 2015 11:43:17 +0200
+Message-ID: <1427708597.3739.4.camel@pengutronix.de>
+References: <20150327111320.GA4019@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <5506707D.40708@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Doug Anderson <dianders@chromium.org>
-Cc: Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20150327111320.GA4019@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, mmind00@googlemail.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, dianders@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, marcheu@chromium.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Doug,
-
-I'm considering to control HLE error..So holding this patch.
-If this is absolutely necessary patch, let me know, plz.
-
-Best Regards,
-Jaehoon Chung
-
-On 03/16/2015 02:56 PM, Jaehoon Chung wrote:
-> Hi, Doug.
-> 
-> On 03/14/2015 05:27 AM, Doug Anderson wrote:
->> Hi,
->>
->> On Fri, Mar 13, 2015 at 4:30 AM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
->>> Hi, Doug.
->>>
->>> On 03/11/2015 12:48 AM, Doug Anderson wrote:
->>>> The dw_mmc driver enables HLE errors as part of DW_MCI_ERROR_FLAGS but
->>>> nothing in the interrupt handler actually handles them and ACKs them.
->>>> That means that if we ever get an HLE error we'll just keep getting
->>>> interrupts and we'll wedge things.
->>>>
->>>> We really don't expect HLE errors but if we ever get them we shouldn't
->>>> silently ignore them.
->>>>
->>>> Note that I have seen HLE errors while constantly ejecting and
->>>> inserting cards (ejecting while inserting, etc).
->>>
->>> Right, It is occurred when card inserting/ejecting.(This case is the case of removable card.)
->>> Did you test with eMMC? We needs to consider how control HLE error.
->>
->> I'm running it on systems with eMMC, SD Cards, and SDIO WiFi.  HLE
->> doesn't show up in normal circumstances, only in ejecting the SD card
->> at the wrong time.  ...since you can't eject eMMC, I didn't see
->> problems there.
-> 
-> When card is inserting/removing, HLE is often occurred.
-> Since there is some request into queue when card is removed.(in my understanding.)
-> It's also related with controlling clock.
-> 
->>
->>> But I think this patch can't solve all of HLE problem.
->>
->> Agreed.  HLE means that the controller is pretty wedged and (as I
->> understand it) means that there's something else we're doing wrong
->> elsewhere in the dw_mmc driver (like writing more data to an already
->> busy controller).  We should probably track down and find those cases,
->> too.
->>
->> I agree also that this code probably won't fix the controller in all
->> cases of HLE errors.  ...but I'm not 100% certain of the best way to
->> really do that, do you know?
->>
->> ...but in any case the absolute worst thing to do is what the driver
->> is already doing: unmask the HLE interrupt but never handle it
->> anywhere...  My patch is at least better than that...
-> 
-> Agreed, your patch should be at least better than now.
-> But if pending is set HLE error bit,
-> it should hit the cases of DW_MCI_DATA_ERROR_FLAGS & DW_MCI_CMD_ERROR_FLAGS.
-> and i think send_stop_abort() can't run, doesn't?
-> (If HLE is occurred at non-removable card, controller can't do anything.)
-> 
-> If i can reproduce HLE error, i can check more detailedly.(Trying to reproduce it.)
-> I don't find fully solution yet. But finding the solution is my or our(?) part/role in future.
-> Actually, i'm using the ctrl reset at my local tree, when HLE error is occurred.
-> (Also it's not solution..)
-> According to TRM, "HLE is raised, software then has to reload the command."
-> We needs to consider how reload the command without lost previous request.
-> 
->>
->> If you have another suggested way to make HLE error handling better
->> (or avoid them to begin with) I'm happy to test!  :)
-> 
-> I will try to find HLE error handling..if you also have other opinion, let me know, plz.
-> I needs to listen other opinion, it's great helpful to me.. :)
-> 
-> Thank you a lot!
-> 
-> Best Regards,
-> Jaehoon Chung
-> 
->>
->>
->> -Doug
->>
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
-
+SGkgUnVzc2VsbCwKCkFtIEZyZWl0YWcsIGRlbiAyNy4wMy4yMDE1LCAxMToxMyArMDAwMCBzY2hy
+aWViIFJ1c3NlbGwgS2luZyAtIEFSTQpMaW51eDoKPiBBbGwsCj4gCj4gVGhpcyBpcyBhIG1pbmkt
+c2VyaWVzIHRvIHRyeSBhbmQgbW92ZSBhdWRpbyBzdXBwb3J0IGZvciB0aGUgRGVzaWdud2FyZQo+
+IEhETUkgYnJpZGdlIGFsb25nLgo+Cj4gVGhlcmUgYXJlIHR3byBrbm93biB2ZXJzaW9ucyBvZiB0
+aGUgRGVzaWdud2FyZSBIRE1JIGF1ZGlvOgo+IAo+IC0gVGhlIFJvY2tjaGlwIHZlcnNpb24sIHdo
+aWNoIGlzIGJhc2VkIHVwb24gZmVlZGluZyB0aGUgSERNSSBibG9jayBJMlMKPiAgIHN0cmVhbShz
+KSwgd2hpY2ggZG9lc24ndCBoYXZlIGFueSBvbi1ib2FyZCBETUEgc3VwcG9ydC4KPiAtIFRoZSBG
+cmVlc2NhbGUgdmVyc2lvbiwgd2hpY2ggb25seSBoYXMgQUhCIERNQSBzdXBwb3J0Lgo+IAo+IFRo
+ZXJlIGFyZSB0d28gZHJpdmVycyBhcm91bmQgYXQgcHJlc2VudCwgb25lIHdoaWNoIEkndmUgaGFk
+IHdoaWNoIGlzCj4gQUxTQSBiYXNlZCBkdWUgdG8gaXRzIHNpbXBsaWNpdHkgZm9yIHRoZSBGcmVl
+c2NhbGUgdmVyc2lvbiBvZiB0aGUgSVAsCj4gYW5kIG9uZSB3aGljaCBpcyBBU29DIGJhc2VkIGZy
+b20gWWFraXIgWWFuZyBmb3IgdGhlIFJvY2tjaGlwIHZlcnNpb24uCj4gCj4gVGhlcmUgaXMgc29t
+ZSBjb21tb25hbGl0eSBiZXR3ZWVuIHRoZSB0d28gZHJpdmVycyAtIGZvciBleGFtcGxlLCB0aGUK
+PiBzZXR1cCBvZiB0aGUgQ1RTL04gdmFsdWVzIGlzIHZlcnkgc2ltaWxhciwgYWx0aG91Z2ggbm90
+IGlkZW50aWNhbC4KPiAKPiBJIGhhdmUgYmVlbiByZXZpZXdpbmcgKHdoZW4gdGltZSBwZXJtaXRz
+KSB0aGUgcGF0Y2hlcyBmcm9tIFlha2lyIFlhbmcsCj4gYW5kIG1ha2luZyByZWNvbW1lbmRhdGlv
+bnMgdG8gdHJ5IGFuZCBleHRyYWN0IHRoZSBjb21tb24gcGFydHMgb2YgdGhlCj4gZHJpdmVyLiAg
+VGhpcyBpcyB0aGUgcGF0Y2ggc2V0IEkgY2FtZSB1cCB3aXRoIChtZW50aW9uZWQgaW4KPiAyMDE1
+MDIwMjEzMDkyMC5HQzg2NTZAbjIxMDAuYXJtLmxpbnV4Lm9yZy51aykuCj4gCj4gWWFraXIgbWVy
+Z2VkIHNvbWUgb2YgbXkgaWRlYXMgaW50byBoaXMgcGF0Y2ggc2V0IC0gZm9yIGV4YW1wbGUsIFlh
+a2lyCj4gWWFuZydzICJkcm06IGJyaWRnZS9kd19oZG1pOiBjb21iaW5lIGhkbWlfc2V0X2Nsb2Nr
+X3JlZ2VuZXJhdG9yX24oKSBhbmQKPiBoZG1pX3JlZ2VuZXJhdGVfY3RzKCkiIGlzIHZlcnkgY2xv
+c2UgdG8gdGhlIHZlcnNpb24gd2hpY2ggSSBjYW1lIHVwCj4gd2l0aC4KPiAKPiBZYWtpciBZYW5n
+IGRpZG4ndCBpbmNsdWRlIHRoZSBtdXRleCBwYXRjaCwgd2hpY2ggSSd2ZSBpbmNsdWRlZCBoZXJl
+IC0KPiBpdCByZWFsbHkgaXMgbmVjZXNzYXJ5IGJlY2F1c2Ugd2UgaGF2ZSBwb3RlbnRpYWxseSB0
+d28gZGlmZmVyZW50Cj4gdGhyZWFkcyB3aGljaCBjYW4gY2hhbmdlIHRoZSBDVFMvTiB2YWx1ZXMg
+LSBhIGNoYW5nZSBvZiB0aGUgdmlkZW8gbW9kZQo+IHZzIGEgY2hhbmdlIGluIHRoZSBhdWRpbyBk
+cml2ZXIuCj4gCj4gVGhlIGxhc3QgcGF0Y2ggaXMgYWRqdXN0aW5nIHRoZSBDVFMvTiBzZXR0aW5n
+IG9yZGVyIC0gSSBoYXZlIG9ubHkgZ29uZQo+IGFzIGZhciBhcyB3aGF0IHdlIGtub3cgd29ya3Mg
+Zm9yIGlNWDYsIGFuZCB0aGlzIGlzIGFsc28gaWRlbnRpY2FsIHRvCj4gWWFraXIgWWFuZydzIHBh
+dGNoLgo+IAo+IFRoZSBpZGVudGljYWwgbmF0dXJlIGlzIGhhcmRseSBzdXJwcmlzaW5nOyBteSBw
+YXRjaGVzIHdlcmUgZGVyaXZlZCBmcm9tCj4gYSBwcmV2aW91cyBzZXQgb2YgaGlzIHBhdGNoZXMg
+KHdoaWNoIEkgYWNrbm93bGVkZ2UgaW4gdGhlIGNvbW1pdCBtZXNzYWdlcykKPiBhbmQgSSBkZXRh
+aWxlZCBpbiB0aGUgYWJvdmUgbWVzc2FnZSB3aGF0IEkgd2FudGVkIHRvIHNlZS4KPiAKPiBXaGF0
+IEkgd291bGQgbGlrZSB0byBzZWUgaXMgdGhhdCAtIGFzIHdlIGFyZSBlZmZlY3RpdmVseSBpbiBh
+Z3JlZW1lbnQKPiBvdmVyIHR3byBvZiB0aGVzZSBwYXRjaGVzIC0gd2UgZ2V0IHRoZXNlIHBhdGNo
+ZXMgbWVyZ2VkIHJhdGhlciB0aGFuCj4gaGF2aW5nIHRvIHJlcGVhdGVkbHkgc2VlIHRoZW0uICBJ
+ZiB0aGVyZSdzIGFueSBvYmplY3Rpb24sIHBsZWFzZSBsZXQgbWUKPiBrbm93LCBvdGhlcndpc2Ug
+SSdsbCBjb2xsZWN0IGFja3MgYW5kIHNlbmQgdGhlbSB0byBEYXZpZC4KCkFja2VkLWJ5OiBQaGls
+aXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgpBbHNvLApUZXN0ZWQtYnk6IFBoaWxp
+cHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cih3aXRoIHlvdXIgZHctaGRtaS1hdWRp
+byBwYXRjaGVzIG9uIGkuTVg2KQoKYmVzdCByZWdhcmRzClBoaWxpcHAKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
