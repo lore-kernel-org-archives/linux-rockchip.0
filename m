@@ -1,69 +1,35 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 0/3] Improve dw-hdmi CTS/N setting
-Date: Mon, 30 Mar 2015 21:23:21 +0800
-Message-ID: <55194E49.3000304@rock-chips.com>
-References: <20150327111320.GA4019@n2100.arm.linux.org.uk>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command errors
+Date: Mon, 30 Mar 2015 08:47:14 -0700
+Message-ID: <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
+References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
+	<5502CA4E.9060401@samsung.com>
+	<CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
+	<5506707D.40708@samsung.com>
+	<55189F04.8000404@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150327111320.GA4019-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Fabio Estevam <fabio.estevam-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, mmind00-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, marcheu-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55189F04.8000404@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUnVzc2VsbDoKCk9uIDIwMTXlubQwM+aciDI35pelIDE5OjEzLCBSdXNzZWxsIEtpbmcgLSBB
-Uk0gTGludXggd3JvdGU6Cj4gQWxsLAo+Cj4gVGhpcyBpcyBhIG1pbmktc2VyaWVzIHRvIHRyeSBh
-bmQgbW92ZSBhdWRpbyBzdXBwb3J0IGZvciB0aGUgRGVzaWdud2FyZQo+IEhETUkgYnJpZGdlIGFs
-b25nLgo+Cj4gVGhlcmUgYXJlIHR3byBrbm93biB2ZXJzaW9ucyBvZiB0aGUgRGVzaWdud2FyZSBI
-RE1JIGF1ZGlvOgo+Cj4gLSBUaGUgUm9ja2NoaXAgdmVyc2lvbiwgd2hpY2ggaXMgYmFzZWQgdXBv
-biBmZWVkaW5nIHRoZSBIRE1JIGJsb2NrIEkyUwo+ICAgIHN0cmVhbShzKSwgd2hpY2ggZG9lc24n
-dCBoYXZlIGFueSBvbi1ib2FyZCBETUEgc3VwcG9ydC4KPiAtIFRoZSBGcmVlc2NhbGUgdmVyc2lv
-biwgd2hpY2ggb25seSBoYXMgQUhCIERNQSBzdXBwb3J0Lgo+Cj4gVGhlcmUgYXJlIHR3byBkcml2
-ZXJzIGFyb3VuZCBhdCBwcmVzZW50LCBvbmUgd2hpY2ggSSd2ZSBoYWQgd2hpY2ggaXMKPiBBTFNB
-IGJhc2VkIGR1ZSB0byBpdHMgc2ltcGxpY2l0eSBmb3IgdGhlIEZyZWVzY2FsZSB2ZXJzaW9uIG9m
-IHRoZSBJUCwKPiBhbmQgb25lIHdoaWNoIGlzIEFTb0MgYmFzZWQgZnJvbSBZYWtpciBZYW5nIGZv
-ciB0aGUgUm9ja2NoaXAgdmVyc2lvbi4KPgo+IFRoZXJlIGlzIHNvbWUgY29tbW9uYWxpdHkgYmV0
-d2VlbiB0aGUgdHdvIGRyaXZlcnMgLSBmb3IgZXhhbXBsZSwgdGhlCj4gc2V0dXAgb2YgdGhlIENU
-Uy9OIHZhbHVlcyBpcyB2ZXJ5IHNpbWlsYXIsIGFsdGhvdWdoIG5vdCBpZGVudGljYWwuCj4KPiBJ
-IGhhdmUgYmVlbiByZXZpZXdpbmcgKHdoZW4gdGltZSBwZXJtaXRzKSB0aGUgcGF0Y2hlcyBmcm9t
-IFlha2lyIFlhbmcsCj4gYW5kIG1ha2luZyByZWNvbW1lbmRhdGlvbnMgdG8gdHJ5IGFuZCBleHRy
-YWN0IHRoZSBjb21tb24gcGFydHMgb2YgdGhlCj4gZHJpdmVyLiAgVGhpcyBpcyB0aGUgcGF0Y2gg
-c2V0IEkgY2FtZSB1cCB3aXRoIChtZW50aW9uZWQgaW4KPiAyMDE1MDIwMjEzMDkyMC5HQzg2NTZA
-bjIxMDAuYXJtLmxpbnV4Lm9yZy51aykuCj4KPiBZYWtpciBtZXJnZWQgc29tZSBvZiBteSBpZGVh
-cyBpbnRvIGhpcyBwYXRjaCBzZXQgLSBmb3IgZXhhbXBsZSwgWWFraXIKPiBZYW5nJ3MgImRybTog
-YnJpZGdlL2R3X2hkbWk6IGNvbWJpbmUgaGRtaV9zZXRfY2xvY2tfcmVnZW5lcmF0b3JfbigpIGFu
-ZAo+IGhkbWlfcmVnZW5lcmF0ZV9jdHMoKSIgaXMgdmVyeSBjbG9zZSB0byB0aGUgdmVyc2lvbiB3
-aGljaCBJIGNhbWUgdXAKPiB3aXRoLgo+Cj4gWWFraXIgWWFuZyBkaWRuJ3QgaW5jbHVkZSB0aGUg
-bXV0ZXggcGF0Y2gsIHdoaWNoIEkndmUgaW5jbHVkZWQgaGVyZSAtCj4gaXQgcmVhbGx5IGlzIG5l
-Y2Vzc2FyeSBiZWNhdXNlIHdlIGhhdmUgcG90ZW50aWFsbHkgdHdvIGRpZmZlcmVudAo+IHRocmVh
-ZHMgd2hpY2ggY2FuIGNoYW5nZSB0aGUgQ1RTL04gdmFsdWVzIC0gYSBjaGFuZ2Ugb2YgdGhlIHZp
-ZGVvIG1vZGUKPiB2cyBhIGNoYW5nZSBpbiB0aGUgYXVkaW8gZHJpdmVyLgo+Cj4gVGhlIGxhc3Qg
-cGF0Y2ggaXMgYWRqdXN0aW5nIHRoZSBDVFMvTiBzZXR0aW5nIG9yZGVyIC0gSSBoYXZlIG9ubHkg
-Z29uZQo+IGFzIGZhciBhcyB3aGF0IHdlIGtub3cgd29ya3MgZm9yIGlNWDYsIGFuZCB0aGlzIGlz
-IGFsc28gaWRlbnRpY2FsIHRvCj4gWWFraXIgWWFuZydzIHBhdGNoLgo+Cj4gVGhlIGlkZW50aWNh
-bCBuYXR1cmUgaXMgaGFyZGx5IHN1cnByaXNpbmc7IG15IHBhdGNoZXMgd2VyZSBkZXJpdmVkIGZy
-b20KPiBhIHByZXZpb3VzIHNldCBvZiBoaXMgcGF0Y2hlcyAod2hpY2ggSSBhY2tub3dsZWRnZSBp
-biB0aGUgY29tbWl0IG1lc3NhZ2VzKQo+IGFuZCBJIGRldGFpbGVkIGluIHRoZSBhYm92ZSBtZXNz
-YWdlIHdoYXQgSSB3YW50ZWQgdG8gc2VlLgo+Cj4gV2hhdCBJIHdvdWxkIGxpa2UgdG8gc2VlIGlz
-IHRoYXQgLSBhcyB3ZSBhcmUgZWZmZWN0aXZlbHkgaW4gYWdyZWVtZW50Cj4gb3ZlciB0d28gb2Yg
-dGhlc2UgcGF0Y2hlcyAtIHdlIGdldCB0aGVzZSBwYXRjaGVzIG1lcmdlZCByYXRoZXIgdGhhbgo+
-IGhhdmluZyB0byByZXBlYXRlZGx5IHNlZSB0aGVtLiAgSWYgdGhlcmUncyBhbnkgb2JqZWN0aW9u
-LCBwbGVhc2UgbGV0IG1lCj4ga25vdywgb3RoZXJ3aXNlIEknbGwgY29sbGVjdCBhY2tzIGFuZCBz
-ZW5kIHRoZW0gdG8gRGF2aWQuCj4KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS5j
-IHwgMzQgKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5n
-ZWQsIDE5IGluc2VydGlvbnMoKyksIDE1IGRlbGV0aW9ucygtKQo+CiAgIEFmdGVyIHRhbGsgd2l0
-aCBZYWtpciBZYW5nLCB3ZSBhcmUgZ2xhZCB5b3VyIHN1Z2dlc3Rpb24gYW5kIHBhdGNoLgogICBB
-Y2tlZC1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgoKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Jaehoon,
+
+On Sun, Mar 29, 2015 at 5:55 PM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
+> Dear Doug,
+>
+> I'm considering to control HLE error..So holding this patch.
+> If this is absolutely necessary patch, let me know, plz.
+>
+> Best Regards,
+> Jaehoon Chung
+
+Sounds OK.  I have certainly applied this locally and the driver isn't
+robust against insertions / removals without it, but once the card is
+inserted things are OK so it's probably not urgent that it be applied
+upstream.  Hopefully we can figure out a better solution...
+
+-Doug
