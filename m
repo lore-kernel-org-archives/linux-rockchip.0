@@ -1,44 +1,37 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] drm: rockchip: Turn off VT switching on suspend
-Date: Tue, 31 Mar 2015 18:22:50 +0800
-Message-ID: <1427797370-32441-2-git-send-email-wxt@rock-chips.com>
-References: <1427797370-32441-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1427797370-32441-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Daniel Kurtz <djkurtz@chromium.org>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>, Rob Clark <robdclark@gmail.com>, Daniel Vetter <daniel@ffwll.ch>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 00/16 v2] iommu: Move domain allocation into drivers
+Date: Tue, 31 Mar 2015 15:14:41 +0200
+Message-ID: <20150331131441.GD4441@8bytes.org>
+References: <1427373799-18662-1-git-send-email-joro@8bytes.org>
+ <1427516662.3643.906.camel@redhat.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1427516662.3643.906.camel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hiroshi Doyu <hdoyu-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jroedel-l3A5Bk7waGM@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-drm/rockchip already has support for disabling all displays on suspend
-and enabling them on resume.
+Hi Alex,
 
-Disable automatic VT switching on suspend by the pm console tracking
-layer.
+On Fri, Mar 27, 2015 at 10:24:22PM -0600, Alex Williamson wrote:
+> For 1-5,16
+> 
+> Reviewed-by: Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
 
-Tested on veyron, used `echo mem > sys/power/state`
-  => verified no VT switch
+Thanks a lot for your review.
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
+> My only comment/question is whether you'd want to consider using
+> ERR_PTR() return values from domain_alloc().  It's an alloc functions,
+> so NULL == -ENOMEM is pretty standard, but we could at least have the
+> interface to the iommu driver return more info even if we continue to
+> mask that as NULL out to the IOMMU API users for now.  Thanks,
 
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 3 +++
- 1 file changed, 3 insertions(+)
+Yes, that might make sense. But to do anything useful with the ERR_PTR
+we also need to change the iommu_domain_alloc() interface. This is
+out-of-scope for this patch-set, we can discuss this seperatly.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-index a5d889a..eb4e0db 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-@@ -119,6 +119,9 @@ static int rockchip_drm_fbdev_create(struct drm_fb_helper *helper,
- 	DRM_DEBUG_KMS("FB [%dx%d]-%d kvaddr=%p offset=%ld size=%d\n",
- 		      fb->width, fb->height, fb->depth, rk_obj->kvaddr,
- 		      offset, size);
-+
-+	fbi->skip_vt_switch = true;
-+
- 	return 0;
- 
- err_drm_framebuffer_unref:
--- 
-1.9.1
+
+	Joerg
