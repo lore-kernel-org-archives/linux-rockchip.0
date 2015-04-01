@@ -1,7 +1,7 @@
 From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v4 2/3] drm: bridge/dw_hdmi: separate VLEVCTRL settting into platform driver
-Date: Tue, 31 Mar 2015 23:56:10 -0400
-Message-ID: <1427860570-13464-1-git-send-email-ykk@rock-chips.com>
+Subject: [PATCH v4 3/3] drm: rockchip/dw_hdmi-rockchip: improve for HDMI electrical test
+Date: Tue, 31 Mar 2015 23:57:10 -0400
+Message-ID: <1427860630-13606-1-git-send-email-ykk@rock-chips.com>
 References: <1427860227-12042-1-git-send-email-ykk@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1427860227-12042-1-git-send-email-ykk@rock-chips.com>
@@ -10,156 +10,45 @@ To: Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutron
 Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, djkurtz@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Because of iMX6 & Rockchip have differnet mpll config parameter,
-the VLEVCTRL parameter would be different. In this case we should
-separate VLEVCTRL setting from the common dw_hdmi driver, config
-this parameter in platform driver(dw_hdmi-imx and dw_hdmi-rockchip)
+When pixel clock less than 148.5MHz, make sloopboost=2 tklvl=20
+cklvl=13 increase rasing/falling time and increase data & clock
+voltage driver.
+
+When pixel clock less than 74.25MHz, make sloopboost=0 tklvl=19
+cklvl=18, increase data and clock voltage driver.
 
 Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 ---
 Changes in v4:
-- separate VLEVCTRL setting into platform driver
+- combine the modification of electrical parameter for eye-diagram
+  & single-ended test to an separate patch.
 
-Changes in v3: None
-Changes in v2: None
+Changes in v3:
+- for pixel clock less than 148.5MHz, set txlvl to 20.
 
- drivers/gpu/drm/bridge/dw_hdmi.c            | 14 +++++++-------
- drivers/gpu/drm/imx/dw_hdmi-imx.c           | 12 ++++++------
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 +++++++-------
- include/drm/bridge/dw_hdmi.h                |  5 +++--
- 4 files changed, 23 insertions(+), 22 deletions(-)
+Changes in v2:
+- set slopeboost back to 10%-20%, then rasing/falling time would pass.
+- for pixel clock less then 74.25MHz, set txlvl to 19 and cklvl to 18.
 
-diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
-index 7b61ae8..bf0c570 100644
---- a/drivers/gpu/drm/bridge/dw_hdmi.c
-+++ b/drivers/gpu/drm/bridge/dw_hdmi.c
-@@ -756,7 +756,7 @@ static int hdmi_phy_configure(struct dw_hdmi *hdmi, unsigned char prep,
- 	const struct dw_hdmi_plat_data *plat_data = hdmi->plat_data;
- 	const struct dw_hdmi_mpll_config *mpll_config = plat_data->mpll_cfg;
- 	const struct dw_hdmi_curr_ctrl *curr_ctrl = plat_data->cur_ctr;
--	const struct dw_hdmi_sym_term *sym_term = plat_data->sym_term;
-+	const struct dw_hdmi_phy_config *phy_config = plat_data->phy_config;
- 
- 	if (prep)
- 		return -EINVAL;
-@@ -827,18 +827,18 @@ static int hdmi_phy_configure(struct dw_hdmi *hdmi, unsigned char prep,
- 	hdmi_phy_i2c_write(hdmi, 0x0000, 0x13);  /* PLLPHBYCTRL */
- 	hdmi_phy_i2c_write(hdmi, 0x0006, 0x17);
- 
--	for (i = 0; sym_term[i].mpixelclock != (~0UL); i++)
-+	for (i = 0; phy_config[i].mpixelclock != (~0UL); i++)
- 		if (hdmi->hdmi_data.video_mode.mpixelclock <=
--		    sym_term[i].mpixelclock)
-+		    phy_config[i].mpixelclock)
- 			break;
- 
- 	/* RESISTANCE TERM 133Ohm Cfg */
--	hdmi_phy_i2c_write(hdmi, sym_term[i].term, 0x19);  /* TXTERM */
-+	hdmi_phy_i2c_write(hdmi, phy_config[i].term, 0x19);  /* TXTERM */
- 	/* PREEMP Cgf 0.00 */
--	hdmi_phy_i2c_write(hdmi, sym_term[i].sym_ctr, 0x09);  /* CKSYMTXCTRL */
--
-+	hdmi_phy_i2c_write(hdmi, phy_config[i].sym_ctr, 0x09); /* CKSYMTXCTRL */
- 	/* TX/CK LVL 10 */
--	hdmi_phy_i2c_write(hdmi, 0x01ad, 0x0E);  /* VLEVCTRL */
-+	hdmi_phy_i2c_write(hdmi, phy_config[i].vlev_ctr, 0x0E); /* VLEVCTRL */
-+
- 	/* REMOVE CLK TERM */
- 	hdmi_phy_i2c_write(hdmi, 0x8000, 0x05);  /* CKCALCTRL */
- 
-diff --git a/drivers/gpu/drm/imx/dw_hdmi-imx.c b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-index 87fe8ed..2c99474 100644
---- a/drivers/gpu/drm/imx/dw_hdmi-imx.c
-+++ b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-@@ -75,10 +75,10 @@ static const struct dw_hdmi_curr_ctrl imx_cur_ctr[] = {
- 	},
- };
- 
--static const struct dw_hdmi_sym_term imx_sym_term[] = {
--	/*pixelclk   symbol   term*/
--	{ 148500000, 0x800d, 0x0005 },
--	{ ~0UL,      0x0000, 0x0000 }
-+static const struct dw_hdmi_phy_config imx_phy_config[] = {
-+	/*pixelclk   symbol   term   vlev */
-+	{ 148500000, 0x800d, 0x0005, 0x01ad},
-+	{ ~0UL,      0x0000, 0x0000, 0x0000}
- };
- 
- static int dw_hdmi_imx_parse_dt(struct imx_hdmi *hdmi)
-@@ -163,7 +163,7 @@ static enum drm_mode_status imx6dl_hdmi_mode_valid(struct drm_connector *con,
- static struct dw_hdmi_plat_data imx6q_hdmi_drv_data = {
- 	.mpll_cfg   = imx_mpll_cfg,
- 	.cur_ctr    = imx_cur_ctr,
--	.sym_term   = imx_sym_term,
-+	.phy_config = imx_phy_config,
- 	.dev_type   = IMX6Q_HDMI,
- 	.mode_valid = imx6q_hdmi_mode_valid,
- };
-@@ -171,7 +171,7 @@ static struct dw_hdmi_plat_data imx6q_hdmi_drv_data = {
- static struct dw_hdmi_plat_data imx6dl_hdmi_drv_data = {
- 	.mpll_cfg = imx_mpll_cfg,
- 	.cur_ctr  = imx_cur_ctr,
--	.sym_term = imx_sym_term,
-+	.phy_config = imx_phy_config,
- 	.dev_type = IMX6DL_HDMI,
- 	.mode_valid = imx6dl_hdmi_mode_valid,
- };
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index d236faa..65b0f7b 100644
+index 65b0f7b..80d6fc8 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -133,12 +133,12 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
- 	}
+@@ -135,9 +135,9 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
+ 
+ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
+ 	/*pixelclk   symbol   term   vlev*/
+-	{ 74250000,  0x8009, 0x0004, 0x01ad},
+-	{ 148500000, 0x8029, 0x0004, 0x01ad},
+-	{ 297000000, 0x8039, 0x0005, 0x01ad},
++	{ 74250000,  0x8009, 0x0004, 0x0272},
++	{ 148500000, 0x802b, 0x0004, 0x028d},
++	{ 297000000, 0x8039, 0x0005, 0x028d},
+ 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
  };
  
--static const struct dw_hdmi_sym_term rockchip_sym_term[] = {
--	/*pixelclk   symbol   term*/
--	{ 74250000,  0x8009, 0x0004 },
--	{ 148500000, 0x8029, 0x0004 },
--	{ 297000000, 0x8039, 0x0005 },
--	{ ~0UL,	     0x0000, 0x0000 }
-+static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
-+	/*pixelclk   symbol   term   vlev*/
-+	{ 74250000,  0x8009, 0x0004, 0x01ad},
-+	{ 148500000, 0x8029, 0x0004, 0x01ad},
-+	{ 297000000, 0x8039, 0x0005, 0x01ad},
-+	{ ~0UL,	     0x0000, 0x0000, 0x0000}
- };
- 
- static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
-@@ -230,7 +230,7 @@ static const struct dw_hdmi_plat_data rockchip_hdmi_drv_data = {
- 	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg   = rockchip_mpll_cfg,
- 	.cur_ctr    = rockchip_cur_ctr,
--	.sym_term   = rockchip_sym_term,
-+	.phy_config = rockchip_phy_config,
- 	.dev_type   = RK3288_HDMI,
- };
- 
-diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-index 5a4f490..de13bfc 100644
---- a/include/drm/bridge/dw_hdmi.h
-+++ b/include/drm/bridge/dw_hdmi.h
-@@ -38,17 +38,18 @@ struct dw_hdmi_curr_ctrl {
- 	u16 curr[DW_HDMI_RES_MAX];
- };
- 
--struct dw_hdmi_sym_term {
-+struct dw_hdmi_phy_config {
- 	unsigned long mpixelclock;
- 	u16 sym_ctr;    /*clock symbol and transmitter control*/
- 	u16 term;       /*transmission termination value*/
-+	u16 vlev_ctr;   /* voltage level control */
- };
- 
- struct dw_hdmi_plat_data {
- 	enum dw_hdmi_devtype dev_type;
- 	const struct dw_hdmi_mpll_config *mpll_cfg;
- 	const struct dw_hdmi_curr_ctrl *cur_ctr;
--	const struct dw_hdmi_sym_term *sym_term;
-+	const struct dw_hdmi_phy_config *phy_config;
- 	enum drm_mode_status (*mode_valid)(struct drm_connector *connector,
- 					   struct drm_display_mode *mode);
- };
 -- 
 2.1.2
