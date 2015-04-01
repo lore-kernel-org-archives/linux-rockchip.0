@@ -1,54 +1,58 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v4 3/3] drm: rockchip/dw_hdmi-rockchip: improve for HDMI electrical test
-Date: Tue, 31 Mar 2015 23:57:10 -0400
-Message-ID: <1427860630-13606-1-git-send-email-ykk@rock-chips.com>
-References: <1427860227-12042-1-git-send-email-ykk@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1427860227-12042-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, djkurtz@chromium.org, linux-rockchip@lists.infradead.org
+From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] drm/rockchip: vop: add vop power domain support
+Date: Wed,  1 Apr 2015 13:48:53 +0800
+Message-ID: <1427867333-2246-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-When pixel clock less than 148.5MHz, make sloopboost=2 tklvl=20
-cklvl=13 increase rasing/falling time and increase data & clock
-voltage driver.
+From: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-When pixel clock less than 74.25MHz, make sloopboost=0 tklvl=19
-cklvl=18, increase data and clock voltage driver.
+Reference the power domain incase vop power down when
+in use.
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+Signed-off-by: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
-Changes in v4:
-- combine the modification of electrical parameter for eye-diagram
-  & single-ended test to an separate patch.
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changes in v3:
-- for pixel clock less than 148.5MHz, set txlvl to 20.
-
-Changes in v2:
-- set slopeboost back to 10%-20%, then rasing/falling time would pass.
-- for pixel clock less then 74.25MHz, set txlvl to 19 and cklvl to 18.
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 65b0f7b..80d6fc8 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -135,9 +135,9 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index d041921..7a61c8e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -421,6 +421,12 @@ static void vop_enable(struct drm_crtc *crtc)
+ 	if (vop->is_enabled)
+ 		return;
  
- static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
- 	/*pixelclk   symbol   term   vlev*/
--	{ 74250000,  0x8009, 0x0004, 0x01ad},
--	{ 148500000, 0x8029, 0x0004, 0x01ad},
--	{ 297000000, 0x8039, 0x0005, 0x01ad},
-+	{ 74250000,  0x8009, 0x0004, 0x0272},
-+	{ 148500000, 0x802b, 0x0004, 0x028d},
-+	{ 297000000, 0x8039, 0x0005, 0x028d},
- 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
- };
++	ret = pm_runtime_get_sync(vop->dev);
++	if (ret < 0) {
++		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
++		return;
++	}
++
+ 	ret = clk_enable(vop->hclk);
+ 	if (ret < 0) {
+ 		dev_err(vop->dev, "failed to enable hclk - %d\n", ret);
+@@ -517,6 +523,7 @@ static void vop_disable(struct drm_crtc *crtc)
+ 	clk_disable(vop->dclk);
+ 	clk_disable(vop->aclk);
+ 	clk_disable(vop->hclk);
++	pm_runtime_put(vop->dev);
+ }
  
+ /*
 -- 
-2.1.2
+1.7.9.5
