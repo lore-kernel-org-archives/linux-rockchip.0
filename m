@@ -1,58 +1,74 @@
-From: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] drm/rockchip: vop: add vop power domain support
-Date: Wed,  1 Apr 2015 13:48:53 +0800
-Message-ID: <1427867333-2246-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH RFC v2 06/12] dt-bindings: Add documentation for rockchip lvds
+Date: Wed,  1 Apr 2015 12:09:40 +0200
+Message-ID: <1427882986-19110-7-git-send-email-heiko@sntech.de>
+References: <1427882986-19110-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1427882986-19110-1-git-send-email-heiko@sntech.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: airlied@linux.ie, mark.yao@rock-chips.com, laurent.pinchart@ideasonboard.com
+Cc: devicetree@vger.kernel.org, Mark Yao <yzq@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Reference the power domain incase vop power down when
-in use.
-
-Signed-off-by: Mark Yao <yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index d041921..7a61c8e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -421,6 +421,12 @@ static void vop_enable(struct drm_crtc *crtc)
- 	if (vop->is_enabled)
- 		return;
- 
-+	ret = pm_runtime_get_sync(vop->dev);
-+	if (ret < 0) {
-+		dev_err(vop->dev, "failed to get pm runtime: %d\n", ret);
-+		return;
-+	}
-+
- 	ret = clk_enable(vop->hclk);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to enable hclk - %d\n", ret);
-@@ -517,6 +523,7 @@ static void vop_disable(struct drm_crtc *crtc)
- 	clk_disable(vop->dclk);
- 	clk_disable(vop->aclk);
- 	clk_disable(vop->hclk);
-+	pm_runtime_put(vop->dev);
- }
- 
- /*
--- 
-1.7.9.5
+RnJvbTogTWFyayBZYW8gPHl6cUByb2NrLWNoaXBzLmNvbT4KCkFkZCBiaW5kaW5nIGRvY3VtZW50
+YXRpb24gZm9yIFJvY2tjaGlwIFNvQyBMVkRTIGRyaXZlci4KClNpZ25lZC1vZmYtYnk6IE1hcmsg
+WWFvIDx5enFAcm9jay1jaGlwcy5jb20+ClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxo
+ZWlrb0BzbnRlY2guZGU+Ci0tLQogLi4uL2RldmljZXRyZWUvYmluZGluZ3MvdmlkZW8vcm9ja2No
+aXAtbHZkcy50eHQgICAgfCA3NCArKysrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdl
+ZCwgNzQgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy92aWRlby9yb2NrY2hpcC1sdmRzLnR4dAoKZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92aWRlby9yb2NrY2hpcC1sdmRzLnR4dCBi
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92aWRlby9yb2NrY2hpcC1sdmRzLnR4
+dApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwLi44MDUyOWY0Ci0tLSAvZGV2L251
+bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZpZGVvL3JvY2tjaGlw
+LWx2ZHMudHh0CkBAIC0wLDAgKzEsNzQgQEAKK1JvY2tjaGlwIFJLMzI4OCBMVkRTIGludGVyZmFj
+ZQorPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KKworUmVxdWlyZWQgcHJvcGVydGll
+czoKKy0gY29tcGF0aWJsZTogInJvY2tjaGlwLHJrMzI4OC1sdmRzIjsKKworLSByZWc6IHBoeXNp
+Y2FsIGJhc2UgYWRkcmVzcyBvZiB0aGUgY29udHJvbGxlciBhbmQgbGVuZ3RoCisJb2YgbWVtb3J5
+IG1hcHBlZCByZWdpb24uCistIGNsb2NrczogbXVzdCBpbmNsdWRlIGNsb2NrIHNwZWNpZmllcnMg
+Y29ycmVzcG9uZGluZyB0byBlbnRyaWVzIGluIHRoZQorCWNsb2NrLW5hbWVzIHByb3BlcnR5Lgor
+LSBjbG9jay1uYW1lczogbXVzdCBjb250YWluICJwY2xrX2x2ZHMiCisKKy0gYXZkZDF2MC1zdXBw
+bHk6IHJlZ3VsYXRvciBwaGFuZGxlIGZvciAxLjBWIGFuYWxvZyBwb3dlcgorLSBhdmRkMXY4LXN1
+cHBseTogcmVndWxhdG9yIHBoYW5kbGUgZm9yIDEuOFYgYW5hbG9nIHBvd2VyCistIGF2ZGQzdjMt
+c3VwcGx5OiByZWd1bGF0b3IgcGhhbmRsZSBmb3IgMy4zViBhbmFsb2cgcG93ZXIKKworLSByb2Nr
+Y2hpcCxncmY6IHBoYW5kbGUgdG8gdGhlIGdlbmVyYWwgcmVnaXN0ZXIgZmlsZXMgc3lzY29uCisK
+Ky0gcm9ja2NoaXAsZGF0YS1tYXBwaW5nOiBzaG91bGQgYmUgInZlc2EiIG9yICJqZWlkYSIsCisJ
+VGhpcyBkZXNjcmliZXMgaG93IHRoZSBjb2xvciBiaXRzIGFyZSBsYWlkIG91dCBpbiB0aGUKKwlz
+ZXJpYWxpemVkIExWRFMgc2lnbmFsLgorLSByb2NrY2hpcCxkYXRhLXdpZHRoIDogc2hvdWxkIGJl
+IDwxOD4gb3IgPDI0PjsKKy0gcm9ja2NoaXAsb3V0cHV0OiBzaG91bGQgYmUgInJnYiIsICJsdmRz
+IiBvciAiZHVhbGx2ZHMiLAorCVRoaXMgZGVzY3JpYmVzIHRoZSBvdXRwdXQgZmFjZS4KKworUmVx
+dWlyZWQgbm9kZXM6CisKK1RoZSBsdmRzIGhhcyB0d28gdmlkZW8gcG9ydHMgYXMgZGVzY3JpYmVk
+IGJ5CisJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWludGVy
+ZmFjZXMudHh0LgorVGhlaXIgY29ubmVjdGlvbnMgYXJlIG1vZGVsZWQgdXNpbmcgdGhlIE9GIGdy
+YXBoIGJpbmRpbmdzIHNwZWNpZmllZCBpbgorCURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9ncmFwaC50eHQuCisKKy0gdmlkZW8gcG9ydCAwIGZvciB0aGUgVk9QIGlucHV0cworLSB2
+aWRlbyBwb3J0IDEgZm9yIGVpdGhlciBhIHBhbmVsIG9yIHN1YnNlcXVlbnQgZW5jb2RlcgorCitF
+eGFtcGxlOgorCWx2ZHM6IGx2ZHNAZmY5NmMwMDAgeworCQljb21wYXRpYmxlID0gInJvY2tjaGlw
+LHJrMzI4OC1sdmRzIjsKKwkJcm9ja2NoaXAsZ3JmID0gPCZncmY+OworCQlyZWcgPSA8MHhmZjk2
+YzAwMCAweDQwMDA+OworCQljbG9ja3MgPSA8JmNydSBQQ0xLX0xWRFNfUEhZPjsKKwkJY2xvY2st
+bmFtZXMgPSAicGNsa19sdmRzIjsKKwkJYXZkZDF2MC1zdXBwbHkgPSA8JnZkZDEwX2xjZD47CisJ
+CWF2ZGQxdjgtc3VwcGx5ID0gPCZ2Y2MxOF9sY2Q+OworCQlhdmRkM3YzLXN1cHBseSA9IDwmdmNj
+YV8zMz47CisJCXJvY2tjaGlwLGRhdGEtbWFwcGluZyA9ICJqZWlkYSI7CisJCXJvY2tjaGlwLGRh
+dGEtd2lkdGggPSA8MjQ+OworCQlyb2NrY2hpcCxvdXRwdXQgPSAicmdiIjsKKwkJcG9ydHMgewor
+CQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CisJCQkjc2l6ZS1jZWxscyA9IDwwPjsKKworCQkJbHZk
+c19pbjogcG9ydEAwIHsKKwkJCQlyZWcgPSA8MD47CisKKwkJCQlsdmRzX2luX3ZvcGI6IGVuZHBv
+aW50QDAgeworCQkJCQlyZWcgPSA8MD47CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdm9wYl9v
+dXRfbHZkcz47CisJCQkJfTsKKwkJCQlsdmRzX2luX3ZvcGw6IGVuZHBvaW50QDEgeworCQkJCQly
+ZWcgPSA8MT47CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdm9wbF9vdXRfbHZkcz47CisJCQkJ
+fTsKKwkJCX07CisKKwkJCWx2ZHNfb3V0OiBwb3J0QDEgeworCQkJCXJlZyA9IDwxPjsKKworCQkJ
+CWx2ZHNfb3V0X3BhbmVsOiBlbmRwb2ludCB7CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcGFu
+ZWxfaW4+OworCQkJCX07CisJCQl9OworCQl9OworCX07Ci0tIAoyLjEuNAoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
