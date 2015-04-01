@@ -1,43 +1,51 @@
-From: Yakir <ykk@rock-chips.com>
-Subject: Re: [PATCH v3 0/3] Improve eye-diagram & single-ended test for rk3288
- hdmi
-Date: Wed, 01 Apr 2015 10:38:02 +0800
-Message-ID: <551B5A0A.5000805@rock-chips.com>
-References: <1425894141-360-1-git-send-email-ykk@rock-chips.com> <20150331162548.GT24899@n2100.arm.linux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v4 0/3] Improve eys-diagram & single-ended electric test for rk3288 HDMI
+Date: Tue, 31 Mar 2015 23:50:27 -0400
+Message-ID: <1427860227-12042-1-git-send-email-ykk@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150331162548.GT24899@n2100.arm.linux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>, djkurtz@chromium.org, Fabio Estevam <fabio.estevam@freescale.com>, Shawn Guo <shawn.guo@linaro.org>, Rob Clark <robdclark@gmail.com>, Mark Yao <mark.yao@rock-chips.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, mmind00@googlemail.com, dianders@chromium.org, marcheu@chromium.org, linux-rockchip@lists.infradead.org
+To: Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, djkurtz@chromium.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Russell,
+Dear all,
 
-=E5=9C=A8 2015/4/1 0:25, Russell King - ARM Linux =E5=86=99=E9=81=93:
-> On Mon, Mar 09, 2015 at 05:42:21PM +0800, Yakir Yang wrote:
->> RK3288 hdmi eye-diagram test would fail when pixel clock is 148.5MHz=
-,
->> and single-ended test would failed when display mode is 74.25MHz.
-> Has anyone reviewed these changes yet?  I don't see any replies, nor
-> are they in David's git tree.  To me, they look mostly fine - the onl=
-y
-> issue I get is that the final patch doesn't apply cleanly to dw_hdmi.=
-h
-> since they're generated against a tree which has audio support merged=
-=2E
-> I also see no regressions on iMX6, so I think they can be merged.
->
-> Unless anyone has any objections, I'll add these to my queue for Davi=
-d.
->
-> Thanks.
+RK3288 hdmi eye-diagram test would fail when pixel clock is 148.5MHz,
+and single-ended test would failed when display mode is 74.25MHz.
 
-Wooh, thanks, I will send v4 now to improve the "drm:=20
-dw_hdmi/dw_hdmi-rockchip".
+To fix such problems, we make those patch set:
+- Fix some code style, leave space for next patches.
+- Separate VLEVLCTRL setting into platform driver.
+- Improve the electrical parameter that relate to eye-diagram test &
+  signel-ended test.
+  Turn on the Transmitter Trailer-B and improve slopeboost to 10%-20%
+  decrease. Set CKLVL to 18 and TXLVL to 19 if pixel clock is 74.25MHz.
+  Set CKLVL to 13 and TXLVL to 20 if pixel clock is 148.5MHz.
 
-Best regards,
-Yakir Yang
+
+Changes in v4:
+- separate VLEVCTRL setting into platform driver
+- combine the modification of electrical parameter for eye-diagram
+  & single-ended test to an separate patch.
+
+Changes in v3:
+- make commit message more readable
+- for pixel clock less than 148.5MHz, set txlvl to 20.
+
+Changes in v2:
+- set slopeboost back to 10%-20%, then rasing/falling time would pass.
+- for pixel clock less then 74.25MHz, set txlvl to 19 and cklvl to 18.
+
+Yakir Yang (3):
+  drm: bridge/dw_hdmi: fixed codec style
+  drm: bridge/dw_hdmi: separate VLEVCTRL settting into platform driver
+  drm: rockchip/dw_hdmi-rockchip: improve for HDMI electrical test
+
+ drivers/gpu/drm/bridge/dw_hdmi.c            | 20 ++++++++++----------
+ drivers/gpu/drm/imx/dw_hdmi-imx.c           | 12 ++++++------
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 +++++++-------
+ include/drm/bridge/dw_hdmi.h                |  5 +++--
+ 4 files changed, 26 insertions(+), 25 deletions(-)
+
+-- 
+2.1.2
