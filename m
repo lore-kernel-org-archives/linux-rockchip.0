@@ -1,55 +1,45 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH RFC v2 04/12] drm/components: add generic vga encoder
- driver
-Date: Wed, 01 Apr 2015 12:40:37 +0200
-Message-ID: <10579338.tTk9pSqjzX@diego>
-References: <1427882986-19110-1-git-send-email-heiko@sntech.de>
- <1427882986-19110-5-git-send-email-heiko@sntech.de>
- <20150401102751.GZ24899@n2100.arm.linux.org.uk>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 1/2] ARM: rockchip: soc code changes for 4.1
+Date: Wed, 1 Apr 2015 17:53:20 -0700
+Message-ID: <20150402005320.GJ8137@localhost>
+References: <2684132.lK2CyBin0M@diego>
+ <9711811.dP5TtE1nVp@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150401102751.GZ24899@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <9711811.dP5TtE1nVp@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUnVzc2VsbCwKCkFtIE1pdHR3b2NoLCAxLiBBcHJpbCAyMDE1LCAxMToyNzo1MSBzY2hyaWVi
-IFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eDoKPiBPbiBXZWQsIEFwciAwMSwgMjAxNSBhdCAxMjow
-OTozOFBNICswMjAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiA+IFRoaXMgYWRkcyBhIGRyaXZl
-ciBmb3IgZ2VuZXJpYyB2Z2EgZW5jb2RlcnMgbGlrZSB0aGUgQW5hbG9nIERldmljZXMKPiA+IGFk
-djcxMjMKPiA+IGFuZCBzaW1pbGFyIGljcy4gVGhlc2UgY2hpcHMgZG8gbm90IGhhdmUgYW55IHNw
-ZWNpYWwgY29uZmlndXJhdGlvbiBvcHRpb25zCj4gPiBleGNlcHQgYSBwb3dlcnNhZmUgZ3Bpby4K
-PiA+IAo+ID4gQW4gZXhjZXB0aW9uIGlzIGFkZGVkIGZvciB0aGUgcmNhci1kdSBkcml2ZXIgd2hp
-Y2ggYWxzbyBpbXBsZW1lbnRzIHN1cHBvcnQKPiA+IGZvciB0aGUgYWR2NzEyMyBpbnRlcm5hbGx5
-IGJ1dCBpcyBub3QgeWV0IGNvbnZlcnRlZCB0byB0aGUgY29tcG9uZW50Cj4gPiBmcmFtZXdvcmsu
-Cj4gV2h5IGlzIHRoaXMgaW1wbGVtZW50ZWQgYXMgYSBtYXN0ZXI/ICBJdCdzIG5vdCB0aGUgdG9w
-IGxldmVsIGNhcmQgZGV2aWNlLAo+IGl0IHNob3VsZG4ndCBiZSBhIG1hc3Rlci4gIEl0IHNob3Vs
-ZCBiZSBhIGNvbXBvbmVudC4KPiAKPiBJIHdvbmRlciBpZiB0aGlzIGlzIHdoeSB5b3UgbmVlZCB5
-b3VyIHByZXZpb3VzIHBhdGNoZXMuICBDb21wb25lbnRpc2VkCj4gRFJNIHdvcmtzIGZpbmUgd2l0
-aG91dCBuZWVkaW5nIHRvIGJ1aWxkIGxpc3RzIG9mIGNvbm5lY3RvcnMgYW5kIGVuY29kZXJzLgoK
-SXQgaXMgYSBjb21wb25lbnQgdG8gdGhlIHVwcGVyIGRybSBkcml2ZXIgKHJvY2tjaGlwIG9yIHdo
-YXRldmVyKSBidXQgYSBtYXN0ZXIgCnRvIHRoZSB2Z2EgY29ubmVjdG9yIGJlbG93LCBzaW1wbHkg
-YmVjYXVzZSB0aGUgZHJtIGRyaXZlciBhYm92ZSAodGhlIGx2ZHMgCmNvbnRyb2xsZXIgaW4gdGhp
-cyBjYXNlKSBkb2VzIG5vdCBrbm93IGFuZCBhbHNvIHByb2JhYmx5IHNob3VsZG4ndCBjYXJlIHdo
-YXQgCnRoZSBzdHJ1Y3R1cmUgYmVsb3cgaXMuCgpTbyBpbiB0aGlzIGNhc2UgdGhlIGx2ZHMga25v
-d3MgdGhlcmUgaXMgZWl0aGVyIGEgcGFuZWwgb3IgYW4gZW5jb2RlciAKY29ubmVjdGVkLCBidXQg
-ZG9lcyBub3QgbmVlZCB0byBoYW5kbGUgaWYgdGhpcyBkb3duc3RyZWFtIGNvbXBvbmVudCBpcyBz
-b21lIApvbmUtcGllY2UgaTJjIGNvbXBvbmVudCBsaWtlIGEgdHYgZW5jb2RlciBvciBjb250YWlu
-cyBhbm90aGVyIGNvbXBvbmVudCBkb3duIApiZWxvdywgbGlrZSB0aGUgdmdhLWNvbm5lY3RvciBp
-biB0aGlzIGNhc2UuCgoKT2YgY291cnNlIEkgbWF5IHZlcnkgd2VsbCBoYXZlIG92ZXJsb29rZWQg
-c29tZSBzaW1wbGVyIG1ldGhvZCB0byBhY2hpZXZlIHRoaXMsIApidXQgZ290IGluc3BpcmVkIHRv
-IHRoaXMgYnkgdGhlIHNpbWlsYXIgd2F5IGRvbmUgaW4gc3RpL3N0aV90dm91dC5jCgoKSGVpa28K
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
-bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, Mar 26, 2015 at 06:41:44PM +0100, Heiko Stuebner wrote:
+> Am Mittwoch, 18. M=E4rz 2015, 17:41:15 schrieb Heiko St=FCbner:
+> > Hi Arnd, Olof,
+> > =
+
+> > some soc code changes for 4.1 . I hope the tag explains it, so please p=
+ull
+> =
+
+> as heard in Arnd's talk on ELC yesterday, I'm supposed to ping after one =
+week =
+
+> of inactivity, so any news on these two pulls? :-)
+
+Merged both now. :)
+
+Thanks,
+
+
+-Olof
