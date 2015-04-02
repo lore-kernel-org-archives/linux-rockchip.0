@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/4] clk: add clk_is_orphan() to check if a clocks inherits from an orphan clock
-Date: Thu,  2 Apr 2015 17:34:11 +0200
-Message-ID: <1427988853-9549-3-git-send-email-heiko@sntech.de>
+Subject: [PATCH 3/4] clk: add CLK_DEFER_ORPHAN flag to prevent orphans from being used
+Date: Thu,  2 Apr 2015 17:34:12 +0200
+Message-ID: <1427988853-9549-4-git-send-email-heiko@sntech.de>
 References: <1427988853-9549-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1427988853-9549-1-git-send-email-heiko@sntech.de>
@@ -10,65 +10,47 @@ To: mturquette@linaro.org
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, linux@arm.linux.org.uk, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-There are cases where it is helpful to know if the full clock path can be
-trusted or if there is a parent clock missing somewhere in the parent-path.
-
-We keep it confined to the ccf area for now, if later users outside the ccf
-surface it can be made more publically available.
+The usage of clocks derived from an orphan can produce issues when trying
+to set rates etc. So ideally a clk_get to such a clock should defer till
+the clock hierarchy is complete.
+But as some arches probably rely on such clocks we can't disable them all.
+Therefore add a new clk flag where arches can enable this behaviour for
+their clocks.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/clk.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/clk/clk.c            | 6 ++++++
+ include/linux/clk-provider.h | 1 +
+ 2 files changed, 7 insertions(+)
 
 diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-index 512323f..476f491 100644
+index 476f491..8511c62 100644
 --- a/drivers/clk/clk.c
 +++ b/drivers/clk/clk.c
-@@ -2271,6 +2271,44 @@ bool clk_is_match(const struct clk *p, const struct clk *q)
- EXPORT_SYMBOL_GPL(clk_is_match);
+@@ -3041,6 +3041,12 @@ struct clk *__of_clk_get_from_provider(struct of_phandle_args *clkspec,
+ 		if (provider->node == clkspec->np)
+ 			clk = provider->get(clkspec, provider->data);
+ 		if (!IS_ERR(clk)) {
++			if ((__clk_get_flags(clk) & CLK_DEFER_ORPHAN)
++						&& clk_is_orphan(clk)) {
++				clk = ERR_PTR(-EPROBE_DEFER);
++				break;
++			}
++
+ 			clk = __clk_create_clk(__clk_get_hw(clk), dev_id,
+ 					       con_id);
  
- /**
-+ * __clk_is_orphan - check if a clock or its parent is an orphan
-+ *
-+ * Walks up the clock parents until it reaches a root-clock or
-+ * a clock contained in the orphan list. Returns true if there is
-+ * an orphan in the parent-path otherwise false.
-+ */
-+static bool __clk_is_orphan(struct clk_core *clk)
-+{
-+	struct clk_core *orphan;
-+
-+	if (clk->flags & CLK_IS_ROOT)
-+		return false;
-+
-+	hlist_for_each_entry(orphan, &clk_orphan_list, child_node) {
-+		if (clk == orphan)
-+			return true;
-+	}
-+
-+	if (clk->num_parents)
-+		return __clk_is_orphan(clk->parent);
-+
-+	return false;
-+}
-+
-+static bool clk_is_orphan(struct clk *clk)
-+{
-+	bool ret;
-+
-+	if (!clk)
-+		return false;
-+
-+	clk_prepare_lock();
-+	ret = __clk_is_orphan(clk->core);
-+	clk_prepare_unlock();
-+	return ret;
-+}
-+
-+/**
-  * __clk_init - initialize the data structures in a struct clk
-  * @dev:	device initializing this clk, placeholder for now
-  * @clk:	clk being initialized
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index 28abf1b..ef8d669 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -31,6 +31,7 @@
+ #define CLK_GET_RATE_NOCACHE	BIT(6) /* do not use the cached clk rate */
+ #define CLK_SET_RATE_NO_REPARENT BIT(7) /* don't re-parent on rate change */
+ #define CLK_GET_ACCURACY_NOCACHE BIT(8) /* do not use the cached clk accuracy */
++#define CLK_DEFER_ORPHAN	BIT(9) /* defer clk_get calls for orphans */
+ 
+ struct clk_hw;
+ struct clk_core;
 -- 
 2.1.4
