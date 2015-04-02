@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/4] clk: Propagate prepare and enable when reparenting orphans
-Date: Thu,  2 Apr 2015 17:34:10 +0200
-Message-ID: <1427988853-9549-2-git-send-email-heiko@sntech.de>
+Subject: [PATCH 2/4] clk: add clk_is_orphan() to check if a clocks inherits from an orphan clock
+Date: Thu,  2 Apr 2015 17:34:11 +0200
+Message-ID: <1427988853-9549-3-git-send-email-heiko@sntech.de>
 References: <1427988853-9549-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1427988853-9549-1-git-send-email-heiko@sntech.de>
@@ -10,104 +10,65 @@ To: mturquette@linaro.org
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, linux@arm.linux.org.uk, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Doug Anderson <dianders@chromium.org>
+There are cases where it is helpful to know if the full clock path can be
+trusted or if there is a parent clock missing somewhere in the parent-path.
 
-With the existing code, if you find a parent for an orhpan that has
-already been prepared / enabled, you won't enable the parent.  That
-can cause later problems since the clock tree isn't in a consistent
-state.  Fix by propagating the prepare and enable.
+We keep it confined to the ccf area for now, if later users outside the ccf
+surface it can be made more publically available.
 
-NOTE: this does bring up the question about whether the enable of the
-orphan actually made sense.  If the orphan's parent wasn't enabled by
-default (by the bootloader or the default state of the hardware) then
-the original enable of the orphan probably didn't do what the caller
-though it would.  Some users of the orphan might have preferred an
-EPROBE_DEFER be returned until we had a full path to a root clock.
-This patch doesn't address those concerns and really just syncs up the
-state.
-
-Tested on rk3288-evb-rk808 by temporarily considering "sclk_tsadc" as
-a critical clock (to simulate a driver enabling it at bootup).
-
-Before:
-
-   clock                         enable_cnt  prepare_cnt        rate   accuracy   phase
-----------------------------------------------------------------------------------------
- xin32k                                   0            0       32768          0 0
-    sclk_hdmi_cec                         0            0       32768          0 0
-    sclk_otg_adp                          0            0       32768          0 0
-    sclk_tsadc                            1            1         993          0 0
-
-After:
-
-   clock                         enable_cnt  prepare_cnt        rate   accuracy   phase
-----------------------------------------------------------------------------------------
- xin32k                                   1            1       32768          0 0
-    sclk_hdmi_cec                         0            0       32768          0 0
-    sclk_otg_adp                          0            0       32768          0 0
-    sclk_tsadc                            1            1         993          0 0
-
-Note that xin32k on rk808 is a clock that cannot be disabled in
-hardware (it's an always on clock), so really all we needed to do was
-to sync up the state.
-
-Signed-off-by: Doug Anderson <dianders@chromium.org>
-
-Adapted to recent clk->clk_core changes and move orphan handling to
-a separate function as the main clk_core_reparent function is already
-also used in other contexts.
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/clk.c | 25 +++++++++++++++++++++++--
- 1 file changed, 23 insertions(+), 2 deletions(-)
+ drivers/clk/clk.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
 diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-index f85c8e2..512323f 100644
+index 512323f..476f491 100644
 --- a/drivers/clk/clk.c
 +++ b/drivers/clk/clk.c
-@@ -2011,6 +2011,27 @@ static void clk_core_reparent(struct clk_core *clk,
- 	__clk_recalc_rates(clk, POST_RATE_CHANGE);
- }
+@@ -2271,6 +2271,44 @@ bool clk_is_match(const struct clk *p, const struct clk *q)
+ EXPORT_SYMBOL_GPL(clk_is_match);
  
-+static void clk_core_reparent_orphan(struct clk_core *clk,
-+				     struct clk_core *new_parent)
+ /**
++ * __clk_is_orphan - check if a clock or its parent is an orphan
++ *
++ * Walks up the clock parents until it reaches a root-clock or
++ * a clock contained in the orphan list. Returns true if there is
++ * an orphan in the parent-path otherwise false.
++ */
++static bool __clk_is_orphan(struct clk_core *clk)
 +{
-+	clk_core_reparent(clk, new_parent);
++	struct clk_core *orphan;
 +
-+	if (clk->prepare_count) {
-+		unsigned long flags;
++	if (clk->flags & CLK_IS_ROOT)
++		return false;
 +
-+		if (clk_core_prepare(new_parent)) {
-+			pr_err("%s: could not prepare new parent %s\n",
-+			       __func__, clk->name);
-+			return;
-+		}
-+
-+		flags = clk_enable_lock();
-+		if (clk->enable_count)
-+			clk_core_enable(new_parent);
-+		clk_enable_unlock(flags);
++	hlist_for_each_entry(orphan, &clk_orphan_list, child_node) {
++		if (clk == orphan)
++			return true;
 +	}
++
++	if (clk->num_parents)
++		return __clk_is_orphan(clk->parent);
++
++	return false;
 +}
 +
- void clk_hw_reparent(struct clk_hw *hw, struct clk_hw *new_parent)
- {
- 	if (!hw)
-@@ -2404,13 +2425,13 @@ static int __clk_init(struct device *dev, struct clk *clk_user)
- 		if (orphan->num_parents && orphan->ops->get_parent) {
- 			i = orphan->ops->get_parent(orphan->hw);
- 			if (!strcmp(clk->name, orphan->parent_names[i]))
--				clk_core_reparent(orphan, clk);
-+				clk_core_reparent_orphan(orphan, clk);
- 			continue;
- 		}
- 
- 		for (i = 0; i < orphan->num_parents; i++)
- 			if (!strcmp(clk->name, orphan->parent_names[i])) {
--				clk_core_reparent(orphan, clk);
-+				clk_core_reparent_orphan(orphan, clk);
- 				break;
- 			}
- 	 }
++static bool clk_is_orphan(struct clk *clk)
++{
++	bool ret;
++
++	if (!clk)
++		return false;
++
++	clk_prepare_lock();
++	ret = __clk_is_orphan(clk->core);
++	clk_prepare_unlock();
++	return ret;
++}
++
++/**
+  * __clk_init - initialize the data structures in a struct clk
+  * @dev:	device initializing this clk, placeholder for now
+  * @clk:	clk being initialized
 -- 
 2.1.4
