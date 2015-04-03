@@ -1,45 +1,46 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: fixes
-Date: Fri, 03 Apr 2015 14:49:54 +0800
-Message-ID: <551E3812.9050102@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Caesar <wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: [PATCH 1/3] mmc: dw_mmc: Increase cmd11 timeout to 500ms
+Date: Fri,  3 Apr 2015 11:13:05 -0700
+Message-ID: <1428084787-8710-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, javier.martinez@collabora.co.uk, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZQoKICAgICBUaGVzZSBhcmUgYmFzZWQgb24gZHJtLW5leHQgYnJhbmNoLCBmaXggc29t
-ZSBkcm0vcm9ja2NoaXAgcHJvYmxlbS4KICAgICBQbGVhc2UgcHVsbCB0aGVtLgoKTWFyawoKVGhl
-IGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA1MDJlOTVjNjY3ODUwNTQ3NGYxMDU2NDgw
-MzEwY2Q5MzgyYmFjYmFjOgoKICAgZHJtL3ZnZW06IGltcGxlbWVudCB2aXJ0dWFsIEdFTSAoMjAx
-NS0wNC0wMiAwOToyMTo0OCArMTAwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0
-b3J5IGF0OgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1yb2NrY2hp
-cC5naXQgZHJtLW5leHQwNDAxCgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gNWQ4MmQx
-YTc4NTE1NWZlNGZmNjU2MjhhODhiNjc3Y2ZhY2VhODYzYjoKCiAgIGRybS9yb2NrY2hpcDogdm9w
-OiBhZGQgdm9wIHBvd2VyIGRvbWFpbiBzdXBwb3J0ICgyMDE1LTA0LTAzIDE0OjIzOjM2IAorMDgw
-MCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0KQ2Flc2FyIFdhbmcgKDEpOgogICAgICAgZHJtOiByb2NrY2hpcDogVHVybiBv
-ZmYgVlQgc3dpdGNoaW5nIG9uIHN1c3BlbmQKCkRhbmllbCBLdXJ0eiAoMSk6CiAgICAgICBkcm0v
-cm9ja2NoaXA6IHJlZ2lzdGVyIGFsbCBjb25uZWN0b3JzIGFmdGVyIGJpbmQKCkhlaWtvIFN0dWVi
-bmVyICgxKToKICAgICAgIGRybS9yb2NrY2hpcDogZml4IGNsayBlbmFibGUgZGlzYWJsZSBtaXNt
-YXRjaCBpbiB2b3BfY3J0Y19tb2RlX3NldAoKTWFyayBZYW8gKDEpOgogICAgICAgZHJtL3JvY2tj
-aGlwOiB2b3A6IGFkZCB2b3AgcG93ZXIgZG9tYWluIHN1cHBvcnQKCiAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgIHwgICAxOSArKysrKysrKysrKysrKysrKysr
-CiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jIHwgICAgMyAr
-KysKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCAgIDI1
-IAorKysrKysrKysrKysrKysrKy0tLS0tLS0tCiAgMyBmaWxlcyBjaGFuZ2VkLCAzOSBpbnNlcnRp
-b25zKCspLCA4IGRlbGV0aW9ucygtKS0tIO+8rWFyawoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+The Designware databook claims that cmd11 should be finished in 2ms,
+but my testing showed that not to be the case in some situations.
+I've seen cmd11 timeouts of up to 130ms (!) during reboot tests.
+Let's bump the timeout way up so that we're absolutely sure.  CMD11 is
+only sent during card insertion, so this extra timeout shouldn't be
+terrible.
+
+Fixes: 5c935165da79 ("mmc: dw_mmc: Add a timeout for sending CMD11")
+Signed-off-by: Doug Anderson <dianders@chromium.org>
+---
+ drivers/mmc/host/dw_mmc.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 3883fe6..339a929 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -1023,11 +1023,13 @@ static void __dw_mci_start_request(struct dw_mci *host,
+ 
+ 	if (cmd->opcode == SD_SWITCH_VOLTAGE) {
+ 		/*
+-		 * Databook says to fail after 2ms w/ no response; give an
+-		 * extra jiffy just in case we're about to roll over.
++		 * Databook says to fail after 2ms w/ no response, but evidence
++		 * shows that sometimes the cmd11 interrupt takes over 130ms.
++		 * We'll set to 500ms, plus an extra jiffy just in case jiffies
++		 * is just about to roll over.
+ 		 */
+ 		mod_timer(&host->cmd11_timer,
+-			  jiffies + msecs_to_jiffies(2) + 1);
++			  jiffies + msecs_to_jiffies(500) + 1);
+ 	}
+ 
+ 	if (mrq->stop)
+-- 
+2.2.0.rc0.207.ga3a616c
