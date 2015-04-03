@@ -1,41 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 4/4] clk: rockchip: enable CLK_DEFER_ORPHAN for all branches
-Date: Thu,  2 Apr 2015 17:34:13 +0200
-Message-ID: <1427988853-9549-5-git-send-email-heiko@sntech.de>
-References: <1427988853-9549-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1427988853-9549-1-git-send-email-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@linaro.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, linux@arm.linux.org.uk, Heiko Stuebner <heiko@sntech.de>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: fixes
+Date: Fri, 03 Apr 2015 14:49:54 +0800
+Message-ID: <551E3812.9050102@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Caesar <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-All Rockchip drivers should handle deferentials correctly and on all boards
-we have the situation that some clock sources are generated off-soc by an
-external i2c component (like the xin32k feeding for example the sclk_tsadc
-on rk3288). So some clocks are always orphans until the i2c drivers are
-probed.
-So add the new CLK_DEFER_ORPHAN flag for all our clock branches to generate
-correct deferals for this timespan.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 20e05bb..5bb5fa6 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -220,6 +220,9 @@ void __init rockchip_clk_register_branches(
- 	for (idx = 0; idx < nr_clk; idx++, list++) {
- 		flags = list->flags;
- 
-+		/* defer clk_get on orphan clocks */
-+		flags |= CLK_DEFER_ORPHAN;
-+
- 		/* catch simple muxes */
- 		switch (list->branch_type) {
- 		case branch_mux:
--- 
-2.1.4
+SGkgRGF2ZQoKICAgICBUaGVzZSBhcmUgYmFzZWQgb24gZHJtLW5leHQgYnJhbmNoLCBmaXggc29t
+ZSBkcm0vcm9ja2NoaXAgcHJvYmxlbS4KICAgICBQbGVhc2UgcHVsbCB0aGVtLgoKTWFyawoKVGhl
+IGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA1MDJlOTVjNjY3ODUwNTQ3NGYxMDU2NDgw
+MzEwY2Q5MzgyYmFjYmFjOgoKICAgZHJtL3ZnZW06IGltcGxlbWVudCB2aXJ0dWFsIEdFTSAoMjAx
+NS0wNC0wMiAwOToyMTo0OCArMTAwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0
+b3J5IGF0OgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1yb2NrY2hp
+cC5naXQgZHJtLW5leHQwNDAxCgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gNWQ4MmQx
+YTc4NTE1NWZlNGZmNjU2MjhhODhiNjc3Y2ZhY2VhODYzYjoKCiAgIGRybS9yb2NrY2hpcDogdm9w
+OiBhZGQgdm9wIHBvd2VyIGRvbWFpbiBzdXBwb3J0ICgyMDE1LTA0LTAzIDE0OjIzOjM2IAorMDgw
+MCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0KQ2Flc2FyIFdhbmcgKDEpOgogICAgICAgZHJtOiByb2NrY2hpcDogVHVybiBv
+ZmYgVlQgc3dpdGNoaW5nIG9uIHN1c3BlbmQKCkRhbmllbCBLdXJ0eiAoMSk6CiAgICAgICBkcm0v
+cm9ja2NoaXA6IHJlZ2lzdGVyIGFsbCBjb25uZWN0b3JzIGFmdGVyIGJpbmQKCkhlaWtvIFN0dWVi
+bmVyICgxKToKICAgICAgIGRybS9yb2NrY2hpcDogZml4IGNsayBlbmFibGUgZGlzYWJsZSBtaXNt
+YXRjaCBpbiB2b3BfY3J0Y19tb2RlX3NldAoKTWFyayBZYW8gKDEpOgogICAgICAgZHJtL3JvY2tj
+aGlwOiB2b3A6IGFkZCB2b3AgcG93ZXIgZG9tYWluIHN1cHBvcnQKCiAgZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgIHwgICAxOSArKysrKysrKysrKysrKysrKysr
+CiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5jIHwgICAgMyAr
+KysKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgfCAgIDI1
+IAorKysrKysrKysrKysrKysrKy0tLS0tLS0tCiAgMyBmaWxlcyBjaGFuZ2VkLCAzOSBpbnNlcnRp
+b25zKCspLCA4IGRlbGV0aW9ucygtKS0tIO+8rWFyawoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
