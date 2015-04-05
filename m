@@ -1,42 +1,73 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: [PATCH 2/3] mmc: dw_mmc: Add a return in an unexpected cmd11 timeout
-Date: Fri,  3 Apr 2015 11:13:06 -0700
-Message-ID: <1428084787-8710-2-git-send-email-dianders@chromium.org>
-References: <1428084787-8710-1-git-send-email-dianders@chromium.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [PATCH] rtc: hym8563: fix swapped enable/disable of clockout control bit
+Date: Sun, 05 Apr 2015 02:20:24 +0200
+Message-ID: <6712839.2ZD6yJNGY8@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1428084787-8710-1-git-send-email-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, javier.martinez@collabora.co.uk, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+To: akpm@linux-foundation.org, Alessandro Zummo <a.zummo@towertech.it>
+Cc: rtc-linux@googlegroups.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-If we get an unexpected cmd11 timeout we shouldn't actually treat it
-as a timeout (not that we really expect to get an unexpected cmd11
-timeout, but still).
+The hym8563 datasheet describes the clock output control-bit as "when set
+to logic 0, the square wave output is enable, when set to logic 1, the
+CLKOUT output is inhibited". But in reality the setting is exactly
+opposite.
 
-Fixes: 5c935165da79 ("mmc: dw_mmc: Add a timeout for sending CMD11")
-Reported-by: Jaehoon Chung <jh80.chung@samsung.com>
-Signed-off-by: Doug Anderson <dianders@chromium.org>
+Before now, the clock output was not really used, but on the rk3288 soc
+this generated clock is used to supply the temperature sensor block and
+the swapped bit value prevented it from working. With the corrected value,
+the tsadc now reports correct values.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/mmc/host/dw_mmc.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/rtc/rtc-hym8563.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 339a929..357ef04 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -2589,8 +2589,10 @@ static void dw_mci_cmd11_timer(unsigned long arg)
- {
- 	struct dw_mci *host = (struct dw_mci *)arg;
+diff --git a/drivers/rtc/rtc-hym8563.c b/drivers/rtc/rtc-hym8563.c
+index d4a6561..0f710e9 100644
+--- a/drivers/rtc/rtc-hym8563.c
++++ b/drivers/rtc/rtc-hym8563.c
+@@ -66,7 +66,7 @@
+ #define HYM8563_ALM_BIT_DISABLE	BIT(7)
  
--	if (host->state != STATE_SENDING_CMD11)
--		dev_info(host->dev, "Unexpected CMD11 timeout\n");
-+	if (host->state != STATE_SENDING_CMD11) {
-+		dev_warn(host->dev, "Unexpected CMD11 timeout\n");
-+		return;
-+	}
+ #define HYM8563_CLKOUT		0x0d
+-#define HYM8563_CLKOUT_DISABLE	BIT(7)
++#define HYM8563_CLKOUT_ENABLE	BIT(7)
+ #define HYM8563_CLKOUT_32768	0
+ #define HYM8563_CLKOUT_1024	1
+ #define HYM8563_CLKOUT_32	2
+@@ -360,9 +360,9 @@ static int hym8563_clkout_control(struct clk_hw *hw, bool enable)
+ 		return ret;
  
- 	host->cmd_status = SDMMC_INT_RTO;
- 	set_bit(EVENT_CMD_COMPLETE, &host->pending_events);
+ 	if (enable)
+-		ret &= ~HYM8563_CLKOUT_DISABLE;
++		ret |= HYM8563_CLKOUT_ENABLE;
+ 	else
+-		ret |= HYM8563_CLKOUT_DISABLE;
++		ret &= ~HYM8563_CLKOUT_ENABLE;
+ 
+ 	return i2c_smbus_write_byte_data(client, HYM8563_CLKOUT, ret);
+ }
+@@ -386,7 +386,7 @@ static int hym8563_clkout_is_prepared(struct clk_hw *hw)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	return !(ret & HYM8563_CLKOUT_DISABLE);
++	return !!(ret & HYM8563_CLKOUT_ENABLE);
+ }
+ 
+ static const struct clk_ops hym8563_clkout_ops = {
+@@ -407,7 +407,7 @@ static struct clk *hym8563_clkout_register_clk(struct hym8563 *hym8563)
+ 	int ret;
+ 
+ 	ret = i2c_smbus_write_byte_data(client, HYM8563_CLKOUT,
+-						HYM8563_CLKOUT_DISABLE);
++						0);
+ 	if (ret < 0)
+ 		return ERR_PTR(ret);
+ 
 -- 
-2.2.0.rc0.207.ga3a616c
+2.1.4
