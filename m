@@ -1,43 +1,62 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [rtc-linux] [PATCH] rtc: hym8563: fix swapped enable/disable of
- clockout control bit
-Date: Sun, 5 Apr 2015 11:06:03 +0200
-Message-ID: <20150405090603.GR20669@piout.net>
-References: <6712839.2ZD6yJNGY8@diego>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH 1/3] mmc: dw_mmc: Increase cmd11 timeout to 500ms
+Date: Mon, 06 Apr 2015 19:46:41 +0900
+Message-ID: <55226411.2060806@samsung.com>
+References: <1428084787-8710-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6712839.2ZD6yJNGY8@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: rtc-linux@googlegroups.com
-Cc: akpm@linux-foundation.org, Alessandro Zummo <a.zummo@towertech.it>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1428084787-8710-1-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, javier.martinez@collabora.co.uk, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/04/2015 at 02:20:24 +0200, Heiko St=FCbner wrote :
-> The hym8563 datasheet describes the clock output control-bit as "when=
- set
-> to logic 0, the square wave output is enable, when set to logic 1, th=
-e
-> CLKOUT output is inhibited". But in reality the setting is exactly
-> opposite.
->=20
-> Before now, the clock output was not really used, but on the rk3288 s=
-oc
-> this generated clock is used to supply the temperature sensor block a=
-nd
-> the swapped bit value prevented it from working. With the corrected v=
-alue,
-> the tsadc now reports correct values.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Hi, Doug.
 
-Should that patch be applied on any stable version too?
+On 04/04/2015 03:13 AM, Doug Anderson wrote:
+> The Designware databook claims that cmd11 should be finished in 2ms,
+> but my testing showed that not to be the case in some situations.
+> I've seen cmd11 timeouts of up to 130ms (!) during reboot tests.
+> Let's bump the timeout way up so that we're absolutely sure.  CMD11 is
+> only sent during card insertion, so this extra timeout shouldn't be
+> terrible.
 
+Is it h/w problem? Could you explain to me about "some situations"?
+As you said, this timeout only used during card inserting. So, it's not critical..
+But there is much different between 2ms and 500ms(or 130ms).
 
---=20
-Alexandre Belloni, Free Electrons
-Embedded Linux, Kernel and Android engineering
-http://free-electrons.com
+Best Regards,
+Jaehoon Chung
+
+> 
+> Fixes: 5c935165da79 ("mmc: dw_mmc: Add a timeout for sending CMD11")
+> Signed-off-by: Doug Anderson <dianders@chromium.org>
+> ---
+>  drivers/mmc/host/dw_mmc.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 3883fe6..339a929 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -1023,11 +1023,13 @@ static void __dw_mci_start_request(struct dw_mci *host,
+>  
+>  	if (cmd->opcode == SD_SWITCH_VOLTAGE) {
+>  		/*
+> -		 * Databook says to fail after 2ms w/ no response; give an
+> -		 * extra jiffy just in case we're about to roll over.
+> +		 * Databook says to fail after 2ms w/ no response, but evidence
+> +		 * shows that sometimes the cmd11 interrupt takes over 130ms.
+> +		 * We'll set to 500ms, plus an extra jiffy just in case jiffies
+> +		 * is just about to roll over.
+>  		 */
+>  		mod_timer(&host->cmd11_timer,
+> -			  jiffies + msecs_to_jiffies(2) + 1);
+> +			  jiffies + msecs_to_jiffies(500) + 1);
+>  	}
+>  
+>  	if (mrq->stop)
+> 
+
