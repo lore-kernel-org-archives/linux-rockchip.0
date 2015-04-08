@@ -1,70 +1,75 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3] ASoC: max98090: add shutdown callback for max98090
-Date: Wed,  8 Apr 2015 19:05:56 +0800
-Message-ID: <1428491156-31803-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sonny Rao <sonnyrao@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, zhengxing <zhengxing@rock-chips.com>, "jay.xu" <xjq@rock-chips.com>
-Cc: devicetree@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.de>, Dylan Reid <dgreid@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Lars-Peter Clausen <lars@metafoo.de>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, Tushar Behera <tushar.b@samsung.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Wed, 8 Apr 2015 12:28:40 +0100
+Message-ID: <20150408112840.GX6023@sirena.org.uk>
+References: <CAD=FV=WpDE_iEFWFw094WBfBH2TgRi+1OGk3E3qQ3t1EfyrnJA@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8997000097424592150=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=WpDE_iEFWFw094WBfBH2TgRi+1OGk3E3qQ3t1EfyrnJA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Andrew Gabbasov <andrew_gabbasov-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Seungwon Jeon <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tim Kryger <tim.kryger-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Johan Rudholm <johan.rudholm-VrBV9hrLPhE@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier.martinez-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-To fix pop noise when shutdown,the pop noise during shutdown
-is the pmic cutoff power of codec without any notice.
 
-Signed-off-by: jay.xu <xjq@rock-chips.com>
-Signed-off-by: zhengxing <zhengxing@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+--===============8997000097424592150==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="v+kNzNoSvoIRJXcF"
+Content-Disposition: inline
 
----
 
-Changes in v3:
-- modify the shutdown function before remove(..)
-- fix the `Serien-cc`
+--v+kNzNoSvoIRJXcF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Changes in v2:
-- remove the dev_info(..)
-- fix the comment style
-- add the max98090_i2c_shutdown() in remove() fuction
+On Tue, Apr 07, 2015 at 01:05:43PM -0700, Doug Anderson wrote:
 
- sound/soc/codecs/max98090.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+> Mark: I know you said you were considering writing a better
+> regulator_set_voltage_tol() yourself, but I don't know if you've
+> already started work on it.
 
-diff --git a/sound/soc/codecs/max98090.c b/sound/soc/codecs/max98090.c
-index b112b1c..3e33ef2 100644
---- a/sound/soc/codecs/max98090.c
-+++ b/sound/soc/codecs/max98090.c
-@@ -2605,8 +2605,24 @@ err_enable:
- 	return ret;
- }
- 
-+static void max98090_i2c_shutdown(struct i2c_client *i2c)
-+{
-+	struct max98090_priv *max98090 = dev_get_drvdata(&i2c->dev);
-+
-+	/*
-+	 * Enable volume smoothing, disable zero cross.  This will cause
-+	 * a quick 40ms ramp to mute on shutdown.
-+	 */
-+	regmap_write(max98090->regmap,
-+		M98090_REG_LEVEL_CONTROL, M98090_VSENN_MASK);
-+	regmap_write(max98090->regmap,
-+		M98090_REG_DEVICE_SHUTDOWN, 0x00);
-+	msleep(40);
-+}
-+
- static int max98090_i2c_remove(struct i2c_client *client)
- {
-+	max98090_i2c_shutdown(client);
- 	snd_soc_unregister_codec(&client->dev);
- 	return 0;
- }
-@@ -2696,6 +2712,7 @@ static struct i2c_driver max98090_i2c_driver = {
- 		.acpi_match_table = ACPI_PTR(max98090_acpi_match),
- 	},
- 	.probe  = max98090_i2c_probe,
-+	.shutdown = max98090_i2c_shutdown,
- 	.remove = max98090_i2c_remove,
- 	.id_table = max98090_i2c_id,
- };
--- 
-1.9.1
+> I'm expecting to maybe have time to take a crack at it in a few weeks
+> if you haven't already done it by then.
+
+If there's nothing on the list I won't have done anything.
+
+--v+kNzNoSvoIRJXcF
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVJRDoAAoJECTWi3JdVIfQLPQH/31xOx8GxYq8P3sKbONs/f5j
+F5+MV/ZBZqNk+Vs+speTjK6AWhSvyTvVGrIt5LNHcL+HfYENLa2AGBoZ6cu2ZuKR
+ERqJEZnezpN6GLHnG/X57l0PxsF1GWdW7a3VcgwNB2qAHADvMMln6LzhO2JjhWZo
+76ZpSbNyWFygk2fI4t//2I9WRfE86gvfnkHRQCcMwhS5aHy0ivak3akM8KGSxEnz
+9H8SKEMJnCTsKl7NMDuOZ0BSaYRHmupYw5zRVgAgtegPhrUe/2qS1vEudRWX6mc8
+QcF4Vn5CCUwLOX2roWEtPH356uCLv3BfDEENP6gqlVkBFEON+Tg/ZTU8RIi9XvA=
+=rXSr
+-----END PGP SIGNATURE-----
+
+--v+kNzNoSvoIRJXcF--
+
+
+--===============8997000097424592150==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8997000097424592150==--
