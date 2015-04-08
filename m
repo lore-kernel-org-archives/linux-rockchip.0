@@ -1,75 +1,56 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/4] mmc: core: Add mmc_regulator_set_vqmmc()
-Date: Wed, 8 Apr 2015 12:28:40 +0100
-Message-ID: <20150408112840.GX6023@sirena.org.uk>
-References: <CAD=FV=WpDE_iEFWFw094WBfBH2TgRi+1OGk3E3qQ3t1EfyrnJA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8997000097424592150=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=WpDE_iEFWFw094WBfBH2TgRi+1OGk3E3qQ3t1EfyrnJA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Andrew Gabbasov <andrew_gabbasov-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Seungwon Jeon <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tim Kryger <tim.kryger-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alim Akhtar <alim.akhtar-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Johan Rudholm <johan.rudholm-VrBV9hrLPhE@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier.martinez-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH 0/8] clk: Minor cleanups
+Date: Wed, 08 Apr 2015 15:22:11 +0200
+Message-ID: <1428499339-29569-1-git-send-email-k.kozlowski@samsung.com>
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Ralf Baechle <ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Max Filippov <jcmvbkbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter De Schrijver <pdeschrijver-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============8997000097424592150==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="v+kNzNoSvoIRJXcF"
-Content-Disposition: inline
+Hi,
 
 
---v+kNzNoSvoIRJXcF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Small cleanups for different clock drivers.
 
-On Tue, Apr 07, 2015 at 01:05:43PM -0700, Doug Anderson wrote:
+The first two patches are independent.
 
-> Mark: I know you said you were considering writing a better
-> regulator_set_voltage_tol() yourself, but I don't know if you've
-> already started work on it.
-
-> I'm expecting to maybe have time to take a crack at it in a few weeks
-> if you haven't already done it by then.
-
-If there's nothing on the list I won't have done anything.
-
---v+kNzNoSvoIRJXcF
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVJRDoAAoJECTWi3JdVIfQLPQH/31xOx8GxYq8P3sKbONs/f5j
-F5+MV/ZBZqNk+Vs+speTjK6AWhSvyTvVGrIt5LNHcL+HfYENLa2AGBoZ6cu2ZuKR
-ERqJEZnezpN6GLHnG/X57l0PxsF1GWdW7a3VcgwNB2qAHADvMMln6LzhO2JjhWZo
-76ZpSbNyWFygk2fI4t//2I9WRfE86gvfnkHRQCcMwhS5aHy0ivak3akM8KGSxEnz
-9H8SKEMJnCTsKl7NMDuOZ0BSaYRHmupYw5zRVgAgtegPhrUe/2qS1vEudRWX6mc8
-QcF4Vn5CCUwLOX2roWEtPH356uCLv3BfDEENP6gqlVkBFEON+Tg/ZTU8RIi9XvA=
-=rXSr
------END PGP SIGNATURE-----
-
---v+kNzNoSvoIRJXcF--
+Rest of the patches (these related to constifying parent names)
+depend on the third patch: "clk: Constify pointers to parent
+names in init data".
 
 
---===============8997000097424592150==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Tested on Arndale Octa (Exynos5420) and Trats2 (Exynos4412). Other
+drivers (and MIPS related) only compile tested plus some static
+checkers.
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Best regards,
+Krzysztof
 
---===============8997000097424592150==--
+
+Krzysztof Kozlowski (8):
+  clk: rockchip: Staticize file-scope declarations
+  clk: exynos: Staticize file-scope declarations
+  clk: Constify pointers to parent names in init data
+  clk: tegra: Fix duplicate const for parent names
+  clk: cdce706: Constify parent names in clock init data
+  clk: sirf: Constify parent names in clock init data
+  clk: ls1x: Fix duplicate const for parent names
+  MIPS: Alchemy: Remove unneeded cast removing const
+
+ arch/mips/alchemy/common/clock.c     |  6 +--
+ drivers/clk/clk-cdce706.c            |  4 +-
+ drivers/clk/clk-composite.c          |  2 +-
+ drivers/clk/clk-ls1x.c               |  6 +--
+ drivers/clk/clk-mux.c                |  8 ++--
+ drivers/clk/rockchip/clk-rk3188.c    |  2 +-
+ drivers/clk/rockchip/clk-rk3288.c    |  2 +-
+ drivers/clk/samsung/clk-exynos5260.c | 74 ++++++++++++++++++------------------
+ drivers/clk/samsung/clk-exynos5420.c | 10 ++---
+ drivers/clk/sirf/clk-common.c        | 12 +++---
+ drivers/clk/tegra/clk-emc.c          |  2 +-
+ include/linux/clk-provider.h         | 12 +++---
+ 12 files changed, 70 insertions(+), 70 deletions(-)
+
+-- 
+1.9.1
