@@ -1,62 +1,54 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] ASoC: max98090: add shutdown callback for max98090
-Date: Wed, 08 Apr 2015 11:25:21 +0200
-Message-ID: <15530630.jvXTF4Jl8n@diego>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 0/1] ASoC: max98090: add shutdown callback for max98090
+Date: Wed, 8 Apr 2015 10:48:23 +0100
+Message-ID: <20150408094823.GR6023@sirena.org.uk>
 References: <1428483128-23498-1-git-send-email-wxt@rock-chips.com>
- <1428483128-23498-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1428483128-23498-2-git-send-email-wxt@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="+rUxOyiVj+UVbdi4"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1428483128-23498-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, "jay.xu" <xjq@rock-chips.com>, zhengxing <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Tushar Behera <tushar.b@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, Dylan Reid <dgreid@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: Sonny Rao <sonnyrao@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Heiko Stuebner <heiko@sntech.de>, zhengxing <zhengxing@rock-chips.com>, "jay.xu" <xjq@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, Dylan Reid <dgreid@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Lars-Peter Clausen <lars@metafoo.de>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, Tushar Behera <tushar.b@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2Flc2FyLAoKQW0gTWl0dHdvY2gsIDguIEFwcmlsIDIwMTUsIDE2OjUyOjA4IHNjaHJpZWIg
-Q2Flc2FyIFdhbmc6Cj4gVG8gZml4IHBvcCBub2lzZSB3aGVuIHNodXRkb3duLHRoZSBwb3Agbm9p
-c2UgZHVyaW5nIHNodXRkb3duCj4gaXMgdGhlIHBtaWMgY3V0b2ZmIHBvd2VyIG9mIGNvZGVjIHdp
-dGhvdXQgYW55IG5vdGljZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBqYXkueHUgPHhqcUByb2NrLWNo
-aXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiB6aGVuZ3hpbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBz
-LmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+
-IAo+IFNlcmllbi1jYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwo+IFNlcmllbi1jYzog
-ZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKPiBTZXJpZW4tY2M6IGRpYW5kZXJzQGNocm9taXVt
-Lm9yZwo+IAo+IC0tLQo+IAo+ICBzb3VuZC9zb2MvY29kZWNzL21heDk4MDkwLmMgfCAxNyArKysr
-KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKQo+IAo+IGRp
-ZmYgLS1naXQgYS9zb3VuZC9zb2MvY29kZWNzL21heDk4MDkwLmMgYi9zb3VuZC9zb2MvY29kZWNz
-L21heDk4MDkwLmMKPiBpbmRleCBiMTEyYjFjLi4wNjY5NTRhMCAxMDA2NDQKPiAtLS0gYS9zb3Vu
-ZC9zb2MvY29kZWNzL21heDk4MDkwLmMKPiArKysgYi9zb3VuZC9zb2MvY29kZWNzL21heDk4MDkw
-LmMKPiBAQCAtMjYxMSw2ICsyNjExLDIyIEBAIHN0YXRpYyBpbnQgbWF4OTgwOTBfaTJjX3JlbW92
-ZShzdHJ1Y3QgaTJjX2NsaWVudAo+ICpjbGllbnQpIHJldHVybiAwOwo+ICB9Cj4gCj4gK3N0YXRp
-YyB2b2lkIG1heDk4MDkwX2kyY19zaHV0ZG93bihzdHJ1Y3QgaTJjX2NsaWVudCAqaTJjKQo+ICt7
-Cj4gKwlzdHJ1Y3QgbWF4OTgwOTBfcHJpdiAqbWF4OTgwOTAgPSBkZXZfZ2V0X2RydmRhdGEoJmky
-Yy0+ZGV2KTsKPiArCj4gKwlkZXZfaW5mbygmaTJjLT5kZXYsICJzaHV0IGRvd24gZGV2aWNlXG4i
-KTsKCmlzIHRoaXMgZGV2X2luZm8gcmVhbGx5IG5lY2Vzc2FyeT8gZGV2X2RiZyBtaWdodCBiZSBi
-ZXR0ZXIsIG9yIGxlYXZlIGl0IG91dCAKY29tcGxldGVseSwgYXMgaXQgZG9lc24ndCByZWFsbHkg
-cHJvdmlkZSBhbnkgYWRkaXRpb25hbCBiZW5lZml0LgoKCj4gKwo+ICsJLyogRW5hYmxlIHZvbHVt
-ZSBzbW9vdGhpbmcsIGRpc2FibGUgemVybyBjcm9zcy4gIFRoaXMgd2lsbCBjYXVzZQo+ICsJICog
-YSBxdWljayA0MG1zIHJhbXAgdG8gbXV0ZSBvbiBzaHV0ZG93bi4KPiArCSAqLwoKQ29tbWVudCBz
-dHlsZSBpcyBvZmYgLi4uIHNob3VsZCBiZQoKLyoKICogRW5hYmxlIHZvbHVtZSBzbW9vdGhpbmcs
-IGRpc2FibGUgemVybyBjcm9zcy4gIFRoaXMgd2lsbCBjYXVzZQogKiBhIHF1aWNrIDQwbXMgcmFt
-cCB0byBtdXRlIG9uIHNodXRkb3duLgogKi8KCgo+ICsJcmVnbWFwX3dyaXRlKG1heDk4MDkwLT5y
-ZWdtYXAsCj4gKwkJTTk4MDkwX1JFR19MRVZFTF9DT05UUk9MLCBNOTgwOTBfVlNFTk5fTUFTSyk7
-Cj4gKwlyZWdtYXBfd3JpdGUobWF4OTgwOTAtPnJlZ21hcCwKPiArCQlNOTgwOTBfUkVHX0RFVklD
-RV9TSFVURE9XTiwgMHgwMCk7Cj4gKwltc2xlZXAoNDApOwo+ICt9Cj4gKwo+ICAjaWZkZWYgQ09O
-RklHX1BNCj4gIHN0YXRpYyBpbnQgbWF4OTgwOTBfcnVudGltZV9yZXN1bWUoc3RydWN0IGRldmlj
-ZSAqZGV2KQo+ICB7Cj4gQEAgLTI2OTcsNiArMjcxMyw3IEBAIHN0YXRpYyBzdHJ1Y3QgaTJjX2Ry
-aXZlciBtYXg5ODA5MF9pMmNfZHJpdmVyID0gewo+ICAJfSwKPiAgCS5wcm9iZSAgPSBtYXg5ODA5
-MF9pMmNfcHJvYmUsCj4gIAkucmVtb3ZlID0gbWF4OTgwOTBfaTJjX3JlbW92ZSwKPiArCS5zaHV0
-ZG93biA9IG1heDk4MDkwX2kyY19zaHV0ZG93biwKPiAgCS5pZF90YWJsZSA9IG1heDk4MDkwX2ky
-Y19pZCwKPiAgfTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
-ZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
-Cg==
+
+--+rUxOyiVj+UVbdi4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Apr 08, 2015 at 04:52:07PM +0800, Caesar Wang wrote:
+>=20
+> Tested on veyron devices,play music then shutdown device,here carefully
+> to speaker or headphone.
+>=20
+>=20
+>=20
+> Caesar Wang (1):
+>   ASoC: max98090: add shutdown callback for max98090
+
+Don't send cover letters for single patches, if there's anything that
+needs saying it should either be in the changelog or after the --- in
+the mail.  If there's any content in the cover letter that's usually a
+sign that the changelog on the actual patch needs improving.
+
+--+rUxOyiVj+UVbdi4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVJPlnAAoJECTWi3JdVIfQVt8H/3S/rg7m4PNCvcH9X/0JlHwT
+qEMkrU9OcBuA1QqmqU6ScXoD1s6MOkD3KoCYFb8bgtg6lK9dPGy7oRgo+qBvdxqm
+v080kOS5m0Ii9pRFkVjXlpUKiHO4M8+OLwbqY4WzN/9jYK5j4ZRC6qMwDB5NjK0c
+coIr8W9VcayZucgFtJuhxfzOEgJQWaN0KRb49KsZIEkscPQEbVdve9pfCO0pGK8x
+qQI9S2zrNbjozunQ4YxufjK9V/zkE1TOM48bUY6Kvec7cRUX402nEDflMnfCiiu6
+Qwo4cIYhtRBjO4NynESx+iQ2mViPeDZeLFJ5N597ZshkZT+Cw7Obkv2ob83EpRs=
+=szdp
+-----END PGP SIGNATURE-----
+
+--+rUxOyiVj+UVbdi4--
