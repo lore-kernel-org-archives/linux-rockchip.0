@@ -1,76 +1,62 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] ASoC: max98090: add shutdown callback for max98090
-Date: Wed,  8 Apr 2015 16:52:08 +0800
-Message-ID: <1428483128-23498-2-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] ASoC: max98090: add shutdown callback for max98090
+Date: Wed, 08 Apr 2015 11:25:21 +0200
+Message-ID: <15530630.jvXTF4Jl8n@diego>
 References: <1428483128-23498-1-git-send-email-wxt@rock-chips.com>
+ <1428483128-23498-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1428483128-23498-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Cheng-Yi Chiang <cychiang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "jay.xu" <xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Takashi Iwai <tiwai-l3A5Bk7waGM@public.gmane.org>, Tushar Behera <tushar.b-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jarkko Nikula <jarkko.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Dylan Reid <dgreid-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1428483128-23498-2-git-send-email-wxt@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, "jay.xu" <xjq@rock-chips.com>, zhengxing <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Tushar Behera <tushar.b@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, Dylan Reid <dgreid@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-To fix pop noise when shutdown,the pop noise during shutdown
-is the pmic cutoff power of codec without any notice.
-
-Signed-off-by: jay.xu <xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Serien-cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Serien-cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Serien-cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-
----
-
- sound/soc/codecs/max98090.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
-
-diff --git a/sound/soc/codecs/max98090.c b/sound/soc/codecs/max98090.c
-index b112b1c..066954a0 100644
---- a/sound/soc/codecs/max98090.c
-+++ b/sound/soc/codecs/max98090.c
-@@ -2611,6 +2611,22 @@ static int max98090_i2c_remove(struct i2c_client *client)
- 	return 0;
- }
- 
-+static void max98090_i2c_shutdown(struct i2c_client *i2c)
-+{
-+	struct max98090_priv *max98090 = dev_get_drvdata(&i2c->dev);
-+
-+	dev_info(&i2c->dev, "shut down device\n");
-+
-+	/* Enable volume smoothing, disable zero cross.  This will cause
-+	 * a quick 40ms ramp to mute on shutdown.
-+	 */
-+	regmap_write(max98090->regmap,
-+		M98090_REG_LEVEL_CONTROL, M98090_VSENN_MASK);
-+	regmap_write(max98090->regmap,
-+		M98090_REG_DEVICE_SHUTDOWN, 0x00);
-+	msleep(40);
-+}
-+
- #ifdef CONFIG_PM
- static int max98090_runtime_resume(struct device *dev)
- {
-@@ -2697,6 +2713,7 @@ static struct i2c_driver max98090_i2c_driver = {
- 	},
- 	.probe  = max98090_i2c_probe,
- 	.remove = max98090_i2c_remove,
-+	.shutdown = max98090_i2c_shutdown,
- 	.id_table = max98090_i2c_id,
- };
- 
--- 
-1.9.1
+SGkgQ2Flc2FyLAoKQW0gTWl0dHdvY2gsIDguIEFwcmlsIDIwMTUsIDE2OjUyOjA4IHNjaHJpZWIg
+Q2Flc2FyIFdhbmc6Cj4gVG8gZml4IHBvcCBub2lzZSB3aGVuIHNodXRkb3duLHRoZSBwb3Agbm9p
+c2UgZHVyaW5nIHNodXRkb3duCj4gaXMgdGhlIHBtaWMgY3V0b2ZmIHBvd2VyIG9mIGNvZGVjIHdp
+dGhvdXQgYW55IG5vdGljZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBqYXkueHUgPHhqcUByb2NrLWNo
+aXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiB6aGVuZ3hpbmcgPHpoZW5neGluZ0Byb2NrLWNoaXBz
+LmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+
+IAo+IFNlcmllbi1jYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwo+IFNlcmllbi1jYzog
+ZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKPiBTZXJpZW4tY2M6IGRpYW5kZXJzQGNocm9taXVt
+Lm9yZwo+IAo+IC0tLQo+IAo+ICBzb3VuZC9zb2MvY29kZWNzL21heDk4MDkwLmMgfCAxNyArKysr
+KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKQo+IAo+IGRp
+ZmYgLS1naXQgYS9zb3VuZC9zb2MvY29kZWNzL21heDk4MDkwLmMgYi9zb3VuZC9zb2MvY29kZWNz
+L21heDk4MDkwLmMKPiBpbmRleCBiMTEyYjFjLi4wNjY5NTRhMCAxMDA2NDQKPiAtLS0gYS9zb3Vu
+ZC9zb2MvY29kZWNzL21heDk4MDkwLmMKPiArKysgYi9zb3VuZC9zb2MvY29kZWNzL21heDk4MDkw
+LmMKPiBAQCAtMjYxMSw2ICsyNjExLDIyIEBAIHN0YXRpYyBpbnQgbWF4OTgwOTBfaTJjX3JlbW92
+ZShzdHJ1Y3QgaTJjX2NsaWVudAo+ICpjbGllbnQpIHJldHVybiAwOwo+ICB9Cj4gCj4gK3N0YXRp
+YyB2b2lkIG1heDk4MDkwX2kyY19zaHV0ZG93bihzdHJ1Y3QgaTJjX2NsaWVudCAqaTJjKQo+ICt7
+Cj4gKwlzdHJ1Y3QgbWF4OTgwOTBfcHJpdiAqbWF4OTgwOTAgPSBkZXZfZ2V0X2RydmRhdGEoJmky
+Yy0+ZGV2KTsKPiArCj4gKwlkZXZfaW5mbygmaTJjLT5kZXYsICJzaHV0IGRvd24gZGV2aWNlXG4i
+KTsKCmlzIHRoaXMgZGV2X2luZm8gcmVhbGx5IG5lY2Vzc2FyeT8gZGV2X2RiZyBtaWdodCBiZSBi
+ZXR0ZXIsIG9yIGxlYXZlIGl0IG91dCAKY29tcGxldGVseSwgYXMgaXQgZG9lc24ndCByZWFsbHkg
+cHJvdmlkZSBhbnkgYWRkaXRpb25hbCBiZW5lZml0LgoKCj4gKwo+ICsJLyogRW5hYmxlIHZvbHVt
+ZSBzbW9vdGhpbmcsIGRpc2FibGUgemVybyBjcm9zcy4gIFRoaXMgd2lsbCBjYXVzZQo+ICsJICog
+YSBxdWljayA0MG1zIHJhbXAgdG8gbXV0ZSBvbiBzaHV0ZG93bi4KPiArCSAqLwoKQ29tbWVudCBz
+dHlsZSBpcyBvZmYgLi4uIHNob3VsZCBiZQoKLyoKICogRW5hYmxlIHZvbHVtZSBzbW9vdGhpbmcs
+IGRpc2FibGUgemVybyBjcm9zcy4gIFRoaXMgd2lsbCBjYXVzZQogKiBhIHF1aWNrIDQwbXMgcmFt
+cCB0byBtdXRlIG9uIHNodXRkb3duLgogKi8KCgo+ICsJcmVnbWFwX3dyaXRlKG1heDk4MDkwLT5y
+ZWdtYXAsCj4gKwkJTTk4MDkwX1JFR19MRVZFTF9DT05UUk9MLCBNOTgwOTBfVlNFTk5fTUFTSyk7
+Cj4gKwlyZWdtYXBfd3JpdGUobWF4OTgwOTAtPnJlZ21hcCwKPiArCQlNOTgwOTBfUkVHX0RFVklD
+RV9TSFVURE9XTiwgMHgwMCk7Cj4gKwltc2xlZXAoNDApOwo+ICt9Cj4gKwo+ICAjaWZkZWYgQ09O
+RklHX1BNCj4gIHN0YXRpYyBpbnQgbWF4OTgwOTBfcnVudGltZV9yZXN1bWUoc3RydWN0IGRldmlj
+ZSAqZGV2KQo+ICB7Cj4gQEAgLTI2OTcsNiArMjcxMyw3IEBAIHN0YXRpYyBzdHJ1Y3QgaTJjX2Ry
+aXZlciBtYXg5ODA5MF9pMmNfZHJpdmVyID0gewo+ICAJfSwKPiAgCS5wcm9iZSAgPSBtYXg5ODA5
+MF9pMmNfcHJvYmUsCj4gIAkucmVtb3ZlID0gbWF4OTgwOTBfaTJjX3JlbW92ZSwKPiArCS5zaHV0
+ZG93biA9IG1heDk4MDkwX2kyY19zaHV0ZG93biwKPiAgCS5pZF90YWJsZSA9IG1heDk4MDkwX2ky
+Y19pZCwKPiAgfTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
