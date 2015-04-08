@@ -1,51 +1,72 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3] ASoC: max98090: add shutdown callback for max98090
-Date: Wed, 8 Apr 2015 18:09:49 +0100
-Message-ID: <20150408170949.GD6023@sirena.org.uk>
-References: <1428491156-31803-1-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] ARM: dts: rockchip: small bunch of improvements,
+ maybe still for 4.1
+Date: Thu, 09 Apr 2015 01:28:24 +0200
+Message-ID: <1461099.EW9lnJUZxa@diego>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="lhTn81PdljI0Ow1Z"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1428491156-31803-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Sonny Rao <sonnyrao@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, Heiko Stuebner <heiko@sntech.de>, zhengxing <zhengxing@rock-chips.com>, "jay.xu" <xjq@rock-chips.com>, devicetree@vger.kernel.org, dianders@chromium.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.de>, Dylan Reid <dgreid@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Lars-Peter Clausen <lars@metafoo.de>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, Tushar Behera <tushar.b@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Arnd, Olof,
 
---lhTn81PdljI0Ow1Z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+these are 4 small dts improvements, two of which where waiting for
+dependend patches to go into the respective maintainer trees.
+I don't think there is something controversial in here, but it still
+might be to late for 4.1, if so I'll repost these for 4.2 instead.
 
-On Wed, Apr 08, 2015 at 07:05:56PM +0800, Caesar Wang wrote:
-> To fix pop noise when shutdown,the pop noise during shutdown
-> is the pmic cutoff power of codec without any notice.
 
-Applied, thanks. =20
+Thanks
+Heiko
 
-Please do make an effort to only send patches to relevant people -
-sending people patches that aren't relevant to them adds to the volume
-of mail they have to handle which can get in the way of things that need
-the attention.  For example I'm not sure why the dri-devel list is on
-this.
 
---lhTn81PdljI0Ow1Z
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+The following changes since commit 91d5cb737287642b75e47790a28a43cd0efd80cb:
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+  ARM: dts: rockchip: complete rk3288-evb pmic supplies (2015-03-13 00:07:39 +0100)
 
-iQEcBAEBCAAGBQJVJWDcAAoJECTWi3JdVIfQ/koH/0A7PCAJzUFqyXCFJGmSW7rc
-RtnFQxwEonURGpx4Tli4P81w4fsuS6bo49/bTIArusBN/dKPDv/RqOIvXjZKb75C
-BdGGO/kXGwXyYDRoO2uTQ4+qdbz+o8uA7k8TQ4QjO1MvA+XPENWuxqvA7d4Jm57d
-gSD2ZXEiSq4tJSCgwKCISEKMA4NfrqO0NjMCUSHAgEetALqMSvrwrZ9r628v/qkX
-nsbSCHgM7vq0rqOaFfoUG/aumgNnQB699vJqqyVflAf0m0tI5QRdKO3zcYZDXPgO
-1K0FuwPCvOU6+c2somT7iZ85FhCr1IOroRbOsRiKGT3fIELmoQGnGJfwhJYX6Do=
-=dQda
------END PGP SIGNATURE-----
+are available in the git repository at:
 
---lhTn81PdljI0Ow1Z--
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-dts2
+
+for you to fetch changes up to 98febfbeb99dc0cb1409099eba0e93d0cab12843:
+
+  ARM: dts: rockchip: enable tsadc on rk3288 boards (2015-04-07 23:28:51 +0200)
+
+----------------------------------------------------------------
+Some more quite small changes. Enabling the tsadc on the other
+supported rk3288 boards besides the rk3288-evb, the firefly board
+needs a hym8563 fix that was accepted into the mm-tree.
+Adding the act8846 supplies for the firefly board, which where
+somehow forgotten.
+Also the addition of the cortex-a12-pmu dt node and the sdmmc supplies
+on the rk3288-evb which now do not produce deferal errors anymore
+thanks to a patch going through the mmc tree.
+
+----------------------------------------------------------------
+Doug Anderson (1):
+      ARM: dts: rockchip: Specify VMMC and VQMMC on rk3288-evb
+
+Heiko Stuebner (2):
+      ARM: dts: rockchip: add act8846 supplies on rk3288-firefly
+      ARM: dts: rockchip: enable tsadc on rk3288 boards
+
+Sonny Rao (1):
+      arm: dts: rockchip: Enable Cortex-A12 HW PMU events on rk3288
+
+ arch/arm/boot/dts/rk3288-evb.dtsi     | 23 +++++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-firefly.dtsi | 14 ++++++++++++++
+ arch/arm/boot/dts/rk3288-popmetal.dts |  6 ++++++
+ arch/arm/boot/dts/rk3288.dtsi         |  8 ++++++++
+ 4 files changed, 51 insertions(+)
