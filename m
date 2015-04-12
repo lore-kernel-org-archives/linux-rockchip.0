@@ -1,90 +1,44 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] clk: add CLK_DEFER_ORPHAN flag to prevent orphans from being used
-Date: Sat, 11 Apr 2015 03:32:55 +0200
-Message-ID: <2590765.DXLmcCCmf5@diego>
-References: <1427988853-9549-1-git-send-email-heiko@sntech.de> <1427988853-9549-4-git-send-email-heiko@sntech.de> <5528705B.3040102@codeaurora.org>
+Subject: [PATCH v2 0/2] clk: improve handling of orphan clocks
+Date: Sun, 12 Apr 2015 13:36:30 +0200
+Message-ID: <75204537.lSvovFhEiG@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5528705B.3040102@codeaurora.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@linaro.org, linux@arm.linux.org.uk, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: dianders@chromium.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux@arm.linux.org.uk
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 10. April 2015, 17:52:43 schrieb Stephen Boyd:
-> On 04/02/15 08:34, Heiko Stuebner wrote:
-> > The usage of clocks derived from an orphan can produce issues when trying
-> > to set rates etc. So ideally a clk_get to such a clock should defer till
-> > the clock hierarchy is complete.
-> > But as some arches probably rely on such clocks we can't disable them all.
-> > Therefore add a new clk flag where arches can enable this behaviour for
-> > their clocks.
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> > 
-> >  drivers/clk/clk.c            | 6 ++++++
-> >  include/linux/clk-provider.h | 1 +
-> >  2 files changed, 7 insertions(+)
-> > 
-> > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> > index 476f491..8511c62 100644
-> > --- a/drivers/clk/clk.c
-> > +++ b/drivers/clk/clk.c
-> > @@ -3041,6 +3041,12 @@ struct clk *__of_clk_get_from_provider(struct
-> > of_phandle_args *clkspec,> 
-> >  		if (provider->node == clkspec->np)
-> >  		
-> >  			clk = provider->get(clkspec, provider->data);
-> >  		
-> >  		if (!IS_ERR(clk)) {
-> > 
-> > +			if ((__clk_get_flags(clk) & CLK_DEFER_ORPHAN)
-> > +						&& clk_is_orphan(clk)) {
-> > +				clk = ERR_PTR(-EPROBE_DEFER);
-> > +				break;
-> > +			}
-> > +
-> > 
-> >  			clk = __clk_create_clk(__clk_get_hw(clk), dev_id,
-> >  			
-> >  					       con_id);
-> > 
-> > diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-> > index 28abf1b..ef8d669 100644
-> > --- a/include/linux/clk-provider.h
-> > +++ b/include/linux/clk-provider.h
-> > @@ -31,6 +31,7 @@
-> > 
-> >  #define CLK_GET_RATE_NOCACHE	BIT(6) /* do not use the cached clk rate */
-> >  #define CLK_SET_RATE_NO_REPARENT BIT(7) /* don't re-parent on rate change
-> >  */ #define CLK_GET_ACCURACY_NOCACHE BIT(8) /* do not use the cached clk
-> >  accuracy */> 
-> > +#define CLK_DEFER_ORPHAN	BIT(9) /* defer clk_get calls for orphans */
-> 
-> I don't see why this is an opt-in feature. If we think there are arches
-> that are setting rates of clocks before they're ready then we have a
-> problem and we should fix it. These last two patches don't look necessary.
+Using orphan clocks can introduce strange behaviour as they don't have
+rate information at all and also of course don't track
 
-yep this is some sort of policy-decision ... I'm perfectly fine with changing 
-the default behaviour from my Rockchip-pov but was reluctant to do this for 
-everybody.
-
-For example in the cited example in patch1, the clock from an i2c-device 
-supplies a soc-clock and the soc-clock only gets enabled/disabled at this 
-point. The i2c-device is default on, so everything works till it falls over 
-when going to suspend. So I guess similar corner cases might exist on other 
-platforms.
-
-It might very well be better to change the behaviour and hope for little 
-fallout to fix.
-
-So, it looks like your on favour of preventing the usage of orphans 
-altogether, so I'll try to come up with a better implementation taking into 
-account your comments to patch2.
+This v2 takes into account suggestions from Stephen Boyd to not try to
+walk the clock tree at runtime but instead keep track of orphan states
+on clock tree changes and making it mandatory for everybody from the
+start as orphan clocks should not be used at all.
 
 
-Thanks
-Heiko
+This fixes an issue on most rk3288 platforms, where some soc-clocks
+are supplied by a 32khz clock from an external i2c-chip which often
+is only probed later in the boot process and maybe even after the
+drivers using these soc-clocks like the tsadc temperature sensor.
+In this case the driver using the clock should of course defer probing
+until the clock is actually usable.
+
+
+changes since v1:
+- track orphan status on clock tree changes instead of walking the
+  tree on clk_get operations
+- make get-deferals mandatory for everybody
+
+Heiko Stuebner (2):
+  clk: track the orphan status of clocks and their children
+  clk: prevent orphan clocks from being used
+
+ drivers/clk/clk.c | 49 ++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 46 insertions(+), 3 deletions(-)
+
+-- 
+2.1.4
