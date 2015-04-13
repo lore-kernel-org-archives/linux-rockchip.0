@@ -1,12 +1,14 @@
-From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH] iommu: rockchip: fix build without CONFIG_OF
-Date: Mon, 13 Apr 2015 12:10:53 +0200
-Message-ID: <20150413101050.GA3654@ulmo.nvidia.com>
-References: <3138014.xYAj3FssJ8@wuerfel>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: dts: rockchip: small bunch of improvements,
+ maybe still for 4.1
+Date: Tue, 14 Apr 2015 01:24:22 +0200
+Message-ID: <201504140124.22270.arnd@arndb.de>
+References: <1461099.EW9lnJUZxa@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3115469805948313993=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3138014.xYAj3FssJ8@wuerfel>
+In-Reply-To: <1461099.EW9lnJUZxa@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,75 +18,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?iso-8859-1?q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============3115469805948313993==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="zhXaljGHf11kAtnf"
-Content-Disposition: inline
+On Thursday 09 April 2015, Heiko St=FCbner wrote:
+> Hi Arnd, Olof,
+> =
 
---zhXaljGHf11kAtnf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> these are 4 small dts improvements, two of which where waiting for
+> dependend patches to go into the respective maintainer trees.
+> I don't think there is something controversial in here, but it still
+> might be to late for 4.1, if so I'll repost these for 4.2 instead.
 
-On Fri, Apr 10, 2015 at 11:58:24PM +0200, Arnd Bergmann wrote:
-> The rockchip iommu driver references its of_device_id table
-> from the init function, which fails to build when the table
-> is undefined:
->=20
-> iommu/rockchip-iommu.c: In function 'rk_iommu_init':
-> iommu/rockchip-iommu.c:1029:35: error: 'rk_iommu_dt_ids' undeclared (firs=
-t use in this function)
->   np =3D of_find_matching_node(NULL, rk_iommu_dt_ids);
->=20
-> This removes the #ifdef and the corresponding of_match_ptr wrapper
-> to make it build both with CONFIG_OF enabled or disabled.
->=20
-> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-> Fixes: 425061b0f5074 ("iommu/rockchip: Play nice in multi-platform builds=
-")
+Your description makes it sound like there is something going wrong
+here with the dependency tracking. Do you mean that merging these
+patches without the other subsystem specific changes would cause
+problems, or were you just waiting for the DT bindings to stabilize?
 
-How can this even happen? Rockchip depends on multiplatform, and
-multiplatform pulls in OF. Ah... COMPILE_TEST... oh well.
+If the dtsi changes by themselves would cause compile-time or run-time
+problems, we should not merge them without having the commits for
+the driver changes first.
 
-Reviewed-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+In either case, I think it's too late now, so please send them again
+for 4.2.
 
---zhXaljGHf11kAtnf
-Content-Type: application/pgp-signature
+Thanks,
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+	Arnd
 
-iQIcBAABCAAGBQJVK5YnAAoJEN0jrNd/PrOhCs8P/iOYuBjtq1BFP0M2CHp11WYq
-PlrgGWiz70jRvCq49UOuNVqpGFnYhK7wQub5U7z+M582ZfRYEnSl2laYaxmTGoVk
-iteLLQ3b+1WhUWXyVS80kWGVxHeyP8TBqg9vHMwHXgd9aC3vQ+bl5xTFRw4TmI+E
-itzAID+QqmH03srCVXWjeuJ+9g6iuyVwrZupvlneax8XYd0sqdpjh5DiIz1CLqei
-8y4V6Tk0EB7YeKllB3FW0qCf4HDZ86Pu5Ms6N8fYXVL2UuYFO3nLTjQWW4rzkoA9
-hYRkfH/WgktpWvEbmvPmfcD/CWE2ptsPBQaeX6qgJwOmmIomKBAZxrTo6litwxfv
-30QkU/E0wyFDXsXvenX89++wU5gc3VkaJv15cMY1B0zCfmCSlcLfshQxREI4KPhq
-oe2ZBi/O/fOPUvRWtTMOaci7/4/yzQ9XfbYFPKBYsWc0q/OOgQkxKHyXg6UmpEp7
-g+BBfje495BDQXENI1v+mmESLu7wLsrTavDa2OMDLOKGKo0ukmDfNyC77tGQ+U7j
-PhzFk4WvWslwdk6cM/c5Db+LFlxBSSbRJed3tF1FaTV7b3nWDKL8W9zdZ8cWVolj
-3dq+7JPVz3Cp8DPEjnoeHSdFBqtUg3TgJ/BdjCORsPIiuogcktOQD74bfqHynL4P
-RcyCjFsNXe71jK1AMB0b
-=yNPE
------END PGP SIGNATURE-----
+> =
 
---zhXaljGHf11kAtnf--
+> =
 
+> The following changes since commit 91d5cb737287642b75e47790a28a43cd0efd80=
+cb:
+> =
 
---===============3115469805948313993==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>   ARM: dts: rockchip: complete rk3288-evb pmic supplies (2015-03-13 00:07=
+:39 +0100)
+> =
 
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> are available in the git repository at:
+> =
 
---===============3115469805948313993==--
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git =
+tags/v4.1-rockchip-dts2
+> =
+
+> for you to fetch changes up to 98febfbeb99dc0cb1409099eba0e93d0cab12843:
+> =
+
+>   ARM: dts: rockchip: enable tsadc on rk3288 boards (2015-04-07 23:28:51 =
++0200)
+> =
+
+> ----------------------------------------------------------------
+> Some more quite small changes. Enabling the tsadc on the other
+> supported rk3288 boards besides the rk3288-evb, the firefly board
+> needs a hym8563 fix that was accepted into the mm-tree.
+> Adding the act8846 supplies for the firefly board, which where
+> somehow forgotten.
+> Also the addition of the cortex-a12-pmu dt node and the sdmmc supplies
+> on the rk3288-evb which now do not produce deferal errors anymore
+> thanks to a patch going through the mmc tree.
+> =
+
+> ----------------------------------------------------------------
+> Doug Anderson (1):
+>       ARM: dts: rockchip: Specify VMMC and VQMMC on rk3288-evb
+> =
+
+> Heiko Stuebner (2):
+>       ARM: dts: rockchip: add act8846 supplies on rk3288-firefly
+>       ARM: dts: rockchip: enable tsadc on rk3288 boards
+> =
+
+> Sonny Rao (1):
+>       arm: dts: rockchip: Enable Cortex-A12 HW PMU events on rk3288
+> =
+
+>  arch/arm/boot/dts/rk3288-evb.dtsi     | 23 +++++++++++++++++++++++
+>  arch/arm/boot/dts/rk3288-firefly.dtsi | 14 ++++++++++++++
+>  arch/arm/boot/dts/rk3288-popmetal.dts |  6 ++++++
+>  arch/arm/boot/dts/rk3288.dtsi         |  8 ++++++++
+>  4 files changed, 51 insertions(+)
+> =
+
+> =
+
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> =
