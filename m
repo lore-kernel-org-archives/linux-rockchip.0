@@ -1,114 +1,62 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: dts: rockchip: small bunch of improvements,
- maybe still for 4.1
-Date: Tue, 14 Apr 2015 01:24:22 +0200
-Message-ID: <201504140124.22270.arnd@arndb.de>
-References: <1461099.EW9lnJUZxa@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461099.EW9lnJUZxa@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?iso-8859-1?q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH] ARM: rockchip: disable dapswjdp during suspend
+Date: Wed, 15 Apr 2015 13:57:11 +0800
+Message-ID: <1429077431-31326-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org, dtor@chromium.org, sonnyrao@chromium.org
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday 09 April 2015, Heiko St=FCbner wrote:
-> Hi Arnd, Olof,
-> =
+Reset dapswjdp is controlled by JTAG_TRSTN, if the iomux of this pin is
+not "jtag_trstn". the AP would think this pin is always high, so it can
+not reset before resume. When system resume, but the dapswjdp is not in
+a default state, it may Access some illegal address, it cause system
+crash during resume.
+Let's disable this jtag function by clear the dapdeviceen bit, it
+prohibit the dapswjdp to access memory and registers. This bit would
+be enable in MASKROM, so we need clear it in suspend everytime.
 
-> these are 4 small dts improvements, two of which where waiting for
-> dependend patches to go into the respective maintainer trees.
-> I don't think there is something controversial in here, but it still
-> might be to late for 4.1, if so I'll repost these for 4.2 instead.
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 
-Your description makes it sound like there is something going wrong
-here with the dependency tracking. Do you mean that merging these
-patches without the other subsystem specific changes would cause
-problems, or were you just waiting for the DT bindings to stabilize?
+---
 
-If the dtsi changes by themselves would cause compile-time or run-time
-problems, we should not merge them without having the commits for
-the driver changes first.
+ arch/arm/mach-rockchip/pm.c | 7 +++++++
+ arch/arm/mach-rockchip/pm.h | 4 ++++
+ 2 files changed, 11 insertions(+)
 
-In either case, I think it's too late now, so please send them again
-for 4.2.
-
-Thanks,
-
-	Arnd
-
-> =
-
-> =
-
-> The following changes since commit 91d5cb737287642b75e47790a28a43cd0efd80=
-cb:
-> =
-
->   ARM: dts: rockchip: complete rk3288-evb pmic supplies (2015-03-13 00:07=
-:39 +0100)
-> =
-
-> are available in the git repository at:
-> =
-
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git =
-tags/v4.1-rockchip-dts2
-> =
-
-> for you to fetch changes up to 98febfbeb99dc0cb1409099eba0e93d0cab12843:
-> =
-
->   ARM: dts: rockchip: enable tsadc on rk3288 boards (2015-04-07 23:28:51 =
-+0200)
-> =
-
-> ----------------------------------------------------------------
-> Some more quite small changes. Enabling the tsadc on the other
-> supported rk3288 boards besides the rk3288-evb, the firefly board
-> needs a hym8563 fix that was accepted into the mm-tree.
-> Adding the act8846 supplies for the firefly board, which where
-> somehow forgotten.
-> Also the addition of the cortex-a12-pmu dt node and the sdmmc supplies
-> on the rk3288-evb which now do not produce deferal errors anymore
-> thanks to a patch going through the mmc tree.
-> =
-
-> ----------------------------------------------------------------
-> Doug Anderson (1):
->       ARM: dts: rockchip: Specify VMMC and VQMMC on rk3288-evb
-> =
-
-> Heiko Stuebner (2):
->       ARM: dts: rockchip: add act8846 supplies on rk3288-firefly
->       ARM: dts: rockchip: enable tsadc on rk3288 boards
-> =
-
-> Sonny Rao (1):
->       arm: dts: rockchip: Enable Cortex-A12 HW PMU events on rk3288
-> =
-
->  arch/arm/boot/dts/rk3288-evb.dtsi     | 23 +++++++++++++++++++++++
->  arch/arm/boot/dts/rk3288-firefly.dtsi | 14 ++++++++++++++
->  arch/arm/boot/dts/rk3288-popmetal.dts |  6 ++++++
->  arch/arm/boot/dts/rk3288.dtsi         |  8 ++++++++
->  4 files changed, 51 insertions(+)
-> =
-
-> =
-
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> =
+diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+index b07d886..b0dcbe2 100644
+--- a/arch/arm/mach-rockchip/pm.c
++++ b/arch/arm/mach-rockchip/pm.c
+@@ -83,6 +83,13 @@ static void rk3288_slp_mode_set(int level)
+ 		     SGRF_PCLK_WDT_GATE | SGRF_FAST_BOOT_EN
+ 		     | SGRF_PCLK_WDT_GATE_WRITE | SGRF_FAST_BOOT_EN_WRITE);
+ 
++	/*
++	 * The dapswjdp can not auto reset before resume, that cause it may
++	 * access some illegal address during resume. Let's disable it before
++	 * suspend, and the MASKROM will enable it back.
++	 */
++	regmap_write(sgrf_regmap, RK3288_SGRF_CPU_CON0, SGRF_DAPDEVICEEN_WRITE);
++
+ 	/* booting address of resuming system is from this register value */
+ 	regmap_write(sgrf_regmap, RK3288_SGRF_FAST_BOOT_ADDR,
+ 		     rk3288_bootram_phy);
+diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
+index 03ff31d..3e8d39c 100644
+--- a/arch/arm/mach-rockchip/pm.h
++++ b/arch/arm/mach-rockchip/pm.h
+@@ -55,6 +55,10 @@ static inline void rockchip_suspend_init(void)
+ #define SGRF_FAST_BOOT_EN		BIT(8)
+ #define SGRF_FAST_BOOT_EN_WRITE		BIT(24)
+ 
++#define RK3288_SGRF_CPU_CON0		(0x40)
++#define SGRF_DAPDEVICEEN		BIT(0)
++#define SGRF_DAPDEVICEEN_WRITE		BIT(16)
++
+ #define RK3288_CRU_MODE_CON		0x50
+ #define RK3288_CRU_SEL0_CON		0x60
+ #define RK3288_CRU_SEL1_CON		0x64
+-- 
+1.9.1
