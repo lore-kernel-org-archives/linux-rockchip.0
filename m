@@ -1,52 +1,40 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] drm: rockchip: Don't pass DRM fake offset to dma-api
-Date: Sat, 18 Apr 2015 18:55:14 +0200
-Message-ID: <1743547.3D2D8THGkI@diego>
-References: <1429195312-25898-1-git-send-email-orjan.eide@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1429195312-25898-1-git-send-email-orjan.eide@arm.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com
-Cc: dri-devel@lists.freedesktop.org, =?ISO-8859-1?Q?=D8rjan?= Eide <orjan.eide@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v13 0/3] ARM: rk3288: Add PM Domain support
+Date: Sun, 19 Apr 2015 18:15:49 +0800
+Message-ID: <1429438552-17733-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-doc-owner@vger.kernel.org>
+Sender: linux-doc-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@linaro.org>, linux-arm-kernel@lists.infradead.org
+Cc: linus.walleij@linaro.org, Tomasz Figa <tomasz.figa@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Grant Likely <grant.likely@linaro.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Randy Dunlap <rdunlap@infradead.org>, linux-doc@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, Ulf Hansson <ulf.hansson@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Brown <broonie@kernel.org>, Caesar Wang <wxt@rock-chips.com>, "jinkun.hong" <jinkun.hong@rock-chips.com>, Russell King <linux@arm.linux.org.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRG9ubmVyc3RhZywgMTYuIEFwcmlsIDIwMTUsIDE2OjQxOjUxIHNjaHJpZWIgw5hyamFuIEVp
-ZGU6Cj4gU2V0IHZtX3Bnb2ZmIHRvIDAgYWZ0ZXIgdXNpbmcgaXQgdG8gbG9vayB1cCB0aGUgR0VN
-IG5vZGUsIGJlZm9yZSBwYXNzaW5nCj4gaXQgb24gcm9ja2NoaXBfZ2VtX21tYXBfYnVmKCkgd2hl
-cmUgdGhlIG9mZnNldCBtdXN0IGJlIGZyb20gdGhlIHN0YXJ0IG9mCj4gdGhlIGJ1ZmZlci4KPiAK
-PiBQYXNzaW5nIGluIHRoZSBmYWtlIG9mZnNldCBjdXJyZW50bHkgd29ya3MgYmVjYXVzZSB0aGUK
-PiBkbWFfbW1hcF9hdHRycyBpbXBsZW1lbnRhdGlvbiB0aGF0IGlzIHVzZWQgZm9yIHRoaXMgZGV2
-aWNlLAo+IGFybV9pb21tdV9tbWFwX2F0dHJzLCBpZ25vcmVzIHRoZSBvZmZzZXQgY29tcGxldGVs
-eS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiDDmHJqYW4gRWlkZSA8b3JqYW4uZWlkZUBhcm0uY29tPgoK
-Ym90aCBwYXRjaGVzIG9uIGEgcmszMjg4LXZleXJvbi1waW5reQoKVGVzdGVkLWJ5OiBIZWlrbyBT
-dHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKVGhyb3VnaCB3aGljaCB0cmVlIGRvIHlvdSB3YW50
-IHRvIHRha2UgdGhlc2UgcGF0Y2hlcz8gSSBndWVzcyB0aGUgcm9ja2NoaXAtZHJtIApyZWxhdGVk
-IHBhdGNoIHNob3VsZCBnbyB0aHJvdWdoIHRoZSB0cmVlIHRoYXQgd2lsbCB0YWtlIHRoZSBkbWEt
-bWFwcGluZyBwYXRjaCwgCnNvIHlvdSdsbCBwcm9iYWJseSBuZWVkIGFuICJBY2siIGZyb20gTWFy
-ayBZYW8gKENjJ2VkKS4KCgpIZWlrbwoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV9nZW0uYyB8IDUgKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0
-aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2dlbS5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jIGluZGV4IDdjYTg3OTllLi42OWYwMWMzCj4gMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiBAQCAtOTQsNiArOTQsMTEgQEAgaW50IHJvY2tj
-aGlwX2dlbV9tbWFwKHN0cnVjdCBmaWxlICpmaWxwLCBzdHJ1Y3QKPiB2bV9hcmVhX3N0cnVjdCAq
-dm1hKSByZXR1cm4gLUVBQ0NFUzsKPiAgCX0KPiAKPiArCS8qIFNldCB2bV9wZ29mZiAodXNlZCBh
-cyBhIGZha2UgYnVmZmVyIG9mZnNldCBieSBEUk0pIHRvIDAgYW5kIG1hcCB0aGUKPiArCSAqIHdo
-b2xlIGJ1ZmZlciBmcm9tIHRoZSBzdGFydC4KPiArCSAqLwo+ICsJdm1hLT52bV9wZ29mZiA9IDA7
-Cj4gKwo+ICAJb2JqID0gY29udGFpbmVyX29mKG5vZGUsIHN0cnVjdCBkcm1fZ2VtX29iamVjdCwg
-dm1hX25vZGUpOwo+ICAJcmV0ID0gcm9ja2NoaXBfZ2VtX21tYXBfYnVmKG9iaiwgdm1hKTsKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+    Add power domain drivers based on generic power domain for
+Rockchip platform, and support RK3288.
+
+    Verified on url =
+    https://chromium.googlesource.com/chromiumos/third_party/kernel.
+
+    At the moment,there are mass of products are using the driver.
+I believe the driver can happy work for next kernel.
+
+
+
+Caesar Wang (3):
+  dt-bindings: add document of Rockchip power domain
+  power-domain: rockchip: add power domain driver
+  ARM: dts: add RK3288 power-domain node
+
+ .../bindings/arm/rockchip/power_domain.txt         |  48 ++
+ arch/arm/boot/dts/rk3288.dtsi                      |  59 +++
+ arch/arm/mach-rockchip/Kconfig                     |   1 +
+ arch/arm/mach-rockchip/Makefile                    |   1 +
+ arch/arm/mach-rockchip/pm_domains.c                | 509 +++++++++++++++++++++
+ include/dt-bindings/power-domain/rk3288.h          |  11 +
+ 6 files changed, 629 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/rockchip/power_domain.txt
+ create mode 100644 arch/arm/mach-rockchip/pm_domains.c
+ create mode 100644 include/dt-bindings/power-domain/rk3288.h
+
+-- 
+1.9.1
+
