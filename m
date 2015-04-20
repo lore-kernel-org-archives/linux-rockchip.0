@@ -1,99 +1,116 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2] CHROMIUM: iommu: rockchip: Make sure that page table state
-	is coherent
-Date: Mon, 20 Apr 2015 20:43:44 +0900
-Message-ID: <1429530224-24719-1-git-send-email-tfiga@chromium.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v13 2/3] power-domain: rockchip: add power domain driver
+Date: Mon, 20 Apr 2015 22:42:44 +0800
+Message-ID: <55351064.7090409@rock-chips.com>
+References: <1429438552-17733-1-git-send-email-wxt@rock-chips.com>	 <1429440280-18915-1-git-send-email-wxt@rock-chips.com> <1429522004.14597.8.camel@x220>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1429522004.14597.8.camel@x220>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: heiko@sntech.de, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, tomasz.figa@gmail.com, mark.rutland@arm.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-doc@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, ulf.hansson@linaro.org, dmitry.torokhov@gmail.com, broonie@kernel.org, grant.likely@linaro.org, "jinkun.hong" <jinkun.hong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-To flush created mappings, current mapping code relies on the fact that
-during unmap the driver zaps every IOVA being unmapped and that it is
-enough to zap a single IOVA of page table to remove the entire page
-table from IOMMU cache. Based on these assumptions the driver was made to
-simply zap the first IOVA of the mapping being created. This is enough
-to invalidate first page table, which could be shared with another
-mapping (and thus could be already present in IOMMU cache), but
-unfortunately it does not do anything about the last page table that
-could be shared with other mappings as well.
+Paul,
 
-Moreover, the flushing is performed before page table contents are
-actually modified, so there is a race between the CPU updating the page
-tables and hardware that could be possibly running at the same time and
-triggering IOMMU look-ups, which could bring back the page tables back
-to the cache.
+Thanks your commnets!:-)
 
-To fix both issues, this patch makes the mapping code zap first and last
-(if they are different) IOVAs of new mapping after the page table is
-updated.
+=E5=9C=A8 2015=E5=B9=B404=E6=9C=8820=E6=97=A5 17:26, Paul Bolle =E5=86=99=
+=E9=81=93:
+> On Sun, 2015-04-19 at 18:44 +0800, Caesar Wang wrote:
+>> --- a/arch/arm/mach-rockchip/Makefile
+>> +++ b/arch/arm/mach-rockchip/Makefile
+> +obj-$(CONFIG_PM_GENERIC_DOMAINS) +=3D pm_domains.o
+>
+> PM_GENERIC_DOMAINS is a bool symbol, so pm_domains.o can never be par=
+t
+> of a module. Is that correct?
 
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 23 +++++++++++++++++------
- 1 file changed, 17 insertions(+), 6 deletions(-)
+Yeah, So this platform_driver does not need to set an owner, it will be=
+=20
+populated by the
+driver core.
+>
+>> --- /dev/null
+>> +++ b/arch/arm/mach-rockchip/pm_domains.c
+>> +#include <linux/module.h>
+> This include could probably be dropped.
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4015560..31004c0 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -551,6 +551,15 @@ static void rk_iommu_zap_iova(struct rk_iommu_domain *rk_domain,
- 	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
- }
- 
-+static void rk_iommu_zap_iova_first_last(struct rk_iommu_domain *rk_domain,
-+					 dma_addr_t iova, size_t size)
-+{
-+	rk_iommu_zap_iova(rk_domain, iova, SPAGE_SIZE);
-+	if (size > SPAGE_SIZE)
-+		rk_iommu_zap_iova(rk_domain, iova + size - SPAGE_SIZE,
-+					SPAGE_SIZE);
-+}
-+
- static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
- 				  dma_addr_t iova)
- {
-@@ -575,12 +584,6 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
- 	rk_table_flush(page_table, NUM_PT_ENTRIES);
- 	rk_table_flush(dte_addr, 1);
- 
--	/*
--	 * Zap the first iova of newly allocated page table so iommu evicts
--	 * old cached value of new dte from the iotlb.
--	 */
--	rk_iommu_zap_iova(rk_domain, iova, SPAGE_SIZE);
--
- done:
- 	pt_phys = rk_dte_pt_address(dte);
- 	return (u32 *)phys_to_virt(pt_phys);
-@@ -630,6 +633,14 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
- 
- 	rk_table_flush(pte_addr, pte_count);
- 
-+	/*
-+	 * Zap the first and last iova to evict from iotlb any previously
-+	 * mapped cachelines holding stale values for its dte and pte.
-+	 * We only zap the first and last iova, since only they could have
-+	 * dte or pte shared with an existing mapping.
-+	 */
-+	rk_iommu_zap_iova_first_last(rk_domain, iova, size);
-+
- 	return 0;
- unwind:
- 	/* Unmap the range of iovas that we just mapped */
--- 
-2.2.0.rc0.207.ga3a616c
+Yeah. As the about said.
+>> +static const struct of_device_id rockchip_pm_domain_dt_match[] =3D =
+{
+>> +	{
+>> +		.compatible =3D "rockchip,rk3288-power-controller",
+>> +		.data =3D (void *)&rk3288_pmu,
+>> +	},
+>> +	{ /* sentinel */ },
+>> +};
+>> +MODULE_DEVICE_TABLE(of, rockchip_pm_domain_dt_match);
+> The MODULE_DEVICE_TABLE() macro will be preprocessed away for built-i=
+n
+> code, according to include/linux/module.h.
+
+So,do you think we should remove it?
+wow.....,looks we should remove it.
+>> +static struct platform_driver rockchip_pm_domain_driver =3D {
+>> +	.probe =3D rockchip_pm_domain_probe,
+>> +	.driver =3D {
+>> +		.name   =3D "rockchip-pm-domain",
+>> +		.owner  =3D THIS_MODULE,
+> According to include/linux/export.h THIS_MODULE is equivalent to NULL
+> for built-in code. So I think this line is not needed.
+>
+
+Yeah,you are right.
+>> +		.of_match_table =3D rockchip_pm_domain_dt_match,
+>> +		/*
+>> +		 * We can't forcibly eject devices form power domain,
+>> +		 * so we can't really remove power domains once they
+>> +		 * were added.
+>> +		 */
+>> +		.suppress_bind_attrs =3D true,
+>> +	},
+>> +};
+> Thanks,
+>
+>
+> Paul Bolle
+>
+>
+>
+>
+Thanks,
+
+Caesar
+
+--=20
+***********************************************************************=
+***************
+=E7=8E=8B=E6=99=93=E8=85=BE    Caesar Wang
+Product R&D Dept.III
+=46uzhou Rockchip Electronics Co.Ltd
+Addr=EF=BC=9A  NO.18 Building, A District, Fuzhou Software Park,Gulou D=
+istrict,Fuzhou, Fujian,China(Fuzhou Headquarters)
+               21F,Malata Building,Kejizhongyi Avenue,Nanshan District,=
+Shenzhen  (Shenzhen Office)
+Tel=EF=BC=9A+86-591-83991906/07 - 8221
+Mobile:+86 15059456742
+E-mail : wxt@rock-chips.com
+***********************************************************************=
+****************
+***********************************************************************=
+****************
+IMPORTANT NOTICE: This email is from Fuzhou Rockchip Electronics Co., L=
+td .The contents of this email and any attachments may
+contain information that is privileged, confidential and/or exempt from=
+ disclosure under applicable law and relevant NDA.
+If you are not the intended recipient, you are hereby notified that any=
+ disclosure, copying, distribution, or use of the
+information is STRICTLY PROHIBITED. Please immediately contact the send=
+er as soon as possible and destroy the material
+in its entirety in any format. Thank you.
+***********************************************************************=
+****************
