@@ -1,60 +1,67 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/2] drm: rockchip: Don't pass DRM fake offset to dma-api
-Date: Mon, 20 Apr 2015 13:44:23 +0800
-Message-ID: <55349237.3050901@rock-chips.com>
-References: <1429195312-25898-1-git-send-email-orjan.eide@arm.com>
- <1743547.3D2D8THGkI@diego> <55349001.80304@rock-chips.com>
+From: Paul Bolle <pebolle@tiscali.nl>
+Subject: Re: [PATCH v13 2/3] power-domain: rockchip: add power domain driver
+Date: Mon, 20 Apr 2015 11:26:44 +0200
+Message-ID: <1429522004.14597.8.camel@x220>
+References: <1429438552-17733-1-git-send-email-wxt@rock-chips.com>
+	 <1429440280-18915-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <55349001.80304@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: dri-devel@lists.freedesktop.org, =?UTF-8?B?w5hyamFuIEVpZGU=?= <orjan.eide@arm.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1429440280-18915-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, tomasz.figa@gmail.com, mark.rutland@arm.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-doc@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, ulf.hansson@linaro.org, dmitry.torokhov@gmail.com, broonie@kernel.org, grant.likely@linaro.org, "jinkun.hong" <jinkun.hong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDA05pyIMjDml6UgMTM6MzQsIE1hcmsgeWFvIHdyb3RlOgo+IE9uIDIwMTXlubQw
-NOaciDE55pelIDAwOjU1LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gQW0gRG9ubmVyc3RhZywg
-MTYuIEFwcmlsIDIwMTUsIDE2OjQxOjUxIHNjaHJpZWIgw5hyamFuIEVpZGU6Cj4+PiBTZXQgdm1f
-cGdvZmYgdG8gMCBhZnRlciB1c2luZyBpdCB0byBsb29rIHVwIHRoZSBHRU0gbm9kZSwgYmVmb3Jl
-IAo+Pj4gcGFzc2luZwo+Pj4gaXQgb24gcm9ja2NoaXBfZ2VtX21tYXBfYnVmKCkgd2hlcmUgdGhl
-IG9mZnNldCBtdXN0IGJlIGZyb20gdGhlIAo+Pj4gc3RhcnQgb2YKPj4+IHRoZSBidWZmZXIuCj4+
-Pgo+Pj4gUGFzc2luZyBpbiB0aGUgZmFrZSBvZmZzZXQgY3VycmVudGx5IHdvcmtzIGJlY2F1c2Ug
-dGhlCj4+PiBkbWFfbW1hcF9hdHRycyBpbXBsZW1lbnRhdGlvbiB0aGF0IGlzIHVzZWQgZm9yIHRo
-aXMgZGV2aWNlLAo+Pj4gYXJtX2lvbW11X21tYXBfYXR0cnMsIGlnbm9yZXMgdGhlIG9mZnNldCBj
-b21wbGV0ZWx5Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IMOYcmphbiBFaWRlIDxvcmphbi5laWRl
-QGFybS5jb20+Cj4+IGJvdGggcGF0Y2hlcyBvbiBhIHJrMzI4OC12ZXlyb24tcGlua3kKPj4KPj4g
-VGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+Pgo+PiBUaHJvdWdo
-IHdoaWNoIHRyZWUgZG8geW91IHdhbnQgdG8gdGFrZSB0aGVzZSBwYXRjaGVzPyBJIGd1ZXNzIHRo
-ZSAKPj4gcm9ja2NoaXAtZHJtCj4+IHJlbGF0ZWQgcGF0Y2ggc2hvdWxkIGdvIHRocm91Z2ggdGhl
-IHRyZWUgdGhhdCB3aWxsIHRha2UgdGhlIAo+PiBkbWEtbWFwcGluZyBwYXRjaCwKPj4gc28geW91
-J2xsIHByb2JhYmx5IG5lZWQgYW4gIkFjayIgZnJvbSBNYXJrIFlhbyAoQ2MnZWQpLgo+Pgo+Pgo+
-PiBIZWlrbwo+Pgo+Pj4gLS0tCj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZ2VtLmMgfCA1ICsrKysrCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMo
-KykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9nZW0uYwo+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jIGluZGV4IDdjYTg3OTllLi42OWYwMWMzCj4+PiAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPj4+IEBAIC05NCw2ICs5NCwxMSBAQCBp
-bnQgcm9ja2NoaXBfZ2VtX21tYXAoc3RydWN0IGZpbGUgKmZpbHAsIHN0cnVjdAo+Pj4gdm1fYXJl
-YV9zdHJ1Y3QgKnZtYSkgcmV0dXJuIC1FQUNDRVM7Cj4+PiAgICAgICB9Cj4+Pgo+Pj4gKyAgICAv
-KiBTZXQgdm1fcGdvZmYgKHVzZWQgYXMgYSBmYWtlIGJ1ZmZlciBvZmZzZXQgYnkgRFJNKSB0byAw
-IGFuZCAKPj4+IG1hcCB0aGUKPj4+ICsgICAgICogd2hvbGUgYnVmZmVyIGZyb20gdGhlIHN0YXJ0
-Lgo+Pj4gKyAgICAgKi8KPj4+ICsgICAgdm1hLT52bV9wZ29mZiA9IDA7Cj4+PiArCj4+PiAgICAg
-ICBvYmogPSBjb250YWluZXJfb2Yobm9kZSwgc3RydWN0IGRybV9nZW1fb2JqZWN0LCB2bWFfbm9k
-ZSk7Cj4+PiAgICAgICByZXQgPSByb2NrY2hpcF9nZW1fbW1hcF9idWYob2JqLCB2bWEpOwo+Pgo+
-Pgo+Pgo+IFRoYW5rcyBmb3IgdGhpcyBmaXgsCj4gQWNrZWQtYnk6IE1hcmsgWWFvIDxtYXJrLnlh
-b0Byb2NrLWNoaXBzLmNvbT4KPgpJIG1ldCB0aGlzIHByb2JsZW0gd2hlbiB3b3JrIHdpdGggZ2Vt
-IG5vbi1pb21tdSBwYXRoLCBzZXQgdm1hLT52bV9wZ29mZiAKPSAwIHNvbHZlZCBpdC4gOi0pCgot
-LSAK77ytYXJrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Sun, 2015-04-19 at 18:44 +0800, Caesar Wang wrote:
+> --- a/arch/arm/mach-rockchip/Makefile
+> +++ b/arch/arm/mach-rockchip/Makefile
+
++obj-$(CONFIG_PM_GENERIC_DOMAINS) += pm_domains.o
+
+PM_GENERIC_DOMAINS is a bool symbol, so pm_domains.o can never be part
+of a module. Is that correct?
+
+> --- /dev/null
+> +++ b/arch/arm/mach-rockchip/pm_domains.c
+
+> +#include <linux/module.h>
+
+This include could probably be dropped.
+
+> +static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+> +	{
+> +		.compatible = "rockchip,rk3288-power-controller",
+> +		.data = (void *)&rk3288_pmu,
+> +	},
+> +	{ /* sentinel */ },
+> +};
+> +MODULE_DEVICE_TABLE(of, rockchip_pm_domain_dt_match);
+
+The MODULE_DEVICE_TABLE() macro will be preprocessed away for built-in
+code, according to include/linux/module.h.
+
+> +static struct platform_driver rockchip_pm_domain_driver = {
+> +	.probe = rockchip_pm_domain_probe,
+> +	.driver = {
+> +		.name   = "rockchip-pm-domain",
+> +		.owner  = THIS_MODULE,
+
+According to include/linux/export.h THIS_MODULE is equivalent to NULL
+for built-in code. So I think this line is not needed.
+
+> +		.of_match_table = rockchip_pm_domain_dt_match,
+> +		/*
+> +		 * We can't forcibly eject devices form power domain,
+> +		 * so we can't really remove power domains once they
+> +		 * were added.
+> +		 */
+> +		.suppress_bind_attrs = true,
+> +	},
+> +};
+
+Thanks,
+
+
+Paul Bolle
