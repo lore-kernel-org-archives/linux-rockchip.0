@@ -1,56 +1,108 @@
-From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
-Subject: Re: [PATCH] i2c: rk3x: report number of messages transmitted
-Date: Wed, 22 Apr 2015 09:42:54 +0200
-Message-ID: <20150422074254.GB1511@katana>
-References: <20150420221447.GA2005@dtor-ws>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2] CHROMIUM: iommu: rockchip: Make sure that page table
+ state is coherent
+Date: Thu, 23 Apr 2015 17:09:44 +0800
+Message-ID: <CAGS+omAPLMnwtMNhiakwc7Tn-yeMjdjiy3p=bxuj9AUQUrCO=A@mail.gmail.com>
+References: <1429530224-24719-1-git-send-email-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="3lcZGd9BuhuYXNfi"
-Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20150420221447.GA2005@dtor-ws>
-Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429530224-24719-1-git-send-email-tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Apr 20, 2015 at 7:43 PM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> To flush created mappings, current mapping code relies on the fact that
+> during unmap the driver zaps every IOVA being unmapped and that it is
+> enough to zap a single IOVA of page table to remove the entire page
+> table from IOMMU cache. Based on these assumptions the driver was made to
+> simply zap the first IOVA of the mapping being created. This is enough
+> to invalidate first page table, which could be shared with another
+> mapping (and thus could be already present in IOMMU cache), but
+> unfortunately it does not do anything about the last page table that
+> could be shared with other mappings as well.
+>
+> Moreover, the flushing is performed before page table contents are
+> actually modified, so there is a race between the CPU updating the page
+> tables and hardware that could be possibly running at the same time and
+> triggering IOMMU look-ups, which could bring back the page tables back
+> to the cache.
+>
+> To fix both issues, this patch makes the mapping code zap first and last
+> (if they are different) IOVAs of new mapping after the page table is
+> updated.
+>
+> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
---3lcZGd9BuhuYXNfi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+You probably want to remove the "CHROMIUM: " label in the subject.
+Other than that, this is still:
+Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-On Mon, Apr 20, 2015 at 03:14:47PM -0700, Dmitry Torokhov wrote:
-> master_xfer() method should return number of i2c messages transferred,
-> but on Rockchip we were usually returning just 1, which caused trouble
-> with users that actually check number of transferred messages vs.
-> checking for negative error codes.
->=20
-> Signed-off-by: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-Applied to for-current, thanks!
-
-
---3lcZGd9BuhuYXNfi
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJVN1D+AAoJEBQN5MwUoCm2KuMQAKW7fP5I53IaXNjvnEjvR8HL
-V2wv89jsrDB8WzuLvsoSlOe5CvIyC5+jx4TkwB8E5ajYlYDTuNz1OmDyLrG6C7xB
-ZQc5I0D0kdPqojnTG8cgTf4hmlmT35Opk+WCk0dzGGdb7scMifYeqHnLz4snfk/6
-m9JmHIX4Rp/i2EB/HPUyIwVTcpmnY4Jeep6SWbwjkyktTksdwIuAFJjr6D5kqmqL
-OxgZzbHcBui12+HrhI/2dmgCe16E/90aJyy+a5QNd2qmDPBiQvY1XcUKxTbXp6oC
-hPnnuZSOs3eiqxNdQwD4EqVBroIonPhhTaKfK55KOp2y287yWYTrDabrn+1V7D81
-T3gOZWC9eHFt44yPtZrSTMIBVfOkTwhE+1f2f1vQLVKXVHyRfSdq/LhSMo0sQ9n9
-rX3k1cHsLhhoLpKCd4ZLDQbVruM0Jg3yYXM/w1CN/EWrOW5BAJr85afrCk8A2MpT
-bZQDqln79wUZGSydbSRGTKmlvtQCI0+Wf8RK2hZgr2itfPRAuiWZYQsWxvkxnpzI
-LUe9uDhC1qg/ibyoro8GLIFV9lji13DeiWeboXbpIz9lzMm9Lk5Na/79Pqr+43i+
-jKJSS1pcPUzN+A0O9pSNqFYoeQ0nUPRTI+016W7aBJxffyhgHCqJy6mzwpamWKCW
-UvKf0vF6YHhZs8Y6jfOe
-=Smsr
------END PGP SIGNATURE-----
-
---3lcZGd9BuhuYXNfi--
+> ---
+>  drivers/iommu/rockchip-iommu.c | 23 +++++++++++++++++------
+>  1 file changed, 17 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 4015560..31004c0 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -551,6 +551,15 @@ static void rk_iommu_zap_iova(struct rk_iommu_domain *rk_domain,
+>         spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+>  }
+>
+> +static void rk_iommu_zap_iova_first_last(struct rk_iommu_domain *rk_domain,
+> +                                        dma_addr_t iova, size_t size)
+> +{
+> +       rk_iommu_zap_iova(rk_domain, iova, SPAGE_SIZE);
+> +       if (size > SPAGE_SIZE)
+> +               rk_iommu_zap_iova(rk_domain, iova + size - SPAGE_SIZE,
+> +                                       SPAGE_SIZE);
+> +}
+> +
+>  static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+>                                   dma_addr_t iova)
+>  {
+> @@ -575,12 +584,6 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+>         rk_table_flush(page_table, NUM_PT_ENTRIES);
+>         rk_table_flush(dte_addr, 1);
+>
+> -       /*
+> -        * Zap the first iova of newly allocated page table so iommu evicts
+> -        * old cached value of new dte from the iotlb.
+> -        */
+> -       rk_iommu_zap_iova(rk_domain, iova, SPAGE_SIZE);
+> -
+>  done:
+>         pt_phys = rk_dte_pt_address(dte);
+>         return (u32 *)phys_to_virt(pt_phys);
+> @@ -630,6 +633,14 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
+>
+>         rk_table_flush(pte_addr, pte_count);
+>
+> +       /*
+> +        * Zap the first and last iova to evict from iotlb any previously
+> +        * mapped cachelines holding stale values for its dte and pte.
+> +        * We only zap the first and last iova, since only they could have
+> +        * dte or pte shared with an existing mapping.
+> +        */
+> +       rk_iommu_zap_iova_first_last(rk_domain, iova, size);
+> +
+>         return 0;
+>  unwind:
+>         /* Unmap the range of iovas that we just mapped */
+> --
+> 2.2.0.rc0.207.ga3a616c
+>
