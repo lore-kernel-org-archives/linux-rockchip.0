@@ -1,28 +1,17 @@
-From: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Yunzhi Li <lyz@rock-chips.com>
 Subject: [PATCH] usb: dwc2: gadget: cleanup useless code
-Date: Sun, 26 Apr 2015 15:30:17 +0800
-Message-ID: <1430033417-19624-1-git-send-email-lyz@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Date: Sun, 26 Apr 2015 15:35:38 +0800
+Message-ID: <1430033738-20914-1-git-send-email-lyz@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: johnyoun@synopsys.com, gregory.herrero@intel.com, yousaf.kaukab@intel.com, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, rockchip-discuss@chromium.org, Yunzhi Li <lyz@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 dwc2 gadget driver s3c_hsotg_of_probe() run twice in
 dwc2_gadget_init() and the first one is useless, so remove it.
 
-Signed-off-by: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
 ---
  drivers/usb/dwc2/gadget.c | 2 --
  1 file changed, 2 deletions(-)
