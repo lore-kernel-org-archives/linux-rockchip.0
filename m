@@ -1,33 +1,45 @@
 From: Yunzhi Li <lyz@rock-chips.com>
-Subject: [PATCH] usb: dwc2: gadget: cleanup useless code
-Date: Sun, 26 Apr 2015 15:35:38 +0800
-Message-ID: <1430033738-20914-1-git-send-email-lyz@rock-chips.com>
+Subject: [PATCH v1 1/2] ARM: dts: rockchip: add properties for dwc2 usb otg controller
+Date: Sun, 26 Apr 2015 17:41:38 +0800
+Message-ID: <1430041299-24874-1-git-send-email-lyz@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: johnyoun@synopsys.com, gregory.herrero@intel.com, yousaf.kaukab@intel.com, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, rockchip-discuss@chromium.org, Yunzhi Li <lyz@rock-chips.com>
+To: heiko@sntech.de
+Cc: cf@rock-chips.com, hl@rock-chips.com, yk@rock-chips.com, gauravsh@google.com, alberto@google.com, wulf@rock-chips.com, Yunzhi Li <lyz@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-dwc2 gadget driver s3c_hsotg_of_probe() run twice in
-dwc2_gadget_init() and the first one is useless, so remove it.
+Add properties for dwc2 usb device controller according to
+Documentation/devicetree/bindings/usb/dwc2.txt
 
 Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
 ---
- drivers/usb/dwc2/gadget.c | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/usb/dwc2/gadget.c b/drivers/usb/dwc2/gadget.c
-index 6a30887..2ae74f2 100644
---- a/drivers/usb/dwc2/gadget.c
-+++ b/drivers/usb/dwc2/gadget.c
-@@ -3851,8 +3851,6 @@ int dwc2_gadget_init(struct dwc2_hsotg *hsotg, int irq)
- 	/* Set default UTMI width */
- 	hsotg->phyif = GUSBCFG_PHYIF16;
+ arch/arm/boot/dts/rk3288.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index eccc78d..2b55b07 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -432,6 +432,7 @@
+ 		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_USBHOST1>;
+ 		clock-names = "otg";
++		dr_mode = "host";
+ 		status = "disabled";
+ 	};
  
--	s3c_hsotg_of_probe(hsotg);
--
- 	/* Initialize to legacy fifo configuration values */
- 	hsotg->g_rx_fifo_sz = 2048;
- 	hsotg->g_np_g_tx_fifo_sz = 1024;
+@@ -442,6 +443,11 @@
+ 		interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_OTG0>;
+ 		clock-names = "otg";
++		dr_mode = "otg";
++		g-np-tx-fifo-size = <16>;
++		g-rx-fifo-size = <275>;
++		g-tx-fifo-size = <256 128 128 64 64 32>;
++		g-use-dma;
+ 		status = "disabled";
+ 	};
+ 
 -- 
 2.0.0
