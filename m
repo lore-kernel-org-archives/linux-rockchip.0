@@ -1,45 +1,40 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH v1 2/2] ARM: dts: rockchip: set dr_mode property for rk3288-firefly
- board
-Date: Sun, 26 Apr 2015 14:12:04 +0300
-Message-ID: <553CC804.4050206@cogentembedded.com>
-References: <1430041299-24874-1-git-send-email-lyz@rock-chips.com> <1430041299-24874-2-git-send-email-lyz@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [patch] thermal: rockchip: fix an error code
+Date: Mon, 27 Apr 2015 10:50:14 -0700
+Message-ID: <CAD=FV=VT5v_X=yXKF+WooFpHy=9=x6jVMp3RKhVGfrP1e_S81w@mail.gmail.com>
+References: <20150421093410.GE12098@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430041299-24874-2-git-send-email-lyz@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yunzhi Li <lyz@rock-chips.com>, heiko@sntech.de
-Cc: gauravsh@google.com, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, hl@rock-chips.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, devicetree@vger.kernel.org, alberto@google.com, linux-kernel@vger.kernel.org, yk@rock-chips.com, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, cf@rock-chips.com, wulf@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20150421093410.GE12098@mwanda>
+Sender: linux-pm-owner@vger.kernel.org
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Zhang Rui <rui.zhang@intel.com>, Caesar Wang <caesar.wang@rock-chips.com>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel-janitors@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello.
+Dan,
 
-On 4/26/2015 12:41 PM, Yunzhi Li wrote:
-
-> rk3288-firefly board use the dwc2 usb otg controller as a host
-> controller and the device mode not used, so the dr_mode should be
-> "host" then the dwc2 usb otg controller will work at host only
-> mode
-
-> Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
-
-> ---
-
->   arch/arm/boot/dts/rk3288-firefly.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-
-> diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-> index e6f873a..a861776 100644
-> --- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-> @@ -466,6 +466,7 @@
->   };
+On Tue, Apr 21, 2015 at 2:34 AM, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+> There is a copy and paste bug, "->clk" vs "->pclk", so we return the
+> wrong error code here.
 >
->   &usb_otg {
-> +	dr_modr = "host";
+> Fixes: cbac8f639437 ('thermal: rockchip: add driver for thermal')
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+>
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index 3aa46ac..cd8f5f93 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -529,7 +529,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+>
+>         thermal->pclk = devm_clk_get(&pdev->dev, "apb_pclk");
+>         if (IS_ERR(thermal->pclk)) {
+> -               error = PTR_ERR(thermal->clk);
+> +               error = PTR_ERR(thermal->pclk);
+>                 dev_err(&pdev->dev, "failed to get apb_pclk clock: %d\n",
+>                         error);
+>                 return error;
 
-    You meant to type "dr_mode".
+Thanks!  :)  An obvious fix, but just in case it helps feel free to add:
 
-WBR, Sergei
+Reviewed-by: Doug Anderson <dianders@chromium.org>
