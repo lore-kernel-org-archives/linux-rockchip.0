@@ -1,91 +1,68 @@
-From: Kevin Hilman <khilman@kernel.org>
-Subject: Re: [PATCH v14 0/3] ARM: rk3288: Add PM Domain support
-Date: Mon, 27 Apr 2015 11:28:42 -0700
-Message-ID: <7h383lzaqt.fsf@deeprootsystems.com>
-References: <1429862868-14218-1-git-send-email-wxt@rock-chips.com>
-	<3550912.kR0pejLP0h@diego>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [patch] thermal: rockchip: fix an error code
+Date: Tue, 28 Apr 2015 08:35:50 +0800
+Message-ID: <553ED5E6.3090800@rock-chips.com>
+References: <20150421093410.GE12098@mwanda> <55371080.4090307@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3550912.kR0pejLP0h@diego> ("Heiko =?utf-8?Q?St=C3=BCbner=22'?=
- =?utf-8?Q?s?= message of "Sat, 25
-	Apr 2015 20:47:49 +0200")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, tomasz.figa@gmail.com, linux-arm-kernel@lists.infradead.org, linus.walleij@linaro.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, galak@codeaurora.org, grant.likely@linaro.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, rdunlap@infradead.org, linux-doc@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, ulf.hansson@linaro.org, dmitry.torokhov@gmail.com, broonie@kernel.org, ijc+devicetree@hellion.org.uk, linux@arm.linux.org.uk
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <55371080.4090307-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Caesar Wang <caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko St=C3=BCbner <heiko@sntech.de> writes:
-
-> Am Freitag, 24. April 2015, 16:07:45 schrieb Caesar Wang:
->>     Add power domain drivers based on generic power domain for
->> Rockchip platform, and support RK3288.
->>=20
->>     Verified on url =3D
->>     https://chromium.googlesource.com/chromiumos/third_party/kernel.
->>=20
->>     At the moment,there are mass of products are using the driver.
->> I believe the driver can happy work for next kernel.
->
-> I've taken a look at the driver and here are some global remarks:
->
-> (1) You provide dt-bindings/power-domain/rk3288.h in patch 3. This br=
-eaks
-> bisectability, as the driver itself in patch 2 also includes the head=
-er and
-> would thus fail to compile if the later patch 3 is missing.
-> Ideally I think the header addition should be a separate patch itself=
-, so that
-> we can possibly share it between driver and dts branches.
-> So 1: binding doc, 2: binding-header, 3: driver, 4: dts-changes.
->
->
-> (2) The dts-changes in patch 3 should also add any necessary power-do=
-main
-> assignment on devices if they're still missing, so that we don't intr=
-oduce
-> regressions. In my case my work-in-progress edp died because the powe=
-rdomain
-> was turned off automatically it seems.
->
->
-> (3) more like wondering @Kevin or so, is there some more generic plac=
-e for a
-> power-domain driver nowadays?
-
-I think the preference has been to put these under drivers/soc/<vendor>=
- for now,
-so they can shared across arm32 and arm64.
-
-> (4) As Tomasz remarked previously the dts should represent the hardwa=
-re and
-> the power-domains are part of the pmu. There is a recent addition fro=
-m Linus
-> Walleij, called simple-mfd [a] that is supposed to get added real ear=
-ly for
-> kernel 4.2. So I'd think the power-domains should use that and the pa=
-tchset
-> modified to include the changes shown below [b]?
->
-> (5) Keven Hilman and Tomasz had reservations about all the device clo=
-cks
-> being listed in the power-domains itself in the previous versions. I =
-don't see
-> a comment from them yet changing that view.
-
-Correct. =20
-
-> Their wish was to get the clocks by reading the clocks from the devic=
-e nodes,
-> though I see a problem on how to handle devices that do not have any =
-bindings
-> at all yet.
->
-> Kevin, Tomasz any new thoughts?
-
-I don't see any issues with devices that don't have bindings, as all
-that would be needed would be to simple device nodes with a clock
-property.  I wouldn't even matter if those devices had device drivers.
-
-Kevin
+RGFuLAoK5ZyoIDIwMTXlubQwNOaciDIy5pelIDExOjA3LCBDYWVzYXIgV2FuZyDlhpnpgZM6Cj4K
+Pgo+IOWcqCAyMDE15bm0MDTmnIgyMeaXpSAxNzozNCwgRGFuIENhcnBlbnRlciDlhpnpgZM6Cj4+
+IFRoZXJlIGlzIGEgY29weSBhbmQgcGFzdGUgYnVnLCAiLT5jbGsiIHZzICItPnBjbGsiLCBzbyB3
+ZSByZXR1cm4gdGhlCj4+IHdyb25nIGVycm9yIGNvZGUgaGVyZS4KPj4KPj4gRml4ZXM6IGNiYWM4
+ZjYzOTQzNyAoJ3RoZXJtYWw6IHJvY2tjaGlwOiBhZGQgZHJpdmVyIGZvciB0aGVybWFsJykKPj4g
+U2lnbmVkLW9mZi1ieTogRGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgo+
+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyAKPj4g
+Yi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4+IGluZGV4IDNhYTQ2YWMuLmNk
+OGY1ZjkzIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5j
+Cj4+ICsrKyBiL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPj4gQEAgLTUyOSw3
+ICs1MjksNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3RoZXJtYWxfcHJvYmUoc3RydWN0IAo+PiBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAgICAgICAgdGhlcm1hbC0+cGNsayA9IGRldm1fY2xr
+X2dldCgmcGRldi0+ZGV2LCAiYXBiX3BjbGsiKTsKPj4gICAgICAgaWYgKElTX0VSUih0aGVybWFs
+LT5wY2xrKSkgewo+PiAtICAgICAgICBlcnJvciA9IFBUUl9FUlIodGhlcm1hbC0+Y2xrKTsKPj4g
+KyAgICAgICAgZXJyb3IgPSBQVFJfRVJSKHRoZXJtYWwtPnBjbGspOwo+IFllYWgsIHlvdSBhcmUg
+cmlnaHQuCj4gUmV2aWV3ZWQtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4K
+ClRlc3RlZC1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KCj4gVGhhbmtzLgo+
+Cj4gQ2Flc2FyCj4+ICAgICAgICAgICBkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gZ2V0
+IGFwYl9wY2xrIGNsb2NrOiAlZFxuIiwKPj4gICAgICAgICAgICAgICBlcnJvcik7Cj4+ICAgICAg
+ICAgICByZXR1cm4gZXJyb3I7Cj4+Cj4+Cj4+Cj4KCi0tIAoqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKgrnjovmmZPohb4gICAgQ2Flc2FyIFdhbmcKUHJvZHVjdCBSJkQgRGVwdC5JSUkKRnV6
+aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLkx0ZApBZGRy77yaICBOTy4xOCBCdWlsZGluZywg
+QSBEaXN0cmljdCwgRnV6aG91IFNvZnR3YXJlIFBhcmssR3Vsb3UgRGlzdHJpY3QsRnV6aG91LCBG
+dWppYW4sQ2hpbmEoRnV6aG91IEhlYWRxdWFydGVycykKICAgICAgICAgICAgICAgMjFGLE1hbGF0
+YSBCdWlsZGluZyxLZWppemhvbmd5aSBBdmVudWUsTmFuc2hhbiBEaXN0cmljdCxTaGVuemhlbiAg
+KFNoZW56aGVuIE9mZmljZSkKVGVs77yaKzg2LTU5MS04Mzk5MTkwNi8wNyAtIDgyMjEKTW9iaWxl
+Ois4NiAxNTA1OTQ1Njc0MgpFLW1haWwgOiB3eHRAcm9jay1jaGlwcy5jb20KKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgpJTVBPUlRB
+TlQgTk9USUNFOiBUaGlzIGVtYWlsIGlzIGZyb20gRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNz
+IENvLiwgTHRkIC5UaGUgY29udGVudHMgb2YgdGhpcyBlbWFpbCBhbmQgYW55IGF0dGFjaG1lbnRz
+IG1heQpjb250YWluIGluZm9ybWF0aW9uIHRoYXQgaXMgcHJpdmlsZWdlZCwgY29uZmlkZW50aWFs
+IGFuZC9vciBleGVtcHQgZnJvbSBkaXNjbG9zdXJlIHVuZGVyIGFwcGxpY2FibGUgbGF3IGFuZCBy
+ZWxldmFudCBOREEuCklmIHlvdSBhcmUgbm90IHRoZSBpbnRlbmRlZCByZWNpcGllbnQsIHlvdSBh
+cmUgaGVyZWJ5IG5vdGlmaWVkIHRoYXQgYW55IGRpc2Nsb3N1cmUsIGNvcHlpbmcsIGRpc3RyaWJ1
+dGlvbiwgb3IgdXNlIG9mIHRoZQppbmZvcm1hdGlvbiBpcyBTVFJJQ1RMWSBQUk9ISUJJVEVELiBQ
+bGVhc2UgaW1tZWRpYXRlbHkgY29udGFjdCB0aGUgc2VuZGVyIGFzIHNvb24gYXMgcG9zc2libGUg
+YW5kIGRlc3Ryb3kgdGhlIG1hdGVyaWFsCmluIGl0cyBlbnRpcmV0eSBpbiBhbnkgZm9ybWF0LiBU
+aGFuayB5b3UuCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
