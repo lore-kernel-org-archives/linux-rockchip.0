@@ -1,29 +1,26 @@
-From: Mikko Perttunen <mikko.perttunen@kapsi.fi>
-Subject: Re: [PATCH 1/2] clk: change clk_ops' ->round_rate() prototype
-Date: Tue, 28 Apr 2015 18:11:28 +0300
-Message-ID: <553FA320.4040006@kapsi.fi>
-References: <1429255769-13639-1-git-send-email-boris.brezillon@free-electrons.com> <1429255769-13639-2-git-send-email-boris.brezillon@free-electrons.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: add properties for dwc2 usb otg controller
+Date: Tue, 28 Apr 2015 22:59:36 +0200
+Message-ID: <2011633.QJ5Q5DcLz6@diego>
+References: <1430041299-24874-1-git-send-email-lyz@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <1429255769-13639-2-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-doc-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>, Mike Turquette <mturquette@linaro.org>
-Cc: Jonathan Corbet <corbet@lwn.net>, Shawn Guo <shawn.guo@linaro.org>, ascha Hauer <kernel@pengutronix.de>, David Brown <davidb@codeaurora.org>, Daniel Walker <dwalker@fifo99.com>, Bryan Huntsman <bryanh@codeaurora.org>, Tony Lindgren <tony@atomide.com>, Paul Walmsley <paul@pwsan.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Barry Song <baohua@kernel.org>, Viresh Kumar <viresh.linux@gmail.com>, =?UTF-8?B?RW1pbGlvIEzDs3Bleg==?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Stephen Warren <swarr>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1430041299-24874-1-git-send-email-lyz@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yunzhi Li <lyz@rock-chips.com>
+Cc: cf@rock-chips.com, hl@rock-chips.com, yk@rock-chips.com, gauravsh@google.com, alberto@google.com, wulf@rock-chips.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The series
+Am Sonntag, 26. April 2015, 17:41:38 schrieb Yunzhi Li:
+> Add properties for dwc2 usb device controller according to
+> Documentation/devicetree/bindings/usb/dwc2.txt
+> 
+> Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
 
-Tested-by: Mikko Perttunen <mikko.perttunen@kapsi.fi>
+applied to my dts branch for 4.2
 
-on Jetson-TK1.
 
-I rebased my cpufreq series on top of this and everything's working well 
-now. :)
-
-Thanks,
-Mikko.
-
-On 04/17/2015 10:29 AM, Boris Brezillon wrote:
-> ...
+thanks
+Heiko
