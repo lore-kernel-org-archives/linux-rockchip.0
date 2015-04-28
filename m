@@ -1,68 +1,64 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [patch] thermal: rockchip: fix an error code
-Date: Tue, 28 Apr 2015 08:35:50 +0800
-Message-ID: <553ED5E6.3090800@rock-chips.com>
-References: <20150421093410.GE12098@mwanda> <55371080.4090307@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <55371080.4090307-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Caesar Wang <caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: [PATCH v2 0/8] clk: Minor cleanups
+Date: Tue, 28 Apr 2015 13:46:15 +0900
+Message-ID: <1430196383-9190-1-git-send-email-k.kozlowski@samsung.com>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Kukjin Kim <kgene@kernel.org>, Barry Song <baohua@kernel.org>, Peter De Schrijver <pdeschrijver@nvidia.com>, Prashant Gaikwad <pgaikwad@nvidia.com>, Stephen Warren <swarren@wwwdotorg.org>, Thierry Reding <thierry.reding@gmail.com>, Alexandre Courbot <gnurou@gmail.com>, linux-mips@linux-mips.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
+Cc: Chanwoo Choi <cw00.choi@samsung.com>, Inki Dae <inki.dae@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RGFuLAoK5ZyoIDIwMTXlubQwNOaciDIy5pelIDExOjA3LCBDYWVzYXIgV2FuZyDlhpnpgZM6Cj4K
-Pgo+IOWcqCAyMDE15bm0MDTmnIgyMeaXpSAxNzozNCwgRGFuIENhcnBlbnRlciDlhpnpgZM6Cj4+
-IFRoZXJlIGlzIGEgY29weSBhbmQgcGFzdGUgYnVnLCAiLT5jbGsiIHZzICItPnBjbGsiLCBzbyB3
-ZSByZXR1cm4gdGhlCj4+IHdyb25nIGVycm9yIGNvZGUgaGVyZS4KPj4KPj4gRml4ZXM6IGNiYWM4
-ZjYzOTQzNyAoJ3RoZXJtYWw6IHJvY2tjaGlwOiBhZGQgZHJpdmVyIGZvciB0aGVybWFsJykKPj4g
-U2lnbmVkLW9mZi1ieTogRGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgo+
-Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyAKPj4g
-Yi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4+IGluZGV4IDNhYTQ2YWMuLmNk
-OGY1ZjkzIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5j
-Cj4+ICsrKyBiL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPj4gQEAgLTUyOSw3
-ICs1MjksNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3RoZXJtYWxfcHJvYmUoc3RydWN0IAo+PiBw
-bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAgICAgICAgdGhlcm1hbC0+cGNsayA9IGRldm1fY2xr
-X2dldCgmcGRldi0+ZGV2LCAiYXBiX3BjbGsiKTsKPj4gICAgICAgaWYgKElTX0VSUih0aGVybWFs
-LT5wY2xrKSkgewo+PiAtICAgICAgICBlcnJvciA9IFBUUl9FUlIodGhlcm1hbC0+Y2xrKTsKPj4g
-KyAgICAgICAgZXJyb3IgPSBQVFJfRVJSKHRoZXJtYWwtPnBjbGspOwo+IFllYWgsIHlvdSBhcmUg
-cmlnaHQuCj4gUmV2aWV3ZWQtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4K
-ClRlc3RlZC1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KCj4gVGhhbmtzLgo+
-Cj4gQ2Flc2FyCj4+ICAgICAgICAgICBkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gZ2V0
-IGFwYl9wY2xrIGNsb2NrOiAlZFxuIiwKPj4gICAgICAgICAgICAgICBlcnJvcik7Cj4+ICAgICAg
-ICAgICByZXR1cm4gZXJyb3I7Cj4+Cj4+Cj4+Cj4KCi0tIAoqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKgrnjovmmZPohb4gICAgQ2Flc2FyIFdhbmcKUHJvZHVjdCBSJkQgRGVwdC5JSUkKRnV6
-aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLkx0ZApBZGRy77yaICBOTy4xOCBCdWlsZGluZywg
-QSBEaXN0cmljdCwgRnV6aG91IFNvZnR3YXJlIFBhcmssR3Vsb3UgRGlzdHJpY3QsRnV6aG91LCBG
-dWppYW4sQ2hpbmEoRnV6aG91IEhlYWRxdWFydGVycykKICAgICAgICAgICAgICAgMjFGLE1hbGF0
-YSBCdWlsZGluZyxLZWppemhvbmd5aSBBdmVudWUsTmFuc2hhbiBEaXN0cmljdCxTaGVuemhlbiAg
-KFNoZW56aGVuIE9mZmljZSkKVGVs77yaKzg2LTU5MS04Mzk5MTkwNi8wNyAtIDgyMjEKTW9iaWxl
-Ois4NiAxNTA1OTQ1Njc0MgpFLW1haWwgOiB3eHRAcm9jay1jaGlwcy5jb20KKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgpJTVBPUlRB
-TlQgTk9USUNFOiBUaGlzIGVtYWlsIGlzIGZyb20gRnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNz
-IENvLiwgTHRkIC5UaGUgY29udGVudHMgb2YgdGhpcyBlbWFpbCBhbmQgYW55IGF0dGFjaG1lbnRz
-IG1heQpjb250YWluIGluZm9ybWF0aW9uIHRoYXQgaXMgcHJpdmlsZWdlZCwgY29uZmlkZW50aWFs
-IGFuZC9vciBleGVtcHQgZnJvbSBkaXNjbG9zdXJlIHVuZGVyIGFwcGxpY2FibGUgbGF3IGFuZCBy
-ZWxldmFudCBOREEuCklmIHlvdSBhcmUgbm90IHRoZSBpbnRlbmRlZCByZWNpcGllbnQsIHlvdSBh
-cmUgaGVyZWJ5IG5vdGlmaWVkIHRoYXQgYW55IGRpc2Nsb3N1cmUsIGNvcHlpbmcsIGRpc3RyaWJ1
-dGlvbiwgb3IgdXNlIG9mIHRoZQppbmZvcm1hdGlvbiBpcyBTVFJJQ1RMWSBQUk9ISUJJVEVELiBQ
-bGVhc2UgaW1tZWRpYXRlbHkgY29udGFjdCB0aGUgc2VuZGVyIGFzIHNvb24gYXMgcG9zc2libGUg
-YW5kIGRlc3Ryb3kgdGhlIG1hdGVyaWFsCmluIGl0cyBlbnRpcmV0eSBpbiBhbnkgZm9ybWF0LiBU
-aGFuayB5b3UuCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+
+Changes since v1
+================
+1. Rebase on next-20150427 and Sascha Hauer's:
+   clk: make strings in parent name arrays const [1]
+2. Add patch "clk: tegra: Fix inconsistent indenting".
+
+
+Description and dependencies
+============================
+Small cleanups for different clock drivers.
+
+The first three patches are independent.
+
+Rest of the patches (these related to constifying parent names,
+including the change for MIPS) depend on the "clk: make strings in
+parent name arrays const" from Sascha Hauer [1].
+
+
+Tested on Arndale Octa (Exynos5420) and Trats2 (Exynos4412). Other
+drivers (and MIPS related) only compile tested plus some static
+checkers.
+
+
+[1] http://www.spinics.net/lists/arm-kernel/msg413763.html
+
+Best regards,
+Krzysztof
+
+Krzysztof Kozlowski (8):
+  clk: rockchip: Staticize file-scope declarations
+  clk: exynos: Staticize file-scope declarations
+  clk: tegra: Fix inconsistent indenting
+  clk: tegra: Fix duplicate const for parent names
+  clk: cdce706: Constify parent names in clock init data
+  clk: sirf: Constify parent names in clock init data
+  clk: ls1x: Fix duplicate const for parent names
+  MIPS: Alchemy: Remove unneeded cast removing const
+
+ arch/mips/alchemy/common/clock.c     |  6 +--
+ drivers/clk/clk-cdce706.c            |  4 +-
+ drivers/clk/clk-ls1x.c               |  6 +--
+ drivers/clk/rockchip/clk-rk3188.c    |  2 +-
+ drivers/clk/rockchip/clk-rk3288.c    |  2 +-
+ drivers/clk/samsung/clk-exynos5260.c | 74 ++++++++++++++++++------------------
+ drivers/clk/samsung/clk-exynos5420.c | 10 ++---
+ drivers/clk/sirf/clk-common.c        | 12 +++---
+ drivers/clk/tegra/clk-emc.c          | 18 ++++-----
+ 9 files changed, 67 insertions(+), 67 deletions(-)
+
+-- 
+1.9.1
