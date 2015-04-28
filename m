@@ -1,26 +1,41 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: add properties for dwc2 usb otg controller
-Date: Tue, 28 Apr 2015 22:59:36 +0200
-Message-ID: <2011633.QJ5Q5DcLz6@diego>
-References: <1430041299-24874-1-git-send-email-lyz@rock-chips.com>
+From: John Youn <John.Youn@synopsys.com>
+Subject: Re: [PATCH] usb: dwc2: gadget: cleanup useless code
+Date: Tue, 28 Apr 2015 22:50:10 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE300772909017522C15E@US01WEMBX2.internal.synopsys.com>
+References: <1430033738-20914-1-git-send-email-lyz@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430041299-24874-1-git-send-email-lyz@rock-chips.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yunzhi Li <lyz@rock-chips.com>
-Cc: cf@rock-chips.com, hl@rock-chips.com, yk@rock-chips.com, gauravsh@google.com, alberto@google.com, wulf@rock-chips.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Yunzhi Li <lyz@rock-chips.com>, "John.Youn@synopsys.com" <John.Youn@synopsys.com>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "rockchip-discuss@chromium.org" <rockchip-discuss@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 26. April 2015, 17:41:38 schrieb Yunzhi Li:
-> Add properties for dwc2 usb device controller according to
-> Documentation/devicetree/bindings/usb/dwc2.txt
+On 4/26/2015 12:36 AM, Yunzhi Li wrote:
+> dwc2 gadget driver s3c_hsotg_of_probe() run twice in
+> dwc2_gadget_init() and the first one is useless, so remove it.
 > 
 > Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
+> ---
+>  drivers/usb/dwc2/gadget.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/usb/dwc2/gadget.c b/drivers/usb/dwc2/gadget.c
+> index 6a30887..2ae74f2 100644
+> --- a/drivers/usb/dwc2/gadget.c
+> +++ b/drivers/usb/dwc2/gadget.c
+> @@ -3851,8 +3851,6 @@ int dwc2_gadget_init(struct dwc2_hsotg *hsotg, int irq)
+>  	/* Set default UTMI width */
+>  	hsotg->phyif = GUSBCFG_PHYIF16;
+>  
+> -	s3c_hsotg_of_probe(hsotg);
+> -
+>  	/* Initialize to legacy fifo configuration values */
+>  	hsotg->g_rx_fifo_sz = 2048;
+>  	hsotg->g_np_g_tx_fifo_sz = 1024;
+> 
 
-applied to my dts branch for 4.2
 
-
-thanks
-Heiko
+Acked-by: John Youn <johnyoun@synopsys.com>
