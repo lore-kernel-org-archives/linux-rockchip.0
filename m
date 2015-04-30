@@ -1,48 +1,47 @@
-From: John Youn <John.Youn@synopsys.com>
-Subject: Re: [PATCH] usb: dwc2: gadget: cleanup useless code
-Date: Tue, 28 Apr 2015 22:58:22 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE300772909017522C3D5@US01WEMBX2.internal.synopsys.com>
-References: <1430033738-20914-1-git-send-email-lyz@rock-chips.com>
- <2B3535C5ECE8B5419E3ECBE300772909017522C15E@US01WEMBX2.internal.synopsys.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [GIT PULL] drm/rockchip: fixes and be rockchip/drm maintainer
+Date: Thu, 30 Apr 2015 09:32:57 +0200
+Message-ID: <1826975.bIcyc2ViyC@diego>
+References: <5534569E.2090601@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yunzhi Li <lyz@rock-chips.com>, "John.Youn@synopsys.com" <John.Youn@synopsys.com>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "balbi@ti.com" <balbi@ti.com>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "rockchip-discuss@chromium.org" <rockchip-discuss@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5534569E.2090601@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 4/28/2015 3:50 PM, John Youn wrote:
-> On 4/26/2015 12:36 AM, Yunzhi Li wrote:
->> dwc2 gadget driver s3c_hsotg_of_probe() run twice in
->> dwc2_gadget_init() and the first one is useless, so remove it.
->>
->> Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
->> ---
->>  drivers/usb/dwc2/gadget.c | 2 --
->>  1 file changed, 2 deletions(-)
->>
->> diff --git a/drivers/usb/dwc2/gadget.c b/drivers/usb/dwc2/gadget.c
->> index 6a30887..2ae74f2 100644
->> --- a/drivers/usb/dwc2/gadget.c
->> +++ b/drivers/usb/dwc2/gadget.c
->> @@ -3851,8 +3851,6 @@ int dwc2_gadget_init(struct dwc2_hsotg *hsotg, int irq)
->>  	/* Set default UTMI width */
->>  	hsotg->phyif = GUSBCFG_PHYIF16;
->>  
->> -	s3c_hsotg_of_probe(hsotg);
->> -
->>  	/* Initialize to legacy fifo configuration values */
->>  	hsotg->g_rx_fifo_sz = 2048;
->>  	hsotg->g_np_g_tx_fifo_sz = 1024;
->>
-> 
-> 
-> Acked-by: John Youn <johnyoun@synopsys.com>
-> 
-
-Added Felipe.
-
-John
+SGkgRGF2ZSwKCkFtIE1vbnRhZywgMjAuIEFwcmlsIDIwMTUsIDA5OjMwOjA2IHNjaHJpZWIgTWFy
+ayB5YW86Cj4gSGkgRGF2ZQo+ICAgICAgSSdtIGludGVyZXN0aW5nIHRvIG1haW50YWluIHRoZSBy
+b2NrY2hpcCBkcm0sIHNvIGFkZCBlbnRyeSBmb3IKPiBSb2NrY2hpcCBkcm0uCj4gICAgICBhbmQg
+c29tZSBmaXhlcy4KCmNhbiB5b3UgY29uc2lkZXIgdGhlc2UgYXMgZml4ZXMgZm9yIDQuMT8KCgpU
+aGFua3MKSGVpa28KCgo+IAo+ICAgICAgQ2FuIHlvdSBsYW5kIHRoZW0/Cj4gCj4gVGhlIGZvbGxv
+d2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCBhYTIxOWEwZGQ3Nzc0ZTI0NTRhNTY4N2U3ZDM4ZTk0
+N2ExMzFjZGVlOgo+IAo+ICAgIE1lcmdlIHRhZyAnZHJtLWludGVsLW5leHQtZml4ZXMtMjAxNS0w
+NC0xNScgb2YKPiBnaXQ6Ly9hbm9uZ2l0LmZyZWVkZXNrdG9wLm9yZy9kcm0taW50ZWwgaW50byBk
+cm0tbmV4dCAoMjAxNS0wNC0xNgo+IDA4OjM0OjUxICsxMDAwKQo+IAo+IGFyZSBhdmFpbGFibGUg
+aW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+IAo+IAo+ICAgIGh0dHBzOi8vZ2l0aHViLmNvbS9t
+YXJreXpxL2tlcm5lbC1kcm0tcm9ja2NoaXAuZ2l0IGRybS1uZXh0MDQyMAo+IAo+IGZvciB5b3Ug
+dG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAzZWE2ODkyMmZjNDE0OGFiYzk3NTU3ZGY0M2Q0YmE5YTEz
+NmIxYzhkOgo+IAo+ICAgIGRybS9yb2NrY2hpcDogZml4IGVycm9yIGNoZWNrIHdoZW4gZ2V0dGlu
+ZyBpcnEgKDIwMTUtMDQtMjAgMDk6MDI6MzEKPiArMDgwMCkKPiAKPiAtLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gSGVpa28g
+U3R1ZWJuZXIgKDIpOgo+ICAgICAgICBNQUlOVEFJTkVSUzogYWRkIGVudHJ5IGZvciBSb2NrY2hp
+cCBkcm0gZHJpdmVycwo+ICAgICAgICBkcm0vcm9ja2NoaXA6IGZpeCBlcnJvciBjaGVjayB3aGVu
+IGdldHRpbmcgaXJxCj4gCj4gICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIHwgICAgNyArKysrKysrCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jIHwgICAgOSArKysrKy0tLS0KPiAgIDIgZmlsZXMgY2hhbmdlZCwgMTIgaW5z
+ZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
