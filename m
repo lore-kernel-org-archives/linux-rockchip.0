@@ -1,59 +1,31 @@
-From: Caesar Wang <sasukewxt@163.com>
-Subject: Re: [PATCH] i2c: rk3x: Increase wait timeout to 1 second
-Date: Fri, 01 May 2015 11:42:53 +0800
-Message-ID: <5542F63D.3000402@163.com>
-References: <1430430247-9632-1-git-send-email-dianders@chromium.org>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v2 3/8] clk: tegra: Fix inconsistent indenting
+Date: Fri, 1 May 2015 11:46:55 -0700
+Message-ID: <20150501184655.GA29653@codeaurora.org>
+References: <1430196383-9190-1-git-send-email-k.kozlowski@samsung.com>
+ <1430196383-9190-4-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430430247-9632-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Wolfram Sang <wsa@the-dreams.de>
-Cc: Addy Ke <addy.ke@rock-chips.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Max Schwarz <max.schwarz@online.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1430196383-9190-4-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Ralf Baechle <ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Max Filippov <jcmvbkbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter De Schrijver <pdeschrijver-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2015=E5=B9=B405=E6=9C=8801=E6=97=A5 05:44, Doug Anderson =E5=86=
-=99=E9=81=93:
-> While it's not sensible for an i2c command to _actually_ need more
-> than 200ms to complete, let's increase the timeout anyway.  Why?  It
-> turns out that if you've got a large number of printks going out to a
-> serial console, interrupts on a CPU can be disabled for hundreds of
-> milliseconds. That's not a great situation to be in to start with
-> (maybe we should put a cap in vprintk_emit()) but it's pretty annoyin=
-g
-> to start seeing unexplained i2c timeouts.
->
-> A normal system shouldn't see i2c timeouts anyway, so increasing the
-> timeout should help people debugging without hurting other people
-> excessively.
->
-> Signed-off-by: Doug Anderson <dianders@chromium.org>
+On 04/28, Krzysztof Kozlowski wrote:
+> Fix the indentation - spaces used instead of tabs and actually wrong
+> number of spaces.
+> 
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 > ---
->   drivers/i2c/busses/i2c-rk3x.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-r=
-k3x.c
-> index 019d542..72e97e30 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -72,7 +72,7 @@ enum {
->   #define REG_INT_ALL       0x7f
->  =20
->   /* Constants */
-> -#define WAIT_TIMEOUT      200 /* ms */
-> +#define WAIT_TIMEOUT      1000 /* ms */
-Yeah,verified on veyron device.
+>  drivers/clk/tegra/clk-emc.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
 
-Tested-by: Caesar Wang <wxt@rock-chips.com>
+What branch is this against? I don't see this in linux-next or
+clk-next.
 
-Thanks.
-Caesar
-
->   #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
->  =20
->   enum rk3x_i2c_state {
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
