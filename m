@@ -1,40 +1,70 @@
-From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH] iommu: rockchip: fix build without CONFIG_OF
-Date: Tue, 5 May 2015 15:19:29 +0200
-Message-ID: <20150505131929.GE5438@suse.de>
-References: <3138014.xYAj3FssJ8@wuerfel>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] ARM: dts: cros-ec-keyboard: Add support for some Japanese keys
+Date: Tue, 5 May 2015 11:10:42 -0700
+Message-ID: <CAD=FV=VW0s=PHUvATPC_XRPFh=49RcSYxUP56B4KRXDM6F4mnQ@mail.gmail.com>
+References: <1430791657-28014-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <3138014.xYAj3FssJ8@wuerfel>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1430791657-28014-1-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>, Olof Johansson <olof@lixom.net>
+Cc: Dmitry Torokhov <dtor@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Apr 10, 2015 at 11:58:24PM +0200, Arnd Bergmann wrote:
-> The rockchip iommu driver references its of_device_id table
-> from the init function, which fails to build when the table
-> is undefined:
-> 
-> iommu/rockchip-iommu.c: In function 'rk_iommu_init':
-> iommu/rockchip-iommu.c:1029:35: error: 'rk_iommu_dt_ids' undeclared (first use in this function)
->   np = of_find_matching_node(NULL, rk_iommu_dt_ids);
-> 
-> This removes the #ifdef and the corresponding of_match_ptr wrapper
-> to make it build both with CONFIG_OF enabled or disabled.
-> 
-> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-> Fixes: 425061b0f5074 ("iommu/rockchip: Play nice in multi-platform builds")
+Chris,
 
-Applied to iommu/fixes, thanks.
+On Mon, May 4, 2015 at 7:07 PM, Chris Zhong <zyw@rock-chips.com> wrote:
+> Add support for 4 Japanese keys
+>
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+>
+> ---
+>
+>  arch/arm/boot/dts/cros-ec-keyboard.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/cros-ec-keyboard.dtsi b/arch/arm/boot/dts/cros-ec-keyboard.dtsi
+> index 9c7fb0a..4e42f30c 100644
+> --- a/arch/arm/boot/dts/cros-ec-keyboard.dtsi
+> +++ b/arch/arm/boot/dts/cros-ec-keyboard.dtsi
+> @@ -22,6 +22,7 @@
+>                         MATRIX_KEY(0x00, 0x02, KEY_F1)
+>                         MATRIX_KEY(0x00, 0x03, KEY_B)
+>                         MATRIX_KEY(0x00, 0x04, KEY_F10)
+> +                       MATRIX_KEY(0x00, 0x05, KEY_RO)
+>                         MATRIX_KEY(0x00, 0x06, KEY_N)
+>                         MATRIX_KEY(0x00, 0x08, KEY_EQUAL)
+>                         MATRIX_KEY(0x00, 0x0a, KEY_RIGHTALT)
+> @@ -34,6 +35,7 @@
+>                         MATRIX_KEY(0x01, 0x08, KEY_APOSTROPHE)
+>                         MATRIX_KEY(0x01, 0x09, KEY_F9)
+>                         MATRIX_KEY(0x01, 0x0b, KEY_BACKSPACE)
+> +                       MATRIX_KEY(0x01, 0x0c, KEY_HENKAN)
+>
+>                         MATRIX_KEY(0x02, 0x00, KEY_LEFTCTRL)
+>                         MATRIX_KEY(0x02, 0x01, KEY_TAB)
+> @@ -45,6 +47,7 @@
+>                         MATRIX_KEY(0x02, 0x07, KEY_102ND)
+>                         MATRIX_KEY(0x02, 0x08, KEY_LEFTBRACE)
+>                         MATRIX_KEY(0x02, 0x09, KEY_F8)
+> +                       MATRIX_KEY(0x02, 0x0a, KEY_YEN)
+>
+>                         MATRIX_KEY(0x03, 0x01, KEY_GRAVE)
+>                         MATRIX_KEY(0x03, 0x02, KEY_F2)
+> @@ -53,6 +56,7 @@
+>                         MATRIX_KEY(0x03, 0x06, KEY_6)
+>                         MATRIX_KEY(0x03, 0x08, KEY_MINUS)
+>                         MATRIX_KEY(0x03, 0x0b, KEY_BACKSLASH)
+> +                       MATRIX_KEY(0x03, 0x0c, KEY_MUHENKAN)
+>
+>                         MATRIX_KEY(0x04, 0x00, KEY_RIGHTCTRL)
+>                         MATRIX_KEY(0x04, 0x01, KEY_A)
+
+Since there's no clear architecture here, I'd bet Olof would be the
+one to take this.  I added him to this email, but he might request
+that you resend the patch with him in the "To:" line.
+
+Other than that:
+
+Reviewed-by: Doug Anderson <dianders@chromium.org>
