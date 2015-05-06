@@ -1,63 +1,62 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH] ARM: dts: cros-ec-keyboard: Add support for some Japanese keys
-Date: Wed,  6 May 2015 09:03:38 +0800
-Message-ID: <1430874218-27738-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/8] clk: Minor cleanups
+Date: Tue, 5 May 2015 22:56:53 -0700
+Message-ID: <20150506055653.GF10871@codeaurora.org>
+References: <1430196383-9190-1-git-send-email-k.kozlowski@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1430196383-9190-1-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Ralf Baechle <ralf-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Max Filippov <jcmvbkbc-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sylwester Nawrocki <s.nawrocki-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Peter De Schrijver <pdeschrijver-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Prashant Gaikwad <pgaikwad-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for 4 Japanese keys
+On 04/28, Krzysztof Kozlowski wrote:
+> Hi,
+> 
+> 
+> Changes since v1
+> ================
+> 1. Rebase on next-20150427 and Sascha Hauer's:
+>    clk: make strings in parent name arrays const [1]
+> 2. Add patch "clk: tegra: Fix inconsistent indenting".
+> 
+> 
+> Description and dependencies
+> ============================
+> Small cleanups for different clock drivers.
+> 
+> The first three patches are independent.
+> 
+> Rest of the patches (these related to constifying parent names,
+> including the change for MIPS) depend on the "clk: make strings in
+> parent name arrays const" from Sascha Hauer [1].
+> 
+> 
+> Tested on Arndale Octa (Exynos5420) and Trats2 (Exynos4412). Other
+> drivers (and MIPS related) only compile tested plus some static
+> checkers.
+> 
+> 
+> [1] http://www.spinics.net/lists/arm-kernel/msg413763.html
+> 
+> Best regards,
+> Krzysztof
+> 
+> Krzysztof Kozlowski (8):
+>   clk: rockchip: Staticize file-scope declarations
+>   clk: exynos: Staticize file-scope declarations
+>   clk: tegra: Fix inconsistent indenting
+>   clk: tegra: Fix duplicate const for parent names
+>   clk: cdce706: Constify parent names in clock init data
+>   clk: sirf: Constify parent names in clock init data
+>   clk: ls1x: Fix duplicate const for parent names
+>   MIPS: Alchemy: Remove unneeded cast removing const
 
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Applied 1,2,5,6,7 to clk-next
 
----
-
- arch/arm/boot/dts/cros-ec-keyboard.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm/boot/dts/cros-ec-keyboard.dtsi b/arch/arm/boot/dts/cros-ec-keyboard.dtsi
-index 9c7fb0a..4e42f30c 100644
---- a/arch/arm/boot/dts/cros-ec-keyboard.dtsi
-+++ b/arch/arm/boot/dts/cros-ec-keyboard.dtsi
-@@ -22,6 +22,7 @@
- 			MATRIX_KEY(0x00, 0x02, KEY_F1)
- 			MATRIX_KEY(0x00, 0x03, KEY_B)
- 			MATRIX_KEY(0x00, 0x04, KEY_F10)
-+			MATRIX_KEY(0x00, 0x05, KEY_RO)
- 			MATRIX_KEY(0x00, 0x06, KEY_N)
- 			MATRIX_KEY(0x00, 0x08, KEY_EQUAL)
- 			MATRIX_KEY(0x00, 0x0a, KEY_RIGHTALT)
-@@ -34,6 +35,7 @@
- 			MATRIX_KEY(0x01, 0x08, KEY_APOSTROPHE)
- 			MATRIX_KEY(0x01, 0x09, KEY_F9)
- 			MATRIX_KEY(0x01, 0x0b, KEY_BACKSPACE)
-+			MATRIX_KEY(0x01, 0x0c, KEY_HENKAN)
- 
- 			MATRIX_KEY(0x02, 0x00, KEY_LEFTCTRL)
- 			MATRIX_KEY(0x02, 0x01, KEY_TAB)
-@@ -45,6 +47,7 @@
- 			MATRIX_KEY(0x02, 0x07, KEY_102ND)
- 			MATRIX_KEY(0x02, 0x08, KEY_LEFTBRACE)
- 			MATRIX_KEY(0x02, 0x09, KEY_F8)
-+			MATRIX_KEY(0x02, 0x0a, KEY_YEN)
- 
- 			MATRIX_KEY(0x03, 0x01, KEY_GRAVE)
- 			MATRIX_KEY(0x03, 0x02, KEY_F2)
-@@ -53,6 +56,7 @@
- 			MATRIX_KEY(0x03, 0x06, KEY_6)
- 			MATRIX_KEY(0x03, 0x08, KEY_MINUS)
- 			MATRIX_KEY(0x03, 0x0b, KEY_BACKSLASH)
-+			MATRIX_KEY(0x03, 0x0c, KEY_MUHENKAN)
- 
- 			MATRIX_KEY(0x04, 0x00, KEY_RIGHTCTRL)
- 			MATRIX_KEY(0x04, 0x01, KEY_A)
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
