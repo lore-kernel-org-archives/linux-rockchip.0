@@ -1,103 +1,33 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 1/2] clk: change clk_ops' ->round_rate() prototype
-Date: Thu, 7 May 2015 09:37:02 +0200
-Message-ID: <20150507093702.0b58753d@bbrezillon>
-References: <1430407809-31147-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1430407809-31147-2-git-send-email-boris.brezillon@free-electrons.com>
-	<20150507063953.GC32399@codeaurora.org>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: rockchip: some soc-level fixes for 4.1
+Date: Thu, 7 May 2015 18:20:55 +0200
+Message-ID: <201505071820.55720.arnd@arndb.de>
+References: <1612786.HeTW0LsLmg@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <20150507063953.GC32399@codeaurora.org>
-Sender: linux-doc-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Mike Turquette <mturquette@linaro.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Shawn Guo <shawn.guo@linaro.org>, ascha Hauer <kernel@pengutronix.de>, David Brown <davidb@codeaurora.org>, Daniel Walker <dwalker@fifo99.com>, Bryan Huntsman <bryanh@codeaurora.org>, Tony Lindgren <tony@atomide.com>, Paul Walmsley <paul@pwsan.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Barry Song <baohua@kernel.org>, Viresh Kumar <viresh.linux@gmail.com>, Emilio =?UTF-8?B?TMOzcGV6?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Peter
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1612786.HeTW0LsLmg@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?iso-8859-1?q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Stephen,
+On Saturday 25 April 2015, Heiko St=FCbner wrote:
+> Hi Arnd, Olof,
+> =
 
-On Wed, 6 May 2015 23:39:53 -0700
-Stephen Boyd <sboyd@codeaurora.org> wrote:
+> I've collected some fixes which might be appropriate for 4.1-rc,
+> so if they're ok, please pull.
 
-> On 04/30, Boris Brezillon wrote:
-> > Clock rates are stored in an unsigned long field, but ->round_rate()
-> > (which returns a rounded rate from a requested one) returns a long
-> > value (errors are reported using negative error codes), which can lead
-> > to long overflow if the clock rate exceed 2Ghz.
-> > 
-> > Change ->round_rate() prototype to return 0 or an error code, and pass the
-> > requested rate as a pointer so that it can be adjusted depending on
-> > hardware capabilities.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> > Tested-by: Heiko Stuebner <heiko@sntech.de>
-> > Tested-by: Mikko Perttunen <mikko.perttunen@kapsi.fi>
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> 
-> This patch is fairly invasive, and it probably doesn't even
-> matter for most of these clock providers to be able to round a
-> rate above 2GHz.
+Pulled into fixes branch, thanks and sorry for the delay.
 
-Fair enough.
-
-> I've been trying to remove the .round_rate op
-> from the framework by encouraging new features via the
-> .determine_rate op.
-
-Oh, I wasn't aware of that (BTW, that's a good thing).
-Maybe this should be clearly stated (both in the struct clk_ops
-kerneldoc header and in Documentation/clk.txt).
-
-> Sadly, we still have to do a flag day and
-> change all the .determine_rate ops when we want to add things.
-
-Yes, but the number of clk drivers implementing ->determine_rate() is
-still quite limited compared to those implementing ->round_rate().
-
-> 
-> What if we changed determine_rate ops to take a struct
-> clk_determine_info (or some better named structure) instead of
-> the current list of arguments that it currently takes? Then when
-> we want to make these sorts of framework wide changes we can just
-> throw a new member into that structure and be done.
-
-I really like this idea, especially since I was wondering if we could
-pass other 'clk rate requirements' like the rounding policy (down,
-closest, up), or the maximum clk inaccuracy.
-
-> 
-> It doesn't solve the unsigned long to int return value problem
-> though. We can solve that by gradually introducing a new op and
-> handling another case in the rounding path. If we can come up
-> with some good name for that new op like .decide_rate or
-> something then it makes things nicer in the long run. I like the
-> name .determine_rate though :/
-
-Why not changing the ->determine_rate() prototype. As said above, the
-number of clk drivers implementing this function is still quite
-limited, and I guess we can have an ack for all of them.
-
-> 
-> The benefit of all this is that we don't have to worry about
-> finding the random clk providers that get added into other
-> subsystems and fixing them up. If drivers actually care about
-> this problem then they'll be fixed to use the proper op. FYI,
-> last time we updated the function signature of .determine_rate we
-> broke a couple drivers along the way.
-> 
-
-Hm, IMHO, adding a new op is not a good thing. I agree that it eases
-the transition, but ITOH you'll have to live with old/deprecated ops in
-your clk_ops structure with people introducing new drivers still using
-the old ops (see the number of clk drivers implementing ->round_rate()
-instead of ->determine_rate()).
-
-Best Regards,
-
-Boris
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+	Arnd
