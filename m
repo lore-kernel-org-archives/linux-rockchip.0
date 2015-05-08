@@ -1,33 +1,148 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: rockchip: some soc-level fixes for 4.1
-Date: Thu, 7 May 2015 18:20:55 +0200
-Message-ID: <201505071820.55720.arnd@arndb.de>
-References: <1612786.HeTW0LsLmg@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1612786.HeTW0LsLmg@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?iso-8859-1?q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: [PATCH] drm/rockchip: Add BGR formats to VOP
+Date: Fri,  8 May 2015 17:16:08 +0900
+Message-ID: <1431072968-12696-1-git-send-email-tfiga@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Saturday 25 April 2015, Heiko St=FCbner wrote:
-> Hi Arnd, Olof,
-> =
+VOP can support BGR formats in all windows thanks to red/blue swap option
+provided in WINx_CTRL0 registers. This patch enables support for
+ABGR8888, XBGR8888, BGR888 and BGR565 formats by using this feature.
 
-> I've collected some fixes which might be appropriate for 4.1-rc,
-> so if they're ok, please pull.
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 33 +++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-Pulled into fixes branch, thanks and sorry for the delay.
-
-	Arnd
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 4557f33..45fa11c 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -169,6 +169,7 @@ struct vop_win_phy {
+ 
+ 	struct vop_reg enable;
+ 	struct vop_reg format;
++	struct vop_reg rb_swap;
+ 	struct vop_reg act_info;
+ 	struct vop_reg dsp_info;
+ 	struct vop_reg dsp_st;
+@@ -198,8 +199,12 @@ struct vop_data {
+ static const uint32_t formats_01[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_ABGR8888,
+ 	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
+ 	DRM_FORMAT_RGB565,
++	DRM_FORMAT_BGR565,
+ 	DRM_FORMAT_NV12,
+ 	DRM_FORMAT_NV16,
+ 	DRM_FORMAT_NV24,
+@@ -208,8 +213,12 @@ static const uint32_t formats_01[] = {
+ static const uint32_t formats_234[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
++	DRM_FORMAT_XBGR8888,
++	DRM_FORMAT_ABGR8888,
+ 	DRM_FORMAT_RGB888,
++	DRM_FORMAT_BGR888,
+ 	DRM_FORMAT_RGB565,
++	DRM_FORMAT_BGR565,
+ };
+ 
+ static const struct vop_win_phy win01_data = {
+@@ -217,6 +226,7 @@ static const struct vop_win_phy win01_data = {
+ 	.nformats = ARRAY_SIZE(formats_01),
+ 	.enable = VOP_REG(WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(WIN0_CTRL0, 0x7, 1),
++	.rb_swap = VOP_REG(WIN0_CTRL0, 0x1, 12),
+ 	.act_info = VOP_REG(WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(WIN0_DSP_INFO, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(WIN0_DSP_ST, 0x1fff1fff, 0),
+@@ -233,6 +243,7 @@ static const struct vop_win_phy win23_data = {
+ 	.nformats = ARRAY_SIZE(formats_234),
+ 	.enable = VOP_REG(WIN2_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(WIN2_CTRL0, 0x7, 1),
++	.rb_swap = VOP_REG(WIN0_CTRL0, 0x1, 12),
+ 	.dsp_info = VOP_REG(WIN2_DSP_INFO0, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(WIN2_DSP_ST0, 0x1fff1fff, 0),
+ 	.yrgb_mst = VOP_REG(WIN2_MST0, 0xffffffff, 0),
+@@ -246,6 +257,7 @@ static const struct vop_win_phy cursor_data = {
+ 	.nformats = ARRAY_SIZE(formats_234),
+ 	.enable = VOP_REG(HWC_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(HWC_CTRL0, 0x7, 1),
++	.rb_swap = VOP_REG(WIN0_CTRL0, 0x1, 12),
+ 	.dsp_st = VOP_REG(HWC_DSP_ST, 0x1fff1fff, 0),
+ 	.yrgb_mst = VOP_REG(HWC_MST, 0xffffffff, 0),
+ };
+@@ -351,15 +363,32 @@ static inline void vop_mask_write_relaxed(struct vop *vop, uint32_t offset,
+ 	}
+ }
+ 
++static bool has_rb_swapped(uint32_t format)
++{
++	switch (format) {
++	case DRM_FORMAT_XBGR8888:
++	case DRM_FORMAT_ABGR8888:
++	case DRM_FORMAT_BGR888:
++	case DRM_FORMAT_BGR565:
++		return true;
++	default:
++		return false;
++	}
++}
++
+ static enum vop_data_format vop_convert_format(uint32_t format)
+ {
+ 	switch (format) {
+ 	case DRM_FORMAT_XRGB8888:
+ 	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_XBGR8888:
++	case DRM_FORMAT_ABGR8888:
+ 		return VOP_FMT_ARGB8888;
+ 	case DRM_FORMAT_RGB888:
++	case DRM_FORMAT_BGR888:
+ 		return VOP_FMT_RGB888;
+ 	case DRM_FORMAT_RGB565:
++	case DRM_FORMAT_BGR565:
+ 		return VOP_FMT_RGB565;
+ 	case DRM_FORMAT_NV12:
+ 		return VOP_FMT_YUV420SP;
+@@ -377,6 +406,7 @@ static bool is_alpha_support(uint32_t format)
+ {
+ 	switch (format) {
+ 	case DRM_FORMAT_ARGB8888:
++	case DRM_FORMAT_ABGR8888:
+ 		return true;
+ 	default:
+ 		return false;
+@@ -587,6 +617,7 @@ static int vop_update_plane_event(struct drm_plane *plane,
+ 	enum vop_data_format format;
+ 	uint32_t val;
+ 	bool is_alpha;
++	bool rb_swap;
+ 	bool visible;
+ 	int ret;
+ 	struct drm_rect dest = {
+@@ -620,6 +651,7 @@ static int vop_update_plane_event(struct drm_plane *plane,
+ 		return 0;
+ 
+ 	is_alpha = is_alpha_support(fb->pixel_format);
++	rb_swap = has_rb_swapped(fb->pixel_format);
+ 	format = vop_convert_format(fb->pixel_format);
+ 	if (format < 0)
+ 		return format;
+@@ -688,6 +720,7 @@ static int vop_update_plane_event(struct drm_plane *plane,
+ 	val = (dsp_sty - 1) << 16;
+ 	val |= (dsp_stx - 1) & 0xffff;
+ 	VOP_WIN_SET(vop, win, dsp_st, val);
++	VOP_WIN_SET(vop, win, rb_swap, rb_swap);
+ 
+ 	if (is_alpha) {
+ 		VOP_WIN_SET(vop, win, dst_alpha_ctl,
+-- 
+2.2.0.rc0.207.ga3a616c
