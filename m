@@ -1,59 +1,112 @@
-From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2] CHROMIUM: iommu: rockchip: Make sure that page table
- state is coherent
-Date: Fri, 8 May 2015 17:22:10 +0900
-Message-ID: <CAAFQd5A2aN_nMtUY52GMbmRWP_ibzn-Nw0sRcZtQBN=25UKa1Q@mail.gmail.com>
-References: <1429530224-24719-1-git-send-email-tfiga@chromium.org>
- <CAGS+omAPLMnwtMNhiakwc7Tn-yeMjdjiy3p=bxuj9AUQUrCO=A@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Add BGR formats to VOP
+Date: Fri, 08 May 2015 16:40:10 +0800
+Message-ID: <554C766A.8070103@rock-chips.com>
+References: <1431072968-12696-1-git-send-email-tfiga@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGS+omAPLMnwtMNhiakwc7Tn-yeMjdjiy3p=bxuj9AUQUrCO=A@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1431072968-12696-1-git-send-email-tfiga@chromium.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>, dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Apr 23, 2015 at 6:09 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> On Mon, Apr 20, 2015 at 7:43 PM, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
->> To flush created mappings, current mapping code relies on the fact that
->> during unmap the driver zaps every IOVA being unmapped and that it is
->> enough to zap a single IOVA of page table to remove the entire page
->> table from IOMMU cache. Based on these assumptions the driver was made to
->> simply zap the first IOVA of the mapping being created. This is enough
->> to invalidate first page table, which could be shared with another
->> mapping (and thus could be already present in IOMMU cache), but
->> unfortunately it does not do anything about the last page table that
->> could be shared with other mappings as well.
->>
->> Moreover, the flushing is performed before page table contents are
->> actually modified, so there is a race between the CPU updating the page
->> tables and hardware that could be possibly running at the same time and
->> triggering IOMMU look-ups, which could bring back the page tables back
->> to the cache.
->>
->> To fix both issues, this patch makes the mapping code zap first and last
->> (if they are different) IOVAs of new mapping after the page table is
->> updated.
->>
->> Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->
-> You probably want to remove the "CHROMIUM: " label in the subject.
-
-Sorry, I removed gerrit tags, but hurrying up too much, I missed the
-label. I see, though, that Joerg has applied this patch already with
-this fixed up. Thanks.
-
-Best regards,
-Tomasz
+SGkgVG9tYXN6CiAgICAgVGhhbmtzIGZvciB0aGUgZml4LCBidXQgc29tZSByZWdpc3RlciBpcyB3
+cm9uZy4KCk9uIDIwMTXlubQwNeaciDA45pelIDE2OjE2LCBUb21hc3ogRmlnYSB3cm90ZToKPiBW
+T1AgY2FuIHN1cHBvcnQgQkdSIGZvcm1hdHMgaW4gYWxsIHdpbmRvd3MgdGhhbmtzIHRvIHJlZC9i
+bHVlIHN3YXAgb3B0aW9uCj4gcHJvdmlkZWQgaW4gV0lOeF9DVFJMMCByZWdpc3RlcnMuIFRoaXMg
+cGF0Y2ggZW5hYmxlcyBzdXBwb3J0IGZvcgo+IEFCR1I4ODg4LCBYQkdSODg4OCwgQkdSODg4IGFu
+ZCBCR1I1NjUgZm9ybWF0cyBieSB1c2luZyB0aGlzIGZlYXR1cmUuCj4KPiBTaWduZWQtb2ZmLWJ5
+OiBUb21hc3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDMzICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrCj4gICAxIGZpbGUgY2hhbmdlZCwgMzMgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNDU1N2YzMy4u
+NDVmYTExYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYwo+IEBAIC0xNjksNiArMTY5LDcgQEAgc3RydWN0IHZvcF93aW5fcGh5IHsKPiAgIAo+ICAg
+CXN0cnVjdCB2b3BfcmVnIGVuYWJsZTsKPiAgIAlzdHJ1Y3Qgdm9wX3JlZyBmb3JtYXQ7Cj4gKwlz
+dHJ1Y3Qgdm9wX3JlZyByYl9zd2FwOwo+ICAgCXN0cnVjdCB2b3BfcmVnIGFjdF9pbmZvOwo+ICAg
+CXN0cnVjdCB2b3BfcmVnIGRzcF9pbmZvOwo+ICAgCXN0cnVjdCB2b3BfcmVnIGRzcF9zdDsKPiBA
+QCAtMTk4LDggKzE5OSwxMiBAQCBzdHJ1Y3Qgdm9wX2RhdGEgewo+ICAgc3RhdGljIGNvbnN0IHVp
+bnQzMl90IGZvcm1hdHNfMDFbXSA9IHsKPiAgIAlEUk1fRk9STUFUX1hSR0I4ODg4LAo+ICAgCURS
+TV9GT1JNQVRfQVJHQjg4ODgsCj4gKwlEUk1fRk9STUFUX1hCR1I4ODg4LAo+ICsJRFJNX0ZPUk1B
+VF9BQkdSODg4OCwKPiAgIAlEUk1fRk9STUFUX1JHQjg4OCwKPiArCURSTV9GT1JNQVRfQkdSODg4
+LAo+ICAgCURSTV9GT1JNQVRfUkdCNTY1LAo+ICsJRFJNX0ZPUk1BVF9CR1I1NjUsCj4gICAJRFJN
+X0ZPUk1BVF9OVjEyLAo+ICAgCURSTV9GT1JNQVRfTlYxNiwKPiAgIAlEUk1fRk9STUFUX05WMjQs
+Cj4gQEAgLTIwOCw4ICsyMTMsMTIgQEAgc3RhdGljIGNvbnN0IHVpbnQzMl90IGZvcm1hdHNfMDFb
+XSA9IHsKPiAgIHN0YXRpYyBjb25zdCB1aW50MzJfdCBmb3JtYXRzXzIzNFtdID0gewo+ICAgCURS
+TV9GT1JNQVRfWFJHQjg4ODgsCj4gICAJRFJNX0ZPUk1BVF9BUkdCODg4OCwKPiArCURSTV9GT1JN
+QVRfWEJHUjg4ODgsCj4gKwlEUk1fRk9STUFUX0FCR1I4ODg4LAo+ICAgCURSTV9GT1JNQVRfUkdC
+ODg4LAo+ICsJRFJNX0ZPUk1BVF9CR1I4ODgsCj4gICAJRFJNX0ZPUk1BVF9SR0I1NjUsCj4gKwlE
+Uk1fRk9STUFUX0JHUjU2NSwKPiAgIH07Cj4gICAKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9w
+X3dpbl9waHkgd2luMDFfZGF0YSA9IHsKPiBAQCAtMjE3LDYgKzIyNiw3IEBAIHN0YXRpYyBjb25z
+dCBzdHJ1Y3Qgdm9wX3dpbl9waHkgd2luMDFfZGF0YSA9IHsKPiAgIAkubmZvcm1hdHMgPSBBUlJB
+WV9TSVpFKGZvcm1hdHNfMDEpLAo+ICAgCS5lbmFibGUgPSBWT1BfUkVHKFdJTjBfQ1RSTDAsIDB4
+MSwgMCksCj4gICAJLmZvcm1hdCA9IFZPUF9SRUcoV0lOMF9DVFJMMCwgMHg3LCAxKSwKPiArCS5y
+Yl9zd2FwID0gVk9QX1JFRyhXSU4wX0NUUkwwLCAweDEsIDEyKSwKPiAgIAkuYWN0X2luZm8gPSBW
+T1BfUkVHKFdJTjBfQUNUX0lORk8sIDB4MWZmZjFmZmYsIDApLAo+ICAgCS5kc3BfaW5mbyA9IFZP
+UF9SRUcoV0lOMF9EU1BfSU5GTywgMHgwZmZmMGZmZiwgMCksCj4gICAJLmRzcF9zdCA9IFZPUF9S
+RUcoV0lOMF9EU1BfU1QsIDB4MWZmZjFmZmYsIDApLAo+IEBAIC0yMzMsNiArMjQzLDcgQEAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSB3aW4yM19kYXRhID0gewo+ICAgCS5uZm9ybWF0
+cyA9IEFSUkFZX1NJWkUoZm9ybWF0c18yMzQpLAo+ICAgCS5lbmFibGUgPSBWT1BfUkVHKFdJTjJf
+Q1RSTDAsIDB4MSwgMCksCj4gICAJLmZvcm1hdCA9IFZPUF9SRUcoV0lOMl9DVFJMMCwgMHg3LCAx
+KSwKPiArCS5yYl9zd2FwID0gVk9QX1JFRyhXSU4wX0NUUkwwLCAweDEsIDEyKSwKU2hvdWxkIGJl
+OgoKCS5yYl9zd2FwID0gVk9QX1JFRyhWT1BfV0lOMl9DVFJMMCwgMHgxLCAxMiksCgo+ICAgCS5k
+c3BfaW5mbyA9IFZPUF9SRUcoV0lOMl9EU1BfSU5GTzAsIDB4MGZmZjBmZmYsIDApLAo+ICAgCS5k
+c3Bfc3QgPSBWT1BfUkVHKFdJTjJfRFNQX1NUMCwgMHgxZmZmMWZmZiwgMCksCj4gICAJLnlyZ2Jf
+bXN0ID0gVk9QX1JFRyhXSU4yX01TVDAsIDB4ZmZmZmZmZmYsIDApLAo+IEBAIC0yNDYsNiArMjU3
+LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSBjdXJzb3JfZGF0YSA9IHsKPiAg
+IAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZvcm1hdHNfMjM0KSwKPiAgIAkuZW5hYmxlID0gVk9Q
+X1JFRyhIV0NfQ1RSTDAsIDB4MSwgMCksCj4gICAJLmZvcm1hdCA9IFZPUF9SRUcoSFdDX0NUUkww
+LCAweDcsIDEpLAo+ICsJLnJiX3N3YXAgPSBWT1BfUkVHKFdJTjBfQ1RSTDAsIDB4MSwgMTIpLApj
+dXJzb3Igd2luIG5vdCBzdXBwb3J0IHJiX3N3YXAsIHJlbW92ZSBpdC4KPiAgIAkuZHNwX3N0ID0g
+Vk9QX1JFRyhIV0NfRFNQX1NULCAweDFmZmYxZmZmLCAwKSwKPiAgIAkueXJnYl9tc3QgPSBWT1Bf
+UkVHKEhXQ19NU1QsIDB4ZmZmZmZmZmYsIDApLAo+ICAgfTsKPiBAQCAtMzUxLDE1ICszNjMsMzIg
+QEAgc3RhdGljIGlubGluZSB2b2lkIHZvcF9tYXNrX3dyaXRlX3JlbGF4ZWQoc3RydWN0IHZvcCAq
+dm9wLCB1aW50MzJfdCBvZmZzZXQsCj4gICAJfQo+ICAgfQo+ICAgCj4gK3N0YXRpYyBib29sIGhh
+c19yYl9zd2FwcGVkKHVpbnQzMl90IGZvcm1hdCkKPiArewo+ICsJc3dpdGNoIChmb3JtYXQpIHsK
+PiArCWNhc2UgRFJNX0ZPUk1BVF9YQkdSODg4ODoKPiArCWNhc2UgRFJNX0ZPUk1BVF9BQkdSODg4
+ODoKPiArCWNhc2UgRFJNX0ZPUk1BVF9CR1I4ODg6Cj4gKwljYXNlIERSTV9GT1JNQVRfQkdSNTY1
+Ogo+ICsJCXJldHVybiB0cnVlOwo+ICsJZGVmYXVsdDoKPiArCQlyZXR1cm4gZmFsc2U7Cj4gKwl9
+Cj4gK30KPiArCj4gICBzdGF0aWMgZW51bSB2b3BfZGF0YV9mb3JtYXQgdm9wX2NvbnZlcnRfZm9y
+bWF0KHVpbnQzMl90IGZvcm1hdCkKPiAgIHsKPiAgIAlzd2l0Y2ggKGZvcm1hdCkgewo+ICAgCWNh
+c2UgRFJNX0ZPUk1BVF9YUkdCODg4ODoKPiAgIAljYXNlIERSTV9GT1JNQVRfQVJHQjg4ODg6Cj4g
+KwljYXNlIERSTV9GT1JNQVRfWEJHUjg4ODg6Cj4gKwljYXNlIERSTV9GT1JNQVRfQUJHUjg4ODg6
+Cj4gICAJCXJldHVybiBWT1BfRk1UX0FSR0I4ODg4Owo+ICAgCWNhc2UgRFJNX0ZPUk1BVF9SR0I4
+ODg6Cj4gKwljYXNlIERSTV9GT1JNQVRfQkdSODg4Ogo+ICAgCQlyZXR1cm4gVk9QX0ZNVF9SR0I4
+ODg7Cj4gICAJY2FzZSBEUk1fRk9STUFUX1JHQjU2NToKPiArCWNhc2UgRFJNX0ZPUk1BVF9CR1I1
+NjU6Cj4gICAJCXJldHVybiBWT1BfRk1UX1JHQjU2NTsKPiAgIAljYXNlIERSTV9GT1JNQVRfTlYx
+MjoKPiAgIAkJcmV0dXJuIFZPUF9GTVRfWVVWNDIwU1A7Cj4gQEAgLTM3Nyw2ICs0MDYsNyBAQCBz
+dGF0aWMgYm9vbCBpc19hbHBoYV9zdXBwb3J0KHVpbnQzMl90IGZvcm1hdCkKPiAgIHsKPiAgIAlz
+d2l0Y2ggKGZvcm1hdCkgewo+ICAgCWNhc2UgRFJNX0ZPUk1BVF9BUkdCODg4ODoKPiArCWNhc2Ug
+RFJNX0ZPUk1BVF9BQkdSODg4ODoKPiAgIAkJcmV0dXJuIHRydWU7Cj4gICAJZGVmYXVsdDoKPiAg
+IAkJcmV0dXJuIGZhbHNlOwo+IEBAIC01ODcsNiArNjE3LDcgQEAgc3RhdGljIGludCB2b3BfdXBk
+YXRlX3BsYW5lX2V2ZW50KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAo+ICAgCWVudW0gdm9wX2Rh
+dGFfZm9ybWF0IGZvcm1hdDsKPiAgIAl1aW50MzJfdCB2YWw7Cj4gICAJYm9vbCBpc19hbHBoYTsK
+PiArCWJvb2wgcmJfc3dhcDsKPiAgIAlib29sIHZpc2libGU7Cj4gICAJaW50IHJldDsKPiAgIAlz
+dHJ1Y3QgZHJtX3JlY3QgZGVzdCA9IHsKPiBAQCAtNjIwLDYgKzY1MSw3IEBAIHN0YXRpYyBpbnQg
+dm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgIAkJcmV0
+dXJuIDA7Cj4gICAKPiAgIAlpc19hbHBoYSA9IGlzX2FscGhhX3N1cHBvcnQoZmItPnBpeGVsX2Zv
+cm1hdCk7Cj4gKwlyYl9zd2FwID0gaGFzX3JiX3N3YXBwZWQoZmItPnBpeGVsX2Zvcm1hdCk7Cj4g
+ICAJZm9ybWF0ID0gdm9wX2NvbnZlcnRfZm9ybWF0KGZiLT5waXhlbF9mb3JtYXQpOwo+ICAgCWlm
+IChmb3JtYXQgPCAwKQo+ICAgCQlyZXR1cm4gZm9ybWF0Owo+IEBAIC02ODgsNiArNzIwLDcgQEAg
+c3RhdGljIGludCB2b3BfdXBkYXRlX3BsYW5lX2V2ZW50KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
+LAo+ICAgCXZhbCA9IChkc3Bfc3R5IC0gMSkgPDwgMTY7Cj4gICAJdmFsIHw9IChkc3Bfc3R4IC0g
+MSkgJiAweGZmZmY7Cj4gICAJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGRzcF9zdCwgdmFsKTsKPiAr
+CVZPUF9XSU5fU0VUKHZvcCwgd2luLCByYl9zd2FwLCByYl9zd2FwKTsKPiAgIAo+ICAgCWlmIChp
+c19hbHBoYSkgewo+ICAgCQlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgZHN0X2FscGhhX2N0bCwKCgot
+LSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
