@@ -1,102 +1,68 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH v2] drm/rockchip: Add BGR formats to VOP
-Date: Mon, 11 May 2015 19:55:39 +0900
-Message-ID: <1431341739-12523-1-git-send-email-tfiga@chromium.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2] i2c: rk3x: Increase wait timeout to 1 second
+Date: Mon, 11 May 2015 12:44:28 -0700
+Message-ID: <1431373468-18302-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Cc: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Vk9QIGNhbiBzdXBwb3J0IEJHUiBmb3JtYXRzIGluIGFsbCB3aW5kb3dzIHRoYW5rcyB0byByZWQv
-Ymx1ZSBzd2FwIG9wdGlvbgpwcm92aWRlZCBpbiBXSU54X0NUUkwwIHJlZ2lzdGVycy4gVGhpcyBw
-YXRjaCBlbmFibGVzIHN1cHBvcnQgZm9yCkFCR1I4ODg4LCBYQkdSODg4OCwgQkdSODg4IGFuZCBC
-R1I1NjUgZm9ybWF0cyBieSB1c2luZyB0aGlzIGZlYXR1cmUuCgpTaWduZWQtb2ZmLWJ5OiBUb21h
-c3ogRmlnYSA8dGZpZ2FAY2hyb21pdW0ub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzMyArKysrKysrKysrKysrKysrKysrKysrKysrKysrKwog
-MSBmaWxlIGNoYW5nZWQsIDMzIGluc2VydGlvbnMoKykKCkNoYW5nZXMgc2luY2UgdjE6CihodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzYzNjk1MzEvKQogLSBGaXhlZCByZWdpc3Rl
-ciBhZGRyZXNzZXMgZm9yIHdpbjIvMyBhbmQgaHdjIChyZXBvcnRlZCBieSBNYXJrIFlhbykuCgpk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggNDU1N2Yz
-My4uNjI1NGU5OCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jCkBAIC0xNjksNiArMTY5LDcgQEAgc3RydWN0IHZvcF93aW5fcGh5IHsKIAogCXN0cnVjdCB2
-b3BfcmVnIGVuYWJsZTsKIAlzdHJ1Y3Qgdm9wX3JlZyBmb3JtYXQ7CisJc3RydWN0IHZvcF9yZWcg
-cmJfc3dhcDsKIAlzdHJ1Y3Qgdm9wX3JlZyBhY3RfaW5mbzsKIAlzdHJ1Y3Qgdm9wX3JlZyBkc3Bf
-aW5mbzsKIAlzdHJ1Y3Qgdm9wX3JlZyBkc3Bfc3Q7CkBAIC0xOTgsOCArMTk5LDEyIEBAIHN0cnVj
-dCB2b3BfZGF0YSB7CiBzdGF0aWMgY29uc3QgdWludDMyX3QgZm9ybWF0c18wMVtdID0gewogCURS
-TV9GT1JNQVRfWFJHQjg4ODgsCiAJRFJNX0ZPUk1BVF9BUkdCODg4OCwKKwlEUk1fRk9STUFUX1hC
-R1I4ODg4LAorCURSTV9GT1JNQVRfQUJHUjg4ODgsCiAJRFJNX0ZPUk1BVF9SR0I4ODgsCisJRFJN
-X0ZPUk1BVF9CR1I4ODgsCiAJRFJNX0ZPUk1BVF9SR0I1NjUsCisJRFJNX0ZPUk1BVF9CR1I1NjUs
-CiAJRFJNX0ZPUk1BVF9OVjEyLAogCURSTV9GT1JNQVRfTlYxNiwKIAlEUk1fRk9STUFUX05WMjQs
-CkBAIC0yMDgsOCArMjEzLDEyIEBAIHN0YXRpYyBjb25zdCB1aW50MzJfdCBmb3JtYXRzXzAxW10g
-PSB7CiBzdGF0aWMgY29uc3QgdWludDMyX3QgZm9ybWF0c18yMzRbXSA9IHsKIAlEUk1fRk9STUFU
-X1hSR0I4ODg4LAogCURSTV9GT1JNQVRfQVJHQjg4ODgsCisJRFJNX0ZPUk1BVF9YQkdSODg4OCwK
-KwlEUk1fRk9STUFUX0FCR1I4ODg4LAogCURSTV9GT1JNQVRfUkdCODg4LAorCURSTV9GT1JNQVRf
-QkdSODg4LAogCURSTV9GT1JNQVRfUkdCNTY1LAorCURSTV9GT1JNQVRfQkdSNTY1LAogfTsKIAog
-c3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSB3aW4wMV9kYXRhID0gewpAQCAtMjE3LDYg
-KzIyNiw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgd2luMDFfZGF0YSA9IHsK
-IAkubmZvcm1hdHMgPSBBUlJBWV9TSVpFKGZvcm1hdHNfMDEpLAogCS5lbmFibGUgPSBWT1BfUkVH
-KFdJTjBfQ1RSTDAsIDB4MSwgMCksCiAJLmZvcm1hdCA9IFZPUF9SRUcoV0lOMF9DVFJMMCwgMHg3
-LCAxKSwKKwkucmJfc3dhcCA9IFZPUF9SRUcoV0lOMF9DVFJMMCwgMHgxLCAxMiksCiAJLmFjdF9p
-bmZvID0gVk9QX1JFRyhXSU4wX0FDVF9JTkZPLCAweDFmZmYxZmZmLCAwKSwKIAkuZHNwX2luZm8g
-PSBWT1BfUkVHKFdJTjBfRFNQX0lORk8sIDB4MGZmZjBmZmYsIDApLAogCS5kc3Bfc3QgPSBWT1Bf
-UkVHKFdJTjBfRFNQX1NULCAweDFmZmYxZmZmLCAwKSwKQEAgLTIzMyw2ICsyNDMsNyBAQCBzdGF0
-aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fcGh5IHdpbjIzX2RhdGEgPSB7CiAJLm5mb3JtYXRzID0g
-QVJSQVlfU0laRShmb3JtYXRzXzIzNCksCiAJLmVuYWJsZSA9IFZPUF9SRUcoV0lOMl9DVFJMMCwg
-MHgxLCAwKSwKIAkuZm9ybWF0ID0gVk9QX1JFRyhXSU4yX0NUUkwwLCAweDcsIDEpLAorCS5yYl9z
-d2FwID0gVk9QX1JFRyhXSU4yX0NUUkwwLCAweDEsIDEyKSwKIAkuZHNwX2luZm8gPSBWT1BfUkVH
-KFdJTjJfRFNQX0lORk8wLCAweDBmZmYwZmZmLCAwKSwKIAkuZHNwX3N0ID0gVk9QX1JFRyhXSU4y
-X0RTUF9TVDAsIDB4MWZmZjFmZmYsIDApLAogCS55cmdiX21zdCA9IFZPUF9SRUcoV0lOMl9NU1Qw
-LCAweGZmZmZmZmZmLCAwKSwKQEAgLTI0Niw2ICsyNTcsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
-IHZvcF93aW5fcGh5IGN1cnNvcl9kYXRhID0gewogCS5uZm9ybWF0cyA9IEFSUkFZX1NJWkUoZm9y
-bWF0c18yMzQpLAogCS5lbmFibGUgPSBWT1BfUkVHKEhXQ19DVFJMMCwgMHgxLCAwKSwKIAkuZm9y
-bWF0ID0gVk9QX1JFRyhIV0NfQ1RSTDAsIDB4NywgMSksCisJLnJiX3N3YXAgPSBWT1BfUkVHKEhX
-Q19DVFJMMCwgMHgxLCAxMiksCiAJLmRzcF9zdCA9IFZPUF9SRUcoSFdDX0RTUF9TVCwgMHgxZmZm
-MWZmZiwgMCksCiAJLnlyZ2JfbXN0ID0gVk9QX1JFRyhIV0NfTVNULCAweGZmZmZmZmZmLCAwKSwK
-IH07CkBAIC0zNTEsMTUgKzM2MywzMiBAQCBzdGF0aWMgaW5saW5lIHZvaWQgdm9wX21hc2tfd3Jp
-dGVfcmVsYXhlZChzdHJ1Y3Qgdm9wICp2b3AsIHVpbnQzMl90IG9mZnNldCwKIAl9CiB9CiAKK3N0
-YXRpYyBib29sIGhhc19yYl9zd2FwcGVkKHVpbnQzMl90IGZvcm1hdCkKK3sKKwlzd2l0Y2ggKGZv
-cm1hdCkgeworCWNhc2UgRFJNX0ZPUk1BVF9YQkdSODg4ODoKKwljYXNlIERSTV9GT1JNQVRfQUJH
-Ujg4ODg6CisJY2FzZSBEUk1fRk9STUFUX0JHUjg4ODoKKwljYXNlIERSTV9GT1JNQVRfQkdSNTY1
-OgorCQlyZXR1cm4gdHJ1ZTsKKwlkZWZhdWx0OgorCQlyZXR1cm4gZmFsc2U7CisJfQorfQorCiBz
-dGF0aWMgZW51bSB2b3BfZGF0YV9mb3JtYXQgdm9wX2NvbnZlcnRfZm9ybWF0KHVpbnQzMl90IGZv
-cm1hdCkKIHsKIAlzd2l0Y2ggKGZvcm1hdCkgewogCWNhc2UgRFJNX0ZPUk1BVF9YUkdCODg4ODoK
-IAljYXNlIERSTV9GT1JNQVRfQVJHQjg4ODg6CisJY2FzZSBEUk1fRk9STUFUX1hCR1I4ODg4Ogor
-CWNhc2UgRFJNX0ZPUk1BVF9BQkdSODg4ODoKIAkJcmV0dXJuIFZPUF9GTVRfQVJHQjg4ODg7CiAJ
-Y2FzZSBEUk1fRk9STUFUX1JHQjg4ODoKKwljYXNlIERSTV9GT1JNQVRfQkdSODg4OgogCQlyZXR1
-cm4gVk9QX0ZNVF9SR0I4ODg7CiAJY2FzZSBEUk1fRk9STUFUX1JHQjU2NToKKwljYXNlIERSTV9G
-T1JNQVRfQkdSNTY1OgogCQlyZXR1cm4gVk9QX0ZNVF9SR0I1NjU7CiAJY2FzZSBEUk1fRk9STUFU
-X05WMTI6CiAJCXJldHVybiBWT1BfRk1UX1lVVjQyMFNQOwpAQCAtMzc3LDYgKzQwNiw3IEBAIHN0
-YXRpYyBib29sIGlzX2FscGhhX3N1cHBvcnQodWludDMyX3QgZm9ybWF0KQogewogCXN3aXRjaCAo
-Zm9ybWF0KSB7CiAJY2FzZSBEUk1fRk9STUFUX0FSR0I4ODg4OgorCWNhc2UgRFJNX0ZPUk1BVF9B
-QkdSODg4ODoKIAkJcmV0dXJuIHRydWU7CiAJZGVmYXVsdDoKIAkJcmV0dXJuIGZhbHNlOwpAQCAt
-NTg3LDYgKzYxNyw3IEBAIHN0YXRpYyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3Qg
-ZHJtX3BsYW5lICpwbGFuZSwKIAllbnVtIHZvcF9kYXRhX2Zvcm1hdCBmb3JtYXQ7CiAJdWludDMy
-X3QgdmFsOwogCWJvb2wgaXNfYWxwaGE7CisJYm9vbCByYl9zd2FwOwogCWJvb2wgdmlzaWJsZTsK
-IAlpbnQgcmV0OwogCXN0cnVjdCBkcm1fcmVjdCBkZXN0ID0gewpAQCAtNjIwLDYgKzY1MSw3IEBA
-IHN0YXRpYyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZSwKIAkJcmV0dXJuIDA7CiAKIAlpc19hbHBoYSA9IGlzX2FscGhhX3N1cHBvcnQoZmItPnBpeGVs
-X2Zvcm1hdCk7CisJcmJfc3dhcCA9IGhhc19yYl9zd2FwcGVkKGZiLT5waXhlbF9mb3JtYXQpOwog
-CWZvcm1hdCA9IHZvcF9jb252ZXJ0X2Zvcm1hdChmYi0+cGl4ZWxfZm9ybWF0KTsKIAlpZiAoZm9y
-bWF0IDwgMCkKIAkJcmV0dXJuIGZvcm1hdDsKQEAgLTY4OCw2ICs3MjAsNyBAQCBzdGF0aWMgaW50
-IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJdmFsID0g
-KGRzcF9zdHkgLSAxKSA8PCAxNjsKIAl2YWwgfD0gKGRzcF9zdHggLSAxKSAmIDB4ZmZmZjsKIAlW
-T1BfV0lOX1NFVCh2b3AsIHdpbiwgZHNwX3N0LCB2YWwpOworCVZPUF9XSU5fU0VUKHZvcCwgd2lu
-LCByYl9zd2FwLCByYl9zd2FwKTsKIAogCWlmIChpc19hbHBoYSkgewogCQlWT1BfV0lOX1NFVCh2
-b3AsIHdpbiwgZHN0X2FscGhhX2N0bCwKLS0gCjIuMi4wLnJjMC4yMDcuZ2EzYTYxNmMKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Although unlikely, it is remotely possible for an i2c command to need
+more than 200ms complete. Unlike smbus, i2c devices can clock stretch
+for an unspecified amount of time. The longest time I've seen
+specified for a device is 144ms (bq27541 battery gas), but one could
+imagine a device taking a bit slower. 1 second "ought to be enough for
+anyone."
+
+The above is not the only justifcation for going above 200ms for a
+timeout, though.  It turns out that if you've got a large number of
+printks going out to a serial console, interrupts on a CPU can be
+disabled for hundreds of milliseconds. That's not a great situation to
+be in to start with (maybe we should put a cap in vprintk_emit()) but
+it's pretty annoying to start seeing unexplained i2c timeouts.
+
+Note that to understand why we can timeout when printk has interrupts
+disabled, you need to understand that on current Linux ARM kernels
+interrupts are routed to a single CPU in a multicore system. Thus,
+you can get:
+
+1. CPU1 is running rk3x_i2c_xfer()
+2. CPU0 calls vprintk_emit(), which disables all IRQs on CPU0.
+3. I2C interrupt is ready but is set to only run on CPU0, where IRQs
+   are disabled.
+4. CPU1 timeout expires. I2C interrupt is still ready, but CPU0 is
+   still sitting in the same vprintk_emit()
+5. CPU1 sees that no interrupt happened in 200ms, so timeout.
+
+A normal system shouldn't see i2c timeouts anyway, so increasing the
+timeout should help people debugging without hurting other people
+excessively.
+
+Signed-off-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+Changes in v2:
+- Update commit message as per Uwe
+
+ drivers/i2c/busses/i2c-rk3x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 019d542..72e97e30 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -72,7 +72,7 @@ enum {
+ #define REG_INT_ALL       0x7f
+ 
+ /* Constants */
+-#define WAIT_TIMEOUT      200 /* ms */
++#define WAIT_TIMEOUT      1000 /* ms */
+ #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
+ 
+ enum rk3x_i2c_state {
+-- 
+2.2.0.rc0.207.ga3a616c
