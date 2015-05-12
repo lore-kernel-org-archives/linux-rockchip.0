@@ -1,52 +1,56 @@
-From: "=?UTF-8?Q?Michael=20Niew=C3=B6hner?=" <mniewoeh-0BV18Q16miHGpFsiFCTsGXqWYbMAw+HU@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add
- system-power-controller toact8846
-Date: Tue, 12 May 2015 09:22:42 +0200
-Message-ID: <5551C66C020000D0000AFA23@gwia2.rz.hs-offenburg.de>
-References: <64DE272A-FD25-406C-A51B-6C5B76DA5171@stud.hs-offenburg.de>
- <2270228.43yCmaWq86@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2270228.43yCmaWq86@phil>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Xing Zheng <acgzxing@gmail.com>
+Subject: [PATCH 0/4] ASoC: rockchip: add rockchip machine driver
+Date: Tue, 12 May 2015 17:26:33 +0800
+Message-ID: <1431422797-31903-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org
+Cc: linux-rockchip@lists.infradead.org, zhengxing <zhengxing@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Liam Girdwood <lgirdwood@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SSBhZ3JlZSBvbiByZWxpY2Vuc2luZyB0byBncGwyL3gxMS4KCk1pY2hhZWwKCgoKCgo+IEFtIDEx
-LjA1LjIwMTUgdW0gMjM6NTggc2NocmllYiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
-PjoKPiAKPiBBbSBNb250YWcsIDExLiBNYWkgMjAxNSwgMjI6NTc6MjEgc2NocmllYiBNaWNoYWVs
-IE5pZXfDtmhuZXI6Cj4+IEFkZCBzeXN0ZW0tcG93ZXItY29udHJvbGxlciB0byBhY3Q4ODQ2IGlu
-IHJrMzE4OC1yYWR4YXJvY2suZHRzIGluCmFkZGl0aW9uCj4+IHRvIHRoZSBhY3Q4ODQ2IHBhdGNo
-IGZpeGluZyB0aGUgcmVib290IGtlcm5lbCBwYW5pYwo+PiAKPj4gU2lnbmVkLW9mZi1ieTogTWlj
-aGFlbCBOaWV3b2VobmVyIDxtbmlld29laEBzdHVkLmhzLW9mZmVuYnVyZy5kZT4KPiAKPiBJIGhh
-dmUgdG8gYXNrLCBhcmUgeW91IG9rIHdpdGggdGhlIHBlbmRpbmcgZHRzIHJlbGljZW5zaW5nIHRv
-IGEKZ3BsMi94MTEgZHVhbCAKPiBsaWNlbnNlIFswXT8KPiAKPiBPdGhlcndpc2UgdGhpcyBsb29r
-cyBmaW5lIGFuZCB0aGUgYWN0ODg0NiBpcyB0aGUgcG93ZXItY29udHJvbGxlciBvZgp0aGUgCj4g
-cmFkeGFyb2NrIGluIGFueSBjYXNlLCBzbyBJJ2xsIHRha2UgdGhpcyBvbmUgaW4gYW55IGNhc2Uu
-Cj4gCj4gCj4gSGVpa28KPiAKPiBbMF0KaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvcGlwZXJt
-YWlsL2xpbnV4LXJvY2tjaGlwLzIwMTUtTWFyY2gvMDAyNjQ0Lmh0bWwKPiAKPiAKPj4gLS0tCj4+
-IGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC1yYWR4YXJvY2suZHRzIHwgMSArCj4+IDEgZmlsZSBj
-aGFuZ2VkLCAxIGluc2VydGlvbigrKQo+PiAKPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3Qv
-ZHRzL3JrMzE4OC1yYWR4YXJvY2suZHRzCj4+IGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4LXJh
-ZHhhcm9jay5kdHMgaW5kZXggYmRmODU3MC4uMjI1YTBlYgoxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
-cm0vYm9vdC9kdHMvcmszMTg4LXJhZHhhcm9jay5kdHMKPj4gKysrIGIvYXJjaC9hcm0vYm9vdC9k
-dHMvcmszMTg4LXJhZHhhcm9jay5kdHMKPj4gQEAgLTE1Miw2ICsxNTIsNyBAQAo+PiAgICAgICAg
-Y29tcGF0aWJsZSA9ICJhY3RpdmUtc2VtaSxhY3Q4ODQ2IjsKPj4gICAgICAgIHJlZyA9IDwweDVh
-PjsKPj4gICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPj4gKyAgICAgICAgc3lzdGVtLXBvd2VyLWNv
-bnRyb2xsZXI7Cj4+IAo+PiAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gICAg
-ICAgIHBpbmN0cmwtMCA9IDwmYWN0ODg0Nl9kdnMwX2N0bD47Cj4gCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: zhengxing <zhengxing@rock-chips.com>
+
+
+Hi,
+
+These patches to add machine driver for rockchip platform.
+
+We intended to use simple-card on the project, but it seem like that have
+some issues(jack detection). We need the following features on the project,
+but simple-card is temporarily unable to provide them:
+1. We need dynamically recognize and select one codec from supported codecs
+   in dts.
+2. Simple-card don't provide to call the codec jack detection callback via dts
+   description (ts3a227e_enable_jack_detect for max98090, rt5645_set_jack_detect
+   for rt5645/rt5650).
+3. Simple-card support simple-widght only, but codec may use cunstom the name of
+   widget (rk_dapm_widgets: "Headset Mic", "Int Mic" in max98090).
+
+Simple-card is good generic machine driver, but if we want to replace simple-card
+in the exsiting work, it may bring other problems. Therefore, we want to upload
+these functions that we need.
+
+
+
+zhengxing (4):
+  ASoC: rockchip: add rockchip machine driver
+  ASoC: rockchip: add rockchip machine driver for max98090
+  ASoC: rockchip: add rockchip machine driver for rt5650/rt5645
+  ASoC: rockchip-audio-machine: add rockchip machine driver bindings
+
+ .../sound/rockchip,rockchip-audio-machine.txt      |   38 ++++
+ sound/soc/rockchip/Kconfig                         |   26 +++
+ sound/soc/rockchip/Makefile                        |    9 +
+ sound/soc/rockchip/rockchip_machine_driver.c       |  222 ++++++++++++++++++++
+ sound/soc/rockchip/rockchip_machine_driver.h       |   41 ++++
+ sound/soc/rockchip/rockchip_max98090.c             |  185 ++++++++++++++++
+ sound/soc/rockchip/rockchip_rt5645.c               |  220 +++++++++++++++++++
+ 7 files changed, 741 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rockchip-audio-machine.txt
+ create mode 100644 sound/soc/rockchip/rockchip_machine_driver.c
+ create mode 100644 sound/soc/rockchip/rockchip_machine_driver.h
+ create mode 100644 sound/soc/rockchip/rockchip_max98090.c
+ create mode 100644 sound/soc/rockchip/rockchip_rt5645.c
+
+-- 
+1.7.9.5
