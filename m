@@ -1,63 +1,52 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-	<u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2] i2c: rk3x: Increase wait timeout to 1 second
-Date: Tue, 12 May 2015 09:15:06 +0200
-Message-ID: <20150512071506.GW12671@pengutronix.de>
-References: <1431373468-18302-1-git-send-email-dianders@chromium.org>
+From: "=?UTF-8?Q?Michael=20Niew=C3=B6hner?=" <mniewoeh-0BV18Q16miHGpFsiFCTsGXqWYbMAw+HU@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add
+ system-power-controller toact8846
+Date: Tue, 12 May 2015 09:22:42 +0200
+Message-ID: <5551C66C020000D0000AFA23@gwia2.rz.hs-offenburg.de>
+References: <64DE272A-FD25-406C-A51B-6C5B76DA5171@stud.hs-offenburg.de>
+ <2270228.43yCmaWq86@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2270228.43yCmaWq86@phil>
 Content-Disposition: inline
-In-Reply-To: <1431373468-18302-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 11, 2015 at 12:44:28PM -0700, Doug Anderson wrote:
-> Although unlikely, it is remotely possible for an i2c command to need
-> more than 200ms complete. Unlike smbus, i2c devices can clock stretch
-> for an unspecified amount of time. The longest time I've seen
-> specified for a device is 144ms (bq27541 battery gas), but one could
-> imagine a device taking a bit slower. 1 second "ought to be enough fo=
-r
-> anyone."
->=20
-> The above is not the only justifcation for going above 200ms for a
-> timeout, though.  It turns out that if you've got a large number of
-> printks going out to a serial console, interrupts on a CPU can be
-> disabled for hundreds of milliseconds. That's not a great situation t=
-o
-> be in to start with (maybe we should put a cap in vprintk_emit()) but
-> it's pretty annoying to start seeing unexplained i2c timeouts.
->=20
-> Note that to understand why we can timeout when printk has interrupts
-> disabled, you need to understand that on current Linux ARM kernels
-> interrupts are routed to a single CPU in a multicore system. Thus,
-> you can get:
->=20
-> 1. CPU1 is running rk3x_i2c_xfer()
-> 2. CPU0 calls vprintk_emit(), which disables all IRQs on CPU0.
-> 3. I2C interrupt is ready but is set to only run on CPU0, where IRQs
->    are disabled.
-> 4. CPU1 timeout expires. I2C interrupt is still ready, but CPU0 is
->    still sitting in the same vprintk_emit()
-> 5. CPU1 sees that no interrupt happened in 200ms, so timeout.
->=20
-> A normal system shouldn't see i2c timeouts anyway, so increasing the
-> timeout should help people debugging without hurting other people
-> excessively.
->=20
-> Signed-off-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Tested-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-
-Thanks
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
-    |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
+SSBhZ3JlZSBvbiByZWxpY2Vuc2luZyB0byBncGwyL3gxMS4KCk1pY2hhZWwKCgoKCgo+IEFtIDEx
+LjA1LjIwMTUgdW0gMjM6NTggc2NocmllYiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
+PjoKPiAKPiBBbSBNb250YWcsIDExLiBNYWkgMjAxNSwgMjI6NTc6MjEgc2NocmllYiBNaWNoYWVs
+IE5pZXfDtmhuZXI6Cj4+IEFkZCBzeXN0ZW0tcG93ZXItY29udHJvbGxlciB0byBhY3Q4ODQ2IGlu
+IHJrMzE4OC1yYWR4YXJvY2suZHRzIGluCmFkZGl0aW9uCj4+IHRvIHRoZSBhY3Q4ODQ2IHBhdGNo
+IGZpeGluZyB0aGUgcmVib290IGtlcm5lbCBwYW5pYwo+PiAKPj4gU2lnbmVkLW9mZi1ieTogTWlj
+aGFlbCBOaWV3b2VobmVyIDxtbmlld29laEBzdHVkLmhzLW9mZmVuYnVyZy5kZT4KPiAKPiBJIGhh
+dmUgdG8gYXNrLCBhcmUgeW91IG9rIHdpdGggdGhlIHBlbmRpbmcgZHRzIHJlbGljZW5zaW5nIHRv
+IGEKZ3BsMi94MTEgZHVhbCAKPiBsaWNlbnNlIFswXT8KPiAKPiBPdGhlcndpc2UgdGhpcyBsb29r
+cyBmaW5lIGFuZCB0aGUgYWN0ODg0NiBpcyB0aGUgcG93ZXItY29udHJvbGxlciBvZgp0aGUgCj4g
+cmFkeGFyb2NrIGluIGFueSBjYXNlLCBzbyBJJ2xsIHRha2UgdGhpcyBvbmUgaW4gYW55IGNhc2Uu
+Cj4gCj4gCj4gSGVpa28KPiAKPiBbMF0KaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvcGlwZXJt
+YWlsL2xpbnV4LXJvY2tjaGlwLzIwMTUtTWFyY2gvMDAyNjQ0Lmh0bWwKPiAKPiAKPj4gLS0tCj4+
+IGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC1yYWR4YXJvY2suZHRzIHwgMSArCj4+IDEgZmlsZSBj
+aGFuZ2VkLCAxIGluc2VydGlvbigrKQo+PiAKPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3Qv
+ZHRzL3JrMzE4OC1yYWR4YXJvY2suZHRzCj4+IGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4LXJh
+ZHhhcm9jay5kdHMgaW5kZXggYmRmODU3MC4uMjI1YTBlYgoxMDA2NDQKPj4gLS0tIGEvYXJjaC9h
+cm0vYm9vdC9kdHMvcmszMTg4LXJhZHhhcm9jay5kdHMKPj4gKysrIGIvYXJjaC9hcm0vYm9vdC9k
+dHMvcmszMTg4LXJhZHhhcm9jay5kdHMKPj4gQEAgLTE1Miw2ICsxNTIsNyBAQAo+PiAgICAgICAg
+Y29tcGF0aWJsZSA9ICJhY3RpdmUtc2VtaSxhY3Q4ODQ2IjsKPj4gICAgICAgIHJlZyA9IDwweDVh
+PjsKPj4gICAgICAgIHN0YXR1cyA9ICJva2F5IjsKPj4gKyAgICAgICAgc3lzdGVtLXBvd2VyLWNv
+bnRyb2xsZXI7Cj4+IAo+PiAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4gICAg
+ICAgIHBpbmN0cmwtMCA9IDwmYWN0ODg0Nl9kdnMwX2N0bD47Cj4gCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
