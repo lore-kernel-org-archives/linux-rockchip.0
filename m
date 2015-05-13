@@ -1,15 +1,15 @@
 From: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/8] ARM: dts: rockchip: relicense rk3xxx.dtsi under
+Subject: Re: [PATCH 3/8] ARM: dts: rockchip: relicense rk3188.dtsi under
  GPLv2/X11
-Date: Wed, 13 May 2015 20:40:34 +0200
-Message-ID: <55539AA2.9020202@gmail.com>
+Date: Wed, 13 May 2015 20:41:07 +0200
+Message-ID: <55539AC3.9040606@gmail.com>
 References: <1425665046-22927-1-git-send-email-heiko@sntech.de>
- <1425665046-22927-2-git-send-email-heiko@sntech.de>
+ <1425665046-22927-4-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="windows-1252"; Format="flowed"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1425665046-22927-2-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <1425665046-22927-4-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,13 +22,13 @@ Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7u
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le 06/03/2015 19:03, Heiko Stuebner a =E9crit :
+Le 06/03/2015 19:04, Heiko Stuebner a =E9crit :
 > GPLv2-only devicetrees make reuse difficult for software components licen=
 sed
 > under a different license.
 >
 > The consensus is that a GPL/X11 dual-license should allow all necessary u=
 ses,
-> so relicense the rk3xxx.dtsi to this combination.
+> so relicense the rk3188.dtsi to this combination.
 
 Acked-by: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
