@@ -1,57 +1,57 @@
-From: zhengxing <zhengxing@rock-chips.com>
-Subject: Re: [PATCH 2/4] ASoC: rockchip: add rockchip machine driver for max98090
-Date: Wed, 13 May 2015 21:23:20 +0800
-Message-ID: <55535048.4030703@rock-chips.com>
-References: <1431422797-31903-1-git-send-email-zhengxing@rock-chips.com> <1431422797-31903-3-git-send-email-zhengxing@rock-chips.com> <20150512192636.GA3066@sirena.org.uk>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] ARM: rockchip: fixup duplicate suspend fix
+Date: Wed, 13 May 2015 16:17:24 +0200
+Message-ID: <4262241.MKs4C65R3h@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150512192636.GA3066@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Xing Zheng <acgzxing@gmail.com>, dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chris.zhong-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B405=E6=9C=8813=E6=97=A5 03:26, Mark Brown wrote:
-> On Tue, May 12, 2015 at 05:26:35PM +0800, Xing Zheng wrote:
->
->>   sound/soc/rockchip/Kconfig                   |   10 ++
->>   sound/soc/rockchip/Makefile                  |    2 +
->>   sound/soc/rockchip/rockchip_machine_driver.c |    6 +
->>   sound/soc/rockchip/rockchip_machine_driver.h |    6 +
->>   sound/soc/rockchip/rockchip_max98090.c       |  185 ++++++++++++++=
-++++++++++++
-> This looks more like a normal and reasonable machine driver but then =
-why
-> have you created the generic rockchip machine driver?  It seems like
-> this should just be a regular machine driver like other platforms hav=
-e,
-> were it not for that this would be mostly fine apart from a couple of
-> nitpicks below.
-We just use rockchip_machine_driver to describe the supported codecs ba=
-se on
-origianl way, vendor machine driver(rockchip_max98090) will achieve=20
-functions.
->> +config SND_SOC_ROCKCHIP_MAX98090
->> +	tristate "ASoC support for Rockchip boards using a MAX98090 codec"
->> +	depends on SND_SOC_ROCKCHIP&&  I2C&&  GPIOLIB
->> +	select SND_SOC_ROCKCHIP_I2S
->> +	select SND_SOC_MAX98090
->> +	select SND_SOC_TS3A227E
-> This looks like it's a driver specific to Chromebooks (possibly even
-> specific Chromeooks) and so should be named as such.
->
->> +	card->dapm.idle_bias_off =3D true;
-> Just set this when declaring the card, don't do it at runtime.
-Thanks, I got it.
->> +	snd_soc_dapm_enable_pin(dapm, "Headset Mic");
->> +	snd_soc_dapm_enable_pin(dapm, "Headphone");
->> +	snd_soc_dapm_enable_pin(dapm, "Speaker");
->> +	snd_soc_dapm_enable_pin(dapm, "Int Mic");
-> No need to do this, all pins are enabled by default.
-Yes, I got it.
->> +	snd_soc_dapm_sync(dapm);
-> This has no effect during initialization.
-Yes, I got it.
+Hi Arnd, Olof,
+
+it looks like I got confused when going through the patches fixing suspend
+issues and from the two of them only one is actually necessary, as both fix
+the same symptom. Thankfully Chris pointed out this issue and also
+confirmed which patch should actually be kept. So this pull-req reverts the
+other (obsolete) one.
+
+Sorry for the mess-up.
+
+Heiko
+
+
+The following changes since commit 2a9fe3ca84afff6259820c4f62e579f41476becc:
+
+  rockchip: make sure timer7 is enabled on rk3288 platforms (2015-04-16 21:22:17 +0200)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-socfixes2
+
+for you to fetch changes up to 3f937cf3db466093c533efbcd601952509727a9d:
+
+  Revert "ARM: rockchip: fix undefined instruction of reset_ctrl_regs" (2015-05-13 15:47:03 +0200)
+
+----------------------------------------------------------------
+The previous two suspend related fixes both fix the same issue
+so only one of them (the newer one) is actually needed.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      Revert "ARM: rockchip: fix undefined instruction of reset_ctrl_regs"
+
+ arch/arm/mach-rockchip/pm.c | 26 --------------------------
+ arch/arm/mach-rockchip/pm.h |  4 ----
+ 2 files changed, 30 deletions(-)
