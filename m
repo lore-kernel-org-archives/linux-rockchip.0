@@ -1,57 +1,38 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] ARM: rockchip: fixup duplicate suspend fix
-Date: Wed, 13 May 2015 16:17:24 +0200
-Message-ID: <4262241.MKs4C65R3h@phil>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] ARM: rockchip: fixup duplicate suspend fix
+Date: Wed, 13 May 2015 16:18:18 +0200
+Message-ID: <41527875.jtmyBXaoXQ@wuerfel>
+References: <4262241.MKs4C65R3h@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, chris.zhong-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <4262241.MKs4C65R3h@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org, chris.zhong@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Olof,
+On Wednesday 13 May 2015 16:17:24 Heiko Stuebner wrote:
+> Hi Arnd, Olof,
+> 
+> it looks like I got confused when going through the patches fixing suspend
+> issues and from the two of them only one is actually necessary, as both fix
+> the same symptom. Thankfully Chris pointed out this issue and also
+> confirmed which patch should actually be kept. So this pull-req reverts the
+> other (obsolete) one.
+> 
+> Sorry for the mess-up.
+> 
 
-it looks like I got confused when going through the patches fixing suspend
-issues and from the two of them only one is actually necessary, as both fix
-the same symptom. Thankfully Chris pointed out this issue and also
-confirmed which patch should actually be kept. So this pull-req reverts the
-other (obsolete) one.
+Pulled into the fixes branch, thanks!
 
-Sorry for the mess-up.
-
-Heiko
-
-
-The following changes since commit 2a9fe3ca84afff6259820c4f62e579f41476becc:
-
-  rockchip: make sure timer7 is enabled on rk3288 platforms (2015-04-16 21:22:17 +0200)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.1-rockchip-socfixes2
-
-for you to fetch changes up to 3f937cf3db466093c533efbcd601952509727a9d:
-
-  Revert "ARM: rockchip: fix undefined instruction of reset_ctrl_regs" (2015-05-13 15:47:03 +0200)
-
-----------------------------------------------------------------
-The previous two suspend related fixes both fix the same issue
-so only one of them (the newer one) is actually needed.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      Revert "ARM: rockchip: fix undefined instruction of reset_ctrl_regs"
-
- arch/arm/mach-rockchip/pm.c | 26 --------------------------
- arch/arm/mach-rockchip/pm.h |  4 ----
- 2 files changed, 30 deletions(-)
+	Arnd
