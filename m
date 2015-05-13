@@ -1,15 +1,15 @@
 From: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/8] ARM: dts: rockchip: relicense rk3066a.dtsi under
- GPLv2/X11
-Date: Wed, 13 May 2015 20:40:53 +0200
-Message-ID: <55539AB5.9010206@gmail.com>
+Subject: Re: [PATCH 7/8] ARM: dts: rockchip: relicense rk3188-radxarock.dts
+ under GPLv2/X11
+Date: Wed, 13 May 2015 20:41:20 +0200
+Message-ID: <55539AD0.8090002@gmail.com>
 References: <1425665046-22927-1-git-send-email-heiko@sntech.de>
- <1425665046-22927-3-git-send-email-heiko@sntech.de>
+ <1425665046-22927-8-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="windows-1252"; Format="flowed"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1425665046-22927-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <1425665046-22927-8-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -29,6 +29,6 @@ sed
 >
 > The consensus is that a GPL/X11 dual-license should allow all necessary u=
 ses,
-> so relicense the rk3066a.dtsi to this combination.
+> so relicense the rk3188-radxarock.dts to this combination.
 
 Acked-by: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
