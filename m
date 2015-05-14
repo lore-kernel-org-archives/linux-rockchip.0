@@ -1,94 +1,79 @@
-From: =?iso-8859-1?Q?Michael_Niew=F6hner?=
-	<mniewoeh@stud.hs-offenburg.de>
-Subject: Re: [PATCH 1/2] regulator: act8865: add restart handler for act8846
-Date: Thu, 14 May 2015 21:17:08 +0200
-Message-ID: <D1089B7C-607E-48E2-B349-47B80A0596DA@stud.hs-offenburg.de>
-References: <A1C80CFB-CDCA-4F88-BA5F-371918CECD97@stud.hs-offenburg.de> <2204003.IdqJV6LE2e@phil>
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2204003.IdqJV6LE2e@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: lgirdwood@gmail.com, broonie@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Dinh Nguyen <dinguyen@opensource.altera.com>
+Subject: Re: [PATCH net-next 00/11] convert stmmac glue layers into platform
+ drivers
+Date: Thu, 14 May 2015 14:53:46 -0500
+Message-ID: <5554FD4A.7050207@opensource.altera.com>
+References: <1431598266-25736-1-git-send-email-manabian@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1431598266-25736-1-git-send-email-manabian@gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Joachim Eastwood <manabian@gmail.com>, arnd@arndb.de, peppe.cavallaro@st.com, roger.chen@rock-chips.com, wens@csie.org, srinivas.kandagatla@st.com, b.galvani@gmail.com
+Cc: netdev@vger.kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-I reworked the patch and here it is ;-)
+On 05/14/2015 05:10 AM, Joachim Eastwood wrote:
+> This patch set aims to convert the current dwmac glue layers into
+> proper platform drivers as request by Arnd[1]. These changes start
+> from patch 3 and onwards.
+> 
+> Overview:
+> Platform driver functions like probe and remove are exported from
+> the stmmac platform and then used in subsequent glue later
+> conversions. The conversion involes adding the platform driver
+> boiler plate code and adding it to the build system. The last patch
+> removes the driver from the stmmac platform code thus making it into
+> a library for common platform driver functions.
+> 
+> The two first patches adds glue layer for my platform. I chose to
+> first add old style glue layer and then convert it. The churn this
+> creates is just 3 lines.
+> 
+> I would be very nice if people could test this patch set on their
+> respective platform. My testing has been limited to compiling and
+> testing on my (LPC18xx) platform. Thanks!
+> 
+> Next I will look into cleaning up the stmmac platform code.
+> 
+> [1] http://marc.info/?l=linux-arm-kernel&m=143059524606459&w=2
+> 
+> Joachim Eastwood (11):
+>   stmmac: add dwmac glue for NXP 18xx/43xx family
+>   doc: dt: add documentation for nxp,lpc1850-dwmac
+>   stmmac: prepare stmmac platform to support stand alone drivers
+>   stmmac: add a generic dwmac driver
+>   stmmac: convert dwmac-lpc18xx to a platform driver
+>   stmmac: convert dwmac-meson to platform driver
+>   stmmac: convert dwmac-rk to platform driver
+>   stmmac: convert dwmac-socfpga to platform driver
+>   stmmac: convert dwmac-sti to platform driver
+>   stmmac: convert dwmac-sunxi to platform driver
+>   stmmac: drop driver from stmmac platform code
+> 
+>  .../devicetree/bindings/net/nxp,lpc1850-dwmac.txt  | 20 +++++
+>  drivers/net/ethernet/stmicro/stmmac/Kconfig        | 76 +++++++++++++++++
+>  drivers/net/ethernet/stmicro/stmmac/Makefile       | 13 ++-
+>  .../net/ethernet/stmicro/stmmac/dwmac-generic.c    | 41 +++++++++
+>  .../net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c    | 99 ++++++++++++++++++++++
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-meson.c  | 24 +++++-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 27 +++++-
+>  .../net/ethernet/stmicro/stmmac/dwmac-socfpga.c    | 21 ++++-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c    | 29 ++++++-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c  | 25 +++++-
+>  .../net/ethernet/stmicro/stmmac/stmmac_platform.c  | 49 ++---------
+>  .../net/ethernet/stmicro/stmmac/stmmac_platform.h  |  9 +-
+>  12 files changed, 378 insertions(+), 55 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/nxp,lpc1850-dwmac.txt
+>  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-generic.c
+>  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c
+> 
 
 
-The act8846 provides means to reset the system when used as main pmic.
-This patch adds a restart handler for power cycling the regulator thus resetting
-the board / soc when system-power-controller in dts is set.
-This can be useful for example if there is no other means of reset.
+Tested-by: Dinh Nguyen <dinguyen@opensource.altera.com>
 
-Signed-off-by: Michael Niewoehner <mniewoeh@stud.hs-offenburg.de>
----
-diff --git a/drivers/regulator/act8865-regulator.c b/drivers/regulator/act8865-regulator.c
-index 2ff73d7..836d10b 100644
---- a/drivers/regulator/act8865-regulator.c
-+++ b/drivers/regulator/act8865-regulator.c
-@@ -27,6 +27,7 @@
- #include <linux/of_device.h>
- #include <linux/regulator/of_regulator.h>
- #include <linux/regmap.h>
-+#include <linux/reboot.h>
- 
- /*
-  * ACT8600 Global Register Map.
-@@ -133,6 +134,8 @@
- #define	ACT8865_VOLTAGE_NUM	64
- #define ACT8600_SUDCDC_VOLTAGE_NUM	255
- 
-+#define ACT8846_SIPC_MASK 0x01
-+
- struct act8865 {
- 	struct regmap *regmap;
- 	int off_reg;
-@@ -402,6 +405,22 @@ static void act8865_power_off(void)
- 	while (1);
- }
- 
-+static int act8846_power_cycle(struct notifier_block *this,
-+	unsigned long code, void *unused)
-+{
-+	struct act8865 *act8846;
-+
-+	act8846 = i2c_get_clientdata(act8865_i2c_client);
-+	regmap_write(act8846->regmap, ACT8846_GLB_OFF_CTRL, ACT8846_SIPC_MASK);
-+
-+	return NOTIFY_DONE;
-+}
-+
-+static struct notifier_block act8846_restart_handler = {
-+	.notifier_call = act8846_power_cycle,
-+	.priority = 129,
-+};
-+
- static int act8865_pmic_probe(struct i2c_client *client,
- 			      const struct i2c_device_id *i2c_id)
- {
-@@ -484,6 +503,8 @@ static int act8865_pmic_probe(struct i2c_client *client,
- 	}
- 
- 	if (of_device_is_system_power_controller(dev->of_node)) {
-+		int ret;
-+
- 		if (!pm_power_off && (off_reg > 0)) {
- 			act8865_i2c_client = client;
- 			act8865->off_reg = off_reg;
-@@ -492,6 +513,14 @@ static int act8865_pmic_probe(struct i2c_client *client,
- 		} else {
- 			dev_err(dev, "Failed to set poweroff capability, already defined\n");
- 		}
-+
-+		if (type == ACT8846) {
-+			act8865_i2c_client = client;
-+			ret = register_restart_handler(&act8846_restart_handler);
-+			if (ret)
-+				pr_err("%s: cannot register restart handler, %d\n",
-+					__func__, ret);
-+		}
- 	}
- 
- 	/* Finally register devices */
+on SoCFPGA devkit.
+
+Thanks,
+Dinh
