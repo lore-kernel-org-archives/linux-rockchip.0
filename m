@@ -1,44 +1,105 @@
-From: David Miller <davem@redhat.com>
-Subject: Re: [PATCH net-next 00/11] convert stmmac glue layers into
- platform drivers
-Date: Fri, 15 May 2015 12:44:46 -0400 (EDT)
-Message-ID: <20150515.124446.727849098381931716.davem@redhat.com>
-References: <1431598266-25736-1-git-send-email-manabian@gmail.com>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Subject: Re: [alsa-devel] [PATCH 1/4] ASoC: rockchip: add rockchip machine
+ driver
+Date: Fri, 15 May 2015 22:40:59 +0200
+Message-ID: <555659DB.9010204@metafoo.de>
+References: <1431422797-31903-1-git-send-email-zhengxing@rock-chips.com> <1431422797-31903-2-git-send-email-zhengxing@rock-chips.com> <20150512192215.GZ3066@sirena.org.uk> <55535035.5070608@rock-chips.com> <20150513164250.GB2761@sirena.org.uk> <CAEUnVG5+PqhkZ4TBMnfdbUr66-EaLVGDEewJ_=XZnfbvBEn13w@mail.gmail.com> <CAEUnVG5nkagx7CZC3t=-oOAyXOBaxxVynBxaGMf0NJpfr9ZVbA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1431598266-25736-1-git-send-email-manabian@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: manabian@gmail.com
-Cc: arnd@arndb.de, peppe.cavallaro@st.com, roger.chen@rock-chips.com, wens@csie.org, srinivas.kandagatla@st.com, dinguyen@opensource.altera.com, b.galvani@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAEUnVG5nkagx7CZC3t=-oOAyXOBaxxVynBxaGMf0NJpfr9ZVbA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dylan Reid <dgreid@chromium.org>, Mark Brown <broonie@kernel.org>
+Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, zhengxing <zhengxing@rock-chips.com>, Takashi Iwai <tiwai@suse.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>, Xing Zheng <acgzxing@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sonny Rao <sonnyrao@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Joachim Eastwood <manabian@gmail.com>
-Date: Thu, 14 May 2015 12:10:55 +0200
+On 05/14/2015 01:11 AM, Dylan Reid wrote:
+> On Wed, May 13, 2015 at 10:21 AM, Dylan Reid <dgreid@chromium.org> wr=
+ote:
+>> On Wed, May 13, 2015 at 9:42 AM, Mark Brown <broonie@kernel.org> wro=
+te:
+>>> On Wed, May 13, 2015 at 09:23:01PM +0800, zhengxing wrote:
+>>>> On 2015=E5=B9=B405=E6=9C=8813=E6=97=A5 03:22, Mark Brown wrote:
+>>>
+>>>>> Is it not possible to extend simple card to handle your use cases=
+?
+>>>>> Given the very generic naming and the fact that things like jack
+>>>>> detection and so on should depend on the CODEC and board usually =
+rather
+>>>>> than on the SoC it doesn't sound like this is Rockchip specific.
+>>>
+>>>>> This also looks like you're reimplementing some device model enum=
+eration
+>>>>> stuff which probably shouldn't be happening but let's understand =
+the
+>>>>> problem you're trying to solve here before going too far into the=
+ code.
+>>>
+>>>> Because we are trying to bring rt5650 in the project, so we intend=
+ to
+>>>> describe supported codecs with DTS via only a rockchip machine dri=
+ver file,
+>>>> others remain pre-implement(like max98090 / rt5645 that vendor mac=
+hine
+>>>> driver).
+>>>
+>>> I don't undertand what you're saying here, sorry - why is this not =
+just
+>>> a case of writing multiple machine drivers?
+>>
+>> I don't understand this either.  I'd think the best solution is
+>> simple-card, configured through DTS for each device.
+>>
+>>>
+>>>> I communicated with Dylan, and he told me that the jack detection =
+is an
+>>>> issue in the simple-card, and suggested we are better to send them=
+ at
+>>>> present.
+>>>
+>>> But what are these issues?
+>>
+>> The issue I was referring to when I spoke with rock chip was the nee=
+d
+>> to pass the jack simple-card creates to the headset chip or codec.  =
+We
+>> need a way to specify a device like a tsa227e or rt5650 to pass the
+>> jack to, which events are supported by the jack, and a generic API f=
+or
+>> passing the jack.
+>
+> I'm having some trouble envisioning how to pass the jack to the
+> headset chip in a generic way.  A callback could be added to
+> snd_soc_component_driver, or a snd_soc_headset_driver could be added.
+> The headset_drive would fit the ts3a227e well, but not the rt5645
+> which is also a full blown codec.
 
-> This patch set aims to convert the current dwmac glue layers into
-> proper platform drivers as request by Arnd[1]. These changes start
-> from patch 3 and onwards.
-> 
-> Overview:
-> Platform driver functions like probe and remove are exported from
-> the stmmac platform and then used in subsequent glue later
-> conversions. The conversion involes adding the platform driver
-> boiler plate code and adding it to the build system. The last patch
-> removes the driver from the stmmac platform code thus making it into
-> a library for common platform driver functions.
-> 
-> The two first patches adds glue layer for my platform. I chose to
-> first add old style glue layer and then convert it. The churn this
-> creates is just 3 lines.
-> 
-> I would be very nice if people could test this patch set on their
-> respective platform. My testing has been limited to compiling and
-> testing on my (LPC18xx) platform. Thanks!
-> 
-> Next I will look into cleaning up the stmmac platform code.
-> 
-> [1] http://marc.info/?l=linux-arm-kernel&m=143059524606459&w=2
+Yea, our current jack detection code is quite rudimentary when it comes=
+ to=20
+writing generic code.
 
-Series applied, thanks Joachim.
+I think the proper way to support this is come up with the concept of j=
+ack=20
+detection providers and consumers. A component can register a jack dete=
+ction=20
+provider just like it can register a DAI. And then in the board driver =
+you'd=20
+just link the jack detection logic to the jack using the usual approach=
+,=20
+which is also used for DAIs (e.g. of node or device name). The core wou=
+ld=20
+then take care of calling a enable callback or whatever is required to =
+setup=20
+the jack detection logic in the driver.
+
+This would also nicely solve the issue with the GPIO jack detectors, wh=
+ere=20
+we currently can't really handle -EPROBE_DEFER. The GPIO would be reque=
+sted=20
+by a jack detection provider which can request them before the card is=20
+registered rather than having to do the requesting in the card's init c=
+allback.
+
+- Lars
