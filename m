@@ -1,79 +1,127 @@
-From: Dinh Nguyen <dinguyen@opensource.altera.com>
-Subject: Re: [PATCH net-next 00/11] convert stmmac glue layers into platform
- drivers
-Date: Thu, 14 May 2015 14:53:46 -0500
-Message-ID: <5554FD4A.7050207@opensource.altera.com>
-References: <1431598266-25736-1-git-send-email-manabian@gmail.com>
+From: hl <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 4/8] ARM: dts: rockchip: relicense rk3288.dtsi under
+ GPLv2/X11
+Date: Fri, 15 May 2015 08:50:33 +0800
+Message-ID: <555542D9.3030909@rock-chips.com>
+References: <1425665046-22927-1-git-send-email-heiko@sntech.de>
+ <1425665046-22927-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1431598266-25736-1-git-send-email-manabian@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Joachim Eastwood <manabian@gmail.com>, arnd@arndb.de, peppe.cavallaro@st.com, roger.chen@rock-chips.com, wens@csie.org, srinivas.kandagatla@st.com, b.galvani@gmail.com
-Cc: netdev@vger.kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1425665046-22927-5-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Caesar Wang <caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/14/2015 05:10 AM, Joachim Eastwood wrote:
-> This patch set aims to convert the current dwmac glue layers into
-> proper platform drivers as request by Arnd[1]. These changes start
-> from patch 3 and onwards.
-> 
-> Overview:
-> Platform driver functions like probe and remove are exported from
-> the stmmac platform and then used in subsequent glue later
-> conversions. The conversion involes adding the platform driver
-> boiler plate code and adding it to the build system. The last patch
-> removes the driver from the stmmac platform code thus making it into
-> a library for common platform driver functions.
-> 
-> The two first patches adds glue layer for my platform. I chose to
-> first add old style glue layer and then convert it. The churn this
-> creates is just 3 lines.
-> 
-> I would be very nice if people could test this patch set on their
-> respective platform. My testing has been limited to compiling and
-> testing on my (LPC18xx) platform. Thanks!
-> 
-> Next I will look into cleaning up the stmmac platform code.
-> 
-> [1] http://marc.info/?l=linux-arm-kernel&m=143059524606459&w=2
-> 
-> Joachim Eastwood (11):
->   stmmac: add dwmac glue for NXP 18xx/43xx family
->   doc: dt: add documentation for nxp,lpc1850-dwmac
->   stmmac: prepare stmmac platform to support stand alone drivers
->   stmmac: add a generic dwmac driver
->   stmmac: convert dwmac-lpc18xx to a platform driver
->   stmmac: convert dwmac-meson to platform driver
->   stmmac: convert dwmac-rk to platform driver
->   stmmac: convert dwmac-socfpga to platform driver
->   stmmac: convert dwmac-sti to platform driver
->   stmmac: convert dwmac-sunxi to platform driver
->   stmmac: drop driver from stmmac platform code
-> 
->  .../devicetree/bindings/net/nxp,lpc1850-dwmac.txt  | 20 +++++
->  drivers/net/ethernet/stmicro/stmmac/Kconfig        | 76 +++++++++++++++++
->  drivers/net/ethernet/stmicro/stmmac/Makefile       | 13 ++-
->  .../net/ethernet/stmicro/stmmac/dwmac-generic.c    | 41 +++++++++
->  .../net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c    | 99 ++++++++++++++++++++++
->  drivers/net/ethernet/stmicro/stmmac/dwmac-meson.c  | 24 +++++-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 27 +++++-
->  .../net/ethernet/stmicro/stmmac/dwmac-socfpga.c    | 21 ++++-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c    | 29 ++++++-
->  drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c  | 25 +++++-
->  .../net/ethernet/stmicro/stmmac/stmmac_platform.c  | 49 ++---------
->  .../net/ethernet/stmicro/stmmac/stmmac_platform.h  |  9 +-
->  12 files changed, 378 insertions(+), 55 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/net/nxp,lpc1850-dwmac.txt
->  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-generic.c
->  create mode 100644 drivers/net/ethernet/stmicro/stmmac/dwmac-lpc18xx.c
-> 
-
-
-Tested-by: Dinh Nguyen <dinguyen@opensource.altera.com>
-
-on SoCFPGA devkit.
-
-Thanks,
-Dinh
+Ck9uIDIwMTXlubQwM+aciDA35pelIDAyOjA0LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiBHUEx2
+Mi1vbmx5IGRldmljZXRyZWVzIG1ha2UgcmV1c2UgZGlmZmljdWx0IGZvciBzb2Z0d2FyZSBjb21w
+b25lbnRzIGxpY2Vuc2VkCj4gdW5kZXIgYSBkaWZmZXJlbnQgbGljZW5zZS4KPgo+IFRoZSBjb25z
+ZW5zdXMgaXMgdGhhdCBhIEdQTC9YMTEgZHVhbC1saWNlbnNlIHNob3VsZCBhbGxvdyBhbGwgbmVj
+ZXNzYXJ5IHVzZXMsCj4gc28gcmVsaWNlbnNlIHRoZSByazMyODguZHRzaSB0byB0aGlzIGNvbWJp
+bmF0aW9uLgo+Cj4gQ0NzIHdlcmUgYXF1aXJlZCBieSBnaXQgc2hvcnRsb2cgLXNuZSBzbyBpdCBz
+aG91bGQndmUgaG9wZWZ1bGx5IGNhdGNoZWQKPiBldmVyeSBjb250cmlidXRvci4KPgo+IFNpZ25l
+ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gQ2M6IEtldmVyIFlh
+bmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gQ2M6IERvdWcgQW5kZXJzb24gPGRpYW5k
+ZXJzQGNocm9taXVtLm9yZz4KPiBDYzogQWRkeSBLZSA8YWRkeS5rZUByb2NrLWNoaXBzLmNvbT4K
+PiBDYzogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KPiBDYzogQW5keSBZYW4g
+PGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+IENjOiBDYWVzYXIgV2FuZyA8Y2Flc2FyLndhbmdA
+cm9jay1jaGlwcy5jb20+Cj4gQ2M6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4g
+Q2M6IERhbmllbCBMZXpjYW5vIDxkYW5pZWwubGV6Y2Fub0BsaW5hcm8ub3JnPgo+IENjOiBKaWFu
+cXVuIFh1PGpheS54dUByb2NrLWNoaXBzLmNvbT4KPiBDYzogUm9nZXIgQ2hlbiA8cm9nZXIuY2hl
+bkByb2NrLWNoaXBzLmNvbT4KPiBDYzogU29ubnkgUmFvIDxzb25ueXJhb0BjaHJvbWl1bS5vcmc+
+Cj4gQ2M6IFl1bnpoaSBMaSA8bHl6QHJvY2stY2hpcHMuY29tPgo+IENjOiBodWFuZyBsaW4gPGhs
+QHJvY2stY2hpcHMuY29tPgo+Cj4gTm90IHN1cmUgaWYgYW4gQWNrIGZvciBhIHNpbXBsZSByZXZl
+cnQgaXMgbmVjZXNzYXJ5LCBidXQgaW5jbHVkZWQgYW55d2F5Cj4gQ2M6IE9sb2YgSm9oYW5zc29u
+IDxvbG9mQGxpeG9tLm5ldD4KPiAtLS0KPiBJJ20gaG9waW5nIHRvIGdldCBBY2tlZC1ieSB0YWdz
+IGZyb20gdGhlIHBlb3BsZSBpbiB0aGUgQ2MtbGlzdC4KPgo+ICAgYXJjaC9hcm0vYm9vdC9kdHMv
+cmszMjg4LmR0c2kgfCA0NCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0t
+LS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMzYgaW5zZXJ0aW9ucygrKSwgOCBkZWxldGlvbnMoLSkK
+Pgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODguZHRzaSBiL2FyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzI4OC5kdHNpCj4gaW5kZXggMmMyOWEzZS4uMzVhMDZhNSAxMDA2NDQKPiAt
+LS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODguZHRzaQo+ICsrKyBiL2FyY2gvYXJtL2Jvb3Qv
+ZHRzL3JrMzI4OC5kdHNpCj4gQEAgLTEsMTMgKzEsNDEgQEAKPiAgIC8qCj4gLSAqIFRoaXMgcHJv
+Z3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9k
+aWZ5Cj4gLSAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExp
+Y2Vuc2UgYXMgcHVibGlzaGVkIGJ5Cj4gLSAqIHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb247
+IGVpdGhlciB2ZXJzaW9uIDIgb2YgdGhlIExpY2Vuc2UsIG9yCj4gLSAqIChhdCB5b3VyIG9wdGlv
+bikgYW55IGxhdGVyIHZlcnNpb24uCj4gKyAqIFRoaXMgZmlsZSBpcyBkdWFsLWxpY2Vuc2VkOiB5
+b3UgY2FuIHVzZSBpdCBlaXRoZXIgdW5kZXIgdGhlIHRlcm1zCj4gKyAqIG9mIHRoZSBHUEwgb3Ig
+dGhlIFgxMSBsaWNlbnNlLCBhdCB5b3VyIG9wdGlvbi4gTm90ZSB0aGF0IHRoaXMgZHVhbAo+ICsg
+KiBsaWNlbnNpbmcgb25seSBhcHBsaWVzIHRvIHRoaXMgZmlsZSwgYW5kIG5vdCB0aGlzIHByb2pl
+Y3QgYXMgYQo+ICsgKiB3aG9sZS4KPiAgICAqCj4gLSAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmli
+dXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAo+IC0gKiBidXQgV0lUSE9V
+VCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgo+IC0g
+KiBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBT
+ZWUgdGhlCj4gLSAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMu
+Cj4gKyAqICBhKSBUaGlzIGZpbGUgaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNhbiByZWRpc3RyaWJ1
+dGUgaXQgYW5kL29yCj4gKyAqICAgICBtb2RpZnkgaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBH
+TlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcwo+ICsgKiAgICAgcHVibGlzaGVkIGJ5IHRoZSBG
+cmVlIFNvZnR3YXJlIEZvdW5kYXRpb247IGVpdGhlciB2ZXJzaW9uIDIgb2YgdGhlCj4gKyAqICAg
+ICBMaWNlbnNlLCBvciAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLgo+ICsgKgo+
+ICsgKiAgICAgVGhpcyBmaWxlIGlzIGRpc3RyaWJ1dGVkIGluIHRoZSBob3BlIHRoYXQgaXQgd2ls
+bCBiZSB1c2VmdWwsCj4gKyAqICAgICBidXQgV0lUSE9VVCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQg
+ZXZlbiB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgo+ICsgKiAgICAgTUVSQ0hBTlRBQklMSVRZIG9y
+IEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFLiAgU2VlIHRoZQo+ICsgKiAgICAgR05V
+IEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPiArICoKPiArICogT3Is
+IGFsdGVybmF0aXZlbHksCj4gKyAqCj4gKyAqICBiKSBQZXJtaXNzaW9uIGlzIGhlcmVieSBncmFu
+dGVkLCBmcmVlIG9mIGNoYXJnZSwgdG8gYW55IHBlcnNvbgo+ICsgKiAgICAgb2J0YWluaW5nIGEg
+Y29weSBvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24KPiArICog
+ICAgIGZpbGVzICh0aGUgIlNvZnR3YXJlIiksIHRvIGRlYWwgaW4gdGhlIFNvZnR3YXJlIHdpdGhv
+dXQKPiArICogICAgIHJlc3RyaWN0aW9uLCBpbmNsdWRpbmcgd2l0aG91dCBsaW1pdGF0aW9uIHRo
+ZSByaWdodHMgdG8gdXNlLAo+ICsgKiAgICAgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwg
+ZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yCj4gKyAqICAgICBzZWxsIGNvcGllcyBvZiB0
+aGUgU29mdHdhcmUsIGFuZCB0byBwZXJtaXQgcGVyc29ucyB0byB3aG9tIHRoZQo+ICsgKiAgICAg
+U29mdHdhcmUgaXMgZnVybmlzaGVkIHRvIGRvIHNvLCBzdWJqZWN0IHRvIHRoZSBmb2xsb3dpbmcK
+PiArICogICAgIGNvbmRpdGlvbnM6Cj4gKyAqCj4gKyAqICAgICBUaGUgYWJvdmUgY29weXJpZ2h0
+IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZQo+ICsgKiAgICAgaW5j
+bHVkZWQgaW4gYWxsIGNvcGllcyBvciBzdWJzdGFudGlhbCBwb3J0aW9ucyBvZiB0aGUgU29mdHdh
+cmUuCj4gKyAqCj4gKyAqICAgICBUSEUgU09GVFdBUkUgSVMgUFJPVklERUQgIkFTIElTIiwgV0lU
+SE9VVCBXQVJSQU5UWSBPRiBBTlkgS0lORCwKPiArICogICAgIEVYUFJFU1MgT1IgSU1QTElFRCwg
+SU5DTFVESU5HIEJVVCBOT1QgTElNSVRFRCBUTyBUSEUgV0FSUkFOVElFUwo+ICsgKiAgICAgT0Yg
+TUVSQ0hBTlRBQklMSVRZLCBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQKPiAr
+ICogICAgIE5PTklORlJJTkdFTUVOVC4gSU4gTk8gRVZFTlQgU0hBTEwgVEhFIEFVVEhPUlMgT1Ig
+Q09QWVJJR0hUCj4gKyAqICAgICBIT0xERVJTIEJFIExJQUJMRSBGT1IgQU5ZIENMQUlNLCBEQU1B
+R0VTIE9SIE9USEVSIExJQUJJTElUWSwKPiArICogICAgIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9G
+IENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORwo+ICsgKiAgICAgRlJPTSwgT1VU
+IE9GIE9SIElOIENPTk5FQ1RJT04gV0lUSCBUSEUgU09GVFdBUkUgT1IgVEhFIFVTRSBPUgo+ICsg
+KiAgICAgT1RIRVIgREVBTElOR1MgSU4gVEhFIFNPRlRXQVJFLgo+ICAgICovCj4gICAKPiAgICNp
+bmNsdWRlIDxkdC1iaW5kaW5ncy9ncGlvL2dwaW8uaD4KQWNrZWQtYnk6IExpbiBIdWFuZyA8aGxA
+cm9jay1jaGlwcy5jb20+CgotLSAK6buE5p6XCuemj+W3nueRnuiKr+W+rueUteWtkOaciemZkOWF
+rOWPuApGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uTHRkCuemj+W7uuecgeemj+W3nuW4
+gumTnOebmOi3r+i9r+S7tuWkp+mBkzg55Y+36L2v5Lu25ZutQeWMujIx5Y+35qW8KDM1MDAwMykK
+QWRkcjpOby4yMSBCdWlsZGluZywgQSBEaXN0cmljdCwgTm8uODksIHNvZnR3YXJlIEJvdWxldmFy
+ZCBGdXpob3UsIEZ1amlhbixQUkMKRW1haWw6aGxAcm9jay1jaGlwcy5jb20KVGVsOis4Ni01OTEt
+ODM5OTE5MDYvMDcKICAKKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgrkv53lr4bmj5Dn
+pLrvvJrmnKzpgq7ku7blj4rlhbbpmYTku7blkKvmnInmnLrlr4bkv6Hmga/vvIzku4Xlj5HpgIHn
+u5nmnKzpgq7ku7bmiYDmjIfnibnlrprmlLbku7bkurrjgILoi6XpnZ7or6XnibnlrprmlLbku7bk
+urrvvIzor7cK5Yu/5aSN5Yi244CBIOS9v+eUqOaIluaKq+mcsuacrOmCruS7tueahOS7u+S9leWG
+heWuueOAguiLpeivr+aUtuacrOmCruS7tu+8jOivt+S7juezu+e7n+S4reawuOS5heaAp+WIoOmZ
+pOacrOmCruS7tuWPiuaJgOaciemZhOS7tu+8jArlubbku6Xlm57lpI3pgq7ku7bmiJblhbbku5bm
+lrnlvI/ljbPliLvlkYrnn6Xlj5Hku7bkurrjgILnpo/lt57nkZ7oiq/lvq7nlLXlrZDmnInpmZDl
+hazlj7jmi6XmnInmnKzpgq7ku7bkv6Hmga/nmoTokZfkvZzmnYPlj4rop6Pph4oK5p2D77yM56aB
+5q2i5Lu75L2V5pyq57uP5o6I5p2D6K645Y+v55qE5L615p2D6KGM5Li644CCCiAgCklNUE9SVEFO
+VCBOT1RJQ0U6IFRoaXMgZW1haWwgaXMgZnJvbSBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3Mg
+Q28uLCBMdGQgLlRoZSBjb250ZW50cwpvZiB0aGlzIGVtYWlsIGFuZCBhbnkgYXR0YWNobWVudHMg
+bWF5IGNvbnRhaW4gaW5mb3JtYXRpb24gdGhhdCBpcyBwcml2aWxlZ2VkLCBjb25maWRlbnRpYWwK
+YW5kL29yIGV4ZW1wdCBmcm9tIGRpc2Nsb3N1cmUgdW5kZXIgYXBwbGljYWJsZSBsYXcgYW5kIHJl
+bGV2YW50IE5EQS4gSWYgeW91IGFyZSBub3QgdGhlCmludGVuZGVkIHJlY2lwaWVudCwgeW91IGFy
+ZSBoZXJlYnkgbm90aWZpZWQgdGhhdCBhbnkgZGlzY2xvc3VyZSwgY29weWluZywgZGlzdHJpYnV0
+aW9uLApvciB1c2Ugb2YgdGhlIGluZm9ybWF0aW9uIGlzIFNUUklDVExZIFBST0hJQklURUQuIFBs
+ZWFzZSBpbW1lZGlhdGVseSBjb250YWN0IHRoZSBzZW5kZXIKYXMgc29vbiBhcyBwb3NzaWJsZSBh
+bmQgZGVzdHJveSB0aGUgbWF0ZXJpYWwgaW4gaXRzIGVudGlyZXR5IGluIGFueSBmb3JtYXQuIFRo
+YW5rIHlvdS4KKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
