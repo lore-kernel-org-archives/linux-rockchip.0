@@ -1,46 +1,51 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH] ARM: v7 setup function should invalidate L1 cache
-Date: Tue, 19 May 2015 23:32:47 +0100
-Message-ID: <20150519223247.GN2067@n2100.arm.linux.org.uk>
-References: <E1Yuk8W-0001tC-IK@rmk-PC.arm.linux.org.uk>
- <2080993.BUNZpO9uLL@wuerfel>
- <20150519220721.GK2067@n2100.arm.linux.org.uk>
- <8164344.VcU8v2tIF5@wuerfel>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2 1/2] clk: change clk_ops' ->round_rate() prototype
+Date: Tue, 19 May 2015 18:01:44 -0700
+Message-ID: <20150520010144.GA31054@codeaurora.org>
+References: <1430407809-31147-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1430407809-31147-2-git-send-email-boris.brezillon@free-electrons.com>
+ <20150507063953.GC32399@codeaurora.org>
+ <20150507093702.0b58753d@bbrezillon>
+ <20150515174048.4a31af49@bbrezillon>
+ <5557267D.7080209@kapsi.fi>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-sh-owner@vger.kernel.org>
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <8164344.VcU8v2tIF5@wuerfel>
-Sender: linux-sh-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>, linux-sh@vger.kernel.org, Gregory Clement <gregory.clement@free-electrons.com>, Thierry Reding <thierry.reding@gmail.com>, Alexandre Courbot <gnurou@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, =?iso-8859-1?B?U8O2cmVu?= Brinkmann <soren.brinkmann@xilinx.com>, Michael =?iso-8859-1?Q?Niew=F6hner?= <mniewoeh@stud.hs-offenburg.de>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Stephen Warren <swarren@wwwdotorg.org>, Marc Carino <marc.ceeeee@gmail.com>, Simon Horman <horms@verge.net.au>, Gregory Fong <gregory.0xf0@gmail.com>linux-
+In-Reply-To: <5557267D.7080209@kapsi.fi>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Mikko Perttunen <mikko.perttunen@kapsi.fi>
+Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, Mike Turquette <mturquette@linaro.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Shawn Guo <shawn.guo@linaro.org>, ascha Hauer <kernel@pengutronix.de>, David Brown <davidb@codeaurora.org>, Daniel Walker <dwalker@fifo99.com>, Bryan Huntsman <bryanh@codeaurora.org>, Tony Lindgren <tony@atomide.com>, Paul Walmsley <paul@pwsan.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Barry Song <baohua@kernel.org>, Viresh Kumar <viresh.linux@gmail.com>, Emilio L?pez <emilio@elopez.com.ar>, Maxime Ripard <maxime.rip>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 20, 2015 at 12:18:43AM +0200, Arnd Bergmann wrote:
-> On Tuesday 19 May 2015 23:07:21 Russell King - ARM Linux wrote:
-> > The /simplest/ change which would fix this problem is to just change
-> > proc-v7.S.  The remainder is effectively a cleanup removing redundant
-> > code.
+On 05/16, Mikko Perttunen wrote:
+> On 05/15/2015 06:40 PM, Boris Brezillon wrote:
+> >Hi Stephen,
+> >
+> >Adding Mikko in the loop (after all, he was the one complaining about
+> >this signed long limitation in the first place, and I forgot to add
+> >him in the Cc list :-/).
 > 
-> Fair enough. I wasn't sure if we're confident enough about that
-> change already to put it into stable backports. If the risk is low
-> enough, that's fine.
+> I think I got it through linux-tegra anyway, but thanks :)
+> 
+> >
+> >Mikko, are you okay with the approach proposed by Stephen (adding a
+> >new method) ?
+> 
+> Yes, sounds good to me. If a driver uses the existing methods with
+> too large frequencies, the issue is pretty discoverable anyway. I
+> think "adjust_rate" sounds a bit too much like it sets the clock's
+> rate, though; perhaps "adjust_rate_request" or something like that?
+> 
 
-When the kernel is entered from the decompressor, the last steps just
-before calling the kernel is to clean and invalidate the caches, then
-turn them off, and then jump to the kernel.
-
-So, there _should_ be no dirty cache lines which we rely upon at this
-point - if there was dirty data in the cache, then it hasn't been flushed
-to memory, and we're potentially going to crash because some part of
-the decompressed kernel image hasn't been flushed out to memory.
-
-So I'll put a confidence value of 99.999% on this.
-
-The case which might bite people is if they bypass the decompressor.
-Even then, leaving bits of the kernel image in the caches is really
-dodgy.
+Well I'm also OK with changing the determine_rate API one more
+time, but we'll have to be careful. Invariably someone will push
+a new clock driver through some non-clk tree path and we'll get
+build breakage. They shouldn't be doing that, so either we do the
+change now and push it to -next and see what breaks, or we do
+this after -rc1 comes out and make sure everyone has lots of
+warning.
 
 -- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
