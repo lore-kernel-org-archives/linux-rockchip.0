@@ -1,63 +1,44 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [alsa-devel] [PATCH 1/4] ASoC: rockchip: add rockchip machine
- driver
-Date: Thu, 21 May 2015 12:10:28 +0100
-Message-ID: <20150521111028.GZ21577@sirena.org.uk>
-References: <1431422797-31903-1-git-send-email-zhengxing@rock-chips.com>
- <1431422797-31903-2-git-send-email-zhengxing@rock-chips.com>
- <20150512192215.GZ3066@sirena.org.uk>
- <55535035.5070608@rock-chips.com>
- <20150513164250.GB2761@sirena.org.uk>
- <CAEUnVG5+PqhkZ4TBMnfdbUr66-EaLVGDEewJ_=XZnfbvBEn13w@mail.gmail.com>
- <CAEUnVG5nkagx7CZC3t=-oOAyXOBaxxVynBxaGMf0NJpfr9ZVbA@mail.gmail.com>
- <555659DB.9010204@metafoo.de>
- <20150519111602.GG2761@sirena.org.uk>
- <CAEUnVG6QLtV3AXjdPAp5mYDTnmNVsyLfYQmLykeLMd-KgnX+5A@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] ARM: rockchip: restore dapswjdp after suspend
+Date: Thu, 21 May 2015 08:40:55 -0700
+Message-ID: <CAD=FV=XARAYzLWy+i9f1XuTZTa4RiA5Yb9aJoAuh9uJmgs-ZOQ@mail.gmail.com>
+References: <1432154048-19126-1-git-send-email-dianders@chromium.org>
+	<555D3CB7.2000002@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="1RfOVxRbNnn9f8MI"
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAEUnVG6QLtV3AXjdPAp5mYDTnmNVsyLfYQmLykeLMd-KgnX+5A@mail.gmail.com>
+In-Reply-To: <555D3CB7.2000002@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Dylan Reid <dgreid@chromium.org>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, zhengxing <zhengxing@rock-chips.com>, Takashi Iwai <tiwai@suse.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>, Xing Zheng <acgzxing@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sonny Rao <sonnyrao@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: "Huang, Tao" <huangtao@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chris Zhong <zyw@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Tony Xie <tony.xie@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Huang Tao,
 
---1RfOVxRbNnn9f8MI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Wed, May 20, 2015 at 7:02 PM, Huang, Tao <huangtao@rock-chips.com> wrote:
+>> It turns out that's not a safe assumption.  In some cases (pending
+>> interrupts) it's possible that the WFI might act as a no-op and the
+>> MaskROM will never run.
+>
+>
+> I don't think this can happen. It seems we set PMU_GLOBAL_INT_DISABLE
+> bit, which means in power off flow, the IRQ will not accepted until the
+> ARM is power off. Do you see the SGRF_CPU_CON0[0] is 0 after resume?
 
-On Tue, May 19, 2015 at 09:37:58AM -0700, Dylan Reid wrote:
+From testing, it appears that it can happen that the WFI might act as a no-op.
 
-> Can the jacks can each be an aux_dev?  The jack driver would create
-> the jack at probe time and register it with the card in aux_dev->init.
-> cht_bsw_max98090_ti.c is already doing something similar, although all
-> contained in the machine driver.
+...but you're right in pointing out that unless we can solve the
+PMU_GLOBAL_INT_DISABLE() problem then this patch here to fix
+DAPDEVICEEN isn't too useful.  I was hoping to fix the
+PMU_GLOBAL_INT_DISABLE() in
+<https://chromium-review.googlesource.com/#/c/272442/> or find a
+similar solution.  ...if we can's solve that though, then I'm not sure
+what to suggest.
 
-Yes, that's just a CODEC driver registered without any DAIs connected so
-it'd just be another CODEC driver.
 
-> Then simple-card can have an optional property to specify aux devs.  A
-> GPIO jack device could handle simple switch-based jack detection.
+> Anyway, restore the value is okay, which make the code more symmetrically
 
-That's useful anyway for external headphone/speaker drivers.
+OK.  Heiko: applying this won't hurt, but it will only be useful if we
+find a way to return from the WFI successfully...
 
---1RfOVxRbNnn9f8MI
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVXb0jAAoJECTWi3JdVIfQJUYH+gO3w1Ghdn1mUnB5DC2vOhgx
-9uMgzaWOjYWjLQA1oFtQp59OXnD7bYg981hLDLea9QIHvm/rZ/IGyWcG/+SpSbPG
-cebVsl3tdyH7aoBawRQHV4Xp/AfXcvg9Vcn18LNm0ADGkuVETSKk1LP5BAgPZCiw
-HpCU+ObmTS3qFStJRyE/ah0NnvULI32wJBAWHYaklOK+cHrzi6zatGiipJ4+V0rM
-TKHW7WO0Pmj+2vALvgWBwCEcaiOdaDTOngiB5hWiOkg9YmrUCx5zSlRQoI+ldYgm
-qRPm3KLA8tws2bDqHB8o9xzBIDIGD6y6zdm6GmFtQes0u9g+plUpmlY7to7WLSI=
-=avT0
------END PGP SIGNATURE-----
-
---1RfOVxRbNnn9f8MI--
+-Doug
