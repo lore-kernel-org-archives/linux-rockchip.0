@@ -1,31 +1,44 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: rockchip: dts relicensing for 4.2
-Date: Fri, 22 May 2015 17:17:01 +0200
-Message-ID: <2777725.3V1P3ixSTg@wuerfel>
-References: <1812361.uhqE6qDILc@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] PM / AVS: rockchip-io: depend on CONFIG_POWER_AVS
+Date: Sat, 23 May 2015 15:41:30 +0200
+Message-ID: <28649509.lINlAh7Sts@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1812361.uhqE6qDILc@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@kernel.org>, Nishanth Menon <nm@ti.com>
+Cc: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, amstan@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thursday 21 May 2015 10:04:50 Heiko Stuebner wrote:
-> Relicense all Rockchip-related devicetree files to the GPL2/X11 combo.
-> I've now finally aquired necessary Acks from all contributors.
-> 
+The rockchip io-domain driver currently only depends on ARCH_ROCKCHIP
+itself. This makes it possible to select the power-domain driver, but
+not the POWER_AVS class and results in the iodomain-driver not getting
+build in this case.
 
-Pulled into next/dt, thanks!
+So add the additional dependency, which also results in the driver
+config option now being placed nicely into the AVS submenu.
 
-	Arnd
+Fixes: 662a958638bd ("PM / AVS: rockchip-io: add driver handling Rockchip io domains")
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+Found while trying to make the wifi on current rk3288 Chromebooks work.
+
+ drivers/power/avs/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
+index 7f3d389..a67eeac 100644
+--- a/drivers/power/avs/Kconfig
++++ b/drivers/power/avs/Kconfig
+@@ -13,7 +13,7 @@ menuconfig POWER_AVS
+ 
+ config ROCKCHIP_IODOMAIN
+         tristate "Rockchip IO domain support"
+-        depends on ARCH_ROCKCHIP && OF
++        depends on POWER_AVS && ARCH_ROCKCHIP && OF
+         help
+           Say y here to enable support io domains on Rockchip SoCs. It is
+           necessary for the io domain setting of the SoC to match the
+-- 
+2.1.4
