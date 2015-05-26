@@ -1,37 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] iio: adc: rockchip_saradc: add missing MODULE_* data
-Date: Mon, 25 May 2015 22:36:58 +0200
-Message-ID: <4303804.647s4ZjWfi@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/2] dt-bindings: add vendor prefix for Netxeon Technology
+Date: Tue, 26 May 2015 21:49:05 +0200
+Message-ID: <19362183.0Io0nOHtsp@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The module-data is currently missing. This includes the license-information
-which makes the driver taint the kernel and miss symbols when compiled as
-module.
-
-Fixes: 44d6f2ef94f9 ("iio: adc: add driver for Rockchip saradc")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- drivers/iio/adc/rockchip_saradc.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 8d4e019..9c311c1 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -349,3 +349,7 @@ static struct platform_driver rockchip_saradc_driver = {
- };
- 
- module_platform_driver(rockchip_saradc_driver);
-+
-+MODULE_AUTHOR("Heiko Stuebner <heiko@sntech.de>");
-+MODULE_DESCRIPTION("Rockchip SARADC driver");
-+MODULE_LICENSE("GPL v2");
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+index 8033919..1de2dfd 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.txt
++++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+@@ -134,6 +134,7 @@ national	National Semiconductor
+ neonode		Neonode Inc.
+ netgear	NETGEAR
+ netlogic	Broadcom Corporation (formerly NetLogic Microsystems)
++netxeon		Shenzhen Netxeon Technology CO., LTD
+ newhaven	Newhaven Display International
+ nintendo	Nintendo
+ nokia	Nokia
 -- 
 2.1.4
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
