@@ -1,98 +1,28 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v14 1/3] dt-bindings: add document of Rockchip power domain
-Date: Thu, 28 May 2015 11:02:27 +0200
-Message-ID: <CAPDyKFr544A46Z7kod8EVUYKV1=G6+t4d4ZRdOvskPT4pYL7+w@mail.gmail.com>
-References: <1429862868-14218-1-git-send-email-wxt@rock-chips.com>
-	<1429862868-14218-2-git-send-email-wxt@rock-chips.com>
+From: Sylwester Nawrocki <s.nawrocki@samsung.com>
+Subject: Re: [PATCH] clk: make several parent names const
+Date: Thu, 28 May 2015 11:04:27 +0200
+Message-ID: <5566DA1B.8090205@samsung.com>
+References: <1432802751-6397-1-git-send-email-u.kleine-koenig@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <1429862868-14218-2-git-send-email-wxt@rock-chips.com>
-Sender: linux-doc-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Kevin Hilman <khilman@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, Tomasz Figa <tomasz.figa@gmail.com>, Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Grant Likely <grant.likely@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Randy Dunlap <rdunlap@infradead.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Mark Brown <broonie@kernel.org>, Ian Campbell <ijc+devicetree@hell>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-reply-to: <1432802751-6397-1-git-send-email-u.kleine-koenig@pengutronix.de>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: =?UTF-8?B?VXdlIEtsZWluZS1Lw7ZuaWc=?= <u.kleine-koenig@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tomasz.figa@gmail.com>, Michal Simek <michal.simek@xilinx.com>, kernel@pengutronix.de, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24 April 2015 at 10:07, Caesar Wang <wxt@rock-chips.com> wrote:
-> This add the necessary binding documentation for the power domain
-> found on Rockchip Socs.
->
-> Signed-off-by: jinkun.hong <jinkun.hong@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
->
->  .../bindings/arm/rockchip/power_domain.txt         | 48 ++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/rockchip/power_domain.txt
->
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip/power_domain.txt b/Documentation/devicetree/bindings/arm/rockchip/power_domain.txt
-> new file mode 100644
-> index 0000000..3e74e6d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/rockchip/power_domain.txt
-> @@ -0,0 +1,48 @@
-> +* Rockchip Power Domains
-> +
-> +Rockchip processors include support for multiple power domains which can be
-> +powered up/down by software based on different application scenes to save power.
-> +
-> +Required properties for power domain controller:
-> +- compatible: should be one of the following.
-> +    * rockchip,rk3288-power-controller - for rk3288 type power domain.
-> +- #power-domain-cells: Number of cells in a power-domain specifier.
-> +                      should be 1.
-> +- rockchip,pmu: phandle referencing a syscon providing the pmu registers
-> +- #address-cells: should be 1.
-> +- #size-cells: should be 0.
-> +
-> +Required properties for power domain sub nodes:
-> +- reg: index of the power domain, should use macros in:
-> +    *  include/dt-bindings/power-domain/rk3288.h - for rk3288 type power domain.
+On 28/05/15 10:45, Uwe Kleine-K=C3=B6nig wrote:
+> Since commit 2893c379461a ("clk: make strings in parent name arrays
+> const") the name of parent clocks can be const. So add more const in
+> several clock drivers.
+>=20
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
 
-I can't find the above file, nor is it being adding in $subject patch.
+Thanks for the patch,
+Acked-by: Sylwester Nawrocki <s.nawrocki@samsung.com>
 
-Moreover, there are already
-"include/dt-bindings/arm/ux500_pm_domains.h".  I suppose we could move
-that file into your suggested path, since it seems more generic?
-
-> +- clocks (optional): phandles to clocks which need to be enabled while power domain
-> +          switches state.
-> +
-> +Example:
-> +
-> +       power: power-controller {
-> +              compatible = "rockchip,rk3288-power-controller";
-> +              #power-domain-cells = <1>;
-> +              rockchip,pmu = <&pmu>;
-> +               #address-cells = <1>;
-> +               #size-cells = <0>;
-> +
-> +              pd_gpu {
-> +                      reg = <RK3288_PD_GPU>;
-> +                      clocks = <&cru ACLK_GPU>;
-> +              };
-> +       };
-> +
-> +Node of a device using power domains must have a power-domains property,
-> +containing a phandle to the power device node and an index specifying which
-> +power domain to use.
-> +The index should use macros in:
-> +   * include/dt-bindings/power-domain/rk3288.h - for rk3288 type power domain.
-
-Same comment as above.
-
-> +
-> +Example of the node using power domain:
-> +
-> +       node {
-> +               /* ... */
-> +               power-domains = <&power RK3288_PD_GPU>;
-> +               /* ... */
-> +       };
-> --
-> 1.9.1
->
->
-
-Kind regards
-Uffe
+--=20
+Regards,
+Sylwester
