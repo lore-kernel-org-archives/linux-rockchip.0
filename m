@@ -1,65 +1,39 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH] ARM: v7 setup function should invalidate L1 cache
-Date: Mon, 1 Jun 2015 13:50:19 +0200
-Message-ID: <CAMuHMdUXCy+87-pwLiJ7ynaM1AeFq0f7R3sJ4prdE3QN09z++w@mail.gmail.com>
-References: <E1Yuk8W-0001tC-IK@rmk-PC.arm.linux.org.uk>
-	<CAMuHMdX=T3CsLTT95H_07Si6Kd8SRraBfxADpn+VtAF4GmZ=mw@mail.gmail.com>
-	<CAMuHMdUQkm_9PhSdGS8j85Uodm-o0jiki=Xh4h59PBShB=rCXw@mail.gmail.com>
-	<20150601105319.GQ2067@n2100.arm.linux.org.uk>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [RFC v1 06/25] pinctrl: Use irq_desc_get_xxx() to avoid redundant
+ lookup of irq_desc
+Date: Mon, 1 Jun 2015 14:46:34 +0200
+Message-ID: <CACRpkdazXuq7WZZPiObRNFBTokazUN9yisU7VNobS4ezgZTHJw@mail.gmail.com>
+References: <1432116013-25902-1-git-send-email-jiang.liu@linux.intel.com>
+ <1432116013-25902-7-git-send-email-jiang.liu@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sh-owner@vger.kernel.org>
-In-Reply-To: <20150601105319.GQ2067@n2100.arm.linux.org.uk>
-Sender: linux-sh-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux-sh list <linux-sh@vger.kernel.org>, linux-tegra@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@gmail.com>, Alexandre Courbot <gnurou@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Magnus Damm <magnus.damm@gmail.com>, Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>, bcm-kernel-feedback-list@broadcom.com, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Stephen Warren <swarren@wwwdotorg.org>, Marc Carino <marc.ceeeee@gmail.com>, Simon Horman <horms@verge.net.au>, Gregory Fong <gregory.0xf0@gmail.com>, Gregory Clement <gregory.clement@free-electrons.com>, =?UTF-8?Q?S=C3=B6ren_Br
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1432116013-25902-7-git-send-email-jiang.liu@linux.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jiang Liu <jiang.liu@linux.intel.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Tomasz Figa <tomasz.figa@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Maoguang Meng <maoguang.meng@mediatek.com>, "H. Peter Anvin" <hpa@zytor.com>, kernel@stlinux.com, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Axel Lin <axel.lin@ingics.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yinghai Lu <yinghai@kernel.org>, x86@kernel.org, ACPI Devel Maling List <linux-acpi@vger.kernel.org>, Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>, Thomas Abraham <thomas.abraham@linaro.org>, Bjorn Andersson <bjorn.andersson@sonymobile.com>lin
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Russell,
+On Wed, May 20, 2015 at 11:59 AM, Jiang Liu <jiang.liu@linux.intel.com> wrote:
 
-On Mon, Jun 1, 2015 at 12:53 PM, Russell King - ARM Linux
-<linux@arm.linux.org.uk> wrote:
-> On Mon, Jun 01, 2015 at 12:41:01PM +0200, Geert Uytterhoeven wrote:
->> FWIW, I have the feeling this has a slight influence on boot reliability on
->> two of my boards:
->>   - r8a7740/armadillo, which is known to suffer from a cache-related bug in
->>     its bootloader, seems to have a higher change of booting successfully on
->>     cold boot,
->>   - sh73a0/kzm9g, which has known cache-issues with secondary CPU boot up,
->>     seems to have a lower chance of booting successfully.
->>
->> No time to spend all week turning this into a statistical significant test
->> project... The reset button is my friend...
+> Use irq_desc_get_xxx() to avoid redundant lookup of irq_desc while we
+> already have a pointer to corresponding irq_desc.
 >
-> Damn it, you sent this right after I merged and pushed out this change in
-> my for-arm-soc branch, and was just about to send it to the arm-soc people.
-> What excellent timing you have. :)
+> Signed-off-by: Jiang Liu <jiang.liu@linux.intel.com>
 
-Don't worry, I didn't send that email to make you postpone this change.
-Giving the fuzziness of reproduction, and the flakiness (esp. on Armadillo)
-of the boot loader, and these are old SoCs, please go ahead.
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
-> What happens on the kzm9g if you revert the mach-shmobile changes?
+Are there dependencies on this patch or can I just apply it
+directly to the GPIO tree?
 
-Seems to make no difference.
-
-> For armadillo, do you use the decompressor?  That should be doing all the
-> cache cleaning already, prior to the kernel being entered.
-
-I think so.
-
-Corruption pattern ranges from lock up, over "Error: unrecognized/unsupported
-machine ID", to booting almost completely, but lacking a few devices due to
-a corrupted DTB. Been like that as long as I remember, i.e. since I got the
-board ca. 1 year ago. Boots fine (100%) with kexec.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Yours,
+Linus Walleij
