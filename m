@@ -1,101 +1,45 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Sat,  6 Jun 2015 01:05:21 +0800
-Message-ID: <1433523923-4755-2-git-send-email-wxt@rock-chips.com>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [PATCH v4 1/3] dt-bindings: describe dw_hdmi supplies
+Date: Fri, 05 Jun 2015 19:05:43 +0200
+Message-ID: <1707049.JEvfTcofKv@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We need different orderings when turning a core on and turning a core
-off.  In one case we need to assert reset before turning power off.
-In ther other case we need to turn power on and the deassert reset.
-
-In general, the correct flow is:
-
-CPU off:
-    reset_control_assert
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
-    ensure power domain is on
-CPU on:
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-    reset_control_deassert
-    ensure power domain is on
-
-This is needed for stressing CPU up/down, as per:
-    cd /sys/devices/system/cpu/
-    for i in $(seq 1000); do
-        echo "================= $i ============"
-        for j in $(seq 100); do
-            while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" != "000"" ]]
-                echo 0 > cpu1/online
-                echo 0 > cpu2/online
-                echo 0 > cpu3/online
-            done
-            while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" != "111" ]]; do
-                echo 1 > cpu1/online
-                echo 1 > cpu2/online
-                echo 1 > cpu3/online
-            done
-        done
-    done
-
-The following is reproducile log:
-    [34466.186812] PM: noirq suspend of devices complete after 0.669 msecs
-    [34466.186824] Disabling non-boot CPUs ...
-    [34466.187509] CPU1: shutdown
-    [34466.188672] CPU2: shutdown
-    [34473.736627] Kernel panic - not syncing:Watchdog detected hard LOCKUP on cpu 0
-    .......
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Reviewed-by: Doug Anderson <dianders@chromium.org>
----
-
- arch/arm/mach-rockchip/platsmp.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 5b4ca3c..a297b86 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -88,18 +88,26 @@ static int pmu_set_power_domain(int pd, bool on)
- 			return PTR_ERR(rstc);
- 		}
- 
-+		if (!on)
-+			reset_control_assert(rstc);
-+
-+		ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-+		if (ret < 0) {
-+			pr_err("%s: could not update power domain\n", __func__);
-+			reset_control_put(rstc);
-+			return ret;
-+		}
-+
- 		if (on)
- 			reset_control_deassert(rstc);
--		else
--			reset_control_assert(rstc);
- 
- 		reset_control_put(rstc);
--	}
--
--	ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
--	if (ret < 0) {
--		pr_err("%s: could not update power domain\n", __func__);
--		return ret;
-+	} else {
-+		ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-+		if (ret < 0) {
-+			pr_err("%s: could not update power domain\n", __func__);
-+			return ret;
-+		}
- 	}
- 
- 	ret = -1;
--- 
-1.9.1
+VGhlIERlc2lnbndhcmUgSERNSSBibG9jayBoYXMgdHdvIHN1cHBsaWVzIGZvciAxLjAgYW5kIDEu
+OFYuIE5vdCBhbGwgSVAKaW1wbGVtZW50YXRpb25zIGV4cG9zZSBvciB3YW50IHRvIHVzZSB0aGVz
+ZSwgc28gdGhleSByZW1haW4gb3B0aW9uYWwuCgpTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5l
+ciA8aGVpa29Ac250ZWNoLmRlPgpBY2tlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5n
+dXRyb25peC5kZT4KLS0tCmNoYW5nZXMgc2luY2UgdjM6Ci0gc3BsaXQgZ2VuZXJpYyBkdC1iaW5k
+aW5ncyBhbmQgcm9ja2NoaXAgaW1wbGVtZW50YXRpb24KLSBhZGQgQWNrIGZyb20gUGhpbGlwcCBa
+YWJlbApjaGFuZ2VzIHNpbmNlIHYyOgotIHJlbmFtZSBzdXBwbGllcyB0byB0aGUgbmFtZXMgZm91
+bmQgaW4gdGhlIGhkbWkgSVAgZGF0YWJvb2sKCiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dCB8IDQgKysrKwogMSBmaWxlIGNoYW5nZWQsIDQg
+aW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9kcm0vYnJpZGdlL2R3X2hkbWkudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2RybS9icmlkZ2UvZHdfaGRtaS50eHQKaW5kZXggYTkwNWMxNC4uYmE0MmQ4OSAxMDA2
+NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RybS9icmlkZ2UvZHdf
+aGRtaS50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RybS9icmlk
+Z2UvZHdfaGRtaS50eHQKQEAgLTIyLDYgKzIyLDEwIEBAIE9wdGlvbmFsIHByb3BlcnRpZXMKIC0g
+ZGRjLWkyYy1idXM6IHBoYW5kbGUgb2YgYW4gSTJDIGNvbnRyb2xsZXIgdXNlZCBmb3IgRERDIEVE
+SUQgcHJvYmluZwogLSBjbG9ja3MsIGNsb2NrLW5hbWVzOiBwaGFuZGxlIHRvIHRoZSBIRE1JIENF
+QyBjbG9jaywgbmFtZSBzaG91bGQgYmUgImNlYyIKIAorT3B0aW9uYWwgc3VwcGxpZXM6CistIHZw
+LXN1cHBseTogMS4wViBwb3dlciBzdXBwbHkKKy0gdnBoLXN1cHBseTogMS44ViBwb3dlciBzdXBw
+bHkKKwogRXhhbXBsZToKIAloZG1pOiBoZG1pQDAxMjAwMDAgewogCQljb21wYXRpYmxlID0gImZz
+bCxpbXg2cS1oZG1pIjsKLS0gCjIuMS40CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
