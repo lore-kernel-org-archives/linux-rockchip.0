@@ -1,63 +1,201 @@
-From: Jon Hunter <jonathanh@nvidia.com>
-Subject: Re: [PATCH v2 1/2] clk: change clk_ops' ->round_rate() prototype
-Date: Fri, 5 Jun 2015 09:46:09 +0100
-Message-ID: <557161D1.3040107@nvidia.com>
-References: <1430407809-31147-1-git-send-email-boris.brezillon@free-electrons.com> <1430407809-31147-2-git-send-email-boris.brezillon@free-electrons.com> <alpine.DEB.2.02.1506042258530.12316@utopia.booyaka.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH 1/3] ARM: rockchip: fix the CPU soft reset
+Date: Fri, 05 Jun 2015 17:00:02 +0800
+Message-ID: <55716512.9050603@rock-chips.com>
+References: <1433479677-18086-1-git-send-email-wxt@rock-chips.com> <1433479677-18086-2-git-send-email-wxt@rock-chips.com> <1604172.FydsUUUXNY@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.02.1506042258530.12316@utopia.booyaka.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Paul Walmsley <paul@pwsan.com>, Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Shawn Guo <shawn.guo@linaro.org>, ascha Hauer <kernel@pengutronix.de>, David Brown <davidb@codeaurora.org>, Daniel Walker <dwalker@fifo99.com>, Bryan Huntsman <bryanh@codeaurora.org>, Tony Lindgren <tony@atomide.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Barry Song <baohua@kernel.org>, Viresh Kumar <viresh.linux@gmail.com>, =?UTF-8?B?RW1pbGlvIEzDs3Bleg==?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1604172.FydsUUUXNY@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Heiko,
 
-On 05/06/15 00:02, Paul Walmsley wrote:
-> Hi folks
-> 
-> just a brief comment on this one:
-> 
-> On Thu, 30 Apr 2015, Boris Brezillon wrote:
-> 
->> Clock rates are stored in an unsigned long field, but ->round_rate()
->> (which returns a rounded rate from a requested one) returns a long
->> value (errors are reported using negative error codes), which can lead
->> to long overflow if the clock rate exceed 2Ghz.
+=E5=9C=A8 2015=E5=B9=B406=E6=9C=8805=E6=97=A5 16:45, Heiko St=C3=BCbner=
+ =E5=86=99=E9=81=93:
+> Hi Caesar,
+>
+>
+> thanks for investigating this.
+>
+> Am Freitag, 5. Juni 2015, 12:47:55 schrieb Caesar Wang:
+>> In general, the correct flow is:
 >>
->> Change ->round_rate() prototype to return 0 or an error code, and pass the
->> requested rate as a pointer so that it can be adjusted depending on
->> hardware capabilities.
-> 
-> ...
-> 
->> diff --git a/Documentation/clk.txt b/Documentation/clk.txt
->> index 0e4f90a..fca8b7a 100644
->> --- a/Documentation/clk.txt
->> +++ b/Documentation/clk.txt
->> @@ -68,8 +68,8 @@ the operations defined in clk.h:
->>  		int		(*is_enabled)(struct clk_hw *hw);
->>  		unsigned long	(*recalc_rate)(struct clk_hw *hw,
->>  						unsigned long parent_rate);
->> -		long		(*round_rate)(struct clk_hw *hw,
->> -						unsigned long rate,
->> +		int		(*round_rate)(struct clk_hw *hw,
->> +						unsigned long *rate,
->>  						unsigned long *parent_rate);
->>  		long		(*determine_rate)(struct clk_hw *hw,
->>  						unsigned long rate,
-> 
-> I'd suggest that we should probably go straight to 64-bit rates.  There 
-> are already plenty of clock sources that can generate rates higher than 
-> 4GiHz.
+>> cpu off:
+>>      reset_control_assert
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+>>
+>> cpu on:
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>>      reset_control_deassert
+>>
+>> You can repro it with bringing CPU up and down.
+>> Says:(test scripts)
+>>
+>>      cd /sys/devices/system/cpu/
+>>      for i in $(seq 1000); do
+>>      echo "=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D $i =3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D"
+>>          for j in $(seq 100); do
+>>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat
+>> cpu3/online)" !=3D "000" ]]; do echo 0 > cpu1/online
+>>                  echo 0 > cpu2/online
+>>                  echo 0 > cpu3/online
+>>              done
+>>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat
+>> cpu3/online)" !=3D "111" ]]; do echo 1 > cpu1/online
+>>                  echo 1 > cpu2/online
+>>                  echo 1 > cpu3/online
+>>              done
+>>          done
+>>      done
+>>
+>> The following is reproducile log:
+>> [34466.186812] PM: noirq suspend of devices complete after 0.669 mse=
+cs
+>> [34466.186824] Disabling non-boot CPUs ...
+>> [34466.187509] CPU1: shutdown
+>> [34466.188672] CPU2: shutdown
+>> [34473.736627] Kernel panic - not syncing: Watchdog detected hard LO=
+CKUP on
+>> cpu 0 [34473.736646] CPU: 3 PID: 0 Comm: swapper/3 Not tainted 3.14.=
+0 #1
+>> [34473.736687] [<c010dfb0>] (unwind_backtrace) from [<c010a460>]
+>> (show_stack+0x20/0x24) [34473.736711] [<c010a460>] (show_stack) from
+>> [<c0630670>] (dump_stack+0x70/0x8c) [34473.736731] [<c0630670>]
+>> (dump_stack) from [<c062fa0c>] (panic+0xa8/0x1fc) [34473.736754]
+>> [<c062fa0c>] (panic) from [<c0191efc>] (watchdog_timer_fn+0x234/0x26=
+c)
+>> [34473.736777] [<c0191efc>] (watchdog_timer_fn) from [<c014103c>]
+>> (__run_hrtimer+0x118/0x1e0) [34473.736797] [<c014103c>] (__run_hrtim=
+er)
+>> from [<c0141c04>] (hrtimer_interrupt+0x148/0x2a0) [34473.736820]
+>> [<c0141c04>] (hrtimer_interrupt) from [<c04d9994>]
+>> (arch_timer_handler_phys+0x38/0x48) [34473.736844] [<c04d9994>]
+>> (arch_timer_handler_phys) from [<c016acc4>]
+>> (handle_percpu_devid_irq+0xb8/0x124) [34473.736867] [<c016acc4>]
+>> (handle_percpu_devid_irq) from [<c0166a30>] (generic_handle_irq+0x30=
+/0x40)
+>> [34473.736887] [<c0166a30>] (generic_handle_irq) from [<c0166d28>]
+>> (__handle_domain_irq+0x8c/0xb0) [34473.736905] [<c0166d28>]
+>> (__handle_domain_irq) from [<c01003a0>] (gic_handle_irq+0x48/0x6c)
+>> [34473.736922] [<c01003a0>] (gic_handle_irq) from [<c010b040>]
+>> (__irq_svc+0x40/0x50) [34473.736936] Exception stack(0xee127f70 to
+>> 0xee127fb8)
+>> [34473.736948] 7f60:                                     ffffffed 00=
+000000
+>> 2dd6d000 00000000 [34473.736964] 7f80: ee126000 00000015 c0b46bac c0=
+b46bac
+>> 0000406a 410fc0d1 00000000 ee127fc4 [34473.736979] 7fa0: ee127fb8 ee=
+127fb8
+>> c0107038 c010703c 600f0013 ffffffff [34473.736995] [<c010b040>] (__i=
+rq_svc)
+>> from [<c010703c>] (arch_cpu_idle+0x40/0x48) [34473.737013] [<c010703=
+c>]
+>> (arch_cpu_idle) from [<c0166978>] (cpu_startup_entry+0x170/0x1d0)
+>> [34473.737031] [<c0166978>] (cpu_startup_entry) from [<c010c254>]
+>> (secondary_start_kernel+0x138/0x160) [34473.737059] [<c010c254>]
+>> (secondary_start_kernel) from [<00100464>] (0x100464) [34474.903740]=
+ SMP:
+>> failed to stop secondary CPUs
+>> [34476.099964] SMP: failed to stop secondary CPUs
+>> ...
+>>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>> ---
+>>
+>>   arch/arm/mach-rockchip/platsmp.c | 13 +++++--------
+>>   1 file changed, 5 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/arch/arm/mach-rockchip/platsmp.c
+>> b/arch/arm/mach-rockchip/platsmp.c index 5b4ca3c..1230d3d 100644
+>> --- a/arch/arm/mach-rockchip/platsmp.c
+>> +++ b/arch/arm/mach-rockchip/platsmp.c
+>> @@ -88,20 +88,17 @@ static int pmu_set_power_domain(int pd, bool on)
+>>   			return PTR_ERR(rstc);
+>>   		}
+>>
+>> -		if (on)
+>> +		if (on) {
+>> +			regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+>>   			reset_control_deassert(rstc);
+>> -		else
+>> +		} else {
+>>   			reset_control_assert(rstc);
+>> +			regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+>> +		}
+> you're loosing the return value of regmap_update_bits here, I guess i=
+t should
+> look like below?
+>
+> 		if (on) {
+> 			ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
 
-An alternative would be to introduce to a frequency "base" the default
-could be Hz (for backwards compatibility), but for CPUs we probably only
-care about MHz (or may be kHz) and so 32-bits would still suffice. Even
-if CPUs cared about Hz they could still use Hz, but in that case they
-probably don't care about GHz. Obviously, we don't want to break DT
-compatibility but may be the frequency base could be defined in DT and
-if it is missing then Hz is assumed. Just a thought ...
+I search the kernel, Nobody do that return value.
+Need we are that?
+I will fix it on next patch if it's need.
+> 			if (ret < 0) {
+> 				pr_err("%s: could not update power domain\n", __func__);
+> 		  		reset_control_put(rstc);
+> 				return ret;
+> 			}
+>
+> 			reset_control_deassert(rstc);
+> 		} else {
+> 			reset_control_assert(rstc);
+>
+> 			ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+> 			if (ret < 0) {
+> 				pr_err("%s: could not update power domain\n", __func__);
+> 		  		reset_control_put(rstc);
+> 				return ret;
+> 			}
+> 		}
+>
+>
+>>   		reset_control_put(rstc);
+>>   	}
+>>
+>> -	ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+>> -	if (ret < 0) {
+>> -		pr_err("%s: could not update power domain\n", __func__);
+>> -		return ret;
+>> -	}
+>> -
+>>   	ret =3D -1;
+>>   	while (ret !=3D on) {
+>>   		ret =3D pmu_power_domain_is_on(pd);
+> second question - with this patch, what happens actually is
+>
+>   cpu off:
+>       reset_control_assert
+>       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+>       wait_for_power_domain_to_turn_off
+>  =20
+>   cpu on:
+>       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>       reset_control_deassert
+>       wait_for_power_domain_to_turn_on
+>
+> So shouldn't the deassertion of the reset happen after the powerdomai=
+n
+> sucessfull turned on? Like
+>
+>   cpu on:
+>       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>       wait_for_power_domain_to_turn_on
+>       reset_control_deassert
 
-Jon
+You are right.
+>
+>
+>
+
+--=20
+Thanks,
+- Caesar
