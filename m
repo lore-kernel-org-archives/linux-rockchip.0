@@ -1,52 +1,68 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [PATCH v4 3/3] ARM: dts: rockchip: add hdmi analog power supplies to
- rk3288 boards
-Date: Fri, 05 Jun 2015 19:07:34 +0200
-Message-ID: <2174509.z9PNBvxjWd@diego>
-References: <1707049.JEvfTcofKv@diego>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v3 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Fri, 5 Jun 2015 10:49:14 -0700
+Message-ID: <CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
+References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
+	<1433517104-7595-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1707049.JEvfTcofKv@diego>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433517104-7595-3-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWRkIHRoZSByZWNlbnRseSBhZGRlZCBoZG1pIHBvd2VyIHN1cHBsaWVzIHRvIGV2YiBhbmQgZmly
-ZWZseSBib2FyZHMuCgpTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNo
-LmRlPgotLS0KY2hhbmdlcyBzaW5jZSB2MzoKLSBhZGQgZW50cmllcyBmb3IgcG9wbWV0YWwgYm9h
-cmQKCiBhcmNoL2FybS9ib290L2R0cy9yazMyODgtZXZiLmR0c2kgICAgIHwgMiArKwogYXJjaC9h
-cm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaSB8IDIgKysKIGFyY2gvYXJtL2Jvb3QvZHRz
-L3JrMzI4OC1wb3BtZXRhbC5kdHMgfCAyICsrCiAzIGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9u
-cygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRzaSBiL2Fy
-Y2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRzaQppbmRleCA4NDRhNmZiLi5hNTdmYmUzIDEw
-MDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZXZiLmR0c2kKKysrIGIvYXJjaC9h
-cm0vYm9vdC9kdHMvcmszMjg4LWV2Yi5kdHNpCkBAIC0xNzIsNiArMTcyLDggQEAKIH07CiAKICZo
-ZG1pIHsKIAlkZGMtaTJjLWJ1cyA9IDwmaTJjNT47CisJdnAtc3VwcGx5ID0gPCZ2ZGQxMF9sY2Q+
-OworCXZwaC1zdXBwbHkgPSA8JnZjYzE4X2xjZD47CiAJc3RhdHVzID0gIm9rYXkiOwogfTsKZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LmR0c2kgYi9hcmNoL2Fy
-bS9ib290L2R0cy9yazMyODgtZmlyZWZseS5kdHNpCmluZGV4IDBiNDIzNzIuLjY4MDY4ZDkgMTAw
-NjQ0Ci0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LmR0c2kKKysrIGIvYXJj
-aC9hcm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaQpAQCAtMTk2LDYgKzE5Niw4IEBACiB9
-OwogCiAmaGRtaSB7CiAJZGRjLWkyYy1idXMgPSA8JmkyYzU+OworCXZwLXN1cHBseSA9IDwmdmRk
-MTBfbGNkPjsKKwl2cGgtc3VwcGx5ID0gPCZ2Y2MxOF9sY2Q+OwogCXN0YXR1cyA9ICJva2F5IjsK
-IH07CmRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtcG9wbWV0YWwuZHRzIGIv
-YXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXBvcG1ldGFsLmR0cwppbmRleCBkNTgyODExLi45OGY0
-ZDc3IDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtcG9wbWV0YWwuZHRzCisr
-KyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1wb3BtZXRhbC5kdHMKQEAgLTE0MSw2ICsxNDEs
-OCBAQAogCiAmaGRtaSB7CiAJZGRjLWkyYy1idXMgPSA8JmkyYzU+OworCXZwLXN1cHBseSA9IDwm
-dmRkMTBfbGNkPjsKKwl2cGgtc3VwcGx5ID0gPCZ2Y2MxOF9sY2Q+OwogCXN0YXR1cyA9ICJva2F5
-IjsKIH07CiAKLS0gCjIuMS40CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Caesar,
+
+On Fri, Jun 5, 2015 at 8:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
+> In idle mode, core1/2/3 of Cortex-A17 should be either power off or in
+> WFI/WFE state.
+> we can delay 1ms to ensure the CPU enter WFI/WFE state.
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+>
+>  arch/arm/mach-rockchip/platsmp.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+> index 25da16f..6672fdd 100644
+> --- a/arch/arm/mach-rockchip/platsmp.c
+> +++ b/arch/arm/mach-rockchip/platsmp.c
+> @@ -325,6 +325,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+>  #ifdef CONFIG_HOTPLUG_CPU
+>  static int rockchip_cpu_kill(unsigned int cpu)
+>  {
+> +       /* ensure CPU can enter the WFI/WFE state */
+> +       mdelay(1);
+
+This is a pretty weak assurance.  Is there any stronger assurance you
+can give that we're in WFI/WFE state and won't come out of it?
+
+Do you actually see problems if you power off a CPU when it's not in
+WFI/WFE state?
+
+...so I _think_ I see the path that is happening here and what you're
+trying to handle.  Specifically, I see:
+
+On dying CPU:
+1. cpu_die() calls 'complete(&cpu_died)'
+2. cpu_die() calls 'smp_ops.cpu_die(cpu)' AKA rockchip_cpu_die()
+3. rockchip_cpu_die() does a bit more cache flushing before looping in
+cpu_do_idle()
+
+The problem is that the moment the completion happens in step #1 above
+the dying CPU can be killed.  ...so you're trying to make sure the
+dying CPU makes it to cpu_do_idle().  In that case a fixed mdelay(1)
+might be OK since the time that the CPU takes to run through a few
+instructions (with no interrupts) is pretty predictable.  It would be
+really nice if the commit message went through all this, though.
+
+...but is there any chance that cpu_do_idle() could somehow return?
+We shouldn't send any events since we've marked the core offline, but
+perhaps some per-core interrupt (arch timer?) that didn't get
+migrated?
+
+
+-Doug
