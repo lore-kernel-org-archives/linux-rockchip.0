@@ -1,35 +1,73 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH v3 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Fri, 05 Jun 2015 18:17:09 +0200
-Message-ID: <2303499.bZIqGxfG9l@diego>
-References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com> <1433517104-7595-2-git-send-email-wxt@rock-chips.com> <1744325.yNd0r8SV4R@diego>
+Date: Fri, 5 Jun 2015 09:28:42 -0700
+Message-ID: <CAD=FV=WTGz9SYGap5V7YAWdJy_pOScivo6x66vni2-fW5Y7xNQ@mail.gmail.com>
+References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
+	<1433517104-7595-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1744325.yNd0r8SV4R@diego>
+In-Reply-To: <1433517104-7595-2-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
-Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+Caesar,
 
-Am Freitag, 5. Juni 2015, 17:52:48 schrieb Heiko St=FCbner:
-> could we do this something like the shown below instead?
-> Here the deassertion of the reset really happens after we are sure th=
-e
-> power-domain is on
-=20
-As you mention in the gerrit cl that the hang does happen when you
-deassert the reset before the power-domain wait, ignore my last message=
- please=20
-:-)
+On Fri, Jun 5, 2015 at 8:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
+> We need different orderings when turning a core on and turning a core
+> off.  In one case we need to assert reset before turning power off.
+> In ther other case we need to turn power on and the deassert reset.
+>
+> In general, the correct flow is:
+>
+> CPU off:
+>     reset_control_assert
+>     regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
 
-But please make sure to also provide a changelog to the list submission=
-s in=20
-the future.
+Add: "ensure power domain is on" to this list.
+
+> CPU on:
+>     regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>     reset_control_deassert
+
+Add: "ensure power domain is on" to this list.
+
+Adding the "ensure power domain is on" step helps document that patch
+set version 2 is not what you want and that you thought about it.
 
 
-Thanks
-Heiko
+> @@ -88,18 +88,24 @@ static int pmu_set_power_domain(int pd, bool on)
+>                         return PTR_ERR(rstc);
+>                 }
+>
+> -               if (on)
+> -                       reset_control_deassert(rstc);
+> -               else
+> +               if (!on)
+>                         reset_control_assert(rstc);
+>
+> -               reset_control_put(rstc);
+> -       }
+> +               ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+> +               if (ret < 0) {
+> +                       pr_err("%s: could not update power domain\n", __func__);
+> +                       reset_control_put(rstc);
+> +                       return ret;
+> +               }
+>
+> -       ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+> -       if (ret < 0) {
+> -               pr_err("%s: could not update power domain\n", __func__);
+> -               return ret;
+> +               if (on)
+> +                       reset_control_deassert(rstc);
+
+I think you need a "reset_control_put(rstc);" here in the non-error case.
+
+Otherwise this looks reasonable to me and you can add my Reviewed-by
+tag.  I'll also kick off some tests with this series today to confirm
+as well.
+
+-Doug
