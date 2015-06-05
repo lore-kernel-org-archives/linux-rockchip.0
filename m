@@ -1,35 +1,87 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 0/3]     ARM: rockchip: fix the SMP
-Date: Sat,  6 Jun 2015 01:05:20 +0800
-Message-ID: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v4 3/3] ARM: rockchip: fix the SMP code style
+Date: Sat,  6 Jun 2015 01:05:23 +0800
+Message-ID: <1433523923-4755-4-git-send-email-wxt@rock-chips.com>
+References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-    Verified on url =
-    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
+Use the below scripts to check:
+scripts/checkpatch.pl -f --subject arch/arm/mach-rockchip/platsmp.c
+Although there is a check, it's no matter.
 
+CHECK: usleep_range is preferred over udelay; see
+Documentation/timers/timers-howto.txt
++167udelay(10);
+total: 0 errors, 0 warnings, 1 checks, 362 lines checked
 
-Caesar Wang (3):
-  ARM: rockchip: fix the CPU soft reset
-  ARM: rockchip: ensure CPU to enter WFI/WFE state
-  ARM: rockchip: fix the SMP code style
+ Changes in v4:
+    - Add reset_control_put(rstc) for the non-error case.
+    - Fix commit information in PATCH [1/3]
 
- arch/arm/mach-rockchip/platsmp.c | 36 ++++++++++++++++++++++++------------
- 1 file changed, 24 insertions(+), 12 deletions(-)
+ Changes in v3:
+    - FIx the PATCH v2, it doesn't work on chromium 3.14.
 
+ Changes in v2:
+    - As Kever points out, Fix the subject typo WIF/WFI in PATCH [2/3].
+    - As Heiko suggestion, re-adjust the cpu on/off flow in PATCH [1/3].
+    - Use the checkpatch.pl -f --subjective to check in PATCH [3/3].
+
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
+
+ arch/arm/mach-rockchip/platsmp.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index d809fbc..63e9c7c 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -115,7 +115,7 @@ static int pmu_set_power_domain(int pd, bool on)
+ 		ret = pmu_power_domain_is_on(pd);
+ 		if (ret < 0) {
+ 			pr_err("%s: could not read power domain state\n",
+-				 __func__);
++			       __func__);
+ 			return ret;
+ 		}
+ 	}
+@@ -139,7 +139,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
+ 
+ 	if (cpu >= ncores) {
+ 		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
+-							__func__, cpu, ncores);
++		       __func__, cpu, ncores);
+ 		return -ENXIO;
+ 	}
+ 
+@@ -158,7 +158,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
+ 		 * */
+ 		udelay(10);
+ 		writel(virt_to_phys(rockchip_secondary_startup),
+-			sram_base_addr + 8);
++		       sram_base_addr + 8);
+ 		writel(0xDEADBEAF, sram_base_addr + 4);
+ 		dsb_sev();
+ 	}
+@@ -337,7 +337,7 @@ static int rockchip_cpu_kill(unsigned int cpu)
+ static void rockchip_cpu_die(unsigned int cpu)
+ {
+ 	v7_exit_coherency_flush(louis);
+-	while(1)
++	while (1)
+ 		cpu_do_idle();
+ }
+ #endif
+@@ -350,4 +350,5 @@ static struct smp_operations rockchip_smp_ops __initdata = {
+ 	.cpu_die		= rockchip_cpu_die,
+ #endif
+ };
++
+ CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
 -- 
 1.9.1
