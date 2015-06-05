@@ -1,254 +1,66 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Fri, 05 Jun 2015 11:46:21 +0200
-Message-ID: <26548754.3lOPTtJQ55@diego>
-References: <1433479677-18086-1-git-send-email-wxt@rock-chips.com> <1604172.FydsUUUXNY@diego> <55716512.9050603@rock-chips.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
+ regulators
+Date: Fri, 5 Jun 2015 13:02:01 +0200
+Message-ID: <20150605110159.GA16254@ulmo.nvidia.com>
+References: <4184159.j0iXe39dFB@phil>
+ <2619686.csNBBFyt8W@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55716512.9050603@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <2619686.csNBBFyt8W@phil>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 5. Juni 2015, 17:00:02 schrieb Caesar Wang:
-> Heiko,
->=20
-> =E5=9C=A8 2015=E5=B9=B406=E6=9C=8805=E6=97=A5 16:45, Heiko St=C3=BCbn=
-er =E5=86=99=E9=81=93:
-> > Hi Caesar,
-> >=20
-> >=20
-> > thanks for investigating this.
-> >=20
-> > Am Freitag, 5. Juni 2015, 12:47:55 schrieb Caesar Wang:
-> >> In general, the correct flow is:
-> >>=20
-> >> cpu off:
-> >>      reset_control_assert
-> >>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
-> >>=20
-> >> cpu on:
-> >>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-> >>      reset_control_deassert
-> >>=20
-> >> You can repro it with bringing CPU up and down.
-> >> Says:(test scripts)
-> >>=20
-> >>      cd /sys/devices/system/cpu/
-> >>      for i in $(seq 1000); do
-> >>      echo "=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D $i =
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D"
-> >>     =20
-> >>          for j in $(seq 100); do
-> >>         =20
-> >>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat
-> >>=20
-> >> cpu3/online)" !=3D "000" ]]; do echo 0 > cpu1/online
-> >>=20
-> >>                  echo 0 > cpu2/online
-> >>                  echo 0 > cpu3/online
-> >>             =20
-> >>              done
-> >>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat
-> >>=20
-> >> cpu3/online)" !=3D "111" ]]; do echo 1 > cpu1/online
-> >>=20
-> >>                  echo 1 > cpu2/online
-> >>                  echo 1 > cpu3/online
-> >>             =20
-> >>              done
-> >>         =20
-> >>          done
-> >>     =20
-> >>      done
-> >>=20
-> >> The following is reproducile log:
-> >> [34466.186812] PM: noirq suspend of devices complete after 0.669 m=
-secs
-> >> [34466.186824] Disabling non-boot CPUs ...
-> >> [34466.187509] CPU1: shutdown
-> >> [34466.188672] CPU2: shutdown
-> >> [34473.736627] Kernel panic - not syncing: Watchdog detected hard =
-LOCKUP
-> >> on
-> >> cpu 0 [34473.736646] CPU: 3 PID: 0 Comm: swapper/3 Not tainted 3.1=
-4.0 #1
-> >> [34473.736687] [<c010dfb0>] (unwind_backtrace) from [<c010a460>]
-> >> (show_stack+0x20/0x24) [34473.736711] [<c010a460>] (show_stack) fr=
-om
-> >> [<c0630670>] (dump_stack+0x70/0x8c) [34473.736731] [<c0630670>]
-> >> (dump_stack) from [<c062fa0c>] (panic+0xa8/0x1fc) [34473.736754]
-> >> [<c062fa0c>] (panic) from [<c0191efc>] (watchdog_timer_fn+0x234/0x=
-26c)
-> >> [34473.736777] [<c0191efc>] (watchdog_timer_fn) from [<c014103c>]
-> >> (__run_hrtimer+0x118/0x1e0) [34473.736797] [<c014103c>] (__run_hrt=
-imer)
-> >> from [<c0141c04>] (hrtimer_interrupt+0x148/0x2a0) [34473.736820]
-> >> [<c0141c04>] (hrtimer_interrupt) from [<c04d9994>]
-> >> (arch_timer_handler_phys+0x38/0x48) [34473.736844] [<c04d9994>]
-> >> (arch_timer_handler_phys) from [<c016acc4>]
-> >> (handle_percpu_devid_irq+0xb8/0x124) [34473.736867] [<c016acc4>]
-> >> (handle_percpu_devid_irq) from [<c0166a30>]
-> >> (generic_handle_irq+0x30/0x40)
-> >> [34473.736887] [<c0166a30>] (generic_handle_irq) from [<c0166d28>]
-> >> (__handle_domain_irq+0x8c/0xb0) [34473.736905] [<c0166d28>]
-> >> (__handle_domain_irq) from [<c01003a0>] (gic_handle_irq+0x48/0x6c)
-> >> [34473.736922] [<c01003a0>] (gic_handle_irq) from [<c010b040>]
-> >> (__irq_svc+0x40/0x50) [34473.736936] Exception stack(0xee127f70 to
-> >> 0xee127fb8)
-> >> [34473.736948] 7f60:                                     ffffffed
-> >> 00000000
-> >> 2dd6d000 00000000 [34473.736964] 7f80: ee126000 00000015 c0b46bac
-> >> c0b46bac
-> >> 0000406a 410fc0d1 00000000 ee127fc4 [34473.736979] 7fa0: ee127fb8
-> >> ee127fb8
-> >> c0107038 c010703c 600f0013 ffffffff [34473.736995] [<c010b040>]
-> >> (__irq_svc)
-> >> from [<c010703c>] (arch_cpu_idle+0x40/0x48) [34473.737013] [<c0107=
-03c>]
-> >> (arch_cpu_idle) from [<c0166978>] (cpu_startup_entry+0x170/0x1d0)
-> >> [34473.737031] [<c0166978>] (cpu_startup_entry) from [<c010c254>]
-> >> (secondary_start_kernel+0x138/0x160) [34473.737059] [<c010c254>]
-> >> (secondary_start_kernel) from [<00100464>] (0x100464) [34474.90374=
-0] SMP:
-> >> failed to stop secondary CPUs
-> >> [34476.099964] SMP: failed to stop secondary CPUs
-> >> ...
-> >>=20
-> >> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> >> ---
-> >>=20
-> >>   arch/arm/mach-rockchip/platsmp.c | 13 +++++--------
-> >>   1 file changed, 5 insertions(+), 8 deletions(-)
-> >>=20
-> >> diff --git a/arch/arm/mach-rockchip/platsmp.c
-> >> b/arch/arm/mach-rockchip/platsmp.c index 5b4ca3c..1230d3d 100644
-> >> --- a/arch/arm/mach-rockchip/platsmp.c
-> >> +++ b/arch/arm/mach-rockchip/platsmp.c
-> >> @@ -88,20 +88,17 @@ static int pmu_set_power_domain(int pd, bool o=
-n)
-> >>=20
-> >>   			return PTR_ERR(rstc);
-> >>   	=09
-> >>   		}
-> >>=20
-> >> -		if (on)
-> >> +		if (on) {
-> >> +			regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> >>=20
-> >>   			reset_control_deassert(rstc);
-> >>=20
-> >> -		else
-> >> +		} else {
-> >>=20
-> >>   			reset_control_assert(rstc);
-> >>=20
-> >> +			regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> >> +		}
-> >=20
-> > you're loosing the return value of regmap_update_bits here, I guess=
- it
-> > should look like below?
-> >=20
-> > 		if (on) {
-> > 	=09
-> > 			ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
->=20
-> I search the kernel, Nobody do that return value.
-
-counter-example:
-http://lxr.free-electrons.com/source/drivers/phy/phy-exynos5250-sata.c#=
-L76
-;-)
-
-> Need we are that?
-> I will fix it on next patch if it's need.
-
-yes, while not very probable, it is nevertheless still good practice to=
- handle=20
-it. But when chaning the logic as we observed below, the regmap update =
-part=20
-can already stay how it is now, as you can simply do something like:
-
-if (!on)
-	reset_control_assert(rstc);
-
-regmap_update_bits
-wait_for_pd
-
-if (on)
-	reset_control_deassert(rstc);
-
-
-Heiko
-
-> > 			if (ret < 0) {
-> > 		=09
-> > 				pr_err("%s: could not update power domain\n", __func__);
-> > 			=09
-> > 		  		reset_control_put(rstc);
-> > 			=09
-> > 				return ret;
-> > 		=09
-> > 			}
-> > 		=09
-> > 			reset_control_deassert(rstc);
-> > 	=09
-> > 		} else {
-> > 	=09
-> > 			reset_control_assert(rstc);
-> > 		=09
-> > 			ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> > 			if (ret < 0) {
-> > 		=09
-> > 				pr_err("%s: could not update power domain\n", __func__);
-> > 			=09
-> > 		  		reset_control_put(rstc);
-> > 			=09
-> > 				return ret;
-> > 		=09
-> > 			}
-> > 	=09
-> > 		}
-> > 	=09
-> >>   		reset_control_put(rstc);
-> >>   =09
-> >>   	}
-> >>=20
-> >> -	ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> >> -	if (ret < 0) {
-> >> -		pr_err("%s: could not update power domain\n", __func__);
-> >> -		return ret;
-> >> -	}
-> >> -
-> >>=20
-> >>   	ret =3D -1;
-> >>   	while (ret !=3D on) {
-> >>   =09
-> >>   		ret =3D pmu_power_domain_is_on(pd);
-> >=20
-> > second question - with this patch, what happens actually is
-> >=20
-> >   cpu off:
-> >       reset_control_assert
-> >       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
-> >       wait_for_power_domain_to_turn_off
-> >  =20
-> >   cpu on:
-> >       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-> >       reset_control_deassert
-> >       wait_for_power_domain_to_turn_on
-> >=20
-> > So shouldn't the deassertion of the reset happen after the powerdom=
-ain
-> > sucessfull turned on? Like
-> >=20
-> >   cpu on:
-> >       regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-> >       wait_for_power_domain_to_turn_on
-> >       reset_control_deassert
->=20
-> You are right.
+T24gTW9uLCBNYXIgMjMsIDIwMTUgYXQgMDc6MTc6NDlQTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4gSGkgUGhpbGlwcCwKPiAKPiBBbSBEb25uZXJzdGFnLCAxMi4gTcOkcnogMjAxNSwg
+MjE6NDU6MTkgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiA+IEF0IGxlYXN0IHRoZSBSb2NrY2hp
+cCB2YXJpYW50IG9mIHRoZSBkd19oZG1pIGNhbiBoYXZlIGNvbnRyb2xsYWJsZSBwb3dlcgo+ID4g
+c3VwcGxpZXMgcHJvdmlkaW5nIDEuMCBhbmQgMS44Vi4gVGhlcmVmb3JlIGFkZCB0aGUgcG9zc2li
+aWxpdHkgZm9yIHRoZQo+ID4gZ2VuZXJpYyBicmlkZ2UgZHJpdmVyIHRvIGVuYWJsZSBzdXBwbGll
+cyBwcm92aWRlZCBieSB0aGUgaHctc3BlY2lmaWMKPiA+IGRyaXZlcnMuCj4gPiAKPiA+IFNpZ25l
+ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gCj4gZG9lcyB0aGlz
+IGxvb2sgb2sgbm93Pwo+IAo+IEFuZCBhcyB3ZSB0YWxrZWQgYWJvdXQgaW4gQ2hlbW5pdHosIHdo
+byB3aWxsIGJlIHRha2luZyBzdWNoIGJyaWRnZS1yZWxhdGVkIAo+IGNoYW5nZXMsIGFzIHlvdSBt
+ZW50aW9uZWQgc29tZSBsYXN0IGJyaWRnZS1wYXRjaGVzIGdvaW5nIHRocm91Z2ggVGhpZXJyeS4K
+ClNvcnJ5LCBJIGhhZCBjb21wbGV0ZWx5IG1pc3NlZCB0aGlzLgoKPiA+IC0tLQo+ID4gY2hhbmdl
+cyBzaW5jZSB2MjoKPiA+IC0gcmVuYW1lIHN1cHBsaWVzIHRvIHRoZSBuYW1lcyBmb3VuZCBpbiB0
+aGUgaGRtaSBJUCBkYXRhYm9vawo+ID4gY2hhbmdlcyBzaW5jZSB2MToKPiA+IC0gZm9sbG93IHN1
+Z2dlc3Rpb24gZnJvbSBSdXNzZWxsIEtpbmcgdG8ga2VlcCByZWd1bGF0b3IgaGFuZGxpbmcgbG9j
+YWwKPiA+ICAgdG8gdGhlIHJvY2tjaGlwIGltcGxlbWVudGF0aW9uIGZvciB0aGUgdGltZSBiZWlu
+ZyBhbmQgb25seSBnZW5lcmFsaXplCj4gPiAgIHdoZW4gYSByZWFsIHNlY29uZCBpbXBsZW1lbnRh
+dGlvbiBuZWVkcyByZWd1bGF0b3IgaGFuZGxpbmcKPiA+IAo+ID4gIC4uLi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2RybS9icmlkZ2UvZHdfaGRtaS50eHQgICAgIHwgIDUgKysrKwo+ID4gIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgICAgIHwgMzIKPiA+ICsrKysr
+KysrKysrKysrKysrKysrKy0gMiBmaWxlcyBjaGFuZ2VkLCAzNiBpbnNlcnRpb25zKCspLCAxIGRl
+bGV0aW9uKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dAo+ID4gYi9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dCBpbmRleAo+ID4gYTkwNWMxNC4u
+YmI3NDY0MCAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kcm0vYnJpZGdlL2R3X2hkbWkudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dAo+ID4gQEAgLTIyLDYgKzIyLDExIEBA
+IE9wdGlvbmFsIHByb3BlcnRpZXMKPiA+ICAtIGRkYy1pMmMtYnVzOiBwaGFuZGxlIG9mIGFuIEky
+QyBjb250cm9sbGVyIHVzZWQgZm9yIEREQyBFRElEIHByb2JpbmcKPiA+ICAtIGNsb2NrcywgY2xv
+Y2stbmFtZXM6IHBoYW5kbGUgdG8gdGhlIEhETUkgQ0VDIGNsb2NrLCBuYW1lIHNob3VsZCBiZSAi
+Y2VjIgo+ID4gCj4gPiArT3B0aW9uYWwgc3VwcGxpZXM6Cj4gPiArcm9ja2NoaXAscmszMjg4LWR3
+LWhkbWkgaGFuZGxlcyB0d28gb3B0aW9uYWwgcG93ZXIgc3VwcGxpZXM6Cj4gPiArLSB2cC1zdXBw
+bHk6IDEuMFYgcG93ZXIgc3VwcGx5Cj4gPiArLSB2cGgtc3VwcGx5OiAxLjhWIHBvd2VyIHN1cHBs
+eQoKSWYgdGhpcyBpcyBzcGVjaWZpYyB0byB0aGUgUm9ja2NoaXAgaW1wbGVtZW50YXRpb24sIHNo
+b3VsZG4ndCB0aGlzIGdvCmludG8gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zp
+ZGVvL2R3X2hkbWktcm9ja2NoaXAudHh0PyBJdApjb3VsZCB0aGVuIHNpbXBseSBnbyBpbnRvIHRo
+ZSBSb2NrY2hpcCBEUk0gdHJlZS4KClRoaWVycnkKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
