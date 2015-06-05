@@ -1,7 +1,7 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Sat,  6 Jun 2015 01:03:53 +0800
-Message-ID: <1433523836-4299-2-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v4 3/3] ARM: rockchip: fix the SMP code style
+Date: Sat,  6 Jun 2015 01:03:55 +0800
+Message-ID: <1433523836-4299-4-git-send-email-wxt@rock-chips.com>
 References: <1433523836-4299-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1433523836-4299-1-git-send-email-wxt@rock-chips.com>
@@ -10,92 +10,78 @@ To: Heiko Stuebner <heiko@sntech.de>
 Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We need different orderings when turning a core on and turning a core
-off.  In one case we need to assert reset before turning power off.
-In ther other case we need to turn power on and the deassert reset.
+Use the below scripts to check:
+scripts/checkpatch.pl -f --subject arch/arm/mach-rockchip/platsmp.c
+Although there is a check, it's no matter.
 
-In general, the correct flow is:
+CHECK: usleep_range is preferred over udelay; see
+Documentation/timers/timers-howto.txt
++167udelay(10);
+total: 0 errors, 0 warnings, 1 checks, 362 lines checked
 
-CPU off:
-    reset_control_assert
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
-    ensure power domain is on
-CPU on:
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-    reset_control_deassert
-    ensure power domain is on
+ Changes in v4:
+    - Add reset_control_put(rstc) for the non-error case.
+    - Fix commit information in PATCH [1/3]
 
-This is needed for stressing CPU up/down, as per:
-    cd /sys/devices/system/cpu/
-    for i in $(seq 1000); do
-        echo "================= $i ============"
-        for j in $(seq 100); do
-            while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" != "000"" ]]
-                echo 0 > cpu1/online
-                echo 0 > cpu2/online
-                echo 0 > cpu3/online
-            done
-            while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" != "111" ]]; do
-                echo 1 > cpu1/online
-                echo 1 > cpu2/online
-                echo 1 > cpu3/online
-            done
-        done
-    done
+ Changes in v3:
+    - FIx the PATCH v2, it doesn't work on chromium 3.14.
 
-The following is reproducile log:
-    [34466.186812] PM: noirq suspend of devices complete after 0.669 msecs
-    [34466.186824] Disabling non-boot CPUs ...
-    [34466.187509] CPU1: shutdown
-    [34466.188672] CPU2: shutdown
-    [34473.736627] Kernel panic - not syncing:Watchdog detected hard LOCKUP on cpu 0
-    .......
+ Changes in v2:
+    - As Kever points out, Fix the subject typo WIF/WFI in PATCH [2/3].
+    - As Heiko suggestion, re-adjust the cpu on/off flow in PATCH [1/3].
+    - Use the checkpatch.pl -f --subjective to check in PATCH [3/3].
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Reviewed-by: Doug Anderson <dianders@chromium.org>
 ---
 
- arch/arm/mach-rockchip/platsmp.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ arch/arm/mach-rockchip/platsmp.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 5b4ca3c..a297b86 100644
+index d809fbc..63e9c7c 100644
 --- a/arch/arm/mach-rockchip/platsmp.c
 +++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -88,18 +88,26 @@ static int pmu_set_power_domain(int pd, bool on)
- 			return PTR_ERR(rstc);
+@@ -115,7 +115,7 @@ static int pmu_set_power_domain(int pd, bool on)
+ 		ret = pmu_power_domain_is_on(pd);
+ 		if (ret < 0) {
+ 			pr_err("%s: could not read power domain state\n",
+-				 __func__);
++			       __func__);
+ 			return ret;
  		}
+ 	}
+@@ -139,7 +139,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
  
-+		if (!on)
-+			reset_control_assert(rstc);
-+
-+		ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-+		if (ret < 0) {
-+			pr_err("%s: could not update power domain\n", __func__);
-+			reset_control_put(rstc);
-+			return ret;
-+		}
-+
- 		if (on)
- 			reset_control_deassert(rstc);
--		else
--			reset_control_assert(rstc);
- 
- 		reset_control_put(rstc);
--	}
--
--	ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
--	if (ret < 0) {
--		pr_err("%s: could not update power domain\n", __func__);
--		return ret;
-+	} else {
-+		ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-+		if (ret < 0) {
-+			pr_err("%s: could not update power domain\n", __func__);
-+			return ret;
-+		}
+ 	if (cpu >= ncores) {
+ 		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
+-							__func__, cpu, ncores);
++		       __func__, cpu, ncores);
+ 		return -ENXIO;
  	}
  
- 	ret = -1;
+@@ -158,7 +158,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
+ 		 * */
+ 		udelay(10);
+ 		writel(virt_to_phys(rockchip_secondary_startup),
+-			sram_base_addr + 8);
++		       sram_base_addr + 8);
+ 		writel(0xDEADBEAF, sram_base_addr + 4);
+ 		dsb_sev();
+ 	}
+@@ -337,7 +337,7 @@ static int rockchip_cpu_kill(unsigned int cpu)
+ static void rockchip_cpu_die(unsigned int cpu)
+ {
+ 	v7_exit_coherency_flush(louis);
+-	while(1)
++	while (1)
+ 		cpu_do_idle();
+ }
+ #endif
+@@ -350,4 +350,5 @@ static struct smp_operations rockchip_smp_ops __initdata = {
+ 	.cpu_die		= rockchip_cpu_die,
+ #endif
+ };
++
+ CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
 -- 
 1.9.1
