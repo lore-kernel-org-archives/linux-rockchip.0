@@ -1,73 +1,38 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Fri, 5 Jun 2015 09:28:42 -0700
-Message-ID: <CAD=FV=WTGz9SYGap5V7YAWdJy_pOScivo6x66vni2-fW5Y7xNQ@mail.gmail.com>
-References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
-	<1433517104-7595-2-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v4 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Sat,  6 Jun 2015 01:03:54 +0800
+Message-ID: <1433523836-4299-3-git-send-email-wxt@rock-chips.com>
+References: <1433523836-4299-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433517104-7595-2-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1433523836-4299-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
+In idle mode, core1/2/3 of Cortex-A17 should be either power off or in
+WFI/WFE state.
+we can delay 1ms to ensure the CPU enter WFI/WFE state.
 
-On Fri, Jun 5, 2015 at 8:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> We need different orderings when turning a core on and turning a core
-> off.  In one case we need to assert reset before turning power off.
-> In ther other case we need to turn power on and the deassert reset.
->
-> In general, the correct flow is:
->
-> CPU off:
->     reset_control_assert
->     regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
 
-Add: "ensure power domain is on" to this list.
+ arch/arm/mach-rockchip/platsmp.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> CPU on:
->     regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
->     reset_control_deassert
-
-Add: "ensure power domain is on" to this list.
-
-Adding the "ensure power domain is on" step helps document that patch
-set version 2 is not what you want and that you thought about it.
-
-
-> @@ -88,18 +88,24 @@ static int pmu_set_power_domain(int pd, bool on)
->                         return PTR_ERR(rstc);
->                 }
->
-> -               if (on)
-> -                       reset_control_deassert(rstc);
-> -               else
-> +               if (!on)
->                         reset_control_assert(rstc);
->
-> -               reset_control_put(rstc);
-> -       }
-> +               ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> +               if (ret < 0) {
-> +                       pr_err("%s: could not update power domain\n", __func__);
-> +                       reset_control_put(rstc);
-> +                       return ret;
-> +               }
->
-> -       ret = regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
-> -       if (ret < 0) {
-> -               pr_err("%s: could not update power domain\n", __func__);
-> -               return ret;
-> +               if (on)
-> +                       reset_control_deassert(rstc);
-
-I think you need a "reset_control_put(rstc);" here in the non-error case.
-
-Otherwise this looks reasonable to me and you can add my Reviewed-by
-tag.  I'll also kick off some tests with this series today to confirm
-as well.
-
--Doug
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index a297b86..d809fbc 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -327,6 +327,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+ #ifdef CONFIG_HOTPLUG_CPU
+ static int rockchip_cpu_kill(unsigned int cpu)
+ {
++	/* ensure CPU can enter the WFI/WFE state */
++	mdelay(1);
++
+ 	pmu_set_power_domain(0 + cpu, false);
+ 	return 1;
+ }
+-- 
+1.9.1
