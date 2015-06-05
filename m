@@ -1,66 +1,77 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Fri, 5 Jun 2015 13:02:01 +0200
-Message-ID: <20150605110159.GA16254@ulmo.nvidia.com>
-References: <4184159.j0iXe39dFB@phil>
- <2619686.csNBBFyt8W@phil>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH v2 1/2] clk: change clk_ops' ->round_rate() prototype
+Date: Fri, 5 Jun 2015 13:38:03 +0200
+Message-ID: <20150605133803.59990a66@bbrezillon>
+References: <1430407809-31147-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1430407809-31147-2-git-send-email-boris.brezillon@free-electrons.com>
+ <alpine.DEB.2.02.1506042258530.12316@utopia.booyaka.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <2619686.csNBBFyt8W@phil>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+In-Reply-To: <alpine.DEB.2.02.1506042258530.12316@utopia.booyaka.com>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Paul Walmsley <paul@pwsan.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Mike Turquette <mturquette@linaro.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Shawn Guo <shawn.guo@linaro.org>, ascha Hauer <kernel@pengutronix.de>, David Brown <davidb@codeaurora.org>, Daniel Walker <dwalker@fifo99.com>, Bryan Huntsman <bryanh@codeaurora.org>, Tony Lindgren <tony@atomide.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ralf Baechle <ralf@linux-mips.org>, Max Filippov <jcmvbkbc@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Tomasz Figa <tomasz.figa@gmail.com>, Barry Song <baohua@kernel.org>, Viresh Kumar <viresh.linux@gmail.com>, Emilio =?UTF-8?B?TMOzcGV6?= <emilio@elopez.com.ar>, Maxime Ripard <maxime.ripard@free-electrons.com>, Peter De Schrijver <pdeschrijver@nvidia.com>P
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBNYXIgMjMsIDIwMTUgYXQgMDc6MTc6NDlQTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIg
-d3JvdGU6Cj4gSGkgUGhpbGlwcCwKPiAKPiBBbSBEb25uZXJzdGFnLCAxMi4gTcOkcnogMjAxNSwg
-MjE6NDU6MTkgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiA+IEF0IGxlYXN0IHRoZSBSb2NrY2hp
-cCB2YXJpYW50IG9mIHRoZSBkd19oZG1pIGNhbiBoYXZlIGNvbnRyb2xsYWJsZSBwb3dlcgo+ID4g
-c3VwcGxpZXMgcHJvdmlkaW5nIDEuMCBhbmQgMS44Vi4gVGhlcmVmb3JlIGFkZCB0aGUgcG9zc2li
-aWxpdHkgZm9yIHRoZQo+ID4gZ2VuZXJpYyBicmlkZ2UgZHJpdmVyIHRvIGVuYWJsZSBzdXBwbGll
-cyBwcm92aWRlZCBieSB0aGUgaHctc3BlY2lmaWMKPiA+IGRyaXZlcnMuCj4gPiAKPiA+IFNpZ25l
-ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gCj4gZG9lcyB0aGlz
-IGxvb2sgb2sgbm93Pwo+IAo+IEFuZCBhcyB3ZSB0YWxrZWQgYWJvdXQgaW4gQ2hlbW5pdHosIHdo
-byB3aWxsIGJlIHRha2luZyBzdWNoIGJyaWRnZS1yZWxhdGVkIAo+IGNoYW5nZXMsIGFzIHlvdSBt
-ZW50aW9uZWQgc29tZSBsYXN0IGJyaWRnZS1wYXRjaGVzIGdvaW5nIHRocm91Z2ggVGhpZXJyeS4K
-ClNvcnJ5LCBJIGhhZCBjb21wbGV0ZWx5IG1pc3NlZCB0aGlzLgoKPiA+IC0tLQo+ID4gY2hhbmdl
-cyBzaW5jZSB2MjoKPiA+IC0gcmVuYW1lIHN1cHBsaWVzIHRvIHRoZSBuYW1lcyBmb3VuZCBpbiB0
-aGUgaGRtaSBJUCBkYXRhYm9vawo+ID4gY2hhbmdlcyBzaW5jZSB2MToKPiA+IC0gZm9sbG93IHN1
-Z2dlc3Rpb24gZnJvbSBSdXNzZWxsIEtpbmcgdG8ga2VlcCByZWd1bGF0b3IgaGFuZGxpbmcgbG9j
-YWwKPiA+ICAgdG8gdGhlIHJvY2tjaGlwIGltcGxlbWVudGF0aW9uIGZvciB0aGUgdGltZSBiZWlu
-ZyBhbmQgb25seSBnZW5lcmFsaXplCj4gPiAgIHdoZW4gYSByZWFsIHNlY29uZCBpbXBsZW1lbnRh
-dGlvbiBuZWVkcyByZWd1bGF0b3IgaGFuZGxpbmcKPiA+IAo+ID4gIC4uLi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2RybS9icmlkZ2UvZHdfaGRtaS50eHQgICAgIHwgIDUgKysrKwo+ID4gIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgICAgIHwgMzIKPiA+ICsrKysr
-KysrKysrKysrKysrKysrKy0gMiBmaWxlcyBjaGFuZ2VkLCAzNiBpbnNlcnRpb25zKCspLCAxIGRl
-bGV0aW9uKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dAo+ID4gYi9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dCBpbmRleAo+ID4gYTkwNWMxNC4u
-YmI3NDY0MCAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kcm0vYnJpZGdlL2R3X2hkbWkudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9kd19oZG1pLnR4dAo+ID4gQEAgLTIyLDYgKzIyLDExIEBA
-IE9wdGlvbmFsIHByb3BlcnRpZXMKPiA+ICAtIGRkYy1pMmMtYnVzOiBwaGFuZGxlIG9mIGFuIEky
-QyBjb250cm9sbGVyIHVzZWQgZm9yIEREQyBFRElEIHByb2JpbmcKPiA+ICAtIGNsb2NrcywgY2xv
-Y2stbmFtZXM6IHBoYW5kbGUgdG8gdGhlIEhETUkgQ0VDIGNsb2NrLCBuYW1lIHNob3VsZCBiZSAi
-Y2VjIgo+ID4gCj4gPiArT3B0aW9uYWwgc3VwcGxpZXM6Cj4gPiArcm9ja2NoaXAscmszMjg4LWR3
-LWhkbWkgaGFuZGxlcyB0d28gb3B0aW9uYWwgcG93ZXIgc3VwcGxpZXM6Cj4gPiArLSB2cC1zdXBw
-bHk6IDEuMFYgcG93ZXIgc3VwcGx5Cj4gPiArLSB2cGgtc3VwcGx5OiAxLjhWIHBvd2VyIHN1cHBs
-eQoKSWYgdGhpcyBpcyBzcGVjaWZpYyB0byB0aGUgUm9ja2NoaXAgaW1wbGVtZW50YXRpb24sIHNo
-b3VsZG4ndCB0aGlzIGdvCmludG8gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zp
-ZGVvL2R3X2hkbWktcm9ja2NoaXAudHh0PyBJdApjb3VsZCB0aGVuIHNpbXBseSBnbyBpbnRvIHRo
-ZSBSb2NrY2hpcCBEUk0gdHJlZS4KClRoaWVycnkKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Hi Paul,
+
+On Thu, 4 Jun 2015 23:02:25 +0000 (UTC)
+Paul Walmsley <paul@pwsan.com> wrote:
+
+> Hi folks
+> 
+> just a brief comment on this one:
+> 
+> On Thu, 30 Apr 2015, Boris Brezillon wrote:
+> 
+> > Clock rates are stored in an unsigned long field, but ->round_rate()
+> > (which returns a rounded rate from a requested one) returns a long
+> > value (errors are reported using negative error codes), which can lead
+> > to long overflow if the clock rate exceed 2Ghz.
+> > 
+> > Change ->round_rate() prototype to return 0 or an error code, and pass the
+> > requested rate as a pointer so that it can be adjusted depending on
+> > hardware capabilities.
+> 
+> ...
+> 
+> > diff --git a/Documentation/clk.txt b/Documentation/clk.txt
+> > index 0e4f90a..fca8b7a 100644
+> > --- a/Documentation/clk.txt
+> > +++ b/Documentation/clk.txt
+> > @@ -68,8 +68,8 @@ the operations defined in clk.h:
+> >  		int		(*is_enabled)(struct clk_hw *hw);
+> >  		unsigned long	(*recalc_rate)(struct clk_hw *hw,
+> >  						unsigned long parent_rate);
+> > -		long		(*round_rate)(struct clk_hw *hw,
+> > -						unsigned long rate,
+> > +		int		(*round_rate)(struct clk_hw *hw,
+> > +						unsigned long *rate,
+> >  						unsigned long *parent_rate);
+> >  		long		(*determine_rate)(struct clk_hw *hw,
+> >  						unsigned long rate,
+> 
+> I'd suggest that we should probably go straight to 64-bit rates.  There 
+> are already plenty of clock sources that can generate rates higher than 
+> 4GiHz.
+
+Yep, that was something I was considering too. If Stephen agrees I'll
+change that in the next version.
+BTW, you're referring to the second version of this patch, but things
+have changed a bit: Stephen recommended to only modify the
+->determine_rate() prototype and pass a structure instead of a list of
+arguments.
+Here is the last version of this series [1].
+
+Best Regards,
+
+Boris
+
+[1]http://patchwork.linux-mips.org/patch/10092/
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
