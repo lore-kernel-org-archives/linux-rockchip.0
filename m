@@ -1,38 +1,35 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
-Date: Sat,  6 Jun 2015 01:05:22 +0800
-Message-ID: <1433523923-4755-3-git-send-email-wxt@rock-chips.com>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/3]     ARM: rockchip: fix the SMP
+Date: Sat,  6 Jun 2015 01:05:20 +0800
+Message-ID: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In idle mode, core1/2/3 of Cortex-A17 should be either power off or in
-WFI/WFE state.
-we can delay 1ms to ensure the CPU enter WFI/WFE state.
+    Verified on url =
+    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
 
- arch/arm/mach-rockchip/platsmp.c | 3 +++
- 1 file changed, 3 insertions(+)
+Caesar Wang (3):
+  ARM: rockchip: fix the CPU soft reset
+  ARM: rockchip: ensure CPU to enter WFI/WFE state
+  ARM: rockchip: fix the SMP code style
 
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index a297b86..d809fbc 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -327,6 +327,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- #ifdef CONFIG_HOTPLUG_CPU
- static int rockchip_cpu_kill(unsigned int cpu)
- {
-+	/* ensure CPU can enter the WFI/WFE state */
-+	mdelay(1);
-+
- 	pmu_set_power_domain(0 + cpu, false);
- 	return 1;
- }
+ arch/arm/mach-rockchip/platsmp.c | 36 ++++++++++++++++++++++++------------
+ 1 file changed, 24 insertions(+), 12 deletions(-)
+
 -- 
 1.9.1
