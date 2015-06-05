@@ -1,87 +1,80 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 3/3] ARM: rockchip: fix the SMP code style
-Date: Sat,  6 Jun 2015 01:05:23 +0800
-Message-ID: <1433523923-4755-4-git-send-email-wxt@rock-chips.com>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [PATCH v4 2/3] drm/rockchip: implement dw_hdmi supplies for the
+ Rockchip implementation
+Date: Fri, 05 Jun 2015 19:06:38 +0200
+Message-ID: <17068264.uLYIadrGJJ@diego>
+References: <1707049.JEvfTcofKv@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1707049.JEvfTcofKv@diego>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use the below scripts to check:
-scripts/checkpatch.pl -f --subject arch/arm/mach-rockchip/platsmp.c
-Although there is a check, it's no matter.
-
-CHECK: usleep_range is preferred over udelay; see
-Documentation/timers/timers-howto.txt
-+167udelay(10);
-total: 0 errors, 0 warnings, 1 checks, 362 lines checked
-
- Changes in v4:
-    - Add reset_control_put(rstc) for the non-error case.
-    - Fix commit information in PATCH [1/3]
-
- Changes in v3:
-    - FIx the PATCH v2, it doesn't work on chromium 3.14.
-
- Changes in v2:
-    - As Kever points out, Fix the subject typo WIF/WFI in PATCH [2/3].
-    - As Heiko suggestion, re-adjust the cpu on/off flow in PATCH [1/3].
-    - Use the checkpatch.pl -f --subjective to check in PATCH [3/3].
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
-
- arch/arm/mach-rockchip/platsmp.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index d809fbc..63e9c7c 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -115,7 +115,7 @@ static int pmu_set_power_domain(int pd, bool on)
- 		ret = pmu_power_domain_is_on(pd);
- 		if (ret < 0) {
- 			pr_err("%s: could not read power domain state\n",
--				 __func__);
-+			       __func__);
- 			return ret;
- 		}
- 	}
-@@ -139,7 +139,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
- 
- 	if (cpu >= ncores) {
- 		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
--							__func__, cpu, ncores);
-+		       __func__, cpu, ncores);
- 		return -ENXIO;
- 	}
- 
-@@ -158,7 +158,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
- 		 * */
- 		udelay(10);
- 		writel(virt_to_phys(rockchip_secondary_startup),
--			sram_base_addr + 8);
-+		       sram_base_addr + 8);
- 		writel(0xDEADBEAF, sram_base_addr + 4);
- 		dsb_sev();
- 	}
-@@ -337,7 +337,7 @@ static int rockchip_cpu_kill(unsigned int cpu)
- static void rockchip_cpu_die(unsigned int cpu)
- {
- 	v7_exit_coherency_flush(louis);
--	while(1)
-+	while (1)
- 		cpu_do_idle();
- }
- #endif
-@@ -350,4 +350,5 @@ static struct smp_operations rockchip_smp_ops __initdata = {
- 	.cpu_die		= rockchip_cpu_die,
- #endif
- };
-+
- CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
--- 
-1.9.1
+VGhlIFJvY2tjaGlwIGltcGxlbWVudGF0aW9uIG9mIHRoZSBJUCBleHBvc2VzIHRoZSBzdXBwbGll
+cyBvdXRzaWRlIGFuZApleHBlY3RzIHRoZW0gdG8gYmUgc3VwcGxpZWQgYnkgYSBwbWljLiBTbyBp
+bXBsZW1lbnQgcmVndWxhdG9yIGhhbmRsaW5nCmZvciB0aGVtLgoKU2lnbmVkLW9mZi1ieTogSGVp
+a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KQWNrZWQtYnk6IFBoaWxpcHAgWmFiZWwgPHAu
+emFiZWxAcGVuZ3V0cm9uaXguZGU+Ci0tLQpjaGFuZ2VzIHNpbmNlIHYzOgotIHNwbGl0IGdlbmVy
+aWMgZHQtYmluZGluZ3MgYW5kIHJvY2tjaGlwIGltcGxlbWVudGF0aW9uCi0gYWRkIEFjayBmcm9t
+IFBoaWxpcHAgWmFiZWwKY2hhbmdlcyBzaW5jZSB2MjoKLSByZW5hbWUgc3VwcGxpZXMgdG8gdGhl
+IG5hbWVzIGZvdW5kIGluIHRoZSBoZG1pIElQIGRhdGFib29rCmNoYW5nZXMgc2luY2UgdjE6Ci0g
+Zm9sbG93IHN1Z2dlc3Rpb24gZnJvbSBSdXNzZWxsIEtpbmcgdG8ga2VlcCByZWd1bGF0b3IgaGFu
+ZGxpbmcgbG9jYWwKICB0byB0aGUgcm9ja2NoaXAgaW1wbGVtZW50YXRpb24gZm9yIHRoZSB0aW1l
+IGJlaW5nIGFuZCBvbmx5IGdlbmVyYWxpemUKICB3aGVuIGEgcmVhbCBzZWNvbmQgaW1wbGVtZW50
+YXRpb24gbmVlZHMgcmVndWxhdG9yIGhhbmRsaW5nCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L2R3X2hkbWktcm9ja2NoaXAuYyB8IDMyICsrKysrKysrKysrKysrKysrKysrKysrKysrKystCiAx
+IGZpbGUgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCmluZGV4IDgwZDZmYzguLjljMDAz
+ZmEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlw
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwpAQCAt
+MTEsNiArMTEsNyBAQAogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgogI2luY2x1
+ZGUgPGxpbnV4L21mZC9zeXNjb24uaD4KICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KKyNpbmNs
+dWRlIDxsaW51eC9yZWd1bGF0b3IvY29uc3VtZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX29mLmg+
+CiAjaW5jbHVkZSA8ZHJtL2RybVAuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2NydGNfaGVscGVyLmg+
+CkBAIC0yOCw2ICsyOSw5IEBAIHN0cnVjdCByb2NrY2hpcF9oZG1pIHsKIAlzdHJ1Y3QgZGV2aWNl
+ICpkZXY7CiAJc3RydWN0IHJlZ21hcCAqcmVnbWFwOwogCXN0cnVjdCBkcm1fZW5jb2RlciBlbmNv
+ZGVyOworCXN0cnVjdCByZWd1bGF0b3JfYnVsa19kYXRhIHN1cHBsaWVzWzJdOworCWludCBuc3Vw
+cGxpZXM7CisJYm9vbCBzdXBwbGllc19lbmFibGVkOwogfTsKIAogI2RlZmluZSB0b19yb2NrY2hp
+cF9oZG1pKHgpCWNvbnRhaW5lcl9vZih4LCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSwgeCkKQEAgLTE3
+OSw2ICsxODMsMTIgQEAgc3RhdGljIHN0cnVjdCBkcm1fZW5jb2Rlcl9mdW5jcyBkd19oZG1pX3Jv
+Y2tjaGlwX2VuY29kZXJfZnVuY3MgPSB7CiAKIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBf
+ZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKIHsKKwlzdHJ1Y3Qg
+cm9ja2NoaXBfaGRtaSAqaGRtaSA9IHRvX3JvY2tjaGlwX2hkbWkoZW5jb2Rlcik7CisKKwlpZiAo
+aGRtaS0+bnN1cHBsaWVzID4gMCAmJiBoZG1pLT5zdXBwbGllc19lbmFibGVkKSB7CisJCXJlZ3Vs
+YXRvcl9idWxrX2Rpc2FibGUoaGRtaS0+bnN1cHBsaWVzLCBoZG1pLT5zdXBwbGllcyk7CisJCWhk
+bWktPnN1cHBsaWVzX2VuYWJsZWQgPSBmYWxzZTsKKwl9CiB9CiAKIHN0YXRpYyBib29sCkBAIC0x
+OTksNyArMjA5LDE2IEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9jb21t
+aXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewogCXN0cnVjdCByb2NrY2hpcF9oZG1p
+ICpoZG1pID0gdG9fcm9ja2NoaXBfaGRtaShlbmNvZGVyKTsKIAl1MzIgdmFsOwotCWludCBtdXg7
+CisJaW50IG11eCwgcmV0OworCisJaWYgKGhkbWktPm5zdXBwbGllcyA+IDAgJiYgIWhkbWktPnN1
+cHBsaWVzX2VuYWJsZWQpIHsKKwkJcmV0ID0gcmVndWxhdG9yX2J1bGtfZW5hYmxlKGhkbWktPm5z
+dXBwbGllcywgaGRtaS0+c3VwcGxpZXMpOworCQlpZiAocmV0KSB7CisJCQlkZXZfZXJyKGhkbWkt
+PmRldiwgImNvdWxkIG5vdCBlbmFibGUgaGRtaSBhbmFsb2cgc3VwcGxpZXNcbiIpOworCQkJcmV0
+dXJuOworCQl9CisJCWhkbWktPnN1cHBsaWVzX2VuYWJsZWQgPSB0cnVlOworCX0KIAogCW11eCA9
+IHJvY2tjaGlwX2RybV9lbmNvZGVyX2dldF9tdXhfaWQoaGRtaS0+ZGV2LT5vZl9ub2RlLCBlbmNv
+ZGVyKTsKIAlpZiAobXV4KQpAQCAtMjc1LDYgKzI5NCwxNyBAQCBzdGF0aWMgaW50IGR3X2hkbWlf
+cm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwK
+IAlpZiAoIWlvcmVzKQogCQlyZXR1cm4gLUVOWElPOwogCisJaGRtaS0+c3VwcGxpZXNbMF0uc3Vw
+cGx5ID0gInZwIjsKKwloZG1pLT5zdXBwbGllc1sxXS5zdXBwbHkgPSAidnBoIjsKKwloZG1pLT5u
+c3VwcGxpZXMgPSAyOworCisJcmV0ID0gZGV2bV9yZWd1bGF0b3JfYnVsa19nZXQoaGRtaS0+ZGV2
+LAorCQkJCSAgICAgIGhkbWktPm5zdXBwbGllcywgaGRtaS0+c3VwcGxpZXMpOworCWlmIChyZXQg
+PT0gLUVQUk9CRV9ERUZFUikKKwkJcmV0dXJuIHJldDsKKwlpZiAocmV0KQorCQloZG1pLT5uc3Vw
+cGxpZXMgPSAwOworCiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgaGRtaSk7CiAKIAllbmNv
+ZGVyLT5wb3NzaWJsZV9jcnRjcyA9IGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKGRybSwgZGV2
+LT5vZl9ub2RlKTsKLS0gCjIuMS40CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
