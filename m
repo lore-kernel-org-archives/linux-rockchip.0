@@ -1,153 +1,61 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH v3 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
-Date: Fri, 5 Jun 2015 19:29:47 +0100
-Message-ID: <20150605182947.GN7557@n2100.arm.linux.org.uk>
+Date: Fri, 5 Jun 2015 13:24:40 -0700
+Message-ID: <CAD=FV=UamkH+RHmHHVzGKZda_w0teGBdfcH-LbCKqyp2q1OVqA@mail.gmail.com>
 References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
- <1433517104-7595-3-git-send-email-wxt@rock-chips.com>
- <CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
+	<1433517104-7595-3-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
+	<20150605182947.GN7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
+In-Reply-To: <20150605182947.GN7557@n2100.arm.linux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
 Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 05, 2015 at 10:49:14AM -0700, Doug Anderson wrote:
-> On Fri, Jun 5, 2015 at 8:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> > In idle mode, core1/2/3 of Cortex-A17 should be either power off or in
-> > WFI/WFE state.
-> > we can delay 1ms to ensure the CPU enter WFI/WFE state.
-> >
-> > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> > ---
-> >
-> >  arch/arm/mach-rockchip/platsmp.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> >
-> > diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-> > index 25da16f..6672fdd 100644
-> > --- a/arch/arm/mach-rockchip/platsmp.c
-> > +++ b/arch/arm/mach-rockchip/platsmp.c
-> > @@ -325,6 +325,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
-> >  #ifdef CONFIG_HOTPLUG_CPU
-> >  static int rockchip_cpu_kill(unsigned int cpu)
-> >  {
-> > +       /* ensure CPU can enter the WFI/WFE state */
-> > +       mdelay(1);
-> 
-> This is a pretty weak assurance.  Is there any stronger assurance you
-> can give that we're in WFI/WFE state and won't come out of it?
-> 
-> Do you actually see problems if you power off a CPU when it's not in
-> WFI/WFE state?
+Russell,
 
-I really don't like to see platforms pulling crap tricks in their
-CPU hotunplug code like this.  If there's something wrong with the
-generic code, then the generic code needs to be fixed, not worked
-around in platform code.
+On Fri, Jun 5, 2015 at 11:29 AM, Russell King - ARM Linux
+<linux@arm.linux.org.uk> wrote:
+> 1) v7_coherency_exit() is specific to v7 CPUs and can't be used by
+>    generic code.
 
-> ...so I _think_ I see the path that is happening here and what you're
-> trying to handle.  Specifically, I see:
-> 
-> On dying CPU:
-> 1. cpu_die() calls 'complete(&cpu_died)'
-> 2. cpu_die() calls 'smp_ops.cpu_die(cpu)' AKA rockchip_cpu_die()
-> 3. rockchip_cpu_die() does a bit more cache flushing before looping in
-> cpu_do_idle()
-> 
-> The problem is that the moment the completion happens in step #1 above
-> the dying CPU can be killed.  ...so you're trying to make sure the
-> dying CPU makes it to cpu_do_idle().  In that case a fixed mdelay(1)
-> might be OK since the time that the CPU takes to run through a few
-> instructions (with no interrupts) is pretty predictable.  It would be
-> really nice if the commit message went through all this, though.
-> 
-> ...but is there any chance that cpu_do_idle() could somehow return?
-> We shouldn't send any events since we've marked the core offline, but
-> perhaps some per-core interrupt (arch timer?) that didn't get
-> migrated?
+Oh, I see.  So (I think) you're saying that perhaps the reason that
+Caesar needed his patch was that he needed the dying processor to
+execute v7_exit_coherency_flush(), NOT that he needed the dying
+processor to be in WFI/WFE.  That actually makes a lot more sense to
+me!  :)  Thanks a lot for pointing that out, it's very helpful.
 
-How this is supposed to work is:
 
-	CPU requesting death		CPU dying
-	stop_machine(take_down_cpu)
-					take_down_cpu()
-					-__cpu_disable()
-					- platform_cpu_disable()
-					- marks CPU offline
-					- migrates IRQs away
-					- caches flushed
-					- tlbs flushed
-	__cpu_die()			- processes migrated away
-	-wait_for_completion_timeout()	-timekeeping migrated away
-					returns to idle loop
-					arch_cpu_idle_dead()
-					-cpu_die()
-					- idle_task_exit()
-					- flush_cache_louis()
+> So, we're actually in a very sticky position over taking CPUs offline.
+> It seems to be something that the ARM architecture and kernel
+> architecture doesn't actually allow to be done safely.  So much so,
+> that in a similar way to the original Keystone 2 physical address
+> switch, I'm tempted to make taking a CPU offline taint the kernel!
 
-At this point, dirty cache lines which matter are flushed from the
-dying CPUs cache.  However, we still need the dying CPU to be
-coherent for the next step, which is to issue the completion.
+Wow, that's going to suck.  So if you want to suspend / resume you
+need to taint your kernel.  So much for saving the planet by going
+into suspend...  ...or are you thinking that it won't taint the kernel
+when the kernel takes CPUs offline for suspend/resume purposes?  ...or
+are you thinking you've some solution that works for suspend/resume
+that doesn't work for the general cpu offlining problem?  I'd be very
+interested to hear...
 
-					- complete()
-					- flush_cache_louis()
 
-At some point during the above, the completion becomes visible to
-the other CPU, and it continues its execution.
+I know I'm not a maintainer, but if I were and I knew that lots of
+smart people had thought about the problem of CPU offlining and they
+didn't have a solution and I could make my platform 99.99999999%
+reliable by allowing a very safe mdelay(1) where I had a pretty strong
+guarantee that the 1ms was enough time, I would probably accept that
+code...
 
-	-pr_notice()
-	-platform_cpu_kill()		- smp_ops.cpu_die()
 
-The precise ordering of smp_ops.cpu_die() vs platform_cpu_kill() is
-pretty much indeterminant, and is subject to scheduling effects which
-could delay the requesting CPU.
+So since I'm not a maintainer and I certainly couldn't ack such code,
+I would certainly be happy to add my Reviewed-by to Caesar's patch if
+he changed it mention that he needed to make sure that
+v7_exit_coherency_flush() in rockchip_cpu_die() executed in time.
 
-Now, the problem is, from what ARM has been saying, that cache lines
-can get migrated to the dying CPU which may contain the "master" copy
-of the data, which means that when the dying CPU actually exits
-coherency, that data is lost to the rest of the system.
 
-Ideally, what we would like to do is to exit coherency earlier, and
-then have some notification mechanism between the dying CPU and the
-rest of the system to say that it's finished exiting coherency.
-However, we face several issues.
-
-1) v7_coherency_exit() is specific to v7 CPUs and can't be used by
-   generic code.
-
-2) we have no way to perform that notification reliably once
-   coherency has been exited.
-
-There's other reasons we need to change the notification mechanism,
-one of them is that completions use RCU, and RCU isn't actually valid
-in this context - and we can't make it valid because the dying CPU
-might loose power at any moment after it's called complete().
-
-Paul McKenny created what was a generic infrastructure for this
-notification, but I object to it on principle using atomic_t... and
-if we've exited coherency (as we would want to), it won't work
-because it makes use of atomic_cmpxchg() on the dying CPU.
-
-I've been working on a solution to use an IPI to notify from the
-dying CPU, but that's fraught because of the separation of the IRQ
-controller code from the architecture code, and we now have spinlocks
-in the IPI-raising path due to the big.LITTLE stuff - and spinlocks
-need coherency to be working.
-
-So, we're actually in a very sticky position over taking CPUs offline.
-It seems to be something that the ARM architecture and kernel
-architecture doesn't actually allow to be done safely.  So much so,
-that in a similar way to the original Keystone 2 physical address
-switch, I'm tempted to make taking a CPU offline taint the kernel!
-
-We're going to end up with tainted kernels through this path when Paul
-pushes his RCU correctness patches anyway anyway, so it's just a
-matter of the inevitable taint happening sooner or later.
-
--- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
+-Doug
