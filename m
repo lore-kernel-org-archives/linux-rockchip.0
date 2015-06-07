@@ -1,102 +1,64 @@
-From: Caesar Wang <wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Sun, 07 Jun 2015 10:51:54 +0800
-Message-ID: <5573B1CA.1050204@rock-chips.com>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>	<1433523923-4755-2-git-send-email-wxt@rock-chips.com> <CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
+Date: Sat, 6 Jun 2015 20:43:04 -0700
+Message-ID: <CAD=FV=VswV+MAgYr084VOxQynHrL1fdwnVb4b_W_bHUZgoW4mg@mail.gmail.com>
+References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
+	<1433523923-4755-2-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
+	<5573B1CA.1050204@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
+In-Reply-To: <5573B1CA.1050204@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
+To: Caesar Wang <wxt@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Caesar,
+
+On Sat, Jun 6, 2015 at 7:51 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> @@ -150,13 +159,15 @@ static int __cpuinit rockchip_boot_secondary(unsigned
+> int cpu,
+>                  * sram_base_addr + 4: 0xdeadbeaf
+>                  * sram_base_addr + 8: start address for pc
+>                  * */
+> -               udelay(10);
+> +               udelay(20);
+>
+> I increased the 'udelay(20)' or 'udelay(50)' in rockchip_boot_secondary().
+> Set#2 also can repro this issue over 22600 cycles with testing scripts.
+> (about 1 hours)
+>
+> log:
+> ================= 226 ============
+> [ 4069.134419] CPU1: shutdown
+> [ 4069.164431] CPU2: shutdown
+> [ 4069.204475] CPU3: shutdown
+> ......
+> [ 4072.454453] CPU1: shutdown
+> [ 4072.504436] CPU2: shutdown
+> [ 4072.554426] CPU3: shutdown
+> [ 4072.577827] CPU1: Booted secondary processor
+> [ 4072.582611] CPU2: Booted secondary processor
+> [ 4072.587426] CPU3: Booted secondary processor
+> <hang>
+>
+> The set #4 will be better work.
+
+OK, I'm OK with this, but I'd like to get Heiko's opinion.
+
+Also:
+* Just for kicks, does mdelay(1) work?  I know that's 100x more than
+udelay(10), but previously we were actually looping waiting for the
+power domain, right?  ...so maybe the old code used to introduce a
+pretty big delay.
+
+* Does anyone from the chip design team have any idea why patch set #4
+works but patch set #2 doesn't?  I know it's Sunday morning in China
+right now, but maybe you could ask Monday?
 
 
-=E5=9C=A8 2015=E5=B9=B406=E6=9C=8806=E6=97=A5 04:55, Doug Anderson =E5=86=
-=99=E9=81=93:
-> Caesar,
->
-> On Fri, Jun 5, 2015 at 10:05 AM, Caesar Wang <wxt@rock-chips.com> wro=
-te:
->> +               if (!on)
->> +                       reset_control_assert(rstc);
->> +
->> +               ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(p=
-d), val);
->> +               if (ret < 0) {
->> +                       pr_err("%s: could not update power domain\n"=
-, __func__);
->> +                       reset_control_put(rstc);
->> +                       return ret;
->> +               }
->> +
->>                  if (on)
->>                          reset_control_deassert(rstc);
->> -               else
->> -                       reset_control_assert(rstc);
-> As Heiko indicated in the previous patchset, he thought it would be
-> nice to move the 'pmu_power_domain_is_on(pd)' to before you deasserte=
-d
-> reset.  ...but then I pointed out that you tested that in patch set #=
-2
-> and it didn't work.
->
-> Talking to Heiko offline he thought that perhaps you could make
-> 'pmu_power_domain_is_on(pd)' work if you increased your 'udelay(10);'
-> in rockchip_boot_secondary().  Perhaps the old
-> 'pmu_power_domain_is_on' was acting like an extra bit of delay and
-> that's why moving it broke things.
->
->
-> I actually went back and tested patch set #2 and it worked for me, so
-> I couldn't test Heiko's theory.  Could you go and reproduce the
-> problem with patch set #2 again and then try increasing the udelay()
-> and see if your problems go away?  If that works, it might be a
-> slightly better solution.  Note that I think Heiko had a slightly
-> cleaner version of your patch set #2 that he posted in response to
-> your patch set #3.
+Thanks!
 
-@@ -150,13 +159,15 @@ static int __cpuinit=20
-rockchip_boot_secondary(unsigned int cpu,
-                  * sram_base_addr + 4: 0xdeadbeaf
-                  * sram_base_addr + 8: start address for pc
-                  * */
--               udelay(10);
-+               udelay(20);
-
-I increased the 'udelay(20)' or 'udelay(50)' in rockchip_boot_secondary=
-().
-Set#2 also can repro this issue over 22600 cycles with testing scripts.=
-=20
-(about 1 hours)
-
-log:
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D 226 =3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D
-[ 4069.134419] CPU1: shutdown
-[ 4069.164431] CPU2: shutdown
-[ 4069.204475] CPU3: shutdown
-=2E.....
-[ 4072.454453] CPU1: shutdown
-[ 4072.504436] CPU2: shutdown
-[ 4072.554426] CPU3: shutdown
-[ 4072.577827] CPU1: Booted secondary processor
-[ 4072.582611] CPU2: Booted secondary processor
-[ 4072.587426] CPU3: Booted secondary processor
-<hang>
-
-The set #4 will be better work.
-
->
-> -Doug
->
->
->
-
---=20
-Thanks,
-- Caesar
+-Doug
