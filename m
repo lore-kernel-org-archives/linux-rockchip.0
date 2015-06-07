@@ -1,64 +1,59 @@
-From: Doug Anderson <dianders@chromium.org>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Sat, 6 Jun 2015 20:43:04 -0700
-Message-ID: <CAD=FV=VswV+MAgYr084VOxQynHrL1fdwnVb4b_W_bHUZgoW4mg@mail.gmail.com>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
-	<1433523923-4755-2-git-send-email-wxt@rock-chips.com>
-	<CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
-	<5573B1CA.1050204@rock-chips.com>
+Date: Sun, 07 Jun 2015 13:51:24 +0800
+Message-ID: <5573DBDC.2010204@rock-chips.com>
+References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>	<1433523923-4755-2-git-send-email-wxt@rock-chips.com>	<CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>	<5573B1CA.1050204@rock-chips.com>
+ <CAD=FV=VswV+MAgYr084VOxQynHrL1fdwnVb4b_W_bHUZgoW4mg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5573B1CA.1050204@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=VswV+MAgYr084VOxQynHrL1fdwnVb4b_W_bHUZgoW4mg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
-
-On Sat, Jun 6, 2015 at 7:51 PM, Caesar Wang <wxt@rock-chips.com> wrote:
-> @@ -150,13 +159,15 @@ static int __cpuinit rockchip_boot_secondary(unsigned
-> int cpu,
->                  * sram_base_addr + 4: 0xdeadbeaf
->                  * sram_base_addr + 8: start address for pc
->                  * */
-> -               udelay(10);
-> +               udelay(20);
->
-> I increased the 'udelay(20)' or 'udelay(50)' in rockchip_boot_secondary().
-> Set#2 also can repro this issue over 22600 cycles with testing scripts.
-> (about 1 hours)
->
-> log:
-> ================= 226 ============
-> [ 4069.134419] CPU1: shutdown
-> [ 4069.164431] CPU2: shutdown
-> [ 4069.204475] CPU3: shutdown
-> ......
-> [ 4072.454453] CPU1: shutdown
-> [ 4072.504436] CPU2: shutdown
-> [ 4072.554426] CPU3: shutdown
-> [ 4072.577827] CPU1: Booted secondary processor
-> [ 4072.582611] CPU2: Booted secondary processor
-> [ 4072.587426] CPU3: Booted secondary processor
-> <hang>
->
-> The set #4 will be better work.
-
-OK, I'm OK with this, but I'd like to get Heiko's opinion.
-
-Also:
-* Just for kicks, does mdelay(1) work?  I know that's 100x more than
-udelay(10), but previously we were actually looping waiting for the
-power domain, right?  ...so maybe the old code used to introduce a
-pretty big delay.
-
-* Does anyone from the chip design team have any idea why patch set #4
-works but patch set #2 doesn't?  I know it's Sunday morning in China
-right now, but maybe you could ask Monday?
-
-
-Thanks!
-
--Doug
+CgrlnKggMjAxNeW5tDA25pyIMDfml6UgMTE6NDMsIERvdWcgQW5kZXJzb24g5YaZ6YGTOgo+IENh
+ZXNhciwKPgo+IE9uIFNhdCwgSnVuIDYsIDIwMTUgYXQgNzo1MSBQTSwgQ2Flc2FyIFdhbmcgPHd4
+dEByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+IEBAIC0xNTAsMTMgKzE1OSwxNSBAQCBzdGF0aWMg
+aW50IF9fY3B1aW5pdCByb2NrY2hpcF9ib290X3NlY29uZGFyeSh1bnNpZ25lZAo+PiBpbnQgY3B1
+LAo+PiAgICAgICAgICAgICAgICAgICAqIHNyYW1fYmFzZV9hZGRyICsgNDogMHhkZWFkYmVhZgo+
+PiAgICAgICAgICAgICAgICAgICAqIHNyYW1fYmFzZV9hZGRyICsgODogc3RhcnQgYWRkcmVzcyBm
+b3IgcGMKPj4gICAgICAgICAgICAgICAgICAgKiAqLwo+PiAtICAgICAgICAgICAgICAgdWRlbGF5
+KDEwKTsKPj4gKyAgICAgICAgICAgICAgIHVkZWxheSgyMCk7Cj4+Cj4+IEkgaW5jcmVhc2VkIHRo
+ZSAndWRlbGF5KDIwKScgb3IgJ3VkZWxheSg1MCknIGluIHJvY2tjaGlwX2Jvb3Rfc2Vjb25kYXJ5
+KCkuCj4+IFNldCMyIGFsc28gY2FuIHJlcHJvIHRoaXMgaXNzdWUgb3ZlciAyMjYwMCBjeWNsZXMg
+d2l0aCB0ZXN0aW5nIHNjcmlwdHMuCj4+IChhYm91dCAxIGhvdXJzKQo+Pgo+PiBsb2c6Cj4+ID09
+PT09PT09PT09PT09PT09IDIyNiA9PT09PT09PT09PT0KPj4gWyA0MDY5LjEzNDQxOV0gQ1BVMTog
+c2h1dGRvd24KPj4gWyA0MDY5LjE2NDQzMV0gQ1BVMjogc2h1dGRvd24KPj4gWyA0MDY5LjIwNDQ3
+NV0gQ1BVMzogc2h1dGRvd24KPj4gLi4uLi4uCj4+IFsgNDA3Mi40NTQ0NTNdIENQVTE6IHNodXRk
+b3duCj4+IFsgNDA3Mi41MDQ0MzZdIENQVTI6IHNodXRkb3duCj4+IFsgNDA3Mi41NTQ0MjZdIENQ
+VTM6IHNodXRkb3duCj4+IFsgNDA3Mi41Nzc4MjddIENQVTE6IEJvb3RlZCBzZWNvbmRhcnkgcHJv
+Y2Vzc29yCj4+IFsgNDA3Mi41ODI2MTFdIENQVTI6IEJvb3RlZCBzZWNvbmRhcnkgcHJvY2Vzc29y
+Cj4+IFsgNDA3Mi41ODc0MjZdIENQVTM6IEJvb3RlZCBzZWNvbmRhcnkgcHJvY2Vzc29yCj4+IDxo
+YW5nPgo+Pgo+PiBUaGUgc2V0ICM0IHdpbGwgYmUgYmV0dGVyIHdvcmsuCj4gT0ssIEknbSBPSyB3
+aXRoIHRoaXMsIGJ1dCBJJ2QgbGlrZSB0byBnZXQgSGVpa28ncyBvcGluaW9uLgo+Cj4gQWxzbzoK
+PiAqIEp1c3QgZm9yIGtpY2tzLCBkb2VzIG1kZWxheSgxKSB3b3JrPyAgSSBrbm93IHRoYXQncyAx
+MDB4IG1vcmUgdGhhbgpPSywgaXQgc2hvdWxkIGRlbGF5IG1vcmUgdGltZS4KCnRoZSBtZGVsYXko
+MSkgY2FuIGJlIHdvcmsgb3ZlciA1MDAwMCBjeWNsZXMsIHNvIHRoYXQgc2hvdWxkIGJlIHdvcmsu
+CgoKUGVyaGFwcywgY2FuIHdlIHVzZSAndXNsZWVwX3JhbmdlKDUwMCwgMTAwMCknIHRvIHdvcmsu
+CkhlaWtvLCBkbyB5b3UgYWdyZWUgd2l0aCBpdD8KCj4gdWRlbGF5KDEwKSwgYnV0IHByZXZpb3Vz
+bHkgd2Ugd2VyZSBhY3R1YWxseSBsb29waW5nIHdhaXRpbmcgZm9yIHRoZQo+IHBvd2VyIGRvbWFp
+biwgcmlnaHQ/ICAuLi5zbyBtYXliZSB0aGUgb2xkIGNvZGUgdXNlZCB0byBpbnRyb2R1Y2UgYQo+
+IHByZXR0eSBiaWcgZGVsYXkuCj4KPiAqIERvZXMgYW55b25lIGZyb20gdGhlIGNoaXAgZGVzaWdu
+IHRlYW0gaGF2ZSBhbnkgaWRlYSB3aHkgcGF0Y2ggc2V0ICM0Cj4gd29ya3MgYnV0IHBhdGNoIHNl
+dCAjMiBkb2Vzbid0PyAgSSBrbm93IGl0J3MgU3VuZGF5IG1vcm5pbmcgaW4gQ2hpbmEKPiByaWdo
+dCBub3csIGJ1dCBtYXliZSB5b3UgY291bGQgYXNrIE1vbmRheT8KPgo+Cj4gVGhhbmtzIQo+Cj4g
+LURvdWcKPgo+Cj4KCi0tIApUaGFua3MsCi0gQ2Flc2FyCgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
