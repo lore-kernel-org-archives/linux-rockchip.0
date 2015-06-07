@@ -1,76 +1,102 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Sat, 6 Jun 2015 00:10:58 +0100
-Message-ID: <20150605231058.GQ7557@n2100.arm.linux.org.uk>
-References: <4184159.j0iXe39dFB@phil> <2619686.csNBBFyt8W@phil>
- <20150605110159.GA16254@ulmo.nvidia.com>
- <23123577.mOoqGCAPdL@diego>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
+Date: Sun, 07 Jun 2015 10:51:54 +0800
+Message-ID: <5573B1CA.1050204@rock-chips.com>
+References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>	<1433523923-4755-2-git-send-email-wxt@rock-chips.com> <CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <23123577.mOoqGCAPdL@diego>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=XGOVpAA5+NQ8O910T=CPrYKfTseBXfNbR4EkenzDECaQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdW4gMDUsIDIwMTUgYXQgMDI6MTY6NDBQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gSGkgVGhpZXJyeQo+IAo+IEFtIEZyZWl0YWcsIDUuIEp1bmkgMjAxNSwgMTM6MDI6
-MDEgc2NocmllYiBUaGllcnJ5IFJlZGluZzoKPiA+IElmIHRoaXMgaXMgc3BlY2lmaWMgdG8gdGhl
-IFJvY2tjaGlwIGltcGxlbWVudGF0aW9uLCBzaG91bGRuJ3QgdGhpcyBnbwo+ID4gaW50byBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmlkZW8vZHdfaGRtaS1yb2NrY2hpcC50eHQ/
-IEl0Cj4gPiBjb3VsZCB0aGVuIHNpbXBseSBnbyBpbnRvIHRoZSBSb2NrY2hpcCBEUk0gdHJlZS4K
-PiAKPiBhY3R1YWxseSwgd2UgZGV0ZXJtaW5lZCB0aGF0IHRoZSBzdXBwbHkgbmFtZXMgYXJlIHVu
-aXZlcnNhbCB0byB0aGUgSVAKPiAoYm90aCBpbiBpbXggYW5kIHJvY2tjaGlwIGFuZCBwcm9iYWJs
-eSBtb3JlIGlmIHRoZXJlIGFyZSBtb3JlIHVzZXJzCj4gb3V0IHRoZXJlKS4gSnVzdCBSdXNzZWxs
-IHJlcXVlc3RlZCB0aGF0IHdlIGRvbid0IHBvbGx1dGUgdGhlIGdlbmVyaWMKPiBjb2RlIHVudGls
-IG5lY2Vzc2FyeSwgYXMgaXQgbG9va3MgbGlrZSB0aGUgc3VwcGx5IG9mIHRob3NlIGlzIHNvbWVo
-b3cKPiBoYW5kbGVkIGludGVybmFsbHkgb24gdGhlIGlteC4KCldoeSBkbyB5b3UgdGhpbmsgaXQn
-cyB1bml2ZXJzYWw/CgpMZXQncyBzdGFydCBmcm9tIHRoZSBiZWdpbm5pbmcsIGJlZm9yZSB3ZSBj
-cmVhdGUgc29tZXRoaW5nIHRoYXQncyBub3QKcmVwcmVzZW50YXRpdmUgb2YgdGhlIGhhcmR3YXJl
-LgoKZHdfaGRtaSBhY3R1YWxseSBkcml2ZXMgdHdvIHBpZWNlcyBvZiBoYXJkd2FyZSAtIHRoZSBI
-RE1JIHRyYW5zbWl0dGVyLAphbmQgYSBzZXBhcmF0ZSBoYXJkd2FyZSBibG9jaywgdGhlIEhETUkg
-cGh5LgoKVGhlcmUgYXJlIGF0IGxlYXN0IHR3byBwb3NzaWJsZSBIRE1JIHBoeXMgcmVmZXJlbmNl
-ZCBpbiB0aGUgaU1YCmRvY3VtZW50YXRpb24gLSB0aGVyZSBpcyBvbmUgY2FsbGVkIEhFQUMgd2hp
-Y2ggZG9lc24ndCBhcHBlYXIgaW4gaU1YCmRldmljZXMgYWZhaWssIGFuZCB0aGUgb25lIHdoaWNo
-IGRvZXMsIHdoaWNoIGlzIGEgM0QgcGh5LgoKVGhlIDNEIHBoeSB0b3AgbGV2ZWwgSU8gZGlhZ3Jh
-bSBkb2VzIGhhdmUgVlBIIGFuZCBWUCBwb3dlciBzdXBwbGllcywKYnV0IGl0IGFsc28gaGFzIFZQ
-X0ZJTFQwLCBWUF9GSUxUMSwgVlBfRklMVDIsIFZQX0ZJTFQzIGFuZCBHRCBsYWJlbGxlZAp1cCBh
-cyAiUG93ZXIgc3VwcGx5IHNpZ25hbHMiLiAgV2hlcmUgdGhleSBjb25uZWN0IHRvIGluIHRoZSBy
-ZXN0IG9mIHRoZQpzeXN0ZW0gLSBvciB3aGV0aGVyIHRoZXkgYXJlIGNvbm5lY3RlZCAtIGlzIHVu
-ZG9jdW1lbnRlZC4KClRoZSBIRE1JIHRyYW5zbWl0dGVyIGl0c2VsZiBpcyBub3QgZG9jdW1lbnRl
-ZCB3aGF0IGl0J3Mgc3VwcGxpZXMKYWN0dWFsbHkgYXJlLgoKU28sIHdoYXQgd2UgY3VycmVudGx5
-IGhhdmUgaW4gRFQgZm9yIGR3X2hkbWkgaXMgc29tZXRoaW5nIHdoaWNoIGRvZXNuJ3QKX3F1aXRl
-XyByZWZsZWN0IHRoZSBoYXJkd2FyZSByaWdodCBub3csIGFuZCB0byBnbyBhZGRpbmcgVlAgYW5k
-IFZQSApzdXBwbGllcyB0byB0aGUgZ2VuZXJpYyBiaW5kaW5nIGlzIHdyb25nIC0gaXQgZG9lc24n
-dCBmb2xsb3cgdGhlCmhhcmR3YXJlIHN0cnVjdHVyZSBkZXRhaWxlZCBpbiB0aGUgaU1YIGRvY3Vt
-ZW50YXRpb24gSSBoYXZlLgoKQXMgdGhlIFJvY2tjaGlwIGRvY3VtZW50YXRpb24gaXMgbm90IGF2
-YWlsYWJsZSwgSSBjYW4ndCBjb21tZW50IHdoZXRoZXIKaXQgd291bGQgYmUgY3VycmVudCBwcm9w
-b3NhbCBpcyBhcHByb3ByaWF0ZSBmb3IgUm9ja2NoaXAgb3Igbm90LCB3aGljaAppcyB3aHkgSSBo
-YXZlbid0IGNvbW1lbnRlZCBvbiB0aGlzIG90aGVyIHRoYW4gc2F5aW5nIHRoYXQgaXQncyBub3QK
-YXBwcm9wcmlhdGUgdG8gYmUgYSBnZW5lcmljIGR3X2hkbWkgYmluZGluZy4KCklmIHdlIHdhbnRl
-ZCB0byBtb2RlbCB0aGlzIGNvcnJlY3RseSwgdGhlbiBmb3IgaU1YLCBJIHdvdWxkIHN1Z2dlc3QK
-dGhhdCB0aGUgSERNSSBwaHkgc2hvdWxkIGJlIG1vZGVsbGVkIGluIERULCBhbmQgX2FsbF8gdGhl
-IHNpeCBWUCoKc3VwcGxpZXMgYXJlIG1vZGVsbGVkIC0gYW5kIHdlIHNob3VsZCBhc3N1bWUgdGhh
-dCAiR0QiIGlzIGEgInBvd2VyCmdvb2QiIHNpZ25hbCwgdGhvdWdoIHdlIGRvbid0IGtub3cgdGhh
-dCBmb3IgY2VydGFpbi4KCldoYXQgd2UgYWxzbyBkb24ndCBrbm93IG9uIGlNWDYgaXMgd2hhdCB2
-b2x0YWdlcyBhbnkgb2YgdGhlc2UgYXJlCnN1cHBsaWVkIHdpdGguCgpTbywgYXMgd2UgZG9uJ3Qg
-aGF2ZSBtdWNoIGNlcnRhaW50eSBoZXJlLCBhbmQgd2Uga25vdyB0aGF0IGFkZGluZyBpdAp0byB3
-aGF0IGlzIHRoZSBIRE1JIHRyYW5zbWl0dGVyIHdvdWxkIGJlIHdyb25nLCBJJ2Qgc3VnZ2VzdCBu
-b3QKbW9kZWxsaW5nIGl0IGluIGEgZ2VuZXJpYyB3YXkgYXQgcHJlc2VudC4KCi0tIApGVFRDIGJy
-b2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBr
-YnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+
+=E5=9C=A8 2015=E5=B9=B406=E6=9C=8806=E6=97=A5 04:55, Doug Anderson =E5=86=
+=99=E9=81=93:
+> Caesar,
+>
+> On Fri, Jun 5, 2015 at 10:05 AM, Caesar Wang <wxt@rock-chips.com> wro=
+te:
+>> +               if (!on)
+>> +                       reset_control_assert(rstc);
+>> +
+>> +               ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(p=
+d), val);
+>> +               if (ret < 0) {
+>> +                       pr_err("%s: could not update power domain\n"=
+, __func__);
+>> +                       reset_control_put(rstc);
+>> +                       return ret;
+>> +               }
+>> +
+>>                  if (on)
+>>                          reset_control_deassert(rstc);
+>> -               else
+>> -                       reset_control_assert(rstc);
+> As Heiko indicated in the previous patchset, he thought it would be
+> nice to move the 'pmu_power_domain_is_on(pd)' to before you deasserte=
+d
+> reset.  ...but then I pointed out that you tested that in patch set #=
+2
+> and it didn't work.
+>
+> Talking to Heiko offline he thought that perhaps you could make
+> 'pmu_power_domain_is_on(pd)' work if you increased your 'udelay(10);'
+> in rockchip_boot_secondary().  Perhaps the old
+> 'pmu_power_domain_is_on' was acting like an extra bit of delay and
+> that's why moving it broke things.
+>
+>
+> I actually went back and tested patch set #2 and it worked for me, so
+> I couldn't test Heiko's theory.  Could you go and reproduce the
+> problem with patch set #2 again and then try increasing the udelay()
+> and see if your problems go away?  If that works, it might be a
+> slightly better solution.  Note that I think Heiko had a slightly
+> cleaner version of your patch set #2 that he posted in response to
+> your patch set #3.
+
+@@ -150,13 +159,15 @@ static int __cpuinit=20
+rockchip_boot_secondary(unsigned int cpu,
+                  * sram_base_addr + 4: 0xdeadbeaf
+                  * sram_base_addr + 8: start address for pc
+                  * */
+-               udelay(10);
++               udelay(20);
+
+I increased the 'udelay(20)' or 'udelay(50)' in rockchip_boot_secondary=
+().
+Set#2 also can repro this issue over 22600 cycles with testing scripts.=
+=20
+(about 1 hours)
+
+log:
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D 226 =3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D
+[ 4069.134419] CPU1: shutdown
+[ 4069.164431] CPU2: shutdown
+[ 4069.204475] CPU3: shutdown
+=2E.....
+[ 4072.454453] CPU1: shutdown
+[ 4072.504436] CPU2: shutdown
+[ 4072.554426] CPU3: shutdown
+[ 4072.577827] CPU1: Booted secondary processor
+[ 4072.582611] CPU2: Booted secondary processor
+[ 4072.587426] CPU3: Booted secondary processor
+<hang>
+
+The set #4 will be better work.
+
+>
+> -Doug
+>
+>
+>
+
+--=20
+Thanks,
+- Caesar
