@@ -1,14 +1,18 @@
 From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v4 2/3] drm/rockchip: implement dw_hdmi supplies for the
- Rockchip implementation
-Date: Mon, 8 Jun 2015 16:49:09 +0200
-Message-ID: <20150608144858.GF10354@ulmo.nvidia.com>
-References: <1707049.JEvfTcofKv@diego>
- <17068264.uLYIadrGJJ@diego>
+Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
+ regulators
+Date: Mon, 8 Jun 2015 17:44:53 +0200
+Message-ID: <20150608154448.GA11103@ulmo.nvidia.com>
+References: <4184159.j0iXe39dFB@phil> <2619686.csNBBFyt8W@phil>
+ <20150605110159.GA16254@ulmo.nvidia.com>
+ <23123577.mOoqGCAPdL@diego>
+ <20150605231058.GQ7557@n2100.arm.linux.org.uk>
+ <20150608140256.GA10354@ulmo.nvidia.com>
+ <20150608142926.GY7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0668719820=="
+Content-Type: multipart/mixed; boundary="===============0432448851=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <17068264.uLYIadrGJJ@diego>
+In-Reply-To: <20150608142926.GY7557@n2100.arm.linux.org.uk>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -18,149 +22,242 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============0668719820==
+--===============0432448851==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="yQbNiKLmgenwUfTN"
+	protocol="application/pgp-signature"; boundary="pf9I7BMVVzbSWLtt"
 Content-Disposition: inline
 
 
---yQbNiKLmgenwUfTN
+--pf9I7BMVVzbSWLtt
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 05, 2015 at 07:06:38PM +0200, Heiko St=C3=BCbner wrote:
-> The Rockchip implementation of the IP exposes the supplies outside and
-> expects them to be supplied by a pmic. So implement regulator handling
-> for them.
+On Mon, Jun 08, 2015 at 03:29:26PM +0100, Russell King - ARM Linux wrote:
+> On Mon, Jun 08, 2015 at 04:02:58PM +0200, Thierry Reding wrote:
+> > On Sat, Jun 06, 2015 at 12:10:58AM +0100, Russell King - ARM Linux wrot=
+e:
+> > > On Fri, Jun 05, 2015 at 02:16:40PM +0200, Heiko St=C3=BCbner wrote:
+> > > > Hi Thierry
+> > > >=20
+> > > > Am Freitag, 5. Juni 2015, 13:02:01 schrieb Thierry Reding:
+> > > > > If this is specific to the Rockchip implementation, shouldn't thi=
+s go
+> > > > > into Documentation/devicetree/bindings/video/dw_hdmi-rockchip.txt=
+? It
+> > > > > could then simply go into the Rockchip DRM tree.
+> > > >=20
+> > > > actually, we determined that the supply names are universal to the =
+IP
+> > > > (both in imx and rockchip and probably more if there are more users
+> > > > out there). Just Russell requested that we don't pollute the generic
+> > > > code until necessary, as it looks like the supply of those is someh=
+ow
+> > > > handled internally on the imx.
+> > >=20
+> > > Why do you think it's universal?
+> > >=20
+> > > Let's start from the beginning, before we create something that's not
+> > > representative of the hardware.
+> > >=20
+> > > dw_hdmi actually drives two pieces of hardware - the HDMI transmitter,
+> > > and a separate hardware block, the HDMI phy.
+> > >=20
+> > > There are at least two possible HDMI phys referenced in the iMX
+> > > documentation - there is one called HEAC which doesn't appear in iMX
+> > > devices afaik, and the one which does, which is a 3D phy.
+> >=20
+> > I'm not sure I understand correctly. Are these PHYs exchangeable? Does
+> > the DesignWare IP provide them or could they be provided separately?
 >=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
-> ---
-> changes since v3:
-> - split generic dt-bindings and rockchip implementation
-> - add Ack from Philipp Zabel
-> changes since v2:
-> - rename supplies to the names found in the hdmi IP databook
-> changes since v1:
-> - follow suggestion from Russell King to keep regulator handling local
->   to the rockchip implementation for the time being and only generalize
->   when a real second implementation needs regulator handling
+> You're asking questions we have no real answers to - all we have is the
+> available documentation provided by Freescale - we don't even have the
+> Rochchip documentation.
 >=20
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 32 +++++++++++++++++++++++=
-+++++-
->  1 file changed, 31 insertions(+), 1 deletion(-)
+> From the Freescale documentation, which documents the HDMI transmitter
+> entirely separately from the HDMI phy, I would say that the IP is
+> structured as two entirely separate blocks, and the chip designer is
+> free to choose an appropriate phy from a range of HDMI phys.
+
+Does it associate any of the registers with the HDMI PHY? According to
+the register definitions in drivers/gpu/drm/bridge/dw_hdmi.h the PHY
+registers are interleaved with other registers that are likely part of
+the HDMI transmitter proper (there are things like HDCP and CEC engines
+in that IP as well).
+
+> Moreover, in the feature list for the HDMI transmitter, it says (though
+> this is not applicable to iMX6 - and is probably lifted from the
+> Synopsis documentation):
 >=20
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/dr=
-m/rockchip/dw_hdmi-rockchip.c
-> index 80d6fc8..9c003fa 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -11,6 +11,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
->  #include <drm/drm_of.h>
->  #include <drm/drmP.h>
->  #include <drm/drm_crtc_helper.h>
-> @@ -28,6 +29,9 @@ struct rockchip_hdmi {
->  	struct device *dev;
->  	struct regmap *regmap;
->  	struct drm_encoder encoder;
-> +	struct regulator_bulk_data supplies[2];
-> +	int nsupplies;
+> "* Option to remove pixel repetition clock from HDMI TX interface for an
+>   easy integration with third party HDMI TX PHYs"
+>=20
+> So - here's the question: what do we do when we find something using the
+> Synopsis design-ware HDMI transmitter with a different HDMI phy?
+>=20
+> Remember, VP, VPH, VP_FILT_* are all part of the HDMI phy according to
+> the freescale documentation, and not part of the HDMI transmitter.
+>=20
+> > I
+> > see register definitions for a "source" PHY and a "master" PHY, where
+> > the latter seems to be an I2C controller rather than a PHY. Perhaps it
+> > is used to communicate with an external PHY?
+>=20
+> I'm not sure where you get that from.  Maybe you could give a chapter
+> reference?
 
-unsigned int, please. Also I personally prefer the num_ prefix and it's
-slightly more common in DRM code (even in the Rockchip driver).
+That's just from skimming drivers/gpu/drm/bridge/dw_hdmi.h (register
+offsets 0x3000 and the following). The large gap between them and the
+preceding FC registers could be an additional indication that they are
+indeed separate IP blocks. Then again, the AUD registers start at an
+offset of 0x3100, so maybe it's no indication at all.
 
-> +	bool supplies_enabled;
->  };
-> =20
->  #define to_rockchip_hdmi(x)	container_of(x, struct rockchip_hdmi, x)
-> @@ -179,6 +183,12 @@ static struct drm_encoder_funcs dw_hdmi_rockchip_enc=
-oder_funcs =3D {
-> =20
->  static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
->  {
-> +	struct rockchip_hdmi *hdmi =3D to_rockchip_hdmi(encoder);
-> +
-> +	if (hdmi->nsupplies > 0 && hdmi->supplies_enabled) {
-> +		regulator_bulk_disable(hdmi->nsupplies, hdmi->supplies);
-> +		hdmi->supplies_enabled =3D false;
-> +	}
->  }
-> =20
->  static bool
-> @@ -199,7 +209,16 @@ static void dw_hdmi_rockchip_encoder_commit(struct d=
-rm_encoder *encoder)
->  {
->  	struct rockchip_hdmi *hdmi =3D to_rockchip_hdmi(encoder);
->  	u32 val;
-> -	int mux;
-> +	int mux, ret;
-> +
-> +	if (hdmi->nsupplies > 0 && !hdmi->supplies_enabled) {
-> +		ret =3D regulator_bulk_enable(hdmi->nsupplies, hdmi->supplies);
-> +		if (ret) {
-> +			dev_err(hdmi->dev, "could not enable hdmi analog supplies\n");
+Are these the registers used to control the PHY that you're referring
+to? It seems odd to me that the documentation would specify these
+registers interleaved with other registers if the PHYs can be freely
+chosen from a set of HDMI PHYs. Perhaps the set of PHYs that can be used
+need to expose the same integration interface? Maybe these registers
+aren't used to control the PHY at all but rather configure the interface
+between transmitter and PHY?
 
-"HDMI" please. And perhaps you want to add the error code to the message
-as well?
+Sorry if these are more questions that the documentation doesn't answer.
+Just trying to understand what's going on.
 
-> +			return;
-> +		}
-> +		hdmi->supplies_enabled =3D true;
-> +	}
-> =20
->  	mux =3D rockchip_drm_encoder_get_mux_id(hdmi->dev->of_node, encoder);
->  	if (mux)
-> @@ -275,6 +294,17 @@ static int dw_hdmi_rockchip_bind(struct device *dev,=
- struct device *master,
->  	if (!iores)
->  		return -ENXIO;
-> =20
-> +	hdmi->supplies[0].supply =3D "vp";
-> +	hdmi->supplies[1].supply =3D "vph";
-> +	hdmi->nsupplies =3D 2;
-> +
-> +	ret =3D devm_regulator_bulk_get(hdmi->dev,
-> +				      hdmi->nsupplies, hdmi->supplies);
+> Looking deeper at this HEAC issue, that is a separate, smaller phy which
+> doesn't have much to do with video - though it remains rather undocumented
+> in the freescale docs.  That's only going on a block diagram near the
+> start of the HDMI transmitter chapter though.
 
-I think it'd be slightly more idiomatic to put hdmi->nsupplies on the
-first line.
+HEAC could be "HDMI Ethernet Audio Control", see here:
+
+	http://en.wikipedia.org/wiki/HDMI#ARC
+	http://en.wikipedia.org/wiki/HDMI#HEC
+
+> > > If we wanted to model this correctly, then for iMX, I would suggest
+> > > that the HDMI phy should be modelled in DT, and _all_ the six VP*
+> > > supplies are modelled - and we should assume that "GD" is a "power
+> > > good" signal, though we don't know that for certain.
+> >=20
+> > Perhaps VP_FILT* are sourced from the same supply as VP, so maybe we
+> > don't have to care at the DT level?
+>=20
+> We'd be guessing - and that's exactly my point.  Designing something at
+> DT level based on guesswork is no way to go, especially with a generic
+> bit of IP which would be re-used across multiple different platforms.
+
+Agreed.
+
+> > > What we also don't know on iMX6 is what voltages any of these are
+> > > supplied with.
+> >=20
+> > A rather common nuisance with these licensed IP blocks is that some of
+> > the details may be hidden in SoC glue, resulting in the interface being
+> > different on each SoC. Given all of the above it sounds like i.MX could
+> > have some internal glue to supply VP and VPH and there'd be no sensible
+> > way to represent them in DT.
+>=20
+> ... or it's entirely possible that all these supplies are always fed by
+> the iMX6 SoC all the time.
+
+Yes, that's what I was implying.
+
+> > > So, as we don't have much certainty here, and we know that adding it
+> > > to what is the HDMI transmitter would be wrong, I'd suggest not
+> > > modelling it in a generic way at present.
+> >=20
+> > Does DesignWare by any chance offer documentation about the IP? If not I
+> > agree that the safest thing to do for now would be to make this Rockchip
+> > specific.
+>=20
+> That's _exactly_ why I raised the point originally, and said that it shou=
+ld
+> be Rockchip specific until we know better.  Glad you've caught up with my
+> thinking. :)
+>=20
+> However, my thinking _now_ is that it shouldn't even be modelled as part
+> of our HDMI transmitter DT blob, but we should be modelling the HDMI
+> transmitter separately from the HDMI phy as two separate DT blobs, and
+> then the HDMI phy blob gets the (possibly optional) VPH and VP supplies.
+
+Yes, I agree. One problem that you could run into with such a split is
+that the PHY control registers may be interleaved with the registers of
+the HDMI transmitter. But perhaps my understanding is wrong and the PHY
+is truly controlled via a completely own set of registers. Looking at
+the implementation, the HDMI_PHY_* registers seem to be used to control
+various aspects of an interface between transmitter and PHY rather than
+the PHY itself and it seems like the PHY itself is really an I2C slave
+accessed using the I2C master controlled using the HDMI_PHY_I2CM_*
+registers.
+
+So perhaps the HDMI transmitter DT node really should expose the PHY as
+an I2C child. In fact, looking at HDMI_PHY_I2CM_SLAVE_ADDR_* field
+values (lines 870 and 871 in dw_hdmi.h) it should have two children, one
+for the "GEN2" PHY and one for the "HEAC" PHY. You could even go as far
+as exposing the HDMI_PHY_I2CM_* registers as I2C master and implement
+the PHYs as proper I2C client drivers, but that might be overkill,
+especially considering that you'd need to have extra API to convey the
+HDMI configuration. Still, might be worth considering to make the split
+really explicit.
+
+I guess I've answered most of my earlier questions myself...
+
+> What if someone designs a chip with their own HDMI phy which uses
+> different supplies?
+
+That's really one more reason to write proper drivers for the PHYs. If
+you really ever have to deal with a different PHY chances are that more
+than just the supplies will be different, in which case you'd need to
+somehow also abstract away the interoperation between HDMI transmitter
+and PHY.
+
+> This is one of the problems I have with DT - DT needs us to describe
+> the hardware correctly first time around, when we may not have all the
+> available facts to make proper decisions, and wrong decisions can very
+> well lead to serious headaches later on because we didn't model
+> something correctly - and we're stuck with the wrong decisions for ever.
+
+I feel the same way. Although there have been occasional exceptions to
+the DT ABI stability rule if it could be proven that an existing binding
+was completely wrong, I've made the experience that putting as little as
+possible into DT (and at the same time resist the temptation of a
+generic solution) helps keep the headaches in check.
+
+Fortunately the dw-hdmi driver gets much of this right already (it's
+helper code rather than a proper driver), so keeping things like power
+supplies specific to a particular integration should be easy to do and
+prevent potential future incompatibilities.
 
 Thierry
 
---yQbNiKLmgenwUfTN
+--pf9I7BMVVzbSWLtt
 Content-Type: application/pgp-signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCAAGBQJVdatgAAoJEN0jrNd/PrOhfaEQAItyFh8BsI/blCD8pwVq9MF9
-g8CXYsaxAMS1g+LcvyLiA41eQD/xoySJWSULcCo3oVm6sbJ1ViDxfOpYlyCezqIh
-/TebqvKTpA+7gDaXPh+hI//N27ztlzuYrocJ5pfDOLC2BzEJhnmGWY9leAl709t2
-/z3lx4llM9FBGp7irQYr63AfyglIDsHU2KYv9epE7nQ1y+82Ukut6Cv/FHNez0cu
-l8HFpEPciKG2Sfn0xeDAbzJvCihaHPNL3bcCfJVgYkqLCVR0zTxXFZcVSNpXci76
-RsqTonaeuUPTYpiWh0g5UMFBFdh2aGKGOqRoNDNKOayxFOlFQtK7MHZBXt82HJDS
-a5M+xqyLOC9Kk/mE/H+C9B+dSfSAYs+ay139jRwxHSZ6fjnhO1r54IgN10yODAWk
-VjBHyxAkHRLImhueXnOKQMHHLKQtC3m+YsEHc/o7jjP73vbKKQiFPhj/9VR6GkIG
-174caGBrbkgTDbuzNEQpbcgbXb658oOQDNZe1yzyIBxW/GoKV/PCHi3Y9kwb6TuY
-+IyinO7wt6294JbV86waAAz/YwdXCzJvQkKGsJ5wNrfmjlUOJxjBatSkDdM/wf4w
-XDobYEhB3yup4fg26TZpTGBSn+j8j7zeegMCUMMG0iWyQVejkGqkVbumgGc+zF4w
-jkFHg633vA8eaSRmMZXE
-=jTBt
+iQIcBAABCAAGBQJVdbhtAAoJEN0jrNd/PrOhxq8QAJWd+NdwWoMDN+dHnUEaBvJU
+Kkd5CN+XZjIzgsX5nRrRnwoybSGioKiauk7vDvwPyK87XUbcfUlpOo7EaPYhrCzp
+ozQnsYjMW4WaBxALFVHOtMsoHn6YyHKcao3vQJXPP6w8rr3GIZrLX8d1X3Rq4/oJ
+adAsW9T+NnvSG8rlcJL7zpiQ5etQIT6n53qvIfSZ/U4lRR87PudYoZezhJpxOykO
+d5xAJY03rdEskdZCvp6YTRl7Qa/hGIWDrPqsgDAk+vcGLfrrUce9e/ZKkgaLib5J
+osUFIeaw3edQivBSaSDy2Cz2bs635V1RrxExNHPkFtnTDSTh+gulT0SxeYsIu0sN
+PlaQVQbVNTLomebCvJELEC5WcjcUEWZT6V7jSGzgH2NFl7H40g1AlX10+qjwknNE
+lUi0udUoidldGObTu85LIFamXKVVx4JOyowp76ouji3YzrB9dBo4HHMlHNFd0ivK
+4m+GGIC9etIEoBy/rqz0hBs3UvK2LCvKx+eSwRnr6iCEBQ8KluXq7dr///f/KoVf
+nhcjpG3pO4Ub5YcIeEpD/X4HgB/QfpQZ/oUucQHuoHJ1KTXJ/WyYVYc3AQzhRNVy
+KccbSno7FWJDJFszoBGnkmgrtvdyi9gfNmu9lkWOgArP+BKamubiCrXmgeTIImsE
+FN3ccLhOYgPpqVi3k5Xr
+=UFWQ
 -----END PGP SIGNATURE-----
 
---yQbNiKLmgenwUfTN--
+--pf9I7BMVVzbSWLtt--
 
---===============0668719820==
+--===============0432448851==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: base64
@@ -170,4 +267,4 @@ X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
 IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
 cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
 
---===============0668719820==--
+--===============0432448851==--
