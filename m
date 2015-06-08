@@ -1,16 +1,19 @@
-From: Thierry Reding <thierry.reding@gmail.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
 Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
  regulators
-Date: Mon, 8 Jun 2015 16:02:58 +0200
-Message-ID: <20150608140256.GA10354@ulmo.nvidia.com>
+Date: Mon, 8 Jun 2015 15:29:26 +0100
+Message-ID: <20150608142926.GY7557@n2100.arm.linux.org.uk>
 References: <4184159.j0iXe39dFB@phil> <2619686.csNBBFyt8W@phil>
  <20150605110159.GA16254@ulmo.nvidia.com>
  <23123577.mOoqGCAPdL@diego>
  <20150605231058.GQ7557@n2100.arm.linux.org.uk>
+ <20150608140256.GA10354@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0229893817=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150605231058.GQ7557@n2100.arm.linux.org.uk>
+Content-Disposition: inline
+In-Reply-To: <20150608140256.GA10354@ulmo.nvidia.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -20,139 +23,107 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+To: Thierry Reding <thierry.reding@gmail.com>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============0229893817==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
-Content-Disposition: inline
-
-
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Jun 06, 2015 at 12:10:58AM +0100, Russell King - ARM Linux wrote:
-> On Fri, Jun 05, 2015 at 02:16:40PM +0200, Heiko St=C3=BCbner wrote:
-> > Hi Thierry
-> >=20
-> > Am Freitag, 5. Juni 2015, 13:02:01 schrieb Thierry Reding:
-> > > If this is specific to the Rockchip implementation, shouldn't this go
-> > > into Documentation/devicetree/bindings/video/dw_hdmi-rockchip.txt? It
-> > > could then simply go into the Rockchip DRM tree.
-> >=20
-> > actually, we determined that the supply names are universal to the IP
-> > (both in imx and rockchip and probably more if there are more users
-> > out there). Just Russell requested that we don't pollute the generic
-> > code until necessary, as it looks like the supply of those is somehow
-> > handled internally on the imx.
->=20
-> Why do you think it's universal?
->=20
-> Let's start from the beginning, before we create something that's not
-> representative of the hardware.
->=20
-> dw_hdmi actually drives two pieces of hardware - the HDMI transmitter,
-> and a separate hardware block, the HDMI phy.
->=20
-> There are at least two possible HDMI phys referenced in the iMX
-> documentation - there is one called HEAC which doesn't appear in iMX
-> devices afaik, and the one which does, which is a 3D phy.
-
-I'm not sure I understand correctly. Are these PHYs exchangeable? Does
-the DesignWare IP provide them or could they be provided separately? I
-see register definitions for a "source" PHY and a "master" PHY, where
-the latter seems to be an I2C controller rather than a PHY. Perhaps it
-is used to communicate with an external PHY?
-
-Can somebody give me a quick summary (or point me to documentation) on
-how this works?
-
-> The 3D phy top level IO diagram does have VPH and VP power supplies,
-> but it also has VP_FILT0, VP_FILT1, VP_FILT2, VP_FILT3 and GD labelled
-> up as "Power supply signals".  Where they connect to in the rest of the
-> system - or whether they are connected - is undocumented.
->=20
-> The HDMI transmitter itself is not documented what it's supplies
-> actually are.
->=20
-> So, what we currently have in DT for dw_hdmi is something which doesn't
-> _quite_ reflect the hardware right now, and to go adding VP and VPH
-> supplies to the generic binding is wrong - it doesn't follow the
-> hardware structure detailed in the iMX documentation I have.
->=20
-> As the Rockchip documentation is not available, I can't comment whether
-> it would be current proposal is appropriate for Rockchip or not, which
-> is why I haven't commented on this other than saying that it's not
-> appropriate to be a generic dw_hdmi binding.
->=20
-> If we wanted to model this correctly, then for iMX, I would suggest
-> that the HDMI phy should be modelled in DT, and _all_ the six VP*
-> supplies are modelled - and we should assume that "GD" is a "power
-> good" signal, though we don't know that for certain.
-
-Perhaps VP_FILT* are sourced from the same supply as VP, so maybe we
-don't have to care at the DT level?
-
-> What we also don't know on iMX6 is what voltages any of these are
-> supplied with.
-
-A rather common nuisance with these licensed IP blocks is that some of
-the details may be hidden in SoC glue, resulting in the interface being
-different on each SoC. Given all of the above it sounds like i.MX could
-have some internal glue to supply VP and VPH and there'd be no sensible
-way to represent them in DT.
-
-> So, as we don't have much certainty here, and we know that adding it
-> to what is the HDMI transmitter would be wrong, I'd suggest not
-> modelling it in a generic way at present.
-
-Does DesignWare by any chance offer documentation about the IP? If not I
-agree that the safest thing to do for now would be to make this Rockchip
-specific. If it should prove to be generic after all (in which case i.MX
-would seem to provide SoC glue to supply them) we can still promote the
-supplies to be generic. They'd need to be optional to handle the i.MX,
-though. Or perhaps a dummy regulator could be referenced, representing
-the SoC-internal supply to the block. Maybe there even is a (SoC-
-specific) way to control this internal regulator?
-
-Thierry
-
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJVdaCNAAoJEN0jrNd/PrOhhYsQAKu44ZyKz9O5waSog9eOTUUV
-1mmV68UdyFfUhJRvkXovQ+eaBlCmKKeG3gv/4lRyFENuqhAi4aYoAbhVelH/Yerd
-3mhzb4HSLHZTioVf24qNbbw71nVwrlbpqfzp8QzSFoecEUVnN0MI4aQvqw7mTbom
-PLWvl/NevTlbOh+QVt6KlukLRyPJA1T3R2QreZZdu0HtKMgLKuFqOFfMxQlE7n4I
-wtW6qBwJqKxSLGtD8hyqQFgr1BJoIC/5oybAQ7eByWnzovCSR0RJB+LJNhlrs7qw
-CNbCk3aDeWnmX9wGqyPdMHr0IkAwby7k4mb4ytW2YDt8luSHCdJvlpKe84k4XJBj
-BxEzAQVwBIzH4ab49/SCHhQkzyx/LsMn78cUwvj/H4TlFo89Gb2ZN7A7iOCZbXss
-NDJ2P9A9u3qdreaHmQTgrx1wE7QC8AWjPv9NWFfGDR5F8TcWVK0eaNXGkowCsObG
-I/5CJR94iTNhuDbu+isSUUIZGXqYfPaceff6WKwmVMykLKRo1iO1WlV0sVcUQU+G
-scdSaPjYN+HuK3wJBYD5nwqgN97jiJteMU5/cd01UBYmWunYZUUkUj7rPy64PZbh
-b22wSlqTWE7vbU8wmXVkJpFWxASwayNk+P/Anj3OfhvKJw8mVi866GuTvb1gmF/6
-3qythnLMgLFRi52yHRZA
-=pncT
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
-
---===============0229893817==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0229893817==--
+T24gTW9uLCBKdW4gMDgsIDIwMTUgYXQgMDQ6MDI6NThQTSArMDIwMCwgVGhpZXJyeSBSZWRpbmcg
+d3JvdGU6Cj4gT24gU2F0LCBKdW4gMDYsIDIwMTUgYXQgMTI6MTA6NThBTSArMDEwMCwgUnVzc2Vs
+bCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+ID4gT24gRnJpLCBKdW4gMDUsIDIwMTUgYXQgMDI6
+MTY6NDBQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gPiA+IEhpIFRoaWVycnkKPiA+
+ID4gCj4gPiA+IEFtIEZyZWl0YWcsIDUuIEp1bmkgMjAxNSwgMTM6MDI6MDEgc2NocmllYiBUaGll
+cnJ5IFJlZGluZzoKPiA+ID4gPiBJZiB0aGlzIGlzIHNwZWNpZmljIHRvIHRoZSBSb2NrY2hpcCBp
+bXBsZW1lbnRhdGlvbiwgc2hvdWxkbid0IHRoaXMgZ28KPiA+ID4gPiBpbnRvIERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy92aWRlby9kd19oZG1pLXJvY2tjaGlwLnR4dD8gSXQKPiA+
+ID4gPiBjb3VsZCB0aGVuIHNpbXBseSBnbyBpbnRvIHRoZSBSb2NrY2hpcCBEUk0gdHJlZS4KPiA+
+ID4gCj4gPiA+IGFjdHVhbGx5LCB3ZSBkZXRlcm1pbmVkIHRoYXQgdGhlIHN1cHBseSBuYW1lcyBh
+cmUgdW5pdmVyc2FsIHRvIHRoZSBJUAo+ID4gPiAoYm90aCBpbiBpbXggYW5kIHJvY2tjaGlwIGFu
+ZCBwcm9iYWJseSBtb3JlIGlmIHRoZXJlIGFyZSBtb3JlIHVzZXJzCj4gPiA+IG91dCB0aGVyZSku
+IEp1c3QgUnVzc2VsbCByZXF1ZXN0ZWQgdGhhdCB3ZSBkb24ndCBwb2xsdXRlIHRoZSBnZW5lcmlj
+Cj4gPiA+IGNvZGUgdW50aWwgbmVjZXNzYXJ5LCBhcyBpdCBsb29rcyBsaWtlIHRoZSBzdXBwbHkg
+b2YgdGhvc2UgaXMgc29tZWhvdwo+ID4gPiBoYW5kbGVkIGludGVybmFsbHkgb24gdGhlIGlteC4K
+PiA+IAo+ID4gV2h5IGRvIHlvdSB0aGluayBpdCdzIHVuaXZlcnNhbD8KPiA+IAo+ID4gTGV0J3Mg
+c3RhcnQgZnJvbSB0aGUgYmVnaW5uaW5nLCBiZWZvcmUgd2UgY3JlYXRlIHNvbWV0aGluZyB0aGF0
+J3Mgbm90Cj4gPiByZXByZXNlbnRhdGl2ZSBvZiB0aGUgaGFyZHdhcmUuCj4gPiAKPiA+IGR3X2hk
+bWkgYWN0dWFsbHkgZHJpdmVzIHR3byBwaWVjZXMgb2YgaGFyZHdhcmUgLSB0aGUgSERNSSB0cmFu
+c21pdHRlciwKPiA+IGFuZCBhIHNlcGFyYXRlIGhhcmR3YXJlIGJsb2NrLCB0aGUgSERNSSBwaHku
+Cj4gPiAKPiA+IFRoZXJlIGFyZSBhdCBsZWFzdCB0d28gcG9zc2libGUgSERNSSBwaHlzIHJlZmVy
+ZW5jZWQgaW4gdGhlIGlNWAo+ID4gZG9jdW1lbnRhdGlvbiAtIHRoZXJlIGlzIG9uZSBjYWxsZWQg
+SEVBQyB3aGljaCBkb2Vzbid0IGFwcGVhciBpbiBpTVgKPiA+IGRldmljZXMgYWZhaWssIGFuZCB0
+aGUgb25lIHdoaWNoIGRvZXMsIHdoaWNoIGlzIGEgM0QgcGh5Lgo+IAo+IEknbSBub3Qgc3VyZSBJ
+IHVuZGVyc3RhbmQgY29ycmVjdGx5LiBBcmUgdGhlc2UgUEhZcyBleGNoYW5nZWFibGU/IERvZXMK
+PiB0aGUgRGVzaWduV2FyZSBJUCBwcm92aWRlIHRoZW0gb3IgY291bGQgdGhleSBiZSBwcm92aWRl
+ZCBzZXBhcmF0ZWx5PwoKWW91J3JlIGFza2luZyBxdWVzdGlvbnMgd2UgaGF2ZSBubyByZWFsIGFu
+c3dlcnMgdG8gLSBhbGwgd2UgaGF2ZSBpcyB0aGUKYXZhaWxhYmxlIGRvY3VtZW50YXRpb24gcHJv
+dmlkZWQgYnkgRnJlZXNjYWxlIC0gd2UgZG9uJ3QgZXZlbiBoYXZlIHRoZQpSb2NoY2hpcCBkb2N1
+bWVudGF0aW9uLgoKRnJvbSB0aGUgRnJlZXNjYWxlIGRvY3VtZW50YXRpb24sIHdoaWNoIGRvY3Vt
+ZW50cyB0aGUgSERNSSB0cmFuc21pdHRlcgplbnRpcmVseSBzZXBhcmF0ZWx5IGZyb20gdGhlIEhE
+TUkgcGh5LCBJIHdvdWxkIHNheSB0aGF0IHRoZSBJUCBpcwpzdHJ1Y3R1cmVkIGFzIHR3byBlbnRp
+cmVseSBzZXBhcmF0ZSBibG9ja3MsIGFuZCB0aGUgY2hpcCBkZXNpZ25lciBpcwpmcmVlIHRvIGNo
+b29zZSBhbiBhcHByb3ByaWF0ZSBwaHkgZnJvbSBhIHJhbmdlIG9mIEhETUkgcGh5cy4KCk1vcmVv
+dmVyLCBpbiB0aGUgZmVhdHVyZSBsaXN0IGZvciB0aGUgSERNSSB0cmFuc21pdHRlciwgaXQgc2F5
+cyAodGhvdWdoCnRoaXMgaXMgbm90IGFwcGxpY2FibGUgdG8gaU1YNiAtIGFuZCBpcyBwcm9iYWJs
+eSBsaWZ0ZWQgZnJvbSB0aGUKU3lub3BzaXMgZG9jdW1lbnRhdGlvbik6CgoiKiBPcHRpb24gdG8g
+cmVtb3ZlIHBpeGVsIHJlcGV0aXRpb24gY2xvY2sgZnJvbSBIRE1JIFRYIGludGVyZmFjZSBmb3Ig
+YW4KICBlYXN5IGludGVncmF0aW9uIHdpdGggdGhpcmQgcGFydHkgSERNSSBUWCBQSFlzIgoKU28g
+LSBoZXJlJ3MgdGhlIHF1ZXN0aW9uOiB3aGF0IGRvIHdlIGRvIHdoZW4gd2UgZmluZCBzb21ldGhp
+bmcgdXNpbmcgdGhlClN5bm9wc2lzIGRlc2lnbi13YXJlIEhETUkgdHJhbnNtaXR0ZXIgd2l0aCBh
+IGRpZmZlcmVudCBIRE1JIHBoeT8KClJlbWVtYmVyLCBWUCwgVlBILCBWUF9GSUxUXyogYXJlIGFs
+bCBwYXJ0IG9mIHRoZSBIRE1JIHBoeSBhY2NvcmRpbmcgdG8KdGhlIGZyZWVzY2FsZSBkb2N1bWVu
+dGF0aW9uLCBhbmQgbm90IHBhcnQgb2YgdGhlIEhETUkgdHJhbnNtaXR0ZXIuCgo+IEkKPiBzZWUg
+cmVnaXN0ZXIgZGVmaW5pdGlvbnMgZm9yIGEgInNvdXJjZSIgUEhZIGFuZCBhICJtYXN0ZXIiIFBI
+WSwgd2hlcmUKPiB0aGUgbGF0dGVyIHNlZW1zIHRvIGJlIGFuIEkyQyBjb250cm9sbGVyIHJhdGhl
+ciB0aGFuIGEgUEhZLiBQZXJoYXBzIGl0Cj4gaXMgdXNlZCB0byBjb21tdW5pY2F0ZSB3aXRoIGFu
+IGV4dGVybmFsIFBIWT8KCkknbSBub3Qgc3VyZSB3aGVyZSB5b3UgZ2V0IHRoYXQgZnJvbS4gIE1h
+eWJlIHlvdSBjb3VsZCBnaXZlIGEgY2hhcHRlcgpyZWZlcmVuY2U/CgpMb29raW5nIGRlZXBlciBh
+dCB0aGlzIEhFQUMgaXNzdWUsIHRoYXQgaXMgYSBzZXBhcmF0ZSwgc21hbGxlciBwaHkgd2hpY2gK
+ZG9lc24ndCBoYXZlIG11Y2ggdG8gZG8gd2l0aCB2aWRlbyAtIHRob3VnaCBpdCByZW1haW5zIHJh
+dGhlciB1bmRvY3VtZW50ZWQKaW4gdGhlIGZyZWVzY2FsZSBkb2NzLiAgVGhhdCdzIG9ubHkgZ29p
+bmcgb24gYSBibG9jayBkaWFncmFtIG5lYXIgdGhlCnN0YXJ0IG9mIHRoZSBIRE1JIHRyYW5zbWl0
+dGVyIGNoYXB0ZXIgdGhvdWdoLgoKPiA+IElmIHdlIHdhbnRlZCB0byBtb2RlbCB0aGlzIGNvcnJl
+Y3RseSwgdGhlbiBmb3IgaU1YLCBJIHdvdWxkIHN1Z2dlc3QKPiA+IHRoYXQgdGhlIEhETUkgcGh5
+IHNob3VsZCBiZSBtb2RlbGxlZCBpbiBEVCwgYW5kIF9hbGxfIHRoZSBzaXggVlAqCj4gPiBzdXBw
+bGllcyBhcmUgbW9kZWxsZWQgLSBhbmQgd2Ugc2hvdWxkIGFzc3VtZSB0aGF0ICJHRCIgaXMgYSAi
+cG93ZXIKPiA+IGdvb2QiIHNpZ25hbCwgdGhvdWdoIHdlIGRvbid0IGtub3cgdGhhdCBmb3IgY2Vy
+dGFpbi4KPiAKPiBQZXJoYXBzIFZQX0ZJTFQqIGFyZSBzb3VyY2VkIGZyb20gdGhlIHNhbWUgc3Vw
+cGx5IGFzIFZQLCBzbyBtYXliZSB3ZQo+IGRvbid0IGhhdmUgdG8gY2FyZSBhdCB0aGUgRFQgbGV2
+ZWw/CgpXZSdkIGJlIGd1ZXNzaW5nIC0gYW5kIHRoYXQncyBleGFjdGx5IG15IHBvaW50LiAgRGVz
+aWduaW5nIHNvbWV0aGluZyBhdApEVCBsZXZlbCBiYXNlZCBvbiBndWVzc3dvcmsgaXMgbm8gd2F5
+IHRvIGdvLCBlc3BlY2lhbGx5IHdpdGggYSBnZW5lcmljCmJpdCBvZiBJUCB3aGljaCB3b3VsZCBi
+ZSByZS11c2VkIGFjcm9zcyBtdWx0aXBsZSBkaWZmZXJlbnQgcGxhdGZvcm1zLgoKPiA+IFdoYXQg
+d2UgYWxzbyBkb24ndCBrbm93IG9uIGlNWDYgaXMgd2hhdCB2b2x0YWdlcyBhbnkgb2YgdGhlc2Ug
+YXJlCj4gPiBzdXBwbGllZCB3aXRoLgo+IAo+IEEgcmF0aGVyIGNvbW1vbiBudWlzYW5jZSB3aXRo
+IHRoZXNlIGxpY2Vuc2VkIElQIGJsb2NrcyBpcyB0aGF0IHNvbWUgb2YKPiB0aGUgZGV0YWlscyBt
+YXkgYmUgaGlkZGVuIGluIFNvQyBnbHVlLCByZXN1bHRpbmcgaW4gdGhlIGludGVyZmFjZSBiZWlu
+Zwo+IGRpZmZlcmVudCBvbiBlYWNoIFNvQy4gR2l2ZW4gYWxsIG9mIHRoZSBhYm92ZSBpdCBzb3Vu
+ZHMgbGlrZSBpLk1YIGNvdWxkCj4gaGF2ZSBzb21lIGludGVybmFsIGdsdWUgdG8gc3VwcGx5IFZQ
+IGFuZCBWUEggYW5kIHRoZXJlJ2QgYmUgbm8gc2Vuc2libGUKPiB3YXkgdG8gcmVwcmVzZW50IHRo
+ZW0gaW4gRFQuCgouLi4gb3IgaXQncyBlbnRpcmVseSBwb3NzaWJsZSB0aGF0IGFsbCB0aGVzZSBz
+dXBwbGllcyBhcmUgYWx3YXlzIGZlZCBieQp0aGUgaU1YNiBTb0MgYWxsIHRoZSB0aW1lLgoKPiA+
+IFNvLCBhcyB3ZSBkb24ndCBoYXZlIG11Y2ggY2VydGFpbnR5IGhlcmUsIGFuZCB3ZSBrbm93IHRo
+YXQgYWRkaW5nIGl0Cj4gPiB0byB3aGF0IGlzIHRoZSBIRE1JIHRyYW5zbWl0dGVyIHdvdWxkIGJl
+IHdyb25nLCBJJ2Qgc3VnZ2VzdCBub3QKPiA+IG1vZGVsbGluZyBpdCBpbiBhIGdlbmVyaWMgd2F5
+IGF0IHByZXNlbnQuCj4gCj4gRG9lcyBEZXNpZ25XYXJlIGJ5IGFueSBjaGFuY2Ugb2ZmZXIgZG9j
+dW1lbnRhdGlvbiBhYm91dCB0aGUgSVA/IElmIG5vdCBJCj4gYWdyZWUgdGhhdCB0aGUgc2FmZXN0
+IHRoaW5nIHRvIGRvIGZvciBub3cgd291bGQgYmUgdG8gbWFrZSB0aGlzIFJvY2tjaGlwCj4gc3Bl
+Y2lmaWMuCgpUaGF0J3MgX2V4YWN0bHlfIHdoeSBJIHJhaXNlZCB0aGUgcG9pbnQgb3JpZ2luYWxs
+eSwgYW5kIHNhaWQgdGhhdCBpdCBzaG91bGQKYmUgUm9ja2NoaXAgc3BlY2lmaWMgdW50aWwgd2Ug
+a25vdyBiZXR0ZXIuICBHbGFkIHlvdSd2ZSBjYXVnaHQgdXAgd2l0aCBteQp0aGlua2luZy4gOikK
+Ckhvd2V2ZXIsIG15IHRoaW5raW5nIF9ub3dfIGlzIHRoYXQgaXQgc2hvdWxkbid0IGV2ZW4gYmUg
+bW9kZWxsZWQgYXMgcGFydApvZiBvdXIgSERNSSB0cmFuc21pdHRlciBEVCBibG9iLCBidXQgd2Ug
+c2hvdWxkIGJlIG1vZGVsbGluZyB0aGUgSERNSQp0cmFuc21pdHRlciBzZXBhcmF0ZWx5IGZyb20g
+dGhlIEhETUkgcGh5IGFzIHR3byBzZXBhcmF0ZSBEVCBibG9icywgYW5kCnRoZW4gdGhlIEhETUkg
+cGh5IGJsb2IgZ2V0cyB0aGUgKHBvc3NpYmx5IG9wdGlvbmFsKSBWUEggYW5kIFZQIHN1cHBsaWVz
+LgoKV2hhdCBpZiBzb21lb25lIGRlc2lnbnMgYSBjaGlwIHdpdGggdGhlaXIgb3duIEhETUkgcGh5
+IHdoaWNoIHVzZXMKZGlmZmVyZW50IHN1cHBsaWVzPwoKVGhpcyBpcyBvbmUgb2YgdGhlIHByb2Js
+ZW1zIEkgaGF2ZSB3aXRoIERUIC0gRFQgbmVlZHMgdXMgdG8gZGVzY3JpYmUKdGhlIGhhcmR3YXJl
+IGNvcnJlY3RseSBmaXJzdCB0aW1lIGFyb3VuZCwgd2hlbiB3ZSBtYXkgbm90IGhhdmUgYWxsIHRo
+ZQphdmFpbGFibGUgZmFjdHMgdG8gbWFrZSBwcm9wZXIgZGVjaXNpb25zLCBhbmQgd3JvbmcgZGVj
+aXNpb25zIGNhbiB2ZXJ5CndlbGwgbGVhZCB0byBzZXJpb3VzIGhlYWRhY2hlcyBsYXRlciBvbiBi
+ZWNhdXNlIHdlIGRpZG4ndCBtb2RlbApzb21ldGhpbmcgY29ycmVjdGx5IC0gYW5kIHdlJ3JlIHN0
+dWNrIHdpdGggdGhlIHdyb25nIGRlY2lzaW9ucyBmb3IgZXZlci4KCi0tIApGVFRDIGJyb2FkYmFu
+ZCBmb3IgMC44bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBrYnBzIHVw
+CmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
