@@ -1,114 +1,96 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Mon, 8 Jun 2015 17:34:21 +0100
-Message-ID: <20150608163420.GZ7557@n2100.arm.linux.org.uk>
-References: <4184159.j0iXe39dFB@phil> <2619686.csNBBFyt8W@phil>
- <20150605110159.GA16254@ulmo.nvidia.com>
- <23123577.mOoqGCAPdL@diego>
- <20150605231058.GQ7557@n2100.arm.linux.org.uk>
- <20150608140256.GA10354@ulmo.nvidia.com>
- <20150608142926.GY7557@n2100.arm.linux.org.uk>
- <20150608154448.GA11103@ulmo.nvidia.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v3 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Mon, 8 Jun 2015 13:52:15 -0700
+Message-ID: <CAD=FV=W3Ot0vymVguuE5YwENjmFVaFOxXoNODdu7UwzErGxTxA@mail.gmail.com>
+References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
+	<1433517104-7595-3-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
+	<20150605182947.GN7557@n2100.arm.linux.org.uk>
+	<CAD=FV=UamkH+RHmHHVzGKZda_w0teGBdfcH-LbCKqyp2q1OVqA@mail.gmail.com>
+	<55752067.2040108@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20150608154448.GA11103@ulmo.nvidia.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55752067.2040108@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBKdW4gMDgsIDIwMTUgYXQgMDU6NDQ6NTNQTSArMDIwMCwgVGhpZXJyeSBSZWRpbmcg
-d3JvdGU6Cj4gT24gTW9uLCBKdW4gMDgsIDIwMTUgYXQgMDM6Mjk6MjZQTSArMDEwMCwgUnVzc2Vs
-bCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+ID4gWW91J3JlIGFza2luZyBxdWVzdGlvbnMgd2Ug
-aGF2ZSBubyByZWFsIGFuc3dlcnMgdG8gLSBhbGwgd2UgaGF2ZSBpcyB0aGUKPiA+IGF2YWlsYWJs
-ZSBkb2N1bWVudGF0aW9uIHByb3ZpZGVkIGJ5IEZyZWVzY2FsZSAtIHdlIGRvbid0IGV2ZW4gaGF2
-ZSB0aGUKPiA+IFJvY2hjaGlwIGRvY3VtZW50YXRpb24uCj4gPiAKPiA+IEZyb20gdGhlIEZyZWVz
-Y2FsZSBkb2N1bWVudGF0aW9uLCB3aGljaCBkb2N1bWVudHMgdGhlIEhETUkgdHJhbnNtaXR0ZXIK
-PiA+IGVudGlyZWx5IHNlcGFyYXRlbHkgZnJvbSB0aGUgSERNSSBwaHksIEkgd291bGQgc2F5IHRo
-YXQgdGhlIElQIGlzCj4gPiBzdHJ1Y3R1cmVkIGFzIHR3byBlbnRpcmVseSBzZXBhcmF0ZSBibG9j
-a3MsIGFuZCB0aGUgY2hpcCBkZXNpZ25lciBpcwo+ID4gZnJlZSB0byBjaG9vc2UgYW4gYXBwcm9w
-cmlhdGUgcGh5IGZyb20gYSByYW5nZSBvZiBIRE1JIHBoeXMuCj4gCj4gRG9lcyBpdCBhc3NvY2lh
-dGUgYW55IG9mIHRoZSByZWdpc3RlcnMgd2l0aCB0aGUgSERNSSBQSFk/IEFjY29yZGluZyB0bwo+
-IHRoZSByZWdpc3RlciBkZWZpbml0aW9ucyBpbiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hk
-bWkuaCB0aGUgUEhZCj4gcmVnaXN0ZXJzIGFyZSBpbnRlcmxlYXZlZCB3aXRoIG90aGVyIHJlZ2lz
-dGVycyB0aGF0IGFyZSBsaWtlbHkgcGFydCBvZgo+IHRoZSBIRE1JIHRyYW5zbWl0dGVyIHByb3Bl
-ciAodGhlcmUgYXJlIHRoaW5ncyBsaWtlIEhEQ1AgYW5kIENFQyBlbmdpbmVzCj4gaW4gdGhhdCBJ
-UCBhcyB3ZWxsKS4KClRoZSBwcm90b2NvbCBzdHVmZiBpcyBoYW5kbGVkIGJ5IHRoZSBIRE1JIFR4
-IC0gdGhlIHBoeSBpcyB0aGUgY29udmVyc2lvbgpmcm9tIHRoZSBpbnRlcm5hbCBkaWdpdGFsIHRv
-IHRoZSBpbnRlcmZhY2UgZG9tYWluLgoKSSBjb3VsZCB3cml0ZSBsb3RzIHRvIGRlc2NyaWJlIGl0
-LCBidXQgcmVhbGx5LCB0aGUgYmVzdCB0aGluZyB0byBkbyBpcwp0byBkb3dubG9hZCB0aGUgaU1Y
-NiBkb2N1bWVudGF0aW9uIGFuZCB0YWtlIGEgcGVlayBhdCBpdC4uLgoKaHR0cHM6Ly9jb21tdW5p
-dHkuZnJlZXNjYWxlLmNvbS9kb2NzL0RPQy0xMDE4NDAKClBhcnRpY3VsYXJseSwgbG9vayBhdCB0
-aGUgSERNSSAzRCBQaHkgc2VjdGlvbiwgdGhlIHN5c3RlbSBsZXZlbCBibG9jawpkaWFncmFtICgz
-NC4xLjUuMSksIGFuZCAzNC4yLjEgd2hpY2ggaGFzIHRoZSB0b3AgbGV2ZWwgSS9PIGRpYWdyYW0g
-Zm9yCmp1c3QgdGhlIDNEIHBoeS4KClRoZSBwcmV2aW91cyBzZWN0aW9uIChzZWN0aW9uIDMzKSBj
-b3ZlcnMgdGhlIEhETUkgVHguCgo+ID4gTW9yZW92ZXIsIGluIHRoZSBmZWF0dXJlIGxpc3QgZm9y
-IHRoZSBIRE1JIHRyYW5zbWl0dGVyLCBpdCBzYXlzICh0aG91Z2gKPiA+IHRoaXMgaXMgbm90IGFw
-cGxpY2FibGUgdG8gaU1YNiAtIGFuZCBpcyBwcm9iYWJseSBsaWZ0ZWQgZnJvbSB0aGUKPiA+IFN5
-bm9wc2lzIGRvY3VtZW50YXRpb24pOgo+ID4gCj4gPiAiKiBPcHRpb24gdG8gcmVtb3ZlIHBpeGVs
-IHJlcGV0aXRpb24gY2xvY2sgZnJvbSBIRE1JIFRYIGludGVyZmFjZSBmb3IgYW4KPiA+ICAgZWFz
-eSBpbnRlZ3JhdGlvbiB3aXRoIHRoaXJkIHBhcnR5IEhETUkgVFggUEhZcyIKPiA+IAo+ID4gU28g
-LSBoZXJlJ3MgdGhlIHF1ZXN0aW9uOiB3aGF0IGRvIHdlIGRvIHdoZW4gd2UgZmluZCBzb21ldGhp
-bmcgdXNpbmcgdGhlCj4gPiBTeW5vcHNpcyBkZXNpZ24td2FyZSBIRE1JIHRyYW5zbWl0dGVyIHdp
-dGggYSBkaWZmZXJlbnQgSERNSSBwaHk/Cj4gPiAKPiA+IFJlbWVtYmVyLCBWUCwgVlBILCBWUF9G
-SUxUXyogYXJlIGFsbCBwYXJ0IG9mIHRoZSBIRE1JIHBoeSBhY2NvcmRpbmcgdG8KPiA+IHRoZSBm
-cmVlc2NhbGUgZG9jdW1lbnRhdGlvbiwgYW5kIG5vdCBwYXJ0IG9mIHRoZSBIRE1JIHRyYW5zbWl0
-dGVyLgo+ID4gCj4gPiA+IEkKPiA+ID4gc2VlIHJlZ2lzdGVyIGRlZmluaXRpb25zIGZvciBhICJz
-b3VyY2UiIFBIWSBhbmQgYSAibWFzdGVyIiBQSFksIHdoZXJlCj4gPiA+IHRoZSBsYXR0ZXIgc2Vl
-bXMgdG8gYmUgYW4gSTJDIGNvbnRyb2xsZXIgcmF0aGVyIHRoYW4gYSBQSFkuIFBlcmhhcHMgaXQK
-PiA+ID4gaXMgdXNlZCB0byBjb21tdW5pY2F0ZSB3aXRoIGFuIGV4dGVybmFsIFBIWT8KPiA+IAo+
-ID4gSSdtIG5vdCBzdXJlIHdoZXJlIHlvdSBnZXQgdGhhdCBmcm9tLiAgTWF5YmUgeW91IGNvdWxk
-IGdpdmUgYSBjaGFwdGVyCj4gPiByZWZlcmVuY2U/Cj4gCj4gVGhhdCdzIGp1c3QgZnJvbSBza2lt
-bWluZyBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuaCAocmVnaXN0ZXIKPiBvZmZzZXRz
-IDB4MzAwMCBhbmQgdGhlIGZvbGxvd2luZykuIFRoZSBsYXJnZSBnYXAgYmV0d2VlbiB0aGVtIGFu
-ZCB0aGUKPiBwcmVjZWRpbmcgRkMgcmVnaXN0ZXJzIGNvdWxkIGJlIGFuIGFkZGl0aW9uYWwgaW5k
-aWNhdGlvbiB0aGF0IHRoZXkgYXJlCj4gaW5kZWVkIHNlcGFyYXRlIElQIGJsb2Nrcy4gVGhlbiBh
-Z2FpbiwgdGhlIEFVRCByZWdpc3RlcnMgc3RhcnQgYXQgYW4KPiBvZmZzZXQgb2YgMHgzMTAwLCBz
-byBtYXliZSBpdCdzIG5vIGluZGljYXRpb24gYXQgYWxsLgoKQWgsIHlvdSdyZSBnZXR0aW5nIHNs
-aWdodGx5IGNvbmZ1c2VkLgoKQWxsIHRob3NlIHJlZ2lzdGVycyBhcmUgdG8gZG8gd2l0aCB0aGUg
-SERNSSBUeCBpdHNlbGYuICBUaGUgYmxvY2sgYXQKMHgzMDAwIHRvIDB4MzAwNyBpcyB0byBkbyB3
-aXRoIHRoZSBIRE1JIFR4IHJlY2VpdmluZyB2YXJpb3VzIHN0YXR1cwpzaWduYWxzIGZyb20gdGhl
-IEhETUkgUGh5LCBzdWNoIGFzIEhQRCwgcnhzZW5zZSwgYW5kIHdoZXRoZXIgdGhlIHBoeQpQTEwg
-aXMgbG9ja2VkICh3aGljaCBJJ20gZmFpcmx5IGNlcnRhaW4gaXMgbWlzLWRlc2NyaWJlZCwgYXMg
-dGhlcmUgaXMKbm8gb3V0cHV0IHNpZ25hbCBmcm9tIHRoZSBwaHkgdG8gaW5kaWNhdGUgdGhpcywg
-YnV0IHRoZXJlIGlzIGEgVFhfUkVBRFkKc2lnbmFsLikKClRoZSBzZXQgYXQgMHgzMDIwLTB4MzAz
-MiBhcmUgdG8gZG8gd2l0aCB0YWxraW5nIHRvIHRoZSBIRE1JIHBoeSBvdmVyCnRoZSBkZWRpY2F0
-ZWQgSTJDIGludGVyZmFjZSBpbnRlZ3JhdGVkIGludG8gdGhlIEhETUkgVHguICBBbGwgdGhlCkhE
-TUkgUGh5IHJlZ2lzdGVycyBhcmUgYWNjZXNzZWQgdGhyb3VnaCB0aGlzIEkyQyBpbnRlcmZhY2Uu
-Cgo+ID4gV2hhdCBpZiBzb21lb25lIGRlc2lnbnMgYSBjaGlwIHdpdGggdGhlaXIgb3duIEhETUkg
-cGh5IHdoaWNoIHVzZXMKPiA+IGRpZmZlcmVudCBzdXBwbGllcz8KPiAKPiBUaGF0J3MgcmVhbGx5
-IG9uZSBtb3JlIHJlYXNvbiB0byB3cml0ZSBwcm9wZXIgZHJpdmVycyBmb3IgdGhlIFBIWXMuIElm
-Cj4geW91IHJlYWxseSBldmVyIGhhdmUgdG8gZGVhbCB3aXRoIGEgZGlmZmVyZW50IFBIWSBjaGFu
-Y2VzIGFyZSB0aGF0IG1vcmUKPiB0aGFuIGp1c3QgdGhlIHN1cHBsaWVzIHdpbGwgYmUgZGlmZmVy
-ZW50LCBpbiB3aGljaCBjYXNlIHlvdSdkIG5lZWQgdG8KPiBzb21laG93IGFsc28gYWJzdHJhY3Qg
-YXdheSB0aGUgaW50ZXJvcGVyYXRpb24gYmV0d2VlbiBIRE1JIHRyYW5zbWl0dGVyCj4gYW5kIFBI
-WS4KCkV4YWN0bHksIGJ1dCB0aGF0IGRpZG4ndCBoYXBwZW4gYmVmb3JlIHRoaXMgY29kZSBtb3Zl
-ZCBvdXQgb2YKZHJpdmVycy9zdGFnaW5nLCB3aGljaCBpcyByYXRoZXIgdW5mb3J0dW5hdGUsIGJ1
-dCBldmVyeW9uZSB3YXMgdG9vIGJ1c3kKdG8gcHV0IG11Y2ggdGhvdWdodCBpbnRvIHRoYXQuCgpU
-aGlzIGlzIG9uZSBvZiB0aGUgcHJvYmxlbXMgd2hlbiBkcml2ZXJzIGFyZSB0YWtlbiBmcm9tIEJT
-UHMgcmF0aGVyIHRoYW4KZ29pbmcgYXdheSBhbmQgd3JpdGluZyBzb21ldGhpbmcgZnJvbSBkb2N1
-bWVudGF0aW9uOiBpZiB5b3Ugc3RhcnQgYWZyZXNoLAp5b3UgY2FuIG1vZGVsIHRoZSBjb2RlIGFj
-Y29yZGluZyB0byB0aGUgZG9jdW1lbnRhdGlvbiB3aXRob3V0IGFueSBvZiB0aGUKb3JpZ2luYWwg
-QlNQIGRlY2lzaW9ucyBpbiBwbGFjZS4gIElmIHlvdSBzdGFydCBmcm9tIHRoZSBCU1AgY29kZSwg
-eW91CmhhdmUgYSB3aG9sZSBwaWxlIG9mIGNoYW5nZXMgeW91IG5lZWQgdG8gaWRlbnRpZnksIGFu
-ZCBpdCdzIHZlcnkgZWFzeSB0bwpvdmVybG9vayBzb21ldGhpbmcsIGJlY2F1c2Ugd2hhdCB5b3Ug
-aGF2ZSB3b3Jrcy4KCkl0J3Mgc29tZXRoaW5nIHdoaWNoIF9zaG91bGRfIGJlIGRvbmUgbmV2ZXJ0
-aGVsZXNzLiAgVGhlIHByb2JsZW0gaXMKZmluZGluZyBzb21lb25lIHdpdGggdGhlIHRpbWUgYW5k
-IG1vdGl2YXRpb24gdG8gZG8gYSBnb29kIGpvYi4KCi0tIApGVFRDIGJyb2FkYmFuZCBmb3IgMC44
-bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGlu
-ZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+Caesar,
+
+On Sun, Jun 7, 2015 at 9:56 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> OK.
+> The dying processor to execute v7_exit_coherency_flush(),not that the dying
+> processor to be in WFI/WFE.
+>
+> It's needed to enter WFI/WFE state from the ARM refer document when CPU
+> down.
+>
+> But......
+>
+> Here is my test: (won't to enter the WFI state)
+> @@ -331,8 +331,8 @@ static int rockchip_cpu_kill(unsigned int cpu)
+>  static void rockchip_cpu_die(unsigned int cpu)
+>  {
+>         v7_exit_coherency_flush(louis);
+> -       while (1)
+> -               cpu_do_idle();
+> +       while (1);
+> +               //cpu_do_idle();
+>  }
+>
+> echo 0 > /sys/module/printk/parameters/console_suspend
+> echo 1 > /sys/power/pm_print_times
+> echo mem > sys/power/state
+>
+> You can play anything
+> or do some test for CPU up/down:
+>
+> cd /sys/devices/system/cpu/
+> for i in $(seq 10000); do
+>   echo "================= $i ============"
+>   for j in $(seq 100); do
+>     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" !=
+> "000" ]]; do
+>
+>       echo 0 > cpu1/online
+>       echo 0 > cpu2/online
+>       echo 0 > cpu3/online
+>     done
+>     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" !=
+> "111" ]]; do
+>       echo 1 > cpu1/online
+>       echo 1 > cpu2/online
+>       echo 1 > cpu3/online
+>     done
+>   done
+> done
+> Sometimes,the system will be restart when do the about test.
+
+I assume you meant the _above_ test.  So it sometimes works and
+sometimes doesn't?  Strange...
+
+> I'm no sure what's happen, That maybe abnormal won't to enter the WFI state.
+
+Good test.  I think I understood what you said above: basically if you
+don't get to the WFI state then the system will sometimes restart.
+
+I guess that seems a little strange to me since I would have thought
+that since you assert "reset" to the CPU before you power it off it
+wouldn't matter a whole lot what state the system was in.  The
+processor has exited concurrency and isn't touching any memory, so
+nothing it does should be hurting anyone.  ...but I also am only
+guessing about how all this works / trying to use common sense.  If we
+really need to be in WFI/WFE then I guess that's what we need to do.
+
+It still makes me nervous to say both that we "need to be in WFI" and
+that we have a loop around cpu_do_idle().  The loop implies that
+cpu_do_idle() might return sometimes.  That would be OK, except now
+we've learned that if we happen to kill the CPU while we're executing
+the loop that it might crash the system.  That's pretty non-ideal.  I
+know the chances are incredibly unlikely, but still something that
+worries me...
+
+
+-Doug
