@@ -1,25 +1,55 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v5 0/3] ARM: rockchip: fix the SMP
-Date: Mon,  8 Jun 2015 15:11:33 +0800
-Message-ID: <1433747496-7642-1-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v5 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Mon,  8 Jun 2015 15:11:35 +0800
+Message-ID: <1433747496-7642-3-git-send-email-wxt@rock-chips.com>
+References: <1433747496-7642-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433747496-7642-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Verified on url =
-    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
-Tested by 176000 cycles are pass with CPU up/dowm test scripts.
+The patch can ensure that v7_exit_coherency_flush() in rockchip_cpu_die()
+executed in time.
+The mdelay(1) has enough time to fix the problem of CPU offlining.
+That's a workaround way in rockchip hotplug code,
+At least, we haven't a better way to solve it. Who know,
+that maybe fixed by chip (hardware) in the future.
 
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-Caesar Wang (3):
-  ARM: rockchip: fix the CPU soft reset
-  ARM: rockchip: ensure CPU to enter WFI/WFE state
-  ARM: rockchip: fix the SMP code style
+Changes in v5:
+    - Fix the patch decription.
+    - Add the changelog.
 
- arch/arm/mach-rockchip/platsmp.c | 30 ++++++++++++++++++------------
- 1 file changed, 18 insertions(+), 12 deletions(-)
+Changes in v4: None
 
+Changes in v3: None
+
+Changes in v2: None
+
+Changes in v2:
+    - As Kever points out, Fix the subject typo WFI/WFE.
+
+---
+
+ arch/arm/mach-rockchip/platsmp.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index bd40852..5bc2a89 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -321,6 +321,9 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+ #ifdef CONFIG_HOTPLUG_CPU
+ static int rockchip_cpu_kill(unsigned int cpu)
+ {
++	/* ensure CPU can enter the WFI/WFE state */
++	mdelay(1);
++
+ 	pmu_set_power_domain(0 + cpu, false);
+ 	return 1;
+ }
 -- 
 1.9.1
