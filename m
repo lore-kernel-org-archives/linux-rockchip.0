@@ -1,96 +1,217 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
-Date: Mon, 8 Jun 2015 13:52:15 -0700
-Message-ID: <CAD=FV=W3Ot0vymVguuE5YwENjmFVaFOxXoNODdu7UwzErGxTxA@mail.gmail.com>
-References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>
-	<1433517104-7595-3-git-send-email-wxt@rock-chips.com>
-	<CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>
-	<20150605182947.GN7557@n2100.arm.linux.org.uk>
-	<CAD=FV=UamkH+RHmHHVzGKZda_w0teGBdfcH-LbCKqyp2q1OVqA@mail.gmail.com>
-	<55752067.2040108@rock-chips.com>
+From: Caesar Wang <caesar.wang@rock-chips.com>
+Subject: Re: [PATCH v5 1/3] ARM: rockchip: fix the CPU soft reset
+Date: Tue, 09 Jun 2015 05:54:23 +0800
+Message-ID: <55760F0F.9010302@rock-chips.com>
+References: <1433747496-7642-1-git-send-email-wxt@rock-chips.com> <1433747496-7642-2-git-send-email-wxt@rock-chips.com> <20150608092416.GV7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55752067.2040108@rock-chips.com>
+In-Reply-To: <20150608092416.GV7557@n2100.arm.linux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>, Caesar Wang <wxt@rock-chips.com>, dianders@chromium.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
 
-On Sun, Jun 7, 2015 at 9:56 PM, Caesar Wang <wxt@rock-chips.com> wrote:
-> OK.
-> The dying processor to execute v7_exit_coherency_flush(),not that the dying
-> processor to be in WFI/WFE.
+
+=E5=9C=A8 2015=E5=B9=B406=E6=9C=8808=E6=97=A5 17:24, Russell King - ARM=
+ Linux =E5=86=99=E9=81=93:
+> On Mon, Jun 08, 2015 at 03:11:34PM +0800, Caesar Wang wrote:
+>> We need different orderings when turning a core on and turning a cor=
+e
+>> off.  In one case we need to assert reset before turning power off.
+>> In ther other case we need to turn power on and the deassert reset.
+>>
+>> In general, the correct flow is:
+>>
+>> CPU off:
+>>      reset_control_assert
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+>>      wait_for_power_domain_to_turn_off
+>> CPU on:
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>>      wait_for_power_domain_to_turn_on
+>>      reset_control_deassert
+>>
+>> This is needed for stressing CPU up/down, as per:
+>>      cd /sys/devices/system/cpu/
+>>      for i in $(seq 10000); do
+>>          echo "=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D $=
+i =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D"
+>>          for j in $(seq 100); do
+>>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu=
+3/online)" !=3D "000"" ]]
+>>                  echo 0 > cpu1/online
+>>                  echo 0 > cpu2/online
+>>                  echo 0 > cpu3/online
+>>              done
+>>              while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu=
+3/online)" !=3D "111" ]]; do
+>>                  echo 1 > cpu1/online
+>>                  echo 1 > cpu2/online
+>>                  echo 1 > cpu3/online
+>>              done
+>>          done
+>>      done
+>>
+>> The following is reproducile log:
+> "reproducable"
 >
-> It's needed to enter WFI/WFE state from the ARM refer document when CPU
-> down.
+>>      [34466.186812] PM: noirq suspend of devices complete after 0.66=
+9 msecs
+>>      [34466.186824] Disabling non-boot CPUs ...
+>>      [34466.187509] CPU1: shutdown
+>>      [34466.188672] CPU2: shutdown
+>>      [34473.736627] Kernel panic - not syncing:Watchdog detected har=
+d LOCKUP on cpu 0
+>>      .......
+>> or others similar log:
+>>      .......
+>>      [ 4072.454453] CPU1: shutdown
+>>      [ 4072.504436] CPU2: shutdown
+>>      [ 4072.554426] CPU3: shutdown
+>>      [ 4072.577827] CPU1: Booted secondary processor
+>>      [ 4072.582611] CPU2: Booted secondary processor
+>>      [ 4072.587426] CPU3: Booted secondary processor
+>>      <hang>
+>>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>> Reviewed-by: Doug Anderson <dianders@chromium.org>
+>>
+>> Changes in v5:
+>>      - back to v2 cpu on/off flow, As Heiko point out in patch v3.
+>>      - delay more time in rockchip_boot_secondary().
+>>      From CPU up/down tests, Needed more time to complete CPU proces=
+s.
+>>      In order to ensure a more, Here that be delayed 1ms.
+>>
+>> Changes in v4:
+>>      - Add reset_control_put(rstc) for the non-error case.
+>>
+>> Changes in v3:
+>>      - FIx the PATCH v2, it doesn't work on chromium 3.14.
+>>
+>> Changes in v2:
+>>      - As Heiko suggestion, re-adjust the cpu on/off flow.
+>>      CPU off:
+>>      reset_control_assert
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+>>      wait_for_power_domain_to_turn_off
+>>      CPU on:
+>>      regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+>>      wait_for_power_domain_to_turn_on
+>>      reset_control_deassert
+>>
+>> ---
+>>
+>>   arch/arm/mach-rockchip/platsmp.c | 18 ++++++++++--------
+>>   1 file changed, 10 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockch=
+ip/platsmp.c
+>> index 5b4ca3c..bd40852 100644
+>> --- a/arch/arm/mach-rockchip/platsmp.c
+>> +++ b/arch/arm/mach-rockchip/platsmp.c
+>> @@ -72,6 +72,7 @@ static struct reset_control *rockchip_get_core_res=
+et(int cpu)
+>>   static int pmu_set_power_domain(int pd, bool on)
+>>   {
+>>   	u32 val =3D (on) ? 0 : BIT(pd);
+>> +	struct reset_control *rstc =3D rockchip_get_core_reset(pd);
+>>   	int ret;
+>>  =20
+>>   	/*
+>> @@ -80,20 +81,15 @@ static int pmu_set_power_domain(int pd, bool on)
+>>   	 * processor is powered down.
+>>   	 */
+>>   	if (read_cpuid_part() !=3D ARM_CPU_PART_CORTEX_A9) {
+>> -		struct reset_control *rstc =3D rockchip_get_core_reset(pd);
+>> -
+>> +		/* We only require the reset on the RK3288 at the moment */
+>>   		if (IS_ERR(rstc)) {
+>>   			pr_err("%s: could not get reset control for core %d\n",
+>>   			       __func__, pd);
+>>   			return PTR_ERR(rstc);
+>>   		}
+>>  =20
+>> -		if (on)
+>> -			reset_control_deassert(rstc);
+>> -		else
+>> +		if (!on)
+>>   			reset_control_assert(rstc);
+>> -
+>> -		reset_control_put(rstc);
+>>   	}
+>>  =20
+>>   	ret =3D regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), val);
+>> @@ -112,6 +108,12 @@ static int pmu_set_power_domain(int pd, bool on=
+)
+>>   		}
+>>   	}
+>>  =20
+>> +	if (read_cpuid_part() !=3D ARM_CPU_PART_CORTEX_A9 && on)
+>> +		reset_control_deassert(rstc);
+>> +
+>> +	if (!IS_ERR(rstc))
+>> +		reset_control_put(rstc);
+>> +
+>>   	return 0;
+>>   }
+>>  =20
+>> @@ -148,7 +150,7 @@ static int __cpuinit rockchip_boot_secondary(uns=
+igned int cpu,
+>>   		 * sram_base_addr + 4: 0xdeadbeaf
+>>   		 * sram_base_addr + 8: start address for pc
+>>   		 * */
+>> -		udelay(10);
+>> +		mdelay(1);
+> The reason for this delay needs a comment, as it's not obvious why yo=
+u
+> would need to delay before writing to the SRAM.  Also documenting in
+> a comment why the delay is necessary would be good.
 >
-> But......
->
-> Here is my test: (won't to enter the WFI state)
-> @@ -331,8 +331,8 @@ static int rockchip_cpu_kill(unsigned int cpu)
->  static void rockchip_cpu_die(unsigned int cpu)
->  {
->         v7_exit_coherency_flush(louis);
-> -       while (1)
-> -               cpu_do_idle();
-> +       while (1);
-> +               //cpu_do_idle();
->  }
->
-> echo 0 > /sys/module/printk/parameters/console_suspend
-> echo 1 > /sys/power/pm_print_times
-> echo mem > sys/power/state
->
-> You can play anything
-> or do some test for CPU up/down:
->
-> cd /sys/devices/system/cpu/
-> for i in $(seq 10000); do
->   echo "================= $i ============"
->   for j in $(seq 100); do
->     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" !=
-> "000" ]]; do
->
->       echo 0 > cpu1/online
->       echo 0 > cpu2/online
->       echo 0 > cpu3/online
->     done
->     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)" !=
-> "111" ]]; do
->       echo 1 > cpu1/online
->       echo 1 > cpu2/online
->       echo 1 > cpu3/online
->     done
->   done
-> done
-> Sometimes,the system will be restart when do the about test.
 
-I assume you meant the _above_ test.  So it sometimes works and
-sometimes doesn't?  Strange...
+Sorry for delay, I wait a better solution for this.
+We don't need any 10us delay or 1m delay, I think.
 
-> I'm no sure what's happen, That maybe abnormal won't to enter the WFI state.
+-		udelay(10);
 
-Good test.  I think I understood what you said above: basically if you
-don't get to the WFI state then the system will sometimes restart.
-
-I guess that seems a little strange to me since I would have thought
-that since you assert "reset" to the CPU before you power it off it
-wouldn't matter a whole lot what state the system was in.  The
-processor has exited concurrency and isn't touching any memory, so
-nothing it does should be hurting anyone.  ...but I also am only
-guessing about how all this works / trying to use common sense.  If we
-really need to be in WFI/WFE then I guess that's what we need to do.
-
-It still makes me nervous to say both that we "need to be in WFI" and
-that we have a loop around cpu_do_idle().  The loop implies that
-cpu_do_idle() might return sometimes.  That would be OK, except now
-we've learned that if we happen to kill the CPU while we're executing
-the loop that it might crash the system.  That's pretty non-ideal.  I
-know the chances are incredibly unlikely, but still something that
-worries me...
++        while (readl(sram_base_addr + 4 ) !=3D 1); //lock =3D1
 
 
--Doug
+We need do that if i'm correct from the bootrom code.
+Tested are pass over 120000 cycles on today, I will wait more testing=20
+cycles to confirm that's ok.
+
+
+
+--=20
+***********************************************************************=
+***************
+=E7=8E=8B=E6=99=93=E8=85=BE    Caesar Wang
+Product R&D Dept.III
+=46uzhou Rockchip Electronics Co.Ltd
+Addr=EF=BC=9A  NO.18 Building, A District, Fuzhou Software Park,Gulou D=
+istrict,Fuzhou, Fujian,China(Fuzhou Headquarters)
+               21F,Malata Building,Kejizhongyi Avenue,Nanshan District,=
+Shenzhen  (Shenzhen Office)
+Tel=EF=BC=9A+86-591-83991906/07 - 8221
+Mobile:+86 15059456742
+E-mail : wxt@rock-chips.com
+***********************************************************************=
+****************
+***********************************************************************=
+****************
+IMPORTANT NOTICE: This email is from Fuzhou Rockchip Electronics Co., L=
+td .The contents of this email and any attachments may
+contain information that is privileged, confidential and/or exempt from=
+ disclosure under applicable law and relevant NDA.
+If you are not the intended recipient, you are hereby notified that any=
+ disclosure, copying, distribution, or use of the
+information is STRICTLY PROHIBITED. Please immediately contact the send=
+er as soon as possible and destroy the material
+in its entirety in any format. Thank you.
+***********************************************************************=
+****************
