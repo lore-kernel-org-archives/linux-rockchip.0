@@ -1,78 +1,125 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/3] ARM: rockchip: fix the CPU soft reset
-Date: Sun, 07 Jun 2015 11:02:18 +0200
-Message-ID: <3887846.0ppL0Y56At@diego>
-References: <1433523923-4755-1-git-send-email-wxt@rock-chips.com>
- <CAD=FV=VswV+MAgYr084VOxQynHrL1fdwnVb4b_W_bHUZgoW4mg@mail.gmail.com>
- <5573DBDC.2010204@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v3 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Mon, 08 Jun 2015 12:56:07 +0800
+Message-ID: <55752067.2040108@rock-chips.com>
+References: <1433517104-7595-1-git-send-email-wxt@rock-chips.com>	<1433517104-7595-3-git-send-email-wxt@rock-chips.com>	<CAD=FV=UMkFtOFYpY+MUZOegnmFLdW3ZgNivwdHChv0MLr50sVQ@mail.gmail.com>	<20150605182947.GN7557@n2100.arm.linux.org.uk> <CAD=FV=UamkH+RHmHHVzGKZda_w0teGBdfcH-LbCKqyp2q1OVqA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5573DBDC.2010204-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UamkH+RHmHHVzGKZda_w0teGBdfcH-LbCKqyp2q1OVqA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2Flc2FyLCBEb3VnLAoKQW0gU29ubnRhZywgNy4gSnVuaSAyMDE1LCAxMzo1MToyNCBzY2hy
-aWViIENhZXNhciBXYW5nOgo+IOWcqCAyMDE15bm0MDbmnIgwN+aXpSAxMTo0MywgRG91ZyBBbmRl
-cnNvbiDlhpnpgZM6Cj4gPiBDYWVzYXIsCj4gPiAKPiA+IE9uIFNhdCwgSnVuIDYsIDIwMTUgYXQg
-Nzo1MSBQTSwgQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPj4gQEAg
-LTE1MCwxMyArMTU5LDE1IEBAIHN0YXRpYyBpbnQgX19jcHVpbml0Cj4gPj4gcm9ja2NoaXBfYm9v
-dF9zZWNvbmRhcnkodW5zaWduZWQKPiA+PiBpbnQgY3B1LAo+ID4+IAo+ID4+ICAgICAgICAgICAg
-ICAgICAgICogc3JhbV9iYXNlX2FkZHIgKyA0OiAweGRlYWRiZWFmCj4gPj4gICAgICAgICAgICAg
-ICAgICAgKiBzcmFtX2Jhc2VfYWRkciArIDg6IHN0YXJ0IGFkZHJlc3MgZm9yIHBjCj4gPj4gICAg
-ICAgICAgICAgICAgICAgKiAqLwo+ID4+IAo+ID4+IC0gICAgICAgICAgICAgICB1ZGVsYXkoMTAp
-Owo+ID4+ICsgICAgICAgICAgICAgICB1ZGVsYXkoMjApOwo+ID4+IAo+ID4+IEkgaW5jcmVhc2Vk
-IHRoZSAndWRlbGF5KDIwKScgb3IgJ3VkZWxheSg1MCknIGluCj4gPj4gcm9ja2NoaXBfYm9vdF9z
-ZWNvbmRhcnkoKS4KPiA+PiBTZXQjMiBhbHNvIGNhbiByZXBybyB0aGlzIGlzc3VlIG92ZXIgMjI2
-MDAgY3ljbGVzIHdpdGggdGVzdGluZyBzY3JpcHRzLgo+ID4+IChhYm91dCAxIGhvdXJzKQo+ID4+
-IAo+ID4+IGxvZzoKPiA+PiA9PT09PT09PT09PT09PT09PSAyMjYgPT09PT09PT09PT09Cj4gPj4g
-WyA0MDY5LjEzNDQxOV0gQ1BVMTogc2h1dGRvd24KPiA+PiBbIDQwNjkuMTY0NDMxXSBDUFUyOiBz
-aHV0ZG93bgo+ID4+IFsgNDA2OS4yMDQ0NzVdIENQVTM6IHNodXRkb3duCj4gPj4gLi4uLi4uCj4g
-Pj4gWyA0MDcyLjQ1NDQ1M10gQ1BVMTogc2h1dGRvd24KPiA+PiBbIDQwNzIuNTA0NDM2XSBDUFUy
-OiBzaHV0ZG93bgo+ID4+IFsgNDA3Mi41NTQ0MjZdIENQVTM6IHNodXRkb3duCj4gPj4gWyA0MDcy
-LjU3NzgyN10gQ1BVMTogQm9vdGVkIHNlY29uZGFyeSBwcm9jZXNzb3IKPiA+PiBbIDQwNzIuNTgy
-NjExXSBDUFUyOiBCb290ZWQgc2Vjb25kYXJ5IHByb2Nlc3Nvcgo+ID4+IFsgNDA3Mi41ODc0MjZd
-IENQVTM6IEJvb3RlZCBzZWNvbmRhcnkgcHJvY2Vzc29yCj4gPj4gPGhhbmc+Cj4gPj4gCj4gPj4g
-VGhlIHNldCAjNCB3aWxsIGJlIGJldHRlciB3b3JrLgo+ID4gCj4gPiBPSywgSSdtIE9LIHdpdGgg
-dGhpcywgYnV0IEknZCBsaWtlIHRvIGdldCBIZWlrbydzIG9waW5pb24uCj4gPiAKPiA+IEFsc286
-Cj4gPiAqIEp1c3QgZm9yIGtpY2tzLCBkb2VzIG1kZWxheSgxKSB3b3JrPyAgSSBrbm93IHRoYXQn
-cyAxMDB4IG1vcmUgdGhhbgo+IAo+IE9LLCBpdCBzaG91bGQgZGVsYXkgbW9yZSB0aW1lLgo+IAo+
-IHRoZSBtZGVsYXkoMSkgY2FuIGJlIHdvcmsgb3ZlciA1MDAwMCBjeWNsZXMsIHNvIHRoYXQgc2hv
-dWxkIGJlIHdvcmsuCj4gCj4gCj4gUGVyaGFwcywgY2FuIHdlIHVzZSAndXNsZWVwX3JhbmdlKDUw
-MCwgMTAwMCknIHRvIHdvcmsuCj4gSGVpa28sIGRvIHlvdSBhZ3JlZSB3aXRoIGl0PwoKeWVwIDot
-KQoKQXMgSSBzYWlkIGJlZm9yZSwgZG9pbmcKCglwb3dlcnVwLCBkZWFzc2VydF9yZXNldCwgd2Fp
-dF9mb3JfcG93ZXJkb21haW4KCmZlZWxzIGxpa2UgaXQgaXMgb25seSBtb3ZpbmcgdGhlIHByb2Js
-ZW0gYSBiaXQgYnV0IGlzIGFjdHVhbGx5IG9ubHkgd29ya2luZyBieSAKY2hhbmNlLCBhcyBteSBb
-bGl0dGxlIGJpdCBvZiA6LSkgXSBjb21tb24gc2Vuc2UgdGVsbHMgbWUsIHRoYXQgd2UgcmVhbGx5
-IG9ubHkgCnNob3VsZCBkZWFzc2VydCB0aGUgcmVzZXQgd2hlbiB3ZSdyZSBzdXJlIHRoYXQgdGhl
-IGNvcmUgaGFzIHBvd2VyLCBpLmUuCgoJcG93ZXJ1cCwgd2FpdF9mb3JfcG93ZXJkb21haW4sIGRl
-YXNzZXJ0X3Jlc2V0CgpBbHNvLCB3aGVuIGdvaW5nIGRvd24gdGhpcyBwYXRoLCBwbGVhc2UgdGFr
-ZSBhIGxvb2sgYXQgdGhlIHNsaWdodGx5IGRpZmZlcmVudCAKdmFyaWFudCBJIHBvc3RlZCBhcyBy
-ZXNwb25zZSB0byB2MywgYXMgaXQgbWFrZXMgdGhlIGRpZmYgYSBiaXQgc21hbGxlciA6LSkKCgpB
-cyBmb3Ige3UvbX1kZWxheSB2cy4geW91ciB1c2xlZXBfcmFuZ2VzLCBJIGRvbid0IGtub3cgaWYg
-eW91J3JlIGFsbG93ZWQgdG8gCnNsZWVwIGluIHRoaXMgYXJlYS4gT3RoZXIgYXJjaGl0ZWN0dXJl
-cyBvbmx5IHNlZW0gdG8gdXNlIHVkZWxheSBpbiBfX2NwdV91cCAKd2hpY2ggY2FsbHMgdGhlIHNt
-cF9zZWNvbmRhcnlfc3RhcnR1cCBjYWxsYmFjaywgbGlrZToKCi0gYXJjaC9zaC9rZXJuZWwvc21w
-LmMKLSBhcmNoL20zMnIva2VybmVsL3NtcGJvb3QuYyBbaXMgZXZlbiBhIHVkZWxheSgxMDAwKQph
-bmQgbW9yZQoKCkhlaWtvCgo+ID4gdWRlbGF5KDEwKSwgYnV0IHByZXZpb3VzbHkgd2Ugd2VyZSBh
-Y3R1YWxseSBsb29waW5nIHdhaXRpbmcgZm9yIHRoZQo+ID4gcG93ZXIgZG9tYWluLCByaWdodD8g
-IC4uLnNvIG1heWJlIHRoZSBvbGQgY29kZSB1c2VkIHRvIGludHJvZHVjZSBhCj4gPiBwcmV0dHkg
-YmlnIGRlbGF5Lgo+ID4gCj4gPiAqIERvZXMgYW55b25lIGZyb20gdGhlIGNoaXAgZGVzaWduIHRl
-YW0gaGF2ZSBhbnkgaWRlYSB3aHkgcGF0Y2ggc2V0ICM0Cj4gPiB3b3JrcyBidXQgcGF0Y2ggc2V0
-ICMyIGRvZXNuJ3Q/ICBJIGtub3cgaXQncyBTdW5kYXkgbW9ybmluZyBpbiBDaGluYQo+ID4gcmln
-aHQgbm93LCBidXQgbWF5YmUgeW91IGNvdWxkIGFzayBNb25kYXk/Cj4gPiAKPiA+IAo+ID4gVGhh
-bmtzIQo+ID4gCj4gPiAtRG91ZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+
+
+=E5=9C=A8 2015=E5=B9=B406=E6=9C=8806=E6=97=A5 04:24, Doug Anderson =E5=86=
+=99=E9=81=93:
+> Russell,
+>
+> On Fri, Jun 5, 2015 at 11:29 AM, Russell King - ARM Linux
+> <linux@arm.linux.org.uk> wrote:
+>> 1) v7_coherency_exit() is specific to v7 CPUs and can't be used by
+>>     generic code.
+> Oh, I see.  So (I think) you're saying that perhaps the reason that
+> Caesar needed his patch was that he needed the dying processor to
+> execute v7_exit_coherency_flush(), NOT that he needed the dying
+> processor to be in WFI/WFE.  That actually makes a lot more sense to
+> me!  :)  Thanks a lot for pointing that out, it's very helpful.
+>
+>
+>> So, we're actually in a very sticky position over taking CPUs offlin=
+e.
+>> It seems to be something that the ARM architecture and kernel
+>> architecture doesn't actually allow to be done safely.  So much so,
+>> that in a similar way to the original Keystone 2 physical address
+>> switch, I'm tempted to make taking a CPU offline taint the kernel!
+> Wow, that's going to suck.  So if you want to suspend / resume you
+> need to taint your kernel.  So much for saving the planet by going
+> into suspend...  ...or are you thinking that it won't taint the kerne=
+l
+> when the kernel takes CPUs offline for suspend/resume purposes?  ...o=
+r
+> are you thinking you've some solution that works for suspend/resume
+> that doesn't work for the general cpu offlining problem?  I'd be very
+> interested to hear...
+>
+>
+> I know I'm not a maintainer, but if I were and I knew that lots of
+> smart people had thought about the problem of CPU offlining and they
+> didn't have a solution and I could make my platform 99.99999999%
+> reliable by allowing a very safe mdelay(1) where I had a pretty stron=
+g
+> guarantee that the 1ms was enough time, I would probably accept that
+> code...
+>
+>
+> So since I'm not a maintainer and I certainly couldn't ack such code,
+> I would certainly be happy to add my Reviewed-by to Caesar's patch if
+> he changed it mention that he needed to make sure that
+> v7_exit_coherency_flush() in rockchip_cpu_die() executed in time.
+
+OK.
+The dying processor to execute v7_exit_coherency_flush(),not that the=20
+dying processor to be in WFI/WFE.
+
+It's needed to enter WFI/WFE state from the ARM refer document when CPU=
+=20
+down.
+
+But......
+
+Here is my test: (won't to enter the WFI state)
+@@ -331,8 +331,8 @@ static int rockchip_cpu_kill(unsigned int cpu)
+  static void rockchip_cpu_die(unsigned int cpu)
+  {
+         v7_exit_coherency_flush(louis);
+-       while (1)
+-               cpu_do_idle();
++       while (1);
++               //cpu_do_idle();
+  }
+
+echo 0 > /sys/module/printk/parameters/console_suspend
+echo 1 > /sys/power/pm_print_times
+echo mem > sys/power/state
+
+You can play anything
+or do some test for CPU up/down:
+
+cd /sys/devices/system/cpu/
+for i in $(seq 10000); do
+   echo "=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D $i =3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D"
+   for j in $(seq 100); do
+     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)"=20
+!=3D "000" ]]; do
+
+       echo 0 > cpu1/online
+       echo 0 > cpu2/online
+       echo 0 > cpu3/online
+     done
+     while [[ "$(cat cpu1/online)$(cat cpu2/online)$(cat cpu3/online)"=20
+!=3D "111" ]]; do
+       echo 1 > cpu1/online
+       echo 1 > cpu2/online
+       echo 1 > cpu3/online
+     done
+   done
+done
+Sometimes,the system will be restart when do the about test.
+I'm no sure what's happen, That maybe abnormal won't to enter the WFI=20
+state.
+
+>
+> -Doug
+>
+>
+>
+
+--=20
+Thanks,
+- Caesar
