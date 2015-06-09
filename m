@@ -1,97 +1,51 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v6 3/3] ARM: rockchip: fix the SMP code style
-Date: Wed, 10 Jun 2015 13:59:51 +0800
-Message-ID: <5577D257.4090409@rock-chips.com>
-References: <1433843400-24831-1-git-send-email-wxt@rock-chips.com> <1433843400-24831-4-git-send-email-wxt@rock-chips.com>
+From: Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] pinctrl: make pinctrl_register() return proper error code
+Date: Tue, 9 Jun 2015 10:55:36 -0700
+Message-ID: <55772898.8050601@broadcom.com>
+References: <1433822476-26531-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433843400-24831-4-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Russell King <linux@arm.linux.org.uk>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1433822476-26531-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Alessandro Rubini <rubini-9wsNiZum9E8@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jason Uy <jasonuy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rickard Strandqvist <rickard_strandqvist-IW2WV5XWFqGZkjO+N0TKoMugMpMbD5Xr@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Varka Bhadram <varkabhadram@gmail.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-On 06/09/2015 05:49 PM, Caesar Wang wrote:
-> Use the below scripts to check:
-> scripts/checkpatch.pl -f --subject arch/arm/mach-rockchip/platsmp.c
->
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->
+On 6/8/2015 9:01 PM, Masahiro Yamada wrote:
+> Currently, pinctrl_register() just returns NULL on error, so the
+> callers can not know the exact reason of the failure.
+> 
+> Some of the pinctrl drivers return -EINVAL, some -ENODEV, and some
+> -ENOMEM on error of pinctrl_register(), although the error code
+> might be different from the real cause of the error.
+> 
+> This commit reworks pinctrl_register() to return the appropriate
+> error code and modifies all of the pinctrl drivers to use IS_ERR()
+> for the error checking and PTR_ERR() for getting the error code.
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
 > ---
->
-> Changes in v6:
-> - fix the commnet Unified format.
-> Series-changes: 5
-> - Add the changelog.
-> Series-changes: 2
-> - Use the checkpatch.pl -f --subjective to check.
->
->   arch/arm/mach-rockchip/platsmp.c | 14 ++++++++------
->   1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-> index d629206..30ccb82 100644
-> --- a/arch/arm/mach-rockchip/platsmp.c
-> +++ b/arch/arm/mach-rockchip/platsmp.c
-> @@ -100,7 +100,7 @@ static int pmu_set_power_domain(int pd, bool on)
->   		ret = pmu_power_domain_is_on(pd);
->   		if (ret < 0) {
->   			pr_err("%s: could not read power domain state\n",
-> -				 __func__);
-> +			       __func__);
->   			return ret;
->   		}
->   	}
-> @@ -130,7 +130,7 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
->   
->   	if (cpu >= ncores) {
->   		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
-> -							__func__, cpu, ncores);
-> +		       __func__, cpu, ncores);
->   		return -ENXIO;
->   	}
->   
-> @@ -140,7 +140,8 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
->   		return ret;
->   
->   	if (read_cpuid_part() != ARM_CPU_PART_CORTEX_A9) {
-> -		/* We communicate with the bootrom to active the cpus other
-> +		/*
-> +		 * We communicate with the bootrom to active the cpus other
->   		 * than cpu0, after a blob of initialize code, they will
->   		 * stay at wfe state, once they are actived, they will check
->   		 * the mailbox:
-> @@ -149,11 +150,11 @@ static int __cpuinit rockchip_boot_secondary(unsigned int cpu,
->   		 * The cpu0 need to wait the other cpus other than cpu0 entering
->   		 * the wfe state.The wait time is affected by many aspects.
->   		 * (e.g: cpu frequency, bootrom frequency, sram frequency, ...)
-> -		 * */
-> +		 */
->   		mdelay(1); /* ensure the cpus other than cpu0 to startup */
->   
->   		writel(virt_to_phys(rockchip_secondary_startup),
-> -			sram_base_addr + 8);
-> +		       sram_base_addr + 8);
->   		writel(0xDEADBEAF, sram_base_addr + 4);
->   		dsb_sev();
->   	}
-> @@ -336,7 +337,7 @@ static int rockchip_cpu_kill(unsigned int cpu)
->   static void rockchip_cpu_die(unsigned int cpu)
->   {
->   	v7_exit_coherency_flush(louis);
-> -	while(1)
-> +	while (1)
->   		cpu_do_idle();
->   }
->   #endif
-> @@ -349,4 +350,5 @@ static struct smp_operations rockchip_smp_ops __initdata = {
->   	.cpu_die		= rockchip_cpu_die,
->   #endif
->   };
-> +
->   CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> 
+> This patch is based on linux-pinctrl/devel
+> (Commit 7164873e7c69d6bab74726debc3b495a86332b1f).
+> 
+> I think I converted all of the pinctrl drivers, but just in case,
+> I'd like the driver maintainers to check this patch out.
+> 
+> 
+
+>  drivers/pinctrl/bcm/pinctrl-bcm281xx.c        |  4 ++--
+>  drivers/pinctrl/bcm/pinctrl-cygnus-gpio.c     |  4 ++--
+>  drivers/pinctrl/bcm/pinctrl-cygnus-mux.c      |  4 ++--
+
+Acked-by: Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>
