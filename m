@@ -1,58 +1,54 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v6 0/3] ARM: rockchip: fix the SMP
-Date: Tue,  9 Jun 2015 17:49:56 +0800
-Message-ID: <1433843400-24831-1-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v6 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Tue,  9 Jun 2015 17:49:58 +0800
+Message-ID: <1433843400-24831-3-git-send-email-wxt@rock-chips.com>
+References: <1433843400-24831-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433843400-24831-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Verified on url =
-    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
-Tested by 179200 cycles are pass with CPU up/dowm test scripts.
+The patch can ensure that v7_exit_coherency_flush() in rockchip_cpu_die()
+executed in time.
+The mdelay(1) has enough time to fix the problem of CPU offlining.
+That's a workaround way in rockchip hotplug code,
+At least, we haven't a better way to solve it. Who know,
+that maybe fixed by chip (hardware) in the future.
+
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+
+---
 
 Changes in v6:
-- As Russell suggestion, detect whether of_reset_control_get() failed
-- add the comment for 1ms delay.
-Series-changes: 5
-- back to v2 cpu on/off flow, As Heiko point out in patch v3.
-- delay more time in rockchip_boot_secondary().
-  From CPU up/down tests, Needed more time to complete CPU process.
-  In order to ensure a more, Here that be delayed 1ms.
-Series-changes: 4
-- Add reset_control_put(rstc) for the non-error case.
-Series-changes: 3
-- FIx the PATCH v2, it doesn't work on chromium 3.14.
-Series-changes: 2
-- As Heiko suggestion, re-adjust the cpu on/off flow.
-  CPU off:
-    reset_control_assert
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
-    wait_for_power_domain_to_turn_off
-  CPU on:
-    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
-    wait_for_power_domain_to_turn_on
-    reset_control_deassert
 - Fix the delay 1ms describing.
 Series-changes: 5
 - Fix the patch decription.
 - Add the changelog.
 Series-changes: 2
 - As Kever points out, Fix the subject typo WFI/WFE.
-- fix the commnet Unified format.
-Series-changes: 5
-- Add the changelog.
-Series-changes: 2
-- Use the checkpatch.pl -f --subjective to check.
 
-Caesar Wang (3):
-  ARM: rockchip: fix the CPU soft reset
-  ARM: rockchip: ensure CPU to enter WFI/WFE state
-  ARM: rockchip: fix the SMP code style
+ arch/arm/mach-rockchip/platsmp.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
- arch/arm/mach-rockchip/platsmp.c | 58 ++++++++++++++++++++++++----------------
- 1 file changed, 35 insertions(+), 23 deletions(-)
-
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index b379cc8..d629206 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -322,6 +322,13 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+ #ifdef CONFIG_HOTPLUG_CPU
+ static int rockchip_cpu_kill(unsigned int cpu)
+ {
++	/*
++	 * We need a delay here to ensure that the dying CPU can finish
++	 * executing v7_coherency_exit() and reach the WFI/WFE state
++	 * prior to having the power domain disabled.
++	 */
++	mdelay(1);
++
+ 	pmu_set_power_domain(0 + cpu, false);
+ 	return 1;
+ }
 -- 
 1.9.1
