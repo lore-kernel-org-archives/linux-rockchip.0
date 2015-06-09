@@ -1,44 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: make pinctrl_register() return proper error code
-Date: Tue, 09 Jun 2015 10:03:56 +0200
-Message-ID: <4295512.HNTlNbYsVh@diego>
-References: <1433822476-26531-1-git-send-email-yamada.masahiro@socionext.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1433822476-26531-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Alessandro Rubini <rubini-9wsNiZum9E8@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jason Uy <jasonuy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rickard Strandqvist <rickard_strandqvist-IW2WV5XWFqGZkjO+N0TKoMugMpMbD5Xr@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Varka Bhadram <varkabhadram-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v6 0/3] ARM: rockchip: fix the SMP
+Date: Tue,  9 Jun 2015 17:49:56 +0800
+Message-ID: <1433843400-24831-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 9. Juni 2015, 13:01:16 schrieb Masahiro Yamada:
-> Currently, pinctrl_register() just returns NULL on error, so the
-> callers can not know the exact reason of the failure.
-> 
-> Some of the pinctrl drivers return -EINVAL, some -ENODEV, and some
-> -ENOMEM on error of pinctrl_register(), although the error code
-> might be different from the real cause of the error.
-> 
-> This commit reworks pinctrl_register() to return the appropriate
-> error code and modifies all of the pinctrl drivers to use IS_ERR()
-> for the error checking and PTR_ERR() for getting the error code.
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
-> 
+Verified on url =
+    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14
+Tested by 179200 cycles are pass with CPU up/dowm test scripts.
 
-for
+Changes in v6:
+- As Russell suggestion, detect whether of_reset_control_get() failed
+- add the comment for 1ms delay.
+Series-changes: 5
+- back to v2 cpu on/off flow, As Heiko point out in patch v3.
+- delay more time in rockchip_boot_secondary().
+  From CPU up/down tests, Needed more time to complete CPU process.
+  In order to ensure a more, Here that be delayed 1ms.
+Series-changes: 4
+- Add reset_control_put(rstc) for the non-error case.
+Series-changes: 3
+- FIx the PATCH v2, it doesn't work on chromium 3.14.
+Series-changes: 2
+- As Heiko suggestion, re-adjust the cpu on/off flow.
+  CPU off:
+    reset_control_assert
+    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), BIT(pd))
+    wait_for_power_domain_to_turn_off
+  CPU on:
+    regmap_update_bits(pmu, PMU_PWRDN_CON, BIT(pd), 0)
+    wait_for_power_domain_to_turn_on
+    reset_control_deassert
+- Fix the delay 1ms describing.
+Series-changes: 5
+- Fix the patch decription.
+- Add the changelog.
+Series-changes: 2
+- As Kever points out, Fix the subject typo WFI/WFE.
+- fix the commnet Unified format.
+Series-changes: 5
+- Add the changelog.
+Series-changes: 2
+- Use the checkpatch.pl -f --subjective to check.
 
->  drivers/pinctrl/pinctrl-rockchip.c            |  4 ++--
+Caesar Wang (3):
+  ARM: rockchip: fix the CPU soft reset
+  ARM: rockchip: ensure CPU to enter WFI/WFE state
+  ARM: rockchip: fix the SMP code style
 
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+ arch/arm/mach-rockchip/platsmp.c | 58 ++++++++++++++++++++++++----------------
+ 1 file changed, 35 insertions(+), 23 deletions(-)
+
+-- 
+1.9.1
