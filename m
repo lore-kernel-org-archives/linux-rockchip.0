@@ -1,48 +1,59 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Wed, 10 Jun 2015 00:36:18 +0100
-Message-ID: <20150609233618.GK7557@n2100.arm.linux.org.uk>
-References: <4184159.j0iXe39dFB@phil>
- <20150608163420.GZ7557@n2100.arm.linux.org.uk>
- <20150609075331.GA28198@ulmo>
- <3551826.dyCjorKhLA@diego>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v6 2/3] ARM: rockchip: ensure CPU to enter WFI/WFE state
+Date: Wed, 10 Jun 2015 13:59:16 +0800
+Message-ID: <5577D234.5000502@rock-chips.com>
+References: <1433843400-24831-1-git-send-email-wxt@rock-chips.com> <1433843400-24831-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <3551826.dyCjorKhLA@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433843400-24831-3-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Russell King <linux@arm.linux.org.uk>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 10, 2015 at 01:29:43AM +0200, Heiko St=FCbner wrote:
-> Allthough from the discussion and explanations I've now also got the =
-"don't=20
-> make it worse" feeling, so am somehow reluctant to add supplies that =
-also=20
-> might describe this inadequately.
->=20
-> The Rockchip-specific documentation only lists the two supplies as AV=
-DD_1V0,=20
-> AVDD_1V8 with a description of "DC supply voltage for Analog part of =
-HDMI".
-> The supplies aren't mentioned otherwise at all, so I guess I'll ponde=
-r this a=20
-> bit more at first.
+Hi Caesar,
 
-Are they controllable from software at all?  If they aren't, then
-I'd suggest leaving them out until we have a distinction between
-the Tx and Phy - much as we do for iMX6.
-
---=20
-=46TTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps u=
-p
-according to speedtest.net.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On 06/09/2015 05:49 PM, Caesar Wang wrote:
+> The patch can ensure that v7_exit_coherency_flush() in rockchip_cpu_die()
+> executed in time.
+> The mdelay(1) has enough time to fix the problem of CPU offlining.
+> That's a workaround way in rockchip hotplug code,
+> At least, we haven't a better way to solve it. Who know,
+> that maybe fixed by chip (hardware) in the future.
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>
+> ---
+>
+> Changes in v6:
+> - Fix the delay 1ms describing.
+> Series-changes: 5
+> - Fix the patch decription.
+> - Add the changelog.
+> Series-changes: 2
+> - As Kever points out, Fix the subject typo WFI/WFE.
+>
+>   arch/arm/mach-rockchip/platsmp.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
+>
+> diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+> index b379cc8..d629206 100644
+> --- a/arch/arm/mach-rockchip/platsmp.c
+> +++ b/arch/arm/mach-rockchip/platsmp.c
+> @@ -322,6 +322,13 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
+>   #ifdef CONFIG_HOTPLUG_CPU
+>   static int rockchip_cpu_kill(unsigned int cpu)
+>   {
+> +	/*
+> +	 * We need a delay here to ensure that the dying CPU can finish
+> +	 * executing v7_coherency_exit() and reach the WFI/WFE state
+> +	 * prior to having the power domain disabled.
+> +	 */
+> +	mdelay(1);
+> +
+>   	pmu_set_power_domain(0 + cpu, false);
+>   	return 1;
+>   }
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
