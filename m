@@ -1,47 +1,46 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 1/2] drm/bridge: dw-hdmi: support optional supply
- regulators
-Date: Fri, 12 Jun 2015 09:27:07 +0200
-Message-ID: <4099644.agHN3RgGum@diego>
-References: <4184159.j0iXe39dFB@phil> <3551826.dyCjorKhLA@diego>
- <20150609233618.GK7557@n2100.arm.linux.org.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH RESEND] PM / AVS: rockchip-io: depend on CONFIG_POWER_AVS
+Date: Fri, 12 Jun 2015 20:59:53 +0200
+Message-ID: <2264276.IR62hmqflk@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150609233618.GK7557@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dianders@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Cc: Kevin Hilman <khilman@kernel.org>, Nishanth Menon <nm@ti.com>, Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, amstan@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDEwLiBKdW5pIDIwMTUsIDAwOjM2OjE4IHNjaHJpZWIgUnVzc2VsbCBLaW5n
-IC0gQVJNIExpbnV4Ogo+IE9uIFdlZCwgSnVuIDEwLCAyMDE1IGF0IDAxOjI5OjQzQU0gKzAyMDAs
-IEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gQWxsdGhvdWdoIGZyb20gdGhlIGRpc2N1c3Npb24g
-YW5kIGV4cGxhbmF0aW9ucyBJJ3ZlIG5vdyBhbHNvIGdvdCB0aGUKPiA+ICJkb24ndAo+ID4gbWFr
-ZSBpdCB3b3JzZSIgZmVlbGluZywgc28gYW0gc29tZWhvdyByZWx1Y3RhbnQgdG8gYWRkIHN1cHBs
-aWVzIHRoYXQgYWxzbwo+ID4gbWlnaHQgZGVzY3JpYmUgdGhpcyBpbmFkZXF1YXRlbHkuCj4gPiAK
-PiA+IFRoZSBSb2NrY2hpcC1zcGVjaWZpYyBkb2N1bWVudGF0aW9uIG9ubHkgbGlzdHMgdGhlIHR3
-byBzdXBwbGllcyBhcwo+ID4gQVZERF8xVjAsIEFWRERfMVY4IHdpdGggYSBkZXNjcmlwdGlvbiBv
-ZiAiREMgc3VwcGx5IHZvbHRhZ2UgZm9yIEFuYWxvZwo+ID4gcGFydCBvZiBIRE1JIi4gVGhlIHN1
-cHBsaWVzIGFyZW4ndCBtZW50aW9uZWQgb3RoZXJ3aXNlIGF0IGFsbCwgc28gSSBndWVzcwo+ID4g
-SSdsbCBwb25kZXIgdGhpcyBhIGJpdCBtb3JlIGF0IGZpcnN0Lgo+IAo+IEFyZSB0aGV5IGNvbnRy
-b2xsYWJsZSBmcm9tIHNvZnR3YXJlIGF0IGFsbD8gIElmIHRoZXkgYXJlbid0LCB0aGVuCj4gSSdk
-IHN1Z2dlc3QgbGVhdmluZyB0aGVtIG91dCB1bnRpbCB3ZSBoYXZlIGEgZGlzdGluY3Rpb24gYmV0
-d2Vlbgo+IHRoZSBUeCBhbmQgUGh5IC0gbXVjaCBhcyB3ZSBkbyBmb3IgaU1YNi4KCnRoZXkgYXJl
-IHN1cHBsaWVkIGJ5IHRoZSBwbWljIHRoZSBzeXN0ZW0gdXNlcyAobmFtZWQgdmRkMTBfbGNkIGFu
-ZCB2ZGQxOF9sY2QgCmluIHRoZSBzb2MgbWFudWFscy9zY2hlbWF0aWNzKSAgYW5kIHN1cHBseSB0
-aGUgaW5kaXZpZHVhbCBvdXRwdXQgZW5jb2RlciAKYW5hbG9nIHBhcnRzIChoZG1pLCBlZHAsIGx2
-ZHMsIGV0YykuICBTbyBpZiB0aGVyZSBpcyBubyBvdXRwdXQgYXQgYWxsLCB0aGV5IApzaG91bGQg
-YmUgYWJsZSB0byBiZSB0dXJuZWQgb2ZmLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+The rockchip io-domain driver currently only depends on ARCH_ROCKCHIP
+itself. This makes it possible to select the power-domain driver, but
+not the POWER_AVS class and results in the iodomain-driver not getting
+build in this case.
+
+So add the additional dependency, which also results in the driver
+config option now being placed nicely into the AVS submenu.
+
+Fixes: 662a958638bd ("PM / AVS: rockchip-io: add driver handling Rockchip io domains")
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Kevin Hilman <khilman@linaro.org>
+---
+Kevin wrote when he Acked the patch: "Rafael, feel free to queue this
+up as a fix.  I don't have any other drivers/power/avs stuff queued up."
+
+ drivers/power/avs/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
+index 7f3d389..a67eeac 100644
+--- a/drivers/power/avs/Kconfig
++++ b/drivers/power/avs/Kconfig
+@@ -13,7 +13,7 @@ menuconfig POWER_AVS
+ 
+ config ROCKCHIP_IODOMAIN
+         tristate "Rockchip IO domain support"
+-        depends on ARCH_ROCKCHIP && OF
++        depends on POWER_AVS && ARCH_ROCKCHIP && OF
+         help
+           Say y here to enable support io domains on Rockchip SoCs. It is
+           necessary for the io domain setting of the SoC to match the
+-- 
+2.1.4
