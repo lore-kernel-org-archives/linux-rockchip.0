@@ -1,46 +1,137 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH RESEND] PM / AVS: rockchip-io: depend on CONFIG_POWER_AVS
-Date: Fri, 12 Jun 2015 20:59:53 +0200
-Message-ID: <2264276.IR62hmqflk@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [PATCH 1/2] pinctrl: rockchip: generalize perpin driver-strength setting
+Date: Fri, 12 Jun 2015 23:50:11 +0200
+Message-ID: <2322857.kblfsanYOB@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Cc: Kevin Hilman <khilman@kernel.org>, Nishanth Menon <nm@ti.com>, Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, amstan@chromium.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockchip io-domain driver currently only depends on ARCH_ROCKCHIP
-itself. This makes it possible to select the power-domain driver, but
-not the POWER_AVS class and results in the iodomain-driver not getting
-build in this case.
+The upcoming support for the RK3368 ARM64 SoC also supports perpin
+drive strength settings (at different register positions), so generalize
+the register and offset calculation to easily support this one too.
 
-So add the additional dependency, which also results in the driver
-config option now being placed nicely into the AVS submenu.
-
-Fixes: 662a958638bd ("PM / AVS: rockchip-io: add driver handling Rockchip io domains")
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Kevin Hilman <khilman@linaro.org>
 ---
-Kevin wrote when he Acked the patch: "Rafael, feel free to queue this
-up as a fix.  I don't have any other drivers/power/avs stuff queued up."
+ drivers/pinctrl/pinctrl-rockchip.c | 36 +++++++++++++++++++++++-------------
+ 1 file changed, 23 insertions(+), 13 deletions(-)
 
- drivers/power/avs/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
-index 7f3d389..a67eeac 100644
---- a/drivers/power/avs/Kconfig
-+++ b/drivers/power/avs/Kconfig
-@@ -13,7 +13,7 @@ menuconfig POWER_AVS
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index dee7d5f..70423ae 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -163,6 +163,9 @@ struct rockchip_pin_ctrl {
+ 	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
+ 				    int pin_num, struct regmap **regmap,
+ 				    int *reg, u8 *bit);
++	void	(*drv_calc_reg)(struct rockchip_pin_bank *bank,
++				    int pin_num, struct regmap **regmap,
++				    int *reg, u8 *bit);
+ };
  
- config ROCKCHIP_IODOMAIN
-         tristate "Rockchip IO domain support"
--        depends on ARCH_ROCKCHIP && OF
-+        depends on POWER_AVS && ARCH_ROCKCHIP && OF
-         help
-           Say y here to enable support io domains on Rockchip SoCs. It is
-           necessary for the io domain setting of the SoC to match the
+ struct rockchip_pin_config {
+@@ -581,7 +584,6 @@ static void rk3288_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
+ #define RK3288_DRV_BITS_PER_PIN		2
+ #define RK3288_DRV_PINS_PER_REG		8
+ #define RK3288_DRV_BANK_STRIDE		16
+-static int rk3288_drv_list[] = { 2, 4, 8, 12 };
+ 
+ static void rk3288_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+ 				    int pin_num, struct regmap **regmap,
+@@ -611,14 +613,19 @@ static void rk3288_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+ 	}
+ }
+ 
+-static int rk3288_get_drive(struct rockchip_pin_bank *bank, int pin_num)
++static int rockchip_perpin_drv_list[] = { 2, 4, 8, 12 };
++
++static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
++				     int pin_num)
+ {
++	struct rockchip_pinctrl *info = bank->drvdata;
++	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+ 	struct regmap *regmap;
+ 	int reg, ret;
+ 	u32 data;
+ 	u8 bit;
+ 
+-	rk3288_calc_drv_reg_and_bit(bank, pin_num, &regmap, &reg, &bit);
++	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
+ 
+ 	ret = regmap_read(regmap, reg, &data);
+ 	if (ret)
+@@ -627,24 +634,25 @@ static int rk3288_get_drive(struct rockchip_pin_bank *bank, int pin_num)
+ 	data >>= bit;
+ 	data &= (1 << RK3288_DRV_BITS_PER_PIN) - 1;
+ 
+-	return rk3288_drv_list[data];
++	return rockchip_perpin_drv_list[data];
+ }
+ 
+-static int rk3288_set_drive(struct rockchip_pin_bank *bank, int pin_num,
+-			    int strength)
++static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
++				     int pin_num, int strength)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
++	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+ 	struct regmap *regmap;
+ 	unsigned long flags;
+ 	int reg, ret, i;
+ 	u32 data, rmask;
+ 	u8 bit;
+ 
+-	rk3288_calc_drv_reg_and_bit(bank, pin_num, &regmap, &reg, &bit);
++	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
+ 
+ 	ret = -EINVAL;
+-	for (i = 0; i < ARRAY_SIZE(rk3288_drv_list); i++) {
+-		if (rk3288_drv_list[i] == strength) {
++	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list); i++) {
++		if (rockchip_perpin_drv_list[i] == strength) {
+ 			ret = i;
+ 			break;
+ 		}
+@@ -983,10 +991,11 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 			break;
+ 		case PIN_CONFIG_DRIVE_STRENGTH:
+ 			/* rk3288 is the first with per-pin drive-strength */
+-			if (info->ctrl->type != RK3288)
++			if (!info->ctrl->drv_calc_reg)
+ 				return -ENOTSUPP;
+ 
+-			rc = rk3288_set_drive(bank, pin - bank->pin_base, arg);
++			rc = rockchip_set_drive_perpin(bank,
++						pin - bank->pin_base, arg);
+ 			if (rc < 0)
+ 				return rc;
+ 			break;
+@@ -1041,10 +1050,10 @@ static int rockchip_pinconf_get(struct pinctrl_dev *pctldev, unsigned int pin,
+ 		break;
+ 	case PIN_CONFIG_DRIVE_STRENGTH:
+ 		/* rk3288 is the first with per-pin drive-strength */
+-		if (info->ctrl->type != RK3288)
++		if (!info->ctrl->drv_calc_reg)
+ 			return -ENOTSUPP;
+ 
+-		rc = rk3288_get_drive(bank, pin - bank->pin_base);
++		rc = rockchip_get_drive_perpin(bank, pin - bank->pin_base);
+ 		if (rc < 0)
+ 			return rc;
+ 
+@@ -2056,6 +2065,7 @@ static struct rockchip_pin_ctrl rk3288_pin_ctrl = {
+ 		.grf_mux_offset		= 0x0,
+ 		.pmu_mux_offset		= 0x84,
+ 		.pull_calc_reg		= rk3288_calc_pull_reg_and_bit,
++		.drv_calc_reg		= rk3288_calc_drv_reg_and_bit,
+ };
+ 
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
 -- 
 2.1.4
+
+
