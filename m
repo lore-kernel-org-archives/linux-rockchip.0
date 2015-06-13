@@ -1,12 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 0/8] clk: rockchip: add support for the clock-tree of the
- rk3368
-Date: Sat, 13 Jun 2015 18:22:14 +0200
-Message-ID: <1434212542-17145-1-git-send-email-heiko@sntech.de>
+Subject: [PATCH 1/8] clk: rockchip: protect register macros against multipart
+ values
+Date: Sat, 13 Jun 2015 18:22:15 +0200
+Message-ID: <1434212542-17145-2-git-send-email-heiko@sntech.de>
+References: <1434212542-17145-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1434212542-17145-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,52 +22,58 @@ To: mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series adds support for the clock controller of rk3368
-ARM64 socs.
+The macros calculate the correct offset from the id in the parameter.
+If this parameter does not consist of a single number, the calculation
+will return wrong registers in the best case or create unaligned accesses
+in the worst case. So protect the calculations against such values.
 
-The first 2 patches are fixes for small issues I found while
-building the clocktree. Both do not harm the functionality
-of the older socs, as there is no camera interface driver in
-them anyway and the issue with the defines only surfaced on
-the rk3368.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/clk/rockchip/clk.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-Patch 3 then adds a new definition for a branch-type.
-
-Some clocks (mainly the hsadc and camera interfaces) have a phase
-inverter connected to the clock that makes it possible to adjust
-the clock phase by 180 degrees. Patches 4 and 5 finally add
-support for these inverters and add the currently missing
-definitions to the already present clock drivers.
-
-Patches 6, 7 and 8 finally add the shared dt-binding header and
-the rk3368 clock tree itself. The cpu-clocks in there where
-tested sucessfully with the big_little_cpufreq driver.
-
-
-Heiko Stuebner (8):
-  clk: rockchip: protect register macros against multipart values
-  clk: rockchip: fix faulty vip parent name on rk3288
-  clk: rockchip: add COMPOSITE_NOGATE_DIVTBL variant
-  clk: rockchip: add support for phase inverters
-  clk: rockchip: define the inverters of rk3066/rk3188 and rk3288
-  dt-bindings: add documentation of rk3668 clock controller
-  clk: rockchip: add dt-binding header for rk3368
-  clk: rockchip: add rk3368 clock controller
-
- .../bindings/clock/rockchip,rk3368-cru.txt         |  61 ++
- drivers/clk/rockchip/Makefile                      |   2 +
- drivers/clk/rockchip/clk-inverter.c                | 126 +++
- drivers/clk/rockchip/clk-rk3188.c                  |   9 +-
- drivers/clk/rockchip/clk-rk3288.c                  |  11 +-
- drivers/clk/rockchip/clk-rk3368.c                  | 881 +++++++++++++++++++++
- drivers/clk/rockchip/clk.c                         |   7 +
- drivers/clk/rockchip/clk.h                         |  72 +-
- include/dt-bindings/clock/rk3368-cru.h             | 379 +++++++++
- 9 files changed, 1536 insertions(+), 12 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-inverter.c
- create mode 100644 drivers/clk/rockchip/clk-rk3368.c
- create mode 100644 include/dt-bindings/clock/rk3368-cru.h
-
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 6b09267..92edb5f 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -31,22 +31,22 @@
+ 		((val) << (shift) | (mask) << ((shift) + 16))
+ 
+ /* register positions shared by RK2928, RK3066 and RK3188 */
+-#define RK2928_PLL_CON(x)		(x * 0x4)
++#define RK2928_PLL_CON(x)		((x) * 0x4)
+ #define RK2928_MODE_CON		0x40
+-#define RK2928_CLKSEL_CON(x)	(x * 0x4 + 0x44)
+-#define RK2928_CLKGATE_CON(x)	(x * 0x4 + 0xd0)
++#define RK2928_CLKSEL_CON(x)	((x) * 0x4 + 0x44)
++#define RK2928_CLKGATE_CON(x)	((x) * 0x4 + 0xd0)
+ #define RK2928_GLB_SRST_FST		0x100
+ #define RK2928_GLB_SRST_SND		0x104
+-#define RK2928_SOFTRST_CON(x)	(x * 0x4 + 0x110)
++#define RK2928_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
+ #define RK2928_MISC_CON		0x134
+ 
+ #define RK3288_PLL_CON(x)		RK2928_PLL_CON(x)
+ #define RK3288_MODE_CON			0x50
+-#define RK3288_CLKSEL_CON(x)		(x * 0x4 + 0x60)
+-#define RK3288_CLKGATE_CON(x)		(x * 0x4 + 0x160)
++#define RK3288_CLKSEL_CON(x)		((x) * 0x4 + 0x60)
++#define RK3288_CLKGATE_CON(x)		((x) * 0x4 + 0x160)
+ #define RK3288_GLB_SRST_FST		0x1b0
+ #define RK3288_GLB_SRST_SND		0x1b4
+-#define RK3288_SOFTRST_CON(x)		(x * 0x4 + 0x1b8)
++#define RK3288_SOFTRST_CON(x)		((x) * 0x4 + 0x1b8)
+ #define RK3288_MISC_CON			0x1e8
+ #define RK3288_SDMMC_CON0		0x200
+ #define RK3288_SDMMC_CON1		0x204
+@@ -67,7 +67,7 @@ enum rockchip_pll_type {
+ 	.nr = _nr,				\
+ 	.nf = _nf,				\
+ 	.no = _no,				\
+-	.bwadj = (_nf >> 1),			\
++	.bwadj = ((_nf) >> 1),			\
+ }
+ 
+ #define RK3066_PLL_RATE_BWADJ(_rate, _nr, _nf, _no, _bw)	\
 -- 
 2.1.4
