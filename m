@@ -1,8 +1,7 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 5/8] clk: rockchip: define the inverters of rk3066/rk3188 and
- rk3288
-Date: Sat, 13 Jun 2015 18:22:19 +0200
-Message-ID: <1434212542-17145-6-git-send-email-heiko@sntech.de>
+Subject: [PATCH 3/8] clk: rockchip: add COMPOSITE_NOGATE_DIVTBL variant
+Date: Sat, 13 Jun 2015 18:22:17 +0200
+Message-ID: <1434212542-17145-4-git-send-email-heiko@sntech.de>
 References: <1434212542-17145-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,90 +21,44 @@ To: mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Both soc series' have inverters on the hsadc and camera interface clock
-paths. So define them using the newly added inverter type.
+A clock branch consisting of a mux and divider with non-standard
+divider values.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3188.c | 9 ++++++++-
- drivers/clk/rockchip/clk-rk3288.c | 7 ++++++-
- 2 files changed, 14 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk.h | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index e4f9d47..a9ab4f9 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -235,6 +235,7 @@ static struct rockchip_pll_clock rk3188_pll_clks[] __initdata = {
- #define MFLAGS CLK_MUX_HIWORD_MASK
- #define DFLAGS CLK_DIVIDER_HIWORD_MASK
- #define GFLAGS (CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE)
-+#define IFLAGS ROCKCHIP_INVERTER_HIWORD_MASK
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 92edb5f..501f02e 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -308,6 +308,26 @@ struct rockchip_clk_branch {
+ 		.gate_offset	= -1,				\
+ 	}
  
- /* 2 ^ (val + 1) */
- static struct clk_div_table div_core_peri_t[] = {
-@@ -310,6 +311,8 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 
- 	GATE(0, "pclkin_cif0", "ext_cif0", 0,
- 			RK2928_CLKGATE_CON(3), 3, GFLAGS),
-+	INVERTER(0, "pclk_cif0", "pclkin_cif0",
-+			RK2928_CLKSEL_CON(30), 8, IFLAGS),
- 
- 	/*
- 	 * the 480m are generated inside the usb block from these clocks,
-@@ -334,8 +337,10 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	COMPOSITE_FRAC(0, "hsadc_frac", "hsadc_src", 0,
- 			RK2928_CLKSEL_CON(23), 0,
- 			RK2928_CLKGATE_CON(2), 7, GFLAGS),
--	MUX(SCLK_HSADC, "sclk_hsadc", mux_sclk_hsadc_p, 0,
-+	MUX(0, "sclk_hsadc_out", mux_sclk_hsadc_p, 0,
- 			RK2928_CLKSEL_CON(22), 4, 2, MFLAGS),
-+	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
-+			RK2928_CLKSEL_CON(22), 7, IFLAGS),
- 
- 	COMPOSITE_NOMUX(SCLK_SARADC, "sclk_saradc", "xin24m", 0,
- 			RK2928_CLKSEL_CON(24), 8, 8, DFLAGS,
-@@ -557,6 +562,8 @@ static struct rockchip_clk_branch rk3066a_clk_branches[] __initdata = {
- 
- 	GATE(0, "pclkin_cif1", "ext_cif1", 0,
- 			RK2928_CLKGATE_CON(3), 4, GFLAGS),
-+	INVERTER(0, "pclk_cif1", "pclkin_cif1",
-+			RK2928_CLKSEL_CON(30), 12, IFLAGS),
- 
- 	COMPOSITE(0, "aclk_gpu_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK2928_CLKSEL_CON(33), 8, 1, MFLAGS, 0, 5, DFLAGS,
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 6f0259f..a0c639f 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -223,6 +223,7 @@ static struct clk_div_table div_hclk_cpu_t[] = {
- #define MFLAGS CLK_MUX_HIWORD_MASK
- #define DFLAGS CLK_DIVIDER_HIWORD_MASK
- #define GFLAGS (CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE)
-+#define IFLAGS ROCKCHIP_INVERTER_HIWORD_MASK
- 
- static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	/*
-@@ -592,8 +593,10 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE(0, "hsadc_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK3288_CLKSEL_CON(22), 0, 1, MFLAGS, 8, 8, DFLAGS,
- 			RK3288_CLKGATE_CON(2), 6, GFLAGS),
--	MUX(SCLK_HSADC, "sclk_hsadc_out", mux_hsadcout_p, 0,
-+	MUX(0, "sclk_hsadc_out", mux_hsadcout_p, 0,
- 			RK3288_CLKSEL_CON(22), 4, 1, MFLAGS),
-+	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
-+			RK3288_CLKSEL_CON(22), 7, IFLAGS),
- 
- 	GATE(0, "jtag", "ext_jtag", 0,
- 			RK3288_CLKGATE_CON(4), 14, GFLAGS),
-@@ -768,7 +771,9 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	 */
- 
- 	GATE(0, "pclk_vip_in", "ext_vip", 0, RK3288_CLKGATE_CON(16), 0, GFLAGS),
-+	INVERTER(0, "pclk_vip", "pclk_vip_in", RK3288_CLKSEL_CON(29), 4, IFLAGS),
- 	GATE(0, "pclk_isp_in", "ext_isp", 0, RK3288_CLKGATE_CON(16), 3, GFLAGS),
-+	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
- };
- 
- static const char *const rk3288_critical_clocks[] __initconst = {
++#define COMPOSITE_NOGATE_DIVTBL(_id, cname, pnames, f, mo, ms,	\
++				mw, mf, ds, dw, df, dt)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_composite,		\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= mo,				\
++		.mux_shift	= ms,				\
++		.mux_width	= mw,				\
++		.mux_flags	= mf,				\
++		.div_shift	= ds,				\
++		.div_width	= dw,				\
++		.div_flags	= df,				\
++		.div_table	= dt,				\
++		.gate_offset	= -1,				\
++	}
++
+ #define COMPOSITE_FRAC(_id, cname, pname, f, mo, df, go, gs, gf)\
+ 	{							\
+ 		.id		= _id,				\
 -- 
 2.1.4
