@@ -1,44 +1,53 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 3/3] ARM: dts: Add RK3288 efuse node
-Date: Tue, 16 Jun 2015 15:27:45 +0800
-Message-ID: <1434439665-27781-4-git-send-email-wxt@rock-chips.com>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Subject: Re: [PATCH v2 0/3] Add the efuse driver on rockchip platform
+Date: Tue, 16 Jun 2015 10:52:58 +0200
+Message-ID: <557FE3EA.4000306@i2se.com>
 References: <1434439665-27781-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1434439665-27781-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, jay.xu@rock-chips.com, linus.walleij@linaro.org, galak@codeaurora.org, linux-kernel@vger.kernel.org, ijc+devicetree@hellion.org.uk, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, matthias.bgg@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, wxt@rock-chips.com
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, mark.rutland@arm.com, devicetree@vger.kernel.org, linux@arm.linux.org.uk, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, linus.walleij@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, matthias.bgg@gmail.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the efuse node on RK3288, we can get some information
-when enable the efuse driver.
-e.g.: the CPU version, leakage.....
+Hi Caesar,
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+[add Maxime and Srinivas]
 
----
+Am 16.06.2015 um 09:27 schrieb Caesar Wang:
+> The original driver is uploaded by Jianqun.
+> Here is his patchs:
+>     https://patchwork.kernel.org/patch/5410341/
+>     https://patchwork.kernel.org/patch/5410351/
+>
+> Jianqun, nevermind!
+> I check-pick it and re-upload the driver for the upstream.
+> e.g.:
+>     Tested by on minnie board.(kernel-4.1-rc8)
+>     cd /sys/devices/platform/ffb40000.efuse
+>     localhost ffb40000.efuse # cat cpu_leakage_show
+>     cpu_version_show
+>     The results:
+>             19
+>             2
+>
+> Changes in v2:
+> - Change the document decription.
+> - Move the efuse driver into driver/soc/vendor.
+> - update the efuse driver.
+> - Add the dts node on RK3288.
+>
+>
 
-Changes in v2:
-- Add the dts node on RK3288.
+i want to mention that there is a upcoming new framework suitable for
+efuse drivers:
 
- arch/arm/boot/dts/rk3288.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+https://lkml.org/lkml/2015/5/21/643
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 165968d..423355e 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -691,6 +691,11 @@
- 		};
- 	};
- 
-+	efuse: efuse@ffb40000 {
-+		compatible = "rockchip,rk3066-efuse";
-+		reg = <0xffb40000 0x10000>;
-+	};
-+
- 	gic: interrupt-controller@ffc01000 {
- 		compatible = "arm,gic-400";
- 		interrupt-controller;
--- 
-1.9.1
+Unfortunately i don't know the current development state.
+
+Regards
+Stefan
