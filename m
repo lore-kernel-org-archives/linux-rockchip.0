@@ -1,79 +1,34 @@
-From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: Add DMA tx and rx channels in UART interfaces for RK3288 SoCs
-Date: Tue, 16 Jun 2015 17:19:26 +0000
-Message-ID: <1434475166-30338-1-git-send-email-romain.perier@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/2] pinctrl: rockchip: generalize perpin driver-strength setting
+Date: Wed, 17 Jun 2015 10:20:32 +0200
+Message-ID: <CACRpkda7U++34xSi-ePb4g7tZLde80YSaooY6WHcM=n097ZiGg@mail.gmail.com>
+References: <2322857.kblfsanYOB@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <2322857.kblfsanYOB@diego>
+Sender: linux-gpio-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This enable DMA capability for the corresponding UART interfaces, also it removes
-warning "ttyS%d - Failed to request dma" from kernel logs.
+On Fri, Jun 12, 2015 at 11:50 PM, Heiko St=C3=BCbner <heiko@sntech.de> =
+wrote:
 
-Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
+> The upcoming support for the RK3368 ARM64 SoC also supports perpin
+> drive strength settings (at different register positions), so general=
+ize
+> the register and offset calculation to easily support this one too.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Changes since v1 ("[PATCH] ARM: dts: rockchip: Add dmac_bus rx and tx for uart2"):
-	- Add DMA tx and rx channels for all UART interfaces
-	- Rename commit summary
+Patch applied.
 
- arch/arm/boot/dts/rk3288.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 22316d0..1996452 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -359,6 +359,8 @@
- 		clock-names = "baudclk", "apb_pclk";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&uart0_xfer>;
-+		dmas = <&dmac_peri 1>, <&dmac_peri 2>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -372,6 +374,8 @@
- 		clock-names = "baudclk", "apb_pclk";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&uart1_xfer>;
-+		dmas = <&dmac_peri 3>, <&dmac_peri 4>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -385,6 +389,8 @@
- 		clock-names = "baudclk", "apb_pclk";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&uart2_xfer>;
-+		dmas = <&dmac_bus_s 4>, <&dmac_bus_s 5>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -398,6 +404,8 @@
- 		clock-names = "baudclk", "apb_pclk";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&uart3_xfer>;
-+		dmas = <&dmac_peri 7>, <&dmac_peri 8>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
-@@ -411,6 +419,8 @@
- 		clock-names = "baudclk", "apb_pclk";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&uart4_xfer>;
-+		dmas = <&dmac_peri 9>, <&dmac_peri 10>;
-+		dma-names = "tx", "rx";
- 		status = "disabled";
- 	};
- 
--- 
-1.9.1
-
+Yours,
+Linus Walleij
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
+n
+the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
