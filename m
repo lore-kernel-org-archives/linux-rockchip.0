@@ -1,78 +1,111 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 0/9] clk: rockchip: add support for the clock-tree of the
- rk3368
-Date: Thu, 18 Jun 2015 16:18:27 +0200
-Message-ID: <1434637116-17124-1-git-send-email-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 6/9] clk: rockchip: define the inverters of rk3066/rk3188
+ and rk3288
+Date: Thu, 18 Jun 2015 16:18:33 +0200
+Message-ID: <1434637116-17124-7-git-send-email-heiko@sntech.de>
+References: <1434637116-17124-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1434637116-17124-1-git-send-email-heiko@sntech.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: mturquette@linaro.org, sboyd@codeaurora.org
+Cc: linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series adds support for the clock controller of rk3368
-ARM64 socs.
+Both soc series' have inverters on the hsadc and camera interface clock
+paths. So define them using the newly added inverter type.
 
-The first 3 patches are fixes for small issues I found while
-building the clocktree. The first one fixes an issue if a rmii
-phy is used on the rk3288 and the later two do not harm the
-functionality of the older socs, as there is no camera interface
-driver in them anyway and the issue with the defines only surfaced
-on the rk3368.
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3188.c | 9 ++++++++-
+ drivers/clk/rockchip/clk-rk3288.c | 7 ++++++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
-Patch 4 then adds a new definition for a branch-type.
-
-Some clocks (mainly the hsadc and camera interfaces) have a phase
-inverter connected to the clock that makes it possible to adjust
-the clock phase by 180 degrees. Patches 5 and 6 finally add
-support for these inverters and add the currently missing
-definitions to the already present clock drivers.
-
-Patches 7, 8 and 9 finally add the shared dt-binding header and
-the rk3368 clock tree itself. The cpu-clocks in there where
-tested sucessfully with the big_little_cpufreq driver.
-
-changes since v1:
-- add CLK_SET_RATE_PARENT to sclk_mac to provide sane rates
-  when using a rmii phy with soc-side clock generation.
-  Both as fix for the 3288 and in the newly added rk3368.
-
-
-Heiko Stuebner (9):
-  clk: rockchip: rk3288: add CLK_SET_RATE_PARENT to sclk_mac
-  clk: rockchip: fix faulty vip parent name on rk3288
-  clk: rockchip: protect register macros against multipart values
-  clk: rockchip: add COMPOSITE_NOGATE_DIVTBL variant
-  clk: rockchip: add support for phase inverters
-  clk: rockchip: define the inverters of rk3066/rk3188 and rk3288
-  dt-bindings: add documentation of rk3668 clock controller
-  clk: rockchip: add dt-binding header for rk3368
-  clk: rockchip: add rk3368 clock controller
-
- .../bindings/clock/rockchip,rk3368-cru.txt         |  61 ++
- drivers/clk/rockchip/Makefile                      |   2 +
- drivers/clk/rockchip/clk-inverter.c                | 126 +++
- drivers/clk/rockchip/clk-rk3188.c                  |   9 +-
- drivers/clk/rockchip/clk-rk3288.c                  |  13 +-
- drivers/clk/rockchip/clk-rk3368.c                  | 881 +++++++++++++++++++++
- drivers/clk/rockchip/clk.c                         |   7 +
- drivers/clk/rockchip/clk.h                         |  72 +-
- include/dt-bindings/clock/rk3368-cru.h             | 379 +++++++++
- 9 files changed, 1537 insertions(+), 13 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-inverter.c
- create mode 100644 drivers/clk/rockchip/clk-rk3368.c
- create mode 100644 include/dt-bindings/clock/rk3368-cru.h
-
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index e4f9d47..a9ab4f9 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -235,6 +235,7 @@ static struct rockchip_pll_clock rk3188_pll_clks[] __initdata = {
+ #define MFLAGS CLK_MUX_HIWORD_MASK
+ #define DFLAGS CLK_DIVIDER_HIWORD_MASK
+ #define GFLAGS (CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE)
++#define IFLAGS ROCKCHIP_INVERTER_HIWORD_MASK
+ 
+ /* 2 ^ (val + 1) */
+ static struct clk_div_table div_core_peri_t[] = {
+@@ -310,6 +311,8 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+ 
+ 	GATE(0, "pclkin_cif0", "ext_cif0", 0,
+ 			RK2928_CLKGATE_CON(3), 3, GFLAGS),
++	INVERTER(0, "pclk_cif0", "pclkin_cif0",
++			RK2928_CLKSEL_CON(30), 8, IFLAGS),
+ 
+ 	/*
+ 	 * the 480m are generated inside the usb block from these clocks,
+@@ -334,8 +337,10 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+ 	COMPOSITE_FRAC(0, "hsadc_frac", "hsadc_src", 0,
+ 			RK2928_CLKSEL_CON(23), 0,
+ 			RK2928_CLKGATE_CON(2), 7, GFLAGS),
+-	MUX(SCLK_HSADC, "sclk_hsadc", mux_sclk_hsadc_p, 0,
++	MUX(0, "sclk_hsadc_out", mux_sclk_hsadc_p, 0,
+ 			RK2928_CLKSEL_CON(22), 4, 2, MFLAGS),
++	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
++			RK2928_CLKSEL_CON(22), 7, IFLAGS),
+ 
+ 	COMPOSITE_NOMUX(SCLK_SARADC, "sclk_saradc", "xin24m", 0,
+ 			RK2928_CLKSEL_CON(24), 8, 8, DFLAGS,
+@@ -557,6 +562,8 @@ static struct rockchip_clk_branch rk3066a_clk_branches[] __initdata = {
+ 
+ 	GATE(0, "pclkin_cif1", "ext_cif1", 0,
+ 			RK2928_CLKGATE_CON(3), 4, GFLAGS),
++	INVERTER(0, "pclk_cif1", "pclkin_cif1",
++			RK2928_CLKSEL_CON(30), 12, IFLAGS),
+ 
+ 	COMPOSITE(0, "aclk_gpu_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK2928_CLKSEL_CON(33), 8, 1, MFLAGS, 0, 5, DFLAGS,
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index df9dc96..a8bad7d 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -223,6 +223,7 @@ static struct clk_div_table div_hclk_cpu_t[] = {
+ #define MFLAGS CLK_MUX_HIWORD_MASK
+ #define DFLAGS CLK_DIVIDER_HIWORD_MASK
+ #define GFLAGS (CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE)
++#define IFLAGS ROCKCHIP_INVERTER_HIWORD_MASK
+ 
+ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	/*
+@@ -592,8 +593,10 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "hsadc_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3288_CLKSEL_CON(22), 0, 1, MFLAGS, 8, 8, DFLAGS,
+ 			RK3288_CLKGATE_CON(2), 6, GFLAGS),
+-	MUX(SCLK_HSADC, "sclk_hsadc_out", mux_hsadcout_p, 0,
++	MUX(0, "sclk_hsadc_out", mux_hsadcout_p, 0,
+ 			RK3288_CLKSEL_CON(22), 4, 1, MFLAGS),
++	INVERTER(SCLK_HSADC, "sclk_hsadc", "sclk_hsadc_out",
++			RK3288_CLKSEL_CON(22), 7, IFLAGS),
+ 
+ 	GATE(0, "jtag", "ext_jtag", 0,
+ 			RK3288_CLKGATE_CON(4), 14, GFLAGS),
+@@ -768,7 +771,9 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	 */
+ 
+ 	GATE(0, "pclk_vip_in", "ext_vip", 0, RK3288_CLKGATE_CON(16), 0, GFLAGS),
++	INVERTER(0, "pclk_vip", "pclk_vip_in", RK3288_CLKSEL_CON(29), 4, IFLAGS),
+ 	GATE(0, "pclk_isp_in", "ext_isp", 0, RK3288_CLKGATE_CON(16), 3, GFLAGS),
++	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
+ };
+ 
+ static const char *const rk3288_critical_clocks[] __initconst = {
 -- 
 2.1.4
