@@ -1,91 +1,44 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH 1/6] drm/rockchip: import dma_buf to gem
-Date: Thu, 18 Jun 2015 11:57:15 +0100
-Message-ID: <20150618105715.GJ7557@n2100.arm.linux.org.uk>
-References: <1434613770-6608-1-git-send-email-mark.yao@rock-chips.com>
- <1434613770-6608-2-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1434613770-6608-2-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 1/9] clk: rockchip: rk3288: add CLK_SET_RATE_PARENT to sclk_mac
+Date: Thu, 18 Jun 2015 16:18:28 +0200
+Message-ID: <1434637116-17124-2-git-send-email-heiko@sntech.de>
+References: <1434637116-17124-1-git-send-email-heiko@sntech.de>
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <1434637116-17124-1-git-send-email-heiko@sntech.de>
+Sender: stable-owner@vger.kernel.org
+To: mturquette@linaro.org, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, stable@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBKdW4gMTgsIDIwMTUgYXQgMDM6NDk6MjVQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-Cj4gV2Ugd2FudCB0byBkaXNwbGF5IGEgYnVmZmVyIGFsbG9jYXRlZCBieSBvdGhlciBkcml2ZXIs
-IG5lZWQgaW1wb3J0Cj4gdGhlIGJ1ZmZlciB0byBnZW0uCj4gCj4gU2lnbmVkLW9mZi1ieTogTWFy
-ayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgICAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAgIDQ1ICsrKysrKysrKysrKysrKysrKysrKysr
-KystLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oIHwgICAg
-NSArKy0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA0NyBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygt
-KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IGlu
-ZGV4IDM5NjIxNzYuLjkwMDFhOTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZHJ2LmMKPiBAQCAtMjg3LDYgKzI4Nyw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJt
-X2RyaXZlciByb2NrY2hpcF9kcm1fZHJpdmVyID0gewo+ICAJLnByaW1lX2hhbmRsZV90b19mZAk9
-IGRybV9nZW1fcHJpbWVfaGFuZGxlX3RvX2ZkLAo+ICAJLnByaW1lX2ZkX3RvX2hhbmRsZQk9IGRy
-bV9nZW1fcHJpbWVfZmRfdG9faGFuZGxlLAo+ICAJLmdlbV9wcmltZV9pbXBvcnQJPSBkcm1fZ2Vt
-X3ByaW1lX2ltcG9ydCwKPiArCS5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlID0gcm9ja2NoaXBf
-Z2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPiAgCS5nZW1fcHJpbWVfZXhwb3J0CT0gZHJtX2dl
-bV9wcmltZV9leHBvcnQsCj4gIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9IHJvY2tjaGlwX2dl
-bV9wcmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2VtX3ByaW1lX3ZtYXAJCT0gcm9ja2NoaXBfZ2Vt
-X3ByaW1lX3ZtYXAsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dl
-bS5jCj4gaW5kZXggZWIyMjgyYy4uMmUzMGUyMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0xOCw2ICsxOCw3IEBACj4gICNpbmNsdWRl
-IDxkcm0vZHJtX3ZtYV9tYW5hZ2VyLmg+Cj4gIAo+ICAjaW5jbHVkZSA8bGludXgvZG1hLWF0dHJz
-Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9kbWEtYnVmLmg+Cj4gIAo+ICAjaW5jbHVkZSAicm9ja2No
-aXBfZHJtX2Rydi5oIgo+ICAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX2dlbS5oIgo+IEBAIC0xMDUs
-NiArMTA2LDM4IEBAIGludCByb2NrY2hpcF9nZW1fbW1hcChzdHJ1Y3QgZmlsZSAqZmlscCwgc3Ry
-dWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4gIAlyZXR1cm4gcmV0Owo+ICB9Cj4gIAo+ICtzdHJ1
-Y3QgZHJtX2dlbV9vYmplY3QgKgo+ICtyb2NrY2hpcF9nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxl
-KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCj4gKwkJCQkgICBzdHJ1Y3QgZG1hX2J1Zl9hdHRhY2ht
-ZW50ICphdHRhY2gsCj4gKwkJCQkgICBzdHJ1Y3Qgc2dfdGFibGUgKnNndCkKPiArewo+ICsJc3Ry
-dWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iajsKPiArCXN0cnVjdCBkcm1fZ2VtX29iamVj
-dCAqb2JqOwo+ICsJaW50IHJldDsKPiArCj4gKwlya19vYmogPSBremFsbG9jKHNpemVvZigqcmtf
-b2JqKSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoIXJrX29iaikKPiArCQlyZXR1cm4gRVJSX1BUUigt
-RU5PTUVNKTsKPiArCj4gKwlvYmogPSAmcmtfb2JqLT5iYXNlOwo+ICsKPiArCWRybV9nZW1fcHJp
-dmF0ZV9vYmplY3RfaW5pdChkcm0sIG9iaiwgYXR0YWNoLT5kbWFidWYtPnNpemUpOwo+ICsKPiAr
-CWlmICghZG1hX21hcF9zZyhkcm0tPmRldiwgc2d0LT5zZ2wsIHNndC0+bmVudHMsIERNQV9UT19E
-RVZJQ0UpKSB7Cj4gKwkJcmV0ID0gLUVOT01FTTsKPiArCQlnb3RvIGVycl9mcmVlX29iajsKPiAr
-CX0KPiArCXJrX29iai0+ZG1hX2FkZHIgPSBzZ19kbWFfYWRkcmVzcyhzZ3QtPnNnbCk7Cj4gKwly
-a19vYmotPnNndCA9IHNndDsKPiArCW9iai0+c2l6ZSA9IHNnX2RtYV9sZW4oc2d0LT5zZ2wpOwoK
-VGhpcyBpcyB3cm9uZy4KCkZpcnN0LCBpZiB5b3UgY2FuIG9ubHkgY29wZSB3aXRoIGEgc2luZ2xl
-IHNjYXR0ZXJsaXN0IGVudHJ5LCB5b3UgbmVlZCB0bwplbmZvcmNlIHRoYXQuICBZb3UgY2FuIGRv
-IHRoYXQgaW4geW91ciBnZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlKCkgbWV0aG9kCmJ5IGNoZWNr
-aW5nIHNndC0+bmVudHMuCgpTZWNvbmRseSwgeW91J3JlIG1hcHBpbmcgYW4gYWxyZWFkeSBtYXBw
-ZWQgc2NhdHRlcmxpc3QgLSBzY2F0dGVybGlzdHMKYXJlIG1hcHBlZCBieSB0aGUgZXhwb3J0ZXIg
-aW5zaWRlIGRtYV9idWZfbWFwX2F0dGFjaG1lbnQoKSBmb3IgeW91cgpkZXZpY2UuCgpUaGlyZGx5
-LCBJIGhhdGUgZHJtX2dlbV9wcmltZV9pbXBvcnQoKSBiZWluZyB1c2VkIG9uIEFSTS4uLiBpdCBm
-b3JjZXMKZHJpdmVycyB0byBkbyBzb21ldGhpbmcgdmVyeSBidWdneTogdGhlIERNQSBidWZmZXIg
-aXMgbWFwcGVkIGZvciBETUEKd2hlbiB0aGUgYnVmZmVyIGlzIGltcG9ydGVkLiAgSWYgdGhlIGJ1
-ZmZlciBpcyBhIHdyaXRlLWNvbWJpbmUgb3IgY2FjaGVkCmJ1ZmZlciwgd3JpdGVzIHRvIHRoZSBi
-dWZmZXIgYWZ0ZXIgdGhlIGltcG9ydCB3aWxsIG5vdCBiZWNvbWUgdmlzaWJsZSB0bwp0aGUgZGlz
-cGxheSBoYXJkd2FyZSB1bnRpbCBzb21ldGltZSBsYXRlciAod2hlbiB0aGV5J3JlIGV2aWN0ZWQg
-ZnJvbSB0aGUKY2FjaGVzIGFuZC9vciBwdXNoZWQgb3V0IG9mIHRoZSBidXMgc3RydWN0dXJlLikg
-IFRoZSBETUEgbWFwcGluZyBzaG91bGQKYmUgcGVyZm9ybWVkIGFzIGNsb3NlIHRvIHRoZSBzdGFy
-dCBvZiBETUEgYXMgcG9zc2libGUuICBIb3dldmVyLCB0aGlzIGlzCmEgbG9uZy1zdGFuZGluZyBp
-c3N1ZSBJIGhhdmUgd2l0aCBkbWFfYnVmIGl0c2VsZiBhbmQgaXMgbm90IHNvbWV0aGluZyB5b3UK
-c2hvdWxkIGJlIHRvbyBjb25jZXJuZWQgd2l0aCBpbiB5b3VyIHBhdGNoLiAgSnVzdCBiZWFyIGl0
-IGluIG1pbmQgaWYgeW91CnN0YXJ0IHRvIHNlZSBjb3JydXB0aW9uIG9mIGltcG9ydGVkIGJ1ZmZl
-cnMgLSB0aGUgYW5zd2VyIGlzIG5vdCBtb3JlCmRtYV9tYXBfc2coKSBjYWxscywgYnV0IHRvIGdl
-dCBkbWFfYnVmIGZpeGVkLgoKLS0gCkZUVEMgYnJvYWRiYW5kIGZvciAwLjhtaWxlIGxpbmU6IGN1
-cnJlbnRseSBhdCAxMC41TWJwcyBkb3duIDQwMGticHMgdXAKYWNjb3JkaW5nIHRvIHNwZWVkdGVz
-dC5uZXQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+The dwmac ethernet controller on the rk3288 supports phys connected
+via rgmii and rmii. With rgmii phys it is expected that the mac clock
+is provided externally while with rmii phys the clock can be external
+but also generated from the plls. In the later case it of course needs
+be at 50MHz, which gets set from the dwmac_rk driver.
+As most devices use a rgmii phy it never surfaced so far that the mac
+clk mux, doesn't go up one lever to the pll clock in the rmii case with
+internal clock generation, as it is missing the CLK_SET_RATE_PARENT flag,
+and thus will not set the correct frequency in most cases.
+
+Fixes: b9e4ba541607 ("clk: rockchip: add clock controller for rk3288")
+Cc: stable@vger.kernel.org
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3288.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 4f817ed..0211162 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -578,7 +578,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "mac_pll_src", mux_pll_src_npll_cpll_gpll_p, 0,
+ 			RK3288_CLKSEL_CON(21), 0, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK3288_CLKGATE_CON(2), 5, GFLAGS),
+-	MUX(SCLK_MAC, "mac_clk", mux_mac_p, 0,
++	MUX(SCLK_MAC, "mac_clk", mux_mac_p, CLK_SET_RATE_PARENT,
+ 			RK3288_CLKSEL_CON(21), 4, 1, MFLAGS),
+ 	GATE(SCLK_MACREF_OUT, "sclk_macref_out", "mac_clk", 0,
+ 			RK3288_CLKGATE_CON(5), 3, GFLAGS),
+-- 
+2.1.4
