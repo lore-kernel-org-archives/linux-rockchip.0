@@ -1,64 +1,49 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/6] drm/rockchip: import dma_buf to gem
-Date: Fri, 19 Jun 2015 10:50:54 +0800
-Message-ID: <5583838E.7080001@rock-chips.com>
-References: <1434613770-6608-1-git-send-email-mark.yao@rock-chips.com>
- <1434613770-6608-2-git-send-email-mark.yao@rock-chips.com>
- <20150618105715.GJ7557@n2100.arm.linux.org.uk>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: fix rk3288 watchdog irq
+Date: Fri, 19 Jun 2015 16:31:14 +0200
+Message-ID: <1961157.dsytR1KvKa@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150618105715.GJ7557@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhhbmtzIFJ1c3NlbGwKT24gMjAxNeW5tDA25pyIMTjml6UgMTg6NTcsIFJ1c3NlbGwgS2luZyAt
-IEFSTSBMaW51eCB3cm90ZToKPiBUaGlzIGlzIHdyb25nLgo+Cj4gRmlyc3QsIGlmIHlvdSBjYW4g
-b25seSBjb3BlIHdpdGggYSBzaW5nbGUgc2NhdHRlcmxpc3QgZW50cnksIHlvdSBuZWVkIHRvCj4g
-ZW5mb3JjZSB0aGF0LiAgWW91IGNhbiBkbyB0aGF0IGluIHlvdXIgZ2VtX3ByaW1lX2ltcG9ydF9z
-Z190YWJsZSgpIG1ldGhvZAo+IGJ5IGNoZWNraW5nIHNndC0+bmVudHMuCkknbSBjb25mdXNlIHRo
-YXQgaG93IHRvIGdldCBjb2hlcmVudCBpb3ZhIGFkZHJlc3MgZnJvbSBub2NvaGVyZW50IApzY2F0
-dGVybGlzdCB3aXRoIGlvbW11LgpJIHNhdyB0aGUgYXJtX2lvbW11X21hcF9zZywgaXQgc2F5cyB0
-aGF0OgogICAgICAgICBUaGUgc2NhdHRlciBnYXRoZXIgbGlzdCBlbGVtZW50cyBhcmUgbWVyZ2Vk
-IHRvZ2V0aGVyIChpZiAKcG9zc2libGUpIGFuZAogICAgICAgICAgdGFnZ2VkIHdpdGggdGhlIGFw
-cHJvcHJpYXRlIGRtYSBhZGRyZXNzIGFuZCBsZW5ndGguCgpJIGd1ZXNzIHRoZSBtYXBfc2cgbWF5
-YmUgbWVyZ2Ugc2NhdHRlcmxpc3QgaW50byBjb2hlcmVudCBpb3ZhIGFkZHJlc3MsIApidXQgSSBk
-b24ndCBrbm93IGhvdyB0bwpjaGVjayB0aGUgImlmIHBvc3NpYmxlIiwgYW5kIHRoZSBzZ3QtPm5l
-bnRzIG5vdCBiZSAxIHdoZW4gYWxyZWFkeSBtYXAgdG8gCmNvaGVyZW50IGlvdmEgYWRkcmVzcy4K
-CmNoZWNraW5nIHNndC1uZW50cyA9IDEgY2FuIHN1cmUgdGhhdCBpb3ZhIGlzIGNvaGVyZW50LCBi
-dXQgd2hlbiBjb2hlcmVudCAKaW92YSBhZGRyZXNzIGZyb20Kbm9jb2hlcmVudCBzY2F0dGVybGlz
-dCwgSSB0aGluayBzZ3QtPm5lbnRzIG1heWJlIGdyZWF0ZXIgdGhhbiAxLCBpcyAKdGhlcmUgYSBt
-ZXRob2QgY2FuIGRlYWwgaXQ/CgpBbGwgYWJvdmUgaXMgbXkgZ3Vlc3MsIG1heWJlIHdyb25nLCBJ
-IG9ubHkgdGVzdGVkIGl0IHdpdGggQ01BIGJ1ZmZlciBpbXBvcnQuCgo+IFNlY29uZGx5LCB5b3Un
-cmUgbWFwcGluZyBhbiBhbHJlYWR5IG1hcHBlZCBzY2F0dGVybGlzdCAtIHNjYXR0ZXJsaXN0cwo+
-IGFyZSBtYXBwZWQgYnkgdGhlIGV4cG9ydGVyIGluc2lkZSBkbWFfYnVmX21hcF9hdHRhY2htZW50
-KCkgZm9yIHlvdXIKPiBkZXZpY2UuCgpSaWdodCwgZm91bmQgdGhlIGRtYV9tYXBfc2cgb24gZG1h
-X2J1Zl9tYXBfYXR0YWNobWVudCgpLgoKPgo+IFRoaXJkbHksIEkgaGF0ZSBkcm1fZ2VtX3ByaW1l
-X2ltcG9ydCgpIGJlaW5nIHVzZWQgb24gQVJNLi4uIGl0IGZvcmNlcwo+IGRyaXZlcnMgdG8gZG8g
-c29tZXRoaW5nIHZlcnkgYnVnZ3k6IHRoZSBETUEgYnVmZmVyIGlzIG1hcHBlZCBmb3IgRE1BCj4g
-d2hlbiB0aGUgYnVmZmVyIGlzIGltcG9ydGVkLiAgSWYgdGhlIGJ1ZmZlciBpcyBhIHdyaXRlLWNv
-bWJpbmUgb3IgY2FjaGVkCj4gYnVmZmVyLCB3cml0ZXMgdG8gdGhlIGJ1ZmZlciBhZnRlciB0aGUg
-aW1wb3J0IHdpbGwgbm90IGJlY29tZSB2aXNpYmxlIHRvCj4gdGhlIGRpc3BsYXkgaGFyZHdhcmUg
-dW50aWwgc29tZXRpbWUgbGF0ZXIgKHdoZW4gdGhleSdyZSBldmljdGVkIGZyb20gdGhlCj4gY2Fj
-aGVzIGFuZC9vciBwdXNoZWQgb3V0IG9mIHRoZSBidXMgc3RydWN0dXJlLikgIFRoZSBETUEgbWFw
-cGluZyBzaG91bGQKPiBiZSBwZXJmb3JtZWQgYXMgY2xvc2UgdG8gdGhlIHN0YXJ0IG9mIERNQSBh
-cyBwb3NzaWJsZS4gIEhvd2V2ZXIsIHRoaXMgaXMKPiBhIGxvbmctc3RhbmRpbmcgaXNzdWUgSSBo
-YXZlIHdpdGggZG1hX2J1ZiBpdHNlbGYgYW5kIGlzIG5vdCBzb21ldGhpbmcgeW91Cj4gc2hvdWxk
-IGJlIHRvbyBjb25jZXJuZWQgd2l0aCBpbiB5b3VyIHBhdGNoLiAgSnVzdCBiZWFyIGl0IGluIG1p
-bmQgaWYgeW91Cj4gc3RhcnQgdG8gc2VlIGNvcnJ1cHRpb24gb2YgaW1wb3J0ZWQgYnVmZmVycyAt
-IHRoZSBhbnN3ZXIgaXMgbm90IG1vcmUKPiBkbWFfbWFwX3NnKCkgY2FsbHMsIGJ1dCB0byBnZXQg
-ZG1hX2J1ZiBmaXhlZC4KWWVhaCwgR290IGl0LgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The watchdog irq is actually SPI 79, which translates to the original
+111 in the manual where the SPI irqs start at 32.
+The current dw_wdt driver does not use the irq at all, so this issue
+never surfaced. Nevertheless fix this for a time we want to use the irq.
+
+Fixes: 2ab557b72d46 ("ARM: dts: rockchip: add core rk3288 dtsi")
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Found while verifying the data for the quite similar rk3368 arm64 soc.
+
+ arch/arm/boot/dts/rk3288.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 22316d0..858efd0 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -626,7 +626,7 @@
+ 		compatible = "rockchip,rk3288-wdt", "snps,dw-wdt";
+ 		reg = <0xff800000 0x100>;
+ 		clocks = <&cru PCLK_WDT>;
+-		interrupts = <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH>;
++		interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
+ 		status = "disabled";
+ 	};
+ 
+-- 
+2.1.4
