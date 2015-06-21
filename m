@@ -1,35 +1,29 @@
-From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: Add STMMAC reset signal in GMAC interface for rk3288
-Date: Sat, 20 Jun 2015 12:27:16 +0000
-Message-ID: <1434803236-20884-1-git-send-email-romain.perier@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 0/2] add support holding 24Mhz osc during suspend
+Date: Sun, 21 Jun 2015 17:44:37 +0800
+Message-ID: <1434879879-25162-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org
+Cc: linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, amstan@google.com, dtor@google.com, Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Which fixes warning "no reset control found" by the same time
+Since the usb-phy clocks are not connected to the 32khz clock-in, they
+only have 24Mhz as the clock source. If we want to wake up system via
+usb device, we should hold the 24Mhz osc during suspend.
+This Patch has tested on chromebook jerry board, with another patch[0],
+we can wakeup system via usb keyboard.
 
-Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+[0] https://chromium-review.googlesource.com/#/c/277811/3
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 22316d0..47476d5 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -447,6 +447,8 @@
- 			"mac_clk_rx", "mac_clk_tx",
- 			"clk_mac_ref", "clk_mac_refout",
- 			"aclk_mac", "pclk_mac";
-+		resets = <&cru SRST_MAC>;
-+		reset-names = "stmmaceth";
- 		status = "disabled";
- 	};
- 
+
+Chris Zhong (2):
+  ARM: rockchip: add support holding 24Mhz osc during suspend
+  ARM: rockchip: remove some useless macro in pm.h
+
+ arch/arm/mach-rockchip/pm.c | 34 +++++++++++++++++++++++++++++++---
+ arch/arm/mach-rockchip/pm.h |  7 -------
+ 2 files changed, 31 insertions(+), 10 deletions(-)
+
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
