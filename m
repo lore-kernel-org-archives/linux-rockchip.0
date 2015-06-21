@@ -1,42 +1,27 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 2/2] ARM: rockchip: remove some useless macro in pm.h
-Date: Sun, 21 Jun 2015 18:00:47 +0800
-Message-ID: <1434880847-29505-3-git-send-email-zyw@rock-chips.com>
-References: <1434880847-29505-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434880847-29505-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, dianders@chromium.org
-Cc: linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, amstan@google.com, dtor@google.com, Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 0/4] net: stmmac: dwmac-rk: add support for rk3368
+Date: Sun, 21 Jun 2015 10:32:58 -0700 (PDT)
+Message-ID: <20150621.103258.310307194495952422.davem@davemloft.net>
+References: <1434578086-12209-1-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1434578086-12209-1-git-send-email-heiko@sntech.de>
+Sender: netdev-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: peppe.cavallaro@st.com, roger.chen@rock-chips.com, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-These are actually not used in the pm code, as we moved suspend handling
-to the clock driver, remove them here.
+From: Heiko Stuebner <heiko@sntech.de>
+Date: Wed, 17 Jun 2015 23:54:42 +0200
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Apart from small cleanups, this series provides support for the dwmac
+> on the new rk3368 ARM64 soc.
+> 
+> Tested on a R88 board using a RMII phy.
 
----
+These patches do not apply to the net-next tree, please respin
+and resubmit.
 
- arch/arm/mach-rockchip/pm.h | 7 -------
- 1 file changed, 7 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-index 3e8d39c..b6494c2 100644
---- a/arch/arm/mach-rockchip/pm.h
-+++ b/arch/arm/mach-rockchip/pm.h
-@@ -59,13 +59,6 @@ static inline void rockchip_suspend_init(void)
- #define SGRF_DAPDEVICEEN		BIT(0)
- #define SGRF_DAPDEVICEEN_WRITE		BIT(16)
- 
--#define RK3288_CRU_MODE_CON		0x50
--#define RK3288_CRU_SEL0_CON		0x60
--#define RK3288_CRU_SEL1_CON		0x64
--#define RK3288_CRU_SEL10_CON		0x88
--#define RK3288_CRU_SEL33_CON		0xe4
--#define RK3288_CRU_SEL37_CON		0xf4
--
- /* PMU_WAKEUP_CFG1 bits */
- #define PMU_ARMINT_WAKEUP_EN		BIT(0)
- 
--- 
-1.9.1
+Thanks.
