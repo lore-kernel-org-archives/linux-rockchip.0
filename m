@@ -1,10 +1,10 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH 1/2] ARM: rockchip: add support holding 24Mhz osc during suspend
-Date: Sun, 21 Jun 2015 17:44:38 +0800
-Message-ID: <1434879879-25162-2-git-send-email-zyw@rock-chips.com>
-References: <1434879879-25162-1-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v2 1/2] ARM: rockchip: add support holding 24Mhz osc during suspend
+Date: Sun, 21 Jun 2015 18:00:46 +0800
+Message-ID: <1434880847-29505-2-git-send-email-zyw@rock-chips.com>
+References: <1434880847-29505-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434879879-25162-1-git-send-email-zyw@rock-chips.com>
+In-Reply-To: <1434880847-29505-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, dianders@chromium.org
 Cc: linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, amstan@google.com, dtor@google.com, Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -17,11 +17,11 @@ to switch to 32khz clock-in.
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
- arch/arm/mach-rockchip/pm.c | 34 +++++++++++++++++++++++++++++++---
- 1 file changed, 31 insertions(+), 3 deletions(-)
+ arch/arm/mach-rockchip/pm.c | 38 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-index b0dcbe2..6d32a82 100644
+index b0dcbe2..fda81d3 100644
 --- a/arch/arm/mach-rockchip/pm.c
 +++ b/arch/arm/mach-rockchip/pm.c
 @@ -29,6 +29,11 @@
@@ -44,7 +44,7 @@ index b0dcbe2..6d32a82 100644
  
  static u32 rk3288_pmu_pwr_mode_con;
  static u32 rk3288_sgrf_soc_con0;
-@@ -66,9 +72,29 @@ static void rk3288_config_bootdata(void)
+@@ -66,9 +72,28 @@ static void rk3288_config_bootdata(void)
  	rkpm_bootdata_l2ctlr = rk3288_l2_config();
  }
  
@@ -68,14 +68,12 @@ index b0dcbe2..6d32a82 100644
 +
  static void rk3288_slp_mode_set(int level)
  {
--	u32 mode_set, mode_set1;
-+	u32 mode_set, mode_set1, osc_switch_to_32k;
-+
-+	osc_switch_to_32k = rk3288_slp_disable_osc();
+ 	u32 mode_set, mode_set1;
++	bool osc_switch_to_32k = rk3288_slp_disable_osc();
  
  	regmap_read(sgrf_regmap, RK3288_SGRF_SOC_CON0, &rk3288_sgrf_soc_con0);
  
-@@ -107,11 +133,13 @@ static void rk3288_slp_mode_set(int level)
+@@ -107,11 +132,13 @@ static void rk3288_slp_mode_set(int level)
  
  	if (level == ROCKCHIP_ARM_OFF_LOGIC_DEEP) {
  		/* arm off, logic deep sleep */
@@ -91,5 +89,19 @@ index b0dcbe2..6d32a82 100644
  		mode_set1 |= BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
  			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
  	} else {
+@@ -193,6 +220,13 @@ static int rk3288_suspend_init(struct device_node *np)
+ 		return PTR_ERR(pmu_regmap);
+ 	}
+ 
++	grf_regmap = syscon_regmap_lookup_by_compatible(
++				"rockchip,rk3288-grf");
++	if (IS_ERR(grf_regmap)) {
++		pr_err("%s: could not find grf regmap\n", __func__);
++		return PTR_ERR(pmu_regmap);
++	}
++
+ 	sram_np = of_find_compatible_node(NULL, NULL,
+ 					  "rockchip,rk3288-pmu-sram");
+ 	if (!sram_np) {
 -- 
 1.9.1
