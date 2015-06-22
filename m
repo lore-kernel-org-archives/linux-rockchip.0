@@ -1,49 +1,51 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 1/4] net: stmmac: dwmac-rk: remove unused gpio register
- defines
-Date: Sun, 21 Jun 2015 21:52:51 +0200
-Message-ID: <1434916374-7457-2-git-send-email-heiko@sntech.de>
-References: <1434916374-7457-1-git-send-email-heiko@sntech.de>
+From: Paul Bolle <pebolle@tiscali.nl>
+Subject: Re: [PATCH v5 4/6] drm: bridge/dw_hdmi-i2s-audio: add audio driver
+Date: Mon, 22 Jun 2015 12:06:04 +0200
+Message-ID: <1434967564.31094.20.camel@x220>
+References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
+ <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1434916374-7457-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: peppe.cavallaro-qxv4g6HH51o@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel <alsa-devel@alsa-project.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-In a first version the driver did want to do some gpio wiggling, which
-of course never made it into the kernel, but somehow these register
-defines where forgotten. Remove them, as they shouldn't be here.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 26c339d..a396070 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -65,9 +65,6 @@ struct rk_priv_data {
- 
- #define RK3288_GRF_SOC_CON1	0x0248
- #define RK3288_GRF_SOC_CON3	0x0250
--#define RK3288_GRF_GPIO3D_E	0x01ec
--#define RK3288_GRF_GPIO4A_E	0x01f0
--#define RK3288_GRF_GPIO4B_E	0x01f4
- 
- /*RK3288_GRF_SOC_CON1*/
- #define GMAC_PHY_INTF_SEL_RGMII	(GRF_BIT(6) | GRF_CLR_BIT(7) | GRF_CLR_BIT(8))
--- 
-2.1.4
+U29tZXRoaW5nIEkgZGlkbid0IG5vdGljZSBpbiB2NCwgc29ycnkuCgpPbiBTYXQsIDIwMTUtMDYt
+MjAgYXQgMDA6MjggKzA4MDAsIFlha2lyIFlhbmcgd3JvdGU6Cj4gLS0tIC9kZXYvbnVsbAo+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS1pMnMtYXVkaW8uYwoKPiArI2RlZmlu
+ZSBEUklWRVJfTkFNRSAiZHctaGRtaS1pMnMtYXVkaW8iCgo+ICtNT0RVTEVfQUxJQVMoUExBVEZP
+Uk1fTU9EVUxFX1BSRUZJWCBEUklWRVJfTkFNRSk7CgowKSBTaWRlIG5vdGU6IHRoaXMgaXMgdGhl
+IGZpcnN0IHRpbWUgdGhhdCBQTEFURk9STV9NT0RVTEVfUFJFRklYIGlzIHVzZWQKaW5zaWRlIE1P
+RFVMRV9BTElBUygpLiBCdXQgbm9uZSBvZiB0aGUgMTAwMCsgb3RoZXIgInBsYXRmb3JtOiIgYWxp
+YXNlcwpkbyB0aGF0LiBBbmQgbmVpdGhlciBkb2VzIDUvNiBvZiB0aGlzIHNlcmllcyEgVGhhdCBz
+dWdnZXN0cywgSSB0aGluaywKdGhhdCB0aGlzIHNob3VsZG4ndCBiZSBkb25lLgoKWW91IGNvdWxk
+IGNvbnNpZGVyIGFkZGluZyBzb21ldGhpbmcgbGlrZQogICAgI2RlZmluZSBNT0RVTEVfQUxJQVNf
+UExBVEZPUk0oTkFNRSkgTU9EVUxFX0FMSUFTKFBMQVRGT1JNX01PRFVMRV9QUkVGSVggTkFNRSkK
+CkJ1dCB0aGVuLCBJIHRoaW5rLCBhbGwgdGhlIGN1cnJlbnQgMTAwMCsgcGxhdGZvcm06IGFsaWFz
+ZXMgc2hvdWxkIGJlCmNvbnZlcnRlZCB0byB0aGF0IG1hY3JvLiBXb3VsZCB0aGF0IGJlIHdvcnRo
+IGl0PwoKMSkgTm93IG9uIHRvIG15IHJlbWFyazogdGhpcyBhbGlhcyBzZWVtcyB0byBiZSBvbmx5
+IHVzZWZ1bCBpZiB0aGVyZSBhbHNvCmlzIGEgc3RydWN0IHBsYXRmb3JtX2RldmljZSB3aXRoIGEg
+ImR3LWhkbWktaTJzLWF1ZGlvIiBuYW1lLiBCZWNhdXNlCnRoYXQgcGxhdGZvcm1fZGV2aWNlIHdv
+dWxkLCBiYWRseSBzdW1tYXJpemVkLCBmaXJlIG9mIGEKIk1PREFMSUFTPXBsYXRmb3JtOmR3LWhk
+bWktaTJzLWF1ZGlvIiB1ZXZlbnQgd2hlbiBjcmVhdGVkLiBXaGljaCwgaW4gaXRzCnR1cm4sIHdv
+dWxkIHRyaWdnZXIgdXNlcnNwYWNlIHRvIGxvYWQgdGhpcyBtb2R1bGUsIGNvcnJlY3Q/CgpCdXQg
+SSB0aGluayB0aGVyZSdzIG5vIHBsYXRmb3JtX2RldmljZSB3aXRoIGEgImR3LWhkbWktaTJzLWF1
+ZGlvIiBuYW1lLgpTbyBJIHdvbmRlciB3aGV0aGVyIHRoaXMgTU9EVUxFX0FMSUFTKCkgaXMgYWN0
+dWFsbHkgbmVlZGVkLiBXaGF0IGJyZWFrcwppZiB5b3UgbGVhdmUgaXQgb3V0PwoKKExpa2V3aXNl
+IGZvciA1LzYsIGJ1dCB0aGVyZSB0aGUgcGxhdGZvcm1fZGV2aWNlIHNob3VsZCBoYXZlIGEKInJv
+Y2tjaGlwLWhkbWktYXVkaW8iIG5hbWUuKQoKVGhhbmtzLAoKClBhdWwgQm9sbGUKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
