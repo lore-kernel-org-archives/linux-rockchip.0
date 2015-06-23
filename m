@@ -1,25 +1,26 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Yakir Yang <ykk@rock-chips.com>
 Subject: Re: [PATCH v5 4/6] drm: bridge/dw_hdmi-i2s-audio: add audio driver
-Date: Tue, 23 Jun 2015 11:03:22 +0800
-Message-ID: <5588CC7A.7060509@rock-chips.com>
+Date: Tue, 23 Jun 2015 11:06:19 +0800
+Message-ID: <5588CD2B.3040807@rock-chips.com>
 References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
  <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
  <1434967564.31094.20.camel@x220>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <1434967564.31094.20.camel@x220>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel <alsa-devel@alsa-project.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 UGF1bCwKCuWcqCAyMDE1LzYvMjIgMTg6MDYsIFBhdWwgQm9sbGUg5YaZ6YGTOgo+IFNvbWV0aGlu
@@ -37,24 +38,21 @@ VUxFX0FMSUFTX1BMQVRGT1JNKE5BTUUpIE1PRFVMRV9BTElBUyhQTEFURk9STV9NT0RVTEVfUFJF
 RklYIE5BTUUpCj4KPiBCdXQgdGhlbiwgSSB0aGluaywgYWxsIHRoZSBjdXJyZW50IDEwMDArIHBs
 YXRmb3JtOiBhbGlhc2VzIHNob3VsZCBiZQo+IGNvbnZlcnRlZCB0byB0aGF0IG1hY3JvLiBXb3Vs
 ZCB0aGF0IGJlIHdvcnRoIGl0PwpZZWFoLCBJdCB3b3VsZCBiZSBob3JyaWJsZSB0byBjb3ZlcnRl
-ZCB0byB0aGF0IG1hY3JvICAgOykKCj4gMSkgTm93IG9uIHRvIG15IHJlbWFyazogdGhpcyBhbGlh
-cyBzZWVtcyB0byBiZSBvbmx5IHVzZWZ1bCBpZiB0aGVyZSBhbHNvCj4gaXMgYSBzdHJ1Y3QgcGxh
-dGZvcm1fZGV2aWNlIHdpdGggYSAiZHctaGRtaS1pMnMtYXVkaW8iIG5hbWUuIEJlY2F1c2UKPiB0
-aGF0IHBsYXRmb3JtX2RldmljZSB3b3VsZCwgYmFkbHkgc3VtbWFyaXplZCwgZmlyZSBvZiBhCj4g
-Ik1PREFMSUFTPXBsYXRmb3JtOmR3LWhkbWktaTJzLWF1ZGlvIiB1ZXZlbnQgd2hlbiBjcmVhdGVk
-LiBXaGljaCwgaW4gaXRzCj4gdHVybiwgd291bGQgdHJpZ2dlciB1c2Vyc3BhY2UgdG8gbG9hZCB0
-aGlzIG1vZHVsZSwgY29ycmVjdD8KPgo+IEJ1dCBJIHRoaW5rIHRoZXJlJ3Mgbm8gcGxhdGZvcm1f
-ZGV2aWNlIHdpdGggYSAiZHctaGRtaS1pMnMtYXVkaW8iIG5hbWUuCj4gU28gSSB3b25kZXIgd2hl
-dGhlciB0aGlzIE1PRFVMRV9BTElBUygpIGlzIGFjdHVhbGx5IG5lZWRlZC4gV2hhdCBicmVha3MK
-PiBpZiB5b3UgbGVhdmUgaXQgb3V0PwpUaGFua3MgZm9yIHlvdXIgYXR0ZW50aXZlIGNvbW1lbnQg
-IDopLiAgQWN0dWFsbHkgdGhlcmUgc2hvdWxkIGJlIGFuIApwbGF0Zm9ybSBkZXZpY2UgdGhhdCBu
-YW1lZCAiZHctaGRtaS1pMnMtYXVkaW8iIHdoaWNoIEkgbWlzc3BlbHQgaW4gCmR3X2hkbWkuYyBk
-cml2ZXIuCgp0aGFua3MsCi0gWWFraXIKPiAoTGlrZXdpc2UgZm9yIDUvNiwgYnV0IHRoZXJlIHRo
-ZSBwbGF0Zm9ybV9kZXZpY2Ugc2hvdWxkIGhhdmUgYQo+ICJyb2NrY2hpcC1oZG1pLWF1ZGlvIiBu
-YW1lLikKPgo+IFRoYW5rcywKPgo+Cj4gUGF1bCBCb2xsZQo+Cj4KPiBfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4KPgo+CgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+ZCB0byB0aGF0IG1hY3JvICA7KQoKPiAxKSBOb3cgb24gdG8gbXkgcmVtYXJrOiB0aGlzIGFsaWFz
+IHNlZW1zIHRvIGJlIG9ubHkgdXNlZnVsIGlmIHRoZXJlIGFsc28KPiBpcyBhIHN0cnVjdCBwbGF0
+Zm9ybV9kZXZpY2Ugd2l0aCBhICJkdy1oZG1pLWkycy1hdWRpbyIgbmFtZS4gQmVjYXVzZQo+IHRo
+YXQgcGxhdGZvcm1fZGV2aWNlIHdvdWxkLCBiYWRseSBzdW1tYXJpemVkLCBmaXJlIG9mIGEKPiAi
+TU9EQUxJQVM9cGxhdGZvcm06ZHctaGRtaS1pMnMtYXVkaW8iIHVldmVudCB3aGVuIGNyZWF0ZWQu
+IFdoaWNoLCBpbiBpdHMKPiB0dXJuLCB3b3VsZCB0cmlnZ2VyIHVzZXJzcGFjZSB0byBsb2FkIHRo
+aXMgbW9kdWxlLCBjb3JyZWN0Pwo+Cj4gQnV0IEkgdGhpbmsgdGhlcmUncyBubyBwbGF0Zm9ybV9k
+ZXZpY2Ugd2l0aCBhICJkdy1oZG1pLWkycy1hdWRpbyIgbmFtZS4KPiBTbyBJIHdvbmRlciB3aGV0
+aGVyIHRoaXMgTU9EVUxFX0FMSUFTKCkgaXMgYWN0dWFsbHkgbmVlZGVkLiBXaGF0IGJyZWFrcwo+
+IGlmIHlvdSBsZWF2ZSBpdCBvdXQ/ClRoYW5rcyBmb3IgeW91ciBhdHRlbnRpdmUgY29tbWVudCAu
+ICBBY3R1YWxseSB0aGVyZSBzaG91bGQgYmUgYW4gCnBsYXRmb3JtIGRldmljZSB0aGF0IG5hbWVk
+ICJkdy1oZG1pLWkycy1hdWRpbyIgd2hpY2ggSSBtaXNzcGVsdCBpbiAKZHdfaGRtaS5jIGRyaXZl
+ci4KCnRoYW5rcywKLSBZYWtpcgoKPiAoTGlrZXdpc2UgZm9yIDUvNiwgYnV0IHRoZXJlIHRoZSBw
+bGF0Zm9ybV9kZXZpY2Ugc2hvdWxkIGhhdmUgYQo+ICJyb2NrY2hpcC1oZG1pLWF1ZGlvIiBuYW1l
+LikKPgo+IFRoYW5rcywKPgo+Cj4gUGF1bCBCb2xsZQo+Cj4KPgo+CgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
