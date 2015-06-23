@@ -1,147 +1,109 @@
-From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add DMA tx and rx channels in UART
- interfaces for RK3288 SoCs
-Date: Tue, 23 Jun 2015 13:55:52 +0200
-Message-ID: <CABgxDoJo4=LafA+rf+gN_U=QY0reK3ux8RzHCaYXWfw9FkiLYA@mail.gmail.com>
-References: <1434475166-30338-1-git-send-email-romain.perier@gmail.com>
-	<CABgxDo+8MafT8hOzpG=gjju=S7bVtNBOKxmi_JPHv1bDZSGeCQ@mail.gmail.com>
-	<1475991.JRcDMpQrFc@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1475991.JRcDMpQrFc@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v3 1/2] ARM: rockchip: add support holding 24Mhz osc during suspend
+Date: Tue, 23 Jun 2015 20:53:39 +0800
+Message-ID: <1435064020-7057-2-git-send-email-zyw@rock-chips.com>
+References: <1435064020-7057-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1435064020-7057-1-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org
+Cc: linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, amstan@google.com, dtor@google.com, Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+If we want to wake up system via usb, the 24Mhz osc could not be
+disabled during suspend, read the usb phy SIDDQ bit to decide whether
+to switch to 32khz clock-in.
 
-Oh sure, I completly forgot this issue ^^ , no problem. If you want
-some help feel free to ping on IRC.
-I did not notice regressions or issues, but my system was not under
-load, I will try to investigate and/or test with care.
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Tested-by: Douglas Anderson <dianders@chromium.org>
 
-Have a nice day,
-Romain
+---
 
-2015-06-23 13:09 GMT+02:00 Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>:
-> Hi Romain,
->
-> Am Dienstag, 23. Juni 2015, 08:53:17 schrieb Romain Perier:
->> ping :)
->
-> I haven't forgotten this patch :-)
->
-> I just haven't fully made up my mind concerning the bug in the pl330
-> implementation on Rockchip SoCs - aka if we'll make it worse by also =
-enabling
-> dma on the uarts.
->
-> So far the problem reports I read only mentioned degraded functionali=
-ty like
-> popping sounds in audio, not full system failures or freezes. So I te=
-nd to
-> include the patch and see what happens ;-)
->
->
-> Heiko
->
->
->
->> 2015-06-16 19:19 GMT+02:00 Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
->> > This enable DMA capability for the corresponding UART interfaces, =
-also it
->> > removes warning "ttyS%d - Failed to request dma" from kernel logs.
->> >
->> > Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> > ---
->> >
->> > Changes since v1 ("[PATCH] ARM: dts: rockchip: Add dmac_bus rx and=
- tx for
-> uart2"):
->> >         - Add DMA tx and rx channels for all UART interfaces
->> >         - Rename commit summary
->> >
->> >  arch/arm/boot/dts/rk3288.dtsi | 10 ++++++++++
->> >  1 file changed, 10 insertions(+)
->> >
->> > diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3=
-288.dtsi
->> > index 22316d0..1996452 100644
->> > --- a/arch/arm/boot/dts/rk3288.dtsi
->> > +++ b/arch/arm/boot/dts/rk3288.dtsi
->> > @@ -359,6 +359,8 @@
->> >
->> >                 clock-names =3D "baudclk", "apb_pclk";
->> >                 pinctrl-names =3D "default";
->> >                 pinctrl-0 =3D <&uart0_xfer>;
->> >
->> > +               dmas =3D <&dmac_peri 1>, <&dmac_peri 2>;
->> > +               dma-names =3D "tx", "rx";
->> >
->> >                 status =3D "disabled";
->> >
->> >         };
->> >
->> > @@ -372,6 +374,8 @@
->> >
->> >                 clock-names =3D "baudclk", "apb_pclk";
->> >                 pinctrl-names =3D "default";
->> >                 pinctrl-0 =3D <&uart1_xfer>;
->> >
->> > +               dmas =3D <&dmac_peri 3>, <&dmac_peri 4>;
->> > +               dma-names =3D "tx", "rx";
->> >
->> >                 status =3D "disabled";
->> >
->> >         };
->> >
->> > @@ -385,6 +389,8 @@
->> >
->> >                 clock-names =3D "baudclk", "apb_pclk";
->> >                 pinctrl-names =3D "default";
->> >                 pinctrl-0 =3D <&uart2_xfer>;
->> >
->> > +               dmas =3D <&dmac_bus_s 4>, <&dmac_bus_s 5>;
->> > +               dma-names =3D "tx", "rx";
->> >
->> >                 status =3D "disabled";
->> >
->> >         };
->> >
->> > @@ -398,6 +404,8 @@
->> >
->> >                 clock-names =3D "baudclk", "apb_pclk";
->> >                 pinctrl-names =3D "default";
->> >                 pinctrl-0 =3D <&uart3_xfer>;
->> >
->> > +               dmas =3D <&dmac_peri 7>, <&dmac_peri 8>;
->> > +               dma-names =3D "tx", "rx";
->> >
->> >                 status =3D "disabled";
->> >
->> >         };
->> >
->> > @@ -411,6 +419,8 @@
->> >
->> >                 clock-names =3D "baudclk", "apb_pclk";
->> >                 pinctrl-names =3D "default";
->> >                 pinctrl-0 =3D <&uart4_xfer>;
->> >
->> > +               dmas =3D <&dmac_peri 9>, <&dmac_peri 10>;
->> > +               dma-names =3D "tx", "rx";
->> >
->> >                 status =3D "disabled";
->> >
->> >         };
->> >
->> > --
->> > 1.9.1
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Changes in v3:
+- Fixed commenting style
+- Move the #define-s above the rk3288_slp_disable_osc function
+
+ arch/arm/mach-rockchip/pm.c | 40 ++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+index b0dcbe2..9f862c4 100644
+--- a/arch/arm/mach-rockchip/pm.c
++++ b/arch/arm/mach-rockchip/pm.c
+@@ -45,6 +45,7 @@ static phys_addr_t rk3288_bootram_phy;
+ 
+ static struct regmap *pmu_regmap;
+ static struct regmap *sgrf_regmap;
++static struct regmap *grf_regmap;
+ 
+ static u32 rk3288_pmu_pwr_mode_con;
+ static u32 rk3288_sgrf_soc_con0;
+@@ -66,9 +67,35 @@ static void rk3288_config_bootdata(void)
+ 	rkpm_bootdata_l2ctlr = rk3288_l2_config();
+ }
+ 
++#define GRF_UOC0_CON0			0x320
++#define GRF_UOC1_CON0			0x334
++#define GRF_UOC2_CON0			0x348
++#define GRF_SIDDQ			BIT(13)
++
++static bool rk3288_slp_disable_osc(void)
++{
++	static const u32 reg_offset[] = { GRF_UOC0_CON0, GRF_UOC1_CON0,
++					  GRF_UOC2_CON0 };
++	u32 reg, i;
++
++	/*
++	 * if any usb phy is still on(GRF_SIDDQ==0), that means we need the
++	 * function of usb wakeup, so do not switch to 32khz, since the usb phy
++	 * clk does not connect to 32khz osc
++	 */
++	for (i = 0; i < ARRAY_SIZE(reg_offset); i++) {
++		regmap_read(grf_regmap, reg_offset[i], &reg);
++		if (!(reg & GRF_SIDDQ))
++			return false;
++	}
++
++	return true;
++}
++
+ static void rk3288_slp_mode_set(int level)
+ {
+ 	u32 mode_set, mode_set1;
++	bool osc_switch_to_32k = rk3288_slp_disable_osc();
+ 
+ 	regmap_read(sgrf_regmap, RK3288_SGRF_SOC_CON0, &rk3288_sgrf_soc_con0);
+ 
+@@ -107,11 +134,13 @@ static void rk3288_slp_mode_set(int level)
+ 
+ 	if (level == ROCKCHIP_ARM_OFF_LOGIC_DEEP) {
+ 		/* arm off, logic deep sleep */
+-		mode_set |= BIT(PMU_BUS_PD_EN) |
++		mode_set |= BIT(PMU_BUS_PD_EN) | BIT(PMU_PMU_USE_LF) |
+ 			    BIT(PMU_DDR1IO_RET_EN) | BIT(PMU_DDR0IO_RET_EN) |
+-			    BIT(PMU_OSC_24M_DIS) | BIT(PMU_PMU_USE_LF) |
+ 			    BIT(PMU_ALIVE_USE_LF) | BIT(PMU_PLL_PD_EN);
+ 
++		if (osc_switch_to_32k)
++			mode_set |= BIT(PMU_OSC_24M_DIS);
++
+ 		mode_set1 |= BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
+ 			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
+ 	} else {
+@@ -193,6 +222,13 @@ static int rk3288_suspend_init(struct device_node *np)
+ 		return PTR_ERR(pmu_regmap);
+ 	}
+ 
++	grf_regmap = syscon_regmap_lookup_by_compatible(
++				"rockchip,rk3288-grf");
++	if (IS_ERR(grf_regmap)) {
++		pr_err("%s: could not find grf regmap\n", __func__);
++		return PTR_ERR(pmu_regmap);
++	}
++
+ 	sram_np = of_find_compatible_node(NULL, NULL,
+ 					  "rockchip,rk3288-pmu-sram");
+ 	if (!sram_np) {
+-- 
+1.9.1
