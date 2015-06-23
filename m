@@ -1,61 +1,61 @@
-From: Rob Herring <robherring2@gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH 2/3] Documentation: dt-bindings: Add snps,need-phy-for-wake
  for dwc2 USB
-Date: Tue, 23 Jun 2015 09:17:23 -0500
-Message-ID: <CAL_JsqJT42GhY45FWY5G=450zxSRVLHu36_O1tPkTdH39JeEcw@mail.gmail.com>
-References: <1435017144-2971-1-git-send-email-dianders@chromium.org> <1435017144-2971-3-git-send-email-dianders@chromium.org>
+Date: Tue, 23 Jun 2015 08:12:05 -0700
+Message-ID: <CAD=FV=Xpp7GsycBTneJ07vVbh3qaOWtdDVMoS7oh=eqo8CYDrA@mail.gmail.com>
+References: <1435017144-2971-1-git-send-email-dianders@chromium.org>
+	<1435017144-2971-3-git-send-email-dianders@chromium.org>
+	<CAL_JsqJT42GhY45FWY5G=450zxSRVLHu36_O1tPkTdH39JeEcw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435017144-2971-3-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, John Youn <johnyoun@synopsys.com>, Felipe Balbi <balbi@ti.com>, Chris Zhong <zyw@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Julius Werner <jwerner@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Alexandru Stan <amstan@chromium.org>, lyz@rock-chips.com, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kever Yang <kever.yang@rock-chips.com>, Paul Zimmerman <paulz@synopsys.com>, Gregory Herrero <gregory.herrero@intel.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAL_JsqJT42GhY45FWY5G=450zxSRVLHu36_O1tPkTdH39JeEcw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Zimmerman <paulz-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Gregory Herrero <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 22, 2015 at 6:52 PM, Douglas Anderson <dianders@chromium.org> wrote:
-> Some SoCs with a dwc2 USB controller may need to keep the PHY on to
-> support remote wakeup.  Allow specifying this as a device tree
-> property.
+Rob,
 
-I find it hard to believe that any host can support wake-up without
-the PHY. Does this really need to be conditional? Perhaps other cases
-are just always-on or remote wake-up has not been tested.
-
-Assuming the PHY was provided with the knowledge that remote wakeup is
-enabled, it would be able to figure out within its driver how to
-support that. Unfortunately the generic PHY framework is a completely
-lacking in its ability to support protocol specific features like this
-or other USB PHY features like Vbus detect or charger detection.
-
-Rob
-
+On Tue, Jun 23, 2015 at 7:17 AM, Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> On Mon, Jun 22, 2015 at 6:52 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>> Some SoCs with a dwc2 USB controller may need to keep the PHY on to
+>> support remote wakeup.  Allow specifying this as a device tree
+>> property.
 >
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->  Documentation/devicetree/bindings/usb/dwc2.txt | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/usb/dwc2.txt b/Documentation/devicetree/bindings/usb/dwc2.txt
-> index fd132cb..84d258d 100644
-> --- a/Documentation/devicetree/bindings/usb/dwc2.txt
-> +++ b/Documentation/devicetree/bindings/usb/dwc2.txt
-> @@ -17,6 +17,9 @@ Refer to clk/clock-bindings.txt for generic clock consumer properties
->  Optional properties:
->  - phys: phy provider specifier
->  - phy-names: shall be "usb2-phy"
-> +- snps,need-phy-for-wake: if present indicates that the phy needs to be left
-> +  on for remote wakeup during suspend.
-> +
->  Refer to phy/phy-bindings.txt for generic phy consumer properties
->  - dr_mode: shall be one of "host", "peripheral" and "otg"
->    Refer to usb/generic.txt
-> @@ -35,4 +38,5 @@ Example:
->                 clock-names = "otg";
->                 phys = <&usbphy>;
->                 phy-names = "usb2-phy";
-> +               snps,need-phy-for-wake;
->          };
-> --
-> 2.4.3.573.g4eafbef
->
+> I find it hard to believe that any host can support wake-up without
+> the PHY.
+
+I am told by Andrew Bresticker that on tegra there is complicated
+logic in the PMU that allows USB wakeup while powering off the PHY.
+If I hadn't been aware of such a feature I probably would have called
+the property "wakeup-supported" or something like that.
+
+> Does this really need to be conditional? Perhaps other cases
+> are just always-on or remote wake-up has not been tested.
+
+When I worked on exynos products I was told by Samsung that USB wakeup
+was simply not possible.  True that they have a different USB
+controller, but I can certainly believe that someone could design a
+system with dwc2 where USB wakeup was not possible.
+
+Specifically, in order to get USB wakeup we had to switch on the 24MHz
+clock at suspend time.  Had that not been possible (or had the 24MHz
+clock not been able to be a clock source for the USB controller) then
+USB wakeup would not be possible on rk3288 even if we left the phy on.
+
+So to me the three states are:
+1. USB wake not possible
+2. USB wake possible, don't need PHY
+3. USB wake possible, do need PHY
+
+I don't know of any dwc2 users that are in #2 (so I didn't add a
+property now), but I figure that when they exist someone should add a
+property then.
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
