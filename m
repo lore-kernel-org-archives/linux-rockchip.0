@@ -1,25 +1,35 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/2] add support holding 24Mhz osc during suspend
-Date: Fri, 26 Jun 2015 11:13:47 +0200
-Message-ID: <1819327.FqTWPKx08f@diego>
-References: <1435064020-7057-1-git-send-email-zyw@rock-chips.com>
+From: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 3/4] arm64: dts: add Rockchip rk3368 core dtsi and board
+ dts for the r88 board
+Date: Fri, 26 Jun 2015 10:34:01 +0100
+Message-ID: <20150626093400.GA19947@leverpostej>
+References: <1650408.ovnAjReNFJ@diego>
+ <3220645.At1oVfRcjk@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435064020-7057-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, sonnyrao@chromium.org, amstan@google.com, dtor@google.com, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <3220645.At1oVfRcjk@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Will Deacon <Will.Deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <Pawel.Moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. Juni 2015, 20:53:38 schrieb Chris Zhong:
-> Since the usb-phy clocks are not connected to the 32khz clock-in, they
-> only have 24Mhz as the clock source. If we want to wake up system via
-> usb device, we should hold the 24Mhz osc during suspend.
-> This Patch has tested on chromebook jerry board, with another patch[0],
-> we can wakeup system via usb keyboard.
-> 
-> [0] https://chromium-review.googlesource.com/#/c/277811/3
+[...]
 
-applied both to my soc branch for 4.3
+> +       memory {
+> +               reg = <0x0 0x0 0x0 0x40000000>;
+> +       };
+
+This needs device_type = "memory", no?
+
+I guess the bootloader is overriding this anyway?
+
+Otherwise this looked fine to me.
+
+Thanks,
+Mark.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
