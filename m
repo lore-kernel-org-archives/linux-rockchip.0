@@ -1,94 +1,77 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v2] drm/rockchip: import dma_buf to gem
-Date: Fri, 26 Jun 2015 09:27:18 +0800
-Message-ID: <1435282038-23778-1-git-send-email-mark.yao@rock-chips.com>
+From: Bamvor Jian Zhang <bamv2005-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/4] arm64: add initial support for the Rockchip rk3368
+Date: Fri, 26 Jun 2015 12:35:58 +0800
+Message-ID: <558CD6AE.7030505@gmail.com>
+References: <1650408.ovnAjReNFJ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1650408.ovnAjReNFJ@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-V2Ugd2FudCB0byBkaXNwbGF5IGEgYnVmZmVyIGFsbG9jYXRlZCBieSBvdGhlciBkcml2ZXIsIG5l
-ZWQgaW1wb3J0CnRoZSBidWZmZXIgdG8gZ2VtLgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1h
-cmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KQ2hhbmdlcyBpbiB2MjoKQWR2aWNlZCBieSBSdXNz
-ZWxsIEtpbmcKLSBjaGVjayBzZ3QtbmVudHMgPT0gMSB3aGVuIGdldCBpb3ZhIGZyb20gc2NhdHRl
-cmxpc3QKLSByZW1vdmUgdW51c2VkIGRtYV9tYXBfc2cvZG1hX3VubWFwX3NnLCBkbWFfYnVmX21h
-cF9hdHRhY2htZW50LT5tYXBfZG1hX2J1ZgogIHNob3VsZCBkbyB0aGUgZG1hX21hcAoKIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgICAxICsKIGRyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAgIDQwICsrKysrKysrKysrKysr
-KysrKysrKysrKystLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-aCB8ICAgIDUgKysrLQogMyBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCA0IGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmlu
-ZGV4IDM5NjIxNzYuLjkwMDFhOTAgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9kcnYuYwpAQCAtMjg3LDYgKzI4Nyw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZl
-ciByb2NrY2hpcF9kcm1fZHJpdmVyID0gewogCS5wcmltZV9oYW5kbGVfdG9fZmQJPSBkcm1fZ2Vt
-X3ByaW1lX2hhbmRsZV90b19mZCwKIAkucHJpbWVfZmRfdG9faGFuZGxlCT0gZHJtX2dlbV9wcmlt
-ZV9mZF90b19oYW5kbGUsCiAJLmdlbV9wcmltZV9pbXBvcnQJPSBkcm1fZ2VtX3ByaW1lX2ltcG9y
-dCwKKwkuZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSA9IHJvY2tjaGlwX2dlbV9wcmltZV9pbXBv
-cnRfc2dfdGFibGUsCiAJLmdlbV9wcmltZV9leHBvcnQJPSBkcm1fZ2VtX3ByaW1lX2V4cG9ydCwK
-IAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9IHJvY2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFi
-bGUsCiAJLmdlbV9wcmltZV92bWFwCQk9IHJvY2tjaGlwX2dlbV9wcmltZV92bWFwLApkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKaW5kZXggZWIyMjgyYy4uZThj
-NGQ0ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9n
-ZW0uYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCkBA
-IC0xOCw2ICsxOCw3IEBACiAjaW5jbHVkZSA8ZHJtL2RybV92bWFfbWFuYWdlci5oPgogCiAjaW5j
-bHVkZSA8bGludXgvZG1hLWF0dHJzLmg+CisjaW5jbHVkZSA8bGludXgvZG1hLWJ1Zi5oPgogCiAj
-aW5jbHVkZSAicm9ja2NoaXBfZHJtX2Rydi5oIgogI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0u
-aCIKQEAgLTEwNSw2ICsxMDYsMzYgQEAgaW50IHJvY2tjaGlwX2dlbV9tbWFwKHN0cnVjdCBmaWxl
-ICpmaWxwLCBzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZtYSkKIAlyZXR1cm4gcmV0OwogfQogCitz
-dHJ1Y3QgZHJtX2dlbV9vYmplY3QgKgorcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJs
-ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAorCQkJCSAgIHN0cnVjdCBkbWFfYnVmX2F0dGFjaG1l
-bnQgKmF0dGFjaCwKKwkJCQkgICBzdHJ1Y3Qgc2dfdGFibGUgKnNndCkKK3sKKwlzdHJ1Y3Qgcm9j
-a2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqOworCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwor
-CisJLyoKKwkgKiBUb2RvOiBvbmx5IHN1cHBvcnQgY29udGludW91cyBidWZmZXIgbm93LCBwbGFu
-IHRvIGZvdW5kIGEgbWV0aG9kCisJICogdG8gaW1wb3J0IG5vbiBjb250aW51b3VzIHdpdGggaW9t
-bXUuCisJICovCisJaWYgKHNndC0+bmVudHMgIT0gMSkKKwkJcmV0dXJuIEVSUl9QVFIoLUVJTlZB
-TCk7CisKKwlya19vYmogPSBremFsbG9jKHNpemVvZigqcmtfb2JqKSwgR0ZQX0tFUk5FTCk7CisJ
-aWYgKCFya19vYmopCisJCXJldHVybiBFUlJfUFRSKC1FTk9NRU0pOworCisJb2JqID0gJnJrX29i
-ai0+YmFzZTsKKworCWRybV9nZW1fcHJpdmF0ZV9vYmplY3RfaW5pdChkcm0sIG9iaiwgYXR0YWNo
-LT5kbWFidWYtPnNpemUpOworCisJcmtfb2JqLT5kbWFfYWRkciA9IHNnX2RtYV9hZGRyZXNzKHNn
-dC0+c2dsKTsKKwlya19vYmotPnNndCA9IHNndDsKKwlvYmotPnNpemUgPSBzZ19kbWFfbGVuKHNn
-dC0+c2dsKTsKKworCXJldHVybiBvYmo7Cit9CisKIHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0
-ICoKIAlyb2NrY2hpcF9nZW1fY3JlYXRlX29iamVjdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCB1
-bnNpZ25lZCBpbnQgc2l6ZSwKIAkJCQkgICBib29sIGFsbG9jX2ttYXApCkBAIC0xNDIsMTEgKzE3
-MywxNCBAQCB2b2lkIHJvY2tjaGlwX2dlbV9mcmVlX29iamVjdChzdHJ1Y3QgZHJtX2dlbV9vYmpl
-Y3QgKm9iaikKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqOwogCi0JZHJt
-X2dlbV9mcmVlX21tYXBfb2Zmc2V0KG9iaik7Ci0KIAlya19vYmogPSB0b19yb2NrY2hpcF9vYmoo
-b2JqKTsKIAotCXJvY2tjaGlwX2dlbV9mcmVlX2J1Zihya19vYmopOworCWlmIChvYmotPmltcG9y
-dF9hdHRhY2gpIHsKKwkJZHJtX3ByaW1lX2dlbV9kZXN0cm95KG9iaiwgcmtfb2JqLT5zZ3QpOwor
-CX0gZWxzZSB7CisJCWRybV9nZW1fZnJlZV9tbWFwX29mZnNldChvYmopOworCQlyb2NrY2hpcF9n
-ZW1fZnJlZV9idWYocmtfb2JqKTsKKwl9CiAKIAlrZnJlZShya19vYmopOwogfQpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uaCBiL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmgKaW5kZXggYWQyMjYxOC4uOWZkNThl
-MyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0u
-aAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oCkBAIC0y
-MSw2ICsyMSw3IEBAIHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0IHsKIAlzdHJ1Y3QgZHJtX2dl
-bV9vYmplY3QgYmFzZTsKIAl1bnNpZ25lZCBpbnQgZmxhZ3M7CiAKKwlzdHJ1Y3Qgc2dfdGFibGUg
-KnNndDsKIAl2b2lkICprdmFkZHI7CiAJZG1hX2FkZHJfdCBkbWFfYWRkcjsKIAlzdHJ1Y3QgZG1h
-X2F0dHJzIGRtYV9hdHRyczsKQEAgLTI4LDggKzI5LDEwIEBAIHN0cnVjdCByb2NrY2hpcF9nZW1f
-b2JqZWN0IHsKIAogc3RydWN0IHNnX3RhYmxlICpyb2NrY2hpcF9nZW1fcHJpbWVfZ2V0X3NnX3Rh
-YmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
-Ci1yb2NrY2hpcF9nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZGV2aWNlICpk
-ZXYsIHNpemVfdCBzaXplLAorcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZShzdHJ1
-Y3QgZHJtX2RldmljZSAqZHJtLAorCQkJCSAgIHN0cnVjdCBkbWFfYnVmX2F0dGFjaG1lbnQgKmF0
-dGFjaCwKIAkJCQkgICBzdHJ1Y3Qgc2dfdGFibGUgKnNndCk7CisKIHZvaWQgKnJvY2tjaGlwX2dl
-bV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKIHZvaWQgcm9ja2NoaXBf
-Z2VtX3ByaW1lX3Z1bm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgdm9pZCAqdmFkZHIp
-OwogCi0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+Hi, Heiko
+
+Could I test the code on rk3368 STB such as EKB368, CSA90?
+Is there some documents about it?
+
+Thanks
+
+bamvor=09
+
+On 06/26/2015 02:12 AM, Heiko St=FCbner wrote:
+> This adds initial support for the new rk3368 ARM64 soc from Rockchip.
+>
+> Overall it looks like someone dropped some A53 cores into a rk3288, s=
+o
+> it shares a lot of peripherals that only differ in details. Therefore
+> stuff like the mmc, usb, spi, i2c controllers work out of the box.
+> The support for the gmac already made it into the merge window as wel=
+l
+> as the pinctrl support.
+>
+> Interestingly, in its core the rk3368 seems trying to be a model stud=
+ent
+> with psci for smp and using scpi for ddr frequency scaling, although =
+I
+> currently do not understand how the mailbox works yet. The display
+> controllers also are only minimally different so I'm hopefully to hav=
+e
+> working graphics in the near-ish future :-)
+>
+>
+> As mentioned in the dts patch, this series depends on the dt-binding
+> header for the clock ids, so will need a shared branch once this is r=
+eady.
+>
+>
+> Heiko Stuebner (4):
+>    arm64: add Rockchip architecture entry
+>    arm64: defconfig: enable ARCH_ROCKCHIP
+>    arm64: dts: add Rockchip rk3368 core dtsi and board dts for the r8=
+8
+>      board
+>    dt-bindings: document rk3368 R89 board from Rockchip
+>
+>   Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>   arch/arm64/Kconfig                                 |  10 +
+>   arch/arm64/boot/dts/Makefile                       |   1 +
+>   arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+>   arch/arm64/boot/dts/rockchip/rk3368-r88.dts        | 353 ++++++++
+>   arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 900 ++++++++++=
++++++++++++
+>   arch/arm64/configs/defconfig                       |   2 +
+>   7 files changed, 1275 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/Makefile
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3368.dtsi
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
