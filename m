@@ -1,51 +1,35 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: fixes and new features
-Date: Tue, 30 Jun 2015 14:50:59 +0800
-Message-ID: <55923C53.4020305@rock-chips.com>
+From: Alexey Klimov <klimov.linux@gmail.com>
+Subject: [PATCH 1/2] spi/s3c24xx: remove unnecessary memset of s3c24xx_spi
+Date: Tue, 30 Jun 2015 21:03:58 +0300
+Message-ID: <1435687438.27701.12.camel@ceres>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: linux-spi@vger.kernel.org, broonie@kernel.org
+Cc: linux-samsung-soc@vger.kernel.org, klimov.linux@gmail.com, addy.ke@rock-chips.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZS4KCiAgICAgU29tZSBmaXhlcyBhbmQgc29tZSBuZXcgZmVhdHVyZXMuIEknZCBsaWtl
-IHlvdSBjYW4gcHVsbCB0aGVtLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCBj
-NWZkOTM2ZTk5MmRkMjgyOTE2N2QyYWRjNjNlMTUxNjc1Y2E2ODk4OgoKICAgZHJtL25vdXZlYXU6
-IFBhdXNlIGJldHdlZW4gc2V0dGluZyBncHUgdG8gRDNob3QgYW5kIGN1dHRpbmcgdGhlIHBvd2Vy
-IAooMjAxNS0wNi0yNiAxMDoyNjozNyArMTAwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCBy
-ZXBvc2l0b3J5IGF0OgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1y
-b2NrY2hpcC5naXQgCmRybS1yb2NrY2hpcC0yMDE1LTA2LTMwCgpmb3IgeW91IHRvIGZldGNoIGNo
-YW5nZXMgdXAgdG8gNTI5NWMwNWViMzBkNzQzOTg3MTcyODUzMTc5MzMzYzgwYjgyNDJiYzoKCiAg
-IGRybS9yb2NrY2hpcDogZGVmYXVsdCBlbmFibGUgd2luMi8zIGFyZWEwIGJpdCAoMjAxNS0wNi0z
-MCAxNDoyNDoxMCArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KSGVpa28gU3TDvGJuZXIgKDEpOgogICAgICAgZHJt
-L3JvY2tjaGlwOiBvbmx5IGNhbGwgZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50IGlmIGZiX2hl
-bHBlciAKcHJlc2VudAoKTWFyayBZYW8gKDYpOgogICAgICAgZHJtL3JvY2tjaGlwOiBpbXBvcnQg
-ZG1hX2J1ZiB0byBnZW0KICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBvcHRpbWl6ZSB2aXJ0dWFs
-IHN0cmlkZSBjYWxjdWxhdGUKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBmaXggeXV2IHBsYW5l
-IHN1cHBvcnQKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBzdXBwb3J0IHBsYW5lIHNjYWxlCiAg
-ICAgICBkcm0vcm9ja2NoaXA6IHZvcDogc3dpdGNoIGN1cnNvciBwbGFuZSB0byB3aW5kb3cgMwog
-ICAgICAgZHJtL3JvY2tjaGlwOiBkZWZhdWx0IGVuYWJsZSB3aW4yLzMgYXJlYTAgYml0CgpUb21h
-c3ogRmlnYSAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IEFkZCBCR1IgZm9ybWF0cyB0byBWT1AK
-CiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8ICAgIDEgKwog
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgfCAgICAzICstCiAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8ICAgNDAgKystCiAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uaCB8ICAgIDUgKy0KICBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDUwMCAKKysrKysr
-KysrKysrKysrKysrKysrKysrKystCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuaCB8ICAgOTYgKysrKysKICA2IGZpbGVzIGNoYW5nZWQsIDYyOCBpbnNlcnRpb25z
-KCspLCAxNyBkZWxldGlvbnMoLSkKCi0tIArvvK1hcmsKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Memory for this struct is allocated by spi_alloc_master() using
+kzalloc() so it doesn't need to be set to 0 one more time.
+
+Signed-off-by: Alexey Klimov <klimov.linux@gmail.com>
+---
+ drivers/spi/spi-s3c24xx.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/spi/spi-s3c24xx.c b/drivers/spi/spi-s3c24xx.c
+index f747ca2..f36bc32 100644
+--- a/drivers/spi/spi-s3c24xx.c
++++ b/drivers/spi/spi-s3c24xx.c
+@@ -501,7 +501,6 @@ static int s3c24xx_spi_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	hw = spi_master_get_devdata(master);
+-	memset(hw, 0, sizeof(struct s3c24xx_spi));
+ 
+ 	hw->master = master;
+ 	hw->pdata = pdata = dev_get_platdata(&pdev->dev);
+-- 
+1.9.1
