@@ -1,45 +1,51 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 4/4] dt-bindings: document rk3368 R88 board from Rockchip
-Date: Mon, 29 Jun 2015 14:35:13 +0200
-Message-ID: <7253030.KcEv5ApOSe@diego>
-References: <3333434.ZKWQ6GxgtB@diego>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: fixes and new features
+Date: Tue, 30 Jun 2015 14:50:59 +0800
+Message-ID: <55923C53.4020305@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3333434.ZKWQ6GxgtB@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The initial board containing the rk3368 ARM64 soc.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-This should probably be simply in one branch with the Netxeon board
-seen in the diff above, to prevent unncessary merge conflicts?
-
- Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index b30bed1..c4119e0 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -30,3 +30,7 @@ Rockchip platforms device tree bindings
- - Netxeon R89 board:
-     Required root node properties:
-       - compatible = "netxeon,r89", "rockchip,rk3288";
-+
-+- Rockchip R88 board:
-+    Required root node properties:
-+      - compatible = "rockchip,r88", "rockchip,rk3368";
--- 
-2.1.4
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgRGF2ZS4KCiAgICAgU29tZSBmaXhlcyBhbmQgc29tZSBuZXcgZmVhdHVyZXMuIEknZCBsaWtl
+IHlvdSBjYW4gcHVsbCB0aGVtLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCBj
+NWZkOTM2ZTk5MmRkMjgyOTE2N2QyYWRjNjNlMTUxNjc1Y2E2ODk4OgoKICAgZHJtL25vdXZlYXU6
+IFBhdXNlIGJldHdlZW4gc2V0dGluZyBncHUgdG8gRDNob3QgYW5kIGN1dHRpbmcgdGhlIHBvd2Vy
+IAooMjAxNS0wNi0yNiAxMDoyNjozNyArMTAwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCBy
+ZXBvc2l0b3J5IGF0OgoKICAgaHR0cHM6Ly9naXRodWIuY29tL21hcmt5enEva2VybmVsLWRybS1y
+b2NrY2hpcC5naXQgCmRybS1yb2NrY2hpcC0yMDE1LTA2LTMwCgpmb3IgeW91IHRvIGZldGNoIGNo
+YW5nZXMgdXAgdG8gNTI5NWMwNWViMzBkNzQzOTg3MTcyODUzMTc5MzMzYzgwYjgyNDJiYzoKCiAg
+IGRybS9yb2NrY2hpcDogZGVmYXVsdCBlbmFibGUgd2luMi8zIGFyZWEwIGJpdCAoMjAxNS0wNi0z
+MCAxNDoyNDoxMCArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KSGVpa28gU3TDvGJuZXIgKDEpOgogICAgICAgZHJt
+L3JvY2tjaGlwOiBvbmx5IGNhbGwgZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50IGlmIGZiX2hl
+bHBlciAKcHJlc2VudAoKTWFyayBZYW8gKDYpOgogICAgICAgZHJtL3JvY2tjaGlwOiBpbXBvcnQg
+ZG1hX2J1ZiB0byBnZW0KICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBvcHRpbWl6ZSB2aXJ0dWFs
+IHN0cmlkZSBjYWxjdWxhdGUKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBmaXggeXV2IHBsYW5l
+IHN1cHBvcnQKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBzdXBwb3J0IHBsYW5lIHNjYWxlCiAg
+ICAgICBkcm0vcm9ja2NoaXA6IHZvcDogc3dpdGNoIGN1cnNvciBwbGFuZSB0byB3aW5kb3cgMwog
+ICAgICAgZHJtL3JvY2tjaGlwOiBkZWZhdWx0IGVuYWJsZSB3aW4yLzMgYXJlYTAgYml0CgpUb21h
+c3ogRmlnYSAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IEFkZCBCR1IgZm9ybWF0cyB0byBWT1AK
+CiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8ICAgIDEgKwog
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgfCAgICAzICstCiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8ICAgNDAgKystCiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uaCB8ICAgIDUgKy0KICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDUwMCAKKysrKysr
+KysrKysrKysrKysrKysrKysrKystCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuaCB8ICAgOTYgKysrKysKICA2IGZpbGVzIGNoYW5nZWQsIDYyOCBpbnNlcnRpb25z
+KCspLCAxNyBkZWxldGlvbnMoLSkKCi0tIArvvK1hcmsKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
