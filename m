@@ -1,55 +1,52 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/2] spi/s3c24xx: remove unnecessary memset of s3c24xx_spi
-Date: Wed, 1 Jul 2015 12:25:44 +0800
-Message-ID: <CAGS+omAnwhxKzfBm18oETgCKM2r3qtVpS9VR=GzbQhU6ujzVrQ@mail.gmail.com>
-References: <1435687438.27701.12.camel@ceres>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [GIT PULL] drm/rockchip: fixes and new features
+Date: Wed, 1 Jul 2015 17:03:39 +0900
+Message-ID: <CAAFQd5A4A6De3S6Rbr2Me9z=i_zTGNX3uL6=oUsZJ4qVa6oYgQ@mail.gmail.com>
+References: <55923C53.4020305@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1435687438.27701.12.camel@ceres>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexey Klimov <klimov.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?UTF-8?B?5p+v6aOe6ZuE?= <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <55923C53.4020305@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 1, 2015 at 2:03 AM, Alexey Klimov <klimov.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> Memory for this struct is allocated by spi_alloc_master() using
-> kzalloc() so it doesn't need to be set to 0 one more time.
->
-> Signed-off-by: Alexey Klimov <klimov.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-Yup, I just noticed this too when reviewing the mediatek SPI driver.
-
-For both patches:
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
-> ---
->  drivers/spi/spi-s3c24xx.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/drivers/spi/spi-s3c24xx.c b/drivers/spi/spi-s3c24xx.c
-> index f747ca2..f36bc32 100644
-> --- a/drivers/spi/spi-s3c24xx.c
-> +++ b/drivers/spi/spi-s3c24xx.c
-> @@ -501,7 +501,6 @@ static int s3c24xx_spi_probe(struct platform_device *pdev)
->         }
->
->         hw = spi_master_get_devdata(master);
-> -       memset(hw, 0, sizeof(struct s3c24xx_spi));
->
->         hw->master = master;
->         hw->pdata = pdata = dev_get_platdata(&pdev->dev);
-> --
-> 1.9.1
->
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTWFyaywKCk9uIFR1ZSwgSnVuIDMwLCAyMDE1IGF0IDM6NTAgUE0sIE1hcmsgeWFvIDxtYXJr
+Lnlhb0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4KPiBIaSBEYXZlLgo+Cj4gICAgIFNvbWUgZml4
+ZXMgYW5kIHNvbWUgbmV3IGZlYXR1cmVzLiBJJ2QgbGlrZSB5b3UgY2FuIHB1bGwgdGhlbS4KPgo+
+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYzVmZDkzNmU5OTJkZDI4MjkxNjdk
+MmFkYzYzZTE1MTY3NWNhNjg5ODoKPgo+ICAgZHJtL25vdXZlYXU6IFBhdXNlIGJldHdlZW4gc2V0
+dGluZyBncHUgdG8gRDNob3QgYW5kIGN1dHRpbmcgdGhlIHBvd2VyICgyMDE1LTA2LTI2IDEwOjI2
+OjM3ICsxMDAwKQo+Cj4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6Cj4K
+PiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9tYXJreXpxL2tlcm5lbC1kcm0tcm9ja2NoaXAuZ2l0IGRy
+bS1yb2NrY2hpcC0yMDE1LTA2LTMwCj4KPiBmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8g
+NTI5NWMwNWViMzBkNzQzOTg3MTcyODUzMTc5MzMzYzgwYjgyNDJiYzoKPgo+ICAgZHJtL3JvY2tj
+aGlwOiBkZWZhdWx0IGVuYWJsZSB3aW4yLzMgYXJlYTAgYml0ICgyMDE1LTA2LTMwIDE0OjI0OjEw
+ICswODAwKQo+Cj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLQo+IEhlaWtvIFN0w7xibmVyICgxKToKPiAgICAgICBkcm0vcm9j
+a2NoaXA6IG9ubHkgY2FsbCBkcm1fZmJfaGVscGVyX2hvdHBsdWdfZXZlbnQgaWYgZmJfaGVscGVy
+IHByZXNlbnQKPgo+IE1hcmsgWWFvICg2KToKPiAgICAgICBkcm0vcm9ja2NoaXA6IGltcG9ydCBk
+bWFfYnVmIHRvIGdlbQo+ICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBvcHRpbWl6ZSB2aXJ0dWFs
+IHN0cmlkZSBjYWxjdWxhdGUKPiAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDogZml4IHl1diBwbGFu
+ZSBzdXBwb3J0Cj4gICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHN1cHBvcnQgcGxhbmUgc2NhbGUK
+PiAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDogc3dpdGNoIGN1cnNvciBwbGFuZSB0byB3aW5kb3cg
+Mwo+ICAgICAgIGRybS9yb2NrY2hpcDogZGVmYXVsdCBlbmFibGUgd2luMi8zIGFyZWEwIGJpdAoK
+SGFzIHRoaXMgc2VyaWVzIGJlZW4gcmV2aWV3ZWQgcHJvcGVybHk/IEkgY2FuIHNlZSB0aGF0IGF0
+IGxlYXN0CiJkcm0vcm9ja2NoaXA6IHZvcDogc3VwcG9ydCBwbGFuZSBzY2FsZSIgaXMga2luZCBv
+ZiAiY29udHJvdmVyc2lhbCIuCgpCeSB0aGUgd2F5LCBpZiB3ZSdyZSB1c2luZyB3aW5kb3cgMyBm
+b3IgY3Vyc29yIHBsYW5lLCBiZWNhdXNlIHRoZQpjdXJzb3Igd2luZG93IG5lZWRzIHNwZWNpYWwg
+aGFuZGxpbmcsIGlzIGl0IG9rYXkgdG8gZXhwb3NlIHRoZSBjdXNvcgp3aW5kb3cgYXMgYW4gb3Zl
+cmxheSBwbGFuZSB0byB1c2Vyc3BhY2UsIGFzIHdlIGRvIGN1cnJlbnRseT8KCkJlc3QgcmVnYXJk
+cywKVG9tYXN6Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
