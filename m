@@ -1,15 +1,16 @@
 From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/9] clk: rockchip: fix faulty vip parent name on rk3288
-Date: Thu, 2 Jul 2015 15:51:31 -0700
-Message-ID: <20150702225131.GL4301@codeaurora.org>
+Subject: Re: [PATCH v2 3/9] clk: rockchip: protect register macros against
+ multipart values
+Date: Thu, 2 Jul 2015 15:51:43 -0700
+Message-ID: <20150702225143.GM4301@codeaurora.org>
 References: <1434637116-17124-1-git-send-email-heiko@sntech.de>
- <1434637116-17124-3-git-send-email-heiko@sntech.de>
+ <1434637116-17124-4-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1434637116-17124-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <1434637116-17124-4-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,9 +25,10 @@ Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette
 List-Id: linux-rockchip.vger.kernel.org
 
 On 06/18, Heiko Stuebner wrote:
-> The video input processor (vip) was called camera interface (cif) on
-> older socs which seems to have resulted in a copy'n'paste error when
-> creating the rk3288 camera clocks.
+> The macros calculate the correct offset from the id in the parameter.
+> If this parameter does not consist of a single number, the calculation
+> will return wrong registers in the best case or create unaligned accesses
+> in the worst case. So protect the calculations against such values.
 > 
 > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
