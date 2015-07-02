@@ -1,124 +1,65 @@
 From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 2/5] drm/rockchip: vop: fix yuv plane support
-Date: Thu, 02 Jul 2015 14:53:38 +0800
-Message-ID: <5594DFF2.8020609@rock-chips.com>
-References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com>
- <1435313249-4549-3-git-send-email-mark.yao@rock-chips.com>
- <CAAFQd5AAYSMNRtJBVU+2LHhA=JhJQVTEGmf2+pVt5JMXbbmg-g@mail.gmail.com>
+Subject: Re: [PATCH] drm/rockchip: vop: remove hardware cursor window
+Date: Thu, 02 Jul 2015 15:03:34 +0800
+Message-ID: <5594E246.6090500@rock-chips.com>
+References: <1435744173-23112-1-git-send-email-mark.yao@rock-chips.com> <1617606.rtBNOYcypX@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAAFQd5AAYSMNRtJBVU+2LHhA=JhJQVTEGmf2+pVt5JMXbbmg-g@mail.gmail.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: xw@rock-chips.com, zwl@rock-chips.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, dkm@rock-chips.com, sandy.huang@rock-chips.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1617606.rtBNOYcypX@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel@ffwll.ch>, Rob Clark <robdclark@gmail.com>, tfiga@chromium.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, sandy.huang@rock-chips.com, dkm@rock-chips.com, zwl@rock-chips.com, xw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgVG9tYXN6CiAgICAgVGhhbmtzIGZvciB5b3VyIHJldmlldywgSSB3aWxsIGZpeCBpdCBzb29u
-LgpPbiAyMDE15bm0MDfmnIgwMuaXpSAxNDowMCwgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4gSGkgTWFy
-aywKPgo+IFBsZWFzZSBzZWUgbXkgY29tbWVudHMgaW5saW5lLgo+Cj4gT24gRnJpLCBKdW4gMjYs
-IDIwMTUgYXQgNzowNyBQTSwgTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90
-ZToKPj4gdm9wIHN1cHBvcnQgeXV2IHdpdGggTlYxMiwgTlYxNiBhbmQgTlYyNCwgb25seSAyIHBs
-YW5lIHl1di4KPj4KPj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hp
-cHMuY29tPgo+Pgo+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIFV2IGJ1ZmZlciBub3Qgc3VwcG9ydCBv
-ZGQgb2Zmc2V0LCBhbGlnbiBpdC4KPj4gLSBGaXggZXJyb3IgZGlzcGxheSB3aGVuIG1vdmUgeXV2
-IGltYWdlLgo+Pgo+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jIHwgICA2MyArKysrKysrKysrKysrKysrKysrKysrKystLS0KPj4gICAxIGZpbGUg
-Y2hhbmdlZCwgNTcgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGluZGV4IDNjOWY0ZjMuLjZj
-YTA4ZjggMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYwo+PiBAQCAtMzczLDYgKzM3MywxOCBAQCBzdGF0aWMgZW51bSB2b3BfZGF0YV9mb3JtYXQg
-dm9wX2NvbnZlcnRfZm9ybWF0KHVpbnQzMl90IGZvcm1hdCkKPj4gICAgICAgICAgfQo+PiAgIH0K
-Pj4KPj4gK3N0YXRpYyBib29sIGlzX3l1dl9zdXBwb3J0KHVpbnQzMl90IGZvcm1hdCkKPj4gK3sK
-Pj4gKyAgICAgICBzd2l0Y2ggKGZvcm1hdCkgewo+PiArICAgICAgIGNhc2UgRFJNX0ZPUk1BVF9O
-VjEyOgo+PiArICAgICAgIGNhc2UgRFJNX0ZPUk1BVF9OVjE2Ogo+PiArICAgICAgIGNhc2UgRFJN
-X0ZPUk1BVF9OVjI0Ogo+PiArICAgICAgICAgICAgICAgcmV0dXJuIHRydWU7Cj4+ICsgICAgICAg
-ZGVmYXVsdDoKPj4gKyAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTsKPj4gKyAgICAgICB9Cj4+
-ICt9Cj4+ICsKPj4gICBzdGF0aWMgYm9vbCBpc19hbHBoYV9zdXBwb3J0KHVpbnQzMl90IGZvcm1h
-dCkKPj4gICB7Cj4+ICAgICAgICAgIHN3aXRjaCAoZm9ybWF0KSB7Cj4+IEBAIC01NzcsMTYgKzU4
-OSwyMSBAQCBzdGF0aWMgaW50IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQoc3RydWN0IGRybV9wbGFu
-ZSAqcGxhbmUsCj4+ICAgICAgICAgIHN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPj4g
-ICAgICAgICAgc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmo7Cj4+ICAgICAgICAgIHN0cnVjdCBy
-b2NrY2hpcF9nZW1fb2JqZWN0ICpya19vYmo7Cj4+ICsgICAgICAgc3RydWN0IGRybV9nZW1fb2Jq
-ZWN0ICp1dl9vYmo7Cj4+ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX3V2
-X29iajsKPj4gICAgICAgICAgdW5zaWduZWQgbG9uZyBvZmZzZXQ7Cj4+ICAgICAgICAgIHVuc2ln
-bmVkIGludCBhY3R1YWxfdzsKPj4gICAgICAgICAgdW5zaWduZWQgaW50IGFjdHVhbF9oOwo+PiAg
-ICAgICAgICB1bnNpZ25lZCBpbnQgZHNwX3N0eDsKPj4gICAgICAgICAgdW5zaWduZWQgaW50IGRz
-cF9zdHk7Cj4+ICAgICAgICAgIHVuc2lnbmVkIGludCB5X3Zpcl9zdHJpZGU7Cj4+ICsgICAgICAg
-dW5zaWduZWQgaW50IHV2X3Zpcl9zdHJpZGU7Cj4+ICAgICAgICAgIGRtYV9hZGRyX3QgeXJnYl9t
-c3Q7Cj4+ICsgICAgICAgZG1hX2FkZHJfdCB1dl9tc3Q7Cj4+ICAgICAgICAgIGVudW0gdm9wX2Rh
-dGFfZm9ybWF0IGZvcm1hdDsKPj4gICAgICAgICAgdWludDMyX3QgdmFsOwo+PiAgICAgICAgICBi
-b29sIGlzX2FscGhhOwo+PiArICAgICAgIGJvb2wgaXNfeXV2Owo+PiAgICAgICAgICBib29sIHZp
-c2libGU7Cj4+ICAgICAgICAgIGludCByZXQ7Cj4+ICAgICAgICAgIHN0cnVjdCBkcm1fcmVjdCBk
-ZXN0ID0gewo+PiBAQCAtNjA4LDYgKzYyNSwxMiBAQCBzdGF0aWMgaW50IHZvcF91cGRhdGVfcGxh
-bmVfZXZlbnQoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4+ICAgICAgICAgIH07Cj4+ICAgICAg
-ICAgIGJvb2wgY2FuX3Bvc2l0aW9uID0gcGxhbmUtPnR5cGUgIT0gRFJNX1BMQU5FX1RZUEVfUFJJ
-TUFSWTsKPj4KPj4gKyAgICAgICBpZiAoZHJtX2Zvcm1hdF9udW1fcGxhbmVzKGZiLT5waXhlbF9m
-b3JtYXQpID4gMikgewo+PiArICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJ1bnN1cHBvcnQgbW9y
-ZSB0aGFuIDIgcGxhbmUgZm9ybWF0WyUwOHhdXG4iLAo+PiArICAgICAgICAgICAgICAgICAgICAg
-ICAgIGZiLT5waXhlbF9mb3JtYXQpOwo+PiArICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7
-Cj4+ICsgICAgICAgfQo+IEhtbSwgZG8geW91IG5lZWQgdG8gY2hlY2sgdGhpcz8gRG9lc24ndCB0
-aGUgY29yZSBndWFyYW50ZWUgdGhhdCB3aXRoCj4gZ2l2ZW4gcGl4ZWxfZm9ybWF0IHlvdSBhbHdh
-eXMgZ2V0IHRoZSByaWdodCBwbGFuZSBjb3VudD8gKFBvc3NpYmx5IGF0Cj4gZmIgY3JlYXRpb24g
-dGltZSwgYnV0IEkgaGF2ZW4ndCBjaGVja2VkIHRoYXQuKQoKSSBqdXN0IHdhbnQgdG8gcG9pbnQg
-b3V0IHRoYXQgdXBkYXRlX3BsYW5lIGNhbid0IGhhbmRsZSBidWZmZXIgbnVtYmVyID4gCjIgY2Fz
-ZS4KCkJ1dCBzaW5jZSBhbGwgd2luZG93cyBjYW4ndCBzdXBwb3J0IDMgYnVmZmVyIGNvdW50IGZv
-cm1hdCwgdGhpcyBjaGVjayAKY2FuIHJlbW92ZS4KCj4+ICsKPj4gICAgICAgICAgcmV0ID0gZHJt
-X3BsYW5lX2hlbHBlcl9jaGVja191cGRhdGUocGxhbmUsIGNydGMsIGZiLAo+PiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmc3JjLCAmZGVzdCwgJmNsaXAsCj4+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9QTEFORV9I
-RUxQRVJfTk9fU0NBTElORywKPj4gQEAgLTYyNCwyOCArNjQ3LDUyIEBAIHN0YXRpYyBpbnQgdm9w
-X3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPj4gICAgICAgICAg
-aWYgKGZvcm1hdCA8IDApCj4+ICAgICAgICAgICAgICAgICAgcmV0dXJuIGZvcm1hdDsKPj4KPj4g
-KyAgICAgICBpc195dXYgPSBpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KTsKPiBuaXQ6
-IENvdWxkIHlvdSBncm91cCB0aGlzIHRvZ2V0aGVyIHdpdGggb3RoZXIgaXNfKiBhc3NpZ25tZW50
-cywgYWJvdmUKPiB0aGUgY2FsbCB0byB2b3BfY29udmVydF9mb3JtYXQoKT8KT0suCj4+ICsKPj4g
-ICAgICAgICAgb2JqID0gcm9ja2NoaXBfZmJfZ2V0X2dlbV9vYmooZmIsIDApOwo+PiAgICAgICAg
-ICBpZiAoIW9iaikgewo+PiAgICAgICAgICAgICAgICAgIERSTV9FUlJPUigiZmFpbCB0byBnZXQg
-cm9ja2NoaXAgZ2VtIG9iamVjdCBmcm9tIGZyYW1lYnVmZmVyXG4iKTsKPj4gICAgICAgICAgICAg
-ICAgICByZXR1cm4gLUVJTlZBTDsKPj4gICAgICAgICAgfQo+Pgo+PiArICAgICAgIGlmIChpc195
-dXYpIHsKPj4gKyAgICAgICAgICAgICAgIHNyYy54MSAmPSAofjEpIDw8IDE2Owo+PiArICAgICAg
-ICAgICAgICAgc3JjLnkxICY9ICh+MSkgPDwgMTY7Cj4gSG1tLCBpZiB5b3UgYWxpZ24geDEgYW5k
-IHkxLCBzaG91bGRuJ3QgeW91IGFsc28gb2Zmc2V0IHgyIGFuZCB5Miwgc28KPiB0aGUgd2lkdGgg
-YW5kIGhlaWdodCBvZiB0aGUgcmVjdGFuZ2xlIGFyZSBwcmVzZXJ2ZWQ/IEFsc28gSSBjb3VsZG4n
-dAo+IGZpbmQgYW55IGRldGFpbHMgb24gdGhpcywgYnV0IHdoYXQgYXJlIHRoZSBzZW1hbnRpY3Mg
-b2YKPiAudXBkYXRlX3BsYW5lKCksIHNob3VsZCBpdCByZWFsbHkgYWxpZ24gdGhlIHZhbHVlcyBv
-ciBtYXliZSBqdXN0IGZhaWw/Cgpmb3IgeXV2IGZvcm1hdCwgdGhlIGJ1ZmZlciBzdGFydCBwb2lu
-dCBuZWVkIGFsaWduLCBjYW4ndCBiZSBvZGQuCgpPSywgSSB3aWxsIGZpeCB0aGUgeDIgYW5kIHky
-IG9mZnNldC4KCj4+ICsgICAgICAgfQo+PiArCj4+ICAgICAgICAgIHJrX29iaiA9IHRvX3JvY2tj
-aGlwX29iaihvYmopOwo+Pgo+PiAgICAgICAgICBhY3R1YWxfdyA9IChzcmMueDIgLSBzcmMueDEp
-ID4+IDE2Owo+PiAgICAgICAgICBhY3R1YWxfaCA9IChzcmMueTIgLSBzcmMueTEpID4+IDE2Owo+
-PiAtICAgICAgIGNydGNfeCA9IG1heCgwLCBjcnRjX3gpOwo+PiAtICAgICAgIGNydGNfeSA9IG1h
-eCgwLCBjcnRjX3kpOwo+Pgo+PiAtICAgICAgIGRzcF9zdHggPSBjcnRjX3ggKyBjcnRjLT5tb2Rl
-Lmh0b3RhbCAtIGNydGMtPm1vZGUuaHN5bmNfc3RhcnQ7Cj4+IC0gICAgICAgZHNwX3N0eSA9IGNy
-dGNfeSArIGNydGMtPm1vZGUudnRvdGFsIC0gY3J0Yy0+bW9kZS52c3luY19zdGFydDsKPj4gKyAg
-ICAgICBkc3Bfc3R4ID0gZGVzdC54MSArIGNydGMtPm1vZGUuaHRvdGFsIC0gY3J0Yy0+bW9kZS5o
-c3luY19zdGFydDsKPj4gKyAgICAgICBkc3Bfc3R5ID0gZGVzdC55MSArIGNydGMtPm1vZGUudnRv
-dGFsIC0gY3J0Yy0+bW9kZS52c3luY19zdGFydDsKPiBUaGlzIGNoYW5nZSBjb3VsZCBiZSBzcGxp
-dCBpbnRvIHNlcGFyYXRlIHBhdGNoLCB3aGljaCBhY3R1YWxseSBmaXhlcwo+IHRoZSBjb29yZGlu
-YXRlcyB1c2VkIGZvciB0aGlzIGNhbGN1bGF0aW9uLCBiZWNhdXNlIHRoYXQncyB3aHkgd2UgZG8K
-PiBjbGlwcGluZyB3aXRoIGRybV9wbGFuZV9oZWxwZXJfY2hlY2tfdXBkYXRlKCkgZmlyc3QgdG8g
-dXNlIGRlc3Qgbm90Cj4gY3J0Y197eCx5fS4KT0sKPj4gLSAgICAgICBvZmZzZXQgPSAoc3JjLngx
-ID4+IDE2KSAqIChmYi0+Yml0c19wZXJfcGl4ZWwgPj4gMyk7Cj4+ICsgICAgICAgb2Zmc2V0ID0g
-KHNyYy54MSA+PiAxNikgKiBkcm1fZm9ybWF0X3BsYW5lX2NwcChmYi0+cGl4ZWxfZm9ybWF0LCAw
-KTsKPj4gICAgICAgICAgb2Zmc2V0ICs9IChzcmMueTEgPj4gMTYpICogZmItPnBpdGNoZXNbMF07
-Cj4+IC0gICAgICAgeXJnYl9tc3QgPSBya19vYmotPmRtYV9hZGRyICsgb2Zmc2V0Owo+Pgo+PiAr
-ICAgICAgIHlyZ2JfbXN0ID0gcmtfb2JqLT5kbWFfYWRkciArIG9mZnNldCArIGZiLT5vZmZzZXRz
-WzBdOwo+IFRoaXMgKG1pc3Npbmcgb2Zmc2V0c1swXSBhZGRpdGlvbikgc2hvdWxkIGFsc28gYmUg
-YSBzZXBhcmF0ZSBwYXRjaCwKPiBiZWNhdXNlIGl0IHdhcyBvYnZpb3VzbHkgaW5jb3JyZWN0IGJl
-Zm9yZSB0aGlzIHBhdGNoLgpPSy4KPgo+IEJlc3QgcmVnYXJkcywKPiBUb21hc3oKPgo+Cj4KCgot
-LSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
-Lm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+On 2015=E5=B9=B407=E6=9C=8801=E6=97=A5 19:52, Heiko St=C3=BCbner wrote:
+> Hi Mark,
+>
+> Am Mittwoch, 1. Juli 2015, 17:49:33 schrieb Mark Yao:
+>> hardware cursor windows only have some fixed size, and not support
+>> width virtual, when move hardware cursor windows outside of left,
+>> the display would be wrong, so this window can't for cursor now.
+>>
+>> And Tag hardware cursor window as a overlay is wrong, will make
+>> userspace wrong behaviour.
+>>
+>> So just remove the hardware cursor window
+>>
+>> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+>> ---
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    1 -
+>>   1 file changed, 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c index 4603412..7373ba1=
+ 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> @@ -368,7 +368,6 @@ static const struct vop_win_data rk3288_vop_win_=
+data[] =3D
+>> { { .base =3D 0x40, .phy =3D &win01_data, .type =3D DRM_PLANE_TYPE_O=
+VERLAY }, {
+>> .base =3D 0x00, .phy =3D &win23_data, .type =3D DRM_PLANE_TYPE_OVERL=
+AY }, { .base
+>> =3D 0x50, .phy =3D &win23_data, .type =3D DRM_PLANE_TYPE_CURSOR }, -=
+	{ .base =3D
+>> 0x00, .phy =3D &cursor_data, .type =3D DRM_PLANE_TYPE_OVERLAY }, };
+>>
+>>   static const struct vop_data rk3288_vop =3D {
+> you should probably also remove the
+>
+> 	static const struct vop_win_phy cursor_data
+>
+> completely then, as it is now unused?
+>
+>
+> Heiko
+>
+>
+>
+OK
+
+--=20
+=EF=BC=ADark
