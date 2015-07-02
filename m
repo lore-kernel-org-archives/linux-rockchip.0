@@ -1,42 +1,112 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 1/5] drm/rockchip: vop: optimize virtual stride calculate
-Date: Thu, 2 Jul 2015 13:59:04 +0900
-Message-ID: <CAAFQd5B-W2uWFXo9me_MPdp0LDp0CK+mG6Rsbro9+JQSUBA4bw@mail.gmail.com>
-References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com> <1435313249-4549-2-git-send-email-mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2 2/5] drm/rockchip: vop: fix yuv plane support
+Date: Thu, 2 Jul 2015 15:00:30 +0900
+Message-ID: <CAAFQd5AAYSMNRtJBVU+2LHhA=JhJQVTEGmf2+pVt5JMXbbmg-g@mail.gmail.com>
+References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com>
+ <1435313249-4549-3-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435313249-4549-2-git-send-email-mark.yao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1435313249-4549-3-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel@ffwll.ch>, Rob Clark <robdclark@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, sandy.huang@rock-chips.com, dkm@rock-chips.com, zwl@rock-chips.com, xw@rock-chips.com
+Cc: xw@rock-chips.com, zwl@rock-chips.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, dkm@rock-chips.com, sandy.huang@rock-chips.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 26, 2015 at 7:07 PM, Mark Yao <mark.yao@rock-chips.com> wrote:
-> vir_stride need number words of the virtual width, and fb->pitches
-> save bytes_per_pixel, so just div 4 switch to stride.
->
-> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
-> ---
-> Changes in v2: None
->
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 6188221..3c9f4f3 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -644,7 +644,7 @@ static int vop_update_plane_event(struct drm_plane *plane,
->         offset += (src.y1 >> 16) * fb->pitches[0];
->         yrgb_mst = rk_obj->dma_addr + offset;
->
-> -       y_vir_stride = fb->pitches[0] / (fb->bits_per_pixel >> 3);
-> +       y_vir_stride = fb->pitches[0] >> 2;
-
-If the unit of y_vir_stride is words then doesn't it mean that the
-calculation before this patch was just invalid? If yes, shouldn't the
-subject actually say "Fix virtual stride calculation"?
-
-Best regards,
-Tomasz
+SGkgTWFyaywKClBsZWFzZSBzZWUgbXkgY29tbWVudHMgaW5saW5lLgoKT24gRnJpLCBKdW4gMjYs
+IDIwMTUgYXQgNzowNyBQTSwgTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90
+ZToKPiB2b3Agc3VwcG9ydCB5dXYgd2l0aCBOVjEyLCBOVjE2IGFuZCBOVjI0LCBvbmx5IDIgcGxh
+bmUgeXV2Lgo+Cj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
+Y29tPgo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAtIFV2IGJ1ZmZlciBub3Qgc3VwcG9ydCBvZGQgb2Zm
+c2V0LCBhbGlnbiBpdC4KPiAtIEZpeCBlcnJvciBkaXNwbGF5IHdoZW4gbW92ZSB5dXYgaW1hZ2Uu
+Cj4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8
+ICAgNjMgKysrKysrKysrKysrKysrKysrKysrKysrLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA1NyBp
+bnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggM2M5ZjRmMy4uNmNhMDhmOCAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0zNzMsNiAr
+MzczLDE4IEBAIHN0YXRpYyBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB2b3BfY29udmVydF9mb3JtYXQo
+dWludDMyX3QgZm9ybWF0KQo+ICAgICAgICAgfQo+ICB9Cj4KPiArc3RhdGljIGJvb2wgaXNfeXV2
+X3N1cHBvcnQodWludDMyX3QgZm9ybWF0KQo+ICt7Cj4gKyAgICAgICBzd2l0Y2ggKGZvcm1hdCkg
+ewo+ICsgICAgICAgY2FzZSBEUk1fRk9STUFUX05WMTI6Cj4gKyAgICAgICBjYXNlIERSTV9GT1JN
+QVRfTlYxNjoKPiArICAgICAgIGNhc2UgRFJNX0ZPUk1BVF9OVjI0Ogo+ICsgICAgICAgICAgICAg
+ICByZXR1cm4gdHJ1ZTsKPiArICAgICAgIGRlZmF1bHQ6Cj4gKyAgICAgICAgICAgICAgIHJldHVy
+biBmYWxzZTsKPiArICAgICAgIH0KPiArfQo+ICsKPiAgc3RhdGljIGJvb2wgaXNfYWxwaGFfc3Vw
+cG9ydCh1aW50MzJfdCBmb3JtYXQpCj4gIHsKPiAgICAgICAgIHN3aXRjaCAoZm9ybWF0KSB7Cj4g
+QEAgLTU3NywxNiArNTg5LDIxIEBAIHN0YXRpYyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChz
+dHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgICAgICAgIHN0cnVjdCB2b3AgKnZvcCA9IHRvX3Zv
+cChjcnRjKTsKPiAgICAgICAgIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+ICAgICAgICAg
+c3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iajsKPiArICAgICAgIHN0cnVjdCBkcm1f
+Z2VtX29iamVjdCAqdXZfb2JqOwo+ICsgICAgICAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3Qg
+KnJrX3V2X29iajsKPiAgICAgICAgIHVuc2lnbmVkIGxvbmcgb2Zmc2V0Owo+ICAgICAgICAgdW5z
+aWduZWQgaW50IGFjdHVhbF93Owo+ICAgICAgICAgdW5zaWduZWQgaW50IGFjdHVhbF9oOwo+ICAg
+ICAgICAgdW5zaWduZWQgaW50IGRzcF9zdHg7Cj4gICAgICAgICB1bnNpZ25lZCBpbnQgZHNwX3N0
+eTsKPiAgICAgICAgIHVuc2lnbmVkIGludCB5X3Zpcl9zdHJpZGU7Cj4gKyAgICAgICB1bnNpZ25l
+ZCBpbnQgdXZfdmlyX3N0cmlkZTsKPiAgICAgICAgIGRtYV9hZGRyX3QgeXJnYl9tc3Q7Cj4gKyAg
+ICAgICBkbWFfYWRkcl90IHV2X21zdDsKPiAgICAgICAgIGVudW0gdm9wX2RhdGFfZm9ybWF0IGZv
+cm1hdDsKPiAgICAgICAgIHVpbnQzMl90IHZhbDsKPiAgICAgICAgIGJvb2wgaXNfYWxwaGE7Cj4g
+KyAgICAgICBib29sIGlzX3l1djsKPiAgICAgICAgIGJvb2wgdmlzaWJsZTsKPiAgICAgICAgIGlu
+dCByZXQ7Cj4gICAgICAgICBzdHJ1Y3QgZHJtX3JlY3QgZGVzdCA9IHsKPiBAQCAtNjA4LDYgKzYy
+NSwxMiBAQCBzdGF0aWMgaW50IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQoc3RydWN0IGRybV9wbGFu
+ZSAqcGxhbmUsCj4gICAgICAgICB9Owo+ICAgICAgICAgYm9vbCBjYW5fcG9zaXRpb24gPSBwbGFu
+ZS0+dHlwZSAhPSBEUk1fUExBTkVfVFlQRV9QUklNQVJZOwo+Cj4gKyAgICAgICBpZiAoZHJtX2Zv
+cm1hdF9udW1fcGxhbmVzKGZiLT5waXhlbF9mb3JtYXQpID4gMikgewo+ICsgICAgICAgICAgICAg
+ICBEUk1fRVJST1IoInVuc3VwcG9ydCBtb3JlIHRoYW4gMiBwbGFuZSBmb3JtYXRbJTA4eF1cbiIs
+Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICBmYi0+cGl4ZWxfZm9ybWF0KTsKPiArICAgICAg
+ICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4gKyAgICAgICB9CgpIbW0sIGRvIHlvdSBuZWVkIHRv
+IGNoZWNrIHRoaXM/IERvZXNuJ3QgdGhlIGNvcmUgZ3VhcmFudGVlIHRoYXQgd2l0aApnaXZlbiBw
+aXhlbF9mb3JtYXQgeW91IGFsd2F5cyBnZXQgdGhlIHJpZ2h0IHBsYW5lIGNvdW50PyAoUG9zc2li
+bHkgYXQKZmIgY3JlYXRpb24gdGltZSwgYnV0IEkgaGF2ZW4ndCBjaGVja2VkIHRoYXQuKQoKPiAr
+Cj4gICAgICAgICByZXQgPSBkcm1fcGxhbmVfaGVscGVyX2NoZWNrX3VwZGF0ZShwbGFuZSwgY3J0
+YywgZmIsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmc3Jj
+LCAmZGVzdCwgJmNsaXAsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBEUk1fUExBTkVfSEVMUEVSX05PX1NDQUxJTkcsCj4gQEAgLTYyNCwyOCArNjQ3LDUyIEBA
+IHN0YXRpYyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
+ZSwKPiAgICAgICAgIGlmIChmb3JtYXQgPCAwKQo+ICAgICAgICAgICAgICAgICByZXR1cm4gZm9y
+bWF0Owo+Cj4gKyAgICAgICBpc195dXYgPSBpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0
+KTsKCm5pdDogQ291bGQgeW91IGdyb3VwIHRoaXMgdG9nZXRoZXIgd2l0aCBvdGhlciBpc18qIGFz
+c2lnbm1lbnRzLCBhYm92ZQp0aGUgY2FsbCB0byB2b3BfY29udmVydF9mb3JtYXQoKT8KCj4gKwo+
+ICAgICAgICAgb2JqID0gcm9ja2NoaXBfZmJfZ2V0X2dlbV9vYmooZmIsIDApOwo+ICAgICAgICAg
+aWYgKCFvYmopIHsKPiAgICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJmYWlsIHRvIGdldCByb2Nr
+Y2hpcCBnZW0gb2JqZWN0IGZyb20gZnJhbWVidWZmZXJcbiIpOwo+ICAgICAgICAgICAgICAgICBy
+ZXR1cm4gLUVJTlZBTDsKPiAgICAgICAgIH0KPgo+ICsgICAgICAgaWYgKGlzX3l1dikgewo+ICsg
+ICAgICAgICAgICAgICBzcmMueDEgJj0gKH4xKSA8PCAxNjsKPiArICAgICAgICAgICAgICAgc3Jj
+LnkxICY9ICh+MSkgPDwgMTY7CgpIbW0sIGlmIHlvdSBhbGlnbiB4MSBhbmQgeTEsIHNob3VsZG4n
+dCB5b3UgYWxzbyBvZmZzZXQgeDIgYW5kIHkyLCBzbwp0aGUgd2lkdGggYW5kIGhlaWdodCBvZiB0
+aGUgcmVjdGFuZ2xlIGFyZSBwcmVzZXJ2ZWQ/IEFsc28gSSBjb3VsZG4ndApmaW5kIGFueSBkZXRh
+aWxzIG9uIHRoaXMsIGJ1dCB3aGF0IGFyZSB0aGUgc2VtYW50aWNzIG9mCi51cGRhdGVfcGxhbmUo
+KSwgc2hvdWxkIGl0IHJlYWxseSBhbGlnbiB0aGUgdmFsdWVzIG9yIG1heWJlIGp1c3QgZmFpbD8K
+Cj4gKyAgICAgICB9Cj4gKwo+ICAgICAgICAgcmtfb2JqID0gdG9fcm9ja2NoaXBfb2JqKG9iaik7
+Cj4KPiAgICAgICAgIGFjdHVhbF93ID0gKHNyYy54MiAtIHNyYy54MSkgPj4gMTY7Cj4gICAgICAg
+ICBhY3R1YWxfaCA9IChzcmMueTIgLSBzcmMueTEpID4+IDE2Owo+IC0gICAgICAgY3J0Y194ID0g
+bWF4KDAsIGNydGNfeCk7Cj4gLSAgICAgICBjcnRjX3kgPSBtYXgoMCwgY3J0Y195KTsKPgo+IC0g
+ICAgICAgZHNwX3N0eCA9IGNydGNfeCArIGNydGMtPm1vZGUuaHRvdGFsIC0gY3J0Yy0+bW9kZS5o
+c3luY19zdGFydDsKPiAtICAgICAgIGRzcF9zdHkgPSBjcnRjX3kgKyBjcnRjLT5tb2RlLnZ0b3Rh
+bCAtIGNydGMtPm1vZGUudnN5bmNfc3RhcnQ7Cj4gKyAgICAgICBkc3Bfc3R4ID0gZGVzdC54MSAr
+IGNydGMtPm1vZGUuaHRvdGFsIC0gY3J0Yy0+bW9kZS5oc3luY19zdGFydDsKPiArICAgICAgIGRz
+cF9zdHkgPSBkZXN0LnkxICsgY3J0Yy0+bW9kZS52dG90YWwgLSBjcnRjLT5tb2RlLnZzeW5jX3N0
+YXJ0OwoKVGhpcyBjaGFuZ2UgY291bGQgYmUgc3BsaXQgaW50byBzZXBhcmF0ZSBwYXRjaCwgd2hp
+Y2ggYWN0dWFsbHkgZml4ZXMKdGhlIGNvb3JkaW5hdGVzIHVzZWQgZm9yIHRoaXMgY2FsY3VsYXRp
+b24sIGJlY2F1c2UgdGhhdCdzIHdoeSB3ZSBkbwpjbGlwcGluZyB3aXRoIGRybV9wbGFuZV9oZWxw
+ZXJfY2hlY2tfdXBkYXRlKCkgZmlyc3QgdG8gdXNlIGRlc3Qgbm90CmNydGNfe3gseX0uCgo+Cj4g
+LSAgICAgICBvZmZzZXQgPSAoc3JjLngxID4+IDE2KSAqIChmYi0+Yml0c19wZXJfcGl4ZWwgPj4g
+Myk7Cj4gKyAgICAgICBvZmZzZXQgPSAoc3JjLngxID4+IDE2KSAqIGRybV9mb3JtYXRfcGxhbmVf
+Y3BwKGZiLT5waXhlbF9mb3JtYXQsIDApOwo+ICAgICAgICAgb2Zmc2V0ICs9IChzcmMueTEgPj4g
+MTYpICogZmItPnBpdGNoZXNbMF07Cj4gLSAgICAgICB5cmdiX21zdCA9IHJrX29iai0+ZG1hX2Fk
+ZHIgKyBvZmZzZXQ7Cj4KPiArICAgICAgIHlyZ2JfbXN0ID0gcmtfb2JqLT5kbWFfYWRkciArIG9m
+ZnNldCArIGZiLT5vZmZzZXRzWzBdOwoKVGhpcyAobWlzc2luZyBvZmZzZXRzWzBdIGFkZGl0aW9u
+KSBzaG91bGQgYWxzbyBiZSBhIHNlcGFyYXRlIHBhdGNoLApiZWNhdXNlIGl0IHdhcyBvYnZpb3Vz
+bHkgaW5jb3JyZWN0IGJlZm9yZSB0aGlzIHBhdGNoLgoKQmVzdCByZWdhcmRzLApUb21hc3oKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
