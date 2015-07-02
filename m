@@ -1,50 +1,42 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: vop: remove hardware cursor window
-Date: Wed, 01 Jul 2015 13:52:22 +0200
-Message-ID: <1617606.rtBNOYcypX@diego>
-References: <1435744173-23112-1-git-send-email-mark.yao@rock-chips.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 1/5] drm/rockchip: vop: optimize virtual stride calculate
+Date: Thu, 2 Jul 2015 13:59:04 +0900
+Message-ID: <CAAFQd5B-W2uWFXo9me_MPdp0LDp0CK+mG6Rsbro9+JQSUBA4bw@mail.gmail.com>
+References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com> <1435313249-4549-2-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1435744173-23112-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1435313249-4549-2-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark Yao <mark.yao@rock-chips.com>
-Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel@ffwll.ch>, Rob Clark <robdclark@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, sandy.huang@rock-chips.com, dkm@rock-chips.com, zwl@rock-chips.com, xw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCkFtIE1pdHR3b2NoLCAxLiBKdWxpIDIwMTUsIDE3OjQ5OjMzIHNjaHJpZWIgTWFy
-ayBZYW86Cj4gaGFyZHdhcmUgY3Vyc29yIHdpbmRvd3Mgb25seSBoYXZlIHNvbWUgZml4ZWQgc2l6
-ZSwgYW5kIG5vdCBzdXBwb3J0Cj4gd2lkdGggdmlydHVhbCwgd2hlbiBtb3ZlIGhhcmR3YXJlIGN1
-cnNvciB3aW5kb3dzIG91dHNpZGUgb2YgbGVmdCwKPiB0aGUgZGlzcGxheSB3b3VsZCBiZSB3cm9u
-Zywgc28gdGhpcyB3aW5kb3cgY2FuJ3QgZm9yIGN1cnNvciBub3cuCj4gCj4gQW5kIFRhZyBoYXJk
-d2FyZSBjdXJzb3Igd2luZG93IGFzIGEgb3ZlcmxheSBpcyB3cm9uZywgd2lsbCBtYWtlCj4gdXNl
-cnNwYWNlIHdyb25nIGJlaGF2aW91ci4KPiAKPiBTbyBqdXN0IHJlbW92ZSB0aGUgaGFyZHdhcmUg
-Y3Vyc29yIHdpbmRvdwo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2Nr
-LWNoaXBzLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AuYyB8ICAgIDEgLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGluZGV4IDQ2MDM0
-MTIuLjczNzNiYTEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPiBAQCAtMzY4LDcgKzM2OCw2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dp
-bl9kYXRhIHJrMzI4OF92b3Bfd2luX2RhdGFbXSA9Cj4geyB7IC5iYXNlID0gMHg0MCwgLnBoeSA9
-ICZ3aW4wMV9kYXRhLCAudHlwZSA9IERSTV9QTEFORV9UWVBFX09WRVJMQVkgfSwgewo+IC5iYXNl
-ID0gMHgwMCwgLnBoeSA9ICZ3aW4yM19kYXRhLCAudHlwZSA9IERSTV9QTEFORV9UWVBFX09WRVJM
-QVkgfSwgeyAuYmFzZQo+ID0gMHg1MCwgLnBoeSA9ICZ3aW4yM19kYXRhLCAudHlwZSA9IERSTV9Q
-TEFORV9UWVBFX0NVUlNPUiB9LCAtCXsgLmJhc2UgPQo+IDB4MDAsIC5waHkgPSAmY3Vyc29yX2Rh
-dGEsIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfT1ZFUkxBWSB9LCB9Owo+IAo+ICBzdGF0aWMgY29u
-c3Qgc3RydWN0IHZvcF9kYXRhIHJrMzI4OF92b3AgPSB7Cgp5b3Ugc2hvdWxkIHByb2JhYmx5IGFs
-c28gcmVtb3ZlIHRoZQoKCXN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgY3Vyc29yX2Rh
-dGEKCmNvbXBsZXRlbHkgdGhlbiwgYXMgaXQgaXMgbm93IHVudXNlZD8KCgpIZWlrbwpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Jun 26, 2015 at 7:07 PM, Mark Yao <mark.yao@rock-chips.com> wrote:
+> vir_stride need number words of the virtual width, and fb->pitches
+> save bytes_per_pixel, so just div 4 switch to stride.
+>
+> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+> ---
+> Changes in v2: None
+>
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index 6188221..3c9f4f3 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -644,7 +644,7 @@ static int vop_update_plane_event(struct drm_plane *plane,
+>         offset += (src.y1 >> 16) * fb->pitches[0];
+>         yrgb_mst = rk_obj->dma_addr + offset;
+>
+> -       y_vir_stride = fb->pitches[0] / (fb->bits_per_pixel >> 3);
+> +       y_vir_stride = fb->pitches[0] >> 2;
+
+If the unit of y_vir_stride is words then doesn't it mean that the
+calculation before this patch was just invalid? If yes, shouldn't the
+subject actually say "Fix virtual stride calculation"?
+
+Best regards,
+Tomasz
