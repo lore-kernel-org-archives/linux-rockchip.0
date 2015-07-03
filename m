@@ -1,94 +1,51 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 5/5] drm/rockchip: default enable win2/3 area0 bit
-Date: Fri, 03 Jul 2015 18:08:31 +0800
-Message-ID: <55965F1F.9090301@rock-chips.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH v2 3/5] drm/rockchip: vop: support plane scale
+Date: Fri, 3 Jul 2015 11:14:27 +0100
+Message-ID: <20150703101427.GT7557@n2100.arm.linux.org.uk>
 References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com>
- <1435313432-4923-1-git-send-email-mark.yao@rock-chips.com>
- <CAAFQd5D4W1+ShB4zpSJrBiFYWh21axJoGoQ77NwXzhSRapysgA@mail.gmail.com>
- <5596457F.5090601@rock-chips.com>
- <CAAFQd5BCT_j1ZxMaaA-qaFct6+-VTJs4mEsZzGuFc=nL9jGNDA@mail.gmail.com>
+ <1435313249-4549-4-git-send-email-mark.yao@rock-chips.com>
+ <CAAFQd5A2j7MXrzOMVnsJr_WUKAFPaicv+r9LgwHccLim4fRk8g@mail.gmail.com>
+ <55965344.5050502@rock-chips.com>
+ <CAAFQd5B3NnUQRqdaXUz6BGCn-5rh1iXnfZXnQRDK3=nF_Ya7SA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAAFQd5BCT_j1ZxMaaA-qaFct6+-VTJs4mEsZzGuFc=nL9jGNDA@mail.gmail.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAAFQd5B3NnUQRqdaXUz6BGCn-5rh1iXnfZXnQRDK3=nF_Ya7SA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Tomasz Figa <tfiga@chromium.org>
-Cc: xw@rock-chips.com, zwl@rock-chips.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, dkm@rock-chips.com, sandy.huang@rock-chips.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Mark yao <mark.yao@rock-chips.com>, zwl@rock-chips.com, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Clark <robdclark@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>, Philipp Zabel <p.zabel@pengutronix.de>, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDA35pyIMDPml6UgMTc6MjQsIFRvbWFzeiBGaWdhIHdyb3RlOgo+IE9uIEZyaSwg
-SnVsIDMsIDIwMTUgYXQgNToxOSBQTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29t
-PiB3cm90ZToKPj4gT24gMjAxNeW5tDA35pyIMDPml6UgMTY6MDIsIFRvbWFzeiBGaWdhIHdyb3Rl
-Ogo+Pj4gSGkgTWFyaywKPj4+Cj4+PiBQbGVhc2Ugc2VlIG15IGNvbW1lbnRzIGlubGluZS4KPj4+
-Cj4+PiBPbiBGcmksIEp1biAyNiwgMjAxNSBhdCA3OjEwIFBNLCBNYXJrIFlhbyA8bWFyay55YW9A
-cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Pj4+IFdpbjIvMyBzdXBwb3J0IDQgYXJlYSBkaXNwbGF5
-LCBidXQgbm93IGhhdm4ndCBmb3VuZCBhIHN1aXRhYmxlCj4+Pj4gd2F5IHRvIHVzZSBpdCwgYW5k
-IGl0IGVuYWJsZSBieSB3aW4gZ2F0ZSBhbmQgYXJlYSBnYXRlLAo+Pj4+IHNvIGRlZmF1bHQgZW5h
-YmxlIGFyZWEwIGdhdGUsIHNvIHRoYXQgaXRzIGJlaGF2aW91ciBqdXN0IGxpa2UgYQo+Pj4+IHdp
-bi4KPj4+IFNvIEkgYXNzdW1lIHRoaXMgbWVhbnMgdGhhdCBjdXJyZW50bHksIHdpdGhvdXQgdGhv
-c2UgYml0cyBzZXQsIHdpbjIKPj4+IGFuZCB3aW4zIGRvIG5vdCB3b3JrPyBUaGlzIHdvdWxkIG1h
-a2UgdGhpcyBwYXRjaCBhIGZpeCBtYXliZSBldmVuIHdpdGgKPj4+IGEgcG90ZW50aWFsIGJhY2tw
-b3J0YWJpbGl0eS4KPj4KPj4gWWVzLCB3aXRob3V0IHRoaXMgcGF0Y2gsIGFsbCB3aW4yLzMgYXJl
-YSBnYXRlIGRlZmF1bHQgZGlzYWJsZWQuCj4+IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQgY2FsbCB3
-aW4gZW5hYmxlIG9ubHkgZW5hYmxlIHRoZSB3aW4gZ2F0ZS4KPj4KPj4KPj4+PiBTaWduZWQtb2Zm
-LWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4+Pj4gLS0tCj4+Pj4gQ2hh
-bmdlcyBpbiB2MjogTm9uZQo+Pj4+Cj4+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYyB8ICAgIDYgKysrKysrCj4+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDYg
-aW5zZXJ0aW9ucygrKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMKPj4+PiBpbmRleCA0MDEwN2JiLi5lMDAxZDI2IDEwMDY0NAo+Pj4+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+PiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gQEAg
-LTMzNyw2ICszMzcsMTIgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3BfcmVnX2RhdGEKPj4+PiB2
-b3BfaW5pdF9yZWdfdGFibGVbXSA9IHsKPj4+PiAgICAgICAgICAge0RTUF9DVFJMMCwgMHgwMDAw
-MDAwMH0sCj4+Pj4gICAgICAgICAgIHtXSU4wX0NUUkwwLCAweDAwMDAwMDgwfSwKPj4+PiAgICAg
-ICAgICAge1dJTjFfQ1RSTDAsIDB4MDAwMDAwODB9LAo+Pj4+ICsgICAgICAgLyoKPj4+PiArICAg
-ICAgICAqIFRvZG86IHdpbjIvMyBzdXBwb3J0IGFyZWEgZnVuYywgYnV0IG5vdyBoYXZuJ3QgZm91
-bmQgYQo+Pj4+IHN1aXRhYmxlCj4+Pj4gKyAgICAgICAgKiB3YXkgdG8gdXNlIGl0LCBzbyBkZWZh
-dWx0IGVuYWJsZSBhcmVhMCBhcyBhIHdpbiBkaXNwbGF5Lgo+Pj4gVE9ETzogV2luMi8zIHN1cHBv
-cnQgbXVsdGlwbGUgYXJlYSBmdW5jdGlvbiwgYnV0IHdlIGhhdmVuJ3QgZm91bmQKPj4+IGEgc3Vp
-dGFibGUgd2F5IHRvIHVzZSBpdCB5ZXQsIHNvIGxldCdzIGp1c3QgdXNlIHRoZW0gYXMgb3RoZXIg
-d2luZG93cwo+Pj4gd2l0aCBvbmx5IGFyZWEgMCBlbmFibGVkLgo+Pj4KPj4+PiArICAgICAgICAq
-Lwo+Pj4+ICsgICAgICAge1dJTjJfQ1RSTDAsIDB4MDAwMDAwMTB9LAo+Pj4+ICsgICAgICAge1dJ
-TjNfQ1RSTDAsIDB4MDAwMDAwMTB9LAo+Pj4gQW55d2F5LCBpcyBpdCBlbm91Z2ggdG8gcHJvZ3Jh
-bSB0aG9zZSByZWdpc3RlcnMgb25lIHRpbWUgaW4KPj4+IHZvcF9pbml0aWFsKCk/IFdvbid0IHRo
-ZXkgZ2V0IGNsZWFyZWQgd2hlbiBWT1AgaXMgcG93ZXIgY3ljbGVkLCBlLmcuCj4+PiBpbiBjYXNl
-IG9mIERQTVMgb2ZmIGFuZCBvbj8gTWF5YmUgaW5zdGVhZCB0aGlzIGNvdWxkIGJlIGRvbmUgaW4K
-Pj4+IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQoKSBmb3Igd2luZG93cyB0aGF0IG5lZWQgaXQ/Cj4+
-IFRoZXJlIGFyZSB0d28gZ2F0ZSBmb3IgV2luMi8zLAo+PiBhdCBWT1BfV0lOM19DVFJMMDoKPj4g
-ICAgICAgICAgYml0WzBdLCAid2luM19lbiIKPj4gICAgICAgICAgICAgIHRoaXMgZ2F0aW5nIGFs
-bCB0aGUgYXJlYS4KPj4KPj4gICAgICAgICAgYml0WzRdLCB3aW4zX21zdDBfZW4KPj4gICAgICAg
-ICAgYml0WzVdLCB3aW4zX21zdDFfZW4KPj4gICAgICAgICAgYml0WzZdLCB3aW4zX21zdDJfZW4K
-Pj4gICAgICAgICAgYml0WzddLCB3aW4zX21zdDNfZW4KPj4gICAgICAgICAgICAgIHRob3NlIGdh
-dGUgZWFjaCBhcmVhLgo+Pgo+PiBUaGlzIHBhdGNoIGRlZmF1bHQgZW5hYmxlIHdpbjNfbXN0MF9l
-biwgc28gY29udHJvbCBiaXRbMF0id2luM19lbiIgdGhhdCBjYXQKPj4gcG93ZXIgb24vb2ZmIHRo
-aXMgd2luZG93Lgo+Pgo+PiB2b3BfdXBkYXRlX3BsYW5lX2V2ZW50KCkvIHZvcF9kaXNhYmxlX3Bs
-YW5lKCkgb25seSBjYW4gY29udHJvbAo+PiBiaXRbMF0id2luM19lbiIuCj4+Cj4+Cj4+IFNvIHRo
-aXMgcGF0Y2ggaXMgZW5vdWdoIHRvIGVuYWJsZSB3aW5kb3cyLzMgYXJlYSAwLgo+IFRoYXQncyBy
-aWdodC4gSG93ZXZlciwgdGhlIHZvcF9pbml0X3JlZ190YWJsZVtdIGlzIG9ubHkgdXNlZCBhdCBw
-cm9iZQo+IHRpbWUgYnkgdm9wX2luaXRpYWwoKSBhbmQgcmVnaXN0ZXIgc2V0dGluZ3MgbGlzdGVk
-IHRoZXJlIGFyZSBub3QKPiBhcHBsaWVkIGFueSB0aW1lIGxhdGVyLiBJZiB3ZSBjYWxsIERQTVMg
-b2ZmLCB3aGljaCB3aWxsIHR1cm4gdGhlIFZPUAo+IG9mZiBhbmQgaW4gdHVybiBhbHNvIHRoZSB3
-aG9sZSBwb3dlciBkb21haW4gb2ZmLCB3b24ndCB0aGUgcmVnaXN0ZXJzCj4gYmUgcmVzZXQgdG8g
-ZGVmYXVsdCB2YWx1ZXMgKGUuZy4gemVyb2VkKT8KUmlnaHQsIHRoZSB2b3AgcmVnaXN0ZXJzIHdv
-dWxkIGJlIHJlc2V0IHRvIGRlZmF1bHQgdmFsdWVzIHdoZW4gcG93ZXIgCmRvbWFpbiBvZmYuCgpC
-dXQgdGhlIGN1cnNvciBjYW4gd29ya3MgYWZ0ZXIgcmVzdW1lLiBiZWNhdXNlIHRoZSBpbml0aWFs
-IHZhbHVlIHNhdmUgdG8gCnRoZSByZWdiYWsgY2FjaGUsCmFuZCBjdXJzb3IgYXJlYSBnYXRlLCB3
-aW4gZ2F0ZSBhcmUgYXQgdGhlIHNhbWUgcmVncywgc28gaXQgY2FuIGJlIApyZXN0b3JlIHdoZW4g
-ZG8gY3Vyc29yIGVuYWJsZS4KCkJ1dCBpZiB3ZSBhZGQgb3RoZXIgcmVncywgdGhpcyBtYXkgY2F1
-c2UgYnVnLCBtYXliZSBubyBvbmUgcmVzdG9yZSB0aGVtLgpTbyBJIHRoaW5rIHdlIG5lZWQgZG8g
-bGlrZSB1bmRlciB0byBmb3JjZSByZXN0b3JlIGFsbCB0aGUgcmVncyB3aGVuIHJlc3VtZToKICAg
-ICBtZW1jcHkodm9wLT5yZWdzLCB2b3AtPnJlZ3NiYWssIHZvcC0+bGVuKTsKCj4gQmVzdCByZWdh
-cmRzLAo+IFRvbWFzego+Cj4KPgoKCi0tIArvvK1hcmsKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Fri, Jul 03, 2015 at 06:58:44PM +0900, Tomasz Figa wrote:
+> On Fri, Jul 3, 2015 at 6:17 PM, Mark yao <mark.yao@rock-chips.com> wrote:
+> >> Aren't the scl_modes for CbCr planes always the same as for Y plane?
+> >
+> >
+> > No, such as src(1920 x 1080) -> dst(1280x800), yuv format is NV12.
+> > so Y plane horizontal and vertical is scale down.
+> >
+> > but src_w = 1920 / 2 = 960 < 1280
+> >       src_h = 1080 / 2 = 540 < 800.
+> >
+> > So Cbcr horizontal and vertical is scale up.
+> 
+> Sorry, I don't follow.
+> 
+> If we scale down Y plane in NV12 from 1920x1080 to 1280x800, then
+> original CbCr plane will be 960x540 and destination CbCr plane will be
+> 640x400 (because CbCr plane of NV12 is subsampled 2x2, which is half
+> the width and half the height of Y plane), so both planes are being
+> scaled down.
+
+This is about displaying a NV12 image with arbitary scaling, right?
+If so, think about what happens when you want to display such an image.
+You don't display the raw NV12 image, the image gets converted to an
+appropriate format first (be that RGB or YUV with no sub-sampling.)
+
+What that means is that you need to scale each component to be the
+same resolution.
+
+-- 
+FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
+according to speedtest.net.
