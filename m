@@ -1,52 +1,101 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 3/5] drm/rockchip: vop: support plane scale
-Date: Fri, 3 Jul 2015 23:37:09 +0900
-Message-ID: <CAAFQd5AM1-w8ynyn_Usr8OitdXSUcU85scvcYCTEZebzLqLn0w@mail.gmail.com>
-References: <1435313249-4549-1-git-send-email-mark.yao@rock-chips.com>
- <1435313249-4549-4-git-send-email-mark.yao@rock-chips.com>
- <CAAFQd5A2j7MXrzOMVnsJr_WUKAFPaicv+r9LgwHccLim4fRk8g@mail.gmail.com>
- <55965344.5050502@rock-chips.com>
- <CAAFQd5B3NnUQRqdaXUz6BGCn-5rh1iXnfZXnQRDK3=nF_Ya7SA@mail.gmail.com>
- <5596626F.5050003@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5596626F.5050003@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: xw@rock-chips.com, zwl@rock-chips.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, dkm@rock-chips.com, sandy.huang@rock-chips.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 4/7] dt-bindings: add documentation of rk3668 clock controller
+Date: Sun,  5 Jul 2015 11:00:17 +0200
+Message-ID: <1436086820-3757-5-git-send-email-heiko@sntech.de>
+References: <1436086820-3757-1-git-send-email-heiko@sntech.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1436086820-3757-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBKdWwgMywgMjAxNSBhdCA3OjIyIFBNLCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1j
-aGlwcy5jb20+IHdyb3RlOgo+IE9uIDIwMTXlubQwN+aciDAz5pelIDE3OjU4LCBUb21hc3ogRmln
-YSB3cm90ZToKPj4+Pgo+Pj4+ID4+QXJlbid0IHRoZSBzY2xfbW9kZXMgZm9yIENiQ3IgcGxhbmVz
-IGFsd2F5cyB0aGUgc2FtZSBhcyBmb3IgWSBwbGFuZT8KPj4+Cj4+PiA+Cj4+PiA+Cj4+PiA+Tm8s
-IHN1Y2ggYXMgc3JjKDE5MjAgeCAxMDgwKSAtPiBkc3QoMTI4MHg4MDApLCB5dXYgZm9ybWF0IGlz
-IE5WMTIuCj4+PiA+c28gWSBwbGFuZSBob3Jpem9udGFsIGFuZCB2ZXJ0aWNhbCBpcyBzY2FsZSBk
-b3duLgo+Pj4gPgo+Pj4gPmJ1dCBzcmNfdyA9IDE5MjAgLyAyID0gOTYwIDwgMTI4MAo+Pj4gPiAg
-ICAgICBzcmNfaCA9IDEwODAgLyAyID0gNTQwIDwgODAwLgo+Pj4gPgo+Pj4gPlNvIENiY3IgaG9y
-aXpvbnRhbCBhbmQgdmVydGljYWwgaXMgc2NhbGUgdXAuCj4+Cj4+IFNvcnJ5LCBJIGRvbid0IGZv
-bGxvdy4KPj4KPj4gSWYgd2Ugc2NhbGUgZG93biBZIHBsYW5lIGluIE5WMTIgZnJvbSAxOTIweDEw
-ODAgdG8gMTI4MHg4MDAsIHRoZW4KPj4gb3JpZ2luYWwgQ2JDciBwbGFuZSB3aWxsIGJlIDk2MHg1
-NDAgYW5kIGRlc3RpbmF0aW9uIENiQ3IgcGxhbmUgd2lsbCBiZQo+PiA2NDB4NDAwIChiZWNhdXNl
-IENiQ3IgcGxhbmUgb2YgTlYxMiBpcyBzdWJzYW1wbGVkIDJ4Miwgd2hpY2ggaXMgaGFsZgo+PiB0
-aGUgd2lkdGggYW5kIGhhbGYgdGhlIGhlaWdodCBvZiBZIHBsYW5lKSwgc28gYm90aCBwbGFuZXMg
-YXJlIGJlaW5nCj4+IHNjYWxlZCBkb3duLgo+Pgo+IGRlc3RpbmF0aW9uIENiQ3IgcGxhbmUgaXMg
-MTI4MHg4MDAsIGRlc3RpbmF0aW9uIGNhbid0IGJlIHN1YnNhbXBsZS4KCkFoLCBJIHNlZSwgc28g
-aW50ZXJuYWxseSBpdCdzIGFsd2F5cyBzY2FsbGluZyB0byBkZXN0aW5hdGlvbiBwbGFuZQpzaXpl
-LiBUaGlzIG1lYW5zIHRoYXQgY2FsY3VsYXRpb24gZm9yIGJvdGggWSBhbmQgQ2JDciBtdXN0IGJl
-IGRvbmUKaW5kZWVkLCBidXQgZXZlbiB0aGVuIHlvdSBjb3VsZCB1c2UgaGVscGVyIGZ1bmN0aW9u
-cyBmb3IgdGhhdCwgc2luY2UKdGhleSBkaWZmZXIgb25seSBpbiBwYXJhbWV0ZXJzLgoKQmVzdCBy
-ZWdhcmRzLApUb21hc3oKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
-ZWwK
+Add the devicetree binding for the cru on the rk3368 which quite similar
+structured as previous clock controllers.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>
+Cc: Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+---
+ .../bindings/clock/rockchip,rk3368-cru.txt         | 61 ++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
+
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
+new file mode 100644
+index 0000000..7c8bbcf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
+@@ -0,0 +1,61 @@
++* Rockchip RK3368 Clock and Reset Unit
++
++The RK3368 clock controller generates and supplies clock to various
++controllers within the SoC and also implements a reset controller for SoC
++peripherals.
++
++Required Properties:
++
++- compatible: should be "rockchip,rk3368-cru"
++- reg: physical base address of the controller and length of memory mapped
++  region.
++- #clock-cells: should be 1.
++- #reset-cells: should be 1.
++
++Optional Properties:
++
++- rockchip,grf: phandle to the syscon managing the "general register files"
++  If missing, pll rates are not changeable, due to the missing pll lock status.
++
++Each clock is assigned an identifier and client nodes can use this identifier
++to specify the clock which they consume. All available clocks are defined as
++preprocessor macros in the dt-bindings/clock/rk3368-cru.h headers and can be
++used in device tree sources. Similar macros exist for the reset sources in
++these files.
++
++External clocks:
++
++There are several clocks that are generated outside the SoC. It is expected
++that they are defined using standard clock bindings with following
++clock-output-names:
++ - "xin24m" - crystal input - required,
++ - "xin32k" - rtc clock - optional,
++ - "ext_i2s" - external I2S clock - optional,
++ - "ext_gmac" - external GMAC clock - optional
++ - "ext_hsadc" - external HSADC clock - optional,
++ - "ext_isp" - external ISP clock - optional,
++ - "ext_jtag" - external JTAG clock - optional
++ - "ext_vip" - external VIP clock - optional,
++ - "usbotg_out" - output clock of the pll in the otg phy
++
++Example: Clock controller node:
++
++	cru: clock-controller@ff760000 {
++		compatible = "rockchip,rk3368-cru";
++		reg = <0x0 0xff760000 0x0 0x1000>;
++		rockchip,grf = <&grf>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
++Example: UART controller node that consumes the clock generated by the clock
++  controller:
++
++	uart0: serial@10124000 {
++		compatible = "snps,dw-apb-uart";
++		reg = <0x10124000 0x400>;
++		interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
++		reg-shift = <2>;
++		reg-io-width = <1>;
++		clocks = <&cru SCLK_UART0>;
++	};
+-- 
+2.1.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
