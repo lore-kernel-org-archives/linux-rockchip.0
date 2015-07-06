@@ -1,7 +1,7 @@
 From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 Subject: Re: [PATCH 6/7] clk: rockchip: add missing include guards
-Date: Mon, 6 Jul 2015 15:12:02 -0700
-Message-ID: <20150706221202.GL20866@codeaurora.org>
+Date: Mon, 6 Jul 2015 15:12:18 -0700
+Message-ID: <20150706221218.GM20866@codeaurora.org>
 References: <1436086820-3757-1-git-send-email-heiko@sntech.de>
  <1436086820-3757-7-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
