@@ -1,103 +1,61 @@
-From: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [REPOST PATCH 3/3] USB: dwc2: Don't turn off the usbphy in
  suspend if wakeup is enabled
-Date: Mon, 6 Jul 2015 14:35:46 -0500
-Message-ID: <20150706193546.GP20779@saruman.tx.rr.com>
-References: <1436207224-21849-1-git-send-email-dianders@chromium.org>
- <1436207224-21849-4-git-send-email-dianders@chromium.org>
- <20150706183404.GI20779@saruman.tx.rr.com>
- <CAD=FV=XRY003C6ai4DFkcTogsW+g1AO955J_A4tB2tzu0PZy1Q@mail.gmail.com>
-Reply-To: balbi-l0cyMroinI0@public.gmane.org
+Date: Mon, 6 Jul 2015 12:39:27 -0700
+Message-ID: <CAD=FV=V1oOdYLZyw3RpdYUQMCKnhcZ=AymnTDzy6Zm=MXqnehQ@mail.gmail.com>
+References: <1436207224-21849-4-git-send-email-dianders@chromium.org>
+	<Pine.LNX.4.44L0.1507061450190.1860-100000@iolanthe.rowland.org>
+	<20150706190212.GN20779@saruman.tx.rr.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1334782071775322097=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=XRY003C6ai4DFkcTogsW+g1AO955J_A4tB2tzu0PZy1Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open
- list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150706190212.GN20779-HgARHv6XitJaoMGHk7MhZQC/G2K4zDHf@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1334782071775322097==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="qd/SZIFVu+MYwfCR"
-Content-Disposition: inline
+Hi,
 
---qd/SZIFVu+MYwfCR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jul 6, 2015 at 12:02 PM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
+> On Mon, Jul 06, 2015 at 02:58:16PM -0400, Alan Stern wrote:
+>> On Mon, 6 Jul 2015, Douglas Anderson wrote:
+>>
+>> > If the 'snps,need-phy-for-wake' is set in the device tree then:
+>> >
+>> > - We know that we can wakeup, so call device_set_wakeup_capable().
+>> >   The USB core will use this knowledge to enable wakeup by default.
+>> > - We know that we should keep the PHY on during suspend if something
+>> >   on our root hub needs remote wakeup.  This requires the patch (USB:
+>> >   Export usb_wakeup_enabled_descendants()).  Note that we don't keep
+>> >   the PHY on at suspend time if it's not needed because it would be a
+>> >   power draw.
+>>
+>> You know, this is the first time I've run across this optimization.
+>>
+>> In principle it applies to any USB host controller, not just to PHYs.
+>> There's no reason to enable wakeup for a controller if none of the
+>> attached devices can issue a wakeup request.
+>>
+>> I don't know if implementing this in other HCDs would save any power.
+>> Any ideas?
+>
+> most likely it would. Enabling wakeup usually boils down to keeping a
+> tiny part of the controller (or PHY) powered up. Sometimes that lies in
+> an always-on power domain, so there would be no difference.
 
-On Mon, Jul 06, 2015 at 12:32:56PM -0700, Doug Anderson wrote:
-> Felipe,
->=20
-> On Mon, Jul 6, 2015 at 11:34 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
-> > Hi,
-> >
-> > On Mon, Jul 06, 2015 at 11:27:04AM -0700, Douglas Anderson wrote:
-> >> @@ -282,6 +296,28 @@ static int dwc2_driver_probe(struct platform_devi=
-ce *dev)
-> >>       return retval;
-> >>  }
-> >>
-> >> +static bool __maybe_unused dwc2_can_poweroff_phy(struct dwc2_hsotg *d=
-wc2)
-> >> +{
-> >> +     struct usb_device *root_hub =3D dwc2_hsotg_to_hcd(dwc2)->self.ro=
-ot_hub;
-> >
-> > what happens on peripheral only builds ?
->=20
-> The function is only called on if "dwc2_is_device_mode(dwc2)" returns
-> false.  I think that means we're safe, right?
+As per Andrew Bresticker (CCed on this email), the optimization made
+sense in Tegra.  If you're willing to look into the chromeos-3.10
+tree, you can see that Andrew added a usb_port_may_wakeup() call in
+<https://chromium-review.googlesource.com/196593>.  He then used it in
+the tegra XHCI driver in
+<https://chromium-review.googlesource.com/196594>.  Recently I talked
+to Andrew and he indicated that rather than add usb_port_may_wakeup()
+like he did it probably made sense to just export
+usb_wakeup_enabled_descendants().
 
-heh, missed that. Should be safe, yeah.
-
---=20
-balbi
-
---qd/SZIFVu+MYwfCR
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJVmtiSAAoJEIaOsuA1yqREuz8P/jFFlDUJnFItxZc9XFG3go7V
-VO5xG3TiapbVpzjTQ1QjI/0Zjk83Lv58sa/cP3+khqkKrO85vRPuRagaax1EKdpo
-6c6pek63F1XXESqQXcxrABHg57OXCsjO8d8Noxn8Rk2jrKJMBuWNq8R2fyEqf7hX
-3YLHhJnA67jS7894X5E4Z3T2MOVpDgdew869arH6q4nZKk+nqvxJM0Xm4v+G35dY
-01o8dWBsAMvHk6cRs7GWPF9G1nWY0BfVyAHdQzrl7KnBuRg+6KNWGA/8ZxeD4Rvu
-iGHQdhhfoOwogCdU/w2hC0Qa9LC0n4D2IaXrW0zaFh/n2Z1OEMXHeTfO2NRdlHv0
-hhY9T48Zhbt+d89mVjd40c1B9LI46mzugSf3YjXftXaCIVobRQxpgaM8gdETgji+
-FlvSSBdquZWKEXG3tm8LgrjJKu2WX6iw8OE++ozWiXkFtab7zYxW91X7aQumU7PT
-Uc7AZgYTVTFWmX1IPZpHQS6TL6Qub6Y5vbf1cKHsPYGA8spOYZ+0TxC/LSrnocLI
-3dfCLh0J5pOpmLco+nr4i4s0lRIlIGvuHIRlftgc8fZ/540wNu8mru2S2Bp7R7fO
-wTVy1sjSE1lndHjh0IxcsYK00vFDhqIwGjESd6DT5GQLtbDpnAqyDY6R3VscVClw
-F2cI7W51O1VHiQGDbio/
-=lZJM
------END PGP SIGNATURE-----
-
---qd/SZIFVu+MYwfCR--
-
-
---===============1334782071775322097==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1334782071775322097==--
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
