@@ -1,15 +1,15 @@
 From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH 5/7] clk: rockchip: add dt-binding header for rk3368
-Date: Mon, 6 Jul 2015 15:11:25 -0700
-Message-ID: <20150706221125.GK20866@codeaurora.org>
+Subject: Re: [PATCH 6/7] clk: rockchip: add missing include guards
+Date: Mon, 6 Jul 2015 15:12:02 -0700
+Message-ID: <20150706221202.GL20866@codeaurora.org>
 References: <1436086820-3757-1-git-send-email-heiko@sntech.de>
- <1436086820-3757-6-git-send-email-heiko@sntech.de>
+ <1436086820-3757-7-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1436086820-3757-6-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <1436086820-3757-7-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -24,16 +24,14 @@ Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette
 List-Id: linux-rockchip.vger.kernel.org
 
 On 07/05, Heiko Stuebner wrote:
-> Add the dt-bindings header for the rk3368, that gets shared between
-> the clock controller and the clock references in the dts.
+> Review for the rk3368 turned up that the clock header was missing include
+> guards. This is also true for the already existing clock binding headers,
+> so add them.
 > 
 > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
-> I only need this dt-binding header in a stable branch to be included
-> into armsoc.
-> 
 
-Applied to clk-rk3368. It will be stable now.
+Applied to clk-rk3368.
 
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
