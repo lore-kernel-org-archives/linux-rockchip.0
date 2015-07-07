@@ -1,36 +1,60 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH 7/7] clk: rockchip: add rk3368 clock controller
-Date: Mon, 6 Jul 2015 15:12:32 -0700
-Message-ID: <20150706221232.GN20866@codeaurora.org>
-References: <1436086820-3757-1-git-send-email-heiko@sntech.de>
- <1436086820-3757-8-git-send-email-heiko@sntech.de>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 1/2] drm: rockchip: Don't pass DRM fake offset to dma-api
+Date: Tue, 7 Jul 2015 15:02:21 +0800
+Message-ID: <CAGS+omBWhFO=+rcy0rv5VNwWmYSU6MT4wLOwuL4n8GfUcNN8rg@mail.gmail.com>
+References: <1429195312-25898-1-git-send-email-orjan.eide@arm.com>
+ <1743547.3D2D8THGkI@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1436086820-3757-8-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1743547.3D2D8THGkI@diego>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?Q?=C3=98rjan_Eide?= <orjan.eide@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/05, Heiko Stuebner wrote:
-> Describe the clock tree and software resets of the rk3368 ARM64 SoC
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-
-Applied to clk-rk3368.
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+T24gU3VuLCBBcHIgMTksIDIwMTUgYXQgMTI6NTUgQU0sIEhlaWtvIFN0w7xibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+IHdyb3RlOgo+Cj4gQW0gRG9ubmVyc3RhZywgMTYuIEFwcmlsIDIwMTUsIDE2OjQx
+OjUxIHNjaHJpZWIgw5hyamFuIEVpZGU6Cj4gPiBTZXQgdm1fcGdvZmYgdG8gMCBhZnRlciB1c2lu
+ZyBpdCB0byBsb29rIHVwIHRoZSBHRU0gbm9kZSwgYmVmb3JlIHBhc3NpbmcKPiA+IGl0IG9uIHJv
+Y2tjaGlwX2dlbV9tbWFwX2J1ZigpIHdoZXJlIHRoZSBvZmZzZXQgbXVzdCBiZSBmcm9tIHRoZSBz
+dGFydCBvZgo+ID4gdGhlIGJ1ZmZlci4KPiA+Cj4gPiBQYXNzaW5nIGluIHRoZSBmYWtlIG9mZnNl
+dCBjdXJyZW50bHkgd29ya3MgYmVjYXVzZSB0aGUKPiA+IGRtYV9tbWFwX2F0dHJzIGltcGxlbWVu
+dGF0aW9uIHRoYXQgaXMgdXNlZCBmb3IgdGhpcyBkZXZpY2UsCj4gPiBhcm1faW9tbXVfbW1hcF9h
+dHRycywgaWdub3JlcyB0aGUgb2Zmc2V0IGNvbXBsZXRlbHkuCj4gPgo+ID4gU2lnbmVkLW9mZi1i
+eTogw5hyamFuIEVpZGUgPG9yamFuLmVpZGVAYXJtLmNvbT4KPgo+IGJvdGggcGF0Y2hlcyBvbiBh
+IHJrMzI4OC12ZXlyb24tcGlua3kKPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtv
+QHNudGVjaC5kZT4KPgo+IFRocm91Z2ggd2hpY2ggdHJlZSBkbyB5b3Ugd2FudCB0byB0YWtlIHRo
+ZXNlIHBhdGNoZXM/IEkgZ3Vlc3MgdGhlIHJvY2tjaGlwLWRybQo+IHJlbGF0ZWQgcGF0Y2ggc2hv
+dWxkIGdvIHRocm91Z2ggdGhlIHRyZWUgdGhhdCB3aWxsIHRha2UgdGhlIGRtYS1tYXBwaW5nIHBh
+dGNoLAo+IHNvIHlvdSdsbCBwcm9iYWJseSBuZWVkIGFuICJBY2siIGZyb20gTWFyayBZYW8gKENj
+J2VkKS4KCkFzIGZhciBhcyBJIGNhbiB0ZWxsLCB0aGVzZSB0d28gcGF0Y2hlcyAoWzBdICYgWzFd
+KSB3ZXJlIG5ldmVyIHBpY2tlZCB1cC4KUnVzc2VsbCwgY2FuIHlvdSBwaWNrIGJvdGggb2YgdGhl
+bSB1cCBpbiB5b3VyIHRyZWU/CgpbMF0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
+aC82MjI2NTkxLwpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC82MjI2NTgx
+LwoKLURhbgoKPiBIZWlrbwo+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2dlbS5jIHwgNSArKysrKwo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2Vy
+dGlvbnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9nZW0uYwo+ID4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2dlbS5jIGluZGV4IDdjYTg3OTllLi42OWYwMWMzCj4gPiAxMDA2NDQKPiA+IC0tLSBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+IEBAIC05NCw2ICs5NCwx
+MSBAQCBpbnQgcm9ja2NoaXBfZ2VtX21tYXAoc3RydWN0IGZpbGUgKmZpbHAsIHN0cnVjdAo+ID4g
+dm1fYXJlYV9zdHJ1Y3QgKnZtYSkgcmV0dXJuIC1FQUNDRVM7Cj4gPiAgICAgICB9Cj4gPgo+ID4g
+KyAgICAgLyogU2V0IHZtX3Bnb2ZmICh1c2VkIGFzIGEgZmFrZSBidWZmZXIgb2Zmc2V0IGJ5IERS
+TSkgdG8gMCBhbmQgbWFwIHRoZQo+ID4gKyAgICAgICogd2hvbGUgYnVmZmVyIGZyb20gdGhlIHN0
+YXJ0Lgo+ID4gKyAgICAgICovCj4gPiArICAgICB2bWEtPnZtX3Bnb2ZmID0gMDsKPiA+ICsKPiA+
+ICAgICAgIG9iaiA9IGNvbnRhaW5lcl9vZihub2RlLCBzdHJ1Y3QgZHJtX2dlbV9vYmplY3QsIHZt
+YV9ub2RlKTsKPiA+ICAgICAgIHJldCA9IHJvY2tjaGlwX2dlbV9tbWFwX2J1ZihvYmosIHZtYSk7
+Cj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
