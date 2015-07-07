@@ -1,99 +1,59 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: use drm_gem_mmap helpers
-Date: Tue, 7 Jul 2015 14:04:33 +0200
-Message-ID: <20150707120433.GO7568@phenom.ffwll.local>
-References: <1436259816-31090-1-git-send-email-djkurtz@chromium.org>
+From: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>
+Subject: Re: [REPOST PATCH 3/3] USB: dwc2: Don't turn off the usbphy in
+ suspend if wakeup is enabled
+Date: Tue, 7 Jul 2015 10:28:34 -0400 (EDT)
+Message-ID: <Pine.LNX.4.44L0.1507071020310.1692-100000@iolanthe.rowland.org>
+References: <20150706190212.GN20779@saruman.tx.rr.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1436259816-31090-1-git-send-email-djkurtz@chromium.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Kees Cook <keescook@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Douglas Anderson <dianders@chromium.org>, stable@vger.kernel.org, open list <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, "open list:DRM DRIVERS FOR ROCKCHIP" <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150706190212.GN20779-HgARHv6XitJaoMGHk7MhZQC/G2K4zDHf@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKdWwgMDcsIDIwMTUgYXQgMDU6MDM6MzZQTSArMDgwMCwgRGFuaWVsIEt1cnR6IHdy
-b3RlOgo+IFJhdGhlciB0aGFuIChpbmNvbXBsZXRlbHkgWzBdKSByZS1pbXBsZW1lbnRpbmcgZHJt
-X2dlbV9tbWFwKCkgYW5kCj4gZHJtX2dlbV9tbWFwX29iaigpIGhlbHBlcnMsIGNhbGwgdGhlbSBk
-aXJlY3RseSBmcm9tIHRoZSByb2NrY2hpcCBtbWFwCj4gcm91dGluZXMuCj4gCj4gT25jZSB0aGUg
-Y29yZSBmdW5jdGlvbnMgcmV0dXJuIHN1Y2Nlc3NmdWxseSwgdGhlIHJvY2tjaGlwIG1tYXAgcm91
-dGluZXMKPiBjYW4gc3RpbGwgdXNlIGRtYV9tbWFwX2F0dHJzKCkgdG8gc2ltcGx5IG1tYXAgdGhl
-IGVudGlyZSBidWZmZXIuCj4gCj4gWzBdIFByZXZpb3VzbHksIHdlIHdlcmUgcGVyZm9ybWluZyB0
-aGUgbW1hcCgpIHdpdGhvdXQgZmlyc3QgdGFraW5nIGEKPiByZWZlcmVuY2Ugb24gdGhlIHVuZGVy
-bHlpbmcgZ2VtIGJ1ZmZlci4gIFRoaXMgY291bGQgbGVhayBwdGVzIGlmIHRoZSBnZW0KPiBvYmpl
-Y3QgaXMgZGVzdHJveWVkIHdoaWxlIHVzZXJzcGFjZSBpcyBzdGlsbCBob2xkaW5nIHRoZSBtYXBw
-aW5nLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5v
-cmc+Cj4gUmV2aWV3ZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+
-Cj4gQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKCkFwcGxpZWQgdG8gdG9waWMvZHJtLWZpeGVz
-IHRvIG1ha2Ugc3VyZSBpdCB3b24ndCBnZXQgbG9zdCwgYnV0IEkgZXhwZWN0CnJvY2tjaGlwIG1h
-aW50YWluZXJzIHRvIHBpY2sgdGhpcyBvbmUgdXAuCi1EYW5pZWwKCj4gCj4gLS0tCj4gIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCA2NyArKysrKysrKysrKysr
-KystLS0tLS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgMzMg
-ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2dlbS5jCj4gaW5kZXggZWIyMjgyYy4uZWJhNWY4YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC01NCw1NSArNTQsNTYgQEAgc3RhdGlj
-IHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpy
-a19vYmopCj4gIAkJICAgICAgICZya19vYmotPmRtYV9hdHRycyk7Cj4gIH0KPiAgCj4gLWludCBy
-b2NrY2hpcF9nZW1fbW1hcF9idWYoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCj4gLQkJCSAg
-c3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2dl
-bV9vYmplY3RfbW1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwKPiArCQkJCQlzdHJ1Y3Qg
-dm1fYXJlYV9zdHJ1Y3QgKnZtYSkKPiArCj4gIHsKPiArCWludCByZXQ7Cj4gIAlzdHJ1Y3Qgcm9j
-a2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqID0gdG9fcm9ja2NoaXBfb2JqKG9iaik7Cj4gIAlzdHJ1
-Y3QgZHJtX2RldmljZSAqZHJtID0gb2JqLT5kZXY7Cj4gLQl1bnNpZ25lZCBsb25nIHZtX3NpemU7
-Cj4gIAo+IC0Jdm1hLT52bV9mbGFncyB8PSBWTV9JTyB8IFZNX0RPTlRFWFBBTkQgfCBWTV9ET05U
-RFVNUDsKPiAtCXZtX3NpemUgPSB2bWEtPnZtX2VuZCAtIHZtYS0+dm1fc3RhcnQ7Cj4gLQo+IC0J
-aWYgKHZtX3NpemUgPiBvYmotPnNpemUpCj4gLQkJcmV0dXJuIC1FSU5WQUw7Cj4gKwkvKgo+ICsJ
-ICogZG1hX2FsbG9jX2F0dHJzKCkgYWxsb2NhdGVkIGEgc3RydWN0IHBhZ2UgdGFibGUgZm9yIHJr
-X29iaiwgc28gY2xlYXIKPiArCSAqIFZNX1BGTk1BUCBmbGFnIHRoYXQgd2FzIHNldCBieSBkcm1f
-Z2VtX21tYXBfb2JqKCkvZHJtX2dlbV9tbWFwKCkuCj4gKwkgKi8KPiArCXZtYS0+dm1fZmxhZ3Mg
-Jj0gflZNX1BGTk1BUDsKPiAgCj4gLQlyZXR1cm4gZG1hX21tYXBfYXR0cnMoZHJtLT5kZXYsIHZt
-YSwgcmtfb2JqLT5rdmFkZHIsIHJrX29iai0+ZG1hX2FkZHIsCj4gKwlyZXQgPSBkbWFfbW1hcF9h
-dHRycyhkcm0tPmRldiwgdm1hLCBya19vYmotPmt2YWRkciwgcmtfb2JqLT5kbWFfYWRkciwKPiAg
-CQkJICAgICBvYmotPnNpemUsICZya19vYmotPmRtYV9hdHRycyk7Cj4gKwlpZiAocmV0KQo+ICsJ
-CWRybV9nZW1fdm1fY2xvc2Uodm1hKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICB9Cj4gIAo+IC0v
-KiBkcm0gZHJpdmVyIG1tYXAgZmlsZSBvcGVyYXRpb25zICovCj4gLWludCByb2NrY2hpcF9nZW1f
-bW1hcChzdHJ1Y3QgZmlsZSAqZmlscCwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4gK2lu
-dCByb2NrY2hpcF9nZW1fbW1hcF9idWYoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCj4gKwkJ
-CSAgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4gIHsKPiAtCXN0cnVjdCBkcm1fZmlsZSAq
-cHJpdiA9IGZpbHAtPnByaXZhdGVfZGF0YTsKPiAtCXN0cnVjdCBkcm1fZGV2aWNlICpkZXYgPSBw
-cml2LT5taW5vci0+ZGV2Owo+IC0Jc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmo7Cj4gLQlzdHJ1
-Y3QgZHJtX3ZtYV9vZmZzZXRfbm9kZSAqbm9kZTsKPiArCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0g
-PSBvYmotPmRldjsKPiAgCWludCByZXQ7Cj4gIAo+IC0JaWYgKGRybV9kZXZpY2VfaXNfdW5wbHVn
-Z2VkKGRldikpCj4gLQkJcmV0dXJuIC1FTk9ERVY7Cj4gKwltdXRleF9sb2NrKCZkcm0tPnN0cnVj
-dF9tdXRleCk7Cj4gKwlyZXQgPSBkcm1fZ2VtX21tYXBfb2JqKG9iaiwgb2JqLT5zaXplLCB2bWEp
-Owo+ICsJbXV0ZXhfdW5sb2NrKCZkcm0tPnN0cnVjdF9tdXRleCk7Cj4gKwlpZiAocmV0KQo+ICsJ
-CXJldHVybiByZXQ7Cj4gIAo+IC0JbXV0ZXhfbG9jaygmZGV2LT5zdHJ1Y3RfbXV0ZXgpOwo+ICsJ
-cmV0dXJuIHJvY2tjaGlwX2RybV9nZW1fb2JqZWN0X21tYXAob2JqLCB2bWEpOwo+ICt9Cj4gIAo+
-IC0Jbm9kZSA9IGRybV92bWFfb2Zmc2V0X2V4YWN0X2xvb2t1cChkZXYtPnZtYV9vZmZzZXRfbWFu
-YWdlciwKPiAtCQkJCQkgICB2bWEtPnZtX3Bnb2ZmLAo+IC0JCQkJCSAgIHZtYV9wYWdlcyh2bWEp
-KTsKPiAtCWlmICghbm9kZSkgewo+IC0JCW11dGV4X3VubG9jaygmZGV2LT5zdHJ1Y3RfbXV0ZXgp
-Owo+IC0JCURSTV9FUlJPUigiZmFpbGVkIHRvIGZpbmQgdm1hIG5vZGUuXG4iKTsKPiAtCQlyZXR1
-cm4gLUVJTlZBTDsKPiAtCX0gZWxzZSBpZiAoIWRybV92bWFfbm9kZV9pc19hbGxvd2VkKG5vZGUs
-IGZpbHApKSB7Cj4gLQkJbXV0ZXhfdW5sb2NrKCZkZXYtPnN0cnVjdF9tdXRleCk7Cj4gLQkJcmV0
-dXJuIC1FQUNDRVM7Cj4gLQl9Cj4gKy8qIGRybSBkcml2ZXIgbW1hcCBmaWxlIG9wZXJhdGlvbnMg
-Ki8KPiAraW50IHJvY2tjaGlwX2dlbV9tbWFwKHN0cnVjdCBmaWxlICpmaWxwLCBzdHJ1Y3Qgdm1f
-YXJlYV9zdHJ1Y3QgKnZtYSkKPiArewo+ICsJc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmo7Cj4g
-KwlpbnQgcmV0Owo+ICAKPiAtCW9iaiA9IGNvbnRhaW5lcl9vZihub2RlLCBzdHJ1Y3QgZHJtX2dl
-bV9vYmplY3QsIHZtYV9ub2RlKTsKPiAtCXJldCA9IHJvY2tjaGlwX2dlbV9tbWFwX2J1ZihvYmos
-IHZtYSk7Cj4gKwlyZXQgPSBkcm1fZ2VtX21tYXAoZmlscCwgdm1hKTsKPiArCWlmIChyZXQpCj4g
-KwkJcmV0dXJuIHJldDsKPiAgCj4gLQltdXRleF91bmxvY2soJmRldi0+c3RydWN0X211dGV4KTsK
-PiArCW9iaiA9IHZtYS0+dm1fcHJpdmF0ZV9kYXRhOwo+ICAKPiAtCXJldHVybiByZXQ7Cj4gKwly
-ZXR1cm4gcm9ja2NoaXBfZHJtX2dlbV9vYmplY3RfbW1hcChvYmosIHZtYSk7Cj4gIH0KPiAgCj4g
-IHN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICoKPiAtLSAKPiAyLjQuMy41NzMuZzRlYWZiZWYK
-PiAKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlv
-bgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo=
+On Mon, 6 Jul 2015, Felipe Balbi wrote:
+
+> > You know, this is the first time I've run across this optimization.
+> > 
+> > In principle it applies to any USB host controller, not just to PHYs.  
+> > There's no reason to enable wakeup for a controller if none of the 
+> > attached devices can issue a wakeup request.
+> > 
+> > I don't know if implementing this in other HCDs would save any power.  
+> > Any ideas?
+> 
+> most likely it would. Enabling wakeup usually boils down to keeping a
+> tiny part of the controller (or PHY) powered up. Sometimes that lies in
+> an always-on power domain, so there would be no difference.
+
+Doug, how would you feel about reworking the patch that exports
+usb_wakeup_enabled_descendants()?  Instead of doing it that way, create
+and export a new subroutine in hcd.c called
+usb_hcd_wakeup_not_needed(), or something similar.
+
+The idea is that a host controller driver can do something like this:
+
+	do_wakeup = device_may_wakeup(...);
+	if (usb_hcd_wakeup_not_needed(hcd))
+		do_wakeup = false;
+
+It encapsulates what you want in a form that can easily be used by 
+every HCD.  We can then add this call into the HCDs, over time.
+
+(Merging a change like this would be a challenge.  I guess Felipe would
+have to put it in a separate branch which Greg could pull, or vice
+versa, so that the new routine would be available to patches submitted
+to either maintainer.)
+
+Alan Stern
