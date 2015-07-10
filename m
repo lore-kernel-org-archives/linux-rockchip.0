@@ -1,58 +1,90 @@
 From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: [PATCH] drm: Drop owner assignment from i2c_driver
-Date: Fri, 10 Jul 2015 14:36:37 +0900
-Message-ID: <1436506597-1096-2-git-send-email-k.kozlowski@samsung.com>
-References: <1436506597-1096-1-git-send-email-k.kozlowski@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <1436506597-1096-1-git-send-email-k.kozlowski@samsung.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH] phy: Drop owner assignment from platform_driver
+Date: Fri, 10 Jul 2015 15:26:27 +0900
+Message-ID: <1436509587-27258-1-git-send-email-k.kozlowski@samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Heiko Stuebner <heiko@sntech.de>, "open list:GENERIC PHY FRAMEWORK" <linux-kernel@vger.kernel.org>, "moderated list:ARM/STI
+	ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/STI ARCHITECTURE" <kernel@stlinux.com>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
 Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-aTJjX2RyaXZlciBkb2VzIG5vdCBuZWVkIHRvIHNldCBhbiBvd25lciBiZWNhdXNlIGkyY19yZWdp
-c3Rlcl9kcml2ZXIoKQp3aWxsIHNldCBpdC4KClNpZ25lZC1vZmYtYnk6IEtyenlzenRvZiBLb3ps
-b3dza2kgPGsua296bG93c2tpQHNhbXN1bmcuY29tPgoKLS0tCgpUaGUgY29jY2luZWxsZSBzY3Jp
-cHQgd2hpY2ggZ2VuZXJhdGVkIHRoZSBwYXRjaCB3YXMgc2VudCBoZXJlOgpodHRwOi8vd3d3LnNw
-aW5pY3MubmV0L2xpc3RzL2tlcm5lbC9tc2cyMDI5OTAzLmh0bWwKLS0tCiBkcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3BzODYyMi5jICAgICAgICAgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL3B0bjM0NjAuYyAgICAgICAgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5jIHwgMSAtCiAzIGZpbGVzIGNoYW5nZWQsIDMgZGVsZXRpb25zKC0p
-CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wczg2MjIuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvcHM4NjIyLmMKaW5kZXggMWE2NjA3YmViMjlmLi5iZTg4MWU5ZmVmOGYg
-MTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvcHM4NjIyLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9wczg2MjIuYwpAQCAtNjY4LDcgKzY2OCw2IEBAIHN0YXRpYyBzdHJ1
-Y3QgaTJjX2RyaXZlciBwczg2MjJfZHJpdmVyID0gewogCS5yZW1vdmUJCT0gcHM4NjIyX3JlbW92
-ZSwKIAkuZHJpdmVyCQk9IHsKIAkJLm5hbWUJPSAicHM4NjIyIiwKLQkJLm93bmVyCT0gVEhJU19N
-T0RVTEUsCiAJCS5vZl9tYXRjaF90YWJsZSA9IHBzODYyMl9kZXZpY2VzLAogCX0sCiB9OwpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wdG4zNDYwLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL3B0bjM0NjAuYwppbmRleCAxYjFiZjIzODQ4MTUuLjBmZmEzYTZhMjA2YSAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wdG4zNDYwLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9wdG4zNDYwLmMKQEAgLTQwMCw3ICs0MDAsNiBAQCBzdGF0aWMgc3RydWN0
-IGkyY19kcml2ZXIgcHRuMzQ2MF9kcml2ZXIgPSB7CiAJLnJlbW92ZQkJPSBwdG4zNDYwX3JlbW92
-ZSwKIAkuZHJpdmVyCQk9IHsKIAkJLm5hbWUJPSAibnhwLHB0bjM0NjAiLAotCQkub3duZXIJPSBU
-SElTX01PRFVMRSwKIAkJLm9mX21hdGNoX3RhYmxlID0gcHRuMzQ2MF9tYXRjaCwKIAl9LAogfTsK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmluZGV4IDAxYjU1
-OGZlMzY5NS4uOWEwYzI5MTEyNzJhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZHJ2LmMKQEAgLTU1NSw3ICs1NTUsNiBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3Jt
-X2RyaXZlciByb2NrY2hpcF9kcm1fcGxhdGZvcm1fZHJpdmVyID0gewogCS5wcm9iZSA9IHJvY2tj
-aGlwX2RybV9wbGF0Zm9ybV9wcm9iZSwKIAkucmVtb3ZlID0gcm9ja2NoaXBfZHJtX3BsYXRmb3Jt
-X3JlbW92ZSwKIAkuZHJpdmVyID0gewotCQkub3duZXIgPSBUSElTX01PRFVMRSwKIAkJLm5hbWUg
-PSAicm9ja2NoaXAtZHJtIiwKIAkJLm9mX21hdGNoX3RhYmxlID0gcm9ja2NoaXBfZHJtX2R0X2lk
-cywKIAkJLnBtID0gJnJvY2tjaGlwX2RybV9wbV9vcHMsCi0tIAoxLjkuMQoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
-dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+platform_driver does not need to set an owner because
+platform_driver_register() will set it.
+
+Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+
+---
+
+The coccinelle script which generated the patch was sent here:
+http://www.spinics.net/lists/kernel/msg2029903.html
+---
+ drivers/phy/phy-berlin-usb.c        | 1 -
+ drivers/phy/phy-miphy28lp.c         | 1 -
+ drivers/phy/phy-qcom-ufs-qmp-14nm.c | 1 -
+ drivers/phy/phy-qcom-ufs-qmp-20nm.c | 1 -
+ drivers/phy/phy-rockchip-usb.c      | 1 -
+ 5 files changed, 5 deletions(-)
+
+diff --git a/drivers/phy/phy-berlin-usb.c b/drivers/phy/phy-berlin-usb.c
+index c6fc95b53083..d7431f6ab975 100644
+--- a/drivers/phy/phy-berlin-usb.c
++++ b/drivers/phy/phy-berlin-usb.c
+@@ -207,7 +207,6 @@ static struct platform_driver phy_berlin_usb_driver = {
+ 	.probe	= phy_berlin_usb_probe,
+ 	.driver	= {
+ 		.name		= "phy-berlin-usb",
+-		.owner		= THIS_MODULE,
+ 		.of_match_table	= phy_berlin_sata_of_match,
+ 	 },
+ };
+diff --git a/drivers/phy/phy-miphy28lp.c b/drivers/phy/phy-miphy28lp.c
+index 5e257ef7ac05..677c290f4b14 100644
+--- a/drivers/phy/phy-miphy28lp.c
++++ b/drivers/phy/phy-miphy28lp.c
+@@ -1268,7 +1268,6 @@ static struct platform_driver miphy28lp_driver = {
+ 	.probe = miphy28lp_probe,
+ 	.driver = {
+ 		.name = "miphy28lp-phy",
+-		.owner = THIS_MODULE,
+ 		.of_match_table = miphy28lp_of_match,
+ 	}
+ };
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
+index f5fc50a9fce7..e1eea1b379fc 100644
+--- a/drivers/phy/phy-qcom-ufs-qmp-14nm.c
++++ b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
+@@ -191,7 +191,6 @@ static struct platform_driver ufs_qcom_phy_qmp_14nm_driver = {
+ 	.driver = {
+ 		.of_match_table = ufs_qcom_phy_qmp_14nm_of_match,
+ 		.name = "ufs_qcom_phy_qmp_14nm",
+-		.owner = THIS_MODULE,
+ 	},
+ };
+ 
+diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
+index 8332f96b2c4a..fde8c876823b 100644
+--- a/drivers/phy/phy-qcom-ufs-qmp-20nm.c
++++ b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
+@@ -247,7 +247,6 @@ static struct platform_driver ufs_qcom_phy_qmp_20nm_driver = {
+ 	.driver = {
+ 		.of_match_table = ufs_qcom_phy_qmp_20nm_of_match,
+ 		.name = "ufs_qcom_phy_qmp_20nm",
+-		.owner = THIS_MODULE,
+ 	},
+ };
+ 
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+index 7d4c33643768..bf78721b58f4 100644
+--- a/drivers/phy/phy-rockchip-usb.c
++++ b/drivers/phy/phy-rockchip-usb.c
+@@ -146,7 +146,6 @@ static struct platform_driver rockchip_usb_driver = {
+ 	.probe		= rockchip_usb_phy_probe,
+ 	.driver		= {
+ 		.name	= "rockchip-usb-phy",
+-		.owner	= THIS_MODULE,
+ 		.of_match_table = rockchip_usb_phy_dt_ids,
+ 	},
+ };
+-- 
+1.9.1
