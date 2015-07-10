@@ -1,90 +1,62 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: [PATCH] phy: Drop owner assignment from platform_driver
-Date: Fri, 10 Jul 2015 15:26:27 +0900
-Message-ID: <1436509587-27258-1-git-send-email-k.kozlowski@samsung.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Heiko Stuebner <heiko@sntech.de>, "open list:GENERIC PHY FRAMEWORK" <linux-kernel@vger.kernel.org>, "moderated list:ARM/STI
-	ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/STI ARCHITECTURE" <kernel@stlinux.com>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm: Drop owner assignment from i2c_driver
+Date: Fri, 10 Jul 2015 14:50:36 +0800
+Message-ID: <559F6B3C.8080908@rock-chips.com>
+References: <1436506597-1096-1-git-send-email-k.kozlowski@samsung.com>
+ <1436506597-1096-2-git-send-email-k.kozlowski@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1436506597-1096-2-git-send-email-k.kozlowski@samsung.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-platform_driver does not need to set an owner because
-platform_driver_register() will set it.
-
-Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-
----
-
-The coccinelle script which generated the patch was sent here:
-http://www.spinics.net/lists/kernel/msg2029903.html
----
- drivers/phy/phy-berlin-usb.c        | 1 -
- drivers/phy/phy-miphy28lp.c         | 1 -
- drivers/phy/phy-qcom-ufs-qmp-14nm.c | 1 -
- drivers/phy/phy-qcom-ufs-qmp-20nm.c | 1 -
- drivers/phy/phy-rockchip-usb.c      | 1 -
- 5 files changed, 5 deletions(-)
-
-diff --git a/drivers/phy/phy-berlin-usb.c b/drivers/phy/phy-berlin-usb.c
-index c6fc95b53083..d7431f6ab975 100644
---- a/drivers/phy/phy-berlin-usb.c
-+++ b/drivers/phy/phy-berlin-usb.c
-@@ -207,7 +207,6 @@ static struct platform_driver phy_berlin_usb_driver = {
- 	.probe	= phy_berlin_usb_probe,
- 	.driver	= {
- 		.name		= "phy-berlin-usb",
--		.owner		= THIS_MODULE,
- 		.of_match_table	= phy_berlin_sata_of_match,
- 	 },
- };
-diff --git a/drivers/phy/phy-miphy28lp.c b/drivers/phy/phy-miphy28lp.c
-index 5e257ef7ac05..677c290f4b14 100644
---- a/drivers/phy/phy-miphy28lp.c
-+++ b/drivers/phy/phy-miphy28lp.c
-@@ -1268,7 +1268,6 @@ static struct platform_driver miphy28lp_driver = {
- 	.probe = miphy28lp_probe,
- 	.driver = {
- 		.name = "miphy28lp-phy",
--		.owner = THIS_MODULE,
- 		.of_match_table = miphy28lp_of_match,
- 	}
- };
-diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-index f5fc50a9fce7..e1eea1b379fc 100644
---- a/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-+++ b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-@@ -191,7 +191,6 @@ static struct platform_driver ufs_qcom_phy_qmp_14nm_driver = {
- 	.driver = {
- 		.of_match_table = ufs_qcom_phy_qmp_14nm_of_match,
- 		.name = "ufs_qcom_phy_qmp_14nm",
--		.owner = THIS_MODULE,
- 	},
- };
- 
-diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-index 8332f96b2c4a..fde8c876823b 100644
---- a/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-+++ b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-@@ -247,7 +247,6 @@ static struct platform_driver ufs_qcom_phy_qmp_20nm_driver = {
- 	.driver = {
- 		.of_match_table = ufs_qcom_phy_qmp_20nm_of_match,
- 		.name = "ufs_qcom_phy_qmp_20nm",
--		.owner = THIS_MODULE,
- 	},
- };
- 
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index 7d4c33643768..bf78721b58f4 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -146,7 +146,6 @@ static struct platform_driver rockchip_usb_driver = {
- 	.probe		= rockchip_usb_phy_probe,
- 	.driver		= {
- 		.name	= "rockchip-usb-phy",
--		.owner	= THIS_MODULE,
- 		.of_match_table = rockchip_usb_phy_dt_ids,
- 	},
- };
--- 
-1.9.1
+T24gMjAxNeW5tDA35pyIMTDml6UgMTM6MzYsIEtyenlzenRvZiBLb3psb3dza2kgd3JvdGU6Cj4g
+aTJjX2RyaXZlciBkb2VzIG5vdCBuZWVkIHRvIHNldCBhbiBvd25lciBiZWNhdXNlIGkyY19yZWdp
+c3Rlcl9kcml2ZXIoKQo+IHdpbGwgc2V0IGl0Lgo+Cj4gU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9m
+IEtvemxvd3NraSA8ay5rb3psb3dza2lAc2Ftc3VuZy5jb20+Cj4KPiAtLS0KPgo+IFRoZSBjb2Nj
+aW5lbGxlIHNjcmlwdCB3aGljaCBnZW5lcmF0ZWQgdGhlIHBhdGNoIHdhcyBzZW50IGhlcmU6Cj4g
+aHR0cDovL3d3dy5zcGluaWNzLm5ldC9saXN0cy9rZXJuZWwvbXNnMjAyOTkwMy5odG1sCj4gLS0t
+Cj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BzODYyMi5jICAgICAgICAgICAgIHwgMSAtCj4g
+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3B0bjM0NjAuYyAgICAgICAgICAgIHwgMSAtCj4gICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMSAtCj4gICAzIGZp
+bGVzIGNoYW5nZWQsIDMgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9wczg2MjIuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvcHM4NjIyLmMKPiBp
+bmRleCAxYTY2MDdiZWIyOWYuLmJlODgxZTlmZWY4ZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL3BzODYyMi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wczg2
+MjIuYwo+IEBAIC02NjgsNyArNjY4LDYgQEAgc3RhdGljIHN0cnVjdCBpMmNfZHJpdmVyIHBzODYy
+Ml9kcml2ZXIgPSB7Cj4gICAJLnJlbW92ZQkJPSBwczg2MjJfcmVtb3ZlLAo+ICAgCS5kcml2ZXIJ
+CT0gewo+ICAgCQkubmFtZQk9ICJwczg2MjIiLAo+IC0JCS5vd25lcgk9IFRISVNfTU9EVUxFLAo+
+ICAgCQkub2ZfbWF0Y2hfdGFibGUgPSBwczg2MjJfZGV2aWNlcywKPiAgIAl9LAo+ICAgfTsKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wdG4zNDYwLmMgYi9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL3B0bjM0NjAuYwo+IGluZGV4IDFiMWJmMjM4NDgxNS4uMGZmYTNhNmEyMDZh
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvcHRuMzQ2MC5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wdG4zNDYwLmMKPiBAQCAtNDAwLDcgKzQwMCw2IEBAIHN0
+YXRpYyBzdHJ1Y3QgaTJjX2RyaXZlciBwdG4zNDYwX2RyaXZlciA9IHsKPiAgIAkucmVtb3ZlCQk9
+IHB0bjM0NjBfcmVtb3ZlLAo+ICAgCS5kcml2ZXIJCT0gewo+ICAgCQkubmFtZQk9ICJueHAscHRu
+MzQ2MCIsCj4gLQkJLm93bmVyCT0gVEhJU19NT0RVTEUsCj4gICAJCS5vZl9tYXRjaF90YWJsZSA9
+IHB0bjM0NjBfbWF0Y2gsCj4gICAJfSwKPiAgIH07Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggMDFiNTU4ZmUzNjk1Li45YTBjMjkxMTI3MmEg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBA
+QCAtNTU1LDcgKzU1NSw2IEBAIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlw
+X2RybV9wbGF0Zm9ybV9kcml2ZXIgPSB7Cj4gICAJLnByb2JlID0gcm9ja2NoaXBfZHJtX3BsYXRm
+b3JtX3Byb2JlLAo+ICAgCS5yZW1vdmUgPSByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcmVtb3ZlLAo+
+ICAgCS5kcml2ZXIgPSB7Cj4gLQkJLm93bmVyID0gVEhJU19NT0RVTEUsCgpCdXQgcm9ja2NoaXAg
+ZHJtIGlzIHBsYXRmb3JtIGRyaXZlciBub3QgaTJjX2RyaXZlciwgd2h5IHJlbW92ZSBpdHMgLm93
+bmVyID8KCi1NYXJrCj4gICAJCS5uYW1lID0gInJvY2tjaGlwLWRybSIsCj4gICAJCS5vZl9tYXRj
+aF90YWJsZSA9IHJvY2tjaGlwX2RybV9kdF9pZHMsCj4gICAJCS5wbSA9ICZyb2NrY2hpcF9kcm1f
+cG1fb3BzLAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
