@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 3/4] ARM: dts: rockchip: add veyron-jerry board
-Date: Sat, 11 Jul 2015 02:29:21 +0200
-Message-ID: <1436574562-16308-4-git-send-email-heiko@sntech.de>
+Subject: [PATCH 4/4] ARM: dts: rockchip: add Pinky board
+Date: Sat, 11 Jul 2015 02:29:22 +0200
+Message-ID: <1436574562-16308-5-git-send-email-heiko@sntech.de>
 References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,56 +21,55 @@ To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-ro
 Cc: khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+While pinky was one of the earlier development models, is on the list
+of endangered species today and nearly extinct, I want to keep mine
+around for the foreseeable future after spending all the time making a
+nice hole into the base below the dut-connector.
 
-The Hisense Chromebook C11, also named jerry.
-
-Signed-off-by: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.txt |   7 +
+ Documentation/devicetree/bindings/arm/rockchip.txt |   5 +
  arch/arm/boot/dts/Makefile                         |   3 +-
- arch/arm/boot/dts/rk3288-veyron-jerry.dts          | 199 +++++++++++++++++++++
- 3 files changed, 208 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-jerry.dts
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts          | 128 +++++++++++++++++++++
+ 3 files changed, 135 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-veyron-pinky.dts
 
 diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 60d4a1e..1b2b572 100644
+index 1b2b572..6de18bd2 100644
 --- a/Documentation/devicetree/bindings/arm/rockchip.txt
 +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -26,3 +26,10 @@ Rockchip platforms device tree bindings
- - ChipSPARK PopMetal-RK3288 board:
-     Required root node properties:
-       - compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
+@@ -33,3 +33,8 @@ Rockchip platforms device tree bindings
+ 		     "google,veyron-jerry-rev5", "google,veyron-jerry-rev4",
+ 		     "google,veyron-jerry-rev3", "google,veyron-jerry",
+ 		     "google,veyron", "rockchip,rk3288";
 +
-+- Google Jerry (Hisense Chromebook C11 and more):
++- Google Pinky (dev-board):
 +    Required root node properties:
-+      - compatible = "google,veyron-jerry-rev7", "google,veyron-jerry-rev6",
-+		     "google,veyron-jerry-rev5", "google,veyron-jerry-rev4",
-+		     "google,veyron-jerry-rev3", "google,veyron-jerry",
++      - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
 +		     "google,veyron", "rockchip,rk3288";
+\ No newline at end of file
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 246473a..2e545a3 100644
+index 2e545a3..4993b3b 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -488,7 +488,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-evb-act8846.dtb \
+@@ -489,7 +489,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
  	rk3288-evb-rk808.dtb \
  	rk3288-firefly-beta.dtb \
--	rk3288-firefly.dtb
-+	rk3288-firefly.dtb \
-+	rk3288-veyron-jerry.dtb
+ 	rk3288-firefly.dtb \
+-	rk3288-veyron-jerry.dtb
++	rk3288-veyron-jerry.dtb \
++	rk3288-veyron-pinky.dtb
  dtb-$(CONFIG_ARCH_S3C24XX) += \
  	s3c2416-smdk2416.dtb
  dtb-$(CONFIG_ARCH_S3C64XX) += \
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
 new file mode 100644
-index 0000000..781408f
+index 0000000..25eb4b0
 --- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
-@@ -0,0 +1,199 @@
++++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+@@ -0,0 +1,128 @@
 +/*
-+ * Google Veyron Jerry Rev 3+ board device tree source
++ * Google Veyron Pinky Rev 2 board device tree source
 + *
 + * Copyright 2015 Google, Inc
 + *
@@ -118,59 +117,67 @@ index 0000000..781408f
 +#include "cros-ec-sbs.dtsi"
 +
 +/ {
-+	model = "Google Jerry";
-+	compatible = "google,veyron-jerry-rev7", "google,veyron-jerry-rev6",
-+		     "google,veyron-jerry-rev5", "google,veyron-jerry-rev4",
-+		     "google,veyron-jerry-rev3", "google,veyron-jerry",
++	model = "Google Pinky";
++	compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
 +		     "google,veyron", "rockchip,rk3288";
 +
-+	panel_regulator: panel-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcd_enable_h>;
-+		regulator-name = "panel_regulator";
-+		vin-supply = <&vcc33_sys>;
++	/delete-node/emmc-pwrseq;
++};
++
++&emmc {
++	/*
++	 * Use a pullup instead of a drive since the output is 3.3V and
++	 * really should be 1.8V (oops).  The external pulldown will help
++	 * bring the voltage down if we only drive with a pullup here.
++	 * Therefore disable the powerseq (and actual reset) for pinky.
++	 */
++	/delete-property/mmc-pwrseq;
++	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8 &emmc_reset>;
++};
++
++&gpio_keys {
++	pinctrl-0 = <&pwr_key_h &ap_lid_int_l>;
++
++	power {
++		gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++/* Touchpad connector */
++&i2c3 {
++	status = "okay";
++
++	clock-frequency = <400000>;
++	i2c-scl-falling-time-ns = <50>;
++	i2c-scl-rising-time-ns = <300>;
++};
++
++&pinctrl {
++	buttons {
++		pwr_key_h: pwr-key-h {
++			rockchip,pins = <0 5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
 +	};
 +
-+	vcc18_lcd: vcc18-lcd {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 13 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&avdd_1v8_disp_en>;
-+		regulator-name = "vcc18_lcd";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc18_wl>;
++	emmc {
++		emmc_reset: emmc-reset {
++			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
 +	};
 +
-+	backlight_regulator: backlight-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 12 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bl_pwr_en>;
-+		regulator-name = "backlight_regulator";
-+		vin-supply = <&vcc33_sys>;
-+		startup-delay-us = <15000>;
++	sdmmc {
++		sdmmc_wp_gpio: sdmmc-wp-gpio {
++			rockchip,pins = <7 10 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
 +	};
 +};
 +
 +&rk808 {
-+	dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-+		    <&gpio7 15 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
-+
 +	regulators {
-+		mic_vcc: LDO_REG2 {
-+			regulator-name = "mic_vcc";
++		vcc18_lcd: SWITCH_REG2 {
 +			regulator-always-on;
 +			regulator-boot-on;
-+			regulator-min-microvolt = <1800000>;
-+			regulator-max-microvolt = <1800000>;
++			regulator-name = "vcc18_lcd";
 +			regulator-state-mem {
 +				regulator-on-in-suspend;
 +			};
@@ -179,94 +186,15 @@ index 0000000..781408f
 +};
 +
 +&sdmmc {
-+	disable-wp;
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
-+			&sdmmc_bus4>;
++		     &sdmmc_wp_gpio &sdmmc_bus4>;
++	wp-gpios = <&gpio7 10 GPIO_ACTIVE_HIGH>;
 +};
 +
-+&vcc_5v {
-+	enable-active-high;
-+	gpio = <&gpio7 21 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&drv_5v>;
-+};
-+
-+&vcc50_hdmi {
-+	enable-active-high;
-+	gpio = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&vcc50_hdmi_en>;
-+};
-+
-+&pinctrl {
-+	backlight {
-+		bl_pwr_en: bl_pwr_en {
-+			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	buck-5v {
-+		drv_5v: drv-5v {
-+			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	hdmi {
-+		vcc50_hdmi_en: vcc50-hdmi-en {
-+			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	lcd {
-+		lcd_enable_h: lcd-en {
-+			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		avdd_1v8_disp_en: avdd-1v8-disp-en {
-+			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		dvs_1: dvs-1 {
-+			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		dvs_2: dvs-2 {
-+			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
-+
-+&i2c4 {
-+	status = "okay";
-+
-+	/*
-+	 * Trackpad pin control is shared between Elan and Synaptics devices
-+	 * so we have to pull it up to the bus level.
-+	 */
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c4_xfer &trackpad_int>;
-+
-+	trackpad@15 {
-+		/*
-+		 * Remove the inherited pinctrl settings to avoid clashing
-+		 * with bus-wide ones.
-+		 */
-+		/delete-property/pinctrl-names;
-+		/delete-property/pinctrl-0;
-+	};
-+
-+	trackpad@2c {
-+		compatible = "hid-over-i2c";
-+		interrupt-parent = <&gpio7>;
-+		interrupts = <3 IRQ_TYPE_EDGE_FALLING>;
-+		reg = <0x2c>;
-+		hid-descr-addr = <0x0020>;
-+		vcc-supply = <&vcc33_io>;
-+		wakeup-source;
-+	};
++&tsadc {
++	/* Some connection is flaky making the tsadc hang the system */
++	status = "disabled";
 +};
 -- 
 2.1.4
