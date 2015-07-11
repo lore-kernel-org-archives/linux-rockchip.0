@@ -1,13 +1,13 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] soc/rockchip: add handler for usb-uart functionality
-Date: Fri, 10 Jul 2015 23:07:26 +0200
-Message-ID: <1748257.PI6hyOPu9L@diego>
-References: <1574322.mYky5df1dK@diego>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/4] ARM: dts: Add sbs-battery dts fragment used by chromebooks
+Date: Sat, 11 Jul 2015 02:29:19 +0200
+Message-ID: <1436574562-16308-2-git-send-email-heiko@sntech.de>
+References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1574322.mYky5df1dK@diego>
+In-Reply-To: <1436574562-16308-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,60 +17,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDguIEp1bGkgMjAxNSwgMjE6MDA6MDYgc2NocmllYiBIZWlrbyBTdMO8Ym5l
-cjoKPiBNb3N0IG5ld2VyIFJvY2tjaGlwIFNvQ3MgcHJvdmlkZSB0aGUgcG9zc2liaWxpdHkgdG8g
-dXNlIGEgdXNiLXBoeQo+IGFzIHBhc3N0aHJvdWdoIGZvciB0aGUgZGVidWcgdWFydCAodWFydDIp
-LCBtYWtpbmcgaXQgcG9zc2libGUgdG8KPiBnZXQgY29uc29sZSBvdXRwdXQgd2l0aG91dCBuZWVk
-aW5nIHRvIG9wZW4gdGhlIGRldmljZS4KPiAKPiBUaGlzIHBhdGNoIGFkZHMgYW4gZWFybHlfaW5p
-dGNhbGwgdG8gZW5hYmxlIHRoaXMgZnVuY3Rpb25hbGl0eQo+IGNvbmRpdGlvbmFsbHkgdmlhIHRo
-ZSBjb21tYW5kbGluZSBhbmQgYWxzbyBkaXNhYmxlcyB0aGUgY29ycmVzcG9uZGluZwo+IHVzYiBj
-b250cm9sbGVyIGluIHRoZSBkZXZpY2V0cmVlLgo+IAo+IEN1cnJlbnRseSBvbmx5IGRhdGEgZm9y
-IHRoZSByazMyODggaXMgcHJvdmlkZWQsIGJ1dCBhdCBsZWFzdCB0aGUKPiByazMxODggYW5kIGFy
-bTY0IHJrMzM2OCBhbHNvIHByb3ZpZGUgdGhpcyBmdW5jdGlvbmFsaXR5IGFuZCB3aWxsIGJlCj4g
-ZW5hYmxlZCBsYXRlci4KPiAKPiBPbiBhIHNwbGljZWQgdXNiIGNhYmxlIHRoZSBzaWduYWxzIGFy
-ZSB0eCBvbiB3aGl0ZSB3aXJlKEQrKSBhbmQKPiByeCBvbiBncmVlbiB3aXJlKEQtKS4KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKZHVtcGluZyBz
-b21lIHRob3VnaHRzIHRoYXQgc3RlbSBmcm9tIGNvbW1lbnRzIGluIG15IGcrIHBvc3QgYWJvdXQg
-dGhpczoKCgpBcm5kIEJlcmdtYW5uLCB5ZXN0ZXJkYXkgMTk6NDA6CldvdWxkIGl0IGhlbHAgdG8g
-bW92ZSB0aGlzIGNvZGUgaW50byB0aGUgY29uc29sZSBpbml0IHNlY3Rpb24gb2YgdGhlIFVBUlQg
-CmRyaXZlciB0byBhdm9pZCBsb3NpbmcgdGhlIGluaXRpYWwgb3V0cHV0P++7vwoKCkhlaWtvIFN0
-w7xibmVyLCB5ZXN0ZXJkYXkgMjA6MDgKSSBkb24ndCB0aGluayBzby4gVGhlIGZ1bmN0aW9uYWxp
-dHkgaGFzIG5vdGhpbmcgdG8gZG8gd2l0aCB0aGUgdWFydCBpdHNlbGYgLSAKaW4gZmFjdCBmb3Ig
-dGhlIHN5c3RlbSBldmVyeXRoaW5nIHN0YXlzIHRoZSBzYW1lIC0gb25seSB0aGUgcm91dGluZyBi
-ZWNvbWVzIApkaWZmZXJlbnQuIEl0IHNob3VsZCBldmVuIHdvcmsgd2l0aCBlYXJseXByaW50ay9l
-YXJseWNvbi4KClRoZSBvbmx5IG91dHB1dCB5b3UgbG9vc2UgaXMgdXAgdG8gdGhlIHBvaW50IHdo
-ZW4gdGhlIGVhcmx5X2luaXRjYWxsIGlzIApleGVjdXRlZCAtIHdoaWNoIGlzIGFyb3VuZCB0aGUg
-c21wIGJyaW5ndXAgdGltZS4gQW5kIEkgZ3Vlc3MgaWYgc29tZWJvZHkgaXMgCmRvaW5nIGtlcm5l
-bCBjaGFuZ2VzIGZvciB0aGlzIGVhcmx5IHN0YWdlLCB0aGV5IHdpbGwgcHJvYmFibHkgdXNlIGEg
-Ym9hcmQgd2l0aCAKYSByZWFsIHVhcnQgb3IgbW9kaWZ5IHRoZWlyIHVib290IHRvIGFscmVhZHkg
-YWxzbyBzZXQgdGhpcyBvcHRpb24u77u/CgoKQXJuZCBCZXJnbWFubiwgeWVzdGVyZGF5IDIwOjUy
-Cklzbid0IGVhcmx5X2luaXRjYWxsIC9tdWNoLyBsYXRlciB0aGFuIGNvbnNvbGVfaW5pdCwgb3Ig
-ZXZlbiBlYXJseWNvbj8KVGhlIGNvbnNvbGUgb3V0cHV0IGdldHMgYnVmZmVyZWQgdW50aWwgdGhl
-IGZpcnN0IGNvbnNvbGUgZ2V0cyBmb3VuZCBhbmQgaXMgdGhlbiAKZmx1c2hlZCB0byB0aGF0LiBJ
-ZiB5b3Ugc3dpdGNoIHRoZSBNVVgganVzdCBiZWZvcmUgcmVnaXN0ZXJpbmcgdGhlIGNvbnNvbGUs
-IHlvdSAKc2hvdWxkIG5vdCBsb3NlIGFueXRoaW5nLCBhbmQgYWxzbyBwdXQgdGhpcyBjb2RlIGlu
-IGEgbW9yZSBuYXR1cmFsIGxvY2F0aW9uLu+7vwoKCkhlaWtvIFN0w7xibmVyLCB0b2RheSAyMzow
-MwpZZXAgYXMgSSBzYWlkLCB0d2kgc3dpdGNoIGN1cnJlbnRseSBydW5zIGFyb3VuZCB0aGUgdGlt
-ZSBvZiB0aGUgc21wIGJyaW5ndXAgLiAKSSdtIHByb2JhYmx5IGp1c3QgZGFmdCwgYnV0IGFsc28g
-c3RpbGwgbm90IHN1cmUgaG93IHRoaXMgc2hvdWxkIGZpdCBpbnRvIHRoZSAKdWFydCBkcml2ZXIv
-Y29uc29sZSBzdHVmZi4gRXNwZWNpYWxseSBhcyBpdCBpcyBub3QgZXZlbiBhIHByb3BlcnR5IG9m
-IHRoZSAKKGRlc2lnbndhcmUpIHVhcnQgaXBzLCBidXQgaW5zdGVhZCBpdCBtaWdodCBldmVuIGJl
-IG1vcmUgYSBwcm9wZXJ0eSBvZiB0aGUgdXNiIApwaHkuIEluIHRlcm1zIG9mIG5hdHVyYWwgbG9j
-YXRpb24sIHRoZSB1c2JwaHkgZHJpdmVyIG1pZ2h0IHRoZW4gYmUgYSBtb3JlIApzdWl0YWJsZSBw
-b3NpdGlvbj8KCkluIHRlcm1zIG9mIHdoZW4gdG8gcnVuLCBpdCBhbHNvIGxvb2tzIGxpa2UgZWFy
-bHlfaW5pdGNhbGwgaXMgb25lIG9mIHRoZSAKZWFybGllc3QgdGltZXMgdG8gcnVuLCBhcyB0aGUg
-Y29kZSBuZWVkcyBzeXNjb25zLCBkZXZpY2V0cmVlIG1hdGNoaW5nIGFuZCBhbHNvIApkZXZpY2V0
-cmVlIHVwZGF0ZXMuCgpJZiBqdXN0IHRoZSByZWd1bGFyIGNvbnNvbGUgaXMgaW5jbHVkZWQsIG5v
-dGhpbmcgaXMgbG9zdCBhbmQgSSBndWVzcyB3aGVuIApzb21lYm9keSBuZWVkcyB0byB0b3VjaCAo
-YW5kIGRlYnVnKSBzdWNoIGxvdy1sb3ctbGV2ZWwgcGFydHMgbGlrZSBiZWZvcmUgdGhlIApzbXAg
-YnJpbmd1cCB0aGV5IHdvbid0IGRvIGl0IG9uIGEgYm9hcmQgd2l0aG91dCBhIHJlYWwgc2VyaWFs
-IHBvcnQgSSBndWVzcy4KCkkgZ3Vlc3Mgd2Ugc2hvdWxkIGFsc28gbW92ZSB0aGlzIHRvIGEgbWFp
-bGluZyBsaXN0IC4uLiBJIGd1ZXNzIEknbGwganVzdCBjb3B5IApvdXIgdGhyZWFkIGhlcmUgaW50
-byBhIHJlcGx5IHRvIG15IHBhdGNoIDstKSAu77u/CgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+This patch creates a sbs-battery fragment for batteries connected
+to the i2c tunnel of the cros-ec embedded controller.
+
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/cros-ec-sbs.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+ create mode 100644 arch/arm/boot/dts/cros-ec-sbs.dtsi
+
+diff --git a/arch/arm/boot/dts/cros-ec-sbs.dtsi b/arch/arm/boot/dts/cros-ec-sbs.dtsi
+new file mode 100644
+index 0000000..b76afe2
+--- /dev/null
++++ b/arch/arm/boot/dts/cros-ec-sbs.dtsi
+@@ -0,0 +1,18 @@
++/*
++ * Smart battery dts fragment for devices that use cros-ec-sbs
++ *
++ * Copyright (c) 2015 Google, Inc
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++*/
++
++&i2c_tunnel {
++	battery: sbs-battery@b {
++		compatible = "sbs,sbs-battery";
++		reg = <0xb>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
+-- 
+2.1.4
