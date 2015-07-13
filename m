@@ -1,48 +1,22 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: some fixes
-Date: Mon, 13 Jul 2015 14:22:20 +0800
-Message-ID: <55A3591C.6090100@rock-chips.com>
+From: Christoph Fritz <chf.fritz@googlemail.com>
+Subject: rockchip v4l support ?
+Date: Mon, 13 Jul 2015 09:20:51 +0200
+Message-ID: <1436772051.2187.9.camel@googlemail.com>
+Reply-To: chf.fritz@googlemail.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZQogICAgIEhlcmUgaXMgc29tZSBmaXhlcyBmb3Igcm9ja2NoaXAgZHJtLCBjYW4geW91
-IGxhbmQgdGhlbT8KClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYzVmZDkzNmU5
-OTJkZDI4MjkxNjdkMmFkYzYzZTE1MTY3NWNhNjg5ODoKCiAgIGRybS9ub3V2ZWF1OiBQYXVzZSBi
-ZXR3ZWVuIHNldHRpbmcgZ3B1IHRvIEQzaG90IGFuZCBjdXR0aW5nIHRoZSBwb3dlciAKKDIwMTUt
-MDYtMjYgMTA6MjY6MzcgKzEwMDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9y
-eSBhdDoKCiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9tYXJreXpxL2tlcm5lbC1kcm0tcm9ja2NoaXAu
-Z2l0IApkcm0tcm9ja2NoaXAtMjAxNS0wNy0xMwoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVw
-IHRvIDA5MTVkYTdkZDc1ZjBmNWYzOGRjOWI4MjQxNTQxN2U3YTJiNDAzODU6CgogICBkcm0vcm9j
-a2NoaXA6IHZvcDogcmVtb3ZlIGhhcmR3YXJlIGN1cnNvciB3aW5kb3cgKDIwMTUtMDctMTMgMTQ6
-MTE6MjAgCiswODAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpEYW5pZWwgS3VydHogKDEpOgogICAgICAgZHJtL3JvY2tj
-aGlwOiB1c2UgZHJtX2dlbV9tbWFwIGhlbHBlcnMKCkhlaWtvIFN0w7xibmVyICgxKToKICAgICAg
-IGRybS9yb2NrY2hpcDogb25seSBjYWxsIGRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudCBpZiBm
-Yl9oZWxwZXIgCnByZXNlbnQKCktyenlzenRvZiBLb3psb3dza2kgKDEpOgogICAgICAgZHJtL3Jv
-Y2tjaGlwOiBEcm9wIG93bmVyIGFzc2lnbm1lbnQgZnJvbSBwbGF0Zm9ybV9kcml2ZXIKClRvbWFz
-eiBGaWdhICgxKToKICAgICAgIGRybS9yb2NrY2hpcDogQWRkIEJHUiBmb3JtYXRzIHRvIFZPUAoK
-eWFvIG1hcmsgKDIpOgogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IHN3aXRjaCBjdXJzb3IgcGxh
-bmUgdG8gd2luZG93IDMKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiByZW1vdmUgaGFyZHdhcmUg
-Y3Vyc29yIHdpbmRvdwoKICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
-di5jIHwgICAgMSAtCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5j
-ICB8ICAgIDMgKy0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5j
-IHwgICA2NyAKKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tCiAgZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAgNDkgKysrKysrKysrKysrKystLS0tLS0KICA0
-IGZpbGVzIGNoYW5nZWQsIDcyIGluc2VydGlvbnMoKyksIDQ4IGRlbGV0aW9ucygtKQoKLS0gCu+8
-rWFyawoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+ is someone working on v4l (camera stack) support for rockchip SoCs?
+
+Currently, it lacks pretty much everything. So what is your guess in the
+amount of work at a rough estimate?
+
+ Thanks
+  -- chf
