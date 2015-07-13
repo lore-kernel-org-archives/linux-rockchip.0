@@ -1,57 +1,32 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH RESEND] iio: adc: rockchip_saradc: add missing MODULE_*
- data
-Date: Mon, 13 Jul 2015 21:52:06 +0100
-Message-ID: <55A424F6.6080304@kernel.org>
-References: <8215730.uluDfnE1h7@diego> <55A1533A.2080507@kernel.org> <79826456.QduC5uXeBP@diego> <9AE8F596-1594-4B92-B06E-C6F14527239D@kernel.org>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH] ARM: dts: cros-ec-keyboard: Add support for some
+ Japanese keys
+Date: Mon, 13 Jul 2015 23:47:22 +0200
+Message-ID: <20150713214722.GA16049@localhost>
+References: <1430791657-28014-1-git-send-email-zyw@rock-chips.com>
+ <CAD=FV=VW0s=PHUvATPC_XRPFh=49RcSYxUP56B4KRXDM6F4mnQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9AE8F596-1594-4B92-B06E-C6F14527239D@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=VW0s=PHUvATPC_XRPFh=49RcSYxUP56B4KRXDM6F4mnQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Hartmut Knaack <knaack.h@gmx.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter Meerwald <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Chris Zhong <zyw@rock-chips.com>, Dmitry Torokhov <dtor@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 13/07/15 10:23, Jonathan Cameron wrote:
->=20
->=20
-> On 11 July 2015 19:59:31 BST, "Heiko St=C3=BCbner" <heiko@sntech.de> =
-wrote:
->> Hi Jonathan,
->>
->> Am Samstag, 11. Juli 2015, 18:32:42 schrieb Jonathan Cameron:
->>> On 08/07/15 15:17, Heiko Stuebner wrote:
->>>> The module-data is currently missing. This includes the
->>>> license-information
->>>> which makes the driver taint the kernel and miss symbols when
->> compiled as
->>>> module.
->>>>
->>>> Fixes: 44d6f2ef94f9 ("iio: adc: add driver for Rockchip saradc")
->>>> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
->>>
->>> Sorry Heiko,
->>>
->>> Not entirely sure why I haven't picked this up before.
->>>
->>> Anyhow, now applied to the fixes-for-4.2 branch of iio.git
->>> and marked for stable.  I need to catch up with a bit of a
->>> backlog, but should get a pull request out to Greg sometime
->>> early next week.
->>
->> really no problem. I track my patches and generally simply keep
->> pestering=20
->> people for as long as it takes ;-)
->>
-> Very sensible!
-In this case I was being a muppet.  Had two running fixes branches
-(requests just sent for both of them) and I'd applied it to the other
-one.  Hence when I got to the pull request it was in both of them.
-Have dropped it from the post merge window one as it was fine in the
-other.
+On Tue, May 05, 2015 at 11:10:42AM -0700, Doug Anderson wrote:
+> Chris,
+> 
+> Since there's no clear architecture here, I'd bet Olof would be the
+> one to take this.  I added him to this email, but he might request
+> that you resend the patch with him in the "To:" line.
+> 
+> Other than that:
+> 
+> Reviewed-by: Doug Anderson <dianders@chromium.org>
 
-Oops!
->> Heiko
->=20
+Very belatedly applied for 4.2 fixes.
+
+
+-Olof
