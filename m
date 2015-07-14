@@ -1,32 +1,23 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [PATCH] ARM: dts: cros-ec-keyboard: Add support for some
- Japanese keys
-Date: Mon, 13 Jul 2015 23:47:22 +0200
-Message-ID: <20150713214722.GA16049@localhost>
-References: <1430791657-28014-1-git-send-email-zyw@rock-chips.com>
- <CAD=FV=VW0s=PHUvATPC_XRPFh=49RcSYxUP56B4KRXDM6F4mnQ@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: add vendor prefix for Netxeon Technology
+Date: Tue, 14 Jul 2015 20:26:52 +0200
+Message-ID: <4840625.mAlaQlrqhn@diego>
+References: <19362183.0Io0nOHtsp@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=VW0s=PHUvATPC_XRPFh=49RcSYxUP56B4KRXDM6F4mnQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Chris Zhong <zyw@rock-chips.com>, Dmitry Torokhov <dtor@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <19362183.0Io0nOHtsp@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 05, 2015 at 11:10:42AM -0700, Doug Anderson wrote:
-> Chris,
-> 
-> Since there's no clear architecture here, I'd bet Olof would be the
-> one to take this.  I added him to this email, but he might request
-> that you resend the patch with him in the "To:" line.
-> 
-> Other than that:
-> 
-> Reviewed-by: Doug Anderson <dianders@chromium.org>
+Am Dienstag, 26. Mai 2015, 21:49:05 schrieb Heiko Stuebner:
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Very belatedly applied for 4.2 fixes.
-
-
--Olof
+applied both patches to my dts branch for 4.3
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
