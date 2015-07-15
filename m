@@ -1,13 +1,15 @@
-From: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH] phy: Drop owner assignment from platform_driver
-Date: Wed, 15 Jul 2015 09:37:37 +0200
-Message-ID: <55A60DC1.2080901@st.com>
-References: <1436509587-27258-1-git-send-email-k.kozlowski@samsung.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v1.1 1/4] ARM: dts: Add sbs-battery dts fragment used by
+ chromebooks
+Date: Wed, 15 Jul 2015 13:30:43 +0200
+Message-ID: <1731785.1QCGhpnXSY@diego>
+References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
+ <1436574562-16308-2-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1436509587-27258-1-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+In-Reply-To: <1436574562-16308-2-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,94 +19,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, GENERIC PHY FRAMEWORK <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, ARM/STI ARCHITECTURE <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, ARM/STI ARCHITECTURE <kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org>, ARM/Rockchip SoC support <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Krysztof
+This patch creates a sbs-battery fragment for batteries connected
+to the i2c tunnel of the cros-ec embedded controller.
 
-On 07/10/2015 08:26 AM, Krzysztof Kozlowski wrote:
-> platform_driver does not need to set an owner because
-> platform_driver_register() will set it.
->
-> Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
->
-> ---
->
-> The coccinelle script which generated the patch was sent here:
-> http://www.spinics.net/lists/kernel/msg2029903.html
-> ---
->   drivers/phy/phy-berlin-usb.c        | 1 -
->   drivers/phy/phy-miphy28lp.c         | 1 -
->   drivers/phy/phy-qcom-ufs-qmp-14nm.c | 1 -
->   drivers/phy/phy-qcom-ufs-qmp-20nm.c | 1 -
->   drivers/phy/phy-rockchip-usb.c      | 1 -
->   5 files changed, 5 deletions(-)
->
-> diff --git a/drivers/phy/phy-berlin-usb.c b/drivers/phy/phy-berlin-usb.c
-> index c6fc95b53083..d7431f6ab975 100644
-> --- a/drivers/phy/phy-berlin-usb.c
-> +++ b/drivers/phy/phy-berlin-usb.c
-> @@ -207,7 +207,6 @@ static struct platform_driver phy_berlin_usb_driver = {
->   	.probe	= phy_berlin_usb_probe,
->   	.driver	= {
->   		.name		= "phy-berlin-usb",
-> -		.owner		= THIS_MODULE,
->   		.of_match_table	= phy_berlin_sata_of_match,
->   	 },
->   };
-> diff --git a/drivers/phy/phy-miphy28lp.c b/drivers/phy/phy-miphy28lp.c
-> index 5e257ef7ac05..677c290f4b14 100644
-> --- a/drivers/phy/phy-miphy28lp.c
-> +++ b/drivers/phy/phy-miphy28lp.c
-> @@ -1268,7 +1268,6 @@ static struct platform_driver miphy28lp_driver = {
->   	.probe = miphy28lp_probe,
->   	.driver = {
->   		.name = "miphy28lp-phy",
-> -		.owner = THIS_MODULE,
->   		.of_match_table = miphy28lp_of_match,
->   	}
->   };
-> diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> index f5fc50a9fce7..e1eea1b379fc 100644
-> --- a/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> +++ b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> @@ -191,7 +191,6 @@ static struct platform_driver ufs_qcom_phy_qmp_14nm_driver = {
->   	.driver = {
->   		.of_match_table = ufs_qcom_phy_qmp_14nm_of_match,
->   		.name = "ufs_qcom_phy_qmp_14nm",
-> -		.owner = THIS_MODULE,
->   	},
->   };
->   
-> diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> index 8332f96b2c4a..fde8c876823b 100644
-> --- a/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> +++ b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> @@ -247,7 +247,6 @@ static struct platform_driver ufs_qcom_phy_qmp_20nm_driver = {
->   	.driver = {
->   		.of_match_table = ufs_qcom_phy_qmp_20nm_of_match,
->   		.name = "ufs_qcom_phy_qmp_20nm",
-> -		.owner = THIS_MODULE,
->   	},
->   };
->   
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> index 7d4c33643768..bf78721b58f4 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -146,7 +146,6 @@ static struct platform_driver rockchip_usb_driver = {
->   	.probe		= rockchip_usb_phy_probe,
->   	.driver		= {
->   		.name	= "rockchip-usb-phy",
-> -		.owner	= THIS_MODULE,
->   		.of_match_table = rockchip_usb_phy_dt_ids,
->   	},
->   };
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+changes since v1:
+- correct license
 
+ arch/arm/boot/dts/cros-ec-sbs.dtsi | 52 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 arch/arm/boot/dts/cros-ec-sbs.dtsi
 
-for drivers/phy/phy-miphy28lp.c
-
-Acked-by: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
-
-
-Thanks
+diff --git a/arch/arm/boot/dts/cros-ec-sbs.dtsi b/arch/arm/boot/dts/cros-ec-sbs.dtsi
+new file mode 100644
+index 0000000..71f5c5e
+--- /dev/null
++++ b/arch/arm/boot/dts/cros-ec-sbs.dtsi
+@@ -0,0 +1,52 @@
++/*
++ * Smart battery dts fragment for devices that use cros-ec-sbs
++ *
++ * Copyright (c) 2015 Google, Inc
++ *
++ * This file is dual-licensed: you can use it either under the terms
++ * of the GPL or the X11 license, at your option. Note that this dual
++ * licensing only applies to this file, and not this project as a
++ * whole.
++ *
++ *  a) This file is free software; you can redistribute it and/or
++ *     modify it under the terms of the GNU General Public License as
++ *     published by the Free Software Foundation; either version 2 of the
++ *     License, or (at your option) any later version.
++ *
++ *     This file is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ * Or, alternatively,
++ *
++ *  b) Permission is hereby granted, free of charge, to any person
++ *     obtaining a copy of this software and associated documentation
++ *     files (the "Software"), to deal in the Software without
++ *     restriction, including without limitation the rights to use,
++ *     copy, modify, merge, publish, distribute, sublicense, and/or
++ *     sell copies of the Software, and to permit persons to whom the
++ *     Software is furnished to do so, subject to the following
++ *     conditions:
++ *
++ *     The above copyright notice and this permission notice shall be
++ *     included in all copies or substantial portions of the Software.
++ *
++ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ *     OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++&i2c_tunnel {
++	battery: sbs-battery@b {
++		compatible = "sbs,sbs-battery";
++		reg = <0xb>;
++		sbs,i2c-retry-count = <2>;
++		sbs,poll-retry-count = <1>;
++	};
++};
+-- 
+2.1.4
