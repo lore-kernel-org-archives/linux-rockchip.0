@@ -1,16 +1,12 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v1.1 1/4] ARM: dts: Add sbs-battery dts fragment used by
- chromebooks
-Date: Wed, 15 Jul 2015 06:34:12 -0700
-Message-ID: <CAD=FV=X+85xYLzNDYKaW47SdON9qQH0a5OiLxRfuuSP_ybGi=Q@mail.gmail.com>
-References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
- <1436574562-16308-2-git-send-email-heiko@sntech.de>
- <1731785.1QCGhpnXSY@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: add missing device_type = "memory" to
+ boards
+Date: Wed, 15 Jul 2015 23:21:05 +0200
+Message-ID: <1521614.R7mMBQe0OX@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1731785.1QCGhpnXSY@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,20 +16,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgpPbiBXZWQsIEp1bCAxNSwgMjAxNSBhdCA0OjMwIEFNLCBIZWlrbyBTdMO8Ym5lciA8
-aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzYnMtYmF0dGVy
-eSBmcmFnbWVudCBmb3IgYmF0dGVyaWVzIGNvbm5lY3RlZAo+IHRvIHRoZSBpMmMgdHVubmVsIG9m
-IHRoZSBjcm9zLWVjIGVtYmVkZGVkIGNvbnRyb2xsZXIuCj4KPiBTaWduZWQtb2ZmLWJ5OiBDaHJp
-cyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hhbmdlcyBzaW5jZSB2MToKPiAtIGNvcnJl
-Y3QgbGljZW5zZQo+Cj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2Nyb3MtZWMtc2JzLmR0c2kgfCA1MiAr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwg
-NTIgaW5zZXJ0aW9ucygrKQoKQWNrZWQtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNo
-cm9taXVtLm9yZz4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+The memory node is supposed to contain a device_type property marking
+it as memory. The currently included boards miss this property.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 1 +
+ arch/arm/boot/dts/rk3066a-marsboard.dts | 1 +
+ arch/arm/boot/dts/rk3066a-rayeager.dts  | 1 +
+ arch/arm/boot/dts/rk3188-radxarock.dts  | 1 +
+ arch/arm/boot/dts/rk3288-evb.dtsi       | 1 +
+ arch/arm/boot/dts/rk3288-firefly.dtsi   | 1 +
+ arch/arm/boot/dts/rk3288-popmetal.dts   | 1 +
+ arch/arm/boot/dts/rk3288-r89.dts        | 1 +
+ 8 files changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+index b299b26..c027375 100644
+--- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
++++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+@@ -49,6 +49,7 @@
+ 	compatible = "mundoreader,bq-curie2", "rockchip,rk3066a";
+ 
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x60000000 0x40000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+index 0a7304b..4355966 100644
+--- a/arch/arm/boot/dts/rk3066a-marsboard.dts
++++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+@@ -48,6 +48,7 @@
+ 	compatible = "haoyu,marsboard-rk3066", "rockchip,rk3066a";
+ 
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x60000000 0x40000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index 3ac1511..7ccd376 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -48,6 +48,7 @@
+ 	compatible = "chipspark,rayeager-px2", "rockchip,rk3066a";
+ 
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x60000000 0x40000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 42faa19..4bb014d 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -48,6 +48,7 @@
+ 	compatible = "radxa,rock", "rockchip,rk3188";
+ 
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x60000000 0x80000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index 844a6fb..f6d2e78 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -43,6 +43,7 @@
+ 
+ / {
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x0 0x80000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+index 0c66e92..20fa0ef 100644
+--- a/arch/arm/boot/dts/rk3288-firefly.dtsi
++++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+@@ -44,6 +44,7 @@
+ 
+ / {
+ 	memory {
++		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+index d582811..f82b956 100644
+--- a/arch/arm/boot/dts/rk3288-popmetal.dts
++++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+@@ -49,6 +49,7 @@
+ 	compatible = "chipspark,popmetal-rk3288", "rockchip,rk3288";
+ 
+ 	memory{
++		device_type = "memory";
+ 		reg = <0 0x80000000>;
+ 	};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
+index b1d9ca6..14b9fc7 100644
+--- a/arch/arm/boot/dts/rk3288-r89.dts
++++ b/arch/arm/boot/dts/rk3288-r89.dts
+@@ -48,6 +48,7 @@
+ 	compatible = "netxeon,r89", "rockchip,rk3288";
+ 
+ 	memory {
++		device_type = "memory";
+ 		reg = <0x0 0x80000000>;
+ 	};
+ 
+-- 
+2.1.4
