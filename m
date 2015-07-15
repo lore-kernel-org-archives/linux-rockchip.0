@@ -1,14 +1,14 @@
 From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 2/4] ARM: dts: rockchip: add shared rk3288-veyron files
-Date: Wed, 15 Jul 2015 14:28:21 -0700
-Message-ID: <CAD=FV=U37Yx8Mqk75_x05zxonvdc3qRMhqp8TyTDPWGHqSuRqg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add veyron-jerry board
+Date: Wed, 15 Jul 2015 14:28:29 -0700
+Message-ID: <CAD=FV=WwFgjzbk9xF5TU_ie6UnHQMyrZ176D4+jJTWWOoaKC2Q@mail.gmail.com>
 References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
- <1436574562-16308-3-git-send-email-heiko@sntech.de>
+ <1436574562-16308-4-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1436574562-16308-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+In-Reply-To: <1436574562-16308-4-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -26,58 +26,38 @@ Heiko,
 
 On Fri, Jul 10, 2015 at 5:29 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
 > +&rk808 {
-> +       vcc11-supply = <&vcc_5v>;
+> +       dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
+> +                   <&gpio7 15 GPIO_ACTIVE_HIGH>;
+
+dvs-gpios never made it upstream.  ...which actually means that
+upstream is probably ramping its CPU/GPU lines a bit too fast and
+overshooting.  Eventually we should figure out how to fix that, but
+for now we should remove dvs-gpios since it's not in the bindings.
+
+
+> +&i2c4 {
+> +       status = "okay";
 > +
-> +       regulators {
-> +               vcc33_ccd: LDO_REG8 {
-> +                       regulator-name = "vcc33_ccd";
-> +                       regulator-always-on;
-> +                       regulator-boot-on;
-> +                       regulator-min-microvolt = <3300000>;
-> +                       regulator-max-microvolt = <3300000>;
-> +                       regulator-state-mem {
-> +                               regulator-on-in-suspend;
-> +                               regulator-suspend-microvolt = <3300000>;
-> +                       };
-
-Technically I think vcc33_ccd can be off since we have
-'needs-reset-on-resume' down in the EHCI port (this regulator is for
-the USB webcam that's connected to the EHCI port).
-
-...but leaving it on for now seems fine until we get suspend/resume more solid.
-
-> +       gpio-restart {
-> +               compatible = "gpio-restart";
-> +               gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&ap_warm_reset_h>;
-> +               priority = /bits/ 8 <200>;
-
-In downstream Chrome OS tree, the "/bits/ 8" is there.  Not in upstream.
-
-> +&pinctrl {
-> +       pinctrl-names = "default", "sleep";
-> +       pinctrl-0 = <
-> +               /* Common for sleep and wake, but no owners */
-> +               &global_pwroff
+> +       /*
+> +        * Trackpad pin control is shared between Elan and Synaptics devices
+> +        * so we have to pull it up to the bus level.
+> +        */
+> +       pinctrl-names = "default";
+> +       pinctrl-0 = <&i2c4_xfer &trackpad_int>;
 > +
-> +               /* Wake only */
-> +               &bt_dev_wake_awake
-> +       >;
-> +       pinctrl-1 = <
-> +               /* Common for sleep and wake, but no owners */
-> +               &global_pwroff
-> +
-> +               /* Sleep only */
-> +               &bt_dev_wake_sleep
+> +       trackpad@15 {
+> +               /*
+> +                * Remove the inherited pinctrl settings to avoid clashing
+> +                * with bus-wide ones.
+> +                */
+> +               /delete-property/pinctrl-names;
+> +               /delete-property/pinctrl-0;
 
-Optional: the bt_dev_wake_awake and bt_dev_wake_sleep are sorta hacks
-that are there till Broadcom gets an LPM driver.  From upstream these
-hacks could be safely removed and you'd just notice a 50mW hit in
-power in S3.  Since upstream S3 is awful in power anyway, it's
-probably worth it to leave the hacks out.
+Eventually this would be nice to solve, but doesn't seem like it
+should block this patch.
 
 
-Upon fixing the gpio-restart, you can add my reviewed-by tag.
+After removing dvs-gpios, you can add my Reviewed-by tag.
+
 
 -Doug
