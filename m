@@ -1,13 +1,16 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] phy: Drop owner assignment from platform_driver
-Date: Wed, 15 Jul 2015 18:57:47 +0530
-Message-ID: <55A65FD3.70100@ti.com>
-References: <1436509587-27258-1-git-send-email-k.kozlowski@samsung.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v1.1 1/4] ARM: dts: Add sbs-battery dts fragment used by
+ chromebooks
+Date: Wed, 15 Jul 2015 06:34:12 -0700
+Message-ID: <CAD=FV=X+85xYLzNDYKaW47SdON9qQH0a5OiLxRfuuSP_ybGi=Q@mail.gmail.com>
+References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
+ <1436574562-16308-2-git-send-email-heiko@sntech.de>
+ <1731785.1QCGhpnXSY@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1436509587-27258-1-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+In-Reply-To: <1731785.1QCGhpnXSY@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,91 +20,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, GENERIC PHY FRAMEWORK <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, ARM/STI ARCHITECTURE <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, ARM/STI ARCHITECTURE <kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org>, ARM/Rockchip SoC support <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On Friday 10 July 2015 11:56 AM, Krzysztof Kozlowski wrote:
-> platform_driver does not need to set an owner because
-> platform_driver_register() will set it.
-> 
-> Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-
-merged.
-
--Kishon
-> 
-> ---
-> 
-> The coccinelle script which generated the patch was sent here:
-> http://www.spinics.net/lists/kernel/msg2029903.html
-> ---
->  drivers/phy/phy-berlin-usb.c        | 1 -
->  drivers/phy/phy-miphy28lp.c         | 1 -
->  drivers/phy/phy-qcom-ufs-qmp-14nm.c | 1 -
->  drivers/phy/phy-qcom-ufs-qmp-20nm.c | 1 -
->  drivers/phy/phy-rockchip-usb.c      | 1 -
->  5 files changed, 5 deletions(-)
-> 
-> diff --git a/drivers/phy/phy-berlin-usb.c b/drivers/phy/phy-berlin-usb.c
-> index c6fc95b53083..d7431f6ab975 100644
-> --- a/drivers/phy/phy-berlin-usb.c
-> +++ b/drivers/phy/phy-berlin-usb.c
-> @@ -207,7 +207,6 @@ static struct platform_driver phy_berlin_usb_driver = {
->  	.probe	= phy_berlin_usb_probe,
->  	.driver	= {
->  		.name		= "phy-berlin-usb",
-> -		.owner		= THIS_MODULE,
->  		.of_match_table	= phy_berlin_sata_of_match,
->  	 },
->  };
-> diff --git a/drivers/phy/phy-miphy28lp.c b/drivers/phy/phy-miphy28lp.c
-> index 5e257ef7ac05..677c290f4b14 100644
-> --- a/drivers/phy/phy-miphy28lp.c
-> +++ b/drivers/phy/phy-miphy28lp.c
-> @@ -1268,7 +1268,6 @@ static struct platform_driver miphy28lp_driver = {
->  	.probe = miphy28lp_probe,
->  	.driver = {
->  		.name = "miphy28lp-phy",
-> -		.owner = THIS_MODULE,
->  		.of_match_table = miphy28lp_of_match,
->  	}
->  };
-> diff --git a/drivers/phy/phy-qcom-ufs-qmp-14nm.c b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> index f5fc50a9fce7..e1eea1b379fc 100644
-> --- a/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> +++ b/drivers/phy/phy-qcom-ufs-qmp-14nm.c
-> @@ -191,7 +191,6 @@ static struct platform_driver ufs_qcom_phy_qmp_14nm_driver = {
->  	.driver = {
->  		.of_match_table = ufs_qcom_phy_qmp_14nm_of_match,
->  		.name = "ufs_qcom_phy_qmp_14nm",
-> -		.owner = THIS_MODULE,
->  	},
->  };
->  
-> diff --git a/drivers/phy/phy-qcom-ufs-qmp-20nm.c b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> index 8332f96b2c4a..fde8c876823b 100644
-> --- a/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> +++ b/drivers/phy/phy-qcom-ufs-qmp-20nm.c
-> @@ -247,7 +247,6 @@ static struct platform_driver ufs_qcom_phy_qmp_20nm_driver = {
->  	.driver = {
->  		.of_match_table = ufs_qcom_phy_qmp_20nm_of_match,
->  		.name = "ufs_qcom_phy_qmp_20nm",
-> -		.owner = THIS_MODULE,
->  	},
->  };
->  
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> index 7d4c33643768..bf78721b58f4 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -146,7 +146,6 @@ static struct platform_driver rockchip_usb_driver = {
->  	.probe		= rockchip_usb_phy_probe,
->  	.driver		= {
->  		.name	= "rockchip-usb-phy",
-> -		.owner	= THIS_MODULE,
->  		.of_match_table = rockchip_usb_phy_dt_ids,
->  	},
->  };
-> 
+SGVpa28sCgpPbiBXZWQsIEp1bCAxNSwgMjAxNSBhdCA0OjMwIEFNLCBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzYnMtYmF0dGVy
+eSBmcmFnbWVudCBmb3IgYmF0dGVyaWVzIGNvbm5lY3RlZAo+IHRvIHRoZSBpMmMgdHVubmVsIG9m
+IHRoZSBjcm9zLWVjIGVtYmVkZGVkIGNvbnRyb2xsZXIuCj4KPiBTaWduZWQtb2ZmLWJ5OiBDaHJp
+cyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVi
+bmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hhbmdlcyBzaW5jZSB2MToKPiAtIGNvcnJl
+Y3QgbGljZW5zZQo+Cj4gIGFyY2gvYXJtL2Jvb3QvZHRzL2Nyb3MtZWMtc2JzLmR0c2kgfCA1MiAr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwg
+NTIgaW5zZXJ0aW9ucygrKQoKQWNrZWQtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNo
+cm9taXVtLm9yZz4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
