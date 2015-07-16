@@ -1,44 +1,59 @@
-From: Paul Bolle <pebolle@tiscali.nl>
-Subject: Re: [PATCH 1/2] ASoC: rockchip: Add machine driver for max98090
- codec
-Date: Thu, 16 Jul 2015 18:22:45 +0200
-Message-ID: <1437063765.21215.18.camel@tiscali.nl>
-References: <1436930143-31361-1-git-send-email-zhengxing@rock-chips.com>
-	 <1436930143-31361-2-git-send-email-zhengxing@rock-chips.com>
-	 <1437033944.27428.11.camel@tiscali.nl>
-	 <20150716110032.GU11162@sirena.org.uk>
-	 <1437047261.28351.6.camel@tiscali.nl> <20150716125529.GG4039@sirena.org.uk>
-	 <1437056116.28351.19.camel@tiscali.nl>
-	 <20150716150500.GO4039@sirena.org.uk>
+From: Sonny Rao <sonnyrao@chromium.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: add rk3288 arm-pmu irq affinity
+Date: Thu, 16 Jul 2015 11:24:11 -0700
+Message-ID: <CAPz6YkWqFSGKAhRZ7qz2+XJ=8+0Q8H_mV3+r9MJUKxsBqLDfFQ@mail.gmail.com>
+References: <3814250.tDdID2FGKL@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150716150500.GO4039@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <3814250.tDdID2FGKL@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On do, 2015-07-16 at 16:05 +0100, Mark Brown wrote:
-> Why would this not be the case - what is the difference you beleive
-> this driver has to other platform drivers?
-
-It's my believe that for MODULE_ALIAS("platform:[...]") to be useful
-there needs to be corresponding struct platform_device. For this patch
-that would be a platform device named "rockchip-snd-max98090". (This is
-something that I try to check rather carefully, because these devices
-can be generated on the fly.)
-
-I'm happy to drop this believe if someone shows me another way that
-MODULE_ALIAS("platform:[...]") can actually be used.
-
-So, in short, the difference between this driver and other platform
-drivers is that, as far as I'm aware, this platform driver lacks a
-corresponding platform device. Probably because OF support suffices to
-get this module autoloaded.
-
-Thanks,
-
-
-Paul Bolle
+T24gV2VkLCBKdWwgMTUsIDIwMTUgYXQgMjoyMiBQTSwgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4gd3JvdGU6Cj4gVGhlIHJrMzI4OCB1c2VzIHNwaSBpcnFzIGZvciB0aGUgYXJtLXBt
+dSBvbiBpbmRpdmlkdWFsIGNwdSBjb3Jlcywgc28gbmVlZHMKPiB0aGUgYWZmaW5pdHkgdG8gdGhl
+bSBkZWZpbmVkLgo+Cj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
+aC5kZT4KPiAtLS0KPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgfCA3ICsrKystLS0K
+PiAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPgo+IGRp
+ZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODguZHRzaSBiL2FyY2gvYXJtL2Jvb3Qv
+ZHRzL3JrMzI4OC5kdHNpCj4gaW5kZXggMjJlOTIyMS4uMmRiOTFjOSAxMDA2NDQKPiAtLS0gYS9h
+cmNoL2FybS9ib290L2R0cy9yazMyODguZHRzaQo+ICsrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3Jr
+MzI4OC5kdHNpCj4gQEAgLTc4LDYgKzc4LDcgQEAKPiAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIDxHSUNfU1BJIDE1MiBJUlFfVFlQRV9MRVZFTF9ISUdIPiwKPiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDxHSUNfU1BJIDE1MyBJUlFfVFlQRV9MRVZFTF9ISUdIPiwKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIDxHSUNfU1BJIDE1NCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsK
+PiArICAgICAgICAgICAgICAgaW50ZXJydXB0LWFmZmluaXR5ID0gPCZjcHUwPiwgPCZjcHUxPiwg
+PCZjcHUyPiwgPCZjcHUzPjsKPiAgICAgICAgIH07Cj4KPiAgICAgICAgIGNwdXMgewo+IEBAIC0x
+MTAsMTkgKzExMSwxOSBAQAo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrLWxhdGVuY3kg
+PSA8NDAwMDA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFSTUNM
+Sz47Cj4gICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgIGNwdUA1MDEgewo+ICsg
+ICAgICAgICAgICAgICBjcHUxOiBjcHVANTAxIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBk
+ZXZpY2VfdHlwZSA9ICJjcHUiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhdGlibGUg
+PSAiYXJtLGNvcnRleC1hMTIiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDwweDUw
+MT47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgcmVzZXRzID0gPCZjcnUgU1JTVF9DT1JFMT47
+Cj4gICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgIGNwdUA1MDIgewo+ICsgICAg
+ICAgICAgICAgICBjcHUyOiBjcHVANTAyIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBkZXZp
+Y2VfdHlwZSA9ICJjcHUiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAi
+YXJtLGNvcnRleC1hMTIiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDwweDUwMj47
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgcmVzZXRzID0gPCZjcnUgU1JTVF9DT1JFMj47Cj4g
+ICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgIGNwdUA1MDMgewo+ICsgICAgICAg
+ICAgICAgICBjcHUzOiBjcHVANTAzIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBkZXZpY2Vf
+dHlwZSA9ICJjcHUiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAiYXJt
+LGNvcnRleC1hMTIiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDwweDUwMz47Cj4g
+LS0KPiAyLjEuNAo+Cj4KClJldmlld2VkLWJ5OiBTb25ueSBSYW8gPHNvbm55cmFvQGNocm9taXVt
+Lm9yZz4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxp
+bnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LWFybS1rZXJuZWwK
