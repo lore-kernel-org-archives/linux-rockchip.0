@@ -1,63 +1,75 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add veyron-jerry board
-Date: Wed, 15 Jul 2015 14:28:29 -0700
-Message-ID: <CAD=FV=WwFgjzbk9xF5TU_ie6UnHQMyrZ176D4+jJTWWOoaKC2Q@mail.gmail.com>
-References: <1436574562-16308-1-git-send-email-heiko@sntech.de>
- <1436574562-16308-4-git-send-email-heiko@sntech.de>
+From: Paul Bolle <pebolle@tiscali.nl>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: Add machine driver for
+ max98090 codec
+Date: Thu, 16 Jul 2015 10:05:44 +0200
+Message-ID: <1437033944.27428.11.camel@tiscali.nl>
+References: <1436930143-31361-1-git-send-email-zhengxing@rock-chips.com>
+ <1436930143-31361-2-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1436574562-16308-4-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1436930143-31361-2-git-send-email-zhengxing@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, dianders@chromium.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, dgreid@chromium.org, sonnyrao@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+On wo, 2015-07-15 at 11:15 +0800, Xing Zheng wrote:
+> --- /dev/null
+> +++ b/sound/soc/rockchip/rockchip_max98090.c
 
-On Fri, Jul 10, 2015 at 5:29 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> +&rk808 {
-> +       dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-> +                   <&gpio7 15 GPIO_ACTIVE_HIGH>;
+> +#define DRV_NAME "rockchip-snd-max98090"
 
-dvs-gpios never made it upstream.  ...which actually means that
-upstream is probably ramping its CPU/GPU lines a bit too fast and
-overshooting.  Eventually we should figure out how to fix that, but
-for now we should remove dvs-gpios since it's not in the bindings.
-
-
-> +&i2c4 {
-> +       status = "okay";
+> +static const struct of_device_id rockchip_max98090_of_match[] = {
+> +	{ .compatible = "rockchip,rockchip-audio-max98090", },
+> +	{},
+> +};
 > +
-> +       /*
-> +        * Trackpad pin control is shared between Elan and Synaptics devices
-> +        * so we have to pull it up to the bus level.
-> +        */
-> +       pinctrl-names = "default";
-> +       pinctrl-0 = <&i2c4_xfer &trackpad_int>;
+> +static struct platform_driver snd_rk_mc_driver = {
+> +	.probe = snd_rk_mc_probe,
+> +	.remove = snd_rk_mc_remove,
+> +	.driver = {
+> +		.name = DRV_NAME,
+> +		.owner = THIS_MODULE,
+> +		.pm = &snd_soc_pm_ops,
+> +		.of_match_table = rockchip_max98090_of_match,
+> +	},
+> +};
 > +
-> +       trackpad@15 {
-> +               /*
-> +                * Remove the inherited pinctrl settings to avoid clashing
-> +                * with bus-wide ones.
-> +                */
-> +               /delete-property/pinctrl-names;
-> +               /delete-property/pinctrl-0;
+> +module_platform_driver(snd_rk_mc_driver);
 
-Eventually this would be nice to solve, but doesn't seem like it
-should block this patch.
+Nit: empty line here.
+
+> +MODULE_AUTHOR("jianqun <jay.xu@rock-chips.com>");
+> +MODULE_DESCRIPTION("Rockchip max98090 machine ASoC driver");
+> +MODULE_LICENSE("GPL v2");
+> +MODULE_ALIAS("platform:" DRV_NAME);
+
+This seems only useful if there's a corresponding struct
+platform_device. Ie, a platform_device with a "rockchip-snd-max98090"
+.name, which will trigger a "MODALIAS=platform:rockchip-snd-max98090"
+uevent when it's created. But I couldn't find where such a
+platform_device is created.
+
+Did I miss something? Or is there another way this alias is useful here?
+
+> +MODULE_DEVICE_TABLE(of, rockchip_max98090_of_match);
+
+The common pattern is to put MODULE_DEVICE_TABLE() directly after the
+table it exports.
+
+Likewise for 2/2 (except the empty line nit, that is).
+
+Thanks,
 
 
-After removing dvs-gpios, you can add my Reviewed-by tag.
-
-
--Doug
+Paul Bolle
