@@ -1,91 +1,48 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 2/2] Rockchip dts changes for 4.3, part1
-Date: Fri, 17 Jul 2015 00:36:22 +0200
-Message-ID: <43550625.L2USv7p8yj@diego>
-References: <2820374.NgluYWXZkW@diego>
+From: zhengxing <zhengxing@rock-chips.com>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: Add machine driver for
+	max98090 codec
+Date: Fri, 17 Jul 2015 10:17:25 +0800
+Message-ID: <55A865B5.7020609@rock-chips.com>
+References: <1436930143-31361-1-git-send-email-zhengxing@rock-chips.com>
+ <1436930143-31361-2-git-send-email-zhengxing@rock-chips.com>
+ <1437033944.27428.11.camel@tiscali.nl> <20150716110032.GU11162@sirena.org.uk>
+ <1437047261.28351.6.camel@tiscali.nl> <20150716125529.GG4039@sirena.org.uk>
+ <1437056116.28351.19.camel@tiscali.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2820374.NgluYWXZkW@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1437056116.28351.19.camel@tiscali.nl>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, dgreid@chromium.org, sonnyrao@chromium.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit d770e558e21961ad6cfdf0ff7df0eb5d7d4f0754:
-
-  Linux 4.2-rc1 (2015-07-05 11:01:52 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.3-rockchip32-dts1
-
-for you to fetch changes up to 4863dcd394019b542ac968870cba734d27e992e0:
-
-  ARM: dts: rockchip: add rk3288 arm-pmu irq affinity (2015-07-16 22:22:47 +0200)
-
-----------------------------------------------------------------
-This adds the board for the Netxeon R89 used in different
-TV-boxes and the initial support for two Chromebooks from
-the veyron family.
-Additionally a non-critical fix for the watchdog irq
-on rk3288, addition of the gmac reset line, a ramp delay
-for the cpu regulator on the firefly board and cpu affinity
-for the arm-pmu spi irqs.
-
-----------------------------------------------------------------
-Alexandru M Stan (2):
-      ARM: dts: rockchip: add shared rk3288-veyron files
-      ARM: dts: rockchip: add veyron-jerry board
-
-Chris Zhong (1):
-      ARM: dts: Add sbs-battery dts fragment used by chromebooks
-
-Heiko Stuebner (7):
-      ARM: dts: rockchip: fix rk3288 watchdog irq
-      dt-bindings: add vendor prefix for Netxeon Technology
-      ARM: dts: rockchip: add Netxeon R89 board
-      ARM: dts: rockchip: add veyron-pinky board
-      ARM: dts: rockchip: add missing device_type = "memory" to boards
-      dt-bindings: document rk3368 R88 board from Rockchip
-      ARM: dts: rockchip: add rk3288 arm-pmu irq affinity
-
-Romain Perier (2):
-      ARM: dts: rockchip: Add STMMAC reset signal in GMAC interface for rk3288
-      ARM: dts: rockchip: Add ramp delay for vdd_cpu in firefly board dts
-
- Documentation/devicetree/bindings/arm/rockchip.txt |  20 +
- .../devicetree/bindings/vendor-prefixes.txt        |   1 +
- arch/arm/boot/dts/Makefile                         |   5 +-
- arch/arm/boot/dts/cros-ec-sbs.dtsi                 |  52 ++
- arch/arm/boot/dts/rk3066a-bqcurie2.dts             |   1 +
- arch/arm/boot/dts/rk3066a-marsboard.dts            |   1 +
- arch/arm/boot/dts/rk3066a-rayeager.dts             |   1 +
- arch/arm/boot/dts/rk3188-radxarock.dts             |   1 +
- arch/arm/boot/dts/rk3288-evb.dtsi                  |   1 +
- arch/arm/boot/dts/rk3288-firefly.dtsi              |   3 +
- arch/arm/boot/dts/rk3288-popmetal.dts              |   1 +
- arch/arm/boot/dts/rk3288-r89.dts                   | 413 +++++++++++++++
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi    | 232 +++++++++
- arch/arm/boot/dts/rk3288-veyron-jerry.dts          | 197 +++++++
- arch/arm/boot/dts/rk3288-veyron-pinky.dts          | 128 +++++
- arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi         | 122 +++++
- arch/arm/boot/dts/rk3288-veyron.dtsi               | 563 +++++++++++++++++++++
- arch/arm/boot/dts/rk3288.dtsi                      |  11 +-
- 18 files changed, 1748 insertions(+), 5 deletions(-)
- create mode 100644 arch/arm/boot/dts/cros-ec-sbs.dtsi
- create mode 100644 arch/arm/boot/dts/rk3288-r89.dts
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-jerry.dts
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-pinky.dts
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
- create mode 100644 arch/arm/boot/dts/rk3288-veyron.dtsi
+SGkgUGF1bCwKT24gMjAxNeW5tDA35pyIMTbml6UgMjI6MTUsIFBhdWwgQm9sbGUgd3JvdGU6Cj4K
+PiBUaGF0J3MgZXhhY3RseSBob3cgSSB1bmRlcnN0b29kIE1PRFVMRV9BTElBUygpIHRvIHdvcmsu
+Cj4KPiBBbmQgaXQgd29ya3MsIGluIHNob3J0LCBiZWNhdXNlIGEgcGxhdGZvcm0gZGV2aWNlIGZp
+cmVzIGEKPiAiTU9EQUxJQVM9cGxhdGZvcm06Wy4uLl0iIHVldmVudCB3aGVuIGl0J3MgY3JlYXRl
+ZC4gQW5kIHVzZXJzcGFjZSB1c2VzCj4gdGhhdCB1ZXZlbnQgdG8gbG9hZCB0aGUgbW9kdWxlIGNh
+cnJ5aW5nIHRoYXQgYWxpYXMuCj4KPiBMZXQncyBwdXQgaXQgdGhpcyB3YXMuIElmIG9uZSBkb2Vz
+Cj4gICAgICBzdWRvIGZpbmQgL3N5cyAtcGVybSAtbz1yIC1uYW1lIHVldmVudCAtZXhlYyBncmVw
+IC1IIE1PREFMSUFTPXBsYXRmb3JtOiB7fSBcOwo+Cj4gb3IKPiAgICAgIHN1ZG8gZmluZCAvc3lz
+IC1wZXJtIC1vPXIgLW5hbWUgbW9kYWxpYXMgLWV4ZWMgZ3JlcCAtSCBwbGF0Zm9ybToge30gXDsK
+Pgo+IChib3RoIGxpc3RzIHNob3VsZCBiZSBzaW1pbGFyKQo+Cj4gb24gdGhlIHN5c3RlbXMgdGhp
+cyBwYXRjaCBpcyB0YXJnZXRpbmcsIHdpbGwKPiAgICAgcGxhdGZvcm06cm9ja2NoaXAtc25kLW1h
+eDk4MDkwCj4KPiB0aGVuIHNob3cgdXA/Cj4KPiBUaGFua3MsCj4KPgo+IFBhdWwgQm9sbGUKPgpU
+aGFuayB5b3UgZm9yIHlvdXIgcGF0aWVuY2UgYW5kIGRldGFpbGVkIGV4cGxhbmF0aW9uLgpJIHRl
+c3RlZCB5b3VyIHR3byB3YXlzIGFuZCBkaWRuJ3QgZmluZCB0aGUgCiJwbGF0Zm9ybTpyb2NrY2hp
+cC1zbmQtbWF4OTgwOTAiIGluIG15IGRldmljZShrZXJuZWwgdjMuMTQpLCBhbmQgdGhlIApkcml2
+ZXIgcGF0aCBpczoKbG9jYWxob3N0IHJvY2tjaGlwLXNuZC1tYXg5ODA5MCAjIHB3ZAovc3lzL2J1
+cy9wbGF0Zm9ybS9kcml2ZXJzL3JvY2tjaGlwLXNuZC1tYXg5ODA5MAoKVGhhbmtzLgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KQWxzYS1kZXZlbCBtYWls
+aW5nIGxpc3QKQWxzYS1kZXZlbEBhbHNhLXByb2plY3Qub3JnCmh0dHA6Ly9tYWlsbWFuLmFsc2Et
+cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9hbHNhLWRldmVsCg==
