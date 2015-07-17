@@ -1,44 +1,37 @@
-From: huang lin <hl@rock-chips.com>
-Subject: [PATCH] phy: rockchip-usb: power down phy when rockchip phy probe
-Date: Fri, 17 Jul 2015 15:29:25 +0800
-Message-ID: <1437118165-20713-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dianders@chromium.org, lyz@rock-chips.com, heiko@sntech.de
-Cc: huang lin <hl@rock-chips.com>, kishon@ti.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [PATCH 1/3] arm64: add Rockchip architecture entry
+Date: Fri, 17 Jul 2015 10:33:57 -0700
+Message-ID: <20150717173357.GC28326@localhost>
+References: <2820374.NgluYWXZkW@diego>
+ <2658910.AevvbvQ8ln@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <2658910.AevvbvQ8ln@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko St?bner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-rockchip phy are enable when soc reset, to save power consumption,
-we disable it when probe, and enable each phy when it use
+On Fri, Jul 17, 2015 at 12:33:51AM +0200, Heiko St?bner wrote:
+> The rk3368 is Rockchip's first ARM64 soc, build around 8 Cortex-A53 cores.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  arch/arm64/Kconfig | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-Signed-off-by: huang lin <hl@rock-chips.com>
----
- drivers/phy/phy-rockchip-usb.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Thanks, applied (to Kconfig.platforms)
 
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index 7d4c336..3b92d7f 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -98,6 +98,7 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	struct device_node *child;
- 	struct regmap *grf;
- 	unsigned int reg_offset;
-+	int err;
- 
- 	grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
- 	if (IS_ERR(grf)) {
-@@ -129,6 +130,11 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 			return PTR_ERR(rk_phy->phy);
- 		}
- 		phy_set_drvdata(rk_phy->phy, rk_phy);
-+
-+		/* only power up usb phy when it use, so disable it when init*/
-+		err = rockchip_usb_phy_power(rk_phy, 1);
-+		if (err)
-+			return err;
- 	}
- 
- 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
--- 
-1.9.1
+
+-Olof
