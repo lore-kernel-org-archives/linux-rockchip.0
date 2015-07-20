@@ -1,71 +1,95 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 1/2] mfd: dt-bindings: add the description about dvs gpio
- for rk808
-Date: Mon, 20 Jul 2015 17:23:52 +0800
-Message-ID: <1437384233-26169-2-git-send-email-zyw@rock-chips.com>
-References: <1437384233-26169-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1437384233-26169-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, amstan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Zhang Qing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: [PATCH v2 03/10] pwm: move the enabled/disabled info to pwm_state struct
+Date: Mon, 20 Jul 2015 17:32:00 +0200
+Message-ID: <1437406327-6207-4-git-send-email-boris.brezillon@free-electrons.com>
+References: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Doug Anderson <dianders@google.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>, Boris Brezillon <boris.brezillon@free-electrons.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-add the description about dvs1, dvs2, and add the example.
+Prepare the transition to PWM atomic update by moving the enabled/disabled
+state into the pwm_state struct. This way we can easily update the whole
+PWM state by copying the new state in the ->state field.
 
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
+Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
 ---
+ drivers/pwm/core.c  | 15 ++++++++++++---
+ include/linux/pwm.h |  7 ++++---
+ 2 files changed, 16 insertions(+), 6 deletions(-)
 
-Changes in v4:
-- Remove the description about dvs-ok
-
-Changes in v3:
-- Modify the syntax error
-
-Changes in v2:
-- increase description about dvs pins
-
- Documentation/devicetree/bindings/mfd/rk808.txt | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 9e6e259..4ca6aab 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -24,6 +24,10 @@ Optional properties:
- - vcc10-supply: The input supply for LDO_REG6
- - vcc11-supply: The input supply for LDO_REG8
- - vcc12-supply: The input supply for SWITCH_REG2
-+- dvs-gpios:  buck1/2 can be controlled by gpio dvs, this is GPIO specifiers
-+  for 2 host gpio's used for dvs. The format of the gpio specifier depends in
-+  the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-+  very quickly with no slow ramp time.
+diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
+index a6bc8e6..3e830ce 100644
+--- a/drivers/pwm/core.c
++++ b/drivers/pwm/core.c
+@@ -474,8 +474,15 @@ EXPORT_SYMBOL_GPL(pwm_set_polarity);
+  */
+ int pwm_enable(struct pwm_device *pwm)
+ {
+-	if (pwm && !test_and_set_bit(PWMF_ENABLED, &pwm->flags))
+-		return pwm->chip->ops->enable(pwm->chip, pwm);
++	if (pwm && !pwm_is_enabled(pwm)) {
++		int err;
++
++		err = pwm->chip->ops->enable(pwm->chip, pwm);
++		if (!err)
++			pwm->state.enabled = true;
++
++		return err;
++	}
  
- Regulators: All the regulators of RK808 to be instantiated shall be
- listed in a child node named 'regulators'. Each regulator is represented
-@@ -55,7 +59,9 @@ Example:
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int>;
-+		pinctrl-0 = <&pmic_int &dvs_1 &dvs_2>;
-+		dvs-gpios = <&gpio7 11 GPIO_ACTIVE_HIGH>,
-+			    <&gpio7 15 GPIO_ACTIVE_HIGH>;
- 		reg = <0x1b>;
- 		rockchip,system-power-controller;
- 		wakeup-source;
+ 	return pwm ? 0 : -EINVAL;
+ }
+@@ -487,8 +494,10 @@ EXPORT_SYMBOL_GPL(pwm_enable);
+  */
+ void pwm_disable(struct pwm_device *pwm)
+ {
+-	if (pwm && test_and_clear_bit(PWMF_ENABLED, &pwm->flags))
++	if (pwm && pwm_is_enabled(pwm)) {
+ 		pwm->chip->ops->disable(pwm->chip, pwm);
++		pwm->state.enabled = false;
++	}
+ }
+ EXPORT_SYMBOL_GPL(pwm_disable);
+ 
+diff --git a/include/linux/pwm.h b/include/linux/pwm.h
+index fafed26..f4bc034 100644
+--- a/include/linux/pwm.h
++++ b/include/linux/pwm.h
+@@ -75,8 +75,7 @@ enum pwm_polarity {
+ 
+ enum {
+ 	PWMF_REQUESTED = 1 << 0,
+-	PWMF_ENABLED = 1 << 1,
+-	PWMF_EXPORTED = 1 << 2,
++	PWMF_EXPORTED = 1 << 1,
+ };
+ 
+ /**
+@@ -84,11 +83,13 @@ enum {
+  * @period: PWM period (in nanoseconds)
+  * @duty_cycle: PWM duty cycle (in nanoseconds)
+  * @polarity: PWM polarity
++ * @enabled: PWM enabled status
+  */
+ struct pwm_state {
+ 	unsigned int period;
+ 	unsigned int duty_cycle;
+ 	enum pwm_polarity polarity;
++	bool enabled;
+ };
+ 
+ struct pwm_device {
+@@ -104,7 +105,7 @@ struct pwm_device {
+ 
+ static inline bool pwm_is_enabled(const struct pwm_device *pwm)
+ {
+-	return test_bit(PWMF_ENABLED, &pwm->flags);
++	return pwm->state.enabled;
+ }
+ 
+ static inline void pwm_set_period(struct pwm_device *pwm, unsigned int period)
 -- 
 1.9.1
