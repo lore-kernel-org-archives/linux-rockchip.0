@@ -1,148 +1,55 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Add veyron-speedy board
-Date: Wed, 22 Jul 2015 13:35:20 -0700
-Message-ID: <CAD=FV=Vz3FZCqhhamiWnQ7Zk-zKY4qSZbjWebPQJ-x1xQa+5MQ@mail.gmail.com>
-References: <1437543846-19897-1-git-send-email-romain.perier@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 4/6] drm/rockchip: vop: Default enable win2/3 area0 bit
+Date: Wed, 22 Jul 2015 23:50:32 +0200
+Message-ID: <2715023.mZMEgdW6y4@diego>
+References: <1437466807-13689-1-git-send-email-mark.yao@rock-chips.com>
+ <1437467140-13881-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1437543846-19897-1-git-send-email-romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1437467140-13881-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Jul 21, 2015 at 10:44 PM, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> Which is formally known as The Asus C201 chromebook
->
-> Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.txt |  10 +-
->  arch/arm/boot/dts/Makefile                         |   3 +-
->  arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 163 +++++++++++++++++++++
->  3 files changed, 174 insertions(+), 2 deletions(-)
->  create mode 100644 arch/arm/boot/dts/rk3288-veyron-speedy.dts
->
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-> index 6de18bd2..da02022 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -37,4 +37,12 @@ Rockchip platforms device tree bindings
->  - Google Pinky (dev-board):
->      Required root node properties:
->        - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
-> -                    "google,veyron", "rockchip,rk3288";
-> \ No newline at end of file
-> +                    "google,veyron", "rockchip,rk3288";
-> +
-> +- Google Speedy (Asus C201 Chromebook):
-> +    Required root node properties:
-> +      - compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
-> +                    "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
-> +                    "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
-> +                    "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-> +                    "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 653ede7..bfa7c86 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -498,7 +498,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->         rk3288-firefly-beta.dtb \
->         rk3288-firefly.dtb \
->         rk3288-veyron-jerry.dtb \
-> -       rk3288-veyron-pinky.dtb
-> +       rk3288-veyron-pinky.dtb \
-> +       rk3288-veyron-speedy.dtb
->  dtb-$(CONFIG_ARCH_S3C24XX) += \
->         s3c2416-smdk2416.dtb
->  dtb-$(CONFIG_ARCH_S3C64XX) += \
-> diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-> new file mode 100644
-> index 0000000..6578e2a
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-> @@ -0,0 +1,163 @@
-> +/*
-> + * Google Veyron Speedy Rev 1+ board device tree source
-> + *
-> + * Copyright 2015 Google, Inc
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + *  Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-
-License change is fine.
-
-
-> +&rk808 {
-> +       pinctrl-names = "default";
-> +       pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
-> +       dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-> +                   <&gpio7 15 GPIO_ACTIVE_HIGH>;
-> +};
-
-As Heiko said, dvs GPIOs aren't accepted yet.
-
-Also a nit that you changed the sort ordering of "disable-wp" compared
-to the jerry DTS.  Please make it match.
-
-> +       edp {
-> +               edp_hpd: edp_hpd {
-> +                       rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
-> +               };
-> +       };
-
-Nothing uses this yet.  No huge objection to having it listed here
-anyway but I notice it's not in jerry's dts (even though it is the
-same value there).  It would be nice to add them at the same time.
-
-Also a nit that (I think) usually node names have a "-" in them and
-the alias has the "_".  Doesn't matter hugely, but makes it match
-everything else...
-
-
-Other than that you can add my Reviewed-by...
-
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+QW0gRGllbnN0YWcsIDIxLiBKdWxpIDIwMTUsIDE2OjI1OjQwIHNjaHJpZWIgTWFyayBZYW86Cj4g
+V2luMi8zIHN1cHBvcnQgbXVsdGlwbGUgYXJlYSBmdW5jdGlvbiwgYnV0IHdlIGhhdmVuJ3QgZm91
+bmQKPiBhIHN1aXRhYmxlIHdheSB0byB1c2UgaXQgeWV0LCBzbyBsZXQncyBqdXN0IHVzZSB0aGVt
+IGFzIG90aGVyIHdpbmRvd3MKPiB3aXRoIG9ubHkgYXJlYSAwIGVuYWJsZWQuCj4gCj4gU2lnbmVk
+LW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKdGhpcyBjb3VsZCBn
+byBhcyBmaXggaW50byA0LjIgcGxlYXNlLgoKV2l0aCB3aGF0IGlzIGN1cnJlbnRseSBpbiA0LjIt
+cmMzIEknbSBsb29zaW5nIHRoZSBtb3VzZSBjdXJzb3IgaW4gbXkgeGY4Ni0KYXJtc29jIHhzZXJ2
+ZXIgWzBdLiBMaWtlbHkgZHVlIHRvIDA5MTVkYTdkZDc1ZiAoImRybS9yb2NrY2hpcDogdm9wOiBy
+ZW1vdmUgCmhhcmR3YXJlIGN1cnNvciB3aW5kb3ciKS4gVGhlIHhzZXJ2ZXIgdGhlbiBzZWxlY3Rz
+IGEgd2luZG93IGZvciB0aGUgY3Vyc29yIAppdHNlbGYsIHdoaWNoIHNlZW1zIHRvIGJlIG9uZSBv
+ZiB0aGUgY3VycmVudGx5IGRpc2FibGVkIG9uZXMuCgpUaGlzIHBhdGNoIGZpeGVzIHRoaXMgYW5k
+IGdpdmVzIG1lIGJhY2sgbXkgY3Vyc29yIDotKQoKCkhlaWtvCgoKWzBdIGh0dHBzOi8vZ2l0aHVi
+LmNvbS9tbWluZC94Zjg2LXZpZGVvLWFybXNvYy90cmVlL2RldmVsL3JvY2tjaGlwCgo+IC0tLQo+
+IENoYW5nZXMgaW4gdjM6Cj4gQWR2aWNlZCBieSBUb21hc3ogRmlnYQo+IC0gZml4IHBhdGNoIGNv
+bW1lbnRzLgo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPiAKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAgIDYgKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA2
+IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwo+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYyBpbmRleCA0N2NlOTQzLi5lMDhmMzE4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTI3Niw2ICsyNzYsMTIgQEAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCB2b3BfcmVnX2RhdGEgdm9wX2luaXRfcmVnX3RhYmxlW10gPQo+IHsg
+e0RTUF9DVFJMMCwgMHgwMDAwMDAwMH0sCj4gIAl7V0lOMF9DVFJMMCwgMHgwMDAwMDA4MH0sCj4g
+IAl7V0lOMV9DVFJMMCwgMHgwMDAwMDA4MH0sCj4gKwkvKiBUT0RPOiBXaW4yLzMgc3VwcG9ydCBt
+dWx0aXBsZSBhcmVhIGZ1bmN0aW9uLCBidXQgd2UgaGF2ZW4ndCBmb3VuZAo+ICsJICogYSBzdWl0
+YWJsZSB3YXkgdG8gdXNlIGl0IHlldCwgc28gbGV0J3MganVzdCB1c2UgdGhlbSBhcyBvdGhlciB3
+aW5kb3dzCj4gKwkgKiB3aXRoIG9ubHkgYXJlYSAwIGVuYWJsZWQuCj4gKwkgKi8KPiArCXtXSU4y
+X0NUUkwwLCAweDAwMDAwMDEwfSwKPiArCXtXSU4zX0NUUkwwLCAweDAwMDAwMDEwfSwKPiAgfTsK
+PiAKPiAgLyoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
