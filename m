@@ -1,85 +1,116 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when entering
- shallow suspend
-Date: Wed, 22 Jul 2015 17:28:01 +0200
-Message-ID: <6658024.80cb4ykXmU@diego>
-References: <3856665.6DP3Y23l8S@diego>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH v5 1/6] drm: bridge/dw_hdmi: add audio support for more
+ display resolutions
+Date: Wed, 22 Jul 2015 20:05:24 +0100
+Message-ID: <20150722190524.GV7557@n2100.arm.linux.org.uk>
+References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
+ <1434730752-10829-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3856665.6DP3Y23l8S@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1434730752-10829-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-According the Chris Zhong PMU_GPIOINT_WAKEUP_EN is needed when entering
-the shallow suspend (with logic staying on), so enable it.
-Testing revealed that this setting really is necessary to reliably
-resume the veyron devices from suspend.
-
-The question remains, why the deep sleep would not need this setting.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/mach-rockchip/pm.c | 9 ++++++---
- arch/arm/mach-rockchip/pm.h | 1 +
- 2 files changed, 7 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-index 4539f51..0e6770a 100644
---- a/arch/arm/mach-rockchip/pm.c
-+++ b/arch/arm/mach-rockchip/pm.c
-@@ -124,9 +124,6 @@ static void rk3288_slp_mode_set(int level)
- 	regmap_write(sgrf_regmap, RK3288_SGRF_FAST_BOOT_ADDR,
- 		     rk3288_bootram_phy);
- 
--	regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
--		     PMU_ARMINT_WAKEUP_EN);
--
- 	mode_set = BIT(PMU_GLOBAL_INT_DISABLE) | BIT(PMU_L2FLUSH_EN) |
- 		   BIT(PMU_SREF0_ENTER_EN) | BIT(PMU_SREF1_ENTER_EN) |
- 		   BIT(PMU_DDR0_GATING_EN) | BIT(PMU_DDR1_GATING_EN) |
-@@ -138,6 +135,9 @@ static void rk3288_slp_mode_set(int level)
- 	if (level == ROCKCHIP_ARM_OFF_LOGIC_DEEP) {
- 		osc_switch_to_32k = rk3288_slp_disable_osc();
- 
-+		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-+			     PMU_ARMINT_WAKEUP_EN);
-+
- 		/* arm off, logic deep sleep */
- 		mode_set |= BIT(PMU_BUS_PD_EN) | BIT(PMU_PMU_USE_LF) |
- 			    BIT(PMU_DDR1IO_RET_EN) | BIT(PMU_DDR0IO_RET_EN) |
-@@ -152,6 +152,9 @@ static void rk3288_slp_mode_set(int level)
- 	} else {
- 		osc_switch_to_32k = false;
- 
-+		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-+			     PMU_ARMINT_WAKEUP_EN | PMU_GPIOINT_WAKEUP_EN);
-+
- 		/*
- 		 * arm off, logic normal
- 		 * if pmu_clk_core_src_gate_en is not set,
-diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-index 8a55ee2..b5af26f 100644
---- a/arch/arm/mach-rockchip/pm.h
-+++ b/arch/arm/mach-rockchip/pm.h
-@@ -61,6 +61,7 @@ static inline void rockchip_suspend_init(void)
- 
- /* PMU_WAKEUP_CFG1 bits */
- #define PMU_ARMINT_WAKEUP_EN		BIT(0)
-+#define PMU_GPIOINT_WAKEUP_EN		BIT(3)
- 
- enum rk3288_pwr_mode_con {
- 	PMU_PWR_MODE_EN = 0,
--- 
-2.1.4
+T24gU2F0LCBKdW4gMjAsIDIwMTUgYXQgMTI6MTk6MTJBTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
+ZToKPiBUaGUgZXhhY3QgcmVsYXRpb25zaGlwIGJldHdlZW4gdGhlIHR3byBjbG9ja3Mgd2lsbCBi
+ZToKPiAJMTI4ICogU2FtcGxlUmF0ZSA9IFRtZHNDbG9jayAqIE4gLyBDVFMuCj4gU28gdGhpcyBw
+YXRjaCB3b3VsZCBnZW5lcmF0ZSB0aGUgY29ycmVjdCBOL0NUUyB2YWx1ZXMsIGFkZCBhdWRpbyBz
+dXBwb3J0Cj4gZm9yIHRoZSBiZWxvdyAgdG1kcyBjbG9ja3M6Cj4gMjUuMTc1TUh6LCA0ME1Ieiwg
+NTRNSHosIDY1TUh6LCA3NC4yNU1IeiwgODMuNU1IeiwgMTA2LjVNSHosIDEwOE1oegoKSGF2aW5n
+IHBsYXllZCBhcm91bmQgd2l0aCB0aGUgaU1YNiBkZXZpY2VzLCBJIGNhbiBub3cgc2F5IHRoYXQg
+dGhlCnN0YXRlbWVudCBpbiB0aGUgaU1YNiBtYW51YWxzIGlzIGJhc2ljYWxseSB3cm9uZy4gIFRo
+ZXJlJ3MgdHdvIHRoaW5ncwp3aGljaCBsZWFkcyBtZSB0byB0aGF0IGNvbmNsdXNpb24uCgoxLiBU
+aGV5IGxpc3QgdGhlIHN0YW5kYXJkIHZhbHVlcyBmb3IgQ1RTL04gYXQgc3RhbmRhcmQgVE1EUyBm
+cmVxdWVuY2llcwogICBhcyBsaXN0ZWQgaW4gdGhlIEhETUkgc3BlY2lmaWNhdGlvbiAod2l0aCB0
+aGUgLzEuMDAxIGFuZCAqMS4wMDEgb21pdHRlZC4pCiAgIEluIG90aGVyIHdvcmRzLCB0aGVyZSBp
+cyBub3RoaW5nIG5vbi1zdGFuZGFyZCBhYm91dCB0aGVzZSB2YWx1ZXMuCgoyLiBUaGUgZHdfaGRt
+aSBkcml2ZXIgYXMgZnJvbSBGcmVlc2NhbGUgYXMgTiB2YWx1ZXMgZm9yIGFsbCBzdGFuZGFyZAog
+ICBUTURTIGZyZXF1ZW5jaWVzIGdpdmVuIGluIHRoZSBIRE1JIHNwZWNpZmljYXRpb24sIGluY2x1
+ZGluZyB0aGUKICAgLzEuMDAxIGFuZCAqMS4wMDEgZnJlcXVlbmNpZXMuICBIb3dldmVyLCB0aGUg
+Q1RTIGNhbGN1bGF0aW9uIGVycm9ycwogICB0aGVzZSBvdXQuICAoTm90ZSB0aGF0IHVuZGVyIERS
+TSwgdGhlc2UgY2FuIG5ldmVyIG1hdGNoLCBiZWNhdXNlIERSTQogICB1c2VzIGZyZXF1ZW5jaWVz
+IG9mIGtIeiByZXNvbHV0aW9uLCBub3QgMTBrSHouKQoKMy4gVGhleSB0aGVuIHNheSB0aGF0IHdo
+ZW4gdXNpbmcgZGVlcCBjb2xvdXIgbW9kZXMsIHRoZSBDVFMgdmFsdWVzIGhhdmUKICAgdG8gYmUg
+c2NhbGVkIHdpdGggdGhlIFRNRFMgY2xvY2suICBTbywgZnJvbSB0aGF0IHdlIGNhbiBhc2NlcnRh
+aW4gdGhhdAogICBvdGhlciBDVFMgdmFsdWVzIHdoaWNoIGFyZSBub3QgbGlzdGVkIGluIHRoZSB0
+YWJsZSBhcmUgcGVybWlzc2libGUuCiAgIFRoaXMgc3RhdGVtZW50IGltcGxpZXMgdGhhdCAqMS4y
+NSwgKjEuNSwgKjIgZmFjdG9ycyBvbiB0aGUgbGlzdGVkCiAgIFRNRFMgY2xvY2sgYW5kIENUUyB2
+YWx1ZSBtdXN0IGFsc28gYmUgc3VwcG9ydGVkLgoKNC4gUHJhY3RpY2FsIGV4cGVyaW1lbnRhdGlv
+biBvbiBpTVg2IFNvbG8gYW5kIFF1YWQgaGFyZHdhcmUgKHdoaWNoIGhhdmUKICAgdHdvIGRpZmZl
+cmVudCByZXZpc2lvbnMgb2YgdGhlIERlc2lnbndhcmUgSVApIHNob3cgdGhhdCB0aGUgdXNlIG9m
+IGFueQogICBDVFMvTiB2YWx1ZXMgZGVyaXZlZCBmcm9tIHRoZSBzdGFuZGFyZCBvbmVzIHdvcmsu
+ICBCeSB0aGF0LCBJIG1lYW4KICAgdXNpbmcgdGhlICJvdGhlciIgTiB2YWx1ZSBhbmQgY2FsY3Vs
+YXRpbmcgQ1RTIGZvciBub24tbGlzdGVkIFRNRFMKICAgY2xvY2tzIGRvZXMgaW5kZWVkIHdvcmsu
+ICBSZWxheGluZyB0aGUgcmVzdHJpY3Rpb24gaW4gdGhlIGRyaXZlciAoYXMKICAgYmVsb3cpIGFu
+ZCBydW5uaW5nIHRocm91Z2ggYWxsIG1vZGVzIHdoaWNoIG15IFRWIHN1cHBvcnRzIHJlc3VsdHMg
+aW4KICAgYXVkaW8gcGxheWJhY2sgd29ya2luZywgZnJvbSAxMDgwcEA2MCBkb3duIHRvIDY0MHg0
+ODBANTkuOTRIei4KClNvLCBJJ20gbm93IG9mIHRoZSBvcGluaW9uIHRoYXQgdGhlIHN0YXRlbWVu
+dCBpbiBpTVg2IG1hbnVhbHMgY29uY2VybmluZwpyZXN0cmljdGlvbnMgb24gTi9DVFMgdmFsdWVz
+IGlzIGluY29ycmVjdCwgYW5kIG5vIHN1Y2ggcmVzdHJpY3Rpb24gb24KdGhlc2UgZXhpc3RzLgoK
+SW4gbGlnaHQgb2YgdGhhdCwgSSBub3cgaGF2ZSBjb2RlIHdoaWNoIHJlbW92ZXMgdGhpcyByZXN0
+cmljdGlvbiBmcm9tCmR3X2hkbWkgLSB3ZSBnZW5lcmF0ZSBhIHN0YW5kYXJkLXNwZWNpZmllZCBO
+IHZhbHVlIGZvciBzdGFuZGFyZCBjbG9ja3MsCmFuZCB0aGVuIGNhbGN1bGF0ZSB0aGUgQ1RTIHZh
+bHVlIGZyb20gdGhhdCB2aWE6CgogICAgICAgIHVuc2lnbmVkIGxvbmcgZnRkbXMgPSBwaXhlbF9j
+bGs7CiAgICAgICAgdTY0IHRtcDsKCiAgICAgICAgLyoKICAgICAgICAgKiBDb21wdXRlIHRoZSBD
+VFMgdmFsdWUgZnJvbSB0aGUgTiB2YWx1ZS4gIE5vdGUgdGhhdCBDVFMgYW5kIE4KICAgICAgICAg
+KiBjYW4gYmUgdXAgdG8gMjAgYml0cyBpbiB0b3RhbCwgc28gd2UgbmVlZCA2NC1iaXQgbWF0aC4g
+IEFsc28KICAgICAgICAgKiBub3RlIHRoYXQgb3VyIFRETVMgY2xvY2sgaXMgbm90IGZ1bGx5IGFj
+Y3VyYXRlOyBpdCBpcyBhY2N1cmF0ZQogICAgICAgICAqIHRvIGtIei4gIFRoaXMgY2FuIGludHJv
+ZHVjZSBhbiB1bm5lY2Vzc2FyeSByZW1haW5kZXIgaW4gdGhlCiAgICAgICAgICogY2FsY3VsYXRp
+b24gYmVsb3csIHNvIHdlIGRvbid0IHRyeSB0byB3YXJuIGFib3V0IHRoYXQuCiAgICAgICAgICov
+CiAgICAgICAgdG1wID0gKHU2NClmdGRtcyAqIG47CiAgICAgICAgZG9fZGl2KHRtcCwgMTI4ICog
+c2FtcGxlX3JhdGUpOwogICAgICAgIGN0cyA9IHRtcDsKCk5vdGU6IEkndmUgcmVtb3ZlZCBhbGwg
+dGhlIGRlZXAgY29sb3VyIGFuZCBwaXhlbCByZXBldGl0aW9uIHN1cHBvcnQgaGVyZQpiZWNhdXNl
+IHRoYXQncyBiYXNpY2FsbHkgYnJva2VuIC0gdGhlICJyYXRpbyIgd2FzIGFsd2F5cyAxMDAuICBJ
+ZiB3ZSBuZWVkCnBpeGVsIHJlcGV0aXRpb24gKHdoaWNoIGlzIHVuc3VwcG9ydGVkIHJpZ2h0IG5v
+dykgaXQgc2hvdWxkIGJlIGEgbWF0dGVyIG9mCnNjYWxpbmcgdGhlIGZ0bWRzIGFwcHJvcHJpYXRl
+bHkgd2hpY2ggdGhlbiBzY2FsZXMgdGhlIENUUyB2YWx1ZSBieSB0aGUKc2FtZSByYXRpby4gICJm
+dG1kcyIgYWJvdmUgc2hvdWxkIGJlIGFzIGNsb3NlIGFzIHBvc3NpYmxlIHRvIHRoZSBfcmVhbF8K
+VE1EUyBjbG9jayByYXRlLCBub3QgdGhlIHBpeGVsIGNsb2NrLiAgSW4gdGhlIGNhc2Ugb2YgZGVl
+cCBjb2xvdXIsIHRoYXQKbWF5IGluZmx1ZW5jZSB0aGUgTiB2YWx1ZSB0b28gKGFzIDEuMjV4IGRv
+ZXNuJ3QgZW5kIHVwIHByb2R1Y2luZyBhbgppbnRlZ2VyIENUUyB2YWx1ZSBldmVyeSB0aW1lKSBz
+byB0aGF0IHdvdWxkIG5lZWQgdG8gYmUgcmUtYWRkcmVzc2VkLgoKQXMgZm9yIHRoaXMgc3BlY2lm
+aWMgcGF0Y2gsIHRoZSBwYXJ0IHdoaWNoIHJlbWFpbnMgcmVsZXZhbnQ6Cgo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvZHdfaGRtaS5jCj4gaW5kZXggZGMwYWVkMS4uZjcxN2EyYSAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvZHdfaGRtaS5jCj4gQEAgLTIyMiw4ICsyMjIsMjQgQEAgc3RhdGljIHVuc2lnbmVkIGludCBo
+ZG1pX2NvbXB1dGVfbih1bnNpZ25lZCBpbnQgZnJlcSwgdW5zaWduZWQgbG9uZyBwaXhlbF9jbGss
+Cj4gIAljYXNlIDQ0MTAwOgo+ICAJCWlmIChwaXhlbF9jbGsgPT0gMjUxNzAwMDApCj4gIAkJCW4g
+PSA3MDA3Owo+ICsJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSAyNTE3NTAwMCkKPiArCQkJbiA9IDI4
+MjI0OwoKVGhhdCB2YWx1ZSBpcyB3cm9uZy4gIEhETUkgcmVxdWlyZXM6CgoJMTI4ICogZnMgLyAx
+NTAwSHogPD0gbiA8PSAxMjggKiBmcyAvIDMwMEh6CgpGb3IgNDQuMWtIeiwgdGhhdCBnaXZlcyBh
+IHJhbmdlIG9mIDM3NjMuMiB0byAxODgxNi4gIFByZXN1bWFibHkgdGhpcwpyZXN0cmljdGlvbiBp
+cyB0byBsaW1pdCB0aGUgcmFuZ2Ugb2YgdGhlIGZlZWRiYWNrIHBhdGggaW4gdGhlIGNsb2NrCnJl
+Z2VuZXJhdG9yIGluIHRoZSBzaW5rIHNvIHRoYXQgZGVzaWduZXJzIGhhdmUgc29tZSBwYXJhbWV0
+ZXJzIHRvIHdvcmsKd2l0aC4gIEdvaW5nIG91dHNpZGUgdGhlc2UgbGltaXRzIGlzIHVud2lzZSwg
+YW5kIHdoaWxlIGl0IG1heSB3b3JrIHdpdGgKc29tZSBzaW5rcywgaXQncyBkZWZpbml0ZWx5IG91
+dHNpZGUgb2YgdGhlIEhETUkgc3BlYy4KCj4gKwkJZWxzZSBpZiAocGl4ZWxfY2xrID09IDQwMDAw
+MDAwKQo+ICsJCQluID0gNzA1NjsKPiArCQllbHNlIGlmIChwaXhlbF9jbGsgPT0gNTQwMDAwMDAp
+Cj4gKwkJCW4gPSA2MjcyOwo+ICsJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSA2NTAwMDAwMCkKPiAr
+CQkJbiA9IDcwNTY7CgpSYXRoZXIgdGhhbiBhIGJpZyBpZiAoKSBlbHNlIGlmICgpIGVsc2UgaWYg
+KCksIGNhbid0IHdlIGhhdmU6CgoJCWlmIChwaXhlbF9jbGsgPT0gMjUxNzUwMDApCgkJCW4gPSA3
+MDA3OwoJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSA0MDAwMDAwMCB8fCBwaXhlbF9jbGsgPT0gNjUw
+MDAwMDAgfHwKCQkJIHBpeGVsX2NsayA9PSA4MzUwMDAwMCkKCQkJbiA9IDcwNTY7CgkJZWxzZSAu
+Li4KCmV0Yz8KCkknbSBhbHNvIHRoaW5raW5nIHRoYXQgdGhlc2UgdmFsdWVzIGFyZSBwcmV0dHkg
+c3RhbmRhcmQsIGFuZCB0aGV5CnNob3VsZCBub3QgYmUgaW50ZXJuYWwgdG8gYW55b25lJ3MgZHJp
+dmVyIC0gbWF5YmUgdGhleSBzaG91bGQgbGl2ZQppbiBkcml2ZXJzL3ZpZGVvL2hkbWkuYy4KCkkn
+bGwgYmUgcG9zdGluZyBteSBwYXRjaCBzZXQgd2hpY2ggbGlmdHMgdGhlIHJlc3RyaWN0aW9uIGxh
+dGVyIHRoaXMKZXZlbmluZy4KCi0tIApGVFRDIGJyb2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBj
+dXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRl
+c3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
+cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
+cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
