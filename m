@@ -1,116 +1,148 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v5 1/6] drm: bridge/dw_hdmi: add audio support for more
- display resolutions
-Date: Wed, 22 Jul 2015 20:05:24 +0100
-Message-ID: <20150722190524.GV7557@n2100.arm.linux.org.uk>
-References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
- <1434730752-10829-1-git-send-email-ykk@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Add veyron-speedy board
+Date: Wed, 22 Jul 2015 13:35:20 -0700
+Message-ID: <CAD=FV=Vz3FZCqhhamiWnQ7Zk-zKY4qSZbjWebPQJ-x1xQa+5MQ@mail.gmail.com>
+References: <1437543846-19897-1-git-send-email-romain.perier@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1434730752-10829-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1437543846-19897-1-git-send-email-romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBKdW4gMjAsIDIwMTUgYXQgMTI6MTk6MTJBTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
-ZToKPiBUaGUgZXhhY3QgcmVsYXRpb25zaGlwIGJldHdlZW4gdGhlIHR3byBjbG9ja3Mgd2lsbCBi
-ZToKPiAJMTI4ICogU2FtcGxlUmF0ZSA9IFRtZHNDbG9jayAqIE4gLyBDVFMuCj4gU28gdGhpcyBw
-YXRjaCB3b3VsZCBnZW5lcmF0ZSB0aGUgY29ycmVjdCBOL0NUUyB2YWx1ZXMsIGFkZCBhdWRpbyBz
-dXBwb3J0Cj4gZm9yIHRoZSBiZWxvdyAgdG1kcyBjbG9ja3M6Cj4gMjUuMTc1TUh6LCA0ME1Ieiwg
-NTRNSHosIDY1TUh6LCA3NC4yNU1IeiwgODMuNU1IeiwgMTA2LjVNSHosIDEwOE1oegoKSGF2aW5n
-IHBsYXllZCBhcm91bmQgd2l0aCB0aGUgaU1YNiBkZXZpY2VzLCBJIGNhbiBub3cgc2F5IHRoYXQg
-dGhlCnN0YXRlbWVudCBpbiB0aGUgaU1YNiBtYW51YWxzIGlzIGJhc2ljYWxseSB3cm9uZy4gIFRo
-ZXJlJ3MgdHdvIHRoaW5ncwp3aGljaCBsZWFkcyBtZSB0byB0aGF0IGNvbmNsdXNpb24uCgoxLiBU
-aGV5IGxpc3QgdGhlIHN0YW5kYXJkIHZhbHVlcyBmb3IgQ1RTL04gYXQgc3RhbmRhcmQgVE1EUyBm
-cmVxdWVuY2llcwogICBhcyBsaXN0ZWQgaW4gdGhlIEhETUkgc3BlY2lmaWNhdGlvbiAod2l0aCB0
-aGUgLzEuMDAxIGFuZCAqMS4wMDEgb21pdHRlZC4pCiAgIEluIG90aGVyIHdvcmRzLCB0aGVyZSBp
-cyBub3RoaW5nIG5vbi1zdGFuZGFyZCBhYm91dCB0aGVzZSB2YWx1ZXMuCgoyLiBUaGUgZHdfaGRt
-aSBkcml2ZXIgYXMgZnJvbSBGcmVlc2NhbGUgYXMgTiB2YWx1ZXMgZm9yIGFsbCBzdGFuZGFyZAog
-ICBUTURTIGZyZXF1ZW5jaWVzIGdpdmVuIGluIHRoZSBIRE1JIHNwZWNpZmljYXRpb24sIGluY2x1
-ZGluZyB0aGUKICAgLzEuMDAxIGFuZCAqMS4wMDEgZnJlcXVlbmNpZXMuICBIb3dldmVyLCB0aGUg
-Q1RTIGNhbGN1bGF0aW9uIGVycm9ycwogICB0aGVzZSBvdXQuICAoTm90ZSB0aGF0IHVuZGVyIERS
-TSwgdGhlc2UgY2FuIG5ldmVyIG1hdGNoLCBiZWNhdXNlIERSTQogICB1c2VzIGZyZXF1ZW5jaWVz
-IG9mIGtIeiByZXNvbHV0aW9uLCBub3QgMTBrSHouKQoKMy4gVGhleSB0aGVuIHNheSB0aGF0IHdo
-ZW4gdXNpbmcgZGVlcCBjb2xvdXIgbW9kZXMsIHRoZSBDVFMgdmFsdWVzIGhhdmUKICAgdG8gYmUg
-c2NhbGVkIHdpdGggdGhlIFRNRFMgY2xvY2suICBTbywgZnJvbSB0aGF0IHdlIGNhbiBhc2NlcnRh
-aW4gdGhhdAogICBvdGhlciBDVFMgdmFsdWVzIHdoaWNoIGFyZSBub3QgbGlzdGVkIGluIHRoZSB0
-YWJsZSBhcmUgcGVybWlzc2libGUuCiAgIFRoaXMgc3RhdGVtZW50IGltcGxpZXMgdGhhdCAqMS4y
-NSwgKjEuNSwgKjIgZmFjdG9ycyBvbiB0aGUgbGlzdGVkCiAgIFRNRFMgY2xvY2sgYW5kIENUUyB2
-YWx1ZSBtdXN0IGFsc28gYmUgc3VwcG9ydGVkLgoKNC4gUHJhY3RpY2FsIGV4cGVyaW1lbnRhdGlv
-biBvbiBpTVg2IFNvbG8gYW5kIFF1YWQgaGFyZHdhcmUgKHdoaWNoIGhhdmUKICAgdHdvIGRpZmZl
-cmVudCByZXZpc2lvbnMgb2YgdGhlIERlc2lnbndhcmUgSVApIHNob3cgdGhhdCB0aGUgdXNlIG9m
-IGFueQogICBDVFMvTiB2YWx1ZXMgZGVyaXZlZCBmcm9tIHRoZSBzdGFuZGFyZCBvbmVzIHdvcmsu
-ICBCeSB0aGF0LCBJIG1lYW4KICAgdXNpbmcgdGhlICJvdGhlciIgTiB2YWx1ZSBhbmQgY2FsY3Vs
-YXRpbmcgQ1RTIGZvciBub24tbGlzdGVkIFRNRFMKICAgY2xvY2tzIGRvZXMgaW5kZWVkIHdvcmsu
-ICBSZWxheGluZyB0aGUgcmVzdHJpY3Rpb24gaW4gdGhlIGRyaXZlciAoYXMKICAgYmVsb3cpIGFu
-ZCBydW5uaW5nIHRocm91Z2ggYWxsIG1vZGVzIHdoaWNoIG15IFRWIHN1cHBvcnRzIHJlc3VsdHMg
-aW4KICAgYXVkaW8gcGxheWJhY2sgd29ya2luZywgZnJvbSAxMDgwcEA2MCBkb3duIHRvIDY0MHg0
-ODBANTkuOTRIei4KClNvLCBJJ20gbm93IG9mIHRoZSBvcGluaW9uIHRoYXQgdGhlIHN0YXRlbWVu
-dCBpbiBpTVg2IG1hbnVhbHMgY29uY2VybmluZwpyZXN0cmljdGlvbnMgb24gTi9DVFMgdmFsdWVz
-IGlzIGluY29ycmVjdCwgYW5kIG5vIHN1Y2ggcmVzdHJpY3Rpb24gb24KdGhlc2UgZXhpc3RzLgoK
-SW4gbGlnaHQgb2YgdGhhdCwgSSBub3cgaGF2ZSBjb2RlIHdoaWNoIHJlbW92ZXMgdGhpcyByZXN0
-cmljdGlvbiBmcm9tCmR3X2hkbWkgLSB3ZSBnZW5lcmF0ZSBhIHN0YW5kYXJkLXNwZWNpZmllZCBO
-IHZhbHVlIGZvciBzdGFuZGFyZCBjbG9ja3MsCmFuZCB0aGVuIGNhbGN1bGF0ZSB0aGUgQ1RTIHZh
-bHVlIGZyb20gdGhhdCB2aWE6CgogICAgICAgIHVuc2lnbmVkIGxvbmcgZnRkbXMgPSBwaXhlbF9j
-bGs7CiAgICAgICAgdTY0IHRtcDsKCiAgICAgICAgLyoKICAgICAgICAgKiBDb21wdXRlIHRoZSBD
-VFMgdmFsdWUgZnJvbSB0aGUgTiB2YWx1ZS4gIE5vdGUgdGhhdCBDVFMgYW5kIE4KICAgICAgICAg
-KiBjYW4gYmUgdXAgdG8gMjAgYml0cyBpbiB0b3RhbCwgc28gd2UgbmVlZCA2NC1iaXQgbWF0aC4g
-IEFsc28KICAgICAgICAgKiBub3RlIHRoYXQgb3VyIFRETVMgY2xvY2sgaXMgbm90IGZ1bGx5IGFj
-Y3VyYXRlOyBpdCBpcyBhY2N1cmF0ZQogICAgICAgICAqIHRvIGtIei4gIFRoaXMgY2FuIGludHJv
-ZHVjZSBhbiB1bm5lY2Vzc2FyeSByZW1haW5kZXIgaW4gdGhlCiAgICAgICAgICogY2FsY3VsYXRp
-b24gYmVsb3csIHNvIHdlIGRvbid0IHRyeSB0byB3YXJuIGFib3V0IHRoYXQuCiAgICAgICAgICov
-CiAgICAgICAgdG1wID0gKHU2NClmdGRtcyAqIG47CiAgICAgICAgZG9fZGl2KHRtcCwgMTI4ICog
-c2FtcGxlX3JhdGUpOwogICAgICAgIGN0cyA9IHRtcDsKCk5vdGU6IEkndmUgcmVtb3ZlZCBhbGwg
-dGhlIGRlZXAgY29sb3VyIGFuZCBwaXhlbCByZXBldGl0aW9uIHN1cHBvcnQgaGVyZQpiZWNhdXNl
-IHRoYXQncyBiYXNpY2FsbHkgYnJva2VuIC0gdGhlICJyYXRpbyIgd2FzIGFsd2F5cyAxMDAuICBJ
-ZiB3ZSBuZWVkCnBpeGVsIHJlcGV0aXRpb24gKHdoaWNoIGlzIHVuc3VwcG9ydGVkIHJpZ2h0IG5v
-dykgaXQgc2hvdWxkIGJlIGEgbWF0dGVyIG9mCnNjYWxpbmcgdGhlIGZ0bWRzIGFwcHJvcHJpYXRl
-bHkgd2hpY2ggdGhlbiBzY2FsZXMgdGhlIENUUyB2YWx1ZSBieSB0aGUKc2FtZSByYXRpby4gICJm
-dG1kcyIgYWJvdmUgc2hvdWxkIGJlIGFzIGNsb3NlIGFzIHBvc3NpYmxlIHRvIHRoZSBfcmVhbF8K
-VE1EUyBjbG9jayByYXRlLCBub3QgdGhlIHBpeGVsIGNsb2NrLiAgSW4gdGhlIGNhc2Ugb2YgZGVl
-cCBjb2xvdXIsIHRoYXQKbWF5IGluZmx1ZW5jZSB0aGUgTiB2YWx1ZSB0b28gKGFzIDEuMjV4IGRv
-ZXNuJ3QgZW5kIHVwIHByb2R1Y2luZyBhbgppbnRlZ2VyIENUUyB2YWx1ZSBldmVyeSB0aW1lKSBz
-byB0aGF0IHdvdWxkIG5lZWQgdG8gYmUgcmUtYWRkcmVzc2VkLgoKQXMgZm9yIHRoaXMgc3BlY2lm
-aWMgcGF0Y2gsIHRoZSBwYXJ0IHdoaWNoIHJlbWFpbnMgcmVsZXZhbnQ6Cgo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvZHdfaGRtaS5jCj4gaW5kZXggZGMwYWVkMS4uZjcxN2EyYSAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvZHdfaGRtaS5jCj4gQEAgLTIyMiw4ICsyMjIsMjQgQEAgc3RhdGljIHVuc2lnbmVkIGludCBo
-ZG1pX2NvbXB1dGVfbih1bnNpZ25lZCBpbnQgZnJlcSwgdW5zaWduZWQgbG9uZyBwaXhlbF9jbGss
-Cj4gIAljYXNlIDQ0MTAwOgo+ICAJCWlmIChwaXhlbF9jbGsgPT0gMjUxNzAwMDApCj4gIAkJCW4g
-PSA3MDA3Owo+ICsJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSAyNTE3NTAwMCkKPiArCQkJbiA9IDI4
-MjI0OwoKVGhhdCB2YWx1ZSBpcyB3cm9uZy4gIEhETUkgcmVxdWlyZXM6CgoJMTI4ICogZnMgLyAx
-NTAwSHogPD0gbiA8PSAxMjggKiBmcyAvIDMwMEh6CgpGb3IgNDQuMWtIeiwgdGhhdCBnaXZlcyBh
-IHJhbmdlIG9mIDM3NjMuMiB0byAxODgxNi4gIFByZXN1bWFibHkgdGhpcwpyZXN0cmljdGlvbiBp
-cyB0byBsaW1pdCB0aGUgcmFuZ2Ugb2YgdGhlIGZlZWRiYWNrIHBhdGggaW4gdGhlIGNsb2NrCnJl
-Z2VuZXJhdG9yIGluIHRoZSBzaW5rIHNvIHRoYXQgZGVzaWduZXJzIGhhdmUgc29tZSBwYXJhbWV0
-ZXJzIHRvIHdvcmsKd2l0aC4gIEdvaW5nIG91dHNpZGUgdGhlc2UgbGltaXRzIGlzIHVud2lzZSwg
-YW5kIHdoaWxlIGl0IG1heSB3b3JrIHdpdGgKc29tZSBzaW5rcywgaXQncyBkZWZpbml0ZWx5IG91
-dHNpZGUgb2YgdGhlIEhETUkgc3BlYy4KCj4gKwkJZWxzZSBpZiAocGl4ZWxfY2xrID09IDQwMDAw
-MDAwKQo+ICsJCQluID0gNzA1NjsKPiArCQllbHNlIGlmIChwaXhlbF9jbGsgPT0gNTQwMDAwMDAp
-Cj4gKwkJCW4gPSA2MjcyOwo+ICsJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSA2NTAwMDAwMCkKPiAr
-CQkJbiA9IDcwNTY7CgpSYXRoZXIgdGhhbiBhIGJpZyBpZiAoKSBlbHNlIGlmICgpIGVsc2UgaWYg
-KCksIGNhbid0IHdlIGhhdmU6CgoJCWlmIChwaXhlbF9jbGsgPT0gMjUxNzUwMDApCgkJCW4gPSA3
-MDA3OwoJCWVsc2UgaWYgKHBpeGVsX2NsayA9PSA0MDAwMDAwMCB8fCBwaXhlbF9jbGsgPT0gNjUw
-MDAwMDAgfHwKCQkJIHBpeGVsX2NsayA9PSA4MzUwMDAwMCkKCQkJbiA9IDcwNTY7CgkJZWxzZSAu
-Li4KCmV0Yz8KCkknbSBhbHNvIHRoaW5raW5nIHRoYXQgdGhlc2UgdmFsdWVzIGFyZSBwcmV0dHkg
-c3RhbmRhcmQsIGFuZCB0aGV5CnNob3VsZCBub3QgYmUgaW50ZXJuYWwgdG8gYW55b25lJ3MgZHJp
-dmVyIC0gbWF5YmUgdGhleSBzaG91bGQgbGl2ZQppbiBkcml2ZXJzL3ZpZGVvL2hkbWkuYy4KCkkn
-bGwgYmUgcG9zdGluZyBteSBwYXRjaCBzZXQgd2hpY2ggbGlmdHMgdGhlIHJlc3RyaWN0aW9uIGxh
-dGVyIHRoaXMKZXZlbmluZy4KCi0tIApGVFRDIGJyb2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBj
-dXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRl
-c3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+On Tue, Jul 21, 2015 at 10:44 PM, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> Which is formally known as The Asus C201 chromebook
+>
+> Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.txt |  10 +-
+>  arch/arm/boot/dts/Makefile                         |   3 +-
+>  arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 163 +++++++++++++++++++++
+>  3 files changed, 174 insertions(+), 2 deletions(-)
+>  create mode 100644 arch/arm/boot/dts/rk3288-veyron-speedy.dts
+>
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+> index 6de18bd2..da02022 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> @@ -37,4 +37,12 @@ Rockchip platforms device tree bindings
+>  - Google Pinky (dev-board):
+>      Required root node properties:
+>        - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
+> -                    "google,veyron", "rockchip,rk3288";
+> \ No newline at end of file
+> +                    "google,veyron", "rockchip,rk3288";
+> +
+> +- Google Speedy (Asus C201 Chromebook):
+> +    Required root node properties:
+> +      - compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
+> +                    "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
+> +                    "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
+> +                    "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
+> +                    "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
+> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> index 653ede7..bfa7c86 100644
+> --- a/arch/arm/boot/dts/Makefile
+> +++ b/arch/arm/boot/dts/Makefile
+> @@ -498,7 +498,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+>         rk3288-firefly-beta.dtb \
+>         rk3288-firefly.dtb \
+>         rk3288-veyron-jerry.dtb \
+> -       rk3288-veyron-pinky.dtb
+> +       rk3288-veyron-pinky.dtb \
+> +       rk3288-veyron-speedy.dtb
+>  dtb-$(CONFIG_ARCH_S3C24XX) += \
+>         s3c2416-smdk2416.dtb
+>  dtb-$(CONFIG_ARCH_S3C64XX) += \
+> diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+> new file mode 100644
+> index 0000000..6578e2a
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+> @@ -0,0 +1,163 @@
+> +/*
+> + * Google Veyron Speedy Rev 1+ board device tree source
+> + *
+> + * Copyright 2015 Google, Inc
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This file is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This file is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + *  Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
+
+License change is fine.
+
+
+> +&rk808 {
+> +       pinctrl-names = "default";
+> +       pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
+> +       dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
+> +                   <&gpio7 15 GPIO_ACTIVE_HIGH>;
+> +};
+
+As Heiko said, dvs GPIOs aren't accepted yet.
+
+Also a nit that you changed the sort ordering of "disable-wp" compared
+to the jerry DTS.  Please make it match.
+
+> +       edp {
+> +               edp_hpd: edp_hpd {
+> +                       rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
+> +               };
+> +       };
+
+Nothing uses this yet.  No huge objection to having it listed here
+anyway but I notice it's not in jerry's dts (even though it is the
+same value there).  It would be nice to add them at the same time.
+
+Also a nit that (I think) usually node names have a "-" in them and
+the alias has the "_".  Doesn't matter hugely, but makes it match
+everything else...
+
+
+Other than that you can add my Reviewed-by...
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
