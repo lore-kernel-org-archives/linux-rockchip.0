@@ -1,229 +1,127 @@
-From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 2/2] ARM: dts: rockchip: Add veyron-speedy board
-Date: Wed, 22 Jul 2015 07:44:05 +0200
-Message-ID: <1437543846-19897-1-git-send-email-romain.perier@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: Firefly wifi mainline patches
+Date: Wed, 22 Jul 2015 07:58:29 +0200
+Message-ID: <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q@mail.gmail.com>
+References: <20150721125133.GA4102@panicking>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary=001a11c33c02c541c8051b707592
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150721125133.GA4102@panicking>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Which is formally known as The Asus C201 chromebook
+--001a11c33c02c541c8051b707592
+Content-Type: text/plain; charset=UTF-8
 
-Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- Documentation/devicetree/bindings/arm/rockchip.txt |  10 +-
- arch/arm/boot/dts/Makefile                         |   3 +-
- arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 163 +++++++++++++++++++++
- 3 files changed, 174 insertions(+), 2 deletions(-)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-speedy.dts
+Hi
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
-index 6de18bd2..da02022 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.txt
-+++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-@@ -37,4 +37,12 @@ Rockchip platforms device tree bindings
- - Google Pinky (dev-board):
-     Required root node properties:
-       - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
--		     "google,veyron", "rockchip,rk3288";
-\ No newline at end of file
-+		     "google,veyron", "rockchip,rk3288";
-+
-+- Google Speedy (Asus C201 Chromebook):
-+    Required root node properties:
-+      - compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
-+		     "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
-+		     "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
-+		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-+		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 653ede7..bfa7c86 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -498,7 +498,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-firefly-beta.dtb \
- 	rk3288-firefly.dtb \
- 	rk3288-veyron-jerry.dtb \
--	rk3288-veyron-pinky.dtb
-+	rk3288-veyron-pinky.dtb \
-+	rk3288-veyron-speedy.dtb
- dtb-$(CONFIG_ARCH_S3C24XX) += \
- 	s3c2416-smdk2416.dtb
- dtb-$(CONFIG_ARCH_S3C64XX) += \
-diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-new file mode 100644
-index 0000000..6578e2a
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-@@ -0,0 +1,163 @@
-+/*
-+ * Google Veyron Speedy Rev 1+ board device tree source
-+ *
-+ * Copyright 2015 Google, Inc
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ *  Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+#include "rk3288-veyron-chromebook.dtsi"
-+#include "cros-ec-sbs.dtsi"
-+
-+/ {
-+	model = "Google Speedy";
-+	compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
-+		     "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
-+		     "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
-+		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-+		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-+
-+	panel_regulator: panel-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcd_enable_h>;
-+		regulator-name = "panel_regulator";
-+		vin-supply = <&vcc33_sys>;
-+	};
-+
-+	vcc18_lcd: vcc18-lcd {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 13 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&avdd_1v8_disp_en>;
-+		regulator-name = "vcc18_lcd";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc18_wl>;
-+	};
-+
-+	backlight_regulator: backlight-regulator {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio2 12 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bl_pwr_en>;
-+		regulator-name = "backlight_regulator";
-+		vin-supply = <&vcc33_sys>;
-+		startup-delay-us = <15000>;
-+	};
-+};
-+
-+&rk808 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
-+	dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-+		    <&gpio7 15 GPIO_ACTIVE_HIGH>;
-+};
-+
-+&sdmmc {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
-+			&sdmmc_bus4>;
-+	disable-wp;
-+};
-+
-+&vcc_5v {
-+	enable-active-high;
-+	gpio = <&gpio7 21 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&drv_5v>;
-+};
-+
-+&vcc50_hdmi {
-+	enable-active-high;
-+	gpio = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&vcc50_hdmi_en>;
-+};
-+
-+&pinctrl {
-+	backlight {
-+		bl_pwr_en: bl_pwr_en {
-+			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	buck-5v {
-+		drv_5v: drv-5v {
-+			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	edp {
-+		edp_hpd: edp_hpd {
-+			rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
-+		};
-+	};
-+
-+	hdmi {
-+		vcc50_hdmi_en: vcc50-hdmi-en {
-+			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	lcd {
-+		lcd_enable_h: lcd-en {
-+			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		avdd_1v8_disp_en: avdd-1v8-disp-en {
-+			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		dvs_1: dvs-1 {
-+			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		dvs_2: dvs-2 {
-+			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
--- 
-2.1.4
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Tue, Jul 21, 2015 at 2:51 PM, Michael Trimarchi
+<michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+> Hi
+>
+> I have managed to let my wifi working using mainline but I have
+> problem on clocking. Right now I can not rise the clock more the 5Mhz
+> even it's suppose to work up to 50Mhz. Anyone is working on it right
+> now?
+>
+
+I put in attach two patches that I need on my version. Another problem
+is that execute_tuning is not defined in the dw_mmc-rockchip so
+ENOSYS is returned. I think that we have two way:
+
+1) put a stub
+2) define 0 as default error
+
+Michael
+
+> Michael
+
+--001a11c33c02c541c8051b707592
+Content-Type: text/x-diff; charset=US-ASCII;
+	name="0001-dw_mmc-hack-voltage-response-from-wifi.patch"
+Content-Disposition: attachment;
+	filename="0001-dw_mmc-hack-voltage-response-from-wifi.patch"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_icecyvxn0
+
+RnJvbSA2NjE5NzlkZTE2YjNkMGQwMTA2NTlhMmU2MDEyMDlhYTg5NGQ1NWY0IE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBNaWNoYWVsIFRyaW1hcmNoaSA8bWljaGFlbEBhbWFydWxhc29s
+dXRpb25zLmNvbT4KRGF0ZTogVHVlLCAyMSBKdWwgMjAxNSAxNjoxNDoxMyArMDIwMApTdWJqZWN0
+OiBbUEFUQ0hdIGR3X21tYzogaGFjayB2b2x0YWdlIHJlc3BvbnNlIGZyb20gd2lmaQoKU2lnbmVk
+LW9mZi1ieTogTWljaGFlbCBUcmltYXJjaGkgPG1pY2hhZWxAYW1hcnVsYXNvbHV0aW9ucy5jb20+
+Ci0tLQogZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYyB8IDUgKysrLS0KIDEgZmlsZSBjaGFuZ2Vk
+LCAzIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
+bWMvaG9zdC9kd19tbWMuYyBiL2RyaXZlcnMvbW1jL2hvc3QvZHdfbW1jLmMKaW5kZXggOTIzMTUy
+YS4uNWQyZjM4YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYworKysgYi9k
+cml2ZXJzL21tYy9ob3N0L2R3X21tYy5jCkBAIC0yMzU1LDggKzIzNTUsOSBAQCBzdGF0aWMgaW50
+IGR3X21jaV9pbml0X3Nsb3Qoc3RydWN0IGR3X21jaSAqaG9zdCwgdW5zaWduZWQgaW50IGlkKQog
+CWlmIChyZXQgPT0gLUVQUk9CRV9ERUZFUikKIAkJZ290byBlcnJfaG9zdF9hbGxvY2F0ZWQ7CiAK
+LQlpZiAoIW1tYy0+b2NyX2F2YWlsKQotCQltbWMtPm9jcl9hdmFpbCA9IE1NQ19WRERfMzJfMzMg
+fCBNTUNfVkREXzMzXzM0OworCWlmICghbW1jLT5vY3JfYXZhaWwgfHwgIXN0cmNtcCgibW1jMCIs
+IG1tY19ob3N0bmFtZShtbWMpKSkKKwkJbW1jLT5vY3JfYXZhaWwgPSBNTUNfVkREXzMyXzMzIHwg
+TU1DX1ZERF8zM18zNCB8CisJCQkJIE1NQ19WRERfMTY1XzE5NSB8IE1NQ19WRERfMjBfMjE7CiAK
+IAlpZiAoaG9zdC0+cGRhdGEtPmNhcHMpCiAJCW1tYy0+Y2FwcyA9IGhvc3QtPnBkYXRhLT5jYXBz
+OwotLSAKMS45LjEKCg==
+--001a11c33c02c541c8051b707592
+Content-Type: text/x-diff; charset=US-ASCII;
+	name="0001-firefly-add-a-minimal-wifi-settings.patch"
+Content-Disposition: attachment;
+	filename="0001-firefly-add-a-minimal-wifi-settings.patch"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_icecyvz91
+
+RnJvbSA0ZDY4Zjk5NmUyOGFhMTM1YTMzMWU2N2NjZDk1ODc0NjMyMjc2NjA2IE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBNaWNoYWVsIFRyaW1hcmNoaSA8bWljaGFlbEBhbWFydWxhc29s
+dXRpb25zLmNvbT4KRGF0ZTogVHVlLCAyMSBKdWwgMjAxNSAxNToyMTo0OCArMDIwMApTdWJqZWN0
+OiBbUEFUQ0hdIGZpcmVmbHk6IGFkZCBhIG1pbmltYWwgd2lmaSBzZXR0aW5ncwoKU2lnbmVkLW9m
+Zi1ieTogTWljaGFlbCBUcmltYXJjaGkgPG1pY2hhZWxAYW1hcnVsYXNvbHV0aW9ucy5jb20+Ci0t
+LQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaSB8IDMzICsrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrLQogMSBmaWxlIGNoYW5nZWQsIDMyIGluc2VydGlvbnMoKyks
+IDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
+ZWZseS5kdHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaQppbmRleCAx
+NDliOWVkLi5lZmZjZTcxIDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
+ZWZseS5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LmR0c2kKQEAg
+LTExNiw2ICsxMTYsMTkgQEAKIAkJdmluLXN1cHBseSA9IDwmdmNjX2lvPjsKIAl9OwogCisJdmNj
+X3dpZmk6IHdpZmktcmVndWxhdG9yIHsKKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQi
+OworCQlncGlvID0gPCZncGlvNCAyOCBHUElPX0FDVElWRV9ISUdIPjsKKwkJcGluY3RybC1uYW1l
+cyA9ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZzZGlvMF9wd3I+OworCQlyZWd1bGF0b3It
+bmFtZSA9ICJ2Y2Nfd2lmaSI7CisJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDE4MDAwMDA+
+OworCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKKwkJc3RhcnR1cC1kZWxh
+eS11cyA9IDwxMDAwMDA+OworCQl2aW4tc3VwcGx5ID0gPCZ2Y2NfaW8+OworCX07CisKKwogCXZj
+Y19mbGFzaDogZmxhc2gtcmVndWxhdG9yIHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4
+ZWQiOwogCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NfZmxhc2giOwpAQCAtNDYwLDEzICs0NzMsMzEg
+QEAKICZzZGlvMCB7CiAJYnJva2VuLWNkOwogCWJ1cy13aWR0aCA9IDw0PjsKKwljbG9jay1mcmVx
+LW1pbi1tYXggPSA8NDAwMDAwIDUwMDAwMDA+OwogCWRpc2FibGUtd3A7CiAJbm9uLXJlbW92YWJs
+ZTsKKwljYXAtc2QtLWhpZ2hzcGVlZDsKIAludW0tc2xvdHMgPSA8MT47CiAJcGluY3RybC1uYW1l
+cyA9ICJkZWZhdWx0IjsKLQlwaW5jdHJsLTAgPSA8JnNkaW8wX2J1czQ+LCA8JnNkaW8wX2NtZD4s
+IDwmc2RpbzBfY2xrPjsKKwlwaW5jdHJsLTAgPSA8JnNkaW8wX2J1czQ+LCA8JnNkaW8wX2NtZD4s
+IDwmc2RpbzBfY2xrPiwgPCZzZGlvMF9pbnQ+OworCisJc2QtdWhzLXNkcjEwNDsKKwlzZC11aHMt
+c2RyMTI7CisJc2QtdWhzLXNkcjI1OworCWNhcC1zZGlvLWlycTsKKwogCXZtbWMtc3VwcGx5ID0g
+PCZ2Y2NfMTg+OworLyoJbW1jLXN1cHBseSA9IDwmdmNjX3dpZmk+OyAqLwogCXN0YXR1cyA9ICJv
+a2F5IjsKKworCWJyY21mOiBiY3JtZkAxIHsKKwkJY29tcGF0aWJsZSA9ICJicmNtLGJjbTQzMjkt
+Zm1hYyI7CisJCWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW80PjsKKwkJcmVnID0gPDA+OworCQlp
+bnRlcnJ1cHRzID0gPDMwIElSUV9UWVBFX0VER0VfRkFMTElORz47CisJCWludGVycnVwdC1uYW1l
+cyA9ICJob3N0LXdha2UiOworCQlzdGF0dXMgPSAib2theSI7CisJfTsKIH07CiAKICZzZG1tYyB7
+Ci0tIAoxLjkuMQoK
+--001a11c33c02c541c8051b707592
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--001a11c33c02c541c8051b707592--
