@@ -1,258 +1,57 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Add veyron-speedy board
-Date: Wed, 22 Jul 2015 11:04:09 +0200
-Message-ID: <1896579.c6dBjMIaQx@diego>
-References: <1437543846-19897-1-git-send-email-romain.perier@gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: Firefly wifi mainline patches
+Date: Wed, 22 Jul 2015 06:36:39 -0700
+Message-ID: <CAD=FV=U6DmLr_VC3XKs+ALKKhwsg+JXmo+52aEoWOkvkXr3UGw@mail.gmail.com>
+References: <20150721125133.GA4102@panicking>
+ <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1437543846-19897-1-git-send-email-romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Romain,
+Hi,
 
-could you include Doug (dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org) and Alex (amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org) 
-when touching Chromebook related stuff please?
+On Tue, Jul 21, 2015 at 10:58 PM, Michael Trimarchi
+<michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+> Hi
+>
+>
+> On Tue, Jul 21, 2015 at 2:51 PM, Michael Trimarchi
+> <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+>> Hi
+>>
+>> I have managed to let my wifi working using mainline but I have
+>> problem on clocking. Right now I can not rise the clock more the 5Mhz
+>> even it's suppose to work up to 50Mhz. Anyone is working on it right
+>> now?
+>>
+>
+> I put in attach two patches that I need on my version. Another problem
+> is that execute_tuning is not defined in the dw_mmc-rockchip so
+> ENOSYS is returned. I think that we have two way:
+>
+> 1) put a stub
+> 2) define 0 as default error
 
-Especially the new dts probably needs an Ack from Doug, as this is the 
-chromeos one with changed license header.
+I don't think you should be trying to tune until the tuning patches
+are landed.  Alexandru sent them up a while ago but they need to be
+respun.  I seem to remember Alexandru saying that it decided your
+controller was UHS capable if you didn't specify any capabilities, so
+maybe that's it.
 
-And two nits below:
+Try adding this to your SDIO port in the dts:
 
-
-Am Mittwoch, 22. Juli 2015, 07:44:05 schrieb Romain Perier:
-> Which is formally known as The Asus C201 chromebook
-> 
-> Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.txt |  10 +-
->  arch/arm/boot/dts/Makefile                         |   3 +-
->  arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 163
-> +++++++++++++++++++++ 3 files changed, 174 insertions(+), 2 deletions(-)
->  create mode 100644 arch/arm/boot/dts/rk3288-veyron-speedy.dts
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt
-> b/Documentation/devicetree/bindings/arm/rockchip.txt index
-> 6de18bd2..da02022 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
-> @@ -37,4 +37,12 @@ Rockchip platforms device tree bindings
->  - Google Pinky (dev-board):
->      Required root node properties:
->        - compatible = "google,veyron-pinky-rev2", "google,veyron-pinky",
-> -		     "google,veyron", "rockchip,rk3288";
-> \ No newline at end of file
-
-I think I caught that missing newline when applying my board patch :-)
-
-
-> +		     "google,veyron", "rockchip,rk3288";
-> +
-> +- Google Speedy (Asus C201 Chromebook):
-> +    Required root node properties:
-> +      - compatible = "google,veyron-speedy-rev9",
-> "google,veyron-speedy-rev8", +		     "google,veyron-speedy-rev7",
-> "google,veyron-speedy-rev6",
-> +		     "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
-> +		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-> +		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 653ede7..bfa7c86 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -498,7 +498,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->  	rk3288-firefly-beta.dtb \
->  	rk3288-firefly.dtb \
->  	rk3288-veyron-jerry.dtb \
-> -	rk3288-veyron-pinky.dtb
-> +	rk3288-veyron-pinky.dtb \
-> +	rk3288-veyron-speedy.dtb
->  dtb-$(CONFIG_ARCH_S3C24XX) += \
->  	s3c2416-smdk2416.dtb
->  dtb-$(CONFIG_ARCH_S3C64XX) += \
-> diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-> b/arch/arm/boot/dts/rk3288-veyron-speedy.dts new file mode 100644
-> index 0000000..6578e2a
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-> @@ -0,0 +1,163 @@
-> +/*
-> + * Google Veyron Speedy Rev 1+ board device tree source
-> + *
-> + * Copyright 2015 Google, Inc
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + *  Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3288-veyron-chromebook.dtsi"
-> +#include "cros-ec-sbs.dtsi"
-> +
-> +/ {
-> +	model = "Google Speedy";
-> +	compatible = "google,veyron-speedy-rev9", "google,veyron-speedy-rev8",
-> +		     "google,veyron-speedy-rev7", "google,veyron-speedy-rev6",
-> +		     "google,veyron-speedy-rev5", "google,veyron-speedy-rev4",
-> +		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
-> +		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
-> +
-> +	panel_regulator: panel-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&lcd_enable_h>;
-> +		regulator-name = "panel_regulator";
-> +		vin-supply = <&vcc33_sys>;
-> +	};
-> +
-> +	vcc18_lcd: vcc18-lcd {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio2 13 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&avdd_1v8_disp_en>;
-> +		regulator-name = "vcc18_lcd";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		vin-supply = <&vcc18_wl>;
-> +	};
-> +
-> +	backlight_regulator: backlight-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio2 12 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bl_pwr_en>;
-> +		regulator-name = "backlight_regulator";
-> +		vin-supply = <&vcc33_sys>;
-> +		startup-delay-us = <15000>;
-> +	};
-> +};
-> +
-> +&rk808 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
-> +	dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-> +		    <&gpio7 15 GPIO_ACTIVE_HIGH>;
-
-as with the other boards, dvs-gpios is not yet defined (see series from Chris 
-Zhong from some days ago), so better leave this out for now.
-
-
-Thanks
-Heiko
-
-> +};
-> +
-> +&sdmmc {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
-> +			&sdmmc_bus4>;
-> +	disable-wp;
-> +};
-> +
-> +&vcc_5v {
-> +	enable-active-high;
-> +	gpio = <&gpio7 21 GPIO_ACTIVE_HIGH>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&drv_5v>;
-> +};
-> +
-> +&vcc50_hdmi {
-> +	enable-active-high;
-> +	gpio = <&gpio5 19 GPIO_ACTIVE_HIGH>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&vcc50_hdmi_en>;
-> +};
-> +
-> +&pinctrl {
-> +	backlight {
-> +		bl_pwr_en: bl_pwr_en {
-> +			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	buck-5v {
-> +		drv_5v: drv-5v {
-> +			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	edp {
-> +		edp_hpd: edp_hpd {
-> +			rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
-> +		};
-> +	};
-> +
-> +	hdmi {
-> +		vcc50_hdmi_en: vcc50-hdmi-en {
-> +			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	lcd {
-> +		lcd_enable_h: lcd-en {
-> +			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +
-> +		avdd_1v8_disp_en: avdd-1v8-disp-en {
-> +			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pmic {
-> +		dvs_1: dvs-1 {
-> +			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +
-> +		dvs_2: dvs-2 {
-> +			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +	};
-> +};
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+cap-sd-highspeed;
