@@ -1,12 +1,14 @@
-From: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: Firefly wifi mainline patches
-Date: Wed, 22 Jul 2015 07:58:29 +0200
-Message-ID: <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q@mail.gmail.com>
+Date: Wed, 22 Jul 2015 08:45:37 +0200
+Message-ID: <CABgxDoJ03fPobnz+0DBn0EH91y0A0F6Z95sa9aWx3vWXuXqngQ@mail.gmail.com>
 References: <20150721125133.GA4102@panicking>
+ <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary=001a11c33c02c541c8051b707592
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150721125133.GA4102@panicking>
+In-Reply-To: <CAOf5uw=cvu9ST+QexgMQP06xQVAz6th_EepfxQOAXNDrWopf6Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,112 +18,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---001a11c33c02c541c8051b707592
-Content-Type: text/plain; charset=UTF-8
+Hi Michael,
 
-Hi
+You can ask and discuss about wifi here, but could you re-send you
+patches as described in [1] please ?
+
+Short version:
+1. git format-patch HEAD~2  # extract your two commits
+2. scripts/get_maintainer.pl -f  <changed_files> # list maintainers
+3. git send-email --to --cc  <emails  listed by get_maintainer.pl>   *.patch
+
+Thanks in advance,
+Have a nice day,
+Romain
+
+1. https://www.kernel.org/doc/Documentation/SubmittingPatches
 
 
-On Tue, Jul 21, 2015 at 2:51 PM, Michael Trimarchi
-<michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+2015-07-22 7:58 GMT+02:00 Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>:
 > Hi
 >
-> I have managed to let my wifi working using mainline but I have
-> problem on clocking. Right now I can not rise the clock more the 5Mhz
-> even it's suppose to work up to 50Mhz. Anyone is working on it right
-> now?
 >
-
-I put in attach two patches that I need on my version. Another problem
-is that execute_tuning is not defined in the dw_mmc-rockchip so
-ENOSYS is returned. I think that we have two way:
-
-1) put a stub
-2) define 0 as default error
-
-Michael
-
+> On Tue, Jul 21, 2015 at 2:51 PM, Michael Trimarchi
+> <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+>> Hi
+>>
+>> I have managed to let my wifi working using mainline but I have
+>> problem on clocking. Right now I can not rise the clock more the 5Mhz
+>> even it's suppose to work up to 50Mhz. Anyone is working on it right
+>> now?
+>>
+>
+> I put in attach two patches that I need on my version. Another problem
+> is that execute_tuning is not defined in the dw_mmc-rockchip so
+> ENOSYS is returned. I think that we have two way:
+>
+> 1) put a stub
+> 2) define 0 as default error
+>
 > Michael
-
---001a11c33c02c541c8051b707592
-Content-Type: text/x-diff; charset=US-ASCII;
-	name="0001-dw_mmc-hack-voltage-response-from-wifi.patch"
-Content-Disposition: attachment;
-	filename="0001-dw_mmc-hack-voltage-response-from-wifi.patch"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_icecyvxn0
-
-RnJvbSA2NjE5NzlkZTE2YjNkMGQwMTA2NTlhMmU2MDEyMDlhYTg5NGQ1NWY0IE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBNaWNoYWVsIFRyaW1hcmNoaSA8bWljaGFlbEBhbWFydWxhc29s
-dXRpb25zLmNvbT4KRGF0ZTogVHVlLCAyMSBKdWwgMjAxNSAxNjoxNDoxMyArMDIwMApTdWJqZWN0
-OiBbUEFUQ0hdIGR3X21tYzogaGFjayB2b2x0YWdlIHJlc3BvbnNlIGZyb20gd2lmaQoKU2lnbmVk
-LW9mZi1ieTogTWljaGFlbCBUcmltYXJjaGkgPG1pY2hhZWxAYW1hcnVsYXNvbHV0aW9ucy5jb20+
-Ci0tLQogZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYyB8IDUgKysrLS0KIDEgZmlsZSBjaGFuZ2Vk
-LCAzIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9t
-bWMvaG9zdC9kd19tbWMuYyBiL2RyaXZlcnMvbW1jL2hvc3QvZHdfbW1jLmMKaW5kZXggOTIzMTUy
-YS4uNWQyZjM4YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tbWMvaG9zdC9kd19tbWMuYworKysgYi9k
-cml2ZXJzL21tYy9ob3N0L2R3X21tYy5jCkBAIC0yMzU1LDggKzIzNTUsOSBAQCBzdGF0aWMgaW50
-IGR3X21jaV9pbml0X3Nsb3Qoc3RydWN0IGR3X21jaSAqaG9zdCwgdW5zaWduZWQgaW50IGlkKQog
-CWlmIChyZXQgPT0gLUVQUk9CRV9ERUZFUikKIAkJZ290byBlcnJfaG9zdF9hbGxvY2F0ZWQ7CiAK
-LQlpZiAoIW1tYy0+b2NyX2F2YWlsKQotCQltbWMtPm9jcl9hdmFpbCA9IE1NQ19WRERfMzJfMzMg
-fCBNTUNfVkREXzMzXzM0OworCWlmICghbW1jLT5vY3JfYXZhaWwgfHwgIXN0cmNtcCgibW1jMCIs
-IG1tY19ob3N0bmFtZShtbWMpKSkKKwkJbW1jLT5vY3JfYXZhaWwgPSBNTUNfVkREXzMyXzMzIHwg
-TU1DX1ZERF8zM18zNCB8CisJCQkJIE1NQ19WRERfMTY1XzE5NSB8IE1NQ19WRERfMjBfMjE7CiAK
-IAlpZiAoaG9zdC0+cGRhdGEtPmNhcHMpCiAJCW1tYy0+Y2FwcyA9IGhvc3QtPnBkYXRhLT5jYXBz
-OwotLSAKMS45LjEKCg==
---001a11c33c02c541c8051b707592
-Content-Type: text/x-diff; charset=US-ASCII;
-	name="0001-firefly-add-a-minimal-wifi-settings.patch"
-Content-Disposition: attachment;
-	filename="0001-firefly-add-a-minimal-wifi-settings.patch"
-Content-Transfer-Encoding: base64
-X-Attachment-Id: f_icecyvz91
-
-RnJvbSA0ZDY4Zjk5NmUyOGFhMTM1YTMzMWU2N2NjZDk1ODc0NjMyMjc2NjA2IE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBNaWNoYWVsIFRyaW1hcmNoaSA8bWljaGFlbEBhbWFydWxhc29s
-dXRpb25zLmNvbT4KRGF0ZTogVHVlLCAyMSBKdWwgMjAxNSAxNToyMTo0OCArMDIwMApTdWJqZWN0
-OiBbUEFUQ0hdIGZpcmVmbHk6IGFkZCBhIG1pbmltYWwgd2lmaSBzZXR0aW5ncwoKU2lnbmVkLW9m
-Zi1ieTogTWljaGFlbCBUcmltYXJjaGkgPG1pY2hhZWxAYW1hcnVsYXNvbHV0aW9ucy5jb20+Ci0t
-LQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaSB8IDMzICsrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrLQogMSBmaWxlIGNoYW5nZWQsIDMyIGluc2VydGlvbnMoKyks
-IDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
-ZWZseS5kdHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWZpcmVmbHkuZHRzaQppbmRleCAx
-NDliOWVkLi5lZmZjZTcxIDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMyODgtZmly
-ZWZseS5kdHNpCisrKyBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1maXJlZmx5LmR0c2kKQEAg
-LTExNiw2ICsxMTYsMTkgQEAKIAkJdmluLXN1cHBseSA9IDwmdmNjX2lvPjsKIAl9OwogCisJdmNj
-X3dpZmk6IHdpZmktcmVndWxhdG9yIHsKKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQi
-OworCQlncGlvID0gPCZncGlvNCAyOCBHUElPX0FDVElWRV9ISUdIPjsKKwkJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZzZGlvMF9wd3I+OworCQlyZWd1bGF0b3It
-bmFtZSA9ICJ2Y2Nfd2lmaSI7CisJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDE4MDAwMDA+
-OworCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKKwkJc3RhcnR1cC1kZWxh
-eS11cyA9IDwxMDAwMDA+OworCQl2aW4tc3VwcGx5ID0gPCZ2Y2NfaW8+OworCX07CisKKwogCXZj
-Y19mbGFzaDogZmxhc2gtcmVndWxhdG9yIHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4
-ZWQiOwogCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2NfZmxhc2giOwpAQCAtNDYwLDEzICs0NzMsMzEg
-QEAKICZzZGlvMCB7CiAJYnJva2VuLWNkOwogCWJ1cy13aWR0aCA9IDw0PjsKKwljbG9jay1mcmVx
-LW1pbi1tYXggPSA8NDAwMDAwIDUwMDAwMDA+OwogCWRpc2FibGUtd3A7CiAJbm9uLXJlbW92YWJs
-ZTsKKwljYXAtc2QtLWhpZ2hzcGVlZDsKIAludW0tc2xvdHMgPSA8MT47CiAJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKLQlwaW5jdHJsLTAgPSA8JnNkaW8wX2J1czQ+LCA8JnNkaW8wX2NtZD4s
-IDwmc2RpbzBfY2xrPjsKKwlwaW5jdHJsLTAgPSA8JnNkaW8wX2J1czQ+LCA8JnNkaW8wX2NtZD4s
-IDwmc2RpbzBfY2xrPiwgPCZzZGlvMF9pbnQ+OworCisJc2QtdWhzLXNkcjEwNDsKKwlzZC11aHMt
-c2RyMTI7CisJc2QtdWhzLXNkcjI1OworCWNhcC1zZGlvLWlycTsKKwogCXZtbWMtc3VwcGx5ID0g
-PCZ2Y2NfMTg+OworLyoJbW1jLXN1cHBseSA9IDwmdmNjX3dpZmk+OyAqLwogCXN0YXR1cyA9ICJv
-a2F5IjsKKworCWJyY21mOiBiY3JtZkAxIHsKKwkJY29tcGF0aWJsZSA9ICJicmNtLGJjbTQzMjkt
-Zm1hYyI7CisJCWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW80PjsKKwkJcmVnID0gPDA+OworCQlp
-bnRlcnJ1cHRzID0gPDMwIElSUV9UWVBFX0VER0VfRkFMTElORz47CisJCWludGVycnVwdC1uYW1l
-cyA9ICJob3N0LXdha2UiOworCQlzdGF0dXMgPSAib2theSI7CisJfTsKIH07CiAKICZzZG1tYyB7
-Ci0tIAoxLjkuMQoK
---001a11c33c02c541c8051b707592
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---001a11c33c02c541c8051b707592--
+>
+>> Michael
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
