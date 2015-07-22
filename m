@@ -1,69 +1,42 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH] clk: rockchip: Fix PLL bandwidth
-Date: Tue, 21 Jul 2015 15:43:27 -0700
-Message-ID: <55AECB0F.3090701@codeaurora.org>
-References: <1437511283-14216-1-git-send-email-dianders@chromium.org> <55AEB6AE.2070006@codeaurora.org> <CAD=FV=VpY4j=HOGCMdFJ8g1bWeUTKqk=GWoEB+EB3y52UMbrLg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VpY4j=HOGCMdFJ8g1bWeUTKqk=GWoEB+EB3y52UMbrLg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Yakir Yang <ykk@rock-chips.com>, Alexandru Stan <amstan@chromium.org>, mturquette@baylibre.com, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: Use correct dts properties for tsadc node
+Date: Wed, 22 Jul 2015 07:43:26 +0200
+Message-ID: <1437543807-19852-1-git-send-email-romain.perier@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07/21/2015 03:37 PM, Doug Anderson wrote:
-> Stephen,
->
-> On Tue, Jul 21, 2015 at 2:16 PM, Stephen Boyd <sboyd@codeaurora.org> wrote:
->> On 07/21/2015 01:41 PM, Douglas Anderson wrote:
->>> In the TRM we see that BWADJ is "a 12-bit bus that selects the values
->>> 1-4096 for the bandwidth divider (NB)":
->>>    NB = BWADJ[11:0] + 1
->>> The recommended setting of NB: NB = NF / 2.
->>>
->>> So:
->>>     NB = NF / 2
->>>     BWADJ[11:0] + 1 = NF / 2
->>>     BWADJ[11:0] = NF / 2 - 1
->>>
->>> Right now, we have:
->>>
->>> {                                               \
->>>           .rate   = _rate##U,                     \
->>>           .nr = _nr,                              \
->>>           .nf = _nf,                              \
->>>           .no = _no,                              \
->>>           .bwadj = (_nf >> 1),                    \
->>> }
->>>
->>> That means we set bwadj to NF / 2, not NF / 2 - 1
->>>
->>> All of this is a bit confusing because we specify "NR" (the 1-based
->>> value), "NF" (the 1-based value), "NO" (the 1-based value), but
->>> "BWADJ" (the 0-based value) instead of "NB" (the 1-based value).
->>>
->>> Let's change to working with "NB" and fix the off by one error.  This
->>> may affect PLL jitter in a small way (hopefully for the better).
->>>
->>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>>
->> There's no Fixes tag or stable Cc so I take it this isn't fixing any
->> manifesting regression, more of a visual inspection bug find?
-> There is no known problem fixed.  I've been looking at HDMI and
-> controlling PLL jitter is an important part of supporting HDMI clock
-> rates.  That got me to looking at this parameter and deciding that we
-> should set it correctly.  Apparently it doesn't help in any hugely
-> significant way...  I just got done re-testing a whole lot of rates
-> and if it helped or hurt my jitter it's in the noise (AKA there's
-> enough variance run-to-run that it's hard to tell if this made any
-> difference).
->
->
+tsadc-tshut-mode and tsadc-tshut-polarity properties don't exist. The rockchip
+thermal driver looks for rockchip,hw-tshut-mode and rockchip,hw-tshut-polarity
+instead, otherwise it might freeze or hang the device according to the default
+mode or polarity used.
 
-Ok. Applied to clk-next.
+Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index 627d113..cc76cf7 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -367,8 +367,8 @@
+ &tsadc {
+ 	status = "okay";
+ 
+-	tsadc-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
+-	tsadc-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
++	rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
++	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
+ };
+ 
+ &uart0 {
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+2.1.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
