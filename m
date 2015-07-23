@@ -1,126 +1,76 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: rockchip: set correct stabilization thresholds
- in suspend
-Date: Thu, 23 Jul 2015 08:53:53 +0800
-Message-ID: <55B03B21.1070801@rock-chips.com>
-References: <3856665.6DP3Y23l8S@diego>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v3 3/6] drm/rockchip: vop: Add yuv plane support
+Date: Thu, 23 Jul 2015 10:01:58 +0800
+Message-ID: <55B04B16.7030005@rock-chips.com>
+References: <1437466807-13689-1-git-send-email-mark.yao@rock-chips.com>
+ <1437466807-13689-4-git-send-email-mark.yao@rock-chips.com>
+ <7451281.fUv3gEKea6@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3856665.6DP3Y23l8S@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <7451281.fUv3gEKea6@diego>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
-
-On 07/22/2015 11:27 PM, Heiko St=FCbner wrote:
-> Currently the stabilization thresholds for the oscillator and external pmu
-> are statically set to 30ms based on a 32kHz clock rate. This leaves out t=
-he
-> case when we don't switch to the 32kHz clock if either usb wakeup is
-> enabled or we only enter the shallow suspend mode where the logic keeps
-> running.
->
-> So, set the correct threshold after we have determined if we switch to the
-> 32kHz clock or stay with the 24MHz one.
->
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->   arch/arm/mach-rockchip/pm.c | 16 ++++++++++++----
->   arch/arm/mach-rockchip/pm.h |  4 ----
->   2 files changed, 12 insertions(+), 8 deletions(-)
->
-> diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-> index 892bace..4539f51 100644
-> --- a/arch/arm/mach-rockchip/pm.c
-> +++ b/arch/arm/mach-rockchip/pm.c
-> @@ -96,7 +96,8 @@ static bool rk3288_slp_disable_osc(void)
->   static void rk3288_slp_mode_set(int level)
->   {
->   	u32 mode_set, mode_set1;
-> -	bool osc_switch_to_32k =3D rk3288_slp_disable_osc();
-> +	bool osc_switch_to_32k;
-> +	int cnt_thres;
->   =
-
->   	regmap_read(sgrf_regmap, RK3288_SGRF_CPU_CON0, &rk3288_sgrf_cpu_con0);
->   	regmap_read(sgrf_regmap, RK3288_SGRF_SOC_CON0, &rk3288_sgrf_soc_con0);
-> @@ -135,6 +136,8 @@ static void rk3288_slp_mode_set(int level)
->   	mode_set1 =3D BIT(PMU_CLR_CORE) | BIT(PMU_CLR_CPUP);
->   =
-
->   	if (level =3D=3D ROCKCHIP_ARM_OFF_LOGIC_DEEP) {
-> +		osc_switch_to_32k =3D rk3288_slp_disable_osc();
-> +
->   		/* arm off, logic deep sleep */
->   		mode_set |=3D BIT(PMU_BUS_PD_EN) | BIT(PMU_PMU_USE_LF) |
->   			    BIT(PMU_DDR1IO_RET_EN) | BIT(PMU_DDR0IO_RET_EN) |
-> @@ -145,7 +148,10 @@ static void rk3288_slp_mode_set(int level)
->   =
-
->   		mode_set1 |=3D BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
->   			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
-> +
->   	} else {
-> +		osc_switch_to_32k =3D false;
-> +
->   		/*
->   		 * arm off, logic normal
->   		 * if pmu_clk_core_src_gate_en is not set,
-> @@ -154,6 +160,11 @@ static void rk3288_slp_mode_set(int level)
->   		mode_set |=3D BIT(PMU_CLK_CORE_SRC_GATE_EN);
->   	}
->   =
-
-> +	/* set correct stabilization threshold */
-> +	cnt_thres =3D (osc_switch_to_32k) ? 32 : 24000;
-
-We have switch to 32khz in ROCKCHIP_ARM_OFF_LOGIC_DEEP mode,
-although the 24Mhz osc is still working when osc_switch_to_32k =3D false.
-So I think cnt_thres must always be 32 for ROCKCHIP_ARM_OFF_LOGIC_DEEP mode
-
-> +	regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, cnt_thres * 30);
-> +	regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, cnt_thres * 30);
-> +
->   	regmap_write(pmu_regmap, RK3288_PMU_PWRMODE_CON, mode_set);
->   	regmap_write(pmu_regmap, RK3288_PMU_PWRMODE_CON1, mode_set1);
->   }
-> @@ -262,9 +273,6 @@ static int rk3288_suspend_init(struct device_node *np)
->   	memcpy(rk3288_bootram_base, rockchip_slp_cpu_resume,
->   	       rk3288_bootram_sz);
->   =
-
-> -	regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, OSC_STABL_CNT_THRESH);
-> -	regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, PMU_STABL_CNT_THRESH);
-> -
->   	return 0;
->   }
->   =
-
-> diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-> index b6494c2..8a55ee2 100644
-> --- a/arch/arm/mach-rockchip/pm.h
-> +++ b/arch/arm/mach-rockchip/pm.h
-> @@ -62,10 +62,6 @@ static inline void rockchip_suspend_init(void)
->   /* PMU_WAKEUP_CFG1 bits */
->   #define PMU_ARMINT_WAKEUP_EN		BIT(0)
->   =
-
-> -/* wait 30ms for OSC stable and 30ms for pmic stable */
-> -#define OSC_STABL_CNT_THRESH	(32 * 30)
-> -#define PMU_STABL_CNT_THRESH	(32 * 30)
-> -
->   enum rk3288_pwr_mode_con {
->   	PMU_PWR_MODE_EN =3D 0,
->   	PMU_CLK_CORE_SRC_GATE_EN,
+T24gMjAxNeW5tDA35pyIMjPml6UgMDU6NTEsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFtIERp
+ZW5zdGFnLCAyMS4gSnVsaSAyMDE1LCAxNjoyMDowNCBzY2hyaWViIE1hcmsgWWFvOgo+PiB2b3Ag
+c3VwcG9ydCB5dXYgd2l0aCBOVjEyLCBOVjE2IGFuZCBOVjI0LCBvbmx5IDIgcGxhbmUgeXV2Lgo+
+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+Cj4+
+IC0tLQo+PiBDaGFuZ2VzIGluIHYzOgo+PiBBZHZpY2VkIGJ5IFRvbWFzeiBGaWdhCj4+IC0gc2Vw
+YXJhdGUgZGVzdCBjYWxjdWxhdGUgdG8gYW5vdGhlciBwYXRjaAo+PiAtIGZpeCBzcmMgeDEseDIg
+d2hlbiBkbyBhbGlnbiwgYW5kIHJlbW92ZSB1bm5lY2Vzc2FyeSBzcmMueTEgYWxpZ24uCj4+Cj4+
+IENoYW5nZXMgaW4gdjI6Cj4+IC0gVXYgYnVmZmVyIG5vdCBzdXBwb3J0IG9kZCBvZmZzZXQsIGFs
+aWduIGl0Lgo+PiAtIEZpeCBlcnJvciBkaXNwbGF5IHdoZW4gbW92ZSB5dXYgaW1hZ2UuCj4+Cj4+
+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAgNTYKPj4g
+KysrKysrKysrKysrKysrKysrKysrKysrKystIDEgZmlsZSBjaGFuZ2VkLCA1NCBpbnNlcnRpb25z
+KCspLCAyCj4+IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMgaW5kZXggYzdlMDI4My4uNDdjZTk0MyAxMDA2NDQKPj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IEBAIC0zNzMsNiAr
+MzczLDE4IEBAIHN0YXRpYyBlbnVtIHZvcF9kYXRhX2Zvcm1hdCB2b3BfY29udmVydF9mb3JtYXQo
+dWludDMyX3QKPj4gZm9ybWF0KSB9Cj4+ICAgfQo+Pgo+PiArc3RhdGljIGJvb2wgaXNfeXV2X3N1
+cHBvcnQodWludDMyX3QgZm9ybWF0KQo+PiArewo+PiArCXN3aXRjaCAoZm9ybWF0KSB7Cj4+ICsJ
+Y2FzZSBEUk1fRk9STUFUX05WMTI6Cj4+ICsJY2FzZSBEUk1fRk9STUFUX05WMTY6Cj4+ICsJY2Fz
+ZSBEUk1fRk9STUFUX05WMjQ6Cj4+ICsJCXJldHVybiB0cnVlOwo+PiArCWRlZmF1bHQ6Cj4+ICsJ
+CXJldHVybiBmYWxzZTsKPj4gKwl9Cj4+ICt9Cj4+ICsKPj4gICBzdGF0aWMgYm9vbCBpc19hbHBo
+YV9zdXBwb3J0KHVpbnQzMl90IGZvcm1hdCkKPj4gICB7Cj4+ICAgCXN3aXRjaCAoZm9ybWF0KSB7
+Cj4+IEBAIC01NzcsMTYgKzU4OSwyMSBAQCBzdGF0aWMgaW50IHZvcF91cGRhdGVfcGxhbmVfZXZl
+bnQoc3RydWN0IGRybV9wbGFuZQo+Cj4gZG9lcyBub3QgYXBwbHkgdG8gd2hhdCdzIGluIG1haW5s
+aW5lLCBhcyB0aGlzIHBhdGNoIHNlZW1zIHRvIGlnbm9yZQo+IAk4NWEzNTlmMjUzODggKCJkcm0v
+cm9ja2NoaXA6IEFkZCBCR1IgZm9ybWF0cyB0byBWT1AiKQo+IGZyb20gVG9tYXN6Cj4KCkhtbSwg
+SSBmb3VuZCB0aGUgcGF0Y2ggKCJkcm0vcm9ja2NoaXA6IEFkZCBCR1IgZm9ybWF0cyB0byBWT1Ai
+KQppcyBvbiB0aGUgZHJtLWZpeGVzIGJyYW5jaCwgc28gSSBkaWRuJ3QgcmVzZW5kIHRoZSBwYXRj
+aC4KCk9rLCBJIHdpbGwgcmViYXNlIHRoZXNlIHBhdGNoZXMgdG9wIG9mIHRoZSAiQWRkIEJHUiBm
+b3JtYXRzIHRvIFZPUCIuCgoKPj4gKnBsYW5lLCBzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0
+Yyk7Cj4+ICAgCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+PiAgIAlzdHJ1Y3Qgcm9ja2No
+aXBfZ2VtX29iamVjdCAqcmtfb2JqOwo+PiArCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqdXZfb2Jq
+Owo+PiArCXN0cnVjdCByb2NrY2hpcF9nZW1fb2JqZWN0ICpya191dl9vYmo7Cj4+ICAgCXVuc2ln
+bmVkIGxvbmcgb2Zmc2V0Owo+PiAgIAl1bnNpZ25lZCBpbnQgYWN0dWFsX3c7Cj4+ICAgCXVuc2ln
+bmVkIGludCBhY3R1YWxfaDsKPj4gICAJdW5zaWduZWQgaW50IGRzcF9zdHg7Cj4+ICAgCXVuc2ln
+bmVkIGludCBkc3Bfc3R5Owo+PiAgIAl1bnNpZ25lZCBpbnQgeV92aXJfc3RyaWRlOwo+PiArCXVu
+c2lnbmVkIGludCB1dl92aXJfc3RyaWRlID0gMDsKPj4gICAJZG1hX2FkZHJfdCB5cmdiX21zdDsK
+Pj4gKwlkbWFfYWRkcl90IHV2X21zdCA9IDA7Cj4+ICAgCWVudW0gdm9wX2RhdGFfZm9ybWF0IGZv
+cm1hdDsKPj4gICAJdWludDMyX3QgdmFsOwo+PiAgIAlib29sIGlzX2FscGhhOwo+PiArCWJvb2wg
+aXNfeXV2Owo+PiAgIAlib29sIHZpc2libGU7Cj4+ICAgCWludCByZXQ7Cj4+ICAgCXN0cnVjdCBk
+cm1fcmVjdCBkZXN0ID0gewo+PiBAQCAtNjIwLDYgKzYzNyw4IEBAIHN0YXRpYyBpbnQgdm9wX3Vw
+ZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lCj4+ICpwbGFuZSwgcmV0dXJuIDA7Cj4+
+Cj4+ICAgCWlzX2FscGhhID0gaXNfYWxwaGFfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KTsKPj4g
+Kwlpc195dXYgPSBpc195dXZfc3VwcG9ydChmYi0+cGl4ZWxfZm9ybWF0KTsKPj4gKwo+PiAgIAlm
+b3JtYXQgPSB2b3BfY29udmVydF9mb3JtYXQoZmItPnBpeGVsX2Zvcm1hdCk7Cj4+ICAgCWlmIChm
+b3JtYXQgPCAwKQo+PiAgIAkJcmV0dXJuIGZvcm1hdDsKPiBzYW1lIGFzIGFib3ZlCj4KPgo+IEhl
+aWtvCj4KPgo+CgoKLS0gCu+8rWFyawoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
