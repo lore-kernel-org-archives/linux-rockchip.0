@@ -1,85 +1,83 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 2/2] ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when
- entering shallow suspend
-Date: Thu, 23 Jul 2015 10:30:21 +0200
-Message-ID: <119805978.5m38dsFzWM@diego>
-References: <4610448.RXXf22Qoxl@diego>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] mfd: dt-bindings: add the description about dvs
+ gpio for rk808
+Date: Thu, 23 Jul 2015 15:49:15 +0100
+Message-ID: <20150723144915.GH3436@x1>
+References: <1437384233-26169-1-git-send-email-zyw@rock-chips.com>
+ <1437384233-26169-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4610448.RXXf22Qoxl@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1437384233-26169-2-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, amstan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Zhang Qing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-PMU_GPIOINT_WAKEUP_EN seems needed when entering the shallow suspend
-(with logic staying on) but does not seem to be needed for the deep
-suspend for unknown reasons.
-Testing revealed that this setting really is necessary to reliably
-resume the veyron devices from suspend.
+On Mon, 20 Jul 2015, Chris Zhong wrote:
 
-Reported-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/mach-rockchip/pm.c | 9 ++++++---
- arch/arm/mach-rockchip/pm.h | 1 +
- 2 files changed, 7 insertions(+), 3 deletions(-)
+> add the description about dvs1, dvs2, and add the example.
+>=20
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>=20
+> ---
+>=20
+> Changes in v4:
+> - Remove the description about dvs-ok
+>=20
+> Changes in v3:
+> - Modify the syntax error
+>=20
+> Changes in v2:
+> - increase description about dvs pins
+>=20
+>  Documentation/devicetree/bindings/mfd/rk808.txt | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-index 04d3028..801541e 100644
---- a/arch/arm/mach-rockchip/pm.c
-+++ b/arch/arm/mach-rockchip/pm.c
-@@ -123,9 +123,6 @@ static void rk3288_slp_mode_set(int level)
- 	regmap_write(sgrf_regmap, RK3288_SGRF_FAST_BOOT_ADDR,
- 		     rk3288_bootram_phy);
- 
--	regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
--		     PMU_ARMINT_WAKEUP_EN);
--
- 	mode_set = BIT(PMU_GLOBAL_INT_DISABLE) | BIT(PMU_L2FLUSH_EN) |
- 		   BIT(PMU_SREF0_ENTER_EN) | BIT(PMU_SREF1_ENTER_EN) |
- 		   BIT(PMU_DDR0_GATING_EN) | BIT(PMU_DDR1_GATING_EN) |
-@@ -146,6 +143,9 @@ static void rk3288_slp_mode_set(int level)
- 		mode_set1 |= BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
- 			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
- 
-+		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-+			     PMU_ARMINT_WAKEUP_EN);
-+
- 		/* 30ms on a 32kHz clock for osc and pmic stabilization */
- 		regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, 32 * 30);
- 		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 32 * 30);
-@@ -157,6 +157,9 @@ static void rk3288_slp_mode_set(int level)
- 		 */
- 		mode_set |= BIT(PMU_CLK_CORE_SRC_GATE_EN);
- 
-+		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-+			     PMU_ARMINT_WAKEUP_EN | PMU_GPIOINT_WAKEUP_EN);
-+
- 		/* 30ms on a 24MHz clock for osc and pmic stabilization */
- 		regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, 24000 * 30);
- 		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 24000 * 30);
-diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-index 8a55ee2..b5af26f 100644
---- a/arch/arm/mach-rockchip/pm.h
-+++ b/arch/arm/mach-rockchip/pm.h
-@@ -61,6 +61,7 @@ static inline void rockchip_suspend_init(void)
- 
- /* PMU_WAKEUP_CFG1 bits */
- #define PMU_ARMINT_WAKEUP_EN		BIT(0)
-+#define PMU_GPIOINT_WAKEUP_EN		BIT(3)
- 
- enum rk3288_pwr_mode_con {
- 	PMU_PWR_MODE_EN = 0,
--- 
-2.1.4
+Applied, thanks.
+
+> diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Docume=
+ntation/devicetree/bindings/mfd/rk808.txt
+> index 9e6e259..4ca6aab 100644
+> --- a/Documentation/devicetree/bindings/mfd/rk808.txt
+> +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
+> @@ -24,6 +24,10 @@ Optional properties:
+>  - vcc10-supply: The input supply for LDO_REG6
+>  - vcc11-supply: The input supply for LDO_REG8
+>  - vcc12-supply: The input supply for SWITCH_REG2
+> +- dvs-gpios:  buck1/2 can be controlled by gpio dvs, this is GPIO sp=
+ecifiers
+> +  for 2 host gpio's used for dvs. The format of the gpio specifier d=
+epends in
+> +  the gpio controller. If DVS GPIOs aren't present, voltage changes =
+will happen
+> +  very quickly with no slow ramp time.
+> =20
+>  Regulators: All the regulators of RK808 to be instantiated shall be
+>  listed in a child node named 'regulators'. Each regulator is represe=
+nted
+> @@ -55,7 +59,9 @@ Example:
+>  		interrupt-parent =3D <&gpio0>;
+>  		interrupts =3D <4 IRQ_TYPE_LEVEL_LOW>;
+>  		pinctrl-names =3D "default";
+> -		pinctrl-0 =3D <&pmic_int>;
+> +		pinctrl-0 =3D <&pmic_int &dvs_1 &dvs_2>;
+> +		dvs-gpios =3D <&gpio7 11 GPIO_ACTIVE_HIGH>,
+> +			    <&gpio7 15 GPIO_ACTIVE_HIGH>;
+>  		reg =3D <0x1b>;
+>  		rockchip,system-power-controller;
+>  		wakeup-source;
+
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
