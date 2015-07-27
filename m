@@ -1,82 +1,41 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 00/10] pwm: add support for atomic update
-Date: Sat, 25 Jul 2015 08:36:57 +0200
-Message-ID: <20150725083657.6111ff59@bbrezillon>
-References: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH v4 0/6] drm/rockchip: fixes and new features
+Date: Mon, 27 Jul 2015 10:05:56 +0800
+Message-ID: <1437962762-19157-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Doug Anderson <dianders@google.com>, Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-Should I resend a new version rebased on Mark's pwm topic branch or
-would you like to review this one first ?
-
-Best Regards,
-
-Boris
-
-On Mon, 20 Jul 2015 17:31:57 +0200
-Boris Brezillon <boris.brezillon@free-electrons.com> wrote:
-
-> Hello Thierry,
->=20
-> This series adds support for atomic PWM update, or IOW, the capabilit=
-y
-> to update all the parameters of a PWM device (enabled/disabled, perio=
-d,
-> duty and polarity) in one go.
->=20
-> Best Regards,
->=20
-> Boris
->=20
-> Changes since v1:
-> - dropped applied patches
-> - squashed Heiko's fixes into the rockchip driver changes
-> - made a few cosmetic changes
-> - added kerneldoc comments
-> - added Heiko's patch to display more information in debugfs
-> - dropped pwm-regulator patches (should be submitted separately)
->=20
-> Boris Brezillon (9):
->   pwm: introduce default period and polarity concepts
->   pwm: define a new pwm_state struct
->   pwm: move the enabled/disabled info to pwm_state struct
->   backlight: pwm_bl: remove useless call to pwm_set_period
->   pwm: declare a default PWM state
->   pwm: add the PWM initial state retrieval infra
->   pwm: add the core infrastructure to allow atomic update
->   pwm: rockchip: add initial state retrieval
->   pwm: rockchip: add support for atomic update
->=20
-> Heiko St=C3=BCbner (1):
->   pwm: add information about polarity, duty cycle and period to debug=
-fs
->=20
->  drivers/leds/leds-pwm.c              |   2 +-
->  drivers/pwm/core.c                   | 169 +++++++++++++++++++++++++=
-++++++----
->  drivers/pwm/pwm-pxa.c                |   2 +-
->  drivers/pwm/pwm-rockchip.c           | 119 +++++++++++++++++++-----
->  drivers/pwm/pwm-sun4i.c              |   3 +-
->  drivers/regulator/pwm-regulator.c    |   2 +-
->  drivers/video/backlight/lm3630a_bl.c |   4 +-
->  drivers/video/backlight/pwm_bl.c     |  10 ++-
->  drivers/video/fbdev/ssd1307fb.c      |   2 +-
->  include/linux/pwm.h                  |  86 +++++++++++++++---
->  10 files changed, 336 insertions(+), 63 deletions(-)
->=20
-
-
-
---=20
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+VGhpcyBzZXJpZXMgcGF0Y2hlcyBhcmUgdXNlZCBmb3IgeXV2IGltYWdlIG92ZXJsYXkgZGlzcGxh
+eS4KClJvY2tjaGlwIHZvcCBzdXBwb3J0IE5WMTEsIE5WMTYsIE5WMjQgeXV2IGZvcm1hdCwKYW5k
+IGNhbiBzY2FsZSB0aGUgaW1hZ2Ugc2NhbGUgMS84IHRvIDguCgpDaGFuZ2VzIGluIHY0OgotIHJl
+YmFzZSB0byB0b3Agb2YgZHJtLW5leHQsIGZpeCBjb25mbGljdAotIHRpbnkgZml4IG9uIHBsYW5l
+IHNjYWxlLgoKQ2hhbmdlcyBpbiB2MzoKLSBtYWtlIGNvZGUgbW9yZSByZWFkYWJsZQotIGZpeCBz
+b21lIGJ1Z3MKCkNoYW5nZXMgaW4gdjI6Ci0gVXYgYnVmZmVyIG5vdCBzdXBwb3J0IG9kZCBvZmZz
+ZXQsIGFsaWduIGl0LgotIEZpeCBlcnJvciBkaXNwbGF5IHdoZW4gbW92ZSB5dXYgaW1hZ2UuIAot
+IEZpeCBzY2FsZSBkZXN0IGluZm8uIApNYXJrIFlhbyAoNik6CiAgZHJtL3JvY2tjaGlwOiB2b3A6
+IEZpeCB2aXJ0dWFsIHN0cmlkZSBjYWxjdWxhdGlvbgogIGRybS9yb2NrY2hpcDogdm9wOiBGaXgg
+d2luZG93IGRlc3Qgc3RhcnQgcG9pbnQKICBkcm0vcm9ja2NoaXA6IHZvcDogQWRkIHl1diBwbGFu
+ZSBzdXBwb3J0CiAgZHJtL3JvY2tjaGlwOiB2b3A6IERlZmF1bHQgZW5hYmxlIHdpbjIvMyBhcmVh
+MCBiaXQKICBkcm0vcm9ja2NoaXA6IHZvcDogcmVzdG9yZSB2b3AgcmVnaXN0ZXJzIHdoZW4gcmVz
+dW1lCiAgZHJtL3JvY2tjaGlwOiB2b3A6IHN1cHBvcnQgcGxhbmUgc2NhbGUKCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDI2OSArKysrKysrKysrKysrKysr
+KysrKysrKysrKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmgg
+fCAgIDg4ICsrKysrKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAzNDggaW5zZXJ0aW9ucygrKSwgOSBk
+ZWxldGlvbnMoLSkKCi0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
