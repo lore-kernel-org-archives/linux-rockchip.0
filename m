@@ -1,56 +1,88 @@
-From: Michael Trimarchi <michael@amarulasolutions.com>
-Subject: Re: rockchip rk3288 registration
-Date: Tue, 28 Jul 2015 16:00:14 +0200
-Message-ID: <CAOf5uwmPcD5cMUiiCPuP_jqcm1ebmfdmRdB1Mq=igW2X=2o7VQ@mail.gmail.com>
-References: <CAOf5uwnkXjuMhfkos3kMzz1unRWv3mrc5eeB6+roFM5RoGGTgA@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: Add SPDIF transceiver for RK3188
+Date: Tue, 28 Jul 2015 16:20:50 +0200
+Message-ID: <3088613.6ISvoE3M9J@diego>
+References: <1438085011-16577-1-git-send-email-sjoerd.simons@collabora.co.uk> <1438085011-16577-4-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <CAOf5uwnkXjuMhfkos3kMzz1unRWv3mrc5eeB6+roFM5RoGGTgA@mail.gmail.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, jay.xu@rock-chips.com
-Cc: "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1438085011-16577-4-git-send-email-sjoerd.simons@collabora.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all
+Hi,
 
-On Tue, Jul 28, 2015 at 3:34 PM, Michael Trimarchi
-<michael@amarulasolutions.com> wrote:
-> Hi
->
-> I have created a simple sound card to test registration on i2s but I
-> have some problems
-> that after a while in SND_SOC_DAIFMT_CBM_CFM the device stop to register and
-> receive a input/output error. It means that I can not receive anymore
-> from the device
->
-> arecord -c 2 -r 96000 -f S32_LE -D hw:0 > record.pcm
-> Recording WAVE 'stdin' : Signed 32 bit Little Endian, Rate 96000 Hz, Stereo
-> arecord: pcm_read:2031: read error: Input/output error
->
-> The result size is a bit random. I have no problem on playback until
-> now. Any idea?
->
+Am Dienstag, 28. Juli 2015, 14:03:30 schrieb Sjoerd Simons:
+> Add the SPDIF transceiver controller and pin for RK3188
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> ---
+>  arch/arm/boot/dts/rk3188.dtsi | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+> index 0f23aed..43e9bdf 100644
+> --- a/arch/arm/boot/dts/rk3188.dtsi
+> +++ b/arch/arm/boot/dts/rk3188.dtsi
+> @@ -121,6 +121,22 @@
+>  		status = "disabled";
+>  	};
+> 
+> +	spdif: spdif@0x1011e000 {
 
-Is there any available documentation on I2S register settings?
-
-Michael
-
-> Michael
+node names without 0x -> "spdif@1011e000"
 
 
+> +		compatible = "rockchip,rk3188-spdif", "rockchip,rk3066-spdif";
+> +		reg = <0x1011e000 0x2000>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&spdif_tx>;
+> +		dmas = <&dmac1_s 8>;
+> +		dma-names = "tx";
+> +		clock-names = "spdif_hclk", "spdif_clk";
+> +		clocks = <&cru HCLK_SPDIF>, <&cru SCLK_SPDIF>;
+> +		status = "disabled";
+> +		#sound-dai-cells = <0>;
 
--- 
-| Michael Nazzareno Trimarchi                     Amarula Solutions BV |
-| COO  -  Founder                                      Cruquiuskade 47 |
-| +31(0)851119172                                 Amsterdam 1018 AM NL |
-|                  [`as] http://www.amarulasolutions.com               |
+if you're submitting a v2, could you try ordering stuff like this?
+
++		compatible = "rockchip,rk3188-spdif", "rockchip,rk3066-spdif";
++		reg = <0x1011e000 0x2000>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		#sound-dai-cells = <0>;
++		clock-names = "spdif_hclk", "spdif_clk";
++		clocks = <&cru HCLK_SPDIF>, <&cru SCLK_SPDIF>;
++		dmas = <&dmac1_s 8>;
++		dma-names = "tx";
++		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&spdif_tx>;
++		status = "disabled";
+
+The ordering I try to keep is "compatible", "reg", [everything else sorted 
+alphabetically], "status"
+
+> +	};
+> +
+>  	cru: clock-controller@20000000 {
+>  		compatible = "rockchip,rk3188-cru";
+>  		reg = <0x20000000 0x1000>;
+> @@ -462,6 +478,12 @@
+>  						<RK_GPIO1 21 RK_FUNC_1 &pcfg_pull_none>;
+>  			};
+>  		};
+> +
+> +		spdif {
+> +			spdif_tx: spdif-tx {
+> +				rockchip,pins = <RK_GPIO1 14 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
+> +		};
+>  	};
+>  };
