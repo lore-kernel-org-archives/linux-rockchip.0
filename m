@@ -1,93 +1,86 @@
 From: Joachim Eastwood <manabian@gmail.com>
-Subject: [PATCH net-next 00/17] stmmac clean up for 4.3 part2
-Date: Wed, 29 Jul 2015 00:08:47 +0200
-Message-ID: <1438121344-5304-1-git-send-email-manabian@gmail.com>
+Subject: [PATCH net-next 14/17] stmmac: dwmac-rk: use rk_gmac_ops as of match data
+Date: Wed, 29 Jul 2015 00:09:01 +0200
+Message-ID: <1438121344-5304-15-git-send-email-manabian@gmail.com>
+References: <1438121344-5304-1-git-send-email-manabian@gmail.com>
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1438121344-5304-1-git-send-email-manabian@gmail.com>
 Sender: netdev-owner@vger.kernel.org
-To: peppe.cavallaro@st.com, davem@davemloft.net
-Cc: Joachim Eastwood <manabian@gmail.com>, netdev@vger.kernel.org, b.galvani@gmail.com, arnd@arndb.de, roger.chen@rock-chips.com, heiko@sntech.de, wens@csie.org, dinguyen@opensource.altera.com, linux-rockchip@lists.infradead.org, mathieu@codeaurora.org
+To: peppe.cavallaro@st.com, heiko@sntech.de, roger.chen@rock-chips.com, davem@davemloft.net
+Cc: Joachim Eastwood <manabian@gmail.com>, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch set creates proper probe functions in the remaining
-dwmac-* drivers, lets the drivers manage their own of match data
-structure, and cleans up some of the drivers a bit. Note that
-should be no functional change in any of the drivers.
+Remove the setup glue callback and use rk_gmac_ops as OF match
+data so it can used directly when calling rk_gmac_setup.
 
-First patch from Fengguang fixes a Coccinelle that was found after
-the previous patch set when into next.
+Signed-off-by: Joachim Eastwood <manabian@gmail.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 27 ++++----------------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
 
-Probe functions are best placed just above the platform_driver
-struct since it usually needs to call other functions in the
-driver but this requires some code movement in the drivers. To
-keep the conversion itself easier to review the code movement is
-done in separate patches. This creates some extra churn but I
-think it's worth it in this case.
-
-As only a couple of drivers actually needs to use of match data
-this pushed down from stmmac_platform and into the drivers. This
-also makes it possible for drivers to have their own match data
-structure. dwmac-rk benefits most from this.
-
-After each driver has it's own probe function and manages it's
-own match data the setup/free hooks and common match data struct
-are removed.
-
-Sorry for the slightly largish patch set this time around.
-
-
-Since I can only test the core changes on my platform and not the
-specific dwmac-drivers I greatly appreciate if people could test
-this on their respective platforms. I did spend quite a bit of
-time visually checking all these patches, but nothing beats real
-hardware testing. Thanks!
-
-
-Patch set based on net-next can also be picked up from here:
-https://github.com/manabian/linux-lpc.git stmmac_4.3_part2
-
-For those who want to have a look at all the patches for
-v4.3 a branch based on Linus master can be found here:
-https://github.com/manabian/linux-lpc.git stmmac_4.2
-
-
-Previous parts can be found here:
-http://www.spinics.net/lists/netdev/msg328997.html
-http://www.spinics.net/lists/netdev/msg329932.html
-http://www.spinics.net/lists/netdev/msg336097.html
-
-
-Fengguang Wu (1):
-  stmmac: fix ptr_ret.cocci warning
-
-Joachim Eastwood (16):
-  stmmac: dwmac-ipq806x: move ipq806x_gmac_fix_mac_speed function
-  stmmac: dwmac-ipq806x: turn setup callback into a probe function
-  stmmac: dwmac-socfpga: move socfpga_dwmac_probe function
-  stmmac: dwmac-socfpga: turn setup callback into a probe function
-  stmmac: dwmac-sunxi: move sun7i_gmac_setup function
-  stmmac: dwmac-sunxi: turn setup callback into a probe function
-  stmmac: dwmac-sti: turn setup callback into a probe function
-  stmmac: dwmac-rk: create a new probe function
-  stmmac: move stmmac_pltfr_probe into dwmac-generic
-  stmmac: let dwmac-* drivers handle their own match data
-  stmmac: dwmac-sti: use custom of match structure
-  stmmac: dwmac-rk: make rk_gmac_ops structs static const
-  stmmac: dwmac-rk: use rk_gmac_ops as of match data
-  stmmac: remove unused stmmac_of_data struct
-  stmmac: remove setup/free glue callbacks
-  stmmac: dwmac-sti: refactor the init glue callbacks
-
- Documentation/networking/stmmac.txt                | 10 +--
- .../net/ethernet/stmicro/stmmac/dwmac-generic.c    | 42 +++++++++-
- .../net/ethernet/stmicro/stmmac/dwmac-ipq806x.c    | 50 +++++++-----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 73 ++++++++++-------
- .../net/ethernet/stmicro/stmmac/dwmac-socfpga.c    | 78 ++++++++++--------
- drivers/net/ethernet/stmicro/stmmac/dwmac-sti.c    | 83 ++++++++++---------
- drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.c  | 95 ++++++++++++----------
- .../net/ethernet/stmicro/stmmac/stmmac_platform.c  | 80 +-----------------
- .../net/ethernet/stmicro/stmmac/stmmac_platform.h  |  1 -
- include/linux/stmmac.h                             | 20 -----
- 10 files changed, 260 insertions(+), 272 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 5d8042ea8370..11baa4b19779 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -529,16 +529,6 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+ 	return bsp_priv;
+ }
+ 
+-static void *rk3288_gmac_setup(struct platform_device *pdev)
+-{
+-	return rk_gmac_setup(pdev, &rk3288_ops);
+-}
+-
+-static void *rk3368_gmac_setup(struct platform_device *pdev)
+-{
+-	return rk_gmac_setup(pdev, &rk3368_ops);
+-}
+-
+ static int rk_gmac_init(struct platform_device *pdev, void *priv)
+ {
+ 	struct rk_priv_data *bsp_priv = priv;
+@@ -580,7 +570,7 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ {
+ 	struct plat_stmmacenet_data *plat_dat;
+ 	struct stmmac_resources stmmac_res;
+-	const struct stmmac_of_data *data;
++	const struct rk_gmac_ops *data;
+ 	int ret;
+ 
+ 	data = of_device_get_match_data(&pdev->dev);
+@@ -598,12 +588,11 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ 		return PTR_ERR(plat_dat);
+ 
+ 	plat_dat->has_gmac = true;
+-	plat_dat->setup = data->setup;
+ 	plat_dat->init = rk_gmac_init;
+ 	plat_dat->exit = rk_gmac_exit;
+ 	plat_dat->fix_mac_speed = rk_fix_speed;
+ 
+-	plat_dat->bsp_priv = plat_dat->setup(pdev);
++	plat_dat->bsp_priv = rk_gmac_setup(pdev, data);
+ 	if (IS_ERR(plat_dat->bsp_priv))
+ 		return PTR_ERR(plat_dat->bsp_priv);
+ 
+@@ -614,17 +603,9 @@ static int rk_gmac_probe(struct platform_device *pdev)
+ 	return stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
+ }
+ 
+-static const struct stmmac_of_data rk3288_gmac_data = {
+-	.setup = rk3288_gmac_setup,
+-};
+-
+-static const struct stmmac_of_data rk3368_gmac_data = {
+-	.setup = rk3368_gmac_setup,
+-};
+-
+ static const struct of_device_id rk_gmac_dwmac_match[] = {
+-	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_gmac_data},
+-	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_gmac_data},
++	{ .compatible = "rockchip,rk3288-gmac", .data = &rk3288_ops },
++	{ .compatible = "rockchip,rk3368-gmac", .data = &rk3368_ops },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, rk_gmac_dwmac_match);
 -- 
 1.8.0
