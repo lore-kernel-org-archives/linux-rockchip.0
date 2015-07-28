@@ -1,69 +1,35 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: Fix SPIF special clock definition
-Date: Tue, 28 Jul 2015 12:08:54 +0200
-Message-ID: <2030894.j0VJujBTor@diego>
-References: <1438077162-27623-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1438077162-27623-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH 0/4] Add SPDIF support for rockchip
+Date: Tue, 28 Jul 2015 14:03:27 +0200
+Message-ID: <1438085011-16577-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 28. Juli 2015, 11:52:42 schrieb Sjoerd Simons:
-> Neither spdif_src nor spdif_pll exists, judging by the vendor kernel in
-> both cases spdif_pre was meant. This brings the naming in line and
-> hierachy in line with that of sclk_i2s0.
-> 
-> Also allow sclk_spdif and spdif_frac to change their parents rate as
-> that the upstream dividers are purely there to feed sclk_spdif
-> 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+This patchset adds support for the Rockchip SPDIF transceiver as present on
+RK3066, RK3188 and RK3288 boards and enables it on a Radxa rock pro.
 
-I guess there was one rename to many back in the time :-) .
-Verified this with the CRU documentation, so
+Tested on a Radxa Rock Pro board.
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sjoerd Simons (4):
+  ASoC: dt-bindings: add rockchip tranceiver bindings
+  ASoc: rockchip: Add rockchip SPDIF transceiver driver
+  ARM: dts: rockchip: Add SPDIF transceiver for RK3188
+  ARM: dts: rockchip: Add SPDIF optical out on Radxa Rock
 
-> ---
->  drivers/clk/rockchip/clk-rk3188.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3188.c
-> b/drivers/clk/rockchip/clk-rk3188.c index 0abf22d..ed02bbc 100644
-> --- a/drivers/clk/rockchip/clk-rk3188.c
-> +++ b/drivers/clk/rockchip/clk-rk3188.c
-> @@ -202,7 +202,7 @@ PNAME(mux_pll_src_cpll_gpll_p)	= { "cpll", "gpll" };
->  PNAME(mux_aclk_cpu_p)		= { "apll", "gpll" };
->  PNAME(mux_sclk_cif0_p)		= { "cif0_pre", "xin24m" };
->  PNAME(mux_sclk_i2s0_p)		= { "i2s0_pre", "i2s0_frac", "xin12m" };
-> -PNAME(mux_sclk_spdif_p)		= { "spdif_src", "spdif_frac", "xin12m" };
-> +PNAME(mux_sclk_spdif_p)		= { "spdif_pre", "spdif_frac", "xin12m" };
->  PNAME(mux_sclk_uart0_p)		= { "uart0_pre", "uart0_frac", "xin24m" };
->  PNAME(mux_sclk_uart1_p)		= { "uart1_pre", "uart1_frac", "xin24m" };
->  PNAME(mux_sclk_uart2_p)		= { "uart2_pre", "uart2_frac", "xin24m" };
-> @@ -350,10 +350,10 @@ static struct rockchip_clk_branch
-> common_clk_branches[] __initdata = { COMPOSITE_NOMUX(0, "spdif_pre",
-> "i2s_src", 0,
->  			RK2928_CLKSEL_CON(5), 0, 7, DFLAGS,
->  			RK2928_CLKGATE_CON(0), 13, GFLAGS),
-> -	COMPOSITE_FRAC(0, "spdif_frac", "spdif_pll", 0,
-> +	COMPOSITE_FRAC(0, "spdif_frac", "spdif_pre", CLK_SET_RATE_PARENT,
->  			RK2928_CLKSEL_CON(9), 0,
->  			RK2928_CLKGATE_CON(0), 14, GFLAGS),
-> -	MUX(SCLK_SPDIF, "sclk_spdif", mux_sclk_spdif_p, 0,
-> +	MUX(SCLK_SPDIF, "sclk_spdif", mux_sclk_spdif_p, CLK_SET_RATE_PARENT,
->  			RK2928_CLKSEL_CON(5), 8, 2, MFLAGS),
-> 
->  	/*
+ .../devicetree/bindings/sound/rockchip-spdif.txt   |  41 +++
+ arch/arm/boot/dts/rk3188-radxarock.dts             |  19 ++
+ arch/arm/boot/dts/rk3188.dtsi                      |  22 ++
+ sound/soc/rockchip/Kconfig                         |   9 +
+ sound/soc/rockchip/Makefile                        |   3 +
+ sound/soc/rockchip/rockchip_spdif.c                | 375 +++++++++++++++++++++
+ sound/soc/rockchip/rockchip_spdif.h                |  63 ++++
+ 7 files changed, 532 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+ create mode 100644 sound/soc/rockchip/rockchip_spdif.c
+ create mode 100644 sound/soc/rockchip/rockchip_spdif.h
+
+-- 
+2.4.6
