@@ -1,127 +1,34 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2] mmc: dw_mmc: Add external dma interface support
-Date: Mon, 3 Aug 2015 21:23:15 +0800
-Message-ID: <55BF6B43.1050105@rock-chips.com>
-References: <1438572439-654-1-git-send-email-shawn.lin@rock-chips.com>
- <2599339.pPeKCdCNNQ@diego>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v1 1/2] clk: rockchip: add pclk_pd_pmu to the list of
+ rk3288 critical clocks
+Date: Mon, 3 Aug 2015 12:57:26 -0700
+Message-ID: <CAD=FV=VpYF7+Qkw3qiuQyU4n9k7aigf_on+t-kJcBQ_kHE7Nhg@mail.gmail.com>
+References: <1438574211-4887-1-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <2599339.pPeKCdCNNQ@diego>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, addy ke <addy.ke@rock-chips.com>, Weijun Yang <Weijun.Yang@csr.com>, Kevin Hao <haokexin@gmail.com>, Scott Branden <sbranden@broadcom.com>, Andrew Bresticker <abrestic@chromium.org>, Vincent Yang <vincent.yang.fujitsu@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, dianders@chromium.org, linux-kernel@vger.kernel.org, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, linux-mmc@vger.kernel.org, Jean Delvare <jdelvare@suse.de>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1438574211-4887-1-git-send-email-hl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: huang lin <hl@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015/8/3 19:17, Heiko St=FCbner wrote:
-> Hi Shawn,
->
-> Am Montag, 3. August 2015, 11:27:19 schrieb Shawn Lin:
->> DesignWare MMC Controller can support two types of DMA
->> mode: external dma and internal dma. We get a RK312x platform
->> integrated dw_mmc and ARM pl330 dma controller. This patch add
->> edmac ops to suuport these platforms. I've tested it on RK312x
->> platform with edmac mode and RK3288 platform with idmac mode.
->>
->> Patch is based on next of git://git.linaro.org/people/ulf.hansson/mm=
-c
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>
->> ---
->>
->> Changes in v2:
->> - Fix typo of dev_info msg
->> - remove unused dmach from declaration of dw_mci_dma_slave
->>
->>   drivers/mmc/host/Kconfig        |  24 +++++-
->>   drivers/mmc/host/dw_mmc-pltfm.c |   4 +
->>   drivers/mmc/host/dw_mmc.c       | 169
->> ++++++++++++++++++++++++++++++++++++++-- include/linux/mmc/dw_mmc.h =
-     |
->> 18 ++++-
->>   4 files changed, 205 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
->> index 6a0f9c7..2a66b08 100644
->> --- a/drivers/mmc/host/Kconfig
->> +++ b/drivers/mmc/host/Kconfig
->> @@ -607,16 +607,36 @@ config MMC_DW
->>   	help
->>   	  This selects support for the Synopsys DesignWare Mobile Storage=
- IP
->>   	  block, this provides host support for SD and MMC interfaces, in=
- both
->> -	  PIO and external DMA modes.
->> +	  PIO, internal DMA mode and external DMA modes.
->> +
->> +choice
->> +	prompt "DesignWare MMC transfer mode"
->> +	depends on MMC_DW
->> +
->> +config MMC_DW_PIO
->> +	bool "Use PIO transfers only"
->> +	help
->> +	  Use PIO to transfer data between memory and the hardware.
->> +	  PIO is slower than DMA as it requires CPU instructions to
->> +	  move the data. This has been the traditional default for
->> +	  the DW MCI driver.
->>
->>   config MMC_DW_IDMAC
->>   	bool "Internal DMAC interface"
->> -	depends on MMC_DW
->>   	help
->>   	  This selects support for the internal DMAC block within the Syn=
-opsys
->>   	  Designware Mobile Storage IP block. This disables the external =
-DMA
->>   	  interface.
->>
->> +config MMC_DW_EDMAC
->> +	bool "External DMAC interface"
->> +	help
->> +	  This selects support for the external DMAC block outside the Syn=
-opsys
->> +	  Designware Mobile Storage IP block. This disables the internal D=
-MA
->> +	  interface.
->> +
->> +endchoice
->> +
-> more a drive-by comment:
->
-> This should definitly not be a "choice". We're in multiplatform times=
-, where
-> you can have support for a multitude of socs using dw_mmc in one kern=
-el. And
-> one might want to use pio, one might want to use the internal dma whi=
-le
-> another one might want to use the external dma.
->
-> So which dma to use should definitly be decided at runtime and not at=
- compile-
-> time.
+hl,
 
-Thanks for comment, Heiko.
-Definitly it should be decided at runtime. So more DT-bindings' patches=
-=20
-should be
-ACKed as well if we want to remove all the compile-time transfer mode.
-
-Hi, Jaehoon Chung
-Any suggestion?
-
+On Sun, Aug 2, 2015 at 8:56 PM, huang lin <hl@rock-chips.com> wrote:
+> pclk_pd_pmu needs to keep running and with the upcoming gpio clock
+> handling this is not always the case anymore. So add it to the list
+> of critical clocks for now.
 >
-> Heiko
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 >
->
->
->
+> Signed-off-by: huang lin <hl@rock-chips.com>
+> ---
+>  drivers/clk/rockchip/clk-rk3288.c | 1 +
+>  1 file changed, 1 insertion(+)
 
+Probably should get rid of the blank line between the two SoBs.
+...and probably should fix your name to be capitalized?  ...but I
+assume the maintainer can fix that when landing?  Otherwise:
 
---=20
-Shawn Lin
-
-
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
