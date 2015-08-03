@@ -1,34 +1,62 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v1 1/2] clk: rockchip: add pclk_pd_pmu to the list of
- rk3288 critical clocks
-Date: Mon, 3 Aug 2015 12:57:26 -0700
-Message-ID: <CAD=FV=VpYF7+Qkw3qiuQyU4n9k7aigf_on+t-kJcBQ_kHE7Nhg@mail.gmail.com>
+Subject: Re: [PATCH v1 2/2] pinctrl: rockchip: only enable gpio clock when it setting
+Date: Mon, 3 Aug 2015 13:21:27 -0700
+Message-ID: <CAD=FV=WCGtBgzy6=dWqZ5ZKLhxUsxLom56UfWwXNp+ospR4JRA@mail.gmail.com>
 References: <1438574211-4887-1-git-send-email-hl@rock-chips.com>
+	<1438574211-4887-2-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438574211-4887-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1438574211-4887-2-git-send-email-hl@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
 To: huang lin <hl@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-hl,
+hl
 
 On Sun, Aug 2, 2015 at 8:56 PM, huang lin <hl@rock-chips.com> wrote:
-> pclk_pd_pmu needs to keep running and with the upcoming gpio clock
-> handling this is not always the case anymore. So add it to the list
-> of critical clocks for now.
+> gpio can keep state even the clock disable, for save power
+> consumption, only enable gpio clock when it setting
 >
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: huang lin <hl@rock-chips.com>
 >
 > Signed-off-by: huang lin <hl@rock-chips.com>
+
+Your "Signed-off-by"s are a little wonky here...  Can you fix up?
+
 > ---
->  drivers/clk/rockchip/clk-rk3288.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/pinctrl/pinctrl-rockchip.c | 60 ++++++++++++++++++++++++++++++++++----
+>  1 file changed, 54 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index cc2843a..445829f 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -945,17 +945,20 @@ static int _rockchip_pmx_gpio_set_direction(struct gpio_chip *chip,
+>         if (ret < 0)
+>                 return ret;
+>
+> +       clk_enable(bank->clk);
+>         spin_lock_irqsave(&bank->slock, flags);
+>
+> -       data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
+> +       data = readl(bank->reg_base + GPIO_SWPORT_DDR);
 
-Probably should get rid of the blank line between the two SoBs.
-...and probably should fix your name to be capitalized?  ...but I
-assume the maintainer can fix that when landing?  Otherwise:
+I am a little curious why you need to change the readl_relaxed() to a
+read().  Are you trying to ensure that the clock was on before the
+read happened?  If so, I think this won't help.  I see:
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+#define readl(c) ({ u32 __v = readl_relaxed(c); __iormb(); __v; })
+
+...so that means that the iormb() is _after_ the readl.
+
+...but I would believe that the clk_enable() call itself would be
+guaranteeing that the clock was enabled in time.  ...and if not then
+grabbing the spinlock is another barrier, right?  I think you do this
+in a few places...
+
+Other than that this patch looks good to me....
+
+-Doug
