@@ -1,76 +1,123 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/2] pinctrl: rockchip: only enable gpio clock when it setting
-Date: Mon, 03 Aug 2015 22:50:33 +0200
-Message-ID: <2472708.6oReK8jXV2@diego>
-References: <1438574211-4887-1-git-send-email-hl@rock-chips.com> <1438574211-4887-2-git-send-email-hl@rock-chips.com> <CAD=FV=WCGtBgzy6=dWqZ5ZKLhxUsxLom56UfWwXNp+ospR4JRA@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: reserve unusable memory region on
+ rk3288
+Date: Tue, 04 Aug 2015 00:38:03 +0200
+Message-ID: <10674303.GIsaEKUXGC@diego>
+References: <15143985.aGzb1oeyb9@diego>
+ <CAD=FV=W2LSQh4e9+=ooTf34VzM_yPZn497DqSVEdb1kehZbqQQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WCGtBgzy6=dWqZ5ZKLhxUsxLom56UfWwXNp+ospR4JRA@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: huang lin <hl@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linus Walleij <linus.walleij@linaro.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=W2LSQh4e9+=ooTf34VzM_yPZn497DqSVEdb1kehZbqQQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 3. August 2015, 13:21:27 schrieb Doug Anderson:
-> hl
-> 
-> On Sun, Aug 2, 2015 at 8:56 PM, huang lin <hl@rock-chips.com> wrote:
-> > gpio can keep state even the clock disable, for save power
-> > consumption, only enable gpio clock when it setting
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: huang lin <hl@rock-chips.com>
-> > 
-> > Signed-off-by: huang lin <hl@rock-chips.com>
-> 
-> Your "Signed-off-by"s are a little wonky here...  Can you fix up?
-> 
+Am Samstag, 1. August 2015, 14:32:32 schrieb Doug Anderson:
+> Heiko
+> =
+
+> On Sat, Aug 1, 2015 at 5:35 AM, Heiko St=FCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > The rk3288 has problems accessing the memory region 0xfe000000~0xff0000=
+00.
+> > So block off the affected region to prevent its use.
+> > =
+
+> > Tested on 4GB Veyron Minnie and 2GB Veyron Jerry devices.
+> > =
+
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > > ---
-> > 
-> >  drivers/pinctrl/pinctrl-rockchip.c | 60
-> >  ++++++++++++++++++++++++++++++++++---- 1 file changed, 54 insertions(+),
-> >  6 deletions(-)
-> > 
-> > diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> > b/drivers/pinctrl/pinctrl-rockchip.c index cc2843a..445829f 100644
-> > --- a/drivers/pinctrl/pinctrl-rockchip.c
-> > +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> > @@ -945,17 +945,20 @@ static int _rockchip_pmx_gpio_set_direction(struct
-> > gpio_chip *chip,> 
-> >         if (ret < 0)
-> >         
-> >                 return ret;
-> > 
-> > +       clk_enable(bank->clk);
-> > 
-> >         spin_lock_irqsave(&bank->slock, flags);
-> > 
-> > -       data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> > +       data = readl(bank->reg_base + GPIO_SWPORT_DDR);
-> 
-> I am a little curious why you need to change the readl_relaxed() to a
-> read().  Are you trying to ensure that the clock was on before the
-> read happened?  If so, I think this won't help.  I see:
-> 
-> #define readl(c) ({ u32 __v = readl_relaxed(c); __iormb(); __v; })
-> 
-> ...so that means that the iormb() is _after_ the readl.
-> 
-> ...but I would believe that the clk_enable() call itself would be
-> guaranteeing that the clock was enabled in time.  ...and if not then
-> grabbing the spinlock is another barrier, right?  I think you do this
-> in a few places...
-> 
-> Other than that this patch looks good to me....
+> > =
 
-I think that was my fault ... looking at stuff before figuring out that we're 
-actually loosing the pd_pmu clock, and then forgetting to take this out again, 
-before getting it to hl.
+> >  arch/arm/boot/dts/rk3288.dtsi | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> > =
 
-In retospect it also seems silly to have changed them in the first place ;-) .
-So yes, they should be changed back to their original.
+> > diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.d=
+tsi
+> > index 2db91c9..19766af 100644
+> > --- a/arch/arm/boot/dts/rk3288.dtsi
+> > +++ b/arch/arm/boot/dts/rk3288.dtsi
+> > @@ -169,6 +169,16 @@
+> > =
+
+> >                 };
+> >         =
+
+> >         };
+> > =
+
+> > +       reserved-memory {
+> > +               #address-cells =3D <1>;
+> > +               #size-cells =3D <1>;
+> > +               ranges;
+> > +
+> > +               unusable@fe000000 {
+> > +                       reg =3D <0xfe000000 0x1000000>;
+> > +               };
+> > +       };
+> > +
+> =
+
+> I don't object to just reserving this memory, but I do object a little
+> to this implementation.
+> =
+
+> It's 16 MB we're talking about here, which is pretty small compared to
+> the 4G of memory that you must have when this is a problem.  However,
+> at some point we might want to try to actually use this 16 MB.
+> =
+
+> The memory is actually _not_ unusable, it's only unusable for DMA.  In
+> theory the kernel is supposed to have a way to mark memory as unusable
+> for DMA which would then allow us to use this memory for non-DMA
+> purposes...
+> =
+
+> Nobody ever managed to figure this out in the Chrome OS tree (it was
+> 16 megs so we just reserved it and never got back around to it), but
+> when folks were looking at it they looked at things like ZONE_DMA,
+> dma_set_mask_and_coherent, etc.
+> =
+
+> In any case, to leave the door open for people to fix this in the
+> future, it seems prudent to fix this in code like
+> <https://chromium-review.googlesource.com/#/c/245107/> rather than to
+> put the limit in DTS.
+
+hmm, a counter argument in favor of even having the stopgap section disabli=
+ng =
+
+the memory in the dts might be, that as Jeffy said all current Rockchip soc=
+s =
+
+are affected, even the rk3368.
+
+So a future real solution would be declaring the usable dma area in devicet=
+ree =
+
+anyway and not in kernel code. So in my mind devices can disable the memory =
+
+for now in dt and later (once something usable is defined) can switch the s=
+oc-
+level devicetree to this one, describing the actually usable dma area.
+
+Old devicetrees would keep working anyway and could switch at their =
+
+convenience. So I don't see a real transistion problem here (aka no API =
+
+breakage or so)?
 
 
 Heiko
