@@ -1,64 +1,40 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: reserve unusable memory region on
- rk3288
-Date: Mon, 3 Aug 2015 15:53:46 -0700
-Message-ID: <CAD=FV=V3=2azZJzNtfqBa-RZ_s+p5rbGFbPveRtuYudd_TJk6Q@mail.gmail.com>
-References: <15143985.aGzb1oeyb9@diego>
- <CAD=FV=W2LSQh4e9+=ooTf34VzM_yPZn497DqSVEdb1kehZbqQQ@mail.gmail.com>
- <10674303.GIsaEKUXGC@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <10674303.GIsaEKUXGC@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH v2 1/2] clk: rockchip: add pclk_pd_pmu to the list of rk3288 critical clocks
+Date: Tue,  4 Aug 2015 09:03:41 +0800
+Message-ID: <1438650222-14357-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org
+Cc: linux-rockchip@lists.infradead.org, huang lin <hl@rock-chips.com>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiBNb24sIEF1ZyAzLCAyMDE1IGF0IDM6MzggUE0sIEhlaWtvIFN0w7xibmVyIDxoZWlr
-b0BzbnRlY2guZGU+IHdyb3RlOgo+PiBJIGRvbid0IG9iamVjdCB0byBqdXN0IHJlc2VydmluZyB0
-aGlzIG1lbW9yeSwgYnV0IEkgZG8gb2JqZWN0IGEgbGl0dGxlCj4+IHRvIHRoaXMgaW1wbGVtZW50
-YXRpb24uCj4+Cj4+IEl0J3MgMTYgTUIgd2UncmUgdGFsa2luZyBhYm91dCBoZXJlLCB3aGljaCBp
-cyBwcmV0dHkgc21hbGwgY29tcGFyZWQgdG8KPj4gdGhlIDRHIG9mIG1lbW9yeSB0aGF0IHlvdSBt
-dXN0IGhhdmUgd2hlbiB0aGlzIGlzIGEgcHJvYmxlbS4gIEhvd2V2ZXIsCj4+IGF0IHNvbWUgcG9p
-bnQgd2UgbWlnaHQgd2FudCB0byB0cnkgdG8gYWN0dWFsbHkgdXNlIHRoaXMgMTYgTUIuCj4+Cj4+
-IFRoZSBtZW1vcnkgaXMgYWN0dWFsbHkgX25vdF8gdW51c2FibGUsIGl0J3Mgb25seSB1bnVzYWJs
-ZSBmb3IgRE1BLiAgSW4KPj4gdGhlb3J5IHRoZSBrZXJuZWwgaXMgc3VwcG9zZWQgdG8gaGF2ZSBh
-IHdheSB0byBtYXJrIG1lbW9yeSBhcyB1bnVzYWJsZQo+PiBmb3IgRE1BIHdoaWNoIHdvdWxkIHRo
-ZW4gYWxsb3cgdXMgdG8gdXNlIHRoaXMgbWVtb3J5IGZvciBub24tRE1BCj4+IHB1cnBvc2VzLi4u
-Cj4+Cj4+IE5vYm9keSBldmVyIG1hbmFnZWQgdG8gZmlndXJlIHRoaXMgb3V0IGluIHRoZSBDaHJv
-bWUgT1MgdHJlZSAoaXQgd2FzCj4+IDE2IG1lZ3Mgc28gd2UganVzdCByZXNlcnZlZCBpdCBhbmQg
-bmV2ZXIgZ290IGJhY2sgYXJvdW5kIHRvIGl0KSwgYnV0Cj4+IHdoZW4gZm9sa3Mgd2VyZSBsb29r
-aW5nIGF0IGl0IHRoZXkgbG9va2VkIGF0IHRoaW5ncyBsaWtlIFpPTkVfRE1BLAo+PiBkbWFfc2V0
-X21hc2tfYW5kX2NvaGVyZW50LCBldGMuCj4+Cj4+IEluIGFueSBjYXNlLCB0byBsZWF2ZSB0aGUg
-ZG9vciBvcGVuIGZvciBwZW9wbGUgdG8gZml4IHRoaXMgaW4gdGhlCj4+IGZ1dHVyZSwgaXQgc2Vl
-bXMgcHJ1ZGVudCB0byBmaXggdGhpcyBpbiBjb2RlIGxpa2UKPj4gPGh0dHBzOi8vY2hyb21pdW0t
-cmV2aWV3Lmdvb2dsZXNvdXJjZS5jb20vIy9jLzI0NTEwNy8+IHJhdGhlciB0aGFuIHRvCj4+IHB1
-dCB0aGUgbGltaXQgaW4gRFRTLgo+Cj4gaG1tLCBhIGNvdW50ZXIgYXJndW1lbnQgaW4gZmF2b3Ig
-b2YgZXZlbiBoYXZpbmcgdGhlIHN0b3BnYXAgc2VjdGlvbiBkaXNhYmxpbmcKPiB0aGUgbWVtb3J5
-IGluIHRoZSBkdHMgbWlnaHQgYmUsIHRoYXQgYXMgSmVmZnkgc2FpZCBhbGwgY3VycmVudCBSb2Nr
-Y2hpcCBzb2NzCj4gYXJlIGFmZmVjdGVkLCBldmVuIHRoZSByazMzNjguCj4KPiBTbyBhIGZ1dHVy
-ZSByZWFsIHNvbHV0aW9uIHdvdWxkIGJlIGRlY2xhcmluZyB0aGUgdXNhYmxlIGRtYSBhcmVhIGlu
-IGRldmljZXRyZWUKPiBhbnl3YXkgYW5kIG5vdCBpbiBrZXJuZWwgY29kZS4gU28gaW4gbXkgbWlu
-ZCBkZXZpY2VzIGNhbiBkaXNhYmxlIHRoZSBtZW1vcnkKPiBmb3Igbm93IGluIGR0IGFuZCBsYXRl
-ciAob25jZSBzb21ldGhpbmcgdXNhYmxlIGlzIGRlZmluZWQpIGNhbiBzd2l0Y2ggdGhlIHNvYy0K
-PiBsZXZlbCBkZXZpY2V0cmVlIHRvIHRoaXMgb25lLCBkZXNjcmliaW5nIHRoZSBhY3R1YWxseSB1
-c2FibGUgZG1hIGFyZWEuCj4KPiBPbGQgZGV2aWNldHJlZXMgd291bGQga2VlcCB3b3JraW5nIGFu
-eXdheSBhbmQgY291bGQgc3dpdGNoIGF0IHRoZWlyCj4gY29udmVuaWVuY2UuIFNvIEkgZG9uJ3Qg
-c2VlIGEgcmVhbCB0cmFuc2lzdGlvbiBwcm9ibGVtIGhlcmUgKGFrYSBubyBBUEkKPiBicmVha2Fn
-ZSBvciBzbyk/CgpPSywgaW50ZXJlc3RpbmcgcG9pbnQuCgpPSywgd2UgY2FuIGRvIHRoaXMgaW4g
-ZGV2aWNlIHRyZWUsIGJ1dCB3ZSBzaG91bGQgcHJvYmFibHkgYXQgbGVhc3QKaGF2ZSBhIGNvbW1l
-bnQgc2F5aW5nIHRoYXQgaXQncyBvbmx5IGEgcHJvYmxlbSBmb3IgRE1BPyAgLi4ub3IgYXQKbGVh
-c3Qgc29tZXRoaW5nIGluIHRoZSBjb21taXQgbWVzc2FnZT8KCi1Eb3VnCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: huang lin <hl@rock-chips.com>
+
+pclk_pd_pmu needs to keep running and with the upcoming gpio clock
+handling this is not always the case anymore. So add it to the list
+of critical clocks for now.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Lin Huang <hl@rock-chips.com>
+---
+Changes in v2:
+Advices by Douglas Anderson
+-fix commit message format error
+
+ drivers/clk/rockchip/clk-rk3288.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 0df5bae..9040878 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -780,6 +780,7 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+ 	"aclk_cpu",
+ 	"aclk_peri",
+ 	"hclk_peri",
++	"pclk_pd_pmu",
+ };
+ 
+ #ifdef CONFIG_PM_SLEEP
+-- 
+1.9.1
