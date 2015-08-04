@@ -1,51 +1,48 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 1/2] clk: rockchip: add pclk_pd_pmu to the list of rk3288 critical clocks
-Date: Tue, 04 Aug 2015 10:54:06 +0200
-Message-ID: <1588782.u2WKR6eVuV@diego>
-References: <1438670487-27598-1-git-send-email-hl@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438670487-27598-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH v2 0/4] Add SPDIF support for rockchip
+Date: Tue,  4 Aug 2015 13:18:15 +0200
+Message-ID: <1438687099-14282-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+This patchset adds support for the Rockchip SPDIF transceiver as present
+on RK3066, RK3188 and RK3288 boards and enables it on a Radxa rock pro.
+Tested on a Radxa Rock Pro board.
 
-Am Dienstag, 4. August 2015, 14:41:26 schrieb Lin Huang:
+Changes in v2:
+- Remove platform: module alias as it was unused
+- Call MODULE_DEVICE_TABLE(of, ) right after the of match table
+- use rk_spdif as a prefix consistenly throughout the driver
+- Check return code of regmap_update and bubble it up
+- Sort the spdif node properties
+- Drop the 0x prefix from the node name
+- Rename the spdif@ node to sound@
 
-I guess this patch then would need a
+Sjoerd Simons (4):
+  ASoC: dt-bindings: add rockchip tranceiver bindings
+  ASoc: rockchip: Add rockchip SPDIF transceiver driver
+  ARM: dts: rockchip: Add SPDIF transceiver for RK3188
+  ARM: dts: rockchip: Add SPDIF optical out on Radxa Rock
 
-From: Heiko Stuebner <heiko@sntech.de>
+ .../devicetree/bindings/sound/rockchip-spdif.txt   |  41 +++
+ arch/arm/boot/dts/rk3188-radxarock.dts             |  19 +
+ arch/arm/boot/dts/rk3188.dtsi                      |  22 ++
+ sound/soc/rockchip/Kconfig                         |   8 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rockchip_spdif.c                | 381 +++++++++++++++++++++
+ sound/soc/rockchip/rockchip_spdif.h                |  63 ++++
+ 7 files changed, 536 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+ create mode 100644 sound/soc/rockchip/rockchip_spdif.c
+ create mode 100644 sound/soc/rockchip/rockchip_spdif.h
 
-at this point to override the author then.
+-- 
+2.5.0
 
-
-> pclk_pd_pmu needs to keep running and with the upcoming gpio clock
-> handling this is not always the case anymore. So add it to the list
-> of critical clocks for now.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
-> ---
-> Changes in v3:
-> -match the author and Signed-off-by name
-> 
->  drivers/clk/rockchip/clk-rk3288.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> b/drivers/clk/rockchip/clk-rk3288.c index 0df5bae..9040878 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -780,6 +780,7 @@ static const char *const rk3288_critical_clocks[]
-> __initconst = { "aclk_cpu",
->  	"aclk_peri",
->  	"hclk_peri",
-> +	"pclk_pd_pmu",
->  };
-> 
->  #ifdef CONFIG_PM_SLEEP
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
