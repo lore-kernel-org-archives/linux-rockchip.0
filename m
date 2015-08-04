@@ -1,52 +1,56 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v3 1/2] clk: rockchip: add pclk_pd_pmu to the list of
- rk3288 critical clocks
-Date: Tue, 04 Aug 2015 12:44:33 -0700
-Message-ID: <55C11621.1000609@codeaurora.org>
-References: <1438670487-27598-1-git-send-email-hl@rock-chips.com> <1588782.u2WKR6eVuV@diego> <55C113CF.2000601@codeaurora.org> <10063547.S7PvqCkF78@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3 1/3] ARM: rockchip: rename osc_switch_to_32k variable
+Date: Wed, 05 Aug 2015 00:50:39 +0200
+Message-ID: <2128609.Kb18M8K28F@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <10063547.S7PvqCkF78@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>
-Cc: Lin Huang <hl@rock-chips.com>, dianders@chromium.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 08/04/2015 12:40 PM, Heiko St=FCbner wrote:
-> Am Dienstag, 4. August 2015, 12:34:39 schrieb Stephen Boyd:
->> On 08/04/2015 01:54 AM, Heiko St=FCbner wrote:
->>> Hi,
->>>
->>> Am Dienstag, 4. August 2015, 14:41:26 schrieb Lin Huang:
->>>
->>> I guess this patch then would need a
->>>
->>> From: Heiko Stuebner <heiko@sntech.de>
->>>
->>> at this point to override the author then.
->> Sounds right. Please resend the patch properly. Also, is there a 2/2=
-? I
->> never got it.
-> Patch 2/2 is a pinctrl change, that actually depends in this patch.
-> Improved clock-handling in the pinctrl driver caused the pd_pmu clock=
- to get
-> deactivated.
->
-> So, perhaps it might be even better to get an Ack from the clock main=
-tainer
-> and merge both patches through the pinctrl tree?
->
->
-> In which case Linus Walleij should also be included as recipient of t=
-his patch
-> when resending.
+The variable name is misleading, as the deep suspend mode always switches
+the main supplying clock to the 32kHz source. Additionally the main
+oscillator remain running in some cases, which this var indicates.
 
-Ok that's fine. We can ack it and you can take it through pinctrl if ne=
-eded.
+So rename it to osc_disable to clarity.
 
---=20
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/mach-rockchip/pm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+index 892bace..2ca1170 100644
+--- a/arch/arm/mach-rockchip/pm.c
++++ b/arch/arm/mach-rockchip/pm.c
+@@ -96,7 +96,7 @@ static bool rk3288_slp_disable_osc(void)
+ static void rk3288_slp_mode_set(int level)
+ {
+ 	u32 mode_set, mode_set1;
+-	bool osc_switch_to_32k = rk3288_slp_disable_osc();
++	bool osc_disable = rk3288_slp_disable_osc();
+ 
+ 	regmap_read(sgrf_regmap, RK3288_SGRF_CPU_CON0, &rk3288_sgrf_cpu_con0);
+ 	regmap_read(sgrf_regmap, RK3288_SGRF_SOC_CON0, &rk3288_sgrf_soc_con0);
+@@ -140,7 +140,7 @@ static void rk3288_slp_mode_set(int level)
+ 			    BIT(PMU_DDR1IO_RET_EN) | BIT(PMU_DDR0IO_RET_EN) |
+ 			    BIT(PMU_ALIVE_USE_LF) | BIT(PMU_PLL_PD_EN);
+ 
+-		if (osc_switch_to_32k)
++		if (osc_disable)
+ 			mode_set |= BIT(PMU_OSC_24M_DIS);
+ 
+ 		mode_set1 |= BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
+-- 
+2.1.4
