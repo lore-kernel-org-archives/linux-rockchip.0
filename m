@@ -1,51 +1,109 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 0/4] Add SPDIF support for rockchip
-Date: Tue, 4 Aug 2015 16:36:49 +0100
-Message-ID: <20150804153649.GP20873@sirena.org.uk>
-References: <1438687099-14282-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Subject: Re: [PATCH v2 0/3] Add the efuse driver on rockchip platform
+Date: Tue, 04 Aug 2015 17:11:26 +0100
+Message-ID: <55C0E42E.3060509@linaro.org>
+References: <1434439665-27781-1-git-send-email-wxt@rock-chips.com> <557FE3EA.4000306@i2se.com> <557FEAB2.1040101@linaro.org> <557FF50C.10809@rock-chips.com> <55800070.5030509@linaro.org> <55826D9D.2060106@i2se.com> <5582816B.5020208@linaro.org> <55BB3F92.9030701@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="l8YbbWKfojDp10WV"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1438687099-14282-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55BB3F92.9030701@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: shunqian.zheng@gmail.com, Stefan Wahren <stefan.wahren@i2se.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@arm.linux.org.uk, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, linus.walleij@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, matthias.bgg@gmail.com, Maxime Ripard <maxime.ripard@free-electrons.com>, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Shunqian,
 
---l8YbbWKfojDp10WV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Sorry for delay in reply, I was on Holidays..
 
-On Tue, Aug 04, 2015 at 01:18:15PM +0200, Sjoerd Simons wrote:
+Thanks for testing.
 
-> Sjoerd Simons (4):
->   ASoC: dt-bindings: add rockchip tranceiver bindings
->   ASoc: rockchip: Add rockchip SPDIF transceiver driver
+On 31/07/15 10:27, Shunqian Zheng wrote:
+>
+> 1. Without the following diff, `hexdump
+> /sys/bus/nvmem/devices/rockchip-efuse0/nvmem` is wrong with "INVALID
+> ARGUMENT":
+>
+> +++ b/drivers/nvmem/core.c
+> @@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp,
+> struct kobject *kobj,
+>          int rc;
+>
+>          /* Stop the user from reading */
+> -       if (pos > nvmem->size)
+> +       if (pos > nvmem->size - 1)
+>                  return 0;
 
-I only appear to have patch 2 (with the misspelt subject), not the
-binding documentation.
+Yes, this should have been something like this
+-       if (pos > nvmem->size)
++       if (pos >= nvmem->size)
+                 return 0;
 
---l8YbbWKfojDp10WV
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+We can send a fix on top of v9 once its merged.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+>
+>          if (pos + count > nvmem->size)
+>
+> RK3288-efuse has  32 x 8bit regs, in dts "reg = <0xffb40000 0x20>;"
+> Here is the message dump from nvmem_device:
+> [    2.158314] nvmem:
+> [    2.158314]           name (null)
+> [    2.158314]           stride 1
+> [    2.158314]           word_size 1
+> [    2.158314]           ncells 0
+> [    2.158314]           id 0
+> [    2.158314]           users 0
+> [    2.158314]           size 32
+> [    2.158314]           read_only 0
+>
+> Do you think there is a leak or I'm messing up ?
+>
+> 2. About the read operation, eFuse data can be read during device
+> probe() and cached, OR,
+>      read from eFuse when needed every time. I prefer the second one but
+> then, the clock of eFuse may be
+>      gated. So before/after reading I have to enable/disable clk like :
+>            devm_clk_get(dev, "hclk_efuse256");
+>      The trouble is I can't find a way to get the "dev" hander in :
+>            static int rockchip_efuse_read(void *context, const void
+> *reg, size_t reg_size, void *val, size_t val_size)
+>      I am appreciated if you can give some advice.
 
-iQEcBAEBCAAGBQJVwNwQAAoJECTWi3JdVIfQfaoH/17SAh7RM8hoWhSK01ctw/Cm
-JZe/RkPgTq//mSC5UzJUh42KHGGKRRhJa12MOfr1oLgPmVtKgJYlGRXET6nlUE6E
-4A7biasbmQMFqAsCzAYFp/IgvwtfGI0nc5aNxn6XPbY7ZTvXwQqdTziXiXnyVbX4
-YL2BINsO8vJxiEo8uVVCgIad3jgA4Pcqh7lkpWxl38fvTYrIuwUkzJjgg9/afFoO
-4LPjQJGfa3kn7dhcJ9qaLJrAAgjxnbZGA3MQQeBmLMYHm+lYl/q/WOGiJomfkvOq
-VoLyzOSVRHc3CO4bcFumBOSPfpzGWSZeHLxkRio73EDJRADrlHllskjSzg+SNwA=
-=GqMl
------END PGP SIGNATURE-----
 
---l8YbbWKfojDp10WV--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+May be you should use regmap_init_mmio_clk() instead of 
+regmap_init_mmio() it will take care of clks.
+
+>      Or, do you think it's reasonable to add hooks before/after read in
+> nvmem/core.c like :
+>            +       before_read(dev, ...);
+>                     rc = regmap_raw_read(nvmem->regmap, pos, buf, count);
+>            +       after_read(dev, ...);
+>
+
+
+> 3. In the /sys/bus/nvmem/devices/rockchip-efuse0/, there are files:
+>           /sys/devices/platform/ffb40000.efuse/rockchip-efuse0 # ls
+>           nvmem      of_node    power      subsystem  uevent
+>      Do you have a plan to add the nvmem consumers to /sys/ in nvmem
+> framework?
+yes, Am waiting for the framework to be merged, I have plans to add this 
+feature.
+
+>      For example,  in dts defined the "cpu_leakage":
+>          efuse: efuse@ffb40000 {
+>                  compatible = "rockchip,rk3x-efuse";
+>                  reg = <0xffb40000 0x20>;
+>                  #address-cells = <1>;
+>                  #size-cells = <1>;
+>                  clocks = <&cru PCLK_EFUSE256>;
+>                  clock-names = "pclk_efuse_256";
+>
+>                  cpu_leakage: cpu_leakage {
+>                          reg = <0x17 0x1>;
+>                  };
+>          };
+>     Then nvmem exposes the "cpu_leakage" file in /sys which can be
+> read/write.
+
+--srini
