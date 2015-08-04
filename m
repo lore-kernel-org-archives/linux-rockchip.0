@@ -1,109 +1,35 @@
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH v2 0/3] Add the efuse driver on rockchip platform
-Date: Tue, 04 Aug 2015 17:11:26 +0100
-Message-ID: <55C0E42E.3060509@linaro.org>
-References: <1434439665-27781-1-git-send-email-wxt@rock-chips.com> <557FE3EA.4000306@i2se.com> <557FEAB2.1040101@linaro.org> <557FF50C.10809@rock-chips.com> <55800070.5030509@linaro.org> <55826D9D.2060106@i2se.com> <5582816B.5020208@linaro.org> <55BB3F92.9030701@gmail.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v3 1/2] clk: rockchip: add pclk_pd_pmu to the list of
+ rk3288 critical clocks
+Date: Tue, 04 Aug 2015 12:34:39 -0700
+Message-ID: <55C113CF.2000601@codeaurora.org>
+References: <1438670487-27598-1-git-send-email-hl@rock-chips.com> <1588782.u2WKR6eVuV@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=ISO-8859-1;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55BB3F92.9030701@gmail.com>
+In-Reply-To: <1588782.u2WKR6eVuV@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: shunqian.zheng@gmail.com, Stefan Wahren <stefan.wahren@i2se.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux@arm.linux.org.uk, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, linus.walleij@linaro.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, matthias.bgg@gmail.com, Maxime Ripard <maxime.ripard@free-electrons.com>, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+To: =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>
+Cc: Lin Huang <hl@rock-chips.com>, dianders@chromium.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shunqian,
-
-Sorry for delay in reply, I was on Holidays..
-
-Thanks for testing.
-
-On 31/07/15 10:27, Shunqian Zheng wrote:
+On 08/04/2015 01:54 AM, Heiko St=FCbner wrote:
+> Hi,
 >
-> 1. Without the following diff, `hexdump
-> /sys/bus/nvmem/devices/rockchip-efuse0/nvmem` is wrong with "INVALID
-> ARGUMENT":
+> Am Dienstag, 4. August 2015, 14:41:26 schrieb Lin Huang:
 >
-> +++ b/drivers/nvmem/core.c
-> @@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp,
-> struct kobject *kobj,
->          int rc;
+> I guess this patch then would need a
 >
->          /* Stop the user from reading */
-> -       if (pos > nvmem->size)
-> +       if (pos > nvmem->size - 1)
->                  return 0;
-
-Yes, this should have been something like this
--       if (pos > nvmem->size)
-+       if (pos >= nvmem->size)
-                 return 0;
-
-We can send a fix on top of v9 once its merged.
-
+> From: Heiko Stuebner <heiko@sntech.de>
 >
->          if (pos + count > nvmem->size)
->
-> RK3288-efuse has  32 x 8bit regs, in dts "reg = <0xffb40000 0x20>;"
-> Here is the message dump from nvmem_device:
-> [    2.158314] nvmem:
-> [    2.158314]           name (null)
-> [    2.158314]           stride 1
-> [    2.158314]           word_size 1
-> [    2.158314]           ncells 0
-> [    2.158314]           id 0
-> [    2.158314]           users 0
-> [    2.158314]           size 32
-> [    2.158314]           read_only 0
->
-> Do you think there is a leak or I'm messing up ?
->
-> 2. About the read operation, eFuse data can be read during device
-> probe() and cached, OR,
->      read from eFuse when needed every time. I prefer the second one but
-> then, the clock of eFuse may be
->      gated. So before/after reading I have to enable/disable clk like :
->            devm_clk_get(dev, "hclk_efuse256");
->      The trouble is I can't find a way to get the "dev" hander in :
->            static int rockchip_efuse_read(void *context, const void
-> *reg, size_t reg_size, void *val, size_t val_size)
->      I am appreciated if you can give some advice.
+> at this point to override the author then.
 
+Sounds right. Please resend the patch properly. Also, is there a 2/2? I=
+=20
+never got it.
 
-May be you should use regmap_init_mmio_clk() instead of 
-regmap_init_mmio() it will take care of clks.
-
->      Or, do you think it's reasonable to add hooks before/after read in
-> nvmem/core.c like :
->            +       before_read(dev, ...);
->                     rc = regmap_raw_read(nvmem->regmap, pos, buf, count);
->            +       after_read(dev, ...);
->
-
-
-> 3. In the /sys/bus/nvmem/devices/rockchip-efuse0/, there are files:
->           /sys/devices/platform/ffb40000.efuse/rockchip-efuse0 # ls
->           nvmem      of_node    power      subsystem  uevent
->      Do you have a plan to add the nvmem consumers to /sys/ in nvmem
-> framework?
-yes, Am waiting for the framework to be merged, I have plans to add this 
-feature.
-
->      For example,  in dts defined the "cpu_leakage":
->          efuse: efuse@ffb40000 {
->                  compatible = "rockchip,rk3x-efuse";
->                  reg = <0xffb40000 0x20>;
->                  #address-cells = <1>;
->                  #size-cells = <1>;
->                  clocks = <&cru PCLK_EFUSE256>;
->                  clock-names = "pclk_efuse_256";
->
->                  cpu_leakage: cpu_leakage {
->                          reg = <0x17 0x1>;
->                  };
->          };
->     Then nvmem exposes the "cpu_leakage" file in /sys which can be
-> read/write.
-
---srini
+--=20
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
