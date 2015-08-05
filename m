@@ -1,95 +1,66 @@
-From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 3/3] ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when
- entering shallow suspend
-Date: Wed, 05 Aug 2015 18:51:59 +0800
-Message-ID: <55C1EACF.1060702@rock-chips.com>
-References: <2128609.Kb18M8K28F@diego> <1544453.8uqOvAiDmD@diego>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 0/4] Add SPDIF support for rockchip
+Date: Wed, 5 Aug 2015 12:59:51 +0100
+Message-ID: <20150805115951.GK20873@sirena.org.uk>
+References: <1438687099-14282-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <20150804153649.GP20873@sirena.org.uk>
+ <1438756921.27576.4.camel@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1544453.8uqOvAiDmD@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="GNsO7fNsq+j2k5eo"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1438756921.27576.4.camel@collabora.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
+--GNsO7fNsq+j2k5eo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 08/05/2015 06:51 AM, Heiko St=FCbner wrote:
-> PMU_GPIOINT_WAKEUP_EN seems needed when entering the shallow suspend
-> (with logic staying on) but does not seem to be needed for the deep
-> suspend for unknown reasons.
-> Testing revealed that this setting really is necessary to reliably
-> resume the veyron devices from suspend.
->
-> Reported-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->   arch/arm/mach-rockchip/pm.c | 9 ++++++---
->   arch/arm/mach-rockchip/pm.h | 1 +
->   2 files changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-> index c11a30b..156cd23 100644
-> --- a/arch/arm/mach-rockchip/pm.c
-> +++ b/arch/arm/mach-rockchip/pm.c
-> @@ -123,9 +123,6 @@ static void rk3288_slp_mode_set(int level)
->   	regmap_write(sgrf_regmap, RK3288_SGRF_FAST_BOOT_ADDR,
->   		     rk3288_bootram_phy);
->   =
+On Wed, Aug 05, 2015 at 08:42:01AM +0200, Sjoerd Simons wrote:
+> On Tue, 2015-08-04 at 16:36 +0100, Mark Brown wrote:
 
-> -	regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-> -		     PMU_ARMINT_WAKEUP_EN);
-> -
->   	mode_set =3D BIT(PMU_GLOBAL_INT_DISABLE) | BIT(PMU_L2FLUSH_EN) |
->   		   BIT(PMU_SREF0_ENTER_EN) | BIT(PMU_SREF1_ENTER_EN) |
->   		   BIT(PMU_DDR0_GATING_EN) | BIT(PMU_DDR1_GATING_EN) |
-> @@ -146,6 +143,9 @@ static void rk3288_slp_mode_set(int level)
->   		mode_set1 |=3D BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
->   			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
->   =
+> > I only appear to have patch 2 (with the misspelt subject), not the
+> > binding documentation.
 
-> +		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-> +			     PMU_ARMINT_WAKEUP_EN);
-> +
->   		/*
->   		 * In deep suspend we use PMU_PMU_USE_LF to let the rk3288
->   		 * switch its main clock supply to the alternative 32kHz
-> @@ -166,6 +166,9 @@ static void rk3288_slp_mode_set(int level)
->   		 */
->   		mode_set |=3D BIT(PMU_CLK_CORE_SRC_GATE_EN);
->   =
+> Applogies, Send that patch specifically to you now.
 
-> +		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
-> +			     PMU_ARMINT_WAKEUP_EN | PMU_GPIOINT_WAKEUP_EN);
-> +
->   		/* 30ms on a 24MHz clock for pmic stabilization */
->   		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 24000 * 30);
->   =
+And I deleted it unread because it was just some random off list patch
+with no context.  :(
 
-> diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-> index 8a55ee2..b5af26f 100644
-> --- a/arch/arm/mach-rockchip/pm.h
-> +++ b/arch/arm/mach-rockchip/pm.h
-> @@ -61,6 +61,7 @@ static inline void rockchip_suspend_init(void)
->   =
+> Seems get_maintainers.pl didn't include you in the list (nor the other
+> asoc maintainers in the list), I guess it might be good to add
+> Documentation/devicetree/bindings/sounds/ to the ASoC file list in
+> MAINTAINTERS ?
 
->   /* PMU_WAKEUP_CFG1 bits */
->   #define PMU_ARMINT_WAKEUP_EN		BIT(0)
-> +#define PMU_GPIOINT_WAKEUP_EN		BIT(3)
->   =
+Please follow the process covered in SubmittingPatches for making kernel
+changes, but note that there's generic sound drivers as well as ASoC
+ones.
 
->   enum rk3288_pwr_mode_con {
->   	PMU_PWR_MODE_EN =3D 0,
->
-Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Tested-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In general it is a very bad idea to rely on get_maintainers, it is prone
+to both false positives and missing relevant people.  It can be useful
+to look at but you need to think about what it's telling you.  In this
+case it should be fairly easy to tell that you ought to send the binding
+documentation along with the driver.
+
+--GNsO7fNsq+j2k5eo
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVwfq2AAoJECTWi3JdVIfQ8koH+wU5IMgymFjXkLokOTSnxd4i
+SYCn6eMvkR+c9Co7q+fNh6OrAxOHRsBF3gW4Q+2096OHfVme9+lPgAy0Hu2vRVdo
+BAZ/+c8V2bCeH35S96pDqNuqdxhKA1IfnqEtlUZJP5l7x+wA6x24S9nYLz2lOw8/
+IdfO6diH13EaW5uBsonNDgC1+wES7kWIjzpuNyG/CNdbG6sYYvP+V4PG/Td7mr/H
+hihKQeP/iPTovfesv8a1MxIXI1SF7xekHdIv5o+HkniXcyyld7PzPYl9wYcfiHmJ
+5VjZWq9R7NyNfrQtkBjFzemsgrvpB/82NWQSmMUWMHA4XLbjMfNke1vLa1rYN0M=
+=hBn1
+-----END PGP SIGNATURE-----
+
+--GNsO7fNsq+j2k5eo--
