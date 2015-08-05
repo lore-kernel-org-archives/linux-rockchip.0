@@ -1,86 +1,64 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RFC PATCH v3 5/5] ARM: dts: add supports-idmac property
-Date: Wed, 5 Aug 2015 17:25:47 +0800
-Message-ID: <55C1D69B.4060308@rock-chips.com>
-References: <1438762614-22154-1-git-send-email-shawn.lin@rock-chips.com>
- <1438762730-22368-1-git-send-email-shawn.lin@rock-chips.com>
- <1438764734.3504.9.camel@synopsys.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 1/3] ARM: rockchip: rename osc_switch_to_32k variable
+Date: Wed, 05 Aug 2015 18:36:06 +0800
+Message-ID: <55C1E716.4010901@rock-chips.com>
+References: <2128609.Kb18M8K28F@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-        format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1438764734.3504.9.camel@synopsys.com>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Alexey Brodkin <Alexey.Brodkin@synopsys.com>
-Cc: shawn.lin@rock-chips.com, "dianders@chromium.org" <dianders@chromium.org>, "wangzhou.bry@gmail.com" <wangzhou.bry@gmail.com>, "tomeu.vizoso@collabora.com" <tomeu.vizoso@collabora.com>, "pawel.moll@arm.com" <pawel.moll@arm.com>, "javier.martinez@collabora.co.uk" <javier.martinez@collabora.co.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "haokexin@gmail.com" <haokexin@gmail.com>, "stefan@agner.ch" <stefan@agner.ch>, "addy.ke@rock-chips.com" <addy.ke@rock-chips.com>, "galak@codeaurora.org" <galak@codeaurora.org>, "olof@lixom.net" <olof@lixom.net>, "long.wanglong@huawei.com" <long.wanglong@huawei.com>, "peter.griffin@linaro.org" <peter.griffin@linaro.org>, mark.rut
+Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2128609.Kb18M8K28F@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2015/8/5 16:52, Alexey Brodkin =E5=86=99=E9=81=93:
-> Hi Shawn,
->
-> On Wed, 2015-08-05 at 16:18 +0800, Shawn Lin wrote:
->> DesignWare MMC Controller's transfer mode should be decided
->> at runtime instead of compile-time. Add "supports-idmac" for
->> all platforms that use internal dma mode to enable this feature
->> at runtime.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> ---
->>
->> Changes in v3: None
->> Changes in v2: None
->>
->>   arch/arm/boot/dts/exynos3250-monk.dts              | 1 +
->>   arch/arm/boot/dts/exynos3250-rinato.dts            | 1 +
->>   arch/arm/boot/dts/exynos4412-odroid-common.dtsi    | 1 +
->>   arch/arm/boot/dts/exynos4412-origen.dts            | 1 +
->>   arch/arm/boot/dts/exynos4412-trats2.dts            | 1 +
->>   arch/arm/boot/dts/exynos4x12.dtsi                  | 1 +
->>   arch/arm/boot/dts/exynos5250-arndale.dts           | 2 ++
->>   arch/arm/boot/dts/exynos5250-smdk5250.dts          | 2 ++
->>   arch/arm/boot/dts/exynos5250-snow.dts              | 3 +++
->>   arch/arm/boot/dts/exynos5250-spring.dts            | 2 ++
->>   arch/arm/boot/dts/exynos5260-xyref5260.dts         | 2 ++
->>   arch/arm/boot/dts/exynos5410-smdk5410.dts          | 2 ++
->>   arch/arm/boot/dts/exynos5420-arndale-octa.dts      | 2 ++
->>   arch/arm/boot/dts/exynos5420-peach-pit.dts         | 3 +++
->>   arch/arm/boot/dts/exynos5420-smdk5420.dts          | 2 ++
->>   arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi | 2 ++
->>   arch/arm/boot/dts/exynos5800-peach-pi.dts          | 3 +++
->>   arch/arm/boot/dts/hisi-x5hd2.dtsi                  | 2 ++
->>   arch/arm/boot/dts/rk3288-evb.dtsi                  | 2 ++
->>   arch/arm/boot/dts/rk3288-firefly.dtsi              | 3 +++
->>   arch/arm/boot/dts/rk3288-popmetal.dts              | 2 ++
->>   arch/arm64/boot/dts/exynos/exynos7-espresso.dts    | 2 ++
->>   22 files changed, 42 insertions(+)
-> I'm wondering if you're going to care about other platforms
-> that use DW MMC?
->
-> Just grep for "snps,dw-mshc", "altr,socfpga-dw-mshc",
-> "img,pistachio-dw-mshc" and you'll see more dt* files to
-> be updated.
-   Thanks,  Alexey.
-   Yes,  I missed some ARC dt*  files just as Vineet told me. It will b=
-e=20
-fixed in v4.
-   Btw, I cannot find "img,pistachio-dw-mshc" in 4.2.0-rc3. And no more=
-=20
-"dw-mshc" or "dwmmc"
-   is found.
-
-> -Alexey
->
->
 
 
---=20
-Shawn Lin
+On 08/05/2015 06:50 AM, Heiko St=FCbner wrote:
+> The variable name is misleading, as the deep suspend mode always switches
+> the main supplying clock to the 32kHz source. Additionally the main
+> oscillator remain running in some cases, which this var indicates.
+>
+> So rename it to osc_disable to clarity.
+>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>   arch/arm/mach-rockchip/pm.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+> index 892bace..2ca1170 100644
+> --- a/arch/arm/mach-rockchip/pm.c
+> +++ b/arch/arm/mach-rockchip/pm.c
+> @@ -96,7 +96,7 @@ static bool rk3288_slp_disable_osc(void)
+>   static void rk3288_slp_mode_set(int level)
+>   {
+>   	u32 mode_set, mode_set1;
+> -	bool osc_switch_to_32k =3D rk3288_slp_disable_osc();
+> +	bool osc_disable =3D rk3288_slp_disable_osc();
+>   =
+
+>   	regmap_read(sgrf_regmap, RK3288_SGRF_CPU_CON0, &rk3288_sgrf_cpu_con0);
+>   	regmap_read(sgrf_regmap, RK3288_SGRF_SOC_CON0, &rk3288_sgrf_soc_con0);
+> @@ -140,7 +140,7 @@ static void rk3288_slp_mode_set(int level)
+>   			    BIT(PMU_DDR1IO_RET_EN) | BIT(PMU_DDR0IO_RET_EN) |
+>   			    BIT(PMU_ALIVE_USE_LF) | BIT(PMU_PLL_PD_EN);
+>   =
+
+> -		if (osc_switch_to_32k)
+> +		if (osc_disable)
+>   			mode_set |=3D BIT(PMU_OSC_24M_DIS);
+>   =
+
+>   		mode_set1 |=3D BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
+Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Tested-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
