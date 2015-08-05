@@ -1,14 +1,14 @@
 From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 2/3] ARM: rockchip: set correct stabilization thresholds
- in suspend
-Date: Wed, 05 Aug 2015 18:41:14 +0800
-Message-ID: <55C1E84A.9050501@rock-chips.com>
-References: <2128609.Kb18M8K28F@diego> <1709899.JJDRtF09u7@diego>
+Subject: Re: [PATCH v3 3/3] ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when
+ entering shallow suspend
+Date: Wed, 05 Aug 2015 18:51:59 +0800
+Message-ID: <55C1EACF.1060702@rock-chips.com>
+References: <2128609.Kb18M8K28F@diego> <1544453.8uqOvAiDmD@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="windows-1252"; Format="flowed"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1709899.JJDRtF09u7@diego>
+In-Reply-To: <1544453.8uqOvAiDmD@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -25,100 +25,71 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 08/05/2015 06:51 AM, Heiko St=FCbner wrote:
-> Currently the stabilization thresholds for the oscillator and external pmu
-> are statically set to 30ms based on a 32kHz clock rate. This leaves out t=
-he
-> case when we don't switch to the 32kHz clock when only entering the shall=
-ow
-> suspend mode where the logic keeps running.
->
-> So, set the correct threshold after we have determined if we switch to the
-> 32kHz clock or stay with the 24MHz one. Also set the oscillator-
-> stabilization to 0 if it is kept running during suspend, as it of course
-> does not need to stabilize then.
+> PMU_GPIOINT_WAKEUP_EN seems needed when entering the shallow suspend
+> (with logic staying on) but does not seem to be needed for the deep
+> suspend for unknown reasons.
+> Testing revealed that this setting really is necessary to reliably
+> resume the veyron devices from suspend.
 >
 > Reported-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
-> changes since v2:
-> - describe 32kHz vs 24MHz
-> - don't wait for oscillator stabilization if it's still running,
->    as explained by Chris Zhong in v2
-> changes since v1:
-> - 24MHz oriented threshold is only needed in shallow suspend, the deep
->    suspend always switches to 32kHz and only leaves the 24MHz oscillator
->    running if needed for stuff like usb wakeup
->
->   arch/arm/mach-rockchip/pm.c | 22 +++++++++++++++++++---
->   arch/arm/mach-rockchip/pm.h |  4 ----
->   2 files changed, 19 insertions(+), 7 deletions(-)
+>   arch/arm/mach-rockchip/pm.c | 9 ++++++---
+>   arch/arm/mach-rockchip/pm.h | 1 +
+>   2 files changed, 7 insertions(+), 3 deletions(-)
 >
 > diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-> index 2ca1170..c11a30b 100644
+> index c11a30b..156cd23 100644
 > --- a/arch/arm/mach-rockchip/pm.c
 > +++ b/arch/arm/mach-rockchip/pm.c
-> @@ -145,6 +145,19 @@ static void rk3288_slp_mode_set(int level)
+> @@ -123,9 +123,6 @@ static void rk3288_slp_mode_set(int level)
+>   	regmap_write(sgrf_regmap, RK3288_SGRF_FAST_BOOT_ADDR,
+>   		     rk3288_bootram_phy);
 >   =
 
+> -	regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
+> -		     PMU_ARMINT_WAKEUP_EN);
+> -
+>   	mode_set =3D BIT(PMU_GLOBAL_INT_DISABLE) | BIT(PMU_L2FLUSH_EN) |
+>   		   BIT(PMU_SREF0_ENTER_EN) | BIT(PMU_SREF1_ENTER_EN) |
+>   		   BIT(PMU_DDR0_GATING_EN) | BIT(PMU_DDR1_GATING_EN) |
+> @@ -146,6 +143,9 @@ static void rk3288_slp_mode_set(int level)
 >   		mode_set1 |=3D BIT(PMU_CLR_ALIVE) | BIT(PMU_CLR_BUS) |
 >   			     BIT(PMU_CLR_PERI) | BIT(PMU_CLR_DMA);
+>   =
+
+> +		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
+> +			     PMU_ARMINT_WAKEUP_EN);
 > +
-> +		/*
-> +		 * In deep suspend we use PMU_PMU_USE_LF to let the rk3288
-> +		 * switch its main clock supply to the alternative 32kHz
-> +		 * source. Therefore set 30ms on a 32kHz clock for pmic
-> +		 * stabilization. Similar 30ms on 24MHz for the other
-> +		 * mode below.
-> +		 */
-> +		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 32 * 30);
-> +
-> +		/* only wait for stabilization, if we turned the osc off */
-> +		regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT,
-> +					 osc_disable ? 32 * 30 : 0);
->   	} else {
 >   		/*
->   		 * arm off, logic normal
-> @@ -152,6 +165,12 @@ static void rk3288_slp_mode_set(int level)
->   		 * wakeup will be error
+>   		 * In deep suspend we use PMU_PMU_USE_LF to let the rk3288
+>   		 * switch its main clock supply to the alternative 32kHz
+> @@ -166,6 +166,9 @@ static void rk3288_slp_mode_set(int level)
 >   		 */
 >   		mode_set |=3D BIT(PMU_CLK_CORE_SRC_GATE_EN);
-> +
-> +		/* 30ms on a 24MHz clock for pmic stabilization */
-> +		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 24000 * 30);
-> +
-> +		/* oscillator is still running, so no need to wait */
-> +		regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, 0);
->   	}
 >   =
 
->   	regmap_write(pmu_regmap, RK3288_PMU_PWRMODE_CON, mode_set);
-> @@ -262,9 +281,6 @@ static int rk3288_suspend_init(struct device_node *np)
->   	memcpy(rk3288_bootram_base, rockchip_slp_cpu_resume,
->   	       rk3288_bootram_sz);
->   =
-
-> -	regmap_write(pmu_regmap, RK3288_PMU_OSC_CNT, OSC_STABL_CNT_THRESH);
-> -	regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, PMU_STABL_CNT_THRESH);
-> -
->   	return 0;
->   }
+> +		regmap_write(pmu_regmap, RK3288_PMU_WAKEUP_CFG1,
+> +			     PMU_ARMINT_WAKEUP_EN | PMU_GPIOINT_WAKEUP_EN);
+> +
+>   		/* 30ms on a 24MHz clock for pmic stabilization */
+>   		regmap_write(pmu_regmap, RK3288_PMU_STABL_CNT, 24000 * 30);
 >   =
 
 > diff --git a/arch/arm/mach-rockchip/pm.h b/arch/arm/mach-rockchip/pm.h
-> index b6494c2..8a55ee2 100644
+> index 8a55ee2..b5af26f 100644
 > --- a/arch/arm/mach-rockchip/pm.h
 > +++ b/arch/arm/mach-rockchip/pm.h
-> @@ -62,10 +62,6 @@ static inline void rockchip_suspend_init(void)
->   /* PMU_WAKEUP_CFG1 bits */
->   #define PMU_ARMINT_WAKEUP_EN		BIT(0)
+> @@ -61,6 +61,7 @@ static inline void rockchip_suspend_init(void)
 >   =
 
-> -/* wait 30ms for OSC stable and 30ms for pmic stable */
-> -#define OSC_STABL_CNT_THRESH	(32 * 30)
-> -#define PMU_STABL_CNT_THRESH	(32 * 30)
-> -
+>   /* PMU_WAKEUP_CFG1 bits */
+>   #define PMU_ARMINT_WAKEUP_EN		BIT(0)
+> +#define PMU_GPIOINT_WAKEUP_EN		BIT(3)
+>   =
+
 >   enum rk3288_pwr_mode_con {
 >   	PMU_PWR_MODE_EN =3D 0,
->   	PMU_CLK_CORE_SRC_GATE_EN,
+>
 Reviewed-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Tested-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
