@@ -1,35 +1,24 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] ARM: rockchip: rename osc_switch_to_32k variable
-Date: Thu, 06 Aug 2015 13:11:49 +0200
-Message-ID: <39971049.CiZJKWC18V@diego>
-References: <2128609.Kb18M8K28F@diego>
+From: Ralf Baechle <ralf@linux-mips.org>
+Subject: Re: [RFC PATCH v4 3/9] mips: pistachio_defconfig: remove
+ CONFIG_MMC_DW_IDMAC
+Date: Thu, 6 Aug 2015 15:17:36 +0200
+Message-ID: <20150806131736.GE7055@linux-mips.org>
+References: <1438843469-23807-1-git-send-email-shawn.lin@rock-chips.com>
+ <1438843515-23935-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2128609.Kb18M8K28F@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1438843515-23935-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: jh80.chung@samsung.com, ulf.hansson@linaro.org, heiko@sntech.de, dianders@chromium.org, Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Govindraj Raja <govindraj.raja@imgtec.com>, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 5. August 2015, 00:50:39 schrieb Heiko St=FCbner:
-> The variable name is misleading, as the deep suspend mode always switches
-> the main supplying clock to the 32kHz source. Additionally the main
-> oscillator remain running in some cases, which this var indicates.
-> =
+On Thu, Aug 06, 2015 at 02:45:15PM +0800, Shawn Lin wrote:
 
-> So rename it to osc_disable to clarity.
-> =
+>  arch/mips/configs/pistachio_defconfig | 1 -
 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Acked-by: Ralf Baechle <ralf@linux-mips.org>
 
-applied all 3 patches with Chris' and Doug's tags to my soc branch
+  Ralf
