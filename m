@@ -1,55 +1,56 @@
-From: Govindraj Raja <Govindraj.Raja@imgtec.com>
-Subject: RE: [RFC PATCH v4 3/9] mips: pistachio_defconfig: remove
- CONFIG_MMC_DW_IDMAC
-Date: Thu, 6 Aug 2015 09:05:52 +0000
-Message-ID: <4BF5E8683E87FC4DA89822A5A3EB60CB6F2001@hhmail02.hh.imgtec.org>
-References: <1438843469-23807-1-git-send-email-shawn.lin@rock-chips.com>
- <1438843515-23935-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 3/3] ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when
+ entering shallow suspend
+Date: Thu, 06 Aug 2015 13:10:55 +0200
+Message-ID: <3564263.VnOXW7qXSg@diego>
+References: <2128609.Kb18M8K28F@diego> <1544453.8uqOvAiDmD@diego>
+ <CAD=FV=W0L_0iM+15BAUfTA2ij5Ac90aVW9JZYyDhHMDNT2ZUMg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1438843515-23935-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-AU
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, "jh80.chung@samsung.com" <jh80.chung@samsung.com>, "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>
-Cc: "heiko@sntech.de" <heiko@sntech.de>, "dianders@chromium.org" <dianders@chromium.org>, "Vineet.Gupta1@synopsys.com" <Vineet.Gupta1@synopsys.com>, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "linux-mips@linux-mips.org" <linux-mips@linux-mips.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=W0L_0iM+15BAUfTA2ij5Ac90aVW9JZYyDhHMDNT2ZUMg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Mittwoch, 5. August 2015, 18:55:52 schrieb Doug Anderson:
+> Heiko,
+> =
+
+> On Tue, Aug 4, 2015 at 3:51 PM, Heiko St=FCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > PMU_GPIOINT_WAKEUP_EN seems needed when entering the shallow suspend
+> > (with logic staying on) but does not seem to be needed for the deep
+> > suspend for unknown reasons.
+> > Testing revealed that this setting really is necessary to reliably
+> > resume the veyron devices from suspend.
+> > =
+
+> > Reported-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > ---
+> > =
+
+> >  arch/arm/mach-rockchip/pm.c | 9 ++++++---
+> >  arch/arm/mach-rockchip/pm.h | 1 +
+> >  2 files changed, 7 insertions(+), 3 deletions(-)
+> =
+
+> Very odd, but OK by me...
+
+Hopefully we'll get an explaination from the ic-people soon-ish.
 
 
-> -----Original Message-----
-> From: Shawn Lin [mailto:shawn.lin@rock-chips.com]
-> Sent: 06 August 2015 07:45 AM
-> To: jh80.chung@samsung.com; ulf.hansson@linaro.org
-> Cc: heiko@sntech.de; dianders@chromium.org; Vineet.Gupta1@synopsys.com;
-> Wei Xu; Joachim Eastwood; Alexey Brodkin; Kukjin Kim; Krzysztof Kozlowski;
-> Russell King; Jun Nie; Ralf Baechle; Govindraj Raja; linux-arm-
-> kernel@lists.infradead.org; linux-samsung-soc@vger.kernel.org; linux-
-> mips@linux-mips.org; linux-mmc@vger.kernel.org; linux-
-> kernel@vger.kernel.org; linux-rockchip@lists.infradead.org;
-> devicetree@vger.kernel.org; Shawn Lin
-> Subject: [RFC PATCH v4 3/9] mips: pistachio_defconfig: remove
-> CONFIG_MMC_DW_IDMAC
-> 
-> DesignWare MMC Controller's transfer mode should be decided at runtime
-> instead of compile-time. So we remove this config option and read dw_mmc's
-> register to select DMA master.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  arch/mips/configs/pistachio_defconfig | 1 -
->  1 file changed, 1 deletion(-)
+> Hopefully we'll eventually end up being
+> able to use deep suspend on mainline.  That'd be nice, wouldn't it?
 
-Acked-by: Govindraj Raja <govindraj.raja@imgtec.com>
-
---
-Thanks,
-Govindraj.R
-
-
+hehe ... yep, one of the big remaining projects :-)
