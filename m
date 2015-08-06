@@ -1,143 +1,71 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [RFC PATCH v3 0/5]
-Date: Thu, 06 Aug 2015 10:47:21 +0900
-Message-ID: <55C2BCA9.5080202@samsung.com>
-References: <1438762614-22154-1-git-send-email-shawn.lin@rock-chips.com>
- <55C2A001.2090506@samsung.com> <55C2AE1C.7080502@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 2/3] ARM: rockchip: set correct stabilization
+ thresholds in suspend
+Date: Wed, 5 Aug 2015 18:54:06 -0700
+Message-ID: <CAD=FV=VWehNnr-NaZy=m7p-ciXi1ACpwb0Wr2nDLSrjvZT-oUQ@mail.gmail.com>
+References: <2128609.Kb18M8K28F@diego>
+	<1709899.JJDRtF09u7@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-reply-to: <55C2AE1C.7080502@rock-chips.com>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Shawn Lin <shawn.lin@rock-chips.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Seungwon Jeon <tgih.jun@samsung.com>
-Cc: dianders@chromium.org, linux-mips@linux-mips.org, Arnd Bergmann <arnd@arndb.de>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Alexey Brodkin <abrodkin@synopsys.com>, Stefan Agner <stefan@agner.ch>, Zhou Wang <wangzhou.bry@gmail.com>, Kumar Gala <galak@codeaurora.org>, Alim Akhtar <alim.akhtar@samsung.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Wang Long <long.wanglong@huawei.com>, Rob Herring <robh+dt@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Lukasz Majewski <l.majewski@samsung.com>, Jun Nie <jun.nie@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, Kevin Hao <haokexin@gmail.com>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Govindraj Raja <govindraj.raja@imgtec.com>, linux-samsung-so
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1709899.JJDRtF09u7@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On 08/06/2015 09:45 AM, Shawn Lin wrote:
-> On 2015/8/6 7:45, Krzysztof Kozlowski wrote:
->> On 05.08.2015 17:16, Shawn Lin wrote:
->>> Synopsys DesignWare mobile storage host controller supports three
->>> types of transfer mode: pio, internal dma and external dma. However,
->>> dw_mmc can only supports pio and internal dma now. Thus some platforms
->>> using dw-mshc integrated with generic dma can't work in dma mode. So we
->>> submit this patch to achieve it.
->>>
->>> And the config option, CONFIG_MMC_DW_IDMAC, was added by Will Newton
->>> (commit:f95f3850) for the first version of dw_mmc and never be touched from
->>> then. At that time dt-bindings hadn't been introduced into dw_mmc yet means
->>> we should select CONFIG_MMC_DW_IDMAC to enable internal dma mode at compile
->>> time. Nowadays, device-tree helps us to support a variety of boards with one
->>> kernel. That's why we need to remove it and decide the transfer mode at runtime.
->>>
->>> This RFC patch needs lots of ACKs. I know it's hard, but it does need someone
->>> to make the running.
->>>
->>> Patch does the following things:
->>> - remove CONFIG_MMC_DW_IDMAC config option
->>> - add bindings for idmac and edmac used by synopsys-dw-mshc
->>>    at runtime
->>> - add edmac support for synopsys-dw-mshc
->>>
->>> Patch is based on next of git://git.linaro.org/people/ulf.hansson/mmc
->>>
->>>
->>> Changes in v3:
->>> - choose transfer mode at runtime
->>> - remove all CONFIG_MMC_DW_IDMAC config option
->>> - add supports-idmac property for some platforms
->>>
->>> Changes in v2:
->>> - Fix typo of dev_info msg
->>> - remove unused dmach from declaration of dw_mci_dma_slave
->>>
->>> Shawn Lin (5):
->>>    mmc: dw_mmc: Add external dma interface support
->>>    Documentation: synopsys-dw-mshc: add bindings for idmac and edmac
->>>    arm: configs: remove CONFIG_MMC_DW_IDMAC
->>>    mips: configs: remove CONFIG_MMC_DW_IDMAC
->>>    ARM: dts: add supports-idmac property
->> Please fix the title of cover letter.
->>
->> You CC-ed a lot of people. Probably the whole output of git_maintainers
->> which is not necessary. This means that your patches did not reach some
->> of the mailing lists because of too many recipients. I received your
->> patchset but I can't find it on any of the lists I subscribe.
->>
->> Please CC only REAL maintainers, not committers.
-> 
-> Right, not the whole output of "cc" by patchman automatically should be involved
-> in the  iteration of this patch. I will omit them from this loop  in v4.
-
-As Krzysztof mentioned, I can't read these patchset at mailing list.
-I will check these after resend..It's helpful to me for checking patches.
-
-Best Regards,
-Jaehoon Chung
-
-> 
->>
->> Additionally if DTS changes do not have to be introduced atomically
->> please split it per sub-architecture. Of course that applies only in
->> case of bisectable patches. And the patchset should preserve
->> bisectability and backward compatibility (mentioned earlier).
-> 
-> okay, it will be split for each sub-architecture.
-> Thanks, Krzysztof. It's helpful.
->> Best regards,
->> Krzysztof
->>
->>
->>>   .../devicetree/bindings/mmc/synopsys-dw-mshc.txt   |  41 +++
->>>   arch/arc/configs/axs101_defconfig                  |   1 -
->>>   arch/arc/configs/axs103_defconfig                  |   1 -
->>>   arch/arc/configs/axs103_smp_defconfig              |   1 -
->>>   arch/arm/boot/dts/exynos3250-monk.dts              |   1 +
->>>   arch/arm/boot/dts/exynos3250-rinato.dts            |   1 +
->>>   arch/arm/boot/dts/exynos4412-odroid-common.dtsi    |   1 +
->>>   arch/arm/boot/dts/exynos4412-origen.dts            |   1 +
->>>   arch/arm/boot/dts/exynos4412-trats2.dts            |   1 +
->>>   arch/arm/boot/dts/exynos4x12.dtsi                  |   1 +
->>>   arch/arm/boot/dts/exynos5250-arndale.dts           |   2 +
->>>   arch/arm/boot/dts/exynos5250-smdk5250.dts          |   2 +
->>>   arch/arm/boot/dts/exynos5250-snow.dts              |   3 +
->>>   arch/arm/boot/dts/exynos5250-spring.dts            |   2 +
->>>   arch/arm/boot/dts/exynos5260-xyref5260.dts         |   2 +
->>>   arch/arm/boot/dts/exynos5410-smdk5410.dts          |   2 +
->>>   arch/arm/boot/dts/exynos5420-arndale-octa.dts      |   2 +
->>>   arch/arm/boot/dts/exynos5420-peach-pit.dts         |   3 +
->>>   arch/arm/boot/dts/exynos5420-smdk5420.dts          |   2 +
->>>   arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi |   2 +
->>>   arch/arm/boot/dts/exynos5800-peach-pi.dts          |   3 +
->>>   arch/arm/boot/dts/hisi-x5hd2.dtsi                  |   2 +
->>>   arch/arm/boot/dts/rk3288-evb.dtsi                  |   2 +
->>>   arch/arm/boot/dts/rk3288-firefly.dtsi              |   3 +
->>>   arch/arm/boot/dts/rk3288-popmetal.dts              |   2 +
->>>   arch/arm/configs/exynos_defconfig                  |   1 -
->>>   arch/arm/configs/hisi_defconfig                    |   1 -
->>>   arch/arm/configs/lpc18xx_defconfig                 |   1 -
->>>   arch/arm/configs/multi_v7_defconfig                |   1 -
->>>   arch/arm/configs/zx_defconfig                      |   1 -
->>>   arch/arm64/boot/dts/exynos/exynos7-espresso.dts    |   2 +
->>>   arch/mips/configs/pistachio_defconfig              |   1 -
->>>   drivers/mmc/host/Kconfig                           |  11 +-
->>>   drivers/mmc/host/dw_mmc-pltfm.c                    |   2 +
->>>   drivers/mmc/host/dw_mmc.c                          | 277 +++++++++++++++++----
->>>   include/linux/mmc/dw_mmc.h                         |  28 ++-
->>>   36 files changed, 338 insertions(+), 72 deletions(-)
->>>
->>
->>
->>
-> 
-> 
+SGVpa28sCgpPbiBUdWUsIEF1ZyA0LCAyMDE1IGF0IDM6NTEgUE0sIEhlaWtvIFN0w7xibmVyIDxo
+ZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+IEN1cnJlbnRseSB0aGUgc3RhYmlsaXphdGlvbiB0aHJl
+c2hvbGRzIGZvciB0aGUgb3NjaWxsYXRvciBhbmQgZXh0ZXJuYWwgcG11Cj4gYXJlIHN0YXRpY2Fs
+bHkgc2V0IHRvIDMwbXMgYmFzZWQgb24gYSAzMmtIeiBjbG9jayByYXRlLiBUaGlzIGxlYXZlcyBv
+dXQgdGhlCj4gY2FzZSB3aGVuIHdlIGRvbid0IHN3aXRjaCB0byB0aGUgMzJrSHogY2xvY2sgd2hl
+biBvbmx5IGVudGVyaW5nIHRoZSBzaGFsbG93Cj4gc3VzcGVuZCBtb2RlIHdoZXJlIHRoZSBsb2dp
+YyBrZWVwcyBydW5uaW5nLgo+Cj4gU28sIHNldCB0aGUgY29ycmVjdCB0aHJlc2hvbGQgYWZ0ZXIg
+d2UgaGF2ZSBkZXRlcm1pbmVkIGlmIHdlIHN3aXRjaCB0byB0aGUKPiAzMmtIeiBjbG9jayBvciBz
+dGF5IHdpdGggdGhlIDI0TUh6IG9uZS4gQWxzbyBzZXQgdGhlIG9zY2lsbGF0b3ItCj4gc3RhYmls
+aXphdGlvbiB0byAwIGlmIGl0IGlzIGtlcHQgcnVubmluZyBkdXJpbmcgc3VzcGVuZCwgYXMgaXQg
+b2YgY291cnNlCj4gZG9lcyBub3QgbmVlZCB0byBzdGFiaWxpemUgdGhlbi4KPgo+IFJlcG9ydGVk
+LWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hhbmdlcyBzaW5jZSB2MjoK
+PiAtIGRlc2NyaWJlIDMya0h6IHZzIDI0TUh6Cj4gLSBkb24ndCB3YWl0IGZvciBvc2NpbGxhdG9y
+IHN0YWJpbGl6YXRpb24gaWYgaXQncyBzdGlsbCBydW5uaW5nLAo+ICAgYXMgZXhwbGFpbmVkIGJ5
+IENocmlzIFpob25nIGluIHYyCj4gY2hhbmdlcyBzaW5jZSB2MToKPiAtIDI0TUh6IG9yaWVudGVk
+IHRocmVzaG9sZCBpcyBvbmx5IG5lZWRlZCBpbiBzaGFsbG93IHN1c3BlbmQsIHRoZSBkZWVwCj4g
+ICBzdXNwZW5kIGFsd2F5cyBzd2l0Y2hlcyB0byAzMmtIeiBhbmQgb25seSBsZWF2ZXMgdGhlIDI0
+TUh6IG9zY2lsbGF0b3IKPiAgIHJ1bm5pbmcgaWYgbmVlZGVkIGZvciBzdHVmZiBsaWtlIHVzYiB3
+YWtldXAKPgo+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BtLmMgfCAyMiArKysrKysrKysrKysr
+KysrKysrLS0tCj4gIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvcG0uaCB8ICA0IC0tLS0KPiAgMiBm
+aWxlcyBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcG0uYyBiL2FyY2gvYXJtL21hY2gtcm9ja2No
+aXAvcG0uYwo+IGluZGV4IDJjYTExNzAuLmMxMWEzMGIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0v
+bWFjaC1yb2NrY2hpcC9wbS5jCj4gKysrIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9wbS5jCj4g
+QEAgLTE0NSw2ICsxNDUsMTkgQEAgc3RhdGljIHZvaWQgcmszMjg4X3NscF9tb2RlX3NldChpbnQg
+bGV2ZWwpCj4KPiAgICAgICAgICAgICAgICAgbW9kZV9zZXQxIHw9IEJJVChQTVVfQ0xSX0FMSVZF
+KSB8IEJJVChQTVVfQ0xSX0JVUykgfAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklU
+KFBNVV9DTFJfUEVSSSkgfCBCSVQoUE1VX0NMUl9ETUEpOwo+ICsKPiArICAgICAgICAgICAgICAg
+LyoKPiArICAgICAgICAgICAgICAgICogSW4gZGVlcCBzdXNwZW5kIHdlIHVzZSBQTVVfUE1VX1VT
+RV9MRiB0byBsZXQgdGhlIHJrMzI4OAo+ICsgICAgICAgICAgICAgICAgKiBzd2l0Y2ggaXRzIG1h
+aW4gY2xvY2sgc3VwcGx5IHRvIHRoZSBhbHRlcm5hdGl2ZSAzMmtIego+ICsgICAgICAgICAgICAg
+ICAgKiBzb3VyY2UuIFRoZXJlZm9yZSBzZXQgMzBtcyBvbiBhIDMya0h6IGNsb2NrIGZvciBwbWlj
+Cj4gKyAgICAgICAgICAgICAgICAqIHN0YWJpbGl6YXRpb24uIFNpbWlsYXIgMzBtcyBvbiAyNE1I
+eiBmb3IgdGhlIG90aGVyCj4gKyAgICAgICAgICAgICAgICAqIG1vZGUgYmVsb3cuCj4gKyAgICAg
+ICAgICAgICAgICAqLwo+ICsgICAgICAgICAgICAgICByZWdtYXBfd3JpdGUocG11X3JlZ21hcCwg
+UkszMjg4X1BNVV9TVEFCTF9DTlQsIDMyICogMzApOwoKVG9vayBtZSBhIGxpdHRsZSB3aGlsZSB0
+byBwYXJzZSB0aGUgY29tbWVudCwgYnV0IGl0IGxvb2tzIHJpZ2h0LgpCYXNpY2FsbHkgd2UgbmVl
+ZCAzMG1zIGZvciBQTUlDIHN0YWJpbGl6YXRpb24gYm90aCBoZXJlIGFuZCBpbiB0aGUKb3RoZXIg
+bW9kZS4gIFRoYXQgaXMgcHJvZ3JhbW1lZCBhcyAzMiAqIDMwIGhlcmUgYW5kIDI0MDAgKiAzMCB0
+aGVyZS4KLi4uYW5kIHdlIGtub3cgd2UncmUgb24gMzJrIGNsb2NrIGJlY2F1c2Ugb2YgUE1VX1BN
+VV9VU0VfTEYuCgpSZXZpZXdlZC1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21p
+dW0ub3JnPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
