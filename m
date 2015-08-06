@@ -1,55 +1,78 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [RFC PATCH 1/8] drm: exynos/dp: fix code style
-Date: Thu, 6 Aug 2015 23:20:48 +0800
-Message-ID: <55C37B50.6050706@rock-chips.com>
-References: <1438868947-22132-1-git-send-email-ykk@rock-chips.com>
- <1438869866-23028-1-git-send-email-ykk@rock-chips.com>
- <1438873536.2679.61.camel@perches.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 1/2] ARM: dts: rockchip: reserve unusable memory region on
+ rk3288
+Date: Thu, 06 Aug 2015 19:33:32 +0200
+Message-ID: <1763907.pckMEaRNPs@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1438873536.2679.61.camel@perches.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Joe Perches <joe@perches.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-samsung-soc@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, dianders@google.com, linux-arm-kernel@lists.infradead.org, Fabio Estevam <fabio.estevam@freescale.com>, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, djkurtz@google.com, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Sm9lLAoK5ZyoIDIwMTUvOC82IDIzOjA1LCBKb2UgUGVyY2hlcyDlhpnpgZM6Cj4gT24gVGh1LCAy
-MDE1LTA4LTA2IGF0IDA5OjA0IC0wNTAwLCBZYWtpciBZYW5nIHdyb3RlOgo+PiBtYWtlIGNoZWNr
-cGF0Y2gucGwgc2NyaXB0IGhhcHB5Cj4gVGhhdCBzaG91bGQgbm90IGJlIHRoZSBwcmltYXJ5IHJl
-YXNvbiB0byBzdWJtaXQgYSBwYXRjaC4KPgo+IE1ha2luZyBpdCBlYXNpZXIgZm9yIGh1bWFuIGNv
-ZGUgcmVhZGVyIHRvIHVuZGVyc3RhbmQKPiB3aGF0IHRoZSBjb2RlIGRvZXMgc2hvdWxkIGJlIHRo
-b3VnaC4KVGhhbmtzIGZvciB5b3VyIHJlcGx5LCBidXQgSSBkbyB0aGluayB0aGF0IGZpeCBjb2Rl
-IHN0eWxlIGFuZCBtYWtlIApjaGVja3BhdGNoLnBsIHBhc3NlZCBpcyBteSBwcmltYXJ5IHJlYXNv
-biB0byBzdWJtaXQgdGhpcyBwYXRjaC4gSSBjYW4ndCAKdGhpbmsgb3V0IG1vcmUgZGlyZWN0bHkg
-d29yZHMgOyggLAoKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9z
-X2RwX2NvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwX2NvcmUuYwo+IFtd
-Cj4+IEBAIC0xMjMsMTAgKzEyMywxMSBAQCBzdGF0aWMgaW50IGV4eW5vc19kcF9yZWFkX2VkaWQo
-c3RydWN0IGV4eW5vc19kcF9kZXZpY2UgKmRwKQo+PiAgIAkJZGV2X2RiZyhkcC0+ZGV2LCAiRURJ
-RCBkYXRhIGluY2x1ZGVzIGEgc2luZ2xlIGV4dGVuc2lvbiFcbiIpOwo+PiAgIAo+PiAgIAkJLyog
-UmVhZCBFRElEIGRhdGEgKi8KPj4gLQkJcmV0dmFsID0gZXh5bm9zX2RwX3JlYWRfYnl0ZXNfZnJv
-bV9pMmMoZHAsIEkyQ19FRElEX0RFVklDRV9BRERSLAo+PiAtCQkJCQkJRURJRF9IRUFERVJfUEFU
-VEVSTiwKPj4gLQkJCQkJCUVESURfQkxPQ0tfTEVOR1RILAo+PiAtCQkJCQkJJmVkaWRbRURJRF9I
-RUFERVJfUEFUVEVSTl0pOwo+PiArCQlyZXR2YWwgPQo+PiArCQlleHlub3NfZHBfcmVhZF9ieXRl
-c19mcm9tX2kyYyhkcCwgSTJDX0VESURfREVWSUNFX0FERFIsCj4+ICsJCQkJCSAgICAgIEVESURf
-SEVBREVSX1BBVFRFUk4sCj4+ICsJCQkJCSAgICAgIEVESURfQkxPQ0tfTEVOR1RILAo+PiArCQkJ
-CQkgICAgICAmZWRpZFtFRElEX0hFQURFUl9QQVRURVJOXSk7Cj4gVGhpcyBpcyBhIHJlbGF0aXZl
-bHkgdW5jb21tb24gc3R5bGUuCj4KPiBCZWNhdXNlIHRoZSBjb2RlIHVzZXMgcmVsYXRpdmVseSBs
-b25nIHZhcmlhYmxlIGFuZAo+IGZ1bmN0aW9uIG5hbWVzIGFzIHdlbGwgYXMgbG9uZ2lzaCBtYWNy
-byAjZGVmaW5lcywKPiBwcmVmZXIgdG8gaWdub3JlIHRoZSA4MCBjb2x1bW4gbGltaXQuCk9rYXks
-IEkgdGhpbmsgaXQgd291bGQgYmUgYmV0dGVyIHRvIG1vZGlmeSBsaWtlIHRob3NlOgoKcmV0dmFs
-ID0gZXh5bm9zX2RwX3JlYWRfYnl0ZXNfZnJvbV9pMmMoCgkJZHAsIEkyQ19FRElEX0RFVklDRV9B
-RERSLAoJCUVESURfSEVBREVSX1BBVFRFUk4sCgkJRURJRF9CTE9DS19MRU5HVEgsCgkJJmVkaWRb
-RURJRF9IRUFERVJfUEFUVEVSTl0pOwoKCklzIGl0IG9rYXkgPwoKLSBZYWtpcgo+Cj4KPgo+CgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+The all current Rockchip SoCs supporting 4GB of ram have problems accessing
+the memory region 0xfe000000~0xff000000. This also seems to includes the
+rk3368 arm64 soc.
+
+All current code handling dma memory oddities I could find, seem to involve
+soc-specific code (zone-dma or so) while this issue is shared between arm32
+and arm64 socs from Rockchip, which would need to have this described in
+the soc devicetree on both socs.
+
+Limiting the dma-zone alone also does not solve the issue and as the
+dma-masks need to be a power-of-two in the kernel, the next lower dma-mask
+brings memory usable for dma down to 2GB.
+
+So as a stop-gap block off the affected region to prevent its use by
+devices with 4GB of memory, like some recent Chromebooks.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+changes since v1:
+- expand reasons for the reserved memory
+
+ arch/arm/boot/dts/rk3288.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 47a15aa..118fe74 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -169,6 +169,26 @@
+ 		};
+ 	};
+ 
++	reserved-memory {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		/*
++		 * The rk3288 cannot use the memory area above 0xfe000000
++		 * for dma operations for some reason. While there is
++		 * probably a better solution available somewhere, we
++		 * haven't found it yet and while devices with 2GB of ram
++		 * are not affected, this issue prevents 4GB from booting.
++		 * So to make these devices at least bootable, block
++		 * this area for the time being until the real solution
++		 * is found.
++		 */
++		dma-unusable@fe000000 {
++			reg = <0xfe000000 0x1000000>;
++		};
++	};
++
+ 	xin24m: oscillator {
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <24000000>;
+-- 
+2.1.4
