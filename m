@@ -1,207 +1,114 @@
-From: Ajay kumar <ajaynumb@gmail.com>
-Subject: Re: [RFC PATCH 0/8] Add Analogix Core Display Port Driver
-Date: Fri, 7 Aug 2015 11:41:55 +0530
-Message-ID: <CAEC9eQNBU4oQnAFtWRNJonHOB-1XNhCO0r7fUiHohBErJE_sFQ@mail.gmail.com>
-References: <1438868947-22132-1-git-send-email-ykk@rock-chips.com>
- <000201d0d056$06cff040$146fd0c0$@com>
- <55C3769F.2010405@rock-chips.com>
+From: Dmitry Torokhov <dtor@chromium.org>
+Subject: [PATCH] thermal: rockchip: fix handling of invalid readings
+Date: Fri, 7 Aug 2015 13:59:23 -0700
+Message-ID: <20150807205923.GA33949@dtor-ws>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0015066161=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <55C3769F.2010405@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>, Sean Paul <seanpaul@google.com>, Sean Paul <seanpaul@chromium.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "dianders@google.com" <dianders@google.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Fabio Estevam <fabio.estevam@freescale.com>, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kyungmin Park <kyungmin.park@s>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-pm-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Eduardo Valentin <edubezval@gmail.com>, Caesar Wang <wxt@rock-chips.com>, dianders@chromium.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0015066161==
-Content-Type: multipart/alternative; boundary=001a113996804ae8ea051cb28317
+We attempted to signal invalid code by returning -EAGAIN from
+rk_tsadcv2_code_to_temp(), unfortunately the return value was stuffed
+directly into the temperature pointer, potentially confusing upper
+layers with temperature of -EINVAL.
 
---001a113996804ae8ea051cb28317
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Let's split temperature from error/success indicator to avoid such
+confusion.
 
-+Sean
+Also change the way we scan the temperature table to start with the 2nd
+element so that we do not need to worry that we may reference out of
+bounds element while doing binary search and keep checking that we end
+up with 'mid' equal to 0 (since we are looking for the temperature that
+would fall into interval between the 'mid' and 'mid - 1') .
 
-On Thursday, August 6, 2015, Yakir Yang <ykk@rock-chips.com> wrote:
+Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
+---
+ drivers/thermal/rockchip_thermal.c | 28 +++++++++++++---------------
+ 1 file changed, 13 insertions(+), 15 deletions(-)
 
-> Jingoo,
->
-> =E5=9C=A8 2015/8/6 22:41, Jingoo Han =E5=86=99=E9=81=93:
->
->> On Thursday, August 06, 2015 10:49 PM, Yakir Yang wrote:
->>
->>> Hi all,
->>>     Samsung exynos and Rockchip rk3288 almost share same dp controller,
->>> so I split the common code out, then rk3288 and exynos can re-used the
->>> same dp core driver. Cause I can't find the exact IP name of exynos dp
->>> controller, so I decide to name dp core driver with "analogix" which I
->>> find in rk3288 eDP TRM ;)
->>>
->>
->> OK, I see.
->> The Samsung Exynos eDP contoller and Rockchip rk3288 eDP contoller share
->> the same IP. So, a lot of parts can be re-used. I agree with this.
->> However, we have to review the code carefully, as others did.
->>
-> Yeah, feel happy to be reviewed  ;)
->
-> I also cannot find the exact IP name. The "analogix" may be the vendor na=
-me
->> of this IP.
->>
-> Okay, so "analogix" is okay for now
->
-> Thanks,
-> - Yakir
->
->> Best regards,
->> Jingoo Han
->>
->> Beyond that, there are three light registers setting differents bewteen
->>> exynos and rk3288.
->>> 1. RK3288 have five special pll resigters which not indicata in exynos
->>>     dp controller.
->>> 2. The address of DP_PHY_PD(dp phy power manager register) are differen=
-t
->>>     between rk3288 and exynos.
->>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp
->>> debug
->>>     register).
->>>
->>> My series patches can be divider into two parts: One for spliting the
->>> analogix_dp code from exynos dp driver. Another are trying to add rk328=
-8
->>> dp driver support.
->>>
->>> Best regards,
->>> - Yakir
->>>
->>>
->>> --
->>> 2.1.2
->>>
->>
->>
->>
->>
->>
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe
-> linux-samsung-soc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index c89ffb2..93ee307 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -124,7 +124,7 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* msec */
+ 
+ struct tsadc_table {
+-	unsigned long code;
++	u32 code;
+ 	long temp;
+ };
+ 
+@@ -164,7 +164,6 @@ static const struct tsadc_table v2_code_table[] = {
+ 	{3452, 115000},
+ 	{3437, 120000},
+ 	{3421, 125000},
+-	{0, 125000},
+ };
+ 
+ static u32 rk_tsadcv2_temp_to_code(long temp)
+@@ -191,19 +190,21 @@ static u32 rk_tsadcv2_temp_to_code(long temp)
+ 	return 0;
+ }
+ 
+-static int rk_tsadcv2_code_to_temp(u32 code)
++static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
+ {
+-	unsigned int low = 0;
++	unsigned int low = 1;
+ 	unsigned int high = ARRAY_SIZE(v2_code_table) - 1;
+ 	unsigned int mid = (low + high) / 2;
+ 	unsigned int num;
+ 	unsigned long denom;
+ 
+-	/* Invalid code, return -EAGAIN */
+-	if (code > TSADCV2_DATA_MASK)
+-		return -EAGAIN;
++	BUILD_BUG_ON(ARRAY_SIZE(v2_code_table) < 2);
+ 
+-	while (low <= high && mid) {
++	code &= TSADCV2_DATA_MASK;
++	if (code < v2_code_table[high].code)
++		return -EAGAIN;		/* Incorrect reading */
++
++	while (low <= high) {
+ 		if (code >= v2_code_table[mid].code &&
+ 		    code < v2_code_table[mid - 1].code)
+ 			break;
+@@ -223,7 +224,9 @@ static int rk_tsadcv2_code_to_temp(u32 code)
+ 	num = v2_code_table[mid].temp - v2_code_table[mid - 1].temp;
+ 	num *= v2_code_table[mid - 1].code - code;
+ 	denom = v2_code_table[mid - 1].code - v2_code_table[mid].code;
+-	return v2_code_table[mid - 1].temp + (num / denom);
++	*temp = v2_code_table[mid - 1].temp + (num / denom);
++
++	return 0;
+ }
+ 
+ /**
+@@ -281,14 +284,9 @@ static int rk_tsadcv2_get_temp(int chn, void __iomem *regs, int *temp)
+ {
+ 	u32 val;
+ 
+-	/* the A/D value of the channel last conversion need some time */
+ 	val = readl_relaxed(regs + TSADCV2_DATA(chn));
+-	if (val == 0)
+-		return -EAGAIN;
+-
+-	*temp = rk_tsadcv2_code_to_temp(val);
+ 
+-	return 0;
++	return rk_tsadcv2_code_to_temp(val, temp);
+ }
+ 
+ static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs, long temp)
+-- 
+2.5.0.rc2.392.g76e840b
 
---001a113996804ae8ea051cb28317
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 
-+Sean<br><br>On Thursday, August 6, 2015, Yakir Yang &lt;<a href=3D"mailto:=
-ykk@rock-chips.com">ykk@rock-chips.com</a>&gt; wrote:<br><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">Jingoo,<br>
-<br>
-=E5=9C=A8 2015/8/6 22:41, Jingoo Han =E5=86=99=E9=81=93:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-On Thursday, August 06, 2015 10:49 PM, Yakir Yang wrote:<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Hi all,<br>
-=C2=A0 =C2=A0 Samsung exynos and Rockchip rk3288 almost share same dp contr=
-oller,<br>
-so I split the common code out, then rk3288 and exynos can re-used the<br>
-same dp core driver. Cause I can&#39;t find the exact IP name of exynos dp<=
-br>
-controller, so I decide to name dp core driver with &quot;analogix&quot; wh=
-ich I<br>
-find in rk3288 eDP TRM ;)<br>
-</blockquote>
-<br>
-OK, I see.<br>
-The Samsung Exynos eDP contoller and Rockchip rk3288 eDP contoller share<br=
->
-the same IP. So, a lot of parts can be re-used. I agree with this.<br>
-However, we have to review the code carefully, as others did.<br>
-</blockquote>
-Yeah, feel happy to be reviewed=C2=A0 ;)<br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-I also cannot find the exact IP name. The &quot;analogix&quot; may be the v=
-endor name<br>
-of this IP.<br>
-</blockquote>
-Okay, so &quot;analogix&quot; is okay for now<br>
-<br>
-Thanks,<br>
-- Yakir<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Best regards,<br>
-Jingoo Han<br>
-<br>
-<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
-x #ccc solid;padding-left:1ex">
-Beyond that, there are three light registers setting differents bewteen<br>
-exynos and rk3288.<br>
-1. RK3288 have five special pll resigters which not indicata in exynos<br>
-=C2=A0 =C2=A0 dp controller.<br>
-2. The address of DP_PHY_PD(dp phy power manager register) are different<br=
->
-=C2=A0 =C2=A0 between rk3288 and exynos.<br>
-3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug<=
-br>
-=C2=A0 =C2=A0 register).<br>
-<br>
-My series patches can be divider into two parts: One for spliting the<br>
-analogix_dp code from exynos dp driver. Another are trying to add rk3288<br=
->
-dp driver support.<br>
-<br>
-Best regards,<br>
-- Yakir<br>
-<br>
-<br>
---<br>
-2.1.2<br>
-</blockquote>
-<br>
-<br>
-<br>
-<br>
-</blockquote>
-<br>
-<br>
---<br>
-To unsubscribe from this list: send the line &quot;unsubscribe linux-samsun=
-g-soc&quot; in<br>
-the body of a message to <a>majordomo@vger.kernel.org</a><br>
-More majordomo info at=C2=A0 <a href=3D"http://vger.kernel.org/majordomo-in=
-fo.html" target=3D"_blank">http://vger.kernel.org/majordomo-info.html</a><b=
-r>
-</blockquote>
-
---001a113996804ae8ea051cb28317--
-
---===============0015066161==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0015066161==--
+-- 
+Dmitry
