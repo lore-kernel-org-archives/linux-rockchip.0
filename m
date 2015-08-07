@@ -1,39 +1,65 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v2 8/8] drm: bridge/analogix_dp: expand the delay time for hpd detect
-Date: Fri,  7 Aug 2015 05:54:04 -0500
-Message-ID: <1438944844-19243-1-git-send-email-ykk@rock-chips.com>
-References: <1438943674-18191-1-git-send-email-ykk@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438943674-18191-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>, Fabio Estevam <fabio.estevam@freescale.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>
-Cc: djkurtz@google.com, dianders@google.com, seanpaul@google.com, joe@perches.com, Takashi Iwai <tiwai@suse.de>, Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <treding@nvidia.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, ajaynumb@gmail.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yakir Yang <ykk@rock-c>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC PATCH 2/8] drm: exynos/dp: convert to drm bridge mode
+Date: Fri, 7 Aug 2015 13:25:35 +0200
+Message-ID: <20150807112535.GK17734@phenom.ffwll.local>
+References: <1438868947-22132-1-git-send-email-ykk@rock-chips.com>
+ <1438870041-23130-1-git-send-email-ykk@rock-chips.com>
+ <000001d0d052$f44fa3a0$dceeeae0$@com>
+ <55C36F49.6020207@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <55C36F49.6020207@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, 'Heiko Stuebner' <heiko@sntech.de>, 'Russell King' <rmk+kernel@arm.linux.org.uk>, 'Fabio Estevam' <fabio.estevam@freescale.com>, 'Inki Dae' <inki.dae@samsung.com>, 'Krzysztof Kozlowski' <k.kozlowski@samsung.com>, dri-devel@lists.freedesktop.org, 'Andrzej Hajda' <a.hajda@samsung.com>, 'Gustavo Padovan' <gustavo.padovan@collabora.co.uk>, 'Ajay Kumar' <ajaykumar.rs@samsung.com>, linux-samsung-soc@vger.kernel.org, 'Vincent Palatin' <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, 'Kukjin Kim' <kgene@kernel.org>, 'Thierry Reding' <treding@nvidia.com>, dianders@google.com, linux-arm-kernel@lists.infradead.org, 'Seung-Woo Kim' <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, 'Kyungmin Park' <kyungmin.park@samsung.com>, djkurtz@google.com, 'Andy Yan' <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some edp screen with no hpd signal would need some delay time
-to ensure that screen would be ready for work, so we can expand
-the delay time in hpd detect function, it works prefectly on my
-rk3288 sdk board.
+On Thu, Aug 06, 2015 at 10:29:29PM +0800, Yakir Yang wrote:
+> Hi Jingoo,
+>=20
+> =E5=9C=A8 2015/8/6 22:19, Jingoo Han =E5=86=99=E9=81=93:
+> >On Thursday, August 06, 2015 11:07 PM, Yakir Yang wrote:
+> >>In order to move exynos dp code to bridge directory,
+> >>we need to convert driver drm bridge mode first. As
+> >>dp driver already have a ptn3460 bridge, so we need
+> >>to move ptn bridge to the next bridge of dp bridge.
+> >>
+> >>Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> >>---
+> >>  drivers/gpu/drm/exynos/exynos_dp_core.c | 196 +++++++++++++++++++=
++------------
+> >>  drivers/gpu/drm/exynos/exynos_dp_core.h |   2 +
+> >>  2 files changed, 126 insertions(+), 72 deletions(-)
+> >>
+> >>diff --git a/drivers/gpu/drm/exynos/exynos_dp_core.c b/drivers/gpu/=
+drm/exynos/exynos_dp_core.c
+> >>index a8097a4..aa99e23 100644
+> >>--- a/drivers/gpu/drm/exynos/exynos_dp_core.c
+> >>+++ b/drivers/gpu/drm/exynos/exynos_dp_core.c
+> >>@@ -3,6 +3,7 @@
+> >>   *
+> >>   * Copyright (C) 2012 Samsung Electronics Co., Ltd.
+> >>   * Author: Jingoo Han <jg1.han@samsung.com>
+> >>+ *         Yakir Yang <ykk@rock-chips.com>
+> >Please don't add this.
+> >You just fixed some parts of this code. I don't find the reason
+> >why you have to be added to author for this file.
+> >If you want the title for an author, please send the patch
+> >for a new IP, instead of modifying the exiting codes.
+>=20
+> Okay, thanks for your remind ;)
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
----
-Changes in v2: None
+tbh the author lines are completely irrelevant, git blame/log is the
+authoritative source for that. Copyright is a bit a different matter
+entirely, but in general we seem to be not too good at updating.
 
- drivers/gpu/drm/bridge/analogix_dp_core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix_dp_core.c
-index efd810c..3ba10fa2 100644
---- a/drivers/gpu/drm/bridge/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix_dp_core.c
-@@ -71,7 +71,7 @@ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
- 			return 0;
- 
- 		timeout_loop++;
--		usleep_range(10, 11);
-+		usleep_range(100, 110);
- 	}
- 
- 	/*
--- 
-1.9.1
+Really if that's all you have to comment and no substantial technical
+concerns or questions then just can such a bikeshed mail.
+-Daniel
+--=20
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
