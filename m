@@ -1,75 +1,49 @@
-From: Dmitry Torokhov <dtor@chromium.org>
-Subject: [PATCH] thermal: rockhip: fix setting thermal shutdown polarity
-Date: Fri, 7 Aug 2015 14:00:52 -0700
-Message-ID: <20150807210052.GA34032@dtor-ws>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] ARM: dts: rockchip: reserve unusable memory region
+ on rk3288
+Date: Fri, 7 Aug 2015 14:31:02 -0700
+Message-ID: <CAD=FV=Vo0tQO-KdCLbcJF-yYEgwGbjEx3qvvnv7jgAKcVA4p+g@mail.gmail.com>
+References: <1763907.pckMEaRNPs@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Caesar Wang <wxt@rock-chips.com>, dianders@chromium.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1763907.pckMEaRNPs@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-When requested thermal shutdown signal polarity is low we need to make
-sure that the bit representing high level of signal is reset, and not
-set all other bits in that register.
-
-Also rename TSADCV2_INT_PD_CLEAR to TSADCV2_INT_PD_CLEAR_MASK to better
-reflect its nature.
-
-Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
----
- drivers/thermal/rockchip_thermal.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 93ee307..4d5b7d4 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -106,16 +106,14 @@ struct rockchip_thermal_data {
- #define TSADCV2_AUTO_PERIOD_HT			0x6c
- 
- #define TSADCV2_AUTO_EN				BIT(0)
--#define TSADCV2_AUTO_DISABLE			~BIT(0)
- #define TSADCV2_AUTO_SRC_EN(chn)		BIT(4 + (chn))
- #define TSADCV2_AUTO_TSHUT_POLARITY_HIGH	BIT(8)
--#define TSADCV2_AUTO_TSHUT_POLARITY_LOW		~BIT(8)
- 
- #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
- #define TSADCV2_SHUT_2GPIO_SRC_EN(chn)		BIT(4 + (chn))
- #define TSADCV2_SHUT_2CRU_SRC_EN(chn)		BIT(8 + (chn))
- 
--#define TSADCV2_INT_PD_CLEAR			~BIT(8)
-+#define TSADCV2_INT_PD_CLEAR_MASK		~BIT(8)
- 
- #define TSADCV2_DATA_MASK			0xfff
- #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
-@@ -244,10 +242,10 @@ static void rk_tsadcv2_initialize(void __iomem *regs,
- 				  enum tshut_polarity tshut_polarity)
- {
- 	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
--		writel_relaxed(0 | (TSADCV2_AUTO_TSHUT_POLARITY_HIGH),
-+		writel_relaxed(0U | TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
- 			       regs + TSADCV2_AUTO_CON);
- 	else
--		writel_relaxed(0 | (TSADCV2_AUTO_TSHUT_POLARITY_LOW),
-+		writel_relaxed(0U & ~TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
- 			       regs + TSADCV2_AUTO_CON);
- 
- 	writel_relaxed(TSADCV2_AUTO_PERIOD_TIME, regs + TSADCV2_AUTO_PERIOD);
-@@ -264,7 +262,7 @@ static void rk_tsadcv2_irq_ack(void __iomem *regs)
- 	u32 val;
- 
- 	val = readl_relaxed(regs + TSADCV2_INT_PD);
--	writel_relaxed(val & TSADCV2_INT_PD_CLEAR, regs + TSADCV2_INT_PD);
-+	writel_relaxed(val & TSADCV2_INT_PD_CLEAR_MASK, regs + TSADCV2_INT_PD);
- }
- 
- static void rk_tsadcv2_control(void __iomem *regs, bool enable)
--- 
-2.5.0.rc2.392.g76e840b
-
-
--- 
-Dmitry
+SGVpa28sCgpPbiBUaHUsIEF1ZyA2LCAyMDE1IGF0IDEwOjMzIEFNLCBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBUaGUgYWxsIGN1cnJlbnQgUm9ja2NoaXAgU29DcyBz
+dXBwb3J0aW5nIDRHQiBvZiByYW0gaGF2ZSBwcm9ibGVtcyBhY2Nlc3NpbmcKPiB0aGUgbWVtb3J5
+IHJlZ2lvbiAweGZlMDAwMDAwfjB4ZmYwMDAwMDAuIFRoaXMgYWxzbyBzZWVtcyB0byBpbmNsdWRl
+cyB0aGUKPiByazMzNjggYXJtNjQgc29jLgo+Cj4gQWxsIGN1cnJlbnQgY29kZSBoYW5kbGluZyBk
+bWEgbWVtb3J5IG9kZGl0aWVzIEkgY291bGQgZmluZCwgc2VlbSB0byBpbnZvbHZlCj4gc29jLXNw
+ZWNpZmljIGNvZGUgKHpvbmUtZG1hIG9yIHNvKSB3aGlsZSB0aGlzIGlzc3VlIGlzIHNoYXJlZCBi
+ZXR3ZWVuIGFybTMyCj4gYW5kIGFybTY0IHNvY3MgZnJvbSBSb2NrY2hpcCwgd2hpY2ggd291bGQg
+bmVlZCB0byBoYXZlIHRoaXMgZGVzY3JpYmVkIGluCj4gdGhlIHNvYyBkZXZpY2V0cmVlIG9uIGJv
+dGggc29jcy4KPgo+IExpbWl0aW5nIHRoZSBkbWEtem9uZSBhbG9uZSBhbHNvIGRvZXMgbm90IHNv
+bHZlIHRoZSBpc3N1ZSBhbmQgYXMgdGhlCj4gZG1hLW1hc2tzIG5lZWQgdG8gYmUgYSBwb3dlci1v
+Zi10d28gaW4gdGhlIGtlcm5lbCwgdGhlIG5leHQgbG93ZXIgZG1hLW1hc2sKPiBicmluZ3MgbWVt
+b3J5IHVzYWJsZSBmb3IgZG1hIGRvd24gdG8gMkdCLgo+Cj4gU28gYXMgYSBzdG9wLWdhcCBibG9j
+ayBvZmYgdGhlIGFmZmVjdGVkIHJlZ2lvbiB0byBwcmV2ZW50IGl0cyB1c2UgYnkKPiBkZXZpY2Vz
+IHdpdGggNEdCIG9mIG1lbW9yeSwgbGlrZSBzb21lIHJlY2VudCBDaHJvbWVib29rcy4KPgo+IFNp
+Z25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hh
+bmdlcyBzaW5jZSB2MToKPiAtIGV4cGFuZCByZWFzb25zIGZvciB0aGUgcmVzZXJ2ZWQgbWVtb3J5
+Cj4KPiAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgfCAyMCArKysrKysrKysrKysrKysr
+KysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKQoKQXMgZGlzY3Vzc2VkIGVh
+cmxpZXIsIEknbSBub3cgY29udmluY2VkIHRoYXQgdGhpcyBpcyBhbiBhcHByb3ByaWF0ZQpzdG9w
+Z2FwLiAgLi4uYW5kIHRoZSBkZXNjcmlwdGlvbiBsb29rcyBnb29kIHRvIG1lLgoKUmV2aWV3ZWQt
+Ynk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
