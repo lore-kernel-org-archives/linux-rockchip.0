@@ -1,72 +1,70 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 1/2] clk: rockchip: add pclk_pd_pmu to the list of rk3288 critical clocks
-Date: Fri, 07 Aug 2015 13:36:38 +0200
-Message-ID: <2226681.uyCeUEdNHm@diego>
-References: <1438939872-2116-1-git-send-email-hl@rock-chips.com> <55C47D59.8080403@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55C47D59.8080403@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: hl <hl@rock-chips.com>
-Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH v3 4/4] ARM: dts: rockchip: Add SPDIF optical out on Radxa Rock
+Date: Fri,  7 Aug 2015 13:44:14 +0200
+Message-ID: <1438947854-3743-5-git-send-email-sjoerd.simons@collabora.co.uk>
+References: <1438947854-3743-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1438947854-3743-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 7. August 2015, 17:41:45 schrieb hl:
-> Hi Heiko,
-> 
-> > pclk_pd_pmu needs to keep running and with the upcoming gpio clock
-> > handling this is not always the case anymore. So add it to the list
-> > of critical clocks for now.
-> > 
-> > From: Heiko Stuebner <heiko@sntech.de>
-> > Signed-off-by: Lin Huang <hl@rock-chips.com>
-> 
->      is it the right way?  if it still can not meet the requirement,
-> please let me know.
+This enables the SPDIF optical audio output on the Radxa Rock
 
-nearly, but not quite ;-)
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 
-You can take a look at my minnie patch [0] for inspiration.
+---
 
+Changes in v3:
+- Resent patches to a more complete list of maintainers.
 
-Also please make sure to include linus.walleij@linaro.org also in this
-first mail. This clock patch is a prequisite for the pinctrl change so
-we would like Linus Walleij to merge both into his pinctrl tree.
+Changes in v2: None
 
-Ideally both times in the "To" and not the "Cc" recipients, as To vs. Cc
-is often used to distinguish whom you want to apply the patch.
+ arch/arm/boot/dts/rk3188-radxarock.dts | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 4bb014d..dea020c 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -90,6 +90,21 @@
+ 		};
+ 	};
+ 
++	sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "SPDIF";
++
++		simple-audio-card,dai-link@1 {  /* S/PDIF - S/PDIF */
++			cpu { sound-dai = <&spdif>; };
++			codec { sound-dai = <&spdif_out>; };
++		};
++	};
++
++	spdif_out: spdif-out {
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++	};
++
+ 	ir_recv: gpio-ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+ 		gpios = <&gpio0 10 1>;
+@@ -343,6 +358,10 @@
+ 	};
+ };
+ 
++&spdif {
++	status = "okay";
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+-- 
+2.5.0
 
-Heiko
-
-
-[0] http://lists.infradead.org/pipermail/linux-rockchip/2015-August/003608.html
-
-
-
-
-> 
-> > ---
-> > Changes in v4:
-> > - Add From: Heiko Stuebner <heiko@sntech.de>
-> > 
-> >   drivers/clk/rockchip/clk-rk3288.c | 1 +
-> >   1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> > b/drivers/clk/rockchip/clk-rk3288.c index 0df5bae..9040878 100644
-> > --- a/drivers/clk/rockchip/clk-rk3288.c
-> > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > @@ -780,6 +780,7 @@ static const char *const rk3288_critical_clocks[]
-> > __initconst = {> 
-> >   	"aclk_cpu",
-> >   	"aclk_peri",
-> >   	"hclk_peri",
-> > 
-> > +	"pclk_pd_pmu",
-> > 
-> >   };
-> >   
-> >   #ifdef CONFIG_PM_SLEEP
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
