@@ -1,48 +1,67 @@
-From: Joachim Eastwood <manabian@gmail.com>
-Subject: Re: [RFC PATCH v4 7/9] arm: lpc18xx_defconfig: remove CONFIG_MMC_DW_IDMAC
-Date: Fri, 7 Aug 2015 23:34:24 +0200
-Message-ID: <CAGhQ9VxkFk19HGtToUm8bOU62Z8S0_dMqciUiNfJry-Jb5YF=Q@mail.gmail.com>
-References: <1438843469-23807-1-git-send-email-shawn.lin@rock-chips.com>
-	<1438843590-24101-1-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] ARM: dts: rockchip: add veyron-minnie board
+Date: Fri, 7 Aug 2015 15:06:39 -0700
+Message-ID: <CAD=FV=XVxxDzXkz7DuX47d=3MENzGkHrBYYDzH_KCKDpyORYYA@mail.gmail.com>
+References: <1763907.pckMEaRNPs@diego>
+	<3051758.nWNxbUbTXs@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1438843590-24101-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3051758.nWNxbUbTXs@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 6 August 2015 at 08:46, Shawn Lin <shawn.lin@rock-chips.com> wrote:
-> DesignWare MMC Controller's transfer mode should be decided
-> at runtime instead of compile-time. So we remove this config
-> option and read dw_mmc's register to select DMA master.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-Acked-by: Joachim Eastwood <manabian@gmail.com>
-
->  arch/arm/configs/lpc18xx_defconfig | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/arch/arm/configs/lpc18xx_defconfig b/arch/arm/configs/lpc18xx_defconfig
-> index 1c47f86..b7e8cda 100644
-> --- a/arch/arm/configs/lpc18xx_defconfig
-> +++ b/arch/arm/configs/lpc18xx_defconfig
-> @@ -119,7 +119,6 @@ CONFIG_USB_EHCI_HCD=y
->  CONFIG_USB_EHCI_ROOT_HUB_TT=y
->  CONFIG_MMC=y
->  CONFIG_MMC_DW=y
-> -CONFIG_MMC_DW_IDMAC=y
->  CONFIG_NEW_LEDS=y
->  CONFIG_LEDS_CLASS=y
->  CONFIG_LEDS_PCA9532=y
-> --
-> 2.3.7
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+SGVpa28sCgpPbiBUaHUsIEF1ZyA2LCAyMDE1IGF0IDEwOjM3IEFNLCBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiArJmkyYzMgewo+ICsgICAgICAgc3RhdHVzID0gIm9r
+YXkiOwo+ICsKPiArICAgICAgIC8qCj4gKyAgICAgICAgKiBUb3VjaHNjcmVlbiBwaW4gY29udHJv
+bCBpcyBzaGFyZWQgYmV0d2VlbiBBdG1lbCBhbmQgRWxhbiBkZXZpY2VzLAo+ICsgICAgICAgICog
+c28gd2UgaGF2ZSB0byBwdWxsIGl0IHVwIHRvIHRoZSBidXMgbGV2ZWwuCj4gKyAgICAgICAgKi8K
+PiArICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKyAgICAgICBwaW5jdHJsLTAg
+PSA8JmkyYzNfeGZlciAmdG91Y2hfaW50ICZ0b3VjaF9yc3Q+Owo+ICsKPiArICAgICAgIGNsb2Nr
+LWZyZXF1ZW5jeSA9IDw0MDAwMDA+Owo+ICsgICAgICAgaTJjLXNjbC1mYWxsaW5nLXRpbWUtbnMg
+PSA8NTA+Owo+ICsgICAgICAgaTJjLXNjbC1yaXNpbmctdGltZS1ucyA9IDwzMDA+Owo+ICsKPiAr
+ICAgICAgIHRvdWNoc2NyZWVuQDEwIHsKPiArICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJl
+bGFuLGVrdGgzNTAwIjsKPiArICAgICAgICAgICAgICAgcmVnID0gPDB4MTA+Owo+ICsgICAgICAg
+ICAgICAgICBpbnRlcnJ1cHQtcGFyZW50ID0gPCZncGlvMj47Cj4gKyAgICAgICAgICAgICAgIGlu
+dGVycnVwdHMgPSA8MTQgSVJRX1RZUEVfRURHRV9GQUxMSU5HPjsKPiArICAgICAgICAgICAgICAg
+cmVzZXQtZ3Bpb3MgPSA8JmdwaW8yIDE1IEdQSU9fQUNUSVZFX0xPVz47Cj4gKyAgICAgICAgICAg
+ICAgIHZjYzMzLXN1cHBseSA9IDwmdmNjMzNfdG91Y2g+Owo+ICsgICAgICAgICAgICAgICB2Y2Np
+by1zdXBwbHkgPSA8JnZjYzMzX3RvdWNoPjsKPiArICAgICAgIH07Cj4gKwo+ICsgICAgICAgdG91
+Y2hzY3JlZW5ANGEgewo+ICsgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gImF0bWVsLGF0bWVs
+X214dF90cyI7Cj4gKyAgICAgICAgICAgICAgIHJlZyA9IDwweDRhPjsKPiArICAgICAgICAgICAg
+ICAgYXRtZWwscmVzZXQtZ3Bpb3MgPSA8JmdwaW8yIDE1IEdQSU9fQUNUSVZFX0xPVz47Cj4gKyAg
+ICAgICAgICAgICAgIGF2ZGQtc3VwcGx5ID0gPCZ2Y2M1dl90b3VjaD47Cj4gKyAgICAgICAgICAg
+ICAgIGludGVycnVwdC1wYXJlbnQgPSA8JmdwaW8yPjsKPiArICAgICAgICAgICAgICAgaW50ZXJy
+dXB0cyA9IDwxNCBJUlFfVFlQRV9FREdFX0ZBTExJTkc+Owo+ICsgICAgICAgICAgICAgICB2ZGQt
+c3VwcGx5ID0gPCZ2Y2MzM190b3VjaD47CgpUZWNobmljYWxseSBJIGRvbid0IHRoaW5rIG1vc3Qg
+b2YgdGhlc2UgcHJvcGVydGllcyBleGlzdCB1cHN0cmVhbSwgYnV0CkRtaXRyeSAobm93IENDZWQp
+IG1pZ2h0IGtub3cgbW9yZS4KCi4uLmFjdHVhbGx5IHNpbWlsYXIgZm9yIGVsYW4uICBBdCBsZWFz
+dCBJIGRvbid0IHNlZSAncmVzZXQtZ3Bpb3MnLCBub3IKJ3ZjYzMzLXN1cHBseScgYW5kICd2Y2Np
+by1zdXBwbHknIGluIHRoZSBiaW5kaW5ncyB3aGVuIEkgY2hlY2tvdXQKbGludXhuZXh0Li4uCgpP
+aCwgYW5kIGFsc28gbG9jYWxseSBvdXIgdHJlZSBoYXMgaGFja3MgaW4gaXQgdG8gaGFuZGxlIHRo
+ZSBmYWN0IHRoYXQKYm90aCBhdG1lbCBhbmQgZWxhbiB3aWxsIHRyeSB0byBncmFiIHRoZSBzYW1l
+IHJlc2V0IEdQSU8uICBJJ20gbmVhcmx5CmNlcnRhaW4gdGhhdCBEbWl0cnkgc2FpZCB0aGF0IHRo
+ZSBjdXJyZW50IGhhY2tzIHdlIGhhdmUgd291bGRuJ3QgYmUKYXBwcm9wcmlhdGUgZm9yIHVwc3Ry
+ZWFtLiAgSSBoYWQgc29tZSBwcm9wb3NhbHMgZm9yIGJldHRlciBzb2x1dGlvbnMsCmJ1dCB0aGV5
+IHdlcmUgc2xpZ2h0bHkgbW9yZSBjb250cm92ZXJzaWFsLiAgSW4gYW55IGNhc2UsIEkgdGhpbmsg
+YWxsCnNoaXBwaW5nIGRldmljZXMgZW5kZWQgdXAgdXNpbmcgb25lIG9yIHRoZSBvdGhlciBvZiB0
+aGVzZSB0d28KdG91Y2hzY3JlZW5zIChJIGZvcmdldCB3aGljaCksIHNvIHlvdSBjb3VsZCBwcm9i
+YWJseSBzaW1wbGlmeSBhbmQganVzdApwaWNrIG9uZSBvZiB0aGVtLiAgSWYgb2xkIHByb3RvdHlw
+ZSBkZXZpY2VzIGRvbid0IHdvcmsgdXBzdHJlYW0gaXQKd291bGRuJ3QgYmUgdGhlIGVuZCBvZiB0
+aGUgd29ybGQuCgoKRXZlcnl0aGluZyBlbHNlIGxvb2tzIGZpbmUgdG8gbWUsIHNvIGlmIHlvdSBh
+dm9pZCB1c2luZyBub24tdXBzdHJlYW0KcHJvcGVydGllcyBmb3IgdGhlIHRvdWNoc2NyZWVucyB0
+aGVuIHlvdSBjYW4gYWRkIG15IFJldmlld2VkLWJ5LgoKLURvdWcKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
