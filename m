@@ -1,69 +1,63 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 2/4] ASoc: rockchip: Add rockchip SPDIF transceiver driver
-Date: Fri, 7 Aug 2015 14:13:59 +0100
-Message-ID: <20150807131359.GA8892@sirena.org.uk>
-References: <1438085011-16577-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <1438085011-16577-3-git-send-email-sjoerd.simons@collabora.co.uk>
- <1438159908.5106.32.camel@tiscali.nl>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [RFC PATCH 2/8] drm: exynos/dp: convert to drm bridge mode
+Date: Fri, 7 Aug 2015 21:18:10 +0800
+Message-ID: <55C4B012.3010600@rock-chips.com>
+References: <1438868947-22132-1-git-send-email-ykk@rock-chips.com>
+ <1438870041-23130-1-git-send-email-ykk@rock-chips.com>
+ <000001d0d052$f44fa3a0$dceeeae0$@com> <55C36F49.6020207@rock-chips.com>
+ <20150807112535.GK17734@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="zhXaljGHf11kAtnf"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1438159908.5106.32.camel@tiscali.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Paul Bolle <pebolle@tiscali.nl>
-Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Mark Rutland <mark.rutland@arm.com>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20150807112535.GK17734@phenom.ffwll.local>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Jingoo Han <jingoohan1@gmail.com>, 'Heiko Stuebner' <heiko@sntech.de>, 'Russell King' <rmk+kernel@arm.linux.org.uk>, 'Fabio Estevam' <fabio.estevam@freescale.com>, 'Inki Dae' <inki.dae@samsung.com>, 'Krzysztof Kozlowski' <k.kozlowski@samsung.com>, dri-devel@lists.freedesktop.org, 'Andrzej Hajda' <a.hajda@samsung.com>, 'Gustavo Padovan' <gustavo.padovan@collabora.co.uk>, 'Ajay Kumar' <ajaykumar.rs@samsung.com>, linux-samsung-soc@vger.kernel.org, 'Vincent Palatin' <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, 'Kukjin Kim' <kgene@kernel.org>, 'Thierry Reding' <treding@nvidia.com>, dianders@google.com, linux-arm-kernel@lists.infradead.org, 'Seung-Woo Kim' <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, 'Kyungmin Park' <kyungmin.park@samsung.com>, djkurtz@google.com, 'Andy Yan' <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Daniel,
 
---zhXaljGHf11kAtnf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+=E5=9C=A8 2015/8/7 19:25, Daniel Vetter =E5=86=99=E9=81=93:
+> On Thu, Aug 06, 2015 at 10:29:29PM +0800, Yakir Yang wrote:
+>> Hi Jingoo,
+>>
+>> =E5=9C=A8 2015/8/6 22:19, Jingoo Han =E5=86=99=E9=81=93:
+>>> On Thursday, August 06, 2015 11:07 PM, Yakir Yang wrote:
+>>>> In order to move exynos dp code to bridge directory,
+>>>> we need to convert driver drm bridge mode first. As
+>>>> dp driver already have a ptn3460 bridge, so we need
+>>>> to move ptn bridge to the next bridge of dp bridge.
+>>>>
+>>>> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>>>> ---
+>>>>   drivers/gpu/drm/exynos/exynos_dp_core.c | 196 ++++++++++++++++++=
+++------------
+>>>>   drivers/gpu/drm/exynos/exynos_dp_core.h |   2 +
+>>>>   2 files changed, 126 insertions(+), 72 deletions(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/exynos/exynos_dp_core.c b/drivers/gpu=
+/drm/exynos/exynos_dp_core.c
+>>>> index a8097a4..aa99e23 100644
+>>>> --- a/drivers/gpu/drm/exynos/exynos_dp_core.c
+>>>> +++ b/drivers/gpu/drm/exynos/exynos_dp_core.c
+>>>> @@ -3,6 +3,7 @@
+>>>>    *
+>>>>    * Copyright (C) 2012 Samsung Electronics Co., Ltd.
+>>>>    * Author: Jingoo Han <jg1.han@samsung.com>
+>>>> + *         Yakir Yang <ykk@rock-chips.com>
+>>> Please don't add this.
+>>> You just fixed some parts of this code. I don't find the reason
+>>> why you have to be added to author for this file.
+>>> If you want the title for an author, please send the patch
+>>> for a new IP, instead of modifying the exiting codes.
+>> Okay, thanks for your remind ;)
+> tbh the author lines are completely irrelevant, git blame/log is the
+> authoritative source for that. Copyright is a bit a different matter
+> entirely, but in general we seem to be not too good at updating.
+Thanks for your good explain  ;)
 
-On Wed, Jul 29, 2015 at 10:51:48AM +0200, Paul Bolle wrote:
-
-> > +		.name =3D DRV_NAME,
-> > +		.of_match_table =3D of_match_ptr(rockchip_spdif_match),
-> > +		.pm =3D &rockchip_spdif_pm_ops,
-> > +	},
-> > +};
-> > +module_platform_driver(rockchip_spdif_driver);
-
-> > +MODULE_ALIAS("platform:" DRV_NAME);
-
-> (I seem to remember that Mark Brown is OK with this, at least for the
-> time being, but for future reference I'll ask the question anyway.) Is
-> there a corresponding struct platform_device with a "rockchip-spdif"
-> .name? Because if there's no such platform_device I think this line
-> doesn't really do anything for this driver.
-
-Paul, you've been told this before but please stop providing these
-review comments.  It has been explained to you repeatedly that we do not
-require any form of machine definition to be merged to merge a driver,
-please pay attention to those explanations and stop sending the same
-bogus feedback to patch submitters.  This just creates confusion for the
-submitters and wastes everyone's time. =20
-
-If you have questions the way to raise them is to respond to the
-original discussions, not to send new replies to other submitters
-repeating the same feedback you were previously advised was incorrect.
-
---zhXaljGHf11kAtnf
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEbBAEBCAAGBQJVxK8WAAoJECTWi3JdVIfQK58H+Pv1xUNvskBTGbB7siRHRiPu
-Zrt4mMYvLay4gqlHKtdoPnoJ91niglKFYy3v7cY8mFzkA8nUIpeIK3yELMfudJL/
-mu+WcVbXPPG6TIpmB1qeAonxx9BW5qk7Y0Hn2+mk2/K4GYAXcNadunBZ6AhAig4N
-S5AsFqShW68CYId4O4traK6RCcmr3T6DUz0eaHcc5Dn+gN4nRBZ/lwb9PbtzRRz0
-sumMSmAYy6o86sc8CVMt99mNswvLiL14hNLXUO9x6kcfirWVwUtq41LGi58qes8m
-rSY8UlwBmPrAs63npNGAi2tDynBAJ38Ej7cszYut7/f/nLzpJW07w06RqQws9g==
-=mEKU
------END PGP SIGNATURE-----
-
---zhXaljGHf11kAtnf--
+- Yakir
+> Really if that's all you have to comment and no substantial technical
+> concerns or questions then just can such a bikeshed mail.
+> -Daniel
