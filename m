@@ -1,129 +1,45 @@
-From: Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: [PATCH 10/12] drm: bridge/dw_hdmi: fix phy enable/disable handling
-Date: Sat, 08 Aug 2015 17:04:11 +0100
-Message-ID: <E1ZO6bT-0002vk-3d@rmk-PC.arm.linux.org.uk>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 0/9] dw-hdmi audio support
+Date: Sat, 8 Aug 2015 17:09:36 +0100
+Message-ID: <20150808160936.GN7557@n2100.arm.linux.org.uk>
 References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150808160251.GM7557-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Fabio Estevam <fabio.estevam-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jon Nettleton <jon.nettleton-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The dw_hdmi enable/disable handling is particularly weak in several
-regards:
-* The hotplug interrupt could call hdmi_poweron() or hdmi_poweroff()
-  while DRM is setting a mode, which could race with a mode being set.
-* Hotplug will always re-enable the phy whenever it detects an active
-  hotplug signal, even if DRM has disabled the output.
-
-Resolve all of these by introducing a mutex to prevent races, and a
-state-tracking bool so we know whether DRM wishes the output to be
-enabled.  We choose to use our own mutex rather than ->struct_mutex
-so that we can still process interrupts in a timely fashion.
-
-Signed-off-by: Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
----
- drivers/gpu/drm/bridge/dw_hdmi.c | 29 ++++++++++++++++++++++-------
- 1 file changed, 22 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
-index 7b8a4e942a71..0ee188930d26 100644
---- a/drivers/gpu/drm/bridge/dw_hdmi.c
-+++ b/drivers/gpu/drm/bridge/dw_hdmi.c
-@@ -125,6 +125,9 @@ struct dw_hdmi {
- 	bool sink_is_hdmi;
- 	bool sink_has_audio;
- 
-+	struct mutex mutex;		/* for state below and previous_mode */
-+	bool disabled;			/* DRM has disabled our bridge */
-+
- 	spinlock_t audio_lock;
- 	struct mutex audio_mutex;
- 	unsigned int sample_rate;
-@@ -1389,8 +1392,12 @@ static void dw_hdmi_bridge_mode_set(struct drm_bridge *bridge,
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
- 
-+	mutex_lock(&hdmi->mutex);
-+
- 	/* Store the display mode for plugin/DKMS poweron events */
- 	memcpy(&hdmi->previous_mode, mode, sizeof(hdmi->previous_mode));
-+
-+	mutex_unlock(&hdmi->mutex);
- }
- 
- static bool dw_hdmi_bridge_mode_fixup(struct drm_bridge *bridge,
-@@ -1404,14 +1411,20 @@ static void dw_hdmi_bridge_disable(struct drm_bridge *bridge)
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
- 
-+	mutex_lock(&hdmi->mutex);
-+	hdmi->disabled = true;
- 	dw_hdmi_poweroff(hdmi);
-+	mutex_unlock(&hdmi->mutex);
- }
- 
- static void dw_hdmi_bridge_enable(struct drm_bridge *bridge)
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
- 
-+	mutex_lock(&hdmi->mutex);
- 	dw_hdmi_poweron(hdmi);
-+	hdmi->disabled = false;
-+	mutex_unlock(&hdmi->mutex);
- }
- 
- static void dw_hdmi_bridge_nop(struct drm_bridge *bridge)
-@@ -1534,20 +1547,20 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
- 	phy_int_pol = hdmi_readb(hdmi, HDMI_PHY_POL0);
- 
- 	if (intr_stat & HDMI_IH_PHY_STAT0_HPD) {
-+		hdmi_modb(hdmi, ~phy_int_pol, HDMI_PHY_HPD, HDMI_PHY_POL0);
-+		mutex_lock(&hdmi->mutex);
- 		if (phy_int_pol & HDMI_PHY_HPD) {
- 			dev_dbg(hdmi->dev, "EVENT=plugin\n");
- 
--			hdmi_modb(hdmi, 0, HDMI_PHY_HPD, HDMI_PHY_POL0);
--
--			dw_hdmi_poweron(hdmi);
-+			if (!hdmi->disabled)
-+				dw_hdmi_poweron(hdmi);
- 		} else {
- 			dev_dbg(hdmi->dev, "EVENT=plugout\n");
- 
--			hdmi_modb(hdmi, HDMI_PHY_HPD, HDMI_PHY_HPD,
--				  HDMI_PHY_POL0);
--
--			dw_hdmi_poweroff(hdmi);
-+			if (!hdmi->disabled)
-+				dw_hdmi_poweroff(hdmi);
- 		}
-+		mutex_unlock(&hdmi->mutex);
- 		drm_helper_hpd_irq_event(hdmi->bridge->dev);
- 	}
- 
-@@ -1617,7 +1630,9 @@ int dw_hdmi_bind(struct device *dev, struct device *master,
- 	hdmi->sample_rate = 48000;
- 	hdmi->ratio = 100;
- 	hdmi->encoder = encoder;
-+	hdmi->disabled = true;
- 
-+	mutex_init(&hdmi->mutex);
- 	mutex_init(&hdmi->audio_mutex);
- 	spin_lock_init(&hdmi->audio_lock);
- 
--- 
-2.1.0
+Rm9sbG93aW5nIG9uIGZyb20gdGhlIHByZXZpb3VzIHN1Yi1zZXJpZXMsIHRoaXMgc3ViLXNlcmll
+cyBhZGRzIGF1ZGlvCnN1cHBvcnQgdG8gZHctaGRtaS4KClRoZSB0d28gZGlmZmVyZW50IHZhcmlh
+bnRzIGFyZSBub3cgaW4gdGhpcyBwYXRjaDogQUhCIGF1ZGlvIHN1cHBvcnQKZm91bmQgb24gaU1Y
+NiBwbGF0Zm9ybXMsIGFuZCBJMlMgc3VwcG9ydCBmb3VuZCBvbiBSb2NrY2hpcCBwYXRjaGVzLgpU
+aGFua3MgdG8gWWFraXIgWWFuZyBmb3IgY29udHJpYnV0aW5nIHRoZSBJMlMgc3VwcG9ydC4KCkkg
+c3VzcGVjdCB0aGF0IHRoZXJlIGlzIHN0aWxsIHNvbWUgZGlzY3Vzc2lvbiB0byBiZSBoYWQgb24g
+dGhpcwpzZXJpZXMsIHRob3VnaCBJIHdvdWxkIGxpa2UgdG8gc2VlIGl0IG1vdmluZyBmb3J3YXJk
+IHNvIHRoYXQgd2UgY2FuCmdldCBzb21ldGhpbmcgbWVyZ2VkLgoKIGRyaXZlcnMvZ3B1L2RybS9i
+cmlkZ2UvS2NvbmZpZyAgICAgICAgICAgICB8ICAyMCArCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L01ha2VmaWxlICAgICAgICAgICAgfCAgIDIgKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19o
+ZG1pLWFoYi1hdWRpby5jIHwgNjM1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWktYXVkaW8uaCAgICAgfCAgMTQgKwogZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9kd19oZG1pLWkycy1hdWRpby5jIHwgMzk4ICsrKysrKysrKysrKysrKysr
+KwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMgICAgICAgICAgIHwgMjAyICsrKyst
+LS0tLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAgIHwgICA2ICsK
+IDcgZmlsZXMgY2hhbmdlZCwgMTE1NSBpbnNlcnRpb25zKCspLCAxMjIgZGVsZXRpb25zKC0pCgot
+LSAKRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDEwLjVNYnBz
+IGRvd24gNDAwa2JwcyB1cAphY2NvcmRpbmcgdG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
