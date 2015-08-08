@@ -1,46 +1,56 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: [PATCH 00/12] dw-hdmi development
-Date: Sat, 8 Aug 2015 17:02:51 +0100
-Message-ID: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+From: Russell King <rmk+kernel@arm.linux.org.uk>
+Subject: [PATCH 01/12] drm: bridge/dw_hdmi: remove pixel repetition setting
+ for all VICs
+Date: Sat, 08 Aug 2015 17:03:24 +0100
+Message-ID: <E1ZO6ai-0002qN-Nn@rmk-PC.arm.linux.org.uk>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jon Nettleton <jon.nettleton@gmail.com>, David Airlie <airlied@linux.ie>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBzdWItc2VyaWVzIGlzIGEgbWl4dHVyZSBvZiBkZXZlbG9wbWVudDoKCiogUmVtb3Zpbmcg
-dGhlIGluY29ycmVjdCBwaXhlbCByZXBldGl0aW9uIGNvbmZpZ3VyYXRpb24gY29kZQoqIFByZXZl
-bnRpbmcgcGl4ZWwtZG91YmxlZCBtb2RlcyBmcm9tIGJlaW5nIHVzZWQKKiBBZGRpbmcgaW50ZXJs
-YWNlZCB2aWRlbyBzdXBwb3J0CiogSW1wbGVtZW50aW5nIHRoZSBzaW5rX2lzX2hkbWkvc2lua19o
-YXNfYXVkaW8gZmxhZ3MgSSBzdWdnZXN0ZWQgYSBmZXcKICBtb250aHMgYWdvCiogT25seSBlbmFi
-bGluZyBhdWRpbyBzdXBwb3J0IGlmIHRoZSBzaW5rIGluZGljYXRlcyBpdCBoYXMgYXVkaW8KKiBB
-dm9pZGluZyBkb3VibGUtZW5hYmxpbmcgdGhlIEhETUkgaW50ZXJmYWNlCiogRml4aW5nIHRoZSBt
-aXMtbGVhZGluZyBuYW1lIG9mICJkd19oZG1pX3BoeV9lbmFibGVfcG93ZXIiCiogQWRkaW5nIGNv
-bm5lY3RvciBtb2RlIGZvcmNpbmcgKGltcG9ydGFudCBpZiB5b3VyIG1vbml0b3IgYm91bmNlcwog
-IFJYU0VOU0UgYW5kIEhQRCBzaWduYWxzIHdoaWxlIGluIGxvdy1wb3dlciBtb2RlLikKKiBJbXBy
-b3ZpbmcgdGhlIEhETUkgZW5hYmxlL2Rpc2FibGluZyBvbiBzaW5rIHN0YXR1cwoKRm9yIHJldmll
-dyAoYW5kIHRlc3RpbmcgaWYgcGVvcGxlIGZlZWwgbGlrZSBpdCkuICBBY2tzL3Rlc3RlZC1ieXMg
-ZXRjCndlbGNvbWUuICBJdCBhcHBsaWVzIG9uIHRvcCBvZiBteSBkcm0tZHdoZG1pLWRldmVsIGJy
-YW5jaCwgd2hpY2ggaXMKd2FpdGluZyBmb3IgRGF2aWQgQWlybGllIHRvIHB1bGwgKHNlZSBwdWxs
-IHJlcXVlc3Qgb24gZHJpLWRldmVsLCAxNXRoCkp1bHkuKQoKIGRyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvZHdfaGRtaS5jIHwgMjc1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0t
-LQogZHJpdmVycy9ncHUvaXB1LXYzL2lwdS1kYy5jICAgICAgfCAgMTggKystCiBkcml2ZXJzL2dw
-dS9pcHUtdjMvaXB1LWRpLmMgICAgICB8IDEyOSArKysrKysrKystLS0tLS0tLS0KIDMgZmlsZXMg
-Y2hhbmdlZCwgMjkxIGluc2VydGlvbnMoKyksIDEzMSBkZWxldGlvbnMoLSkKCi0tIApGVFRDIGJy
-b2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgMTAuNU1icHMgZG93biA0MDBr
-YnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+dw_hdmi sets a pixel repetition factor of 1 for VICs 10-15, 25-30 and
+35-38.  However, DRM uses their native resolutions in its timing
+information.  For example, VIC 14 can be 1440x480 with no repetition,
+or 720x480 with one pixel repetition.  As DRM uses 1440 pixels per line
+for this video mode, we need no pixel repetition.
+
+In any case, pixel repetition appears broken in dw_hdmi.
+
+Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+---
+ drivers/gpu/drm/bridge/dw_hdmi.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
+index f070ee07b8c9..1c0ee3476138 100644
+--- a/drivers/gpu/drm/bridge/dw_hdmi.c
++++ b/drivers/gpu/drm/bridge/dw_hdmi.c
+@@ -1236,18 +1236,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi, struct drm_display_mode *mode)
+ 	else
+ 		hdmi->hdmi_data.colorimetry = HDMI_COLORIMETRY_ITU_709;
+ 
+-	if ((hdmi->vic == 10) || (hdmi->vic == 11) ||
+-	    (hdmi->vic == 12) || (hdmi->vic == 13) ||
+-	    (hdmi->vic == 14) || (hdmi->vic == 15) ||
+-	    (hdmi->vic == 25) || (hdmi->vic == 26) ||
+-	    (hdmi->vic == 27) || (hdmi->vic == 28) ||
+-	    (hdmi->vic == 29) || (hdmi->vic == 30) ||
+-	    (hdmi->vic == 35) || (hdmi->vic == 36) ||
+-	    (hdmi->vic == 37) || (hdmi->vic == 38))
+-		hdmi->hdmi_data.video_mode.mpixelrepetitionoutput = 1;
+-	else
+-		hdmi->hdmi_data.video_mode.mpixelrepetitionoutput = 0;
+-
++	hdmi->hdmi_data.video_mode.mpixelrepetitionoutput = 0;
+ 	hdmi->hdmi_data.video_mode.mpixelrepetitioninput = 0;
+ 
+ 	/* TODO: Get input format from IPU (via FB driver interface) */
+-- 
+2.1.0
