@@ -1,63 +1,65 @@
 From: Russell King <rmk+kernel@arm.linux.org.uk>
-Subject: [PATCH 08/12] drm: bridge/dw_hdmi: avoid enabling interface in
- mode_set
-Date: Sat, 08 Aug 2015 17:04:00 +0100
-Message-ID: <E1ZO6bI-0002rG-PI@rmk-PC.arm.linux.org.uk>
+Subject: [PATCH 09/12] drm: bridge/dw_hdmi: rename dw_hdmi_phy_enable_power()
+Date: Sat, 08 Aug 2015 17:04:05 +0100
+Message-ID: <E1ZO6bN-0002uc-UE@rmk-PC.arm.linux.org.uk>
 References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 In-Reply-To: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jon Nettleton <jon.nettleton@gmail.com>, David Airlie <airlied@linux.ie>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On a mode set, DRM makes the following sequence of calls:
-* for_each_encoder
-*   bridge	mode_fixup
-*   encoder	mode_fixup
-* crtc		mode_fixup
-* for_each_encoder
-*   bridge	disable
-*   encoder	prepare
-*   bridge	post_disable
-* disable unused encoders
-* crtc		prepare
-* crtc		mode_set
-* for_each_encoder
-*   encoder	mode_set
-*   bridge	mode_set
-* crtc		commit
-* for_each_encoder
-*   bridge	pre_enable
-*   encoder	commit
-*   bridge	enable
-
-dw_hdmi enables the HDMI output in both the bridge mode_set() and also
-the bridge enable() step.  This is duplicated work - we can avoid the
-setup in mode_set() and just do it in the enable() stage.  This
-simplifies the code a little.
-
-Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
----
- drivers/gpu/drm/bridge/dw_hdmi.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
-index 578d7362cd65..fbac8386552b 100644
---- a/drivers/gpu/drm/bridge/dw_hdmi.c
-+++ b/drivers/gpu/drm/bridge/dw_hdmi.c
-@@ -1389,8 +1389,6 @@ static void dw_hdmi_bridge_mode_set(struct drm_bridge *bridge,
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
- 
--	dw_hdmi_setup(hdmi, mode);
--
- 	/* Store the display mode for plugin/DKMS poweron events */
- 	memcpy(&hdmi->previous_mode, mode, sizeof(hdmi->previous_mode));
- }
--- 
-2.1.0
+ZHdfaGRtaV9waHlfZW5hYmxlX3Bvd2VyKCkgaXMgbm90IGFib3V0IGVuYWJsaW5nIGFuZCBkaXNh
+YmxpbmcgcG93ZXIuCkl0IGlzIGFib3V0IGFsbG93aW5nIG9yIHByZXZlbnRpbmcgcG93ZXItZG93
+biBtb2RlIGJlaW5nIGVudGVyZWQgLSB0aGUKcmVnaXN0ZXIgaXMgZG9jdW1lbnRlZCBhcyAiUG93
+ZXItZG93biBlbmFibGUgKGFjdGl2ZSBsb3cgMGIpLiIKClRoaXMgY2FuIGJlIHNlZW4gYXMgdGhl
+IGJpdCBoYXMgbm8gZWZmZWN0IHdoZW4gdGhlIEhETUkgcGh5IGlzCm9wZXJhdGlvbmFsIG9uIGlN
+WDYgaGFyZHdhcmUuCgpSZW5hbWUgdGhlIGZ1bmN0aW9uIHRvIGR3X2hkbWlfcGh5X2VuYWJsZV9w
+b3dlcmRvd24oKSB0byByZWZsZWN0IHRoZQpkb2N1bWVudGF0aW9uLCBtYWtlIGl0IHRha2UgYSBi
+b29sIGZvciB0aGUgJ2VuYWJsZScgYXJndW1lbnQsIGFuZCBpbnZlcnQKdGhlIHZhbHVlIHRvIGJl
+IHdyaXR0ZW4uCgpTaWduZWQtb2ZmLWJ5OiBSdXNzZWxsIEtpbmcgPHJtaytrZXJuZWxAYXJtLmxp
+bnV4Lm9yZy51az4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyB8IDEwICsr
+KysrLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0p
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYwppbmRleCBmYmFjODM4NjU1MmIuLjdiOGE0ZTk0MmE3
+MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKKysrIGIvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKQEAgLTczNyw5ICs3MzcsOSBAQCBzdGF0aWMg
+aW50IGhkbWlfcGh5X2kyY193cml0ZShzdHJ1Y3QgZHdfaGRtaSAqaGRtaSwgdW5zaWduZWQgc2hv
+cnQgZGF0YSwKIAlyZXR1cm4gMDsKIH0KIAotc3RhdGljIHZvaWQgZHdfaGRtaV9waHlfZW5hYmxl
+X3Bvd2VyKHN0cnVjdCBkd19oZG1pICpoZG1pLCB1OCBlbmFibGUpCitzdGF0aWMgdm9pZCBkd19o
+ZG1pX3BoeV9lbmFibGVfcG93ZXJkb3duKHN0cnVjdCBkd19oZG1pICpoZG1pLCBib29sIGVuYWJs
+ZSkKIHsKLQloZG1pX21hc2tfd3JpdGViKGhkbWksIGVuYWJsZSwgSERNSV9QSFlfQ09ORjAsCisJ
+aGRtaV9tYXNrX3dyaXRlYihoZG1pLCAhZW5hYmxlLCBIRE1JX1BIWV9DT05GMCwKIAkJCSBIRE1J
+X1BIWV9DT05GMF9QRFpfT0ZGU0VULAogCQkJIEhETUlfUEhZX0NPTkYwX1BEWl9NQVNLKTsKIH0K
+QEAgLTg3OSw3ICs4NzksNyBAQCBzdGF0aWMgaW50IGhkbWlfcGh5X2NvbmZpZ3VyZShzdHJ1Y3Qg
+ZHdfaGRtaSAqaGRtaSwgdW5zaWduZWQgY2hhciBwcmVwLAogCS8qIFJFTU9WRSBDTEsgVEVSTSAq
+LwogCWhkbWlfcGh5X2kyY193cml0ZShoZG1pLCAweDgwMDAsIDB4MDUpOyAgLyogQ0tDQUxDVFJM
+ICovCiAKLQlkd19oZG1pX3BoeV9lbmFibGVfcG93ZXIoaGRtaSwgMSk7CisJZHdfaGRtaV9waHlf
+ZW5hYmxlX3Bvd2VyZG93bihoZG1pLCBmYWxzZSk7CiAKIAkvKiB0b2dnbGUgVE1EUyBlbmFibGUg
+Ki8KIAlkd19oZG1pX3BoeV9lbmFibGVfdG1kcyhoZG1pLCAwKTsKQEAgLTkyNCw3ICs5MjQsNyBA
+QCBzdGF0aWMgaW50IGR3X2hkbWlfcGh5X2luaXQoc3RydWN0IGR3X2hkbWkgKmhkbWkpCiAJCWR3
+X2hkbWlfcGh5X3NlbF9kYXRhX2VuX3BvbChoZG1pLCAxKTsKIAkJZHdfaGRtaV9waHlfc2VsX2lu
+dGVyZmFjZV9jb250cm9sKGhkbWksIDApOwogCQlkd19oZG1pX3BoeV9lbmFibGVfdG1kcyhoZG1p
+LCAwKTsKLQkJZHdfaGRtaV9waHlfZW5hYmxlX3Bvd2VyKGhkbWksIDApOworCQlkd19oZG1pX3Bo
+eV9lbmFibGVfcG93ZXJkb3duKGhkbWksIHRydWUpOwogCiAJCS8qIEVuYWJsZSBDU0MgKi8KIAkJ
+cmV0ID0gaGRtaV9waHlfY29uZmlndXJlKGhkbWksIDAsIDgsIGNzY29uKTsKQEAgLTExNTUsNyAr
+MTE1NSw3IEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfcGh5X2Rpc2FibGUoc3RydWN0IGR3X2hkbWkg
+KmhkbWkpCiAJCXJldHVybjsKIAogCWR3X2hkbWlfcGh5X2VuYWJsZV90bWRzKGhkbWksIDApOwot
+CWR3X2hkbWlfcGh5X2VuYWJsZV9wb3dlcihoZG1pLCAwKTsKKwlkd19oZG1pX3BoeV9lbmFibGVf
+cG93ZXJkb3duKGhkbWksIHRydWUpOwogCiAJaGRtaS0+cGh5X2VuYWJsZWQgPSBmYWxzZTsKIH0K
+LS0gCjIuMS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
