@@ -1,79 +1,180 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 2/2] Rockchip devicetree changes for 4.3, part2
-Date: Sat, 08 Aug 2015 23:28:54 +0200
-Message-ID: <1647709.GpuDCKf86R@diego>
-References: <3109032.sS4ICWceDv@diego>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v5 4/6] drm: bridge/dw_hdmi-i2s-audio: add audio driver
+Date: Sun, 9 Aug 2015 14:17:03 +0800
+Message-ID: <55C6F05F.1030003@rock-chips.com>
+References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
+ <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
+ <20150808153540.GL7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3109032.sS4ICWceDv@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============0052308134=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20150808153540.GL7557@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel <alsa-devel@alsa-project.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, Paul Bolle <pebolle@tiscali.nl>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 4863dcd394019b542ac968870cba734d27e992e0:
+This is a multi-part message in MIME format.
+--===============0052308134==
+Content-Type: multipart/alternative;
+ boundary="------------080403040900080003010308"
 
-  ARM: dts: rockchip: add rk3288 arm-pmu irq affinity (2015-07-16 22:22:47 +0200)
+This is a multi-part message in MIME format.
+--------------080403040900080003010308
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-are available in the git repository at:
+Hi Russell,
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.3-rockchip32-dts2
+=E5=9C=A8 2015/8/8 23:35, Russell King - ARM Linux =E5=86=99=E9=81=93:
+> On Sat, Jun 20, 2015 at 12:28:15AM +0800, Yakir Yang wrote:
+>> Add ALSA based HDMI I2S audio driver for dw_hdmi. Sound card
+>> driver could connect to this codec through the codec dai name
+>> "dw-hdmi-i2s-audio".
+> I'm applying this patch to my tree with some changes.  I haven't seen
+> anyone ack it, nor review it any further.  I'm hoping someone can ack
+> this patch with the following changes below - I'll be posting it as
+> part of my dw-hdmi devel updates later today.
+Aha, wow !!!
+I'm so happy now :-D, many thanks for your improved and applay.
 
-for you to fetch changes up to 378abcdf3297613f6712343ce3a79b7d6abdf955:
+- Yakir
 
-  ARM: dts: rockchip: add veyron-minnie board (2015-08-08 12:31:27 +0200)
+>> +	ret =3D request_irq(dw->data.irq, snd_dw_hdmi_irq, IRQF_SHARED,
+>> +			  "dw-dw-audio", dw);
+> 			  DRIVER_NAME, dw);
+>
+>> +MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
+>> +MODULE_DESCRIPTION("DW dw Audio ASoC Interface");
+> Fixing this to be "Synopsis DesignWare HDMI I2S ASoC interface".
+>
+>> +MODULE_LICENSE("GPL v2");
+>> +MODULE_ALIAS(PLATFORM_MODULE_PREFIX DRIVER_NAME);
+> Replacing PLATFORM_MODULE_PREFIX with the "platform:" string.
+>
+>> +	if (hdmi_readb(hdmi, HDMI_CONFIG1_ID) & HDMI_CONFIG1_AHB) {
+>>   		pdevinfo.name =3D "dw-hdmi-ahb-audio";
+> Fixing this to be "dw-hdmi-i2s-audio".
+>
 
-----------------------------------------------------------------
-Some more devicetree changes, including usbphy support for the
-Cortex-A9 SoCs and actually enabling usb on the rk3066-marsboard,
-Two more veyron-devices - namely Speedy and Minnie and a fix for
-the tsadc.
-One slightly more interesting fix is the blocking of the last
-16MB of memory on 4GB rk3288 devices. The rk3288 cannot use this
-area for dma operations, so things like the mmc or usb controllers
-regularly fail when trying to read data. This solution mimicks the
-solution from the ChromeOS kernel, who also do not seem to have
-found a better solution yet. Here it only moves to the devicetree.
-As this issue is also present on the arm64 rk3368, any future
-better solution to this problem would need to describe this in
-the devicetree as well and could then remove this block.
 
-----------------------------------------------------------------
-Alexandru M Stan (1):
-      ARM: dts: rockchip: add veyron-minnie board
+--------------080403040900080003010308
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Heiko Stuebner (4):
-      ARM: dts: rockchip: set correct dwc2 params for cortex-a9 socs
-      ARM: dts: rockchip: add usb phys to Cortex-A9 socs
-      ARM: dts: rockchip: enable usb controller on marsboard
-      ARM: dts: rockchip: reserve unusable memory region on rk3288
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    Hi Russell,<br>
+    <br>
+    <div class=3D"moz-cite-prefix">=E5=9C=A8 2015/8/8 23:35, Russell King=
+ - ARM
+      Linux =E5=86=99=E9=81=93:<br>
+    </div>
+    <blockquote cite=3D"mid:20150808153540.GL7557@n2100.arm.linux.org.uk"
+      type=3D"cite">
+      <pre wrap=3D"">On Sat, Jun 20, 2015 at 12:28:15AM +0800, Yakir Yang=
+ wrote:
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">Add ALSA based HDMI I2S audio driver for dw_hdmi. =
+Sound card
+driver could connect to this codec through the codec dai name
+"dw-hdmi-i2s-audio".
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+I'm applying this patch to my tree with some changes.  I haven't seen
+anyone ack it, nor review it any further.  I'm hoping someone can ack
+this patch with the following changes below - I'll be posting it as
+part of my dw-hdmi devel updates later today.
+</pre>
+    </blockquote>
+    Aha, wow !!!=C2=A0 <br>
+    I'm so happy now :-D<span style=3D"color: rgb(51, 51, 51);
+      font-family: arial, =E5=AE=8B=E4=BD=93, sans-serif; font-size: 14px=
+; font-style:
+      normal; font-variant: normal; font-weight: normal; letter-spacing:
+      normal; line-height: 24px; orphans: auto; text-align: start;
+      text-indent: 28px; text-transform: none; white-space: normal;
+      widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px;
+      display: inline !important; float: none; background-color:
+      rgb(255, 255, 255);"></span> , many thanks for your improved and
+    applay.<br>
+    <br>
+    - Yakir<br>
+    <br>
+    <blockquote cite=3D"mid:20150808153540.GL7557@n2100.arm.linux.org.uk"
+      type=3D"cite">
+      <pre wrap=3D"">
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">+	ret =3D request_irq(dw-&gt;data.irq, snd_dw_hdmi=
+_irq, IRQF_SHARED,
++			  "dw-dw-audio", dw);
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+			  DRIVER_NAME, dw);
 
-Romain Perier (2):
-      ARM: dts: rockchip: Use correct dts properties for tsadc node on veyron
-      ARM: dts: rockchip: Add veyron-speedy board
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">+MODULE_AUTHOR("Yakir Yang <a class=3D"moz-txt-lin=
+k-rfc2396E" href=3D"mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;=
+</a>");
++MODULE_DESCRIPTION("DW dw Audio ASoC Interface");
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+Fixing this to be "Synopsis DesignWare HDMI I2S ASoC interface".
 
- Documentation/devicetree/bindings/arm/rockchip.txt |  15 ++
- arch/arm/boot/dts/Makefile                         |   4 +-
- arch/arm/boot/dts/rk3066a-marsboard.dts            |  12 ++
- arch/arm/boot/dts/rk3066a-rayeager.dts             |   4 +
- arch/arm/boot/dts/rk3066a.dtsi                     |  22 ++
- arch/arm/boot/dts/rk3188-radxarock.dts             |   4 +
- arch/arm/boot/dts/rk3188.dtsi                      |  22 ++
- arch/arm/boot/dts/rk3288-veyron-minnie.dts         | 226 +++++++++++++++++++++
- arch/arm/boot/dts/rk3288-veyron-speedy.dts         | 155 ++++++++++++++
- arch/arm/boot/dts/rk3288-veyron.dtsi               |   4 +-
- arch/arm/boot/dts/rk3288.dtsi                      |  20 ++
- arch/arm/boot/dts/rk3xxx.dtsi                      |  10 +
- 12 files changed, 495 insertions(+), 3 deletions(-)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-minnie.dts
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-speedy.dts
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">+MODULE_LICENSE("GPL v2");
++MODULE_ALIAS(PLATFORM_MODULE_PREFIX DRIVER_NAME);
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+Replacing PLATFORM_MODULE_PREFIX with the "platform:" string.
+
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">+	if (hdmi_readb(hdmi, HDMI_CONFIG1_ID) &amp; HDMI=
+_CONFIG1_AHB) {
+ 		pdevinfo.name =3D "dw-hdmi-ahb-audio";
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+Fixing this to be "dw-hdmi-i2s-audio".
+
+</pre>
+    </blockquote>
+    <br>
+  </body>
+</html>
+
+--------------080403040900080003010308--
+
+
+--===============0052308134==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============0052308134==--
