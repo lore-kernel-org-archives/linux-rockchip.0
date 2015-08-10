@@ -1,183 +1,85 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH] thermal: rockchip: fix handling of invalid readings
-Date: Mon, 10 Aug 2015 18:22:40 +0800
-Message-ID: <55C87B70.5050805@rock-chips.com>
-References: <20150807205923.GA33949@dtor-ws>	<55C84521.5040007@rock-chips.com> <CAE_wzQ_xhh17tsVj28W5Z=mgomnz1nOMPMN15Sozb8KcMjo=wA@mail.gmail.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 1/9] drm: bridge/dw_hdmi-ahb-audio: add audio driver
+Date: Mon, 10 Aug 2015 11:39:21 +0100
+Message-ID: <20150810103921.GR7557@n2100.arm.linux.org.uk>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+ <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+ <s5hk2t35ui4.wl-tiwai@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAE_wzQ_xhh17tsVj28W5Z=mgomnz1nOMPMN15Sozb8KcMjo=wA@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Dmitry Torokhov <dtor@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>, Doug Anderson <dianders@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <s5hk2t35ui4.wl-tiwai@suse.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Takashi Iwai <tiwai@suse.de>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2015=E5=B9=B408=E6=9C=8810=E6=97=A5 15:59, Dmitry Torokhov =E5=
-=86=99=E9=81=93:
-> Hi Caesar,
->
-> On Sun, Aug 9, 2015 at 11:30 PM, Caesar Wang <wxt@rock-chips.com> wro=
-te:
->> Dear Dmitry,
->>
->> Thanks your patch.
->>
->> The code looks like fine,but I don't think the TS-ADC will work on r=
-k3288
->> SoC.
-> What do you mean? It seems to work when I ran it...
-
-Making a mistake.:-(
-
->>
->> =E5=9C=A8 2015=E5=B9=B408=E6=9C=8808=E6=97=A5 04:59, Dmitry Torokhov=
- =E5=86=99=E9=81=93:
->>> We attempted to signal invalid code by returning -EAGAIN from
->>> rk_tsadcv2_code_to_temp(), unfortunately the return value was stuff=
-ed
->>> directly into the temperature pointer, potentially confusing upper
->>> layers with temperature of -EINVAL.
->>>
->>> Let's split temperature from error/success indicator to avoid such
->>> confusion.
->>>
->>> Also change the way we scan the temperature table to start with the=
- 2nd
->>> element so that we do not need to worry that we may reference out o=
-f
->>> bounds element while doing binary search and keep checking that we =
-end
->>> up with 'mid' equal to 0 (since we are looking for the temperature =
-that
->>> would fall into interval between the 'mid' and 'mid - 1') .
->>>
->>> Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
->>> ---
->>>    drivers/thermal/rockchip_thermal.c | 28 +++++++++++++-----------=
-----
->>>    1 file changed, 13 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/drivers/thermal/rockchip_thermal.c
->>> b/drivers/thermal/rockchip_thermal.c
->>> index c89ffb2..93ee307 100644
->>> --- a/drivers/thermal/rockchip_thermal.c
->>> +++ b/drivers/thermal/rockchip_thermal.c
->>> @@ -124,7 +124,7 @@ struct rockchip_thermal_data {
->>>    #define TSADCV2_AUTO_PERIOD_HT_TIME           50  /* msec */
->>>      struct tsadc_table {
->>> -       unsigned long code;
->>> +       u32 code;
->>>          long temp;
->>>    };
->>>    @@ -164,7 +164,6 @@ static const struct tsadc_table v2_code_tabl=
-e[] =3D {
->>>          {3452, 115000},
->>>          {3437, 120000},
->>>          {3421, 125000},
->>> -       {0, 125000},
->>>    };
->>>      static u32 rk_tsadcv2_temp_to_code(long temp)
->>> @@ -191,19 +190,21 @@ static u32 rk_tsadcv2_temp_to_code(long temp)
->>>          return 0;
->>>    }
->>>    -static int rk_tsadcv2_code_to_temp(u32 code)
->>> +static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
-
-It's wired that can't git-am this patch.
-
-I search the Eduardo'branch[0] for rockchip-thermal.c driver. The=20
-function is "static long rk_tsadcv2_code_to_temp(u32 code)"
-
-Maybe i'm missing something, I verified this patch on my board but this=
-=20
-fixed.
-
-So you can free add it:
-Tested-by: Caesar Wang <wxt@rock-chips.com>
-
-[0]:
-url =3D=20
-git://git.kernel.org/pub/scm/linux/kernel/git/evalenti/linux-soc-therma=
-l.git
-
-
-
----
-Thanks,
-Caesar
-
-
-
->>>    {
->>> -       unsigned int low =3D 0;
->>> +       unsigned int low =3D 1;
->>>          unsigned int high =3D ARRAY_SIZE(v2_code_table) - 1;
->>>          unsigned int mid =3D (low + high) / 2;
->>>          unsigned int num;
->>>          unsigned long denom;
->>>    -     /* Invalid code, return -EAGAIN */
->>> -       if (code > TSADCV2_DATA_MASK)
->>> -               return -EAGAIN;
->>> +       BUILD_BUG_ON(ARRAY_SIZE(v2_code_table) < 2);
->>>    -     while (low <=3D high && mid) {
->>> +       code &=3D TSADCV2_DATA_MASK;
->>> +       if (code < v2_code_table[high].code)
->>> +               return -EAGAIN;         /* Incorrect reading */
->>> +
->>> +       while (low <=3D high) {
->>>                  if (code >=3D v2_code_table[mid].code &&
->>>                      code < v2_code_table[mid - 1].code)
->>>                          break;
->>> @@ -223,7 +224,9 @@ static int rk_tsadcv2_code_to_temp(u32 code)
->>>          num =3D v2_code_table[mid].temp - v2_code_table[mid - 1].t=
-emp;
->>>          num *=3D v2_code_table[mid - 1].code - code;
->>>          denom =3D v2_code_table[mid - 1].code - v2_code_table[mid]=
-=2Ecode;
->>> -       return v2_code_table[mid - 1].temp + (num / denom);
->>> +       *temp =3D v2_code_table[mid - 1].temp + (num / denom);
->>> +
->>> +       return 0;
->>>    }
->>>      /**
->>> @@ -281,14 +284,9 @@ static int rk_tsadcv2_get_temp(int chn, void _=
-_iomem
->>> *regs, int *temp)
->>>    {
->>>          u32 val;
->>>    -     /* the A/D value of the channel last conversion need some =
-time */
->>>          val =3D readl_relaxed(regs + TSADCV2_DATA(chn));
->>> -       if (val =3D=3D 0)
->>> -               return -EAGAIN;
->>> -
->>
->> if we reserve the above code, that will get the ADC value.
-> But if we pass  0 into rk_tsadcv2_code_to_temp() it will trigger:
->
->>> +       if (code < v2_code_table[high].code)
->>> +               return -EAGAIN;         /* Incorrect reading */
-> and still return -EAGAIN, as it was. There is no behavior change as
-> far as I can see.
-Yup, that's ok for me.
-
->>
->>> -       *temp =3D rk_tsadcv2_code_to_temp(val);
->>>    -     return 0;
->>> +       return rk_tsadcv2_code_to_temp(val, temp);
->>>    }
->>>      static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs,=
- long
->>> temp)
->>
-> Thanks,
-> Dmitry
->
->
->
-
-
+T24gTW9uLCBBdWcgMTAsIDIwMTUgYXQgMTI6MDU6MDdQTSArMDIwMCwgVGFrYXNoaSBJd2FpIHdy
+b3RlOgo+IE9uIFNhdCwgMDggQXVnIDIwMTUgMTg6MTA6MDYgKzAyMDAsCj4gUnVzc2VsbCBLaW5n
+IHdyb3RlOgo+ID4gK3N0YXRpYyBpcnFyZXR1cm5fdCBzbmRfZHdfaGRtaV9pcnEoaW50IGlycSwg
+dm9pZCAqZGF0YSkKPiA+ICt7Cj4gPiArCXN0cnVjdCBzbmRfZHdfaGRtaSAqZHcgPSBkYXRhOwo+
+ID4gKwlzdHJ1Y3Qgc25kX3BjbV9zdWJzdHJlYW0gKnN1YnN0cmVhbTsKPiA+ICsJdW5zaWduZWQg
+c3RhdDsKPiA+ICsKPiA+ICsJc3RhdCA9IHJlYWRiX3JlbGF4ZWQoZHctPmRhdGEuYmFzZSArIEhE
+TUlfSUhfQUhCRE1BQVVEX1NUQVQwKTsKPiA+ICsJaWYgKCFzdGF0KQo+ID4gKwkJcmV0dXJuIElS
+UV9OT05FOwo+ID4gKwo+ID4gKwl3cml0ZWJfcmVsYXhlZChzdGF0LCBkdy0+ZGF0YS5iYXNlICsg
+SERNSV9JSF9BSEJETUFBVURfU1RBVDApOwo+ID4gKwo+ID4gKwlzdWJzdHJlYW0gPSBkdy0+c3Vi
+c3RyZWFtOwo+ID4gKwlpZiAoc3RhdCAmIEhETUlfSUhfQUhCRE1BQVVEX1NUQVQwX0RPTkUgJiYg
+c3Vic3RyZWFtKSB7Cj4gPiArCQlzbmRfcGNtX3BlcmlvZF9lbGFwc2VkKHN1YnN0cmVhbSk7Cj4g
+PiArCQlpZiAoZHctPnN1YnN0cmVhbSkKPiA+ICsJCQlkd19oZG1pX3N0YXJ0X2RtYShkdyk7Cj4g
+PiArCX0KPiAKPiBEb24ndCB3ZSBuZWVkIGxvY2tpbmc/CgpQb3NzaWJseS4KCj4gSW4gdGhlb3J5
+LCB0aGUgdHJpZ2dlciBjYW4gYmUgaXNzdWVkIHdoaWxlIHRoZSBpcnEgaXMgYmVpbmcgaGFuZGxl
+ZC4KCldlbGwsIHdlIGNhbid0IGhhdmUgYSBsb2NrIGFyb3VuZCB0aGUgd2hvbGUgb2YgdGhlIGFi
+b3ZlLCBiZWNhdXNlIHRoYXQKcmVzdWx0cyBpbiBkZWFkbG9jayAoYXMgc25kX3BjbV9wZXJpb2Rf
+ZWxhcHNlZCgpIGNhbiBlbmQgdXAgY2FsbGluZyBpbnRvCnRoZSB0cmlnZ2VyIG1ldGhvZC4pICBJ
+J20gbm90IGhhcHB5IHRvIHRocm93IGEgc3BpbmxvY2sgYXJvdW5kIHRoaXMKYmVjYXVzZSBvZiB0
+aGUgaW4tYnVpbHQgZm9ybWF0IGNvbnZlcnNpb24gKHNvbWV0aGluZyBlbHNlIEknbSByZWFsbHkg
+bm90CmhhcHB5IGFib3V0IC0gd2hpY2ggaGFzIHRvIGV4aXN0IGhlcmUgYmVjYXVzZSBhbHNhbGli
+IGlzIHNvbyBwYWluZnVsCnRvIGFkZCBjdXN0b20gc2FtcGxlIHJlZm9ybWF0dGluZyB0byAtIHN1
+Y2ggbW9kdWxlcyBoYXZlIHRvIGJlIGJ1aWx0CmFzIHBhcnQgb2YgYWxzYWxpYiBpdHNlbGYgcmF0
+aGVyIHRoYW4gYW4gYWRkLW9uIG1vZHVsZS4pCgo+ID4gK3N0YXRpYyBpbnQgZHdfaGRtaV90cmln
+Z2VyKHN0cnVjdCBzbmRfcGNtX3N1YnN0cmVhbSAqc3Vic3RyZWFtLCBpbnQgY21kKQo+ID4gK3sK
+PiA+ICsJc3RydWN0IHNuZF9kd19oZG1pICpkdyA9IHN1YnN0cmVhbS0+cHJpdmF0ZV9kYXRhOwo+
+ID4gKwlpbnQgcmV0ID0gMDsKPiA+ICsKPiA+ICsJc3dpdGNoIChjbWQpIHsKPiA+ICsJY2FzZSBT
+TkRSVl9QQ01fVFJJR0dFUl9TVEFSVDoKPiA+ICsJCWR3LT5idWZfb2Zmc2V0ID0gMDsKPiA+ICsJ
+CWR3LT5zdWJzdHJlYW0gPSBzdWJzdHJlYW07Cj4gPiArCQlkd19oZG1pX3N0YXJ0X2RtYShkdyk7
+Cj4gPiArCQlkd19oZG1pX2F1ZGlvX2VuYWJsZShkdy0+ZGF0YS5oZG1pKTsKPiA+ICsJCXN1YnN0
+cmVhbS0+cnVudGltZS0+ZGVsYXkgPSBzdWJzdHJlYW0tPnJ1bnRpbWUtPnBlcmlvZF9zaXplOwo+
+ID4gKwkJYnJlYWs7Cj4gPiArCj4gPiArCWNhc2UgU05EUlZfUENNX1RSSUdHRVJfU1RPUDoKPiA+
+ICsJCWR3X2hkbWlfc3RvcF9kbWEoZHcpOwo+ID4gKwkJZHdfaGRtaV9hdWRpb19kaXNhYmxlKGR3
+LT5kYXRhLmhkbWkpOwo+ID4gKwkJYnJlYWs7Cj4gPiArCj4gPiArCWRlZmF1bHQ6Cj4gPiArCQly
+ZXQgPSAtRUlOVkFMOwo+ID4gKwkJYnJlYWs7Cj4gCj4gU05EUlZfUENNX1RSSUdHRVJfU1VTUEVO
+RCBtYXkgYmUgcGFzc2VkIGF0IHN1c3BlbmQsIHRvby4KCkkgdGhpbmsgcmF0aGVyIHRoYW4gYWRk
+aW5nIGNvZGUgd2hpY2ggd291bGQgYmUgZGlmZmljdWx0IGZvciBtZSB0byB0ZXN0LApJJ2QgaW5z
+dGVhZCByZW1vdmUgdGhlIHN1c3BlbmQvcmVzdW1lIGNhbGxiYWNrcywgb3IgYXQgbGVhc3QgZGlz
+YWJsZSB0aGVtCnVudGlsIHNvbWVvbmUgY2FuIHRlc3QgdGhhdCBmZWF0dXJlLCBvciBpcyB3aWxs
+aW5nIHRvIGltcGxlbWVudCBpdC4KCj4gPiArc3RhdGljIHNuZF9wY21fdWZyYW1lc190IGR3X2hk
+bWlfcG9pbnRlcihzdHJ1Y3Qgc25kX3BjbV9zdWJzdHJlYW0gKnN1YnN0cmVhbSkKPiA+ICt7Cj4g
+PiArCXN0cnVjdCBzbmRfcGNtX3J1bnRpbWUgKnJ1bnRpbWUgPSBzdWJzdHJlYW0tPnJ1bnRpbWU7
+Cj4gPiArCXN0cnVjdCBzbmRfZHdfaGRtaSAqZHcgPSBzdWJzdHJlYW0tPnByaXZhdGVfZGF0YTsK
+PiA+ICsKPiA+ICsJcmV0dXJuIGJ5dGVzX3RvX2ZyYW1lcyhydW50aW1lLCBkdy0+YnVmX29mZnNl
+dCk7Cj4gCj4gU28sIHRoaXMgcmV0dXJucyB0aGUgb2Zmc2V0IHRoYXQgaGFzIGJlZW4gcmVmb3Jt
+YXR0ZWQuICBEb2VzIHRoZQo+IGhhcmR3YXJlIHN1cHBvcnQgYW55IGJldHRlciBwb3NpdGlvbiBy
+ZXBvcnRpbmc/ICBXZSBtYXkgZ2l2ZSB0aGUgZGVsYXkKPiBmcm9tIHRoZSBkcml2ZXIgaWYgcG9z
+c2libGUuCgpCYXNpY2FsbHksIG5vLiAgUmVhZGluZyBhIDMyLWJpdCBETUEgcG9zaXRpb24gYXMg
+c2VwYXJhdGUgYnl0ZXMgd2hpbGUKRE1BIGlzIGFjdGl2ZSBpcyByYWN5LgoKVGhpcyBpcyB0aGUg
+YmVzdCB3ZSBjYW4gZG8sIGFuZCB0aGUgd2F5IHdlIHJlcG9ydCB0aGUgcG9zaXRpb24gaGFzIGJl
+ZW4KYXJyaXZlZCBhdCBhZnRlciB3aGF0J3MgZ2V0dGluZyBvbiBmb3IgdHdvIHllYXJzIG9mIHRl
+c3Rpbmcgd2l0aApwdWxzZWF1ZGlvLCB2bGMgZGlyZWN0IGFjY2VzcyAmIHNwZGlmIHBhc3MtdGhy
+b3VnaCwgYXBsYXksIGV0YzoKCkF1dGhvcjogUnVzc2VsbCBLaW5nIDxybWsra2VybmVsQGFybS5s
+aW51eC5vcmcudWs+CkRhdGU6ICAgVGh1IE5vdiA3IDE2OjAxOjQ1IDIwMTMgKzAwMDAKCiAgICBk
+cm06IGJyaWRnZS9kd19oZG1pLWFoYi1hdWRpbzogYWRkIGF1ZGlvIGRyaXZlcgoKLS0gCkZUVEMg
+YnJvYWRiYW5kIGZvciAwLjhtaWxlIGxpbmU6IGN1cnJlbnRseSBhdCAxMC41TWJwcyBkb3duIDQw
+MGticHMgdXAKYWNjb3JkaW5nIHRvIHNwZWVkdGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
