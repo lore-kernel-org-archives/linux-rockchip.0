@@ -1,13 +1,13 @@
 From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH 3/3] clk: rockchip: do not gate the efuse256 clock
-Date: Mon, 10 Aug 2015 09:48:03 +0100
-Message-ID: <55C86543.1040802@linaro.org>
-References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com> <1439176963-8969-4-git-send-email-zhengsq@rock-chips.com>
+Subject: Re: [PATCH 1/3] nvmem: fix the out-of-range leak in read/write()
+Date: Mon, 10 Aug 2015 09:49:19 +0100
+Message-ID: <55C8658F.4000201@linaro.org>
+References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com> <1439176963-8969-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439176963-8969-4-git-send-email-zhengsq@rock-chips.com>
+In-Reply-To: <1439176963-8969-2-git-send-email-zhengsq@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Shunqian Zheng <zhengsq@rock-chips.com>, maxime.ripard@free-electrons.com, heiko@sntech.de, linux-kernel@vger.kernel.org, caesar.wang@rock-chips.com
 Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, xjq@rock-chips.com
@@ -18,54 +18,39 @@ List-Id: linux-rockchip.vger.kernel.org
 On 10/08/15 04:22, Shunqian Zheng wrote:
 > From: ZhengShunQian <zhengsq@rock-chips.com>
 >
-> Always enable the clock of efuse256. Base on the nvmem framework,
-> it seems like there is not a good way to enable the clock
-> when actual needed.
-No, thats not true. NVMEM does not mandate anything, it give more 
-flexibity to providers instead.
-What ever this patch is in wrong direction to solve the issue.
+> The position to read/write must be less than max
+> register size.
 
-We have two options to use clocks for providers, one use 
-devm_regmap_init_mmio_clk() Or
-Have your own context structure like
-struct rockchip_context{
-	void __iomem *base
-	struct clk *efuse_clk;
-};
-
-Then in read/write manage the clock as required.
-
---srini
 >
 > Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
 > ---
->   drivers/clk/rockchip/clk-rk3288.c      | 2 +-
->   include/dt-bindings/clock/rk3288-cru.h | 1 +
->   2 files changed, 2 insertions(+), 1 deletion(-)
+>   drivers/nvmem/core.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index 0df5bae..84d9218 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->   	GATE(0, "pclk_efuse_1024", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 2, GFLAGS),
->   	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
->   	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
-> -	GATE(0, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
-> +	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 10, GFLAGS),
->   	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+> diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+> index d3c6676..f4af8e5 100644
+> --- a/drivers/nvmem/core.c
+> +++ b/drivers/nvmem/core.c
+> @@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
+>   	int rc;
 >
->   	/* ddrctrl [DDR Controller PHY clock] gates */
-> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
-> index c719aac..ab74d5e 100644
-> --- a/include/dt-bindings/clock/rk3288-cru.h
-> +++ b/include/dt-bindings/clock/rk3288-cru.h
-> @@ -164,6 +164,7 @@
->   #define PCLK_DDRUPCTL1		366
->   #define PCLK_PUBL1		367
->   #define PCLK_WDT		368
-> +#define PCLK_EFUSE256		369
+>   	/* Stop the user from reading */
+> -	if (pos > nvmem->size)
+> +	if (pos >= nvmem->size)
+>   		return 0;
 >
->   /* hclk gates */
->   #define HCLK_GPS		448
+>   	if (pos + count > nvmem->size)
+> @@ -92,7 +92,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
+>   	int rc;
 >
+>   	/* Stop the user from writing */
+> -	if (pos > nvmem->size)
+> +	if (pos >= nvmem->size)
+>   		return 0;
+>
+>   	if (pos + count > nvmem->size)
+>
+
+This looks good,
+
+Acked-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
