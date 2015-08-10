@@ -1,273 +1,572 @@
-From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] soc/rockchip: add handler for usb-uart functionality
-Date: Mon, 10 Aug 2015 19:44:45 +0200
-Message-ID: <CABgxDoKVk=gdPET5E7y+JPwe5S2RsWQMDC6xWBBw=waeG+vNhg@mail.gmail.com>
-References: <1574322.mYky5df1dK@diego>
+From: Alim Akhtar <alim.akhtar@gmail.com>
+Subject: Re: [RFC PATCH v4 1/9] mmc: dw_mmc: Add external dma interface support
+Date: Mon, 10 Aug 2015 23:33:21 +0530
+Message-ID: <CAGOxZ51NZ2HaULzZWmxT=Lppnuk7Sqipz9ht5KAL20RvfE087A@mail.gmail.com>
+References: <1438843469-23807-1-git-send-email-shawn.lin@rock-chips.com> <1438843491-23853-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1574322.mYky5df1dK@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1438843491-23853-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, linux-mips@linux-mips.org, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-ro>
 List-Id: linux-rockchip.vger.kernel.org
 
-MjAxNS0wNy0wOCAyMTowMCBHTVQrMDI6MDAgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT46Cj4gTW9zdCBuZXdlciBSb2NrY2hpcCBTb0NzIHByb3ZpZGUgdGhlIHBvc3NpYmlsaXR5IHRv
-IHVzZSBhIHVzYi1waHkKPiBhcyBwYXNzdGhyb3VnaCBmb3IgdGhlIGRlYnVnIHVhcnQgKHVhcnQy
-KSwgbWFraW5nIGl0IHBvc3NpYmxlIHRvCj4gZ2V0IGNvbnNvbGUgb3V0cHV0IHdpdGhvdXQgbmVl
-ZGluZyB0byBvcGVuIHRoZSBkZXZpY2UuCj4KPiBUaGlzIHBhdGNoIGFkZHMgYW4gZWFybHlfaW5p
-dGNhbGwgdG8gZW5hYmxlIHRoaXMgZnVuY3Rpb25hbGl0eQo+IGNvbmRpdGlvbmFsbHkgdmlhIHRo
-ZSBjb21tYW5kbGluZSBhbmQgYWxzbyBkaXNhYmxlcyB0aGUgY29ycmVzcG9uZGluZwo+IHVzYiBj
-b250cm9sbGVyIGluIHRoZSBkZXZpY2V0cmVlLgo+Cj4gQ3VycmVudGx5IG9ubHkgZGF0YSBmb3Ig
-dGhlIHJrMzI4OCBpcyBwcm92aWRlZCwgYnV0IGF0IGxlYXN0IHRoZQo+IHJrMzE4OCBhbmQgYXJt
-NjQgcmszMzY4IGFsc28gcHJvdmlkZSB0aGlzIGZ1bmN0aW9uYWxpdHkgYW5kIHdpbGwgYmUKPiBl
-bmFibGVkIGxhdGVyLgo+Cj4gT24gYSBzcGxpY2VkIHVzYiBjYWJsZSB0aGUgc2lnbmFscyBhcmUg
-dHggb24gd2hpdGUgd2lyZShEKykgYW5kCj4gcnggb24gZ3JlZW4gd2lyZShELSkuCj4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+IGNoYW5n
-ZXMgZnJvbSB0aGUgdmVyc2lvbiBpbiBjaHJvbWl1bS1yZXZpZXc6Cj4gLSBlbmFibGUgc2lkZHEg
-KHByb2JhYmx5IHNhdmVzIGEgbGl0dGxlIHBvd2VyIHRvIHBvd2VyIGRvd24gcGxscykKPiAtIGNv
-c21ldGljcyB0byBtYWtlIGNoZWNrcGF0Y2ggaGFwcHkKPgo+IFl1bnpoaSBMaSBhbHJlYWR5IGdh
-dmUgYSBDb2RlLVJldmlldysxIGluIHRoZSBjaHJvbWl1bSBnZXJyaXQKPiBidXQgSSdkIGd1ZXNz
-IGEgcHVibGljIFJldmlld2VkLWJ5IHdvdWxkIGJlIGJldHRlciA7LSkKPgo+Cj4gIERvY3VtZW50
-YXRpb24va2VybmVsLXBhcmFtZXRlcnMudHh0ICAgICAgfCAgIDYgKwo+ICBkcml2ZXJzL3NvYy9L
-Y29uZmlnICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKPiAgZHJpdmVycy9zb2MvTWFrZWZp
-bGUgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvc29jL3JvY2tjaGlwL0tj
-b25maWcgICAgICAgICAgICAgfCAgMTMgKysKPiAgZHJpdmVycy9zb2Mvcm9ja2NoaXAvTWFrZWZp
-bGUgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvc29jL3JvY2tjaGlwL3JvY2tjaGlwX3Vz
-Yl91YXJ0LmMgfCAyMjYgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICA2IGZpbGVz
-IGNoYW5nZWQsIDI0OCBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L3NvYy9yb2NrY2hpcC9LY29uZmlnCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3NvYy9y
-b2NrY2hpcC9NYWtlZmlsZQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zb2Mvcm9ja2No
-aXAvcm9ja2NoaXBfdXNiX3VhcnQuYwo+Cj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24va2Vy
-bmVsLXBhcmFtZXRlcnMudHh0IGIvRG9jdW1lbnRhdGlvbi9rZXJuZWwtcGFyYW1ldGVycy50eHQK
-PiBpbmRleCAxZDZmMDQ1Li4xNTY5MTFiIDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24va2Vy
-bmVsLXBhcmFtZXRlcnMudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9rZXJuZWwtcGFyYW1ldGVy
-cy50eHQKPiBAQCAtMzMzOSw2ICszMzM5LDEyIEBAIGJ5dGVzIHJlc3BlY3RpdmVseS4gU3VjaCBs
-ZXR0ZXIgc3VmZml4ZXMgY2FuIGFsc28gYmUgZW50aXJlbHkgb21pdHRlZC4KPgo+ICAgICAgICAg
-cm8gICAgICAgICAgICAgIFtLTkxdIE1vdW50IHJvb3QgZGV2aWNlIHJlYWQtb25seSBvbiBib290
-Cj4KPiArICAgICAgIHJvY2tjaGlwLnVzYl91YXJ0Cj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-RW5hYmxlIHRoZSB1YXJ0IHBhc3N0aHJvdWdoIG9uIHRoZSBkZXNpZ25hdGVkIHVzYiBwb3J0Cj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgb24gUm9ja2NoaXAgU29Dcy4gV2hlbiBhY3RpdmUsIHRo
-ZSBzaWduYWxzIG9mIHRoZQo+ICsgICAgICAgICAgICAgICAgICAgICAgIGRlYnVnLXVhcnQgZ2V0
-IHJvdXRlZCB0byB0aGUgRCsgYW5kIEQtIHBpbnMgb2YgdGhlIHVzYgo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgIHBvcnQgYW5kIHRoZSByZWd1bGFyIHVzYiBjb250cm9sbGVyIGdldHMgZGlzYWJs
-ZWQuCj4gKwo+ICAgICAgICAgcm9vdD0gICAgICAgICAgIFtLTkxdIFJvb3QgZmlsZXN5c3RlbQo+
-ICAgICAgICAgICAgICAgICAgICAgICAgIFNlZSBuYW1lX3RvX2Rldl90IGNvbW1lbnQgaW4gaW5p
-dC9kb19tb3VudHMuYy4KPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9LY29uZmlnIGIvZHJp
-dmVycy9zb2MvS2NvbmZpZwo+IGluZGV4IDk2ZGRlY2IuLmVjYjFhNmMgMTAwNjQ0Cj4gLS0tIGEv
-ZHJpdmVycy9zb2MvS2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvc29jL0tjb25maWcKPiBAQCAtMiw2
-ICsyLDcgQEAgbWVudSAiU09DIChTeXN0ZW0gT24gQ2hpcCkgc3BlY2lmaWMgRHJpdmVycyIKPgo+
-ICBzb3VyY2UgImRyaXZlcnMvc29jL21lZGlhdGVrL0tjb25maWciCj4gIHNvdXJjZSAiZHJpdmVy
-cy9zb2MvcWNvbS9LY29uZmlnIgo+ICtzb3VyY2UgImRyaXZlcnMvc29jL3JvY2tjaGlwL0tjb25m
-aWciCj4gIHNvdXJjZSAiZHJpdmVycy9zb2Mvc3VueGkvS2NvbmZpZyIKPiAgc291cmNlICJkcml2
-ZXJzL3NvYy90aS9LY29uZmlnIgo+ICBzb3VyY2UgImRyaXZlcnMvc29jL3ZlcnNhdGlsZS9LY29u
-ZmlnIgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3NvYy9NYWtlZmlsZSBiL2RyaXZlcnMvc29jL01h
-a2VmaWxlCj4gaW5kZXggN2RjN2MwZC4uNmMwYjY3NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3Nv
-Yy9NYWtlZmlsZQo+ICsrKyBiL2RyaXZlcnMvc29jL01ha2VmaWxlCj4gQEAgLTQsNiArNCw3IEBA
-Cj4KPiAgb2JqLSQoQ09ORklHX0FSQ0hfTUVESUFURUspICAgICs9IG1lZGlhdGVrLwo+ICBvYmot
-JChDT05GSUdfQVJDSF9RQ09NKSAgICAgICAgICAgICAgICArPSBxY29tLwo+ICtvYmotJChDT05G
-SUdfQVJDSF9ST0NLQ0hJUCkgICAgKz0gcm9ja2NoaXAvCj4gIG9iai0kKENPTkZJR19BUkNIX1NV
-TlhJKSAgICAgICArPSBzdW54aS8KPiAgb2JqLSQoQ09ORklHX0FSQ0hfVEVHUkEpICAgICAgICs9
-IHRlZ3JhLwo+ICBvYmotJChDT05GSUdfU09DX1RJKSAgICAgICAgICAgKz0gdGkvCj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvc29jL3JvY2tjaGlwL0tjb25maWcgYi9kcml2ZXJzL3NvYy9yb2NrY2hp
-cC9LY29uZmlnCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi4yNGQ0ZTA1
-Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvc29jL3JvY2tjaGlwL0tjb25maWcKPiBA
-QCAtMCwwICsxLDEzIEBACj4gKyMKPiArIyBSb2NrY2hpcCBTb2MgZHJpdmVycwo+ICsjCj4gK2Nv
-bmZpZyBST0NLQ0hJUF9VU0JfVUFSVAo+ICsgICAgICAgYm9vbCAiUm9ja2NoaXAgdXNiLXVhcnQg
-b3ZlcnJpZGUiCj4gKyAgICAgICBkZXBlbmRzIG9uIEFSQ0hfUk9DS0NISVAKPiArICAgICAgIHNl
-bGVjdCBNRkRfU1lTQ09OCj4gKyAgICAgICBoZWxwCj4gKyAgICAgICAgIFNheSB5IGhlcmUgdG8g
-ZW5hYmxlIHVzYi11YXJ0IGZ1bmN0aW9uYWxpdHkuIE5ld2VyIFJvY2tjaGlwIFNvQ3MKPiArICAg
-ICAgICAgcHJvdmlkZSBtZWFucyB0byByZXB1cnBvc2Ugb25lIHVzYiBwaHkgYXMgdWFydDIgb3V0
-cHV0LCBtYWtpbmcgaXQKPiArICAgICAgICAgcG9zc2libGUgdG8gZ2V0IGRlYnVnIG91dHB1dCB3
-aXRob3V0IG5lZWRpbmcgdG8gb3BlbiBhIGRldmljZS4KPiArICAgICAgICAgVG8gZW5hYmxlIHRo
-aXMgZnVuY3Rpb24gb24gYm9vdCwgYWRkIGEgcm9ja2NoaXAudXNiX3VhcnQgb3B0aW9uCj4gKyAg
-ICAgICAgIHRvIHRoZSBrZXJuZWwgY29tbWFuZGxpbmUuCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-c29jL3JvY2tjaGlwL01ha2VmaWxlIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvTWFrZWZpbGUKPiBu
-ZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAuLmI1ZGQ2ZjgKPiAtLS0gL2Rldi9u
-dWxsCj4gKysrIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvTWFrZWZpbGUKPiBAQCAtMCwwICsxIEBA
-Cj4gK29iai0kKENPTkZJR19ST0NLQ0hJUF9VU0JfVUFSVCkgICAgICAgICAgICAgICAgKz0gICAg
-ICByb2NrY2hpcF91c2JfdWFydC5vCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc29jL3JvY2tjaGlw
-L3JvY2tjaGlwX3VzYl91YXJ0LmMgYi9kcml2ZXJzL3NvYy9yb2NrY2hpcC9yb2NrY2hpcF91c2Jf
-dWFydC5jCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi44ZTk2ZDQ2Cj4g
-LS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvc29jL3JvY2tjaGlwL3JvY2tjaGlwX3VzYl91
-YXJ0LmMKPiBAQCAtMCwwICsxLDIyNiBAQAo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTUg
-SGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiArICoKPiArICogVGhpcyBwcm9ncmFt
-IGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9vciBtb2RpZnkK
-PiArICogaXQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5z
-ZSBhcyBwdWJsaXNoZWQgYnkKPiArICogdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbjsgZWl0
-aGVyIHZlcnNpb24gMiBvZiB0aGUgTGljZW5zZSwgb3IKPiArICogKGF0IHlvdXIgb3B0aW9uKSBh
-bnkgbGF0ZXIgdmVyc2lvbi4KPiArICoKPiArICogVGhpcyBwcm9ncmFtIGlzIGRpc3RyaWJ1dGVk
-IGluIHRoZSBob3BlIHRoYXQgaXQgd2lsbCBiZSB1c2VmdWwsCj4gKyAqIGJ1dCBXSVRIT1VUIEFO
-WSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mCj4gKyAqIE1F
-UkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0
-aGUKPiArICogR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPiAr
-ICovCj4gKwo+ICsjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9p
-bml0Lmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9lcnJuby5oPgo+ICsjaW5jbHVkZSA8bGludXgvbWZk
-L3N5c2Nvbi5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPgo+ICsjaW5jbHVkZSA8
-bGludXgvb2ZfcGxhdGZvcm0uaD4KPiArI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ICsjaW5j
-bHVkZSA8bGludXgvc2xhYi5oPgo+ICsKPiArI2RlZmluZSBISVdPUkRfVVBEQVRFKHZhbCwgbWFz
-aykgXAo+ICsgICAgICAgICAgICAgICAoKHZhbCkgfCAobWFzaykgPDwgMTYpCj4gKwo+ICtzdHJ1
-Y3Qgcm9ja2NoaXBfdWFydF9kYXRhIHsKPiArICAgICAgIGNvbnN0IGNoYXIgKmdyZl9jb21wYXRp
-YmxlOwo+ICsgICAgICAgY29uc3QgY2hhciAqdXNiX2NvbXBhdGlibGU7Cj4gKyAgICAgICBwaHlz
-X2FkZHJfdCB1c2JfcGh5c19hZGRyOwo+ICsgICAgICAgaW50ICgqaW5pdF91YXJ0KShjb25zdCBz
-dHJ1Y3Qgcm9ja2NoaXBfdWFydF9kYXRhICpkYXRhLAo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICBzdHJ1Y3QgcmVnbWFwICpncmYpOwo+ICt9Owo+ICsKPiArc3RhdGljIGludCBlbmFibGVfdXNi
-X3VhcnQ7Cj4gKwo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgMHgzMjAKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04wX0NPTU1PTl9PTl9O
-ICAgICAgICAgICAgICAgICAgIEJJVCgwKQo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjBfRElT
-QUJMRSAgICAgICAgICAgICAgICAgICAgICAgQklUKDQpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBf
-Q09OMF9TSUREUSAgICAgICAgICAgICAgICAgICAgICAgICBCSVQoMTMpCj4gKwo+ICsjZGVmaW5l
-IFJLMzI4OF9VT0MwX0NPTjIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMHgzMjgKPiAr
-I2RlZmluZSBSSzMyODhfVU9DMF9DT04yX1NPRlRfQ09OX1NFTCAgICAgICAgICAgICAgICAgIEJJ
-VCgyKQo+ICsKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04zICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIDB4MzJjCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX1NVU1BFTkRO
-ICAgICAgICAgICAgICAgICBCSVQoMCkKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04zX1VUTUlf
-T1BNT0RFX05PRFJJVklORyAgICAgICAgICgxIDw8IDEpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBf
-Q09OM19VVE1JX09QTU9ERV9NQVNLICAgICAgICAgICAgICAoMyA8PCAxKQo+ICsjZGVmaW5lIFJL
-MzI4OF9VT0MwX0NPTjNfVVRNSV9YQ1ZSU0VFTENUX0ZTVFJBTlNDICAgICAgKDEgPDwgMykKPiAr
-I2RlZmluZSBSSzMyODhfVU9DMF9DT04zX1VUTUlfWENWUlNFRUxDVF9NQVNLICAgICAgICAgICgz
-IDw8IDMpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX1RFUk1TRUxfRlVMTFNQRUVE
-ICAgICAgICAgICAgICAgIEJJVCg1KQo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjNfQllQQVNT
-RE1FTiAgICAgICAgICAgICAgICAgICAgQklUKDYpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09O
-M19CWVBBU1NTRUwgICAgICAgICAgICAgICAgICAgICBCSVQoNykKCkkgd2FzIHdvbmRlcmluZyB3
-aHkgdGhlc2UgdmFsdWVzIGFyZSAiaGFyZGNvZGVkIiBkaXJlY3RseSwgYnV0IGFzIHlvdQpzYWlk
-LCBzdXBwb3J0IGZvciBvdGhlciBTb0NzIHdpbGwgYmUgZW5hYmxlZCBsYXRlci4KS2VlcCB0aGlu
-Z3Mgc2ltcGxlIGFzIGJlZ2lubmluZyBpcyBva2F5IGZvciBtZS4KCj4gKwo+ICsvKgo+ICsgKiBF
-bmFibGUgdGhlIGJ5cGFzcyBvZiB1YXJ0MiBkYXRhIHRocm91Z2ggdGhlIG90ZyB1c2IgcGh5Lgo+
-ICsgKiBPcmlnaW5hbCBkZXNjcmlwdGlvbiBpbiB0aGUgVFJNLgo+ICsgKiAxLiBEaXNhYmxlIHRo
-ZSBPVEcgYmxvY2sgYnkgc2V0dGluZyBPVEdESVNBQkxFMCB0byAx4oCZYjEuCj4gKyAqIDIuIERp
-c2FibGUgdGhlIHB1bGwtdXAgcmVzaXN0YW5jZSBvbiB0aGUgRCsgbGluZSBieSBzZXR0aW5nCj4g
-KyAqICAgIE9QTU9ERTBbMTowXSB0byAy4oCZYjAxLgo+ICsgKiAzLiBUbyBlbnN1cmUgdGhhdCB0
-aGUgWE8sIEJpYXMsIGFuZCBQTEwgYmxvY2tzIGFyZSBwb3dlcmVkIGRvd24gaW4gU3VzcGVuZAo+
-ICsgKiAgICBtb2RlLCBzZXQgQ09NTU9OT05OIHRvIDHigJliMS4KPiArICogNC4gUGxhY2UgdGhl
-IFVTQiBQSFkgaW4gU3VzcGVuZCBtb2RlIGJ5IHNldHRpbmcgU1VTUEVORE0wIHRvIDHigJliMC4K
-PiArICogNS4gU2V0IEJZUEFTU1NFTDAgdG8gMeKAmWIxLgo+ICsgKiA2LiBUbyB0cmFuc21pdCBk
-YXRhLCBjb250cm9scyBCWVBBU1NETUVOMCwgYW5kIEJZUEFTU0RNREFUQTAuCj4gKyAqIFRvIHJl
-Y2VpdmUgZGF0YSwgbW9uaXRvciBGU1ZQTFVTMC4KPiArICoKPiArICogVGhlIGFjdHVhbCBjb2Rl
-IGluIHRoZSB2ZW5kb3Iga2VybmVsIGRvZXMgc29tZSB0aGluZ3MgZGlmZmVyZW50bHkuCj4gKyAq
-Lwo+ICtzdGF0aWMgaW50IF9faW5pdCByazMyODhfaW5pdF91c2JfdWFydChjb25zdCBzdHJ1Y3Qg
-cm9ja2NoaXBfdWFydF9kYXRhICpkYXRhLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHN0cnVjdCByZWdtYXAgKmdyZikKPiArewo+ICsgICAgICAgdTMyIHZhbDsKPiAr
-ICAgICAgIGludCByZXQ7Cj4gKwo+ICsgICAgICAgLyoKPiArICAgICAgICAqIENPTU1PTl9PTiBh
-bmQgRElTQUJMRSBzZXR0aW5ncyBhcmUgZGVzY3JpYmVkIGluIHRoZSBUUk0sCj4gKyAgICAgICAg
-KiBidXQgd2VyZSBub3QgcHJlc2VudCBpbiB0aGUgb3JpZ2luYWwgY29kZS4KPiArICAgICAgICAq
-IEFsc28gZGlzYWJsZSB0aGUgYW5hbG9nIHBoeSBjb21wb25lbnRzIHRvIHNhdmUgcG93ZXIuCj4g
-KyAgICAgICAgKi8KPiArICAgICAgIHZhbCA9IEhJV09SRF9VUERBVEUoUkszMjg4X1VPQzBfQ09O
-MF9DT01NT05fT05fTgo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBSSzMyODhf
-VU9DMF9DT04wX0RJU0FCTEUKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgUksz
-Mjg4X1VPQzBfQ09OMF9TSUREUSwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgUkszMjg4
-X1VPQzBfQ09OMF9DT01NT05fT05fTgo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-fCBSSzMyODhfVU9DMF9DT04wX0RJU0FCTEUKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIHwgUkszMjg4X1VPQzBfQ09OMF9TSUREUSk7Cj4gKyAgICAgICByZXQgPSByZWdtYXBfd3Jp
-dGUoZ3JmLCBSSzMyODhfVU9DMF9DT04wLCB2YWwpOwo+ICsgICAgICAgaWYgKHJldCkKPiArICAg
-ICAgICAgICAgICAgcmV0dXJuIHJldDsKPiArCj4gKyAgICAgICB2YWwgPSBISVdPUkRfVVBEQVRF
-KFJLMzI4OF9VT0MwX0NPTjJfU09GVF9DT05fU0VMLAo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBSSzMyODhfVU9DMF9DT04yX1NPRlRfQ09OX1NFTCk7Cj4gKyAgICAgICByZXQgPSByZWdt
-YXBfd3JpdGUoZ3JmLCBSSzMyODhfVU9DMF9DT04yLCB2YWwpOwo+ICsgICAgICAgaWYgKHJldCkK
-PiArICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiArCj4gKyAgICAgICB2YWwgPSBISVdPUkRf
-VVBEQVRFKFJLMzI4OF9VT0MwX0NPTjNfVVRNSV9PUE1PREVfTk9EUklWSU5HCj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8IFJLMzI4OF9VT0MwX0NPTjNfVVRNSV9YQ1ZSU0VFTENU
-X0ZTVFJBTlNDCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IFJLMzI4OF9VT0Mw
-X0NPTjNfVVRNSV9URVJNU0VMX0ZVTExTUEVFRCwKPiArICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgUkszMjg4X1VPQzBfQ09OM19VVE1JX1NVU1BFTkROCj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IFJLMzI4OF9VT0MwX0NPTjNfVVRNSV9PUE1PREVfTUFTSwo+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgfCBSSzMyODhfVU9DMF9DT04zX1VUTUlfWENWUlNFRUxD
-VF9NQVNLCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IFJLMzI4OF9VT0MwX0NP
-TjNfVVRNSV9URVJNU0VMX0ZVTExTUEVFRCk7Cj4gKyAgICAgICByZXQgPSByZWdtYXBfd3JpdGUo
-Z3JmLCBSSzMyODhfVU9DMF9DT04zLCB2YWwpOwo+ICsgICAgICAgaWYgKHJldCkKPiArICAgICAg
-ICAgICAgICAgcmV0dXJuIHJldDsKPiArCj4gKyAgICAgICB2YWwgPSBISVdPUkRfVVBEQVRFKFJL
-MzI4OF9VT0MwX0NPTjNfQllQQVNTU0VMCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8IFJLMzI4OF9VT0MwX0NPTjNfQllQQVNTRE1FTiwKPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgUkszMjg4X1VPQzBfQ09OM19CWVBBU1NTRUwKPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgUkszMjg4X1VPQzBfQ09OM19CWVBBU1NETUVOKTsKPiArICAgICAgIHJldCA9
-IHJlZ21hcF93cml0ZShncmYsIFJLMzI4OF9VT0MwX0NPTjMsIHZhbCk7Cj4gKyAgICAgICBpZiAo
-cmV0KQo+ICsgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+ICsKPiArICAgICAgIHJldHVybiAw
-Owo+ICt9Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3VhcnRfZGF0YSByazMy
-ODhfdWFydF9kYXRhIF9faW5pdGNvbnN0ID0gewo+ICsgICAgICAgLmdyZl9jb21wYXRpYmxlID0g
-InJvY2tjaGlwLHJrMzI4OC1ncmYiLAo+ICsgICAgICAgLnVzYl9jb21wYXRpYmxlID0gInJvY2tj
-aGlwLHJrMzI4OC11c2IiLAo+ICsgICAgICAgLnVzYl9waHlzX2FkZHIgPSAweGZmNTgwMDAwLAo+
-ICsgICAgICAgLmluaXRfdWFydCA9IHJrMzI4OF9pbml0X3VzYl91YXJ0LAo+ICt9Owo+ICsKPiAr
-c3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgcm9ja2NoaXBfdXNiX3VhcnRfaWRzW10g
-X19pbml0Y29uc3QgPSB7Cj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzI4
-OCIsIC5kYXRhID0gJnJrMzI4OF91YXJ0X2RhdGEgfSwKPiArICAgICAgIHsgfQo+ICt9Owo+ICsK
-PiArLyoKPiArICogRmluZCB0aGUgdXNiIGNvbnRyb2xsZXIgdXNpbmcgdGhlIHNoYXJlZCB1c2It
-dWFydC1waHkgaW4gdGhlIGR0cyBhbmQKPiArICogZGlzYWJsZSBpdC4KPiArICovCj4gK3N0YXRp
-YyBpbnQgX19pbml0Cj4gK3JvY2tjaGlwX2Rpc2FibGVfdXNiX2NvbnRyb2xsZXIoY29uc3Qgc3Ry
-dWN0IHJvY2tjaGlwX3VhcnRfZGF0YSAqZGF0YSkKPiArewo+ICsgICAgICAgc3RydWN0IGRldmlj
-ZV9ub2RlICpucDsKPiArCj4gKyAgICAgICBmb3JfZWFjaF9jb21wYXRpYmxlX25vZGUobnAsIE5V
-TEwsIGRhdGEtPnVzYl9jb21wYXRpYmxlKSB7Cj4gKyAgICAgICAgICAgICAgIHN0cnVjdCBwcm9w
-ZXJ0eSAqbmV3X3N0YXR1czsKPiArICAgICAgICAgICAgICAgc3RydWN0IHJlc291cmNlIHJlczsK
-PiArICAgICAgICAgICAgICAgaW50IHJldDsKPiArCj4gKyAgICAgICAgICAgICAgIHJldCA9IG9m
-X2FkZHJlc3NfdG9fcmVzb3VyY2UobnAsIDAsICZyZXMpOwo+ICsgICAgICAgICAgICAgICBpZiAo
-cmV0KSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcHJfZXJyKCIlczogY291bGQgbm90IGdl
-dCBhZGRyZXNzIG9mIHVzYiBjb250cm9sbGVyICVzXG4iLAo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBfX2Z1bmNfXywgbnAtPmZ1bGxfbmFtZSk7Cj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgY29udGludWU7Cj4gKyAgICAgICAgICAgICAgIH0KPiArCj4gKyAgICAgICAgICAgICAg
-IC8qIG5vdCB0aGUgY29udHJvbGxlciB3ZSdyZSBsb29raW5nIGZvciAqLwo+ICsgICAgICAgICAg
-ICAgICBpZiAocmVzLnN0YXJ0ICE9IGRhdGEtPnVzYl9waHlzX2FkZHIpCj4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgY29udGludWU7Cj4gKwo+ICsgICAgICAgICAgICAgICBwcl9kZWJ1ZygiJXM6
-IGRpc2FibGluZyB1c2IgY29udHJvbGxlciAlc1xuIiwKPiArICAgICAgICAgICAgICAgICAgICAg
-ICAgX19mdW5jX18sIG5wLT5mdWxsX25hbWUpOwo+ICsKPiArICAgICAgICAgICAgICAgbmV3X3N0
-YXR1cyA9IGt6YWxsb2Moc2l6ZW9mKCpuZXdfc3RhdHVzKSwgR0ZQX0tFUk5FTCk7Cj4gKyAgICAg
-ICAgICAgICAgIGlmICghbmV3X3N0YXR1cykKPiArICAgICAgICAgICAgICAgICAgICAgICByZXR1
-cm4gLUVOT01FTTsKPiArCj4gKyAgICAgICAgICAgICAgIG5ld19zdGF0dXMtPm5hbWUgPSBrc3Ry
-ZHVwKCJzdGF0dXMiLCBHRlBfS0VSTkVMKTsKPiArICAgICAgICAgICAgICAgbmV3X3N0YXR1cy0+
-bGVuZ3RoID0gc2l6ZW9mKCJkaXNhYmxlZCIpOwo+ICsgICAgICAgICAgICAgICBuZXdfc3RhdHVz
-LT52YWx1ZSA9IGtzdHJkdXAoImRpc2FibGVkIiwgR0ZQX0tFUk5FTCk7CgpJIHVuZGVyc3RhbmQg
-Y29tcGxldGx5IHdoeSB5b3UgbmVlZCB0byBwYXNzIGFuIHByb3BlcnR5IGFsbG9jYXRlZApkeW5h
-bWljYWxseSwgaG93ZXZlciwgaXMgaXQgYWJzb2x1dGx5IHJlcXVpcmVkIHRvIGFsbG9jYXRlICJu
-YW1lIiBhbmQKInZhbHVlIiBkeW5hbWljYWxseSB0b28gPyBJIG1lYW4sIHlvdSBjb3VsZCBhc3Np
-Z24gY29uc3QgbGl0ZXJhbApzdHJpbmdzIGRpcmVjdGx5ICpCVVQqIGl0IHN0cm9uZ2x5IGRlcGVu
-ZHMgb24gaG93IHByb3BlcnRpZXMgYXJlIGZyZWVkCmJ5IHRoZSBkZXZpY2V0cmVlIHN1YnN5c3Rl
-bS4KCj4gKwo+ICsgICAgICAgICAgICAgICByZXR1cm4gb2ZfdXBkYXRlX3Byb3BlcnR5KG5wLCBu
-ZXdfc3RhdHVzKTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICByZXR1cm4gMDsKPiArfQo+ICsK
-PiArc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgX19pbml0ICpyb2NrY2hpcF91c2Jf
-dWFydF9kYXRhX2xvb2t1cCh2b2lkKQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUg
-KnJvb3Q7Cj4gKyAgICAgICBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICppZDsKPiArCj4gKyAg
-ICAgICByb290ID0gb2ZfZmluZF9ub2RlX2J5X3BhdGgoIi8iKTsKPiArICAgICAgIGlmICghcm9v
-dCkKPiArICAgICAgICAgICAgICAgcmV0dXJuIE5VTEw7Cj4gKwo+ICsgICAgICAgaWQgPSBvZl9t
-YXRjaF9ub2RlKHJvY2tjaGlwX3VzYl91YXJ0X2lkcywgcm9vdCk7Cj4gKyAgICAgICBvZl9ub2Rl
-X3B1dChyb290KTsKPiArCj4gKyAgICAgICByZXR1cm4gaWQ7Cj4gK30KPiArCj4gK3N0YXRpYyBp
-bnQgX19pbml0IHJvY2tjaGlwX2luaXRfdXNiX3VhcnQodm9pZCkKPiArewo+ICsgICAgICAgY29u
-c3Qgc3RydWN0IG9mX2RldmljZV9pZCAqbWF0Y2g7Cj4gKyAgICAgICBjb25zdCBzdHJ1Y3Qgcm9j
-a2NoaXBfdWFydF9kYXRhICpkYXRhOwo+ICsgICAgICAgc3RydWN0IHJlZ21hcCAqZ3JmOwo+ICsg
-ICAgICAgaW50IHJldDsKPiArCj4gKyAgICAgICBpZiAoIWVuYWJsZV91c2JfdWFydCkKPiArICAg
-ICAgICAgICAgICAgcmV0dXJuIDA7Cj4gKwo+ICsgICAgICAgbWF0Y2ggPSByb2NrY2hpcF91c2Jf
-dWFydF9kYXRhX2xvb2t1cCgpOwo+ICsgICAgICAgaWYgKCFtYXRjaCkKPiArICAgICAgICAgICAg
-ICAgcmV0dXJuIC1FTk9UU1VQUDsKPiArCj4gKyAgICAgICBwcl9kZWJ1ZygiJXM6IHVzaW5nIHNl
-dHRpbmdzIGZvciAlc1xuIiwgX19mdW5jX18sIG1hdGNoLT5jb21wYXRpYmxlKTsKPiArICAgICAg
-IGRhdGEgPSBtYXRjaC0+ZGF0YTsKPiArCj4gKyAgICAgICBncmYgPSBzeXNjb25fcmVnbWFwX2xv
-b2t1cF9ieV9jb21wYXRpYmxlKGRhdGEtPmdyZl9jb21wYXRpYmxlKTsKPiArICAgICAgIGlmIChJ
-U19FUlIoZ3JmKSkgewo+ICsgICAgICAgICAgICAgICBwcl9lcnIoIiVzOiBjb3VsZCBub3QgZmlu
-ZCBHUkYgc3lzY29uXG4iLCBfX2Z1bmNfXyk7Cj4gKyAgICAgICAgICAgICAgIHJldHVybiBQVFJf
-RVJSKGdyZik7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgcmV0ID0gZGF0YS0+aW5pdF91YXJ0
-KGRhdGEsIGdyZik7Cj4gKyAgICAgICBpZiAocmV0KSB7Cj4gKyAgICAgICAgICAgICAgIHByX2Vy
-cigiJXM6IGNvdWxkIG5vdCBpbml0IHVzYl91YXJ0XG4iLCBfX2Z1bmNfXyk7Cj4gKyAgICAgICAg
-ICAgICAgIHJldHVybiByZXQ7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgcmV0dXJuIHJvY2tj
-aGlwX2Rpc2FibGVfdXNiX2NvbnRyb2xsZXIoZGF0YSk7Cj4gK30KPiArZWFybHlfaW5pdGNhbGwo
-cm9ja2NoaXBfaW5pdF91c2JfdWFydCk7Cj4gKwo+ICtzdGF0aWMgaW50IF9faW5pdCByb2NrY2hp
-cF91c2JfdWFydChjaGFyICpidWYpCj4gK3sKPiArICAgICAgIGVuYWJsZV91c2JfdWFydCA9IHRy
-dWU7Cj4gKyAgICAgICByZXR1cm4gMDsKPiArfQo+ICtlYXJseV9wYXJhbSgicm9ja2NoaXAudXNi
-X3VhcnQiLCByb2NrY2hpcF91c2JfdWFydCk7Cj4gLS0KPiAyLjEuNAo+Cj4KPgo+IF9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgpJ
-IGFncmVlIHdpdGggQXJuZCwgaXQgd291bGQgYmUgYmV0dGVyIHRvIGxvc2Ugbm90aGluZy4gU29t
-ZSB1c2VycwptaWdodCBoYXZlIHJrMzI4OC1iYXNlZCB0diBib3ggKGFzc3VtaW5nIHRoYXQgdGhl
-IGR0cyBpcyBvcGVuZWQuLi4pIG9yCmJyb2tlbiB1YXJ0Li4uIHllcyB5b3UgY2FuIGRvIGxvdyBs
-ZXZlbHMgdGFza3Mgb24gYSBkZXZlbG9wbWVudCBib2FyZCwKYnV0IHRoYXQncyBub3QgYSByZWFs
-IHNvbHV0aW9uIGZvciBtZS4gRWFjaCBkZXZpY2Ugc2hvdWxkIGJlCmluZGVwZW5kZW50LCBpbWhv
-LgoKUmVnYXJkcywKUm9tYWluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Shawn
+
+On Thu, Aug 6, 2015 at 12:14 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> DesignWare MMC Controller can supports two types of DMA
+> mode: external dma and internal dma. We get a RK312x platform
+> integrated dw_mmc and ARM pl330 dma controller. This patch add
+> edmac ops to support these platforms. I've tested it on RK312x
+> platform with edmac mode and RK3288 platform with idmac mode.
+>
+Just curious to know if their are any performance (read/write)
+difference with Idmac and edmac?
+
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v4:
+> - remove "host->trans_mode" and use "host->use_dma" to indicate
+>   transfer mode.
+> - remove all bt-bindings' changes since we don't need new properities.
+> - check transfer mode at runtime by reading HCON reg
+> - spilt defconfig changes for each sub-architecture
+> - fix the title of cover letter
+> - reuse some code for reducing code size
+>
+> Changes in v3:
+> - choose transfer mode at runtime
+> - remove all CONFIG_MMC_DW_IDMAC config option
+> - add supports-idmac property for some platforms
+>
+> Changes in v2:
+> - Fix typo of dev_info msg
+> - remove unused dmach from declaration of dw_mci_dma_slave
+>
+>  drivers/mmc/host/Kconfig        |  11 +-
+>  drivers/mmc/host/dw_mmc-pltfm.c |   2 +
+>  drivers/mmc/host/dw_mmc.c       | 258 ++++++++++++++++++++++++++++++++--------
+>  include/linux/mmc/dw_mmc.h      |  27 ++++-
+>  4 files changed, 232 insertions(+), 66 deletions(-)
+>
+> diff --git a/drivers/mmc/host/Kconfig b/drivers/mmc/host/Kconfig
+> index 6a0f9c7..a86c0eb 100644
+> --- a/drivers/mmc/host/Kconfig
+> +++ b/drivers/mmc/host/Kconfig
+> @@ -607,15 +607,7 @@ config MMC_DW
+>         help
+>           This selects support for the Synopsys DesignWare Mobile Storage IP
+>           block, this provides host support for SD and MMC interfaces, in both
+> -         PIO and external DMA modes.
+> -
+> -config MMC_DW_IDMAC
+> -       bool "Internal DMAC interface"
+> -       depends on MMC_DW
+> -       help
+> -         This selects support for the internal DMAC block within the Synopsys
+> -         Designware Mobile Storage IP block. This disables the external DMA
+> -         interface.
+> +         PIO, internal DMA mode and external DMA modes.
+>
+>  config MMC_DW_PLTFM
+>         tristate "Synopsys Designware MCI Support as platform device"
+> @@ -644,7 +636,6 @@ config MMC_DW_K3
+>         tristate "K3 specific extensions for Synopsys DW Memory Card Interface"
+>         depends on MMC_DW
+>         select MMC_DW_PLTFM
+> -       select MMC_DW_IDMAC
+>         help
+>           This selects support for Hisilicon K3 SoC specific extensions to the
+>           Synopsys DesignWare Memory Card Interface driver. Select this option
+> diff --git a/drivers/mmc/host/dw_mmc-pltfm.c b/drivers/mmc/host/dw_mmc-pltfm.c
+> index ec6dbcd..7e1d13b 100644
+> --- a/drivers/mmc/host/dw_mmc-pltfm.c
+> +++ b/drivers/mmc/host/dw_mmc-pltfm.c
+> @@ -59,6 +59,8 @@ int dw_mci_pltfm_register(struct platform_device *pdev,
+>         host->pdata = pdev->dev.platform_data;
+>
+>         regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +       /* Get registers' physical base address */
+> +       host->phy_regs = (void *)(regs->start);
+>         host->regs = devm_ioremap_resource(&pdev->dev, regs);
+>         if (IS_ERR(host->regs))
+>                 return PTR_ERR(host->regs);
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 40e9d8e..5d6cdff 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -56,7 +56,7 @@
+>  #define DW_MCI_FREQ_MAX        200000000       /* unit: HZ */
+>  #define DW_MCI_FREQ_MIN        400000          /* unit: HZ */
+>
+> -#ifdef CONFIG_MMC_DW_IDMAC
+> +
+>  #define IDMAC_INT_CLR          (SDMMC_IDMAC_INT_AI | SDMMC_IDMAC_INT_NI | \
+>                                  SDMMC_IDMAC_INT_CES | SDMMC_IDMAC_INT_DU | \
+>                                  SDMMC_IDMAC_INT_FBE | SDMMC_IDMAC_INT_RI | \
+> @@ -99,7 +99,6 @@ struct idmac_desc {
+>
+>         __le32          des3;   /* buffer 2 physical address */
+>  };
+> -#endif /* CONFIG_MMC_DW_IDMAC */
+>
+>  static bool dw_mci_reset(struct dw_mci *host);
+>  static bool dw_mci_ctrl_reset(struct dw_mci *host, u32 reset);
+> @@ -403,7 +402,6 @@ static int dw_mci_get_dma_dir(struct mmc_data *data)
+>                 return DMA_FROM_DEVICE;
+>  }
+>
+> -#ifdef CONFIG_MMC_DW_IDMAC
+>  static void dw_mci_dma_cleanup(struct dw_mci *host)
+>  {
+>         struct mmc_data *data = host->data;
+> @@ -441,12 +439,21 @@ static void dw_mci_idmac_stop_dma(struct dw_mci *host)
+>         mci_writel(host, BMOD, temp);
+>  }
+>
+> -static void dw_mci_idmac_complete_dma(struct dw_mci *host)
+> +static void dw_mci_dmac_complete_dma(void *arg)
+>  {
+> +       struct dw_mci *host = arg;
+>         struct mmc_data *data = host->data;
+>
+>         dev_vdbg(host->dev, "DMA complete\n");
+>
+> +       if (host->use_dma == TRANS_MODE_EDMAC)
+> +               if (data && (data->flags & MMC_DATA_READ))
+> +                       /* Invalidate cache after read */
+> +                       dma_sync_sg_for_cpu(mmc_dev(host->cur_slot->mmc),
+> +                                           data->sg,
+> +                                           data->sg_len,
+> +                                           DMA_FROM_DEVICE);
+> +
+>         host->dma_ops->cleanup(host);
+>
+>         /*
+> @@ -527,7 +534,7 @@ static void dw_mci_translate_sglist(struct dw_mci *host, struct mmc_data *data,
+>         wmb();
+>  }
+>
+> -static void dw_mci_idmac_start_dma(struct dw_mci *host, unsigned int sg_len)
+> +static int dw_mci_idmac_start_dma(struct dw_mci *host, unsigned int sg_len)
+>  {
+>         u32 temp;
+>
+> @@ -551,6 +558,8 @@ static void dw_mci_idmac_start_dma(struct dw_mci *host, unsigned int sg_len)
+>
+>         /* Start it running */
+>         mci_writel(host, PLDMND, 1);
+> +
+> +       return 0;
+>  }
+>
+>  static int dw_mci_idmac_init(struct dw_mci *host)
+> @@ -629,10 +638,112 @@ static const struct dw_mci_dma_ops dw_mci_idmac_ops = {
+>         .init = dw_mci_idmac_init,
+>         .start = dw_mci_idmac_start_dma,
+>         .stop = dw_mci_idmac_stop_dma,
+> -       .complete = dw_mci_idmac_complete_dma,
+> +       .complete = dw_mci_dmac_complete_dma,
+> +       .cleanup = dw_mci_dma_cleanup,
+> +};
+> +
+> +static void dw_mci_edmac_stop_dma(struct dw_mci *host)
+> +{
+> +       dmaengine_terminate_all(host->dms->ch);
+> +}
+> +
+> +static int dw_mci_edmac_start_dma(struct dw_mci *host,
+> +                                           unsigned int sg_len)
+> +{
+> +       struct dma_slave_config cfg;
+> +       struct dma_async_tx_descriptor *desc = NULL;
+> +       struct scatterlist *sgl = host->data->sg;
+> +       const u32 mszs[] = {1, 4, 8, 16, 32, 64, 128, 256};
+> +       u32 sg_elems = host->data->sg_len;
+> +       u32 fifoth_val;
+> +       u32 fifo_offset = host->fifo_reg - host->regs;
+> +       int ret = 0;
+> +
+> +       /* Set external dma config: burst size, burst width */
+> +       cfg.dst_addr = (dma_addr_t)(host->phy_regs + fifo_offset);
+> +       cfg.src_addr = cfg.dst_addr;
+> +       cfg.dst_addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
+> +       cfg.src_addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
+> +
+> +       /* Match burst msize with external dma config */
+> +       fifoth_val = mci_readl(host, FIFOTH);
+> +       cfg.dst_maxburst = mszs[(fifoth_val >> 28) & 0x7];
+> +       cfg.src_maxburst = cfg.dst_maxburst;
+> +
+> +       if (host->data->flags & MMC_DATA_WRITE)
+> +               cfg.direction = DMA_MEM_TO_DEV;
+> +       else /* MMC_DATA_READ */
+> +               cfg.direction = DMA_DEV_TO_MEM;
+> +
+> +       ret = dmaengine_slave_config(host->dms->ch, &cfg);
+> +       if (ret) {
+> +               dev_err(host->dev, "Failed to config edmac.\n");
+> +               return -EBUSY;
+> +       }
+> +
+> +       desc = dmaengine_prep_slave_sg(host->dms->ch, sgl,
+> +                                      sg_len, cfg.direction,
+> +                                      DMA_PREP_INTERRUPT | DMA_CTRL_ACK);
+> +       if (!desc) {
+> +               dev_err(host->dev, "Can't prepare slave sg.\n");
+> +               return -EBUSY;
+> +       }
+> +
+> +       /* Set dw_mci_edmac_complete_dma as callback */
+> +       desc->callback = dw_mci_dmac_complete_dma;
+> +       desc->callback_param = (void *)host;
+> +       dmaengine_submit(desc);
+> +
+> +       /* Flush cache before write */
+> +       if (host->data->flags & MMC_DATA_WRITE)
+> +               dma_sync_sg_for_device(mmc_dev(host->cur_slot->mmc), sgl,
+> +                                      sg_elems, DMA_TO_DEVICE);
+> +
+> +       dma_async_issue_pending(host->dms->ch);
+> +
+> +       return 0;
+> +}
+> +
+> +static int dw_mci_edmac_init(struct dw_mci *host)
+> +{
+> +       /* Request external dma channel */
+> +       host->dms = kzalloc(sizeof(struct dw_mci_dma_slave), GFP_KERNEL);
+> +       if (!host->dms)
+> +               return -ENOMEM;
+> +
+> +       host->dms->ch = dma_request_slave_channel(host->dev, "rx-tx");
+> +       if (!host->dms->ch) {
+> +               dev_err(host->dev,
+> +                       "Failed to get external DMA channel %d\n",
+> +                       host->dms->ch->chan_id);
+> +               kfree(host->dms);
+> +               host->dms = NULL;
+> +               return -ENXIO;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static void dw_mci_edmac_exit(struct dw_mci *host)
+> +{
+> +       if (host->dms) {
+> +               if (host->dms->ch) {
+> +                       dma_release_channel(host->dms->ch);
+> +                       host->dms->ch = NULL;
+> +               }
+> +               kfree(host->dms);
+> +               host->dms = NULL;
+> +       }
+> +}
+> +
+> +static const struct dw_mci_dma_ops dw_mci_edmac_ops = {
+> +       .init = dw_mci_edmac_init,
+> +       .exit = dw_mci_edmac_exit,
+> +       .start = dw_mci_edmac_start_dma,
+> +       .stop = dw_mci_edmac_stop_dma,
+> +       .complete = dw_mci_dmac_complete_dma,
+>         .cleanup = dw_mci_dma_cleanup,
+>  };
+> -#endif /* CONFIG_MMC_DW_IDMAC */
+>
+>  static int dw_mci_pre_dma_transfer(struct dw_mci *host,
+>                                    struct mmc_data *data,
+> @@ -712,7 +823,6 @@ static void dw_mci_post_req(struct mmc_host *mmc,
+>
+>  static void dw_mci_adjust_fifoth(struct dw_mci *host, struct mmc_data *data)
+>  {
+> -#ifdef CONFIG_MMC_DW_IDMAC
+>         unsigned int blksz = data->blksz;
+>         const u32 mszs[] = {1, 4, 8, 16, 32, 64, 128, 256};
+>         u32 fifo_width = 1 << host->data_shift;
+> @@ -720,6 +830,10 @@ static void dw_mci_adjust_fifoth(struct dw_mci *host, struct mmc_data *data)
+>         u32 msize = 0, rx_wmark = 1, tx_wmark, tx_wmark_invers;
+>         int idx = (sizeof(mszs) / sizeof(mszs[0])) - 1;
+>
+> +       /* pio should ship this scenario */
+> +       if (!host->use_dma)
+> +               return;
+> +
+>         tx_wmark = (host->fifo_depth) / 2;
+>         tx_wmark_invers = host->fifo_depth - tx_wmark;
+>
+> @@ -748,7 +862,6 @@ static void dw_mci_adjust_fifoth(struct dw_mci *host, struct mmc_data *data)
+>  done:
+>         fifoth_val = SDMMC_SET_FIFOTH(msize, rx_wmark, tx_wmark);
+>         mci_writel(host, FIFOTH, fifoth_val);
+> -#endif
+>  }
+>
+>  static void dw_mci_ctrl_rd_thld(struct dw_mci *host, struct mmc_data *data)
+> @@ -835,7 +948,11 @@ static int dw_mci_submit_data_dma(struct dw_mci *host, struct mmc_data *data)
+>         mci_writel(host, INTMASK, temp);
+>         spin_unlock_irqrestore(&host->irq_lock, irqflags);
+>
+> -       host->dma_ops->start(host, sg_len);
+> +       if (host->dma_ops->start(host, sg_len)) {
+> +               /* We can't do DMA */
+> +               dev_err(host->dev, "%s: failed to start DMA.\n", __func__);
+> +               return -ENODEV;
+> +       }
+>
+>         return 0;
+>  }
+> @@ -2256,26 +2373,30 @@ static irqreturn_t dw_mci_interrupt(int irq, void *dev_id)
+>
+>         }
+>
+> -#ifdef CONFIG_MMC_DW_IDMAC
+> -       /* Handle DMA interrupts */
+> -       if (host->dma_64bit_address == 1) {
+> -               pending = mci_readl(host, IDSTS64);
+> -               if (pending & (SDMMC_IDMAC_INT_TI | SDMMC_IDMAC_INT_RI)) {
+> -                       mci_writel(host, IDSTS64, SDMMC_IDMAC_INT_TI |
+> -                                                       SDMMC_IDMAC_INT_RI);
+> -                       mci_writel(host, IDSTS64, SDMMC_IDMAC_INT_NI);
+> -                       host->dma_ops->complete(host);
+> -               }
+> -       } else {
+> -               pending = mci_readl(host, IDSTS);
+> -               if (pending & (SDMMC_IDMAC_INT_TI | SDMMC_IDMAC_INT_RI)) {
+> -                       mci_writel(host, IDSTS, SDMMC_IDMAC_INT_TI |
+> -                                                       SDMMC_IDMAC_INT_RI);
+> -                       mci_writel(host, IDSTS, SDMMC_IDMAC_INT_NI);
+> -                       host->dma_ops->complete(host);
+> +       if (host->use_dma == TRANS_MODE_IDMAC) {
+> +               /* Handle DMA interrupts */
+> +               if (host->dma_64bit_address == 1) {
+> +                       pending = mci_readl(host, IDSTS64);
+> +                       if (pending & (SDMMC_IDMAC_INT_TI |
+> +                                      SDMMC_IDMAC_INT_RI)) {
+> +                               mci_writel(host, IDSTS64,
+> +                                          SDMMC_IDMAC_INT_TI |
+> +                                          SDMMC_IDMAC_INT_RI);
+> +                               mci_writel(host, IDSTS64, SDMMC_IDMAC_INT_NI);
+> +                               host->dma_ops->complete((void *)host);
+> +                       }
+> +               } else {
+> +                       pending = mci_readl(host, IDSTS);
+> +                       if (pending & (SDMMC_IDMAC_INT_TI |
+> +                                      SDMMC_IDMAC_INT_RI)) {
+> +                               mci_writel(host, IDSTS,
+> +                                          SDMMC_IDMAC_INT_TI |
+> +                                          SDMMC_IDMAC_INT_RI);
+> +                               mci_writel(host, IDSTS, SDMMC_IDMAC_INT_NI);
+> +                               host->dma_ops->complete((void *)host);
+> +                       }
+>                 }
+>         }
+> -#endif
+>
+>         return IRQ_HANDLED;
+>  }
+> @@ -2391,19 +2512,28 @@ static int dw_mci_init_slot(struct dw_mci *host, unsigned int id)
+>                 mmc->max_seg_size = host->pdata->blk_settings->max_seg_size;
+>         } else {
+>                 /* Useful defaults if platform data is unset. */
+> -#ifdef CONFIG_MMC_DW_IDMAC
+> -               mmc->max_segs = host->ring_size;
+> -               mmc->max_blk_size = 65536;
+> -               mmc->max_seg_size = 0x1000;
+> -               mmc->max_req_size = mmc->max_seg_size * host->ring_size;
+> -               mmc->max_blk_count = mmc->max_req_size / 512;
+> -#else
+> -               mmc->max_segs = 64;
+> -               mmc->max_blk_size = 65536; /* BLKSIZ is 16 bits */
+> -               mmc->max_blk_count = 512;
+> -               mmc->max_req_size = mmc->max_blk_size * mmc->max_blk_count;
+> -               mmc->max_seg_size = mmc->max_req_size;
+> -#endif /* CONFIG_MMC_DW_IDMAC */
+> +               if (host->use_dma == TRANS_MODE_IDMAC) {
+> +                       mmc->max_segs = host->ring_size;
+> +                       mmc->max_blk_size = 65536;
+> +                       mmc->max_seg_size = 0x1000;
+> +                       mmc->max_req_size = mmc->max_seg_size * host->ring_size;
+> +                       mmc->max_blk_count = mmc->max_req_size / 512;
+> +               } else if (host->use_dma == TRANS_MODE_EDMAC) {
+> +                       mmc->max_segs = 64;
+> +                       mmc->max_blk_size = 65536;
+> +                       mmc->max_blk_count = 65535;
+> +                       mmc->max_req_size =
+> +                                       mmc->max_blk_size * mmc->max_blk_count;
+> +                       mmc->max_seg_size = mmc->max_req_size;
+> +               } else {
+> +                       /* TRANS_MODE_PIO */
+> +                       mmc->max_segs = 64;
+> +                       mmc->max_blk_size = 65536; /* BLKSIZ is 16 bits */
+> +                       mmc->max_blk_count = 512;
+> +                       mmc->max_req_size =
+> +                                       mmc->max_blk_size * mmc->max_blk_count;
+> +                       mmc->max_seg_size = mmc->max_req_size;
+> +               }
+>         }
+>
+>         if (dw_mci_get_cd(mmc))
+> @@ -2437,6 +2567,21 @@ static void dw_mci_cleanup_slot(struct dw_mci_slot *slot, unsigned int id)
+>  static void dw_mci_init_dma(struct dw_mci *host)
+>  {
+>         int addr_config;
+> +       int trans_mode;
+> +       struct device *dev = host->dev;
+> +       struct device_node *np = dev->of_node;
+> +
+> +       /* Check tansfer mode */
+> +       trans_mode = (mci_readl(host, HCON) >> 16) & 0x3;
+> +       if (trans_mode == 0) {
+> +               trans_mode = TRANS_MODE_IDMAC;
+> +       } else if (trans_mode == 1 || trans_mode == 2) {
+> +               trans_mode = TRANS_MODE_EDMAC;
+> +       } else {
+> +               trans_mode = TRANS_MODE_PIO;
+> +               goto no_dma;
+> +       }
+> +
+>         /* Check ADDR_CONFIG bit in HCON to find IDMAC address bus width */
+>         addr_config = (mci_readl(host, HCON) >> 27) & 0x01;
+>
+> @@ -2462,10 +2607,19 @@ static void dw_mci_init_dma(struct dw_mci *host)
+>         }
+>
+>         /* Determine which DMA interface to use */
+> -#ifdef CONFIG_MMC_DW_IDMAC
+> -       host->dma_ops = &dw_mci_idmac_ops;
+> -       dev_info(host->dev, "Using internal DMA controller.\n");
+> -#endif
+> +       if (trans_mode == TRANS_MODE_IDMAC) {
+> +               host->dma_ops = &dw_mci_idmac_ops;
+> +               dev_info(host->dev, "Using internal DMA controller.\n");
+> +       } else {
+> +               /* TRANS_MODE_EDMAC: check dma bindings again */
+> +               if ((of_property_count_strings(np, "dma-names") < 0) ||
+> +                   (!of_find_property(np, "dmas", NULL))) {
+> +                       trans_mode = TRANS_MODE_PIO;
+> +                       goto no_dma;
+> +               }
+> +               host->dma_ops = &dw_mci_edmac_ops;
+> +               dev_info(host->dev, "Using external DMA controller.\n");
+> +       }
+>
+>         if (!host->dma_ops)
+>                 goto no_dma;
+> @@ -2482,12 +2636,12 @@ static void dw_mci_init_dma(struct dw_mci *host)
+>                 goto no_dma;
+>         }
+>
+> -       host->use_dma = 1;
+> +       host->use_dma = trans_mode;
+>         return;
+>
+>  no_dma:
+>         dev_info(host->dev, "Using PIO mode.\n");
+> -       host->use_dma = 0;
+> +       host->use_dma = trans_mode;
+>         return;
+>  }
+>
+> @@ -2570,10 +2724,9 @@ static bool dw_mci_reset(struct dw_mci *host)
+>                 }
+>         }
+>
+> -#if IS_ENABLED(CONFIG_MMC_DW_IDMAC)
+> -       /* It is also recommended that we reset and reprogram idmac */
+> -       dw_mci_idmac_reset(host);
+> -#endif
+> +       if (host->use_dma == TRANS_MODE_IDMAC)
+> +               /* It is also recommended that we reset and reprogram idmac */
+> +               dw_mci_idmac_reset(host);
+>
+>         ret = true;
+>
+> @@ -2958,6 +3111,9 @@ EXPORT_SYMBOL(dw_mci_remove);
+>   */
+>  int dw_mci_suspend(struct dw_mci *host)
+>  {
+> +       if (host->use_dma && host->dma_ops->exit)
+> +               host->dma_ops->exit(host);
+> +
+>         return 0;
+>  }
+>  EXPORT_SYMBOL(dw_mci_suspend);
+> diff --git a/include/linux/mmc/dw_mmc.h b/include/linux/mmc/dw_mmc.h
+> index 5be9767..9ed6257 100644
+> --- a/include/linux/mmc/dw_mmc.h
+> +++ b/include/linux/mmc/dw_mmc.h
+> @@ -16,6 +16,7 @@
+>
+>  #include <linux/scatterlist.h>
+>  #include <linux/mmc/core.h>
+> +#include <linux/dmaengine.h>
+>
+>  #define MAX_MCI_SLOTS  2
+>
+> @@ -40,6 +41,17 @@ enum {
+>
+>  struct mmc_data;
+>
+> +enum {
+> +       TRANS_MODE_PIO = 0,
+> +       TRANS_MODE_IDMAC,
+> +       TRANS_MODE_EDMAC
+> +};
+> +
+> +struct dw_mci_dma_slave {
+> +       struct dma_chan *ch;
+> +       enum dma_transfer_direction direction;
+> +};
+> +
+>  /**
+>   * struct dw_mci - MMC controller state shared between all slots
+>   * @lock: Spinlock protecting the queue and associated data.
+> @@ -153,11 +165,16 @@ struct dw_mci {
+>         dma_addr_t              sg_dma;
+>         void                    *sg_cpu;
+>         const struct dw_mci_dma_ops     *dma_ops;
+> -#ifdef CONFIG_MMC_DW_IDMAC
+> +       /* For idmac */
+>         unsigned int            ring_size;
+> -#else
+> +
+> +       /* For edmac */
+> +       struct dw_mci_dma_slave *dms;
+> +       /* Registers's physical base address */
+> +       void                    *phy_regs;
+> +
+>         struct dw_mci_dma_data  *dma_data;
+> -#endif
+> +
+>         u32                     cmd_status;
+>         u32                     data_status;
+>         u32                     stop_cmdr;
+> @@ -210,8 +227,8 @@ struct dw_mci {
+>  struct dw_mci_dma_ops {
+>         /* DMA Ops */
+>         int (*init)(struct dw_mci *host);
+> -       void (*start)(struct dw_mci *host, unsigned int sg_len);
+> -       void (*complete)(struct dw_mci *host);
+> +       int (*start)(struct dw_mci *host, unsigned int sg_len);
+> +       void (*complete)(void *host);
+>         void (*stop)(struct dw_mci *host);
+>         void (*cleanup)(struct dw_mci *host);
+>         void (*exit)(struct dw_mci *host);
+> --
+> 2.3.7
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+
+-- 
+Regards,
+Alim
