@@ -1,13 +1,11 @@
 From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 1/3] nvmem: fix the out-of-range leak in read/write()
-Date: Mon, 10 Aug 2015 11:22:41 +0800
-Message-ID: <1439176963-8969-2-git-send-email-zhengsq@rock-chips.com>
-References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com>
+Subject: [PATCH 0/3] Add eFuse driver of Rockchip SoC
+Date: Mon, 10 Aug 2015 11:22:40 +0800
+Message-ID: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1439176963-8969-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,35 +21,36 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-The position to read/write must be less than max
-register size.
+Base on nvmem framework, this three patches
+implement the eFuse driver of Rockchip SoC.
+The data from eFuse contains CPU leakage, chip code and version etc.
 
-Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/nvmem/core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+The flow of reading data from eFuse is quite simple,
+config the CTRL register, write data address to CTRL
+register, then data is available in DOUT register.
 
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index d3c6676..f4af8e5 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
- 	int rc;
- 
- 	/* Stop the user from reading */
--	if (pos > nvmem->size)
-+	if (pos >= nvmem->size)
- 		return 0;
- 
- 	if (pos + count > nvmem->size)
-@@ -92,7 +92,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
- 	int rc;
- 
- 	/* Stop the user from writing */
--	if (pos > nvmem->size)
-+	if (pos >= nvmem->size)
- 		return 0;
- 
- 	if (pos + count > nvmem->size)
+Although always enable eFuse clock seems awkward,
+I can't find a better method to enable clock before
+read/write in the nvmem framework.
+Appreciate for any suggestions.
+
+
+ZhengShunQian (3):
+  nvmem: fix the out-of-range leak in read/write()
+  nvmem: rockchip-efuse: implement eFuse driver
+  clk: rockchip: do not gate the efuse256 clock
+
+ .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  36 +++++
+ arch/arm/boot/dts/rk3288.dtsi                      |  13 ++
+ drivers/clk/rockchip/clk-rk3288.c                  |   2 +-
+ drivers/nvmem/Kconfig                              |  10 ++
+ drivers/nvmem/Makefile                             |   2 +
+ drivers/nvmem/core.c                               |   4 +-
+ drivers/nvmem/rockchip-efuse.c                     | 155 +++++++++++++++++++++
+ include/dt-bindings/clock/rk3288-cru.h             |   1 +
+ 8 files changed, 220 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+ create mode 100644 drivers/nvmem/rockchip-efuse.c
+
 -- 
 1.9.1
