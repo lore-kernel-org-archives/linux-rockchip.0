@@ -1,259 +1,77 @@
-From: Jaehoon Chung <jh80.chung@gmail.com>
-Subject: Re: [PATCH v6] mmc: dw_mmc: add quirk for broken data transfer over
- scheme
-Date: Tue, 11 Aug 2015 01:26:52 +0900
-Message-ID: <55C8D0CC.809@gmail.com>
-References: <6399035.ITCGpzeoRA@diego>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 1/9] drm: bridge/dw_hdmi-ahb-audio: add audio driver
+Date: Mon, 10 Aug 2015 17:49:41 +0100
+Message-ID: <20150810164941.GW7557@n2100.arm.linux.org.uk>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+ <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+ <s5hk2t35ui4.wl-tiwai@suse.de>
+ <20150810103921.GR7557@n2100.arm.linux.org.uk>
+ <s5hegjb5o44.wl-tiwai@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <6399035.ITCGpzeoRA@diego>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko@sntech.de>, Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, Addy Ke <addy.ke@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <s5hegjb5o44.wl-tiwai@suse.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Takashi Iwai <tiwai@suse.de>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Heiko.
-
-Is this patch based on ulf's tree?
-At my dw-mmc tree, this patch can't apply..
-So if you're ok, i will rework this patch about my dw-mmc tree.
-how about?
-
-Best Regards,
-Jaehoon Chung
-
-On 08/10/2015 08:12 PM, Heiko St=FCbner wrote:
-> From: Addy Ke <addy.ke@rock-chips.com>
->=20
-> This patch add a new quirk to add a s/w timer to notify the driver
-> to terminate current transfer and report a data timeout to the core,
-> if DTO interrupt does NOT come within the given time.
->=20
-> dw_mmc call mmc_request_done func to finish transfer depends on
-> DTO interrupt. If DTO interrupt does not come in sending data state,
-> the current transfer will be blocked.
->=20
-> We got the reply from synopsys:
-> There are two counters but both use the same value of [31:8] bits.
-> Data timeout counter doesn't wait for stop clock and you should get
-> DRTO even when the clock is not stopped.
-> Host Starvation timeout counter is triggered with stop clock conditio=
-n.
->=20
-> This means that host should get DRTO and DTO interrupt.
->=20
-> But this case really exists, when driver reads tuning data from
-> card on RK3288-pink2 board. I measured waveforms by oscilloscope
-> and found that card clock was always on and data lines were always
-> holded high level in sending data state.
->=20
-> There are two possibility that data over interrupt doesn't come in
-> reading data state on RK3X SoCs:
-> - get command done interrupt, but doesn't get any data-related interr=
-upt.
-> - get data error interrupt, but doesn't get data over interrupt.
->=20
-> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
->=20
-> Address review comments from Jaehoon Chung.
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> Changes in v2:
-> - fix some typo.
-> - remove extra timeout value (250ms).
-> - remove dw_mci_dto_start_monitor func.
-> - use "broken-dto" for new quirk and change Subject for it.
->=20
-> Changes in v3:
-> - Remove dts for broken-dto, just add this quirk in dw_mci_rockchip_i=
-nit
->=20
-> Changes in v4:
-> - fix bug that may cause 32 bit overflow by (drto_clks * 1000).
-> - doesn't call mod_timer in writing data state, becase TMOUT register=
- only
->   for reading data.
->=20
-> Changes in v5:
-> - fix some typo.
-> - add a buffer for drto_ms.
-> - move drto_ms related code to a helper function.
->=20
-> Changes in v6:
-> - better spare time comment
-> - let dw_mci_set_drto start the timer itself
->=20
->  drivers/mmc/host/dw_mmc-rockchip.c |  3 ++
->  drivers/mmc/host/dw_mmc.c          | 64=20
-> ++++++++++++++++++++++++++++++++++++--
->  include/linux/mmc/dw_mmc.h         |  4 +++
->  3 files changed, 69 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw=
-_mmc-
-> rockchip.c
-> index de15121..bc76aa2 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -73,6 +73,9 @@ static int dw_mci_rockchip_init(struct dw_mci *host=
-)
->  	/* It is slot 8 on Rockchip SoCs */
->  	host->sdio_id0 =3D 8;
-> =20
-> +	/* It needs this quirk on all Rockchip SoCs */
-> +	host->pdata->quirks |=3D DW_MCI_QUIRK_BROKEN_DTO;
-> +
->  	return 0;
->  }
-> =20
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 4e95ca9..459e68b 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -1528,6 +1528,20 @@ static int dw_mci_data_complete(struct dw_mci =
-*host,=20
-> struct mmc_data *data)
->  	return data->error;
->  }
-> =20
-> +static void dw_mci_set_drto(struct dw_mci *host)
-> +{
-> +	unsigned int drto_clks;
-> +	unsigned int drto_ms;
-> +
-> +	drto_clks =3D mci_readl(host, TMOUT) >> 8;
-> +	drto_ms =3D DIV_ROUND_UP(drto_clks, host->bus_hz / 1000);
-> +
-> +	/* add a bit spare time */
-> +	drto_ms +=3D 10;
-> +
-> +	mod_timer(&host->dto_timer, jiffies + msecs_to_jiffies(drto_ms));
-> +}
-> +
->  static void dw_mci_tasklet_func(unsigned long priv)
->  {
->  	struct dw_mci *host =3D (struct dw_mci *)priv;
-> @@ -1605,8 +1619,16 @@ static void dw_mci_tasklet_func(unsigned long =
-priv)
->  			}
-> =20
->  			if (!test_and_clear_bit(EVENT_XFER_COMPLETE,
-> -						&host->pending_events))
-> +						&host->pending_events)) {
-> +				/*
-> +				 * If all data-related interrupts don't come
-> +				 * within the given time in reading data state.
-> +				 */
-> +				if ((host->quirks & DW_MCI_QUIRK_BROKEN_DTO) &&
-> +				    (host->dir_status =3D=3D DW_MCI_RECV_STATUS))
-> +					dw_mci_set_drto(host);
->  				break;
-> +			}
-> =20
->  			set_bit(EVENT_XFER_COMPLETE, &host->completed_events);
-> =20
-> @@ -1639,8 +1661,17 @@ static void dw_mci_tasklet_func(unsigned long =
-priv)
-> =20
->  		case STATE_DATA_BUSY:
->  			if (!test_and_clear_bit(EVENT_DATA_COMPLETE,
-> -						&host->pending_events))
-> +						&host->pending_events)) {
-> +				/*
-> +				 * If data error interrupt comes but data over
-> +				 * interrupt doesn't come within the given time.
-> +				 * in reading data state.
-> +				 */
-> +				if ((host->quirks & DW_MCI_QUIRK_BROKEN_DTO) &&
-> +				    (host->dir_status =3D=3D DW_MCI_RECV_STATUS))
-> +					dw_mci_set_drto(host);
->  				break;
-> +			}
-> =20
->  			host->data =3D NULL;
->  			set_bit(EVENT_DATA_COMPLETE, &host->completed_events);
-> @@ -2201,6 +2232,9 @@ static irqreturn_t dw_mci_interrupt(int irq, vo=
-id=20
-> *dev_id)
->  		}
-> =20
->  		if (pending & SDMMC_INT_DATA_OVER) {
-> +			if (host->quirks & DW_MCI_QUIRK_BROKEN_DTO)
-> +				del_timer(&host->dto_timer);
-> +
->  			mci_writel(host, RINTSTS, SDMMC_INT_DATA_OVER);
->  			if (!host->data_status)
->  				host->data_status =3D pending;
-> @@ -2593,6 +2627,28 @@ static void dw_mci_cmd11_timer(unsigned long a=
-rg)
->  	tasklet_schedule(&host->tasklet);
->  }
-> =20
-> +static void dw_mci_dto_timer(unsigned long arg)
-> +{
-> +	struct dw_mci *host =3D (struct dw_mci *)arg;
-> +
-> +	switch (host->state) {
-> +	case STATE_SENDING_DATA:
-> +	case STATE_DATA_BUSY:
-> +		/*
-> +		 * If DTO interrupt does NOT come in sending data state,
-> +		 * we should notify the driver to terminate current transfer
-> +		 * and report a data timeout to the core.
-> +		 */
-> +		host->data_status =3D SDMMC_INT_DRTO;
-> +		set_bit(EVENT_DATA_ERROR, &host->pending_events);
-> +		set_bit(EVENT_DATA_COMPLETE, &host->pending_events);
-> +		tasklet_schedule(&host->tasklet);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +}
-> +
->  #ifdef CONFIG_OF
->  static struct dw_mci_of_quirks {
->  	char *quirk;
-> @@ -2769,6 +2825,10 @@ int dw_mci_probe(struct dw_mci *host)
-> =20
->  	host->quirks =3D host->pdata->quirks;
-> =20
-> +	if (host->quirks & DW_MCI_QUIRK_BROKEN_DTO)
-> +		setup_timer(&host->dto_timer,
-> +			    dw_mci_dto_timer, (unsigned long)host);
-> +
->  	spin_lock_init(&host->lock);
->  	spin_lock_init(&host->irq_lock);
->  	INIT_LIST_HEAD(&host->queue);
-> diff --git a/include/linux/mmc/dw_mmc.h b/include/linux/mmc/dw_mmc.h
-> index 5be9767..1c47ce3 100644
-> --- a/include/linux/mmc/dw_mmc.h
-> +++ b/include/linux/mmc/dw_mmc.h
-> @@ -98,6 +98,7 @@ struct mmc_data;
->   * @irq_flags: The flags to be passed to request_irq.
->   * @irq: The irq value to be passed to request_irq.
->   * @sdio_id0: Number of slot0 in the SDIO interrupt registers.
-> + * @dto_timer: Timer for broken data transfer over scheme.
->   *
->   * Locking
->   * =3D=3D=3D=3D=3D=3D=3D
-> @@ -204,6 +205,7 @@ struct dw_mci {
->  	int			sdio_id0;
-> =20
->  	struct timer_list       cmd11_timer;
-> +	struct timer_list       dto_timer;
->  };
-> =20
->  /* DMA ops for Internal/External DMAC interface */
-> @@ -226,6 +228,8 @@ struct dw_mci_dma_ops {
->  #define DW_MCI_QUIRK_HIGHSPEED			BIT(2)
->  /* Unreliable card detection */
->  #define DW_MCI_QUIRK_BROKEN_CARD_DETECTION	BIT(3)
-> +/* Timer for broken data transfer over scheme */
-> +#define DW_MCI_QUIRK_BROKEN_DTO			BIT(4)
-> =20
->  struct dma_pdata;
-> =20
->=20
+T24gTW9uLCBBdWcgMTAsIDIwMTUgYXQgMDI6MjM6MDdQTSArMDIwMCwgVGFrYXNoaSBJd2FpIHdy
+b3RlOgo+IEkgYWRtaXQgdGhhdCBhbHNhLWxpYiBjb2RlIGlzIHZlcnkgaG9ycmlibGUgdG8gZm9s
+bG93IC0tIGJ1dCBJIGd1ZXNzCj4gdGhlIGNoYW5nZSB5b3UnZCBuZWVkIGZvciBpZWM5NTggcGx1
+Z2luIHdvdWxkIGJlIGZhaXJseSBzbWFsbC4gIFdlIGNhbgo+IGFkZCBhIGNvbmZpZyBvcHRpb24g
+YW5kIGxldCBpZWM5NTggYmVoYXZpbmcgc2xpZ2h0bHkgZGlmZmVyZW50bHkKPiBkZXBlbmRpbmcg
+b24gaXQuCgpZZXMsIGJ1dCB0aGVyZSdzIG90aGVyIHByb2JsZW1zIHRoZXJlIGFzIHdlbGwuCgpU
+aGUgSUVDOTU4IHBsdWdpbiBkb2VzIHRoZSBqb2Igb2YgYWRkaW5nIHRoZSA0IEFFUyBieXRlcyBh
+bmQgZm9ybWF0dGluZwpmYWlybHkgd2VsbCwgYnV0IHRoZSBwcm9ibGVtIHdoZW4gdGhlICdkZWZh
+dWx0JyBieXRlcyBzcGVjaWZpZWQgaW4gdGhlCkFMU0EgY29uZmlndXJhdGlvbiBmaWxlcyBhcmUg
+dXNlZC4KCkxldCdzIHRha2UgdGhlIG9sZCBjaGVzdG51dCBvZiBQdWxzZUF1ZGlvLCBvciBldmVu
+IGFwbGF5LCBvciB0aGUgbWlyaWFkCm9mIG90aGVyIGF1ZGlvLW9ubHkgcGxheWVycyBvdXQgdGhl
+cmUuCgpNb3N0IG9mIHRoZW0gZG8gbm90IHN1cHBseSB0aGUgQUVTIGJ5dGVzIHRvIGJlIHVzZWQs
+IHNvIHdlIGVuZCB1cCB3aXRoCnRoZSBkZWZhdWx0LgoKVGhlIGRlZmF1bHQgaXMuLi4gMHgwNCAw
+eDgyIDB4MDAgMHgwMiwgd2hpY2ggc3BlY2lmaWVzIGEgc2FtcGxlIHJhdGUKb2YgNDhrSHouICBI
+b3dldmVyLCB0aGUgYWN0dWFsIHNhbXBsZSByYXRlIG1heSBub3QgYmUgNDhrSHouICBBdCBsZWFz
+dAp0aGUgSERNSSBzcGVjaWZpY2F0aW9ucyBzYXkgdGhhdCB0aGUgY2hhbm5lbCBzdGF0dXMgZGF0
+YSBtdXN0IGJlIGNvcnJlY3QsCmFuZCB0aGVyZSBhcmUgQVYgcmVjZWl2ZXJzIG91dCB0aGVyZSB3
+aGljaCBkbyBtYWtlIHVzZSBvZiB0aGlzLCBhbmQgaWYKdGhlIGNoYW5uZWwgc3RhdHVzIGRvZXMg
+bm90IGFncmVlIHdpdGggdGhlIGFjdHVhbCBzYW1wbGUgcmF0ZSwgdGhleQplaXRoZXIgcmVmdXNl
+IHRvIHJlY29nbmlzZSB0aGUgYXVkaW8gc3RyZWFtIChzYXlpbmcgdGhlcmUncyBub3RoaW5nCnRo
+ZXJlKSBvciB0aGV5IGludGVybWl0dGVudGx5IG11dGUgdGhlIGF1ZGlvLiAgWWFtYWhhIFJYLVY2
+NzcgaXMgb25lCmV4YW1wbGUgd2hpY2ggaGFzIHRoaXMgYmVoYXZpb3VyLgoKVGhlIG9ubHkgY29t
+cGxpYW50IHByb2dyYW0gdGhhdCBJJ3ZlIGZvdW5kIHNvIGZhciBpcyBWTEMgaW4gU1BESUYKcGFz
+cy10aHJvdWdoIG1vZGUsIHdoaWNoIGlzIHRoZSBvbmx5IGNhc2Ugd2hlcmUgVkxDIHBhc3NlcyB0
+aGUKY2hhbm5lbCBzdGF0dXMgaW5mb3JtYXRpb24uICBFdmVyeXRoaW5nIGVsc2Ugc2VlbXMgYnJv
+a2VuIGluIHRoaXMKcmVnYXJkLCBieSBmYWxsaW5nIGJhY2sgdG8gdGhlIGRlZmF1bHQuCgpPYnZp
+b3VzbHksIGFwbGF5IGNhbiBiZSBtYWRlIHRvIHdvcmsgYnkgc2V0dGluZyB0aGUgQUVTIGJ5dGVz
+Cm1hbnVhbGx5IHdoZW4gc3BlY2lmeWluZyB0aGUgZGV2aWNlIGZvciBpdCB0byB1c2UsIGJ1dCB0
+aGlzIGlzIG5vdApyZWFsbHkgdXNlci1mcmllbmRseSBvciBwcm9ncmFtbWVyIGZyaWVuZGx5IC0g
+ZXNwZWNpYWxseSBhcyB0aGUKY3VycmVudCB1c2UgbW9kZWwgZXhwZWN0cyB0aGluZ3MgdG8gImp1
+c3Qgd29yayIgKHRoZSBjb21tb24gY2FzZQpiZWluZyBQQ00gb3V0cHV0IG9uIGEgUEMgd2hpY2gg
+ZG9lc24ndCBjYXJlIGFib3V0IGNoYW5uZWwgc3RhdHVzLikKCkknbSBub3Qgc3VyZSB3aGF0IHRo
+ZSByaWdodCBzb2x1dGlvbiBpcyBoZXJlOiBtb2RpZnlpbmcgZXZlcnkgYXVkaW8KcGxheWVyIG91
+dCB0aGVyZSB0byBtYWtlIEhETUkgd29yayBzYW5lbHkgaXMgY3JhenkuICBIYXZpbmcgYWxzYWxp
+YgphdXRvbWF0aWNhbGx5IGdlbmVyYXRlIHRoZSBjb3JyZWN0IEFFUyBjaGFubmVsIHN0YXR1cyBi
+eXRlcyBmb3IKbGluZWFyIGF1ZGlvIGZvcm1hdHMgc2VlbXMgdG8gYmUgc2Vuc2libGUsIGJ1dCBk
+aWZmaWN1bHQgZ2l2ZW4gaXRzCnByZXNlbnQgc3RydWN0dXJlIHdpdGggdGhlIGRlZmF1bHRzIC0g
+dGhlIGllYzk1OCBwbHVnaW4gaGFzIG5vIGlkZWEKaWYgdGhlIGRlZmF1bHRzIGFyZSBiZWluZyB1
+c2VkIG9yIG5vdC4KClRoZSBhZHZhbnRhZ2Ugb2YgaGF2aW5nIHRoZSBob3JyaWQgY29udmVyc2lv
+biBpbiB0aGUga2VybmVsIGlzIHRoYXQKd2UgY2FuIGNob29zZSB0byBnZW5lcmF0ZSBwcm9wZXIg
+QUVTIGNoYW5uZWwgc3RhdHVzIGRhdGEgd2l0aG91dApyZWdhcmQgdG8gdXNlcnNwYWNlIGZvciBz
+dGFuZGFyZCBsaW5lYXIgUENNLCBhbmQgd2hlbiB0aGUgaWVjOTU4IHBsdWdpbgppcyBiZWluZyB1
+c2VkIHdpdGggcHJvcGVyIGNoYW5uZWwgc3RhdHVzIChlZywgaW4gY29tcHJlc3NlZCBhdWRpbwpw
+YXNzLXRocm91Z2ggbW9kZSBieSBWTEMpIHRoZW4gdGhhdCB3b3JrcyB0b28uCgotLSAKRlRUQyBi
+cm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDEwLjVNYnBzIGRvd24gNDAw
+a2JwcyB1cAphY2NvcmRpbmcgdG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
