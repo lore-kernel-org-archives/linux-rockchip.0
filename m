@@ -1,98 +1,57 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RFC PATCH] ARM: dts: rockchip: Add wifi support for firefly
-Date: Sun, 09 Aug 2015 21:17:15 +0200
-Message-ID: <4932422.vgAJTm4MIh@diego>
-References: <1438956725-4188-1-git-send-email-michael@amarulasolutions.com> <5702275.SOOuh5NPWf@diego> <20150809082640.GA5459@panicking>
+From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 1/3] nvmem: fix the out-of-range leak in read/write()
+Date: Mon, 10 Aug 2015 11:22:41 +0800
+Message-ID: <1439176963-8969-2-git-send-email-zhengsq@rock-chips.com>
+References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20150809082640.GA5459@panicking>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Michael Trimarchi <michael@amarulasolutions.com>
-Cc: linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, dianders@chromium.org, romain.perier@gmail.com, FUKAUMI Naoki <naobsd@gmail.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1439176963-8969-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Michael,
+From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Am Sonntag, 9. August 2015, 10:26:44 schrieb Michael Trimarchi:
+The position to read/write must be less than max
+register size.
 
-[...]
+Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ drivers/nvmem/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> > >  	num-slots = <1>;
-> > >  	pinctrl-names = "default";
-> > > 
-> > > -	pinctrl-0 = <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>;
-> > > -	vmmc-supply = <&vcc_18>;
-> > > +	pinctrl-0 = <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdio0_int>;
-> > > +
-> > > +	sd-uhs-sdr50;
-> > > +	sd-uhs-sdr104;
-> > > +	sd-uhs-ddr50;
-> > 
-> > we don't have mmc tuning capabilities yet, so please no sd-uhs-* stuff.
-> > That way you should also be able to leave out the clock-freq-min-max
-> > above, as regular "highspeed" does not venture above the 50MHz limit.
-> 
-> Ok, I have tested without it too and it works with a small hack on the code.
-> Agree with you
-
-what was this supposed to fix? And what "hack" do you use now?
-
-
-> > > +	cap-sdio-irq;
-> > > +
-> > > +	vmmc-supply = <&vcc_wifi>;
-> > 
-> > the original supply is actually wrong in the dts. vcc_18 is the io voltage
-> > used on the
-> > pins _to_ the card, not to supply the card itself. So vcc_18 is actually
-> > the so called vqmmc-supply.
-> > vmmc-supply is done regularly from vcc_io. So your voltage hack above can
-> > go away too.
-> > 
-> > Bringup should also use a mmc-power-sequency so you can make sure the
-> > rtc_clock is running, which is also needed by the wifi module.
-> 
-> Hack is used to because when sdio subsystem compare the wifi voltage
-> capability returned by a specific message on the bus with the possible
-> voltage levels that hardware connection provides and take the minimal. The
-> card return to support from 2V up and this is the reason to declare it at
-> 2V. I will retest again
-
-after the supplies are corrected (see vmmc and vqmmc in the patches) the 
-supply for the modules should actually be read as the 3.3V that are supplying 
-it (from vcc_io ... which is called vbat_wl in the schematics).
-
-
-> > >  	status = "okay";
-> > 
-> > missing #address-cells and #size-cells values for the subnodes
-> 
-> Correct
-> 
-> > > +
-> > > +	brcmf: bcrmf@0 {
-> > > +		compatible = "brcm,bcm4329-fmac";
-> > > +		interrupt-parent = <&gpio4>;
-> > > +		reg = <0>;
-> > > +		interrupts = <30 IRQ_TYPE_EDGE_FALLING>;
-> > > +		interrupt-names = "host-wake";
-> > > +		status = "okay";
-> > > +	};
-> > > 
-> > >  };
-> > >  
-> > >  &sdmmc {
-> > 
-> > I took the liberty to move stuff around how it should look like, but did
-> > not find the time to actually test this. So maybe you can take a look at
-> > the attached patches.
-> 
-> Perfect, I will retest as soon as I can and go back to you. Right now
-> I have two hardware design around firefly that use the wifi
-
-great
-
-
-Heiko
+diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+index d3c6676..f4af8e5 100644
+--- a/drivers/nvmem/core.c
++++ b/drivers/nvmem/core.c
+@@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
+ 	int rc;
+ 
+ 	/* Stop the user from reading */
+-	if (pos > nvmem->size)
++	if (pos >= nvmem->size)
+ 		return 0;
+ 
+ 	if (pos + count > nvmem->size)
+@@ -92,7 +92,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
+ 	int rc;
+ 
+ 	/* Stop the user from writing */
+-	if (pos > nvmem->size)
++	if (pos >= nvmem->size)
+ 		return 0;
+ 
+ 	if (pos + count > nvmem->size)
+-- 
+1.9.1
