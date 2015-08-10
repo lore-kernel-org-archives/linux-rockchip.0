@@ -1,315 +1,93 @@
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH 2/3] nvmem: rockchip-efuse: implement eFuse driver
-Date: Mon, 10 Aug 2015 09:58:31 +0100
-Message-ID: <55C867B7.40608@linaro.org>
-References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com> <1439176963-8969-3-git-send-email-zhengsq@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 27/74] clockevents/drivers/rockchip: Migrate to new 'set-state' interface
+Date: Mon, 10 Aug 2015 11:51:44 +0200
+Message-ID: <1439200352-26767-27-git-send-email-daniel.lezcano@linaro.org>
+References: <55C87382.4070309@linaro.org>
+ <1439200352-26767-1-git-send-email-daniel.lezcano@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439176963-8969-3-git-send-email-zhengsq@rock-chips.com>
+In-Reply-To: <1439200352-26767-1-git-send-email-daniel.lezcano@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shunqian Zheng <zhengsq@rock-chips.com>, maxime.ripard@free-electrons.com, heiko@sntech.de, linux-kernel@vger.kernel.org, caesar.wang@rock-chips.com
-Cc: dianders@chromium.org, linux-rockchip@lists.infradead.org, xjq@rock-chips.com
+To: mingo@kernel.org
+Cc: tglx@linutronix.de, linux-kernel@vger.kernel.org, Viresh Kumar <viresh.kumar@linaro.org>, Heiko Stuebner <heiko@sntech.de>, "moderated list:ARM/Rockchip
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shunqian,
+From: Viresh Kumar <viresh.kumar@linaro.org>
 
+Migrate rockchip driver to the new 'set-state' interface provided by
+clockevents core, the earlier 'set-mode' interface is marked obsolete
+now.
 
-On 10/08/15 04:22, Shunqian Zheng wrote:
-> From: ZhengShunQian <zhengsq@rock-chips.com>
->
-> There are some SoC specified values store in eFuse,
-> such as the cpu_leakage and cpu_version,
-> this driver can expose these values to /sys base on nvmem.
->
-> Also add the docs of efuse bindings and the rk3288's efuse config.
->
-> Signed-off-by: Caesar Wang <caesar.wang@rock-chips.com>
-> Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
-> ---
->   .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  36 +++++
->   arch/arm/boot/dts/rk3288.dtsi                      |  13 ++
->   drivers/nvmem/Kconfig                              |  10 ++
->   drivers/nvmem/Makefile                             |   2 +
->   drivers/nvmem/rockchip-efuse.c                     | 155 +++++++++++++++++++++
->   5 files changed, 216 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
->   create mode 100644 drivers/nvmem/rockchip-efuse.c
->
+This also enables us to implement callbacks for new states of clockevent
+devices, for example: ONESHOT_STOPPED.
 
-Please split this patch into alteast 3 parts, one for dts, one for 
-documentation, one for driver.
+We weren't doing anything for oneshot or resume modes, and so the
+callbacks aren't provided.
 
-> diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-> new file mode 100644
-> index 0000000..bb487ec
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
-> @@ -0,0 +1,36 @@
-> += Rockchip eFuse device tree bindings =
-> +
-> +Required properties:
-> +- compatible: Should be "rockchip,rockchip-efuse"
-> +- reg: Should contain the registers location and exact eFuse size
+Cc: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ drivers/clocksource/rockchip_timer.c | 32 ++++++++++++++------------------
+ 1 file changed, 14 insertions(+), 18 deletions(-)
 
-Why did you not mention the clocks property here?
-
-> +
-> += Data cells =
-> +Are child nodes of eFuse, bindings of which as described in
-> +bindings/nvmem/nvmem.txt
-> +
-> +Example:
-> +
-> +	efuse: efuse@ffb40000 {
-> +		compatible = "rockchip,rockchip-efuse";
-> +		reg = <0xffb40000 0x20>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		clocks = <&cru PCLK_EFUSE256>;
-> +		clock-names = "pclk_efuse_256";
-> +
-> +		/* Data cells */
-> +		cpu_leakage: cpu_leakage {
-> +			reg = <0x17 0x1>;
-> +		};
-> +	};
-> +
-> += Data consumers =
-> +Are device nodes which consume nvmem data cells.
-> +
-> +Example:
-> +
-> +	cpu_leakage {
-> +		...
-> +		nvmem-cells = <&cpu_leakage>;
-> +		nvmem-cell-names = "cpu_leakage";
-> +	};
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index 2db91c9..272c0b5 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -749,6 +749,19 @@
->   		interrupts = <GIC_PPI 9 0xf04>;
->   	};
->
-> +	efuse: efuse@ffb40000 {
-> +		compatible = "rockchip,rockchip-efuse";
-> +		reg = <0xffb40000 0x20>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		clocks = <&cru PCLK_EFUSE256>;
-> +		clock-names = "pclk_efuse_256";
-> +
-> +		cpu_leakage: cpu_leakage {
-> +			reg = <0x17 0x1>;
-> +		};
-> +	};
-> +
->   	usbphy: phy {
->   		compatible = "rockchip,rk3288-usb-phy";
->   		rockchip,grf = <&grf>;
-> diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-> index 8db2978..98f1fac 100644
-> --- a/drivers/nvmem/Kconfig
-> +++ b/drivers/nvmem/Kconfig
-> @@ -36,4 +36,14 @@ config NVMEM_SUNXI_SID
->   	  This driver can also be built as a module. If so, the module
->   	  will be called nvmem_sunxi_sid.
->
-> +config ROCKCHIP_EFUSE
-> +	tristate "Rockchip eFuse Support"
-> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	help
-> +	  This is a simple drive to dump specified values of Rockchip SoC
-> +	  from eFuse, such as cpu-leakage.
-> +
-> +	  This driver can also be built as a module. If so, the module
-> +	  will be called nvmem_rockchip_efuse.
-> +
->   endif
-> diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-> index 4328b93..093a528 100644
-> --- a/drivers/nvmem/Makefile
-> +++ b/drivers/nvmem/Makefile
-> @@ -10,3 +10,5 @@ obj-$(CONFIG_QCOM_QFPROM)	+= nvmem_qfprom.o
->   nvmem_qfprom-y			:= qfprom.o
->   obj-$(CONFIG_NVMEM_SUNXI_SID)	+= nvmem_sunxi_sid.o
->   nvmem_sunxi_sid-y		:= sunxi_sid.o
-> +obj-$(CONFIG_ROCKCHIP_EFUSE)	+= nvmem_rockchip_efuse.o
-> +nvmem_rockchip_efuse-y		:= rockchip-efuse.o
-> diff --git a/drivers/nvmem/rockchip-efuse.c b/drivers/nvmem/rockchip-efuse.c
-> new file mode 100644
-> index 0000000..30ee772
-> --- /dev/null
-> +++ b/drivers/nvmem/rockchip-efuse.c
-> @@ -0,0 +1,155 @@
-> +/*
-> + * Rockchip eFuse Driver
-> + *
-> + * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
-> + * Author: Caesar Wang <wxt@rock-chips.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms of version 2 of the GNU General Public License as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-> + * more details.
-> + */
-> +
-> +#include <linux/platform_device.h>
-> +#include <linux/nvmem-provider.h>
-> +#include <linux/slab.h>
-> +#include <linux/regmap.h>
-> +#include <linux/device.h>
-> +#include <linux/io.h>
-> +#include <linux/module.h>
-> +#include <linux/delay.h>
-> +#include <linux/of.h>
-> +#include <linux/clk.h>
-??
-> +
-> +#define EFUSE_A_SHIFT			6
-> +#define EFUSE_A_MASK			0x3ff
-> +#define EFUSE_PGENB			BIT(3)
-> +#define EFUSE_LOAD			BIT(2)
-> +#define EFUSE_STROBE			BIT(1)
-> +#define EFUSE_CSB			BIT(0)
-> +
-> +#define REG_EFUSE_CTRL			0x0000
-> +#define REG_EFUSE_DOUT			0x0004
-> +
-> +static int rockchip_efuse_write(void *context, const void *data, size_t count)
-> +{
-> +	/* Nothing TBD, Read-Only */
-> +	return 0;
-> +}
-> +
-> +static int rockchip_efuse_read(void *context,
-> +			       const void *reg, size_t reg_size,
-> +			       void *val, size_t val_size)
-> +{
-> +	unsigned int offset = *(u32 *)reg;
-> +	void __iomem *base = context;
-> +	u8 *buf = val;
-
-As discussed in the "clk: rockchip: do not gate the efuse256 clock" 
-patch, please get hold of the clock via context and enable/disable as 
-required.
-
-Other than this the patch is looking good.
-
-Pleas Add Greg KH into the loop so that we can request him to take this 
-for this merge window.
-
-
-> +
-> +	writel(EFUSE_LOAD | EFUSE_PGENB, base + REG_EFUSE_CTRL);
-> +	udelay(1);
-> +	while (val_size) {
-> +		writel(readl(base + REG_EFUSE_CTRL) &
-> +			     (~(EFUSE_A_MASK << EFUSE_A_SHIFT)),
-> +			     base + REG_EFUSE_CTRL);
-> +		writel(readl(base + REG_EFUSE_CTRL) |
-> +			     ((offset & EFUSE_A_MASK) << EFUSE_A_SHIFT),
-> +			     base + REG_EFUSE_CTRL);
-> +		udelay(1);
-> +		writel(readl(base + REG_EFUSE_CTRL) |
-> +			     EFUSE_STROBE, base + REG_EFUSE_CTRL);
-> +		udelay(1);
-> +		*buf++ = readb(base + REG_EFUSE_DOUT);
-> +		writel(readl(base + REG_EFUSE_CTRL) &
-> +		     (~EFUSE_STROBE), base + REG_EFUSE_CTRL);
-> +		udelay(1);
-> +
-> +		val_size -= 1;
-> +		offset += 1;
-> +	}
-> +
-> +	/* Switch to standby mode */
-> +	writel(EFUSE_PGENB | EFUSE_CSB, base + REG_EFUSE_CTRL);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct regmap_bus rockchip_efuse_bus = {
-> +	.read = rockchip_efuse_read,
-> +	.write = rockchip_efuse_write,
-> +	.reg_format_endian_default = REGMAP_ENDIAN_NATIVE,
-> +	.val_format_endian_default = REGMAP_ENDIAN_NATIVE,
-> +};
-> +
-> +struct regmap_config rockchip_efuse_regmap_config = {
-> +	.reg_bits = 32,
-> +	.reg_stride = 1,
-> +	.val_bits = 8,
-> +};
-> +
-> +static struct nvmem_config econfig = {
-> +	.name = "rockchip-efuse",
-> +	.owner = THIS_MODULE,
-> +	.read_only = true,
-> +};
-> +
-> +static const struct of_device_id rockchip_efuse_match[] = {
-> +	{ .compatible = "rockchip,rockchip-efuse",},
-> +	{ /* sentinel */},
-> +};
-> +MODULE_DEVICE_TABLE(of, rockchip_efuse_match);
-> +
-> +int rockchip_efuse_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct resource *res;
-> +	struct nvmem_device *nvmem;
-> +	struct regmap *regmap;
-> +	void __iomem *base;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	base = devm_ioremap_resource(dev, res);
-> +
-> +	if (IS_ERR(base))
-> +		return PTR_ERR(base);
-> +
-> +	rockchip_efuse_regmap_config.max_register = resource_size(res) - 1;
-> +
-> +	regmap = devm_regmap_init(dev, &rockchip_efuse_bus,
-> +				  base, &rockchip_efuse_regmap_config);
-> +	if (IS_ERR(regmap)) {
-> +		dev_err(dev, "regmap init failed\n");
-> +		return PTR_ERR(regmap);
-> +	}
-> +	econfig.dev = dev;
-> +	nvmem = nvmem_register(&econfig);
-> +	if (IS_ERR(nvmem))
-> +		return PTR_ERR(nvmem);
-> +
-> +	platform_set_drvdata(pdev, nvmem);
-> +
-> +	return 0;
-> +}
-> +
-> +int rockchip_efuse_remove(struct platform_device *pdev)
-> +{
-> +	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
-> +
-> +	return nvmem_unregister(nvmem);
-> +}
-> +
-> +static struct platform_driver rockchip_efuse_driver = {
-> +	.probe = rockchip_efuse_probe,
-> +	.remove = rockchip_efuse_remove,
-> +	.driver = {
-> +		.name = "rockchip-efuse",
-> +		.of_match_table = rockchip_efuse_match,
-> +	},
-> +};
-> +
-> +module_platform_driver(rockchip_efuse_driver);
-> +MODULE_DESCRIPTION("rockchip_efuse driver");
-> +MODULE_LICENSE("GPL v2");
->
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index a35993b..bb2c2b0 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -82,23 +82,18 @@ static inline int rk_timer_set_next_event(unsigned long cycles,
+ 	return 0;
+ }
+ 
+-static inline void rk_timer_set_mode(enum clock_event_mode mode,
+-				     struct clock_event_device *ce)
++static int rk_timer_shutdown(struct clock_event_device *ce)
+ {
+-	switch (mode) {
+-	case CLOCK_EVT_MODE_PERIODIC:
+-		rk_timer_disable(ce);
+-		rk_timer_update_counter(rk_timer(ce)->freq / HZ - 1, ce);
+-		rk_timer_enable(ce, TIMER_MODE_FREE_RUNNING);
+-		break;
+-	case CLOCK_EVT_MODE_ONESHOT:
+-	case CLOCK_EVT_MODE_RESUME:
+-		break;
+-	case CLOCK_EVT_MODE_UNUSED:
+-	case CLOCK_EVT_MODE_SHUTDOWN:
+-		rk_timer_disable(ce);
+-		break;
+-	}
++	rk_timer_disable(ce);
++	return 0;
++}
++
++static int rk_timer_set_periodic(struct clock_event_device *ce)
++{
++	rk_timer_disable(ce);
++	rk_timer_update_counter(rk_timer(ce)->freq / HZ - 1, ce);
++	rk_timer_enable(ce, TIMER_MODE_FREE_RUNNING);
++	return 0;
+ }
+ 
+ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+@@ -107,7 +102,7 @@ static irqreturn_t rk_timer_interrupt(int irq, void *dev_id)
+ 
+ 	rk_timer_interrupt_clear(ce);
+ 
+-	if (ce->mode == CLOCK_EVT_MODE_ONESHOT)
++	if (clockevent_state_oneshot(ce))
+ 		rk_timer_disable(ce);
+ 
+ 	ce->event_handler(ce);
+@@ -161,7 +156,8 @@ static void __init rk_timer_init(struct device_node *np)
+ 	ce->name = TIMER_NAME;
+ 	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT;
+ 	ce->set_next_event = rk_timer_set_next_event;
+-	ce->set_mode = rk_timer_set_mode;
++	ce->set_state_shutdown = rk_timer_shutdown;
++	ce->set_state_periodic = rk_timer_set_periodic;
+ 	ce->irq = irq;
+ 	ce->cpumask = cpumask_of(0);
+ 	ce->rating = 250;
+-- 
+1.9.1
