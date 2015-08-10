@@ -1,259 +1,289 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH v6] mmc: dw_mmc: add quirk for broken data transfer over
- scheme
-Date: Mon, 10 Aug 2015 22:11:33 +0900
-Message-ID: <55C8A305.5070501@samsung.com>
-References: <6399035.ITCGpzeoRA@diego>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v2 4/8] drm: rockchip/dp: add rockchip platform dp driver
+Date: Mon, 10 Aug 2015 21:15:38 +0800
+Message-ID: <55C8A3FA.6040100@rock-chips.com>
+References: <1438943674-18191-1-git-send-email-ykk@rock-chips.com>
+ <1730542.s7otqjtiXD@diego> <55C57D7E.6080800@rock-chips.com>
+ <2657934.h7jy1M3E7a@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <6399035.ITCGpzeoRA@diego>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?windows-1252?Q?Heiko_St=FCbner?= <heiko@sntech.de>, Seungwon Jeon <tgih.jun@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, Addy Ke <addy.ke@rock-chips.com>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <2657934.h7jy1M3E7a@diego>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: Russell King <rmk+kernel@arm.linux.org.uk>, Fabio Estevam <fabio.estevam@freescale.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, djkurtz@google.com, dianders@google.com, seanpaul@google.com, joe@perches.com, Takashi Iwai <tiwai@suse.de>, Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <treding@nvidia.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, ajaynumb@gmail.com, dri-devel@lists.freedesktop.orglinu
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Heiko.
+Hi Heiko,
 
-Sorry, i had missed this patch. And thanks for reminding.
-I will check on today..and reply until tomorrow.
+=E5=9C=A8 2015/8/10 20:08, Heiko St=C3=BCbner =E5=86=99=E9=81=93:
+> Hi Yakir,
+>
+> Am Samstag, 8. August 2015, 11:54:38 schrieb Yakir Yang:
+>>>> +static int rockchip_dp_init(struct rockchip_dp_device *dp)
+>>>> +{
+>>>> +	struct device *dev =3D dp->dev;
+>>>> +	struct device_node *np =3D dev->of_node;
+>>>> +	int ret;
+>>>> +
+>>>> +	dp->grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+>>>> +	if (IS_ERR(dp->grf)) {
+>>>> +		dev_err(dev,
+>>>> +			"rk3288-dp needs rockchip,grf property\n");
+>>>> +		return PTR_ERR(dp->grf);
+>>>> +	}
+>>>> +
+>>>> +	dp->clk_dp =3D devm_clk_get(dev, "clk_dp");
+>>> I've looked at the manual, but couldn't find an actual clock-name
+>>> used there. Is it really "clk_dp" or should it just be "dp"?
+>> This should be "clk_dp", not "dp".
+>> Cause analogix_dp_core would need a clock name with "dp", so I would
+>> rather to pasted my rockchip-dp node here before I add dt-bindings i=
+n
+>> next version ;)
+> The clock we name PCLK_EDP_CTRL in the clock controller is probably t=
+he clock
+> supplying the APB interface and named pclk already in the "Figure 3-2
+> DP_TXclock domain" diagram on page 19 of the manual. So your "clk_dp"=
+ should
+> actually be "pclk".
+>
+> So you would have "dp", "dp_24m" and "pclk" for the 3 supplying clock=
+s.
 
-Best Regards,
-Jaehoon Chung
+Oh, yes, "pclk" is for APB interface, and "sclk_edp" for IP controller,=
+=20
+and "sclk_edp_24m" for DP PHY,
+thanks for your explain.
 
+So for now, I would pass "sclk_edp" to "edp" in analogix_dp, and=20
+"sclk_edp_24m" to "dp-phy_24m"
+in phy-rockchip-dp.c, and "pclk_edp" to "pclk" in analogix_dp-rockchip.=
+c.
 
-On 08/10/2015 08:12 PM, Heiko St=FCbner wrote:
-> From: Addy Ke <addy.ke@rock-chips.com>
->=20
-> This patch add a new quirk to add a s/w timer to notify the driver
-> to terminate current transfer and report a data timeout to the core,
-> if DTO interrupt does NOT come within the given time.
->=20
-> dw_mmc call mmc_request_done func to finish transfer depends on
-> DTO interrupt. If DTO interrupt does not come in sending data state,
-> the current transfer will be blocked.
->=20
-> We got the reply from synopsys:
-> There are two counters but both use the same value of [31:8] bits.
-> Data timeout counter doesn't wait for stop clock and you should get
-> DRTO even when the clock is not stopped.
-> Host Starvation timeout counter is triggered with stop clock conditio=
-n.
->=20
-> This means that host should get DRTO and DTO interrupt.
->=20
-> But this case really exists, when driver reads tuning data from
-> card on RK3288-pink2 board. I measured waveforms by oscilloscope
-> and found that card clock was always on and data lines were always
-> holded high level in sending data state.
->=20
-> There are two possibility that data over interrupt doesn't come in
-> reading data state on RK3X SoCs:
-> - get command done interrupt, but doesn't get any data-related interr=
-upt.
-> - get data error interrupt, but doesn't get data over interrupt.
->=20
-> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
->=20
-> Address review comments from Jaehoon Chung.
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> Changes in v2:
-> - fix some typo.
-> - remove extra timeout value (250ms).
-> - remove dw_mci_dto_start_monitor func.
-> - use "broken-dto" for new quirk and change Subject for it.
->=20
-> Changes in v3:
-> - Remove dts for broken-dto, just add this quirk in dw_mci_rockchip_i=
-nit
->=20
-> Changes in v4:
-> - fix bug that may cause 32 bit overflow by (drto_clks * 1000).
-> - doesn't call mod_timer in writing data state, becase TMOUT register=
- only
->   for reading data.
->=20
-> Changes in v5:
-> - fix some typo.
-> - add a buffer for drto_ms.
-> - move drto_ms related code to a helper function.
->=20
-> Changes in v6:
-> - better spare time comment
-> - let dw_mci_set_drto start the timer itself
->=20
->  drivers/mmc/host/dw_mmc-rockchip.c |  3 ++
->  drivers/mmc/host/dw_mmc.c          | 64=20
-> ++++++++++++++++++++++++++++++++++++--
->  include/linux/mmc/dw_mmc.h         |  4 +++
->  3 files changed, 69 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw=
-_mmc-
-> rockchip.c
-> index de15121..bc76aa2 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -73,6 +73,9 @@ static int dw_mci_rockchip_init(struct dw_mci *host=
-)
->  	/* It is slot 8 on Rockchip SoCs */
->  	host->sdio_id0 =3D 8;
-> =20
-> +	/* It needs this quirk on all Rockchip SoCs */
-> +	host->pdata->quirks |=3D DW_MCI_QUIRK_BROKEN_DTO;
-> +
->  	return 0;
->  }
-> =20
-> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-> index 4e95ca9..459e68b 100644
-> --- a/drivers/mmc/host/dw_mmc.c
-> +++ b/drivers/mmc/host/dw_mmc.c
-> @@ -1528,6 +1528,20 @@ static int dw_mci_data_complete(struct dw_mci =
-*host,=20
-> struct mmc_data *data)
->  	return data->error;
->  }
-> =20
-> +static void dw_mci_set_drto(struct dw_mci *host)
-> +{
-> +	unsigned int drto_clks;
-> +	unsigned int drto_ms;
-> +
-> +	drto_clks =3D mci_readl(host, TMOUT) >> 8;
-> +	drto_ms =3D DIV_ROUND_UP(drto_clks, host->bus_hz / 1000);
-> +
-> +	/* add a bit spare time */
-> +	drto_ms +=3D 10;
-> +
-> +	mod_timer(&host->dto_timer, jiffies + msecs_to_jiffies(drto_ms));
-> +}
-> +
->  static void dw_mci_tasklet_func(unsigned long priv)
->  {
->  	struct dw_mci *host =3D (struct dw_mci *)priv;
-> @@ -1605,8 +1619,16 @@ static void dw_mci_tasklet_func(unsigned long =
-priv)
->  			}
-> =20
->  			if (!test_and_clear_bit(EVENT_XFER_COMPLETE,
-> -						&host->pending_events))
-> +						&host->pending_events)) {
-> +				/*
-> +				 * If all data-related interrupts don't come
-> +				 * within the given time in reading data state.
-> +				 */
-> +				if ((host->quirks & DW_MCI_QUIRK_BROKEN_DTO) &&
-> +				    (host->dir_status =3D=3D DW_MCI_RECV_STATUS))
-> +					dw_mci_set_drto(host);
->  				break;
-> +			}
-> =20
->  			set_bit(EVENT_XFER_COMPLETE, &host->completed_events);
-> =20
-> @@ -1639,8 +1661,17 @@ static void dw_mci_tasklet_func(unsigned long =
-priv)
-> =20
->  		case STATE_DATA_BUSY:
->  			if (!test_and_clear_bit(EVENT_DATA_COMPLETE,
-> -						&host->pending_events))
-> +						&host->pending_events)) {
-> +				/*
-> +				 * If data error interrupt comes but data over
-> +				 * interrupt doesn't come within the given time.
-> +				 * in reading data state.
-> +				 */
-> +				if ((host->quirks & DW_MCI_QUIRK_BROKEN_DTO) &&
-> +				    (host->dir_status =3D=3D DW_MCI_RECV_STATUS))
-> +					dw_mci_set_drto(host);
->  				break;
-> +			}
-> =20
->  			host->data =3D NULL;
->  			set_bit(EVENT_DATA_COMPLETE, &host->completed_events);
-> @@ -2201,6 +2232,9 @@ static irqreturn_t dw_mci_interrupt(int irq, vo=
-id=20
-> *dev_id)
->  		}
-> =20
->  		if (pending & SDMMC_INT_DATA_OVER) {
-> +			if (host->quirks & DW_MCI_QUIRK_BROKEN_DTO)
-> +				del_timer(&host->dto_timer);
-> +
->  			mci_writel(host, RINTSTS, SDMMC_INT_DATA_OVER);
->  			if (!host->data_status)
->  				host->data_status =3D pending;
-> @@ -2593,6 +2627,28 @@ static void dw_mci_cmd11_timer(unsigned long a=
-rg)
->  	tasklet_schedule(&host->tasklet);
->  }
-> =20
-> +static void dw_mci_dto_timer(unsigned long arg)
-> +{
-> +	struct dw_mci *host =3D (struct dw_mci *)arg;
-> +
-> +	switch (host->state) {
-> +	case STATE_SENDING_DATA:
-> +	case STATE_DATA_BUSY:
-> +		/*
-> +		 * If DTO interrupt does NOT come in sending data state,
-> +		 * we should notify the driver to terminate current transfer
-> +		 * and report a data timeout to the core.
-> +		 */
-> +		host->data_status =3D SDMMC_INT_DRTO;
-> +		set_bit(EVENT_DATA_ERROR, &host->pending_events);
-> +		set_bit(EVENT_DATA_COMPLETE, &host->pending_events);
-> +		tasklet_schedule(&host->tasklet);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +}
-> +
->  #ifdef CONFIG_OF
->  static struct dw_mci_of_quirks {
->  	char *quirk;
-> @@ -2769,6 +2825,10 @@ int dw_mci_probe(struct dw_mci *host)
-> =20
->  	host->quirks =3D host->pdata->quirks;
-> =20
-> +	if (host->quirks & DW_MCI_QUIRK_BROKEN_DTO)
-> +		setup_timer(&host->dto_timer,
-> +			    dw_mci_dto_timer, (unsigned long)host);
-> +
->  	spin_lock_init(&host->lock);
->  	spin_lock_init(&host->irq_lock);
->  	INIT_LIST_HEAD(&host->queue);
-> diff --git a/include/linux/mmc/dw_mmc.h b/include/linux/mmc/dw_mmc.h
-> index 5be9767..1c47ce3 100644
-> --- a/include/linux/mmc/dw_mmc.h
-> +++ b/include/linux/mmc/dw_mmc.h
-> @@ -98,6 +98,7 @@ struct mmc_data;
->   * @irq_flags: The flags to be passed to request_irq.
->   * @irq: The irq value to be passed to request_irq.
->   * @sdio_id0: Number of slot0 in the SDIO interrupt registers.
-> + * @dto_timer: Timer for broken data transfer over scheme.
->   *
->   * Locking
->   * =3D=3D=3D=3D=3D=3D=3D
-> @@ -204,6 +205,7 @@ struct dw_mci {
->  	int			sdio_id0;
-> =20
->  	struct timer_list       cmd11_timer;
-> +	struct timer_list       dto_timer;
->  };
-> =20
->  /* DMA ops for Internal/External DMAC interface */
-> @@ -226,6 +228,8 @@ struct dw_mci_dma_ops {
->  #define DW_MCI_QUIRK_HIGHSPEED			BIT(2)
->  /* Unreliable card detection */
->  #define DW_MCI_QUIRK_BROKEN_CARD_DETECTION	BIT(3)
-> +/* Timer for broken data transfer over scheme */
-> +#define DW_MCI_QUIRK_BROKEN_DTO			BIT(4)
-> =20
->  struct dma_pdata;
-> =20
->=20
+>
+>>           edp: edp@ff970000 {
+>>                   compatible =3D "rockchip,rk3288-dp";
+>>                   reg =3D <0xff970000 0x4000>;
+>>                   interrupts =3D <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
+>>
+>>                   clocks =3D <&cru SCLK_EDP>, <&cru SCLK_EDP_24M>, <=
+&cru
+>> PCLK_EDP_CTRL>;
+>>                   clock-names =3D "clk_dp", "clk_dp_24m", "dp";
+>>
+>>                   rockchip,grf =3D <&grf>;
+>>                   resets =3D <&cru 111>;
+>>                   reset-names =3D "dp";
+>>                   power-domains =3D <&power RK3288_PD_VIO>;
+>>                   status =3D "disabled";
+>>
+>>                   hsync-active-high =3D <0>;
+>>                   vsync-active-high =3D <0>;
+>>                   interlaced =3D <0>;
+>>                   samsung,color-space =3D <0>;
+>>                   samsung,dynamic-range =3D <0>;
+>>                   samsung,ycbcr-coeff =3D <0>;
+>>                   samsung,color-depth =3D <1>;
+>>                   samsung,link-rate =3D <0x0a>;
+>>                   samsung,lane-count =3D <1>;
+> Thierry already said, that these should probably be somehow auto-dete=
+cted.
+> Properties needing to stay around should probably also be "analogix,.=
+=2E." with
+> a fallback to not break Samsung devicetrees, so
+> look for "analogix,foo!, if not found try "samsung,foo"
 
+Okay, it's better to rename to "analogxi...", done.
+
+>
+>>                   ports {
+>>                           edp_in: port {
+>>                                   #address-cells =3D <1>;
+>>                                   #size-cells =3D <0>;
+>>                                   edp_in_vopb: endpoint@0 {
+>>                                           reg =3D <0>;
+>>                                           remote-endpoint =3D <&vopb=
+_out_edp>;
+>>                                   };
+>>                           };
+>>                   };
+>
+>
+>>>> +
+>>>> +	dp->clk_24m =3D devm_clk_get(dev, "clk_dp_24m");
+>>> Same here, maybe "dp_24m".
+>> Like my previous reply. And actually as those two clocks all have
+>> a common prefix "SCLK" in rk3288 clock tree, I thinkt we can name
+>> them to "sclk_dp" & "sclk_dp_24m", is it okay ?
+> As Thierry said, please don't add prefixes.
+
+Okay, so is it okay to rename them to "dp", "dp-phy-24m", "pclk" ?
+
+>
+>>>> +	if (IS_ERR(dp->clk_24m)) {
+>>>> +		dev_err(dev, "cannot get clk_dp_24m\n");
+>>>> +		return PTR_ERR(dp->clk_24m);
+>>>> +	}
+>>> I think you're missing the pclk here (PCLK_EDP_CTRL) or is this par=
+t of
+>>> something else?
+>> Whops, as I refered in commit message I leave pclk_dp to
+>> analogix_dp_core driver ;-)
+>>
+>> The reason why I want to leave pclk is I thought this clock is more =
+like
+>> analogix dp
+>> core driver want, like a IP controller clock (whatever analogix_dp d=
+o
+>> need a clock
+>> named with "dp").
+> Hmm, I'd think what the core (and Samsung) driver use as "dp" clock i=
+s
+> probably the generic clock for the IP and not the pclk for the APB in=
+terface.
+>
+> So I think it still should be  "dp" for the core and "dp_24m" + "pclk=
+" for the
+> rockchip part?
+
+Yes, I think you are right, thanks  ;)
+
+>
+>>>> +
+>>>> +	dp->rst =3D devm_reset_control_get(dev, "dp");
+>>>> +	if (IS_ERR(dp->rst)) {
+>>>> +		dev_err(dev, "failed to get reset\n");
+>>>> +		return PTR_ERR(dp->rst);
+>>>> +	}
+>>>> +
+>>>> +	ret =3D rockchip_dp_clk_enable(dp);
+>>>> +	if (ret < 0) {
+>>>> +		dev_err(dp->dev, "cannot enable dp clk %d\n", ret);
+>>>> +		return ret;
+>>>> +	}
+>>>> +
+>>>> +	ret =3D rockchip_dp_pre_init(dp);
+>>>> +	if (ret < 0) {
+>>>> +		dev_err(dp->dev, "failed to pre init %d\n", ret);
+>>>> +		return ret;
+>>>> +	}
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>> [...]
+>>>
+>>>> +static int rockchip_dp_probe(struct platform_device *pdev)
+>>>> +{
+>>>> +	struct device *dev =3D &pdev->dev;
+>>>> +	struct device_node *panel_node;
+>>>> +	struct rockchip_dp_device *dp;
+>>>> +	struct drm_panel *panel;
+>>>> +
+>>>> +	panel_node =3D of_parse_phandle(dev->of_node, "rockchip,panel", =
+0);
+>>>> +	if (!panel_node) {
+>>>> +		DRM_ERROR("failed to find rockchip,panel dt node\n");
+>>>> +		return -ENODEV;
+>>>> +	}
+>>> Personally I would prefer to continue with the of-graph framework t=
+o
+>>> attach the panel instead of defining a special node. But I'm not
+>>> authorative on this. But that way the dts could then look like [0].
+>>>
+>>> I've sucessfully modified the driver currently in use in Chromeos f=
+or my
+>>> dev-tree and have ported this change over onto your driver [1].
+>> Wow! looks very nice, and really appricate for your ported code ;)
+>>
+>> BTW should I rebase on your patch, or can just take your code in my =
+next
+>> version :-)
+> The code I currently carry, is from the ChromeOS tree, so of course n=
+othing in
+> mainline should be based on it. You could simply include the change i=
+nto your
+> driver.
+
+Okay,
+
+Thanks,
+- Yakir
+
+>
+> Heiko
+>
+>>
+>> Thanks a lot,
+>> - Yakir
+>>
+>>> [0]
+>>> https://github.com/mmind/linux-rockchip/blob/devel/somewhat-stable/=
+arch/a
+>>> rm/boot/dts/rk3288-veyron-edp.dtsi#L76 [1]
+>>> ---------- 8< -------------
+>>> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c index e7cf9ab..24=
+e872d
+>>> 100644
+>>> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> @@ -20,6 +20,7 @@
+>>>
+>>>    #include <linux/component.h>
+>>>    #include <linux/clk.h>
+>>>    #include <linux/mfd/syscon.h>
+>>>
+>>> +#include <linux/of_graph.h>
+>>>
+>>>    #include <linux/regmap.h>
+>>>    #include <linux/reset.h>
+>>>
+>>> @@ -335,14 +336,28 @@ static const struct component_ops
+>>> rockchip_dp_component_ops =3D {>
+>>>    static int rockchip_dp_probe(struct platform_device *pdev)
+>>>    {
+>>>   =20
+>>>    	struct device *dev =3D &pdev->dev;
+>>>
+>>> -	struct device_node *panel_node;
+>>> +	struct device_node *panel_node, *port, *endpoint;
+>>>
+>>>    	struct rockchip_dp_device *dp;
+>>>    	struct drm_panel *panel;
+>>>
+>>> -	panel_node =3D of_parse_phandle(dev->of_node, "rockchip,panel", 0=
+);
+>>> +	port =3D of_graph_get_port_by_id(dev->of_node, 1);
+>>> +	if (!port) {
+>>> +		dev_err(dev, "can't find output port\n");
+>>> +		return -EINVAL;
+>>> +	}
+>>> +
+>>> +	endpoint =3D of_get_child_by_name(port, "endpoint");
+>>> +	of_node_put(port);
+>>> +	if (!endpoint) {
+>>> +		dev_err(dev, "no output endpoint found\n");
+>>> +		return -EINVAL;
+>>> +	}
+>>> +
+>>> +	panel_node =3D of_graph_get_remote_port_parent(endpoint);
+>>> +	of_node_put(endpoint);
+>>>
+>>>    	if (!panel_node) {
+>>>
+>>> -		DRM_ERROR("failed to find rockchip,panel dt node\n");
+>>> -		return -ENODEV;
+>>> +		dev_err(&pdev->dev, "no output node found\n");
+>>> +		return -EINVAL;
+>>>
+>>>    	}
+>>>    =09
+>>>    	panel =3D of_drm_find_panel(panel_node);
+>>>
+>>> ---------- 8< -------------
+>
+>
+>
