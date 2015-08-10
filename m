@@ -1,62 +1,133 @@
-From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/3] clk: rockchip: do not gate the efuse256 clock
-Date: Mon, 10 Aug 2015 11:22:43 +0800
-Message-ID: <1439176963-8969-4-git-send-email-zhengsq@rock-chips.com>
-References: <1439176963-8969-1-git-send-email-zhengsq@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH] thermal: rockchip: fix handling of invalid readings
+Date: Mon, 10 Aug 2015 14:30:57 +0800
+Message-ID: <55C84521.5040007@rock-chips.com>
+References: <20150807205923.GA33949@dtor-ws>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1439176963-8969-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20150807205923.GA33949@dtor-ws>
+Sender: linux-pm-owner@vger.kernel.org
+To: Dmitry Torokhov <dtor@chromium.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Eduardo Valentin <edubezval@gmail.com>, dianders@chromium.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Dear Dmitry,
 
-Always enable the clock of efuse256. Base on the nvmem framework,
-it seems like there is not a good way to enable the clock
-when actual needed.
+Thanks your patch.
 
-Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3288.c      | 2 +-
- include/dt-bindings/clock/rk3288-cru.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+The code looks like fine,but I don't think the TS-ADC will work on=20
+rk3288 SoC.
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 0df5bae..84d9218 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(0, "pclk_efuse_1024", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 2, GFLAGS),
- 	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
- 	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
--	GATE(0, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
-+	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 10, GFLAGS),
- 	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
- 
- 	/* ddrctrl [DDR Controller PHY clock] gates */
-diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
-index c719aac..ab74d5e 100644
---- a/include/dt-bindings/clock/rk3288-cru.h
-+++ b/include/dt-bindings/clock/rk3288-cru.h
-@@ -164,6 +164,7 @@
- #define PCLK_DDRUPCTL1		366
- #define PCLK_PUBL1		367
- #define PCLK_WDT		368
-+#define PCLK_EFUSE256		369
- 
- /* hclk gates */
- #define HCLK_GPS		448
--- 
-1.9.1
+=E5=9C=A8 2015=E5=B9=B408=E6=9C=8808=E6=97=A5 04:59, Dmitry Torokhov =E5=
+=86=99=E9=81=93:
+> We attempted to signal invalid code by returning -EAGAIN from
+> rk_tsadcv2_code_to_temp(), unfortunately the return value was stuffed
+> directly into the temperature pointer, potentially confusing upper
+> layers with temperature of -EINVAL.
+>
+> Let's split temperature from error/success indicator to avoid such
+> confusion.
+>
+> Also change the way we scan the temperature table to start with the 2=
+nd
+> element so that we do not need to worry that we may reference out of
+> bounds element while doing binary search and keep checking that we en=
+d
+> up with 'mid' equal to 0 (since we are looking for the temperature th=
+at
+> would fall into interval between the 'mid' and 'mid - 1') .
+>
+> Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
+> ---
+>   drivers/thermal/rockchip_thermal.c | 28 +++++++++++++--------------=
+-
+>   1 file changed, 13 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/roc=
+kchip_thermal.c
+> index c89ffb2..93ee307 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -124,7 +124,7 @@ struct rockchip_thermal_data {
+>   #define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* msec */
+>  =20
+>   struct tsadc_table {
+> -	unsigned long code;
+> +	u32 code;
+>   	long temp;
+>   };
+>  =20
+> @@ -164,7 +164,6 @@ static const struct tsadc_table v2_code_table[] =3D=
+ {
+>   	{3452, 115000},
+>   	{3437, 120000},
+>   	{3421, 125000},
+> -	{0, 125000},
+>   };
+>  =20
+>   static u32 rk_tsadcv2_temp_to_code(long temp)
+> @@ -191,19 +190,21 @@ static u32 rk_tsadcv2_temp_to_code(long temp)
+>   	return 0;
+>   }
+>  =20
+> -static int rk_tsadcv2_code_to_temp(u32 code)
+> +static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
+>   {
+> -	unsigned int low =3D 0;
+> +	unsigned int low =3D 1;
+>   	unsigned int high =3D ARRAY_SIZE(v2_code_table) - 1;
+>   	unsigned int mid =3D (low + high) / 2;
+>   	unsigned int num;
+>   	unsigned long denom;
+>  =20
+> -	/* Invalid code, return -EAGAIN */
+> -	if (code > TSADCV2_DATA_MASK)
+> -		return -EAGAIN;
+> +	BUILD_BUG_ON(ARRAY_SIZE(v2_code_table) < 2);
+>  =20
+> -	while (low <=3D high && mid) {
+> +	code &=3D TSADCV2_DATA_MASK;
+> +	if (code < v2_code_table[high].code)
+> +		return -EAGAIN;		/* Incorrect reading */
+> +
+> +	while (low <=3D high) {
+>   		if (code >=3D v2_code_table[mid].code &&
+>   		    code < v2_code_table[mid - 1].code)
+>   			break;
+> @@ -223,7 +224,9 @@ static int rk_tsadcv2_code_to_temp(u32 code)
+>   	num =3D v2_code_table[mid].temp - v2_code_table[mid - 1].temp;
+>   	num *=3D v2_code_table[mid - 1].code - code;
+>   	denom =3D v2_code_table[mid - 1].code - v2_code_table[mid].code;
+> -	return v2_code_table[mid - 1].temp + (num / denom);
+> +	*temp =3D v2_code_table[mid - 1].temp + (num / denom);
+> +
+> +	return 0;
+>   }
+>  =20
+>   /**
+> @@ -281,14 +284,9 @@ static int rk_tsadcv2_get_temp(int chn, void __i=
+omem *regs, int *temp)
+>   {
+>   	u32 val;
+>  =20
+> -	/* the A/D value of the channel last conversion need some time */
+>   	val =3D readl_relaxed(regs + TSADCV2_DATA(chn));
+> -	if (val =3D=3D 0)
+> -		return -EAGAIN;
+> -
+
+if we reserve the above code, that will get the ADC value.
+
+> -	*temp =3D rk_tsadcv2_code_to_temp(val);
+>  =20
+> -	return 0;
+> +	return rk_tsadcv2_code_to_temp(val, temp);
+>   }
+>  =20
+>   static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs, long=
+ temp)
+
+
