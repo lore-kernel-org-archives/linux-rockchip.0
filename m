@@ -1,255 +1,104 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 4/8] drm: rockchip/dp: add rockchip platform dp driver
-Date: Mon, 10 Aug 2015 14:08:41 +0200
-Message-ID: <2657934.h7jy1M3E7a@diego>
-References: <1438943674-18191-1-git-send-email-ykk@rock-chips.com> <1730542.s7otqjtiXD@diego> <55C57D7E.6080800@rock-chips.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 00/12] dw-hdmi development
+Date: Mon, 10 Aug 2015 14:21:36 +0200
+Message-ID: <20150810122135.GZ1262@ulmo.nvidia.com>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <55C57D7E.6080800@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Russell King <rmk+kernel@arm.linux.org.uk>, Fabio Estevam <fabio.estevam@freescale.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, djkurtz@google.com, dianders@google.com, seanpaul@google.com, joe@perches.com, Takashi Iwai <tiwai@suse.de>, Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <treding@nvidia.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, ajaynumb@gmail.com, dri-devel@lists.freedesktop.orglinu
+Content-Type: multipart/mixed; boundary="===============0320246987=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yakir,
 
-Am Samstag, 8. August 2015, 11:54:38 schrieb Yakir Yang:
-> >> +static int rockchip_dp_init(struct rockchip_dp_device *dp)
-> >> +{
-> >> +	struct device *dev = dp->dev;
-> >> +	struct device_node *np = dev->of_node;
-> >> +	int ret;
-> >> +
-> >> +	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> >> +	if (IS_ERR(dp->grf)) {
-> >> +		dev_err(dev,
-> >> +			"rk3288-dp needs rockchip,grf property\n");
-> >> +		return PTR_ERR(dp->grf);
-> >> +	}
-> >> +
-> >> +	dp->clk_dp = devm_clk_get(dev, "clk_dp");
-> > 
-> > I've looked at the manual, but couldn't find an actual clock-name
-> > used there. Is it really "clk_dp" or should it just be "dp"?
-> 
-> This should be "clk_dp", not "dp".
-> Cause analogix_dp_core would need a clock name with "dp", so I would
-> rather to pasted my rockchip-dp node here before I add dt-bindings in
-> next version ;)
-
-The clock we name PCLK_EDP_CTRL in the clock controller is probably the clock 
-supplying the APB interface and named pclk already in the "Figure 3-2 
-DP_TXclock domain" diagram on page 19 of the manual. So your "clk_dp" should 
-actually be "pclk".
-
-So you would have "dp", "dp_24m" and "pclk" for the 3 supplying clocks.
+--===============0320246987==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="NSDslKtQVY7LeFYu"
+Content-Disposition: inline
 
 
-> 
->          edp: edp@ff970000 {
->                  compatible = "rockchip,rk3288-dp";
->                  reg = <0xff970000 0x4000>;
->                  interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
-> 
->                  clocks = <&cru SCLK_EDP>, <&cru SCLK_EDP_24M>, <&cru
-> PCLK_EDP_CTRL>;
->                  clock-names = "clk_dp", "clk_dp_24m", "dp";
-> 
->                  rockchip,grf = <&grf>;
->                  resets = <&cru 111>;
->                  reset-names = "dp";
->                  power-domains = <&power RK3288_PD_VIO>;
->                  status = "disabled";
-> 
->                  hsync-active-high = <0>;
->                  vsync-active-high = <0>;
->                  interlaced = <0>;
->                  samsung,color-space = <0>;
->                  samsung,dynamic-range = <0>;
->                  samsung,ycbcr-coeff = <0>;
->                  samsung,color-depth = <1>;
->                  samsung,link-rate = <0x0a>;
->                  samsung,lane-count = <1>;
+--NSDslKtQVY7LeFYu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thierry already said, that these should probably be somehow auto-detected. 
-Properties needing to stay around should probably also be "analogix,..." with 
-a fallback to not break Samsung devicetrees, so
-look for "analogix,foo!, if not found try "samsung,foo"
+On Sat, Aug 08, 2015 at 05:02:51PM +0100, Russell King - ARM Linux wrote:
+> This sub-series is a mixture of development:
+>=20
+> * Removing the incorrect pixel repetition configuration code
+> * Preventing pixel-doubled modes from being used
+> * Adding interlaced video support
+> * Implementing the sink_is_hdmi/sink_has_audio flags I suggested a few
+>   months ago
+> * Only enabling audio support if the sink indicates it has audio
+> * Avoiding double-enabling the HDMI interface
+> * Fixing the mis-leading name of "dw_hdmi_phy_enable_power"
+> * Adding connector mode forcing (important if your monitor bounces
+>   RXSENSE and HPD signals while in low-power mode.)
+> * Improving the HDMI enable/disabling on sink status
+>=20
+> For review (and testing if people feel like it).  Acks/tested-bys etc
+> welcome.  It applies on top of my drm-dwhdmi-devel branch, which is
+> waiting for David Airlie to pull (see pull request on dri-devel, 15th
+> July.)
 
+Hi Russell,
 
->                  ports {
->                          edp_in: port {
->                                  #address-cells = <1>;
->                                  #size-cells = <0>;
->                                  edp_in_vopb: endpoint@0 {
->                                          reg = <0>;
->                                          remote-endpoint = <&vopb_out_edp>;
->                                  };
->                          };
->                  };
+I have in the past merged patches for the bridge subdirectory via the
+drm/panel tree, though lately much of the dw-hdmi patches have gone in
+via Philipp or you directly. This seems to have worked fine so far, but
+this time around I carry a patch to clean up Kconfig and Makefile a
+little and bring more consistency to the subdirectory and I think it's
+going to conflict with your series here (and potentially any ongoing
+work you have).
 
+Would you be open to me picking up these patches into the drm/panel
+tree? It feeds into linux-next, so the code would get some exposure
+before Dave's return.
 
+Thierry
 
-> >> +
-> >> +	dp->clk_24m = devm_clk_get(dev, "clk_dp_24m");
-> > 
-> > Same here, maybe "dp_24m".
-> 
-> Like my previous reply. And actually as those two clocks all have
-> a common prefix "SCLK" in rk3288 clock tree, I thinkt we can name
-> them to "sclk_dp" & "sclk_dp_24m", is it okay ?
+--NSDslKtQVY7LeFYu
+Content-Type: application/pgp-signature; name="signature.asc"
 
-As Thierry said, please don't add prefixes.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
+iQIcBAABCAAGBQJVyJdMAAoJEN0jrNd/PrOhvxQQALRJHKzmuvaznRXE/GFte8Pu
+f8cfn1OBU5Lc/Y5X660R4XoXAQKAEmibN/rqRp/5Bm8Mb5UO2bPb1KNGsiTpqUtW
+xvQDVy32mK8+m/oTiAQpCzTtLCiHC0U7MriB5Lafkw1XskMuGzrD9M6xypZPqyj7
+rBpZNTak6omu1ipLLOAu5P8sz38hn77bvKnq+w2KN5f3e9XlQB7AXF7z1WhcqWr/
+zvf+rBvusQtZDdU1iFJa9auIQMVwC7RicB81bEL3bYDRVkkikp9eIkH4BToQgeI5
+eFtwlaBsb7PWI5chKtzLppS3EoEl+yv2X/+YwxduCk9AqBOpnrUIOvH+FStycZ/D
+ZGOF7Dy2ewF4g++ujpnPNDeNecXpvGTe7bYS5Taf56ouKYBSpo3tRLlCdOM3I+Nf
+6XxblbSWdLV+bheUYpjE0GIBp8iBKzl+pLtLMSYyXnEZOhxo8SztJypjKbvnQVmB
+xCo/AZxJ9W9Ua2fZCWhXo1KjvFfsKBSsYqxh7YwAFUqBw46PYMTo9hi1bVnROwUB
+jpgflIcH+xhhrG0l7ZBuXGefl8BktlmgeS3VmbKnOdovyzNQBLSkgFX+va/yWhm8
+SheaI7ZK3U/1lniMxXrI14dYUuw3MKQ6JMpkyo7sp19mKiwn9hvTrewqMFCWlxFp
+KCesNkZ+jgUkSWsY0N06
+=mEX3
+-----END PGP SIGNATURE-----
 
-> 
-> >> +	if (IS_ERR(dp->clk_24m)) {
-> >> +		dev_err(dev, "cannot get clk_dp_24m\n");
-> >> +		return PTR_ERR(dp->clk_24m);
-> >> +	}
-> > 
-> > I think you're missing the pclk here (PCLK_EDP_CTRL) or is this part of
-> > something else?
-> 
-> Whops, as I refered in commit message I leave pclk_dp to
-> analogix_dp_core driver ;-)
-> 
-> The reason why I want to leave pclk is I thought this clock is more like
-> analogix dp
-> core driver want, like a IP controller clock (whatever analogix_dp do
-> need a clock
-> named with "dp").
+--NSDslKtQVY7LeFYu--
 
-Hmm, I'd think what the core (and Samsung) driver use as "dp" clock is 
-probably the generic clock for the IP and not the pclk for the APB interface.
+--===============0320246987==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
 
-So I think it still should be  "dp" for the core and "dp_24m" + "pclk" for the 
-rockchip part?
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
 
-
-> 
-> >> +
-> >> +	dp->rst = devm_reset_control_get(dev, "dp");
-> >> +	if (IS_ERR(dp->rst)) {
-> >> +		dev_err(dev, "failed to get reset\n");
-> >> +		return PTR_ERR(dp->rst);
-> >> +	}
-> >> +
-> >> +	ret = rockchip_dp_clk_enable(dp);
-> >> +	if (ret < 0) {
-> >> +		dev_err(dp->dev, "cannot enable dp clk %d\n", ret);
-> >> +		return ret;
-> >> +	}
-> >> +
-> >> +	ret = rockchip_dp_pre_init(dp);
-> >> +	if (ret < 0) {
-> >> +		dev_err(dp->dev, "failed to pre init %d\n", ret);
-> >> +		return ret;
-> >> +	}
-> >> +
-> >> +	return 0;
-> >> +}
-> > 
-> > [...]
-> > 
-> >> +static int rockchip_dp_probe(struct platform_device *pdev)
-> >> +{
-> >> +	struct device *dev = &pdev->dev;
-> >> +	struct device_node *panel_node;
-> >> +	struct rockchip_dp_device *dp;
-> >> +	struct drm_panel *panel;
-> >> +
-> >> +	panel_node = of_parse_phandle(dev->of_node, "rockchip,panel", 0);
-> >> +	if (!panel_node) {
-> >> +		DRM_ERROR("failed to find rockchip,panel dt node\n");
-> >> +		return -ENODEV;
-> >> +	}
-> > 
-> > Personally I would prefer to continue with the of-graph framework to
-> > attach the panel instead of defining a special node. But I'm not
-> > authorative on this. But that way the dts could then look like [0].
-> > 
-> > I've sucessfully modified the driver currently in use in Chromeos for my
-> > dev-tree and have ported this change over onto your driver [1].
-> 
-> Wow! looks very nice, and really appricate for your ported code ;)
-> 
-> BTW should I rebase on your patch, or can just take your code in my next
-> version :-)
-
-The code I currently carry, is from the ChromeOS tree, so of course nothing in 
-mainline should be based on it. You could simply include the change into your 
-driver.
-
-
-Heiko
-
-> 
-> 
-> Thanks a lot,
-> - Yakir
-> 
-> > [0]
-> > https://github.com/mmind/linux-rockchip/blob/devel/somewhat-stable/arch/a
-> > rm/boot/dts/rk3288-veyron-edp.dtsi#L76 [1]
-> > ---------- 8< -------------
-> > diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> > b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c index e7cf9ab..24e872d
-> > 100644
-> > --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> > +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> > @@ -20,6 +20,7 @@
-> > 
-> >   #include <linux/component.h>
-> >   #include <linux/clk.h>
-> >   #include <linux/mfd/syscon.h>
-> > 
-> > +#include <linux/of_graph.h>
-> > 
-> >   #include <linux/regmap.h>
-> >   #include <linux/reset.h>
-> > 
-> > @@ -335,14 +336,28 @@ static const struct component_ops
-> > rockchip_dp_component_ops = {> 
-> >   static int rockchip_dp_probe(struct platform_device *pdev)
-> >   {
-> >   
-> >   	struct device *dev = &pdev->dev;
-> > 
-> > -	struct device_node *panel_node;
-> > +	struct device_node *panel_node, *port, *endpoint;
-> > 
-> >   	struct rockchip_dp_device *dp;
-> >   	struct drm_panel *panel;
-> > 
-> > -	panel_node = of_parse_phandle(dev->of_node, "rockchip,panel", 0);
-> > +	port = of_graph_get_port_by_id(dev->of_node, 1);
-> > +	if (!port) {
-> > +		dev_err(dev, "can't find output port\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	endpoint = of_get_child_by_name(port, "endpoint");
-> > +	of_node_put(port);
-> > +	if (!endpoint) {
-> > +		dev_err(dev, "no output endpoint found\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	panel_node = of_graph_get_remote_port_parent(endpoint);
-> > +	of_node_put(endpoint);
-> > 
-> >   	if (!panel_node) {
-> > 
-> > -		DRM_ERROR("failed to find rockchip,panel dt node\n");
-> > -		return -ENODEV;
-> > +		dev_err(&pdev->dev, "no output node found\n");
-> > +		return -EINVAL;
-> > 
-> >   	}
-> >   	
-> >   	panel = of_drm_find_panel(panel_node);
-> > 
-> > ---------- 8< -------------
+--===============0320246987==--
