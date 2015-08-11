@@ -1,58 +1,70 @@
-From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 2/5] nvmem: fix the out-of-range leak in read/write()
-Date: Tue, 11 Aug 2015 18:13:41 +0800
-Message-ID: <1439288024-13359-3-git-send-email-zhengsq@rock-chips.com>
+From: Shunqian Zheng <zhengsq@rock-chips.com>
+Subject: [PATCH v2 4/5] Documentation: rockchip-efuse: describe the usage of eFuse
+Date: Tue, 11 Aug 2015 18:13:43 +0800
+Message-ID: <1439288024-13359-5-git-send-email-zhengsq@rock-chips.com>
 References: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, heiko@sntech.de, caesar.wang@rock-chips.com
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com, ZhengShunQian <zhengsq@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: ZhengShunQian <zhengsq@rock-chips.com>
 
-The position to read/write must be less than max
-register size.
+This patch add the bindings document of rockchip eFuse driver.
 
-Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
 ---
- drivers/nvmem/core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/nvmem/rockchip-efuse.txt   | 38 ++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
 
-diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
-index d3c6676..f4af8e5 100644
---- a/drivers/nvmem/core.c
-+++ b/drivers/nvmem/core.c
-@@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
- 	int rc;
- 
- 	/* Stop the user from reading */
--	if (pos > nvmem->size)
-+	if (pos >= nvmem->size)
- 		return 0;
- 
- 	if (pos + count > nvmem->size)
-@@ -92,7 +92,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
- 	int rc;
- 
- 	/* Stop the user from writing */
--	if (pos > nvmem->size)
-+	if (pos >= nvmem->size)
- 		return 0;
- 
- 	if (pos + count > nvmem->size)
+diff --git a/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+new file mode 100644
+index 0000000..8f86ab3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
+@@ -0,0 +1,38 @@
++= Rockchip eFuse device tree bindings =
++
++Required properties:
++- compatible: Should be "rockchip,rockchip-efuse"
++- reg: Should contain the registers location and exact eFuse size
++- clocks: Should be the clock id of eFuse
++- clock-names: Should be "pclk_efuse"
++
++= Data cells =
++Are child nodes of eFuse, bindings of which as described in
++bindings/nvmem/nvmem.txt
++
++Example:
++
++	efuse: efuse@ffb40000 {
++		compatible = "rockchip,rockchip-efuse";
++		reg = <0xffb40000 0x20>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		clocks = <&cru PCLK_EFUSE256>;
++		clock-names = "pclk_efuse";
++
++		/* Data cells */
++		cpu_leakage: cpu_leakage {
++			reg = <0x17 0x1>;
++		};
++	};
++
++= Data consumers =
++Are device nodes which consume nvmem data cells.
++
++Example:
++
++	cpu_leakage {
++		...
++		nvmem-cells = <&cpu_leakage>;
++		nvmem-cell-names = "cpu_leakage";
++	};
 -- 
 1.9.1
