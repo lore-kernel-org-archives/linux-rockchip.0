@@ -1,8 +1,10 @@
 From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: [PATCH v2 0/5] Add eFuse driver of Rockchip SoC
-Date: Tue, 11 Aug 2015 18:13:39 +0800
-Message-ID: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
+Subject: [PATCH v2 1/5] clk: rockchip: rk3288: Add the clock id of eFuse
+Date: Tue, 11 Aug 2015 18:13:40 +0800
+Message-ID: <1439288024-13359-2-git-send-email-zhengsq@rock-chips.com>
+References: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, heiko@sntech.de, caesar.wang@rock-chips.com
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com, ZhengShunQian <zhengsq@rock-chips.com>
@@ -10,33 +12,40 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: ZhengShunQian <zhengsq@rock-chips.com>
 
-Base on nvmem framework, this series patches
-implement the eFuse driver of Rockchip SoC.
-The data from eFuse contains CPU leakage, chip code and version etc.
+The clock id is necessary item, changing it from 0
+then can be referred in driver and device tree.
 
-The flow of reading data from eFuse is quite simple,
-configure the CTRL register, write data address to CTRL
-register, then data is available in DOUT register.
+Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3288.c      | 2 +-
+ include/dt-bindings/clock/rk3288-cru.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-
-ZhengShunQian (5):
-  clk: rockchip: rk3288: Add the clock id of eFuse
-  nvmem: fix the out-of-range leak in read/write()
-  nvmem: rockchip-efuse: implement efuse driver
-  Documentation: rockchip-efuse: describe the usage of eFuse
-  ARM: dts: rockchip: add eFuse config of rk3288 SoC
-
- .../devicetree/bindings/nvmem/rockchip-efuse.txt   |  38 +++++
- arch/arm/boot/dts/rk3288.dtsi                      |  13 ++
- drivers/clk/rockchip/clk-rk3288.c                  |   2 +-
- drivers/nvmem/Kconfig                              |  10 ++
- drivers/nvmem/Makefile                             |   2 +
- drivers/nvmem/core.c                               |   4 +-
- drivers/nvmem/rockchip-efuse.c                     | 186 +++++++++++++++++++++
- include/dt-bindings/clock/rk3288-cru.h             |   1 +
- 8 files changed, 253 insertions(+), 3 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/nvmem/rockchip-efuse.txt
- create mode 100644 drivers/nvmem/rockchip-efuse.c
-
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 0df5bae..31c4f78 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	GATE(0, "pclk_efuse_1024", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 2, GFLAGS),
+ 	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
+ 	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
+-	GATE(0, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
++	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
+ 	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+ 
+ 	/* ddrctrl [DDR Controller PHY clock] gates */
+diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
+index c719aac..ab74d5e 100644
+--- a/include/dt-bindings/clock/rk3288-cru.h
++++ b/include/dt-bindings/clock/rk3288-cru.h
+@@ -164,6 +164,7 @@
+ #define PCLK_DDRUPCTL1		366
+ #define PCLK_PUBL1		367
+ #define PCLK_WDT		368
++#define PCLK_EFUSE256		369
+ 
+ /* hclk gates */
+ #define HCLK_GPS		448
 -- 
 1.9.1
