@@ -1,87 +1,74 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
+From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Subject: Re: [PATCH v1 1/5] clk: rockchip: rk3288: Add the clock id of eFuse
-Date: Tue, 11 Aug 2015 15:23:11 +0800
-Message-ID: <55C9A2DF.2000408@rock-chips.com>
-References: <1439273706-28274-1-git-send-email-zhengsq@rock-chips.com> <1439273706-28274-2-git-send-email-zhengsq@rock-chips.com> <1757784.jPpHQAb5oi@diego>
-Reply-To: zhengsq@rock-chips.com
+Date: Tue, 11 Aug 2015 15:43:38 +0800
+Message-ID: <55C9A7AA.2020905@rock-chips.com>
+References: <1439273706-28274-1-git-send-email-zhengsq@rock-chips.com>
+ <1439273706-28274-2-git-send-email-zhengsq@rock-chips.com>
+ <1757784.jPpHQAb5oi@diego> <15314033.JtZG8yr7WE@diego>
+Reply-To: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1757784.jPpHQAb5oi@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, caesar.wang@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <15314033.JtZG8yr7WE@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 2015=E5=B9=B408=E6=9C=8811=E6=97=A5 15:16, Heiko St=C3=BCbner wrote:
-> Am Dienstag, 11. August 2015, 14:15:02 schrieb Shunqian Zheng:
->> From: ZhengShunQian <zhengsq@rock-chips.com>
->>
->> The clock id is necessary item, changing it from 0
->> then can be referred in driver and device tree.
->>
->> Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->
->
-> Patch is missing the clock maintainers and list
-> Mike Turquette <mturquette@baylibre.com>
-> Stephen Boyd <sboyd@codeaurora.org>
-> linux-clk@vger.kernel.org
->
->
->> ---
->>   drivers/clk/rockchip/clk-rk3288.c      | 2 +-
->>   include/dt-bindings/clock/rk3288-cru.h | 1 +
->>   2 files changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3288.c
->> b/drivers/clk/rockchip/clk-rk3288.c index 0df5bae..31c4f78 100644
->> --- a/drivers/clk/rockchip/clk-rk3288.c
->> +++ b/drivers/clk/rockchip/clk-rk3288.c
->> @@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_bra=
-nches[]
->> __initdata =3D { GATE(0, "pclk_efuse_1024", "pclk_cpu", 0,
->> RK3288_CLKGATE_CON(11), 2, GFLAGS),
-> out of curiosity, as I haven't found anything about it yet, do you al=
-so know
-> what the pclk_efuse_1024 is used for?
->
->
-> Heiko
-As I known, the other efuse(efuse_1024) is only used for internal.
-
-Thank you !!
-
-Shunqian
->> GATE(PCLK_TZPC, "pclk_tzpc",
->> "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS), GATE(PCLK_UART2,
->> "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS), -	G=
-ATE(0,
->> "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS)=
-,
->> +	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0,
->> RK3288_CLKGATE_CON(11), 10, GFLAGS), GATE(PCLK_RKPWM, "pclk_rkpwm",
->> "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
->>
->>   	/* ddrctrl [DDR Controller PHY clock] gates */
->> diff --git a/include/dt-bindings/clock/rk3288-cru.h
->> b/include/dt-bindings/clock/rk3288-cru.h index c719aac..ab74d5e 1006=
-44
->> --- a/include/dt-bindings/clock/rk3288-cru.h
->> +++ b/include/dt-bindings/clock/rk3288-cru.h
->> @@ -164,6 +164,7 @@
->>   #define PCLK_DDRUPCTL1		366
->>   #define PCLK_PUBL1		367
->>   #define PCLK_WDT		368
->> +#define PCLK_EFUSE256		369
->>
->>   /* hclk gates */
->>   #define HCLK_GPS		448
->
->
->
+SGVpa28sCgpPbiAyMDE15bm0MDjmnIgxMeaXpSAxNToyMiwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
+Cj4gQW0gRGllbnN0YWcsIDExLiBBdWd1c3QgMjAxNSwgMDk6MTY6MzIgc2NocmllYiBIZWlrbyBT
+dMO8Ym5lcjoKPj4gQW0gRGllbnN0YWcsIDExLiBBdWd1c3QgMjAxNSwgMTQ6MTU6MDIgc2Nocmll
+YiBTaHVucWlhbiBaaGVuZzoKPj4+IEZyb206IFpoZW5nU2h1blFpYW4gPHpoZW5nc3FAcm9jay1j
+aGlwcy5jb20+Cj4+Pgo+Pj4gVGhlIGNsb2NrIGlkIGlzIG5lY2Vzc2FyeSBpdGVtLCBjaGFuZ2lu
+ZyBpdCBmcm9tIDAKPj4+IHRoZW4gY2FuIGJlIHJlZmVycmVkIGluIGRyaXZlciBhbmQgZGV2aWNl
+IHRyZWUuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogWmhlbmdTaHVuUWlhbiA8emhlbmdzcUByb2Nr
+LWNoaXBzLmNvbT4KPj4gUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
+ZGU+Cj4+Cj4+Cj4+IFBhdGNoIGlzIG1pc3NpbmcgdGhlIGNsb2NrIG1haW50YWluZXJzIGFuZCBs
+aXN0Cj4+IE1pa2UgVHVycXVldHRlIDxtdHVycXVldHRlQGJheWxpYnJlLmNvbT4KPj4gU3RlcGhl
+biBCb3lkIDxzYm95ZEBjb2RlYXVyb3JhLm9yZz4KPj4gbGludXgtY2xrQHZnZXIua2VybmVsLm9y
+ZwpJIHdpbGwgcmUtc2VuZCB0aGlzIHBhdGNoIGFuZCBjYyB0byBjbG9jayBtYWludGFpbmVycyBs
+YXRlci4uLgo+Pgo+Pj4gLS0tCj4+Pgo+Pj4gICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmsz
+Mjg4LmMgICAgICB8IDIgKy0KPj4+ICAgaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMyODgt
+Y3J1LmggfCAxICsKPj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVs
+ZXRpb24oLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJr
+MzI4OC5jCj4+PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODguYyBpbmRleCAwZGY1
+YmFlLi4zMWM0Zjc4IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJr
+MzI4OC5jCj4+PiArKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMjg4LmMKPj4+IEBA
+IC02NDcsNyArNjQ3LDcgQEAgc3RhdGljIHN0cnVjdCByb2NrY2hpcF9jbGtfYnJhbmNoCj4+PiBy
+azMyODhfY2xrX2JyYW5jaGVzW10KPj4+IF9faW5pdGRhdGEgPSB7IEdBVEUoMCwgInBjbGtfZWZ1
+c2VfMTAyNCIsICJwY2xrX2NwdSIsIDAsCj4+PiBSSzMyODhfQ0xLR0FURV9DT04oMTEpLCAyLCBH
+RkxBR1MpLAo+PiBvdXQgb2YgY3VyaW9zaXR5LCBhcyBJIGhhdmVuJ3QgZm91bmQgYW55dGhpbmcg
+YWJvdXQgaXQgeWV0LCBkbyB5b3UgYWxzbyBrbm93Cj4+IHdoYXQgdGhlIHBjbGtfZWZ1c2VfMTAy
+NCBpcyB1c2VkIGZvcj8KPiBvaywgZm91bmQgdGhpcyBteXNlbGYgKHRoZSAzMngzMiBiaXQgZWZ1
+c2UpLCBidXQgaXQgbG9va3MgbGlrZSB0aGVyZSBpcyBhbHNvIGEKPiBjbG9jayAiYWNjX2VmdXNl
+IiAtIHdoYXQgaXMgdGhpcyB1c2VkIGZvcj8KU29ycnksIEkgaGF2ZSBub3QgaWRlYSB0b28uLgo+
+Cj4KPiBIZWlrbwo+Cj4+PiBHQVRFKFBDTEtfVFpQQywgInBjbGtfdHpwYyIsCj4+PiAicGNsa19j
+cHUiLCAwLCBSSzMyODhfQ0xLR0FURV9DT04oMTEpLCAzLCBHRkxBR1MpLCBHQVRFKFBDTEtfVUFS
+VDIsCj4+PiAicGNsa191YXJ0MiIsICJwY2xrX2NwdSIsIDAsIFJLMzI4OF9DTEtHQVRFX0NPTigx
+MSksIDksIEdGTEFHUyksIC0JCj4gR0FURSgwLAo+Pj4gInBjbGtfZWZ1c2VfMjU2IiwgInBjbGtf
+Y3B1IiwgMCwgUkszMjg4X0NMS0dBVEVfQ09OKDExKSwgMTAsIEdGTEFHUyksCj4+PiArCUdBVEUo
+UENMS19FRlVTRTI1NiwgInBjbGtfZWZ1c2VfMjU2IiwgInBjbGtfY3B1IiwgMCwKPj4+IFJLMzI4
+OF9DTEtHQVRFX0NPTigxMSksIDEwLCBHRkxBR1MpLCBHQVRFKFBDTEtfUktQV00sICJwY2xrX3Jr
+cHdtIiwKPj4+ICJwY2xrX2NwdSIsIENMS19JR05PUkVfVU5VU0VELCBSSzMyODhfQ0xLR0FURV9D
+T04oMTEpLCAxMSwgR0ZMQUdTKSwKPj4+Cj4+PiAgIAkvKiBkZHJjdHJsIFtERFIgQ29udHJvbGxl
+ciBQSFkgY2xvY2tdIGdhdGVzICovCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmlu
+ZGluZ3MvY2xvY2svcmszMjg4LWNydS5oCj4+PiBiL2luY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2sv
+cmszMjg4LWNydS5oIGluZGV4IGM3MTlhYWMuLmFiNzRkNWUgMTAwNjQ0Cj4+PiAtLS0gYS9pbmNs
+dWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzI4OC1jcnUuaAo+Pj4gKysrIGIvaW5jbHVkZS9kdC1i
+aW5kaW5ncy9jbG9jay9yazMyODgtY3J1LmgKPj4+IEBAIC0xNjQsNiArMTY0LDcgQEAKPj4+Cj4+
+PiAgICNkZWZpbmUgUENMS19ERFJVUENUTDEJCTM2Ngo+Pj4gICAjZGVmaW5lIFBDTEtfUFVCTDEJ
+CTM2Nwo+Pj4gICAjZGVmaW5lIFBDTEtfV0RUCQkzNjgKPj4+Cj4+PiArI2RlZmluZSBQQ0xLX0VG
+VVNFMjU2CQkzNjkKPj4+Cj4+PiAgIC8qIGhjbGsgZ2F0ZXMgKi8KPj4+ICAgI2RlZmluZSBIQ0xL
+X0dQUwkJNDQ4Cj4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
