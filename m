@@ -1,74 +1,71 @@
-From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v1 1/5] clk: rockchip: rk3288: Add the clock id of eFuse
-Date: Tue, 11 Aug 2015 15:43:38 +0800
-Message-ID: <55C9A7AA.2020905@rock-chips.com>
-References: <1439273706-28274-1-git-send-email-zhengsq@rock-chips.com>
- <1439273706-28274-2-git-send-email-zhengsq@rock-chips.com>
- <1757784.jPpHQAb5oi@diego> <15314033.JtZG8yr7WE@diego>
-Reply-To: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <15314033.JtZG8yr7WE@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v1 1/3] usb: dwc2: reset AHB hclk domain before init
+Date: Tue, 11 Aug 2015 15:56:25 +0800
+Message-ID: <1439279787-26674-1-git-send-email-lyz@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgpPbiAyMDE15bm0MDjmnIgxMeaXpSAxNToyMiwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
-Cj4gQW0gRGllbnN0YWcsIDExLiBBdWd1c3QgMjAxNSwgMDk6MTY6MzIgc2NocmllYiBIZWlrbyBT
-dMO8Ym5lcjoKPj4gQW0gRGllbnN0YWcsIDExLiBBdWd1c3QgMjAxNSwgMTQ6MTU6MDIgc2Nocmll
-YiBTaHVucWlhbiBaaGVuZzoKPj4+IEZyb206IFpoZW5nU2h1blFpYW4gPHpoZW5nc3FAcm9jay1j
-aGlwcy5jb20+Cj4+Pgo+Pj4gVGhlIGNsb2NrIGlkIGlzIG5lY2Vzc2FyeSBpdGVtLCBjaGFuZ2lu
-ZyBpdCBmcm9tIDAKPj4+IHRoZW4gY2FuIGJlIHJlZmVycmVkIGluIGRyaXZlciBhbmQgZGV2aWNl
-IHRyZWUuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogWmhlbmdTaHVuUWlhbiA8emhlbmdzcUByb2Nr
-LWNoaXBzLmNvbT4KPj4gUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+Cj4+Cj4+Cj4+IFBhdGNoIGlzIG1pc3NpbmcgdGhlIGNsb2NrIG1haW50YWluZXJzIGFuZCBs
-aXN0Cj4+IE1pa2UgVHVycXVldHRlIDxtdHVycXVldHRlQGJheWxpYnJlLmNvbT4KPj4gU3RlcGhl
-biBCb3lkIDxzYm95ZEBjb2RlYXVyb3JhLm9yZz4KPj4gbGludXgtY2xrQHZnZXIua2VybmVsLm9y
-ZwpJIHdpbGwgcmUtc2VuZCB0aGlzIHBhdGNoIGFuZCBjYyB0byBjbG9jayBtYWludGFpbmVycyBs
-YXRlci4uLgo+Pgo+Pj4gLS0tCj4+Pgo+Pj4gICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmsz
-Mjg4LmMgICAgICB8IDIgKy0KPj4+ICAgaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMyODgt
-Y3J1LmggfCAxICsKPj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVs
-ZXRpb24oLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJr
-MzI4OC5jCj4+PiBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODguYyBpbmRleCAwZGY1
-YmFlLi4zMWM0Zjc4IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJr
-MzI4OC5jCj4+PiArKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMjg4LmMKPj4+IEBA
-IC02NDcsNyArNjQ3LDcgQEAgc3RhdGljIHN0cnVjdCByb2NrY2hpcF9jbGtfYnJhbmNoCj4+PiBy
-azMyODhfY2xrX2JyYW5jaGVzW10KPj4+IF9faW5pdGRhdGEgPSB7IEdBVEUoMCwgInBjbGtfZWZ1
-c2VfMTAyNCIsICJwY2xrX2NwdSIsIDAsCj4+PiBSSzMyODhfQ0xLR0FURV9DT04oMTEpLCAyLCBH
-RkxBR1MpLAo+PiBvdXQgb2YgY3VyaW9zaXR5LCBhcyBJIGhhdmVuJ3QgZm91bmQgYW55dGhpbmcg
-YWJvdXQgaXQgeWV0LCBkbyB5b3UgYWxzbyBrbm93Cj4+IHdoYXQgdGhlIHBjbGtfZWZ1c2VfMTAy
-NCBpcyB1c2VkIGZvcj8KPiBvaywgZm91bmQgdGhpcyBteXNlbGYgKHRoZSAzMngzMiBiaXQgZWZ1
-c2UpLCBidXQgaXQgbG9va3MgbGlrZSB0aGVyZSBpcyBhbHNvIGEKPiBjbG9jayAiYWNjX2VmdXNl
-IiAtIHdoYXQgaXMgdGhpcyB1c2VkIGZvcj8KU29ycnksIEkgaGF2ZSBub3QgaWRlYSB0b28uLgo+
-Cj4KPiBIZWlrbwo+Cj4+PiBHQVRFKFBDTEtfVFpQQywgInBjbGtfdHpwYyIsCj4+PiAicGNsa19j
-cHUiLCAwLCBSSzMyODhfQ0xLR0FURV9DT04oMTEpLCAzLCBHRkxBR1MpLCBHQVRFKFBDTEtfVUFS
-VDIsCj4+PiAicGNsa191YXJ0MiIsICJwY2xrX2NwdSIsIDAsIFJLMzI4OF9DTEtHQVRFX0NPTigx
-MSksIDksIEdGTEFHUyksIC0JCj4gR0FURSgwLAo+Pj4gInBjbGtfZWZ1c2VfMjU2IiwgInBjbGtf
-Y3B1IiwgMCwgUkszMjg4X0NMS0dBVEVfQ09OKDExKSwgMTAsIEdGTEFHUyksCj4+PiArCUdBVEUo
-UENMS19FRlVTRTI1NiwgInBjbGtfZWZ1c2VfMjU2IiwgInBjbGtfY3B1IiwgMCwKPj4+IFJLMzI4
-OF9DTEtHQVRFX0NPTigxMSksIDEwLCBHRkxBR1MpLCBHQVRFKFBDTEtfUktQV00sICJwY2xrX3Jr
-cHdtIiwKPj4+ICJwY2xrX2NwdSIsIENMS19JR05PUkVfVU5VU0VELCBSSzMyODhfQ0xLR0FURV9D
-T04oMTEpLCAxMSwgR0ZMQUdTKSwKPj4+Cj4+PiAgIAkvKiBkZHJjdHJsIFtERFIgQ29udHJvbGxl
-ciBQSFkgY2xvY2tdIGdhdGVzICovCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmlu
-ZGluZ3MvY2xvY2svcmszMjg4LWNydS5oCj4+PiBiL2luY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2sv
-cmszMjg4LWNydS5oIGluZGV4IGM3MTlhYWMuLmFiNzRkNWUgMTAwNjQ0Cj4+PiAtLS0gYS9pbmNs
-dWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzI4OC1jcnUuaAo+Pj4gKysrIGIvaW5jbHVkZS9kdC1i
-aW5kaW5ncy9jbG9jay9yazMyODgtY3J1LmgKPj4+IEBAIC0xNjQsNiArMTY0LDcgQEAKPj4+Cj4+
-PiAgICNkZWZpbmUgUENMS19ERFJVUENUTDEJCTM2Ngo+Pj4gICAjZGVmaW5lIFBDTEtfUFVCTDEJ
-CTM2Nwo+Pj4gICAjZGVmaW5lIFBDTEtfV0RUCQkzNjgKPj4+Cj4+PiArI2RlZmluZSBQQ0xLX0VG
-VVNFMjU2CQkzNjkKPj4+Cj4+PiAgIC8qIGhjbGsgZ2F0ZXMgKi8KPj4+ICAgI2RlZmluZSBIQ0xL
-X0dQUwkJNDQ4Cj4KPgo+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+We initiate dwc2 usb controller in BIOS, when kernel driver
+start-up we should reset AHB hclk domain to reset all AHB
+interface registers to default. Without this the FIFO value
+setting might be incorrect because calculating FIFO size need the
+power-on value of GRXFSIZ/GNPTXFSIZ/HPTXFSIZ registers.
+
+This patch could avoid warnning massage like in rk3288 platform:
+[    2.074764] dwc2 ff580000.usb: 256 invalid for
+host_perio_tx_fifo_size. Check HW configuration.
+
+Signed-off-by: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ drivers/usb/dwc2/platform.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+index 9093530..ec6bf6b 100644
+--- a/drivers/usb/dwc2/platform.c
++++ b/drivers/usb/dwc2/platform.c
+@@ -42,6 +42,7 @@
+ #include <linux/of_device.h>
+ #include <linux/mutex.h>
+ #include <linux/platform_device.h>
++#include <linux/reset.h>
+ 
+ #include <linux/usb/of.h>
+ 
+@@ -165,6 +166,7 @@ static int dwc2_driver_probe(struct platform_device *dev)
+ 	struct resource *res;
+ 	struct phy *phy;
+ 	struct usb_phy *uphy;
++	struct reset_control *rst;
+ 	int retval;
+ 	int irq;
+ 
+@@ -189,6 +191,16 @@ static int dwc2_driver_probe(struct platform_device *dev)
+ 
+ 	hsotg->dev = &dev->dev;
+ 
++	/* AHB hclk domain reset, set all AHB interface registers to default */
++	rst = devm_reset_control_get_optional(&dev->dev, "ahb");
++	if (IS_ERR(rst)) {
++		dev_dbg(&dev->dev, "Can't get dwc2 AHB reset\n");
++	} else {
++		reset_control_assert(rst);
++		udelay(5);
++		reset_control_deassert(rst);
++	}
++
+ 	/*
+ 	 * Use reasonable defaults so platforms don't have to provide these.
+ 	 */
+-- 
+2.0.0
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
