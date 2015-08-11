@@ -1,35 +1,33 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v5 2/2] pinctrl: rockchip: only enable gpio clock when it setting
-Date: Tue, 11 Aug 2015 15:56:48 -0700
-Message-ID: <CAD=FV=VpmoiqoNi2pEQpgbC1R6E7_+Noh0vWGE_9UyK8NZHorw@mail.gmail.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v5 1/2] clk: rockchip: add pclk_pd_pmu to the list of
+ rk3288 critical clocks
+Date: Tue, 11 Aug 2015 16:01:43 -0700
+Message-ID: <55CA7ED7.90003@codeaurora.org>
 References: <1439287924-6988-1-git-send-email-hl@rock-chips.com>
-	<1439287924-6988-2-git-send-email-hl@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1439287924-6988-2-git-send-email-hl@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439287924-6988-1-git-send-email-hl@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Lin Huang <hl@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: heiko@sntech.de, dianders@chromium.org, linus.walleij@linaro.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, Aug 11, 2015 at 3:12 AM, Lin Huang <hl@rock-chips.com> wrote:
-> gpio can keep state even the clock disable, for save power
-> consumption, only enable gpio clock when it setting
+On 08/11/2015 03:12 AM, Lin Huang wrote:
+> From: Heiko Stuebner <heiko@sntech.de>
 >
+> pclk_pd_pmu needs to keep running and with the upcoming gpio clock
+> handling this is not always the case anymore. So add it to the list
+> of critical clocks for now.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > Signed-off-by: Lin Huang <hl@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 > ---
-> Changes in v5:
-> -rebase patch
 >
->  drivers/pinctrl/pinctrl-rockchip.c | 55 +++++++++++++++++++++++++++++++++++---
->  1 file changed, 51 insertions(+), 4 deletions(-)
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Acked-by: Stephen Boyd <sboyd@codeaurora.org>
 
-Also in the ChromeOS 3.14 tree (where this patch has been backported):
-
-Tested-by: Douglas Anderson <dianders@chromium.org>
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
