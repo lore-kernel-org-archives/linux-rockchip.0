@@ -1,51 +1,58 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: [PATCH v2 1/5] clk: rockchip: rk3288: Add the clock id of eFuse
-Date: Tue, 11 Aug 2015 18:13:40 +0800
-Message-ID: <1439288024-13359-2-git-send-email-zhengsq@rock-chips.com>
+From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 2/5] nvmem: fix the out-of-range leak in read/write()
+Date: Tue, 11 Aug 2015 18:13:41 +0800
+Message-ID: <1439288024-13359-3-git-send-email-zhengsq@rock-chips.com>
 References: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, heiko@sntech.de, caesar.wang@rock-chips.com
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com, ZhengShunQian <zhengsq@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, caesar.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: ZhengShunQian <zhengsq@rock-chips.com>
+From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-The clock id is necessary item, changing it from 0
-then can be referred in driver and device tree.
+The position to read/write must be less than max
+register size.
 
-Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3288.c      | 2 +-
- include/dt-bindings/clock/rk3288-cru.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ drivers/nvmem/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 0df5bae..31c4f78 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -647,7 +647,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(0, "pclk_efuse_1024", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 2, GFLAGS),
- 	GATE(PCLK_TZPC, "pclk_tzpc", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 3, GFLAGS),
- 	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 9, GFLAGS),
--	GATE(0, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
-+	GATE(PCLK_EFUSE256, "pclk_efuse_256", "pclk_cpu", 0, RK3288_CLKGATE_CON(11), 10, GFLAGS),
- 	GATE(PCLK_RKPWM, "pclk_rkpwm", "pclk_cpu", CLK_IGNORE_UNUSED, RK3288_CLKGATE_CON(11), 11, GFLAGS),
+diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+index d3c6676..f4af8e5 100644
+--- a/drivers/nvmem/core.c
++++ b/drivers/nvmem/core.c
+@@ -67,7 +67,7 @@ static ssize_t bin_attr_nvmem_read(struct file *filp, struct kobject *kobj,
+ 	int rc;
  
- 	/* ddrctrl [DDR Controller PHY clock] gates */
-diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
-index c719aac..ab74d5e 100644
---- a/include/dt-bindings/clock/rk3288-cru.h
-+++ b/include/dt-bindings/clock/rk3288-cru.h
-@@ -164,6 +164,7 @@
- #define PCLK_DDRUPCTL1		366
- #define PCLK_PUBL1		367
- #define PCLK_WDT		368
-+#define PCLK_EFUSE256		369
+ 	/* Stop the user from reading */
+-	if (pos > nvmem->size)
++	if (pos >= nvmem->size)
+ 		return 0;
  
- /* hclk gates */
- #define HCLK_GPS		448
+ 	if (pos + count > nvmem->size)
+@@ -92,7 +92,7 @@ static ssize_t bin_attr_nvmem_write(struct file *filp, struct kobject *kobj,
+ 	int rc;
+ 
+ 	/* Stop the user from writing */
+-	if (pos > nvmem->size)
++	if (pos >= nvmem->size)
+ 		return 0;
+ 
+ 	if (pos + count > nvmem->size)
 -- 
 1.9.1
