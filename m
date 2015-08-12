@@ -1,30 +1,28 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v5 1/2] clk: rockchip: add pclk_pd_pmu to the list of
- rk3288 critical clocks
-Date: Tue, 11 Aug 2015 16:01:43 -0700
-Message-ID: <55CA7ED7.90003@codeaurora.org>
-References: <1439287924-6988-1-git-send-email-hl@rock-chips.com>
+Subject: Re: [PATCH v2 1/5] clk: rockchip: rk3288: Add the clock id of eFuse
+Date: Tue, 11 Aug 2015 18:31:27 -0700
+Message-ID: <20150812013127.GK26614@codeaurora.org>
+References: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
+ <1439288024-13359-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439287924-6988-1-git-send-email-hl@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <1439288024-13359-2-git-send-email-zhengsq@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lin Huang <hl@rock-chips.com>
-Cc: heiko@sntech.de, dianders@chromium.org, linus.walleij@linaro.org, linux-rockchip@lists.infradead.org, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, heiko@sntech.de, caesar.wang@rock-chips.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 08/11/2015 03:12 AM, Lin Huang wrote:
-> From: Heiko Stuebner <heiko@sntech.de>
->
-> pclk_pd_pmu needs to keep running and with the upcoming gpio clock
-> handling this is not always the case anymore. So add it to the list
-> of critical clocks for now.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Lin Huang <hl@rock-chips.com>
+On 08/11, Shunqian Zheng wrote:
+> From: ZhengShunQian <zhengsq@rock-chips.com>
+> 
+> The clock id is necessary item, changing it from 0
+> then can be referred in driver and device tree.
+> 
+> Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->
 
 Acked-by: Stephen Boyd <sboyd@codeaurora.org>
 
