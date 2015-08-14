@@ -1,86 +1,124 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v1 1/3] usb: dwc2: reset AHB hclk domain before init
-Date: Fri, 14 Aug 2015 19:41:13 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE300772909017528F2F9@US01WEMBX2.internal.synopsys.com>
-References: <1439279787-26674-1-git-send-email-lyz@rock-chips.com>
- <2B3535C5ECE8B5419E3ECBE300772909017528DC44@US01WEMBX2.internal.synopsys.com>
- <55CD6078.8010502@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [RFC PATCH v5 1/9] mmc: dw_mmc: Add external dma interface support
+Date: Sat, 15 Aug 2015 00:13:49 +0200
+Message-ID: <1522710.BT6Gc0L6oH@diego>
+References: <1439541232-30100-1-git-send-email-shawn.lin@rock-chips.com> <1439541275-30146-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-2022-jp"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Language: en-US
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1439541275-30146-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: jh80.chung@samsung.com, ulf.hansson@linaro.org, Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Zhangfei Gao <zhangfei.gao@linaro.org>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, dianders@chromium.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 8/13/2015 8:29 PM, Yunzhi Li wrote:
+Hi Shawn,
+
+Am Freitag, 14. August 2015, 16:34:35 schrieb Shawn Lin:
+> DesignWare MMC Controller can supports two types of DMA
+> mode: external dma and internal dma. We get a RK312x platform
+> integrated dw_mmc and ARM pl330 dma controller. This patch add
+> edmac ops to support these platforms. I've tested it on RK312x
+> platform with edmac mode and RK3288 platform with idmac mode.
 > 
-> 
-> 在 2015/8/14 8:09, John Youn 写道:
->> On 8/11/2015 12:57 AM, Yunzhi Li wrote:
->>> We initiate dwc2 usb controller in BIOS, when kernel driver
->>> start-up we should reset AHB hclk domain to reset all AHB
->>> interface registers to default. Without this the FIFO value
->>> setting might be incorrect because calculating FIFO size need the
->>> power-on value of GRXFSIZ/GNPTXFSIZ/HPTXFSIZ registers.
->>>
->>> This patch could avoid warnning massage like in rk3288 platform:
->>> [    2.074764] dwc2 ff580000.usb: 256 invalid for
->>> host_perio_tx_fifo_size. Check HW configuration.
->>>
->>> ......
->> I didn't receive the other two patches in this series so I was
->> confused about where the "ahb_reset" was coming from when I
->> replied to your other patch.
->>
->> I see you changed the name and documented the DT so never mind.
->>
->> Another thing is that there probably shouldn't be a debug
->> message on the IS_ERR condition since that is the common case
->> and of no interest to other platforms.
->>
->> The other two resets you added aren't used by the driver
->> anywhere right? Maybe those should be left out until they are.
->>
->> John
->>
-> Hi John ,
-> 
->    Here is the other two patches :
->      https://patchwork.kernel.org/patch/6989541/
->      https://patchwork.kernel.org/patch/6989531/
-> 
->    ahb_reset is hreset_n signal of dwc2 IP. Our rk3288 SoC implement 
-> connect this signal to a special
-> register in clock ang reset unit (CRU) module, set this register will 
-> reset dwc2 control and status registers(CSR)
-> to default value. You could find more info in <<DesignWare Cores USB 2.0 
-> Hi Speed On-TheGo (OTG) Databook 3.10a>>
-> 4.4.1 System Clock and Reset Signals.
-> 
->    Our problem is that dwc2_get_hwparams() reads fifo size registers and 
-> reguards it as the power-on reset value,
-> then dwc2_set_param_host_perio_tx_fifo_size() will check this value and 
-> make sure the new fifo size value is no bigger
-> than the power-on reset value. But we init and set these fifo registers 
-> in BIOS, so here hw->xxx_fifo_size is not the
-> real power-on reset vaule. So we hope to reset CSR before 
-> dwc2_get_hwparams().
-> 
-> I have another ideal: we might use GRSTCTL.CSftRst instead of hreset_n 
-> to reset dwc2 CSR.
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+judging by your "from", I guess you're running this on some older Rockchip soc 
+without the idma? Because I tried testing this on a Radxa Rock, but only got 
+failures, from the start (failed to read card status register). In PIO mode 
+everything works again.
 
 
-Yes, please try doing that before calling dwc2_get_hwparams().
-Maybe by calling dwc2_core_reset(). If that works for you, I think
-it would be better.
+I guess I overlooked just some tiny detail, but to me the dma channel ids seem 
+correct after all. Maybe you have any hints what I'm doing wrong?
 
-John
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 4497d28..92d7156 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -217,6 +217,8 @@
+                interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+                clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>;
+                clock-names = "biu", "ciu";
++             dmas = <&dmac2 1>;
++             dma-names = "rx-tx";
+                fifo-depth = <256>;
+                status = "disabled";
+        };
+@@ -227,6 +229,8 @@
+                interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+                clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>;
+                clock-names = "biu", "ciu";
++             dmas = <&dmac2 3>;
++             dma-names = "rx-tx";
+                fifo-depth = <256>;
+                status = "disabled";
+        };
+@@ -237,6 +241,8 @@
+                interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+                clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>;
+                clock-names = "biu", "ciu";
++             dmas = <&dmac2 4>;
++             dma-names = "rx-tx";
+                fifo-depth = <256>;
+                status = "disabled";
+        };
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+[...]
+
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index fcbf552..e01ead3 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -2517,8 +2642,23 @@ static void dw_mci_cleanup_slot(struct dw_mci_slot
+> *slot, unsigned int id) static void dw_mci_init_dma(struct dw_mci *host)
+>  {
+>  	int addr_config;
+> +	int trans_mode;
+> +	struct device *dev = host->dev;
+> +	struct device_node *np = dev->of_node;
+> +
+> +	/* Check tansfer mode */
+> +	trans_mode = SDMMC_GET_TRANS_MODE(mci_readl(host, HCON));
+> +	if (trans_mode == 0) {
+> +		trans_mode = TRANS_MODE_IDMAC;
+> +	} else if (trans_mode == 1 || trans_mode == 2) {
+> +		trans_mode = TRANS_MODE_EDMAC;
+> +	} else {
+> +		trans_mode = TRANS_MODE_PIO;
+> +		goto no_dma;
+> +	}
+> +
+>  	/* Check ADDR_CONFIG bit in HCON to find IDMAC address bus width */
+> -	addr_config = (mci_readl(host, HCON) >> 27) & 0x01;
+> +	addr_config = SDMMC_GET_ADDR_CONFIG(mci_readl(host, HCON));
+> 
+>  	if (addr_config == 1) {
+>  		/* host supports IDMAC in 64-bit address mode */
+
+I guess the idmac address size checking block
+
+        /* Check ADDR_CONFIG bit in HCON to find IDMAC address bus width */
+        addr_config = SDMMC_GET_ADDR_CONFIG(mci_readl(host, HCON));
+
+        if (addr_config == 1) {
+                /* host supports IDMAC in 64-bit address mode */
+                host->dma_64bit_address = 1;
+                dev_info(host->dev, "IDMAC supports 64-bit address mode.\n");
+                if (!dma_set_mask(host->dev, DMA_BIT_MASK(64)))
+                        dma_set_coherent_mask(host->dev, DMA_BIT_MASK(64));
+        } else {
+                /* host supports IDMAC in 32-bit address mode */
+                host->dma_64bit_address = 0;
+                dev_info(host->dev, "IDMAC supports 32-bit address mode.\n");
+        }
+
+could either live inside the trans_mode == 0 conditional above or get its own
+if (trans_mode == 0) conditional. Either way I guess it should not talk about 
+idmac when either pio or extdmac are used.
+
+
+Thanks
+Heiko
