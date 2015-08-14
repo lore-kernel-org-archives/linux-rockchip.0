@@ -1,81 +1,100 @@
-From: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v1 1/3] usb: dwc2: reset AHB hclk domain before init
-Date: Fri, 14 Aug 2015 11:28:56 +0800
-Message-ID: <55CD6078.8010502@rock-chips.com>
-References: <1439279787-26674-1-git-send-email-lyz@rock-chips.com> <2B3535C5ECE8B5419E3ECBE300772909017528DC44@US01WEMBX2.internal.synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE300772909017528DC44-Yu2iAY70zvrYN67daEjeMPufCSb+aD3WLzEdoUbNIic@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org" <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [RFC PATCH v5 0/9] Add external dma support for Synopsys MSHC
+Date: Fri, 14 Aug 2015 16:33:52 +0800
+Message-ID: <1439541232-30100-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: jh80.chung@samsung.com, ulf.hansson@linaro.org
+Cc: Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Zhangfei Gao <zhangfei.gao@linaro.org>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, heiko@sntech.de, dianders@chromium.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+Synopsys DesignWare mobile storage host controller supports three
+types of transfer mode: pio, internal dma and external dma. However,
+dw_mmc can only supports pio and internal dma now. Thus some platforms
+using dw-mshc integrated with generic dma can't work in dma mode. So we
+submit this patch to achieve it.
 
-=E5=9C=A8 2015/8/14 8:09, John Youn =E5=86=99=E9=81=93:
-> On 8/11/2015 12:57 AM, Yunzhi Li wrote:
->> We initiate dwc2 usb controller in BIOS, when kernel driver
->> start-up we should reset AHB hclk domain to reset all AHB
->> interface registers to default. Without this the FIFO value
->> setting might be incorrect because calculating FIFO size need the
->> power-on value of GRXFSIZ/GNPTXFSIZ/HPTXFSIZ registers.
->>
->> This patch could avoid warnning massage like in rk3288 platform:
->> [    2.074764] dwc2 ff580000.usb: 256 invalid for
->> host_perio_tx_fifo_size. Check HW configuration.
->>
->> ......
-> I didn't receive the other two patches in this series so I was
-> confused about where the "ahb_reset" was coming from when I
-> replied to your other patch.
->
-> I see you changed the name and documented the DT so never mind.
->
-> Another thing is that there probably shouldn't be a debug
-> message on the IS_ERR condition since that is the common case
-> and of no interest to other platforms.
->
-> The other two resets you added aren't used by the driver
-> anywhere right? Maybe those should be left out until they are.
->
-> John
->
-Hi John ,
+And the config option, CONFIG_MMC_DW_IDMAC, was added by Will Newton
+(commit:f95f3850) for the first version of dw_mmc and never be touched since
+then. At that time dt-bindings hadn't been introduced into dw_mmc yet means
+we should select CONFIG_MMC_DW_IDMAC to enable internal dma mode at compile
+time. Nowadays, device-tree helps us to support a variety of boards with one
+kernel. That's why we need to remove it and decide the transfer mode by reading
+dw_mmc's HCON reg at runtime.
 
-   Here is the other two patches :
-     https://patchwork.kernel.org/patch/6989541/
-     https://patchwork.kernel.org/patch/6989531/
+This RFC patch needs lots of ACKs. I know it's hard, but it does need someone
+to make the running.
 
-   ahb_reset is hreset_n signal of dwc2 IP. Our rk3288 SoC implement=20
-connect this signal to a special
-register in clock ang reset unit (CRU) module, set this register will=20
-reset dwc2 control and status registers(CSR)
-to default value. You could find more info in <<DesignWare Cores USB 2.=
-0=20
-Hi Speed On-TheGo (OTG) Databook 3.10a>>
-4.4.1 System Clock and Reset Signals.
+Patch does the following things:
+- remove CONFIG_MMC_DW_IDMAC config option
+- add bindings for edmac used by synopsys-dw-mshc
+  at runtime
+- add edmac support for synopsys-dw-mshc
 
-   Our problem is that dwc2_get_hwparams() reads fifo size registers an=
-d=20
-reguards it as the power-on reset value,
-then dwc2_set_param_host_perio_tx_fifo_size() will check this value and=
-=20
-make sure the new fifo size value is no bigger
-than the power-on reset value. But we init and set these fifo registers=
-=20
-in BIOS, so here hw->xxx_fifo_size is not the
-real power-on reset vaule. So we hope to reset CSR before=20
-dwc2_get_hwparams().
-
-I have another ideal: we might use GRSTCTL.CSftRst instead of hreset_n=20
-to reset dwc2 CSR.
+Patch v1~v4 is based on next of git://git.linaro.org/people/ulf.hansson/mmc
+Patch v5 is rebased on dw-mmc-for-ulf-v4.2 of https://github.com/jh80chung/dw-mmc.git
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Changes in v5:
+- add the title of cover letter
+- fix typo of comment
+- add macro for reading HCON register
+- add "Acked-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>" for exynos_defconfig patch
+- add "Acked-by: Vineet Gupta <vgupta@synopsys.com>" for axs10x_defconfig patch
+- add "Acked-by: Govindraj Raja <govindraj.raja@imgtec.com>" and
+  "Acked-by: Ralf Baechle <ralf@linux-mips.org>" for pistachio_defconfig patch
+- add "Acked-by: Joachim Eastwood <manabian@gmail.com>" for lpc18xx_defconfig patch
+- add "Acked-by: Wei Xu <xuwei5@hisilicon.com>" for hisi_defconfig patch
+- rebase on "https://github.com/jh80chung/dw-mmc.git tags/dw-mmc-for-ulf-v4.2" for merging easily
+
+Changes in v4:
+- remove "host->trans_mode" and use "host->use_dma" to indicate
+  transfer mode.
+- remove all bt-bindings' changes since we don't need new properities.
+- check transfer mode at runtime by reading HCON reg
+- spilt defconfig changes for each sub-architecture
+- fix the title of cover letter
+- reuse some code for reducing code size
+
+Changes in v3:
+- choose transfer mode at runtime
+- remove all CONFIG_MMC_DW_IDMAC config option
+- add supports-idmac property for some platforms
+
+Changes in v2:
+- Fix typo of dev_info msg
+- remove unused dmach from declaration of dw_mci_dma_slave
+
+Shawn Lin (9):
+  mmc: dw_mmc: Add external dma interface support
+  Documentation: synopsys-dw-mshc: add bindings for idmac and edmac
+  mips: pistachio_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arc: axs10x_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arm: exynos_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arm: hisi_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arm: lpc18xx_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arm: multi_v7_defconfig: remove CONFIG_MMC_DW_IDMAC
+  arm: zx_defconfig: remove CONFIG_MMC_DW_IDMAC
+
+ .../devicetree/bindings/mmc/synopsys-dw-mshc.txt   |  25 +++
+ arch/arc/configs/axs101_defconfig                  |   1 -
+ arch/arc/configs/axs103_defconfig                  |   1 -
+ arch/arc/configs/axs103_smp_defconfig              |   1 -
+ arch/arm/configs/exynos_defconfig                  |   1 -
+ arch/arm/configs/hisi_defconfig                    |   1 -
+ arch/arm/configs/lpc18xx_defconfig                 |   1 -
+ arch/arm/configs/multi_v7_defconfig                |   1 -
+ arch/arm/configs/zx_defconfig                      |   1 -
+ arch/mips/configs/pistachio_defconfig              |   1 -
+ drivers/mmc/host/Kconfig                           |  11 +-
+ drivers/mmc/host/dw_mmc-pltfm.c                    |   2 +
+ drivers/mmc/host/dw_mmc.c                          | 209 ++++++++++++++++++---
+ drivers/mmc/host/dw_mmc.h                          |   5 +
+ include/linux/mmc/dw_mmc.h                         |  27 ++-
+ 15 files changed, 235 insertions(+), 53 deletions(-)
+
+-- 
+2.3.7
+
+
