@@ -1,60 +1,67 @@
-From: Vaishali Thakkar <vthakkar1994@gmail.com>
-Subject: [PATCH] ASoC: rockchip: i2s: Adjust devm usage
-Date: Sat, 15 Aug 2015 07:21:00 +0530
-Message-ID: <20150815015059.GA31009@localhost>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RFC PATCH v5 1/9] mmc: dw_mmc: Add external dma interface support
+Date: Sun, 16 Aug 2015 14:10:46 -0700
+Message-ID: <CAD=FV=W1dzqoJuJtJsD5TPKmSBpUbBcifGz654o9x8J1rX6-GQ@mail.gmail.com>
+References: <1439541232-30100-1-git-send-email-shawn.lin@rock-chips.com>
+	<1439541275-30146-1-git-send-email-shawn.lin@rock-chips.com>
+	<1522710.BT6Gc0L6oH@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1522710.BT6Gc0L6oH@diego>
+Sender: linux-mmc-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Zhangfei Gao <zhangfei.gao@linaro.org>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, linux-mips@linux-mips.org, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Remove use of snd_soc_unregister_component in remove function
-as devm_snd_soc_register_component in probe function automatically
-handles it.
+Heiko,
 
-Also, convert call of snd_dmaengine_pcm_register to managed resource
-function devm_snd_dmaengine_pcm_register and remove usage of
-snd_dmaengine_pcm_unregister in probe and remove functions.
+On Fri, Aug 14, 2015 at 3:13 PM, Heiko St=C3=BCbner <heiko@sntech.de> w=
+rote:
+> Hi Shawn,
+>
+> Am Freitag, 14. August 2015, 16:34:35 schrieb Shawn Lin:
+>> DesignWare MMC Controller can supports two types of DMA
+>> mode: external dma and internal dma. We get a RK312x platform
+>> integrated dw_mmc and ARM pl330 dma controller. This patch add
+>> edmac ops to support these platforms. I've tested it on RK312x
+>> platform with edmac mode and RK3288 platform with idmac mode.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> judging by your "from", I guess you're running this on some older Roc=
+kchip soc
+> without the idma? Because I tried testing this on a Radxa Rock, but o=
+nly got
+> failures, from the start (failed to read card status register). In PI=
+O mode
+> everything works again.
+>
+>
+> I guess I overlooked just some tiny detail, but to me the dma channel=
+ ids seem
+> correct after all. Maybe you have any hints what I'm doing wrong?
 
-Signed-off-by: Vaishali Thakkar <vthakkar1994@gmail.com>
----
- sound/soc/rockchip/rockchip_i2s.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+If I were a guessing man (which I'm not), I'd guess that perhaps
+you're running into troubles with our friend the PL330.
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index acb5be5..b936102 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -483,16 +483,14 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		goto err_suspend;
- 	}
- 
--	ret = snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-+	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not register PCM\n");
--		goto err_pcm_register;
-+		return ret;
- 	}
- 
- 	return 0;
- 
--err_pcm_register:
--	snd_dmaengine_pcm_unregister(&pdev->dev);
- err_suspend:
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		i2s_runtime_suspend(&pdev->dev);
-@@ -512,8 +510,6 @@ static int rockchip_i2s_remove(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(i2s->mclk);
- 	clk_disable_unprepare(i2s->hclk);
--	snd_dmaengine_pcm_unregister(&pdev->dev);
--	snd_soc_unregister_component(&pdev->dev);
- 
- 	return 0;
- }
--- 
-1.9.1
+There appear to be strange issues with the PL330 on Rockchip SoCs.  I
+was only peripherally involved with them, but I know at least about
+some of the patches in our tree, like:
+
+https://chromium-review.googlesource.com/237607
+=46ROMLIST: DMA: pl330: support burst mode for dev-to-mem and mem-to-de=
+v transmit
+
+https://chromium-review.googlesource.com/237393
+CHROMIUM: dmaengine: pl330: support quirks for some broken
+
+https://chromium-review.googlesource.com/237396
+CHROMIUM: dmaengine: pl330: add quirk for broken no flushp
+
+https://chromium-review.googlesource.com/237394
+CHROMIUM: ARM: dts: rockchip: Add broken-no-flushp into rk3288.dtsi
+
+https://chromium-review.googlesource.com/242063
+CHROMIUM: ASoC: rockchip_i2s: modify DMA max burst to 1
