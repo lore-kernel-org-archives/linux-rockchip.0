@@ -1,93 +1,42 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 00/10] pwm: add support for atomic update
-Date: Mon, 17 Aug 2015 09:18:27 +0200
-Message-ID: <20150817091827.70eae7eb@bbrezillon>
-References: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
-	<20150725083657.6111ff59@bbrezillon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-leds-owner@vger.kernel.org>
-In-Reply-To: <20150725083657.6111ff59@bbrezillon>
-Sender: linux-leds-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Boris Brezillon <boris.brezillon@free-electrons.com>, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Doug Anderson <dianders@google.com>, Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
+From: Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
+Subject: [PATCH] clk: rockchip: add pclk_cpu to the list of rk3188 critical
+ clocks
+Date: Mon, 17 Aug 2015 19:38:22 +0200
+Message-ID: <5400BEF8-5245-4F7B-845B-D326A7BC56B5@mniewoehner.de>
+Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 25 Jul 2015 08:36:57 +0200
-Boris Brezillon <boris.brezillon@free-electrons.com> wrote:
+gpio clock is getting disabled to save power but pclk_cpu is needed for act8865 regulator
 
-> Hi Thierry,
->=20
-> Should I resend a new version rebased on Mark's pwm topic branch or
-> would you like to review this one first ?
+Signed-off-by: Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
+---
+ drivers/clk/rockchip/clk-rk3188.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Ping.
-
->=20
-> Best Regards,
->=20
-> Boris
->=20
-> On Mon, 20 Jul 2015 17:31:57 +0200
-> Boris Brezillon <boris.brezillon@free-electrons.com> wrote:
->=20
-> > Hello Thierry,
-> >=20
-> > This series adds support for atomic PWM update, or IOW, the capabil=
-ity
-> > to update all the parameters of a PWM device (enabled/disabled, per=
-iod,
-> > duty and polarity) in one go.
-> >=20
-> > Best Regards,
-> >=20
-> > Boris
-> >=20
-> > Changes since v1:
-> > - dropped applied patches
-> > - squashed Heiko's fixes into the rockchip driver changes
-> > - made a few cosmetic changes
-> > - added kerneldoc comments
-> > - added Heiko's patch to display more information in debugfs
-> > - dropped pwm-regulator patches (should be submitted separately)
-> >=20
-> > Boris Brezillon (9):
-> >   pwm: introduce default period and polarity concepts
-> >   pwm: define a new pwm_state struct
-> >   pwm: move the enabled/disabled info to pwm_state struct
-> >   backlight: pwm_bl: remove useless call to pwm_set_period
-> >   pwm: declare a default PWM state
-> >   pwm: add the PWM initial state retrieval infra
-> >   pwm: add the core infrastructure to allow atomic update
-> >   pwm: rockchip: add initial state retrieval
-> >   pwm: rockchip: add support for atomic update
-> >=20
-> > Heiko St=C3=BCbner (1):
-> >   pwm: add information about polarity, duty cycle and period to deb=
-ugfs
-> >=20
-> >  drivers/leds/leds-pwm.c              |   2 +-
-> >  drivers/pwm/core.c                   | 169 +++++++++++++++++++++++=
-++++++++----
-> >  drivers/pwm/pwm-pxa.c                |   2 +-
-> >  drivers/pwm/pwm-rockchip.c           | 119 +++++++++++++++++++----=
--
-> >  drivers/pwm/pwm-sun4i.c              |   3 +-
-> >  drivers/regulator/pwm-regulator.c    |   2 +-
-> >  drivers/video/backlight/lm3630a_bl.c |   4 +-
-> >  drivers/video/backlight/pwm_bl.c     |  10 ++-
-> >  drivers/video/fbdev/ssd1307fb.c      |   2 +-
-> >  include/linux/pwm.h                  |  86 +++++++++++++++---
-> >  10 files changed, 336 insertions(+), 63 deletions(-)
-> >=20
->=20
->=20
->=20
-
-
-
---=20
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index e4f9d47..1c93229 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -708,6 +708,7 @@ static const char *const rk3188_critical_clocks[] __initconst = {
+ 	"aclk_cpu",
+ 	"aclk_peri",
+ 	"hclk_peri",
++	"pclk_cpu",
+ };
+ 
+ static void __init rk3188_common_clk_init(struct device_node *np)
+-- 
+2.5.0
