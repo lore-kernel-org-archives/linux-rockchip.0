@@ -1,48 +1,64 @@
-From: Javier Martinez Canillas <javier@dowhile0.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH 2/2] ARM: dts: rockchip: correct regulator PM properties
-Date: Tue, 18 Aug 2015 22:38:05 +0200
-Message-ID: <CABxcv==UJXn+v3KE9EE=ry_0aC-T1PBePjyKzn7oawtF=rrNzw@mail.gmail.com>
+Date: Tue, 18 Aug 2015 15:48:31 -0700
+Message-ID: <20150818224831.GA140911@google.com>
 References: <1439923455-109818-1-git-send-email-briannorris@chromium.org>
-	<1439923455-109818-2-git-send-email-briannorris@chromium.org>
-	<51457775.D3ds00ymOJ@phil>
-	<CABxcv==hssVa-b=cOjh3QhEOmQPZVvEPt0apLHQOva3GjJb9PA@mail.gmail.com>
+ <1439923455-109818-2-git-send-email-briannorris@chromium.org>
+ <51457775.D3ds00ymOJ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABxcv==hssVa-b=cOjh3QhEOmQPZVvEPt0apLHQOva3GjJb9PA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Brian Norris <briannorris@chromium.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Alexandru M Stan <amstan@chromium.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <51457775.D3ds00ymOJ@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 18, 2015 at 10:30 PM, Javier Martinez Canillas
-<javier@dowhile0.org> wrote:
-> On Tue, Aug 18, 2015 at 9:17 PM, Heiko Stuebner <heiko@sntech.de> wrote:
->>>
->>>               vcc5v_touch: SWITCH_REG2 {
->>>                       regulator-name = "vcc5v_touch";
->>> -                     regulator-suspend-mem-disabled;
->>> +                     regulator-state-mem {
->>> +                             regulator-on-in-suspend;
->>> +                     };
->>
->> wouldn't regulator-suspend-mem-disabled translate to regulator-off-in-suspend?
->
-> Correct, the downstream regulator-suspend-mem-disabled is equivalent
-> to regulator-off-in-suspend in mainline.
->
->> At least looks like it according to https://lkml.org/lkml/2013/7/25/592
->>
->
-> I guess you meant https://lkml.org/lkml/2014/10/10/162 since it was
-> Chanwoo's and not Vincent's version that finally landed.
->
->>
+On Tue, Aug 18, 2015 at 09:17:06PM +0200, Heiko Stuebner wrote:
+> Am Dienstag, 18. August 2015, 11:44:15 schrieb Brian Norris:
+> > This DTS file was submitted with non-upstream bindings. I happened
+> > across this while reviewing the jaq DTS.
+> > 
+> > Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > ---
+> > Tested on jaq, not minnie
+> > 
+> >  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 8 ++++++--
+> >  1 file changed, 6 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> > b/arch/arm/boot/dts/rk3288-veyron-minnie.dts index
+> > 0e30bd6bf92b..6f619c154dc6 100644
+> > --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> > +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> > @@ -128,12 +128,16 @@
+> >  			regulator-min-microvolt = <3300000>;
+> >  			regulator-max-microvolt = <3300000>;
+> >  			regulator-name = "vcc33_touch";
+> > -			regulator-suspend-mem-disabled;
+> > +			regulator-state-mem {
+> > +				regulator-on-in-suspend;
+> > +			};
+> >  		};
+> > 
+> >  		vcc5v_touch: SWITCH_REG2 {
+> >  			regulator-name = "vcc5v_touch";
+> > -			regulator-suspend-mem-disabled;
+> > +			regulator-state-mem {
+> > +				regulator-on-in-suspend;
+> > +			};
+> 
+> wouldn't regulator-suspend-mem-disabled translate to regulator-off-in-suspend?
+> At least looks like it according to https://lkml.org/lkml/2013/7/25/592
 
-oh, now I got that you referenced Vincent's patch just to show the
-regulator-suspend-mem-disabled property description.
+You are right. My bad. Will fix. (Need to fix this in jaq too.)
 
-Sorry for the noise then but yes you are right about the translation :-)
-
-Best regards,
-Javier
+Thanks,
+Brian
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
