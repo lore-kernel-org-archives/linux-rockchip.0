@@ -1,83 +1,69 @@
-From: Yunzhi Li <lyz@rock-chips.com>
-Subject: Re: [PATCH v1 1/3] usb: dwc2: reset AHB hclk domain before init
-Date: Tue, 18 Aug 2015 17:44:43 +0800
-Message-ID: <55D2FE8B.9040302@rock-chips.com>
-References: <1439279787-26674-1-git-send-email-lyz@rock-chips.com> <2B3535C5ECE8B5419E3ECBE300772909017528DC44@US01WEMBX2.internal.synopsys.com> <55CD6078.8010502@rock-chips.com> <2B3535C5ECE8B5419E3ECBE300772909017528F2F9@US01WEMBX2.internal.synopsys.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 00/12] dw-hdmi development
+Date: Tue, 18 Aug 2015 11:37:42 +0100
+Message-ID: <20150818103742.GN7557@n2100.arm.linux.org.uk>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+ <20150810122135.GZ1262@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-2022-jp
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE300772909017528F2F9@US01WEMBX2.internal.synopsys.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>, "jwerner@chromium.org" <jwerner@chromium.org>, "dianders@chromium.org" <dianders@chromium.org>
-Cc: "huangtao@rock-chips.com" <huangtao@rock-chips.com>, "cf@rock-chips.com" <cf@rock-chips.com>, "hl@rock-chips.com" <hl@rock-chips.com>, "wulf@rock-chips.com" <wulf@rock-chips.com>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20150810122135.GZ1262@ulmo.nvidia.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi John,
-
-在 2015/8/15 3:41, John Youn 写道:
-> On 8/13/2015 8:29 PM, Yunzhi Li wrote:
->>
->> 在 2015/8/14 8:09, John Youn 写道:
->>> On 8/11/2015 12:57 AM, Yunzhi Li wrote:
->>>> We initiate dwc2 usb controller in BIOS, when kernel driver
->>>> start-up we should reset AHB hclk domain to reset all AHB
->>>> interface registers to default. Without this the FIFO value
->>>> setting might be incorrect because calculating FIFO size need the
->>>> power-on value of GRXFSIZ/GNPTXFSIZ/HPTXFSIZ registers.
->>>>
->>>> This patch could avoid warnning massage like in rk3288 platform:
->>>> [    2.074764] dwc2 ff580000.usb: 256 invalid for
->>>> host_perio_tx_fifo_size. Check HW configuration.
->>>>
->>>> ......
->>> I didn't receive the other two patches in this series so I was
->>> confused about where the "ahb_reset" was coming from when I
->>> replied to your other patch.
->>>
->>> I see you changed the name and documented the DT so never mind.
->>>
->>> Another thing is that there probably shouldn't be a debug
->>> message on the IS_ERR condition since that is the common case
->>> and of no interest to other platforms.
->>>
->>> The other two resets you added aren't used by the driver
->>> anywhere right? Maybe those should be left out until they are.
->>>
->>> John
->>>
->> Hi John ,
->>
->>    Here is the other two patches :
->>      https://patchwork.kernel.org/patch/6989541/
->>      https://patchwork.kernel.org/patch/6989531/
->>
->>    ahb_reset is hreset_n signal of dwc2 IP. Our rk3288 SoC implement 
->> connect this signal to a special
->> register in clock ang reset unit (CRU) module, set this register will 
->> reset dwc2 control and status registers(CSR)
->> to default value. You could find more info in <<DesignWare Cores USB 2.0 
->> Hi Speed On-TheGo (OTG) Databook 3.10a>>
->> 4.4.1 System Clock and Reset Signals.
->>
->>    Our problem is that dwc2_get_hwparams() reads fifo size registers and 
->> reguards it as the power-on reset value,
->> then dwc2_set_param_host_perio_tx_fifo_size() will check this value and 
->> make sure the new fifo size value is no bigger
->> than the power-on reset value. But we init and set these fifo registers 
->> in BIOS, so here hw->xxx_fifo_size is not the
->> real power-on reset vaule. So we hope to reset CSR before 
->> dwc2_get_hwparams().
->>
->> I have another ideal: we might use GRSTCTL.CSftRst instead of hreset_n 
->> to reset dwc2 CSR.
->
-> Yes, please try doing that before calling dwc2_get_hwparams().
-> Maybe by calling dwc2_core_reset(). If that works for you, I think
-> it would be better.
->
-> John
->
->
-It works and please help review the new patch.
-Thanks.
+T24gTW9uLCBBdWcgMTAsIDIwMTUgYXQgMDI6MjE6MzZQTSArMDIwMCwgVGhpZXJyeSBSZWRpbmcg
+d3JvdGU6Cj4gT24gU2F0LCBBdWcgMDgsIDIwMTUgYXQgMDU6MDI6NTFQTSArMDEwMCwgUnVzc2Vs
+bCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+ID4gVGhpcyBzdWItc2VyaWVzIGlzIGEgbWl4dHVy
+ZSBvZiBkZXZlbG9wbWVudDoKPiA+IAo+ID4gKiBSZW1vdmluZyB0aGUgaW5jb3JyZWN0IHBpeGVs
+IHJlcGV0aXRpb24gY29uZmlndXJhdGlvbiBjb2RlCj4gPiAqIFByZXZlbnRpbmcgcGl4ZWwtZG91
+YmxlZCBtb2RlcyBmcm9tIGJlaW5nIHVzZWQKPiA+ICogQWRkaW5nIGludGVybGFjZWQgdmlkZW8g
+c3VwcG9ydAo+ID4gKiBJbXBsZW1lbnRpbmcgdGhlIHNpbmtfaXNfaGRtaS9zaW5rX2hhc19hdWRp
+byBmbGFncyBJIHN1Z2dlc3RlZCBhIGZldwo+ID4gICBtb250aHMgYWdvCj4gPiAqIE9ubHkgZW5h
+YmxpbmcgYXVkaW8gc3VwcG9ydCBpZiB0aGUgc2luayBpbmRpY2F0ZXMgaXQgaGFzIGF1ZGlvCj4g
+PiAqIEF2b2lkaW5nIGRvdWJsZS1lbmFibGluZyB0aGUgSERNSSBpbnRlcmZhY2UKPiA+ICogRml4
+aW5nIHRoZSBtaXMtbGVhZGluZyBuYW1lIG9mICJkd19oZG1pX3BoeV9lbmFibGVfcG93ZXIiCj4g
+PiAqIEFkZGluZyBjb25uZWN0b3IgbW9kZSBmb3JjaW5nIChpbXBvcnRhbnQgaWYgeW91ciBtb25p
+dG9yIGJvdW5jZXMKPiA+ICAgUlhTRU5TRSBhbmQgSFBEIHNpZ25hbHMgd2hpbGUgaW4gbG93LXBv
+d2VyIG1vZGUuKQo+ID4gKiBJbXByb3ZpbmcgdGhlIEhETUkgZW5hYmxlL2Rpc2FibGluZyBvbiBz
+aW5rIHN0YXR1cwo+ID4gCj4gPiBGb3IgcmV2aWV3IChhbmQgdGVzdGluZyBpZiBwZW9wbGUgZmVl
+bCBsaWtlIGl0KS4gIEFja3MvdGVzdGVkLWJ5cyBldGMKPiA+IHdlbGNvbWUuICBJdCBhcHBsaWVz
+IG9uIHRvcCBvZiBteSBkcm0tZHdoZG1pLWRldmVsIGJyYW5jaCwgd2hpY2ggaXMKPiA+IHdhaXRp
+bmcgZm9yIERhdmlkIEFpcmxpZSB0byBwdWxsIChzZWUgcHVsbCByZXF1ZXN0IG9uIGRyaS1kZXZl
+bCwgMTV0aAo+ID4gSnVseS4pCj4gCj4gSGkgUnVzc2VsbCwKPiAKPiBJIGhhdmUgaW4gdGhlIHBh
+c3QgbWVyZ2VkIHBhdGNoZXMgZm9yIHRoZSBicmlkZ2Ugc3ViZGlyZWN0b3J5IHZpYSB0aGUKPiBk
+cm0vcGFuZWwgdHJlZSwgdGhvdWdoIGxhdGVseSBtdWNoIG9mIHRoZSBkdy1oZG1pIHBhdGNoZXMg
+aGF2ZSBnb25lIGluCj4gdmlhIFBoaWxpcHAgb3IgeW91IGRpcmVjdGx5LiBUaGlzIHNlZW1zIHRv
+IGhhdmUgd29ya2VkIGZpbmUgc28gZmFyLCBidXQKPiB0aGlzIHRpbWUgYXJvdW5kIEkgY2Fycnkg
+YSBwYXRjaCB0byBjbGVhbiB1cCBLY29uZmlnIGFuZCBNYWtlZmlsZSBhCj4gbGl0dGxlIGFuZCBi
+cmluZyBtb3JlIGNvbnNpc3RlbmN5IHRvIHRoZSBzdWJkaXJlY3RvcnkgYW5kIEkgdGhpbmsgaXQn
+cwo+IGdvaW5nIHRvIGNvbmZsaWN0IHdpdGggeW91ciBzZXJpZXMgaGVyZSAoYW5kIHBvdGVudGlh
+bGx5IGFueSBvbmdvaW5nCj4gd29yayB5b3UgaGF2ZSkuCj4gCj4gV291bGQgeW91IGJlIG9wZW4g
+dG8gbWUgcGlja2luZyB1cCB0aGVzZSBwYXRjaGVzIGludG8gdGhlIGRybS9wYW5lbAo+IHRyZWU/
+IEl0IGZlZWRzIGludG8gbGludXgtbmV4dCwgc28gdGhlIGNvZGUgd291bGQgZ2V0IHNvbWUgZXhw
+b3N1cmUKPiBiZWZvcmUgRGF2ZSdzIHJldHVybi4KCkkgaGF2ZW4ndCBzZWVuIGFueSBhY2tzIG9y
+IGNvbW1lbnRzIG9uIHRoaXMgc2V0IG9mIDEyIHBhdGNoZXMgeWV0IHdoaWNoCmlzIHJhdGhlciBk
+aXNhcHBvaW50aW5nLgoKRGF2aWQgaGFzIG5vdyByZXR1cm5lZCwgYW5kIGFzIERhdmlkIGhhc24n
+dCBwdWxsZWQgc3R1ZmYgZnJvbSB0aGUgMTV0aCwKbXkgaW50ZW50aW9uIGlzIHRvIHJlLXNlbmQg
+dGhhdCBwdWxsIHJlcXVlc3QsIGJ1dCB3aXRoIGNlcnRhaW4gcGF0Y2hlcwpmcm9tIHRoaXMgc2V0
+IGluY2x1ZGVkIGluIHRoYXQgLSBwYXRjaGVzIDEsIDIsIDYsIDcsIDgsIDkgYW5kIDEwLiAgSSds
+bAphbHNvIGluY2x1ZGUgVmxhZGltaXIgWmFwb2xza2l5J3MgImZpeCByZWdpc3RlciBJMkNNX0FE
+RFJFU1MgcmVnaXN0ZXIKbmFtZSIgcGF0Y2ggaW4gdGhlIHNldCB0b28uCgpOb25lIG9mIHRoYXQg
+dG91Y2hlcyB0aGUgTWFrZWZpbGUgb3IgS2NvbmZpZywgc28gdGhlcmUgc2hvdWxkbid0IGJlIGFu
+eQpjb25mbGljdHMgd2l0aCB5b3VyIHdvcmsuCgotLSAKRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1p
+bGUgbGluZTogY3VycmVudGx5IGF0IDEwLjVNYnBzIGRvd24gNDAwa2JwcyB1cAphY2NvcmRpbmcg
+dG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
