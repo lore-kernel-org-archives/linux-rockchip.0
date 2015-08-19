@@ -1,141 +1,152 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] clk: rockchip: register pll mux before pll itself
-Date: Wed, 19 Aug 2015 15:06:55 +0200
-Message-ID: <7060610.CC2Q1RMG2L@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v3 0/14] Add Analogix Core Display Port Driver
+Date: Wed, 19 Aug 2015 09:48:48 -0500
+Message-ID: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: djkurtz@google.com, dianders@google.com, seanpaul@google.com, Takashi Iwai <tiwai@suse.de>, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The structure is xin24m -> pll -> pll-mux (xin24m,pll,xin32k). The pll
-does have an init callback to make sure the boot-selected frequency is
-using the expected pll settings and resets the same frequency using
-the values provided in the driver if necessary.
 
-The setting itself also involves remuxing the pll-mux temporarily to
-the xin24m source to let the new pll rate settle. Until now this worked
-flawlessly, even when it had the flaw of accessing the mux settings
-before the mux actually got registered.
+Hi all,
+   The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+share the same IP, so a lot of parts can be re-used. I split the common
+code into bridge directory, then rk3288 and exynos only need to keep
+some platform code. Cause I can't find the exact IP name of exynos dp
+controller, so I decide to name dp core driver with "analogix" which I
+find in rk3288 eDP TRM ;)
 
-With the recent clock-core conversions this flaw became apparent in
-null pointer dereference in
-[<c03fc400>] (clk_hw_get_num_parents) from [<c0400df0>] (clk_mux_get_parent+0x14/0xc8)
-[<c0400ddc>] (clk_mux_get_parent) from [<c040246c>] (rockchip_rk3066_pll_set_rate+0xd8/0x320)
+Beyond that, there are three light registers setting differents bewteen
+exynos and rk3288.
+1. RK3288 have five special pll resigters which not indicata in exynos
+   dp controller.
+2. The address of DP_PHY_PD(dp phy power manager register) are different
+   between rk3288 and exynos.
+3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
+   register).
 
-So to fix that, simply register the pll-mux before the pll, so that
-it will be fully initialized when the pll clock executes its init-
-callback and possibly touches the pll-mux clock.
+I have verified this series on two kinds of rockchip platform board, one
+is rk3288 sdk board which connect with a 2K display port monitor, the other
+is google jerry chromebook which connect with a eDP screen "cnm,n116bgeea2",
+both of them works rightlly.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-This only surfaced with the clk_core changes for 4.3, so should
-probably just go on top.
+I haven't verified the dp function on samsung platform, cause I haven't got
+exynos boards. I can only ensure that there are no build error on samsung
+platform, wish some samsung guys help to test. ;)
 
- drivers/clk/rockchip/clk-pll.c | 63 +++++++++++++++++++++---------------------
- 1 file changed, 32 insertions(+), 31 deletions(-)
+Thanks,
+- Yakir
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index eab4304..7737a1d 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -353,6 +353,35 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 	if (!pll)
- 		return ERR_PTR(-ENOMEM);
- 
-+	/* create the mux on top of the real pll */
-+	pll->pll_mux_ops = &clk_mux_ops;
-+	pll_mux = &pll->pll_mux;
-+	pll_mux->reg = base + mode_offset;
-+	pll_mux->shift = mode_shift;
-+	pll_mux->mask = PLL_MODE_MASK;
-+	pll_mux->flags = 0;
-+	pll_mux->lock = lock;
-+	pll_mux->hw.init = &init;
-+
-+	if (pll_type == pll_rk3066)
-+		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
-+
-+	/* the actual muxing is xin24m, pll-output, xin32k */
-+	pll_parents[0] = parent_names[0];
-+	pll_parents[1] = pll_name;
-+	pll_parents[2] = parent_names[1];
-+
-+	init.name = name;
-+	init.flags = CLK_SET_RATE_PARENT;
-+	init.ops = pll->pll_mux_ops;
-+	init.parent_names = pll_parents;
-+	init.num_parents = ARRAY_SIZE(pll_parents);
-+
-+	mux_clk = clk_register(NULL, &pll_mux->hw);
-+	if (IS_ERR(mux_clk))
-+		goto err_mux;
-+
-+	/* now create the actual pll */
- 	init.name = pll_name;
- 
- 	/* keep all plls untouched for now */
-@@ -398,47 +427,19 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 	pll->flags = clk_pll_flags;
- 	pll->lock = lock;
- 
--	/* create the mux on top of the real pll */
--	pll->pll_mux_ops = &clk_mux_ops;
--	pll_mux = &pll->pll_mux;
--	pll_mux->reg = base + mode_offset;
--	pll_mux->shift = mode_shift;
--	pll_mux->mask = PLL_MODE_MASK;
--	pll_mux->flags = 0;
--	pll_mux->lock = lock;
--	pll_mux->hw.init = &init;
--
--	if (pll_type == pll_rk3066)
--		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
--
- 	pll_clk = clk_register(NULL, &pll->hw);
- 	if (IS_ERR(pll_clk)) {
- 		pr_err("%s: failed to register pll clock %s : %ld\n",
- 			__func__, name, PTR_ERR(pll_clk));
--		mux_clk = pll_clk;
- 		goto err_pll;
- 	}
- 
--	/* the actual muxing is xin24m, pll-output, xin32k */
--	pll_parents[0] = parent_names[0];
--	pll_parents[1] = pll_name;
--	pll_parents[2] = parent_names[1];
--
--	init.name = name;
--	init.flags = CLK_SET_RATE_PARENT;
--	init.ops = pll->pll_mux_ops;
--	init.parent_names = pll_parents;
--	init.num_parents = ARRAY_SIZE(pll_parents);
--
--	mux_clk = clk_register(NULL, &pll_mux->hw);
--	if (IS_ERR(mux_clk))
--		goto err_mux;
--
- 	return mux_clk;
- 
--err_mux:
--	clk_unregister(pll_clk);
- err_pll:
-+	clk_unregister(mux_clk);
-+	mux_clk = pll_clk;
-+err_mux:
- 	kfree(pll);
- 	return mux_clk;
- }
+Changes in v3:
+- Take Thierry Reding suggest, move exynos's video_timing code
+  to analogix_dp-exynos platform driver, add get_modes method
+  to struct analogix_dp_plat_data.
+- Take Heiko suggest, rename some "samsung*" dts propery to "analogix*".
+- Take Thierry Reding suggest, dynamic parse video timing info from
+  struct drm_display_mode and struct drm_display_info.
+- Take Thierry Reding suggest, link_rate and lane_count shouldn't config to
+  the DT property value directly, but we can take those as hardware limite.
+  For example, RK3288 only support 4 physical lanes of 2.7/1.62 Gbps/lane,
+  so DT property would like "link-rate = 0x0a" "lane-count = 4".
+- Take Heiko suggest, add devicetree binding documents.
+- Take Thierry Reding suggest, remove sync pol & colorimetry properies
+  from the new analogix dp driver devicetree binding.
+- Update the exist exynos dtsi file with the latest DP DT properies.
+- Take Thierry Reding and Heiko suggest, leave "sclk_edp_24m" to rockchip
+  dp phy driver which name to "24m", and leave "sclk_edp" to analogix dp
+  core driver which name to "dp", and leave "pclk_edp" to rockchip dp platform
+  driver which name to "pclk".
+- Take Heiko suggest, add devicetree binding document.
+- Take Heiko suggest, remove "rockchip,panel" DT property, take use of remote
+  point to get panel node.
+- Add the new function point analogix_dp_platdata.get_modes init.
+- Take Heiko suggest, add rockchip dp phy driver,
+  collect the phy clocks and power control.
+- Add "analogix,need-force-hpd" to indicate whether driver need foce
+  hpd when hpd detect failed.
+- move dp hpd detect to connector detect function.
+- Add edid modes parse support
+
+Changes in v2:
+- Take Joe Preches advise, improved commit message more readable, and
+  avoid using some uncommon style like bellow:
+  -  retval = exynos_dp_read_bytes_from_i2c(...
+				...)
+  +  retval =
+  +  exynos_dp_read_bytes_from_i2c(......);
+- Take Jingoo Han suggest, just remove my name from author list.
+- Take Jingoo Han suggest, remove new copyright
+- Fix compiled failed dut to analogix_dp_device misspell
+- Take Heiko suggest, get panel node with remote-endpoint method,
+  and create devicetree binding for driver.
+- Remove the clock enable/disbale with "sclk_edp" & "sclk_edp_24m",
+  leave those clock to rockchip dp phy driver.
+- Add GNU license v2 declared and samsung copyright
+- Fix compile failed dut to phy_pd_addr variable misspell error
+
+Yakir Yang (14):
+  drm: exynos/dp: fix code style
+  drm: exynos/dp: convert to drm bridge mode
+  drm: bridge: analogix_dp: split exynos dp driver to bridge dir
+  drm: bridge/analogix_dp: dynamic parse sync_pol & interlace &
+    colorimetry
+  drm: bridge/analogix_dp: fix link_rate & lane_count bug
+  Documentation: drm/bridge: add document for analogix_dp
+  drm: rockchip/dp: add rockchip platform dp driver
+  phy: Add driver for rockchip Display Port PHY
+  drm: bridge/analogix_dp: add platform device type support
+  drm: bridge: analogix_dp: add some rk3288 special registers setting
+  drm: bridge: analogix_dp: try force hpd after plug in lookup failed
+  drm: bridge/analogix_dp: expand the delay time for hpd detect
+  drm: bridge/analogix_dp: move hpd detect to connector detect function
+  drm: bridge/analogix_dp: add edid modes parse in get_modes method
+
+ .../devicetree/bindings/drm/bridge/analogix_dp.txt |   73 +
+ .../devicetree/bindings/phy/rockchip-dp-phy.txt    |   26 +
+ .../bindings/video/analogix_dp-rockchip.txt        |   83 ++
+ .../devicetree/bindings/video/exynos_dp.txt        |   51 +-
+ arch/arm/boot/dts/exynos5250-arndale.dts           |   10 +-
+ arch/arm/boot/dts/exynos5250-smdk5250.dts          |   10 +-
+ arch/arm/boot/dts/exynos5250-snow.dts              |   12 +-
+ arch/arm/boot/dts/exynos5250-spring.dts            |   12 +-
+ arch/arm/boot/dts/exynos5420-peach-pit.dts         |   12 +-
+ arch/arm/boot/dts/exynos5420-smdk5420.dts          |   10 +-
+ arch/arm/boot/dts/exynos5800-peach-pi.dts          |   12 +-
+ drivers/gpu/drm/bridge/Kconfig                     |    5 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/analogix_dp_core.c          | 1382 +++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix_dp_core.h          |  286 ++++
+ drivers/gpu/drm/bridge/analogix_dp_reg.c           | 1294 ++++++++++++++++++
+ .../exynos_dp_reg.h => bridge/analogix_dp_reg.h}   |  270 ++--
+ drivers/gpu/drm/exynos/Kconfig                     |    5 +-
+ drivers/gpu/drm/exynos/Makefile                    |    2 +-
+ drivers/gpu/drm/exynos/analogix_dp-exynos.c        |  347 +++++
+ drivers/gpu/drm/exynos/exynos_dp_core.c            | 1416 --------------------
+ drivers/gpu/drm/exynos/exynos_dp_core.h            |  282 ----
+ drivers/gpu/drm/exynos/exynos_dp_reg.c             | 1263 -----------------
+ drivers/gpu/drm/rockchip/Kconfig                   |    9 +
+ drivers/gpu/drm/rockchip/Makefile                  |    1 +
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  390 ++++++
+ drivers/phy/Kconfig                                |    7 +
+ drivers/phy/Makefile                               |    1 +
+ drivers/phy/phy-rockchip-dp.c                      |  185 +++
+ include/drm/bridge/analogix_dp.h                   |   40 +
+ 30 files changed, 4325 insertions(+), 3172 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/drm/bridge/analogix_dp.txt
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+ create mode 100644 Documentation/devicetree/bindings/video/analogix_dp-rockchip.txt
+ create mode 100644 drivers/gpu/drm/bridge/analogix_dp_core.c
+ create mode 100644 drivers/gpu/drm/bridge/analogix_dp_core.h
+ create mode 100644 drivers/gpu/drm/bridge/analogix_dp_reg.c
+ rename drivers/gpu/drm/{exynos/exynos_dp_reg.h => bridge/analogix_dp_reg.h} (62%)
+ create mode 100644 drivers/gpu/drm/exynos/analogix_dp-exynos.c
+ delete mode 100644 drivers/gpu/drm/exynos/exynos_dp_core.c
+ delete mode 100644 drivers/gpu/drm/exynos/exynos_dp_core.h
+ delete mode 100644 drivers/gpu/drm/exynos/exynos_dp_reg.c
+ create mode 100644 drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+ create mode 100644 drivers/phy/phy-rockchip-dp.c
+ create mode 100644 include/drm/bridge/analogix_dp.h
+
 -- 
-2.1.4
+1.9.1
