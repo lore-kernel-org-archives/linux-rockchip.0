@@ -1,15 +1,13 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v2 4/8] drm: rockchip/dp: add rockchip platform dp driver
-Date: Wed, 19 Aug 2015 18:23:39 +0800
-Message-ID: <55D4592B.2000704@rock-chips.com>
-References: <1438943674-18191-1-git-send-email-ykk@rock-chips.com>
- <1438944380-18897-1-git-send-email-ykk@rock-chips.com>
- <1730542.s7otqjtiXD@diego> <55C57D7E.6080800@rock-chips.com>
- <20150810100055.GB7850@ulmo.nvidia.com>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v3 0/14] Add Analogix Core Display Port Driver
+Date: Thu, 20 Aug 2015 09:59:49 +0530
+Message-ID: <55D557BD.8070004@codeaurora.org>
+References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2032496654=="
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150810100055.GB7850@ulmo.nvidia.com>
+In-Reply-To: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -19,296 +17,143 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <treding@nvidia.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, seanpaul@google.com, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-arm-ker@NULL.NULL, linux-samsung-soc@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Russell King <rmk+kernel@arm.linux.org.uk>, dianders@google.com, ajaynumb@gmail.com, Fabio Estevam <fabio.estevam@freescale.com>, nel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, djkurtz@google.com, joe@perches.com, Andy Yan <andy.yan@rock-chips.com>
+To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, Pawel Moll <pawel.moll@arm.com>, seanpaul@google.com, linux-rockchip@lists.infradead.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, djkurtz@google.com, Kumar Gala <galak@codeaurora.org>, ajaynumb@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dianders@google.com, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============2032496654==
-Content-Type: multipart/alternative;
- boundary="------------060409070306030501020306"
-
-This is a multi-part message in MIME format.
---------------060409070306030501020306
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-
-Hi Thierry
-
-When I'm preparing v3 series, I meet some trobules from your comment,=20
-wish you could give some advise?  ;)
-
-=E5=9C=A8 2015/8/10 18:00, Thierry Reding =E5=86=99=E9=81=93:
-> On Sat, Aug 08, 2015 at 11:54:38AM +0800, Yakir Yang wrote:
-> [...]
->>          edp: edp@ff970000 {
-> [...]
->>                  samsung,color-space =3D <0>;
->>                  samsung,dynamic-range =3D <0>;
->>                  samsung,ycbcr-coeff =3D <0>;
-> I think these should also come from EDID, though I'm not sure if we
-> store this in internal data structures yet.
->
->>                  samsung,color-depth =3D <1>;
-> This is probably drm_display_info.bpc.
-"samsung,color_space" and "samsung,color-depth"
-
-The drm_display_info's color_formats and bpc indicate the monitor=20
-display ability, but
-the edp driver could not take it as input video format directly.
-
-For example, with my DP TV I would found "RGB444 & YCRCB422 & & YCRCB444"
-support in drm_display_info.color_formats and 16bit bpc support, but=20
-RK3288 crtc
-driver could only output RGB & ITU formats, so finally=20
-analogix_dp-rockchip driver
-config crtc to RGBaaa 10bpc mode.
-
-In this sutiation, the analogix_dp core driver would pazzled by the=20
-drm_display_info,
-can't chose the right color_space and bpc.
-
-And this is the place that confused me, wish you could give some ideas=20
-about this one :-)
--------------------------------------------------------------------------=
-------------------------
-
-Besides, The dynamic_range and ycbcr_coeff haven't been record in=20
-drm_display_info, but
-I though we can parse it by the video code.
-
-The dynamic_range would have two values "CEA range" and "VESA range", so=20
-I though if
-the currect mode have a no-zero vic (drm_match_cea_mode()) then config=20
-it to "CEA range",
-otherwhise config it to "VESA range".
-
-YCbCr Coefficients would have two values "ITU709" and "ITU601". I see=20
-dw_hdmi driver have
-been set the colorimetry to ITU_601 when vic is 6/7/21/22/2/3/17/18, I=20
-thouht we can stole this
-to analogix_dp driver.
-
-    /* dynamic_range & colorimetry */
-         vic =3D drm_match_cea_mode(mode);
-         if ((vic =3D=3D 6) || (vic =3D=3D 7) || (vic =3D=3D 21) || (vic =
-=3D=3D 22) ||
-             (vic =3D=3D 2) || (vic =3D=3D 3) || (vic =3D=3D 17) || (vic =
-=3D=3D 18)) {
-                 video_info->dynamic_range =3D CEA;
-                 video_info->ycbcr_coeff =3D COLOR_YCBCR601;
-         } else if (vic) {
-                 video_info->dynamic_range =3D CEA;
-                 video_info->ycbcr_coeff =3D COLOR_YCBCR709;
-         } else {
-                 video_info->dynamic_range =3D VESA;
-                 video_info->ycbcr_coeff =3D COLOR_YCBCR709;
-         }
-
-I'm not sure whether this is right, also wish you could give some=20
-suggests ;)
-
-
->>                  samsung,link-rate =3D <0x0a>;
->>                  samsung,lane-count =3D <1>;
-> And these should really be derived from values in the DPCD and adjusted
-> (if necessary) during link training.
->
-> Why would you ever want to hard-code the above?
->
-
-And I though we should keep those DT properties now. I try to remove=20
-those DT
-property, so analogix dp driver would always use the max link_rate and=20
-lane_count
-which read from dpcd. For my 2K DP TV, link rate would reach to 5.4Gbps,=20
-lane cout
-would reach 4 lances, if so analogix dp driver could not light my DP TV=20
-up any more.
-
-After that I found that RK3288 eDP TRM have indicated some limites about=20
-those
-that RK3288 only support 4 physical lanes of 2.7/1.62 Gbps/lane, which=20
-means 5.4Gbps
-link rate is too high for RK3288.
-
-So I think we could treate them as hardware max values, is it okay?
-
-Thanks,
-- Yakir
-
---------------060409070306030501020306
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-  <head>
-    <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Ty=
-pe">
-  </head>
-  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
-    Hi Thierry<br>
-    <br>
-    When I'm preparing v3 series, I meet some trobules from your
-    comment, wish you could give some advise?=C2=A0 ;)<br>
-    <br>
-    <div class=3D"moz-cite-prefix">=E5=9C=A8 2015/8/10 18:00, Thierry Red=
-ing =E5=86=99=E9=81=93:<br>
-    </div>
-    <blockquote cite=3D"mid:20150810100055.GB7850@ulmo.nvidia.com"
-      type=3D"cite">
-      <pre wrap=3D"">On Sat, Aug 08, 2015 at 11:54:38AM +0800, Yakir Yang=
- wrote:
-[...]
-</pre>
-      <blockquote type=3D"cite">
-        <pre wrap=3D"">        edp: edp@ff970000 {
-</pre>
-      </blockquote>
-      <pre wrap=3D"">[...]
-</pre>
-      <blockquote type=3D"cite">
-        <pre wrap=3D"">                samsung,color-space =3D &lt;0&gt;;
-                samsung,dynamic-range =3D &lt;0&gt;;
-                samsung,ycbcr-coeff =3D &lt;0&gt;;
-</pre>
-      </blockquote>
-      <pre wrap=3D"">
-I think these should also come from EDID, though I'm not sure if we
-store this in internal data structures yet.
-
-</pre>
-      <blockquote type=3D"cite">
-        <pre wrap=3D"">                samsung,color-depth =3D &lt;1&gt;;
-</pre>
-      </blockquote>
-      <pre wrap=3D"">
-This is probably drm_display_info.bpc.
-</pre>
-    </blockquote>
-    "samsung,color_space" and "samsung,color-depth" <br>
-    <br>
-    The drm_display_info's color_formats and bpc indicate the monitor
-    display ability, but<br>
-    the edp driver could not take it as input video format directly.<br>
-    <br>
-    For example, with my DP TV I would found "RGB444 &amp; YCRCB422
-    &amp; &amp; YCRCB444"<br>
-    support in drm_display_info.color_formats and 16bit bpc support, but
-    RK3288 crtc<br>
-    driver could only output RGB &amp; ITU formats, so finally
-    analogix_dp-rockchip driver<br>
-    config crtc to RGBaaa 10bpc mode.<br>
-    <br>
-    In this sutiation, the analogix_dp core driver would pazzled by the
-    drm_display_info,<br>
-    can't chose the right color_space and bpc.<br>
-    <br>
-    And this is the place that confused me, wish you could give some
-    ideas about this one :-)<br>
--------------------------------------------------------------------------=
-------------------------<br>
-    <br>
-    Besides, The dynamic_range and ycbcr_coeff haven't been record in
-    drm_display_info, but<br>
-    I though we can parse it by the video code.<br>
-    <br>
-    The dynamic_range would have two values "CEA range" and "VESA
-    range", so I though if<br>
-    the currect mode have a no-zero vic (drm_match_cea_mode()) then
-    config it to "CEA range",<br>
-    otherwhise config it to "VESA range".<br>
-    <br>
-    YCbCr Coefficients would have two values "ITU709" and "ITU601". I
-    see dw_hdmi driver have<br>
-    been set the colorimetry to ITU_601 when vic is 6/7/21/22/2/3/17/18,
-    I thouht we can stole this<br>
-    to analogix_dp driver.<br>
-    <span style=3D"font-family:
-      ;font-size:9pt;color:rgb(0,0,0);font-style:normal;font-variant:norm=
-al;"><br>
-      =C2=A0=C2=A0 /* dynamic_range &amp; colorimetry */<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vic =3D drm_match_cea_mo=
-de(mode);<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if ((vic =3D=3D 6) || (v=
-ic =3D=3D 7) || (vic =3D=3D 21) || (vic =3D=3D 22)
-      ||<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-(vic =3D=3D 2) || (vic =3D=3D 3) || (vic =3D=3D 17) || (vic =3D=3D
-      18)) {<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;dynamic_range =3D CEA;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;ycbcr_coeff =3D COLOR_YCBCR601;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (vic) {<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;dynamic_range =3D CEA;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;ycbcr_coeff =3D COLOR_YCBCR709;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;dynamic_range =3D VESA;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 video_info-&gt;ycbcr_coeff =3D COLOR_YCBCR709;<br>
-      =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }<br>
-    </span><br>
-    I'm not sure whether this is right, also wish you could give some
-    suggests ;)<br>
-    <br>
-    <br>
-    <blockquote cite=3D"mid:20150810100055.GB7850@ulmo.nvidia.com"
-      type=3D"cite">
-      <pre wrap=3D"">
-</pre>
-      <blockquote type=3D"cite">
-        <pre wrap=3D"">                samsung,link-rate =3D &lt;0x0a&gt;=
-;
-                samsung,lane-count =3D &lt;1&gt;;
-</pre>
-      </blockquote>
-      <pre wrap=3D"">
-And these should really be derived from values in the DPCD and adjusted
-(if necessary) during link training.
-
-Why would you ever want to hard-code the above?
-
-</pre>
-    </blockquote>
-    <br>
-    And I though we should keep those DT properties now. I try to remove
-    those DT<br>
-    property, so analogix dp driver would always use the max link_rate
-    and lane_count<br>
-    which read from dpcd. For my 2K DP TV, link rate would reach to
-    5.4Gbps, lane cout<br>
-    would reach 4 lances, if so analogix dp driver could not light my DP
-    TV up any more.<br>
-    <br>
-    After that I found that RK3288 eDP TRM have indicated some limites
-    about those<br>
-    that RK3288 only support 4 physical lanes of 2.7/1.62 Gbps/lane,
-    which means 5.4Gbps<br>
-    link rate is too high for RK3288.<br>
-    <br>
-    So I think we could=C2=A0treate them as hardware max values, is it ok=
-ay?<br>
-    <br>
-    Thanks,<br>
-    - Yakir<br>
-  </body>
-</html>
-
---------------060409070306030501020306--
-
-
---===============2032496654==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============2032496654==--
+SGksCgpPbiAwOC8xOS8yMDE1IDA4OjE4IFBNLCBZYWtpciBZYW5nIHdyb3RlOgo+Cj4gSGkgYWxs
+LAo+ICAgICBUaGUgU2Ftc3VuZyBFeHlub3MgZURQIGNvbnRyb2xsZXIgYW5kIFJvY2tjaGlwIFJL
+MzI4OCBlRFAgY29udHJvbGxlcgo+IHNoYXJlIHRoZSBzYW1lIElQLCBzbyBhIGxvdCBvZiBwYXJ0
+cyBjYW4gYmUgcmUtdXNlZC4gSSBzcGxpdCB0aGUgY29tbW9uCj4gY29kZSBpbnRvIGJyaWRnZSBk
+aXJlY3RvcnksIHRoZW4gcmszMjg4IGFuZCBleHlub3Mgb25seSBuZWVkIHRvIGtlZXAKPiBzb21l
+IHBsYXRmb3JtIGNvZGUuIENhdXNlIEkgY2FuJ3QgZmluZCB0aGUgZXhhY3QgSVAgbmFtZSBvZiBl
+eHlub3MgZHAKPiBjb250cm9sbGVyLCBzbyBJIGRlY2lkZSB0byBuYW1lIGRwIGNvcmUgZHJpdmVy
+IHdpdGggImFuYWxvZ2l4IiB3aGljaCBJCj4gZmluZCBpbiByazMyODggZURQIFRSTSA7KQo+Cj4g
+QmV5b25kIHRoYXQsIHRoZXJlIGFyZSB0aHJlZSBsaWdodCByZWdpc3RlcnMgc2V0dGluZyBkaWZm
+ZXJlbnRzIGJld3RlZW4KPiBleHlub3MgYW5kIHJrMzI4OC4KPiAxLiBSSzMyODggaGF2ZSBmaXZl
+IHNwZWNpYWwgcGxsIHJlc2lndGVycyB3aGljaCBub3QgaW5kaWNhdGEgaW4gZXh5bm9zCj4gICAg
+IGRwIGNvbnRyb2xsZXIuCj4gMi4gVGhlIGFkZHJlc3Mgb2YgRFBfUEhZX1BEKGRwIHBoeSBwb3dl
+ciBtYW5hZ2VyIHJlZ2lzdGVyKSBhcmUgZGlmZmVyZW50Cj4gICAgIGJldHdlZW4gcmszMjg4IGFu
+ZCBleHlub3MuCj4gMy4gUmszMjg4IGFuZCBleHlub3MgaGF2ZSBkaWZmZXJlbnQgc2V0dGluZyB3
+aXRoIEFVWF9IV19SRVRSWV9DVEwoZHAgZGVidWcKPiAgICAgcmVnaXN0ZXIpLgo+Cj4gSSBoYXZl
+IHZlcmlmaWVkIHRoaXMgc2VyaWVzIG9uIHR3byBraW5kcyBvZiByb2NrY2hpcCBwbGF0Zm9ybSBi
+b2FyZCwgb25lCj4gaXMgcmszMjg4IHNkayBib2FyZCB3aGljaCBjb25uZWN0IHdpdGggYSAySyBk
+aXNwbGF5IHBvcnQgbW9uaXRvciwgdGhlIG90aGVyCj4gaXMgZ29vZ2xlIGplcnJ5IGNocm9tZWJv
+b2sgd2hpY2ggY29ubmVjdCB3aXRoIGEgZURQIHNjcmVlbiAiY25tLG4xMTZiZ2VlYTIiLAo+IGJv
+dGggb2YgdGhlbSB3b3JrcyByaWdodGxseS4KPgo+IEkgaGF2ZW4ndCB2ZXJpZmllZCB0aGUgZHAg
+ZnVuY3Rpb24gb24gc2Ftc3VuZyBwbGF0Zm9ybSwgY2F1c2UgSSBoYXZlbid0IGdvdAo+IGV4eW5v
+cyBib2FyZHMuIEkgY2FuIG9ubHkgZW5zdXJlIHRoYXQgdGhlcmUgYXJlIG5vIGJ1aWxkIGVycm9y
+IG9uIHNhbXN1bmcKPiBwbGF0Zm9ybSwgd2lzaCBzb21lIHNhbXN1bmcgZ3V5cyBoZWxwIHRvIHRl
+c3QuIDspCj4KPiBUaGFua3MsCj4gLSBZYWtpcgo+Cj4gQ2hhbmdlcyBpbiB2MzoKPiAtIFRha2Ug
+VGhpZXJyeSBSZWRpbmcgc3VnZ2VzdCwgbW92ZSBleHlub3MncyB2aWRlb190aW1pbmcgY29kZQo+
+ICAgIHRvIGFuYWxvZ2l4X2RwLWV4eW5vcyBwbGF0Zm9ybSBkcml2ZXIsIGFkZCBnZXRfbW9kZXMg
+bWV0aG9kCj4gICAgdG8gc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YS4KPiAtIFRha2UgSGVp
+a28gc3VnZ2VzdCwgcmVuYW1lIHNvbWUgInNhbXN1bmcqIiBkdHMgcHJvcGVyeSB0byAiYW5hbG9n
+aXgqIi4KPiAtIFRha2UgVGhpZXJyeSBSZWRpbmcgc3VnZ2VzdCwgZHluYW1pYyBwYXJzZSB2aWRl
+byB0aW1pbmcgaW5mbyBmcm9tCj4gICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgYW5kIHN0cnVj
+dCBkcm1fZGlzcGxheV9pbmZvLgo+IC0gVGFrZSBUaGllcnJ5IFJlZGluZyBzdWdnZXN0LCBsaW5r
+X3JhdGUgYW5kIGxhbmVfY291bnQgc2hvdWxkbid0IGNvbmZpZyB0bwo+ICAgIHRoZSBEVCBwcm9w
+ZXJ0eSB2YWx1ZSBkaXJlY3RseSwgYnV0IHdlIGNhbiB0YWtlIHRob3NlIGFzIGhhcmR3YXJlIGxp
+bWl0ZS4KPiAgICBGb3IgZXhhbXBsZSwgUkszMjg4IG9ubHkgc3VwcG9ydCA0IHBoeXNpY2FsIGxh
+bmVzIG9mIDIuNy8xLjYyIEdicHMvbGFuZSwKPiAgICBzbyBEVCBwcm9wZXJ0eSB3b3VsZCBsaWtl
+ICJsaW5rLXJhdGUgPSAweDBhIiAibGFuZS1jb3VudCA9IDQiLgo+IC0gVGFrZSBIZWlrbyBzdWdn
+ZXN0LCBhZGQgZGV2aWNldHJlZSBiaW5kaW5nIGRvY3VtZW50cy4KPiAtIFRha2UgVGhpZXJyeSBS
+ZWRpbmcgc3VnZ2VzdCwgcmVtb3ZlIHN5bmMgcG9sICYgY29sb3JpbWV0cnkgcHJvcGVyaWVzCj4g
+ICAgZnJvbSB0aGUgbmV3IGFuYWxvZ2l4IGRwIGRyaXZlciBkZXZpY2V0cmVlIGJpbmRpbmcuCj4g
+LSBVcGRhdGUgdGhlIGV4aXN0IGV4eW5vcyBkdHNpIGZpbGUgd2l0aCB0aGUgbGF0ZXN0IERQIERU
+IHByb3Blcmllcy4KPiAtIFRha2UgVGhpZXJyeSBSZWRpbmcgYW5kIEhlaWtvIHN1Z2dlc3QsIGxl
+YXZlICJzY2xrX2VkcF8yNG0iIHRvIHJvY2tjaGlwCj4gICAgZHAgcGh5IGRyaXZlciB3aGljaCBu
+YW1lIHRvICIyNG0iLCBhbmQgbGVhdmUgInNjbGtfZWRwIiB0byBhbmFsb2dpeCBkcAo+ICAgIGNv
+cmUgZHJpdmVyIHdoaWNoIG5hbWUgdG8gImRwIiwgYW5kIGxlYXZlICJwY2xrX2VkcCIgdG8gcm9j
+a2NoaXAgZHAgcGxhdGZvcm0KPiAgICBkcml2ZXIgd2hpY2ggbmFtZSB0byAicGNsayIuCj4gLSBU
+YWtlIEhlaWtvIHN1Z2dlc3QsIGFkZCBkZXZpY2V0cmVlIGJpbmRpbmcgZG9jdW1lbnQuCj4gLSBU
+YWtlIEhlaWtvIHN1Z2dlc3QsIHJlbW92ZSAicm9ja2NoaXAscGFuZWwiIERUIHByb3BlcnR5LCB0
+YWtlIHVzZSBvZiByZW1vdGUKPiAgICBwb2ludCB0byBnZXQgcGFuZWwgbm9kZS4KPiAtIEFkZCB0
+aGUgbmV3IGZ1bmN0aW9uIHBvaW50IGFuYWxvZ2l4X2RwX3BsYXRkYXRhLmdldF9tb2RlcyBpbml0
+Lgo+IC0gVGFrZSBIZWlrbyBzdWdnZXN0LCBhZGQgcm9ja2NoaXAgZHAgcGh5IGRyaXZlciwKPiAg
+ICBjb2xsZWN0IHRoZSBwaHkgY2xvY2tzIGFuZCBwb3dlciBjb250cm9sLgo+IC0gQWRkICJhbmFs
+b2dpeCxuZWVkLWZvcmNlLWhwZCIgdG8gaW5kaWNhdGUgd2hldGhlciBkcml2ZXIgbmVlZCBmb2Nl
+Cj4gICAgaHBkIHdoZW4gaHBkIGRldGVjdCBmYWlsZWQuCj4gLSBtb3ZlIGRwIGhwZCBkZXRlY3Qg
+dG8gY29ubmVjdG9yIGRldGVjdCBmdW5jdGlvbi4KPiAtIEFkZCBlZGlkIG1vZGVzIHBhcnNlIHN1
+cHBvcnQKPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSBUYWtlIEpvZSBQcmVjaGVzIGFkdmlzZSwgaW1w
+cm92ZWQgY29tbWl0IG1lc3NhZ2UgbW9yZSByZWFkYWJsZSwgYW5kCj4gICAgYXZvaWQgdXNpbmcg
+c29tZSB1bmNvbW1vbiBzdHlsZSBsaWtlIGJlbGxvdzoKPiAgICAtICByZXR2YWwgPSBleHlub3Nf
+ZHBfcmVhZF9ieXRlc19mcm9tX2kyYyguLi4KPiAJCQkJLi4uKQo+ICAgICsgIHJldHZhbCA9Cj4g
+ICAgKyAgZXh5bm9zX2RwX3JlYWRfYnl0ZXNfZnJvbV9pMmMoLi4uLi4uKTsKPiAtIFRha2UgSmlu
+Z29vIEhhbiBzdWdnZXN0LCBqdXN0IHJlbW92ZSBteSBuYW1lIGZyb20gYXV0aG9yIGxpc3QuCj4g
+LSBUYWtlIEppbmdvbyBIYW4gc3VnZ2VzdCwgcmVtb3ZlIG5ldyBjb3B5cmlnaHQKPiAtIEZpeCBj
+b21waWxlZCBmYWlsZWQgZHV0IHRvIGFuYWxvZ2l4X2RwX2RldmljZSBtaXNzcGVsbAo+IC0gVGFr
+ZSBIZWlrbyBzdWdnZXN0LCBnZXQgcGFuZWwgbm9kZSB3aXRoIHJlbW90ZS1lbmRwb2ludCBtZXRo
+b2QsCj4gICAgYW5kIGNyZWF0ZSBkZXZpY2V0cmVlIGJpbmRpbmcgZm9yIGRyaXZlci4KPiAtIFJl
+bW92ZSB0aGUgY2xvY2sgZW5hYmxlL2Rpc2JhbGUgd2l0aCAic2Nsa19lZHAiICYgInNjbGtfZWRw
+XzI0bSIsCj4gICAgbGVhdmUgdGhvc2UgY2xvY2sgdG8gcm9ja2NoaXAgZHAgcGh5IGRyaXZlci4K
+PiAtIEFkZCBHTlUgbGljZW5zZSB2MiBkZWNsYXJlZCBhbmQgc2Ftc3VuZyBjb3B5cmlnaHQKPiAt
+IEZpeCBjb21waWxlIGZhaWxlZCBkdXQgdG8gcGh5X3BkX2FkZHIgdmFyaWFibGUgbWlzc3BlbGwg
+ZXJyb3IKPgo+IFlha2lyIFlhbmcgKDE0KToKPiAgICBkcm06IGV4eW5vcy9kcDogZml4IGNvZGUg
+c3R5bGUKPiAgICBkcm06IGV4eW5vcy9kcDogY29udmVydCB0byBkcm0gYnJpZGdlIG1vZGUKPiAg
+ICBkcm06IGJyaWRnZTogYW5hbG9naXhfZHA6IHNwbGl0IGV4eW5vcyBkcCBkcml2ZXIgdG8gYnJp
+ZGdlIGRpcgo+ICAgIGRybTogYnJpZGdlL2FuYWxvZ2l4X2RwOiBkeW5hbWljIHBhcnNlIHN5bmNf
+cG9sICYgaW50ZXJsYWNlICYKPiAgICAgIGNvbG9yaW1ldHJ5Cj4gICAgZHJtOiBicmlkZ2UvYW5h
+bG9naXhfZHA6IGZpeCBsaW5rX3JhdGUgJiBsYW5lX2NvdW50IGJ1Zwo+ICAgIERvY3VtZW50YXRp
+b246IGRybS9icmlkZ2U6IGFkZCBkb2N1bWVudCBmb3IgYW5hbG9naXhfZHAKPiAgICBkcm06IHJv
+Y2tjaGlwL2RwOiBhZGQgcm9ja2NoaXAgcGxhdGZvcm0gZHAgZHJpdmVyCj4gICAgcGh5OiBBZGQg
+ZHJpdmVyIGZvciByb2NrY2hpcCBEaXNwbGF5IFBvcnQgUEhZCj4gICAgZHJtOiBicmlkZ2UvYW5h
+bG9naXhfZHA6IGFkZCBwbGF0Zm9ybSBkZXZpY2UgdHlwZSBzdXBwb3J0Cj4gICAgZHJtOiBicmlk
+Z2U6IGFuYWxvZ2l4X2RwOiBhZGQgc29tZSByazMyODggc3BlY2lhbCByZWdpc3RlcnMgc2V0dGlu
+Zwo+ICAgIGRybTogYnJpZGdlOiBhbmFsb2dpeF9kcDogdHJ5IGZvcmNlIGhwZCBhZnRlciBwbHVn
+IGluIGxvb2t1cCBmYWlsZWQKPiAgICBkcm06IGJyaWRnZS9hbmFsb2dpeF9kcDogZXhwYW5kIHRo
+ZSBkZWxheSB0aW1lIGZvciBocGQgZGV0ZWN0Cj4gICAgZHJtOiBicmlkZ2UvYW5hbG9naXhfZHA6
+IG1vdmUgaHBkIGRldGVjdCB0byBjb25uZWN0b3IgZGV0ZWN0IGZ1bmN0aW9uCj4gICAgZHJtOiBi
+cmlkZ2UvYW5hbG9naXhfZHA6IGFkZCBlZGlkIG1vZGVzIHBhcnNlIGluIGdldF9tb2RlcyBtZXRo
+b2QKPgo+ICAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC50
+eHQgfCAgIDczICsKPiAgIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9yb2NrY2hpcC1kcC1w
+aHkudHh0ICAgIHwgICAyNiArCj4gICAuLi4vYmluZGluZ3MvdmlkZW8vYW5hbG9naXhfZHAtcm9j
+a2NoaXAudHh0ICAgICAgICB8ICAgODMgKysKPiAgIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zp
+ZGVvL2V4eW5vc19kcC50eHQgICAgICAgIHwgICA1MSArLQo+ICAgYXJjaC9hcm0vYm9vdC9kdHMv
+ZXh5bm9zNTI1MC1hcm5kYWxlLmR0cyAgICAgICAgICAgfCAgIDEwICstCj4gICBhcmNoL2FybS9i
+b290L2R0cy9leHlub3M1MjUwLXNtZGs1MjUwLmR0cyAgICAgICAgICB8ICAgMTAgKy0KPiAgIGFy
+Y2gvYXJtL2Jvb3QvZHRzL2V4eW5vczUyNTAtc25vdy5kdHMgICAgICAgICAgICAgIHwgICAxMiAr
+LQo+ICAgYXJjaC9hcm0vYm9vdC9kdHMvZXh5bm9zNTI1MC1zcHJpbmcuZHRzICAgICAgICAgICAg
+fCAgIDEyICstCj4gICBhcmNoL2FybS9ib290L2R0cy9leHlub3M1NDIwLXBlYWNoLXBpdC5kdHMg
+ICAgICAgICB8ICAgMTIgKy0KPiAgIGFyY2gvYXJtL2Jvb3QvZHRzL2V4eW5vczU0MjAtc21kazU0
+MjAuZHRzICAgICAgICAgIHwgICAxMCArLQo+ICAgYXJjaC9hcm0vYm9vdC9kdHMvZXh5bm9zNTgw
+MC1wZWFjaC1waS5kdHMgICAgICAgICAgfCAgIDEyICstCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL0tjb25maWcgICAgICAgICAgICAgICAgICAgICB8ICAgIDUgKwo+ICAgZHJpdmVycy9ncHUv
+ZHJtL2JyaWRnZS9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgfCAgICAxICsKPiAgIGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXhfZHBfY29yZS5jICAgICAgICAgIHwgMTM4MiArKysr
+KysrKysrKysrKysrKysrCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwX2Nv
+cmUuaCAgICAgICAgICB8ICAyODYgKysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeF9kcF9yZWcuYyAgICAgICAgICAgfCAxMjk0ICsrKysrKysrKysrKysrKysrKwo+ICAgLi4u
+L2V4eW5vc19kcF9yZWcuaCA9PiBicmlkZ2UvYW5hbG9naXhfZHBfcmVnLmh9ICAgfCAgMjcwICsr
+LS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAg
+IHwgICAgNSArLQo+ICAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9NYWtlZmlsZSAgICAgICAgICAg
+ICAgICAgICAgfCAgICAyICstCj4gICBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2FuYWxvZ2l4X2Rw
+LWV4eW5vcy5jICAgICAgICB8ICAzNDcgKysrKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9leHlub3Mv
+ZXh5bm9zX2RwX2NvcmUuYyAgICAgICAgICAgIHwgMTQxNiAtLS0tLS0tLS0tLS0tLS0tLS0tLQo+
+ICAgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHBfY29yZS5oICAgICAgICAgICAgfCAg
+MjgyIC0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwX3JlZy5jICAgICAg
+ICAgICAgIHwgMTI2MyAtLS0tLS0tLS0tLS0tLS0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL0tjb25maWcgICAgICAgICAgICAgICAgICAgfCAgICA5ICsKPiAgIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAgMSArCj4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAtcm9ja2NoaXAuYyAgICB8ICAzOTAgKysrKysr
+Cj4gICBkcml2ZXJzL3BoeS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
+ICAgIDcgKwo+ICAgZHJpdmVycy9waHkvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgfCAgICAxICsKPiAgIGRyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC1kcC5jICAgICAgICAg
+ICAgICAgICAgICAgIHwgIDE4NSArKysKPiAgIGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9k
+cC5oICAgICAgICAgICAgICAgICAgIHwgICA0MCArCj4gICAzMCBmaWxlcyBjaGFuZ2VkLCA0MzI1
+IGluc2VydGlvbnMoKyksIDMxNzIgZGVsZXRpb25zKC0pCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQg
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RybS9icmlkZ2UvYW5hbG9naXhfZHAu
+dHh0Cj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL3BoeS9yb2NrY2hpcC1kcC1waHkudHh0Cj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZpZGVvL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLnR4
+dAo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXhf
+ZHBfY29yZS5jCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9h
+bmFsb2dpeF9kcF9jb3JlLmgKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2FuYWxvZ2l4X2RwX3JlZy5jCgpNaW5vciBjb21tZW50OiBTaW5jZSB0aGVyZSBhcmUg
+YSBmZXcgZmlsZXMgcmVxdWlyZWQgZm9yIHRoZSBkcml2ZXIsCmNvdWxkIHlvdSBjcmVhdGUgYSBz
+ZXBhcmF0ZSBmb2xkZXIgd2l0aGluIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2U/CgpUaGFua3MsCkFy
+Y2hpdAoKLS0gClF1YWxjb21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9m
+IENvZGUgQXVyb3JhIEZvcnVtLAphIExpbnV4IEZvdW5kYXRpb24gQ29sbGFib3JhdGl2ZSBQcm9q
+ZWN0Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
