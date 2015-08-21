@@ -1,120 +1,84 @@
-From: Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v3 0/14] Add Analogix Core Display Port Driver
-Date: Fri, 21 Aug 2015 15:16:33 +0200
-Message-ID: <20150821131631.GC22118@ulmo.nvidia.com>
-References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
- <105A0032-83A0-4B75-AE94-258F12451670@gmail.com>
- <55D6F6F8.70504@rock-chips.com>
- <8384E112-E1F4-4CD3-85BF-A2A25989783F@gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/3] clk: add flag for clocks that need to be enabled on rate
+ changes
+Date: Fri, 21 Aug 2015 19:46:31 +0200
+Message-ID: <1929669.AsgMSusdJb@phil>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="WplhKdTI2c8ulnbP"
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <8384E112-E1F4-4CD3-85BF-A2A25989783F@gmail.com>
-Content-Disposition: inline
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Jingoo Han <jingoohan1@gmail.com>
-Cc: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, "joe@perches.com" <joe@perches.com>, Russell King <rmk+kernel@arm.linux.org.uk>, "djkurtz@google.com" <djkurtz@google.com>, "dianders@google.com" <dianders@google.com>, "seanpaul@google.com" <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, "ajaynumb@gmail.com" <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---WplhKdTI2c8ulnbP
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Some clocks need to be enabled to accept rate changes. This patch adds a
+new flag CLK_SET_RATE_UNGATE that lets clk_change_rate enable the clock
+before trying to change the rate and disable it again afterwards.
+This of course doesn't effect clocks that are already running at that
+point, as their refcount will only temporarily increase.
 
-On Fri, Aug 21, 2015 at 08:24:16PM +0900, Jingoo Han wrote:
-> On 2015. 8. 21., at PM 7:01, Yakir Yang <ykk@rock-chips.com> wrote:
-> >=20
-> > Hi Jingoo,
-> >=20
-> >> =E5=9C=A8 2015/8/21 16:20, Jingoo Han =E5=86=99=E9=81=93:
-> >>> On 2015. 8. 19., at PM 11:48, Yakir Yang <ykk@rock-chips.com> wrote:
-> >>=20
-> >> .....
-> >>=20
-> >>> .../bindings/video/analogix_dp-rockchip.txt        |   83 ++
-> >>> .../devicetree/bindings/video/exynos_dp.txt        |   51 +-
-> >>> arch/arm/boot/dts/exynos5250-arndale.dts           |   10 +-
-> >>> arch/arm/boot/dts/exynos5250-smdk5250.dts          |   10 +-
-> >>> arch/arm/boot/dts/exynos5250-snow.dts              |   12 +-
-> >>> arch/arm/boot/dts/exynos5250-spring.dts            |   12 +-
-> >>> arch/arm/boot/dts/exynos5420-peach-pit.dts         |   12 +-
-> >>> arch/arm/boot/dts/exynos5420-smdk5420.dts          |   10 +-
-> >>> arch/arm/boot/dts/exynos5800-peach-pi.dts          |   12 +-
-> >>> drivers/gpu/drm/bridge/Kconfig                     |    5 +
-> >>> drivers/gpu/drm/bridge/Makefile                    |    1 +
-> >>> drivers/gpu/drm/bridge/analogix_dp_core.c          | 1382 +++++++++++=
-++++++++
-> >>> drivers/gpu/drm/bridge/analogix_dp_core.h          |  286 ++++
-> >>> drivers/gpu/drm/bridge/analogix_dp_reg.c           | 1294 +++++++++++=
-+++++++
-> >>> .../exynos_dp_reg.h =3D> bridge/analogix_dp_reg.h}   |  270 ++--
-> >>> drivers/gpu/drm/exynos/Kconfig                     |    5 +-
-> >>> drivers/gpu/drm/exynos/Makefile                    |    2 +-
-> >>> drivers/gpu/drm/exynos/analogix_dp-exynos.c        |  347 +++++
-> >> Would you change this file name to "exynos_dp.c"?
-> >=20
-> > Sorry, I don't think so  ;(
-> >=20
-> > I think IP_name+Soc_name would be better in this re-use case.
->=20
-> So? Is there the naming rule such as "IP_name+SoC_name"?
->=20
-> > Beside I see
-> > there are lots of driver named with this format in kernel, such as dw_h=
-dmi & dw_mmc
->=20
-> Please look at other dw cases.
-> For example, look at dw_pcie.
->=20
-> drivers/pci/host/
-> pcie-designware.c
-> pci-spear13xx.c
-> pci-exynos.c
->=20
-> In this case, pci-spear13xx.c and pci-exynos.c do not use "IP_name+SoC_na=
-me", even though these are dw IPs.
->=20
-> Also, naming consistency is more important.
-> Now, Exynos DRM files are using "exynos_drm_" prefix.
->=20
-> drivers/gpu/drm/exynos/
-> exynos_drm_buf.c
-> exynos_drm_core.c
-> ....
->=20
-> However, "analogix_dp-exynos.c" looks very inconsistent.
->=20
-> If there is no strict naming rule, please use "exynos_dp.c"
-> or "exynos_drm_dp.c".=20
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ drivers/clk/clk.c            | 18 ++++++++++++++++++
+ include/linux/clk-provider.h |  1 +
+ 2 files changed, 19 insertions(+)
 
-Exynos DRM maintainers get to pick their filenames, so Yakir, please
-rename as Jingoo suggested.
-
-Even if you didn't the first thing that would go into the Exynos DRM
-driver tree after this is merged is a rename patch anyway.
-
-Thierry
-
---WplhKdTI2c8ulnbP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJV1ySsAAoJEN0jrNd/PrOh/r0QAKWnKrpi02YDSdKHNyfDs75b
-PzIpRa+QMZJwFdbA1XEpEsxgR4nNM5vZXzbNnTAWcXeqcjx+7lWCaxYx+gXES3OI
-gl/EDZ2UQrIoK4V3QFL78z0NPj9CwnoUFlXVmJyaFXR6IXD1n/T1wHO/2I7uXwL7
-VCttBFLU4dSB8Sff6nqJ6lOT2eogyWbrMmwq2CMrnu6KCmb22rsT60YZ9LcKTwVM
-RGbD/voyTVKLjlEoNqwNrkqR+Ys5aLIE+jv7v+wR4ilNWzICgzFoCVyXwYW/+BF7
-v6UkyJZLGF2lswTV22PjctXeRmeWfBSgTrzZTaFW890KMQuqvAchAt8z1+PRCgxa
-12fBsHWXswnTJAe94zrCl9efY2MASYfp4AxhLZkssqwXlOypmyUf5FSlsRdwvsl0
-+5hX9Pc993HJuXSO6FtciH439TsTGUDadKEy+tyGWR4mciScnAFDwNlweEw7DvZ0
-k5dZ/BwDs5Ntv60fk0Ewqokya819UBa0Q13/zEJzlVr82mTQiVPIdBvyqVPpi9E+
-sjUl2eRT/zaMdaoMr7ThaDc4Y1tkgoXPRn5QcuLxXlE0IvJk+IFrxO1PWrTuqpfi
-3YwfNlSdfO0gPh+5wJD8pvJtrLiP6tX7RoTKJMf/OoObwdiYGlt/RBBFtAMRN/4j
-jRAljPme1sKX9EW5ONTF
-=YEy4
------END PGP SIGNATURE-----
-
---WplhKdTI2c8ulnbP--
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 28cd923..564f11e 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -1438,6 +1438,15 @@ static void clk_change_rate(struct clk_core *core)
+ 	else if (core->parent)
+ 		best_parent_rate = core->parent->rate;
+ 
++	if (core->flags & CLK_SET_RATE_UNGATE) {
++		unsigned long flags;
++
++		clk_core_prepare(core);
++		flags = clk_enable_lock();
++		clk_core_enable(core);
++		clk_enable_unlock(flags);
++	}
++
+ 	if (core->new_parent && core->new_parent != core->parent) {
+ 		old_parent = __clk_set_parent_before(core, core->new_parent);
+ 		trace_clk_set_parent(core, core->new_parent);
+@@ -1464,6 +1473,15 @@ static void clk_change_rate(struct clk_core *core)
+ 
+ 	core->rate = clk_recalc(core, best_parent_rate);
+ 
++	if (core->flags & CLK_SET_RATE_UNGATE) {
++		unsigned long flags;
++
++		flags = clk_enable_lock();
++		clk_core_disable(core);
++		clk_enable_unlock(flags);
++		clk_core_unprepare(core);
++	}
++
+ 	if (core->notifier_count && old_rate != core->rate)
+ 		__clk_notify(core, POST_RATE_CHANGE, old_rate, core->rate);
+ 
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index 3ecc07d..21e0025 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -31,6 +31,7 @@
+ #define CLK_SET_RATE_NO_REPARENT BIT(7) /* don't re-parent on rate change */
+ #define CLK_GET_ACCURACY_NOCACHE BIT(8) /* do not use the cached clk accuracy */
+ #define CLK_RECALC_NEW_RATES	BIT(9) /* recalc rates after notifications */
++#define CLK_SET_RATE_UNGATE	BIT(10) /* clock needs to run to set rate */
+ 
+ struct clk;
+ struct clk_hw;
+-- 
+2.1.4
