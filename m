@@ -1,46 +1,251 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [PATCH 00/18] ARM: use const and __initconst for smp_operations
-Date: Mon, 24 Aug 2015 14:44:21 -0700
-Message-ID: <CAOesGMgayep0EgCAdDWSujmiycDqtFUb0iKg-aioJqyzHRectA@mail.gmail.com>
-References: <1440390978-22796-1-git-send-email-yamada.masahiro@socionext.com>
-	<CAOesGMjku09wsUmwooq2ZXLyV7CPfioi0oAV5EgvW_wE98VYeg@mail.gmail.com>
-	<20150824212127.GH7557@n2100.arm.linux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20150824212127.GH7557@n2100.arm.linux.org.uk>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, "arm@kernel.org" <arm@kernel.org>, Andy Gross <agross@codeaurora.org>, Arnd Bergmann <arnd@arndb.de>, Gregory Clement <gregory.clement@free-electrons.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Kumar Gala <galak@codeaurora.org>, Jason Cooper <jason@lakedaemon.net>, Geert Uytterhoeven <geert@linux-m68k.org>, Jun Nie <jun.nie@linaro.org>, Ray Jui <rjui@broadcom.com>, =?UTF-8?Q?S=C3=B6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, David Brown <davidb@codeaurora.org>, Scott Branden <sbranden@broadcom.com>, Hans de Goede <hdegoede@redhat.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>B
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v3] ARM: dts: rockchip: add veyron-jaq board
+Date: Mon, 24 Aug 2015 15:58:03 -0700
+Message-ID: <1440457083-77519-1-git-send-email-briannorris@chromium.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 24, 2015 at 2:21 PM, Russell King - ARM Linux
-<linux@arm.linux.org.uk> wrote:
-> On Mon, Aug 24, 2015 at 02:12:06PM -0700, Olof Johansson wrote:
->> Easiest of all would probably be to get the sub-arch patches into one
->> release, then switch the prototypes and function definitions in the
->> next. If you switch prototypes first you'll get a bunch of warnings,
->> right?
->
-> Wrong way around. :)
->
-> If you change the sub-arches to declare the smp operations as const,
-> and try and pass them into a function which doesn't take a const-pointer,
-> you'll get a warning.  The core bits need to go in first before the
-> sub-arch patches.
+a.k.a. Haier Chromebook 11, and others
 
-Ah yes, my bad.
+Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+---
+v2 -> v3:
+ - add "and others" language
+ - drop other patches from series (picked up already by Heiko)
 
-> I think the series has limited value - it allows us to (a) check that a
-> small quantity of code doesn't write to these things, and (b) allows us
-> to move the SMP operations structure from __initdata to __initconstdata.
-> It's still going to end up in the init region which is read/write in any
-> case, and still gets thrown away.
->
-> Given where we are, I don't think we need to rush this in during the
-> last week before the merge window opens, even though it's trivial.
-
-Agreed. So if you pick it up for 4.4, we'll get the rest for 4.5.
+v1 -> v2:
+ - add overlooked DT binding doc
+ - fixup regulator suspend state for LDO_REG2
 
 
--Olof
+ Documentation/devicetree/bindings/arm/rockchip.txt |   7 +
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts            | 176 +++++++++++++++++++++
+ 3 files changed, 184 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rk3288-veyron-jaq.dts
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+index af58cd74aeff..cc421ed530e7 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.txt
++++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+@@ -31,6 +31,13 @@ Rockchip platforms device tree bindings
+     Required root node properties:
+       - compatible = "netxeon,r89", "rockchip,rk3288";
+ 
++- Google Jaq (Haier Chromebook 11 and more):
++    Required root node properties:
++      - compatible = "google,veyron-jaq-rev5", "google,veyron-jaq-rev4",
++		     "google,veyron-jaq-rev3", "google,veyron-jaq-rev2",
++		     "google,veyron-jaq-rev1", "google,veyron-jaq",
++		     "google,veyron", "rockchip,rk3288";
++
+ - Google Jerry (Hisense Chromebook C11 and more):
+     Required root node properties:
+       - compatible = "google,veyron-jerry-rev7", "google,veyron-jerry-rev6",
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index 7805a6541a38..a08ca6c3d76e 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -490,6 +490,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3288-firefly-beta.dtb \
+ 	rk3288-firefly.dtb \
+ 	rk3288-r89.dtb \
++	rk3288-veyron-jaq.dtb \
+ 	rk3288-veyron-jerry.dtb \
+ 	rk3288-veyron-minnie.dtb \
+ 	rk3288-veyron-pinky.dtb \
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+new file mode 100644
+index 000000000000..c2f52cfb4d06
+--- /dev/null
++++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+@@ -0,0 +1,176 @@
++/*
++ * Google Veyron Jaq Rev 1+ board device tree source
++ *
++ * Copyright 2015 Google, Inc
++ *
++ * This file is dual-licensed: you can use it either under the terms
++ * of the GPL or the X11 license, at your option. Note that this dual
++ * licensing only applies to this file, and not this project as a
++ * whole.
++ *
++ *  a) This file is free software; you can redistribute it and/or
++ *     modify it under the terms of the GNU General Public License as
++ *     published by the Free Software Foundation; either version 2 of the
++ *     License, or (at your option) any later version.
++ *
++ *     This file is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ *  Or, alternatively,
++ *
++ *  b) Permission is hereby granted, free of charge, to any person
++ *     obtaining a copy of this software and associated documentation
++ *     files (the "Software"), to deal in the Software without
++ *     restriction, including without limitation the rights to use,
++ *     copy, modify, merge, publish, distribute, sublicense, and/or
++ *     sell copies of the Software, and to permit persons to whom the
++ *     Software is furnished to do so, subject to the following
++ *     conditions:
++ *
++ *     The above copyright notice and this permission notice shall be
++ *     included in all copies or substantial portions of the Software.
++ *
++ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ *     OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++/dts-v1/;
++
++#include "rk3288-veyron-chromebook.dtsi"
++#include "cros-ec-sbs.dtsi"
++
++/ {
++	model = "Google Jaq";
++	compatible = "google,veyron-jaq-rev5", "google,veyron-jaq-rev4",
++		     "google,veyron-jaq-rev3", "google,veyron-jaq-rev2",
++		     "google,veyron-jaq-rev1", "google,veyron-jaq",
++		     "google,veyron", "rockchip,rk3288";
++
++	panel_regulator: panel-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio7 14 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&lcd_enable_h>;
++		regulator-name = "panel_regulator";
++		vin-supply = <&vcc33_sys>;
++	};
++
++	vcc18_lcd: vcc18-lcd {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio2 13 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&avdd_1v8_disp_en>;
++		regulator-name = "vcc18_lcd";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&vcc18_wl>;
++	};
++
++	backlight_regulator: backlight-regulator {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio2 12 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bl_pwr_en>;
++		regulator-name = "backlight_regulator";
++		vin-supply = <&vcc33_sys>;
++		startup-delay-us = <15000>;
++	};
++};
++
++&rk808 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
++	dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
++		    <&gpio7 15 GPIO_ACTIVE_HIGH>;
++
++	regulators {
++		mic_vcc: LDO_REG2 {
++			regulator-name = "mic_vcc";
++			regulator-always-on;
++			regulator-boot-on;
++			regulator-min-microvolt = <1800000>;
++			regulator-max-microvolt = <1800000>;
++			regulator-state-mem {
++				regulator-off-in-suspend;
++			};
++		};
++	};
++};
++
++&sdmmc {
++	disable-wp;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
++			&sdmmc_bus4>;
++};
++
++&vcc_5v {
++	enable-active-high;
++	gpio = <&gpio7 21 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&drv_5v>;
++};
++
++&vcc50_hdmi {
++	enable-active-high;
++	gpio = <&gpio5 19 GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&vcc50_hdmi_en>;
++};
++
++&pinctrl {
++	backlight {
++		bl_pwr_en: bl_pwr_en {
++			rockchip,pins = <2 12 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	buck-5v {
++		drv_5v: drv-5v {
++			rockchip,pins = <7 21 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	edp {
++		edp_hpd: edp_hpd {
++			rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_down>;
++		};
++	};
++
++	hdmi {
++		vcc50_hdmi_en: vcc50-hdmi-en {
++			rockchip,pins = <5 19 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	lcd {
++		lcd_enable_h: lcd-en {
++			rockchip,pins = <7 14 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		avdd_1v8_disp_en: avdd-1v8-disp-en {
++			rockchip,pins = <2 13 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pmic {
++		dvs_1: dvs-1 {
++			rockchip,pins = <7 12 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		dvs_2: dvs-2 {
++			rockchip,pins = <7 15 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++};
+-- 
+2.5.0.457.gab17608
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
