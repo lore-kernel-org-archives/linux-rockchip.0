@@ -1,69 +1,43 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] ARM: dts: rockchip: add veyron-jaq board
-Date: Mon, 24 Aug 2015 11:06:23 -0700
-Message-ID: <20150824180623.GA84867@google.com>
-References: <1440022721-73712-1-git-send-email-briannorris@chromium.org>
- <CABxcv=nQAfCzj_bQ9N-XYEPCNuihyrkUOz7=ogetKzye4KKNng@mail.gmail.com>
- <20150824175315.GA81574@google.com>
- <7504130.baa3QaVrQb@phil>
- <CABxcv=nXwL6LV0vnjffA0JV4NB-_mCufe3-0c7fsRKW3DE+-_g@mail.gmail.com>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH 00/18] ARM: use const and __initconst for smp_operations
+Date: Mon, 24 Aug 2015 14:12:06 -0700
+Message-ID: <CAOesGMjku09wsUmwooq2ZXLyV7CPfioi0oAV5EgvW_wE98VYeg@mail.gmail.com>
+References: <1440390978-22796-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CABxcv=nXwL6LV0vnjffA0JV4NB-_mCufe3-0c7fsRKW3DE+-_g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1440390978-22796-1-git-send-email-yamada.masahiro@socionext.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: "arm@kernel.org" <arm@kernel.org>, Andy Gross <agross@codeaurora.org>, Arnd Bergmann <arnd@arndb.de>, Gregory Clement <gregory.clement@free-electrons.com>, Tsahee Zidenberg <tsahee@annapurnalabs.com>, Kumar Gala <galak@codeaurora.org>, Jason Cooper <jason@lakedaemon.net>, Geert Uytterhoeven <geert@linux-m68k.org>, Jun Nie <jun.nie@linaro.org>, Ray Jui <rjui@broadcom.com>, =?UTF-8?Q?S=C3=B6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, David Brown <davidb@codeaurora.org>, Scott Branden <sbranden@broadcom.com>, Hans de Goede <hdegoede@redhat.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Broadcom Kernel Feedback List <bcm-kernel-feedbac>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 24, 2015 at 08:01:29PM +0200, Javier Martinez Canillas wrote:
-> On Mon, Aug 24, 2015 at 7:58 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> > Am Montag, 24. August 2015, 10:53:15 schrieb Brian Norris:
-> >> On Thu, Aug 20, 2015 at 01:29:40AM +0200, Javier Martinez Canillas wrote:
-> >> > [...]
-> >> >
-> >> > > +
-> >> > > +&rk808 {
-> >> > > +       pinctrl-names = "default";
-> >> > > +       pinctrl-0 = <&pmic_int_l &dvs_1 &dvs_2>;
-> >> > > +       dvs-gpios = <&gpio7 12 GPIO_ACTIVE_HIGH>,
-> >> > > +                   <&gpio7 15 GPIO_ACTIVE_HIGH>;
-> >> >
-> >> > I see the dvs-gpios DT property is documented in the downstream
-> >> > ChromiumOS 3.18 tree [0] but I don't see it neither mentioned in
-> >> > Documentation/devicetree/bindings/mfd/rk808.txt in mainline nor code
-> >> > that parses it in the drivers/regulator/rk808-regulator.c driver.
-> >>
-> >> Good catch.
-> >>
-> >> > So I think this should be removed and also the dvs_{1,2} pinctrl
-> >> > lines.
-> >>
-> >> OK, will do. I see that jerry, minnie, and speedy also have the pinctrl
-> >> lines. Should they be killed as well?
-> >
-> > Personally I think the pinctrl settings can stay. Their configuration is part
-> > of the hardware and not subject to the binding of the device using them.
-> >
-> > And of course, the change to support them is already pending, with the binding
-> > itself already in the mfd tree.
-> >
-> 
-> I missed that the change to add support for this is already in the mfd tree.
+On Sun, Aug 23, 2015 at 9:36 PM, Masahiro Yamada
+<yamada.masahiro@socionext.com> wrote:
+>
+> Currently, SoC code can not add const qualifier to smp_operations
+> structures although they are never over-written.
+>
+> 01/18 and 02/18 add small changes to the ARM core to fix that.
+> The rest of this series replace "__initdata" with "const ... __initconst"
+> for each of SoC code.
+>
+> I split this series into per-SoC so that each sub-arch maintainer
+> can easily give their Acked-by.  (Is this better?)
 
-Me too. So I'll leave all the dvs-* stuff as-is, then. This makes the
-v2->v3 delta very small...
+When you split, chances are each sub-arch maintainer will apply
+instead of ack. If that's what you want, that's fine.
 
-> >
-> > So it doesn't matter to much if they're in there already or not, as we'll
-> > hopefully soon make use of them anyway.
-> >
-> 
-> Agreed.
+> Russell, Olof, and Arnd:
+>
+> How should this series be applied (if it looks good)?
+> The first two are ARM-tree wide and looks like in the field of Russell.
+> The rest are highly SoC-related.
 
-Brian
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Easiest of all would probably be to get the sub-arch patches into one
+release, then switch the prototypes and function definitions in the
+next. If you switch prototypes first you'll get a bunch of warnings,
+right?
+
+
+-Olof
