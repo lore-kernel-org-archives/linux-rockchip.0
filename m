@@ -1,134 +1,84 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [RESEND PATCH] clk: rockchip: disable init state before mmc card
- initialization
-Date: Mon, 24 Aug 2015 22:02:32 +0800
-Message-ID: <55DB23F8.1000704@rock-chips.com>
-References: <1440404863-14350-1-git-send-email-shawn.lin@rock-chips.com>
- <120036049.vlT25D4un8@phil>
+From: Rob Herring <robherring2@gmail.com>
+Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for analogix_dp
+Date: Mon, 24 Aug 2015 09:48:27 -0500
+Message-ID: <CAL_JsqKZYMMzV9Sc2r3K_rnM0FNuyb1TyJEhjGq1Hf7dTiWFKQ@mail.gmail.com>
+References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
+ <1439995834-18363-1-git-send-email-ykk@rock-chips.com> <CAL_JsqLz+8RtBucctUj4euXZ3Ac0DvB52N9ONpAerh5T9BiTJg@mail.gmail.com>
+ <20150824125758.GA7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <120036049.vlT25D4un8@phil>
+In-Reply-To: <20150824125758.GA7557@n2100.arm.linux.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: shawn.lin@rock-chips.com, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, David Airlie <airlied@linux.ie>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Doug Anderson <dianders@google.com>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015/8/24 18:01, Heiko Stuebner wrote:
-> Hi Shawn,
->
-> Am Montag, 24. August 2015, 16:27:43 schrieb Shawn Lin:
->> mmc host controller's IO input/output timing is unpredictable if
->> bootloader execute tuning for HS200 mode. It might make kernel failed
->> to initialize mmc card in identification mode. The root cause is
->> tuning phase and degree setting for HS200 mode in bootloader aren't
->> applicable to that of identification mode in kernel stage. Anyway, we
->> can't force all bootloaders to disable tuning phase and degree setting
->> before into kernel. Simply disable it in rockchip_clk_register_mmc.
+On Mon, Aug 24, 2015 at 7:57 AM, Russell King - ARM Linux
+<linux@arm.linux.org.uk> wrote:
+> On Sun, Aug 23, 2015 at 06:23:14PM -0500, Rob Herring wrote:
+>> On Wed, Aug 19, 2015 at 9:50 AM, Yakir Yang <ykk@rock-chips.com> wrote:
+>> > +       -analogix,color-depth:
+>> > +               number of bits per colour component.
+>> > +                       COLOR_6 = 0, COLOR_8 = 1, COLOR_10 = 2, COLOR_12 = 3
 >>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>
->> ---
->>
->>   drivers/clk/rockchip/clk-mmc-phase.c | 20 ++++++++++++++++++++
->>   1 file changed, 20 insertions(+)
->>
->> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c
->> b/drivers/clk/rockchip/clk-mmc-phase.c index e9f8df32..ae21592 100644
->> --- a/drivers/clk/rockchip/clk-mmc-phase.c
->> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
->> @@ -38,6 +38,9 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw
->> *hw, #define ROCKCHIP_MMC_DEGREE_MASK 0x3
->>   #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
->>   #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
->> +#define ROCKCHIP_MMC_INIT_STATE_DISABLE (0x1)
->> +#define ROCKCHIP_MMC_INIT_STATE_SHIFT (1)
->> +#define ROCKCHIP_MMC_INIT_STATE_MASK  (0x1)
+>> This seems pretty generic. Just use 6, 8, 10, or 12 for values. And
+>> drop the vendor prefix.
 >
-> you don't need the "()" around primitive values. Also I don't think you need
-> the second MASK attribute, doing
-> 	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
-> 				     ROCKCHIP_MMC_INIT_STATE_DISABLE,
-> 				     mmc_clock->shift),
->
-> should be enough. And thirdly I'm undecided about the naming of the constant.
-> The manual describes the init_state as "Assert init_state to soft reset the
-> CLKGEN.", so I guess I'd prefer
->
-> 	ROCKCHIP_MMC_INIT_STATE_RESET
+> Please think about this some more.  What does "color-depth" mean?  Does it
+> mean the number of bits per colour _component_, or does it mean the total
+> number of bits to represent a particular colour.  It's confusing as it
+> stands.
 
-Thanks, Heiko.
-
-Actually, I'm either not so sure how to naming this bit since if we are 
-used to calling a bit, reset bit, which I thought it should at least do 
-some reset either to state machine or to register value. But obvious it 
-doesn't. Moreover, Assert/Dis-assert seems like disable/enable from my 
-point. Anyway, ROCKCHIP_MMC_INIT_STATE_RESET is okay for me, but I think 
-I should add some comments for these code.
+Then "component-color-bpp" perhaps?
 
 >
-> or so
->
+>> > +Optional properties for dp-controller:
+>> > +       -analogix,hpd-gpio:
+>> > +               Hotplug detect GPIO.
+>> > +                       Indicates which GPIO should be used for hotplug
+>> > +                       detection
 >>
->>   #define PSECS_PER_SEC 1000000000000LL
+>> We should align with "hpd-gpios" used by HDMI connector binding. Or do
+>> we need a DP connector binding that this should be defined in?
+>> Probably so.
 >>
->> @@ -119,6 +122,21 @@ static const struct clk_ops rockchip_mmc_clk_ops = {
->>   	.set_phase	= rockchip_mmc_set_phase,
->>   };
->>
->> +static void rockchip_clk_mmc_disable_init(struct rockchip_mmc_clock
+>> The DRM related bindings are such a cluster f*ck with everyone picking
+>> their own way to do things. Just grep hpd in bindings for starters.
+>> That is just the tip.
 >
-> I guess similar to the thoughts above, simply name this
-> 	rockchip_clk_mmc_reset()
->
-> or alternatively just do the reset in rockchip_clk_register_mmc directly:
->
-> if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT))
-> 	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
-> 				     ROCKCHIP_MMC_INIT_STATE_MASK,
-> 			     mmc_clock->shift),
-> 	       mmc_clock->reg);
->
-> as the pr_debug does not really serve a purpose.
->
+> I'm not surprised one iota that DRM bindings are a mess.  There's no one
+> overlooking the adoption of DRM bindings, so surprise surprise, everyone
+> does their own thing.  This is exactly what happens every time in that
+> scenario.  It's not a new problem.
 
-Okay, rockchip_clk_mmc_reset is coming in v2 :)
+True.
 
+> When we adopted the graph bindings for iMX DRM, I thought exactly at that
+> time "it would be nice if this could become the standard for binding DRM
+> components together" but I don't have the authority from either the DT
+> perspective or the DRM perspective to mandate that.  Neither does anyone
+> else.  That's the _real_ problem here.
 >
-> Heiko
->
->> *mmc_clock) +{
->> +	if (mmc_clock->shift != ROCKCHIP_MMC_INIT_STATE_SHIFT)
->> +		return;
->> +
->> +	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
->> +			     ROCKCHIP_MMC_INIT_STATE_MASK,
->> +			     mmc_clock->shift),
->> +	       mmc_clock->reg);
->> +
->> +	pr_debug("%s: clear mmc init state to %d", __func__,
->> +		 (readl(mmc_clock->reg) >> (mmc_clock->shift)) &
->> +		 ROCKCHIP_MMC_INIT_STATE_MASK);
->> +}
->> +
->>   struct clk *rockchip_clk_register_mmc(const char *name,
->>   				const char *const *parent_names, u8 num_parents,
->>   				void __iomem *reg, int shift)
->> @@ -139,6 +157,8 @@ struct clk *rockchip_clk_register_mmc(const char *name,
->>   	mmc_clock->reg = reg;
->>   	mmc_clock->shift = shift;
->>
->> +	rockchip_clk_mmc_disable_init(mmc_clock);
->> +
->>   	if (name)
->>   		init.name = name;
->
->
->
->
+> I've seen several DRM bindings go by which don't use the of-graph stuff,
+> which means that they'll never be compatible with generic components
+> which do use the of-graph stuff.
 
+It goes beyond bindings IMO. The use of the component framework or not
+has been at the whim of driver writers as well. It is either used or
+private APIs are created. I'm using components and my need for it
+boils down to passing the struct drm_device pointer to the encoder.
+Other components like panels and bridges have different ways to attach
+to the DRM driver.
 
--- 
-Best Regards
-Shawn Lin
+> Like you say, it's a mess, but it's a mess of our own making, because no
+> one has the authority to regulate this.
+
+Certainly, and I will take some blame here. We deferred a lot of
+binding review to subsystem maintainers with the directive to ask for
+help when needed. The latter has not happened. We need to improve the
+situation here before we end up with a bigger mess. The momentum to
+use DRM on Android is growing, so the problem is only going to get
+worse if we do nothing.
+
+Rob
