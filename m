@@ -1,109 +1,179 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH] clk: rockchip: disable init state before mmc card initialization
-Date: Mon, 24 Aug 2015 12:01:19 +0200
-Message-ID: <120036049.vlT25D4un8@phil>
-References: <1440404863-14350-1-git-send-email-shawn.lin@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for
+ analogix_dp
+Date: Mon, 24 Aug 2015 20:48:01 +0800
+Message-ID: <55DB1281.9070502@rock-chips.com>
+References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com> <1439995834-18363-1-git-send-email-ykk@rock-chips.com> <CAL_JsqLz+8RtBucctUj4euXZ3Ac0DvB52N9ONpAerh5T9BiTJg@mail.gmail.com> <CAJKOXPeEm8exg_UG0tDnaEGO40ejBKZ-ok=bKbVrwYvXnDaMdg@mail.gmail.com> <55DA8486.1000803@rock-chips.com> <55DA9B72.1030804@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440404863-14350-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <55DA9B72.1030804@samsung.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robherring2@gmail.com>
+Cc: heiko@sntech.de, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, David Airlie <airlied@linux.ie>, Doug Anderson <dianders@google.com>, Inki Dae <inki.dae@samsung.com>, Ajay kumar <ajaynumb@gmail.com>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>M
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+Hi Krzysztof,
 
-Am Montag, 24. August 2015, 16:27:43 schrieb Shawn Lin:
-> mmc host controller's IO input/output timing is unpredictable if
-> bootloader execute tuning for HS200 mode. It might make kernel failed
-> to initialize mmc card in identification mode. The root cause is
-> tuning phase and degree setting for HS200 mode in bootloader aren't
-> applicable to that of identification mode in kernel stage. Anyway, we
-> can't force all bootloaders to disable tuning phase and degree setting
-> before into kernel. Simply disable it in rockchip_clk_register_mmc.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
-> ---
-> 
->  drivers/clk/rockchip/clk-mmc-phase.c | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
-> 
-> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c
-> b/drivers/clk/rockchip/clk-mmc-phase.c index e9f8df32..ae21592 100644
-> --- a/drivers/clk/rockchip/clk-mmc-phase.c
-> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
-> @@ -38,6 +38,9 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw
-> *hw, #define ROCKCHIP_MMC_DEGREE_MASK 0x3
->  #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
->  #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
-> +#define ROCKCHIP_MMC_INIT_STATE_DISABLE (0x1)
-> +#define ROCKCHIP_MMC_INIT_STATE_SHIFT (1)
-> +#define ROCKCHIP_MMC_INIT_STATE_MASK  (0x1)
+=E5=9C=A8 08/24/2015 12:20 PM, Krzysztof Kozlowski =E5=86=99=E9=81=93:
+> On 24.08.2015 11:42, Yakir Yang wrote:
+>> Hi Krzysztof,
+>>
+>> =E5=9C=A8 08/23/2015 07:43 PM, Krzysztof Kozlowski =E5=86=99=E9=81=93=
+:
+>>> 2015-08-24 8:23 GMT+09:00 Rob Herring <robherring2@gmail.com>:
+>>>> On Wed, Aug 19, 2015 at 9:50 AM, Yakir Yang <ykk@rock-chips.com> w=
+rote:
+>>>>> Analogix dp driver is split from exynos dp driver, so we just
+>>>>> make an copy of exynos_dp.txt, and then simplify exynos_dp.txt
+>>>>>
+>>>>> Beside update some exynos dtsi file with the latest change
+>>>>> according to the devicetree binding documents.
+>>>> You can't just change the exynos bindings and break compatibility.=
+ Is
+>>>> there some agreement with exynos folks to do this?
+>>> No, there is no agreement. This wasn't even sent to Exynos maintain=
+ers.
+>> Sorry about this one, actually I have add Exynos maintainers in vers=
+ion
+>> 1 & version 2,
+>> but lose some maintainers in version 3, I would fix it in bellow ver=
+sions.
+>>
+>>> Additionally the patchset did not look interesting to me because of
+>>> misleading subject - Documentation instead of "ARM: dts:".
+>>>
+>>> Yakir, please:
+>>> 1. Provide backward compatibility. Mark old properties as deprecate=
+d
+>>> but still support them.
+>> Do you mean that I should keep the old properties declare in exynos-=
+dp.txt,
+>> but just mark them as deprecated flag.
+> That is one of ways how to do this. However more important is that
+> driver should still support old bindings so such code:
+> -       if (of_property_read_u32(dp_node, "samsung,color-space",
+> +       if (of_property_read_u32(dp_node, "analogix,color-space",
+>
+> is probably wrong. Will the driver support old DTB in the same way as=
+ it
+> was supporting before the change?
 
-you don't need the "()" around primitive values. Also I don't think you need 
-the second MASK attribute, doing
-	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
-				     ROCKCHIP_MMC_INIT_STATE_DISABLE,
-				     mmc_clock->shift),
+Okay, I got your means. So document is not the focus, the most importan=
+t=20
+is that
+driver should support the old dts prop. If so the new analogix dp drive=
+r=20
+should keep
+the "samsung,color-space", rather then just mark it with [DEPRECATED] f=
+lag.
 
-should be enough. And thirdly I'm undecided about the naming of the constant. 
-The manual describes the init_state as "Assert init_state to soft reset the 
-CLKGEN.", so I guess I'd prefer
+But from your follow suggest, I think you agree to update driver code,=20
+and just mark
+old prop with deprecated flag. If so I think such code would not be wro=
+ng
 
-	ROCKCHIP_MMC_INIT_STATE_RESET
+-       if (of_property_read_u32(dp_node, "samsung,color-space",
++      if (of_property_read_u32(dp_node, "analogix,color-space",
 
-or so
+And actually @Rob have suggest me to remove the prefix, just use=20
+"color-space" here.
 
-> 
->  #define PSECS_PER_SEC 1000000000000LL
-> 
-> @@ -119,6 +122,21 @@ static const struct clk_ops rockchip_mmc_clk_ops = {
->  	.set_phase	= rockchip_mmc_set_phase,
->  };
-> 
-> +static void rockchip_clk_mmc_disable_init(struct rockchip_mmc_clock
+>
+>> Let me show same examples, make
+>> me understand your suggest rightly.
+> exynos-dp already contains deprecated properties. Other ways of doing
+> this would be:
+> Documentation/devicetree/bindings/input/touchscreen/touchscreen.txt
+> Documentation/devicetree/bindings/rtc/s3c-rtc.txt
+>
+> It depends up to you. The "touchscreen" looks good because it organiz=
+es
+> old properties in a common section. In case of exynos-dp.txt you can =
+add
+> at beginning of file information about new bindings and mark everythi=
+ng
+> deprecated.
 
-I guess similar to the thoughts above, simply name this
-	rockchip_clk_mmc_reset()
+Whoops, thanks for your remind, I prefer the "touchscreen" style.
 
-or alternatively just do the reset in rockchip_clk_register_mmc directly:
+>> 1. "samsung,ycbcr-coeff" is abandoned in latest analogix-dp driver,
+>> absolutely
+>>      I should not carry this to analogix-dp.txt document. But I shou=
+ld
+>> keep this in
+>>      exynos-dp.txt document, and mark them with an little "deprecate=
+d" flag.
+>>
+>> [Documentation/devicetree/bindings/video/exynos_dp.txt]
+>> Required properties for dp-controller:
+>>     [...]
+>>      -samsung,ycbcr-coeff (DEPRECATED):
+>>          YCbCr co-efficients for input video.
+>>              COLOR_YCBCR601 =3D 0, COLOR_YCBCR709 =3D 1
+>>
+>> Is it right ?
+> Yes, this is right.
+>
+>>> 2. Separate all DTS changes to a separate patch, unless bisectabili=
+ty
+>>> would be hurt. Anyway you should prepare it in a such way that
+>>> separation would be possible without breaking bisectability.
+>> So I should separate this patch into two parts, one is name "Documen=
+t:",
+>> the other is "ARM: dts: ".
+> Yes.
+>
+>> Honestly, I don't understand what the "bisectability" means in this =
+case.
+> I was referring to bisectability in general. The patchset should be
+> fully bisectable which means that it does not introduce any issues
+> during "git bisect". This effectively means that at each intermediate
+> step (after applying each patch, one by one) every existing stuff wor=
+ks
+> the same as previously without any regression. Including booting with
+> old DTB.
 
-if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT))
-	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
-				     ROCKCHIP_MMC_INIT_STATE_MASK,
-			     mmc_clock->shift),
-	       mmc_clock->reg);
+Oh, thanks for your careful explain, so I guess your first comment is=20
+talking about
+the "bisectability" that if I only apply the 01 - 05 patches, kernel=20
+could not bootup
+normally, cause driver need "analogix,color-space" but DTB only have=20
+"samsung,color-space".
 
-as the pr_debug does not really serve a purpose.
+>
+>>> 3. Use proper subject for the patch changing DTS. This is not
+>>> documentation change!
+>> Hmm... when I separate this patch into two parts, I though I can kee=
+p
+>> "Documentation" proper subject in this patch, and the other is the "=
+ARM:
+>> dts"
+>> proper subject. Am I right ?
+> Yes, you're right.
+>
+>>> 4. Please use script get_maintainers to obtain list of valid
+>>> maintainers and CC-them with at least cover letter and patches
+>>> requiring their attention.
+>> Yeah, thanks.
+> Sure. Now I found older versions of the patchset but previously there
+> were no changes to the bindings. Again the prefix in subject is
+> important to easily filter out and find necessary emails.
+>
+> BTW, I like the patchset because I like in general works which merge
+> code and reduce duplicate stuff.
 
+Aha, thanks  :-D
 
-Heiko
+Best regards,
+- Yakir
 
-> *mmc_clock) +{
-> +	if (mmc_clock->shift != ROCKCHIP_MMC_INIT_STATE_SHIFT)
-> +		return;
-> +
-> +	writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_DISABLE,
-> +			     ROCKCHIP_MMC_INIT_STATE_MASK,
-> +			     mmc_clock->shift),
-> +	       mmc_clock->reg);
-> +
-> +	pr_debug("%s: clear mmc init state to %d", __func__,
-> +		 (readl(mmc_clock->reg) >> (mmc_clock->shift)) &
-> +		 ROCKCHIP_MMC_INIT_STATE_MASK);
-> +}
-> +
->  struct clk *rockchip_clk_register_mmc(const char *name,
->  				const char *const *parent_names, u8 num_parents,
->  				void __iomem *reg, int shift)
-> @@ -139,6 +157,8 @@ struct clk *rockchip_clk_register_mmc(const char *name,
->  	mmc_clock->reg = reg;
->  	mmc_clock->shift = shift;
-> 
-> +	rockchip_clk_mmc_disable_init(mmc_clock);
-> +
->  	if (name)
->  		init.name = name;
+> Best regards,
+> Krzysztof
+>
+>
+>
+>
+>
