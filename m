@@ -1,37 +1,29 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for analogix_dp
-Date: Mon, 24 Aug 2015 18:16:39 +0200
-Message-ID: <1749941.uaVRIcm7Pc@phil>
-References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com> <20150824125758.GA7557@n2100.arm.linux.org.uk> <CAL_JsqKZYMMzV9Sc2r3K_rnM0FNuyb1TyJEhjGq1Hf7dTiWFKQ@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/3] ARM: dts: rockchip: correct regulator PM properties
+Date: Mon, 24 Aug 2015 19:04:07 +0200
+Message-ID: <6403780.zCWLY3Bai8@phil>
+References: <1440022721-73712-1-git-send-email-briannorris@chromium.org> <1440022721-73712-2-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqKZYMMzV9Sc2r3K_rnM0FNuyb1TyJEhjGq1Hf7dTiWFKQ@mail.gmail.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Rob Herring <robherring2@gmail.com>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Yakir Yang <ykk@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, David Airlie <airlied@linux.ie>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Doug Anderson <dianders@google.com>, Rob Herring <rob>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1440022721-73712-2-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 24. August 2015, 09:48:27 schrieb Rob Herring:
-> On Mon, Aug 24, 2015 at 7:57 AM, Russell King - ARM Linux
-> > When we adopted the graph bindings for iMX DRM, I thought exactly at that
-> > time "it would be nice if this could become the standard for binding DRM
-> > components together" but I don't have the authority from either the DT
-> > perspective or the DRM perspective to mandate that.  Neither does anyone
-> > else.  That's the _real_ problem here.
-> > 
-> > I've seen several DRM bindings go by which don't use the of-graph stuff,
-> > which means that they'll never be compatible with generic components
-> > which do use the of-graph stuff.
+Am Mittwoch, 19. August 2015, 15:18:40 schrieb Brian Norris:
+> This DTS file was submitted with non-upstream bindings. I happened
+> across this while reviewing the jaq DTS.
 > 
-> It goes beyond bindings IMO. The use of the component framework or not
-> has been at the whim of driver writers as well. It is either used or
-> private APIs are created. I'm using components and my need for it
-> boils down to passing the struct drm_device pointer to the encoder.
-> Other components like panels and bridges have different ways to attach
-> to the DRM driver.
+> Signed-off-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
 
-but that is then simply implementation specific. Panels and bridges can very 
-well be part of and created from an of_graph description without needing to be 
-a (linux-)component - see patch 7.
+applied to my dts branch for 4.3
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
