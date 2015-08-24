@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] clk: rockchip: disable init state before mmc card initialization
-Date: Mon, 24 Aug 2015 16:12:26 +0800
-Message-ID: <1440403946-13266-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [RESEND PATCH] clk: rockchip: disable init state before mmc card initialization
+Date: Mon, 24 Aug 2015 16:27:43 +0800
+Message-ID: <1440404863-14350-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
@@ -17,13 +17,14 @@ can't force all bootloaders to disable tuning phase and degree setting
 before into kernel. Simply disable it in rockchip_clk_register_mmc.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
 ---
 
  drivers/clk/rockchip/clk-mmc-phase.c | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
 
 diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-index e9f8df32..02b6f3d 100644
+index e9f8df32..ae21592 100644
 --- a/drivers/clk/rockchip/clk-mmc-phase.c
 +++ b/drivers/clk/rockchip/clk-mmc-phase.c
 @@ -38,6 +38,9 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
@@ -31,7 +32,7 @@ index e9f8df32..02b6f3d 100644
  #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
  #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
 +#define ROCKCHIP_MMC_INIT_STATE_DISABLE (0x1)
-+#define ROCKCHIP_MMC_INIT_STATE_SHIFT (0)
++#define ROCKCHIP_MMC_INIT_STATE_SHIFT (1)
 +#define ROCKCHIP_MMC_INIT_STATE_MASK  (0x1)
  
  #define PSECS_PER_SEC 1000000000000LL
