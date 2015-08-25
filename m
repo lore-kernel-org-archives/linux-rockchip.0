@@ -1,72 +1,59 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] clk: rockchip: reset init state before mmc card initialization
-Date: Tue, 25 Aug 2015 08:34:36 +0800
-Message-ID: <1440462876-5457-1-git-send-email-shawn.lin@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for
+ analogix_dp
+Date: Tue, 25 Aug 2015 09:21:51 +0800
+Message-ID: <55DBC32F.4040607@rock-chips.com>
+References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
+ <1439995834-18363-1-git-send-email-ykk@rock-chips.com>
+ <CAL_JsqLz+8RtBucctUj4euXZ3Ac0DvB52N9ONpAerh5T9BiTJg@mail.gmail.com>
+ <20150824125758.GA7557@n2100.arm.linux.org.uk>
+ <CAL_JsqKZYMMzV9Sc2r3K_rnM0FNuyb1TyJEhjGq1Hf7dTiWFKQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqKZYMMzV9Sc2r3K_rnM0FNuyb1TyJEhjGq1Hf7dTiWFKQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+To: Rob Herring <robherring2@gmail.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, David Airlie <airlied@linux.ie>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Doug Anderson <dianders@google.com>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradea
 List-Id: linux-rockchip.vger.kernel.org
 
-mmc host controller's IO input/output timing is unpredictable if
-bootloader execute tuning for HS200 mode. It might make kernel failed
-to initialize mmc card in identification mode. The root cause is
-tuning phase and degree setting for HS200 mode in bootloader aren't
-applicable to that of identification mode in kernel stage. Anyway, we
-can't force all bootloaders to reset tuning phase and degree setting
-before into kernel. Simply reset it in rockchip_clk_register_mmc.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
----
+=E5=9C=A8 2015/8/24 22:48, Rob Herring =E5=86=99=E9=81=93:
+> On Mon, Aug 24, 2015 at 7:57 AM, Russell King - ARM Linux
+> <linux@arm.linux.org.uk> wrote:
+>> On Sun, Aug 23, 2015 at 06:23:14PM -0500, Rob Herring wrote:
+>>> On Wed, Aug 19, 2015 at 9:50 AM, Yakir Yang <ykk@rock-chips.com> wr=
+ote:
+>>>> +       -analogix,color-depth:
+>>>> +               number of bits per colour component.
+>>>> +                       COLOR_6 =3D 0, COLOR_8 =3D 1, COLOR_10 =3D=
+ 2, COLOR_12 =3D 3
+>>> This seems pretty generic. Just use 6, 8, 10, or 12 for values. And
+>>> drop the vendor prefix.
+>> Please think about this some more.  What does "color-depth" mean?  D=
+oes it
+>> mean the number of bits per colour _component_, or does it mean the =
+total
+>> number of bits to represent a particular colour.  It's confusing as =
+it
+>> stands.
+> Then "component-color-bpp" perhaps?
 
-Changes in v2:
-- rename to rockchip_clk_mmc_reset
-- simplifying the code
+Actually this "color-bpp" should come from crtc driver, maybe should=20
+come from
+"struct drm_crtc {".
 
- drivers/clk/rockchip/clk-mmc-phase.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Like rockchip stuffs, analogix_dp-rockchip call an mode_config from=20
+rockchip_drm_vop
+driver and set output mode to RGB[10:10:10], then vop driver just store=
+=20
+the output mode
+type to the private struct "vop->connecot_out_mode". do think that this=
+=20
+outmode should
+store into crtc, not just come from DT prop.
 
-diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-index e9f8df32..1d3e8fe6 100644
---- a/drivers/clk/rockchip/clk-mmc-phase.c
-+++ b/drivers/clk/rockchip/clk-mmc-phase.c
-@@ -38,6 +38,8 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
- #define ROCKCHIP_MMC_DEGREE_MASK 0x3
- #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
- #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
-+#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
-+#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
- 
- #define PSECS_PER_SEC 1000000000000LL
- 
-@@ -119,6 +121,14 @@ static const struct clk_ops rockchip_mmc_clk_ops = {
- 	.set_phase	= rockchip_mmc_set_phase,
- };
- 
-+static void rockchip_clk_mmc_reset(struct rockchip_mmc_clock *mmc_clock)
-+{
-+	if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT)
-+		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
-+				     ROCKCHIP_MMC_INIT_STATE_RESET,
-+				     mmc_clock->shift), mmc_clock->reg);
-+}
-+
- struct clk *rockchip_clk_register_mmc(const char *name,
- 				const char *const *parent_names, u8 num_parents,
- 				void __iomem *reg, int shift)
-@@ -139,6 +149,12 @@ struct clk *rockchip_clk_register_mmc(const char *name,
- 	mmc_clock->reg = reg;
- 	mmc_clock->shift = shift;
- 
-+	/*
-+	* Assert init_state to soft reset the CLKGEN
-+	* for mmc tuning phase and degree
-+	*/
-+	rockchip_clk_mmc_reset(mmc_clock);
-+
- 	if (name)
- 		init.name = name;
- 
--- 
-2.3.7
+- Yakir
