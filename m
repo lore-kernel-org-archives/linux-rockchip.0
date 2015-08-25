@@ -1,52 +1,60 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 2/2] Rockchip soc fix for 4.3
-Date: Tue, 25 Aug 2015 10:17:38 -0700
-Message-ID: <CAOesGMiVy5F-EJFCyj5LLKCGUWNZGenrK6AhbjubfBADXMxE_A@mail.gmail.com>
-References: <1879932.6Bpqy7C2KO@phil>
-	<9416843.VhjrryKIms@phil>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v2] clk: rockchip: add pclk_cpu to the list of rk3188 critical
+ clocks
+Date: Tue, 25 Aug 2015 11:59:31 -0700
+Message-ID: <20150825185931.31346.26497@quantum>
+References: <5400BEF8-5245-4F7B-845B-D326A7BC56B5@mniewoehner.de>
+ <5275855.eah07vmf4I@phil>
+ <9DBF9CCE-196E-43FB-BA76-BFB4B5F47A22@mniewoehner.de>
+ <10213368.VjAQGt7Kjq@phil>
+ <F5234F5E-2A91-4B63-B260-3F20A4D16A9D@mniewoehner.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <9416843.VhjrryKIms@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <F5234F5E-2A91-4B63-B260-3F20A4D16A9D@mniewoehner.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Niewoehner <linux@mniewoehner.de>, Heiko Stuebner <heiko@sntech.de>, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linus.walleij@linaro.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 25, 2015 at 2:30 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Hi Arnd, Kevin, Olof,
->
-> Fabio did find an error in what is returned as error codes in the init of
-> the suspend code. Nobody complained about this actually breaking stuff
-> but it would be nice to have this fixed nevertheless, so please pull.
->
->
-> Thanks
-> Heiko
->
->
-> The following changes since commit 9bb91ae970dd004393a3d7d09bdcc30dfe2f8693:
->
->   ARM: rockchip: enable PMU_GPIOINT_WAKEUP_EN when entering shallow suspend (2015-08-06 13:05:14 +0200)
->
-> are available in the git repository at:
->
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.3-rockchip32-soc3
->
-> for you to fetch changes up to 2a03c025fdea25a491c359b31d8a8c8d452b06d0:
->
->   ARM: rockchip: pm: Fix PTR_ERR() argument (2015-08-24 12:39:14 +0200)
+Quoting Michael Niewoehner (2015-08-17 12:50:53)
+> pclk_cpu needs to keep running because it is needed for devices like
+> the act8865 regulator but with the recent gpio clock handling this is
+> not always the case anymore. So add it to the list of critical clocks.
+> 
+> Signed-off-by: Michael Niewoehner <linux@mniewoehner.de>
 
-Merged, thanks.
+Patch fails to apply due to a problem with line 15. git format-patch
+problem?
 
+Regards,
+Mike
 
--Olof
+> ---
+> Changes in v2:
+> - adapt commit message
+> - add Linus Walleij to recipients, as the patch is related to the gpio clock
+>   change in the rockchip pinctrl driver it should go through his tree as well
+> 
+> drivers/clk/rockchip/clk-rk3188.c | 1 +
+> 1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+> index e4f9d47..1c93229 100644
+> --- a/drivers/clk/rockchip/clk-rk3188.c
+> +++ b/drivers/clk/rockchip/clk-rk3188.c
+> @@ -708,6 +708,7 @@ static const char *const rk3188_critical_clocks[] __initconst = {
+>         "aclk_cpu",
+>         "aclk_peri",
+>         "hclk_peri",
+> +       "pclk_cpu",
+> };
+> 
+> static void __init rk3188_common_clk_init(struct device_node *np)
+> -- 
+> 2.5.0
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
