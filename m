@@ -1,8 +1,8 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Yakir Yang <ykk@rock-chips.com>
 Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for
  analogix_dp
-Date: Tue, 25 Aug 2015 09:32:38 +0800
-Message-ID: <55DBC5B6.2020500@rock-chips.com>
+Date: Tue, 25 Aug 2015 09:33:53 +0800
+Message-ID: <55DBC601.5090107@rock-chips.com>
 References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
  <1439995834-18363-1-git-send-email-ykk@rock-chips.com>
  <CAL_JsqLz+8RtBucctUj4euXZ3Ac0DvB52N9ONpAerh5T9BiTJg@mail.gmail.com>
@@ -10,131 +10,187 @@ References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
  <55DA8486.1000803@rock-chips.com> <55DA9B72.1030804@samsung.com>
  <55DB1281.9070502@rock-chips.com> <55DBAD90.3040901@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <55DBAD90.3040901-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <55DBAD90.3040901@samsung.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robherring2@gmail.com>
+Cc: heiko@sntech.de, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, David Airlie <airlied@linux.ie>, Doug Anderson <dianders@google.com>, Inki Dae <inki.dae@samsung.com>, Ajay kumar <ajaynumb@gmail.com>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>M
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgS3J6eXN6dG9mLAoK5ZyoIDIwMTUvOC8yNSA3OjQ5LCBLcnp5c3p0b2YgS296bG93c2tpIOWG
-memBkzoKPiBPbiAyNC4wOC4yMDE1IDIxOjQ4LCBZYWtpciBZYW5nIHdyb3RlOgo+PiBIaSBLcnp5
-c3p0b2YsCj4+Cj4+IOWcqCAwOC8yNC8yMDE1IDEyOjIwIFBNLCBLcnp5c3p0b2YgS296bG93c2tp
-IOWGmemBkzoKPj4+IE9uIDI0LjA4LjIwMTUgMTE6NDIsIFlha2lyIFlhbmcgd3JvdGU6Cj4+Pj4g
-SGkgS3J6eXN6dG9mLAo+Pj4+Cj4+Pj4g5ZyoIDA4LzIzLzIwMTUgMDc6NDMgUE0sIEtyenlzenRv
-ZiBLb3psb3dza2kg5YaZ6YGTOgo+Pj4+PiAyMDE1LTA4LTI0IDg6MjMgR01UKzA5OjAwIFJvYiBI
-ZXJyaW5nIDxyb2JoZXJyaW5nMkBnbWFpbC5jb20+Ogo+Pj4+Pj4gT24gV2VkLCBBdWcgMTksIDIw
-MTUgYXQgOTo1MCBBTSwgWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+Pj4+Pj4gd3Jv
-dGU6Cj4+Pj4+Pj4gQW5hbG9naXggZHAgZHJpdmVyIGlzIHNwbGl0IGZyb20gZXh5bm9zIGRwIGRy
-aXZlciwgc28gd2UganVzdAo+Pj4+Pj4+IG1ha2UgYW4gY29weSBvZiBleHlub3NfZHAudHh0LCBh
-bmQgdGhlbiBzaW1wbGlmeSBleHlub3NfZHAudHh0Cj4+Pj4+Pj4KPj4+Pj4+PiBCZXNpZGUgdXBk
-YXRlIHNvbWUgZXh5bm9zIGR0c2kgZmlsZSB3aXRoIHRoZSBsYXRlc3QgY2hhbmdlCj4+Pj4+Pj4g
-YWNjb3JkaW5nIHRvIHRoZSBkZXZpY2V0cmVlIGJpbmRpbmcgZG9jdW1lbnRzLgo+Pj4+Pj4gWW91
-IGNhbid0IGp1c3QgY2hhbmdlIHRoZSBleHlub3MgYmluZGluZ3MgYW5kIGJyZWFrIGNvbXBhdGli
-aWxpdHkuIElzCj4+Pj4+PiB0aGVyZSBzb21lIGFncmVlbWVudCB3aXRoIGV4eW5vcyBmb2xrcyB0
-byBkbyB0aGlzPwo+Pj4+PiBObywgdGhlcmUgaXMgbm8gYWdyZWVtZW50LiBUaGlzIHdhc24ndCBl
-dmVuIHNlbnQgdG8gRXh5bm9zIG1haW50YWluZXJzLgo+Pj4+IFNvcnJ5IGFib3V0IHRoaXMgb25l
-LCBhY3R1YWxseSBJIGhhdmUgYWRkIEV4eW5vcyBtYWludGFpbmVycyBpbiB2ZXJzaW9uCj4+Pj4g
-MSAmIHZlcnNpb24gMiwKPj4+PiBidXQgbG9zZSBzb21lIG1haW50YWluZXJzIGluIHZlcnNpb24g
-MywgSSB3b3VsZCBmaXggaXQgaW4gYmVsbG93Cj4+Pj4gdmVyc2lvbnMuCj4+Pj4KPj4+Pj4gQWRk
-aXRpb25hbGx5IHRoZSBwYXRjaHNldCBkaWQgbm90IGxvb2sgaW50ZXJlc3RpbmcgdG8gbWUgYmVj
-YXVzZSBvZgo+Pj4+PiBtaXNsZWFkaW5nIHN1YmplY3QgLSBEb2N1bWVudGF0aW9uIGluc3RlYWQg
-b2YgIkFSTTogZHRzOiIuCj4+Pj4+Cj4+Pj4+IFlha2lyLCBwbGVhc2U6Cj4+Pj4+IDEuIFByb3Zp
-ZGUgYmFja3dhcmQgY29tcGF0aWJpbGl0eS4gTWFyayBvbGQgcHJvcGVydGllcyBhcyBkZXByZWNh
-dGVkCj4+Pj4+IGJ1dCBzdGlsbCBzdXBwb3J0IHRoZW0uCj4+Pj4gRG8geW91IG1lYW4gdGhhdCBJ
-IHNob3VsZCBrZWVwIHRoZSBvbGQgcHJvcGVydGllcyBkZWNsYXJlIGluCj4+Pj4gZXh5bm9zLWRw
-LnR4dCwKPj4+PiBidXQganVzdCBtYXJrIHRoZW0gYXMgZGVwcmVjYXRlZCBmbGFnLgo+Pj4gVGhh
-dCBpcyBvbmUgb2Ygd2F5cyBob3cgdG8gZG8gdGhpcy4gSG93ZXZlciBtb3JlIGltcG9ydGFudCBp
-cyB0aGF0Cj4+PiBkcml2ZXIgc2hvdWxkIHN0aWxsIHN1cHBvcnQgb2xkIGJpbmRpbmdzIHNvIHN1
-Y2ggY29kZToKPj4+IC0gICAgICAgaWYgKG9mX3Byb3BlcnR5X3JlYWRfdTMyKGRwX25vZGUsICJz
-YW1zdW5nLGNvbG9yLXNwYWNlIiwKPj4+ICsgICAgICAgaWYgKG9mX3Byb3BlcnR5X3JlYWRfdTMy
-KGRwX25vZGUsICJhbmFsb2dpeCxjb2xvci1zcGFjZSIsCj4+Pgo+Pj4gaXMgcHJvYmFibHkgd3Jv
-bmcuIFdpbGwgdGhlIGRyaXZlciBzdXBwb3J0IG9sZCBEVEIgaW4gdGhlIHNhbWUgd2F5IGFzIGl0
-Cj4+PiB3YXMgc3VwcG9ydGluZyBiZWZvcmUgdGhlIGNoYW5nZT8KPj4gT2theSwgSSBnb3QgeW91
-ciBtZWFucy4gU28gZG9jdW1lbnQgaXMgbm90IHRoZSBmb2N1cywgdGhlIG1vc3QgaW1wb3J0YW50
-Cj4+IGlzIHRoYXQKPj4gZHJpdmVyIHNob3VsZCBzdXBwb3J0IHRoZSBvbGQgZHRzIHByb3AuCj4g
-UmlnaHQsIHRoZSBmb2N1cyBpcyBvbiB0aGUgZHJpdmVyLgo+Cj4+IElmIHNvIHRoZSBuZXcgYW5h
-bG9naXggZHAgZHJpdmVyCj4+IHNob3VsZCBrZWVwCj4+IHRoZSAic2Ftc3VuZyxjb2xvci1zcGFj
-ZSIsIHJhdGhlciB0aGVuIGp1c3QgbWFyayBpdCB3aXRoIFtERVBSRUNBVEVEXSBmbGFnLgo+IElm
-IHlvdSBhcmUgcmVwbGFjaW5nIGEgYmluZGluZy9wcm9wZXJ0eSB0aGVuIGl0IHNob3VsZCBiZSBt
-YXJrZWQKPiBkZXByZWNhdGVkLiBUaGlzIG1lYW5zIHRoYXQgdGhlIG9sZCBwcm9wZXJ0eSBpcyBz
-dGlsbCB3b3JraW5nIGJ1dCBuZXcKPiB1c2VycyBvZiBpdCBzaG91bGQgbm90IGJlIGFkZGVkLgoK
-T2theSwgc28ganVzdCBxdW90ZSBIZWlrbydzIHJlcGx5LCBzdWNoIGNvZGUgd291bGQgYmUgbmVl
-ZCBpbiBhbmFsb2dpeCAKZHAgZHJpdmVyLgoKICAgICAgICBpZiAob2ZfcHJvcGVydHlfcmVhZF91
-MzIoZHBfbm9kZSwgImFuYWxvZ2l4LGNvbG9yLXNwYWNlIiwKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICZkcF92aWRlb19jb25maWctPmNvbG9yX3NwYWNlKSkKCSAgICAgICBpZiAo
-b2ZfcHJvcGVydHlfcmVhZF91MzIoZHBfbm9kZSwgInNhbXN1bmcsY29sb3Itc3BhY2UiLAogICAg
-ICAgICAgICAgICAgIAkgICAgICAgICAgICAgICAgICZkcF92aWRlb19jb25maWctPmNvbG9yX3Nw
-YWNlKSkgewoKICAgICAgICAgICAgICAgICAJZGV2X2VycihkZXYsICJmYWlsZWQgdG8gZ2V0IGNv
-bG9yLXNwYWNlXG4iKTsKICAgICAgICAgICAgICAgICAJcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7
-CiAgICAgICAgIAl9CgoKPj4gQnV0IGZyb20geW91ciBmb2xsb3cgc3VnZ2VzdCwgSSB0aGluayB5
-b3UgYWdyZWUgdG8gdXBkYXRlIGRyaXZlciBjb2RlLAo+PiBhbmQganVzdCBtYXJrCj4+IG9sZCBw
-cm9wIHdpdGggZGVwcmVjYXRlZCBmbGFnLiBJZiBzbyBJIHRoaW5rIHN1Y2ggY29kZSB3b3VsZCBu
-b3QgYmUgd3JvbmcKPj4KPj4gLSAgICAgICBpZiAob2ZfcHJvcGVydHlfcmVhZF91MzIoZHBfbm9k
-ZSwgInNhbXN1bmcsY29sb3Itc3BhY2UiLAo+PiArICAgICAgaWYgKG9mX3Byb3BlcnR5X3JlYWRf
-dTMyKGRwX25vZGUsICJhbmFsb2dpeCxjb2xvci1zcGFjZSIsCj4gSXQgbG9va3Mgd3JvbmcgYmVj
-YXVzZSBpdCBicmVha3MgYmFja3dhcmQgY29tcGF0aWJpbGl0eSB3aXRoIGV4aXN0aW5nCj4gRFRC
-LiBBcyBJIHNhaWQgYmVmb3JlOgo+Pj4+IDEuIFByb3ZpZGUgYmFja3dhcmQgY29tcGF0aWJpbGl0
-eS4gTWFyayBvbGQgcHJvcGVydGllcwo+Pj4+IGFzIGRlcHJlY2F0ZWQgYnV0IHN0aWxsIHN1cHBv
-cnQgdGhlbS4KPgo+PiBBbmQgYWN0dWFsbHkgQFJvYiBoYXZlIHN1Z2dlc3QgbWUgdG8gcmVtb3Zl
-IHRoZSBwcmVmaXgsIGp1c3QgdXNlCj4+ICJjb2xvci1zcGFjZSIgaGVyZS4KPiBGb3IgbmV3IGJp
-bmRpbmdzIEkgZG9uJ3QgbWluZC4gQnV0IHBsZWFzZSByZW1lbWJlciBhYm91dCBleGlzdGluZyB1
-c2VycywKPiBleGlzdGluZyBEVEIgYW5kIGJpc2VjdGFiaWxpdHkuCj4KPj4+PiBMZXQgbWUgc2hv
-dyBzYW1lIGV4YW1wbGVzLCBtYWtlCj4+Pj4gbWUgdW5kZXJzdGFuZCB5b3VyIHN1Z2dlc3Qgcmln
-aHRseS4KPj4+IGV4eW5vcy1kcCBhbHJlYWR5IGNvbnRhaW5zIGRlcHJlY2F0ZWQgcHJvcGVydGll
-cy4gT3RoZXIgd2F5cyBvZiBkb2luZwo+Pj4gdGhpcyB3b3VsZCBiZToKPj4+IERvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9pbnB1dC90b3VjaHNjcmVlbi90b3VjaHNjcmVlbi50eHQK
-Pj4+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9ydGMvczNjLXJ0Yy50eHQKPj4+
-Cj4+PiBJdCBkZXBlbmRzIHVwIHRvIHlvdS4gVGhlICJ0b3VjaHNjcmVlbiIgbG9va3MgZ29vZCBi
-ZWNhdXNlIGl0IG9yZ2FuaXplcwo+Pj4gb2xkIHByb3BlcnRpZXMgaW4gYSBjb21tb24gc2VjdGlv
-bi4gSW4gY2FzZSBvZiBleHlub3MtZHAudHh0IHlvdSBjYW4gYWRkCj4+PiBhdCBiZWdpbm5pbmcg
-b2YgZmlsZSBpbmZvcm1hdGlvbiBhYm91dCBuZXcgYmluZGluZ3MgYW5kIG1hcmsgZXZlcnl0aGlu
-Zwo+Pj4gZGVwcmVjYXRlZC4KPj4gV2hvb3BzLCB0aGFua3MgZm9yIHlvdXIgcmVtaW5kLCBJIHBy
-ZWZlciB0aGUgInRvdWNoc2NyZWVuIiBzdHlsZS4KPj4KPj4+PiAxLiAic2Ftc3VuZyx5Y2Jjci1j
-b2VmZiIgaXMgYWJhbmRvbmVkIGluIGxhdGVzdCBhbmFsb2dpeC1kcCBkcml2ZXIsCj4+Pj4gYWJz
-b2x1dGVseQo+Pj4+ICAgICAgIEkgc2hvdWxkIG5vdCBjYXJyeSB0aGlzIHRvIGFuYWxvZ2l4LWRw
-LnR4dCBkb2N1bWVudC4gQnV0IEkgc2hvdWxkCj4+Pj4ga2VlcCB0aGlzIGluCj4+Pj4gICAgICAg
-ZXh5bm9zLWRwLnR4dCBkb2N1bWVudCwgYW5kIG1hcmsgdGhlbSB3aXRoIGFuIGxpdHRsZQo+Pj4+
-ICJkZXByZWNhdGVkIiBmbGFnLgo+Pj4+Cj4+Pj4gW0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy92aWRlby9leHlub3NfZHAudHh0XQo+Pj4+IFJlcXVpcmVkIHByb3BlcnRpZXMgZm9y
-IGRwLWNvbnRyb2xsZXI6Cj4+Pj4gICAgICBbLi4uXQo+Pj4+ICAgICAgIC1zYW1zdW5nLHljYmNy
-LWNvZWZmIChERVBSRUNBVEVEKToKPj4+PiAgICAgICAgICAgWUNiQ3IgY28tZWZmaWNpZW50cyBm
-b3IgaW5wdXQgdmlkZW8uCj4+Pj4gICAgICAgICAgICAgICBDT0xPUl9ZQ0JDUjYwMSA9IDAsIENP
-TE9SX1lDQkNSNzA5ID0gMQo+Pj4+Cj4+Pj4gSXMgaXQgcmlnaHQgPwo+Pj4gWWVzLCB0aGlzIGlz
-IHJpZ2h0Lgo+Pj4KPj4+Pj4gMi4gU2VwYXJhdGUgYWxsIERUUyBjaGFuZ2VzIHRvIGEgc2VwYXJh
-dGUgcGF0Y2gsIHVubGVzcyBiaXNlY3RhYmlsaXR5Cj4+Pj4+IHdvdWxkIGJlIGh1cnQuIEFueXdh
-eSB5b3Ugc2hvdWxkIHByZXBhcmUgaXQgaW4gYSBzdWNoIHdheSB0aGF0Cj4+Pj4+IHNlcGFyYXRp
-b24gd291bGQgYmUgcG9zc2libGUgd2l0aG91dCBicmVha2luZyBiaXNlY3RhYmlsaXR5Lgo+Pj4+
-IFNvIEkgc2hvdWxkIHNlcGFyYXRlIHRoaXMgcGF0Y2ggaW50byB0d28gcGFydHMsIG9uZSBpcyBu
-YW1lICJEb2N1bWVudDoiLAo+Pj4+IHRoZSBvdGhlciBpcyAiQVJNOiBkdHM6ICIuCj4+PiBZZXMu
-Cj4+Pgo+Pj4+IEhvbmVzdGx5LCBJIGRvbid0IHVuZGVyc3RhbmQgd2hhdCB0aGUgImJpc2VjdGFi
-aWxpdHkiIG1lYW5zIGluIHRoaXMKPj4+PiBjYXNlLgo+Pj4gSSB3YXMgcmVmZXJyaW5nIHRvIGJp
-c2VjdGFiaWxpdHkgaW4gZ2VuZXJhbC4gVGhlIHBhdGNoc2V0IHNob3VsZCBiZQo+Pj4gZnVsbHkg
-YmlzZWN0YWJsZSB3aGljaCBtZWFucyB0aGF0IGl0IGRvZXMgbm90IGludHJvZHVjZSBhbnkgaXNz
-dWVzCj4+PiBkdXJpbmcgImdpdCBiaXNlY3QiLiBUaGlzIGVmZmVjdGl2ZWx5IG1lYW5zIHRoYXQg
-YXQgZWFjaCBpbnRlcm1lZGlhdGUKPj4+IHN0ZXAgKGFmdGVyIGFwcGx5aW5nIGVhY2ggcGF0Y2gs
-IG9uZSBieSBvbmUpIGV2ZXJ5IGV4aXN0aW5nIHN0dWZmIHdvcmtzCj4+PiB0aGUgc2FtZSBhcyBw
-cmV2aW91c2x5IHdpdGhvdXQgYW55IHJlZ3Jlc3Npb24uIEluY2x1ZGluZyBib290aW5nIHdpdGgK
-Pj4+IG9sZCBEVEIuCj4+IE9oLCB0aGFua3MgZm9yIHlvdXIgY2FyZWZ1bCBleHBsYWluLCBzbyBJ
-IGd1ZXNzIHlvdXIgZmlyc3QgY29tbWVudCBpcwo+PiB0YWxraW5nIGFib3V0Cj4+IHRoZSAiYmlz
-ZWN0YWJpbGl0eSIgdGhhdCBpZiBJIG9ubHkgYXBwbHkgdGhlIDAxIC0gMDUgcGF0Y2hlcywga2Vy
-bmVsCj4+IGNvdWxkIG5vdCBib290dXAKPj4gbm9ybWFsbHksIGNhdXNlIGRyaXZlciBuZWVkICJh
-bmFsb2dpeCxjb2xvci1zcGFjZSIgYnV0IERUQiBvbmx5IGhhdmUKPj4gInNhbXN1bmcsY29sb3It
-c3BhY2UiLgo+IFJpZ2h0LiBJbiB0aGUgc2FtZSB0aW1lIHBsZWFzZSByZW1lbWJlciB0aGF0IGtl
-cm5lbCBtYXkgYmUgYm9vdGVkIHdpdGgKPiBvbGQgRFRCLgoKT2theSwgdGhhbmtzIGEgbG90LgoK
-LSBZYWtpcgo+IEJlc3QgcmVnYXJkcywKPiBLcnp5c3p0b2YKPgo+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Krzysztof,
+
+=E5=9C=A8 2015/8/25 7:49, Krzysztof Kozlowski =E5=86=99=E9=81=93:
+> On 24.08.2015 21:48, Yakir Yang wrote:
+>> Hi Krzysztof,
+>>
+>> =E5=9C=A8 08/24/2015 12:20 PM, Krzysztof Kozlowski =E5=86=99=E9=81=93=
+:
+>>> On 24.08.2015 11:42, Yakir Yang wrote:
+>>>> Hi Krzysztof,
+>>>>
+>>>> =E5=9C=A8 08/23/2015 07:43 PM, Krzysztof Kozlowski =E5=86=99=E9=81=
+=93:
+>>>>> 2015-08-24 8:23 GMT+09:00 Rob Herring <robherring2@gmail.com>:
+>>>>>> On Wed, Aug 19, 2015 at 9:50 AM, Yakir Yang <ykk@rock-chips.com>
+>>>>>> wrote:
+>>>>>>> Analogix dp driver is split from exynos dp driver, so we just
+>>>>>>> make an copy of exynos_dp.txt, and then simplify exynos_dp.txt
+>>>>>>>
+>>>>>>> Beside update some exynos dtsi file with the latest change
+>>>>>>> according to the devicetree binding documents.
+>>>>>> You can't just change the exynos bindings and break compatibilit=
+y. Is
+>>>>>> there some agreement with exynos folks to do this?
+>>>>> No, there is no agreement. This wasn't even sent to Exynos mainta=
+iners.
+>>>> Sorry about this one, actually I have add Exynos maintainers in ve=
+rsion
+>>>> 1 & version 2,
+>>>> but lose some maintainers in version 3, I would fix it in bellow
+>>>> versions.
+>>>>
+>>>>> Additionally the patchset did not look interesting to me because =
+of
+>>>>> misleading subject - Documentation instead of "ARM: dts:".
+>>>>>
+>>>>> Yakir, please:
+>>>>> 1. Provide backward compatibility. Mark old properties as depreca=
+ted
+>>>>> but still support them.
+>>>> Do you mean that I should keep the old properties declare in
+>>>> exynos-dp.txt,
+>>>> but just mark them as deprecated flag.
+>>> That is one of ways how to do this. However more important is that
+>>> driver should still support old bindings so such code:
+>>> -       if (of_property_read_u32(dp_node, "samsung,color-space",
+>>> +       if (of_property_read_u32(dp_node, "analogix,color-space",
+>>>
+>>> is probably wrong. Will the driver support old DTB in the same way =
+as it
+>>> was supporting before the change?
+>> Okay, I got your means. So document is not the focus, the most impor=
+tant
+>> is that
+>> driver should support the old dts prop.
+> Right, the focus is on the driver.
+>
+>> If so the new analogix dp driver
+>> should keep
+>> the "samsung,color-space", rather then just mark it with [DEPRECATED=
+] flag.
+> If you are replacing a binding/property then it should be marked
+> deprecated. This means that the old property is still working but new
+> users of it should not be added.
+
+Okay, so just quote Heiko's reply, such code would be need in analogix=20
+dp driver.
+
+        if (of_property_read_u32(dp_node, "analogix,color-space",
+                                  &dp_video_config->color_space))
+	       if (of_property_read_u32(dp_node, "samsung,color-space",
+                 	                 &dp_video_config->color_space)) {
+
+                 	dev_err(dev, "failed to get color-space\n");
+                 	return ERR_PTR(-EINVAL);
+         	}
+
+
+>> But from your follow suggest, I think you agree to update driver cod=
+e,
+>> and just mark
+>> old prop with deprecated flag. If so I think such code would not be =
+wrong
+>>
+>> -       if (of_property_read_u32(dp_node, "samsung,color-space",
+>> +      if (of_property_read_u32(dp_node, "analogix,color-space",
+> It looks wrong because it breaks backward compatibility with existing
+> DTB. As I said before:
+>>>> 1. Provide backward compatibility. Mark old properties
+>>>> as deprecated but still support them.
+>
+>> And actually @Rob have suggest me to remove the prefix, just use
+>> "color-space" here.
+> For new bindings I don't mind. But please remember about existing use=
+rs,
+> existing DTB and bisectability.
+>
+>>>> Let me show same examples, make
+>>>> me understand your suggest rightly.
+>>> exynos-dp already contains deprecated properties. Other ways of doi=
+ng
+>>> this would be:
+>>> Documentation/devicetree/bindings/input/touchscreen/touchscreen.txt
+>>> Documentation/devicetree/bindings/rtc/s3c-rtc.txt
+>>>
+>>> It depends up to you. The "touchscreen" looks good because it organ=
+izes
+>>> old properties in a common section. In case of exynos-dp.txt you ca=
+n add
+>>> at beginning of file information about new bindings and mark everyt=
+hing
+>>> deprecated.
+>> Whoops, thanks for your remind, I prefer the "touchscreen" style.
+>>
+>>>> 1. "samsung,ycbcr-coeff" is abandoned in latest analogix-dp driver=
+,
+>>>> absolutely
+>>>>       I should not carry this to analogix-dp.txt document. But I s=
+hould
+>>>> keep this in
+>>>>       exynos-dp.txt document, and mark them with an little
+>>>> "deprecated" flag.
+>>>>
+>>>> [Documentation/devicetree/bindings/video/exynos_dp.txt]
+>>>> Required properties for dp-controller:
+>>>>      [...]
+>>>>       -samsung,ycbcr-coeff (DEPRECATED):
+>>>>           YCbCr co-efficients for input video.
+>>>>               COLOR_YCBCR601 =3D 0, COLOR_YCBCR709 =3D 1
+>>>>
+>>>> Is it right ?
+>>> Yes, this is right.
+>>>
+>>>>> 2. Separate all DTS changes to a separate patch, unless bisectabi=
+lity
+>>>>> would be hurt. Anyway you should prepare it in a such way that
+>>>>> separation would be possible without breaking bisectability.
+>>>> So I should separate this patch into two parts, one is name "Docum=
+ent:",
+>>>> the other is "ARM: dts: ".
+>>> Yes.
+>>>
+>>>> Honestly, I don't understand what the "bisectability" means in thi=
+s
+>>>> case.
+>>> I was referring to bisectability in general. The patchset should be
+>>> fully bisectable which means that it does not introduce any issues
+>>> during "git bisect". This effectively means that at each intermedia=
+te
+>>> step (after applying each patch, one by one) every existing stuff w=
+orks
+>>> the same as previously without any regression. Including booting wi=
+th
+>>> old DTB.
+>> Oh, thanks for your careful explain, so I guess your first comment i=
+s
+>> talking about
+>> the "bisectability" that if I only apply the 01 - 05 patches, kernel
+>> could not bootup
+>> normally, cause driver need "analogix,color-space" but DTB only have
+>> "samsung,color-space".
+> Right. In the same time please remember that kernel may be booted wit=
+h
+> old DTB.
+
+Okay, thanks a lot  ;)
+
+- Yakir
+
+> Best regards,
+> Krzysztof
+>
+>
+>
