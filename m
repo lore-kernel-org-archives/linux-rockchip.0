@@ -1,47 +1,54 @@
-From: Michael Niewoehner <linux@mniewoehner.de>
-Subject: [PATCH v3] clk: rockchip: add pclk_cpu to the list of rk3188 critical  clocks
-Date: Tue, 25 Aug 2015 22:22:07 +0200
-Message-ID: <8804658D-175F-4668-BC12-4AC439438B61@mniewoehner.de>
-References: <5400BEF8-5245-4F7B-845B-D326A7BC56B5@mniewoehner.de> <5275855.eah07vmf4I@phil> <9DBF9CCE-196E-43FB-BA76-BFB4B5F47A22@mniewoehner.de> <10213368.VjAQGt7Kjq@phil> <F5234F5E-2A91-4B63-B260-3F20A4D16A9D@mniewoehner.de> <20150825185931.31346.26497@quantum>
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150825185931.31346.26497@quantum>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linus.walleij@linaro.org
+From: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v16 3/4] soc: rockchip: power-domain: Add power domain driver
+Date: Tue, 25 Aug 2015 13:57:16 -0700
+Message-ID: <7hwpwjaxxv.fsf@deeprootsystems.com>
+References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com>
+	<1440487486-6154-4-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1440487486-6154-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> (Caesar
+	Wang's message of "Tue, 25 Aug 2015 15:24:45 +0800")
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-pclk_cpu needs to keep running because it is needed for devices like
-the act8865 regulator but with the recent gpio clock handling this is
-not always the case anymore. So add it to the list of critical clocks.
+Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
 
-Signed-off-by: Michael Niewoehner <linux@mniewoehner.de>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-Changes in v3:
-- fix git format-patch problem
+> This driver is found on RK3288 SoCs.
+>
+> In order to meet high performance and low power requirements, a power
+> management unit is designed or saving power when RK3288 in low power
+> mode.
+> The RK3288 PMU is dedicated for managing the power of the whole chip.
+>
+> PMU can work in the Low Power Mode by setting bit[0] of PMU_PWRMODE_CON
+> register. After setting the register, PMU would enter the Low Power mode.
+> In the low power mode, pmu will auto power on/off the specified power
+> domain, send idle req to specified power domain, shut down/up pll and
+> so on. All of above are configurable by setting corresponding registers.
+>
+> Signed-off-by: jinkun.hong <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Changes in v2:
-- adapt commit message
-- add Linus Walleij to recipients, as the patch is related to the gpio clock
- change in the rockchip pinctrl driver it should go through his tree as well
+[...]
 
- drivers/clk/rockchip/clk-rk3188.c | 1 +
- 1 file changed, 1 insertion(+)
+> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+> new file mode 100644
+> index 0000000..87a09c3
+> --- /dev/null
+> +++ b/drivers/soc/rockchip/Kconfig
+> @@ -0,0 +1,13 @@
+> +#
+> +# Rockchip Soc drivers
+> +#
+> +config PM_GENERIC_DOMAINS
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index ed02bbc..f63a642 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -716,6 +716,7 @@ static const char *const rk3188_critical_clocks[] __initconst = {
- 	"aclk_cpu",
- 	"aclk_peri",
- 	"hclk_peri",
-+	"pclk_cpu",
- };
- 
- static void __init rk3188_common_clk_init(struct device_node *np)
--- 
-2.5.0
+Why are you (re)defining this config option?  This name is already used in kernel/pm/Kconfig.
+
+Kevin
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
