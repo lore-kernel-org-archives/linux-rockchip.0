@@ -1,82 +1,81 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v5 4/6] drm: bridge/dw_hdmi-i2s-audio: add
-	audio driver
-Date: Tue, 25 Aug 2015 07:52:22 +0100
-Message-ID: <20150825065222.GG27431@sirena.org.uk>
-References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
- <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
- <20150808153540.GL7557@n2100.arm.linux.org.uk>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: register pll mux before pll itself
+Date: Tue, 25 Aug 2015 08:53:15 +0200
+Message-ID: <2414716.nTJ39zAhgn@phil>
+References: <7060610.CC2Q1RMG2L@phil>
+ <CAD=FV=UG_QkU0W5tpb3Y7zxuq6X7dtQmC4m5_j9vMtJgjdiquQ@mail.gmail.com>
+ <20150824234319.GG14330@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4277342809764043343=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20150808153540.GL7557@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, David Airlie <airlied@linux.ie>, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Paul Bolle <pebolle@tiscali.nl>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150824234319.GG14330-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Montag, 24. August 2015, 16:43:19 schrieb Stephen Boyd:
+> On 08/24, Doug Anderson wrote:
+> > Heiko
+> > 
+> > On Wed, Aug 19, 2015 at 6:06 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > > The structure is xin24m -> pll -> pll-mux (xin24m,pll,xin32k). The pll
+> > > does have an init callback to make sure the boot-selected frequency is
+> > > using the expected pll settings and resets the same frequency using
+> > > the values provided in the driver if necessary.
+> > > 
+> > > The setting itself also involves remuxing the pll-mux temporarily to
+> > > the xin24m source to let the new pll rate settle. Until now this worked
+> > > flawlessly, even when it had the flaw of accessing the mux settings
+> > > before the mux actually got registered.
+> > > 
+> > > With the recent clock-core conversions this flaw became apparent in
+> > > null pointer dereference in
+> > > [<c03fc400>] (clk_hw_get_num_parents) from [<c0400df0>]
+> > > (clk_mux_get_parent+0x14/0xc8) [<c0400ddc>] (clk_mux_get_parent) from
+> > > [<c040246c>] (rockchip_rk3066_pll_set_rate+0xd8/0x320)
+> > > 
+> > > So to fix that, simply register the pll-mux before the pll, so that
+> > > it will be fully initialized when the pll clock executes its init-
+> > > callback and possibly touches the pll-mux clock.
+> > > 
+> > > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > > ---
+> > > This only surfaced with the clk_core changes for 4.3, so should
+> > > probably just go on top.
+> > > 
+> > >  drivers/clk/rockchip/clk-pll.c | 63
+> > >  +++++++++++++++++++++--------------------- 1 file changed, 32
+> > >  insertions(+), 31 deletions(-)
+> > 
+> > Fixes boot crash on rk3288-veyron-jerry on next-20150824.  It'd be
+> > super great to get this landed somewhere so that we can boot linuxnext
+> > again.  :)
+> > 
+> > Tested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> So I understand the fix, but how could it have ever possibly
+> worked flawlessly? clk_mux_get_parent() should have returned
+> -EINVAL through that u8 which would have meant that the check in
+> rockchip_rk3066_pll_set_rate() for cur_parent == PLL_MODE_NORM
+> would never have been true, and we would never have switched the
+> PLL mux over. I guess we've been getting away with this because
+> we don't need to actually switch the mux at this time?
 
---===============4277342809764043343==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="S5HS5MvDw4DmbRmb"
-Content-Disposition: inline
+The manual mandates the switch away from the pll source before touching the 
+pll settings, aka to the slow mode from the 24MHz source. I guess we were 
+lucky it simply still worked nevertheless.
 
-
---S5HS5MvDw4DmbRmb
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sat, Aug 08, 2015 at 04:35:41PM +0100, Russell King - ARM Linux wrote:
-> On Sat, Jun 20, 2015 at 12:28:15AM +0800, Yakir Yang wrote:
-> > Add ALSA based HDMI I2S audio driver for dw_hdmi. Sound card
-> > driver could connect to this codec through the codec dai name
-> > "dw-hdmi-i2s-audio".
-
-> I'm applying this patch to my tree with some changes.  I haven't seen
-> anyone ack it, nor review it any further.  I'm hoping someone can ack
-> this patch with the following changes below - I'll be posting it as
-> part of my dw-hdmi devel updates later today.
-
-I'm pretty sure I deleted this patch unread because what shows up in my
-inbox is:
-
-->  197   C 08/08 Russell King -  (1.1K) =E2=94=82 =E2=94=94=E2=94=80>Re: [=
-PATCH v5 4/6] drm: bridge/dw_
-
-so there's no indication that it's anything to do with audio :(
-
---S5HS5MvDw4DmbRmb
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV3BCmAAoJECTWi3JdVIfQ01kH/1joG0/ST3gc1zTn/Tjd/pKb
-0dOJ4AjrbVD/f7YAKpB+6umDmXA9jPBl1lbkPQdn1pOucTVEi/3xe+gn3bvUoRje
-xLTlwrpS5B37rpnolcz8gQVoVu+JNrgwvvxodmbfmT7G6UG8Q6lm1+ZMERqRRcmD
-gCAszOCxtJxrXUpWR08vIOmUoWgW7DmGWHe+SttGZytHDUf+QJNIOUW9cQ9FfJtX
-fK0T94/DcR0rvjOl9sEbXEEtcMjgsxxTr2rtxe7HXJzg8vCebxRbXIiKD1V3JZPr
-jX0oQ7n1B4qsO9mjQam1Q5DSWOqolERNU1e5KaPujrMxwqmdFEGQhnV0SRcOfw4=
-=vliN
------END PGP SIGNATURE-----
-
---S5HS5MvDw4DmbRmb--
-
---===============4277342809764043343==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============4277342809764043343==--
+In normal rate changes both clocks will have been registered already, so only 
+the init callback is affected and also only runs on plls that generate the rate 
+from a different settings-touple that what we have in the rate-table, so not 
+even all plls normally.
