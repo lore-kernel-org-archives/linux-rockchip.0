@@ -1,119 +1,82 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for
- analogix_dp
-Date: Tue, 25 Aug 2015 09:37:13 +0800
-Message-ID: <55DBC6C9.8030705@rock-chips.com>
-References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
- <55DA9B72.1030804@samsung.com> <55DB1281.9070502@rock-chips.com>
- <18468783.Lfl8UEMQ1s@phil>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v5 4/6] drm: bridge/dw_hdmi-i2s-audio: add
+	audio driver
+Date: Tue, 25 Aug 2015 07:52:22 +0100
+Message-ID: <20150825065222.GG27431@sirena.org.uk>
+References: <1434730417-10629-1-git-send-email-ykk@rock-chips.com>
+ <1434731295-11060-1-git-send-email-ykk@rock-chips.com>
+ <20150808153540.GL7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <18468783.Lfl8UEMQ1s@phil>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robherring2@gmail.com>, Sean Paul <seanpaul@google.com>, Takashi Iwai <tiwai@suse.de>, dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, Vincent Palatin <vpalatin@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, David Airlie <airlied@linux.ie>, Doug Anderson <dianders@google.com>, Inki Dae <inki.dae@samsung.com>, Ajay kumar <ajaynumb@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-arm-kern
+Content-Type: multipart/mixed; boundary="===============4277342809764043343=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20150808153540.GL7557@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel <alsa-devel@alsa-project.org>, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, David Airlie <airlied@linux.ie>, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Paul Bolle <pebolle@tiscali.nl>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
 
-=E5=9C=A8 2015/8/24 21:03, Heiko Stuebner =E5=86=99=E9=81=93:
-> Hi Yakir,
->
-> Am Montag, 24. August 2015, 20:48:01 schrieb Yakir Yang:
->> =E5=9C=A8 08/24/2015 12:20 PM, Krzysztof Kozlowski =E5=86=99=E9=81=93=
-:
->>> On 24.08.2015 11:42, Yakir Yang wrote:
->>>> Hi Krzysztof,
->>>>
->>>> =E5=9C=A8 08/23/2015 07:43 PM, Krzysztof Kozlowski =E5=86=99=E9=81=
-=93:
->>>>> 2015-08-24 8:23 GMT+09:00 Rob Herring <robherring2@gmail.com>:
->>>>>> On Wed, Aug 19, 2015 at 9:50 AM, Yakir Yang <ykk@rock-chips.com>=
- wrote:
->>>>>>> Analogix dp driver is split from exynos dp driver, so we just
->>>>>>> make an copy of exynos_dp.txt, and then simplify exynos_dp.txt
->>>>>>>
->>>>>>> Beside update some exynos dtsi file with the latest change
->>>>>>> according to the devicetree binding documents.
->>>>>> You can't just change the exynos bindings and break compatibilit=
-y. Is
->>>>>> there some agreement with exynos folks to do this?
->>>>> No, there is no agreement. This wasn't even sent to Exynos mainta=
-iners.
->>>> Sorry about this one, actually I have add Exynos maintainers in ve=
-rsion
->>>> 1 & version 2,
->>>> but lose some maintainers in version 3, I would fix it in bellow
->>>> versions.
->>>>
->>>>> Additionally the patchset did not look interesting to me because =
-of
->>>>> misleading subject - Documentation instead of "ARM: dts:".
->>>>>
->>>>> Yakir, please:
->>>>> 1. Provide backward compatibility. Mark old properties as depreca=
-ted
->>>>> but still support them.
->>>> Do you mean that I should keep the old properties declare in
->>>> exynos-dp.txt,
->>>> but just mark them as deprecated flag.
->>> That is one of ways how to do this. However more important is that
->>> driver should still support old bindings so such code:
->>> -       if (of_property_read_u32(dp_node, "samsung,color-space",
->>> +       if (of_property_read_u32(dp_node, "analogix,color-space",
->>>
->>> is probably wrong. Will the driver support old DTB in the same way =
-as it
->>> was supporting before the change?
->> Okay, I got your means. So document is not the focus, the most impor=
-tant
->> is that
->> driver should support the old dts prop. If so the new analogix dp dr=
-iver
->> should keep
->> the "samsung,color-space", rather then just mark it with [DEPRECATED=
-] flag.
->>
->> But from your follow suggest, I think you agree to update driver cod=
-e,
->> and just mark
->> old prop with deprecated flag. If so I think such code would not be =
-wrong
->>
->> -       if (of_property_read_u32(dp_node, "samsung,color-space",
->> +      if (of_property_read_u32(dp_node, "analogix,color-space",
-> In a generic driver, the property should have either none, or the ana=
-logix
-> prefix. But DT-properties need to be backwards compatible, meaning an=
- older
-> Exynos devicetree should run unmodified with a newer kernel.
->
-> So the common course of action is to mark the old one as deprecated b=
-ut still
-> test for both, so something like:
->
->         if (of_property_read_u32(dp_node, "analogix,color-space",
->                                   &dp_video_config->color_space))
-> 	       if (of_property_read_u32(dp_node, "samsung,color-space",
->                  	                 &dp_video_config->color_space)) {
->
->                  	dev_err(dev, "failed to get color-space\n");
->                  	return ERR_PTR(-EINVAL);
->          	}
->
+--===============4277342809764043343==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="S5HS5MvDw4DmbRmb"
+Content-Disposition: inline
 
-Wow, thanks a lot for your explain and code, it do help me to understan=
-d
-this suggest rightly  :-)
 
-Thanks,
-- Yakir
+--S5HS5MvDw4DmbRmb
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
->
->
->
->
->
+On Sat, Aug 08, 2015 at 04:35:41PM +0100, Russell King - ARM Linux wrote:
+> On Sat, Jun 20, 2015 at 12:28:15AM +0800, Yakir Yang wrote:
+> > Add ALSA based HDMI I2S audio driver for dw_hdmi. Sound card
+> > driver could connect to this codec through the codec dai name
+> > "dw-hdmi-i2s-audio".
+
+> I'm applying this patch to my tree with some changes.  I haven't seen
+> anyone ack it, nor review it any further.  I'm hoping someone can ack
+> this patch with the following changes below - I'll be posting it as
+> part of my dw-hdmi devel updates later today.
+
+I'm pretty sure I deleted this patch unread because what shows up in my
+inbox is:
+
+->  197   C 08/08 Russell King -  (1.1K) =E2=94=82 =E2=94=94=E2=94=80>Re: [=
+PATCH v5 4/6] drm: bridge/dw_
+
+so there's no indication that it's anything to do with audio :(
+
+--S5HS5MvDw4DmbRmb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV3BCmAAoJECTWi3JdVIfQ01kH/1joG0/ST3gc1zTn/Tjd/pKb
+0dOJ4AjrbVD/f7YAKpB+6umDmXA9jPBl1lbkPQdn1pOucTVEi/3xe+gn3bvUoRje
+xLTlwrpS5B37rpnolcz8gQVoVu+JNrgwvvxodmbfmT7G6UG8Q6lm1+ZMERqRRcmD
+gCAszOCxtJxrXUpWR08vIOmUoWgW7DmGWHe+SttGZytHDUf+QJNIOUW9cQ9FfJtX
+fK0T94/DcR0rvjOl9sEbXEEtcMjgsxxTr2rtxe7HXJzg8vCebxRbXIiKD1V3JZPr
+jX0oQ7n1B4qsO9mjQam1Q5DSWOqolERNU1e5KaPujrMxwqmdFEGQhnV0SRcOfw4=
+=vliN
+-----END PGP SIGNATURE-----
+
+--S5HS5MvDw4DmbRmb--
+
+--===============4277342809764043343==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============4277342809764043343==--
