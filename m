@@ -1,49 +1,48 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RESEND PATCH v1 0/1] A misjudgement should be fixed
-Date: Tue, 25 Aug 2015 17:33:04 +0100
-Message-ID: <20150825163304.GC12878@sirena.org.uk>
-References: <1440489162-28270-1-git-send-email-zhengxing@rock-chips.com>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 1/2] Rockchip dts fixes for 4.3
+Date: Tue, 25 Aug 2015 10:16:24 -0700
+Message-ID: <CAOesGMgcDkj3EpT9owhtgMaG7TeFr8BhRCQ4dCTwHDG3_Uva6w@mail.gmail.com>
+References: <1879932.6Bpqy7C2KO@phil>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vOmOzSkFvhd7u8Ms"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1440489162-28270-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1879932.6Bpqy7C2KO@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org" <arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Tue, Aug 25, 2015 at 2:25 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Hi Arnd, Kevin, Olof
+>
+> Brian found two issues with regulator suspend-properties of the newly
+> added veyron boards, so please pull these fixes on top.
+>
+>
+> Thanks
+> Heiko
+>
+> The following changes since commit 378abcdf3297613f6712343ce3a79b7d6abdf955:
+>
+>   ARM: dts: rockchip: add veyron-minnie board (2015-08-08 12:31:27 +0200)
+>
+> are available in the git repository at:
+>
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.3-rockchip32-dts3
+>
+> for you to fetch changes up to 467fb18a8d538be6548ef4093003b63aebbb07b9:
+>
+>   ARM: dts: rockchip: correct regulator power states for suspend (2015-08-21 01:40:35 +0200)
 
---vOmOzSkFvhd7u8Ms
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Merged, thanks!
 
-On Tue, Aug 25, 2015 at 03:52:41PM +0800, Xing Zheng wrote:
->=20
-> Hi,
-> Being careless, judge the return value of snd_soc_card_jack_new
-> is opposite, so it should be fixed.
-
-Please don't send cover letters for single patches, if there is anything
-useful it should either be in the changelog or after the --- in the
-patch.
-
---vOmOzSkFvhd7u8Ms
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV3Ji/AAoJECTWi3JdVIfQtXwH/jmiEd/YFkh1bjoGQDnHZyOL
-F+K6m3BCcpbU9bI1cJ6oQGb4gTRNFXYCmqKhT+w2+q7bghsBtZg4VCd6DuSExa54
-gtxksZns3ZD4LXCSCHRrIx3A/LgOH0f+WKVuUgmVjovXE8QNyjSc9w1xubF9rGwk
-M36bLNclYUi2XSAGW33Q3Jsi4K2QsRDV2GXrqjyvKau46EsWh0H5MIh5XKFzPqH1
-HBf+5Rpl7HAzNR79K93a9xCNZgesEmzM84CHP53zRfA1fXW2tg1Myj0nhBBF2YVF
-TIGd82pCKLqZKq1SPAONn5QAOiYmE06Z85SVRue6xbI+O5Qsjwnnp+YhlFTALUU=
-=qsWF
------END PGP SIGNATURE-----
-
---vOmOzSkFvhd7u8Ms--
+-Olof
