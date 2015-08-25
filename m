@@ -1,53 +1,49 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v3 06/14] Documentation: drm/bridge: add document for
- analogix_dp
-Date: Tue, 25 Aug 2015 16:57:52 +0100
-Message-ID: <20150825155752.GU7557@n2100.arm.linux.org.uk>
-References: <1439995728-18046-1-git-send-email-ykk@rock-chips.com>
- <1439995834-18363-1-git-send-email-ykk@rock-chips.com>
- <20150825095817.GC14034@ulmo.nvidia.com>
- <55DC75C8.209@rock-chips.com>
- <20150825142150.GB3820@ulmo.nvidia.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [RESEND PATCH v1 0/1] A misjudgement should be fixed
+Date: Tue, 25 Aug 2015 17:33:04 +0100
+Message-ID: <20150825163304.GC12878@sirena.org.uk>
+References: <1440489162-28270-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="vOmOzSkFvhd7u8Ms"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150825142150.GB3820@ulmo.nvidia.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Thierry Reding <treding@nvidia.com>
-Cc: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, djkurtz@google.com, dianders@google.com, seanpaul@google.com, Takashi Iwai <tiwai@suse.de>, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Vincent Palatin <vpalatin@chromium.org>, Mark Yao <mark.yao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.orgl
+In-Reply-To: <1440489162-28270-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 25, 2015 at 04:21:51PM +0200, Thierry Reding wrote:
-> You cited code from dw_hdmi.c earlier, it looks like it might be correct
-> even though it doesn't cite a reference for why this was done. Perhaps
-> someone on this thread, or someone involved with dw_hdmi can answer
-> where that code came from.
 
-dw_hdmi doesn't do any format conversion - it's hard coded to RGB, 8
-bits per colour component.  That's a requirement for all HDMI sinks.
+--vOmOzSkFvhd7u8Ms
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The reason it's hard-coded in dw_hdmi is that (a) no one has yet decided
-its worth the effort to get the dw_hdmi hardware to do the colourspace
-conversion to the YUV spaces and verify that it works, and (b) I really
-don't see the point when we're talking about computer like devices which
-work primerily with RGB and RGB is always supported by the sink.
+On Tue, Aug 25, 2015 at 03:52:41PM +0800, Xing Zheng wrote:
+>=20
+> Hi,
+> Being careless, judge the return value of snd_soc_card_jack_new
+> is opposite, so it should be fixed.
 
-As far as greater colour depths go, the driver came from the Freescale
-iMX6 code base, and the hardware which feeds dw_hdmi can't do more than
-8 bits per component - so going to 10, 12 or 16 bits per component is
-beyond what iMX6 can cope with.  Hence, no one on the iMX6 side has a
-need for the deep colour stuff.
+Please don't send cover letters for single patches, if there is anything
+useful it should either be in the changelog or after the --- in the
+patch.
 
-In any case, I view this as a very low priority issue - it would be nice
-to have audio support on HDMI for iMX6 at some point in the next 20 years,
-preferably before the hardware becomes obsolete.  I've been maintaining
-patches for this for 1.5 years now... how much longer is it going to take?
-My pull request to David from 15th July was ignored.  My re-send of that
-after he returned was ignored.  My reminder of it has been ignored.  What's
-going on in DRM land?  It would be nice to get _some_ kind of feedback so
-I know why they're not being taken, so I can fix whatever the issue is.
+--vOmOzSkFvhd7u8Ms
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
--- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV3Ji/AAoJECTWi3JdVIfQtXwH/jmiEd/YFkh1bjoGQDnHZyOL
+F+K6m3BCcpbU9bI1cJ6oQGb4gTRNFXYCmqKhT+w2+q7bghsBtZg4VCd6DuSExa54
+gtxksZns3ZD4LXCSCHRrIx3A/LgOH0f+WKVuUgmVjovXE8QNyjSc9w1xubF9rGwk
+M36bLNclYUi2XSAGW33Q3Jsi4K2QsRDV2GXrqjyvKau46EsWh0H5MIh5XKFzPqH1
+HBf+5Rpl7HAzNR79K93a9xCNZgesEmzM84CHP53zRfA1fXW2tg1Myj0nhBBF2YVF
+TIGd82pCKLqZKq1SPAONn5QAOiYmE06Z85SVRue6xbI+O5Qsjwnnp+YhlFTALUU=
+=qsWF
+-----END PGP SIGNATURE-----
+
+--vOmOzSkFvhd7u8Ms--
