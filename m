@@ -1,73 +1,46 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [RESEND PATCH v16 3/4] soc: rockchip: power-domain: Add power
- domain driver
-Date: Wed, 26 Aug 2015 17:27:59 +0800
-Message-ID: <55DD869F.9010309@rock-chips.com>
-References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com> <1440487486-6154-4-git-send-email-wxt@rock-chips.com> <7hwpwjaxxv.fsf@deeprootsystems.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2] ASoC: rockchip: fix a misjudgement by return
+Date: Wed, 26 Aug 2015 11:48:19 +0100
+Message-ID: <20150826104819.GO12878@sirena.org.uk>
+References: <1440559244-17634-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="zBPbvmIlJjvpbu6L"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7hwpwjaxxv.fsf@deeprootsystems.com>
+Content-Disposition: inline
+In-Reply-To: <1440559244-17634-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, ulf.hansson@linaro.org, linux@arm.linux.org.uk, heiko@sntech.de, arnd@arndb.de, ijc+devicetree@hellion.org.uk, linux-kernel@vger.kernel.org, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, tomasz.figa@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, "jinkun.hong" <jinkun.hong@rock-chips.com>, robh+dt@kernel.org, galak@codeaurora.org, linux-arm-kernel@lists.infradead.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
+--zBPbvmIlJjvpbu6L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-=E5=9C=A8 2015=E5=B9=B408=E6=9C=8826=E6=97=A5 04:57, Kevin Hilman =E5=86=
-=99=E9=81=93:
-> Caesar Wang <wxt@rock-chips.com> writes:
->
->> This driver is found on RK3288 SoCs.
->>
->> In order to meet high performance and low power requirements, a powe=
-r
->> management unit is designed or saving power when RK3288 in low power
->> mode.
->> The RK3288 PMU is dedicated for managing the power of the whole chip=
-=2E
->>
->> PMU can work in the Low Power Mode by setting bit[0] of PMU_PWRMODE_=
-CON
->> register. After setting the register, PMU would enter the Low Power =
-mode.
->> In the low power mode, pmu will auto power on/off the specified powe=
-r
->> domain, send idle req to specified power domain, shut down/up pll an=
-d
->> so on. All of above are configurable by setting corresponding regist=
-ers.
->>
->> Signed-off-by: jinkun.hong <jinkun.hong@rock-chips.com>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> [...]
->
->> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kco=
-nfig
->> new file mode 100644
->> index 0000000..87a09c3
->> --- /dev/null
->> +++ b/drivers/soc/rockchip/Kconfig
->> @@ -0,0 +1,13 @@
->> +#
->> +# Rockchip Soc drivers
->> +#
->> +config PM_GENERIC_DOMAINS
-> Why are you (re)defining this config option?  This name is already us=
-ed in kernel/pm/Kconfig.
+On Wed, Aug 26, 2015 at 11:20:44AM +0800, Xing Zheng wrote:
+> Being careless, judge the return value of snd_soc_card_jack_new
+> is opposite, so it should be fixed.
 
-=46ixed.
+This patch has been applied already.  If any changes are required to
+already applied patches please send incremental patches against current
+code.
 
-----
-Thanks,
-Caesar
+--zBPbvmIlJjvpbu6L
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
-> Kevin
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV3ZlyAAoJECTWi3JdVIfQiLMH/jLj7Msvqqqi2s7gpGDTuFax
+kNAkQ26s129Q9MbpDcjgYZ+QBpYYAhAl+W823bSzGq9R1E273DwlEodXZvL3FUo8
+X8ddoIX3V9UfhUiMtHR6WfivxqGoP6/6wEQZnF18LmjYT9K2hJsvpEFdIKyos25q
+EWVXFSEfZGFX+0Jr+2GB9v0lPWo+TnDtOjOsql4dzQjPv1zZu1TcvxdPcs0OrPjg
+0GVoG29VO9UI98on7XX+HQg79KyUR498XAgGtxMZZAW1AETVruNsVZhCDeAa1Qw6
+VIn30NKiE5BcQEL/0p/CKGVkDUumy799IpwUTC1jTxzVmxve5D2ZePbECvWsem4=
+=+pcx
+-----END PGP SIGNATURE-----
+
+--zBPbvmIlJjvpbu6L--
