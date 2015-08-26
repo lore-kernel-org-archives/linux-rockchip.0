@@ -1,46 +1,89 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2] ASoC: rockchip: fix a misjudgement by return
-Date: Wed, 26 Aug 2015 11:48:19 +0100
-Message-ID: <20150826104819.GO12878@sirena.org.uk>
-References: <1440559244-17634-1-git-send-email-zhengxing@rock-chips.com>
+From: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] clk: rockchip: register pll mux before pll itself
+Date: Wed, 26 Aug 2015 14:47:30 -0700
+Message-ID: <CAMAWPa_6pY3cGBpSWH1soKfEThgd_X3-iq9tO6O25-edzFVuyg@mail.gmail.com>
+References: <7060610.CC2Q1RMG2L@phil>
+ <CAD=FV=UG_QkU0W5tpb3Y7zxuq6X7dtQmC4m5_j9vMtJgjdiquQ@mail.gmail.com>
+ <20150824234319.GG14330@codeaurora.org> <2414716.nTJ39zAhgn@phil>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="zBPbvmIlJjvpbu6L"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1440559244-17634-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2414716.nTJ39zAhgn@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Aug 24, 2015 at 11:53 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Am Montag, 24. August 2015, 16:43:19 schrieb Stephen Boyd:
+>> On 08/24, Doug Anderson wrote:
+>> > Heiko
+>> >
+>> > On Wed, Aug 19, 2015 at 6:06 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+>> > > The structure is xin24m -> pll -> pll-mux (xin24m,pll,xin32k). The pll
+>> > > does have an init callback to make sure the boot-selected frequency is
+>> > > using the expected pll settings and resets the same frequency using
+>> > > the values provided in the driver if necessary.
+>> > >
+>> > > The setting itself also involves remuxing the pll-mux temporarily to
+>> > > the xin24m source to let the new pll rate settle. Until now this worked
+>> > > flawlessly, even when it had the flaw of accessing the mux settings
+>> > > before the mux actually got registered.
+>> > >
+>> > > With the recent clock-core conversions this flaw became apparent in
+>> > > null pointer dereference in
+>> > > [<c03fc400>] (clk_hw_get_num_parents) from [<c0400df0>]
+>> > > (clk_mux_get_parent+0x14/0xc8) [<c0400ddc>] (clk_mux_get_parent) from
+>> > > [<c040246c>] (rockchip_rk3066_pll_set_rate+0xd8/0x320)
+>> > >
+>> > > So to fix that, simply register the pll-mux before the pll, so that
+>> > > it will be fully initialized when the pll clock executes its init-
+>> > > callback and possibly touches the pll-mux clock.
+>> > >
+>> > > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> > > ---
+>> > > This only surfaced with the clk_core changes for 4.3, so should
+>> > > probably just go on top.
+>> > >
+>> > >  drivers/clk/rockchip/clk-pll.c | 63
+>> > >  +++++++++++++++++++++--------------------- 1 file changed, 32
+>> > >  insertions(+), 31 deletions(-)
+>> >
+>> > Fixes boot crash on rk3288-veyron-jerry on next-20150824.  It'd be
+>> > super great to get this landed somewhere so that we can boot linuxnext
+>> > again.  :)
+>> >
+>> > Tested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>
+>> So I understand the fix, but how could it have ever possibly
+>> worked flawlessly? clk_mux_get_parent() should have returned
+>> -EINVAL through that u8 which would have meant that the check in
+>> rockchip_rk3066_pll_set_rate() for cur_parent == PLL_MODE_NORM
+>> would never have been true, and we would never have switched the
+>> PLL mux over. I guess we've been getting away with this because
+>> we don't need to actually switch the mux at this time?
+>
+> The manual mandates the switch away from the pll source before touching the
+> pll settings, aka to the slow mode from the 24MHz source. I guess we were
+> lucky it simply still worked nevertheless.
+>
+> In normal rate changes both clocks will have been registered already, so only
+> the init callback is affected and also only runs on plls that generate the rate
+> from a different settings-touple that what we have in the rate-table, so not
+> even all plls normally.
 
---zBPbvmIlJjvpbu6L
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+FYI... I also confirm this patch is needed to boot linux-next on the
+rk3288-veyron-jerry.
 
-On Wed, Aug 26, 2015 at 11:20:44AM +0800, Xing Zheng wrote:
-> Being careless, judge the return value of snd_soc_card_jack_new
-> is opposite, so it should be fixed.
+Tested-by: Kevin Hilman <khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
-This patch has been applied already.  If any changes are required to
-already applied patches please send incremental patches against current
-code.
-
---zBPbvmIlJjvpbu6L
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV3ZlyAAoJECTWi3JdVIfQiLMH/jLj7Msvqqqi2s7gpGDTuFax
-kNAkQ26s129Q9MbpDcjgYZ+QBpYYAhAl+W823bSzGq9R1E273DwlEodXZvL3FUo8
-X8ddoIX3V9UfhUiMtHR6WfivxqGoP6/6wEQZnF18LmjYT9K2hJsvpEFdIKyos25q
-EWVXFSEfZGFX+0Jr+2GB9v0lPWo+TnDtOjOsql4dzQjPv1zZu1TcvxdPcs0OrPjg
-0GVoG29VO9UI98on7XX+HQg79KyUR498XAgGtxMZZAW1AETVruNsVZhCDeAa1Qw6
-VIn30NKiE5BcQEL/0p/CKGVkDUumy799IpwUTC1jTxzVmxve5D2ZePbECvWsem4=
-=+pcx
------END PGP SIGNATURE-----
-
---zBPbvmIlJjvpbu6L--
+Kevin
