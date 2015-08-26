@@ -1,37 +1,47 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2] ASoC: rockchip: fix a misjudgement by return
-Date: Wed, 26 Aug 2015 11:20:44 +0800
-Message-ID: <1440559244-17634-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: dgreid@chromium.org, dianders@chromium.org, heiko@sntech.de, sonnyrao@chromium.org
-Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: [GIT PULL] drm/rockchip: fixes and new features
+Date: Wed, 26 Aug 2015 14:34:21 +0800
+Message-ID: <55DD5DED.7030109@rock-chips.com>
+References: <1437962762-19157-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1437962762-19157-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Being careless, judge the return value of snd_soc_card_jack_new
-is opposite, so it should be fixed.
-
----
-
-Changes in v2:
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Reviewed-by: Dylan Reid <dgreid@chromium.org>
-
- sound/soc/rockchip/rockchip_rt5645.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index 3c6bb1e..adfe98c 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -118,7 +118,7 @@ static int rk_init(struct snd_soc_pcm_runtime *runtime)
- 				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
- 				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
- 				    &headset_jack, NULL, 0);
--	if (!ret) {
-+	if (ret) {
- 		dev_err(card->dev, "New Headset Jack failed! (%d)\n", ret);
- 		return ret;
- 	}
--- 
-1.7.9.5
+SGkgRGF2ZQogICAgIEhlcmUgYXJlIHNvbWUgZml4ZXMgYW5kIHNvbWUgbmV3IGZlYXR1cmVzIGZv
+ciByb2NrY2hpcCBkcm0sCiAgICAgdGVzdGVkIG9uIHBvcG1ldGFsIHJrMzI4OCBib2FyZCwgY2Fu
+IHlvdSBsYW5kIHRoZW0/CgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IGRiNTYx
+NzYwMjVjZWU1ZTI0MmRmZWVkNWY0ZTMwNGQwOTVkMjlmYTM6CgogICBSZXZlcnQgImRybS9hdG9t
+aWM6IENhbGwgd3dfYWNxdWlyZV9kb25lIGFmdGVyIGNoZWNrIHBoYXNlIGlzIApjb21wbGV0ZSIg
+KDIwMTUtMDgtMjUgMTc6MjM6MzYgKzEwMDApCgphcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVw
+b3NpdG9yeSBhdDoKCiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9tYXJreXpxL2tlcm5lbC1kcm0tcm9j
+a2NoaXAuZ2l0IApkcm0tcm9ja2NoaXAtMjAxNS0wOC0yNgoKZm9yIHlvdSB0byBmZXRjaCBjaGFu
+Z2VzIHVwIHRvIDRjMTU2YzIxYzc5NDhhMGJlODU0Y2JlNTkxNGFmMzE4MTMwM2U1Mjk6CgogICBk
+cm0vcm9ja2NoaXA6IHZvcDogc3VwcG9ydCBwbGFuZSBzY2FsZSAoMjAxNS0wOC0yNiAxNDoxNjoy
+NiArMDgwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0KTWFyayBZYW8gKDYpOgogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6
+IEZpeCB2aXJ0dWFsIHN0cmlkZSBjYWxjdWxhdGlvbgogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6
+IEZpeCB3aW5kb3cgZGVzdCBzdGFydCBwb2ludAogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IEFk
+ZCB5dXYgcGxhbmUgc3VwcG9ydAogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IERlZmF1bHQgZW5h
+YmxlIHdpbjIvMyBhcmVhMCBiaXQKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiByZXN0b3JlIHZv
+cCByZWdpc3RlcnMgd2hlbiByZXN1bWUKICAgICAgIGRybS9yb2NrY2hpcDogdm9wOiBzdXBwb3J0
+IHBsYW5lIHNjYWxlCgogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmMgfCAgMjY5IAorKysrKysrKysrKysrKysrKysrKysrKysrKy0KICBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5oIHwgICA4OCArKysrKysrKysKICAyIGZpbGVzIGNo
+YW5nZWQsIDM0OCBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygtKQoKLU1hcmsKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
