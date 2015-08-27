@@ -1,40 +1,81 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 0/9] dw-hdmi audio support
-Date: Thu, 27 Aug 2015 10:42:21 +0200
-Message-ID: <1440664941.3233.38.camel@pengutronix.de>
-References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
- <20150808160936.GN7557@n2100.arm.linux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20150808160936.GN7557@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/5] Fix broken DMAFLUSHP on Rockchips platform
+Date: Thu, 27 Aug 2015 16:48:00 +0800
+Message-ID: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gU2Ftc3RhZywgZGVuIDA4LjA4LjIwMTUsIDE3OjA5ICswMTAwIHNjaHJpZWIgUnVzc2VsbCBL
-aW5nIC0gQVJNCkxpbnV4Ogo+IEZvbGxvd2luZyBvbiBmcm9tIHRoZSBwcmV2aW91cyBzdWItc2Vy
-aWVzLCB0aGlzIHN1Yi1zZXJpZXMgYWRkcyBhdWRpbwo+IHN1cHBvcnQgdG8gZHctaGRtaS4KPiAK
-PiBUaGUgdHdvIGRpZmZlcmVudCB2YXJpYW50cyBhcmUgbm93IGluIHRoaXMgcGF0Y2g6IEFIQiBh
-dWRpbyBzdXBwb3J0Cj4gZm91bmQgb24gaU1YNiBwbGF0Zm9ybXMsIGFuZCBJMlMgc3VwcG9ydCBm
-b3VuZCBvbiBSb2NrY2hpcCBwYXRjaGVzLgo+IFRoYW5rcyB0byBZYWtpciBZYW5nIGZvciBjb250
-cmlidXRpbmcgdGhlIEkyUyBzdXBwb3J0Lgo+IAo+IEkgc3VzcGVjdCB0aGF0IHRoZXJlIGlzIHN0
-aWxsIHNvbWUgZGlzY3Vzc2lvbiB0byBiZSBoYWQgb24gdGhpcwo+IHNlcmllcywgdGhvdWdoIEkg
-d291bGQgbGlrZSB0byBzZWUgaXQgbW92aW5nIGZvcndhcmQgc28gdGhhdCB3ZSBjYW4KPiBnZXQg
-c29tZXRoaW5nIG1lcmdlZC4KClRlc3RlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5n
-dXRyb25peC5kZT4Kb24gaS5NWDYgR0s4MDIgdmlhIEhETUkgY29ubmVjdGVkIHRvIGEgVFYgKHN0
-ZXJlbyBvbmx5KS4KCmV4Y2VwdCBmb3IgdGhlIGkycyBwYXRjaCwgd2hpY2ggaXMgYnJva2VuIGlu
-IHRoaXMgc2VyaWVzLgoKcmVnYXJkcwpQaGlsaXBwCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+The purpose of the DMAFLUSHP instruction:
+- Tell the peripheral to clear its status and control registers.
+- Send a message to the peripheral to resend its level status.
+
+There are 3 timings described in PL330 Technical Reference Manual:
+- Timing 1: Burst request, can work well without DMAFLUSHP.
+- Timing 2: Single and burst request, DMAC will ignore the single
+	    transfer request. This timing happens if there are single
+	    and burst request.
+- Timing 3: Single transfers for a burst request, DMAC should signals
+	    datype to request the peripheral to flush the contents of
+	    any control registers. This timing happens if there is
+	    not enough MFIFO to places the burst data.
+
+A peripheral may signal a DMA request during the execution of
+DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
+
+But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
+It can't send a message to the peripheral to resend DMA request,
+and the peripheral can't acknowledge a flush request from DMAC.
+So all DMA requests should NOT be ignored by DMAC, and DMAC will not
+notify the peripheral to flush.
+
+To fix this problem, we need:
+- Do NOT execute DMAFLUSHP instruction.
+- Timing 2 and timing 3 should not happen.
+
+Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
+for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
+impossible to hit the timing 3 if burst length is equal or less than 4.
+
+Since the request type signal by the peripheral can only be set by
+software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
+or burst request, if it is set b01,  all of the peripharals will signal a brust
+request. So the timing 2 will not happen, too.
+
+So DMAC on RK3X can support single or burst transfer, but can't support
+mixed transfer.
+
+Because burst transfer is more efficient than single transfer, this is
+confirmed by our ASIC team, who strongly suggest to use burst transfer.
+And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
+spi flash burst transfer will increase about two times than single transfer.
+Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
+the result. That means burst transfer is reansonable.
+
+So we need a quirk not to execute DMAFLUSHP instruction and to use burst
+transfer.
+
+Note:
+- The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
+  support brust transfer, these bits should not be changed in bootloader.
+
+
+
+Shawn Lin (5):
+  DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+  DMA: pl330: add quirk for broken no flushp
+  ARM: dts: Add broken-no-flushp quirk for rk3288 platform
+  ARM: dts: Add broken-no-flushp quirk for rk3xxx platform
+  Documentation: arm-pl330: add description of broken-no-flushp
+
+ .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   3 +
+ arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
+ drivers/dma/pl330.c                                | 101 +++++++++++++++------
+ 4 files changed, 79 insertions(+), 29 deletions(-)
+
+-- 
+2.3.7
