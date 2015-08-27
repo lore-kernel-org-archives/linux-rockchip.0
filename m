@@ -1,49 +1,37 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 5/5] Documentation: arm-pl330: add description of arm,
- pl330-broken-no-flushp
-Date: Thu, 27 Aug 2015 22:25:05 +0800
-Message-ID: <1440685505-22247-1-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v1 0/5] Fix broken DMAFLUSHP on Rockchips platform
+Date: Thu, 27 Aug 2015 08:16:19 -0700
+Message-ID: <CAD=FV=XTG8RukPwDvVuEifNz9WGUUs3w1B26cpm8obSdV5bFTQ@mail.gmail.com>
 References: <1440685419-22037-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1440685419-22037-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Boojin Kim <boojin.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1440685419-22037-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Boojin Kim <boojin.kim@samsung.com>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Shawn,
 
----
+On Thu, Aug 27, 2015 at 7:23 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> Changes in v1:
+> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+>   by Krzysztof.
+> - add From original author.
+> - remove Sunny's tag
+>
+> Shawn Lin (5):
+>   DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+>   DMA: pl330: add quirk for broken no flushp
+>   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platform
+>   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
+>   Documentation: arm-pl330: add description of
+>     arm,pl330-broken-no-flushp
 
-Changes in v1:
-- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
-  by Krzysztof.
+Something still seems strange here.  All patches are listed in the
+cover letter as "From" you.  You should make sure you change the
+author in your git tree using "git commit --amend --author=<author>"
+so that patman can generate the proper cover letter.
 
- Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/dma/arm-pl330.txt b/Documentation/devicetree/bindings/dma/arm-pl330.txt
-index 2675658..db7e226 100644
---- a/Documentation/devicetree/bindings/dma/arm-pl330.txt
-+++ b/Documentation/devicetree/bindings/dma/arm-pl330.txt
-@@ -15,6 +15,7 @@ Optional properties:
-     cells in the dmas property of client device.
-   - dma-channels: contains the total number of DMA channels supported by the DMAC
-   - dma-requests: contains the total number of DMA requests supported by the DMAC
-+  - arm,pl330-broken-no-flushp: quirk for avoiding to execute DMAFLUSHP
- 
- Example:
- 
--- 
-2.3.7
+-Doug
