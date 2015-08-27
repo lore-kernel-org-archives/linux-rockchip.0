@@ -1,15 +1,14 @@
-From: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] clk: rockchip: register pll mux before pll itself
-Date: Wed, 26 Aug 2015 14:47:30 -0700
-Message-ID: <CAMAWPa_6pY3cGBpSWH1soKfEThgd_X3-iq9tO6O25-edzFVuyg@mail.gmail.com>
-References: <7060610.CC2Q1RMG2L@phil>
- <CAD=FV=UG_QkU0W5tpb3Y7zxuq6X7dtQmC4m5_j9vMtJgjdiquQ@mail.gmail.com>
- <20150824234319.GG14330@codeaurora.org> <2414716.nTJ39zAhgn@phil>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH 04/12] gpu: imx: fix support for interlaced modes
+Date: Thu, 27 Aug 2015 10:39:12 +0200
+Message-ID: <1440664752.3233.36.camel@pengutronix.de>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+ <E1ZO6ay-0002qh-6E@rmk-PC.arm.linux.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2414716.nTJ39zAhgn@phil>
+In-Reply-To: <E1ZO6ay-0002qh-6E-eh5Bv4kxaXIANfyc6IWni62ZND6+EDdj@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,71 +18,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+Cc: Fabio Estevam <fabio.estevam-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jon Nettleton <jon.nettleton-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Aug 24, 2015 at 11:53 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Montag, 24. August 2015, 16:43:19 schrieb Stephen Boyd:
->> On 08/24, Doug Anderson wrote:
->> > Heiko
->> >
->> > On Wed, Aug 19, 2015 at 6:06 AM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->> > > The structure is xin24m -> pll -> pll-mux (xin24m,pll,xin32k). The pll
->> > > does have an init callback to make sure the boot-selected frequency is
->> > > using the expected pll settings and resets the same frequency using
->> > > the values provided in the driver if necessary.
->> > >
->> > > The setting itself also involves remuxing the pll-mux temporarily to
->> > > the xin24m source to let the new pll rate settle. Until now this worked
->> > > flawlessly, even when it had the flaw of accessing the mux settings
->> > > before the mux actually got registered.
->> > >
->> > > With the recent clock-core conversions this flaw became apparent in
->> > > null pointer dereference in
->> > > [<c03fc400>] (clk_hw_get_num_parents) from [<c0400df0>]
->> > > (clk_mux_get_parent+0x14/0xc8) [<c0400ddc>] (clk_mux_get_parent) from
->> > > [<c040246c>] (rockchip_rk3066_pll_set_rate+0xd8/0x320)
->> > >
->> > > So to fix that, simply register the pll-mux before the pll, so that
->> > > it will be fully initialized when the pll clock executes its init-
->> > > callback and possibly touches the pll-mux clock.
->> > >
->> > > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->> > > ---
->> > > This only surfaced with the clk_core changes for 4.3, so should
->> > > probably just go on top.
->> > >
->> > >  drivers/clk/rockchip/clk-pll.c | 63
->> > >  +++++++++++++++++++++--------------------- 1 file changed, 32
->> > >  insertions(+), 31 deletions(-)
->> >
->> > Fixes boot crash on rk3288-veyron-jerry on next-20150824.  It'd be
->> > super great to get this landed somewhere so that we can boot linuxnext
->> > again.  :)
->> >
->> > Tested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>
->> So I understand the fix, but how could it have ever possibly
->> worked flawlessly? clk_mux_get_parent() should have returned
->> -EINVAL through that u8 which would have meant that the check in
->> rockchip_rk3066_pll_set_rate() for cur_parent == PLL_MODE_NORM
->> would never have been true, and we would never have switched the
->> PLL mux over. I guess we've been getting away with this because
->> we don't need to actually switch the mux at this time?
->
-> The manual mandates the switch away from the pll source before touching the
-> pll settings, aka to the slow mode from the 24MHz source. I guess we were
-> lucky it simply still worked nevertheless.
->
-> In normal rate changes both clocks will have been registered already, so only
-> the init callback is affected and also only runs on plls that generate the rate
-> from a different settings-touple that what we have in the rate-table, so not
-> even all plls normally.
+Hi Russell,
 
-FYI... I also confirm this patch is needed to boot linux-next on the
-rk3288-veyron-jerry.
+Am Samstag, den 08.08.2015, 17:03 +0100 schrieb Russell King:
+> The support for interlaced video modes seems to be broken; we don't use
+> anything other than the vtotal/htotal from the timing information to
+> define the various sync counters.
 
-Tested-by: Kevin Hilman <khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+I finally made time to test this series:
 
-Kevin
+Tested-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+on i.MX6 GK802 via HDMI connected to a TV (1080p60, 1080i60).
+
+Unfortunately these timings are completely different from what Freescale
+came up with for the TV Encoder on i.MX5, but the code we have currently
+in mainline doesn't work for that either. I suppose I'll follow up with
+a patch that adds yet another sync counter setup for the i.MX5/TVE case.
+
+I'd like to take the two ipu-v3 patches, making a few small changes on
+this one:
+
+> Freescale patches for interlaced video support contain an alternative
+> sync counter setup, which we include here.  This setup produces the
+> hsync and vsync via the normal counter 2 and 3, but moves the display
+> enable signal from counter 5 to counter 6.  Therefore, we need to
+> change the display controller setup as well.
+> 
+> The corresponding Freescale patches for this change are:
+>   iMX6-HDMI-support-interlaced-display-mode.patch
+>   IPU-fine-tuning-the-interlace-display-timing-for-CEA.patch
+> 
+> This produces a working interlace format output from the IPU.
+
+... on i.MX6 via HDMI.
+
+> Signed-off-by: Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+> ---
+>  drivers/gpu/ipu-v3/ipu-dc.c | 18 ++++++++---
+>  drivers/gpu/ipu-v3/ipu-di.c | 79 +++++++++++++++++++++------------------------
+>  2 files changed, 51 insertions(+), 46 deletions(-)
+> 
+> diff --git a/drivers/gpu/ipu-v3/ipu-dc.c b/drivers/gpu/ipu-v3/ipu-dc.c
+> index 9ef2e1f54ca4..aa560855c1dc 100644
+> --- a/drivers/gpu/ipu-v3/ipu-dc.c
+> +++ b/drivers/gpu/ipu-v3/ipu-dc.c
+> @@ -183,12 +183,22 @@ int ipu_dc_init_sync(struct ipu_dc *dc, struct ipu_di *di, bool interlaced,
+>  	}
+>  
+>  	if (interlaced) {
+> -		dc_link_event(dc, DC_EVT_NL, 0, 3);
+> -		dc_link_event(dc, DC_EVT_EOL, 0, 2);
+> -		dc_link_event(dc, DC_EVT_NEW_DATA, 0, 1);
+> +		int word, addr;
+> +
+> +		if (dc->di) {
+> +			addr = 1;
+> +			word = 1;
+
+These two are really one and the same. The address written to the link
+register for the given event has to point to the address of the
+microcode instruction written to the template memory that should be
+executed on this event.
+
+I'd like to drop the word variable and use addr for both.
+
+> +		} else {
+> +			addr = 0;
+> +			word = 0;
+> +		}
+> +
+> +		dc_link_event(dc, DC_EVT_NL, addr, 3);
+> +		dc_link_event(dc, DC_EVT_EOL, addr, 2);
+> +		dc_link_event(dc, DC_EVT_NEW_DATA, addr, 1);
+>  
+>  		/* Init template microcode */
+> -		dc_write_tmpl(dc, 0, WROD(0), 0, map, SYNC_WAVE, 0, 8, 1);
+> +		dc_write_tmpl(dc, word, WROD(0), 0, map, SYNC_WAVE, 0, 6, 1);
+>  	} else {
+>  		if (dc->di) {
+>  			dc_link_event(dc, DC_EVT_NL, 2, 3);
+> diff --git a/drivers/gpu/ipu-v3/ipu-di.c b/drivers/gpu/ipu-v3/ipu-di.c
+> index a96991c5c15f..359268e3a166 100644
+> --- a/drivers/gpu/ipu-v3/ipu-di.c
+> +++ b/drivers/gpu/ipu-v3/ipu-di.c
+> @@ -71,6 +71,10 @@ enum di_sync_wave {
+>  	DI_SYNC_HSYNC = 3,
+>  	DI_SYNC_VSYNC = 4,
+>  	DI_SYNC_DE = 6,
+> +
+> +	DI_SYNC_CNT1 = 2,	/* counter >= 2 only */
+> +	DI_SYNC_CNT4 = 5,	/* counter >= 5 only */
+> +	DI_SYNC_CNT5 = 6,	/* counter >= 6 only */
+>  };
+>  
+>  #define SYNC_WAVE 0
+> @@ -211,66 +215,59 @@ static void ipu_di_sync_config_interlaced(struct ipu_di *di,
+>  		sig->mode.hback_porch + sig->mode.hfront_porch;
+>  	u32 v_total = sig->mode.vactive + sig->mode.vsync_len +
+>  		sig->mode.vback_porch + sig->mode.vfront_porch;
+> -	u32 reg;
+>  	struct di_sync_config cfg[] = {
+>  		{
+> -			.run_count = h_total / 2 - 1,
+> -			.run_src = DI_SYNC_CLK,
+> +			/* 1: internal VSYNC for each frame */
+> +			.run_count = v_total * 2 - 1,
+> +			.run_src = 3,			/* == counter 7 */
+
+Do you know why this works? The Reference Manual v2 lists that value as
+"NA" in the DI counter #1 Run Resolution field.
+
+>  		}, {
+> -			.run_count = h_total - 11,
+> +			/* PIN2: HSYNC waveform */
+> +			.run_count = h_total - 1,
+>  			.run_src = DI_SYNC_CLK,
+> -			.cnt_down = 4,
+> +			.cnt_polarity_gen_en = 1,
+> +			.cnt_polarity_trigger_src = DI_SYNC_CLK,
+> +			.cnt_down = sig->mode.hsync_len * 2,
+>  		}, {
+> -			.run_count = v_total * 2 - 1,
+> -			.run_src = DI_SYNC_INT_HSYNC,
+> -			.offset_count = 1,
+> -			.offset_src = DI_SYNC_INT_HSYNC,
+> -			.cnt_down = 4,
+> +			/* PIN3: VSYNC waveform */
+> +			.run_count = v_total - 1,
+> +			.run_src = 4,			/* == counter 7 */
+
+Same here, ...
+
+> +			.cnt_polarity_gen_en = 1,
+> +			.cnt_polarity_trigger_src = 4,	/* == counter 7 */
+
+... and same here, the DI counter #3 polarity Clear select field lists
+the value 4 as "Reserved".
+
+> +			.cnt_down = sig->mode.vsync_len * 2,
+> +			.cnt_clr_src = DI_SYNC_CNT1,
+>  		}, {
+[...]
+>  		}
+>  	};
+>  
+>  	ipu_di_sync_config(di, cfg, 0, ARRAY_SIZE(cfg));
+>  
+> -	/* set gentime select and tag sel */
+> -	reg = ipu_di_read(di, DI_SW_GEN1(9));
+> -	reg &= 0x1FFFFFFF;
+> -	reg |= (3 - 1) << 29 | 0x00008000;
+> -	ipu_di_write(di, reg, DI_SW_GEN1(9));
+
+As far as I understood, attaching counter #9 to counter #3 is needed to
+generate the second vsync on i.MX5. Since this doesn't currently work,
+I'm fine with removing it for now.
+
+>  	ipu_di_write(di, v_total / 2 - 1, DI_SCR_CONF);
+>  }
+>  
+> @@ -605,10 +602,8 @@ int ipu_di_init_sync_panel(struct ipu_di *di, struct ipu_di_signal_cfg *sig)
+>  
+>  		/* set y_sel = 1 */
+>  		di_gen |= 0x10000000;
+> -		di_gen |= DI_GEN_POLARITY_5;
+> -		di_gen |= DI_GEN_POLARITY_8;
+>  
+> -		vsync_cnt = 7;
+> +		vsync_cnt = 3;
+>  	} else {
+>  		ipu_di_sync_config_noninterlaced(di, sig, div);
+
+regards
+Philipp
