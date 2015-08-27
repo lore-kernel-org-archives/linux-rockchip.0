@@ -1,149 +1,87 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/5] DMA: pl330: support burst mode for dev-to-mem and
- mem-to-dev transmit
-Date: Thu, 27 Aug 2015 21:28:18 +0800
-Message-ID: <55DF1072.1070905@rock-chips.com>
-References: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com>
- <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
- <CAJKOXPdw+ZZURRPUNvKHdx7wRG7M-Frqmvq46KFM_ckGq8h0Yg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Subject: [PATCH v1 0/5] Fix broken DMAFLUSHP on Rockchips platform
+Date: Thu, 27 Aug 2015 22:23:39 +0800
+Message-ID: <1440685419-22037-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJKOXPdw+ZZURRPUNvKHdx7wRG7M-Frqmvq46KFM_ckGq8h0Yg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Cc: shawn.lin@rock-chips.com, Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Boojin Kim <boojin.kim@samsung.com>
+To: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2015/8/27 20:57, Krzysztof Kozlowski =E5=86=99=E9=81=93:
-> 2015-08-27 17:48 GMT+09:00 Shawn Lin <shawn.lin@rock-chips.com>:
->>
->> This patch adds to support burst mode for dev-to-mem and
->> mem-to-dev transmit.
->>
->> Signed-off-by: Boojin Kim <boojin.kim@samsung.com>
->> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> cc: Heiko Stuebner <heiko@sntech.de>
->> cc: Doug Anderson <dianders@chromium.org>
->> cc: Olof Johansson <olofj@google.com>
->> Reviewed-and-tested-by: Sonny Rao <sonnyrao@chromium.org>
->
-> For the entire patchset: I would prefer to see someone's
-> reviewed/tested tag in his response. Sending a version 1 of patchset
-> (regardless of Boojin Kim's work two years ago) with such tag could
-> mean anything. I cannot verify it easily (unless digging somewhere...
-> or asking people). You could add for example: Reviewed-by Santa Claus=
-=2E
-> Should I sent a letter to him asking for confirmation? :)
->
 
-:) yes, you are right. I should comply with the rule, even if the=20
-patchest had been reviewed or tested by someone on another tree.
+The purpose of the DMAFLUSHP instruction:
+- Tell the peripheral to clear its status and control registers.
+- Send a message to the peripheral to resend its level status.
 
-> More seriously - reviewed-by is a statement (please look at
-> Documentation/SubmittingPatches) and you cannot force someone to make
-> that statement. He must make such statement on his own.
->
-> That's all from my side since I don't feel skilled enough to review t=
-he code.
->
-> Best regards,
-> Krzysztof
->
->>
->> ---
->>
->>   drivers/dma/pl330.c | 18 ++++++++++++------
->>   1 file changed, 12 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
->> index ecab4ea0..0d544d2 100644
->> --- a/drivers/dma/pl330.c
->> +++ b/drivers/dma/pl330.c
->> @@ -1141,10 +1141,13 @@ static inline int _ldst_devtomem(unsigned dr=
-y_run, u8 buf[],
->>                  const struct _xfer_spec *pxs, int cyc)
->>   {
->>          int off =3D 0;
->> +       enum pl330_cond cond;
->> +
->> +       cond =3D (pxs->desc->rqcfg.brst_len =3D=3D 1) ? SINGLE : BUR=
-ST;
->>
->>          while (cyc--) {
->> -               off +=3D _emit_WFP(dry_run, &buf[off], SINGLE, pxs->=
-desc->peri);
->> -               off +=3D _emit_LDP(dry_run, &buf[off], SINGLE, pxs->=
-desc->peri);
->> +               off +=3D _emit_WFP(dry_run, &buf[off], cond, pxs->de=
-sc->peri);
->> +               off +=3D _emit_LDP(dry_run, &buf[off], cond, pxs->de=
-sc->peri);
->>                  off +=3D _emit_ST(dry_run, &buf[off], ALWAYS);
->>                  off +=3D _emit_FLUSHP(dry_run, &buf[off], pxs->desc=
-->peri);
->>          }
->> @@ -1156,11 +1159,14 @@ static inline int _ldst_memtodev(unsigned dr=
-y_run, u8 buf[],
->>                  const struct _xfer_spec *pxs, int cyc)
->>   {
->>          int off =3D 0;
->> +       enum pl330_cond cond;
->> +
->> +       cond =3D (pxs->desc->rqcfg.brst_len =3D=3D 1) ? SINGLE : BUR=
-ST;
->>
->>          while (cyc--) {
->> -               off +=3D _emit_WFP(dry_run, &buf[off], SINGLE, pxs->=
-desc->peri);
->> +               off +=3D _emit_WFP(dry_run, &buf[off], cond, pxs->de=
-sc->peri);
->>                  off +=3D _emit_LD(dry_run, &buf[off], ALWAYS);
->> -               off +=3D _emit_STP(dry_run, &buf[off], SINGLE, pxs->=
-desc->peri);
->> +               off +=3D _emit_STP(dry_run, &buf[off], cond, pxs->de=
-sc->peri);
->>                  off +=3D _emit_FLUSHP(dry_run, &buf[off], pxs->desc=
-->peri);
->>          }
->>
->> @@ -2557,7 +2563,7 @@ static struct dma_async_tx_descriptor *pl330_p=
-rep_dma_cyclic(
->>
->>                  desc->rqtype =3D direction;
->>                  desc->rqcfg.brst_size =3D pch->burst_sz;
->> -               desc->rqcfg.brst_len =3D 1;
->> +               desc->rqcfg.brst_len =3D pch->burst_len;
->>                  desc->bytes_requested =3D period_len;
->>                  fill_px(&desc->px, dst, src, period_len);
->>
->> @@ -2702,7 +2708,7 @@ pl330_prep_slave_sg(struct dma_chan *chan, str=
-uct scatterlist *sgl,
->>                  }
->>
->>                  desc->rqcfg.brst_size =3D pch->burst_sz;
->> -               desc->rqcfg.brst_len =3D 1;
->> +               desc->rqcfg.brst_len =3D pch->burst_len;
->>                  desc->rqtype =3D direction;
->>                  desc->bytes_requested =3D sg_dma_len(sg);
->>          }
->> --
->> 2.3.7
->>
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe dmaengine"=
- in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
->
->
+There are 3 timings described in PL330 Technical Reference Manual:
+- Timing 1: Burst request, can work well without DMAFLUSHP.
+- Timing 2: Single and burst request, DMAC will ignore the single
+	    transfer request. This timing happens if there are single
+	    and burst request.
+- Timing 3: Single transfers for a burst request, DMAC should signals
+	    datype to request the peripheral to flush the contents of
+	    any control registers. This timing happens if there is
+	    not enough MFIFO to places the burst data.
+
+A peripheral may signal a DMA request during the execution of
+DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
+
+But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
+It can't send a message to the peripheral to resend DMA request,
+and the peripheral can't acknowledge a flush request from DMAC.
+So all DMA requests should NOT be ignored by DMAC, and DMAC will not
+notify the peripheral to flush.
+
+To fix this problem, we need:
+- Do NOT execute DMAFLUSHP instruction.
+- Timing 2 and timing 3 should not happen.
+
+Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
+for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
+impossible to hit the timing 3 if burst length is equal or less than 4.
+
+Since the request type signal by the peripheral can only be set by
+software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
+or burst request, if it is set b01,  all of the peripharals will signal a brust
+request. So the timing 2 will not happen, too.
+
+So DMAC on RK3X can support single or burst transfer, but can't support
+mixed transfer.
+
+Because burst transfer is more efficient than single transfer, this is
+confirmed by our ASIC team, who strongly suggest to use burst transfer.
+And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
+spi flash burst transfer will increase about two times than single transfer.
+Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
+the result. That means burst transfer is reansonable.
+
+So we need a quirk not to execute DMAFLUSHP instruction and to use burst
+transfer.
+
+Note:
+- The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
+  support brust transfer, these bits should not be changed in bootloader.
 
 
---=20
-Best Regards
-Shawn Lin
+Changes in v1:
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+- add From original author.
+- remove Sunny's tag
+
+Shawn Lin (5):
+  DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+  DMA: pl330: add quirk for broken no flushp
+  ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platform
+  ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
+  Documentation: arm-pl330: add description of
+    arm,pl330-broken-no-flushp
+
+ .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   3 +
+ arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
+ drivers/dma/pl330.c                                | 101 +++++++++++++++------
+ 4 files changed, 79 insertions(+), 29 deletions(-)
+
+-- 
+2.3.7
