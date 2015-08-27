@@ -1,103 +1,116 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/5] DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
-Date: Thu, 27 Aug 2015 10:57:12 +0200
-Message-ID: <7170592.bdD8VT9GQ2@phil>
-References: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com> <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 04/12] gpu: imx: fix support for interlaced modes
+Date: Thu, 27 Aug 2015 11:40:30 +0200
+Message-ID: <1440668430.3233.68.camel@pengutronix.de>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+ <E1ZO6ay-0002qh-6E@rmk-PC.arm.linux.org.uk>
+ <1440664752.3233.36.camel@pengutronix.de>
+ <20150827085411.GE21084@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Vinod Koul <vinod.koul@intel.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Boojin Kim <boojin.kim@samsung.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20150827085411.GE21084@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-
-you're loosing the original author. Your can override the patch-author (away 
-from the mail sender) via a "From:" line at the top of the commit message, 
-like:
-
-------
-From: Boojin Kim <boojin.kim@samsung.com>
-
-This patch adds to support burst mode for dev-to-mem and
-mem-to-dev transmit.
-...
-------
-
-
-> This patch adds to support burst mode for dev-to-mem and
-> mem-to-dev transmit.
-> 
-> Signed-off-by: Boojin Kim <boojin.kim@samsung.com>
-> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> cc: Heiko Stuebner <heiko@sntech.de>
-> cc: Doug Anderson <dianders@chromium.org>
-> cc: Olof Johansson <olofj@google.com>
-> Reviewed-and-tested-by: Sonny Rao <sonnyrao@chromium.org>
-> 
-> ---
-> 
->  drivers/dma/pl330.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
-> index ecab4ea0..0d544d2 100644
-> --- a/drivers/dma/pl330.c
-> +++ b/drivers/dma/pl330.c
-> @@ -1141,10 +1141,13 @@ static inline int _ldst_devtomem(unsigned dry_run,
-> u8 buf[], const struct _xfer_spec *pxs, int cyc)
->  {
->  	int off = 0;
-> +	enum pl330_cond cond;
-> +
-> +	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
-> 
->  	while (cyc--) {
-> -		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-> -		off += _emit_LDP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-> +		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
-> +		off += _emit_LDP(dry_run, &buf[off], cond, pxs->desc->peri);
->  		off += _emit_ST(dry_run, &buf[off], ALWAYS);
->  		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
->  	}
-> @@ -1156,11 +1159,14 @@ static inline int _ldst_memtodev(unsigned dry_run,
-> u8 buf[], const struct _xfer_spec *pxs, int cyc)
->  {
->  	int off = 0;
-> +	enum pl330_cond cond;
-> +
-> +	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
-> 
->  	while (cyc--) {
-> -		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-> +		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
->  		off += _emit_LD(dry_run, &buf[off], ALWAYS);
-> -		off += _emit_STP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-> +		off += _emit_STP(dry_run, &buf[off], cond, pxs->desc->peri);
->  		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
->  	}
-> 
-> @@ -2557,7 +2563,7 @@ static struct dma_async_tx_descriptor
-> *pl330_prep_dma_cyclic(
-> 
->  		desc->rqtype = direction;
->  		desc->rqcfg.brst_size = pch->burst_sz;
-> -		desc->rqcfg.brst_len = 1;
-> +		desc->rqcfg.brst_len = pch->burst_len;
->  		desc->bytes_requested = period_len;
->  		fill_px(&desc->px, dst, src, period_len);
-> 
-> @@ -2702,7 +2708,7 @@ pl330_prep_slave_sg(struct dma_chan *chan, struct
-> scatterlist *sgl, }
-> 
->  		desc->rqcfg.brst_size = pch->burst_sz;
-> -		desc->rqcfg.brst_len = 1;
-> +		desc->rqcfg.brst_len = pch->burst_len;
->  		desc->rqtype = direction;
->  		desc->bytes_requested = sg_dma_len(sg);
->  	}
+QW0gRG9ubmVyc3RhZywgZGVuIDI3LjA4LjIwMTUsIDA5OjU0ICswMTAwIHNjaHJpZWIgUnVzc2Vs
+bCBLaW5nIC0gQVJNCkxpbnV4Ogo+IE9uIFRodSwgQXVnIDI3LCAyMDE1IGF0IDEwOjM5OjEyQU0g
+KzAyMDAsIFBoaWxpcHAgWmFiZWwgd3JvdGU6Cj4gPiBIaSBSdXNzZWxsLAo+ID4gCj4gPiBBbSBT
+YW1zdGFnLCBkZW4gMDguMDguMjAxNSwgMTc6MDMgKzAxMDAgc2NocmllYiBSdXNzZWxsIEtpbmc6
+Cj4gPiA+IFRoZSBzdXBwb3J0IGZvciBpbnRlcmxhY2VkIHZpZGVvIG1vZGVzIHNlZW1zIHRvIGJl
+IGJyb2tlbjsgd2UgZG9uJ3QgdXNlCj4gPiA+IGFueXRoaW5nIG90aGVyIHRoYW4gdGhlIHZ0b3Rh
+bC9odG90YWwgZnJvbSB0aGUgdGltaW5nIGluZm9ybWF0aW9uIHRvCj4gPiA+IGRlZmluZSB0aGUg
+dmFyaW91cyBzeW5jIGNvdW50ZXJzLgo+ID4gCj4gPiBJIGZpbmFsbHkgbWFkZSB0aW1lIHRvIHRl
+c3QgdGhpcyBzZXJpZXM6Cj4gPiAKPiA+IFRlc3RlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJl
+bEBwZW5ndXRyb25peC5kZT4KPiA+IG9uIGkuTVg2IEdLODAyIHZpYSBIRE1JIGNvbm5lY3RlZCB0
+byBhIFRWICgxMDgwcDYwLCAxMDgwaTYwKS4KPiA+IAo+ID4gVW5mb3J0dW5hdGVseSB0aGVzZSB0
+aW1pbmdzIGFyZSBjb21wbGV0ZWx5IGRpZmZlcmVudCBmcm9tIHdoYXQgRnJlZXNjYWxlCj4gPiBj
+YW1lIHVwIHdpdGggZm9yIHRoZSBUViBFbmNvZGVyIG9uIGkuTVg1LCBidXQgdGhlIGNvZGUgd2Ug
+aGF2ZSBjdXJyZW50bHkKPiA+IGluIG1haW5saW5lIGRvZXNuJ3Qgd29yayBmb3IgdGhhdCBlaXRo
+ZXIuIEkgc3VwcG9zZSBJJ2xsIGZvbGxvdyB1cCB3aXRoCj4gPiBhIHBhdGNoIHRoYXQgYWRkcyB5
+ZXQgYW5vdGhlciBzeW5jIGNvdW50ZXIgc2V0dXAgZm9yIHRoZSBpLk1YNS9UVkUgY2FzZS4KPiA+
+IAo+ID4gSSdkIGxpa2UgdG8gdGFrZSB0aGUgdHdvIGlwdS12MyBwYXRjaGVzLCBtYWtpbmcgYSBm
+ZXcgc21hbGwgY2hhbmdlcyBvbgo+ID4gdGhpcyBvbmU6Cj4gCj4gUGxlYXNlIGRvbid0IHNwbGl0
+IHRoZSBzZXJpZXMgdXAuICBUaGUgcmVhc29uIGl0J3MgYSBzZXJpZXMgaXMgYmVjYXVzZQo+IHRo
+ZXJlJ3MgaW50ZXJkZXBlbmRlbmNpZXMgYmV0d2VlbiB0aGUgcGF0Y2hlcy4KCkluIHRoYXQgY2Fz
+ZSwgY2FuIEkgdGFrZSB0aGUgd2hvbGUgc2VyaWVzPyBPciB3b3VsZCB5b3UgbGlrZSB0byByZXNw
+aW4KYW5kIGhhdmUgbXkgQWNrZWQtYnk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9u
+aXguZGU+IHdpdGggdGhlCmNoYW5nZXMgYmVsb3c6Cgo+ID4gPiBGcmVlc2NhbGUgcGF0Y2hlcyBm
+b3IgaW50ZXJsYWNlZCB2aWRlbyBzdXBwb3J0IGNvbnRhaW4gYW4gYWx0ZXJuYXRpdmUKPiA+ID4g
+c3luYyBjb3VudGVyIHNldHVwLCB3aGljaCB3ZSBpbmNsdWRlIGhlcmUuICBUaGlzIHNldHVwIHBy
+b2R1Y2VzIHRoZQo+ID4gPiBoc3luYyBhbmQgdnN5bmMgdmlhIHRoZSBub3JtYWwgY291bnRlciAy
+IGFuZCAzLCBidXQgbW92ZXMgdGhlIGRpc3BsYXkKPiA+ID4gZW5hYmxlIHNpZ25hbCBmcm9tIGNv
+dW50ZXIgNSB0byBjb3VudGVyIDYuICBUaGVyZWZvcmUsIHdlIG5lZWQgdG8KPiA+ID4gY2hhbmdl
+IHRoZSBkaXNwbGF5IGNvbnRyb2xsZXIgc2V0dXAgYXMgd2VsbC4KPiA+ID4gCj4gPiA+IFRoZSBj
+b3JyZXNwb25kaW5nIEZyZWVzY2FsZSBwYXRjaGVzIGZvciB0aGlzIGNoYW5nZSBhcmU6Cj4gPiA+
+ICAgaU1YNi1IRE1JLXN1cHBvcnQtaW50ZXJsYWNlZC1kaXNwbGF5LW1vZGUucGF0Y2gKPiA+ID4g
+ICBJUFUtZmluZS10dW5pbmctdGhlLWludGVybGFjZS1kaXNwbGF5LXRpbWluZy1mb3ItQ0VBLnBh
+dGNoCj4gPiA+IAo+ID4gPiBUaGlzIHByb2R1Y2VzIGEgd29ya2luZyBpbnRlcmxhY2UgZm9ybWF0
+IG91dHB1dCBmcm9tIHRoZSBJUFUuCj4gPiAKPiA+IC4uLiBvbiBpLk1YNiB2aWEgSERNSS4KPiAK
+PiBJdCBzaG91bGQgYWxzbyBiZSBjb3JyZWN0IGZvciBhbnkgb3RoZXIgc291cmNlIHdoaWNoIHdh
+bnRzIGludGVybGFjZWQKPiBvdXRwdXQuCgouLi4gb24gaS5NWDYsIHRoZW4uIFJpZ2h0IG5vdyBJ
+IGRvbid0IGtub3cgd2hhdCBpcyB0aGUgZWZmZWN0IG9mIHRoZQp1bmRvY3VtZW50ZWQgc2V0dGlu
+Z3Mgb24gdGhlIGkuTVg1J3MgSVBVdjNNLgoKPiA+ID4gU2lnbmVkLW9mZi1ieTogUnVzc2VsbCBL
+aW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcudWs+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVy
+cy9ncHUvaXB1LXYzL2lwdS1kYy5jIHwgMTggKysrKysrKystLS0KPiA+ID4gIGRyaXZlcnMvZ3B1
+L2lwdS12My9pcHUtZGkuYyB8IDc5ICsrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLQo+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA1MSBpbnNlcnRpb25zKCspLCA0NiBk
+ZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9pcHUtdjMv
+aXB1LWRjLmMgYi9kcml2ZXJzL2dwdS9pcHUtdjMvaXB1LWRjLmMKPiA+ID4gaW5kZXggOWVmMmUx
+ZjU0Y2E0Li5hYTU2MDg1NWMxZGMgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2lwdS12
+My9pcHUtZGMuYwo+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9pcHUtdjMvaXB1LWRjLmMKPiA+ID4g
+QEAgLTE4MywxMiArMTgzLDIyIEBAIGludCBpcHVfZGNfaW5pdF9zeW5jKHN0cnVjdCBpcHVfZGMg
+KmRjLCBzdHJ1Y3QgaXB1X2RpICpkaSwgYm9vbCBpbnRlcmxhY2VkLAo+ID4gPiAgCX0KPiA+ID4g
+IAo+ID4gPiAgCWlmIChpbnRlcmxhY2VkKSB7Cj4gPiA+IC0JCWRjX2xpbmtfZXZlbnQoZGMsIERD
+X0VWVF9OTCwgMCwgMyk7Cj4gPiA+IC0JCWRjX2xpbmtfZXZlbnQoZGMsIERDX0VWVF9FT0wsIDAs
+IDIpOwo+ID4gPiAtCQlkY19saW5rX2V2ZW50KGRjLCBEQ19FVlRfTkVXX0RBVEEsIDAsIDEpOwo+
+ID4gPiArCQlpbnQgd29yZCwgYWRkcjsKPiA+ID4gKwo+ID4gPiArCQlpZiAoZGMtPmRpKSB7Cj4g
+PiA+ICsJCQlhZGRyID0gMTsKPiA+ID4gKwkJCXdvcmQgPSAxOwo+ID4gCj4gPiBUaGVzZSB0d28g
+YXJlIHJlYWxseSBvbmUgYW5kIHRoZSBzYW1lLiBUaGUgYWRkcmVzcyB3cml0dGVuIHRvIHRoZSBs
+aW5rCj4gPiByZWdpc3RlciBmb3IgdGhlIGdpdmVuIGV2ZW50IGhhcyB0byBwb2ludCB0byB0aGUg
+YWRkcmVzcyBvZiB0aGUKPiA+IG1pY3JvY29kZSBpbnN0cnVjdGlvbiB3cml0dGVuIHRvIHRoZSB0
+ZW1wbGF0ZSBtZW1vcnkgdGhhdCBzaG91bGQgYmUKPiA+IGV4ZWN1dGVkIG9uIHRoaXMgZXZlbnQu
+Cj4gPiAKPiA+IEknZCBsaWtlIHRvIGRyb3AgdGhlIHdvcmQgdmFyaWFibGUgYW5kIHVzZSBhZGRy
+IGZvciBib3RoLgo+IAo+IE9rLiAgQXMgSSBzYWlkIGluIHRoZSBjb21taXQgbWVzc2FnZSwgdGhp
+cyBjb2RlIGNvbWVzIGZyb20gRnJlZXNjYWxlJ3MKPiBwYXRjaGVzIHdoaWNoIEkgcG9pbnRlZCB0
+byBhYm92ZS4KWy4uLl0KPiA+ID4gQEAgLTIxMSw2NiArMjE1LDU5IEBAIHN0YXRpYyB2b2lkIGlw
+dV9kaV9zeW5jX2NvbmZpZ19pbnRlcmxhY2VkKHN0cnVjdCBpcHVfZGkgKmRpLAo+ID4gPiAgCQlz
+aWctPm1vZGUuaGJhY2tfcG9yY2ggKyBzaWctPm1vZGUuaGZyb250X3BvcmNoOwo+ID4gPiAgCXUz
+MiB2X3RvdGFsID0gc2lnLT5tb2RlLnZhY3RpdmUgKyBzaWctPm1vZGUudnN5bmNfbGVuICsKPiA+
+ID4gIAkJc2lnLT5tb2RlLnZiYWNrX3BvcmNoICsgc2lnLT5tb2RlLnZmcm9udF9wb3JjaDsKPiA+
+ID4gLQl1MzIgcmVnOwo+ID4gPiAgCXN0cnVjdCBkaV9zeW5jX2NvbmZpZyBjZmdbXSA9IHsKPiA+
+ID4gIAkJewo+ID4gPiAtCQkJLnJ1bl9jb3VudCA9IGhfdG90YWwgLyAyIC0gMSwKPiA+ID4gLQkJ
+CS5ydW5fc3JjID0gRElfU1lOQ19DTEssCj4gPiA+ICsJCQkvKiAxOiBpbnRlcm5hbCBWU1lOQyBm
+b3IgZWFjaCBmcmFtZSAqLwo+ID4gPiArCQkJLnJ1bl9jb3VudCA9IHZfdG90YWwgKiAyIC0gMSwK
+PiA+ID4gKwkJCS5ydW5fc3JjID0gMywJCQkvKiA9PSBjb3VudGVyIDcgKi8KPiA+IAo+ID4gRG8g
+eW91IGtub3cgd2h5IHRoaXMgd29ya3M/IFRoZSBSZWZlcmVuY2UgTWFudWFsIHYyIGxpc3RzIHRo
+YXQgdmFsdWUgYXMKPiA+ICJOQSIgaW4gdGhlIERJIGNvdW50ZXIgIzEgUnVuIFJlc29sdXRpb24g
+ZmllbGQuCj4gCj4gWWVzLCBJIG5vdGljZWQgdGhhdCBGcmVlc2NhbGUgd2VyZSB1c2luZyB2YWx1
+ZXMgZm9yIHRoZSBzb3VyY2UgZmllbGRzCj4gd2hpY2ggd2VyZSBtYXJrZWQgYXMgTkEgaW4gdGhl
+IG1hbnVhbC4gIEFzIGl0IHdvcmtzLCBJIGNhbiBvbmx5IGFzc3VtZQo+IHRoYXQgdGhlIGVuZ2lu
+ZWVyIHdobyBjYW1lIHVwIHdpdGggdGhpcyBzZXR1cCBoYXMgbW9yZSBrbm93bGVkZ2UgdGhhbgo+
+IGlzIHB1YmxpYy4KCkknZCBsaWtlIHNtYWxsIGEgY29tbWVudCBoZXJlIHRoYXQgeWVzLCB3ZSBr
+bm93IHRoaXMgaXMgbWFya2VkIGFzCk5BL1Jlc2VydmVkIGluIHRoZSBtYW51YWxzLgoKWy4uLl0K
+PiBJIHdlbnQgdGhyb3VnaCB0aGUgY291bnRlciBzZXR1cCB0byB1bmRlcnN0YW5kIGhvdyBpdCB3
+b3JrcywgYW5kIGl0Cj4gc2VlbXMgY29ycmVjdCBwcm92aWRlZCB5b3UgYWNjZXB0IHRoYXQgdGhl
+IHZhcmlvdXMgc291cmNlIHZhbHVlcyBkbwo+IHdvcmsgYXMgdGhlIGNvZGUgY2xhaW1zLCB3aGlj
+aCBpbmNsdWRlcyBjcmVhdGluZyB0aGUgdnN5bmMgYXQgdGhlCj4gYXBwcm9wcmlhdGUgaGFsZi1z
+Y2FubGluZSBwb3NpdGlvbiB3aXRob3V0IG5lZWRpbmcgdGhpcyBoYWNrLgo+IAo+IEl0J3Mgbm90
+IGVhc3kgdG8gd29yayBiYWNrIGZyb20gdGhlIGNvdW50ZXIgc2V0dXAgdG8gZ2V0IGEgbWVudGFs
+Cj4gcGljdHVyZSBvZiB3aGF0J3MgZ29pbmcgb24sIGJ1dCBpdCBpcyBwb3NzaWJsZSB0byBkbyBz
+by4KClllcywgYmVpbmcgYWJsZSB0byBhY3R1YWxseSByZWZlcmVuY2UgY291bnRlcnMgd2l0aCBo
+aWdoZXIgbnVtYmVycyBtYWtlcwp0aGluZ3MgYSBsb3QgZWFzaWVyIHRvIGZvbGxvdy4KCnJlZ2Fy
+ZHMKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
