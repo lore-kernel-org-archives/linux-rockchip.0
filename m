@@ -1,118 +1,114 @@
-From: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/5] DMA: pl330: support burst mode for dev-to-mem and
- mem-to-dev transmit
-Date: Fri, 28 Aug 2015 11:19:52 -0700
-Message-ID: <CAPz6YkX-d8B1wPgjnULDAY8+nyuFePVrEU2NQe0rV2CsjYEj3Q@mail.gmail.com>
-References: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com>
- <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
- <CAJKOXPdw+ZZURRPUNvKHdx7wRG7M-Frqmvq46KFM_ckGq8h0Yg@mail.gmail.com>
- <55DF1072.1070905@rock-chips.com>
+From: Michael Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v16 4/4] ARM: dts: add the support power-domain node on
+ RK3288 SoCs
+Date: Fri, 28 Aug 2015 13:02:38 -0700
+Message-ID: <20150828200238.30921.24441@quantum>
+References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com>
+ <1440487486-6154-5-git-send-email-wxt@rock-chips.com>
+ <7hfv37axhj.fsf@deeprootsystems.com>
+ <CAD=FV=V6oG+9U=W_JZmqCuNo-9-5wW8ffZzG7ZE_3cnSTNAjFQ@mail.gmail.com>
+ <7htwrn6l7g.fsf@deeprootsystems.com>
+ <CAKdAkRS=9Dq+YpMNSjpij0Am4ZD6uUURv74OLLYf+akD=W885A@mail.gmail.com>
+ <7hmvxc45w2.fsf@deeprootsystems.com>
+ <CAD=FV=VTR-PBcXXX1jHNw65x_cMP9CKwVWBs+XCcFqFPp7msjA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <55DF1072.1070905-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Boojin Kim <boojin.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD=FV=VTR-PBcXXX1jHNw65x_cMP9CKwVWBs+XCcFqFPp7msjA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBBdWcgMjcsIDIwMTUgYXQgNjoyOCBBTSwgU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
-ay1jaGlwcy5jb20+IHdyb3RlOgo+IOWcqCAyMDE1LzgvMjcgMjA6NTcsIEtyenlzenRvZiBLb3ps
-b3dza2kg5YaZ6YGTOgo+Pgo+PiAyMDE1LTA4LTI3IDE3OjQ4IEdNVCswOTowMCBTaGF3biBMaW4g
-PHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT46Cj4+Pgo+Pj4KPj4+IFRoaXMgcGF0Y2ggYWRkcyB0
-byBzdXBwb3J0IGJ1cnN0IG1vZGUgZm9yIGRldi10by1tZW0gYW5kCj4+PiBtZW0tdG8tZGV2IHRy
-YW5zbWl0Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEJvb2ppbiBLaW0gPGJvb2ppbi5raW1Ac2Ft
-c3VuZy5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBBZGR5IEtlIDxhZGR5LmtlQHJvY2stY2hpcHMu
-Y29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5j
-b20+Cj4+PiBjYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4+IGNjOiBEb3Vn
-IEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+PiBjYzogT2xvZiBKb2hhbnNzb24g
-PG9sb2ZqQGdvb2dsZS5jb20+Cj4+PiBSZXZpZXdlZC1hbmQtdGVzdGVkLWJ5OiBTb25ueSBSYW8g
-PHNvbm55cmFvQGNocm9taXVtLm9yZz4KPj4KPj4KPj4gRm9yIHRoZSBlbnRpcmUgcGF0Y2hzZXQ6
-IEkgd291bGQgcHJlZmVyIHRvIHNlZSBzb21lb25lJ3MKPj4gcmV2aWV3ZWQvdGVzdGVkIHRhZyBp
-biBoaXMgcmVzcG9uc2UuIFNlbmRpbmcgYSB2ZXJzaW9uIDEgb2YgcGF0Y2hzZXQKPj4gKHJlZ2Fy
-ZGxlc3Mgb2YgQm9vamluIEtpbSdzIHdvcmsgdHdvIHllYXJzIGFnbykgd2l0aCBzdWNoIHRhZyBj
-b3VsZAo+PiBtZWFuIGFueXRoaW5nLiBJIGNhbm5vdCB2ZXJpZnkgaXQgZWFzaWx5ICh1bmxlc3Mg
-ZGlnZ2luZyBzb21ld2hlcmUuLi4KPj4gb3IgYXNraW5nIHBlb3BsZSkuIFlvdSBjb3VsZCBhZGQg
-Zm9yIGV4YW1wbGU6IFJldmlld2VkLWJ5IFNhbnRhIENsYXVzLgo+PiBTaG91bGQgSSBzZW50IGEg
-bGV0dGVyIHRvIGhpbSBhc2tpbmcgZm9yIGNvbmZpcm1hdGlvbj8gOikKPj4KPgo+IDopIHllcywg
-eW91IGFyZSByaWdodC4gSSBzaG91bGQgY29tcGx5IHdpdGggdGhlIHJ1bGUsIGV2ZW4gaWYgdGhl
-IHBhdGNoZXN0Cj4gaGFkIGJlZW4gcmV2aWV3ZWQgb3IgdGVzdGVkIGJ5IHNvbWVvbmUgb24gYW5v
-dGhlciB0cmVlLgoKSGksIHllYWggSSByZXZpZXdlZCBvbiBhIGRpZmZlcmVudCB0cmVlLCBzbyB5
-b3Ugc2hvdWxkbid0IHB1dCB0aGF0IHRhZwpoZXJlLCB0aGFua3MgZm9yIHJlbW92aW5nIGl0LgpJ
-IGNhbiByZS1yZXZpZXcgaWYgeW91J2QgbGlrZS4KCj4KPgo+PiBNb3JlIHNlcmlvdXNseSAtIHJl
-dmlld2VkLWJ5IGlzIGEgc3RhdGVtZW50IChwbGVhc2UgbG9vayBhdAo+PiBEb2N1bWVudGF0aW9u
-L1N1Ym1pdHRpbmdQYXRjaGVzKSBhbmQgeW91IGNhbm5vdCBmb3JjZSBzb21lb25lIHRvIG1ha2UK
-Pj4gdGhhdCBzdGF0ZW1lbnQuIEhlIG11c3QgbWFrZSBzdWNoIHN0YXRlbWVudCBvbiBoaXMgb3du
-Lgo+Pgo+PiBUaGF0J3MgYWxsIGZyb20gbXkgc2lkZSBzaW5jZSBJIGRvbid0IGZlZWwgc2tpbGxl
-ZCBlbm91Z2ggdG8gcmV2aWV3IHRoZQo+PiBjb2RlLgo+Pgo+PiBCZXN0IHJlZ2FyZHMsCj4+IEty
-enlzenRvZgo+Pgo+Pj4KPj4+IC0tLQo+Pj4KPj4+ICAgZHJpdmVycy9kbWEvcGwzMzAuYyB8IDE4
-ICsrKysrKysrKysrKy0tLS0tLQo+Pj4gICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygr
-KSwgNiBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kbWEvcGwzMzAu
-YyBiL2RyaXZlcnMvZG1hL3BsMzMwLmMKPj4+IGluZGV4IGVjYWI0ZWEwLi4wZDU0NGQyIDEwMDY0
-NAo+Pj4gLS0tIGEvZHJpdmVycy9kbWEvcGwzMzAuYwo+Pj4gKysrIGIvZHJpdmVycy9kbWEvcGwz
-MzAuYwo+Pj4gQEAgLTExNDEsMTAgKzExNDEsMTMgQEAgc3RhdGljIGlubGluZSBpbnQgX2xkc3Rf
-ZGV2dG9tZW0odW5zaWduZWQKPj4+IGRyeV9ydW4sIHU4IGJ1ZltdLAo+Pj4gICAgICAgICAgICAg
-ICAgICBjb25zdCBzdHJ1Y3QgX3hmZXJfc3BlYyAqcHhzLCBpbnQgY3ljKQo+Pj4gICB7Cj4+PiAg
-ICAgICAgICBpbnQgb2ZmID0gMDsKPj4+ICsgICAgICAgZW51bSBwbDMzMF9jb25kIGNvbmQ7Cj4+
-PiArCj4+PiArICAgICAgIGNvbmQgPSAocHhzLT5kZXNjLT5ycWNmZy5icnN0X2xlbiA9PSAxKSA/
-IFNJTkdMRSA6IEJVUlNUOwo+Pj4KPj4+ICAgICAgICAgIHdoaWxlIChjeWMtLSkgewo+Pj4gLSAg
-ICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9XRlAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBTSU5HTEUs
-Cj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4gLSAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9M
-RFAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBTSU5HTEUsCj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4g
-KyAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9XRlAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBjb25k
-LAo+Pj4gcHhzLT5kZXNjLT5wZXJpKTsKPj4+ICsgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRf
-TERQKGRyeV9ydW4sICZidWZbb2ZmXSwgY29uZCwKPj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+PiAg
-ICAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9TVChkcnlfcnVuLCAmYnVmW29mZl0sIEFMV0FZ
-Uyk7Cj4+PiAgICAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9GTFVTSFAoZHJ5X3J1biwgJmJ1
-ZltvZmZdLAo+Pj4gcHhzLT5kZXNjLT5wZXJpKTsKPj4+ICAgICAgICAgIH0KPj4+IEBAIC0xMTU2
-LDExICsxMTU5LDE0IEBAIHN0YXRpYyBpbmxpbmUgaW50IF9sZHN0X21lbXRvZGV2KHVuc2lnbmVk
-Cj4+PiBkcnlfcnVuLCB1OCBidWZbXSwKPj4+ICAgICAgICAgICAgICAgICAgY29uc3Qgc3RydWN0
-IF94ZmVyX3NwZWMgKnB4cywgaW50IGN5YykKPj4+ICAgewo+Pj4gICAgICAgICAgaW50IG9mZiA9
-IDA7Cj4+PiArICAgICAgIGVudW0gcGwzMzBfY29uZCBjb25kOwo+Pj4gKwo+Pj4gKyAgICAgICBj
-b25kID0gKHB4cy0+ZGVzYy0+cnFjZmcuYnJzdF9sZW4gPT0gMSkgPyBTSU5HTEUgOiBCVVJTVDsK
-Pj4+Cj4+PiAgICAgICAgICB3aGlsZSAoY3ljLS0pIHsKPj4+IC0gICAgICAgICAgICAgICBvZmYg
-Kz0gX2VtaXRfV0ZQKGRyeV9ydW4sICZidWZbb2ZmXSwgU0lOR0xFLAo+Pj4gcHhzLT5kZXNjLT5w
-ZXJpKTsKPj4+ICsgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfV0ZQKGRyeV9ydW4sICZidWZb
-b2ZmXSwgY29uZCwKPj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+PiAgICAgICAgICAgICAgICAgIG9m
-ZiArPSBfZW1pdF9MRChkcnlfcnVuLCAmYnVmW29mZl0sIEFMV0FZUyk7Cj4+PiAtICAgICAgICAg
-ICAgICAgb2ZmICs9IF9lbWl0X1NUUChkcnlfcnVuLCAmYnVmW29mZl0sIFNJTkdMRSwKPj4+IHB4
-cy0+ZGVzYy0+cGVyaSk7Cj4+PiArICAgICAgICAgICAgICAgb2ZmICs9IF9lbWl0X1NUUChkcnlf
-cnVuLCAmYnVmW29mZl0sIGNvbmQsCj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4gICAgICAgICAg
-ICAgICAgICBvZmYgKz0gX2VtaXRfRkxVU0hQKGRyeV9ydW4sICZidWZbb2ZmXSwKPj4+IHB4cy0+
-ZGVzYy0+cGVyaSk7Cj4+PiAgICAgICAgICB9Cj4+Pgo+Pj4gQEAgLTI1NTcsNyArMjU2Myw3IEBA
-IHN0YXRpYyBzdHJ1Y3QgZG1hX2FzeW5jX3R4X2Rlc2NyaXB0b3IKPj4+ICpwbDMzMF9wcmVwX2Rt
-YV9jeWNsaWMoCj4+Pgo+Pj4gICAgICAgICAgICAgICAgICBkZXNjLT5ycXR5cGUgPSBkaXJlY3Rp
-b247Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3Rfc2l6ZSA9IHBjaC0+YnVy
-c3Rfc3o7Cj4+PiAtICAgICAgICAgICAgICAgZGVzYy0+cnFjZmcuYnJzdF9sZW4gPSAxOwo+Pj4g
-KyAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3RfbGVuID0gcGNoLT5idXJzdF9sZW47Cj4+
-PiAgICAgICAgICAgICAgICAgIGRlc2MtPmJ5dGVzX3JlcXVlc3RlZCA9IHBlcmlvZF9sZW47Cj4+
-PiAgICAgICAgICAgICAgICAgIGZpbGxfcHgoJmRlc2MtPnB4LCBkc3QsIHNyYywgcGVyaW9kX2xl
-bik7Cj4+Pgo+Pj4gQEAgLTI3MDIsNyArMjcwOCw3IEBAIHBsMzMwX3ByZXBfc2xhdmVfc2coc3Ry
-dWN0IGRtYV9jaGFuICpjaGFuLCBzdHJ1Y3QKPj4+IHNjYXR0ZXJsaXN0ICpzZ2wsCj4+PiAgICAg
-ICAgICAgICAgICAgIH0KPj4+Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3Rf
-c2l6ZSA9IHBjaC0+YnVyc3Rfc3o7Cj4+PiAtICAgICAgICAgICAgICAgZGVzYy0+cnFjZmcuYnJz
-dF9sZW4gPSAxOwo+Pj4gKyAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3RfbGVuID0gcGNo
-LT5idXJzdF9sZW47Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxdHlwZSA9IGRpcmVjdGlv
-bjsKPj4+ICAgICAgICAgICAgICAgICAgZGVzYy0+Ynl0ZXNfcmVxdWVzdGVkID0gc2dfZG1hX2xl
-bihzZyk7Cj4+PiAgICAgICAgICB9Cj4+PiAtLQo+Pj4gMi4zLjcKPj4+Cj4+Pgo+Pj4gLS0KPj4+
-IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0OiBzZW5kIHRoZSBsaW5lICJ1bnN1YnNjcmli
-ZSBkbWFlbmdpbmUiIGluCj4+PiB0aGUgYm9keSBvZiBhIG1lc3NhZ2UgdG8gbWFqb3Jkb21vQHZn
-ZXIua2VybmVsLm9yZwo+Pj4gTW9yZSBtYWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3ZnZXIua2Vy
-bmVsLm9yZy9tYWpvcmRvbW8taW5mby5odG1sCj4+Cj4+Cj4+Cj4+Cj4KPgo+IC0tCj4gQmVzdCBS
-ZWdhcmRzCj4gU2hhd24gTGluCj4KPiAtLQo+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0
-OiBzZW5kIHRoZSBsaW5lICJ1bnN1YnNjcmliZSBsaW51eC1rZXJuZWwiIGluCj4gdGhlIGJvZHkg
-b2YgYSBtZXNzYWdlIHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9t
-byBpbmZvIGF0ICBodHRwOi8vdmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKPiBQ
-bGVhc2UgcmVhZCB0aGUgRkFRIGF0ICBodHRwOi8vd3d3LnR1eC5vcmcvbGttbC8KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Doug,
+
+Quoting Doug Anderson (2015-08-27 19:03:20)
+> Kevin,
+> 
+> On Thu, Aug 27, 2015 at 5:24 PM, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> >> That is not really workable: the attach and detach happen in
+> >> probe/remove path; if you do not have driver for the device you will
+> >> miss the clocks for it.
+> >
+> > And in my proposal, I suggested that clocks without drivers are
+> > good candidates to list in the domain, with the caveat that the be
+> > called out (documented) as being device clocks that are missing a
+> > driver, so when a driver shows up they can be moved accordingly, and in
+> > a way that actually describes the hardware.
+> 
+> What happens if someone disables the driver using the CONFIG subsystem?
+
+Kevin asked me to chime in on this thread, as I have a half-baked idea
+that might solve the problem posed by your question above.
+
+One thing I have been considering for a while is a fallback compatible
+string that can be used for an IP block when either there is no driver
+loaded or no driver exists at all. Something like "generic-ip-block".
+
+The purpose of this compatible string is to allow us to model resource
+consumption in dts accurately, regardless of whether or not a proper
+driver has been written in Linux. This idea was born out of the
+simple-fb binding/driver discussion last year[0].
+
+Obviously such a binding would not enable any of the logic or function
+of that IP block; that would require a proper driver. But it would allow
+us to properly link system-wide resources that are consumed: the
+generic-ip could consume clocks and regulators, it could belong to power
+domains, etc. For this reason I have also thought that
+"generic-resource-consumer" is an accurate compatible string.
+
+This spares us from having to encode nasty details into the power domain
+binding, which is exactly what would happen if you needed a dedicated
+list of clocks in the power domain node that were not claimed by device
+nodes/drivers.
+
+Note that a real driver might exist for an IP block, but if that driver
+is disabled in Kconfig AND the corresponding dt node has this fallback
+compatible string, then we could be OK, from the perspective of the
+power domain problem.
+
+> 
+> What happens if this is a device that someone has set to 'status =
+> "disabled";' in the device tree?
+
+If someone does that, then I think we should let that break power domain
+transitions.
+
+> 
+> Even if the device is disabled in one of those two ways, we still need
+> the clocks to be turned on.  ...so if we turn on/off the VIO domain we
+> need to turn on the EDP clock even if there's no EDP in the current
+> board / config.  We might turn on/off VIO for one of the other devices
+> in the VIO domain for one of the other devices in VIO that we are
+> using.
+
+I'm hesitant to mention this but I am working on a patch series to
+implement a clock "handoff" mechanism (also inspired by the simplefb
+discussion). This allows us to set a per-clock flag that tells the
+framework to enable that clock at registration time, and then the first
+clock consumer driver to come along and claim that clock inherits that
+clock enable reference count.
+
+I'm working on v2 that lets us set this flag from DT, but I really only
+plan to do this for special cases. For the normal case the flag should
+be set in the Linux clock provider driver. In the mean time v1 is under
+discussion[1].
+
+[0] http://lkml.kernel.org/r/<1407914239-12054-5-git-send-email-libv-AgBVmzD5pcezQB+pC5nmwQ@public.gmane.org>
+[1] http://lkml.kernel.org/r/<1438974570-20812-1-git-send-email-mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+
+Regards,
+Mike
+
+> 
+> -Doug
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
