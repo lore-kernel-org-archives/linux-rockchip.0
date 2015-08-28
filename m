@@ -1,50 +1,52 @@
-From: Eddie Cai <eddie.cai.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [PATCH v1 1/3] ARM: dts: rockchip: add core rk3036 dts
-Date: Fri, 28 Aug 2015 16:36:33 +0800
-Message-ID: <CANCyOWa9dy-gg27j8v7QGTvkrVzvMVhP3z_d2vdwXAkgP_3EjA@mail.gmail.com>
-References: <1440740808-15004-1-git-send-email-zhengxing@rock-chips.com>
-	<1440740808-15004-2-git-send-email-zhengxing@rock-chips.com>
+Date: Fri, 28 Aug 2015 10:59:32 +0200
+Message-ID: <1871781.cSEoq02CXi@phil>
+References: <1440740808-15004-1-git-send-email-zhengxing@rock-chips.com> <1440740808-15004-2-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1440740808-15004-2-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1440740808-15004-2-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi ZhengXing
+Hi,
 
-You should have two file for dts part. One is rk3036.dtsi for soc. The
-other one is rk3036-sdk.dts for board.
-
-2015-08-28 13:46 GMT+08:00 Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
+Am Freitag, 28. August 2015, 13:46:46 schrieb Xing Zheng:
 > Initial release for rk3036, node definitions rk3036 sdk board.
->
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 > ---
->
+> 
 > Changes in v1: None
->
+> 
 >  arch/arm/boot/dts/Makefile       |    1 +
->  arch/arm/boot/dts/rk3036-sdk.dts |  362 ++++++++++++++++++++++++++++++++++++++
->  2 files changed, 363 insertions(+)
+>  arch/arm/boot/dts/rk3036-sdk.dts |  362
+> ++++++++++++++++++++++++++++++++++++++ 2 files changed, 363 insertions(+)
+
+as Eddie already said, please split into two files ... just look at the other 
+Rockchip socs for inspiration :-)
+
+
 >  create mode 100644 arch/arm/boot/dts/rk3036-sdk.dts
->
+> 
 > diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
 > index 6d7cec1..7014a3b 100644
 > --- a/arch/arm/boot/dts/Makefile
 > +++ b/arch/arm/boot/dts/Makefile
 > @@ -501,6 +501,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
->         rk3066a-bqcurie2.dtb \
->         rk3066a-marsboard.dtb \
->         rk3066a-rayeager.dtb \
-> +       rk3036-sdk.dtb \
->         rk3188-radxarock.dtb \
->         rk3288-evb-act8846.dtb \
->         rk3288-evb-rk808.dtb \
-> diff --git a/arch/arm/boot/dts/rk3036-sdk.dts b/arch/arm/boot/dts/rk3036-sdk.dts
-> new file mode 100644
+>  	rk3066a-bqcurie2.dtb \
+>  	rk3066a-marsboard.dtb \
+>  	rk3066a-rayeager.dtb \
+> +	rk3036-sdk.dtb \
+>  	rk3188-radxarock.dtb \
+>  	rk3288-evb-act8846.dtb \
+>  	rk3288-evb-rk808.dtb \
+> diff --git a/arch/arm/boot/dts/rk3036-sdk.dts
+> b/arch/arm/boot/dts/rk3036-sdk.dts new file mode 100644
 > index 0000000..0149c9a
 > --- /dev/null
 > +++ b/arch/arm/boot/dts/rk3036-sdk.dts
@@ -99,57 +101,70 @@ other one is rk3036-sdk.dts for board.
 > +#include "skeleton.dtsi"
 > +
 > +/ {
-> +       compatible = "rockchip,rk3036";
+> +	compatible = "rockchip,rk3036";
 > +
-> +       interrupt-parent = <&gic>;
+> +	interrupt-parent = <&gic>;
 > +
-> +       aliases {
-> +               serial0 = &uart0;
-> +               serial1 = &uart1;
-> +               serial2 = &uart2;
-> +       };
+> +	aliases {
+> +		serial0 = &uart0;
+> +		serial1 = &uart1;
+> +		serial2 = &uart2;
+> +	};
 > +
-> +       memory {
-> +               reg = <0x60000000 0x40000000>;
-> +       };
+> +	memory {
+> +		reg = <0x60000000 0x40000000>;
+
+missing
+	device_type = "memory";
+
+
+> +	};
 > +
 > +        arm-pmu {
 > +                compatible = "arm,cortex-a7-pmu";
 > +                interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>,
 > +                             <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
+
+missing interrupt-affinity to map irq->cpu_core ?
+
+
 > +        };
 > +
-> +       cpus {
-> +               #address-cells = <1>;
-> +               #size-cells = <0>;
-> +               //enable-method = "rockchip,rk3066-smp";
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		//enable-method = "rockchip,rk3066-smp";
+
+please don't leave commented code around
+
+
 > +
-> +               cpu@f00 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a7";
-> +                       reg = <0xf00>;
-> +                       operating-points = <
-> +                               /* KHz    uV */
-> +                                816000 1000000
-> +                       >;
-> +                       #cooling-cells = <2>; /* min followed by max */
-> +                       clock-latency = <40000>;
-> +                       clocks = <&cru ARMCLK>;
-> +                       resets = <&cru SRST_CORE0>;
-> +               };
-> +               cpu@f01 {
-> +                       device_type = "cpu";
-> +                       compatible = "arm,cortex-a7";
-> +                       reg = <0xf01>;
-> +                       resets = <&cru SRST_CORE1>;
-> +               };
-> +       };
+> +		cpu@f00 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0xf00>;
+> +			operating-points = <
+> +				/* KHz    uV */
+> +				 816000 1000000
+> +			>;
+> +			#cooling-cells = <2>; /* min followed by max */
+> +			clock-latency = <40000>;
+> +			clocks = <&cru ARMCLK>;
+> +			resets = <&cru SRST_CORE0>;
+> +		};
+> +		cpu@f01 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0xf01>;
+> +			resets = <&cru SRST_CORE1>;
+> +		};
+> +	};
 > +
-> +       amba {
-> +               compatible = "arm,amba-bus";
-> +               #address-cells = <1>;
-> +               #size-cells = <1>;
-> +               ranges;
+> +	amba {
+> +		compatible = "arm,amba-bus";
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges;
 > +
 > +                pdma: pdma@20078000 {
 > +                        compatible = "arm,pl330", "arm,primecell";
@@ -160,267 +175,278 @@ other one is rk3036-sdk.dts for board.
 > +                        clocks = <&cru ACLK_DMAC2>;
 > +                        clock-names = "apb_pclk";
 > +                };
-> +       };
+
+indentation of the dma controller looks wrong
+
+
+> +	};
 > +
-> +       xin24m: oscillator {
-> +               compatible = "fixed-clock";
-> +               clock-frequency = <24000000>;
-> +               clock-output-names = "xin24m";
-> +               #clock-cells = <0>;
-> +       };
+> +	xin24m: oscillator {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <24000000>;
+> +		clock-output-names = "xin24m";
+> +		#clock-cells = <0>;
+> +	};
 > +
-> +       timer {
-> +               compatible = "arm,armv7-timer";
-> +               arm,cpu-registers-not-fw-configured;
-> +               interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> +                            <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-> +               clock-frequency = <24000000>;
-> +               always-on;
-> +       };
+> +	timer {
+> +		compatible = "arm,armv7-timer";
+> +		arm,cpu-registers-not-fw-configured;
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | 
+IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | 
+IRQ_TYPE_LEVEL_HIGH)>;
+
+please provide all 4 irqs (secure, non-secure, virtual and hypervisor)
+
+
+> +		clock-frequency = <24000000>;
+> +		always-on;
+> +	};
 > +
-> +       cru: clock-controller@20000000 {
-> +               compatible = "rockchip,rk3036-cru";
-> +               reg = <0x20000000 0x1000>;
-> +               rockchip,grf = <&grf>;
-> +               #clock-cells = <1>;
-> +               #reset-cells = <1>;
-> +               assigned-clocks = <&cru PLL_GPLL>;
-> +               assigned-clock-rates = <594000000>;
-> +       };
+> +	cru: clock-controller@20000000 {
+> +		compatible = "rockchip,rk3036-cru";
+> +		reg = <0x20000000 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +		assigned-clocks = <&cru PLL_GPLL>;
+> +		assigned-clock-rates = <594000000>;
+> +	};
 > +
-> +       uart0: serial@20060000 {
-> +               compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
-> +               reg = <0x20060000 0x100>;
-> +               interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
-> +               reg-shift = <2>;
-> +               reg-io-width = <4>;
-> +               clock-frequency = <24000000>;
-> +               clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
-> +               clock-names = "baudclk", "apb_pclk";
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
-> +       };
+> +	uart0: serial@20060000 {
+> +		compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
+> +		reg = <0x20060000 0x100>;
+> +		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clock-frequency = <24000000>;
+> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+> +	};
 > +
-> +       uart1: serial@20064000 {
-> +               compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
-> +               reg = <0x20064000 0x100>;
-> +               interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
-> +               reg-shift = <2>;
-> +               reg-io-width = <4>;
-> +               clock-frequency = <24000000>;
-> +               clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
-> +               clock-names = "baudclk", "apb_pclk";
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&uart1_xfer>;
-> +       };
+> +	uart1: serial@20064000 {
+> +		compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
+> +		reg = <0x20064000 0x100>;
+> +		interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clock-frequency = <24000000>;
+> +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart1_xfer>;
+> +	};
 > +
-> +       uart2: serial@20068000 {
-> +               compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
-> +               reg = <0x20068000 0x100>;
-> +               interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>;
-> +               reg-shift = <2>;
-> +               reg-io-width = <4>;
-> +               clock-frequency = <24000000>;
-> +               clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-> +               clock-names = "baudclk", "apb_pclk";
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&uart2_xfer>;
-> +       };
+> +	uart2: serial@20068000 {
+> +		compatible = "rockchip,rk3036-uart", "snps,dw-apb-uart";
+> +		reg = <0x20068000 0x100>;
+> +		interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clock-frequency = <24000000>;
+> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart2_xfer>;
+> +	};
 > +
-> +       pwm0: pwm@20050000 {
-> +               compatible = "rockchip,rk2928-pwm";
-> +               reg = <0x20050000 0x10>;
-> +               #pwm-cells = <3>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&pwm0_pin>;
-> +               clocks = <&cru PCLK_PWM>;
-> +               clock-names = "pwm";
-> +               status = "disabled";
-> +       };
+> +	pwm0: pwm@20050000 {
+> +		compatible = "rockchip,rk2928-pwm";
+> +		reg = <0x20050000 0x10>;
+> +		#pwm-cells = <3>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pwm0_pin>;
+> +		clocks = <&cru PCLK_PWM>;
+> +		clock-names = "pwm";
+> +		status = "disabled";
+> +	};
 > +
-> +       pwm1: pwm@20050010 {
-> +               compatible = "rockchip,rk2928-pwm";
-> +               reg = <0x20050010 0x10>;
-> +               #pwm-cells = <3>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&pwm1_pin>;
-> +               clocks = <&cru PCLK_PWM>;
-> +               clock-names = "pwm";
-> +               status = "disabled";
-> +       };
+> +	pwm1: pwm@20050010 {
+> +		compatible = "rockchip,rk2928-pwm";
+> +		reg = <0x20050010 0x10>;
+> +		#pwm-cells = <3>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pwm1_pin>;
+> +		clocks = <&cru PCLK_PWM>;
+> +		clock-names = "pwm";
+> +		status = "disabled";
+> +	};
 > +
-> +       pwm2: pwm@20050020 {
-> +               compatible = "rockchip,rk2928-pwm";
-> +               reg = <0x20050020 0x10>;
-> +               #pwm-cells = <3>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&pwm2_pin>;
-> +               clocks = <&cru PCLK_PWM>;
-> +               clock-names = "pwm";
-> +               status = "disabled";
-> +       };
+> +	pwm2: pwm@20050020 {
+> +		compatible = "rockchip,rk2928-pwm";
+> +		reg = <0x20050020 0x10>;
+> +		#pwm-cells = <3>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pwm2_pin>;
+> +		clocks = <&cru PCLK_PWM>;
+> +		clock-names = "pwm";
+> +		status = "disabled";
+> +	};
 > +
-> +       pwm3: pwm@20050030 {
-> +               compatible = "rockchip,rk2928-pwm";
-> +               reg = <0x20050030 0x10>;
-> +               #pwm-cells = <2>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&pwm3_pin>;
-> +               clocks = <&cru PCLK_PWM>;
-> +               clock-names = "pwm";
-> +               status = "disabled";
-> +       };
+> +	pwm3: pwm@20050030 {
+> +		compatible = "rockchip,rk2928-pwm";
+> +		reg = <0x20050030 0x10>;
+> +		#pwm-cells = <2>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pwm3_pin>;
+> +		clocks = <&cru PCLK_PWM>;
+> +		clock-names = "pwm";
+> +		status = "disabled";
+> +	};
 > +
-> +       sram@10080000 {
-> +               compatible = "mmio-sram";
-> +               reg = <0x10080000 0x2000>;
-> +               map-exec;
-> +       };
+> +	sram@10080000 {
+> +		compatible = "mmio-sram";
+> +		reg = <0x10080000 0x2000>;
+> +		map-exec;
+> +	};
 > +
-> +       gic: interrupt-controller@10139000 {
-> +               compatible = "arm,gic-400";
-> +               interrupt-controller;
-> +               #interrupt-cells = <3>;
-> +               #address-cells = <0>;
+> +	gic: interrupt-controller@10139000 {
+> +		compatible = "arm,gic-400";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		#address-cells = <0>;
 > +
-> +               reg = <0x10139000 0x1000>,
-> +                     <0x1013a000 0x1000>;
-> +       };
+> +		reg = <0x10139000 0x1000>,
+> +		      <0x1013a000 0x1000>;
+
+please also provide the vgic registers and interrupt
+
+
+> +	};
 > +
-> +       grf: syscon@20008000 {
-> +               compatible = "rockchip,rk3036-grf", "syscon";
-> +               reg = <0x20008000 0x1000>;
-> +       };
+> +	grf: syscon@20008000 {
+> +		compatible = "rockchip,rk3036-grf", "syscon";
+> +		reg = <0x20008000 0x1000>;
+> +	};
 > +
-> +       pinctrl: pinctrl {
-> +               compatible = "rockchip,rk3036-pinctrl";
-> +               rockchip,grf = <&grf>;
-> +               #address-cells = <1>;
-> +               #size-cells = <1>;
-> +               ranges;
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rk3036-pinctrl";
+> +		rockchip,grf = <&grf>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges;
 > +
-> +               gpio0: gpio0@2007c000 {
-> +                       compatible = "rockchip,gpio-bank";
-> +                       reg =   <0x2007c000 0x100>;
-> +                       interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-> +                       clocks = <&cru PCLK_GPIO0>;
+> +		gpio0: gpio0@2007c000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg =	<0x2007c000 0x100>;
+
+please use a space after the "=" in "reg = <..."
+
+
+> +			interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO0>;
 > +
-> +                       gpio-controller;
-> +                       #gpio-cells = <2>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
 > +
-> +                       interrupt-controller;
-> +                       #interrupt-cells = <2>;
-> +               };
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
 > +
-> +               gpio1: gpio1@20080000 {
-> +                       compatible = "rockchip,gpio-bank";
-> +                       reg = <0x20080000 0x100>;
-> +                       interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
-> +                       clocks = <&cru PCLK_GPIO1>;
+> +		gpio1: gpio1@20080000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x20080000 0x100>;
+> +			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO1>;
 > +
-> +                       gpio-controller;
-> +                       #gpio-cells = <2>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
 > +
-> +                       interrupt-controller;
-> +                       #interrupt-cells = <2>;
-> +               };
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
 > +
-> +               gpio2: gpio2@20084000 {
-> +                       compatible = "rockchip,gpio-bank";
-> +                       reg = <0x20084000 0x100>;
-> +                       interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
-> +                       clocks = <&cru PCLK_GPIO2>;
+> +		gpio2: gpio2@20084000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x20084000 0x100>;
+> +			interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO2>;
 > +
-> +                       gpio-controller;
-> +                       #gpio-cells = <2>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
 > +
-> +                       interrupt-controller;
-> +                       #interrupt-cells = <2>;
-> +               };
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
 > +
-> +               pcfg_pull_up: pcfg-pull-up {
-> +                       bias-pull-up;
-> +               };
+> +		pcfg_pull_up: pcfg-pull-up {
+> +			bias-pull-up;
+> +		};
 > +
-> +               pcfg_pull_down: pcfg-pull-down {
-> +                       bias-pull-down;
-> +               };
+> +		pcfg_pull_down: pcfg-pull-down {
+> +			bias-pull-down;
+> +		};
 > +
-> +               pcfg_pull_none: pcfg-pull-none {
-> +                       bias-disable;
-> +               };
+> +		pcfg_pull_none: pcfg-pull-none {
+> +			bias-disable;
+> +		};
 > +
-> +               pcfg_pull_none_12ma: pcfg-pull-none-12ma {
-> +                       bias-disable;
-> +                       drive-strength = <12>;
-> +               };
+> +		pcfg_pull_none_12ma: pcfg-pull-none-12ma {
+> +			bias-disable;
+> +			drive-strength = <12>;
+> +		};
+
+The rk3036 iomux does not have a per-pin drive-strength setting it seems, so 
+at the moment the pinctrl driver does not support changing the drive-strength, 
+so this node should probably be dropped. It seems unused anyway.
+
+
 > +
-> +               uart0 {
-> +                       uart0_xfer: uart0-xfer {
-> +                               rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_none>,
-> +                                               <0 17 RK_FUNC_1 &pcfg_pull_none>;
-> +                       };
+> +		uart0 {
+> +			uart0_xfer: uart0-xfer {
+> +				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_none>,
+> +						<0 17 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
 > +
-> +                       uart0_cts: uart0-cts {
-> +                               rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_none>;
-> +                       };
+> +			uart0_cts: uart0-cts {
+> +				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
 > +
-> +                       uart0_rts: uart0-rts {
-> +                               rockchip,pins = <0 19 RK_FUNC_1 &pcfg_pull_none>;
-> +                       };
-> +               };
+> +			uart0_rts: uart0-rts {
+> +				rockchip,pins = <0 19 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
+> +		};
 > +
-> +               uart1 {
-> +                       uart1_xfer: uart1-xfer {
-> +                               rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_none>,
-> +                                               <2 23 RK_FUNC_1 &pcfg_pull_none>;
-> +                       };
-> +                       /* no rts / cts for uart1 */
-> +               };
+> +		uart1 {
+> +			uart1_xfer: uart1-xfer {
+> +				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_none>,
+> +						<2 23 RK_FUNC_1 &pcfg_pull_none>;
+> +			};
+> +			/* no rts / cts for uart1 */
+> +		};
 > +
 > +                uart2 {
 > +                        uart2_xfer: uart2-xfer {
-> +                                rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_none>,
-> +                                                <1 19 RK_FUNC_2 &pcfg_pull_none>;
-> +                        };
+> +                                rockchip,pins = <1 18 RK_FUNC_2
+> &pcfg_pull_none>, +                                                <1 19
+> RK_FUNC_2 &pcfg_pull_none>; +                        };
 > +                        /* no rts / cts for uart2 */
 > +                };
 > +
-> +               pwm0 {
-> +                       pwm0_pin: pwm0-pin {
-> +                               rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
-> +                       };
-> +               };
+> +		pwm0 {
+> +			pwm0_pin: pwm0-pin {
+> +				rockchip,pins = <0 0 RK_FUNC_2 &pcfg_pull_none>;
+> +			};
+> +		};
 > +
-> +               pwm1 {
-> +                       pwm1_pin: pwm1-pin {
-> +                               rockchip,pins = <0 1 RK_FUNC_2 &pcfg_pull_none>;
-> +                       };
-> +               };
+> +		pwm1 {
+> +			pwm1_pin: pwm1-pin {
+> +				rockchip,pins = <0 1 RK_FUNC_2 &pcfg_pull_none>;
+> +			};
+> +		};
 > +
-> +               pwm2 {
-> +                       pwm2_pin: pwm2-pin {
-> +                               rockchip,pins = <0 1 2 &pcfg_pull_none>;
-> +                       };
-> +               };
+> +		pwm2 {
+> +			pwm2_pin: pwm2-pin {
+> +				rockchip,pins = <0 1 2 &pcfg_pull_none>;
+> +			};
+> +		};
 > +
-> +               pwm3 {
-> +                       pwm3_pin: pwm3-pin {
-> +                               rockchip,pins = <0 27 1 &pcfg_pull_none>;
-> +                       };
-> +               };
-> +       };
+> +		pwm3 {
+> +			pwm3_pin: pwm3-pin {
+> +				rockchip,pins = <0 27 1 &pcfg_pull_none>;
+> +			};
+> +		};
+> +	};
 > +};
-> --
-> 1.7.9.5
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
