@@ -1,40 +1,118 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v1 0/3] Port and support rk3036 SoC platform
-Date: Fri, 28 Aug 2015 18:07:24 +0800
-Message-ID: <55E032DC.1090703@rock-chips.com>
-References: <1440740808-15004-1-git-send-email-zhengxing@rock-chips.com> <6551991.RUDkGfdSCp@phil>
+From: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 1/5] DMA: pl330: support burst mode for dev-to-mem and
+ mem-to-dev transmit
+Date: Fri, 28 Aug 2015 11:19:52 -0700
+Message-ID: <CAPz6YkX-d8B1wPgjnULDAY8+nyuFePVrEU2NQe0rV2CsjYEj3Q@mail.gmail.com>
+References: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com>
+ <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAJKOXPdw+ZZURRPUNvKHdx7wRG7M-Frqmvq46KFM_ckGq8h0Yg@mail.gmail.com>
+ <55DF1072.1070905@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6551991.RUDkGfdSCp@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, Michael Turquette <mturquette@baylibre.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <55DF1072.1070905-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Boojin Kim <boojin.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-HI Heiko,
-Thank you for your reply. I will improve them as quickly as possible.
-
-Thanks. :)
-
-On 2015=E5=B9=B408=E6=9C=8828=E6=97=A5 17:59, Heiko Stuebner wrote:
-> Hi,
->
-> Am Freitag, 28. August 2015, 13:46:45 schrieb Xing Zheng:
->> We need to support rk3036 soc platform via upstream, there are
->> 3 parts for the initial release of minimum system: dts, pinctrl,
->> and clock tree for rk3036, startup and run to init processs.
-> this is really cool that you're working on supporting the rk3036.
-> I had some comments to the individual patches, but overall it looks q=
-uite nice
-> already.
->
->
-> So, thanks for working on this
-> Heiko
->
->
->
->
+T24gVGh1LCBBdWcgMjcsIDIwMTUgYXQgNjoyOCBBTSwgU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
+ay1jaGlwcy5jb20+IHdyb3RlOgo+IOWcqCAyMDE1LzgvMjcgMjA6NTcsIEtyenlzenRvZiBLb3ps
+b3dza2kg5YaZ6YGTOgo+Pgo+PiAyMDE1LTA4LTI3IDE3OjQ4IEdNVCswOTowMCBTaGF3biBMaW4g
+PHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT46Cj4+Pgo+Pj4KPj4+IFRoaXMgcGF0Y2ggYWRkcyB0
+byBzdXBwb3J0IGJ1cnN0IG1vZGUgZm9yIGRldi10by1tZW0gYW5kCj4+PiBtZW0tdG8tZGV2IHRy
+YW5zbWl0Lgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEJvb2ppbiBLaW0gPGJvb2ppbi5raW1Ac2Ft
+c3VuZy5jb20+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBBZGR5IEtlIDxhZGR5LmtlQHJvY2stY2hpcHMu
+Y29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5j
+b20+Cj4+PiBjYzogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4+IGNjOiBEb3Vn
+IEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+PiBjYzogT2xvZiBKb2hhbnNzb24g
+PG9sb2ZqQGdvb2dsZS5jb20+Cj4+PiBSZXZpZXdlZC1hbmQtdGVzdGVkLWJ5OiBTb25ueSBSYW8g
+PHNvbm55cmFvQGNocm9taXVtLm9yZz4KPj4KPj4KPj4gRm9yIHRoZSBlbnRpcmUgcGF0Y2hzZXQ6
+IEkgd291bGQgcHJlZmVyIHRvIHNlZSBzb21lb25lJ3MKPj4gcmV2aWV3ZWQvdGVzdGVkIHRhZyBp
+biBoaXMgcmVzcG9uc2UuIFNlbmRpbmcgYSB2ZXJzaW9uIDEgb2YgcGF0Y2hzZXQKPj4gKHJlZ2Fy
+ZGxlc3Mgb2YgQm9vamluIEtpbSdzIHdvcmsgdHdvIHllYXJzIGFnbykgd2l0aCBzdWNoIHRhZyBj
+b3VsZAo+PiBtZWFuIGFueXRoaW5nLiBJIGNhbm5vdCB2ZXJpZnkgaXQgZWFzaWx5ICh1bmxlc3Mg
+ZGlnZ2luZyBzb21ld2hlcmUuLi4KPj4gb3IgYXNraW5nIHBlb3BsZSkuIFlvdSBjb3VsZCBhZGQg
+Zm9yIGV4YW1wbGU6IFJldmlld2VkLWJ5IFNhbnRhIENsYXVzLgo+PiBTaG91bGQgSSBzZW50IGEg
+bGV0dGVyIHRvIGhpbSBhc2tpbmcgZm9yIGNvbmZpcm1hdGlvbj8gOikKPj4KPgo+IDopIHllcywg
+eW91IGFyZSByaWdodC4gSSBzaG91bGQgY29tcGx5IHdpdGggdGhlIHJ1bGUsIGV2ZW4gaWYgdGhl
+IHBhdGNoZXN0Cj4gaGFkIGJlZW4gcmV2aWV3ZWQgb3IgdGVzdGVkIGJ5IHNvbWVvbmUgb24gYW5v
+dGhlciB0cmVlLgoKSGksIHllYWggSSByZXZpZXdlZCBvbiBhIGRpZmZlcmVudCB0cmVlLCBzbyB5
+b3Ugc2hvdWxkbid0IHB1dCB0aGF0IHRhZwpoZXJlLCB0aGFua3MgZm9yIHJlbW92aW5nIGl0LgpJ
+IGNhbiByZS1yZXZpZXcgaWYgeW91J2QgbGlrZS4KCj4KPgo+PiBNb3JlIHNlcmlvdXNseSAtIHJl
+dmlld2VkLWJ5IGlzIGEgc3RhdGVtZW50IChwbGVhc2UgbG9vayBhdAo+PiBEb2N1bWVudGF0aW9u
+L1N1Ym1pdHRpbmdQYXRjaGVzKSBhbmQgeW91IGNhbm5vdCBmb3JjZSBzb21lb25lIHRvIG1ha2UK
+Pj4gdGhhdCBzdGF0ZW1lbnQuIEhlIG11c3QgbWFrZSBzdWNoIHN0YXRlbWVudCBvbiBoaXMgb3du
+Lgo+Pgo+PiBUaGF0J3MgYWxsIGZyb20gbXkgc2lkZSBzaW5jZSBJIGRvbid0IGZlZWwgc2tpbGxl
+ZCBlbm91Z2ggdG8gcmV2aWV3IHRoZQo+PiBjb2RlLgo+Pgo+PiBCZXN0IHJlZ2FyZHMsCj4+IEty
+enlzenRvZgo+Pgo+Pj4KPj4+IC0tLQo+Pj4KPj4+ICAgZHJpdmVycy9kbWEvcGwzMzAuYyB8IDE4
+ICsrKysrKysrKysrKy0tLS0tLQo+Pj4gICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygr
+KSwgNiBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kbWEvcGwzMzAu
+YyBiL2RyaXZlcnMvZG1hL3BsMzMwLmMKPj4+IGluZGV4IGVjYWI0ZWEwLi4wZDU0NGQyIDEwMDY0
+NAo+Pj4gLS0tIGEvZHJpdmVycy9kbWEvcGwzMzAuYwo+Pj4gKysrIGIvZHJpdmVycy9kbWEvcGwz
+MzAuYwo+Pj4gQEAgLTExNDEsMTAgKzExNDEsMTMgQEAgc3RhdGljIGlubGluZSBpbnQgX2xkc3Rf
+ZGV2dG9tZW0odW5zaWduZWQKPj4+IGRyeV9ydW4sIHU4IGJ1ZltdLAo+Pj4gICAgICAgICAgICAg
+ICAgICBjb25zdCBzdHJ1Y3QgX3hmZXJfc3BlYyAqcHhzLCBpbnQgY3ljKQo+Pj4gICB7Cj4+PiAg
+ICAgICAgICBpbnQgb2ZmID0gMDsKPj4+ICsgICAgICAgZW51bSBwbDMzMF9jb25kIGNvbmQ7Cj4+
+PiArCj4+PiArICAgICAgIGNvbmQgPSAocHhzLT5kZXNjLT5ycWNmZy5icnN0X2xlbiA9PSAxKSA/
+IFNJTkdMRSA6IEJVUlNUOwo+Pj4KPj4+ICAgICAgICAgIHdoaWxlIChjeWMtLSkgewo+Pj4gLSAg
+ICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9XRlAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBTSU5HTEUs
+Cj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4gLSAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9M
+RFAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBTSU5HTEUsCj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4g
+KyAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9XRlAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBjb25k
+LAo+Pj4gcHhzLT5kZXNjLT5wZXJpKTsKPj4+ICsgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRf
+TERQKGRyeV9ydW4sICZidWZbb2ZmXSwgY29uZCwKPj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+PiAg
+ICAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9TVChkcnlfcnVuLCAmYnVmW29mZl0sIEFMV0FZ
+Uyk7Cj4+PiAgICAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9GTFVTSFAoZHJ5X3J1biwgJmJ1
+ZltvZmZdLAo+Pj4gcHhzLT5kZXNjLT5wZXJpKTsKPj4+ICAgICAgICAgIH0KPj4+IEBAIC0xMTU2
+LDExICsxMTU5LDE0IEBAIHN0YXRpYyBpbmxpbmUgaW50IF9sZHN0X21lbXRvZGV2KHVuc2lnbmVk
+Cj4+PiBkcnlfcnVuLCB1OCBidWZbXSwKPj4+ICAgICAgICAgICAgICAgICAgY29uc3Qgc3RydWN0
+IF94ZmVyX3NwZWMgKnB4cywgaW50IGN5YykKPj4+ICAgewo+Pj4gICAgICAgICAgaW50IG9mZiA9
+IDA7Cj4+PiArICAgICAgIGVudW0gcGwzMzBfY29uZCBjb25kOwo+Pj4gKwo+Pj4gKyAgICAgICBj
+b25kID0gKHB4cy0+ZGVzYy0+cnFjZmcuYnJzdF9sZW4gPT0gMSkgPyBTSU5HTEUgOiBCVVJTVDsK
+Pj4+Cj4+PiAgICAgICAgICB3aGlsZSAoY3ljLS0pIHsKPj4+IC0gICAgICAgICAgICAgICBvZmYg
+Kz0gX2VtaXRfV0ZQKGRyeV9ydW4sICZidWZbb2ZmXSwgU0lOR0xFLAo+Pj4gcHhzLT5kZXNjLT5w
+ZXJpKTsKPj4+ICsgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfV0ZQKGRyeV9ydW4sICZidWZb
+b2ZmXSwgY29uZCwKPj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+PiAgICAgICAgICAgICAgICAgIG9m
+ZiArPSBfZW1pdF9MRChkcnlfcnVuLCAmYnVmW29mZl0sIEFMV0FZUyk7Cj4+PiAtICAgICAgICAg
+ICAgICAgb2ZmICs9IF9lbWl0X1NUUChkcnlfcnVuLCAmYnVmW29mZl0sIFNJTkdMRSwKPj4+IHB4
+cy0+ZGVzYy0+cGVyaSk7Cj4+PiArICAgICAgICAgICAgICAgb2ZmICs9IF9lbWl0X1NUUChkcnlf
+cnVuLCAmYnVmW29mZl0sIGNvbmQsCj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4gICAgICAgICAg
+ICAgICAgICBvZmYgKz0gX2VtaXRfRkxVU0hQKGRyeV9ydW4sICZidWZbb2ZmXSwKPj4+IHB4cy0+
+ZGVzYy0+cGVyaSk7Cj4+PiAgICAgICAgICB9Cj4+Pgo+Pj4gQEAgLTI1NTcsNyArMjU2Myw3IEBA
+IHN0YXRpYyBzdHJ1Y3QgZG1hX2FzeW5jX3R4X2Rlc2NyaXB0b3IKPj4+ICpwbDMzMF9wcmVwX2Rt
+YV9jeWNsaWMoCj4+Pgo+Pj4gICAgICAgICAgICAgICAgICBkZXNjLT5ycXR5cGUgPSBkaXJlY3Rp
+b247Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3Rfc2l6ZSA9IHBjaC0+YnVy
+c3Rfc3o7Cj4+PiAtICAgICAgICAgICAgICAgZGVzYy0+cnFjZmcuYnJzdF9sZW4gPSAxOwo+Pj4g
+KyAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3RfbGVuID0gcGNoLT5idXJzdF9sZW47Cj4+
+PiAgICAgICAgICAgICAgICAgIGRlc2MtPmJ5dGVzX3JlcXVlc3RlZCA9IHBlcmlvZF9sZW47Cj4+
+PiAgICAgICAgICAgICAgICAgIGZpbGxfcHgoJmRlc2MtPnB4LCBkc3QsIHNyYywgcGVyaW9kX2xl
+bik7Cj4+Pgo+Pj4gQEAgLTI3MDIsNyArMjcwOCw3IEBAIHBsMzMwX3ByZXBfc2xhdmVfc2coc3Ry
+dWN0IGRtYV9jaGFuICpjaGFuLCBzdHJ1Y3QKPj4+IHNjYXR0ZXJsaXN0ICpzZ2wsCj4+PiAgICAg
+ICAgICAgICAgICAgIH0KPj4+Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3Rf
+c2l6ZSA9IHBjaC0+YnVyc3Rfc3o7Cj4+PiAtICAgICAgICAgICAgICAgZGVzYy0+cnFjZmcuYnJz
+dF9sZW4gPSAxOwo+Pj4gKyAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3RfbGVuID0gcGNo
+LT5idXJzdF9sZW47Cj4+PiAgICAgICAgICAgICAgICAgIGRlc2MtPnJxdHlwZSA9IGRpcmVjdGlv
+bjsKPj4+ICAgICAgICAgICAgICAgICAgZGVzYy0+Ynl0ZXNfcmVxdWVzdGVkID0gc2dfZG1hX2xl
+bihzZyk7Cj4+PiAgICAgICAgICB9Cj4+PiAtLQo+Pj4gMi4zLjcKPj4+Cj4+Pgo+Pj4gLS0KPj4+
+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0OiBzZW5kIHRoZSBsaW5lICJ1bnN1YnNjcmli
+ZSBkbWFlbmdpbmUiIGluCj4+PiB0aGUgYm9keSBvZiBhIG1lc3NhZ2UgdG8gbWFqb3Jkb21vQHZn
+ZXIua2VybmVsLm9yZwo+Pj4gTW9yZSBtYWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3ZnZXIua2Vy
+bmVsLm9yZy9tYWpvcmRvbW8taW5mby5odG1sCj4+Cj4+Cj4+Cj4+Cj4KPgo+IC0tCj4gQmVzdCBS
+ZWdhcmRzCj4gU2hhd24gTGluCj4KPiAtLQo+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0
+OiBzZW5kIHRoZSBsaW5lICJ1bnN1YnNjcmliZSBsaW51eC1rZXJuZWwiIGluCj4gdGhlIGJvZHkg
+b2YgYSBtZXNzYWdlIHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPiBNb3JlIG1ham9yZG9t
+byBpbmZvIGF0ICBodHRwOi8vdmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKPiBQ
+bGVhc2UgcmVhZCB0aGUgRkFRIGF0ICBodHRwOi8vd3d3LnR1eC5vcmcvbGttbC8KCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
