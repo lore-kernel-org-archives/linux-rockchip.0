@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 1/5] DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
-Date: Fri, 28 Aug 2015 08:37:48 +0800
-Message-ID: <1440722268-31637-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2 3/5] Documentation: arm-pl330: add description of arm,pl330-broken-no-flushp
+Date: Fri, 28 Aug 2015 08:38:12 +0800
+Message-ID: <1440722292-31721-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
@@ -10,87 +10,32 @@ To: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olof@lixom.net>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Boojin Kim <boojin.kim@samsung.com>
-
-This patch adds to support burst mode for dev-to-mem and
-mem-to-dev transmit.
-
-Signed-off-by: Boojin Kim <boojin.kim@samsung.com>
-Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-cc: Heiko Stuebner <heiko@sntech.de>
-cc: Doug Anderson <dianders@chromium.org>
-cc: Olof Johansson <olof@lixom.net>
-
+Reviewed-by: Doug Anderson <dianders@chromium.org>
 ---
 
 Changes in v2:
-- amend the author
-- amend Olof's mail address
+- add Reviewed-by: Doug Anderson <dianders@chromium.org>
+- reorder this patch before the usage of the quirk
 
 Changes in v1:
 - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
   by Krzysztof.
-- add From original author.
-- remove Sunny's tag
 
- drivers/dma/pl330.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
+ Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
-index ecab4ea0..0d544d2 100644
---- a/drivers/dma/pl330.c
-+++ b/drivers/dma/pl330.c
-@@ -1141,10 +1141,13 @@ static inline int _ldst_devtomem(unsigned dry_run, u8 buf[],
- 		const struct _xfer_spec *pxs, int cyc)
- {
- 	int off = 0;
-+	enum pl330_cond cond;
-+
-+	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+diff --git a/Documentation/devicetree/bindings/dma/arm-pl330.txt b/Documentation/devicetree/bindings/dma/arm-pl330.txt
+index 2675658..db7e226 100644
+--- a/Documentation/devicetree/bindings/dma/arm-pl330.txt
++++ b/Documentation/devicetree/bindings/dma/arm-pl330.txt
+@@ -15,6 +15,7 @@ Optional properties:
+     cells in the dmas property of client device.
+   - dma-channels: contains the total number of DMA channels supported by the DMAC
+   - dma-requests: contains the total number of DMA requests supported by the DMAC
++  - arm,pl330-broken-no-flushp: quirk for avoiding to execute DMAFLUSHP
  
- 	while (cyc--) {
--		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
--		off += _emit_LDP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-+		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
-+		off += _emit_LDP(dry_run, &buf[off], cond, pxs->desc->peri);
- 		off += _emit_ST(dry_run, &buf[off], ALWAYS);
- 		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
- 	}
-@@ -1156,11 +1159,14 @@ static inline int _ldst_memtodev(unsigned dry_run, u8 buf[],
- 		const struct _xfer_spec *pxs, int cyc)
- {
- 	int off = 0;
-+	enum pl330_cond cond;
-+
-+	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+ Example:
  
- 	while (cyc--) {
--		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-+		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
- 		off += _emit_LD(dry_run, &buf[off], ALWAYS);
--		off += _emit_STP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
-+		off += _emit_STP(dry_run, &buf[off], cond, pxs->desc->peri);
- 		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
- 	}
- 
-@@ -2557,7 +2563,7 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
- 
- 		desc->rqtype = direction;
- 		desc->rqcfg.brst_size = pch->burst_sz;
--		desc->rqcfg.brst_len = 1;
-+		desc->rqcfg.brst_len = pch->burst_len;
- 		desc->bytes_requested = period_len;
- 		fill_px(&desc->px, dst, src, period_len);
- 
-@@ -2702,7 +2708,7 @@ pl330_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
- 		}
- 
- 		desc->rqcfg.brst_size = pch->burst_sz;
--		desc->rqcfg.brst_len = 1;
-+		desc->rqcfg.brst_len = pch->burst_len;
- 		desc->rqtype = direction;
- 		desc->bytes_requested = sg_dma_len(sg);
- 	}
 -- 
 2.3.7
