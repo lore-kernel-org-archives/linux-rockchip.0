@@ -1,61 +1,47 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 5/5] ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
-Date: Fri, 28 Aug 2015 08:38:33 +0800
-Message-ID: <1440722313-31803-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RESEND PATCH v16 4/4] ARM: dts: add the support power-domain
+ node on RK3288 SoCs
+Date: Thu, 27 Aug 2015 19:03:20 -0700
+Message-ID: <CAD=FV=VTR-PBcXXX1jHNw65x_cMP9CKwVWBs+XCcFqFPp7msjA@mail.gmail.com>
+References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com>
+	<1440487486-6154-5-git-send-email-wxt@rock-chips.com>
+	<7hfv37axhj.fsf@deeprootsystems.com>
+	<CAD=FV=V6oG+9U=W_JZmqCuNo-9-5wW8ffZzG7ZE_3cnSTNAjFQ@mail.gmail.com>
+	<7htwrn6l7g.fsf@deeprootsystems.com>
+	<CAKdAkRS=9Dq+YpMNSjpij0Am4ZD6uUURv74OLLYf+akD=W885A@mail.gmail.com>
+	<7hmvxc45w2.fsf@deeprootsystems.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <7hmvxc45w2.fsf@deeprootsystems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olof@lixom.net>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+To: Kevin Hilman <khilman@kernel.org>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Caesar Wang <wxt@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomasz Figa <tomasz.figa@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "jinkun.hong" <jinkun.hong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Pl330 integrated in rk3xxx platform doesn't support
-DMAFLUSHP function. So we add arm,pl330-broken-no-flushp quirk
-for it.
+Kevin,
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-cc: Heiko Stuebner <heiko@sntech.de>
-cc: Doug Anderson <dianders@chromium.org>
-cc: Olof Johansson <olof@lixom.net>
+On Thu, Aug 27, 2015 at 5:24 PM, Kevin Hilman <khilman@kernel.org> wrote:
+>> That is not really workable: the attach and detach happen in
+>> probe/remove path; if you do not have driver for the device you will
+>> miss the clocks for it.
+>
+> And in my proposal, I suggested that clocks without drivers are
+> good candidates to list in the domain, with the caveat that the be
+> called out (documented) as being device clocks that are missing a
+> driver, so when a driver shows up they can be moved accordingly, and in
+> a way that actually describes the hardware.
 
----
+What happens if someone disables the driver using the CONFIG subsystem?
 
-Changes in v2: None
-Changes in v1:
-- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
-  by Krzysztof.
+What happens if this is a device that someone has set to 'status =
+"disabled";' in the device tree?
 
- arch/arm/boot/dts/rk3xxx.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+Even if the device is disabled in one of those two ways, we still need
+the clocks to be turned on.  ...so if we turn on/off the VIO domain we
+need to turn on the EDP clock even if there's no EDP in the current
+board / config.  We might turn on/off VIO for one of the other devices
+in the VIO domain for one of the other devices in VIO that we are
+using.
 
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index a2ae9f3..a8ca4b3 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -79,6 +79,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA1>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 		};
- 
- 		dmac1_ns: dma-controller@2001c000 {
-@@ -89,6 +90,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA1>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 			status = "disabled";
- 		};
- 
-@@ -100,6 +102,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA2>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 		};
- 	};
- 
--- 
-2.3.7
+-Doug
