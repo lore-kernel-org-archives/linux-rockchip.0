@@ -1,47 +1,44 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH v16 4/4] ARM: dts: add the support power-domain
- node on RK3288 SoCs
-Date: Thu, 27 Aug 2015 19:03:20 -0700
-Message-ID: <CAD=FV=VTR-PBcXXX1jHNw65x_cMP9CKwVWBs+XCcFqFPp7msjA@mail.gmail.com>
-References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com>
-	<1440487486-6154-5-git-send-email-wxt@rock-chips.com>
-	<7hfv37axhj.fsf@deeprootsystems.com>
-	<CAD=FV=V6oG+9U=W_JZmqCuNo-9-5wW8ffZzG7ZE_3cnSTNAjFQ@mail.gmail.com>
-	<7htwrn6l7g.fsf@deeprootsystems.com>
-	<CAKdAkRS=9Dq+YpMNSjpij0Am4ZD6uUURv74OLLYf+akD=W885A@mail.gmail.com>
-	<7hmvxc45w2.fsf@deeprootsystems.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7hmvxc45w2.fsf@deeprootsystems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Caesar Wang <wxt@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tomasz Figa <tomasz.figa@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Linus Walleij <linus.walleij@linaro.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "jinkun.hong" <jinkun.hong@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v1 0/3] Port and support rk3036 SoC platform
+Date: Fri, 28 Aug 2015 13:46:45 +0800
+Message-ID: <1440740808-15004-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Michael Turquette <mturquette@baylibre.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Kevin,
 
-On Thu, Aug 27, 2015 at 5:24 PM, Kevin Hilman <khilman@kernel.org> wrote:
->> That is not really workable: the attach and detach happen in
->> probe/remove path; if you do not have driver for the device you will
->> miss the clocks for it.
->
-> And in my proposal, I suggested that clocks without drivers are
-> good candidates to list in the domain, with the caveat that the be
-> called out (documented) as being device clocks that are missing a
-> driver, so when a driver shows up they can be moved accordingly, and in
-> a way that actually describes the hardware.
+Hi,
+We need to support rk3036 soc platform via upstream, there are
+3 parts for the initial release of minimum system: dts, pinctrl,
+and clock tree for rk3036, startup and run to init processs.
 
-What happens if someone disables the driver using the CONFIG subsystem?
+Thanks.
 
-What happens if this is a device that someone has set to 'status =
-"disabled";' in the device tree?
 
-Even if the device is disabled in one of those two ways, we still need
-the clocks to be turned on.  ...so if we turn on/off the VIO domain we
-need to turn on the EDP clock even if there's no EDP in the current
-board / config.  We might turn on/off VIO for one of the other devices
-in the VIO domain for one of the other devices in VIO that we are
-using.
+Changes in v1:
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 
--Doug
+Xing Zheng (3):
+  ARM: dts: rockchip: add core rk3036 dts
+  pinctrl: rockchip: add support for the rk3036
+  clk: rockchip: add clock controller for rk3036
+
+ arch/arm/boot/dts/Makefile             |    1 +
+ arch/arm/boot/dts/rk3036-sdk.dts       |  362 +++++++++++++++++++++
+ drivers/clk/rockchip/Makefile          |    1 +
+ drivers/clk/rockchip/clk-pll.c         |  247 ++++++++++++++-
+ drivers/clk/rockchip/clk-rk3036.c      |  539 ++++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk.h             |   30 ++
+ drivers/pinctrl/pinctrl-rockchip.c     |   17 +
+ include/dt-bindings/clock/rk3036-cru.h |  247 +++++++++++++++
+ 8 files changed, 1443 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rk3036-sdk.dts
+ create mode 100644 drivers/clk/rockchip/clk-rk3036.c
+ create mode 100644 include/dt-bindings/clock/rk3036-cru.h
+
+-- 
+1.7.9.5
+
+
