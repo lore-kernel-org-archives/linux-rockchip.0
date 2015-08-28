@@ -1,101 +1,62 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v1 3/5] ARM: dts: Add arm, pl330-broken-no-flushp quirk
- for rk3288 platform
-Date: Fri, 28 Aug 2015 07:52:19 +0800
-Message-ID: <55DFA2B3.1010401@rock-chips.com>
-References: <1440685419-22037-1-git-send-email-shawn.lin@rock-chips.com>
- <1440685481-22163-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=Uy8zhPnCQGcks9T-wezcRAohO8Ec3KSLn=Ftr7J1TeSA@mail.gmail.com>
+From: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH v16 4/4] ARM: dts: add the support power-domain node on RK3288 SoCs
+Date: Thu, 27 Aug 2015 17:24:13 -0700
+Message-ID: <7hmvxc45w2.fsf@deeprootsystems.com>
+References: <1440487486-6154-1-git-send-email-wxt@rock-chips.com>
+	<1440487486-6154-5-git-send-email-wxt@rock-chips.com>
+	<7hfv37axhj.fsf@deeprootsystems.com>
+	<CAD=FV=V6oG+9U=W_JZmqCuNo-9-5wW8ffZzG7ZE_3cnSTNAjFQ@mail.gmail.com>
+	<7htwrn6l7g.fsf@deeprootsystems.com>
+	<CAKdAkRS=9Dq+YpMNSjpij0Am4ZD6uUURv74OLLYf+akD=W885A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Uy8zhPnCQGcks9T-wezcRAohO8Ec3KSLn=Ftr7J1TeSA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: shawn.lin@rock-chips.com, Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Boojin Kim <boojin.kim@samsung.com>, Olof Johansson <olofj@google.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dmaengine@vger.kernel.org, Sonny Rao <sonnyrao@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAKdAkRS=9Dq+YpMNSjpij0Am4ZD6uUURv74OLLYf+akD=W885A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+	(Dmitry Torokhov's message of "Tue, 25 Aug 2015 16:47:58 -0700")
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel@vger.kernel.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "devicetree@vger.kernel.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015/8/28 0:52, Doug Anderson wrote:
-> Hi,
->
-> On Thu, Aug 27, 2015 at 7:24 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->> From: Addy Ke <addy.ke@rock-chips.com>
->
-> Looks like you just added the "From" here.  I think that's fine, but
-> better to set the author so you get the right cover letter...
->
->
->> Pl330 integrated in rk3288 platform doesn't support
->> DMAFLUSHP function. So we add broken-no-flushp quirk
->> for it.
->>
->> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> cc: Heiko Stuebner <heiko@sntech.de>
->> cc: Doug Anderson <dianders@chromium.org>
->> cc: Olof Johansson <olofj@google.com>
->>
->> ---
->>
->> Changes in v1:
->> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
->>    by Krzysztof.
->> - remove Sunny's tag
->
-> Note that typically for patches I see people go from "no v" to "v2".  AKA:
-> * PATCH
-> * PATCH v2
-> * PATCH v3
->
->
->>   arch/arm/boot/dts/rk3288.dtsi | 3 +++
->>   1 file changed, 3 insertions(+)
->>
->> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
->> index 22316d0..106adf7 100644
->> --- a/arch/arm/boot/dts/rk3288.dtsi
->> +++ b/arch/arm/boot/dts/rk3288.dtsi
->> @@ -144,6 +144,7 @@
->>                          #dma-cells = <1>;
->>                          clocks = <&cru ACLK_DMAC2>;
->>                          clock-names = "apb_pclk";
->> +                       arm,pl330-broken-no-flushp;
->
-> Note that you should add bindings _before_ the usage of them.  So
-> patch #5 (Documentation) needs to come before this one.
->
+Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
 
-Cool! That makes sense.
-Thanks, Doug.
+> On Tue, Aug 25, 2015 at 3:45 PM, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>> Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>>
+>>> To put things in a
+>>> concrete way, for pd_vio we'd go through the entire device tree
+>>> ourselves and find all properties that look like "power-domains =
+>>> <&power RK3288_PD_VIO>;".  We'd then find the parent of those
+>>> properties and look for a property named "clocks".  We'd then iterate
+>>> over all those clocks and turn those on.  Did I get that right?
+>>
+>> ... but you make it sound like more work than it is.  The genpd already
+>> keeps a list of devices that refer to the power domain.  In fact, the
+>> genpd 'attach' method can be platform-specific, so could be used to keep
+>> track of a list (or a subset) of clocks which are needed for reset.
+>
+> That is not really workable: the attach and detach happen in
+> probe/remove path; if you do not have driver for the device you will
+> miss the clocks for it. 
 
->>                  };
->>
->>                  dmac_bus_ns: dma-controller@ff600000 {
->> @@ -155,6 +156,7 @@
->>                          clocks = <&cru ACLK_DMAC1>;
->>                          clock-names = "apb_pclk";
->>                          status = "disabled";
->> +                       arm,pl330-broken-no-flushp;
->>                  };
->>
->>                  dmac_bus_s: dma-controller@ffb20000 {
->> @@ -165,6 +167,7 @@
->>                          #dma-cells = <1>;
->>                          clocks = <&cru ACLK_DMAC1>;
->>                          clock-names = "apb_pclk";
->> +                       arm,pl330-broken-no-flushp;
->>                  };
->>          };
->
-> Other than the small nits above, this looks fine to me.
->
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
->
->
->
+And in my proposal, I suggested that clocks without drivers are
+good candidates to list in the domain, with the caveat that the be
+called out (documented) as being device clocks that are missing a
+driver, so when a driver shows up they can be moved accordingly, and in
+a way that actually describes the hardware.
+
+> And the quirk of this SoC is that we need to
+> turn all clocks during domain transition, regardless of whether there
+> is a driver for all devices.
+
+I understand.  And that "quirk" is not unique to rockchip socs.
+
+Kevin
 
 
--- 
-Best Regards
-Shawn Lin
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
