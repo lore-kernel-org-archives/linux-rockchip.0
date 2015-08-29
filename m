@@ -1,125 +1,35 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/5] DMA: pl330: support burst mode for dev-to-mem and
- mem-to-dev transmit
-Date: Sat, 29 Aug 2015 07:40:41 +0800
-Message-ID: <55E0F179.2020601@rock-chips.com>
-References: <1440665280-31557-1-git-send-email-shawn.lin@rock-chips.com>
- <1440665313-31603-1-git-send-email-shawn.lin@rock-chips.com>
- <CAJKOXPdw+ZZURRPUNvKHdx7wRG7M-Frqmvq46KFM_ckGq8h0Yg@mail.gmail.com>
- <55DF1072.1070905@rock-chips.com>
- <CAPz6YkX-d8B1wPgjnULDAY8+nyuFePVrEU2NQe0rV2CsjYEj3Q@mail.gmail.com>
+From: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add support for SD/MMC on MarsBoard-RK3066
+Date: Sat, 29 Aug 2015 16:48:04 +0200
+Message-ID: <CABgxDoLfxYfVQSHvR4+VrfN15mmnhAGnP700Q313-=FQ0QL5JA@mail.gmail.com>
+References: <1440432281-491-1-git-send-email-romain.perier@gmail.com>
+	<110804682.VHnft3L4vc@phil>
+	<1510107.CgsiuXuzAt@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPz6YkX-d8B1wPgjnULDAY8+nyuFePVrEU2NQe0rV2CsjYEj3Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Boojin Kim <boojin.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1510107.CgsiuXuzAt@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTUvOC8yOSAyOjE5LCBTb25ueSBSYW8g5YaZ6YGTOgo+IE9uIFRodSwgQXVnIDI3LCAy
-MDE1IGF0IDY6MjggQU0sIFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPiB3cm90
-ZToKPj4g5ZyoIDIwMTUvOC8yNyAyMDo1NywgS3J6eXN6dG9mIEtvemxvd3NraSDlhpnpgZM6Cj4+
-Pgo+Pj4gMjAxNS0wOC0yNyAxNzo0OCBHTVQrMDk6MDAgU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
-ay1jaGlwcy5jb20+Ogo+Pj4+Cj4+Pj4KPj4+PiBUaGlzIHBhdGNoIGFkZHMgdG8gc3VwcG9ydCBi
-dXJzdCBtb2RlIGZvciBkZXYtdG8tbWVtIGFuZAo+Pj4+IG1lbS10by1kZXYgdHJhbnNtaXQuCj4+
-Pj4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBCb29qaW4gS2ltIDxib29qaW4ua2ltQHNhbXN1bmcuY29t
-Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IEFkZHkgS2UgPGFkZHkua2VAcm9jay1jaGlwcy5jb20+Cj4+
-Pj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+
-Pj4gY2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4+Pj4gY2M6IERvdWcgQW5k
-ZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPj4+PiBjYzogT2xvZiBKb2hhbnNzb24gPG9s
-b2ZqQGdvb2dsZS5jb20+Cj4+Pj4gUmV2aWV3ZWQtYW5kLXRlc3RlZC1ieTogU29ubnkgUmFvIDxz
-b25ueXJhb0BjaHJvbWl1bS5vcmc+Cj4+Pgo+Pj4KPj4+IEZvciB0aGUgZW50aXJlIHBhdGNoc2V0
-OiBJIHdvdWxkIHByZWZlciB0byBzZWUgc29tZW9uZSdzCj4+PiByZXZpZXdlZC90ZXN0ZWQgdGFn
-IGluIGhpcyByZXNwb25zZS4gU2VuZGluZyBhIHZlcnNpb24gMSBvZiBwYXRjaHNldAo+Pj4gKHJl
-Z2FyZGxlc3Mgb2YgQm9vamluIEtpbSdzIHdvcmsgdHdvIHllYXJzIGFnbykgd2l0aCBzdWNoIHRh
-ZyBjb3VsZAo+Pj4gbWVhbiBhbnl0aGluZy4gSSBjYW5ub3QgdmVyaWZ5IGl0IGVhc2lseSAodW5s
-ZXNzIGRpZ2dpbmcgc29tZXdoZXJlLi4uCj4+PiBvciBhc2tpbmcgcGVvcGxlKS4gWW91IGNvdWxk
-IGFkZCBmb3IgZXhhbXBsZTogUmV2aWV3ZWQtYnkgU2FudGEgQ2xhdXMuCj4+PiBTaG91bGQgSSBz
-ZW50IGEgbGV0dGVyIHRvIGhpbSBhc2tpbmcgZm9yIGNvbmZpcm1hdGlvbj8gOikKPj4+Cj4+Cj4+
-IDopIHllcywgeW91IGFyZSByaWdodC4gSSBzaG91bGQgY29tcGx5IHdpdGggdGhlIHJ1bGUsIGV2
-ZW4gaWYgdGhlIHBhdGNoZXN0Cj4+IGhhZCBiZWVuIHJldmlld2VkIG9yIHRlc3RlZCBieSBzb21l
-b25lIG9uIGFub3RoZXIgdHJlZS4KPgo+IEhpLCB5ZWFoIEkgcmV2aWV3ZWQgb24gYSBkaWZmZXJl
-bnQgdHJlZSwgc28geW91IHNob3VsZG4ndCBwdXQgdGhhdCB0YWcKPiBoZXJlLCB0aGFua3MgZm9y
-IHJlbW92aW5nIGl0Lgo+IEkgY2FuIHJlLXJldmlldyBpZiB5b3UnZCBsaWtlLgo+CgpIaSwgc3Vu
-bnksIFRoYW5rcyBmb3IgcmVwbHkuCkl0J3MgdmVyeSBncmVhdCBpZiB5b3UgY2FuIGhlbHAgbWUg
-cmUtcmV2aWV3IHRoZSBwYXRjaHNldCBoZXJlLiA6KQoKPj4KPj4KPj4+IE1vcmUgc2VyaW91c2x5
-IC0gcmV2aWV3ZWQtYnkgaXMgYSBzdGF0ZW1lbnQgKHBsZWFzZSBsb29rIGF0Cj4+PiBEb2N1bWVu
-dGF0aW9uL1N1Ym1pdHRpbmdQYXRjaGVzKSBhbmQgeW91IGNhbm5vdCBmb3JjZSBzb21lb25lIHRv
-IG1ha2UKPj4+IHRoYXQgc3RhdGVtZW50LiBIZSBtdXN0IG1ha2Ugc3VjaCBzdGF0ZW1lbnQgb24g
-aGlzIG93bi4KPj4+Cj4+PiBUaGF0J3MgYWxsIGZyb20gbXkgc2lkZSBzaW5jZSBJIGRvbid0IGZl
-ZWwgc2tpbGxlZCBlbm91Z2ggdG8gcmV2aWV3IHRoZQo+Pj4gY29kZS4KPj4+Cj4+PiBCZXN0IHJl
-Z2FyZHMsCj4+PiBLcnp5c3p0b2YKPj4+Cj4+Pj4KPj4+PiAtLS0KPj4+Pgo+Pj4+ICAgIGRyaXZl
-cnMvZG1hL3BsMzMwLmMgfCAxOCArKysrKysrKysrKystLS0tLS0KPj4+PiAgICAxIGZpbGUgY2hh
-bmdlZCwgMTIgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2RtYS9wbDMzMC5jIGIvZHJpdmVycy9kbWEvcGwzMzAuYwo+Pj4+IGluZGV4
-IGVjYWI0ZWEwLi4wZDU0NGQyIDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvZG1hL3BsMzMwLmMK
-Pj4+PiArKysgYi9kcml2ZXJzL2RtYS9wbDMzMC5jCj4+Pj4gQEAgLTExNDEsMTAgKzExNDEsMTMg
-QEAgc3RhdGljIGlubGluZSBpbnQgX2xkc3RfZGV2dG9tZW0odW5zaWduZWQKPj4+PiBkcnlfcnVu
-LCB1OCBidWZbXSwKPj4+PiAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1Y3QgX3hmZXJfc3Bl
-YyAqcHhzLCBpbnQgY3ljKQo+Pj4+ICAgIHsKPj4+PiAgICAgICAgICAgaW50IG9mZiA9IDA7Cj4+
-Pj4gKyAgICAgICBlbnVtIHBsMzMwX2NvbmQgY29uZDsKPj4+PiArCj4+Pj4gKyAgICAgICBjb25k
-ID0gKHB4cy0+ZGVzYy0+cnFjZmcuYnJzdF9sZW4gPT0gMSkgPyBTSU5HTEUgOiBCVVJTVDsKPj4+
-Pgo+Pj4+ICAgICAgICAgICB3aGlsZSAoY3ljLS0pIHsKPj4+PiAtICAgICAgICAgICAgICAgb2Zm
-ICs9IF9lbWl0X1dGUChkcnlfcnVuLCAmYnVmW29mZl0sIFNJTkdMRSwKPj4+PiBweHMtPmRlc2Mt
-PnBlcmkpOwo+Pj4+IC0gICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfTERQKGRyeV9ydW4sICZi
-dWZbb2ZmXSwgU0lOR0xFLAo+Pj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+Pj4gKyAgICAgICAgICAg
-ICAgIG9mZiArPSBfZW1pdF9XRlAoZHJ5X3J1biwgJmJ1ZltvZmZdLCBjb25kLAo+Pj4+IHB4cy0+
-ZGVzYy0+cGVyaSk7Cj4+Pj4gKyAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9MRFAoZHJ5X3J1
-biwgJmJ1ZltvZmZdLCBjb25kLAo+Pj4+IHB4cy0+ZGVzYy0+cGVyaSk7Cj4+Pj4gICAgICAgICAg
-ICAgICAgICAgb2ZmICs9IF9lbWl0X1NUKGRyeV9ydW4sICZidWZbb2ZmXSwgQUxXQVlTKTsKPj4+
-PiAgICAgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfRkxVU0hQKGRyeV9ydW4sICZidWZbb2Zm
-XSwKPj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4+ICAgICAgICAgICB9Cj4+Pj4gQEAgLTExNTYs
-MTEgKzExNTksMTQgQEAgc3RhdGljIGlubGluZSBpbnQgX2xkc3RfbWVtdG9kZXYodW5zaWduZWQK
-Pj4+PiBkcnlfcnVuLCB1OCBidWZbXSwKPj4+PiAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1
-Y3QgX3hmZXJfc3BlYyAqcHhzLCBpbnQgY3ljKQo+Pj4+ICAgIHsKPj4+PiAgICAgICAgICAgaW50
-IG9mZiA9IDA7Cj4+Pj4gKyAgICAgICBlbnVtIHBsMzMwX2NvbmQgY29uZDsKPj4+PiArCj4+Pj4g
-KyAgICAgICBjb25kID0gKHB4cy0+ZGVzYy0+cnFjZmcuYnJzdF9sZW4gPT0gMSkgPyBTSU5HTEUg
-OiBCVVJTVDsKPj4+Pgo+Pj4+ICAgICAgICAgICB3aGlsZSAoY3ljLS0pIHsKPj4+PiAtICAgICAg
-ICAgICAgICAgb2ZmICs9IF9lbWl0X1dGUChkcnlfcnVuLCAmYnVmW29mZl0sIFNJTkdMRSwKPj4+
-PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4+ICsgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfV0ZQ
-KGRyeV9ydW4sICZidWZbb2ZmXSwgY29uZCwKPj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4+ICAg
-ICAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9MRChkcnlfcnVuLCAmYnVmW29mZl0sIEFMV0FZ
-Uyk7Cj4+Pj4gLSAgICAgICAgICAgICAgIG9mZiArPSBfZW1pdF9TVFAoZHJ5X3J1biwgJmJ1Zltv
-ZmZdLCBTSU5HTEUsCj4+Pj4gcHhzLT5kZXNjLT5wZXJpKTsKPj4+PiArICAgICAgICAgICAgICAg
-b2ZmICs9IF9lbWl0X1NUUChkcnlfcnVuLCAmYnVmW29mZl0sIGNvbmQsCj4+Pj4gcHhzLT5kZXNj
-LT5wZXJpKTsKPj4+PiAgICAgICAgICAgICAgICAgICBvZmYgKz0gX2VtaXRfRkxVU0hQKGRyeV9y
-dW4sICZidWZbb2ZmXSwKPj4+PiBweHMtPmRlc2MtPnBlcmkpOwo+Pj4+ICAgICAgICAgICB9Cj4+
-Pj4KPj4+PiBAQCAtMjU1Nyw3ICsyNTYzLDcgQEAgc3RhdGljIHN0cnVjdCBkbWFfYXN5bmNfdHhf
-ZGVzY3JpcHRvcgo+Pj4+ICpwbDMzMF9wcmVwX2RtYV9jeWNsaWMoCj4+Pj4KPj4+PiAgICAgICAg
-ICAgICAgICAgICBkZXNjLT5ycXR5cGUgPSBkaXJlY3Rpb247Cj4+Pj4gICAgICAgICAgICAgICAg
-ICAgZGVzYy0+cnFjZmcuYnJzdF9zaXplID0gcGNoLT5idXJzdF9zejsKPj4+PiAtICAgICAgICAg
-ICAgICAgZGVzYy0+cnFjZmcuYnJzdF9sZW4gPSAxOwo+Pj4+ICsgICAgICAgICAgICAgICBkZXNj
-LT5ycWNmZy5icnN0X2xlbiA9IHBjaC0+YnVyc3RfbGVuOwo+Pj4+ICAgICAgICAgICAgICAgICAg
-IGRlc2MtPmJ5dGVzX3JlcXVlc3RlZCA9IHBlcmlvZF9sZW47Cj4+Pj4gICAgICAgICAgICAgICAg
-ICAgZmlsbF9weCgmZGVzYy0+cHgsIGRzdCwgc3JjLCBwZXJpb2RfbGVuKTsKPj4+Pgo+Pj4+IEBA
-IC0yNzAyLDcgKzI3MDgsNyBAQCBwbDMzMF9wcmVwX3NsYXZlX3NnKHN0cnVjdCBkbWFfY2hhbiAq
-Y2hhbiwgc3RydWN0Cj4+Pj4gc2NhdHRlcmxpc3QgKnNnbCwKPj4+PiAgICAgICAgICAgICAgICAg
-ICB9Cj4+Pj4KPj4+PiAgICAgICAgICAgICAgICAgICBkZXNjLT5ycWNmZy5icnN0X3NpemUgPSBw
-Y2gtPmJ1cnN0X3N6Owo+Pj4+IC0gICAgICAgICAgICAgICBkZXNjLT5ycWNmZy5icnN0X2xlbiA9
-IDE7Cj4+Pj4gKyAgICAgICAgICAgICAgIGRlc2MtPnJxY2ZnLmJyc3RfbGVuID0gcGNoLT5idXJz
-dF9sZW47Cj4+Pj4gICAgICAgICAgICAgICAgICAgZGVzYy0+cnF0eXBlID0gZGlyZWN0aW9uOwo+
-Pj4+ICAgICAgICAgICAgICAgICAgIGRlc2MtPmJ5dGVzX3JlcXVlc3RlZCA9IHNnX2RtYV9sZW4o
-c2cpOwo+Pj4+ICAgICAgICAgICB9Cj4+Pj4gLS0KPj4+PiAyLjMuNwo+Pj4+Cj4+Pj4KPj4+PiAt
-LQo+Pj4+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBsaXN0OiBzZW5kIHRoZSBsaW5lICJ1bnN1
-YnNjcmliZSBkbWFlbmdpbmUiIGluCj4+Pj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9y
-ZG9tb0B2Z2VyLmtlcm5lbC5vcmcKPj4+PiBNb3JlIG1ham9yZG9tbyBpbmZvIGF0ICBodHRwOi8v
-dmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0bWwKPj4+Cj4+Pgo+Pj4KPj4+Cj4+Cj4+
-Cj4+IC0tCj4+IEJlc3QgUmVnYXJkcwo+PiBTaGF3biBMaW4KPj4KPj4gLS0KPj4gVG8gdW5zdWJz
-Y3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUgInVuc3Vic2NyaWJlIGxpbnV4LWtl
-cm5lbCIgaW4KPj4gdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5l
-bC5vcmcKPj4gTW9yZSBtYWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3ZnZXIua2VybmVsLm9yZy9t
-YWpvcmRvbW8taW5mby5odG1sCj4+IFBsZWFzZSByZWFkIHRoZSBGQVEgYXQgIGh0dHA6Ly93d3cu
-dHV4Lm9yZy9sa21sLwo+Cj4KPgoKCi0tIApCZXN0IFJlZ2FyZHMKU2hhd24gTGluCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi,
+
+Sure no problem.
+Romain
+
+2015-08-27 19:59 GMT+02:00 Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>:
+> Am Montag, 24. August 2015, 19:21:53 schrieb Heiko Stuebner:
+>> Am Montag, 24. August 2015, 18:04:41 schrieb Romain Perier:
+>> > This enables SDMMC0 on the board and gives a basic support for SD cards.
+>> >
+>> > Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>>
+>> applied to my dts branch, after moving it above the "&pinctrl" node
+>
+> just as notice, this moved down to linux-4.4 material
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
