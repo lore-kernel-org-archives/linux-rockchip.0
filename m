@@ -1,128 +1,291 @@
 From: Sonny Rao <sonnyrao@chromium.org>
-Subject: Re: [PATCH v2 0/5] Fix broken DMAFLUSHP on Rockchips platform
-Date: Mon, 31 Aug 2015 14:40:10 -0700
-Message-ID: <CAPz6YkXmGkQsB4WbQ5VbBAPRCTQFYCUR=Nf6G+syhbXSPA2DeQ@mail.gmail.com>
-References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 2/5] DMA: pl330: add quirk for broken no flushp
+Date: Mon, 31 Aug 2015 14:53:18 -0700
+Message-ID: <CAPz6YkWeBsp2_9VD+0RpcGFC7FvdcY1kyYONBMV0yunR3orKyQ@mail.gmail.com>
+References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com> <1440722280-31678-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1440722280-31678-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olof@lixom.net>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Cc: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dmaengine@vger.kernel.org, Olof Johansson <olof@lixom.net>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 27, 2015 at 5:36 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+On Thu, Aug 27, 2015 at 5:38 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> From: Addy Ke <addy.ke@rock-chips.com>
 >
-> The purpose of the DMAFLUSHP instruction:
-> - Tell the peripheral to clear its status and control registers.
-> - Send a message to the peripheral to resend its level status.
+> This patch add "arm,pl330-broken-no-flushp" quirk to avoid execute
+> DMAFLUSHP if Soc doesn't support it.
 >
-> There are 3 timings described in PL330 Technical Reference Manual:
-> - Timing 1: Burst request, can work well without DMAFLUSHP.
-> - Timing 2: Single and burst request, DMAC will ignore the single
->             transfer request. This timing happens if there are single
->             and burst request.
-> - Timing 3: Single transfers for a burst request, DMAC should signals
->             datype to request the peripheral to flush the contents of
->             any control registers. This timing happens if there is
->             not enough MFIFO to places the burst data.
+> Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> cc: Doug Anderson <dianders@chromium.org>
+> cc: Heiko Stuebner <heiko@sntech.de>
+> cc: Olof Johansson <olof@lixom.net>
 >
-> A peripheral may signal a DMA request during the execution of
-> DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
->
-> But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
-> It can't send a message to the peripheral to resend DMA request,
-> and the peripheral can't acknowledge a flush request from DMAC.
-> So all DMA requests should NOT be ignored by DMAC, and DMAC will not
-> notify the peripheral to flush.
->
-> To fix this problem, we need:
-> - Do NOT execute DMAFLUSHP instruction.
-> - Timing 2 and timing 3 should not happen.
->
-> Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
-> for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
-> impossible to hit the timing 3 if burst length is equal or less than 4.
-
-Fixing this issue also requires changes to drivers, so it would be
-nice if you put those changes into the same patchset.
-Otherwise someone may apply this series and expect things to work but
-they will still be broken. Specifically the peripherals should be
-setting their burst sizes for their DMA requests low enough to avoid
-needing the working DMAFLUSHP instruction.
-
-Also, I remember we ran into an issue when we tried using burst length
-of 4 with the i2s device on RK3288 because we could get requests that
-either weren't aligned or a multiple of 4 sizes and some transfers
-would just fail, so we ended up using a burst size of 1.  I recommend
-if we aren't sure about size or alignment for a particular peripheral,
-a burst size of 1 is safest.  For something like a block device, I
-think we can use the larger size bursts.  That's another reason to
-include the driver fixes in the series, just so we get it right,
-thanks.
-
->
-> Since the request type signal by the peripheral can only be set by
-> software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
-> or burst request, if it is set b01,  all of the peripharals will signal a brust
-> request. So the timing 2 will not happen, too.
->
-> So DMAC on RK3X can support single or burst transfer, but can't support
-> mixed transfer.
->
-> Because burst transfer is more efficient than single transfer, this is
-> confirmed by our ASIC team, who strongly suggest to use burst transfer.
-> And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
-> spi flash burst transfer will increase about two times than single transfer.
-> Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
-> the result. That means burst transfer is reansonable.
->
-> So we need a quirk not to execute DMAFLUSHP instruction and to use burst
-> transfer.
->
-> Note:
-> - The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
->   support brust transfer, these bits should not be changed in bootloader.
->
+> ---
 >
 > Changes in v2:
 > - amend the author
-> - reorder the patches suggested by Doug
-> - add Reviewed-by: Doug Anderson <dianders@chromium.org> for
->   rk3288.dtsi patch and arm-pl330.txt patch
 > - amend Olof's mail address
 >
 > Changes in v1:
 > - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
 >   by Krzysztof.
-> - add From original author.
 > - remove Sunny's tag
 >
-> Addy Ke (2):
->   DMA: pl330: add quirk for broken no flushp
->   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platform
+>  drivers/dma/pl330.c | 87 ++++++++++++++++++++++++++++++++++++++---------------
+>  1 file changed, 62 insertions(+), 25 deletions(-)
 >
-> Boojin Kim (1):
->   DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+> index 0d544d2..3b9b426 100644
+> --- a/drivers/dma/pl330.c
+> +++ b/drivers/dma/pl330.c
+> @@ -34,6 +34,8 @@
+>  #define PL330_MAX_IRQS         32
+>  #define PL330_MAX_PERI         32
 >
-> Shawn Lin (2):
->   Documentation: arm-pl330: add description of
->     arm,pl330-broken-no-flushp
->   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
+> +#define PL330_QUIRK_BROKEN_NO_FLUSHP BIT(0)
+> +
+>  enum pl330_cachectrl {
+>         CCTRL0,         /* Noncacheable and nonbufferable */
+>         CCTRL1,         /* Bufferable only */
+> @@ -488,6 +490,17 @@ struct pl330_dmac {
+>         /* Peripheral channels connected to this DMAC */
+>         unsigned int num_peripherals;
+>         struct dma_pl330_chan *peripherals; /* keep at end */
+> +       int quirks;
+> +};
+> +
+> +static struct pl330_of_quirks {
+> +       char *quirk;
+> +       int id;
+> +} of_quirks[] = {
+> +       {
+> +               .quirk = "arm,pl330-broken-no-flushp",
+> +               .id = PL330_QUIRK_BROKEN_NO_FLUSHP,
+> +       }
+>  };
 >
->  .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
->  arch/arm/boot/dts/rk3288.dtsi                      |   3 +
->  arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
->  drivers/dma/pl330.c                                | 101 +++++++++++++++------
->  4 files changed, 79 insertions(+), 29 deletions(-)
+>  struct dma_pl330_desc {
+> @@ -1137,53 +1150,68 @@ static inline int _ldst_memtomem(unsigned dry_run, u8 buf[],
+>         return off;
+>  }
 >
+> -static inline int _ldst_devtomem(unsigned dry_run, u8 buf[],
+> -               const struct _xfer_spec *pxs, int cyc)
+> +static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+> +                                u8 buf[], const struct _xfer_spec *pxs,
+> +                                int cyc)
+>  {
+>         int off = 0;
+>         enum pl330_cond cond;
+>
+> -       cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+> +       if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+> +               cond = BURST;
+> +       else
+> +               cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+>
+>         while (cyc--) {
+>                 off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+>                 off += _emit_LDP(dry_run, &buf[off], cond, pxs->desc->peri);
+>                 off += _emit_ST(dry_run, &buf[off], ALWAYS);
+> -               off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
+> +
+> +               if (!(pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
+> +                       off += _emit_FLUSHP(dry_run, &buf[off],
+> +                                           pxs->desc->peri);
+>         }
+>
+>         return off;
+>  }
+>
+> -static inline int _ldst_memtodev(unsigned dry_run, u8 buf[],
+> -               const struct _xfer_spec *pxs, int cyc)
+> +static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+> +                                unsigned dry_run, u8 buf[],
+> +                                const struct _xfer_spec *pxs, int cyc)
+>  {
+>         int off = 0;
+>         enum pl330_cond cond;
+>
+> -       cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+> +       if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+> +               cond = BURST;
+> +       else
+> +               cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+> +
+>
+>         while (cyc--) {
+>                 off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+>                 off += _emit_LD(dry_run, &buf[off], ALWAYS);
+>                 off += _emit_STP(dry_run, &buf[off], cond, pxs->desc->peri);
+> -               off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
+> +
+> +               if (!(pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
+> +                       off += _emit_FLUSHP(dry_run, &buf[off],
+> +                                           pxs->desc->peri);
+>         }
+>
+>         return off;
+>  }
+>
+> -static int _bursts(unsigned dry_run, u8 buf[],
+> +static int _bursts(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+>                 const struct _xfer_spec *pxs, int cyc)
+>  {
+>         int off = 0;
+>
+>         switch (pxs->desc->rqtype) {
+>         case DMA_MEM_TO_DEV:
+> -               off += _ldst_memtodev(dry_run, &buf[off], pxs, cyc);
+> +               off += _ldst_memtodev(pl330, dry_run, &buf[off], pxs, cyc);
+>                 break;
+>         case DMA_DEV_TO_MEM:
+> -               off += _ldst_devtomem(dry_run, &buf[off], pxs, cyc);
+> +               off += _ldst_devtomem(pl330, dry_run, &buf[off], pxs, cyc);
+>                 break;
+>         case DMA_MEM_TO_MEM:
+>                 off += _ldst_memtomem(dry_run, &buf[off], pxs, cyc);
+> @@ -1197,7 +1225,7 @@ static int _bursts(unsigned dry_run, u8 buf[],
+>  }
+>
+>  /* Returns bytes consumed and updates bursts */
+> -static inline int _loop(unsigned dry_run, u8 buf[],
+> +static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+>                 unsigned long *bursts, const struct _xfer_spec *pxs)
+>  {
+>         int cyc, cycmax, szlp, szlpend, szbrst, off;
+> @@ -1220,7 +1248,7 @@ static inline int _loop(unsigned dry_run, u8 buf[],
+>         }
+>
+>         szlp = _emit_LP(1, buf, 0, 0);
+> -       szbrst = _bursts(1, buf, pxs, 1);
+> +       szbrst = _bursts(pl330, 1, buf, pxs, 1);
+>
+>         lpend.cond = ALWAYS;
+>         lpend.forever = false;
+> @@ -1252,7 +1280,7 @@ static inline int _loop(unsigned dry_run, u8 buf[],
+>         off += _emit_LP(dry_run, &buf[off], 1, lcnt1);
+>         ljmp1 = off;
+>
+> -       off += _bursts(dry_run, &buf[off], pxs, cyc);
+> +       off += _bursts(pl330, dry_run, &buf[off], pxs, cyc);
+>
+>         lpend.cond = ALWAYS;
+>         lpend.forever = false;
+> @@ -1275,8 +1303,9 @@ static inline int _loop(unsigned dry_run, u8 buf[],
+>         return off;
+>  }
+>
+> -static inline int _setup_loops(unsigned dry_run, u8 buf[],
+> -               const struct _xfer_spec *pxs)
+> +static inline int _setup_loops(struct pl330_dmac *pl330,
+> +                              unsigned dry_run, u8 buf[],
+> +                              const struct _xfer_spec *pxs)
+>  {
+>         struct pl330_xfer *x = &pxs->desc->px;
+>         u32 ccr = pxs->ccr;
+> @@ -1285,15 +1314,16 @@ static inline int _setup_loops(unsigned dry_run, u8 buf[],
+>
+>         while (bursts) {
+>                 c = bursts;
+> -               off += _loop(dry_run, &buf[off], &c, pxs);
+> +               off += _loop(pl330, dry_run, &buf[off], &c, pxs);
+>                 bursts -= c;
+>         }
+>
+>         return off;
+>  }
+>
+> -static inline int _setup_xfer(unsigned dry_run, u8 buf[],
+> -               const struct _xfer_spec *pxs)
+> +static inline int _setup_xfer(struct pl330_dmac *pl330,
+> +                             unsigned dry_run, u8 buf[],
+> +                             const struct _xfer_spec *pxs)
+>  {
+>         struct pl330_xfer *x = &pxs->desc->px;
+>         int off = 0;
+> @@ -1304,7 +1334,7 @@ static inline int _setup_xfer(unsigned dry_run, u8 buf[],
+>         off += _emit_MOV(dry_run, &buf[off], DAR, x->dst_addr);
+>
+>         /* Setup Loop(s) */
+> -       off += _setup_loops(dry_run, &buf[off], pxs);
+> +       off += _setup_loops(pl330, dry_run, &buf[off], pxs);
+>
+>         return off;
+>  }
+> @@ -1313,8 +1343,9 @@ static inline int _setup_xfer(unsigned dry_run, u8 buf[],
+>   * A req is a sequence of one or more xfer units.
+>   * Returns the number of bytes taken to setup the MC for the req.
+>   */
+> -static int _setup_req(unsigned dry_run, struct pl330_thread *thrd,
+> -               unsigned index, struct _xfer_spec *pxs)
+> +static int _setup_req(struct pl330_dmac *pl330, unsigned dry_run,
+> +                     struct pl330_thread *thrd, unsigned index,
+> +                     struct _xfer_spec *pxs)
+>  {
+>         struct _pl330_req *req = &thrd->req[index];
+>         struct pl330_xfer *x;
+> @@ -1331,7 +1362,7 @@ static int _setup_req(unsigned dry_run, struct pl330_thread *thrd,
+>         if (x->bytes % (BRST_SIZE(pxs->ccr) * BRST_LEN(pxs->ccr)))
+>                 return -EINVAL;
+>
+> -       off += _setup_xfer(dry_run, &buf[off], pxs);
+> +       off += _setup_xfer(pl330, dry_run, &buf[off], pxs);
+>
+>         /* DMASEV peripheral/event */
+>         off += _emit_SEV(dry_run, &buf[off], thrd->ev);
+> @@ -1425,7 +1456,7 @@ static int pl330_submit_req(struct pl330_thread *thrd,
+>         xs.desc = desc;
+>
+>         /* First dry run to check if req is acceptable */
+> -       ret = _setup_req(1, thrd, idx, &xs);
+> +       ret = _setup_req(pl330, 1, thrd, idx, &xs);
+>         if (ret < 0)
+>                 goto xfer_exit;
+>
+> @@ -1439,7 +1470,7 @@ static int pl330_submit_req(struct pl330_thread *thrd,
+>         /* Hook the request */
+>         thrd->lstenq = idx;
+>         thrd->req[idx].desc = desc;
+> -       _setup_req(0, thrd, idx, &xs);
+> +       _setup_req(pl330, 0, thrd, idx, &xs);
+>
+>         ret = 0;
+>
+> @@ -2784,6 +2815,7 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
+>         struct resource *res;
+>         int i, ret, irq;
+>         int num_chan;
+> +       struct device_node *np = adev->dev.of_node;
+>
+>         pdat = dev_get_platdata(&adev->dev);
+>
+> @@ -2803,6 +2835,11 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
+>
+>         pl330->mcbufsz = pdat ? pdat->mcbuf_sz : 0;
+>
+> +       /* get quirk */
+> +       for (i = 0; i < ARRAY_SIZE(of_quirks); i++)
+> +               if (of_property_read_bool(np, of_quirks[i].quirk))
+> +                       pl330->quirks |= of_quirks[i].id;
+> +
+>         res = &adev->res;
+>         pl330->base = devm_ioremap_resource(&adev->dev, res);
+>         if (IS_ERR(pl330->base))
 > --
 > 2.3.7
 >
+
+Reviewed-by: Sonny Rao <sonnyrao@chromium.org>
+
+
 >
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
