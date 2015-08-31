@@ -1,49 +1,64 @@
-From: Romain Perier <romain.perier@gmail.com>
-Subject: Re: [PATCH v2] clk: rockchip: Add pclk_peri to critical clocks on RK3066/RK3188
-Date: Mon, 31 Aug 2015 16:42:13 +0200
-Message-ID: <CABgxDo+otZrYoqTNK-ea=L6Dsd5p_b_MFCi4H4XJZZ25PV_qnA@mail.gmail.com>
-References: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 0/8] mmc: dw_mmc: allow tuning using the clk-phase api
+Date: Mon, 31 Aug 2015 20:23:58 +0200
+Message-ID: <1441045446-30858-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+To: ulf.hansson@linaro.org, mturquette@baylibre.com, sboyd@codeaurora.org, tgih.jun@samsung.com, jh80.chung@samsung.com
+Cc: linux-mmc@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-ping
+This series resurrects and adapts some individual patches whose sum
+enable the dw_mmc hosts on Rockchip socs to tune clock phases using
+the generic phase api (rk3288 and following have this capability).
 
-2015-08-23 11:32 GMT+02:00 Romain Perier <romain.perier@gmail.com>:
-> Now that the rockchip clock subsystem does clock gating with GPIO banks,
-> these are no longer enabled once during probe and no longer stay enabled
-> for eternity. When all these clocks are disabled, the parent clock pclk_peri
-> might be disabled too, as no other child claims it. So, we need to add pclk_peri
-> to the critical clocks.
->
-> Signed-off-by: Romain Perier <romain.perier@gmail.com>
-> Tested-by: Michael Niewoehner <linux@mniewoehner.de>
-> ---
->
-> changes in v2:
-> - Improved commit messages
-> - Added "Tested-by" from Michael Niewoehner, as he tested v1 and no code changed
->
->  drivers/clk/rockchip/clk-rk3188.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-> index bf20214..839a22a 100644
-> --- a/drivers/clk/rockchip/clk-rk3188.c
-> +++ b/drivers/clk/rockchip/clk-rk3188.c
-> @@ -717,6 +717,7 @@ static const char *const rk3188_critical_clocks[] __initconst = {
->         "aclk_peri",
->         "hclk_peri",
->         "pclk_cpu",
-> +       "pclk_peri",
->  };
->
->  static void __init rk3188_common_clk_init(struct device_node *np)
-> --
-> 2.1.4
->
+The changes to the original mmc-phase clocks are expanded by further
+findings resulting from devices being used in the field.
+
+Similarly the regulator handling changes do use the brand new
+regulator_set_voltage_triplet call to allow specifying lower and upper
+limits. One possible point of discussion are the two voltage ranges
+that are tried for the 3.3V signal level. Trying to stay near vmmc
+at first and only then opening the range to the full 2.7-3.6V.
+
+This mainly circumvents a shortcoming of the regulator voltage
+setting, in that even with regulator_set_voltage_triplet the regulator
+framework will take the lowest possible voltage when the possible
+voltages are below the target voltage. While it may be ideal to solve
+this on the regulator side, I'm not seeing this appearing in the short
+term, mainly because all regulator parts (including regulator drivers)
+are keyed to selecting the lowest voltage from the range, while on the
+mmc side we know which voltages may work and trying this in two steps
+does not create to much overhead, as unsupported voltages are already
+filtered out by the regulator_is_voltage_selected calls.
+
+
+Alexandru M Stan (3):
+  mmc: dw_mmc: dt-binding: Add tuning related things
+  mmc: dw_mmc: Generic MMC tuning with the clock phase framework
+  ARM: dts: rockchip: Add drive/sample clocks for rk3288 dw_mmc devices
+
+Douglas Anderson (4):
+  clk: rockchip: Allow more precision for some mmc clock phases
+  clk: rockchip: Make calculations use rounding
+  mmc: core: Add mmc_regulator_set_vqmmc()
+  mmc: dw_mmc: Use mmc_regulator_set_vqmmc in
+    start_signal_voltage_switch
+
+Heiko Stuebner (1):
+  ARM: dts: rockchip: add tuning related settings to veyron devices
+
+ .../devicetree/bindings/mmc/synopsys-dw-mshc.txt   |  14 +-
+ arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi         |   7 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |   6 +
+ arch/arm/boot/dts/rk3288.dtsi                      |  20 +--
+ drivers/clk/rockchip/clk-mmc-phase.c               |  54 ++++---
+ drivers/mmc/core/core.c                            |  68 +++++++++
+ drivers/mmc/host/dw_mmc.c                          | 159 +++++++++++++++++++--
+ include/linux/mmc/dw_mmc.h                         |   3 +
+ include/linux/mmc/host.h                           |   7 +
+ 9 files changed, 295 insertions(+), 43 deletions(-)
+
+-- 
+2.1.4
+
