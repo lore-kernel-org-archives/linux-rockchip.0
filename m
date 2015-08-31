@@ -1,88 +1,128 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 4/8] mmc: dw_mmc: Use mmc_regulator_set_vqmmc in
- start_signal_voltage_switch
-Date: Mon, 31 Aug 2015 20:24:02 +0200
-Message-ID: <1441045446-30858-5-git-send-email-heiko@sntech.de>
-References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
+From: Sonny Rao <sonnyrao@chromium.org>
+Subject: Re: [PATCH v2 0/5] Fix broken DMAFLUSHP on Rockchips platform
+Date: Mon, 31 Aug 2015 14:40:10 -0700
+Message-ID: <CAPz6YkXmGkQsB4WbQ5VbBAPRCTQFYCUR=Nf6G+syhbXSPA2DeQ@mail.gmail.com>
+References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1441045446-30858-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olof@lixom.net>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+On Thu, Aug 27, 2015 at 5:36 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> The purpose of the DMAFLUSHP instruction:
+> - Tell the peripheral to clear its status and control registers.
+> - Send a message to the peripheral to resend its level status.
+>
+> There are 3 timings described in PL330 Technical Reference Manual:
+> - Timing 1: Burst request, can work well without DMAFLUSHP.
+> - Timing 2: Single and burst request, DMAC will ignore the single
+>             transfer request. This timing happens if there are single
+>             and burst request.
+> - Timing 3: Single transfers for a burst request, DMAC should signals
+>             datype to request the peripheral to flush the contents of
+>             any control registers. This timing happens if there is
+>             not enough MFIFO to places the burst data.
+>
+> A peripheral may signal a DMA request during the execution of
+> DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
+>
+> But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
+> It can't send a message to the peripheral to resend DMA request,
+> and the peripheral can't acknowledge a flush request from DMAC.
+> So all DMA requests should NOT be ignored by DMAC, and DMAC will not
+> notify the peripheral to flush.
+>
+> To fix this problem, we need:
+> - Do NOT execute DMAFLUSHP instruction.
+> - Timing 2 and timing 3 should not happen.
+>
+> Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
+> for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
+> impossible to hit the timing 3 if burst length is equal or less than 4.
 
-We've introduced a new helper in the MMC core:
-mmc_regulator_set_vqmmc().  Let's use this in dw_mmc.  Using this new
-helper has some advantages:
+Fixing this issue also requires changes to drivers, so it would be
+nice if you put those changes into the same patchset.
+Otherwise someone may apply this series and expect things to work but
+they will still be broken. Specifically the peripherals should be
+setting their burst sizes for their DMA requests low enough to avoid
+needing the working DMAFLUSHP instruction.
 
-1. We get the mmc_regulator_set_vqmmc() behavior of trying to match
-   VQMMC and VMMC when the signal voltage is 3.3V.  This ensures max
-   compatibility.
+Also, I remember we ran into an issue when we tried using burst length
+of 4 with the i2s device on RK3288 because we could get requests that
+either weren't aligned or a multiple of 4 sizes and some transfers
+would just fail, so we ended up using a burst size of 1.  I recommend
+if we aren't sure about size or alignment for a particular peripheral,
+a burst size of 1 is safest.  For something like a block device, I
+think we can use the larger size bursts.  That's another reason to
+include the driver fixes in the series, just so we get it right,
+thanks.
 
-2. We get rid of a few more warnings when probing unsupported
-   voltages.
-
-3. We get rid of some non-dw_mmc specific code in dw_mmc.
-
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/mmc/host/dw_mmc.c | 17 ++++++-----------
- 1 file changed, 6 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index fcbf552..b1b7e7f 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1279,7 +1279,6 @@ static int dw_mci_switch_voltage(struct mmc_host *mmc, struct mmc_ios *ios)
- 	const struct dw_mci_drv_data *drv_data = host->drv_data;
- 	u32 uhs;
- 	u32 v18 = SDMMC_UHS_18V << slot->id;
--	int min_uv, max_uv;
- 	int ret;
- 
- 	if (drv_data && drv_data->switch_voltage)
-@@ -1291,22 +1290,18 @@ static int dw_mci_switch_voltage(struct mmc_host *mmc, struct mmc_ios *ios)
- 	 * does no harm but you need to set the regulator directly.  Try both.
- 	 */
- 	uhs = mci_readl(host, UHS_REG);
--	if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_330) {
--		min_uv = 2700000;
--		max_uv = 3600000;
-+	if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_330)
- 		uhs &= ~v18;
--	} else {
--		min_uv = 1700000;
--		max_uv = 1950000;
-+	else
- 		uhs |= v18;
--	}
-+
- 	if (!IS_ERR(mmc->supply.vqmmc)) {
--		ret = regulator_set_voltage(mmc->supply.vqmmc, min_uv, max_uv);
-+		ret = mmc_regulator_set_vqmmc(mmc, ios);
- 
- 		if (ret) {
- 			dev_dbg(&mmc->class_dev,
--					 "Regulator set error %d: %d - %d\n",
--					 ret, min_uv, max_uv);
-+					 "Regulator set error %d - %s V\n",
-+					 ret, uhs & v18 ? "1.8" : "3.3");
- 			return ret;
- 		}
- 	}
--- 
-2.1.4
+>
+> Since the request type signal by the peripheral can only be set by
+> software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
+> or burst request, if it is set b01,  all of the peripharals will signal a brust
+> request. So the timing 2 will not happen, too.
+>
+> So DMAC on RK3X can support single or burst transfer, but can't support
+> mixed transfer.
+>
+> Because burst transfer is more efficient than single transfer, this is
+> confirmed by our ASIC team, who strongly suggest to use burst transfer.
+> And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
+> spi flash burst transfer will increase about two times than single transfer.
+> Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
+> the result. That means burst transfer is reansonable.
+>
+> So we need a quirk not to execute DMAFLUSHP instruction and to use burst
+> transfer.
+>
+> Note:
+> - The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
+>   support brust transfer, these bits should not be changed in bootloader.
+>
+>
+> Changes in v2:
+> - amend the author
+> - reorder the patches suggested by Doug
+> - add Reviewed-by: Doug Anderson <dianders@chromium.org> for
+>   rk3288.dtsi patch and arm-pl330.txt patch
+> - amend Olof's mail address
+>
+> Changes in v1:
+> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+>   by Krzysztof.
+> - add From original author.
+> - remove Sunny's tag
+>
+> Addy Ke (2):
+>   DMA: pl330: add quirk for broken no flushp
+>   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platform
+>
+> Boojin Kim (1):
+>   DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+>
+> Shawn Lin (2):
+>   Documentation: arm-pl330: add description of
+>     arm,pl330-broken-no-flushp
+>   ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
+>
+>  .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
+>  arch/arm/boot/dts/rk3288.dtsi                      |   3 +
+>  arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
+>  drivers/dma/pl330.c                                | 101 +++++++++++++++------
+>  4 files changed, 79 insertions(+), 29 deletions(-)
+>
+> --
+> 2.3.7
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
