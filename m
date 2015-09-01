@@ -1,65 +1,169 @@
-From: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 3/5] Documentation: arm-pl330: add description of arm,
- pl330-broken-no-flushp
-Date: Mon, 31 Aug 2015 15:23:47 -0700
-Message-ID: <CAPz6YkVdGp_Qu=uoZWY10R_DxyWocxM_Sw4L2epdcerkrgWjUw@mail.gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 0/5] Fix broken DMAFLUSHP on Rockchips platform
+Date: Tue, 1 Sep 2015 08:16:05 +0800
+Message-ID: <55E4EE45.5020002@rock-chips.com>
 References: <1440722176-31588-1-git-send-email-shawn.lin@rock-chips.com>
- <1440722292-31721-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAPz6YkXmGkQsB4WbQ5VbBAPRCTQFYCUR=Nf6G+syhbXSPA2DeQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1440722292-31721-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Boojin Kim <boojin.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPz6YkXmGkQsB4WbQ5VbBAPRCTQFYCUR=Nf6G+syhbXSPA2DeQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sonny Rao <sonnyrao@chromium.org>
+Cc: shawn.lin@rock-chips.com, Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Boojin Kim <boojin.kim@samsung.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olof@lixom.net>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Aug 27, 2015 at 5:38 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
+=E5=9C=A8 2015/9/1 5:40, Sonny Rao =E5=86=99=E9=81=93:
+> On Thu, Aug 27, 2015 at 5:36 PM, Shawn Lin <shawn.lin@rock-chips.com>=
+ wrote:
+>>
+>> The purpose of the DMAFLUSHP instruction:
+>> - Tell the peripheral to clear its status and control registers.
+>> - Send a message to the peripheral to resend its level status.
+>>
+>> There are 3 timings described in PL330 Technical Reference Manual:
+>> - Timing 1: Burst request, can work well without DMAFLUSHP.
+>> - Timing 2: Single and burst request, DMAC will ignore the single
+>>              transfer request. This timing happens if there are sing=
+le
+>>              and burst request.
+>> - Timing 3: Single transfers for a burst request, DMAC should signal=
+s
+>>              datype to request the peripheral to flush the contents =
+of
+>>              any control registers. This timing happens if there is
+>>              not enough MFIFO to places the burst data.
+>>
+>> A peripheral may signal a DMA request during the execution of
+>> DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
+>>
+>> But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
+>> It can't send a message to the peripheral to resend DMA request,
+>> and the peripheral can't acknowledge a flush request from DMAC.
+>> So all DMA requests should NOT be ignored by DMAC, and DMAC will not
+>> notify the peripheral to flush.
+>>
+>> To fix this problem, we need:
+>> - Do NOT execute DMAFLUSHP instruction.
+>> - Timing 2 and timing 3 should not happen.
+>>
+>> Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO de=
+pth
+>> for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
+>> impossible to hit the timing 3 if burst length is equal or less than=
+ 4.
 >
-> Changes in v2:
-> - add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> - reorder this patch before the usage of the quirk
+> Fixing this issue also requires changes to drivers, so it would be
+> nice if you put those changes into the same patchset.
+> Otherwise someone may apply this series and expect things to work but
+> they will still be broken. Specifically the peripherals should be
+> setting their burst sizes for their DMA requests low enough to avoid
+> needing the working DMAFLUSHP instruction.
 >
-> Changes in v1:
-> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
->   by Krzysztof.
->
->  Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/Documentation/devicetree/bindings/dma/arm-pl330.txt b/Documentation/devicetree/bindings/dma/arm-pl330.txt
-> index 2675658..db7e226 100644
-> --- a/Documentation/devicetree/bindings/dma/arm-pl330.txt
-> +++ b/Documentation/devicetree/bindings/dma/arm-pl330.txt
-> @@ -15,6 +15,7 @@ Optional properties:
->      cells in the dmas property of client device.
->    - dma-channels: contains the total number of DMA channels supported by the DMAC
->    - dma-requests: contains the total number of DMA requests supported by the DMAC
-> +  - arm,pl330-broken-no-flushp: quirk for avoiding to execute DMAFLUSHP
->
->  Example:
->
-> --
-> 2.3.7
+> Also, I remember we ran into an issue when we tried using burst lengt=
+h
+> of 4 with the i2s device on RK3288 because we could get requests that
+> either weren't aligned or a multiple of 4 sizes and some transfers
+> would just fail, so we ended up using a burst size of 1.  I recommend
+> if we aren't sure about size or alignment for a particular peripheral=
+,
+> a burst size of 1 is safest.  For something like a block device, I
+> think we can use the larger size bursts.  That's another reason to
 
-Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Agreed. Those changes will be added in v3.
 
+Thanks, Sunny.
+
+> include the driver fixes in the series, just so we get it right,
+> thanks.
+>
+>>
+>> Since the request type signal by the peripheral can only be set by
+>> software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select=
+ single
+>> or burst request, if it is set b01,  all of the peripharals will sig=
+nal a brust
+>> request. So the timing 2 will not happen, too.
+>>
+>> So DMAC on RK3X can support single or burst transfer, but can't supp=
+ort
+>> mixed transfer.
+>>
+>> Because burst transfer is more efficient than single transfer, this =
+is
+>> confirmed by our ASIC team, who strongly suggest to use burst transf=
+er.
+>> And this is confirmed by Addy's test on RK3288-Pink2 board, the spee=
+d of
+>> spi flash burst transfer will increase about two times than single t=
+ransfer.
+>> Also, I have tested dw_mmc with pl330 on RK3188 platform to double c=
+onfirm
+>> the result. That means burst transfer is reansonable.
+>>
+>> So we need a quirk not to execute DMAFLUSHP instruction and to use b=
+urst
+>> transfer.
+>>
+>> Note:
+>> - The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. T=
+o
+>>    support brust transfer, these bits should not be changed in bootl=
+oader.
+>>
+>>
+>> Changes in v2:
+>> - amend the author
+>> - reorder the patches suggested by Doug
+>> - add Reviewed-by: Doug Anderson <dianders@chromium.org> for
+>>    rk3288.dtsi patch and arm-pl330.txt patch
+>> - amend Olof's mail address
+>>
+>> Changes in v1:
+>> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+>>    by Krzysztof.
+>> - add From original author.
+>> - remove Sunny's tag
+>>
+>> Addy Ke (2):
+>>    DMA: pl330: add quirk for broken no flushp
+>>    ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platfor=
+m
+>>
+>> Boojin Kim (1):
+>>    DMA: pl330: support burst mode for dev-to-mem and mem-to-dev tran=
+smit
+>>
+>> Shawn Lin (2):
+>>    Documentation: arm-pl330: add description of
+>>      arm,pl330-broken-no-flushp
+>>    ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platfor=
+m
+>>
+>>   .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
+>>   arch/arm/boot/dts/rk3288.dtsi                      |   3 +
+>>   arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
+>>   drivers/dma/pl330.c                                | 101 +++++++++=
+++++++------
+>>   4 files changed, 79 insertions(+), 29 deletions(-)
+>>
+>> --
+>> 2.3.7
+>>
+>>
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-kern=
+el" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> Please read the FAQ at  http://www.tux.org/lkml/
 >
 >
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+>
+
+
+--=20
+Best Regards
+Shawn Lin
