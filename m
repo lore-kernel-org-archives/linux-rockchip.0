@@ -1,75 +1,143 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 9/9] ASoC: rockchip_i2s: modify DMA max burst to 1
-Date: Tue,  1 Sep 2015 17:59:24 +0800
-Message-ID: <1441101564-1765-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1441101381-1329-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441101381-1329-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yiwei Cai <cain.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jianqun Xu <xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 08/16] drm: rockchip/dp: add rockchip platform dp driver
+Date: Tue, 01 Sep 2015 16:24:04 +0200
+Message-ID: <2919897.nbhB5Cifed@phil>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1441087288-25404-1-git-send-email-ykk@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1441087288-25404-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Yiwei Cai <cain.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Am Dienstag, 1. September 2015, 14:01:28 schrieb Yakir Yang:
+> Rockchip have three clocks for dp controller, we leave pclk_edp
+> to analogix_dp driver control, and keep the sclk_edp_24m and
+> sclk_edp in platform driver.
+> 
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> ---
+> Changes in v4:
+> - Remove some deprecated DT properties in rockchip dp document.
+> 
+> Changes in v3:
+> - Take Thierry Reding and Heiko suggest, leave "sclk_edp_24m" to rockchip
+>   dp phy driver which name to "24m", and leave "sclk_edp" to analogix dp
+>   core driver which name to "dp", and leave "pclk_edp" to rockchip dp
+> platform driver which name to "pclk".
+> - Take Heiko suggest, add devicetree binding document.
+> - Take Heiko suggest, remove "rockchip,panel" DT property, take use of
+> remote point to get panel node.
+> - Add the new function point analogix_dp_platdata.get_modes init.
+> 
+> Changes in v2:
+> - Take Heiko suggest, get panel node with remote-endpoint method,
+>   and create devicetree binding for driver.
+> - Remove the clock enable/disbale with "sclk_edp" & "sclk_edp_24m",
+>   leave those clock to rockchip dp phy driver.
+> 
+>  .../bindings/video/analogix_dp-rockchip.txt        |  74 ++++
+>  drivers/gpu/drm/rockchip/Kconfig                   |   9 +
+>  drivers/gpu/drm/rockchip/Makefile                  |   1 +
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 389
+> +++++++++++++++++++++ 4 files changed, 473 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/video/analogix_dp-rockchip.txt create
+> mode 100644 drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/video/analogix_dp-rockchip.txt
+> b/Documentation/devicetree/bindings/video/analogix_dp-rockchip.txt new file
+> mode 100644
+> index 0000000..502483e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/video/analogix_dp-rockchip.txt
+> @@ -0,0 +1,74 @@
+> +Rockchip RK3288 specific extensions to the Analogix Display Port
+> +================================
+> +
+> +Required properties:
+> +- compatible: "rockchip,rk3288-edp";
+> +
+> +- reg: physical base address of the controller and length
+> +
+> +- clocks: from common clock binding: handle to dp clock.
+> +	  of memory mapped region.
+> +
+> +- clock-names: from common clock binding:
+> +	       Required elements: "dp" "pclk"
+> +
+> +- resets: Must contain an entry for each entry in reset-names.
+> +	  See ../reset/reset.txt for details.
+> +
+> +- reset-names: Must include the name "dp"
+> +
+> +- rockchip,grf: this soc should set GRF regs, so need get grf here.
+> +
+> +- ports: contain a port node with endpoint definitions as defined in
+> +  Documentation/devicetree/bindings/media/video-interfaces.txt.
+> +
+> +
+> +For the below properties, please refer to Analogix DP binding document:
+> + * Documentation/devicetree/bindings/drm/bridge/analogix_dp.txt
+> +- phys (required)
+> +- phy-names (required)
+> +- hpd-gpios (optional)
+> +---------------------------------------------------------------------------
+> ---- +
+> +Example:
+> +	dp-controller: dp@ff970000 {
+> +		compatible = "rockchip,rk3288-dp";
+> +		reg = <0xff970000 0x4000>;
+> +		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
+> +		clock-names = "dp", "pclk";
+> +		phys = <&dp_phy>;
+> +		phy-names = "dp";
+> +
+> +		rockchip,grf = <&grf>;
+> +		resets = <&cru 111>;
+> +		reset-names = "dp";
+> +
+> +		status = "disabled";
+> +
+> +		ports {
+> +			edp_in: port {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				edp_in_vopb: endpoint@0 {
+> +					reg = <0>;
+> +					remote-endpoint = <&vopb_out_edp>;
+> +				};
+> +				edp_in_vopl: endpoint@1 {
+> +					reg = <1>;
+> +					remote-endpoint = <&vopl_out_edp>;
+> +				};
+> +			};
+> +
+> +			edp_out: port@1 {
+> +				reg = <1>;
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				edp_out_panel: endpoint {
+> +					reg = <0>;
+> +					remote-endpoint = <&panel_in_edp>
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+just a nit right now, because "git am" mentioned it:
 
-Test with command -
-arecord -D hw:0,0 /tmp/a.wav, there are the error dump:
-[  134.899396] dma-pl330 ffb20000.dma-controller: fill_queue:2251 Bad Desc(7)
-
-This error is happening when no a multiple of burst size * burst length are
-coming in. The root cause is pl330 dma controller on Rockchips' platform cannot
-support DMAFLUSHP instruction which make dma to flush the req of non-aligned or
-non-multiple of what we set before. The saftest way is to set dma max burst to 1.
-
-Signed-off-by: Yiwei Cai <cain.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Fixes: 4495c89fc ("ASoC: add driver for Rockchip RK3xxx I2S")
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-cc: Jianqun Xu <xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-cc: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-cc: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- sound/soc/rockchip/rockchip_i2s.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index acb5be5..5d35b2c 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -457,13 +457,19 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		return PTR_ERR(i2s->regmap);
- 	}
- 
-+	if (of_property_read_bool(np, "rockchip,i2s-broken-burst-len")) {
-+		i2s->playback_dma_data.maxburst = 1;
-+		i2s->capture_dma_data.maxburst = 1;
-+	} else {
-+		i2s->playback_dma_data.maxburst = 4;
-+		i2s->capture_dma_data.maxburst = 4;
-+	}
+git am \[PATCH\ v4\ 08_16\]\ drm_rockchip_dp_add\ rockchip\ platform\ dp\ 
+driver.mbox 
+[...]/linux-rockchip/.git/rebase-apply/patch:108: new blank line at EOF.
 +
- 	i2s->playback_dma_data.addr = res->start + I2S_TXDR;
- 	i2s->playback_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->playback_dma_data.maxburst = 4;
- 
- 	i2s->capture_dma_data.addr = res->start + I2S_RXDR;
- 	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->capture_dma_data.maxburst = 4;
- 
- 	i2s->dev = &pdev->dev;
- 	dev_set_drvdata(&pdev->dev, i2s);
--- 
-2.3.7
+
+meaning you're adding an empty line at the end :-)
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Heiko
