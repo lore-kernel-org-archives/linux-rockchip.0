@@ -1,685 +1,116 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v17 3/4] soc: rockchip: power-domain: Add power domain driver
-Date: Wed,  2 Sep 2015 16:59:39 +0800
-Message-ID: <1441184380-13827-4-git-send-email-wxt@rock-chips.com>
-References: <1441184380-13827-1-git-send-email-wxt@rock-chips.com>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v4 09/16] drm: rockchip: add bpc and color mode setting
+Date: Wed, 2 Sep 2015 18:02:25 +0800
+Message-ID: <55E6C931.9090306@rock-chips.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1441087308-25455-1-git-send-email-ykk@rock-chips.com>
+ <120097760.HO2inCimVA@phil> <55E659AC.9000402@rock-chips.com>
+ <20150902083445.GA24654@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1441184380-13827-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150902083445.GA24654-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, dianders-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, seanpaul-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel@vg
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver is found on RK3288 SoCs.
+Thierry,
 
-In order to meet high performance and low power requirements, a power
-management unit is designed or saving power when RK3288 in low power
-mode.
-The RK3288 PMU is dedicated for managing the power of the whole chip.
+=E5=9C=A8 2015/9/2 16:34, Thierry Reding =E5=86=99=E9=81=93:
+> On Wed, Sep 02, 2015 at 10:06:36AM +0800, Yakir Yang wrote:
+>> =E5=9C=A8 09/02/2015 05:00 AM, Heiko Stuebner =E5=86=99=E9=81=93:
+>>> Am Dienstag, 1. September 2015, 14:01:48 schrieb Yakir Yang:
+> [...]
+>>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>>>> b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c index 34b78e7..5d7f9=
+b6 100644
+>>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>>>> @@ -811,14 +811,41 @@ static const struct drm_plane_funcs vop_plan=
+e_funcs =3D
+>>>> {
+>>>>
+>>>>   int rockchip_drm_crtc_mode_config(struct drm_crtc *crtc,
+>>>>   				  int connector_type,
+>>>> -				  int out_mode)
+>>>> +				  int bpc, int color)
+>>>>   {
+>>>>   	struct vop *vop =3D to_vop(crtc);
+>>>> -
+>>>>   	vop->connector_type =3D connector_type;
+>>>>   	vop->connector_out_mode =3D out_mode;
+>>> this line should probably go away, as the source var "out_mode" doe=
+s not exist
+>>> in the function params any more, making the compilation break, and =
+is set
+>>> below anyway.
+>> Sorry for the failed, there are must be a problem when I backport th=
+ose code
+>> to chrome-3.14 to verify.
+>>
+>> Thanks a lot, I would update next version soon.
+> *sigh*
+>
+> I get the feeling that you're going about upstreaming the wrong way. =
+If
+> you post patches to upstream mailing lists and you expect people to
+> apply those patches, then your target is the upstream kernel. So you
+> should be basing all of your work on top of a recent release candidat=
+e
+> directly from Linus or some recent version of linux-next.
 
-PMU can work in the Low Power Mode by setting bit[0] of PMU_PWRMODE_CON
-register. After setting the register, PMU would enter the Low Power mode.
-In the low power mode, pmu will auto power on/off the specified power
-domain, send idle req to specified power domain, shut down/up pll and
-so on. All of above are configurable by setting corresponding registers.
+Yeah, do feel I am in the wrong way now. I used to write my patch on
+linux-next branch, then backport some head file to productor kernel,
+so I can check compiled failed. After that, I backport the dp driver co=
+de
+to normal productor kernel, start to debug the function.
 
-Signed-off-by: jinkun.hong <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+So I used to ensure no compiled failed on upstrean kernel, actually it'=
+s
+also hard to ensure, cause I just backport head file. Not even debug th=
+e
+function on upstream kernel.
 
----
+> Your current approach is already making people waste time trying to
+> build the patches and fail because you've been testing on something
+> other than mainline or linux-next.
+>
+> At the very least your code must compile when applied against a recen=
+t
+> upstream tree. I would also expect you to make sure the code works at
+> runtime, though, contrary to build testing, not everybody will be abl=
+e
+> to verify that you've actually done so. It is ultimately your platfor=
+m
+> maintainer's (i.e. Heiko's) responsibility to ensure that because the=
+y
+> will get to deal with user complaints if people can't run an upstream
+> kernel on the devices.
 
-Changes in v17:
-- (re)defining config for ROCKCHIP.
+Oh, first time to know this rule. So I should work on Heiko's github
+kernel branch at the first time to start send upstream.
 
-Changes in v16:
-- the driver type from tristate to bool.
-- Letter misspelled.
-- As Ulf suggestion, remove #include <linux/clk-provider.h>,
-  use "%pC" as the formatting string for the dev_dbg().
-- As the Ulf suggestion, set the genpd->flags to assign the
-  ->stop|start() callbacks.
+> I realize that the upstream kernel isn't what's going to end up in
+> products later on, but that doesn't change the fact that you're
+> submitting code for inclusion in the mainline tree. If you need to
+> backport code to some ChromeOS tree, then that should be done after
+> you've verified that things build and run upstream. Doing so makes li=
+fe
+> a lot easier for your upstream maintainers, and that in turn makes it
+> more likely to get your code merged.
 
-Changes in v15:
-- As the kevin suggestion, put the power-domain driver into driver/soc/vendor.
-- As Heiko suggestion, Patch 1: binding doc, 2: binding-header, 3: driver,
-  4: dts-changes.
-- return -ENXIO --> return -ENODEV.
+=46eel free now, I would correct those in bellow version. Thanks
+for your remind (or maybe complain :-D ).
 
-Changes in v14:
-- does not need to set an owner,remove the "THIS_MODULE".
+- Yakir
+> Thierry
 
-Changes in v13:
-- Remove essential clocks from rk3288 PD_VIO domain Some clocks are essential
-  for the system health and should not be turned down. However there is no owner
-  for them so if they listed as belonging to power domain we'll try toggling them
-  up and down during power domain.
-- Device drivers expect their devices to be powered on before their
-  probing code is invoked. To achieve that we should start with
-  power domains powered on (we may turn them off later once all devices enable
-  runtime powermanagment and go idle).
-- This change switches Rockchip power domain driver to use updated
-  device_attach and device_detach API.
-- set the gpu/core power domain power delay time.
-- fix enumerating PM clocks for devices.
-- fix use after free We can't use clk after we did clk_put(clk).
 
-Changes in v12:
-- fix the title doamin->domain.
-- updated device_attach and device_detach API,otherwise it will
-  compile fail on next kernel.
-
-Changes in v11:
-- fix pm_genpd_init(&pd->genpd, NULL, false).
-
-Changes in v10:
-- this switches over domain infos to use masks instead of recomputing
-  them each time and also gets rid of custom domain translator and
-  uses standard onecell on.
-
-Changes in v9:
-- fix v8 changes as follows:
-- This reconciles the v2 and v7 code so that we power domain have lists of clocks
-  they trigger on and off during power transitions and independently from power
-  domains clocks. We attach clocks to devices comprising power domain and prepare
-  them so they are turn on and off by runtime PM.
-- add rockchip_pm_add_one_domain() to control domains.
-- add pd_start/pd_stop interface to control clocks.
-
-Changes in v8:
-- This reconciles the v2 and v7 code so that we power domain have
-  lists of clocks they toggle on and off during power transitions
-  and independently from power domains clocks we attach clocks to
-  devices comprising power domain and prepare them so they are
-  turn on and off by runtime PM.
-
-Changes in v7:
- - Delete unused variables
-
-Changes in v6:
-- delete pmu_lock.
-- modify dev_lock using mutex.
-- pm_clk_resume(pd->dev) change to pm_clk_resume(ed->dev).
-- pm_clk_suspend(pd->dev) change to pm_clk_suspend(ed->dev).
-- add devm_kfree(pd->dev, de) in rockchip_pm_domain_detach_dev.
-
-Changes in v5:
-- delete idle_lock.
-- add timeout in rockchip_pmu_set_idle_request().
-
-Changes in v4:
-- use list storage dev.
-
-Changes in v3:
-- change use pm_clk_resume() and pm_clk_suspend().
-
-Changes in v2:
-- remove the "pd->pd.of_node = np".
-
- drivers/soc/Kconfig               |   1 +
- drivers/soc/Makefile              |   1 +
- drivers/soc/rockchip/Kconfig      |  14 ++
- drivers/soc/rockchip/Makefile     |   4 +
- drivers/soc/rockchip/pm_domains.c | 485 ++++++++++++++++++++++++++++++++++++++
- 5 files changed, 505 insertions(+)
- create mode 100644 drivers/soc/rockchip/Kconfig
- create mode 100644 drivers/soc/rockchip/Makefile
- create mode 100644 drivers/soc/rockchip/pm_domains.c
-
-diff --git a/drivers/soc/Kconfig b/drivers/soc/Kconfig
-index 96ddecb..ecb1a6c 100644
---- a/drivers/soc/Kconfig
-+++ b/drivers/soc/Kconfig
-@@ -2,6 +2,7 @@ menu "SOC (System On Chip) specific Drivers"
- 
- source "drivers/soc/mediatek/Kconfig"
- source "drivers/soc/qcom/Kconfig"
-+source "drivers/soc/rockchip/Kconfig"
- source "drivers/soc/sunxi/Kconfig"
- source "drivers/soc/ti/Kconfig"
- source "drivers/soc/versatile/Kconfig"
-diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
-index 0b12d77..c2b485f 100644
---- a/drivers/soc/Makefile
-+++ b/drivers/soc/Makefile
-@@ -5,6 +5,7 @@
- obj-$(CONFIG_MACH_DOVE)		+= dove/
- obj-$(CONFIG_ARCH_MEDIATEK)	+= mediatek/
- obj-$(CONFIG_ARCH_QCOM)		+= qcom/
-+obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
- obj-$(CONFIG_ARCH_SUNXI)	+= sunxi/
- obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
- obj-$(CONFIG_SOC_TI)		+= ti/
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-new file mode 100644
-index 0000000..6ee0399
---- /dev/null
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -0,0 +1,14 @@
-+#
-+# Rockchip Soc drivers
-+#
-+config ROCKCHIP_PM_DOMAINS
-+        bool "Rockchip generic power domain"
-+        depends on PM
-+        select PM_GENERIC_DOMAINS
-+        help
-+          Say y here to enable power domain support.
-+          In order to meet high performance and low power requirements, a power
-+          management unit is designed or saving power when RK3288 in low power
-+          mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
-+
-+          If unsure, say N.
-diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
-new file mode 100644
-index 0000000..3d73d06
---- /dev/null
-+++ b/drivers/soc/rockchip/Makefile
-@@ -0,0 +1,4 @@
-+#
-+# Rockchip Soc drivers
-+#
-+obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-new file mode 100644
-index 0000000..fd772d2
---- /dev/null
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -0,0 +1,485 @@
-+/*
-+ * Rockchip Generic power domain support.
-+ *
-+ * Copyright (c) 2015 ROCKCHIP, Co. Ltd.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
-+
-+#include <linux/io.h>
-+#include <linux/err.h>
-+#include <linux/pm_clock.h>
-+#include <linux/pm_domain.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/clk.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/syscon.h>
-+#include <dt-bindings/power-domain/rk3288.h>
-+
-+struct rockchip_domain_info {
-+	int pwr_mask;
-+	int status_mask;
-+	int req_mask;
-+	int idle_mask;
-+	int ack_mask;
-+};
-+
-+struct rockchip_pmu_info {
-+	u32 pwr_offset;
-+	u32 status_offset;
-+	u32 req_offset;
-+	u32 idle_offset;
-+	u32 ack_offset;
-+
-+	u32 core_pwrcnt_offset;
-+	u32 gpu_pwrcnt_offset;
-+
-+	unsigned int core_power_transition_time;
-+	unsigned int gpu_power_transition_time;
-+
-+	int num_domains;
-+	const struct rockchip_domain_info *domain_info;
-+};
-+
-+struct rockchip_pm_domain {
-+	struct generic_pm_domain genpd;
-+	const struct rockchip_domain_info *info;
-+	struct rockchip_pmu *pmu;
-+	int num_clks;
-+	struct clk *clks[];
-+};
-+
-+struct rockchip_pmu {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	const struct rockchip_pmu_info *info;
-+	struct mutex mutex; /* mutex lock for pmu */
-+	struct genpd_onecell_data genpd_data;
-+	struct generic_pm_domain *domains[];
-+};
-+
-+#define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain, genpd)
-+
-+#define DOMAIN(pwr, status, req, idle, ack)	\
-+{						\
-+	.pwr_mask = BIT(pwr),			\
-+	.status_mask = BIT(status),		\
-+	.req_mask = BIT(req),			\
-+	.idle_mask = BIT(idle),			\
-+	.ack_mask = BIT(ack),			\
-+}
-+
-+#define DOMAIN_RK3288(pwr, status, req)		\
-+	DOMAIN(pwr, status, req, req, (req) + 16)
-+
-+static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
-+{
-+	struct rockchip_pmu *pmu = pd->pmu;
-+	const struct rockchip_domain_info *pd_info = pd->info;
-+	unsigned int val;
-+
-+	regmap_read(pmu->regmap, pmu->info->idle_offset, &val);
-+	return (val & pd_info->idle_mask) == pd_info->idle_mask;
-+}
-+
-+static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
-+					 bool idle)
-+{
-+	const struct rockchip_domain_info *pd_info = pd->info;
-+	struct rockchip_pmu *pmu = pd->pmu;
-+	unsigned int val;
-+
-+	regmap_update_bits(pmu->regmap, pmu->info->req_offset,
-+			   pd_info->req_mask, idle ? -1U : 0);
-+
-+	dsb();
-+
-+	do {
-+		regmap_read(pmu->regmap, pmu->info->ack_offset, &val);
-+	} while ((val & pd_info->ack_mask) != (idle ? pd_info->ack_mask : 0));
-+
-+	while (rockchip_pmu_domain_is_idle(pd) != idle)
-+		cpu_relax();
-+
-+	return 0;
-+}
-+
-+static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
-+{
-+	struct rockchip_pmu *pmu = pd->pmu;
-+	unsigned int val;
-+
-+	regmap_read(pmu->regmap, pmu->info->status_offset, &val);
-+
-+	/* 1'b0: power on, 1'b1: power off */
-+	return !(val & pd->info->status_mask);
-+}
-+
-+static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
-+					     bool on)
-+{
-+	struct rockchip_pmu *pmu = pd->pmu;
-+
-+	regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
-+			   pd->info->pwr_mask, on ? 0 : -1U);
-+
-+	dsb();
-+
-+	while (rockchip_pmu_domain_is_on(pd) != on)
-+		cpu_relax();
-+}
-+
-+static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
-+{
-+	int i;
-+
-+	mutex_lock(&pd->pmu->mutex);
-+
-+	if (rockchip_pmu_domain_is_on(pd) != power_on) {
-+		for (i = 0; i < pd->num_clks; i++)
-+			clk_enable(pd->clks[i]);
-+
-+		if (!power_on) {
-+			/* FIXME: add code to save AXI_QOS */
-+
-+			/* if powering down, idle request to NIU first */
-+			rockchip_pmu_set_idle_request(pd, true);
-+		}
-+
-+		rockchip_do_pmu_set_power_domain(pd, power_on);
-+
-+		if (power_on) {
-+			/* if powering up, leave idle mode */
-+			rockchip_pmu_set_idle_request(pd, false);
-+
-+			/* FIXME: add code to restore AXI_QOS */
-+		}
-+
-+		for (i = pd->num_clks - 1; i >= 0; i--)
-+			clk_disable(pd->clks[i]);
-+	}
-+
-+	mutex_unlock(&pd->pmu->mutex);
-+	return 0;
-+}
-+
-+static int rockchip_pd_power_on(struct generic_pm_domain *domain)
-+{
-+	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-+
-+	return rockchip_pd_power(pd, true);
-+}
-+
-+static int rockchip_pd_power_off(struct generic_pm_domain *domain)
-+{
-+	struct rockchip_pm_domain *pd = to_rockchip_pd(domain);
-+
-+	return rockchip_pd_power(pd, false);
-+}
-+
-+static int rockchip_pd_attach_dev(struct generic_pm_domain *genpd,
-+				  struct device *dev)
-+{
-+	struct clk *clk;
-+	int i;
-+	int error;
-+
-+	dev_dbg(dev, "attaching to power domain '%s'\n", genpd->name);
-+
-+	error = pm_clk_create(dev);
-+	if (error) {
-+		dev_err(dev, "pm_clk_create failed %d\n", error);
-+		return error;
-+	}
-+
-+	i = 0;
-+	while ((clk = of_clk_get(dev->of_node, i++)) && !IS_ERR(clk)) {
-+		dev_dbg(dev, "adding clock '%pC' to list of PM clocks\n", clk);
-+		error = pm_clk_add_clk(dev, clk);
-+		clk_put(clk);
-+		if (error) {
-+			dev_err(dev, "pm_clk_add_clk failed %d\n", error);
-+			pm_clk_destroy(dev);
-+			return error;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static void rockchip_pd_detach_dev(struct generic_pm_domain *genpd,
-+				   struct device *dev)
-+{
-+	dev_dbg(dev, "detaching from power domain '%s'\n", genpd->name);
-+
-+	pm_clk_destroy(dev);
-+}
-+
-+static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
-+				      struct device_node *node)
-+{
-+	const struct rockchip_domain_info *pd_info;
-+	struct rockchip_pm_domain *pd;
-+	struct clk *clk;
-+	int clk_cnt;
-+	int i;
-+	u32 id;
-+	int error;
-+
-+	error = of_property_read_u32(node, "reg", &id);
-+	if (error) {
-+		dev_err(pmu->dev,
-+			"%s: failed to retrieve domain id (reg): %d\n",
-+			node->name, error);
-+		return -EINVAL;
-+	}
-+
-+	if (id >= pmu->info->num_domains) {
-+		dev_err(pmu->dev, "%s: invalid domain id %d\n",
-+			node->name, id);
-+		return -EINVAL;
-+	}
-+
-+	pd_info = &pmu->info->domain_info[id];
-+	if (!pd_info) {
-+		dev_err(pmu->dev, "%s: undefined domain id %d\n",
-+			node->name, id);
-+		return -EINVAL;
-+	}
-+
-+	clk_cnt = of_count_phandle_with_args(node, "clocks", "#clock-cells");
-+	pd = devm_kzalloc(pmu->dev,
-+			  sizeof(*pd) + clk_cnt * sizeof(pd->clks[0]),
-+			  GFP_KERNEL);
-+	if (!pd)
-+		return -ENOMEM;
-+
-+	pd->info = pd_info;
-+	pd->pmu = pmu;
-+
-+	for (i = 0; i < clk_cnt; i++) {
-+		clk = of_clk_get(node, i);
-+		if (IS_ERR(clk)) {
-+			error = PTR_ERR(clk);
-+			dev_err(pmu->dev,
-+				"%s: failed to get clk %pC (index %d): %d\n",
-+				node->name, clk, i, error);
-+			goto err_out;
-+		}
-+
-+		error = clk_prepare(clk);
-+		if (error) {
-+			dev_err(pmu->dev,
-+				"%s: failed to prepare clk %pC (index %d): %d\n",
-+				node->name, clk, i, error);
-+			clk_put(clk);
-+			goto err_out;
-+		}
-+
-+		pd->clks[pd->num_clks++] = clk;
-+
-+		dev_dbg(pmu->dev, "added clock '%pC' to domain '%s'\n",
-+			clk, node->name);
-+	}
-+
-+	error = rockchip_pd_power(pd, true);
-+	if (error) {
-+		dev_err(pmu->dev,
-+			"failed to power on domain '%s': %d\n",
-+			node->name, error);
-+		goto err_out;
-+	}
-+
-+	pd->genpd.name = node->name;
-+	pd->genpd.power_off = rockchip_pd_power_off;
-+	pd->genpd.power_on = rockchip_pd_power_on;
-+	pd->genpd.attach_dev = rockchip_pd_attach_dev;
-+	pd->genpd.detach_dev = rockchip_pd_detach_dev;
-+	pd->genpd.flags = GENPD_FLAG_PM_CLK;
-+	pm_genpd_init(&pd->genpd, NULL, false);
-+
-+	pmu->genpd_data.domains[id] = &pd->genpd;
-+	return 0;
-+
-+err_out:
-+	while (--i >= 0) {
-+		clk_unprepare(pd->clks[i]);
-+		clk_put(pd->clks[i]);
-+	}
-+	return error;
-+}
-+
-+static void rockchip_pm_remove_one_domain(struct rockchip_pm_domain *pd)
-+{
-+	int i;
-+
-+	for (i = 0; i < pd->num_clks; i++) {
-+		clk_unprepare(pd->clks[i]);
-+		clk_put(pd->clks[i]);
-+	}
-+
-+	/* devm will free our memory */
-+}
-+
-+static void rockchip_pm_domain_cleanup(struct rockchip_pmu *pmu)
-+{
-+	struct generic_pm_domain *genpd;
-+	struct rockchip_pm_domain *pd;
-+	int i;
-+
-+	for (i = 0; i < pmu->genpd_data.num_domains; i++) {
-+		genpd = pmu->genpd_data.domains[i];
-+		if (genpd) {
-+			pd = to_rockchip_pd(genpd);
-+			rockchip_pm_remove_one_domain(pd);
-+		}
-+	}
-+
-+	/* devm will free our memory */
-+}
-+
-+static void rockchip_configure_pd_cnt(struct rockchip_pmu *pmu,
-+				      u32 domain_reg_offset,
-+				      unsigned int count)
-+{
-+	/* First configure domain power down transition count ... */
-+	regmap_write(pmu->regmap, domain_reg_offset, count);
-+	/* ... and then power up count. */
-+	regmap_write(pmu->regmap, domain_reg_offset + 4, count);
-+}
-+
-+static int rockchip_pm_domain_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+	struct device_node *node;
-+	struct device *parent;
-+	struct rockchip_pmu *pmu;
-+	const struct of_device_id *match;
-+	const struct rockchip_pmu_info *pmu_info;
-+	int error;
-+
-+	if (!np) {
-+		dev_err(dev, "device tree node not found\n");
-+		return -ENODEV;
-+	}
-+
-+	match = of_match_device(dev->driver->of_match_table, dev);
-+	if (!match || !match->data) {
-+		dev_err(dev, "missing pmu data\n");
-+		return -EINVAL;
-+	}
-+
-+	pmu_info = match->data;
-+
-+	pmu = devm_kzalloc(dev,
-+			   sizeof(*pmu) +
-+				pmu_info->num_domains * sizeof(pmu->domains[0]),
-+			   GFP_KERNEL);
-+	if (!pmu)
-+		return -ENOMEM;
-+
-+	pmu->dev = &pdev->dev;
-+	mutex_init(&pmu->mutex);
-+
-+	pmu->info = pmu_info;
-+
-+	pmu->genpd_data.domains = pmu->domains;
-+	pmu->genpd_data.num_domains = pmu_info->num_domains;
-+
-+	parent = dev->parent;
-+	if (!parent) {
-+		dev_err(dev, "no parent for syscon devices\n");
-+		return -ENODEV;
-+	}
-+
-+	pmu->regmap = syscon_node_to_regmap(parent->of_node);
-+
-+	/*
-+	 * Configure power up and down transition delays for CORE
-+	 * and GPU domains.
-+	 */
-+	rockchip_configure_pd_cnt(pmu, pmu_info->core_pwrcnt_offset,
-+				  pmu_info->core_power_transition_time);
-+	rockchip_configure_pd_cnt(pmu, pmu_info->gpu_pwrcnt_offset,
-+				  pmu_info->gpu_power_transition_time);
-+
-+	error = -ENODEV;
-+
-+	for_each_available_child_of_node(np, node) {
-+		error = rockchip_pm_add_one_domain(pmu, node);
-+		if (error) {
-+			dev_err(dev, "failed to handle node %s: %d\n",
-+				node->name, error);
-+			goto err_out;
-+		}
-+	}
-+
-+	if (error) {
-+		dev_dbg(dev, "no power domains defined\n");
-+		goto err_out;
-+	}
-+
-+	of_genpd_add_provider_onecell(np, &pmu->genpd_data);
-+
-+	return 0;
-+
-+err_out:
-+	rockchip_pm_domain_cleanup(pmu);
-+	return error;
-+}
-+
-+static const struct rockchip_domain_info rk3288_pm_domains[] = {
-+	[RK3288_PD_GPU]		= DOMAIN_RK3288(9, 9, 2),
-+	[RK3288_PD_VIO]		= DOMAIN_RK3288(7, 7, 4),
-+	[RK3288_PD_VIDEO]	= DOMAIN_RK3288(8, 8, 3),
-+	[RK3288_PD_HEVC]	= DOMAIN_RK3288(14, 10, 9),
-+};
-+
-+static const struct rockchip_pmu_info rk3288_pmu = {
-+	.pwr_offset = 0x08,
-+	.status_offset = 0x0c,
-+	.req_offset = 0x10,
-+	.idle_offset = 0x14,
-+	.ack_offset = 0x14,
-+
-+	.core_pwrcnt_offset = 0x34,
-+	.gpu_pwrcnt_offset = 0x3c,
-+
-+	.core_power_transition_time = 24, /* 1us */
-+	.gpu_power_transition_time = 24, /* 1us */
-+
-+	.num_domains = ARRAY_SIZE(rk3288_pm_domains),
-+	.domain_info = rk3288_pm_domains,
-+};
-+
-+static const struct of_device_id rockchip_pm_domain_dt_match[] = {
-+	{
-+		.compatible = "rockchip,rk3288-power-controller",
-+		.data = (void *)&rk3288_pmu,
-+	},
-+	{ /* sentinel */ },
-+};
-+
-+static struct platform_driver rockchip_pm_domain_driver = {
-+	.probe = rockchip_pm_domain_probe,
-+	.driver = {
-+		.name   = "rockchip-pm-domain",
-+		.of_match_table = rockchip_pm_domain_dt_match,
-+		/*
-+		 * We can't forcibly eject devices form power domain,
-+		 * so we can't really remove power domains once they
-+		 * were added.
-+		 */
-+		.suppress_bind_attrs = true,
-+	},
-+};
-+
-+static int __init rockchip_pm_domain_drv_register(void)
-+{
-+	return platform_driver_register(&rockchip_pm_domain_driver);
-+}
-+postcore_initcall(rockchip_pm_domain_drv_register);
--- 
-1.9.1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
