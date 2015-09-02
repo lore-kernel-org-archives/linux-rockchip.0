@@ -1,82 +1,89 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v4 0/16] Add Analogix Core Display Port Driver
-Date: Wed, 02 Sep 2015 10:15:41 +0800
-Message-ID: <55E65BCD.7090804@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <3233920.KG0buE86B2@phil>
+From: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH 5/8] mmc: dw_mmc: dt-binding: Add tuning related things
+Date: Wed, 02 Sep 2015 14:01:52 +0900
+Message-ID: <55E682C0.6050204@samsung.com>
+References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
+ <1441045446-30858-6-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <3233920.KG0buE86B2@phil>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-reply-to: <1441045446-30858-6-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
+Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi, Heiko.
 
-=E5=9C=A8 09/02/2015 05:47 AM, Heiko Stuebner =E5=86=99=E9=81=93:
-> Hi Yakir,
->
-> Am Dienstag, 1. September 2015, 13:46:11 schrieb Yakir Yang:
->>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP contro=
-ller
->> share the same IP, so a lot of parts can be re-used. I split the com=
-mon
->> code into bridge directory, then rk3288 and exynos only need to keep
->> some platform code. Cause I can't find the exact IP name of exynos d=
-p
->> controller, so I decide to name dp core driver with "analogix" which=
- I
->> find in rk3288 eDP TRM ;)
->>
->> Beyond that, there are three light registers setting differents bewt=
-een
->> exynos and rk3288.
->> 1. RK3288 have five special pll resigters which not indicata in exyn=
-os
->>     dp controller.
->> 2. The address of DP_PHY_PD(dp phy power manager register) are diffe=
-rent
->>     between rk3288 and exynos.
->> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp=
- debug
->>     register).
->>
->> I have verified this series on two kinds of rockchip platform board,=
- one
->> is rk3288 sdk board which connect with a 2K display port monitor, th=
-e other
->> is google jerry chromebook which connect with a eDP screen "cnm,n116=
-bgeea2",
->> both of them works rightlly.
-> it looks like during the rebase something did go wrong and I found so=
-me issues
-> I mentioned in the replies to individual patches.
->
-> I did prepare a branch based on mainline [0] with both the old and th=
-e new edp
-> driver - rk3288_veyron_defconfig build both drivers into the image.
->
-> While the old driver still works, I wasn't able to make the new one w=
-ork yet
-> ... the drm core does find the connector, but not that anything is co=
-nnected
-> to it. I'll try to dig deeper tomorrow, but maybe you'll see anything
-> interesting before then.
+On 09/01/2015 03:24 AM, Heiko Stuebner wrote:
+> From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> Add ciu_drv, ciu_sample clocks and default-sample-phase. This will later
+> be used by tuning code.
 
-Many thanks for your comment and debug, I would rebase on your
-"edp-with-veyron" branch and fix the broken, make sure v6 would
-work rightly at least in your side and my side.
+As i know, ciu_drv and ciu_sample clocks are generated with "ciu" clock.
+But in these patch-set, ciu_drv and ciu_sample are controlled by clock framework.
+It's a little strange.
+Are there ciu_drv and ciu_sample clock on Rockchip?
 
-- Yakir
+Best Regards,
+Jaehoon Chung
 
->
-> Heiko
->
-> [0] https://github.com/mmind/linux-rockchip/tree/tmp/edp-with-veyron
->
->
->
->
+> 
+> We do not touch ciu_drive (and by extension define default-drive-phase).
+> Drive phase is mostly used to define minimum hold times, while one could
+> write some code to determine what phase meets the minimum hold time
+> (ex 10 degrees) this will not work with the current clock phase framework
+> (which floors angles, so we'll get 0 deg, and there's no way to know what
+> resolution the floors happen at). We assume that the default drive angles
+> set by the hardware are good enough.
+> 
+> Signed-off-by: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
+> index 346c609..5edadc2 100644
+> --- a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
+> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
+> @@ -42,11 +42,13 @@ Optional properties:
+>  * clocks: from common clock binding: handle to biu and ciu clocks for the
+>    bus interface unit clock and the card interface unit clock.
+>  
+> -* clock-names: from common clock binding: Shall be "biu" and "ciu".
+> -  If the biu clock is missing we'll simply skip enabling it.  If the
+> -  ciu clock is missing we'll just assume that the clock is running at
+> +* clock-names: from common clock binding: Shall be "biu", "ciu", "ciu_drv" and
+> +  "ciu_sample".  If the biu clock is missing we'll simply skip enabling it.
+> +  If the ciu clock is missing we'll just assume that the clock is running at
+>    clock-frequency.  It is an error to omit both the ciu clock and the
+> -  clock-frequency.
+> +  clock-frequency.  "ciu_drv" and "ciu_sample" are used to control the clock
+> +  phases, "ciu_sample" is required for tuning high speed modes (if no other
+> +  custom tuning method is defined).
+>  
+>  * clock-frequency: should be the frequency (in Hz) of the ciu clock.  If this
+>    is specified and the ciu clock is specified then we'll try to set the ciu
+> @@ -75,6 +77,10 @@ Optional properties:
+>  * vmmc-supply: The phandle to the regulator to use for vmmc.  If this is
+>    specified we'll defer probe until we can find this regulator.
+>  
+> +* default-sample-phase: The default phase to set ciu_sample at probing, low
+> +  speeds or in case where all phases work at tuning time. If not specified
+> +  0 deg will be used.
+> +
+>  Aliases:
+>  
+>  - All the MSHC controller nodes should be represented in the aliases node using
+> 
