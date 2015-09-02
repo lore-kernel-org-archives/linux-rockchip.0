@@ -1,198 +1,298 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
-Date: Wed, 2 Sep 2015 13:38:31 +0200
-Message-ID: <CAPDyKFqJp3VuOeTh4Abkn2X6gQxNHDXwJj8N51OxxSo+Agespw@mail.gmail.com>
-References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
-	<1441045446-30858-4-git-send-email-heiko@sntech.de>
+From: Rob Herring <robherring2@gmail.com>
+Subject: Re: [PATCH v4 10/16] phy: Add driver for rockchip Display Port PHY
+Date: Wed, 2 Sep 2015 08:27:22 -0500
+Message-ID: <CAL_JsqJG3wGO3PC2raWvc588rrwF-zHD9+3WwBJxEwntm19k7Q@mail.gmail.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1441087455-25533-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1441045446-30858-4-git-send-email-heiko@sntech.de>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1441087455-25533-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.freedes>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 31 August 2015 at 20:24, Heiko Stuebner <heiko@sntech.de> wrote:
-> From: Douglas Anderson <dianders@chromium.org>
+On Tue, Sep 1, 2015 at 1:04 AM, Yakir Yang <ykk@rock-chips.com> wrote:
+> This phy driver would control the Rockchip DisplayPort module
+> phy clock and phy power, it is relate to analogix_dp-rockchip
+> dp driver. If you want DP works rightly on rockchip platform,
+> then you should select both of them.
 >
-> This adds logic to the MMC core to set VQMMC.  This is expected to be
-> called by MMC drivers like dw_mmc as part of (or instead of) their
-> start_signal_voltage_switch() callback.
->
-> A few notes:
->
-> * When setting the signal voltage to 3.3V we do our best to make VQMMC
->   and VMMC match.  It's been reported that this makes some old cards
->   happy since they were tested back in the day before UHS when VQMMC
->   and VMMC were provided by the same regulator.  A nice side effect of
->   this is that we don't end up on the hairy edge of VQMMC (2.7V),
->   which some EEs claim is a little too close to the minimum for
->   comfort.
->   If this is not supported by the supplying regulator we try to find
->   a suitable voltage within the whole 2.7V-3.6V area of the spec.
->
-> * When setting the signal voltage to 1.8V or 1.2V we aim for that
->   specific voltage instead of picking the lowest one in the range.
->
-> * We very purposely don't print errors in mmc_regulator_set_vqmmc().
->   There are cases where the MMC core will try several different
->   voltages and we don't want to pollute the logs.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 > ---
->  drivers/mmc/core/core.c  | 68 ++++++++++++++++++++++++++++++++++++++++++++++++
->  include/linux/mmc/host.h |  7 +++++
->  2 files changed, 75 insertions(+)
+> Changes in v4:
+> - Take Kishon suggest, add commit message, and remove the redundant
+>   rockchip_dp_phy_init() function, move those code to probe() method.
+>   And remove driver .owner number.
 >
-> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-> index 0520064..9dc0b65 100644
-> --- a/drivers/mmc/core/core.c
-> +++ b/drivers/mmc/core/core.c
-> @@ -1437,6 +1437,74 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
->  }
->  EXPORT_SYMBOL_GPL(mmc_regulator_set_ocr);
+> Changes in v3:
+> - Take Heiko suggest, add rockchip dp phy driver,
+>   collect the phy clocks and power control.
 >
-> +static int mmc_regulator_set_voltage_if_supported(struct regulator *regulator,
-> +                                                 int min_uV, int target_uV,
-> +                                                 int max_uV)
-> +{
-> +       /*
-> +        * Check if supported first to avoid errors since we may try several
-> +        * signal levels during power up and don't want to show errors.
-> +        */
-> +       if (!regulator_is_supported_voltage(regulator, min_uV, max_uV))
-> +               return -EINVAL;
+> Changes in v2: None
+>
+>  .../devicetree/bindings/phy/rockchip-dp-phy.txt    |  26 ++++
+
+It is preferred that you split binding doc's from driver changes.
+
+>  drivers/phy/Kconfig                                |   7 +
+>  drivers/phy/Makefile                               |   1 +
+>  drivers/phy/phy-rockchip-dp.c                      | 166 +++++++++++++++++++++
+>  4 files changed, 200 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>  create mode 100644 drivers/phy/phy-rockchip-dp.c
+>
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+> new file mode 100644
+> index 0000000..5de1088
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+> @@ -0,0 +1,26 @@
+> +Rockchip Soc Seroes Display Port PHY
+> +------------------------------------
 > +
-> +       return regulator_set_voltage_triplet(regulator, min_uV, target_uV,
-> +                                            max_uV);
+> +Required properties:
+> +- compatible : should be one of the following supported values:
+> +        - "rockchip.rk3288-dp-phy"
+> +
+> +- reg : a list of registers used by phy driver
+
+Please state the size of the list and order of what each entry if more than one.
+
+> +- clocks: from common clock binding: handle to dp clock.
+> +       of memory mapped region.
+> +- clock-names: from common clock binding:
+> +       Required elements: "sclk_dp" "sclk_dp_24m"
+> +
+> +- rockchip,grf: this soc should set GRF regs, so need get grf here.
+
+I have no idea what GRF means.
+
+> +- #phy-cells : from the generic PHY bindings, must be 0;
+> +
+> +Example:
+> +
+> +edp_phy: phy@ff770274 {
+> +       compatilble = "rockchip,rk3288-dp-phy";
+> +       reg = <0xff770274 4>;
+> +       rockchip,grf = <&grf>;
+> +       clocks = <&cru SCLK_EDP_24M>;
+> +       clock-names = "24m";
+> +       #phy-cells = <0>;
 > +}
+> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+> index 47da573..8f2bc4f 100644
+> --- a/drivers/phy/Kconfig
+> +++ b/drivers/phy/Kconfig
+> @@ -310,6 +310,13 @@ config PHY_ROCKCHIP_USB
+>         help
+>           Enable this to support the Rockchip USB 2.0 PHY.
+>
+> +config PHY_ROCKCHIP_DP
+> +       tristate "Rockchip Display Port PHY Driver"
+> +       depends on ARCH_ROCKCHIP && OF
+> +       select GENERIC_PHY
+> +       help
+> +         Enable this to support the Rockchip Display Port PHY.
 > +
-> +/**
-> + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
+>  config PHY_ST_SPEAR1310_MIPHY
+>         tristate "ST SPEAR1310-MIPHY driver"
+>         select GENERIC_PHY
+> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+> index a5b18c1..e281f35 100644
+> --- a/drivers/phy/Makefile
+> +++ b/drivers/phy/Makefile
+> @@ -34,6 +34,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)    += phy-s5pv210-usb2.o
+>  obj-$(CONFIG_PHY_EXYNOS5_USBDRD)       += phy-exynos5-usbdrd.o
+>  obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)    += phy-qcom-apq8064-sata.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_DP)          += phy-rockchip-dp.o
+>  obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)    += phy-qcom-ipq806x-sata.o
+>  obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)   += phy-spear1310-miphy.o
+>  obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)   += phy-spear1340-miphy.o
+> diff --git a/drivers/phy/phy-rockchip-dp.c b/drivers/phy/phy-rockchip-dp.c
+> new file mode 100644
+> index 0000000..e9a726e
+> --- /dev/null
+> +++ b/drivers/phy/phy-rockchip-dp.c
+> @@ -0,0 +1,166 @@
+> +/*
+> + * Rockchip DP PHY driver
 > + *
-> + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as possible.
-
-Looking at the code, I don't think this statement is entirely true.
-Isn't it so that we will be trying with a maximum tolerance of 0.3 V
-towards the VMMC voltage level (then fall-back to the complete range)?
-Perhaps you can find a better way to describe that in the change log.
-
-Just to be clear, I believe this approach make sense but I appreciate
-some more details about the policy, both in the code and in the change
-log.
-
-> + * That will match the behavior of old boards where VQMMC and VMMC were supplied
-> + * by the same supply.  The Bus Operating conditions for 3.3V signaling in the
-> + * SD card spec also define VQMMC in terms of VMMC.
-> + * If this is not possible we'll try the full 2.7-3.6V of the spec.
+> + * Copyright (C) 2015 FuZhou Rockchip Co., Ltd.
+> + * Author: Yakir Yang <ykk@@rock-chips.com>
 > + *
-> + * For 1.2V and 1.8V signaling we'll try to get as close as possible to the
-> + * requested voltage.  This is definitely a good idea for UHS where there's a
-> + * separate regulator on the card that's trying to make 1.8V and it's best if
-> + * we match.
-> + *
-> + * This function is expected to be used by a controller's
-> + * start_signal_voltage_switch() function.
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License.
 > + */
-> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
+> +
+> +#include <linux/io.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/clk.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/platform_device.h>
+> +
+> +#define GRF_SOC_CON12                   0x0274
+> +#define GRF_EDP_REF_CLK_SEL_INTER       BIT(4)
+> +
+> +#define DP_PHY_SIDDQ_WRITE_EN           BIT(21)
+> +#define DP_PHY_SIDDQ_ON                 0
+> +#define DP_PHY_SIDDQ_OFF                BIT(5)
+> +
+> +struct rockchip_dp_phy {
+> +       struct device  *dev;
+> +       struct regmap  *grf;
+> +       void __iomem   *regs;
+> +       struct clk     *phy_24m;
+> +};
+> +
+> +static int rockchip_dp_phy_clk_enable(struct rockchip_dp_phy *dp)
 > +{
-> +       int volt, min_uV, max_uV;
+> +       int ret = 0;
 > +
-> +       /* If no vqmmc supply then we can't change the voltage */
-> +       if (IS_ERR(mmc->supply.vqmmc))
-> +               return -EINVAL;
+> +       ret = clk_set_rate(dp->phy_24m, 24000000);
 
-In general vqmmc is considered as an optional regulator and that's
-also how host drivers treat it. So perhaps it would make sense to
-return 0 here instead of an error code or what do you think?
+Do you need to do this every time? This can go in probe.
 
-> +
-> +       switch (ios->signal_voltage) {
-> +       case MMC_SIGNAL_VOLTAGE_120:
-> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
-> +                                               1100000, 1200000, 1300000);
-> +       case MMC_SIGNAL_VOLTAGE_180:
-> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
-> +                                               1700000, 1800000, 1950000);
-> +       case MMC_SIGNAL_VOLTAGE_330:
-> +               volt = regulator_get_voltage(mmc->supply.vmmc);
-
-Before invoking regulator_get_voltage(), we need to check for an
-existing regulator handle for vmmc.
-
-Moreover, as the regulator handle to vmmc is optional, perhaps we
-should fall-back to use the ios->vdd bit to find the current voltage
-level?
-
-> +               if (volt < 0)
-> +                       return volt;
-> +
-> +               min_uV = max(volt - 300000, 2700000);
-> +               max_uV = min(volt + 300000, 3600000);
-
-These calculations deserves a comment.
-
-> +
-> +               /* try to stay close to vmmc at first */
-> +               if (!mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
-> +                                               min_uV, volt, max_uV))
-> +                       return 0;
-> +
-> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
-> +                                               2700000, volt, 3600000);
-> +       default:
-> +               return -EINVAL;
+> +       if (ret < 0) {
+> +               dev_err(dp->dev, "cannot set clock phy_24m %d\n", ret);
+> +               return ret;
 > +       }
+> +
+> +       ret = clk_prepare_enable(dp->phy_24m);
+> +       if (ret < 0) {
+> +               dev_err(dp->dev, "cannot enable clock phy_24m %d\n", ret);
+> +               return ret;
+> +       }
+> +
+> +       return 0;
 > +}
-> +EXPORT_SYMBOL_GPL(mmc_regulator_set_vqmmc);
 > +
->  #endif /* CONFIG_REGULATOR */
->
->  int mmc_regulator_get_supply(struct mmc_host *mmc)
-> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-> index 83b81fd..a2a78eb 100644
-> --- a/include/linux/mmc/host.h
-> +++ b/include/linux/mmc/host.h
-> @@ -423,6 +423,7 @@ int mmc_regulator_get_ocrmask(struct regulator *supply);
->  int mmc_regulator_set_ocr(struct mmc_host *mmc,
->                         struct regulator *supply,
->                         unsigned short vdd_bit);
-> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios);
->  #else
->  static inline int mmc_regulator_get_ocrmask(struct regulator *supply)
->  {
-> @@ -435,6 +436,12 @@ static inline int mmc_regulator_set_ocr(struct mmc_host *mmc,
->  {
->         return 0;
->  }
-> +
-> +static inline int mmc_regulator_set_vqmmc(struct mmc_host *mmc,
-> +                                         struct mmc_ios *ios)
+> +static int rockchip_dp_phy_clk_disable(struct rockchip_dp_phy *dp)
 > +{
-> +       return -EINVAL;
-
-According to my upper comment about vqmmc being optional, perhaps this
-shouldn't be treated as an error!?
-
+> +       clk_disable_unprepare(dp->phy_24m);
+> +
+> +       return 0;
 > +}
->  #endif
->
->  int mmc_regulator_get_supply(struct mmc_host *mmc);
+> +
+> +static int rockchip_set_phy_state(struct phy *phy, bool enable)
+> +{
+> +       struct rockchip_dp_phy *dp = phy_get_drvdata(phy);
+> +
+> +       if (enable) {
+> +               rockchip_dp_phy_clk_enable(dp);
+> +               writel(DP_PHY_SIDDQ_WRITE_EN | DP_PHY_SIDDQ_ON, dp->regs);
+> +       } else {
+> +               rockchip_dp_phy_clk_disable(dp);
+> +               writel(DP_PHY_SIDDQ_WRITE_EN | DP_PHY_SIDDQ_OFF, dp->regs);
+> +       }
+> +
+> +       return 0;
+> +}
+
+I would just inline all 3 of these functions. The wrappers don't
+doesn't do anything, but add 2 levels of function calls.
+
+> +
+> +static int rockchip_dp_phy_power_on(struct phy *phy)
+> +{
+> +       return rockchip_set_phy_state(phy, true);
+> +}
+> +
+> +static int rockchip_dp_phy_power_off(struct phy *phy)
+> +{
+> +       return rockchip_set_phy_state(phy, false);
+> +}
+> +
+> +static struct phy_ops rockchip_dp_phy_ops = {
+> +       .power_on       = rockchip_dp_phy_power_on,
+> +       .power_off      = rockchip_dp_phy_power_off,
+> +       .owner          = THIS_MODULE,
+> +};
+> +
+> +static int rockchip_dp_phy_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *np = dev->of_node;
+> +       struct phy_provider *phy_provider;
+> +       struct rockchip_dp_phy *dp;
+> +       struct resource *res;
+> +       struct phy *phy;
+> +       int ret;
+> +
+> +       dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+> +       if (IS_ERR(dp))
+> +               return -ENOMEM;
+> +
+> +       dp->dev = dev;
+> +
+> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +       dp->regs = devm_ioremap_resource(dev, res);
+> +       if (IS_ERR(dp->regs))
+> +               return PTR_ERR(dp->regs);
+> +
+> +       dp->phy_24m = devm_clk_get(dev, "24m");
+> +       if (IS_ERR(dp->phy_24m)) {
+> +               dev_err(dev, "cannot get clock 24m\n");
+> +               return PTR_ERR(dp->phy_24m);
+> +       }
+
+The binding says there are 2 clocks.
+
+> +
+> +       dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +       if (IS_ERR(dp->grf)) {
+> +               dev_err(dev, "rk3288-dp needs rockchip,grf property\n");
+> +               return PTR_ERR(dp->grf);
+> +       }
+> +
+> +       ret = regmap_write(dp->grf, GRF_SOC_CON12,
+> +                          GRF_EDP_REF_CLK_SEL_INTER |
+> +                          (GRF_EDP_REF_CLK_SEL_INTER << 16));
+> +       if (ret != 0) {
+> +               dev_err(dp->dev, "Could not config GRF edp ref clk: %d\n", ret);
+> +               return ret;
+> +       }
+> +
+> +       phy = devm_phy_create(dev, NULL, &rockchip_dp_phy_ops, NULL);
+> +       if (IS_ERR(phy)) {
+> +               dev_err(dev, "failed to create phy\n");
+> +               return PTR_ERR(phy);
+> +       }
+> +       phy_set_drvdata(phy, dp);
+> +
+> +       phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +
+> +       return PTR_ERR_OR_ZERO(phy_provider);
+> +}
+> +
+> +static const struct of_device_id rockchip_dp_phy_dt_ids[] = {
+> +       { .compatible = "rockchip,rk3288-dp-phy" },
+> +       {}
+> +};
+> +
+> +MODULE_DEVICE_TABLE(of, rockchip_dp_phy_dt_ids);
+> +
+> +static struct platform_driver rockchip_dp_phy_driver = {
+> +       .probe          = rockchip_dp_phy_probe,
+> +       .driver         = {
+> +               .name   = "rockchip-dp-phy",
+> +               .of_match_table = rockchip_dp_phy_dt_ids,
+> +       },
+> +};
+> +
+> +module_platform_driver(rockchip_dp_phy_driver);
+> +
+> +MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
+> +MODULE_DESCRIPTION("Rockchip DP PHY driver");
+> +MODULE_LICENSE("GPL v2");
 > --
-> 2.1.4
+> 2.1.2
 >
-
-Finally, I wonder if you have considered to handle the
-regulator_enable|disable() calls from within this new API? Currently
-host driver deals with that themselves, but it would be nice to get
-some consolidation around that. Similar to what we already have for
-the vmmc regulator through the mmc_regulator_set_ocr() API.
-
-If you considered this, I am fine with adding that kind of
-functionality as a separate patch on top of this one, it gets easier
-to discuss/review.
-
-Kind regards
-Uffe
+>
