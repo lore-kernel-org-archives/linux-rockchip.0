@@ -1,108 +1,109 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 5/8] mmc: dw_mmc: dt-binding: Add tuning related things
-Date: Wed, 02 Sep 2015 09:41:27 +0200
-Message-ID: <2716742.hZCgYT9c9i@phil>
-References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
- <1441045446-30858-6-git-send-email-heiko@sntech.de>
- <55E682C0.6050204@samsung.com>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v4 09/16] drm: rockchip: add bpc and color mode setting
+Date: Wed, 2 Sep 2015 10:34:46 +0200
+Message-ID: <20150902083445.GA24654@ulmo.nvidia.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1441087308-25455-1-git-send-email-ykk@rock-chips.com>
+ <120097760.HO2inCimVA@phil>
+ <55E659AC.9000402@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <55E682C0.6050204-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="d6Gm4EdcadzBjdND"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55E659AC.9000402@rock-chips.com>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kern
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jaehoon,
+--d6Gm4EdcadzBjdND
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Am Mittwoch, 2. September 2015, 14:01:52 schrieb Jaehoon Chung:
-> Hi, Heiko.
-> 
-> On 09/01/2015 03:24 AM, Heiko Stuebner wrote:
-> > From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > 
-> > Add ciu_drv, ciu_sample clocks and default-sample-phase. This will later
-> > be used by tuning code.
-> 
-> As i know, ciu_drv and ciu_sample clocks are generated with "ciu" clock.
-> But in these patch-set, ciu_drv and ciu_sample are controlled by clock
-> framework. It's a little strange.
-> Are there ciu_drv and ciu_sample clock on Rockchip?
+On Wed, Sep 02, 2015 at 10:06:36AM +0800, Yakir Yang wrote:
+> =E5=9C=A8 09/02/2015 05:00 AM, Heiko Stuebner =E5=86=99=E9=81=93:
+> >Am Dienstag, 1. September 2015, 14:01:48 schrieb Yakir Yang:
+[...]
+> >>diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> >>b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c index 34b78e7..5d7f9b6 10=
+0644
+> >>--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> >>+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> >>@@ -811,14 +811,41 @@ static const struct drm_plane_funcs vop_plane_fun=
+cs =3D
+> >>{
+> >>
+> >>  int rockchip_drm_crtc_mode_config(struct drm_crtc *crtc,
+> >>  				  int connector_type,
+> >>-				  int out_mode)
+> >>+				  int bpc, int color)
+> >>  {
+> >>  	struct vop *vop =3D to_vop(crtc);
+> >>-
+> >>  	vop->connector_type =3D connector_type;
+> >>  	vop->connector_out_mode =3D out_mode;
+> >this line should probably go away, as the source var "out_mode" does not=
+ exist
+> >in the function params any more, making the compilation break, and is set
+> >below anyway.
+>=20
+> Sorry for the failed, there are must be a problem when I backport those c=
+ode
+> to chrome-3.14 to verify.
+>=20
+> Thanks a lot, I would update next version soon.
 
-Yes on Rockchip SoCs the drv and sample clock registers are residing inside 
-the clock controller and not in the dw_mmc block.
+*sigh*
 
-See drivers/clk/rockchip/clk-mmcphase.c and clk-rk3288.c around line 490 .
+I get the feeling that you're going about upstreaming the wrong way. If
+you post patches to upstream mailing lists and you expect people to
+apply those patches, then your target is the upstream kernel. So you
+should be basing all of your work on top of a recent release candidate
+directly from Linus or some recent version of linux-next.
 
+Your current approach is already making people waste time trying to
+build the patches and fail because you've been testing on something
+other than mainline or linux-next.
 
-Heiko
+At the very least your code must compile when applied against a recent
+upstream tree. I would also expect you to make sure the code works at
+runtime, though, contrary to build testing, not everybody will be able
+to verify that you've actually done so. It is ultimately your platform
+maintainer's (i.e. Heiko's) responsibility to ensure that because they
+will get to deal with user complaints if people can't run an upstream
+kernel on the devices.
 
-> > We do not touch ciu_drive (and by extension define default-drive-phase).
-> > Drive phase is mostly used to define minimum hold times, while one could
-> > write some code to determine what phase meets the minimum hold time
-> > (ex 10 degrees) this will not work with the current clock phase framework
-> > (which floors angles, so we'll get 0 deg, and there's no way to know what
-> > resolution the floors happen at). We assume that the default drive angles
-> > set by the hardware are good enough.
-> > 
-> > Signed-off-by: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> > ---
-> > 
-> >  Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt | 14
-> >  ++++++++++---- 1 file changed, 10 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
-> > b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt index
-> > 346c609..5edadc2 100644
-> > --- a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
-> > +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
-> > 
-> > @@ -42,11 +42,13 @@ Optional properties:
-> >  * clocks: from common clock binding: handle to biu and ciu clocks for the
-> >  
-> >    bus interface unit clock and the card interface unit clock.
-> > 
-> > -* clock-names: from common clock binding: Shall be "biu" and "ciu".
-> > -  If the biu clock is missing we'll simply skip enabling it.  If the
-> > -  ciu clock is missing we'll just assume that the clock is running at
-> > +* clock-names: from common clock binding: Shall be "biu", "ciu",
-> > "ciu_drv" and +  "ciu_sample".  If the biu clock is missing we'll simply
-> > skip enabling it. +  If the ciu clock is missing we'll just assume that
-> > the clock is running at> 
-> >    clock-frequency.  It is an error to omit both the ciu clock and the
-> > 
-> > -  clock-frequency.
-> > +  clock-frequency.  "ciu_drv" and "ciu_sample" are used to control the
-> > clock +  phases, "ciu_sample" is required for tuning high speed modes (if
-> > no other +  custom tuning method is defined).
-> > 
-> >  * clock-frequency: should be the frequency (in Hz) of the ciu clock.  If
-> >  this>  
-> >    is specified and the ciu clock is specified then we'll try to set the
-> >    ciu
-> > 
-> > @@ -75,6 +77,10 @@ Optional properties:
-> >  * vmmc-supply: The phandle to the regulator to use for vmmc.  If this is
-> >  
-> >    specified we'll defer probe until we can find this regulator.
-> > 
-> > +* default-sample-phase: The default phase to set ciu_sample at probing,
-> > low +  speeds or in case where all phases work at tuning time. If not
-> > specified +  0 deg will be used.
-> > +
-> > 
-> >  Aliases:
-> >  
-> >  - All the MSHC controller nodes should be represented in the aliases node
-> >  using
+I realize that the upstream kernel isn't what's going to end up in
+products later on, but that doesn't change the fact that you're
+submitting code for inclusion in the mainline tree. If you need to
+backport code to some ChromeOS tree, then that should be done after
+you've verified that things build and run upstream. Doing so makes life
+a lot easier for your upstream maintainers, and that in turn makes it
+more likely to get your code merged.
+
+Thierry
+
+--d6Gm4EdcadzBjdND
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJV5rSiAAoJEN0jrNd/PrOh6MAP/iyH9u6icnoveJighTWuyBZU
+hZKI/TpTPFLN1tPJnUdbpdtCfx0K6Dq22hnyB6XNWMPKaI0nTdUS/MZh8QicxNVa
+C3jk153jouiiMq8BbsbibVuXRnYCe6mpLZ5rPRer93TURgduu7lclOHfvLj5+vRg
+PMb5vRcG0JTANDeE9GBgaSH73DqFzH9Lhb+dj+fQlcyZvOJrq2i5ZkRVR36bLRzm
+pPxWYN7sVsSmN4GDlqZreXBVE3GEPkpnXq98O9OE5z/Ih3c7oO+CBBlVdv+APxD+
+Rj7Ae0YShdJrnFw0W48/nUwMBpFg4otnuXMRm/2DX2KVPjsTPYDBbPuodwFIIaci
+ocwmdAS5JYBg4SFt5lIFF3cAC51Y5xvqgMAeorhFHcqCHU4gveJqzCno4I54zpIk
+YdnDGomi4qXoa6AE/9BnuJgzVuIXBEm2B2jIJyAj0mB5doPc2sy3+23fEFCbL/4E
+hJdVcMZAid+Sm4l5wULW2prYu9EH6gaYiX8/x5j6nEO5XKwV8URcKVouikW7D+BG
+n73qVvpveOcnBMZMmr0DRMQORVlOWTGssXwzdEkEqGc7GViFTfF3ZWBzkLg2ys+U
+I0/lMYn7cMDZnrlVl/a+ck7SqELkKP0Th6QK15tCkpGd/skH1V0DrV+XmN2ftlPn
+w7elaisXMdZXkpk2kYL9
+=4CKn
+-----END PGP SIGNATURE-----
+
+--d6Gm4EdcadzBjdND--
