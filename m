@@ -1,43 +1,67 @@
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Subject: Re: [PATCH v4 03/16] drm: bridge: analogix/dp: split exynos dp driver
- to bridge dir
-Date: Wed, 2 Sep 2015 15:50:37 +0100
-Message-ID: <CACvgo53pZUtSLRGVMYPs1s4QPBrAr3j=xoZ1t23tPv202bzfyg@mail.gmail.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
-	<1441086598-24995-1-git-send-email-ykk@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Wed, 2 Sep 2015 09:20:58 -0700
+Message-ID: <CAD=FV=Wy7foROYkmR+cX+NS5-=BaB36WsW1sc1XjmmdUnPCxsA@mail.gmail.com>
+References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
+	<1441045446-30858-4-git-send-email-heiko@sntech.de>
+	<CAPDyKFqJp3VuOeTh4Abkn2X6gQxNHDXwJj8N51OxxSo+Agespw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1441086598-24995-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc@vger.kernel.org>, seanpaul@chromium.com, djkurtz@chromium.com, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, robherring2@gmail.com, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, dianders@chromium.com, linux-arm-kernel@lists.infradead.org, Linu
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFqJp3VuOeTh4Abkn2X6gQxNHDXwJj8N51OxxSo+Agespw@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-[Dropping the CC list]
+Ulf,
 
-Hi Yakir Yang,
-
-On 1 September 2015 at 06:49, Yakir Yang <ykk@rock-chips.com> wrote:
-> Split the dp core driver from exynos directory to bridge
-> directory, and rename the core driver to analogix_dp_*,
-> leave the platform code to analogix_dp-exynos.
+On Wed, Sep 2, 2015 at 4:38 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>> +/**
+>> + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
+>> + *
+>> + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as possible.
 >
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> ---
-> Changes in v4:
-> - Take Rob suggest, update "analogix,hpd-gpios" to "hpd-gpios" DT propery.
-> - Take Jingoo suggest, rename "analogix_dp-exynos.c" file name to "exynos_dp.c"
-> - Take Archit suggest, create a separate folder for analogix code in bridge/
+> Looking at the code, I don't think this statement is entirely true.
+> Isn't it so that we will be trying with a maximum tolerance of 0.3 V
+> towards the VMMC voltage level (then fall-back to the complete range)?
+> Perhaps you can find a better way to describe that in the change log.
+
+If regulator_set_voltage_triplet() is ever implemented more correctly
+then the description here is correct.  ...the problem is that
+regulator_set_voltage_triplet() is still using the same shortcut that
+regulator_set_voltage_tol() was using.
+
+
+>> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
+>> +{
+>> +       int volt, min_uV, max_uV;
+>> +
+>> +       /* If no vqmmc supply then we can't change the voltage */
+>> +       if (IS_ERR(mmc->supply.vqmmc))
+>> +               return -EINVAL;
 >
-"Take X suggest", is grammatically incorrect. You should use
-"suggestion(s)" or alternatively use the following approach.
+> In general vqmmc is considered as an optional regulator and that's
+> also how host drivers treat it. So perhaps it would make sense to
+> return 0 here instead of an error code or what do you think?
 
-- Create a separate folder for analogix code in bridge/ (Archit)
+The idea is that since this is intended to be called by
+start_signal_voltage_switch() and having no vqmmc should be considered
+an error for start_signal_voltage_switch() then it should be an error
+here.  What do you think?
 
-Cheers,
-Emil
 
-P.S. Why do you resend the whole series (some 10+ patches) when only a
-few patches have been changed ? Are all the patches changed whist
-missing that information (vX: rebase on top of A)
+>> +
+>> +               /* try to stay close to vmmc at first */
+>> +               if (!mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+>> +                                               min_uV, volt, max_uV))
+>> +                       return 0;
+>> +
+>> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+>> +                                               2700000, volt, 3600000);
+
+The whole fact that there are two calls here is really just because of
+the limitations of the current implementation of
+regulator_set_voltage_triplet().  If that implementation is ever fixed
+then we'd just need a single call.  Probably worth a comment saying
+that?
