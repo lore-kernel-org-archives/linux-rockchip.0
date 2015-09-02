@@ -1,116 +1,198 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 09/16] drm: rockchip: add bpc and color mode setting
-Date: Wed, 2 Sep 2015 18:02:25 +0800
-Message-ID: <55E6C931.9090306@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1441087308-25455-1-git-send-email-ykk@rock-chips.com>
- <120097760.HO2inCimVA@phil> <55E659AC.9000402@rock-chips.com>
- <20150902083445.GA24654@ulmo.nvidia.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Wed, 2 Sep 2015 13:38:31 +0200
+Message-ID: <CAPDyKFqJp3VuOeTh4Abkn2X6gQxNHDXwJj8N51OxxSo+Agespw@mail.gmail.com>
+References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
+	<1441045446-30858-4-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150902083445.GA24654-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, dianders-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, seanpaul-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel@vg
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1441045446-30858-4-git-send-email-heiko@sntech.de>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Thierry,
-
-=E5=9C=A8 2015/9/2 16:34, Thierry Reding =E5=86=99=E9=81=93:
-> On Wed, Sep 02, 2015 at 10:06:36AM +0800, Yakir Yang wrote:
->> =E5=9C=A8 09/02/2015 05:00 AM, Heiko Stuebner =E5=86=99=E9=81=93:
->>> Am Dienstag, 1. September 2015, 14:01:48 schrieb Yakir Yang:
-> [...]
->>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>> b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c index 34b78e7..5d7f9=
-b6 100644
->>>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
->>>> @@ -811,14 +811,41 @@ static const struct drm_plane_funcs vop_plan=
-e_funcs =3D
->>>> {
->>>>
->>>>   int rockchip_drm_crtc_mode_config(struct drm_crtc *crtc,
->>>>   				  int connector_type,
->>>> -				  int out_mode)
->>>> +				  int bpc, int color)
->>>>   {
->>>>   	struct vop *vop =3D to_vop(crtc);
->>>> -
->>>>   	vop->connector_type =3D connector_type;
->>>>   	vop->connector_out_mode =3D out_mode;
->>> this line should probably go away, as the source var "out_mode" doe=
-s not exist
->>> in the function params any more, making the compilation break, and =
-is set
->>> below anyway.
->> Sorry for the failed, there are must be a problem when I backport th=
-ose code
->> to chrome-3.14 to verify.
->>
->> Thanks a lot, I would update next version soon.
-> *sigh*
+On 31 August 2015 at 20:24, Heiko Stuebner <heiko@sntech.de> wrote:
+> From: Douglas Anderson <dianders@chromium.org>
 >
-> I get the feeling that you're going about upstreaming the wrong way. =
-If
-> you post patches to upstream mailing lists and you expect people to
-> apply those patches, then your target is the upstream kernel. So you
-> should be basing all of your work on top of a recent release candidat=
-e
-> directly from Linus or some recent version of linux-next.
-
-Yeah, do feel I am in the wrong way now. I used to write my patch on
-linux-next branch, then backport some head file to productor kernel,
-so I can check compiled failed. After that, I backport the dp driver co=
-de
-to normal productor kernel, start to debug the function.
-
-So I used to ensure no compiled failed on upstrean kernel, actually it'=
-s
-also hard to ensure, cause I just backport head file. Not even debug th=
-e
-function on upstream kernel.
-
-> Your current approach is already making people waste time trying to
-> build the patches and fail because you've been testing on something
-> other than mainline or linux-next.
+> This adds logic to the MMC core to set VQMMC.  This is expected to be
+> called by MMC drivers like dw_mmc as part of (or instead of) their
+> start_signal_voltage_switch() callback.
 >
-> At the very least your code must compile when applied against a recen=
-t
-> upstream tree. I would also expect you to make sure the code works at
-> runtime, though, contrary to build testing, not everybody will be abl=
-e
-> to verify that you've actually done so. It is ultimately your platfor=
-m
-> maintainer's (i.e. Heiko's) responsibility to ensure that because the=
-y
-> will get to deal with user complaints if people can't run an upstream
-> kernel on the devices.
+> A few notes:
+>
+> * When setting the signal voltage to 3.3V we do our best to make VQMMC
+>   and VMMC match.  It's been reported that this makes some old cards
+>   happy since they were tested back in the day before UHS when VQMMC
+>   and VMMC were provided by the same regulator.  A nice side effect of
+>   this is that we don't end up on the hairy edge of VQMMC (2.7V),
+>   which some EEs claim is a little too close to the minimum for
+>   comfort.
+>   If this is not supported by the supplying regulator we try to find
+>   a suitable voltage within the whole 2.7V-3.6V area of the spec.
+>
+> * When setting the signal voltage to 1.8V or 1.2V we aim for that
+>   specific voltage instead of picking the lowest one in the range.
+>
+> * We very purposely don't print errors in mmc_regulator_set_vqmmc().
+>   There are cases where the MMC core will try several different
+>   voltages and we don't want to pollute the logs.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  drivers/mmc/core/core.c  | 68 ++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/mmc/host.h |  7 +++++
+>  2 files changed, 75 insertions(+)
+>
+> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+> index 0520064..9dc0b65 100644
+> --- a/drivers/mmc/core/core.c
+> +++ b/drivers/mmc/core/core.c
+> @@ -1437,6 +1437,74 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>  }
+>  EXPORT_SYMBOL_GPL(mmc_regulator_set_ocr);
+>
+> +static int mmc_regulator_set_voltage_if_supported(struct regulator *regulator,
+> +                                                 int min_uV, int target_uV,
+> +                                                 int max_uV)
+> +{
+> +       /*
+> +        * Check if supported first to avoid errors since we may try several
+> +        * signal levels during power up and don't want to show errors.
+> +        */
+> +       if (!regulator_is_supported_voltage(regulator, min_uV, max_uV))
+> +               return -EINVAL;
+> +
+> +       return regulator_set_voltage_triplet(regulator, min_uV, target_uV,
+> +                                            max_uV);
+> +}
+> +
+> +/**
+> + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
+> + *
+> + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as possible.
 
-Oh, first time to know this rule. So I should work on Heiko's github
-kernel branch at the first time to start send upstream.
+Looking at the code, I don't think this statement is entirely true.
+Isn't it so that we will be trying with a maximum tolerance of 0.3 V
+towards the VMMC voltage level (then fall-back to the complete range)?
+Perhaps you can find a better way to describe that in the change log.
 
-> I realize that the upstream kernel isn't what's going to end up in
-> products later on, but that doesn't change the fact that you're
-> submitting code for inclusion in the mainline tree. If you need to
-> backport code to some ChromeOS tree, then that should be done after
-> you've verified that things build and run upstream. Doing so makes li=
-fe
-> a lot easier for your upstream maintainers, and that in turn makes it
-> more likely to get your code merged.
+Just to be clear, I believe this approach make sense but I appreciate
+some more details about the policy, both in the code and in the change
+log.
 
-=46eel free now, I would correct those in bellow version. Thanks
-for your remind (or maybe complain :-D ).
+> + * That will match the behavior of old boards where VQMMC and VMMC were supplied
+> + * by the same supply.  The Bus Operating conditions for 3.3V signaling in the
+> + * SD card spec also define VQMMC in terms of VMMC.
+> + * If this is not possible we'll try the full 2.7-3.6V of the spec.
+> + *
+> + * For 1.2V and 1.8V signaling we'll try to get as close as possible to the
+> + * requested voltage.  This is definitely a good idea for UHS where there's a
+> + * separate regulator on the card that's trying to make 1.8V and it's best if
+> + * we match.
+> + *
+> + * This function is expected to be used by a controller's
+> + * start_signal_voltage_switch() function.
+> + */
+> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
+> +{
+> +       int volt, min_uV, max_uV;
+> +
+> +       /* If no vqmmc supply then we can't change the voltage */
+> +       if (IS_ERR(mmc->supply.vqmmc))
+> +               return -EINVAL;
 
-- Yakir
-> Thierry
+In general vqmmc is considered as an optional regulator and that's
+also how host drivers treat it. So perhaps it would make sense to
+return 0 here instead of an error code or what do you think?
 
+> +
+> +       switch (ios->signal_voltage) {
+> +       case MMC_SIGNAL_VOLTAGE_120:
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                                               1100000, 1200000, 1300000);
+> +       case MMC_SIGNAL_VOLTAGE_180:
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                                               1700000, 1800000, 1950000);
+> +       case MMC_SIGNAL_VOLTAGE_330:
+> +               volt = regulator_get_voltage(mmc->supply.vmmc);
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Before invoking regulator_get_voltage(), we need to check for an
+existing regulator handle for vmmc.
+
+Moreover, as the regulator handle to vmmc is optional, perhaps we
+should fall-back to use the ios->vdd bit to find the current voltage
+level?
+
+> +               if (volt < 0)
+> +                       return volt;
+> +
+> +               min_uV = max(volt - 300000, 2700000);
+> +               max_uV = min(volt + 300000, 3600000);
+
+These calculations deserves a comment.
+
+> +
+> +               /* try to stay close to vmmc at first */
+> +               if (!mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                                               min_uV, volt, max_uV))
+> +                       return 0;
+> +
+> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+> +                                               2700000, volt, 3600000);
+> +       default:
+> +               return -EINVAL;
+> +       }
+> +}
+> +EXPORT_SYMBOL_GPL(mmc_regulator_set_vqmmc);
+> +
+>  #endif /* CONFIG_REGULATOR */
+>
+>  int mmc_regulator_get_supply(struct mmc_host *mmc)
+> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+> index 83b81fd..a2a78eb 100644
+> --- a/include/linux/mmc/host.h
+> +++ b/include/linux/mmc/host.h
+> @@ -423,6 +423,7 @@ int mmc_regulator_get_ocrmask(struct regulator *supply);
+>  int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>                         struct regulator *supply,
+>                         unsigned short vdd_bit);
+> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios);
+>  #else
+>  static inline int mmc_regulator_get_ocrmask(struct regulator *supply)
+>  {
+> @@ -435,6 +436,12 @@ static inline int mmc_regulator_set_ocr(struct mmc_host *mmc,
+>  {
+>         return 0;
+>  }
+> +
+> +static inline int mmc_regulator_set_vqmmc(struct mmc_host *mmc,
+> +                                         struct mmc_ios *ios)
+> +{
+> +       return -EINVAL;
+
+According to my upper comment about vqmmc being optional, perhaps this
+shouldn't be treated as an error!?
+
+> +}
+>  #endif
+>
+>  int mmc_regulator_get_supply(struct mmc_host *mmc);
+> --
+> 2.1.4
+>
+
+Finally, I wonder if you have considered to handle the
+regulator_enable|disable() calls from within this new API? Currently
+host driver deals with that themselves, but it would be nice to get
+some consolidation around that. Similar to what we already have for
+the vmmc regulator through the mmc_regulator_set_ocr() API.
+
+If you considered this, I am fine with adding that kind of
+functionality as a separate patch on top of this one, it gets easier
+to discuss/review.
+
+Kind regards
+Uffe
