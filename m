@@ -1,88 +1,58 @@
-From: Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v4 14/16] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Thu, 3 Sep 2015 11:04:40 +0200
-Message-ID: <20150903090421.GC3784@ulmo.nvidia.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1441088079-25809-1-git-send-email-ykk@rock-chips.com>
- <CAL_JsqJDALnjVaVoEqGGsSLeE31m3MKOfbSoZ3M+g+zPZR2MFg@mail.gmail.com>
- <55E7CC43.7040608@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 8/9] spi: rockchip: modify DMA max burst to 1
+Date: Thu, 3 Sep 2015 13:54:29 +0100
+Message-ID: <20150903125429.GA12027@sirena.org.uk>
+References: <1441101381-1329-1-git-send-email-shawn.lin@rock-chips.com>
+ <1441101524-1700-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="d01dLTUuW90fS44H"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55E7CC43.7040608@rock-chips.com>
+	protocol="application/pgp-signature"; boundary="5EhqeiticJwWsSCK"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Rob Herring <robherring2@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@>
+In-Reply-To: <1441101524-1700-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---d01dLTUuW90fS44H
-Content-Type: text/plain; charset=utf-8
+
+--5EhqeiticJwWsSCK
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 03, 2015 at 12:27:47PM +0800, Yakir Yang wrote:
-> Hi Rob,
->=20
-> =E5=9C=A8 09/03/2015 04:17 AM, Rob Herring =E5=86=99=E9=81=93:
-> >On Tue, Sep 1, 2015 at 1:14 AM, Yakir Yang <ykk@rock-chips.com> wrote:
-> >>Some edp screen do not have hpd signal, so we can't just return
-> >>failed when hpd plug in detect failed.
-> >This is a property of the panel (or connector perhaps), so this
-> >property should be located there. At least, it is a common issue and
-> >not specific to this chip. We could have an HDMI connector and failed
-> >to hook up HPD for example. A connector node is also where hpd-gpios
-> >should be located instead (and are already defined by
-> >../bindings/video/hdmi-connector.txt). Perhaps we need a eDP connector
-> >binding, too.
->=20
-> Yep, I agree with your front point, it is a property of panel, not specif=
-ic
-> to eDP controller, so this code should handle in connector logic.
+On Tue, Sep 01, 2015 at 05:58:44PM +0800, Shawn Lin wrote:
 
-=46rom your description it sounds more like this is in fact a property of
-the panel. Or maybe I should say "quirk". If the panel doesn't generate
-the HPD signal, then that should be a property of the panel, not the
-connector. The eDP specification mandates that connectors have a HPD
-signal, though it allows the "HPD conductor in the connector cable" to
-be omitted if not used by the source. I'd consider the cable to belong
-to the panel rather than the connector, so absence of HPD, either
-because the cable doesn't have the conductor or because the panel does
-not generate the signal, should be a quirk of the panel.
+> Generic dma controller on Rockchips' platform cannot support
+> DMAFLUSHP instruction which make dma to flush the req of non-aligned
+> or non-multiple of what we need. That will cause an unrecoverable
+> dma bus error. The saftest way is to set dma max burst to 1.
 
-That said you could have a panel that supports HPD connected via a cable
-that doesn't transmit it, so this would be a per-board variant and hence
-should be a device tree property rather than hard-coded in some panel
-driver.
+If this is a quirk of the DMA controller why is it being fixed with a
+property specific to the SPI controller?  Can't the DMA controller just
+override the burst size?
 
-Conversely, if the panel isn't capable of generating an HPD signal, then
-I don't think it would be appropriate to make it a DT property. It would
-be better to hard-code it in the driver, lest someone forget to set the
-property in DT and get stuck with a device that isn't operational.
+> +#define ROCKCHIP_SPI_BORKEN_BURST_LEN (1<<0) /* broken burst len*/
 
-Thierry
+This is misspelt.
 
---d01dLTUuW90fS44H
+--5EhqeiticJwWsSCK
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCAAGBQJV6A0fAAoJEN0jrNd/PrOhspAP/A7VKt1TDARJVctfAoMWcCT7
-fn58nkkawMBcqWq7SaGCfzQjM2/XyrDVzlRTc9NexIh7VM0f0+QCEDRcCzjLYFpA
-DCma0OXyiEFIwivSynJ3I67kO+Nf5QlgdLx8JVsm9k+xeRnlbmt1++nFDjQ2Zljq
-9YZK5kJQy9nU49VUYLlOzm5LXPvu3oumnMPMx6EIhkmlu3J0N0EfnRHsd69wjMgD
-I+e/8xxcYQaxC7gqAk6GqKMWIiXhBSrdvJR1BYiV+Gb+8x+AfcveicAVOt+27sAz
-uwZRcZqYtvm77lEqFj9Fv2M19WeuWgX70zMA1RIBNxzjdEDoUpdFHXkFrWG6y4mX
-no97fWAEnGbO0HJyRfLfsGt6QuMmIVQzszAaVU5NjKWsB1d5V4Nv91vjQ2ggJNGW
-bNnDpp+VqCVoxhrsDKoiCk75G2WVmsb6uoW2Y0plZTm5tOQeEA6h5jdefVH2VgHL
-jKxp0dybDjzHgi9Yp54B8bjUqATft7O9lC81FBbDJtksaI+MpxS6u1yIvZ53Rd20
-5LujXqBiDUw+MC9hvDML/aF6zqAXix+Iies4MwUdW8oSlSrfBufB9MvA949KnUvv
-7tIha/8WQGpXpM0kLZZs9TuwPduiiVHbO/8m24XDxcpD5v+E2oW2ce7r881A+hZG
-vQV6bES6dJCG3eI/GcdO
-=cXPI
+iQEcBAEBCAAGBQJV6EMFAAoJECTWi3JdVIfQ12EH/3J2qry3k16pYz7vDs0aG4y+
+zC9BSz7ESW5CXlymQT4CP4cPG+6qEgp0/stwWCHq5ew3q5NkC+NFUleIN/4njiau
+uNfyRwnUC7ovudKV4dNSSYTGazrghmM8+0CLg8GME7k4Dsk29N6F83CgGzqGJsak
+hQRBtT8ssEbUrIySiu53qUZZ9ddDU/wWrRS48FOfcjd8SkfOhHHf5ZoZ2lJ9ry9q
+U1d+HHUqGccmUNWzCIFbm646soEUkxeojQchNngQ3TTRdY7oCoO9lPA/NNKcwrCX
+sU7vJMG/r3qkp5WwLsjAy9IshTPl3Jhwh+aOILUznPditIEwcWeTYAo79sSyRa4=
+=MdEO
 -----END PGP SIGNATURE-----
 
---d01dLTUuW90fS44H--
+--5EhqeiticJwWsSCK--
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
