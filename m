@@ -1,35 +1,33 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] ARM: dts: Add ddc i2c reference to veyron
-Date: Thu, 3 Sep 2015 14:00:26 -0700
-Message-ID: <CAD=FV=WkFPitTsagQa+94DAWujzYECVqk7fO+OUdrfFq3bWTuQ@mail.gmail.com>
-References: <1441229148-12095-1-git-send-email-dianders@chromium.org>
+From: Rob Herring <robherring2@gmail.com>
+Subject: Re: [PATCH v4 14/16] drm: bridge: analogix/dp: try force hpd after
+ plug in lookup failed
+Date: Thu, 3 Sep 2015 16:55:59 -0500
+Message-ID: <CAL_Jsq+F=eE6vU3f-bHrrSCD9GCoh80Nf-5=Qm73QgGDW1Np=w@mail.gmail.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1441088079-25809-1-git-send-email-ykk@rock-chips.com> <CAL_JsqJDALnjVaVoEqGGsSLeE31m3MKOfbSoZ3M+g+zPZR2MFg@mail.gmail.com>
+ <20150903084735.GB3784@ulmo.nvidia.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441229148-12095-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Alexandru Stan <amstan@chromium.org>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, Douglas Anderson <dianders@chromium.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20150903084735.GB3784@ulmo.nvidia.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Thierry Reding <treding@nvidia.com>
+Cc: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.freedesktop.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Sep 2, 2015 at 2:25 PM, Douglas Anderson <dianders@chromium.org> wrote:
-> The ddc-i2c-bus property was missing from the veyron dtsi file since
-> downstream the ddc-i2c-bus was still being specified in rk3288.dtsi and
-> nobody noticed when the veyron dtsi was sent upstream.  Add it.
+On Thu, Sep 3, 2015 at 3:47 AM, Thierry Reding <treding@nvidia.com> wrote:
+> On Wed, Sep 02, 2015 at 03:17:57PM -0500, Rob Herring wrote:
+> [...]
+>> Are there any eDP panels which don't have EDID and need panel details in DT?
 >
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Note: I noticed that this was wrong but I don't currently have
-> graphics up and running on upstream on veyron.  Posting this anyway
-> since it's pretty clear that it's needed.  If someone else wants to
-> try it out that'd be nice, otherwise I'll put it on my list to figure
-> out how to get myself setup for graphics upstream.  ;)
+> Most panels need information other than EDID. They typically have some
+> requirements regarding the power up sequence that aren't to be found
+> anywhere in EDID or detectable by some other mechanism. A decision was
+> therefore made a long time ago to require panels to be listed in DT with
+> a specific compatible string. That way all of these details can be
+> stashed away in drivers that know how to deal with these kinds of
+> details.
 
-OK, I've used Heiko's "somewhat stable" branch to test this against
-something very close to mainline.
+I guess I was being hopeful that eDP was improving that situation.
 
-Without my patch I can't read the HDMI EDID.  With my patch I can.  :)
-
--Doug
+Rob
