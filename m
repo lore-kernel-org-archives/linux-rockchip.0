@@ -1,53 +1,71 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: Add ddc i2c reference to veyron
-Date: Thu, 3 Sep 2015 09:28:09 -0700
-Message-ID: <CAD=FV=XB9S7-PtshFjBgUwv3oGoXamsGBnwBBrw00aoBpr6q7A@mail.gmail.com>
-References: <1441229148-12095-1-git-send-email-dianders@chromium.org>
-	<CAL_JsqLLPCy6OpsP4NNjUA6+UxeTC-zGjGPPU+MLhUqFXSSGJQ@mail.gmail.com>
-	<20150903082210.GU21084@n2100.arm.linux.org.uk>
-	<CAL_JsqL838-somj-o2QtxRA9bXon5dHijx22v0mVowqyhKgoUQ@mail.gmail.com>
-	<20150903151854.GA21084@n2100.arm.linux.org.uk>
-	<CAL_JsqLKbW2ur1US1DCAcJeDYzq8f1L3vO9C8TitAqGt9tAusQ@mail.gmail.com>
-	<CAD=FV=XdP9T29drocB_WkNKrDif9Qwrdjt2C4=AwQk9rey3yLg@mail.gmail.com>
-	<1441296838.3102.12.camel@pengutronix.de>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 8/9] spi: rockchip: modify DMA max burst to 1
+Date: Thu, 3 Sep 2015 18:45:02 +0100
+Message-ID: <20150903174502.GI5313@sirena.org.uk>
+References: <1441101381-1329-1-git-send-email-shawn.lin@rock-chips.com>
+ <1441101524-1700-1-git-send-email-shawn.lin@rock-chips.com>
+ <20150903125429.GA12027@sirena.org.uk>
+ <55E84E17.2090409@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441296838.3102.12.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mQQrPwpUFXnyQ/Ik"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <55E84E17.2090409-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Olof Johansson <olofj-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Lucas,
 
-On Thu, Sep 3, 2015 at 9:13 AM, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
->> 6. Once you start using the dw_hdmi's i2c block with the currently
->> posted patch against mainline (to do this you not only need the patch
->> but you need to remove the ddc-i2c-bus property, set the pinmux, and
->> disable i2c5) then you'll see a bonafide i2c bus exposed to Linux.  In
->> my case this stole i2c0 away from the builtin SoC I2C bus and caused
->> the SoC I2C bus to fail to probe.  Doh.
->>
-> This shouldn't happen. I don't know if the patches landed yet, but I
-> know Wolfram (i2c maintainer) had patches to reserve the range of bus
-> numbers that are fixed by alias nodes and don't hand out those numbers
-> to adapters with a dynamic bus number allocation.
->
->> 7. I was trying to solve #6 by adding an "of_node" to the i2c bus
->> which allowed me to give it a (non-conflicting) bus ID.
->>
-> This should not be needed.
+--mQQrPwpUFXnyQ/Ik
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Ah.  It's very possible that the issue is due to the fact that I was
-testing this on an old kernel (3.14) that's missing that feature.  OK,
-if that's fixed then at least the actual bug (making i2c0 fail to
-load) is not a problem.  It'd still be nice to be able to assign a bus
-number to this bus just to make reading of the logs easier, but it's
-not a functionality requirement.
+On Thu, Sep 03, 2015 at 09:41:43PM +0800, Shawn Lin wrote:
+> On 2015/9/3 20:54, Mark Brown wrote:
 
--Doug
+> >If this is a quirk of the DMA controller why is it being fixed with a
+> >property specific to the SPI controller?  Can't the DMA controller just
+> >override the burst size?
+
+> Cool...that's a good question. Actually DMA controller can't do that since
+> block peripheral controller(e.g sd/emmc, they always access data by
+> block-512Bytes.) can't meet the case. So It's hard for dma controller know
+> who is the caller, and what should be done.
+
+You could take a guess based on request size, but that's going to be a
+bit error prone I imagine.
+
+> The only thing dma controller can do is avoid to execute DMAFLUSHP on its
+> own. But how about peripheral controller trigger non-multiple access? So
+> that's what I mentioned on covery letter that we should do "broken things"
+> for both dma controller and some peripherals.
+
+The other thing it could do is provide the information out via some
+internal Linux API which the drivers could query instead of directly
+having a DT property in each client driver.  That way at least the DT
+only needs the quirk in one place even if the clients need to handle it
+individually.
+
+--mQQrPwpUFXnyQ/Ik
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV6IcdAAoJECTWi3JdVIfQpHMH/3uUXqmELNJ+DjZAtIuTAML4
+F3Ma1D3F1hxiZzEmlGNB9mI/VBZP4EhQ+NzHrc8Wn/pqIvuBumGqdrYj0MdnKhYn
+FJ3olHfbAZtJ3a1vBtriGvPhRAbWUEqAYUuCoue4ZUfJ6vF81KttN6yjzO929209
+iuUkQiqGZnLySLL1yqHbZb61ruABOSmOrgJR3qFU/72dJB7xDY61JIrzZxwGEsaB
+fMrU4I4KsJPG3dl02upMA8G0X1LWnGe5AcKVdOxCGFj6swP1WyTtQyLLLqx1Ks31
+8J6MlWZLHg7/b13dgfh+jsg+j2wYIODjmTlu8UhyZru0EBVTAbffjX8CPCR2/Xk=
+=w/6n
+-----END PGP SIGNATURE-----
+
+--mQQrPwpUFXnyQ/Ik--
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
