@@ -1,52 +1,97 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 10/16] phy: Add driver for rockchip Display Port PHY
-Date: Thu, 03 Sep 2015 15:52:48 +0200
-Message-ID: <3242714.Wxby7z5YyH@phil>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <CAL_JsqJG3wGO3PC2raWvc588rrwF-zHD9+3WwBJxEwntm19k7Q@mail.gmail.com> <55E7BD8C.5070803@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2] clk: rockchip: reset init state before mmc card
+ initialization
+Date: Thu, 3 Sep 2015 22:13:06 +0800
+Message-ID: <55E85572.10005@rock-chips.com>
+References: <1440462876-5457-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <55E7BD8C.5070803@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Rob Herring <robherring2@gmail.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.free>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1440462876-5457-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
+Cc: shawn.lin@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 3. September 2015, 11:25:00 schrieb Yakir Yang:
-> =E5=9C=A8 09/02/2015 09:27 PM, Rob Herring =E5=86=99=E9=81=93:
-> > On Tue, Sep 1, 2015 at 1:04 AM, Yakir Yang <ykk@rock-chips.com> wro=
-te:
-> >> +- clocks: from common clock binding: handle to dp clock.
-> >> +       of memory mapped region.
-> >> +- clock-names: from common clock binding:
-> >> +       Required elements: "sclk_dp" "sclk_dp_24m"
-> >> +
-> >> +- rockchip,grf: this soc should set GRF regs, so need get grf her=
-e.
-> >=20
-> > I have no idea what GRF means.
->=20
-> GRF is an module of our IC chip, the full name is General Register Fi=
-les.
-> I would rather to pick some words from our TRM.
->=20
-> The general register file will be used to do static set by software, =
-which
-> is composed of many registers for system control.
+On 2015/8/25 8:34, Shawn Lin wrote:
+> mmc host controller's IO input/output timing is unpredictable if
+> bootloader execute tuning for HS200 mode. It might make kernel failed
+> to initialize mmc card in identification mode. The root cause is
+> tuning phase and degree setting for HS200 mode in bootloader aren't
+> applicable to that of identification mode in kernel stage. Anyway, we
+> can't force all bootloaders to reset tuning phase and degree setting
+> before into kernel. Simply reset it in rockchip_clk_register_mmc.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> ---
+>
+> Changes in v2:
+> - rename to rockchip_clk_mmc_reset
+> - simplifying the code
+>
 
-The general register files are present on all Rockchip SoCs I've seen s=
-o far=20
-and really are just an aggregation of registers for settings and status=
-=20
-indications, ranging from memory stuff, dma-controller settings, usb-ph=
-y and=20
-settings for a lot of other phys, etc.
+Hi Heiko,
 
-The most prevalent description in dt-bindings is currently:
+How about the next of this patch ? :)
+Feel free to let me know if it still has something more to be done.
 
-- rockchip,grf: phandle to the syscon managing the "general register fi=
-les"
+BTW, recently, we get another report that while changing data bus width, 
+uboot do bus testing(CMD19 + CMD14) for emmc DDR52 8bit bus mode by 
+tuning the phase and degree to fit the timing fails the kernel to 
+boot-up for the same reason.
 
 
-Heiko
+
+>   drivers/clk/rockchip/clk-mmc-phase.c | 16 ++++++++++++++++
+>   1 file changed, 16 insertions(+)
+>
+> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
+> index e9f8df32..1d3e8fe6 100644
+> --- a/drivers/clk/rockchip/clk-mmc-phase.c
+> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
+> @@ -38,6 +38,8 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
+>   #define ROCKCHIP_MMC_DEGREE_MASK 0x3
+>   #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
+>   #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
+> +#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
+> +#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
+>
+>   #define PSECS_PER_SEC 1000000000000LL
+>
+> @@ -119,6 +121,14 @@ static const struct clk_ops rockchip_mmc_clk_ops = {
+>   	.set_phase	= rockchip_mmc_set_phase,
+>   };
+>
+> +static void rockchip_clk_mmc_reset(struct rockchip_mmc_clock *mmc_clock)
+> +{
+> +	if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT)
+> +		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
+> +				     ROCKCHIP_MMC_INIT_STATE_RESET,
+> +				     mmc_clock->shift), mmc_clock->reg);
+> +}
+> +
+>   struct clk *rockchip_clk_register_mmc(const char *name,
+>   				const char *const *parent_names, u8 num_parents,
+>   				void __iomem *reg, int shift)
+> @@ -139,6 +149,12 @@ struct clk *rockchip_clk_register_mmc(const char *name,
+>   	mmc_clock->reg = reg;
+>   	mmc_clock->shift = shift;
+>
+> +	/*
+> +	* Assert init_state to soft reset the CLKGEN
+> +	* for mmc tuning phase and degree
+> +	*/
+> +	rockchip_clk_mmc_reset(mmc_clock);
+> +
+>   	if (name)
+>   		init.name = name;
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
