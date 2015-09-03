@@ -1,60 +1,79 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Doug Anderson <dianders@chromium.org>
 Subject: Re: [PATCH] ARM: dts: Add ddc i2c reference to veyron
-Date: Thu, 3 Sep 2015 08:55:24 -0700
-Message-ID: <CAD=FV=WsLTQEpoUXyQ4D_F5Uhwg1j0+4=M-VO1niqEipZKAu1Q@mail.gmail.com>
+Date: Thu, 3 Sep 2015 09:04:19 -0700
+Message-ID: <CAD=FV=XdP9T29drocB_WkNKrDif9Qwrdjt2C4=AwQk9rey3yLg@mail.gmail.com>
 References: <1441229148-12095-1-git-send-email-dianders@chromium.org>
- <CAL_JsqLLPCy6OpsP4NNjUA6+UxeTC-zGjGPPU+MLhUqFXSSGJQ@mail.gmail.com>
- <20150903082210.GU21084@n2100.arm.linux.org.uk>
- <CAL_JsqL838-somj-o2QtxRA9bXon5dHijx22v0mVowqyhKgoUQ@mail.gmail.com>
- <20150903151854.GA21084@n2100.arm.linux.org.uk>
+	<CAL_JsqLLPCy6OpsP4NNjUA6+UxeTC-zGjGPPU+MLhUqFXSSGJQ@mail.gmail.com>
+	<20150903082210.GU21084@n2100.arm.linux.org.uk>
+	<CAL_JsqL838-somj-o2QtxRA9bXon5dHijx22v0mVowqyhKgoUQ@mail.gmail.com>
+	<20150903151854.GA21084@n2100.arm.linux.org.uk>
+	<CAL_JsqLKbW2ur1US1DCAcJeDYzq8f1L3vO9C8TitAqGt9tAusQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150903151854.GA21084-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqLKbW2ur1US1DCAcJeDYzq8f1L3vO9C8TitAqGt9tAusQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robherring2@gmail.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Alexandru Stan <amstan@chromium.org>, Brian Norris <briannorris@chromium.org>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Thu, Sep 3, 2015 at 8:18 AM, Russell King - ARM Linux
-<linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org> wrote:
-> On Thu, Sep 03, 2015 at 09:46:38AM -0500, Rob Herring wrote:
->> Yes, that is fairly common (ADV75xx is same), and we would not
->> describe an I2C bus in DT in that case. Same with HPD directly handled
->> vs. a GPIO line. That is no different than what Doug has said:
->> ddc-i2c-bus is present if using the SOC's I2C host and absent if using
->> the HDMI block's DDC functionality. I'm only questioning the location
->> of the property.
+On Thu, Sep 3, 2015 at 8:46 AM, Rob Herring <robherring2@gmail.com> wrote:
+> On Thu, Sep 3, 2015 at 10:18 AM, Russell King - ARM Linux
+> <linux@arm.linux.org.uk> wrote:
+>> On Thu, Sep 03, 2015 at 09:46:38AM -0500, Rob Herring wrote:
+>>> Yes, that is fairly common (ADV75xx is same), and we would not
+>>> describe an I2C bus in DT in that case. Same with HPD directly handled
+>>> vs. a GPIO line. That is no different than what Doug has said:
+>>> ddc-i2c-bus is present if using the SOC's I2C host and absent if using
+>>> the HDMI block's DDC functionality. I'm only questioning the location
+>>> of the property.
+>>
+>> No, I don't think that's what Doug wants.  Doug wants the bridge's
+>> internal I2C host to be exposed, so he can number it through a DT
+>> alias.
 >
-> No, I don't think that's what Doug wants.  Doug wants the bridge's
-> internal I2C host to be exposed, so he can number it through a DT
-> alias.
+> See his earlier reply and other patch[1] which states once the dw_hdmi
+> built-in I2C controller support is added in mainline, then this
+> property is not needed. For now, the SOC's general purpose I2C
+> controller is used.
+>
+> Rob
+>
+> [1] https://lkml.org/lkml/2015/9/2/571
 
-Actually, my primary concern is that it _doesn't_ conflict with the DT
-aliases for busses I care about.  If I didn't provide it with a number
-the i2c subsystem was assigning 0 which was conflicting with the real
-i2c bus 0.  If the bus was simply not exposed that would have solved
-my problem just fine.  ...but if it is being exposed, we need a way to
-give it a number.
+Hmmm, I think we're getting all mixed up here.  To summarize:
 
-That being said, my (uninformed) opinion is that if the hardware does
-provide enough functionality to expose an i2c bus it's convenient to
-expose it, even if it's under a DEBUG config option.  That allows you
-to use standard i2c tools during bringup or to debug strange problems.
+1. On rk3288 you can mux the same pins on the SoC to _either_ be
+controlled by a generic rk3288 i2c controller (i2c5) or controlled by
+the dw_hdmi's i2c block.
 
-Obviously since there is hardware that doesn't expose a full i2c bus
-then the abstraction should handle that and let a driver just provide
-the data directly.
+2. At the moment, there's no code in mainline to handle the dw_hdmi's i2c block.
+
+3. Right now there _is_ code in mainline to handle specifying
+"ddc-i2c-bus" and have it point to the generic rk3288 i2c controller.
+
+4. So in mainline if you want to read an EDID, you've got to configure
+the pinmux as "i2c5" and add a "ddc-i2c-bus" reference to the HDMI
+section of the device tree.  That's what most rk3288 boards do and (as
+far as I understand) matches existing bindings.  The only reason
+veyron didn't have this reference was due to a small oversight when
+sending the DTS file upstream.
+
+5. There are apparently benefits to using the builtin i2c controller
+in dw_hdmi.  There's an outstanding patch add code to support the
+dw_hdmi's i2c block.
+
+6. Once you start using the dw_hdmi's i2c block with the currently
+posted patch against mainline (to do this you not only need the patch
+but you need to remove the ddc-i2c-bus property, set the pinmux, and
+disable i2c5) then you'll see a bonafide i2c bus exposed to Linux.  In
+my case this stole i2c0 away from the builtin SoC I2C bus and caused
+the SoC I2C bus to fail to probe.  Doh.
+
+7. I was trying to solve #6 by adding an "of_node" to the i2c bus
+which allowed me to give it a (non-conflicting) bus ID.
+
 
 -Doug
