@@ -1,63 +1,89 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: Add ddc i2c reference to veyron
-Date: Thu, 3 Sep 2015 09:22:10 +0100
-Message-ID: <20150903082210.GU21084@n2100.arm.linux.org.uk>
-References: <1441229148-12095-1-git-send-email-dianders@chromium.org>
- <CAL_JsqLLPCy6OpsP4NNjUA6+UxeTC-zGjGPPU+MLhUqFXSSGJQ@mail.gmail.com>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v4 09/16] drm: rockchip: add bpc and color mode setting
+Date: Thu, 3 Sep 2015 10:38:59 +0200
+Message-ID: <20150903083857.GA3784@ulmo.nvidia.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1441087308-25455-1-git-send-email-ykk@rock-chips.com>
+ <120097760.HO2inCimVA@phil>
+ <55E659AC.9000402@rock-chips.com>
+ <20150902083445.GA24654@ulmo.nvidia.com>
+ <55E6C931.9090306@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Qxx1br4bt0+wmkIi"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <55E6C931.9090306@rock-chips.com>
 Content-Disposition: inline
-In-Reply-To: <CAL_JsqLLPCy6OpsP4NNjUA6+UxeTC-zGjGPPU+MLhUqFXSSGJQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?5aea5pm65oOF?= <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.or
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 02, 2015 at 07:13:24PM -0500, Rob Herring wrote:
-> On Wed, Sep 2, 2015 at 4:25 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > The ddc-i2c-bus property was missing from the veyron dtsi file since
-> > downstream the ddc-i2c-bus was still being specified in rk3288.dtsi and
-> > nobody noticed when the veyron dtsi was sent upstream.  Add it.
-> >
-> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > ---
-> > Note: I noticed that this was wrong but I don't currently have
-> > graphics up and running on upstream on veyron.  Posting this anyway
-> > since it's pretty clear that it's needed.  If someone else wants to
-> > try it out that'd be nice, otherwise I'll put it on my list to figure
-> > out how to get myself setup for graphics upstream.  ;)
-> 
-> Based on your other patch, this is temporary, right?
-> 
-> I've been looking at DRM a lot lately. I think specifying the i2c bus
-> in the hdmi chip or IP block node is wrong. If the I2C host is
-> separate from the HDMI block, then it's only connection is to the HDMI
-> connector. So the I2C host to the connector relationship is what the
-> DT should describe. HPD gpio is similar. Now if the HDMI bridge
-> controls DDC and HPD directly, then we don't need to describe those
-> connections.
+--Qxx1br4bt0+wmkIi
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Except... we don't generally model connectors under DRM as a general
-rule.  (The fbdev video connector stuff happened without very much
-publicity afaics.)
+On Wed, Sep 02, 2015 at 06:02:25PM +0800, Yakir Yang wrote:
+> =E5=9C=A8 2015/9/2 16:34, Thierry Reding =E5=86=99=E9=81=93:
+[...]
+> >At the very least your code must compile when applied against a recent
+> >upstream tree. I would also expect you to make sure the code works at
+> >runtime, though, contrary to build testing, not everybody will be able
+> >to verify that you've actually done so. It is ultimately your platform
+> >maintainer's (i.e. Heiko's) responsibility to ensure that because they
+> >will get to deal with user complaints if people can't run an upstream
+> >kernel on the devices.
+>=20
+> Oh, first time to know this rule. So I should work on Heiko's github
+> kernel branch at the first time to start send upstream.
 
-It's not always appropriate to split it out from the bridge in any
-case.  Consider something like a TDA998x where the TDA998x itself
-takes care of reading the DDC bus, and doesn't provide an I2C-like
-interface.  If you try and split that into "bridge" or "encoder" and
-"connector" you end up having to invent a new kind of I2C thing which
-isn't an I2C adapter, or somehow squeezing an I2C adapter which isn't
-into the I2C layer.
+It's usually not necessary to rebase on a specific platform tree. Most
+platform trees should feed into linux-next anyway, so linux-next would
+be the appropriate base in almost all cases.
 
-The TDA998x provides an interface to read a block of EDID at a time.
-It always does the page register access.  You don't get to read it
-byte wise.  It doesn't fit into I2C as an adapter at all.
+Note, though, that that's only true if you expect somebody else to merge
+your code. The reason is that whoever will end up applying your patches
+will likely apply to a tree that feeds into linux-next, and that way you
+both end up having roughly the same base.
 
--- 
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On the other hand if you are a maintainer yourself you should be keeping
+a branch based on the latest -rc1. That's especially important if your
+tree feeds into linux-next, because basing on linux-next will break very
+horribly that way.
+
+So for this particular case I would expect either Mark or Inki to apply
+these patches when they're ready. Their trees should be based on the
+latest -rc1. At least the Exynos DRM tree feeds into linux-next, so you
+should be fine if you use linux-next as a base.
+
+Mark, have you ever considered having your tree added to linux-next?
+
+I'm beginning to think that we need to make that a requirement for all
+DRM drivers so that we can resolve integration issues early on rather
+than Dave having to deal with them when he pulls code in.
+
+Thierry
+
+--Qxx1br4bt0+wmkIi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJV6AcfAAoJEN0jrNd/PrOhVv0QAKs9UaQSTvlCqKRmYqZ3EXEc
+IkR8+srSNYi9GaxcpeigYN76MM/1D9iUyWsiLChpZVoiaC2SGR2Eclq5cmHKH2Kb
+ULcCLtkUOQ0cLq8G25NK4fo8vucLD2v0j31rCpmacrClrctcJYXJs03jyr5ASV0e
+gEUHgoXNmMhdePSPWd9IywDzXRfxnW1Cx6oCXGzF997Tgu1mU6jpRebcdhcDIqEP
+5DKfdNnrmkrQU9NXeSOwaVL9R5JGvPFyePSuQb39Xxop7szHvDRJ9WDj3IXqdAo1
+4cr+wmnnJMy9VCmD7cDP07rECT9oRINyXztAbgDGE/xkWU88CcexHieStl3VvIi2
+5Fnxo7oX47JWDyrhHXyKCddavXfsl2TBXs+4q6NuxApVznhAgsfim9/Gc8rnFIAk
+Fh3nLwd8mUAMGAsSXb9rZDrefhtw9q6q9aV2eAkvnt+WPZkhdMy4Q/tBT00v52sf
+vYyIwHIF6TexDrevFizzNSo6VfjhsJ54mzuqyp7jeHO8nBgUwazJuGfM9GN2s9UW
+hNndXHSlm4feF4qLBsXUp/QyD1vd9S8hij0CRBwQmgQj8nnJ5yO5pPmz4q5rIQm9
+tpoVgdxHy3DAvhHnV3jGhAaziquYbfhEeAUwx6o7VKVJ1KfxpK/E/EsYANXUgeTz
+OEitKzNqydgJCx7B3eW0
+=ckUH
+-----END PGP SIGNATURE-----
+
+--Qxx1br4bt0+wmkIi--
