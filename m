@@ -1,95 +1,162 @@
-From: Rob Herring <robherring2@gmail.com>
-Subject: Re: [PATCH v4 14/16] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Fri, 4 Sep 2015 16:46:01 -0500
-Message-ID: <CAL_JsqKoyZOAA7yzSATA-Ys8N1q9Edi-3ctPU09UVeV=7sTWTg@mail.gmail.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1441088079-25809-1-git-send-email-ykk@rock-chips.com> <CAL_JsqJDALnjVaVoEqGGsSLeE31m3MKOfbSoZ3M+g+zPZR2MFg@mail.gmail.com>
- <55E7CC43.7040608@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 6/9] drm: bridge/dw_hdmi: adjust pixel clock values in N
+ calculation
+Date: Fri, 4 Sep 2015 16:50:03 -0700
+Message-ID: <CAD=FV=U7h6b1eR+cva6VywcLP8RL2p5sAMSWc_vzUCg6WfWCYQ@mail.gmail.com>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+ <E1ZO6hc-0003NW-55@rmk-PC.arm.linux.org.uk>
+ <CAD=FV=WXjcp-wyH_SKexHJDo8R9Xug4yMAOHFPWPYBgiTyM=PQ@mail.gmail.com>
+ <CAD=FV=WnVLiCNYgZ8idpknD==Rw7UaLCY1gky4G0TvwUR-VATw@mail.gmail.com>
+ <20150904212401.GI21084@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <55E7CC43.7040608@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.freedes>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20150904212401.GI21084@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Jaroslav Kysela <perex@perex.cz>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Sep 2, 2015 at 11:27 PM, Yakir Yang <ykk@rock-chips.com> wrote:
-> Hi Rob,
->
-> =E5=9C=A8 09/03/2015 04:17 AM, Rob Herring =E5=86=99=E9=81=93:
->>
->> On Tue, Sep 1, 2015 at 1:14 AM, Yakir Yang <ykk@rock-chips.com> wrot=
-e:
->>>
->>> Some edp screen do not have hpd signal, so we can't just return
->>> failed when hpd plug in detect failed.
->>
->> This is a property of the panel (or connector perhaps), so this
->> property should be located there. At least, it is a common issue and
->> not specific to this chip. We could have an HDMI connector and faile=
-d
->> to hook up HPD for example. A connector node is also where hpd-gpios
->> should be located instead (and are already defined by
->> ../bindings/video/hdmi-connector.txt). Perhaps we need a eDP connect=
-or
->> binding, too.
->
->
-> Yep, I agree with your front point, it is a property of panel, not sp=
-ecific
-> to eDP controller, so this code should handle in connector logic.
->
-> But another question, if we just leave this property to connector,
-> then we would need to parse this property in analogix_dp-rockchip.c,
-> and then make an hook in analogix_dp_core.c driver. This is not nice,
-> and if there are some coming platform which alse want to use analogix=
-_dp
-> code and meet this "no-hpd" situation,  then they would need duplicat=
-e
-> to parse this property and fill the hook in analogix_dp_core.c driver=
-=2E
-> So it's little bit conflict  :-)
-
-Ideally, you would be able to just retrieve this quirk from the
-connector or panel. Getting this property from your node vs. the port
-you are attached to should not be much harder. Either the connector
-struct can have this info or there can be a DT function that can walk
-the graph and get it. Just don't open code the graph traversal in your
-driver.
-
-> Beside I can not understand your example very well. Do you mean
-> that there are some HDMI monitor which also do not have HPD
-> signal (just like some eDP panel do not have hpd too), and then
-> the "hpd-gpios" ? Hmm... I don't know how the "hpd-gpios" want
-> to help in this case, would you mind show some sample code  :-D
-
-I don't know that there is h/w, but it is always possible HPD is not
-hooked up or hooked up incorrectly some how.
-
-If there is no HPD support, then hpd-gpios is not going to help you.
-
-I think there are 3 cases to handle:
-- HPD handled by bridge chip - The bridge driver knows it has this
-capability. No DT properties are needed and no HPD properties on the
-connector node imply the bridge chip should handle HPD functions.
-- HPD handled by GPIO line (or some other block) - Indicated by
-hpd-gpios present
-- No or broken HPD - Indicated by "hpd-force" property.
-
->
->> Are there any eDP panels which don't have EDID and need panel detail=
-s in
->> DT?
->
->
-> Oh, I think you want to collect some info that belong to panel
-> property but no indicate in panel EDID message, so those can
-> be collect in eDP connector binding, is it right ?
-
-Yes, and as Thierry pointed out we may need to know the exact panel eve=
-n.
-
-Rob
+UnVzc2VsbCwKCk9uIEZyaSwgU2VwIDQsIDIwMTUgYXQgMjoyNCBQTSwgUnVzc2VsbCBLaW5nIC0g
+QVJNIExpbnV4CjxsaW51eEBhcm0ubGludXgub3JnLnVrPiB3cm90ZToKPj4gQmFzaWNhbGx5IHRo
+ZSBzcGVjIGlzIHNheWluZyB0aGF0IHlvdSB3YW50IGJvdGggTiBhbmQgQ1RTIHRvIGJlCj4+IGlu
+dGVncmFsLiAgLi4uYXMgeW91IHNheSB5b3UgcmVhbGx5IHdhbnQ6Cj4+ICAgQ1RTID0gKFRNRFMg
+KiBOKSAvICgxMjggKiBhdWRpb19mcmVxKQo+Cj4gSW4gdGhlIGNhc2Ugb2Ygc29mdHdhcmUtcHJv
+Z3JhbW1lZCBDVFMgYW5kIE4gdmFsdWVzLCB0aGV5IGhhdmUgdG8gYmUKPiBpbnRlZ3JhbCBiZWNh
+dXNlIHRoZXJlJ3Mgbm8gc3VjaCB0aGluZyBhcyBmcmFjdGlvbmFsIGRpdmlzaW9uIGhlcmUuCj4g
+VGhlIENUUyBhbmQgTiB2YWx1ZXMgZ2V0IHNlbnQgYWNyb3NzIHRoZSBIRE1JIGxpbmsgdG8gdGhl
+IHNpbmssIGFuZAo+IHRoZXkgdXNlIHRob3NlIGluIGEgUExMIGxpa2UgYXJyYW5nZW1lbnQgdG8g
+ZGVyaXZlIHRoZSBhdWRpbyBjbG9jay4KPgo+IE1vcmUgImludGVsaWdlbnQiIGhhcmR3YXJlIGF1
+dG9tYXRpY2FsbHkgbWVhc3VyZXMgdGhlIENUUyBudW1iZXIgYW5kCj4gY29udGludWFsbHkgdXBk
+YXRlcyB0aGUgc2luaywgd2hpY2ggYWxsb3dzIHRoZSBzaW5rIHRvIHJlbWFpbiBpbgo+IHN5bmMg
+d2l0aCB0aGUgYXVkaW8gYXQgbm9uLWNvaGVyZW50IHJhdGVzLgo+Cj4+IC4uLkNUUyBoYXMgbm8g
+b3RoZXIgcmVzdHJpY3Rpb25zIChvdGhlciB0aGFuIGJlaW5nIGludGVncmFsKSBhbmQKPj4geW91
+J3JlIGFsbG93ZWQgYSBiaXQgb2Ygc2xvcCBmb3IgTiAoeW91IGFpbSBmb3IgMTI4ICogYXVkaW9f
+ZnJlcSBidXQKPj4gY2FuIGdvIHVwIG9yIGRvd24gYSBiaXQpLgo+Cj4gTm8uICBCb3RoIENUUyBh
+bmQgTiBoYXZlIHRvIGJlIGFjY3VyYXRlIHRvIGdlbmVyYXRlIHRoZSBjb3JyZWN0Cj4gc2FtcGxl
+IHJhdGUgZnJvbSB0aGUgVERNUyBjbG9jay4KCkkgZ3Vlc3MgYnkgIm90aGVyIiBJIG1lYW50IG5v
+IHJlc3RyaWN0aW9ucyBvdGhlciB0aGFuIHRoYXQsIHdoaWNoIGlzCmxpc3RlZCBhYm92ZSB0aGF0
+ICJDVFMgPSAoVE1EUyAqIE4pIC8gKDEyOCAqIGF1ZGlvX2ZyZXEpIi4gIEFueXdheSwKc291bmRz
+IGxpa2Ugd2UncmUgb24gdGhlIHNhbWUgcGFnZSBoZXJlLi4uCgoKPj4gQXBwYXJlbnRseSBpdCdz
+IG1vcmUgaW1wb3J0YW50IHRvIG9wdGltaXplIGZvciB0aGUgQ1RTIGZvcm11bGEgd29ya2luZwo+
+PiBvdXQgdGhlbiBpdCBpcyBmb3IgZ2V0dGluZyBjbG9zZSB0byAiMTI4ICogYXVkaW8gZnJlcSIu
+ICAuLi5hbmQgdGhhdCdzCj4+IHRoZSByZWFzb24gZm9yIHRoZXNlIHNwZWNpYWwgY2FzZSBOIHZh
+bHVlcy4uLgo+Cj4gVGhlICIxMjggKiBhdWRpbyBmcmVxIiBpcyBqdXN0IGEgcmVjb21tZW5kYXRp
+b24uICBHb2luZyB0aHJvdWdoIHRoZSBIRE1JCj4gc3BlYydzIHJlY29tbWVuZGVkIHZhbHVlcyBm
+b3IgdmFyaW91cyBjbG9jayByYXRlcyBhbmQgc2FtcGxlIHJhdGVzCj4gcmV2ZWFscyB0aGF0IHF1
+aXRlIGEgbnVtYmVyIG9mIHRoZW0gYXJlIGZhciBmcm9tIHRoaXMgInJlY29tbWVuZGF0aW9uIi4K
+Pgo+IFNvIEkgd291bGRuJ3QgcmVhZCB0b28gbXVjaCBpbnRvIHRoZSAiMTI4ICogYXVkaW8gZnJl
+cSIgdGhpbmcuCgpBZ2Fpbiwgc2FtZSBwYWdlLgoKCj4+IFNvIHRvIHB1dCBzb21lIG51bWJlcnM6
+Cj4+Cj4+IFdlJ3JlIHBlcmZlY3Qgd2hlbiB3ZSBoYXZlIGV4YWN0bHkgMjUuMjoKPj4gICAyNTIw
+MCAqIDQwOTYgLyAoMTI4ICogMzIpCj4+ICAgPT4gMjUyMDAsIHNvIENUUyBmb3IgMjUuMiBNSHog
+aXMgMjUyMDAuICBQZXJmZWN0Cj4+Cj4+IC4uLmJ1dCB3aGVuIHdlIGhhdmUgMjUuMiAvIDEuMDAx
+IHdlIGdldCBhIG5vbi1pbnRlZ3JhbCBDVFM6Cj4+ICAgKDI1MjAwIC8gMS4wMDEpICogNDA5NiAv
+ICgxMjggKiAzMikKPj4gICA9PiAyNTE3NC44MjUxNzQ4MjUxOAo+Pgo+PiAuLi53ZSBjYW4gZ2V0
+IGFuIGludGVncmFsIENUUyBhbmQgc3RpbGwgcmVtYWluIGluIHJhbmdlIGlmOgo+PiAgICgyNTIw
+MCAvIDEuMDAxKSAqIDQ1NzYgLyAoMTI4ICogMzIpCj4+ICAgPT4gMjgxMjUKPgo+IENvcnJlY3Qu
+ICBUaGVzZSBhcmUgdGhlIHZhbHVlcyBnaXZlbiBpbiB0aGUgSERNSSBzcGVjaWZpY2F0aW9uIGZv
+ciBlYWNoCj4gb2YgeW91ciBjbG9jayByYXRlcyB5b3UgbWVudGlvbiBhYm92ZS4KPgo+IFlvdSBj
+YW4gZXZlbiB1c2UgNDA5NiBmb3IgTiBfcHJvdmlkZWRfIHRoZSBzb3VyY2UgbWVhc3VyZXMgYW5k
+IHNlbmRzCj4gdGhlIENUUyB2YWx1ZSAodGhhdCdzIGJhc2ljYWxseSB3aGF0IGhhcHBlbnMgaW4g
+dGhlIGNhc2Ugb2YKPiAibm9uLWNvaGVyZW50IiBjbG9ja3MuKQo+Cj4+IEluIHRoZSBjYXNlIG9m
+IExpbnV4LCBJJ20gYWZyYWlkIHdlIGp1c3QgZG9uJ3QgaGF2ZSB0aGlzIHR5cGUgb2YKPj4gYWNj
+dXJhY3kgaW4gb3VyIEFQSXMuCj4KPiBXZSBkb24ndCBoYXZlIHRoYXQga2luZCBvZiBwcmVjaXNp
+b24gaW4gdGhlIERSTSBBUEksIGJ1dCB3ZSBkbyBoYXZlIHRoZQo+IHByZWNpc2lvbiBpbiB0aGUg
+Y2xvY2sgQVBJLgoKWXVwLiAgT24gdGhlIHNhbWUgcGFnZS4gIFNlZSBteSBzdWdnZXN0aW9ucyBv
+ZiB1c2luZyB0aGUgY29tbW9uIGNsb2NrIGZyYW1ld29yay4KCgo+PiBUaGUgc3BlYyBpcyB0YWxr
+aW5nIGFib3V0IG1ha2luZyAyNS4xNzQ4MjUxNzQ4MjUxOCBNSHouCj4KPiArLy0gMC41JSwgYWNj
+b3JkaW5nIHRvIENFQS04NjEtQi4KPgo+PiBBcyBJIHNhaWQsIGluIG15IGNhc2UgSSdtIGFjdHVh
+bGx5IG1ha2luZyAyNTE3MDczMi4KPgo+IC4uLiB3aGljaCBpcyB3aXRoaW4gMC4wMiUsIHNvIGlz
+IHdpdGhpbiBzcGVjLgoKWXVwLCB0aGF0J3Mgd2h5IHdlJ3JlIGRvaW5nIGl0LiAgTm90ZSB0aGF0
+IHRvdGFsIGppdHRlciBoYXMgdG8gYmUKdW5kZXIgKy8tIDAuNSUgcmlnaHQ/ICAuLi5zbyBpZiB5
+b3UndmUgZ290IGVycm9yIGhlcmUgeW91J3ZlIGdvdCB0bwptYWtlIHN1cmUgeW91ciBjbG9jayBp
+cyBleHRyYSBjbGVhbiBJIHRoaW5rLgoKCj4+IEluIHlvdXIgY2FzZSB5b3UncmUgcHJvYmFibHkg
+bWFraW5nIHRoZSB2YWx1ZSB0aGF0IExpbnV4Cj4+IGFza2VkIHlvdSB0byBtYWtlLCBBS0EgMjUu
+MTc1MDAwIE1Iei4KPgo+IC4uLiB3aGljaCBpcyB0aGUgc3BlYyB2YWx1ZS4KClRoaXMgaXMgd2hl
+cmUgd2UncmUgbm90IG9uIHRoZSBzYW1lIHBhZ2UuICBXaGVyZSBpbiB0aGUgc3BlYyBkb2VzIGl0
+CnNheSAyNS4xNzUwMCBNSHo/ICBJIHNlZSBpbiB0aGUgc3BlYzoKIDI1LjIgLyAxLjAwMQoKLi4u
+YW5kIHRoaXMgaXMgYSBjcnVjaWFsIGRpZmZlcmVuY2UgaGVyZS4gIFBsZWFzZSBkb3VibGUtY2hl
+Y2sgbXkgbWF0aCwgYnV0OgoKKDI1MTc1MDAwICogNDU3NikgLyAoMTI4ICogMzIwMDAuKQo9PiAy
+ODEyNS4xOTUzMTI1CgooMjUxNzQ4MjUgKiA0NTc2KSAvICgxMjggKiAzMjAwMC4pCj0+IDI4MTI1
+LjAKClRoaXMgY2FsY3VsYXRpb24gaXMgd2hhdCBsZWQgdG8gbXkgYmVsaWVmIHRoYXQgdGhlIGdv
+YWwgaGVyZSBpcyB0bwptYWtlIGFuIGludGVncmFsIENUUy4gIElmIHlvdSBoYXZlIDI1LjE3NSBN
+SFogY2xvY2sgYW5kIE4gb2YgNDU3NiB5b3UKX3dpbGwgbm90XyBoYXZlIGFuIGludGVncmFsIENU
+Uy4gIElmIHlvdSBpbnN0ZWFkIGhhdmUgMjUuMTc0ODI1IE1IegpjbG9jayBhbmQgTiBvZiA0NTc2
+IHlvdSBfd2lsbF8gaGF2ZSBhbiBpbnRlZ3JhbCBDVFMuCgpTYWlkIGFub3RoZXIgd2F5OgoKMS4g
+VGhlIHJlYXNvbiAyNTE3NDgyNSBIeiBoYXMgYSBkaWZmZXJlbnQgTiBpcyB0byBtYWtlIGFuIGlu
+dGVncmFsIENUUy4KCjIuIElmIHlvdSBhcmUgaW5kZWVkIG1ha2luZyAyNTE3NTAwMCB0aGVuIHRo
+ZXJlIGlzIG5vIG5lZWQgZm9yIGEKZGlmZmVyZW50IE4gdG8gbWFrZSBhbiBpbnRlZ3JhbCBDVFMK
+CjMuIElmIHlvdSB1c2UgNDU3NiBmb3IgTiBidXQgeW91J3JlIG1ha2luZyAyNTE3NTAwMCBIeiwg
+eW91IGVuZCB1cCBpbgphIF93b3JzZV8gcG9zaXRpb24gdGhhbiBpZiB5b3UgdXNlIHRoZSBzdGFu
+ZGFyZCA0MDk2IGZvciBOLgoKCj4+IFVuc3VycHJpc2luZ2x5LCBpZiB5b3UgZG8gdGhlCj4+IGNh
+bGN1bGF0aW9ucyB3aXRoIDI1LjE3NSBNSHogKG9yIGFueSBpbnRlZ3JhbCBrSHogdmFsdWUpIHlv
+dSBkb24ndAo+PiBoYXZlIHRvIGRvIGFueSBzcGVjaWFsIG9wdGltaXphdGlvbiB0byBzdGF5IGlu
+dGVncmFsOgo+Pgo+PiAgIDI1MTc1ICogNDA5NiAvICgxMjggKiAzMikKPj4gICA9PiAyNTE3NQo+
+Pgo+Pgo+PiBTbyB1bmxlc3MgeW91IGhhdmUgc29tZSB3YXkgdG8ga25vdyB0aGF0IHRoZSB1bmRl
+cmx5aW5nIGNsb2NrIGlzCj4+IGFjdHVhbGx5ICgyNS4yIC8gMS4wMDEpIE1IeiBhbmQgbm90IGp1
+c3QgMjUuMTc1IE1IeiB0aGVuIHlvdXIgcGF0Y2gKPj4gbG9va3Mgd3JvbmcuCj4KPiBJIGRvbid0
+IGJlbGlldmUgeW91IGNhbiBtYWtlIHRoYXQgc3RhdGVtZW50LiAgSWYgeW91IHdpc2ggdG8gdGFr
+ZSB0aGUKPiBsYWNrIG9mIHByZWNpc2lvbiB1cCB3aXRoIHRoZSBhdXRob3JzIG9mIHRoZSBDRUEt
+ODYxIGFuZCBIRE1JCj4gc3BlY2lmaWNhdGlvbnMsIHNpbmNlIHRoZXkgImFwcHJveGltYXRlIiB0
+byB0aGUgdmFsdWVzIEkgaGF2ZSBpbiB0aGlzCj4gcGF0Y2gsIGFuZCBhcmUgd2hhdCB1c2Vyc3Bh
+Y2UgcGFzc2VzIGluIHRoZSBtb2RlIHN0cnVjdHVyZXMgdG8ga2VybmVsCj4gc3BhY2UuCgpJIHdp
+bGwgcmVwZWF0IG15IG1hbnRyYTogSSdtIGEgdmlzaXRvciBoZXJlIGFuZCBkZWNpZGVkbHkgbm90
+IGFuCmV4cGVydC4gIEhvd2V2ZXIsIGZyb20gbXkgcmVhZGluZyBvZiB0aGUgSERNSSBzcGVjIHNo
+b3dzIHRoYXQgdGhlIHNwZWMKaXRzZWxmIGlzIGZpbmUuICBUaGV5IGFyZSBqdXN0IGFzc3VtaW5n
+IHRoYXQgeW91J3JlIHByb3ZpZGluZyBhCjI1LjE3NDgyNSBNSHogY2xvY2sgYW5kIGdpdmluZyB5
+b3Ugb3B0aW1pemVkIHZhbHVlcyBmb3Igc2FpZCBjbG9jay4KCklmIHRoZSBjdXJyZW50IGRyaXZl
+ciBzYXlzIHRoYXQgaXQncyBwcm92aWRpbmcgMjUuMTc1MDAwIE1IeiB0aGVuIHlvdQpzaG91bGRu
+J3QgYXNzdW1lIHRoYXQgaXQncyBhY3R1YWxseSBtYWtpbmcgMjUuMTc0ODI1IE1IegoKCj4+IEFz
+IGEgZmlyc3Qgc3RlcCBJJ2Qgc3VnZ2VzdCBqdXN0IHJlbW92aW5nIGFsbCB0aGUgc3BlY2lhbCBj
+YXNlcyBhbmQKPj4gYWRkIGEgY29tbWVudC4gIEZyb20gcmVhbCB3b3JsZCB0ZXN0aW5nIGl0IGRv
+ZXNuJ3Qgc2VlbSB0ZXJyaWJseQo+PiBjcml0aWNhbCB0byBiZSBzbGlnaHRseSBvZmYgb24gQ1RT
+LiAgLi4uYW5kIGluIGFueSBjYXNlIGZvciBhbnkgY2xvY2sKPj4gcmF0ZXMgZXhjZXB0IHRoZSBz
+bWFsbCBoYW5kZnVsIGluIHRoZSBIRE1JIHNwZWMgd2UnbGwgYmUgc2xpZ2h0bHkgb2ZmCj4+IG9u
+IENUUyBhbnl3YXkuLi4KPgo+IFRoZXkncmUgbm90ICJzcGVjaWFsIGNhc2VzIiBtYWRlIHVwIHRv
+IGZpdCBzb21ldGhpbmcgLSB0aGV5J3JlIGZyb20gdGhlCj4gdGFibGVzIGluIHRoZSBIRE1JIHNw
+ZWNpZmljYXRpb24uCgpUaGV5IGFyZSBkZWZpbml0ZWx5ICJzcGVjaWFsIGNhc2VzIi4gIFRoZXJl
+IGlzIGEgZ2VuZXJhbCBydWxlIGluIHRoZQpjb2RlIHlvdSBwb3N0ZWQgKGFpbSBmb3IgMTI4ICog
+ZnJlcSkgYW5kIHRoZXNlIGFyZSBjYXNlcyBmb3IgY2VydGFpbgpjbG9ja3MgdGhhdCBhcmUgYW4g
+ZXhjZXB0aW9uIHRvIHRoZSBnZW5lcmFsIHJ1bGUuICBBS0EgdGhleSBhcmUKc3BlY2lhbCBjYXNl
+cy4KCkknbSBub3QgYXJndWluZyB0aGF0IHRoZXJlJ3Mgbm90IGEgdmFsaWQgcmVhc29uIGZvciB0
+aGVzZSBzcGVjaWFsCmNhc2VzLiAgSSdtIHNpbXBseSBhcmd1aW5nIHRoYXQgdGhlIHNwZWNpYWwg
+Y2FzZXMgYXJlIGxpa2VseSBmb3IgYQpkaWZmZXJlbnQgc2l0dWF0aW9uIHRoYW4gdGhlIG9uZSB3
+ZSdyZSBpbi4KClRoZSBIRE1JIHNwZWMgaXRzZWxmIChsb29zZWx5IGludGVycHJldGVkKSBwcmV0
+dHkgbXVjaCBzYXlzOiBpZgp0aGVyZSdzIGFueSBkb3VidCwganVzdCB1c2UgdGhlIGVxdWF0aW9u
+cy0tZG9uJ3QgdXNlIHRoZSB0YWJsZXMuCgoKPiBUaGF0IGFzc3VtZXMgdGhhdCB0aGUgYXVkaW8g
+YW5kIHZpZGVvIGNsb2NrcyBhcmUgY29oZXJlbnQuICBPbiBpTVg2Cj4gaGFyZHdhcmUgdXNpbmcg
+dGhpcywgdGhlIGF1ZGlvIGlzIGNsb2NrZWQgYXQgdGhlIHJhdGUgZGVmaW5lZCBieSB0aGUKPiBU
+RE1TIGNsb2NrIGFuZCB0aGUgQ1RTL04gdmFsdWVzLgoKSSdsbCBhZG1pdCBJIGhhdmVuJ3QgbG9v
+a2VkIGF0IHRoZSBhdWRpbyBzZWN0aW9uIG9mIGR3X2hkbWkgbXVjaCwgYnV0CkknZCBpbWFnaW5l
+IHRoYXQgZm9yIGFsbCB1c2VycyBvZiB0aGlzIGNvbnRyb2xsZXIgLyBQSFkgdGhlIGF1ZGlvIGFu
+ZAp2aWRlbyBjbG9ja3MgYXJlIGNvaGVyZW50LgoKSSB0aGluayBpbiB0aGUgcGVyZmVjdCB3b3Js
+ZCB3ZSdkIGJlIGFibGUgdG8gZ2VuZXJhdGUgZXhhY3RseQoyNTE3NDgyNS4xNzQ4MjUxNzcgSHog
+YW5kIHdlJ2QgdXNlIGFsbCB0aGUgcmF0ZXMgZnJvbSB0aGUgSERNSSBzcGVjLgphbmQgd2UnZCBn
+ZXQgc3BvdCBvbiAzMiBrSHogYXVkaW8uICAuLi5idXQgSSdtIHNpbXBseSBzYXlpbmcgdGhhdAp3
+ZSdyZSBub3QgaW4gdGhhdCBwZXJmZWN0IHdvcmxkIHlldC4KCkFsc28gbm90ZSB0aGF0IHRoZXJl
+IGFyZSBtYW55IG1hbnkgcmF0ZXMgbm90IGluIHRoZSBIRE1JIHNwZWMgdGhhdApjb3VsZCBiZW5l
+Zml0IGZyb20gc2ltaWxhciBvcHRpbWl6YXRpb24gb2YgdHJ5aW5nIHRvIGFkanVzdCBOIHRvIG1h
+a2UKYW4gaW50ZWdyYWwgQ1RTLgoKLS0tCgpBcyBhIHNpZGUgbm90ZTogSSByZWFsaXplZCBvbmUg
+cGFydCBvZiB0aGUgSERNSSBzcGVjIHRoYXQgaXNuJ3QgdHJ5aW5nCnRvIG1ha2UgYW4gaW50ZWdy
+YWwgdmFsdWUgYnV0IHN0aWxsIHVzZXMgYSBkaWZmZXJlbnQgdmFsdWUgZm9yIE46IDI5NwpNSHou
+ICBGcm9tIHRoZSBEZXNpZ25XYXJlIHNwZWMgSSBoYXZlIGl0IGFwcGVhcnMgdGhhdCA1OTQgTUh6
+IGlzCnNpbWlsYXIuICBGb3IgdGhvc2UgY2FzZXMgaXQgbG9va3MgbGlrZSB3ZSBoYXZlOgoKaWYg
+KHBpeGVsX2NsayA9PSAyOTcwMDAwMDApIHsKICBzd2l0Y2ggKGZyZXEpIHsKICBjYXNlIDMyMDAw
+OgogICAgcmV0dXJuICgxMjggKiBmcmVxKSAvIDEzMzM7CiAgY2FzZSA0NDEwMDoKICBjYXNlIDQ4
+MDAwOgogIGNhc2UgODgyMDA6CiAgY2FzZSA5NjAwMDoKICBjYXNlIDE3NjQwMDoKICAgIHJldHVy
+biAoMTI4ICogZnJlcSkgLyAxMjAwOwogIH0KfSBlbHNlIGlmIChwaXhlbF9jbGsgPT0gNTk0MDAw
+MDAwKSB7CiAgc3dpdGNoIChmcmVxKSB7CiAgY2FzZSAzMjAwMDoKICAgIHJldHVybiAoMTI4ICog
+ZnJlcSkgLyAxMzMzOwogIGNhc2UgNDQxMDA6CiAgY2FzZSA4ODIwMDoKICBjYXNlIDE3NjQwMDoK
+ICAgIHJldHVybiAoMTI4ICogZnJlcSkgLyA2MDA7CiAgfQp9Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
