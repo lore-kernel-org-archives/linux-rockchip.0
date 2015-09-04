@@ -1,30 +1,33 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2] clk: rockchip: Add pclk_peri to critical clocks on
- RK3066/RK3188
-Date: Fri, 4 Sep 2015 09:24:02 -0700
-Message-ID: <20150904162402.GN15099@codeaurora.org>
-References: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
- <CABgxDo+otZrYoqTNK-ea=L6Dsd5p_b_MFCi4H4XJZZ25PV_qnA@mail.gmail.com>
- <CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 5/9] drm: bridge/dw_hdmi: avoid being recursive in N calculation
+Date: Fri, 4 Sep 2015 10:50:19 -0700
+Message-ID: <CAD=FV=WJAm=EpugwnnBjPKJV1OOybyE6hkdhU2RrN0AR2qae6w@mail.gmail.com>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+	<E1ZO6hX-0003NK-0H@rmk-PC.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Romain Perier <romain.perier@gmail.com>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <E1ZO6hX-0003NK-0H@rmk-PC.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, alsa-devel@alsa-project.org, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.de>, Jaroslav Kysela <perex@perex.cz>, Sascha Hauer <s.hauer@pengutronix.de>, Jon Nettleton <jon.nettleton@gmail.com>, David Airlie <airlied@linux.ie>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/04, Romain Perier wrote:
-> Hi all,
-> 
-> just a reminder, I sent this patch two weeks ago, rk3xxx-based
-> platforms still need it, it fixes a freeze during boot.
+Russell,
 
-Sorry I thought that Linus W was going to pick this up? If not,
-we can take it through clk tree as a fix for -rc1.
+On Sat, Aug 8, 2015 at 9:10 AM, Russell King
+<rmk+kernel@arm.linux.org.uk> wrote:
+> There's no need to be recursive when computing the N value for the ACR
+> packet - we can instead calculate the multiplier prior to our switch()
+> based lookup, and multiply the N value appropriately afterwards.
+>
+> Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+> ---
+>  drivers/gpu/drm/bridge/dw_hdmi.c | 25 +++++++++----------------
+>  1 file changed, 9 insertions(+), 16 deletions(-)
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+For what it's worth, I backported this change into my local 3.14-based
+tree and it worked for me.  It also looks good to me.
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Tested-by: Douglas Anderson <dianders@chromium.org>
