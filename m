@@ -1,36 +1,30 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v4 14/16] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Fri, 4 Sep 2015 11:20:03 +0100
-Message-ID: <20150904102003.GE21084@n2100.arm.linux.org.uk>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1441088079-25809-1-git-send-email-ykk@rock-chips.com>
- <CAL_JsqJDALnjVaVoEqGGsSLeE31m3MKOfbSoZ3M+g+zPZR2MFg@mail.gmail.com>
- <55E7CC43.7040608@rock-chips.com>
- <20150903090421.GC3784@ulmo.nvidia.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2] clk: rockchip: Add pclk_peri to critical clocks on
+ RK3066/RK3188
+Date: Fri, 4 Sep 2015 09:24:02 -0700
+Message-ID: <20150904162402.GN15099@codeaurora.org>
+References: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
+ <CABgxDo+otZrYoqTNK-ea=L6Dsd5p_b_MFCi4H4XJZZ25PV_qnA@mail.gmail.com>
+ <CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150903090421.GC3784@ulmo.nvidia.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Thierry Reding <treding@nvidia.com>
-Cc: Yakir Yang <ykk@rock-chips.com>, Rob Herring <robherring2@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.freedesktop.org>
+In-Reply-To: <CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Romain Perier <romain.perier@gmail.com>
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Sep 03, 2015 at 11:04:40AM +0200, Thierry Reding wrote:
-> Conversely, if the panel isn't capable of generating an HPD signal, then
-> I don't think it would be appropriate to make it a DT property. It would
-> be better to hard-code it in the driver, lest someone forget to set the
-> property in DT and get stuck with a device that isn't operational.
+On 09/04, Romain Perier wrote:
+> Hi all,
+> 
+> just a reminder, I sent this patch two weeks ago, rk3xxx-based
+> platforms still need it, it fixes a freeze during boot.
 
-There is another way to deal with this: DRM supports the idea of connector
-forcing - where you can force the connector to think that it's connected
-or disconnected.
-
-One of the problems is that not many ARM DRM drivers implement it - maybe
-it should be a requirement for code to be accepted? :)
+Sorry I thought that Linus W was going to pick this up? If not,
+we can take it through clk tree as a fix for -rc1.
 
 -- 
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
