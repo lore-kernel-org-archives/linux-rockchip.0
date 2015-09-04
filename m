@@ -1,67 +1,103 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3] clk: rockchip: reset init state before mmc card initialization
-Date: Fri,  4 Sep 2015 08:15:33 +0800
-Message-ID: <1441325733-4131-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: Re: [PATCH v4 11/16] drm: bridge: analogix/dp: add platform device
+ type support
+Date: Fri, 04 Sep 2015 09:36:12 +0900
+Message-ID: <55E8E77C.4020305@samsung.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1441087620-25586-1-git-send-email-ykk@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-reply-to: <1441087620-25586-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-mmc host controller's IO input/output timing is unpredictable if
-bootloader execute tuning for HS200 mode. It might make kernel failed
-to initialize mmc card in identification mode. The root cause is
-tuning phase and degree setting for HS200 mode in bootloader aren't
-applicable to that of identification mode in kernel stage. Anyway, we
-can't force all bootloaders to reset tuning phase and degree setting
-before into kernel. Simply reset it in rockchip_clk_register_mmc.
+On 01.09.2015 15:07, Yakir Yang wrote:
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Empty commit message. Please explain here why you want to add platform
+device type support.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-
-Changes in v3:
-- remove the function call
-- add Heiko's tag
-
-Changes in v2:
-- rename to rockchip_clk_mmc_reset
-- simplifying the code
-
- drivers/clk/rockchip/clk-mmc-phase.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-index 9b61342..1c8162e 100644
---- a/drivers/clk/rockchip/clk-mmc-phase.c
-+++ b/drivers/clk/rockchip/clk-mmc-phase.c
-@@ -41,6 +41,8 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
- #define ROCKCHIP_MMC_DEGREE_MASK 0x3
- #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
- #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
-+#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
-+#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
- 
- #define PSECS_PER_SEC 1000000000000LL
- 
-@@ -143,6 +145,15 @@ struct clk *rockchip_clk_register_mmc(const char *name,
- 	mmc_clock->reg = reg;
- 	mmc_clock->shift = shift;
- 
-+	/*
-+	 * Assert init_state to soft reset the CLKGEN
-+	 * for mmc tuning phase and degree
-+	 */
-+	if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT)
-+		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
-+				     ROCKCHIP_MMC_INIT_STATE_RESET,
-+				     mmc_clock->shift), mmc_clock->reg);
-+
- 	clk = clk_register(NULL, &mmc_clock->hw);
- 	if (IS_ERR(clk))
- 		goto err_free;
--- 
-2.3.7
+Actually the title is confusing. You are not adding support for platform
+device types but rather adding a field containing type of device.
 
 
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> ---
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2:
+> - Add GNU license v2 declared and samsung copyright
+> 
+>  drivers/gpu/drm/exynos/exynos_dp.c              |  1 +
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  1 +
+>  include/drm/bridge/analogix_dp.h                | 16 ++++++++++++++++
+>  3 files changed, 18 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+> index 6060d2c..40ef727 100644
+> --- a/drivers/gpu/drm/exynos/exynos_dp.c
+> +++ b/drivers/gpu/drm/exynos/exynos_dp.c
+> @@ -224,6 +224,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+>  	dp->dev = dev;
+>  	dp->drm_dev = drm_dev;
+>  
+> +	dp->plat_data.dev_type = EXYNOS_DP;
+>  	dp->plat_data.power_on = exynos_dp_poweron;
+>  	dp->plat_data.power_off = exynos_dp_poweroff;
+>  	dp->plat_data.get_modes = exynos_dp_get_modes;
+> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> index efea045..4934271 100644
+> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+> @@ -293,6 +293,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+>  		return ret;
+>  	}
+>  
+> +	dp->plat_data.dev_type = RK3288_DP;
+>  	dp->plat_data.attach = NULL;
+>  	dp->plat_data.get_modes = NULL;
+>  	dp->plat_data.power_on = rockchip_dp_poweron;
+> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+> index 8b4ffad..7209a64 100644
+> --- a/include/drm/bridge/analogix_dp.h
+> +++ b/include/drm/bridge/analogix_dp.h
+> @@ -1,9 +1,25 @@
+> +/*
+> + * Analogix Core DP (Display Port) interface driver.
+> + *
+> + * Copyright (C) 2012 Samsung Electronics Co., Ltd.
+> + *
+> + * This program is free software; you can redistribute it and/or modify it
+> + * under the terms of the GNU General Public License as published by the
+> + * Free Software Foundation; either version 2 of the License, or (at your
+> + * option) any later version.
+> + */
+
+Two questions:
+1. Why this change is here? I would rather expect it at patch 3/16 when
+you created this file... That is the usual time for adding copyrights.
+
+2. Does this file contains previous Samsung work?
+
+Best regards,
+Krzysztof
+
+>  #ifndef _ANALOGIX_DP_H_
+>  #define _ANALOGIX_DP_H_
+>  
+>  #include <drm/drm_crtc.h>
+>  
+> +enum analogix_dp_devtype {
+> +	EXYNOS_DP,
+> +	RK3288_DP,
+> +};
+> +
+>  struct analogix_dp_plat_data {
+> +	enum analogix_dp_devtype dev_type;
+>  	struct drm_panel *panel;
+>  
+>  	int (*power_on)(struct analogix_dp_plat_data *);
+> 
