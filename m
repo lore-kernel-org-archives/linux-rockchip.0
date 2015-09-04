@@ -1,113 +1,65 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2] clk: rockchip: reset init state before mmc card
- initialization
-Date: Fri, 4 Sep 2015 07:49:08 +0800
-Message-ID: <55E8DC74.3090200@rock-chips.com>
-References: <1440462876-5457-1-git-send-email-shawn.lin@rock-chips.com>
- <4930263.TgyPa9P2vP@phil>
+Subject: Re: [PATCH v3 8/9] spi: rockchip: modify DMA max burst
+	to 1
+Date: Fri, 4 Sep 2015 08:03:26 +0800
+Message-ID: <55E8DFCE.5040504@rock-chips.com>
+References: <1441101381-1329-1-git-send-email-shawn.lin@rock-chips.com>
+ <1441101524-1700-1-git-send-email-shawn.lin@rock-chips.com>
+ <20150903125429.GA12027@sirena.org.uk> <55E84E17.2090409@rock-chips.com>
+ <20150903174502.GI5313@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <4930263.TgyPa9P2vP@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: shawn.lin@rock-chips.com, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20150903174502.GI5313@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Addy Ke <addy.ke@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, Vinod Koul <vinod.koul@intel.com>, Sonny Rao <sonnyrao@chromium.org>, shawn.lin@rock-chips.com, Olof Johansson <olof@lixom.net>, linux-spi@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dmaengine@vger.kernel.org, Olof Johansson <olofj@google.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2015/9/4 3:07, Heiko Stuebner =E5=86=99=E9=81=93:
-> Am Dienstag, 25. August 2015, 08:34:36 schrieb Shawn Lin:
->> mmc host controller's IO input/output timing is unpredictable if
->> bootloader execute tuning for HS200 mode. It might make kernel faile=
-d
->> to initialize mmc card in identification mode. The root cause is
->> tuning phase and degree setting for HS200 mode in bootloader aren't
->> applicable to that of identification mode in kernel stage. Anyway, w=
-e
->> can't force all bootloaders to reset tuning phase and degree setting
->> before into kernel. Simply reset it in rockchip_clk_register_mmc.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+On 2015/9/4 1:45, Mark Brown wrote:
+> On Thu, Sep 03, 2015 at 09:41:43PM +0800, Shawn Lin wrote:
+>> On 2015/9/3 20:54, Mark Brown wrote:
 >
-> I'm not 100% sure why you need the new function instead of having tha=
-t
-> directly in rockchip_clk_register_mmc, but I guess that is a matter o=
-f taste
+>>> If this is a quirk of the DMA controller why is it being fixed with a
+>>> property specific to the SPI controller?  Can't the DMA controller just
+>>> override the burst size?
+>
+>> Cool...that's a good question. Actually DMA controller can't do that since
+>> block peripheral controller(e.g sd/emmc, they always access data by
+>> block-512Bytes.) can't meet the case. So It's hard for dma controller know
+>> who is the caller, and what should be done.
+>
+> You could take a guess based on request size, but that's going to be a
+> bit error prone I imagine.
+>
 
-Thanks, Heiko.
-:) That's indeed my taste but might not be appropriate sometimes. Also=20
-add it directly into rockchip_clk_register_mmc looks fine to me.
+yes, not always cover all cases.
 
-I'm prone to do it as your advice since it can reduce a function call.
+>> The only thing dma controller can do is avoid to execute DMAFLUSHP on its
+>> own. But how about peripheral controller trigger non-multiple access? So
+>> that's what I mentioned on covery letter that we should do "broken things"
+>> for both dma controller and some peripherals.
+>
+> The other thing it could do is provide the information out via some
+> internal Linux API which the drivers could query instead of directly
+> having a DT property in each client driver.  That way at least the DT
+> only needs the quirk in one place even if the clients need to handle it
+> individually.
 
-> and I don't have a hard opinion on that, so
->
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->
->>
->> ---
->>
->> Changes in v2:
->> - rename to rockchip_clk_mmc_reset
->> - simplifying the code
->>
->>   drivers/clk/rockchip/clk-mmc-phase.c | 16 ++++++++++++++++
->>   1 file changed, 16 insertions(+)
->>
->> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c
->> b/drivers/clk/rockchip/clk-mmc-phase.c index e9f8df32..1d3e8fe6 1006=
-44
->> --- a/drivers/clk/rockchip/clk-mmc-phase.c
->> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
->> @@ -38,6 +38,8 @@ static unsigned long rockchip_mmc_recalc(struct cl=
-k_hw
->> *hw, #define ROCKCHIP_MMC_DEGREE_MASK 0x3
->>   #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
->>   #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_=
-OFFSET)
->> +#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
->> +#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
->>
->>   #define PSECS_PER_SEC 1000000000000LL
->>
->> @@ -119,6 +121,14 @@ static const struct clk_ops rockchip_mmc_clk_op=
-s =3D {
->>   	.set_phase	=3D rockchip_mmc_set_phase,
->>   };
->>
->> +static void rockchip_clk_mmc_reset(struct rockchip_mmc_clock *mmc_c=
-lock)
->> +{
->> +	if (mmc_clock->shift =3D=3D ROCKCHIP_MMC_INIT_STATE_SHIFT)
->> +		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
->> +				     ROCKCHIP_MMC_INIT_STATE_RESET,
->> +				     mmc_clock->shift), mmc_clock->reg);
->> +}
->> +
->>   struct clk *rockchip_clk_register_mmc(const char *name,
->>   				const char *const *parent_names, u8 num_parents,
->>   				void __iomem *reg, int shift)
->> @@ -139,6 +149,12 @@ struct clk *rockchip_clk_register_mmc(const cha=
-r *name,
->> mmc_clock->reg =3D reg;
->>   	mmc_clock->shift =3D shift;
->>
->> +	/*
->> +	* Assert init_state to soft reset the CLKGEN
->> +	* for mmc tuning phase and degree
->> +	*/
->> +	rockchip_clk_mmc_reset(mmc_clock);
->> +
->>   	if (name)
->>   		init.name =3D name;
->
->
->
+Good idea. Thanks, Mark.
+
 >
 
 
---=20
+-- 
 Best Regards
 Shawn Lin
-
