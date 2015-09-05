@@ -1,75 +1,39 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH 6/9] drm: bridge/dw_hdmi: adjust pixel clock values in N
- calculation
-Date: Sat, 5 Sep 2015 15:01:36 +0100
-Message-ID: <20150905140136.GM21084@n2100.arm.linux.org.uk>
-References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
- <E1ZO6hc-0003NW-55@rmk-PC.arm.linux.org.uk>
- <CAD=FV=WXjcp-wyH_SKexHJDo8R9Xug4yMAOHFPWPYBgiTyM=PQ@mail.gmail.com>
- <CAD=FV=WnVLiCNYgZ8idpknD==Rw7UaLCY1gky4G0TvwUR-VATw@mail.gmail.com>
- <20150904212401.GI21084@n2100.arm.linux.org.uk>
- <CAD=FV=U7h6b1eR+cva6VywcLP8RL2p5sAMSWc_vzUCg6WfWCYQ@mail.gmail.com>
- <20150905002733.GJ21084@n2100.arm.linux.org.uk>
- <CAD=FV=WR4iJ57FLh1d46-s9Gu-4wW6NdoROx-kNbbA0zFpUo0w@mail.gmail.com>
- <20150905083107.GK21084@n2100.arm.linux.org.uk>
- <CAD=FV=XzPRHE6n-svm=0_9jXUORY5NPzfmgS0Ncp7PXXbqivOw@mail.gmail.com>
+From: Romain Perier <romain.perier@gmail.com>
+Subject: Re: [PATCH v2] clk: rockchip: Add pclk_peri to critical clocks on RK3066/RK3188
+Date: Sat, 5 Sep 2015 18:12:08 +0200
+Message-ID: <CABgxDo+0qN5GJdCNpQi4g_CdW67PvxsogMseRoAa5cuAbWk1wQ@mail.gmail.com>
+References: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
+	<CABgxDo+otZrYoqTNK-ea=L6Dsd5p_b_MFCi4H4XJZZ25PV_qnA@mail.gmail.com>
+	<CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
+	<20150904162402.GN15099@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=XzPRHE6n-svm=0_9jXUORY5NPzfmgS0Ncp7PXXbqivOw@mail.gmail.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, alsa-devel@alsa-project.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Jaroslav Kysela <perex@perex.cz>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20150904162402.GN15099@codeaurora.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBTZXAgMDUsIDIwMTUgYXQgMDY6NDY6MDRBTSAtMDcwMCwgRG91ZyBBbmRlcnNvbiB3
-cm90ZToKPiBSdXNzZWxsLAo+IAo+IE9uIFNhdCwgU2VwIDUsIDIwMTUgYXQgMTozMSBBTSwgUnVz
-c2VsbCBLaW5nIC0gQVJNIExpbnV4Cj4gPGxpbnV4QGFybS5saW51eC5vcmcudWs+IHdyb3RlOgo+
-ID4gT24gRnJpLCBTZXAgMDQsIDIwMTUgYXQgMDc6MDM6MTFQTSAtMDcwMCwgRG91ZyBBbmRlcnNv
-biB3cm90ZToKPiA+PiBBS0E6IGp1c3QgcmVwbGFjZSB5b3VyIGVudGlyZSAiY29tcHV0ZV9uIiBm
-dW5jdGlvbiB3aXRoOgo+ID4+Cj4gPj4gcmV0dXJuICgxMjggKiBmcmVxKSAvIDEwMDA7Cj4gPj4K
-PiA+PiAuLi5hbmQgaXQncyAxMDAlIHNpbXBsZXIgX2FuZF8gZ2V0cyB5b3UgYSAobWFyZ2luYWxs
-eSkgYmV0dGVyIHJhdGUKPiA+PiAoYXNzdW1pbmcgeW91IHJlYWxseSBoYXZlIDIyLjE3NTAwMCku
-ICBJZiBpdCB3YXMganVzdCBhYm91dCBhCj4gPj4gMzIwMDAuMjIyIHZzIDMyMDAwIEknZCBub3Qg
-YmUgc2F5aW5nIGFueXRoaW5nIHJpZ2h0IG5vdy4gIEl0J3MgYWJvdXQKPiA+PiBhZGRpbmcgY29t
-cGxleGl0eS4KPiA+Cj4gPiBOby4gIEl0IGRvZXNuJ3Qgd29yayBmb3IgYWxsIGNhc2VzLiAgRG8g
-dGhlIGNhbGN1bGF0aW9ucyBmb3IgZXZlcnkKPiA+IHNhbXBsZSByYXRlIGluIHRob3NlIHRhYmxl
-cyBpbiB0aGUgSERNSSBzcGVjLCBhbmQgeW91J2xsIGZpbmQgb3V0Cj4gPiB3aHkuCj4gCj4gSWYg
-eW91IGtub3cgdGhlIGFuc3dlciwganVzdCB0ZWxsIG1lLiAgSWYgeW91J3JlIHRhbGtpbmcgYWJv
-dXQgNzQuMjUKPiB2cy4gMzIga0h6IGl0IGlzIGZ1cnRoZXIgZXZpZGVuY2Ugb2Ygd2hhdCBJJ20g
-c2F5aW5nLiAgTm90ZSB0aGF0Cj4gcGlja2luZyBvbmx5IG9uZSBvZiB0aGUgdHdvIGxpc3RlZCBD
-VFMgdmFsdWVzIGFnYWluIHB1dHMgeW91IGluIGEKPiB3b3JzZSBwb3NpdGlvbiBmb3IgcmVnZW5l
-cmF0aW5nIHRoZSBwcm9wZXIgYXVkaW8gY2xvY2sgdGhlbiBqdXN0IHVzaW5nCj4gdGhlIGRlZmF1
-bHQgTj00MDk2LgoKTm8gaXQgZG9lc24ndC4KCjc0LjI1TUh6LzEuMDAxICogNDA5NiAvICgxMjgg
-KiAzMjAwMCkgPSA3NDE3NSAocm91bmRlZCBkb3duKQoKTm93IGRvIHRoZSBjYWxjdWF0aW9uLgoK
-KDc0LjI1TUh6LzEuMDAxKSAvIDc0MTc1ICogNDA5NiA9IDQwOTYwNDUuNTExID0+IDMyMDAwLjM1
-NTU2SHoKCT0+IGVycm9yIG9mIDAuMDAxMTExJQoKTm93IGZvciB0aGUgY2FsY3VhdGlvbiB1c2lu
-ZyB0aGUgcHJvc2NyaWJlZCBmaWd1cmVzLgoKKDc0LjI1TUh6LzEuMDAxKSAvIDIxMDkzNyAqIDEx
-NjQ4ID0gNDA5NjAwOS43MDkgPT4gMzIwMDAuMDc1ODVIegoJPT4gZXJyb3Igb2YgMC4wMDAyMzcl
-CgpUaGF0J3Mgc2lnbmlmaWNhbnRseSBsZXNzIGVycm9yIHVzaW5nIHRoYXQgdGhhbiB5b3VyICJi
-ZXR0ZXIiIGlkZWEuCk5vdywgaWYgd2UgdGFrZSB0aGUgcGl4ZWwgY2xvY2sgcmF0ZSBhcyA3NC4x
-NzVNSHosIHdoaWNoIGlzIGp1c3QgYQpyZXByZXNlbnRhdGlvbiBvZiA3NC4yNU1Iei8xLjAwMToK
-Cjc0LjE3NU1IeiAvIDIxMDkzNyAqIDExNjQ4ID0gNDA5NTk2NC4xOTggPT4gMzE5OTkuNzIwMjlI
-egoJPT4gZXJyb3Igb2YgMC4wMDA4NzQxJQoKVGhhdCdzIHN0aWxsIGxvd2VyIHRoYW4geW91ciAi
-YmV0dGVyIiBpZGVhLgoKQW5kIGFzIEkndmUgYWxyZWFkeSBzYWlkLCB0aGUgcGl4ZWwgY2xvY2sg
-cmF0ZSBnaXZlbiB0byB1cyBoZXJlIHdpbGwKYmUgdGhlIF9zcGVjaWZpZWRfIGNsb2NrIHJhdGUg
-b2YgNzQuMTc1TUh6LCAqbm90KiBzb21lIGNvY2tlZCB1cApwbGF0Zm9ybSBzY3Jld2VkIGNyYXAg
-dGhhdCB5b3UgdGhpbmsgd2Ugd2lsbC4gIEl0IF93aWxsXyBiZSA3NDE3NQpub3QgNzQxNzAgb3Ig
-c29tZSBvdGhlciBzaGl0ZSBsaWtlIHRoYXQuCgpSaWdodCwgSSd2ZSBoYWQgZW5vdWdoLiAgSSdt
-IGdvaW5nIHRvIGJlIGlnbm9yaW5nIHRoaXMgdGhyZWFkIGZyb20gbm93Cm9uLCB0aGlzIGlzIGEg
-d2FzdGUgb2YgbXkgdGltZSAtIHlvdSBjbGVhcmx5IGhhdmUgbm8gdW5kZXJzdGFuZGluZyBvZgp3
-aGF0J3MgZ29pbmcgb24gaGVyZS4KCi0tIApGVFRDIGJyb2FkYmFuZCBmb3IgMC44bWlsZSBsaW5l
-OiBjdXJyZW50bHkgYXQgOS42TWJwcyBkb3duIDQwMGticHMgdXAKYWNjb3JkaW5nIHRvIHNwZWVk
-dGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Np,
+
+Yes it would be nice to take it for -rc1, because I think that 4.3
+won't boot without this fix
+
+
+Regards,
+Romain
+
+2015-09-04 18:24 GMT+02:00 Stephen Boyd <sboyd@codeaurora.org>:
+> On 09/04, Romain Perier wrote:
+>> Hi all,
+>>
+>> just a reminder, I sent this patch two weeks ago, rk3xxx-based
+>> platforms still need it, it fixes a freeze during boot.
+>
+> Sorry I thought that Linus W was going to pick this up? If not,
+> we can take it through clk tree as a fix for -rc1.
+>
+> --
+> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+> a Linux Foundation Collaborative Project
