@@ -1,78 +1,65 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v4 09/16] drm: rockchip: add bpc and color mode setting
-Date: Sun, 06 Sep 2015 10:06:44 +0800
-Message-ID: <55EB9FB4.3020201@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1441087308-25455-1-git-send-email-ykk@rock-chips.com> <120097760.HO2inCimVA@phil> <55E659AC.9000402@rock-chips.com> <20150902083445.GA24654@ulmo.nvidia.com> <55E6C931.9090306@rock-chips.com> <20150903083857.GA3784@ulmo.nvidia.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v17 3/4] soc: rockchip: power-domain: Add power domain
+ driver
+Date: Sun, 06 Sep 2015 11:04:58 +0800
+Message-ID: <55EBAD5A.9060107@rock-chips.com>
+References: <1441184380-13827-1-git-send-email-wxt@rock-chips.com>
+ <1441184380-13827-4-git-send-email-wxt@rock-chips.com>
+ <7hbndkptfm.fsf@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20150903083857.GA3784@ulmo.nvidia.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Thierry Reding <treding@nvidia.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <rmk+kernel@arm.linux.org.uk>, djkurtz@chromium.com, dianders@chromium.com, seanpaul@chromium.com, ajaynumb@gmail.com, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, robherring2@gmail.com, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <7hbndkptfm.fsf-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kevin Hilman <khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-=E5=9C=A8 09/03/2015 04:38 PM, Thierry Reding =E5=86=99=E9=81=93:
-> On Wed, Sep 02, 2015 at 06:02:25PM +0800, Yakir Yang wrote:
->> =E5=9C=A8 2015/9/2 16:34, Thierry Reding =E5=86=99=E9=81=93:
-> [...]
->>> At the very least your code must compile when applied against a rec=
-ent
->>> upstream tree. I would also expect you to make sure the code works =
-at
->>> runtime, though, contrary to build testing, not everybody will be a=
-ble
->>> to verify that you've actually done so. It is ultimately your platf=
-orm
->>> maintainer's (i.e. Heiko's) responsibility to ensure that because t=
-hey
->>> will get to deal with user complaints if people can't run an upstre=
-am
->>> kernel on the devices.
->> Oh, first time to know this rule. So I should work on Heiko's github
->> kernel branch at the first time to start send upstream.
-> It's usually not necessary to rebase on a specific platform tree. Mos=
-t
-> platform trees should feed into linux-next anyway, so linux-next woul=
-d
-> be the appropriate base in almost all cases.
->
-> Note, though, that that's only true if you expect somebody else to me=
-rge
-> your code. The reason is that whoever will end up applying your patch=
-es
-> will likely apply to a tree that feeds into linux-next, and that way =
-you
-> both end up having roughly the same base.
->
-> On the other hand if you are a maintainer yourself you should be keep=
-ing
-> a branch based on the latest -rc1. That's especially important if you=
-r
-> tree feeds into linux-next, because basing on linux-next will break v=
-ery
-> horribly that way.
->
-> So for this particular case I would expect either Mark or Inki to app=
-ly
-> these patches when they're ready. Their trees should be based on the
-> latest -rc1. At least the Exynos DRM tree feeds into linux-next, so y=
-ou
-> should be fine if you use linux-next as a base.
-
-Glad to know this, thanks,
-- Yakir
-
->
-> Mark, have you ever considered having your tree added to linux-next?
->
-> I'm beginning to think that we need to make that a requirement for al=
-l
-> DRM drivers so that we can resolve integration issues early on rather
-> than Dave having to deal with them when he pulls code in.
->
-> Thierry
+S2V2aW4sCgpUaGFua3MgZm9yIGhhdmluZyBhIGxvb2sgaW50byBpdC4KCgrlnKggMjAxNeW5tDA5
+5pyIMDPml6UgMDI6MjgsIEtldmluIEhpbG1hbiDlhpnpgZM6Cj4gQ2Flc2FyIFdhbmcgPHd4dEBy
+b2NrLWNoaXBzLmNvbT4gd3JpdGVzOgo+Cj4+IFRoaXMgZHJpdmVyIGlzIGZvdW5kIG9uIFJLMzI4
+OCBTb0NzLgo+Pgo+PiBJbiBvcmRlciB0byBtZWV0IGhpZ2ggcGVyZm9ybWFuY2UgYW5kIGxvdyBw
+b3dlciByZXF1aXJlbWVudHMsIGEgcG93ZXIKPj4gbWFuYWdlbWVudCB1bml0IGlzIGRlc2lnbmVk
+IG9yIHNhdmluZyBwb3dlciB3aGVuIFJLMzI4OCBpbiBsb3cgcG93ZXIKPj4gbW9kZS4KPj4gVGhl
+IFJLMzI4OCBQTVUgaXMgZGVkaWNhdGVkIGZvciBtYW5hZ2luZyB0aGUgcG93ZXIgb2YgdGhlIHdo
+b2xlIGNoaXAuCj4+Cj4+IFBNVSBjYW4gd29yayBpbiB0aGUgTG93IFBvd2VyIE1vZGUgYnkgc2V0
+dGluZyBiaXRbMF0gb2YgUE1VX1BXUk1PREVfQ09OCj4+IHJlZ2lzdGVyLiBBZnRlciBzZXR0aW5n
+IHRoZSByZWdpc3RlciwgUE1VIHdvdWxkIGVudGVyIHRoZSBMb3cgUG93ZXIgbW9kZS4KPj4gSW4g
+dGhlIGxvdyBwb3dlciBtb2RlLCBwbXUgd2lsbCBhdXRvIHBvd2VyIG9uL29mZiB0aGUgc3BlY2lm
+aWVkIHBvd2VyCj4+IGRvbWFpbiwgc2VuZCBpZGxlIHJlcSB0byBzcGVjaWZpZWQgcG93ZXIgZG9t
+YWluLCBzaHV0IGRvd24vdXAgcGxsIGFuZAo+PiBzbyBvbi4gQWxsIG9mIGFib3ZlIGFyZSBjb25m
+aWd1cmFibGUgYnkgc2V0dGluZyBjb3JyZXNwb25kaW5nIHJlZ2lzdGVycy4KPj4KPj4gU2lnbmVk
+LW9mZi1ieTogamlua3VuLmhvbmcgPGppbmt1bi5ob25nQHJvY2stY2hpcHMuY29tPgo+PiBTaWdu
+ZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+IFsuLi5dCj4KPj4g
+K3N0YXRpYyB2b2lkIHJvY2tjaGlwX3BtX3JlbW92ZV9vbmVfZG9tYWluKHN0cnVjdCByb2NrY2hp
+cF9wbV9kb21haW4gKnBkKQo+PiArewo+PiArCWludCBpOwo+PiArCj4+ICsJZm9yIChpID0gMDsg
+aSA8IHBkLT5udW1fY2xrczsgaSsrKSB7Cj4+ICsJCWNsa191bnByZXBhcmUocGQtPmNsa3NbaV0p
+Owo+PiArCQljbGtfcHV0KHBkLT5jbGtzW2ldKTsKPj4gKwl9Cj4KPiBZb3UgZG9uJ3Qgc2V0IHBk
+LT5udW1fY2xrcyA9IDAgaGVyZSwgd2hpY2ggbWVhbnMgb3RoZXIgcGxhY2VzIHRoYXQKPiBpdGVy
+YXRlIG92ZXIgdGhlIGNsb2NrcyBtaWdodCByYWNlIHdpdGggdGhpcyBhbmQgdHJ5IHRvIHVzZSBj
+bG9ja3MgdGhhdAo+IGhhdmUgYmVlbiB1bnByZXBhcmVkL3B1dC4KCkFncmVlLCB3ZSBzaG91bGQg
+c2V0IHRoZSAicGQtPm51bV9jbG9rcz0wJyBpbiBoZXJlLgo+IFRoaXMgbWlnaHQgYmUgb3Zlci1w
+YXJhbm9pZCwgYnV0IGluIHBhcnRpY3VsYXIsIHRoaXMgY291bGQgcmFjZSB3aXRoCj4gcm9ja2No
+aXBfcGRfcG93ZXIoKS4KPgo+IEFsc28gbm90IHNldHRpbmcgdGhlIHBkLT5udW1fY2xrcyB0byB6
+ZXJvIHdvdWxkIGJlIGEgcHJvYmxlbSBmb3IgYQo+IHBvd2VyLWNvbnRyb2xsZXIgdGhhdCBpcyBj
+b25maWd1cmVkIGFzIGEgbW9kdWxlIHdoaWNoIGNvdWxkIGJlIHVubG9hZGVkCj4gYW5kIHJlbG9h
+ZGVkIChJIGtub3cgdGhhdCBkb2Vzbid0IHJlYWxseSB3b3JrIG5vdywgYnV0IGl0IHdpbGwKPiBl
+dmVudHVhbGx5LCBJIGhvcGUuKQoKWWVwLgo+Cj4gTWF5YmUgdXNlIHRoZSBtdXRleCBoZXJlPyAg
+SXQgc2hvdWxkIGF0IGxlYXN0IHByb3RlY3QgdGhlIHplcm9pbmcgb2YKPiBwbS0+bnVtX2Nsa3Mu
+CgpTb3VuZCByZXNvbmFibGUuCkRvbmUuCgotLS0KVGhhbmtzLApDYWVzYXIKPgo+IEtldmluCj4K
+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
