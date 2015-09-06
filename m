@@ -1,115 +1,301 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 14/16] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Sun, 06 Sep 2015 16:20:39 +0800
-Message-ID: <55EBF757.20108@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1441088079-25809-1-git-send-email-ykk@rock-chips.com> <CAL_JsqJDALnjVaVoEqGGsSLeE31m3MKOfbSoZ3M+g+zPZR2MFg@mail.gmail.com> <55E7CC43.7040608@rock-chips.com> <CAL_JsqKoyZOAA7yzSATA-Ys8N1q9Edi-3ctPU09UVeV=7sTWTg@mail.gmail.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v17 1/4] dt-bindings: add document of Rockchip power domains
+Date: Sun, 06 Sep 2015 18:10:00 +0800
+Message-ID: <55EC10F8.5090100@rock-chips.com>
+References: <1441184380-13827-1-git-send-email-wxt@rock-chips.com> <1441184380-13827-2-git-send-email-wxt@rock-chips.com> <7hr3mgpu57.fsf@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
+Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAL_JsqKoyZOAA7yzSATA-Ys8N1q9Edi-3ctPU09UVeV=7sTWTg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, dianders-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, seanpaul-F7+t8E8rja9Wk0Htik3J/w@public.gmane.org, Ajay kumar <ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32mqWrfYKbYh0A@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7hr3mgpu57.fsf@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@linaro.org>
+Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, ulf.hansson@linaro.org, linux@arm.linux.org.uk, heiko@sntech.de, arnd@arndb.de, ijc+devicetree@hellion.org.uk, "jinkun.hong" <jinkun.hong@rock-chips.com>, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, tomasz.figa@gmail.com, mturquette@baylibre.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+Kevin,
 
-=E5=9C=A8 09/05/2015 05:46 AM, Rob Herring =E5=86=99=E9=81=93:
-> On Wed, Sep 2, 2015 at 11:27 PM, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrot=
-e:
->> Hi Rob,
+=E5=9C=A8 2015=E5=B9=B409=E6=9C=8803=E6=97=A5 02:12, Kevin Hilman =E5=86=
+=99=E9=81=93:
+> Caesar Wang <wxt@rock-chips.com> writes:
+>
+>> This add the necessary binding documentation for the power domains
+>> found on Rockchip SoCs.
 >>
->> =E5=9C=A8 09/03/2015 04:17 AM, Rob Herring =E5=86=99=E9=81=93:
->>> On Tue, Sep 1, 2015 at 1:14 AM, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wro=
-te:
->>>> Some edp screen do not have hpd signal, so we can't just return
->>>> failed when hpd plug in detect failed.
->>> This is a property of the panel (or connector perhaps), so this
->>> property should be located there. At least, it is a common issue an=
-d
->>> not specific to this chip. We could have an HDMI connector and fail=
-ed
->>> to hook up HPD for example. A connector node is also where hpd-gpio=
-s
->>> should be located instead (and are already defined by
->>> ../bindings/video/hdmi-connector.txt). Perhaps we need a eDP connec=
-tor
->>> binding, too.
+>> Signed-off-by: jinkun.hong <jinkun.hong@rock-chips.com>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 >>
->> Yep, I agree with your front point, it is a property of panel, not s=
-pecific
->> to eDP controller, so this code should handle in connector logic.
+>> ---
 >>
->> But another question, if we just leave this property to connector,
->> then we would need to parse this property in analogix_dp-rockchip.c,
->> and then make an hook in analogix_dp_core.c driver. This is not nice=
+>> Changes in v17:
+>> - add the decription in detail for RK3288 SoCs.
+>>
+>> Changes in v16:
+>> - remove the pmu node.
+>>
+>> Changes in v15: None
+>> Changes in v14: None
+>> Changes in v13: None
+>> Changes in v12: None
+>> Changes in v11: None
+>> Changes in v10: None
+>> Changes in v9:
+>> - add document decription.
+>>
+>> Changes in v8:
+>> - document go back to v2.
+>>
+>> Changes in v7: None
+>> Changes in v6: None
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3:
+>> - DT structure has changed.
+>>
+>> Changes in v2:
+>> - move clocks to "optional".
+>>
+>>   .../bindings/soc/rockchip/power_domain.txt         | 114 +++++++++=
+++++++++++++
+>>   1 file changed, 114 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/soc/rockchip/=
+power_domain.txt
+>>
+>> diff --git
+>> a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+>> b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+>> new file mode 100644
+>> index 0000000..4cf6b27
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.tx=
+t
+>> @@ -0,0 +1,114 @@
+>> +* Rockchip Power Domains
+>> +
+>> +Rockchip processors include support for multiple power domains whic=
+h can be
+>> +powered up/down by software based on different application scenes t=
+o save power.
+>> +
+>> +Required properties for power domain controller:
+>> +- compatible: Should be one of the following.
+>> +	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+>> +- #power-domain-cells: Number of cells in a power-domain specifier.
+>> +	Should be 1 for multiple PM domains.
+>> +- #address-cells: Should be 1.
+>> +- #size-cells: Should be 0.
+>> +
+>> +Required properties for power domain sub nodes:
+>> +- reg: index of the power domain, should use macros in:
+>> +	"include/dt-bindings/power-domain/rk3288.h" - for RK3288 type powe=
+r domain.
+>> +- clocks (optional): phandles to clocks which need to be enabled wh=
+ile power domain
+>> +	switches state.
+>> +
+>> +Example:
+>> +
+>> +	power: power-controller {
+>> +		compatible =3D "rockchip,rk3288-power-controller";
+>> +		#power-domain-cells =3D <1>;
+>> +		#address-cells =3D <1>;
+>> +		#size-cells =3D <0>;
+>> +
+>> +		pd_gpu {
+>> +			reg =3D <RK3288_PD_GPU>;
+>> +			clocks =3D <&cru ACLK_GPU>;
+>> +		};
+>> +	};
+>> +
+>> +Node of a device using power domains must have a power-domains prop=
+erty,
+>> +containing a phandle to the power device node and an index specifyi=
+ng which
+>> +power domain to use.
+>> +The index should use macros in:
+>> +	"include/dt-bindings/power-domain/rk3288.h" - for rk3288 type powe=
+r domain.
+>> +
+>> +Example of the node using power domain:
+>> +
+>> +	node {
+>> +		/* ... */
+>> +		power-domains =3D <&power RK3288_PD_GPU>;
+>> +		/* ... */
+>> +	};
+>> +
+>> +Others, all the device clocks being listed in the power-domains its=
+elf.
+>> +All the device clocks are included in someone domians that need to =
+enable
+>> +before you operate them.
+>> +
+>> +As the chip designs for PM hardware. We need turn on the noc clocks=
 ,
->> and if there are some coming platform which alse want to use analogi=
-x_dp
->> code and meet this "no-hpd" situation,  then they would need duplica=
-te
->> to parse this property and fill the hook in analogix_dp_core.c drive=
-r.
->> So it's little bit conflict  :-)
-> Ideally, you would be able to just retrieve this quirk from the
-> connector or panel. Getting this property from your node vs. the port
-> you are attached to should not be much harder. Either the connector
-> struct can have this info or there can be a DT function that can walk
-> the graph and get it. Just don't open code the graph traversal in you=
-r
-> driver.
->
->> Beside I can not understand your example very well. Do you mean
->> that there are some HDMI monitor which also do not have HPD
->> signal (just like some eDP panel do not have hpd too), and then
->> the "hpd-gpios" ? Hmm... I don't know how the "hpd-gpios" want
->> to help in this case, would you mind show some sample code  :-D
-> I don't know that there is h/w, but it is always possible HPD is not
-> hooked up or hooked up incorrectly some how.
->
-> If there is no HPD support, then hpd-gpios is not going to help you.
->
-> I think there are 3 cases to handle:
-> - HPD handled by bridge chip - The bridge driver knows it has this
-> capability. No DT properties are needed and no HPD properties on the
-> connector node imply the bridge chip should handle HPD functions.
-> - HPD handled by GPIO line (or some other block) - Indicated by
-> hpd-gpios present
-> - No or broken HPD - Indicated by "hpd-force" property.
+>> +if we are operating the "pd_vio" domain to enter the idle status.
+>> +
+>> +As the following described in detail for every device be included i=
+n domains
+>> +on RK3288 SoCs.
+> IMO, the below isn't really detailed enough, and also, the details
+> should be in the .dts file itself, not in the binding doc.
+> In particular, it's not obvious from the current series which of the
+> clocks are device clocks, and which are other/parent/infrastructure
+> clocks needed for the synchronous reset.
 
-Oh, I think the first/second case isn't suitable in this case, my panel
-"cnm,n116bgeea2" haven't included HPD signal.
+Okay, if we add some comments in dts. Says the following example.
 
+What do you think of it?
+
+I'm no sure if we should add these comments in dts.
+It looks like it's always awkward. We can explain in the binding doc,=20
+maybe for better reading.
+             /*
+              * Note: 'ACLK_GPU' is the GPU clock,
+              * and on the ACLK_GPU_NIU (NOC).
+              */
+             pd_gpu {
+                 reg =3D <RK3288_PD_GPU>;
+                 clocks =3D <&cru ACLK_GPU>;
+             };
+
+             /*
+              * Note: The following 3 are HEVC(H.265) clocks,
+              * and on the ACLK_HEVC_NIU (NOC).
+              */
+             pd_hevc {
+                 reg =3D <RK3288_PD_HEVC>;
+                 clocks =3D <&cru ACLK_HEVC>,
+                 <&cru SCLK_HEVC_CABAC>,
+                 <&cru SCLK_HEVC_CORE>;
+             };
+
+             /*
+              * Note: ACLK_VCODEC/HCLK_VCODEC are VCODEC
+              * (video endecoder & decoder) clocks that on the
+              * ACLK_VCODEC_NIU and HCLK_VCODEC_NIU (NOC).
+               */
+             pd_video {
+                 reg =3D <RK3288_PD_VIDEO>;
+                 clocks =3D <&cru ACLK_VCODEC>,
+                 <&cru HCLK_VCODEC>;
+             };
+
+             /*
+              * Note: Although SCLK_* are the working clocks
+              * of device without including on the NOC, needed for
+              * synchronous reset.
+              *
+              * ACLK_IEP/ACLK_VIP/ACLK_VOP0 are on ACLK_VIO0_NIU (NOC).
+              * ACLK_ISP/ACLK_VOP1 are on ACLK_VIO1_NIU (NOC).
+               * ACLK_RGA is on ACLK_RGA_NIU (NOC).
+              * The others are on HCLK_VIO_NIU (NOC).
+              *
+              * *_IEP are the Image Enhancement Processos (IEP) clocks.
+              * *_ISP are the Image Signal Processing (ISP) clocks.
+              * *_RGA are the RGA clocks.
+              * *_VOP* are the Visual Output Processor(VOP) clocks.
+              * *_EDP* are the EDP clocks.
+              * *_LVDS_* are the LVDS clocks.
+              * *_HDMI are the HDMI clocks.
+              * *_MIPI_* are the MIPI clocks.
+              */
+             pd_vio {
+                 reg =3D <RK3288_PD_VIO>;
+                 clocks =3D <&cru ACLK_IEP>,
+                 <&cru ACLK_ISP>,
+                 <&cru ACLK_RGA>,
+                 <&cru ACLK_VIP>,
+                 <&cru ACLK_VOP0>,
+                 <&cru ACLK_VOP1>,
+                 <&cru DCLK_VOP0>,
+                 <&cru DCLK_VOP1>,
+                 <&cru HCLK_IEP>,
+                 <&cru HCLK_ISP>,
+                 <&cru HCLK_RGA>,
+                 <&cru HCLK_VIP>,
+                 <&cru HCLK_VOP0>,
+                 <&cru HCLK_VOP1>,
+                 <&cru PCLK_EDP_CTRL>,
+                 <&cru PCLK_HDMI_CTRL>,
+                 <&cru PCLK_LVDS_PHY>,
+                 <&cru PCLK_MIPI_CSI>,
+                 <&cru PCLK_MIPI_DSI0>,
+                 <&cru PCLK_MIPI_DSI1>,
+                 <&cru SCLK_EDP_24M>,
+                 <&cru SCLK_EDP>,
+                 <&cru SCLK_ISP_JPE>,
+                 <&cru SCLK_ISP>,
+                 <&cru SCLK_RGA>;
+             };
+
+
+---
+Thanks,
+Caesar
+> Kevin
 >
->>> Are there any eDP panels which don't have EDID and need panel detai=
-ls in
->>> DT?
->>
->> Oh, I think you want to collect some info that belong to panel
->> property but no indicate in panel EDID message, so those can
->> be collect in eDP connector binding, is it right ?
-> Yes, and as Thierry pointed out we may need to know the exact panel e=
-ven.
-
-Yeah, just like I reply to Thierry, this is a panel quirk. And he=20
-suggest we should
-handle this in panel driver, but I have no idea how to handle this in=20
-common panel
-driver.   :)
-
-- Yakir
-
-> Rob
->
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> +	/* GPU's ACLK_GPU on the ACLK_GPU_NIU */
+>> +	pd_gpu {
+>> +		reg =3D <RK3288_PD_GPU>;
+>> +		clocks =3D <&cru ACLK_GPU>;
+>> +	};
+>> +
+>> +	/* HEVC AXI clocks */
+>> +	pd_hevc {
+>> +		reg =3D <RK3288_PD_HEVC>;
+>> +		clocks =3D <&cru ACLK_HEVC>,
+>> +		<&cru SCLK_HEVC_CABAC>,
+>> +		<&cru SCLK_HEVC_CORE>,
+>> +		<&cru HCLK_HEVC>;
+>> +	};
+>> +
+>> +	/*
+>> +	 * RGA, VOP, MIPI, LVDS, EDP..., says the ACLK* on the ACLK_VIO_NI=
+U,
+>> +	 * others are on the HCLK_VIO_NIU.
+>> +	 */
+>> +	pd_vio {
+>> +		reg =3D <RK3288_PD_VIO>;
+>> +		clocks =3D <&cru ACLK_IEP>,
+>> +		<&cru ACLK_ISP>,
+>> +		<&cru ACLK_RGA>,
+>> +		<&cru ACLK_VIP>,
+>> +		<&cru ACLK_VOP0>,
+>> +		<&cru ACLK_VOP1>,
+>> +		<&cru DCLK_VOP0>,
+>> +		<&cru DCLK_VOP1>,
+>> +		<&cru HCLK_IEP>,
+>> +		<&cru HCLK_ISP>,
+>> +		<&cru HCLK_RGA>,
+>> +		<&cru HCLK_VIP>,
+>> +		<&cru HCLK_VOP0>,
+>> +		<&cru HCLK_VOP1>,
+>> +		<&cru PCLK_EDP_CTRL>,
+>> +		<&cru PCLK_HDMI_CTRL>,
+>> +		<&cru PCLK_LVDS_PHY>,
+>> +		<&cru PCLK_MIPI_CSI>,
+>> +		<&cru PCLK_MIPI_DSI0>,
+>> +		<&cru PCLK_MIPI_DSI1>,
+>> +		<&cru SCLK_EDP_24M>,
+>> +		<&cru SCLK_EDP>,
+>> +		<&cru SCLK_ISP_JPE>,
+>> +		<&cru SCLK_ISP>,
+>> +		<&cru SCLK_RGA>;
+>> +	};
+>> +
+>> +	/*
+>> +	 * Video's ACLK_VCODEC on the ACLK_VCODEC_NIU, Video's HCLK_VCODEC=
+,
+>> +	 * on the HCLK_VCODEC_NIU.
+>> +	 */
+>> +	pd_video {
+>> +		reg =3D <RK3288_PD_VIDEO>;
+>> +		clocks =3D <&cru ACLK_VCODEC>,
+>> +		<&cru HCLK_VCODEC>;
+>> +	};
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
