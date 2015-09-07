@@ -1,50 +1,47 @@
-From: Andy Yan <andy.yan@rock-chips.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
 Subject: Re: [PATCH 1/4] ARM: multi_v7_defconfig: Enable common Rockchip
  devices/busses
-Date: Mon, 7 Sep 2015 18:55:49 +0800
-Message-ID: <55ED6D35.6060704@rock-chips.com>
+Date: Mon, 7 Sep 2015 13:06:10 +0200
+Message-ID: <55ED6FA2.4090903@osg.samsung.com>
 References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
  <1441570566-14001-2-git-send-email-sjoerd.simons@collabora.co.uk>
  <55ED585B.9030009@osg.samsung.com> <1441621467.8778.26.camel@collabora.co.uk>
+ <55ED6D35.6060704@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441621467.8778.26.camel@collabora.co.uk>
+In-Reply-To: <55ED6D35.6060704@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-rockchip@lists.infradead.org
+To: Andy Yan <andy.yan@rock-chips.com>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org
 Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Kukjin Kim <kgene@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Olof Johansson <olof@lixom.net>, Stephen Warren <swarren@nvidia.com>, Thierry Reding <treding@nvidia.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
-     There are also many other devices like display and mmc and even
-the cpu(if the cpu want run a high frequency when boot up)need to
-get power supply from PMIC, so it is better to load PMIC as early as
-possible.Built-in is a better choice.
+Hello Andy,
 
-On 2015=E5=B9=B409=E6=9C=8807=E6=97=A5 18:24, Sjoerd Simons wrote:
-> On Mon, 2015-09-07 at 11:26 +0200, Javier Martinez Canillas wrote:
->> Hello Sjoerd,
->>
->> On 09/06/2015 10:16 PM, Sjoerd Simons wrote:
->>> Enable Rockchip I2C, SPI, PWM, thermal drivers.
->>>
->>> Builtin are:
->>>   * I2C as it often controls the pmic.
->> Having I2C as a module will cause more probe deferrals due missing
->> regulators and slow down the boot but it should not cause issues.
->> Or am I missing something?
->>
->> In fact, I think even the PMIC could be built as a module.
-> It could in principle. However as a lot of other drivers do need the
-> regulators provided by the pmic, they'll be deferred until that drive=
-r
-> is loaded. So e.g. with the i2c/pmic drivers as a module you cannot
-> boot to an NFS rootfs without using an initramfs.
+On 09/07/2015 12:55 PM, Andy Yan wrote:
+> Hi
+>     There are also many other devices like display and mmc and even
+> the cpu(if the cpu want run a high frequency when boot up)need to
+> get power supply from PMIC, so it is better to load PMIC as early as
+> possible.Built-in is a better choice.
 >
->> But I don't have a strong opinion on this so patch looks good:
->>
->> Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
->>
->> Best regards,
+
+Please don't top post, it makes following the conversation much harder.
+
+Yes, I know that many devices needs the regulators provided by the PMIC
+but that it's also true for all the regulators in all the PMICs for all
+the boards supported by multi_v7_defconfig.
+
+So to keep the kernel binary on a reasonable size, the current multi_v7
+policy is to enable as much as possible as a module so just saying that
+many other devices are using regulators from this PMIC is not enough.
+
+Saying that it will allow mounting a NFS rootfs without an initramfs as
+Sjoerd said is a much better justification IMHO.
+
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
