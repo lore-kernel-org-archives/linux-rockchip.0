@@ -1,56 +1,81 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH 2/4] ARM: multi_v7_defconfig: Enable ACT8865 PMIC driver
-Date: Mon, 7 Sep 2015 18:49:02 +0800
-Message-ID: <55ED6B9E.1030705@rock-chips.com>
-References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <1441570566-14001-3-git-send-email-sjoerd.simons@collabora.co.uk>
- <3043964.0UPNRg7XJB@diego>
+Date: Mon, 07 Sep 2015 12:53:15 +0200
+Message-ID: <2290865.A4pAyymAaJ@diego>
+References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk> <3043964.0UPNRg7XJB@diego> <55ED6B9E.1030705@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3043964.0UPNRg7XJB@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Stephen Warren <swarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55ED6B9E.1030705@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Javier Martinez Canillas <javier@osg.samsung.com>, Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Olof Johansson <olof@lixom.net>, Stephen Warren <swarren@nvidia.com>, Thierry Reding <treding@nvidia.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-UE1JQyBSSzgwOCB1c2VkIG9uIG1hbnkgcmszMjg4IGJvYXJkcyAsc3VjaCBhcyBQb3BtZXRhbC4K
-SXQgaXMgYSBNRkQgd2l0aCBmdW5jdGlvbiByZWd1bGF0b3IgYW5kIFJUQy4gU28gaWYgeW91IHBs
-YW4gdG8gZW5hYmxlClJLODA4LCBwbGVhc2UgYWxzbyBlbmFibGUgQ09ORklHX1JUQ19EUlZfUks4
-MDguCgp0aGFua3MuCgpPbiAyMDE15bm0MDnmnIgwN+aXpSAxNzozMywgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gSGksCj4KPiBJIGd1ZXNzIG9uZSBjb3VsZCByZW5hbWUgdGhhdCB0byBzb21ldGhp
-bmcgbGlrZQo+ICJBUk06IG11bHRpX3Y3X2RlZmNvbmZpZzogRW5hYmxlIHJlZ3VsYXRvcnMgdXNl
-ZCBvbiBtb3N0IHJvY2tjaGlwIGJvYXJkcyIKPgo+IGFuZCBhcyB3ZWxsIGFkZAo+Cj4gQ09ORklH
-X1JFR1VMQVRPUl9GQU41MzU1NT15Cj4gQ09ORklHX01GRF9SSzgwOD15Cj4gQ09ORklHX1JFR1VM
-QVRPUl9SSzgwOD15Cj4KPiBmYW41MzU1IGlzIHRoZSBkcml2ZXIgcHJvdmlkaW5nIHN1cHBvcnQg
-Zm9yIHRoZSBzeXI4MnggdXNlZCBvbiBhbGwgcmszMjg4Cj4gYm9hcmRzIHdpdGggYW4gYWN0ODg0
-Ni4KPgo+Cj4KPiBBbSBTb25udGFnLCA2LiBTZXB0ZW1iZXIgMjAxNSwgMjI6MTY6MDQgc2Nocmll
-YiBTam9lcmQgU2ltb25zOgo+PiBBY3RpdmUgU2VtaSBhY3Q4ODQ2IGlzIHVzZWQgYXMgdGhlIFBN
-SUMgb24gdmFyaW91cyBSb2NrY2hpcCBib2FyZHMsCj4+IGVuYWJsZSB0aGUgQUNUODg2NSBkcml2
-ZXIgdG8gc3VwcG9ydCB0aGlzLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBTam9lcmQgU2ltb25zIDxz
-am9lcmQuc2ltb25zQGNvbGxhYm9yYS5jby51az4KPgo+PiAtLS0KPj4KPj4gICBhcmNoL2FybS9j
-b25maWdzL211bHRpX3Y3X2RlZmNvbmZpZyB8IDEgKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
-c2VydGlvbigrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vY29uZmlncy9tdWx0aV92N19k
-ZWZjb25maWcKPj4gYi9hcmNoL2FybS9jb25maWdzL211bHRpX3Y3X2RlZmNvbmZpZyBpbmRleCAy
-NWExZDU3NC4uNzA1OGZlZiAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm0vY29uZmlncy9tdWx0aV92
-N19kZWZjb25maWcKPj4gKysrIGIvYXJjaC9hcm0vY29uZmlncy9tdWx0aV92N19kZWZjb25maWcK
-Pj4gQEAgLTQwMSw2ICs0MDEsNyBAQCBDT05GSUdfTUZEX1RQUzY1MDkwPXkKPj4gICBDT05GSUdf
-TUZEX1RQUzY1ODZYPXkKPj4gICBDT05GSUdfTUZEX1RQUzY1OTEwPXkKPj4gICBDT05GSUdfUkVH
-VUxBVE9SX0FCODUwMD15Cj4+ICtDT05GSUdfUkVHVUxBVE9SX0FDVDg4NjU9eQo+PiAgIENPTkZJ
-R19SRUdVTEFUT1JfQVMzNzExPXkKPj4gICBDT05GSUdfUkVHVUxBVE9SX0FTMzcyMj15Cj4+ICAg
-Q09ORklHX1JFR1VMQVRPUl9BWFAyMFg9eQo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Andy,
+
+Am Montag, 7. September 2015, 18:49:02 schrieb Andy Yan:
+> PMIC RK808 used on many rk3288 boards ,such as Popmetal.
+> It is a MFD with function regulator and RTC. So if you plan to enable
+> RK808, please also enable CONFIG_RTC_DRV_RK808.
+
+I think that could go into a separate patch5 ... enabling
+	CONFIG_RTC_DRV_RK808=3Dm
+	CONFIG_RTC_DRV_HYM8563=3Dm
+
+the two rtc types used on all(?) Rockchip boards. So enable the rk808=20
+mfd+regulator here and do the rtcs separately later.
+
+
+> On 2015=E5=B9=B409=E6=9C=8807=E6=97=A5 17:33, Heiko St=C3=BCbner wrot=
+e:
+> > Hi,
+> >=20
+> > I guess one could rename that to something like
+> > "ARM: multi_v7_defconfig: Enable regulators used on most rockchip b=
+oards"
+> >=20
+> > and as well add
+> >=20
+> > CONFIG_REGULATOR_FAN53555=3Dy
+> > CONFIG_MFD_RK808=3Dy
+> > CONFIG_REGULATOR_RK808=3Dy
+> >=20
+> > fan5355 is the driver providing support for the syr82x used on all =
+rk3288
+> > boards with an act8846.
+> >=20
+> > Am Sonntag, 6. September 2015, 22:16:04 schrieb Sjoerd Simons:
+> >> Active Semi act8846 is used as the PMIC on various Rockchip boards=
+,
+> >> enable the ACT8865 driver to support this.
+> >>=20
+> >> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> >>=20
+> >> ---
+> >>=20
+> >>   arch/arm/configs/multi_v7_defconfig | 1 +
+> >>   1 file changed, 1 insertion(+)
+> >>=20
+> >> diff --git a/arch/arm/configs/multi_v7_defconfig
+> >> b/arch/arm/configs/multi_v7_defconfig index 25a1d574..7058fef 1006=
+44
+> >> --- a/arch/arm/configs/multi_v7_defconfig
+> >> +++ b/arch/arm/configs/multi_v7_defconfig
+> >> @@ -401,6 +401,7 @@ CONFIG_MFD_TPS65090=3Dy
+> >>=20
+> >>   CONFIG_MFD_TPS6586X=3Dy
+> >>   CONFIG_MFD_TPS65910=3Dy
+> >>   CONFIG_REGULATOR_AB8500=3Dy
+> >>=20
+> >> +CONFIG_REGULATOR_ACT8865=3Dy
+> >>=20
+> >>   CONFIG_REGULATOR_AS3711=3Dy
+> >>   CONFIG_REGULATOR_AS3722=3Dy
+> >>   CONFIG_REGULATOR_AXP20X=3Dy
+> >=20
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
