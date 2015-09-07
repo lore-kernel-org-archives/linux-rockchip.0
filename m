@@ -1,98 +1,145 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH 4/4] ARM: multi_v7_defconfig: Enable DW USB2 support and
- rockchip phy
-Date: Mon, 07 Sep 2015 16:56:42 +0900
-Message-ID: <55ED433A.5000907@samsung.com>
-References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <1441609832.8778.4.camel@collabora.co.uk> <55ED3BC5.8050603@samsung.com>
- <1447076.WCyUA0P2ql@diego>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v4 03/16] drm: bridge: analogix/dp: split exynos dp
+ driver to bridge dir
+Date: Mon, 7 Sep 2015 10:11:53 +0200
+Message-ID: <20150907081152.GA19961@ulmo.nvidia.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <2618155.E00Pak1qvi@phil>
+ <CAL_JsqLvOOF0Wk=E1kz0rWXg0+6ay0=4OTbCpjdGCfL7_qFN8Q@mail.gmail.com>
+ <3704589.SqgGPobGdG@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1447076.WCyUA0P2ql@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, Kevin Hilman <khilman@linaro.org>, linux-arm-kernel@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Thierry Reding <treding@nvidia.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="KsGdsel6WgEHnImy"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <3704589.SqgGPobGdG@phil>
+Content-Disposition: inline
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robherring2@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, Joe Perches <joe@perches.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Ajay kumar <ajaynumb@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@linux.ie>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Andy Yan <andy.yan@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, architt@codeaurora.org, dri-devel <dri-devel@lists.freedesktop.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-kernel@vger.kernel
 List-Id: linux-rockchip.vger.kernel.org
 
-On 07.09.2015 16:53, Heiko St=FCbner wrote:
-> Am Montag, 7. September 2015, 16:24:53 schrieb Krzysztof Kozlowski:
->> On 07.09.2015 16:10, Sjoerd Simons wrote:
->>> Hey Krzysztof,
->>>
->>> On Mon, 2015-09-07 at 09:02 +0900, Krzysztof Kozlowski wrote:
->>>> On 07.09.2015 05:16, Sjoerd Simons wrote:
->>>>> The DesignWare HS OTG USB 2.0 is used in various SoC families amo=
-ng
->>>>> wich
->>>>> the various rockchip SoCs, enable the driver and the PHY glue for
->>>>> rockchip
->>>>
->>>> +Cc Marek and Kukjin,
->>>>
->>>> This would conflict with Marek's:
->>>> [PATCH v2] ARM: multi_v7_defconfig: Enable DWC2 USB driver and USB
->>>> ethernet gadget
->>>> http://www.spinics.net/lists/linux-samsung-soc/msg46743.html
->>>>
->>>> Probably your series and Marek's change should go together to the
->>>> same
->>>> tree. How about rebasing your work on top of it?
->>>
->>> Thanks for the pointer! I'm entirely happy to rebase on Mareks patc=
-h or
->>> this one dropped for now until Mareks patch lands.
->>>
->>> These patches were based on current linux-next, so i guess Mareks p=
-athc
->>> didn't land just yet? Tbh, i don't really know what tries multi_v7
->>> tends to go through (especially for non-platform specific changes)
->>
->> It was too late for Marek's patch to go for v4.3 merge window, so I
->> applied it but not pushed to my for-next branch. AFAIU, Stephen does=
- not
->> want v4.4 material during merge window because of mangling with stat=
-istics.
->>
->>
->> If you want to rebase (or cherry-pick), you can find Marek's patch h=
-ere:
->> branch: defconfig-for-next
->> repo: git://github.com/krzk/linux.git
->>
->> However this *branch will be rebased on v4.3-rc1* (because this is
->> material for v4.4). After v4.3-rc1 I can prepare a tag for other
->> interested parties.
->>
->>
->> As for multi_v7_defconfig policy, I got impression from the
->> Arnd/Olof/Kevin comments on LKML, that platform specific changes sho=
-uld
->> go through platform tree. However this is multi-platform change so m=
-aybe
->> we can push both patches through arm-soc.
->>
->>
->> Arnd, Olof, Kevin (BTW, you missed to CC him),
->>
->> How do you wish to handle this case (USB_DWC2 and two patches: Marek=
-'s
->> and Sjoerd's)?
+--KsGdsel6WgEHnImy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Sep 04, 2015 at 11:29:30PM +0200, Heiko Stuebner wrote:
+> Am Freitag, 4. September 2015, 16:06:02 schrieb Rob Herring:
+> > On Tue, Sep 1, 2015 at 3:46 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> > > Am Dienstag, 1. September 2015, 13:49:58 schrieb Yakir Yang:
+> > >> Split the dp core driver from exynos directory to bridge
+> > >> directory, and rename the core driver to analogix_dp_*,
+> > >> leave the platform code to analogix_dp-exynos.
+> > >>=20
+> > >> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> > >=20
+> > > [...]
+> > >=20
+> > >> diff --git a/drivers/gpu/drm/exynos/exynos_dp_core.c
+> > >> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c similarity inde=
+x 50%
+> > >> rename from drivers/gpu/drm/exynos/exynos_dp_core.c
+> > >> rename to drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> > >> index bed0252..7d62f22 100644
+> > >> --- a/drivers/gpu/drm/exynos/exynos_dp_core.c
+> > >> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> > >=20
+> > > [...]
+> > >=20
+> > >>       connector->polled =3D DRM_CONNECTOR_POLL_HPD;
+> > >>      =20
+> > >>       ret =3D drm_connector_init(dp->drm_dev, connector,
+> > >>=20
+> > >> -                              &exynos_dp_connector_funcs,
+> > >> +                              &analogix_dp_connector_funcs,
+> > >>=20
+> > >>                                DRM_MODE_CONNECTOR_eDP);
+> > >>      =20
+> > >>       if (ret) {
+> > >>      =20
+> > >>               DRM_ERROR("Failed to initialize connector with drm\n");
+> > >>               return ret;
+> > >>      =20
+> > >>       }
+> > >>=20
+> > >> -     drm_connector_helper_add(connector,
+> > >> &exynos_dp_connector_helper_funcs); +   =20
+> > >> drm_connector_helper_add(connector,
+> > >> +                              &analogix_dp_connector_helper_funcs);
+> > >>=20
+> > >>       drm_connector_register(connector);
+> > >=20
+> > > this should only run on exynos, as we're doing all our connector
+> > > registration in the core driver after all components are bound, so I
+> > > guess something like>=20
+> > > the following is needed:
+> > >        if (dp->plat_data && dp->plat_data->dev_type =3D=3D EXYNOS_DP)
+> > >       =20
+> > >                drm_connector_register(connector);
+> >=20
+> > Yuck!
+> >=20
+> > Surely there is a better way. From what I've seen of DRM, I have no
+> > doubt this is needed, but really a better solution is needed. Surely
+> > there can be a more generic way for the driver to determine if it
+> > should handle the connector or not. This seems like a common problem
+> > including one I have seen. What I'm working on has onchip DSI encoder
+> > -> ADV7533 -> HDMI. The DSI encoder can also have a direct attached
+> > panel. So I have to check for a bridge in the encoder driver and only
+> > register the connector for the panel if a bridge is not attached.
 >=20
-> I guess the easiest option would be to just drop the dwc2 from here, =
-only=20
-> keeping the phy enablement and let everything (Marek's and Sjoerd's p=
-atch)=20
-> come together in the armsoc defconfig branch? As the rest of both pat=
-ches don't=20
-> seem to touch common areas, they should be easily mergable from diffe=
-rent trees=20
-> as well.
+> I'm also only a part-time drm meddler, so things may be inaccurate.
+>=20
+> This conditional is not meant to prevent the registration of the dp conne=
+ctor,=20
+> only delay it for non-exynos drms. The connector registration does publis=
+h it=20
+> to userspace, so like i.MX we're doing that for all connectors at the sam=
+e=20
+> time after all components are bound - to also make x11 happy. Exynos on t=
+he=20
+> other hand seems to register its connectors individually and I'm not sure=
+ if=20
+> they would be willing to change that.
+>=20
+> see d3007dabeff4 ("drm/rockchip: register all connectors after bind") or=
+=20
+> simply rockchip_drm_drv.c line 178.
+>=20
+> and e355e7dd607b ("imx-drm: delay publishing sysfs connector entries")
 
-Yes, I agree. The config PHY_ROCKCHIP_USB does not depend on it directl=
-y
-so this should work fine.
+There really shouldn't be a reason for both drivers to behave
+differently in this case. Gustavo has done a lot of work on cleaning up
+the Exynos driver lately, so perhaps you should sync up with him to see
+if this is something that he can integrate with his changes.
 
-Best regards,
-Krzysztof
+If you can't reach an agreement and Exynos must keep the exact behaviour
+as it has now, then perhaps a better option would be to have the
+Analogix core driver not register the connector but rather leave that up
+to users of the helpers. Then you don't have to clutter the core driver
+with this type of platform-specific data.
+
+Thierry
+
+--KsGdsel6WgEHnImy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJV7UbFAAoJEN0jrNd/PrOhhQEP/jHH4mCsHQhN5TM93ToODSaX
+PPIfSGotJwJRb4aerJlBmOJe/TttR3E0gN5C+c7YwTMcUJzAz7I/ORMJtfKrkqiF
+3n0EnWu/ni0FQoZWInV5+vwnRWaChZ1/yGlTmQSd8APlxQdojvOSjkMFG6EVWU8t
+0A1xPjetuUwkdHP3T2RRAkPHt6KDgc/EF0z71kDgs7vOkF4hhEqNCXk8k+NSEYpr
+wh/RUU70Us+MzsoQMypnOBredfsjrKoJXI/iEBVVzBbtg5//GQqNPDuG8eFzKrZy
+Xv0pxG8PCmVmZX+dDT73Foh3m7h2/zqzOFaXqXjx9101ZgldlfgFCTYE1Mybtfo7
+f6rS4cE4n2JsebYSa5sR5i5nlIkLF2v2GtfQpT9EWn1pKlTq6PIvBhGfUtFTWsYZ
+Wu8mYK/88PYtgOj64OV8KuylZrGFVoT6H/BZPlEmvea56Pyw3yAxcDOS40GaQFTi
+J2OWghSDhdWa3C6q333ZOILtG61Ik1PaDvynEQF51thkh/6L+8wlmh2pWLSWAT0E
+PtQJbX6AnuOS7LWDTOWMEMK/0UJsLZ2fc/kg8A7YXizqQJZO1uxOI8VqO2wJPX/Y
+jh8lc2ad0ztXqCd0v0pS7su4RYaxjomT3YLxIhUkFz4zZUpiZG9EjqLYCtJUYEqM
+kyHGsK+eVeiLZw/ukWae
+=a4je
+-----END PGP SIGNATURE-----
+
+--KsGdsel6WgEHnImy--
