@@ -1,64 +1,63 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/4] ARM: multi_v7_defconfig: Enable ACT8865 PMIC driver
-Date: Mon, 07 Sep 2015 11:33:21 +0200
-Message-ID: <3043964.0UPNRg7XJB@diego>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH 4/4] ARM: multi_v7_defconfig: Enable DW USB2 support and
+ rockchip phy
+Date: Mon, 7 Sep 2015 11:33:31 +0200
+Message-ID: <55ED59EB.4010000@osg.samsung.com>
 References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <1441570566-14001-3-git-send-email-sjoerd.simons@collabora.co.uk>
+ <1441570566-14001-5-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1441570566-14001-3-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Stephen Warren <swarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1441570566-14001-5-git-send-email-sjoerd.simons@collabora.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Thierry Reding <treding@nvidia.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hello Sjoerd,
 
-I guess one could rename that to something like
-"ARM: multi_v7_defconfig: Enable regulators used on most rockchip boards"
-
-and as well add
-
-CONFIG_REGULATOR_FAN53555=y
-CONFIG_MFD_RK808=y
-CONFIG_REGULATOR_RK808=y
-
-fan5355 is the driver providing support for the syr82x used on all rk3288 
-boards with an act8846.
-
-
-
-Am Sonntag, 6. September 2015, 22:16:04 schrieb Sjoerd Simons:
-> Active Semi act8846 is used as the PMIC on various Rockchip boards,
-> enable the ACT8865 driver to support this.
+On 09/06/2015 10:16 PM, Sjoerd Simons wrote:
+> The DesignWare HS OTG USB 2.0 is used in various SoC families among wich
+> the various rockchip SoCs, enable the driver and the PHY glue for
+> rockchip
 > 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-
-
+> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> 
 > ---
 > 
->  arch/arm/configs/multi_v7_defconfig | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm/configs/multi_v7_defconfig | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/arch/arm/configs/multi_v7_defconfig
-> b/arch/arm/configs/multi_v7_defconfig index 25a1d574..7058fef 100644
+> diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
+> index fb673e2..49c733a 100644
 > --- a/arch/arm/configs/multi_v7_defconfig
 > +++ b/arch/arm/configs/multi_v7_defconfig
-> @@ -401,6 +401,7 @@ CONFIG_MFD_TPS65090=y
->  CONFIG_MFD_TPS6586X=y
->  CONFIG_MFD_TPS65910=y
->  CONFIG_REGULATOR_AB8500=y
-> +CONFIG_REGULATOR_ACT8865=y
->  CONFIG_REGULATOR_AS3711=y
->  CONFIG_REGULATOR_AS3722=y
->  CONFIG_REGULATOR_AXP20X=y
+> @@ -514,6 +514,7 @@ CONFIG_USB_STORAGE=y
+>  CONFIG_USB_DWC3=y
+>  CONFIG_USB_CHIPIDEA=y
+>  CONFIG_USB_CHIPIDEA_HOST=y
+> +CONFIG_USB_DWC2=y
+>  CONFIG_AB8500_USB=y
+>  CONFIG_KEYSTONE_USB_PHY=y
+>  CONFIG_OMAP_USB3=y
+> @@ -658,6 +659,7 @@ CONFIG_PHY_HIX5HD2_SATA=y
+>  CONFIG_PWM_STI=m
+>  CONFIG_OMAP_USB2=y
+>  CONFIG_TI_PIPE3=y
+> +CONFIG_PHY_ROCKCHIP_USB=y
+>  CONFIG_PHY_MIPHY28LP=y
+>  CONFIG_PHY_MIPHY365X=y
+>  CONFIG_PHY_RCAR_GEN2=m
+>
+
+After dropping the DWC2 and keeping only the PHY as suggested
+by Heiko and Krzysztof:
+
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
+
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
