@@ -1,64 +1,72 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
 Subject: Re: [PATCH 4/4] ARM: multi_v7_defconfig: Enable DW USB2 support and
  rockchip phy
-Date: Mon, 07 Sep 2015 09:10:32 +0200
-Message-ID: <1441609832.8778.4.camel@collabora.co.uk>
+Date: Mon, 07 Sep 2015 16:24:53 +0900
+Message-ID: <55ED3BC5.8050603@samsung.com>
 References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
-	 <1441570566-14001-5-git-send-email-sjoerd.simons@collabora.co.uk>
-	 <55ECD40F.8020001@samsung.com>
+ <1441570566-14001-5-git-send-email-sjoerd.simons@collabora.co.uk>
+ <55ECD40F.8020001@samsung.com> <1441609832.8778.4.camel@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55ECD40F.8020001@samsung.com>
+In-reply-to: <1441609832.8778.4.camel@collabora.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Thierry Reding <treding@nvidia.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, Kevin Hilman <khilman@linaro.org>
+Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Thierry Reding <treding@nvidia.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Lee Jones <lee.jones@linaro.org>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hey Krzysztof,
-
-On Mon, 2015-09-07 at 09:02 +0900, Krzysztof Kozlowski wrote:
-> On 07.09.2015 05:16, Sjoerd Simons wrote:
-> > The DesignWare HS OTG USB 2.0 is used in various SoC families among
-> > wich
-> > the various rockchip SoCs, enable the driver and the PHY glue for
-> > rockchip
-> +Cc Marek and Kukjin,
+On 07.09.2015 16:10, Sjoerd Simons wrote:
+> Hey Krzysztof,
 > 
-> This would conflict with Marek's:
-> [PATCH v2] ARM: multi_v7_defconfig: Enable DWC2 USB driver and USB
-> ethernet gadget
-> http://www.spinics.net/lists/linux-samsung-soc/msg46743.html
+> On Mon, 2015-09-07 at 09:02 +0900, Krzysztof Kozlowski wrote:
+>> On 07.09.2015 05:16, Sjoerd Simons wrote:
+>>> The DesignWare HS OTG USB 2.0 is used in various SoC families among
+>>> wich
+>>> the various rockchip SoCs, enable the driver and the PHY glue for
+>>> rockchip
+>> +Cc Marek and Kukjin,
+>>
+>> This would conflict with Marek's:
+>> [PATCH v2] ARM: multi_v7_defconfig: Enable DWC2 USB driver and USB
+>> ethernet gadget
+>> http://www.spinics.net/lists/linux-samsung-soc/msg46743.html
+>>
+>> Probably your series and Marek's change should go together to the
+>> same
+>> tree. How about rebasing your work on top of it?
 > 
-> Probably your series and Marek's change should go together to the
-> same
-> tree. How about rebasing your work on top of it?
-
-Thanks for the pointer! I'm entirely happy to rebase on Mareks patch or
-this one dropped for now until Mareks patch lands. 
-
-These patches were based on current linux-next, so i guess Mareks pathc
-didn't land just yet? Tbh, i don't really know what tries multi_v7
-tends to go through (especially for non-platform specific changes)
-
-> Best regards,
-> Krzysztof
+> Thanks for the pointer! I'm entirely happy to rebase on Mareks patch or
+> this one dropped for now until Mareks patch lands. 
 > 
-> >  CONFIG_AB8500_USB=y
-> >  CONFIG_KEYSTONE_USB_PHY=y
-> >  CONFIG_OMAP_USB3=y
-> > @@ -658,6 +659,7 @@ CONFIG_PHY_HIX5HD2_SATA=y
-> >  CONFIG_PWM_STI=m
-> >  CONFIG_OMAP_USB2=y
-> >  CONFIG_TI_PIPE3=y
-> > +CONFIG_PHY_ROCKCHIP_USB=y
-> >  CONFIG_PHY_MIPHY28LP=y
-> >  CONFIG_PHY_MIPHY365X=y
-> >  CONFIG_PHY_RCAR_GEN2=m
-> > 
-> 
+> These patches were based on current linux-next, so i guess Mareks pathc
+> didn't land just yet? Tbh, i don't really know what tries multi_v7
+> tends to go through (especially for non-platform specific changes)
 
--- 
-Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Collabora Ltd.
+It was too late for Marek's patch to go for v4.3 merge window, so I
+applied it but not pushed to my for-next branch. AFAIU, Stephen does not
+want v4.4 material during merge window because of mangling with statistics.
+
+
+If you want to rebase (or cherry-pick), you can find Marek's patch here:
+branch: defconfig-for-next
+repo: git://github.com/krzk/linux.git
+
+However this *branch will be rebased on v4.3-rc1* (because this is
+material for v4.4). After v4.3-rc1 I can prepare a tag for other
+interested parties.
+
+
+As for multi_v7_defconfig policy, I got impression from the
+Arnd/Olof/Kevin comments on LKML, that platform specific changes should
+go through platform tree. However this is multi-platform change so maybe
+we can push both patches through arm-soc.
+
+
+Arnd, Olof, Kevin (BTW, you missed to CC him),
+
+How do you wish to handle this case (USB_DWC2 and two patches: Marek's
+and Sjoerd's)?
+
+Best regards,
+Krzysztof
