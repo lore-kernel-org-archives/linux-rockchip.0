@@ -1,107 +1,263 @@
-From: Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH 1/4] ARM: multi_v7_defconfig: Enable common Rockchip
- devices/busses
-Date: Mon, 7 Sep 2015 13:27:38 +0200
-Message-ID: <20150907112736.GA15787@ulmo.nvidia.com>
-References: <1441570566-14001-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <1441570566-14001-2-git-send-email-sjoerd.simons@collabora.co.uk>
- <55ED585B.9030009@osg.samsung.com>
- <1441621467.8778.26.camel@collabora.co.uk>
- <55ED6910.8010202@osg.samsung.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="AqsLC8rIMeq19msA"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55ED6910.8010202@osg.samsung.com>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>
-Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v18 0/4] ARM: rk3288: Add PM Domain support
+Date: Tue,  8 Sep 2015 14:18:19 +0800
+Message-ID: <1441693103-26712-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---AqsLC8rIMeq19msA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thank you all for providing inputs and comments on previous versions of
+this patchset.
+Especially thanks to the (Kevin, Heiko, Dmitry, Doug, ULF, Michael....).
 
-On Mon, Sep 07, 2015 at 12:38:08PM +0200, Javier Martinez Canillas wrote:
-> Hello Sjoerd,
->=20
-> On 09/07/2015 12:24 PM, Sjoerd Simons wrote:
-> > On Mon, 2015-09-07 at 11:26 +0200, Javier Martinez Canillas wrote:
-> >> Hello Sjoerd,
-> >>
-> >> On 09/06/2015 10:16 PM, Sjoerd Simons wrote:
-> >>> Enable Rockchip I2C, SPI, PWM, thermal drivers.
-> >>>
-> >>> Builtin are:
-> >>>  * I2C as it often controls the pmic.
-> >>
-> >> Having I2C as a module will cause more probe deferrals due missing
-> >> regulators and slow down the boot but it should not cause issues.
-> >> Or am I missing something?
-> >>
-> >> In fact, I think even the PMIC could be built as a module.
-> >=20
-> > It could in principle. However as a lot of other drivers do need the
-> > regulators provided by the pmic, they'll be deferred until that driver
-> > is loaded. So e.g. with the i2c/pmic drivers as a module you cannot
-> > boot to an NFS rootfs without using an initramfs.=20
-> >
->=20
-> Right, not needing an initramfs is certainly a good reason. If you could
-> add something like that in the commit message of patches 1/4 and 2/4 that
-> would be great.
+Add power domain drivers based on generic power domain for
+Rockchip platform, and support RK3288 SoCs.
 
-I don't know. multi_v7_defconfig is primarily useful as a means to
-quickly get a configuration that has most drivers enabled that most ARM
-SoCs need. As such it's more of a convenience for build testing rather
-than using it for booting a device.
+Verified on url =
+    https://chromium.googlesource.com/chromiumos/third_party/kernel/+/v3.14
+    localhost / # cat /sys/kernel/debug/pm_genpd/pm_genpd_summary
+    domain                      status         slaves
+    /device                      runtime        status
+    ----------------------------------------------------------------------
+    pd_video                        off
+    /devices/ff9a0800.iommu                     suspended
+    /devices/ff9a0000.video-codec               suspended
+    pd_vio                          on
+    /devices/ff930300.iommu                     suspended
+    /devices/ff940300.iommu                     suspended
+    /devices/ff930000.vop                       suspended
+    /devices/ff940000.vop                       suspended
+    /devices/ff980000.hdmi                      unsupported
+    /devices/rockchip-edp                       unsupported
+    pd_hevc                         off
+    pd_gpu                          off
+    /devices/ffa30000.gpu                       suspended
 
-I don't think the focus should be on optimizing for boot speed. Rather
-if you do want to optimize for a device going through the trouble of
-setting up an initial ramdisk isn't all that complicated. Even more so
-because if you build drivers into the kernel and those drivers happen
-to require firmware then people will be required to setup initial
-ramdisks anyway.
+    The following is the easy example.
 
-Building too many drivers into the kernel has in the past often lead to
-problems where all of a sudden the kernel became too big to fit into any
-reasonably sized region of memory and cause all sorts of weird failures
-in boot farms. Building everything as modules has the advantage that the
-size of the zImage itself doesn't vary much, hence has less of a chance
-to break boot farms.
+    vopb: vop@ff930000 {
+        compatible = "rockchip,rk3288-vop";
+        ...
+        iommus = <&vopb_mmu>;
+        power-domains = <&power RK3288_PD_VIO>;
+        status = "disabled";
+        ...
+    };
 
-There are quite a few drivers in multi_v7_defconfig that I suspect could
-be built as loadable modules to decrease the size of the images that are
-currently generated.
+    vopb_mmu: iommu@ff930300 {
+        compatible = "rockchip,iommu";
+        ...
+        interrupt-names = "vopb_mmu";
+        power-domains = <&power RK3288_PD_VIO>;
+        #iommu-cells = <0>;
+        status = "disabled";
+        ...
+    };
 
-I understand that not everybody likes the additional ramdisk but, in my
-opinion, that's what SoC-specific default configurations are good for.
-We can use those to provide a base for developers where the focus is
-ease of testability.
+    vopl: vop@ff940000 {
+        compatible = "rockchip,rk3288-vop";
+        reg = <0xff940000 0x19c>;
+        ...
+        iommus = <&vopl_mmu>;
+        power-domains = <&power RK3288_PD_VIO>;
+        status = "disabled";
+        ...
+    };
 
-Thierry
+    vopl_mmu: iommu@ff940300 {
+        compatible = "rockchip,iommu";
+        ...
+        interrupt-names = "vopl_mmu";
+        power-domains = <&power RK3288_PD_VIO>;
+        #iommu-cells = <0>;
+        status = "disabled";
+    };
 
---AqsLC8rIMeq19msA
-Content-Type: application/pgp-signature; name="signature.asc"
+    Others, we can verify this driver for the EDP.
+    We can apply the following these patchs.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+    6967631 New          [v2,1/8] drm: exynos/dp: fix code style
+    6967741 New          [v2,2/8] drm: exynos/dp: convert to drm bridge mode
+    6967801 New          [v2,3/8] drm: bridge: analogix_dp: split exynos dp driver to bridge dir
+    6967791 New          [v2,4/8] drm: rockchip/dp: add rockchip platform dp driver
+    6968031 New          [v2,5/8] drm: bridge/analogix_dp: add platform device type support
+    6968141 New          [v2,6/8] drm: bridge: analogix_dp: add some rk3288 special registers setting
+    6967941 New          [v2,7/8] drm: bridge: analogix_dp: try force hpd after plug in lookup failed
+    6967971 New          [v2,8/8] drm: bridge/analogix_dp: expand the delay time for hpd detect
 
-iQIcBAABCAAGBQJV7XSkAAoJEN0jrNd/PrOh2/EP/26tfnMJp78FhP0p0oTapLE4
-EFjeDfpc4SZpiJaIHWOvo/JcQg7CdlSttQotZiT1udWWshgNm/26Bw066HEr4wS/
-UQelzgJxoGxHd5PpOOQ4AiTKO3WjfvmdLlldLAfnae2PaL8BjoWUevKbq9KNLNAR
-qhW8AUJ+gAL3iaflR0yHINkcs10BQvwlEt4GwVcS+IQrhW/bGYnmAbe6/2SzRGun
-yBavcAjxSk33pViPAgG2boGarrPlbIryXUYjGZJxTpfB2wYOKirPx8ckhkfq0zRp
-HQxBlAlYkaWemLXrF8aKeRyDKs1oX1YHfvUI7ldBW4QC4g7OlYPdiW8kuLvAJ5OP
-jULfAakEiOBuNZAo7/pncQVj3oTCM/aMrRm7gQI9ppb+Bn/UdAQ6O5ySkv5bpAVY
-/ewkxGCnpSj1NL+y64AezYzXpSTCC2g2FGVj3z/QOt8npJTNfUwrUBZkwTY2kDOx
-VaxW+obcPuaTVFkOSgnjP83HuIup6dqA8+Kmx020o1kRhWH5VxlwqrKqHhpqL8Rp
-rY7kJNMcMJDAQAtxDic/DvshOg7th9B9GmCH1CTe3c/eJTXeYUUUeD82LwvpZ2y3
-UtP3RCCVaouMUAtZWCrxsTBli84d41wtKo2jT4/V0LRHyiMflktErqOq7BMRdeVR
-udN8HgA04GOgsfO5MCnB
-=fnjB
------END PGP SIGNATURE-----
+    There is a recent addition from Linus Walleij,
+    called simple-mfd [a] that is supposed to get added real early for kernel 4.2
 
---AqsLC8rIMeq19msA--
+    [a]:
+    https://git.kernel.org/cgit/linux/kernel/git/linusw/linux-integrator.git/commit/?id=fcf294c020ff7ee4e3b1e96159e4dc7a17ad5
+
+    Here is my branch, Tested by chromeos-3.14 and next-kernel.
+
+    e81a4d2 ARM: dts: add the support power-domain node on RK3288 SoCs
+    38eec06 soc: rockchip: power-domain: Add power domain driver
+    086d4f3 ARM: power-domain: rockchip: add all the domain type on RK3288 SoCs
+    498fd14 dt-bindings: add document of Rockchip power domains
+    4e4adb2 Merge tag 'nfs-for-4.3-1' of git://git.linux-nfs.org/projects/trondmy/linux-nfs
+    77a7880 Merge tag 'xfs-for-linus-4.3' of git://git.kernel.org/pub/scm/linux/kernel/git/dgc/linux-xfs
+    5445b1f NFSv4: Respect the server imposed limit on how many changes we may cache
+    7d160a6 NFSv4: Express delegation limit in units of pages
+    7d9071a Merge branch 'for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/viro/vfs
+    bd77966 Merge tag 'for-linus-4.3-merge-window-part-1' of git://git.kernel.org/pub/scm/linux/kernel/git/ericvh/v9fs
+    9cfcc65 Merge tag 'media/v4.3-1' of git://git.kernel.org/pub/scm/li
+    ......
+
+
+Changes in v18:
+- remove the notes of domains from dt-binding.
+- As Kevin suggestion, set pd->num_clks = 0 in
+  rockchip_pm_remove_one_domain() ans add the mutex for protect
+- assign the order in rk3288_pm_domains[] in pm-domain driver.
+- Change the index order in the dts on PATCH [4/4] .
+- Add some notes for domains in the dts on PATCH [4/4].
+
+Changes in v17:
+- add the decription in detail for RK3288 SoCs.
+- delete the ugly chart in the commit.
+- (re)defining config for ROCKCHIP.
+- remove clocks of the HDMI ctrl.
+- update the description.
+- add Reviewed-by: Michale.
+
+Changes in v16:
+- remove the pmu node.
+- Add more domain decription.
+- the driver type from tristate to bool.
+- Letter misspelled.
+- As Ulf suggestion, remove #include <linux/clk-provider.h>,
+  use "%pC" as the formatting string for the dev_dbg().
+- As the Ulf suggestion, set the genpd->flags to assign the
+  ->stop|start() callbacks.
+- Manually copy the problem in patch v15.
+- rebase the description.
+
+Changes in v15:
+- change the comment.
+- As the kevin suggestion, put the power-domain driver into driver/soc/vendor.
+- As Heiko suggestion, Patch 1: binding doc, 2: binding-header, 3: driver,
+  4: dts-changes.
+- return -ENXIO --> return -ENODEV.
+- As Tomasz remarked previously the dts should represent the hardware
+  and the power-domains are part of the pmu.
+
+Changes in v14:
+- does not need to set an owner,remove the "THIS_MODULE".
+- Remove essential clocks from rk3288 PD_VIO domain, Some clocks are
+  essential for the system health and should not be turned down.
+  However there is no owner for them so if they listed as belonging to power
+  domain we'll try toggling them up and down during power domain transition.
+  As a result we either fail to suspend or resume the system.
+
+Changes in v13:
+- Remove essential clocks from rk3288 PD_VIO domain Some clocks are essential
+  for the system health and should not be turned down. However there is no owner
+  for them so if they listed as belonging to power domain we'll try toggling them
+  up and down during power domain.
+- Device drivers expect their devices to be powered on before their
+  probing code is invoked. To achieve that we should start with
+  power domains powered on (we may turn them off later once all devices enable
+  runtime powermanagment and go idle).
+- This change switches Rockchip power domain driver to use updated
+  device_attach and device_detach API.
+- set the gpu/core power domain power delay time.
+- fix enumerating PM clocks for devices.
+- fix use after free We can't use clk after we did clk_put(clk).
+
+Changes in v12:
+- fix the title doamin->domain.
+- updated device_attach and device_detach API,otherwise it will
+  compile fail on next kernel.
+
+Changes in v11:
+- fix pm_genpd_init(&pd->genpd, NULL, false).
+
+Changes in v10:
+- this switches over domain infos to use masks instead of recomputing
+  them each time and also gets rid of custom domain translator and
+  uses standard onecell on.
+- fix missing the #include <dt-bindings/power-domain/rk3288.h>.
+- remove the notes.
+
+Changes in v9:
+- add document decription.
+- fix v8 changes as follows:
+- This reconciles the v2 and v7 code so that we power domain have lists of clocks
+  they trigger on and off during power transitions and independently from power
+  domains clocks. We attach clocks to devices comprising power domain and prepare
+  them so they are turn on and off by runtime PM.
+- add rockchip_pm_add_one_domain() to control domains.
+- add pd_start/pd_stop interface to control clocks.
+- add decription for power-doamin node.
+
+Changes in v8:
+- document go back to v2.
+- This reconciles the v2 and v7 code so that we power domain have
+  lists of clocks they toggle on and off during power transitions
+  and independently from power domains clocks we attach clocks to
+  devices comprising power domain and prepare them so they are
+  turn on and off by runtime PM.
+- DTS go back to v2.
+
+Changes in v7:
+ - Delete unused variables
+
+Changes in v6:
+- delete pmu_lock.
+- modify dev_lock using mutex.
+- pm_clk_resume(pd->dev) change to pm_clk_resume(ed->dev).
+- pm_clk_suspend(pd->dev) change to pm_clk_suspend(ed->dev).
+- add devm_kfree(pd->dev, de) in rockchip_pm_domain_detach_dev.
+
+Changes in v5:
+- delete idle_lock.
+- add timeout in rockchip_pmu_set_idle_request().
+
+Changes in v4:
+- use list storage dev.
+
+Changes in v3:
+- DT structure has changed.
+- change use pm_clk_resume() and pm_clk_suspend().
+- Decomposition power-controller, changed to multiple controller
+  (gpu-power-controller, hevc-power-controller).
+
+Changes in v2:
+- move clocks to "optional".
+- remove the "pd->pd.of_node = np".
+- make pd_vio clocks all one entry per line and alphabetize.
+- power: power-controller move back to pinctrl: pinctrl.
+
+Caesar Wang (4):
+  dt-bindings: add document of Rockchip power domains
+  ARM: power-domain: rockchip: add all the domain type on RK3288 SoCs
+  soc: rockchip: power-domain: Add power domain driver
+  ARM: dts: add the support power-domain node on RK3288 SoCs
+
+ .../bindings/soc/rockchip/power_domain.txt         |  46 ++
+ arch/arm/boot/dts/rk3288.dtsi                      |  93 +++-
+ drivers/soc/Kconfig                                |   1 +
+ drivers/soc/Makefile                               |   1 +
+ drivers/soc/rockchip/Kconfig                       |  14 +
+ drivers/soc/rockchip/Makefile                      |   4 +
+ drivers/soc/rockchip/pm_domains.c                  | 490 +++++++++++++++++++++
+ include/dt-bindings/power-domain/rk3288.h          |  31 ++
+ 8 files changed, 679 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+ create mode 100644 drivers/soc/rockchip/Kconfig
+ create mode 100644 drivers/soc/rockchip/Makefile
+ create mode 100644 drivers/soc/rockchip/pm_domains.c
+ create mode 100644 include/dt-bindings/power-domain/rk3288.h
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
