@@ -1,46 +1,87 @@
-From: Romain Perier <romain.perier@gmail.com>
-Subject: Re: [PATCH v2] clk: rockchip: Add pclk_peri to critical clocks on RK3066/RK3188
-Date: Wed, 9 Sep 2015 19:58:48 +0200
-Message-ID: <CABgxDoJRdF_k0EZLrEWXqpDrmj5LVRL24izGLJY4AmtUNOk7PQ@mail.gmail.com>
-References: <1440322357-2621-1-git-send-email-romain.perier@gmail.com>
-	<CABgxDo+otZrYoqTNK-ea=L6Dsd5p_b_MFCi4H4XJZZ25PV_qnA@mail.gmail.com>
-	<CABgxDoLgqfzO-Sb_rKHe=-GuMaKWMihHhktx6sDSM6M=Q+Koaw@mail.gmail.com>
-	<20150904162402.GN15099@codeaurora.org>
-	<CABgxDo+0qN5GJdCNpQi4g_CdW67PvxsogMseRoAa5cuAbWk1wQ@mail.gmail.com>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: set rockchip-specific uboot bootmode flags on reboot (was:
+ [PATCH] ARM: rockchip: add reboot notifier)
+Date: Wed, 9 Sep 2015 12:05:37 -0600
+Message-ID: <CAPnjgZ0n7aNY7FRnoDYUBEnQAtUO1BWKs6DDzaMQyHsg1kQ1Jg@mail.gmail.com>
+References: <1441716187-29446-1-git-send-email-andy.yan@rock-chips.com>
+ <9364768.6AeuYh3EEP@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CABgxDo+0qN5GJdCNpQi4g_CdW67PvxsogMseRoAa5cuAbWk1wQ@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9364768.6AeuYh3EEP@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, lk <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, lak <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-so, which of you does take the patch for -rc1 ?
-
-Regards,
-Romain
-
-2015-09-05 18:12 GMT+02:00 Romain Perier <romain.perier@gmail.com>:
-> Np,
->
-> Yes it would be nice to take it for -rc1, because I think that 4.3
-> won't boot without this fix
->
->
-> Regards,
-> Romain
->
-> 2015-09-04 18:24 GMT+02:00 Stephen Boyd <sboyd@codeaurora.org>:
->> On 09/04, Romain Perier wrote:
->>> Hi all,
->>>
->>> just a reminder, I sent this patch two weeks ago, rk3xxx-based
->>> platforms still need it, it fixes a freeze during boot.
->>
->> Sorry I thought that Linus W was going to pick this up? If not,
->> we can take it through clk tree as a fix for -rc1.
->>
->> --
->> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
->> a Linux Foundation Collaborative Project
+SGksCgpPbiA4IFNlcHRlbWJlciAyMDE1IGF0IDE2OjQ2LCBIZWlrbyBTdMO8Ym5lciA8aGVpa29A
+c250ZWNoLmRlPiB3cm90ZToKPgo+IEhpIEFuZHksCj4KPiBBbSBEaWVuc3RhZywgOC4gU2VwdGVt
+YmVyIDIwMTUsIDIwOjQzOjA3IHNjaHJpZWIgQW5keSBZYW46Cj4gPiByb2NrY2hpcCBwbGF0Zm9y
+bSBoYXZlIGEgcHJvdG9jb2wgdG8gcGFzcyB0aGUgdGhlIGtlcm5lbAo+ID4gcmVib290IG1vZGUg
+dG8gYm9vdGxvYWRlciBieSBzb21lIHNwZWNpYWwgcmVnaXN0ZXJzIHdoZW4KPiA+IHN5c3RlbSBy
+ZWJvb3QuQnkgdGhpcyB3YXkgdGhlIGJvb3Rsb2FkZXIgY2FuIHRha2UgZGlmZmVyZW50Cj4gPiBh
+Y3Rpb24gYWNjb3JkaW5nIHRvIHRoZSBkaWZmZXJlbnQga2VybmVsIHJlYm9vdCBtb2RlLCBmb3IK
+PiA+IGV4YW1wbGUsIGNvbW1hbmQgInJlYm9vdCBsb2FkZXIiIHdpbGwgcmVib290IHRoZSBib2Fy
+ZCB0bwo+ID4gcm9ja3VzYiBtb2RlLCB0aGlzIGlzIGEgdmVyeSBjb252ZW5pZW50IHdheSB0byBn
+ZXQgdGhlIGJvYXJkCj4gPiB0byBkb3dubG9hZCBtb2RlLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6
+IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KPgo+IFsuLi5dCj4KPiA+IEBAIC0w
+LDAgKzEsMjIgQEAKPiA+ICsjaWZuZGVmIF9fTUFDSF9ST0NLQ0hJUF9MT0FERVJfSAo+ID4gKyNk
+ZWZpbmUgX19NQUNIX1JPQ0tDSElQX0xPQURFUl9ICj4gPiArCj4gPiArLypoaWdoIDI0IGJpdHMg
+aXMgdGFnLCBsb3cgOCBiaXRzIGlzIHR5cGUqLwo+ID4gKyNkZWZpbmUgU1lTX0xPQURFUl9SRUJP
+T1RfRkxBRyAgIDB4NTI0MkMzMDAKPiA+ICsKPiA+ICtlbnVtIHsKPiA+ICsgICAgIEJPT1RfTk9S
+TUFMID0gMCwgLyogbm9ybWFsIGJvb3QgKi8KPiA+ICsgICAgIEJPT1RfTE9BREVSLCAgICAgLyog
+ZW50ZXIgbG9hZGVyIHJvY2t1c2IgbW9kZSAqLwo+ID4gKyAgICAgQk9PVF9NQVNLUk9NLCAgICAv
+KiBlbnRlciBtYXNrcm9tIHJvY2t1c2IgbW9kZSAobm90IHN1cHBvcnQgbm93KSAqLwo+ID4gKyAg
+ICAgQk9PVF9SRUNPVkVSLCAgICAvKiBlbnRlciByZWNvdmVyICovCj4gPiArICAgICBCT09UX05P
+UkVDT1ZFUiwgIC8qIGRvIG5vdCBlbnRlciByZWNvdmVyICovCj4gPiArICAgICBCT09UX1NFQ09O
+RE9TLCAgIC8qIGJvb3Qgc2Vjb25kIE9TIChub3Qgc3VwcG9ydCBub3cpKi8KPiA+ICsgICAgIEJP
+T1RfV0lQRURBVEEsICAgLyogZW50ZXIgcmVjb3ZlciBhbmQgd2lwZSBkYXRhLiAqLwo+ID4gKyAg
+ICAgQk9PVF9XSVBFQUxMLCAgICAvKiBlbnRlciByZWNvdmVyIGFuZCB3aXBlIGFsbCBkYXRhLiAq
+Lwo+ID4gKyAgICAgQk9PVF9DSEVDS0lNRywgICAvKiBjaGVjayBmaXJtd2FyZSBpbWcgd2l0aCBi
+YWNrdXAgcGFydCovCj4gPiArICAgICBCT09UX0ZBU1RCT09ULCAgIC8qIGVudGVyIGZhc3QgYm9v
+dCBtb2RlICovCj4gPiArICAgICBCT09UX1NFQ1VSRUJPT1RfRElTQUJMRSwKPiA+ICsgICAgIEJP
+T1RfQ0hBUkdJTkcsICAgLyogZW50ZXIgY2hhcmdlIG1vZGUgKi8KPiA+ICsgICAgIEJPT1RfTUFY
+ICAgICAgICAgLyogTUFYIFZBTElEIEJPT1QgVFlQRS4qLwo+ID4gK307Cj4gPiArI2VuZGlmCj4K
+PiBUaGVzZSBmbGFncyByZWx5IG9uIGNvZGUgaW4gdGhlIGJvb3Rsb2FkZXIgdG8gYWN0dWFsbHkg
+aGFuZGxlIHRoZSB0YXJnZXQKPiBhY3Rpb24uIE5vd2FkYXlzIHRoaXMgaXMgdWJvb3QsIGJ1dCBz
+dGlsbCBhIHJvY2tjaGlwLXNwZWNpZmljIGZvcmsuIEFuZCB3ZSdyZQo+IGFjdGl2ZWx5IG1vdmlu
+ZyBhd2F5IGZyb20gdGhhdCwgd2l0aCB0aGUgcmVjZW50IHJrMzI4OCBhZGRpdGlvbiB0byBtYWlu
+bGluZQo+IHVib290Lgo+Cj4gU28gdW5sZXNzIHlvdSBjb252aW5jZSB1Ym9vdCBwZW9wbGUgdGhh
+dCB0aGUgX3VuZGVybHlpbmcgc3BlY2lhbAo+IGZ1bmN0aW9uYWxpdHlfIGJlaGluZCB0aGVzZSBm
+bGFncyBzaG91bGQgYmUgcGFydCBvZiB1Ym9vdCwgSSBkb24ndCB0aGluayB0aGlzCj4gaXMgZ29p
+bmcgdG8gZmx5Lgo+Cj4KPiBJbiBhIHdheSB0aGlzIGlzIHNpbWlsYXIgdG8gZ3B1IGtlcm5lbCBj
+b2RlIHRhbGtpbmcgdG8gcHJvcHJpZXRhcnkgdXNlcnNwYWNlCj4gbGlicyAtIHRoZXNlIGFyZSBh
+bHNvIG5vdCBlbGlnaWJsZSBmb3IgdGhlIGtlcm5lbC4gKG1lYW5pbmcgc3R1ZmYgbGlrZSB0aGUK
+PiBtYWxpIGtlcm5lbCBkcml2ZXIgbm90IGJlaW5nIGFsbG93ZWQpLgoKSSBkb24ndCB3YW50IHRv
+IGNvbW1lbnQgb24gd2hhdCBMaW51eCBkb2VzIG9yIGRvZXMgbm90IHdhbnQuIEJ1dCBJIGNhbgpz
+ZWUgdGhpcyBzb3J0IG9mIGZlYXR1cmUgYmVpbmcgdXNlZnVsIGZvciBkZXZzIGF0IGxlYXN0LiBT
+byBsb25nIGFzIGl0CmlzIGRlZmluZWQgaW4gYSB3YXkgdGhhdCBpcyBub3QgUm9ja2NoaXAtc3Bl
+Y2lmaWMgKGFuZCB0aGUgYWJvdmUgZW51bQpsb29rcyBwcmV0dHkgcmVhc29uYWJsZSBvbiB0aGF0
+IGZyb250LCBJIHRoaW5rIGl0IG1ha2VzIHNlbnNlLgoKT2YgY291cnNlIGl0J3MgYSBiaXQgb2Rk
+IHRvIHRhcmdldCBhIGRvd25zdHJlYW0gVS1Cb290IHdpdGggYSBMaW51eApmZWF0dXJlLiBCdXQg
+aG9wZWZ1bGx5IFJvY2tjaGlwJ3MgVS1Cb290IHN1cHBvcnQgYW5kIGRldmVsb3BtZW50IHdpbGwK
+bW92ZSB0byBtYWlubGluZSB3aXRoIHRpbWUuCgo+Cj4gWy4uLl0KPgo+ID4gK3N0YXRpYyBpbnQg
+cm9ja2NoaXBfcmVib290X25vdGlmeShzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKnRoaXMsCj4gPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGxvbmcgbW9kZSwgdm9pZCAq
+Y21kKQo+ID4gK3sKPiA+ICsgICAgIHUzMiBmbGFnOwo+ID4gKwo+ID4gKyAgICAgcm9ja2NoaXBf
+Z2V0X3JlYm9vdF9mbGFnKGNtZCwgJmZsYWcpOwo+ID4gKyAgICAgcmVnbWFwX3dyaXRlKHJlZ21h
+cCwgZmxhZ19yZWcsIGZsYWcpOwo+ID4gKwo+ID4gKyAgICAgcmV0dXJuIE5PVElGWV9ET05FOwo+
+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgc3RydWN0IG5vdGlmaWVyX2Jsb2NrIHJvY2tjaGlwX3Jl
+Ym9vdF9oYW5kbGVyID0gewo+ID4gKyAgICAgLm5vdGlmaWVyX2NhbGwgPSByb2NrY2hpcF9yZWJv
+b3Rfbm90aWZ5LAo+ID4gKyAgICAgLnByaW9yaXR5ID0gMTUwLAo+ID4gK307Cj4KPiB0aGUgcmVz
+dGFydCBoYW5kbGVycyBhcmUgbWVhbnQgdG8gcmVhbGx5IG9ubHkgcmVzdGFydCB0aGUgc3lzdGVt
+LCBub3QgdG8KPiBleGVjdXRlIHNvbWUgYWN0aW9ucyBiZWZvcmUgdGhlIHJlc3RhcnQgaGFwcGVu
+cy4KPgo+IFNlZSBodHRwczovL2xrbWwub3JnL2xrbWwvMjAxNS82LzMvNzA3IGZvciBhIHNpbWls
+YXIgY2FzZS4KPgo+Cj4gSGVpa28KClJlZ2FyZHMsClNpbW9uCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
