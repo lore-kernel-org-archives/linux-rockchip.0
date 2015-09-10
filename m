@@ -1,202 +1,80 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2] ARM: rockchip: add reboot notifier
-Date: Thu, 10 Sep 2015 19:04:49 +0800
-Message-ID: <1441883089-26567-1-git-send-email-andy.yan@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Thu, 10 Sep 2015 14:40:26 +0200
+Message-ID: <CAPDyKFqR-+GzV0SGiA_cnoNftcZ0Y_fwe5vW2NvDxd6HbO__UQ@mail.gmail.com>
+References: <1441045446-30858-1-git-send-email-heiko@sntech.de>
+	<1441045446-30858-4-git-send-email-heiko@sntech.de>
+	<CAPDyKFqJp3VuOeTh4Abkn2X6gQxNHDXwJj8N51OxxSo+Agespw@mail.gmail.com>
+	<CAD=FV=Wy7foROYkmR+cX+NS5-=BaB36WsW1sc1XjmmdUnPCxsA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Wy7foROYkmR+cX+NS5-=BaB36WsW1sc1XjmmdUnPCxsA@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-rockchip platform have a protocol to pass the kernel reboot
-mode to bootloader by some special registers when system reboot.
-By this way the bootloader can take different action according
-to the different kernel reboot mode, for example, command
-"reboot loader" will reboot the board to rockusb mode, this is
-a very convenient way to get the board enter download mode.
+On 2 September 2015 at 18:20, Doug Anderson <dianders@chromium.org> wrote:
+> Ulf,
+>
+> On Wed, Sep 2, 2015 at 4:38 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>>> +/**
+>>> + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
+>>> + *
+>>> + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as possible.
+>>
+>> Looking at the code, I don't think this statement is entirely true.
+>> Isn't it so that we will be trying with a maximum tolerance of 0.3 V
+>> towards the VMMC voltage level (then fall-back to the complete range)?
+>> Perhaps you can find a better way to describe that in the change log.
+>
+> If regulator_set_voltage_triplet() is ever implemented more correctly
+> then the description here is correct.  ...the problem is that
+> regulator_set_voltage_triplet() is still using the same shortcut that
+> regulator_set_voltage_tol() was using.
 
-Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Okay, let's mention that somehow.
 
-Changes in v2:
-  - check cpu dt node
-  - remove a unnecessary of_put_node in function rockchip_get_pmu_regmap
-  - fix a align issue
-  - use reboot_notifier instead of restart_handler
+>
+>
+>>> +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
+>>> +{
+>>> +       int volt, min_uV, max_uV;
+>>> +
+>>> +       /* If no vqmmc supply then we can't change the voltage */
+>>> +       if (IS_ERR(mmc->supply.vqmmc))
+>>> +               return -EINVAL;
+>>
+>> In general vqmmc is considered as an optional regulator and that's
+>> also how host drivers treat it. So perhaps it would make sense to
+>> return 0 here instead of an error code or what do you think?
+>
+> The idea is that since this is intended to be called by
+> start_signal_voltage_switch() and having no vqmmc should be considered
+> an error for start_signal_voltage_switch() then it should be an error
+> here.  What do you think?
 
- arch/arm/mach-rockchip/Makefile |   2 +-
- arch/arm/mach-rockchip/loader.h |  22 ++++++++
- arch/arm/mach-rockchip/reboot.c | 111 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 134 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/mach-rockchip/loader.h
- create mode 100644 arch/arm/mach-rockchip/reboot.c
+Okay!
 
-diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
-index 5c3a9b2..cd291e3 100644
---- a/arch/arm/mach-rockchip/Makefile
-+++ b/arch/arm/mach-rockchip/Makefile
-@@ -1,5 +1,5 @@
- CFLAGS_platsmp.o := -march=armv7-a
- 
--obj-$(CONFIG_ARCH_ROCKCHIP) += rockchip.o
-+obj-$(CONFIG_ARCH_ROCKCHIP) += rockchip.o reboot.o
- obj-$(CONFIG_PM_SLEEP) += pm.o sleep.o
- obj-$(CONFIG_SMP) += headsmp.o platsmp.o
-diff --git a/arch/arm/mach-rockchip/loader.h b/arch/arm/mach-rockchip/loader.h
-new file mode 100644
-index 0000000..bf51baa
---- /dev/null
-+++ b/arch/arm/mach-rockchip/loader.h
-@@ -0,0 +1,22 @@
-+#ifndef __MACH_ROCKCHIP_LOADER_H
-+#define __MACH_ROCKCHIP_LOADER_H
-+
-+/*high 24 bits is tag, low 8 bits is type*/
-+#define SYS_LOADER_REBOOT_FLAG   0x5242C300
-+
-+enum {
-+	BOOT_NORMAL = 0, /* normal boot */
-+	BOOT_LOADER,     /* enter loader rockusb mode */
-+	BOOT_MASKROM,    /* enter maskrom rockusb mode (not support now) */
-+	BOOT_RECOVER,    /* enter recover */
-+	BOOT_NORECOVER,  /* do not enter recover */
-+	BOOT_SECONDOS,   /* boot second OS (not support now)*/
-+	BOOT_WIPEDATA,   /* enter recover and wipe data. */
-+	BOOT_WIPEALL,    /* enter recover and wipe all data. */
-+	BOOT_CHECKIMG,   /* check firmware img with backup part*/
-+	BOOT_FASTBOOT,   /* enter fast boot mode */
-+	BOOT_SECUREBOOT_DISABLE,
-+	BOOT_CHARGING,   /* enter charge mode */
-+	BOOT_MAX         /* MAX VALID BOOT TYPE.*/
-+};
-+#endif
-diff --git a/arch/arm/mach-rockchip/reboot.c b/arch/arm/mach-rockchip/reboot.c
-new file mode 100644
-index 0000000..c29f031e
---- /dev/null
-+++ b/arch/arm/mach-rockchip/reboot.c
-@@ -0,0 +1,111 @@
-+/*
-+ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
-+#include <linux/init.h>
-+#include <linux/module.h>
-+#include <linux/kernel.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/reboot.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/syscon.h>
-+#include "loader.h"
-+
-+#define RK3188_PMU_SYS_REG0             0x40
-+#define RK3288_PMU_SYS_REG0             0x94
-+
-+struct regmap *regmap;
-+int flag_reg;
-+
-+static int rockchip_get_pmu_regmap(void)
-+{
-+	struct device_node *node;
-+
-+	node = of_find_node_by_path("/cpus");
-+	if (!node)
-+		return -ENODEV;
-+
-+	regmap = syscon_regmap_lookup_by_phandle(node, "rockchip,pmu");
-+	of_node_put(node);
-+	if (!IS_ERR(regmap))
-+		return 0;
-+
-+	regmap = syscon_regmap_lookup_by_compatible("rockchip,rk3066-pmu");
-+	if (!IS_ERR(regmap))
-+		return 0;
-+
-+	return -ENODEV;
-+}
-+
-+static int rockchip_get_reboot_flag_regmap(void)
-+{
-+	int ret = rockchip_get_pmu_regmap();
-+
-+	if (ret < 0)
-+		return ret;
-+
-+	if (of_machine_is_compatible("rockchip,rk3288")) {
-+		flag_reg = RK3288_PMU_SYS_REG0;
-+		return 0;
-+	} else if (of_machine_is_compatible("rockchip,rk3066a") ||
-+		   of_machine_is_compatible("rockchip,rk3066b") ||
-+		   of_machine_is_compatible("rockchip,rk3188")) {
-+		flag_reg = RK3188_PMU_SYS_REG0;
-+		return 0;
-+	}
-+
-+	return -ENODEV;
-+}
-+
-+static void rockchip_get_reboot_flag(const char *cmd, u32 *flag)
-+{
-+	*flag = SYS_LOADER_REBOOT_FLAG + BOOT_NORMAL;
-+
-+	if (cmd) {
-+		if (!strcmp(cmd, "loader") || !strcmp(cmd, "bootloader"))
-+			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_LOADER;
-+		else if (!strcmp(cmd, "recovery"))
-+			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_RECOVER;
-+		else if (!strcmp(cmd, "charge"))
-+			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_CHARGING;
-+	}
-+}
-+
-+static int rockchip_reboot_notify(struct notifier_block *this,
-+				  unsigned long mode, void *cmd)
-+{
-+	u32 flag;
-+
-+	rockchip_get_reboot_flag(cmd, &flag);
-+	regmap_write(regmap, flag_reg, flag);
-+
-+	return NOTIFY_DONE;
-+}
-+
-+static struct notifier_block rockchip_reboot_handler = {
-+	.notifier_call = rockchip_reboot_notify,
-+};
-+
-+static int __init rockchip_reboot_init(void)
-+{
-+	int ret = 0;
-+
-+	if (!rockchip_get_reboot_flag_regmap()) {
-+		ret = register_reboot_notifier(&rockchip_reboot_handler);
-+		if (ret)
-+			pr_err("%s: cannot register reboot handler, %d\n",
-+			       __func__, ret);
-+	}
-+
-+	return ret;
-+}
-+
-+module_init(rockchip_reboot_init);
-+MODULE_AUTHOR("Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org");
-+MODULE_DESCRIPTION("Rockchip platform reboot notifier driver");
-+MODULE_LICENSE("GPL");
--- 
-1.9.1
+>
+>
+>>> +
+>>> +               /* try to stay close to vmmc at first */
+>>> +               if (!mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+>>> +                                               min_uV, volt, max_uV))
+>>> +                       return 0;
+>>> +
+>>> +               return mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc,
+>>> +                                               2700000, volt, 3600000);
+>
+> The whole fact that there are two calls here is really just because of
+> the limitations of the current implementation of
+> regulator_set_voltage_triplet().  If that implementation is ever fixed
+> then we'd just need a single call.  Probably worth a comment saying
+> that?
+
+Yes, please!
+
+Kind regards
+Uffe
