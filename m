@@ -1,31 +1,39 @@
-From: Kevin Hilman <khilman@kernel.org>
-Subject: Re: [PATCH v18 0/4] ARM: rk3288: Add PM Domain support
-Date: Fri, 11 Sep 2015 13:40:35 -0700
-Message-ID: <7htwr0zo3g.fsf@deeprootsystems.com>
-References: <1441693103-26712-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441693103-26712-1-git-send-email-wxt@rock-chips.com> (Caesar
-	Wang's message of "Tue, 8 Sep 2015 14:18:19 +0800")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: heiko@sntech.de, devicetree@vger.kernel.org, ulf.hansson@linaro.org, linux@arm.linux.org.uk, arnd@arndb.de, ijc+devicetree@hellion.org.uk, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, tomasz.figa@gmail.com, mturquette@baylibre.com, linux-arm-kernel@lists.infradead.org
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH 1/2] pinctrl: rockchip: Define GPIO banks 7 and 8
+Date: Sat, 12 Sep 2015 00:36:44 +0200
+Message-ID: <1442011005-4828-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar Wang <wxt@rock-chips.com> writes:
+Rockchip RK3288 has 9 GPIO banks (0 to 8) add definitions for the last
+two.
 
-> Thank you all for providing inputs and comments on previous versions of
-> this patchset.
-> Especially thanks to the (Kevin, Heiko, Dmitry, Doug, ULF, Michael....).
->
-> Add power domain drivers based on generic power domain for
-> Rockchip platform, and support RK3288 SoCs.
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+---
 
-No further issues from me.
+ include/dt-bindings/pinctrl/rockchip.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Reviewed-by: Kevin Hilman <khilman@linaro.org>
+diff --git a/include/dt-bindings/pinctrl/rockchip.h b/include/dt-bindings/pinctrl/rockchip.h
+index 743e66a..efc57cf 100644
+--- a/include/dt-bindings/pinctrl/rockchip.h
++++ b/include/dt-bindings/pinctrl/rockchip.h
+@@ -24,6 +24,8 @@
+ #define RK_GPIO3	3
+ #define RK_GPIO4	4
+ #define RK_GPIO6	6
++#define RK_GPIO7	7
++#define RK_GPIO8	8
+ 
+ #define RK_FUNC_GPIO	0
+ #define RK_FUNC_1	1
+-- 
+2.5.1
 
-Thanks for your persistence in getting this upstream!
-
-Kevin
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
