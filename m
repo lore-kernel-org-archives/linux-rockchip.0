@@ -1,45 +1,74 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v18 0/4] ARM: rk3288: Add PM Domain support
-Date: Sat, 12 Sep 2015 01:08:27 +0200
-Message-ID: <2955708.R31HEONtFK@diego>
-References: <1441693103-26712-1-git-send-email-wxt@rock-chips.com>
- <7htwr0zo3g.fsf@deeprootsystems.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] ARM: dts: support Highspeed for rk3066a platform
+Date: Sat, 12 Sep 2015 07:44:37 +0800
+Message-ID: <55F36765.2040703@rock-chips.com>
+References: <1441956268-10418-1-git-send-email-shawn.lin@rock-chips.com>
+ <1441956341-10623-1-git-send-email-shawn.lin@rock-chips.com>
+ <25757012.mQz0HMffNZ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7htwr0zo3g.fsf-1D3HCaltpLuhEniVeURVKkEOCMrvLtNR@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <25757012.mQz0HMffNZ@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 11. September 2015, 13:40:35 schrieb Kevin Hilman:
-> Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> writes:
-> > Thank you all for providing inputs and comments on previous versions of
-> > this patchset.
-> > Especially thanks to the (Kevin, Heiko, Dmitry, Doug, ULF, Michael....).
-> > 
-> > Add power domain drivers based on generic power domain for
-> > Rockchip platform, and support RK3288 SoCs.
-> 
-> No further issues from me.
-> 
-> Reviewed-by: Kevin Hilman <khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> 
-> Thanks for your persistence in getting this upstream!
+=E5=9C=A8 2015/9/12 6:45, Heiko St=C3=BCbner =E5=86=99=E9=81=93:
+> Hi Shawn,
+>
+> Am Freitag, 11. September 2015, 15:25:41 schrieb Shawn Lin:
+>> Add cap-sd-highspeed and cap-mmc-highspeed for rk3066a
+>> platform to make sd cards running faster.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>>   arch/arm/boot/dts/rk3066a.dtsi | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk30=
+66a.dtsi
+>> index 946f187..b50a785 100644
+>> --- a/arch/arm/boot/dts/rk3066a.dtsi
+>> +++ b/arch/arm/boot/dts/rk3066a.dtsi
+>> @@ -595,6 +595,8 @@
+>>   &mmc0 {
+>>   	pinctrl-names =3D "default";
+>>   	pinctrl-0 =3D <&sd0_clk &sd0_cmd &sd0_cd &sd0_bus4>;
+>> +	cap-mmc-highspeed;
+>> +	cap-sd-highspeed;
+>>   };
+>>
+>
+> Currently we're setting the dw_mmc capabilities in the individual boa=
+rd files
+> and patch1 also correctly adds the cap to the radxarock file.
+>
 
-nice ... thanks Caesar and Kevin for wiggling through this.
+Thanks, Heiko. :)
 
-I'll probably pick this up once 4.3-rc1 is released.
+Right, I was condering add caps in rk3066a for all boards which include=
+=20
+it or for each individual board. Unfortunately, I chose the wrong one.:=
+(
 
 
-Heiko
+Done in the v2.
+
+> So I'd think we should stay with one scheme and probably add the rk30=
+66 caps
+> to the bqcurie2, marsboard and rayeager where applicable.
+>
+>
+> Heiko
+>
+>
+>
+
+
+--=20
+Best Regards
+Shawn Lin
