@@ -1,60 +1,154 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v4 10/10] ASoC: rockchip_i2s: modify DMA max burst to 1
-Date: Fri, 11 Sep 2015 20:31:16 +0800
-Message-ID: <55F2C994.4040007@rock-chips.com>
-References: <1441501881-13700-1-git-send-email-shawn.lin@rock-chips.com>
- <1441502008-14116-1-git-send-email-shawn.lin@rock-chips.com>
- <20150911115331.GM12027@sirena.org.uk>
+From: Kevin Hilman <khilman@kernel.org>
+Subject: Re: [PATCH v18 4/4] ARM: dts: add the support power-domain node on RK3288 SoCs
+Date: Fri, 11 Sep 2015 13:39:51 -0700
+Message-ID: <7hzj0szo4o.fsf@deeprootsystems.com>
+References: <1441693103-26712-1-git-send-email-wxt@rock-chips.com>
+	<1441693103-26712-5-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150911115331.GM12027@sirena.org.uk>
+In-Reply-To: <1441693103-26712-5-git-send-email-wxt@rock-chips.com> (Caesar
+	Wang's message of "Tue, 8 Sep 2015 14:18:23 +0800")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: shawn.lin@rock-chips.com, Vinod Koul <vinod.koul@intel.com>, Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@google.com>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, linux-spi@vger.kernel.org, Yiwei Cai <cain.cai@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Olof Johansson <olof@lixom.net>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: heiko@sntech.de, devicetree@vger.kernel.org, ulf.hansson@linaro.org, linux@arm.linux.org.uk, arnd@arndb.de, ijc+devicetree@hellion.org.uk, linus.walleij@linaro.org, dmitry.torokhov@gmail.com, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, tomasz.figa@gmail.com, mturquette@baylibre.com, linux-arm-kernel@lists.infradead.org, "jinkun.hong" <jinkun.hong@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2015/9/11 19:53, Mark Brown =E5=86=99=E9=81=93:
-> On Sun, Sep 06, 2015 at 09:13:28AM +0800, Shawn Lin wrote:
+Caesar Wang <wxt@rock-chips.com> writes:
+
+> We can add more domains node in the future.
+> This patch add the needed clocks into power-controller.
+> As the discuess about all the device clocks being listed in
+> the power-domains itself.
 >
->> @@ -460,7 +463,6 @@ static int rockchip_i2s_probe(struct platform_de=
-vice *pdev)
->>   	i2s->playback_dma_data.addr =3D res->start + I2S_TXDR;
->>   	i2s->playback_dma_data.addr_width =3D DMA_SLAVE_BUSWIDTH_4_BYTES;
->>   	i2s->playback_dma_data.maxburst =3D 4;
->> -
->>   	i2s->capture_dma_data.addr =3D res->start + I2S_RXDR;
->>   	i2s->capture_dma_data.addr_width =3D DMA_SLAVE_BUSWIDTH_4_BYTES;
->>   	i2s->capture_dma_data.maxburst =3D 4;
+> There are several reasons as follows:
 >
-> This random whitespace change shouldn't be in here.
-
-yes, sorry for this bit.
-
+> Firstly, the clocks need be turned off to save power when
+> the system enter the suspend state. So we need to enumerate
+> the clocks in the dts. In order to power domain can turn on and off.
 >
->> @@ -489,6 +491,18 @@ static int rockchip_i2s_probe(struct platform_d=
-evice *pdev)
->>   		goto err_pcm_register;
->>   	}
->>
->> +	dma_quirk =3D snd_dmaengine_pcm_get_quirks(&pdev->dev);
->> +	if (dma_quirk =3D=3D ROCKCHIP_I2S_BROKEN_BURST_LEN) {
->> +		/*
+> Secondly, the reset-circuit should reset be synchronous on RK3288,
+> then sync revoked. So we need to enable clocks of all devices.
+> In other words, we have to enable the clocks before you operate them
+> if all the device clocks are included in someone domians.
 >
-> I'd expect this to be a switch statement given the way this is writte=
-n.
-
-Ahh.. agreed, but we don't expect more quriks for this driver.  =EF=BC=9A=
-=EF=BC=89)))
-Will be done for the next version.
-
-Thanks.
-
+> Thirdly, as the chip designs for PM hardhare. we need turn on the noc
+> clocks, if we are operating the "pd_vio" domain to enter the idle status.
+> The device's clock be included in domains that needed turn on if do that.
 >
+> The clocks in the dts are needed to enable before you want to happy work.
+> At the moment, This patch is very good work for PM hardware.
+>
+> Also, we can add these clocks in the future if we have some hidden clocks.
+>
+> Signed-off-by: jinkun.hong <jinkun.hong@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Reviewed-by: Michael Turquette <mturquette@baylibre.com>
+>
+> ---
+>
+> Changes in v18:
+> - Change the index order in the dts on PATCH [4/4] .
+> - Add some notes for domains in the dts on PATCH [4/4].
+>
+> Changes in v17:
+> - remove clocks of the HDMI ctrl.
+> - update the description.
+> - add Reviewed-by: Michale.
+>
+> Changes in v16:
+> - Manually copy the problem in patch v15.
+> - rebase the description.
+>
+> Changes in v15:
+> - As Tomasz remarked previously the dts should represent the hardware
+>   and the power-domains are part of the pmu.
+>
+> Changes in v14:
+> - Remove essential clocks from rk3288 PD_VIO domain, Some clocks are
+>   essential for the system health and should not be turned down.
+>   However there is no owner for them so if they listed as belonging to power
+>   domain we'll try toggling them up and down during power domain transition.
+>   As a result we either fail to suspend or resume the system.
+>
+> Changes in v13: None
+> Changes in v12: None
+> Changes in v11: None
+> Changes in v10:
+> - fix missing the #include <dt-bindings/power-domain/rk3288.h>.
+> - remove the notes.
+>
+> Changes in v9:
+> - add decription for power-doamin node.
+>
+> Changes in v8:
+> - DTS go back to v2.
+>
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3:
+> - Decomposition power-controller, changed to multiple controller
+>   (gpu-power-controller, hevc-power-controller).
+>
+> Changes in v2:
+> - make pd_vio clocks all one entry per line and alphabetize.
+> - power: power-controller move back to pinctrl: pinctrl.
+>
+>  arch/arm/boot/dts/rk3288.dtsi | 93 ++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 92 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 906e938..d7fa534 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -44,6 +44,7 @@
+>  #include <dt-bindings/pinctrl/rockchip.h>
+>  #include <dt-bindings/clock/rk3288-cru.h>
+>  #include <dt-bindings/thermal/thermal.h>
+> +#include <dt-bindings/power-domain/rk3288.h>
+>  #include "skeleton.dtsi"
+>  
+>  / {
+> @@ -613,8 +614,98 @@
+>  	};
+>  
+>  	pmu: power-management@ff730000 {
+> -		compatible = "rockchip,rk3288-pmu", "syscon";
+> +		compatible = "rockchip,rk3288-pmu", "syscon", "simple-mfd";
+>  		reg = <0xff730000 0x100>;
+> +
+> +		power: power-controller {
+> +			compatible = "rockchip,rk3288-power-controller";
+> +			#power-domain-cells = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			/*
+> +			 * Note: Although SCLK_* are the working clocks
+> +			 * of device without including on the NOC, needed for
+> +			 * synchronous reset.
+> +			 *
+> +			 * The clocks on the which NOC:
+> +			 * ACLK_IEP/ACLK_VIP/ACLK_VOP0 are on ACLK_VIO0_NIU.
+> +			 * ACLK_ISP/ACLK_VOP1 are on ACLK_VIO1_NIU.
+> +			 * ACLK_RGA is on ACLK_RGA_NIU.
+> +			 * The others (HCLK_*,PLCK_*) are on HCLK_VIO_NIU.
+> +			 *
+> +			 * Which clock are device clocks:
+> +			 *	clocks		devices
+> +			 *	*_IEP		IEP:Image Enhancement Processor
+> +			 *	*_ISP		ISP:Image Signal Processing
+> +			 *	*_VIP		VIP:Video Input Processor
+> +			 *	*_VOP*		VOP:Visual Output Processor
+> +			 *	*_RGA		RGA
+> +			 *	*_EDP*		EDP
+> +			 *	*_LVDS_*	LVDS
+> +			 *	*_HDMI		HDMI
+> +			 *	*_MIPI_*	MIPI
+> +			 */
 
+This is very nice, thank you for including the details.
 
---=20
-Best Regards
-Shawn Lin
+Kevin
