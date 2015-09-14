@@ -1,72 +1,156 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/2] Documentation: bindings: add description of phy for
- sdhci-of-arasan
-Date: Mon, 14 Sep 2015 11:02:01 +0800
-Message-ID: <55F638A9.1090100@rock-chips.com>
-References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
- <1441961729-10594-1-git-send-email-shawn.lin@rock-chips.com>
- <20150914024702.GA19678@xsjsorenbubuntu>
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: Add dtb for the Radxa Rock 2
+ Square board
+Date: Mon, 14 Sep 2015 09:30:49 +0200
+Message-ID: <1442215849.8778.101.camel@collabora.co.uk>
+References: <1442011005-4828-1-git-send-email-sjoerd.simons@collabora.co.uk>
+	 <1442011005-4828-2-git-send-email-sjoerd.simons@collabora.co.uk>
+	 <CABxcv=nRjge1qMeoXt6U6McKbv30oYUhh9C417mX0B=bt9Jg-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150914024702.GA19678@xsjsorenbubuntu>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CABxcv=nRjge1qMeoXt6U6McKbv30oYUhh9C417mX0B=bt9Jg-g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTUvOS8xNCAxMDo0NywgU8O2cmVuIEJyaW5rbWFubiDlhpnpgZM6Cj4gSGkgU2hhd24s
-Cj4KPiBPbiBGcmksIDIwMTUtMDktMTEgYXQgMDQ6NTVQTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+PiBUaGlzIHBhdGNoIGFkZHMgcGh5cyBhbmQgcGh5LW5hbWVzIGZvciBzZGhjaS1vZi1hcmFz
-YW4gYXMgb3B0aW9uYWwKPj4gcHJvcGVydGllcywgYW5kIGRldGFpbHMgdGhlIGV4YW1wbGUgYXMg
-d2VsbC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlw
-cy5jb20+Cj4+IC0tLQo+Pgo+PiAgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
-bWMvYXJhc2FuLHNkaGNpLnR4dCB8IDEwICsrKysrKysrLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwg
-OCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2kudHh0IGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2kudHh0Cj4+IGluZGV4
-IGRhNTQxYzMuLjAyNjRkNWYgMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9tbWMvYXJhc2FuLHNkaGNpLnR4dAo+PiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvbW1jL2FyYXNhbixzZGhjaS50eHQKPj4gQEAgLTEsMTEgKzEsMTIg
-QEAKPj4gICBEZXZpY2UgVHJlZSBCaW5kaW5ncyBmb3IgdGhlIEFyYXNhbiBTREhDSSBDb250cm9s
-bGVyCj4+Cj4+IC0gIFRoZSBiaW5kaW5ncyBmb2xsb3cgdGhlIG1tY1sxXSwgY2xvY2tbMl0gYW5k
-IGludGVycnVwdFszXSBiaW5kaW5ncy4gT25seQo+PiAtICBkZXZpYXRpb25zIGFyZSBkb2N1bWVu
-dGVkIGhlcmUuCj4+ICsgIFRoZSBiaW5kaW5ncyBmb2xsb3cgdGhlIG1tY1sxXSwgY2xvY2tbMl0s
-IGludGVycnVwdFszXSBhbmQgcGh5WzRdIGJpbmRpbmdzLgo+PiArICBPbmx5IGRldmlhdGlvbnMg
-YXJlIGRvY3VtZW50ZWQgaGVyZS4KPj4KPj4gICAgIFsxXSBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvbW1jL21tYy50eHQKPj4gICAgIFsyXSBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvY2xvY2svY2xvY2stYmluZGluZ3MudHh0Cj4+ICAgICBbM10gRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2ludGVycnVwdC1jb250cm9sbGVyL2ludGVycnVwdHMu
-dHh0Cj4+ICsgIFs0XSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1i
-aW5kaW5ncy50eHQKPj4KPj4gICBSZXF1aXJlZCBQcm9wZXJ0aWVzOgo+PiAgICAgLSBjb21wYXRp
-YmxlOiBDb21wYXRpYmlsaXR5IHN0cmluZy4gTXVzdCBiZSAnYXJhc2FuLHNkaGNpLTguOWEnIG9y
-Cj4+IEBAIC0xNiw2ICsxNyw5IEBAIFJlcXVpcmVkIFByb3BlcnRpZXM6Cj4+ICAgICAtIGludGVy
-cnVwdHM6IEludGVycnVwdCBzcGVjaWZpZXIKPj4gICAgIC0gaW50ZXJydXB0LXBhcmVudDogUGhh
-bmRsZSBmb3IgdGhlIGludGVycnVwdCBjb250cm9sbGVyIHRoYXQgc2VydmljZXMKPj4gICAJCSAg
-ICAgIGludGVycnVwdHMgZm9yIHRoaXMgZGV2aWNlLgo+PiArT3B0aW9uYWwgUHJvcGVydGllczoK
-Pj4gKyAgLSBwaHlzOiBGcm9tIFBIWSBiaW5kaW5nczogUGhhbmRsZSBmb3IgdGhlIEdlbmVyaWMg
-UEhZIGZvciBhcmFzYW4uCj4+ICsgIC0gcGh5LW5hbWVzOiAgTVVTVCBiZSAicGh5X2FyYXNhbiIu
-Cj4KPiBUaGlzIG1pZ2h0IGJlIGEgZHVtYiBxdWVzdGlvbiwgYnV0LCBpcyB0aGUgZXh0ZXJuYWwg
-cGh5IGFjdHVhbGx5Cj4gb3B0aW9uYWw/IE9yIGlzIGl0IG1hbmRhdG9yeSBmb3IgY2VydGFpbiBp
-bXBsZW1lbnRhdGlvbnMgb2YgdGhlIElQLgo+IEluIHRoZSBsYXR0ZXIgY2FzZSwgaXQgc2hvdWxk
-IHByb2JhYmx5IGJlIGEgbWFuZGF0b3J5IHByb3BlcnR5IGRlcGVuZGluZwo+IG9uIHRoZSBjb21w
-YXRpYmxlIHN0cmluZyBtYXRjaGluZyBhbiBpbXBsZW1lbnRhdGlvbiB0aGF0IHJlcXVpcmVzIGFu
-Cj4gZXh0ZXJuYWwgcGh5IChhY2NvcmRpbmdseSwgdGhlIGltcGxlbWVudGF0aW9uIG1pZ2h0IGhh
-dmUgdG8gdHJlYXQgaXQKCiBGcm9tIG15IHNvYyB0ZWFtJ3MgcmVwb25zZSwgdGhlcmUgaXMgbm8g
-d2F5IHRvIGJ5cGFzcyBjb250cm9sbGVyIHRvIElPIAppZiBubyBwaHkgc3VwcG9ydGVkLiBTbyBp
-dCBzaG91bGQgYmUgdGhlIGxhdHRlciBjYXNlIHlvdSBtZW50aW9uZWQgZm9yIAphcmFzYW4uc2Ro
-Y2ktNS4xLgoKVGhhbmtzIGZvciBwb2ludCBvdXQgaXQsIHJlYWxseSBoZWxwZnVsLgoKSSB3aWxs
-IGZpeCBpdCBpbiB2Mi4KCj4gdGhhdCB3YXkgdG9vKS4KPgo+IAlTw7ZyZW4KPgo+Cj4KCgotLSAK
-QmVzdCBSZWdhcmRzClNoYXduIExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon, 2015-09-14 at 01:00 +0200, Javier Martinez Canillas wrote:
+> Hello Sjoerd,
+> 
+> On Sat, Sep 12, 2015 at 12:36 AM, Sjoerd Simons
+> <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org> wrote:
+> 
+> [snip]
+> 
+> > +
+> > +               regulators {
+> > +                       vcc_ddr: REG1 {
+> > +                               regulator-name = "VCC_DDR";
+> > +                               regulator-min-microvolt =
+> > <1200000>;
+> > +                               regulator-max-microvolt =
+> > <1200000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcc_io: REG2 {
+> > +                               regulator-name = "VCC_IO";
+> > +                               regulator-min-microvolt =
+> > <3300000>;
+> > +                               regulator-max-microvolt =
+> > <3300000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vdd_log: REG3 {
+> > +                               regulator-name = "VDD_LOG";
+> > +                               regulator-min-microvolt =
+> > <1000000>;
+> > +                               regulator-max-microvolt =
+> > <1000000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcc_20: REG4 {
+> > +                               regulator-name = "VCC_20";
+> > +                               regulator-min-microvolt =
+> > <2000000>;
+> > +                               regulator-max-microvolt =
+> > <2000000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vccio_sd: REG5 {
+> > +                               regulator-name = "VCCIO_SD";
+> > +                               regulator-min-microvolt =
+> > <3300000>;
+> > +                               regulator-max-microvolt =
+> > <3300000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vdd10_lcd: REG6 {
+> > +                               regulator-name = "VDD10_LCD";
+> > +                               regulator-min-microvolt =
+> > <1000000>;
+> > +                               regulator-max-microvolt =
+> > <1000000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcca_codec: REG7 {
+> > +                               regulator-name = "VCCA_CODEC";
+> > +                               regulator-min-microvolt =
+> > <3300000>;
+> > +                               regulator-max-microvolt =
+> > <3300000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcca_tp: REG8 {
+> > +                               regulator-name = "VCCA_TP";
+> > +                               regulator-min-microvolt =
+> > <3300000>;
+> > +                               regulator-max-microvolt =
+> > <3300000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vccio_pmu: REG9 {
+> > +                               regulator-name = "VCCIO_PMU";
+> > +                               regulator-min-microvolt =
+> > <3300000>;
+> > +                               regulator-max-microvolt =
+> > <3300000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vdd_10: REG10 {
+> > +                               regulator-name = "VDD_10";
+> > +                               regulator-min-microvolt =
+> > <1000000>;
+> > +                               regulator-max-microvolt =
+> > <1000000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcc_18: REG11 {
+> > +                               regulator-name = "VCC_18";
+> > +                               regulator-min-microvolt =
+> > <1800000>;
+> > +                               regulator-max-microvolt =
+> > <1800000>;
+> > +                               regulator-always-on;
+> > +                       };
+> > +
+> > +                       vcc18_lcd: REG12 {
+> > +                               regulator-name = "VCC18_LCD";
+> > +                               regulator-min-microvolt =
+> > <1800000>;
+> > +                               regulator-max-microvolt =
+> > <1800000>;
+> > +                               regulator-always-on;
+> > +                       };
+> 
+> Should all these regulators really need to be always-on?
+
+Ideally not all of them, turning the ones that aren't needed off is
+definately on my list of things to do (together with the other
+pheripherals, leds, hw. keys etc). 
+
+For the first patch i do prefer to keep them on so we can have get some
+more testing  with this board before fine-tuning those things (fwiw,
+the rockchip evb board and others with essentially the same pmic setup
+all also have them always-on)
+
+
+
+-- 
+Sjoerd Simons
+Collabora Ltd.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
