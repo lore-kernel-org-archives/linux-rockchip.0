@@ -1,203 +1,73 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH] thermal: rockchip: fix handling of invalid readings
-Date: Mon, 14 Sep 2015 19:46:05 +0800
-Message-ID: <55F6B37D.9010206@rock-chips.com>
-References: <20150807205923.GA33949@dtor-ws>	<55C84521.5040007@rock-chips.com> <CAE_wzQ_xhh17tsVj28W5Z=mgomnz1nOMPMN15Sozb8KcMjo=wA@mail.gmail.com> <55C87B70.5050805@rock-chips.com>
+From: Mark Rutland <mark.rutland@arm.com>
+Subject: Re: [PATCH] clk: rockchip: add critical clock for rk3368
+Date: Mon, 14 Sep 2015 15:19:21 +0100
+Message-ID: <20150914141920.GF7002@leverpostej>
+References: <5267432.TORlj1Iv40@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <55C87B70.5050805@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Dmitry Torokhov <dtor@chromium.org>, Eduardo Valentin <edubezval@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5267432.TORlj1Iv40@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Eduardo,
+On Sun, Sep 13, 2015 at 12:20:36PM +0100, Heiko St=C3=BCbner wrote:
+> Again a result of the gpio-clock-liberation the rk3368 needs the
+> pclk_pd_pmu marked as critical, to boot successfully.
+>=20
+> Reported-by: Mark Rutland <mark.rutland@arm.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-I guess you forgot to review/pick up this series patchs.
+=46WIW: Tested-by: Mark Rutland <mark.rutland@arm.com>
 
-Another patch as follows:
+I'm surprised that we don't describe these as critical in the DT, given
+that this isn't really an internal property of the clock controller, bu=
+t
+rather what happens to be attached to it. That ship appears to have
+sailed, however.
 
-[PATCH] thermal: rockhip: fix setting thermal shutdown polarity
-https://patchwork.kernel.org/patch/6973131/
-
-----
 Thanks,
-Caesar
+Mark.
 
-=E5=9C=A8 2015=E5=B9=B408=E6=9C=8810=E6=97=A5 18:22, Caesar Wang =E5=86=
-=99=E9=81=93:
->
->
-> =E5=9C=A8 2015=E5=B9=B408=E6=9C=8810=E6=97=A5 15:59, Dmitry Torokhov =
-=E5=86=99=E9=81=93:
->> Hi Caesar,
->>
->> On Sun, Aug 9, 2015 at 11:30 PM, Caesar Wang <wxt@rock-chips.com> wr=
-ote:
->>> Dear Dmitry,
->>>
->>> Thanks your patch.
->>>
->>> The code looks like fine,but I don't think the TS-ADC will work on=20
->>> rk3288
->>> SoC.
->> What do you mean? It seems to work when I ran it...
->
-> Making a mistake.:-(
->
->>>
->>> =E5=9C=A8 2015=E5=B9=B408=E6=9C=8808=E6=97=A5 04:59, Dmitry Torokho=
-v =E5=86=99=E9=81=93:
->>>> We attempted to signal invalid code by returning -EAGAIN from
->>>> rk_tsadcv2_code_to_temp(), unfortunately the return value was stuf=
-fed
->>>> directly into the temperature pointer, potentially confusing upper
->>>> layers with temperature of -EINVAL.
->>>>
->>>> Let's split temperature from error/success indicator to avoid such
->>>> confusion.
->>>>
->>>> Also change the way we scan the temperature table to start with th=
-e=20
->>>> 2nd
->>>> element so that we do not need to worry that we may reference out =
-of
->>>> bounds element while doing binary search and keep checking that we=
- end
->>>> up with 'mid' equal to 0 (since we are looking for the temperature=
-=20
->>>> that
->>>> would fall into interval between the 'mid' and 'mid - 1') .
->>>>
->>>> Signed-off-by: Dmitry Torokhov <dtor@chromium.org>
->>>> ---
->>>>    drivers/thermal/rockchip_thermal.c | 28=20
->>>> +++++++++++++---------------
->>>>    1 file changed, 13 insertions(+), 15 deletions(-)
->>>>
->>>> diff --git a/drivers/thermal/rockchip_thermal.c
->>>> b/drivers/thermal/rockchip_thermal.c
->>>> index c89ffb2..93ee307 100644
->>>> --- a/drivers/thermal/rockchip_thermal.c
->>>> +++ b/drivers/thermal/rockchip_thermal.c
->>>> @@ -124,7 +124,7 @@ struct rockchip_thermal_data {
->>>>    #define TSADCV2_AUTO_PERIOD_HT_TIME           50  /* msec */
->>>>      struct tsadc_table {
->>>> -       unsigned long code;
->>>> +       u32 code;
->>>>          long temp;
->>>>    };
->>>>    @@ -164,7 +164,6 @@ static const struct tsadc_table=20
->>>> v2_code_table[] =3D {
->>>>          {3452, 115000},
->>>>          {3437, 120000},
->>>>          {3421, 125000},
->>>> -       {0, 125000},
->>>>    };
->>>>      static u32 rk_tsadcv2_temp_to_code(long temp)
->>>> @@ -191,19 +190,21 @@ static u32 rk_tsadcv2_temp_to_code(long temp=
-)
->>>>          return 0;
->>>>    }
->>>>    -static int rk_tsadcv2_code_to_temp(u32 code)
->>>> +static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
->
-> It's wired that can't git-am this patch.
->
-> I search the Eduardo'branch[0] for rockchip-thermal.c driver. The=20
-> function is "static long rk_tsadcv2_code_to_temp(u32 code)"
->
-> Maybe i'm missing something, I verified this patch on my board but=20
-> this fixed.
->
-> So you can free add it:
-> Tested-by: Caesar Wang <wxt@rock-chips.com>
->
-> [0]:
-> url =3D=20
-> git://git.kernel.org/pub/scm/linux/kernel/git/evalenti/linux-soc-ther=
-mal.git
->
->
->
 > ---
-> Thanks,
-> Caesar
->
->
->
->>>>    {
->>>> -       unsigned int low =3D 0;
->>>> +       unsigned int low =3D 1;
->>>>          unsigned int high =3D ARRAY_SIZE(v2_code_table) - 1;
->>>>          unsigned int mid =3D (low + high) / 2;
->>>>          unsigned int num;
->>>>          unsigned long denom;
->>>>    -     /* Invalid code, return -EAGAIN */
->>>> -       if (code > TSADCV2_DATA_MASK)
->>>> -               return -EAGAIN;
->>>> +       BUILD_BUG_ON(ARRAY_SIZE(v2_code_table) < 2);
->>>>    -     while (low <=3D high && mid) {
->>>> +       code &=3D TSADCV2_DATA_MASK;
->>>> +       if (code < v2_code_table[high].code)
->>>> +               return -EAGAIN;         /* Incorrect reading */
->>>> +
->>>> +       while (low <=3D high) {
->>>>                  if (code >=3D v2_code_table[mid].code &&
->>>>                      code < v2_code_table[mid - 1].code)
->>>>                          break;
->>>> @@ -223,7 +224,9 @@ static int rk_tsadcv2_code_to_temp(u32 code)
->>>>          num =3D v2_code_table[mid].temp - v2_code_table[mid - 1].=
-temp;
->>>>          num *=3D v2_code_table[mid - 1].code - code;
->>>>          denom =3D v2_code_table[mid - 1].code -=20
->>>> v2_code_table[mid].code;
->>>> -       return v2_code_table[mid - 1].temp + (num / denom);
->>>> +       *temp =3D v2_code_table[mid - 1].temp + (num / denom);
->>>> +
->>>> +       return 0;
->>>>    }
->>>>      /**
->>>> @@ -281,14 +284,9 @@ static int rk_tsadcv2_get_temp(int chn, void=20
->>>> __iomem
->>>> *regs, int *temp)
->>>>    {
->>>>          u32 val;
->>>>    -     /* the A/D value of the channel last conversion need some=
-=20
->>>> time */
->>>>          val =3D readl_relaxed(regs + TSADCV2_DATA(chn));
->>>> -       if (val =3D=3D 0)
->>>> -               return -EAGAIN;
->>>> -
->>>
->>> if we reserve the above code, that will get the ADC value.
->> But if we pass  0 into rk_tsadcv2_code_to_temp() it will trigger:
->>
->>>> +       if (code < v2_code_table[high].code)
->>>> +               return -EAGAIN;         /* Incorrect reading */
->> and still return -EAGAIN, as it was. There is no behavior change as
->> far as I can see.
-> Yup, that's ok for me.
->
->>>
->>>> -       *temp =3D rk_tsadcv2_code_to_temp(val);
->>>>    -     return 0;
->>>> +       return rk_tsadcv2_code_to_temp(val, temp);
->>>>    }
->>>>      static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs=
-,=20
->>>> long
->>>> temp)
->>>
->> Thanks,
->> Dmitry
->>
->>
->>
->
-
-
+> should go on top of clk-fixes. Sorry only finding these piece
+> by piece :-) .
+>=20
+>  drivers/clk/rockchip/clk-rk3368.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip=
+/clk-rk3368.c
+> index 9c5d61e..7e6b783 100644
+> --- a/drivers/clk/rockchip/clk-rk3368.c
+> +++ b/drivers/clk/rockchip/clk-rk3368.c
+> @@ -818,6 +818,10 @@ static struct rockchip_clk_branch rk3368_clk_bra=
+nches[] __initdata =3D {
+>  	GATE(0, "sclk_timer00", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE=
+_CON(24), 0, GFLAGS),
+>  };
+> =20
+> +static const char *const rk3368_critical_clocks[] __initconst =3D {
+> +	"pclk_pd_pmu",
+> +};
+> +
+>  static void __init rk3368_clk_init(struct device_node *np)
+>  {
+>  	void __iomem *reg_base;
+> @@ -862,6 +866,8 @@ static void __init rk3368_clk_init(struct device_=
+node *np)
+>  				   RK3368_GRF_SOC_STATUS0);
+>  	rockchip_clk_register_branches(rk3368_clk_branches,
+>  				  ARRAY_SIZE(rk3368_clk_branches));
+> +	rockchip_clk_protect_critical(rk3368_critical_clocks,
+> +				      ARRAY_SIZE(rk3368_critical_clocks));
+> =20
+>  	rockchip_clk_register_armclk(ARMCLKB, "armclkb",
+>  			mux_armclkb_p, ARRAY_SIZE(mux_armclkb_p),
+> --=20
+> 2.5.1
+>=20
+>=20
