@@ -1,13 +1,16 @@
-From: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCHv2 03/10] thermal: rockchip: allow compile test
-Date: Sun, 13 Sep 2015 19:31:32 -0700
-Message-ID: <1442197899-5952-4-git-send-email-edubezval@gmail.com>
-References: <1442197899-5952-1-git-send-email-edubezval@gmail.com>
+From: =?utf-8?B?U8O2cmVu?= Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 2/2] Documentation: bindings: add description of phy for
+ sdhci-of-arasan
+Date: Sun, 13 Sep 2015 19:47:02 -0700
+Message-ID: <20150914024702.GA19678@xsjsorenbubuntu>
+References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
+ <1441961729-10594-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1442197899-5952-1-git-send-email-edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1441961729-10594-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,36 +20,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rui Zhang <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux PM <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Adding COMPILE_TEST flag to rockchip driver to facilitate
-maintenance.
-
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Signed-off-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- drivers/thermal/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
-index 0334886..2e0aaee 100644
---- a/drivers/thermal/Kconfig
-+++ b/drivers/thermal/Kconfig
-@@ -190,7 +190,7 @@ config SPEAR_THERMAL
- 
- config ROCKCHIP_THERMAL
- 	tristate "Rockchip thermal driver"
--	depends on ARCH_ROCKCHIP
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	depends on RESET_CONTROLLER
- 	help
- 	  Rockchip thermal driver provides support for Temperature sensor
--- 
-2.5.0
+SGkgU2hhd24sCgpPbiBGcmksIDIwMTUtMDktMTEgYXQgMDQ6NTVQTSArMDgwMCwgU2hhd24gTGlu
+IHdyb3RlOgo+IFRoaXMgcGF0Y2ggYWRkcyBwaHlzIGFuZCBwaHktbmFtZXMgZm9yIHNkaGNpLW9m
+LWFyYXNhbiBhcyBvcHRpb25hbAo+IHByb3BlcnRpZXMsIGFuZCBkZXRhaWxzIHRoZSBleGFtcGxl
+IGFzIHdlbGwuCj4gCj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1j
+aGlwcy5jb20+Cj4gLS0tCj4gCj4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+bWMvYXJhc2FuLHNkaGNpLnR4dCB8IDEwICsrKysrKysrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDgg
+aW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2kudHh0IGIvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9hcmFzYW4sc2RoY2kudHh0Cj4gaW5kZXggZGE1
+NDFjMy4uMDI2NGQ1ZiAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvbW1jL2FyYXNhbixzZGhjaS50eHQKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbW1jL2FyYXNhbixzZGhjaS50eHQKPiBAQCAtMSwxMSArMSwxMiBAQAo+ICBE
+ZXZpY2UgVHJlZSBCaW5kaW5ncyBmb3IgdGhlIEFyYXNhbiBTREhDSSBDb250cm9sbGVyCj4gIAo+
+IC0gIFRoZSBiaW5kaW5ncyBmb2xsb3cgdGhlIG1tY1sxXSwgY2xvY2tbMl0gYW5kIGludGVycnVw
+dFszXSBiaW5kaW5ncy4gT25seQo+IC0gIGRldmlhdGlvbnMgYXJlIGRvY3VtZW50ZWQgaGVyZS4K
+PiArICBUaGUgYmluZGluZ3MgZm9sbG93IHRoZSBtbWNbMV0sIGNsb2NrWzJdLCBpbnRlcnJ1cHRb
+M10gYW5kIHBoeVs0XSBiaW5kaW5ncy4KPiArICBPbmx5IGRldmlhdGlvbnMgYXJlIGRvY3VtZW50
+ZWQgaGVyZS4KPiAgCj4gICAgWzFdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+bWMvbW1jLnR4dAo+ICAgIFsyXSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xv
+Y2svY2xvY2stYmluZGluZ3MudHh0Cj4gICAgWzNdIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9pbnRlcnJ1cHRzLnR4dAo+ICsgIFs0XSBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1iaW5kaW5ncy50eHQKPiAgCj4g
+IFJlcXVpcmVkIFByb3BlcnRpZXM6Cj4gICAgLSBjb21wYXRpYmxlOiBDb21wYXRpYmlsaXR5IHN0
+cmluZy4gTXVzdCBiZSAnYXJhc2FuLHNkaGNpLTguOWEnIG9yCj4gQEAgLTE2LDYgKzE3LDkgQEAg
+UmVxdWlyZWQgUHJvcGVydGllczoKPiAgICAtIGludGVycnVwdHM6IEludGVycnVwdCBzcGVjaWZp
+ZXIKPiAgICAtIGludGVycnVwdC1wYXJlbnQ6IFBoYW5kbGUgZm9yIHRoZSBpbnRlcnJ1cHQgY29u
+dHJvbGxlciB0aGF0IHNlcnZpY2VzCj4gIAkJICAgICAgaW50ZXJydXB0cyBmb3IgdGhpcyBkZXZp
+Y2UuCj4gK09wdGlvbmFsIFByb3BlcnRpZXM6Cj4gKyAgLSBwaHlzOiBGcm9tIFBIWSBiaW5kaW5n
+czogUGhhbmRsZSBmb3IgdGhlIEdlbmVyaWMgUEhZIGZvciBhcmFzYW4uCj4gKyAgLSBwaHktbmFt
+ZXM6ICBNVVNUIGJlICJwaHlfYXJhc2FuIi4KClRoaXMgbWlnaHQgYmUgYSBkdW1iIHF1ZXN0aW9u
+LCBidXQsIGlzIHRoZSBleHRlcm5hbCBwaHkgYWN0dWFsbHkKb3B0aW9uYWw/IE9yIGlzIGl0IG1h
+bmRhdG9yeSBmb3IgY2VydGFpbiBpbXBsZW1lbnRhdGlvbnMgb2YgdGhlIElQLgpJbiB0aGUgbGF0
+dGVyIGNhc2UsIGl0IHNob3VsZCBwcm9iYWJseSBiZSBhIG1hbmRhdG9yeSBwcm9wZXJ0eSBkZXBl
+bmRpbmcKb24gdGhlIGNvbXBhdGlibGUgc3RyaW5nIG1hdGNoaW5nIGFuIGltcGxlbWVudGF0aW9u
+IHRoYXQgcmVxdWlyZXMgYW4KZXh0ZXJuYWwgcGh5IChhY2NvcmRpbmdseSwgdGhlIGltcGxlbWVu
+dGF0aW9uIG1pZ2h0IGhhdmUgdG8gdHJlYXQgaXQKdGhhdCB3YXkgdG9vKS4KCglTw7ZyZW4KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
