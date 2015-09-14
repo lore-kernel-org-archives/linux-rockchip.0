@@ -1,66 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: add critical clock for rk3368
-Date: Mon, 14 Sep 2015 17:24:55 +0200
-Message-ID: <5892333.KZLmY9MJYK@diego>
-References: <5267432.TORlj1Iv40@diego> <6675833.8DAAvDYooL@diego> <20150914151942.GJ7002@leverpostej>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v18 1/4] dt-bindings: add document of Rockchip power domains
+Date: Mon, 14 Sep 2015 20:40:04 +0200
+Message-ID: <4150283.UtCYfG61Ys@diego>
+References: <1441693103-26712-1-git-send-email-wxt@rock-chips.com> <1441693103-26712-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20150914151942.GJ7002@leverpostej>
-Sender: linux-clk-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1441693103-26712-2-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "jinkun.hong" <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. September 2015, 16:19:42 schrieb Mark Rutland:
-> On Mon, Sep 14, 2015 at 04:06:05PM +0100, Heiko St=FCbner wrote:
-> > Am Montag, 14. September 2015, 15:19:21 schrieb Mark Rutland:
-> > > On Sun, Sep 13, 2015 at 12:20:36PM +0100, Heiko St=FCbner wrote:
-> > > > Again a result of the gpio-clock-liberation the rk3368 needs th=
-e
-> > > > pclk_pd_pmu marked as critical, to boot successfully.
-> > > >=20
-> > > > Reported-by: Mark Rutland <mark.rutland@arm.com>
-> > > > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > >=20
-> > > FWIW: Tested-by: Mark Rutland <mark.rutland@arm.com>
-> > >=20
-> > > I'm surprised that we don't describe these as critical in the DT,=
- given
-> > > that this isn't really an internal property of the clock controll=
-er, but
-> > > rather what happens to be attached to it. That ship appears to ha=
-ve
-> > > sailed, however.
-> >=20
-> > I wouldn't necessarily think so ... what is called critical only me=
-ans
-> > "don't turn off when walking the clock-tree upwards".
-> >=20
-> > The pclk_pd_pmu for example simply supplies some more clocks we don=
-'t
-> > handle at all currently (pclk_pmu_noc, ...). That we currently choo=
-se to
-> > ignore those [because we don't have any code nor dt-bindings to han=
-dle
-> > the components supplied] sounds very much like an implementation-sp=
-ecific
-> > detail, not something about the hardware.
->=20
-> Sure, but the specific case that lead to this report was the fact tha=
-t
-> this clock (directly?) feeds the pinctrl programming interface, and t=
-hat
-> fact is neither described in the DT nor handled by the driver. Surely
-> that should be described and handled?
+Hi Caesar, Jinkun,
 
-nope it doesn't :-) pclk_pd_pmu feeds pclk_gpio0.
+Am Dienstag, 8. September 2015, 14:18:20 schrieb Caesar Wang:
+> This add the necessary binding documentation for the power domains
+> found on Rockchip SoCs.
+> 
+> Signed-off-by: jinkun.hong <jinkun.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Before the pinctrl patch, pclk_gpio0 was just statically on all the tim=
-e, now=20
-it gets turned off when bank0 is not in use (between reads/writes and i=
-f no=20
-interrupts are enabled). This in turn makes the clock framework turn of=
-f=20
-pclk_pd_pmu (and thus its other unhandled child-clocks).
+What is Jinkun Hong's relationship to the patches?
+
+The issue behind this is, that Caesar is the sender of the patches and how 
+they stand right now would also be the author, but Jinkun was the first to 
+sign them off, which is normally the line of the author.
+
+Please decide who gets to be author of patches 1,3 and 4. If it's Caesar, 
+we'll drop the Signed-off-by or if it's Jinkun we'll change the author.
+
+There is no big need to resend the patches, I can adapt authorship if 
+necessary.
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
