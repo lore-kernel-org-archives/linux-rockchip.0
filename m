@@ -1,50 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+From: Mark Rutland <mark.rutland@arm.com>
 Subject: Re: [PATCH] clk: rockchip: add critical clock for rk3368
-Date: Mon, 14 Sep 2015 17:06:05 +0200
-Message-ID: <6675833.8DAAvDYooL@diego>
-References: <5267432.TORlj1Iv40@diego> <20150914141920.GF7002@leverpostej>
+Date: Mon, 14 Sep 2015 16:19:42 +0100
+Message-ID: <20150914151942.GJ7002@leverpostej>
+References: <5267432.TORlj1Iv40@diego>
+ <20150914141920.GF7002@leverpostej>
+ <6675833.8DAAvDYooL@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20150914141920.GF7002@leverpostej>
+Content-Disposition: inline
+In-Reply-To: <6675833.8DAAvDYooL@diego>
 Sender: linux-clk-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
 Cc: "mturquette@baylibre.com" <mturquette@baylibre.com>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. September 2015, 15:19:21 schrieb Mark Rutland:
-> On Sun, Sep 13, 2015 at 12:20:36PM +0100, Heiko St=FCbner wrote:
-> > Again a result of the gpio-clock-liberation the rk3368 needs the
-> > pclk_pd_pmu marked as critical, to boot successfully.
+On Mon, Sep 14, 2015 at 04:06:05PM +0100, Heiko St=C3=BCbner wrote:
+> Am Montag, 14. September 2015, 15:19:21 schrieb Mark Rutland:
+> > On Sun, Sep 13, 2015 at 12:20:36PM +0100, Heiko St=C3=BCbner wrote:
+> > > Again a result of the gpio-clock-liberation the rk3368 needs the
+> > > pclk_pd_pmu marked as critical, to boot successfully.
+> > >=20
+> > > Reported-by: Mark Rutland <mark.rutland@arm.com>
+> > > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > >=20
-> > Reported-by: Mark Rutland <mark.rutland@arm.com>
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> > FWIW: Tested-by: Mark Rutland <mark.rutland@arm.com>
+> >=20
+> > I'm surprised that we don't describe these as critical in the DT, g=
+iven
+> > that this isn't really an internal property of the clock controller=
+, but
+> > rather what happens to be attached to it. That ship appears to have
+> > sailed, however.
 >=20
-> FWIW: Tested-by: Mark Rutland <mark.rutland@arm.com>
+> I wouldn't necessarily think so ... what is called critical only mean=
+s "don't=20
+> turn off when walking the clock-tree upwards".
 >=20
-> I'm surprised that we don't describe these as critical in the DT, giv=
-en
-> that this isn't really an internal property of the clock controller, =
-but
-> rather what happens to be attached to it. That ship appears to have
-> sailed, however.
+> The pclk_pd_pmu for example simply supplies some more clocks we don't=
+ handle=20
+> at all currently (pclk_pmu_noc, ...). That we currently choose to ign=
+ore those=20
+> [because we don't have any code nor dt-bindings to handle the compone=
+nts=20
+> supplied] sounds very much like an implementation-specific detail, no=
+t=20
+> something about the hardware.
 
-I wouldn't necessarily think so ... what is called critical only means =
-"don't=20
-turn off when walking the clock-tree upwards".
+Sure, but the specific case that lead to this report was the fact that
+this clock (directly?) feeds the pinctrl programming interface, and tha=
+t
+fact is neither described in the DT nor handled by the driver. Surely
+that should be described and handled?
 
-The pclk_pd_pmu for example simply supplies some more clocks we don't h=
-andle=20
-at all currently (pclk_pmu_noc, ...). That we currently choose to ignor=
-e those=20
-[because we don't have any code nor dt-bindings to handle the component=
-s=20
-supplied] sounds very much like an implementation-specific detail, not=20
-something about the hardware.
-
-I really like the concept of critical clock handling Mike is working on=
-, which=20
-implements some sort of hand-off and keeps so marked clocks on until a =
-real=20
-components picks them up.
+Thanks,
+Mark.
