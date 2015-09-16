@@ -1,44 +1,107 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [RFC PATCH v8 10/10] arm: zx_defconfig: remove CONFIG_MMC_DW_IDMAC
-Date: Wed, 16 Sep 2015 14:43:28 +0800
-Message-ID: <1442385808-1433-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1442385625-26775-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1442385625-26775-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: jh80.chung@samsung.com, ulf.hansson@linaro.org
-Cc: Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, heiko@sntech.de, dianders@chromium.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 6/8] mmc: dw_mmc: Generic MMC tuning with the clock phase framework
+Date: Wed, 16 Sep 2015 16:52:26 +0200
+Message-ID: <2272810.k4vHSW5D0y@diego>
+References: <1441045446-30858-1-git-send-email-heiko@sntech.de> <8878355.D5Q8mk4qcM@diego> <55F8D442.5020004@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <55F8D442.5020004@samsung.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: ulf.hansson@linaro.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-mmc@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, CPGS <cpgs@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-DesignWare MMC Controller's transfer mode should be decided
-at runtime instead of compile-time. So we remove this config
-option and read dw_mmc's register to select DMA master.
+Hi,
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+Am Mittwoch, 16. September 2015, 11:30:26 schrieb Jaehoon Chung:
+> On 09/16/2015 07:09 AM, Heiko St=FCbner wrote:
+> > Am Dienstag, 15. September 2015, 17:25:38 schrieb Jaehoon Chung:
+> >> On 09/01/2015 03:24 AM, Heiko Stuebner wrote:
+> >>> From: Alexandru M Stan <amstan@chromium.org>
+> >>>=20
+> >>> This algorithm will try 1 degree increments, since there's no way=
+ to
+> >>> tell
+> >>> what resolution the underlying phase code uses. As an added bonus=
+, doing
+> >>> many tunings yields better results since some tests are run more =
+than
+> >>> once
+> >>> (ex: if the underlying driver uses 45 degree increments, the tuni=
+ng code
+> >>> will try the same angle more than once).
+> >>>=20
+> >>> It will then construct a list of good phase ranges (even ranges t=
+hat
+> >>> cross
+> >>> 360/0), will pick the biggest range then it will set the sample_c=
+lk to
+> >>> the
+> >>> middle of that range.
+> >>>=20
+> >>> We do not touch ciu_drive (and by extension define default-drive-=
+phase).
+> >>> Drive phase is mostly used to define minimum hold times, while on=
+e could
+> >>> write some code to determine what phase meets the minimum hold ti=
+me (ex
+> >>> 10
+> >>> degrees) this will not work with the current clock phase framewor=
+k
+> >>> (which
+> >>> floors angles, so we'll get 0 deg, and there's no way to know wha=
+t
+> >>> resolution the floors happen at). We assume that the default driv=
+e
+> >>> angles
+> >>> set by the hardware are good enough.
+> >>>=20
+> >>> If a device has device specific code (like exynos) then that will=
+ still
+> >>> take precedence, otherwise this new code will execute. If the dev=
+ice
+> >>> wants
+> >>> to tune, but has no sample_clk defined we'll return EIO with an e=
+rror
+> >>> message.
+> >>=20
+> >> Which point is "_generic_"? I don't find the code that control the
+> >> register
+> >> relevant to CLK_DRV/SMPL PHASE. It seems that posted the similar p=
+atches
+> >> at
+> >> u-boot mailing list..
+> >=20
+> > The "generic" part is that it uses the clk phase API for dw_mmc
+> > implementations where the clkgen controlling interface is outside t=
+he
+> > dw_mmc IP itself. So it's open for other implementations as well.
+>=20
+> Designware IP also has the CLK phase register(UHS_REG_EXT register)..=
+=2E
+> if this code is related with it, it should be located into dw-mmc.c.
 
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+UHS_REG_EXT is acutally "reserved" on both the rk3288 as well as the rk=
+3368.=20
+rk3036/rk3128 (Cortex-A7) provide a bit description, but the tuning=20
+documentation still uses the controls located in the clock controller.
 
- arch/arm/configs/zx_defconfig | 1 -
- 1 file changed, 1 deletion(-)
+So I guess UHS_REG_EXT is the real "generic" solution.
 
-diff --git a/arch/arm/configs/zx_defconfig b/arch/arm/configs/zx_defconfig
-index b200bb0..ab683fb 100644
---- a/arch/arm/configs/zx_defconfig
-+++ b/arch/arm/configs/zx_defconfig
-@@ -83,7 +83,6 @@ CONFIG_MMC=y
- CONFIG_MMC_UNSAFE_RESUME=y
- CONFIG_MMC_BLOCK_MINORS=16
- CONFIG_MMC_DW=y
--CONFIG_MMC_DW_IDMAC=y
- CONFIG_EXT2_FS=y
- CONFIG_EXT4_FS=y
- CONFIG_EXT4_FS_POSIX_ACL=y
--- 
-2.3.7
+> > But if you are more comfortable with it, I can also move it into th=
+e
+> > dw_mmc- rockchip variant for the time being, until another user com=
+es
+> > along.
+> I think more better that this code is located into dw_mmc-rockchip. h=
+ow
+> about?
+
+As described above, moving that to the rockchip part sounds sensible. A=
+nd I=20
+guess we can think more about it, once a second user appears.
+
+
+Heiko
