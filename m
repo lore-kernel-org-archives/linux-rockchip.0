@@ -1,107 +1,77 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 6/8] mmc: dw_mmc: Generic MMC tuning with the clock phase framework
-Date: Wed, 16 Sep 2015 16:52:26 +0200
-Message-ID: <2272810.k4vHSW5D0y@diego>
-References: <1441045446-30858-1-git-send-email-heiko@sntech.de> <8878355.D5Q8mk4qcM@diego> <55F8D442.5020004@samsung.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 10/10] ASoC: rockchip_i2s: modify DMA max burst to 1
+Date: Wed, 16 Sep 2015 20:22:09 +0100
+Message-ID: <20150916192209.GN12027@sirena.org.uk>
+References: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
+ <1442188182-6181-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <55F8D442.5020004@samsung.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: ulf.hansson@linaro.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-mmc@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, CPGS <cpgs@samsung.com>
+Content-Type: multipart/mixed; boundary="===============2237829752277140351=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1442188182-6181-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Yiwei Cai <cain.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Olof Johansson <olofj-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-Am Mittwoch, 16. September 2015, 11:30:26 schrieb Jaehoon Chung:
-> On 09/16/2015 07:09 AM, Heiko St=FCbner wrote:
-> > Am Dienstag, 15. September 2015, 17:25:38 schrieb Jaehoon Chung:
-> >> On 09/01/2015 03:24 AM, Heiko Stuebner wrote:
-> >>> From: Alexandru M Stan <amstan@chromium.org>
-> >>>=20
-> >>> This algorithm will try 1 degree increments, since there's no way=
- to
-> >>> tell
-> >>> what resolution the underlying phase code uses. As an added bonus=
-, doing
-> >>> many tunings yields better results since some tests are run more =
-than
-> >>> once
-> >>> (ex: if the underlying driver uses 45 degree increments, the tuni=
-ng code
-> >>> will try the same angle more than once).
-> >>>=20
-> >>> It will then construct a list of good phase ranges (even ranges t=
-hat
-> >>> cross
-> >>> 360/0), will pick the biggest range then it will set the sample_c=
-lk to
-> >>> the
-> >>> middle of that range.
-> >>>=20
-> >>> We do not touch ciu_drive (and by extension define default-drive-=
-phase).
-> >>> Drive phase is mostly used to define minimum hold times, while on=
-e could
-> >>> write some code to determine what phase meets the minimum hold ti=
-me (ex
-> >>> 10
-> >>> degrees) this will not work with the current clock phase framewor=
-k
-> >>> (which
-> >>> floors angles, so we'll get 0 deg, and there's no way to know wha=
-t
-> >>> resolution the floors happen at). We assume that the default driv=
-e
-> >>> angles
-> >>> set by the hardware are good enough.
-> >>>=20
-> >>> If a device has device specific code (like exynos) then that will=
- still
-> >>> take precedence, otherwise this new code will execute. If the dev=
-ice
-> >>> wants
-> >>> to tune, but has no sample_clk defined we'll return EIO with an e=
-rror
-> >>> message.
-> >>=20
-> >> Which point is "_generic_"? I don't find the code that control the
-> >> register
-> >> relevant to CLK_DRV/SMPL PHASE. It seems that posted the similar p=
-atches
-> >> at
-> >> u-boot mailing list..
-> >=20
-> > The "generic" part is that it uses the clk phase API for dw_mmc
-> > implementations where the clkgen controlling interface is outside t=
-he
-> > dw_mmc IP itself. So it's open for other implementations as well.
->=20
-> Designware IP also has the CLK phase register(UHS_REG_EXT register)..=
-=2E
-> if this code is related with it, it should be located into dw-mmc.c.
-
-UHS_REG_EXT is acutally "reserved" on both the rk3288 as well as the rk=
-3368.=20
-rk3036/rk3128 (Cortex-A7) provide a bit description, but the tuning=20
-documentation still uses the controls located in the clock controller.
-
-So I guess UHS_REG_EXT is the real "generic" solution.
-
-> > But if you are more comfortable with it, I can also move it into th=
-e
-> > dw_mmc- rockchip variant for the time being, until another user com=
-es
-> > along.
-> I think more better that this code is located into dw_mmc-rockchip. h=
-ow
-> about?
-
-As described above, moving that to the rockchip part sounds sensible. A=
-nd I=20
-guess we can think more about it, once a second user appears.
+--===============2237829752277140351==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="aj68N5rnBpm/Ladk"
+Content-Disposition: inline
 
 
-Heiko
+--aj68N5rnBpm/Ladk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Mon, Sep 14, 2015 at 07:49:42AM +0800, Shawn Lin wrote:
+
+> +	default:
+> +		dev_info(&pdev->dev, "Default no dma_quirk!\n");
+> +		break;
+> +	}
+
+Probably printing a message when not using the quirk is a bit noisy
+(hopefully future devices will fix this!).  Otherwise
+
+Acked-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+--aj68N5rnBpm/Ladk
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV+cFgAAoJECTWi3JdVIfQC9AH/3JFxsm2/XrJ9OsHMR3e2gRz
+JsTWeO3MgbMTPXE6SzP76GpnT4ecoiEhliYFk/Hga5u4PaYfz91V2aCMzShIwSY5
+bRa9oGCGl4WhIYWyawDDgLKnMj+Q6pOokqQU/dAf3Rw9p4A+8Znemmbb4SxOAIXD
+rk5UtGlAtmapn9JIyWaLTExTe5LczKTU6wAHiekZVhF7q8Wahd+8u1wRZF/QDAdW
+ohzs1gm8qNQhie3tYy/CMgM4QhaMIhjFA9B+3sxtRopnHjyryYnnoBqJPmdeepRs
+CTjqxko9KRv2ov83PrTblWESlreMTpYuuZS2YPEafhgPv/ZCnj1BRZAtvB5kiYo=
+=Dbng
+-----END PGP SIGNATURE-----
+
+--aj68N5rnBpm/Ladk--
+
+
+--===============2237829752277140351==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2237829752277140351==--
