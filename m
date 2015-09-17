@@ -1,98 +1,75 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 5/9] dt-bindings: add documentation of rk3036 clock controller
-Date: Thu, 17 Sep 2015 18:32:49 +0800
-Message-ID: <1442485969-1733-1-git-send-email-zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v2 6/9] pinctrl: rockchip: add support for the rk3036
+Date: Thu, 17 Sep 2015 18:34:20 +0800
+Message-ID: <1442486060-1770-1-git-send-email-zhengxing@rock-chips.com>
 References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1442478540-15068-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, zhengxing@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linus.walleij@linaro.org, linux-gpio@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the devicetree binding for the cru on the rk3036 which quite similar
-structured as previous clock controllers.
+Add new type for rk3036 and many parts of pinctrl rk3036 are similar
+with rk2928's.
 
-Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 
 Changes in v2: None
 
- .../bindings/clock/rockchip,rk3036-cru.txt         |   60 ++++++++++++++++++++
- 1 file changed, 60 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+ .../bindings/pinctrl/rockchip,pinctrl.txt          |    1 +
+ drivers/pinctrl/pinctrl-rockchip.c                 |   17 +++++++++++++++++
+ 2 files changed, 18 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
-new file mode 100644
-index 0000000..ac3037a
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
-@@ -0,0 +1,60 @@
-+* Rockchip RK3036 Clock and Reset Unit
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+index 391ef4b..c73f2bb 100644
+--- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
++++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+@@ -22,6 +22,7 @@ Required properties for iomux controller:
+   - compatible: one of "rockchip,rk2928-pinctrl", "rockchip,rk3066a-pinctrl"
+ 		       "rockchip,rk3066b-pinctrl", "rockchip,rk3188-pinctrl"
+ 		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
++		       "rockchip,rk3036-pinctrl"
+   - rockchip,grf: phandle referencing a syscon providing the
+ 	 "general register files"
+ 
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index c5246c0..9c49510 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2089,6 +2089,21 @@ static struct rockchip_pin_ctrl rk2928_pin_ctrl = {
+ 		.pull_calc_reg		= rk2928_calc_pull_reg_and_bit,
+ };
+ 
++static struct rockchip_pin_bank rk3036_pin_banks[] = {
++	PIN_BANK(0, 32, "gpio0"),
++	PIN_BANK(1, 32, "gpio1"),
++	PIN_BANK(2, 32, "gpio2"),
++};
 +
-+The RK3036 clock controller generates and supplies clock to various
-+controllers within the SoC and also implements a reset controller for SoC
-+peripherals.
++static struct rockchip_pin_ctrl rk3036_pin_ctrl = {
++		.pin_banks		= rk3036_pin_banks,
++		.nr_banks		= ARRAY_SIZE(rk3036_pin_banks),
++		.label			= "RK3036-GPIO",
++		.type			= RK2928,
++		.grf_mux_offset		= 0xa8,
++		.pull_calc_reg		= rk2928_calc_pull_reg_and_bit,
++};
 +
-+Required Properties:
-+
-+- compatible: should be "rockchip,rk3036-cru"
-+- reg: physical base address of the controller and length of memory mapped
-+  region.
-+- #clock-cells: should be 1.
-+- #reset-cells: should be 1.
-+
-+Optional Properties:
-+
-+- rockchip,grf: phandle to the syscon managing the "general register files"
-+  If missing pll rates are not changable, due to the missing pll lock status.
-+
-+Each clock is assigned an identifier and client nodes can use this identifier
-+to specify the clock which they consume. All available clocks are defined as
-+preprocessor macros in the dt-bindings/clock/rk3036-cru.h headers and can be
-+used in device tree sources. Similar macros exist for the reset sources in
-+these files.
-+
-+External clocks:
-+
-+There are several clocks that are generated outside the SoC. It is expected
-+that they are defined using standard clock bindings with following
-+clock-output-names:
-+ - "xin24m" - crystal input - required,
-+ - "xin32k" - rtc clock - optional,
-+ - "ext_i2s" - external I2S clock - optional,
-+ - "ext_hsadc" - external HSADC clock - optional,
-+ - "ext_vip" - external VIP clock - optional,
-+ - "ext_isp" - external ISP clock - optional,
-+ - "ext_jtag" - external JTAG clock - optional
-+
-+Example: Clock controller node:
-+
-+	cru: cru@20000000 {
-+		compatible = "rockchip,rk3036-cru";
-+		reg = <0x20000000 0x1000>;
-+		rockchip,grf = <&grf>;
-+
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+Example: UART controller node that consumes the clock generated by the clock
-+  controller:
-+
-+	uart0: serial@20060000 {
-+		compatible = "snps,dw-apb-uart";
-+		reg = <0x20060000 0x100>;
-+		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		clocks = <&cru SCLK_UART0>;
-+	};
+ static struct rockchip_pin_bank rk3066a_pin_banks[] = {
+ 	PIN_BANK(0, 32, "gpio0"),
+ 	PIN_BANK(1, 32, "gpio1"),
+@@ -2207,6 +2222,8 @@ static struct rockchip_pin_ctrl rk3368_pin_ctrl = {
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 	{ .compatible = "rockchip,rk2928-pinctrl",
+ 		.data = (void *)&rk2928_pin_ctrl },
++	{ .compatible = "rockchip,rk3036-pinctrl",
++		.data = (void *)&rk3036_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066a-pinctrl",
+ 		.data = (void *)&rk3066a_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3066b-pinctrl",
 -- 
 1.7.9.5
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
