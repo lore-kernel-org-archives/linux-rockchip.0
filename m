@@ -1,98 +1,32 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
+From: Thomas Gleixner <tglx@linutronix.de>
 Subject: Re: [PATCH 1/3] clocksource: rockchip: Make the driver more readability
  and compatible
-Date: Thu, 17 Sep 2015 18:19:28 +0800
-Message-ID: <55FA93B0.40504@gmail.com>
+Date: Thu, 17 Sep 2015 12:19:18 +0200 (CEST)
+Message-ID: <alpine.DEB.2.11.1509171217080.3951@nanos>
 References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com> <1442476272-31723-2-git-send-email-wxt@rock-chips.com> <55FA83D5.9010504@linaro.org> <55FA87AA.4040807@gmail.com> <55FA9099.7000903@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: TEXT/PLAIN; charset=US-ASCII
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <55FA9099.7000903@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 18:06, Daniel Lezcano =E5=
-=86=99=E9=81=93:
+On Thu, 17 Sep 2015, Daniel Lezcano wrote:
 > On 09/17/2015 11:28 AM, Caesar Wang wrote:
->> Hi Daniel,
->>
->>
->> =E5=9C=A8 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 17:11, Daniel Lezcano =
-=E5=86=99=E9=81=93:
->>>
->>> Hi Caesar,
->>>
->>>
->>> On 09/17/2015 09:51 AM, Caesar Wang wrote:
->>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
->>>> There are some failure with build up on timer driver for rockchip.
->>>>
->>>> logs:
->>>> ...
->>>> drivers/clocksource/rockchip_timer.c:156:13: error: 'NO_IRQ'=20
->>>> undeclared
->>>
->>> I think the NO_IRQ definition is missing for ARM64.
->>
->> Yep, Maybe better to compatible if we don't use the 'NO_IRQ',
->
+> > > I think the NO_IRQ definition is missing for ARM64.
+> > 
+> > Yep, Maybe better to compatible if we don't use the 'NO_IRQ',
+> 
 > Hmm, after digging into drivers/of/irq.c and kernel/irq/irqdomain.c
->
-> when there is an error it returns zero. So NO_IRQ and -1 are not=20
-> correct and on the other side zero can be a valid irq. That sounds a=20
-> little bit fuzzy to me.
+> 
+> when there is an error it returns zero. So NO_IRQ and -1 are not correct and
+> on the other side zero can be a valid irq. That sounds a little bit fuzzy to
+> me.
 
-I believe the 'NO_IRQ' is better select if 'NO_IRQ' is defined on ARM64=
-=20
-platform.
+IRQ0 is invalid for historical reasons. End of story.
 
-     irq =3D irq_of_parse_and_map(np, 0);
+Thanks,
 
-     if (irq  =3D=3D NO_IRQ)
-=2E..
-Also, that's ok if we instead of the 'irq < 0'  or  '!irq' , right?
-
-
-
-
-
-
->
->>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operan=
-d=20
->>>> 1 --
->>>> `dsb`
->>>> ...
->>>>
->>>> The problem was different semantics of dsb on btw arm32 and arm64,
->>>> Here we can convert the dsb with insteading of dsb(sy).
->>>
->>> What happens to ARM32 then ?
->>>
->>
->> The dsb() is ok for ARM32, the ARM32/64 are OK if we can convert the
->> dsb() to dsb(sy).
->> I believe all drivers with 'dsb()' have same issue on ARM64 platform=
-=2E
->>
->>>> Meanwhile, I change a bit to make the code more readability for dr=
-iver
->>>> when I check the code style.
->>>>
->>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->>>
->>>
->>
->>
->
->
->
-> --=20
-> Thanks,
-> Caesar
+	tglx
