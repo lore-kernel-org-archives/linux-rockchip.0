@@ -1,175 +1,74 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2 8/9] ARM: rockchip: add support smp for rk3036
-Date: Thu, 17 Sep 2015 18:38:06 +0800
-Message-ID: <1442486286-1873-1-git-send-email-zhengxing@rock-chips.com>
-References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/3] clocksource: rockchip: Make the driver more readability
+ and compatible
+Date: Thu, 17 Sep 2015 12:57:53 +0200
+Message-ID: <55FA9CB1.8010402@linaro.org>
+References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com> <1442476272-31723-2-git-send-email-wxt@rock-chips.com> <55FA83D5.9010504@linaro.org> <55FA87AA.4040807@gmail.com> <55FA9099.7000903@linaro.org> <alpine.DEB.2.11.1509171217080.3951@nanos>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+In-Reply-To: <alpine.DEB.2.11.1509171217080.3951@nanos>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhengxing@rock-chips.com
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3036 is dual-core soc, we can use this patch to enable cpu1
-enter boot secondary, and hotplug(online/offline).
+On 09/17/2015 12:19 PM, Thomas Gleixner wrote:
+> On Thu, 17 Sep 2015, Daniel Lezcano wrote:
+>> On 09/17/2015 11:28 AM, Caesar Wang wrote:
+>>>> I think the NO_IRQ definition is missing for ARM64.
+>>>
+>>> Yep, Maybe better to compatible if we don't use the 'NO_IRQ',
+>>
+>> Hmm, after digging into drivers/of/irq.c and kernel/irq/irqdomain.c
+>>
+>> when there is an error it returns zero. So NO_IRQ and -1 are not cor=
+rect and
+>> on the other side zero can be a valid irq. That sounds a little bit =
+fuzzy to
+>> me.
+>
+> IRQ0 is invalid for historical reasons. End of story.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+Hi Thomas,
 
-Changes in v2: None
+there is one thing I don't understand.
 
- arch/arm/mach-rockchip/platsmp.c |  121 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 121 insertions(+)
+If the IRQ0 is invalid, irq_of_parse_and_map returning zero means an=20
+error and from what you said it is ok.
 
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 3e7a4b7..14218eb 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -34,6 +34,8 @@
- 
- static void __iomem *scu_base_addr;
- static void __iomem *sram_base_addr;
-+static void __iomem *cru_base_addr;
-+
- static int ncores;
- 
- #define PMU_PWRDN_CON		0x08
-@@ -41,6 +43,8 @@ static int ncores;
- 
- #define PMU_PWRDN_SCU		4
- 
-+#define RK3036_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
-+
- static struct regmap *pmu;
- 
- static int pmu_power_domain_is_on(int pd)
-@@ -184,6 +188,7 @@ static int __init rockchip_smp_prepare_sram(struct device_node *node)
- 	}
- 
- 	rsize = resource_size(&res);
-+
- 	if (rsize < trampoline_sz) {
- 		pr_err("%s: reserved block with size 0x%x is to small for trampoline size 0x%x\n",
- 		       __func__, rsize, trampoline_sz);
-@@ -350,3 +355,119 @@ static struct smp_operations rockchip_smp_ops __initdata = {
- };
- 
- CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
-+
-+/* for rk3036 */
-+
-+static int rk3036_set_power_domain(int pd, bool on)
-+{
-+	/* there are 2cpus on rk3036 soc, we just need to be care cpu1 */
-+	if (pd != 1)
-+		return 0;
-+
-+	if (on)
-+		writel_relaxed(0x20000, cru_base_addr + RK3036_SOFTRST_CON(0));
-+	else
-+		writel_relaxed(0x20002, cru_base_addr + RK3036_SOFTRST_CON(0));
-+
-+	dsb();
-+
-+	return 0;
-+}
-+
-+static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
-+{
-+	struct device_node *node;
-+	unsigned int l2ctlr;
-+	unsigned int i, cpu;
-+
-+	/* get cru_base_addr */
-+	node = of_find_compatible_node(NULL, NULL, "rockchip,rk3036-cru");
-+	if (!node) {
-+		pr_err("%s: could not find cru dt node\n", __func__);
-+		return;
-+	}
-+
-+	cru_base_addr = of_iomap(node, 0);
-+	if (!cru_base_addr) {
-+		pr_err("%s: could not map cru registers\n", __func__);
-+		return;
-+	}
-+
-+	/* get sram_base_addr */
-+	node = of_find_compatible_node(NULL, NULL, "rockchip,rk3036-smp-sram");
-+	if (!node) {
-+		pr_err("%s: could not find sram dt node\n", __func__);
-+		return;
-+	}
-+
-+	sram_base_addr = of_iomap(node, 0);
-+	if (!sram_base_addr) {
-+		pr_err("%s: could not map sram registers\n", __func__);
-+		return;
-+	}
-+
-+	/* get ncores */
-+	asm ("mrc p15, 1, %0, c9, c0, 2\n" : "=r" (l2ctlr));
-+	ncores = ((l2ctlr >> 24) & 0x3) + 1;
-+	cpu = MPIDR_AFFINITY_LEVEL(read_cpuid_mpidr(), 0);
-+
-+	/* Make sure that all cores except the first are really off */
-+	for (i = 1; i < ncores; i++)
-+		rk3036_set_power_domain(0 + i, false);
-+}
-+
-+static int rk3036_boot_secondary(unsigned int cpu, struct task_struct *idle)
-+{
-+	if (cpu >= ncores) {
-+		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
-+			__func__, cpu, ncores);
-+		return -ENXIO;
-+	}
-+
-+	/* start the core */
-+	rk3036_set_power_domain(0 + cpu, true);
-+
-+	/*
-+	 * We need to wait a moment after soft reset CPUx on rk3036,
-+	 * otherwise, CPUx will startup failed.
-+	 */
-+	udelay(10);
-+	writel(virt_to_phys(secondary_startup), sram_base_addr + 8);
-+	writel(0xDEADBEAF, sram_base_addr + 4);
-+	dsb_sev();
-+
-+	return 0;
-+}
-+
-+#ifdef CONFIG_HOTPLUG_CPU
-+static int rk3066_cpu_kill(unsigned int cpu)
-+{
-+	/*
-+	 * We need a delay here to ensure that the dying CPU can finish
-+	 * executing v7_coherency_exit() and reach the WFI/WFE state
-+	 * prior to having the power domain disabled.
-+	 */
-+	mdelay(1);
-+
-+	rk3036_set_power_domain(0 + cpu, false);
-+
-+	return 1;
-+}
-+
-+static void rk3066_cpu_die(unsigned int cpu)
-+{
-+	v7_exit_coherency_flush(louis);
-+	while (1)
-+		cpu_do_idle();
-+}
-+#endif
-+
-+static struct smp_operations rk3036_smp_ops __initdata = {
-+	.smp_prepare_cpus	= rk3036_smp_prepare_cpus,
-+	.smp_boot_secondary	= rk3036_boot_secondary,
-+#ifdef CONFIG_HOTPLUG_CPU
-+	.cpu_kill		= rk3066_cpu_kill,
-+	.cpu_die		= rk3066_cpu_die,
-+#endif
-+};
-+CPU_METHOD_OF_DECLARE(rk3036_smp, "rockchip,rk3036-smp", &rk3036_smp_ops);
--- 
-1.7.9.5
+But I see the NO_IRQ on ARM is (-1) and the drivers are checking with=20
+NO_IRQ the return code of irq_of_parse_and_map. So if there is an error=
+,=20
+that won't be detected.
+
+=46or this specific use case above, shall irq_of_parse_and_map returns=20
+NO_IRQ or the caller checks against zero ?
+
+Beside that, some drivers are internally defining NO_IRQ:
+drivers/scsi/NCR5380.h
+drivers/ata/sata_dwc_460ex.c
+drivers/input/touchscreen/ucb1400_ts.c
+drivers/mmc/host/of_mmc_spi.c
+drivers/rtc/rtc-m48t59.c
+drivers/scsi/NCR5380.h
+
+I don't know the historical changes and the subtleties of the irq=20
+subsystem (I guess it is considerably complicated by each architecture=20
+specific bits and the drivers supported on different architectures)
+
+If you have the time, can you give some clarification ?
+
+Thanks
+
+   -- Daniel
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
