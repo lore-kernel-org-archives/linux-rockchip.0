@@ -1,114 +1,40 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 1/3] clocksource: rockchip: Make the driver more readability and compatible
-Date: Thu, 17 Sep 2015 15:51:10 +0800
-Message-ID: <1442476272-31723-2-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add the needed timer for rk3368 SoC
+Date: Thu, 17 Sep 2015 15:51:12 +0800
+Message-ID: <1442476272-31723-4-git-send-email-wxt@rock-chips.com>
 References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1442476272-31723-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, linux-kernel@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
-There are some failure with build up on timer driver for rockchip.
-
-logs:
-...
-drivers/clocksource/rockchip_timer.c:156:13: error: 'NO_IRQ' undeclared
-/tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operand 1 --
-`dsb`
-...
-
-The problem was different semantics of dsb on btw arm32 and arm64,
-Here we can convert the dsb with insteading of dsb(sy).
-
-Meanwhile, I change a bit to make the code more readability for driver
-when I check the code style.
+There is a need of a broadcast timer in this case to ensure proper
+wakeup when the cpus are in sleep mode and a timer expires.
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
- drivers/clocksource/rockchip_timer.c | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index bb2c2b0..c479d76 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -17,16 +17,16 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index a712bea..99edbaa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -214,6 +214,12 @@
+ 			(GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_HIGH)>;
+ 	};
  
- #define TIMER_NAME "rk_timer"
- 
--#define TIMER_LOAD_COUNT0 0x00
--#define TIMER_LOAD_COUNT1 0x04
--#define TIMER_CONTROL_REG 0x10
--#define TIMER_INT_STATUS 0x18
-+#define TIMER_LOAD_COUNT0	0x00
-+#define TIMER_LOAD_COUNT1	0x04
-+#define TIMER_CONTROL_REG	0x10
-+#define TIMER_INT_STATUS	0x18
- 
--#define TIMER_DISABLE 0x0
--#define TIMER_ENABLE 0x1
--#define TIMER_MODE_FREE_RUNNING (0 << 1)
--#define TIMER_MODE_USER_DEFINED_COUNT (1 << 1)
--#define TIMER_INT_UNMASK (1 << 2)
-+#define TIMER_DISABLE			(0 << 0)
-+#define TIMER_ENABLE			(1 << 0)
-+#define TIMER_MODE_FREE_RUNNING		(0 << 1)
-+#define TIMER_MODE_USER_DEFINED_COUNT	(1 << 1)
-+#define TIMER_INT_UNMASK		(1 << 2)
- 
- struct bc_timer {
- 	struct clock_event_device ce;
-@@ -49,14 +49,14 @@ static inline void __iomem *rk_base(struct clock_event_device *ce)
- static inline void rk_timer_disable(struct clock_event_device *ce)
- {
- 	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
--	dsb();
-+	dsb(sy);
- }
- 
- static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
- {
- 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
- 		       rk_base(ce) + TIMER_CONTROL_REG);
--	dsb();
-+	dsb(sy);
- }
- 
- static void rk_timer_update_counter(unsigned long cycles,
-@@ -64,13 +64,13 @@ static void rk_timer_update_counter(unsigned long cycles,
- {
- 	writel_relaxed(cycles, rk_base(ce) + TIMER_LOAD_COUNT0);
- 	writel_relaxed(0, rk_base(ce) + TIMER_LOAD_COUNT1);
--	dsb();
-+	dsb(sy);
- }
- 
- static void rk_timer_interrupt_clear(struct clock_event_device *ce)
- {
- 	writel_relaxed(1, rk_base(ce) + TIMER_INT_STATUS);
--	dsb();
-+	dsb(sy);
- }
- 
- static inline int rk_timer_set_next_event(unsigned long cycles,
-@@ -148,7 +148,7 @@ static void __init rk_timer_init(struct device_node *np)
- 	bc_timer.freq = clk_get_rate(timer_clk);
- 
- 	irq = irq_of_parse_and_map(np, 0);
--	if (irq == NO_IRQ) {
-+	if (irq < 0) {
- 		pr_err("Failed to map interrupts for '%s'\n", TIMER_NAME);
- 		return;
- 	}
-@@ -173,4 +173,5 @@ static void __init rk_timer_init(struct device_node *np)
- 
- 	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
- }
++	timer@ff810000 {
++		compatible = "rockchip,rk3288-timer";
++		reg = <0x0 0xff810000 0x0 0x20>;
++		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
++	};
 +
- CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_init);
+ 	xin24m: oscillator {
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <24000000>;
 -- 
 1.9.1
