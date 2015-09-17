@@ -1,101 +1,81 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 0/9] Build and support rk3036 SoC platform
-Date: Thu, 17 Sep 2015 11:59:28 +0200
-Message-ID: <5090899.2Tj4WpOV4G@diego>
-References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/3] clocksource: rockchip: Make the driver more readability
+ and compatible
+Date: Thu, 17 Sep 2015 12:06:17 +0200
+Message-ID: <55FA9099.7000903@linaro.org>
+References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com> <1442476272-31723-2-git-send-email-wxt@rock-chips.com> <55FA83D5.9010504@linaro.org> <55FA87AA.4040807@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+In-Reply-To: <55FA87AA.4040807@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, Michael Turquette <mturquette@baylibre.com>, Alessandro Zummo <a.zummo@towertech.it>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, rtc-linux@googlegroups.com, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On 09/17/2015 11:28 AM, Caesar Wang wrote:
+> Hi Daniel,
+>
+>
+> =E5=9C=A8 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 17:11, Daniel Lezcano =E5=
+=86=99=E9=81=93:
+>>
+>> Hi Caesar,
+>>
+>>
+>> On 09/17/2015 09:51 AM, Caesar Wang wrote:
+>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
+>>> There are some failure with build up on timer driver for rockchip.
+>>>
+>>> logs:
+>>> ...
+>>> drivers/clocksource/rockchip_timer.c:156:13: error: 'NO_IRQ' undecl=
+ared
+>>
+>> I think the NO_IRQ definition is missing for ARM64.
+>
+> Yep, Maybe better to compatible if we don't use the 'NO_IRQ',
 
-Am Donnerstag, 17. September 2015, 16:28:51 schrieb Xing Zheng:
-> we need to support rk3036 soc platform via upstream, there are
-> 3 primary parts for the initial release of minimum system: dts,
-> pinctrl, and clock tree for rk3036, and additional, add a rtc
-> hym8563 patch to fix initial invaild, we can use these startup
-> and run to init processs.
-> 
-> Thanks.
-> 
-> changed in v2:
-> - based on v1, add clock controller documentation
-> - enable timer5 startup
-> - add smp for cpu1
-> - initial set time for rtc-hym8563
-> 
-> changes since v1:
-> - add dts, pinctrl and clock tree for rk3036 soc platform
-> 
-> The patchset (9):
-> 9) rtc: hym8563: make sure hym8563 can be normal work
-> 8) ARM: rockchip: add support smp for rk3036
-> 7) rockchip: make sure timer5 is enabled on rk3036 platforms
-> 6) pinctrl: rockchip: add support for the rk3036
-> 5) dt-bindings: add documentation of rk3036 clock controller
-> 4) clk: rockchip: add new clock type and controller for rk3036
-> 3) clk: rockchip: add clock controller for rk3036
-> 2) clk: rockchip: add dt-binding header for rk3036
-> 1) ARM: dts: rockchip: add core rk3036 dts
-> 
-> 
-> Changes in v2:
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> 
-> Xing Zheng (9):
->   ARM: dts: rockchip: add core rk3036 dts
->   clk: rockchip: add dt-binding header for rk3036
->   clk: rockchip: add clock controller for rk3036
->   clk: rockchip: add new clock type and controller for rk3036
->   dt-bindings: add documentation of rk3036 clock controller
->   pinctrl: rockchip: add support for the rk3036
->   rockchip: make sure timer5 is enabled on rk3036 platforms
->   ARM: rockchip: add support smp for rk3036
->   rtc: hym8563: make sure hym8563 can be normal work
+Hmm, after digging into drivers/of/irq.c and kernel/irq/irqdomain.c
 
-am I missing some patches? I only got patches 1-4.
+when there is an error it returns zero. So NO_IRQ and -1 are not correc=
+t=20
+and on the other side zero can be a valid irq. That sounds a little bit=
+=20
+fuzzy to me.
 
-Anyway, you should reorder a bit
-
-- whatever other patches are necessary before
-- dt-bindings: add documentation of rk3036 clock controller
-- clk: rockchip: add dt-binding header for rk3036
-- clk: rockchip: add new pll type for rk3036
--  clk: rockchip: add clock controller for rk3036
-- ARM: dts: rockchip: add core rk3036 dts
-
-The dts patch for example depends on the clock-header, so it really should 
-come after its addition.
+>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operand=
+ 1 --
+>>> `dsb`
+>>> ...
+>>>
+>>> The problem was different semantics of dsb on btw arm32 and arm64,
+>>> Here we can convert the dsb with insteading of dsb(sy).
+>>
+>> What happens to ARM32 then ?
+>>
+>
+> The dsb() is ok for ARM32, the ARM32/64 are OK if we can convert the
+> dsb() to dsb(sy).
+> I believe all drivers with 'dsb()' have same issue on ARM64 platform.
+>
+>>> Meanwhile, I change a bit to make the code more readability for dri=
+ver
+>>> when I check the code style.
+>>>
+>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>>
+>>
+>
+>
 
 
-Heiko
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
 
-> 
->  .../bindings/clock/rockchip,rk3036-cru.txt         |   60 +++
->  .../bindings/pinctrl/rockchip,pinctrl.txt          |    1 +
->  arch/arm/boot/dts/Makefile                         |    1 +
->  arch/arm/boot/dts/rk3036-sdk.dts                   |   62 +++
->  arch/arm/boot/dts/rk3036.dtsi                      |  381 +++++++++++++++
->  arch/arm/mach-rockchip/platsmp.c                   |  121 +++++
->  arch/arm/mach-rockchip/rockchip.c                  |   22 +
->  drivers/clk/rockchip/Makefile                      |    1 +
->  drivers/clk/rockchip/clk-pll.c                     |  262 +++++++++-
->  drivers/clk/rockchip/clk-rk3036.c                  |  504
-> ++++++++++++++++++++ drivers/clk/rockchip/clk.h                         |  
-> 30 ++
->  drivers/pinctrl/pinctrl-rockchip.c                 |   17 +
->  drivers/rtc/rtc-hym8563.c                          |   93 ++++
->  include/dt-bindings/clock/rk3036-cru.h             |  198 ++++++++
->  14 files changed, 1752 insertions(+), 1 deletion(-)
->  create mode 100644
-> Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt create mode
-> 100644 arch/arm/boot/dts/rk3036-sdk.dts
->  create mode 100644 arch/arm/boot/dts/rk3036.dtsi
->  create mode 100644 drivers/clk/rockchip/clk-rk3036.c
->  create mode 100644 include/dt-bindings/clock/rk3036-cru.h
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
