@@ -1,74 +1,92 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 1/3] clocksource: rockchip: Make the driver more readability
- and compatible
-Date: Thu, 17 Sep 2015 12:57:53 +0200
-Message-ID: <55FA9CB1.8010402@linaro.org>
-References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com> <1442476272-31723-2-git-send-email-wxt@rock-chips.com> <55FA83D5.9010504@linaro.org> <55FA87AA.4040807@gmail.com> <55FA9099.7000903@linaro.org> <alpine.DEB.2.11.1509171217080.3951@nanos>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: set rockchip-specific uboot bootmode flags on reboot
+Date: Thu, 17 Sep 2015 19:07:06 +0800
+Message-ID: <55FA9EDA.8010308@rock-chips.com>
+References: <1441716187-29446-1-git-send-email-andy.yan@rock-chips.com>
+ <9364768.6AeuYh3EEP@diego>
+ <CAPnjgZ0n7aNY7FRnoDYUBEnQAtUO1BWKs6DDzaMQyHsg1kQ1Jg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <alpine.DEB.2.11.1509171217080.3951@nanos>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPnjgZ0n7aNY7FRnoDYUBEnQAtUO1BWKs6DDzaMQyHsg1kQ1Jg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, lk <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, lak <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/17/2015 12:19 PM, Thomas Gleixner wrote:
-> On Thu, 17 Sep 2015, Daniel Lezcano wrote:
->> On 09/17/2015 11:28 AM, Caesar Wang wrote:
->>>> I think the NO_IRQ definition is missing for ARM64.
->>>
->>> Yep, Maybe better to compatible if we don't use the 'NO_IRQ',
->>
->> Hmm, after digging into drivers/of/irq.c and kernel/irq/irqdomain.c
->>
->> when there is an error it returns zero. So NO_IRQ and -1 are not cor=
-rect and
->> on the other side zero can be a valid irq. That sounds a little bit =
-fuzzy to
->> me.
->
-> IRQ0 is invalid for historical reasons. End of story.
-
-Hi Thomas,
-
-there is one thing I don't understand.
-
-If the IRQ0 is invalid, irq_of_parse_and_map returning zero means an=20
-error and from what you said it is ok.
-
-But I see the NO_IRQ on ARM is (-1) and the drivers are checking with=20
-NO_IRQ the return code of irq_of_parse_and_map. So if there is an error=
-,=20
-that won't be detected.
-
-=46or this specific use case above, shall irq_of_parse_and_map returns=20
-NO_IRQ or the caller checks against zero ?
-
-Beside that, some drivers are internally defining NO_IRQ:
-drivers/scsi/NCR5380.h
-drivers/ata/sata_dwc_460ex.c
-drivers/input/touchscreen/ucb1400_ts.c
-drivers/mmc/host/of_mmc_spi.c
-drivers/rtc/rtc-m48t59.c
-drivers/scsi/NCR5380.h
-
-I don't know the historical changes and the subtleties of the irq=20
-subsystem (I guess it is considerably complicated by each architecture=20
-specific bits and the drivers supported on different architectures)
-
-If you have the time, can you give some clarification ?
-
-Thanks
-
-   -- Daniel
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+SGkgSGVpa286CgoKT24gMjAxNeW5tDA55pyIMTDml6UgMDI6MDUsIFNpbW9uIEdsYXNzIHdyb3Rl
+Ogo+IEhpLAo+Cj4gT24gOCBTZXB0ZW1iZXIgMjAxNSBhdCAxNjo0NiwgSGVpa28gU3TDvGJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4+IEhpIEFuZHksCj4+Cj4+IEFtIERpZW5zdGFnLCA4
+LiBTZXB0ZW1iZXIgMjAxNSwgMjA6NDM6MDcgc2NocmllYiBBbmR5IFlhbjoKPj4+IHJvY2tjaGlw
+IHBsYXRmb3JtIGhhdmUgYSBwcm90b2NvbCB0byBwYXNzIHRoZSB0aGUga2VybmVsCj4+PiByZWJv
+b3QgbW9kZSB0byBib290bG9hZGVyIGJ5IHNvbWUgc3BlY2lhbCByZWdpc3RlcnMgd2hlbgo+Pj4g
+c3lzdGVtIHJlYm9vdC5CeSB0aGlzIHdheSB0aGUgYm9vdGxvYWRlciBjYW4gdGFrZSBkaWZmZXJl
+bnQKPj4+IGFjdGlvbiBhY2NvcmRpbmcgdG8gdGhlIGRpZmZlcmVudCBrZXJuZWwgcmVib290IG1v
+ZGUsIGZvcgo+Pj4gZXhhbXBsZSwgY29tbWFuZCAicmVib290IGxvYWRlciIgd2lsbCByZWJvb3Qg
+dGhlIGJvYXJkIHRvCj4+PiByb2NrdXNiIG1vZGUsIHRoaXMgaXMgYSB2ZXJ5IGNvbnZlbmllbnQg
+d2F5IHRvIGdldCB0aGUgYm9hcmQKPj4+IHRvIGRvd25sb2FkIG1vZGUuCj4+Pgo+Pj4gU2lnbmVk
+LW9mZi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+PiBbLi4uXQo+Pgo+
+Pj4gQEAgLTAsMCArMSwyMiBAQAo+Pj4gKyNpZm5kZWYgX19NQUNIX1JPQ0tDSElQX0xPQURFUl9I
+Cj4+PiArI2RlZmluZSBfX01BQ0hfUk9DS0NISVBfTE9BREVSX0gKPj4+ICsKPj4+ICsvKmhpZ2gg
+MjQgYml0cyBpcyB0YWcsIGxvdyA4IGJpdHMgaXMgdHlwZSovCj4+PiArI2RlZmluZSBTWVNfTE9B
+REVSX1JFQk9PVF9GTEFHICAgMHg1MjQyQzMwMAo+Pj4gKwo+Pj4gK2VudW0gewo+Pj4gKyAgICAg
+Qk9PVF9OT1JNQUwgPSAwLCAvKiBub3JtYWwgYm9vdCAqLwo+Pj4gKyAgICAgQk9PVF9MT0FERVIs
+ICAgICAvKiBlbnRlciBsb2FkZXIgcm9ja3VzYiBtb2RlICovCj4+PiArICAgICBCT09UX01BU0tS
+T00sICAgIC8qIGVudGVyIG1hc2tyb20gcm9ja3VzYiBtb2RlIChub3Qgc3VwcG9ydCBub3cpICov
+Cj4+PiArICAgICBCT09UX1JFQ09WRVIsICAgIC8qIGVudGVyIHJlY292ZXIgKi8KPj4+ICsgICAg
+IEJPT1RfTk9SRUNPVkVSLCAgLyogZG8gbm90IGVudGVyIHJlY292ZXIgKi8KPj4+ICsgICAgIEJP
+T1RfU0VDT05ET1MsICAgLyogYm9vdCBzZWNvbmQgT1MgKG5vdCBzdXBwb3J0IG5vdykqLwo+Pj4g
+KyAgICAgQk9PVF9XSVBFREFUQSwgICAvKiBlbnRlciByZWNvdmVyIGFuZCB3aXBlIGRhdGEuICov
+Cj4+PiArICAgICBCT09UX1dJUEVBTEwsICAgIC8qIGVudGVyIHJlY292ZXIgYW5kIHdpcGUgYWxs
+IGRhdGEuICovCj4+PiArICAgICBCT09UX0NIRUNLSU1HLCAgIC8qIGNoZWNrIGZpcm13YXJlIGlt
+ZyB3aXRoIGJhY2t1cCBwYXJ0Ki8KPj4+ICsgICAgIEJPT1RfRkFTVEJPT1QsICAgLyogZW50ZXIg
+ZmFzdCBib290IG1vZGUgKi8KPj4+ICsgICAgIEJPT1RfU0VDVVJFQk9PVF9ESVNBQkxFLAo+Pj4g
+KyAgICAgQk9PVF9DSEFSR0lORywgICAvKiBlbnRlciBjaGFyZ2UgbW9kZSAqLwo+Pj4gKyAgICAg
+Qk9PVF9NQVggICAgICAgICAvKiBNQVggVkFMSUQgQk9PVCBUWVBFLiovCj4+PiArfTsKPj4+ICsj
+ZW5kaWYKPj4gVGhlc2UgZmxhZ3MgcmVseSBvbiBjb2RlIGluIHRoZSBib290bG9hZGVyIHRvIGFj
+dHVhbGx5IGhhbmRsZSB0aGUgdGFyZ2V0Cj4+IGFjdGlvbi4gTm93YWRheXMgdGhpcyBpcyB1Ym9v
+dCwgYnV0IHN0aWxsIGEgcm9ja2NoaXAtc3BlY2lmaWMgZm9yay4gQW5kIHdlJ3JlCj4+IGFjdGl2
+ZWx5IG1vdmluZyBhd2F5IGZyb20gdGhhdCwgd2l0aCB0aGUgcmVjZW50IHJrMzI4OCBhZGRpdGlv
+biB0byBtYWlubGluZQo+PiB1Ym9vdC4KPj4KPj4gU28gdW5sZXNzIHlvdSBjb252aW5jZSB1Ym9v
+dCBwZW9wbGUgdGhhdCB0aGUgX3VuZGVybHlpbmcgc3BlY2lhbAo+PiBmdW5jdGlvbmFsaXR5XyBi
+ZWhpbmQgdGhlc2UgZmxhZ3Mgc2hvdWxkIGJlIHBhcnQgb2YgdWJvb3QsIEkgZG9uJ3QgdGhpbmsg
+dGhpcwo+PiBpcyBnb2luZyB0byBmbHkuCj4+Cj4+Cj4+IEluIGEgd2F5IHRoaXMgaXMgc2ltaWxh
+ciB0byBncHUga2VybmVsIGNvZGUgdGFsa2luZyB0byBwcm9wcmlldGFyeSB1c2Vyc3BhY2UKPj4g
+bGlicyAtIHRoZXNlIGFyZSBhbHNvIG5vdCBlbGlnaWJsZSBmb3IgdGhlIGtlcm5lbC4gKG1lYW5p
+bmcgc3R1ZmYgbGlrZSB0aGUKPj4gbWFsaSBrZXJuZWwgZHJpdmVyIG5vdCBiZWluZyBhbGxvd2Vk
+KS4KPiBJIGRvbid0IHdhbnQgdG8gY29tbWVudCBvbiB3aGF0IExpbnV4IGRvZXMgb3IgZG9lcyBu
+b3Qgd2FudC4gQnV0IEkgY2FuCj4gc2VlIHRoaXMgc29ydCBvZiBmZWF0dXJlIGJlaW5nIHVzZWZ1
+bCBmb3IgZGV2cyBhdCBsZWFzdC4gU28gbG9uZyBhcyBpdAo+IGlzIGRlZmluZWQgaW4gYSB3YXkg
+dGhhdCBpcyBub3QgUm9ja2NoaXAtc3BlY2lmaWMgKGFuZCB0aGUgYWJvdmUgZW51bQo+IGxvb2tz
+IHByZXR0eSByZWFzb25hYmxlIG9uIHRoYXQgZnJvbnQsIEkgdGhpbmsgaXQgbWFrZXMgc2Vuc2Uu
+Cj4KPiBPZiBjb3Vyc2UgaXQncyBhIGJpdCBvZGQgdG8gdGFyZ2V0IGEgZG93bnN0cmVhbSBVLUJv
+b3Qgd2l0aCBhIExpbnV4Cj4gZmVhdHVyZS4gQnV0IGhvcGVmdWxseSBSb2NrY2hpcCdzIFUtQm9v
+dCBzdXBwb3J0IGFuZCBkZXZlbG9wbWVudCB3aWxsCj4gbW92ZSB0byBtYWlubGluZSB3aXRoIHRp
+bWUuCiAgICBJcyB0aGVyZSBhbnkgY2hhbmNlIGZvciB0aGlzIHBhdGNoIHRvIGJlIGxhbmRlZD8K
+ICAgIEFzIFNpbW9uIHNheXMsIGl0IGlzIHVzZWZ1bCBmb3IgZGV2ZWxvcG1lbnQuIEFuZAogICAg
+aGUgaXMgdXBzdHJlYW1pbmcgUm9ja2NoaXAgVS1ib290Lgo+PiBbLi4uXQo+Pgo+Pj4gK3N0YXRp
+YyBpbnQgcm9ja2NoaXBfcmVib290X25vdGlmeShzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKnRoaXMs
+Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVkIGxvbmcgbW9kZSwg
+dm9pZCAqY21kKQo+Pj4gK3sKPj4+ICsgICAgIHUzMiBmbGFnOwo+Pj4gKwo+Pj4gKyAgICAgcm9j
+a2NoaXBfZ2V0X3JlYm9vdF9mbGFnKGNtZCwgJmZsYWcpOwo+Pj4gKyAgICAgcmVnbWFwX3dyaXRl
+KHJlZ21hcCwgZmxhZ19yZWcsIGZsYWcpOwo+Pj4gKwo+Pj4gKyAgICAgcmV0dXJuIE5PVElGWV9E
+T05FOwo+Pj4gK30KPj4+ICsKPj4+ICtzdGF0aWMgc3RydWN0IG5vdGlmaWVyX2Jsb2NrIHJvY2tj
+aGlwX3JlYm9vdF9oYW5kbGVyID0gewo+Pj4gKyAgICAgLm5vdGlmaWVyX2NhbGwgPSByb2NrY2hp
+cF9yZWJvb3Rfbm90aWZ5LAo+Pj4gKyAgICAgLnByaW9yaXR5ID0gMTUwLAo+Pj4gK307Cj4+IHRo
+ZSByZXN0YXJ0IGhhbmRsZXJzIGFyZSBtZWFudCB0byByZWFsbHkgb25seSByZXN0YXJ0IHRoZSBz
+eXN0ZW0sIG5vdCB0bwo+PiBleGVjdXRlIHNvbWUgYWN0aW9ucyBiZWZvcmUgdGhlIHJlc3RhcnQg
+aGFwcGVucy4KPj4KPj4gU2VlIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE1LzYvMy83MDcgZm9y
+IGEgc2ltaWxhciBjYXNlLgo+Pgo+Pgo+PiBIZWlrbwo+IFJlZ2FyZHMsCj4gU2ltb24KPgo+Cj4K
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
