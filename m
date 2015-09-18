@@ -1,58 +1,84 @@
-From: Axel Lin <axel.lin@ingics.com>
-Subject: [PATCH] ASoC: rockchip: Fix missing CLKDEV_LOOKUP
-	dependency
-Date: Fri, 18 Sep 2015 15:25:32 +0800
-Message-ID: <1442561132.11434.0.camel@ingics.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 1/3] clocksource: rockchip: Make the driver more readability
+ and compatible
+Date: Fri, 18 Sep 2015 09:53:20 +0200
+Message-ID: <55FBC2F0.7010708@linaro.org>
+References: <1442476272-31723-1-git-send-email-wxt@rock-chips.com> <1442476272-31723-2-git-send-email-wxt@rock-chips.com> <55FA83D5.9010504@linaro.org> <55FA87AA.4040807@gmail.com> <55FA9099.7000903@linaro.org> <alpine.DEB.2.11.1509171217080.3951@nanos> <55FA9CB1.8010402@linaro.org> <20150917211331.GU21084@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150917211331.GU21084@n2100.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Thomas Gleixner <tglx@linutronix.de>, Caesar Wang <caesar.upstream@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Make SND_SOC_ROCKCHIP_MAX98090 and SND_SOC_ROCKCHIP_RT5645 depend on
-CLKDEV_LOOKUP to fix below build warning:
+On 09/17/2015 11:13 PM, Russell King - ARM Linux wrote:
+> On Thu, Sep 17, 2015 at 12:57:53PM +0200, Daniel Lezcano wrote:
+>> Hi Thomas,
+>>
+>> there is one thing I don't understand.
+>>
+>> If the IRQ0 is invalid, irq_of_parse_and_map returning zero means an=
+ error
+>> and from what you said it is ok.
+>>
+>> But I see the NO_IRQ on ARM is (-1) and the drivers are checking wit=
+h NO_IRQ
+>> the return code of irq_of_parse_and_map. So if there is an error, th=
+at won't
+>> be detected.
 
-warning: (SND_SOC_ROCKCHIP_MAX98090 && SND_SOC_ROCKCHIP_RT5645) selects
-SND_SOC_ROCKCHIP_I2S which has unmet direct dependencies (SOUND && !M68K &&
-!UML && SND && SND_SOC && CLKDEV_LOOKUP && SND_SOC_ROCKCHIP)
+Hi Russel,
 
-Signed-off-by: Axel Lin <axel.lin@ingics.com>
----
- sound/soc/rockchip/Kconfig | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index 58bae8e..5709057 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -17,7 +17,7 @@ config SND_SOC_ROCKCHIP_I2S
- 
- config SND_SOC_ROCKCHIP_MAX98090
- 	tristate "ASoC support for Rockchip boards using a MAX98090 codec"
--	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB
-+	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB && CLKDEV_LOOKUP
- 	select SND_SOC_ROCKCHIP_I2S
- 	select SND_SOC_MAX98090
- 	select SND_SOC_TS3A227E
-@@ -27,7 +27,7 @@ config SND_SOC_ROCKCHIP_MAX98090
- 
- config SND_SOC_ROCKCHIP_RT5645
- 	tristate "ASoC support for Rockchip boards using a RT5645/RT5650 codec"
--	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB
-+	depends on SND_SOC_ROCKCHIP && I2C && GPIOLIB && CLKDEV_LOOKUP
- 	select SND_SOC_ROCKCHIP_I2S
- 	select SND_SOC_RT5645
- 	help
--- 
-2.1.4
+> NO_IRQ being -1 is a legacy thing for ARM - all ARM drivers are suppo=
+sed
+> to be converted to use <=3D 0 or =3D=3D 0 to detect invalid IRQs, and=
+ _eventually_
+> once all users are gone, NO_IRQ deleted.
+>
+> Moreover, there are supposed to be no _new_ users of NO_IRQ ever adde=
+d to
+> the kernel.
+>
+> Modern drivers should _all_ be using !irq to detect invalid IRQs, and=
+ not
+> using NO_IRQ.
+
+Ah, ok. Thanks for the clarification.
+
+> The steps here are:
+>
+> 1. Convert all ARM platforms to start numbering IRQs from 1 rather th=
+an 0.
+> 2. Convert all drivers used on ARM to detect lack of IRQ by checking =
+for
+>     <=3D 0.
+> 3. Replace NO_IRQ assignments with zero-initialisations.
+> 4. Remove NO_IRQ.
+>
+> The reason it hasn't happened is that it requires effort and testing,
+> and rather than running around getting old platforms to boot (which
+> includes remembering _how_ to get them to boot) with recent kernels,
+> I prefer to spend my time doing more productive work with modern code=
+=2E
+
+I understand. I will take the opportunity track down those NO_IRQ in th=
+e=20
+clocksource directory.
+
+   -- Daniel
+
+
+
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
