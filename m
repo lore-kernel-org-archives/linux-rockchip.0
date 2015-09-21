@@ -1,162 +1,339 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: [PATCH v3 10/12] pwm: rockchip: add support for atomic update
-Date: Mon, 21 Sep 2015 11:33:27 +0200
-Message-ID: <1442828009-6241-11-git-send-email-boris.brezillon@free-electrons.com>
-References: <1442828009-6241-1-git-send-email-boris.brezillon@free-electrons.com>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v4 0/16] Add Analogix Core Display Port Driver
+Date: Mon, 21 Sep 2015 16:45:44 +0800
+Message-ID: <55FFC3B8.9030108@rock-chips.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <3233920.KG0buE86B2@phil> <55E65BCD.7090804@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBKU676XQKGQEZ77UZXI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <1442828009-6241-1-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============2000519299=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <55E65BCD.7090804@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, s.infradead.org@NULL.NULL, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-samsung-soc@vger.kernel.org, seanpaul@chromium.com, djkurtz@chromium.com, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, robherring2@gmail.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@list.NULL.NULL, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, ajaynumb@gmail.com, Rob Herring <robh+dt@kernel.org>, dianders@chromium.com, Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Kumar Gala <galak@codeaurora.org>, joe@perches.com, Andy Yan <andy.yan@r>
 List-Id: linux-rockchip.vger.kernel.org
 
-Implement the ->apply() function to add support for atomic update.
+This is a multi-part message in MIME format.
+--===============2000519299==
+Content-Type: multipart/alternative;
+ boundary="------------010604030904040404060708"
 
-Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
----
- drivers/pwm/pwm-rockchip.c | 53 +++++++++++++++++++++++++---------------------
- 1 file changed, 29 insertions(+), 24 deletions(-)
+This is a multi-part message in MIME format.
+--------------010604030904040404060708
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index 6eab25c..48b814d 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -50,7 +50,8 @@ struct rockchip_pwm_data {
- 	const struct pwm_ops *ops;
- 
- 	void (*set_enable)(struct pwm_chip *chip,
--			   struct pwm_device *pwm, bool enable);
-+			   struct pwm_device *pwm, bool enable,
-+			   enum pwm_polarity polarity);
- 	void (*reset_state)(struct pwm_chip *chip, struct pwm_device *pwm);
- };
- 
-@@ -60,7 +61,8 @@ static inline struct rockchip_pwm_chip *to_rockchip_pwm_chip(struct pwm_chip *c)
- }
- 
- static void rockchip_pwm_set_enable_v1(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_CTRL_OUTPUT_EN | PWM_CTRL_TIMER_EN;
-@@ -89,14 +91,15 @@ static void rockchip_pwm_reset_state_v1(struct pwm_chip *chip,
- }
- 
- static void rockchip_pwm_set_enable_v2(struct pwm_chip *chip,
--				       struct pwm_device *pwm, bool enable)
-+				       struct pwm_device *pwm, bool enable,
-+				       enum pwm_polarity polarity)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	u32 enable_conf = PWM_OUTPUT_LEFT | PWM_LP_DISABLE | PWM_ENABLE |
- 			  PWM_CONTINUOUS;
- 	u32 val;
- 
--	if (pwm_get_polarity(pwm) == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERSED)
- 		enable_conf |= PWM_DUTY_NEGATIVE | PWM_INACTIVE_POSITIVE;
- 	else
- 		enable_conf |= PWM_DUTY_POSITIVE | PWM_INACTIVE_NEGATIVE;
-@@ -165,7 +168,6 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
- 	unsigned long period, duty;
- 	u64 clk_rate, div;
--	int ret;
- 
- 	clk_rate = clk_get_rate(pc->clk);
- 
-@@ -182,15 +184,8 @@ static int rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	do_div(div, pc->data->prescaler * NSEC_PER_SEC);
- 	duty = div;
- 
--	ret = clk_enable(pc->clk);
--	if (ret)
--		return ret;
--
- 	writel(period, pc->base + pc->data->regs.period);
- 	writel(duty, pc->base + pc->data->regs.duty);
--	writel(0, pc->base + pc->data->regs.cntr);
--
--	clk_disable(pc->clk);
- 
- 	return 0;
- }
-@@ -208,43 +203,53 @@ static int rockchip_pwm_set_polarity(struct pwm_chip *chip,
- 	return 0;
- }
- 
--static int rockchip_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-+static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      const struct pwm_state *state)
- {
- 	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+	bool enabled = pwm_is_enabled(pwm);
- 	int ret;
- 
- 	ret = clk_enable(pc->clk);
- 	if (ret)
- 		return ret;
- 
--	pc->data->set_enable(chip, pwm, true);
-+	if (state->polarity != pwm_get_polarity(pwm) && enabled) {
-+		pc->data->set_enable(chip, pwm, false, state->polarity);
-+		enabled = false;
-+	}
- 
--	return 0;
--}
-+	ret = rockchip_pwm_config(chip, pwm, state->duty_cycle, state->period);
-+	if (ret) {
-+		if (enabled != pwm_is_enabled(pwm))
-+			pc->data->set_enable(chip, pwm, !enabled,
-+					     state->polarity);
- 
--static void rockchip_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
-+		goto out;
-+	}
- 
--	pc->data->set_enable(chip, pwm, false);
-+	if (state->enabled != enabled)
-+		pc->data->set_enable(chip, pwm, state->enabled,
-+				     state->polarity);
- 
-+out:
- 	clk_disable(pc->clk);
-+
-+	return ret;
- }
- 
- static const struct pwm_ops rockchip_pwm_ops_v1 = {
- 	.reset_state = rockchip_pwm_reset_state,
- 	.config = rockchip_pwm_config,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
-+	.apply = rockchip_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
- static const struct pwm_ops rockchip_pwm_ops_v2 = {
- 	.reset_state = rockchip_pwm_reset_state,
- 	.config = rockchip_pwm_config,
-+	.apply = rockchip_pwm_apply,
- 	.set_polarity = rockchip_pwm_set_polarity,
--	.enable = rockchip_pwm_enable,
--	.disable = rockchip_pwm_disable,
- 	.owner = THIS_MODULE,
- };
- 
--- 
-1.9.1
+Hi Heiko,
+
+On 09/02/2015 10:15 AM, Yakir Yang wrote:
+> Hi Heiko,
+>
+> =E5=9C=A8 09/02/2015 05:47 AM, Heiko Stuebner =E5=86=99=E9=81=93:
+>> Hi Yakir,
+>>
+>> Am Dienstag, 1. September 2015, 13:46:11 schrieb Yakir Yang:
+>>>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP=20
+>>> controller
+>>> share the same IP, so a lot of parts can be re-used. I split the comm=
+on
+>>> code into bridge directory, then rk3288 and exynos only need to keep
+>>> some platform code. Cause I can't find the exact IP name of exynos dp
+>>> controller, so I decide to name dp core driver with "analogix" which =
+I
+>>> find in rk3288 eDP TRM ;)
+>>>
+>>> Beyond that, there are three light registers setting differents bewte=
+en
+>>> exynos and rk3288.
+>>> 1. RK3288 have five special pll resigters which not indicata in exyno=
+s
+>>>     dp controller.
+>>> 2. The address of DP_PHY_PD(dp phy power manager register) are=20
+>>> different
+>>>     between rk3288 and exynos.
+>>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp=20
+>>> debug
+>>>     register).
+>>>
+>>> I have verified this series on two kinds of rockchip platform board,=20
+>>> one
+>>> is rk3288 sdk board which connect with a 2K display port monitor,=20
+>>> the other
+>>> is google jerry chromebook which connect with a eDP screen=20
+>>> "cnm,n116bgeea2",
+>>> both of them works rightlly.
+>> it looks like during the rebase something did go wrong and I found=20
+>> some issues
+>> I mentioned in the replies to individual patches.
+>>
+>> I did prepare a branch based on mainline [0] with both the old and=20
+>> the new edp
+>> driver - rk3288_veyron_defconfig build both drivers into the image.
+>>
+>> While the old driver still works, I wasn't able to make the new one=20
+>> work yet
+>> ... the drm core does find the connector, but not that anything is=20
+>> connected
+>> to it. I'll try to dig deeper tomorrow, but maybe you'll see anything
+>> interesting before then.
+>
+> Many thanks for your comment and debug, I would rebase on your
+> "edp-with-veyron" branch and fix the broken, make sure v6 would
+> work rightly at least in your side and my side.
+
+Just like we talk off line, I guess there are two tricky questions which=20
+make analogix_dp just crash/failed on rockchip platform:
+
+-  One is how to reach a agreement with the common way to register=20
+connector. There would be a conflict with Exynos & IMX & Rockchip.
+      On analogix_dp thread, Exynos want to register connector when that=20
+connector is ready.
+      On dw_hdmi thread, IMX want to register connector when all=20
+component is already.
+      So Exynos & IMX & Rockchip should reach a common way to register=20
+connector to fix this issue.
+
+-  The other is atomic API.
+       The rockchip drm haven't implemented the atomic API, but the=20
+original exynos_dp have used the atomic API on connector helper=20
+function. That's why analogix_dp just keep crash on your side.
+
+I have prepared the v5 version, although those would work directly on=20
+rockchip side, but I could upload some HACK patches to gerrit  to make=20
+this works,  hope we can keep the discussion going forward.
+
+Thanks,
+- Yakir
+
+>
+> - Yakir
+>
+>>
+>> Heiko
+>>
+>> [0] https://github.com/mmind/linux-rockchip/tree/tmp/edp-with-veyron
+>>
+>>
+>>
+>>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+--------------010604030904040404060708
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    Hi Heiko,<br>
+    <br>
+    <div class=3D"moz-cite-prefix">On 09/02/2015 10:15 AM, Yakir Yang
+      wrote:<br>
+    </div>
+    <blockquote cite=3D"mid:55E65BCD.7090804@rock-chips.com" type=3D"cite=
+">Hi
+      Heiko,
+      <br>
+      <br>
+      =E5=9C=A8 09/02/2015 05:47 AM, Heiko Stuebner =E5=86=99=E9=81=93:
+      <br>
+      <blockquote type=3D"cite">Hi Yakir,
+        <br>
+        <br>
+        Am Dienstag, 1. September 2015, 13:46:11 schrieb Yakir Yang:
+        <br>
+        <blockquote type=3D"cite">=C2=A0=C2=A0=C2=A0 The Samsung Exynos e=
+DP controller
+          and Rockchip RK3288 eDP controller
+          <br>
+          share the same IP, so a lot of parts can be re-used. I split
+          the common
+          <br>
+          code into bridge directory, then rk3288 and exynos only need
+          to keep
+          <br>
+          some platform code. Cause I can't find the exact IP name of
+          exynos dp
+          <br>
+          controller, so I decide to name dp core driver with "analogix"
+          which I
+          <br>
+          find in rk3288 eDP TRM ;)
+          <br>
+          <br>
+          Beyond that, there are three light registers setting
+          differents bewteen
+          <br>
+          exynos and rk3288.
+          <br>
+          1. RK3288 have five special pll resigters which not indicata
+          in exynos
+          <br>
+          =C2=A0=C2=A0=C2=A0 dp controller.
+          <br>
+          2. The address of DP_PHY_PD(dp phy power manager register) are
+          different
+          <br>
+          =C2=A0=C2=A0=C2=A0 between rk3288 and exynos.
+          <br>
+          3. Rk3288 and exynos have different setting with
+          AUX_HW_RETRY_CTL(dp debug
+          <br>
+          =C2=A0=C2=A0=C2=A0 register).
+          <br>
+          <br>
+          I have verified this series on two kinds of rockchip platform
+          board, one
+          <br>
+          is rk3288 sdk board which connect with a 2K display port
+          monitor, the other
+          <br>
+          is google jerry chromebook which connect with a eDP screen
+          "cnm,n116bgeea2",
+          <br>
+          both of them works rightlly.
+          <br>
+        </blockquote>
+        it looks like during the rebase something did go wrong and I
+        found some issues
+        <br>
+        I mentioned in the replies to individual patches.
+        <br>
+        <br>
+        I did prepare a branch based on mainline [0] with both the old
+        and the new edp
+        <br>
+        driver - rk3288_veyron_defconfig build both drivers into the
+        image.
+        <br>
+        <br>
+        While the old driver still works, I wasn't able to make the new
+        one work yet
+        <br>
+        ... the drm core does find the connector, but not that anything
+        is connected
+        <br>
+        to it. I'll try to dig deeper tomorrow, but maybe you'll see
+        anything
+        <br>
+        interesting before then.
+        <br>
+      </blockquote>
+      <br>
+      Many thanks for your comment and debug, I would rebase on your
+      <br>
+      "edp-with-veyron" branch and fix the broken, make sure v6 would
+      <br>
+      work rightly at least in your side and my side.
+      <br>
+    </blockquote>
+    <br>
+    Just like we talk off line, I guess there are two
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    tricky questions which make analogix_dp just crash/failed on
+    rockchip platform:<br>
+    <br>
+    -=C2=A0 One is how to reach a agreement with the common way to regist=
+er
+    connector. There would be a conflict with Exynos &amp; IMX &amp;
+    Rockchip.<br>
+    =C2=A0 =C2=A0=C2=A0 On analogix_dp thread, Exynos want to register co=
+nnector when
+    that connector is ready. <br>
+    =C2=A0=C2=A0 =C2=A0 On dw_hdmi thread, IMX want to register connector=
+ when all
+    component is already.<br>
+    =C2=A0=C2=A0=C2=A0=C2=A0 So Exynos &amp; IMX &amp; Rockchip should re=
+ach a common way to
+    register connector to fix this issue.<br>
+    <br>
+    -=C2=A0 The other is atomic API.<br>
+    =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 The rockchip drm haven't
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    implemented the atomic API, but the original exynos_dp have used the
+    atomic API on connector helper function. That's why analogix_dp just
+    keep crash on your side.<br>
+    <br>
+    I have prepared the v5 version, although those would work directly
+    on rockchip side, but I could upload some HACK patches to gerrit=C2=A0=
+ to
+    make this works,=C2=A0 hope we can keep the discussion going forward.=
+<br>
+    <br>
+    Thanks,<br>
+    - Yakir<br>
+    <br>
+    <blockquote cite=3D"mid:55E65BCD.7090804@rock-chips.com" type=3D"cite=
+">
+      <br>
+      - Yakir
+      <br>
+      <br>
+      <blockquote type=3D"cite">
+        <br>
+        Heiko
+        <br>
+        <br>
+        [0]
+        <a class=3D"moz-txt-link-freetext" href=3D"https://github.com/mmi=
+nd/linux-rockchip/tree/tmp/edp-with-veyron">https://github.com/mmind/linu=
+x-rockchip/tree/tmp/edp-with-veyron</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </blockquote>
+      <br>
+      <br>
+      <br>
+      _______________________________________________
+      <br>
+      Linux-rockchip mailing list
+      <br>
+      <a class=3D"moz-txt-link-abbreviated" href=3D"mailto:Linux-rockchip=
+@lists.infradead.org">Linux-rockchip@lists.infradead.org</a>
+      <br>
+      <a class=3D"moz-txt-link-freetext" href=3D"http://lists.infradead.o=
+rg/mailman/listinfo/linux-rockchip">http://lists.infradead.org/mailman/li=
+stinfo/linux-rockchip</a>
+      <br>
+    </blockquote>
+    <br>
+  </body>
+</html>
+
+--------------010604030904040404060708--
+
+
+--===============2000519299==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============2000519299==--
