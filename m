@@ -1,43 +1,140 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 5/5] arm64: dts: Enable the Thermal on R88 board
-Date: Mon, 21 Sep 2015 12:16:11 +0800
-Message-ID: <1442808971-2619-6-git-send-email-wxt@rock-chips.com>
-References: <1442808971-2619-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1442808971-2619-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: heiko@sntech.de, edubezval@gmail.com, rui.zhang@intel.com
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, will.deacon@arm.com, robh+dt@kernel.org, inux-kernel@vger.kernel.org, galak@codeaurora.org, linux-rockchip@lists.infradead.org, dmitry.torokhov@gmail.com, mark.rutland@arm.com, olof@lixom.net, linux-arm-kernel@lists.infradead.org, catalin.marinas@arm.com, ijc+devicetree@hellion.org.uk, Caesar Wang <wxt@rock-chips.com>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v4 0/16] Add Analogix Core Display Port Driver
+Date: Mon, 21 Sep 2015 11:15:39 +0200
+Message-ID: <20150921091537.GA20992@ulmo.nvidia.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <3233920.KG0buE86B2@phil>
+ <55E65BCD.7090804@rock-chips.com>
+ <55FFC3B8.9030108@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mP3DRpeJDSE+ciuQ"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <55FFC3B8.9030108@rock-chips.com>
+Content-Disposition: inline
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, s.infradead.org@NULL.NULL, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, architt@codeaurora.org, linux-samsung-soc@vger.kernel.org, seanpaul@chromium.com, djkurtz@chromium.com, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, robherring2@gmail.com, Russell King <rmk+kernel@arm.linux.org.uk>, linux-arm-kernel@list.NULL.NULL, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Inki Dae <inki.dae@samsung.com>, joe@perches.com, Rob Herring <robh+dt@kernel.org>, dianders@chromium.com, Mark Yao <mark.yao@rock-chips.com>, Jingoo Han <jingoohan1@gmail.co>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch enable the TS-ADC.
+--mP3DRpeJDSE+ciuQ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-When a thermal temperature is invoked use the CRU to reset the chip
-on R88 board. TSHUT is low active on this board.
+On Mon, Sep 21, 2015 at 04:45:44PM +0800, Yakir Yang wrote:
+> Hi Heiko,
+>=20
+> On 09/02/2015 10:15 AM, Yakir Yang wrote:
+> >Hi Heiko,
+> >
+> >=E5=9C=A8 09/02/2015 05:47 AM, Heiko Stuebner =E5=86=99=E9=81=93:
+> >>Hi Yakir,
+> >>
+> >>Am Dienstag, 1. September 2015, 13:46:11 schrieb Yakir Yang:
+> >>>    The Samsung Exynos eDP controller and Rockchip RK3288 eDP
+> >>>controller
+> >>>share the same IP, so a lot of parts can be re-used. I split the common
+> >>>code into bridge directory, then rk3288 and exynos only need to keep
+> >>>some platform code. Cause I can't find the exact IP name of exynos dp
+> >>>controller, so I decide to name dp core driver with "analogix" which I
+> >>>find in rk3288 eDP TRM ;)
+> >>>
+> >>>Beyond that, there are three light registers setting differents bewteen
+> >>>exynos and rk3288.
+> >>>1. RK3288 have five special pll resigters which not indicata in exynos
+> >>>    dp controller.
+> >>>2. The address of DP_PHY_PD(dp phy power manager register) are
+> >>>different
+> >>>    between rk3288 and exynos.
+> >>>3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp
+> >>>debug
+> >>>    register).
+> >>>
+> >>>I have verified this series on two kinds of rockchip platform board,
+> >>>one
+> >>>is rk3288 sdk board which connect with a 2K display port monitor, the
+> >>>other
+> >>>is google jerry chromebook which connect with a eDP screen
+> >>>"cnm,n116bgeea2",
+> >>>both of them works rightlly.
+> >>it looks like during the rebase something did go wrong and I found some
+> >>issues
+> >>I mentioned in the replies to individual patches.
+> >>
+> >>I did prepare a branch based on mainline [0] with both the old and the
+> >>new edp
+> >>driver - rk3288_veyron_defconfig build both drivers into the image.
+> >>
+> >>While the old driver still works, I wasn't able to make the new one work
+> >>yet
+> >>... the drm core does find the connector, but not that anything is
+> >>connected
+> >>to it. I'll try to dig deeper tomorrow, but maybe you'll see anything
+> >>interesting before then.
+> >
+> >Many thanks for your comment and debug, I would rebase on your
+> >"edp-with-veyron" branch and fix the broken, make sure v6 would
+> >work rightly at least in your side and my side.
+>=20
+> Just like we talk off line, I guess there are two tricky questions which
+> make analogix_dp just crash/failed on rockchip platform:
+>=20
+> -  One is how to reach a agreement with the common way to register
+> connector. There would be a conflict with Exynos & IMX & Rockchip.
+>      On analogix_dp thread, Exynos want to register connector when that
+> connector is ready.
+>      On dw_hdmi thread, IMX want to register connector when all component=
+ is
+> already.
+>      So Exynos & IMX & Rockchip should reach a common way to register
+> connector to fix this issue.
+>=20
+> -  The other is atomic API.
+>       The rockchip drm haven't implemented the atomic API, but the origin=
+al
+> exynos_dp have used the atomic API on connector helper function. That's w=
+hy
+> analogix_dp just keep crash on your side.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
+There's really no reason not to convert Rockchip to atomic. It will have
+to happen eventually anyway.
 
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
+That said, there's another option that would allow you to side-step both
+of the above problems at the same time. If you turn the common code into
+a helper library that should give you enough flexibility to integrate it
+into all existing users. For example you could leave out the connector
+registration and let the drivers do that. Similarly since the helpers
+are only hooked up at registration time you could probably find a way to
+share the low-level code but again leave it up to the drivers to glue it
+all together at registration time (drivers could wrap the low-level code
+with atomic or non-atomic callbacks).
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index 401a812..7684426a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -336,6 +336,12 @@
- 	status = "okay";
- };
- 
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-+	status = "okay";
-+}
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-1.9.1
+This option may also have the benefit of loosening the coupling between
+DRM drivers and the helper code for this IP, which may be handy in case
+the drivers diverge again in the future, or ease transitions to new API.
 
+Thierry
+
+--mP3DRpeJDSE+ciuQ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJV/8q3AAoJEN0jrNd/PrOhg2IP/0sQgyUansld2uvkG7EMFK41
+vbBpPicg3XTiZJQ14Itsb3HJEI6WMVeTzvb0nva8KxucXRAk3tYyMuHtxKa+UHDH
+Hc+4ljDd7wUdHBoWIkSFEXmIe/JBCSH5HA9OcIzseCk2lTYPmnDjPzNpwbQj1l/3
+BGYp8f+4f2LQ9Vc16SnMptLAIZY/ISoBqebIv9gUCVpqakZDahkp39ArlF71lTvg
+a8/bHJofaoF4U4Chk9n5akSkJ8Vw2RQ+wuw0IcwJRfd8tbyTbhEAg7rHAthl+sM/
+0Hajt2hkUHWuL3JZ3a/rpL1EZfzP7kqPtHcCygufe/92knNWzgKv5R7IgVcIauuC
+dG3LyjrE5cTbdavEKBA5WPVPMq4NY8vm5+J6FNdc3r4EwdcZ3Uf63SIavdUKqiBV
+3bnJGVzxZrtG1XhgNWOdHoUEUb0ObSBIB+JRojnmk7RqRXcR/dU6ZjEniBbzHTCA
+S+AG4ME/IfzNwINcnsrNK4on0nHmNWkUq9ZS2+4XJEn5zC03FFOD1SNYH97lDLSI
+y4UfqV5H5b/S0IicbLeG6aBEJcxz6jYUY9DFkY46Anithj7MhrBoIVlXUGbPjWk+
+qs+UTstuHOkFiUEhimlBQ69y2lYPpdn2S80ffzMTwQGUlGk1L7g4/MZ9se4kWEn9
+9OoachQrzeNRrHP7Ryc+
+=eNwf
+-----END PGP SIGNATURE-----
+
+--mP3DRpeJDSE+ciuQ--
