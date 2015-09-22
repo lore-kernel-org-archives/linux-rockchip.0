@@ -1,206 +1,61 @@
-From: Caesar Wang <caesar.wang@rock-chips.com>
-Subject: Re: [PATCH v1 1/3] clocksource: rockchip: Make the driver more readability
- and compatible
-Date: Tue, 22 Sep 2015 22:15:17 +0800
-Message-ID: <56016275.4080704@rock-chips.com>
-References: <1442566271-10695-1-git-send-email-wxt@rock-chips.com> <1442566271-10695-2-git-send-email-wxt@rock-chips.com> <5455510.kk9S3OIaU9@diego>
+From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 0/1] usb: dwc2: Fix NULL qh in dwc2_queue_transaction
+Date: Tue, 22 Sep 2015 13:10:50 -0700
+Message-ID: <1442952651-4341-1-git-send-email-amstan@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5455510.kk9S3OIaU9@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, catalin.marinas@arm.com, daniel.lezcano@linaro.org, will.deacon@arm.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, olof@lixom.net, tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Paul Zimmerman <paulz-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, Jonathan Dixon <joth-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mian Yousaf Kaukab <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi  Heiko,
+I have a weird usb device which doesn't a normal connector, so there's
+no guarantee that the pins will get removed in the correct order (data
+pins first, then ground and vcc). I wouldn't be mad if there was a
+weird error or something at connect/disconnect, but in this case I can
+actually get a kernel panic.
 
-=E5=9C=A8 2015=E5=B9=B409=E6=9C=8822=E6=97=A5 22:00, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Freitag, 18. September 2015, 16:51:09 schrieb Caesar Wang:
->> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
->> There are some failure with build up on timer driver for rockchip.
->>
->> logs:
->> ...
->> drivers/clocksource/rockchip_timer.c:156:13: error: 'NO_IRQ' undecla=
-red
->> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operand =
-1 --
->> `dsb`
->> ...
->>
->> The problem was different semantics of dsb on btw arm32 and arm64,
->> Here we can convert the dsb with insteading of dsb(sy).
->>
->> NO_IRQ definition is missing for ARM64, since NO_IRQ being -1 is a
->> legacy thing for ARM - all ARM drivers are supposed to be converted =
-to
->> use <=3D 0 or =3D=3D 0 to detect invalid IRQs, and _eventually_ once=
- all users
->> are gone, NO_IRQ deleted. Modern drivers should _all_ be using !irq =
-to
->> detect invalid IRQs, and not using NO_IRQ.
->>
->> Meanwhile, I change a bit to make the code more readability for driv=
-er
->> when I check the code style.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> ---
->>
->> Changes in v1:
->> - As Russell, Thomas, Daniel comments, let's replace NO_IRQ by '!irq=
-'.
->>
->>   drivers/clocksource/rockchip_timer.c | 29 +++++++++++++++---------=
------
->>   1 file changed, 15 insertions(+), 14 deletions(-)
->>
->> diff --git a/drivers/clocksource/rockchip_timer.c
->> b/drivers/clocksource/rockchip_timer.c index bb2c2b0..e1af449 100644
->> --- a/drivers/clocksource/rockchip_timer.c
->> +++ b/drivers/clocksource/rockchip_timer.c
->> @@ -17,16 +17,16 @@
->>
->>   #define TIMER_NAME "rk_timer"
->>
->> -#define TIMER_LOAD_COUNT0 0x00
->> -#define TIMER_LOAD_COUNT1 0x04
->> -#define TIMER_CONTROL_REG 0x10
->> -#define TIMER_INT_STATUS 0x18
->> +#define TIMER_LOAD_COUNT0	0x00
->> +#define TIMER_LOAD_COUNT1	0x04
->> +#define TIMER_CONTROL_REG	0x10
->> +#define TIMER_INT_STATUS	0x18
->>
->> -#define TIMER_DISABLE 0x0
->> -#define TIMER_ENABLE 0x1
->> -#define TIMER_MODE_FREE_RUNNING (0 << 1)
->> -#define TIMER_MODE_USER_DEFINED_COUNT (1 << 1)
->> -#define TIMER_INT_UNMASK (1 << 2)
->> +#define TIMER_DISABLE			(0 << 0)
->> +#define TIMER_ENABLE			(1 << 0)
->> +#define TIMER_MODE_FREE_RUNNING		(0 << 1)
->> +#define TIMER_MODE_USER_DEFINED_COUNT	(1 << 1)
->> +#define TIMER_INT_UNMASK		(1 << 2)
-> not sure how Daniel sees this, but those could count as "unrelated ch=
-ange", as
-> they have nothing to do with the arm64 build-fixes.
+Part of the panic text:
+[  143.654956] [<c044e818>] (dwc2_queue_transaction) from [<c044f3b4>] (dwc2_hcd_queue_transactions+0x24c/0x31c)
+[  143.664868] [<c044f3b4>] (dwc2_hcd_queue_transactions) from [<c044f4dc>] (_dwc2_hcd_clear_tt_buffer_complete+0x58/0x68)
+[  143.675648] [<c044f4dc>] (_dwc2_hcd_clear_tt_buffer_complete) from [<c04347ec>] (hub_tt_work+0x130/0x164)
+[  143.685214] [<c04347ec>] (hub_tt_work) from [<c013768c>] (process_one_work+0x258/0x3c0)
+[  143.693217] [<c013768c>] (process_one_work) from [<c0138848>] (worker_thread+0x234/0x38c)
+[  143.701394] [<c0138848>] (worker_thread) from [<c013e3dc>] (kthread+0xe4/0xfc)
+[  143.708618] [<c013e3dc>] (kthread) from [<c0106278>] (ret_from_fork+0x14/0x20)
 
-Yep, it's no related to the arm64 uild fixes.
-I only make the code more readability for driver.
+I traced it down to a dereference of qh(chan->qh->ping_state) in
+dwc2_queue_transaction.
 
->
->>   struct bc_timer {
->>   	struct clock_event_device ce;
->> @@ -49,14 +49,14 @@ static inline void __iomem *rk_base(struct
->> clock_event_device *ce) static inline void rk_timer_disable(struct
->> clock_event_device *ce) {
->>   	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
->> -	dsb();
->> +	dsb(sy);
->>   }
->>
->>   static inline void rk_timer_enable(struct clock_event_device *ce, =
-u32
->> flags) {
->>   	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
->>   		       rk_base(ce) + TIMER_CONTROL_REG);
->> -	dsb();
->> +	dsb(sy);
->>   }
->>
->>   static void rk_timer_update_counter(unsigned long cycles,
->> @@ -64,13 +64,13 @@ static void rk_timer_update_counter(unsigned lon=
-g
->> cycles, {
->>   	writel_relaxed(cycles, rk_base(ce) + TIMER_LOAD_COUNT0);
->>   	writel_relaxed(0, rk_base(ce) + TIMER_LOAD_COUNT1);
->> -	dsb();
->> +	dsb(sy);
->>   }
->>
->>   static void rk_timer_interrupt_clear(struct clock_event_device *ce=
-)
->>   {
->>   	writel_relaxed(1, rk_base(ce) + TIMER_INT_STATUS);
->> -	dsb();
->> +	dsb(sy);
->>   }
->>
->>   static inline int rk_timer_set_next_event(unsigned long cycles,
->> @@ -148,7 +148,7 @@ static void __init rk_timer_init(struct device_n=
-ode *np)
->> bc_timer.freq =3D clk_get_rate(timer_clk);
->>
->>   	irq =3D irq_of_parse_and_map(np, 0);
->> -	if (irq =3D=3D NO_IRQ) {
->> +	if (!irq) {
->>   		pr_err("Failed to map interrupts for '%s'\n", TIMER_NAME);
->>   		return;
->>   	}
->> @@ -173,4 +173,5 @@ static void __init rk_timer_init(struct device_n=
-ode *np)
->>
->>   	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
->>   }
->> +
-> unnecessary addition of a blank line (same reasons as above)
+At usb device disconnect, dwc2_hcd_cleanup_channels gets called,
+which sets qh to NULL, but dwc2_queue_transaction still manages to
+get called after that.
 
-It's the same reason with the above.
+I can reproduce this in an isolated manner on my rk3288 board
+with an FTDI/prolific device, having the usb pins easily
+disconnectable(independently), then playing with the vcc pin while
+leaving the data lines connected.
 
-CHECK: Please use a blank line after function/struct/union/enum declara=
-tions
-#176: FILE: rockchip_timer.c:176:
-+}
-+CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_ini=
-t);
-
-I know, we can ignore the above warning.
-That's a bit better, I thnik.
+While my patch is probably not a proper fix for this issue, it's pretty
+harmless where it is (and it's consistent with other checks in there).
+I also hope this opens up discussions on this issue.
 
 
->>   CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer=
-_init);
->
-> Heiko
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Alexandru M Stan (1):
+  usb: dwc2: Fix NULL qh in dwc2_queue_transaction
 
+ drivers/usb/dwc2/hcd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---=20
-***********************************************************************=
-***************
-=E7=8E=8B=E6=99=93=E8=85=BE    Caesar Wang
-Product R&D Dept.III
-=46uzhou Rockchip Electronics Co.Ltd
-Addr=EF=BC=9A  NO.18 Building, A District, Fuzhou Software Park,Gulou D=
-istrict,Fuzhou, Fujian,China(Fuzhou Headquarters)
-               21F,Malata Building,Kejizhongyi Avenue,Nanshan District,=
-Shenzhen  (Shenzhen Office)
-Tel=EF=BC=9A+86-591-83991906/07 - 8221
-Mobile:+86 15059456742
-E-mail : wxt@rock-chips.com
-***********************************************************************=
-****************
-***********************************************************************=
-****************
-IMPORTANT NOTICE: This email is from Fuzhou Rockchip Electronics Co., L=
-td .The contents of this email and any attachments may
-contain information that is privileged, confidential and/or exempt from=
- disclosure under applicable law and relevant NDA.
-If you are not the intended recipient, you are hereby notified that any=
- disclosure, copying, distribution, or use of the
-information is STRICTLY PROHIBITED. Please immediately contact the send=
-er as soon as possible and destroy the material
-in its entirety in any format. Thank you.
-***********************************************************************=
-****************
+-- 
+2.6.0.rc0.131.gf624c3d
