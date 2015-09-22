@@ -1,113 +1,91 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: set rockchip-specific uboot bootmode flags on reboot
-Date: Wed, 23 Sep 2015 01:16:15 +0200
-Message-ID: <8498512.JKlZEAjChn@diego>
-References: <1441716187-29446-1-git-send-email-andy.yan@rock-chips.com>
- <CAPnjgZ0n7aNY7FRnoDYUBEnQAtUO1BWKs6DDzaMQyHsg1kQ1Jg@mail.gmail.com>
- <55FA9EDA.8010308@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2 4/9] clk: rockchip: add new clock type and controller
+ for rk3036
+Date: Tue, 22 Sep 2015 16:19:00 -0700
+Message-ID: <20150922231900.GL23081@codeaurora.org>
+References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+ <1442478540-15068-5-git-send-email-zhengxing@rock-chips.com>
+ <20150922224125.GK23081@codeaurora.org>
+ <2850967.rjRj3AZerS@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <55FA9EDA.8010308-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, lk <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lak <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <2850967.rjRj3AZerS@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5keSwKCgpBbSBEb25uZXJzdGFnLCAxNy4gU2VwdGVtYmVyIDIwMTUsIDE5OjA3OjA2IHNj
-aHJpZWIgQW5keSBZYW46Cj4gT24gMjAxNeW5tDA55pyIMTDml6UgMDI6MDUsIFNpbW9uIEdsYXNz
-IHdyb3RlOgo+ID4gSGksCj4gPiAKPiA+IE9uIDggU2VwdGVtYmVyIDIwMTUgYXQgMTY6NDYsIEhl
-aWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4+IEhpIEFuZHksCj4gPj4g
-Cj4gPj4gQW0gRGllbnN0YWcsIDguIFNlcHRlbWJlciAyMDE1LCAyMDo0MzowNyBzY2hyaWViIEFu
-ZHkgWWFuOgo+ID4+PiByb2NrY2hpcCBwbGF0Zm9ybSBoYXZlIGEgcHJvdG9jb2wgdG8gcGFzcyB0
-aGUgdGhlIGtlcm5lbAo+ID4+PiByZWJvb3QgbW9kZSB0byBib290bG9hZGVyIGJ5IHNvbWUgc3Bl
-Y2lhbCByZWdpc3RlcnMgd2hlbgo+ID4+PiBzeXN0ZW0gcmVib290LkJ5IHRoaXMgd2F5IHRoZSBi
-b290bG9hZGVyIGNhbiB0YWtlIGRpZmZlcmVudAo+ID4+PiBhY3Rpb24gYWNjb3JkaW5nIHRvIHRo
-ZSBkaWZmZXJlbnQga2VybmVsIHJlYm9vdCBtb2RlLCBmb3IKPiA+Pj4gZXhhbXBsZSwgY29tbWFu
-ZCAicmVib290IGxvYWRlciIgd2lsbCByZWJvb3QgdGhlIGJvYXJkIHRvCj4gPj4+IHJvY2t1c2Ig
-bW9kZSwgdGhpcyBpcyBhIHZlcnkgY29udmVuaWVudCB3YXkgdG8gZ2V0IHRoZSBib2FyZAo+ID4+
-PiB0byBkb3dubG9hZCBtb2RlLgo+ID4+PiAKPiA+Pj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4g
-PGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+ID4+IAo+ID4+IFsuLi5dCj4gPj4gCj4gPj4+IEBA
-IC0wLDAgKzEsMjIgQEAKPiA+Pj4gKyNpZm5kZWYgX19NQUNIX1JPQ0tDSElQX0xPQURFUl9ICj4g
-Pj4+ICsjZGVmaW5lIF9fTUFDSF9ST0NLQ0hJUF9MT0FERVJfSAo+ID4+PiArCj4gPj4+ICsvKmhp
-Z2ggMjQgYml0cyBpcyB0YWcsIGxvdyA4IGJpdHMgaXMgdHlwZSovCj4gPj4+ICsjZGVmaW5lIFNZ
-U19MT0FERVJfUkVCT09UX0ZMQUcgICAweDUyNDJDMzAwCj4gPj4+ICsKPiA+Pj4gK2VudW0gewo+
-ID4+PiArICAgICBCT09UX05PUk1BTCA9IDAsIC8qIG5vcm1hbCBib290ICovCj4gPj4+ICsgICAg
-IEJPT1RfTE9BREVSLCAgICAgLyogZW50ZXIgbG9hZGVyIHJvY2t1c2IgbW9kZSAqLwo+ID4+PiAr
-ICAgICBCT09UX01BU0tST00sICAgIC8qIGVudGVyIG1hc2tyb20gcm9ja3VzYiBtb2RlIChub3Qg
-c3VwcG9ydCBub3cpCj4gPj4+ICovCj4gPj4+ICsgICAgIEJPT1RfUkVDT1ZFUiwgICAgLyogZW50
-ZXIgcmVjb3ZlciAqLwo+ID4+PiArICAgICBCT09UX05PUkVDT1ZFUiwgIC8qIGRvIG5vdCBlbnRl
-ciByZWNvdmVyICovCj4gPj4+ICsgICAgIEJPT1RfU0VDT05ET1MsICAgLyogYm9vdCBzZWNvbmQg
-T1MgKG5vdCBzdXBwb3J0IG5vdykqLwo+ID4+PiArICAgICBCT09UX1dJUEVEQVRBLCAgIC8qIGVu
-dGVyIHJlY292ZXIgYW5kIHdpcGUgZGF0YS4gKi8KPiA+Pj4gKyAgICAgQk9PVF9XSVBFQUxMLCAg
-ICAvKiBlbnRlciByZWNvdmVyIGFuZCB3aXBlIGFsbCBkYXRhLiAqLwo+ID4+PiArICAgICBCT09U
-X0NIRUNLSU1HLCAgIC8qIGNoZWNrIGZpcm13YXJlIGltZyB3aXRoIGJhY2t1cCBwYXJ0Ki8KPiA+
-Pj4gKyAgICAgQk9PVF9GQVNUQk9PVCwgICAvKiBlbnRlciBmYXN0IGJvb3QgbW9kZSAqLwo+ID4+
-PiArICAgICBCT09UX1NFQ1VSRUJPT1RfRElTQUJMRSwKPiA+Pj4gKyAgICAgQk9PVF9DSEFSR0lO
-RywgICAvKiBlbnRlciBjaGFyZ2UgbW9kZSAqLwo+ID4+PiArICAgICBCT09UX01BWCAgICAgICAg
-IC8qIE1BWCBWQUxJRCBCT09UIFRZUEUuKi8KPiA+Pj4gK307Cj4gPj4+ICsjZW5kaWYKPiA+PiAK
-PiA+PiBUaGVzZSBmbGFncyByZWx5IG9uIGNvZGUgaW4gdGhlIGJvb3Rsb2FkZXIgdG8gYWN0dWFs
-bHkgaGFuZGxlIHRoZSB0YXJnZXQKPiA+PiBhY3Rpb24uIE5vd2FkYXlzIHRoaXMgaXMgdWJvb3Qs
-IGJ1dCBzdGlsbCBhIHJvY2tjaGlwLXNwZWNpZmljIGZvcmsuIEFuZAo+ID4+IHdlJ3JlIGFjdGl2
-ZWx5IG1vdmluZyBhd2F5IGZyb20gdGhhdCwgd2l0aCB0aGUgcmVjZW50IHJrMzI4OCBhZGRpdGlv
-biB0bwo+ID4+IG1haW5saW5lIHVib290Lgo+ID4+IAo+ID4+IFNvIHVubGVzcyB5b3UgY29udmlu
-Y2UgdWJvb3QgcGVvcGxlIHRoYXQgdGhlIF91bmRlcmx5aW5nIHNwZWNpYWwKPiA+PiBmdW5jdGlv
-bmFsaXR5XyBiZWhpbmQgdGhlc2UgZmxhZ3Mgc2hvdWxkIGJlIHBhcnQgb2YgdWJvb3QsIEkgZG9u
-J3QgdGhpbmsKPiA+PiB0aGlzIGlzIGdvaW5nIHRvIGZseS4KPiA+PiAKPiA+PiAKPiA+PiBJbiBh
-IHdheSB0aGlzIGlzIHNpbWlsYXIgdG8gZ3B1IGtlcm5lbCBjb2RlIHRhbGtpbmcgdG8gcHJvcHJp
-ZXRhcnkKPiA+PiB1c2Vyc3BhY2UgbGlicyAtIHRoZXNlIGFyZSBhbHNvIG5vdCBlbGlnaWJsZSBm
-b3IgdGhlIGtlcm5lbC4gKG1lYW5pbmcKPiA+PiBzdHVmZiBsaWtlIHRoZSBtYWxpIGtlcm5lbCBk
-cml2ZXIgbm90IGJlaW5nIGFsbG93ZWQpLgo+ID4gCj4gPiBJIGRvbid0IHdhbnQgdG8gY29tbWVu
-dCBvbiB3aGF0IExpbnV4IGRvZXMgb3IgZG9lcyBub3Qgd2FudC4gQnV0IEkgY2FuCj4gPiBzZWUg
-dGhpcyBzb3J0IG9mIGZlYXR1cmUgYmVpbmcgdXNlZnVsIGZvciBkZXZzIGF0IGxlYXN0LiBTbyBs
-b25nIGFzIGl0Cj4gPiBpcyBkZWZpbmVkIGluIGEgd2F5IHRoYXQgaXMgbm90IFJvY2tjaGlwLXNw
-ZWNpZmljIChhbmQgdGhlIGFib3ZlIGVudW0KPiA+IGxvb2tzIHByZXR0eSByZWFzb25hYmxlIG9u
-IHRoYXQgZnJvbnQsIEkgdGhpbmsgaXQgbWFrZXMgc2Vuc2UuCj4gPiAKPiA+IE9mIGNvdXJzZSBp
-dCdzIGEgYml0IG9kZCB0byB0YXJnZXQgYSBkb3duc3RyZWFtIFUtQm9vdCB3aXRoIGEgTGludXgK
-PiA+IGZlYXR1cmUuIEJ1dCBob3BlZnVsbHkgUm9ja2NoaXAncyBVLUJvb3Qgc3VwcG9ydCBhbmQg
-ZGV2ZWxvcG1lbnQgd2lsbAo+ID4gbW92ZSB0byBtYWlubGluZSB3aXRoIHRpbWUuCj4gCj4gICAg
-IElzIHRoZXJlIGFueSBjaGFuY2UgZm9yIHRoaXMgcGF0Y2ggdG8gYmUgbGFuZGVkPwo+ICAgICBB
-cyBTaW1vbiBzYXlzLCBpdCBpcyB1c2VmdWwgZm9yIGRldmVsb3BtZW50LiBBbmQKPiAgICAgaGUg
-aXMgdXBzdHJlYW1pbmcgUm9ja2NoaXAgVS1ib290LgoKU29ycnkgdGhhdCBJJ20gc3RpbGwgZHJh
-Z2dpbmcgbXkgZmVldCB3aXRoIHRoaXMsIGJ1dCBJJ20gc3RpbGwgc3RydWdnbGluZyB3aXRoIAp3
-aGF0IHRvIGRvLgoKSSBkaWQgdGFsayB0byB0aGUgYXJtLXNvYyBtYWludGFpbmVycyBhbmQgZG9p
-bmcgdGhpcyBpbiBnZW5lcmFsIHNlZW1zIHRvIGJlIApmaW5lLiBPbG9mIHdhcyB2ZXJ5IGluIGZh
-dm91ciwgb3RoZXJzIHBvaW50ZWQgb3V0IHRoYXQganVzdCBwYXNzaW5nIHRocm91Z2ggCnRoZSBj
-b21tYW5kIGludG8gdGhlIHJlZ2lzdGVyIG1pZ2h0IGJlIHRoZSBiZXN0IHNvbHV0aW9uIC0gd2l0
-aG91dCBoYXZpbmcgdG8gCnRyYW5zbGF0ZSBzdHVmZiBpbiB0aGUga2VybmVsLgogCgpTbyBJIGd1
-ZXNzIHRoZSB0cmFuc2xhdGlvbiB0YWJsZSAoc3RyaW5nIHRvIG51bWJlcikgaXMgdGhlIHRoaW5n
-IHRvIHRhbGsgCmFib3V0LiBJIGd1ZXNzIG15IHdvcnJpZXMgYXJlIHRocmVlLWZvbGQ6CgotIHdp
-bGwgdGhpcyBhY3R1YWxseSBiZSBzdGFibGUgb3IgZG8gd2UgZ2V0IGEgZnV0dXJlIHdoZXJlIHRo
-aXMgdHJhbnNsYXRpb24gCmdldHMgdG8gYmUgc29jLXNwZWNpZmljLCBsaWtlICJpZiByazMyODgg
-dGFibGVfYTsgaWYgcmszMzY4IHRhYmxlX2IgLi4uIiA/CgotIGNhbiB3ZSB0cmltIHRoYXQgZG93
-biB0byBhY3R1YWxseSBzdXBwb3J0ZWQgbW9kZXM/CgotIEkgZm9yZ290IHRoYXQgd2UgYWxyZWFk
-eSBoYXZlIG90aGVyIG1hc3MtcHJvZHVjdGlvbiBib290bG9hZGVycywgc28gd2hhdCAKZG9lcyBj
-b3JlYm9vdCBvbiB2ZXlyb24gZGV2aWNlcyBkbyB3aXRoIHRoZXNlIHJlZ2lzdGVyLXZhbHVlcz8K
-CgpBcyBpdCBpcyBwcm9iYWJseSBhbHNvIHZhbGlkIGZvciByazMzNjggYW5kIGZvbGxvd2luZywg
-SSBndWVzcyBpdCBzaG91bGQgbGl2ZSAKc29tZWhvdyBpbiBkcml2ZXJzL3NvYy9yb2NrY2hpcCB0
-b28uCgoKSGVpa28KCj4gCj4gPj4gWy4uLl0KPiA+PiAKPiA+Pj4gK3N0YXRpYyBpbnQgcm9ja2No
-aXBfcmVib290X25vdGlmeShzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKnRoaXMsCj4gPj4+ICsgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5zaWduZWQgbG9uZyBtb2RlLCB2b2lkICpjbWQp
-Cj4gPj4+ICt7Cj4gPj4+ICsgICAgIHUzMiBmbGFnOwo+ID4+PiArCj4gPj4+ICsgICAgIHJvY2tj
-aGlwX2dldF9yZWJvb3RfZmxhZyhjbWQsICZmbGFnKTsKPiA+Pj4gKyAgICAgcmVnbWFwX3dyaXRl
-KHJlZ21hcCwgZmxhZ19yZWcsIGZsYWcpOwo+ID4+PiArCj4gPj4+ICsgICAgIHJldHVybiBOT1RJ
-RllfRE9ORTsKPiA+Pj4gK30KPiA+Pj4gKwo+ID4+PiArc3RhdGljIHN0cnVjdCBub3RpZmllcl9i
-bG9jayByb2NrY2hpcF9yZWJvb3RfaGFuZGxlciA9IHsKPiA+Pj4gKyAgICAgLm5vdGlmaWVyX2Nh
-bGwgPSByb2NrY2hpcF9yZWJvb3Rfbm90aWZ5LAo+ID4+PiArICAgICAucHJpb3JpdHkgPSAxNTAs
-Cj4gPj4+ICt9Owo+ID4+IAo+ID4+IHRoZSByZXN0YXJ0IGhhbmRsZXJzIGFyZSBtZWFudCB0byBy
-ZWFsbHkgb25seSByZXN0YXJ0IHRoZSBzeXN0ZW0sIG5vdCB0bwo+ID4+IGV4ZWN1dGUgc29tZSBh
-Y3Rpb25zIGJlZm9yZSB0aGUgcmVzdGFydCBoYXBwZW5zLgo+ID4+IAo+ID4+IFNlZSBodHRwczov
-L2xrbWwub3JnL2xrbWwvMjAxNS82LzMvNzA3IGZvciBhIHNpbWlsYXIgY2FzZS4KPiA+PiAKPiA+
-PiAKPiA+PiBIZWlrbwo+ID4gCj4gPiBSZWdhcmRzLAo+ID4gU2ltb24KCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 09/23, Heiko St=FCbner wrote:
+> Hi Stephen,
+>=20
+> Am Dienstag, 22. September 2015, 15:41:25 schrieb Stephen Boyd:
+> > On 09/17, Xing Zheng wrote:
+> > > +
+> > > +static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+> >=20
+> > init ops are "discouraged". Could we do this through assigned
+> > rates instead?
+>=20
+> really? According to Mike that was a valid use-case when we looked fo=
+r an=20
+> initial place for that on the rk3288 :-) .
+
+A comment in clk.c indicates init ops are discouraged. Maybe this
+is a valid use-case on other platforms so it was allowed, but
+pretty much every time we see a new init op we have to think
+about it and justify it. Hooray!
+
+>=20
+>=20
+> > > +{
+> > > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > > +	const struct rockchip_pll_rate_table *rate;
+> > > +	unsigned int fbdiv, postdiv1, refdiv, postdiv2, dsmpd, frac;
+> > > +	unsigned long drate;
+> > > +	u32 pllcon;
+> > > +
+> > > +	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+> > > +		return;
+> >=20
+> > I don't understand what this one does though. This check isn't in
+> > the set rate ops.
+>=20
+> And it shouldn't be :-)
+>=20
+> The issue this whole thing is trying to solve is aligning the pll set=
+tings=20
+> which what we have in the rate table, not what the bootloader set.
+>=20
+> For example the bootloader could set up a pll at 594MHz with one set =
+of=20
+> parameters and after some time - when you don't want to exchange boot=
+loaders=20
+> on shipping devices anymore - it comes to light that a different set =
+of=20
+> parameters for the same frequency produces for example a more stable =
+hdmi=20
+> signal [I think that was the main reason for the initial change].
+>=20
+> So we're not changing the frequency x -> y, which could be easily don=
+e [and is=20
+> done already] via assigned-rates, but instead
+> 	x {params a,b,c} -> x {params d,e,f}
+> so the rate itself stays the same, only the frequency generation is a=
+dapted.
+
+Ok. It would be nice if this sort of information was made into a
+comment and put in the code. Or at least the commit text for the
+change.
+
+And is there any reason that we need to get the parent clock and
+parent rate to align the PLL settings? It would be nice if we
+avoided using clk_* APIs in here, by extracting the pll set rate
+code into another function that we can call from init to make the
+values the same without all the fallback to old rates, etc.
+
+--=20
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
