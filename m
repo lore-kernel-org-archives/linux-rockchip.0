@@ -1,72 +1,63 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 2/2] Documentation: DT bindings:
- rockchip-i2s: add capture and lrck-mode
-Date: Wed, 23 Sep 2015 09:20:26 -0700
-Message-ID: <20150923162026.GP30445@sirena.org.uk>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels capture and
+ lrck-mode support
+Date: Wed, 23 Sep 2015 09:24:33 -0700
+Message-ID: <20150923162433.GQ30445@sirena.org.uk>
 References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
- <1442979683-9441-3-git-send-email-sugar.zhang@rock-chips.com>
+ <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8114742217671758921=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1442979683-9441-3-git-send-email-sugar.zhang@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Ub0O6GltjzY0fXqz"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============8114742217671758921==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="jZ6LB7VX2Q2qroxd"
-Content-Disposition: inline
-
-
---jZ6LB7VX2Q2qroxd
+--Ub0O6GltjzY0fXqz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Wed, Sep 23, 2015 at 11:41:23AM +0800, Sugar Zhang wrote:
+On Wed, Sep 23, 2015 at 11:41:22AM +0800, Sugar Zhang wrote:
 
-> rockchip,lrck-mode: 0: rxtx separate, 1: tx share, 2: rx share.
-> default use 'rxtx separate' mode.
+> +	/* configure tx/rx lrck use mode */
+> +	if (!of_property_read_u32(node, "rockchip,lrck-mode", &val)) {
+> +		if (val >= LRCK_TXRX && val <= LRCK_RX_SHARE)
+> +			regmap_update_bits(i2s->regmap, I2S_CKR,
+> +					   I2S_CKR_TRCM_MASK,
+> +					   I2S_CKR_TRCM(val));
+> +	}
 
-I'm slightly confused about this property - is this covering differences
-in the IP deployed on different SoCs or is it covering how the SoC is
-wired into the board?  If it's for how the SoC is wired into the board
-(ie, Rx and Tx wired together) then this should already be covered by
-either the machine driver or the device at the other end of the link.
+This looks like it's for a board configuration thing so I'd not really
+expect this to be handled in a device specific property - it's fairly
+common to have this situation and we already have the symmetric_rates
+flag for the DAI to handle it (and if we do end up adding this property
+we'd need the driver to set that flag so that the core can handle things
+properly and make sure that userspace doesn't try to set different rates
+in different directions).
 
---jZ6LB7VX2Q2qroxd
+My initial thought here is that the machine driver should be responsible
+for setting this and then the DAI driver should check to see if
+symmetric_rates are in use and configure itself appropriately.  Is there
+a reason why this won't work here?
+
+--Ub0O6GltjzY0fXqz
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: Digital signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJWAtFKAAoJECTWi3JdVIfQDQ8H/R2lx+HhPy7PD62lJRDGDLRS
-XIM8iOiAieazMDQCkLRhYOHMpVLsEfSSSRCmGdGG1q5HWhFn5p8KjQWDG13hYCmx
-9YwRTfk52+2i/EnzpKHdssGz7pzisk3SB+WOuUKPPo5Z6672T8jwtssDeC960AI7
-JepwtX63AXbGLKm8goE+Ilx3l0FivrdfXPF53hSXduBSoGEr0Yvzdh4iN1QHh2t5
-K4XxU9OrvUf1WOvpOv8V1+7Oq19x5bQA+n2mo+Vr0kwdoOwLsg7jlnpJwUwk3ApW
-OEcQ0IIvp03bwccCLf6YtwrILZ11Zjoq5EWahzy94wqLPWYJTEHso/jk+KM9eqY=
-=JdgA
+iQEcBAEBCAAGBQJWAtJBAAoJECTWi3JdVIfQXs8H/2m7foDsKJ4w/RoLzde3r0aV
+7Zfw15ZQTb+fPjOMLhe5KuPGhr+w8rvuk9FwKEBPezKnv9MrKjlnBEBh23AXSDkI
+ubqra5jKIBdokTpQ6C914r283qYYpLw7gc+TzbTix4NPhP6C2agD1r08ShQp6v1d
+mv7q9M6Ld80BXd52GW9SDF+0QFInt2vUUQ+7D80mZottMWWHOedB9+m8vkbxvm/f
+T0nNz/aaCz4ZF0TrWHxdIYd8s9GMfBMWFFmXGHqDx+6Mdgkg2D1jr6Jmgw478ika
+ekv18rSWXFF/LT/mV/VB8xUy4eL2V9u+Je/MfooKPLo/0X14awHd+IJztUuW0Ys=
+=vdTG
 -----END PGP SIGNATURE-----
 
---jZ6LB7VX2Q2qroxd--
-
---===============8114742217671758921==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============8114742217671758921==--
+--Ub0O6GltjzY0fXqz--
