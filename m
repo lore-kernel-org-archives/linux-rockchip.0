@@ -1,158 +1,72 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels capture and lrck-mode support
-Date: Wed, 23 Sep 2015 11:41:22 +0800
-Message-ID: <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/2] Documentation: DT bindings:
+ rockchip-i2s: add capture and lrck-mode
+Date: Wed, 23 Sep 2015 09:20:26 -0700
+Message-ID: <20150923162026.GP30445@sirena.org.uk>
 References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>
+ <1442979683-9441-3-git-send-email-sugar.zhang@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8114742217671758921=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1442979683-9441-3-git-send-email-sugar.zhang@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-support max 8 channels capture, please add property
-'rockchip,capture-channels' in dts to enable this,
-if not, support 2 channels capture default.
 
-support lrck clk mode configuration, there are 3 modes:
+--===============8114742217671758921==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="jZ6LB7VX2Q2qroxd"
+Content-Disposition: inline
 
- - txrx: lrck_tx and lrck_rx are different.
- - tx_share: lrck_tx is shared with lrck_rx.
- - rx_share: lrck_rx is shared with lrck_tx.
 
-to enable this, please add property 'rockchip,lrck-mode' in dts,
-if not, use 'txrx' lrck mode default.
+--jZ6LB7VX2Q2qroxd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
- sound/soc/rockchip/rockchip_i2s.c | 48 +++++++++++++++++++++++++++++++++++++--
- sound/soc/rockchip/rockchip_i2s.h | 23 +++++++++++++++++++
- 2 files changed, 69 insertions(+), 2 deletions(-)
+On Wed, Sep 23, 2015 at 11:41:23AM +0800, Sugar Zhang wrote:
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index b936102..a8cb414 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -245,8 +245,34 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 		return -EINVAL;
- 	}
- 
--	regmap_update_bits(i2s->regmap, I2S_TXCR, I2S_TXCR_VDW_MASK, val);
--	regmap_update_bits(i2s->regmap, I2S_RXCR, I2S_RXCR_VDW_MASK, val);
-+	switch (params_channels(params)) {
-+	case 8:
-+		val |= I2S_CHN_8;
-+		break;
-+	case 6:
-+		val |= I2S_CHN_6;
-+		break;
-+	case 4:
-+		val |= I2S_CHN_4;
-+		break;
-+	case 2:
-+		val |= I2S_CHN_2;
-+		break;
-+	default:
-+		dev_err(i2s->dev, "invalid channel: %d\n",
-+			params_channels(params));
-+		return -EINVAL;
-+	}
-+
-+	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
-+		regmap_update_bits(i2s->regmap, I2S_RXCR,
-+				   I2S_RXCR_VDW_MASK | I2S_RXCR_CSR_MASK,
-+				   val);
-+	else
-+		regmap_update_bits(i2s->regmap, I2S_TXCR,
-+				   I2S_TXCR_VDW_MASK | I2S_TXCR_CSR_MASK,
-+				   val);
-+
- 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_TDL_MASK,
- 			   I2S_DMACR_TDL(16));
- 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
-@@ -415,10 +441,12 @@ static const struct regmap_config rockchip_i2s_regmap_config = {
- 
- static int rockchip_i2s_probe(struct platform_device *pdev)
- {
-+	struct device_node *node = pdev->dev.of_node;
- 	struct rk_i2s_dev *i2s;
- 	struct resource *res;
- 	void __iomem *regs;
- 	int ret;
-+	int val;
- 
- 	i2s = devm_kzalloc(&pdev->dev, sizeof(*i2s), GFP_KERNEL);
- 	if (!i2s) {
-@@ -475,6 +503,22 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 			goto err_pm_disable;
- 	}
- 
-+	/* refine capture channels */
-+	if (!of_property_read_u32(node, "rockchip,capture-channels", &val)) {
-+		if (val >= 2 && val <= 8)
-+			rockchip_i2s_dai.capture.channels_max = val;
-+		else
-+			rockchip_i2s_dai.capture.channels_max = 2;
-+	}
-+
-+	/* configure tx/rx lrck use mode */
-+	if (!of_property_read_u32(node, "rockchip,lrck-mode", &val)) {
-+		if (val >= LRCK_TXRX && val <= LRCK_RX_SHARE)
-+			regmap_update_bits(i2s->regmap, I2S_CKR,
-+					   I2S_CKR_TRCM_MASK,
-+					   I2S_CKR_TRCM(val));
-+	}
-+
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rockchip_i2s_component,
- 					      &rockchip_i2s_dai, 1);
-diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
-index 93f456f..0d285d1 100644
---- a/sound/soc/rockchip/rockchip_i2s.h
-+++ b/sound/soc/rockchip/rockchip_i2s.h
-@@ -49,6 +49,9 @@
-  * RXCR
-  * receive operation control register
- */
-+#define I2S_RXCR_CSR_SHIFT	15
-+#define I2S_RXCR_CSR(x)		(x << I2S_RXCR_CSR_SHIFT)
-+#define I2S_RXCR_CSR_MASK	(3 << I2S_RXCR_CSR_SHIFT)
- #define I2S_RXCR_HWT		BIT(14)
- #define I2S_RXCR_SJM_SHIFT	12
- #define I2S_RXCR_SJM_R		(0 << I2S_RXCR_SJM_SHIFT)
-@@ -75,6 +78,12 @@
-  * CKR
-  * clock generation register
- */
-+#define I2S_CKR_TRCM_SHIFT	28
-+#define I2S_CKR_TRCM(x)	(x << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_TXRX	(0 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_TXSHARE	(1 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_RXSHARE	(2 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_MASK	(3 << I2S_CKR_TRCM_SHIFT)
- #define I2S_CKR_MSS_SHIFT	27
- #define I2S_CKR_MSS_MASTER	(0 << I2S_CKR_MSS_SHIFT)
- #define I2S_CKR_MSS_SLAVE	(1 << I2S_CKR_MSS_SHIFT)
-@@ -207,6 +216,20 @@ enum {
- 	ROCKCHIP_DIV_BCLK,
- };
- 
-+/* channel select */
-+#define I2S_CSR_SHIFT	15
-+#define I2S_CHN_2	(0 << I2S_CSR_SHIFT)
-+#define I2S_CHN_4	(1 << I2S_CSR_SHIFT)
-+#define I2S_CHN_6	(2 << I2S_CSR_SHIFT)
-+#define I2S_CHN_8	(3 << I2S_CSR_SHIFT)
-+
-+/* lrck use mode */
-+enum {
-+	LRCK_TXRX = 0,
-+	LRCK_TX_SHARE,
-+	LRCK_RX_SHARE,
-+};
-+
- /* I2S REGS */
- #define I2S_TXCR	(0x0000)
- #define I2S_RXCR	(0x0004)
--- 
-2.3.6
+> rockchip,lrck-mode: 0: rxtx separate, 1: tx share, 2: rx share.
+> default use 'rxtx separate' mode.
+
+I'm slightly confused about this property - is this covering differences
+in the IP deployed on different SoCs or is it covering how the SoC is
+wired into the board?  If it's for how the SoC is wired into the board
+(ie, Rx and Tx wired together) then this should already be covered by
+either the machine driver or the device at the other end of the link.
+
+--jZ6LB7VX2Q2qroxd
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWAtFKAAoJECTWi3JdVIfQDQ8H/R2lx+HhPy7PD62lJRDGDLRS
+XIM8iOiAieazMDQCkLRhYOHMpVLsEfSSSRCmGdGG1q5HWhFn5p8KjQWDG13hYCmx
+9YwRTfk52+2i/EnzpKHdssGz7pzisk3SB+WOuUKPPo5Z6672T8jwtssDeC960AI7
+JepwtX63AXbGLKm8goE+Ilx3l0FivrdfXPF53hSXduBSoGEr0Yvzdh4iN1QHh2t5
+K4XxU9OrvUf1WOvpOv8V1+7Oq19x5bQA+n2mo+Vr0kwdoOwLsg7jlnpJwUwk3ApW
+OEcQ0IIvp03bwccCLf6YtwrILZ11Zjoq5EWahzy94wqLPWYJTEHso/jk+KM9eqY=
+=JdgA
+-----END PGP SIGNATURE-----
+
+--jZ6LB7VX2Q2qroxd--
+
+--===============8114742217671758921==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============8114742217671758921==--
