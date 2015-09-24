@@ -1,60 +1,66 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH v2 3/5] ARM: multi_v7_defconfig: Enable Rockchip display
- support
-Date: Thu, 24 Sep 2015 13:39:17 +0200
-Message-ID: <1443094759-28531-4-git-send-email-sjoerd.simons@collabora.co.uk>
-References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 2/5] ARM: multi_v7_defconfig: Enable common regulators for rockchip boards
+Date: Fri, 25 Sep 2015 00:10:16 +0200
+Message-ID: <5471789.IH6TzhIBOd@diego>
+References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk> <1443094759-28531-3-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, arm@kernel.org
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kevin Hilman <khilman@kernel.org>, Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Olof Johansson <olof@lixom.net>, Stephen Warren <swarren@nvidia.com>, Thierry Reding <treding@nvidia.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1443094759-28531-3-git-send-email-sjoerd.simons@collabora.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, Thierry Reding <treding@nvidia.com>, Kevin Hilman <khilman@kernel.org>, linux-arm-kernel@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable options needed for HDMI out on rockchip: DRM driver, Rockchip
-DesignWare HDMI glue and the rockchip IOMMU (dependency of the DRM
-driver).
+Am Donnerstag, 24. September 2015, 13:39:16 schrieb Sjoerd Simons:
+> Rockchip boards seem to have two common regulator setups. Various board
+> used the Active Semi act8846 often in combination with Silergy syr82x
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
----
+For people just skimming over these patches, the syr82x are siblings to the 
+fan53555 - same register interface and all, thus that option gets enabled.
 
-Changes in v2: None
 
- arch/arm/configs/multi_v7_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 3938f54..660e72a 100644
---- a/arch/arm/configs/multi_v7_defconfig
-+++ b/arch/arm/configs/multi_v7_defconfig
-@@ -457,6 +457,8 @@ CONFIG_DRM_EXYNOS=m
- CONFIG_DRM_EXYNOS_DSI=y
- CONFIG_DRM_EXYNOS_FIMD=y
- CONFIG_DRM_EXYNOS_HDMI=y
-+CONFIG_DRM_ROCKCHIP=m
-+CONFIG_ROCKCHIP_DW_HDMI=m
- CONFIG_DRM_RCAR_DU=m
- CONFIG_DRM_TEGRA=y
- CONFIG_DRM_PANEL_SAMSUNG_S6E8AA0=m
-@@ -634,6 +636,7 @@ CONFIG_APQ_MMCC_8084=y
- CONFIG_MSM_GCC_8660=y
- CONFIG_MSM_MMCC_8960=y
- CONFIG_MSM_MMCC_8974=y
-+CONFIG_ROCKCHIP_IOMMU=y
- CONFIG_TEGRA_IOMMU_GART=y
- CONFIG_TEGRA_IOMMU_SMMU=y
- CONFIG_PM_DEVFREQ=y
--- 
-2.5.3
+> regulators (e.g. Radxa Rock Pro/Rock 2, Firefly, and Netxeon R89 etc),
+> while others use regulator part of the Rockchip RK808 chip (e.g. the
+> various Veyron based chromebooks, Chipspark Popmetal etc)
+> 
+> Enable all these regulators.
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> 
+> ---
+> 
+> Changes in v2:
+> - Enable all common rockchip regulators, not just ACT8846
+> 
+>  arch/arm/configs/multi_v7_defconfig | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm/configs/multi_v7_defconfig
+> b/arch/arm/configs/multi_v7_defconfig index 170f18e..3938f54 100644
+> --- a/arch/arm/configs/multi_v7_defconfig
+> +++ b/arch/arm/configs/multi_v7_defconfig
+> @@ -394,6 +394,7 @@ CONFIG_MFD_MAX14577=y
+>  CONFIG_MFD_MAX77686=y
+>  CONFIG_MFD_MAX77693=y
+>  CONFIG_MFD_MAX8907=y
+> +CONFIG_MFD_RK808=y
+>  CONFIG_MFD_SEC_CORE=y
+>  CONFIG_MFD_STMPE=y
+>  CONFIG_MFD_PALMAS=y
+> @@ -401,11 +402,14 @@ CONFIG_MFD_TPS65090=y
+>  CONFIG_MFD_TPS6586X=y
+>  CONFIG_MFD_TPS65910=y
+>  CONFIG_REGULATOR_AB8500=y
+> +CONFIG_REGULATOR_ACT8865=y
+>  CONFIG_REGULATOR_AS3711=y
+>  CONFIG_REGULATOR_AS3722=y
+>  CONFIG_REGULATOR_AXP20X=y
+>  CONFIG_REGULATOR_BCM590XX=y
+>  CONFIG_REGULATOR_DA9210=y
+> +CONFIG_REGULATOR_FAN53555=y
+> +CONFIG_REGULATOR_RK808=y
+>  CONFIG_REGULATOR_GPIO=y
+>  CONFIG_MFD_SYSCON=y
+>  CONFIG_POWER_RESET_SYSCON=y
