@@ -1,63 +1,143 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels capture and
- lrck-mode support
-Date: Wed, 23 Sep 2015 09:24:33 -0700
-Message-ID: <20150923162433.GQ30445@sirena.org.uk>
-References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
- <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/9] clk: rockchip: add dt-binding header for rk3036
+Date: Thu, 24 Sep 2015 10:17:56 +0800
+Message-ID: <56035D54.6010701@rock-chips.com>
+References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com>
+ <1442478540-15068-3-git-send-email-zhengxing@rock-chips.com>
+ <4652891.YJvoSYeOLF@diego>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Ub0O6GltjzY0fXqz"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <4652891.YJvoSYeOLF@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---Ub0O6GltjzY0fXqz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Sep 23, 2015 at 11:41:22AM +0800, Sugar Zhang wrote:
-
-> +	/* configure tx/rx lrck use mode */
-> +	if (!of_property_read_u32(node, "rockchip,lrck-mode", &val)) {
-> +		if (val >= LRCK_TXRX && val <= LRCK_RX_SHARE)
-> +			regmap_update_bits(i2s->regmap, I2S_CKR,
-> +					   I2S_CKR_TRCM_MASK,
-> +					   I2S_CKR_TRCM(val));
-> +	}
-
-This looks like it's for a board configuration thing so I'd not really
-expect this to be handled in a device specific property - it's fairly
-common to have this situation and we already have the symmetric_rates
-flag for the DAI to handle it (and if we do end up adding this property
-we'd need the driver to set that flag so that the core can handle things
-properly and make sure that userspace doesn't try to set different rates
-in different directions).
-
-My initial thought here is that the machine driver should be responsible
-for setting this and then the DAI driver should check to see if
-symmetric_rates are in use and configure itself appropriately.  Is there
-a reason why this won't work here?
-
---Ub0O6GltjzY0fXqz
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWAtJBAAoJECTWi3JdVIfQXs8H/2m7foDsKJ4w/RoLzde3r0aV
-7Zfw15ZQTb+fPjOMLhe5KuPGhr+w8rvuk9FwKEBPezKnv9MrKjlnBEBh23AXSDkI
-ubqra5jKIBdokTpQ6C914r283qYYpLw7gc+TzbTix4NPhP6C2agD1r08ShQp6v1d
-mv7q9M6Ld80BXd52GW9SDF+0QFInt2vUUQ+7D80mZottMWWHOedB9+m8vkbxvm/f
-T0nNz/aaCz4ZF0TrWHxdIYd8s9GMfBMWFFmXGHqDx+6Mdgkg2D1jr6Jmgw478ika
-ekv18rSWXFF/LT/mV/VB8xUy4eL2V9u+Je/MfooKPLo/0X14awHd+IJztUuW0Ys=
-=vdTG
------END PGP SIGNATURE-----
-
---Ub0O6GltjzY0fXqz--
+T24gMjAxNeW5tDA55pyIMTfml6UgMTc6MjUsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEFtIERv
+bm5lcnN0YWcsIDE3LiBTZXB0ZW1iZXIgMjAxNSwgMTY6Mjg6NTMgc2NocmllYiBYaW5nIFpoZW5n
+Ogo+PiBBZGQgdGhlIGR0LWJpbmRpbmdzIGhlYWRlciBmb3IgdGhlIHJrMzAzNiwgdGhhdCBnZXRz
+IHNoYXJlZCBiZXR3ZWVuCj4+IHRoZSBjbG9jayBjb250cm9sbGVyIGFuZCB0aGUgY2xvY2sgcmVm
+ZXJlbmNlcyBpbiB0aGUgZHRzLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBYaW5nIFpoZW5nPHpoZW5n
+eGluZ0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4K
+Pj4gICBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzAzNi1jcnUuaCB8ICAxOTgKPj4gKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysgMSBmaWxlIGNoYW5nZWQsIDE5OCBpbnNlcnRp
+b25zKCspCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2sv
+cmszMDM2LWNydS5oCj4+Cj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2Nr
+L3JrMzAzNi1jcnUuaAo+PiBiL2luY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcmszMDM2LWNydS5o
+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4+IGluZGV4IDAwMDAwMDAuLmIwMDMzZWYKPj4gLS0tIC9k
+ZXYvbnVsbAo+PiArKysgYi9pbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzAzNi1jcnUuaAo+
+PiBAQCAtMCwwICsxLDE5OCBAQAo+PiArLyoKPj4gKyAqIENvcHlyaWdodCAoYykgMjAxNCBNdW5k
+b1JlYWRlciBTLkwuCj4+ICsgKiBBdXRob3I6IEhlaWtvIFN0dWVibmVyPGhlaWtvQHNudGVjaC5k
+ZT4KPiB5b3UgY2FuIHByb2JhYmx5IGRyb3AgdGhhdCBjb3B5cmlnaHQgbGluZSAuLi4gSSBkaWRu
+J3QgZG8gYW55dGhpbmcgaGVyZSA7LSkKT0ssIGRvbmUuIDopCj4KPj4gKyAqCj4+ICsgKiBDb3B5
+cmlnaHQgKGMpIDIwMTUgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uIEx0ZC4KPj4gKyAqIEF1dGhv
+cjogWGluZyBaaGVuZzx6aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+Cj4+ICsgKgo+PiArICogVGhp
+cyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9v
+ciBtb2RpZnkKPj4gKyAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgR05VIEdlbmVyYWwgUHVi
+bGljIExpY2Vuc2UgYXMgcHVibGlzaGVkIGJ5Cj4+ICsgKiB0aGUgRnJlZSBTb2Z0d2FyZSBGb3Vu
+ZGF0aW9uOyBlaXRoZXIgdmVyc2lvbiAyIG9mIHRoZSBMaWNlbnNlLCBvcgo+PiArICogKGF0IHlv
+dXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KPj4gKyAqCj4+ICsgKiBUaGlzIHByb2dyYW0g
+aXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhvcGUgdGhhdCBpdCB3aWxsIGJlIHVzZWZ1bCwKPj4gKyAq
+IGJ1dCBXSVRIT1VUIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJh
+bnR5IG9mCj4+ICsgKiBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFS
+IFBVUlBPU0UuICBTZWUgdGhlCj4+ICsgKiBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBmb3Ig
+bW9yZSBkZXRhaWxzLgo+PiArICovCj4+ICsKPj4gKyNpZm5kZWYgX0RUX0JJTkRJTkdTX0NMS19S
+T0NLQ0hJUF9SSzMwMzZfSAo+PiArI2RlZmluZSBfRFRfQklORElOR1NfQ0xLX1JPQ0tDSElQX1JL
+MzAzNl9ICj4+ICsKPj4gKy8qIGNvcmUgY2xvY2tzICovCj4+ICsjZGVmaW5lIFBMTF9BUExMCQkx
+Cj4+ICsjZGVmaW5lIFBMTF9EUExMCQkyCj4+ICsjZGVmaW5lIFBMTF9HUExMCQkzCj4+ICsjZGVm
+aW5lIEFSTUNMSwkJCTQKPj4gKwo+PiArLyogc2NsayBnYXRlcyAoc3BlY2lhbCBjbG9ja3MpICov
+Cj4geW91IGhhdmUgYSBsb3Qgb2YgZ2FwcyBpbiB0aGUgbnVtYmVyaW5nIC4uLiBpbnRlbnRpb25h
+bD8KT2gsIEkgdGhpbmsgSSByZWZlcmVuY2VkIHRvICJyazMyODgtY3J1LmgiIGFuZCBjdXQgc29t
+ZSB1c2VsZXNzIApudW1iZXJpbmcgZnJvbSBpdCBmb3IgcmszMDM2Cj4KPiBvdGhlcndpc2UKPiBS
+ZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXI8aGVpa29Ac250ZWNoLmRlPgpEb25lLgo+PiArI2Rl
+ZmluZSBTQ0xLX0dQVQkJNjQKPj4gKyNkZWZpbmUgU0NMS19TUEkJCTY1Cj4+ICsjZGVmaW5lIFND
+TEtfU0RNTUMJCTY4Cj4+ICsjZGVmaW5lIFNDTEtfU0RJTwkJNjkKPj4gKyNkZWZpbmUgU0NMS19F
+TU1DCQk3MQo+PiArI2RlZmluZSBTQ0xLX05BTkRDCQk3Ngo+PiArI2RlZmluZSBTQ0xLX1VBUlQw
+CQk3Nwo+PiArI2RlZmluZSBTQ0xLX1VBUlQxCQk3OAo+PiArI2RlZmluZSBTQ0xLX1VBUlQyCQk3
+OQo+PiArI2RlZmluZSBTQ0xLX0kyUwkJODIKPj4gKyNkZWZpbmUgU0NMS19TUERJRgkJODMKPj4g
+KyNkZWZpbmUgU0NMS19USU1FUjAJCTg1Cj4+ICsjZGVmaW5lIFNDTEtfVElNRVIxCQk4Ngo+PiAr
+I2RlZmluZSBTQ0xLX1RJTUVSMgkJODcKPj4gKyNkZWZpbmUgU0NMS19USU1FUjMJCTg4Cj4+ICsj
+ZGVmaW5lIFNDTEtfT1RHUEhZMAkJOTMKPj4gKyNkZWZpbmUgU0NMS19PVEdQSFkxCQk5NAo+PiAr
+I2RlZmluZSBTQ0xLX0xDREMJCTEwMAo+PiArI2RlZmluZSBTQ0xLX0hETUkJCTEwOQo+PiArI2Rl
+ZmluZSBTQ0xLX0hFVkMJCTExMQo+PiArI2RlZmluZSBTQ0xLX0kyU19PVVQJCTExMwo+PiArI2Rl
+ZmluZSBTQ0xLX1NETU1DX0RSVgkJMTE0Cj4+ICsjZGVmaW5lIFNDTEtfU0RJT19EUlYJCTExNQo+
+PiArI2RlZmluZSBTQ0xLX0VNTUNfRFJWCQkxMTcKPj4gKyNkZWZpbmUgU0NMS19TRE1NQ19TQU1Q
+TEUJMTE4Cj4+ICsjZGVmaW5lIFNDTEtfU0RJT19TQU1QTEUJMTE5Cj4+ICsjZGVmaW5lIFNDTEtf
+RU1NQ19TQU1QTEUJMTIxCj4+ICsjZGVmaW5lIFNDTEtfUFZUTV9DT1JFICAgICAgICAgIDEyMwo+
+PiArI2RlZmluZSBTQ0xLX1BWVE1fR1BVICAgICAgICAgICAxMjQKPj4gKyNkZWZpbmUgU0NMS19Q
+VlRNX1ZJREVPICAgICAgICAgMTI1Cj4+ICsjZGVmaW5lIFNDTEtfTUFDCQkxNTEKPj4gKyNkZWZp
+bmUgU0NMS19NQUNSRUYJCTE1Mgo+PiArI2RlZmluZSBTQ0xLX1NGQwkJMTYwCj4+ICsKPj4gKyNk
+ZWZpbmUgRENMS19MQ0RDCQkxOTAKPj4gKwo+PiArLyogYWNsayBnYXRlcyAqLwo+PiArI2RlZmlu
+ZSBBQ0xLX0RNQUMyCQkxOTQKPj4gKyNkZWZpbmUgQUNMS19MQ0RDCQkxOTcKPj4gKyNkZWZpbmUg
+QUNMS19WSU8JCTIwMwo+PiArI2RlZmluZSBBQ0xLX1ZDT0RFQwkJMjA4Cj4+ICsjZGVmaW5lIEFD
+TEtfQ1BVCQkyMDkKPj4gKyNkZWZpbmUgQUNMS19QRVJJCQkyMTAKPj4gKwo+PiArLyogcGNsayBn
+YXRlcyAqLwo+PiArI2RlZmluZSBQQ0xLX0dQSU8wCQkzMjAKPj4gKyNkZWZpbmUgUENMS19HUElP
+MQkJMzIxCj4+ICsjZGVmaW5lIFBDTEtfR1BJTzIJCTMyMgo+PiArI2RlZmluZSBQQ0xLX0dSRgkJ
+MzI5Cj4+ICsjZGVmaW5lIFBDTEtfSTJDMAkJMzMyCj4+ICsjZGVmaW5lIFBDTEtfSTJDMQkJMzMz
+Cj4+ICsjZGVmaW5lIFBDTEtfSTJDMgkJMzM0Cj4+ICsjZGVmaW5lIFBDTEtfU1BJCQkzMzgKPj4g
+KyNkZWZpbmUgUENMS19VQVJUMAkJMzQxCj4+ICsjZGVmaW5lIFBDTEtfVUFSVDEJCTM0Mgo+PiAr
+I2RlZmluZSBQQ0xLX1VBUlQyCQkzNDMKPj4gKyNkZWZpbmUgUENMS19QV00JCTM1MAo+PiArI2Rl
+ZmluZSBQQ0xLX1RJTUVSCQkzNTMKPj4gKyNkZWZpbmUgUENMS19IRE1JCQkzNjAKPj4gKyNkZWZp
+bmUgUENMS19DUFUJCTM2Mgo+PiArI2RlZmluZSBQQ0xLX1BFUkkJCTM2Mwo+PiArI2RlZmluZSBQ
+Q0xLX0REUlVQQ1RMCQkzNjQKPj4gKyNkZWZpbmUgUENMS19XRFQJCTM2OAo+PiArCj4+ICsvKiBo
+Y2xrIGdhdGVzICovCj4+ICsjZGVmaW5lIEhDTEtfT1RHMAkJNDQ5Cj4+ICsjZGVmaW5lIEhDTEtf
+T1RHMQkJNDUwCj4+ICsjZGVmaW5lIEhDTEtfTkFOREMJCTQ1Mwo+PiArI2RlZmluZSBIQ0xLX1NE
+TU1DCQk0NTYKPj4gKyNkZWZpbmUgSENMS19TRElPCQk0NTcKPj4gKyNkZWZpbmUgSENMS19FTU1D
+CQk0NTkKPj4gKyNkZWZpbmUgSENMS19JMlMJCTQ2Mgo+PiArI2RlZmluZSBIQ0xLX0xDREMJCTQ2
+NQo+PiArI2RlZmluZSBIQ0xLX1JPTQkJNDY3Cj4+ICsjZGVmaW5lIEhDTEtfVklPX0JVUwkJNDcy
+Cj4+ICsjZGVmaW5lIEhDTEtfVkNPREVDCQk0NzYKPj4gKyNkZWZpbmUgSENMS19DUFUJCTQ3Nwo+
+PiArI2RlZmluZSBIQ0xLX1BFUkkJCTQ3OAo+PiArCj4+ICsjZGVmaW5lIENMS19OUl9DTEtTCQko
+SENMS19QRVJJICsgMSkKPj4gKwo+PiArLyogc29mdC1yZXNldCBpbmRpY2VzICovCj4+ICsjZGVm
+aW5lIFNSU1RfQ09SRTAJCTAKPj4gKyNkZWZpbmUgU1JTVF9DT1JFMQkJMQo+PiArI2RlZmluZSBT
+UlNUX0NPUkUwX0RCRwkJNAo+PiArI2RlZmluZSBTUlNUX0NPUkUxX0RCRwkJNQo+PiArI2RlZmlu
+ZSBTUlNUX0NPUkUwX1BPUgkJOAo+PiArI2RlZmluZSBTUlNUX0NPUkUxX1BPUgkJOQo+PiArI2Rl
+ZmluZSBTUlNUX0wyQwkJMTIKPj4gKyNkZWZpbmUgU1JTVF9UT1BEQkcJCTEzCj4+ICsjZGVmaW5l
+IFNSU1RfU1RSQ19TWVNfQQkJMTQKPj4gKyNkZWZpbmUgU1JTVF9QRF9DT1JFX05JVQkxNQo+PiAr
+Cj4+ICsjZGVmaW5lIFNSU1RfVElNRVIyCQkxNgo+PiArI2RlZmluZSBTUlNUX0NQVVNZU19ICQkx
+Nwo+PiArI2RlZmluZSBTUlNUX0FIQjJBUEJfSAkJMTkKPj4gKyNkZWZpbmUgU1JTVF9USU1FUjMJ
+CTIwCj4+ICsjZGVmaW5lIFNSU1RfSU5UTUVNCQkyMQo+PiArI2RlZmluZSBTUlNUX1JPTQkJMjIK
+Pj4gKyNkZWZpbmUgU1JTVF9QRVJJX05JVQkJMjMKPj4gKyNkZWZpbmUgU1JTVF9JMlMJCTI0Cj4+
+ICsjZGVmaW5lIFNSU1RfRERSX1BMTAkJMjUKPj4gKyNkZWZpbmUgU1JTVF9HUFVfRExMCQkyNgo+
+PiArI2RlZmluZSBTUlNUX1RJTUVSMAkJMjcKPj4gKyNkZWZpbmUgU1JTVF9USU1FUjEJCTI4Cj4+
+ICsjZGVmaW5lIFNSU1RfQ09SRV9ETEwJCTI5Cj4+ICsjZGVmaW5lIFNSU1RfRUZVU0VfUAkJMzAK
+Pj4gKyNkZWZpbmUgU1JTVF9BQ09ERUNfUAkJMzEKPj4gKwo+PiArI2RlZmluZSBTUlNUX0dQSU8w
+CQkzMgo+PiArI2RlZmluZSBTUlNUX0dQSU8xCQkzMwo+PiArI2RlZmluZSBTUlNUX0dQSU8yCQkz
+NAo+PiArI2RlZmluZSBTUlNUX1VBUlQwCQkzOQo+PiArI2RlZmluZSBTUlNUX1VBUlQxCQk0MAo+
+PiArI2RlZmluZSBTUlNUX1VBUlQyCQk0MQo+PiArI2RlZmluZSBTUlNUX0kyQzAJCTQzCj4+ICsj
+ZGVmaW5lIFNSU1RfSTJDMQkJNDQKPj4gKyNkZWZpbmUgU1JTVF9JMkMyCQk0NQo+PiArI2RlZmlu
+ZSBTUlNUX1NGQwkJNDcKPj4gKwo+PiArI2RlZmluZSBTUlNUX1BXTTAJCTQ4Cj4+ICsjZGVmaW5l
+IFNSU1RfREFQCQk1MQo+PiArI2RlZmluZSBTUlNUX0RBUF9TWVMJCTUyCj4+ICsjZGVmaW5lIFNS
+U1RfR1JGCQk1NQo+PiArI2RlZmluZSBTUlNUX1BFUklQSFNZU19BCTU3Cj4+ICsjZGVmaW5lIFNS
+U1RfUEVSSVBIU1lTX0gJNTgKPj4gKyNkZWZpbmUgU1JTVF9QRVJJUEhTWVNfUAk1OQo+PiArI2Rl
+ZmluZSBTUlNUX0NQVV9QRVJJCQk2MQo+PiArI2RlZmluZSBTUlNUX0VNRU1fUEVSSQkJNjIKPj4g
+KyNkZWZpbmUgU1JTVF9VU0JfUEVSSQkJNjMKPj4gKwo+PiArI2RlZmluZSBTUlNUX0RNQTIJCTY0
+Cj4+ICsjZGVmaW5lIFNSU1RfTUFDCQk2Ngo+PiArI2RlZmluZSBTUlNUX05BTkRDCQk2OAo+PiAr
+I2RlZmluZSBTUlNUX1VTQk9URzAJCTY5Cj4+ICsjZGVmaW5lIFNSU1RfT1RHQzAJCTcxCj4+ICsj
+ZGVmaW5lIFNSU1RfVVNCT1RHMQkJNzIKPj4gKyNkZWZpbmUgU1JTVF9PVEdDMQkJNzQKPj4gKyNk
+ZWZpbmUgU1JTVF9ERFJNU0NICQk3OQo+PiArCj4+ICsjZGVmaW5lIFNSU1RfTU1DMAkJODEKPj4g
+KyNkZWZpbmUgU1JTVF9TRElPCQk4Mgo+PiArI2RlZmluZSBTUlNUX0VNTUMJCTgzCj4+ICsjZGVm
+aW5lIFNSU1RfU1BJMAkJODQKPj4gKyNkZWZpbmUgU1JTVF9XRFQJCTg2Cj4+ICsjZGVmaW5lIFNS
+U1RfRERSUEhZCQk4OAo+PiArI2RlZmluZSBTUlNUX0REUlBIWV9QCQk4OQo+PiArI2RlZmluZSBT
+UlNUX0REUkNUUkwJCTkwCj4+ICsjZGVmaW5lIFNSU1RfRERSQ1RSTF9QCQk5MQo+PiArCj4+ICsj
+ZGVmaW5lIFNSU1RfSERNSV9QCQk5Ngo+PiArI2RlZmluZSBTUlNUX1ZJT19CVVNfSAkJOTkKPj4g
+KyNkZWZpbmUgU1JTVF9VVE1JMAkJMTAzCj4+ICsjZGVmaW5lIFNSU1RfVVRNSTEJCTEwNAo+PiAr
+I2RlZmluZSBTUlNUX1VTQlBPUgkJMTA1Cj4+ICsKPj4gKyNkZWZpbmUgU1JTVF9WQ09ERUNfQQkJ
+MTEyCj4+ICsjZGVmaW5lIFNSU1RfVkNPREVDX0gJCTExMwo+PiArI2RlZmluZSBTUlNUX1ZJTzFf
+QQkJMTE0Cj4+ICsjZGVmaW5lIFNSU1RfSEVWQwkJMTE1Cj4+ICsjZGVmaW5lIFNSU1RfVkNPREVD
+X05JVV9BCTExNgo+PiArI2RlZmluZSBTUlNUX0xDREMxX0EJCTExNwo+PiArI2RlZmluZSBTUlNU
+X0xDREMxX0gJCTExOAo+PiArI2RlZmluZSBTUlNUX0xDREMxX0QJCTExOQo+PiArI2RlZmluZSBT
+UlNUX0dQVQkJMTIwCj4+ICsjZGVmaW5lIFNSU1RfR1BVX05JVV9BCQkxMjIKPj4gKwo+PiArI2Rl
+ZmluZSBTUlNUX0RCR19QCQkxMzEKPj4gKwo+PiArI2VuZGlmCj4KPgo+CgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
