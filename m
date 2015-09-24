@@ -1,123 +1,65 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v2 5/9] dt-bindings: add documentation of rk3036 clock
- controller
-Date: Thu, 24 Sep 2015 11:42:23 +0800
-Message-ID: <5603711F.3070809@rock-chips.com>
-References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com> <1442485969-1733-1-git-send-email-zhengxing@rock-chips.com> <14900712.fB7cIie92H@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH v2 1/5] ARM: multi_v7_defconfig: Enable common Rockchip devices/busses
+Date: Thu, 24 Sep 2015 13:39:15 +0200
+Message-ID: <1443094759-28531-2-git-send-email-sjoerd.simons@collabora.co.uk>
+References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <14900712.fB7cIie92H@diego>
+In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, arm@kernel.org
+Cc: Thierry Reding <treding@nvidia.com>, Kevin Hilman <khilman@kernel.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 23:09, Heiko St=C3=BCbner wrote:
-> Am Donnerstag, 17. September 2015, 18:32:49 schrieb Xing Zheng:
->> Add the devicetree binding for the cru on the rk3036 which quite sim=
-ilar
->> structured as previous clock controllers.
->>
->> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
->> ---
->>
->> Changes in v2: None
->>
->>   .../bindings/clock/rockchip,rk3036-cru.txt         |   60
->> ++++++++++++++++++++ 1 file changed, 60 insertions(+)
->>   create mode 100644
->> Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
->>
->> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3036=
--cru.txt
->> b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt ne=
-w file
->> mode 100644
->> index 0000000..ac3037a
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.tx=
-t
->> @@ -0,0 +1,60 @@
->> +* Rockchip RK3036 Clock and Reset Unit
->> +
->> +The RK3036 clock controller generates and supplies clock to various
->> +controllers within the SoC and also implements a reset controller f=
-or SoC
->> +peripherals.
->> +
->> +Required Properties:
->> +
->> +- compatible: should be "rockchip,rk3036-cru"
->> +- reg: physical base address of the controller and length of memory=
- mapped
->> +  region.
->> +- #clock-cells: should be 1.
->> +- #reset-cells: should be 1.
->> +
->> +Optional Properties:
->> +
->> +- rockchip,grf: phandle to the syscon managing the "general registe=
-r files"
->> +  If missing pll rates are not changable, due to the missing pll lo=
-ck
->> status. +
->> +Each clock is assigned an identifier and client nodes can use this
->> identifier +to specify the clock which they consume. All available c=
-locks
->> are defined as +preprocessor macros in the dt-bindings/clock/rk3036-=
-cru.h
->> headers and can be +used in device tree sources. Similar macros exis=
-t for
->> the reset sources in +these files.
->> +
->> +External clocks:
->> +
->> +There are several clocks that are generated outside the SoC. It is =
-expected
->> +that they are defined using standard clock bindings with following
->> +clock-output-names:
->> + - "xin24m" - crystal input - required,
->> + - "xin32k" - rtc clock - optional,
-> The rk3036 does not seem to use a rtc clock, so this should probably =
-go away
-Done.
->> + - "ext_i2s" - external I2S clock - optional,
->> + - "ext_hsadc" - external HSADC clock - optional,
->> + - "ext_vip" - external VIP clock - optional,
->> + - "ext_isp" - external ISP clock - optional,
->> + - "ext_jtag" - external JTAG clock - optional
-> There do not seem to exist external clock sources for hsadc, vip, isp=
- and jtag
-> in your clock tree?
->
-> missing here:
-> - ext_gmac
-Yes, done.
->> +
->> +Example: Clock controller node:
->> +
->> +	cru: cru@20000000 {
->> +		compatible =3D "rockchip,rk3036-cru";
->> +		reg =3D<0x20000000 0x1000>;
->> +		rockchip,grf =3D<&grf>;
->> +
->> +		#clock-cells =3D<1>;
->> +		#reset-cells =3D<1>;
->> +	};
->> +
->> +Example: UART controller node that consumes the clock generated by =
-the
->> clock +  controller:
->> +
->> +	uart0: serial@20060000 {
->> +		compatible =3D "snps,dw-apb-uart";
->> +		reg =3D<0x20060000 0x100>;
->> +		interrupts =3D<GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
->> +		reg-shift =3D<2>;
->> +		reg-io-width =3D<4>;
->> +		clocks =3D<&cru SCLK_UART0>;
->> +	};
-Thanks.
+Enable Rockchip I2C, SPI, PWM, thermal drivers.
+
+Builtin are I2C (as it often required to control the pmic) and Thermal
+drivers (to prevent thermal damage). SPI and PWM drivers configured as
+modules
+
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
+---
+
+Changes in v2: None
+
+ arch/arm/configs/multi_v7_defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
+index 03deb7f..170f18e 100644
+--- a/arch/arm/configs/multi_v7_defconfig
++++ b/arch/arm/configs/multi_v7_defconfig
+@@ -302,6 +302,7 @@ CONFIG_I2C_GPIO=m
+ CONFIG_I2C_EXYNOS5=y
+ CONFIG_I2C_MV64XXX=y
+ CONFIG_I2C_RIIC=y
++CONFIG_I2C_RK3X=y
+ CONFIG_I2C_S3C2410=y
+ CONFIG_I2C_SH_MOBILE=y
+ CONFIG_I2C_SIRF=y
+@@ -318,6 +319,7 @@ CONFIG_SPI_DAVINCI=y
+ CONFIG_SPI_OMAP24XX=y
+ CONFIG_SPI_ORION=y
+ CONFIG_SPI_PL022=y
++CONFIG_SPI_ROCKCHIP=m
+ CONFIG_SPI_RSPI=y
+ CONFIG_SPI_S3C64XX=m
+ CONFIG_SPI_SH_MSIOF=m
+@@ -365,6 +367,7 @@ CONFIG_SENSORS_LM95245=y
+ CONFIG_SENSORS_NTC_THERMISTOR=m
+ CONFIG_THERMAL=y
+ CONFIG_CPU_THERMAL=y
++CONFIG_ROCKCHIP_THERMAL=y
+ CONFIG_RCAR_THERMAL=y
+ CONFIG_ARMADA_THERMAL=y
+ CONFIG_DAVINCI_WATCHDOG=m
+@@ -643,6 +646,7 @@ CONFIG_PWM=y
+ CONFIG_PWM_ATMEL=m
+ CONFIG_PWM_ATMEL_TCB=m
+ CONFIG_PWM_RENESAS_TPU=y
++CONFIG_PWM_ROCKCHIP=m
+ CONFIG_PWM_SAMSUNG=m
+ CONFIG_PWM_SUN4I=y
+ CONFIG_PWM_TEGRA=y
+-- 
+2.5.3
