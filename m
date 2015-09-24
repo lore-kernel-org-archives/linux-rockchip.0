@@ -1,59 +1,56 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH v2 2/5] ARM: multi_v7_defconfig: Enable common regulators for rockchip boards
-Date: Thu, 24 Sep 2015 13:39:16 +0200
-Message-ID: <1443094759-28531-3-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH v2 5/5] ARM: multi_v7_defconfig: Support RTC devices commonly
+ used on Rockchip boards
+Date: Thu, 24 Sep 2015 13:39:19 +0200
+Message-ID: <1443094759-28531-6-git-send-email-sjoerd.simons@collabora.co.uk>
 References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org, arm@kernel.org
-Cc: Thierry Reding <treding@nvidia.com>, Kevin Hilman <khilman@kernel.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Stephen Warren <swarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip boards seem to have two common regulator setups. Various board
-used the Active Semi act8846 often in combination with Silergy syr82x
-regulators (e.g. Radxa Rock Pro/Rock 2, Firefly, and Netxeon R89 etc),
-while others use regulator part of the Rockchip RK808 chip (e.g. the
-various Veyron based chromebooks, Chipspark Popmetal etc)
+Similar to the power management situation on Rockchip boards, there are
+two common RTC setups. For boards using the RK808 chip as a PMIC that
+chip also serves as the RTC, while boards using the ACT8846 typically use
+the Haoyu Microelectronics HYM8563 chip as their RTC.
 
-Enable all these regulators.
-
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 
 ---
 
 Changes in v2:
-- Enable all common rockchip regulators, not just ACT8846
+- New patch, enable common RTC drivers
 
- arch/arm/configs/multi_v7_defconfig | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm/configs/multi_v7_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 170f18e..3938f54 100644
+index 2ce0d63..565a343 100644
 --- a/arch/arm/configs/multi_v7_defconfig
 +++ b/arch/arm/configs/multi_v7_defconfig
-@@ -394,6 +394,7 @@ CONFIG_MFD_MAX14577=y
- CONFIG_MFD_MAX77686=y
- CONFIG_MFD_MAX77693=y
- CONFIG_MFD_MAX8907=y
-+CONFIG_MFD_RK808=y
- CONFIG_MFD_SEC_CORE=y
- CONFIG_MFD_STMPE=y
- CONFIG_MFD_PALMAS=y
-@@ -401,11 +402,14 @@ CONFIG_MFD_TPS65090=y
- CONFIG_MFD_TPS6586X=y
- CONFIG_MFD_TPS65910=y
- CONFIG_REGULATOR_AB8500=y
-+CONFIG_REGULATOR_ACT8865=y
- CONFIG_REGULATOR_AS3711=y
- CONFIG_REGULATOR_AS3722=y
- CONFIG_REGULATOR_AXP20X=y
- CONFIG_REGULATOR_BCM590XX=y
- CONFIG_REGULATOR_DA9210=y
-+CONFIG_REGULATOR_FAN53555=y
-+CONFIG_REGULATOR_RK808=y
- CONFIG_REGULATOR_GPIO=y
- CONFIG_MFD_SYSCON=y
- CONFIG_POWER_RESET_SYSCON=y
+@@ -575,8 +575,10 @@ CONFIG_EDAC_HIGHBANK_L2=y
+ CONFIG_RTC_CLASS=y
+ CONFIG_RTC_DRV_AS3722=y
+ CONFIG_RTC_DRV_DS1307=y
++CONFIG_RTC_DRV_HYM8563=m
+ CONFIG_RTC_DRV_MAX8907=y
+ CONFIG_RTC_DRV_MAX77686=y
++CONFIG_RTC_DRV_RK808=m
+ CONFIG_RTC_DRV_MAX77802=m
+ CONFIG_RTC_DRV_RS5C372=m
+ CONFIG_RTC_DRV_PALMAS=y
 -- 
 2.5.3
