@@ -1,56 +1,60 @@
-From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Subject: [PATCH v2 5/5] ARM: multi_v7_defconfig: Support RTC devices commonly
- used on Rockchip boards
-Date: Thu, 24 Sep 2015 13:39:19 +0200
-Message-ID: <1443094759-28531-6-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH v2 3/5] ARM: multi_v7_defconfig: Enable Rockchip display
+ support
+Date: Thu, 24 Sep 2015 13:39:17 +0200
+Message-ID: <1443094759-28531-4-git-send-email-sjoerd.simons@collabora.co.uk>
 References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Stephen Warren <swarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org, arm@kernel.org
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Kevin Hilman <khilman@kernel.org>, Ray Jui <rjui@broadcom.com>, linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Olof Johansson <olof@lixom.net>, Stephen Warren <swarren@nvidia.com>, Thierry Reding <treding@nvidia.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Similar to the power management situation on Rockchip boards, there are
-two common RTC setups. For boards using the RK808 chip as a PMIC that
-chip also serves as the RTC, while boards using the ACT8846 typically use
-the Haoyu Microelectronics HYM8563 chip as their RTC.
+Enable options needed for HDMI out on rockchip: DRM driver, Rockchip
+DesignWare HDMI glue and the rockchip IOMMU (dependency of the DRM
+driver).
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
 ---
 
-Changes in v2:
-- New patch, enable common RTC drivers
+Changes in v2: None
 
- arch/arm/configs/multi_v7_defconfig | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm/configs/multi_v7_defconfig | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 2ce0d63..565a343 100644
+index 3938f54..660e72a 100644
 --- a/arch/arm/configs/multi_v7_defconfig
 +++ b/arch/arm/configs/multi_v7_defconfig
-@@ -575,8 +575,10 @@ CONFIG_EDAC_HIGHBANK_L2=y
- CONFIG_RTC_CLASS=y
- CONFIG_RTC_DRV_AS3722=y
- CONFIG_RTC_DRV_DS1307=y
-+CONFIG_RTC_DRV_HYM8563=m
- CONFIG_RTC_DRV_MAX8907=y
- CONFIG_RTC_DRV_MAX77686=y
-+CONFIG_RTC_DRV_RK808=m
- CONFIG_RTC_DRV_MAX77802=m
- CONFIG_RTC_DRV_RS5C372=m
- CONFIG_RTC_DRV_PALMAS=y
+@@ -457,6 +457,8 @@ CONFIG_DRM_EXYNOS=m
+ CONFIG_DRM_EXYNOS_DSI=y
+ CONFIG_DRM_EXYNOS_FIMD=y
+ CONFIG_DRM_EXYNOS_HDMI=y
++CONFIG_DRM_ROCKCHIP=m
++CONFIG_ROCKCHIP_DW_HDMI=m
+ CONFIG_DRM_RCAR_DU=m
+ CONFIG_DRM_TEGRA=y
+ CONFIG_DRM_PANEL_SAMSUNG_S6E8AA0=m
+@@ -634,6 +636,7 @@ CONFIG_APQ_MMCC_8084=y
+ CONFIG_MSM_GCC_8660=y
+ CONFIG_MSM_MMCC_8960=y
+ CONFIG_MSM_MMCC_8974=y
++CONFIG_ROCKCHIP_IOMMU=y
+ CONFIG_TEGRA_IOMMU_GART=y
+ CONFIG_TEGRA_IOMMU_SMMU=y
+ CONFIG_PM_DEVFREQ=y
 -- 
 2.5.3
