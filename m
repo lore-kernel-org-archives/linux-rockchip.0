@@ -1,41 +1,56 @@
 From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH v2 4/5] ARM: multi_v7_defconfig: Enable the Rockchip USB 2.0 phy
-Date: Thu, 24 Sep 2015 13:39:18 +0200
-Message-ID: <1443094759-28531-5-git-send-email-sjoerd.simons@collabora.co.uk>
-References: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Subject: [PATCH v2 0/5] ARM: multi_v7_defconfig: Improve rockchip support
+Date: Thu, 24 Sep 2015 13:39:14 +0200
+Message-ID: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1443094759-28531-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org, arm@kernel.org
 Cc: Thierry Reding <treding@nvidia.com>, Kevin Hilman <khilman@kernel.org>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-kernel@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Stephen Warren <swarren@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Most Rockchip SoCs have a DesignWare HS OTG USB 2.0 controller, enable
-the driver for the Rockchip USB 2.0 PHY to make that functional.
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Enable options to provide more complete support for Rockchip boards
+including: support for the common PMICs, common RTC chips, I2C, SPI,
+PMW, Thermal driver, HDMI video output and USB 2.
 
----
+In response to V1 there was some direct and indirect discussion about
+what policy to use for deciding what to build as a module versus what to
+build in. Unfortunately there doesn't seem to be any consensus in this
+regard, so for this series i've stuck to the following guideline for doing
+things as builtin:
+* If it's needed for booting without an initramfs to an NFS root
+  filesystem.
+* It's needed to prevent potential damage to the SoC
+
+This results in building in various regulators (required by the
+network driver), I2C bus (to control said regulators) and the thermal
+driver (to prevent thermal damage). While everything else is a module.
+
+Fwiw, I really don't have a strong opinion myself on whether this is a
+better guideline then "Built-in only the bare minimum, people can use an
+initramfs to load modules as needed" which e.g. Thierry has been
+advocating. However it would be nice if we could get some common
+guideline from e.g. the arm-soc maintainers as the typical "module or
+not" discussion that tends to happen gets rather boring rather quickly:)
+
 
 Changes in v2:
+- Enable all common rockchip regulators, not just ACT8846
 - Only enable the USB 2 phy, not the controller as that came in through
   another tree
 - Enable USB 2.0 phy as a module as the controller is a module as well
+- New patch, enable common RTC drivers
 
- arch/arm/configs/multi_v7_defconfig | 1 +
- 1 file changed, 1 insertion(+)
+Sjoerd Simons (5):
+  ARM: multi_v7_defconfig: Enable common Rockchip devices/busses
+  ARM: multi_v7_defconfig: Enable common regulators for rockchip boards
+  ARM: multi_v7_defconfig: Enable Rockchip display support
+  ARM: multi_v7_defconfig: Enable the Rockchip USB 2.0 phy
+  ARM: multi_v7_defconfig: Support RTC devices commonly used on Rockchip
+    boards
 
-diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 660e72a..2ce0d63 100644
---- a/arch/arm/configs/multi_v7_defconfig
-+++ b/arch/arm/configs/multi_v7_defconfig
-@@ -662,6 +662,7 @@ CONFIG_PHY_HIX5HD2_SATA=y
- CONFIG_PWM_STI=m
- CONFIG_OMAP_USB2=y
- CONFIG_TI_PIPE3=y
-+CONFIG_PHY_ROCKCHIP_USB=m
- CONFIG_PHY_MIPHY28LP=y
- CONFIG_PHY_MIPHY365X=y
- CONFIG_PHY_RCAR_GEN2=m
+ arch/arm/configs/multi_v7_defconfig | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
 -- 
 2.5.3
