@@ -1,70 +1,123 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v2 3/9] clk: rockchip: add clock controller for rk3036
-Date: Thu, 24 Sep 2015 11:31:58 +0800
-Message-ID: <56036EAE.9040201@rock-chips.com>
-References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com> <1442478540-15068-4-git-send-email-zhengxing@rock-chips.com> <1775899.zcIuq65f1o@diego> <5603683F.4020302@rock-chips.com>
+Subject: Re: [PATCH v2 5/9] dt-bindings: add documentation of rk3036 clock
+ controller
+Date: Thu, 24 Sep 2015 11:42:23 +0800
+Message-ID: <5603711F.3070809@rock-chips.com>
+References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com> <1442485969-1733-1-git-send-email-zhengxing@rock-chips.com> <14900712.fB7cIie92H@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <5603683F.4020302@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <14900712.fB7cIie92H@diego>
+Sender: linux-kernel-owner@vger.kernel.org
 To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B409=E6=9C=8824=E6=97=A5 11:04, Xing Zheng wrote:
->>>
->>>   #define RK3066_PLL_RATE(_rate, _nr, _nf, _no)    \
->>> @@ -95,12 +106,31 @@ enum rockchip_pll_type {
->>>       .nb =3D _nb,                        \
->>>   }
->>>
->>> +#define RK3036_PLL_RATE(_rate, _refdiv, _fbdiv, _postdiv1,    \
->>> +            _postdiv2, _dsmpd, _frac)        \
->>> +{                                \
->>> +    .rate    =3D _rate##U,                    \
->>> +    .fbdiv =3D _fbdiv,                    \
->>> +    .postdiv1 =3D _postdiv1,                    \
->>> +    .refdiv =3D _refdiv,                    \
->>> +    .postdiv2 =3D _postdiv2,                    \
->>> +    .dsmpd =3D _dsmpd,                    \
->>> +    .frac =3D _frac,                        \
->>> +}
->>> +
->>>   struct rockchip_pll_rate_table {
->>>       unsigned long rate;
->>>       unsigned int nr;
->>>       unsigned int nf;
->>>       unsigned int no;
->>>       unsigned int nb;
->>> +    /* for RK3036 */
->>> +    unsigned int fbdiv;
->>> +    unsigned int postdiv1;
->>> +    unsigned int refdiv;
->>> +    unsigned int postdiv2;
->>> +    unsigned int dsmpd;
->>> +    unsigned int frac;
->> same for these 2 ... should be part of the pll addition itself
->   };
-> Done.
+On 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 23:09, Heiko St=C3=BCbner wrote:
+> Am Donnerstag, 17. September 2015, 18:32:49 schrieb Xing Zheng:
+>> Add the devicetree binding for the cru on the rk3036 which quite sim=
+ilar
+>> structured as previous clock controllers.
+>>
+>> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>   .../bindings/clock/rockchip,rk3036-cru.txt         |   60
+>> ++++++++++++++++++++ 1 file changed, 60 insertions(+)
+>>   create mode 100644
+>> Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3036=
+-cru.txt
+>> b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt ne=
+w file
+>> mode 100644
+>> index 0000000..ac3037a
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.tx=
+t
+>> @@ -0,0 +1,60 @@
+>> +* Rockchip RK3036 Clock and Reset Unit
+>> +
+>> +The RK3036 clock controller generates and supplies clock to various
+>> +controllers within the SoC and also implements a reset controller f=
+or SoC
+>> +peripherals.
+>> +
+>> +Required Properties:
+>> +
+>> +- compatible: should be "rockchip,rk3036-cru"
+>> +- reg: physical base address of the controller and length of memory=
+ mapped
+>> +  region.
+>> +- #clock-cells: should be 1.
+>> +- #reset-cells: should be 1.
+>> +
+>> +Optional Properties:
+>> +
+>> +- rockchip,grf: phandle to the syscon managing the "general registe=
+r files"
+>> +  If missing pll rates are not changable, due to the missing pll lo=
+ck
+>> status. +
+>> +Each clock is assigned an identifier and client nodes can use this
+>> identifier +to specify the clock which they consume. All available c=
+locks
+>> are defined as +preprocessor macros in the dt-bindings/clock/rk3036-=
+cru.h
+>> headers and can be +used in device tree sources. Similar macros exis=
+t for
+>> the reset sources in +these files.
+>> +
+>> +External clocks:
+>> +
+>> +There are several clocks that are generated outside the SoC. It is =
+expected
+>> +that they are defined using standard clock bindings with following
+>> +clock-output-names:
+>> + - "xin24m" - crystal input - required,
+>> + - "xin32k" - rtc clock - optional,
+> The rk3036 does not seem to use a rtc clock, so this should probably =
+go away
+Done.
+>> + - "ext_i2s" - external I2S clock - optional,
+>> + - "ext_hsadc" - external HSADC clock - optional,
+>> + - "ext_vip" - external VIP clock - optional,
+>> + - "ext_isp" - external ISP clock - optional,
+>> + - "ext_jtag" - external JTAG clock - optional
+> There do not seem to exist external clock sources for hsadc, vip, isp=
+ and jtag
+> in your clock tree?
 >
-Sorry, I have one question:
-The "struct rockchip_pll_rate_table" is called in "rockchip/clk-pll.c"=20
-on many functions, I think I could add a struct like:
-struct rk3036_pll_rate_table {
-     unsigned int fbdiv;
-     unsigned int postdiv1;
-     unsigned int refdiv;
-     unsigned int postdiv2;
-     unsigned int dsmpd;
-     unsigned int frac;
-};
-but, it will add many redundancy codes in "rockchip/clk-pll.c" just for=
-=20
-call "struct rk3036_pll_rate_table".
-
+> missing here:
+> - ext_gmac
+Yes, done.
+>> +
+>> +Example: Clock controller node:
+>> +
+>> +	cru: cru@20000000 {
+>> +		compatible =3D "rockchip,rk3036-cru";
+>> +		reg =3D<0x20000000 0x1000>;
+>> +		rockchip,grf =3D<&grf>;
+>> +
+>> +		#clock-cells =3D<1>;
+>> +		#reset-cells =3D<1>;
+>> +	};
+>> +
+>> +Example: UART controller node that consumes the clock generated by =
+the
+>> clock +  controller:
+>> +
+>> +	uart0: serial@20060000 {
+>> +		compatible =3D "snps,dw-apb-uart";
+>> +		reg =3D<0x20060000 0x100>;
+>> +		interrupts =3D<GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
+>> +		reg-shift =3D<2>;
+>> +		reg-io-width =3D<4>;
+>> +		clocks =3D<&cru SCLK_UART0>;
+>> +	};
 Thanks.
-
-
