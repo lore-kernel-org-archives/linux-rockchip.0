@@ -1,208 +1,120 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v2 8/9] ARM: rockchip: add support smp for rk3036
-Date: Mon, 28 Sep 2015 19:50:00 +0800
-Message-ID: <56092968.1040001@rock-chips.com>
-References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com> <1442486286-1873-1-git-send-email-zhengxing@rock-chips.com> <22222181.r5MSqEbWpB@diego>
+Subject: Re: [PATCH v2 7/9] rockchip: make sure timer5 is enabled on rk3036
+ platforms
+Date: Mon, 28 Sep 2015 20:25:07 +0800
+Message-ID: <560931A3.2020403@rock-chips.com>
+References: <1442478540-15068-1-git-send-email-zhengxing@rock-chips.com> <1442486244-1833-1-git-send-email-zhengxing@rock-chips.com> <11125723.j2J5LpAGi4@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <22222181.r5MSqEbWpB@diego>
+In-Reply-To: <11125723.j2J5LpAGi4@diego>
 Sender: linux-kernel-owner@vger.kernel.org
 To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
 Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B409=E6=9C=8818=E6=97=A5 04:15, Heiko St=C3=BCbner wrote:
-> Am Donnerstag, 17. September 2015, 18:38:06 schrieb Xing Zheng:
->> The rk3036 is dual-core soc, we can use this patch to enable cpu1
->> enter boot secondary, and hotplug(online/offline).
->>
+On 2015=E5=B9=B409=E6=9C=8817=E6=97=A5 23:05, Heiko St=C3=BCbner wrote:
+> Am Donnerstag, 17. September 2015, 18:37:24 schrieb Xing Zheng:
+>> The timer5 supplies the architected timer and thus as has to run whe=
+n
+>> the system clocksource and clockevents drivers are registered.
+> please kindly ask the people doing uboot development to do this in ub=
+oot
+> itself in future socs :-) - for example Simon's rk3288 mainline uboot=
+ does
+> this correctly.
+OK, I will ask the engineer who is doing uboot whether needs to add
+this patch. So I will remove it from the patchset v3 of "Build and supp=
+ort
+rk3036 SoC platform".
+
+Thanks.
 >> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
 >> ---
 >>
 >> Changes in v2: None
 >>
->>   arch/arm/mach-rockchip/platsmp.c |  121
->> ++++++++++++++++++++++++++++++++++++++ 1 file changed, 121 insertion=
-s(+)
+>>   arch/arm/mach-rockchip/rockchip.c |   22 ++++++++++++++++++++++
+>>   1 file changed, 22 insertions(+)
 >>
->> diff --git a/arch/arm/mach-rockchip/platsmp.c
->> b/arch/arm/mach-rockchip/platsmp.c index 3e7a4b7..14218eb 100644
->> --- a/arch/arm/mach-rockchip/platsmp.c
->> +++ b/arch/arm/mach-rockchip/platsmp.c
->> @@ -34,6 +34,8 @@
+>> diff --git a/arch/arm/mach-rockchip/rockchip.c
+>> b/arch/arm/mach-rockchip/rockchip.c index b6cf3b4..937047f 100644
+>> --- a/arch/arm/mach-rockchip/rockchip.c
+>> +++ b/arch/arm/mach-rockchip/rockchip.c
+>> @@ -32,6 +32,8 @@
+>>   #define RK3288_GRF_SOC_CON0 0x244
+>>   #define RK3288_TIMER6_7_PHYS 0xff810000
 >>
->>   static void __iomem *scu_base_addr;
->>   static void __iomem *sram_base_addr;
->> +static void __iomem *cru_base_addr;
+>> +#define RK3036_TIMER5_PHYS 0x200440a0
 >> +
->>   static int ncores;
->>
->>   #define PMU_PWRDN_CON		0x08
->> @@ -41,6 +43,8 @@ static int ncores;
->>
->>   #define PMU_PWRDN_SCU		4
->>
->> +#define RK3036_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
->> +
->>   static struct regmap *pmu;
->>
->>   static int pmu_power_domain_is_on(int pd)
->> @@ -184,6 +188,7 @@ static int __init rockchip_smp_prepare_sram(stru=
-ct
->> device_node *node) }
->>
->>   	rsize =3D resource_size(&res);
->> +
->>   	if (rsize<  trampoline_sz) {
->>   		pr_err("%s: reserved block with size 0x%x is to small for trampo=
-line
-> size
->> 0x%x\n", __func__, rsize, trampoline_sz);
->> @@ -350,3 +355,119 @@ static struct smp_operations rockchip_smp_ops
->> __initdata =3D { };
->>
->>   CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp",
->> &rockchip_smp_ops); +
->> +/* for rk3036 */
->> +
->> +static int rk3036_set_power_domain(int pd, bool on)
->> +{
->> +	/* there are 2cpus on rk3036 soc, we just need to be care cpu1 */
->> +	if (pd !=3D 1)
->> +		return 0;
->> +
->> +	if (on)
->> +		writel_relaxed(0x20000, cru_base_addr + RK3036_SOFTRST_CON(0));
->> +	else
->> +		writel_relaxed(0x20002, cru_base_addr + RK3036_SOFTRST_CON(0));
-> this is definitly the wrong way. The reset handling is the same as on=
- the
-> rk3288 - so you can use the regular reset mechanism like the other so=
-cs and
-> should definitly _never_ write to the cru directly.
+> #define RK3036_TIMER_PHYS 0x20044000
+> -->  the actual base address of the timer block
 >
-> The only visible difference is that you cannot control the power-doma=
-ins of
-> the cpu cores. Its sibling the rk3128 seems to have controllable powe=
-r domains
-> again.
+> As it looks like that we'll need to duplicate that timer init at leas=
+t for the
+> rk3036 and the timer ip in question is actually the same on both, ple=
+ase split
+> out the actual work into a separate function like
 >
-> I'm still pondering how to make this future proof...
+> static void rockchip_init_arch_timer_supply(resource_size_t phys, int=
+ offs)
+> {
+> 		reg_base =3D ioremap(phys, SZ_16K);
+> 		if (reg_base) {
+> 			writel(0, reg_base + offs + 0x10);
+> 			writel(0xffffffff, reg_base + offs);
+> 			writel(0xffffffff, reg_base + offs + 0x04);
+> 			writel(1, reg_base + offs + 0x10);
+> 			dsb();
+> 			iounmap(reg_base);
+> 		} else {
+> 			pr_err("rockchip: could not map timer registers\n");
+> 		}
+> }
+Done.
 >
+>>   static void __init rockchip_timer_init(void)
+>>   {
+>>   	if (of_machine_is_compatible("rockchip,rk3288")) {
+>> @@ -64,6 +66,25 @@ static void __init rockchip_timer_init(void)
+> for the rk3288 exchange the timer init against
+> rockchip_init_arch_timer_supply(RK3288_TIMER6_7_PHYS, 0x20);
+Done.
+>>   			regmap_write(grf, RK3288_GRF_SOC_CON0, 0x10000000);
+>>   		else
+>>   			pr_err("rockchip: could not get grf syscon\n");
+>> +	} else if (of_machine_is_compatible("rockchip,rk3036")) {
+>> +		void __iomem *reg_base;
+>> +
+>> +		/*
+>> +		 * Most/all uboot versions for rk3036 don't enable timer5
+>> +		 * which is needed for the architected timer to work.
+>> +		 * So make sure it is running during early boot.
+>> +		 */
+>> +		reg_base =3D ioremap(RK3036_TIMER5_PHYS, SZ_16K);
+>> +		if (reg_base) {
+>> +			writel(0, reg_base + 0x10);
+>> +			writel(0xffffffff, reg_base);
+>> +			writel(0xffffffff, reg_base + 0x04);
+>> +			writel(1, reg_base + 0x10);
+>> +			dsb();
+>> +			iounmap(reg_base);
+>> +		} else {
+>> +			pr_err("rockchip: could not map timer5 registers\n");
+>> +		}
+> rockchip_init_arch_timer_supply(RK3036_TIMER_PHYS, 0xa0);
+Done.
+>>   	}
+>>
+>>   	of_clk_init(NULL);
+>> @@ -79,6 +100,7 @@ static void __init rockchip_dt_init(void)
+>>
+>>   static const char * const rockchip_board_dt_compat[] =3D {
+>>   	"rockchip,rk2928",
+>> +	"rockchip,rk3036",
+>>   	"rockchip,rk3066a",
+>>   	"rockchip,rk3066b",
+>>   	"rockchip,rk3188",
 >
-> Heiko
-OK, I tried add the regular reset mechanism like the rk3288.
-Yes, then, there are something need to continue to improve.
-
-Thanks.
->
->> +
->> +	dsb();
->> +
->> +	return 0;
->> +}
->> +
->> +static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
->> +{
->> +	struct device_node *node;
->> +	unsigned int l2ctlr;
->> +	unsigned int i, cpu;
->> +
->> +	/* get cru_base_addr */
->> +	node =3D of_find_compatible_node(NULL, NULL, "rockchip,rk3036-cru"=
-);
->> +	if (!node) {
->> +		pr_err("%s: could not find cru dt node\n", __func__);
->> +		return;
->> +	}
->> +
->> +	cru_base_addr =3D of_iomap(node, 0);
->> +	if (!cru_base_addr) {
->> +		pr_err("%s: could not map cru registers\n", __func__);
->> +		return;
->> +	}
->> +
->> +	/* get sram_base_addr */
->> +	node =3D of_find_compatible_node(NULL, NULL, "rockchip,rk3036-smp-=
-sram");
->> +	if (!node) {
->> +		pr_err("%s: could not find sram dt node\n", __func__);
->> +		return;
->> +	}
->> +
->> +	sram_base_addr =3D of_iomap(node, 0);
->> +	if (!sram_base_addr) {
->> +		pr_err("%s: could not map sram registers\n", __func__);
->> +		return;
->> +	}
->> +
->> +	/* get ncores */
->> +	asm ("mrc p15, 1, %0, c9, c0, 2\n" : "=3Dr" (l2ctlr));
->> +	ncores =3D ((l2ctlr>>  24)&  0x3) + 1;
->> +	cpu =3D MPIDR_AFFINITY_LEVEL(read_cpuid_mpidr(), 0);
->> +
->> +	/* Make sure that all cores except the first are really off */
->> +	for (i =3D 1; i<  ncores; i++)
->> +		rk3036_set_power_domain(0 + i, false);
->> +}
->> +
->> +static int rk3036_boot_secondary(unsigned int cpu, struct task_stru=
-ct
->> *idle) +{
->> +	if (cpu>=3D ncores) {
->> +		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
->> +			__func__, cpu, ncores);
->> +		return -ENXIO;
->> +	}
->> +
->> +	/* start the core */
->> +	rk3036_set_power_domain(0 + cpu, true);
->> +
->> +	/*
->> +	 * We need to wait a moment after soft reset CPUx on rk3036,
->> +	 * otherwise, CPUx will startup failed.
->> +	 */
->> +	udelay(10);
->> +	writel(virt_to_phys(secondary_startup), sram_base_addr + 8);
->> +	writel(0xDEADBEAF, sram_base_addr + 4);
->> +	dsb_sev();
->> +
->> +	return 0;
->> +}
->> +
->> +#ifdef CONFIG_HOTPLUG_CPU
->> +static int rk3066_cpu_kill(unsigned int cpu)
->> +{
->> +	/*
->> +	 * We need a delay here to ensure that the dying CPU can finish
->> +	 * executing v7_coherency_exit() and reach the WFI/WFE state
->> +	 * prior to having the power domain disabled.
->> +	 */
->> +	mdelay(1);
->> +
->> +	rk3036_set_power_domain(0 + cpu, false);
->> +
->> +	return 1;
->> +}
->> +
->> +static void rk3066_cpu_die(unsigned int cpu)
->> +{
->> +	v7_exit_coherency_flush(louis);
->> +	while (1)
->> +		cpu_do_idle();
->> +}
->> +#endif
->> +
->> +static struct smp_operations rk3036_smp_ops __initdata =3D {
->> +	.smp_prepare_cpus	=3D rk3036_smp_prepare_cpus,
->> +	.smp_boot_secondary	=3D rk3036_boot_secondary,
->> +#ifdef CONFIG_HOTPLUG_CPU
->> +	.cpu_kill		=3D rk3066_cpu_kill,
->> +	.cpu_die		=3D rk3066_cpu_die,
->> +#endif
->> +};
->> +CPU_METHOD_OF_DECLARE(rk3036_smp, "rockchip,rk3036-smp",&rk3036_smp=
-_ops);
