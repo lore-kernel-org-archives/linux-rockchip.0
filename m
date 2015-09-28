@@ -1,146 +1,65 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v5 0/10] Fix broken DMAFLUSHP on Rockchips
-	platform
-Date: Mon, 28 Sep 2015 09:59:25 +0800
-Message-ID: <56089EFD.8020707@rock-chips.com>
-References: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/3] mailbox: rockchip: Add mailbox driver for Rockchip
+ platform
+Date: Mon, 28 Sep 2015 10:09:49 +0800
+Message-ID: <5608A16D.4090109@gmail.com>
+References: <1442228798-15191-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Vinod Koul <vinod.koul@intel.com>
-Cc: Addy Ke <addy.ke@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, linux-spi@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Takashi Iwai <tiwai@suse.com>, dmaengine@vger.kernel.org, Mark Brown <broonie@kernel.org>, Olof Johansson <olof@lixom.net>, Sonny Rao <sonnyrao@chromium.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=gbk;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1442228798-15191-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vinod,
+Hello Jassi,
 
-	Is there any chance for this patchset to be applied? :)
+=46riendly Ping!
 
-On 2015/9/14 7:45, Shawn Lin wrote:
-> The purpose of the DMAFLUSHP instruction:
-> - Tell the peripheral to clear its status and control registers.
-> - Send a message to the peripheral to resend its level status.
->
-> There are 3 timings described in PL330 Technical Reference Manual:
-> - Timing 1: Burst request, can work well without DMAFLUSHP.
-> - Timing 2: Single and burst request, DMAC will ignore the single
-> 	    transfer request. This timing happens if there are single
-> 	    and burst request.
-> - Timing 3: Single transfers for a burst request, DMAC should signals
-> 	    datype to request the peripheral to flush the contents of
-> 	    any control registers. This timing happens if there is
-> 	    not enough MFIFO to places the burst data.
->
-> A peripheral may signal a DMA request during the execution of
-> DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
->
-> But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
-> It can't send a message to the peripheral to resend DMA request,
-> and the peripheral can't acknowledge a flush request from DMAC.
-> So all DMA requests should NOT be ignored by DMAC, and DMAC will not
-> notify the peripheral to flush.
->
-> To fix this problem, we need:
-> - Do NOT execute DMAFLUSHP instruction.
-> - Timing 2 and timing 3 should not happen.
->
-> Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
-> for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
-> impossible to hit the timing 3 if burst length is equal or less than 4.
->
-> Since the request type signal by the peripheral can only be set by
-> software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
-> or burst request, if it is set b01,  all of the peripharals will signal a brust
-> request. So the timing 2 will not happen, too.
->
-> So DMAC on RK3X can support single or burst transfer, but can't support
-> mixed transfer.
->
-> Because burst transfer is more efficient than single transfer, this is
-> confirmed by our ASIC team, who strongly suggest to use burst transfer.
-> And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
-> spi flash burst transfer will increase about two times than single transfer.
-> Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
-> the result. That means burst transfer is reansonable.
->
-> So we need a quirk not to execute DMAFLUSHP instruction and to use burst
-> transfer.
->
-> Note:
-> - The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
->    support brust transfer, these bits should not be changed in bootloader.
->
->
-> Changes in v5:
-> - add Mark's tag for spi changes
-> - remove unnecessary whitespace change
-> - use switch statement for I2S dma_quirk's manipulation
->
-> Changes in v4:
-> - remove spi & i2s dts changes and query quirk from dmaengine API
->    suggeseted by Mark.
-> - fix typo
-> - Add dmaengine_get_quirk hook and implement it for pl330
->
-> Changes in v3:
-> - add Sunny's tag
-> - add more rockchip drivers' changes in this patchset
-> - add Reviewed-by: Sonny Rao <sonnyrao@chromium.org>
->
-> Changes in v2:
-> - amend the author
-> - reorder the patches suggested by Doug
-> - add Reviewed-by: Doug Anderson <dianders@chromium.org> for
->    rk3288.dtsi patch and arm-pl330.txt patch
-> - amend Olof's mail address
->
-> Changes in v1:
-> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
->    by Krzysztof.
-> - add From original author.
-> - remove Sunny's tag
->
-> Addy Ke (3):
->    DMA: pl330: add quirk for broken no flushp
->    ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3288 platform
->    spi: rockchip: modify DMA max burst to 1
->
-> Boojin Kim (1):
->    DMA: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
->
-> Shawn Lin (5):
->    Documentation: arm-pl330: add description of
->      arm,pl330-broken-no-flushp
->    ARM: dts: Add arm,pl330-broken-no-flushp quirk for rk3xxx platform
->    dmaengine: add API for getting dma controller's quirk
->    DMA: pl330: implement dmaengine_get_quirks hook
->    snd: dmaengine-pcm: add snd_dmaengine_pcm_get_quirks interface
->
-> Yiwei Cai (1):
->    ASoC: rockchip_i2s: modify DMA max burst to 1
->
->   .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
->   arch/arm/boot/dts/rk3288.dtsi                      |   3 +
->   arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
->   drivers/dma/pl330.c                                | 110 +++++++++++++++------
->   drivers/spi/spi-rockchip.c                         |  13 ++-
->   include/linux/dmaengine.h                          |   9 ++
->   sound/soc/rockchip/rockchip_i2s.c                  |  21 ++++
->   sound/soc/soc-generic-dmaengine-pcm.c              |  24 +++++
->   8 files changed, 153 insertions(+), 31 deletions(-)
->
+Could you review this series patchs if you have free time?
 
 
--- 
-Best Regards
-Shawn Lin
+=D4=DA 2015=C4=EA09=D4=C214=C8=D5 19:06, Caesar Wang =D0=B4=B5=C0:
+> Mailbox is used by the Rockchip CPU cores to communicate
+> requests to MCU processorm.
+>
+> This driver is found on RK3368 SoCs.
+>
+> The Mailbox module is a simple APB peripheral that allows both
+> the Cortex-A53 MCU system to communicate by writing operation to
+> generate interrupt.
+> The registers are accessible by both CPU via APB interface.
+>
+> Tested on RK3368 SDK board.
+>
+>
+>
+> Caesar Wang (3):
+>    dt-bindings: Add document of Rockchip mailbox
+>    mailbox: rockchip: Add Rockchip mailbox driver
+>    ARM64: dts: rk3368: Add mailbox device nodes
+>
+>   .../bindings/mailbox/rockchip-mailbox.txt          |  33 +++
+>   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  13 +
+>   drivers/mailbox/Kconfig                            |   9 +
+>   drivers/mailbox/Makefile                           |   2 +
+>   drivers/mailbox/rockchip-mailbox.c                 | 317 ++++++++++=
++++++++++++
+>   5 files changed, 374 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/mailbox/rockch=
+ip-mailbox.txt
+>   create mode 100644 drivers/mailbox/rockchip-mailbox.c
+>
+
+--=20
+Thanks,
+Caesar
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
