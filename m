@@ -1,65 +1,59 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/3] mailbox: rockchip: Add mailbox driver for Rockchip
- platform
-Date: Mon, 28 Sep 2015 10:09:49 +0800
-Message-ID: <5608A16D.4090109@gmail.com>
-References: <1442228798-15191-1-git-send-email-wxt@rock-chips.com>
+From: sugar <sugar.zhang@rock-chips.com>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels
+ capture and lrck-mode support
+Date: Mon, 28 Sep 2015 16:16:12 +0800
+Message-ID: <5608F74C.3000104@rock-chips.com>
+References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+ <20150923162433.GQ30445@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1442228798-15191-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20150923162433.GQ30445@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Jassi,
-
-=46riendly Ping!
-
-Could you review this series patchs if you have free time?
-
-
-=D4=DA 2015=C4=EA09=D4=C214=C8=D5 19:06, Caesar Wang =D0=B4=B5=C0:
-> Mailbox is used by the Rockchip CPU cores to communicate
-> requests to MCU processorm.
->
-> This driver is found on RK3368 SoCs.
->
-> The Mailbox module is a simple APB peripheral that allows both
-> the Cortex-A53 MCU system to communicate by writing operation to
-> generate interrupt.
-> The registers are accessible by both CPU via APB interface.
->
-> Tested on RK3368 SDK board.
->
->
->
-> Caesar Wang (3):
->    dt-bindings: Add document of Rockchip mailbox
->    mailbox: rockchip: Add Rockchip mailbox driver
->    ARM64: dts: rk3368: Add mailbox device nodes
->
->   .../bindings/mailbox/rockchip-mailbox.txt          |  33 +++
->   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  13 +
->   drivers/mailbox/Kconfig                            |   9 +
->   drivers/mailbox/Makefile                           |   2 +
->   drivers/mailbox/rockchip-mailbox.c                 | 317 ++++++++++=
-+++++++++++
->   5 files changed, 374 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/mailbox/rockch=
-ip-mailbox.txt
->   create mode 100644 drivers/mailbox/rockchip-mailbox.c
->
-
---=20
-Thanks,
-Caesar
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTWFyayBCcm93biwKCuWcqCA5LzI0LzIwMTUgMDA6MjQsIE1hcmsgQnJvd24g5YaZ6YGTOgo+
+IE9uIFdlZCwgU2VwIDIzLCAyMDE1IGF0IDExOjQxOjIyQU0gKzA4MDAsIFN1Z2FyIFpoYW5nIHdy
+b3RlOgo+Cj4+ICsJLyogY29uZmlndXJlIHR4L3J4IGxyY2sgdXNlIG1vZGUgKi8KPj4gKwlpZiAo
+IW9mX3Byb3BlcnR5X3JlYWRfdTMyKG5vZGUsICJyb2NrY2hpcCxscmNrLW1vZGUiLCAmdmFsKSkg
+ewo+PiArCQlpZiAodmFsID49IExSQ0tfVFhSWCAmJiB2YWwgPD0gTFJDS19SWF9TSEFSRSkKPj4g
+KwkJCXJlZ21hcF91cGRhdGVfYml0cyhpMnMtPnJlZ21hcCwgSTJTX0NLUiwKPj4gKwkJCQkJICAg
+STJTX0NLUl9UUkNNX01BU0ssCj4+ICsJCQkJCSAgIEkyU19DS1JfVFJDTSh2YWwpKTsKPj4gKwl9
+Cj4KPiBUaGlzIGxvb2tzIGxpa2UgaXQncyBmb3IgYSBib2FyZCBjb25maWd1cmF0aW9uIHRoaW5n
+IHNvIEknZCBub3QgcmVhbGx5Cj4gZXhwZWN0IHRoaXMgdG8gYmUgaGFuZGxlZCBpbiBhIGRldmlj
+ZSBzcGVjaWZpYyBwcm9wZXJ0eSAtIGl0J3MgZmFpcmx5Cj4gY29tbW9uIHRvIGhhdmUgdGhpcyBz
+aXR1YXRpb24gYW5kIHdlIGFscmVhZHkgaGF2ZSB0aGUgc3ltbWV0cmljX3JhdGVzCj4gZmxhZyBm
+b3IgdGhlIERBSSB0byBoYW5kbGUgaXQgKGFuZCBpZiB3ZSBkbyBlbmQgdXAgYWRkaW5nIHRoaXMg
+cHJvcGVydHkKPiB3ZSdkIG5lZWQgdGhlIGRyaXZlciB0byBzZXQgdGhhdCBmbGFnIHNvIHRoYXQg
+dGhlIGNvcmUgY2FuIGhhbmRsZSB0aGluZ3MKPiBwcm9wZXJseSBhbmQgbWFrZSBzdXJlIHRoYXQg
+dXNlcnNwYWNlIGRvZXNuJ3QgdHJ5IHRvIHNldCBkaWZmZXJlbnQgcmF0ZXMKPiBpbiBkaWZmZXJl
+bnQgZGlyZWN0aW9ucykuCj4KPiBNeSBpbml0aWFsIHRob3VnaHQgaGVyZSBpcyB0aGF0IHRoZSBt
+YWNoaW5lIGRyaXZlciBzaG91bGQgYmUgcmVzcG9uc2libGUKPiBmb3Igc2V0dGluZyB0aGlzIGFu
+ZCB0aGVuIHRoZSBEQUkgZHJpdmVyIHNob3VsZCBjaGVjayB0byBzZWUgaWYKPiBzeW1tZXRyaWNf
+cmF0ZXMgYXJlIGluIHVzZSBhbmQgY29uZmlndXJlIGl0c2VsZiBhcHByb3ByaWF0ZWx5LiAgSXMg
+dGhlcmUKPiBhIHJlYXNvbiB3aHkgdGhpcyB3b24ndCB3b3JrIGhlcmU/Cj4KCkl0J3MgZm9yIGky
+cyBpcCBjb25maWd1cmF0aW9uLCBpbiB0aGUgbW9zdCBzaXR1YXRpb24sIHRoZXJlIGlzIG5vIG5l
+ZWQKdG8gdXNlIHRoaXMgcHJvcGVydHksIGV4Y2VwdCBvbmUgY2FzZToKCkluIG9yZGVyIHRvIHNh
+dmUgZ3BpbyBwaW5zIGZvciBvdGhlciBmdW5jdGlvbiB1c2UsIHdlIG1heSB1c2Ugc2luZ2xlCmxy
+Y2sodHggb3IgcngpIHBpbi4gb2YgY291cnNlLCBpdCBkZXBlbmRzIG9uIHByb2R1Y3QgZGVzaWdu
+LiB3aGVuIGluIGkycwpzbGF2ZSBtb2RlLCB3ZSBuZWVkIHRvIGNvbmZpZ3VyZSB0aGlzIHRvIHNo
+YXJlIGxyY2sgd2l0aCB0eC9yeCBpbnNpZGUgCmkycyBsb2dpYy4KCnN5bW1ldHJpY19yYXRlcyBm
+bGFnIHdvcmtzIGZpbmUgb24gcm9ja2NoaXAgcGxhdGZvcm0sIGJ1dCBpdCBjYW4ndCBjb3ZlciAK
+dGhlIGFib3ZlIGNhc2UuCgpEbyB5b3UgaGF2ZSBhbnkgc3VnZ2VzdGlvbiBhYm91dCB0aGlzIG9y
+IG1heWJlIHRoZXJlIGlzIG5vIG5lZWQgdG8gCnVwc3RyZWFtIHRoaXMgc3BlY2lhbCBwYXJ0PwoK
+QmVzdCBSZWdhcmRzClN1Z2FyCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpBbHNhLWRldmVsIG1haWxpbmcgbGlzdApBbHNhLWRldmVsQGFsc2EtcHJvamVj
+dC5vcmcKaHR0cDovL21haWxtYW4uYWxzYS1wcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Fs
+c2EtZGV2ZWwK
