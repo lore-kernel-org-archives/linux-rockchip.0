@@ -1,234 +1,190 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 2/8] clk: rockchip: add dt-binding header for rk3036
-Date: Tue, 29 Sep 2015 10:13:47 +0800
-Message-ID: <1443492833-15630-3-git-send-email-zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v3 6/8] ARM: rockchip: add support smp for rk3036
+Date: Tue, 29 Sep 2015 10:13:51 +0800
+Message-ID: <1443492833-15630-7-git-send-email-zhengxing@rock-chips.com>
 References: <1443492833-15630-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1443492833-15630-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1443492833-15630-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the dt-bindings header for the rk3036, that gets shared between
-the clock controller and the clock references in the dts.
+The rk3036 is dual-core soc, we can use this patch to enable cpu1
+enter boot secondary, and hotplug(online/offline).
 
-Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
 
 Changes in v3: None
 
- include/dt-bindings/clock/rk3036-cru.h |  195 ++++++++++++++++++++++++++++++++
- 1 file changed, 195 insertions(+)
- create mode 100644 include/dt-bindings/clock/rk3036-cru.h
+ arch/arm/mach-rockchip/platsmp.c |  142 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 142 insertions(+)
 
-diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
-new file mode 100644
-index 0000000..6e30af4
---- /dev/null
-+++ b/include/dt-bindings/clock/rk3036-cru.h
-@@ -0,0 +1,195 @@
-+/*
-+ * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
-+ * Author: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
+diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
+index 3e7a4b7..7864bf3 100644
+--- a/arch/arm/mach-rockchip/platsmp.c
++++ b/arch/arm/mach-rockchip/platsmp.c
+@@ -34,6 +34,8 @@
+ 
+ static void __iomem *scu_base_addr;
+ static void __iomem *sram_base_addr;
++static void __iomem *cru_base_addr;
 +
-+#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
-+#define _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
+ static int ncores;
+ 
+ #define PMU_PWRDN_CON		0x08
+@@ -41,6 +43,8 @@ static int ncores;
+ 
+ #define PMU_PWRDN_SCU		4
+ 
++#define RK3036_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
 +
-+/* core clocks */
-+#define PLL_APLL		1
-+#define PLL_DPLL		2
-+#define PLL_GPLL		3
-+#define ARMCLK			4
+ static struct regmap *pmu;
+ 
+ static int pmu_power_domain_is_on(int pd)
+@@ -350,3 +354,141 @@ static struct smp_operations rockchip_smp_ops __initdata = {
+ };
+ 
+ CPU_METHOD_OF_DECLARE(rk3066_smp, "rockchip,rk3066-smp", &rockchip_smp_ops);
 +
-+/* sclk gates (special clocks) */
-+#define SCLK_GPU		64
-+#define SCLK_SPI		65
-+#define SCLK_SDMMC		68
-+#define SCLK_SDIO		69
-+#define SCLK_EMMC		71
-+#define SCLK_NANDC		76
-+#define SCLK_UART0		77
-+#define SCLK_UART1		78
-+#define SCLK_UART2		79
-+#define SCLK_I2S		82
-+#define SCLK_SPDIF		83
-+#define SCLK_TIMER0		85
-+#define SCLK_TIMER1		86
-+#define SCLK_TIMER2		87
-+#define SCLK_TIMER3		88
-+#define SCLK_OTGPHY0		93
-+#define SCLK_OTGPHY1		94
-+#define SCLK_LCDC		100
-+#define SCLK_HDMI		109
-+#define SCLK_HEVC		111
-+#define SCLK_I2S_OUT		113
-+#define SCLK_SDMMC_DRV		114
-+#define SCLK_SDIO_DRV		115
-+#define SCLK_EMMC_DRV		117
-+#define SCLK_SDMMC_SAMPLE	118
-+#define SCLK_SDIO_SAMPLE	119
-+#define SCLK_EMMC_SAMPLE	121
-+#define SCLK_PVTM_CORE          123
-+#define SCLK_PVTM_GPU           124
-+#define SCLK_PVTM_VIDEO         125
-+#define SCLK_MAC		151
-+#define SCLK_MACREF		152
-+#define SCLK_SFC		160
++/* for RK3036 */
 +
-+#define DCLK_LCDC		190
++static int rk3036_set_power_domain(int pd, bool on)
++{
++	struct reset_control *rstc = rockchip_get_core_reset(pd);
++	u32 val;
 +
-+/* aclk gates */
-+#define ACLK_DMAC2		194
-+#define ACLK_LCDC		197
-+#define ACLK_VIO		203
-+#define ACLK_VCODEC		208
-+#define ACLK_CPU		209
-+#define ACLK_PERI		210
++	/* there are 2cpus on rk3036 soc, we just need to be care cpu1 */
++	if (pd != 1)
++		return 0;
 +
-+/* pclk gates */
-+#define PCLK_GPIO0		320
-+#define PCLK_GPIO1		321
-+#define PCLK_GPIO2		322
-+#define PCLK_GRF		329
-+#define PCLK_I2C0		332
-+#define PCLK_I2C1		333
-+#define PCLK_I2C2		334
-+#define PCLK_SPI		338
-+#define PCLK_UART0		341
-+#define PCLK_UART1		342
-+#define PCLK_UART2		343
-+#define PCLK_PWM		350
-+#define PCLK_TIMER		353
-+#define PCLK_HDMI		360
-+#define PCLK_CPU		362
-+#define PCLK_PERI		363
-+#define PCLK_DDRUPCTL		364
-+#define PCLK_WDT		368
++	if (IS_ERR(rstc) && read_cpuid_part() != ARM_CPU_PART_CORTEX_A9) {
++		pr_err("%s: could not get reset control for core %d\n",
++		       __func__, pd);
++		return PTR_ERR(rstc);
++	}
 +
-+/* hclk gates */
-+#define HCLK_OTG0		449
-+#define HCLK_OTG1		450
-+#define HCLK_NANDC		453
-+#define HCLK_SDMMC		456
-+#define HCLK_SDIO		457
-+#define HCLK_EMMC		459
-+#define HCLK_I2S		462
-+#define HCLK_LCDC		465
-+#define HCLK_ROM		467
-+#define HCLK_VIO_BUS		472
-+#define HCLK_VCODEC		476
-+#define HCLK_CPU		477
-+#define HCLK_PERI		478
++	/*
++	 * We need to soft reset the cpu when we turn off the cpu power domain,
++	 * or else the active processors might be stalled when the individual
++	 * processor is powered down.
++	 */
++	if (!IS_ERR(rstc) && !on)
++		reset_control_assert(rstc);
 +
-+#define CLK_NR_CLKS		(HCLK_PERI + 1)
++	val = (on) ? 0 : 1;
++	val = (val << pd) | BIT(pd + 16);
++	writel_relaxed(val, cru_base_addr + RK3036_SOFTRST_CON(0));
 +
-+/* soft-reset indices */
-+#define SRST_CORE0		0
-+#define SRST_CORE1		1
-+#define SRST_CORE0_DBG		4
-+#define SRST_CORE1_DBG		5
-+#define SRST_CORE0_POR		8
-+#define SRST_CORE1_POR		9
-+#define SRST_L2C		12
-+#define SRST_TOPDBG		13
-+#define SRST_STRC_SYS_A		14
-+#define SRST_PD_CORE_NIU	15
++	dsb();
 +
-+#define SRST_TIMER2		16
-+#define SRST_CPUSYS_H		17
-+#define SRST_AHB2APB_H		19
-+#define SRST_TIMER3		20
-+#define SRST_INTMEM		21
-+#define SRST_ROM		22
-+#define SRST_PERI_NIU		23
-+#define SRST_I2S		24
-+#define SRST_DDR_PLL		25
-+#define SRST_GPU_DLL		26
-+#define SRST_TIMER0		27
-+#define SRST_TIMER1		28
-+#define SRST_CORE_DLL		29
-+#define SRST_EFUSE_P		30
-+#define SRST_ACODEC_P		31
++	if (!IS_ERR(rstc)) {
++		if (on)
++			reset_control_deassert(rstc);
++		reset_control_put(rstc);
++	}
 +
-+#define SRST_GPIO0		32
-+#define SRST_GPIO1		33
-+#define SRST_GPIO2		34
-+#define SRST_UART0		39
-+#define SRST_UART1		40
-+#define SRST_UART2		41
-+#define SRST_I2C0		43
-+#define SRST_I2C1		44
-+#define SRST_I2C2		45
-+#define SRST_SFC		47
++	return 0;
++}
 +
-+#define SRST_PWM0		48
-+#define SRST_DAP		51
-+#define SRST_DAP_SYS		52
-+#define SRST_GRF		55
-+#define SRST_PERIPHSYS_A	57
-+#define SRST_PERIPHSYS_H	58
-+#define SRST_PERIPHSYS_P	59
-+#define SRST_CPU_PERI		61
-+#define SRST_EMEM_PERI		62
-+#define SRST_USB_PERI		63
++static void __init rk3036_smp_prepare_cpus(unsigned int max_cpus)
++{
++	struct device_node *node;
++	unsigned int l2ctlr;
++	unsigned int i, cpu;
 +
-+#define SRST_DMA2		64
-+#define SRST_MAC		66
-+#define SRST_NANDC		68
-+#define SRST_USBOTG0		69
-+#define SRST_OTGC0		71
-+#define SRST_USBOTG1		72
-+#define SRST_OTGC1		74
-+#define SRST_DDRMSCH		79
++	/* get cru_base_addr */
++	node = of_find_compatible_node(NULL, NULL, "rockchip,rk3036-cru");
++	if (!node) {
++		pr_err("%s: could not find cru dt node\n", __func__);
++		return;
++	}
 +
-+#define SRST_MMC0		81
-+#define SRST_SDIO		82
-+#define SRST_EMMC		83
-+#define SRST_SPI0		84
-+#define SRST_WDT		86
-+#define SRST_DDRPHY		88
-+#define SRST_DDRPHY_P		89
-+#define SRST_DDRCTRL		90
-+#define SRST_DDRCTRL_P		91
++	cru_base_addr = of_iomap(node, 0);
++	if (!cru_base_addr) {
++		pr_err("%s: could not map cru registers\n", __func__);
++		return;
++	}
 +
-+#define SRST_HDMI_P		96
-+#define SRST_VIO_BUS_H		99
-+#define SRST_UTMI0		103
-+#define SRST_UTMI1		104
-+#define SRST_USBPOR		105
++	/* get sram_base_addr */
++	node = of_find_compatible_node(NULL, NULL, "rockchip,rk3036-smp-sram");
++	if (!node) {
++		pr_err("%s: could not find sram dt node\n", __func__);
++		return;
++	}
 +
-+#define SRST_VCODEC_A		112
-+#define SRST_VCODEC_H		113
-+#define SRST_VIO1_A		114
-+#define SRST_HEVC		115
-+#define SRST_VCODEC_NIU_A	116
-+#define SRST_LCDC1_A		117
-+#define SRST_LCDC1_H		118
-+#define SRST_LCDC1_D		119
-+#define SRST_GPU		120
-+#define SRST_GPU_NIU_A		122
++	sram_base_addr = of_iomap(node, 0);
++	if (!sram_base_addr) {
++		pr_err("%s: could not map sram registers\n", __func__);
++		return;
++	}
 +
-+#define SRST_DBG_P		131
++	/* get ncores */
++	asm ("mrc p15, 1, %0, c9, c0, 2\n" : "=r" (l2ctlr));
++	ncores = ((l2ctlr >> 24) & 0x3) + 1;
++	cpu = MPIDR_AFFINITY_LEVEL(read_cpuid_mpidr(), 0);
 +
++	/* Make sure that all cores except the first are really off */
++	for (i = 1; i < ncores; i++)
++		rk3036_set_power_domain(0 + i, false);
++}
++
++static int rk3036_boot_secondary(unsigned int cpu, struct task_struct *idle)
++{
++	if (cpu >= ncores) {
++		pr_err("%s: cpu %d outside maximum number of cpus %d\n",
++			__func__, cpu, ncores);
++		return -ENXIO;
++	}
++
++	/* start the core */
++	rk3036_set_power_domain(0 + cpu, true);
++
++	/*
++	 * We need to wait a moment after soft reset CPUx on rk3036,
++	 * otherwise, CPUx will startup failed.
++	 */
++	udelay(10);
++	writel(virt_to_phys(secondary_startup), sram_base_addr + 8);
++	writel(0xDEADBEAF, sram_base_addr + 4);
++	dsb_sev();
++
++	return 0;
++}
++
++#ifdef CONFIG_HOTPLUG_CPU
++static int rk3066_cpu_kill(unsigned int cpu)
++{
++	/*
++	 * We need a delay here to ensure that the dying CPU can finish
++	 * executing v7_coherency_exit() and reach the WFI/WFE state
++	 * prior to having the power domain disabled.
++	 */
++	mdelay(1);
++
++	rk3036_set_power_domain(0 + cpu, false);
++
++	return 1;
++}
++
++static void rk3066_cpu_die(unsigned int cpu)
++{
++	v7_exit_coherency_flush(louis);
++	while (1)
++		cpu_do_idle();
++}
 +#endif
++
++static struct smp_operations rk3036_smp_ops __initdata = {
++	.smp_prepare_cpus	= rk3036_smp_prepare_cpus,
++	.smp_boot_secondary	= rk3036_boot_secondary,
++#ifdef CONFIG_HOTPLUG_CPU
++	.cpu_kill		= rk3066_cpu_kill,
++	.cpu_die		= rk3066_cpu_die,
++#endif
++};
++CPU_METHOD_OF_DECLARE(rk3036_smp, "rockchip,rk3036-smp", &rk3036_smp_ops);
 -- 
 1.7.9.5
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
