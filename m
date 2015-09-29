@@ -1,114 +1,84 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH] drm/rockchip: vop: Correct enabled clocks during setup
-Date: Tue, 29 Sep 2015 11:28:13 +0200
-Message-ID: <1443518893-28142-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: Correct enabled clocks during setup
+Date: Tue, 29 Sep 2015 17:55:24 +0800
+Message-ID: <560A600C.8060203@rock-chips.com>
+References: <1443518893-28142-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1443518893-28142-1-git-send-email-sjoerd.simons@collabora.co.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When doing the initial setup both the hclk and the aclk need to be
-enabled otherwise the board will simply hang. This only occurs when
-building the vop driver as a module, when its built-in the initial setup
-happens to run before the clock framework shuts of unused clocks
-(including the aclk).
-
-While there also switch to doing prepare and enable in one step rather
-then separate steps to reduce the amount of code required.
-
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-
----
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 36 +++++++++++------------------
- 1 file changed, 14 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 5d8ae5e..48719df 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1575,32 +1575,25 @@ static int vop_initial(struct vop *vop)
- 		return PTR_ERR(vop->dclk);
- 	}
- 
--	ret = clk_prepare(vop->hclk);
--	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare hclk\n");
--		return ret;
--	}
--
- 	ret = clk_prepare(vop->dclk);
- 	if (ret < 0) {
- 		dev_err(vop->dev, "failed to prepare dclk\n");
--		goto err_unprepare_hclk;
-+		return ret;
- 	}
- 
--	ret = clk_prepare(vop->aclk);
-+	/* Enable both the hclk and aclk to setup the vop */
-+	ret = clk_prepare_enable(vop->hclk);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare aclk\n");
-+		dev_err(vop->dev, "failed to prepare/enable hclk\n");
- 		goto err_unprepare_dclk;
- 	}
- 
--	/*
--	 * enable hclk, so that we can config vop register.
--	 */
--	ret = clk_enable(vop->hclk);
-+	ret = clk_prepare_enable(vop->aclk);
- 	if (ret < 0) {
--		dev_err(vop->dev, "failed to prepare aclk\n");
--		goto err_unprepare_aclk;
-+		dev_err(vop->dev, "failed to prepare/enable aclk\n");
-+		goto err_disable_hclk;
- 	}
-+
- 	/*
- 	 * do hclk_reset, reset all vop registers.
- 	 */
-@@ -1608,7 +1601,7 @@ static int vop_initial(struct vop *vop)
- 	if (IS_ERR(ahb_rst)) {
- 		dev_err(vop->dev, "failed to get ahb reset\n");
- 		ret = PTR_ERR(ahb_rst);
--		goto err_disable_hclk;
-+		goto err_disable_aclk;
- 	}
- 	reset_control_assert(ahb_rst);
- 	usleep_range(10, 20);
-@@ -1634,26 +1627,25 @@ static int vop_initial(struct vop *vop)
- 	if (IS_ERR(vop->dclk_rst)) {
- 		dev_err(vop->dev, "failed to get dclk reset\n");
- 		ret = PTR_ERR(vop->dclk_rst);
--		goto err_unprepare_aclk;
-+		goto err_disable_aclk;
- 	}
- 	reset_control_assert(vop->dclk_rst);
- 	usleep_range(10, 20);
- 	reset_control_deassert(vop->dclk_rst);
- 
- 	clk_disable(vop->hclk);
-+	clk_disable(vop->aclk);
- 
- 	vop->is_enabled = false;
- 
- 	return 0;
- 
-+err_disable_aclk:
-+	clk_disable_unprepare(vop->aclk);
- err_disable_hclk:
--	clk_disable(vop->hclk);
--err_unprepare_aclk:
--	clk_unprepare(vop->aclk);
-+	clk_disable_unprepare(vop->hclk);
- err_unprepare_dclk:
- 	clk_unprepare(vop->dclk);
--err_unprepare_hclk:
--	clk_unprepare(vop->hclk);
- 	return ret;
- }
- 
--- 
-2.5.3
+CgpPbiAwOS8yOS8yMDE1IDA1OjI4IFBNLCBTam9lcmQgU2ltb25zIHdyb3RlOgo+IFdoZW4gZG9p
+bmcgdGhlIGluaXRpYWwgc2V0dXAgYm90aCB0aGUgaGNsayBhbmQgdGhlIGFjbGsgbmVlZCB0byBi
+ZQo+IGVuYWJsZWQgb3RoZXJ3aXNlIHRoZSBib2FyZCB3aWxsIHNpbXBseSBoYW5nLiBUaGlzIG9u
+bHkgb2NjdXJzIHdoZW4KPiBidWlsZGluZyB0aGUgdm9wIGRyaXZlciBhcyBhIG1vZHVsZSwgd2hl
+biBpdHMgYnVpbHQtaW4gdGhlIGluaXRpYWwgc2V0dXAKPiBoYXBwZW5zIHRvIHJ1biBiZWZvcmUg
+dGhlIGNsb2NrIGZyYW1ld29yayBzaHV0cyBvZiB1bnVzZWQgY2xvY2tzCj4gKGluY2x1ZGluZyB0
+aGUgYWNsaykuCj4KPiBXaGlsZSB0aGVyZSBhbHNvIHN3aXRjaCB0byBkb2luZyBwcmVwYXJlIGFu
+ZCBlbmFibGUgaW4gb25lIHN0ZXAgcmF0aGVyCj4gdGhlbiBzZXBhcmF0ZSBzdGVwcyB0byByZWR1
+Y2UgdGhlIGFtb3VudCBvZiBjb2RlIHJlcXVpcmVkLgo+Cj4gU2lnbmVkLW9mZi1ieTogU2pvZXJk
+IFNpbW9ucyA8c2pvZXJkLnNpbW9uc0Bjb2xsYWJvcmEuY28udWs+CgpMb29rcyBnb29kIGFuZCB0
+ZXN0IG9uIGNocm9tZW9zLTMuMTQgdHJlZSwgbm8gcHJvYmxlbSwgc28KClRlc3RlZC1ieTogWWFr
+aXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgoKPiAtLS0KPgo+ICAgZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDM2ICsrKysrKysrKysrLS0tLS0tLS0tLS0t
+LS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMjIgZGVsZXRpb25z
+KC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBp
+bmRleCA1ZDhhZTVlLi40ODcxOWRmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTE1NzUsMzIgKzE1NzUsMjUgQEAgc3RhdGljIGludCB2
+b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4gICAJCXJldHVybiBQVFJfRVJSKHZvcC0+ZGNs
+ayk7Cj4gICAJfQo+ICAgCj4gLQlyZXQgPSBjbGtfcHJlcGFyZSh2b3AtPmhjbGspOwo+IC0JaWYg
+KHJldCA8IDApIHsKPiAtCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIHByZXBhcmUgaGNs
+a1xuIik7Cj4gLQkJcmV0dXJuIHJldDsKPiAtCX0KPiAtCj4gICAJcmV0ID0gY2xrX3ByZXBhcmUo
+dm9wLT5kY2xrKTsKPiAgIAlpZiAocmV0IDwgMCkgewo+ICAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAi
+ZmFpbGVkIHRvIHByZXBhcmUgZGNsa1xuIik7Cj4gLQkJZ290byBlcnJfdW5wcmVwYXJlX2hjbGs7
+Cj4gKwkJcmV0dXJuIHJldDsKPiAgIAl9Cj4gICAKPiAtCXJldCA9IGNsa19wcmVwYXJlKHZvcC0+
+YWNsayk7Cj4gKwkvKiBFbmFibGUgYm90aCB0aGUgaGNsayBhbmQgYWNsayB0byBzZXR1cCB0aGUg
+dm9wICovCj4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUodm9wLT5oY2xrKTsKPiAgIAlpZiAo
+cmV0IDwgMCkgewo+IC0JCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZSBhY2xr
+XG4iKTsKPiArCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIHByZXBhcmUvZW5hYmxlIGhj
+bGtcbiIpOwo+ICAgCQlnb3RvIGVycl91bnByZXBhcmVfZGNsazsKPiAgIAl9Cj4gICAKPiAtCS8q
+Cj4gLQkgKiBlbmFibGUgaGNsaywgc28gdGhhdCB3ZSBjYW4gY29uZmlnIHZvcCByZWdpc3Rlci4K
+PiAtCSAqLwo+IC0JcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGspOwo+ICsJcmV0ID0gY2xrX3By
+ZXBhcmVfZW5hYmxlKHZvcC0+YWNsayk7Cj4gICAJaWYgKHJldCA8IDApIHsKPiAtCQlkZXZfZXJy
+KHZvcC0+ZGV2LCAiZmFpbGVkIHRvIHByZXBhcmUgYWNsa1xuIik7Cj4gLQkJZ290byBlcnJfdW5w
+cmVwYXJlX2FjbGs7Cj4gKwkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlL2Vu
+YWJsZSBhY2xrXG4iKTsKPiArCQlnb3RvIGVycl9kaXNhYmxlX2hjbGs7Cj4gICAJfQo+ICsKPiAg
+IAkvKgo+ICAgCSAqIGRvIGhjbGtfcmVzZXQsIHJlc2V0IGFsbCB2b3AgcmVnaXN0ZXJzLgo+ICAg
+CSAqLwo+IEBAIC0xNjA4LDcgKzE2MDEsNyBAQCBzdGF0aWMgaW50IHZvcF9pbml0aWFsKHN0cnVj
+dCB2b3AgKnZvcCkKPiAgIAlpZiAoSVNfRVJSKGFoYl9yc3QpKSB7Cj4gICAJCWRldl9lcnIodm9w
+LT5kZXYsICJmYWlsZWQgdG8gZ2V0IGFoYiByZXNldFxuIik7Cj4gICAJCXJldCA9IFBUUl9FUlIo
+YWhiX3JzdCk7Cj4gLQkJZ290byBlcnJfZGlzYWJsZV9oY2xrOwo+ICsJCWdvdG8gZXJyX2Rpc2Fi
+bGVfYWNsazsKPiAgIAl9Cj4gICAJcmVzZXRfY29udHJvbF9hc3NlcnQoYWhiX3JzdCk7Cj4gICAJ
+dXNsZWVwX3JhbmdlKDEwLCAyMCk7Cj4gQEAgLTE2MzQsMjYgKzE2MjcsMjUgQEAgc3RhdGljIGlu
+dCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCj4gICAJaWYgKElTX0VSUih2b3AtPmRjbGtf
+cnN0KSkgewo+ICAgCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBkY2xrIHJlc2V0
+XG4iKTsKPiAgIAkJcmV0ID0gUFRSX0VSUih2b3AtPmRjbGtfcnN0KTsKPiAtCQlnb3RvIGVycl91
+bnByZXBhcmVfYWNsazsKPiArCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4gICAJfQo+ICAgCXJl
+c2V0X2NvbnRyb2xfYXNzZXJ0KHZvcC0+ZGNsa19yc3QpOwo+ICAgCXVzbGVlcF9yYW5nZSgxMCwg
+MjApOwo+ICAgCXJlc2V0X2NvbnRyb2xfZGVhc3NlcnQodm9wLT5kY2xrX3JzdCk7Cj4gICAKPiAg
+IAljbGtfZGlzYWJsZSh2b3AtPmhjbGspOwo+ICsJY2xrX2Rpc2FibGUodm9wLT5hY2xrKTsKPiAg
+IAo+ICAgCXZvcC0+aXNfZW5hYmxlZCA9IGZhbHNlOwo+ICAgCj4gICAJcmV0dXJuIDA7Cj4gICAK
+PiArZXJyX2Rpc2FibGVfYWNsazoKPiArCWNsa19kaXNhYmxlX3VucHJlcGFyZSh2b3AtPmFjbGsp
+Owo+ICAgZXJyX2Rpc2FibGVfaGNsazoKPiAtCWNsa19kaXNhYmxlKHZvcC0+aGNsayk7Cj4gLWVy
+cl91bnByZXBhcmVfYWNsazoKPiAtCWNsa191bnByZXBhcmUodm9wLT5hY2xrKTsKPiArCWNsa19k
+aXNhYmxlX3VucHJlcGFyZSh2b3AtPmhjbGspOwo+ICAgZXJyX3VucHJlcGFyZV9kY2xrOgo+ICAg
+CWNsa191bnByZXBhcmUodm9wLT5kY2xrKTsKPiAtZXJyX3VucHJlcGFyZV9oY2xrOgo+IC0JY2xr
+X3VucHJlcGFyZSh2b3AtPmhjbGspOwo+ICAgCXJldHVybiByZXQ7Cj4gICB9Cj4gICAKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
