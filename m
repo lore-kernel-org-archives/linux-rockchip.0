@@ -1,222 +1,374 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
-Date: Wed, 30 Sep 2015 16:55:21 +0200
-Message-ID: <17200614.QxCe8zAb7I@diego>
-References: <1443622064-14362-1-git-send-email-heiko@sntech.de> <1443622064-14362-4-git-send-email-heiko@sntech.de> <CAPDyKFrTNF6RUWs6UdBGoyrp+zzrLf8qAHgBL4xV6fjK_HM_yw@mail.gmail.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v5 05/17] drm: bridge: analogix/dp: dynamic parse sync_pol
+ & interlace & dynamic_range
+Date: Wed, 30 Sep 2015 16:20:03 +0800
+Message-ID: <560B9B33.2060409@rock-chips.com>
+References: <1442906428-2609-1-git-send-email-ykk@rock-chips.com>
+ <1442907477-3283-1-git-send-email-ykk@rock-chips.com>
+ <560B73D4.30109@samsung.com> <560B8CF1.7050102@rock-chips.com>
+ <560B9075.1000304@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFrTNF6RUWs6UdBGoyrp+zzrLf8qAHgBL4xV6fjK_HM_yw@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Doug Anderson <dianders@chromium.org>, Alexandru Stan <amstan@chromium.org>
+Content-Type: multipart/mixed; boundary="===============0700629068=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <560B9075.1000304@samsung.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, emil.l.velikov@gmail.com, dianders@chromium.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, dri-devel@lists.freedesktop.org, Kumar Gala <galak@codeaurora.org>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 30. September 2015, 16:42:05 schrieb Ulf Hansson:
-> On 30 September 2015 at 16:07, Heiko Stuebner <heiko@sntech.de> wrote:
-> > From: Douglas Anderson <dianders@chromium.org>
-> > 
-> > This adds logic to the MMC core to set VQMMC.  This is expected to be
-> > called by MMC drivers like dw_mmc as part of (or instead of) their
-> > start_signal_voltage_switch() callback.
-> > 
-> > A few notes:
-> > 
-> > * When setting the signal voltage to 3.3V we do our best to make VQMMC
-> > 
-> >   and VMMC match.  It's been reported that this makes some old cards
-> >   happy since they were tested back in the day before UHS when VQMMC
-> >   and VMMC were provided by the same regulator.  A nice side effect of
-> >   this is that we don't end up on the hairy edge of VQMMC (2.7V),
-> >   which some EEs claim is a little too close to the minimum for
-> >   comfort.
-> >   This is done in two steps. At first we try to find a VQMMC within
-> >   a 0.3V tolerance of VMMC and if this is not supported by the
-> >   supplying regulator we try to find a suitable voltage within the
-> >   whole 2.7V-3.6V area of the spec.
-> > 
-> > * The two step approach is currently necessary, as the used
-> > 
-> >   regulator_set_voltage_triplet(min, target, max) uses a simple
-> >   
-> >   implementation that just tries two basic steps:
-> >         regulator_set_voltage(target, max);
-> >         regulator_set_voltage(min, target);
-> >   
-> >   So with only one step with 2.7-3.6V borders, if a suitable voltage
-> >   is a bit below VMMC, we would directly get the lowest 2.7V
-> >   which some boards (like Rockchips) don't like at all.
-> > 
-> > * When setting the signal voltage to 1.8V or 1.2V we aim for that
-> > 
-> >   specific voltage instead of picking the lowest one in the range.
-> > 
-> > * We very purposely don't print errors in mmc_regulator_set_vqmmc().
-> > 
-> >   There are cases where the MMC core will try several different
-> >   voltages and we don't want to pollute the logs.
-> > 
-> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> 
-> This looks good to me!
+This is a multi-part message in MIME format.
+--===============0700629068==
+Content-Type: multipart/alternative;
+ boundary="------------060104040801090205080705"
 
-very cool :-)
+This is a multi-part message in MIME format.
+--------------060104040801090205080705
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi Krzysztof,
+
+On 09/30/2015 03:34 PM, Krzysztof Kozlowski wrote:
+> On 30.09.2015 16:19, Yakir Yang wrote:
+>> Hi Krzysztof,
+>>
+>> On 09/30/2015 01:32 PM, Krzysztof Kozlowski wrote:
+>>> On 22.09.2015 16:37, Yakir Yang wrote:
+>>>> Both hsync/vsync polarity and interlace mode can be parsed from
+>>>> drm display mode, and dynamic_range and ycbcr_coeff can be judge
+>>>> by the video code.
+>>>>
+>>>> But presumably Exynos still relies on the DT properties, so take
+>>>> good use of mode_fixup() in to achieve the compatibility hacks.
+>>>>
+>>>> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>>>> ---
+>>>> Changes in v5:
+>>>> - Switch video timing type to "u32", so driver could use "of_property_read_u32"
+>>>>    to get the backword timing values.
+>>> Okay
+>>>
+>>>> Krzysztof suggest me that driver could use
+>>>>    the "of_property_read_bool" to get backword timing values, but that interfacs
+>>>>    would modify the original drm_display_mode timing directly (whether those
+>>>>    properties exists or not).
+>>> Hmm, I don't understand. You have a:
+>>> 	struct video_info {
+>>> 		bool h_sync_polarity;
+>>> 		bool v_sync_polarity;
+>>> 		bool interlaced;
+>>> 	};
+>>>
+>>> so what is wrong with:
+>>> 	dp_video_config->h_sync_polarity =
+>>> 		of_property_read_bool(dp_node, "hsync-active-high");
+>>>
+>>> Is it exactly the same binding as previously?
+>> Yes, it is the same binding as previously. But just a note that we already
+>> mark those DT binding as deprecated.
+>>
+>> +-interlaced:            deprecated prop that can parsed frm drm_display_mode.
+>> +-vsync-active-high:     deprecated prop that can parsed frm drm_display_mode.
+>> +-hsync-active-high:     deprecated prop that can parsed frm drm_display_mode.
+>>
+>>
+>> For now those values should come from "struct drm_display_mode",
+>> and we already parsed them out from "drm_display_mode" before
+>> driver provide the backward compatibility.
+>>
+>> Let's used the "hsync-active-high" example:
+>>      As for now the code would like:
+>>      static void analogix_dp_bridge_mode_set(...)
+>>      {
+>>          // Parsed timing value from "drm_display_mode"
+>>          video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
+>>
+>>          // Try to detect the deprecated property, providing
+>>          // the backward compatibility
+>>          of_property_read_u32(dp_node, "hsync-active-high",
+>>                                   &video->h_sync_polarity);
+>>
+>>          /*
+>>           * In this case, if "hsync-active-high" property haven't been
+>>           * found, then the video timing "h_sync_polarity" would  keep
+>>           * no change, keeping the parsed value from "drm_display_mode"
+>>           */
+>>      }
+>>
+>>      But if keep the "of_property_read_bool", then code would like:
+>>      static void analogix_dp_bridge_mode_set(...)
+>>      {
+>>          // Parsed timing value from "drm_display_mode"
+>>          video->h_sync_polarity = !!(mode->flags & DRM_MODE_FLAG_NHSYNC);
+>>
+>>          // Try to detect the deprecated property, providing
+>>          // the backward compatibility
+>>          video->h_sync_polarity =
+>>                      of_property_read_bool(dp_node, "hsync-active-high");
+>>     
+>>
+>>          /*
+>>           * In this case, if "hsync-active-high" property haven't been
+>>           * found, then the video timing "h_sync_polarity" would just
+>>           * modify to "false". That is the place we don't want, cause
+>>           * it would always modify the timing value parsed from
+>>           * "drm_display_mode"
+>>           */
+>>      }
+>>
+> OK, I see the point of overwriting values from drm_display_mode. However
+> I think you changed the binding. I believe the of_property_read_u32()
+> will behave differently for such DTS:
+>
+> exynos_dp {
+> 	...
+> 	hsync-active-high;
+> }
+>
+> It will return -EOVERFLOW which means it would be broken now...
+
+Whoops, thanks for your remind, after try that, I do see over flow error.
+static void *of_find_property_value_of_size(const struct device_node *np,
+                         const char *propname, u32 len)
+{
+         ....
+         if (len > prop->length)
+                 return ERR_PTR(-EOVERFLOW);
+         ...
+}
+
+So I though code should be:
+     if (of_property_read_bool(dp_node, "hsync-active-high"))
+         video->h_sync_polarity = true;
+
+And we can't provide full backward compatibility for this property, cause
+the previous exynos_dp driver would set this timing value to "false" when
+property not defined, but analogix_dp driver keep this timing value
+corresponding to "drm_display_mode" when property not found.
 
 
-> Once all are happy with the patches, can we take the mmc patches via
-> my mmc tree or does it all have to go together?
+Thanks,
+- Yakir
 
-The clock changes of course only touch internals of the phase-clocks, so 
-should have no problem going through another tree.
-
-For the devicetree part I'm unsure. If the boards enable the tuning-related 
-settings without the new voltage handling, 2.7V gets set on all Rockchip 
-boards which doesn't work on those at all.
-
-So either the dts patches would need to go into your tree, I would need a 
-stable branch or we could simply postpone dts changes for the next cycle.
+> Best regards,
+> Krzysztof
+>
+>
+>
+>
+>
 
 
-Heiko
+--------------060104040801090205080705
+Content-Type: text/html; charset=windows-1252
+Content-Transfer-Encoding: quoted-printable
 
-> > ---
-> > 
-> >  drivers/mmc/core/core.c  | 74
-> >  ++++++++++++++++++++++++++++++++++++++++++++++++
-> >  include/linux/mmc/host.h |  7 +++++
-> >  2 files changed, 81 insertions(+)
-> > 
-> > diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-> > index 0520064..363cc98 100644
-> > --- a/drivers/mmc/core/core.c
-> > +++ b/drivers/mmc/core/core.c
-> > @@ -1437,6 +1437,80 @@ int mmc_regulator_set_ocr(struct mmc_host *mmc,
-> > 
-> >  }
-> >  EXPORT_SYMBOL_GPL(mmc_regulator_set_ocr);
-> > 
-> > +static int mmc_regulator_set_voltage_if_supported(struct regulator
-> > *regulator, +                                                 int min_uV,
-> > int target_uV, +                                                 int
-> > max_uV)
-> > +{
-> > +       /*
-> > +        * Check if supported first to avoid errors since we may try
-> > several +        * signal levels during power up and don't want to show
-> > errors. +        */
-> > +       if (!regulator_is_supported_voltage(regulator, min_uV, max_uV))
-> > +               return -EINVAL;
-> > +
-> > +       return regulator_set_voltage_triplet(regulator, min_uV, target_uV,
-> > +                                            max_uV);
-> > +}
-> > +
-> > +/**
-> > + * mmc_regulator_set_vqmmc - Set VQMMC as per the ios
-> > + *
-> > + * For 3.3V signaling, we try to match VQMMC to VMMC as closely as
-> > possible. + * That will match the behavior of old boards where VQMMC and
-> > VMMC were supplied + * by the same supply.  The Bus Operating conditions
-> > for 3.3V signaling in the + * SD card spec also define VQMMC in terms of
-> > VMMC.
-> > + * If this is not possible we'll try the full 2.7-3.6V of the spec.
-> > + *
-> > + * For 1.2V and 1.8V signaling we'll try to get as close as possible to
-> > the + * requested voltage.  This is definitely a good idea for UHS where
-> > there's a + * separate regulator on the card that's trying to make 1.8V
-> > and it's best if + * we match.
-> > + *
-> > + * This function is expected to be used by a controller's
-> > + * start_signal_voltage_switch() function.
-> > + */
-> > +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios)
-> > +{
-> > +       int volt, min_uV, max_uV;
-> > +
-> > +       /* If no vqmmc supply then we can't change the voltage */
-> > +       if (IS_ERR(mmc->supply.vqmmc))
-> > +               return -EINVAL;
-> > +
-> > +       switch (ios->signal_voltage) {
-> > +       case MMC_SIGNAL_VOLTAGE_120:
-> > +               return
-> > mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc, +              
-> >                                 1100000, 1200000, 1300000); +       case
-> > MMC_SIGNAL_VOLTAGE_180:
-> > +               return
-> > mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc, +              
-> >                                 1700000, 1800000, 1950000); +       case
-> > MMC_SIGNAL_VOLTAGE_330:
-> > +               volt = regulator_get_voltage(mmc->supply.vmmc);
-> > +               if (volt < 0)
-> > +                       return volt;
-> > +
-> > +               min_uV = max(volt - 300000, 2700000);
-> > +               max_uV = min(volt + 300000, 3600000);
-> > +
-> > +               /*
-> > +                * Due to a limitation in the current implementation of
-> > +                * regulator_set_voltage_triplet() which is taking the
-> > lowest +                * voltage possible if below the target, search
-> > for a suitable +                * voltage in two steps and try to stay
-> > close to vmmc +                * with a 0.3V tolerance at first.
-> > +                */
-> > +               if
-> > (!mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc, +            
-> >                                   min_uV, volt, max_uV)) +               
-> >        return 0;
-> > +
-> > +               return
-> > mmc_regulator_set_voltage_if_supported(mmc->supply.vqmmc, +              
-> >                                 2700000, volt, 3600000); +       default:
-> > +               return -EINVAL;
-> > +       }
-> > +}
-> > +EXPORT_SYMBOL_GPL(mmc_regulator_set_vqmmc);
-> > +
-> > 
-> >  #endif /* CONFIG_REGULATOR */
-> >  
-> >  int mmc_regulator_get_supply(struct mmc_host *mmc)
-> > 
-> > diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-> > index 83b81fd..a2a78eb 100644
-> > --- a/include/linux/mmc/host.h
-> > +++ b/include/linux/mmc/host.h
-> > @@ -423,6 +423,7 @@ int mmc_regulator_get_ocrmask(struct regulator
-> > *supply);> 
-> >  int mmc_regulator_set_ocr(struct mmc_host *mmc,
-> >  
-> >                         struct regulator *supply,
-> >                         unsigned short vdd_bit);
-> > 
-> > +int mmc_regulator_set_vqmmc(struct mmc_host *mmc, struct mmc_ios *ios);
-> > 
-> >  #else
-> >  static inline int mmc_regulator_get_ocrmask(struct regulator *supply)
-> >  {
-> > 
-> > @@ -435,6 +436,12 @@ static inline int mmc_regulator_set_ocr(struct
-> > mmc_host *mmc,> 
-> >  {
-> >  
-> >         return 0;
-> >  
-> >  }
-> > 
-> > +
-> > +static inline int mmc_regulator_set_vqmmc(struct mmc_host *mmc,
-> > +                                         struct mmc_ios *ios)
-> > +{
-> > +       return -EINVAL;
-> > +}
-> > 
-> >  #endif
-> >  
-> >  int mmc_regulator_get_supply(struct mmc_host *mmc);
-> > 
-> > --
-> > 2.5.1
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dwindows-1252"
+      http-equiv=3D"Content-Type">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    Hi Krzysztof,<br>
+    <br>
+    <div class=3D"moz-cite-prefix">On 09/30/2015 03:34 PM, Krzysztof
+      Kozlowski wrote:<br>
+    </div>
+    <blockquote cite=3D"mid:560B9075.1000304@samsung.com" type=3D"cite">
+      <pre wrap=3D"">On 30.09.2015 16:19, Yakir Yang wrote:
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">Hi Krzysztof,
 
+On 09/30/2015 01:32 PM, Krzysztof Kozlowski wrote:
+</pre>
+        <blockquote type=3D"cite">
+          <pre wrap=3D"">On 22.09.2015 16:37, Yakir Yang wrote:
+</pre>
+          <blockquote type=3D"cite">
+            <pre wrap=3D"">Both hsync/vsync polarity and interlace mode c=
+an be parsed from
+drm display mode, and dynamic_range and ycbcr_coeff can be judge
+by the video code.
+
+But presumably Exynos still relies on the DT properties, so take
+good use of mode_fixup() in to achieve the compatibility hacks.
+
+Signed-off-by: Yakir Yang <a class=3D"moz-txt-link-rfc2396E" href=3D"mail=
+to:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>
+---
+Changes in v5:
+- Switch video timing type to "u32", so driver could use "of_property_rea=
+d_u32"
+  to get the backword timing values.=20
+</pre>
+          </blockquote>
+          <pre wrap=3D"">Okay
+
+</pre>
+          <blockquote type=3D"cite">
+            <pre wrap=3D"">Krzysztof suggest me that driver could use
+  the "of_property_read_bool" to get backword timing values, but that int=
+erfacs
+  would modify the original drm_display_mode timing directly (whether tho=
+se
+  properties exists or not).
+</pre>
+          </blockquote>
+          <pre wrap=3D"">Hmm, I don't understand. You have a:
+	struct video_info {
+		bool h_sync_polarity;
+		bool v_sync_polarity;
+		bool interlaced;
+	};
+
+so what is wrong with:
+	dp_video_config-&gt;h_sync_polarity =3D
+		of_property_read_bool(dp_node, "hsync-active-high");
+
+Is it exactly the same binding as previously?
+</pre>
+        </blockquote>
+        <pre wrap=3D"">
+Yes, it is the same binding as previously. But just a note that we alread=
+y
+mark those DT binding as deprecated.
+
++-interlaced:            deprecated prop that can parsed frm drm_display_=
+mode.
++-vsync-active-high:     deprecated prop that can parsed frm drm_display_=
+mode.
++-hsync-active-high:     deprecated prop that can parsed frm drm_display_=
+mode.
+
+
+For now those values should come from "struct drm_display_mode",
+and we already parsed them out from "drm_display_mode" before
+driver provide the backward compatibility.
+
+Let's used the "hsync-active-high" example:
+    As for now the code would like:
+    static void analogix_dp_bridge_mode_set(...)
+    {
+        // Parsed timing value from "drm_display_mode"
+        video-&gt;h_sync_polarity =3D !!(mode-&gt;flags &amp; DRM_MODE_FL=
+AG_NHSYNC);
+
+        // Try to detect the deprecated property, providing
+        // the backward compatibility
+        of_property_read_u32(dp_node, "hsync-active-high",
+                                 &amp;video-&gt;h_sync_polarity);   =20
+
+        /*
+         * In this case, if "hsync-active-high" property haven't been
+         * found, then the video timing "h_sync_polarity" would  keep
+         * no change, keeping the parsed value from "drm_display_mode"
+         */    =20
+    }  =20
+
+    But if keep the "of_property_read_bool", then code would like:
+    static void analogix_dp_bridge_mode_set(...)
+    {
+        // Parsed timing value from "drm_display_mode"
+        video-&gt;h_sync_polarity =3D !!(mode-&gt;flags &amp; DRM_MODE_FL=
+AG_NHSYNC);
+
+        // Try to detect the deprecated property, providing
+        // the backward compatibility
+        video-&gt;h_sync_polarity =3D
+                    of_property_read_bool(dp_node, "hsync-active-high");
+  =20
+
+        /*
+         * In this case, if "hsync-active-high" property haven't been
+         * found, then the video timing "h_sync_polarity" would just
+         * modify to "false". That is the place we don't want, cause
+         * it would always modify the timing value parsed from
+         * "drm_display_mode"
+         */ =20
+    }  =20
+
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+OK, I see the point of overwriting values from drm_display_mode. However
+I think you changed the binding. I believe the of_property_read_u32()
+will behave differently for such DTS:
+
+exynos_dp {
+	...
+	hsync-active-high;
+}
+
+It will return -EOVERFLOW which means it would be broken now...
+</pre>
+    </blockquote>
+    <br>
+    Whoops, thanks for your remind, after try that, I do see over flow
+    error. <br>
+    <small>static void *of_find_property_value_of_size(const struct
+      device_node *np,<br>
+      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+ const char *propname, u32 len)<br>
+      {<br>
+      =A0=A0=A0 =A0=A0=A0 ....<br>
+      =A0=A0=A0=A0=A0=A0=A0 if (len &gt; prop-&gt;length)<br>
+      =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return ERR_PTR(-EOVER=
+FLOW);<br>
+      =A0=A0=A0 =A0=A0=A0 ...<br>
+      }<br>
+    </small><br>
+    So I though code should be:<br>
+    =A0=A0=A0 if (of_property_read_bool(dp_node, "hsync-active-high"))<br=
+>
+    =A0=A0=A0 =A0=A0=A0 video-&gt;h_sync_polarity =3D true;<br>
+    <br>
+    And we can't provide full backward compatibility for this property,
+    cause<br>
+    the previous exynos_dp driver would set this timing value to "false"
+    when<br>
+    property not defined, but analogix_dp driver keep this timing value<b=
+r>
+    corresponding to "drm_display_mode" when property not found.<br>
+    <br>
+    <br>
+    Thanks,<br>
+    - Yakir<br>
+    <br>
+    <blockquote cite=3D"mid:560B9075.1000304@samsung.com" type=3D"cite">
+      <pre wrap=3D"">
+Best regards,
+Krzysztof
+
+
+
+
+
+</pre>
+    </blockquote>
+    <br>
+  </body>
+</html>
+
+--------------060104040801090205080705--
+
+
+--===============0700629068==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============0700629068==--
