@@ -1,109 +1,55 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: Re: [PATCH] drm/rockchip: vop: Correct enabled clocks during setup
-Date: Tue, 29 Sep 2015 13:58:04 +0200
-Message-ID: <1443527884.31869.48.camel@collabora.co.uk>
-References: <1443518893-28142-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <560A600C.8060203@rock-chips.com> <560A6EBF.4080902@rock-chips.com>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: Re: [PATCH v5 02/17] drm: bridge: analogix/dp: split exynos dp driver
+ to bridge directory
+Date: Wed, 30 Sep 2015 14:17:28 +0900
+Message-ID: <560B7068.2000008@samsung.com>
+References: <1442906428-2609-1-git-send-email-ykk@rock-chips.com>
+ <1442906963-2883-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <560A6EBF.4080902@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-reply-to: <1442906963-2883-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Rob Herring <robh+dt@kernel.org>
+Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAyMDE1LTA5LTI5IGF0IDE4OjU4ICswODAwLCBZYWtpciBZYW5nIHdyb3RlOgo+IAo+
-IE9uIDA5LzI5LzIwMTUgMDU6NTUgUE0sIFlha2lyIFlhbmcgd3JvdGU6Cj4gPiAKPiA+IAo+ID4g
-T24gMDkvMjkvMjAxNSAwNToyOCBQTSwgU2pvZXJkIFNpbW9ucyB3cm90ZToKPiA+ID4gV2hlbiBk
-b2luZyB0aGUgaW5pdGlhbCBzZXR1cCBib3RoIHRoZSBoY2xrIGFuZCB0aGUgYWNsayBuZWVkIHRv
-Cj4gPiA+IGJlCj4gPiA+IGVuYWJsZWQgb3RoZXJ3aXNlIHRoZSBib2FyZCB3aWxsIHNpbXBseSBo
-YW5nLiBUaGlzIG9ubHkgb2NjdXJzCj4gPiA+IHdoZW4KPiA+ID4gYnVpbGRpbmcgdGhlIHZvcCBk
-cml2ZXIgYXMgYSBtb2R1bGUsIHdoZW4gaXRzIGJ1aWx0LWluIHRoZQo+ID4gPiBpbml0aWFsIHNl
-dHVwCj4gCj4gSG1tLi4uIE15IHByZXZpb3VzIHRlc3Qgd2FzIGJ1aWx0LWluIHRoZSB2b3AgZHJp
-dmVyLCBhbmQganVzdCBub3RpY2UKPiB0aGF0Cj4geW91IHNheSBwcm9ibGVtIG9ubHkgb2NjdXJy
-ZWQgd2hlbiBidWlsZGluZyB0aGUgdm9wIGRyaXZlciBhcyBtb2R1bGUuCj4gVGhhdCdzIHRvIHNh
-eSBteSB0ZXN0IHdhcyB3cm9uZywgc28gSSB0cnkgdG8gZG8gdGhlIHJpZ2h0IHRoaW5ncy4KPiAK
-PiBCdXQgSSBmb3VuZCB0aGF0IHZvcCBkcml2ZXIgbW9kdWxlIGFuZCByb2NrY2hpcGRybSBkcml2
-ZXIgbW9kdWxlIGluCj4gZGVwZW5kZW5jeSBjeWNsZXMsIGhlcmUgYXJlIHRoZSBidWlsZCBtZXNz
-YWdlOgo+ICAgICAgZGVwbW9kOiBFUlJPUjogRm91bmQgMiBtb2R1bGVzIGluIGRlcGVuZGVuY3kg
-Y3ljbGVzIQoKCkkndmUgb25seSB0ZXN0ZWQgd2l0aCBtYWlubGluZSB3aGljaCBkb2Vzbid0IHNl
-ZW0gdG8gaGF2ZSB0aGF0IGlzc3VlPwpTbyBjYW4ndCBlYXNpbHkgaGVscCB5b3UgdGhlcmUgdW5m
-b3J0dW5hdGVseS4KCgo+IFRoYW5rcywKPiAtIFlha2lyCj4gCj4gPiA+IGhhcHBlbnMgdG8gcnVu
-IGJlZm9yZSB0aGUgY2xvY2sgZnJhbWV3b3JrIHNodXRzIG9mIHVudXNlZCBjbG9ja3MKPiA+ID4g
-KGluY2x1ZGluZyB0aGUgYWNsaykuCj4gPiA+IAo+ID4gPiBXaGlsZSB0aGVyZSBhbHNvIHN3aXRj
-aCB0byBkb2luZyBwcmVwYXJlIGFuZCBlbmFibGUgaW4gb25lIHN0ZXAKPiA+ID4gcmF0aGVyCj4g
-PiA+IHRoZW4gc2VwYXJhdGUgc3RlcHMgdG8gcmVkdWNlIHRoZSBhbW91bnQgb2YgY29kZSByZXF1
-aXJlZC4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IFNqb2VyZCBTaW1vbnMgPHNqb2VyZC5z
-aW1vbnNAY29sbGFib3JhLmNvLnVrPgo+ID4gCj4gPiBMb29rcyBnb29kIGFuZCB0ZXN0IG9uIGNo
-cm9tZW9zLTMuMTQgdHJlZSwgbm8gcHJvYmxlbSwgc28KPiA+IAo+ID4gVGVzdGVkLWJ5OiBZYWtp
-ciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4gPiAKPiA+ID4gLS0tCj4gPiA+IAo+ID4gPiAg
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAzNiAKPiA+ID4g
-KysrKysrKysrKystLS0tLS0tLS0tLS0tLS0tLS0KPiA+ID4gICAxIGZpbGUgY2hhbmdlZCwgMTQg
-aW5zZXJ0aW9ucygrKSwgMjIgZGVsZXRpb25zKC0pCj4gPiA+IAo+ID4gPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyAKPiA+ID4gYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gPiA+IGluZGV4IDVkOGFl
-NWUuLjQ4NzE5ZGYgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYwo+ID4gPiBAQCAtMTU3NSwzMiArMTU3NSwyNSBAQCBzdGF0aWMgaW50
-IHZvcF9pbml0aWFsKHN0cnVjdCB2b3AgKnZvcCkKPiA+ID4gICAgICAgICAgIHJldHVybiBQVFJf
-RVJSKHZvcC0+ZGNsayk7Cj4gPiA+ICAgICAgIH0KPiA+ID4gICAtICAgIHJldCA9IGNsa19wcmVw
-YXJlKHZvcC0+aGNsayk7Cj4gPiA+IC0gICAgaWYgKHJldCA8IDApIHsKPiA+ID4gLSAgICAgICAg
-ZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGhjbGtcbiIpOwo+ID4gPiAtICAg
-ICAgICByZXR1cm4gcmV0Owo+ID4gPiAtICAgIH0KPiA+ID4gLQo+ID4gPiAgICAgICByZXQgPSBj
-bGtfcHJlcGFyZSh2b3AtPmRjbGspOwo+ID4gPiAgICAgICBpZiAocmV0IDwgMCkgewo+ID4gPiAg
-ICAgICAgICAgZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGRjbGtcbiIpOwo+
-ID4gPiAtICAgICAgICBnb3RvIGVycl91bnByZXBhcmVfaGNsazsKPiA+ID4gKyAgICAgICAgcmV0
-dXJuIHJldDsKPiA+ID4gICAgICAgfQo+ID4gPiAgIC0gICAgcmV0ID0gY2xrX3ByZXBhcmUodm9w
-LT5hY2xrKTsKPiA+ID4gKyAgICAvKiBFbmFibGUgYm90aCB0aGUgaGNsayBhbmQgYWNsayB0byBz
-ZXR1cCB0aGUgdm9wICovCj4gPiA+ICsgICAgcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKHZvcC0+
-aGNsayk7Cj4gPiA+ICAgICAgIGlmIChyZXQgPCAwKSB7Cj4gPiA+IC0gICAgICAgIGRldl9lcnIo
-dm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZSBhY2xrXG4iKTsKPiA+ID4gKyAgICAgICAgZGV2
-X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlL2VuYWJsZSBoY2xrXG4iKTsKPiA+ID4g
-ICAgICAgICAgIGdvdG8gZXJyX3VucHJlcGFyZV9kY2xrOwo+ID4gPiAgICAgICB9Cj4gPiA+ICAg
-LSAgICAvKgo+ID4gPiAtICAgICAqIGVuYWJsZSBoY2xrLCBzbyB0aGF0IHdlIGNhbiBjb25maWcg
-dm9wIHJlZ2lzdGVyLgo+ID4gPiAtICAgICAqLwo+ID4gPiAtICAgIHJldCA9IGNsa19lbmFibGUo
-dm9wLT5oY2xrKTsKPiA+ID4gKyAgICByZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUodm9wLT5hY2xr
-KTsKPiA+ID4gICAgICAgaWYgKHJldCA8IDApIHsKPiA+ID4gLSAgICAgICAgZGV2X2Vycih2b3At
-PmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGFjbGtcbiIpOwo+ID4gPiAtICAgICAgICBnb3RvIGVy
-cl91bnByZXBhcmVfYWNsazsKPiA+ID4gKyAgICAgICAgZGV2X2Vycih2b3AtPmRldiwgImZhaWxl
-ZCB0byBwcmVwYXJlL2VuYWJsZSBhY2xrXG4iKTsKPiA+ID4gKyAgICAgICAgZ290byBlcnJfZGlz
-YWJsZV9oY2xrOwo+ID4gPiAgICAgICB9Cj4gPiA+ICsKPiA+ID4gICAgICAgLyoKPiA+ID4gICAg
-ICAgICogZG8gaGNsa19yZXNldCwgcmVzZXQgYWxsIHZvcCByZWdpc3RlcnMuCj4gPiA+ICAgICAg
-ICAqLwo+ID4gPiBAQCAtMTYwOCw3ICsxNjAxLDcgQEAgc3RhdGljIGludCB2b3BfaW5pdGlhbChz
-dHJ1Y3Qgdm9wICp2b3ApCj4gPiA+ICAgICAgIGlmIChJU19FUlIoYWhiX3JzdCkpIHsKPiA+ID4g
-ICAgICAgICAgIGRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gZ2V0IGFoYiByZXNldFxuIik7
-Cj4gPiA+ICAgICAgICAgICByZXQgPSBQVFJfRVJSKGFoYl9yc3QpOwo+ID4gPiAtICAgICAgICBn
-b3RvIGVycl9kaXNhYmxlX2hjbGs7Cj4gPiA+ICsgICAgICAgIGdvdG8gZXJyX2Rpc2FibGVfYWNs
-azsKPiA+ID4gICAgICAgfQo+ID4gPiAgICAgICByZXNldF9jb250cm9sX2Fzc2VydChhaGJfcnN0
-KTsKPiA+ID4gICAgICAgdXNsZWVwX3JhbmdlKDEwLCAyMCk7Cj4gPiA+IEBAIC0xNjM0LDI2ICsx
-NjI3LDI1IEBAIHN0YXRpYyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQo+ID4gPiAg
-ICAgICBpZiAoSVNfRVJSKHZvcC0+ZGNsa19yc3QpKSB7Cj4gPiA+ICAgICAgICAgICBkZXZfZXJy
-KHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBkY2xrIHJlc2V0XG4iKTsKPiA+ID4gICAgICAgICAg
-IHJldCA9IFBUUl9FUlIodm9wLT5kY2xrX3JzdCk7Cj4gPiA+IC0gICAgICAgIGdvdG8gZXJyX3Vu
-cHJlcGFyZV9hY2xrOwo+ID4gPiArICAgICAgICBnb3RvIGVycl9kaXNhYmxlX2FjbGs7Cj4gPiA+
-ICAgICAgIH0KPiA+ID4gICAgICAgcmVzZXRfY29udHJvbF9hc3NlcnQodm9wLT5kY2xrX3JzdCk7
-Cj4gPiA+ICAgICAgIHVzbGVlcF9yYW5nZSgxMCwgMjApOwo+ID4gPiAgICAgICByZXNldF9jb250
-cm9sX2RlYXNzZXJ0KHZvcC0+ZGNsa19yc3QpOwo+ID4gPiAgICAgICAgIGNsa19kaXNhYmxlKHZv
-cC0+aGNsayk7Cj4gPiA+ICsgICAgY2xrX2Rpc2FibGUodm9wLT5hY2xrKTsKPiA+ID4gICAgICAg
-ICB2b3AtPmlzX2VuYWJsZWQgPSBmYWxzZTsKPiA+ID4gICAgICAgICByZXR1cm4gMDsKPiA+ID4g
-ICArZXJyX2Rpc2FibGVfYWNsazoKPiA+ID4gKyAgICBjbGtfZGlzYWJsZV91bnByZXBhcmUodm9w
-LT5hY2xrKTsKPiA+ID4gICBlcnJfZGlzYWJsZV9oY2xrOgo+ID4gPiAtICAgIGNsa19kaXNhYmxl
-KHZvcC0+aGNsayk7Cj4gPiA+IC1lcnJfdW5wcmVwYXJlX2FjbGs6Cj4gPiA+IC0gICAgY2xrX3Vu
-cHJlcGFyZSh2b3AtPmFjbGspOwo+ID4gPiArICAgIGNsa19kaXNhYmxlX3VucHJlcGFyZSh2b3At
-PmhjbGspOwo+ID4gPiAgIGVycl91bnByZXBhcmVfZGNsazoKPiA+ID4gICAgICAgY2xrX3VucHJl
-cGFyZSh2b3AtPmRjbGspOwo+ID4gPiAtZXJyX3VucHJlcGFyZV9oY2xrOgo+ID4gPiAtICAgIGNs
-a191bnByZXBhcmUodm9wLT5oY2xrKTsKPiA+ID4gICAgICAgcmV0dXJuIHJldDsKPiA+ID4gICB9
-Cj4gPiAKPiAKPiAKCi0tIApTam9lcmQgU2ltb25zCkNvbGxhYm9yYSBMdGQuCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 22.09.2015 16:29, Yakir Yang wrote:
+> Split the dp core driver from exynos directory to bridge directory,
+> and rename the core driver to analogix_dp_*, rename the platform
+> code to exynos_dp.
+> 
+> Beside the new analogix_dp driver would export four hooks.
+> "analogix_dp_bind()" and "analogix_dp_unbind()"
+> "analogix_dp_detect()" and "analogix_dp_get_modes()"
+> 
+> The bind/unbind symbols is used for analogix platform driver to connect
+> with analogix_dp core driver. And the detect/get_modes is used for analogix
+> platform driver to init the connector.
+> 
+> They reason why connector need register in helper driver is rockchip drm
+> haven't implement the atomic API, but Exynos drm have implement it, so
+> there would need two different connector helper functions, that's why we
+> leave the connector register in helper driver.
+> 
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> ---
+> Changes in v5:
+> - Correct the check condition of gpio_is_valid when driver try to get
+>   the "hpd-gpios" DT propery. (Heiko)
+> - Move the platform attach callback in the front of core driver bridge
+>   attch function. Cause once platform failed at attach, core driver should
+>   still failed, so no need to init connector before platform attached (Krzysztof)
+> - Keep code style no changes with the previous exynos_dp_code.c in this
+>   patch, and update commit message about the new export symbol (Krzysztof)
+> - Gather the device type patch (v4 11/16) into this one. (Krzysztof)
+> - leave out the connector registration to analogix platform driver. (Thierry)
+
+Thanks for fixing this, looks much better.
+
+I don't feel comfortable enough to provide a review tag but it looks
+good to me.
+
+Best regards,
+Krzysztof
