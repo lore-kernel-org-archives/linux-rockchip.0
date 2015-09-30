@@ -1,62 +1,67 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v5 03/17] drm: bridge: analogix/dp: fix some obvious code
- style
-Date: Wed, 30 Sep 2015 14:52:23 +0800
-Message-ID: <560B86A7.3090100@rock-chips.com>
-References: <1442906428-2609-1-git-send-email-ykk@rock-chips.com> <1442907276-2997-1-git-send-email-ykk@rock-chips.com> <560B719A.4040309@samsung.com>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 07/17] ARM: dts: exynos/dp: remove some properties
+ that deprecated by analogix_dp driver
+Date: Wed, 30 Sep 2015 15:20:16 +0800
+Message-ID: <560B8D30.2010309@rock-chips.com>
+References: <1442906428-2609-1-git-send-email-ykk@rock-chips.com>
+ <1442907799-6266-1-git-send-email-ykk@rock-chips.com>
+ <560B7584.8070703@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <560B719A.4040309@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Rob Herring <robh+dt@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <560B7584.8070703-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Krzysztof,
 
-On 09/30/2015 01:22 PM, Krzysztof Kozlowski wrote:
-> On 22.09.2015 16:34, Yakir Yang wrote:
->> Fix some obvious alignment problems, like alignment and line
->> over 80 characters problems, make this easy to be maintained
->> later.
+On 09/30/2015 01:39 PM, Krzysztof Kozlowski wrote:
+> On 22.09.2015 16:43, Yakir Yang wrote:
+>> After exynos_dp have been split the common IP code into analogix_dp driver,
+>> the analogix_dp driver have deprecated some Samsung platform properties which
+>> could be dynamically parsed from EDID/MODE/DPCD message, so this is an update
+>> for Exynos DTS file for dp-controller.
 >>
->> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>> Beside the backward compatibility is fully preserved, so there are no
+>> bisectability break that make this change in a separate patch.
+>>
+>> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >> ---
 >> Changes in v5:
->> - Resequence this patch after analogix_dp driver have been split
->>    from exynos_dp code, and rephrase reasonable commit message, and
->>    remove some controversial style (Krzysztof)
->>      -		analogix_dp_write_byte_to_dpcd(
->>      - 				dp, DP_TEST_RESPONSE,
->>      +		analogix_dp_write_byte_to_dpcd(dp,
->>      +				DP_TEST_RESPONSE,
->> 				DP_TEST_EDID_CHECKSUM_WRITE);
+>> - Correct the misspell in commit message. (Krzysztof)
 >>
->> Changes in v4: None
+>> Changes in v4:
+>> - Separate all DTS changes to a separate patch. (Krzysztof)
+>>
 >> Changes in v3: None
->> Changes in v2:
->> - Improved commit message more readable, and avoid using some
->>    uncommon style like bellow: (Joe Preches)
->>      -  retval = exynos_dp_read_bytes_from_i2c(...
->>    				  ...);
->>      +  retval =
->>      +  exynos_dp_read_bytes_from_i2c(......);
+>> Changes in v2: None
 >>
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 129 ++++++++++-----------
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  72 ++++++------
->>   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 124 ++++++++++----------
->>   3 files changed, 163 insertions(+), 162 deletions(-)
+>>   arch/arm/boot/dts/exynos5250-arndale.dts   | 2 --
+>>   arch/arm/boot/dts/exynos5250-smdk5250.dts  | 2 --
+>>   arch/arm/boot/dts/exynos5250-snow.dts      | 4 +---
+>>   arch/arm/boot/dts/exynos5250-spring.dts    | 4 +---
+>>   arch/arm/boot/dts/exynos5420-peach-pit.dts | 4 +---
+>>   arch/arm/boot/dts/exynos5420-smdk5420.dts  | 2 --
+>>   arch/arm/boot/dts/exynos5800-peach-pi.dts  | 4 +---
+>>   7 files changed, 4 insertions(+), 18 deletions(-)
 >>
-> IMHO much better than in previous attempt. The code looks good:
+> Assuming this will be merged as part of this set (dependency on previous
+> patches):
 >
-> Reviewed-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
->
-> BTW my opinion is not enough, you still need an ack from Exynos DP
-> maintainer (or DRM guys).
+> Reviewed-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 
-Aha, thanks.
+Thanks a lot ;)
 
 - Yakir
 
