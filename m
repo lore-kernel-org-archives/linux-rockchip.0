@@ -1,158 +1,233 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [RFC PATCH v8 0/10] Add external dma support for Synopsys MSHC
-Date: Thu, 01 Oct 2015 18:14:51 +0900
-Message-ID: <560CF98B.7010609@samsung.com>
-References: <1442385625-26775-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: [PATCH] clk: rockchip: don't use clk_ APIs in the pll init-callback
+Date: Thu, 01 Oct 2015 11:38:35 +0200
+Message-ID: <2341478.8ucNaho7mA@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <1442385625-26775-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, ulf.hansson@linaro.org
-Cc: Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, heiko@sntech.de, dianders@chromium.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, CPGS <cpgs@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear, All.
+Separate the update of pll registers from the actual set_rate function
+so that the init callback does not need to access clk-API functions.
 
-I will apply patch 01-03 at my repository on today.
-But i don't know better how i do about other patches relevant to config file.
+As we now have separated the getting and setting of the pll parameters
+we can also directly use these new functions in other places too.
 
-Best Regards,
-Jaehoon Chung
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-pll.c | 135 ++++++++++++++++++++++-------------------
+ 1 file changed, 74 insertions(+), 61 deletions(-)
 
-On 09/16/2015 03:40 PM, Shawn Lin wrote:
-> Synopsys DesignWare mobile storage host controller supports three
-> types of transfer mode: pio, internal dma and external dma. However,
-> dw_mmc can only supports pio and internal dma now. Thus some platforms
-> using dw-mshc integrated with generic dma can't work in dma mode. So we
-> submit this patch to achieve it.
-> 
-> And the config option, CONFIG_MMC_DW_IDMAC, was added by Will Newton
-> (commit:f95f3850) for the first version of dw_mmc and never be touched since
-> then. At that time dt-bindings hadn't been introduced into dw_mmc yet means
-> we should select CONFIG_MMC_DW_IDMAC to enable internal dma mode at compile
-> time. Nowadays, device-tree helps us to support a variety of boards with one
-> kernel. That's why we need to remove it and decide the transfer mode by reading
-> dw_mmc's HCON reg at runtime.
-> 
-> This RFC patch needs lots of ACKs. I know it's hard, but it does need someone
-> to make the running.
-> 
-> Patch does the following things:
-> - remove CONFIG_MMC_DW_IDMAC config option
-> - add bindings for edmac used by synopsys-dw-mshc
->   at runtime
-> - add edmac support for synopsys-dw-mshc
-> 
-> Patch is based on next of git://git.linaro.org/people/ulf.hansson/mmc
-> 
-> Test emmc throughput on my platform with edmac support and without edmac support(pio only)
-> iozone -L64 -S32 -azecwI -+n -r4k -r64k -r128k -s1g -i0 -i1 -i2 -f datafile -Rb out.xls > /mnt/result.txt
-> (light cpu loading, Direct IO, fixed line size, all pattern recycle, 1GB data in total)
->  ___________________________________________________________
-> |                   external dma mode                       |
-> |-----------------------------------------------------------|
-> |blksz | Random Read | Random Write | Seq Read   | Seq Write|
-> |-----------------------------------------------------------|
-> |4kB   |  13953kB/s  |    8602kB/s  | 13672kB/s  |  9785kB/s|
-> |-----------------------------------------------------------|
-> |64kB  |  46058kB/s  |   24794kB/s  | 48058kB/s  | 25418kB/s|
-> |-----------------------------------------------------------|
-> |128kB |  57026kB/s  |   35117kB/s  | 57375kB/s  | 35183kB/s|
-> |-----------------------------------------------------------|
->                            VS
->  ___________________________________________________________
-> |                          pio mode                         |
-> |-----------------------------------------------------------|
-> |blksz | Random Read  | Random Write | Seq Read  | Seq Write|
-> |-----------------------------------------------------------|
-> |4kB   |  11720kB/s   |    8644kB/s  | 11549kB/s |  9624kB/s|
-> |-----------------------------------------------------------|
-> |64kB  |  21869kB/s   |   24414kB/s  | 22031kB/s | 27986kB/s|
-> |-----------------------------------------------------------|
-> |128kB |  23718kB/s   |   34495kB/s  | 24698kB/s | 34637kB/s|
-> |-----------------------------------------------------------|
-> 
-> 
-> Changes in v8:
-> - remove trans_mode variable
-> - remove unnecessary dma_ops check
-> - remove unnecessary comment
-> - fix coding style based on latest ulf's next
-> - add Acked-by: Jaehoon Chung <jh80.chung@samsung.com>
->   for HCON's changes
-> 
-> Changes in v7:
-> - rebased on Ulf's next
-> - combine condition state
-> - elaborate more about DMA_INTERFACE
-> - define some macro for DMA_INERFACE value
-> - spilt HCON ops' changes into another patch
-> 
-> Changes in v6:
-> - add trans_mode condition for IDMAC initialization
->   suggested by Heiko
-> - re-test my patch on rk3188 platform and update commit msg
-> - update performance of pio vs edmac in cover letter
-> 
-> Changes in v5:
-> - add the title of cover letter
-> - fix typo of comment
-> - add macro for reading HCON register
-> - add "Acked-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>" for exynos_defconfig patch
-> - add "Acked-by: Vineet Gupta <vgupta@synopsys.com>" for axs10x_defconfig patch
-> - add "Acked-by: Govindraj Raja <govindraj.raja@imgtec.com>" and
->   "Acked-by: Ralf Baechle <ralf@linux-mips.org>" for pistachio_defconfig patch
-> - add "Acked-by: Joachim Eastwood <manabian@gmail.com>" for lpc18xx_defconfig patch
-> - add "Acked-by: Wei Xu <xuwei5@hisilicon.com>" for hisi_defconfig patch
-> - rebase on "https://github.com/jh80chung/dw-mmc.git tags/dw-mmc-for-ulf-v4.2" for merging easily
-> 
-> Changes in v4:
-> - remove "host->trans_mode" and use "host->use_dma" to indicate
->   transfer mode.
-> - remove all bt-bindings' changes since we don't need new properities.
-> - check transfer mode at runtime by reading HCON reg
-> - spilt defconfig changes for each sub-architecture
-> - fix the title of cover letter
-> - reuse some code for reducing code size
-> 
-> Changes in v3:
-> - choose transfer mode at runtime
-> - remove all CONFIG_MMC_DW_IDMAC config option
-> - add supports-idmac property for some platforms
-> 
-> Changes in v2:
-> - Fix typo of dev_info msg
-> - remove unused dmach from declaration of dw_mci_dma_slave
-> 
-> Shawn Lin (10):
->   mmc: dw_mmc: Add external dma interface support
->   mmc: dw_mmc: use macro for HCON register operations
->   Documentation: synopsys-dw-mshc: add bindings for idmac and edmac
->   mips: pistachio_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arc: axs10x_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arm: exynos_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arm: hisi_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arm: lpc18xx_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arm: multi_v7_defconfig: remove CONFIG_MMC_DW_IDMAC
->   arm: zx_defconfig: remove CONFIG_MMC_DW_IDMAC
-> 
->  .../devicetree/bindings/mmc/synopsys-dw-mshc.txt   |  25 ++
->  arch/arc/configs/axs101_defconfig                  |   1 -
->  arch/arc/configs/axs103_defconfig                  |   1 -
->  arch/arc/configs/axs103_smp_defconfig              |   1 -
->  arch/arm/configs/exynos_defconfig                  |   1 -
->  arch/arm/configs/hisi_defconfig                    |   1 -
->  arch/arm/configs/lpc18xx_defconfig                 |   1 -
->  arch/arm/configs/multi_v7_defconfig                |   1 -
->  arch/arm/configs/zx_defconfig                      |   1 -
->  arch/mips/configs/pistachio_defconfig              |   1 -
->  drivers/mmc/host/Kconfig                           |  11 +-
->  drivers/mmc/host/dw_mmc-pltfm.c                    |   2 +
->  drivers/mmc/host/dw_mmc.c                          | 272 +++++++++++++++++----
->  drivers/mmc/host/dw_mmc.h                          |   9 +
->  include/linux/mmc/dw_mmc.h                         |  23 +-
->  15 files changed, 276 insertions(+), 75 deletions(-)
-> 
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 7737a1d..4881eb8 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -126,11 +126,32 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
+ #define RK3066_PLLCON3_PWRDOWN		(1 << 1)
+ #define RK3066_PLLCON3_BYPASS		(1 << 0)
+ 
++static void rockchip_rk3066_pll_get_params(struct rockchip_clk_pll *pll,
++					struct rockchip_pll_rate_table *rate)
++{
++	u32 pllcon;
++
++	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
++	rate->nr = ((pllcon >> RK3066_PLLCON0_NR_SHIFT)
++				& RK3066_PLLCON0_NR_MASK) + 1;
++	rate->no = ((pllcon >> RK3066_PLLCON0_OD_SHIFT)
++				& RK3066_PLLCON0_OD_MASK) + 1;
++
++	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
++	rate->nf = ((pllcon >> RK3066_PLLCON1_NF_SHIFT)
++				& RK3066_PLLCON1_NF_MASK) + 1;
++
++	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(2));
++	rate->nb = ((pllcon >> RK3066_PLLCON2_NB_SHIFT)
++				& RK3066_PLLCON2_NB_MASK) + 1;
++}
++
+ static unsigned long rockchip_rk3066_pll_recalc_rate(struct clk_hw *hw,
+ 						     unsigned long prate)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	u64 nf, nr, no, rate64 = prate;
++	struct rockchip_pll_rate_table cur;
++	u64 rate64 = prate;
+ 	u32 pllcon;
+ 
+ 	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(3));
+@@ -140,53 +161,31 @@ static unsigned long rockchip_rk3066_pll_recalc_rate(struct clk_hw *hw,
+ 		return prate;
+ 	}
+ 
+-	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
+-	nf = (pllcon >> RK3066_PLLCON1_NF_SHIFT) & RK3066_PLLCON1_NF_MASK;
+-
+-	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
+-	nr = (pllcon >> RK3066_PLLCON0_NR_SHIFT) & RK3066_PLLCON0_NR_MASK;
+-	no = (pllcon >> RK3066_PLLCON0_OD_SHIFT) & RK3066_PLLCON0_OD_MASK;
++	rockchip_rk3066_pll_get_params(pll, &cur);
+ 
+-	rate64 *= (nf + 1);
+-	do_div(rate64, nr + 1);
+-	do_div(rate64, no + 1);
++	rate64 *= cur.nf;
++	do_div(rate64, cur.nr);
++	do_div(rate64, cur.no);
+ 
+ 	return (unsigned long)rate64;
+ }
+ 
+-static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+-					unsigned long prate)
++static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
++				const struct rockchip_pll_rate_table *rate)
+ {
+-	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	const struct rockchip_pll_rate_table *rate;
+-	unsigned long old_rate = rockchip_rk3066_pll_recalc_rate(hw, prate);
+-	struct regmap *grf = rockchip_clk_get_grf();
+-	struct clk_mux *pll_mux = &pll->pll_mux;
+ 	const struct clk_ops *pll_mux_ops = pll->pll_mux_ops;
++	struct clk_mux *pll_mux = &pll->pll_mux;
++	struct rockchip_pll_rate_table cur;
+ 	int rate_change_remuxed = 0;
+ 	int cur_parent;
+ 	int ret;
+ 
+-	if (IS_ERR(grf)) {
+-		pr_debug("%s: grf regmap not available, aborting rate change\n",
+-			 __func__);
+-		return PTR_ERR(grf);
+-	}
+-
+-	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n",
+-		 __func__, clk_hw_get_name(hw), old_rate, drate, prate);
+-
+-	/* Get required rate settings from table */
+-	rate = rockchip_get_pll_settings(pll, drate);
+-	if (!rate) {
+-		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
+-			drate, clk_hw_get_name(hw));
+-		return -EINVAL;
+-	}
+-
+ 	pr_debug("%s: rate settings for %lu (nr, no, nf): (%d, %d, %d)\n",
+ 		 __func__, rate->rate, rate->nr, rate->no, rate->nf);
+ 
++	rockchip_rk3066_pll_get_params(pll, &cur);
++	cur.rate = 0;
++
+ 	cur_parent = pll_mux_ops->get_parent(&pll_mux->hw);
+ 	if (cur_parent == PLL_MODE_NORM) {
+ 		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
+@@ -219,9 +218,9 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 	/* wait for the pll to lock */
+ 	ret = rockchip_pll_wait_lock(pll);
+ 	if (ret) {
+-		pr_warn("%s: pll did not lock, trying to restore old rate %lu\n",
+-			__func__, old_rate);
+-		rockchip_rk3066_pll_set_rate(hw, old_rate, prate);
++		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
++			__func__);
++		rockchip_rk3066_pll_set_params(pll, &cur);
+ 	}
+ 
+ 	if (rate_change_remuxed)
+@@ -230,6 +229,34 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 	return ret;
+ }
+ 
++static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
++					unsigned long prate)
++{
++	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
++	const struct rockchip_pll_rate_table *rate;
++	unsigned long old_rate = rockchip_rk3066_pll_recalc_rate(hw, prate);
++	struct regmap *grf = rockchip_clk_get_grf();
++
++	if (IS_ERR(grf)) {
++		pr_debug("%s: grf regmap not available, aborting rate change\n",
++			 __func__);
++		return PTR_ERR(grf);
++	}
++
++	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n",
++		 __func__, clk_hw_get_name(hw), old_rate, drate, prate);
++
++	/* Get required rate settings from table */
++	rate = rockchip_get_pll_settings(pll, drate);
++	if (!rate) {
++		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
++			drate, clk_hw_get_name(hw));
++		return -EINVAL;
++	}
++
++	return rockchip_rk3066_pll_set_params(pll, rate);
++}
++
+ static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+@@ -261,9 +288,8 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	const struct rockchip_pll_rate_table *rate;
+-	unsigned int nf, nr, no, nb;
++	struct rockchip_pll_rate_table cur;
+ 	unsigned long drate;
+-	u32 pllcon;
+ 
+ 	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+ 		return;
+@@ -275,34 +301,21 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ 	if (!rate)
+ 		return;
+ 
+-	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
+-	nr = ((pllcon >> RK3066_PLLCON0_NR_SHIFT) & RK3066_PLLCON0_NR_MASK) + 1;
+-	no = ((pllcon >> RK3066_PLLCON0_OD_SHIFT) & RK3066_PLLCON0_OD_MASK) + 1;
+-
+-	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
+-	nf = ((pllcon >> RK3066_PLLCON1_NF_SHIFT) & RK3066_PLLCON1_NF_MASK) + 1;
+-
+-	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(2));
+-	nb = ((pllcon >> RK3066_PLLCON2_NB_SHIFT) & RK3066_PLLCON2_NB_MASK) + 1;
++	rockchip_rk3066_pll_get_params(pll, &cur);
+ 
+ 	pr_debug("%s: pll %s@%lu: nr (%d:%d); no (%d:%d); nf(%d:%d), nb(%d:%d)\n",
+-		 __func__, clk_hw_get_name(hw), drate, rate->nr, nr,
+-		rate->no, no, rate->nf, nf, rate->nb, nb);
+-	if (rate->nr != nr || rate->no != no || rate->nf != nf
+-					     || rate->nb != nb) {
+-		struct clk_hw *parent = clk_hw_get_parent(hw);
+-		unsigned long prate;
+-
+-		if (!parent) {
+-			pr_warn("%s: parent of %s not available\n",
+-				__func__, clk_hw_get_name(hw));
++		 __func__, clk_hw_get_name(hw), drate, rate->nr, cur.nr,
++		 rate->no, cur.no, rate->nf, cur.nf, rate->nb, cur.nb);
++	if (rate->nr != cur.nr || rate->no != cur.no || rate->nf != cur.nf
++						     || rate->nb != cur.nb) {
++		struct regmap *grf = rockchip_clk_get_grf();
++
++		if (IS_ERR(grf))
+ 			return;
+-		}
+ 
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, clk_hw_get_name(hw));
+-		prate = clk_hw_get_rate(parent);
+-		rockchip_rk3066_pll_set_rate(hw, drate, prate);
++		rockchip_rk3066_pll_set_params(pll, rate);
+ 	}
+ }
+ 
+-- 
+2.5.3
+
 
