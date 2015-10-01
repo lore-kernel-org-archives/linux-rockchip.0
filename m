@@ -1,233 +1,106 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [PATCH] clk: rockchip: don't use clk_ APIs in the pll init-callback
-Date: Thu, 01 Oct 2015 11:38:35 +0200
-Message-ID: <2341478.8ucNaho7mA@diego>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v2 3/8] mmc: core: Add mmc_regulator_set_vqmmc()
+Date: Thu, 1 Oct 2015 11:54:24 +0200
+Message-ID: <CAPDyKFpis8XnvrppHq7q_7DQeN2UiEpykNTJ=1iJJ9AGOHTW6Q@mail.gmail.com>
+References: <1443622064-14362-1-git-send-email-heiko@sntech.de>
+	<1443622064-14362-4-git-send-email-heiko@sntech.de>
+	<CAPDyKFrTNF6RUWs6UdBGoyrp+zzrLf8qAHgBL4xV6fjK_HM_yw@mail.gmail.com>
+	<17200614.QxCe8zAb7I@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <17200614.QxCe8zAb7I@diego>
 Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "tgih.jun@samsung.com" <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Doug Anderson <dianders@chromium.org>, Alexandru Stan <amstan@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Separate the update of pll registers from the actual set_rate function
-so that the init callback does not need to access clk-API functions.
+On 30 September 2015 at 16:55, Heiko St=C3=BCbner <heiko@sntech.de> wro=
+te:
+> Am Mittwoch, 30. September 2015, 16:42:05 schrieb Ulf Hansson:
+>> On 30 September 2015 at 16:07, Heiko Stuebner <heiko@sntech.de> wrot=
+e:
+>> > From: Douglas Anderson <dianders@chromium.org>
+>> >
+>> > This adds logic to the MMC core to set VQMMC.  This is expected to=
+ be
+>> > called by MMC drivers like dw_mmc as part of (or instead of) their
+>> > start_signal_voltage_switch() callback.
+>> >
+>> > A few notes:
+>> >
+>> > * When setting the signal voltage to 3.3V we do our best to make V=
+QMMC
+>> >
+>> >   and VMMC match.  It's been reported that this makes some old car=
+ds
+>> >   happy since they were tested back in the day before UHS when VQM=
+MC
+>> >   and VMMC were provided by the same regulator.  A nice side effec=
+t of
+>> >   this is that we don't end up on the hairy edge of VQMMC (2.7V),
+>> >   which some EEs claim is a little too close to the minimum for
+>> >   comfort.
+>> >   This is done in two steps. At first we try to find a VQMMC withi=
+n
+>> >   a 0.3V tolerance of VMMC and if this is not supported by the
+>> >   supplying regulator we try to find a suitable voltage within the
+>> >   whole 2.7V-3.6V area of the spec.
+>> >
+>> > * The two step approach is currently necessary, as the used
+>> >
+>> >   regulator_set_voltage_triplet(min, target, max) uses a simple
+>> >
+>> >   implementation that just tries two basic steps:
+>> >         regulator_set_voltage(target, max);
+>> >         regulator_set_voltage(min, target);
+>> >
+>> >   So with only one step with 2.7-3.6V borders, if a suitable volta=
+ge
+>> >   is a bit below VMMC, we would directly get the lowest 2.7V
+>> >   which some boards (like Rockchips) don't like at all.
+>> >
+>> > * When setting the signal voltage to 1.8V or 1.2V we aim for that
+>> >
+>> >   specific voltage instead of picking the lowest one in the range.
+>> >
+>> > * We very purposely don't print errors in mmc_regulator_set_vqmmc(=
+).
+>> >
+>> >   There are cases where the MMC core will try several different
+>> >   voltages and we don't want to pollute the logs.
+>> >
+>> > Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+>>
+>> This looks good to me!
+>
+> very cool :-)
+>
+>
+>> Once all are happy with the patches, can we take the mmc patches via
+>> my mmc tree or does it all have to go together?
+>
+> The clock changes of course only touch internals of the phase-clocks,=
+ so
+> should have no problem going through another tree.
 
-As we now have separated the getting and setting of the pll parameters
-we can also directly use these new functions in other places too.
+What happens if I take mmc and dt changes, wouldn't I need the clock
+patches as well?
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-pll.c | 135 ++++++++++++++++++++++-------------------
- 1 file changed, 74 insertions(+), 61 deletions(-)
+>
+> For the devicetree part I'm unsure. If the boards enable the tuning-r=
+elated
+> settings without the new voltage handling, 2.7V gets set on all Rockc=
+hip
+> boards which doesn't work on those at all.
+>
+> So either the dts patches would need to go into your tree, I would ne=
+ed a
+> stable branch or we could simply postpone dts changes for the next cy=
+cle.
+>
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 7737a1d..4881eb8 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -126,11 +126,32 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- #define RK3066_PLLCON3_PWRDOWN		(1 << 1)
- #define RK3066_PLLCON3_BYPASS		(1 << 0)
- 
-+static void rockchip_rk3066_pll_get_params(struct rockchip_clk_pll *pll,
-+					struct rockchip_pll_rate_table *rate)
-+{
-+	u32 pllcon;
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
-+	rate->nr = ((pllcon >> RK3066_PLLCON0_NR_SHIFT)
-+				& RK3066_PLLCON0_NR_MASK) + 1;
-+	rate->no = ((pllcon >> RK3066_PLLCON0_OD_SHIFT)
-+				& RK3066_PLLCON0_OD_MASK) + 1;
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
-+	rate->nf = ((pllcon >> RK3066_PLLCON1_NF_SHIFT)
-+				& RK3066_PLLCON1_NF_MASK) + 1;
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(2));
-+	rate->nb = ((pllcon >> RK3066_PLLCON2_NB_SHIFT)
-+				& RK3066_PLLCON2_NB_MASK) + 1;
-+}
-+
- static unsigned long rockchip_rk3066_pll_recalc_rate(struct clk_hw *hw,
- 						     unsigned long prate)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--	u64 nf, nr, no, rate64 = prate;
-+	struct rockchip_pll_rate_table cur;
-+	u64 rate64 = prate;
- 	u32 pllcon;
- 
- 	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(3));
-@@ -140,53 +161,31 @@ static unsigned long rockchip_rk3066_pll_recalc_rate(struct clk_hw *hw,
- 		return prate;
- 	}
- 
--	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
--	nf = (pllcon >> RK3066_PLLCON1_NF_SHIFT) & RK3066_PLLCON1_NF_MASK;
--
--	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
--	nr = (pllcon >> RK3066_PLLCON0_NR_SHIFT) & RK3066_PLLCON0_NR_MASK;
--	no = (pllcon >> RK3066_PLLCON0_OD_SHIFT) & RK3066_PLLCON0_OD_MASK;
-+	rockchip_rk3066_pll_get_params(pll, &cur);
- 
--	rate64 *= (nf + 1);
--	do_div(rate64, nr + 1);
--	do_div(rate64, no + 1);
-+	rate64 *= cur.nf;
-+	do_div(rate64, cur.nr);
-+	do_div(rate64, cur.no);
- 
- 	return (unsigned long)rate64;
- }
- 
--static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
--					unsigned long prate)
-+static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
-+				const struct rockchip_pll_rate_table *rate)
- {
--	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--	const struct rockchip_pll_rate_table *rate;
--	unsigned long old_rate = rockchip_rk3066_pll_recalc_rate(hw, prate);
--	struct regmap *grf = rockchip_clk_get_grf();
--	struct clk_mux *pll_mux = &pll->pll_mux;
- 	const struct clk_ops *pll_mux_ops = pll->pll_mux_ops;
-+	struct clk_mux *pll_mux = &pll->pll_mux;
-+	struct rockchip_pll_rate_table cur;
- 	int rate_change_remuxed = 0;
- 	int cur_parent;
- 	int ret;
- 
--	if (IS_ERR(grf)) {
--		pr_debug("%s: grf regmap not available, aborting rate change\n",
--			 __func__);
--		return PTR_ERR(grf);
--	}
--
--	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n",
--		 __func__, clk_hw_get_name(hw), old_rate, drate, prate);
--
--	/* Get required rate settings from table */
--	rate = rockchip_get_pll_settings(pll, drate);
--	if (!rate) {
--		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
--			drate, clk_hw_get_name(hw));
--		return -EINVAL;
--	}
--
- 	pr_debug("%s: rate settings for %lu (nr, no, nf): (%d, %d, %d)\n",
- 		 __func__, rate->rate, rate->nr, rate->no, rate->nf);
- 
-+	rockchip_rk3066_pll_get_params(pll, &cur);
-+	cur.rate = 0;
-+
- 	cur_parent = pll_mux_ops->get_parent(&pll_mux->hw);
- 	if (cur_parent == PLL_MODE_NORM) {
- 		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
-@@ -219,9 +218,9 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
- 	/* wait for the pll to lock */
- 	ret = rockchip_pll_wait_lock(pll);
- 	if (ret) {
--		pr_warn("%s: pll did not lock, trying to restore old rate %lu\n",
--			__func__, old_rate);
--		rockchip_rk3066_pll_set_rate(hw, old_rate, prate);
-+		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
-+			__func__);
-+		rockchip_rk3066_pll_set_params(pll, &cur);
- 	}
- 
- 	if (rate_change_remuxed)
-@@ -230,6 +229,34 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
- 	return ret;
- }
- 
-+static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
-+					unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	const struct rockchip_pll_rate_table *rate;
-+	unsigned long old_rate = rockchip_rk3066_pll_recalc_rate(hw, prate);
-+	struct regmap *grf = rockchip_clk_get_grf();
-+
-+	if (IS_ERR(grf)) {
-+		pr_debug("%s: grf regmap not available, aborting rate change\n",
-+			 __func__);
-+		return PTR_ERR(grf);
-+	}
-+
-+	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n",
-+		 __func__, clk_hw_get_name(hw), old_rate, drate, prate);
-+
-+	/* Get required rate settings from table */
-+	rate = rockchip_get_pll_settings(pll, drate);
-+	if (!rate) {
-+		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
-+			drate, clk_hw_get_name(hw));
-+		return -EINVAL;
-+	}
-+
-+	return rockchip_rk3066_pll_set_params(pll, rate);
-+}
-+
- static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -261,9 +288,8 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
- 	const struct rockchip_pll_rate_table *rate;
--	unsigned int nf, nr, no, nb;
-+	struct rockchip_pll_rate_table cur;
- 	unsigned long drate;
--	u32 pllcon;
- 
- 	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
- 		return;
-@@ -275,34 +301,21 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
- 	if (!rate)
- 		return;
- 
--	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(0));
--	nr = ((pllcon >> RK3066_PLLCON0_NR_SHIFT) & RK3066_PLLCON0_NR_MASK) + 1;
--	no = ((pllcon >> RK3066_PLLCON0_OD_SHIFT) & RK3066_PLLCON0_OD_MASK) + 1;
--
--	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(1));
--	nf = ((pllcon >> RK3066_PLLCON1_NF_SHIFT) & RK3066_PLLCON1_NF_MASK) + 1;
--
--	pllcon = readl_relaxed(pll->reg_base + RK3066_PLLCON(2));
--	nb = ((pllcon >> RK3066_PLLCON2_NB_SHIFT) & RK3066_PLLCON2_NB_MASK) + 1;
-+	rockchip_rk3066_pll_get_params(pll, &cur);
- 
- 	pr_debug("%s: pll %s@%lu: nr (%d:%d); no (%d:%d); nf(%d:%d), nb(%d:%d)\n",
--		 __func__, clk_hw_get_name(hw), drate, rate->nr, nr,
--		rate->no, no, rate->nf, nf, rate->nb, nb);
--	if (rate->nr != nr || rate->no != no || rate->nf != nf
--					     || rate->nb != nb) {
--		struct clk_hw *parent = clk_hw_get_parent(hw);
--		unsigned long prate;
--
--		if (!parent) {
--			pr_warn("%s: parent of %s not available\n",
--				__func__, clk_hw_get_name(hw));
-+		 __func__, clk_hw_get_name(hw), drate, rate->nr, cur.nr,
-+		 rate->no, cur.no, rate->nf, cur.nf, rate->nb, cur.nb);
-+	if (rate->nr != cur.nr || rate->no != cur.no || rate->nf != cur.nf
-+						     || rate->nb != cur.nb) {
-+		struct regmap *grf = rockchip_clk_get_grf();
-+
-+		if (IS_ERR(grf))
- 			return;
--		}
- 
- 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
- 			 __func__, clk_hw_get_name(hw));
--		prate = clk_hw_get_rate(parent);
--		rockchip_rk3066_pll_set_rate(hw, drate, prate);
-+		rockchip_rk3066_pll_set_params(pll, rate);
- 	}
- }
- 
--- 
-2.5.3
-
-
+Kind regards
+Uffe
