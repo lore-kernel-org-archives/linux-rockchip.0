@@ -1,56 +1,102 @@
-From: Luis de Bethencourt <luisbg@osg.samsung.com>
-Subject: [PATCH v2] PM / AVS: rockchip-io: Fix module autoload for OF platform driver
-Date: Fri,  2 Oct 2015 15:27:57 +0100
-Message-ID: <1443796077-24722-1-git-send-email-luisbg@osg.samsung.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2] drm/rockchip: import dma_buf to gem
+Date: Fri, 02 Oct 2015 16:33:56 +0200
+Message-ID: <10058594.7xF1CeL72y@diego>
+References: <1435282038-23778-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, rafael.j.wysocki@intel.com
-Cc: khilman@kernel.org, nm@ti.com, heiko@sntech.de, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Luis de Bethencourt <luisbg@osg.samsung.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1435282038-23778-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: zwl@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, xw@rock-chips.com, dkm@rock-chips.com, sandy.huang@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This platform driver has a OF device ID table but the OF module
-alias information is not created so module autoloading won't work.
-
-Signed-off-by: Luis de Bethencourt <luisbg@osg.samsung.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-
-Hello,
-
-Sending a second version to add Rafael Wysocki in the to-list as
-suggested by Heiko St=C3=BCbner.
-https://lkml.org/lkml/2015/10/2/431
-
-This patch adds the missing MODULE_DEVICE_TABLE() for OF to export
-that information so modules have the correct aliases built-in and
-autoloading works correctly.
-
-A longer explanation by Javier Canillas can be found here:
-https://lkml.org/lkml/2015/7/30/519
-
-Thanks,
-Luis
-
- drivers/power/avs/rockchip-io-domain.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs=
-/rockchip-io-domain.c
-index 2e30002..8099456 100644
---- a/drivers/power/avs/rockchip-io-domain.c
-+++ b/drivers/power/avs/rockchip-io-domain.c
-@@ -271,6 +271,7 @@ static const struct of_device_id rockchip_iodomain_=
-match[] =3D {
- 	},
- 	{ /* sentinel */ },
- };
-+MODULE_DEVICE_TABLE(of, rockchip_iodomain_match);
-=20
- static int rockchip_iodomain_probe(struct platform_device *pdev)
- {
---=20
-2.5.1
-
+SGkgTWFyaywKCkFtIEZyZWl0YWcsIDI2LiBKdW5pIDIwMTUsIDA5OjI3OjE4IHNjaHJpZWIgTWFy
+ayBZYW86Cj4gV2Ugd2FudCB0byBkaXNwbGF5IGEgYnVmZmVyIGFsbG9jYXRlZCBieSBvdGhlciBk
+cml2ZXIsIG5lZWQgaW1wb3J0Cj4gdGhlIGJ1ZmZlciB0byBnZW0uCj4gCj4gU2lnbmVkLW9mZi1i
+eTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKVGhpcyBsb29rcyBpbnRlcmVz
+dGluZyAuLi4gZG8geW91IHdhbnQgdG8gZm9sbG93IHVwIG9uIGl0PwoKCkhlaWtvCgo+IC0tLQo+
+IENoYW5nZXMgaW4gdjI6Cj4gQWR2aWNlZCBieSBSdXNzZWxsIEtpbmcKPiAtIGNoZWNrIHNndC1u
+ZW50cyA9PSAxIHdoZW4gZ2V0IGlvdmEgZnJvbSBzY2F0dGVybGlzdAo+IC0gcmVtb3ZlIHVudXNl
+ZCBkbWFfbWFwX3NnL2RtYV91bm1hcF9zZywgZG1hX2J1Zl9tYXBfYXR0YWNobWVudC0+bWFwX2Rt
+YV9idWYKPiBzaG91bGQgZG8gdGhlIGRtYV9tYXAKPiAKPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8ICAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgICA0MAo+ICsrKysrKysrKysrKysrKysrKysrKysrKyst
+LSBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oIHwgIAo+ICA1ICsr
+Ky0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+
+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
+di5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGluZGV4
+IDM5NjIxNzYuLjkwMDFhOTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmMKPiBAQCAtMjg3LDYgKzI4Nyw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2Ry
+aXZlciByb2NrY2hpcF9kcm1fZHJpdmVyID0gewo+ICAJLnByaW1lX2hhbmRsZV90b19mZAk9IGRy
+bV9nZW1fcHJpbWVfaGFuZGxlX3RvX2ZkLAo+ICAJLnByaW1lX2ZkX3RvX2hhbmRsZQk9IGRybV9n
+ZW1fcHJpbWVfZmRfdG9faGFuZGxlLAo+ICAJLmdlbV9wcmltZV9pbXBvcnQJPSBkcm1fZ2VtX3By
+aW1lX2ltcG9ydCwKPiArCS5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlID0gcm9ja2NoaXBfZ2Vt
+X3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPiAgCS5nZW1fcHJpbWVfZXhwb3J0CT0gZHJtX2dlbV9w
+cmltZV9leHBvcnQsCj4gIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9IHJvY2tjaGlwX2dlbV9w
+cmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2VtX3ByaW1lX3ZtYXAJCT0gcm9ja2NoaXBfZ2VtX3By
+aW1lX3ZtYXAsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZ2VtLmMKPiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2Vt
+LmMgaW5kZXggZWIyMjgyYy4uZThjNGQ0ZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0xOCw2ICsxOCw3IEBACj4gICNpbmNsdWRlIDxk
+cm0vZHJtX3ZtYV9tYW5hZ2VyLmg+Cj4gCj4gICNpbmNsdWRlIDxsaW51eC9kbWEtYXR0cnMuaD4K
+PiArI2luY2x1ZGUgPGxpbnV4L2RtYS1idWYuaD4KPiAKPiAgI2luY2x1ZGUgInJvY2tjaGlwX2Ry
+bV9kcnYuaCIKPiAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0uaCIKPiBAQCAtMTA1LDYgKzEw
+NiwzNiBAQCBpbnQgcm9ja2NoaXBfZ2VtX21tYXAoc3RydWN0IGZpbGUgKmZpbHAsIHN0cnVjdAo+
+IHZtX2FyZWFfc3RydWN0ICp2bWEpIHJldHVybiByZXQ7Cj4gIH0KPiAKPiArc3RydWN0IGRybV9n
+ZW1fb2JqZWN0ICoKPiArcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZShzdHJ1Y3Qg
+ZHJtX2RldmljZSAqZHJtLAo+ICsJCQkJICAgc3RydWN0IGRtYV9idWZfYXR0YWNobWVudCAqYXR0
+YWNoLAo+ICsJCQkJICAgc3RydWN0IHNnX3RhYmxlICpzZ3QpCj4gK3sKPiArCXN0cnVjdCByb2Nr
+Y2hpcF9nZW1fb2JqZWN0ICpya19vYmo7Cj4gKwlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iajsK
+PiArCj4gKwkvKgo+ICsJICogVG9kbzogb25seSBzdXBwb3J0IGNvbnRpbnVvdXMgYnVmZmVyIG5v
+dywgcGxhbiB0byBmb3VuZCBhIG1ldGhvZAo+ICsJICogdG8gaW1wb3J0IG5vbiBjb250aW51b3Vz
+IHdpdGggaW9tbXUuCj4gKwkgKi8KPiArCWlmIChzZ3QtPm5lbnRzICE9IDEpCj4gKwkJcmV0dXJu
+IEVSUl9QVFIoLUVJTlZBTCk7Cj4gKwo+ICsJcmtfb2JqID0ga3phbGxvYyhzaXplb2YoKnJrX29i
+aiksIEdGUF9LRVJORUwpOwo+ICsJaWYgKCFya19vYmopCj4gKwkJcmV0dXJuIEVSUl9QVFIoLUVO
+T01FTSk7Cj4gKwo+ICsJb2JqID0gJnJrX29iai0+YmFzZTsKPiArCj4gKwlkcm1fZ2VtX3ByaXZh
+dGVfb2JqZWN0X2luaXQoZHJtLCBvYmosIGF0dGFjaC0+ZG1hYnVmLT5zaXplKTsKPiArCj4gKwly
+a19vYmotPmRtYV9hZGRyID0gc2dfZG1hX2FkZHJlc3Moc2d0LT5zZ2wpOwo+ICsJcmtfb2JqLT5z
+Z3QgPSBzZ3Q7Cj4gKwlvYmotPnNpemUgPSBzZ19kbWFfbGVuKHNndC0+c2dsKTsKPiArCj4gKwly
+ZXR1cm4gb2JqOwo+ICt9Cj4gKwo+ICBzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqCj4gIAly
+b2NrY2hpcF9nZW1fY3JlYXRlX29iamVjdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCB1bnNpZ25l
+ZCBpbnQgc2l6ZSwKPiAgCQkJCSAgIGJvb2wgYWxsb2Nfa21hcCkKPiBAQCAtMTQyLDExICsxNzMs
+MTQgQEAgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9vYmplY3Qoc3RydWN0IGRybV9nZW1fb2JqZWN0
+Cj4gKm9iaikgewo+ICAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iajsKPiAKPiAt
+CWRybV9nZW1fZnJlZV9tbWFwX29mZnNldChvYmopOwo+IC0KPiAgCXJrX29iaiA9IHRvX3JvY2tj
+aGlwX29iaihvYmopOwo+IAo+IC0Jcm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHJrX29iaik7Cj4gKwlp
+ZiAob2JqLT5pbXBvcnRfYXR0YWNoKSB7Cj4gKwkJZHJtX3ByaW1lX2dlbV9kZXN0cm95KG9iaiwg
+cmtfb2JqLT5zZ3QpOwo+ICsJfSBlbHNlIHsKPiArCQlkcm1fZ2VtX2ZyZWVfbW1hcF9vZmZzZXQo
+b2JqKTsKPiArCQlyb2NrY2hpcF9nZW1fZnJlZV9idWYocmtfb2JqKTsKPiArCX0KPiAKPiAgCWtm
+cmVlKHJrX29iaik7Cj4gIH0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9nZW0uaAo+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV9nZW0uaCBpbmRleCBhZDIyNjE4Li45ZmQ1OGUzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmgKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5oCj4gQEAgLTIxLDYgKzIxLDcgQEAgc3RydWN0
+IHJvY2tjaGlwX2dlbV9vYmplY3Qgewo+ICAJc3RydWN0IGRybV9nZW1fb2JqZWN0IGJhc2U7Cj4g
+IAl1bnNpZ25lZCBpbnQgZmxhZ3M7Cj4gCj4gKwlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKPiAgCXZv
+aWQgKmt2YWRkcjsKPiAgCWRtYV9hZGRyX3QgZG1hX2FkZHI7Cj4gIAlzdHJ1Y3QgZG1hX2F0dHJz
+IGRtYV9hdHRyczsKPiBAQCAtMjgsOCArMjksMTAgQEAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmpl
+Y3Qgewo+IAo+ICBzdHJ1Y3Qgc2dfdGFibGUgKnJvY2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFi
+bGUoc3RydWN0IGRybV9nZW1fb2JqZWN0Cj4gKm9iaik7IHN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
+Cj4gLXJvY2tjaGlwX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUoc3RydWN0IGRybV9kZXZpY2Ug
+KmRldiwgc2l6ZV90IHNpemUsCj4gK3JvY2tjaGlwX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUo
+c3RydWN0IGRybV9kZXZpY2UgKmRybSwKPiArCQkJCSAgIHN0cnVjdCBkbWFfYnVmX2F0dGFjaG1l
+bnQgKmF0dGFjaCwKPiAgCQkJCSAgIHN0cnVjdCBzZ190YWJsZSAqc2d0KTsKPiArCj4gIHZvaWQg
+KnJvY2tjaGlwX2dlbV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKPiAg
+dm9pZCByb2NrY2hpcF9nZW1fcHJpbWVfdnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2Jq
+LCB2b2lkICp2YWRkcik7CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
