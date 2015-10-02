@@ -1,85 +1,56 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] clk: add flag for clocks that need to be enabled on rate changes
-Date: Fri, 02 Oct 2015 16:12:13 +0200
-Message-ID: <3137165.kmu68gRS44@diego>
-References: <1929669.AsgMSusdJb@phil>
+From: Luis de Bethencourt <luisbg@osg.samsung.com>
+Subject: [PATCH v2] PM / AVS: rockchip-io: Fix module autoload for OF platform driver
+Date: Fri,  2 Oct 2015 15:27:57 +0100
+Message-ID: <1443796077-24722-1-git-send-email-luisbg@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1929669.AsgMSusdJb@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, rafael.j.wysocki@intel.com
+Cc: khilman@kernel.org, nm@ti.com, heiko@sntech.de, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Luis de Bethencourt <luisbg@osg.samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+This platform driver has a OF device ID table but the OF module
+alias information is not created so module autoloading won't work.
 
-any comment on these 3 patches?
+Signed-off-by: Luis de Bethencourt <luisbg@osg.samsung.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
 
-Thanks
-Heiko
+Hello,
 
-Am Freitag, 21. August 2015, 19:46:31 schrieb Heiko Stuebner:
-> Some clocks need to be enabled to accept rate changes. This patch adds a
-> new flag CLK_SET_RATE_UNGATE that lets clk_change_rate enable the clock
-> before trying to change the rate and disable it again afterwards.
-> This of course doesn't effect clocks that are already running at that
-> point, as their refcount will only temporarily increase.
-> 
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  drivers/clk/clk.c            | 18 ++++++++++++++++++
->  include/linux/clk-provider.h |  1 +
->  2 files changed, 19 insertions(+)
-> 
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index 28cd923..564f11e 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -1438,6 +1438,15 @@ static void clk_change_rate(struct clk_core *core)
->  	else if (core->parent)
->  		best_parent_rate = core->parent->rate;
-> 
-> +	if (core->flags & CLK_SET_RATE_UNGATE) {
-> +		unsigned long flags;
-> +
-> +		clk_core_prepare(core);
-> +		flags = clk_enable_lock();
-> +		clk_core_enable(core);
-> +		clk_enable_unlock(flags);
-> +	}
-> +
->  	if (core->new_parent && core->new_parent != core->parent) {
->  		old_parent = __clk_set_parent_before(core, core->new_parent);
->  		trace_clk_set_parent(core, core->new_parent);
-> @@ -1464,6 +1473,15 @@ static void clk_change_rate(struct clk_core *core)
-> 
->  	core->rate = clk_recalc(core, best_parent_rate);
-> 
-> +	if (core->flags & CLK_SET_RATE_UNGATE) {
-> +		unsigned long flags;
-> +
-> +		flags = clk_enable_lock();
-> +		clk_core_disable(core);
-> +		clk_enable_unlock(flags);
-> +		clk_core_unprepare(core);
-> +	}
-> +
->  	if (core->notifier_count && old_rate != core->rate)
->  		__clk_notify(core, POST_RATE_CHANGE, old_rate, core->rate);
-> 
-> diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-> index 3ecc07d..21e0025 100644
-> --- a/include/linux/clk-provider.h
-> +++ b/include/linux/clk-provider.h
-> @@ -31,6 +31,7 @@
->  #define CLK_SET_RATE_NO_REPARENT BIT(7) /* don't re-parent on rate change
-> */ #define CLK_GET_ACCURACY_NOCACHE BIT(8) /* do not use the cached clk
-> accuracy */ #define CLK_RECALC_NEW_RATES	BIT(9) /* recalc rates after
-> notifications */ +#define CLK_SET_RATE_UNGATE	BIT(10) /* clock needs to run
-> to set rate */
-> 
->  struct clk;
->  struct clk_hw;
+Sending a second version to add Rafael Wysocki in the to-list as
+suggested by Heiko St=C3=BCbner.
+https://lkml.org/lkml/2015/10/2/431
+
+This patch adds the missing MODULE_DEVICE_TABLE() for OF to export
+that information so modules have the correct aliases built-in and
+autoloading works correctly.
+
+A longer explanation by Javier Canillas can be found here:
+https://lkml.org/lkml/2015/7/30/519
+
+Thanks,
+Luis
+
+ drivers/power/avs/rockchip-io-domain.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs=
+/rockchip-io-domain.c
+index 2e30002..8099456 100644
+--- a/drivers/power/avs/rockchip-io-domain.c
++++ b/drivers/power/avs/rockchip-io-domain.c
+@@ -271,6 +271,7 @@ static const struct of_device_id rockchip_iodomain_=
+match[] =3D {
+ 	},
+ 	{ /* sentinel */ },
+ };
++MODULE_DEVICE_TABLE(of, rockchip_iodomain_match);
+=20
+ static int rockchip_iodomain_probe(struct platform_device *pdev)
+ {
+--=20
+2.5.1
 
