@@ -1,51 +1,36 @@
-From: Vinod Koul <vinod.koul@intel.com>
-Subject: Re: [PATCH v5 06/10] dmaengine: add API for getting dma controller's
- quirk
-Date: Mon, 5 Oct 2015 16:37:47 +0100
-Message-ID: <20151005153746.GG13501@vkoul-mobl.iind.intel.com>
-References: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
- <1442188139-6017-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH] ASoC: rockchip: namespace rockchip i2s module name
+Date: Mon,  5 Oct 2015 21:03:39 +0200
+Message-ID: <1444071819-11521-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1442188139-6017-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Mark Brown <broonie@kernel.org>, Doug Anderson <dianders@chromium.org>, Olof Johansson <olofj@lixom.net>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, linux-spi@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Sep 14, 2015 at 07:48:59AM +0800, Shawn Lin wrote:
-> Add dmaengine_get_quirks API for peripheral devices to query
-> quirks if they need it to make special workaround due to broken
-> dma controller design.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> Changes in v1: None
-> 
->  include/linux/dmaengine.h | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/include/linux/dmaengine.h b/include/linux/dmaengine.h
-> index e2f5eb4..5174ca4 100644
-> --- a/include/linux/dmaengine.h
-> +++ b/include/linux/dmaengine.h
-> @@ -704,6 +704,7 @@ struct dma_device {
->  
->  	int (*device_config)(struct dma_chan *chan,
->  			     struct dma_slave_config *config);
-> +	int (*device_get_quirks)(struct dma_chan *chan);
+Change the rockchip i2s object name (and thus module name) from the
+rather generic snd-soc-i2s to the more specific snd-soc-rockchip-i2s
 
-And why do we want to expose this to users? THis doesnt seem right!
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 
-A quirk may exists but should be handled inside the controller driver and do
-appropriate action. You don't tell users or expect them to handle these
+---
 
+ sound/soc/rockchip/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/rockchip/Makefile b/sound/soc/rockchip/Makefile
+index 1bc1dc3..e9ba558 100644
+--- a/sound/soc/rockchip/Makefile
++++ b/sound/soc/rockchip/Makefile
+@@ -1,7 +1,7 @@
+ # ROCKCHIP Platform Support
+-snd-soc-i2s-objs := rockchip_i2s.o
++snd-soc-rockchip-i2s-objs := rockchip_i2s.o
+ 
+-obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) += snd-soc-i2s.o
++obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) += snd-soc-rockchip-i2s.o
+ 
+ snd-soc-rockchip-max98090-objs := rockchip_max98090.o
+ snd-soc-rockchip-rt5645-objs := rockchip_rt5645.o
 -- 
-~Vinod
+2.6.0
