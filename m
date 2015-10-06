@@ -1,34 +1,74 @@
-From: Fabio Estevam <festevam@gmail.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
 Subject: Re: [PATCH 1/9] drm: bridge/dw_hdmi-ahb-audio: add audio driver
-Date: Tue, 6 Oct 2015 15:07:40 -0300
-Message-ID: <CAOMZO5COgoGU-3YNpnmSkctHMRDJ3=DuKc82Wb5zTTX7Bx2jNw@mail.gmail.com>
+Date: Tue, 6 Oct 2015 19:18:07 +0100
+Message-ID: <20151006181806.GS21513@n2100.arm.linux.org.uk>
 References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
-	<E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+ <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+ <CAOMZO5COgoGU-3YNpnmSkctHMRDJ3=DuKc82Wb5zTTX7Bx2jNw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: linux-rockchip@lists.infradead.org, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Fabio Estevam <fabio.estevam@freescale.com>, Jaroslav Kysela <perex@perex.cz>, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <CAOMZO5COgoGU-3YNpnmSkctHMRDJ3=DuKc82Wb5zTTX7Bx2jNw@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Fabio Estevam <festevam@gmail.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, linux-kernel <linux-kernel@vger.kernel.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Aug 8, 2015 at 1:10 PM, Russell King
-<rmk+kernel@arm.linux.org.uk> wrote:
-> Add ALSA based HDMI AHB audio driver for dw_hdmi.  The only buffer
-> format supported by the hardware is its own special IEC958 based format,
-> which is not compatible with any ALSA format.  To avoid doing too much
-> data manipulation within the driver, we support only ALSAs IEC958 LE and
-> 24-bit PCM formats for 2 to 6 channels, which we convert to its hardware
-> format.
->
-> A more desirable solution would be to have this conversion in userspace,
-> but ALSA does not appear to allow such transformations outside of
-> libasound itself.
->
-> Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
-
-I applied this series, but the HDMI audio card is not registered. I
-guess I missed the dts pieces. Are the dts patches available?
-
-Thanks
+T24gVHVlLCBPY3QgMDYsIDIwMTUgYXQgMDM6MDc6NDBQTSAtMDMwMCwgRmFiaW8gRXN0ZXZhbSB3
+cm90ZToKPiBPbiBTYXQsIEF1ZyA4LCAyMDE1IGF0IDE6MTAgUE0sIFJ1c3NlbGwgS2luZwo+IDxy
+bWsra2VybmVsQGFybS5saW51eC5vcmcudWs+IHdyb3RlOgo+ID4gQWRkIEFMU0EgYmFzZWQgSERN
+SSBBSEIgYXVkaW8gZHJpdmVyIGZvciBkd19oZG1pLiAgVGhlIG9ubHkgYnVmZmVyCj4gPiBmb3Jt
+YXQgc3VwcG9ydGVkIGJ5IHRoZSBoYXJkd2FyZSBpcyBpdHMgb3duIHNwZWNpYWwgSUVDOTU4IGJh
+c2VkIGZvcm1hdCwKPiA+IHdoaWNoIGlzIG5vdCBjb21wYXRpYmxlIHdpdGggYW55IEFMU0EgZm9y
+bWF0LiAgVG8gYXZvaWQgZG9pbmcgdG9vIG11Y2gKPiA+IGRhdGEgbWFuaXB1bGF0aW9uIHdpdGhp
+biB0aGUgZHJpdmVyLCB3ZSBzdXBwb3J0IG9ubHkgQUxTQXMgSUVDOTU4IExFIGFuZAo+ID4gMjQt
+Yml0IFBDTSBmb3JtYXRzIGZvciAyIHRvIDYgY2hhbm5lbHMsIHdoaWNoIHdlIGNvbnZlcnQgdG8g
+aXRzIGhhcmR3YXJlCj4gPiBmb3JtYXQuCj4gPgo+ID4gQSBtb3JlIGRlc2lyYWJsZSBzb2x1dGlv
+biB3b3VsZCBiZSB0byBoYXZlIHRoaXMgY29udmVyc2lvbiBpbiB1c2Vyc3BhY2UsCj4gPiBidXQg
+QUxTQSBkb2VzIG5vdCBhcHBlYXIgdG8gYWxsb3cgc3VjaCB0cmFuc2Zvcm1hdGlvbnMgb3V0c2lk
+ZSBvZgo+ID4gbGliYXNvdW5kIGl0c2VsZi4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBSdXNzZWxs
+IEtpbmcgPHJtaytrZXJuZWxAYXJtLmxpbnV4Lm9yZy51az4KPiAKPiBJIGFwcGxpZWQgdGhpcyBz
+ZXJpZXMsIGJ1dCB0aGUgSERNSSBhdWRpbyBjYXJkIGlzIG5vdCByZWdpc3RlcmVkLiBJCj4gZ3Vl
+c3MgSSBtaXNzZWQgdGhlIGR0cyBwaWVjZXMuIEFyZSB0aGUgZHRzIHBhdGNoZXMgYXZhaWxhYmxl
+PwoKU29ycnksIEkndmUgYmVlbiBvdXQgZm9yIG1vc3Qgb2YgdGhlIGRheS4gIFRoZXJlJ3Mgbm8g
+RFQgcGF0Y2hlcyByZXF1aXJlZC4KClRoZSBkd19oZG1pIGJyaWRnZSBkcml2ZXIgY3JlYXRlcyBp
+dHMgb3duIHBsYXRmb3JtIGRldmljZSBmb3IgdGhlIGF1ZGlvLAp3aGljaCBzaG91bGQgdGhlbiBi
+aW5kIHRvIHRoZSBkd19oZG1pLWFoYi1hdWRpbyBkcml2ZXIgdXNpbmcgbm9ybWFsIExpbnV4Cm1l
+dGhvZHMuCgpJIGRvbid0IGtub3cgd2hhdCdzIHdyb25nIHdpdGggeW91ciBzZXR1cCwgZm9yIG1l
+LCBpdCBqdXN0IHdvcmtzOgoKWyAgICAxLjM1ODgyOV0gZHdoZG1pLWlteCAxMjAwMDAuaGRtaTog
+RGV0ZWN0ZWQgSERNSSBjb250cm9sbGVyIDB4MTM6MHhhOjB4YTA6MHhjMQpbICAgIDEuMzc3MTcz
+XSBpbXgtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCAxMjAwMDAuaGRtaSAob3BzIGR3X2hk
+bWlfaW14X29wcykKLi4uClsgICAgMi44NTEzNDNdIEFMU0EgZGV2aWNlIGxpc3Q6ClsgICAgMi44
+NTczNjRdICAgIzA6IERXLUhETUkgcmV2IDB4MGEsIGlycSAyMQoKYXMgaXQgYWx3YXlzIGhhcyBk
+b25lIGZvciBtZS4gIFRoZXJlJ3Mgbm90aGluZyBzcGVjaWFsIGFib3V0IGl0LgoKVGhlcmUncyBu
+b3RoaW5nIHNwZWNpYWwgYWJvdXQgaXQgLSBpdCdzIGEgc3RhbmRhcmQgQUxTQSBQQ00gYXVkaW8g
+ZHJpdmVyLAppdCBkb2Vzbid0IGhhdmUgYW55IHJlcXVpcmVtZW50cyBvdmVyIGFuZCBhYm92ZSBo
+YXZpbmcgQUxTQSBhbmQgQUxTQSdzIFBDTQpzdXBwb3J0IGVuYWJsZWQuICBJZiB5b3UgZGlkbid0
+IGhhdmUgdGhvc2UgZW5hYmxlZCwgYnV0IHNvbWVob3cgaGFkIHRoZQpkd19oZG1pLWFoYi1hdWRp
+byBzZXQgYXMgYnVpbHQtaW4sIHlvdSdkIGdldCBhIGxpbmsgdGltZSBlcnJvciwgc28gaXQncwpu
+b3QgYSBjb25maWd1cmF0aW9uIGlzc3VlLgoKSXQgd29ya3MgZm9yIG1lIG9uIGFsbCBpTVg2IHBs
+YXRmb3JtcyAoc29sbywgZHVhbC1saXRlLCBkdWFsIGFuZCBxdWFkKS4KCkFzIGl0J3MgYSBzdHJh
+aWdodCBBTFNBIGRldmljZSwgaXQgZG9lc24ndCBuZWVkIGFueSBjb2RlYyBvciBhbnkgb2YgdGhl
+CkFTb0MgaW5mcmFzdHJ1Y3R1cmUgZWl0aGVyLgoKSSBndWVzcyB0aGUgdGhpbmcgdG8gc3RhcnQg
+bG9va2luZyBhdCBpcyB3aGV0aGVyIHRoZSBkZXZpY2UgYW5kIGRyaXZlcgphcHBlYXIgaW4gL3N5
+cy9idXMvcGxhdGZvcm0ve2RldmljZXMsZHJpdmVyc30vLiAgWW91IHNob3VsZCBoYXZlOgoKL3N5
+cy9idXMvcGxhdGZvcm0vZGV2aWNlcy9kdy1oZG1pLWFoYi1hdWRpby4wLmF1dG8gCi9zeXMvYnVz
+L3BsYXRmb3JtL2RyaXZlcnMvZHctaGRtaS1haGItYXVkaW8KCmFuZCBvYnZpb3VzbHkgdGhlIGxh
+dHRlciBzaG91bGQgY29udGFpbiB0aGUgc3ltbGluayB0byB0aGUgZGV2aWNlLiAgSWYKdGhhdCBp
+cyBwcmVzZW50LCB0aGVuIHRoZSBkcml2ZXIgaGFzIGJvdW5kLCBhbmQgaXQgc2hvdWxkIGFwcGVh
+ciBpbgovcHJvYy9hc291bmQvY2FyZHMuCgotLSAKRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUg
+bGluZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBz
+cGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
