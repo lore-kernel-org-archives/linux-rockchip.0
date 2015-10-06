@@ -1,38 +1,74 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 0/5] ARM: dts: rockchip: some regulator updates for
- popmetal and firefly
-Date: Tue, 06 Oct 2015 10:27:56 +0200
-Message-ID: <2125379.ZDN8aXPFAA@phil>
-References: <1443640670-21104-1-git-send-email-heiko@sntech.de>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 06/10] dmaengine: add API for getting dma controller's
+ quirk
+Date: Tue, 6 Oct 2015 17:21:13 +0800
+Message-ID: <56139289.7000005@rock-chips.com>
+References: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
+ <1442188139-6017-1-git-send-email-shawn.lin@rock-chips.com>
+ <20151005153746.GG13501@vkoul-mobl.iind.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1443640670-21104-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20151005153746.GG13501-bQVUxfxUtC13uc1i7fC1zK2pdiUAq4bhAL8bYrjMMd8@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 30. September 2015, 21:17:45 schrieb Heiko Stuebner:
-> The upcoming mmc tuning definitly needs correct handling of the iodomains,
-> which is also good to have in general. So this fixes some small regulator
-> issues and then adds the io-domains for the rk3288 popmetal and firefly
-> boards.
-> 
-> Heiko Stuebner (5):
->   ARM: dts: rockchip: add rk3288-popmetal board to dtb list
->   ARM: dts: rockchip: add rk3288-popmemtal mmc supplies
->   ARM: dts: rockchip: add rk3288-popmetal iodomains
->   ARM: dts: rockchip: fixup firefly mmc supplies
->   ARM: dts: rockchip: add rk3288-firefly iodomains
+Hi Vinod,
 
-applied these to my dts branch for 4.4
+On 2015/10/5 23:37, Vinod Koul wrote:
+> On Mon, Sep 14, 2015 at 07:48:59AM +0800, Shawn Lin wrote:
+>> Add dmaengine_get_quirks API for peripheral devices to query
+>> quirks if they need it to make special workaround due to broken
+>> dma controller design.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>> Changes in v1: None
+>>
+>>   include/linux/dmaengine.h | 9 +++++++++
+>>   1 file changed, 9 insertions(+)
+>>
+>> diff --git a/include/linux/dmaengine.h b/include/linux/dmaengine.h
+>> index e2f5eb4..5174ca4 100644
+>> --- a/include/linux/dmaengine.h
+>> +++ b/include/linux/dmaengine.h
+>> @@ -704,6 +704,7 @@ struct dma_device {
+>>
+>>   	int (*device_config)(struct dma_chan *chan,
+>>   			     struct dma_slave_config *config);
+>> +	int (*device_get_quirks)(struct dma_chan *chan);
+>
+> And why do we want to expose this to users? THis doesnt seem right!
+>
+
+Basically I agree not to expose dma's quirk to slave controllers...But, 
+the fact I mentioned on cover letter explain the reasons why I have to 
+let slave controllers know that they are working with a broken dma. It's 
+a dilemma that if we don't want that to be exposed(let slave 
+controllers' driver get the info via a API), we have to add broken quirk 
+for all of them ,here and there, which seems to be a disaster:(
+
+I would appreciate it if you could give me some suggestions at your 
+earliest convenience. :)
+
+> A quirk may exists but should be handled inside the controller driver and do
+> appropriate action. You don't tell users or expect them to handle these
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
