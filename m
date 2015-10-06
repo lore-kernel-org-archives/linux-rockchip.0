@@ -1,67 +1,34 @@
 From: Fabio Estevam <festevam@gmail.com>
-Subject: Re: [PATCH 12/12] drm: bridge/dw_hdmi: improve HDMI enable/disable
- handling
-Date: Tue, 6 Oct 2015 15:03:20 -0300
-Message-ID: <CAOMZO5BCs-O3iJnit0sFJES8hUMJic6hDcP96y-HB=Jf0JDOLw@mail.gmail.com>
-References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
- <E1ZO6bd-0002vx-DL@rmk-PC.arm.linux.org.uk>
+Subject: Re: [PATCH 1/9] drm: bridge/dw_hdmi-ahb-audio: add audio driver
+Date: Tue, 6 Oct 2015 15:07:40 -0300
+Message-ID: <CAOMZO5COgoGU-3YNpnmSkctHMRDJ3=DuKc82Wb5zTTX7Bx2jNw@mail.gmail.com>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+	<E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <E1ZO6bd-0002vx-DL@rmk-PC.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel <linux-kernel@vger.kernel.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: linux-rockchip@lists.infradead.org, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, linux-kernel <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Fabio Estevam <fabio.estevam@freescale.com>, Jaroslav Kysela <perex@perex.cz>, Mark Brown <broonie@kernel.org>, Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBBdWcgOCwgMjAxNSBhdCAxOjA0IFBNLCBSdXNzZWxsIEtpbmcKPHJtaytrZXJuZWxA
-YXJtLmxpbnV4Lm9yZy51az4gd3JvdGU6Cj4gSERNSSBzaW5rcyBhcmUgcGVybWl0dGVkIHRvIGRl
-LWFzc2VydCBhbmQgcmUtYXNzZXJ0IHRoZSBIUEQgc2lnbmFsIHRvCj4gaW5kaWNhdGUgdGhhdCB0
-aGVpciBFRElEIGhhcyBiZWVuIHVwZGF0ZWQsIHdoaWNoIG1heSBub3QgaW52b2x2ZSBhCj4gY2hh
-bmdlIG9mIHZpZGVvIGluZm9ybWF0aW9uLgo+Cj4gQW4gZXhhbXBsZSBvZiB3aGVyZSBzdWNoIGEg
-c2l0dWF0aW9uIGNhbiBhcmlzZSBpcyB3aGVuIGFuIEFWIHJlY2VpdmVyCj4gaXMgY29ubmVjdGVk
-IGJldHdlZW4gdGhlIHNvdXJjZSBhbmQgdGhlIGRpc3BsYXkgZGV2aWNlLiAgRXZlbnRzIHdoaWNo
-Cj4gY2FuIGNhdXNlIHRoZSBIUEQgdG8gYmUgZGVhc3NlcnRlZCBpbmNsdWRlOgo+Cj4gICogdHVy
-bmluZyBvbiBvciBzd2l0Y2hpbmcgdG8gc3RhbmRieSB0aGUgQVYgcmVjZWl2ZXIuCj4gICogdHVy
-bmluZyBvbiBvciBzd2l0Y2hpbmcgdG8gc3RhbmRieSB0aGUgZGlzcGxheSBkZXZpY2UuCj4KPiBF
-YWNoIG9mIHRoZXNlIGNhbiBjaGFuZ2UgdGhlIGVudGlyZSBFRElEIGRhdGEsIG9yIGp1c3QgYSBw
-YXJ0IG9mIHRoZQo+IEVESUQgZGF0YSAtIGl0J3MgdXAgdG8gdGhlIGNvbm5lY3RlZCBIRE1JIHNp
-bmsgdG8gZG8gd2hhdCB0aGV5IGRlc2lyZQo+IGhlcmUuICBGb3IgZXhhbXBsZQo+Cj4gIC0gd2l0
-aCB0aGUgQVYgcmVjZWl2ZXIgYW5kIGRpc3BsYXkgZGV2aWNlIGJvdGggaW4gc3RhbmRieSwgYSBz
-b3VyY2UKPiAgICBjb25uZWN0ZWQgdG8gdGhlIEFWIHJlY2VpdmVyIG1heSBwcm92aWRlIGl0cyBv
-d24gRURJRCB0byB0aGUgc291cmNlLgo+ICAtIHR1cm5pbmcgb24gdGhlIGRpc3BsYXkgZGV2aWNl
-IGNhdXNlcyB0aGUgZGlzcGxheSBkZXZpY2UncyBFRElEIHRvIGJlCj4gICAgbWFkZSBhdmFpbGFi
-bGUgaW4gYW4gdW5tb2RpZmllZCBmb3JtIHRvIHRoZSBzb3VyY2UuCj4gIC0gc3Vic2VxdWVudGx5
-IHR1cm5pbmcgb24gdGhlIEFWIHJlY2VpdmVyIHRoZW4gcHJvdmlkZXMgYSBtb2RpZmllZAo+ICAg
-IHZlcnNpb24gb2YgdGhlIGRpc3BsYXkgZGV2aWNlJ3MgRURJRC4KPgo+IE1vcmVvdmVyLCBIUEQg
-ZG9lc24ndCB0ZWxsIHVzIHdoZXRoZXIgc29tZXRoaW5nIGlzIGFjdHVhbGx5IGxpc3RlbmluZwo+
-IG9uIHRoZSBIRE1JIFRETVMgc2lnbmFscy4gIFRoZSBwaHkgZ2l2ZXMgdXMgYSBzZXQgb2YgUlhT
-RU5TRSBpbmRpY2F0aW9ucwo+IHdoaWNoIHRlbGwgdXMgd2hldGhlciB0aGVyZSBpcyBhIHNpbmsg
-Y29ubmVjdGVkIHRvIHRoZSBUTURTIHNpZ25hbHMuCj4KPiBDdXJyZW50bHksIHdlIHVzZSB0aGUg
-SFBEIHNpZ25hbCB0byBlbmFibGUgb3IgZGlzYWJsZSB0aGUgSERNSSBibG9jaywKPiB3aGljaCBp
-cyBxdWVzdGlvbmFibGUgd2hlbiBIUEQgaXMgdXNlZCBpbiB0aGlzIG1hbm5lci4gIFVzaW5nIHRo
-ZQo+IFJYU0VOU0Ugd291bGQgYmUgbW9yZSBhcHByb3ByaWF0ZSwgYnV0IHRoZXJlIGlzIHNvbWUg
-YmFkIGJlaGF2aW91cgo+IHdoaWNoIG5lZWRzIHRvIGJlIGNvcGVkIHdpdGguICBUaGUgaU1YNiBp
-bXBsZW1lbnRhdGlvbiBsZXRzIHRoZSBUTURTCj4gc2lnbmFscyBmbG9hdCB3aGVuIHRoZSBwaHkg
-aXMgInBvd2VyZWQgZG93biIsIHdoaWNoIGNhdXNlIHNwdXJpb3VzCj4gaW50ZXJydXB0cy4gIFJh
-dGhlciB0aGFuIGp1c3QgdXNpbmcgUlhTRU5TRSwgdXNlIFJYU0VOU0UgYW5kIEhQRAo+IGJlY29t
-aW5nIGJvdGggYWN0aXZlIHRvIHNpZ25hbCB0aGUgcHJlc2VuY2Ugb2YgYSBkZXZpY2UsIGJ1dCBs
-b3NzCj4gb2YgUlhTRU5TRSB0byBpbmRpY2F0ZSB0aGF0IHRoZSBkZXZpY2UgaGFzIGJlZW4gdW5w
-bHVnZ2VkLgo+Cj4gVGhlIHNpZGUgZWZmZWN0IG9mIHRoaXMgY2hhbmdlIGlzIHRoYXQgYSBzaW5r
-IGRlYXNzZXJ0aW5nIHRoZSBIUEQKPiBzaWduYWwgdG8gY2F1c2UgYSByZS1yZWFkIG9mIHRoZSBF
-RElEIGRhdGEgd2lsbCBub3QgY2F1c2UgdGhlIGJyaWRnZQo+IHRvIGltbWVkaWF0ZWx5IGRpc2Fi
-bGUgdGhlIHZpZGVvIHNpZ25hbC4KPgo+IFNpZ25lZC1vZmYtYnk6IFJ1c3NlbGwgS2luZyA8cm1r
-K2tlcm5lbEBhcm0ubGludXgub3JnLnVrPgoKUmV2aWV3ZWQtYnk6IEZhYmlvIEVzdGV2YW0gPGZh
-YmlvLmVzdGV2YW1AZnJlZXNjYWxlLmNvbT4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwK
+On Sat, Aug 8, 2015 at 1:10 PM, Russell King
+<rmk+kernel@arm.linux.org.uk> wrote:
+> Add ALSA based HDMI AHB audio driver for dw_hdmi.  The only buffer
+> format supported by the hardware is its own special IEC958 based format,
+> which is not compatible with any ALSA format.  To avoid doing too much
+> data manipulation within the driver, we support only ALSAs IEC958 LE and
+> 24-bit PCM formats for 2 to 6 channels, which we convert to its hardware
+> format.
+>
+> A more desirable solution would be to have this conversion in userspace,
+> but ALSA does not appear to allow such transformations outside of
+> libasound itself.
+>
+> Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+
+I applied this series, but the HDMI audio card is not registered. I
+guess I missed the dts pieces. Are the dts patches available?
+
+Thanks
