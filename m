@@ -1,74 +1,43 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v5 06/10] dmaengine: add API for getting dma controller's
- quirk
-Date: Tue, 6 Oct 2015 17:21:13 +0800
-Message-ID: <56139289.7000005@rock-chips.com>
-References: <1442187923-5736-1-git-send-email-shawn.lin@rock-chips.com>
- <1442188139-6017-1-git-send-email-shawn.lin@rock-chips.com>
- <20151005153746.GG13501@vkoul-mobl.iind.intel.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH v2 01/10] pwm: introduce default period and polarity
+ concepts
+Date: Tue, 6 Oct 2015 12:09:35 +0200
+Message-ID: <20151006100935.GK2694@piout.net>
+References: <1437406327-6207-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1437406327-6207-2-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20151005153746.GG13501-bQVUxfxUtC13uc1i7fC1zK2pdiUAq4bhAL8bYrjMMd8@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-leds-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1437406327-6207-2-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Doug Anderson <dianders@google.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vinod,
-
-On 2015/10/5 23:37, Vinod Koul wrote:
-> On Mon, Sep 14, 2015 at 07:48:59AM +0800, Shawn Lin wrote:
->> Add dmaengine_get_quirks API for peripheral devices to query
->> quirks if they need it to make special workaround due to broken
->> dma controller design.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->> Changes in v5: None
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->> Changes in v1: None
->>
->>   include/linux/dmaengine.h | 9 +++++++++
->>   1 file changed, 9 insertions(+)
->>
->> diff --git a/include/linux/dmaengine.h b/include/linux/dmaengine.h
->> index e2f5eb4..5174ca4 100644
->> --- a/include/linux/dmaengine.h
->> +++ b/include/linux/dmaengine.h
->> @@ -704,6 +704,7 @@ struct dma_device {
->>
->>   	int (*device_config)(struct dma_chan *chan,
->>   			     struct dma_slave_config *config);
->> +	int (*device_get_quirks)(struct dma_chan *chan);
->
-> And why do we want to expose this to users? THis doesnt seem right!
->
-
-Basically I agree not to expose dma's quirk to slave controllers...But, 
-the fact I mentioned on cover letter explain the reasons why I have to 
-let slave controllers know that they are working with a broken dma. It's 
-a dilemma that if we don't want that to be exposed(let slave 
-controllers' driver get the info via a API), we have to add broken quirk 
-for all of them ,here and there, which seems to be a disaster:(
-
-I would appreciate it if you could give me some suggestions at your 
-earliest convenience. :)
-
-> A quirk may exists but should be handled inside the controller driver and do
-> appropriate action. You don't tell users or expect them to handle these
->
-
+On 20/07/2015 at 17:31:58 +0200, Boris Brezillon wrote :
+> When requested by a user, the PWM is assigned a default period and polarity
+> extracted from the DT, the platform data or statically set by the driver.
+> Those default values are currently stored in the period and polarity
+> fields of the pwm_device struct, but they will be stored somewhere else
+> once we have introduced the architecture allowing for hardware state
+> retrieval.
+> 
+> The pwm_set_default_polarity and pwm_set_default_period should only be
+> used by PWM drivers or the PWM core infrastructure to specify the
+> default period and polarity values.
+> 
+> PWM users might call the pwm_get_default_period to query the default
+> period value. There is currently no helper to query the default
+> polarity, but it might be added later on if there is a need for it.
+> 
+> This patch also modifies all the places where the default helpers should
+> be used in place of the standard ones.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+Acked-by: Alexandre Belloni <alexandre.belloni@free-electrons.com>
 
 -- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Alexandre Belloni, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
