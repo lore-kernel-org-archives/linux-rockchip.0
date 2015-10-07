@@ -1,41 +1,73 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v5 0/17] Add Analogix Core Display Port Driver
-Date: Wed, 07 Oct 2015 17:02:52 +0800
-Message-ID: <5614DFBC.8060105@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1442906428-2609-1-git-send-email-ykk@rock-chips.com> <5614BADD.1070307@rock-chips.com> <5614DBE2.6080102@osg.samsung.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 08/12] drm: bridge/dw_hdmi: avoid enabling interface in
+ mode_set
+Date: Wed, 7 Oct 2015 10:18:30 +0100
+Message-ID: <20151007091830.GE21513@n2100.arm.linux.org.uk>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
+ <E1ZO6bI-0002rG-PI@rmk-PC.arm.linux.org.uk>
+ <5614969D.7030201@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5614DBE2.6080102@osg.samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <5614969D.7030201@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Javier,
-
-On 10/07/2015 04:46 PM, Javier Martinez Canillas wrote:
-> Hello Yakir,
->
-> On 10/07/2015 08:25 AM, Yakir Yang wrote:
->> Hi all,
->>
->> Friendly ping.....   :)
->>
->>
->> Best regards,
->> - Yakir
->>
->>
-> Do you have a tree that I can use to test these patches?
-
-Wow, thanks a lot, I do have a tree on github 
-[https://github.com/yakir-Yang/linux/tree/analogix_dp],
-crossing my finger, wish things works......    ;)
-
-Thanks,
-- Yakir
-
->
-> Best regards,
+T24gV2VkLCBPY3QgMDcsIDIwMTUgYXQgMTE6NTA6NTNBTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
+ZToKPiAKPiAKPiBPbiAwOC8wOS8yMDE1IDEyOjA0IEFNLCBSdXNzZWxsIEtpbmcgd3JvdGU6Cj4g
+Pk9uIGEgbW9kZSBzZXQsIERSTSBtYWtlcyB0aGUgZm9sbG93aW5nIHNlcXVlbmNlIG9mIGNhbGxz
+Ogo+ID4qIGZvcl9lYWNoX2VuY29kZXIKPiA+KiAgIGJyaWRnZQltb2RlX2ZpeHVwCj4gPiogICBl
+bmNvZGVyCW1vZGVfZml4dXAKPiA+KiBjcnRjCQltb2RlX2ZpeHVwCj4gPiogZm9yX2VhY2hfZW5j
+b2Rlcgo+ID4qICAgYnJpZGdlCWRpc2FibGUKPiA+KiAgIGVuY29kZXIJcHJlcGFyZQo+ID4qICAg
+YnJpZGdlCXBvc3RfZGlzYWJsZQo+ID4qIGRpc2FibGUgdW51c2VkIGVuY29kZXJzCj4gPiogY3J0
+YwkJcHJlcGFyZQo+ID4qIGNydGMJCW1vZGVfc2V0Cj4gPiogZm9yX2VhY2hfZW5jb2Rlcgo+ID4q
+ICAgZW5jb2Rlcgltb2RlX3NldAo+ID4qICAgYnJpZGdlCW1vZGVfc2V0Cj4gPiogY3J0YwkJY29t
+bWl0Cj4gPiogZm9yX2VhY2hfZW5jb2Rlcgo+ID4qICAgYnJpZGdlCXByZV9lbmFibGUKPiA+KiAg
+IGVuY29kZXIJY29tbWl0Cj4gPiogICBicmlkZ2UJZW5hYmxlCj4gPgo+ID5kd19oZG1pIGVuYWJs
+ZXMgdGhlIEhETUkgb3V0cHV0IGluIGJvdGggdGhlIGJyaWRnZSBtb2RlX3NldCgpIGFuZCBhbHNv
+Cj4gPnRoZSBicmlkZ2UgZW5hYmxlKCkgc3RlcC4gIFRoaXMgaXMgZHVwbGljYXRlZCB3b3JrIC0g
+d2UgY2FuIGF2b2lkIHRoZQo+ID5zZXR1cCBpbiBtb2RlX3NldCgpIGFuZCBqdXN0IGRvIGl0IGlu
+IHRoZSBlbmFibGUoKSBzdGFnZS4gIFRoaXMKPiA+c2ltcGxpZmllcyB0aGUgY29kZSBhIGxpdHRs
+ZS4KPiA+Cj4gPlNpZ25lZC1vZmYtYnk6IFJ1c3NlbGwgS2luZyA8cm1rK2tlcm5lbEBhcm0ubGlu
+dXgub3JnLnVrPgo+IAo+IEkgaGF2ZSBub3RpY2VkIHRoYXQgZHdfaGRtaSBkcml2ZXIgaGF2ZSBw
+b3dlcm9uL3Bvd2Vyb2ZmIHdoZW4KPiBkcml2ZXIgZGV0ZWN0IEhQRCBldmVudCBpbiBpcnEgdGhy
+ZWFkLCB0aGF0J3MgYWxzbyBkdXBsaWNhdGVkIHdvcmtzLAo+IHdvdWxkIHlvdSBsaWtlIHRvIGNv
+bGxlY3QgdGhhdCBjaGFuZ2VzIGludG8gdGhpcyBvbmU6Cj4gCj4gc3RhdGljIGlycXJldHVybl90
+IGR3X2hkbWlfaXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkKPiB7Cj4gICAgICAgICAuLi4uLi4K
+PiAKPiAgICAgICAgIGlmIChpbnRyX3N0YXQgJiBIRE1JX0lIX1BIWV9TVEFUMF9IUEQpIHsKPiAg
+ICAgICAgICAgICAgICAgaWYgKHBoeV9pbnRfcG9sICYgSERNSV9QSFlfSFBEKSB7Cj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgZGV2X2RiZyhoZG1pLT5kZXYsICJFVkVOVD1wbHVnaW5cbiIpOwo+
+IAo+ICAgICAgICAgICAgICAgICAgICAgICAgIGhkbWlfbW9kYihoZG1pLCAwLCBIRE1JX1BIWV9I
+UEQsIEhETUlfUEhZX1BPTDApOwo+IAo+ICAgICAgICAgICAgICAgICAgICAgICAgIGR3X2hkbWlf
+cG93ZXJvbihoZG1pKTsgICAgLy8gbm8gbmVlZCBoZXJlCj4gICAgICAgICAgICAgICAgIH0gZWxz
+ZSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgZGV2X2RiZyhoZG1pLT5kZXYsICJFVkVOVD1w
+bHVnb3V0XG4iKTsKPiAKPiAgICAgICAgICAgICAgICAgICAgICAgICBoZG1pX21vZGIoaGRtaSwg
+SERNSV9QSFlfSFBELCBIRE1JX1BIWV9IUEQsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIEhETUlfUEhZX1BPTDApOwo+IAo+ICAgICAgICAgICAgICAgICAgICAgICAgIGR3X2hk
+bWlfcG93ZXJvZmYoaGRtaSk7ICAgIC8vIG5vIG5lZWQgaGVyZQo+ICAgICAgICAgICAgICAgICB9
+Cj4gICAgICAgICAgICAgICAgIGRybV9oZWxwZXJfaHBkX2lycV9ldmVudChoZG1pLT5jb25uZWN0
+b3IuZGV2KTsKPiAgICAgICAgIH0KPiAgICAgICAgIC4uLi4uLgo+IH0KCkknbSB2ZXJ5IG11Y2gg
+b2YgdGhlIG9waW5pb24gb2YgbWFraW5nIHNtYWxsIGxvZ2ljYWwgY2hhbmdlcy4gIFRoaXMKcGF0
+Y2ggaXMgb25lIHNtYWxsIGxvZ2ljYWwgY2hhbmdlIHRvIHRoZSBEUk0tc2lkZSBsb2dpYyB0byBn
+ZXQgcmlkCm9mIHRoZSBpZGVudGlmaWVkIGR1cGxpY2F0aW9uIHRoZXJlIHdpdGhvdXQgdG91Y2hp
+bmcgYW55dGhpbmcgZWxzZS4KSWYgcmVtb3ZpbmcgdGhlIGFib3ZlIGNhbGxzIHRvIGR3X2hkbWlf
+cG93ZXJvbigpL2R3X2hkbWlfcG93ZXJvZmYoKQp3ZXJlIGZvdW5kIHRvIGNhdXNlIGEgcmVncmVz
+c2lvbiwgdGhlbiB0aGUgd2hvbGUgY2hhbmdlIHdvdWxkIGVuZAp1cCBiZWluZyByZXZlcnRlZCwg
+d2hpY2ggd291bGQgYmUgYW5ub3lpbmcuCgotLSAKRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUg
+bGluZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBz
+cGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
