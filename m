@@ -1,57 +1,37 @@
-From: sugar <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels
- capture and lrck-mode support
-Date: Wed, 7 Oct 2015 16:01:38 +0800
-Message-ID: <5614D162.3020500@rock-chips.com>
-References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
- <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
- <20150923162433.GQ30445@sirena.org.uk> <5608F74C.3000104@rock-chips.com>
- <20150930184655.GX15635@sirena.org.uk>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v5 0/17] Add Analogix Core Display Port Driver
+Date: Wed, 7 Oct 2015 10:46:26 +0200
+Message-ID: <5614DBE2.6080102@osg.samsung.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1442906428-2609-1-git-send-email-ykk@rock-chips.com>
+ <5614BADD.1070307@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20150930184655.GX15635@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, tiwai@suse.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5614BADD.1070307@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>
+Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U29ycnkgZm9yIGxhdGUgcmVwbHksIHdlIHdlcmUgaW4gdGhlIE5hdGlvbmFsIERheSBIb2xpZGF5
-LgoK5ZyoIDEwLzEvMjAxNSAwMjo0NiwgTWFyayBCcm93biDlhpnpgZM6Cj4gT24gTW9uLCBTZXAg
-MjgsIDIwMTUgYXQgMDQ6MTY6MTJQTSArMDgwMCwgc3VnYXIgd3JvdGU6Cj4+IOWcqCA5LzI0LzIw
-MTUgMDA6MjQsIE1hcmsgQnJvd24g5YaZ6YGTOgo+Cj4+PiBNeSBpbml0aWFsIHRob3VnaHQgaGVy
-ZSBpcyB0aGF0IHRoZSBtYWNoaW5lIGRyaXZlciBzaG91bGQgYmUgcmVzcG9uc2libGUKPj4+IGZv
-ciBzZXR0aW5nIHRoaXMgYW5kIHRoZW4gdGhlIERBSSBkcml2ZXIgc2hvdWxkIGNoZWNrIHRvIHNl
-ZSBpZgo+Pj4gc3ltbWV0cmljX3JhdGVzIGFyZSBpbiB1c2UgYW5kIGNvbmZpZ3VyZSBpdHNlbGYg
-YXBwcm9wcmlhdGVseS4gIElzIHRoZXJlCj4+PiBhIHJlYXNvbiB3aHkgdGhpcyB3b24ndCB3b3Jr
-IGhlcmU/Cj4KPj4gSXQncyBmb3IgaTJzIGlwIGNvbmZpZ3VyYXRpb24sIGluIHRoZSBtb3N0IHNp
-dHVhdGlvbiwgdGhlcmUgaXMgbm8gbmVlZAo+PiB0byB1c2UgdGhpcyBwcm9wZXJ0eSwgZXhjZXB0
-IG9uZSBjYXNlOgo+Cj4+IEluIG9yZGVyIHRvIHNhdmUgZ3BpbyBwaW5zIGZvciBvdGhlciBmdW5j
-dGlvbiB1c2UsIHdlIG1heSB1c2Ugc2luZ2xlCj4+IGxyY2sodHggb3IgcngpIHBpbi4gb2YgY291
-cnNlLCBpdCBkZXBlbmRzIG9uIHByb2R1Y3QgZGVzaWduLiB3aGVuIGluIGkycwo+PiBzbGF2ZSBt
-b2RlLCB3ZSBuZWVkIHRvIGNvbmZpZ3VyZSB0aGlzIHRvIHNoYXJlIGxyY2sgd2l0aCB0eC9yeCBp
-bnNpZGUgaTJzCj4+IGxvZ2ljLgo+Cj4+IHN5bW1ldHJpY19yYXRlcyBmbGFnIHdvcmtzIGZpbmUg
-b24gcm9ja2NoaXAgcGxhdGZvcm0sIGJ1dCBpdCBjYW4ndCBjb3ZlciB0aGUKPj4gYWJvdmUgY2Fz
-ZS4KPgo+PiBEbyB5b3UgaGF2ZSBhbnkgc3VnZ2VzdGlvbiBhYm91dCB0aGlzIG9yIG1heWJlIHRo
-ZXJlIGlzIG5vIG5lZWQgdG8gdXBzdHJlYW0KPj4gdGhpcyBzcGVjaWFsIHBhcnQ/Cj4KPiBXaGF0
-IG1ha2VzIHlvdSBzYXkgdGhhdCB0aGUgc3ltbWV0cmljX3JhdGVzIGZsYWcgY2FuJ3QgYmUgdXNl
-ZCB0byBjb3Zlcgo+IHRoaXMgY2FzZT8gIFdoYXQgeW91IGRlc2NyaWJlIGFib3ZlIGlzIGh0ZSBu
-b3JtYWwgcmVhc29uIGZvciBuZWVkaW5nIHRvCj4gZW5mb3JjZSBzeW1tZXRyaWNfcmF0ZXMuICBU
-aGUgZHJpdmVyIHNob3VsZCBiZSBhYmxlIHRvIGNoZWNrIGlmIHRoZSBmbGFnCj4gaGFzIGJlZW4g
-c2V0IGp1c3QgYXMgd2VsbCBhcyB0aGUgY29yZSBpcy4KPgoKR290IGl0LCBIb3cgYWJvdXQgdGhl
-IGZvbGxvd2luZyBtb2RpZnk/CgppZiAoZGFpLT5zeW1tZXRyaWNfcmF0ZXMpCglyZWdtYXBfdXBk
-YXRlX2JpdHMoaTJzLT5yZWdtYXAsIEkyU19DS1IsCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBJMlNfQ0tSX1RSQ01fTUFTSywKICAgICAgICAgICAgICAgICAgICAgICAgICAgIEkyU19DS1Jf
-VFJDTSh2YWwpKTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpBbHNhLWRldmVsIG1haWxpbmcgbGlzdApBbHNhLWRldmVsQGFsc2EtcHJvamVjdC5vcmcK
-aHR0cDovL21haWxtYW4uYWxzYS1wcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Fsc2EtZGV2
-ZWwK
+Hello Yakir,
+
+On 10/07/2015 08:25 AM, Yakir Yang wrote:
+> Hi all,
+> 
+> Friendly ping.....   :)
+> 
+> 
+> Best regards,
+> - Yakir
+> 
+> 
+
+Do you have a tree that I can use to test these patches?
+
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
