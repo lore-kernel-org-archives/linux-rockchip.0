@@ -1,69 +1,64 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: Re: [PATCH v5 0/17] Add Analogix Core Display Port Driver
-Date: Wed, 7 Oct 2015 11:26:43 +0200
-Message-ID: <5614E553.6060108@osg.samsung.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1442906428-2609-1-git-send-email-ykk@rock-chips.com>
- <5614BADD.1070307@rock-chips.com> <5614DBE2.6080102@osg.samsung.com>
- <5614DFBC.8060105@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels capture and
+ lrck-mode support
+Date: Wed, 7 Oct 2015 10:27:14 +0100
+Message-ID: <20151007092714.GZ12635@sirena.org.uk>
+References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+ <20150923162433.GQ30445@sirena.org.uk>
+ <5608F74C.3000104@rock-chips.com>
+ <20150930184655.GX15635@sirena.org.uk>
+ <5614D162.3020500@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <5614DFBC.8060105@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="IHnTmDFdF6qwEwEs"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5614D162.3020500@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sugar <sugar.zhang@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, tiwai@suse.com, lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, perex@perex.cz, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Yakir,
 
-On 10/07/2015 11:02 AM, Yakir Yang wrote:
-> Hi Javier,
-> 
-> On 10/07/2015 04:46 PM, Javier Martinez Canillas wrote:
->> Hello Yakir,
->>
->> On 10/07/2015 08:25 AM, Yakir Yang wrote:
->>> Hi all,
->>>
->>> Friendly ping.....   :)
->>>
->>>
->>> Best regards,
->>> - Yakir
->>>
->>>
->> Do you have a tree that I can use to test these patches?
-> 
-> Wow, thanks a lot, I do have a tree on github [https://github.com/yakir-Yang/linux/tree/analogix_dp],
-> crossing my finger, wish things works......    ;)
->
+--IHnTmDFdF6qwEwEs
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I tried your analogix_dp branch on an Exynos5800 Peach Pi Chromebook
-but the machine didn't boot. Unfortunately I need to do some soldering
-to have a serial console on this board so don't have a kernel boot log.
+On Wed, Oct 07, 2015 at 04:01:38PM +0800, sugar wrote:
+> =E5=9C=A8 10/1/2015 02:46, Mark Brown =E5=86=99=E9=81=93:
 
-I'll let you know if I can get more info about this issue.
+> >What makes you say that the symmetric_rates flag can't be used to cover
+> >this case?  What you describe above is hte normal reason for needing to
+> >enforce symmetric_rates.  The driver should be able to check if the flag
+> >has been set just as well as the core is.
 
-Also, there is Kconfig recursive dependency that you may want to fix:
+> Got it, How about the following modify?
 
-$ make exynos_defconfig
-drivers/video/fbdev/Kconfig:5:error: recursive dependency detected!
-drivers/video/fbdev/Kconfig:5: symbol FB is selected by DRM_KMS_FB_HELPER
-drivers/gpu/drm/Kconfig:34: symbol DRM_KMS_FB_HELPER depends on DRM_KMS_HELPER
-drivers/gpu/drm/Kconfig:28: symbol DRM_KMS_HELPER is selected by DRM_ANALOGIX_DP
-drivers/gpu/drm/bridge/analogix/Kconfig:1: symbol DRM_ANALOGIX_DP is selected by DRM_EXYNOS_DP
-drivers/gpu/drm/exynos/Kconfig:57: symbol DRM_EXYNOS_DP depends on DRM_EXYNOS_FIMD
-drivers/gpu/drm/exynos/Kconfig:19: symbol DRM_EXYNOS_FIMD depends on FB_S3C
-drivers/video/fbdev/Kconfig:2023: symbol FB_S3C depends on FB
- 
-> Thanks,
-> - Yakir
-> 
+> if (dai->symmetric_rates)
+> 	regmap_update_bits(i2s->regmap, I2S_CKR,
+>                            I2S_CKR_TRCM_MASK,
+>                            I2S_CKR_TRCM(val));
 
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
+Yes, something like that.  You'll need to check both links in the DAI
+and the DAI link itself rather than just your own DAI but we should have
+a helper function for that - I'll add one, look out for a patch shortly.
+
+--IHnTmDFdF6qwEwEs
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWFOVuAAoJECTWi3JdVIfQpWwH+QEtYFXR7TlM2waz18AqSecH
+oCPwlGZQMG6DF8wnGqqD2dxAJRUDh73tcctlendT3ujXm8igpxMggR/znNMXU/az
+PyghYkjBNQwaiQq4ZOG3r++5qa+yhaZxXZHz44VcH7UuHKnF716gLlfJeXsYf+Yc
+ke5BdHR9VWIfCvWTkPpJSECJWrn1DSIcTpVpS5LLDhU88bLGhs5FihPZD1xjuEKE
+DRgd92UISrlb6YCkRY6JS3WFIEnOfEX3PwyOLkOWQ4OrUvH1pQLDPWGJ4+LpD/Ae
+EPifFseXtu95J1FnNITIWDjfDNCQUBa3RdcJ5XkQMVwhQUYCTQnhALo0UA75/io=
+=B50Z
+-----END PGP SIGNATURE-----
+
+--IHnTmDFdF6qwEwEs--
