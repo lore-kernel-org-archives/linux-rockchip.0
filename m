@@ -1,78 +1,88 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH 08/12] drm: bridge/dw_hdmi: avoid enabling interface in
- mode_set
-Date: Wed, 07 Oct 2015 17:35:29 +0800
-Message-ID: <5614E761.8020706@rock-chips.com>
-References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
- <E1ZO6bI-0002rG-PI@rmk-PC.arm.linux.org.uk> <5614969D.7030201@rock-chips.com>
- <20151007091830.GE21513@n2100.arm.linux.org.uk>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: add 8 channels
+ capture and lrck-mode support
+Date: Wed, 7 Oct 2015 10:39:40 +0100
+Message-ID: <20151007093940.GA12635@sirena.org.uk>
+References: <1442979683-9441-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1442979683-9441-2-git-send-email-sugar.zhang@rock-chips.com>
+ <20150923162433.GQ30445@sirena.org.uk>
+ <5608F74C.3000104@rock-chips.com>
+ <20150930184655.GX15635@sirena.org.uk>
+ <5614D162.3020500@rock-chips.com>
+ <20151007092714.GZ12635@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151007091830.GE21513@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============4091100801951982881=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20151007092714.GZ12635@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: sugar <sugar.zhang@rock-chips.com>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, tiwai@suse.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMC8wNy8yMDE1IDA1OjE4IFBNLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6
-Cj4gT24gV2VkLCBPY3QgMDcsIDIwMTUgYXQgMTE6NTA6NTNBTSArMDgwMCwgWWFraXIgWWFuZyB3
-cm90ZToKPj4KPj4gT24gMDgvMDkvMjAxNSAxMjowNCBBTSwgUnVzc2VsbCBLaW5nIHdyb3RlOgo+
-Pj4gT24gYSBtb2RlIHNldCwgRFJNIG1ha2VzIHRoZSBmb2xsb3dpbmcgc2VxdWVuY2Ugb2YgY2Fs
-bHM6Cj4+PiAqIGZvcl9lYWNoX2VuY29kZXIKPj4+ICogICBicmlkZ2UJbW9kZV9maXh1cAo+Pj4g
-KiAgIGVuY29kZXIJbW9kZV9maXh1cAo+Pj4gKiBjcnRjCQltb2RlX2ZpeHVwCj4+PiAqIGZvcl9l
-YWNoX2VuY29kZXIKPj4+ICogICBicmlkZ2UJZGlzYWJsZQo+Pj4gKiAgIGVuY29kZXIJcHJlcGFy
-ZQo+Pj4gKiAgIGJyaWRnZQlwb3N0X2Rpc2FibGUKPj4+ICogZGlzYWJsZSB1bnVzZWQgZW5jb2Rl
-cnMKPj4+ICogY3J0YwkJcHJlcGFyZQo+Pj4gKiBjcnRjCQltb2RlX3NldAo+Pj4gKiBmb3JfZWFj
-aF9lbmNvZGVyCj4+PiAqICAgZW5jb2Rlcgltb2RlX3NldAo+Pj4gKiAgIGJyaWRnZQltb2RlX3Nl
-dAo+Pj4gKiBjcnRjCQljb21taXQKPj4+ICogZm9yX2VhY2hfZW5jb2Rlcgo+Pj4gKiAgIGJyaWRn
-ZQlwcmVfZW5hYmxlCj4+PiAqICAgZW5jb2Rlcgljb21taXQKPj4+ICogICBicmlkZ2UJZW5hYmxl
-Cj4+Pgo+Pj4gZHdfaGRtaSBlbmFibGVzIHRoZSBIRE1JIG91dHB1dCBpbiBib3RoIHRoZSBicmlk
-Z2UgbW9kZV9zZXQoKSBhbmQgYWxzbwo+Pj4gdGhlIGJyaWRnZSBlbmFibGUoKSBzdGVwLiAgVGhp
-cyBpcyBkdXBsaWNhdGVkIHdvcmsgLSB3ZSBjYW4gYXZvaWQgdGhlCj4+PiBzZXR1cCBpbiBtb2Rl
-X3NldCgpIGFuZCBqdXN0IGRvIGl0IGluIHRoZSBlbmFibGUoKSBzdGFnZS4gIFRoaXMKPj4+IHNp
-bXBsaWZpZXMgdGhlIGNvZGUgYSBsaXR0bGUuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogUnVzc2Vs
-bCBLaW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcudWs+Cj4+IEkgaGF2ZSBub3RpY2VkIHRo
-YXQgZHdfaGRtaSBkcml2ZXIgaGF2ZSBwb3dlcm9uL3Bvd2Vyb2ZmIHdoZW4KPj4gZHJpdmVyIGRl
-dGVjdCBIUEQgZXZlbnQgaW4gaXJxIHRocmVhZCwgdGhhdCdzIGFsc28gZHVwbGljYXRlZCB3b3Jr
-cywKPj4gd291bGQgeW91IGxpa2UgdG8gY29sbGVjdCB0aGF0IGNoYW5nZXMgaW50byB0aGlzIG9u
-ZToKPj4KPj4gc3RhdGljIGlycXJldHVybl90IGR3X2hkbWlfaXJxKGludCBpcnEsIHZvaWQgKmRl
-dl9pZCkKPj4gewo+PiAgICAgICAgICAuLi4uLi4KPj4KPj4gICAgICAgICAgaWYgKGludHJfc3Rh
-dCAmIEhETUlfSUhfUEhZX1NUQVQwX0hQRCkgewo+PiAgICAgICAgICAgICAgICAgIGlmIChwaHlf
-aW50X3BvbCAmIEhETUlfUEhZX0hQRCkgewo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgZGV2
-X2RiZyhoZG1pLT5kZXYsICJFVkVOVD1wbHVnaW5cbiIpOwo+Pgo+PiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgaGRtaV9tb2RiKGhkbWksIDAsIEhETUlfUEhZX0hQRCwgSERNSV9QSFlfUE9MMCk7
-Cj4+Cj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBkd19oZG1pX3Bvd2Vyb24oaGRtaSk7ICAg
-IC8vIG5vIG5lZWQgaGVyZQo+PiAgICAgICAgICAgICAgICAgIH0gZWxzZSB7Cj4+ICAgICAgICAg
-ICAgICAgICAgICAgICAgICBkZXZfZGJnKGhkbWktPmRldiwgIkVWRU5UPXBsdWdvdXRcbiIpOwo+
-Pgo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgaGRtaV9tb2RiKGhkbWksIEhETUlfUEhZX0hQ
-RCwgSERNSV9QSFlfSFBELAo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEhE
-TUlfUEhZX1BPTDApOwo+Pgo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgZHdfaGRtaV9wb3dl
-cm9mZihoZG1pKTsgICAgLy8gbm8gbmVlZCBoZXJlCj4+ICAgICAgICAgICAgICAgICAgfQo+PiAg
-ICAgICAgICAgICAgICAgIGRybV9oZWxwZXJfaHBkX2lycV9ldmVudChoZG1pLT5jb25uZWN0b3Iu
-ZGV2KTsKPj4gICAgICAgICAgfQo+PiAgICAgICAgICAuLi4uLi4KPj4gfQo+IEknbSB2ZXJ5IG11
-Y2ggb2YgdGhlIG9waW5pb24gb2YgbWFraW5nIHNtYWxsIGxvZ2ljYWwgY2hhbmdlcy4gIFRoaXMK
-PiBwYXRjaCBpcyBvbmUgc21hbGwgbG9naWNhbCBjaGFuZ2UgdG8gdGhlIERSTS1zaWRlIGxvZ2lj
-IHRvIGdldCByaWQKPiBvZiB0aGUgaWRlbnRpZmllZCBkdXBsaWNhdGlvbiB0aGVyZSB3aXRob3V0
-IHRvdWNoaW5nIGFueXRoaW5nIGVsc2UuCj4gSWYgcmVtb3ZpbmcgdGhlIGFib3ZlIGNhbGxzIHRv
-IGR3X2hkbWlfcG93ZXJvbigpL2R3X2hkbWlfcG93ZXJvZmYoKQo+IHdlcmUgZm91bmQgdG8gY2F1
-c2UgYSByZWdyZXNzaW9uLCB0aGVuIHRoZSB3aG9sZSBjaGFuZ2Ugd291bGQgZW5kCj4gdXAgYmVp
-bmcgcmV2ZXJ0ZWQsIHdoaWNoIHdvdWxkIGJlIGFubm95aW5nLgoKSG1tLi4uIFllYWgsIGl0IGRv
-IG1ha2Ugc29tZSBkcml2ZXIgbG9naWNhbCBjaGFuZ2VzLCBidXQgSQp0aG91Z2h0IHRoYXQncyBn
-b29kLCBqdXN0IG1ha2UgYSBjbGVhbiBvbiBIUEQgdGhyZWFkLCBhbmQgSQpkbyBnaXZlIGxvdHMg
-b2YgdGVzdCBvbiBjaHJvbWUgdHJlZSBhYm91dCB0aGlzIGNoYW5nZXMsIGd1ZXNzCmEgc2VwYXJh
-dGUgcGF0Y2ggd291bGQgYmUgYmV0dGVyLgoKSWYgeW91IGRvbid0IGZlZWwgZ29vZCBlbm91Z2gg
-YWJvdXQgdGhpcywgb2theSwgSSB3b3VsZCBnaXZlCm1vcmUgdGVzdCBvbiB0aGF0IGNoYW5nZXMs
-IGFuZCBzZW5kIHVwc3RyZWFtIHRvIHJlcXVlc3QKY29tbWVudCBsYXRlci4KCi0gWWFraXIKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============4091100801951982881==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="25DAq431WDHkgiLI"
+Content-Disposition: inline
+
+
+--25DAq431WDHkgiLI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Wed, Oct 07, 2015 at 10:27:14AM +0100, Mark Brown wrote:
+> On Wed, Oct 07, 2015 at 04:01:38PM +0800, sugar wrote:
+
+> > if (dai->symmetric_rates)
+> > 	regmap_update_bits(i2s->regmap, I2S_CKR,
+> >                            I2S_CKR_TRCM_MASK,
+> >                            I2S_CKR_TRCM(val));
+
+> Yes, something like that.  You'll need to check both links in the DAI
+> and the DAI link itself rather than just your own DAI but we should have
+> a helper function for that - I'll add one, look out for a patch shortly.
+
+Actually no, now I look at the code you probably want to just clone the
+check from soc_pcm_apply_symmetry() so have that be:
+
+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+
+	if (rtd->dai_link->symmetrict_rates) {
+	}
+
+instead.
+
+--25DAq431WDHkgiLI
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWFOhcAAoJECTWi3JdVIfQ3BYH/jksuQKPUoRCFSp/t4omPzpE
+0u0yvdinPsTIqYv1ROEMj5sq6vEGSMT7eips2fdbhLFITZsaI2FN/74Y/5UzIqM7
+5Rw3wvRAk6TMN6YCCJks+/81NvO79/ieDSYRuhog/zckj9GPqqTSdHi8XM1T6M+V
+Q7mkd5PWwx2ZCB74hzOx7AaO+PhLnC7MWbRKUNgGMfwPIUlN0TUV4Zs8WCpstf6b
+f9oQ+gGE/xBQTN3i+M0QnuHbgC5aXcx6714+vNKhYNGaWAy5W0qhh9PAy2VwuwmS
+kXZmT7DjWEBy4rB6n1IPTJw2TNA0BVnBLzuoVq7ZSWFMheOS5KW2tRFQoWmL/H8=
+=UAVk
+-----END PGP SIGNATURE-----
+
+--25DAq431WDHkgiLI--
+
+--===============4091100801951982881==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============4091100801951982881==--
