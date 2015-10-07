@@ -1,64 +1,94 @@
 From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH 07/12] drm: bridge/dw_hdmi: enable audio only if sink
- supports audio
-Date: Wed, 07 Oct 2015 11:42:08 +0800
-Message-ID: <56149490.60902@rock-chips.com>
-References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
- <E1ZO6bD-0002r7-KP@rmk-PC.arm.linux.org.uk>
+Subject: Re: [PATCH 08/12] drm: bridge/dw_hdmi: avoid enabling interface in
+ mode_set
+Date: Wed, 07 Oct 2015 11:50:53 +0800
+Message-ID: <5614969D.7030201@rock-chips.com>
+References: <20150808160251.GM7557@n2100.arm.linux.org.uk> <E1ZO6bI-0002rG-PI@rmk-PC.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <E1ZO6bD-0002r7-KP@rmk-PC.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <E1ZO6bI-0002rG-PI@rmk-PC.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Russell King <rmk+kernel@arm.linux.org.uk>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, Andy Yan <andy.yan@rock-chips.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Sascha Hauer <s.hauer@pengutronix.de>, Jon Nettleton <jon.nettleton@gmail.com>, David Airlie <airlied@linux.ie>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUnVzc2VsbCAmIEFuZHkKCk9uIDA4LzA5LzIwMTUgMTI6MDMgQU0sIFJ1c3NlbGwgS2luZyB3
-cm90ZToKPiBPbmx5IGVuYWJsZSBhdWRpbyBzdXBwb3J0IGlmIHRoZSBzaW5rIHN1cHBvcnRzIGF1
-ZGlvIGluIHNvbWUgZm9ybSwgYXMKPiBkZWZpbmVkIHZpYSBpdHMgRURJRC4gIFdlIGRpc2NvdmVy
-IHRoaXMgY2FwYWJpbGl0eSB1c2luZyB0aGUgZ2VuZXJpYwo+IGRybV9kZXRlY3RfbW9uaXRvcl9h
-dWRpbygpIGZ1bmN0aW9uLgo+Cj4gU2lnbmVkLW9mZi1ieTogUnVzc2VsbCBLaW5nIDxybWsra2Vy
-bmVsQGFybS5saW51eC5vcmcudWs+CgpTb21lIHRvIDA2LzEyIHJlcGx5LgoKVGVzdGVkLWJ5OiBZ
-YWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+CgotIFlha2lyCj4gLS0tCj4gICBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyB8IDEyICsrKysrKysrKy0tLQo+ICAgMSBmaWxlIGNo
-YW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-ZHdfaGRtaS5jCj4gaW5kZXggN2Y3NjQ3MTZmM2M0Li41NzhkNzM2MmNkNjUgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL2R3X2hkbWkuYwo+IEBAIC0xMjMsNiArMTIzLDcgQEAgc3RydWN0IGR3X2hkbWkg
-ewo+ICAgCXN0cnVjdCBpMmNfYWRhcHRlciAqZGRjOwo+ICAgCXZvaWQgX19pb21lbSAqcmVnczsK
-PiAgIAlib29sIHNpbmtfaXNfaGRtaTsKPiArCWJvb2wgc2lua19oYXNfYXVkaW87Cj4gICAKPiAg
-IAlzcGlubG9ja190IGF1ZGlvX2xvY2s7Cj4gICAJc3RydWN0IG11dGV4IGF1ZGlvX211dGV4Owo+
-IEBAIC0xMjcxLDEzICsxMjcyLDE3IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9zZXR1cChzdHJ1Y3Qg
-ZHdfaGRtaSAqaGRtaSwgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gICAJLyogSERN
-SSBJbml0aWFsaXphdGlvbiBTdGVwIEIuMyAqLwo+ICAgCWR3X2hkbWlfZW5hYmxlX3ZpZGVvX3Bh
-dGgoaGRtaSk7Cj4gICAKPiAtCS8qIG5vdCBmb3IgRFZJIG1vZGUgKi8KPiAtCWlmIChoZG1pLT5z
-aW5rX2lzX2hkbWkpIHsKPiAtCQlkZXZfZGJnKGhkbWktPmRldiwgIiVzIEhETUkgbW9kZVxuIiwg
-X19mdW5jX18pOwo+ICsJaWYgKGhkbWktPnNpbmtfaGFzX2F1ZGlvKSB7Cj4gKwkJZGV2X2RiZyho
-ZG1pLT5kZXYsICJzaW5rIGhhcyBhdWRpbyBzdXBwb3J0XG4iKTsKPiAgIAo+ICAgCQkvKiBIRE1J
-IEluaXRpYWxpemF0aW9uIFN0ZXAgRSAtIENvbmZpZ3VyZSBhdWRpbyAqLwo+ICAgCQloZG1pX2Ns
-a19yZWdlbmVyYXRvcl91cGRhdGVfcGl4ZWxfY2xvY2soaGRtaSk7Cj4gICAJCWhkbWlfZW5hYmxl
-X2F1ZGlvX2NsayhoZG1pKTsKPiArCX0KPiArCj4gKwkvKiBub3QgZm9yIERWSSBtb2RlICovCj4g
-KwlpZiAoaGRtaS0+c2lua19pc19oZG1pKSB7Cj4gKwkJZGV2X2RiZyhoZG1pLT5kZXYsICIlcyBI
-RE1JIG1vZGVcbiIsIF9fZnVuY19fKTsKPiAgIAo+ICAgCQkvKiBIRE1JIEluaXRpYWxpemF0aW9u
-IFN0ZXAgRiAtIENvbmZpZ3VyZSBBVkkgSW5mb0ZyYW1lICovCj4gICAJCWhkbWlfY29uZmlnX0FW
-SShoZG1pLCBtb2RlKTsKPiBAQCAtMTQ0Miw2ICsxNDQ3LDcgQEAgc3RhdGljIGludCBkd19oZG1p
-X2Nvbm5lY3Rvcl9nZXRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPiAg
-IAkJCWVkaWQtPndpZHRoX2NtLCBlZGlkLT5oZWlnaHRfY20pOwo+ICAgCj4gICAJCWhkbWktPnNp
-bmtfaXNfaGRtaSA9IGRybV9kZXRlY3RfaGRtaV9tb25pdG9yKGVkaWQpOwo+ICsJCWhkbWktPnNp
-bmtfaGFzX2F1ZGlvID0gZHJtX2RldGVjdF9tb25pdG9yX2F1ZGlvKGVkaWQpOwo+ICAgCQlkcm1f
-bW9kZV9jb25uZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoY29ubmVjdG9yLCBlZGlkKTsKPiAg
-IAkJcmV0ID0gZHJtX2FkZF9lZGlkX21vZGVzKGNvbm5lY3RvciwgZWRpZCk7Cj4gICAJCWtmcmVl
-KGVkaWQpOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+
+On 08/09/2015 12:04 AM, Russell King wrote:
+> On a mode set, DRM makes the following sequence of calls:
+> * for_each_encoder
+> *   bridge	mode_fixup
+> *   encoder	mode_fixup
+> * crtc		mode_fixup
+> * for_each_encoder
+> *   bridge	disable
+> *   encoder	prepare
+> *   bridge	post_disable
+> * disable unused encoders
+> * crtc		prepare
+> * crtc		mode_set
+> * for_each_encoder
+> *   encoder	mode_set
+> *   bridge	mode_set
+> * crtc		commit
+> * for_each_encoder
+> *   bridge	pre_enable
+> *   encoder	commit
+> *   bridge	enable
+>
+> dw_hdmi enables the HDMI output in both the bridge mode_set() and also
+> the bridge enable() step.  This is duplicated work - we can avoid the
+> setup in mode_set() and just do it in the enable() stage.  This
+> simplifies the code a little.
+>
+> Signed-off-by: Russell King <rmk+kernel@arm.linux.org.uk>
+
+I have noticed that dw_hdmi driver have poweron/poweroff when
+driver detect HPD event in irq thread, that's also duplicated works,
+would you like to collect that changes into this one:
+
+static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+{
+         ......
+
+         if (intr_stat & HDMI_IH_PHY_STAT0_HPD) {
+                 if (phy_int_pol & HDMI_PHY_HPD) {
+                         dev_dbg(hdmi->dev, "EVENT=plugin\n");
+
+                         hdmi_modb(hdmi, 0, HDMI_PHY_HPD, HDMI_PHY_POL0);
+
+                         dw_hdmi_poweron(hdmi);    // no need here
+                 } else {
+                         dev_dbg(hdmi->dev, "EVENT=plugout\n");
+
+                         hdmi_modb(hdmi, HDMI_PHY_HPD, HDMI_PHY_HPD,
+                                   HDMI_PHY_POL0);
+
+                         dw_hdmi_poweroff(hdmi);    // no need here
+                 }
+                 drm_helper_hpd_irq_event(hdmi->connector.dev);
+         }
+         ......
+}
+
+Thanks,
+- Yakir
+> ---
+>   drivers/gpu/drm/bridge/dw_hdmi.c | 2 --
+>   1 file changed, 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
+> index 578d7362cd65..fbac8386552b 100644
+> --- a/drivers/gpu/drm/bridge/dw_hdmi.c
+> +++ b/drivers/gpu/drm/bridge/dw_hdmi.c
+> @@ -1389,8 +1389,6 @@ static void dw_hdmi_bridge_mode_set(struct drm_bridge *bridge,
+>   {
+>   	struct dw_hdmi *hdmi = bridge->driver_private;
+>   
+> -	dw_hdmi_setup(hdmi, mode);
+> -
+>   	/* Store the display mode for plugin/DKMS poweron events */
+>   	memcpy(&hdmi->previous_mode, mode, sizeof(hdmi->previous_mode));
+>   }
