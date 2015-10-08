@@ -1,13 +1,12 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH 1/5] usb: dwc2: Restore GUSBCFG in dwc2_get_hwparams()
-Date: Wed,  7 Oct 2015 17:48:37 -0700
-Message-ID: <1444265321-16768-2-git-send-email-dianders@chromium.org>
-References: <1444265321-16768-1-git-send-email-dianders@chromium.org>
+Subject: [PATCH 0/5] usb: dwc2: fix dwc2_get_hwparams() + optimize probe time
+ a bit
+Date: Wed,  7 Oct 2015 17:48:36 -0700
+Message-ID: <1444265321-16768-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1444265321-16768-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,52 +20,42 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Previously dwc2_get_hwparams() was changing GUSBCFG and not putting it
-back the way it was (specifically it set and cleared FORCEHOSTMODE).
-Since we want to move dwc2_core_reset() _before_ dwc2_get_hwparams() we
-should make sure dwc2_get_hwparams() isn't messing with things in a
-permanent way.
+This is a collection of patches, some by Yunzhi Li at Rockchip and some
+by me, that fix dwc2_get_hwparams() on some boards (depending on how the
+bootloader left things) and then attempt to optimize DWC2's probe
+time (since fixing dwc2_get_hwparams() made probe even slower than it
+was).  Note that even after these changes probe time is still not super
+fast (we still call dwc2_core_reset() twice per probe and each call
+still takes a minimum of 160ms right now), but this at least picks the
+low hanging fruit.
 
-Since we're now looking at GUSBCFG, it's obvious that we shouldn't need
-all the extra delays if FORCEHOSTMODE was already set.  This will avoid
-some delays for any ports that have forced host mode.
+Note that this picks patch "v2" of "usb: dwc2: reset dwc2 core before
+dwc2_get_hwparams()" from Yunzhi Li rather than v3 because I think it's
+a better way to go.
 
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/usb/dwc2/core.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+These patches are all rebased atop linuxnext.  Since linuxnext wasn't
+booting on my board, they were tested against Heiko Stuebner's "somewhat
+stable" github tree (based on v4.3-rc1) with a few linuxnext dwc2
+patches pulled in to avoid conflicts.
 
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index bf5e951..43c8bf4 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -3097,18 +3097,20 @@ int dwc2_get_hwparams(struct dwc2_hsotg *hsotg)
- 
- 	/* Force host mode to get HPTXFSIZ / GNPTXFSIZ exact power on value */
- 	gusbcfg = dwc2_readl(hsotg->regs + GUSBCFG);
--	gusbcfg |= GUSBCFG_FORCEHOSTMODE;
--	dwc2_writel(gusbcfg, hsotg->regs + GUSBCFG);
--	usleep_range(100000, 150000);
-+	if (!(gusbcfg & GUSBCFG_FORCEHOSTMODE)) {
-+		dwc2_writel(gusbcfg | GUSBCFG_FORCEHOSTMODE,
-+			    hsotg->regs + GUSBCFG);
-+		usleep_range(100000, 150000);
-+	}
- 
- 	gnptxfsiz = dwc2_readl(hsotg->regs + GNPTXFSIZ);
- 	hptxfsiz = dwc2_readl(hsotg->regs + HPTXFSIZ);
- 	dev_dbg(hsotg->dev, "gnptxfsiz=%08x\n", gnptxfsiz);
- 	dev_dbg(hsotg->dev, "hptxfsiz=%08x\n", hptxfsiz);
--	gusbcfg = dwc2_readl(hsotg->regs + GUSBCFG);
--	gusbcfg &= ~GUSBCFG_FORCEHOSTMODE;
--	dwc2_writel(gusbcfg, hsotg->regs + GUSBCFG);
--	usleep_range(100000, 150000);
-+	if (!(gusbcfg & GUSBCFG_FORCEHOSTMODE)) {
-+		dwc2_writel(gusbcfg, hsotg->regs + GUSBCFG);
-+		usleep_range(100000, 150000);
-+	}
- 
- 	/* hwcfg2 */
- 	hw->op_mode = (hwcfg2 & GHWCFG2_OP_MODE_MASK) >>
+These patches have either landed or are planned to land on the
+chromeos-3.14 branch for use in several Chromebooks that use rk3288.
+
+
+Douglas Anderson (3):
+  usb: dwc2: Restore GUSBCFG in dwc2_get_hwparams()
+  CHROMIUM: usb: dwc2: Avoid double-reset at boot time
+  usb: dwc2: Speed dwc2_get_hwparams() on some host-only ports
+
+Yunzhi Li (2):
+  usb: dwc2: reset dwc2 core before dwc2_get_hwparams()
+  usb: dwc2: reduce dwc2 driver probe time
+
+ drivers/usb/dwc2/core.c     | 57 ++++++++++++++++++++++++++-------------------
+ drivers/usb/dwc2/core.h     |  3 ++-
+ drivers/usb/dwc2/hcd.c      |  6 ++---
+ drivers/usb/dwc2/platform.c |  6 +++++
+ 4 files changed, 44 insertions(+), 28 deletions(-)
+
 -- 
 2.6.0.rc2.230.g3dd15c0
