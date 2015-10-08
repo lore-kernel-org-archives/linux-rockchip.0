@@ -1,152 +1,105 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH 10/12] drm: bridge/dw_hdmi: fix phy enable/disable handling
-Date: Wed, 7 Oct 2015 20:17:31 +0100
-Message-ID: <20151007191731.GA32064@n2100.arm.linux.org.uk>
-References: <20150808160251.GM7557@n2100.arm.linux.org.uk>
- <E1ZO6bT-0002vk-3d@rmk-PC.arm.linux.org.uk>
- <56149A11.4070102@rock-chips.com>
- <20151007094831.GF21513@n2100.arm.linux.org.uk>
- <5614F68B.6050808@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v5 0/17] Add Analogix Core Display Port Driver
+Date: Thu, 08 Oct 2015 08:40:51 +0800
+Message-ID: <5615BB93.9020008@rock-chips.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1442906428-2609-1-git-send-email-ykk@rock-chips.com> <5614BADD.1070307@rock-chips.com> <5614DBE2.6080102@osg.samsung.com> <5614DFBC.8060105@rock-chips.com> <5614E553.6060108@osg.samsung.com> <5614FC6B.4080702@rock-chips.com> <56150128.2070309@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <5614F68B.6050808@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56150128.2070309@osg.samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Javier Martinez Canillas <javier@osg.samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>
+Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBPY3QgMDcsIDIwMTUgYXQgMDY6NDA6MTFQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
-ZToKPiAKPiAKPiBPbiAxMC8wNy8yMDE1IDA1OjQ4IFBNLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGlu
-dXggd3JvdGU6Cj4gPk9uIFdlZCwgT2N0IDA3LCAyMDE1IGF0IDEyOjA1OjM3UE0gKzA4MDAsIFlh
-a2lyIFlhbmcgd3JvdGU6Cj4gPj4KPiA+Pk9uIDA4LzA5LzIwMTUgMTI6MDQgQU0sIFJ1c3NlbGwg
-S2luZyB3cm90ZToKPiA+Pj5UaGUgZHdfaGRtaSBlbmFibGUvZGlzYWJsZSBoYW5kbGluZyBpcyBw
-YXJ0aWN1bGFybHkgd2VhayBpbiBzZXZlcmFsCj4gPj4+cmVnYXJkczoKPiA+Pj4qIFRoZSBob3Rw
-bHVnIGludGVycnVwdCBjb3VsZCBjYWxsIGhkbWlfcG93ZXJvbigpIG9yIGhkbWlfcG93ZXJvZmYo
-KQo+ID4+PiAgIHdoaWxlIERSTSBpcyBzZXR0aW5nIGEgbW9kZSwgd2hpY2ggY291bGQgcmFjZSB3
-aXRoIGEgbW9kZSBiZWluZyBzZXQuCj4gPj4+KiBIb3RwbHVnIHdpbGwgYWx3YXlzIHJlLWVuYWJs
-ZSB0aGUgcGh5IHdoZW5ldmVyIGl0IGRldGVjdHMgYW4gYWN0aXZlCj4gPj4+ICAgaG90cGx1ZyBz
-aWduYWwsIGV2ZW4gaWYgRFJNIGhhcyBkaXNhYmxlZCB0aGUgb3V0cHV0Lgo+ID4+Pgo+ID4+PlJl
-c29sdmUgYWxsIG9mIHRoZXNlIGJ5IGludHJvZHVjaW5nIGEgbXV0ZXggdG8gcHJldmVudCByYWNl
-cywgYW5kIGEKPiA+Pj5zdGF0ZS10cmFja2luZyBib29sIHNvIHdlIGtub3cgd2hldGhlciBEUk0g
-d2lzaGVzIHRoZSBvdXRwdXQgdG8gYmUKPiA+Pj5lbmFibGVkLiAgV2UgY2hvb3NlIHRvIHVzZSBv
-dXIgb3duIG11dGV4IHJhdGhlciB0aGFuIC0+c3RydWN0X211dGV4Cj4gPj4+c28gdGhhdCB3ZSBj
-YW4gc3RpbGwgcHJvY2VzcyBpbnRlcnJ1cHRzIGluIGEgdGltZWx5IGZhc2hpb24uCj4gPj4+Cj4g
-Pj4+U2lnbmVkLW9mZi1ieTogUnVzc2VsbCBLaW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcu
-dWs+Cj4gPj4+LS0tCj4gPj4+ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyB8IDI5
-ICsrKysrKysrKysrKysrKysrKysrKystLS0tLS0tCj4gPj4+ICAxIGZpbGUgY2hhbmdlZCwgMjIg
-aW5zZXJ0aW9ucygrKSwgNyBkZWxldGlvbnMoLSkKPiA+Pj4KPiA+Pj5kaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3
-X2hkbWkuYwo+ID4+PmluZGV4IDdiOGE0ZTk0MmE3MS4uMGVlMTg4OTMwZDI2IDEwMDY0NAo+ID4+
-Pi0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS5jCj4gPj4+KysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKPiA+Pj5AQCAtMTI1LDYgKzEyNSw5IEBAIHN0cnVj
-dCBkd19oZG1pIHsKPiA+Pj4gIAlib29sIHNpbmtfaXNfaGRtaTsKPiA+Pj4gIAlib29sIHNpbmtf
-aGFzX2F1ZGlvOwo+ID4+PisJc3RydWN0IG11dGV4IG11dGV4OwkJLyogZm9yIHN0YXRlIGJlbG93
-IGFuZCBwcmV2aW91c19tb2RlICovCj4gPj4+Kwlib29sIGRpc2FibGVkOwkJCS8qIERSTSBoYXMg
-ZGlzYWJsZWQgb3VyIGJyaWRnZSAqLwo+ID4+PisKPiA+Pj4gIAlzcGlubG9ja190IGF1ZGlvX2xv
-Y2s7Cj4gPj4+ICAJc3RydWN0IG11dGV4IGF1ZGlvX211dGV4Owo+ID4+PiAgCXVuc2lnbmVkIGlu
-dCBzYW1wbGVfcmF0ZTsKPiA+Pj5AQCAtMTM4OSw4ICsxMzkyLDEyIEBAIHN0YXRpYyB2b2lkIGR3
-X2hkbWlfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gPj4+ICB7
-Cj4gPj4+ICAJc3RydWN0IGR3X2hkbWkgKmhkbWkgPSBicmlkZ2UtPmRyaXZlcl9wcml2YXRlOwo+
-ID4+PisJbXV0ZXhfbG9jaygmaGRtaS0+bXV0ZXgpOwo+ID4+PisKPiA+Pj4gIAkvKiBTdG9yZSB0
-aGUgZGlzcGxheSBtb2RlIGZvciBwbHVnaW4vREtNUyBwb3dlcm9uIGV2ZW50cyAqLwo+ID4+PiAg
-CW1lbWNweSgmaGRtaS0+cHJldmlvdXNfbW9kZSwgbW9kZSwgc2l6ZW9mKGhkbWktPnByZXZpb3Vz
-X21vZGUpKTsKPiA+Pj4rCj4gPj4+KwltdXRleF91bmxvY2soJmhkbWktPm11dGV4KTsKPiA+Pj4g
-IH0KPiA+Pj4gIHN0YXRpYyBib29sIGR3X2hkbWlfYnJpZGdlX21vZGVfZml4dXAoc3RydWN0IGRy
-bV9icmlkZ2UgKmJyaWRnZSwKPiA+Pj5AQCAtMTQwNCwxNCArMTQxMSwyMCBAQCBzdGF0aWMgdm9p
-ZCBkd19oZG1pX2JyaWRnZV9kaXNhYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gPj4+
-ICB7Cj4gPj4+ICAJc3RydWN0IGR3X2hkbWkgKmhkbWkgPSBicmlkZ2UtPmRyaXZlcl9wcml2YXRl
-Owo+ID4+PisJbXV0ZXhfbG9jaygmaGRtaS0+bXV0ZXgpOwo+ID4+PisJaGRtaS0+ZGlzYWJsZWQg
-PSB0cnVlOwo+ID4+PiAgCWR3X2hkbWlfcG93ZXJvZmYoaGRtaSk7Cj4gPj4+KwltdXRleF91bmxv
-Y2soJmhkbWktPm11dGV4KTsKPiA+Pj4gIH0KPiA+Pj4gIHN0YXRpYyB2b2lkIGR3X2hkbWlfYnJp
-ZGdlX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+ID4+PiAgewo+ID4+PiAgCXN0
-cnVjdCBkd19oZG1pICpoZG1pID0gYnJpZGdlLT5kcml2ZXJfcHJpdmF0ZTsKPiA+Pj4rCW11dGV4
-X2xvY2soJmhkbWktPm11dGV4KTsKPiA+Pj4gIAlkd19oZG1pX3Bvd2Vyb24oaGRtaSk7Cj4gPj4+
-KwloZG1pLT5kaXNhYmxlZCA9IGZhbHNlOwo+ID4+PisJbXV0ZXhfdW5sb2NrKCZoZG1pLT5tdXRl
-eCk7Cj4gPj4+ICB9Cj4gPj4+ICBzdGF0aWMgdm9pZCBkd19oZG1pX2JyaWRnZV9ub3Aoc3RydWN0
-IGRybV9icmlkZ2UgKmJyaWRnZSkKPiA+Pj5AQCAtMTUzNCwyMCArMTU0NywyMCBAQCBzdGF0aWMg
-aXJxcmV0dXJuX3QgZHdfaGRtaV9pcnEoaW50IGlycSwgdm9pZCAqZGV2X2lkKQo+ID4+PiAgCXBo
-eV9pbnRfcG9sID0gaGRtaV9yZWFkYihoZG1pLCBIRE1JX1BIWV9QT0wwKTsKPiA+Pj4gIAlpZiAo
-aW50cl9zdGF0ICYgSERNSV9JSF9QSFlfU1RBVDBfSFBEKSB7Cj4gPj4+KwkJaGRtaV9tb2RiKGhk
-bWksIH5waHlfaW50X3BvbCwgSERNSV9QSFlfSFBELCBIRE1JX1BIWV9QT0wwKTsKPiA+Pj4rCQlt
-dXRleF9sb2NrKCZoZG1pLT5tdXRleCk7Cj4gPj4+ICAJCWlmIChwaHlfaW50X3BvbCAmIEhETUlf
-UEhZX0hQRCkgewo+ID4+PiAgCQkJZGV2X2RiZyhoZG1pLT5kZXYsICJFVkVOVD1wbHVnaW5cbiIp
-Owo+ID4+Pi0JCQloZG1pX21vZGIoaGRtaSwgMCwgSERNSV9QSFlfSFBELCBIRE1JX1BIWV9QT0ww
-KTsKPiA+Pj4tCj4gPj4+LQkJCWR3X2hkbWlfcG93ZXJvbihoZG1pKTsKPiA+Pj4rCQkJaWYgKCFo
-ZG1pLT5kaXNhYmxlZCkKPiA+Pj4rCQkJCWR3X2hkbWlfcG93ZXJvbihoZG1pKTsKPiA+Pj4gIAkJ
-fSBlbHNlIHsKPiA+Pj4gIAkJCWRldl9kYmcoaGRtaS0+ZGV2LCAiRVZFTlQ9cGx1Z291dFxuIik7
-Cj4gPj4+LQkJCWhkbWlfbW9kYihoZG1pLCBIRE1JX1BIWV9IUEQsIEhETUlfUEhZX0hQRCwKPiA+
-Pj4tCQkJCSAgSERNSV9QSFlfUE9MMCk7Cj4gPj4+LQo+ID4+Pi0JCQlkd19oZG1pX3Bvd2Vyb2Zm
-KGhkbWkpOwo+ID4+PisJCQlpZiAoIWhkbWktPmRpc2FibGVkKQo+ID4+PisJCQkJZHdfaGRtaV9w
-b3dlcm9mZihoZG1pKTsKPiA+Pkp1c3QgbGlrZSBteSByZXBseSBvbiAwOC8xMiwgSSB0aG91Z2h0
-IHRoaXMgY291bGQgYmUgcmVtb3ZlZCwgc28KPiA+PnBvd2Vyb24vcG93ZXJvZmYgd291bGQgb25s
-eSBiZSBjYWxsZWQgd2l0aCBicmlkZ2UtPmVuYWJsZS8KPiA+PmJyaWRnZS0+ZGlzYWJsZSwgdGhl
-bSBtYXliZSBubyBuZWVkIG11dGV4IGhlcmUuCj4gPlRoZSBicmlkZ2UgZW5hYmxlL2Rpc2FibGUg
-bWV0aG9kcyBkbyBub3QgZ2V0IGNhbGxlZCBvbiBob3RwbHVnIGNoYW5nZXMuCj4gPgo+ID5bICAg
-IDEuMzYzMDExXSBkd2hkbWktaW14IDEyMDAwMC5oZG1pOiBEZXRlY3RlZCBIRE1JIGNvbnRyb2xs
-ZXIgMHgxMzoweGE6MHhhMDoweGMxCj4gPlsgICAgMS4zNzEzNDFdIGR3aGRtaS1pbXggMTIwMDAw
-LmhkbWk6IGR3X2hkbWlfaXJxKEk6UlgtLS0tLEhQRCBQOlJYMzIxMCxIUEQgUzpSWC0tLS0sSFBE
-KQo+ID5bICAgIDEuMzgxMzQ1XSBpbXgtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCAxMjAw
-MDAuaGRtaSAob3BzIGR3X2hkbWlfaW14X29wcykKPiA+WyAgICAxLjQ0ODY5MV0gZHdoZG1pLWlt
-eCAxMjAwMDAuaGRtaTogZHdfaGRtaV9icmlkZ2VfZGlzYWJsZSgpCj4gPlsgICAgMS40NTA5NjNd
-IGR3aGRtaS1pbXggMTIwMDAwLmhkbWk6IGR3X2hkbWlfYnJpZGdlX2VuYWJsZSgpCj4gPgo+ID5h
-bmQgdGhlbiB1bnBsdWdnaW5nIGFuZCByZS1wbHVnZ2luZyB0aGUgSERNSSBjYWJsZToKPiA+Cj4g
-PlsgICA2OC4zMDc1MDVdIGR3aGRtaS1pbXggMTIwMDAwLmhkbWk6IGR3X2hkbWlfaXJxKEk6Ulgt
-LS0tLEhQRCBQOlJYMzIxMCwtLS0gUzpSWC0tLS0sLS0tKQo+ID5bICAgNzMuODEzOTcwXSBkd2hk
-bWktaW14IDEyMDAwMC5oZG1pOiBkd19oZG1pX2lycShJOlJYLS0tLSxIUEQgUDpSWDMyMTAsSFBE
-IFM6UlgtLS0tLEhQRCkKPiA+Cj4gPkFzIHlvdSBjYW4gc2VlLCBkdXJpbmcgdGhlIHBlcmlvZCBv
-ZiBkaXNjb25uZWN0aW9uIGZvciBmaXZlIHNlY29uZHMsCj4gPmR3X2hkbWlfYnJpZGdlX2Rpc2Fi
-bGUoKSB3YXMgbm90IGNhbGxlZC4KPiA+Cj4gPlNvLCB3aXRob3V0IHRoZSBjb2RlIGFib3ZlLCB3
-ZSdkIGJlIG5lZWRsZXNzbHkgd2FzdGluZyBwb3dlciB3aXRoIHRoZQo+ID5icmlkZ2UgZW5hYmxl
-ZCwgdHJ5aW5nIHRvIGRyaXZlIGEgZGlzY29ubmVjdGVkIGRpc3BsYXkuCj4gCj4gU3RyYW5nZWx5
-LCBJIGRvIHNlZSBicmlkZ2UgZW5hYmxlL2Rpc2FibGUgaW4gbXkgc2lkZSwgcGFzdCB0aGUgbG9n
-IGFuZAo+IGR1bXBfc3RhY2sgYmVsbG93Lgo+IAo+IEFuZCBJIGd1ZXNzIHlvdXIgSERNSSBtYXli
-ZSBub3QgcmVhbGx5IGhvdCBwbHVnZWQsIGNvdWxkIHlvdSBjb25maXJtIHRoYXQKPiB0aGUgInN0
-YXR1cyIgb2YgSERNSSBkaXNwbGF5IGNhcmQgaGF2ZSBiZWVuIGNoYW5nZWQgYmV0d2VlbiAiY29u
-bmVjdGVkIgo+IGFuZCAiZGlzY29ubmVjdGVkIi4KCkl0IGRvZXMuCgo+IERvIHNlZSBicmlkZ2Vf
-ZGlzYWJsZSB3aGVuIEkgdW5wbHVnaW5nIHRoZSBIRE1JIGNhYmxlCj4gWyAgIDE2LjM1ODcxN10g
-ZHdoZG1pLXJvY2tjaGlwIGZmOTgwMDAwLmhkbWk6IEVWRU5UPXBsdWdvdXQKPiBbICAgMjAuNjEz
-MjIxXSBbPGMwMTBlMDMwPl0gKHVud2luZF9iYWNrdHJhY2UpIGZyb20gWzxjMDEwYTRlMD5dCj4g
-KHNob3dfc3RhY2srMHgyMC8weDI0KQo+IFsgICAyMC42MzE1NjFdIFs8YzAxMGE0ZTA+XSAoc2hv
-d19zdGFjaykgZnJvbSBbPGMwODk2ODI4Pl0KPiAoZHVtcF9zdGFjaysweDcwLzB4OGMpCj4gWyAg
-IDIwLjY0OTMzN10gWzxjMDg5NjgyOD5dIChkdW1wX3N0YWNrKSBmcm9tIFs8YzA0MTQwMzg+XQo+
-IChkd19oZG1pX2JyaWRnZV9kaXNhYmxlKzB4MWMvMHg4OCkKPiBbICAgMjAuNjY4MTc4XSBbPGMw
-NDE0MDM4Pl0gKGR3X2hkbWlfYnJpZGdlX2Rpc2FibGUpIGZyb20gWzxjMDNlMzg4OD5dCj4gKGRy
-bV9lbmNvZGVyX2Rpc2FibGUrMHgzNC8weDc4KQo+IFsgICAyMC42ODc4NTddIFs8YzAzZTM4ODg+
-XSAoZHJtX2VuY29kZXJfZGlzYWJsZSkgZnJvbSBbPGMwM2UzYjFjPl0KPiAoX19kcm1faGVscGVy
-X2Rpc2FibGVfdW51c2VkX2Z1bmN0aW9ucysweDY4LzB4ZTQpCj4gWyAgIDIwLjcwODk3NV0gWzxj
-MDNlM2IxYz5dIChfX2RybV9oZWxwZXJfZGlzYWJsZV91bnVzZWRfZnVuY3Rpb25zKSBmcm9tCj4g
-WzxjMDNlNDMyMD5dIChkcm1fY3J0Y19oZWxwZXJfc2V0X2NvbmZpZysweDEyOC8weDg1YykKPiBb
-ICAgMjAuNzMxMTgwXSBbPGMwM2U0MzIwPl0gKGRybV9jcnRjX2hlbHBlcl9zZXRfY29uZmlnKSBm
-cm9tIFs8YzAzZjVlM2M+XQo+IChkcm1fbW9kZV9zZXRfY29uZmlnX2ludGVybmFsKzB4NTgvMHhk
-YykKPiBbICAgMjAuNzUyNTA3XSBbPGMwM2Y1ZTNjPl0gKGRybV9tb2RlX3NldF9jb25maWdfaW50
-ZXJuYWwpIGZyb20gWzxjMDQwNWVkMD5dCj4gKGNvbW1pdF9jcnRjX3N0YXRlKzB4MTI0LzB4MWVj
-KQo+IFsgICAyMC43NzMzNDJdIFs8YzA0MDVlZDA+XSAoY29tbWl0X2NydGNfc3RhdGUpIGZyb20g
-WzxjMDQwNTVkND5dCj4gKGF0b21pY19jb21taXQuaXNyYS4zKzB4NWMvMHhjOCkKPiBbICAgMjAu
-NzkzMzk3XSBbPGMwNDA1NWQ0Pl0gKGF0b21pY19jb21taXQuaXNyYS4zKSBmcm9tIFs8YzA0MDU2
-NWM+XQo+IChkcm1fYXRvbWljX2NvbW1pdCsweDFjLzB4MjApCj4gWyAgIDIwLjgxMzQ2N10gWzxj
-MDQwNTY1Yz5dIChkcm1fYXRvbWljX2NvbW1pdCkgZnJvbSBbPGMwM2ZhNDgwPl0KPiAoZHJtX21v
-ZGVfc2V0Y3J0YysweDMyNC8weDNlNCkKPiBbICAgMjAuODMzMzc5XSBbPGMwM2ZhNDgwPl0gKGRy
-bV9tb2RlX3NldGNydGMpIGZyb20gWzxjMDNlYjMyMD5dCj4gKGRybV9pb2N0bCsweDMwNC8weDQ3
-OCkKPiBbICAgMjAuODUyNTU3XSBbPGMwM2ViMzIwPl0gKGRybV9pb2N0bCkgZnJvbSBbPGMwMjFm
-MDI0Pl0KPiAoZG9fdmZzX2lvY3RsKzB4NDk0LzB4NWE4KQo+IFsgICAyMC44NzEzNzddIFs8YzAy
-MWYwMjQ+XSAoZG9fdmZzX2lvY3RsKSBmcm9tIFs8YzAyMWYxOTQ+XQo+IChTeVNfaW9jdGwrMHg1
-Yy8weDg0KQo+IFsgICAyMC44OTAwMzhdIFs8YzAyMWYxOTQ+XSAoU3lTX2lvY3RsKSBmcm9tIFs8
-YzAxMDY0NmM+XQo+IChfX3N5c190cmFjZV9yZXR1cm4rMHgwLzB4MTQpCgpZb3VyIHVzZXJzcGFj
-ZSBpcyBpc3N1aW5nIGFuIGlvY3RsIHRvIGRpc2FibGUgdGhlIG91dHB1dC4gIEkgZ3Vlc3MgeW91
-CmhhdmUgb3RoZXIgYWN0aXZlIG91dHB1dHMgYmVzaWRlcyBIRE1JLgoKLS0gCkZUVEMgYnJvYWRi
-YW5kIGZvciAwLjhtaWxlIGxpbmU6IGN1cnJlbnRseSBhdCA5LjZNYnBzIGRvd24gNDAwa2JwcyB1
-cAphY2NvcmRpbmcgdG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+Hi Javier,
+
+On 10/07/2015 07:25 PM, Javier Martinez Canillas wrote:
+> Hello Yakir,
+>
+> On 10/07/2015 01:05 PM, Yakir Yang wrote:
+>> Hi Javier,
+>>
+>> On 10/07/2015 05:26 PM, Javier Martinez Canillas wrote:
+>>> Hello Yakir,
+>>>
+>>> On 10/07/2015 11:02 AM, Yakir Yang wrote:
+>>>> Hi Javier,
+>>>>
+>>>> On 10/07/2015 04:46 PM, Javier Martinez Canillas wrote:
+>>>>> Hello Yakir,
+>>>>>
+>>>>> On 10/07/2015 08:25 AM, Yakir Yang wrote:
+>>>>>> Hi all,
+>>>>>>
+>>>>>> Friendly ping.....   :)
+>>>>>>
+>>>>>>
+>>>>>> Best regards,
+>>>>>> - Yakir
+>>>>>>
+>>>>>>
+>>>>> Do you have a tree that I can use to test these patches?
+>>>> Wow, thanks a lot, I do have a tree on github [https://github.com/yakir-Yang/linux/tree/analogix_dp],
+>>>> crossing my finger, wish things works......    ;)
+>>>>
+>>> I tried your analogix_dp branch on an Exynos5800 Peach Pi Chromebook
+>>> but the machine didn't boot. Unfortunately I need to do some soldering
+>>> to have a serial console on this board so don't have a kernel boot log.
+>>>
+>>> I'll let you know if I can get more info about this issue.
+>> Whoops, sorry for the failed, much appreciated for your works.
+>>
+>> Besides, I thought maybe I can find a Peach Pit Chromebook in my side,
+>> I remember that some of our guys have brought one, but previously I
+>> thought that mainline kernel wouldn't run on Peach Pit directly.
+>>
+> Great, mainline works correctly on all Exynos based Chromebooks.
+>
+>> Maybe you can email me the method the run mainline kernel on Peach
+>> Pit, so I can debug the analogix_dp driver at the same time, that would
+>> be great.
+> I wrote a little blog post explaining how to run mainline on these boards:
+>
+> http://blogs.s-osg.org/install-linux-mainline-kernel-distro-exynos-chromebooks/
+>
+> That explains the simplest setup though so if you need a different one
+> (i.e: chain loading a non verified u-boot) or if you have any questions,
+> feel free to contact me in private and I can help you with the setup.
+>
+
+Ah, thanks, gonna to step-by-step.
+
+- Yakir
+
+>>> Also, there is Kconfig recursive dependency that you may want to fix:
+>>>
+>>> $ make exynos_defconfig
+>>> drivers/video/fbdev/Kconfig:5:error: recursive dependency detected!
+>>> drivers/video/fbdev/Kconfig:5: symbol FB is selected by DRM_KMS_FB_HELPER
+>>> drivers/gpu/drm/Kconfig:34: symbol DRM_KMS_FB_HELPER depends on DRM_KMS_HELPER
+>>> drivers/gpu/drm/Kconfig:28: symbol DRM_KMS_HELPER is selected by DRM_ANALOGIX_DP
+>>> drivers/gpu/drm/bridge/analogix/Kconfig:1: symbol DRM_ANALOGIX_DP is selected by DRM_EXYNOS_DP
+>>> drivers/gpu/drm/exynos/Kconfig:57: symbol DRM_EXYNOS_DP depends on DRM_EXYNOS_FIMD
+>>> drivers/gpu/drm/exynos/Kconfig:19: symbol DRM_EXYNOS_FIMD depends on FB_S3C
+>>> drivers/video/fbdev/Kconfig:2023: symbol FB_S3C depends on FB
+>>>    
+>> Yeah, recursive dependency detected, guess I should remove the
+>> "DRM_KMS_HELPER" from bridge analogix_dp Kconfig file, thanks
+>> for your remind.
+>>
+>> --- a/drivers/gpu/drm/bridge/analogix/Kconfig
+>> +++ b/drivers/gpu/drm/bridge/analogix/Kconfig
+>> @@ -1,4 +1,3 @@
+>>   config DRM_ANALOGIX_DP
+>>          tristate
+>>          depends on DRM
+>> -       select DRM_KMS_HELPER
+>>
+>>
+> That fixes the recursive dependency issue indeed. Thanks.
+>
+>> Thanks,
+>> - Yakir
+> Best regards,
