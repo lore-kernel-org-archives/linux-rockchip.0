@@ -1,62 +1,34 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH v4 7/8] ARM: dts: rockchip: Add SPDIF optical out on Radxa Rock2 Square
-Date: Thu,  8 Oct 2015 15:31:18 +0200
-Message-ID: <1444311079-2892-8-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v4 8/8] ARM: multi_v7_defconfig: Add rockchip audio
+ support
+Date: Thu, 8 Oct 2015 15:51:25 +0200
+Message-ID: <561674DD.5040704@osg.samsung.com>
 References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <1444311079-2892-9-git-send-email-sjoerd.simons@collabora.co.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk>
+In-Reply-To: <1444311079-2892-9-git-send-email-sjoerd.simons@collabora.co.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Pawel Moll <pawel.moll@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, linux-rockchip@lists.infradead.org
+Cc: Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Thierry Reding <treding@nvidia.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Lee Jones <lee.jones@linaro.org>, Olof Johansson <olof@lixom.net>, Ray Jui <rjui@broadcom.com>, Tomeu
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable the SPDIF optical output on Radxa Rock2 square boards
+Hello Sjoerd,
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
----
+On 10/08/2015 03:31 PM, Sjoerd Simons wrote:
+> Enable support for audio device found on rockchip boards.
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> ---
 
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+Patch looks good to me.
 
- arch/arm/boot/dts/rk3288-rock2-square.dts | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
 
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index bce50cd..1756d04 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -49,6 +49,20 @@
- 		stdout-path = "serial2:115200n8";
- 	};
- 
-+	sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+		simple-audio-card,dai-link@1 {  /* S/PDIF - S/PDIF */
-+			cpu { sound-dai = <&spdif>; };
-+			codec { sound-dai = <&spdif_out>; };
-+		};
-+	};
-+
-+	spdif_out: spdif-out {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
-+	};
-+
- 	vcc_usb_host: vcc-host-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -136,6 +150,10 @@
- 	};
- };
- 
-+&spdif {
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
+Best regards,
 -- 
-2.6.1
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
