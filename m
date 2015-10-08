@@ -1,69 +1,71 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v2 3/3] ASoC: rockchip: i2s: share tx/rx lrck when symmetric_rates enabled
-Date: Thu,  8 Oct 2015 20:40:09 +0800
-Message-ID: <1444308009-29088-4-git-send-email-sugar.zhang@rock-chips.com>
-References: <1444308009-29088-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444308009-29088-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH v4 4/8] ARM: dts: rockchip: Add SPDIF optical out on Radxa Rock
+Date: Thu,  8 Oct 2015 15:31:15 +0200
+Message-ID: <1444311079-2892-5-git-send-email-sjoerd.simons@collabora.co.uk>
+References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1444311079-2892-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-share lrck_tx to lrck_rx when symmetric_rates enabled.
+This enables the SPDIF optical audio output on the Radxa Rock
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+
 ---
 
-Changes in v2: 
-- new patch
+Changes in v4: None
+Changes in v3:
+- Resent patches to a more complete list of maintainers.
 
- sound/soc/rockchip/rockchip_i2s.c | 8 ++++++++
- sound/soc/rockchip/rockchip_i2s.h | 6 ++++++
- 2 files changed, 14 insertions(+)
+Changes in v2: None
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index f07833b..58ee645 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -226,6 +226,7 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 				  struct snd_soc_dai *dai)
- {
- 	struct rk_i2s_dev *i2s = to_info(dai);
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	unsigned int val = 0;
+ arch/arm/boot/dts/rk3188-radxarock.dts | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index d2180e5..797f83dd 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -90,6 +90,21 @@
+ 		};
+ 	};
  
- 	switch (params_format(params)) {
-@@ -278,6 +279,13 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
- 			   I2S_DMACR_RDL(16));
- 
-+	val = I2S_CKR_TRCM_TXRX;
-+	if (dai->driver->symmetric_rates || rtd->dai_link->symmetric_rates)
-+		val = I2S_CKR_TRCM_TXSHARE;
++	sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "SPDIF";
 +
-+	regmap_update_bits(i2s->regmap, I2S_CKR,
-+			   I2S_CKR_TRCM_MASK,
-+			   val);
- 	return 0;
- }
++		simple-audio-card,dai-link@1 {  /* S/PDIF - S/PDIF */
++			cpu { sound-dai = <&spdif>; };
++			codec { sound-dai = <&spdif_out>; };
++		};
++	};
++
++	spdif_out: spdif-out {
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++	};
++
+ 	ir_recv: gpio-ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+ 		gpios = <&gpio0 10 1>;
+@@ -343,6 +358,10 @@
+ 	};
+ };
  
-diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
-index a54ee35..dc6e2c7 100644
---- a/sound/soc/rockchip/rockchip_i2s.h
-+++ b/sound/soc/rockchip/rockchip_i2s.h
-@@ -78,6 +78,12 @@
-  * CKR
-  * clock generation register
- */
-+#define I2S_CKR_TRCM_SHIFT	28
-+#define I2S_CKR_TRCM(x)	(x << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_TXRX	(0 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_TXSHARE	(1 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_RXSHARE	(2 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_MASK	(3 << I2S_CKR_TRCM_SHIFT)
- #define I2S_CKR_MSS_SHIFT	27
- #define I2S_CKR_MSS_MASTER	(0 << I2S_CKR_MSS_SHIFT)
- #define I2S_CKR_MSS_SLAVE	(1 << I2S_CKR_MSS_SHIFT)
++&spdif {
++	status = "okay";
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
 -- 
-2.3.6
+2.6.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
