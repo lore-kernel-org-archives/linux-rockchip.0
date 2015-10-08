@@ -1,83 +1,99 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 5/8] clk: rockchip: Allow the RK3288 SPDIF clocks to change their parent
-Date: Thu, 08 Oct 2015 17:10:40 +0200
-Message-ID: <11755202.f1LLWMlYi0@phil>
-References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk> <1444311079-2892-6-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/8] ASoC: dt-bindings: add rockchip tranceiver bindings
+Date: Thu, 8 Oct 2015 11:50:56 -0500
+Message-ID: <CAL_JsqL_ox3TtjAL552X8-D21n47_hBCpeSkUcNdZu6+wj2h3A@mail.gmail.com>
+References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk> <1444311079-2892-2-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444311079-2892-6-git-send-email-sjoerd.simons@collabora.co.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Cc: linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1444311079-2892-2-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux-ALSA <alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 8. Oktober 2015, 15:31:16 schrieb Sjoerd Simons:
-> The clock branches leading to sclk_spdif and sclk_spdif_8ch on RK3288
-> SoCs only feed those clocks, allow those clocks to change their parents
-> all the way up the hierarchy.
-> 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-
-Just as comment, if I'm seeing that right, this patch needs "clk: rockchip: 
-handle mux dependency of fractional dividers" and friends [0] to apply and 
-also actually handle the fractional dividers correctly.
-
-For the clock change itself:
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-Heiko
-
-[0] http://lists.infradead.org/pipermail/linux-rockchip/2015-August/003930.html
-
-
+On Thu, Oct 8, 2015 at 8:31 AM, Sjoerd Simons
+<sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org> wrote:
+> Add devicetree bindings for the spdif tranceiver found on
+> found on rk3066, rk3188 and rk3288 SoCs
+>
+> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+>
 > ---
-> 
-> Changes in v4: None
+>
+> Changes in v4:
+> - Require rockchip,grf on RK3288 as the 8 channel solution has to be
+>   selected on that SoC
+> - Make the compatibility string one of a known list rather then
+>   requiring a precise list of options.
+> - Change the clock names to hclk and mclk instead of spdif_hclk and
+>   spdif_mclk to better match the implementation and data sheets.
+>
 > Changes in v3: None
 > Changes in v2: None
-> 
->  drivers/clk/rockchip/clk-rk3288.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> b/drivers/clk/rockchip/clk-rk3288.c index 90c1c9b..4e90252 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -317,25 +317,25 @@ static struct rockchip_clk_branch
-> rk3288_clk_branches[] __initdata = {
-> 
->  	MUX(0, "spdif_src", mux_pll_src_cpll_gpll_p, 0,
->  			RK3288_CLKSEL_CON(5), 15, 1, MFLAGS),
-> -	COMPOSITE_NOMUX(0, "spdif_pre", "spdif_src", 0,
-> +	COMPOSITE_NOMUX(0, "spdif_pre", "spdif_src", CLK_SET_RATE_PARENT,
->  			RK3288_CLKSEL_CON(5), 0, 7, DFLAGS,
->  			RK3288_CLKGATE_CON(4), 4, GFLAGS),
-> -	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", 0,
-> +	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", CLK_SET_RATE_PARENT,
->  			RK3288_CLKSEL_CON(9), 0,
->  			RK3288_CLKGATE_CON(4), 5, GFLAGS,
-> -		MUX(0, "spdif_mux", mux_spdif_p, 0,
-> +		MUX(0, "spdif_mux", mux_spdif_p, CLK_SET_RATE_PARENT,
->  				RK3288_CLKSEL_CON(5), 8, 2, MFLAGS)),
-> -	GATE(SCLK_SPDIF, "sclk_spdif", "spdif_mux", 0,
-> +	GATE(SCLK_SPDIF, "sclk_spdif", "spdif_mux", CLK_SET_RATE_PARENT,
->  			RK3288_CLKGATE_CON(4), 6, GFLAGS),
-> -	COMPOSITE_NOMUX(0, "spdif_8ch_pre", "spdif_src", 0,
-> +	COMPOSITE_NOMUX(0, "spdif_8ch_pre", "spdif_src", CLK_SET_RATE_PARENT,
->  			RK3288_CLKSEL_CON(40), 0, 7, DFLAGS,
->  			RK3288_CLKGATE_CON(4), 7, GFLAGS),
-> -	COMPOSITE_FRACMUX(0, "spdif_8ch_frac", "spdif_8ch_pre", 0,
-> +	COMPOSITE_FRACMUX(0, "spdif_8ch_frac", "spdif_8ch_pre",
-> CLK_SET_RATE_PARENT, RK3288_CLKSEL_CON(41), 0,
->  			RK3288_CLKGATE_CON(4), 8, GFLAGS,
-> -		MUX(0, "spdif_8ch_mux", mux_spdif_8ch_p, 0,
-> +		MUX(0, "spdif_8ch_mux", mux_spdif_8ch_p, CLK_SET_RATE_PARENT,
->  				RK3288_CLKSEL_CON(40), 8, 2, MFLAGS)),
-> -	GATE(SCLK_SPDIF8CH, "sclk_spdif_8ch", "spdif_8ch_mux", 0,
-> +	GATE(SCLK_SPDIF8CH, "sclk_spdif_8ch", "spdif_8ch_mux",
-> CLK_SET_RATE_PARENT, RK3288_CLKGATE_CON(4), 9, GFLAGS),
-> 
->  	GATE(0, "sclk_acc_efuse", "xin24m", 0,
+>
+>  .../devicetree/bindings/sound/rockchip-spdif.txt   | 44 ++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+>
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.txt b/Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+> new file mode 100644
+> index 0000000..33dd82c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+> @@ -0,0 +1,44 @@
+> +* Rockchip SPDIF transceiver
+> +
+> +The S/PDIF audio block is a stereo transceiver that allows the
+> +processor to receive and transmit digital audio via an coaxial cable or
+> +a fibre cable.
+> +
+> +Required properties:
+> +
+> +- compatible: should be one of the following:
+> +   - "rockchip,rk3288-spdif", "rockchip,rk3188-spdif" or
+> +     "rockchip,rk3066-spdif"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- interrupts: should contain the SPDIF interrupt.
+
+> +- #address-cells: should be 1.
+> +- #size-cells: should be 0.
+
+Why do you need these? Are you going to have sub nodes?
+
+> +- dmas: DMA specifiers for tx dma. See the DMA client binding,
+> +  Documentation/devicetree/bindings/dma/dma.txt
+> +- dma-names: should be "tx"
+> +- clocks: a list of phandle + clock-specifier pairs, one for each entry
+> +  in clock-names.
+> +- clock-names: should contain following:
+> +   - "hclk": clock for SPDIF controller
+> +   - "mclk" : clock for SPDIF bus
+> +
+> +Required properties on RK3288:
+> +  - rockchip,grf: the phandle of the syscon node for the general register
+> +                   file (GRF)
+> +
+> +Example for the rk3188 SPDIF controller:
+> +
+> +spdif: spdif@0x1011e000 {
+> +       compatible = "rockchip,rk3188-spdif", "rockchip,rk3066-spdif";
+> +       reg = <0x1011e000 0x2000>;
+> +       interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+> +       #address-cells = <1>;
+> +       #size-cells = <0>;
+> +       dmas = <&dmac1_s 8>;
+> +       dma-names = "tx";
+> +       clock-names = "hclk", "mclk";
+> +       clocks = <&cru HCLK_SPDIF>, <&cru SCLK_SPDIF>;
+> +       status = "disabled";
+> +       #sound-dai-cells = <0>;
+> +};
+> --
+> 2.6.1
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
