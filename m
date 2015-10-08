@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH 5/5] usb: dwc2: reduce dwc2 driver probe time
-Date: Wed,  7 Oct 2015 17:48:41 -0700
-Message-ID: <1444265321-16768-6-git-send-email-dianders@chromium.org>
+Subject: [PATCH 3/5] CHROMIUM: usb: dwc2: Avoid double-reset at boot time
+Date: Wed,  7 Oct 2015 17:48:39 -0700
+Message-ID: <1444265321-16768-4-git-send-email-dianders@chromium.org>
 References: <1444265321-16768-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,89 +21,138 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In (usb: dwc2: reset dwc2 core before dwc2_get_hwparams()) we added an
+extra reset to the probe path for the dwc2 USB controllers.  This
+allowed proper detection of parameters even if the firmware had already
+used the USB part.
 
-I found that the probe function of dwc2 driver takes much time
-when kernel boot up. There are many long delays in the probe
-function these take almost 1 second.
+Unfortunately, this extra reset is quite slow and is affecting boot
+speed.  We can avoid the double-reset by skipping the extra reset that
+would happen just after the one we added.  Logic that explains why this
+is safe:
 
-This patch trying to reduce unnecessary delay time.
+* As of the CL mentioned above, we now always call dwc2_core_reset() in
+  dwc2_driver_probe() before dwc2_hcd_init().
 
-In dwc2_core_reset() I see it use two at least 20ms delays to
-wait AHB idle and core soft reset, but dwc2 data book said that
-dwc2 core soft reset and AHB idle just need a few clocks (I think
-it refers to AHB clock, and AHB clock run at 150MHz in my RK3288
-board), so 20ms is too long, delay 1us for wait AHB idle and soft
-reset is enough.
+* The only caller of dwc2_hcd_init() is dwc2_driver_probe(), so we're
+  guaranteed that dwc2_core_reset() was called before dwc2_hdc_init().
 
-And in dwc2_get_hwparams() it takes 150ms to wait ForceHostMode
-and ForceDeviceMode valid but in data book it said software must
-wait at least 25ms before the change to take effect, so I reduce
-this time to 25ms~50ms. By the way, is there any state bit show
-that the force mode take effect ? Could we poll curmod bit for
-figuring out if the change take effect ?
+* dwc2_hdc_init() is the only caller that passes an irq other than -1 to
+  dwc2_core_init().  Thus if dwc2_core_init() is called with an irq
+  other than -1 we're guaranteed that dwc2_core_reset was called before
+  dwc2_core_init().
 
-It seems that usleep_range() at boot time will pick the longest
-value in the range. In dwc2_core_reset() there is a very long
-delay takes 200ms, and this function run twice when probe, could
-any one tell me is this delay time resonable ?
+...this allows us to remove the dwc2_core_reset() in dwc2_core_init() if
+irq is not < 0.
 
-I have tried this patch in my RK3288-evb board. It works well.
+Note that since "irq" wasn't used in the function dwc2_core_init()
+anyway and since select_phy was always set at exactly the same times we
+could avoid the reset, we remove "irq" and rename "select_phy" to
+"initial_setup" and adjust the callers accordingly.
 
-Signed-off-by: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/usb/dwc2/core.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/usb/dwc2/core.c | 29 ++++++++++++++++++-----------
+ drivers/usb/dwc2/core.h |  2 +-
+ drivers/usb/dwc2/hcd.c  |  6 +++---
+ 3 files changed, 22 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index 27ade0c..59fe48f 100644
+index f2002d2..9f1c438 100644
 --- a/drivers/usb/dwc2/core.c
 +++ b/drivers/usb/dwc2/core.c
-@@ -491,7 +491,7 @@ int dwc2_core_reset(struct dwc2_hsotg *hsotg)
+@@ -765,11 +765,10 @@ static void dwc2_gusbcfg_init(struct dwc2_hsotg *hsotg)
+  * dwc2_core_init() - Initializes the DWC_otg controller registers and
+  * prepares the core for device mode or host mode operation
+  *
+- * @hsotg:      Programming view of the DWC_otg controller
+- * @select_phy: If true then also set the Phy type
+- * @irq:        If >= 0, the irq to register
++ * @hsotg:         Programming view of the DWC_otg controller
++ * @initial_setup: If true then this is the first init for this instance.
+  */
+-int dwc2_core_init(struct dwc2_hsotg *hsotg, bool select_phy, int irq)
++int dwc2_core_init(struct dwc2_hsotg *hsotg, bool initial_setup)
+ {
+ 	u32 usbcfg, otgctl;
+ 	int retval;
+@@ -791,18 +790,26 @@ int dwc2_core_init(struct dwc2_hsotg *hsotg, bool select_phy, int irq)
  
- 	/* Wait for AHB master IDLE state */
- 	do {
--		usleep_range(20000, 40000);
-+		udelay(1);
- 		greset = dwc2_readl(hsotg->regs + GRSTCTL);
- 		if (++count > 50) {
- 			dev_warn(hsotg->dev,
-@@ -506,7 +506,7 @@ int dwc2_core_reset(struct dwc2_hsotg *hsotg)
- 	greset |= GRSTCTL_CSFTRST;
- 	dwc2_writel(greset, hsotg->regs + GRSTCTL);
- 	do {
--		usleep_range(20000, 40000);
-+		udelay(1);
- 		greset = dwc2_readl(hsotg->regs + GRSTCTL);
- 		if (++count > 50) {
- 			dev_warn(hsotg->dev,
-@@ -537,7 +537,7 @@ int dwc2_core_reset(struct dwc2_hsotg *hsotg)
- 	 * NOTE: This long sleep is _very_ important, otherwise the core will
- 	 * not stay in host mode after a connector ID change!
+ 	dwc2_writel(usbcfg, hsotg->regs + GUSBCFG);
+ 
+-	/* Reset the Controller */
+-	retval = dwc2_core_reset(hsotg);
+-	if (retval) {
+-		dev_err(hsotg->dev, "%s(): Reset failed, aborting\n",
+-				__func__);
+-		return retval;
++	/*
++	 * Reset the Controller
++	 *
++	 * We only need to reset the controller if this is a re-init.
++	 * For the first init we know for sure that earlier code reset us (it
++	 * needed to in order to properly detect various parameters).
++	 */
++	if (!initial_setup) {
++		retval = dwc2_core_reset(hsotg);
++		if (retval) {
++			dev_err(hsotg->dev, "%s(): Reset failed, aborting\n",
++					__func__);
++			return retval;
++		}
+ 	}
+ 
+ 	/*
+ 	 * This needs to happen in FS mode before any other programming occurs
  	 */
--	usleep_range(150000, 200000);
-+	usleep_range(150000, 160000);
+-	retval = dwc2_phy_init(hsotg, select_phy);
++	retval = dwc2_phy_init(hsotg, initial_setup);
+ 	if (retval)
+ 		return retval;
  
- 	return 0;
- }
-@@ -3107,7 +3107,7 @@ int dwc2_get_hwparams(struct dwc2_hsotg *hsotg)
- 		gusbcfg = dwc2_readl(hsotg->regs + GUSBCFG);
- 		dwc2_writel(gusbcfg | GUSBCFG_FORCEHOSTMODE,
- 			    hsotg->regs + GUSBCFG);
--		usleep_range(100000, 150000);
-+		usleep_range(25000, 50000);
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index c258d19..d707a7b 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -900,7 +900,7 @@ extern void dwc2_read_packet(struct dwc2_hsotg *hsotg, u8 *dest, u16 bytes);
+ extern void dwc2_flush_tx_fifo(struct dwc2_hsotg *hsotg, const int num);
+ extern void dwc2_flush_rx_fifo(struct dwc2_hsotg *hsotg);
+ 
+-extern int dwc2_core_init(struct dwc2_hsotg *hsotg, bool select_phy, int irq);
++extern int dwc2_core_init(struct dwc2_hsotg *hsotg, bool initial_setup);
+ extern void dwc2_enable_global_interrupts(struct dwc2_hsotg *hcd);
+ extern void dwc2_disable_global_interrupts(struct dwc2_hsotg *hcd);
+ 
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index af4e4a2..e2286cf 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -1381,7 +1381,7 @@ static void dwc2_conn_id_status_change(struct work_struct *work)
+ 			dev_err(hsotg->dev,
+ 				"Connection id status change timed out\n");
+ 		hsotg->op_state = OTG_STATE_B_PERIPHERAL;
+-		dwc2_core_init(hsotg, false, -1);
++		dwc2_core_init(hsotg, false);
+ 		dwc2_enable_global_interrupts(hsotg);
+ 		spin_lock_irqsave(&hsotg->lock, flags);
+ 		dwc2_hsotg_core_init_disconnected(hsotg, false);
+@@ -1404,7 +1404,7 @@ static void dwc2_conn_id_status_change(struct work_struct *work)
+ 		hsotg->op_state = OTG_STATE_A_HOST;
+ 
+ 		/* Initialize the Core for Host mode */
+-		dwc2_core_init(hsotg, false, -1);
++		dwc2_core_init(hsotg, false);
+ 		dwc2_enable_global_interrupts(hsotg);
+ 		dwc2_hcd_start(hsotg);
  	}
+@@ -3050,7 +3050,7 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
+ 	dwc2_disable_global_interrupts(hsotg);
  
- 	gnptxfsiz = dwc2_readl(hsotg->regs + GNPTXFSIZ);
-@@ -3116,7 +3116,7 @@ int dwc2_get_hwparams(struct dwc2_hsotg *hsotg)
- 	dev_dbg(hsotg->dev, "hptxfsiz=%08x\n", hptxfsiz);
- 	if (hsotg->dr_mode != USB_DR_MODE_HOST) {
- 		dwc2_writel(gusbcfg, hsotg->regs + GUSBCFG);
--		usleep_range(100000, 150000);
-+		usleep_range(25000, 50000);
- 	}
+ 	/* Initialize the DWC_otg core, and select the Phy type */
+-	retval = dwc2_core_init(hsotg, true, irq);
++	retval = dwc2_core_init(hsotg, true);
+ 	if (retval)
+ 		goto error2;
  
- 	/* hwcfg2 */
 -- 
 2.6.0.rc2.230.g3dd15c0
