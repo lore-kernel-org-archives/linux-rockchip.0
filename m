@@ -1,90 +1,110 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 0/8] mmc: dw_mmc-rockchip: allow tuning using the
- clk-phase api
-Date: Thu, 8 Oct 2015 19:36:04 +0200
-Message-ID: <CAPDyKFqeo--AiW_zHHrSqoOdFNZ3J_FgJpz2L7Z8gZnNmQZSig@mail.gmail.com>
-References: <1443622064-14362-1-git-send-email-heiko@sntech.de>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] usb: dwc2: Avoid more calls to dwc2_core_reset()
+Date: Thu,  8 Oct 2015 13:34:18 -0700
+Message-ID: <1444336458-29630-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1443622064-14362-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org" <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 30 September 2015 at 16:07, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> This series resurrects and adapts some individual patches whose sum
-> enable the dw_mmc hosts on Rockchip socs to tune clock phases using
-> the generic phase api (rk3288 and following have this capability).
->
-> The changes to the original mmc-phase clocks are expanded by further
-> findings resulting from devices being used in the field.
->
-> Similarly the regulator handling changes do use the brand new
-> regulator_set_voltage_triplet call to allow specifying lower and upper
-> limits. One possible point of discussion are the two voltage ranges
-> that are tried for the 3.3V signal level. Trying to stay near vmmc
-> at first and only then opening the range to the full 2.7-3.6V.
->
-> This mainly circumvents a shortcoming of the regulator voltage
-> setting, in that even with regulator_set_voltage_triplet the regulator
-> framework will take the lowest possible voltage when the possible
-> voltages are below the target voltage. While it may be ideal to solve
-> this on the regulator side, I'm not seeing this appearing in the short
-> term, mainly because all regulator parts (including regulator drivers)
-> are keyed to selecting the lowest voltage from the range, while on the
-> mmc side we know which voltages may work and trying this in two steps
-> does not create to much overhead, as unsupported voltages are already
-> filtered out by the regulator_is_voltage_selected calls.
->
-> changes since v1:
-> - address comment from Jaehoon Chung and keep this local to Rockchip
->   for the time being
-> - address comments from Ulf and Doug in making it more explicit
->   that the two-step 3.3V voltage setting essentially works around
->   a limitation of regulator_set_voltage_triplet
->
-> Alexandru M Stan (3):
->   mmc: dw_mmc-rockchip: dt-binding: Add tuning related things
->   mmc: dw_mmc: Generic MMC tuning with the clock phase framework
->   ARM: dts: rockchip: Add drive/sample clocks for rk3288 dw_mmc devices
->
-> Douglas Anderson (4):
->   clk: rockchip: Allow more precision for some mmc clock phases
->   clk: rockchip: Make calculations use rounding
->   mmc: core: Add mmc_regulator_set_vqmmc()
->   mmc: dw_mmc: Use mmc_regulator_set_vqmmc in
->     start_signal_voltage_switch
->
-> Heiko Stuebner (1):
->   ARM: dts: rockchip: add tuning related settings to veyron devices
->
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  13 ++
->  arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi         |   7 +-
->  arch/arm/boot/dts/rk3288-veyron.dtsi               |   6 +
->  arch/arm/boot/dts/rk3288.dtsi                      |  20 ++-
->  drivers/clk/rockchip/clk-mmc-phase.c               |  54 ++++---
->  drivers/mmc/core/core.c                            |  74 ++++++++++
->  drivers/mmc/host/dw_mmc-rockchip.c                 | 162 +++++++++++++++++++++
->  drivers/mmc/host/dw_mmc.c                          |  17 +--
->  include/linux/mmc/host.h                           |   7 +
->  9 files changed, 321 insertions(+), 39 deletions(-)
->
-> --
-> 2.5.1
->
+Calls to dwc2_core_reset() are currently very slow, taking at least
+150ms (possibly more).  It behooves us to take as many of these calls
+out as possible.
 
-Thanks, applied for next!
+It turns out that the calls in dwc2_fs_phy_init() and dwc2_hs_phy_init()
+should (as documented in the code) only be needed if we need to do a PHY
+SELECT.  That means that if we see that we can avoid the PHY SELECT then
+we can avoid the reset.
 
-Kind regards
-Uffe
+This patch appears to successfully bypass two resets (one per USB
+device) on rk3288-based ARM Chromebooks.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+This patch should really be appended to the end of the 5-part series
+ending at <https://patchwork.kernel.org/patch/7348201/> (making it a
+6-part series).  I realized this additional speedup last night upon
+thinking more about the series and tested it today.
+
+ drivers/usb/dwc2/core.c | 40 +++++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+index bf5e951..ec459e5 100644
+--- a/drivers/usb/dwc2/core.c
++++ b/drivers/usb/dwc2/core.c
+@@ -553,16 +553,20 @@ static int dwc2_fs_phy_init(struct dwc2_hsotg *hsotg, bool select_phy)
+ 	 */
+ 	if (select_phy) {
+ 		dev_dbg(hsotg->dev, "FS PHY selected\n");
++
+ 		usbcfg = dwc2_readl(hsotg->regs + GUSBCFG);
+-		usbcfg |= GUSBCFG_PHYSEL;
+-		dwc2_writel(usbcfg, hsotg->regs + GUSBCFG);
++		if (!(usbcfg & GUSBCFG_PHYSEL)) {
++			usbcfg |= GUSBCFG_PHYSEL;
++			dwc2_writel(usbcfg, hsotg->regs + GUSBCFG);
+ 
+-		/* Reset after a PHY select */
+-		retval = dwc2_core_reset(hsotg);
+-		if (retval) {
+-			dev_err(hsotg->dev, "%s() Reset failed, aborting",
+-					__func__);
+-			return retval;
++			/* Reset after a PHY select */
++			retval = dwc2_core_reset(hsotg);
++
++			if (retval) {
++				dev_err(hsotg->dev,
++					"%s: Reset failed, aborting", __func__);
++				return retval;
++			}
+ 		}
+ 	}
+ 
+@@ -597,13 +601,13 @@ static int dwc2_fs_phy_init(struct dwc2_hsotg *hsotg, bool select_phy)
+ 
+ static int dwc2_hs_phy_init(struct dwc2_hsotg *hsotg, bool select_phy)
+ {
+-	u32 usbcfg;
++	u32 usbcfg, usbcfg_old;
+ 	int retval = 0;
+ 
+ 	if (!select_phy)
+ 		return 0;
+ 
+-	usbcfg = dwc2_readl(hsotg->regs + GUSBCFG);
++	usbcfg = usbcfg_old = dwc2_readl(hsotg->regs + GUSBCFG);
+ 
+ 	/*
+ 	 * HS PHY parameters. These parameters are preserved during soft reset
+@@ -631,14 +635,16 @@ static int dwc2_hs_phy_init(struct dwc2_hsotg *hsotg, bool select_phy)
+ 		break;
+ 	}
+ 
+-	dwc2_writel(usbcfg, hsotg->regs + GUSBCFG);
++	if (usbcfg != usbcfg_old) {
++		dwc2_writel(usbcfg, hsotg->regs + GUSBCFG);
+ 
+-	/* Reset after setting the PHY parameters */
+-	retval = dwc2_core_reset(hsotg);
+-	if (retval) {
+-		dev_err(hsotg->dev, "%s() Reset failed, aborting",
+-				__func__);
+-		return retval;
++		/* Reset after setting the PHY parameters */
++		retval = dwc2_core_reset(hsotg);
++		if (retval) {
++			dev_err(hsotg->dev,
++				"%s: Reset failed, aborting", __func__);
++			return retval;
++		}
+ 	}
+ 
+ 	return retval;
+-- 
+2.6.0.rc2.230.g3dd15c0
