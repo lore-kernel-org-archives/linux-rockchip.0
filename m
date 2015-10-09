@@ -1,11 +1,13 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 1/2] Rockchip drivers for 4.4
-Date: Fri, 09 Oct 2015 02:34:44 +0200
-Message-ID: <160496219.B4xWx83NpX@phil>
+Subject: [GIT PULL 2/2] Rockchip dts32 changes for 4.4
+Date: Fri, 09 Oct 2015 02:52:35 +0200
+Message-ID: <12464097.evEmzqNxWf@phil>
+References: <160496219.B4xWx83NpX@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <160496219.B4xWx83NpX@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,9 +23,12 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Arnd, Kevin, Olof,
 
-this is the core powerdomain support for the rk3288 (others to follow later).
-After 18 rounds it looks now ready for inclusion.
+these are collected devicetree changes for 4.4
 
+so if ok, please pull
+
+Thanks
+Heiko
 
 The following changes since commit 6ff33f3902c3b1c5d0db6b1e2c70b6d76fba357f:
 
@@ -31,45 +36,69 @@ The following changes since commit 6ff33f3902c3b1c5d0db6b1e2c70b6d76fba357f:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-drivers1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-dts32-1
 
-for you to fetch changes up to 7c696693a4f54d12714738b45aee3e4302884ade:
+for you to fetch changes up to b63af764ca5134341aa3a2836b356a65902ea9d4:
 
-  soc: rockchip: power-domain: Add power domain driver (2015-10-06 09:53:28 +0200)
-
-----------------------------------------------------------------
-Add the power-domain base-driver which currently contains
-support for the rk3288 powerdomain layout but can be easily
-extended for the socs (including arm64) later on.
-A big thanks to Ceasar Wang for pulling through on this
-during 18 revisions.
-Also included is a fix to the pm-clock handling in the generic
-powerdomains to adapt it to the per-user clock handling we now
-do, Acked by Rafael Wysocki.
+  ARM: dts: rockchip: add the support power-domain node on RK3288 SoCs (2015-10-08 22:41:11 +0200)
 
 ----------------------------------------------------------------
-Caesar Wang (3):
+DTS changes including one new Veyron-board and the Radxa Rock2
+system-on-module as well as the square baseboard. On top of that
+a lot of mmc-related changes to improve speeds on the Cortex-A9
+socs and also setting up the supplies for rk3288 mmc-controllers
+for the following mmc-tuning support. And of course the dts-part
+of the rk3288 power-domains.
+
+----------------------------------------------------------------
+Alexandru M Stan (2):
+      ARM: dts: rockchip: pull up cts lines on rk3288
+      ARM: dts: rockchip: Remove specific cts pullup from veyron
+
+Brian Norris (1):
+      ARM: dts: rockchip: add veyron-jaq board
+
+Caesar Wang (2):
       dt-bindings: add power-domain header for RK3288 SoCs
-      dt-bindings: add document of Rockchip power domains
-      soc: rockchip: power-domain: Add power domain driver
+      ARM: dts: rockchip: add the support power-domain node on RK3288 SoCs
 
-Heiko Stuebner (1):
-      Merge branch 'v4.4-armsoc/pd-headers' into v4.4-armsoc/drivers
+Douglas Anderson (1):
+      ARM: dts: rockchip: Add the hdmi-ddc pinctrl settings for rk3288
 
-Stephen Boyd (1):
-      PM / clk: Do not __clk_get passed in clock-references
+Heiko Stuebner (6):
+      ARM: dts: rockchip: add rk3288-popmetal board to dtb list
+      ARM: dts: rockchip: add rk3288-popmetal mmc supplies
+      ARM: dts: rockchip: add rk3288-popmetal iodomains
+      ARM: dts: rockchip: fixup firefly mmc supplies
+      ARM: dts: rockchip: add rk3288-firefly iodomains
+      Merge branch 'v4.4-armsoc/pd-headers' into v4.4-armsoc/dts32
 
- .../bindings/soc/rockchip/power_domain.txt         |  46 ++
- drivers/base/power/clock_ops.c                     |   6 +-
- drivers/soc/Kconfig                                |   1 +
- drivers/soc/Makefile                               |   1 +
- drivers/soc/rockchip/Kconfig                       |  14 +
- drivers/soc/rockchip/Makefile                      |   4 +
- drivers/soc/rockchip/pm_domains.c                  | 490 +++++++++++++++++++++
- include/dt-bindings/power/rk3288-power.h           |  31 ++
- 8 files changed, 591 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
- create mode 100644 drivers/soc/rockchip/Kconfig
- create mode 100644 drivers/soc/rockchip/Makefile
- create mode 100644 drivers/soc/rockchip/pm_domains.c
+Romain Perier (1):
+      ARM: dts: rockchip: Add support for SD/MMC on MarsBoard-RK3066
+
+Shawn Lin (2):
+      ARM: dts: rockchip: support highspeed sd-cards for rk3188-radxarock
+      ARM: dts: rockchip: support highspeed sd-cards on rk3066a boards
+
+Sjoerd Simons (1):
+      ARM: dts: rockchip: Add dtb for the Radxa Rock 2 Square board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |  11 +
+ arch/arm/boot/dts/Makefile                         |   3 +
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts             |   2 +
+ arch/arm/boot/dts/rk3066a-marsboard.dts            |   8 +
+ arch/arm/boot/dts/rk3066a-rayeager.dts             |   2 +
+ arch/arm/boot/dts/rk3188-radxarock.dts             |   2 +
+ arch/arm/boot/dts/rk3288-firefly.dtsi              |  55 +++-
+ arch/arm/boot/dts/rk3288-popmetal.dts              |  85 ++++++-
+ arch/arm/boot/dts/rk3288-rock2-som.dtsi            | 277 +++++++++++++++++++++
+ arch/arm/boot/dts/rk3288-rock2-square.dts          | 149 +++++++++++
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts            | 176 +++++++++++++
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |  12 -
+ arch/arm/boot/dts/rk3288.dtsi                      | 113 ++++++++-
+ include/dt-bindings/power/rk3288-power.h           |  31 +++
+ 14 files changed, 902 insertions(+), 24 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-rock2-som.dtsi
+ create mode 100644 arch/arm/boot/dts/rk3288-rock2-square.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-veyron-jaq.dts
  create mode 100644 include/dt-bindings/power/rk3288-power.h
