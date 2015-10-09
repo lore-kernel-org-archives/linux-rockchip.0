@@ -1,104 +1,73 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 2/2] Rockchip dts32 changes for 4.4
-Date: Fri, 09 Oct 2015 02:52:35 +0200
-Message-ID: <12464097.evEmzqNxWf@phil>
-References: <160496219.B4xWx83NpX@phil>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 8/8] ARM: multi_v7_defconfig: Add rockchip audio
+ support
+Date: Fri, 9 Oct 2015 08:27:00 +0100
+Message-ID: <20151009072700.GN17172@x1>
+References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <1444311079-2892-9-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <160496219.B4xWx83NpX@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1444311079-2892-9-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Olof Johansson <olof@l>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd, Kevin, Olof,
+Thanks an awful lot of people you've spammed there.
 
-these are collected devicetree changes for 4.4
+Are you sure they all care about your Rockchip changes?
 
-so if ok, please pull
+Hint: I'm sure that they don't.
 
-Thanks
-Heiko
+Please be careful and only send patches to relevant people.
 
-The following changes since commit 6ff33f3902c3b1c5d0db6b1e2c70b6d76fba357f:
+> Enable support for audio device found on rockchip boards.
+>=20
+> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+> ---
+>=20
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>=20
+>  arch/arm/configs/multi_v7_defconfig | 5 +++++
+>  1 file changed, 5 insertions(+)
+>=20
+> diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/m=
+ulti_v7_defconfig
+> index 03deb7f..febce7e 100644
+> --- a/arch/arm/configs/multi_v7_defconfig
+> +++ b/arch/arm/configs/multi_v7_defconfig
+> @@ -478,6 +478,10 @@ CONFIG_SND_USB_AUDIO=3Dy
+>  CONFIG_SND_SOC=3Dm
+>  CONFIG_SND_ATMEL_SOC=3Dm
+>  CONFIG_SND_ATMEL_SOC_WM8904=3Dm
+> +CONFIG_SND_SOC_ROCKCHIP=3Dm
+> +CONFIG_SND_SOC_ROCKCHIP_SPDIF=3Dm
+> +CONFIG_SND_SOC_ROCKCHIP_MAX98090=3Dm
+> +CONFIG_SND_SOC_ROCKCHIP_RT5645=3Dm
+>  CONFIG_SND_SOC_SH4_FSI=3Dm
+>  CONFIG_SND_SOC_RCAR=3Dm
+>  CONFIG_SND_SOC_RSRC_CARD=3Dm
+> @@ -489,6 +493,7 @@ CONFIG_SND_SOC_TEGRA_TRIMSLICE=3Dm
+>  CONFIG_SND_SOC_TEGRA_ALC5632=3Dm
+>  CONFIG_SND_SOC_TEGRA_MAX98090=3Dm
+>  CONFIG_SND_SOC_AK4642=3Dm
+> +CONFIG_SND_SOC_SPDIF=3Dm
+>  CONFIG_SND_SOC_WM8978=3Dm
+>  CONFIG_USB=3Dy
+>  CONFIG_USB_XHCI_HCD=3Dy
 
-  Linux 4.3-rc1 (2015-09-12 16:35:56 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-dts32-1
-
-for you to fetch changes up to b63af764ca5134341aa3a2836b356a65902ea9d4:
-
-  ARM: dts: rockchip: add the support power-domain node on RK3288 SoCs (2015-10-08 22:41:11 +0200)
-
-----------------------------------------------------------------
-DTS changes including one new Veyron-board and the Radxa Rock2
-system-on-module as well as the square baseboard. On top of that
-a lot of mmc-related changes to improve speeds on the Cortex-A9
-socs and also setting up the supplies for rk3288 mmc-controllers
-for the following mmc-tuning support. And of course the dts-part
-of the rk3288 power-domains.
-
-----------------------------------------------------------------
-Alexandru M Stan (2):
-      ARM: dts: rockchip: pull up cts lines on rk3288
-      ARM: dts: rockchip: Remove specific cts pullup from veyron
-
-Brian Norris (1):
-      ARM: dts: rockchip: add veyron-jaq board
-
-Caesar Wang (2):
-      dt-bindings: add power-domain header for RK3288 SoCs
-      ARM: dts: rockchip: add the support power-domain node on RK3288 SoCs
-
-Douglas Anderson (1):
-      ARM: dts: rockchip: Add the hdmi-ddc pinctrl settings for rk3288
-
-Heiko Stuebner (6):
-      ARM: dts: rockchip: add rk3288-popmetal board to dtb list
-      ARM: dts: rockchip: add rk3288-popmetal mmc supplies
-      ARM: dts: rockchip: add rk3288-popmetal iodomains
-      ARM: dts: rockchip: fixup firefly mmc supplies
-      ARM: dts: rockchip: add rk3288-firefly iodomains
-      Merge branch 'v4.4-armsoc/pd-headers' into v4.4-armsoc/dts32
-
-Romain Perier (1):
-      ARM: dts: rockchip: Add support for SD/MMC on MarsBoard-RK3066
-
-Shawn Lin (2):
-      ARM: dts: rockchip: support highspeed sd-cards for rk3188-radxarock
-      ARM: dts: rockchip: support highspeed sd-cards on rk3066a boards
-
-Sjoerd Simons (1):
-      ARM: dts: rockchip: Add dtb for the Radxa Rock 2 Square board
-
- Documentation/devicetree/bindings/arm/rockchip.txt |  11 +
- arch/arm/boot/dts/Makefile                         |   3 +
- arch/arm/boot/dts/rk3066a-bqcurie2.dts             |   2 +
- arch/arm/boot/dts/rk3066a-marsboard.dts            |   8 +
- arch/arm/boot/dts/rk3066a-rayeager.dts             |   2 +
- arch/arm/boot/dts/rk3188-radxarock.dts             |   2 +
- arch/arm/boot/dts/rk3288-firefly.dtsi              |  55 +++-
- arch/arm/boot/dts/rk3288-popmetal.dts              |  85 ++++++-
- arch/arm/boot/dts/rk3288-rock2-som.dtsi            | 277 +++++++++++++++++++++
- arch/arm/boot/dts/rk3288-rock2-square.dts          | 149 +++++++++++
- arch/arm/boot/dts/rk3288-veyron-jaq.dts            | 176 +++++++++++++
- arch/arm/boot/dts/rk3288-veyron.dtsi               |  12 -
- arch/arm/boot/dts/rk3288.dtsi                      | 113 ++++++++-
- include/dt-bindings/power/rk3288-power.h           |  31 +++
- 14 files changed, 902 insertions(+), 24 deletions(-)
- create mode 100644 arch/arm/boot/dts/rk3288-rock2-som.dtsi
- create mode 100644 arch/arm/boot/dts/rk3288-rock2-square.dts
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-jaq.dts
- create mode 100644 include/dt-bindings/power/rk3288-power.h
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
