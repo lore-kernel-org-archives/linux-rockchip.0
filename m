@@ -1,36 +1,56 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL 2/2] Rockchip dts32 changes for 4.4
-Date: Fri, 09 Oct 2015 17:12:08 +0200
-Message-ID: <5005279.8ZW1cGH2Tj@wuerfel>
-References: <160496219.B4xWx83NpX@phil> <12464097.evEmzqNxWf@phil>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 1/9] drm: bridge/dw_hdmi-ahb-audio: add audio driver
+Date: Fri, 9 Oct 2015 17:00:36 +0100
+Message-ID: <20151009160036.GZ32532@n2100.arm.linux.org.uk>
+References: <20150808160936.GN7557@n2100.arm.linux.org.uk>
+ <E1ZO6hC-0003M5-EU@rmk-PC.arm.linux.org.uk>
+ <CAOMZO5COgoGU-3YNpnmSkctHMRDJ3=DuKc82Wb5zTTX7Bx2jNw@mail.gmail.com>
+ <20151006181806.GS21513@n2100.arm.linux.org.uk>
+ <CAOMZO5DaowTGQqN_NW7T2zv-P6a_YZUCumq4-m+OtpsKqFzELw@mail.gmail.com>
+ <20151006185429.GU21513@n2100.arm.linux.org.uk>
+ <CAOMZO5C8O0p6C0hrAvHzanru9W2f8-C7MWsm3+HumoyZ9Hu6Jw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <12464097.evEmzqNxWf@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <CAOMZO5C8O0p6C0hrAvHzanru9W2f8-C7MWsm3+HumoyZ9Hu6Jw@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Fabio Estevam <festevam@gmail.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, linux-kernel <linux-kernel@vger.kernel.org>, DRI mailing list <dri-devel@lists.freedesktop.org>, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday 09 October 2015 02:52:35 Heiko Stuebner wrote:
-> DTS changes including one new Veyron-board and the Radxa Rock2
-> system-on-module as well as the square baseboard. On top of that
-> a lot of mmc-related changes to improve speeds on the Cortex-A9
-> socs and also setting up the supplies for rk3288 mmc-controllers
-> for the following mmc-tuning support. And of course the dts-part
-> of the rk3288 power-domains.
-> 
-> 
-
-Pulled into next/dt, thanks!
-
-	Arnd
+T24gVHVlLCBPY3QgMDYsIDIwMTUgYXQgMDU6MjU6MTZQTSAtMDMwMCwgRmFiaW8gRXN0ZXZhbSB3
+cm90ZToKPiBPbiBUdWUsIE9jdCA2LCAyMDE1IGF0IDM6NTQgUE0sIFJ1c3NlbGwgS2luZyAtIEFS
+TSBMaW51eAo+IDxsaW51eEBhcm0ubGludXgub3JnLnVrPiB3cm90ZToKPiAKPiA+IE1ha2Ugc3Vy
+ZSB5b3UgaGF2ZSB0aGUgQUxTQSBjb25maWcgZmlsZSwgYXMgYWxzYWxpYiB3b24ndCBnZXQgb24K
+PiA+IHdpdGggZHctaGRtaSBvbmx5IGFjY2VwdGluZyAyNC1iaXQgYXVkaW8gd2l0aG91dCB0aGlz
+LiAgQSBjb3B5IGlzCj4gPiBhdHRhY2hlZC4gIEl0IGFsc28gdGVsbHMgQUxTQSBob3cgdG8gZGVh
+bCB3aXRoIG11bHRpLWNoYW5uZWwgYXVkaW8KPiA+IGFzIHdlbGwuCj4gCj4gVGhhbmtzLCBSdXNz
+ZWxsIQo+IAo+IEdvdCBhdWRpbyB0byBwbGF5IG9uIG15IEhETUkgVFYgOi0pCj4gCj4gRm9yIHRo
+ZSBlbnRpcmUgc2VyaWVzOgo+IAo+IFRlc3RlZC1ieTogRmFiaW8gRXN0ZXZhbSA8ZmFiaW8uZXN0
+ZXZhbUBmcmVlc2NhbGUuY29tPgoKSnVzdCB0byBjb25maXJtIC0gdGhhdCdzIGZvciBfYWxsXyBv
+ZiB0aGVzZSA4IHBhdGNoZXMsIGluY2x1ZGluZyB0aGUKY2hhbmdlcyB0byB0aGUgQUNSIGNvZGUg
+aW4gdGhlIGxhc3QgZm91ciBwYXRjaGVzLCBhbmQgeW91J3JlIGhhcHB5IHRoYXQKSSBzZW5kIGFs
+bCBvZiB0aGVzZToKCmRybTogYnJpZGdlL2R3X2hkbWktYWhiLWF1ZGlvOiBhZGQgYXVkaW8gZHJp
+dmVyCmRybTogYnJpZGdlL2R3X2hkbWktYWhiLWF1ZGlvOiBwYXJzZSBFTEQgZnJvbSBIRE1JIGRy
+aXZlcgpkcm06IGJyaWRnZS9kd19oZG1pLWFoYi1hdWRpbzogYmFzaWMgc3VwcG9ydCBmb3IgbXVs
+dGktY2hhbm5lbCBQQ00gYXVkaW8KZHJtOiBicmlkZ2UvZHdfaGRtaS1haGItYXVkaW86IGFsbG93
+IGxhcmdlciBidWZmZXIgc2l6ZXMKZHJtOiBicmlkZ2UvZHdfaGRtaTogYXZvaWQgYmVpbmcgcmVj
+dXJzaXZlIGluIE4gY2FsY3VsYXRpb24KZHJtOiBicmlkZ2UvZHdfaGRtaTogYWRqdXN0IHBpeGVs
+IGNsb2NrIHZhbHVlcyBpbiBOIGNhbGN1bGF0aW9uCmRybTogYnJpZGdlL2R3X2hkbWk6IHJlbW92
+ZSByYXRpbyBzdXBwb3J0IGZyb20gQUNSIGNvZGUKZHJtOiBicmlkZ2UvZHdfaGRtaTogcmVwbGFj
+ZSBDVFMgY2FsY3VsYXRpb24gZm9yIHRoZSBBQ1IKCi0tIApGVFRDIGJyb2FkYmFuZCBmb3IgMC44
+bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgOS42TWJwcyBkb3duIDQwMGticHMgdXAKYWNjb3JkaW5n
+IHRvIHNwZWVkdGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+LWRldmVsCg==
