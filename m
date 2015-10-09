@@ -1,62 +1,96 @@
-From: Kevin Hilman <khilman@kernel.org>
-Subject: Re: [PATCH v2 4/8] mmc: dw_mmc: Use mmc_regulator_set_vqmmc in start_signal_voltage_switch
-Date: Fri, 9 Oct 2015 22:17:49 +0200
-Message-ID: <CAMAWPa9rOvwjBRZ7x7xVcEdaTxtWChw1_qXBqk9ziFM-nA=XNw@mail.gmail.com>
-References: <1443622064-14362-1-git-send-email-heiko@sntech.de>
-	<1443622064-14362-5-git-send-email-heiko@sntech.de>
-	<CAMAWPa9o=bQJPK+tJ38=5jngTFcOsAi=s9RcETbPN=3SsyQ8gA@mail.gmail.com>
-	<CAD=FV=XfoRoj610zXvBPxAwSO7O_eYGxsAidnEnXx5mK1ANGrg@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
+Date: Fri, 9 Oct 2015 23:02:32 +0200
+Message-ID: <20151009230232.6d21d9be@bbrezillon>
+References: <1442828009-6241-1-git-send-email-boris.brezillon@free-electrons.com>
+Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XfoRoj610zXvBPxAwSO7O_eYGxsAidnEnXx5mK1ANGrg@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kevin Hilman <khilman@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>, Michael Turquette <mturquette@baylibre.com>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, Seungwon Jeon <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, Alexandru Stan <amstan@chromium.org>, linux-mmc <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Tyler Baker <tyler.baker@linaro.org>, Olof Johansson <olof@lixom.net>, =?UTF-8?Q?Krzysztof_Koz=C5=82owski?= <k.kozlowski@samsung.com>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-sunxi+bncBCIPJ6FA2QLBB5WW4CYAKGQEQDN7WRA-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+In-Reply-To: <1442828009-6241-1-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <http://groups.google.com/group/linux-sunxi
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <http://groups.google.com/group/linux-sunxi/subscribe>
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Oct 9, 2015 at 10:12 PM, Doug Anderson <dianders@chromium.org> wrote:
-> Kevin,
->
-> On Fri, Oct 9, 2015 at 12:06 PM, Kevin Hilman <khilman@kernel.org> wrote:
->> On Wed, Sep 30, 2015 at 4:07 PM, Heiko Stuebner <heiko@sntech.de> wrote:
->>> From: Douglas Anderson <dianders@chromium.org>
->>>
->>> We've introduced a new helper in the MMC core:
->>> mmc_regulator_set_vqmmc().  Let's use this in dw_mmc.  Using this new
->>> helper has some advantages:
->>>
->>> 1. We get the mmc_regulator_set_vqmmc() behavior of trying to match
->>>    VQMMC and VMMC when the signal voltage is 3.3V.  This ensures max
->>>    compatibility.
->>>
->>> 2. We get rid of a few more warnings when probing unsupported
->>>    voltages.
->>>
->>> 3. We get rid of some non-dw_mmc specific code in dw_mmc.
->>>
->>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
->>> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
->>
->> kernelci.org found a new failure in linux-next on
->> exynos5800-peach-pi[1] and it was bisected down to this patch, which
->> has hit linux-next in the form of commit fba2e23128d0 (mmc: dw_mmc:
->> Use mmc_regulator_set_vqmmc in start_signal_voltage_switch).  Based on
->> a quick glance at the boot log[2], it looks to be a bad pointer
->> dereference in regulator_get_voltage().
->>
->> I confirmed that reverting this patch on top of next-20151009 gets my
->> peach-pi booting again.
->>
->> Note that the boot failure is only on exynos_defconfig, not multi_v7_defconfig.
->
-> Right.  See <http://www.spinics.net/lists/arm-kernel/msg450802.html>
-> for discussion.  Ulf responded to the cover letter rather than the
-> individual patch.
+Hi Thierry,
 
-Ah, I hadn't noticed that.  Thanks.
+On Mon, 21 Sep 2015 11:33:17 +0200
+Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org> wrote:
 
-I guess it should be dropped by tomorrow's linux-next then.  I'll keep
-an eye on it.
+> Hello,
+>=20
+> This series adds support for atomic PWM update, or IOW, the capability
+> to update all the parameters of a PWM device (enabled/disabled, period,
+> duty and polarity) in one go.
 
-Kevin
+Anything preventing this series from being applied (AKA ping)?
+
+>=20
+> Best Regards,
+>=20
+> Boris
+>=20
+> Changes since v2:
+> - rebased on top of 4.3-rc2
+> - reintroduced pwm-regulator patches
+>=20
+> Changes since v1:
+> - dropped applied patches
+> - squashed Heiko's fixes into the rockchip driver changes
+> - made a few cosmetic changes
+> - added kerneldoc comments
+> - added Heiko's patch to display more information in debugfs
+> - dropped pwm-regulator patches (should be submitted separately)
+>=20
+> Boris Brezillon (11):
+>   pwm: introduce default period and polarity concepts
+>   pwm: define a new pwm_state struct
+>   pwm: move the enabled/disabled info to pwm_state struct
+>   backlight: pwm_bl: remove useless call to pwm_set_period
+>   pwm: declare a default PWM state
+>   pwm: add the PWM initial state retrieval infra
+>   pwm: add the core infrastructure to allow atomic update
+>   pwm: rockchip: add initial state retrieval
+>   pwm: rockchip: add support for atomic update
+>   regulator: pwm: implement ->enable(), ->disable() and ->is_enabled
+>     methods
+>   regulator: pwm: properly initialize the ->state field
+>=20
+> Heiko St=C3=BCbner (1):
+>   pwm: add information about polarity, duty cycle and period to debugfs
+>=20
+>  drivers/leds/leds-pwm.c              |   2 +-
+>  drivers/pwm/core.c                   | 169 +++++++++++++++++++++++++++++=
+++----
+>  drivers/pwm/pwm-pxa.c                |   2 +-
+>  drivers/pwm/pwm-rockchip.c           | 119 +++++++++++++++++++-----
+>  drivers/pwm/pwm-sun4i.c              |   3 +-
+>  drivers/regulator/pwm-regulator.c    |  65 ++++++++++++--
+>  drivers/video/backlight/lm3630a_bl.c |   4 +-
+>  drivers/video/backlight/pwm_bl.c     |  10 ++-
+>  drivers/video/fbdev/ssd1307fb.c      |   2 +-
+>  include/linux/pwm.h                  |  89 +++++++++++++++---
+>  10 files changed, 392 insertions(+), 73 deletions(-)
+>=20
+
+
+
+--=20
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-sunxi" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-sunxi+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
+For more options, visit https://groups.google.com/d/optout.
