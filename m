@@ -1,74 +1,69 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH 09/10] drm/panel: simple: Add support for BOE TV080WUM-NL0
-Date: Sat, 10 Oct 2015 17:55:29 +0800
-Message-ID: <1444470930-17150-10-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH 10/10] ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
+Date: Sat, 10 Oct 2015 17:55:30 +0800
+Message-ID: <1444470930-17150-11-git-send-email-zyw@rock-chips.com>
 References: <1444470930-17150-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1444470930-17150-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds support for the BOE TV080WUM-NL0 1200x1920 mipi panel to the
-DRM simple panel driver.
+This tv080wum-nl0 panel is a mipi panel, it can use in MIPI_TX socket
+of rk3288 evb board.
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+
 ---
 
- drivers/gpu/drm/panel/panel-simple.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ arch/arm/boot/dts/rk3288-evb.dtsi | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index f97b73e..3610e1c 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -1348,6 +1348,36 @@ static const struct panel_desc_dsi panasonic_vvx10f004b00 = {
- 	.lanes = 4,
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index f6d2e78..d04878f 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -47,7 +47,7 @@
+ 		reg = <0x0 0x80000000>;
+ 	};
+ 
+-	backlight {
++	backlight: backlight {
+ 		compatible = "pwm-backlight";
+ 		brightness-levels = <
+ 			  0   1   2   3   4   5   6   7
+@@ -177,6 +177,21 @@
+ 	status = "okay";
  };
  
-+static const struct drm_display_mode boe_tv080wum_nl0_mode = {
-+	.clock = 160000,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 120,
-+	.hsync_end = 1200 + 120 + 20,
-+	.htotal = 1200 + 120 + 20 + 21,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 21,
-+	.vsync_end = 1920 + 21 + 3,
-+	.vtotal = 1920 + 21 + 3 + 18,
-+	.vrefresh = 60,
-+	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
++&mipi_dsi {
++	status = "okay";
++
++	panel {
++		compatible ="boe,tv080wum-nl0";
++		reg = <0>;
++
++		enable-gpios = <&gpio7 3 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&lcd_en>;
++		backlight = <&backlight>;
++		status = "okay";
++	};
 +};
 +
-+static const struct panel_desc_dsi boe_tv080wum_nl0 = {
-+	.desc = {
-+		.modes = &boe_tv080wum_nl0_mode,
-+		.num_modes = 1,
-+		.size = {
-+			.width = 107,
-+			.height = 172,
-+		},
-+	},
-+	.flags = MIPI_DSI_MODE_VIDEO |
-+		 MIPI_DSI_MODE_VIDEO_BURST |
-+		 MIPI_DSI_MODE_VIDEO_SYNC_PULSE,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.lanes = 4,
-+};
-+
- static const struct of_device_id dsi_of_match[] = {
- 	{
- 		.compatible = "auo,b080uan01",
-@@ -1362,6 +1392,9 @@ static const struct of_device_id dsi_of_match[] = {
- 		.compatible = "panasonic,vvx10f004b00",
- 		.data = &panasonic_vvx10f004b00
- 	}, {
-+		.compatible = "boe,tv080wum-nl0",
-+		.data = &boe_tv080wum_nl0
-+	}, {
- 		/* sentinel */
- 	}
- };
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+@@ -247,6 +262,9 @@
+ 		bl_en: bl-en {
+ 			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
++		lcd_en: lcd-en {
++			rockchip,pins = <7 3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
+ 	};
+ 
+ 	buttons {
 -- 
 2.6.1
