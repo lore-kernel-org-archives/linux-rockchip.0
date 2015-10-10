@@ -1,48 +1,49 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH 01/10] clk: rockchip: Add sclk_mipidsi_24m for mipi dsi
-Date: Sat, 10 Oct 2015 17:55:21 +0800
-Message-ID: <1444470930-17150-2-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH 03/10] drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+Date: Sat, 10 Oct 2015 17:55:23 +0800
+Message-ID: <1444470930-17150-4-git-send-email-zyw@rock-chips.com>
 References: <1444470930-17150-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1444470930-17150-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Jeff Chen <cym@rock-chips.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Kumar Gala <galak@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sonny Rao <sonnyrao@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Huang Lin <hl@rock-chips.com>, Roger Chen <roger.chen@rock-chips.com>, Alexandru M Stan <amstan@chromium.org>
+Cc: Liu Ying <Ying.liu@freescale.com>, Liu Ying <Ying.Liu@freescale.com>, Chris Zhong <zyw@rock-chips.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-sclk_mipidsi_24m is the gating of mipi dsi phy.
+From: Liu Ying <Ying.liu@freescale.com>
 
+Signed-off-by: Liu Ying <Ying.Liu@freescale.com>
+Acked-by: Thierry Reding <treding@nvidia.com>
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3288.c      | 2 +-
- include/dt-bindings/clock/rk3288-cru.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ include/drm/drm_mipi_dsi.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 9040878..c7d7ebf 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -709,7 +709,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(SCLK_LCDC_PWM1, "sclk_lcdc_pwm1", "xin24m", 0, RK3288_CLKGATE_CON(13), 11, GFLAGS),
- 	GATE(SCLK_PVTM_CORE, "sclk_pvtm_core", "xin24m", 0, RK3288_CLKGATE_CON(5), 9, GFLAGS),
- 	GATE(SCLK_PVTM_GPU, "sclk_pvtm_gpu", "xin24m", 0, RK3288_CLKGATE_CON(5), 10, GFLAGS),
--	GATE(0, "sclk_mipidsi_24m", "xin24m", 0, RK3288_CLKGATE_CON(5), 15, GFLAGS),
-+	GATE(SCLK_MIPI_24M, "sclk_mipidsi_24m", "xin24m", 0, RK3288_CLKGATE_CON(5), 15, GFLAGS),
+diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+index f1d8d0d..3662021 100644
+--- a/include/drm/drm_mipi_dsi.h
++++ b/include/drm/drm_mipi_dsi.h
+@@ -163,6 +163,20 @@ static inline struct mipi_dsi_device *to_mipi_dsi_device(struct device *dev)
+ 	return container_of(dev, struct mipi_dsi_device, dev);
+ }
  
- 	/* sclk_gpu gates */
- 	GATE(ACLK_GPU, "aclk_gpu", "sclk_gpu", 0, RK3288_CLKGATE_CON(18), 0, GFLAGS),
-diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
-index c719aac..b07cdd3 100644
---- a/include/dt-bindings/clock/rk3288-cru.h
-+++ b/include/dt-bindings/clock/rk3288-cru.h
-@@ -86,6 +86,7 @@
- #define SCLK_USBPHY480M_SRC	122
- #define SCLK_PVTM_CORE		123
- #define SCLK_PVTM_GPU		124
-+#define SCLK_MIPI_24M		125
- 
- #define SCLK_MAC		151
- #define SCLK_MACREF_OUT		152
++static inline int mipi_dsi_pixel_format_to_bpp(enum mipi_dsi_pixel_format fmt)
++{
++	switch (fmt) {
++	case MIPI_DSI_FMT_RGB888:
++	case MIPI_DSI_FMT_RGB666:
++		return 24;
++	case MIPI_DSI_FMT_RGB666_PACKED:
++		return 18;
++	case MIPI_DSI_FMT_RGB565:
++		return 16;
++	}
++	return -EINVAL;
++}
++
+ struct mipi_dsi_device *of_find_mipi_dsi_device_by_node(struct device_node *np);
+ int mipi_dsi_attach(struct mipi_dsi_device *dsi);
+ int mipi_dsi_detach(struct mipi_dsi_device *dsi);
 -- 
 2.6.1
