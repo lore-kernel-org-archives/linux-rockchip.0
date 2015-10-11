@@ -1,45 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] soc/rockchip: Restrict to ARCH_ROCKCHIP
-Date: Sun, 11 Oct 2015 12:02 +0200
-Message-ID: <11653010.7KoG7eRGs0@diego>
-References: <1444398378-24974-1-git-send-email-thierry.reding@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] clk: add flag for clocks that need to be enabled on rate changes
+Date: Sun, 11 Oct 2015 12:41:09 +0200
+Message-ID: <13378907.1JCOSf8QGs@diego>
+References: <1929669.AsgMSusdJb@phil> <3137165.kmu68gRS44@diego> <20151008215840.GJ26883@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1444398378-24974-1-git-send-email-thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20151008215840.GJ26883@codeaurora.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
+Hi Stephen,
 
-Am Freitag, 9. Oktober 2015, 15:46:18 schrieb Thierry Reding:
-> From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-> 
-> By definition this directory contains drivers that are specific to the
-> Rockchip architecture. All Kconfig options should therefore depend on
-> ARCH_ROCKCHIP to avoid exposing these symbols on other architectures.
-> For example, this options currently shows up as new when doing an
-> incremental build on PowerPC.
-> 
-> Signed-off-by: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Am Donnerstag, 8. Oktober 2015, 14:58:40 schrieb Stephen Boyd:
+> On 10/02, Heiko St=FCbner wrote:
+> > Hi,
+> >=20
+> > any comment on these 3 patches?
+>=20
+> Dong has a similar problem, but those patches conflate this with
+> enabling parent clocks during clk_disable_unused() which makes no
+> sense to me. So I'm ok with the requirement that we turn clocks
+> on to change rates, but I wonder if in this case we need to turn
+> on the clock that's changing rates itself, or if we just need to
+> turn on the parent and/or future parent of the clock during the
+> rate switch. Care to elaborate on that?
 
-thanks for catching this and I agree that Rockchip stuff should not leak into 
-other arches :-) .
+As you can see in the follow-up patches, the fractional dividers on Roc=
+kchip=20
+SoCs are quite strange in that they even need to have their _downstream=
+_ mux=20
+point to them to actually accept rate changes.
 
-I've applied this after adding a "|| COMPILE_TEST" alternative to the 
-condition.
+The register value always reflects the value set by the system, but har=
+dware=20
+really only accepts it if the clock is enabled and even the downstream =
+mux=20
+selects the fractional divider as parent (they call it a auto-gating fe=
+ature).
+
+So in the worst (and current) case, you end up with the register showin=
+g the=20
+right value, but the hardware can use completely different dividers fro=
+m the=20
+previous setting.
+
+That strange behaviour got quite deeply investigated between Rockchip a=
+nd=20
+Google engineers who stumbled upon this in the first place, so I'm reas=
+onably=20
+sure this is the right solution for that clock type :-) .
 
 
-Thanks
 Heiko
