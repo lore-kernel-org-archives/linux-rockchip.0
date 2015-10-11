@@ -1,58 +1,62 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] clk: add flag for clocks that need to be enabled on rate changes
-Date: Sun, 11 Oct 2015 12:41:09 +0200
-Message-ID: <13378907.1JCOSf8QGs@diego>
-References: <1929669.AsgMSusdJb@phil> <3137165.kmu68gRS44@diego> <20151008215840.GJ26883@codeaurora.org>
+Subject: Re: [PATCH v4 5/8] clk: rockchip: Allow the RK3288
+	SPDIF clocks to change their parent
+Date: Sun, 11 Oct 2015 12:43:27 +0200
+Message-ID: <1745884.LUbKvMh2Tj@diego>
+References: <1444311079-2892-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <11755202.f1LLWMlYi0@phil> <1444390555.9895.271.camel@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20151008215840.GJ26883@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1444390555.9895.271.camel@collabora.co.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Liam Girdwood <lgirdwood@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Takashi Iwai <tiwai@suse.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Stephen,
+Hi Sjoerd,
 
-Am Donnerstag, 8. Oktober 2015, 14:58:40 schrieb Stephen Boyd:
-> On 10/02, Heiko St=FCbner wrote:
-> > Hi,
-> >=20
-> > any comment on these 3 patches?
->=20
-> Dong has a similar problem, but those patches conflate this with
-> enabling parent clocks during clk_disable_unused() which makes no
-> sense to me. So I'm ok with the requirement that we turn clocks
-> on to change rates, but I wonder if in this case we need to turn
-> on the clock that's changing rates itself, or if we just need to
-> turn on the parent and/or future parent of the clock during the
-> rate switch. Care to elaborate on that?
+Am Freitag, 9. Oktober 2015, 13:35:55 schrieb Sjoerd Simons:
+> On Thu, 2015-10-08 at 17:10 +0200, Heiko Stuebner wrote:
+> > Am Donnerstag, 8. Oktober 2015, 15:31:16 schrieb Sjoerd Simons:
+> > > The clock branches leading to sclk_spdif and sclk_spdif_8ch on
+> > > RK3288
+> > > SoCs only feed those clocks, allow those clocks to change their
+> > > parents
+> > > all the way up the hierarchy.
+> > > 
+> > > Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> > 
+> > Just as comment, if I'm seeing that right, this patch needs "clk:
+> > rockchip:
+> > handle mux dependency of fractional dividers" and friends [0] to
+> > apply and
+> > also actually handle the fractional dividers correctly.
+> > 
+> > For the clock change itself:
+> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> 
+> Oh sorry yes, i completely forgot to at that as note on this patch
+> (series). These are on top of your series as those are required to make
+> things actually work as expected.
+> 
+> Which reminds me, i was wondering how to best move that forward. Could
+> you pick this one up to include it in the next round of your series?
+> (Otherwise i'm happy to rebase it once you do a v2)
 
-As you can see in the follow-up patches, the fractional dividers on Roc=
-kchip=20
-SoCs are quite strange in that they even need to have their _downstream=
-_ mux=20
-point to them to actually accept rate changes.
-
-The register value always reflects the value set by the system, but har=
-dware=20
-really only accepts it if the clock is enabled and even the downstream =
-mux=20
-selects the fractional divider as parent (they call it a auto-gating fe=
-ature).
-
-So in the worst (and current) case, you end up with the register showin=
-g the=20
-right value, but the hardware can use completely different dividers fro=
-m the=20
-previous setting.
-
-That strange behaviour got quite deeply investigated between Rockchip a=
-nd=20
-Google engineers who stumbled upon this in the first place, so I'm reas=
-onably=20
-sure this is the right solution for that clock type :-) .
+I guess that will depend on how the core series gets handled. Aka if there 
+needs to be a v2 (depending on the clock maintainers) I can pick that up as 
+part of it. Otherwise we'll just need to ping the clock-maintainers separately 
+on this patch if necessary.
 
 
 Heiko
