@@ -1,136 +1,218 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v5 0/17] Add Analogix Core Display Port Driver
-Date: Tue, 13 Oct 2015 21:50:08 +0800
-Message-ID: <561D0C10.4060002@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1442906428-2609-1-git-send-email-ykk@rock-chips.com> <5614BADD.1070307@rock-chips.com> <5614DBE2.6080102@osg.samsung.com> <5614DFBC.8060105@rock-chips.com> <5614E553.6060108@osg.samsung.com> <5614FC6B.4080702@rock-chips.com> <56150128.2070309@osg.samsung.com> <5615BB93.9020008@rock-chips.com> <56192135.2080608@rock-chips.com> <561CCD09.6020801@osg.samsung.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 2/2] ARM: dts: change gpio-key,wakeup property to boolean
+Date: Tue, 13 Oct 2015 09:07:02 -0500
+Message-ID: <CAL_JsqKDrvxas-x9QoLEs3yuDtEY+0u5qJZ4ZPiRQX0SrMKY2w@mail.gmail.com>
+References: <1444743164-17735-1-git-send-email-sudeep.holla@arm.com> <1444743164-17735-2-git-send-email-sudeep.holla@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <561CCD09.6020801@osg.samsung.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Thierry Reding <treding@nvidia.com>, joe@perches.com, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>
-Cc: David Airlie <airlied@linux.ie>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1444743164-17735-2-git-send-email-sudeep.holla@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kevin Hilman <khilman@linaro.org>, Olof Johansson <olof@lixom.net>, Arnd Bergmann <arnd@arndb.de>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Viresh Kumar <viresh.kumar@linaro.org>, spear-devel <spear-devel@list.st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Javierm
-
-On 10/13/2015 05:21 PM, Javier Martinez Canillas wrote:
-> Hello Yakir,
+On Tue, Oct 13, 2015 at 8:32 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+> Keyboard driver for GPIO buttons(gpio-keys) checks for the legacy
+> "gpio-key,wakeup" boolean property to enable gpio buttons as wakeup
+> source.
 >
-> Sorry for the delay but I was on holidays.
+> Few dts files assign value "1" to gpio-key,wakeup and in one instance a
+> value "0" is assigned probably assuming it won't be enabled as a wakeup
+> source. Since the presence of the boolean property indicates it is
+> enabled, value of "0" have no value.
 >
-> On 10/10/2015 04:31 PM, Yakir Yang wrote:
->> Hi Javier,
-> [snip]
->
->>>>> Maybe you can email me the method the run mainline kernel on Peach
->>>>> Pit, so I can debug the analogix_dp driver at the same time, that would
->>>>> be great.
->>>> I wrote a little blog post explaining how to run mainline on these boards:
->>>>
->>>> http://blogs.s-osg.org/install-linux-mainline-kernel-distro-exynos-chromebooks/
->>>>
->>>> That explains the simplest setup though so if you need a different one
->>>> (i.e: chain loading a non verified u-boot) or if you have any questions,
->>>> feel free to contact me in private and I can help you with the setup.
->>>>
->>> Ah, thanks, gonna to step-by-step.
->> Thanks for your great material, although I meet some problems in the step-by-step
->> process, and failed at this way to setup mainline kernel environment on Exynos chromebooks.
->>
->> But i do find another way to install mainline kernel to Exynos Chromebook:
->> 1. Install any ChromeOS image into a USB media device (like dd tools)
->> 2. "enable_dev_usb_boot" on Exynos chromebooks which would allowed boot from USB.
->> 3. Flash the mainline kernel into the KERNEL-A and KERNEL-B partitions on host PC.
->> 4. Insert USB device into Exynos chromebooks, and press CTRL+U, boot into USB OS.
-> Yes, as I mentioned in the blog, there are many options. In fact I also boot from
-> a uSD instead of the eMMC since is easier for me to flash from the host machine
-> and chain load a non-verified u-boot so I can boot non signed kernels.
->
-> But thought that the most common use case would be to install it in the KERN-C and
-> ROOT-C partitions in the eMMC. Anyways, I'm glad that you got it working.
+> This patch removes the property where value "0" is assigned and removes
+> the value "1" in most of the other cases.
 
-:-P
+Why don't you just change everything to wakeup-source.
 
->> And it's better to enable pstore function on mainline kernel, so we can analysis the last log when
->> the mainline kernel crashed. After enable PSTORE_RAM in .config, we still need add ramoops node
-> Interesting, I knew about pstore but I never used it with the Exynos Chromebooks.
->
->> into file, like:
->> --- a/arch/arm/boot/dts/exynos5250.dtsi
->> +++ b/arch/arm/boot/dts/exynos5250.dtsi
->> @@ -750,6 +750,15 @@
->>                  iommu = <&sysmmu_gsc3>;
->>          };
->>
->> +       ramoops: ramoops {
->> +               compatible = "ramoops";
->> +               name = "ramoops";
->> +               reg = <0x41f00000 0x100000>;
->> +               record-size = <0x20000>;
->> +               dump-oops;
->> +               status = "okay";
->> +       };
->> +
-> Are you using mainline? There isn't a "ramoops" compatible string documented
-> in the upstream DT bindings, platform_match() would match by driver name as
-> a fallback but I don't see code in fs/pstore/ram.c that parses the properties
-> in your device node. I wonder how this works for you or did I missunderstand?
-
-Aha, I lost some things that I back port the pstore/ram.c from chrome
-v3.14 tree which driver would parsed the "ramoops" compatible.
-
-And those "ramoops" device node should be structured by bootloader in
-chromeos, so we won't see anything about "ramoops" in DT binding. Due
-to I can't upgraded the loader of Peach Pit, so I chose to structure that
-device manually. (detailed properties just `cat 
-/proc/device-tree/ramoops/*`)
+Rob
 
 >
->>          hdmi: hdmi {
->>                  compatible = "samsung,exynos4212-hdmi";
->>                  reg = <0x14530000 0x70000>;
->>
->>
->> Aha, I have tested this series on two Exynos Chromebooks that I borrowed(Snow and Peach Pit)
->> with previously method (actually I believed it's a common method without broken the original
->> ChromeOS image).
->>
->> And I do find the crash place that make you failed at this series, here is the diff changes:
->> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> index 5f8fc11..bcbc009 100644
->> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
->> @@ -1169,6 +1169,7 @@ static int analogix_dp_create_bridge(struct drm_device *drm_dev,
->>
->>          dp->bridge = bridge;
->>
->> +       dp->encoder->bridge = bridge;
->>          bridge->driver_private = dp;
->>          bridge->encoder = dp->encoder;
->>          bridge->funcs = &analogix_dp_bridge_funcs;
->> --- a/arch/arm/boot/dts/exynos5420-peach-pit.dts
->> +++ b/arch/arm/boot/dts/exynos5420-peach-pit.dts
->> @@ -151,7 +151,7 @@
->>          samsung,color-depth = <1>;
->>          samsung,link-rate = <0x06>;
->>          samsung,lane-count = <2>;
->> -       hpd-gpio = <&gpx2 6 0>;
->> +       hpd-gpios = <&gpx2 6 0>;
->>
->>          ports {
->>                  port@0 {
->>
->>
->> Anyway I'm going to send the v6 series, thanks for your good idea.
->>
-> Great, I'll try to test your latest series on my Peach Pi today.
-
-Thanks
-
-- Yakir
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> Cc: spear-devel@list.st.com
+> Signed-off-by: Sudeep Holla <sudeep.holla@arm.com>
+> ---
+>  arch/arm/boot/dts/rk3066a-bqcurie2.dts      | 3 +--
+>  arch/arm/boot/dts/rk3066a-rayeager.dts      | 2 +-
+>  arch/arm/boot/dts/rk3188-radxarock.dts      | 2 +-
+>  arch/arm/boot/dts/rk3288-evb.dtsi           | 2 +-
+>  arch/arm/boot/dts/rk3288-firefly.dtsi       | 2 +-
+>  arch/arm/boot/dts/rk3288-popmetal.dts       | 2 +-
+>  arch/arm/boot/dts/rk3288-r89.dts            | 2 +-
+>  arch/arm/boot/dts/spear1310-evb.dts         | 2 +-
+>  arch/arm/boot/dts/spear1340-evb.dts         | 2 +-
+>  arch/arm/boot/dts/spear320-hmi.dts          | 4 ++--
+>  arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 2 +-
+>  11 files changed, 12 insertions(+), 13 deletions(-)
 >
->> - Yakir
->>
-> Best regards,
+> diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> index c0273755431a..71a15772cda6 100644
+> --- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> +++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
+> @@ -74,7 +74,7 @@
+>                         linux,code = <116>;
+>                         label = "GPIO Key Power";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         debounce-interval = <100>;
+>                 };
+>                 button@1 {
+> @@ -82,7 +82,6 @@
+>                         linux,code = <104>;
+>                         label = "GPIO Key Vol-";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <0>;
+>                         debounce-interval = <100>;
+>                 };
+>                 /* VOL+ comes somehow thru the ADC */
+> diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+> index e36383c701dc..72bf52a04506 100644
+> --- a/arch/arm/boot/dts/rk3066a-rayeager.dts
+> +++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+> @@ -65,7 +65,7 @@
+>                 #size-cells = <0>;
+>
+>                 button@0 {
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         gpios = <&gpio6 2 GPIO_ACTIVE_LOW>;
+>                         label = "GPIO Power";
+>                         linux,code = <116>;
+> diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+> index d2180e5d2b05..ba6b174777e7 100644
+> --- a/arch/arm/boot/dts/rk3188-radxarock.dts
+> +++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+> @@ -63,7 +63,7 @@
+>                         linux,code = <116>;
+>                         label = "GPIO Key Power";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         debounce-interval = <100>;
+>                 };
+>         };
+> diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+> index f6d2e7894b05..ab013155f04f 100644
+> --- a/arch/arm/boot/dts/rk3288-evb.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+> @@ -103,7 +103,7 @@
+>                         linux,code = <116>;
+>                         label = "GPIO Key Power";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         debounce-interval = <100>;
+>                 };
+>         };
+> diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
+> index 20fa0ef0b96b..4fa2dedd0c7a 100644
+> --- a/arch/arm/boot/dts/rk3288-firefly.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
+> @@ -67,7 +67,7 @@
+>                 #size-cells = <0>;
+>
+>                 button@0 {
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         gpios = <&gpio0 5 GPIO_ACTIVE_LOW>;
+>                         label = "GPIO Power";
+>                         linux,code = <116>;
+> diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+> index f82b956ebf17..9b7f389c38e5 100644
+> --- a/arch/arm/boot/dts/rk3288-popmetal.dts
+> +++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+> @@ -74,7 +74,7 @@
+>                         linux,code = <116>;
+>                         label = "GPIO Key Power";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         debounce-interval = <100>;
+>                 };
+>         };
+> diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
+> index 14b9fc73c8a4..2ee425523f5c 100644
+> --- a/arch/arm/boot/dts/rk3288-r89.dts
+> +++ b/arch/arm/boot/dts/rk3288-r89.dts
+> @@ -73,7 +73,7 @@
+>                         linux,code = <116>;
+>                         label = "GPIO Key Power";
+>                         linux,input-type = <1>;
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         debounce-interval = <100>;
+>                 };
+>         };
+> diff --git a/arch/arm/boot/dts/spear1310-evb.dts b/arch/arm/boot/dts/spear1310-evb.dts
+> index e48857249ce7..6673d74ab0c0 100644
+> --- a/arch/arm/boot/dts/spear1310-evb.dts
+> +++ b/arch/arm/boot/dts/spear1310-evb.dts
+> @@ -161,7 +161,7 @@
+>                                 linux,code = <0x100>;
+>                                 gpios = <&gpio0 7 0x4>;
+>                                 debounce-interval = <20>;
+> -                               gpio-key,wakeup = <1>;
+> +                               gpio-key,wakeup;
+>                         };
+>                 };
+>
+> diff --git a/arch/arm/boot/dts/spear1340-evb.dts b/arch/arm/boot/dts/spear1340-evb.dts
+> index c611f5606dfe..9071344fa47c 100644
+> --- a/arch/arm/boot/dts/spear1340-evb.dts
+> +++ b/arch/arm/boot/dts/spear1340-evb.dts
+> @@ -223,7 +223,7 @@
+>                                 linux,code = <0x100>;
+>                                 gpios = <&gpio1 1 0x4>;
+>                                 debounce-interval = <20>;
+> -                               gpio-key,wakeup = <1>;
+> +                               gpio-key,wakeup;
+>                         };
+>                 };
+>
+> diff --git a/arch/arm/boot/dts/spear320-hmi.dts b/arch/arm/boot/dts/spear320-hmi.dts
+> index 0aa6fef5ce22..3c5b28c0fce4 100644
+> --- a/arch/arm/boot/dts/spear320-hmi.dts
+> +++ b/arch/arm/boot/dts/spear320-hmi.dts
+> @@ -141,7 +141,7 @@
+>                                 linux,code = <0x100>;
+>                                 gpios = <&stmpegpio 3 0x4>;
+>                                 debounce-interval = <20>;
+> -                               gpio-key,wakeup = <1>;
+> +                               gpio-key,wakeup;
+>                         };
+>
+>                         button@2 {
+> @@ -149,7 +149,7 @@
+>                                 linux,code = <0x200>;
+>                                 gpios = <&stmpegpio 2 0x4>;
+>                                 debounce-interval = <20>;
+> -                               gpio-key,wakeup = <1>;
+> +                               gpio-key,wakeup;
+>                         };
+>                 };
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+> index 401a81231eb9..58a2829d9ea7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+> @@ -71,7 +71,7 @@
+>                 pinctrl-0 = <&pwr_key>;
+>
+>                 button@0 {
+> -                       gpio-key,wakeup = <1>;
+> +                       gpio-key,wakeup;
+>                         gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+>                         label = "GPIO Power";
+>                         linux,code = <116>;
+> --
+> 1.9.1
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
