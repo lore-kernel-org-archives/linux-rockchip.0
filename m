@@ -1,21 +1,19 @@
-From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/2][UPDATE] ARM: dts: replace gpio-key,wakeup with
- wakeup-source property
-Date: Tue, 13 Oct 2015 20:38:41 +0530
-Message-ID: <20151013150841.GZ5386@linux>
-References: <1444743164-17735-2-git-send-email-sudeep.holla@arm.com>
- <1444747133-22671-1-git-send-email-sudeep.holla@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/2][UPDATE] ARM: dts: replace gpio-key,wakeup with wakeup-source property
+Date: Tue, 13 Oct 2015 19:52:11 +0200
+Message-ID: <1561585.uublXABoq2@diego>
+References: <1444743164-17735-2-git-send-email-sudeep.holla@arm.com> <1444747133-22671-1-git-send-email-sudeep.holla@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1444747133-22671-1-git-send-email-sudeep.holla-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1444747133-22671-1-git-send-email-sudeep.holla@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Kevin Hilman <khilman@linaro.org>, Olof Johansson <olof@lixom.net>, Arnd Bergmann <arnd@arndb.de>, linux-rockchip@lists.infradead.org, Viresh Kumar <viresh.kumar@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 13-10-15, 15:38, Sudeep Holla wrote:
+Am Dienstag, 13. Oktober 2015, 15:38:53 schrieb Sudeep Holla:
 > Keyboard driver for GPIO buttons(gpio-keys) checks for the legacy
 > "gpio-key,wakeup" boolean property to enable gpio buttons as wakeup
 > source.
@@ -28,20 +26,19 @@ On 13-10-15, 15:38, Sudeep Holla wrote:
 > This patch replaces the legacy "gpio-key,wakeup" with the unified
 > "wakeup-source" property which inturn fixes the above mentioned issue.
 > 
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> Signed-off-by: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: Viresh Kumar <viresh.kumar@linaro.org>
+> Signed-off-by: Sudeep Holla <sudeep.holla@arm.com>
 > ---
->  arch/arm/boot/dts/spear1310-evb.dts         | 2 +-
->  arch/arm/boot/dts/spear1340-evb.dts         | 2 +-
->  arch/arm/boot/dts/spear320-hmi.dts          | 4 ++--
+>  arch/arm/boot/dts/rk3066a-bqcurie2.dts      | 3 +--
+>  arch/arm/boot/dts/rk3066a-rayeager.dts      | 2 +-
+>  arch/arm/boot/dts/rk3188-radxarock.dts      | 2 +-
+>  arch/arm/boot/dts/rk3288-evb.dtsi           | 2 +-
+>  arch/arm/boot/dts/rk3288-firefly.dtsi       | 2 +-
+>  arch/arm/boot/dts/rk3288-popmetal.dts       | 2 +-
+>  arch/arm/boot/dts/rk3288-r89.dts            | 2 +-
+[...]
+>  arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 2 +-
 
-Reviewed-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-
--- 
-viresh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
