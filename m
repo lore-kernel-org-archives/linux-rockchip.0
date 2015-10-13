@@ -1,90 +1,58 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v6 11/17] Documentation: phy: add document for rockchip dp
- phy
-Date: Tue, 13 Oct 2015 03:58:32 +0530
-Message-ID: <561C3410.8090600@ti.com>
-References: <1444491357-26095-1-git-send-email-ykk@rock-chips.com>
- <1444492695-27241-1-git-send-email-ykk@rock-chips.com>
+From: Shunqian Zheng <zhengsq@rock-chips.com>
+Subject: [PATCH v1 0/4] Audio Codec Driver of RK3036 SoC
+Date: Tue, 13 Oct 2015 09:01:05 +0800
+Message-ID: <1444698070-4191-1-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1444492695-27241-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, benzh@chromium.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, ZhengShunQian <zhengsq@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+=46rom: ZhengShunQian <zhengsq@rock-chips.com>
 
-On Saturday 10 October 2015 09:28 PM, Yakir Yang wrote:
-> This phy driver is binded with the Rockchip DisplayPort
-> driver, here are the brief properties:
-> 	edp_phy: edp-phy@ff770274 {
-> 		compatible = "rockchip,rk3288-dp-phy";
-> 		rockchip,grf = <&grf>;
-> 		clocks = <&cru SCLK_EDP_24M>;
-> 		clock-names = "24m";
-> 		#phy-cells = <0>;
-> 	};
+Base on the other seris of RK3036 clk patches, which is not landed yet,
+this patches add the RK3036 SoC codec driver.
 
-The commit message can simply be "Add dt binding documentation for
-rockchip display port PHY".
+Rockchip RK3036 SoC integrated with an Inno audio codec. It supports
+the following features:
+o. 24bit DAC
+o. Support 16=CE=A9 to 32=CE=A9 headphone output and speaker output
+o. Support Mono, Stereo channel
+o. Sampling rate of 8/12/16/24/32/44.1/48/96KHz
 
-Thanks
-Kishon
+While there are some features like dapm and s2r are still WIP,
+I would like to send these patches now and get some feedback.
 
-> 
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> Changes in v6: None
-> Changes in v5:
-> - Split binding doc's from driver changes. (Rob)
-> - Update the rockchip,grf explain in document, and correct the clock required
->   elemets in document. (Rob & Heiko)
-> 
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  .../devicetree/bindings/phy/rockchip-dp-phy.txt    | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
-> new file mode 100644
-> index 0000000..505194e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
-> @@ -0,0 +1,22 @@
-> +Rockchip Soc Seroes Display Port PHY
-> +------------------------------------
-> +
-> +Required properties:
-> +- compatible : should be one of the following supported values:
-> +	 - "rockchip.rk3288-dp-phy"
-> +- clocks: from common clock binding: handle to dp clock.
-> +	of memory mapped region.
-> +- clock-names: from common clock binding:
-> +	Required elements: "24m"
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +- #phy-cells : from the generic PHY bindings, must be 0;
-> +
-> +Example:
-> +
-> +edp_phy: edp-phy@ff770274 {
-> +	compatible = "rockchip,rk3288-dp-phy";
-> +	rockchip,grf = <&grf>;
-> +	clocks = <&cru SCLK_EDP_24M>;
-> +	clock-names = "24m";
-> +	#phy-cells = <0>;
-> +};
-> 
+Thank you for your review.
+
+ZhengShunQian (4):
+  ASoC: codec: Inno codec driver for RK3036 SoC
+  ASoC: RK3036: Add binding doc of inno-rk3036 codec driver
+  ASoC: Add codec machine driver for RK3036
+  ASoC: RK3036: Add binding doc for audio machine driver
+
+ .../devicetree/bindings/sound/inno-rk3036.txt      |  20 +
+ .../devicetree/bindings/sound/rockchip-rk3036.txt  |  14 +
+ sound/soc/codecs/Kconfig                           |   4 +
+ sound/soc/codecs/Makefile                          |   2 +
+ sound/soc/codecs/inno_rk3036.c                     | 439 +++++++++++++=
+++++++++
+ sound/soc/codecs/inno_rk3036.h                     | 308 +++++++++++++=
+++
+ sound/soc/rockchip/Kconfig                         |  10 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rockchip_rk3036.c               | 147 +++++++
+ 9 files changed, 946 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/inno-rk3036=
+=2Etxt
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip-rk=
+3036.txt
+ create mode 100644 sound/soc/codecs/inno_rk3036.c
+ create mode 100644 sound/soc/codecs/inno_rk3036.h
+ create mode 100644 sound/soc/rockchip/rockchip_rk3036.c
+
+--=20
+1.9.1
