@@ -1,42 +1,50 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RFC PATCH] usb: dwc2: host: dwc2_check_qtd_still_ok() can be static
-Date: Wed, 14 Oct 2015 15:54:24 -0700
-Message-ID: <CAD=FV=XMfPEZuWt7pWHPcAzBjcaLn=SjwYozSA_=6=okZF7Zbw@mail.gmail.com>
-References: <201510150401.c19CKrBd%fengguang.wu@intel.com>
-	<1444848406-16451-1-git-send-email-dianders@chromium.org>
-	<20151014204443.GA144226@lkp-ib03>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] usb: dwc2: host: Protect PCGCTL with lock in dwc2_port_resume()
+Date: Wed, 14 Oct 2015 15:58:27 -0700
+Message-ID: <1444863507-27463-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20151014204443.GA144226@lkp-ib03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: kbuild test robot <lkp@intel.com>
-Cc: "kbuild-all@01.org" <kbuild-all@01.org>, John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From code inspection, it appears to be unsafe to do a read-modify-write
+of PCGCTL in dwc2_port_resume().  Let's make sure the spinlock is held
+around this operation.
 
-On Wed, Oct 14, 2015 at 1:44 PM, kbuild test robot <lkp@intel.com> wrote:
->
-> Signed-off-by: Fengguang Wu <fengguang.wu@intel.com>
-> ---
->  hcd_intr.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-> index 57e71f9d..b31a1fb 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -1956,7 +1956,7 @@ static void dwc2_hc_chhltd_intr(struct dwc2_hsotg *hsotg,
->   * the qtd from the top of the list, this will return NULL.  Otherwise
->   * it will be passed back qtd.
->   */
-> -struct dwc2_qtd *dwc2_check_qtd_still_ok(struct dwc2_qtd *qtd,
-> +static struct dwc2_qtd *dwc2_check_qtd_still_ok(struct dwc2_qtd *qtd,
->                                             struct list_head *qtd_list)
->  {
->         struct dwc2_qtd *cur_head;
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/usb/dwc2/hcd.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Fixed in v2.  https://patchwork.kernel.org/patch/7398911/
-
--Doug
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index af4e4a2..e79baf7 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -1500,6 +1500,8 @@ static void dwc2_port_resume(struct dwc2_hsotg *hsotg)
+ 	u32 hprt0;
+ 	u32 pcgctl;
+ 
++	spin_lock_irqsave(&hsotg->lock, flags);
++
+ 	/*
+ 	 * If hibernation is supported, Phy clock is already resumed
+ 	 * after registers restore.
+@@ -1508,10 +1510,11 @@ static void dwc2_port_resume(struct dwc2_hsotg *hsotg)
+ 		pcgctl = dwc2_readl(hsotg->regs + PCGCTL);
+ 		pcgctl &= ~PCGCTL_STOPPCLK;
+ 		dwc2_writel(pcgctl, hsotg->regs + PCGCTL);
++		spin_unlock_irqrestore(&hsotg->lock, flags);
+ 		usleep_range(20000, 40000);
++		spin_lock_irqsave(&hsotg->lock, flags);
+ 	}
+ 
+-	spin_lock_irqsave(&hsotg->lock, flags);
+ 	hprt0 = dwc2_read_hprt0(hsotg);
+ 	hprt0 |= HPRT0_RES;
+ 	hprt0 &= ~HPRT0_SUSP;
+-- 
+2.6.0.rc2.230.g3dd15c0
