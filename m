@@ -1,57 +1,167 @@
-From: Liviu Dudau <Liviu.Dudau-5wv7dgnIgG8@public.gmane.org>
-Subject: [RFC PATCH 0/4] drm: Cleanup probe function for component based
- masters.
-Date: Thu, 15 Oct 2015 17:11:06 +0100
-Message-ID: <1444925470-9963-1-git-send-email-Liviu.Dudau@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
+Subject: [RFC PATCH 1/4] drm: Introduce generic probe function for component based masters.
+Date: Thu, 15 Oct 2015 17:11:07 +0100
+Message-ID: <1444925470-9963-2-git-send-email-Liviu.Dudau@arm.com>
+References: <1444925470-9963-1-git-send-email-Liviu.Dudau@arm.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1444925470-9963-1-git-send-email-Liviu.Dudau@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-A few drivers in drivers/gpu/drm are component-enabled and use quite similar
-code sequences to probe for their encoder slaves at the remote end of the ports.
-Move the code into a "generic" function and remove it from the drivers.
+A lot of component based DRM drivers use a variant of the same code
+as the probe function. They bind the crtc ports in the first iteration
+and then scan through the child nodes and bind the encoders attached
+to the remote endpoints. Factor the common code into a separate
+function called drm_of_component_probe() in order to increase code
+reuse.
 
-The end results is that drivers get a reference count fix (imx), more thorough
-error checking (imx again), setting the DMA coherent mask (armada) plus a decrease
-in the overall count of LoC.
+Cc: David Airlie <airlied@linux.ie>
+Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
+---
+ drivers/gpu/drm/drm_of.c | 92 ++++++++++++++++++++++++++++++++++++++++++++++++
+ include/drm/drm_of.h     | 12 +++++++
+ 2 files changed, 104 insertions(+)
 
-I'm looking for comments and testing of the patchset (only compile tested from my
-end as I don't have access to all the devices touched by the changes). My main
-interest is in finding out if -EINVAL is the correct code to return if
-dev->of_node == NULL (handy now, as it is different from the other possible error
-codes and used in armada to trigger old platform_data support. Also looking for
-thoughts on the correctness of the patch and if it possible to co-opt more drivers
-into using the function.
-
-Best regards,
-Liviu
-
-
-Liviu Dudau (4):
-  drm: Introduce generic probe function for component based masters.
-  drm/imx: Convert the probe function to the generic drm_of_component_probe()
-  drm/rockchip: Convert the probe function to the generic drm_of_component_probe()
-  drm/armada: Convert the probe function to the generic drm_of_component_probe()
-
- drivers/gpu/drm/armada/armada_drv.c         | 83 +++++++++-----------------
- drivers/gpu/drm/drm_of.c                    | 92 +++++++++++++++++++++++++++++
- drivers/gpu/drm/imx/imx-drm-core.c          | 54 +----------------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 84 ++------------------------
- include/drm/drm_of.h                        | 12 ++++
- 5 files changed, 138 insertions(+), 187 deletions(-)
-
+diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+index be38840..cf16240 100644
+--- a/drivers/gpu/drm/drm_of.c
++++ b/drivers/gpu/drm/drm_of.c
+@@ -1,3 +1,4 @@
++#include <linux/component.h>
+ #include <linux/export.h>
+ #include <linux/list.h>
+ #include <linux/of_graph.h>
+@@ -61,3 +62,94 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+ 	return possible_crtcs;
+ }
+ EXPORT_SYMBOL(drm_of_find_possible_crtcs);
++
++/**
++ * drm_of_component_probe - Generic probe function for a component based master
++ * @dev: master device containing the OF node
++ * @compare_of: compare function used for matching components
++ * @master_ops: component master ops to be used
++ *
++ * Parse the platform device OF node and bind all the components associated
++ * with the master. Interface ports are added before the encoders in order to
++ * satisfy their .bind requirements
++ * See Documentation/devicetree/bindings/graph.txt for the bindings.
++ *
++ * Returns zero if successful, or one of the standard error codes if it fails.
++ */
++int drm_of_component_probe(struct device *dev,
++			   int (*compare_of)(struct device *, void *),
++			   const struct component_master_ops *master_ops)
++{
++	struct device_node *ep, *port, *remote;
++	struct component_match *match = NULL;
++	int i, ret;
++
++	if (!dev->of_node)
++		return -EINVAL;
++
++	/*
++	 * Bind the crtc's ports first, so that drm_of_find_possible_crtcs()
++	 * called from encoder's .bind callbacks works as expected
++	 */
++	for (i = 0; ; i++) {
++		port = of_parse_phandle(dev->of_node, "ports", i);
++		if (!port)
++			break;
++
++		if (!of_device_is_available(port->parent)) {
++			of_node_put(port);
++			continue;
++		}
++
++		component_match_add(dev, &match, compare_of, port);
++		of_node_put(port);
++	}
++
++	if (i == 0) {
++		dev_err(dev, "missing 'ports' property\n");
++		return -ENODEV;
++	}
++
++	if (!match) {
++		dev_err(dev, "no available port\n");
++		return -ENODEV;
++	}
++
++	/*
++	 * For bound crtcs, bind the encoders attached to their remote endpoint
++	 */
++	for (i = 0; ; i++) {
++		port = of_parse_phandle(dev->of_node, "ports", i);
++		if (!port)
++			break;
++
++		if (!of_device_is_available(port->parent)) {
++			of_node_put(port);
++			continue;
++		}
++
++		for_each_child_of_node(port, ep) {
++			remote = of_graph_get_remote_port_parent(ep);
++			if (!remote || !of_device_is_available(remote)) {
++				of_node_put(remote);
++				continue;
++			} else if (!of_device_is_available(remote->parent)) {
++				dev_warn(dev, "parent device of %s is not available\n",
++					 remote->full_name);
++				of_node_put(remote);
++				continue;
++			}
++
++			component_match_add(dev, &match, compare_of, remote);
++			of_node_put(remote);
++		}
++		of_node_put(port);
++	}
++
++	ret = dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
++	if (ret)
++		return ret;
++
++	return component_master_add_with_match(dev, master_ops, match);
++}
++EXPORT_SYMBOL(drm_of_component_probe);
+diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+index 2441f71..7c0c05b 100644
+--- a/include/drm/drm_of.h
++++ b/include/drm/drm_of.h
+@@ -1,18 +1,30 @@
+ #ifndef __DRM_OF_H__
+ #define __DRM_OF_H__
+ 
++struct component_master_ops;
++struct device;
+ struct drm_device;
+ struct device_node;
+ 
+ #ifdef CONFIG_OF
+ extern uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+ 					   struct device_node *port);
++extern int drm_of_component_probe(struct device *dev,
++				  int (*compare_of)(struct device *, void *),
++				  const struct component_master_ops *master_ops);
+ #else
+ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+ 						  struct device_node *port)
+ {
+ 	return 0;
+ }
++
++static inline int drm_of_component_probe(struct device *dev,
++					int (*compare_of)(struct device *, void *),
++					 const struct component_master_ops *master_ops)
++{
++	return -EINVAL;
++}
+ #endif
+ 
+ #endif /* __DRM_OF_H__ */
 -- 
 2.6.0
