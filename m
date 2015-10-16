@@ -1,208 +1,131 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v3] usb: dwc2: host: Fix use after free w/ simultaneous irqs
-Date: Fri, 16 Oct 2015 14:59:25 -0700
-Message-ID: <1445032765-17342-1-git-send-email-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH 1/2] usb: dwc2: host: Fix missing device insertions
+Date: Fri, 16 Oct 2015 15:10:23 -0700
+Message-ID: <1445033424-21933-1-git-send-email-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
-Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Doug Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Doug Anderson <dianders@chromium.org>
+If you've got your interrupt signals bouncing a bit as you insert your
+USB device, you might end up in a state when the device is connected but
+the driver doesn't know it.
 
-While plugging / unplugging on a DWC2 host port with "slub_debug=FZPUA"
-enabled, I found a crash that was quite obviously a use after free.
+Specifically, the observed order is:
+ 1. hardware sees connect
+ 2. hardware sees disconnect
+ 3. hardware sees connect
+ 4. dwc2_port_intr() - clears connect interrupt
+ 5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
 
-It appears that in some cases when we handle the various sub-cases of
-HCINT we may end up freeing the QTD.  If there is more than one bit set
-in HCINT we may then end up continuing to use the QTD, which is bad.
-Let's be paranoid and check for this after each sub-case.  This should
-be safe since we officially have the "hsotg->lock" (it was grabbed in
-dwc2_handle_hcd_intr).
+Now you'll be stuck with the cable plugged in and no further interrupts
+coming in but the driver will think we're disconnected.
 
-The specific crash I found was:
- Unable to handle kernel paging request at virtual address 6b6b6b9f
-
-At the time of the crash, the kernel reported:
- (dwc2_hc_nak_intr+0x5c/0x198)
- (dwc2_handle_hcd_intr+0xa84/0xbf8)
- (_dwc2_hcd_irq+0x1c/0x20)
- (usb_hcd_irq+0x34/0x48)
-
-Popping into kgdb found that "*qtd" was filled with "0x6b", AKA qtd had
-been freed and filled with slub_debug poison.
-
-kgdb gave a little better stack crawl:
- 0 dwc2_hc_nak_intr (hsotg=hsotg@entry=0xec42e058,
-     chan=chan@entry=0xec546dc0, chnum=chnum@entry=4,
-     qtd=qtd@entry=0xec679600) at drivers/usb/dwc2/hcd_intr.c:1237
- 1 dwc2_hc_n_intr (chnum=4, hsotg=0xec42e058) at
-     drivers/usb/dwc2/hcd_intr.c:2041
- 2 dwc2_hc_intr (hsotg=0xec42e058) at drivers/usb/dwc2/hcd_intr.c:2078
- 3 dwc2_handle_hcd_intr (hsotg=0xec42e058) at
-     drivers/usb/dwc2/hcd_intr.c:2128
- 4 _dwc2_hcd_irq (hcd=<optimized out>) at drivers/usb/dwc2/hcd.c:2837
- 5 usb_hcd_irq (irq=<optimized out>, __hcd=<optimized out>) at
-     drivers/usb/core/hcd.c:2353
-
-Popping up to frame #1 (dwc2_hc_n_intr) found:
- (gdb) print /x hcint
- $12 = 0x12
-
-AKA:
- #define HCINTMSK_CHHLTD  (1 << 1)
- #define HCINTMSK_NAK     (1 << 4)
-
-Further debugging found that by simulating receiving those two
-interrupts at the same time it was trivial to replicate the
-use-after-free.  See <http://crosreview.com/305712> for a patch and
-instructions.  This lead to getting the following stack crawl of the
-actual free:
- 0  arch_kgdb_breakpoint () at arch/arm/include/asm/outercache.h:103
- 1  kgdb_breakpoint () at kernel/debug/debug_core.c:1054
- 2  dwc2_hcd_qtd_unlink_and_free (hsotg=<optimized out>, qh=<optimized
-      out>, qtd=0xe4479a00) at drivers/usb/dwc2/hcd.h:488
- 3  dwc2_deactivate_qh (free_qtd=<optimized out>, qh=0xe5efa280,
-      hsotg=0xed424618) at drivers/usb/dwc2/hcd_intr.c:671
- 4  dwc2_release_channel (hsotg=hsotg@entry=0xed424618,
-      chan=chan@entry=0xed5be000, qtd=<optimized out>,
-      halt_status=<optimized out>) at drivers/usb/dwc2/hcd_intr.c:742
- 5  dwc2_halt_channel (hsotg=0xed424618, chan=0xed5be000, qtd=<optimized
-      out>, halt_status=<optimized out>) at
-      drivers/usb/dwc2/hcd_intr.c:804
- 6  dwc2_complete_non_periodic_xfer (chnum=<optimized out>,
-      halt_status=<optimized out>, qtd=<optimized out>, chan=<optimized
-      out>, hsotg=<optimized out>) at drivers/usb/dwc2/hcd_intr.c:889
- 7  dwc2_hc_xfercomp_intr (hsotg=hsotg@entry=0xed424618,
-      chan=chan@entry=0xed5be000, chnum=chnum@entry=6,
-      qtd=qtd@entry=0xe4479a00) at drivers/usb/dwc2/hcd_intr.c:1065
- 8  dwc2_hc_chhltd_intr_dma (qtd=0xe4479a00, chnum=6, chan=0xed5be000,
-      hsotg=0xed424618) at drivers/usb/dwc2/hcd_intr.c:1823
- 9  dwc2_hc_chhltd_intr (qtd=0xe4479a00, chnum=6, chan=0xed5be000,
-      hsotg=0xed424618) at drivers/usb/dwc2/hcd_intr.c:1944
- 10 dwc2_hc_n_intr (chnum=6, hsotg=0xed424618) at
-      drivers/usb/dwc2/hcd_intr.c:2052
- 11 dwc2_hc_intr (hsotg=0xed424618) at drivers/usb/dwc2/hcd_intr.c:2097
- 12 dwc2_handle_hcd_intr (hsotg=0xed424618) at
-      drivers/usb/dwc2/hcd_intr.c:2147
- 13 _dwc2_hcd_irq (hcd=<optimized out>) at drivers/usb/dwc2/hcd.c:2837
- 14 usb_hcd_irq (irq=<optimized out>, __hcd=<optimized out>) at
-      drivers/usb/core/hcd.c:2353
-
-Though we could add specific code to handle this case, adding the
-general purpose code to check for all cases where qtd might be freed
-seemed safer.
+We'll fix this by checking for the missing connect interrupt and
+re-connecting after the disconnect is posted.  We don't skip the
+disconnect because if there is a transitory disconnect we really want to
+de-enumerate and re-enumerate.
 
 Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
-Changes in v3:
-- Don't pass NULL if qtd freed, just return (John Youn)
-- Don't keep track of interrupts left: list_first_entry() is fast.
+ drivers/usb/dwc2/core.h     |  2 ++
+ drivers/usb/dwc2/hcd.c      | 33 +++++++++++++++++++++++++++++++++
+ drivers/usb/dwc2/hcd_intr.c |  6 +-----
+ 3 files changed, 36 insertions(+), 5 deletions(-)
 
-Changes in v2:
-- Add static as correctly pointed by kbuild test robot
-
- drivers/usb/dwc2/hcd_intr.c | 67 ++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 57 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index f70c970..6d0cd368 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -1949,6 +1949,21 @@ static void dwc2_hc_chhltd_intr(struct dwc2_hsotg *hsotg,
- 	}
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index ebf2504..30748be 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -1151,11 +1151,13 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
+ 
+ #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+ extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
++extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
+ extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg);
+ extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
++static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index af4e4a2..4d2bc50 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -268,6 +268,22 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
  }
  
-+/*
-+ * Check if the given qtd is still the top of the list (and thus valid).
+ /**
++ * dwc2_hcd_connect() - Handles connect of the HCD
 + *
-+ * If dwc2_hcd_qtd_unlink_and_free() has been called since we grabbed
-+ * the qtd from the top of the list, this will return false (otherwise true).
++ * @hsotg: Pointer to struct dwc2_hsotg
++ *
++ * Must be called with interrupt disabled and spinlock held
 + */
-+static bool dwc2_check_qtd_still_ok(struct dwc2_qtd *qtd,
-+				    struct list_head *qtd_list)
++void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
 +{
-+	struct dwc2_qtd *cur_head;
++	if (hsotg->lx_state != DWC2_L0)
++		usb_hcd_resume_root_hub(hsotg->priv);
 +
-+	cur_head = list_first_entry(qtd_list, struct dwc2_qtd, qtd_list_entry);
-+	return (cur_head == qtd);
++	hsotg->flags.b.port_connect_status_change = 1;
++	hsotg->flags.b.port_connect_status = 1;
 +}
 +
- /* Handles interrupt for a specific Host Channel */
- static void dwc2_hc_n_intr(struct dwc2_hsotg *hsotg, int chnum)
++/**
+  * dwc2_hcd_disconnect() - Handles disconnect of the HCD
+  *
+  * @hsotg: Pointer to struct dwc2_hsotg
+@@ -277,6 +293,7 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
+ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
  {
-@@ -2031,27 +2046,59 @@ static void dwc2_hc_n_intr(struct dwc2_hsotg *hsotg, int chnum)
- 		 */
- 		hcint &= ~HCINTMSK_NYET;
- 	}
--	if (hcint & HCINTMSK_CHHLTD)
-+
-+	if (hcint & HCINTMSK_CHHLTD) {
- 		dwc2_hc_chhltd_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_AHBERR)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_AHBERR) {
- 		dwc2_hc_ahberr_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_STALL)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_STALL) {
- 		dwc2_hc_stall_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_NAK)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_NAK) {
- 		dwc2_hc_nak_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_ACK)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_ACK) {
- 		dwc2_hc_ack_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_NYET)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_NYET) {
- 		dwc2_hc_nyet_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_XACTERR)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_XACTERR) {
- 		dwc2_hc_xacterr_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_BBLERR)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_BBLERR) {
- 		dwc2_hc_babble_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_FRMOVRUN)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_FRMOVRUN) {
- 		dwc2_hc_frmovrun_intr(hsotg, chan, chnum, qtd);
--	if (hcint & HCINTMSK_DATATGLERR)
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
-+	if (hcint & HCINTMSK_DATATGLERR) {
- 		dwc2_hc_datatglerr_intr(hsotg, chan, chnum, qtd);
-+		if (!dwc2_check_qtd_still_ok(qtd, &chan->qh->qtd_list))
-+			goto exit;
-+	}
+ 	u32 intr;
++	u32 hprt0;
  
-+exit:
- 	chan->hcint = 0;
+ 	/* Set status flags for the hub driver */
+ 	hsotg->flags.b.port_connect_status_change = 1;
+@@ -315,6 +332,22 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
+ 		dwc2_hcd_cleanup_channels(hsotg);
+ 
+ 	dwc2_host_disconnect(hsotg);
++
++	/*
++	 * Add an extra check here to see if we're actually connected but
++	 * we don't have a detection interrupt pending.  This can happen if:
++	 *   1. hardware sees connect
++	 *   2. hardware sees disconnect
++	 *   3. hardware sees connect
++	 *   4. dwc2_port_intr() - clears connect interrupt
++	 *   5. dwc2_handle_common_intr() - calls here
++	 *
++	 * Without the extra check here we will end calling disconnect
++	 * and won't get any future interrupts to handle the connect.
++	 */
++	hprt0 = dwc2_readl(hsotg->regs + HPRT0);
++	if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
++		dwc2_hcd_connect(hsotg);
  }
  
+ /**
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index f70c970..d965e87 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -350,11 +350,7 @@ static void dwc2_port_intr(struct dwc2_hsotg *hsotg)
+ 		dev_vdbg(hsotg->dev,
+ 			 "--Port Interrupt HPRT0=0x%08x Port Connect Detected--\n",
+ 			 hprt0);
+-		if (hsotg->lx_state != DWC2_L0)
+-			usb_hcd_resume_root_hub(hsotg->priv);
+-
+-		hsotg->flags.b.port_connect_status_change = 1;
+-		hsotg->flags.b.port_connect_status = 1;
++		dwc2_hcd_connect(hsotg);
+ 		hprt0_modify |= HPRT0_CONNDET;
+ 
+ 		/*
 -- 
 2.6.0.rc2.230.g3dd15c0
