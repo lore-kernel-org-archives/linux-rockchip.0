@@ -1,91 +1,164 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
 Subject: Re: [RFC PATCH v2 1/4] drm: Introduce generic probe function for
  component based masters.
-Date: Mon, 19 Oct 2015 13:25:37 +0100
-Message-ID: <20151019122537.GZ32532@n2100.arm.linux.org.uk>
+Date: Mon, 19 Oct 2015 14:02:58 +0100
+Message-ID: <20151019130258.GU3394@e106497-lin.cambridge.arm.com>
 References: <1445257313-7147-1-git-send-email-Liviu.Dudau@arm.com>
  <1445257313-7147-2-git-send-email-Liviu.Dudau@arm.com>
+ <20151019122537.GZ32532@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1445257313-7147-2-git-send-email-Liviu.Dudau@arm.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Liviu Dudau <Liviu.Dudau@arm.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <20151019122537.GZ32532@n2100.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBPY3QgMTksIDIwMTUgYXQgMDE6MjE6NTBQTSArMDEwMCwgTGl2aXUgRHVkYXUgd3Jv
-dGU6Cj4gQSBsb3Qgb2YgY29tcG9uZW50IGJhc2VkIERSTSBkcml2ZXJzIHVzZSBhIHZhcmlhbnQg
-b2YgdGhlIHNhbWUgY29kZQo+IGFzIHRoZSBwcm9iZSBmdW5jdGlvbi4gVGhleSBiaW5kIHRoZSBj
-cnRjIHBvcnRzIGluIHRoZSBmaXJzdCBpdGVyYXRpb24KPiBhbmQgdGhlbiBzY2FuIHRocm91Z2gg
-dGhlIGNoaWxkIG5vZGVzIGFuZCBiaW5kIHRoZSBlbmNvZGVycyBhdHRhY2hlZAo+IHRvIHRoZSBy
-ZW1vdGUgZW5kcG9pbnRzLiBGYWN0b3IgdGhlIGNvbW1vbiBjb2RlIGludG8gYSBzZXBhcmF0ZQo+
-IGZ1bmN0aW9uIGNhbGxlZCBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkgaW4gb3JkZXIgdG8gaW5j
-cmVhc2UgY29kZQo+IHJldXNlLgo+IAo+IENjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXgu
-aWU+Cj4gU2lnbmVkLW9mZi1ieTogTGl2aXUgRHVkYXUgPExpdml1LkR1ZGF1QGFybS5jb20+Cj4g
-LS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyB8IDkyICsrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBpbmNsdWRlL2RybS9kcm1fb2YuaCAgICAg
-fCAxMiArKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTA0IGluc2VydGlvbnMoKykKPiAKPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jIGIvZHJpdmVycy9ncHUvZHJtL2Ry
-bV9vZi5jCj4gaW5kZXggYmUzODg0MC4uY2YxNjI0MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vZHJtX29mLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPiBAQCAtMSwz
-ICsxLDQgQEAKPiArI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+ICAjaW5jbHVkZSA8bGlu
-dXgvZXhwb3J0Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9saXN0Lmg+Cj4gICNpbmNsdWRlIDxsaW51
-eC9vZl9ncmFwaC5oPgo+IEBAIC02MSwzICs2Miw5NCBAQCB1aW50MzJfdCBkcm1fb2ZfZmluZF9w
-b3NzaWJsZV9jcnRjcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJcmV0dXJuIHBvc3NpYmxl
-X2NydGNzOwo+ICB9Cj4gIEVYUE9SVF9TWU1CT0woZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3Mp
-Owo+ICsKPiArLyoqCj4gKyAqIGRybV9vZl9jb21wb25lbnRfcHJvYmUgLSBHZW5lcmljIHByb2Jl
-IGZ1bmN0aW9uIGZvciBhIGNvbXBvbmVudCBiYXNlZCBtYXN0ZXIKPiArICogQGRldjogbWFzdGVy
-IGRldmljZSBjb250YWluaW5nIHRoZSBPRiBub2RlCj4gKyAqIEBjb21wYXJlX29mOiBjb21wYXJl
-IGZ1bmN0aW9uIHVzZWQgZm9yIG1hdGNoaW5nIGNvbXBvbmVudHMKPiArICogQG1hc3Rlcl9vcHM6
-IGNvbXBvbmVudCBtYXN0ZXIgb3BzIHRvIGJlIHVzZWQKPiArICoKPiArICogUGFyc2UgdGhlIHBs
-YXRmb3JtIGRldmljZSBPRiBub2RlIGFuZCBiaW5kIGFsbCB0aGUgY29tcG9uZW50cyBhc3NvY2lh
-dGVkCj4gKyAqIHdpdGggdGhlIG1hc3Rlci4gSW50ZXJmYWNlIHBvcnRzIGFyZSBhZGRlZCBiZWZv
-cmUgdGhlIGVuY29kZXJzIGluIG9yZGVyIHRvCj4gKyAqIHNhdGlzZnkgdGhlaXIgLmJpbmQgcmVx
-dWlyZW1lbnRzCj4gKyAqIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3Jh
-cGgudHh0IGZvciB0aGUgYmluZGluZ3MuCj4gKyAqCj4gKyAqIFJldHVybnMgemVybyBpZiBzdWNj
-ZXNzZnVsLCBvciBvbmUgb2YgdGhlIHN0YW5kYXJkIGVycm9yIGNvZGVzIGlmIGl0IGZhaWxzLgo+
-ICsgKi8KPiAraW50IGRybV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LAo+
-ICsJCQkgICBpbnQgKCpjb21wYXJlX29mKShzdHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4gKwkJ
-CSAgIGNvbnN0IHN0cnVjdCBjb21wb25lbnRfbWFzdGVyX29wcyAqbWFzdGVyX29wcykKPiArewou
-Li4KPiArCXJldCA9IGRtYV9zZXRfY29oZXJlbnRfbWFzayhkZXYsIERNQV9CSVRfTUFTSygzMikp
-Owo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0OwoKUGxlYXNlIGRvbid0IG1vdmUgdGhpcyBp
-bnRvIGhlcmUsIGl0J3MgY29tcGxldGVseSBpbmFwcHJvcHJpYXRlLiAgSnVzdApiZWNhdXNlIHNv
-bWV0aGluZyBtYWtlcyB1c2Ugb2YgdGhpcyBkb2VzIG5vdCBtZWFuIHRoZXkgb25seSBzdXBwb3J0
-CjMyLWJpdCBETUEuICBCZXNpZGVzLCB0aGlzIGhhcyBub3RoaW5nIHRvIGRvIHdpdGggd2hldGhl
-ciBvciBub3QgaXQncwpPRi1iYXNlZCBvciBub3QuCj4gKwo+ICsJcmV0dXJuIGNvbXBvbmVudF9t
-YXN0ZXJfYWRkX3dpdGhfbWF0Y2goZGV2LCBtYXN0ZXJfb3BzLCBtYXRjaCk7Cj4gK30KPiArRVhQ
-T1JUX1NZTUJPTChkcm1fb2ZfY29tcG9uZW50X3Byb2JlKTsKPiBkaWZmIC0tZ2l0IGEvaW5jbHVk
-ZS9kcm0vZHJtX29mLmggYi9pbmNsdWRlL2RybS9kcm1fb2YuaAo+IGluZGV4IDI0NDFmNzEuLjdj
-MGMwNWIgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9kcm0vZHJtX29mLmgKPiArKysgYi9pbmNsdWRl
-L2RybS9kcm1fb2YuaAo+IEBAIC0xLDE4ICsxLDMwIEBACj4gICNpZm5kZWYgX19EUk1fT0ZfSF9f
-Cj4gICNkZWZpbmUgX19EUk1fT0ZfSF9fCj4gIAo+ICtzdHJ1Y3QgY29tcG9uZW50X21hc3Rlcl9v
-cHM7Cj4gK3N0cnVjdCBkZXZpY2U7Cj4gIHN0cnVjdCBkcm1fZGV2aWNlOwo+ICBzdHJ1Y3QgZGV2
-aWNlX25vZGU7Cj4gIAo+ICAjaWZkZWYgQ09ORklHX09GCj4gIGV4dGVybiB1aW50MzJfdCBkcm1f
-b2ZfZmluZF9wb3NzaWJsZV9jcnRjcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJCQkJCSAg
-IHN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCk7Cj4gK2V4dGVybiBpbnQgZHJtX29mX2NvbXBvbmVu
-dF9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gKwkJCQkgIGludCAoKmNvbXBhcmVfb2YpKHN0
-cnVjdCBkZXZpY2UgKiwgdm9pZCAqKSwKPiArCQkJCSAgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9t
-YXN0ZXJfb3BzICptYXN0ZXJfb3BzKTsKPiAgI2Vsc2UKPiAgc3RhdGljIGlubGluZSB1aW50MzJf
-dCBkcm1fb2ZfZmluZF9wb3NzaWJsZV9jcnRjcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJ
-CQkJCQkgIHN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCkKPiAgewo+ICAJcmV0dXJuIDA7Cj4gIH0K
-PiArCj4gK3N0YXRpYyBpbmxpbmUgaW50IGRybV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRl
-dmljZSAqZGV2LAo+ICsJCQkJCWludCAoKmNvbXBhcmVfb2YpKHN0cnVjdCBkZXZpY2UgKiwgdm9p
-ZCAqKSwKPiArCQkJCQkgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzICptYXN0ZXJf
-b3BzKQoKU29tZSBvZiB0aGVzZSBsaW5lcyB3aWxsIGZhaWwgY2hlY2twYXRjaC4gIEl0IHdvdWxk
-IGJlIG5pY2UgdG8gYXZvaWQKbGluZXMgbG9uZ2VyIHRoYW4gODAgY29sdW1ucy4KCi0tIApGVFRD
-IGJyb2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgOS42TWJwcyBkb3duIDQw
-MGticHMgdXAKYWNjb3JkaW5nIHRvIHNwZWVkdGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Mon, Oct 19, 2015 at 01:25:37PM +0100, Russell King - ARM Linux wrot=
+e:
+> On Mon, Oct 19, 2015 at 01:21:50PM +0100, Liviu Dudau wrote:
+> > A lot of component based DRM drivers use a variant of the same code
+> > as the probe function. They bind the crtc ports in the first iterat=
+ion
+> > and then scan through the child nodes and bind the encoders attache=
+d
+> > to the remote endpoints. Factor the common code into a separate
+> > function called drm_of_component_probe() in order to increase code
+> > reuse.
+> >=20
+> > Cc: David Airlie <airlied@linux.ie>
+> > Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
+> > ---
+> >  drivers/gpu/drm/drm_of.c | 92 ++++++++++++++++++++++++++++++++++++=
+++++++++++++
+> >  include/drm/drm_of.h     | 12 +++++++
+> >  2 files changed, 104 insertions(+)
+> >=20
+> > diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+> > index be38840..cf16240 100644
+> > --- a/drivers/gpu/drm/drm_of.c
+> > +++ b/drivers/gpu/drm/drm_of.c
+> > @@ -1,3 +1,4 @@
+> > +#include <linux/component.h>
+> >  #include <linux/export.h>
+> >  #include <linux/list.h>
+> >  #include <linux/of_graph.h>
+> > @@ -61,3 +62,94 @@ uint32_t drm_of_find_possible_crtcs(struct drm_d=
+evice *dev,
+> >  	return possible_crtcs;
+> >  }
+> >  EXPORT_SYMBOL(drm_of_find_possible_crtcs);
+> > +
+> > +/**
+> > + * drm_of_component_probe - Generic probe function for a component=
+ based master
+> > + * @dev: master device containing the OF node
+> > + * @compare_of: compare function used for matching components
+> > + * @master_ops: component master ops to be used
+> > + *
+> > + * Parse the platform device OF node and bind all the components a=
+ssociated
+> > + * with the master. Interface ports are added before the encoders =
+in order to
+> > + * satisfy their .bind requirements
+> > + * See Documentation/devicetree/bindings/graph.txt for the binding=
+s.
+> > + *
+> > + * Returns zero if successful, or one of the standard error codes =
+if it fails.
+> > + */
+> > +int drm_of_component_probe(struct device *dev,
+> > +			   int (*compare_of)(struct device *, void *),
+> > +			   const struct component_master_ops *master_ops)
+> > +{
+> ...
+> > +	ret =3D dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
+> > +	if (ret)
+> > +		return ret;
+>=20
+> Please don't move this into here, it's completely inappropriate.  Jus=
+t
+> because something makes use of this does not mean they only support
+> 32-bit DMA.  Besides, this has nothing to do with whether or not it's
+> OF-based or not.
+
+Understood. My thinking process was that component-based drivers are al=
+l
+OF-enabled (how else do you make use of the framework?) and 32-bit DMA =
+is
+present in 2 out of 3 drivers that are converted, so it looks to be com=
+mon
+enough that adding it to armada would not hurt. It was all done in the =
+name of
+collecting common code in a single function.
+
+> > +
+> > +	return component_master_add_with_match(dev, master_ops, match);
+> > +}
+> > +EXPORT_SYMBOL(drm_of_component_probe);
+> > diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+> > index 2441f71..7c0c05b 100644
+> > --- a/include/drm/drm_of.h
+> > +++ b/include/drm/drm_of.h
+> > @@ -1,18 +1,30 @@
+> >  #ifndef __DRM_OF_H__
+> >  #define __DRM_OF_H__
+> > =20
+> > +struct component_master_ops;
+> > +struct device;
+> >  struct drm_device;
+> >  struct device_node;
+> > =20
+> >  #ifdef CONFIG_OF
+> >  extern uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+> >  					   struct device_node *port);
+> > +extern int drm_of_component_probe(struct device *dev,
+> > +				  int (*compare_of)(struct device *, void *),
+> > +				  const struct component_master_ops *master_ops);
+> >  #else
+> >  static inline uint32_t drm_of_find_possible_crtcs(struct drm_devic=
+e *dev,
+> >  						  struct device_node *port)
+> >  {
+> >  	return 0;
+> >  }
+> > +
+> > +static inline int drm_of_component_probe(struct device *dev,
+> > +					int (*compare_of)(struct device *, void *),
+> > +					 const struct component_master_ops *master_ops)
+>=20
+> Some of these lines will fail checkpatch.  It would be nice to avoid
+> lines longer than 80 columns.
+
+I'm torn between following the 80 columns rule, aligning parameters to =
+the
+opening brace, keeping the return value on the same line as the functio=
+n name
+and having this high res monitor that can make code more readable by go=
+ing to
+86 columns. :)
+
+I will update the patch to trim down the line width, thanks for reviewi=
+ng it!
+
+Best regards,
+Liviu
+
+>=20
+> --=20
+> FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+> according to speedtest.net.
+>=20
+
+--=20
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    =C2=AF\_(=E3=83=84)_/=C2=AF
