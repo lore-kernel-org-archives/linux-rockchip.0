@@ -1,12 +1,16 @@
-From: Liviu Dudau <Liviu.Dudau@arm.com>
-Subject: [RFC PATCH v3 0/4] drm: Cleanup probe function for component based
- masters.
-Date: Mon, 19 Oct 2015 16:07:46 +0100
-Message-ID: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Mon, 19 Oct 2015 16:14:18 +0100
+Message-ID: <20151019151418.GG32532@n2100.arm.linux.org.uk>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -16,43 +20,21 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q2hhbmdlbG9nOgp2MzogUmVtb3ZlZCB0aGUgY2FsbCB0byBkbWFfc2V0X2NvaGVyZW50X21hc2so
-KSBmcm9tIHRoZSBnZW5lcmljCiAgICBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkuIEFsc28gY2hh
-bmdlcyB0byBzaG9ydGVuIGxpbmVzIG92ZXIgODAgY2hhcnMgbG9uZy4KdjI6IFJlYmFzZWQgdGhl
-IHBhdGNoc2V0IG9uIHRvcCBvZiBkcm0tbmV4dCByYXRoZXIgdGhhbiBMaW51cycgbGF0ZXN0IC1y
-YwoKQSBmZXcgZHJpdmVycyBpbiBkcml2ZXJzL2dwdS9kcm0gYXJlIGNvbXBvbmVudC1lbmFibGVk
-IGFuZCB1c2UgcXVpdGUgc2ltaWxhcgpjb2RlIHNlcXVlbmNlcyB0byBwcm9iZSBmb3IgdGhlaXIg
-ZW5jb2RlciBzbGF2ZXMgYXQgdGhlIHJlbW90ZSBlbmQgb2YgdGhlIHBvcnRzLgpNb3ZlIHRoZSBj
-b2RlIGludG8gYSAiZ2VuZXJpYyIgZnVuY3Rpb24gYW5kIHJlbW92ZSBpdCBmcm9tIHRoZSBkcml2
-ZXJzLgoKVGhlIGVuZCByZXN1bHRzIGlzIHRoYXQgZHJpdmVycyBnZXQgYSByZWZlcmVuY2UgY291
-bnQgZml4IChpbXgpLCBtb3JlIHRob3JvdWdoCmVycm9yIGNoZWNraW5nIChpbXggYWdhaW4pIHBs
-dXMgYSBkZWNyZWFzZSBpbiB0aGUgb3ZlcmFsbCBjb3VudCBvZiBMb0MuCgpJJ20gbG9va2luZyBm
-b3IgY29tbWVudHMgYW5kIHRlc3Rpbmcgb2YgdGhlIHBhdGNoc2V0IChvbmx5IGNvbXBpbGUgdGVz
-dGVkIGZyb20gbXkKZW5kIGFzIEkgZG9uJ3QgaGF2ZSBhY2Nlc3MgdG8gYWxsIHRoZSBkZXZpY2Vz
-IHRvdWNoZWQgYnkgdGhlIGNoYW5nZXMpLiBNeSBtYWluCmludGVyZXN0IGlzIGluIGZpbmRpbmcg
-b3V0IGlmIC1FSU5WQUwgaXMgdGhlIGNvcnJlY3QgY29kZSB0byByZXR1cm4gaWYKZGV2LT5vZl9u
-b2RlID09IE5VTEwgKGhhbmR5IG5vdywgYXMgaXQgaXMgZGlmZmVyZW50IGZyb20gdGhlIG90aGVy
-IHBvc3NpYmxlIGVycm9yCmNvZGVzIGFuZCB1c2VkIGluIGFybWFkYSB0byB0cmlnZ2VyIG9sZCBw
-bGF0Zm9ybV9kYXRhIHN1cHBvcnQuIEFsc28gbG9va2luZyBmb3IKdGhvdWdodHMgb24gdGhlIGNv
-cnJlY3RuZXNzIG9mIHRoZSBwYXRjaCBhbmQgaWYgaXQgcG9zc2libGUgdG8gY28tb3B0IG1vcmUg
-ZHJpdmVycwppbnRvIHVzaW5nIHRoZSBmdW5jdGlvbi4KCkJlc3QgcmVnYXJkcywKTGl2aXUKCkxp
-dml1IER1ZGF1ICg0KToKICBkcm06IEludHJvZHVjZSBnZW5lcmljIHByb2JlIGZ1bmN0aW9uIGZv
-ciBjb21wb25lbnQgYmFzZWQgbWFzdGVycy4KICBkcm0vaW14OiBDb252ZXJ0IHRoZSBwcm9iZSBm
-dW5jdGlvbiB0byB0aGUgZ2VuZXJpYyBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkKICBkcm0vcm9j
-a2NoaXA6IENvbnZlcnQgdGhlIHByb2JlIGZ1bmN0aW9uIHRvIHRoZSBnZW5lcmljIGRybV9vZl9j
-b21wb25lbnRfcHJvYmUoKQogIGRybS9hcm1hZGE6IENvbnZlcnQgdGhlIHByb2JlIGZ1bmN0aW9u
-IHRvIHRoZSBnZW5lcmljIGRybV9vZl9jb21wb25lbnRfcHJvYmUoKQoKIGRyaXZlcnMvZ3B1L2Ry
-bS9hcm1hZGEvYXJtYWRhX2Rydi5jICAgICAgICAgfCA3MyArKysrKysrKy0tLS0tLS0tLS0tLS0t
-LS0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAgICAgICAgICAgfCA4OCArKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKwogZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtZHJtLWNv
-cmUuYyAgICAgICAgICB8IDU1ICsrLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDgxICsrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-CiBpbmNsdWRlL2RybS9kcm1fb2YuaCAgICAgICAgICAgICAgICAgICAgICAgIHwgMTMgKysrKysK
-IDUgZmlsZXMgY2hhbmdlZCwgMTMzIGluc2VydGlvbnMoKyksIDE3NyBkZWxldGlvbnMoLSkKCi0t
-IAoyLjYuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+T24gTW9uLCBPY3QgMTksIDIwMTUgYXQgMDQ6MDc6NDdQTSArMDEwMCwgTGl2aXUgRHVkYXUgd3Jv
+dGU6Cj4gQSBsb3Qgb2YgY29tcG9uZW50IGJhc2VkIERSTSBkcml2ZXJzIHVzZSBhIHZhcmlhbnQg
+b2YgdGhlIHNhbWUgY29kZQo+IGFzIHRoZSBwcm9iZSBmdW5jdGlvbi4gVGhleSBiaW5kIHRoZSBj
+cnRjIHBvcnRzIGluIHRoZSBmaXJzdCBpdGVyYXRpb24KPiBhbmQgdGhlbiBzY2FuIHRocm91Z2gg
+dGhlIGNoaWxkIG5vZGVzIGFuZCBiaW5kIHRoZSBlbmNvZGVycyBhdHRhY2hlZAo+IHRvIHRoZSBy
+ZW1vdGUgZW5kcG9pbnRzLiBGYWN0b3IgdGhlIGNvbW1vbiBjb2RlIGludG8gYSBzZXBhcmF0ZQo+
+IGZ1bmN0aW9uIGNhbGxlZCBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkgaW4gb3JkZXIgdG8gaW5j
+cmVhc2UgY29kZQo+IHJldXNlLgoKVGhhbmtzLCB0aGlzIG5vdyBsb29rcyBwZXJmZWN0LgoKQWNr
+ZWQtYnk6IFJ1c3NlbGwgS2luZyA8cm1rK2tlcm5lbEBhcm0ubGludXgub3JnLnVrPgoKLS0gCkZU
+VEMgYnJvYWRiYW5kIGZvciAwLjhtaWxlIGxpbmU6IGN1cnJlbnRseSBhdCA5LjZNYnBzIGRvd24g
+NDAwa2JwcyB1cAphY2NvcmRpbmcgdG8gc3BlZWR0ZXN0Lm5ldC4KX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
