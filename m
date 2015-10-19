@@ -1,67 +1,64 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [RFC PATCH v2 1/4] drm: Introduce generic probe function for
- component based masters.
-Date: Mon, 19 Oct 2015 15:50:27 +0100
-Message-ID: <20151019145027.GF32532@n2100.arm.linux.org.uk>
-References: <1445257313-7147-1-git-send-email-Liviu.Dudau@arm.com>
- <1445257313-7147-2-git-send-email-Liviu.Dudau@arm.com>
- <20151019122537.GZ32532@n2100.arm.linux.org.uk>
- <20151019130258.GU3394@e106497-lin.cambridge.arm.com>
- <20151019132638.GB32532@n2100.arm.linux.org.uk>
- <20151019144225.GE13786@phenom.ffwll.local>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] mmc: sdhci-of-arasan: add phy support for
+ sdhci-of-arasan
+Date: Mon, 19 Oct 2015 22:56:53 +0800
+Message-ID: <562504B5.7090206@rock-chips.com>
+References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAPDyKFpwgZSkE+TNehZ1Un=5CfjoEtfvELfrS6t-ZHZPscy3Yg@mail.gmail.com>
+ <56243E85.2040202@rock-chips.com>
+ <CAPDyKFpkH00roc=Nn067PufmQL59wqsi1c58tdv_UyP-7Gs-vg@mail.gmail.com>
+ <5624AC51.9060907@rock-chips.com>
+ <CAPDyKFqyXNUS2GwPjVWpoiPxOLNJ3T=FgDLO2NT+pEBGYMR1eQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20151019144225.GE13786@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFqyXNUS2GwPjVWpoiPxOLNJ3T=FgDLO2NT+pEBGYMR1eQ@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Michal Simek <michal.simek@xilinx.com>, S?ren Brinkmann <soren.brinkmann@xilinx.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBPY3QgMTksIDIwMTUgYXQgMDQ6NDI6MjVQTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBPbiBNb24sIE9jdCAxOSwgMjAxNSBhdCAwMjoyNjozOFBNICswMTAwLCBSdXNzZWxs
-IEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4gPiBPbiBNb24sIE9jdCAxOSwgMjAxNSBhdCAwMjow
-Mjo1OFBNICswMTAwLCBMaXZpdSBEdWRhdSB3cm90ZToKPiA+ID4gT24gTW9uLCBPY3QgMTksIDIw
-MTUgYXQgMDE6MjU6MzdQTSArMDEwMCwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdyb3RlOgo+
-ID4gPiA+IFBsZWFzZSBkb24ndCBtb3ZlIHRoaXMgaW50byBoZXJlLCBpdCdzIGNvbXBsZXRlbHkg
-aW5hcHByb3ByaWF0ZS4gIEp1c3QKPiA+ID4gPiBiZWNhdXNlIHNvbWV0aGluZyBtYWtlcyB1c2Ug
-b2YgdGhpcyBkb2VzIG5vdCBtZWFuIHRoZXkgb25seSBzdXBwb3J0Cj4gPiA+ID4gMzItYml0IERN
-QS4gIEJlc2lkZXMsIHRoaXMgaGFzIG5vdGhpbmcgdG8gZG8gd2l0aCB3aGV0aGVyIG9yIG5vdCBp
-dCdzCj4gPiA+ID4gT0YtYmFzZWQgb3Igbm90Lgo+ID4gPiAKPiA+ID4gVW5kZXJzdG9vZC4gTXkg
-dGhpbmtpbmcgcHJvY2VzcyB3YXMgdGhhdCBjb21wb25lbnQtYmFzZWQgZHJpdmVycyBhcmUgYWxs
-Cj4gPiA+IE9GLWVuYWJsZWQgKGhvdyBlbHNlIGRvIHlvdSBtYWtlIHVzZSBvZiB0aGUgZnJhbWV3
-b3JrPykgYW5kIDMyLWJpdCBETUEgaXMKPiA+ID4gcHJlc2VudCBpbiAyIG91dCBvZiAzIGRyaXZl
-cnMgdGhhdCBhcmUgY29udmVydGVkLCBzbyBpdCBsb29rcyB0byBiZSBjb21tb24KPiA+ID4gZW5v
-dWdoIHRoYXQgYWRkaW5nIGl0IHRvIGFybWFkYSB3b3VsZCBub3QgaHVydC4gSXQgd2FzIGFsbCBk
-b25lIGluIHRoZSBuYW1lIG9mCj4gPiA+IGNvbGxlY3RpbmcgY29tbW9uIGNvZGUgaW4gYSBzaW5n
-bGUgZnVuY3Rpb24uCj4gPiAKPiA+IFdoaWNoIGlzIGFuIHV0dGVybHkgY3JhcCByZWFzb24uCj4g
-PiAKPiA+IEl0J3MgYWxzbyBub3QgYXBwcm9wcmlhdGUuICBJJ20gcmVhbGx5IG5vdCBzdXJlIHdo
-eSB5b3UgdGhpbmsgdGhhdCBtb3ZpbmcKPiA+IHRoaXMgaGVyZSB3b3VsZCBpbiBhbnkgd2F5IGJl
-IGFwcHJvcHJpYXRlIC0gZnJvbSBteSBwb2ludCBvZiB2aWV3LCB0aGUKPiA+IG1lcmUgcHJvcG9z
-YWwgaXMgdXR0ZXJseSBpbnNhbmUuCj4gPiAKPiA+IFRoZSAiY29udGFpbmVyIiBkZXZpY2UgZG9l
-cyBub3QgZG8gYW55IERNQSwgc28gaXQncyBpbmFwcHJvcHJpYXRlIGZvcgo+ID4gaXQgdG8gaGF2
-ZSBETUEgbWFza3Mgc2V0IG9yIG5lZ290aWF0ZWQgb24gaXQuICBTbywgYWN0dWFsbHksIG5vIG9u
-ZQo+ID4gc2hvdWxkIGJlIHNldHRpbmcgdGhlIERNQSBtYXNrIGZvciB0aGVpciBjb250YWluZXIg
-ZGV2aWNlLiAgSXQncyB3cm9uZy4KPiAKPiBJIHRoaW5rIChhbmQgbXkgb3BpbmlvbiBkb2Vzbid0
-IGNhcnJ5IGFzIG11Y2ggd2hlaWdodCBoZXJlIG9uIGRyaS1kZXZlbAo+IHRoYW4gaW50ZWwtZ2Z4
-KSB0aGUgYWJvdmUgaXMgb3ZlciB0aGUgdG9wIGJhc2hpbmcgb2YgYSBuZXcgY29udHJpYnV0b3Ig
-dG8KPiBkcm0gd2hvIHJlYWxseSBzZWVtcyB0cnlpbmcgdG8gZG8gcmlnaHQuIEkgdGhpbmsgdGhh
-dCdzIHVuZWNlc3NhcnksCj4gZXNwZWNpYWxseSBzaW5jZSB5b3UgZm9sbG93IHVwIHdpdGggdGhl
-IHJlYXNvbmFibGUgcmVwbHkgYmVsb3cuCgpJdCdzIGp1c3RpZmllZCBiZWNhdXNlIGl0IHRvb2sg
-X3R3b18gbWVzc2FnZXMgdG8gZ2V0IHRoZSBwb2ludCBhY3Jvc3MuClRoZSBmaXJzdCBvbmUgYXNr
-aW5nIG5pY2VseSBkaWRuJ3QgbWFrZSB0aGUgbmVjZXNzYXJ5IGltcGFjdC4KCi0tIApGVFRDIGJy
-b2FkYmFuZCBmb3IgMC44bWlsZSBsaW5lOiBjdXJyZW50bHkgYXQgOS42TWJwcyBkb3duIDQwMGti
-cHMgdXAKYWNjb3JkaW5nIHRvIHNwZWVkdGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 2015/10/19 18:54, Ulf Hansson wrote:
+> [...]
+>
+
+[...]
+
+>
+>>
+>>> 2) Considering the runtime PM case for the sdhci device. Typically you
+>>> can gate clocks etc at runtime suspend to save power, but what about
+>>> the phy? Can you power off it in runtime suspend?
+>>
+>>
+>> yes, we can power off it in runtime suspend. So we can append some patches
+>> later to introduce runtime pm for sdhci-of-arasan?
+>
+> Yes, that's fine. I would thus expect that you want to do phy power
+> off/on from the runtime PM callbacks, right!?
+>
+> If that's the case I think $subject patch should deal with *both* phy
+> init and phy power on during ->probe().
+>
+
+yes. I will do phy power_off/on from runtime pm for the next version of 
+$subject patchset.
+
+Thanks.
+
+> Kind regards
+> Uffe
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
