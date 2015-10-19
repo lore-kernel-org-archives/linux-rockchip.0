@@ -1,77 +1,95 @@
-From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Subject: Re: [PATCH v6 0/17] Add Analogix Core Display Port Driver
-Date: Mon, 19 Oct 2015 12:40:22 +0200
-Message-ID: <5624C896.8070108@osg.samsung.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1444491357-26095-1-git-send-email-ykk@rock-chips.com>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] mmc: sdhci-of-arasan: add phy support for sdhci-of-arasan
+Date: Mon, 19 Oct 2015 12:54:17 +0200
+Message-ID: <CAPDyKFqyXNUS2GwPjVWpoiPxOLNJ3T=FgDLO2NT+pEBGYMR1eQ@mail.gmail.com>
+References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
+	<CAPDyKFpwgZSkE+TNehZ1Un=5CfjoEtfvELfrS6t-ZHZPscy3Yg@mail.gmail.com>
+	<56243E85.2040202@rock-chips.com>
+	<CAPDyKFpkH00roc=Nn067PufmQL59wqsi1c58tdv_UyP-7Gs-vg@mail.gmail.com>
+	<5624AC51.9060907@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1444491357-26095-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5624AC51.9060907-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, S?ren Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Yakir,
+[...]
 
-On 10/10/2015 05:35 PM, Yakir Yang wrote:
-> 
-> Hi all,
-> 
->    The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
-> share the same IP, so a lot of parts can be re-used. I split the common
-> code into bridge directory, then rk3288 and exynos only need to keep
-> some platform code. Cause I can't find the exact IP name of exynos dp
-> controller, so I decide to name dp core driver with "analogix" which I
-> find in rk3288 eDP TRM :)
-> 
-> But  there are still three light registers setting differents bewteen
-> exynos and rk3288.
-> 1. RK3288 have five special pll resigters which not indicata in exynos
->    dp controller.
-> 2. The address of DP_PHY_PD(dp phy power manager register) are different
->    between rk3288 and exynos.
-> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
->    register).
-> 
-> This series have been well tested on Rockchip platform with eDP panel
-> on Jerry Chromebook and Display Port Monitor on RK3288 board and thanks
-> to Javier@Samsung help me to find a way to install mainline kernel to
-> Samsung Exynos Chromebooks, so this series also have been tested on Samsung
-> Snow and Peach Pit Chromebooks which borrowed from my friends.
-> 
-> Besides, This version was build on linux-next branch (tag next-20150918), and
-> the above test experiments also base on that tag. But I know the latest tag is
-> next-20151009, so i do rebase this series again on next-20151009, there were
-> little conflicts(exynos_dp removed the suspend/resume).
-> 
-> But after I retest this series on next-20151009, I saw kernel crashed in mmc
-> driver(dw_mci_probe failed to get regulator). So i have to disabled the MMC
-> module(after all I boot with USB device), and I can see eDP light up normally
-> in startup stage, but kernel keep crashed when it try to mount the filesystem.
-> I thought this isn't related to dp driver directly, so i choice not to debug
-> more depth.
-> 
-> That's to say if someone want to test this series, I suggest you applied this
-> series on tag-20150918, just need to fix some light conflicts with the 01 & 02
-> patches (or just email me, I can send you directly).
-> 
-> Thanks,
+>>>
+>>>>
+>>>>> +               ret = phy_power_on(sdhci_arasan->phy);
+>>>>
+>>>>
+>>>>
+>>>> This looks a bit weird. Shouldn't you do phy_init() prior
+>>>> phy_power_on()?
+>>>>
+>>>> Similar comment applies to phy_exit() and phy_power_off().
+>>>
+>>>
+>>>
+>>> Both are okay. It depends how the phy-driver implement the four
+>>> interfaces.
+>>>  From my case, power_on for arasan's phy driver firstly enable phy's clk
+>>> and
+>>> open power-domain, then programme phy internal registers to activate phy.
+>>> Without enabling phy's clk and power-domain, we cannot do phy_init since
+>>> phy
+>>> can't be accessed by CPU.
+>>>
+>>> But here, I think you are right. It does look a bit weird.
+>>> I think the better way is to remove phy_power_on here, and let phy-driver
+>>> do
+>>> power_on in phy_init internally. Similarly in the remove call.
+>>
+>>
+>> That makes sense to me! I think it would also follow other phy clients
+>> use of the phy API.
+>>
+>> What makes me wonder though is from a power management point of view.
+>> *When* do you need to have phy initialized and powered?
+>>
+>
+> Whenever controller need to communicate with card, must init/power_on phy
+> firstly.
+>
+>> 1) For a removable card can leave the phy uninitialised or powered
+>> off, but still detect card insertion/removal via GPIO? Is that a valid
+>> scenario for you?
+>>
+>
+> Theoretically, it is.  Although my soc don't use phy for removable card, I
+> also consider how to handle this case. Should we add a hook
+> for sdhci_get_cd, and initialize phy if it's non-removeable device or
+> removeable card in slot ? Doesn't seem like a good idea.
+>
+> Also seems not always work if we just use SDHCI_PRESENT_STATE to detect card
+> insertion/removal without phy in active state.
 
-Do you have a branch that I can use to test this series?
+As you SoC don't use removable card, let's just leave this for now.
+Thanks for sharing your thoughts.
 
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
+>
+>> 2) Considering the runtime PM case for the sdhci device. Typically you
+>> can gate clocks etc at runtime suspend to save power, but what about
+>> the phy? Can you power off it in runtime suspend?
+>
+>
+> yes, we can power off it in runtime suspend. So we can append some patches
+> later to introduce runtime pm for sdhci-of-arasan?
+
+Yes, that's fine. I would thus expect that you want to do phy power
+off/on from the runtime PM callbacks, right!?
+
+If that's the case I think $subject patch should deal with *both* phy
+init and phy power on during ->probe().
+
+Kind regards
+Uffe
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
