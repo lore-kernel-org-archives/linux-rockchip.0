@@ -1,85 +1,53 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4] usb: dwc2: host: Fix use after free w/ simultaneous irqs
-Date: Mon, 19 Oct 2015 09:36:26 -0700
-Message-ID: <CAD=FV=Xua_hyjtK6abQUQE=ieV5LL4K8ToWx==FAhEpiZgZecA@mail.gmail.com>
-References: <1445036492-21079-1-git-send-email-dianders@chromium.org>
-	<2B3535C5ECE8B5419E3ECBE30077290901DC39CC4A@US01WEMBX2.internal.synopsys.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [alsa-devel] [PATCH v1 1/4] ASoC: codec: Inno codec driver for
+ RK3036 SoC
+Date: Mon, 19 Oct 2015 19:54:14 +0100
+Message-ID: <20151019185414.GO32054@sirena.org.uk>
+References: <1444698070-4191-1-git-send-email-zhengsq@rock-chips.com>
+ <1444698070-4191-2-git-send-email-zhengsq@rock-chips.com>
+ <alpine.DEB.2.02.1510190855250.4075@lnxricardw1.se.axis.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="f0PSjARDFl/vfYT5"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC39CC4A@US01WEMBX2.internal.synopsys.com>
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.02.1510190855250.4075@lnxricardw1.se.axis.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>
-Cc: "balbi@ti.com" <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Ricard Wanderlof <ricard.wanderlof@axis.com>
+Cc: Shunqian Zheng <zhengsq@rock-chips.com>, "robh+dt@kernel.org" <robh+dt@kernel.org>, "pawel.moll@arm.com" <pawel.moll@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "ijc+devicetree@hellion.org.uk" <ijc+devicetree@hellion.org.uk>, "galak@codeaurora.org" <galak@codeaurora.org>, "heiko@sntech.de" <heiko@sntech.de>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>, "perex@perex.cz" <perex@perex.cz>, "tiwai@suse.com" <tiwai@suse.com>, "benzh@chromium.org" <benzh@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-John,
 
-On Fri, Oct 16, 2015 at 9:14 PM, John Youn <John.Youn@synopsys.com> wrote:
-> I reviewed this some more and I think this should be ok. Most of
-> the handlers don't make sense without a qtd and/or channel.
->
-> Although I am not completely sure on the desc dma case. I think
-> it will at least be better than letting the use-after-free occur.
->
->
-> Acked-by: John Youn <johnyoun@synopsys.com>
+--f0PSjARDFl/vfYT5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Thanks!
+On Mon, Oct 19, 2015 at 08:56:51AM +0200, Ricard Wanderlof wrote:
+> On Tue, 13 Oct 2015, Shunqian Zheng wrote:
 
-I put some code in to give a stack crawl for the cause of the NULL
-"qh" case.  I'm running with Gregory Herrero's Descriptor DMA series.
-NULL case only happens if I move "dma_desc_enable" and
-"dma_desc_fs_enable" away from 0 (right now Rockchip is hardcoded to
-have dma_desc off).
+> > +static const struct of_device_id rk3036_codec_of_match[] = {
+> > +       { .compatible = "rk3036-codec", },
+> > +       {}
+> > +};
+> > +MODULE_DEVICE_TABLE(of, rk3036_codec_of_match);
 
---
+> Isn't a compatible string normally in the form "rockchip,rk3036-codec" ?
 
-kgdb shows:
+Yes, it needs vendor namespacing.
 
-#0  0xc0198728 in arch_kgdb_breakpoint () at
-arch/arm/include/asm/outercache.h:103
+--f0PSjARDFl/vfYT5
+Content-Type: application/pgp-signature; name="signature.asc"
 
-#1  kgdb_breakpoint () at kernel/debug/debug_core.c:1054
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-#2  0xc0462dcc in dwc2_release_channel_ddma
-(hsotg=hsotg@entry=0xed426058, qh=qh@entry=0xed682280) at
-drivers/usb/dwc2/hcd_ddma.c:318
+iQEcBAEBCAAGBQJWJTxVAAoJECTWi3JdVIfQdf8H/0+TPUuLQaSrhGLWhHkSaTUY
+yoSdLKSf52RidLRcyoWxpfi/k+DoV38OLOlR8o1jjbeqC6FCu1l8ueywb8tXh+Ca
+fmhxmB24zvr7vcDOeY9ORX7KTOknJ+EeQkaWtDUvdYNAYPyADHYSbXSVaxrKqpzR
+DZ3a4UItVRD3XEEGSZQERmImknPQLhkcFw2Ms1K725aEpHLLcrwLGLZg1nDw4kJ4
+QK97C/kRUpSYUki3pAPh0HYH/e2t52PhwPrQcp+ztjPK0Zl9nSGMQcoOuUrMQL8Y
+gdjHsE3Whjmhq/j0is9SgpJ+xrCYk5tM5XJVcLVlAIAGLs7CM36HAT7J9ej0Nrs=
+=LnLC
+-----END PGP SIGNATURE-----
 
-...AKA on "chan->qh = NULL;"
-
-
-#3  0xc0463f48 in dwc2_hcd_complete_xfer_ddma
-(hsotg=hsotg@entry=0xed426058, chan=chan@entry=0xed531a40,
-chnum=chnum@entry=0,
-halt_status=halt_status@entry=DWC2_HC_XFER_COMPLETE)
-    at drivers/usb/dwc2/hcd_ddma.c:1351
-
-#4  0xc0460414 in dwc2_hc_xfercomp_intr (hsotg=hsotg@entry=0xed426058,
-chan=chan@entry=0xed531a40, chnum=chnum@entry=0,
-qtd=qtd@entry=0xed66cc00)
-    at drivers/usb/dwc2/hcd_intr.c:1002
-
-#5  0xc0461814 in dwc2_hc_chhltd_intr_dma (qtd=0xed66cc00, chnum=0,
-chan=0xed531a40, hsotg=0xed426058) at drivers/usb/dwc2/hcd_intr.c:1830
-
-#6  dwc2_hc_chhltd_intr (qtd=0xed66cc00, chnum=0, chan=0xed531a40,
-hsotg=0xed426058) at drivers/usb/dwc2/hcd_intr.c:1951
-
-#7  dwc2_hc_n_intr (chnum=0, hsotg=0xed426058) at
-drivers/usb/dwc2/hcd_intr.c:2063
-
-...AKA on "dwc2_hc_chhltd_intr(hsotg, chan, chnum, qtd);"
-
-#8  dwc2_hc_intr (hsotg=0xed426058) at drivers/usb/dwc2/hcd_intr.c:2138
-
-#9  dwc2_handle_hcd_intr (hsotg=0xed426058) at drivers/usb/dwc2/hcd_intr.c:2188
-
-#10 0xc045c22c in _dwc2_hcd_irq (hcd=<optimized out>) at
-drivers/usb/dwc2/hcd.c:2895
-
-#11 0xc044752c in usb_hcd_irq (irq=<optimized out>, __hcd=<optimized
-out>) at drivers/usb/core/hcd.c:2353
-
-
--Doug
+--f0PSjARDFl/vfYT5--
