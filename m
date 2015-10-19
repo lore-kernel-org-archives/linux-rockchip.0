@@ -1,48 +1,44 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [alsa-devel] [PATCH v2 1/3] ASoC: rockchip: i2s: add 8 channels
- capture support
-Date: Mon, 19 Oct 2015 16:15:25 +0100
-Message-ID: <20151019151525.GA32054@sirena.org.uk>
-References: <1444308009-29088-1-git-send-email-sugar.zhang@rock-chips.com>
- <1444308009-29088-2-git-send-email-sugar.zhang@rock-chips.com>
- <CAG5mAdzfoK_rnQhu=NGMzto2K49uKT4eOotRh3uGX=D6KOB5gQ@mail.gmail.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [RFC PATCH v3 4/4] drm/armada: Convert the probe function to the
+ generic drm_of_component_probe()
+Date: Mon, 19 Oct 2015 16:17:14 +0100
+Message-ID: <20151019151714.GI32532@n2100.arm.linux.org.uk>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-5-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="OgqxwSJOaUobr8KG"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <CAG5mAdzfoK_rnQhu=NGMzto2K49uKT4eOotRh3uGX=D6KOB5gQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caleb Crome <caleb@crome.org>
-Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, perex@perex.cz, tiwai@suse.com, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1445267270-23126-5-git-send-email-Liviu.Dudau@arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---OgqxwSJOaUobr8KG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Oct 08, 2015 at 07:30:43AM -0700, Caleb Crome wrote:
-> Is it possible to allow channels > 8 if certain requirements are met?  If
-> the rockchip supports 8 channels @ 32-bits/sample, that means 256
-> bits/frame.  Can those 256 bits be sliced into 16 channels of 16-bit
-> samples?
-
-Please don't top post.
-
---OgqxwSJOaUobr8KG
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWJQkMAAoJECTWi3JdVIfQD2QH/35lxehoSqChGjdt3aRyIgA8
-j0BNpcF9szWwSpKpTFSfBYzCer/Cm6yyQSFUKYXs4DEY57AgMVwbcjcqYLNmCzNJ
-DB3PHugNhLssaZZeRxTLCfpJYVMhCGUzcoC8/9SXSVx0iTssjbLFH0Bx7pHPbrHo
-NZcfn2Oq2Q231WjYAX8pOlBk//AYaKcDNob3gIx4dnyYfbfJ/w/yLj3u6/sybqnF
-KWD308NBu0o+90Lpt9Di4Wg9vvWRdzm9XOZ3nbXIVxBiCljXRlbcPYKdZpiZ6XP7
-Rd7zETtxgUjSEL0NF9fIYDSYKstWdlDZSA41vcqdPtQEjJCl4j/fFOhY8nk6n50=
-=k8uM
------END PGP SIGNATURE-----
-
---OgqxwSJOaUobr8KG--
+T24gTW9uLCBPY3QgMTksIDIwMTUgYXQgMDQ6MDc6NTBQTSArMDEwMCwgTGl2aXUgRHVkYXUgd3Jv
+dGU6Cj4gVGhlIGFybWFkYSBEUk0gZHJpdmVyIGtlZXBzIHNvbWUgb2xkIHBsYXRmb3JtIGRhdGEg
+Y29tcGF0aWJpbGl0eSBpbiB0aGUKPiBwcm9iZSBmdW5jdGlvbiB0aGF0IG1ha2VzIG1vdmluZyB0
+byB0aGUgZ2VuZXJpYyBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkKPiBhIGJpdCBtb3JlIGNvbXBs
+aWNhdGVkIHRoYXQgaXQgc2hvdWxkLiBSZWZhY3RvciB0aGUgcHJvYmUgZnVuY3Rpb24gdG8gZG8K
+PiB0aGUgcGxhdGZvcm1fZGF0YSBwcm9jZXNzaW5nIGFmdGVyIHRoZSBnZW5lcmljIHByb2JlIChh
+bmQgb25seSBpZiB0aGF0Cj4gZmFpbHMpLiBUaGlzIHdheSBmdXR1cmUgY2xlYW51cCBjYW4gZnVy
+dGhlciByZW1vdmUgc3VwcG9ydCBmb3IgaXQuCgpJJ20gbWFpbmx5IHVzaW5nIHRoZSBvbGQgY29k
+ZSwgZXZlbiB3aXRoIERUIGJhc2VkIHBsYXRmb3JtcywgYmVjYXVzZSBpdApuZWVkcyBhIGJsb2Nr
+IG9mIHJlc2VydmVkIG1lbW9yeSB3aGljaCBJIGhhdmVuJ3QgZ290IGFyb3VuZCB0byBjb252ZXJ0
+aW5nCnRvIERUIHN0dWZmIChlYWNoIHRpbWUgSSd2ZSBsb29rZWQgaW50byBkb2luZyB0aGF0LCBi
+aXRzIGZvciBkZWFsaW5nIHdpdGgKcmVzZXJ2ZWQgbWVtb3J5IG5vZGVzIHdlcmUgbWlzc2luZy4p
+CgpBY2tlZC1ieTogUnVzc2VsbCBLaW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcudWs+Cgot
+LSAKRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDkuNk1icHMg
+ZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
