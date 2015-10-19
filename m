@@ -1,64 +1,74 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/2] mmc: sdhci-of-arasan: add phy support for
- sdhci-of-arasan
-Date: Mon, 19 Oct 2015 22:56:53 +0800
-Message-ID: <562504B5.7090206@rock-chips.com>
-References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
- <CAPDyKFpwgZSkE+TNehZ1Un=5CfjoEtfvELfrS6t-ZHZPscy3Yg@mail.gmail.com>
- <56243E85.2040202@rock-chips.com>
- <CAPDyKFpkH00roc=Nn067PufmQL59wqsi1c58tdv_UyP-7Gs-vg@mail.gmail.com>
- <5624AC51.9060907@rock-chips.com>
- <CAPDyKFqyXNUS2GwPjVWpoiPxOLNJ3T=FgDLO2NT+pEBGYMR1eQ@mail.gmail.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [RFC PATCH v2 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Mon, 19 Oct 2015 16:04:27 +0100
+Message-ID: <CACvgo53e-zFcDawbPNaOB8sQcNH-sFDmYi5sXRhp5z6T9oC2=A@mail.gmail.com>
+References: <1445257313-7147-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445257313-7147-2-git-send-email-Liviu.Dudau@arm.com>
+ <20151019122537.GZ32532@n2100.arm.linux.org.uk>
+ <20151019130258.GU3394@e106497-lin.cambridge.arm.com>
+ <20151019132638.GB32532@n2100.arm.linux.org.uk>
+ <20151019144225.GE13786@phenom.ffwll.local>
+ <20151019145027.GF32532@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFqyXNUS2GwPjVWpoiPxOLNJ3T=FgDLO2NT+pEBGYMR1eQ@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, Michal Simek <michal.simek@xilinx.com>, S?ren Brinkmann <soren.brinkmann@xilinx.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20151019145027.GF32532@n2100.arm.linux.org.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015/10/19 18:54, Ulf Hansson wrote:
-> [...]
->
-
-[...]
-
->
->>
->>> 2) Considering the runtime PM case for the sdhci device. Typically you
->>> can gate clocks etc at runtime suspend to save power, but what about
->>> the phy? Can you power off it in runtime suspend?
->>
->>
->> yes, we can power off it in runtime suspend. So we can append some patches
->> later to introduce runtime pm for sdhci-of-arasan?
->
-> Yes, that's fine. I would thus expect that you want to do phy power
-> off/on from the runtime PM callbacks, right!?
->
-> If that's the case I think $subject patch should deal with *both* phy
-> init and phy power on during ->probe().
->
-
-yes. I will do phy power_off/on from runtime pm for the next version of 
-$subject patchset.
-
-Thanks.
-
-> Kind regards
-> Uffe
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
->
->
-
-
--- 
-Best Regards
-Shawn Lin
-
+T24gMTkgT2N0b2JlciAyMDE1IGF0IDE1OjUwLCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXgKPGxp
+bnV4QGFybS5saW51eC5vcmcudWs+IHdyb3RlOgo+IE9uIE1vbiwgT2N0IDE5LCAyMDE1IGF0IDA0
+OjQyOjI1UE0gKzAyMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4+IE9uIE1vbiwgT2N0IDE5LCAy
+MDE1IGF0IDAyOjI2OjM4UE0gKzAxMDAsIFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90ZToK
+Pj4gPiBPbiBNb24sIE9jdCAxOSwgMjAxNSBhdCAwMjowMjo1OFBNICswMTAwLCBMaXZpdSBEdWRh
+dSB3cm90ZToKPj4gPiA+IE9uIE1vbiwgT2N0IDE5LCAyMDE1IGF0IDAxOjI1OjM3UE0gKzAxMDAs
+IFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90ZToKPj4gPiA+ID4gUGxlYXNlIGRvbid0IG1v
+dmUgdGhpcyBpbnRvIGhlcmUsIGl0J3MgY29tcGxldGVseSBpbmFwcHJvcHJpYXRlLiAgSnVzdAo+
+PiA+ID4gPiBiZWNhdXNlIHNvbWV0aGluZyBtYWtlcyB1c2Ugb2YgdGhpcyBkb2VzIG5vdCBtZWFu
+IHRoZXkgb25seSBzdXBwb3J0Cj4+ID4gPiA+IDMyLWJpdCBETUEuICBCZXNpZGVzLCB0aGlzIGhh
+cyBub3RoaW5nIHRvIGRvIHdpdGggd2hldGhlciBvciBub3QgaXQncwo+PiA+ID4gPiBPRi1iYXNl
+ZCBvciBub3QuCj4+ID4gPgo+PiA+ID4gVW5kZXJzdG9vZC4gTXkgdGhpbmtpbmcgcHJvY2VzcyB3
+YXMgdGhhdCBjb21wb25lbnQtYmFzZWQgZHJpdmVycyBhcmUgYWxsCj4+ID4gPiBPRi1lbmFibGVk
+IChob3cgZWxzZSBkbyB5b3UgbWFrZSB1c2Ugb2YgdGhlIGZyYW1ld29yaz8pIGFuZCAzMi1iaXQg
+RE1BIGlzCj4+ID4gPiBwcmVzZW50IGluIDIgb3V0IG9mIDMgZHJpdmVycyB0aGF0IGFyZSBjb252
+ZXJ0ZWQsIHNvIGl0IGxvb2tzIHRvIGJlIGNvbW1vbgo+PiA+ID4gZW5vdWdoIHRoYXQgYWRkaW5n
+IGl0IHRvIGFybWFkYSB3b3VsZCBub3QgaHVydC4gSXQgd2FzIGFsbCBkb25lIGluIHRoZSBuYW1l
+IG9mCj4+ID4gPiBjb2xsZWN0aW5nIGNvbW1vbiBjb2RlIGluIGEgc2luZ2xlIGZ1bmN0aW9uLgo+
+PiA+Cj4+ID4gV2hpY2ggaXMgYW4gdXR0ZXJseSBjcmFwIHJlYXNvbi4KPj4gPgo+PiA+IEl0J3Mg
+YWxzbyBub3QgYXBwcm9wcmlhdGUuICBJJ20gcmVhbGx5IG5vdCBzdXJlIHdoeSB5b3UgdGhpbmsg
+dGhhdCBtb3ZpbmcKPj4gPiB0aGlzIGhlcmUgd291bGQgaW4gYW55IHdheSBiZSBhcHByb3ByaWF0
+ZSAtIGZyb20gbXkgcG9pbnQgb2YgdmlldywgdGhlCj4+ID4gbWVyZSBwcm9wb3NhbCBpcyB1dHRl
+cmx5IGluc2FuZS4KPj4gPgo+PiA+IFRoZSAiY29udGFpbmVyIiBkZXZpY2UgZG9lcyBub3QgZG8g
+YW55IERNQSwgc28gaXQncyBpbmFwcHJvcHJpYXRlIGZvcgo+PiA+IGl0IHRvIGhhdmUgRE1BIG1h
+c2tzIHNldCBvciBuZWdvdGlhdGVkIG9uIGl0LiAgU28sIGFjdHVhbGx5LCBubyBvbmUKPj4gPiBz
+aG91bGQgYmUgc2V0dGluZyB0aGUgRE1BIG1hc2sgZm9yIHRoZWlyIGNvbnRhaW5lciBkZXZpY2Uu
+ICBJdCdzIHdyb25nLgo+Pgo+PiBJIHRoaW5rIChhbmQgbXkgb3BpbmlvbiBkb2Vzbid0IGNhcnJ5
+IGFzIG11Y2ggd2hlaWdodCBoZXJlIG9uIGRyaS1kZXZlbAo+PiB0aGFuIGludGVsLWdmeCkgdGhl
+IGFib3ZlIGlzIG92ZXIgdGhlIHRvcCBiYXNoaW5nIG9mIGEgbmV3IGNvbnRyaWJ1dG9yIHRvCj4+
+IGRybSB3aG8gcmVhbGx5IHNlZW1zIHRyeWluZyB0byBkbyByaWdodC4gSSB0aGluayB0aGF0J3Mg
+dW5lY2Vzc2FyeSwKPj4gZXNwZWNpYWxseSBzaW5jZSB5b3UgZm9sbG93IHVwIHdpdGggdGhlIHJl
+YXNvbmFibGUgcmVwbHkgYmVsb3cuCj4KPiBJdCdzIGp1c3RpZmllZCBiZWNhdXNlIGl0IHRvb2sg
+X3R3b18gbWVzc2FnZXMgdG8gZ2V0IHRoZSBwb2ludCBhY3Jvc3MuCj4gVGhlIGZpcnN0IG9uZSBh
+c2tpbmcgbmljZWx5IGRpZG4ndCBtYWtlIHRoZSBuZWNlc3NhcnkgaW1wYWN0Lgo+ClVubGlrZSBE
+YW5pZWwsIEkgY2FycnkgbGl0dGxlIHRvIG5vIHdlaWdodCBoZXJlLCB5ZXQgYmFzaGluZyBvbiBw
+ZW9wbGUKaWYgdGhleSBkb24ndCBnZXQgdGhpbmdzIGNvcnJlY3QgdGhlIGZpcnN0IHRpbWUgaXMg
+aW5jb25zaWRlcmFibGUuCldlIGFyZSBwZW9wbGUgLSB3ZSBjYW4gbWlzcmVhZC9taXNpbnRlcnBy
+ZXQgdGhpbmdzLCBoYXZlIGEgaGVhZGFjaGUKYW5kL29yIGp1c3QgYSBiYWQgZGF5LiBJZiB0aGF0
+IG1ha2VzIHlvdSBhbmdyeS9hbm5veWVkLCBwbGVhc2UgZG9uJ3QKcmVwbHkgc3RyYWlnaHQgYXdh
+eSwgYnV0IGdpdmUgaXQgYSBmZXcgaG91cnMvZGF5IGZvciB0aGUgZW1vdGlvbnMgdG8Kc2V0dGxl
+LgoKVGhhbmtzCkVtaWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwK
