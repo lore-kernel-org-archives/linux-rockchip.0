@@ -1,72 +1,72 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] mmc: sdhci-of-arasan: add phy support for sdhci-of-arasan
-Date: Mon, 19 Oct 2015 09:50:51 +0200
-Message-ID: <CAPDyKFpkH00roc=Nn067PufmQL59wqsi1c58tdv_UyP-7Gs-vg@mail.gmail.com>
-References: <1441961698-10516-1-git-send-email-shawn.lin@rock-chips.com>
-	<CAPDyKFpwgZSkE+TNehZ1Un=5CfjoEtfvELfrS6t-ZHZPscy3Yg@mail.gmail.com>
-	<56243E85.2040202@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Subject: [PATCH] ASoC: dt-bindings: Drop unneeded properties rockchip i2s/spdif bindings
+Date: Mon, 19 Oct 2015 10:15:39 +0200
+Message-ID: <1445242539-9098-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56243E85.2040202-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, S?ren Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-[...]
+Neither the rockchip i2s nor the rockchip spdif binding support child
+devices so #address-cells and #size-cells properties aren't required.
+Remove these from the bindings.
 
->> I understand the phy is optional, but you still need to handle the
->> EPROBE_DEFER case.
->>
->> Perhaps you should also use devm_phy_optional_get() instead!?
->
->
-> I already changed it in version-2 [1]. :)
-> phy is mandatory for sdhci-arasan,5.1.
->
-> [1]: https://patchwork.kernel.org/patch/7173251/
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+---
+This patch is on top of the ASoC tree
 
-Oh, apologize for reviewing the old version!
+ Documentation/devicetree/bindings/sound/rockchip-i2s.txt   | 4 ----
+ Documentation/devicetree/bindings/sound/rockchip-spdif.txt | 4 ----
+ 2 files changed, 8 deletions(-)
 
->
->>
->>> +               ret = phy_power_on(sdhci_arasan->phy);
->>
->>
->> This looks a bit weird. Shouldn't you do phy_init() prior phy_power_on()?
->>
->> Similar comment applies to phy_exit() and phy_power_off().
->
->
-> Both are okay. It depends how the phy-driver implement the four interfaces.
-> From my case, power_on for arasan's phy driver firstly enable phy's clk and
-> open power-domain, then programme phy internal registers to activate phy.
-> Without enabling phy's clk and power-domain, we cannot do phy_init since phy
-> can't be accessed by CPU.
->
-> But here, I think you are right. It does look a bit weird.
-> I think the better way is to remove phy_power_on here, and let phy-driver do
-> power_on in phy_init internally. Similarly in the remove call.
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 9b82c20..085e0bc 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -12,8 +12,6 @@ Required properties:
+ - reg: physical base address of the controller and length of memory mapped
+   region.
+ - interrupts: should contain the I2S interrupt.
+-- #address-cells: should be 1.
+-- #size-cells: should be 0.
+ - dmas: DMA specifiers for tx and rx dma. See the DMA client binding,
+ 	Documentation/devicetree/bindings/dma/dma.txt
+ - dma-names: should include "tx" and "rx".
+@@ -28,8 +26,6 @@ i2s@ff890000 {
+ 	compatible = "rockchip,rk3288-i2s", "rockchip,rk3066-i2s";
+ 	reg = <0xff890000 0x10000>;
+ 	interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_HIGH>;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+ 	dmas = <&pdma1 0>, <&pdma1 1>;
+ 	dma-names = "tx", "rx";
+ 	clock-names = "i2s_hclk", "i2s_clk";
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.txt b/Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+index 33dd82c..e64dbde 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-spdif.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.txt
+@@ -12,8 +12,6 @@ Required properties:
+ - reg: physical base address of the controller and length of memory mapped
+   region.
+ - interrupts: should contain the SPDIF interrupt.
+-- #address-cells: should be 1.
+-- #size-cells: should be 0.
+ - dmas: DMA specifiers for tx dma. See the DMA client binding,
+   Documentation/devicetree/bindings/dma/dma.txt
+ - dma-names: should be "tx"
+@@ -33,8 +31,6 @@ spdif: spdif@0x1011e000 {
+ 	compatible = "rockchip,rk3188-spdif", "rockchip,rk3066-spdif";
+ 	reg = <0x1011e000 0x2000>;
+ 	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+ 	dmas = <&dmac1_s 8>;
+ 	dma-names = "tx";
+ 	clock-names = "hclk", "mclk";
+-- 
+2.6.1
 
-That makes sense to me! I think it would also follow other phy clients
-use of the phy API.
-
-What makes me wonder though is from a power management point of view.
-*When* do you need to have phy initialized and powered?
-
-1) For a removable card can leave the phy uninitialised or powered
-off, but still detect card insertion/removal via GPIO? Is that a valid
-scenario for you?
-
-2) Considering the runtime PM case for the sdhci device. Typically you
-can gate clocks etc at runtime suspend to save power, but what about
-the phy? Can you power off it in runtime suspend?
-
-[...]
-
-Kind regards
-Uffe
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
