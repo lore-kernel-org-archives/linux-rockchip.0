@@ -1,81 +1,91 @@
-From: Eric Anholt <eric@anholt.net>
-Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
- component based masters.
-Date: Tue, 20 Oct 2015 10:45:24 +0100
-Message-ID: <87zizdj2kr.fsf@eliezer.anholt.net>
-References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
- <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
+From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Subject: Re: [PATCH v6 0/17] Add Analogix Core Display Port Driver
+Date: Tue, 20 Oct 2015 11:48:54 +0200
+Message-ID: <56260E06.2040902@osg.samsung.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
+ <1444491357-26095-1-git-send-email-ykk@rock-chips.com>
+ <5624C896.8070108@osg.samsung.com> <5625A2A1.6090907@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1051967667=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Liviu Dudau <Liviu.Dudau@arm.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5625A2A1.6090907-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1051967667==
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+Hello Yakir,
 
---=-=-=
-Content-Type: text/plain
-
-Liviu Dudau <Liviu.Dudau@arm.com> writes:
-
-> A lot of component based DRM drivers use a variant of the same code
-> as the probe function. They bind the crtc ports in the first iteration
-> and then scan through the child nodes and bind the encoders attached
-> to the remote endpoints. Factor the common code into a separate
-> function called drm_of_component_probe() in order to increase code
-> reuse.
+On 10/20/2015 04:10 AM, Yakir Yang wrote:
+> Hi Javier,
+> 
+> On 10/19/2015 06:40 PM, Javier Martinez Canillas wrote:
+>> Hello Yakir,
+>>
+>> On 10/10/2015 05:35 PM, Yakir Yang wrote:
+>>> Hi all,
+>>>
+>>>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+>>> share the same IP, so a lot of parts can be re-used. I split the common
+>>> code into bridge directory, then rk3288 and exynos only need to keep
+>>> some platform code. Cause I can't find the exact IP name of exynos dp
+>>> controller, so I decide to name dp core driver with "analogix" which I
+>>> find in rk3288 eDP TRM :)
+>>>
+>>> But  there are still three light registers setting differents bewteen
+>>> exynos and rk3288.
+>>> 1. RK3288 have five special pll resigters which not indicata in exynos
+>>>     dp controller.
+>>> 2. The address of DP_PHY_PD(dp phy power manager register) are different
+>>>     between rk3288 and exynos.
+>>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
+>>>     register).
+>>>
+>>> This series have been well tested on Rockchip platform with eDP panel
+>>> on Jerry Chromebook and Display Port Monitor on RK3288 board and thanks
+>>> to Javier@Samsung help me to find a way to install mainline kernel to
+>>> Samsung Exynos Chromebooks, so this series also have been tested on Samsung
+>>> Snow and Peach Pit Chromebooks which borrowed from my friends.
+>>>
+>>> Besides, This version was build on linux-next branch (tag next-20150918), and
+>>> the above test experiments also base on that tag. But I know the latest tag is
+>>> next-20151009, so i do rebase this series again on next-20151009, there were
+>>> little conflicts(exynos_dp removed the suspend/resume).
+>>>
+>>> But after I retest this series on next-20151009, I saw kernel crashed in mmc
+>>> driver(dw_mci_probe failed to get regulator). So i have to disabled the MMC
+>>> module(after all I boot with USB device), and I can see eDP light up normally
+>>> in startup stage, but kernel keep crashed when it try to mount the filesystem.
+>>> I thought this isn't related to dp driver directly, so i choice not to debug
+>>> more depth.
+>>>
+>>> That's to say if someone want to test this series, I suggest you applied this
+>>> series on tag-20150918, just need to fix some light conflicts with the 01 & 02
+>>> patches (or just email me, I can send you directly).
+>>>
+>>> Thanks,
+>> Do you have a branch that I can use to test this series?
+> 
+> Thank you for your kind assistance, I have created a tree which checkout from the next-20151019. Surely there were some conflicts to applied this series on that tag, but things still works for me, here is the git address [https://github.com/yakir-Yang/linux/tree/analogix_dp]
 >
-> Cc: David Airlie <airlied@linux.ie>
-> Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
 
-Acked-by: Eric Anholt <eric@anholt.net>
+I tested your branch on an Exynos5800 Peach Pi Chromebook and display is
+working on boot. I also tested DPMS and S2R and things are still working
+so for the whole series feel free to add:
 
-I'm unimpressed with of-graph, but this will really help me in trying it
-out for vc4.
+Tested-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+> Best regards,
+> - Yakir
+> 
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBCgAGBQJWJg01AAoJELXWKTbR/J7ocnoP/24fSj0z/2B5y44x5eMyFwG2
-61FVHM+jW2pOn7/+PkCczSqdk3u6bhhyJOyWNIou5bZqlHrlXE+FCsOM5Ic8HG64
-cZRabMiN/NdQB1CB8abr2mnhcGLZkmP7HtFM3CfcEawUgwmgeCPhHcW/KjAplQrh
-M2c2RBN8NhUb4iZ3o5PQCZkNyZQH0/Fh06FdlLdanFUHQ0X84BsqcBL+r4cJ5uXy
-IbXfEgY55pEtJflW/ZizlXEJnNhdac+iqAxr9icTxJqTrhLwQ59sHVJ0KXD242ld
-OKPc7oHHgOv6WkOZGYVv6TDfc1DI8+sKRszTx9cescIFAeqr7n89coYz4ROZ4JGR
-hz23SQu3rjABKLpzPNzbRCHvIJzt2r/pIsIQ18iM3VyEgIPpwhEWhp7iBpjc7KCZ
-oBFuE94M6iXKytrQfTSTOsCm8fiG5zUiFiTXX3pXyRoCa5WwDva1gX7A9rbtF6uE
-w4k6lqYnKUhfqrxzDDM66pff7oqDAMLYAmlG1ZGI+hMdNBa5C+6c9fJrjsQw/n+O
-UjeA6SwGWCgZMrVuibqh1tQHR7oXtTipkgdJHbldae99shVwvis854X1qU2HVqkb
-vXsqekaEeLli2Ldcw05ufdN1UfxYC4mX24KHU9oc78St2EezpHtIHDJ8+hx+zXz4
-1fl9G2Fv8M24CLRBRKb2
-=7zMl
------END PGP SIGNATURE-----
---=-=-=--
-
---===============1051967667==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============1051967667==--
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
