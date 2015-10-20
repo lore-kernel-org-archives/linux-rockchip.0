@@ -1,12 +1,14 @@
-From: Liviu Dudau <Liviu.Dudau@arm.com>
-Subject: [PATCH v4 0/4] drm: Cleanup probe function for component based
- masters.
-Date: Tue, 20 Oct 2015 10:23:11 +0100
-Message-ID: <1445332995-11212-1-git-send-email-Liviu.Dudau@arm.com>
+From: Eric Anholt <eric@anholt.net>
+Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Tue, 20 Oct 2015 10:45:24 +0100
+Message-ID: <87zizdj2kr.fsf@eliezer.anholt.net>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1051967667=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -16,48 +18,64 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q2hhbmdlbG9nOgp2NDogRml4ZWQgYSBidWcgd2hlcmUgdGhlIHdyb25nIHBvaW50ZXIgd2FzIHNl
-bnQgdG8gY29tcG9uZW50X21hdGNoX2FkZCgpIGFuZAogICAgY29tcG9uZW50X21hc3Rlcl9hZGRf
-d2l0aF9tYXRjaCgpIGluIHRoZSBhcm1hZGFfZHJ2LmMgZmlsZSB0aGF0IHdhcyBmbGFnZ2VkCiAg
-ICBieSBrYnVpbGQgdGVzdCByb2JvdC4gRHJvcHBlZCB0aGUgUkZDIHRhZyBhbmQgYWRkZWQgQWNr
-ZWQtYnlzIHJlY2VpdmVkIGZyb20KICAgIFJ1c3NlbGwgS2luZy4KdjM6IFJlbW92ZWQgdGhlIGNh
-bGwgdG8gZG1hX3NldF9jb2hlcmVudF9tYXNrKCkgZnJvbSB0aGUgZ2VuZXJpYwogICAgZHJtX29m
-X2NvbXBvbmVudF9wcm9iZSgpLiBBbHNvIGNoYW5nZXMgdG8gc2hvcnRlbiBsaW5lcyBvdmVyIDgw
-IGNoYXJzIGxvbmcuCnYyOiBSZWJhc2VkIHRoZSBwYXRjaHNldCBvbiB0b3Agb2YgZHJtLW5leHQg
-cmF0aGVyIHRoYW4gTGludXMnIGxhdGVzdCAtcmMKCkEgZmV3IGRyaXZlcnMgaW4gZHJpdmVycy9n
-cHUvZHJtIGFyZSBjb21wb25lbnQtZW5hYmxlZCBhbmQgdXNlIHF1aXRlIHNpbWlsYXIKY29kZSBz
-ZXF1ZW5jZXMgdG8gcHJvYmUgZm9yIHRoZWlyIGVuY29kZXIgc2xhdmVzIGF0IHRoZSByZW1vdGUg
-ZW5kIG9mIHRoZSBwb3J0cy4KTW92ZSB0aGUgY29kZSBpbnRvIGEgImdlbmVyaWMiIGZ1bmN0aW9u
-IGFuZCByZW1vdmUgaXQgZnJvbSB0aGUgZHJpdmVycy4KClRoZSBlbmQgcmVzdWx0cyBpcyB0aGF0
-IGRyaXZlcnMgZ2V0IGEgcmVmZXJlbmNlIGNvdW50IGZpeCAoaW14KSwgbW9yZSB0aG9yb3VnaApl
-cnJvciBjaGVja2luZyAoaW14IGFnYWluKSBwbHVzIGEgZGVjcmVhc2UgaW4gdGhlIG92ZXJhbGwg
-Y291bnQgb2YgTG9DLgoKSSdtIGxvb2tpbmcgZm9yIGNvbW1lbnRzIGFuZCB0ZXN0aW5nIG9mIHRo
-ZSBwYXRjaHNldCAob25seSBjb21waWxlIHRlc3RlZCBmcm9tIG15CmVuZCBhcyBJIGRvbid0IGhh
-dmUgYWNjZXNzIHRvIGFsbCB0aGUgZGV2aWNlcyB0b3VjaGVkIGJ5IHRoZSBjaGFuZ2VzKS4gTXkg
-bWFpbgppbnRlcmVzdCBpcyBpbiBmaW5kaW5nIG91dCBpZiAtRUlOVkFMIGlzIHRoZSBjb3JyZWN0
-IGNvZGUgdG8gcmV0dXJuIGlmCmRldi0+b2Zfbm9kZSA9PSBOVUxMIChoYW5keSBub3csIGFzIGl0
-IGlzIGRpZmZlcmVudCBmcm9tIHRoZSBvdGhlciBwb3NzaWJsZSBlcnJvcgpjb2RlcyBhbmQgdXNl
-ZCBpbiBhcm1hZGEgdG8gdHJpZ2dlciBvbGQgcGxhdGZvcm1fZGF0YSBzdXBwb3J0LiBBbHNvIGxv
-b2tpbmcgZm9yCnRob3VnaHRzIG9uIHRoZSBjb3JyZWN0bmVzcyBvZiB0aGUgcGF0Y2ggYW5kIGlm
-IGl0IHBvc3NpYmxlIHRvIGNvLW9wdCBtb3JlIGRyaXZlcnMKaW50byB1c2luZyB0aGUgZnVuY3Rp
-b24uCgpCZXN0IHJlZ2FyZHMsCkxpdml1CgpMaXZpdSBEdWRhdSAoNCk6CiAgZHJtOiBJbnRyb2R1
-Y2UgZ2VuZXJpYyBwcm9iZSBmdW5jdGlvbiBmb3IgY29tcG9uZW50IGJhc2VkIG1hc3RlcnMuCiAg
-ZHJtL2lteDogQ29udmVydCB0aGUgcHJvYmUgZnVuY3Rpb24gdG8gdGhlIGdlbmVyaWMgZHJtX29m
-X2NvbXBvbmVudF9wcm9iZSgpCiAgZHJtL3JvY2tjaGlwOiBDb252ZXJ0IHRoZSBwcm9iZSBmdW5j
-dGlvbiB0byB0aGUgZ2VuZXJpYyBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkKICBkcm0vYXJtYWRh
-OiBDb252ZXJ0IHRoZSBwcm9iZSBmdW5jdGlvbiB0byB0aGUgZ2VuZXJpYyBkcm1fb2ZfY29tcG9u
-ZW50X3Byb2JlKCkKCiBkcml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYyAgICAgICAg
-IHwgNjggKysrKysrKy0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jICAg
-ICAgICAgICAgICAgICAgICB8IDg4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2
-ZXJzL2dwdS9kcm0vaW14L2lteC1kcm0tY29yZS5jICAgICAgICAgIHwgNTUgKystLS0tLS0tLS0t
-LS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgODEg
-KystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KIGluY2x1ZGUvZHJtL2RybV9vZi5oICAgICAgICAg
-ICAgICAgICAgICAgICAgfCAxMyArKysrKwogNSBmaWxlcyBjaGFuZ2VkLCAxMzAgaW5zZXJ0aW9u
-cygrKSwgMTc1IGRlbGV0aW9ucygtKQoKLS0gCjIuNi4wCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+--===============1051967667==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain
+
+Liviu Dudau <Liviu.Dudau@arm.com> writes:
+
+> A lot of component based DRM drivers use a variant of the same code
+> as the probe function. They bind the crtc ports in the first iteration
+> and then scan through the child nodes and bind the encoders attached
+> to the remote endpoints. Factor the common code into a separate
+> function called drm_of_component_probe() in order to increase code
+> reuse.
+>
+> Cc: David Airlie <airlied@linux.ie>
+> Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
+
+Acked-by: Eric Anholt <eric@anholt.net>
+
+I'm unimpressed with of-graph, but this will really help me in trying it
+out for vc4.
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBCgAGBQJWJg01AAoJELXWKTbR/J7ocnoP/24fSj0z/2B5y44x5eMyFwG2
+61FVHM+jW2pOn7/+PkCczSqdk3u6bhhyJOyWNIou5bZqlHrlXE+FCsOM5Ic8HG64
+cZRabMiN/NdQB1CB8abr2mnhcGLZkmP7HtFM3CfcEawUgwmgeCPhHcW/KjAplQrh
+M2c2RBN8NhUb4iZ3o5PQCZkNyZQH0/Fh06FdlLdanFUHQ0X84BsqcBL+r4cJ5uXy
+IbXfEgY55pEtJflW/ZizlXEJnNhdac+iqAxr9icTxJqTrhLwQ59sHVJ0KXD242ld
+OKPc7oHHgOv6WkOZGYVv6TDfc1DI8+sKRszTx9cescIFAeqr7n89coYz4ROZ4JGR
+hz23SQu3rjABKLpzPNzbRCHvIJzt2r/pIsIQ18iM3VyEgIPpwhEWhp7iBpjc7KCZ
+oBFuE94M6iXKytrQfTSTOsCm8fiG5zUiFiTXX3pXyRoCa5WwDva1gX7A9rbtF6uE
+w4k6lqYnKUhfqrxzDDM66pff7oqDAMLYAmlG1ZGI+hMdNBa5C+6c9fJrjsQw/n+O
+UjeA6SwGWCgZMrVuibqh1tQHR7oXtTipkgdJHbldae99shVwvis854X1qU2HVqkb
+vXsqekaEeLli2Ldcw05ufdN1UfxYC4mX24KHU9oc78St2EezpHtIHDJ8+hx+zXz4
+1fl9G2Fv8M24CLRBRKb2
+=7zMl
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============1051967667==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1051967667==--
