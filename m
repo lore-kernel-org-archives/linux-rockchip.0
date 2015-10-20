@@ -1,35 +1,53 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 3/4] thermal: rockchip: change the TSHUT default state
-Date: Tue, 20 Oct 2015 09:01:38 -0700
-Message-ID: <CAD=FV=Vo1Wf6opTc5jQjm-nXd=BCJxeggipPj4ER9Ehutxs_6w@mail.gmail.com>
-References: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
-	<1445332264-6054-4-git-send-email-wxt@rock-chips.com>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] usb: dwc2: host: Fix ahbcfg for rk3066
+Date: Tue, 20 Oct 2015 16:33:53 -0700
+Message-ID: <1445384033-17050-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1445332264-6054-4-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
+Cc: Wu Liang Feng <wulf@rock-chips.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
+The comment for ahbcfg for rk3066 parameters (also used for rk3288)
+claimed that ahbcfg was INCR16, but it wasn't.  Since the bits weren't
+shifted properly, the 0x7 ended up being masked and we ended up
+programming 0x3 for the HBstLen.  Let's set it to INCR16 properly.
 
-On Tue, Oct 20, 2015 at 2:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> As the TRM says, the TSHUT default state is high active.
-> In general, the TSHUT state can get from the dts. Otherwise
-> it gets the state from this.
+As per Wu Liang Feng at Rockchip this may increase transmission
+efficiency.  I did blackbox tests with writing 0s to a USB-based SD
+reader (forcefully capping CPU Freq to try to measure efficiency):
+  cd /sys/devices/system/cpu/cpu0/cpufreq
+  echo userspace > scaling_governor
+  echo 126000 > scaling_setspeed
+  for i in $(seq 10); do
+    dd if=/dev/zero of=/dev/sdb bs=1M count=750
+  done
 
-Can you point at where the TRM says that the default state is high active?
+With the above tests I found that speeds went from ~15MB/s to ~18MB/s.
+Note that most other tests I did (including reading from the same USB
+reader) didn't show any difference in performance.
 
-With the manual I have, I look at TSADC_AUTO_CON and I look at the
-description of "Bit 8".  It says that "tshut polarity" is 0 for low
-active and 1 for high active.  It then said that the Reset Value is 0.
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/usb/dwc2/platform.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-...the "Reset Value" in tables like this is notoriously unreliable, so
-I can totally believe that it's wrong.  If you can point me at the
-part of the TRM that says that TSHUT is high active by default then I
-can confirm that for you.  ;)
-
-
--Doug
+diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+index 5859b0f..e61d773 100644
+--- a/drivers/usb/dwc2/platform.c
++++ b/drivers/usb/dwc2/platform.c
+@@ -108,7 +108,8 @@ static const struct dwc2_core_params params_rk3066 = {
+ 	.host_ls_low_power_phy_clk	= -1,
+ 	.ts_dline			= -1,
+ 	.reload_ctl			= -1,
+-	.ahbcfg				= 0x7, /* INCR16 */
++	.ahbcfg				= GAHBCFG_HBSTLEN_INCR16 <<
++					  GAHBCFG_HBSTLEN_SHIFT,
+ 	.uframe_sched			= -1,
+ 	.external_id_pin_ctl		= -1,
+ 	.hibernation			= -1,
+-- 
+2.6.0.rc2.230.g3dd15c0
