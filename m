@@ -1,38 +1,55 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 3/4] thermal: rockchip: change the TSHUT default state
-Date: Tue, 20 Oct 2015 17:11:03 +0800
-Message-ID: <1445332264-6054-4-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 4/4] ARM: dts: rockchip: Add the OTP gpio pinctrl
+Date: Tue, 20 Oct 2015 17:11:04 +0800
+Message-ID: <1445332264-6054-5-git-send-email-wxt@rock-chips.com>
 References: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1445332264-6054-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As the TRM says, the TSHUT default state is high active.
-In general, the TSHUT state can get from the dts. Otherwise
-it gets the state from this.
+We need the OTP pin is gpio state before resetting the TSADC controller,
+since the tshut polarity will generate a high signal.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- drivers/thermal/rockchip_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3288.dtsi | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index c53e318..776d668 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -326,7 +326,7 @@ static void rk_tsadcv2_tshut_mode(int chn, void __iomem *regs,
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 906e938..b59c451 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -447,8 +447,9 @@
+ 		clock-names = "tsadc", "apb_pclk";
+ 		resets = <&cru SRST_TSADC>;
+ 		reset-names = "tsadc-apb";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&otp_out>;
++		pinctrl-names = "default", "otp_out";
++		pinctrl-0 = <&otp_gpio>;
++		pinctrl-1 = <&otp_out>;
+ 		#thermal-sensor-cells = <1>;
+ 		rockchip,hw-tshut-temp = <95000>;
+ 		status = "disabled";
+@@ -1273,6 +1274,10 @@
+ 		};
  
- static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
- 	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
--	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-+	.tshut_polarity = TSHUT_HIGH_ACTIVE, /* default TSHUT HIGH ACTIVE */
- 	.tshut_temp = 95000,
- 
- 	.initialize = rk_tsadcv2_initialize,
+ 		tsadc {
++			otp_gpio: otp-gpio {
++				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++
+ 			otp_out: otp-out {
+ 				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
+ 			};
 -- 
 1.9.1
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
