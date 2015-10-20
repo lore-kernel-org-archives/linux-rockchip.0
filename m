@@ -1,67 +1,104 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH 0/4] Add the OTP gpio pinctrl to fix the TSHUT issue
-Date: Tue, 20 Oct 2015 17:15:11 +0800
-Message-ID: <5626061F.6010402@gmail.com>
-References: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
+Subject: [PATCH v4 1/4] drm: Introduce generic probe function for component
+ based masters.
+Date: Tue, 20 Oct 2015 10:23:12 +0100
+Message-ID: <1445332995-11212-2-git-send-email-Liviu.Dudau@arm.com>
+References: <1445332995-11212-1-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1445332995-11212-1-git-send-email-Liviu.Dudau@arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The subject is deleted by my finger.
-
-=D4=DA 2015=C4=EA10=D4=C220=C8=D5 17:11, Caesar Wang =D0=B4=B5=C0:
-> We need the OTP pin is gpio state before resetting the TSADC controll=
-er,
-> since the tshut polarity will generate a high signal.
->
-> Says:
-> The TSHUT temperature is setting more than 80 degree, the default
-> tshut polarity is HIGH.
->
-> If T > 80C, the OTP output the High Signal.
-> If T < 80C, the OTP output the Low Signal.
->
-> On the moment, the TSADC controller is reset, the tshut polarity will=
- be
-> Low in a short period of time.
->
-> So:
-> If T < 80C, the OTP output the High Signal.
-> If T > 80C, the OTP output the Low Signal.
->
-> In some cases, the OTP pin is connected to the PMIC, maybe the PMIC c=
-an
-> accept the reset response time to avoid this issue.
->
-> In other words, the system will be always reboot if we make the OTP p=
-in
-> is connected the others IC to control the power.
->
-> Tested on box board.
->
->
->
-> Caesar Wang (4):
->    dt-bindings: Sync the dts to this document
->    thermal: rockchip: ensure the otp state before resetting the
->      controller
->    thermal: rockchip: change the TSHUT default state
->    ARM: dts: rockchip: Add the OTP gpio pinctrl
->
->   .../bindings/thermal/rockchip-thermal.txt          |  5 ++--
->   arch/arm/boot/dts/rk3288.dtsi                      |  9 ++++--
->   drivers/thermal/rockchip_thermal.c                 | 34 +++++++++++=
-++++++++++-
->   3 files changed, 43 insertions(+), 5 deletions(-)
->
-
---=20
-Thanks,
-Caesar
+QSBsb3Qgb2YgY29tcG9uZW50IGJhc2VkIERSTSBkcml2ZXJzIHVzZSBhIHZhcmlhbnQgb2YgdGhl
+IHNhbWUgY29kZQphcyB0aGUgcHJvYmUgZnVuY3Rpb24uIFRoZXkgYmluZCB0aGUgY3J0YyBwb3J0
+cyBpbiB0aGUgZmlyc3QgaXRlcmF0aW9uCmFuZCB0aGVuIHNjYW4gdGhyb3VnaCB0aGUgY2hpbGQg
+bm9kZXMgYW5kIGJpbmQgdGhlIGVuY29kZXJzIGF0dGFjaGVkCnRvIHRoZSByZW1vdGUgZW5kcG9p
+bnRzLiBGYWN0b3IgdGhlIGNvbW1vbiBjb2RlIGludG8gYSBzZXBhcmF0ZQpmdW5jdGlvbiBjYWxs
+ZWQgZHJtX29mX2NvbXBvbmVudF9wcm9iZSgpIGluIG9yZGVyIHRvIGluY3JlYXNlIGNvZGUKcmV1
+c2UuCgpDYzogRGF2aWQgQWlybGllIDxhaXJsaWVkQGxpbnV4LmllPgpTaWduZWQtb2ZmLWJ5OiBM
+aXZpdSBEdWRhdSA8TGl2aXUuRHVkYXVAYXJtLmNvbT4KQWNrZWQtYnk6IFJ1c3NlbGwgS2luZyA8
+cm1rK2tlcm5lbEBhcm0ubGludXgub3JnLnVrPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2Yu
+YyB8IDg4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwog
+aW5jbHVkZS9kcm0vZHJtX29mLmggICAgIHwgMTMgKysrKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAx
+MDEgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYwppbmRleCBiZTM4ODQwLi40OTNjMDVjIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9v
+Zi5jCkBAIC0xLDMgKzEsNCBAQAorI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgogI2luY2x1
+ZGUgPGxpbnV4L2V4cG9ydC5oPgogI2luY2x1ZGUgPGxpbnV4L2xpc3QuaD4KICNpbmNsdWRlIDxs
+aW51eC9vZl9ncmFwaC5oPgpAQCAtNjEsMyArNjIsOTAgQEAgdWludDMyX3QgZHJtX29mX2ZpbmRf
+cG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIAlyZXR1cm4gcG9zc2libGVf
+Y3J0Y3M7CiB9CiBFWFBPUlRfU1lNQk9MKGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKTsKKwor
+LyoqCisgKiBkcm1fb2ZfY29tcG9uZW50X3Byb2JlIC0gR2VuZXJpYyBwcm9iZSBmdW5jdGlvbiBm
+b3IgYSBjb21wb25lbnQgYmFzZWQgbWFzdGVyCisgKiBAZGV2OiBtYXN0ZXIgZGV2aWNlIGNvbnRh
+aW5pbmcgdGhlIE9GIG5vZGUKKyAqIEBjb21wYXJlX29mOiBjb21wYXJlIGZ1bmN0aW9uIHVzZWQg
+Zm9yIG1hdGNoaW5nIGNvbXBvbmVudHMKKyAqIEBtYXN0ZXJfb3BzOiBjb21wb25lbnQgbWFzdGVy
+IG9wcyB0byBiZSB1c2VkCisgKgorICogUGFyc2UgdGhlIHBsYXRmb3JtIGRldmljZSBPRiBub2Rl
+IGFuZCBiaW5kIGFsbCB0aGUgY29tcG9uZW50cyBhc3NvY2lhdGVkCisgKiB3aXRoIHRoZSBtYXN0
+ZXIuIEludGVyZmFjZSBwb3J0cyBhcmUgYWRkZWQgYmVmb3JlIHRoZSBlbmNvZGVycyBpbiBvcmRl
+ciB0bworICogc2F0aXNmeSB0aGVpciAuYmluZCByZXF1aXJlbWVudHMKKyAqIFNlZSBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3JhcGgudHh0IGZvciB0aGUgYmluZGluZ3MuCisg
+KgorICogUmV0dXJucyB6ZXJvIGlmIHN1Y2Nlc3NmdWwsIG9yIG9uZSBvZiB0aGUgc3RhbmRhcmQg
+ZXJyb3IgY29kZXMgaWYgaXQgZmFpbHMuCisgKi8KK2ludCBkcm1fb2ZfY29tcG9uZW50X3Byb2Jl
+KHN0cnVjdCBkZXZpY2UgKmRldiwKKwkJCSAgIGludCAoKmNvbXBhcmVfb2YpKHN0cnVjdCBkZXZp
+Y2UgKiwgdm9pZCAqKSwKKwkJCSAgIGNvbnN0IHN0cnVjdCBjb21wb25lbnRfbWFzdGVyX29wcyAq
+bV9vcHMpCit7CisJc3RydWN0IGRldmljZV9ub2RlICplcCwgKnBvcnQsICpyZW1vdGU7CisJc3Ry
+dWN0IGNvbXBvbmVudF9tYXRjaCAqbWF0Y2ggPSBOVUxMOworCWludCBpOworCisJaWYgKCFkZXYt
+Pm9mX25vZGUpCisJCXJldHVybiAtRUlOVkFMOworCisJLyoKKwkgKiBCaW5kIHRoZSBjcnRjJ3Mg
+cG9ydHMgZmlyc3QsIHNvIHRoYXQgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3MoKQorCSAqIGNh
+bGxlZCBmcm9tIGVuY29kZXIncyAuYmluZCBjYWxsYmFja3Mgd29ya3MgYXMgZXhwZWN0ZWQKKwkg
+Ki8KKwlmb3IgKGkgPSAwOyA7IGkrKykgeworCQlwb3J0ID0gb2ZfcGFyc2VfcGhhbmRsZShkZXYt
+Pm9mX25vZGUsICJwb3J0cyIsIGkpOworCQlpZiAoIXBvcnQpCisJCQlicmVhazsKKworCQlpZiAo
+IW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50KSkgeworCQkJb2Zfbm9kZV9wdXQo
+cG9ydCk7CisJCQljb250aW51ZTsKKwkJfQorCisJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAm
+bWF0Y2gsIGNvbXBhcmVfb2YsIHBvcnQpOworCQlvZl9ub2RlX3B1dChwb3J0KTsKKwl9CisKKwlp
+ZiAoaSA9PSAwKSB7CisJCWRldl9lcnIoZGV2LCAibWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4i
+KTsKKwkJcmV0dXJuIC1FTk9ERVY7CisJfQorCisJaWYgKCFtYXRjaCkgeworCQlkZXZfZXJyKGRl
+diwgIm5vIGF2YWlsYWJsZSBwb3J0XG4iKTsKKwkJcmV0dXJuIC1FTk9ERVY7CisJfQorCisJLyoK
+KwkgKiBGb3IgYm91bmQgY3J0Y3MsIGJpbmQgdGhlIGVuY29kZXJzIGF0dGFjaGVkIHRvIHRoZWly
+IHJlbW90ZSBlbmRwb2ludAorCSAqLworCWZvciAoaSA9IDA7IDsgaSsrKSB7CisJCXBvcnQgPSBv
+Zl9wYXJzZV9waGFuZGxlKGRldi0+b2Zfbm9kZSwgInBvcnRzIiwgaSk7CisJCWlmICghcG9ydCkK
+KwkJCWJyZWFrOworCisJCWlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQp
+KSB7CisJCQlvZl9ub2RlX3B1dChwb3J0KTsKKwkJCWNvbnRpbnVlOworCQl9CisKKwkJZm9yX2Vh
+Y2hfY2hpbGRfb2Zfbm9kZShwb3J0LCBlcCkgeworCQkJcmVtb3RlID0gb2ZfZ3JhcGhfZ2V0X3Jl
+bW90ZV9wb3J0X3BhcmVudChlcCk7CisJCQlpZiAoIXJlbW90ZSB8fCAhb2ZfZGV2aWNlX2lzX2F2
+YWlsYWJsZShyZW1vdGUpKSB7CisJCQkJb2Zfbm9kZV9wdXQocmVtb3RlKTsKKwkJCQljb250aW51
+ZTsKKwkJCX0gZWxzZSBpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocmVtb3RlLT5wYXJlbnQp
+KSB7CisJCQkJZGV2X3dhcm4oZGV2LCAicGFyZW50IGRldmljZSBvZiAlcyBpcyBub3QgYXZhaWxh
+YmxlXG4iLAorCQkJCQkgcmVtb3RlLT5mdWxsX25hbWUpOworCQkJCW9mX25vZGVfcHV0KHJlbW90
+ZSk7CisJCQkJY29udGludWU7CisJCQl9CisKKwkJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAm
+bWF0Y2gsIGNvbXBhcmVfb2YsIHJlbW90ZSk7CisJCQlvZl9ub2RlX3B1dChyZW1vdGUpOworCQl9
+CisJCW9mX25vZGVfcHV0KHBvcnQpOworCX0KKworCXJldHVybiBjb21wb25lbnRfbWFzdGVyX2Fk
+ZF93aXRoX21hdGNoKGRldiwgbV9vcHMsIG1hdGNoKTsKK30KK0VYUE9SVF9TWU1CT0woZHJtX29m
+X2NvbXBvbmVudF9wcm9iZSk7CmRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fb2YuaCBiL2lu
+Y2x1ZGUvZHJtL2RybV9vZi5oCmluZGV4IDI0NDFmNzEuLjg1NDQ2NjUgMTAwNjQ0Ci0tLSBhL2lu
+Y2x1ZGUvZHJtL2RybV9vZi5oCisrKyBiL2luY2x1ZGUvZHJtL2RybV9vZi5oCkBAIC0xLDE4ICsx
+LDMxIEBACiAjaWZuZGVmIF9fRFJNX09GX0hfXwogI2RlZmluZSBfX0RSTV9PRl9IX18KIAorc3Ry
+dWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzOworc3RydWN0IGRldmljZTsKIHN0cnVjdCBkcm1fZGV2
+aWNlOwogc3RydWN0IGRldmljZV9ub2RlOwogCiAjaWZkZWYgQ09ORklHX09GCiBleHRlcm4gdWlu
+dDMyX3QgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwK
+IAkJCQkJICAgc3RydWN0IGRldmljZV9ub2RlICpwb3J0KTsKK2V4dGVybiBpbnQgZHJtX29mX2Nv
+bXBvbmVudF9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsCisJCQkJICBpbnQgKCpjb21wYXJlX29m
+KShzdHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCisJCQkJICBjb25zdCBzdHJ1Y3QgY29tcG9uZW50
+X21hc3Rlcl9vcHMgKm1fb3BzKTsKICNlbHNlCiBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGRybV9v
+Zl9maW5kX3Bvc3NpYmxlX2NydGNzKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCQkJCQkgIHN0
+cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCkKIHsKIAlyZXR1cm4gMDsKIH0KKworc3RhdGljIGlubGlu
+ZSBpbnQKK2RybV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LAorCQkgICAg
+ICAgaW50ICgqY29tcGFyZV9vZikoc3RydWN0IGRldmljZSAqLCB2b2lkICopLAorCQkgICAgICAg
+Y29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzICptX29wcykKK3sKKwlyZXR1cm4gLUVJ
+TlZBTDsKK30KICNlbmRpZgogCiAjZW5kaWYgLyogX19EUk1fT0ZfSF9fICovCi0tIAoyLjYuMAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
