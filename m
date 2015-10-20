@@ -1,74 +1,56 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v6 0/17] Add Analogix Core Display Port Driver
-Date: Tue, 20 Oct 2015 10:10:41 +0800
-Message-ID: <5625A2A1.6090907@rock-chips.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1444491357-26095-1-git-send-email-ykk@rock-chips.com> <5624C896.8070108@osg.samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5624C896.8070108@osg.samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, joe@perches.com, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>
-Cc: Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/4]
+Date: Tue, 20 Oct 2015 17:11:00 +0800
+Message-ID: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Javier,
+We need the OTP pin is gpio state before resetting the TSADC controller,
+since the tshut polarity will generate a high signal.
 
-On 10/19/2015 06:40 PM, Javier Martinez Canillas wrote:
-> Hello Yakir,
->
-> On 10/10/2015 05:35 PM, Yakir Yang wrote:
->> Hi all,
->>
->>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
->> share the same IP, so a lot of parts can be re-used. I split the common
->> code into bridge directory, then rk3288 and exynos only need to keep
->> some platform code. Cause I can't find the exact IP name of exynos dp
->> controller, so I decide to name dp core driver with "analogix" which I
->> find in rk3288 eDP TRM :)
->>
->> But  there are still three light registers setting differents bewteen
->> exynos and rk3288.
->> 1. RK3288 have five special pll resigters which not indicata in exynos
->>     dp controller.
->> 2. The address of DP_PHY_PD(dp phy power manager register) are different
->>     between rk3288 and exynos.
->> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
->>     register).
->>
->> This series have been well tested on Rockchip platform with eDP panel
->> on Jerry Chromebook and Display Port Monitor on RK3288 board and thanks
->> to Javier@Samsung help me to find a way to install mainline kernel to
->> Samsung Exynos Chromebooks, so this series also have been tested on Samsung
->> Snow and Peach Pit Chromebooks which borrowed from my friends.
->>
->> Besides, This version was build on linux-next branch (tag next-20150918), and
->> the above test experiments also base on that tag. But I know the latest tag is
->> next-20151009, so i do rebase this series again on next-20151009, there were
->> little conflicts(exynos_dp removed the suspend/resume).
->>
->> But after I retest this series on next-20151009, I saw kernel crashed in mmc
->> driver(dw_mci_probe failed to get regulator). So i have to disabled the MMC
->> module(after all I boot with USB device), and I can see eDP light up normally
->> in startup stage, but kernel keep crashed when it try to mount the filesystem.
->> I thought this isn't related to dp driver directly, so i choice not to debug
->> more depth.
->>
->> That's to say if someone want to test this series, I suggest you applied this
->> series on tag-20150918, just need to fix some light conflicts with the 01 & 02
->> patches (or just email me, I can send you directly).
->>
->> Thanks,
-> Do you have a branch that I can use to test this series?
+Says:
+The TSHUT temperature is setting more than 80 degree, the default
+tshut polarity is HIGH.
 
-Thank you for your kind assistance, I have created a tree which checkout 
-from the next-20151019. Surely there were some conflicts to applied this 
-series on that tag, but things still works for me, here is the git 
-address [https://github.com/yakir-Yang/linux/tree/analogix_dp]
+If T > 80C, the OTP output the High Signal.
+If T < 80C, the OTP output the Low Signal.
 
-Best regards,
-- Yakir
+On the moment, the TSADC controller is reset, the tshut polarity will be
+Low in a short period of time.
 
->
-> Best regards,
+So:
+If T < 80C, the OTP output the High Signal.
+If T > 80C, the OTP output the Low Signal.
+
+In some cases, the OTP pin is connected to the PMIC, maybe the PMIC can
+accept the reset response time to avoid this issue.
+
+In other words, the system will be always reboot if we make the OTP pin
+is connected the others IC to control the power.
+
+Tested on box board.
+
+
+
+Caesar Wang (4):
+  dt-bindings: Sync the dts to this document
+  thermal: rockchip: ensure the otp state before resetting the
+    controller
+  thermal: rockchip: change the TSHUT default state
+  ARM: dts: rockchip: Add the OTP gpio pinctrl
+
+ .../bindings/thermal/rockchip-thermal.txt          |  5 ++--
+ arch/arm/boot/dts/rk3288.dtsi                      |  9 ++++--
+ drivers/thermal/rockchip_thermal.c                 | 34 +++++++++++++++++++++-
+ 3 files changed, 43 insertions(+), 5 deletions(-)
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
