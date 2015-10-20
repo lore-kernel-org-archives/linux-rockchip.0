@@ -1,91 +1,98 @@
-From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Subject: Re: [PATCH v6 0/17] Add Analogix Core Display Port Driver
-Date: Tue, 20 Oct 2015 11:48:54 +0200
-Message-ID: <56260E06.2040902@osg.samsung.com>
-References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com>
- <1444491357-26095-1-git-send-email-ykk@rock-chips.com>
- <5624C896.8070108@osg.samsung.com> <5625A2A1.6090907@rock-chips.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [PATCH v4 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Tue, 20 Oct 2015 11:00:55 +0100
+Message-ID: <CACvgo51szQz9iu55mP+Qz+VCzjB-20K169MpX6_71ppcnGHXzg@mail.gmail.com>
+References: <1445332995-11212-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445332995-11212-2-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5625A2A1.6090907-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1445332995-11212-2-git-send-email-Liviu.Dudau@arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Yakir,
-
-On 10/20/2015 04:10 AM, Yakir Yang wrote:
-> Hi Javier,
-> 
-> On 10/19/2015 06:40 PM, Javier Martinez Canillas wrote:
->> Hello Yakir,
->>
->> On 10/10/2015 05:35 PM, Yakir Yang wrote:
->>> Hi all,
->>>
->>>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
->>> share the same IP, so a lot of parts can be re-used. I split the common
->>> code into bridge directory, then rk3288 and exynos only need to keep
->>> some platform code. Cause I can't find the exact IP name of exynos dp
->>> controller, so I decide to name dp core driver with "analogix" which I
->>> find in rk3288 eDP TRM :)
->>>
->>> But  there are still three light registers setting differents bewteen
->>> exynos and rk3288.
->>> 1. RK3288 have five special pll resigters which not indicata in exynos
->>>     dp controller.
->>> 2. The address of DP_PHY_PD(dp phy power manager register) are different
->>>     between rk3288 and exynos.
->>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
->>>     register).
->>>
->>> This series have been well tested on Rockchip platform with eDP panel
->>> on Jerry Chromebook and Display Port Monitor on RK3288 board and thanks
->>> to Javier@Samsung help me to find a way to install mainline kernel to
->>> Samsung Exynos Chromebooks, so this series also have been tested on Samsung
->>> Snow and Peach Pit Chromebooks which borrowed from my friends.
->>>
->>> Besides, This version was build on linux-next branch (tag next-20150918), and
->>> the above test experiments also base on that tag. But I know the latest tag is
->>> next-20151009, so i do rebase this series again on next-20151009, there were
->>> little conflicts(exynos_dp removed the suspend/resume).
->>>
->>> But after I retest this series on next-20151009, I saw kernel crashed in mmc
->>> driver(dw_mci_probe failed to get regulator). So i have to disabled the MMC
->>> module(after all I boot with USB device), and I can see eDP light up normally
->>> in startup stage, but kernel keep crashed when it try to mount the filesystem.
->>> I thought this isn't related to dp driver directly, so i choice not to debug
->>> more depth.
->>>
->>> That's to say if someone want to test this series, I suggest you applied this
->>> series on tag-20150918, just need to fix some light conflicts with the 01 & 02
->>> patches (or just email me, I can send you directly).
->>>
->>> Thanks,
->> Do you have a branch that I can use to test this series?
-> 
-> Thank you for your kind assistance, I have created a tree which checkout from the next-20151019. Surely there were some conflicts to applied this series on that tag, but things still works for me, here is the git address [https://github.com/yakir-Yang/linux/tree/analogix_dp]
->
-
-I tested your branch on an Exynos5800 Peach Pi Chromebook and display is
-working on boot. I also tested DPMS and S2R and things are still working
-so for the whole series feel free to add:
-
-Tested-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-
-> Best regards,
-> - Yakir
-> 
-
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTGl2aXUsCgpPbiAyMCBPY3RvYmVyIDIwMTUgYXQgMTA6MjMsIExpdml1IER1ZGF1IDxMaXZp
+dS5EdWRhdUBhcm0uY29tPiB3cm90ZToKPiBBIGxvdCBvZiBjb21wb25lbnQgYmFzZWQgRFJNIGRy
+aXZlcnMgdXNlIGEgdmFyaWFudCBvZiB0aGUgc2FtZSBjb2RlCj4gYXMgdGhlIHByb2JlIGZ1bmN0
+aW9uLiBUaGV5IGJpbmQgdGhlIGNydGMgcG9ydHMgaW4gdGhlIGZpcnN0IGl0ZXJhdGlvbgo+IGFu
+ZCB0aGVuIHNjYW4gdGhyb3VnaCB0aGUgY2hpbGQgbm9kZXMgYW5kIGJpbmQgdGhlIGVuY29kZXJz
+IGF0dGFjaGVkCj4gdG8gdGhlIHJlbW90ZSBlbmRwb2ludHMuIEZhY3RvciB0aGUgY29tbW9uIGNv
+ZGUgaW50byBhIHNlcGFyYXRlCj4gZnVuY3Rpb24gY2FsbGVkIGRybV9vZl9jb21wb25lbnRfcHJv
+YmUoKSBpbiBvcmRlciB0byBpbmNyZWFzZSBjb2RlCj4gcmV1c2UuCj4KPiBDYzogRGF2aWQgQWly
+bGllIDxhaXJsaWVkQGxpbnV4LmllPgo+IFNpZ25lZC1vZmYtYnk6IExpdml1IER1ZGF1IDxMaXZp
+dS5EdWRhdUBhcm0uY29tPgo+IEFja2VkLWJ5OiBSdXNzZWxsIEtpbmcgPHJtaytrZXJuZWxAYXJt
+LmxpbnV4Lm9yZy51az4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jIHwgODggKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGluY2x1ZGUv
+ZHJtL2RybV9vZi5oICAgICB8IDEzICsrKysrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCAxMDEgaW5z
+ZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9kcm1fb2YuYwo+IGluZGV4IGJlMzg4NDAuLjQ5M2MwNWMgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2Ry
+bV9vZi5jCj4gQEAgLTEsMyArMSw0IEBACj4gKyNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4K
+PiAgI2luY2x1ZGUgPGxpbnV4L2V4cG9ydC5oPgo+ICAjaW5jbHVkZSA8bGludXgvbGlzdC5oPgo+
+ICAjaW5jbHVkZSA8bGludXgvb2ZfZ3JhcGguaD4KPiBAQCAtNjEsMyArNjIsOTAgQEAgdWludDMy
+X3QgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAg
+ICAgICAgIHJldHVybiBwb3NzaWJsZV9jcnRjczsKPiAgfQo+ICBFWFBPUlRfU1lNQk9MKGRybV9v
+Zl9maW5kX3Bvc3NpYmxlX2NydGNzKTsKPiArCj4gKy8qKgo+ICsgKiBkcm1fb2ZfY29tcG9uZW50
+X3Byb2JlIC0gR2VuZXJpYyBwcm9iZSBmdW5jdGlvbiBmb3IgYSBjb21wb25lbnQgYmFzZWQgbWFz
+dGVyCj4gKyAqIEBkZXY6IG1hc3RlciBkZXZpY2UgY29udGFpbmluZyB0aGUgT0Ygbm9kZQo+ICsg
+KiBAY29tcGFyZV9vZjogY29tcGFyZSBmdW5jdGlvbiB1c2VkIGZvciBtYXRjaGluZyBjb21wb25l
+bnRzCj4gKyAqIEBtYXN0ZXJfb3BzOiBjb21wb25lbnQgbWFzdGVyIG9wcyB0byBiZSB1c2VkCj4g
+KyAqCj4gKyAqIFBhcnNlIHRoZSBwbGF0Zm9ybSBkZXZpY2UgT0Ygbm9kZSBhbmQgYmluZCBhbGwg
+dGhlIGNvbXBvbmVudHMgYXNzb2NpYXRlZAo+ICsgKiB3aXRoIHRoZSBtYXN0ZXIuIEludGVyZmFj
+ZSBwb3J0cyBhcmUgYWRkZWQgYmVmb3JlIHRoZSBlbmNvZGVycyBpbiBvcmRlciB0bwo+ICsgKiBz
+YXRpc2Z5IHRoZWlyIC5iaW5kIHJlcXVpcmVtZW50cwo+ICsgKiBTZWUgRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL2dyYXBoLnR4dCBmb3IgdGhlIGJpbmRpbmdzLgo+ICsgKgo+ICsg
+KiBSZXR1cm5zIHplcm8gaWYgc3VjY2Vzc2Z1bCwgb3Igb25lIG9mIHRoZSBzdGFuZGFyZCBlcnJv
+ciBjb2RlcyBpZiBpdCBmYWlscy4KPiArICovCj4gK2ludCBkcm1fb2ZfY29tcG9uZW50X3Byb2Jl
+KHN0cnVjdCBkZXZpY2UgKmRldiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICBpbnQgKCpj
+b21wYXJlX29mKShzdHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzICptX29wcykKPiArewo+
+ICsgICAgICAgc3RydWN0IGRldmljZV9ub2RlICplcCwgKnBvcnQsICpyZW1vdGU7Cj4gKyAgICAg
+ICBzdHJ1Y3QgY29tcG9uZW50X21hdGNoICptYXRjaCA9IE5VTEw7Cj4gKyAgICAgICBpbnQgaTsK
+PiArCj4gKyAgICAgICBpZiAoIWRldi0+b2Zfbm9kZSkKPiArICAgICAgICAgICAgICAgcmV0dXJu
+IC1FSU5WQUw7Cj4gKwo+ICsgICAgICAgLyoKPiArICAgICAgICAqIEJpbmQgdGhlIGNydGMncyBw
+b3J0cyBmaXJzdCwgc28gdGhhdCBkcm1fb2ZfZmluZF9wb3NzaWJsZV9jcnRjcygpCj4gKyAgICAg
+ICAgKiBjYWxsZWQgZnJvbSBlbmNvZGVyJ3MgLmJpbmQgY2FsbGJhY2tzIHdvcmtzIGFzIGV4cGVj
+dGVkCj4gKyAgICAgICAgKi8KPiArICAgICAgIGZvciAoaSA9IDA7IDsgaSsrKSB7Cj4gKyAgICAg
+ICAgICAgICAgIHBvcnQgPSBvZl9wYXJzZV9waGFuZGxlKGRldi0+b2Zfbm9kZSwgInBvcnRzIiwg
+aSk7Cj4gKyAgICAgICAgICAgICAgIGlmICghcG9ydCkKPiArICAgICAgICAgICAgICAgICAgICAg
+ICBicmVhazsKPiArCj4gKyAgICAgICAgICAgICAgIGlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJs
+ZShwb3J0LT5wYXJlbnQpKSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQo
+cG9ydCk7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4gKyAgICAgICAgICAg
+ICAgIH0KPiArCj4gKyAgICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0
+Y2gsIGNvbXBhcmVfb2YsIHBvcnQpOwo+ICsgICAgICAgICAgICAgICBvZl9ub2RlX3B1dChwb3J0
+KTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICBpZiAoaSA9PSAwKSB7Cj4gKyAgICAgICAgICAg
+ICAgIGRldl9lcnIoZGV2LCAibWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4iKTsKPiArICAgICAg
+ICAgICAgICAgcmV0dXJuIC1FTk9ERVY7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgaWYgKCFt
+YXRjaCkgewo+ICsgICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIm5vIGF2YWlsYWJsZSBwb3J0
+XG4iKTsKPiArICAgICAgICAgICAgICAgcmV0dXJuIC1FTk9ERVY7Cj4gKyAgICAgICB9Cj4gKwo+
+ICsgICAgICAgLyoKPiArICAgICAgICAqIEZvciBib3VuZCBjcnRjcywgYmluZCB0aGUgZW5jb2Rl
+cnMgYXR0YWNoZWQgdG8gdGhlaXIgcmVtb3RlIGVuZHBvaW50Cj4gKyAgICAgICAgKi8KPiArICAg
+ICAgIGZvciAoaSA9IDA7IDsgaSsrKSB7Cj4gKyAgICAgICAgICAgICAgIHBvcnQgPSBvZl9wYXJz
+ZV9waGFuZGxlKGRldi0+b2Zfbm9kZSwgInBvcnRzIiwgaSk7Cj4gKyAgICAgICAgICAgICAgIGlm
+ICghcG9ydCkKPiArICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKPiArCj4gKyAgICAgICAg
+ICAgICAgIGlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQpKSB7Cj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocG9ydCk7Cj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgY29udGludWU7Cj4gKyAgICAgICAgICAgICAgIH0KPiArCk9mIHRoZSB0aHJlZSBk
+cml2ZXJzIGNvbnZlcnRlZCBvbmx5IHRoZSByb2NrY2hpcCBvbmUgaGFzIHRoZSBhYm92ZQpvZl9k
+ZXZpY2VfaXNfYXZhaWxhYmxlKCkgaHVuay4gQmFzZWQgb24gdGhlIGhhbmRsaW5nIGluIHByZXZp
+b3VzIGxvb3AKSSdtIG5vdCBlbnRpcmVseSBzdXJlIGlmIGl0J3MgbmVlZGVkLCBidXQgaWYgc28g
+c2hvdWxkbid0IG9uZSBtZW50aW9uCnRoZSBkaWZmZXJlbmNlIHdoZW4gY29udmVydGluZyB0aGUg
+cmVzcGVjdGl2ZSBkcml2ZXJzID8KCkknbSBub3Qgd29ya2luZyBvbi9mYW1pbGlhciB3aXRoIGVp
+dGhlciBvZiB0aGVzZSBkcml2ZXJzIHNvIHRoaXMgaXMKanVzdCBhIGZseS1ieSBjb21tZW50LgoK
+Q2hlZXJzLApFbWlsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
