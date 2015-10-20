@@ -1,77 +1,85 @@
-From: Liviu Dudau <Liviu.Dudau@arm.com>
-Subject: Re: [PATCH v4 0/4] drm: Cleanup probe function for component based
- masters.
-Date: Tue, 20 Oct 2015 11:18:39 +0100
-Message-ID: <20151020101839.GB3394@e106497-lin.cambridge.arm.com>
-References: <1445332995-11212-1-git-send-email-Liviu.Dudau@arm.com>
- <20151020100233.GW13786@phenom.ffwll.local>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v6 0/17] Add Analogix Core Display Port Driver
+Date: Tue, 20 Oct 2015 19:40:32 +0800
+Message-ID: <56262830.4030201@rock-chips.com>
+References: <1441086371-24838-1-git-send-email-ykk@rock-chips.com> <1444491357-26095-1-git-send-email-ykk@rock-chips.com> <5624C896.8070108@osg.samsung.com> <5625A2A1.6090907@rock-chips.com> <56260E06.2040902@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20151020100233.GW13786@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56260E06.2040902@osg.samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Javier Martinez Canillas <javier@osg.samsung.com>, Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, joe@perches.com, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>
+Cc: Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBPY3QgMjAsIDIwMTUgYXQgMTI6MDI6MzNQTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBPbiBUdWUsIE9jdCAyMCwgMjAxNSBhdCAxMDoyMzoxMUFNICswMTAwLCBMaXZpdSBE
-dWRhdSB3cm90ZToKPiA+IENoYW5nZWxvZzoKPiA+IHY0OiBGaXhlZCBhIGJ1ZyB3aGVyZSB0aGUg
-d3JvbmcgcG9pbnRlciB3YXMgc2VudCB0byBjb21wb25lbnRfbWF0Y2hfYWRkKCkgYW5kCj4gPiAg
-ICAgY29tcG9uZW50X21hc3Rlcl9hZGRfd2l0aF9tYXRjaCgpIGluIHRoZSBhcm1hZGFfZHJ2LmMg
-ZmlsZSB0aGF0IHdhcyBmbGFnZ2VkCj4gPiAgICAgYnkga2J1aWxkIHRlc3Qgcm9ib3QuIERyb3Bw
-ZWQgdGhlIFJGQyB0YWcgYW5kIGFkZGVkIEFja2VkLWJ5cyByZWNlaXZlZCBmcm9tCj4gPiAgICAg
-UnVzc2VsbCBLaW5nLgo+ID4gdjM6IFJlbW92ZWQgdGhlIGNhbGwgdG8gZG1hX3NldF9jb2hlcmVu
-dF9tYXNrKCkgZnJvbSB0aGUgZ2VuZXJpYwo+ID4gICAgIGRybV9vZl9jb21wb25lbnRfcHJvYmUo
-KS4gQWxzbyBjaGFuZ2VzIHRvIHNob3J0ZW4gbGluZXMgb3ZlciA4MCBjaGFycyBsb25nLgo+ID4g
-djI6IFJlYmFzZWQgdGhlIHBhdGNoc2V0IG9uIHRvcCBvZiBkcm0tbmV4dCByYXRoZXIgdGhhbiBM
-aW51cycgbGF0ZXN0IC1yYwo+ID4gCj4gPiBBIGZldyBkcml2ZXJzIGluIGRyaXZlcnMvZ3B1L2Ry
-bSBhcmUgY29tcG9uZW50LWVuYWJsZWQgYW5kIHVzZSBxdWl0ZSBzaW1pbGFyCj4gPiBjb2RlIHNl
-cXVlbmNlcyB0byBwcm9iZSBmb3IgdGhlaXIgZW5jb2RlciBzbGF2ZXMgYXQgdGhlIHJlbW90ZSBl
-bmQgb2YgdGhlIHBvcnRzLgo+ID4gTW92ZSB0aGUgY29kZSBpbnRvIGEgImdlbmVyaWMiIGZ1bmN0
-aW9uIGFuZCByZW1vdmUgaXQgZnJvbSB0aGUgZHJpdmVycy4KPiA+IAo+ID4gVGhlIGVuZCByZXN1
-bHRzIGlzIHRoYXQgZHJpdmVycyBnZXQgYSByZWZlcmVuY2UgY291bnQgZml4IChpbXgpLCBtb3Jl
-IHRob3JvdWdoCj4gPiBlcnJvciBjaGVja2luZyAoaW14IGFnYWluKSBwbHVzIGEgZGVjcmVhc2Ug
-aW4gdGhlIG92ZXJhbGwgY291bnQgb2YgTG9DLgo+ID4gCj4gPiBJJ20gbG9va2luZyBmb3IgY29t
-bWVudHMgYW5kIHRlc3Rpbmcgb2YgdGhlIHBhdGNoc2V0IChvbmx5IGNvbXBpbGUgdGVzdGVkIGZy
-b20gbXkKPiA+IGVuZCBhcyBJIGRvbid0IGhhdmUgYWNjZXNzIHRvIGFsbCB0aGUgZGV2aWNlcyB0
-b3VjaGVkIGJ5IHRoZSBjaGFuZ2VzKS4gTXkgbWFpbgo+ID4gaW50ZXJlc3QgaXMgaW4gZmluZGlu
-ZyBvdXQgaWYgLUVJTlZBTCBpcyB0aGUgY29ycmVjdCBjb2RlIHRvIHJldHVybiBpZgo+ID4gZGV2
-LT5vZl9ub2RlID09IE5VTEwgKGhhbmR5IG5vdywgYXMgaXQgaXMgZGlmZmVyZW50IGZyb20gdGhl
-IG90aGVyIHBvc3NpYmxlIGVycm9yCj4gPiBjb2RlcyBhbmQgdXNlZCBpbiBhcm1hZGEgdG8gdHJp
-Z2dlciBvbGQgcGxhdGZvcm1fZGF0YSBzdXBwb3J0LiBBbHNvIGxvb2tpbmcgZm9yCj4gPiB0aG91
-Z2h0cyBvbiB0aGUgY29ycmVjdG5lc3Mgb2YgdGhlIHBhdGNoIGFuZCBpZiBpdCBwb3NzaWJsZSB0
-byBjby1vcHQgbW9yZSBkcml2ZXJzCj4gPiBpbnRvIHVzaW5nIHRoZSBmdW5jdGlvbi4KPiAKPiBN
-ZXJnZWQgYWxsIGZvdXIgdG8gZHJtLW1pc2MsIHRoYW5rcy4KPiAtRGFuaWVsCgpUaGFua3MhCgpM
-aXZpdQoKPiAKPiA+IAo+ID4gQmVzdCByZWdhcmRzLAo+ID4gTGl2aXUKPiA+IAo+ID4gTGl2aXUg
-RHVkYXUgKDQpOgo+ID4gICBkcm06IEludHJvZHVjZSBnZW5lcmljIHByb2JlIGZ1bmN0aW9uIGZv
-ciBjb21wb25lbnQgYmFzZWQgbWFzdGVycy4KPiA+ICAgZHJtL2lteDogQ29udmVydCB0aGUgcHJv
-YmUgZnVuY3Rpb24gdG8gdGhlIGdlbmVyaWMgZHJtX29mX2NvbXBvbmVudF9wcm9iZSgpCj4gPiAg
-IGRybS9yb2NrY2hpcDogQ29udmVydCB0aGUgcHJvYmUgZnVuY3Rpb24gdG8gdGhlIGdlbmVyaWMg
-ZHJtX29mX2NvbXBvbmVudF9wcm9iZSgpCj4gPiAgIGRybS9hcm1hZGE6IENvbnZlcnQgdGhlIHBy
-b2JlIGZ1bmN0aW9uIHRvIHRoZSBnZW5lcmljIGRybV9vZl9jb21wb25lbnRfcHJvYmUoKQo+ID4g
-Cj4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMgICAgICAgICB8IDY4ICsr
-KysrKystLS0tLS0tLS0tLS0tLS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMgICAgICAg
-ICAgICAgICAgICAgIHwgODggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICBkcml2
-ZXJzL2dwdS9kcm0vaW14L2lteC1kcm0tY29yZS5jICAgICAgICAgIHwgNTUgKystLS0tLS0tLS0t
-LS0tLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8
-IDgxICsrLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gPiAgaW5jbHVkZS9kcm0vZHJtX29mLmgg
-ICAgICAgICAgICAgICAgICAgICAgICB8IDEzICsrKysrCj4gPiAgNSBmaWxlcyBjaGFuZ2VkLCAx
-MzAgaW5zZXJ0aW9ucygrKSwgMTc1IGRlbGV0aW9ucygtKQo+ID4gCj4gPiAtLSAKPiA+IDIuNi4w
-Cj4gPiAKPiAKPiAtLSAKPiBEYW5pZWwgVmV0dGVyCj4gU29mdHdhcmUgRW5naW5lZXIsIEludGVs
-IENvcnBvcmF0aW9uCj4gaHR0cDovL2Jsb2cuZmZ3bGwuY2gKPiAKCi0tIAo9PT09PT09PT09PT09
-PT09PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhl
-eSdyZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0t
-LS0tLS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+Hi Javier,
+
+On 10/20/2015 05:48 PM, Javier Martinez Canillas wrote:
+> Hello Yakir,
+>
+> On 10/20/2015 04:10 AM, Yakir Yang wrote:
+>> Hi Javier,
+>>
+>> On 10/19/2015 06:40 PM, Javier Martinez Canillas wrote:
+>>> Hello Yakir,
+>>>
+>>> On 10/10/2015 05:35 PM, Yakir Yang wrote:
+>>>> Hi all,
+>>>>
+>>>>      The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+>>>> share the same IP, so a lot of parts can be re-used. I split the common
+>>>> code into bridge directory, then rk3288 and exynos only need to keep
+>>>> some platform code. Cause I can't find the exact IP name of exynos dp
+>>>> controller, so I decide to name dp core driver with "analogix" which I
+>>>> find in rk3288 eDP TRM :)
+>>>>
+>>>> But  there are still three light registers setting differents bewteen
+>>>> exynos and rk3288.
+>>>> 1. RK3288 have five special pll resigters which not indicata in exynos
+>>>>      dp controller.
+>>>> 2. The address of DP_PHY_PD(dp phy power manager register) are different
+>>>>      between rk3288 and exynos.
+>>>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
+>>>>      register).
+>>>>
+>>>> This series have been well tested on Rockchip platform with eDP panel
+>>>> on Jerry Chromebook and Display Port Monitor on RK3288 board and thanks
+>>>> to Javier@Samsung help me to find a way to install mainline kernel to
+>>>> Samsung Exynos Chromebooks, so this series also have been tested on Samsung
+>>>> Snow and Peach Pit Chromebooks which borrowed from my friends.
+>>>>
+>>>> Besides, This version was build on linux-next branch (tag next-20150918), and
+>>>> the above test experiments also base on that tag. But I know the latest tag is
+>>>> next-20151009, so i do rebase this series again on next-20151009, there were
+>>>> little conflicts(exynos_dp removed the suspend/resume).
+>>>>
+>>>> But after I retest this series on next-20151009, I saw kernel crashed in mmc
+>>>> driver(dw_mci_probe failed to get regulator). So i have to disabled the MMC
+>>>> module(after all I boot with USB device), and I can see eDP light up normally
+>>>> in startup stage, but kernel keep crashed when it try to mount the filesystem.
+>>>> I thought this isn't related to dp driver directly, so i choice not to debug
+>>>> more depth.
+>>>>
+>>>> That's to say if someone want to test this series, I suggest you applied this
+>>>> series on tag-20150918, just need to fix some light conflicts with the 01 & 02
+>>>> patches (or just email me, I can send you directly).
+>>>>
+>>>> Thanks,
+>>> Do you have a branch that I can use to test this series?
+>> Thank you for your kind assistance, I have created a tree which checkout from the next-20151019. Surely there were some conflicts to applied this series on that tag, but things still works for me, here is the git address [https://github.com/yakir-Yang/linux/tree/analogix_dp]
+>>
+> I tested your branch on an Exynos5800 Peach Pi Chromebook and display is
+> working on boot. I also tested DPMS and S2R and things are still working
+> so for the whole series feel free to add:
+>
+> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
+
+Thanks a lot    ;)
+
+- Yakir
+
+>> Best regards,
+>> - Yakir
+>>
+> Best regards,
