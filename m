@@ -1,52 +1,34 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] ASoC: dt-bindings: Drop unneeded properties rockchip
- i2s/spdif bindings
-Date: Wed, 21 Oct 2015 13:28:43 +0100
-Message-ID: <20151021122843.GD8232@sirena.org.uk>
-References: <1445242539-9098-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v1 2/2] ARM: dts: rockchip: Add the OTP gpio pinctrl
+Date: Wed, 21 Oct 2015 06:36:12 -0700
+Message-ID: <CAD=FV=WN1uuvTakn7qsLgMNGbZgREeNU65==QgS-2AeBuDPN9w@mail.gmail.com>
+References: <1445395380-5365-1-git-send-email-wxt@rock-chips.com>
+	<1445395380-5365-3-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=WbnWXD1HCON-VHfqSqtp=GFwbsj+g2G8A159CEaEiFYQ@mail.gmail.com>
+	<562717CD.3040601@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HWvPVVuAAfuRc6SZ"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1445242539-9098-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <562717CD.3040601@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Eduardo Valentin <edubezval@gmail.com>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Caesar,
 
---HWvPVVuAAfuRc6SZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Tue, Oct 20, 2015 at 9:42 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> I think the description is right,   maybe need other decriptions.
+> The tshut polarity is low in a short period of time when the TSADC
+> controller is reset.
+>
+> In other words,
+>
+> If T < (setting temperature), the OTP output the High Signal. ------> if the
+> otp out polarity is high, the TSHUT will work.
+> If T > (setting temperature), the OTP output the Low Signal.
 
-On Mon, Oct 19, 2015 at 10:15:39AM +0200, Sjoerd Simons wrote:
-> Neither the rockchip i2s nor the rockchip spdif binding support child
-> devices so #address-cells and #size-cells properties aren't required.
-> Remove these from the bindings.
->=20
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Ah!  I re-read the cover letter more carefully and now I see.  OK, I
+think your current description is fine, then.  ;)
 
-Please use subject lines matching the style for the subsystem!
-
---HWvPVVuAAfuRc6SZ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWJ4T6AAoJECTWi3JdVIfQDH8H/j6i6DoQFVBR8WxRo8MLyzge
-shApzhJKDtc4fBb5laviTf2F1oDX3347A1Yynn2GLVEjQnL0s5Jty12Swv2fGStZ
-Yr5nssU4Ck27ko9QJClUM8KKF+KZvyZxwljvLSr2guyd10S78M1QUNmfhCZ/h6cM
-HOvlJEdumd24nEjwqxB9Jff8yFQhN2MGjtWoAzHy9ux+Hpfz/kxg/R8u5A0WGp7N
-o3q8PV20J0aCk3hardponMm6aZ5Yn+BubEpK0fMHRmakzCuKfiMCV7KYv9Edrm2Q
-HchiFkgQdpMtkqKzhYrKnVmrxv80y1lHc+fh1nuQ95qr4Rst/DzsUOQhJQpDwWw=
-=mXbM
------END PGP SIGNATURE-----
-
---HWvPVVuAAfuRc6SZ--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Doug
