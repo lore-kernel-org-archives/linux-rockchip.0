@@ -1,65 +1,53 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v1 1/2] dt-bindings: Sync the dts to this document
-Date: Wed, 21 Oct 2015 23:45:13 +0800
-Message-ID: <5627B309.9080309@gmail.com>
-References: <1445395380-5365-1-git-send-email-wxt@rock-chips.com> <1445395380-5365-2-git-send-email-wxt@rock-chips.com> <CAL_JsqJ6ZRjZbtc7dqo-g=CzO+H_FWcRqs2gBGH2HMBBM1xU3g@mail.gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [REPOST PATCH 0/3] dwc2 patches to allow wakeup on Rockchip rk3288
+Date: Wed, 21 Oct 2015 09:23:14 -0700
+Message-ID: <CAD=FV=W-iT48ah4WJDpAGqeNMkcTp3gMMddKYVz0ad-QXVz3fw@mail.gmail.com>
+References: <1436207224-21849-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJ6ZRjZbtc7dqo-g=CzO+H_FWcRqs2gBGH2HMBBM1xU3g@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1436207224-21849-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Andrew Bresticker <abrestic-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Petr Mladek <pmladek-AlSwsSmVLrQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Peter Chen <peter.chen-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthew Garrett <mjg59-JW9irJGTvgXQT0dZR+AlfA@public.gmane.org>, Robert Schlabbach <Robert.Schlabbach-hi6Y0CQ0nG0@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Gregory Herrero <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>Greg Kroah-Hartman <gre>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+John,
 
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8821=E6=97=A5 23:18, Rob Herring =E5=86=
-=99=E9=81=93:
-> On Tue, Oct 20, 2015 at 9:42 PM, Caesar Wang <wxt@rock-chips.com> wro=
-te:
->> Add the OTP gpio state, we need switch the pin to gpio state
->> before the TSADC controller is reset.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> ---
->>
->> Changes in v1:
->>    - As the Doug comments, add the 'init' property to sync document.
->>
->>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 5=
- +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-ther=
-mal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.tx=
-t
->> index ef802de..28e84f7 100644
->> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> @@ -27,8 +27,9 @@ tsadc: tsadc@ff280000 {
->>          clock-names =3D "tsadc", "apb_pclk";
->>          resets =3D <&cru SRST_TSADC>;
->>          reset-names =3D "tsadc-apb";
->> -       pinctrl-names =3D "default";
->> -       pinctrl-0 =3D <&otp_out>;
->> +       pinctrl-names =3D "init", "default";
->> +       pinctrl-0 =3D <&otp_gpio>;
->> +       pinctrl-1 =3D <&otp_out>;
-> Are these optional or required? They only appear in the example.
-
-Yep,
-These are required for TSADC.
-
-I=E2=80=98m assumed that's right,
-I think we don't need to introduce the pinctrl in this document.
-
-> Rob
+On Mon, Jul 6, 2015 at 11:27 AM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> This series of patches, together with
+> <https://patchwork.kernel.org/patch/6652341/> from Chris Zhong and a
+> dts change allow us to wake up from a USB device on rk3288 boards.
+> The patches were tested on rk3288-jerry in the chromeos-3.14 kernel.
+> The chromeos-3.14 kernel tested included a full set of dwc2 backports
+> from upstream, so this is expected to function upstream once we get
+> everything setup there.
 >
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+> Douglas Anderson (3):
+>   USB: Export usb_wakeup_enabled_descendants()
+>   Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
+>   USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
+>
+>  Documentation/devicetree/bindings/usb/dwc2.txt |  4 +++
+>  drivers/usb/core/hub.c                         |  7 ++--
+>  drivers/usb/dwc2/core.h                        |  2 ++
+>  drivers/usb/dwc2/platform.c                    | 45 ++++++++++++++++++++++++--
+>  include/linux/usb/hcd.h                        |  5 +++
+>  5 files changed, 58 insertions(+), 5 deletions(-)
 
+This series was posted a while ago.  Do you have any comments on it?
+Should I repost it?
+
+Thanks!
+
+-Doug
