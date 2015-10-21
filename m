@@ -1,55 +1,36 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v1 2/2] ARM: dts: rockchip: Add the OTP gpio pinctrl
-Date: Wed, 21 Oct 2015 10:43:00 +0800
-Message-ID: <1445395380-5365-3-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v1 1/2] dt-bindings: Sync the dts to this document
+Date: Tue, 20 Oct 2015 21:23:35 -0700
+Message-ID: <CAD=FV=Xgo+-muofauniMHwNtu6TnNHH2zOyLUVsKZj4Le4N=qg@mail.gmail.com>
 References: <1445395380-5365-1-git-send-email-wxt@rock-chips.com>
+	<1445395380-5365-2-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445395380-5365-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1445395380-5365-2-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, Eduardo Valentin <edubezval@gmail.com>, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Eduardo Valentin <edubezval@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We need the OTP pin is gpio state before resetting the TSADC controller,
-since the tshut polarity will generate a high signal.
+Hi,
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
+On Tue, Oct 20, 2015 at 7:42 PM, Caesar Wang <wxt@rock-chips.com> wrote:
+> Add the OTP gpio state, we need switch the pin to gpio state
+> before the TSADC controller is reset.
+>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
+>
+> Changes in v1:
+>   - As the Doug comments, add the 'init' property to sync document.
+>
+>  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Changes in v1:
-  - As the Doug comments, drop the thermal driver patchs since
-    we can with pinctrl changing to work.
-  - As the Doug's patch to add the 'init' property.
+Seems reasonable to me.  I do wonder if we need to make it more
+obvious that things might glitch if the "init" pinctrl isn't there?
+...probably not too critical unless others think it needs to be more
+obvious...
 
- arch/arm/boot/dts/rk3288.dtsi | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 906e938..6ea89aa 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -447,8 +447,9 @@
- 		clock-names = "tsadc", "apb_pclk";
- 		resets = <&cru SRST_TSADC>;
- 		reset-names = "tsadc-apb";
--		pinctrl-names = "default";
--		pinctrl-0 = <&otp_out>;
-+		pinctrl-names = "init", "default";
-+		pinctrl-0 = <&otp_gpio>;
-+		pinctrl-1 = <&otp_out>;
- 		#thermal-sensor-cells = <1>;
- 		rockchip,hw-tshut-temp = <95000>;
- 		status = "disabled";
-@@ -1273,6 +1274,10 @@
- 		};
- 
- 		tsadc {
-+			otp_gpio: otp-gpio {
-+				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
-+			};
-+
- 			otp_out: otp-out {
- 				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
- 			};
--- 
-1.9.1
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
