@@ -1,114 +1,68 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH 2/4] thermal: rockchip: ensure the otp state before
- resetting the controller
-Date: Wed, 21 Oct 2015 09:41:09 +0800
-Message-ID: <5626ED35.3010403@gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 3/4] thermal: rockchip: change the TSHUT default state
+Date: Tue, 20 Oct 2015 19:14:29 -0700
+Message-ID: <CAD=FV=UNyjJmN4TtZ+1DOeM_OYikRAUhYsN=F_f-q5MA_MVFag@mail.gmail.com>
 References: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
- <1445332264-6054-3-git-send-email-wxt@rock-chips.com>
- <CAD=FV=WHvwNGdRZ4Yjwk0zB00o2gFHXLfbAYHai1kM_oBAR4_g@mail.gmail.com>
+	<1445332264-6054-4-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=Vo1Wf6opTc5jQjm-nXd=BCJxeggipPj4ER9Ehutxs_6w@mail.gmail.com>
+	<5626EEB2.50101@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WHvwNGdRZ4Yjwk0zB00o2gFHXLfbAYHai1kM_oBAR4_g@mail.gmail.com>
+In-Reply-To: <5626EEB2.50101@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Caesar Wang <caesar.upstream@gmail.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Doug,
+Caesar,
 
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8820=E6=97=A5 23:52, Doug Anderson =E5=86=
-=99=E9=81=93:
+On Tue, Oct 20, 2015 at 6:47 PM, Caesar Wang <caesar.upstream@gmail.com=
+> wrote:
+> Doug,
+>
+> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8821=E6=97=A5 00:01, Doug Anderson =E5=
+=86=99=E9=81=93:
+>
 > Caesar,
 >
 > On Tue, Oct 20, 2015 at 2:11 AM, Caesar Wang <wxt@rock-chips.com> wro=
 te:
->> We need the OTP pin is gpio state before resetting the TSADC control=
-ler,
->> since the tshut polarity will generate a high signal.
->>
->> Says:
->> The TSHUT temperature is setting more than 80 degree, the default ts=
-hut
->> polarity is high.
->>
->> If T > 80C, the OTP output the High Signal.
->> If T < 80C, the OTP output the Low Signal.
->>
->> On the moment, the TSADC controller is reset, the tshut polarity wil=
-l be
->> low in a short period of time.
->> So:
->>
->> If T < 80C, the OTP output the High Signal.
->> If T > 80C, the OTP output the Low Signal.
->>
->> In some cases, the OTP pin is connected to the PMIC, maybe the PMIC =
-can
->> accept the reset response time to avoid this issue.
->> In other words, the system will be always reboot if we make the OTP =
-pin
->> is connected the others IC to control the power.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> ---
->>
->>   drivers/thermal/rockchip_thermal.c | 32 ++++++++++++++++++++++++++=
-++++++
->>   1 file changed, 32 insertions(+)
-> I think you could do this with no code changes to the thermal driver
-> if we simply convince Linus W. to apply a change that I posted up jus=
-t
-> about a year ago.  See:
 >
-> https://patchwork.kernel.org/patch/5055741/
+> As the TRM says, the TSHUT default state is high active.
+> In general, the TSHUT state can get from the dts. Otherwise
+> it gets the state from this.
 >
-> In v1 of that patch at <https://patchwork.kernel.org/patch/5049041/>
-> Linus said he liked it "A lot" and was willing to merge it with Greg
-> KH's Ack and with a small comment fix.  I obtained the Ack and fixed
-> the comment, but then the patch didn't end up being needed for me and
-> so I never bumped it and it got lost...
+> Can you point at where the TRM says that the default state is high ac=
+tive?
 >
-> Maybe you could re-test that patch?  It looks like it has a merge
-> conflict with current linuxnext but it looks trivial to resolve.  You
-> could re-post my patch or I could repost it and you could add your
-> Tested-by.
->
-> You'd still want to have a bindings change to describe "init", but at
-> least you shouldn't need any code changes.
-
-Okay, https://patchwork.kernel.org/patch/5055741/ that's working for me=
+> With the manual I have, I look at TSADC_AUTO_CON and I look at the
+> description of "Bit 8".  It says that "tshut polarity" is 0 for low
+> active and 1 for high active.  It then said that the Reset Value is 0=
 =2E
-=46ell free add my  test tag if you resend the patch. (Tested-by: Caesa=
-r=20
-Wang <wxt@rock-chips.com>)
-
-
-1634ed8 FROMLIST: drivers/pinctrl: Add the concept of an "init" state
-15158f8 FROMLIST: ARM: dts: rockchip: Add the OTP gpio pinctrl
-e7d3b88 FROMLIST: thermal: rockchip: change the TSHUT default state
-184b154 FROMLIST: thermal: rockchip: ensure the otp state before=20
-resetting the controller
-9edbe15 FROMLIST: dt-bindings: Sync the dts to this document
-
-Meanwhile, I change the dts as follows.
-
--               pinctrl-names =3D "default", "otp_out";
-+               pinctrl-names =3D "init", "default";
-                 pinctrl-0 =3D <&otp_gpio>;
-                 pinctrl-1 =3D <&otp_out>;
-
 >
-> -Doug
+> ...the "Reset Value" in tables like this is notoriously unreliable, s=
+o
+> I can totally believe that it's wrong.  If you can point me at the
+> part of the TRM that says that TSHUT is high active by default then I
+> can confirm that for you.  ;)
 >
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+> Okay, I know that's my wrong, the polarity is high or low can be sele=
+cted.
+> :-(
+>
+> I remember the veyron why is the default HiGH active, since the opt i=
+s
+> connected to the PMIC.(we need think about the devices)
+>
+> Why is the evb board LOW active, since the opt didn't connected to th=
+e
+> devices. TSHUT is depend on the CRU to work.
 
+I think we can drop this patch then, right?  Any boards that need a
+change from the default can just set "rockchip,hw-tshut-polarity",
+right?
 
---=20
-Thanks,
-Caesar
+-Doug
