@@ -1,97 +1,75 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: Add document of Rockchip mailbox
-Date: Thu, 22 Oct 2015 10:07:00 +0800
-Message-ID: <562844C4.5040304@gmail.com>
-References: <1442228798-15191-1-git-send-email-wxt@rock-chips.com>
- <1442228798-15191-2-git-send-email-wxt@rock-chips.com>
- <CABb+yY2Z9soGR0OcCRcfr2Ei7zX29qHPhYEKf3LPe+OhAuZMjA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABb+yY2Z9soGR0OcCRcfr2Ei7zX29qHPhYEKf3LPe+OhAuZMjA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, "ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org" <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org" <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [RESEND PATCH v2 0/2] fix the TSHUT issue on rockchip thermal
+Date: Thu, 22 Oct 2015 10:30:46 +0800
+Message-ID: <1445481048-20789-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, Eduardo Valentin <edubezval@gmail.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Jassi,
+We need the OTP pin is gpio state before resetting the TSADC controller,
+since the tshut polarity will generate a high signal.
 
-Sorry for delay reply.
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8806=E6=97=A5 18:34, Jassi Brar =E5=86=99=
-=E9=81=93:
-> On Mon, Sep 14, 2015 at 4:36 PM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wro=
-te:
->> This add the necessary binding documentation for mailbox
->> found on RK3368 SoC.
->>
->> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>   .../bindings/mailbox/rockchip-mailbox.txt          | 33 ++++++++++=
-++++++++++++
->>   1 file changed, 33 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/mailbox/rockc=
-hip-mailbox.txt
->>
->> diff --git a/Documentation/devicetree/bindings/mailbox/rockchip-mail=
-box.txt b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.tx=
-t
->> new file mode 100644
->> index 0000000..b9b4768
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt
->> @@ -0,0 +1,33 @@
->> +Rockchip mailbox
->> +
->> +The Rockchip mailbox is used by the Rockchip CPU cores to communica=
-te
->> +requests to MCU processor.
->> +
->> +Refer to ./mailbox.txt for generic information about mailbox device=
--tree
->> +bindings.
->> +
->> +Required properties:
->> +
->> + - compatible: should be one of the following.
->> +   - "rockchip,rk3368-mbox" for rk3368
->> + - reg: physical base address of the controller and length of memor=
-y mapped
->> +       region.
->> +       physical base address of the share buffer and length of memo=
-ry mapped
->> +       region.
-> Please make shared-sram a property of user drivers.
+Says:
+The TSHUT temperature is setting more than 80 degree, the default
+tshut polarity is HIGH.
 
-As Rob points out,
-maybe, don't we need also define it in user drivers.
-As the SRAM binding (misc/sram.txt) had defined.
+If T > 80C, the OTP output the High Signal.
+If T < 80C, the OTP output the Low Signal.
 
-I just make the SCPI protocol client driver to work for mailbox.
->
-> Location and size of shared-memory is a platform property, mailbox
-> controller doesn't need sram to function.
->    For example, protocol on some platform, with this controller, may =
-be
-> trivial enough to not need a shared sram... say only 32-bits wide
-> requests and responses which can be passed via mailbox registers
-> directly.   mbox_client.tx_prepare() is where the user driver sets up
-> the shared-memory.
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+On the moment, the TSADC controller is reset, the tshut polarity will be
+Low in a short period of time.
+
+So:
+If T < 80C, the OTP output the High Signal.
+If T > 80C, the OTP output the Low Signal.
+
+In some cases, the OTP pin is connected to the PMIC, maybe the PMIC can
+accept the reset response time to avoid this issue.
+
+In other words, the system will be always reboot if we make the OTP pin
+is connected the others IC to control the power.
+
+This series patchs are depend on Doug's patch.(https://patchwork.kernel.org/patch/7454311/)
+
+This series patchs are based on the Linus master branch.
+
+518cd44 ARM: dts: rockchip: Add the OTP gpio pinctrl
+83e0bab dt-bindings: Add the "init" pinctrl in this document
+150426c drivers/pinctrl: Add the concept of an "init" state
+ce1fad2 Merge branch 'keys-fixes' of git://git.kernel.org/pub/scm/linux/kernel/git/dhowells/linux-fs
+1099f86 Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+911b79c KEYS: Don't permit request_key() to construct a new keyring
+37850e3 net: bcmgenet: Fix early link interrupt enabling
+afc050d Merge tag 'wireless-drivers-for-davem-2015-10-17' of git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers
+e277de5 tunnels: Don't require remote endpoint or ID during creation.
+740dbc2 openvswitch: Scrub skb between namespaces
+....
+
+Tested on box board.
 
 
---=20
-Thanks,
-Caesar
+Changes in v2:
+  - Add the 'init' pinctrl more decription in commit.
+  - Fix the subject to make more obvious in PATCH[1/2]
+  - Resend this patch v2 since fix the subject to be specific.
+  - Add some commits for more obvious in PATCH[2/2]
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Changes in v1:
+  - As the Doug comments, add the 'init' property to sync document.
+  - As the Doug comments, drop the thermal driver patchs since
+    we can with pinctrl changing to work.
+  - As the Doug's patch to add the 'init' property.
+
+Caesar Wang (2):
+  dt-bindings: rockchip-thermal: Add the "init" pinctrl in this document
+  ARM: dts: rockchip: Add the OTP gpio pinctrl
+
+ Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 5 +++--
+ arch/arm/boot/dts/rk3288.dtsi                                  | 9 +++++++--
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+-- 
+1.9.1
+
