@@ -1,38 +1,87 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v1 1/2] dt-bindings: Sync the dts to this document
-Date: Wed, 21 Oct 2015 20:18:54 -0500
-Message-ID: <CAL_JsqJFO8u0-3BSwBrBh4m7z4iEDPYLeEM9Ef8SLvuj1FYXmg@mail.gmail.com>
-References: <1445395380-5365-1-git-send-email-wxt@rock-chips.com>
- <1445395380-5365-2-git-send-email-wxt@rock-chips.com> <CAL_JsqJ6ZRjZbtc7dqo-g=CzO+H_FWcRqs2gBGH2HMBBM1xU3g@mail.gmail.com>
- <5627B309.9080309@gmail.com> <CAL_JsqJcwWkMXQzo6PbO2kfv3h7hkqtq6CJW0+W4Wc3eh6RTuQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJcwWkMXQzo6PbO2kfv3h7hkqtq6CJW0+W4Wc3eh6RTuQ@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: [PATCH v2 3/3] dt-bindings: EXYNOS: Document compatibles from other
+ vendors
+Date: Thu, 22 Oct 2015 10:25:30 +0900
+Message-ID: <1445477130-407-3-git-send-email-k.kozlowski@samsung.com>
+References: <1445477130-407-1-git-send-email-k.kozlowski@samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1445477130-407-1-git-send-email-k.kozlowski@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Hakjoo Kim <ruppi.kim@hardkernel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Oct 21, 2015 at 11:48 AM, Rob Herring <robh+dt@kernel.org> wrot=
-e:
-> On Wed, Oct 21, 2015 at 10:45 AM, Caesar Wang <caesar.upstream@gmail.=
-com> wrote:
->> Hi Rob,
->>
->> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8821=E6=97=A5 23:18, Rob Herring =E5=
-=86=99=E9=81=93:
->>>
->>> On Tue, Oct 20, 2015 at 9:42 PM, Caesar Wang <wxt@rock-chips.com> w=
-rote:
->>>>
->>>> Add the OTP gpio state, we need switch the pin to gpio state
->>>> before the TSADC controller is reset.
+Document compatibles used on other Exynos-based boards (non-Samsung):
+FriendlyARM, Google, Hardkernel and Insignal.
 
-Also, please fix the subject to be specific what binding you are changi=
-ng.
+Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Kukjin Kim <kgene@kernel.org>
+Cc: Javier Martinez Canillas <javier@osg.samsung.com>
+Cc: Hakjoo Kim <ruppi.kim@hardkernel.com>
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
 
-dt-bindings: rockchip-thermal: <what the change is>
+---
 
-Rob
+Changes since v1:
+1. Added Javier's reviewed-by
+---
+ .../bindings/arm/samsung/samsung-boards.txt        | 44 +++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/arm/samsung/samsung-boards.txt b/Documentation/devicetree/bindings/arm/samsung/samsung-boards.txt
+index 43589d2466a7..da078702ae73 100644
+--- a/Documentation/devicetree/bindings/arm/samsung/samsung-boards.txt
++++ b/Documentation/devicetree/bindings/arm/samsung/samsung-boards.txt
+@@ -16,7 +16,49 @@ Required root node properties:
+ 	- "samsung,sd5v1"	- for Exynos5440-based Samsung board.
+ 	- "samsung,ssdk5440"	- for Exynos5440-based Samsung board.
+ 
+-Optional:
++* Other companies Exynos SoC based
++  * FriendlyARM
++        - "friendlyarm,tiny4412"  - for Exynos4412-based FriendlyARM
++                                    TINY4412 board.
++
++  * Google
++        - "google,pi"             - for Exynos5800-based Google Peach Pi
++                                    Rev 10+ board,
++          also: "google,pi-rev16", "google,pi-rev15", "google,pi-rev14",
++		"google,pi-rev13", "google,pi-rev12", "google,pi-rev11",
++                "google,pi-rev10", "google,peach".
++
++        - "google,pit"            - for Exynos5420-based Google Peach Pit
++                                    Rev 6+ (Exynos5420),
++          also: "google,pit-rev16", "google,pit-rev15", "google,pit-rev14",
++                "google,pit-rev13", "google,pit-rev12", "google,pit-rev11",
++                "google,pit-rev10", "google,pit-rev9", "google,pit-rev8",
++                "google,pit-rev7", "google,pit-rev6", "google,peach".
++
++        - "google,snow-rev4"      - for Exynos5250-based Google Snow board,
++          also: "google,snow"
++        - "google,snow-rev5"      - for Exynos5250-based Google Snow
++                                    Rev 5+ board.
++        - "google,spring"         - for Exynos5250-based Google Spring board.
++
++  * Hardkernel
++        - "hardkernel,odroid-u3"  - for Exynos4412-based Hardkernel Odroid U3.
++        - "hardkernel,odroid-x"   - for Exynos4412-based Hardkernel Odroid X.
++        - "hardkernel,odroid-x2"  - for Exynos4412-based Hardkernel Odroid X2.
++        - "hardkernel,odroid-xu3" - for Exynos5422-based Hardkernel Odroid XU3.
++        - "hardkernel,odroid-xu3-lite" - for Exynos5422-based Hardkernel
++                                         Odroid XU3 Lite board.
++        - "hardkernel,odroid-xu4" - for Exynos5422-based Hardkernel Odroid XU4.
++
++  * Insignal
++        - "insignal,arndale"      - for Exynos5250-based Insignal Arndale board.
++        - "insignal,arndale-octa" - for Exynos5420-based Insignal Arndale
++                                    Octa board.
++        - "insignal,origen"       - for Exynos4210-based Insignal Origen board.
++        - "insignal,origen4412    - for Exynos4412-based Insignal Origen board.
++
++
++Optional nodes:
+     - firmware node, specifying presence and type of secure firmware:
+         - compatible: only "samsung,secure-firmware" is currently supported
+         - reg: address of non-secure SYSRAM used for communication with firmware
+-- 
+1.9.1
