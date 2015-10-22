@@ -1,101 +1,105 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: Add the "init" pinctrl in this
- document
-Date: Thu, 22 Oct 2015 09:46:55 +0800
-Message-ID: <5628400F.4000901@gmail.com>
-References: <1445477130-17065-1-git-send-email-wxt@rock-chips.com>
- <1445477130-17065-2-git-send-email-wxt@rock-chips.com>
- <CAL_JsqJHov0AcwHprU8wtjH4uX5QBYKsCVVsDqhEy9vSMGZPYQ@mail.gmail.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] dt-bindings: Add document of Rockchip mailbox
+Date: Thu, 22 Oct 2015 09:56:38 +0800
+Message-ID: <56284256.1020205@gmail.com>
+References: <1442228798-15191-1-git-send-email-wxt@rock-chips.com>
+ <1442228798-15191-2-git-send-email-wxt@rock-chips.com>
+ <CAL_Jsq+36CqbUnccU_LKgmeswoPgr0vBzh4PLM4nOtsCAYE0SA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJHov0AcwHprU8wtjH4uX5QBYKsCVVsDqhEy9vSMGZPYQ@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAL_Jsq+36CqbUnccU_LKgmeswoPgr0vBzh4PLM4nOtsCAYE0SA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Jaswinder Singh <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+I'm missing this patch for long time.
 
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8822=E6=97=A5 09:34, Rob Herring =E5=86=
+=E5=9C=A8 2015=E5=B9=B410=E6=9C=8806=E6=97=A5 22:50, Rob Herring =E5=86=
 =99=E9=81=93:
-> On Wed, Oct 21, 2015 at 8:25 PM, Caesar Wang <wxt@rock-chips.com> wro=
+> On Mon, Sep 14, 2015 at 6:06 AM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wro=
 te:
->> The "init" pinctrl is defined we'll set
->> pinctrl to this state before probe and then "default" after probe.
+>> This add the necessary binding documentation for mailbox
+>> found on RK3368 SoC.
 >>
->> Add the "init" pinctrl as the OTP gpio state, since we need switch
->> the pin to gpio state before the TSADC controller is reset.
->>
->> As I know, the TSADC controller is reset, the tshut polarity will be
->> a *low* signal in a short period of time for some devices.
->>
->> Says:
->> The TSADC get the temperature on rockchip thermal.
->>
->> If T(current temperature) < (setting temperature), the OTP output th=
-e
->> *high* signal.
->> If T(current temperature) > (setting temperature), the OTP output th=
-e
->> *low* Signal.
->>
->> In some cases, the OTP pin is connected to the PMIC, maybe the
->> PMIC can accept the reset response time to avoid this issue.
->>
->> In other words, the system will be always reboot if we make the
->> OTP pin is connected the others IC to control the power.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >> ---
 >>
->> Changes in v2:
->>    - As the Rob comments, add the 'init' pinctrl more decription in =
-document.
-> Where?
+>>   .../bindings/mailbox/rockchip-mailbox.txt          | 33 ++++++++++=
+++++++++++++
+>>   1 file changed, 33 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/mailbox/rockc=
+hip-mailbox.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/mailbox/rockchip-mail=
+box.txt b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.tx=
+t
+>> new file mode 100644
+>> index 0000000..b9b4768
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt
+>> @@ -0,0 +1,33 @@
+>> +Rockchip mailbox
+>> +
+>> +The Rockchip mailbox is used by the Rockchip CPU cores to communica=
+te
+>> +requests to MCU processor.
+>> +
+>> +Refer to ./mailbox.txt for generic information about mailbox device=
+-tree
+>> +bindings.
+>> +
+>> +Required properties:
+>> +
+>> + - compatible: should be one of the following.
+>> +   - "rockchip,rk3368-mbox" for rk3368
+>> + - reg: physical base address of the controller and length of memor=
+y mapped
+>> +       region.
+>> +       physical base address of the share buffer and length of memo=
+ry mapped
+> s/share/shared/
 
-Okay,  Mr, Rob
-That strictly speaking only in commit.:-(
-
+Done.
 
 >
->>    - fix the subject to make more obvious in PATCH[1/2]
->> Series-changes: 1
->>    - As the Doug comments, add the 'init' property to sync document.
->>
->> Changes in v1: None
->>
->>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 5=
- +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-ther=
-mal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.tx=
-t
->> index ef802de..28e84f7 100644
->> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> @@ -27,8 +27,9 @@ tsadc: tsadc@ff280000 {
->>          clock-names =3D "tsadc", "apb_pclk";
->>          resets =3D <&cru SRST_TSADC>;
->>          reset-names =3D "tsadc-apb";
->> -       pinctrl-names =3D "default";
->> -       pinctrl-0 =3D <&otp_out>;
->> +       pinctrl-names =3D "init", "default";
->> +       pinctrl-0 =3D <&otp_gpio>;
->> +       pinctrl-1 =3D <&otp_out>;
->>          #thermal-sensor-cells =3D <1>;
->>          rockchip,hw-tshut-temp =3D <95000>;
->>          rockchip,hw-tshut-mode =3D <0>;
+>> +       region.
+>> + - interrupts: The interrupt number to the cpu. The interrupt speci=
+fier format
+>> +       depends on the interrupt controller.
+> Need to specify the value of #mbox-cells.
+
+Done.
+>> +
+>> +Example:
+>> +--------
+>> +
+>> +/* RK3368 */
+>> +mbox: mbox@ff6b0000 {
+>> +       compatible =3D "rockchip,rk3368-mailbox";
+>> +       reg =3D <0x0 0xff6b0000 0x0 0x1000>,
+>> +             <0x0 0xff8cf000 0x0 0x1000>; /* the end 4k of sram */
+> If this is just onchip SRAM usable for anything, then use the SRAM
+> binding (misc/sram.txt). It has provisions for defining the use.
+
+Okay,  we don't need define the shared-sram in this document.
+
+>> +       interrupts =3D <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
+>> +                    <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>,
+>> +                    <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>,
+>> +                    <GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH>;
+>> +       #mbox-cells =3D <1>;
+>> +};
 >> --
 >> 1.9.1
 >>
 > _______________________________________________
 > Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 > http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
@@ -103,3 +107,8 @@ t
 Thanks,
 Caesar
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
