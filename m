@@ -1,98 +1,103 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [RESEND PATCH v2 1/2] dt-bindings: rockchip-thermal: Add the
- "init" pinctrl in this document
-Date: Thu, 22 Oct 2015 11:55:25 +0800
-Message-ID: <56285E2D.2040707@gmail.com>
-References: <1445481048-20789-1-git-send-email-wxt@rock-chips.com>
- <1445481048-20789-2-git-send-email-wxt@rock-chips.com>
- <CAD=FV=XdN_Lie9bjbr0M4-=neVGrLiahAAxyUEuE0kO2ZsusfQ@mail.gmail.com>
+From: Maxime Ripard <maxime.ripard@free-electrons.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: Consolidate SRAM bindings from all
+ vendors
+Date: Thu, 22 Oct 2015 11:05:29 +0200
+Message-ID: <20151022090529.GV10947@lukather>
+References: <1445477130-407-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XdN_Lie9bjbr0M4-=neVGrLiahAAxyUEuE0kO2ZsusfQ@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="mmR5Tf+WJGm+vTLg"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1445477130-407-1-git-send-email-k.kozlowski@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Kukjin Kim <kgene@kernel.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+--mmR5Tf+WJGm+vTLg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8822=E6=97=A5 11:45, Doug Anderson =E5=86=
-=99=E9=81=93:
-> Caesar,
->
-> On Wed, Oct 21, 2015 at 7:30 PM, Caesar Wang <wxt@rock-chips.com> wro=
-te:
->> The "init" pinctrl is defined we'll set
->> pinctrl to this state before probe and then "default" after probe.
->>
->> Add the "init" pinctrl as the OTP gpio state, since we need switch
->> the pin to gpio state before the TSADC controller is reset.
->>
->> As I know, the TSADC controller is reset, the tshut polarity will be
->> a *low* signal in a short period of time for some devices.
->>
->> Says:
->> The TSADC get the temperature on rockchip thermal.
->>
->> If T(current temperature) < (setting temperature), the OTP output th=
-e
->> *high* signal.
->> If T(current temperature) > (setting temperature), the OTP output th=
-e
->> *low* Signal.
->>
->> In some cases, the OTP pin is connected to the PMIC, maybe the
->> PMIC can accept the reset response time to avoid this issue.
->>
->> In other words, the system will be always reboot if we make the
->> OTP pin is connected the others IC to control the power.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> Reviewed-by: Douglas Anderson <dianders@chromium.org>
->> ---
->>
->> Changes in v2:
->>    - Add the 'init' pinctrl more decription in commit.
->>    - Fix the subject to make more obvious in PATCH[1/2]
->>    - Resend this patch v2 since fix the subject to be specific.
->>
->> Changes in v1:
->>    - As the Doug comments, add the 'init' property to sync document.
->>
->>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 5=
- +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-ther=
-mal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.tx=
-t
->> index ef802de..28e84f7 100644
->> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> I think Rob wanted something more in the "rockchip-thermal.txt"
-> document itself.  Like:
->
-> Pinctrl states:
-> - During device probe a driver may glitch the output line.  If this i=
-s
-> not acceptable for your board, you can use the standard "init" and
-> "default" pinctrl states.  The "init" state will be set before device
-> probe and "default" after.
+Hi,
 
-Sound resonable.
-Thanks Doug to explain!
+On Thu, Oct 22, 2015 at 10:25:28AM +0900, Krzysztof Kozlowski wrote:
+> SRAM bindings for various SoCs, using the mmio-sram genalloc
+> API, are spread over different places - per SoC vendor. Since all of
+> these are quite similar (they depend on mmio-sram) move them to a common
+> place.
+>=20
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Suggested-by: Rob Herring <robh+dt@kernel.org>
+>=20
+> ---
+>=20
+> Changes since v1:
+> 1. New patch. Extended suggestion from Rob.
+> ---
+>  .../bindings/{arm/rockchip/pmu-sram.txt =3D> sram/rockchip-pmu-sram.txt}=
+    | 0
+>  .../bindings/{arm/rockchip/smp-sram.txt =3D> sram/rockchip-smp-sram.txt}=
+    | 0
+>  .../bindings/{arm/exynos/smp-sysram.txt =3D> sram/samsung-sram.txt}     =
+    | 0
+>  Documentation/devicetree/bindings/{misc =3D> sram}/sram.txt             =
+    | 0
+>  .../devicetree/bindings/{soc/sunxi/sram.txt =3D> sram/sunxi-sram.txt}   =
+    | 0
+>  5 files changed, 0 insertions(+), 0 deletions(-)
+>  rename Documentation/devicetree/bindings/{arm/rockchip/pmu-sram.txt =3D>=
+ sram/rockchip-pmu-sram.txt} (100%)
+>  rename Documentation/devicetree/bindings/{arm/rockchip/smp-sram.txt =3D>=
+ sram/rockchip-smp-sram.txt} (100%)
+>  rename Documentation/devicetree/bindings/{arm/exynos/smp-sysram.txt =3D>=
+ sram/samsung-sram.txt} (100%)
+>  rename Documentation/devicetree/bindings/{misc =3D> sram}/sram.txt (100%)
+>  rename Documentation/devicetree/bindings/{soc/sunxi/sram.txt =3D> sram/s=
+unxi-sram.txt} (100%)
 
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+I'm not sure about that one. The SRAM bindins we have for sunxi is for
+an SRAM controller, that maps the SRAM either to the CPU or to the
+devices.
 
+It's not really related to the other users, and wouldn't it be
+confusing to have a driver in drivers/soc, and a Documentation in
+another sub-directory?
+
+Thanks!
+Maxime
 
 --=20
-Thanks,
-Caesar
+Maxime Ripard, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
 
+--mmR5Tf+WJGm+vTLg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWKKbZAAoJEBx+YmzsjxAgh0MQALJ3m+d9NKx2tzreFdUkfIHJ
+A1RQhXCxWoTFWk9NBG/qvehbXAXKGm35ByTEeOmz6Pkou8Qn8qyJbahHgEtk5YYo
+uaadn3RNfiPDuggW1YnUAL8ofy/t225U0wijAIXtGD+SodHHeYE73wtR1y+D4/rK
+FlubMxEwnelpLoMw6bQ/qeL75v0paqP990/sbN+ZC4U2ra9BNRaQqjCTNEPuE6pw
+Bvarh1syydioK8FFzCN2egf7FQHDXkZUZ1fUWnvh2ClDdLNbOjYJ2TS+NrgjkpqP
+eQIEmzgfLwybNdPmkPMYc2lLqKB7o2jG4ht8MrpTY4joknHA9b6sHRXgA8ER9kA7
+KlAEPbDRlFsfzi6J9MDr+aqfECFN4Tx4Cs1n0CB44qykYdrELYt1AYSbAIYpDctt
+GMS4EimekVB71XyuCOC/BKkTad3lnJcogzwQVyCU5aok+rsx+P/U67NNZ587MJLl
+Uf3Xii26a1r8gVfAsnMbFbT9PKrsO6RAcdI/LTBv0DcjZxYP2TvWkkVFEanFFduu
+0XC1rI5MGgo5lXcnXixLBSnuM6345h90PU05EYKKo9eVQJ/ttmJNN4vx2miBZVfO
+JErxNS5VXMYpwPT9MBR0ArJoEaVfZNOJf+hG5nFMAKM49UhWqoa/Pg0M43L6Ukso
+56Nn6i/OwdvfpQM5QJPB
+=VBxb
+-----END PGP SIGNATURE-----
+
+--mmR5Tf+WJGm+vTLg--
