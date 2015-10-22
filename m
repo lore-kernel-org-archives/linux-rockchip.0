@@ -1,74 +1,119 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH v2 1/3] dt-bindings: Consolidate SRAM bindings from all
- vendors
-Date: Thu, 22 Oct 2015 18:19:31 +0900
-Message-ID: <5628AA23.5070608@samsung.com>
-References: <1445477130-407-1-git-send-email-k.kozlowski@samsung.com>
- <20151022090529.GV10947@lukather>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v2 1/8] clk: rockchip: Allow more precision for some mmc clock
+ phases
+Date: Thu, 22 Oct 2015 05:03:26 -0700
+Message-ID: <20151022120326.20687.80247@quantum>
+References: <1443622064-14362-1-git-send-email-heiko@sntech.de>
+ <1443622064-14362-2-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <20151022090529.GV10947@lukather>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Maxime Ripard <maxime.ripard@free-electrons.com>
-Cc: Kukjin Kim <kgene@kernel.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1443622064-14362-2-git-send-email-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: ulf.hansson@linaro.org, sboyd@codeaurora.org, tgih.jun@samsung.com, jh80.chung@samsung.com
+Cc: linux-mmc@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, amstan@chromium.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22.10.2015 18:05, Maxime Ripard wrote:
-> Hi,
+Quoting Heiko Stuebner (2015-09-30 07:07:37)
+> From: Douglas Anderson <dianders@chromium.org>
 > 
-> On Thu, Oct 22, 2015 at 10:25:28AM +0900, Krzysztof Kozlowski wrote:
->> SRAM bindings for various SoCs, using the mmio-sram genalloc
->> API, are spread over different places - per SoC vendor. Since all of
->> these are quite similar (they depend on mmio-sram) move them to a common
->> place.
->>
->> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
->> Cc: Heiko Stuebner <heiko@sntech.de>
->> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
->> Cc: Chen-Yu Tsai <wens@csie.org>
->> Cc: Kukjin Kim <kgene@kernel.org>
->> Suggested-by: Rob Herring <robh+dt@kernel.org>
->>
->> ---
->>
->> Changes since v1:
->> 1. New patch. Extended suggestion from Rob.
->> ---
->>  .../bindings/{arm/rockchip/pmu-sram.txt => sram/rockchip-pmu-sram.txt}    | 0
->>  .../bindings/{arm/rockchip/smp-sram.txt => sram/rockchip-smp-sram.txt}    | 0
->>  .../bindings/{arm/exynos/smp-sysram.txt => sram/samsung-sram.txt}         | 0
->>  Documentation/devicetree/bindings/{misc => sram}/sram.txt                 | 0
->>  .../devicetree/bindings/{soc/sunxi/sram.txt => sram/sunxi-sram.txt}       | 0
->>  5 files changed, 0 insertions(+), 0 deletions(-)
->>  rename Documentation/devicetree/bindings/{arm/rockchip/pmu-sram.txt => sram/rockchip-pmu-sram.txt} (100%)
->>  rename Documentation/devicetree/bindings/{arm/rockchip/smp-sram.txt => sram/rockchip-smp-sram.txt} (100%)
->>  rename Documentation/devicetree/bindings/{arm/exynos/smp-sysram.txt => sram/samsung-sram.txt} (100%)
->>  rename Documentation/devicetree/bindings/{misc => sram}/sram.txt (100%)
->>  rename Documentation/devicetree/bindings/{soc/sunxi/sram.txt => sram/sunxi-sram.txt} (100%)
+> Because of the inexact nature of the extra MMC delay elements (it's
+> not possible to keep the phase monotonic and to also make phases (mod
+> 90) > 70), we previously only allowed phases (mod 90) of 22.5, 45,
+> and 67.5.
 > 
-> I'm not sure about that one. The SRAM bindins we have for sunxi is for
-> an SRAM controller, that maps the SRAM either to the CPU or to the
-> devices.
+> But it's not the end of the world if the MMC clock phase goes
+> non-monotonic.  At most we'll be 25 degrees off.  It's way better to
+> test more phases to look for bad ones than to be 25 degrees off, because
+> in the case of MMC really the point is to find bad phases and get as far
+> asway from the as possible.  If we get to test extra phases by going
+> slightly non-monotonic then that might be fine.  Worst case we would
+> end up at a phases that's slight differnt than the one we wanted, but
+> at least we'd still be quite far away from the a bad phase.
 > 
-> It's not really related to the other users, and wouldn't it be
-> confusing to have a driver in drivers/soc, and a Documentation in
-> another sub-directory?
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> 
+> Fold in more precise variance-values of 44-77 instead of 40-80.
+> Fold in the actual removal of the monotonic requirement and adapt
+> patch message accordingly.
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-I guess the only relation to other users is the "mmio-sram". In the same
-time this is still similar to e.g. Samsung's sram bindings (where the
-memory is mapped to CPU only).
+Looks good to me. What tree do you want this to go through?
 
-Being located in drivers/soc is not an issue here - code for other
-vendors may be moved there as well in the future.
+Regards,
+Mike
 
-Of course I do not insist. Actually Rob's comment was only about moving
-sram.txt and Samsung's sram to common place.
-
-Anyway I will be sending v3 of these because while looking more
-carefully I found hard-coded paths to bindings/misc/sram.txt. I'll fix
-it in next version.
-
-Best regards,
-Krzysztof
+> ---
+>  drivers/clk/rockchip/clk-mmc-phase.c | 45 ++++++++++++++++++++++++------------
+>  1 file changed, 30 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
+> index 9b61342..a797d86 100644
+> --- a/drivers/clk/rockchip/clk-mmc-phase.c
+> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
+> @@ -45,8 +45,8 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
+>  #define PSECS_PER_SEC 1000000000000LL
+>  
+>  /*
+> - * Each fine delay is between 40ps-80ps. Assume each fine delay is 60ps to
+> - * simplify calculations. So 45degs could be anywhere between 33deg and 66deg.
+> + * Each fine delay is between 44ps-77ps. Assume each fine delay is 60ps to
+> + * simplify calculations. So 45degs could be anywhere between 33deg and 57.8deg.
+>   */
+>  #define ROCKCHIP_MMC_DELAY_ELEMENT_PSEC 60
+>  
+> @@ -84,22 +84,37 @@ static int rockchip_mmc_set_phase(struct clk_hw *hw, int degrees)
+>         u32 raw_value;
+>         u64 delay;
+>  
+> -       /* allow 22 to be 22.5 */
+> -       degrees++;
+> -       /* floor to 22.5 increment */
+> -       degrees -= ((degrees) * 10 % 225) / 10;
+> -
+>         nineties = degrees / 90;
+> -       /* 22.5 multiples */
+> -       remainder = (degrees % 90) / 22;
+> -
+> +       remainder = (degrees % 90);
+> +
+> +       /*
+> +        * Due to the inexact nature of the "fine" delay, we might
+> +        * actually go non-monotonic.  We don't go _too_ monotonic
+> +        * though, so we should be OK.  Here are options of how we may
+> +        * work:
+> +        *
+> +        * Ideally we end up with:
+> +        *   1.0, 2.0, ..., 69.0, 70.0, ...,  89.0, 90.0
+> +        *
+> +        * On one extreme (if delay is actually 44ps):
+> +        *   .73, 1.5, ..., 50.6, 51.3, ...,  65.3, 90.0
+> +        * The other (if delay is actually 77ps):
+> +        *   1.3, 2.6, ..., 88.6. 89.8, ..., 114.0, 90
+> +        *
+> +        * It's possible we might make a delay that is up to 25
+> +        * degrees off from what we think we're making.  That's OK
+> +        * though because we should be REALLY far from any bad range.
+> +        */
+> +
+> +       /*
+> +        * Convert to delay; do a little extra work to make sure we
+> +        * don't overflow 32-bit / 64-bit numbers.
+> +        */
+>         delay = PSECS_PER_SEC;
+> -       do_div(delay, rate);
+> -       /* / 360 / 22.5 */
+> -       do_div(delay, 16);
+> -       do_div(delay, ROCKCHIP_MMC_DELAY_ELEMENT_PSEC);
+> -
+>         delay *= remainder;
+> +       do_div(delay, 10000);
+> +       do_div(delay, (rate / 1000) * 36 * ROCKCHIP_MMC_DELAY_ELEMENT_PSEC);
+> +
+>         delay_num = (u8) min(delay, 255ULL);
+>  
+>         raw_value = delay_num ? ROCKCHIP_MMC_DELAY_SEL : 0;
+> -- 
+> 2.5.1
+> 
