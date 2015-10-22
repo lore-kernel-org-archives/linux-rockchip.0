@@ -1,65 +1,54 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 2/2] ARM: dts: rockchip: Add the OTP gpio pinctrl
-Date: Thu, 22 Oct 2015 09:25:30 +0800
-Message-ID: <1445477130-17065-3-git-send-email-wxt@rock-chips.com>
-References: <1445477130-17065-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445477130-17065-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, dianders@chromium.org, Eduardo Valentin <edubezval@gmail.com>, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v1 1/2] dt-bindings: Sync the dts to this document
+Date: Thu, 22 Oct 2015 09:27:55 +0800
+Message-ID: <56283B9B.70809@gmail.com>
+References: <1445395380-5365-1-git-send-email-wxt@rock-chips.com>
+ <1445395380-5365-2-git-send-email-wxt@rock-chips.com>
+ <CAL_JsqJ6ZRjZbtc7dqo-g=CzO+H_FWcRqs2gBGH2HMBBM1xU3g@mail.gmail.com>
+ <5627B309.9080309@gmail.com>
+ <CAL_JsqJcwWkMXQzo6PbO2kfv3h7hkqtq6CJW0+W4Wc3eh6RTuQ@mail.gmail.com>
+ <CAL_JsqJFO8u0-3BSwBrBh4m7z4iEDPYLeEM9Ef8SLvuj1FYXmg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqJFO8u0-3BSwBrBh4m7z4iEDPYLeEM9Ef8SLvuj1FYXmg@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Caesar Wang <caesar.upstream@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Doug Anderson <dianders@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the "init" pinctrl as the OTP gpio state.
-We need the OTP pin is gpio state before resetting the TSADC controller,
-since the tshut polarity will generate a high signal.
 
-"init" pinctrl property is defined by Doug's Patch[0].
 
-Patch[0]:
-https://patchwork.kernel.org/patch/7454311/
+=E5=9C=A8 2015=E5=B9=B410=E6=9C=8822=E6=97=A5 09:18, Rob Herring =E5=86=
+=99=E9=81=93:
+> On Wed, Oct 21, 2015 at 11:48 AM, Rob Herring <robh+dt@kernel.org> wr=
+ote:
+>> On Wed, Oct 21, 2015 at 10:45 AM, Caesar Wang <caesar.upstream@gmail=
+=2Ecom> wrote:
+>>> Hi Rob,
+>>>
+>>> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8821=E6=97=A5 23:18, Rob Herring =E5=
+=86=99=E9=81=93:
+>>>> On Tue, Oct 20, 2015 at 9:42 PM, Caesar Wang <wxt@rock-chips.com> =
+wrote:
+>>>>> Add the OTP gpio state, we need switch the pin to gpio state
+>>>>> before the TSADC controller is reset.
+> Also, please fix the subject to be specific what binding you are chan=
+ging.
+>
+> dt-bindings: rockchip-thermal: <what the change is>
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
----
+Sorry, Mr. Rob
+I just sent the patch.:-(
 
-Changes in v2:
-  - Add some commits for more obvious in PATCH[2/2]
 
-Changes in v1:
-  - As the Doug comments, drop the thermal driver patchs since
-    we can with pinctrl changing to work.
-  - As the Doug's patch to add the 'init' property.
-
- arch/arm/boot/dts/rk3288.dtsi | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 906e938..6ea89aa 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -447,8 +447,9 @@
- 		clock-names = "tsadc", "apb_pclk";
- 		resets = <&cru SRST_TSADC>;
- 		reset-names = "tsadc-apb";
--		pinctrl-names = "default";
--		pinctrl-0 = <&otp_out>;
-+		pinctrl-names = "init", "default";
-+		pinctrl-0 = <&otp_gpio>;
-+		pinctrl-1 = <&otp_out>;
- 		#thermal-sensor-cells = <1>;
- 		rockchip,hw-tshut-temp = <95000>;
- 		status = "disabled";
-@@ -1273,6 +1274,10 @@
- 		};
- 
- 		tsadc {
-+			otp_gpio: otp-gpio {
-+				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
-+			};
-+
- 			otp_out: otp-out {
- 				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
- 			};
--- 
-1.9.1
+> Rob
+>
+>
+>
+>
+> --=20
+> Thanks,
+> Caesar
