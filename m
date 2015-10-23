@@ -1,102 +1,42 @@
-From: Caesar Wang <sasukewxt-9Onoh4P/yGk@public.gmane.org>
-Subject: Re: [PATCH v3 2/3] thermal: rockchip: ensure the otp states before
- resetting the controller
-Date: Fri, 23 Oct 2015 14:31:54 +0800
-Message-ID: <5629D45A.1090407@163.com>
-References: <1445565296-31517-1-git-send-email-wxt@rock-chips.com>
- <1445565296-31517-3-git-send-email-wxt@rock-chips.com>
- <CAD=FV=WZqXRt4R_TTaz4LJxWo5B0fmrBjma52cVidpO=OkjcaQ@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v3 1/3] dt-bindings: Consolidate SRAM bindings from all vendors
+Date: Fri, 23 Oct 2015 12:49:29 +0200
+Message-ID: <1694120.gDU4knuKKT@diego>
+References: <1445564361-16974-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=WZqXRt4R_TTaz4LJxWo5B0fmrBjma52cVidpO=OkjcaQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1445564361-16974-1-git-send-email-k.kozlowski@samsung.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kukjin Kim <kgene@kernel.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNeW5tDEw5pyIMjPml6UgMTI6MDQsIERvdWcgQW5kZXJzb24g5YaZ6YGTOgo+IENh
-ZXNhciwKPgo+IE9uIFRodSwgT2N0IDIyLCAyMDE1IGF0IDk6NTQgUE0sIENhZXNhciBXYW5nIDx3
-eHRAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiBXZSBuZWVkIHRoZSBPVFAgcGluIGlzIGdwaW8g
-c3RhdGUgYmVmb3JlIHJlc2V0dGluZyB0aGUgVFNBREMgY29udHJvbGxlciwKPj4gc2luY2UgdGhl
-IHRzaHV0IHBvbGFyaXR5IHdpbGwgZ2VuZXJhdGUgYSBoaWdoIHNpZ25hbC4KPj4KPj4gU2F5czoK
-Pj4gVGhlIFRTSFVUIHRlbXBlcmF0dXJlIGlzIHNldHRpbmcgbW9yZSB0aGFuIDgwIGRlZ3JlZSwg
-dGhlCj4+IGRlZmF1bHQgdHNodXQgcG9sYXJpdHkgaXMgaGlnaC4KPj4KPj4gSWYgVCA+IDgwQywg
-dGhlIE9UUCBvdXRwdXQgdGhlIGhpZ2ggc2lnbmFsLgo+PiBJZiBUIDwgODBDLCB0aGUgT1RQIG91
-dHB1dCB0aGUgbG93IHNpZ25hbC4KPj4KPj4gT24gdGhlIG1vbWVudCwgdGhlIHRzaHV0IHBvbGFy
-aXR5IHdpbGwgYmUgbG93IGluIGEgc2hvcnQgcGVyaW9kIG9mIHRpbWUKPj4gaWYgdGhlIFRTQURD
-IGNvbnRyb2xsZXIgaXMgcmVzZXQuCj4+Cj4+IFNvOgo+PiBJZiBUIDwgODBDLCB0aGUgT1RQIG91
-dHB1dCB0aGUgSGlnaCBTaWduYWwuCj4+IElmIFQgPiA4MEMsIHRoZSBPVFAgb3V0cHV0IHRoZSBM
-b3cgU2lnbmFsLgo+Pgo+PiBJbiBzb21lIGNhc2VzLCB0aGUgT1RQIHBpbiBpcyBjb25uZWN0ZWQg
-dG8gdGhlIFBNSUMsIG1heWJlIHRoZSBQTUlDIGNhbgo+PiBhY2NlcHQgdGhlIHJlc2V0IHJlc3Bv
-bnNlIHRpbWUgdG8gYXZvaWQgdGhpcyBpc3N1ZS4KPj4gSW4gb3RoZXIgd29yZHMsIHRoZSBzeXN0
-ZW0gd2lsbCBiZSBhbHdheXMgcmVib290IGlmIHdlCj4+IG1ha2UgdGhlIE9UUCBwaW4gaXMgY29u
-bmVjdGVkIHRoZSBvdGhlcnMgSUMgdG8gY29udHJvbCB0aGUgcG93ZXIuCj4+Cj4+IFNpZ25lZC1v
-ZmYtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4+Cj4+IC0tLQo+Pgo+PiBD
-aGFuZ2VzIGluIHYzOgo+PiAgICAtIEFkZCB0aGUgcGluY3RybCBzdGF0ZSBmb3IgaW4gdGhlIHN1
-c3BlbmQvcmVzdW1lLgo+Pgo+PiBDaGFuZ2VzIGluIHYyOiBOb25lCj4+IENoYW5nZXMgaW4gdjE6
-IE5vbmUKPj4KPj4gICBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIHwgNCArKysr
-Cj4+ICAgMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyBiL2RyaXZlcnMvdGhlcm1hbC9yb2Nr
-Y2hpcF90aGVybWFsLmMKPj4gaW5kZXggYzg5ZmZiMi4uM2I4ZmJkYSAxMDA2NDQKPj4gLS0tIGEv
-ZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+PiArKysgYi9kcml2ZXJzL3RoZXJt
-YWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4+IEBAIC02NDIsNiArNjQyLDggQEAgc3RhdGljIGludCBf
-X21heWJlX3VudXNlZCByb2NrY2hpcF90aGVybWFsX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2
-KQo+PiAgICAgICAgICBjbGtfZGlzYWJsZSh0aGVybWFsLT5wY2xrKTsKPj4gICAgICAgICAgY2xr
-X2Rpc2FibGUodGhlcm1hbC0+Y2xrKTsKPj4KPj4gKyAgICAgICBwaW5jdHJsX3BtX3NlbGVjdF9z
-bGVlcF9zdGF0ZShkZXYpOwo+PiArCj4+ICAgICAgICAgIHJldHVybiAwOwo+PiAgIH0KPj4KPj4g
-QEAgLTY3OCw2ICs2ODAsOCBAQCBzdGF0aWMgaW50IF9fbWF5YmVfdW51c2VkIHJvY2tjaGlwX3Ro
-ZXJtYWxfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikKPj4gICAgICAgICAgZm9yIChpID0gMDsg
-aSA8IEFSUkFZX1NJWkUodGhlcm1hbC0+c2Vuc29ycyk7IGkrKykKPj4gICAgICAgICAgICAgICAg
-ICByb2NrY2hpcF90aGVybWFsX3RvZ2dsZV9zZW5zb3IoJnRoZXJtYWwtPnNlbnNvcnNbaV0sIHRy
-dWUpOwo+Pgo+PiArICAgICAgIHBpbmN0cmxfcG1fc2VsZWN0X2RlZmF1bHRfc3RhdGUoZGV2KTsK
-Pj4gKwo+PiAgICAgICAgICByZXR1cm4gMDsKPj4gICB9Cj4gVGhlIHBhdGNoIGxvb2tzIHRvdGFs
-bHkgZmluZSwgYnV0IHRoZSBkZXNjcmlwdGlvbiBpcyBhIGxpdHRsZQo+IGNvbmZ1c2luZy4gIFJl
-YWRpbmcgdGhpcyBwYXRjaCBpdCdzIGFsbCBhYm91dCBhZGRpbmcgc3VwcG9ydCBmb3IgdGhlCj4g
-InNsZWVwIiBzdGF0ZSBpbiB0aGUgdHNhZGMgZHJpdmVyLCBidXQgbm90aGluZyBpbiB0aGUgZGVz
-Y3JpcHRpb24KPiB0YWxrcyBhYm91dCB0aGF0LiAgSSdkIGV4cGVjdCBzb21ldGhpbmcgbGlrZToK
-Pgo+IHRoZXJtYWw6IHJvY2tjaGlwOiBzdXBwb3J0IHRoZSBzbGVlcCBwaW5jdHJsIHN0YXRlIHRv
-IGF2b2lkIGdsaXRjaGVzIGluIHMycgo+Cj4gV2hlbiB3ZSBjb21lIG91dCBvZiBzeXN0ZW0gc3Vz
-cGVuZCBzdGF0ZSAoUzMpIHRoZSB0c2FkYyB3aWxsIGhhdmUgYmVlbgo+IHJlc2V0IGFuZCBiYWNr
-IGF0IGl0cyBkZWZhdWx0IHN0YXRlLiAgV2hpbGUgcmVwcm9ncmFtbWluZyB0aGUgdHNhZGMKPiBp
-dCdzIHBvc3NpYmxlIHRoYXQgd2UnbGwgZ2xpdGNoIHRoZSBvdXRwdXQgYW5kIHVuaW50ZW50aW9u
-YWxseSBjYXVzZQo+IHRoZSAib3ZlciB0ZW1wZXJhdHVyZSIgR1BJTyB0byBiZSBhc3NlcnRlZC4g
-IFNpbmNlIHRoZSBvdmVyCj4gdGVtcGVyYXR1cmUgR1BJTyBpcyBvZnRlbiBob29rZWQgdXAgdG8g
-c29tZXRoaW5nIHRoYXQgd2lsbCBjYXVzZSBhCj4gcmVib290IG9yIHNodXRkb3duIGluIGhhcmR3
-YXJlLCB0aGlzIGdsaXRjaCBjYW4gYmUgY2F0YXN0cm9waGljIG9uCj4gc29tZSBib2FyZHMuCj4K
-PiBXZSdsbCBhZGQgc3VwcG9ydCBmb3Igc2VsZWN0aW5nIHRoZSAic2xlZXAiIHBpbmN0cmwgc3Rh
-dGUgYXQgc3VzcGVuZAo+IHRpbWUuICBCb2FyZHMgY2FuIHVzZSB0aGlzIHRvIGVmZmVjdGl2ZWx5
-IGRpc2FibGUgdGhlIHRzYWRjIGF0IHN1c3BlbmQKPiB0aW1lIGFuZCBhdm9pZCBnbGl0Y2hlcyB3
-aGVuIHRoZSBzeXN0ZW0gaXMgcmVzdW1lZC4KClRoYW5rcyBEb3VnIHRvIHRha2UgeW91ciB0aW1l
-IHJldmlld2luZyB0aGlzIHNlcmllcyBwYXRjaHMuClRoZSBjb21taXQgaXMgdmVyeSBnb29kIGZv
-ciB0aGlzIHBhdGNoLgoKPgo+IC0tLQo+Cj4gTm90ZSB0aGF0IGFsdGhvdWdoIHRoaXMgcGluY3Ry
-bCBhcHByb2FjaCBpcyBmaW5lIElNSE8sIEkgYW0gbGVmdAo+IHdvbmRlcmluZyB3aGV0aGVyIHdl
-IGNvdWxkIGp1c3QgY2hhbmdlIHRoZSB0c2FkYyBpbml0IHNlcXVlbmNlIHRvCj4gYXZvaWQgdGhl
-IGdsaXRjaC4gIEkgY2FuJ3QgZWFzaWx5IHRlc3QgbXlzZWxmLCBidXQgaWYgd2UgY2FuIHByb2dy
-YW0KPiB0aGUgdGVtcGVyYXR1cmVzIGJlZm9yZSByZS1lbmFibGluZyB0aGUgdHNhZGMgd291bGQg
-aXQgYXZvaWQgdGhlCj4gcHJvYmxlbSB0b28/CgpJdCdzIHRoZSBjaGlwIGJlaGF2aW91ciwgdGhl
-IGdsaXRjaGVzIGlzIGF3YXlzIG9jY3VyZWQgYnkgcmVzZXQgY29udHJvbGxlci4KVGhlIGJlc3Qg
-d2F5IG5lZWQgIGNoYW5nZSB0byB0aGUgZ3BpbyBzdGF0ZSBiZWZvcmUgcmVzZXQgdGhlIGNvbnRy
-b2xsZXIuCgoKPiAgIExpa2UgY291bGQgd2UganVzdCBzd2FwIHRoaW5ncyBsaWtlOgo+Cj4gICAg
-ICAgICAgICAgICAgICB0aGVybWFsLT5jaGlwLT5zZXRfdHNodXRfdGVtcChpZCwgdGhlcm1hbC0+
-cmVncywKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRo
-ZXJtYWwtPmh3X3NodXRfdGVtcCk7Cj4gICAgICAgICAgICAgICAgICB0aGVybWFsLT5jaGlwLT5z
-ZXRfdHNodXRfbW9kZShpZCwgdGhlcm1hbC0+cmVncywKPiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHRoZXJtYWwtPnRzaHV0X21vZGUpOwo+Cj4KPiBEb2Vz
-IHRoYXQgaGVscD8KCkl0IGRpZG4ndCB3b3JrIG9uIGJveCBib2FyZC4KCj4KPgo+IC1Eb3VnCj4K
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Am Freitag, 23. Oktober 2015, 10:39:19 schrieb Krzysztof Kozlowski:
+> SRAM bindings for various SoCs, using the mmio-sram genalloc
+> API, are spread over different places - per SoC vendor. Since all of
+> these are quite similar (they depend on mmio-sram) move them to a common
+> place.
+> 
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Suggested-by: Rob Herring <robh+dt@kernel.org>
+> 
+> ---
+> 
+> Changes since v2:
+> 1. Update paths to sram.txt.
+> 
+> Changes since v1:
+> 1. New patch. Extended suggestion from Rob.
+> ---
+
+> .../bindings/{arm/rockchip/pmu-sram.txt => sram/rockchip-pmu-sram.txt} 
+> .../bindings/{arm/rockchip/smp-sram.txt => sram/rockchip-smp-sram.txt} 
+
+for the Rockchip parts
+Acked-by: Heiko Stuebner <heiko@sntech.de>
