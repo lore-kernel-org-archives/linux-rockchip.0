@@ -1,47 +1,47 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL 1/2] Rockchip drivers for 4.4 part 2
-Date: Fri, 23 Oct 2015 10:18:52 -0700
-Message-ID: <20151023171852.GE2224@localhost>
-References: <4398388.V5gVWEu8o6@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <4398388.V5gVWEu8o6@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko St?bner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 0/4] Patches to fix remote wakeup on rk3288 dwc2 "host" port
+Date: Fri, 23 Oct 2015 11:28:07 -0700
+Message-ID: <1445624891-31680-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, kishon@ti.com, johnyoun@synopsys.com, balbi@ti.com
+Cc: gregkh@linuxfoundation.org, lyz@rock-chips.com, wulf@rock-chips.com, Douglas Anderson <dianders@chromium.org>, mark.rutland@arm.com, devicetree@vger.kernel.org, linux@arm.linux.org.uk, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, gregory.herrero@intel.com, paulz@synopsys.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 17, 2015 at 06:45:10PM +0200, Heiko St?bner wrote:
-> Hi Arnd, Kevin, Olof,
-> 
-> as the tag says, some fixes for the new power-domain driver, that turned
-> up since the origin al pull-req.
-> 
-> 
-> The following changes since commit 7c696693a4f54d12714738b45aee3e4302884ade:
-> 
->   soc: rockchip: power-domain: Add power domain driver (2015-10-06 09:53:28 +0200)
-> 
-> are available in the git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-drivers2
-> 
-> for you to fetch changes up to 4681347153dba01836aca18ebcfb4101c927d8ec:
-> 
->   dt-bindings: Correct paths in Rockchip power domains binding document (2015-10-16 17:38:36 +0200)
+The "host1" port (AKA the dwc2 port that isn't the OTG port) on rk3288
+has a hardware errata that causes everything to get confused when we get
+a remote wakeup.  It appears that the "port reset" bit that's in the USB
+phy (located in the rk3288 GRF) fixes things up and appears safe to do.
 
-Thanks, merged.
+This series of patches exports the "port reset" from the PHY and then
+hooks it up to dwc2 through a quirk.
+
+I've tested this series atop a bit of a conglomeration of Heiko's github
+"somewhat stable" branch (v4.3-rc3-876-g6509232) but with Greg KH's
+usb-next merged in.
+
+These patches currently conflict with patches that I posted previously
+to enable USB wakeup from S3, specifically:
+* https://patchwork.kernel.org/patch/6727081/
+* https://patchwork.kernel.org/patch/6727121/
+...those patches no longer apply anyway, so presumably they need to be
+reposted and I can do so later atop these patches.
 
 
--Olof
+Douglas Anderson (4):
+  phy: rockchip-usb: Support the PHY's "port reset"
+  usb: dwc2: optionally assert phy "port reset" when waking up
+  ARM: dts: rockchip: Enable the USB phys as reset providers on rk3288
+  ARM: dts: rockchip: Point rk3288 dwc2 usb at phy port reset
+
+ .../devicetree/bindings/phy/rockchip-usb-phy.txt   |  6 ++
+ Documentation/devicetree/bindings/usb/dwc2.txt     |  7 ++
+ arch/arm/boot/dts/rk3288.dtsi                      |  8 +++
+ drivers/phy/phy-rockchip-usb.c                     | 74 ++++++++++++++++++++++
+ drivers/usb/dwc2/core.h                            |  5 ++
+ drivers/usb/dwc2/core_intr.c                       |  7 ++
+ drivers/usb/dwc2/platform.c                        | 13 ++++
+ 7 files changed, 120 insertions(+)
+
+-- 
+2.6.0.rc2.230.g3dd15c0
