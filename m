@@ -1,122 +1,69 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 2/3] thermal: rockchip: ensure the otp states before
- resetting the controller
-Date: Fri, 23 Oct 2015 00:04:55 -0400
-Message-ID: <CAD=FV=WZqXRt4R_TTaz4LJxWo5B0fmrBjma52cVidpO=OkjcaQ@mail.gmail.com>
-References: <1445565296-31517-1-git-send-email-wxt@rock-chips.com>
- <1445565296-31517-3-git-send-email-wxt@rock-chips.com>
+From: Maxime Ripard <maxime.ripard@free-electrons.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: Consolidate SRAM bindings from all
+ vendors
+Date: Fri, 23 Oct 2015 08:06:26 +0200
+Message-ID: <20151023060626.GF10947@lukather>
+References: <1445564361-16974-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1445565296-31517-3-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ExIO7AL6tcaLjJBF"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1445564361-16974-1-git-send-email-k.kozlowski@samsung.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kukjin Kim <kgene@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, Javier Martinez Canillas <javier@osg.samsung.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Caesar,
 
-On Thu, Oct 22, 2015 at 9:54 PM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> We need the OTP pin is gpio state before resetting the TSADC controller,
-> since the tshut polarity will generate a high signal.
->
-> Says:
-> The TSHUT temperature is setting more than 80 degree, the
-> default tshut polarity is high.
->
-> If T > 80C, the OTP output the high signal.
-> If T < 80C, the OTP output the low signal.
->
-> On the moment, the tshut polarity will be low in a short period of time
-> if the TSADC controller is reset.
->
-> So:
-> If T < 80C, the OTP output the High Signal.
-> If T > 80C, the OTP output the Low Signal.
->
-> In some cases, the OTP pin is connected to the PMIC, maybe the PMIC can
-> accept the reset response time to avoid this issue.
-> In other words, the system will be always reboot if we
-> make the OTP pin is connected the others IC to control the power.
->
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> ---
->
-> Changes in v3:
->   - Add the pinctrl state for in the suspend/resume.
->
-> Changes in v2: None
-> Changes in v1: None
->
->  drivers/thermal/rockchip_thermal.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index c89ffb2..3b8fbda 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -642,6 +642,8 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
->         clk_disable(thermal->pclk);
->         clk_disable(thermal->clk);
->
-> +       pinctrl_pm_select_sleep_state(dev);
-> +
->         return 0;
->  }
->
-> @@ -678,6 +680,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
->         for (i = 0; i < ARRAY_SIZE(thermal->sensors); i++)
->                 rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
->
-> +       pinctrl_pm_select_default_state(dev);
-> +
->         return 0;
->  }
+--ExIO7AL6tcaLjJBF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The patch looks totally fine, but the description is a little
-confusing.  Reading this patch it's all about adding support for the
-"sleep" state in the tsadc driver, but nothing in the description
-talks about that.  I'd expect something like:
+On Fri, Oct 23, 2015 at 10:39:19AM +0900, Krzysztof Kozlowski wrote:
+> SRAM bindings for various SoCs, using the mmio-sram genalloc
+> API, are spread over different places - per SoC vendor. Since all of
+> these are quite similar (they depend on mmio-sram) move them to a common
+> place.
+>=20
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Suggested-by: Rob Herring <robh+dt@kernel.org>
 
-thermal: rockchip: support the sleep pinctrl state to avoid glitches in s2r
+Acked-by: Maxime Ripard <maxime.ripard@free-electrons.com>
 
-When we come out of system suspend state (S3) the tsadc will have been
-reset and back at its default state.  While reprogramming the tsadc
-it's possible that we'll glitch the output and unintentionally cause
-the "over temperature" GPIO to be asserted.  Since the over
-temperature GPIO is often hooked up to something that will cause a
-reboot or shutdown in hardware, this glitch can be catastrophic on
-some boards.
+Thanks!
+Maxime
 
-We'll add support for selecting the "sleep" pinctrl state at suspend
-time.  Boards can use this to effectively disable the tsadc at suspend
-time and avoid glitches when the system is resumed.
+--=20
+Maxime Ripard, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
 
----
+--ExIO7AL6tcaLjJBF
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
-Note that although this pinctrl approach is fine IMHO, I am left
-wondering whether we could just change the tsadc init sequence to
-avoid the glitch.  I can't easily test myself, but if we can program
-the temperatures before re-enabling the tsadc would it avoid the
-problem too?  Like could we just swap things like:
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
 
-                thermal->chip->set_tshut_temp(id, thermal->regs,
-                                              thermal->hw_shut_temp);
-                thermal->chip->set_tshut_mode(id, thermal->regs,
-                                              thermal->tshut_mode);
+iQIcBAEBAgAGBQJWKc5iAAoJEBx+YmzsjxAgc+gP/29kUZr7wgzjVzELbUk4l1P2
+WCCi73QCiBOAGisd9Mw8OBYmMAiyLNKXyH6zrbHY8jio1oWE4ZIBC3POMcrTl95g
+wn51ta1nIUSEz04pp5XYfUzcKENZQ6EGcHpSmR7TLN69GbY+KGHgu31exQD9wkqm
+wFuVYMHnCATgaVPHg3WjDT8f44paiRKosLX4GLPiabbiUA+tBnZd6Up6ts6TB2xE
+C8Bu9deLYs1LCXORNjTLuPRaNOai9uGdGXgx3jBMIGRBbtmUYWVH1anNgKEER6Yt
+3zUJ+682unnEoLzh77RWfSP3sq2w5dEBSEyzbpFl1SY+gY7vFITmi6ifUXKodiex
+2ybruOeOx91E/iG/SBXEGVSm/k7qv7D2gI4kKWYNBnDLZOUv1GaOdppqPCePDwtQ
+gUYjqFdYydXHUC5bfbwyBlpZAGiZlnc/CA4sFOZ51DGHZbxMDtYPAc9pFX1K4GVQ
+0AWN8gQkLhQBtz6g/qkVhEiVl49aWMBTUnNG7/Kv/Gs8AEweq1Gi7a4IElpsb1X0
+aErMe8rJ12jaAO1dqpWB3l9aHFkF/NVvu0Dm0S0PzJxU/ogPkzual5YZwarcQckd
+kwOAor4dwOTsUzLHPp9fAQi1iNSoS3uerhoMci1XMsdtvxOmYcPAg+mo/yKG2jIw
+E2pLFtDPzG9jO/hYL+Ic
+=u71Q
+-----END PGP SIGNATURE-----
 
-
-Does that help?
-
-
--Doug
+--ExIO7AL6tcaLjJBF--
