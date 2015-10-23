@@ -1,52 +1,48 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 3/3] ARM: dts: rockchip: Add the OTP gpio pinctrl
-Date: Fri, 23 Oct 2015 08:25:08 -0700
-Message-ID: <CAD=FV=WBCD8WsXV2mAGUD6y=BFScbFc9U3XA7jAB-rqOLp4qGA@mail.gmail.com>
+Subject: Re: [PATCH v4 2/3] thermal: rockchip: support the sleep pinctrl state
+ to avoid glitches in s2r
+Date: Fri, 23 Oct 2015 08:25:50 -0700
+Message-ID: <CAD=FV=X2fCoQFU9sXT5tRtAt-oebkh=TCWrf74jHHrZNTV_nmA@mail.gmail.com>
 References: <1445599528-18825-1-git-send-email-wxt@rock-chips.com>
-	<1445599528-18825-4-git-send-email-wxt@rock-chips.com>
+	<1445599528-18825-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445599528-18825-4-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1445599528-18825-3-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Eduardo Valentin <edubezval@gmail.com>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Caesar,
 
 On Fri, Oct 23, 2015 at 4:25 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> Add the "init" anf "sleep" pinctrl as the OTP gpio state.
-> We need the OTP pin is gpio state before resetting the TSADC controller,
-> since the tshut polarity will generate a high signal.
+> When we come out of system suspend state (S3) the tsadc will have been
+> reset and back at its default state.  While reprogramming the tsadc
+> it's possible that we'll glitch the output and unintentionally cause
+> the "over temperature" GPIO to be asserted.  Since the over
+> temperature GPIO is often hooked up to something that will cause a
+> reboot or shutdown in hardware, this glitch can be catastrophic on
+> some boards.
 >
-> "init" pinctrl property is defined by Doug's Patch[0].
->
-> Patch[0]:
-> https://patchwork.kernel.org/patch/7454311/
+> We'll add support for selecting the "sleep" pinctrl state at suspend
+> time.  Boards can use this to effectively disable the tsadc at suspend
+> time and avoid glitches when the system is resumed.
 >
 > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+>
 > ---
 >
-> Changes in v4: None
+> Changes in v4:
+>   - take the Doug's commit as correct decription.
+>
 > Changes in v3:
->   - Add the "sleep" pinctrl as the gpio state in PATCH[3/3]
+>   - Add the pinctrl state for in the suspend/resume.
 >
-> Changes in v2:
->   - Add some commits for more obvious in PATCH[2/2]
+> Changes in v2: None
+> Changes in v1: None
 >
-> Changes in v1:
->   - As the Doug comments, drop the thermal driver patchs since
->     we can with pinctrl changing to work.
->   - As the Doug's patch to add the 'init' property.
->
->  arch/arm/boot/dts/rk3288.dtsi | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
+>  drivers/thermal/rockchip_thermal.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-I realized that the subject of this patch should probably contain the
-word rk3288, but I presume Heiko would rather add that himself than
-for you to spin this again.  ;)
-
-
--Doug
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
