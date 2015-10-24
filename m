@@ -1,158 +1,228 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v7 17/17] drm: bridge: analogix/dp: add edid modes parse in get_modes method
-Date: Sat, 24 Oct 2015 11:21:49 +0800
-Message-ID: <1445656909-15477-2-git-send-email-ykk@rock-chips.com>
-References: <1445599415-30856-1-git-send-email-ykk@rock-chips.com>
- <1445656909-15477-1-git-send-email-ykk@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v4 2/8] clk: rockchip: add dt-binding header for rk3036
+Date: Sat, 24 Oct 2015 18:30:23 +0800
+Message-ID: <1445682629-21632-3-git-send-email-zhengxing@rock-chips.com>
+References: <1445682629-21632-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445656909-15477-1-git-send-email-ykk@rock-chips.com>
+In-Reply-To: <1445682629-21632-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, joe@perches.com, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>
-Cc: Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Display Port monitor could support kinds of mode which indicate
-in monitor edid, not just one single display resolution which
-defined in panel or devivetree property display timing.
+Add the dt-bindings header for the rk3036, that gets shared between
+the clock controller and the clock references in the dts.
 
-Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4:
-- Call drm_panel_prepare() in .get_modes function, ensure panel should
-  power on before driver try to read edid message.
 
-Changes in v3:
-- Add edid modes parse support
+Changes in v4: None
 
-Changes in v2: None
+ include/dt-bindings/clock/rk3036-cru.h |  195 ++++++++++++++++++++++++++++++++
+ 1 file changed, 195 insertions(+)
+ create mode 100644 include/dt-bindings/clock/rk3036-cru.h
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 24 +++++++----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 46 +++++++++++-----------
- 2 files changed, 40 insertions(+), 30 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 216d33d..4fa5f69 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -107,7 +107,7 @@ static unsigned char analogix_dp_calc_edid_check_sum(unsigned char *edid_data)
- 
- static int analogix_dp_read_edid(struct analogix_dp_device *dp)
- {
--	unsigned char edid[EDID_BLOCK_LENGTH * 2];
-+	unsigned char *edid = dp->edid;
- 	unsigned int extend_block = 0;
- 	unsigned char sum;
- 	unsigned char test_vector;
-@@ -901,12 +901,6 @@ static void analogix_dp_commit(struct analogix_dp_device *dp)
- 			DRM_ERROR("failed to disable the panel\n");
- 	}
- 
--	ret = analogix_dp_handle_edid(dp);
--	if (ret) {
--		dev_err(dp->dev, "unable to handle edid\n");
--		return;
--	}
--
- 	ret = analogix_dp_set_link_train(dp, dp->video_info.max_lane_count,
- 					 dp->video_info.max_link_rate);
- 	if (ret) {
-@@ -947,8 +941,24 @@ EXPORT_SYMBOL_GPL(analogix_dp_detect);
- int analogix_dp_get_modes(struct device *dev)
- {
- 	struct analogix_dp_device *dp = dev_get_drvdata(dev);
-+	struct edid *edid = (struct edid *)dp->edid;
- 	int num_modes = 0;
- 
-+	if (dp->plat_data && dp->plat_data->panel) {
-+		if (drm_panel_prepare(dp->plat_data->panel)) {
-+			DRM_ERROR("failed to setup the panel\n");
-+			return -EINVAL;
-+		}
-+	}
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+new file mode 100644
+index 0000000..b0da216
+--- /dev/null
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -0,0 +1,195 @@
++/*
++ * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
++ * Author: Xing Zheng <zhengxing@rock-chips.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
 +
-+	if (analogix_dp_handle_edid(dp)) {
-+		dev_err(dp->dev, "unable to handle edid\n");
-+		return -EINVAL;
-+	}
++#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
++#define _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
 +
-+	drm_mode_connector_update_edid_property(dp->connector, edid);
-+	num_modes += drm_add_edid_modes(dp->connector, edid);
++/* core clocks */
++#define PLL_APLL		1
++#define PLL_DPLL		2
++#define PLL_GPLL		3
++#define ARMCLK			4
 +
- 	if (dp->plat_data->panel)
- 		num_modes += drm_panel_get_modes(dp->plat_data->panel);
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index d3c7e0a..2bd2e0d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -20,6 +20,28 @@
- #define MAX_CR_LOOP 5
- #define MAX_EQ_LOOP 5
- 
-+/* I2C EDID Chip ID, Slave Address */
-+#define I2C_EDID_DEVICE_ADDR			0x50
-+#define I2C_E_EDID_DEVICE_ADDR			0x30
++/* sclk gates (special clocks) */
++#define SCLK_GPU		64
++#define SCLK_SPI		65
++#define SCLK_SDMMC		68
++#define SCLK_SDIO		69
++#define SCLK_EMMC		71
++#define SCLK_NANDC		76
++#define SCLK_UART0		77
++#define SCLK_UART1		78
++#define SCLK_UART2		79
++#define SCLK_I2S		82
++#define SCLK_SPDIF		83
++#define SCLK_TIMER0		85
++#define SCLK_TIMER1		86
++#define SCLK_TIMER2		87
++#define SCLK_TIMER3		88
++#define SCLK_OTGPHY0		93
++#define SCLK_LCDC		100
++#define SCLK_HDMI		109
++#define SCLK_HEVC		111
++#define SCLK_I2S_OUT		113
++#define SCLK_SDMMC_DRV		114
++#define SCLK_SDIO_DRV		115
++#define SCLK_EMMC_DRV		117
++#define SCLK_SDMMC_SAMPLE	118
++#define SCLK_SDIO_SAMPLE	119
++#define SCLK_EMMC_SAMPLE	121
++#define SCLK_PVTM_CORE          123
++#define SCLK_PVTM_GPU           124
++#define SCLK_PVTM_VIDEO         125
++#define SCLK_MAC		151
++#define SCLK_MACREF		152
++#define SCLK_SFC		160
 +
-+#define EDID_BLOCK_LENGTH			0x80
-+#define EDID_HEADER_PATTERN			0x00
-+#define EDID_EXTENSION_FLAG			0x7e
-+#define EDID_CHECKSUM				0x7f
++#define DCLK_LCDC		190
 +
-+/* DP_MAX_LANE_COUNT */
-+#define DPCD_ENHANCED_FRAME_CAP(x)		(((x) >> 7) & 0x1)
-+#define DPCD_MAX_LANE_COUNT(x)			((x) & 0x1f)
++/* aclk gates */
++#define ACLK_DMAC2		194
++#define ACLK_LCDC		197
++#define ACLK_VIO		203
++#define ACLK_VCODEC		208
++#define ACLK_CPU		209
++#define ACLK_PERI		210
 +
-+/* DP_LANE_COUNT_SET */
-+#define DPCD_LANE_COUNT_SET(x)			((x) & 0x1f)
++/* pclk gates */
++#define PCLK_GPIO0		320
++#define PCLK_GPIO1		321
++#define PCLK_GPIO2		322
++#define PCLK_GRF		329
++#define PCLK_I2C0		332
++#define PCLK_I2C1		333
++#define PCLK_I2C2		334
++#define PCLK_SPI		338
++#define PCLK_UART0		341
++#define PCLK_UART1		342
++#define PCLK_UART2		343
++#define PCLK_PWM		350
++#define PCLK_TIMER		353
++#define PCLK_HDMI		360
++#define PCLK_CPU		362
++#define PCLK_PERI		363
++#define PCLK_DDRUPCTL		364
++#define PCLK_WDT		368
++#define PCLK_ACODEC		369
 +
-+/* DP_TRAINING_LANE0_SET */
-+#define DPCD_PRE_EMPHASIS_SET(x)		(((x) & 0x3) << 3)
-+#define DPCD_PRE_EMPHASIS_GET(x)		(((x) >> 3) & 0x3)
-+#define DPCD_VOLTAGE_SWING_SET(x)		(((x) & 0x3) << 0)
-+#define DPCD_VOLTAGE_SWING_GET(x)		(((x) >> 0) & 0x3)
++/* hclk gates */
++#define HCLK_OTG0		449
++#define HCLK_OTG1		450
++#define HCLK_NANDC		453
++#define HCLK_SDMMC		456
++#define HCLK_SDIO		457
++#define HCLK_EMMC		459
++#define HCLK_I2S		462
++#define HCLK_LCDC		465
++#define HCLK_ROM		467
++#define HCLK_VIO_BUS		472
++#define HCLK_VCODEC		476
++#define HCLK_CPU		477
++#define HCLK_PERI		478
 +
- enum link_rate_type {
- 	LINK_RATE_1_62GBPS = DP_LINK_BW_1_62,
- 	LINK_RATE_2_70GBPS = DP_LINK_BW_2_7,
-@@ -161,6 +183,7 @@ struct analogix_dp_device {
- 	int			dpms_mode;
- 	int			hpd_gpio;
- 	bool                    need_force_hpd;
-+	unsigned char           edid[EDID_BLOCK_LENGTH * 2];
- 
- 	struct analogix_dp_plat_data *plat_data;
- };
-@@ -260,27 +283,4 @@ int analogix_dp_is_video_stream_on(struct analogix_dp_device *dp);
- void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp);
- void analogix_dp_enable_scrambling(struct analogix_dp_device *dp);
- void analogix_dp_disable_scrambling(struct analogix_dp_device *dp);
--
--/* I2C EDID Chip ID, Slave Address */
--#define I2C_EDID_DEVICE_ADDR			0x50
--#define I2C_E_EDID_DEVICE_ADDR			0x30
--
--#define EDID_BLOCK_LENGTH			0x80
--#define EDID_HEADER_PATTERN			0x00
--#define EDID_EXTENSION_FLAG			0x7e
--#define EDID_CHECKSUM				0x7f
--
--/* DP_MAX_LANE_COUNT */
--#define DPCD_ENHANCED_FRAME_CAP(x)		(((x) >> 7) & 0x1)
--#define DPCD_MAX_LANE_COUNT(x)			((x) & 0x1f)
--
--/* DP_LANE_COUNT_SET */
--#define DPCD_LANE_COUNT_SET(x)			((x) & 0x1f)
--
--/* DP_TRAINING_LANE0_SET */
--#define DPCD_PRE_EMPHASIS_SET(x)		(((x) & 0x3) << 3)
--#define DPCD_PRE_EMPHASIS_GET(x)		(((x) >> 3) & 0x3)
--#define DPCD_VOLTAGE_SWING_SET(x)		(((x) & 0x3) << 0)
--#define DPCD_VOLTAGE_SWING_GET(x)		(((x) >> 0) & 0x3)
--
- #endif /* _ANALOGIX_DP_CORE_H */
++#define CLK_NR_CLKS		(HCLK_PERI + 1)
++
++/* soft-reset indices */
++#define SRST_CORE0		0
++#define SRST_CORE1		1
++#define SRST_CORE0_DBG		4
++#define SRST_CORE1_DBG		5
++#define SRST_CORE0_POR		8
++#define SRST_CORE1_POR		9
++#define SRST_L2C		12
++#define SRST_TOPDBG		13
++#define SRST_STRC_SYS_A		14
++#define SRST_PD_CORE_NIU	15
++
++#define SRST_TIMER2		16
++#define SRST_CPUSYS_H		17
++#define SRST_AHB2APB_H		19
++#define SRST_TIMER3		20
++#define SRST_INTMEM		21
++#define SRST_ROM		22
++#define SRST_PERI_NIU		23
++#define SRST_I2S		24
++#define SRST_DDR_PLL		25
++#define SRST_GPU_DLL		26
++#define SRST_TIMER0		27
++#define SRST_TIMER1		28
++#define SRST_CORE_DLL		29
++#define SRST_EFUSE_P		30
++#define SRST_ACODEC_P		31
++
++#define SRST_GPIO0		32
++#define SRST_GPIO1		33
++#define SRST_GPIO2		34
++#define SRST_UART0		39
++#define SRST_UART1		40
++#define SRST_UART2		41
++#define SRST_I2C0		43
++#define SRST_I2C1		44
++#define SRST_I2C2		45
++#define SRST_SFC		47
++
++#define SRST_PWM0		48
++#define SRST_DAP		51
++#define SRST_DAP_SYS		52
++#define SRST_GRF		55
++#define SRST_PERIPHSYS_A	57
++#define SRST_PERIPHSYS_H	58
++#define SRST_PERIPHSYS_P	59
++#define SRST_CPU_PERI		61
++#define SRST_EMEM_PERI		62
++#define SRST_USB_PERI		63
++
++#define SRST_DMA2		64
++#define SRST_MAC		66
++#define SRST_NANDC		68
++#define SRST_USBOTG0		69
++#define SRST_OTGC0		71
++#define SRST_USBOTG1		72
++#define SRST_OTGC1		74
++#define SRST_DDRMSCH		79
++
++#define SRST_MMC0		81
++#define SRST_SDIO		82
++#define SRST_EMMC		83
++#define SRST_SPI0		84
++#define SRST_WDT		86
++#define SRST_DDRPHY		88
++#define SRST_DDRPHY_P		89
++#define SRST_DDRCTRL		90
++#define SRST_DDRCTRL_P		91
++
++#define SRST_HDMI_P		96
++#define SRST_VIO_BUS_H		99
++#define SRST_UTMI0		103
++#define SRST_UTMI1		104
++#define SRST_USBPOR		105
++
++#define SRST_VCODEC_A		112
++#define SRST_VCODEC_H		113
++#define SRST_VIO1_A		114
++#define SRST_HEVC		115
++#define SRST_VCODEC_NIU_A	116
++#define SRST_LCDC1_A		117
++#define SRST_LCDC1_H		118
++#define SRST_LCDC1_D		119
++#define SRST_GPU		120
++#define SRST_GPU_NIU_A		122
++
++#define SRST_DBG_P		131
++
++#endif
 -- 
-2.1.2
+1.7.9.5
