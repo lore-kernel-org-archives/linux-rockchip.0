@@ -1,101 +1,126 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH 0/4] Patches to fix remote wakeup on rk3288 dwc2 "host" port
-Date: Mon, 26 Oct 2015 18:05:04 -0500
-Message-ID: <CAL_JsqLtYrzvreV68V5S0wFJNAR6JusnqZrLjsJwT6yXgrQKHg@mail.gmail.com>
+Date: Mon, 26 Oct 2015 16:49:52 -0700
+Message-ID: <CAD=FV=UfdEN4MzAwZLWDTQ4qMakhchpr063U1e3uk6R96wScJw@mail.gmail.com>
 References: <1445624891-31680-1-git-send-email-dianders@chromium.org>
- <562B9F5F.1080800@kernel.org> <CAD=FV=VgYU8sZfSkbNbbOFpb-nt=Yy9NjybxADBnAiQXfasDpw@mail.gmail.com>
+	<562B9F5F.1080800@kernel.org>
+	<CAD=FV=VgYU8sZfSkbNbbOFpb-nt=Yy9NjybxADBnAiQXfasDpw@mail.gmail.com>
+	<CAL_JsqLtYrzvreV68V5S0wFJNAR6JusnqZrLjsJwT6yXgrQKHg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=VgYU8sZfSkbNbbOFpb-nt=Yy9NjybxADBnAiQXfasDpw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, paulz <paulz-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAL_JsqLtYrzvreV68V5S0wFJNAR6JusnqZrLjsJwT6yXgrQKHg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 24, 2015 at 4:22 PM, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> Rob,
->
-> On Sat, Oct 24, 2015 at 11:10 AM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->> On 10/23/2015 01:28 PM, Douglas Anderson wrote:
->>> The "host1" port (AKA the dwc2 port that isn't the OTG port) on rk3288
->>> has a hardware errata that causes everything to get confused when we get
->>> a remote wakeup.  It appears that the "port reset" bit that's in the USB
->>> phy (located in the rk3288 GRF) fixes things up and appears safe to do.
->>>
->>> This series of patches exports the "port reset" from the PHY and then
->>> hooks it up to dwc2 through a quirk.
->>>
->>> I've tested this series atop a bit of a conglomeration of Heiko's github
->>> "somewhat stable" branch (v4.3-rc3-876-g6509232) but with Greg KH's
->>> usb-next merged in.
->>>
->>> These patches currently conflict with patches that I posted previously
->>> to enable USB wakeup from S3, specifically:
->>> * https://patchwork.kernel.org/patch/6727081/
->>> * https://patchwork.kernel.org/patch/6727121/
->>> ...those patches no longer apply anyway, so presumably they need to be
->>> reposted and I can do so later atop these patches.
->>>
->>>
->>> Douglas Anderson (4):
->>>   phy: rockchip-usb: Support the PHY's "port reset"
->>>   usb: dwc2: optionally assert phy "port reset" when waking up
->>>   ARM: dts: rockchip: Enable the USB phys as reset providers on rk3288
->>>   ARM: dts: rockchip: Point rk3288 dwc2 usb at phy port reset
->>>
->>>  .../devicetree/bindings/phy/rockchip-usb-phy.txt   |  6 ++
->>>  Documentation/devicetree/bindings/usb/dwc2.txt     |  7 ++
->>>  arch/arm/boot/dts/rk3288.dtsi                      |  8 +++
->>>  drivers/phy/phy-rockchip-usb.c                     | 74 ++++++++++++++++++++++
->>>  drivers/usb/dwc2/core.h                            |  5 ++
->>>  drivers/usb/dwc2/core_intr.c                       |  7 ++
->>>  drivers/usb/dwc2/platform.c                        | 13 ++++
->>>  7 files changed, 120 insertions(+)
+Rob,
+
+On Mon, Oct 26, 2015 at 4:05 PM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>>> A DT reset controller seems like a bit of an overkill here. I think this
+>>> would be much more simple if we just add a phy reset hook to the phy
+>>> subsystem.
 >>
->> A DT reset controller seems like a bit of an overkill here. I think this
->> would be much more simple if we just add a phy reset hook to the phy
->> subsystem.
+>> Adding a reset hook in the PHY subsystem does seem like a reasonable
+>> idea to me.  I was considering it in an earlier version of this series
+>> that actually used a reset of the PHY to the fix the stuck dwc2.
+>>
+>> ...but I think that even if the phy subsystem had a reset hook it
+>> wouldn't be the ideal solution here.  When we assert the PHY "port
+>> reset" we're not actually fully resetting the PHY.  We're instead
+>> doing some sort of a more minor "state machine" reset in the PHY.
+>> This appears better (in my case) than resetting the whole PHY because
+>> it doesn't force a de-enumeration / re-enumeration.  Exposing this
+>> more minor reset as a PHY reset seems wrong to me.  ...and it also
+>> precludes us later also exposing the more full reset through the PHY
+>> framework if that later becomes useful.
 >
-> Adding a reset hook in the PHY subsystem does seem like a reasonable
-> idea to me.  I was considering it in an earlier version of this series
-> that actually used a reset of the PHY to the fix the stuck dwc2.
+> Doesn't creating a binding also have similar possibility? Maybe an
+> "attach host" or re-init hook would be more appropriate. I'm sure
+> there are other such cases where the host and phy need more tight
+> coupling. I recently had a similar case where there was an interleaved
+> sequence of phy and host register writes. I managed rework things and
+> avoid changing the phy interface, but there will certainly be cases
+> where we can't.
 >
-> ...but I think that even if the phy subsystem had a reset hook it
-> wouldn't be the ideal solution here.  When we assert the PHY "port
-> reset" we're not actually fully resetting the PHY.  We're instead
-> doing some sort of a more minor "state machine" reset in the PHY.
-> This appears better (in my case) than resetting the whole PHY because
-> it doesn't force a de-enumeration / re-enumeration.  Exposing this
-> more minor reset as a PHY reset seems wrong to me.  ...and it also
-> precludes us later also exposing the more full reset through the PHY
-> framework if that later becomes useful.
+> Changing function names in the kernel is easy. Changing the binding
+> later not so much. Also as we're looking toward dependency handling,
+> this creates a circular dependency. We'll probably have to deal with
+> those anyway, but here it seems a bit pointless. We already have a
+> connection between the host and phy defined. Let's use that and not
+> define another.
 
-Doesn't creating a binding also have similar possibility? Maybe an
-"attach host" or re-init hook would be more appropriate. I'm sure
-there are other such cases where the host and phy need more tight
-coupling. I recently had a similar case where there was an interleaved
-sequence of phy and host register writes. I managed rework things and
-avoid changing the phy interface, but there will certainly be cases
-where we can't.
+I'm probably not understanding what you're proposing.  I was imagining
+that you were proposing adding into "include/linux/phy/phy.h" a
+definition like:
 
-Changing function names in the kernel is easy. Changing the binding
-later not so much. Also as we're looking toward dependency handling,
-this creates a circular dependency. We'll probably have to deal with
-those anyway, but here it seems a bit pointless. We already have a
-connection between the host and phy defined. Let's use that and not
-define another.
+  int phy_reset(struct phy *phy);
 
-> ...we could, of course, re-invent the reset framework (with string or
-> integral IDs so we can assert different types of resets) within the
-> PHY framework.  That doesn't seem ideal to me, but if that's what
-> others want to do then I guess it would be OK...
+If that existed in the PHY interface, it wouldn't be enough for me
+since the "reset" that I'm doing isn't a full reset (and there does
+exist another, fuller PHY reset on this SoC).  So if we wanted to use
+the PHY interface, I'd need either:
 
-I think that should already be possible as you can have multiple
-cells. Of course, you have to plan for that with your cell values.
+  int phy_reset(struct phy *phy, int reset_id);
+...or...
+  int phy_reset(struct phy *phy, const char *reset_id);
 
-Rob
+I was expecting that to stay generic you'd somehow need to add a
+mapping of these resets into the device tree because a given USB
+controller may have different PHYs on different boards and the same
+PHY might be used with more than one USB controller.  If you don't add
+some type of mapping in the device tree then in _some_ type of include
+file you'd need something like:
+
+#define DWC2_RESET_ID_PHY_PORT_RESET  1
+#define DWC2_RESET_ID_PHY_FULL_RESET  2
+...or...
+#define DWC2_RESET_ID_PHY_PORT_RESET  "phy_port_reset"
+#define DWC2_RESET_ID_PHY_FULL_RESET  "phy_full_reset"
+
+...presumably you'd expect that to be in a dwc2 header file, to be
+included by the "rk3288 USB PHY"?  ...but, oddly enough, the "rk3288
+USB PHY" is not specific to dwc2, so having it include a dwc2 header
+file is pretty odd.  Specifically on rk3288 there are 3 instances of
+the same PHY.  One is hooked up to the dwc2 "OTG" port.  One is hooked
+up to the dwc2 "host" port (which doesn't have device functionality
+and also has the need for this strange reset quirk).  One is hooked up
+to an EHCI port (using the generic EHCI driver).
+
+...so, while I could add a dwc2 specific include into the rk3288 PHY
+driver, I'd need to somehow figure out which of the PHYs it applied
+to.  For instance, maybe we later find that we need to activate this
+reset for the EHCI port.  Now we'll need to include both headers.
+...and hopefully there aren't name / number conflicts.
+
+One note: the "full" PHY reset is actually not in the register map of
+the PHY.  It is amazingly enough in the CRU (clock reset unit).  So if
+we actually exposed the "full" reset through the PHY framework, the
+PHY would then turn around and pass it off to the reset framework,
+which is how the full PHY reset is exposed from the CRU.
+
+
+>> ...we could, of course, re-invent the reset framework (with string or
+>> integral IDs so we can assert different types of resets) within the
+>> PHY framework.  That doesn't seem ideal to me, but if that's what
+>> others want to do then I guess it would be OK...
+>
+> I think that should already be possible as you can have multiple
+> cells. Of course, you have to plan for that with your cell values.
+
+I didn't understand this comment.
+
+
+Basically: to summarize, I think that we have a reset framework that
+handles this beautifully and gets all the corner cases down.  Adding a
+second link to the PHY seems totally reasonable to me because I could
+totally imagine that this reset could be implemented in a totally
+different place in some SoCs.  It happens to be in the PHY in my
+particular case, but it need not be on all SoCs.
+
+-Doug
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
