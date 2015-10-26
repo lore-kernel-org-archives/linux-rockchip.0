@@ -1,103 +1,66 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v5 8/8] rockchip: make sure timer5 is enabled on rk3036 platforms
-Date: Mon, 26 Oct 2015 12:34:05 +0800
-Message-ID: <1445834045-6708-1-git-send-email-zhengxing@rock-chips.com>
-References: <1445833539-6484-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445833539-6484-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] usb: dwc2: host: Fix ahbcfg for rk3066
+Date: Mon, 26 Oct 2015 22:57:04 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3A8D5F@US01WEMBX2.internal.synopsys.com>
+References: <1445384033-17050-1-git-send-email-dianders@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Language: en-US
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "balbi-l0cyMroinI0@public.gmane.org" <balbi-l0cyMroinI0@public.gmane.org>
+Cc: Wu Liang Feng <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The timer5 supplies the architected timer and thus as has to run when
-the system clocksource and clockevents drivers are registered.
+On 10/20/2015 4:35 PM, Douglas Anderson wrote:
+> The comment for ahbcfg for rk3066 parameters (also used for rk3288)
+> claimed that ahbcfg was INCR16, but it wasn't.  Since the bits weren't
+> shifted properly, the 0x7 ended up being masked and we ended up
+> programming 0x3 for the HBstLen.  Let's set it to INCR16 properly.
+> 
+> As per Wu Liang Feng at Rockchip this may increase transmission
+> efficiency.  I did blackbox tests with writing 0s to a USB-based SD
+> reader (forcefully capping CPU Freq to try to measure efficiency):
+>   cd /sys/devices/system/cpu/cpu0/cpufreq
+>   echo userspace > scaling_governor
+>   echo 126000 > scaling_setspeed
+>   for i in $(seq 10); do
+>     dd if=/dev/zero of=/dev/sdb bs=1M count=750
+>   done
+> 
+> With the above tests I found that speeds went from ~15MB/s to ~18MB/s.
+> Note that most other tests I did (including reading from the same USB
+> reader) didn't show any difference in performance.
+> 
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  drivers/usb/dwc2/platform.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+> index 5859b0f..e61d773 100644
+> --- a/drivers/usb/dwc2/platform.c
+> +++ b/drivers/usb/dwc2/platform.c
+> @@ -108,7 +108,8 @@ static const struct dwc2_core_params params_rk3066 = {
+>  	.host_ls_low_power_phy_clk	= -1,
+>  	.ts_dline			= -1,
+>  	.reload_ctl			= -1,
+> -	.ahbcfg				= 0x7, /* INCR16 */
+> +	.ahbcfg				= GAHBCFG_HBSTLEN_INCR16 <<
+> +					  GAHBCFG_HBSTLEN_SHIFT,
+>  	.uframe_sched			= -1,
+>  	.external_id_pin_ctl		= -1,
+>  	.hibernation			= -1,
+> 
 
----
 
-Changes in v5:
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 
- arch/arm/mach-rockchip/rockchip.c |   44 +++++++++++++++++++++++--------------
- 1 file changed, 27 insertions(+), 17 deletions(-)
 
-diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
-index 251c7b9..608b31c 100644
---- a/arch/arm/mach-rockchip/rockchip.c
-+++ b/arch/arm/mach-rockchip/rockchip.c
-@@ -29,31 +29,38 @@
- #include "core.h"
- #include "pm.h"
- 
-+#define RK3036_TIMER_PHYS 0x20044000
-+
- #define RK3288_GRF_SOC_CON0 0x244
- #define RK3288_TIMER6_7_PHYS 0xff810000
- 
-+static void rockchip_init_arch_timer_supply(resource_size_t phys, int offs)
-+{
-+	void __iomem *reg_base = ioremap(phys, SZ_16K);
-+
-+	/*
-+	 * Most/all uboot versions for Rockchip SoCs don't enable
-+	 * timer which is needed for the architected timer to work.
-+	 * So make sure it is running during early boot.
-+	 */
-+	if (reg_base) {
-+		writel(0, reg_base + offs + 0x10);
-+		writel(0xffffffff, reg_base + offs);
-+		writel(0xffffffff, reg_base + offs + 0x04);
-+		writel(1, reg_base + offs + 0x10);
-+		dsb();
-+		iounmap(reg_base);
-+	} else {
-+		pr_err("rockchip: could not map timer registers\n");
-+	}
-+}
-+
- static void __init rockchip_timer_init(void)
- {
- 	if (of_machine_is_compatible("rockchip,rk3288")) {
- 		struct regmap *grf;
--		void __iomem *reg_base;
- 
--		/*
--		 * Most/all uboot versions for rk3288 don't enable timer7
--		 * which is needed for the architected timer to work.
--		 * So make sure it is running during early boot.
--		 */
--		reg_base = ioremap(RK3288_TIMER6_7_PHYS, SZ_16K);
--		if (reg_base) {
--			writel(0, reg_base + 0x30);
--			writel(0xffffffff, reg_base + 0x20);
--			writel(0xffffffff, reg_base + 0x24);
--			writel(1, reg_base + 0x30);
--			dsb();
--			iounmap(reg_base);
--		} else {
--			pr_err("rockchip: could not map timer7 registers\n");
--		}
-+		rockchip_init_arch_timer_supply(RK3288_TIMER6_7_PHYS, 0x20);
- 
- 		/*
- 		 * Disable auto jtag/sdmmc switching that causes issues
-@@ -64,6 +71,8 @@ static void __init rockchip_timer_init(void)
- 			regmap_write(grf, RK3288_GRF_SOC_CON0, 0x10000000);
- 		else
- 			pr_err("rockchip: could not get grf syscon\n");
-+	} else if (of_machine_is_compatible("rockchip,rk3036")) {
-+		rockchip_init_arch_timer_supply(RK3036_TIMER_PHYS, 0xa0);
- 	}
- 
- 	of_clk_init(NULL);
-@@ -79,6 +88,7 @@ static void __init rockchip_dt_init(void)
- 
- static const char * const rockchip_board_dt_compat[] = {
- 	"rockchip,rk2928",
-+	"rockchip,rk3036",
- 	"rockchip,rk3066a",
- 	"rockchip,rk3066b",
- 	"rockchip,rk3188",
--- 
-1.7.9.5
+John
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
