@@ -1,76 +1,33 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v1 1/3] dt-bindings: rockchip-mailbox: Add mailbox
- controller document on Rockchip SoCs
-Date: Tue, 27 Oct 2015 03:10:59 -0500
-Message-ID: <CAL_JsqLhLsJCAVqFnnjDG1SGyU6Wd2SvXZUoocF4tLcLrVSX0w@mail.gmail.com>
-References: <1445931106-683-1-git-send-email-wxt@rock-chips.com> <1445931106-683-2-git-send-email-wxt@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 2/4] thermal: rockchip: ensure the otp state before
+ resetting the controller
+Date: Tue, 27 Oct 2015 11:23:22 +0100
+Message-ID: <CACRpkdaRhpmgZLUAOrHN99GwYDbXhF0Mmi7WuQPAtC4aEsZDJQ@mail.gmail.com>
+References: <1445332264-6054-1-git-send-email-wxt@rock-chips.com>
+	<1445332264-6054-3-git-send-email-wxt@rock-chips.com>
+	<CAD=FV=WHvwNGdRZ4Yjwk0zB00o2gFHXLfbAYHai1kM_oBAR4_g@mail.gmail.com>
+	<5626ED35.3010403@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445931106-683-2-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <5626ED35.3010403@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jassi Brar <jassisinghbrar@gmail.com>, frank.wang@rock-chips.com, linux-rockchip@lists.infradead.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Caesar Wang <caesar.upstream@gmail.com>
+Cc: Doug Anderson <dianders@chromium.org>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Oct 27, 2015 at 2:31 AM, Caesar Wang <wxt@rock-chips.com> wrote:
-> This add the necessary binding documentation for mailbox
-> found on RK3368 SoC.
->
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
->
-> Changes in v1:
-> - PATCH[1/3] doc:
-> - As the Rob Herring comments, s/share/shared/ and specify the value of #mbox-cells.
-> - Move the shared memory in mailbox, let's move the property the client
->   driver in the future.
+On Wed, Oct 21, 2015 at 3:41 AM, Caesar Wang <caesar.upstream@gmail.com> wrote:
+>> On Tue, Oct 20, 2015 at 2:11 AM, Caesar Wang <wxt@rock-chips.com> wrote:
 
-Acked-by: Rob Herring <robh@kernel.org>
+>> You'd still want to have a bindings change to describe "init", but at
+>> least you shouldn't need any code changes.
+>
+> Okay, https://patchwork.kernel.org/patch/5055741/ that's working for me.
+> Fell free add my  test tag if you resend the patch. (Tested-by: Caesar Wang
+> <wxt@rock-chips.com>)
 
->
->  .../bindings/mailbox/rockchip-mailbox.txt          | 32 ++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt
->
-> diff --git a/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt
-> new file mode 100644
-> index 0000000..b6bb84a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/rockchip-mailbox.txt
-> @@ -0,0 +1,32 @@
-> +Rockchip mailbox
-> +
-> +The Rockchip mailbox is used by the Rockchip CPU cores to communicate
-> +requests to MCU processor.
-> +
-> +Refer to ./mailbox.txt for generic information about mailbox device-tree
-> +bindings.
-> +
-> +Required properties:
-> +
-> + - compatible: should be one of the following.
-> +   - "rockchip,rk3368-mbox" for rk3368
-> + - reg: physical base address of the controller and length of memory mapped
-> +       region.
-> + - interrupts: The interrupt number to the cpu. The interrupt specifier format
-> +       depends on the interrupt controller.
-> + - #mbox-cells: Common mailbox binding property to identify the number
-> +       of cells required for the mailbox specifier. Should be 1
-> +
-> +Example:
-> +--------
-> +
-> +/* RK3368 */
-> +mbox: mbox@ff6b0000 {
-> +       compatible = "rockchip,rk3368-mailbox";
-> +       reg = <0x0 0xff6b0000 0x0 0x1000>,
-> +       interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
-> +                    <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>,
-> +                    <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>,
-> +                    <GIC_SPI 149 IRQ_TYPE_LEVEL_HIGH>;
-> +       #mbox-cells = <1>;
-> +};
-> --
-> 1.9.1
->
+Doug, can you resend this rebased version with Caesar's Test tag?
+I kinda like this more than any alternatives.
+
+Yours,
+Linus Walleij
