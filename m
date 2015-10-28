@@ -1,110 +1,107 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v7 10/17] phy: Add driver for rockchip Display Port PHY
-Date: Wed, 28 Oct 2015 09:49:58 +0800
-Message-ID: <563029C6.5000807@rock-chips.com>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v7 06/17] Documentation: drm/bridge: add document for
+ analogix_dp
+Date: Wed, 28 Oct 2015 10:08:21 +0800
+Message-ID: <56302E15.1060408@rock-chips.com>
 References: <1445599415-30856-1-git-send-email-ykk@rock-chips.com>
  <1445655964-15237-1-git-send-email-ykk@rock-chips.com>
- <1445655964-15237-5-git-send-email-ykk@rock-chips.com>
- <2304066.jCpsGbPbCP@phil>
+ <4132920.kfrKzY5nYN@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <2304066.jCpsGbPbCP@phil>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, joe@perches.com, Mark Yao <mark.yao@rock-chips.com>, djkurtz@chromium.org, dianders@chromium.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Kukjin Kim <kgene@kernel.org>, robherring2@gmail.com, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sean Paul <seanpaul@chromium.org>, dri-devel@lists.freedesktop.org, linux-arm-k
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <4132920.kfrKzY5nYN@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan@rock-chip>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Heiko,
 
-On 10/28/2015 05:23 AM, Heiko Stuebner wrote:
-> Am Samstag, 24. Oktober 2015, 11:06:04 schrieb Yakir Yang:
->> Add phy driver for the Rockchip DisplayPort PHY module. This
->> is required to get DisplayPort working in Rockchip SoCs.
+On 10/28/2015 05:04 AM, Heiko Stuebner wrote:
+> Hi Yakir,
+>
+> Am Samstag, 24. Oktober 2015, 11:06:00 schrieb Yakir Yang:
+>> Analogix dp driver is split from exynos dp driver, so we just
+>> make an copy of exynos_dp.txt, and then simplify exynos_dp.txt
 >>
->> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
->> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>> Beside update some exynos dtsi file with the latest change
+>> according to the devicetree binding documents.
+>>
+>> Tested-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+>> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >> ---
->> diff --git a/drivers/phy/phy-rockchip-dp.c b/drivers/phy/phy-rockchip-dp.c
->> new file mode 100644
->> index 0000000..4af19af
->> --- /dev/null
->> +++ b/drivers/phy/phy-rockchip-dp.c
->> @@ -0,0 +1,153 @@
->> +/*
->> + * Rockchip DP PHY driver
->> + *
->> + * Copyright (C) 2015 FuZhou Rockchip Co., Ltd.
->> + * Author: Yakir Yang <ykk@@rock-chips.com>
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation; either version 2 of the License.
->> + */
+>> diff --git a/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt b/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+>> index 7a3a9cd..9e47357 100644
+>> --- a/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+>> +++ b/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+>> @@ -31,45 +31,31 @@ Required properties for dp-controller:
+>>   		from general PHY binding: the phandle for the PHY device.
+>>   	-phy-names:
+>>   		from general PHY binding: Should be "dp".
+>> -	-samsung,color-space:
+>> -		input video data format.
+>> -			COLOR_RGB = 0, COLOR_YCBCR422 = 1, COLOR_YCBCR444 = 2
+>> -	-samsung,dynamic-range:
+>> -		dynamic range for input video data.
+>> -			VESA = 0, CEA = 1
+>> -	-samsung,ycbcr-coeff:
+>> -		YCbCr co-efficients for input video.
+>> -			COLOR_YCBCR601 = 0, COLOR_YCBCR709 = 1
+>> -	-samsung,color-depth:
+>> -		number of bits per colour component.
+>> -			COLOR_6 = 0, COLOR_8 = 1, COLOR_10 = 2, COLOR_12 = 3
+>> -	-samsung,link-rate:
+>> -		link rate supported by the panel.
+>> -			LINK_RATE_1_62GBPS = 0x6, LINK_RATE_2_70GBPS = 0x0A
+>> -	-samsung,lane-count:
+>> -		number of lanes supported by the panel.
+>> -			LANE_COUNT1 = 1, LANE_COUNT2 = 2, LANE_COUNT4 = 4
 >> +
->> +#include <linux/io.h>
->> +#include <linux/kernel.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/of_address.h>
->> +#include <linux/clk.h>
->> +#include <linux/phy/phy.h>
->> +#include <linux/regmap.h>
->> +#include <linux/mfd/syscon.h>
->> +#include <linux/platform_device.h>
->> +
->> +#define GRF_SOC_CON12                   0x0274
->> +#define GRF_EDP_REF_CLK_SEL_INTER	BIT(4)
->> +#define GRF_EDP_PHY_SIDDQ_WRITE_EN      BIT(21)
->> +#define GRF_EDP_PHY_SIDDQ_ON            0
->> +#define GRF_EDP_PHY_SIDDQ_OFF           BIT(5)
-> mixed spacers (tabs and spaces), please use either tabs if you want to
-> align stuff or a single space.
+>> +Optional properties for dp-controller:
+>>   	- display-timings: timings for the connected panel as described by
+>>   		Documentation/devicetree/bindings/video/display-timing.txt
+> 											^^
 >
-> Also you're mixing the handling here, for SIDDQ you're defining both the
-> actual bit as well as the write-enable bit, but for CLK_SEL_INTR you're
-> hard-coding the 16-bit shift down in the code.
->
-> You could also just use/copy the HIWORD_MASK macro we use for example
-> in the clock controller.
->
->
->> +
->> +struct rockchip_dp_phy {
->> +	struct device  *dev;
->> +	struct regmap  *grf;
->> +	struct clk     *phy_24m;
->> +};
->> +
->> +static int rockchip_set_phy_state(struct phy *phy, bool enable)
->> +{
->> +	struct rockchip_dp_phy *dp = phy_get_drvdata(phy);
->> +	int ret;
->> +
->> +	if (enable) {
->> +		ret = regmap_write(dp->grf, GRF_SOC_CON12,
->> +				   GRF_EDP_PHY_SIDDQ_WRITE_EN |
->> +				   GRF_EDP_PHY_SIDDQ_ON);
->> +		if (ret < 0) {
->> +			dev_err(dp->dev, "Can't enable PHY power %d\n", ret);
->> +			return ret;
->> +		}
->> +
->> +		ret = clk_prepare_enable(dp->phy_24m);
->> +
-> unnecessary empty line after clk_prepare_enable
->
->
-> with these things fixed,
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> bindings/display/display-timing.txt ... that actually made the patch not apply cleanly
 
-Oops, thanks
+Thanks, the right path should be:
+Documentation/devicetree/bindings/display/panel/display-timing.txt
 
+
+>
+> [...]
+>
+>> -[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
+>> +Deprecated properties for DisplayPort:
+>> +-interlaced:            deprecated prop that can parsed frm drm_display_mode.
+>> +-vsync-active-high:     deprecated prop that can parsed frm drm_display_mode.
+>> +-hsync-active-high:     deprecated prop that can parsed frm drm_display_mode.
+>> +-samsung,ycbcr-coeff:   deprecated prop that can parsed frm drm_display_mode.
+>> +-samsung,dynamic-range: deprecated prop that can parsed frm drm_display_mode.
+> the "frm" above need some more "o"s to be "from"s :-)
+
+Ah,  :-P
+
+Thanks,
 - Yakir
-
+>
+>> +-samsung,color-space:   deprecated prop that can parsed from drm_display_info.
+>> +-samsung,color-depth:   deprecated prop that can parsed from drm_display_info.
+>> +-samsung,link-rate:     deprecated prop that can reading from monitor by dpcd method.
+>> +-samsung,lane-count:    deprecated prop that can reading from monitor by dpcd method.
+>> +-samsung,hpd-gpio:      deprecated name for hpd-gpios.
+>> +
+>> +-------------------------------------------------------------------------------
 >
 > Cheers,
 > Heiko
 >
 >
 >
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
