@@ -1,87 +1,90 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v7 11/17] Documentation: phy: add document for rockchip dp
- phy
-Date: Wed, 28 Oct 2015 10:26:58 +0800
-Message-ID: <56303272.6060001@rock-chips.com>
-References: <1445599415-30856-1-git-send-email-ykk@rock-chips.com>
- <1445656003-15300-1-git-send-email-ykk@rock-chips.com>
- <5298205.Ylro4gBPnU@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5 3/8] clk: rockchip: add clock controller for rk3036
+Date: Wed, 28 Oct 2015 08:53:32 +0100
+Message-ID: <2173913.nTv0xun882@phil>
+References: <1445833539-6484-1-git-send-email-zhengxing@rock-chips.com> <1445833539-6484-4-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5298205.Ylro4gBPnU@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, joe@perches.com, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chip>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1445833539-6484-4-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/28/2015 07:08 AM, Heiko Stuebner wrote:
-> Am Samstag, 24. Oktober 2015, 11:06:37 schrieb Yakir Yang:
->> Add dt binding documentation for rockchip display port PHY.
->>
->> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
->> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
->> ---
->> Changes in v7: None
->> Changes in v6: None
->> Changes in v5:
->> - Split binding doc's from driver changes. (Rob)
->> - Update the rockchip,grf explain in document, and correct the clock required
->>    elemets in document. (Rob & Heiko)
->>
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->>
->>   .../devicetree/bindings/phy/rockchip-dp-phy.txt    | 22 ++++++++++++++++++++++
->>   1 file changed, 22 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
->>
->> diff --git a/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
->> new file mode 100644
->> index 0000000..505194e
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
->> @@ -0,0 +1,22 @@
->> +Rockchip Soc Seroes Display Port PHY
->> +------------------------------------
->> +
->> +Required properties:
->> +- compatible : should be one of the following supported values:
->> +	 - "rockchip.rk3288-dp-phy"
->> +- clocks: from common clock binding: handle to dp clock.
->> +	of memory mapped region.
->> +- clock-names: from common clock binding:
->> +	Required elements: "24m"
->> +- rockchip,grf: phandle to the syscon managing the "general register files"
->> +- #phy-cells : from the generic PHY bindings, must be 0;
->> +
->> +Example:
->> +
->> +edp_phy: edp-phy@ff770274 {
-> one small thing, I found while playing more ... the node should not have
-> an address, as it also does not have register property. So just name it
-> 	edp_phy: edp-phy {
-> 		...
-> 	};
->
-> There is only one anyway on the rk3288.
->
-> With that change the Reviewed-by still applies :-)
+Am Montag, 26. Oktober 2015, 12:25:34 schrieb Xing Zheng:
+> diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+> index dc8ecb2..4b79f34 100644
+> --- a/drivers/clk/rockchip/clk.h
+> +++ b/drivers/clk/rockchip/clk.h
+> @@ -2,6 +2,9 @@
+>   * Copyright (c) 2014 MundoReader S.L.
+>   * Author: Heiko Stuebner <heiko@sntech.de>
+>   *
+> + * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
+> + * Author: Xing Zheng <zhengxing@rock-chips.com>
+> + *
+>   * based on
+>   *
+>   * samsung/clk.h
+> @@ -40,6 +43,13 @@ struct clk;
+>  #define RK2928_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
+>  #define RK2928_MISC_CON		0x134
+>  
+> +#define RK3036_SDMMC_CON0		0x144
+> +#define RK3036_SDMMC_CON1		0x148
+> +#define RK3036_SDIO_CON0		0x14c
+> +#define RK3036_SDIO_CON1		0x150
+> +#define RK3036_EMMC_CON0		0x154
+> +#define RK3036_EMMC_CON1		0x158
+> +
+>  #define RK3288_PLL_CON(x)		RK2928_PLL_CON(x)
+>  #define RK3288_MODE_CON			0x50
+>  #define RK3288_CLKSEL_CON(x)		((x) * 0x4 + 0x60)
+> @@ -74,9 +84,22 @@ struct clk;
+>  #define RK3368_EMMC_CON1		0x41c
+>  
+>  enum rockchip_pll_type {
+> +	pll_rk3036,
+>  	pll_rk3066,
+>  };
+>  
+> +#define RK3036_PLL_RATE(_rate, _refdiv, _fbdiv, _postdiv1,	\
+> +			_postdiv2, _dsmpd, _frac)		\
+> +{								\
+> +	.rate	= _rate##U,					\
+> +	.fbdiv = _fbdiv,					\
+> +	.postdiv1 = _postdiv1,					\
+> +	.refdiv = _refdiv,					\
+> +	.postdiv2 = _postdiv2,					\
+> +	.dsmpd = _dsmpd,					\
+> +	.frac = _frac,						\
+> +}
+> +
+>  #define RK3066_PLL_RATE(_rate, _nr, _nf, _no)	\
+>  {						\
+>  	.rate	= _rate##U,			\
+> @@ -101,6 +124,13 @@ struct rockchip_pll_rate_table {
+>  	unsigned int nf;
+>  	unsigned int no;
+>  	unsigned int nb;
+> +	/* for RK3036 */
+> +	unsigned int fbdiv;
+> +	unsigned int postdiv1;
+> +	unsigned int refdiv;
+> +	unsigned int postdiv2;
+> +	unsigned int dsmpd;
+> +	unsigned int frac;
+>  };
+>  
+>  /**
 
-Okay,
+the changes to our clk.h should be part of the addition of the pll itself
+(your current patch4) and that patch should then trade places with
+this one, so you add the complete pll type first and this clock controller
+afterwards.
 
-- Yakir
 
->
->> +	compatible = "rockchip,rk3288-dp-phy";
->> +	rockchip,grf = <&grf>;
->> +	clocks = <&cru SCLK_EDP_24M>;
->> +	clock-names = "24m";
->> +	#phy-cells = <0>;
->> +};
->>
->
->
->
+Heiko
+
