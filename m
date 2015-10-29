@@ -1,57 +1,118 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [RFC PATCH v8 10/10] arm: zx_defconfig: remove CONFIG_MMC_DW_IDMAC
-Date: Thu, 29 Oct 2015 11:32:35 +0900
-Message-ID: <56318543.3090900@samsung.com>
-References: <1442385625-26775-1-git-send-email-shawn.lin@rock-chips.com>
- <1442385808-1433-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <1442385808-1433-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, ulf.hansson@linaro.org
-Cc: Vineet.Gupta1@synopsys.com, Wei Xu <xuwei5@hisilicon.com>, Joachim Eastwood <manabian@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Russell King <linux@arm.linux.org.uk>, Jun Nie <jun.nie@linaro.org>, Ralf Baechle <ralf@linux-mips.org>, Govindraj Raja <govindraj.raja@imgtec.com>, Arnd Bergmann <arnd@arndb.de>, heiko@sntech.de, dianders@chromium.org, linux-samsung-soc@vger.kernel.org, linux-mips@linux-mips.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v1 0/6] Support the thermal for RK3368 SoCs
+Date: Thu, 29 Oct 2015 15:14:12 +0800
+Message-ID: <1446102858-10116-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Will Deacon <will.deacon@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pm@vger.kernel.org, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, All.
+This series patchs are working for RK3368 on Rockchip platform.
 
-Is there any other opinion about this patch?
+@Heiko,
+    The PATCH [5/6] is working based on big/littel cluster cpufreq
+    added. Anyway, the PATCH [5/6] also work for next kernel.
+
+@Eduardo,
+This patchset are based on linus master branch.
+Note: Need add the following thermal patchs for thermal driver before apply
+this series patchs.
+
+1) thermal: rockchip: fix handling of invalid readings
+(https://patchwork.kernel.org/patch/6973101/)
+
+2) thermal: rockhip: fix setting thermal shutdown polarity
+(https://patchwork.kernel.org/patch/6973131/)
+
+3) dt-bindings: rockchip-thermal: Add the pinctrl states in this document
+(https://patchwork.kernel.org/patch/7472021/)
+
+4) thermal: rockchip: support the sleep pinctrl state to avoid glitches in s2r
+(https://patchwork.kernel.org/patch/7472051/)
+
+the git log oneline my local branch as follows:
+
+8132956 arm64: dts: Enable the Thermal on R88 board
+ba3fd05 arm64: dts: Add main Thermal info to rk3368.dtsi
+66adecc arm64: dts: Add the thermal data found on RK3368
+acc9cb6 thermal: rockchip: Support the RK3368 SoCs in thermal driver
+8c65003 thermal: rockchip: better to compatible the driver for different SoCs
+ea9f28a dt-bindings: rockchip-thermal: Support the RK3368 SoCs compatible
+29eb0c7 thermal: rockchip: support the sleep pinctrl state to avoid glitches in s2r
+cf2100b dt-bindings: rockchip-thermal: Add the pinctrl states in this document
+38e287b0 thermal: rockhip: fix setting thermal shutdown polarity
+ddee4a2 thermal: rockchip: fix handling of invalid readings
+8a28d67 Merge tag 'powerpc-4.3-6' of
+git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
+977bf06 powerpc/dma: dma_set_coherent_mask() should not be GPL only
+a22c4d7 block: re-add discard_granularity and alignment checks
+23d8827 Merge branch 'fixes' of git://ftp.arm.linux.org.uk/~rmk/linux-arm
+3d0aa36 Merge branch 'for-linus' of git://git.kernel.dk/linux-block
+dc5bc3f Merge branch 'linus' of git://git.kernel.org/pub/scm/linux/kernel/git/herbert/crypto-2.6
+9e17f90 Merge tag 'fixes-for-linus' of git://git.kernel.org/pub/scm/linux/kernel/git/rusty/linux
+174fd8d blkcg: fix incorrect read/write sync/async stat accounting
+858e904 Merge tag 'iommu-fixes-v4.3-rc7' of
+......
+
+----
+This series are tested on RK3368 board.
+
+while true;do ls >/dev/null; done&
+
+while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp; sleep .5; done &
+
+You can get the temperature form sensors.
+/sys/class/thermal/thermal_zone0/temp:27500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:30000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:27500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:30000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:32500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:30000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:22500
+/sys/class/thermal/thermal_zone1/temp:32500
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:22500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:30000
+/sys/class/thermal/thermal_zone1/temp:32500
+/sys/class/thermal/thermal_zone1/temp:32500
+/sys/class/thermal/thermal_zone0/temp:32500
 
 
-Best Regards,
-Jaehoon Chung
+Changes in v1:
+- %s/thermal/rockchip-thermal in subject.
+- add a new patch for thermal driver to support more SoCs.
+- As Dmitry comment, make the conversion table in as a parameter.
+- support the opt gpio pinctrl state
 
-On 09/16/2015 03:43 PM, Shawn Lin wrote:
-> DesignWare MMC Controller's transfer mode should be decided
-> at runtime instead of compile-time. So we remove this config
-> option and read dw_mmc's register to select DMA master.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  arch/arm/configs/zx_defconfig | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/arch/arm/configs/zx_defconfig b/arch/arm/configs/zx_defconfig
-> index b200bb0..ab683fb 100644
-> --- a/arch/arm/configs/zx_defconfig
-> +++ b/arch/arm/configs/zx_defconfig
-> @@ -83,7 +83,6 @@ CONFIG_MMC=y
->  CONFIG_MMC_UNSAFE_RESUME=y
->  CONFIG_MMC_BLOCK_MINORS=16
->  CONFIG_MMC_DW=y
-> -CONFIG_MMC_DW_IDMAC=y
->  CONFIG_EXT2_FS=y
->  CONFIG_EXT4_FS=y
->  CONFIG_EXT4_FS_POSIX_ACL=y
-> 
+Caesar Wang (6):
+  dt-bindings: rockchip-thermal: Support the RK3368 SoCs compatible
+  thermal: rockchip: better to compatible the driver for different SoCs
+  thermal: rockchip: Support the RK3368 SoCs in thermal driver
+  arm64: dts: Add the thermal data found on RK3368
+  arm64: dts: Add main Thermal info to rk3368.dtsi
+  arm64: dts: Enable the Thermal on R88 board
+
+ .../bindings/thermal/rockchip-thermal.txt          |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |   6 +
+ arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi   | 112 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  36 +++
+ drivers/thermal/rockchip_thermal.c                 | 267 ++++++++++++++++-----
+ 5 files changed, 362 insertions(+), 63 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+
+-- 
+1.9.1
 
