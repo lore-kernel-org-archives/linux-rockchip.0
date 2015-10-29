@@ -1,102 +1,79 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v1 5/6] arm64: dts: Add main Thermal info to rk3368.dtsi
-Date: Thu, 29 Oct 2015 15:14:17 +0800
-Message-ID: <1446102858-10116-6-git-send-email-wxt@rock-chips.com>
-References: <1446102858-10116-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446102858-10116-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v8 06/17] dt-bindings: add document for analogix display port driver
+Date: Thu, 29 Oct 2015 09:40:37 +0100
+Message-ID: <1689999.2MgYqJktlx@phil>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <103292898.nCEg51kmfI@phil> <56317275.90508@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56317275.90508-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-deve
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add the thermal needed info on RK3368.
-Meanwhile, support the trips to throttle for thermal.
+Am Donnerstag, 29. Oktober 2015, 09:12:21 schrieb Yakir Yang:
+> Hi Heiko,
+> 
+> On 10/29/2015 04:02 AM, Heiko Stuebner wrote:
+> > Hi Yakir,
+> >
+> > Am Mittwoch, 28. Oktober 2015, 16:26:33 schrieb Yakir Yang:
+> >> diff --git a/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt b/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+> >> index 7a3a9cd..9905081 100644
+> >> --- a/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+> >> +++ b/Documentation/devicetree/bindings/display/exynos/exynos_dp.txt
+> >> @@ -31,45 +31,31 @@ Required properties for dp-controller:
+> >>   		from general PHY binding: the phandle for the PHY device.
+> >>   	-phy-names:
+> >>   		from general PHY binding: Should be "dp".
+> >> -	-samsung,color-space:
+> >> -		input video data format.
+> >> -			COLOR_RGB = 0, COLOR_YCBCR422 = 1, COLOR_YCBCR444 = 2
+> >> -	-samsung,dynamic-range:
+> >> -		dynamic range for input video data.
+> >> -			VESA = 0, CEA = 1
+> >> -	-samsung,ycbcr-coeff:
+> >> -		YCbCr co-efficients for input video.
+> >> -			COLOR_YCBCR601 = 0, COLOR_YCBCR709 = 1
+> >> -	-samsung,color-depth:
+> >> -		number of bits per colour component.
+> >> -			COLOR_6 = 0, COLOR_8 = 1, COLOR_10 = 2, COLOR_12 = 3
+> >> -	-samsung,link-rate:
+> >> -		link rate supported by the panel.
+> >> -			LINK_RATE_1_62GBPS = 0x6, LINK_RATE_2_70GBPS = 0x0A
+> >> -	-samsung,lane-count:
+> >> -		number of lanes supported by the panel.
+> >> -			LANE_COUNT1 = 1, LANE_COUNT2 = 2, LANE_COUNT4 = 4
+> >> -	- display-timings: timings for the connected panel as described by
+> >> -		Documentation/devicetree/bindings/video/display-timing.txt
+> > 											^^ display/display-timings.txt
+> > otherwise this patch does not apply.
+> 
+> I thought I have deleted this old path of "display-timing.txt", and 
+> changed it to
+> 
+> -		Documentation/devicetree/bindings/video/display-timing.txt
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+in the changes I got from Rob Hering's dt-branch [0] the path in the file
+is already display/display-timing.txt so applying a change with video/...
+in it fails. Anyway, as this will probably only make it in after the merge-
+window, we can see how this ends up before anyway :-) .
 
----
+> 
+> +		Documentation/devicetree/bindings/display/panel/display-timing.txt
+> 
+> And the real path of "display-timing.txt" in linux-next [tag 20151022] 
+> do under
+> the "display/panel/", those change should be right.
 
-Changes in v1:
-- support the opt gpio pinctrl state
 
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 36 ++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+Heiko
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index cc093a4..7207293 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -45,6 +45,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/thermal/thermal.h>
- 
- / {
- 	compatible = "rockchip,rk3368";
-@@ -123,6 +124,8 @@
- 			reg = <0x0 0x0>;
- 			cpu-idle-states = <&cpu_sleep>;
- 			enable-method = "psci";
-+
-+			#cooling-cells = <2>; /* min followed by max */
- 		};
- 
- 		cpu_l1: cpu@1 {
-@@ -155,6 +158,8 @@
- 			reg = <0x0 0x100>;
- 			cpu-idle-states = <&cpu_sleep>;
- 			enable-method = "psci";
-+
-+			#cooling-cells = <2>; /* min followed by max */
- 		};
- 
- 		cpu_b1: cpu@101 {
-@@ -404,6 +409,27 @@
- 		status = "disabled";
- 	};
- 
-+	thermal-zones {
-+		#include "rk3368-thermal.dtsi"
-+	};
-+
-+	tsadc: tsadc@ff280000 {
-+		compatible = "rockchip,rk3368-tsadc";
-+		reg = <0x0 0xff280000 0x0 0x100>;
-+		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
-+		clock-names = "tsadc", "apb_pclk";
-+		resets = <&cru SRST_TSADC>;
-+		reset-names = "tsadc-apb";
-+		pinctrl-names = "init", "default", "sleep";
-+		pinctrl-0 = <&otp_gpio>;
-+		pinctrl-1 = <&otp_out>;
-+		pinctrl-2 = <&otp_gpio>;
-+		#thermal-sensor-cells = <1>;
-+		rockchip,hw-tshut-temp = <95000>;
-+		status = "disabled";
-+	};
-+
- 	gmac: ethernet@ff290000 {
- 		compatible = "rockchip,rk3368-gmac";
- 		reg = <0x0 0xff290000 0x0 0x10000>;
-@@ -829,6 +855,16 @@
- 			};
- 		};
- 
-+		tsadc {
-+			otp_out: otp-gpio {
-+				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
-+			};
-+
-+			otp_out: otp-out {
-+				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		uart0 {
- 			uart0_xfer: uart0-xfer {
- 				rockchip,pins = <2 24 RK_FUNC_1 &pcfg_pull_up>,
--- 
-1.9.1
+[0] https://git.kernel.org/cgit/linux/kernel/git/robh/linux.git/commit/?h=dt/next&id=efdbd7345f8836f7495f3ac6ee237d86cb3bb6b0
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
