@@ -1,61 +1,64 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] usb: dwc2: host: Fix remote wakeup when not in DWC2_L2
-Date: Thu, 29 Oct 2015 16:45:10 -0700
-Message-ID: <CAD=FV=VvZ3vSLihTD-wS8jnSxJqq34Jn9N6Cmb2SDSJ98mvP+A@mail.gmail.com>
-References: <1445544303-24202-1-git-send-email-dianders@chromium.org>
-	<3334755.enVybYgnYb@phil>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v8 0/17] Add Analogix Core Display Port Driver
+Date: Fri, 30 Oct 2015 09:05:39 +0800
+Message-ID: <5632C263.8050209@rock-chips.com>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
+ <1972811.93U5ryFMyR@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3334755.enVybYgnYb@phil>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1972811.93U5ryFMyR@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, wulf <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, lyz <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, r.baldyga-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-deve
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Heiko,
 
-On Thu, Oct 29, 2015 at 3:49 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Donnerstag, 22. Oktober 2015, 13:05:03 schrieb Douglas Anderson:
->> In commit 734643dfbdde ("usb: dwc2: host: add flag to reflect bus
->> state") we changed dwc2_port_suspend() not to set the lx_state
->> anymore (instead it sets the new bus_suspended variable).  This
->> introduced a bug where we would fail to detect device insertions if:
+On 10/30/2015 01:49 AM, Heiko Stuebner wrote:
+> Am Mittwoch, 28. Oktober 2015, 16:15:43 schrieb Yakir Yang:
+>> Hi all,
 >>
->> 1. Plug empty hub into dwc2
->> 2. Plug USB flash drive into the empty hub.
->> 3. Wait a few seconds
->> 4. Unplug USB flash drive
->> 5. Less than 2 seconds after step 4, plug the USB flash drive in again.
+>>     The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+>> share the same IP, so a lot of parts can be re-used. I split the common
+>> code into bridge directory, then rk3288 and exynos only need to keep
+>> some platform code. Cause I can't find the exact IP name of exynos dp
+>> controller, so I decide to name dp core driver with "analogix" which I
+>> find in rk3288 eDP TRM
 >>
->> The dwc2_hcd_rem_wakeup() function should have been changed to look at
->> the new bus_suspended variable.
+>> But  there are still three light registers setting differents bewteen
+>> exynos and rk3288.
+>> 1. RK3288 have five special pll resigters which not indicata in exynos
+>>     dp controller.
+>> 2. The address of DP_PHY_PD(dp phy power manager register) are different
+>>     between rk3288 and exynos.
+>> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
+>>     register).
 >>
->> Let's fix it.  Since commit b46146d59fda ("usb: dwc2: host: resume root
->> hub on remote wakeup") talks about needing the root hub resumed if the
->> bus was suspended, we'll include it in our test.
->>
->> It appears that the "port_l1_change" should only be set to 1 if we were
->> in DWC2_L1 (the driver currently never sets this), so we'll update the
->> former "else" case based on this test.
->>
->> Fixes: 734643dfbdde ("usb: dwc2: host: add flag to reflect bus state")
->> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> This series have been well tested on Rockchip platform with eDP panel on
+>> Jerry Chromebook and Display Port Monitor on RK3288 board. Also I have
+>> tested on Samsung Snow and Peach Pit Chromebooks, and thanks to Javier@Samsung
+>> help to retest the whole series on Samsung Exynos5800 Peach Pi Chromebook,
+>> glad to say that things works rightlly.
+> Patch 15/17 looks like it didn't make it? I haven't found it in neither my
+> inbox nor in the linux-rockchip list archive? So I've used the v7 version
+> for my tests.
+
+Oops, thanks for your reminding, I would send it now.
+
+> This series on a rk3288-veyron-pinky and rk3288-veyron-jerry
+> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 >
-> I've talked with Doug a lot about that problem today and from reading
-> this change and the referenced causing change, it looks correct
-> and good to me, so
 
-It does also appear that the steps in the commit message are not
-sufficient to reproduce the problem.  Apparently something in the way
-my system is configured adds a delay before the bus actually gets
-suspended.  Presumably you could simulate the setup of my current
-system with an msleep() at the start of _dwc2_hcd_suspend() (before
-grabbing the spinlock).  I've stepped away from my test machine for
-the day though, so I can't confirm that.
+Thanks,
 
--Doug
+- Yakir
+
+>
+
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
