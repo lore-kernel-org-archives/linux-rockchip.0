@@ -1,53 +1,76 @@
-From: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Setup ethernet0 alias for u-boot
-Date: Fri, 30 Oct 2015 10:57:51 +0100
-Message-ID: <CAMuHMdUnSH66LUdV1E+nTkdnr7=fvYk0f3UE3u18fSVm6x8X=Q@mail.gmail.com>
-References: <1446151497-29833-1-git-send-email-sjoerd.simons@collabora.co.uk>
-	<CAMuHMdXBcZAXSm1hXv6E-hW9Zp-bPLpp-HxuWukS-Y837LBneQ@mail.gmail.com>
-	<1446198423.4092.285.camel@collabora.co.uk>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
+ compatible
+Date: Fri, 30 Oct 2015 11:42:29 +0100
+Message-ID: <56334995.6090103@linaro.org>
+References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
+ <1443147298-12603-2-git-send-email-wxt@rock-chips.com>
+ <560A10FB.7040408@linaro.org> <2486591.i0n1KlEQoc@diego>
+ <5632E765.4010207@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446198423.4092.285.camel-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5632E765.4010207@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <caesar.upstream@gmail.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sjoerd,
-
-On Fri, Oct 30, 2015 at 10:47 AM, Sjoerd Simons
-<sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org> wrote:
->> Note that in my case I didn't have to add an empty mac-address
->> property.
->> U-Boot (2015.04-something --- don't have the sources) seems to add a
->> "local-mac-address" property automatically.
+On 10/30/2015 04:43 AM, Caesar Wang wrote:
+> Hi Daniel,
 >
-> After submitting the patch i actually dived a bit deeper at how this
-> all hangs together.
+> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8801=E6=97=A5 03:14, Heiko St=C3=BCbn=
+er =E5=86=99=E9=81=93:
+>> Hi Daniel,
+>>
+>> Am Dienstag, 29. September 2015, 06:18:03 schrieb Daniel Lezcano:
+>>> On 09/25/2015 04:14 AM, Caesar Wang wrote:
+>>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
+>>>> There are some failure with build up on timer driver for rockchip.
+>>>>
+>>>> Says:
+>>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operan=
+d
+>>>> 1 --
+>>>> `dsb`
+>>>> ...
+>>>>
+>>>> The problem was different semantics of dsb on btw arm32 and arm64,
+>>>> Here we can convert the dsb with insteading of dsb(sy).The "sy" pa=
+ram
+>>>> is the default which you are allow to omit, so on arm32 dsb()and
+>>>> dsb(sy)
+>>>> are the same.
+>>>>
+>>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>>> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+>> as you have "just" Acked these patches, I guess you are expecting th=
+em
+>> to go
+>> through the same tree as the devicetree changes, right?
 >
-> The linux kernel checks for mac-address, local-mac-address and address
-> in the fdt node, in that order of preference. u-boot (at least recent
-> ones like you have), will set the mac-address property *if* it's
-> already defined but will always create the local-mac-address property
-> regardless.
+> I'm wonder if someone will apply this series patchs but the wait.:-)
+> In fact, I'm no sure that the Acked is really meaning.:-
 
-That's also what I noticed. Originally I added the empty "mac-address" like
-you did, and /sys/firmware/devicetree/base/soc/ethernet@e6800000 ended up
-having both "mac-address" and "local-mac-address", both with the correct
-address.
+Yes, by acking the patch I say I am ok with it and I agree it can go=20
+through another tree.
 
-Gr{oetje,eeting}s,
+I suggest before sending patches you read carefully the file=20
+Documentation/SubmittingPatches.
 
-                        Geert
+Especially, 11), 12) and 13).
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org
+Thanks.
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+   -- Daniel
+
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
