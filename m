@@ -1,122 +1,58 @@
-From: John Youn <John.Youn@synopsys.com>
-Subject: Re: [PATCH 1/2] usb: dwc2: host: Fix missing device insertions
-Date: Fri, 30 Oct 2015 20:38:41 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3B2A07@US01WEMBX2.internal.synopsys.com>
-References: <1445033424-21933-1-git-send-email-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
+ compatible
+Date: Sat, 31 Oct 2015 00:47:11 +0100
+Message-ID: <21587719.mnFBFBzBeI@phil>
+References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
+ <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, John Youn <John.Youn@synopsys.com>, "balbi@ti.com" <balbi@ti.com>
-Cc: Yunzhi Li <lyz@rock-chips.com>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56334995.6090103-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/16/2015 3:10 PM, Douglas Anderson wrote:
-> If you've got your interrupt signals bouncing a bit as you insert your
-> USB device, you might end up in a state when the device is connected but
-> the driver doesn't know it.
-> 
-> Specifically, the observed order is:
->  1. hardware sees connect
->  2. hardware sees disconnect
->  3. hardware sees connect
->  4. dwc2_port_intr() - clears connect interrupt
->  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
-> 
-> Now you'll be stuck with the cable plugged in and no further interrupts
-> coming in but the driver will think we're disconnected.
-> 
-> We'll fix this by checking for the missing connect interrupt and
-> re-connecting after the disconnect is posted.  We don't skip the
-> disconnect because if there is a transitory disconnect we really want to
-> de-enumerate and re-enumerate.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->  drivers/usb/dwc2/core.h     |  2 ++
->  drivers/usb/dwc2/hcd.c      | 33 +++++++++++++++++++++++++++++++++
->  drivers/usb/dwc2/hcd_intr.c |  6 +-----
->  3 files changed, 36 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-> index ebf2504..30748be 100644
-> --- a/drivers/usb/dwc2/core.h
-> +++ b/drivers/usb/dwc2/core.h
-> @@ -1151,11 +1151,13 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
->  
->  #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
->  extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
-> +extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
->  extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg);
->  extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
->  #else
->  static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
->  { return 0; }
-> +static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
->  static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
->  static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
->  static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
-> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-> index af4e4a2..4d2bc50 100644
-> --- a/drivers/usb/dwc2/hcd.c
-> +++ b/drivers/usb/dwc2/hcd.c
-> @@ -268,6 +268,22 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
->  }
->  
->  /**
-> + * dwc2_hcd_connect() - Handles connect of the HCD
-> + *
-> + * @hsotg: Pointer to struct dwc2_hsotg
-> + *
-> + * Must be called with interrupt disabled and spinlock held
-> + */
-> +void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
-> +{
-> +	if (hsotg->lx_state != DWC2_L0)
-> +		usb_hcd_resume_root_hub(hsotg->priv);
-> +
-> +	hsotg->flags.b.port_connect_status_change = 1;
-> +	hsotg->flags.b.port_connect_status = 1;
-> +}
-> +
-> +/**
->   * dwc2_hcd_disconnect() - Handles disconnect of the HCD
->   *
->   * @hsotg: Pointer to struct dwc2_hsotg
-> @@ -277,6 +293,7 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
->  void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->  {
->  	u32 intr;
-> +	u32 hprt0;
->  
->  	/* Set status flags for the hub driver */
->  	hsotg->flags.b.port_connect_status_change = 1;
-> @@ -315,6 +332,22 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->  		dwc2_hcd_cleanup_channels(hsotg);
->  
->  	dwc2_host_disconnect(hsotg);
-> +
-> +	/*
-> +	 * Add an extra check here to see if we're actually connected but
-> +	 * we don't have a detection interrupt pending.  This can happen if:
-> +	 *   1. hardware sees connect
-> +	 *   2. hardware sees disconnect
-> +	 *   3. hardware sees connect
-> +	 *   4. dwc2_port_intr() - clears connect interrupt
-> +	 *   5. dwc2_handle_common_intr() - calls here
-> +	 *
-> +	 * Without the extra check here we will end calling disconnect
-> +	 * and won't get any future interrupts to handle the connect.
-> +	 */
-> +	hprt0 = dwc2_readl(hsotg->regs + HPRT0);
-> +	if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
-> +		dwc2_hcd_connect(hsotg);
-
-I'm a little bit wary of this as it will also run when you unload
-the module with a device connected. However I can't produce any
-negative results from that. Will it work if you handle it just
-for the disconnect interrupt?
-
-John
+SGkgRGFuaWVsLAoKQW0gRnJlaXRhZywgMzAuIE9rdG9iZXIgMjAxNSwgMTE6NDI6Mjkgc2Nocmll
+YiBEYW5pZWwgTGV6Y2FubzoKPiBPbiAxMC8zMC8yMDE1IDA0OjQzIEFNLCBDYWVzYXIgV2FuZyB3
+cm90ZToKPiA+IEhpIERhbmllbCwKPiA+Cj4gPiDlnKggMjAxNeW5tDEw5pyIMDHml6UgMDM6MTQs
+IEhlaWtvIFN0w7xibmVyIOWGmemBkzoKPiA+PiBIaSBEYW5pZWwsCj4gPj4KPiA+PiBBbSBEaWVu
+c3RhZywgMjkuIFNlcHRlbWJlciAyMDE1LCAwNjoxODowMyBzY2hyaWViIERhbmllbCBMZXpjYW5v
+Ogo+ID4+PiBPbiAwOS8yNS8yMDE1IDA0OjE0IEFNLCBDYWVzYXIgV2FuZyB3cm90ZToKPiA+Pj4+
+IEJ1aWxkIHRoZSBhcm02NCBTb0NzIChlLmcuOiBSSzMzNjgpIG9uIFJvY2tjaGlwIHBsYXRmb3Jt
+LAo+ID4+Pj4gVGhlcmUgYXJlIHNvbWUgZmFpbHVyZSB3aXRoIGJ1aWxkIHVwIG9uIHRpbWVyIGRy
+aXZlciBmb3Igcm9ja2NoaXAuCj4gPj4+Pgo+ID4+Pj4gU2F5czoKPiA+Pj4+IC90bXAvY2NkQW5O
+eTUuczo0NzogRXJyb3I6IG1pc3NpbmcgaW1tZWRpYXRlIGV4cHJlc3Npb24gYXQgIG9wZXJhbmQK
+PiA+Pj4+IDEgLS0KPiA+Pj4+IGBkc2JgCj4gPj4+PiAuLi4KPiA+Pj4+Cj4gPj4+PiBUaGUgcHJv
+YmxlbSB3YXMgZGlmZmVyZW50IHNlbWFudGljcyBvZiBkc2Igb24gYnR3IGFybTMyIGFuZCBhcm02
+NCwKPiA+Pj4+IEhlcmUgd2UgY2FuIGNvbnZlcnQgdGhlIGRzYiB3aXRoIGluc3RlYWRpbmcgb2Yg
+ZHNiKHN5KS5UaGUgInN5IiBwYXJhbQo+ID4+Pj4gaXMgdGhlIGRlZmF1bHQgd2hpY2ggeW91IGFy
+ZSBhbGxvdyB0byBvbWl0LCBzbyBvbiBhcm0zMiBkc2IoKWFuZAo+ID4+Pj4gZHNiKHN5KQo+ID4+
+Pj4gYXJlIHRoZSBzYW1lLgo+ID4+Pj4KPiA+Pj4+IFNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5n
+IDx3eHRAcm9jay1jaGlwcy5jb20+Cj4gPj4+IEFja2VkLWJ5OiBEYW5pZWwgTGV6Y2FubyA8ZGFu
+aWVsLmxlemNhbm9AbGluYXJvLm9yZz4KPiA+PiBhcyB5b3UgaGF2ZSAianVzdCIgQWNrZWQgdGhl
+c2UgcGF0Y2hlcywgSSBndWVzcyB5b3UgYXJlIGV4cGVjdGluZyB0aGVtCj4gPj4gdG8gZ28KPiA+
+PiB0aHJvdWdoIHRoZSBzYW1lIHRyZWUgYXMgdGhlIGRldmljZXRyZWUgY2hhbmdlcywgcmlnaHQ/
+Cj4gPgo+ID4gSSdtIHdvbmRlciBpZiBzb21lb25lIHdpbGwgYXBwbHkgdGhpcyBzZXJpZXMgcGF0
+Y2hzIGJ1dCB0aGUgd2FpdC46LSkKPiA+IEluIGZhY3QsIEknbSBubyBzdXJlIHRoYXQgdGhlIEFj
+a2VkIGlzIHJlYWxseSBtZWFuaW5nLjotCj4gCj4gWWVzLCBieSBhY2tpbmcgdGhlIHBhdGNoIEkg
+c2F5IEkgYW0gb2sgd2l0aCBpdCBhbmQgSSBhZ3JlZSBpdCBjYW4gZ28gCj4gdGhyb3VnaCBhbm90
+aGVyIHRyZWUuCgphbHRob3VnaCBJIGd1ZXNzIHRoZSB0d28gY2xvY2tzb3VyY2UgY2hhbmdlcyBj
+b3VsZCB2ZXJ5IHdlbGwganVzdCBnbwp0aHJvdWdoIHlvdXIgdHJlZS4gZHNiKCkgLT4gZHNiKHN5
+KSBpcyBzdXBwb3NlZCB0byBiZSBlcXVhbCBhbmQgdGhlIHNlY29uZApvbmUgaXMganVzdCBjb3Nt
+ZXRpY3MuICBUaGUgS2NvbmZpZyBhbmQgZHRzIGNoYW5nZXMgbmVlZCB0byB3YWl0IGluIGFueSBj
+YXNlCmZvciA0LjUgLi4uIGJ1dCBJIGd1ZXNzIHRoYXQgbWF5IGJlIHRydWUgZm9yIHRoZSBjbG9j
+a3NvdXJjZSBjaGFuZ2VzIGFzIHdlbGw/CgoKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
