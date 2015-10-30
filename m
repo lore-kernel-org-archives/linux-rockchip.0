@@ -1,92 +1,75 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH 1/4] Crypto: Crypto driver support aes/des/des3 for rk3288
-Date: Fri, 30 Oct 2015 15:26:08 +0100
-Message-ID: <2230290.pTq1BehVXW@phil>
-References: <1446193369-4453-1-git-send-email-zain.wang@rock-chips.com> <1446193369-4453-2-git-send-email-zain.wang@rock-chips.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v8 11/17] dt-bindings: add document for rockchip dp phy
+Date: Fri, 30 Oct 2015 11:42:09 -0500
+Message-ID: <CAL_JsqL=pL8SXLEzhbJHS_djFSh+Ctky0igzagZ6E0M9Q_TFuA@mail.gmail.com>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <1446021068-11655-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1446193369-4453-2-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain Wang <zain.wang@rock-chips.com>
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1446021068-11655-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Daniel Kurtz <djkurtz@chromium.org>, Doug Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ajay kumar <ajaynumb@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.c>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, Oct 28, 2015 at 3:31 AM, Yakir Yang <ykk@rock-chips.com> wrote:
+> Add dt binding documentation for rockchip display port PHY.
+>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 
-first of all, thanks for working on this, it will be really cool to see the
-crypto accelerator supported in the kernel :-)
+Acked-by: Rob Herring <robh@kernel.org>
 
-Am Freitag, 30. Oktober 2015, 16:22:46 schrieb Zain Wang:
-> Crypto driver support cbc/ecb two chainmode, and aes/des/des3 three cipher mode.
-> The names registered are:
->     ecb(aes) cbc(aes) ecb(des) cbc(des) ecb(des3_ede) cbc(des3_ede)
-> You can alloc tags above in your case.
-> 
-> And other algorithms and platforms will be added later on.
-> 
-> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
 > ---
->  drivers/crypto/Makefile                            |   1 +
->  drivers/crypto/rk_crypto/Makefile                  |   3 +
->  drivers/crypto/rk_crypto/rk3288_crypto.c           | 393 ++++++++++++++++
->  drivers/crypto/rk_crypto/rk3288_crypto.h           | 291 ++++++++++++
->  .../crypto/rk_crypto/rk3288_crypto_ablkcipher.c    | 502 +++++++++++++++++++++
->  5 files changed, 1190 insertions(+)
->  create mode 100644 drivers/crypto/rk_crypto/Makefile
->  create mode 100644 drivers/crypto/rk_crypto/rk3288_crypto.c
->  create mode 100644 drivers/crypto/rk_crypto/rk3288_crypto.h
->  create mode 100644 drivers/crypto/rk_crypto/rk3288_crypto_ablkcipher.c
-> 
-> diff --git a/drivers/crypto/Makefile b/drivers/crypto/Makefile
-> index c3ced6f..00d103c 100644
-> --- a/drivers/crypto/Makefile
-> +++ b/drivers/crypto/Makefile
-> @@ -29,3 +29,4 @@ obj-$(CONFIG_CRYPTO_DEV_QAT) += qat/
->  obj-$(CONFIG_CRYPTO_DEV_QCE) += qce/
->  obj-$(CONFIG_CRYPTO_DEV_VMX) += vmx/
->  obj-$(CONFIG_CRYPTO_DEV_SUN4I_SS) += sunxi-ss/
-> +obj-$(CONFIG_CRYPTO_DEV_RK3288) += rk_crypto/
-
-as Mark said in the other mail, there may very well follow other Rockchip
-crypto-related drivers, so maybe it might be better to name the core
-option CONFIG_CRYPTO_DEV_ROCKCHIP. And then maybe define
-CONFIG_CRYPTO_DEV_RK3288 in a Kconfig in the subdirectory (like vmx does).
-
-
-> diff --git a/drivers/crypto/rk_crypto/Makefile b/drivers/crypto/rk_crypto/Makefile
+> Changes in v8:
+> - Remove the specific address in the example node name. (Heiko)
+>
+> Changes in v7:
+> - Simplify the commit message. (Kishon)
+>
+> Changes in v6: None
+> Changes in v5:
+> - Split binding doc's from driver changes. (Rob)
+> - Update the rockchip,grf explain in document, and correct the clock required
+>   elemets in document. (Rob & Heiko)
+>
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>
+>  .../devicetree/bindings/phy/rockchip-dp-phy.txt    | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
 > new file mode 100644
-> index 0000000..0f62d87
+> index 0000000..00902cb
 > --- /dev/null
-> +++ b/drivers/crypto/rk_crypto/Makefile
-
-generally, a lot of those subdirectories reference only the manufacturer
-name, so my suggestion would be to name yours just "rockchip" instead of
-"rk_crypto", to also ease readability.
-
-
-> @@ -0,0 +1,3 @@
-> +obj-$(CONFIG_CRYPTO_DEV_RK3288) += rk_crypto_driver.o
-> +rk_crypto_driver-objs := rk3288_crypto.o \
-> +			 rk3288_crypto_ablkcipher.o \
-
-that looks looks wrong.
-
-(1) the config option does not get defined in any Kconfig file in your set
-(2) naming the driver generically while you compile a variant will hinder
-    multiplatform kernels, because you might want to build both the rk3288
-    code and some additional stuff?
-(3) the _driver suffix is unnecessary
-
-So I guess just name it rk3288_crypto.o ?
-
-[...]
-
-While I have read through the code implementing the device, I haven't
-seen anything spring out but do not know enough about the crypto subsystem
-itself. But it looks like you got some feedback already anyway from others :-)
-
-
-Thanks
-Heiko
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+> @@ -0,0 +1,22 @@
+> +Rockchip Soc Seroes Display Port PHY
+> +------------------------------------
+> +
+> +Required properties:
+> +- compatible : should be one of the following supported values:
+> +        - "rockchip.rk3288-dp-phy"
+> +- clocks: from common clock binding: handle to dp clock.
+> +       of memory mapped region.
+> +- clock-names: from common clock binding:
+> +       Required elements: "24m"
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +- #phy-cells : from the generic PHY bindings, must be 0;
+> +
+> +Example:
+> +
+> +edp_phy: edp-phy {
+> +       compatible = "rockchip,rk3288-dp-phy";
+> +       rockchip,grf = <&grf>;
+> +       clocks = <&cru SCLK_EDP_24M>;
+> +       clock-names = "24m";
+> +       #phy-cells = <0>;
+> +};
+> --
+> 1.9.1
+>
+>
