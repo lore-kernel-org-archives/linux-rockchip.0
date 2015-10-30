@@ -1,76 +1,81 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
- compatible
-Date: Fri, 30 Oct 2015 11:42:29 +0100
-Message-ID: <56334995.6090103@linaro.org>
-References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
- <1443147298-12603-2-git-send-email-wxt@rock-chips.com>
- <560A10FB.7040408@linaro.org> <2486591.i0n1KlEQoc@diego>
- <5632E765.4010207@gmail.com>
+From: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [RESEND PATCH 4/4] crypto: rk_crypto - add DT bindings
+ documentation
+Date: Fri, 30 Oct 2015 14:03:34 +0000
+Message-ID: <20151030140334.GB31073@leverpostej>
+References: <1446193369-4453-1-git-send-email-zain.wang@rock-chips.com>
+ <1446193369-4453-5-git-send-email-zain.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5632E765.4010207@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1446193369-4453-5-git-send-email-zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/30/2015 04:43 AM, Caesar Wang wrote:
-> Hi Daniel,
->
-> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8801=E6=97=A5 03:14, Heiko St=C3=BCbn=
-er =E5=86=99=E9=81=93:
->> Hi Daniel,
->>
->> Am Dienstag, 29. September 2015, 06:18:03 schrieb Daniel Lezcano:
->>> On 09/25/2015 04:14 AM, Caesar Wang wrote:
->>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
->>>> There are some failure with build up on timer driver for rockchip.
->>>>
->>>> Says:
->>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operan=
-d
->>>> 1 --
->>>> `dsb`
->>>> ...
->>>>
->>>> The problem was different semantics of dsb on btw arm32 and arm64,
->>>> Here we can convert the dsb with insteading of dsb(sy).The "sy" pa=
-ram
->>>> is the default which you are allow to omit, so on arm32 dsb()and
->>>> dsb(sy)
->>>> are the same.
->>>>
->>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->>> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
->> as you have "just" Acked these patches, I guess you are expecting th=
-em
->> to go
->> through the same tree as the devicetree changes, right?
->
-> I'm wonder if someone will apply this series patchs but the wait.:-)
-> In fact, I'm no sure that the Acked is really meaning.:-
+On Fri, Oct 30, 2015 at 04:22:49PM +0800, Zain Wang wrote:
+> Add DT bindings documentation for the rk3288 crypto drivers.
+> 
+> Signed-off-by: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>  .../devicetree/bindings/crypto/rk-crypto.txt       | 31 ++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rk-crypto.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/crypto/rk-crypto.txt b/Documentation/devicetree/bindings/crypto/rk-crypto.txt
+> new file mode 100644
+> index 0000000..1e50768
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/crypto/rk-crypto.txt
+> @@ -0,0 +1,31 @@
+> +Rockchip Electronics And Security Accelerator
+> +
+> +Required properties:
+> +- compatible: should be "rockchip,crypto"
 
-Yes, by acking the patch I say I am ok with it and I agree it can go=20
-through another tree.
+Choose a more specific name. Rockchip could easily come up with another
+crypto accelerator later.
 
-I suggest before sending patches you read carefully the file=20
-Documentation/SubmittingPatches.
+> +- reg: base physical address of the engine and length of memory mapped
+> +       region.
+> +- interrupts: interrupt number
+> +- clocks: clock specifiers
+> +- clock-names: "aclk_crypto" used to clock data
+> +			   "hclk_crypto" used to clock data
+> +			   "srst_crypto" used to clock crypto accelerator
+> +			   "apb_pclk"    used to clock dma
+> +-status: Enable
 
-Especially, 11), 12) and 13).
+No need to mention the status property.
 
-Thanks.
+Thanks,
+Mark.
 
-   -- Daniel
-
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+> +
+> +Examples:
+> +
+> +	crypto: cypto-controller@ff8a0000 {
+> +		compatible = "rockchip,crypto";
+> +		reg = <0xff8a0000 0x4000>;
+> +		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru ACLK_CRYPTO>,
+> +			 <&cru HCLK_CRYPTO>,
+> +			 <&cru SRST_CRYPTO>,
+> +			 <&cru ACLK_DMAC1>;
+> +
+> +		clock-names = "aclk_crypto",
+> +			      "hclk_crypto",
+> +			      "srst_crypto",
+> +				  "apb_pclk";
+> +		status = "okay";
+> +	};
+> -- 
+> 1.9.1
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
