@@ -1,88 +1,92 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH 09/10] drm/panel: simple: Add support for BOE TV080WUM-NL0
-Date: Fri, 30 Oct 2015 18:30:22 +0100
-Message-ID: <20151030173022.GB17183@ulmo.nvidia.com>
-References: <1444470930-17150-1-git-send-email-zyw@rock-chips.com>
- <1444470930-17150-10-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0214247360=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1444470930-17150-10-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v2 0/2] Patches to fix remote wakeup on rk3288 dwc2 "host" port
+Date: Fri, 30 Oct 2015 13:17:52 -0700
+Message-ID: <1446236275-12698-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, balbi-l0cyMroinI0@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, mark.rutland-5wv7dgnIgG8@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, paulz-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On the rk3288 USB host-only port (the one that's not the OTG-enabled
+port) the PHY can get into a bad state when a wakeup is asserted (not
+just a wakeup from full system suspend but also a wakeup from
+autosuspend).
 
---===============0214247360==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="s/l3CgOIzMHHjg/5"
-Content-Disposition: inline
+We can get the PHY out of its bad state by asserting its "port reset",
+but unfortunately that seems to assert a reset onto the USB bus so it
+could confuse things if we don't actually deenumerate / reenumerate the
+device.
 
+We can also get the PHY out of its bad state by fully resetting it using
+the reset from the CRU (clock reset unit), which does a more full
+reset.  The CRU-based reset appears to actually cause devices on the bus
+to be removed and reinserted, which fixes the problem (albeit in a hacky
+way).
 
---s/l3CgOIzMHHjg/5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+It's unfortunate that we need to do a full re-enumeration of devices at
+wakeup time, but this is better than alternative of letting the bus get
+wedged.
 
-On Sat, Oct 10, 2015 at 05:55:29PM +0800, Chris Zhong wrote:
-> This adds support for the BOE TV080WUM-NL0 1200x1920 mipi panel to the
-> DRM simple panel driver.
->=20
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> ---
->=20
->  drivers/gpu/drm/panel/panel-simple.c | 33 ++++++++++++++++++++++++++++++=
-+++
->  1 file changed, 33 insertions(+)
+I've tested this series atop a bit of a conglomeration of Heiko's github
+"somewhat stable" branch (v4.3-rc3-876-g6509232) but with Greg KH's
+usb-next merged in.
 
-This patch needs to be accompanied by another patch that adds the DT
-binding documentation for this panel.
+===
 
-Also Documentation/devicetree/bindings/vendor-prefixes.txt doesn't seem
-to contain a line for "boe" yet, please add that in yet another patch.
+I've posted up a bunch of patches recently but tried to keep them in
+separate series where it makes sense.  A summary of known patches:
+All patches can be found with: https://patchwork.kernel.org/patch/<ID>/
 
-Thierry
+ACKed (thanks!) and not yet landed:
+ 7453801  usb: dwc2: host: Fix ahbcfg for rk3066
+ 7467521  usb: dwc2: host: Fix remote wakeup when not in DWC2_L2
 
---s/l3CgOIzMHHjg/5
-Content-Type: application/pgp-signature; name="signature.asc"
+Important, not yet reviewed:
+ 7421171  [1/2] usb: dwc2: host: Fix missing device insertions
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Fixes no known issues, not yet reviewed:
+ 7421181  [2/2] usb: dwc2: host: Clear interrupts before handling them
 
-iQIcBAABCAAGBQJWM6kuAAoJEN0jrNd/PrOhfnUP/0WsnvWFAzKTWInQnHVryTfG
-kdodxo92IzvrOxoYcU+pV4eFKmQ48epfJiv17GuiWlO8TFx5QwL4Nriw2mI4KVMG
-Iank7qussfDmuXfEHz0qeC9b5fAIGvMZB5/L0JAqNywL435rsP1y4Q2AwZAvdEJk
-lSUFVOT9u+Jj8HEGTOKKsuk74ZmECeborrDdRy85/q4RTD3JWaEXcvFPS+sZVfQP
-jRFLqQTCTgAwV9GK60bbo2Z/j0tkdOxMJLwK9mr2gCCk2bebHd303E2q/7vsxm4/
-BaxcjyWuHOQU96iBtYRKBk3ccWgaDoz+lm6HIvBVkQKXyMgBPrO2+9+kf8DWfLWg
-ty6n9OWsRhim7X5HhFjZXbPdomHbDIIOwIzMLepjKEw3+p2N5i2qKbNMWYOhJK7x
-qwSQrl1iN0KQQ2InMawkeVQRJCAzVlYbNxA/U2LaJyLwMZo/yhgTA4foUElYWpuX
-OC9yp+p2A7muS6iPsX0Y33jNBzqWerSTIA0+6WIFhFSs65VDXvOGHJei6MqXleN0
-4QFGNXAdvU/NfSPm6oBa8zudPStRVzzWgitZAXfl+6I5MPVsVivfwSW54OYVg8W6
-4ZIJ1Z48whJTgmzgC7/Peur/LvXjFTlS75RM+EgOkpzlNNmjiZ9gkzATRCC98Ye+
-eophJJY5f2KE7/OLrn4l
-=lldL
------END PGP SIGNATURE-----
+Optimization to reduce probe time (may require simple rebase):
+ 7348131  [1/5] usb: dwc2: Restore GUSBCFG in dwc2_get_hwparams()
+ 7348221  [2/5] usb: dwc2: reset dwc2 core before dwc2_get_hwparams()
+ 7348191  [3/5] CHROMIUM: usb: dwc2: Avoid double-reset at boot time
+ 7348211  [4/5] usb: dwc2: Speed dwc2_get_hwparams() on some host-only ports
+ 7348201  [5/5] usb: dwc2: reduce dwc2 driver probe time
+ 7355241  usb: dwc2: Avoid more calls to dwc2_core_reset()
 
---s/l3CgOIzMHHjg/5--
+This series:
+ usb: dwc2: optionally assert phy "full reset" when waking up
+ ARM: dts: rockchip: Point rk3288 dwc2 usb at the full PHY reset
 
---===============0214247360==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
+Coming soon:
+ RFT: usb: dwc2: bus suspend/resume that's not hibernate
 
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Abandoned for now (can't get wakeup to work on mainline):
+ 6727091  [REPOST,1/3] USB: Export usb_wakeup_enabled_descendants()
+ 6727101  [REPOST,2/3] Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
+ 6727121  [REPOST,3/3] USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
 
---===============0214247360==--
+Changes in v2:
+- Use a full PHY reset for safety; no PHY changes needed for that.
+- Cover letter explains outstanding patches
+
+Doug Anderson (2):
+  usb: dwc2: optionally assert phy "full reset" when waking up
+  ARM: dts: rockchip: Point rk3288 dwc2 usb at the full PHY reset
+
+ Documentation/devicetree/bindings/usb/dwc2.txt |  7 +++++++
+ arch/arm/boot/dts/rk3288.dtsi                  |  5 +++++
+ drivers/usb/dwc2/core.h                        |  5 +++++
+ drivers/usb/dwc2/core_intr.c                   | 14 ++++++++++++++
+ drivers/usb/dwc2/platform.c                    | 13 +++++++++++++
+ 5 files changed, 44 insertions(+)
+
+-- 
+2.6.0.rc2.230.g3dd15c0
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
