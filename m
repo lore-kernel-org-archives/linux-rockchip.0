@@ -1,76 +1,48 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 11/13] drm/panel: simple: Add support for BOE TV080WUM-NL0
-Date: Sat, 31 Oct 2015 20:56:07 +0800
-Message-ID: <1446296170-3702-12-git-send-email-zyw@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 12/13] drm/panel: simple: Add simple panel device tree binding
+Date: Sat, 31 Oct 2015 20:56:08 +0800
+Message-ID: <1446296170-3702-13-git-send-email-zyw@rock-chips.com>
 References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1446296170-3702-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds support for the BOE TV080WUM-NL0 1200x1920 mipi panel to the
-DRM simple panel driver.
+This binding specifies a set of common properties for display panels. It
+can be used as a basis by bindings for specific panels.
+Bindings for three specific panels are provided to show how the
+simple panel binding can be used.
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
-Changes in v2: None
+Changes in v2:
+As Thierry.Reding comment, add a documentation for this panel.
 
- drivers/gpu/drm/panel/panel-simple.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
 
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index f97b73e..3610e1c 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -1348,6 +1348,36 @@ static const struct panel_desc_dsi panasonic_vvx10f004b00 = {
- 	.lanes = 4,
- };
- 
-+static const struct drm_display_mode boe_tv080wum_nl0_mode = {
-+	.clock = 160000,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 120,
-+	.hsync_end = 1200 + 120 + 20,
-+	.htotal = 1200 + 120 + 20 + 21,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 21,
-+	.vsync_end = 1920 + 21 + 3,
-+	.vtotal = 1920 + 21 + 3 + 18,
-+	.vrefresh = 60,
-+	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
-+};
+diff --git a/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt b/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
+new file mode 100644
+index 0000000..50be5e2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
+@@ -0,0 +1,7 @@
++Boe Corporation 8.0" WUXGA TFT LCD panel
 +
-+static const struct panel_desc_dsi boe_tv080wum_nl0 = {
-+	.desc = {
-+		.modes = &boe_tv080wum_nl0_mode,
-+		.num_modes = 1,
-+		.size = {
-+			.width = 107,
-+			.height = 172,
-+		},
-+	},
-+	.flags = MIPI_DSI_MODE_VIDEO |
-+		 MIPI_DSI_MODE_VIDEO_BURST |
-+		 MIPI_DSI_MODE_VIDEO_SYNC_PULSE,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.lanes = 4,
-+};
++Required properties:
++- compatible: should be "boe,tv080wum-nl0"
 +
- static const struct of_device_id dsi_of_match[] = {
- 	{
- 		.compatible = "auo,b080uan01",
-@@ -1362,6 +1392,9 @@ static const struct of_device_id dsi_of_match[] = {
- 		.compatible = "panasonic,vvx10f004b00",
- 		.data = &panasonic_vvx10f004b00
- 	}, {
-+		.compatible = "boe,tv080wum-nl0",
-+		.data = &boe_tv080wum_nl0
-+	}, {
- 		/* sentinel */
- 	}
- };
++This binding is compatible with the simple-panel binding, which is specified
++in simple-panel.txt in this directory.
 -- 
 2.6.2
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
