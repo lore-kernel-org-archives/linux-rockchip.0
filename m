@@ -1,69 +1,93 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [REPOST PATCH 0/3] dwc2 patches to allow wakeup on Rockchip rk3288
-Date: Fri, 30 Oct 2015 17:01:22 -0700
-Message-ID: <CAD=FV=UY6F5xGc2LjxOPExkdRe02aWWV6cbMRVx6nt9xEVhDDQ@mail.gmail.com>
-References: <1436207224-21849-1-git-send-email-dianders@chromium.org>
-	<CAD=FV=W-iT48ah4WJDpAGqeNMkcTp3gMMddKYVz0ad-QXVz3fw@mail.gmail.com>
-	<2B3535C5ECE8B5419E3ECBE30077290901DC3A9725@US01WEMBX2.internal.synopsys.com>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v8 11/17] dt-bindings: add document for rockchip dp phy
+Date: Sat, 31 Oct 2015 11:13:48 +0800
+Message-ID: <563431EC.9050701@rock-chips.com>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
+ <1446021068-11655-1-git-send-email-ykk@rock-chips.com>
+ <CAL_JsqL=pL8SXLEzhbJHS_djFSh+Ctky0igzagZ6E0M9Q_TFuA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3A9725@US01WEMBX2.internal.synopsys.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>
-Cc: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Chris Zhong <zyw@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Julius Werner <jwerner@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Alexandru Stan <amstan@chromium.org>, lyz <lyz@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Petr Mladek <pmladek@suse.cz>, Alan Stern <stern@rowland.harvard.edu>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kever Yang <kever.yang@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Dan Williams <dan.j.williams@intel.com>, Matthew Garrett <mjg59@coreos.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pratyush Anand <pratyush.anand@gmail.com>, Pawel Moll <pawel.moll@arm.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAL_JsqL=pL8SXLEzhbJHS_djFSh+Ctky0igzagZ6E0M9Q_TFuA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpau>
 List-Id: linux-rockchip.vger.kernel.org
 
-John,
 
-On Mon, Oct 26, 2015 at 7:05 PM, John Youn <John.Youn@synopsys.com> wrote:
-> On 10/21/2015 9:23 AM, Doug Anderson wrote:
->> John,
+On 10/31/2015 12:42 AM, Rob Herring wrote:
+> On Wed, Oct 28, 2015 at 3:31 AM, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>> Add dt binding documentation for rockchip display port PHY.
 >>
->> On Mon, Jul 6, 2015 at 11:27 AM, Douglas Anderson <dianders@chromium.org> wrote:
->>> This series of patches, together with
->>> <https://patchwork.kernel.org/patch/6652341/> from Chris Zhong and a
->>> dts change allow us to wake up from a USB device on rk3288 boards.
->>> The patches were tested on rk3288-jerry in the chromeos-3.14 kernel.
->>> The chromeos-3.14 kernel tested included a full set of dwc2 backports
->>> from upstream, so this is expected to function upstream once we get
->>> everything setup there.
->>>
->>>
->>> Douglas Anderson (3):
->>>   USB: Export usb_wakeup_enabled_descendants()
->>>   Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
->>>   USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
->>>
->>>  Documentation/devicetree/bindings/usb/dwc2.txt |  4 +++
->>>  drivers/usb/core/hub.c                         |  7 ++--
->>>  drivers/usb/dwc2/core.h                        |  2 ++
->>>  drivers/usb/dwc2/platform.c                    | 45 ++++++++++++++++++++++++--
->>>  include/linux/usb/hcd.h                        |  5 +++
->>>  5 files changed, 58 insertions(+), 5 deletions(-)
+>> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+Thanks,
+
+- Yakir
+
+>> ---
+>> Changes in v8:
+>> - Remove the specific address in the example node name. (Heiko)
 >>
->> This series was posted a while ago.  Do you have any comments on it?
->> Should I repost it?
+>> Changes in v7:
+>> - Simplify the commit message. (Kishon)
 >>
->> Thanks!
+>> Changes in v6: None
+>> Changes in v5:
+>> - Split binding doc's from driver changes. (Rob)
+>> - Update the rockchip,grf explain in document, and correct the clock required
+>>    elemets in document. (Rob & Heiko)
 >>
->> -Doug
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>   .../devicetree/bindings/phy/rockchip-dp-phy.txt    | 22 ++++++++++++++++++++++
+>>   1 file changed, 22 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>> new file mode 100644
+>> index 0000000..00902cb
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>> @@ -0,0 +1,22 @@
+>> +Rockchip Soc Seroes Display Port PHY
+>> +------------------------------------
+>> +
+>> +Required properties:
+>> +- compatible : should be one of the following supported values:
+>> +        - "rockchip.rk3288-dp-phy"
+>> +- clocks: from common clock binding: handle to dp clock.
+>> +       of memory mapped region.
+>> +- clock-names: from common clock binding:
+>> +       Required elements: "24m"
+>> +- rockchip,grf: phandle to the syscon managing the "general register files"
+>> +- #phy-cells : from the generic PHY bindings, must be 0;
+>> +
+>> +Example:
+>> +
+>> +edp_phy: edp-phy {
+>> +       compatible = "rockchip,rk3288-dp-phy";
+>> +       rockchip,grf = <&grf>;
+>> +       clocks = <&cru SCLK_EDP_24M>;
+>> +       clock-names = "24m";
+>> +       #phy-cells = <0>;
+>> +};
+>> --
+>> 1.9.1
+>>
 >>
 >
 >
-> Sorry, I must have missed it earlier.
->
-> Could you repost based on latest and I'll review.
-
-I tried today but something has changed in mainline Linux and the
-rk3288 isn't waking up from USB even when I've configured it
-correctly.  I can still send up the patches, but they won't actually
-produce something that will work upstream.  :(
-
-I'll keep it my back burner to investigate, though if someone else
-(like maybe someone from Rockchip) wanted to, they could to it too...
-
-...until we figure out what's going on we should probably consider
-these patches abandoned.
-
--Doug
