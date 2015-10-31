@@ -1,58 +1,69 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
- compatible
-Date: Sat, 31 Oct 2015 00:47:11 +0100
-Message-ID: <21587719.mnFBFBzBeI@phil>
-References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
- <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [REPOST PATCH 0/3] dwc2 patches to allow wakeup on Rockchip rk3288
+Date: Fri, 30 Oct 2015 17:01:22 -0700
+Message-ID: <CAD=FV=UY6F5xGc2LjxOPExkdRe02aWWV6cbMRVx6nt9xEVhDDQ@mail.gmail.com>
+References: <1436207224-21849-1-git-send-email-dianders@chromium.org>
+	<CAD=FV=W-iT48ah4WJDpAGqeNMkcTp3gMMddKYVz0ad-QXVz3fw@mail.gmail.com>
+	<2B3535C5ECE8B5419E3ECBE30077290901DC3A9725@US01WEMBX2.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56334995.6090103-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3A9725@US01WEMBX2.internal.synopsys.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>
+Cc: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, Chris Zhong <zyw@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Julius Werner <jwerner@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, Alexandru Stan <amstan@chromium.org>, lyz <lyz@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Petr Mladek <pmladek@suse.cz>, Alan Stern <stern@rowland.harvard.edu>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kever Yang <kever.yang@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, Dan Williams <dan.j.williams@intel.com>, Matthew Garrett <mjg59@coreos.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pratyush Anand <pratyush.anand@gmail.com>, Pawel Moll <pawel.moll@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuaWVsLAoKQW0gRnJlaXRhZywgMzAuIE9rdG9iZXIgMjAxNSwgMTE6NDI6Mjkgc2Nocmll
-YiBEYW5pZWwgTGV6Y2FubzoKPiBPbiAxMC8zMC8yMDE1IDA0OjQzIEFNLCBDYWVzYXIgV2FuZyB3
-cm90ZToKPiA+IEhpIERhbmllbCwKPiA+Cj4gPiDlnKggMjAxNeW5tDEw5pyIMDHml6UgMDM6MTQs
-IEhlaWtvIFN0w7xibmVyIOWGmemBkzoKPiA+PiBIaSBEYW5pZWwsCj4gPj4KPiA+PiBBbSBEaWVu
-c3RhZywgMjkuIFNlcHRlbWJlciAyMDE1LCAwNjoxODowMyBzY2hyaWViIERhbmllbCBMZXpjYW5v
-Ogo+ID4+PiBPbiAwOS8yNS8yMDE1IDA0OjE0IEFNLCBDYWVzYXIgV2FuZyB3cm90ZToKPiA+Pj4+
-IEJ1aWxkIHRoZSBhcm02NCBTb0NzIChlLmcuOiBSSzMzNjgpIG9uIFJvY2tjaGlwIHBsYXRmb3Jt
-LAo+ID4+Pj4gVGhlcmUgYXJlIHNvbWUgZmFpbHVyZSB3aXRoIGJ1aWxkIHVwIG9uIHRpbWVyIGRy
-aXZlciBmb3Igcm9ja2NoaXAuCj4gPj4+Pgo+ID4+Pj4gU2F5czoKPiA+Pj4+IC90bXAvY2NkQW5O
-eTUuczo0NzogRXJyb3I6IG1pc3NpbmcgaW1tZWRpYXRlIGV4cHJlc3Npb24gYXQgIG9wZXJhbmQK
-PiA+Pj4+IDEgLS0KPiA+Pj4+IGBkc2JgCj4gPj4+PiAuLi4KPiA+Pj4+Cj4gPj4+PiBUaGUgcHJv
-YmxlbSB3YXMgZGlmZmVyZW50IHNlbWFudGljcyBvZiBkc2Igb24gYnR3IGFybTMyIGFuZCBhcm02
-NCwKPiA+Pj4+IEhlcmUgd2UgY2FuIGNvbnZlcnQgdGhlIGRzYiB3aXRoIGluc3RlYWRpbmcgb2Yg
-ZHNiKHN5KS5UaGUgInN5IiBwYXJhbQo+ID4+Pj4gaXMgdGhlIGRlZmF1bHQgd2hpY2ggeW91IGFy
-ZSBhbGxvdyB0byBvbWl0LCBzbyBvbiBhcm0zMiBkc2IoKWFuZAo+ID4+Pj4gZHNiKHN5KQo+ID4+
-Pj4gYXJlIHRoZSBzYW1lLgo+ID4+Pj4KPiA+Pj4+IFNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5n
-IDx3eHRAcm9jay1jaGlwcy5jb20+Cj4gPj4+IEFja2VkLWJ5OiBEYW5pZWwgTGV6Y2FubyA8ZGFu
-aWVsLmxlemNhbm9AbGluYXJvLm9yZz4KPiA+PiBhcyB5b3UgaGF2ZSAianVzdCIgQWNrZWQgdGhl
-c2UgcGF0Y2hlcywgSSBndWVzcyB5b3UgYXJlIGV4cGVjdGluZyB0aGVtCj4gPj4gdG8gZ28KPiA+
-PiB0aHJvdWdoIHRoZSBzYW1lIHRyZWUgYXMgdGhlIGRldmljZXRyZWUgY2hhbmdlcywgcmlnaHQ/
-Cj4gPgo+ID4gSSdtIHdvbmRlciBpZiBzb21lb25lIHdpbGwgYXBwbHkgdGhpcyBzZXJpZXMgcGF0
-Y2hzIGJ1dCB0aGUgd2FpdC46LSkKPiA+IEluIGZhY3QsIEknbSBubyBzdXJlIHRoYXQgdGhlIEFj
-a2VkIGlzIHJlYWxseSBtZWFuaW5nLjotCj4gCj4gWWVzLCBieSBhY2tpbmcgdGhlIHBhdGNoIEkg
-c2F5IEkgYW0gb2sgd2l0aCBpdCBhbmQgSSBhZ3JlZSBpdCBjYW4gZ28gCj4gdGhyb3VnaCBhbm90
-aGVyIHRyZWUuCgphbHRob3VnaCBJIGd1ZXNzIHRoZSB0d28gY2xvY2tzb3VyY2UgY2hhbmdlcyBj
-b3VsZCB2ZXJ5IHdlbGwganVzdCBnbwp0aHJvdWdoIHlvdXIgdHJlZS4gZHNiKCkgLT4gZHNiKHN5
-KSBpcyBzdXBwb3NlZCB0byBiZSBlcXVhbCBhbmQgdGhlIHNlY29uZApvbmUgaXMganVzdCBjb3Nt
-ZXRpY3MuICBUaGUgS2NvbmZpZyBhbmQgZHRzIGNoYW5nZXMgbmVlZCB0byB3YWl0IGluIGFueSBj
-YXNlCmZvciA0LjUgLi4uIGJ1dCBJIGd1ZXNzIHRoYXQgbWF5IGJlIHRydWUgZm9yIHRoZSBjbG9j
-a3NvdXJjZSBjaGFuZ2VzIGFzIHdlbGw/CgoKSGVpa28KCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+John,
+
+On Mon, Oct 26, 2015 at 7:05 PM, John Youn <John.Youn@synopsys.com> wrote:
+> On 10/21/2015 9:23 AM, Doug Anderson wrote:
+>> John,
+>>
+>> On Mon, Jul 6, 2015 at 11:27 AM, Douglas Anderson <dianders@chromium.org> wrote:
+>>> This series of patches, together with
+>>> <https://patchwork.kernel.org/patch/6652341/> from Chris Zhong and a
+>>> dts change allow us to wake up from a USB device on rk3288 boards.
+>>> The patches were tested on rk3288-jerry in the chromeos-3.14 kernel.
+>>> The chromeos-3.14 kernel tested included a full set of dwc2 backports
+>>> from upstream, so this is expected to function upstream once we get
+>>> everything setup there.
+>>>
+>>>
+>>> Douglas Anderson (3):
+>>>   USB: Export usb_wakeup_enabled_descendants()
+>>>   Documentation: dt-bindings: Add snps,need-phy-for-wake for dwc2 USB
+>>>   USB: dwc2: Don't turn off the usbphy in suspend if wakeup is enabled
+>>>
+>>>  Documentation/devicetree/bindings/usb/dwc2.txt |  4 +++
+>>>  drivers/usb/core/hub.c                         |  7 ++--
+>>>  drivers/usb/dwc2/core.h                        |  2 ++
+>>>  drivers/usb/dwc2/platform.c                    | 45 ++++++++++++++++++++++++--
+>>>  include/linux/usb/hcd.h                        |  5 +++
+>>>  5 files changed, 58 insertions(+), 5 deletions(-)
+>>
+>> This series was posted a while ago.  Do you have any comments on it?
+>> Should I repost it?
+>>
+>> Thanks!
+>>
+>> -Doug
+>>
+>
+>
+> Sorry, I must have missed it earlier.
+>
+> Could you repost based on latest and I'll review.
+
+I tried today but something has changed in mainline Linux and the
+rk3288 isn't waking up from USB even when I've configured it
+correctly.  I can still send up the patches, but they won't actually
+produce something that will work upstream.  :(
+
+I'll keep it my back burner to investigate, though if someone else
+(like maybe someone from Rockchip) wanted to, they could to it too...
+
+...until we figure out what's going on we should probably consider
+these patches abandoned.
+
+-Doug
