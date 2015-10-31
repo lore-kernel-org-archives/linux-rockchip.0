@@ -1,92 +1,149 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
- compatible
-Date: Sat, 31 Oct 2015 14:04:47 +0100
-Message-ID: <5634BC6F.6020408@linaro.org>
-References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
- <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
- <21587719.mnFBFBzBeI@phil>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v10 09/17] dt-bindings: add document for rockchip variant
+ of analogix_dp
+Date: Sat, 31 Oct 2015 13:37:00 -0500
+Message-ID: <CAL_Jsq+Z0RSgB1aBg+x4Ez7zXAjyyn6BkOuua=3JeqpKR=v+Lg@mail.gmail.com>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <1446273737-15262-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <21587719.mnFBFBzBeI@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1446273737-15262-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Daniel Kurtz <djkurtz@chromium.org>, Doug Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ajay kumar <ajaynumb@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.c>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10/31/2015 12:47 AM, Heiko Stuebner wrote:
-> Hi Daniel,
+On Sat, Oct 31, 2015 at 1:42 AM, Yakir Yang <ykk@rock-chips.com> wrote:
+> Rockchip DP driver is a helper driver of analogix_dp coder driver,
+> so most of the DT property should be descriped in analogix_dp document.
 >
-> Am Freitag, 30. Oktober 2015, 11:42:29 schrieb Daniel Lezcano:
->> On 10/30/2015 04:43 AM, Caesar Wang wrote:
->>> Hi Daniel,
->>>
->>> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8801=E6=97=A5 03:14, Heiko St=C3=BC=
-bner =E5=86=99=E9=81=93:
->>>> Hi Daniel,
->>>>
->>>> Am Dienstag, 29. September 2015, 06:18:03 schrieb Daniel Lezcano:
->>>>> On 09/25/2015 04:14 AM, Caesar Wang wrote:
->>>>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
->>>>>> There are some failure with build up on timer driver for rockchi=
-p.
->>>>>>
->>>>>> Says:
->>>>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  oper=
-and
->>>>>> 1 --
->>>>>> `dsb`
->>>>>> ...
->>>>>>
->>>>>> The problem was different semantics of dsb on btw arm32 and arm6=
-4,
->>>>>> Here we can convert the dsb with insteading of dsb(sy).The "sy" =
-param
->>>>>> is the default which you are allow to omit, so on arm32 dsb()and
->>>>>> dsb(sy)
->>>>>> are the same.
->>>>>>
->>>>>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>>> Acked-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>>> as you have "just" Acked these patches, I guess you are expecting =
-them
->>>> to go
->>>> through the same tree as the devicetree changes, right?
->>>
->>> I'm wonder if someone will apply this series patchs but the wait.:-=
-)
->>> In fact, I'm no sure that the Acked is really meaning.:-
->>
->> Yes, by acking the patch I say I am ok with it and I agree it can go
->> through another tree.
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+
+Acked-by: Rob Herring <robh@kernel.org>
+
+> ---
+> Changes in v10:
+> - Removed the duplicated signed-of.
 >
-> although I guess the two clocksource changes could very well just go
-> through your tree. dsb() -> dsb(sy) is supposed to be equal and the s=
-econd
-> one is just cosmetics.  The Kconfig and dts changes need to wait in a=
-ny case
-> for 4.5 ... but I guess that may be true for the clocksource changes =
-as well?
-
-Ok, I will take the two first patches through my tree.
-
-Thanks
-   -- Daniel
-
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Changes in v9:
+> - Document more details for 'ports' property.
+>
+> Changes in v8:
+> - Modify the commit subject name. (Heiko)
+>
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5:
+> - Split binding doc's from driver changes. (Rob)
+> - Add eDP hotplug pinctrl property. (Heiko)
+>
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>
+>  .../display/rockchip/analogix_dp-rockchip.txt      | 91 ++++++++++++++++++++++
+>  1 file changed, 91 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
+>
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
+> new file mode 100644
+> index 0000000..dae86c4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/rockchip/analogix_dp-rockchip.txt
+> @@ -0,0 +1,91 @@
+> +Rockchip RK3288 specific extensions to the Analogix Display Port
+> +================================
+> +
+> +Required properties:
+> +- compatible: "rockchip,rk3288-edp";
+> +
+> +- reg: physical base address of the controller and length
+> +
+> +- clocks: from common clock binding: handle to dp clock.
+> +         of memory mapped region.
+> +
+> +- clock-names: from common clock binding:
+> +              Required elements: "dp" "pclk"
+> +
+> +- resets: Must contain an entry for each entry in reset-names.
+> +         See ../reset/reset.txt for details.
+> +
+> +- pinctrl-names: Names corresponding to the chip hotplug pinctrl states.
+> +- pinctrl-0: pin-control mode. should be <&edp_hpd>
+> +
+> +- reset-names: Must include the name "dp"
+> +
+> +- rockchip,grf: this soc should set GRF regs, so need get grf here.
+> +
+> +- ports: there are 2 port nodes with endpoint definitions as defined in
+> +  Documentation/devicetree/bindings/media/video-interfaces.txt.
+> +    Port 0: contained 2 endpoints, connecting to the ouput of vop.
+> +    Port 1: contained 1 endpoint, connecting to the input of panel.
+> +
+> +For the below properties, please refer to Analogix DP binding document:
+> + * Documentation/devicetree/bindings/drm/bridge/analogix_dp.txt
+> +- phys (required)
+> +- phy-names (required)
+> +- hpd-gpios (optional)
+> +-------------------------------------------------------------------------------
+> +
+> +Example:
+> +       dp-controller: dp@ff970000 {
+> +               compatible = "rockchip,rk3288-dp";
+> +               reg = <0xff970000 0x4000>;
+> +               interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
+> +               clocks = <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
+> +               clock-names = "dp", "pclk";
+> +               phys = <&dp_phy>;
+> +               phy-names = "dp";
+> +
+> +               rockchip,grf = <&grf>;
+> +               resets = <&cru 111>;
+> +               reset-names = "dp";
+> +
+> +               pinctrl-names = "default";
+> +               pinctrl-0 = <&edp_hpd>;
+> +
+> +               status = "disabled";
+> +
+> +               ports {
+> +                       #address-cells = <1>;
+> +                       #size-cells = <0>;
+> +                       edp_in: port@0 {
+> +                               reg = <0>;
+> +                               #address-cells = <1>;
+> +                               #size-cells = <0>;
+> +                               edp_in_vopb: endpoint@0 {
+> +                                       reg = <0>;
+> +                                       remote-endpoint = <&vopb_out_edp>;
+> +                               };
+> +                               edp_in_vopl: endpoint@1 {
+> +                                       reg = <1>;
+> +                                       remote-endpoint = <&vopl_out_edp>;
+> +                               };
+> +                       };
+> +
+> +                       edp_out: port@1 {
+> +                               reg = <1>;
+> +                               #address-cells = <1>;
+> +                               #size-cells = <0>;
+> +                               edp_out_panel: endpoint {
+> +                                       reg = <0>;
+> +                                       remote-endpoint = <&panel_in_edp>
+> +                               };
+> +                       };
+> +               };
+> +       };
+> +
+> +       pinctrl {
+> +               edp {
+> +                       edp_hpd: edp-hpd {
+> +                               rockchip,pins = <7 11 RK_FUNC_2 &pcfg_pull_none>;
+> +                       };
+> +               };
+> +       };
+> --
+> 1.9.1
+>
+>
