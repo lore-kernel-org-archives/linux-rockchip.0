@@ -1,37 +1,44 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2 02/13] clk: rockchip: add mipidsi clocks on rk3288
-Date: Sat, 31 Oct 2015 20:55:58 +0800
-Message-ID: <1446296170-3702-3-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v2 03/13] drm/rockchip: return a true clock rate to adjusted_mode
+Date: Sat, 31 Oct 2015 20:55:59 +0800
+Message-ID: <1446296170-3702-4-git-send-email-zyw@rock-chips.com>
 References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, Mark Yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-sclk_mipidsi_24m is the gating of mipi dsi phy.
+Sometimes the clock driver can not set a accurate clock_rate for vop,
+get the true rate of vop_dclk and set it back to adjusted_mode, since
+the mipi dsi driver need to use the clock to make the calculation of
+Blanking.
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
 Changes in v2: None
 
- drivers/clk/rockchip/clk-rk3288.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 9040878..c7d7ebf 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -709,7 +709,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(SCLK_LCDC_PWM1, "sclk_lcdc_pwm1", "xin24m", 0, RK3288_CLKGATE_CON(13), 11, GFLAGS),
- 	GATE(SCLK_PVTM_CORE, "sclk_pvtm_core", "xin24m", 0, RK3288_CLKGATE_CON(5), 9, GFLAGS),
- 	GATE(SCLK_PVTM_GPU, "sclk_pvtm_gpu", "xin24m", 0, RK3288_CLKGATE_CON(5), 10, GFLAGS),
--	GATE(0, "sclk_mipidsi_24m", "xin24m", 0, RK3288_CLKGATE_CON(5), 15, GFLAGS),
-+	GATE(SCLK_MIPI_24M, "sclk_mipidsi_24m", "xin24m", 0, RK3288_CLKGATE_CON(5), 15, GFLAGS),
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 5d8ae5e..9986b311ed 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1232,6 +1232,12 @@ static int vop_crtc_mode_set(struct drm_crtc *crtc,
+ 	reset_control_deassert(vop->dclk_rst);
  
- 	/* sclk_gpu gates */
- 	GATE(ACLK_GPU, "aclk_gpu", "sclk_gpu", 0, RK3288_CLKGATE_CON(18), 0, GFLAGS),
+ 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
++
++	/*
++	 * Sometimes the clock driver can not set a accurate clock_rate for vop,
++	 * get the true rate of vop_dclk and set it back to adjusted_mode.
++	 */
++	adjusted_mode->clock = clk_get_rate(vop->dclk) / 1000;
+ out:
+ 	ret_clk = clk_enable(vop->dclk);
+ 	if (ret_clk < 0) {
 -- 
 2.6.2
