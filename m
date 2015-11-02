@@ -1,78 +1,85 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 3/3] ASoC: rockchip-rt5645: add the divider the clock for cpu
-Date: Mon,  2 Nov 2015 11:14:02 +0800
-Message-ID: <1446434042-2139-3-git-send-email-wxt@rock-chips.com>
-References: <1446434042-2139-1-git-send-email-wxt@rock-chips.com>
+From: Zain <zain.wang@rock-chips.com>
+Subject: Re: [RESEND PATCH 2/4] clk: rockchip: set an id for crypto clk
+Date: Mon, 2 Nov 2015 15:54:18 +0800
+Message-ID: <563716AA.5050809@rock-chips.com>
+References: <1446193369-4453-1-git-send-email-zain.wang@rock-chips.com>
+ <1446193369-4453-3-git-send-email-zain.wang@rock-chips.com>
+ <4280600.OxjmG17dRp@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446434042-2139-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <4280600.OxjmG17dRp@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add to set the cpu/codec DAI configure, let's divider the
-Transmit/Receive clock for cpu.
+Hi Heiko,
 
-In master mode, The SCLK and LRCK are configured as output,
-this patch should can set each divider to arrange the clock distribution.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
-
- sound/soc/rockchip/rockchip_rt5645.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index 68c62e4..35fe000 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -74,8 +74,25 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
- 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	int dai_fmt = rtd->card->dai_link->dai_fmt;
- 	int mclk;
- 
-+	/* set codec DAI configuration */
-+	ret = snd_soc_dai_set_fmt(codec_dai, dai_fmt);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev,
-+			"failed to set the format for codec side\n");
-+		return ret;
-+	}
-+
-+	/* set cpu DAI configuration */
-+	ret = snd_soc_dai_set_fmt(cpu_dai, dai_fmt);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev,
-+			"failed to set the format for cpu side\n");
-+		return ret;
-+	}
-+
- 	switch (params_rate(params)) {
- 	case 8000:
- 	case 16000:
-@@ -104,6 +121,21 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
- 
-+	/* The codec is master mode, that's not needed set clkdiv for cpu */
-+	if ((dai_fmt & SND_SOC_DAIFMT_MASTER_MASK) == SND_SOC_DAIFMT_CBM_CFM)
-+		return ret;
-+
-+	/* the LRCK clock for cpu */
-+	ret = snd_soc_dai_set_clkdiv(cpu_dai, ROCKCHIP_DIV_BCLK,
-+				     (mclk / 4) / params_rate(params));
-+	if (ret < 0)
-+		return ret;
-+
-+	/* the SCLK clock for cpu */
-+	snd_soc_dai_set_clkdiv(cpu_dai, ROCKCHIP_DIV_MCLK, 4);
-+	if (ret < 0)
-+		return ret;
-+
- 	return ret;
- }
- 
--- 
-1.9.1
+On 2015=E5=B9=B410=E6=9C=8830=E6=97=A5 16:54, Heiko Stuebner wrote:
+> Hi Zain,
+>
+> Am Freitag, 30. Oktober 2015, 16:22:47 schrieb Zain Wang:
+>> set an id for crypto clk, so that it can be called in other part.
+>>
+>> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+>> ---
+>>  drivers/clk/rockchip/clk-rk3288.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchi=
+p/clk-rk3288.c
+>> index 9040878..d74bd5d 100644
+>> --- a/drivers/clk/rockchip/clk-rk3288.c
+>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+>> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_bra=
+nches[] __initdata =3D {
+>>  			RK3288_CLKGATE_CON(0), 4, GFLAGS),
+>>  	GATE(0, "c2c_host", "aclk_cpu_src", 0,
+>>  			RK3288_CLKGATE_CON(13), 8, GFLAGS),
+>> -	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
+>> +	COMPOSITE_NOMUX(SRST_CRYPTO, "crypto", "aclk_cpu_pre", 0,
+> the id you want to use actually is a soft-reset index, not a clock-id=
+=2E
+> You would need to add a real id, in this case with an sclk_ prefix.
+ok! done!
+>
+>>  			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
+>>  			RK3288_CLKGATE_CON(5), 4, GFLAGS),
+>>  	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
+>>
+> It should probably look more like below, but as suggested by Stephen =
+Boyd
+> in another thread, we should coordinate with Chris to add more necess=
+ary clock
+> ids in one go:
+> -------- 8< -----------
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip=
+/clk-rk3288.c
+> index 9040878..9fd9f5a 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_bran=
+ches[] __initdata =3D {
+>  			RK3288_CLKGATE_CON(0), 4, GFLAGS),
+>  	GATE(0, "c2c_host", "aclk_cpu_src", 0,
+>  			RK3288_CLKGATE_CON(13), 8, GFLAGS),
+> -	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
+> +	COMPOSITE_NOMUX(SCLK_CRYPTO, "sclk_crypto", "aclk_cpu_pre", 0,
+>  			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
+>  			RK3288_CLKGATE_CON(5), 4, GFLAGS),
+>  	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
+> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bind=
+ings/clock/rk3288-cru.h
+> index c719aac..9e0a5e9 100644
+> --- a/include/dt-bindings/clock/rk3288-cru.h
+> +++ b/include/dt-bindings/clock/rk3288-cru.h
+> @@ -86,6 +86,7 @@
+>  #define SCLK_USBPHY480M_SRC	122
+>  #define SCLK_PVTM_CORE		123
+>  #define SCLK_PVTM_GPU		124
+> +#define SCLK_CRYPTO		125
+> =20
+>  #define SCLK_MAC		151
+>  #define SCLK_MACREF_OUT		152
