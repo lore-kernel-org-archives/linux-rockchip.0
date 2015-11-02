@@ -1,88 +1,84 @@
-From: Zain <zain.wang@rock-chips.com>
-Subject: Re: [RESEND PATCH 4/4] crypto: rk_crypto - add DT bindings
- documentation
-Date: Mon, 2 Nov 2015 17:13:38 +0800
-Message-ID: <56372942.2080900@rock-chips.com>
-References: <1446193369-4453-1-git-send-email-zain.wang@rock-chips.com>
- <1446193369-4453-5-git-send-email-zain.wang@rock-chips.com>
- <20151030140334.GB31073@leverpostej>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [PATCH 03/22] clocksource/drivers/rockchip: Make the driver more
+ compatible
+Date: Mon,  2 Nov 2015 13:56:31 +0100
+Message-ID: <1446469011-22710-3-git-send-email-daniel.lezcano@linaro.org>
+References: <1446469011-22710-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20151030140334.GB31073@leverpostej>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446469011-22710-1-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, "moderated list:ARM/Rockchip SoC..." <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-On 2015=E5=B9=B410=E6=9C=8830=E6=97=A5 22:03, Mark Rutland wrote:
-> On Fri, Oct 30, 2015 at 04:22:49PM +0800, Zain Wang wrote:
->> Add DT bindings documentation for the rk3288 crypto drivers.
->>
->> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
->> ---
->>  .../devicetree/bindings/crypto/rk-crypto.txt       | 31 +++++++++++=
-+++++++++++
->>  1 file changed, 31 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/crypto/rk-cryp=
-to.txt
->>
->> diff --git a/Documentation/devicetree/bindings/crypto/rk-crypto.txt =
-b/Documentation/devicetree/bindings/crypto/rk-crypto.txt
->> new file mode 100644
->> index 0000000..1e50768
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/crypto/rk-crypto.txt
->> @@ -0,0 +1,31 @@
->> +Rockchip Electronics And Security Accelerator
->> +
->> +Required properties:
->> +- compatible: should be "rockchip,crypto"
-> Choose a more specific name. Rockchip could easily come up with anoth=
-er
-> crypto accelerator later.
-ok! done.
-rk3288_crypto may be better than crypto.
->> +- reg: base physical address of the engine and length of memory map=
-ped
->> +       region.
->> +- interrupts: interrupt number
->> +- clocks: clock specifiers
->> +- clock-names: "aclk_crypto" used to clock data
->> +			   "hclk_crypto" used to clock data
->> +			   "srst_crypto" used to clock crypto accelerator
->> +			   "apb_pclk"    used to clock dma
->> +-status: Enable
-> No need to mention the status property.
-ok! done!
-> Thanks,
-> Mark.
->
->> +
->> +Examples:
->> +
->> +	crypto: cypto-controller@ff8a0000 {
->> +		compatible =3D "rockchip,crypto";
->> +		reg =3D <0xff8a0000 0x4000>;
->> +		interrupts =3D <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
->> +		clocks =3D <&cru ACLK_CRYPTO>,
->> +			 <&cru HCLK_CRYPTO>,
->> +			 <&cru SRST_CRYPTO>,
->> +			 <&cru ACLK_DMAC1>;
->> +
->> +		clock-names =3D "aclk_crypto",
->> +			      "hclk_crypto",
->> +			      "srst_crypto",
->> +				  "apb_pclk";
->> +		status =3D "okay";
->> +	};
->> --=20
->> 1.9.1
->>
->>
->
-Thanks
-Zain
+Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
+There are some failure with build up on timer driver for rockchip.
+
+Says:
+/tmp/ccdAnNy5.s:47: Error: missing immediate expression at  operand 1 --
+`dsb`
+...
+
+The problem was different semantics of dsb on btw arm32 and arm64,
+Here we can convert the dsb with insteading of dsb(sy).The "sy" param
+is the default which you are allow to omit, so on arm32 dsb()and dsb(sy)
+are the same.
+
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+---
+ drivers/clocksource/rockchip_timer.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
+index d3c1742..724c321 100644
+--- a/drivers/clocksource/rockchip_timer.c
++++ b/drivers/clocksource/rockchip_timer.c
+@@ -49,14 +49,14 @@ static inline void __iomem *rk_base(struct clock_event_device *ce)
+ static inline void rk_timer_disable(struct clock_event_device *ce)
+ {
+ 	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
+-	dsb();
++	dsb(sy);
+ }
+ 
+ static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
+ {
+ 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
+ 		       rk_base(ce) + TIMER_CONTROL_REG);
+-	dsb();
++	dsb(sy);
+ }
+ 
+ static void rk_timer_update_counter(unsigned long cycles,
+@@ -64,13 +64,13 @@ static void rk_timer_update_counter(unsigned long cycles,
+ {
+ 	writel_relaxed(cycles, rk_base(ce) + TIMER_LOAD_COUNT0);
+ 	writel_relaxed(0, rk_base(ce) + TIMER_LOAD_COUNT1);
+-	dsb();
++	dsb(sy);
+ }
+ 
+ static void rk_timer_interrupt_clear(struct clock_event_device *ce)
+ {
+ 	writel_relaxed(1, rk_base(ce) + TIMER_INT_STATUS);
+-	dsb();
++	dsb(sy);
+ }
+ 
+ static inline int rk_timer_set_next_event(unsigned long cycles,
+-- 
+1.9.1
