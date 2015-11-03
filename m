@@ -1,111 +1,47 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
- compatible
-Date: Tue, 3 Nov 2015 10:00:39 +0800
-Message-ID: <56381547.5070109@gmail.com>
-References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
- <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
- <21587719.mnFBFBzBeI@phil> <56379D46.1000402@linaro.org>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 10/13] of: add vendor prefix for boe
+Date: Mon, 2 Nov 2015 20:24:29 -0600
+Message-ID: <CAL_JsqJZJkjE+U=f1k_3h=ywuzGrk+6jLp=Cz7Xfni1VnsvdOw@mail.gmail.com>
+References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com> <1446296170-3702-11-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56379D46.1000402-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+In-Reply-To: <1446296170-3702-11-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Kuninori Morimoto <kuninori.morimoto.gx-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Antony Pavlov <antonynpavlov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Daniel,
-
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8803=E6=97=A5 01:28, Daniel Lezcano =E5=
-=86=99=E9=81=93:
-> On 10/31/2015 12:47 AM, Heiko Stuebner wrote:
->> Hi Daniel,
->>
->> Am Freitag, 30. Oktober 2015, 11:42:29 schrieb Daniel Lezcano:
->>> On 10/30/2015 04:43 AM, Caesar Wang wrote:
->>>> Hi Daniel,
->>>>
->>>> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8801=E6=97=A5 03:14, Heiko St=C3=BC=
-bner =E5=86=99=E9=81=93:
->>>>> Hi Daniel,
->>>>>
->>>>> Am Dienstag, 29. September 2015, 06:18:03 schrieb Daniel Lezcano:
->>>>>> On 09/25/2015 04:14 AM, Caesar Wang wrote:
->>>>>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
->>>>>>> There are some failure with build up on timer driver for rockch=
-ip.
->>>>>>>
->>>>>>> Says:
->>>>>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  ope=
-rand
->>>>>>> 1 --
->>>>>>> `dsb`
->>>>>>> ...
->>>>>>>
->>>>>>> The problem was different semantics of dsb on btw arm32 and arm=
-64,
->>>>>>> Here we can convert the dsb with insteading of dsb(sy).The "sy"=
-=20
->>>>>>> param
->>>>>>> is the default which you are allow to omit, so on arm32 dsb()an=
-d
->>>>>>> dsb(sy)
->>>>>>> are the same.
->>>>>>>
->>>>>>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>>>>> Acked-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>>>> as you have "just" Acked these patches, I guess you are expecting=
-=20
->>>>> them
->>>>> to go
->>>>> through the same tree as the devicetree changes, right?
->>>>
->>>> I'm wonder if someone will apply this series patchs but the wait.:=
--)
->>>> In fact, I'm no sure that the Acked is really meaning.:-
->>>
->>> Yes, by acking the patch I say I am ok with it and I agree it can g=
-o
->>> through another tree.
->>
->> although I guess the two clocksource changes could very well just go
->> through your tree. dsb() -> dsb(sy) is supposed to be equal and the=20
->> second
->> one is just cosmetics.  The Kconfig and dts changes need to wait in=20
->> any case
->> for 4.5 ... but I guess that may be true for the clocksource changes=
-=20
->> as well?
->
-> Heiko, Caesar,
->
-> I am wondering if the dsb() is really necessary. Is it possible you=20
-> test the timer by removing this instruction ? Otherwise I will have t=
-o=20
-> setup my board again and it will take awhile.
+On Sat, Oct 31, 2015 at 7:56 AM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >
 
-As the @Arnd suggestion,
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-That's seem ok for me.
-Although the writel_relaxed() and writel() a bit different  with DSB()=20
-and L2's sync.
-
-Do I need send the patch v3?  I will test that on my board.
-
-I'm no sure that why the clocksource driver didn't use the=20
-writel_relaxed() to work.
-Okay, I think we should according to the suggestion or required.
-
---=20
-Thanks,
-Caesar
-
+> ---
+>
+> Changes in v2:
+> add vendor prefix for boe
+>
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
+> index 8fb0590..404b798 100644
+> --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
+> +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
+> @@ -33,6 +33,7 @@ auo   AU Optronics Corporation
+>  avago  Avago Technologies
+>  avic   Shanghai AVIC Optoelectronics Co., Ltd.
+>  axis   Axis Communications AB
+> +boe    BOE Technology Group Co., Ltd.
+>  bosch  Bosch Sensortec GmbH
+>  boundary       Boundary Devices Inc.
+>  brcm   Broadcom Corporation
+> --
+> 2.6.2
+>
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
