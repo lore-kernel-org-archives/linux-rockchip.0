@@ -1,64 +1,69 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 03/22] clocksource/drivers/rockchip: Make the driver more
- compatible
-Date: Mon, 02 Nov 2015 22:44:56 +0100
-Message-ID: <26365416.grsdrqtSNb@wuerfel>
-References: <1446469011-22710-1-git-send-email-daniel.lezcano@linaro.org>
- <5093304.EN6Bc2EjLr@wuerfel> <56379016.1080601@linaro.org>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 12/13] drm/panel: simple: Add simple panel device tree
+ binding
+Date: Tue, 3 Nov 2015 08:28:55 +0800
+Message-ID: <5637FFC7.6080503@rock-chips.com>
+References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
+ <1446296170-3702-13-git-send-email-zyw@rock-chips.com>
+ <CAL_Jsq+76CMdtu8MZZhb_Bbg+J=hjJ2as-NRnjS4w_3y0YXvLA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56379016.1080601-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAL_Jsq+76CMdtu8MZZhb_Bbg+J=hjJ2as-NRnjS4w_3y0YXvLA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Monday 02 November 2015 17:32:22 Daniel Lezcano wrote:
-> On 11/02/2015 04:33 PM, Arnd Bergmann wrote:
-> > On Monday 02 November 2015 13:56:31 Daniel Lezcano wrote:
-> >>   static inline void rk_timer_disable(struct clock_event_device *ce)
-> >>   {
-> >>          writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
-> >> -       dsb();
-> >> +       dsb(sy);
-> >>   }
-> >>
-> >>   static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
-> >>   {
-> >>          writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
-> >>                         rk_base(ce) + TIMER_CONTROL_REG);
-> >> -       dsb();
-> >> +       dsb(sy);
-> >>   }
-> >>
-> >>
-> >
-> > This will fail the compile test, because dsb() is not available on non-ARM
-> > architectures. Would it be enough to just use the normal writel() accessor
-> > here?
-> 
-> That's a good question and I believe we can remove it but I have to 
-> setup a rockchip board before doing the changes in order to test.
-> 
-> I the meantime added the COMPILE_TEST option but restricted it to ARM 
-> and ARM64.
-> 
+Hi Rob
 
-Ok. I saw that addition after commenting here, it looks correct this
-way, I was just slightly confused by seeing patch 2 first and thought
-it was for the same driver.
 
-In general, it would of course be best to allow all drivers to be built
-on x86, but your series is already a huge improvement as it is.
+On 11/02/2015 11:06 PM, Rob Herring wrote:
+> On Sat, Oct 31, 2015 at 7:56 AM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+> Your subject should be more specific with the panel name.
+I'll write more specific in subject next version.
+>
+>> This binding specifies a set of common properties for display panels. It
+>> can be used as a basis by bindings for specific panels.
+>> Bindings for three specific panels are provided to show how the
+>> simple panel binding can be used.
+>>
+>> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> As Thierry.Reding comment, add a documentation for this panel.
+>>
+>>   Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
+> Please move to bindings/display/panel/
+Okay.
+>
+>> diff --git a/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt b/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
+>> new file mode 100644
+>> index 0000000..50be5e2
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/panel/boe,tv080wum-nl0.txt
+>> @@ -0,0 +1,7 @@
+>> +Boe Corporation 8.0" WUXGA TFT LCD panel
+>> +
+>> +Required properties:
+>> +- compatible: should be "boe,tv080wum-nl0"
+>> +
+>> +This binding is compatible with the simple-panel binding, which is specified
+>> +in simple-panel.txt in this directory.
+>> --
+>> 2.6.2
+>>
+>
+>
 
-	Arnd
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
