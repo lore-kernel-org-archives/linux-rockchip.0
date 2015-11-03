@@ -1,98 +1,44 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v1] ARM: errata: Workaround for Cortex-A12 erratum 818325
-Date: Tue,  3 Nov 2015 18:41:15 +0800
-Message-ID: <1446547275-23481-1-git-send-email-wxt@rock-chips.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy
+ loading
+Date: Tue, 3 Nov 2015 11:14:37 +0000
+Message-ID: <20151103111437.GU8644@n2100.arm.linux.org.uk>
 References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org
-Cc: heiko@sntech.de, hl@rock-chips.com, sjg@chromium.org, j.stone@samsung.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, cwz@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com, wxt@rock-chips.com, ard.biesheuvel@linaro.org, gregory.clement@free-electrons.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, thomas.petazzoni@free-electrons.com, nadavh@marvell.com
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, hl@rock-chips.com, sjg@chromium.org, Jonathan Stone <j.stone@samsung.com>, dianders@chromium.org, linux-rockchip@lists.infradead.org, cwz@rock-chips.com, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Gregory CLEMENT <gregory.clement@free-electrons.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Nadav Haklai <nadavh@marvell.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Huang Tao <huangtao@rock-chips.com>
+On Tue, Nov 03, 2015 at 04:10:08PM +0800, Caesar Wang wrote:
+> As the Russell said:
+> "in other words, which can be handled by updating a control register in
+> the firmware or boot loader"
+> Maybe the better solution is in firmware.
 
-On Cortex-A12 (r0p0..r0p1-00lac0-rc11), when a CPU executes a sequence of
-two conditional store instructions with opposite condition code and
-updating the same register, the system might enter a deadlock if the
-second conditional instruction is an UNPREDICTABLE STR or STM
-instruction. This workaround setting bit[12] of the Feature Register
-prevents the erratum. This bit disables an optimisation applied to a
-sequence of 2 instructions that use opposing condition codes.
+The full quote is:
 
-Signed-off-by: Huang Tao <huangtao@rock-chips.com>
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+"I think we're at the point where we start insisting that workarounds
+which are simple enable/disable feature bit operations (in other words,
+which can be handled by updating a control register in the firmware or
+boot loader) must be done that way, and we are not going to add such
+workarounds to the kernel anymore."
 
----
+The position hasn't changed.  Workarounds such as this should be handled
+in the firmware/boot loader before control is passed to the kernel.
 
-Changes in v1:
-- fix the build error.
+The reason is very simple: if the C compiler can generate code which
+triggers the bug, it can generate code which triggers the bug in the
+boot loader.  So, the only place such workarounds can be done is before
+any C code gets executed.  Putting such workarounds in the kernel is
+completely inappropriate.
 
- arch/arm/Kconfig      | 13 +++++++++++++
- arch/arm/mm/proc-v7.S | 16 ++++++++++++++++
- 2 files changed, 29 insertions(+)
+Sorry, I'm not going to accept this workaround into the kernel.
 
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 639411f..554b57a 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -1263,6 +1263,19 @@ config ARM_ERRATA_773022
- 	  loop buffer may deliver incorrect instructions. This
- 	  workaround disables the loop buffer to avoid the erratum.
- 
-+config ARM_ERRATA_818325
-+	bool "ARM errata: Execution of an UNPREDICTABLE STR or STM instruction might deadlock"
-+	depends on CPU_V7
-+	help
-+	  This option enables the workaround for the 818325 Cortex-A12
-+	  (r0p0..r0p1-00lac0-rc11) erratum. When a CPU executes a sequence of
-+	  two conditional store instructions with opposite condition code and
-+	  updating the same register, the system might enter a deadlock if the
-+	  second conditional instruction is an UNPREDICTABLE STR or STM
-+	  instruction. This workaround setting bit[12] of the Feature Register
-+	  prevents the erratum. This bit disables an optimisation applied to a
-+	  sequence of 2 instructions that use opposing condition codes.
-+
- endmenu
- 
- source "arch/arm/common/Kconfig"
-diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
-index de2b246..e95c83c 100644
---- a/arch/arm/mm/proc-v7.S
-+++ b/arch/arm/mm/proc-v7.S
-@@ -351,6 +351,17 @@ __ca9_errata:
- #endif
- 	b	__errata_finish
- 
-+__ca12_errata:
-+#ifdef CONFIG_ARM_ERRATA_818325
-+	teq	r6, #0x00			@ present in r0p0
-+	teqne	r6, #0x01			@ present in r0p1-00lac0-rc11
-+	mrceq	p15, 0, r10, c15, c0, 1		@ read diagnostic register
-+	orreq	r10, r10, #1 << 12		@ set bit #12
-+	mcreq	p15, 0, r10, c15, c0, 1		@ write diagnostic register
-+	isb
-+#endif
-+	b	__errata_finish
-+
- __ca15_errata:
- #ifdef CONFIG_ARM_ERRATA_773022
- 	cmp	r6, #0x4			@ only present up to r0p4
-@@ -439,6 +450,11 @@ __v7_setup_cont:
- 	teq	r0, r10
- 	beq	__ca9_errata
- 
-+	/* Cortex-A12 Errata */
-+	ldr	r10, =0x00000c0d		@ Cortex-A12 primary part number
-+	teq	r0, r10
-+	beq	__ca12_errata
-+
- 	/* Cortex-A15 Errata */
- 	ldr	r10, =0x00000c0f		@ Cortex-A15 primary part number
- 	teq	r0, r10
 -- 
-1.9.1
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
