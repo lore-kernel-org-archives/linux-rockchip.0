@@ -1,13 +1,17 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH] ARM: errata: Workaround for Cortex-A12 erratum 818325
-Date: Tue,  3 Nov 2015 16:10:09 +0800
-Message-ID: <1446538209-13490-2-git-send-email-wxt@rock-chips.com>
-References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
+ compatible
+Date: Tue, 3 Nov 2015 09:32:16 +0100
+Message-ID: <56387110.4060805@linaro.org>
+References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
+ <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
+ <21587719.mnFBFBzBeI@phil> <56379D46.1000402@linaro.org>
+ <56381547.5070109@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1446538209-13490-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <56381547.5070109-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,76 +21,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Ard Biesheuvel <ard.biesheuvel-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Nadav Haklai <nadavh-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, cwz-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jonathan Stone <j.stone-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Gregory CLEMENT <gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-On Cortex-A12 (r0p0..r0p1-00lac0-rc11), when a CPU executes a sequence of
-two conditional store instructions with opposite condition code and
-updating the same register, the system might enter a deadlock if the
-second conditional instruction is an UNPREDICTABLE STR or STM
-instruction. This workaround setting bit[12] of the Feature Register
-prevents the erratum. This bit disables an optimisation applied to a
-sequence of 2 instructions that use opposing condition codes.
-
-Signed-off-by: Huang Tao <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
- arch/arm/Kconfig      | 13 +++++++++++++
- arch/arm/mm/proc-v7.S | 12 ++++++++++++
- 2 files changed, 25 insertions(+)
-
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 639411f..554b57a 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -1263,6 +1263,19 @@ config ARM_ERRATA_773022
- 	  loop buffer may deliver incorrect instructions. This
- 	  workaround disables the loop buffer to avoid the erratum.
- 
-+config ARM_ERRATA_818325
-+	bool "ARM errata: Execution of an UNPREDICTABLE STR or STM instruction might deadlock"
-+	depends on CPU_V7
-+	help
-+	  This option enables the workaround for the 818325 Cortex-A12
-+	  (r0p0..r0p1-00lac0-rc11) erratum. When a CPU executes a sequence of
-+	  two conditional store instructions with opposite condition code and
-+	  updating the same register, the system might enter a deadlock if the
-+	  second conditional instruction is an UNPREDICTABLE STR or STM
-+	  instruction. This workaround setting bit[12] of the Feature Register
-+	  prevents the erratum. This bit disables an optimisation applied to a
-+	  sequence of 2 instructions that use opposing condition codes.
-+
- endmenu
- 
- source "arch/arm/common/Kconfig"
-diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
-index de2b246..2b338ec 100644
---- a/arch/arm/mm/proc-v7.S
-+++ b/arch/arm/mm/proc-v7.S
-@@ -439,6 +439,18 @@ __v7_setup_cont:
- 	teq	r0, r10
- 	beq	__ca9_errata
- 
-+	/* Cortex-A12 Errata */
-+	ldr	r10, =0x00000c0d		@ Cortex-A12 primary part number
-+	teq	r0, r10
-+	bne	5f
-+#ifdef CONFIG_ARM_ERRATA_818325
-+	teq	r6, #0x00			@ present in r0p0
-+	teqne	r6, #0x01			@ present in r0p1-00lac0-rc11
-+	mrceq	p15, 0, r10, c15, c0, 1		@ read diagnostic register
-+	orreq	r10, r10, #1 << 12		@ set bit #12
-+	mcreq	p15, 0, r10, c15, c0, 1		@ write diagnostic register
-+	isb
-+#endif
- 	/* Cortex-A15 Errata */
- 	ldr	r10, =0x00000c0f		@ Cortex-A15 primary part number
- 	teq	r0, r10
--- 
-1.9.1
+T24gMTEvMDMvMjAxNSAwMzowMCBBTSwgQ2Flc2FyIFdhbmcgd3JvdGU6Cj4gRGFuaWVsLAo+Cj4g
+5ZyoIDIwMTXlubQxMeaciDAz5pelIDAxOjI4LCBEYW5pZWwgTGV6Y2FubyDlhpnpgZM6Cj4+IE9u
+IDEwLzMxLzIwMTUgMTI6NDcgQU0sIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gSGkgRGFuaWVs
+LAo+Pj4KPj4+IEFtIEZyZWl0YWcsIDMwLiBPa3RvYmVyIDIwMTUsIDExOjQyOjI5IHNjaHJpZWIg
+RGFuaWVsIExlemNhbm86Cj4+Pj4gT24gMTAvMzAvMjAxNSAwNDo0MyBBTSwgQ2Flc2FyIFdhbmcg
+d3JvdGU6Cj4+Pj4+IEhpIERhbmllbCwKPj4+Pj4KPj4+Pj4g5ZyoIDIwMTXlubQxMOaciDAx5pel
+IDAzOjE0LCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4+Pj4+PiBIaSBEYW5pZWwsCj4+Pj4+Pgo+
+Pj4+Pj4gQW0gRGllbnN0YWcsIDI5LiBTZXB0ZW1iZXIgMjAxNSwgMDY6MTg6MDMgc2NocmllYiBE
+YW5pZWwgTGV6Y2FubzoKPj4+Pj4+PiBPbiAwOS8yNS8yMDE1IDA0OjE0IEFNLCBDYWVzYXIgV2Fu
+ZyB3cm90ZToKPj4+Pj4+Pj4gQnVpbGQgdGhlIGFybTY0IFNvQ3MgKGUuZy46IFJLMzM2OCkgb24g
+Um9ja2NoaXAgcGxhdGZvcm0sCj4+Pj4+Pj4+IFRoZXJlIGFyZSBzb21lIGZhaWx1cmUgd2l0aCBi
+dWlsZCB1cCBvbiB0aW1lciBkcml2ZXIgZm9yIHJvY2tjaGlwLgo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBT
+YXlzOgo+Pj4+Pj4+PiAvdG1wL2NjZEFuTnk1LnM6NDc6IEVycm9yOiBtaXNzaW5nIGltbWVkaWF0
+ZSBleHByZXNzaW9uIGF0ICBvcGVyYW5kCj4+Pj4+Pj4+IDEgLS0KPj4+Pj4+Pj4gYGRzYmAKPj4+
+Pj4+Pj4gLi4uCj4+Pj4+Pj4+Cj4+Pj4+Pj4+IFRoZSBwcm9ibGVtIHdhcyBkaWZmZXJlbnQgc2Vt
+YW50aWNzIG9mIGRzYiBvbiBidHcgYXJtMzIgYW5kIGFybTY0LAo+Pj4+Pj4+PiBIZXJlIHdlIGNh
+biBjb252ZXJ0IHRoZSBkc2Igd2l0aCBpbnN0ZWFkaW5nIG9mIGRzYihzeSkuVGhlICJzeSIKPj4+
+Pj4+Pj4gcGFyYW0KPj4+Pj4+Pj4gaXMgdGhlIGRlZmF1bHQgd2hpY2ggeW91IGFyZSBhbGxvdyB0
+byBvbWl0LCBzbyBvbiBhcm0zMiBkc2IoKWFuZAo+Pj4+Pj4+PiBkc2Ioc3kpCj4+Pj4+Pj4+IGFy
+ZSB0aGUgc2FtZS4KPj4+Pj4+Pj4KPj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcg
+PHd4dEByb2NrLWNoaXBzLmNvbT4KPj4+Pj4+PiBBY2tlZC1ieTogRGFuaWVsIExlemNhbm8gPGRh
+bmllbC5sZXpjYW5vQGxpbmFyby5vcmc+Cj4+Pj4+PiBhcyB5b3UgaGF2ZSAianVzdCIgQWNrZWQg
+dGhlc2UgcGF0Y2hlcywgSSBndWVzcyB5b3UgYXJlIGV4cGVjdGluZwo+Pj4+Pj4gdGhlbQo+Pj4+
+Pj4gdG8gZ28KPj4+Pj4+IHRocm91Z2ggdGhlIHNhbWUgdHJlZSBhcyB0aGUgZGV2aWNldHJlZSBj
+aGFuZ2VzLCByaWdodD8KPj4+Pj4KPj4+Pj4gSSdtIHdvbmRlciBpZiBzb21lb25lIHdpbGwgYXBw
+bHkgdGhpcyBzZXJpZXMgcGF0Y2hzIGJ1dCB0aGUgd2FpdC46LSkKPj4+Pj4gSW4gZmFjdCwgSSdt
+IG5vIHN1cmUgdGhhdCB0aGUgQWNrZWQgaXMgcmVhbGx5IG1lYW5pbmcuOi0KPj4+Pgo+Pj4+IFll
+cywgYnkgYWNraW5nIHRoZSBwYXRjaCBJIHNheSBJIGFtIG9rIHdpdGggaXQgYW5kIEkgYWdyZWUg
+aXQgY2FuIGdvCj4+Pj4gdGhyb3VnaCBhbm90aGVyIHRyZWUuCj4+Pgo+Pj4gYWx0aG91Z2ggSSBn
+dWVzcyB0aGUgdHdvIGNsb2Nrc291cmNlIGNoYW5nZXMgY291bGQgdmVyeSB3ZWxsIGp1c3QgZ28K
+Pj4+IHRocm91Z2ggeW91ciB0cmVlLiBkc2IoKSAtPiBkc2Ioc3kpIGlzIHN1cHBvc2VkIHRvIGJl
+IGVxdWFsIGFuZCB0aGUKPj4+IHNlY29uZAo+Pj4gb25lIGlzIGp1c3QgY29zbWV0aWNzLiAgVGhl
+IEtjb25maWcgYW5kIGR0cyBjaGFuZ2VzIG5lZWQgdG8gd2FpdCBpbgo+Pj4gYW55IGNhc2UKPj4+
+IGZvciA0LjUgLi4uIGJ1dCBJIGd1ZXNzIHRoYXQgbWF5IGJlIHRydWUgZm9yIHRoZSBjbG9ja3Nv
+dXJjZSBjaGFuZ2VzCj4+PiBhcyB3ZWxsPwo+Pgo+PiBIZWlrbywgQ2Flc2FyLAo+Pgo+PiBJIGFt
+IHdvbmRlcmluZyBpZiB0aGUgZHNiKCkgaXMgcmVhbGx5IG5lY2Vzc2FyeS4gSXMgaXQgcG9zc2li
+bGUgeW91Cj4+IHRlc3QgdGhlIHRpbWVyIGJ5IHJlbW92aW5nIHRoaXMgaW5zdHJ1Y3Rpb24gPyBP
+dGhlcndpc2UgSSB3aWxsIGhhdmUgdG8KPj4gc2V0dXAgbXkgYm9hcmQgYWdhaW4gYW5kIGl0IHdp
+bGwgdGFrZSBhd2hpbGUuCj4+Cj4KPiBBcyB0aGUgQEFybmQgc3VnZ2VzdGlvbiwKPgo+IFRoYXQn
+cyBzZWVtIG9rIGZvciBtZS4KPiBBbHRob3VnaCB0aGUgd3JpdGVsX3JlbGF4ZWQoKSBhbmQgd3Jp
+dGVsKCkgYSBiaXQgZGlmZmVyZW50ICB3aXRoIERTQigpCj4gYW5kIEwyJ3Mgc3luYy4KPgo+IERv
+IEkgbmVlZCBzZW5kIHRoZSBwYXRjaCB2Mz8gIEkgd2lsbCB0ZXN0IHRoYXQgb24gbXkgYm9hcmQu
+Cj4KPiBJJ20gbm8gc3VyZSB0aGF0IHdoeSB0aGUgY2xvY2tzb3VyY2UgZHJpdmVyIGRpZG4ndCB1
+c2UgdGhlCj4gd3JpdGVsX3JlbGF4ZWQoKSB0byB3b3JrLgo+IE9rYXksIEkgdGhpbmsgd2Ugc2hv
+dWxkIGFjY29yZGluZyB0byB0aGUgc3VnZ2VzdGlvbiBvciByZXF1aXJlZC4KCkkgdGhpbmsgdGhl
+IHBhdGNoIGlzIHRyaXZpYWwgZW5vdWdoIEkgY2FuIGRvIHRoZSBjaGFuZ2UgbXlzZWxmIGlmIHlv
+dSAKdGVzdCB0aGUgY2hhbmdlIG9uIHlvdXIgc2lkZS4gQnV0IGl0IHdvdWxkIGJlIGEgZ29vZCBw
+cmFjdGljZSB0byBzZW5kIAp0aGUgcGF0Y2ggeW91IGhhdmUgdGVzdGVkLiBVcCB0byB5b3UgOykK
+ClRoYW5rcyAhCgogICAtLSBEYW5pZWwKCgotLSAKICA8aHR0cDovL3d3dy5saW5hcm8ub3JnLz4g
+TGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCgpGb2xsb3cg
+TGluYXJvOiAgPGh0dHA6Ly93d3cuZmFjZWJvb2suY29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sg
+fAo8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xpbmFyb29yZz4gVHdpdHRlciB8CjxodHRwOi8vd3d3
+LmxpbmFyby5vcmcvbGluYXJvLWJsb2cvPiBCbG9nCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
