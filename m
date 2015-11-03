@@ -1,126 +1,130 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy loading
-Date: Tue, 3 Nov 2015 11:00:20 -0800
-Message-ID: <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
-References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
-	<20151103113030.GB14159@arm.com>
+Subject: Re: [PATCH 1/2] usb: dwc2: host: Fix missing device insertions
+Date: Tue, 3 Nov 2015 12:31:09 -0800
+Message-ID: <CAD=FV=X5DTkhCcyiW6UtAG1wU6c8=X9r1ECW1G7nR5xwCoiCAQ@mail.gmail.com>
+References: <1445033424-21933-1-git-send-email-dianders@chromium.org>
+	<2B3535C5ECE8B5419E3ECBE30077290901DC3B2A07@US01WEMBX2.internal.synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20151103113030.GB14159@arm.com>
+In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3B2A07@US01WEMBX2.internal.synopsys.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: John Youn <John.Youn@synopsys.com>
+Cc: "balbi@ti.com" <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+John,
 
-On Tue, Nov 3, 2015 at 3:30 AM, Will Deacon <will.deacon@arm.com> wrote=
-:
-> On Tue, Nov 03, 2015 at 04:10:08PM +0800, Caesar Wang wrote:
->> As the following log:
->> where we experience a CPU hard lockup. The assembly code (disassembl=
-ed by gdb)
+On Fri, Oct 30, 2015 at 1:38 PM, John Youn <John.Youn@synopsys.com> wrote:
+> On 10/16/2015 3:10 PM, Douglas Anderson wrote:
+>> If you've got your interrupt signals bouncing a bit as you insert your
+>> USB device, you might end up in a state when the device is connected but
+>> the driver doesn't know it.
 >>
->> 0xc06c6e90 <__tcp_select_window+148>:        beq     0xc06c6eb0<__tc=
-p_select_window+180>
->> 0xc06c6e94 <__tcp_select_window+152>:        mov     r2, #1008; 0x3f=
-0
->> 0xc06c6e98 <__tcp_select_window+156>:        ldr     r5, [r0,#1004] =
-; 0x3ec
->> 0xc06c6e9c <__tcp_select_window+160>:        ldrh    r2, [r0,r2]
->> ....
+>> Specifically, the observed order is:
+>>  1. hardware sees connect
+>>  2. hardware sees disconnect
+>>  3. hardware sees connect
+>>  4. dwc2_port_intr() - clears connect interrupt
+>>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
 >>
->> 0xc06c6ee0 <__tcp_select_window+228>:        addne   r0, r0, #1
->> 0xc06c6ee4 <__tcp_select_window+232>:        lslne   r0, r0, r2
->> 0xc06c6ee8 <__tcp_select_window+236>:        ldmne   sp, {r4, r5,r11=
-, sp,pc}
+>> Now you'll be stuck with the cable plugged in and no further interrupts
+>> coming in but the driver will think we're disconnected.
 >>
->> Could either the =E2=80=9Cstrhi=E2=80=9D/=E2=80=9Dstrlo=E2=80=9D pai=
-r, or the lslne/ldmne pair, be
->> tripping over errata 818325, or a similar errata?
+>> We'll fix this by checking for the missing connect interrupt and
+>> re-connecting after the disconnect is posted.  We don't skip the
+>> disconnect because if there is a transitory disconnect we really want to
+>> de-enumerate and re-enumerate.
+>>
+>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>> ---
+>>  drivers/usb/dwc2/core.h     |  2 ++
+>>  drivers/usb/dwc2/hcd.c      | 33 +++++++++++++++++++++++++++++++++
+>>  drivers/usb/dwc2/hcd_intr.c |  6 +-----
+>>  3 files changed, 36 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+>> index ebf2504..30748be 100644
+>> --- a/drivers/usb/dwc2/core.h
+>> +++ b/drivers/usb/dwc2/core.h
+>> @@ -1151,11 +1151,13 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
+>>
+>>  #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+>>  extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
+>> +extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
+>>  extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg);
+>>  extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+>>  #else
+>>  static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+>>  { return 0; }
+>> +static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
+>>  static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
+>>  static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
+>>  static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
+>> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+>> index af4e4a2..4d2bc50 100644
+>> --- a/drivers/usb/dwc2/hcd.c
+>> +++ b/drivers/usb/dwc2/hcd.c
+>> @@ -268,6 +268,22 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
+>>  }
+>>
+>>  /**
+>> + * dwc2_hcd_connect() - Handles connect of the HCD
+>> + *
+>> + * @hsotg: Pointer to struct dwc2_hsotg
+>> + *
+>> + * Must be called with interrupt disabled and spinlock held
+>> + */
+>> +void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
+>> +{
+>> +     if (hsotg->lx_state != DWC2_L0)
+>> +             usb_hcd_resume_root_hub(hsotg->priv);
+>> +
+>> +     hsotg->flags.b.port_connect_status_change = 1;
+>> +     hsotg->flags.b.port_connect_status = 1;
+>> +}
+>> +
+>> +/**
+>>   * dwc2_hcd_disconnect() - Handles disconnect of the HCD
+>>   *
+>>   * @hsotg: Pointer to struct dwc2_hsotg
+>> @@ -277,6 +293,7 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
+>>  void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
+>>  {
+>>       u32 intr;
+>> +     u32 hprt0;
+>>
+>>       /* Set status flags for the hub driver */
+>>       hsotg->flags.b.port_connect_status_change = 1;
+>> @@ -315,6 +332,22 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
+>>               dwc2_hcd_cleanup_channels(hsotg);
+>>
+>>       dwc2_host_disconnect(hsotg);
+>> +
+>> +     /*
+>> +      * Add an extra check here to see if we're actually connected but
+>> +      * we don't have a detection interrupt pending.  This can happen if:
+>> +      *   1. hardware sees connect
+>> +      *   2. hardware sees disconnect
+>> +      *   3. hardware sees connect
+>> +      *   4. dwc2_port_intr() - clears connect interrupt
+>> +      *   5. dwc2_handle_common_intr() - calls here
+>> +      *
+>> +      * Without the extra check here we will end calling disconnect
+>> +      * and won't get any future interrupts to handle the connect.
+>> +      */
+>> +     hprt0 = dwc2_readl(hsotg->regs + HPRT0);
+>> +     if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
+>> +             dwc2_hcd_connect(hsotg);
 >
-> No. One of the conditions for #818325 is:
->
->   The second instruction is an UNPREDICTABLE STR or STM (maximum two2
->   registers in the list) with write-back and the write-back register =
-is
->   in the list of stored registers.
->
-> I don't see either of those in your code snippet above, but then I do=
-n't
-> see your strhi/strlo either. What's going on?
+> I'm a little bit wary of this as it will also run when you unload
+> the module with a device connected. However I can't produce any
+> negative results from that. Will it work if you handle it just
+> for the disconnect interrupt?
 
-It looks like Caesar is proposing that this errata is the root cause
-for some hard lockups we're seeing on rk3288 Chromebooks.  I agree
-with folks here that say this isn't terribly likely, but I always like
-to be proven wrong.  ;)
+Good call.  I think it might actually be cleaner to just add a "force"
+parameter to dwc2_hcd_disconnect().  That way the 3 callers other than
+_dwc2_hcd_stop() all get the behavior to check for reconnect.  I hope
+that's OK.  New patch forthcoming.
 
-We've got code that samples / prints CPU_DBGPCSR at the time of a hard
-lockup.  That register isn't 100% accurate about where a CPU is, but
-it's better than nothing (technically there may be ways to actually
-use the DBG registers to stop the remote CPU and maybe give more info,
-but I digress).
-
-When CPUs are hard locked up, they are often found at:
-
-<c0117c8c> v7_coherent_kern_range+0x58/0x74
-  or
-<c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
-
-That made me think that an errata might be the root cause of our hard
-lockups, since ARM errata often trigger in cache/tlb functions.  I
-think Caesar dug up this old errata fix in response to my suggestion.
-
-If you know of any ARM errata that might trigger hard lockups like
-this, I'd certainly be all ears.  It's also possible that we've got
-something running at too low of a voltage or we've got clock dividers
-or cache timings programmed incorrectly somewhere.  To give a more
-full disassembly of one of the crashes:
-
-  <4>[ 1623.480846] SMP: failed to stop secondary CPUs
-  <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
-  <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x7=
-4
-  <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20=
-/0x38
-
----
-
-c01827dc:       e2841010        add     r1, r4, #16
-c01827e0:       e2445004        sub     r5, r4, #4
-c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
-Offset: 0x235cb8)
-=3D> c01827e8:    f595f000        pldw    [r5]
-c01827ec:       e1953f9f        ldrex   r3, [r5]
-c01827f0:       e2433001        sub     r3, r3, #1
-c01827f4:       e1852f93        strex   r2, r3, [r5]
-c01827f8:       e3320000        teq     r2, #0
-c01827fc:       1afffffa        bne     c01827ec
-<__unqueue_futex+0x6c> (File Offset: 0x927ec)
-c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
-
----
-
-c0117c80:       e08cc002        add     ip, ip, r2
-c0117c84:       e15c0001        cmp     ip, r1
-c0117c88:       3afffffb        bcc     c0117c7c
-<v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
-=3D> c0117c8c:    e3a00000        mov     r0, #0
-c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
-c0117c94:       f57ff04a        dsb     ishst
-c0117c98:       f57ff06f        isb     sy
-c0117c9c:       e1a0f00e        mov     pc, lr
-
----
-
-c0118260:       e1830600        orr     r0, r3, r0, lsl #12
-c0118264:       e1a01601        lsl     r1, r1, #12
-=3D> c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
-c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
-c0118270:       e1500001        cmp     r0, r1
-c0118274:       3afffffb        bcc     c0118268
-<v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
-c0118278:       f57ff04b        dsb     ish
-c011827c:       e1a0f00e        mov     pc, lr
+-Doug
