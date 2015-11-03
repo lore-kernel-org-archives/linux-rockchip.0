@@ -1,82 +1,111 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v1 5/5] ASoC: rockchip-rt5645: Add the divider clock for cpu
-Date: Tue,  3 Nov 2015 09:33:58 +0800
-Message-ID: <1446514438-13922-6-git-send-email-wxt@rock-chips.com>
-References: <1446514438-13922-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446514438-13922-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>
-Cc: Sonny Rao <sonnyrao@chromium.org>, Dylan Reid <dgreid@chromium.org>, Doug Anderson <dianders@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] clocksource: rockchip: Make the driver more
+ compatible
+Date: Tue, 3 Nov 2015 10:00:39 +0800
+Message-ID: <56381547.5070109@gmail.com>
+References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com>
+ <5632E765.4010207@gmail.com> <56334995.6090103@linaro.org>
+ <21587719.mnFBFBzBeI@phil> <56379D46.1000402@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56379D46.1000402-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add to set the cpu/codec DAI configure, let's divider the
-Transmit/Receive clock for cpu.
+Daniel,
 
-In master mode, The SCLK and LRCK are configured as output,
-this patch should can set each divider to arrange the clock distribution.
+=E5=9C=A8 2015=E5=B9=B411=E6=9C=8803=E6=97=A5 01:28, Daniel Lezcano =E5=
+=86=99=E9=81=93:
+> On 10/31/2015 12:47 AM, Heiko Stuebner wrote:
+>> Hi Daniel,
+>>
+>> Am Freitag, 30. Oktober 2015, 11:42:29 schrieb Daniel Lezcano:
+>>> On 10/30/2015 04:43 AM, Caesar Wang wrote:
+>>>> Hi Daniel,
+>>>>
+>>>> =E5=9C=A8 2015=E5=B9=B410=E6=9C=8801=E6=97=A5 03:14, Heiko St=C3=BC=
+bner =E5=86=99=E9=81=93:
+>>>>> Hi Daniel,
+>>>>>
+>>>>> Am Dienstag, 29. September 2015, 06:18:03 schrieb Daniel Lezcano:
+>>>>>> On 09/25/2015 04:14 AM, Caesar Wang wrote:
+>>>>>>> Build the arm64 SoCs (e.g.: RK3368) on Rockchip platform,
+>>>>>>> There are some failure with build up on timer driver for rockch=
+ip.
+>>>>>>>
+>>>>>>> Says:
+>>>>>>> /tmp/ccdAnNy5.s:47: Error: missing immediate expression at  ope=
+rand
+>>>>>>> 1 --
+>>>>>>> `dsb`
+>>>>>>> ...
+>>>>>>>
+>>>>>>> The problem was different semantics of dsb on btw arm32 and arm=
+64,
+>>>>>>> Here we can convert the dsb with insteading of dsb(sy).The "sy"=
+=20
+>>>>>>> param
+>>>>>>> is the default which you are allow to omit, so on arm32 dsb()an=
+d
+>>>>>>> dsb(sy)
+>>>>>>> are the same.
+>>>>>>>
+>>>>>>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>>>> Acked-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+>>>>> as you have "just" Acked these patches, I guess you are expecting=
+=20
+>>>>> them
+>>>>> to go
+>>>>> through the same tree as the devicetree changes, right?
+>>>>
+>>>> I'm wonder if someone will apply this series patchs but the wait.:=
+-)
+>>>> In fact, I'm no sure that the Acked is really meaning.:-
+>>>
+>>> Yes, by acking the patch I say I am ok with it and I agree it can g=
+o
+>>> through another tree.
+>>
+>> although I guess the two clocksource changes could very well just go
+>> through your tree. dsb() -> dsb(sy) is supposed to be equal and the=20
+>> second
+>> one is just cosmetics.  The Kconfig and dts changes need to wait in=20
+>> any case
+>> for 4.5 ... but I guess that may be true for the clocksource changes=
+=20
+>> as well?
+>
+> Heiko, Caesar,
+>
+> I am wondering if the dsb() is really necessary. Is it possible you=20
+> test the timer by removing this instruction ? Otherwise I will have t=
+o=20
+> setup my board again and it will take awhile.
+>
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+As the @Arnd suggestion,
 
----
+That's seem ok for me.
+Although the writel_relaxed() and writel() a bit different  with DSB()=20
+and L2's sync.
 
-Changes in v1:
-- Fix a subject missspell.
+Do I need send the patch v3?  I will test that on my board.
 
- sound/soc/rockchip/rockchip_rt5645.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+I'm no sure that why the clocksource driver didn't use the=20
+writel_relaxed() to work.
+Okay, I think we should according to the suggestion or required.
 
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index edff07f..4c1a693 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -74,8 +74,25 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
- 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	int dai_fmt = rtd->card->dai_link->dai_fmt;
- 	int mclk;
- 
-+	/* set codec DAI configuration */
-+	ret = snd_soc_dai_set_fmt(codec_dai, dai_fmt);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev,
-+			"failed to set the format for codec side\n");
-+		return ret;
-+	}
-+
-+	/* set cpu DAI configuration */
-+	ret = snd_soc_dai_set_fmt(cpu_dai, dai_fmt);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev,
-+			"failed to set the format for cpu side\n");
-+		return ret;
-+	}
-+
- 	switch (params_rate(params)) {
- 	case 8000:
- 	case 16000:
-@@ -109,6 +126,21 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
- 
-+	/* The codec is master mode, that's not needed set clkdiv for cpu */
-+	if ((dai_fmt & SND_SOC_DAIFMT_MASTER_MASK) == SND_SOC_DAIFMT_CBM_CFM)
-+		return ret;
-+
-+	/* the LRCK clock for cpu */
-+	ret = snd_soc_dai_set_clkdiv(cpu_dai, ROCKCHIP_DIV_BCLK,
-+				     (mclk / 4) / params_rate(params));
-+	if (ret < 0)
-+		return ret;
-+
-+	/* the SCLK clock for cpu */
-+	snd_soc_dai_set_clkdiv(cpu_dai, ROCKCHIP_DIV_MCLK, 4);
-+	if (ret < 0)
-+		return ret;
-+
- 	return ret;
- }
- 
--- 
-1.9.1
+--=20
+Thanks,
+Caesar
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
