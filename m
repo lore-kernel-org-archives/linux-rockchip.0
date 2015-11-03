@@ -1,47 +1,95 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 10/13] of: add vendor prefix for boe
-Date: Mon, 2 Nov 2015 20:24:29 -0600
-Message-ID: <CAL_JsqJZJkjE+U=f1k_3h=ywuzGrk+6jLp=Cz7Xfni1VnsvdOw@mail.gmail.com>
-References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com> <1446296170-3702-11-git-send-email-zyw@rock-chips.com>
+From: Brian Norris <computersforpeace@gmail.com>
+Subject: Re: [PATCH v9 10/17] phy: Add driver for rockchip Display Port PHY
+Date: Mon, 2 Nov 2015 20:38:27 -0800
+Message-ID: <20151103043827.GA17261@localhost>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
+ <1446083918-30809-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446296170-3702-11-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Kuninori Morimoto <kuninori.morimoto.gx-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Arnaud Ebalard <arno-LkuqDEemtHBg9hUCZPvPmw@public.gmane.org>, Antony Pavlov <antonynpavlov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1446083918-30809-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, djkurtz@chromium.org, dianders@chromium.org, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Kukjin Kim <kgene@kernel.org>, robherring2@gmail.com, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sean Paul <seanpaul@chromi>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Oct 31, 2015 at 7:56 AM, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
+Hi Yakir,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
+On Thu, Oct 29, 2015 at 09:58:38AM +0800, Yakir Yang wrote:
+> Add phy driver for the Rockchip DisplayPort PHY module. This
+> is required to get DisplayPort working in Rockchip SoCs.
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 > ---
->
-> Changes in v2:
-> add vendor prefix for boe
->
->  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.txt b/Documentation/devicetree/bindings/vendor-prefixes.txt
-> index 8fb0590..404b798 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.txt
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.txt
-> @@ -33,6 +33,7 @@ auo   AU Optronics Corporation
->  avago  Avago Technologies
->  avic   Shanghai AVIC Optoelectronics Co., Ltd.
->  axis   Axis Communications AB
-> +boe    BOE Technology Group Co., Ltd.
->  bosch  Bosch Sensortec GmbH
->  boundary       Boundary Devices Inc.
->  brcm   Broadcom Corporation
-> --
-> 2.6.2
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+...
+> diff --git a/drivers/phy/phy-rockchip-dp.c b/drivers/phy/phy-rockchip-dp.c
+> new file mode 100644
+> index 0000000..f3e0058
+> --- /dev/null
+> +++ b/drivers/phy/phy-rockchip-dp.c
+> @@ -0,0 +1,151 @@
+> +/*
+> + * Rockchip DP PHY driver
+> + *
+> + * Copyright (C) 2015 FuZhou Rockchip Co., Ltd.
+> + * Author: Yakir Yang <ykk@@rock-chips.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License.
+> + */
+> +
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/clk.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/platform_device.h>
+> +
+> +#define GRF_SOC_CON12                           0x0274
+> +
+> +#define GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK   BIT(4)
+> +#define GRF_EDP_REF_CLK_SEL_INTER               BIT(4)
+
+Why are the above two macros the same? Judging by the RK3288 manual and
+other downstream drivers, it seems like you want the _MASK one to be
+shifted left by 16 (i.e., BIT(20)).
+
+> +
+> +#define GRF_EDP_PHY_SIDDQ_HIWORD_MASK           BIT(21)
+> +#define GRF_EDP_PHY_SIDDQ_ON                    0
+> +#define GRF_EDP_PHY_SIDDQ_OFF                   BIT(5)
+> +
+
+...
+
+> +	ret = regmap_write(dp->grf, GRF_SOC_CON12, GRF_EDP_REF_CLK_SEL_INTER |
+> +			   GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK);
+
+IOW, the above is writing:
+
+	BIT(4) | BIT(4)
+
+whereas I think you want:
+
+	BIT(4) | BIT(20)
+
+> +	if (ret != 0) {
+> +		dev_err(dp->dev, "Could not config GRF edp ref clk: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+
+...
+
+(FYI, I came across this by inspection when comparing Heiko's
+'somewhat-stable' branch [1] with this series. The former brings up eDP
+fine on veyron-jaq, whereas this one doesn't yet, even with the above
+change. Still debugging the issue.)
+
+Brian
+
+[1] https://github.com/mmind/linux-rockchip/tree/devel/somewhat-stable
