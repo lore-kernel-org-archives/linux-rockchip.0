@@ -1,392 +1,126 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v1 3/6] thermal: rockchip: Support the RK3368 SoCs in
- thermal driver
-Date: Tue, 3 Nov 2015 09:48:31 -0800
-Message-ID: <20151103174830.GA9987@localhost.localdomain>
-References: <1446102858-10116-1-git-send-email-wxt@rock-chips.com>
- <1446102858-10116-4-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy loading
+Date: Tue, 3 Nov 2015 11:00:20 -0800
+Message-ID: <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
+References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
+	<20151103113030.GB14159@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1446102858-10116-4-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20151103113030.GB14159@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will.deacon@arm.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Caesar,
+Hi,
 
-On Thu, Oct 29, 2015 at 03:14:15PM +0800, Caesar Wang wrote:
-> The RK3368 SoCs support to 2 channel TS-ADC, the temperature criteria
-> of each channel can be configurable.
-> 
-> The system has two Temperature Sensors, channel 0 is for CPU,
-> and channel 1 is for GPU.
+On Tue, Nov 3, 2015 at 3:30 AM, Will Deacon <will.deacon@arm.com> wrote=
+:
+> On Tue, Nov 03, 2015 at 04:10:08PM +0800, Caesar Wang wrote:
+>> As the following log:
+>> where we experience a CPU hard lockup. The assembly code (disassembl=
+ed by gdb)
+>>
+>> 0xc06c6e90 <__tcp_select_window+148>:        beq     0xc06c6eb0<__tc=
+p_select_window+180>
+>> 0xc06c6e94 <__tcp_select_window+152>:        mov     r2, #1008; 0x3f=
+0
+>> 0xc06c6e98 <__tcp_select_window+156>:        ldr     r5, [r0,#1004] =
+; 0x3ec
+>> 0xc06c6e9c <__tcp_select_window+160>:        ldrh    r2, [r0,r2]
+>> ....
+>>
+>> 0xc06c6ee0 <__tcp_select_window+228>:        addne   r0, r0, #1
+>> 0xc06c6ee4 <__tcp_select_window+232>:        lslne   r0, r0, r2
+>> 0xc06c6ee8 <__tcp_select_window+236>:        ldmne   sp, {r4, r5,r11=
+, sp,pc}
+>>
+>> Could either the =E2=80=9Cstrhi=E2=80=9D/=E2=80=9Dstrlo=E2=80=9D pai=
+r, or the lslne/ldmne pair, be
+>> tripping over errata 818325, or a similar errata?
+>
+> No. One of the conditions for #818325 is:
+>
+>   The second instruction is an UNPREDICTABLE STR or STM (maximum two2
+>   registers in the list) with write-back and the write-back register =
+is
+>   in the list of stored registers.
+>
+> I don't see either of those in your code snippet above, but then I do=
+n't
+> see your strhi/strlo either. What's going on?
 
-Please improve your patch description. I dont think this patch only
-adds the support for RK3368.
+It looks like Caesar is proposing that this errata is the root cause
+for some hard lockups we're seeing on rk3288 Chromebooks.  I agree
+with folks here that say this isn't terribly likely, but I always like
+to be proven wrong.  ;)
 
-I see, for example, at least two other (maybe dependencies of the
-new chip support) changes:
+We've got code that samples / prints CPU_DBGPCSR at the time of a hard
+lockup.  That register isn't 100% accurate about where a CPU is, but
+it's better than nothing (technically there may be ways to actually
+use the DBG registers to stop the remote CPU and maybe give more info,
+but I digress).
 
-- conversion function improvement
-- tshut value/temperature configuration
+When CPUs are hard locked up, they are often found at:
 
-Could you please split this patch in smaller changes?
+<c0117c8c> v7_coherent_kern_range+0x58/0x74
+  or
+<c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
 
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v1:
-> - As Dmitry comment, make the conversion table in as a parameter.
-> 
+That made me think that an errata might be the root cause of our hard
+lockups, since ARM errata often trigger in cache/tlb functions.  I
+think Caesar dug up this old errata fix in response to my suggestion.
 
-Are you sure that this version implements this suggestion?
+If you know of any ARM errata that might trigger hard lockups like
+this, I'd certainly be all ears.  It's also possible that we've got
+something running at too low of a voltage or we've got clock dividers
+or cache timings programmed incorrectly somewhere.  To give a more
+full disassembly of one of the crashes:
 
+  <4>[ 1623.480846] SMP: failed to stop secondary CPUs
+  <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
+  <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x7=
+4
+  <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20=
+/0x38
 
->  drivers/thermal/rockchip_thermal.c | 183 ++++++++++++++++++++++++++++++++-----
->  1 file changed, 158 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index f96c151..4748a8e 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -1,6 +1,9 @@
->  /*
->   * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
->   *
-> + * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-> + * Caesar Wang <wxt@rock-chips.com>
-> + *
->   * This program is free software; you can redistribute it and/or modify it
->   * under the terms and conditions of the GNU General Public License,
->   * version 2, as published by the Free Software Foundation.
-> @@ -75,8 +78,12 @@ struct rockchip_tsadc_chip {
->  
->  	/* Per-sensor methods */
->  	int (*get_temp)(int chn, void __iomem *reg, int *temp);
-> -	void (*set_tshut_temp)(int chn, void __iomem *reg, long temp);
-> +	void (*set_tshut_value)(int chn, void __iomem *reg, u32 value);
+---
 
-Do you have any explanation why do you need to change from temp to
-value? Can you include this in your patch description?
+c01827dc:       e2841010        add     r1, r4, #16
+c01827e0:       e2445004        sub     r5, r4, #4
+c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
+Offset: 0x235cb8)
+=3D> c01827e8:    f595f000        pldw    [r5]
+c01827ec:       e1953f9f        ldrex   r3, [r5]
+c01827f0:       e2433001        sub     r3, r3, #1
+c01827f4:       e1852f93        strex   r2, r3, [r5]
+c01827f8:       e3320000        teq     r2, #0
+c01827fc:       1afffffa        bne     c01827ec
+<__unqueue_futex+0x6c> (File Offset: 0x927ec)
+c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
 
->  	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
-> +
-> +	/* Per-table methods */
-> +	const struct tsadc_table *table;
-> +	int table_num;
->  };
->  
->  struct rockchip_thermal_sensor {
-> @@ -102,7 +109,7 @@ struct rockchip_thermal_data {
->  	enum tshut_polarity tshut_polarity;
->  };
->  
-> -/* TSADC V2 Sensor info define: */
-> +/* TSADC Sensor info define: */
->  #define TSADCV2_AUTO_CON			0x04
->  #define TSADCV2_INT_EN				0x08
->  #define TSADCV2_INT_PD				0x0c
-> @@ -124,6 +131,8 @@ struct rockchip_thermal_data {
->  #define TSADCV2_INT_PD_CLEAR_MASK		~BIT(8)
->  
->  #define TSADCV2_DATA_MASK			0xfff
-> +#define TSADCV3_DATA_MASK			0x3ff
-> +
->  #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
->  #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
->  #define TSADCV2_AUTO_PERIOD_TIME		250 /* msec */
-> @@ -172,21 +181,62 @@ static const struct tsadc_table v2_code_table[] = {
->  	{3421, 125000},
->  };
->  
-> -static u32 rk_tsadcv2_temp_to_code(long temp)
-> +static const struct tsadc_table v3_code_table[] = {
-> +	{0, -40000},
-> +	{106, -40000},
-> +	{108, -35000},
-> +	{110, -30000},
-> +	{112, -25000},
-> +	{114, -20000},
-> +	{116, -15000},
-> +	{118, -10000},
-> +	{120, -5000},
-> +	{122, 0},
-> +	{124, 5000},
-> +	{126, 10000},
-> +	{128, 15000},
-> +	{130, 20000},
-> +	{132, 25000},
-> +	{134, 30000},
-> +	{136, 35000},
-> +	{138, 40000},
-> +	{140, 45000},
-> +	{142, 50000},
-> +	{144, 55000},
-> +	{146, 60000},
-> +	{148, 65000},
-> +	{150, 70000},
-> +	{152, 75000},
-> +	{154, 80000},
-> +	{156, 85000},
-> +	{158, 90000},
-> +	{160, 95000},
-> +	{162, 100000},
-> +	{163, 105000},
-> +	{165, 110000},
-> +	{167, 115000},
-> +	{169, 120000},
-> +	{171, 125000},
-> +	{TSADCV3_DATA_MASK, 125000},
-> +};
-> +
-> +static u32 rk_tsadcv2_temp_to_code(const struct rockchip_tsadc_chip *chip,
-> +				   long temp)
->  {
+---
 
-This function receives the chip structure as parameter...
+c0117c80:       e08cc002        add     ip, ip, r2
+c0117c84:       e15c0001        cmp     ip, r1
+c0117c88:       3afffffb        bcc     c0117c7c
+<v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
+=3D> c0117c8c:    e3a00000        mov     r0, #0
+c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
+c0117c94:       f57ff04a        dsb     ishst
+c0117c98:       f57ff06f        isb     sy
+c0117c9c:       e1a0f00e        mov     pc, lr
 
-> +	const struct tsadc_table *table = chip->table;
->  	int high, low, mid;
->  
->  	low = 0;
-> -	high = ARRAY_SIZE(v2_code_table) - 1;
-> +	high = chip->table_num - 1;
->  	mid = (high + low) / 2;
->  
-> -	if (temp < v2_code_table[low].temp || temp > v2_code_table[high].temp)
-> +	if (temp < table[low].temp || temp > table[high].temp)
->  		return 0;
->  
->  	while (low <= high) {
-> -		if (temp == v2_code_table[mid].temp)
-> -			return v2_code_table[mid].code;
-> -		else if (temp < v2_code_table[mid].temp)
-> +		if (temp == table[mid].temp)
-> +			return table[mid].code;
-> +		else if (temp < table[mid].temp)
->  			high = mid - 1;
->  		else
->  			low = mid + 1;
+---
 
-And seams to do the work.. but..
-
-I am assuming you have forgotten to continue the change in the remaining
-functions: rk_tsadcv2_code_to_temp:
-
-215 
-216         /*
-217          * The 5C granularity provided by the table is too much. Let's
-218          * assume that the relationship between sensor readings and
-219          * temperature between 2 table entries is linear and interpolate
-220          * to produce less granular result.
-221          */
-222         num = v2_code_table[mid].temp - v2_code_table[mid - 1].temp;
-223         num *= v2_code_table[mid - 1].code - code;
-224         denom = v2_code_table[mid - 1].code - v2_code_table[mid].code;
-225         *temp = v2_code_table[mid - 1].temp + (num / denom);
-226 
-
-
-Please finish the change in rk_tsadcv2_code_to_temp, to use chip->table, and
-
-
-
-> @@ -235,16 +285,59 @@ static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
->  	return 0;
->  }
->  
-> +static int rk_tsadcv3_code_to_temp(u32 code, int *temp)
-> +{
-> +	unsigned int low = 1;
-> +	unsigned int high = ARRAY_SIZE(v3_code_table) - 1;
-> +	unsigned int mid = (low + high) / 2;
-> +	unsigned int num;
-> +	unsigned long denom;
-> +
-> +	BUILD_BUG_ON(ARRAY_SIZE(v3_code_table) < 2);
-> +
-> +	code &= TSADCV3_DATA_MASK;
-> +	if (code < v3_code_table[low].code)
-> +		return -EAGAIN;		/* Incorrect reading */
-> +
-> +	while (low <= high) {
-> +		if (code >= v3_code_table[mid - 1].code &&
-> +		    code < v3_code_table[mid].code)
-> +			break;
-> +		else if (code > v3_code_table[mid].code)
-> +			low = mid + 1;
-> +		else
-> +			high = mid - 1;
-> +		mid = (low + high) / 2;
-> +	}
-> +
-> +	/*
-> +	 * The 5C granularity provided by the table is too much. Let's
-> +	 * assume that the relationship between sensor readings and
-> +	 * temperature between 2 table entries is linear and interpolate
-> +	 * to produce less granular result.
-> +	 */
-> +	num = v3_code_table[mid].temp - v3_code_table[mid - 1].temp;
-> +	num *= code - v3_code_table[mid - 1].code;
-> +	denom = v3_code_table[mid].code - v3_code_table[mid - 1].code;
-> +	*temp = v3_code_table[mid - 1].temp + (num / denom);
-> +
-> +	return 0;
-> +}
-
-Do not add the above function, as it is a code duplication of 
-rk_tsadcv2_code_to_temp. The above function, functionality wise, the same
-as rk_tsadcv2_code_to_temp, except that it uses a different table.
-
- The suggestion is to pass the table as parameter to rk_tsadcv2_code_to_temp,
- then just reuse rk_tsadcv2_code_to_temp in both cases.
-
-Would that work for you?
-
-> +
->  /**
-> - * rk_tsadcv2_initialize - initialize TASDC Controller
-> - * (1) Set TSADCV2_AUTO_PERIOD, configure the interleave between
-> - * every two accessing of TSADC in normal operation.
-> - * (2) Set TSADCV2_AUTO_PERIOD_HT, configure the interleave between
-> - * every two accessing of TSADC after the temperature is higher
-> - * than COM_SHUT or COM_INT.
-> - * (3) Set TSADCV2_HIGH_INT_DEBOUNCE and TSADC_HIGHT_TSHUT_DEBOUNCE,
-> - * if the temperature is higher than COMP_INT or COMP_SHUT for
-> - * "debounce" times, TSADC controller will generate interrupt or TSHUT.
-> + * rk_tsadcv2_initialize - initialize TASDC Controller.
-> + *
-> + * (1) Set TSADC_V2_AUTO_PERIOD:
-> + *     Configure the interleave between every two accessing of
-> + *     TSADC in normal operation.
-> + *
-> + * (2) Set TSADCV2_AUTO_PERIOD_HT:
-> + *     Configure the interleave between every two accessing of
-> + *     TSADC after the temperature is higher than COM_SHUT or COM_INT.
-> + *
-> + * (3) Set TSADCV2_HIGH_INT_DEBOUNCE and TSADC_HIGHT_TSHUT_DEBOUNCE:
-> + *     If the temperature is higher than COMP_INT or COMP_SHUT for
-> + *     "debounce" times, TSADC controller will generate interrupt or TSHUT.
->   */
->  static void rk_tsadcv2_initialize(void __iomem *regs,
->  				  enum tshut_polarity tshut_polarity)
-> @@ -286,6 +379,15 @@ static void rk_tsadcv2_control(void __iomem *regs, bool enable)
->  	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
->  }
->  
-> +static int rk_tsadcv3_get_temp(int chn, void __iomem *regs, int *temp)
-> +{
-> +	u32 val;
-> +
-> +	val = readl_relaxed(regs + TSADCV2_DATA(chn));
-> +
-> +	return rk_tsadcv3_code_to_temp(val, temp);
-> +}
-
-Same suggestion here. This function looks exactly the same as rk_tsadcv2_get_temp. can you just pass the chip as parameter, then?
-
-> +
->  static int rk_tsadcv2_get_temp(int chn, void __iomem *regs, int *temp)
->  {
->  	u32 val;
-> @@ -295,12 +397,11 @@ static int rk_tsadcv2_get_temp(int chn, void __iomem *regs, int *temp)
->  	return rk_tsadcv2_code_to_temp(val, temp);
->  }
->  
-> -static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs, long temp)
-> +static void rk_tsadcv2_tshut_value(int chn, void __iomem *regs, u32 value)
->  {
-> -	u32 tshut_value, val;
-> +	u32 val;
->  
-> -	tshut_value = rk_tsadcv2_temp_to_code(temp);
-> -	writel_relaxed(tshut_value, regs + TSADCV2_COMP_SHUT(chn));
-> +	writel_relaxed(value, regs + TSADCV2_COMP_SHUT(chn));
->  
->  	/* TSHUT will be valid */
->  	val = readl_relaxed(regs + TSADCV2_AUTO_CON);
-> @@ -337,8 +438,31 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
->  	.irq_ack = rk_tsadcv2_irq_ack,
->  	.control = rk_tsadcv2_control,
->  	.get_temp = rk_tsadcv2_get_temp,
-> -	.set_tshut_temp = rk_tsadcv2_tshut_temp,
-> +	.set_tshut_value = rk_tsadcv2_tshut_value,
-> +	.set_tshut_mode = rk_tsadcv2_tshut_mode,
-> +
-> +	.table = v2_code_table,
-> +	.table_num = ARRAY_SIZE(v2_code_table),
-> +};
-> +
-> +static const struct rockchip_tsadc_chip rk3368_tsadc_data = {
-> +	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-> +	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-> +	.chn_num = 2, /* two channels for tsadc */
-> +
-> +	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-> +	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-> +	.tshut_temp = 95000,
-> +
-> +	.initialize = rk_tsadcv2_initialize,
-> +	.irq_ack = rk_tsadcv2_irq_ack,
-> +	.control = rk_tsadcv2_control,
-> +	.get_temp = rk_tsadcv3_get_temp,
-> +	.set_tshut_value = rk_tsadcv2_tshut_value,
->  	.set_tshut_mode = rk_tsadcv2_tshut_mode,
-> +
-> +	.table = v3_code_table,
-> +	.table_num = ARRAY_SIZE(v3_code_table),
->  };
->  
->  static const struct of_device_id of_rockchip_thermal_match[] = {
-> @@ -346,6 +470,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
->  		.compatible = "rockchip,rk3288-tsadc",
->  		.data = (void *)&rk3288_tsadc_data,
->  	},
-> +	{
-> +		.compatible = "rockchip,rk3368-tsadc",
-> +		.data = (void *)&rk3368_tsadc_data,
-> +	},
->  	{ /* end */ },
->  };
->  MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
-> @@ -458,8 +586,10 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
->  	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
->  	int error;
->  
-> +	u32 tshut_value = rk_tsadcv2_temp_to_code(tsadc, thermal->tshut_temp);
-> +
->  	tsadc->set_tshut_mode(id, thermal->regs, thermal->tshut_mode);
-> -	tsadc->set_tshut_temp(id, thermal->regs, thermal->tshut_temp);
-> +	tsadc->set_tshut_value(id, thermal->regs, tshut_value);
->  
->  	sensor->thermal = thermal;
->  	sensor->id = id;
-> @@ -660,6 +790,9 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
->  	int i;
->  	int error;
->  
-> +	u32 tshut_value = rk_tsadcv2_temp_to_code(thermal->chip,
-> +						  thermal->tshut_temp);
-> +
->  	error = clk_enable(thermal->clk);
->  	if (error)
->  		return error;
-> @@ -677,8 +810,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
->  
->  		thermal->chip->set_tshut_mode(id, thermal->regs,
->  					      thermal->tshut_mode);
-> -		thermal->chip->set_tshut_temp(id, thermal->regs,
-> -					      thermal->tshut_temp);
-> +		thermal->chip->set_tshut_value(id, thermal->regs,
-> +					       tshut_value);
->  	}
->  
->  	thermal->chip->control(thermal->regs, true);
-> -- 
-> 1.9.1
-> 
+c0118260:       e1830600        orr     r0, r3, r0, lsl #12
+c0118264:       e1a01601        lsl     r1, r1, #12
+=3D> c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
+c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
+c0118270:       e1500001        cmp     r0, r1
+c0118274:       3afffffb        bcc     c0118268
+<v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
+c0118278:       f57ff04b        dsb     ish
+c011827c:       e1a0f00e        mov     pc, lr
