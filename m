@@ -1,69 +1,55 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 0/8] phy: rockchip-usb: correct pll handling and usb-uart
-Date: Wed,  4 Nov 2015 22:44:06 +0100
-Message-ID: <1446673454-9529-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, Heiko Stuebner <heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 7/8] ARM: dts: rockchip: assign usbphy480m_src to the new
+ usbphy pll on veyron
+Date: Wed,  4 Nov 2015 22:44:13 +0100
+Message-ID: <1446673454-9529-8-git-send-email-heiko@sntech.de>
+References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446673454-9529-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Patches 1-7 fix a long-standing issue with the clock-tree of Rockchip SoCs
-namely our ignorance of the usbphy-internal pll that creates the needed
-480MHz but is also a supply-clock back to the core clock-controller in
-Rockchip SoCs.
+Veyron devices try to always set the source for usbphy480m to the usbphy0
+that is the phy connected to the otg controller, because the firmware-
+default is usbphy1, the ehci-controller connected to the internal camera
+that might get turned off way easier to save power.
 
-Till now that was worked around using a virtual clock in the cru itself,
-but that is of course ignorant of other parts then disabling the phy
-behind the cru's back, thus breaking potential users of these clocks.
+In the mainline kernel we currently don't use the usbphy480m_src at all,
+as it mainly powers the uart0 source that is connected to the bluetooth
+component of the wifi/bt combo.
 
+So move that assignment over to the new real pll clock inside the usbphy.
 
-Patch 8, while not associated with the new pll handling, also builds
-on the groundwork introduced there and adds support for the function
-repurposing one of the phys as passthrough for uart-data. This enables
-attaching a ttl converter to the D+ and D- pins of an usb cable to
-receive uart data this way, when it is not really possible to attach
-a regular serial console to a board.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-veyron.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-One point of critique in my first iteration [0] of this was, that
-due to when the reconfiguration happens we may miss parts of the logs
-when earlycon is enabled. So far early_initcall gets used as the
-unflattened devicetree is necessary to set this up. Doing this for
-example in the early_param directly would require parsing the flattened
-devicetree to get needed nodes and properties.
-
-I still maintain that if you're working on anything before smp-bringup
-you should use a real dev-board instead or try to solder uart cables
-on hopefully available test-points :-) .
-
-
-In any case, if patch 8 causes to much headache, it could be dropped
-to not hinder the earlier 7 patches.
-
-[0] http://comments.gmane.org/gmane.linux.ports.arm.rockchip/715
-
-
-Heiko Stuebner (8):
-  phy: rockchip-usb: fix clock get-put mismatch
-  phy: rockchip-usb: introduce a common data-struct for the device
-  phy: rockchip-usb: move per-phy init into a separate function
-  phy: rockchip-usb: expose the phy-internal PLLs
-  clk: rockchip: fix usbphy-related clocks
-  ARM: dts: rockchip: add clock-cells for usb phy nodes
-  ARM: dts: rockchip: assign usbphy480m_src to the new usbphy pll on
-    veyron
-  phy: rockchip-usb: add handler for usb-uart functionality
-
- .../devicetree/bindings/phy/rockchip-usb-phy.txt   |   6 +-
- Documentation/kernel-parameters.txt                |   6 +
- arch/arm/boot/dts/rk3066a.dtsi                     |   2 +
- arch/arm/boot/dts/rk3188.dtsi                      |   2 +
- arch/arm/boot/dts/rk3288-veyron.dtsi               |   2 +-
- arch/arm/boot/dts/rk3288.dtsi                      |   3 +
- drivers/clk/rockchip/clk-rk3188.c                  |  11 +-
- drivers/clk/rockchip/clk-rk3288.c                  |  16 +-
- drivers/phy/phy-rockchip-usb.c                     | 451 ++++++++++++++++++---
- 9 files changed, 417 insertions(+), 82 deletions(-)
-
+diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
+index d4263ed..c8329b5 100644
+--- a/arch/arm/boot/dts/rk3288-veyron.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+@@ -410,7 +410,7 @@
+ 	status = "okay";
+ 
+ 	assigned-clocks = <&cru SCLK_USBPHY480M_SRC>;
+-	assigned-clock-parents = <&cru SCLK_OTGPHY0>;
++	assigned-clock-parents = <&usbphy0>;
+ 	dr_mode = "host";
+ };
+ 
 -- 
 2.6.2
