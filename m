@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/8] phy: rockchip-usb: fix clock get-put mismatch
-Date: Wed,  4 Nov 2015 22:44:07 +0100
-Message-ID: <1446673454-9529-2-git-send-email-heiko@sntech.de>
+Subject: [PATCH 3/8] phy: rockchip-usb: move per-phy init into a separate function
+Date: Wed,  4 Nov 2015 22:44:09 +0100
+Message-ID: <1446673454-9529-4-git-send-email-heiko@sntech.de>
 References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1446673454-9529-1-git-send-email-heiko@sntech.de>
@@ -10,48 +10,119 @@ To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently the phy driver only gets the optional clock reference but
-never puts it again, neither during error handling nor on remove.
-Fix that by moving the clk_put to a devm-action that gets called at
-the right time when all other devm actions are done.
+This unclutters the loop in probe a lot and makes current (and future)
+error handling easier to read.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/phy/phy-rockchip-usb.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ drivers/phy/phy-rockchip-usb.c | 82 ++++++++++++++++++++++++------------------
+ 1 file changed, 47 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index 91d6f34..dfc056b 100644
+index dda1994..f10e130 100644
 --- a/drivers/phy/phy-rockchip-usb.c
 +++ b/drivers/phy/phy-rockchip-usb.c
-@@ -90,6 +90,14 @@ static const struct phy_ops ops = {
- 	.owner		= THIS_MODULE,
- };
+@@ -103,14 +103,57 @@ static void rockchip_usb_phy_action(void *data)
+ 		clk_put(rk_phy->clk);
+ }
  
-+static void rockchip_usb_phy_action(void *data)
++static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
++				 struct device_node *child)
 +{
-+	struct rockchip_usb_phy *rk_phy = data;
++	struct rockchip_usb_phy *rk_phy;
++	unsigned int reg_offset;
++	int err;
 +
++	rk_phy = devm_kzalloc(base->dev, sizeof(*rk_phy), GFP_KERNEL);
++	if (!rk_phy)
++		return -ENOMEM;
++
++	rk_phy->base = base;
++
++	if (of_property_read_u32(child, "reg", &reg_offset)) {
++		dev_err(base->dev, "missing reg property in node %s\n",
++			child->name);
++		return -EINVAL;
++	}
++
++	rk_phy->reg_offset = reg_offset;
++
++	rk_phy->clk = of_clk_get_by_name(child, "phyclk");
++	if (IS_ERR(rk_phy->clk))
++		rk_phy->clk = NULL;
++
++	err = devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
++	if (err)
++		goto err_devm_action;
++
++	rk_phy->phy = devm_phy_create(base->dev, child, &ops);
++	if (IS_ERR(rk_phy->phy)) {
++		dev_err(base->dev, "failed to create PHY\n");
++		return PTR_ERR(rk_phy->phy);
++	}
++	phy_set_drvdata(rk_phy->phy, rk_phy);
++
++	/* only power up usb phy when it use, so disable it when init*/
++	return rockchip_usb_phy_power(rk_phy, 1);
++
++err_devm_action:
 +	if (rk_phy->clk)
 +		clk_put(rk_phy->clk);
++	return err;
 +}
 +
  static int rockchip_usb_phy_probe(struct platform_device *pdev)
  {
  	struct device *dev = &pdev->dev;
-@@ -124,6 +132,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 		if (IS_ERR(rk_phy->clk))
- 			rk_phy->clk = NULL;
+ 	struct rockchip_usb_phy_base *phy_base;
+-	struct rockchip_usb_phy *rk_phy;
+ 	struct phy_provider *phy_provider;
+ 	struct device_node *child;
+-	unsigned int reg_offset;
+ 	int err;
  
-+		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
-+		if (err) {
-+			if (rk_phy->clk)
-+				clk_put(rk_phy->clk);
-+			return err;
-+		}
-+
- 		rk_phy->phy = devm_phy_create(dev, child, &ops);
- 		if (IS_ERR(rk_phy->phy)) {
- 			dev_err(dev, "failed to create PHY\n");
+ 	phy_base = devm_kzalloc(dev, sizeof(*phy_base), GFP_KERNEL);
+@@ -126,39 +169,8 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	for_each_available_child_of_node(dev->of_node, child) {
+-		rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
+-		if (!rk_phy)
+-			return -ENOMEM;
+-
+-		if (of_property_read_u32(child, "reg", &reg_offset)) {
+-			dev_err(dev, "missing reg property in node %s\n",
+-				child->name);
+-			return -EINVAL;
+-		}
+-
+-		rk_phy->reg_offset = reg_offset;
+-
+-		rk_phy->clk = of_clk_get_by_name(child, "phyclk");
+-		if (IS_ERR(rk_phy->clk))
+-			rk_phy->clk = NULL;
+-
+-		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
+-		if (err) {
+-			if (rk_phy->clk)
+-				clk_put(rk_phy->clk);
+-			return err;
+-		}
+-
+-		rk_phy->phy = devm_phy_create(dev, child, &ops);
+-		if (IS_ERR(rk_phy->phy)) {
+-			dev_err(dev, "failed to create PHY\n");
+-			return PTR_ERR(rk_phy->phy);
+-		}
+-		phy_set_drvdata(rk_phy->phy, rk_phy);
+-
+-		/* only power up usb phy when it use, so disable it when init*/
+-		err = rockchip_usb_phy_power(rk_phy, 1);
+-		if (err)
++		err = rockchip_usb_phy_init(phy_base, child);
++		if (err < 0)
+ 			return err;
+ 	}
+ 
 -- 
 2.6.2
