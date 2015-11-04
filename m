@@ -1,63 +1,93 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [PATCH v1 2/4] clk: rockchip: set an id for crypto clk
-Date: Wed, 04 Nov 2015 02:08:02 -0800
-Message-ID: <20151104100802.22783.97388@quantum>
-References: <1446529928-12521-1-git-send-email-zain.wang@rock-chips.com>
- <1446529928-12521-3-git-send-email-zain.wang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1446529928-12521-3-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
-Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v6 0/8] Build and support rk3036 SoC platform
+Date: Wed,  4 Nov 2015 20:18:15 +0800
+Message-ID: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Kever Yang <kever.yang@rock-chips.com>, Linus Walleij <linus.walleij@linaro.org>, Chen-Yu Tsai <wens@csie.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Paul Walmsley <paul@pwsan.com>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Zain Wang (2015-11-02 21:52:06)
-> set an id for crypto clk, so that it can be called in other part.
-> 
-> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
 
-Looks good to me. I can apply after -rc1 drops, or if you prefer to take
-this series all together then you have my ack:
+Hi,
+  We need to support rk3036 soc platform via upstream, there are
+some primary parts for the initial release of minimum system: dts,
+clk-pll, smp, and clock tree for rk3036, and additional, we can use
+these startup and run to init processs.
 
-Acked-by: Michael Turquette <mturquette@baylibre.com>
+Thanks.
 
-Regards,
-Mike
+Changed in v6:
+- add hardware timer in dtsi and some the aliases of basic modules
 
-> ---
->  drivers/clk/rockchip/clk-rk3288.c      | 2 +-
->  include/dt-bindings/clock/rk3288-cru.h | 1 +
->  2 files changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index 9040878..3fceda1 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->                         RK3288_CLKGATE_CON(0), 4, GFLAGS),
->         GATE(0, "c2c_host", "aclk_cpu_src", 0,
->                         RK3288_CLKGATE_CON(13), 8, GFLAGS),
-> -       COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
-> +       COMPOSITE_NOMUX(SCLK_CRYPTO, "crypto", "aclk_cpu_pre", 0,
->                         RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
->                         RK3288_CLKGATE_CON(5), 4, GFLAGS),
->         GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
-> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
-> index c719aac..30dcd60 100644
-> --- a/include/dt-bindings/clock/rk3288-cru.h
-> +++ b/include/dt-bindings/clock/rk3288-cru.h
-> @@ -86,6 +86,7 @@
->  #define SCLK_USBPHY480M_SRC    122
->  #define SCLK_PVTM_CORE         123
->  #define SCLK_PVTM_GPU          124
-> +#define SCLK_CRYPTO                    125
->  
->  #define SCLK_MAC               151
->  #define SCLK_MACREF_OUT                152
-> -- 
-> 1.9.1
-> 
-> 
+Changed in v5:
+- don't use clk_ APIs in the pll init-callback
+
+Changed in v4:
+- add some basic IP modules on rk3036.dtsi
+- optimized supporting smp codes
+
+Changed in v3:
+- optimized some codes based on v2
+- removed the patch "initial set time for rtc-hym8563" (useless)
+- removed the patch "pinctrl" (approved)
+
+Changed in v2:
+- based on v1, add clock controller documentation
+- enable timer5 startup
+- add smp for cpu1
+- initial set time for rtc-hym8563
+
+Changes in v1:
+- add dts, pinctrl and clock tree for rk3036 soc platform
+
+The patchset (8):
+8) rockchip: make sure timer5 is enabled on rk3036 platforms
+7) ARM: dts: enable smp for rk3036
+6) ARM: rockchip: add support smp for rk3036
+5) ARM: dts: rockchip: add core rk3036 dts
+4) clk: rockchip: add clock controller for rk3036
+3) clk: rockchip: add new pll-type for rk3036 and similar socs
+2) clk: rockchip: add dt-binding header for rk3036
+1) dt-bindings: add documentation of rk3036 clock controller
+
+
+Changes in v6:
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Heiko Stuebner (1):
+  ARM: rockchip: add support smp for rk3036
+
+Xing Zheng (7):
+  dt-bindings: add documentation of rk3036 clock controller
+  clk: rockchip: add dt-binding header for rk3036
+  clk: rockchip: add new pll-type for rk3036 and similar socs
+  clk: rockchip: add clock controller for rk3036
+  ARM: dts: rockchip: add core rk3036 dts
+  ARM: dts: enable smp for rk3036
+  rockchip: make sure timer5 is enabled on rk3036 platforms
+
+ Documentation/devicetree/bindings/arm/cpus.txt     |    1 +
+ .../bindings/clock/rockchip,rk3036-cru.txt         |   56 ++
+ arch/arm/boot/dts/Makefile                         |    1 +
+ arch/arm/boot/dts/rk3036-evb.dts                   |   64 +++
+ arch/arm/boot/dts/rk3036.dtsi                      |  552 ++++++++++++++++++++
+ arch/arm/mach-rockchip/platsmp.c                   |   45 +-
+ arch/arm/mach-rockchip/rockchip.c                  |   44 +-
+ drivers/clk/rockchip/Makefile                      |    1 +
+ drivers/clk/rockchip/clk-pll.c                     |  249 ++++++++-
+ drivers/clk/rockchip/clk-rk3036.c                  |  478 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                         |   32 +-
+ include/dt-bindings/clock/rk3036-cru.h             |  193 +++++++
+ 12 files changed, 1685 insertions(+), 31 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+ create mode 100644 arch/arm/boot/dts/rk3036-evb.dts
+ create mode 100644 arch/arm/boot/dts/rk3036.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rk3036.c
+ create mode 100644 include/dt-bindings/clock/rk3036-cru.h
+
+-- 
+1.7.9.5
+
+
