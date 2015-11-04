@@ -1,31 +1,112 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v6 8/8] rockchip: make sure timer5 is enabled on rk3036 platforms
-Date: Thu, 05 Nov 2015 00:35 +0100
-Message-ID: <2496205.49bBo1tRVl@phil>
-References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com> <1446639957-12030-1-git-send-email-zhengxing@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v6 1/8] dt-bindings: add documentation of rk3036 clock controller
+Date: Thu, 05 Nov 2015 00:39:25 +0100
+Message-ID: <2700959.OiVQMNL8Ss@phil>
+References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com> <1446639503-11763-2-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446639957-12030-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1446639503-11763-2-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 4. November 2015, 20:25:57 schrieb Xing Zheng:
-> The timer5 supplies the architected timer and thus as has to run when
-> the system clocksource and clockevents drivers are registered.
+Hi,
+
+Am Mittwoch, 4. November 2015, 20:18:16 schrieb Xing Zheng:
+> Add the devicetree binding for the cru on the rk3036 which quite similar
+> structured as previous clock controllers.
 > 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 > ---
+
+your recipient-list is missing the clock maintainers+lists - sorry for
+not noticing this earlier.
+
+While the devicetree-maintainers may Review it, we expect the clock-
+maintainers to actually apply all 4 clock-related patches.
+
+Same comment is true for
+[PATCH v6 2/8] clk: rockchip: add dt-binding header for rk3036
+
+
+Heiko
+
 > 
-> Changes in v6:
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Changes in v6: None
+> 
+>  .../bindings/clock/rockchip,rk3036-cru.txt         |   56 ++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+> new file mode 100644
+> index 0000000..ace0599
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
+> @@ -0,0 +1,56 @@
+> +* Rockchip RK3036 Clock and Reset Unit
+> +
+> +The RK3036 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: should be "rockchip,rk3036-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock status.
+> +
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk3036-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "ext_gmac" - external GMAC clock - optional
+> +
+> +Example: Clock controller node:
+> +
+> +	cru: cru@20000000 {
+> +		compatible = "rockchip,rk3036-cru";
+> +		reg = <0x20000000 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart0: serial@20060000 {
+> +		compatible = "snps,dw-apb-uart";
+> +		reg = <0x20060000 0x100>;
+> +		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART0>;
+> +	};
+> 
 
-
-This patch can work standalone, so I took the liberty of applying it to my soc 
-branch for 4.5 already, so you don't need to resend it in future versions.
-
-I fixed up the subject "ARM: rockchip:...", and moved the Signed-off-by to the 
-correct position above the "---".
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
