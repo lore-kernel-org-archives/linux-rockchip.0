@@ -1,103 +1,83 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 6/8] ARM: dts: rockchip: add clock-cells for usb phy nodes
-Date: Wed,  4 Nov 2015 22:44:12 +0100
-Message-ID: <1446673454-9529-7-git-send-email-heiko@sntech.de>
-References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH 0/3] dwc2: Speed up the interrupt handler quite a bit
+Date: Wed,  4 Nov 2015 14:53:02 -0800
+Message-ID: <1446677585-28582-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1446673454-9529-1-git-send-email-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: Heiko Stuebner <heiko@sntech.de>, arnd@arndb.de, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, romain.perier@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org
+Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the #clock-cells properties for the usbphy nodes as they
-provide the pll-clocks now.
+The dwc2 interrupt handler is quite slow.  On rk3288 with a few things
+plugged into the ports and with cpufreq locked at 696MHz (to simulate
+real world idle system), I can easily observe dwc2_handle_hcd_intr()
+taking > 120 us, sometimes > 150 us.  Note that SOF interrupts come
+every 125 us with high speed USB, so taking > 120 us in the interrupt
+handler is a big deal.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm/boot/dts/rk3066a.dtsi | 2 ++
- arch/arm/boot/dts/rk3188.dtsi  | 2 ++
- arch/arm/boot/dts/rk3288.dtsi  | 3 +++
- 3 files changed, 7 insertions(+)
+The patches here will speed up the interrupt controller significantly.
+After this series, I have a hard time seeing the interrupt controller
+taking > 20 us and I don't ever see it taking > 30 us ever in my tests
+unless I bring the cpufreq back down.  With the cpufreq at 126 MHz I can
+still see the interrupt handler take > 50 us, so I'm sure we could
+improve this further.  ...but hey, it's a start.
 
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index 946f187..3e4b41b 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -181,6 +181,7 @@
- 			reg = <0x17c>;
- 			clocks = <&cru SCLK_OTGPHY0>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 
- 		usbphy1: usb-phy1 {
-@@ -188,6 +189,7 @@
- 			reg = <0x188>;
- 			clocks = <&cru SCLK_OTGPHY1>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 	};
- 
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 6399942..48a287e 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -156,6 +156,7 @@
- 			reg = <0x10c>;
- 			clocks = <&cru SCLK_OTGPHY0>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 
- 		usbphy1: usb-phy1 {
-@@ -163,6 +164,7 @@
- 			reg = <0x11c>;
- 			clocks = <&cru SCLK_OTGPHY1>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 	};
- 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index c64a116..51a5d29 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -943,6 +943,7 @@
- 			reg = <0x320>;
- 			clocks = <&cru SCLK_OTGPHY0>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 
- 		usbphy1: usb-phy1 {
-@@ -950,6 +951,7 @@
- 			reg = <0x334>;
- 			clocks = <&cru SCLK_OTGPHY1>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 
- 		usbphy2: usb-phy2 {
-@@ -957,6 +959,7 @@
- 			reg = <0x348>;
- 			clocks = <&cru SCLK_OTGPHY2>;
- 			clock-names = "phyclk";
-+			#clock-cells = <0>;
- 		};
- 	};
- 
+In addition to the speedup, this series also has the advantage of
+simplifying dwc2 and making it more like everyone else (introducing the
+possibility of future simplifications).  Picking this series up will
+help your diffstat and likely win you friends.  ;)
+
+===
+
+Steps for gathering data with ftrace:
+
+cd /sys/devices/system/cpu/cpu0/cpufreq/
+echo userspace > scaling_governor
+echo 696000 > scaling_setspeed
+
+cd /sys/kernel/debug/tracing
+echo 0 > tracing_on
+echo "" > trace
+echo nop > current_tracer
+echo function_graph > current_tracer
+echo dwc2_handle_hcd_intr > set_graph_function
+echo dwc2_handle_common_intr >> set_graph_function
+echo dwc2_handle_hcd_intr > set_ftrace_filter
+echo dwc2_handle_common_intr >> set_ftrace_filter
+echo funcgraph-abstime > trace_options
+echo 70 > tracing_thresh
+echo 1 > /sys/kernel/debug/tracing/tracing_on
+
+sleep 2
+cat trace
+
+===
+
+NOTE: This series doesn't replace any other patches I've submitted
+recently, it merely adds another set of changes that upstream could
+benefit from.
+
+
+Douglas Anderson (3):
+  usb: dwc2: rockchip: Make the max_transfer_size automatic
+  usb: dwc2: host: Giveback URB in tasklet context
+  usb: dwc2: host: Get aligned DMA in a more supported way
+
+ drivers/usb/dwc2/core.c      |  21 +-----
+ drivers/usb/dwc2/hcd.c       | 170 ++++++++++++++++++++-----------------------
+ drivers/usb/dwc2/hcd.h       |  10 ---
+ drivers/usb/dwc2/hcd_intr.c  |  65 -----------------
+ drivers/usb/dwc2/hcd_queue.c |   7 +-
+ drivers/usb/dwc2/platform.c  |   2 +-
+ 6 files changed, 85 insertions(+), 190 deletions(-)
+
 -- 
-2.6.2
+2.6.0.rc2.230.g3dd15c0
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
