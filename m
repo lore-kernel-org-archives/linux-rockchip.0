@@ -1,88 +1,103 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/8] phy: rockchip-usb: introduce a common data-struct for the device
-Date: Wed,  4 Nov 2015 22:44:08 +0100
-Message-ID: <1446673454-9529-3-git-send-email-heiko@sntech.de>
+Subject: [PATCH 6/8] ARM: dts: rockchip: add clock-cells for usb phy nodes
+Date: Wed,  4 Nov 2015 22:44:12 +0100
+Message-ID: <1446673454-9529-7-git-send-email-heiko@sntech.de>
 References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 In-Reply-To: <1446673454-9529-1-git-send-email-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
 To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, Heiko Stuebner <heiko@sntech.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, arnd@arndb.de, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, romain.perier@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This introduces a common struct that holds data belonging to
-the umbrella device that contains all the phys and that we
-want to use later.
+Add the #clock-cells properties for the usbphy nodes as they
+provide the pll-clocks now.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/phy/phy-rockchip-usb.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+ arch/arm/boot/dts/rk3066a.dtsi | 2 ++
+ arch/arm/boot/dts/rk3188.dtsi  | 2 ++
+ arch/arm/boot/dts/rk3288.dtsi  | 3 +++
+ 3 files changed, 7 insertions(+)
 
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index dfc056b..dda1994 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -36,9 +36,14 @@
- #define SIDDQ_ON		BIT(13)
- #define SIDDQ_OFF		(0 << 13)
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index 946f187..3e4b41b 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -181,6 +181,7 @@
+ 			reg = <0x17c>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
  
-+struct rockchip_usb_phy_base {
-+	struct device *dev;
-+	struct regmap *reg_base;
-+};
-+
- struct rockchip_usb_phy {
-+	struct rockchip_usb_phy_base *base;
- 	unsigned int	reg_offset;
--	struct regmap	*reg_base;
- 	struct clk	*clk;
- 	struct phy	*phy;
- };
-@@ -46,7 +51,7 @@ struct rockchip_usb_phy {
- static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
- 					   bool siddq)
- {
--	return regmap_write(phy->reg_base, phy->reg_offset,
-+	return regmap_write(phy->base->reg_base, phy->reg_offset,
- 			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
- }
+ 		usbphy1: usb-phy1 {
+@@ -188,6 +189,7 @@
+ 			reg = <0x188>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
+ 	};
  
-@@ -101,17 +106,23 @@ static void rockchip_usb_phy_action(void *data)
- static int rockchip_usb_phy_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-+	struct rockchip_usb_phy_base *phy_base;
- 	struct rockchip_usb_phy *rk_phy;
- 	struct phy_provider *phy_provider;
- 	struct device_node *child;
--	struct regmap *grf;
- 	unsigned int reg_offset;
- 	int err;
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 6399942..48a287e 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -156,6 +156,7 @@
+ 			reg = <0x10c>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
  
--	grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
--	if (IS_ERR(grf)) {
-+	phy_base = devm_kzalloc(dev, sizeof(*phy_base), GFP_KERNEL);
-+	if (!phy_base)
-+		return -ENOMEM;
-+
-+	phy_base->dev = dev;
-+	phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
-+							     "rockchip,grf");
-+	if (IS_ERR(phy_base->reg_base)) {
- 		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
--		return PTR_ERR(grf);
-+		return PTR_ERR(phy_base->reg_base);
- 	}
+ 		usbphy1: usb-phy1 {
+@@ -163,6 +164,7 @@
+ 			reg = <0x11c>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
+ 	};
  
- 	for_each_available_child_of_node(dev->of_node, child) {
-@@ -126,7 +137,6 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 		}
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index c64a116..51a5d29 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -943,6 +943,7 @@
+ 			reg = <0x320>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
  
- 		rk_phy->reg_offset = reg_offset;
--		rk_phy->reg_base = grf;
+ 		usbphy1: usb-phy1 {
+@@ -950,6 +951,7 @@
+ 			reg = <0x334>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
  
- 		rk_phy->clk = of_clk_get_by_name(child, "phyclk");
- 		if (IS_ERR(rk_phy->clk))
+ 		usbphy2: usb-phy2 {
+@@ -957,6 +959,7 @@
+ 			reg = <0x348>;
+ 			clocks = <&cru SCLK_OTGPHY2>;
+ 			clock-names = "phyclk";
++			#clock-cells = <0>;
+ 		};
+ 	};
+ 
 -- 
 2.6.2
