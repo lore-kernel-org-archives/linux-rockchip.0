@@ -1,50 +1,57 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v1 1/5] ASoC: rockchip: i2s: Support to set the divider
- clock API
-Date: Wed, 4 Nov 2015 14:34:31 +0000
-Message-ID: <20151104143431.GH1717@sirena.org.uk>
-References: <1446514438-13922-1-git-send-email-wxt@rock-chips.com>
- <1446514438-13922-2-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Enx9fNJ0XV5HaWRu"
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 1/8] phy: rockchip-usb: fix clock get-put mismatch
+Date: Wed,  4 Nov 2015 22:44:07 +0100
+Message-ID: <1446673454-9529-2-git-send-email-heiko@sntech.de>
+References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1446514438-13922-2-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1446673454-9529-1-git-send-email-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Dylan Reid <dgreid@chromium.org>, Doug Anderson <dianders@chromium.org>, Cheng-Yi Chiang <cychiang@chromium.org>, linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
+Currently the phy driver only gets the optional clock reference but
+never puts it again, neither during error handling nor on remove.
+Fix that by moving the clk_put to a devm-action that gets called at
+the right time when all other devm actions are done.
 
---Enx9fNJ0XV5HaWRu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/phy/phy-rockchip-usb.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-On Tue, Nov 03, 2015 at 09:33:54AM +0800, Caesar Wang wrote:
-> In order to support more sample rates, add the divider clock api.
->=20
-> As the input source clock to the module is MCLK_I2S,
-> and by the divider of the module, the clock generator generates
-> SCLK and LRCK to transmitter and receiver.
-
-Same thing as your other very similar patch: why does this feature
-require set_clkdiv()?
-
---Enx9fNJ0XV5HaWRu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWOhd2AAoJECTWi3JdVIfQYagH/jtmiRopsnEjllfxq4a1PL7G
-mLnIEEJrXF2zkc4twWSgXbypLBEeKS690tTFAa6G1Hv/cY6p36FrnV/OisBYv4Xu
-graN195pjcnQntfYYDJs5RV/S4U7Vhil97Vu46ROGqp99y5d8tjTwtRjfIRwT6AJ
-HVWywTFNKZNBJDFrzYh7TH5SMZo2qIpwSPgAplPhitHXBv01q0HhEQt/EpLD5KE3
-qkycbiNEh8BSnO/WxlrOKub4yKS6E073JuMQBzAg6y7puW9RrLySnxUyu3nN0a//
-m92fRs/qiapKW8uwe/COvzqznvns/jUAsPrGqmSymc1fOPqyYIQctTxNrmGYRgc=
-=2R+l
------END PGP SIGNATURE-----
-
---Enx9fNJ0XV5HaWRu--
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+index 91d6f34..dfc056b 100644
+--- a/drivers/phy/phy-rockchip-usb.c
++++ b/drivers/phy/phy-rockchip-usb.c
+@@ -90,6 +90,14 @@ static const struct phy_ops ops = {
+ 	.owner		= THIS_MODULE,
+ };
+ 
++static void rockchip_usb_phy_action(void *data)
++{
++	struct rockchip_usb_phy *rk_phy = data;
++
++	if (rk_phy->clk)
++		clk_put(rk_phy->clk);
++}
++
+ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -124,6 +132,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ 		if (IS_ERR(rk_phy->clk))
+ 			rk_phy->clk = NULL;
+ 
++		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
++		if (err) {
++			if (rk_phy->clk)
++				clk_put(rk_phy->clk);
++			return err;
++		}
++
+ 		rk_phy->phy = devm_phy_create(dev, child, &ops);
+ 		if (IS_ERR(rk_phy->phy)) {
+ 			dev_err(dev, "failed to create PHY\n");
+-- 
+2.6.2
