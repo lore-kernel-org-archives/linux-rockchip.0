@@ -1,103 +1,48 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v6 8/8] rockchip: make sure timer5 is enabled on rk3036 platforms
-Date: Wed,  4 Nov 2015 20:25:57 +0800
-Message-ID: <1446639957-12030-1-git-send-email-zhengxing@rock-chips.com>
-References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 1/3] ASoC: rockchip: i2s: Add set the divider clock API
+Date: Wed, 4 Nov 2015 13:54:51 +0000
+Message-ID: <20151104135451.GB1717@sirena.org.uk>
+References: <1446434042-2139-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="4bRzO86E/ozDv8r1"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <1446434042-2139-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The timer5 supplies the architected timer and thus as has to run when
-the system clocksource and clockevents drivers are registered.
 
----
+--4bRzO86E/ozDv8r1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Changes in v6:
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+On Mon, Nov 02, 2015 at 11:14:00AM +0800, Caesar Wang wrote:
+> In order to support more rates, add the divider clock api.
 
- arch/arm/mach-rockchip/rockchip.c |   44 +++++++++++++++++++++++--------------
- 1 file changed, 27 insertions(+), 17 deletions(-)
+> As the input source clock to the module is MCLK_I2S,
+> and by the divider of the module, the clock generator generates
+> SCLK and LRCK to transmitter and receiver.
 
-diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
-index 251c7b9..608b31c 100644
---- a/arch/arm/mach-rockchip/rockchip.c
-+++ b/arch/arm/mach-rockchip/rockchip.c
-@@ -29,31 +29,38 @@
- #include "core.h"
- #include "pm.h"
- 
-+#define RK3036_TIMER_PHYS 0x20044000
-+
- #define RK3288_GRF_SOC_CON0 0x244
- #define RK3288_TIMER6_7_PHYS 0xff810000
- 
-+static void rockchip_init_arch_timer_supply(resource_size_t phys, int offs)
-+{
-+	void __iomem *reg_base = ioremap(phys, SZ_16K);
-+
-+	/*
-+	 * Most/all uboot versions for Rockchip SoCs don't enable
-+	 * timer which is needed for the architected timer to work.
-+	 * So make sure it is running during early boot.
-+	 */
-+	if (reg_base) {
-+		writel(0, reg_base + offs + 0x10);
-+		writel(0xffffffff, reg_base + offs);
-+		writel(0xffffffff, reg_base + offs + 0x04);
-+		writel(1, reg_base + offs + 0x10);
-+		dsb();
-+		iounmap(reg_base);
-+	} else {
-+		pr_err("rockchip: could not map timer registers\n");
-+	}
-+}
-+
- static void __init rockchip_timer_init(void)
- {
- 	if (of_machine_is_compatible("rockchip,rk3288")) {
- 		struct regmap *grf;
--		void __iomem *reg_base;
- 
--		/*
--		 * Most/all uboot versions for rk3288 don't enable timer7
--		 * which is needed for the architected timer to work.
--		 * So make sure it is running during early boot.
--		 */
--		reg_base = ioremap(RK3288_TIMER6_7_PHYS, SZ_16K);
--		if (reg_base) {
--			writel(0, reg_base + 0x30);
--			writel(0xffffffff, reg_base + 0x20);
--			writel(0xffffffff, reg_base + 0x24);
--			writel(1, reg_base + 0x30);
--			dsb();
--			iounmap(reg_base);
--		} else {
--			pr_err("rockchip: could not map timer7 registers\n");
--		}
-+		rockchip_init_arch_timer_supply(RK3288_TIMER6_7_PHYS, 0x20);
- 
- 		/*
- 		 * Disable auto jtag/sdmmc switching that causes issues
-@@ -64,6 +71,8 @@ static void __init rockchip_timer_init(void)
- 			regmap_write(grf, RK3288_GRF_SOC_CON0, 0x10000000);
- 		else
- 			pr_err("rockchip: could not get grf syscon\n");
-+	} else if (of_machine_is_compatible("rockchip,rk3036")) {
-+		rockchip_init_arch_timer_supply(RK3036_TIMER_PHYS, 0xa0);
- 	}
- 
- 	of_clk_init(NULL);
-@@ -79,6 +88,7 @@ static void __init rockchip_dt_init(void)
- 
- static const char * const rockchip_board_dt_compat[] = {
- 	"rockchip,rk2928",
-+	"rockchip,rk3036",
- 	"rockchip,rk3066a",
- 	"rockchip,rk3066b",
- 	"rockchip,rk3188",
--- 
-1.7.9.5
+Why is this a requirement?  The clock to use as a source should normally
+be specified via set_sysclk() and any internal dividers calculated
+automatically by the driver.
+
+--4bRzO86E/ozDv8r1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWOg4rAAoJECTWi3JdVIfQMgIH/jCjY7jaU6R38DpFQ1iQCS6Y
+Ig5zNk+PTq6jW8n1Zj2CAqML2Z4qO2JmhSm8dPyAP8w/bNyi+Mga4iPjDvomhT5d
+ZUUL7pRCbw6ufBhuSALlU2YYCSeC904+ELIkWH6XHlJOCiwOdJRfLG2Xr7KYJ3Vo
++N8uFBQkfRC0OrrVTNH3cXo5XrP8MHssRyAw9AfGIvO3bUlErJCeV5uK6Cy6xVJN
++fI09fvIAbj4w9f0C2nWJ4CbxhEQFX/ksKdhbQgc7gJTqV6IHI8Ns3eR2p+6AXo2
+o62Oz9Z8oOz0NCLBbByoZr94hJ3NmahuQ5sMgn4DB9iP+GlnzkxQZocGYRdSpy4=
+=5K1g
+-----END PGP SIGNATURE-----
+
+--4bRzO86E/ozDv8r1--
