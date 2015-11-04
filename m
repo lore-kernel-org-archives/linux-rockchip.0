@@ -1,19 +1,17 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v6 3/8] clk: rockchip: add new pll-type for rk3036 and similar socs
-Date: Wed,  4 Nov 2015 20:18:18 +0800
-Message-ID: <1446639503-11763-4-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH v6 2/8] clk: rockchip: add dt-binding header for rk3036
+Date: Wed,  4 Nov 2015 20:18:17 +0800
+Message-ID: <1446639503-11763-3-git-send-email-zhengxing@rock-chips.com>
 References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3036's pll and clock are different with base on the rk3066(rk3188,
-rk3288, rk3368 use it), there are different adjust foctors and control
-registers, so these should be independent and separate from the series
-of rk3066s.
+Add the dt-bindings header for the rk3036, that gets shared between
+the clock controller and the clock references in the dts.
 
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
@@ -21,371 +19,208 @@ Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 Changes in v6: None
 
- drivers/clk/rockchip/clk-pll.c |  249 +++++++++++++++++++++++++++++++++++++++-
- drivers/clk/rockchip/clk.h     |   32 +++++-
- 2 files changed, 279 insertions(+), 2 deletions(-)
+ include/dt-bindings/clock/rk3036-cru.h |  193 ++++++++++++++++++++++++++++++++
+ 1 file changed, 193 insertions(+)
+ create mode 100644 include/dt-bindings/clock/rk3036-cru.h
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 4881eb8..83ba1e9 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -2,6 +2,9 @@
-  * Copyright (c) 2014 MundoReader S.L.
-  * Author: Heiko Stuebner <heiko@sntech.de>
-  *
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+new file mode 100644
+index 0000000..a2763a6
+--- /dev/null
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -0,0 +1,193 @@
++/*
 + * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
 + * Author: Xing Zheng <zhengxing@rock-chips.com>
 + *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
-@@ -19,6 +22,7 @@
- #include <linux/delay.h>
- #include <linux/clk-provider.h>
- #include <linux/regmap.h>
-+#include <linux/clk.h>
- #include "clk.h"
- 
- #define PLL_MODE_MASK		0x3
-@@ -108,6 +112,243 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- }
- 
- /**
-+ * PLL used in RK3036
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
 + */
 +
-+#define RK3036_PLLCON(i)			(i * 0x4)
-+#define RK3036_PLLCON0_FBDIV_MASK		0xfff
-+#define RK3036_PLLCON0_FBDIV_SHIFT		0
-+#define RK3036_PLLCON0_POSTDIV1_MASK		0x7
-+#define RK3036_PLLCON0_POSTDIV1_SHIFT		12
-+#define RK3036_PLLCON1_REFDIV_MASK		0x3f
-+#define RK3036_PLLCON1_REFDIV_SHIFT		0
-+#define RK3036_PLLCON1_POSTDIV2_MASK		0x7
-+#define RK3036_PLLCON1_POSTDIV2_SHIFT		6
-+#define RK3036_PLLCON1_DSMPD_MASK		0x1
-+#define RK3036_PLLCON1_DSMPD_SHIFT		12
-+#define RK3036_PLLCON2_FRAC_MASK		0xffffff
-+#define RK3036_PLLCON2_FRAC_SHIFT		0
++#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
++#define _DT_BINDINGS_CLK_ROCKCHIP_RK3036_H
 +
-+#define RK3036_PLLCON1_PWRDOWN			(1 << 13)
++/* core clocks */
++#define PLL_APLL		1
++#define PLL_DPLL		2
++#define PLL_GPLL		3
++#define ARMCLK			4
 +
-+static void rockchip_rk3036_pll_get_params(struct rockchip_clk_pll *pll,
-+					struct rockchip_pll_rate_table *rate)
-+{
-+	u32 pllcon;
++/* sclk gates (special clocks) */
++#define SCLK_GPU		64
++#define SCLK_SPI		65
++#define SCLK_SDMMC		68
++#define SCLK_SDIO		69
++#define SCLK_EMMC		71
++#define SCLK_NANDC		76
++#define SCLK_UART0		77
++#define SCLK_UART1		78
++#define SCLK_UART2		79
++#define SCLK_I2S		82
++#define SCLK_SPDIF		83
++#define SCLK_TIMER0		85
++#define SCLK_TIMER1		86
++#define SCLK_TIMER2		87
++#define SCLK_TIMER3		88
++#define SCLK_OTGPHY0		93
++#define SCLK_LCDC		100
++#define SCLK_HDMI		109
++#define SCLK_HEVC		111
++#define SCLK_I2S_OUT		113
++#define SCLK_SDMMC_DRV		114
++#define SCLK_SDIO_DRV		115
++#define SCLK_EMMC_DRV		117
++#define SCLK_SDMMC_SAMPLE	118
++#define SCLK_SDIO_SAMPLE	119
++#define SCLK_EMMC_SAMPLE	121
++#define SCLK_PVTM_CORE          123
++#define SCLK_PVTM_GPU           124
++#define SCLK_PVTM_VIDEO         125
++#define SCLK_MAC		151
++#define SCLK_MACREF		152
++#define SCLK_SFC		160
 +
-+	pllcon = readl_relaxed(pll->reg_base + RK3036_PLLCON(0));
-+	rate->fbdiv = ((pllcon >> RK3036_PLLCON0_FBDIV_SHIFT) & RK3036_PLLCON0_FBDIV_MASK);
-+	rate->postdiv1 = ((pllcon >> RK3036_PLLCON0_POSTDIV1_SHIFT) & RK3036_PLLCON0_POSTDIV1_MASK);
++/* aclk gates */
++#define ACLK_DMAC2		194
++#define ACLK_LCDC		197
++#define ACLK_VIO		203
++#define ACLK_VCODEC		208
++#define ACLK_CPU		209
++#define ACLK_PERI		210
 +
-+	pllcon = readl_relaxed(pll->reg_base + RK3036_PLLCON(1));
-+	rate->refdiv = ((pllcon >> RK3036_PLLCON1_REFDIV_SHIFT) & RK3036_PLLCON1_REFDIV_MASK);
-+	rate->postdiv2 = ((pllcon >> RK3036_PLLCON1_POSTDIV2_SHIFT) & RK3036_PLLCON1_POSTDIV2_MASK);
-+	rate->dsmpd = ((pllcon >> RK3036_PLLCON1_DSMPD_SHIFT) & RK3036_PLLCON1_DSMPD_MASK);
++/* pclk gates */
++#define PCLK_GPIO0		320
++#define PCLK_GPIO1		321
++#define PCLK_GPIO2		322
++#define PCLK_GRF		329
++#define PCLK_I2C0		332
++#define PCLK_I2C1		333
++#define PCLK_I2C2		334
++#define PCLK_SPI		338
++#define PCLK_UART0		341
++#define PCLK_UART1		342
++#define PCLK_UART2		343
++#define PCLK_PWM		350
++#define PCLK_TIMER		353
++#define PCLK_HDMI		360
++#define PCLK_CPU		362
++#define PCLK_PERI		363
++#define PCLK_DDRUPCTL		364
++#define PCLK_WDT		368
++#define PCLK_ACODEC		369
 +
-+	pllcon = readl_relaxed(pll->reg_base + RK3036_PLLCON(2));
-+	rate->frac = ((pllcon >> RK3036_PLLCON2_FRAC_SHIFT) & RK3036_PLLCON2_FRAC_MASK);
-+}
++/* hclk gates */
++#define HCLK_OTG0		449
++#define HCLK_OTG1		450
++#define HCLK_NANDC		453
++#define HCLK_SDMMC		456
++#define HCLK_SDIO		457
++#define HCLK_EMMC		459
++#define HCLK_I2S		462
++#define HCLK_LCDC		465
++#define HCLK_ROM		467
++#define HCLK_VIO_BUS		472
++#define HCLK_VCODEC		476
++#define HCLK_CPU		477
++#define HCLK_PERI		478
 +
-+static unsigned long rockchip_rk3036_pll_recalc_rate(struct clk_hw *hw,
-+						     unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	struct rockchip_pll_rate_table cur;
-+	u64 rate64 = prate;
++#define CLK_NR_CLKS		(HCLK_PERI + 1)
 +
-+	rockchip_rk3036_pll_get_params(pll, &cur);
++/* soft-reset indices */
++#define SRST_CORE0		0
++#define SRST_CORE1		1
++#define SRST_CORE0_DBG		4
++#define SRST_CORE1_DBG		5
++#define SRST_CORE0_POR		8
++#define SRST_CORE1_POR		9
++#define SRST_L2C		12
++#define SRST_TOPDBG		13
++#define SRST_STRC_SYS_A		14
++#define SRST_PD_CORE_NIU	15
 +
-+	rate64 *= cur.fbdiv;
-+	do_div(rate64, cur.refdiv);
++#define SRST_TIMER2		16
++#define SRST_CPUSYS_H		17
++#define SRST_AHB2APB_H		19
++#define SRST_TIMER3		20
++#define SRST_INTMEM		21
++#define SRST_ROM		22
++#define SRST_PERI_NIU		23
++#define SRST_I2S		24
++#define SRST_DDR_PLL		25
++#define SRST_GPU_DLL		26
++#define SRST_TIMER0		27
++#define SRST_TIMER1		28
++#define SRST_CORE_DLL		29
++#define SRST_EFUSE_P		30
++#define SRST_ACODEC_P		31
 +
-+	if (cur.dsmpd == 0) {
-+		/* fractional mode */
-+		u64 frac_rate64 = prate * cur.frac;
++#define SRST_GPIO0		32
++#define SRST_GPIO1		33
++#define SRST_GPIO2		34
++#define SRST_UART0		39
++#define SRST_UART1		40
++#define SRST_UART2		41
++#define SRST_I2C0		43
++#define SRST_I2C1		44
++#define SRST_I2C2		45
++#define SRST_SFC		47
 +
-+		do_div(frac_rate64, cur.refdiv);
-+		rate64 += frac_rate64 >> 24;
-+	}
++#define SRST_PWM0		48
++#define SRST_DAP		51
++#define SRST_DAP_SYS		52
++#define SRST_GRF		55
++#define SRST_PERIPHSYS_A	57
++#define SRST_PERIPHSYS_H	58
++#define SRST_PERIPHSYS_P	59
++#define SRST_CPU_PERI		61
++#define SRST_EMEM_PERI		62
++#define SRST_USB_PERI		63
 +
-+	do_div(rate64, cur.postdiv1);
-+	do_div(rate64, cur.postdiv2);
++#define SRST_DMA2		64
++#define SRST_MAC		66
++#define SRST_NANDC		68
++#define SRST_USBOTG0		69
++#define SRST_OTGC0		71
++#define SRST_USBOTG1		72
++#define SRST_OTGC1		74
++#define SRST_DDRMSCH		79
 +
-+	return (unsigned long)rate64;
-+}
++#define SRST_MMC0		81
++#define SRST_SDIO		82
++#define SRST_EMMC		83
++#define SRST_SPI0		84
++#define SRST_WDT		86
++#define SRST_DDRPHY		88
++#define SRST_DDRPHY_P		89
++#define SRST_DDRCTRL		90
++#define SRST_DDRCTRL_P		91
 +
-+static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
-+				const struct rockchip_pll_rate_table *rate)
-+{
-+	const struct clk_ops *pll_mux_ops = pll->pll_mux_ops;
-+	struct clk_mux *pll_mux = &pll->pll_mux;
-+	struct rockchip_pll_rate_table cur;
-+	u32 pllcon;
-+	int rate_change_remuxed = 0;
-+	int cur_parent;
-+	int ret;
++#define SRST_HDMI_P		96
++#define SRST_VIO_BUS_H		99
++#define SRST_UTMI0		103
++#define SRST_UTMI1		104
++#define SRST_USBPOR		105
 +
-+	pr_debug("%s: rate settings for %lu fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		__func__, rate->rate, rate->fbdiv, rate->postdiv1, rate->refdiv,
-+		rate->postdiv2, rate->dsmpd, rate->frac);
++#define SRST_VCODEC_A		112
++#define SRST_VCODEC_H		113
++#define SRST_VIO1_A		114
++#define SRST_HEVC		115
++#define SRST_VCODEC_NIU_A	116
++#define SRST_LCDC1_A		117
++#define SRST_LCDC1_H		118
++#define SRST_LCDC1_D		119
++#define SRST_GPU		120
++#define SRST_GPU_NIU_A		122
 +
-+	rockchip_rk3036_pll_get_params(pll, &cur);
-+	cur.rate = 0;
++#define SRST_DBG_P		131
 +
-+	cur_parent = pll_mux_ops->get_parent(&pll_mux->hw);
-+	if (cur_parent == PLL_MODE_NORM) {
-+		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
-+		rate_change_remuxed = 1;
-+	}
-+
-+	/* update pll values */
-+	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3036_PLLCON0_FBDIV_MASK,
-+					  RK3036_PLLCON0_FBDIV_SHIFT) |
-+		       HIWORD_UPDATE(rate->postdiv1, RK3036_PLLCON0_POSTDIV1_MASK,
-+					     RK3036_PLLCON0_POSTDIV1_SHIFT),
-+		       pll->reg_base + RK3036_PLLCON(0));
-+
-+	writel_relaxed(HIWORD_UPDATE(rate->refdiv, RK3036_PLLCON1_REFDIV_MASK,
-+						   RK3036_PLLCON1_REFDIV_SHIFT) |
-+		       HIWORD_UPDATE(rate->postdiv2, RK3036_PLLCON1_POSTDIV2_MASK,
-+						     RK3036_PLLCON1_POSTDIV2_SHIFT) |
-+		       HIWORD_UPDATE(rate->dsmpd, RK3036_PLLCON1_DSMPD_MASK,
-+						  RK3036_PLLCON1_DSMPD_SHIFT),
-+		       pll->reg_base + RK3036_PLLCON(1));
-+
-+	/* GPLL CON2 is not HIWORD_MASK */
-+	pllcon = readl_relaxed(pll->reg_base + RK3036_PLLCON(2));
-+	pllcon &= ~(RK3036_PLLCON2_FRAC_MASK << RK3036_PLLCON2_FRAC_SHIFT);
-+	pllcon |= rate->frac << RK3036_PLLCON2_FRAC_SHIFT;
-+	writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
-+
-+	/* wait for the pll to lock */
-+	ret = rockchip_pll_wait_lock(pll);
-+	if (ret) {
-+		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
-+			__func__);
-+		rockchip_rk3036_pll_set_params(pll, &cur);
-+	}
-+
-+	if (rate_change_remuxed)
-+		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_NORM);
-+
-+	return ret;
-+}
-+
-+static int rockchip_rk3036_pll_set_rate(struct clk_hw *hw, unsigned long drate,
-+					unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	const struct rockchip_pll_rate_table *rate;
-+	unsigned long old_rate = rockchip_rk3036_pll_recalc_rate(hw, prate);
-+	struct regmap *grf = rockchip_clk_get_grf();
-+
-+	if (IS_ERR(grf)) {
-+		pr_debug("%s: grf regmap not available, aborting rate change\n",
-+			 __func__);
-+		return PTR_ERR(grf);
-+	}
-+
-+	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n",
-+		 __func__, __clk_get_name(hw->clk), old_rate, drate, prate);
-+
-+	/* Get required rate settings from table */
-+	rate = rockchip_get_pll_settings(pll, drate);
-+	if (!rate) {
-+		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
-+			drate, __clk_get_name(hw->clk));
-+		return -EINVAL;
-+	}
-+
-+	return rockchip_rk3036_pll_set_params(pll, rate);
-+}
-+
-+static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+
-+	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3036_PLLCON(1));
-+
-+	return 0;
-+}
-+
-+static void rockchip_rk3036_pll_disable(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+
-+	writel(HIWORD_UPDATE(RK3036_PLLCON1_PWRDOWN,
-+			     RK3036_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3036_PLLCON(1));
-+}
-+
-+static int rockchip_rk3036_pll_is_enabled(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	u32 pllcon = readl(pll->reg_base + RK3036_PLLCON(1));
-+
-+	return !(pllcon & RK3036_PLLCON1_PWRDOWN);
-+}
-+
-+static void rockchip_rk3036_pll_init(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	const struct rockchip_pll_rate_table *rate;
-+	struct rockchip_pll_rate_table cur;
-+	unsigned long drate;
-+
-+	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
-+		return;
-+
-+	drate = clk_hw_get_rate(hw);
-+	rate = rockchip_get_pll_settings(pll, drate);
-+
-+	/* when no rate setting for the current rate, rely on clk_set_rate */
-+	if (!rate)
-+		return;
-+
-+	rockchip_rk3036_pll_get_params(pll, &cur);
-+
-+	pr_debug("%s: pll %s@%lu: Hz\n", __func__, __clk_get_name(hw->clk), drate);
-+	pr_debug("old - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		cur.fbdiv, cur.postdiv1, cur.refdiv, cur.postdiv2, cur.dsmpd, cur.frac);
-+	pr_debug("new - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		rate->fbdiv, rate->postdiv1, rate->refdiv, rate->postdiv2, rate->dsmpd, rate->frac);
-+
-+	if (rate->fbdiv != cur.fbdiv || rate->postdiv1 != cur.postdiv1 ||
-+		rate->refdiv != cur.refdiv || rate->postdiv2 != cur.postdiv2 ||
-+		rate->dsmpd != cur.dsmpd || rate->frac != cur.frac) {
-+		struct clk *parent = clk_get_parent(hw->clk);
-+
-+		if (!parent) {
-+			pr_warn("%s: parent of %s not available\n",
-+				__func__, __clk_get_name(hw->clk));
-+			return;
-+		}
-+
-+		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
-+			 __func__, __clk_get_name(hw->clk));
-+		rockchip_rk3036_pll_set_params(pll, rate);
-+	}
-+}
-+
-+static const struct clk_ops rockchip_rk3036_pll_clk_norate_ops = {
-+	.recalc_rate = rockchip_rk3036_pll_recalc_rate,
-+	.enable = rockchip_rk3036_pll_enable,
-+	.disable = rockchip_rk3036_pll_disable,
-+	.is_enabled = rockchip_rk3036_pll_is_enabled,
-+};
-+
-+static const struct clk_ops rockchip_rk3036_pll_clk_ops = {
-+	.recalc_rate = rockchip_rk3036_pll_recalc_rate,
-+	.round_rate = rockchip_pll_round_rate,
-+	.set_rate = rockchip_rk3036_pll_set_rate,
-+	.enable = rockchip_rk3036_pll_enable,
-+	.disable = rockchip_rk3036_pll_disable,
-+	.is_enabled = rockchip_rk3036_pll_is_enabled,
-+	.init = rockchip_rk3036_pll_init,
-+};
-+
-+/**
-  * PLL used in RK3066, RK3188 and RK3288
-  */
- 
-@@ -376,7 +617,7 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 	pll_mux->lock = lock;
- 	pll_mux->hw.init = &init;
- 
--	if (pll_type == pll_rk3066)
-+	if (pll_type == pll_rk3036 || pll_type == pll_rk3066)
- 		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
- 
- 	/* the actual muxing is xin24m, pll-output, xin32k */
-@@ -421,6 +662,12 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 	}
- 
- 	switch (pll_type) {
-+	case pll_rk3036:
-+		if (!pll->rate_table)
-+			init.ops = &rockchip_rk3036_pll_clk_norate_ops;
-+		else
-+			init.ops = &rockchip_rk3036_pll_clk_ops;
-+		break;
- 	case pll_rk3066:
- 		if (!pll->rate_table)
- 			init.ops = &rockchip_rk3066_pll_clk_norate_ops;
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index dc8ecb2..8d8f942 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -2,6 +2,9 @@
-  * Copyright (c) 2014 MundoReader S.L.
-  * Author: Heiko Stuebner <heiko@sntech.de>
-  *
-+ * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
-+ * Author: Xing Zheng <zhengxing@rock-chips.com>
-+ *
-  * based on
-  *
-  * samsung/clk.h
-@@ -30,7 +33,7 @@ struct clk;
- #define HIWORD_UPDATE(val, mask, shift) \
- 		((val) << (shift) | (mask) << ((shift) + 16))
- 
--/* register positions shared by RK2928, RK3066 and RK3188 */
-+/* register positions shared by RK2928, RK3036, RK3066 and RK3188 */
- #define RK2928_PLL_CON(x)		((x) * 0x4)
- #define RK2928_MODE_CON		0x40
- #define RK2928_CLKSEL_CON(x)	((x) * 0x4 + 0x44)
-@@ -40,6 +43,13 @@ struct clk;
- #define RK2928_SOFTRST_CON(x)	((x) * 0x4 + 0x110)
- #define RK2928_MISC_CON		0x134
- 
-+#define RK3036_SDMMC_CON0		0x144
-+#define RK3036_SDMMC_CON1		0x148
-+#define RK3036_SDIO_CON0		0x14c
-+#define RK3036_SDIO_CON1		0x150
-+#define RK3036_EMMC_CON0		0x154
-+#define RK3036_EMMC_CON1		0x158
-+
- #define RK3288_PLL_CON(x)		RK2928_PLL_CON(x)
- #define RK3288_MODE_CON			0x50
- #define RK3288_CLKSEL_CON(x)		((x) * 0x4 + 0x60)
-@@ -74,9 +84,22 @@ struct clk;
- #define RK3368_EMMC_CON1		0x41c
- 
- enum rockchip_pll_type {
-+	pll_rk3036,
- 	pll_rk3066,
- };
- 
-+#define RK3036_PLL_RATE(_rate, _refdiv, _fbdiv, _postdiv1,	\
-+			_postdiv2, _dsmpd, _frac)		\
-+{								\
-+	.rate	= _rate##U,					\
-+	.fbdiv = _fbdiv,					\
-+	.postdiv1 = _postdiv1,					\
-+	.refdiv = _refdiv,					\
-+	.postdiv2 = _postdiv2,					\
-+	.dsmpd = _dsmpd,					\
-+	.frac = _frac,						\
-+}
-+
- #define RK3066_PLL_RATE(_rate, _nr, _nf, _no)	\
- {						\
- 	.rate	= _rate##U,			\
-@@ -101,6 +124,13 @@ struct rockchip_pll_rate_table {
- 	unsigned int nf;
- 	unsigned int no;
- 	unsigned int nb;
-+	/* for RK3036 */
-+	unsigned int fbdiv;
-+	unsigned int postdiv1;
-+	unsigned int refdiv;
-+	unsigned int postdiv2;
-+	unsigned int dsmpd;
-+	unsigned int frac;
- };
- 
- /**
++#endif
 -- 
 1.7.9.5
