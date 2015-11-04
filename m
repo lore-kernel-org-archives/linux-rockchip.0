@@ -1,29 +1,31 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/8] phy: rockchip-usb: fix clock get-put mismatch
-Date: Wed, 4 Nov 2015 15:34:59 -0800
-Message-ID: <CAD=FV=X=tDxuc_wur-Bedi4PqWhe9Z3t_oaUQ1+6vQHmOSb+Qg@mail.gmail.com>
-References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
-	<1446673454-9529-2-git-send-email-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v6 8/8] rockchip: make sure timer5 is enabled on rk3036 platforms
+Date: Thu, 05 Nov 2015 00:35 +0100
+Message-ID: <2496205.49bBo1tRVl@phil>
+References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com> <1446639957-12030-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446673454-9529-2-git-send-email-heiko@sntech.de>
+In-Reply-To: <1446639957-12030-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko
-
-On Wed, Nov 4, 2015 at 1:44 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Currently the phy driver only gets the optional clock reference but
-> never puts it again, neither during error handling nor on remove.
-> Fix that by moving the clk_put to a devm-action that gets called at
-> the right time when all other devm actions are done.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Am Mittwoch, 4. November 2015, 20:25:57 schrieb Xing Zheng:
+> The timer5 supplies the architected timer and thus as has to run when
+> the system clocksource and clockevents drivers are registered.
+> 
 > ---
->  drivers/phy/phy-rockchip-usb.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+> 
+> Changes in v6:
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+
+This patch can work standalone, so I took the liberty of applying it to my soc 
+branch for 4.5 already, so you don't need to resend it in future versions.
+
+I fixed up the subject "ARM: rockchip:...", and moved the Signed-off-by to the 
+correct position above the "---".
