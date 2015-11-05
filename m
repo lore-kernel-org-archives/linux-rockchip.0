@@ -1,41 +1,94 @@
-From: Alan Stern <stern@rowland.harvard.edu>
-Subject: Re: [PATCH 2/3] usb: dwc2: host: Giveback URB in tasklet context
-Date: Thu, 5 Nov 2015 10:19:00 -0500 (EST)
-Message-ID: <Pine.LNX.4.44L0.1511051012580.25468-100000@netrider.rowland.org>
-References: <CAD=FV=WhD-CcHHZN0_h57xPmvwiOiroOQKoDpy8f2HfDJY-PCg@mail.gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2 1/2] ASoC: codec: Inno codec driver for RK3036 SoC
+Date: Thu, 5 Nov 2015 16:13:11 +0000
+Message-ID: <20151105161311.GR18409@sirena.org.uk>
+References: <1446717194-8572-1-git-send-email-zhengsq@rock-chips.com>
+ <1446717194-8572-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="OiITrshLgfui8fEl"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WhD-CcHHZN0_h57xPmvwiOiroOQKoDpy8f2HfDJY-PCg@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1446717194-8572-2-git-send-email-zhengsq@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ming Lei <ming.lei@canonical.com>
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, benzh@chromium.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 4 Nov 2015, Doug Anderson wrote:
 
-> In the ChromeOS gerrit
-> <https://chromium-review.googlesource.com/#/c/310583/> Julius Werner
-> points out that for EHCI it was good to take the optimization from
-> commit 9118f9eb4f1e ("USB: EHCI: improve interrupt qh unlink") before
-> this one.  I'm still trying to learn USB / dwc2 so it's unclear to me
-> whether we also need a similar change before landing.
-> 
-> I'll see if I can do some investigation about this and also some
-> benchmarking before and after.  Certainly profiling the interrupt
-> handler itself showed a huge improvement, but I'd hate to see a
-> regression elsewhere.
-> 
-> If anyone else knows better than I, please speak up!  :)
+--OiITrshLgfui8fEl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This is a matter of both efficiency and correctness.  Giving back URBs 
-in a tasklet is not a simple change.
+On Thu, Nov 05, 2015 at 05:53:13PM +0800, Shunqian Zheng wrote:
 
-Have you read the kerneldoc for usb_submit_urb() in 
-drivers/usb/core/urb.c?  The portion about "Reserved Bandwidth 
-Transfers" is highly relevant.  I don't know how dwc2 goes about 
-reserving bandwidth for periodic transfers, but if it relies on the 
-endpoint queue being non-empty to maintain a reservation then it will 
-be affected by this change.
+This is basically all good, a few very minor comments below but nothing
+that should take any time to fix.
 
-Alan Stern
+> +static const char *rk3036_codec_antipop_text[] = {"none", "work"};
+> +static const unsigned int rk3036_codec_antipop_values[] = {0x1, 0x2};
+> +
+> +static SOC_VALUE_ENUM_DOUBLE_DECL(rk3036_codec_antipop_enum, INNO_R09,
+> +		INNO_R09_HPL_ANITPOP_SHIFT, INNO_R09_HPR_ANITPOP_SHIFT, 0x3,
+> +		rk3036_codec_antipop_text, rk3036_codec_antipop_values);
+
+This looks like a simple boolean control rather than an enum - it looks
+like it's just turning antipop on and off.
+
+> +	SOC_DOUBLE_R_RANGE_TLV("Headphone Volume", INNO_R07, INNO_R08,
+> +		INNO_HP_GAIN_SHIFT, INNO_HP_GAIN_N39DB,
+> +		INNO_HP_GAIN_0DB, 0, rk3036_codec_hp_tlv),
+> +	SOC_DOUBLE("Zero Cross Detect", INNO_R06, INNO_R06_VOUTL_CZ_SHIFT,
+> +		INNO_R06_VOUTR_CZ_SHIFT, 1, 0),
+
+This should be "Zero Cross Switch".
+
+> +	SOC_DOUBLE("HP Mute", INNO_R09, INNO_R09_HPL_MUTE_SHIFT,
+> +		INNO_R09_HPR_MUTE_SHIFT, 1, 1),
+
+This should be "Headphone Switch".
+
+> +static int rk3036_codec_add_widgets(struct snd_soc_codec *codec)
+> +{
+> +	struct snd_soc_dapm_context *dapm = snd_soc_codec_get_dapm(codec);
+> +
+> +	snd_soc_add_codec_controls(codec, rk3036_codec_dapm_controls,
+> +		ARRAY_SIZE(rk3036_codec_dapm_controls));
+> +
+> +	snd_soc_dapm_new_controls(dapm, rk3036_codec_dapm_widgets,
+> +		ARRAY_SIZE(rk3036_codec_dapm_widgets));
+> +
+> +	snd_soc_dapm_add_routes(dapm, rk3036_codec_dapm_routes,
+> +		ARRAY_SIZE(rk3036_codec_dapm_routes));
+
+Just point at the tables from the driver structure and let the core do
+the initialisation for you.
+
+> +static int rk3036_codec_set_bias_level(struct snd_soc_codec *codec,
+> +				       enum snd_soc_bias_level level)
+> +{
+> +	switch (level) {
+> +	case SND_SOC_BIAS_STANDBY:
+> +		/* set a big current for capacitor charging. */
+> +		snd_soc_write(codec, INNO_R10, INNO_R10_MAX_CUR);
+> +		/* start precharge */
+> +		snd_soc_write(codec, INNO_R06, INNO_R06_DAC_PRECHARGE);
+
+Do we not need to wait for this to ramp?
+
+--OiITrshLgfui8fEl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWO4AWAAoJECTWi3JdVIfQn1UH/jpOV84jha0/A6lC536Tg7a1
+vt3A+PaDPp1vXtY0HOjdtqPjmvE0wLIG8DtaRRxOf/RPrT4yDKjKB1T6tHDyzj0Y
+HM7YSEJT1P44GDKEK3bQeBDwcVP2qoCxOxz1DGQeIR+oSV1uHBtHIwCzBWlzJh7/
+sTDLOXRU9Zvg25o4za1BFPjC5KzRPn9ewwpWeZYLrieRqZCzc6OIYCQSbFos8Ge9
+NU21HIkg8QUhjXRNPkDyPzPeqhH3VhTtla8DkU8HtTJtxmPjvV20AUuUDazdDZxh
+RYstNTlFJSXYStHb8dnqL33oCsjy/q1koCeZMaAto+E6dGYuHsAaCTi+XhJiop8=
+=zfS4
+-----END PGP SIGNATURE-----
+
+--OiITrshLgfui8fEl--
