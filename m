@@ -1,108 +1,78 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/8] phy: rockchip-usb: introduce a common data-struct for the device
-Date: Thu, 05 Nov 2015 00:55:10 +0100
-Message-ID: <6210861.uglufxBnXQ@phil>
-References: <1446673454-9529-1-git-send-email-heiko@sntech.de> <1446673454-9529-3-git-send-email-heiko@sntech.de> <CAD=FV=Uf0w0buknqwvW+ufao64m78i3B7Goza2pGCkjDSPU0tA@mail.gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 2/3] usb: dwc2: host: Giveback URB in tasklet context
+Date: Wed, 4 Nov 2015 16:30:14 -0800
+Message-ID: <CAD=FV=WhD-CcHHZN0_h57xPmvwiOiroOQKoDpy8f2HfDJY-PCg@mail.gmail.com>
+References: <1446677585-28582-1-git-send-email-dianders@chromium.org>
+ <1446677585-28582-3-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Uf0w0buknqwvW+ufao64m78i3B7Goza2pGCkjDSPU0tA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446677585-28582-3-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
+ Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 4. November 2015, 15:46:04 schrieb Doug Anderson:
-> Hi,
-> 
-> On Wed, Nov 4, 2015 at 1:44 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> > This introduces a common struct that holds data belonging to
-> > the umbrella device that contains all the phys and that we
-> > want to use later.
-> >
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> >  drivers/phy/phy-rockchip-usb.c | 24 +++++++++++++++++-------
-> >  1 file changed, 17 insertions(+), 7 deletions(-)
-> >
-> > diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> > index dfc056b..dda1994 100644
-> > --- a/drivers/phy/phy-rockchip-usb.c
-> > +++ b/drivers/phy/phy-rockchip-usb.c
-> > @@ -36,9 +36,14 @@
-> >  #define SIDDQ_ON               BIT(13)
-> >  #define SIDDQ_OFF              (0 << 13)
-> >
-> > +struct rockchip_usb_phy_base {
-> > +       struct device *dev;
-> > +       struct regmap *reg_base;
-> > +};
-> > +
-> >  struct rockchip_usb_phy {
-> > +       struct rockchip_usb_phy_base *base;
-> >         unsigned int    reg_offset;
-> > -       struct regmap   *reg_base;
-> >         struct clk      *clk;
-> >         struct phy      *phy;
-> >  };
-> > @@ -46,7 +51,7 @@ struct rockchip_usb_phy {
-> >  static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
-> >                                            bool siddq)
-> >  {
-> > -       return regmap_write(phy->reg_base, phy->reg_offset,
-> > +       return regmap_write(phy->base->reg_base, phy->reg_offset,
-> >                             SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
-> >  }
-> >
-> > @@ -101,17 +106,23 @@ static void rockchip_usb_phy_action(void *data)
-> >  static int rockchip_usb_phy_probe(struct platform_device *pdev)
-> >  {
-> >         struct device *dev = &pdev->dev;
-> > +       struct rockchip_usb_phy_base *phy_base;
-> >         struct rockchip_usb_phy *rk_phy;
-> >         struct phy_provider *phy_provider;
-> >         struct device_node *child;
-> > -       struct regmap *grf;
-> >         unsigned int reg_offset;
-> >         int err;
-> >
-> > -       grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
-> > -       if (IS_ERR(grf)) {
-> > +       phy_base = devm_kzalloc(dev, sizeof(*phy_base), GFP_KERNEL);
-> > +       if (!phy_base)
-> > +               return -ENOMEM;
-> > +
-> > +       phy_base->dev = dev;
-> > +       phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
-> > +                                                            "rockchip,grf");
-> > +       if (IS_ERR(phy_base->reg_base)) {
-> >                 dev_err(&pdev->dev, "Missing rockchip,grf property\n");
-> > -               return PTR_ERR(grf);
-> > +               return PTR_ERR(phy_base->reg_base);
-> >         }
-> >
-> >         for_each_available_child_of_node(dev->of_node, child) {
-> > @@ -126,7 +137,6 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
-> >                 }
-> >
-> >                 rk_phy->reg_offset = reg_offset;
-> > -               rk_phy->reg_base = grf;
-> 
-> I'm probably missing something, but I would have expected a line line:
-> 
->   rk_phy->base = phy_base;
-> 
-> Otherwise how does "base" get assigned?  Ah, I see.  You forgot it in
-> this patch and then cheated and slipped it in in patch #3.  ;)  For
-> nice bisectability it probably belongs here, too...
+Hi,
 
-Thanks for that catch and yep, it should definitly be here too. While
-I did a compile-test for the individual steps, I guess I did not do
-runtime tests for each.
+On Wed, Nov 4, 2015 at 2:53 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> In commit 94dfd7edfd5c ("USB: HCD: support giveback of URB in tasklet
+> context") support was added to give back the URB in tasklet context.
+> Let's take advantage of this in dwc2.
+>
+> This speeds up the dwc2 interrupt handler considerably.
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+>  drivers/usb/dwc2/hcd.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+> index e79baf73c234..9e7988950c7a 100644
+> --- a/drivers/usb/dwc2/hcd.c
+> +++ b/drivers/usb/dwc2/hcd.c
+> @@ -2273,9 +2273,7 @@ void dwc2_host_complete(struct dwc2_hsotg *hsotg, struct dwc2_qtd *qtd,
+>         kfree(qtd->urb);
+>         qtd->urb = NULL;
+>
+> -       spin_unlock(&hsotg->lock);
+>         usb_hcd_giveback_urb(dwc2_hsotg_to_hcd(hsotg), urb, status);
+> -       spin_lock(&hsotg->lock);
+>  }
+>
+>  /*
+> @@ -2888,7 +2886,7 @@ static struct hc_driver dwc2_hc_driver = {
+>         .hcd_priv_size = sizeof(struct wrapper_priv_data),
+>
+>         .irq = _dwc2_hcd_irq,
+> -       .flags = HCD_MEMORY | HCD_USB2,
+> +       .flags = HCD_MEMORY | HCD_USB2 | HCD_BH,
+>
+>         .start = _dwc2_hcd_start,
+>         .stop = _dwc2_hcd_stop,
 
-I guess this is what happens when you try to separate a final work into
-separate steps :-) . I'll send a revised version hopefully tomorrow.
+In the ChromeOS gerrit
+<https://chromium-review.googlesource.com/#/c/310583/> Julius Werner
+points out that for EHCI it was good to take the optimization from
+commit 9118f9eb4f1e ("USB: EHCI: improve interrupt qh unlink") before
+this one.  I'm still trying to learn USB / dwc2 so it's unclear to me
+whether we also need a similar change before landing.
 
+I'll see if I can do some investigation about this and also some
+benchmarking before and after.  Certainly profiling the interrupt
+handler itself showed a huge improvement, but I'd hate to see a
+regression elsewhere.
 
-Heiko
+If anyone else knows better than I, please speak up!  :)
+
+-Doug
