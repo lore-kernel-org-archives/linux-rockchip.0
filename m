@@ -1,189 +1,50 @@
-From: John Youn <John.Youn@synopsys.com>
-Subject: Re: [PATCH v2 1/2] usb: dwc2: host: Fix missing device insertions
-Date: Thu, 5 Nov 2015 02:52:21 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3BA312@US01WEMBX2.internal.synopsys.com>
-References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v6 6/8] ARM: rockchip: add support smp for rk3036
+Date: Thu, 05 Nov 2015 11:00:46 +0800
+Message-ID: <563AC65E.6050201@rock-chips.com>
+References: <1446639503-11763-1-git-send-email-zhengxing@rock-chips.com> <1446639916-11957-1-git-send-email-zhengxing@rock-chips.com> <3167530.TSdLBvl1Zs@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, John Youn <John.Youn@synopsys.com>, "balbi@ti.com" <balbi@ti.com>
-Cc: Yunzhi Li <lyz@rock-chips.com>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "gregory.herrero@intel.com" <gregory.herrero@intel.com>, "yousaf.kaukab@intel.com" <yousaf.kaukab@intel.com>, "dinguyen@opensource.altera.com" <dinguyen@opensource.altera.com>, "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3167530.TSdLBvl1Zs@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/3/2015 12:31 PM, Douglas Anderson wrote:
-> If you've got your interrupt signals bouncing a bit as you insert your
-> USB device, you might end up in a state when the device is connected but
-> the driver doesn't know it.
-> 
-> Specifically, the observed order is:
->  1. hardware sees connect
->  2. hardware sees disconnect
->  3. hardware sees connect
->  4. dwc2_port_intr() - clears connect interrupt
->  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
-> 
-> Now you'll be stuck with the cable plugged in and no further interrupts
-> coming in but the driver will think we're disconnected.
-> 
-> We'll fix this by checking for the missing connect interrupt and
-> re-connecting after the disconnect is posted.  We don't skip the
-> disconnect because if there is a transitory disconnect we really want to
-> de-enumerate and re-enumerate.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Changes in v2:
-> - Don't reconnect when called from _dwc2_hcd_stop() (John Youn)
-> 
->  drivers/usb/dwc2/core.h      |  6 ++++--
->  drivers/usb/dwc2/core_intr.c |  4 ++--
->  drivers/usb/dwc2/hcd.c       | 40 ++++++++++++++++++++++++++++++++++++++--
->  drivers/usb/dwc2/hcd_intr.c  |  6 +-----
->  4 files changed, 45 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-> index a66d3cb62b65..daa1c342cdac 100644
-> --- a/drivers/usb/dwc2/core.h
-> +++ b/drivers/usb/dwc2/core.h
-> @@ -1154,12 +1154,14 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
->  
->  #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
->  extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
-> -extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg);
-> +extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
-> +extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
->  extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
->  #else
->  static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
->  { return 0; }
-> -static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
-> +static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
-> +static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
->  static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
->  static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
->  static inline int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
-> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
-> index 27daa42788b1..61601d16e233 100644
-> --- a/drivers/usb/dwc2/core_intr.c
-> +++ b/drivers/usb/dwc2/core_intr.c
-> @@ -239,7 +239,7 @@ static void dwc2_handle_otg_intr(struct dwc2_hsotg *hsotg)
->  			dev_dbg(hsotg->dev, "a_suspend->a_peripheral (%d)\n",
->  				hsotg->op_state);
->  			spin_unlock(&hsotg->lock);
-> -			dwc2_hcd_disconnect(hsotg);
-> +			dwc2_hcd_disconnect(hsotg, false);
->  			spin_lock(&hsotg->lock);
->  			hsotg->op_state = OTG_STATE_A_PERIPHERAL;
->  		} else {
-> @@ -401,7 +401,7 @@ static void dwc2_handle_disconnect_intr(struct dwc2_hsotg *hsotg)
->  		dwc2_op_state_str(hsotg));
->  
->  	if (hsotg->op_state == OTG_STATE_A_HOST)
-> -		dwc2_hcd_disconnect(hsotg);
-> +		dwc2_hcd_disconnect(hsotg, false);
->  
->  	dwc2_writel(GINTSTS_DISCONNINT, hsotg->regs + GINTSTS);
->  }
-> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-> index e79baf73c234..e208eac7ff57 100644
-> --- a/drivers/usb/dwc2/hcd.c
-> +++ b/drivers/usb/dwc2/hcd.c
-> @@ -268,15 +268,33 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
->  }
->  
->  /**
-> + * dwc2_hcd_connect() - Handles connect of the HCD
-> + *
-> + * @hsotg: Pointer to struct dwc2_hsotg
-> + *
-> + * Must be called with interrupt disabled and spinlock held
-> + */
-> +void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
-> +{
-> +	if (hsotg->lx_state != DWC2_L0)
-> +		usb_hcd_resume_root_hub(hsotg->priv);
-> +
-> +	hsotg->flags.b.port_connect_status_change = 1;
-> +	hsotg->flags.b.port_connect_status = 1;
-> +}
-> +
-> +/**
->   * dwc2_hcd_disconnect() - Handles disconnect of the HCD
->   *
->   * @hsotg: Pointer to struct dwc2_hsotg
-> + * @force: If true, we won't try to reconnect even if we see device connected.
->   *
->   * Must be called with interrupt disabled and spinlock held
->   */
-> -void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
-> +void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force)
->  {
->  	u32 intr;
-> +	u32 hprt0;
->  
->  	/* Set status flags for the hub driver */
->  	hsotg->flags.b.port_connect_status_change = 1;
-> @@ -315,6 +333,24 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->  		dwc2_hcd_cleanup_channels(hsotg);
->  
->  	dwc2_host_disconnect(hsotg);
-> +
-> +	/*
-> +	 * Add an extra check here to see if we're actually connected but
-> +	 * we don't have a detection interrupt pending.  This can happen if:
-> +	 *   1. hardware sees connect
-> +	 *   2. hardware sees disconnect
-> +	 *   3. hardware sees connect
-> +	 *   4. dwc2_port_intr() - clears connect interrupt
-> +	 *   5. dwc2_handle_common_intr() - calls here
-> +	 *
-> +	 * Without the extra check here we will end calling disconnect
-> +	 * and won't get any future interrupts to handle the connect.
-> +	 */
-> +	if (!force) {
-> +		hprt0 = dwc2_readl(hsotg->regs + HPRT0);
-> +		if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
-> +			dwc2_hcd_connect(hsotg);
-> +	}
->  }
->  
->  /**
-> @@ -2365,7 +2401,7 @@ static void _dwc2_hcd_stop(struct usb_hcd *hcd)
->  
->  	spin_lock_irqsave(&hsotg->lock, flags);
->  	/* Ensure hcd is disconnected */
-> -	dwc2_hcd_disconnect(hsotg);
-> +	dwc2_hcd_disconnect(hsotg, true);
->  	dwc2_hcd_stop(hsotg);
->  	hsotg->lx_state = DWC2_L3;
->  	hcd->state = HC_STATE_HALT;
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-> index bda0b21b850f..03504ac2fecc 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -350,11 +350,7 @@ static void dwc2_port_intr(struct dwc2_hsotg *hsotg)
->  		dev_vdbg(hsotg->dev,
->  			 "--Port Interrupt HPRT0=0x%08x Port Connect Detected--\n",
->  			 hprt0);
-> -		if (hsotg->lx_state != DWC2_L0)
-> -			usb_hcd_resume_root_hub(hsotg->priv);
-> -
-> -		hsotg->flags.b.port_connect_status_change = 1;
-> -		hsotg->flags.b.port_connect_status = 1;
-> +		dwc2_hcd_connect(hsotg);
->  		hprt0_modify |= HPRT0_CONNDET;
->  
->  		/*
-> 
+On 2015=E5=B9=B411=E6=9C=8805=E6=97=A5 07:33, Heiko Stuebner wrote:
+> Am Mittwoch, 4. November 2015, 20:25:16 schrieb Xing Zheng:
+>> From: Heiko Stuebner<heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>>
+>> The dual-core Cortex A7 rk3036 is a bit special in that it does not =
+allow
+>> to control the actual powerdomain of the cpu cores, while the rest o=
+f the
+>> smp-bringup like reset control and entry address handling stays the =
+same.
+>> Its bigger sibling, the quad-core rk3128 again allows powerdomain co=
+ntrol.
+>>
+>> So allow that case by introducing a separate smp-enable-method, that=
+ simply
+>> disables powerdomain handling in the common code.
+>>
+>> Signed-off-by: Heiko Stuebner<heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> Tested-by: Xing Zheng<zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Signed-off-by: Xing Zheng<zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> This patch can work standalone, so I took the liberty of applying it =
+to my soc
+> branch for 4.5 already, so you don't need to resend it in future vers=
+ions.
+>
+>
+>
+OK=EF=BC=8C thanks Heiko. :)
 
-
-Acked-by: John Youn <johnyoun@synopsys.com>
-Tested-by: John Youn <johnyoun@synopsys.com>
-
-Tested on Synopsys HAPS platform IP v3.20a.
-
-Regards,
-John
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
