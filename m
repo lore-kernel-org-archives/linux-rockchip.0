@@ -1,290 +1,691 @@
-From: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Subject: [RFC PATCH 1/7] reset: drop ARCH_HAS_RESET_CONTROLLER
-Date: Thu,  5 Nov 2015 20:15:22 +0900
-Message-ID: <1446722128-11961-2-git-send-email-yamada.masahiro@socionext.com>
-References: <1446722128-11961-1-git-send-email-yamada.masahiro@socionext.com>
+From: LABBE Corentin <clabbe.montjoie@gmail.com>
+Subject: Re: [PATCH v2 1/2] ASoC: codec: Inno codec driver for RK3036 SoC
+Date: Thu, 5 Nov 2015 13:47:47 +0100
+Message-ID: <20151105124747.GC12736@Red>
+References: <1446717194-8572-1-git-send-email-zhengsq@rock-chips.com>
+ <1446717194-8572-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1446722128-11961-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michael Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Sebastian Hesselbarth <sebastian.hesselbarth-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jens Kuske <jenskuske-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Eric Miao <eric.y.miao-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Srinivas
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1446717194-8572-2-git-send-email-zhengsq@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, benzh@chromium.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The reset sub-system is supposed to be enabled by two steps:
+On Thu, Nov 05, 2015 at 05:53:13PM +0800, Shunqian Zheng wrote:
+> From: ZhengShunQian <zhengsq@rock-chips.com>
+> 
+> RK3036 SoC integrated with an Inno audio codec.
+> This driver implements the functions of it.
+> 
+> There is not need a special machine driver, since the
+> simple-card machine driver works perfect in this case.
+> 
+> Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
+> ---
+>  sound/soc/codecs/Kconfig       |   4 +
+>  sound/soc/codecs/Makefile      |   2 +
+>  sound/soc/codecs/inno_rk3036.c | 455 +++++++++++++++++++++++++++++++++++++++++
+>  sound/soc/codecs/inno_rk3036.h | 120 +++++++++++
+>  4 files changed, 581 insertions(+)
+>  create mode 100644 sound/soc/codecs/inno_rk3036.c
+>  create mode 100644 sound/soc/codecs/inno_rk3036.h
+> 
+> diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
+> index cfdafc4..89d789e 100644
+> --- a/sound/soc/codecs/Kconfig
+> +++ b/sound/soc/codecs/Kconfig
+> @@ -67,6 +67,7 @@ config SND_SOC_ALL_CODECS
+>  	select SND_SOC_ES8328_I2C if I2C
+>  	select SND_SOC_GTM601
+>  	select SND_SOC_ICS43432
+> +	select SND_SOC_INNO_RK3036
+>  	select SND_SOC_ISABELLE if I2C
+>  	select SND_SOC_JZ4740_CODEC
+>  	select SND_SOC_LM4857 if I2C
+> @@ -471,6 +472,9 @@ config SND_SOC_GTM601
+>  config SND_SOC_ICS43432
+>  	tristate
+>  
+> +config SND_SOC_INNO_RK3036
+> +	tristate "Inno codec driver for RK3036 SoC"
+> +
+>  config SND_SOC_ISABELLE
+>          tristate
+>  
+> diff --git a/sound/soc/codecs/Makefile b/sound/soc/codecs/Makefile
+> index f632fc4..2f6bc6c 100644
+> --- a/sound/soc/codecs/Makefile
+> +++ b/sound/soc/codecs/Makefile
+> @@ -60,6 +60,7 @@ snd-soc-es8328-i2c-objs := es8328-i2c.o
+>  snd-soc-es8328-spi-objs := es8328-spi.o
+>  snd-soc-gtm601-objs := gtm601.o
+>  snd-soc-ics43432-objs := ics43432.o
+> +snd-soc-inno-rk3036-objs := inno_rk3036.o
+>  snd-soc-isabelle-objs := isabelle.o
+>  snd-soc-jz4740-codec-objs := jz4740.o
+>  snd-soc-l3-objs := l3.o
+> @@ -255,6 +256,7 @@ obj-$(CONFIG_SND_SOC_ES8328_I2C)+= snd-soc-es8328-i2c.o
+>  obj-$(CONFIG_SND_SOC_ES8328_SPI)+= snd-soc-es8328-spi.o
+>  obj-$(CONFIG_SND_SOC_GTM601)    += snd-soc-gtm601.o
+>  obj-$(CONFIG_SND_SOC_ICS43432)	+= snd-soc-ics43432.o
+> +obj-$(CONFIG_SND_SOC_INNO_RK3036)	+= snd-soc-inno-rk3036.o
+>  obj-$(CONFIG_SND_SOC_ISABELLE)	+= snd-soc-isabelle.o
+>  obj-$(CONFIG_SND_SOC_JZ4740_CODEC)	+= snd-soc-jz4740-codec.o
+>  obj-$(CONFIG_SND_SOC_L3)	+= snd-soc-l3.o
+> diff --git a/sound/soc/codecs/inno_rk3036.c b/sound/soc/codecs/inno_rk3036.c
+> new file mode 100644
+> index 0000000..ce68f02
+> --- /dev/null
+> +++ b/sound/soc/codecs/inno_rk3036.c
+> @@ -0,0 +1,455 @@
+> +/*
+> + * Driver of Inno codec for rk3036 by Rockchip Inc.
+> + *
+> + * Author: Rockchip Inc.
+> + * Author: Zheng ShunQian<zhengsq@rock-chips.com>
+> + */
+> +
+> +#include <sound/soc.h>
+> +#include <sound/tlv.h>
+> +#include <sound/soc-dapm.h>
+> +#include <sound/soc-dai.h>
+> +#include <sound/pcm.h>
+> +#include <sound/pcm_params.h>
+> +
+> +#include <linux/platform_device.h>
+> +#include <linux/of.h>
+> +#include <linux/clk.h>
+> +#include <linux/regmap.h>
+> +#include <linux/device.h>
+> +#include <linux/delay.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/io.h>
+> +
+> +#include "inno_rk3036.h"
+> +
+> +struct rk3036_codec_priv {
+> +	void __iomem *base;
+> +	struct clk *pclk;
+> +	struct regmap *regmap;
+> +	struct device *dev;
+> +};
+> +
+> +static const DECLARE_TLV_DB_MINMAX(rk3036_codec_hp_tlv, -39, 0);
+> +
+> +static const char *rk3036_codec_antipop_text[] = {"none", "work"};
+> +static const unsigned int rk3036_codec_antipop_values[] = {0x1, 0x2};
+> +
+> +static SOC_VALUE_ENUM_DOUBLE_DECL(rk3036_codec_antipop_enum, INNO_R09,
+> +		INNO_R09_HPL_ANITPOP_SHIFT, INNO_R09_HPR_ANITPOP_SHIFT, 0x3,
+> +		rk3036_codec_antipop_text, rk3036_codec_antipop_values);
+> +
+> +static const struct snd_kcontrol_new rk3036_codec_dapm_controls[] = {
+> +	SOC_DOUBLE_R_RANGE_TLV("Headphone Volume", INNO_R07, INNO_R08,
+> +		INNO_HP_GAIN_SHIFT, INNO_HP_GAIN_N39DB,
+> +		INNO_HP_GAIN_0DB, 0, rk3036_codec_hp_tlv),
+> +	SOC_DOUBLE("Zero Cross Detect", INNO_R06, INNO_R06_VOUTL_CZ_SHIFT,
+> +		INNO_R06_VOUTR_CZ_SHIFT, 1, 0),
+> +	SOC_DOUBLE("HP Mute", INNO_R09, INNO_R09_HPL_MUTE_SHIFT,
+> +		INNO_R09_HPR_MUTE_SHIFT, 1, 1),
+> +	SOC_ENUM("Anti-pop", rk3036_codec_antipop_enum),
+> +};
+> +
+> +static const struct snd_kcontrol_new rk3036_codec_hpl_mixer_controls[] = {
+> +	SOC_DAPM_SINGLE("DAC Left Out Switch", INNO_R09,
+> +			INNO_R09_DACL_SWITCH_SHIFT, 1, 0),
+> +};
+> +
+> +static const struct snd_kcontrol_new rk3036_codec_hpr_mixer_controls[] = {
+> +	SOC_DAPM_SINGLE("DAC Right Out Switch", INNO_R09,
+> +			INNO_R09_DACR_SWITCH_SHIFT, 1, 0),
+> +};
+> +
+> +static const struct snd_kcontrol_new rk3036_codec_hpl_switch_controls[] = {
+> +	SOC_DAPM_SINGLE("HP Left Out Switch", INNO_R05,
+> +			INNO_R05_HPL_WORK_SHIFT, 1, 0),
+> +};
+> +
+> +static const struct snd_kcontrol_new rk3036_codec_hpr_switch_controls[] = {
+> +	SOC_DAPM_SINGLE("HP Right Out Switch", INNO_R05,
+> +			INNO_R05_HPR_WORK_SHIFT, 1, 0),
+> +};
+> +
+> +static const struct snd_soc_dapm_widget rk3036_codec_dapm_widgets[] = {
+> +	SND_SOC_DAPM_SUPPLY_S("DAC PWR", 1, INNO_R06,
+> +			      INNO_R06_DAC_EN_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACL VREF", 2, INNO_R04,
+> +			      INNO_R04_DACL_VREF_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACR VREF", 2, INNO_R04,
+> +			      INNO_R04_DACR_VREF_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACL HiLo VREF", 3, INNO_R06,
+> +			      INNO_R06_DACL_HILO_VREF_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACR HiLo VREF", 3, INNO_R06,
+> +			      INNO_R06_DACR_HILO_VREF_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACR CLK", 3, INNO_R04,
+> +			      INNO_R04_DACR_CLK_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_SUPPLY_S("DACL CLK", 3, INNO_R04,
+> +			      INNO_R04_DACL_CLK_SHIFT, 0, NULL, 0),
+> +
+> +	SND_SOC_DAPM_DAC("DACL", "Left Playback", INNO_R04,
+> +			 INNO_R04_DACL_SW_SHIFT, 0),
+> +	SND_SOC_DAPM_DAC("DACR", "Right Playback", INNO_R04,
+> +			 INNO_R04_DACR_SW_SHIFT, 0),
+> +
+> +	SND_SOC_DAPM_MIXER("Left Headphone Mixer", SND_SOC_NOPM, 0, 0,
+> +		rk3036_codec_hpl_mixer_controls,
+> +		ARRAY_SIZE(rk3036_codec_hpl_mixer_controls)),
+> +	SND_SOC_DAPM_MIXER("Right Headphone Mixer", SND_SOC_NOPM, 0, 0,
+> +		rk3036_codec_hpr_mixer_controls,
+> +		ARRAY_SIZE(rk3036_codec_hpr_mixer_controls)),
+> +
+> +	SND_SOC_DAPM_PGA("HP Left Out", INNO_R05,
+> +			 INNO_R05_HPL_EN_SHIFT, 0, NULL, 0),
+> +	SND_SOC_DAPM_PGA("HP Right Out", INNO_R05,
+> +			 INNO_R05_HPR_EN_SHIFT, 0, NULL, 0),
+> +
+> +	SND_SOC_DAPM_MIXER("HP Left Switch",  SND_SOC_NOPM, 0, 0,
+> +			   rk3036_codec_hpl_switch_controls,
+> +			   ARRAY_SIZE(rk3036_codec_hpl_switch_controls)),
+> +	SND_SOC_DAPM_MIXER("HP Right Switch",  SND_SOC_NOPM, 0, 0,
+> +			   rk3036_codec_hpr_switch_controls,
+> +			   ARRAY_SIZE(rk3036_codec_hpr_switch_controls)),
+> +
+> +	SND_SOC_DAPM_OUTPUT("HPL"),
+> +	SND_SOC_DAPM_OUTPUT("HPR"),
+> +};
+> +
+> +static const struct snd_soc_dapm_route rk3036_codec_dapm_routes[] = {
+> +	{"DACL VREF", NULL, "DAC PWR"},
+> +	{"DACR VREF", NULL, "DAC PWR"},
+> +	{"DACL HiLo VREF", NULL, "DAC PWR"},
+> +	{"DACR HiLo VREF", NULL, "DAC PWR"},
+> +	{"DACL CLK", NULL, "DAC PWR"},
+> +	{"DACR CLK", NULL, "DAC PWR"},
+> +
+> +	{"DACL", NULL, "DACL VREF"},
+> +	{"DACL", NULL, "DACL HiLo VREF"},
+> +	{"DACL", NULL, "DACL CLK"},
+> +	{"DACR", NULL, "DACR VREF"},
+> +	{"DACR", NULL, "DACR HiLo VREF"},
+> +	{"DACR", NULL, "DACR CLK"},
+> +
+> +	{"Left Headphone Mixer", "DAC Left Out Switch", "DACL"},
+> +	{"Right Headphone Mixer", "DAC Right Out Switch", "DACR"},
+> +	{"HP Left Out", NULL, "Left Headphone Mixer"},
+> +	{"HP Right Out", NULL, "Right Headphone Mixer"},
+> +
+> +	{"HP Left Switch", "HP Left Out Switch", "HP Left Out"},
+> +	{"HP Right Switch", "HP Right Out Switch", "HP Right Out"},
+> +
+> +	{"HPL", NULL, "HP Left Switch"},
+> +	{"HPR", NULL, "HP Right Switch"},
+> +};
+> +
+> +static int rk3036_codec_dai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+> +{
+> +	struct snd_soc_codec *codec = dai->codec;
+> +	unsigned int reg01_val = 0,  reg02_val = 0, reg03_val = 0;
+> +
+> +	dev_dbg(codec->dev, "rk3036_codec dai set fmt : %08x\n", fmt);
+> +
+> +	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> +	case SND_SOC_DAIFMT_CBS_CFS:
+> +		reg01_val |= INNO_R01_PINDIR_IN_SLAVE |
+> +			     INNO_R01_I2SMODE_SLAVE;
+> +		break;
+> +	case SND_SOC_DAIFMT_CBM_CFM:
+> +		reg01_val |= INNO_R01_PINDIR_OUT_MASTER |
+> +			     INNO_R01_I2SMODE_MASTER;
+> +		break;
+> +	default:
+> +		dev_err(codec->dev, "invalid fmt\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
+> +	case SND_SOC_DAIFMT_DSP_A:
+> +		reg02_val |= INNO_R02_DACM_PCM;
+> +		break;
+> +	case SND_SOC_DAIFMT_I2S:
+> +		reg02_val |= INNO_R02_DACM_I2S;
+> +		break;
+> +	case SND_SOC_DAIFMT_RIGHT_J:
+> +		reg02_val |= INNO_R02_DACM_RJM;
+> +		break;
+> +	case SND_SOC_DAIFMT_LEFT_J:
+> +		reg02_val |= INNO_R02_DACM_LJM;
+> +		break;
+> +	default:
+> +		dev_err(codec->dev, "set dai format failed\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
+> +	case SND_SOC_DAIFMT_NB_NF:
+> +		reg02_val |= INNO_R02_LRCP_NORMAL;
+> +		reg03_val |= INNO_R03_BCP_NORMAL;
+> +		break;
+> +	case SND_SOC_DAIFMT_IB_IF:
+> +		reg02_val |= INNO_R02_LRCP_REVERSAL;
+> +		reg03_val |= INNO_R03_BCP_REVERSAL;
+> +		break;
+> +	case SND_SOC_DAIFMT_IB_NF:
+> +		reg02_val |= INNO_R02_LRCP_REVERSAL;
+> +		reg03_val |= INNO_R03_BCP_NORMAL;
+> +		break;
+> +	case SND_SOC_DAIFMT_NB_IF:
+> +		reg02_val |= INNO_R02_LRCP_NORMAL;
+> +		reg03_val |= INNO_R03_BCP_REVERSAL;
+> +		break;
+> +	default:
+> +		dev_err(codec->dev, "set dai format failed\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	snd_soc_update_bits(codec, INNO_R01, INNO_R01_I2SMODE_MSK |
+> +			    INNO_R01_PINDIR_MSK, reg01_val);
+> +	snd_soc_update_bits(codec, INNO_R02, INNO_R02_LRCP_MSK |
+> +			    INNO_R02_DACM_MSK, reg02_val);
+> +	snd_soc_update_bits(codec, INNO_R03, INNO_R03_BCP_MSK, reg03_val);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk3036_codec_dai_hw_params(struct snd_pcm_substream *substream,
+> +				      struct snd_pcm_hw_params *hw_params,
+> +				      struct snd_soc_dai *dai)
+> +{
+> +	struct snd_soc_codec *codec = dai->codec;
+> +	unsigned int reg02_val = 0, reg03_val = 0;
+> +
+> +	switch (params_format(hw_params)) {
+> +	case SNDRV_PCM_FORMAT_S16_LE:
+> +		reg02_val |= INNO_R02_VWL_16BIT;
+> +		break;
+> +	case SNDRV_PCM_FORMAT_S20_3LE:
+> +		reg02_val |= INNO_R02_VWL_20BIT;
+> +		break;
+> +	case SNDRV_PCM_FORMAT_S24_LE:
+> +		reg02_val |= INNO_R02_VWL_24BIT;
+> +		break;
+> +	case SNDRV_PCM_FORMAT_S32_LE:
+> +		reg02_val |= INNO_R02_VWL_32BIT;
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +
+> +	reg02_val |= INNO_R02_LRCP_NORMAL;
+> +	reg03_val |= INNO_R03_FWL_32BIT | INNO_R03_DACR_WORK;
+> +
+> +	snd_soc_update_bits(codec, INNO_R02, INNO_R02_LRCP_MSK |
+> +			    INNO_R02_VWL_MSK, reg02_val);
+> +	snd_soc_update_bits(codec, INNO_R03, INNO_R03_DACR_MSK |
+> +			    INNO_R03_FWL_MSK, reg03_val);
+> +	return 0;
+> +}
+> +
+> +#define RK3036_CODEC_RATES (SNDRV_PCM_RATE_8000  | \
+> +			    SNDRV_PCM_RATE_16000 | \
+> +			    SNDRV_PCM_RATE_32000 | \
+> +			    SNDRV_PCM_RATE_44100 | \
+> +			    SNDRV_PCM_RATE_48000 | \
+> +			    SNDRV_PCM_RATE_96000)
+> +
+> +#define RK3036_CODEC_FMTS (SNDRV_PCM_FMTBIT_S16_LE  | \
+> +			   SNDRV_PCM_FMTBIT_S20_3LE | \
+> +			   SNDRV_PCM_FMTBIT_S24_LE  | \
+> +			   SNDRV_PCM_FMTBIT_S32_LE)
+> +
+> +struct snd_soc_dai_ops rk3036_codec_dai_ops = {
+> +	.set_fmt	= rk3036_codec_dai_set_fmt,
+> +	.hw_params	= rk3036_codec_dai_hw_params,
+> +};
+> +
+> +struct snd_soc_dai_driver rk3036_codec_dai_driver[] = {
+> +	{
+> +		.name = "rk3036-codec-dai",
+> +		.playback = {
+> +			.stream_name = "Playback",
+> +			.channels_min = 1,
+> +			.channels_max = 2,
+> +			.rates = RK3036_CODEC_RATES,
+> +			.formats = RK3036_CODEC_FMTS,
+> +		},
+> +		.ops = &rk3036_codec_dai_ops,
+> +		.symmetric_rates = 1,
+> +	},
+> +};
+You could set it as const, since snd_soc_register_codec() expect it.
 
-  - ARCH_HAS_RESET_CONTROLLER is select'ed by such sub-architectures
-    that support reset controllers
+> +
+> +static void rk3036_codec_reset(struct snd_soc_codec *codec)
+> +{
+> +	snd_soc_write(codec, INNO_R00,
+> +		      INNO_R00_CSR_RESET | INNO_R00_CDCR_RESET);
+> +	mdelay(10);
+> +	snd_soc_write(codec, INNO_R00,
+> +		      INNO_R00_CSR_WORK | INNO_R00_CDCR_WORK);
+> +	mdelay(10);
+Why 10 ? Does it is a datasheet given value , or a try and test value ?
 
-  - Based on that, RESET_CONTROLLER is configured by "make menuconfig"
-    or friends.  (Note that it is a user-configurable option as it has
-    a prompt.)
+> +}
+> +
+> +static int rk3036_codec_add_widgets(struct snd_soc_codec *codec)
+> +{
+> +	struct snd_soc_dapm_context *dapm = snd_soc_codec_get_dapm(codec);
+> +
+> +	snd_soc_add_codec_controls(codec, rk3036_codec_dapm_controls,
+> +		ARRAY_SIZE(rk3036_codec_dapm_controls));
+> +
+> +	snd_soc_dapm_new_controls(dapm, rk3036_codec_dapm_widgets,
+> +		ARRAY_SIZE(rk3036_codec_dapm_widgets));
+> +
+> +	snd_soc_dapm_add_routes(dapm, rk3036_codec_dapm_routes,
+> +		ARRAY_SIZE(rk3036_codec_dapm_routes));
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk3036_codec_probe(struct snd_soc_codec *codec)
+> +{
+> +	rk3036_codec_reset(codec);
+> +
+> +	rk3036_codec_add_widgets(codec);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk3036_codec_remove(struct snd_soc_codec *codec)
+> +{
+> +	rk3036_codec_reset(codec);
+> +	return 0;
+> +}
+> +
+> +static int rk3036_codec_set_bias_level(struct snd_soc_codec *codec,
+> +				       enum snd_soc_bias_level level)
+> +{
+> +	switch (level) {
+> +	case SND_SOC_BIAS_STANDBY:
+> +		/* set a big current for capacitor charging. */
+> +		snd_soc_write(codec, INNO_R10, INNO_R10_MAX_CUR);
+> +		/* start precharge */
+> +		snd_soc_write(codec, INNO_R06, INNO_R06_DAC_PRECHARGE);
+> +
+> +		break;
+> +
+> +	case SND_SOC_BIAS_OFF:
+> +		/* set a big current for capacitor discharging. */
+> +		snd_soc_write(codec, INNO_R10, INNO_R10_MAX_CUR);
+> +		/* start discharge. */
+> +		snd_soc_write(codec, INNO_R06, INNO_R06_DAC_DISCHARGE);
+> +
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static struct snd_soc_codec_driver rk3036_codec_driver = {
+> +	.probe		= rk3036_codec_probe,
+> +	.remove		= rk3036_codec_remove,
+> +	.set_bias_level	= rk3036_codec_set_bias_level,
+> +};
+You could set it as const, since snd_soc_register_codec() expect it.
 
-But, this is getting messy in spite of the intention.  Some SoC families
-(such as Tegra, sunxi, etc.) select both ARCH_HAS_RESET_CONTROLLER and
-RESET_CONTROLLER.  So, it is no longer configurable (i.e. forcibly
-select'ed) in the multi-platforms.
+> +
+> +static struct regmap_config rk3036_codec_regmap_config = {
+> +	.reg_bits = 32,
+> +	.reg_stride = 4,
+> +	.val_bits = 32,
+> +};
+You could set it as const, since devm_regmap_init_mmio() expect it.
 
-Also, many drivers that use reset APIs are accompanied by
-"depends on RESET_CONTROLLER".
+> +
+> +#define GRF_SOC_CON0		0x00140
+> +#define GRF_ACODEC_SEL		(BIT(10) | BIT(16 + 10))
+> +
+> +static int rk3036_codec_platform_probe(struct platform_device *pdev)
+> +{
+> +	struct rk3036_codec_priv *priv;
+> +	struct device_node *of_node = pdev->dev.of_node;
+> +	struct resource *res;
+> +	void __iomem *base;
+> +	struct regmap *grf;
+> +	int ret;
+> +
+> +	priv = devm_kzalloc(&pdev->dev, sizeof(struct rk3036_codec_priv),
+> +			    GFP_KERNEL);
+It is prefered to use sizeof(*priv)
 
-Like pinctrl, clk sub-systems, reset is a fundamental feature needed
-for SoCs to work correctly.
+Do you have run checkpatch.pl --strict ?
 
-If a particular SoC supports a reset controller driver, it is very
-likely to be necessary for that SoC.
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	base = devm_ioremap_resource(&pdev->dev, res);
+> +	if (IS_ERR(base))
+> +		return PTR_ERR(base);
+> +
+> +	priv->base = base;
+> +	priv->regmap = devm_regmap_init_mmio(&pdev->dev, priv->base,
+> +					     &rk3036_codec_regmap_config);
+> +	if (IS_ERR(priv->regmap)) {
+> +		dev_err(&pdev->dev, "init regmap failed\n");
+> +		return PTR_ERR(priv->regmap);
+> +	}
+> +
+> +	grf = syscon_regmap_lookup_by_phandle(of_node, "rockchip,grf");
+> +	if (IS_ERR(grf)) {
+> +		dev_err(&pdev->dev, "needs 'rockchip,grf' property\n");
+> +		return PTR_ERR(grf);
+> +	}
+> +	ret = regmap_write(grf, GRF_SOC_CON0, GRF_ACODEC_SEL);
+i> +	if (ret != 0) {
 
-So, this commit drops ARCH_HAS_RESET_CONTROLLER, making RESET_CONTROLLER
-a user-unconfigurable option.  Going forward, it should be directly
-select'ed by relevant SoCs.
+Use if (ret)
 
-This change would also be useful to clean-up "depends on RESET_CONTROLLER"
-in other drivers.
+> +		dev_err(&pdev->dev, "Could not write to GRF: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	priv->pclk = devm_clk_get(&pdev->dev, "acodec_pclk");
+> +	if (IS_ERR(priv->pclk))
+> +		return PTR_ERR(priv->pclk);
+> +
+> +	ret = clk_prepare_enable(priv->pclk);
+> +	if (ret < 0) {
+> +		dev_err(&pdev->dev, "failed to enable clk\n");
+> +		return ret;
+> +	}
+> +
+> +	priv->dev = &pdev->dev;
+> +	dev_set_drvdata(&pdev->dev, priv);
+> +
+> +	ret = snd_soc_register_codec(&pdev->dev, &rk3036_codec_driver,
+> +				     rk3036_codec_dai_driver,
+> +				     ARRAY_SIZE(rk3036_codec_dai_driver));
+> +	if (ret) {
+> +		clk_disable_unprepare(priv->pclk);
+> +		dev_set_drvdata(&pdev->dev, NULL);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int rk3036_codec_platform_remove(struct platform_device *pdev)
+> +{
+> +	struct rk3036_codec_priv *priv = dev_get_drvdata(&pdev->dev);
+> +
+> +	snd_soc_unregister_codec(&pdev->dev);
+> +	clk_disable_unprepare(priv->pclk);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id rk3036_codec_of_match[] = {
+> +	{ .compatible = "rockchip,rk3036-codec", },
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, rk3036_codec_of_match);
+> +
+> +static struct platform_driver rk3036_codec_platform_driver = {
+> +	.driver = {
+> +		.name = "rk3036-codec-platform",
+> +		.owner = THIS_MODULE,
+> +		.of_match_table = of_match_ptr(rk3036_codec_of_match),
+> +	},
+> +	.probe = rk3036_codec_platform_probe,
+> +	.remove = rk3036_codec_platform_remove,
+> +};
+> +
+> +module_platform_driver(rk3036_codec_platform_driver);
+> +
+> +MODULE_AUTHOR("Rockchip Inc.");
+> +MODULE_DESCRIPTION("Rockchip rk3036 codec driver");
+> +MODULE_LICENSE("GPL");
+> diff --git a/sound/soc/codecs/inno_rk3036.h b/sound/soc/codecs/inno_rk3036.h
+> new file mode 100644
+> index 0000000..6c7dc53
+> --- /dev/null
+> +++ b/sound/soc/codecs/inno_rk3036.h
+> @@ -0,0 +1,120 @@
+> +/*
+> + * Driver of Inno Codec for rk3036 by Rockchip Inc.
+> + *
+> + * Author: Zheng ShunQian<zhengsq@rock-chips.com>
+> + */
+> +
+> +#ifndef _INNO_RK3036_CODEC_H
+> +#define _INNO_RK3036_CODEC_H
+> +
+> +/* codec registers */
+> +#define INNO_R00	0x00
+> +#define INNO_R01	0x0c
+> +#define INNO_R02	0x10
+> +#define INNO_R03	0x14
+> +#define INNO_R04	0x88
+> +#define INNO_R05	0x8c
+> +#define INNO_R06	0x90
+> +#define INNO_R07	0x94
+> +#define INNO_R08	0x98
+> +#define INNO_R09	0x9c
+> +#define INNO_R10	0xa0
+> +
+> +/* register bit filed */
+> +#define INNO_R00_CSR_RESET		BIT(0) /*codec system reset*/
+> +#define INNO_R00_CSR_WORK		BIT(0)
+> +#define INNO_R00_CDCR_RESET		BIT(1) /*codec digital core reset*/
+> +#define INNO_R00_CDCR_WORK		BIT(1)
+> +#define INNO_R00_PRB_DISABLE		BIT(6) /*power reset bypass*/
+> +#define INNO_R00_PRB_ENABLE		BIT(6)
+> +
+> +#define INNO_R01_I2SMODE_MSK		BIT(4)
+> +#define INNO_R01_I2SMODE_SLAVE		BIT(4)
+> +#define INNO_R01_I2SMODE_MASTER		BIT(4)
+> +#define INNO_R01_PINDIR_MSK		BIT(5)
+> +#define INNO_R01_PINDIR_IN_SLAVE	BIT(5) /*direction of pin*/
+> +#define INNO_R01_PINDIR_OUT_MASTER	BIT(5)
+> +
+> +#define INNO_R02_LRS_MSK		BIT(2)
+> +#define INNO_R02_LRS_NORMAL		BIT(2) /*DAC Left Right Swap*/
+> +#define INNO_R02_LRS_SWAP		BIT(2)
+> +#define INNO_R02_DACM_MSK		BIT(3)
+> +#define INNO_R02_DACM_PCM		BIT(3) /*DAC Mode*/
+> +#define INNO_R02_DACM_I2S		BIT(3)
+> +#define INNO_R02_DACM_LJM		BIT(3)
+> +#define INNO_R02_DACM_RJM		BIT(3)
+> +#define INNO_R02_VWL_MSK		BIT(5)
+> +#define INNO_R02_VWL_32BIT		BIT(5) /*1/2Frame Valid Word Length*/
+> +#define INNO_R02_VWL_24BIT		BIT(5)
+> +#define INNO_R02_VWL_20BIT		BIT(5)
+> +#define INNO_R02_VWL_16BIT		BIT(5)
+> +#define INNO_R02_LRCP_MSK		BIT(7)
+> +#define INNO_R02_LRCP_NORMAL		BIT(7) /*Left Right Polarity*/
+> +#define INNO_R02_LRCP_REVERSAL		BIT(7)
+> +
+> +#define INNO_R03_BCP_MSK		BIT(0)
+> +#define INNO_R03_BCP_NORMAL		BIT(0) /*DAC bit clock polarity*/
+> +#define INNO_R03_BCP_REVERSAL		BIT(0)
+> +#define INNO_R03_DACR_MSK		BIT(1)
+> +#define INNO_R03_DACR_RESET		BIT(1) /*DAC Reset*/
+> +#define INNO_R03_DACR_WORK		BIT(1)
+> +#define INNO_R03_FWL_MSK		BIT(2)
+> +#define INNO_R03_FWL_32BIT		BIT(2) /*1/2Frame Word Length*/
+> +#define INNO_R03_FWL_24BIT		BIT(2)
+> +#define INNO_R03_FWL_20BIT		BIT(2)
+> +#define INNO_R03_FWL_16BIT		BIT(2)
+> +
+> +#define INNO_R04_DACR_SW_SHIFT		0
+> +#define INNO_R04_DACL_SW_SHIFT		1
+> +#define INNO_R04_DACR_CLK_SHIFT		2
+> +#define INNO_R04_DACL_CLK_SHIFT		3
+> +#define INNO_R04_DACR_VREF_SHIFT	4
+> +#define INNO_R04_DACL_VREF_SHIFT	5
+> +
+> +#define INNO_R05_HPR_EN_SHIFT		0
+> +#define INNO_R05_HPL_EN_SHIFT		1
+> +#define INNO_R05_HPR_WORK_SHIFT		2
+> +#define INNO_R05_HPL_WORK_SHIFT		3
+> +
+> +#define INNO_R06_VOUTR_CZ_SHIFT		0
+> +#define INNO_R06_VOUTL_CZ_SHIFT		1
+> +#define INNO_R06_DACR_HILO_VREF_SHIFT	2
+> +#define INNO_R06_DACL_HILO_VREF_SHIFT	3
+> +#define INNO_R06_DAC_EN_SHIFT		5
+> +
+> +#define INNO_R06_DAC_PRECHARGE		BIT(4) /*PreCharge control for DAC*/
+> +#define INNO_R06_DAC_DISCHARGE		BIT(4)
+> +
+> +#define INNO_HP_GAIN_SHIFT		0
+> +/* Gain of output, 1.5db step: -39db(0x0) ~ 0db(0x1a) ~ 6db(0x1f) */
+> +#define INNO_HP_GAIN_0DB		0x1a
+> +#define INNO_HP_GAIN_N39DB		0x0
+> +
+> +#define INNO_R09_HPR_ANITPOP_SHIFT	0
+> +#define INNO_R09_HPL_ANITPOP_SHIFT	2
+> +#define INNO_R09_HPR_MUTE_SHIFT		4
+> +#define INNO_R09_HPL_MUTE_SHIFT		5
+> +#define INNO_R09_DACR_SWITCH_SHIFT	6
+> +#define INNO_R09_DACL_SWITCH_SHIFT	7
+> +
+> +#define INNO_R10_CHARGE_SEL_CUR_400I_YES	BIT(0)
+> +#define INNO_R10_CHARGE_SEL_CUR_400I_NO		BIT(0)
+> +#define INNO_R10_CHARGE_SEL_CUR_260I_YES	BIT(1)
+> +#define INNO_R10_CHARGE_SEL_CUR_260I_NO		BIT(1)
+> +#define INNO_R10_CHARGE_SEL_CUR_130I_YES	BIT(2)
+> +#define INNO_R10_CHARGE_SEL_CUR_130I_NO		BIT(2)
+> +#define INNO_R10_CHARGE_SEL_CUR_100I_YES	BIT(3)
+> +#define INNO_R10_CHARGE_SEL_CUR_100I_NO		BIT(3)
+> +#define INNO_R10_CHARGE_SEL_CUR_050I_YES	BIT(4)
+> +#define INNO_R10_CHARGE_SEL_CUR_050I_NO		BIT(4)
+> +#define INNO_R10_CHARGE_SEL_CUR_027I_YES	BIT(5)
+> +#define INNO_R10_CHARGE_SEL_CUR_027I_NO		BIT(5)
+> +
+> +#define INNO_R10_MAX_CUR (INNO_R10_CHARGE_SEL_CUR_400I_YES | \
+> +			  INNO_R10_CHARGE_SEL_CUR_260I_YES | \
+> +			  INNO_R10_CHARGE_SEL_CUR_130I_YES | \
+> +			  INNO_R10_CHARGE_SEL_CUR_100I_YES | \
+> +			  INNO_R10_CHARGE_SEL_CUR_050I_YES | \
+> +			  INNO_R10_CHARGE_SEL_CUR_027I_YES)
+> +
+> +#endif
+> -- 
+> 1.9.1
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
 
-Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
----
+Regards
 
- arch/arm/Kconfig               |  3 +--
- arch/arm/mach-berlin/Kconfig   |  2 +-
- arch/arm/mach-imx/Kconfig      |  2 +-
- arch/arm/mach-mmp/Kconfig      |  4 ++--
- arch/arm/mach-prima2/Kconfig   |  2 +-
- arch/arm/mach-rockchip/Kconfig |  2 +-
- arch/arm/mach-sti/Kconfig      |  1 -
- arch/arm/mach-sunxi/Kconfig    |  1 -
- arch/arm/mach-tegra/Kconfig    |  1 -
- arch/arm64/Kconfig.platforms   |  3 +--
- arch/mips/Kconfig              |  4 +---
- drivers/reset/Kconfig          | 12 +++++++-----
- drivers/reset/sti/Kconfig      |  1 -
- 13 files changed, 16 insertions(+), 22 deletions(-)
-
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index f1ed110..55af5e8 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -972,7 +972,7 @@ config ARCH_EFM32
- config ARCH_LPC18XX
- 	bool "NXP LPC18xx/LPC43xx"
- 	depends on ARM_SINGLE_ARMV7M
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARM_AMBA
- 	select CLKSRC_LPC32XX
- 	select PINCTRL
-@@ -983,7 +983,6 @@ config ARCH_LPC18XX
- config ARCH_STM32
- 	bool "STMicrolectronics STM32"
- 	depends on ARM_SINGLE_ARMV7M
--	select ARCH_HAS_RESET_CONTROLLER
- 	select ARMV7M_SYSTICK
- 	select CLKSRC_STM32
- 	select RESET_CONTROLLER
-diff --git a/arch/arm/mach-berlin/Kconfig b/arch/arm/mach-berlin/Kconfig
-index 742d53a..1c8e301 100644
---- a/arch/arm/mach-berlin/Kconfig
-+++ b/arch/arm/mach-berlin/Kconfig
-@@ -1,6 +1,6 @@
- menuconfig ARCH_BERLIN
- 	bool "Marvell Berlin SoCs" if ARCH_MULTI_V7
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select ARM_GIC
- 	select DW_APB_ICTL
-diff --git a/arch/arm/mach-imx/Kconfig b/arch/arm/mach-imx/Kconfig
-index 8ceda28..7773cd7 100644
---- a/arch/arm/mach-imx/Kconfig
-+++ b/arch/arm/mach-imx/Kconfig
-@@ -58,7 +58,7 @@ config HAVE_IMX_MMDC
- 
- config HAVE_IMX_SRC
- 	def_bool y if SMP
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 
- config IMX_HAVE_IOMUX_V1
- 	bool
-diff --git a/arch/arm/mach-mmp/Kconfig b/arch/arm/mach-mmp/Kconfig
-index fdbfadf..46fdb69 100644
---- a/arch/arm/mach-mmp/Kconfig
-+++ b/arch/arm/mach-mmp/Kconfig
-@@ -90,7 +90,7 @@ config MACH_MMP_DT
- 	select PINCTRL
- 	select PINCTRL_SINGLE
- 	select COMMON_CLK
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select CPU_MOHAWK
- 	help
- 	  Include support for Marvell MMP2 based platforms using
-@@ -104,7 +104,7 @@ config MACH_MMP2_DT
- 	select PINCTRL
- 	select PINCTRL_SINGLE
- 	select COMMON_CLK
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select CPU_PJ4
- 	help
- 	  Include support for Marvell MMP2 based platforms using
-diff --git a/arch/arm/mach-prima2/Kconfig b/arch/arm/mach-prima2/Kconfig
-index 9ab8932..5d03202 100644
---- a/arch/arm/mach-prima2/Kconfig
-+++ b/arch/arm/mach-prima2/Kconfig
-@@ -1,6 +1,6 @@
- menuconfig ARCH_SIRF
- 	bool "CSR SiRF" if ARCH_MULTI_V7
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select GENERIC_IRQ_CHIP
- 	select NO_IOPORT_MAP
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index ae4eb7c..6990c3a 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -2,7 +2,7 @@ config ARCH_ROCKCHIP
- 	bool "Rockchip RK2928 and RK3xxx SOCs" if ARCH_MULTI_V7
- 	select PINCTRL
- 	select PINCTRL_ROCKCHIP
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select ARM_AMBA
- 	select ARM_GIC
-diff --git a/arch/arm/mach-sti/Kconfig b/arch/arm/mach-sti/Kconfig
-index 125865d..d0606e2 100644
---- a/arch/arm/mach-sti/Kconfig
-+++ b/arch/arm/mach-sti/Kconfig
-@@ -6,7 +6,6 @@ menuconfig ARCH_STI
- 	select PINCTRL
- 	select PINCTRL_ST
- 	select MFD_SYSCON
--	select ARCH_HAS_RESET_CONTROLLER
- 	select HAVE_ARM_SCU if SMP
- 	select ARCH_REQUIRE_GPIOLIB
- 	select ARM_ERRATA_754322
-diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index 4efe2d4..60b58ca 100644
---- a/arch/arm/mach-sunxi/Kconfig
-+++ b/arch/arm/mach-sunxi/Kconfig
-@@ -1,7 +1,6 @@
- menuconfig ARCH_SUNXI
- 	bool "Allwinner SoCs" if ARCH_MULTI_V7
- 	select ARCH_REQUIRE_GPIOLIB
--	select ARCH_HAS_RESET_CONTROLLER
- 	select CLKSRC_MMIO
- 	select GENERIC_IRQ_CHIP
- 	select PINCTRL
-diff --git a/arch/arm/mach-tegra/Kconfig b/arch/arm/mach-tegra/Kconfig
-index 0fa4c5f..269efaa 100644
---- a/arch/arm/mach-tegra/Kconfig
-+++ b/arch/arm/mach-tegra/Kconfig
-@@ -9,7 +9,6 @@ menuconfig ARCH_TEGRA
- 	select HAVE_ARM_TWD if SMP
- 	select PINCTRL
- 	select PM_OPP
--	select ARCH_HAS_RESET_CONTROLLER
- 	select RESET_CONTROLLER
- 	select SOC_BUS
- 	select USB_ULPI if USB_PHY
-diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
-index bb066e0..c455540 100644
---- a/arch/arm64/Kconfig.platforms
-+++ b/arch/arm64/Kconfig.platforms
-@@ -53,7 +53,7 @@ config ARCH_QCOM
- 
- config ARCH_ROCKCHIP
- 	bool "Rockchip Platforms"
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select PINCTRL
- 	select PINCTRL_ROCKCHIP
-@@ -68,7 +68,6 @@ config ARCH_SEATTLE
- 
- config ARCH_TEGRA
- 	bool "NVIDIA Tegra SoC Family"
--	select ARCH_HAS_RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select CLKDEV_LOOKUP
- 	select CLKSRC_MMIO
-diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
-index e3aa5b0..da655a0 100644
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
-@@ -119,7 +119,7 @@ config ATH25
- 
- config ATH79
- 	bool "Atheros AR71XX/AR724X/AR913X based boards"
--	select ARCH_HAS_RESET_CONTROLLER
-+	select RESET_CONTROLLER
- 	select ARCH_REQUIRE_GPIOLIB
- 	select BOOT_RAW
- 	select CEVT_R4K
-@@ -329,7 +329,6 @@ config LANTIQ
- 	select USE_OF
- 	select PINCTRL
- 	select PINCTRL_LANTIQ
--	select ARCH_HAS_RESET_CONTROLLER
- 	select RESET_CONTROLLER
- 
- config LASAT
-@@ -555,7 +554,6 @@ config RALINK
- 	select SYS_HAS_EARLY_PRINTK
- 	select HAVE_MACH_CLKDEV
- 	select CLKDEV_LOOKUP
--	select ARCH_HAS_RESET_CONTROLLER
- 	select RESET_CONTROLLER
- 
- config SGI_IP22
-diff --git a/drivers/reset/Kconfig b/drivers/reset/Kconfig
-index 0615f50..4ca3cc8 100644
---- a/drivers/reset/Kconfig
-+++ b/drivers/reset/Kconfig
-@@ -1,9 +1,5 @@
--config ARCH_HAS_RESET_CONTROLLER
-+config RESET_CONTROLLER
- 	bool
--
--menuconfig RESET_CONTROLLER
--	bool "Reset Controller Support"
--	default y if ARCH_HAS_RESET_CONTROLLER
- 	help
- 	  Generic Reset Controller support.
- 
-@@ -12,4 +8,10 @@ menuconfig RESET_CONTROLLER
- 
- 	  If unsure, say no.
- 
-+
-+menu "Reset Controllers"
-+	depends on RESET_CONTROLLER
-+
- source "drivers/reset/sti/Kconfig"
-+
-+endmenu
-diff --git a/drivers/reset/sti/Kconfig b/drivers/reset/sti/Kconfig
-index f8c15a3..6131785 100644
---- a/drivers/reset/sti/Kconfig
-+++ b/drivers/reset/sti/Kconfig
-@@ -2,7 +2,6 @@ if ARCH_STI
- 
- config STI_RESET_SYSCFG
- 	bool
--	select RESET_CONTROLLER
- 
- config STIH415_RESET
- 	bool
--- 
-1.9.1
+LABBE Corentin
