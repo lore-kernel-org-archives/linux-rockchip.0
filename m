@@ -1,94 +1,78 @@
-From: Will Deacon <will.deacon@arm.com>
-Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy
- loading
-Date: Fri, 6 Nov 2015 12:17:41 +0000
-Message-ID: <20151106121741.GH6087@arm.com>
-References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
- <20151103113030.GB14159@arm.com>
- <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [RESEND PATCH] drm/rockchip: vop: Correct enabled clocks during setup
+Date: Fri,  6 Nov 2015 13:22:24 +0100
+Message-ID: <1446812544-28776-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?utf-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, Dave Airlie <airlied@redhat.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Nov 03, 2015 at 11:00:20AM -0800, Doug Anderson wrote:
-> Hi,
-
-Hey Doug,
-
-> When CPUs are hard locked up, they are often found at:
-> 
-> <c0117c8c> v7_coherent_kern_range+0x58/0x74
->   or
-> <c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
-> 
-> That made me think that an errata might be the root cause of our hard
-> lockups, since ARM errata often trigger in cache/tlb functions.  I
-> think Caesar dug up this old errata fix in response to my suggestion.
-
-I still don't see how 818325 is related, since there aren't any conditional
-stores in the sequences below.
-
-> If you know of any ARM errata that might trigger hard lockups like
-> this, I'd certainly be all ears.  It's also possible that we've got
-> something running at too low of a voltage or we've got clock dividers
-> or cache timings programmed incorrectly somewhere.  To give a more
-> full disassembly of one of the crashes:
-> 
->   <4>[ 1623.480846] SMP: failed to stop secondary CPUs
->   <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
->   <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x74
->   <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20/0x38
-> 
-> ---
-
-Do you have any register values for these CPUs?
-
-> c01827dc:       e2841010        add     r1, r4, #16
-> c01827e0:       e2445004        sub     r5, r4, #4
-> c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
-> Offset: 0x235cb8)
-> => c01827e8:    f595f000        pldw    [r5]
-> c01827ec:       e1953f9f        ldrex   r3, [r5]
-> c01827f0:       e2433001        sub     r3, r3, #1
-> c01827f4:       e1852f93        strex   r2, r3, [r5]
-> c01827f8:       e3320000        teq     r2, #0
-> c01827fc:       1afffffa        bne     c01827ec
-> <__unqueue_futex+0x6c> (File Offset: 0x927ec)
-> c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
-
-For example, the futex address in r5 ...
-
-> c0117c80:       e08cc002        add     ip, ip, r2
-> c0117c84:       e15c0001        cmp     ip, r1
-> c0117c88:       3afffffb        bcc     c0117c7c
-> <v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
-> => c0117c8c:    e3a00000        mov     r0, #0
-> c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
-> c0117c94:       f57ff04a        dsb     ishst
-> c0117c98:       f57ff06f        isb     sy
-> c0117c9c:       e1a0f00e        mov     pc, lr
-
-... the address in r0 for the cache maintenance ...
-
-> c0118260:       e1830600        orr     r0, r3, r0, lsl #12
-> c0118264:       e1a01601        lsl     r1, r1, #12
-> => c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
-> c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
-> c0118270:       e1500001        cmp     r0, r1
-> c0118274:       3afffffb        bcc     c0118268
-> <v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
-> c0118278:       f57ff04b        dsb     ish
-> c011827c:       e1a0f00e        mov     pc, lr
-
-... and the address in r0 for the TLBI.
-
-Are the cores executing instructions at this point, or by "hard LOCKUP"
-do you mean that they're deadlocked in hardware?
-
-Will
+V2hlbiBkb2luZyB0aGUgaW5pdGlhbCBzZXR1cCBib3RoIHRoZSBoY2xrIGFuZCB0aGUgYWNsayBu
+ZWVkIHRvIGJlCmVuYWJsZWQgb3RoZXJ3aXNlIHRoZSBib2FyZCB3aWxsIHNpbXBseSBoYW5nLiBU
+aGlzIG9ubHkgb2NjdXJzIHdoZW4KYnVpbGRpbmcgdGhlIHZvcCBkcml2ZXIgYXMgYSBtb2R1bGUs
+IHdoZW4gaXRzIGJ1aWx0LWluIHRoZSBpbml0aWFsIHNldHVwCmhhcHBlbnMgdG8gcnVuIGJlZm9y
+ZSB0aGUgY2xvY2sgZnJhbWV3b3JrIHNodXRzIG9mIHVudXNlZCBjbG9ja3MKKGluY2x1ZGluZyB0
+aGUgYWNsaykuCgpXaGlsZSB0aGVyZSBhbHNvIHN3aXRjaCB0byBkb2luZyBwcmVwYXJlIGFuZCBl
+bmFibGUgaW4gb25lIHN0ZXAgcmF0aGVyCnRoZW4gc2VwYXJhdGUgc3RlcHMgdG8gcmVkdWNlIHRo
+ZSBhbW91bnQgb2YgY29kZSByZXF1aXJlZC4KClNpZ25lZC1vZmYtYnk6IFNqb2VyZCBTaW1vbnMg
+PHNqb2VyZC5zaW1vbnNAY29sbGFib3JhLmNvLnVrPgpBY2tlZC1ieTogTWFyayBZYW8gPG1hcmsu
+eWFvQHJvY2stY2hpcHMuY29tPgpUZXN0ZWQtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBz
+LmNvbT4KVGVzdGVkLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGdtYWlsLmNvbT4K
+LS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDM2ICsr
+KysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9u
+cygrKSwgMjIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fdm9wLmMKaW5kZXggNWQ4YWU1ZS4uNDg3MTlkZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0xNTc1LDMyICsxNTc1LDI1IEBAIHN0YXRp
+YyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCQlyZXR1cm4gUFRSX0VSUih2b3At
+PmRjbGspOwogCX0KIAotCXJldCA9IGNsa19wcmVwYXJlKHZvcC0+aGNsayk7Ci0JaWYgKHJldCA8
+IDApIHsKLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGhjbGtcbiIpOwot
+CQlyZXR1cm4gcmV0OwotCX0KLQogCXJldCA9IGNsa19wcmVwYXJlKHZvcC0+ZGNsayk7CiAJaWYg
+KHJldCA8IDApIHsKIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGRjbGtc
+biIpOwotCQlnb3RvIGVycl91bnByZXBhcmVfaGNsazsKKwkJcmV0dXJuIHJldDsKIAl9CiAKLQly
+ZXQgPSBjbGtfcHJlcGFyZSh2b3AtPmFjbGspOworCS8qIEVuYWJsZSBib3RoIHRoZSBoY2xrIGFu
+ZCBhY2xrIHRvIHNldHVwIHRoZSB2b3AgKi8KKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUodm9w
+LT5oY2xrKTsKIAlpZiAocmV0IDwgMCkgewotCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRv
+IHByZXBhcmUgYWNsa1xuIik7CisJCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFy
+ZS9lbmFibGUgaGNsa1xuIik7CiAJCWdvdG8gZXJyX3VucHJlcGFyZV9kY2xrOwogCX0KIAotCS8q
+Ci0JICogZW5hYmxlIGhjbGssIHNvIHRoYXQgd2UgY2FuIGNvbmZpZyB2b3AgcmVnaXN0ZXIuCi0J
+ICovCi0JcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGspOworCXJldCA9IGNsa19wcmVwYXJlX2Vu
+YWJsZSh2b3AtPmFjbGspOwogCWlmIChyZXQgPCAwKSB7Ci0JCWRldl9lcnIodm9wLT5kZXYsICJm
+YWlsZWQgdG8gcHJlcGFyZSBhY2xrXG4iKTsKLQkJZ290byBlcnJfdW5wcmVwYXJlX2FjbGs7CisJ
+CWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZS9lbmFibGUgYWNsa1xuIik7CisJ
+CWdvdG8gZXJyX2Rpc2FibGVfaGNsazsKIAl9CisKIAkvKgogCSAqIGRvIGhjbGtfcmVzZXQsIHJl
+c2V0IGFsbCB2b3AgcmVnaXN0ZXJzLgogCSAqLwpAQCAtMTYwOCw3ICsxNjAxLDcgQEAgc3RhdGlj
+IGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiAJaWYgKElTX0VSUihhaGJfcnN0KSkg
+ewogCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBhaGIgcmVzZXRcbiIpOwogCQly
+ZXQgPSBQVFJfRVJSKGFoYl9yc3QpOwotCQlnb3RvIGVycl9kaXNhYmxlX2hjbGs7CisJCWdvdG8g
+ZXJyX2Rpc2FibGVfYWNsazsKIAl9CiAJcmVzZXRfY29udHJvbF9hc3NlcnQoYWhiX3JzdCk7CiAJ
+dXNsZWVwX3JhbmdlKDEwLCAyMCk7CkBAIC0xNjM0LDI2ICsxNjI3LDI1IEBAIHN0YXRpYyBpbnQg
+dm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCWlmIChJU19FUlIodm9wLT5kY2xrX3JzdCkp
+IHsKIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgZGNsayByZXNldFxuIik7CiAJ
+CXJldCA9IFBUUl9FUlIodm9wLT5kY2xrX3JzdCk7Ci0JCWdvdG8gZXJyX3VucHJlcGFyZV9hY2xr
+OworCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7CiAJfQogCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KHZv
+cC0+ZGNsa19yc3QpOwogCXVzbGVlcF9yYW5nZSgxMCwgMjApOwogCXJlc2V0X2NvbnRyb2xfZGVh
+c3NlcnQodm9wLT5kY2xrX3JzdCk7CiAKIAljbGtfZGlzYWJsZSh2b3AtPmhjbGspOworCWNsa19k
+aXNhYmxlKHZvcC0+YWNsayk7CiAKIAl2b3AtPmlzX2VuYWJsZWQgPSBmYWxzZTsKIAogCXJldHVy
+biAwOwogCitlcnJfZGlzYWJsZV9hY2xrOgorCWNsa19kaXNhYmxlX3VucHJlcGFyZSh2b3AtPmFj
+bGspOwogZXJyX2Rpc2FibGVfaGNsazoKLQljbGtfZGlzYWJsZSh2b3AtPmhjbGspOwotZXJyX3Vu
+cHJlcGFyZV9hY2xrOgotCWNsa191bnByZXBhcmUodm9wLT5hY2xrKTsKKwljbGtfZGlzYWJsZV91
+bnByZXBhcmUodm9wLT5oY2xrKTsKIGVycl91bnByZXBhcmVfZGNsazoKIAljbGtfdW5wcmVwYXJl
+KHZvcC0+ZGNsayk7Ci1lcnJfdW5wcmVwYXJlX2hjbGs6Ci0JY2xrX3VucHJlcGFyZSh2b3AtPmhj
+bGspOwogCXJldHVybiByZXQ7CiB9CiAKLS0gCjIuNi4yCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
