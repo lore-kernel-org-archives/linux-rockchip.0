@@ -1,152 +1,163 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v2 5/9] thermal: rockchip: Add the flag for adc value
- increment or decrement
-Date: Fri, 6 Nov 2015 11:11:27 -0800
-Message-ID: <20151106191126.GC8202@localhost.localdomain>
+From: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 7/9] arm64: dts: Add the thermal data found on RK3368
+Date: Fri, 6 Nov 2015 11:14:50 -0800
+Message-ID: <20151106191449.GD8202@localhost.localdomain>
 References: <1446700685-18017-1-git-send-email-wxt@rock-chips.com>
- <1446700685-18017-6-git-send-email-wxt@rock-chips.com>
+ <1446700685-18017-8-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1446700685-18017-6-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1446700685-18017-8-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 05, 2015 at 01:18:01PM +0800, Caesar Wang wrote:
-> The conversion table has the adc value and temperature.
-> In fact, the adc value only has the increment or decrement mode in
-> conversion table.
+On Thu, Nov 05, 2015 at 01:18:03PM +0800, Caesar Wang wrote:
+> This patchset add the thermal for RK3368 dts,
+> Since the two CPU clusters, with four CPU core for each cluster,
+> One cluster is optimized for high-performance(big cluster) and the othe
+> is optimized for low power(little cluster).
 > 
-> Moment, we can add the flag to be better support the *code_to_temp*
-> for differenr SoCs.
+> This patch adds the second order for thermal throttle, and the critical
+> temperature for thermal over-tempeature protection on Software.
 > 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+Acked-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
 > ---
 > 
 > Changes in v2: None
 > Changes in v1: None
 > 
->  drivers/thermal/rockchip_thermal.c | 64 ++++++++++++++++++++++++++++++--------
->  1 file changed, 51 insertions(+), 13 deletions(-)
+>  arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112 +++++++++++++++++++++++
+>  1 file changed, 112 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
 > 
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index e828f18..9df027f 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -53,6 +53,16 @@ enum sensor_id {
->  };
->  
->  /**
-> +* The conversion table has the adc value and temperature.
-> +* ADC_DECREMENT is the adc value decremnet.(e.g. v2_code_table)
-> +* ADC_INCREMNET is the adc value incremnet.(e.g. v3_code_table)
-> +*/
-> +enum adc_flag {
-> +	ADC_DECREMENT = 0,
-> +	ADC_INCREMENT,
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+> new file mode 100644
+> index 0000000..a10010f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+> @@ -0,0 +1,112 @@
+> +/*
+> + * Device Tree Source for RK3368 SoC thermal
+> + *
+> + * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
+> + * Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This file is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This file is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + * Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
+> +
+> +#include <dt-bindings/thermal/thermal.h>
+> +
+> +cpu_thermal: cpu_thermal {
+> +	polling-delay-passive = <100>; /* milliseconds */
+> +	polling-delay = <5000>; /* milliseconds */
+> +
+> +	thermal-sensors = <&tsadc 0>;
+> +
+> +	trips {
+> +		cpu_alert0: cpu_alert0 {
+> +			temperature = <75000>; /* millicelsius */
+> +			hysteresis = <2000>; /* millicelsius */
+> +			type = "passive";
+> +		};
+> +		cpu_alert1: cpu_alert1 {
+> +			temperature = <80000>; /* millicelsius */
+> +			hysteresis = <2000>; /* millicelsius */
+> +			type = "passive";
+> +		};
+> +		cpu_crit: cpu_crit {
+> +			temperature = <95000>; /* millicelsius */
+> +			hysteresis = <2000>; /* millicelsius */
+> +			type = "critical";
+> +		};
+> +	};
+> +
+> +	cooling-maps {
+> +		map0 {
+> +			trip = <&cpu_alert0>;
+> +			cooling-device =
+> +				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +		};
+> +		map1 {
+> +			trip = <&cpu_alert1>;
+> +			cooling-device =
+> +				<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +		};
+> +	};
 > +};
 > +
-> +/**
->   * The max sensors is two in rockchip SoCs.
->   * Two sensors: CPU and GPU sensor.
->   */
-> @@ -66,6 +76,9 @@ struct chip_tsadc_table {
->  
->  	/* that analogic mask data */
->  	unsigned long data_mask;
+> +gpu_thermal: gpu_thermal {
+> +	polling-delay-passive = <100>; /* milliseconds */
+> +	polling-delay = <5000>; /* milliseconds */
 > +
-> +	/* adc value is increment or decrement */
-> +	unsigned int flag;
-
-
-Maybe bool? And rename to something more meaningful?
-
-Or do you plan to have more conditions to test in your flag?
-
->  };
->  
->  struct rockchip_tsadc_chip {
-> @@ -223,19 +236,43 @@ static int rk_tsadcv2_code_to_temp(struct chip_tsadc_table table, u32 code,
->  
->  	WARN_ON(table.length < 2);
->  
-> -	code &= table.data_mask;
-> -	if (code < table.id[high].code)
-> +	switch (table.flag) {
-> +	case ADC_DECREMENT:
-> +		code &= table.data_mask;
-> +		if (code < table.id[high].code)
->  		return -EAGAIN;		/* Incorrect reading */
-
-Add an indentation.
->  
-> -	while (low <= high) {
-> -		if (code >= table.id[mid].code &&
-> -		    code < table.id[mid - 1].code)
-> -			break;
-> -		else if (code < table.id[mid].code)
-> -			low = mid + 1;
-> -		else
-> -			high = mid - 1;
-> -		mid = (low + high) / 2;
-> +		while (low <= high) {
-> +			if (code >= table.id[mid].code &&
-> +			    code < table.id[mid - 1].code)
-> +				break;
-> +			else if (code < table.id[mid].code)
-> +				low = mid + 1;
-> +			else
-> +				high = mid - 1;
+> +	thermal-sensors = <&tsadc 1>;
 > +
-> +			mid = (low + high) / 2;
-> +		}
-> +		break;
-> +	case ADC_INCREMENT:
-> +		code &= table.data_mask;
-> +		if (code < table.id[low].code)
-> +		return -EAGAIN;		/* Incorrect reading */
+> +	trips {
+> +		gpu_alert0: gpu_alert0 {
+> +			temperature = <80000>; /* millicelsius */
+> +			hysteresis = <2000>; /* millicelsius */
+> +			type = "passive";
+> +		};
+> +		gpu_crit: gpu_crit {
+> +			temperature = <1150000>; /* millicelsius */
+> +			hysteresis = <2000>; /* millicelsius */
+> +			type = "critical";
+> +		};
+> +	};
 > +
-add an indentation.
-
-> +		while (low <= high) {
-> +			if (code >= table.id[mid - 1].code &&
-> +			    code < table.id[mid].code)
-> +				break;
-> +			else if (code > table.id[mid].code)
-> +				low = mid + 1;
-> +			else
-> +				high = mid - 1;
-> +
-> +			mid = (low + high) / 2;
-> +		}
-> +		break;
-> +	default:
-> +		pr_err("Invalid the table conversion\n");
->  	}
->  
->  	/*
-> @@ -245,8 +282,8 @@ static int rk_tsadcv2_code_to_temp(struct chip_tsadc_table table, u32 code,
->  	 * to produce less granular result.
->  	 */
->  	num = table.id[mid].temp - v2_code_table[mid - 1].temp;
-> -	num *= table.id[mid - 1].code - code;
-> -	denom = table.id[mid - 1].code - table.id[mid].code;
-> +	num *= abs(table.id[mid - 1].code - code);
-> +	denom = abs(table.id[mid - 1].code - table.id[mid].code);
->  	*temp = table.id[mid - 1].temp + (num / denom);
->  
->  	return 0;
-> @@ -367,6 +404,7 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
->  		.id = v2_code_table,
->  		.length = ARRAY_SIZE(v2_code_table),
->  		.data_mask = TSADCV2_DATA_MASK,
-> +		.flag = ADC_DECREMENT,
->  	},
->  };
->  
+> +	cooling-maps {
+> +		map0 {
+> +			trip = <&gpu_alert0>;
+> +			cooling-device =
+> +				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +		};
+> +	};
+> +};
 > -- 
 > 1.9.1
 > 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
