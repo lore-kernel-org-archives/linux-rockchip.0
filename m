@@ -1,49 +1,48 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 3/3] ASoC: rockchip-rt5645: Allow more sample rates
-Date: Fri,  6 Nov 2015 19:38:16 +0800
-Message-ID: <1446809896-11254-4-git-send-email-wxt@rock-chips.com>
-References: <1446809896-11254-1-git-send-email-wxt@rock-chips.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3 1/2] ASoC: codec: Inno codec driver for RK3036 SoC
+Date: Fri, 6 Nov 2015 11:47:01 +0000
+Message-ID: <20151106114701.GF18409@sirena.org.uk>
+References: <1446799162-15635-1-git-send-email-zhengsq@rock-chips.com>
+ <1446799162-15635-2-git-send-email-zhengsq@rock-chips.com>
+ <20151106104541.GC18409@sirena.org.uk>
+ <563C906F.8020502@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="py13wRIzy9nU46ee"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446809896-11254-1-git-send-email-wxt@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <563C906F.8020502@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>
-Cc: kmixter@chromium.org, Sonny Rao <sonnyrao@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Dylan Reid <dgreid@chromium.org>, benchan@chromium.org, Cheng-Yi Chiang <cychiang@chromium.org>, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, benzh@chromium.org, benchan@google.com, kmixter@google.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The RT5645 audio codec support sample rates from 8 to 96 kHz
-as the dai claim.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+--py13wRIzy9nU46ee
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
----
+On Fri, Nov 06, 2015 at 07:35:11PM +0800, Shunqian Zheng wrote:
 
-Changes in v2:
-- add the 64000 sample rate for rt5645.
+> Sure, I'll write the .get/.put/.info() for this.
+> Here is the preview of it.
+> Do you think the following is good to go?
 
- sound/soc/rockchip/rockchip_rt5645.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Yes, that looks sane.
 
-diff --git a/sound/soc/rockchip/rockchip_rt5645.c b/sound/soc/rockchip/rockchip_rt5645.c
-index 68c62e4..440a802 100644
---- a/sound/soc/rockchip/rockchip_rt5645.c
-+++ b/sound/soc/rockchip/rockchip_rt5645.c
-@@ -79,11 +79,17 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 	switch (params_rate(params)) {
- 	case 8000:
- 	case 16000:
-+	case 24000:
-+	case 32000:
- 	case 48000:
-+	case 64000:
- 	case 96000:
- 		mclk = 12288000;
- 		break;
-+	case 11025:
-+	case 22050:
- 	case 44100:
-+	case 88200:
- 		mclk = 11289600;
- 		break;
- 	default:
--- 
-1.9.1
+--py13wRIzy9nU46ee
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWPJMsAAoJECTWi3JdVIfQI/gH/2yKgbhfrLLqgnkGuRDTkNxJ
+sOnGc6BWJZ8UhCxSfvP8s4G0g761yrVoLpa8q9CQ+JiMFyqlBK3bymhL+kucf7vF
+FaD9c/Li5eZ+nJz8VY6PKeSlNJfan6YE4dmgI/lBxsI2K1jKNRlT5ZwqLl2hCTVS
+7+f7EezcJyHHpPRpuoX1vauisyH65j3gSWa3XrAbPzAlFt2NBvMuHkLRM7zVJjbc
+QWi1jCQeT3IeNdplrn1IIrUE18z2yJkWOs298KmJu5Tv5EjbJ6vAG8Wrd6De78Gt
+2Sq4Ugo6wScwSOf0jQsHkR9rKCS5THnjhmT1deaEndIyvt7tI+Y7vPEWSXV/0Bw=
+=uq9j
+-----END PGP SIGNATURE-----
+
+--py13wRIzy9nU46ee--
