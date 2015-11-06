@@ -1,45 +1,94 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3 3/3] ASoC: rockchip: i2s: share tx/rx lrck when
- symmetric_rates enabled
-Date: Fri, 6 Nov 2015 12:02:42 +0000
-Message-ID: <20151106120241.GI18409@sirena.org.uk>
-References: <1446773891-32174-1-git-send-email-sugar.zhang@rock-chips.com>
- <1446773891-32174-4-git-send-email-sugar.zhang@rock-chips.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy
+ loading
+Date: Fri, 6 Nov 2015 12:17:41 +0000
+Message-ID: <20151106121741.GH6087@arm.com>
+References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
+ <20151103113030.GB14159@arm.com>
+ <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Fh0SynPkUvrWGMR0"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1446773891-32174-4-git-send-email-sugar.zhang@rock-chips.com>
+In-Reply-To: <CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?utf-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Tue, Nov 03, 2015 at 11:00:20AM -0800, Doug Anderson wrote:
+> Hi,
 
---Fh0SynPkUvrWGMR0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hey Doug,
 
-On Fri, Nov 06, 2015 at 09:38:11AM +0800, Sugar Zhang wrote:
-> we share lrck_tx to lrck_rx only if when both i2s symmetric_rates and
-> dai_link symmetric_rates enabled.
+> When CPUs are hard locked up, they are often found at:
+> 
+> <c0117c8c> v7_coherent_kern_range+0x58/0x74
+>   or
+> <c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
+> 
+> That made me think that an errata might be the root cause of our hard
+> lockups, since ARM errata often trigger in cache/tlb functions.  I
+> think Caesar dug up this old errata fix in response to my suggestion.
 
-This looks good but seems to depend on patch 1 so I can't apply it yet.
+I still don't see how 818325 is related, since there aren't any conditional
+stores in the sequences below.
 
---Fh0SynPkUvrWGMR0
-Content-Type: application/pgp-signature; name="signature.asc"
+> If you know of any ARM errata that might trigger hard lockups like
+> this, I'd certainly be all ears.  It's also possible that we've got
+> something running at too low of a voltage or we've got clock dividers
+> or cache timings programmed incorrectly somewhere.  To give a more
+> full disassembly of one of the crashes:
+> 
+>   <4>[ 1623.480846] SMP: failed to stop secondary CPUs
+>   <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
+>   <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x74
+>   <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20/0x38
+> 
+> ---
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Do you have any register values for these CPUs?
 
-iQEcBAEBCAAGBQJWPJbhAAoJECTWi3JdVIfQmW4IAIFnSP5z+e9eg6HWpSAyeYCW
-UPXVGTrAmK+tdiMXJCRX9ivDJsJesYnY7kaeTIF4SApYcnkYApm6aztMmKE1lH+O
-6bXnm8R0EML6vWv3xL78Cyr239NaXKFAt3JPScoLbNJXYdJDuTwK7kI2iiZQMBsd
-7T2ykOug+RmRpx7HGyYG70gfaxSTliErLYTa5eMJfUR1nqFjem0SOCNDnKBbyp0F
-WLMNnTaF3scosqNjAfK8jnkHwmP6LCl6HA4INfT4lJLdzFH0VVMYZ1x/vBbg4DA2
-ZVH03YnEoIi/1kgIo0uV3vKXRXQEBE+HeHVzGmIQ1ZLeAL832tbyTbkb2mJbAJI=
-=JRo2
------END PGP SIGNATURE-----
+> c01827dc:       e2841010        add     r1, r4, #16
+> c01827e0:       e2445004        sub     r5, r4, #4
+> c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
+> Offset: 0x235cb8)
+> => c01827e8:    f595f000        pldw    [r5]
+> c01827ec:       e1953f9f        ldrex   r3, [r5]
+> c01827f0:       e2433001        sub     r3, r3, #1
+> c01827f4:       e1852f93        strex   r2, r3, [r5]
+> c01827f8:       e3320000        teq     r2, #0
+> c01827fc:       1afffffa        bne     c01827ec
+> <__unqueue_futex+0x6c> (File Offset: 0x927ec)
+> c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
 
---Fh0SynPkUvrWGMR0--
+For example, the futex address in r5 ...
+
+> c0117c80:       e08cc002        add     ip, ip, r2
+> c0117c84:       e15c0001        cmp     ip, r1
+> c0117c88:       3afffffb        bcc     c0117c7c
+> <v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
+> => c0117c8c:    e3a00000        mov     r0, #0
+> c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
+> c0117c94:       f57ff04a        dsb     ishst
+> c0117c98:       f57ff06f        isb     sy
+> c0117c9c:       e1a0f00e        mov     pc, lr
+
+... the address in r0 for the cache maintenance ...
+
+> c0118260:       e1830600        orr     r0, r3, r0, lsl #12
+> c0118264:       e1a01601        lsl     r1, r1, #12
+> => c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
+> c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
+> c0118270:       e1500001        cmp     r0, r1
+> c0118274:       3afffffb        bcc     c0118268
+> <v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
+> c0118278:       f57ff04b        dsb     ish
+> c011827c:       e1a0f00e        mov     pc, lr
+
+... and the address in r0 for the TLBI.
+
+Are the cores executing instructions at this point, or by "hard LOCKUP"
+do you mean that they're deadlocked in hardware?
+
+Will
