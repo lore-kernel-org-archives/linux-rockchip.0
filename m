@@ -1,97 +1,73 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: Re: [PATCH v3 1/2] ASoC: codec: Inno codec driver for RK3036 SoC
-Date: Fri, 06 Nov 2015 19:35:11 +0800
-Message-ID: <563C906F.8020502@rock-chips.com>
-References: <1446799162-15635-1-git-send-email-zhengsq@rock-chips.com> <1446799162-15635-2-git-send-email-zhengsq@rock-chips.com> <20151106104541.GC18409@sirena.org.uk>
-Reply-To: zhengsq@rock-chips.com
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2 0/3] Support more sample rates, let the rates normal work
+Date: Fri,  6 Nov 2015 19:38:13 +0800
+Message-ID: <1446809896-11254-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20151106104541.GC18409@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, benzh@chromium.org, benchan@google.com, kmixter@google.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>
+Cc: kmixter@chromium.org, Sonny Rao <sonnyrao@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Dylan Reid <dgreid@chromium.org>, benchan@chromium.org, Cheng-Yi Chiang <cychiang@chromium.org>, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+That's seem the moment rockchip-codec driver other than 44100 and 48000
+do not work.
+Says the (max98090, rt5640).
 
-On 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 18:45, Mark Brown wrote:
-> On Fri, Nov 06, 2015 at 04:39:21PM +0800, Shunqian Zheng wrote:
->
->> +	SOC_ENUM("Anti-pop", rk3036_codec_antipop_enum),
-> As discussed this shouldn't be an enum.
-Sure, I'll write the .get/.put/.info() for this.
-Here is the preview of it.
-Do you think the following is good to go?
+----
+As the chromeos reported
+issue:(https://chromium.googlesource.com/chromiumos/third_party/kernel/+/v3.14)
 
-static int rk3036_codec_antipop_info(struct snd_kcontrol *kcontrol,
-                                      struct snd_ctl_elem_info *uinfo)
-{
-         uinfo->type =3D SNDRV_CTL_ELEM_TYPE_BOOLEAN;
-         uinfo->count =3D 2;
-         uinfo->value.integer.min =3D 0;
-         uinfo->value.integer.max =3D 1;
+For detail:
+        In that bug we want to add 32000 to
+        sound/soc/rockchip/rockchip_max98090.c rk_aif1_hw_params.
+        However that does not work.
 
-         return 0;
-}
+        Previously, in
+        https://chromium-review.googlesource.com/#/c/268398/ , rate
+        8000, 1600, 96000 were added.
+        However, those rates do not work. I got the same audio as 48000
+        when I run
 
-static int rk3036_codec_antipop_get(struct snd_kcontrol *kcontrol,
-         struct snd_ctl_elem_value *ucontrol)
-{
-         struct snd_soc_component *component =3D snd_kcontrol_chip(kcon=
-trol);
-         int val, ret, regval;
+        aplay -D hw:0,0
+        /usr/local/autotest/cros/audio/fix_440_16_half.raw --rate 8000
+        -f S16_LE -c2
+        aplay -D hw:0,0
+        /usr/local/autotest/cros/audio/fix_440_16_half.raw --rate 16000
+        -f S16_LE -c2
+        aplay -D hw:0,0
+        /usr/local/autotest/cros/audio/fix_440_16_half.raw --rate 96000
+        -f S16_LE -c2
 
+        They all sound identical to
+        aplay -D hw:0,0
+        /usr/local/autotest/cros/audio/fix_440_16_half.raw --rate 48000
+        -f S16_LE -c2
 
-         ret =3D snd_soc_component_read(component, INNO_R09, &regval);
-         if (ret)
-                 return ret;
-         val =3D ((regval >> INNO_R09_HPL_ANITPOP_SHIFT) &
-                INNO_R09_HP_ANTIPOP_MSK) =3D=3D INNO_R09_HP_ANTIPOP_ON;
-         ucontrol->value.integer.value[0] =3D val;
+        Also, recording using
+        aplay -D hw:0,0 /usr/local/test.raw --rate 96000 -f S16_LE -c2
+        and examine the output we see it was recording using 48000.
 
-         val =3D ((regval >> INNO_R09_HPR_ANITPOP_SHIFT) &
-                INNO_R09_HP_ANTIPOP_MSK) =3D=3D INNO_R09_HP_ANTIPOP_ON;
-         ucontrol->value.integer.value[1] =3D val;
+        Okay, let's add this series patchs to fix this issue.
 
-         return 0;
-}
-
-static int rk3036_codec_antipop_put(struct snd_kcontrol *kcontrol,
-         struct snd_ctl_elem_value *ucontrol)
-{
-         struct snd_soc_component *component =3D snd_kcontrol_chip(kcon=
-trol);
-         int val, ret, regmsk;
-
-         val =3D (ucontrol->value.integer.value[0] ?
-                INNO_R09_HP_ANTIPOP_ON : INNO_R09_HP_ANTIPOP_OFF ) <<
-               INNO_R09_HPL_ANITPOP_SHIFT;
-         val |=3D (ucontrol->value.integer.value[1] ?
-                 INNO_R09_HP_ANTIPOP_ON : INNO_R09_HP_ANTIPOP_OFF ) <<
-                INNO_R09_HPR_ANITPOP_SHIFT;
-
-         regmsk =3D INNO_R09_HP_ANTIPOP_MSK << INNO_R09_HPL_ANITPOP_SHI=
-=46T |
-                  INNO_R09_HP_ANTIPOP_MSK << INNO_R09_HPR_ANITPOP_SHIFT=
-;
-
-         ret =3D snd_soc_component_update_bits(component, INNO_R09,
-                                             regmsk, val);
-         if (ret < 0)
-                 return ret;
-
-         return 0;
-}
-
-#define SOC_RK3036_CODEC_ANTIPOP_DECL(xname) \
-{       .iface =3D SNDRV_CTL_ELEM_IFACE_MIXER, .name =3D xname, \
-         .info =3D rk3036_codec_antipop_info, .get =3D=20
-rk3036_codec_antipop_get, \
-         .put =3D rk3036_codec_antipop_put, }
+        arecord -D hw:0 -f S16_LE -c 2 --rate [8000-96000] -d 5 foobar.wav
+        and
+            aplay -D hw:0 foobar.wav
+Tested on veyron devices.
 
 
-Thank you very much,
-Shunqian
+Changes in v2:
+- move the set clock divider into rockchip i2s.
+- add the 64000 sample rates for max98090.
+- add the 64000 sample rate for rt5645.
+
+Caesar Wang (3):
+  ASoC: rockchip: i2s: change bclk and lrck according to sample rates
+  ASoC: rockchip-max98090: Allow more sample rates
+  ASoC: rockchip-rt5645: Allow more sample rates
+
+ sound/soc/rockchip/rockchip_i2s.c      | 23 +++++++++++++++++++++++
+ sound/soc/rockchip/rockchip_max98090.c |  6 ++++++
+ sound/soc/rockchip/rockchip_rt5645.c   |  6 ++++++
+ 3 files changed, 35 insertions(+)
+
+-- 
+1.9.1
