@@ -1,70 +1,52 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/3] usb: dwc2: host: Giveback URB in tasklet context
-Date: Thu, 5 Nov 2015 16:29:11 -0800
-Message-ID: <CAD=FV=X_ytxKgAQUP3tiJs6m2J48kykXqiA+DvRO7mMna5PdDg@mail.gmail.com>
-References: <CAD=FV=WhD-CcHHZN0_h57xPmvwiOiroOQKoDpy8f2HfDJY-PCg@mail.gmail.com>
-	<Pine.LNX.4.44L0.1511051012580.25468-100000@netrider.rowland.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44L0.1511051012580.25468-100000@netrider.rowland.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alan Stern <stern@rowland.harvard.edu>
-Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ming Lei <ming.lei@canonical.com>
+From: Zain Wang <zain.wang@rock-chips.com>
+Subject: [PATCH v2 0/4] Crypto: add crypto accelerator support for rk3288
+Date: Fri,  6 Nov 2015 09:17:20 +0800
+Message-ID: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Sender: linux-crypto-owner@vger.kernel.org
+To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Alan,
+This commit support three cipher(AES/DES/DES3) and two chainmode(ecb/cbc),
+and the more algorithms and new hash drivers will be added later on.
 
-On Thu, Nov 5, 2015 at 7:19 AM, Alan Stern <stern@rowland.harvard.edu> wrote:
-> On Wed, 4 Nov 2015, Doug Anderson wrote:
->
->> In the ChromeOS gerrit
->> <https://chromium-review.googlesource.com/#/c/310583/> Julius Werner
->> points out that for EHCI it was good to take the optimization from
->> commit 9118f9eb4f1e ("USB: EHCI: improve interrupt qh unlink") before
->> this one.  I'm still trying to learn USB / dwc2 so it's unclear to me
->> whether we also need a similar change before landing.
->>
->> I'll see if I can do some investigation about this and also some
->> benchmarking before and after.  Certainly profiling the interrupt
->> handler itself showed a huge improvement, but I'd hate to see a
->> regression elsewhere.
->>
->> If anyone else knows better than I, please speak up!  :)
->
-> This is a matter of both efficiency and correctness.  Giving back URBs
-> in a tasklet is not a simple change.
->
-> Have you read the kerneldoc for usb_submit_urb() in
-> drivers/usb/core/urb.c?  The portion about "Reserved Bandwidth
-> Transfers" is highly relevant.  I don't know how dwc2 goes about
-> reserving bandwidth for periodic transfers, but if it relies on the
-> endpoint queue being non-empty to maintain a reservation then it will
-> be affected by this change.
+Changed in v2:
+- remove some part about hash
+- add weak key detection
+- changed some variate's type
 
-It does look as if you are right and the reservation will end up being
-released.  It looks to me like dwc2_deschedule_periodic() is in charge
-of releasing the reservation.  I'll work on trying to actually confirm
-this.  I guess I need to find a USB test setup where there are enough
-devices that I exceed the available time so I can see the brokenness
-of my old solution...
+Changed in v1:
+- modify some variate's name
+- modify some variate's type
+- modify some return value
+- remove or modify some print info
+- use more dev_xxx in probe
+- modify the prio of cipher
+- add Kconfig
 
-I hadn't realized that this was a correctness problem and not just an
-optimization problem, so thank you very much for the info!  :)  I ran
-with a bunch of USB devices and it worked fine (and performance
-improved!) so I figured I was good to go...  Now I've read the
-kerneldoc you pointed at and it was very helpful.  As I understand it,
-it's considered OK if I copy what EHCI did and release the reservation
-if nothing has been scheduled for 5 ms.
+Zain Wang (4):
+  Crypto: Crypto driver support aes/des/des3 for rk3288
+  clk: rockchip: set an id for crypto clk
+  ARM: dts: rockchip: Add Crypto drivers for rk3288
+  crypto: rockchip/crypto - add DT bindings documentation
 
-Quoting a friend of mine: I'm now all done adding the delayed
-reservation release code.  Now I just need to compile it and test it.
-:-P  My plan is add some printouts to my current implementation to see
-cases where the deferred "unreserve" actually saved us and (to me)
-that will help indicate that it's working properly.  Presumably I
-won't see this case hit (or not much) without HCD_BH and I will see
-this case with HCD_BH.
+ .../devicetree/bindings/crypto/rockchip-crypto.txt |  29 ++
+ arch/arm/boot/dts/rk3288.dtsi                      |  15 +
+ drivers/clk/rockchip/clk-rk3288.c                  |   2 +-
+ drivers/crypto/Kconfig                             |  11 +
+ drivers/crypto/Makefile                            |   1 +
+ drivers/crypto/rockchip/Makefile                   |   3 +
+ drivers/crypto/rockchip/rk3288_crypto.c            | 380 +++++++++++++++
+ drivers/crypto/rockchip/rk3288_crypto.h            | 222 +++++++++
+ drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c | 511 +++++++++++++++++++++
+ include/dt-bindings/clock/rk3288-cru.h             |   1 +
+ 10 files changed, 1174 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+ create mode 100644 drivers/crypto/rockchip/Makefile
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto.c
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto.h
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
 
-Please consider this patch "on hold" until my next spin.
-
--Doug
+-- 
+1.9.1
