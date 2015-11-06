@@ -1,78 +1,101 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 3/4] ARM: dts: rockchip: Add Crypto drivers for rk3288
-Date: Fri, 6 Nov 2015 10:00:51 +0800
-Message-ID: <563C09D3.1050508@gmail.com>
-References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
- <1446772644-2352-4-git-send-email-zain.wang@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 08/13] Documentation: dt-bindings: Add bindings for
+ rk3288 DW MIPI DSI driver
+Date: Thu, 5 Nov 2015 20:18:29 -0600
+Message-ID: <20151106021829.GA4810@rob-hp-laptop>
+References: <1446296170-3702-1-git-send-email-zyw@rock-chips.com>
+ <1446296170-3702-9-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1446772644-2352-4-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain Wang <zain.wang@rock-chips.com>, mark.rutland@arm.com
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1446296170-3702-9-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-the subject should be add the node/info for crypto...
-
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 09:17, Zain Wang =E5=86=99=
-=E9=81=93:
-> Add Crypto drivers for rk3288 including crypto controller and dma clk=
-=2E
->
-> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+On Sat, Oct 31, 2015 at 08:56:04PM +0800, Chris Zhong wrote:
+> add device tree bindings for rk3288 specific Synopsys DW MIPI DSI driver
+> 
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 > ---
->
-> Changed in v2:
-> - None
->
-> Changed in v1:
-> - remove the _crypto suffix
-> - use "rockchip,rk3288-crypto" instead of "rockchip,rk3288"
->
->   arch/arm/boot/dts/rk3288.dtsi | 15 +++++++++++++++
->   1 file changed, 15 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288=
-=2Edtsi
-> index 6a79c9c..7b7914e 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -170,6 +170,21 @@
->   		};
->   	};
->  =20
-> +	crypto: cypto-controller@ff8a0000 {
-> +		compatible =3D "rockchip,rk3288-crypto";
-> +		reg =3D <0xff8a0000 0x4000>;
-> +		interrupts =3D <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks =3D <&cru ACLK_CRYPTO>,
-> +			 <&cru HCLK_CRYPTO>,
-> +			 <&cru SCLK_CRYPTO>,
-> +			 <&cru ACLK_DMAC1>;
-> +		clock-names =3D "aclk",
-> +			      "hclk",
-> +			      "sclk",
-> +			      "apb_pclk";
+> 
+> Changes in v2: None
+> 
+>  .../bindings/video/dw_mipi_dsi_rockchip.txt        | 56 ++++++++++++++++++++++
+>  1 file changed, 56 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/video/dw_mipi_dsi_rockchip.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/video/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/video/dw_mipi_dsi_rockchip.txt
+> new file mode 100644
+> index 0000000..4dea804
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/video/dw_mipi_dsi_rockchip.txt
 
-I guess  you can do this:
-
-clocks =3D <&cru ACLK_CRYPTO>, <&cru HCLK_CRYPTO>,  <&cru SCLK_CRYPTO>,=
-  <&cru ACLK_DMAC1>;
-
-clock-names =3D "aclk", "hclk",  "sclk", "apb_pclk";
+Please move to bindings/display/rockchip/
 
 
-> +		status =3D "okay";
-> +	};
+> @@ -0,0 +1,56 @@
+> +Rockchip specific extensions to the Synopsys Designware MIPI DSI
+> +================================
 > +
->   	reserved-memory {
->   		#address-cells =3D <1>;
->   		#size-cells =3D <1>;
+> +Required properties:
+> +- compatible: "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi".
+> +- rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
+> +- ports: contain a port node with endpoint definitions as defined in [1].
+> +  For vopb,set the reg = <0> and set the reg = <1> for vopl.
+> +
+> +For more required properties, please refer to [2].
+> +
+> +[1] Documentation/devicetree/bindings/media/video-interfaces.txt
+> +[2] Documentation/devicetree/bindings/drm/bridge/dw_mipi_dsi.txt
 
+This needs to be updated too.
 
---=20
-Thanks,
-Caesar
+> +
+> +Example:
+> +	mipi_dsi: mipi@ff960000 {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		compatible = "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi";
+> +		reg = <0xff960000 0x4000>;
+> +		interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru SCLK_MIPI_24M>, <&cru PCLK_MIPI_DSI0>;
+> +		clock-names = "ref", "pclk";
+> +		rockchip,grf = <&grf>;
+> +		status = "okay";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			reg = <1>;
+> +
+> +			mipi_in: port {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +				mipi_in_vopb: endpoint@0 {
+> +					reg = <0>;
+> +					remote-endpoint = <&vopb_out_mipi>;
+> +				};
+> +				mipi_in_vopl: endpoint@1 {
+> +					reg = <1>;
+> +					remote-endpoint = <&vopl_out_mipi>;
+> +				};
+> +			};
+> +		};
+> +
+> +		panel {
+> +			compatible ="boe,tv080wum-nl0";
+> +			reg = <0>;
+> +
+> +			enable-gpios = <&gpio7 3 GPIO_ACTIVE_HIGH>;
+> +			pinctrl-names = "default";
+> +			pinctrl-0 = <&lcd_en>;
+> +			backlight = <&backlight>;
+> +			status = "okay";
+> +		};
+> +	};
+> -- 
+> 2.6.2
+> 
