@@ -1,57 +1,80 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v1 1/5] ASoC: rockchip: i2s: Support to set
- the divider clock API
-Date: Fri, 6 Nov 2015 17:42:30 +0800
-Message-ID: <563C7606.7050504@rock-chips.com>
-References: <1446514438-13922-1-git-send-email-wxt@rock-chips.com>
- <1446514438-13922-2-git-send-email-wxt@rock-chips.com>
- <20151104143431.GH1717@sirena.org.uk> <563AEF97.1080304@gmail.com>
- <20151105161615.GS18409@sirena.org.uk>
+From: Zain <zain.wang@rock-chips.com>
+Subject: Re: [PATCH v2 3/4] ARM: dts: rockchip: Add Crypto drivers for rk3288
+Date: Fri, 6 Nov 2015 17:50:15 +0800
+Message-ID: <563C77D7.4010701@rock-chips.com>
+References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
+ <1446772644-2352-4-git-send-email-zain.wang@rock-chips.com>
+ <563C09D3.1050508@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20151105161615.GS18409@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Dylan Reid <dgreid@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <563C09D3.1050508@gmail.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Caesar Wang <caesar.upstream@gmail.com>, mark.rutland@arm.com
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, linux-crypto@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgIE1hcmssCgpWZXJ5IHJlc3BvbnNpdmUsIHRoYW5rcyB5b3VyIGNvbW1lbnQuCgrlnKggMjAx
-NeW5tDEx5pyIMDbml6UgMDA6MTYsIE1hcmsgQnJvd24g5YaZ6YGTOgo+IE9uIFRodSwgTm92IDA1
-LCAyMDE1IGF0IDAxOjU2OjM5UE0gKzA4MDAsIENhZXNhciBXYW5nIHdyb3RlOgo+PiDlnKggMjAx
-NeW5tDEx5pyIMDTml6UgMjI6MzQsIE1hcmsgQnJvd24g5YaZ6YGTOgo+Pj4gU2FtZSB0aGluZyBh
-cyB5b3VyIG90aGVyIHZlcnkgc2ltaWxhciBwYXRjaDogd2h5IGRvZXMgdGhpcyBmZWF0dXJlCj4+
-PiByZXF1aXJlIHNldF9jbGtkaXYoKT8KPj4gT2theSwgeW91IHNhaWQgIgo+PiBXaHkgaXMgdGhp
-cyBhIHJlcXVpcmVtZW50PyAgVGhlIGNsb2NrIHRvIHVzZSBhcyBhIHNvdXJjZSBzaG91bGQgbm9y
-bWFsbHkKPj4gYmUgc3BlY2lmaWVkIHZpYSBzZXRfc3lzY2xrKCkgYW5kIGFueSBpbnRlcm5hbCBk
-aXZpZGVycyBjYWxjdWxhdGVkCj4+IGF1dG9tYXRpY2FsbHkgYnkgdGhlIGRyaXZlci4KPj4gIgo+
-PiBJIHRoaW5rIHdlIHNob3VsZCBkaXZpZGVyIHNldHRpbmdzIGZvciB0aGVzZSBkaWZmZXJlbnQg
-c2FtcGxlIHJhdGVzLgo+IFN1cmUsIHRoZSBxdWVzdGlvbiBpcyBob3cgdGhlc2UgdGhpbmdzIGdl
-dCBzZXQuCj4KPj4gICBJZiB0aGUgY29kZWMgaXMgbWFzdGVyIG1vZGUsIHdlIGFyZSAqbm90KiBu
-ZWVkIHRoaXMgb3BlcmF0ZS4KPj4gICBJZiB0aGUgY29kZWMgaXMgc2xhdmUgbW9kZSwgd2UgYXJl
-IG5lZWQgdG8gZGl2aWRlciB0aGUgTUNMSyB0byBzZXR0aW5nIHRoZSBkaWZmZXJlbnQgc2FtcGxl
-IHJhdGVzLgo+PiAoZm9yIGV4YW1wbGUsIHRoZSBzYW1wbGUgcmF0ZXMgKDhrLCA0OGspIHRoZSBj
-bG9jayBpcyBNQ0xLLCB0aGUgY2xvY2sgc2hvdWxkIGJlIGRpdmlkZXIgY3B1IGlwICkKPj4gImRp
-dmlkZXJzIGNhbGN1bGF0ZWQgYXV0b21hdGljYWxseSBieSB0aGUgZHJpdmVyIiwgdGhhdCBzaG91
-bGQgYmUgb2NjdXJlZCBieSBjb2RlYyhtYXg5ODA5MAo+PiApIGRyaXZlciwgYnV0IHRoZSBkaXZp
-ZGVyIGNsb2NrcyAoTFJDSywgU0NMSykgc2hvdWxkIG5lZWQgdG8gc2V0IGZvciBjcHUgaW50ZXJu
-YWwgc2lkZS4KPiBTbyB0aGUgQ1BVIGtub3dzIHdoYXQgcmF0ZXMgaXQgbmVlZHMgdG8gc2V0IGFu
-ZCB3aGF0IGNsb2NrcyBpdCdzIGdldHRpbmcKPiBpbiwgd2h5IGNhbid0IGl0IHNldCB0aGUgZGl2
-aWRlcnMgYXV0b25vbW91c2x5LgoKU291bmQgcmVzb25hYmxlLCAgZml4ZWQgaW4gbmV4dCB2ZXJz
-aW9uLgoKPgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAoKCi0tIApjYWVzYXIgd2FuZyB8IHNvZnR3YXJlIGVuZ2luZWVyIHwg
-d3h0QHJvY2stY2hpcC5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2EtZGV2ZWxAYWxzYS1wcm9qZWN0
-Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vYWxz
-YS1kZXZlbAo=
+Hi:
+
+On 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 10:00, Caesar Wang wrote:
+> the subject should be add the node/info for crypto...
+ok! done!
+>
+> =E5=9C=A8 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 09:17, Zain Wang =E5=86=
+=99=E9=81=93:
+>> Add Crypto drivers for rk3288 including crypto controller and dma cl=
+k.
+>>
+>> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+>> ---
+>>
+>> Changed in v2:
+>> - None
+>>
+>> Changed in v1:
+>> - remove the _crypto suffix
+>> - use "rockchip,rk3288-crypto" instead of "rockchip,rk3288"
+>>
+>>   arch/arm/boot/dts/rk3288.dtsi | 15 +++++++++++++++
+>>   1 file changed, 15 insertions(+)
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288.dtsi
+>> b/arch/arm/boot/dts/rk3288.dtsi
+>> index 6a79c9c..7b7914e 100644
+>> --- a/arch/arm/boot/dts/rk3288.dtsi
+>> +++ b/arch/arm/boot/dts/rk3288.dtsi
+>> @@ -170,6 +170,21 @@
+>>           };
+>>       };
+>>   +    crypto: cypto-controller@ff8a0000 {
+>> +        compatible =3D "rockchip,rk3288-crypto";
+>> +        reg =3D <0xff8a0000 0x4000>;
+>> +        interrupts =3D <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+>> +        clocks =3D <&cru ACLK_CRYPTO>,
+>> +             <&cru HCLK_CRYPTO>,
+>> +             <&cru SCLK_CRYPTO>,
+>> +             <&cru ACLK_DMAC1>;
+>> +        clock-names =3D "aclk",
+>> +                  "hclk",
+>> +                  "sclk",
+>> +                  "apb_pclk";
+>
+> I guess  you can do this:
+>
+> clocks =3D <&cru ACLK_CRYPTO>, <&cru HCLK_CRYPTO>,  <&cru SCLK_CRYPTO=
+>,=20
+> <&cru ACLK_DMAC1>;
+>
+> clock-names =3D "aclk", "hclk",  "sclk", "apb_pclk";
+ok! done!
+>
+>
+>> +        status =3D "okay";
+>> +    };
+>> +
+>>       reserved-memory {
+>>           #address-cells =3D <1>;
+>>           #size-cells =3D <1>;
+>
+>
