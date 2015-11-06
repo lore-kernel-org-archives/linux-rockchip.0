@@ -1,79 +1,76 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 0/4] Crypto: add crypto accelerator support for rk3288
-Date: Fri, 6 Nov 2015 09:36:48 +0800
-Message-ID: <563C0430.9000607@gmail.com>
-References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain Wang <zain.wang@rock-chips.com>, zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, linux-crypto@vger.kernel.org
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH v3 3/3] ASoC: rockchip: i2s: share tx/rx lrck when symmetric_rates enabled
+Date: Fri,  6 Nov 2015 09:38:11 +0800
+Message-ID: <1446773891-32174-4-git-send-email-sugar.zhang@rock-chips.com>
+References: <1446773891-32174-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1446773891-32174-1-git-send-email-sugar.zhang@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
+Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+we share lrck_tx to lrck_rx only if when both i2s symmetric_rates and
+dai_link symmetric_rates enabled.
 
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 09:17, Zain Wang =E5=86=99=
-=E9=81=93:
-> This commit support three cipher(AES/DES/DES3) and two chainmode(ecb/=
-cbc),
-> and the more algorithms and new hash drivers will be added later on.
->
-> Changed in v2:
-> - remove some part about hash
-> - add weak key detection
-> - changed some variate's type
->
-> Changed in v1:
-> - modify some variate's name
-> - modify some variate's type
-> - modify some return value
-> - remove or modify some print info
-> - use more dev_xxx in probe
-> - modify the prio of cipher
-> - add Kconfig
->
-> Zain Wang (4):
->    Crypto: Crypto driver support aes/des/des3 for rk3288
->    clk: rockchip: set an id for crypto clk
->    ARM: dts: rockchip: Add Crypto drivers for rk3288
->    crypto: rockchip/crypto - add DT bindings documentation
-I guess the series patchs order should be:
+if only lrck_tx is wired into external codec, we should enable this to
+provider lrck for rx logic inside i2s module.
 
-pacth 1/4 dt-binds/
-patch 2/4 clk id
-patch 3/4 crypto driver
-patch 4/4 dts
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+---
 
+Changes in v3:
+- modify the judgment condition
 
+Changes in v2:
+- new patch
 
->
->   .../devicetree/bindings/crypto/rockchip-crypto.txt |  29 ++
->   arch/arm/boot/dts/rk3288.dtsi                      |  15 +
->   drivers/clk/rockchip/clk-rk3288.c                  |   2 +-
->   drivers/crypto/Kconfig                             |  11 +
->   drivers/crypto/Makefile                            |   1 +
->   drivers/crypto/rockchip/Makefile                   |   3 +
->   drivers/crypto/rockchip/rk3288_crypto.c            | 380 ++++++++++=
-+++++
->   drivers/crypto/rockchip/rk3288_crypto.h            | 222 +++++++++
->   drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c | 511 ++++++++++=
-+++++++++++
->   include/dt-bindings/clock/rk3288-cru.h             |   1 +
->   10 files changed, 1174 insertions(+), 1 deletion(-)
->   create mode 100644 Documentation/devicetree/bindings/crypto/rockchi=
-p-crypto.txt
->   create mode 100644 drivers/crypto/rockchip/Makefile
->   create mode 100644 drivers/crypto/rockchip/rk3288_crypto.c
->   create mode 100644 drivers/crypto/rockchip/rk3288_crypto.h
->   create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ablkcipher=
-=2Ec
->
+ sound/soc/rockchip/rockchip_i2s.c | 8 ++++++++
+ sound/soc/rockchip/rockchip_i2s.h | 6 ++++++
+ 2 files changed, 14 insertions(+)
 
-
---=20
-Thanks,
-Caesar
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index f07833b..5190199 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -226,6 +226,7 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 				  struct snd_soc_dai *dai)
+ {
+ 	struct rk_i2s_dev *i2s = to_info(dai);
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	unsigned int val = 0;
+ 
+ 	switch (params_format(params)) {
+@@ -278,6 +279,13 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
+ 			   I2S_DMACR_RDL(16));
+ 
++	val = I2S_CKR_TRCM_TXRX;
++	if (dai->driver->symmetric_rates && rtd->dai_link->symmetric_rates)
++		val = I2S_CKR_TRCM_TXSHARE;
++
++	regmap_update_bits(i2s->regmap, I2S_CKR,
++			   I2S_CKR_TRCM_MASK,
++			   val);
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
+index a54ee35..dc6e2c7 100644
+--- a/sound/soc/rockchip/rockchip_i2s.h
++++ b/sound/soc/rockchip/rockchip_i2s.h
+@@ -78,6 +78,12 @@
+  * CKR
+  * clock generation register
+ */
++#define I2S_CKR_TRCM_SHIFT	28
++#define I2S_CKR_TRCM(x)	(x << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_TXRX	(0 << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_TXSHARE	(1 << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_RXSHARE	(2 << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_MASK	(3 << I2S_CKR_TRCM_SHIFT)
+ #define I2S_CKR_MSS_SHIFT	27
+ #define I2S_CKR_MSS_MASTER	(0 << I2S_CKR_MSS_SHIFT)
+ #define I2S_CKR_MSS_SLAVE	(1 << I2S_CKR_MSS_SHIFT)
+-- 
+2.3.6
