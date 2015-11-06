@@ -1,78 +1,89 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [RESEND PATCH] drm/rockchip: vop: Correct enabled clocks during setup
-Date: Fri,  6 Nov 2015 13:22:24 +0100
-Message-ID: <1446812544-28776-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Alan Stern <stern@rowland.harvard.edu>
+Subject: Re: [PATCH 2/3] usb: dwc2: host: Giveback URB in tasklet context
+Date: Fri, 6 Nov 2015 10:40:39 -0500 (EST)
+Message-ID: <Pine.LNX.4.44L0.1511061024100.2082-100000@iolanthe.rowland.org>
+References: <CAD=FV=X_ytxKgAQUP3tiJs6m2J48kykXqiA+DvRO7mMna5PdDg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, Dave Airlie <airlied@redhat.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=X_ytxKgAQUP3tiJs6m2J48kykXqiA+DvRO7mMna5PdDg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ming Lei <ming.lei@canonical.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-V2hlbiBkb2luZyB0aGUgaW5pdGlhbCBzZXR1cCBib3RoIHRoZSBoY2xrIGFuZCB0aGUgYWNsayBu
-ZWVkIHRvIGJlCmVuYWJsZWQgb3RoZXJ3aXNlIHRoZSBib2FyZCB3aWxsIHNpbXBseSBoYW5nLiBU
-aGlzIG9ubHkgb2NjdXJzIHdoZW4KYnVpbGRpbmcgdGhlIHZvcCBkcml2ZXIgYXMgYSBtb2R1bGUs
-IHdoZW4gaXRzIGJ1aWx0LWluIHRoZSBpbml0aWFsIHNldHVwCmhhcHBlbnMgdG8gcnVuIGJlZm9y
-ZSB0aGUgY2xvY2sgZnJhbWV3b3JrIHNodXRzIG9mIHVudXNlZCBjbG9ja3MKKGluY2x1ZGluZyB0
-aGUgYWNsaykuCgpXaGlsZSB0aGVyZSBhbHNvIHN3aXRjaCB0byBkb2luZyBwcmVwYXJlIGFuZCBl
-bmFibGUgaW4gb25lIHN0ZXAgcmF0aGVyCnRoZW4gc2VwYXJhdGUgc3RlcHMgdG8gcmVkdWNlIHRo
-ZSBhbW91bnQgb2YgY29kZSByZXF1aXJlZC4KClNpZ25lZC1vZmYtYnk6IFNqb2VyZCBTaW1vbnMg
-PHNqb2VyZC5zaW1vbnNAY29sbGFib3JhLmNvLnVrPgpBY2tlZC1ieTogTWFyayBZYW8gPG1hcmsu
-eWFvQHJvY2stY2hpcHMuY29tPgpUZXN0ZWQtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBz
-LmNvbT4KVGVzdGVkLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVyQGdtYWlsLmNvbT4K
-LS0tCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDM2ICsr
-KysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9u
-cygrKSwgMjIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fdm9wLmMKaW5kZXggNWQ4YWU1ZS4uNDg3MTlkZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0xNTc1LDMyICsxNTc1LDI1IEBAIHN0YXRp
-YyBpbnQgdm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCQlyZXR1cm4gUFRSX0VSUih2b3At
-PmRjbGspOwogCX0KIAotCXJldCA9IGNsa19wcmVwYXJlKHZvcC0+aGNsayk7Ci0JaWYgKHJldCA8
-IDApIHsKLQkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGhjbGtcbiIpOwot
-CQlyZXR1cm4gcmV0OwotCX0KLQogCXJldCA9IGNsa19wcmVwYXJlKHZvcC0+ZGNsayk7CiAJaWYg
-KHJldCA8IDApIHsKIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBwcmVwYXJlIGRjbGtc
-biIpOwotCQlnb3RvIGVycl91bnByZXBhcmVfaGNsazsKKwkJcmV0dXJuIHJldDsKIAl9CiAKLQly
-ZXQgPSBjbGtfcHJlcGFyZSh2b3AtPmFjbGspOworCS8qIEVuYWJsZSBib3RoIHRoZSBoY2xrIGFu
-ZCBhY2xrIHRvIHNldHVwIHRoZSB2b3AgKi8KKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUodm9w
-LT5oY2xrKTsKIAlpZiAocmV0IDwgMCkgewotCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRv
-IHByZXBhcmUgYWNsa1xuIik7CisJCWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFy
-ZS9lbmFibGUgaGNsa1xuIik7CiAJCWdvdG8gZXJyX3VucHJlcGFyZV9kY2xrOwogCX0KIAotCS8q
-Ci0JICogZW5hYmxlIGhjbGssIHNvIHRoYXQgd2UgY2FuIGNvbmZpZyB2b3AgcmVnaXN0ZXIuCi0J
-ICovCi0JcmV0ID0gY2xrX2VuYWJsZSh2b3AtPmhjbGspOworCXJldCA9IGNsa19wcmVwYXJlX2Vu
-YWJsZSh2b3AtPmFjbGspOwogCWlmIChyZXQgPCAwKSB7Ci0JCWRldl9lcnIodm9wLT5kZXYsICJm
-YWlsZWQgdG8gcHJlcGFyZSBhY2xrXG4iKTsKLQkJZ290byBlcnJfdW5wcmVwYXJlX2FjbGs7CisJ
-CWRldl9lcnIodm9wLT5kZXYsICJmYWlsZWQgdG8gcHJlcGFyZS9lbmFibGUgYWNsa1xuIik7CisJ
-CWdvdG8gZXJyX2Rpc2FibGVfaGNsazsKIAl9CisKIAkvKgogCSAqIGRvIGhjbGtfcmVzZXQsIHJl
-c2V0IGFsbCB2b3AgcmVnaXN0ZXJzLgogCSAqLwpAQCAtMTYwOCw3ICsxNjAxLDcgQEAgc3RhdGlj
-IGludCB2b3BfaW5pdGlhbChzdHJ1Y3Qgdm9wICp2b3ApCiAJaWYgKElTX0VSUihhaGJfcnN0KSkg
-ewogCQlkZXZfZXJyKHZvcC0+ZGV2LCAiZmFpbGVkIHRvIGdldCBhaGIgcmVzZXRcbiIpOwogCQly
-ZXQgPSBQVFJfRVJSKGFoYl9yc3QpOwotCQlnb3RvIGVycl9kaXNhYmxlX2hjbGs7CisJCWdvdG8g
-ZXJyX2Rpc2FibGVfYWNsazsKIAl9CiAJcmVzZXRfY29udHJvbF9hc3NlcnQoYWhiX3JzdCk7CiAJ
-dXNsZWVwX3JhbmdlKDEwLCAyMCk7CkBAIC0xNjM0LDI2ICsxNjI3LDI1IEBAIHN0YXRpYyBpbnQg
-dm9wX2luaXRpYWwoc3RydWN0IHZvcCAqdm9wKQogCWlmIChJU19FUlIodm9wLT5kY2xrX3JzdCkp
-IHsKIAkJZGV2X2Vycih2b3AtPmRldiwgImZhaWxlZCB0byBnZXQgZGNsayByZXNldFxuIik7CiAJ
-CXJldCA9IFBUUl9FUlIodm9wLT5kY2xrX3JzdCk7Ci0JCWdvdG8gZXJyX3VucHJlcGFyZV9hY2xr
-OworCQlnb3RvIGVycl9kaXNhYmxlX2FjbGs7CiAJfQogCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KHZv
-cC0+ZGNsa19yc3QpOwogCXVzbGVlcF9yYW5nZSgxMCwgMjApOwogCXJlc2V0X2NvbnRyb2xfZGVh
-c3NlcnQodm9wLT5kY2xrX3JzdCk7CiAKIAljbGtfZGlzYWJsZSh2b3AtPmhjbGspOworCWNsa19k
-aXNhYmxlKHZvcC0+YWNsayk7CiAKIAl2b3AtPmlzX2VuYWJsZWQgPSBmYWxzZTsKIAogCXJldHVy
-biAwOwogCitlcnJfZGlzYWJsZV9hY2xrOgorCWNsa19kaXNhYmxlX3VucHJlcGFyZSh2b3AtPmFj
-bGspOwogZXJyX2Rpc2FibGVfaGNsazoKLQljbGtfZGlzYWJsZSh2b3AtPmhjbGspOwotZXJyX3Vu
-cHJlcGFyZV9hY2xrOgotCWNsa191bnByZXBhcmUodm9wLT5hY2xrKTsKKwljbGtfZGlzYWJsZV91
-bnByZXBhcmUodm9wLT5oY2xrKTsKIGVycl91bnByZXBhcmVfZGNsazoKIAljbGtfdW5wcmVwYXJl
-KHZvcC0+ZGNsayk7Ci1lcnJfdW5wcmVwYXJlX2hjbGs6Ci0JY2xrX3VucHJlcGFyZSh2b3AtPmhj
-bGspOwogCXJldHVybiByZXQ7CiB9CiAKLS0gCjIuNi4yCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Thu, 5 Nov 2015, Doug Anderson wrote:
+
+> Alan,
+> 
+> On Thu, Nov 5, 2015 at 7:19 AM, Alan Stern <stern@rowland.harvard.edu> wrote:
+> > On Wed, 4 Nov 2015, Doug Anderson wrote:
+> >
+> >> In the ChromeOS gerrit
+> >> <https://chromium-review.googlesource.com/#/c/310583/> Julius Werner
+> >> points out that for EHCI it was good to take the optimization from
+> >> commit 9118f9eb4f1e ("USB: EHCI: improve interrupt qh unlink") before
+> >> this one.  I'm still trying to learn USB / dwc2 so it's unclear to me
+> >> whether we also need a similar change before landing.
+> >>
+> >> I'll see if I can do some investigation about this and also some
+> >> benchmarking before and after.  Certainly profiling the interrupt
+> >> handler itself showed a huge improvement, but I'd hate to see a
+> >> regression elsewhere.
+> >>
+> >> If anyone else knows better than I, please speak up!  :)
+> >
+> > This is a matter of both efficiency and correctness.  Giving back URBs
+> > in a tasklet is not a simple change.
+> >
+> > Have you read the kerneldoc for usb_submit_urb() in
+> > drivers/usb/core/urb.c?  The portion about "Reserved Bandwidth
+> > Transfers" is highly relevant.  I don't know how dwc2 goes about
+> > reserving bandwidth for periodic transfers, but if it relies on the
+> > endpoint queue being non-empty to maintain a reservation then it will
+> > be affected by this change.
+> 
+> It does look as if you are right and the reservation will end up being
+> released.  It looks to me like dwc2_deschedule_periodic() is in charge
+> of releasing the reservation.  I'll work on trying to actually confirm
+> this.  I guess I need to find a USB test setup where there are enough
+> devices that I exceed the available time so I can see the brokenness
+> of my old solution...
+
+You may not need that.  Try a single USB keyboard and see what happens
+when the interrupt URB is given back.
+
+> I hadn't realized that this was a correctness problem and not just an
+> optimization problem, so thank you very much for the info!  :)  I ran
+> with a bunch of USB devices and it worked fine (and performance
+> improved!) so I figured I was good to go...  Now I've read the
+> kerneldoc you pointed at and it was very helpful.  As I understand it,
+> it's considered OK if I copy what EHCI did and release the reservation
+> if nothing has been scheduled for 5 ms.
+
+You might also look into the issues surrounding isochronous URBs.  In 
+particular, when an URB is submitted, which frames or microframes 
+should it be scheduled in?  The problem is that when the submission 
+occurs, some of the slots following the previous URB may already have 
+expired.  The explanations for EXDEV and EFBIG in 
+Documentation/usb/error-codes.txt are relevant here, although terse.
+
+The host controller drivers that I maintain work like this:
+
+	If the endpoint's queue is empty and none of the endpoint's
+	URBs are still being given back by the tasklet, pretend that
+	the URB_ISO_ASAP flag is set.  Note that this involves
+	testing hcd_periodic_completion_in_progress() -- that's
+	where switching over to tasklets makes a difference.
+
+	If the URB_ISO_ASAP flag is set, the URB is scheduled for
+	the first unallocated slot that hasn't already expired.
+
+	If the flag isn't set, try to schedule the URB for the first
+	unallocated slot.  If that means all the isoc packets in the
+	URB would be assigned to expired slots, return -EXDEV.  If
+	some but not all of the packets would be assigned to expired
+	slots, skip them -- only schedule the packets whose slots
+	haven't expired yet.
+
+Alan Stern
