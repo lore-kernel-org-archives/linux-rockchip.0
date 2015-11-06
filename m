@@ -1,74 +1,97 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [RFC PATCH 0/7] reset: make RESET_CONTROLLER a select'ed option
-Date: Fri, 06 Nov 2015 10:29:54 +0100
-Message-ID: <4121507.a7FHqRxKcX@wuerfel>
-References: <1446722128-11961-1-git-send-email-yamada.masahiro@socionext.com> <3770393.BLNOaUSB5Q@wuerfel> <CAK7LNARjtTXUNQFDtcqtxUo0c49h_kfNCf-2WZUEFXmttZoFyA@mail.gmail.com>
+From: Zain <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 4/4] crypto: rockchip/crypto - add DT bindings
+ documentation
+Date: Fri, 6 Nov 2015 17:36:40 +0800
+Message-ID: <563C74A8.3000409@rock-chips.com>
+References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
+ <1446772644-2352-5-git-send-email-zain.wang@rock-chips.com>
+ <5400475.WGQH63T0iE@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAK7LNARjtTXUNQFDtcqtxUo0c49h_kfNCf-2WZUEFXmttZoFyA@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mips@linux-mips.org, kernel@stlinux.com, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, dri-devel@lists.freedesktop.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <gnurou@gmail.com>, Russell King <linux@arm.linux.org.uk>, Michael Turquette <mturquette@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Maxime Coquelin <maxime.coquelin@st.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Stephe
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5400475.WGQH63T0iE@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday 06 November 2015 14:58:04 Masahiro Yamada wrote:
-> 2015-11-05 23:49 GMT+09:00 Arnd Bergmann <arnd@arndb.de>:
-> [1]
-> Why is ARCH_HAS_RESET_CONTROLLER select'ed by
-> ARCH_MULTIPLATFORM, but not by others?
-> This seems weird.
+Hi
 
-I tried to avoid having to set this from each platform separately,
-and all users of ARCH_HAS_RESET_CONTROLLER on ARM are also
-based on ARCH_MULTIPLATFORM. The other platforms are lagging behind
-in their conversion and use neither reset controllers not
-multiplatform. If anyone wants to make them use reset controllers,
-we probably want them to use multiplatform as well.
+On 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 17:00, Heiko Stuebner wrote:
+> Am Freitag, 6. November 2015, 09:17:24 schrieb Zain Wang:
+>> Add DT bindings documentation for the rk3288 crypto drivers.
+>>
+>> Signed-off-by: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>> Changde in v2:
+>> - None
+>>
+>> Changed in v1:
+>> - remove the _crypto suffix
+>> - use "rockchip,rk3288-crypto" instead of "rockchip,rk3288"
+>> - remove the description of status
+>>
+>>  .../devicetree/bindings/crypto/rockchip-crypto.txt | 29=20
+> ++++++++++++++++++++++
+>>  1 file changed, 29 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchi=
+p-
+> crypto.txt
+>> diff --git a/Documentation/devicetree/bindings/crypto/rockchip-crypt=
+o.txt=20
+> b/Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+>> new file mode 100644
+>> index 0000000..d27e203
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+>> @@ -0,0 +1,29 @@
+>> +Rockchip Electronics And Security Accelerator
+>> +
+>> +Required properties:
+>> +- compatible: Should be "rockchip,rk3288-crypto"
+>> +- reg: base physical address of the engine and length of memory map=
+ped
+>> +       region
+>> +- interrupts: interrupt number
+>> +- clocks: reference to the clocks about crypto
+>> +- clock-names: "aclk" used to clock data
+>> +	       "hclk" used to clock data
+>> +	       "srst" used to clock crypto accelerator
+> mistmatch between description and example. I think you mean "sclk" in=
+stead of=20
+> "srst", like we talked about in the first version.
+I am sorry that forgetting to change it here.
+You can see I have changed it in other part like example below.
+>
+>> +	       "apb_pclk" used to clock dma
+>> +
+>> +Examples:
+>> +
+>> +	crypto: cypto-controller@ff8a0000 {
+>> +		compatible =3D "rockchip,rk3288-crypto";
+>> +		reg =3D <0xff8a0000 0x4000>;
+>> +		interrupts =3D <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+>> +		clocks =3D <&cru ACLK_CRYPTO>,
+>> +			 <&cru HCLK_CRYPTO>,
+>> +			 <&cru SCLK_CRYPTO>,
+>> +			 <&cru ACLK_DMAC1>;
+>> +		clock-names =3D "aclk",
+>> +			      "hclk",
+>> +			      "sclk",
+>> +			      "apb_pclk";
+>> +		status =3D "okay";
+>> +	};
+>>
+>
+>
+>
+Thanks
+Zain
 
-> We do not have such options like
->   ARCH_HAS_PINCTRL,  ARCH_HAS_COMMON_CLK...
-
-We could of course change it in one direction or another, but it
-didn't seem urgent here.
-
-> [2]
-> The difference is that yours is adding per-driver options such as
-> RESET_SOCFPGA, RESET_BERLIN, etc.
-> I think this is a good idea.
-> 
-> But, I notice lowlevel drivers select RESET_CONTROLLER,
-> for example, RESET_SOCFPGA select RESET_CONTROLLER.
-> 
-> We generally do the opposite in other subsystems, I think.
-> 
-> 
-> For example, the whole of clk menu is guarded by "depends on COMMON_CLK".
-> 
-> menu "Common Clock Framework"
->          depends on COMMON_CLK
-> 
->      <bunch of low-level drivers>
-> 
-> endmenu
-> 
-> 
-> Likewise for pinctrl.
-
-We can do that too, either way works for me, and we are using both
-in other parts of the kernel. REGMAP is an example for another subsystem
-that gets selected by each driver that relies on the framework.
-
-The practical difference is only in the case that the subsystem
-is enabled (e.g. by using ARCH_MULTIPLATFORM) but all reset drivers
-are disabled. A device driver using the API in one case will see
-the stubbed-out inline helpers and not contain any object code
-that relies on non-NULL return values from them, while in the
-other case it calls into the subsystem code to get the same
-return value at runtime.
-
-If you volunteer to clean up my patch, feel free to choose between
-the two options as you like.
-
-	Arnd
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
