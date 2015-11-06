@@ -1,82 +1,74 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] ASoC: codec: Inno codec driver for RK3036 SoC
-Date: Fri, 6 Nov 2015 09:28:42 +0000
-Message-ID: <20151106092842.GT18409@sirena.org.uk>
-References: <1446717194-8572-1-git-send-email-zhengsq@rock-chips.com>
- <1446717194-8572-2-git-send-email-zhengsq@rock-chips.com>
- <20151105161311.GR18409@sirena.org.uk>
- <563C61A9.2080105@rock-chips.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [RFC PATCH 0/7] reset: make RESET_CONTROLLER a select'ed option
+Date: Fri, 06 Nov 2015 10:29:54 +0100
+Message-ID: <4121507.a7FHqRxKcX@wuerfel>
+References: <1446722128-11961-1-git-send-email-yamada.masahiro@socionext.com> <3770393.BLNOaUSB5Q@wuerfel> <CAK7LNARjtTXUNQFDtcqtxUo0c49h_kfNCf-2WZUEFXmttZoFyA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2859650098291885719=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <563C61A9.2080105-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tiwai-IBi9RG/b67k@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, benzh-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <CAK7LNARjtTXUNQFDtcqtxUo0c49h_kfNCf-2WZUEFXmttZoFyA@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mips@linux-mips.org, kernel@stlinux.com, David Airlie <airlied@linux.ie>, Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Will Deacon <will.deacon@arm.com>, dri-devel@lists.freedesktop.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Thierry Reding <thierry.reding@gmail.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <gnurou@gmail.com>, Russell King <linux@arm.linux.org.uk>, Michael Turquette <mturquette@linaro.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>, Maxime Coquelin <maxime.coquelin@st.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Stephe
 List-Id: linux-rockchip.vger.kernel.org
 
+On Friday 06 November 2015 14:58:04 Masahiro Yamada wrote:
+> 2015-11-05 23:49 GMT+09:00 Arnd Bergmann <arnd@arndb.de>:
+> [1]
+> Why is ARCH_HAS_RESET_CONTROLLER select'ed by
+> ARCH_MULTIPLATFORM, but not by others?
+> This seems weird.
 
---===============2859650098291885719==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="v15hXiddb3kq3Bam"
-Content-Disposition: inline
+I tried to avoid having to set this from each platform separately,
+and all users of ARCH_HAS_RESET_CONTROLLER on ARM are also
+based on ARCH_MULTIPLATFORM. The other platforms are lagging behind
+in their conversion and use neither reset controllers not
+multiplatform. If anyone wants to make them use reset controllers,
+we probably want them to use multiplatform as well.
 
+> We do not have such options like
+>   ARCH_HAS_PINCTRL,  ARCH_HAS_COMMON_CLK...
 
---v15hXiddb3kq3Bam
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+We could of course change it in one direction or another, but it
+didn't seem urgent here.
 
-On Fri, Nov 06, 2015 at 04:15:37PM +0800, Shunqian Zheng wrote:
-> On 2015=E5=B9=B411=E6=9C=8806=E6=97=A5 00:13, Mark Brown wrote:
-> >On Thu, Nov 05, 2015 at 05:53:13PM +0800, Shunqian Zheng wrote:
+> [2]
+> The difference is that yours is adding per-driver options such as
+> RESET_SOCFPGA, RESET_BERLIN, etc.
+> I think this is a good idea.
+> 
+> But, I notice lowlevel drivers select RESET_CONTROLLER,
+> for example, RESET_SOCFPGA select RESET_CONTROLLER.
+> 
+> We generally do the opposite in other subsystems, I think.
+> 
+> 
+> For example, the whole of clk menu is guarded by "depends on COMMON_CLK".
+> 
+> menu "Common Clock Framework"
+>          depends on COMMON_CLK
+> 
+>      <bunch of low-level drivers>
+> 
+> endmenu
+> 
+> 
+> Likewise for pinctrl.
 
-> >This looks like a simple boolean control rather than an enum - it looks
-> >like it's just turning antipop on and off.
+We can do that too, either way works for me, and we are using both
+in other parts of the kernel. REGMAP is an example for another subsystem
+that gets selected by each driver that relies on the framework.
 
-> It is a boolean control, but it takes 2 bits -- the value of "on" is b10 =
-and
-> b01 for "off".
-> So I try to use VALUE_ENUM.
+The practical difference is only in the case that the subsystem
+is enabled (e.g. by using ARCH_MULTIPLATFORM) but all reset drivers
+are disabled. A device driver using the API in one case will see
+the stubbed-out inline helpers and not contain any object code
+that relies on non-NULL return values from them, while in the
+other case it calls into the subsystem code to get the same
+return value at runtime.
 
-The presentation of the control to userspace needs to be a Switch, this
-is probably going to need you to code something custom.
+If you volunteer to clean up my patch, feel free to choose between
+the two options as you like.
 
---v15hXiddb3kq3Bam
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWPHLAAAoJECTWi3JdVIfQjAcH/0Fj5h17AbC5k1Tz8Hvh6BoK
-H9eGlwWW9vIUqaQU7Qi+jsVNaFcfgDJNUOXeBpndeubzxD4pHlWRS9lgM3xsW+F6
-kpWAg5Mqqqb24gnUwYxva2W45J5rQdA2V8dIs08jUUlmVjytqldIofSi3oZUecIv
-vEmpKv3t7O228qO4RzKFJ5vFY3qQ26KcFvtazmBeCreLO1Q11NxeGX9RxtKm8FXs
-sDpRqsZ/pyZ8i5GO+eZZLVUW2W5DJv88KoOmgi2v1jdHdsE1ToIr27QAtw4oWf4t
-ehqcu4SleYXhMTaaiPp/OsvBzcHheclWB2rxCVQHDCgMOPYIQ2Q0EzUcTTJkqGo=
-=vFLB
------END PGP SIGNATURE-----
-
---v15hXiddb3kq3Bam--
-
-
---===============2859650098291885719==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2859650098291885719==--
+	Arnd
