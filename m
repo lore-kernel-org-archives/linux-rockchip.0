@@ -1,44 +1,95 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 0/9] Better compatible for the rockchip thermal and
- support RK3368 SoCs
-Date: Sat, 07 Nov 2015 23:53:30 +0800
-Message-ID: <563E1E7A.6010503@gmail.com>
-References: <1446700685-18017-1-git-send-email-wxt@rock-chips.com> <20151106184739.GA8202@localhost.localdomain> <1509087.903MXQEqfv@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] ARM: dts: rockchip: Setup ethernet0 alias for u-boot
+Date: Sat, 07 Nov 2015 23:44:05 +0100
+Message-ID: <2126321.1P94dtJ1Xt@phil>
+References: <1446806797-20912-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1509087.903MXQEqfv@phil>
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Jiri Kosina <trivial@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pm@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Olof Johansson <olof@lixom.net>, Zhang Rui <rui.zhang@intel.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446806797-20912-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+Am Freitag, 6. November 2015, 11:46:37 schrieb Sjoerd Simons:
+> Add an ethernet0 alias for the RK3288 mac interface so
+> that u-boot can find the device-node and fill in the mac address on
+> board that support a wired network interface.
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
 
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8807=E6=97=A5 03:03, Heiko Stuebner =E5=
-=86=99=E9=81=93:[]
+applied to me dts32 branch for 4.5
 
-[....]
+while at it, I also added the alias for other supported Rockchip Socs
+the CortexA9 ones and the rk3368, like below:
 
-> I call dibs on the devicetree patches :-) .
->
-> Code and dt parts are very much separate, so I'd like to take the dt =
-parts
-> though my tree and arm-soc to keep further dts changes together.
-> Of course only once you are ok with the code parts :-)
->
-> Devicetree parts themselfs look ok to me.
+------------ 8< --------------
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Date: Sat, 7 Nov 2015 22:37:26 +0100
+Subject: [PATCH] ARM: dts: rockchip: Setup rk3066/rk3188 ethernet0 alias for
+ u-boot
 
-Many thanks, I guess that I don't need send the dts patch again.;-)
-the Code is still a bit change for thermal driver.
+Add an ethernet0 alias for the RK3066/RK3188 mac interface so
+that u-boot can find the device-node and fill in the mac address on
+boards that support a wired network interface.
 
->
-> Heiko
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3xxx.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 4497d28..99eeea7 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -49,6 +49,7 @@
+ 	interrupt-parent = <&gic>;
+ 
+ 	aliases {
++		ethernet0 = &emac;
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+-- 
+2.6.2
+
+------------ 8< --------------
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Date: Sat, 7 Nov 2015 22:39:26 +0100
+Subject: [PATCH] arm64: dts: rockchip: Setup rk3368 ethernet0 alias for u-boot
+
+Add an ethernet0 alias for the RK3368 mac interface so
+that u-boot can find the device-node and fill in the mac address on
+boards that support a wired network interface.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index cc093a4..1f10b85 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -53,6 +53,7 @@
+ 	#size-cells = <2>;
+ 
+ 	aliases {
++		ethernet0 = &gmac;
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+-- 
+2.6.2
+
+------------ 8< --------------
