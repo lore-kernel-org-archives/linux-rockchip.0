@@ -1,74 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 0/8] phy: rockchip-usb: correct pll handling and usb-uart
-Date: Sun,  8 Nov 2015 17:04:33 +0100
-Message-ID: <1446998681-26436-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, hl@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 1/8] phy: rockchip-usb: fix clock get-put mismatch
+Date: Sun,  8 Nov 2015 17:04:34 +0100
+Message-ID: <1446998681-26436-2-git-send-email-heiko@sntech.de>
+References: <1446998681-26436-1-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446998681-26436-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-changes in v2:
-- add Doug's review-tag to patches 1 and 3
-- address comment and add the missing transistional rk_phy->base
-  assignment in patch2
+Currently the phy driver only gets the optional clock reference but
+never puts it again, neither during error handling nor on remove.
+Fix that by moving the clk_put to a devm-action that gets called at
+the right time when all other devm actions are done.
 
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+ drivers/phy/phy-rockchip-usb.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-Patches 1-7 fix a long-standing issue with the clock-tree of Rockchip SoCs
-namely our ignorance of the usbphy-internal pll that creates the needed
-480MHz but is also a supply-clock back to the core clock-controller in
-Rockchip SoCs.
-
-Till now that was worked around using a virtual clock in the cru itself,
-but that is of course ignorant of other parts then disabling the phy
-behind the cru's back, thus breaking potential users of these clocks.
-
-
-Patch 8, while not associated with the new pll handling, also builds
-on the groundwork introduced there and adds support for the function
-repurposing one of the phys as passthrough for uart-data. This enables
-attaching a ttl converter to the D+ and D- pins of an usb cable to
-receive uart data this way, when it is not really possible to attach
-a regular serial console to a board.
-
-One point of critique in my first iteration [0] of this was, that
-due to when the reconfiguration happens we may miss parts of the logs
-when earlycon is enabled. So far early_initcall gets used as the
-unflattened devicetree is necessary to set this up. Doing this for
-example in the early_param directly would require parsing the flattened
-devicetree to get needed nodes and properties.
-
-I still maintain that if you're working on anything before smp-bringup
-you should use a real dev-board instead or try to solder uart cables
-on hopefully available test-points :-) .
-
-
-In any case, if patch 8 causes to much headache, it could be dropped
-to not hinder the earlier 7 patches.
-
-[0] http://comments.gmane.org/gmane.linux.ports.arm.rockchip/715
-
-Heiko Stuebner (8):
-  phy: rockchip-usb: fix clock get-put mismatch
-  phy: rockchip-usb: introduce a common data-struct for the device
-  phy: rockchip-usb: move per-phy init into a separate function
-  phy: rockchip-usb: expose the phy-internal PLLs
-  clk: rockchip: fix usbphy-related clocks
-  ARM: dts: rockchip: add clock-cells for usb phy nodes
-  ARM: dts: rockchip: assign usbphy480m_src to the new usbphy pll on
-    veyron
-  phy: rockchip-usb: add handler for usb-uart functionality
-
- .../devicetree/bindings/phy/rockchip-usb-phy.txt   |   6 +-
- Documentation/kernel-parameters.txt                |   6 +
- arch/arm/boot/dts/rk3066a.dtsi                     |   2 +
- arch/arm/boot/dts/rk3188.dtsi                      |   2 +
- arch/arm/boot/dts/rk3288-veyron.dtsi               |   2 +-
- arch/arm/boot/dts/rk3288.dtsi                      |   3 +
- drivers/clk/rockchip/clk-rk3188.c                  |  11 +-
- drivers/clk/rockchip/clk-rk3288.c                  |  16 +-
- drivers/phy/phy-rockchip-usb.c                     | 449 ++++++++++++++++++---
- 9 files changed, 416 insertions(+), 81 deletions(-)
-
+diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+index 91d6f34..dfc056b 100644
+--- a/drivers/phy/phy-rockchip-usb.c
++++ b/drivers/phy/phy-rockchip-usb.c
+@@ -90,6 +90,14 @@ static const struct phy_ops ops = {
+ 	.owner		= THIS_MODULE,
+ };
+ 
++static void rockchip_usb_phy_action(void *data)
++{
++	struct rockchip_usb_phy *rk_phy = data;
++
++	if (rk_phy->clk)
++		clk_put(rk_phy->clk);
++}
++
+ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -124,6 +132,13 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+ 		if (IS_ERR(rk_phy->clk))
+ 			rk_phy->clk = NULL;
+ 
++		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
++		if (err) {
++			if (rk_phy->clk)
++				clk_put(rk_phy->clk);
++			return err;
++		}
++
+ 		rk_phy->phy = devm_phy_create(dev, child, &ops);
+ 		if (IS_ERR(rk_phy->phy)) {
+ 			dev_err(dev, "failed to create PHY\n");
 -- 
 2.6.2
