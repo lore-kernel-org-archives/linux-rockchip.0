@@ -1,298 +1,154 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] Crypto: Crypto driver support aes/des/des3 for rk3288
-Date: Sun, 08 Nov 2015 00:19:43 +0100
-Message-ID: <29530953.Mr1LQyjF1I@phil>
-References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com> <1446772644-2352-2-git-send-email-zain.wang@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 00/10] Better compatible for the rockchip thermal and
+ support RK3368 SoCs
+Date: Sun,  8 Nov 2015 17:25:58 +0800
+Message-ID: <1446974768-25795-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446772644-2352-2-git-send-email-zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Jiri Kosina <trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Zain,
+Thank you all for providing inputs and comments on previous versions of
+this patchset.
+Especially thanks to the (Eduardo, Dmitry, Heiko,....).
 
-looks like my comment on v1 came later than your v2 submission,
-so here it is again :-)
+This series patchs are working for RK3368 on Rockchip platform.
 
-Am Freitag, 6. November 2015, 09:17:21 schrieb Zain Wang:
-> The names registered are:
->     ecb(aes) cbc(aes) ecb(des) cbc(des) ecb(des3_ede) cbc(des3_ede)
-> You can alloc tags above in your case.
-> 
-> And other algorithms and platforms will be added later on.
-> 
-> Signed-off-by: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
+-----
+This patchset are based on linus master branch.
+Note: Need add the following thermal patchs for thermal driver before
+apply this series patchs.
+(I'm glad these patchs have merged in thermal-soc git tree which can be found at
+ git://git.kernel.org/pub/scm/linux/kernel/git/evalenti/linux-soc-thermal.git)
 
-[...]
+1) thermal: rockchip: fix handling of invalid readings
+(https://patchwork.kernel.org/patch/6973101/)
 
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-> new file mode 100644
-> index 0000000..c2a419b
-> --- /dev/null
-> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
+2) thermal: rockhip: fix setting thermal shutdown polarity
+(https://patchwork.kernel.org/patch/6973131/)
 
-[...]
+3) dt-bindings: rockchip-thermal: Add the pinctrl states in this document
+(https://patchwork.kernel.org/patch/7472021/)
 
-> +static int rk_crypto_probe(struct platform_device *pdev)
-> +{
-> +	int err = 0;
-> +	struct resource *res;
-> +	struct device *dev = &pdev->dev;
-> +	struct crypto_info_t *crypto_info;
-> +
+4) thermal: rockchip: support the sleep pinctrl state to avoid glitches in s2r
+(https://patchwork.kernel.org/patch/7472051/)
 
-rk3288 chromebooks use the crypto-engine to validate the boot images and
-seem to leave it in a half-on state. This results in an irq pending
-during probe and thus a null-pointer dereference in the irq-handler, as
-it runs before the crypto-device is fully initialized.
+The git log oneline my local branch as follows:
+9a3d129 arm64: dts: Enable the Thermal on R88 board
+4299e7a arm64: dts: Add main Thermal info to rk3368.dtsi
+b95724c arm64: dts: Add the thermal data found on RK3368
+c76f603 thermal: rockchip: Support the RK3368 SoCs in thermal drivers
+a3f4fdd thermal: rockchip: consistently use int for temperatures
+558b4d1ce thermal: rockchip: Add the sort flag for adc value increment or decrement
+2438be4 thermal: rockchip: improve the conversion function
+74b701d thermal: rockchip: trivial: fix typo in commit
+2d85d32 thermal: rockchip: better to compatible the driver for different SoCs
+1f2ef67 dt-bindings: rockchip-thermal: Support the RK3368 SoCs compatible
 
-resetting the crypto block, successfull fixed that issue, so I did the
-following change:
+c0a5991 thermal: rockchip: support the sleep pinctrl state to avoid glitches in s2r
+11e4d6c dt-bindings: rockchip-thermal: Add the pinctrl states in this document
+6d30517 thermal: rockhip: fix setting thermal shutdown polarity
+2b50ab8 thermal: rockchip: fix handling of invalid readings
 
--------------------
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 121b6d5..e978fb2 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -182,6 +182,8 @@
-                              "hclk",
-                              "sclk",
-                              "apb_pclk";
-+               resets = <&cru SRST_CRYPTO>;
-+               reset-names = "crypto";
-                status = "okay";
-        };
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 02830f2..2245d3d 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -18,6 +18,7 @@
- #include <linux/of.h>
- #include <linux/clk.h>
- #include <linux/crypto.h>
-+#include <linux/reset.h>
- 
- struct crypto_info_t *crypto_p;
- 
-@@ -266,6 +267,15 @@ static int rk_crypto_probe(struct platform_device *pdev)
-        struct resource *res;
-        struct device *dev = &pdev->dev;
-        struct crypto_info_t *crypto_info;
-+       struct reset_control *rst;
-+
-+       /* reset the block to remove any pending actions */
-+       rst = devm_reset_control_get(dev, "crypto");
-+       if (!IS_ERR(rst)) {
-+               reset_control_assert(rst);
-+               usleep_range(10, 20);
-+               reset_control_deassert(rst);
-+       }
- 
-        crypto_info = devm_kzalloc(&pdev->dev,
-                        sizeof(*crypto_info), GFP_KERNEL);
--------------------
+ce5c2d2 arm64: fixup for mm renames
+ad804a0 Merge branch 'akpm' (patches from Andrew)
+ab9f2fa Merge tag 'for-linus' of
+git://git.kernel.org/pub/scm/linux/kernel/git/dledford/rdma
+75021d2 Merge branch 'for-linus' of
+git://git.kernel.org/pub/scm/linux/kernel/git/jikos/trivial
+6f1da31 Merge branch 'for-linus' of
+git://git.kernel.org/pub/scm/linux/kernel/git/jikos/hid
+99aaa9c Merge branch 'for-linus' of
+git://git.kernel.org/pub/scm/linux/kernel/git/jikos/livepatching
+
+----
+This series are tested on RK3368 board.
+root@rk3368_32:/ # cat /proc//version
+Linux version 4.3.0+ (wxt@ubuntu) (gcc version 4.9 20140514 (prerelease) (GCC) ) #2 SMP PREEMPT Sun Nov 8 16:57:52 CST 2015
+
+while true;do ls >/dev/null; done&
+
+while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp; sleep
+.5; done &
+
+You can get the temperature form sensors.
+
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:22500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:32500
+/sys/class/thermal/thermal_zone0/temp:25000
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:27500
+/sys/class/thermal/thermal_zone1/temp:30000
+/sys/class/thermal/thermal_zone0/temp:27500
+/sys/class/thermal/thermal_zone1/temp:32500
+/sys/class/thermal/thermal_zone0/temp:27500
+....
 
 
-> +	crypto_info = devm_kzalloc(&pdev->dev,
-> +				   sizeof(*crypto_info), GFP_KERNEL);
-> +	if (!crypto_info)
-> +		return -ENOMEM;
-> +
-> +	spin_lock_init(&crypto_info->lock);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	crypto_info->reg = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(crypto_info->reg)) {
-> +		err = PTR_ERR(crypto_info->reg);
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->aclk = devm_clk_get(&pdev->dev, "aclk");
-> +	if (IS_ERR(crypto_info->aclk)) {
-> +		err = PTR_ERR(crypto_info->aclk);
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->hclk = devm_clk_get(&pdev->dev, "hclk");
-> +	if (IS_ERR(crypto_info->hclk)) {
-> +		err = PTR_ERR(crypto_info->hclk);
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->sclk = devm_clk_get(&pdev->dev, "sclk");
-> +	if (IS_ERR(crypto_info->sclk)) {
-> +		err = PTR_ERR(crypto_info->sclk);
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->dmaclk = devm_clk_get(&pdev->dev, "apb_pclk");
-> +	if (IS_ERR(crypto_info->dmaclk)) {
-> +		err = PTR_ERR(crypto_info->dmaclk);
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->irq = platform_get_irq(pdev, 0);
-> +	if (crypto_info->irq < 0) {
-> +		dev_warn(crypto_info->dev,
-> +			 "control Interrupt is not available.\n");
-> +		err = crypto_info->irq;
-> +		goto err_ioremap;
-> +	}
-> +
-> +	err = devm_request_irq(&pdev->dev, crypto_info->irq, crypto_irq_handle,
-> +			       IRQF_SHARED, "rk-crypto", pdev);
-> +
-> +	if (err) {
-> +		dev_err(crypto_info->dev, "irq request failed.\n");
-> +		goto err_ioremap;
-> +	}
-> +
-> +	crypto_info->dev = &pdev->dev;
-> +	platform_set_drvdata(pdev, crypto_info);
-> +	crypto_p = crypto_info;
-> +
-> +	tasklet_init(&crypto_info->crypto_tasklet,
-> +		     rk_crypto_tasklet_cb, (unsigned long)crypto_info);
-> +	crypto_init_queue(&crypto_info->queue, 50);
-> +
-> +	crypto_info->enable_clk = rk_crypto_enable_clk;
-> +	crypto_info->disable_clk = rk_crypto_disable_clk;
-> +	crypto_info->load_data = rk_load_data;
-> +	crypto_info->unload_data = rk_unload_data;
-> +
-> +	err = rk_crypto_register();
-> +	if (err) {
-> +		dev_err(dev, "err in register alg");
-> +		goto err_reg_alg;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_reg_alg:
-> +	free_irq(crypto_info->irq, crypto_info);
-> +err_ioremap:
-> +	crypto_p = NULL;
-> +
-> +	return err;
-> +}
-> +
+Changes in v3:
+- As Eduardo comments, let's change data_mask type with 'u32' instead of
+  'unsigned long'.
+Series-changes: 2
+- make the conversion table in as a parameter both code_to_temp
+  and temp_to_code function.
+Series-changes: 1
+- As Dmitry comment, make the conversion table in as a parameterm.
+- rename the flag-> sort_flag.
+- fix the indentation.
+- change the pr_err information.
+- As the Patch v2 comments, Add a new patch to fix it.
+- :%s/flag/sort_flag
+- fix the rk3368 sort_flag as increment mode.
+Series-changes: 2
+- remove some unused, completed on other patchs.
 
-[...]
+Changes in v2:
+- As Eduardo comments on patch v1, split in smaller changes.
+- fix a copy wrong name.
+Series-changes: 1
+- support the opt gpio pinctrl state.
 
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-> new file mode 100644
-> index 0000000..cf4cd18
-> --- /dev/null
-> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
-> @@ -0,0 +1,222 @@
+Changes in v1:
+- %s/thermal/rockchip-thermal in subject.
+- add a new patch for thermal driver to support more SoCs.
 
-[...]
+Caesar Wang (10):
+  dt-bindings: rockchip-thermal: Support the RK3368 SoCs compatible
+  thermal: rockchip: better to compatible the driver for different SoCs
+  thermal: rockchip: trivial: fix typo in commit
+  thermal: rockchip: improve the conversion function
+  thermal: rockchip: Add the sort flag for adc value increment or
+    decrement
+  thermal: rockchip: consistently use int for temperatures
+  thermal: rockchip: Support the RK3368 SoCs in thermal drivers
+  arm64: dts: Add the thermal data found on RK3368
+  arm64: dts: Add main Thermal info to rk3368.dtsi
+  arm64: dts: Enable the Thermal on R88 board
 
-> +struct crypto_info_t {
+ .../bindings/thermal/rockchip-thermal.txt          |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |   6 +
+ arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi   | 112 +++++++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  36 +++
+ drivers/thermal/rockchip_thermal.c                 | 324 +++++++++++++++------
+ 5 files changed, 395 insertions(+), 87 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
 
-this is highly rockchip specific, so should probably be named
-        rk_crypto_info
-or similar instead of a generic sounding crypto_info_t
-
-[...]
-
-> +	struct device			*dev;
-> +	struct clk			*aclk;
-> +	struct clk			*hclk;
-> +	struct clk			*sclk;
-> +	struct clk			*dmaclk;
-> +	void __iomem			*reg;
-> +	int				irq;
-> +	struct crypto_queue		queue;
-> +	struct tasklet_struct		crypto_tasklet;
-> +	struct ablkcipher_request	*ablk_req;
-> +	/* device lock */
-> +	spinlock_t			lock;
-> +
-> +	/* the public variable */
-> +	struct scatterlist		*sg_src;
-> +	struct scatterlist		*sg_dst;
-> +	struct scatterlist		sg_tmp;
-> +	struct scatterlist		*first;
-> +	unsigned int			left_bytes;
-> +	void				*addr_vir;
-> +	int				aligned;
-> +	int				align_size;
-> +	size_t				nents;
-> +	unsigned int			total;
-> +	unsigned int			count;
-> +	u32				mode;
-> +	dma_addr_t			addr_in;
-> +	dma_addr_t			addr_out;
-> +	int (*start)(struct crypto_info_t *dev);
-> +	int (*update)(struct crypto_info_t *dev);
-> +	void (*complete)(struct crypto_info_t *dev, int err);
-> +	int (*enable_clk)(struct crypto_info_t *dev);
-> +	void (*disable_clk)(struct crypto_info_t *dev);
-> +	int (*load_data)(struct crypto_info_t *dev,
-> +			 struct scatterlist *sg_src,
-> +			 struct scatterlist *sg_dst);
-> +	void (*unload_data)(struct crypto_info_t *dev);
-> +};
-> +
-> +/* the private variable of cipher */
-> +struct rk_cipher_ctx {
-> +	struct crypto_info_t		*dev;
-> +	unsigned int			keylen;
-> +};
-> +
-> +extern struct crypto_info_t *crypto_p;
-> +
-> +extern struct crypto_alg rk_ecb_aes_alg;
-> +extern struct crypto_alg rk_cbc_aes_alg;
-> +extern struct crypto_alg rk_ecb_des_alg;
-> +extern struct crypto_alg rk_cbc_des_alg;
-> +extern struct crypto_alg rk_ecb_des3_ede_alg;
-> +extern struct crypto_alg rk_cbc_des3_ede_alg;
-> +
-> +#endif
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-> new file mode 100644
-> index 0000000..28b49c9
-> --- /dev/null
-> +++ b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-> @@ -0,0 +1,511 @@
-
-[...]
-
-> +static int rk_ablk_cra_init(struct crypto_tfm *tfm)
-> +{
-> +	struct rk_cipher_ctx *ctx = crypto_tfm_ctx(tfm);
-> +
-> +	ctx->dev = crypto_p;
-
-please no static pointers for devices.
-
-For example, sunxi_ss does the following to transport the core device-data
-into the init function:
-
-        struct sun4i_tfm_ctx *op = crypto_tfm_ctx(tfm);
-        struct crypto_alg *alg = tfm->__crt_alg;
-        struct sun4i_ss_alg_template *algt;
-
-        algt = container_of(alg, struct sun4i_ss_alg_template, alg.crypto);
-        op->ss = algt->ss;
-
-so you could probably do something similar
-
-Same of course for the other crypto_p users.
-
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.9.1
