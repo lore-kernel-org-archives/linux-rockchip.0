@@ -1,90 +1,113 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3 06/10] thermal: rockchip: consistently use int for temperatures
-Date: Sun,  8 Nov 2015 17:26:04 +0800
-Message-ID: <1446974768-25795-7-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 09/10] arm64: dts: Add main Thermal info to rk3368.dtsi
+Date: Sun,  8 Nov 2015 17:26:07 +0800
+Message-ID: <1446974768-25795-10-git-send-email-wxt@rock-chips.com>
 References: <1446974768-25795-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1446974768-25795-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1446974768-25795-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As Temperature is currently represented as int not long in the thermal
-framework since use int intead of unsigned long/long to represent temperature
-to avoid bogus overheat detection when negative temperature reported.
+This patch add the thermal needed info on RK3368.
+Meanwhile, support the trips to throttle for thermal.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
 ---
 
-Changes in v3:
-- As the Patch v2 comments, Add a new patch to fix it.
+Changes in v3: None
+Changes in v2:
+- fix a copy wrong name.
+Series-changes: 1
+- support the opt gpio pinctrl state.
 
-Changes in v2: None
 Changes in v1: None
 
- drivers/thermal/rockchip_thermal.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 36 ++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index c1ab346..067ecdd 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -87,7 +87,7 @@ struct rockchip_tsadc_chip {
- 	int chn_num;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index cc093a4..83a2bd2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -45,6 +45,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/thermal/thermal.h>
  
- 	/* The hardware-controlled tshut property */
--	long tshut_temp;
-+	int tshut_temp;
- 	enum tshut_mode tshut_mode;
- 	enum tshut_polarity tshut_polarity;
+ / {
+ 	compatible = "rockchip,rk3368";
+@@ -123,6 +124,8 @@
+ 			reg = <0x0 0x0>;
+ 			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
++
++			#cooling-cells = <2>; /* min followed by max */
+ 		};
  
-@@ -100,7 +100,7 @@ struct rockchip_tsadc_chip {
- 	int (*get_temp)(struct chip_tsadc_table table,
- 			int chn, void __iomem *reg, int *temp);
- 	void (*set_tshut_temp)(struct chip_tsadc_table table,
--			       int chn, void __iomem *reg, long temp);
-+			       int chn, void __iomem *reg, int temp);
- 	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
+ 		cpu_l1: cpu@1 {
+@@ -155,6 +158,8 @@
+ 			reg = <0x0 0x100>;
+ 			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
++
++			#cooling-cells = <2>; /* min followed by max */
+ 		};
  
- 	/* Per-table methods */
-@@ -125,7 +125,7 @@ struct rockchip_thermal_data {
+ 		cpu_b1: cpu@101 {
+@@ -404,6 +409,27 @@
+ 		status = "disabled";
+ 	};
  
- 	void __iomem *regs;
++	thermal-zones {
++		#include "rk3368-thermal.dtsi"
++	};
++
++	tsadc: tsadc@ff280000 {
++		compatible = "rockchip,rk3368-tsadc";
++		reg = <0x0 0xff280000 0x0 0x100>;
++		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
++		clock-names = "tsadc", "apb_pclk";
++		resets = <&cru SRST_TSADC>;
++		reset-names = "tsadc-apb";
++		pinctrl-names = "init", "default", "sleep";
++		pinctrl-0 = <&otp_gpio>;
++		pinctrl-1 = <&otp_out>;
++		pinctrl-2 = <&otp_gpio>;
++		#thermal-sensor-cells = <1>;
++		rockchip,hw-tshut-temp = <95000>;
++		status = "disabled";
++	};
++
+ 	gmac: ethernet@ff290000 {
+ 		compatible = "rockchip,rk3368-gmac";
+ 		reg = <0x0 0xff290000 0x0 0x10000>;
+@@ -829,6 +855,16 @@
+ 			};
+ 		};
  
--	long tshut_temp;
-+	int tshut_temp;
- 	enum tshut_mode tshut_mode;
- 	enum tshut_polarity tshut_polarity;
- };
-@@ -159,7 +159,7 @@ struct rockchip_thermal_data {
- 
- struct tsadc_table {
- 	u32 code;
--	long temp;
-+	int temp;
- };
- 
- static const struct tsadc_table v2_code_table[] = {
-@@ -201,7 +201,7 @@ static const struct tsadc_table v2_code_table[] = {
- };
- 
- static u32 rk_tsadcv2_temp_to_code(struct chip_tsadc_table table,
--				   long temp)
-+				   int temp)
- {
- 	int high, low, mid;
- 
-@@ -355,7 +355,7 @@ static int rk_tsadcv2_get_temp(struct chip_tsadc_table table,
- }
- 
- static void rk_tsadcv2_tshut_temp(struct chip_tsadc_table table,
--				  int chn, void __iomem *regs, long temp)
-+				  int chn, void __iomem *regs, int temp)
- {
- 	u32 tshut_value, val;
- 
++		tsadc {
++			otp_gpio: otp-gpio {
++				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++
++			otp_out: otp-out {
++				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins = <2 24 RK_FUNC_1 &pcfg_pull_up>,
 -- 
 1.9.1
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
