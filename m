@@ -1,51 +1,54 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 10/10] arm64: dts: Enable the Thermal on R88 board
-Date: Mon,  9 Nov 2015 12:49:02 +0800
-Message-ID: <1447044542-30859-11-git-send-email-wxt@rock-chips.com>
-References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, lkp@intel.com, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+From: sugar <sugar.zhang@rock-chips.com>
+Subject: Re: [PATCH v3 1/3] ASoC: rockchip: i2s: add 8 channels
+ capture support
+Date: Mon, 9 Nov 2015 15:21:53 +0800
+Message-ID: <56404991.6000505@rock-chips.com>
+References: <1446773891-32174-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1446773891-32174-2-git-send-email-sugar.zhang@rock-chips.com>
+ <20151106120020.GH18409@sirena.org.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20151106120020.GH18409@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, tiwai@suse.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch enable the TS-ADC.
 
-When a thermal temperature is invoked use the CRU to reset the chip
-on R88 board. TSHUT is low active on this board.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Acked-by: Eduardo Valentin <edubezval@gmail.com>
+On 11/6/2015 20:00, Mark Brown wrote:
+> On Fri, Nov 06, 2015 at 09:38:09AM +0800, Sugar Zhang wrote:
+>
+>> +	/* refine capture channels */
+>> +	if (!of_property_read_u32(node, "rockchip,capture-channels", &val)) {
+>> +		if (val >= 2 && val <= 8)
+>> +			rockchip_i2s_dai.capture.channels_max = val;
+>> +		else
+>> +			rockchip_i2s_dai.capture.channels_max = 2;
+>> +	}
+>
+> You should make a copy of the rockchip_i2s_dai struct in your driver
+> data and modify that rather than modifying the original - what happens
+> if sommeone makes a SoC with two I2S DAIs, one with many channels and
+> another with only two?  Samsung SoCs often have an arrangement like that
+> for exmaple.
+>
 
----
-
-Changes in v4:
-- Missing the ";" caused compile error.
-
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index 401a812..104cbee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -336,6 +336,12 @@
- 	status = "okay";
- };
- 
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-1.9.1
+Yes, I agree, because this patch was merged into mainline, I will post a 
+new one based on the latest code to fix this, thanks.
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
