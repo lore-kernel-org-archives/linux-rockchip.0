@@ -1,141 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 3/8] phy: rockchip-usb: move per-phy init into a separate
- function
-Date: Sun,  8 Nov 2015 17:04:36 +0100
-Message-ID: <1446998681-26436-4-git-send-email-heiko@sntech.de>
-References: <1446998681-26436-1-git-send-email-heiko@sntech.de>
+From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/2] Audio Codec Driver of RK3036 SoC
+Date: Mon,  9 Nov 2015 10:10:18 +0800
+Message-ID: <1447035020-10332-1-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1446998681-26436-1-git-send-email-heiko@sntech.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: hl@rock-chips.com, arnd@arndb.de, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, romain.perier@gmail.com, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-IBi9RG/b67k@public.gmane.org, benzh-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This unclutters the loop in probe a lot and makes current (and future)
-error handling easier to read.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
----
- drivers/phy/phy-rockchip-usb.c | 82 +++++++++++++++++++++++-------------------
- 1 file changed, 46 insertions(+), 36 deletions(-)
-
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index e081053..3b69f61 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -103,14 +103,57 @@ static void rockchip_usb_phy_action(void *data)
- 		clk_put(rk_phy->clk);
- }
- 
-+static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
-+				 struct device_node *child)
-+{
-+	struct rockchip_usb_phy *rk_phy;
-+	unsigned int reg_offset;
-+	int err;
-+
-+	rk_phy = devm_kzalloc(base->dev, sizeof(*rk_phy), GFP_KERNEL);
-+	if (!rk_phy)
-+		return -ENOMEM;
-+
-+	rk_phy->base = base;
-+
-+	if (of_property_read_u32(child, "reg", &reg_offset)) {
-+		dev_err(base->dev, "missing reg property in node %s\n",
-+			child->name);
-+		return -EINVAL;
-+	}
-+
-+	rk_phy->reg_offset = reg_offset;
-+
-+	rk_phy->clk = of_clk_get_by_name(child, "phyclk");
-+	if (IS_ERR(rk_phy->clk))
-+		rk_phy->clk = NULL;
-+
-+	err = devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
-+	if (err)
-+		goto err_devm_action;
-+
-+	rk_phy->phy = devm_phy_create(base->dev, child, &ops);
-+	if (IS_ERR(rk_phy->phy)) {
-+		dev_err(base->dev, "failed to create PHY\n");
-+		return PTR_ERR(rk_phy->phy);
-+	}
-+	phy_set_drvdata(rk_phy->phy, rk_phy);
-+
-+	/* only power up usb phy when it use, so disable it when init*/
-+	return rockchip_usb_phy_power(rk_phy, 1);
-+
-+err_devm_action:
-+	if (rk_phy->clk)
-+		clk_put(rk_phy->clk);
-+	return err;
-+}
-+
- static int rockchip_usb_phy_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_usb_phy_base *phy_base;
--	struct rockchip_usb_phy *rk_phy;
- 	struct phy_provider *phy_provider;
- 	struct device_node *child;
--	unsigned int reg_offset;
- 	int err;
- 
- 	phy_base = devm_kzalloc(dev, sizeof(*phy_base), GFP_KERNEL);
-@@ -126,40 +169,7 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 	}
- 
- 	for_each_available_child_of_node(dev->of_node, child) {
--		rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
--		if (!rk_phy)
--			return -ENOMEM;
--
--		rk_phy->base = phy_base;
--
--		if (of_property_read_u32(child, "reg", &reg_offset)) {
--			dev_err(dev, "missing reg property in node %s\n",
--				child->name);
--			return -EINVAL;
--		}
--
--		rk_phy->reg_offset = reg_offset;
--
--		rk_phy->clk = of_clk_get_by_name(child, "phyclk");
--		if (IS_ERR(rk_phy->clk))
--			rk_phy->clk = NULL;
--
--		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
--		if (err) {
--			if (rk_phy->clk)
--				clk_put(rk_phy->clk);
--			return err;
--		}
--
--		rk_phy->phy = devm_phy_create(dev, child, &ops);
--		if (IS_ERR(rk_phy->phy)) {
--			dev_err(dev, "failed to create PHY\n");
--			return PTR_ERR(rk_phy->phy);
--		}
--		phy_set_drvdata(rk_phy->phy, rk_phy);
--
--		/* only power up usb phy when it use, so disable it when init*/
--		err = rockchip_usb_phy_power(rk_phy, 1);
-+		err = rockchip_usb_phy_init(phy_base, child);
- 		if (err)
- 			return err;
- 	}
--- 
-2.6.2
+RnJvbTogWmhlbmdTaHVuUWlhbiA8emhlbmdzcUByb2NrLWNoaXBzLmNvbT4KClRoaXMgcGF0Y2hl
+cyBhZGQgdGhlIFJLMzAzNiBTb0MgY29kZWMgZHJpdmVyLgoKUm9ja2NoaXAgUkszMDM2IFNvQyBp
+bnRlZ3JhdGVkIHdpdGggYW4gSW5ubyBhdWRpbyBjb2RlYy4gSXQgc3VwcG9ydHMKdGhlIGZvbGxv
+d2luZyBmZWF0dXJlczoKby4gMjRiaXQgREFDCm8uIFN1cHBvcnQgMTbOqSB0byAzMs6pIGhlYWRw
+aG9uZSBvdXRwdXQgYW5kIHNwZWFrZXIgb3V0cHV0Cm8uIFN1cHBvcnQgTW9ubywgU3RlcmVvIGNo
+YW5uZWwKby4gU2FtcGxpbmcgcmF0ZSBvZiA4LzEyLzE2LzI0LzMyLzQ0LjEvNDgvOTZLSHoKCkNo
+YW5nZXMgb2YgdjQ6Cm8uIFVzZSB0aGUgY3VzdG9tIC5nZXQvLnB1dC8uaW5mbygpIGZvciAiQW50
+aS1wb3AgU3dpdGNoIiBjb250cm9sCgpDaGFuZ2VzIG9mIHYzOgpvLiBGaXggdGhlIHNlYXJjaC9y
+ZXBsYWNlIGVycm9yIGluIGlubm9fcmszMDM2LmgKby4gQ2hhbmdlIHRoZSBjb21wYXRpYmxlIHN0
+cmluZyBpbiBiaW5kaW5ncyBEb2N1bWVudGF0aW9uCm8uIE1ha2Ugc29tZSBjaGFuZ2VzIGZyb20g
+dXBzdHJlYW0ncyBjb21tZW50cwoKQ2hhbmdlcyBvZiB2MjoKby4gRGVsZXRlIHRoZSBtYWNoaW5l
+IGRyaXZlciBpbiB2MSwgaXQncyBiZXR0ZXIgdG8gdXNlCiAgIHNpbXBsZS1jYXJkIG1hY2hpbmUg
+ZHJpdmVyLgpvLiBVc2UgdGhlIGRhcG0gdG8gbWFuYWdlIHBvd2VyIHNlcXVlbmNlcyBhbmQgbWFr
+ZSBzb21lCiAgIGZ1bmN0aW9ucyBhcyB1c2VyIHZpc2libGUgY29udHJvbC4Kby4gTWFrZSBzb21l
+IGNoYW5nZXMgZnJvbSB1cHN0cmVhbSdzIGNvbW1lbnRzLgoKClpoZW5nU2h1blFpYW4gKDIpOgog
+IEFTb0M6IGNvZGVjOiBJbm5vIGNvZGVjIGRyaXZlciBmb3IgUkszMDM2IFNvQwogIEFTb0M6IFJL
+MzAzNjogQWRkIGJpbmRpbmcgZG9jIG9mIGlubm8tcmszMDM2IGNvZGVjIGRyaXZlcgoKIC4uLi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5kL2lubm8tcmszMDM2LnR4dCAgICAgIHwgIDIwICsKIHNv
+dW5kL3NvYy9jb2RlY3MvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICsK
+IHNvdW5kL3NvYy9jb2RlY3MvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAy
+ICsKIHNvdW5kL3NvYy9jb2RlY3MvaW5ub19yazMwMzYuYyAgICAgICAgICAgICAgICAgICAgIHwg
+NDkxICsrKysrKysrKysrKysrKysrKysrKwogc291bmQvc29jL2NvZGVjcy9pbm5vX3JrMzAzNi5o
+ICAgICAgICAgICAgICAgICAgICAgfCAxMjMgKysrKysrCiA1IGZpbGVzIGNoYW5nZWQsIDY0MCBp
+bnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL3NvdW5kL2lubm8tcmszMDM2LnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IHNvdW5k
+L3NvYy9jb2RlY3MvaW5ub19yazMwMzYuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IHNvdW5kL3NvYy9j
+b2RlY3MvaW5ub19yazMwMzYuaAoKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
