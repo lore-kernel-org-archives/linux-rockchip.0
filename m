@@ -1,234 +1,158 @@
 From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 04/10] thermal: rockchip: improve the conversion function
-Date: Mon,  9 Nov 2015 12:48:56 +0800
-Message-ID: <1447044542-30859-5-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v4 08/10] arm64: dts: Add the thermal data found on RK3368
+Date: Mon,  9 Nov 2015 12:49:00 +0800
+Message-ID: <1447044542-30859-9-git-send-email-wxt@rock-chips.com>
 References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1447044542-30859-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We should make the conversion table in as a parameter since the different
-SoCs have the different conversionion table.
+This patchset add the thermal for RK3368 dts,
+Since the two CPU clusters, with four CPU core for each cluster,
+One cluster is optimized for high-performance(big cluster) and the othe
+is optimized for low power(little cluster).
+
+This patch adds the second order for thermal throttle, and the critical
+temperature for thermal over-tempeature protection on Software.
 
 Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
+Acked-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
 
 Changes in v4: None
-Changes in v3:
-- As Eduardo comments, let's change data_mask type with 'u32' instead of
-  'unsigned long'.
+Changes in v3: None
+Changes in v2: None
+Changes in v1: None
 
-Changes in v2:
-- make the conversion table in as a parameter both code_to_temp
-  and temp_to_code function.
+ arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112 +++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
 
-Changes in v1:
-- As Dmitry comment, make the conversion table in as a parameterm.
-
- drivers/thermal/rockchip_thermal.c | 82 +++++++++++++++++++++++++-------------
- 1 file changed, 55 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 907a317..bbf082c 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -59,6 +59,16 @@ enum sensor_id {
-  */
- #define SOC_MAX_SENSORS	2
- 
-+struct chip_tsadc_table {
-+	const struct tsadc_table *id;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+new file mode 100644
+index 0000000..a10010f
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+@@ -0,0 +1,112 @@
++/*
++ * Device Tree Source for RK3368 SoC thermal
++ *
++ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
++ * Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++ *
++ * This file is dual-licensed: you can use it either under the terms
++ * of the GPL or the X11 license, at your option. Note that this dual
++ * licensing only applies to this file, and not this project as a
++ * whole.
++ *
++ *  a) This file is free software; you can redistribute it and/or
++ *     modify it under the terms of the GNU General Public License as
++ *     published by the Free Software Foundation; either version 2 of the
++ *     License, or (at your option) any later version.
++ *
++ *     This file is distributed in the hope that it will be useful,
++ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *     GNU General Public License for more details.
++ *
++ * Or, alternatively,
++ *
++ *  b) Permission is hereby granted, free of charge, to any person
++ *     obtaining a copy of this software and associated documentation
++ *     files (the "Software"), to deal in the Software without
++ *     restriction, including without limitation the rights to use,
++ *     copy, modify, merge, publish, distribute, sublicense, and/or
++ *     sell copies of the Software, and to permit persons to whom the
++ *     Software is furnished to do so, subject to the following
++ *     conditions:
++ *
++ *     The above copyright notice and this permission notice shall be
++ *     included in all copies or substantial portions of the Software.
++ *
++ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
++ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
++ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
++ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
++ *     OTHER DEALINGS IN THE SOFTWARE.
++ */
 +
-+	/* the array table size*/
-+	unsigned int length;
++#include <dt-bindings/thermal/thermal.h>
 +
-+	/* that analogic mask data */
-+	u32 data_mask;
++cpu_thermal: cpu_thermal {
++	polling-delay-passive = <100>; /* milliseconds */
++	polling-delay = <5000>; /* milliseconds */
++
++	thermal-sensors = <&tsadc 0>;
++
++	trips {
++		cpu_alert0: cpu_alert0 {
++			temperature = <75000>; /* millicelsius */
++			hysteresis = <2000>; /* millicelsius */
++			type = "passive";
++		};
++		cpu_alert1: cpu_alert1 {
++			temperature = <80000>; /* millicelsius */
++			hysteresis = <2000>; /* millicelsius */
++			type = "passive";
++		};
++		cpu_crit: cpu_crit {
++			temperature = <95000>; /* millicelsius */
++			hysteresis = <2000>; /* millicelsius */
++			type = "critical";
++		};
++	};
++
++	cooling-maps {
++		map0 {
++			trip = <&cpu_alert0>;
++			cooling-device =
++				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++		};
++		map1 {
++			trip = <&cpu_alert1>;
++			cooling-device =
++				<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++		};
++	};
 +};
 +
- struct rockchip_tsadc_chip {
- 	/* The sensor id of chip correspond to the ADC channel */
- 	int chn_id[SOC_MAX_SENSORS];
-@@ -75,9 +85,14 @@ struct rockchip_tsadc_chip {
- 	void (*control)(void __iomem *reg, bool on);
- 
- 	/* Per-sensor methods */
--	int (*get_temp)(int chn, void __iomem *reg, int *temp);
--	void (*set_tshut_temp)(int chn, void __iomem *reg, long temp);
-+	int (*get_temp)(struct chip_tsadc_table table,
-+			int chn, void __iomem *reg, int *temp);
-+	void (*set_tshut_temp)(struct chip_tsadc_table table,
-+			       int chn, void __iomem *reg, long temp);
- 	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
++gpu_thermal: gpu_thermal {
++	polling-delay-passive = <100>; /* milliseconds */
++	polling-delay = <5000>; /* milliseconds */
 +
-+	/* Per-table methods */
-+	struct chip_tsadc_table table;
- };
- 
- struct rockchip_thermal_sensor {
-@@ -173,21 +188,22 @@ static const struct tsadc_table v2_code_table[] = {
- 	{3421, 125000},
- };
- 
--static u32 rk_tsadcv2_temp_to_code(long temp)
-+static u32 rk_tsadcv2_temp_to_code(struct chip_tsadc_table table,
-+				   long temp)
- {
- 	int high, low, mid;
- 
- 	low = 0;
--	high = ARRAY_SIZE(v2_code_table) - 1;
-+	high = table.length - 1;
- 	mid = (high + low) / 2;
- 
--	if (temp < v2_code_table[low].temp || temp > v2_code_table[high].temp)
-+	if (temp < table.id[low].temp || temp > table.id[high].temp)
- 		return 0;
- 
- 	while (low <= high) {
--		if (temp == v2_code_table[mid].temp)
--			return v2_code_table[mid].code;
--		else if (temp < v2_code_table[mid].temp)
-+		if (temp == table.id[mid].temp)
-+			return table.id[mid].code;
-+		else if (temp < table.id[mid].temp)
- 			high = mid - 1;
- 		else
- 			low = mid + 1;
-@@ -197,25 +213,26 @@ static u32 rk_tsadcv2_temp_to_code(long temp)
- 	return 0;
- }
- 
--static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
-+static int rk_tsadcv2_code_to_temp(struct chip_tsadc_table table, u32 code,
-+				   int *temp)
- {
- 	unsigned int low = 1;
--	unsigned int high = ARRAY_SIZE(v2_code_table) - 1;
-+	unsigned int high = table.length - 1;
- 	unsigned int mid = (low + high) / 2;
- 	unsigned int num;
- 	unsigned long denom;
- 
--	BUILD_BUG_ON(ARRAY_SIZE(v2_code_table) < 2);
-+	WARN_ON(table.length < 2);
- 
--	code &= TSADCV2_DATA_MASK;
--	if (code < v2_code_table[high].code)
-+	code &= table.data_mask;
-+	if (code < table.id[high].code)
- 		return -EAGAIN;		/* Incorrect reading */
- 
- 	while (low <= high) {
--		if (code >= v2_code_table[mid].code &&
--		    code < v2_code_table[mid - 1].code)
-+		if (code >= table.id[mid].code &&
-+		    code < table.id[mid - 1].code)
- 			break;
--		else if (code < v2_code_table[mid].code)
-+		else if (code < table.id[mid].code)
- 			low = mid + 1;
- 		else
- 			high = mid - 1;
-@@ -228,10 +245,10 @@ static int rk_tsadcv2_code_to_temp(u32 code, int *temp)
- 	 * temperature between 2 table entries is linear and interpolate
- 	 * to produce less granular result.
- 	 */
--	num = v2_code_table[mid].temp - v2_code_table[mid - 1].temp;
--	num *= v2_code_table[mid - 1].code - code;
--	denom = v2_code_table[mid - 1].code - v2_code_table[mid].code;
--	*temp = v2_code_table[mid - 1].temp + (num / denom);
-+	num = table.id[mid].temp - v2_code_table[mid - 1].temp;
-+	num *= table.id[mid - 1].code - code;
-+	denom = table.id[mid - 1].code - table.id[mid].code;
-+	*temp = table.id[mid - 1].temp + (num / denom);
- 
- 	return 0;
- }
-@@ -291,20 +308,22 @@ static void rk_tsadcv2_control(void __iomem *regs, bool enable)
- 	writel_relaxed(val, regs + TSADCV2_AUTO_CON);
- }
- 
--static int rk_tsadcv2_get_temp(int chn, void __iomem *regs, int *temp)
-+static int rk_tsadcv2_get_temp(struct chip_tsadc_table table,
-+			       int chn, void __iomem *regs, int *temp)
- {
- 	u32 val;
- 
- 	val = readl_relaxed(regs + TSADCV2_DATA(chn));
- 
--	return rk_tsadcv2_code_to_temp(val, temp);
-+	return rk_tsadcv2_code_to_temp(table, val, temp);
- }
- 
--static void rk_tsadcv2_tshut_temp(int chn, void __iomem *regs, long temp)
-+static void rk_tsadcv2_tshut_temp(struct chip_tsadc_table table,
-+				  int chn, void __iomem *regs, long temp)
- {
- 	u32 tshut_value, val;
- 
--	tshut_value = rk_tsadcv2_temp_to_code(temp);
-+	tshut_value = rk_tsadcv2_temp_to_code(table, temp);
- 	writel_relaxed(tshut_value, regs + TSADCV2_COMP_SHUT(chn));
- 
- 	/* TSHUT will be valid */
-@@ -344,6 +363,12 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
- 	.get_temp = rk_tsadcv2_get_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
++	thermal-sensors = <&tsadc 1>;
 +
-+	.table = {
-+		.id = v2_code_table,
-+		.length = ARRAY_SIZE(v2_code_table),
-+		.data_mask = TSADCV2_DATA_MASK,
-+	},
- };
- 
- static const struct of_device_id of_rockchip_thermal_match[] = {
-@@ -386,7 +411,8 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
- 	const struct rockchip_tsadc_chip *tsadc = sensor->thermal->chip;
- 	int retval;
- 
--	retval = tsadc->get_temp(sensor->id, thermal->regs, out_temp);
-+	retval = tsadc->get_temp(tsadc->table,
-+				 sensor->id, thermal->regs, out_temp);
- 	dev_dbg(&thermal->pdev->dev, "sensor %d - temp: %d, retval: %d\n",
- 		sensor->id, *out_temp, retval);
- 
-@@ -464,7 +490,8 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
- 	int error;
- 
- 	tsadc->set_tshut_mode(id, thermal->regs, thermal->tshut_mode);
--	tsadc->set_tshut_temp(id, thermal->regs, thermal->tshut_temp);
-+	tsadc->set_tshut_temp(tsadc->table, id, thermal->regs,
-+			      thermal->tshut_temp);
- 
- 	sensor->thermal = thermal;
- 	sensor->id = id;
-@@ -682,7 +709,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 
- 		thermal->chip->set_tshut_mode(id, thermal->regs,
- 					      thermal->tshut_mode);
--		thermal->chip->set_tshut_temp(id, thermal->regs,
-+		thermal->chip->set_tshut_temp(thermal->chip->table,
-+					      id, thermal->regs,
- 					      thermal->tshut_temp);
- 	}
- 
++	trips {
++		gpu_alert0: gpu_alert0 {
++			temperature = <80000>; /* millicelsius */
++			hysteresis = <2000>; /* millicelsius */
++			type = "passive";
++		};
++		gpu_crit: gpu_crit {
++			temperature = <1150000>; /* millicelsius */
++			hysteresis = <2000>; /* millicelsius */
++			type = "critical";
++		};
++	};
++
++	cooling-maps {
++		map0 {
++			trip = <&gpu_alert0>;
++			cooling-device =
++				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++		};
++	};
++};
 -- 
 1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
