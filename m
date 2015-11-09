@@ -1,312 +1,121 @@
-From: Zain <zain.wang@rock-chips.com>
-Subject: Re: [PATCH v2 1/4] Crypto: Crypto driver support aes/des/des3 for
- rk3288
-Date: Mon, 9 Nov 2015 11:46:52 +0800
-Message-ID: <5640172C.9010706@rock-chips.com>
-References: <1446772644-2352-1-git-send-email-zain.wang@rock-chips.com>
- <1446772644-2352-2-git-send-email-zain.wang@rock-chips.com>
- <29530953.Mr1LQyjF1I@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy loading
+Date: Sun, 8 Nov 2015 20:39:54 -0800
+Message-ID: <CAD=FV=XFmgBoxm6oOgwu6HDajFBjsmF=1Sem_0UPN51zNO64fg@mail.gmail.com>
+References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
+	<20151103113030.GB14159@arm.com>
+	<CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
+	<20151106121741.GH6087@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <29530953.Mr1LQyjF1I@phil>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20151106121741.GH6087@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will.deacon@arm.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-Thanks for your serious comments always.
+Will,
 
-On 2015=E5=B9=B411=E6=9C=8808=E6=97=A5 07:19, Heiko Stuebner wrote:
-> Hi Zain,
+On Fri, Nov 6, 2015 at 4:17 AM, Will Deacon <will.deacon@arm.com> wrote:
+> On Tue, Nov 03, 2015 at 11:00:20AM -0800, Doug Anderson wrote:
+>> Hi,
 >
-> looks like my comment on v1 came later than your v2 submission,
-> so here it is again :-)
+> Hey Doug,
 >
-> Am Freitag, 6. November 2015, 09:17:21 schrieb Zain Wang:
->> The names registered are:
->>     ecb(aes) cbc(aes) ecb(des) cbc(des) ecb(des3_ede) cbc(des3_ede)
->> You can alloc tags above in your case.
+>> When CPUs are hard locked up, they are often found at:
 >>
->> And other algorithms and platforms will be added later on.
+>> <c0117c8c> v7_coherent_kern_range+0x58/0x74
+>>   or
+>> <c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
 >>
->> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+>> That made me think that an errata might be the root cause of our hard
+>> lockups, since ARM errata often trigger in cache/tlb functions.  I
+>> think Caesar dug up this old errata fix in response to my suggestion.
+>
+> I still don't see how 818325 is related, since there aren't any conditional
+> stores in the sequences below.
+>
+>> If you know of any ARM errata that might trigger hard lockups like
+>> this, I'd certainly be all ears.  It's also possible that we've got
+>> something running at too low of a voltage or we've got clock dividers
+>> or cache timings programmed incorrectly somewhere.  To give a more
+>> full disassembly of one of the crashes:
+>>
+>>   <4>[ 1623.480846] SMP: failed to stop secondary CPUs
+>>   <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
+>>   <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x74
+>>   <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20/0x38
+>>
 >> ---
->>
-> [...]
 >
->> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypt=
-o/rockchip/rk3288_crypto.c
->> new file mode 100644
->> index 0000000..c2a419b
->> --- /dev/null
->> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
-> [...]
+> Do you have any register values for these CPUs?
+
+No, unfortunately not.  The only reason I have the PCs is because we
+have code to sample CPU_DBGPCSR at hard lockup time (actually any
+panic time).  There's no equivalent for other registers.  The code
+does try to sample a number of times, so the fact that we only have
+one PC value for each of the other CPUs implies that they are either
+totally stuck or running in a very tight loop (from experimentation,
+if you are running in a tight loop of just a few instructions the
+CPU_DBGPCSR for a CPU may or may not update).
+
+If you're curious, you can see rockchip_panic_notify() in
+<https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14/arch/arm/mach-rockchip/rockchip.c>.
+It's basically some code that's been ported forward from code in an
+old Android tree and it's not beautiful, but it's better than nothing.
+The code only runs if the panic notifier failed to stop the other CPUs
+in a normal way.
+
+Technically (I think) I saw something in the CPU debug registers that
+would actually allow me to force another CPU to stop.  That might let
+me gain control over it and inspect the other registers.  Doing that
+is probably beyond what I have time for right now, though.
+
+
+>> c01827dc:       e2841010        add     r1, r4, #16
+>> c01827e0:       e2445004        sub     r5, r4, #4
+>> c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
+>> Offset: 0x235cb8)
+>> => c01827e8:    f595f000        pldw    [r5]
+>> c01827ec:       e1953f9f        ldrex   r3, [r5]
+>> c01827f0:       e2433001        sub     r3, r3, #1
+>> c01827f4:       e1852f93        strex   r2, r3, [r5]
+>> c01827f8:       e3320000        teq     r2, #0
+>> c01827fc:       1afffffa        bne     c01827ec
+>> <__unqueue_futex+0x6c> (File Offset: 0x927ec)
+>> c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
 >
->> +static int rk_crypto_probe(struct platform_device *pdev)
->> +{
->> +	int err =3D 0;
->> +	struct resource *res;
->> +	struct device *dev =3D &pdev->dev;
->> +	struct crypto_info_t *crypto_info;
->> +
-> rk3288 chromebooks use the crypto-engine to validate the boot images =
-and
-> seem to leave it in a half-on state. This results in an irq pending
-> during probe and thus a null-pointer dereference in the irq-handler, =
-as
-> it runs before the crypto-device is fully initialized.
+> For example, the futex address in r5 ...
 >
-> resetting the crypto block, successfull fixed that issue, so I did th=
-e
-> following change:
+>> c0117c80:       e08cc002        add     ip, ip, r2
+>> c0117c84:       e15c0001        cmp     ip, r1
+>> c0117c88:       3afffffb        bcc     c0117c7c
+>> <v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
+>> => c0117c8c:    e3a00000        mov     r0, #0
+>> c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
+>> c0117c94:       f57ff04a        dsb     ishst
+>> c0117c98:       f57ff06f        isb     sy
+>> c0117c9c:       e1a0f00e        mov     pc, lr
 >
-> -------------------
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288=
-=2Edtsi
-> index 121b6d5..e978fb2 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -182,6 +182,8 @@
->                               "hclk",
->                               "sclk",
->                               "apb_pclk";
-> +               resets =3D <&cru SRST_CRYPTO>;
-> +               reset-names =3D "crypto";
->                 status =3D "okay";
->         };
-> =20
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto=
-/rockchip/rk3288_crypto.c
-> index 02830f2..2245d3d 100644
-> --- a/drivers/crypto/rockchip/rk3288_crypto.c
-> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
-> @@ -18,6 +18,7 @@
->  #include <linux/of.h>
->  #include <linux/clk.h>
->  #include <linux/crypto.h>
-> +#include <linux/reset.h>
-> =20
->  struct crypto_info_t *crypto_p;
-> =20
-> @@ -266,6 +267,15 @@ static int rk_crypto_probe(struct platform_devic=
-e *pdev)
->         struct resource *res;
->         struct device *dev =3D &pdev->dev;
->         struct crypto_info_t *crypto_info;
-> +       struct reset_control *rst;
-> +
-> +       /* reset the block to remove any pending actions */
-> +       rst =3D devm_reset_control_get(dev, "crypto");
-> +       if (!IS_ERR(rst)) {
-> +               reset_control_assert(rst);
-> +               usleep_range(10, 20);
-> +               reset_control_deassert(rst);
-> +       }
-> =20
->         crypto_info =3D devm_kzalloc(&pdev->dev,
->                         sizeof(*crypto_info), GFP_KERNEL);
-> -------------------
+> ... the address in r0 for the cache maintenance ...
 >
-Ok! done!
->> +	crypto_info =3D devm_kzalloc(&pdev->dev,
->> +				   sizeof(*crypto_info), GFP_KERNEL);
->> +	if (!crypto_info)
->> +		return -ENOMEM;
->> +
->> +	spin_lock_init(&crypto_info->lock);
->> +
->> +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> +	crypto_info->reg =3D devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(crypto_info->reg)) {
->> +		err =3D PTR_ERR(crypto_info->reg);
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->aclk =3D devm_clk_get(&pdev->dev, "aclk");
->> +	if (IS_ERR(crypto_info->aclk)) {
->> +		err =3D PTR_ERR(crypto_info->aclk);
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->hclk =3D devm_clk_get(&pdev->dev, "hclk");
->> +	if (IS_ERR(crypto_info->hclk)) {
->> +		err =3D PTR_ERR(crypto_info->hclk);
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->sclk =3D devm_clk_get(&pdev->dev, "sclk");
->> +	if (IS_ERR(crypto_info->sclk)) {
->> +		err =3D PTR_ERR(crypto_info->sclk);
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->dmaclk =3D devm_clk_get(&pdev->dev, "apb_pclk");
->> +	if (IS_ERR(crypto_info->dmaclk)) {
->> +		err =3D PTR_ERR(crypto_info->dmaclk);
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->irq =3D platform_get_irq(pdev, 0);
->> +	if (crypto_info->irq < 0) {
->> +		dev_warn(crypto_info->dev,
->> +			 "control Interrupt is not available.\n");
->> +		err =3D crypto_info->irq;
->> +		goto err_ioremap;
->> +	}
->> +
->> +	err =3D devm_request_irq(&pdev->dev, crypto_info->irq, crypto_irq_=
-handle,
->> +			       IRQF_SHARED, "rk-crypto", pdev);
->> +
->> +	if (err) {
->> +		dev_err(crypto_info->dev, "irq request failed.\n");
->> +		goto err_ioremap;
->> +	}
->> +
->> +	crypto_info->dev =3D &pdev->dev;
->> +	platform_set_drvdata(pdev, crypto_info);
->> +	crypto_p =3D crypto_info;
->> +
->> +	tasklet_init(&crypto_info->crypto_tasklet,
->> +		     rk_crypto_tasklet_cb, (unsigned long)crypto_info);
->> +	crypto_init_queue(&crypto_info->queue, 50);
->> +
->> +	crypto_info->enable_clk =3D rk_crypto_enable_clk;
->> +	crypto_info->disable_clk =3D rk_crypto_disable_clk;
->> +	crypto_info->load_data =3D rk_load_data;
->> +	crypto_info->unload_data =3D rk_unload_data;
->> +
->> +	err =3D rk_crypto_register();
->> +	if (err) {
->> +		dev_err(dev, "err in register alg");
->> +		goto err_reg_alg;
->> +	}
->> +
->> +	return 0;
->> +
->> +err_reg_alg:
->> +	free_irq(crypto_info->irq, crypto_info);
->> +err_ioremap:
->> +	crypto_p =3D NULL;
->> +
->> +	return err;
->> +}
->> +
-> [...]
+>> c0118260:       e1830600        orr     r0, r3, r0, lsl #12
+>> c0118264:       e1a01601        lsl     r1, r1, #12
+>> => c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
+>> c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
+>> c0118270:       e1500001        cmp     r0, r1
+>> c0118274:       3afffffb        bcc     c0118268
+>> <v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
+>> c0118278:       f57ff04b        dsb     ish
+>> c011827c:       e1a0f00e        mov     pc, lr
 >
->> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypt=
-o/rockchip/rk3288_crypto.h
->> new file mode 100644
->> index 0000000..cf4cd18
->> --- /dev/null
->> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
->> @@ -0,0 +1,222 @@
-> [...]
+> ... and the address in r0 for the TLBI.
 >
->> +struct crypto_info_t {
-> this is highly rockchip specific, so should probably be named
->         rk_crypto_info
-> or similar instead of a generic sounding crypto_info_t
-Ok! Done!
->
-> [...]
->
->> +	struct device			*dev;
->> +	struct clk			*aclk;
->> +	struct clk			*hclk;
->> +	struct clk			*sclk;
->> +	struct clk			*dmaclk;
->> +	void __iomem			*reg;
->> +	int				irq;
->> +	struct crypto_queue		queue;
->> +	struct tasklet_struct		crypto_tasklet;
->> +	struct ablkcipher_request	*ablk_req;
->> +	/* device lock */
->> +	spinlock_t			lock;
->> +
->> +	/* the public variable */
->> +	struct scatterlist		*sg_src;
->> +	struct scatterlist		*sg_dst;
->> +	struct scatterlist		sg_tmp;
->> +	struct scatterlist		*first;
->> +	unsigned int			left_bytes;
->> +	void				*addr_vir;
->> +	int				aligned;
->> +	int				align_size;
->> +	size_t				nents;
->> +	unsigned int			total;
->> +	unsigned int			count;
->> +	u32				mode;
->> +	dma_addr_t			addr_in;
->> +	dma_addr_t			addr_out;
->> +	int (*start)(struct crypto_info_t *dev);
->> +	int (*update)(struct crypto_info_t *dev);
->> +	void (*complete)(struct crypto_info_t *dev, int err);
->> +	int (*enable_clk)(struct crypto_info_t *dev);
->> +	void (*disable_clk)(struct crypto_info_t *dev);
->> +	int (*load_data)(struct crypto_info_t *dev,
->> +			 struct scatterlist *sg_src,
->> +			 struct scatterlist *sg_dst);
->> +	void (*unload_data)(struct crypto_info_t *dev);
->> +};
->> +
->> +/* the private variable of cipher */
->> +struct rk_cipher_ctx {
->> +	struct crypto_info_t		*dev;
->> +	unsigned int			keylen;
->> +};
->> +
->> +extern struct crypto_info_t *crypto_p;
->> +
->> +extern struct crypto_alg rk_ecb_aes_alg;
->> +extern struct crypto_alg rk_cbc_aes_alg;
->> +extern struct crypto_alg rk_ecb_des_alg;
->> +extern struct crypto_alg rk_cbc_des_alg;
->> +extern struct crypto_alg rk_ecb_des3_ede_alg;
->> +extern struct crypto_alg rk_cbc_des3_ede_alg;
->> +
->> +#endif
->> diff --git a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c b/dr=
-ivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
->> new file mode 100644
->> index 0000000..28b49c9
->> --- /dev/null
->> +++ b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
->> @@ -0,0 +1,511 @@
-> [...]
->
->> +static int rk_ablk_cra_init(struct crypto_tfm *tfm)
->> +{
->> +	struct rk_cipher_ctx *ctx =3D crypto_tfm_ctx(tfm);
->> +
->> +	ctx->dev =3D crypto_p;
-> please no static pointers for devices.
->
-> For example, sunxi_ss does the following to transport the core device=
--data
-> into the init function:
->
->         struct sun4i_tfm_ctx *op =3D crypto_tfm_ctx(tfm);
->         struct crypto_alg *alg =3D tfm->__crt_alg;
->         struct sun4i_ss_alg_template *algt;
->
->         algt =3D container_of(alg, struct sun4i_ss_alg_template, alg.=
-crypto);
->         op->ss =3D algt->ss;
->
-> so you could probably do something similar
->
-> Same of course for the other crypto_p users.
-Ok! Done!
->
->
-> Thanks
-> Heiko
->
->
->
-Thanks
-Zain
+> Are the cores executing instructions at this point, or by "hard LOCKUP"
+> do you mean that they're deadlocked in hardware?
+
+If they are executing, they aren't executing much.  That means it's
+likely they're deadlocked in hardware.
+
+-Doug
