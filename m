@@ -1,158 +1,111 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 08/10] arm64: dts: Add the thermal data found on RK3368
-Date: Mon,  9 Nov 2015 12:49:00 +0800
-Message-ID: <1447044542-30859-9-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v4 06/10] thermal: rockchip: consistently use int for temperatures
+Date: Mon,  9 Nov 2015 12:48:58 +0800
+Message-ID: <1447044542-30859-7-git-send-email-wxt@rock-chips.com>
 References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1447044542-30859-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, lkp@intel.com, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patchset add the thermal for RK3368 dts,
-Since the two CPU clusters, with four CPU core for each cluster,
-One cluster is optimized for high-performance(big cluster) and the othe
-is optimized for low power(little cluster).
+As Temperature is currently represented as int not long in the thermal
+framework since use int intead of unsigned long/long to represent
+temperature to avoid bogus overheat detection when negative temperature
+reported.
 
-This patch adds the second order for thermal throttle, and the critical
-temperature for thermal over-tempeature protection on Software.
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
 
-Changes in v4: None
-Changes in v3: None
+Changes in v4:
+- fix the warning from the print message.
+
+Changes in v3:
+- As the Patch v2 comments, Add a new patch to fix it.
+
 Changes in v2: None
 Changes in v1: None
 
- arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112 +++++++++++++++++++++++
- 1 file changed, 112 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+ drivers/thermal/rockchip_thermal.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
-new file mode 100644
-index 0000000..a10010f
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
-@@ -0,0 +1,112 @@
-+/*
-+ * Device Tree Source for RK3368 SoC thermal
-+ *
-+ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-+ * Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#include <dt-bindings/thermal/thermal.h>
-+
-+cpu_thermal: cpu_thermal {
-+	polling-delay-passive = <100>; /* milliseconds */
-+	polling-delay = <5000>; /* milliseconds */
-+
-+	thermal-sensors = <&tsadc 0>;
-+
-+	trips {
-+		cpu_alert0: cpu_alert0 {
-+			temperature = <75000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "passive";
-+		};
-+		cpu_alert1: cpu_alert1 {
-+			temperature = <80000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "passive";
-+		};
-+		cpu_crit: cpu_crit {
-+			temperature = <95000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "critical";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map0 {
-+			trip = <&cpu_alert0>;
-+			cooling-device =
-+				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+		};
-+		map1 {
-+			trip = <&cpu_alert1>;
-+			cooling-device =
-+				<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
-+
-+gpu_thermal: gpu_thermal {
-+	polling-delay-passive = <100>; /* milliseconds */
-+	polling-delay = <5000>; /* milliseconds */
-+
-+	thermal-sensors = <&tsadc 1>;
-+
-+	trips {
-+		gpu_alert0: gpu_alert0 {
-+			temperature = <80000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "passive";
-+		};
-+		gpu_crit: gpu_crit {
-+			temperature = <1150000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "critical";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map0 {
-+			trip = <&gpu_alert0>;
-+			cooling-device =
-+				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 7c5b784..73d47f8 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -88,7 +88,7 @@ struct rockchip_tsadc_chip {
+ 	int chn_num;
+ 
+ 	/* The hardware-controlled tshut property */
+-	long tshut_temp;
++	int tshut_temp;
+ 	enum tshut_mode tshut_mode;
+ 	enum tshut_polarity tshut_polarity;
+ 
+@@ -101,7 +101,7 @@ struct rockchip_tsadc_chip {
+ 	int (*get_temp)(struct chip_tsadc_table table,
+ 			int chn, void __iomem *reg, int *temp);
+ 	void (*set_tshut_temp)(struct chip_tsadc_table table,
+-			       int chn, void __iomem *reg, long temp);
++			       int chn, void __iomem *reg, int temp);
+ 	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
+ 
+ 	/* Per-table methods */
+@@ -126,7 +126,7 @@ struct rockchip_thermal_data {
+ 
+ 	void __iomem *regs;
+ 
+-	long tshut_temp;
++	int tshut_temp;
+ 	enum tshut_mode tshut_mode;
+ 	enum tshut_polarity tshut_polarity;
+ };
+@@ -160,7 +160,7 @@ struct rockchip_thermal_data {
+ 
+ struct tsadc_table {
+ 	u32 code;
+-	long temp;
++	int temp;
+ };
+ 
+ static const struct tsadc_table v2_code_table[] = {
+@@ -202,7 +202,7 @@ static const struct tsadc_table v2_code_table[] = {
+ };
+ 
+ static u32 rk_tsadcv2_temp_to_code(struct chip_tsadc_table table,
+-				   long temp)
++				   int temp)
+ {
+ 	int high, low, mid;
+ 
+@@ -356,7 +356,7 @@ static int rk_tsadcv2_get_temp(struct chip_tsadc_table table,
+ }
+ 
+ static void rk_tsadcv2_tshut_temp(struct chip_tsadc_table table,
+-				  int chn, void __iomem *regs, long temp)
++				  int chn, void __iomem *regs, int temp)
+ {
+ 	u32 tshut_value, val;
+ 
+@@ -469,7 +469,7 @@ static int rockchip_configure_from_dt(struct device *dev,
+ 
+ 	if (of_property_read_u32(np, "rockchip,hw-tshut-temp", &shut_temp)) {
+ 		dev_warn(dev,
+-			 "Missing tshut temp property, using default %ld\n",
++			 "Missing tshut temp property, using default %d\n",
+ 			 thermal->chip->tshut_temp);
+ 		thermal->tshut_temp = thermal->chip->tshut_temp;
+ 	} else {
+@@ -477,7 +477,7 @@ static int rockchip_configure_from_dt(struct device *dev,
+ 	}
+ 
+ 	if (thermal->tshut_temp > INT_MAX) {
+-		dev_err(dev, "Invalid tshut temperature specified: %ld\n",
++		dev_err(dev, "Invalid tshut temperature specified: %d\n",
+ 			thermal->tshut_temp);
+ 		return -ERANGE;
+ 	}
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
