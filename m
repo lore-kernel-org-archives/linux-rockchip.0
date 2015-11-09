@@ -1,47 +1,66 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [RFC PATCH] usb: dwc2: host: Rewrite the microframe scheduler
-Date: Mon, 9 Nov 2015 11:24:00 -0800
-Message-ID: <CAD=FV=VrcimjU8aeFemRQ9cO79XsoacHAzmHWRJN6nZtnipfDA@mail.gmail.com>
-References: <1446861051-20135-1-git-send-email-dianders@chromium.org>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH] thermal: rockchip: fix compile error
+Date: Mon, 9 Nov 2015 11:36:39 -0800
+Message-ID: <20151109193638.GB10824@localhost.localdomain>
+References: <1446990043-8096-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446861051-20135-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
-Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1446990043-8096-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: rui.zhang@intel.com, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, sfr@canb.auug.org.au, lkp@intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Sun, Nov 08, 2015 at 09:40:43PM +0800, Caesar Wang wrote:
+> Missing a include file caused compile error.
+> 
+> drivers/thermal/rockchip_thermal.c:
+> In function 'rockchip_thermal_suspend':
+> drivers/thermal/rockchip_thermal.c:720:2: error: implicit
+> declaration of function 'pinctrl_pm_select_sleep_state'
+> [-Werror=implicit-function-declaration]
+> pinctrl_pm_select_sleep_state(dev);
+>                  ^
+> drivers/thermal/rockchip_thermal.c:
+> In function 'rockchip_thermal_resume':
+> drivers/thermal/rockchip_thermal.c:759:2: error: implicit
+> declaration of function 'pinctrl_pm_select_default_state'
+> [-Werror=implicit-function-declaration]
+> ^pinctrl_pm_select_default_state(dev);
+> cc1: some warnings being treated as errors
+> 
+> Fixes: 7e38a5b1daa1 ("thermal: rockchip: support the sleep pinctrl state
+> to avoid glitches")
 
-On Fri, Nov 6, 2015 at 5:50 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> The old microframe scheduler was terribly hard to follow and (it seemed
-> to me) that it had some bugs in it.
->
-> Let's re-write it in a simpler, easier-to-read way.  Hopefully this will
-> work better.
->
-> Note: no known problems are fixed by this patch, and in fact I can see
-> very little impact of the microframe scheduler overall.
->
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Adding this to my tree and sending to ruis too.
+
+
+Thanks
+
+> 
+> Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
+> Reported-by: kbuild test robot <lkp@intel.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 > ---
->  drivers/usb/dwc2/hcd_queue.c | 72 ++++++++++++++++++++------------------------
->  1 file changed, 32 insertions(+), 40 deletions(-)
-
-Self-NAKing this change.
-
-I wrote up some test code to help visualize how things were scheduled.
-That proved that the old function is pretty broken, but the new
-function not only has a typo (using "i" instead of "j" in a few
-places) but also suffers from some of the same problems as the old
-function.
-
-It might be easy to use the bitmap functions to implement this easily
-/ properly.  I'll see if I can do that.
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+>  drivers/thermal/rockchip_thermal.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index df28049..8928d67 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -25,6 +25,7 @@
+>  #include <linux/platform_device.h>
+>  #include <linux/reset.h>
+>  #include <linux/thermal.h>
+> +#include <linux/pinctrl/consumer.h>
+>  
+>  /**
+>   * If the temperature over a period of time High,
+> -- 
+> 1.9.1
+> 
