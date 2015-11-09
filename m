@@ -1,121 +1,58 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH 0/1] Fix the "hard LOCKUP" when running a heavy loading
-Date: Sun, 8 Nov 2015 20:39:54 -0800
-Message-ID: <CAD=FV=XFmgBoxm6oOgwu6HDajFBjsmF=1Sem_0UPN51zNO64fg@mail.gmail.com>
-References: <1446538209-13490-1-git-send-email-wxt@rock-chips.com>
-	<20151103113030.GB14159@arm.com>
-	<CAD=FV=XYBeKSo7NeTt3P0nSPA_A3yQ0qHDwxsJSzsTgA5VPkoA@mail.gmail.com>
-	<20151106121741.GH6087@arm.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 01/10] dt-bindings: rockchip-thermal: Support the RK3368
+ SoCs compatible
+Date: Mon,  9 Nov 2015 12:48:53 +0800
+Message-ID: <1447044542-30859-2-git-send-email-wxt@rock-chips.com>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20151106121741.GH6087@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Huang Tao <huangtao@rock-chips.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Lin Huang <hl@rock-chips.com>, Ard Biesheuvel <ard.biesheuvel@linaro.org>, Simon Glass <sjg@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Nadav Haklai <nadavh@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?B?6JSh5paH5b+g?= <cwz@rock-chips.com>, Jonathan Stone <j.stone@samsung.com>, Gregory CLEMENT <gregory.clement@free-electrons.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447044542-30859-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Will,
+This patchset attempts to new compatible for thermal founding
+on RK3368 SoCs.
 
-On Fri, Nov 6, 2015 at 4:17 AM, Will Deacon <will.deacon@arm.com> wrote:
-> On Tue, Nov 03, 2015 at 11:00:20AM -0800, Doug Anderson wrote:
->> Hi,
->
-> Hey Doug,
->
->> When CPUs are hard locked up, they are often found at:
->>
->> <c0117c8c> v7_coherent_kern_range+0x58/0x74
->>   or
->> <c0118278> v7wbi_flush_user_tlb_range+0x30/0x38
->>
->> That made me think that an errata might be the root cause of our hard
->> lockups, since ARM errata often trigger in cache/tlb functions.  I
->> think Caesar dug up this old errata fix in response to my suggestion.
->
-> I still don't see how 818325 is related, since there aren't any conditional
-> stores in the sequences below.
->
->> If you know of any ARM errata that might trigger hard lockups like
->> this, I'd certainly be all ears.  It's also possible that we've got
->> something running at too low of a voltage or we've got clock dividers
->> or cache timings programmed incorrectly somewhere.  To give a more
->> full disassembly of one of the crashes:
->>
->>   <4>[ 1623.480846] SMP: failed to stop secondary CPUs
->>   <3>[ 1623.480862] CPU1 PC: <c01827e8> __unqueue_futex+0x68/0x88
->>   <3>[ 1623.480879] CPU2 PC: <c0117c8c> v7_coherent_kern_range+0x58/0x74
->>   <3>[ 1623.480895] CPU3 PC: <c0118268> v7wbi_flush_user_tlb_range+0x20/0x38
->>
->> ---
->
-> Do you have any register values for these CPUs?
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-No, unfortunately not.  The only reason I have the PCs is because we
-have code to sample CPU_DBGPCSR at hard lockup time (actually any
-panic time).  There's no equivalent for other registers.  The code
-does try to sample a number of times, so the fact that we only have
-one PC value for each of the other CPUs implies that they are either
-totally stuck or running in a very tight loop (from experimentation,
-if you are running in a tight loop of just a few instructions the
-CPU_DBGPCSR for a CPU may or may not update).
+---
 
-If you're curious, you can see rockchip_panic_notify() in
-<https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.14/arch/arm/mach-rockchip/rockchip.c>.
-It's basically some code that's been ported forward from code in an
-old Android tree and it's not beautiful, but it's better than nothing.
-The code only runs if the panic notifier failed to stop the other CPUs
-in a normal way.
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+Changes in v1:
+- %s/thermal/rockchip-thermal in subject.
 
-Technically (I think) I saw something in the CPU debug registers that
-would actually allow me to force another CPU to stop.  That might let
-me gain control over it and inspect the other registers.  Doing that
-is probably beyond what I have time for right now, though.
+ Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-
->> c01827dc:       e2841010        add     r1, r4, #16
->> c01827e0:       e2445004        sub     r5, r4, #4
->> c01827e4:       eb068d33        bl      c0325cb8 <plist_del> (File
->> Offset: 0x235cb8)
->> => c01827e8:    f595f000        pldw    [r5]
->> c01827ec:       e1953f9f        ldrex   r3, [r5]
->> c01827f0:       e2433001        sub     r3, r3, #1
->> c01827f4:       e1852f93        strex   r2, r3, [r5]
->> c01827f8:       e3320000        teq     r2, #0
->> c01827fc:       1afffffa        bne     c01827ec
->> <__unqueue_futex+0x6c> (File Offset: 0x927ec)
->> c0182800:       e89da830        ldm     sp, {r4, r5, fp, sp, pc}
->
-> For example, the futex address in r5 ...
->
->> c0117c80:       e08cc002        add     ip, ip, r2
->> c0117c84:       e15c0001        cmp     ip, r1
->> c0117c88:       3afffffb        bcc     c0117c7c
->> <v7_coherent_kern_range+0x48> (File Offset: 0x27c7c)
->> => c0117c8c:    e3a00000        mov     r0, #0
->> c0117c90:       ee070fd1        mcr     15, 0, r0, cr7, cr1, {6}
->> c0117c94:       f57ff04a        dsb     ishst
->> c0117c98:       f57ff06f        isb     sy
->> c0117c9c:       e1a0f00e        mov     pc, lr
->
-> ... the address in r0 for the cache maintenance ...
->
->> c0118260:       e1830600        orr     r0, r3, r0, lsl #12
->> c0118264:       e1a01601        lsl     r1, r1, #12
->> => c0118268:    ee080f33        mcr     15, 0, r0, cr8, cr3, {1}
->> c011826c:       e2800a01        add     r0, r0, #4096   ; 0x1000
->> c0118270:       e1500001        cmp     r0, r1
->> c0118274:       3afffffb        bcc     c0118268
->> <v7wbi_flush_user_tlb_range+0x20> (File Offset: 0x28268)
->> c0118278:       f57ff04b        dsb     ish
->> c011827c:       e1a0f00e        mov     pc, lr
->
-> ... and the address in r0 for the TLBI.
->
-> Are the cores executing instructions at this point, or by "hard LOCKUP"
-> do you mean that they're deadlocked in hardware?
-
-If they are executing, they aren't executing much.  That means it's
-likely they're deadlocked in hardware.
-
--Doug
+diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+index b38200d..0dfa60d 100644
+--- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
++++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
+@@ -1,7 +1,9 @@
+ * Temperature Sensor ADC (TSADC) on rockchip SoCs
+ 
+ Required properties:
+-- compatible : "rockchip,rk3288-tsadc"
++- compatible : should be "rockchip,<name>-tsadc"
++   "rockchip,rk3288-tsadc": found on RK3288 SoCs
++   "rockchip,rk3368-tsadc": found on RK3368 SoCs
+ - reg : physical base address of the controller and length of memory mapped
+ 	region.
+ - interrupts : The interrupt number to the cpu. The interrupt specifier format
+-- 
+1.9.1
