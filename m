@@ -1,149 +1,113 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 07/10] thermal: rockchip: Support the RK3368 SoCs in thermal driver
-Date: Mon,  9 Nov 2015 12:48:59 +0800
-Message-ID: <1447044542-30859-8-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 09/10] arm64: dts: Add main Thermal info to rk3368.dtsi
+Date: Mon,  9 Nov 2015 12:49:01 +0800
+Message-ID: <1447044542-30859-10-git-send-email-wxt@rock-chips.com>
 References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, lkp@intel.com, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1447044542-30859-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The RK3368 SoCs support to 2 channel TS-ADC, the temperature criteria
-of each channel can be configurable.
+This patch add the thermal needed info on RK3368.
+Meanwhile, support the trips to throttle for thermal.
 
-The system has two Temperature Sensors, channel 0 is for CPU,
-and channel 1 is for GPU.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
 ---
 
-Changes in v4:
-- :%s/sort_flag/mode.
-- rename the 'drivers' to 'driver' in subject.
-
-Changes in v3:
-- :%s/flag/sort_flag
-- fix the rk3368 sort_flag as increment mode.
-
+Changes in v4: None
+Changes in v3: None
 Changes in v2:
-- remove some unused, completed on other patchs.
+- fix a copy wrong name.
 
-Changes in v1: None
+Changes in v1:
+- support the opt gpio pinctrl state.
 
- drivers/thermal/rockchip_thermal.c | 72 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 72 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 36 ++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 73d47f8..e845841 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1,6 +1,9 @@
- /*
-  * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-  *
-+ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-+ * Caesar Wang <wxt@rock-chips.com>
-+ *
-  * This program is free software; you can redistribute it and/or modify it
-  * under the terms and conditions of the GNU General Public License,
-  * version 2, as published by the Free Software Foundation.
-@@ -153,6 +156,8 @@ struct rockchip_thermal_data {
- #define TSADCV2_INT_PD_CLEAR_MASK		~BIT(8)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index cc093a4..83a2bd2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -45,6 +45,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/thermal/thermal.h>
  
- #define TSADCV2_DATA_MASK			0xfff
-+#define TSADCV3_DATA_MASK			0x3ff
+ / {
+ 	compatible = "rockchip,rk3368";
+@@ -123,6 +124,8 @@
+ 			reg = <0x0 0x0>;
+ 			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
 +
- #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
- #define TSADCV2_AUTO_PERIOD_TIME		250 /* msec */
-@@ -201,6 +206,45 @@ static const struct tsadc_table v2_code_table[] = {
- 	{3421, 125000},
- };
++			#cooling-cells = <2>; /* min followed by max */
+ 		};
  
-+static const struct tsadc_table v3_code_table[] = {
-+	{0, -40000},
-+	{106, -40000},
-+	{108, -35000},
-+	{110, -30000},
-+	{112, -25000},
-+	{114, -20000},
-+	{116, -15000},
-+	{118, -10000},
-+	{120, -5000},
-+	{122, 0},
-+	{124, 5000},
-+	{126, 10000},
-+	{128, 15000},
-+	{130, 20000},
-+	{132, 25000},
-+	{134, 30000},
-+	{136, 35000},
-+	{138, 40000},
-+	{140, 45000},
-+	{142, 50000},
-+	{144, 55000},
-+	{146, 60000},
-+	{148, 65000},
-+	{150, 70000},
-+	{152, 75000},
-+	{154, 80000},
-+	{156, 85000},
-+	{158, 90000},
-+	{160, 95000},
-+	{162, 100000},
-+	{163, 105000},
-+	{165, 110000},
-+	{167, 115000},
-+	{169, 120000},
-+	{171, 125000},
-+	{TSADCV3_DATA_MASK, 125000},
-+};
+ 		cpu_l1: cpu@1 {
+@@ -155,6 +158,8 @@
+ 			reg = <0x0 0x100>;
+ 			cpu-idle-states = <&cpu_sleep>;
+ 			enable-method = "psci";
 +
- static u32 rk_tsadcv2_temp_to_code(struct chip_tsadc_table table,
- 				   int temp)
- {
-@@ -409,11 +453,39 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
- 	},
- };
++			#cooling-cells = <2>; /* min followed by max */
+ 		};
  
-+static const struct rockchip_tsadc_chip rk3368_tsadc_data = {
-+	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-+	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	.chn_num = 2, /* two channels for tsadc */
+ 		cpu_b1: cpu@101 {
+@@ -404,6 +409,27 @@
+ 		status = "disabled";
+ 	};
+ 
++	thermal-zones {
++		#include "rk3368-thermal.dtsi"
++	};
 +
-+	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-+	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-+	.tshut_temp = 95000,
++	tsadc: tsadc@ff280000 {
++		compatible = "rockchip,rk3368-tsadc";
++		reg = <0x0 0xff280000 0x0 0x100>;
++		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
++		clock-names = "tsadc", "apb_pclk";
++		resets = <&cru SRST_TSADC>;
++		reset-names = "tsadc-apb";
++		pinctrl-names = "init", "default", "sleep";
++		pinctrl-0 = <&otp_gpio>;
++		pinctrl-1 = <&otp_out>;
++		pinctrl-2 = <&otp_gpio>;
++		#thermal-sensor-cells = <1>;
++		rockchip,hw-tshut-temp = <95000>;
++		status = "disabled";
++	};
 +
-+	.initialize = rk_tsadcv2_initialize,
-+	.irq_ack = rk_tsadcv2_irq_ack,
-+	.control = rk_tsadcv2_control,
-+	.get_temp = rk_tsadcv2_get_temp,
-+	.set_tshut_temp = rk_tsadcv2_tshut_temp,
-+	.set_tshut_mode = rk_tsadcv2_tshut_mode,
+ 	gmac: ethernet@ff290000 {
+ 		compatible = "rockchip,rk3368-gmac";
+ 		reg = <0x0 0xff290000 0x0 0x10000>;
+@@ -829,6 +855,16 @@
+ 			};
+ 		};
+ 
++		tsadc {
++			otp_gpio: otp-gpio {
++				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
 +
-+	.table = {
-+		.id = v3_code_table,
-+		.length = ARRAY_SIZE(v3_code_table),
-+		.data_mask = TSADCV3_DATA_MASK,
-+		.mode = ADC_INCREMENT,
-+	},
-+};
++			otp_out: otp-out {
++				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
 +
- static const struct of_device_id of_rockchip_thermal_match[] = {
- 	{
- 		.compatible = "rockchip,rk3288-tsadc",
- 		.data = (void *)&rk3288_tsadc_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3368-tsadc",
-+		.data = (void *)&rk3368_tsadc_data,
-+	},
- 	{ /* end */ },
- };
- MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins = <2 24 RK_FUNC_1 &pcfg_pull_up>,
 -- 
 1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
