@@ -1,114 +1,100 @@
-From: Mark yao <mark.yao@rock-chips.com>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
 Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
  component based masters.
-Date: Mon, 09 Nov 2015 17:39:25 +0800
-Message-ID: <564069CD.2070102@rock-chips.com>
-References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com> <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
+Date: Mon, 9 Nov 2015 10:53:16 +0000
+Message-ID: <20151109105316.GD963@e106497-lin.cambridge.arm.com>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
+ <564069CD.2070102@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Liviu Dudau <Liviu.Dudau@arm.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <564069CD.2070102@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B410=E6=9C=8819=E6=97=A5 23:07, Liviu Dudau wrote:
-> A lot of component based DRM drivers use a variant of the same code
-> as the probe function. They bind the crtc ports in the first iteratio=
-n
-> and then scan through the child nodes and bind the encoders attached
-> to the remote endpoints. Factor the common code into a separate
-> function called drm_of_component_probe() in order to increase code
-> reuse.
->
-> Cc: David Airlie <airlied@linux.ie>
-> Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
-> ---
->   drivers/gpu/drm/drm_of.c | 88 +++++++++++++++++++++++++++++++++++++=
-+++++++++++
->   include/drm/drm_of.h     | 13 +++++++
->   2 files changed, 101 insertions(+)
->
-> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> index be38840..493c05c 100644
-> --- a/drivers/gpu/drm/drm_of.c
-> +++ b/drivers/gpu/drm/drm_of.c
-> @@ -1,3 +1,4 @@
-> +#include <linux/component.h>
->   #include <linux/export.h>
->   #include <linux/list.h>
->   #include <linux/of_graph.h>
-> @@ -61,3 +62,90 @@ uint32_t drm_of_find_possible_crtcs(struct drm_dev=
-ice *dev,
->   	return possible_crtcs;
->   }
->   EXPORT_SYMBOL(drm_of_find_possible_crtcs);
-> +
-> +/**
-> + * drm_of_component_probe - Generic probe function for a component b=
-ased master
-> + * @dev: master device containing the OF node
-> + * @compare_of: compare function used for matching components
-> + * @master_ops: component master ops to be used
-> + *
-> + * Parse the platform device OF node and bind all the components ass=
-ociated
-> + * with the master. Interface ports are added before the encoders in=
- order to
-> + * satisfy their .bind requirements
-> + * See Documentation/devicetree/bindings/graph.txt for the bindings.
-> + *
-> + * Returns zero if successful, or one of the standard error codes if=
- it fails.
-> + */
-> +int drm_of_component_probe(struct device *dev,
-> +			   int (*compare_of)(struct device *, void *),
-> +			   const struct component_master_ops *m_ops)
-> +{
-> +	struct device_node *ep, *port, *remote;
-> +	struct component_match *match =3D NULL;
-> +	int i;
-> +
-> +	if (!dev->of_node)
-> +		return -EINVAL;
-> +
-> +	/*
-> +	 * Bind the crtc's ports first, so that drm_of_find_possible_crtcs(=
-)
-> +	 * called from encoder's .bind callbacks works as expected
-> +	 */
-> +	for (i =3D 0; ; i++) {
-> +		port =3D of_parse_phandle(dev->of_node, "ports", i);
-> +		if (!port)
-> +			break;
-> +
-> +		if (!of_device_is_available(port->parent)) {
-> +			of_node_put(port);
-> +			continue;
-> +		}
-> +
-> +		component_match_add(dev, &match, compare_of, port);
-Hi Liviu
-       Rockchip drm can't work with drm_of_component_probe function now=
-,
-
-       At drm_of_component_probe:
-             component_match_add(dev, &match, compare_of, port);
-       And original rockchip drm use:
-             component_match_add(dev, &match, compare_of, port->parent)=
-;
-
-      That different "port" and "port->parent" cause crtc device node=20
-always mis-match.
-
-      I'm confused that rockchip use same dts node map as imx drm=20
-driver, but it works
-for imx drm, not work on rockchip drm.
-
-> +		of_node_put(port);
-> +	}
->
--- =EF=BC=ADark Yao
+T24gTW9uLCBOb3YgMDksIDIwMTUgYXQgMDU6Mzk6MjVQTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gT24gMjAxNeW5tDEw5pyIMTnml6UgMjM6MDcsIExpdml1IER1ZGF1IHdyb3RlOgo+ID5BIGxv
+dCBvZiBjb21wb25lbnQgYmFzZWQgRFJNIGRyaXZlcnMgdXNlIGEgdmFyaWFudCBvZiB0aGUgc2Ft
+ZSBjb2RlCj4gPmFzIHRoZSBwcm9iZSBmdW5jdGlvbi4gVGhleSBiaW5kIHRoZSBjcnRjIHBvcnRz
+IGluIHRoZSBmaXJzdCBpdGVyYXRpb24KPiA+YW5kIHRoZW4gc2NhbiB0aHJvdWdoIHRoZSBjaGls
+ZCBub2RlcyBhbmQgYmluZCB0aGUgZW5jb2RlcnMgYXR0YWNoZWQKPiA+dG8gdGhlIHJlbW90ZSBl
+bmRwb2ludHMuIEZhY3RvciB0aGUgY29tbW9uIGNvZGUgaW50byBhIHNlcGFyYXRlCj4gPmZ1bmN0
+aW9uIGNhbGxlZCBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkgaW4gb3JkZXIgdG8gaW5jcmVhc2Ug
+Y29kZQo+ID5yZXVzZS4KPiA+Cj4gPkNjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+
+Cj4gPlNpZ25lZC1vZmYtYnk6IExpdml1IER1ZGF1IDxMaXZpdS5EdWRhdUBhcm0uY29tPgo+ID4t
+LS0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMgfCA4OCArKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICBpbmNsdWRlL2RybS9kcm1fb2YuaCAg
+ICAgfCAxMyArKysrKysrCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAxMDEgaW5zZXJ0aW9ucygrKQo+
+ID4KPiA+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9kcm1fb2YuYwo+ID5pbmRleCBiZTM4ODQwLi40OTNjMDVjIDEwMDY0NAo+ID4tLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPiA+KysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5j
+Cj4gPkBAIC0xLDMgKzEsNCBAQAo+ID4rI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+ID4g
+ICNpbmNsdWRlIDxsaW51eC9leHBvcnQuaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvbGlzdC5oPgo+
+ID4gICNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgo+ID5AQCAtNjEsMyArNjIsOTAgQEAgdWlu
+dDMyX3QgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwK
+PiA+ICAJcmV0dXJuIHBvc3NpYmxlX2NydGNzOwo+ID4gIH0KPiA+ICBFWFBPUlRfU1lNQk9MKGRy
+bV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKTsKPiA+Kwo+ID4rLyoqCj4gPisgKiBkcm1fb2ZfY29t
+cG9uZW50X3Byb2JlIC0gR2VuZXJpYyBwcm9iZSBmdW5jdGlvbiBmb3IgYSBjb21wb25lbnQgYmFz
+ZWQgbWFzdGVyCj4gPisgKiBAZGV2OiBtYXN0ZXIgZGV2aWNlIGNvbnRhaW5pbmcgdGhlIE9GIG5v
+ZGUKPiA+KyAqIEBjb21wYXJlX29mOiBjb21wYXJlIGZ1bmN0aW9uIHVzZWQgZm9yIG1hdGNoaW5n
+IGNvbXBvbmVudHMKPiA+KyAqIEBtYXN0ZXJfb3BzOiBjb21wb25lbnQgbWFzdGVyIG9wcyB0byBi
+ZSB1c2VkCj4gPisgKgo+ID4rICogUGFyc2UgdGhlIHBsYXRmb3JtIGRldmljZSBPRiBub2RlIGFu
+ZCBiaW5kIGFsbCB0aGUgY29tcG9uZW50cyBhc3NvY2lhdGVkCj4gPisgKiB3aXRoIHRoZSBtYXN0
+ZXIuIEludGVyZmFjZSBwb3J0cyBhcmUgYWRkZWQgYmVmb3JlIHRoZSBlbmNvZGVycyBpbiBvcmRl
+ciB0bwo+ID4rICogc2F0aXNmeSB0aGVpciAuYmluZCByZXF1aXJlbWVudHMKPiA+KyAqIFNlZSBE
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3JhcGgudHh0IGZvciB0aGUgYmluZGlu
+Z3MuCj4gPisgKgo+ID4rICogUmV0dXJucyB6ZXJvIGlmIHN1Y2Nlc3NmdWwsIG9yIG9uZSBvZiB0
+aGUgc3RhbmRhcmQgZXJyb3IgY29kZXMgaWYgaXQgZmFpbHMuCj4gPisgKi8KPiA+K2ludCBkcm1f
+b2ZfY29tcG9uZW50X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiA+KwkJCSAgIGludCAoKmNv
+bXBhcmVfb2YpKHN0cnVjdCBkZXZpY2UgKiwgdm9pZCAqKSwKPiA+KwkJCSAgIGNvbnN0IHN0cnVj
+dCBjb21wb25lbnRfbWFzdGVyX29wcyAqbV9vcHMpCj4gPit7Cj4gPisJc3RydWN0IGRldmljZV9u
+b2RlICplcCwgKnBvcnQsICpyZW1vdGU7Cj4gPisJc3RydWN0IGNvbXBvbmVudF9tYXRjaCAqbWF0
+Y2ggPSBOVUxMOwo+ID4rCWludCBpOwo+ID4rCj4gPisJaWYgKCFkZXYtPm9mX25vZGUpCj4gPisJ
+CXJldHVybiAtRUlOVkFMOwo+ID4rCj4gPisJLyoKPiA+KwkgKiBCaW5kIHRoZSBjcnRjJ3MgcG9y
+dHMgZmlyc3QsIHNvIHRoYXQgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3MoKQo+ID4rCSAqIGNh
+bGxlZCBmcm9tIGVuY29kZXIncyAuYmluZCBjYWxsYmFja3Mgd29ya3MgYXMgZXhwZWN0ZWQKPiA+
+KwkgKi8KPiA+Kwlmb3IgKGkgPSAwOyA7IGkrKykgewo+ID4rCQlwb3J0ID0gb2ZfcGFyc2VfcGhh
+bmRsZShkZXYtPm9mX25vZGUsICJwb3J0cyIsIGkpOwo+ID4rCQlpZiAoIXBvcnQpCj4gPisJCQli
+cmVhazsKPiA+Kwo+ID4rCQlpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50
+KSkgewo+ID4rCQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4gPisJCQljb250aW51ZTsKPiA+KwkJfQo+
+ID4rCj4gPisJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsIHBv
+cnQpOwo+IEhpIExpdml1Cj4gICAgICAgUm9ja2NoaXAgZHJtIGNhbid0IHdvcmsgd2l0aCBkcm1f
+b2ZfY29tcG9uZW50X3Byb2JlIGZ1bmN0aW9uIG5vdywKPiAKPiAgICAgICBBdCBkcm1fb2ZfY29t
+cG9uZW50X3Byb2JlOgo+ICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0
+Y2gsIGNvbXBhcmVfb2YsIHBvcnQpOwo+ICAgICAgIEFuZCBvcmlnaW5hbCByb2NrY2hpcCBkcm0g
+dXNlOgo+ICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBh
+cmVfb2YsIHBvcnQtPnBhcmVudCk7Cj4gCj4gICAgICBUaGF0IGRpZmZlcmVudCAicG9ydCIgYW5k
+ICJwb3J0LT5wYXJlbnQiIGNhdXNlIGNydGMgZGV2aWNlIG5vZGUgYWx3YXlzCj4gbWlzLW1hdGNo
+Lgo+IAo+ICAgICAgSSdtIGNvbmZ1c2VkIHRoYXQgcm9ja2NoaXAgdXNlIHNhbWUgZHRzIG5vZGUg
+bWFwIGFzIGlteCBkcm0gZHJpdmVyLCBidXQKPiBpdCB3b3Jrcwo+IGZvciBpbXggZHJtLCBub3Qg
+d29yayBvbiByb2NrY2hpcCBkcm0uCgpIaSBNYXJrLAoKSSdtIChzbGlnaHRseSkgY29uZnVzZWQg
+YXMgd2VsbC4gVGhlIGRyaXZlcnMgYXJlIGRpZmZlcmVudCBzbyB0aGVyZSBtdXN0IGJlIGEgcmVh
+c29uCnRvIGFjY291bnQgZm9yIHRoZSBkaWZmZXJlbnQgYmVoYXZpb3VyLiBVbmZvcnR1bmF0ZWx5
+IEkgZG9uJ3QgaGF2ZSBhIFJvY2tjaGlwIGJhc2VkCnBsYXRmb3JtIHJlYWR5IGZvciB0ZXN0aW5n
+LCBzbyBJIHdvdWxkIGFwcHJlY2lhdGUgaWYgeW91IGNvdWxkIGFkZCBzb21lIGRlYnVnZ2luZwpt
+ZXNzYWdlcyB0byBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCkgd2hlbiBjb21wb25lbnRfbWF0Y2hf
+YWRkIGlzIGJlaW5nIGNhbGxlZCBhbmQKY29tcGFyZSB0aGF0IHdpdGggdGhlIHZlcnNpb24gYmVm
+b3JlIG15IHBhdGNoLgoKQmVzdCByZWdhcmRzLApMaXZpdQoKCj4gCj4gPisJCW9mX25vZGVfcHV0
+KHBvcnQpOwo+ID4rCX0KPiA+Cj4gLS0g77ytYXJrIFlhbwo+IAo+IAo+IF9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gbGludXgtYXJtLWtlcm5lbCBtYWls
+aW5nIGxpc3QKPiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwKCi0t
+IAo9PT09PT09PT09PT09PT09PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3Js
+ZCwgIHwKfCBidXQgdGhleSdyZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBj
+b2RlISAgLwogIC0tLS0tLS0tLS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
