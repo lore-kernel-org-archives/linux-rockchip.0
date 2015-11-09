@@ -1,47 +1,61 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/2] drm/rockchip: unset pgoff when mmap'ing gems
-Date: Mon, 09 Nov 2015 20:52:43 +0100
-Message-ID: <2793929.5WVauesvFQ@phil>
-References: <4982827.0pnZflEOSR@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 4/8] phy: rockchip-usb: expose the phy-internal PLLs
+Date: Mon, 9 Nov 2015 12:59:58 -0800
+Message-ID: <CAD=FV=VburD9eRtNKL8DZXgspp4-nFVVOz5PnOaT8HvNG5uzFg@mail.gmail.com>
+References: <1446998681-26436-1-git-send-email-heiko@sntech.de>
+	<1446998681-26436-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <4982827.0pnZflEOSR@phil>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1446998681-26436-5-git-send-email-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Q29tbWl0IDM3MWYwZjA4NWY2MjkgKCJBUk06IDg0MjYvMTogZG1hLW1hcHBpbmc6IGFkZCBtaXNz
-aW5nIHJhbmdlIGNoZWNrCiBpbiBkbWFfbW1hcCgpIikgaW50cm9kdWNlZCBvZmZzZXQtY2hlY2tp
-bmcgZm9yIG1hcHBpbmdzLCB3aGljaCBjb2xsaWRlcwp3aXRoIHRoZSBmYWtlLW9mZnNldCB0aGUg
-ZHJtIHNldHMgZm9yIGdlbXMuCgpPdGhlciBkcm0tZHJpdmVycyBzZXQgdGhpcyBvZmZzZXQgdG8g
-MCBiZWZvcmUgZG9pbmcgdGhlIG1hcHBpbmcsIHNvCnRoaXMgbG9va3MgbGlrZSB0aGUgY29ycmVj
-dCB3YXkgdG8gZ28gZm9yIHJvY2tjaGlwIGFzIHdlbGwuCgpGaXhlczogMzcxZjBmMDg1ZjYyOSAo
-IkFSTTogODQyNi8xOiBkbWEtbWFwcGluZzogYWRkIG1pc3NpbmcgcmFuZ2UgY2hlY2sgaW4gZG1h
-X21tYXAoKSIpClNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
-Ci0tLQpUaGlzIHBhdGNoIGlzIGRlZmluaXRseSBuZWNlc3NhcnkgdG8ga2VlcCB0aGUgcm9ja2No
-aXAtZHJtIHdvcmtpbmcKd2l0aCBrZXJuZWwgNC40LgoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2Vt
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCmluZGV4IGU1
-MGQxMTMuLmU5YmMxODggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9nZW0uYwpAQCAtNjgsNiArNjgsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9nZW1fb2Jq
-ZWN0X21tYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCiAJICogVk1fUEZOTUFQIGZsYWcg
-dGhhdCB3YXMgc2V0IGJ5IGRybV9nZW1fbW1hcF9vYmooKS9kcm1fZ2VtX21tYXAoKS4KIAkgKi8K
-IAl2bWEtPnZtX2ZsYWdzICY9IH5WTV9QRk5NQVA7CisJdm1hLT52bV9wZ29mZiA9IDA7CiAKIAly
-ZXQgPSBkbWFfbW1hcF9hdHRycyhkcm0tPmRldiwgdm1hLCBya19vYmotPmt2YWRkciwgcmtfb2Jq
-LT5kbWFfYWRkciwKIAkJCSAgICAgb2JqLT5zaXplLCAmcmtfb2JqLT5kbWFfYXR0cnMpOwotLSAK
-Mi42LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Heiko,
+
+On Sun, Nov 8, 2015 at 8:04 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> +static const struct rockchip_usb_phy_pdata rk3066a_pdata = {
+> +       .phys = (struct rockchip_usb_phys[]){
+> +               { .reg = 0x17c, .pll_name = "sclk_otgphy0_480m" },
+> +               { .reg = 0x188, .pll_name = "sclk_otgphy1_480m" },
+> +               { /* sentinel */ }
+> +       },
+> +};
+> +
+> +static const struct rockchip_usb_phy_pdata rk3188_pdata = {
+> +       .phys = (struct rockchip_usb_phys[]){
+> +               { .reg = 0x10c, .pll_name = "sclk_otgphy0_480m" },
+> +               { .reg = 0x11c, .pll_name = "sclk_otgphy1_480m" },
+> +               { /* sentinel */ }
+> +       },
+> +};
+> +
+> +static const struct rockchip_usb_phy_pdata rk3288_pdata = {
+> +       .phys = (struct rockchip_usb_phys[]){
+> +               { .reg = 0x320, .pll_name = "sclk_otgphy0_480m" },
+> +               { .reg = 0x334, .pll_name = "sclk_otgphy1_480m" },
+> +               { .reg = 0x348, .pll_name = "sclk_otgphy2_480m" },
+> +               { /* sentinel */ }
+> +       },
+
+Slighly annoying to have to add a table for each SoC.  I'd imagine
+this growing quite large.
+
+Would it be possible to query our parent clock name and then append a
+"_480m" suffix?  Then you can magically get the name you want, right?
+That doesn't preclude you from later overriding this or adding a "dts"
+property for it, but it means no tables for now and (hopefully) for
+the forseeable future.  ...and you get to kill a bunch of code in this
+patch...
+
+You could fall back to some generic name based on the PHY device tree
+node name if you wanted, or use the ID allocator...
+
+
+Otherwise, this all looks good to me.  If you have a good reason why
+using the parent name isn't a good idea, let me know and I can add my
+Reviewed-by on this patch.
+
+-Doug
