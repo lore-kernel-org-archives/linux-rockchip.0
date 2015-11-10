@@ -1,76 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] drm/rockchip: create the fake mmap offset during gem
- creation
-Date: Tue, 10 Nov 2015 07:46:16 +0100
-Message-ID: <5676968.2ELIqayQry@phil>
-References: <4982827.0pnZflEOSR@phil> <56418C07.60208@rock-chips.com>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH 2/3] ASoC: rockchip: add playback property
+Date: Tue, 10 Nov 2015 15:32:08 +0800
+Message-ID: <1447140729-18267-3-git-send-email-sugar.zhang@rock-chips.com>
+References: <1447140729-18267-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <56418C07.60208@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1447140729-18267-1-git-send-email-sugar.zhang@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCkFtIERpZW5zdGFnLCAxMC4gTm92ZW1iZXIgMjAxNSwgMTQ6MTc6NDMgc2Nocmll
-YiBNYXJrIHlhbzoKPiBIaSBIZWlrbwo+ICAgICAgIEkgZG9uJ3QgdGhpbmsgdGhpcyBwYXRjaCBp
-cyBuZWVkZWQgZm9yIHJvY2tjaGlwIGRybSwgc2luY2UgCj4gcm9ja2NoaXAgZHJtIG9ubHkgdXNl
-IGttcy4KPiBJIHNhdyB0aGUgZGlzY3Vzc2lvbiBhYm91dCAoImRybS9leHlub3M6IGNyZWF0ZSBh
-IGZha2UgbW1hcCBvZmZzZXQgd2l0aCAKPiBnZW0gY3JlYXRpb24iKSwKPiBJbmtpIHNhaWQgdGhh
-dDogIlRoaXMgcGF0Y2ggbWFrZXMgZHJtX2dlbV9jcmVhdGVfbW1hcF9vZmZzZXQgdG8gYmUgCj4g
-Y2FsbGVkIGV2ZW4gaW4gY2FzZSBvZgo+IG5vdCB1c2luZyBkdW1iKiBpbnRlcmZhY2VzLiBJLmUu
-LCBleHlub3NfZHJtX2dlbV9jcmVhdGVfaW9jdGwgLT4gCj4gZXh5bm9zX2RybV9nZW1fbW1hcCIK
-PiAKPiBTbyBJIHRoaW5rIHRoaXMgcGF0Y2ggZG9lc24ndCBtYWtlIHNlbnNlIGZvciByb2NrY2hp
-cCBkcm0uCgpvayA6LSkgLiBJJ20gbm90IHRoYXQga25vd2xlZGdhYmxlIHdoZW4gaXQgY29tZXMg
-dG8gZHJtIGFuZCBqdXN0IGZvdW5kIHRoYXQgCnNpbWlsYXIgY2hhbmdlIGluIGV4eW5vcyB3aGls
-ZSBzZWFyY2hpbmcgZm9yIHRoZSBkbWEgaXNzdWUuCgpTbyB3ZSBjYW4gZHJvcCB0aGlzIHBhdGNo
-IGFuZCB5b3UgY291bGQganVzdCBtZXJnZSBwYXRjaDIgYXMgd2VsbCBhcwoKCVtSRVNFTkQgUEFU
-Q0hdIGRybS9yb2NrY2hpcDogdm9wOiBDb3JyZWN0IGVuYWJsZWQgY2xvY2tzIGR1cmluZyBzZXR1
-cAoKZnJvbSBTam9lcmQgYW5kIHNlbmQgdGhlc2UgdHdvIHRvIERhdmUgYXMgZml4ZXMgZm9yIDQu
-ND8KCgpUaGFua3MKSGVpa28KCj4gCj4gCj4gT24gMjAxNeW5tDEx5pyIMTDml6UgMDM6NTAsIEhl
-aWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gU2ltaWxhcmx5IHRvIHRoZSBlcXVpdmFsZW50IGV4eW5v
-cy1maXggaW4gY29tbWl0IDQ4Y2Y1M2Y0MzQzYQo+ID4gKCJkcm0vZXh5bm9zOiBjcmVhdGUgYSBm
-YWtlIG1tYXAgb2Zmc2V0IHdpdGggZ2VtIGNyZWF0aW9uIikgdGhlIHJvY2tjaGlwCj4gPiBkcm0g
-ZHJpdmVyIGFsc28gY2FsbHMgdGhlIGRybV9nZW1fY3JlYXRlX21tYXBfb2Zmc2V0IGZha2Utb2Zm
-c2V0IGNyZWF0aW9uCj4gPiBvbiBldmVyeSBpbnZvY2F0aW9uIG9mIHJvY2tjaGlwX2dlbV9kdW1i
-X21hcF9vZmZzZXQuCj4gPgo+ID4gTW92ZSB0aGF0IHRvIHRoZSBjcmVhdGlvbiBvZiB0aGUgZ2Vt
-IHRvIG9ubHkgY3JlYXRlIHRoYXQgb2Zmc2V0IG9uY2UuCj4gPgo+ID4gU2lnbmVkLW9mZi1ieTog
-SGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+IC0tLQo+ID4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIHwgMTIgKysrKysrLS0tLS0tCj4gPiAg
-IDEgZmlsZSBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gPgo+ID4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMg
-CmIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+ID4gaW5kZXgg
-NGFiMmYyMC4uZTUwZDExMyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fZ2VtLmMKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZ2VtLmMKPiA+IEBAIC0xMjYsOCArMTI2LDE0IEBAIHN0cnVjdCByb2NrY2hp
-cF9nZW1fb2JqZWN0ICoKPiA+ICAgCWlmIChyZXQpCj4gPiAgIAkJZ290byBlcnJfZnJlZV9ya19v
-Ymo7Cj4gPiAgIAo+ID4gKwlyZXQgPSBkcm1fZ2VtX2NyZWF0ZV9tbWFwX29mZnNldChvYmopOwo+
-ID4gKwlpZiAocmV0KQo+ID4gKwkJZ290byBlcnJfZnJlZV9idWY7Cj4gPiArCj4gPiAgIAlyZXR1
-cm4gcmtfb2JqOwo+ID4gICAKPiA+ICtlcnJfZnJlZV9idWY6Cj4gPiArCXJvY2tjaGlwX2dlbV9m
-cmVlX2J1Zihya19vYmopOwo+ID4gICBlcnJfZnJlZV9ya19vYmo6Cj4gPiAgIAlrZnJlZShya19v
-YmopOwo+ID4gICAJcmV0dXJuIEVSUl9QVFIocmV0KTsKPiA+IEBAIC0xOTYsNyArMjAyLDYgQEAg
-aW50IHJvY2tjaGlwX2dlbV9kdW1iX21hcF9vZmZzZXQoc3RydWN0IGRybV9maWxlIAoqZmlsZV9w
-cml2LAo+ID4gICAJCQkJIHVpbnQ2NF90ICpvZmZzZXQpCj4gPiAgIHsKPiA+ICAgCXN0cnVjdCBk
-cm1fZ2VtX29iamVjdCAqb2JqOwo+ID4gLQlpbnQgcmV0Owo+ID4gICAKPiA+ICAgCW9iaiA9IGRy
-bV9nZW1fb2JqZWN0X2xvb2t1cChkZXYsIGZpbGVfcHJpdiwgaGFuZGxlKTsKPiA+ICAgCWlmICgh
-b2JqKSB7Cj4gPiBAQCAtMjA0LDE0ICsyMDksOSBAQCBpbnQgcm9ja2NoaXBfZ2VtX2R1bWJfbWFw
-X29mZnNldChzdHJ1Y3QgZHJtX2ZpbGUgCipmaWxlX3ByaXYsCj4gPiAgIAkJcmV0dXJuIC1FSU5W
-QUw7Cj4gPiAgIAl9Cj4gPiAgIAo+ID4gLQlyZXQgPSBkcm1fZ2VtX2NyZWF0ZV9tbWFwX29mZnNl
-dChvYmopOwo+ID4gLQlpZiAocmV0KQo+ID4gLQkJZ290byBvdXQ7Cj4gPiAtCj4gPiAgIAkqb2Zm
-c2V0ID0gZHJtX3ZtYV9ub2RlX29mZnNldF9hZGRyKCZvYmotPnZtYV9ub2RlKTsKPiA+ICAgCURS
-TV9ERUJVR19LTVMoIm9mZnNldCA9IDB4JWxseFxuIiwgKm9mZnNldCk7Cj4gPiAgIAo+ID4gLW91
-dDoKPiA+ICAgCWRybV9nZW1fb2JqZWN0X3VucmVmZXJlbmNlX3VubG9ja2VkKG9iaik7Cj4gPiAg
-IAo+ID4gICAJcmV0dXJuIDA7Cj4gCj4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+rockchip,playback-channels: max playback channels, 8 channels default.
+
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+---
+ Documentation/devicetree/bindings/sound/rockchip-i2s.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 2267d24..b7f3a93 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -19,6 +19,7 @@ Required properties:
+ - clock-names: should contain followings:
+    - "i2s_hclk": clock for I2S BUS
+    - "i2s_clk" : clock for I2S controller
++- rockchip,playback-channels: max playback channels, if not set, 8 channels default.
+ - rockchip,capture-channels: max capture channels, if not set, 2 channels default.
+ 
+ Example for rk3288 I2S controller:
+@@ -31,5 +32,6 @@ i2s@ff890000 {
+ 	dma-names = "tx", "rx";
+ 	clock-names = "i2s_hclk", "i2s_clk";
+ 	clocks = <&cru HCLK_I2S0>, <&cru SCLK_I2S0>;
++	rockchip,playback-channels = <8>;
+ 	rockchip,capture-channels = <2>;
+ };
+-- 
+2.3.6
