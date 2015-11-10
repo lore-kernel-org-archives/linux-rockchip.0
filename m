@@ -1,175 +1,162 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH] dmaengine: pl330: Fix race in residue reporting
-Date: Tue, 10 Nov 2015 10:44:39 +0900
-Message-ID: <56414C07.3080108@samsung.com>
-References: <1446808295-23149-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <563DF151.2010307@samsung.com> <1447074736.22840.35.camel@collabora.co.uk>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Tue, 10 Nov 2015 13:49:48 +0800
+Message-ID: <5641857C.8030707@rock-chips.com>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <20151109120334.GZ8644@n2100.arm.linux.org.uk>
+ <20151109120720.GF963@e106497-lin.cambridge.arm.com>
+ <2772927.crXiDc9cOV@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-reply-to: <1447074736.22840.35.camel@collabora.co.uk>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Vinod Koul <vinod.koul@intel.com>
-Cc: k.kozlowski.k@gmail.com, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org, linux-arm-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============1188956011=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <2772927.crXiDc9cOV@phil>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09.11.2015 22:12, Sjoerd Simons wrote:
-> On Sat, 2015-11-07 at 21:40 +0900, Krzysztof Kozlowski wrote:
->> W dniu 06.11.2015 o 20:11, Sjoerd Simons pisze:
->>> When a transfer completes there is a small window between the
->>> descriptor
->>> being unset as the current active one in the thread and it being
->>> marked
->>> as done. This causes the residue to be incorrectly set when
->>> pl330_tx_status is run in that window. Practically this caused
->>> issue for me with audio playback as the residue goes up during a
->>> transfer (as the in-progress transfer is no longer accounted for),
->>> which makes the higher levels think the audio ringbuffer wrapped
->>> around
->>> and thus did a sudden big jump forward.
->>>
->>> To resolve this, add a field protected by the dma engine lock to
->>> indicate the transfer is done but the status hasn't been updated
->>> yet.
->>>
->>> Also fix the locking in pl330_tx_status, as the function inspects
->>> the
->>> threads req_running field and queries the dma engine for the
->>> current
->>> state of the running transfer the dma engine lock needs to be held
->>> to
->>> ensure the active descriptor doesn't change underneath it.
->>>
->>> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
->>>
->>> ---
->>>
->>>  drivers/dma/pl330.c | 10 +++++++++-
->>>  1 file changed, 9 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
->>> index 17ee758..6c8243b 100644
->>> --- a/drivers/dma/pl330.c
->>> +++ b/drivers/dma/pl330.c
->>> @@ -503,6 +503,8 @@ struct dma_pl330_desc {
->>>  	struct pl330_reqcfg rqcfg;
->>>  
->>>  	enum desc_status status;
->>> +	/* Transfer completed, but not yet moved to DONE state */
->>> +	bool xferred;
->>>  
->>>  	int bytes_requested;
->>>  	bool last;
->>> @@ -1463,6 +1465,9 @@ static void dma_pl330_rqcb(struct
->>> dma_pl330_desc *desc, enum pl330_op_err err)
->>>  	spin_lock_irqsave(&pch->lock, flags);
->>>  
->>>  	desc->status = DONE;
->>> +	spin_lock(&pch->thread->dmac->lock);
->>> +	desc->xferred = false;
->>> +	spin_unlock(&pch->thread->dmac->lock);
->>>  
->>>  	spin_unlock_irqrestore(&pch->lock, flags);
->>>  
->>> @@ -1595,6 +1600,7 @@ static int pl330_update(struct pl330_dmac
->>> *pl330)
->>>  
->>>  			/* Detach the req */
->>>  			descdone = thrd->req[active].desc;
->>> +			descdone->xferred = true;
->>>  			thrd->req[active].desc = NULL;
->>
->> Looking at the code indeed the small window could happen. How can I
->> reproduce it? Can you describe your system?
-> 
-> I'm using a Rock 2 square (RK3288 based) board, running Debian Jessie
-> and simply playing back audio using vlc & pulseaudio.
-> 
-> For some reason when using vlc, pulseaudio is polling the hw pointer
-> position very very often and seems to hit this tiny window a few times
-> a minute depending a bit on system load. This causes some audiable
-> issues and eventually underflowing (as vlc fills the pulseaudio buffer
-> at a constant rate, but due to this, pulse pushes the data faster then
-> the actual playback rate every so often).
+This is a multi-part message in MIME format.
+--===============1188956011==
+Content-Type: multipart/alternative;
+ boundary="------------000907070803080601010106"
 
-Thanks for description, I don't use pulseaudio on my testing setup but
-I'll try to reproduce it anyway.
+This is a multi-part message in MIME format.
+--------------000907070803080601010106
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-> 
->> As for the change itself, how about adding a new value to
->> desc_status?
->> Now you are actually introducing a semi-status field.
-> 
-> The reason i picked this way this was was due to the current locking
-> scheme. The locking order is channel, then controller (when locking
-> both). While processing the events (and update the active descriptor),
-> the controller is locked so the status can't be directly updated (as
-> that's protected by the channel lock). And we can't grab the channel
-> lock without dopping the controller one first :).
-> 
-> Keeping one status field might well be possible, but would require at
-> least reworking the locking here.
+On 2015=E5=B9=B411=E6=9C=8810=E6=97=A5 03:49, Heiko Stuebner wrote:
+> Hi Liviu,
+>
+> Am Montag, 9. November 2015, 12:07:20 schrieb Liviu Dudau:
+>> On Mon, Nov 09, 2015 at 12:03:35PM +0000, Russell King - ARM Linux wro=
+te:
+>>> On Mon, Nov 09, 2015 at 11:57:27AM +0000, Liviu Dudau wrote:
+>>>> Meanwhile, what is your suggestion regarding the patchset. I've seen=
+ David has
+>>>> sent Linus a pull request for 4.4-rc1 that includes it. Should we se=
+nd a
+>>>> revert for rockchip commit and then patch later the function?
+>>> It definitely needs to be fixed, and I'd suggest its early enough in =
+the
+>>> -rc cycle (which hasn't begun yet) to simply fix drm_of_component_pro=
+be()
+>>> to take two compare functions.
+>> I still don't have a Rockchip board to test the patch, so I need to fi=
+nd out
+>> someone willing to test them. Mark?
+> I of course also have a plethora of rockchip boards, so can test stuff
+> as well.
+>
+>
+> Heiko
+>
+>
+>
+>
+Hi Liviu
+    Sorry to reply late , of course I have rockchip boards and can do=20
+the test.
 
-Right, the locking requires new field... If going this way could you
-describe this rationale and information about locking a comment? I mean
-the answer you gave above - the locking requires such field and that the
-field is protected actually by controller lock, not by channel.
+Hi Russell and Philipp,
+     Thanks for your analysis, let me know what happen.
 
-On the other hand, I am looking and the code and looking and I wonder:
-do you really need to protect writing to the "xferred" field? In
-pl330_update() you are setting it to true while getting the list of done
-descriptors.
-The descriptors done are then removed from the thread.
+--=20
+=EF=BC=ADark Yao
 
-In that path then you are setting it to false in dma_pl330_rqcb() for
-these done descriptors - this should not be executed concurrently with
-above.
 
-The dma_pl330_rqcb() is also called from abort and fail paths but these
-are use controller's lock (e.g. pl330_dotask()).
+--------------000907070803080601010106
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Just thinking out loud... maybe I am missing something here.
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div class=3D"moz-cite-prefix">On 2015=E5=B9=B411=E6=9C=8810=E6=97=A5=
+ 03:49, Heiko Stuebner
+      wrote:<br>
+    </div>
+    <blockquote cite=3D"mid:2772927.crXiDc9cOV@phil" type=3D"cite">
+      <pre wrap=3D"">Hi Liviu,
 
-Best regards,
-Krzysztof
+Am Montag, 9. November 2015, 12:07:20 schrieb Liviu Dudau:
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"">On Mon, Nov 09, 2015 at 12:03:35PM +0000, Russell =
+King - ARM Linux wrote:
+</pre>
+        <blockquote type=3D"cite">
+          <pre wrap=3D"">On Mon, Nov 09, 2015 at 11:57:27AM +0000, Liviu =
+Dudau wrote:
+</pre>
+          <blockquote type=3D"cite">
+            <pre wrap=3D"">Meanwhile, what is your suggestion regarding t=
+he patchset. I've seen David has
+sent Linus a pull request for 4.4-rc1 that includes it. Should we send a
+revert for rockchip commit and then patch later the function?
+</pre>
+          </blockquote>
+          <pre wrap=3D"">
+It definitely needs to be fixed, and I'd suggest its early enough in the
+-rc cycle (which hasn't begun yet) to simply fix drm_of_component_probe()
+to take two compare functions.
+</pre>
+        </blockquote>
+        <pre wrap=3D"">
+I still don't have a Rockchip board to test the patch, so I need to find =
+out
+someone willing to test them. Mark?
+</pre>
+      </blockquote>
+      <pre wrap=3D"">
+I of course also have a plethora of rockchip boards, so can test stuff
+as well.
+
+
+Heiko
 
 
 
-> 
-> 
->> Best regards,
->> Krzysztof
->>
->>>  
->>>  			thrd->req_running = -1;
->>> @@ -2250,13 +2256,14 @@ pl330_tx_status(struct dma_chan *chan,
->>> dma_cookie_t cookie,
->>>  		goto out;
->>>  
->>>  	spin_lock_irqsave(&pch->lock, flags);
->>> +	spin_lock(&pch->thread->dmac->lock);
->>>  
->>>  	if (pch->thread->req_running != -1)
->>>  		running = pch->thread->req[pch->thread-
->>>> req_running].desc;
->>>  
->>>  	/* Check in pending list */
->>>  	list_for_each_entry(desc, &pch->work_list, node) {
->>> -		if (desc->status == DONE)
->>> +		if (desc->xferred || desc->status == DONE)
->>>  			transferred = desc->bytes_requested;
->>>  		else if (running && desc == running)
->>>  			transferred =
->>> @@ -2281,6 +2288,7 @@ pl330_tx_status(struct dma_chan *chan,
->>> dma_cookie_t cookie,
->>>  		if (desc->last)
->>>  			residual = 0;
->>>  	}
->>> +	spin_unlock(&pch->thread->dmac->lock);
->>>  	spin_unlock_irqrestore(&pch->lock, flags);
->>>  
->>>  out:
->>>
->>
-> 
+
+</pre>
+    </blockquote>
+    Hi Liviu<br>
+    =C2=A0=C2=A0 Sorry to reply late
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    , of course I have rockchip boards and can do the test. <br>
+    <br>
+    Hi Russell and Philipp,<br>
+    =C2=A0=C2=A0=C2=A0 Thanks for your analysis, let me know what happen.=
+ <br>
+    <pre class=3D"moz-signature" cols=3D"72">--=20
+=EF=BC=ADark Yao</pre>
+  </body>
+</html>
+
+--------------000907070803080601010106--
+
+
+--===============1188956011==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1188956011==--
