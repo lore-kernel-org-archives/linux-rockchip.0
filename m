@@ -1,12 +1,17 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH] Revert "drm/rockchip: Convert the probe function to the
- generic drm_of_component_probe()"
-Date: Tue, 10 Nov 2015 16:47:19 +0800
-Message-ID: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Tue, 10 Nov 2015 16:53:09 +0800
+Message-ID: <5641B075.6020602@rock-chips.com>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
+ <564069CD.2070102@rock-chips.com>
+ <20151109114259.GX8644@n2100.arm.linux.org.uk>
+ <20151109115727.GE963@e106497-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============1208105507=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20151109115727.GE963@e106497-lin.cambridge.arm.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -16,66 +21,82 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, p.zabel@pengutronix.de, Liviu.Dudau@arm.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Liviu Dudau <Liviu.Dudau@arm.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyByZXZlcnRzIGNvbW1pdCA1MmY1ZWI2MDk0MGRlODg5Y2U5OGE4NzZmNjkzM2I1NzRlYWQz
-MjI1LgoKUm9ja2NoaXAgZHJtIGNhbid0IHdvcmsgd2l0aCBnZW5lcmljIGRybV9vZl9jb21wb25l
-bnRfcHJvYmUgbm93CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
-cy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8
-ICAgODEgKysrKysrKysrKysrKysrKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNzUgaW5z
-ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYwppbmRleCBkMjZlMGNjLi5mMjJlMWUxIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKQEAgLTE5LDcgKzE5LDYgQEAKICNpbmNs
-dWRlIDxkcm0vZHJtUC5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNs
-dWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5oPgotI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KICNpbmNs
-dWRlIDxsaW51eC9kbWEtbWFwcGluZy5oPgogI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4K
-ICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KQEAgLTQxOSw2ICs0MTgsMjkgQEAgc3RhdGljIGlu
-dCBjb21wYXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKIAlyZXR1cm4gZGV2
-LT5vZl9ub2RlID09IG5wOwogfQogCitzdGF0aWMgdm9pZCByb2NrY2hpcF9hZGRfZW5kcG9pbnRz
-KHN0cnVjdCBkZXZpY2UgKmRldiwKKwkJCQkgICBzdHJ1Y3QgY29tcG9uZW50X21hdGNoICoqbWF0
-Y2gsCisJCQkJICAgc3RydWN0IGRldmljZV9ub2RlICpwb3J0KQoreworCXN0cnVjdCBkZXZpY2Vf
-bm9kZSAqZXAsICpyZW1vdGU7CisKKwlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHBvcnQsIGVwKSB7
-CisJCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOworCQlpZiAo
-IXJlbW90ZSB8fCAhb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShyZW1vdGUpKSB7CisJCQlvZl9ub2Rl
-X3B1dChyZW1vdGUpOworCQkJY29udGludWU7CisJCX0gZWxzZSBpZiAoIW9mX2RldmljZV9pc19h
-dmFpbGFibGUocmVtb3RlLT5wYXJlbnQpKSB7CisJCQlkZXZfd2FybihkZXYsICJwYXJlbnQgZGV2
-aWNlIG9mICVzIGlzIG5vdCBhdmFpbGFibGVcbiIsCisJCQkJIHJlbW90ZS0+ZnVsbF9uYW1lKTsK
-KwkJCW9mX25vZGVfcHV0KHJlbW90ZSk7CisJCQljb250aW51ZTsKKwkJfQorCisJCWNvbXBvbmVu
-dF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29tcGFyZV9vZiwgcmVtb3RlKTsKKwkJb2Zfbm9kZV9w
-dXQocmVtb3RlKTsKKwl9Cit9CisKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0
-IGRldmljZSAqZGV2KQogewogCXN0cnVjdCBkcm1fZGV2aWNlICpkcm07CkBAIC00NjEsMTQgKzQ4
-Myw2MSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlw
-X2RybV9vcHMgPSB7CiAKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiB7Ci0JaW50IHJldCA9IGRybV9vZl9jb21wb25l
-bnRfcHJvYmUoJnBkZXYtPmRldiwgY29tcGFyZV9vZiwKLQkJCQkJICZyb2NrY2hpcF9kcm1fb3Bz
-KTsKKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2OworCXN0cnVjdCBjb21wb25lbnRf
-bWF0Y2ggKm1hdGNoID0gTlVMTDsKKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gZGV2LT5vZl9u
-b2RlOworCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydDsKKwlpbnQgaTsKIAotCS8qIGtlZXAgY29t
-cGF0aWJpbGl0eSB3aXRoIG9sZCBjb2RlIHRoYXQgd2FzIHJldHVybmluZyAtRU5PREVWICovCi0J
-aWYgKHJldCA9PSAtRUlOVkFMKQorCWlmICghbnApCiAJCXJldHVybiAtRU5PREVWOworCS8qCisJ
-ICogQmluZCB0aGUgY3J0YyBwb3J0cyBmaXJzdCwgc28gdGhhdAorCSAqIGRybV9vZl9maW5kX3Bv
-c3NpYmxlX2NydGNzIGNhbGxlZCBmcm9tIGVuY29kZXIgLmJpbmQgY2FsbGJhY2tzCisJICogd29y
-a3MgYXMgZXhwZWN0ZWQuCisJICovCisJZm9yIChpID0gMDs7IGkrKykgeworCQlwb3J0ID0gb2Zf
-cGFyc2VfcGhhbmRsZShucCwgInBvcnRzIiwgaSk7CisJCWlmICghcG9ydCkKKwkJCWJyZWFrOwor
-CisJCWlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQpKSB7CisJCQlvZl9u
-b2RlX3B1dChwb3J0KTsKKwkJCWNvbnRpbnVlOworCQl9CiAKLQlyZXR1cm4gcmV0OworCQljb21w
-b25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBwb3J0LT5wYXJlbnQpOwor
-CQlvZl9ub2RlX3B1dChwb3J0KTsKKwl9CisKKwlpZiAoaSA9PSAwKSB7CisJCWRldl9lcnIoZGV2
-LCAibWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4iKTsKKwkJcmV0dXJuIC1FTk9ERVY7CisJfQor
-CisJaWYgKCFtYXRjaCkgeworCQlkZXZfZXJyKGRldiwgIk5vIGF2YWlsYWJsZSB2b3AgZm91bmQg
-Zm9yIGRpc3BsYXktc3Vic3lzdGVtLlxuIik7CisJCXJldHVybiAtRU5PREVWOworCX0KKwkvKgor
-CSAqIEZvciBlYWNoIGJvdW5kIGNydGMsIGJpbmQgdGhlIGVuY29kZXJzIGF0dGFjaGVkIHRvIGl0
-cworCSAqIHJlbW90ZSBlbmRwb2ludC4KKwkgKi8KKwlmb3IgKGkgPSAwOzsgaSsrKSB7CisJCXBv
-cnQgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicG9ydHMiLCBpKTsKKwkJaWYgKCFwb3J0KQorCQkJ
-YnJlYWs7CisKKwkJaWYgKCFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKHBvcnQtPnBhcmVudCkpIHsK
-KwkJCW9mX25vZGVfcHV0KHBvcnQpOworCQkJY29udGludWU7CisJCX0KKworCQlyb2NrY2hpcF9h
-ZGRfZW5kcG9pbnRzKGRldiwgJm1hdGNoLCBwb3J0KTsKKwkJb2Zfbm9kZV9wdXQocG9ydCk7CisJ
-fQorCisJcmV0dXJuIGNvbXBvbmVudF9tYXN0ZXJfYWRkX3dpdGhfbWF0Y2goZGV2LCAmcm9ja2No
-aXBfZHJtX29wcywgbWF0Y2gpOwogfQogCiBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9y
-bV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKLS0gCjEuNy45LjUKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This is a multi-part message in MIME format.
+--===============1208105507==
+Content-Type: multipart/alternative;
+ boundary="------------050903030302010300090109"
+
+This is a multi-part message in MIME format.
+--------------050903030302010300090109
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+On 2015=E5=B9=B411=E6=9C=8809=E6=97=A5 19:57, Liviu Dudau wrote:
+> Meanwhile, what is your suggestion regarding the patchset. I've seen Da=
+vid has
+> sent Linus a pull request for 4.4-rc1 that includes it. Should we send =
+a
+> revert for rockchip commit and then patch later the function?
+Hi Liviu
+     I had sent a patch to revert this rockchip commit, verfied rockchip=20
+drm works. So we can do the fix later.
+
+Thanks all the same. :-)
+
+-- =EF=BC=ADark Yao
+
+--------------050903030302010300090109
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div class=3D"moz-cite-prefix">On 2015=E5=B9=B411=E6=9C=8809=E6=97=A5=
+ 19:57, Liviu Dudau
+      wrote:<br>
+    </div>
+    <blockquote
+      cite=3D"mid:20151109115727.GE963@e106497-lin.cambridge.arm.com"
+      type=3D"cite">
+      <pre wrap=3D"">Meanwhile, what is your suggestion regarding the pat=
+chset. I've seen David has
+sent Linus a pull request for 4.4-rc1 that includes it. Should we send a
+revert for rockchip commit and then patch later the function?
+</pre>
+    </blockquote>
+    Hi Liviu<br>
+    =C2=A0=C2=A0=C2=A0 I had sent a patch to revert this rockchip commit,=
+ verfied
+    rockchip drm works. So we can do the fix later.<br>
+    <br>
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    Thanks all the same. <span class=3D"moz-smiley-s1"><span> :-) </span>=
+</span><br>
+    <br>
+    -- =EF=BC=ADark Yao
+  </body>
+</html>
+
+--------------050903030302010300090109--
+
+
+--===============1208105507==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1208105507==--
