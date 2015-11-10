@@ -1,90 +1,97 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-Date: Tue, 10 Nov 2015 11:56:53 +0100
-Message-ID: <1571498.9yAnv9q8Vm@phil>
-References: <1447148131-30041-1-git-send-email-zyw@rock-chips.com>
+From: Liviu.Dudau@arm.com
+Subject: Re: [PATCH] Revert "drm/rockchip: Convert the probe function to the
+ generic drm_of_component_probe()"
+Date: Tue, 10 Nov 2015 11:00:37 +0000
+Message-ID: <20151110110037.GM963@e106497-lin.cambridge.arm.com>
+References: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1447148131-30041-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: Russell King <linux@arm.linux.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
-
-Am Dienstag, 10. November 2015, 17:35:31 schrieb Chris Zhong:
-> We've been seeing some crashes at reboot test on rk3288-based systems,
-> which boards have not reset pin connected to NPOR, they reboot by
-> setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-> a high frequency mode, some IPs might hang during soft reset.
-> It appears that we can fix the problem by switching to slow mode before
-> reboot, just like what we did before suspend.
-> 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> 
-> ---
-> 
->  drivers/clk/rockchip/clk-rk3288.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-
-rk3288.c
-> index 9040878..524662c 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -16,6 +16,7 @@
->  #include <linux/clk-provider.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
-> +#include <linux/reboot.h>
->  #include <linux/syscore_ops.h>
->  #include <dt-bindings/clock/rk3288-cru.h>
->  #include "clk.h"
-> @@ -855,6 +856,34 @@ static void rk3288_clk_sleep_init(void __iomem 
-*reg_base)
->  static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
->  #endif
->  
-> +void __iomem *mode_con_reg;
-> +static int rk3288_restart_notify(struct notifier_block *this,
-> +				   unsigned long mode, void *cmd)
-> +{
-> +	writel(0xf3030000, mode_con_reg);
-> +	return NOTIFY_DONE;
-> +}
-> +
-> +static struct notifier_block rk3288_restart_handler = {
-> +	.notifier_call = rk3288_restart_notify,
-> +	/* Switch PLLs other than DPLL (for SDRAM) to slow mode before reboot
-> +	 * to avoid crashes in reset, so this priority must bigger than the one
-> +	 * in rockchip_restart_handler.
-> +	 */
-> +	.priority = 129,
-> +};
-> +
-> +void __init rk3288_register_restart_notifier(void __iomem *reg)
-> +{
-> +	int ret;
-> +
-> +	mode_con_reg = reg;
-> +	ret = register_restart_handler(&rk3288_restart_handler);
-> +	if (ret)
-> +		pr_err("%s: cannot register restart handler, %d\n",
-> +		       __func__, ret);
-> +}
-> +
-
-restart_handlers are really _only_ supposed to be used for actions actually 
-restarting the system, not stuff that needs to be done before.
-
-In the rockchip clock case, we already have the syscore_ops defined doing the 
-suspend/resume handling, so you could simply define a .shutdown callback which 
-also gets called from kernel_restart() [0], so runs at nearly the same time.
-
-Heiko
-
-[0] http://lxr.free-electrons.com/source/kernel/reboot.c#L214
-
+T24gVHVlLCBOb3YgMTAsIDIwMTUgYXQgMDQ6NDc6MTlQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
+Cj4gVGhpcyByZXZlcnRzIGNvbW1pdCA1MmY1ZWI2MDk0MGRlODg5Y2U5OGE4NzZmNjkzM2I1NzRl
+YWQzMjI1Lgo+IAo+IFJvY2tjaGlwIGRybSBjYW4ndCB3b3JrIHdpdGggZ2VuZXJpYyBkcm1fb2Zf
+Y29tcG9uZW50X3Byb2JlIG5vdwo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlh
+b0Byb2NrLWNoaXBzLmNvbT4KCkFja2VkLWJ5OiBMaXZpdSBEdWRhdSA8TGl2aXUuRHVkYXVAYXJt
+LmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2
+LmMgfCAgIDgxICsrKysrKysrKysrKysrKysrKysrKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwg
+NzUgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBpbmRleCBkMjZlMGNjLi5mMjJlMWUxIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gQEAgLTE5
+LDcgKzE5LDYgQEAKPiAgI2luY2x1ZGUgPGRybS9kcm1QLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJt
+X2NydGNfaGVscGVyLmg+Cj4gICNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5oPgo+IC0jaW5j
+bHVkZSA8ZHJtL2RybV9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgvZG1hLW1hcHBpbmcuaD4KPiAg
+I2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5o
+Pgo+IEBAIC00MTksNiArNDE4LDI5IEBAIHN0YXRpYyBpbnQgY29tcGFyZV9vZihzdHJ1Y3QgZGV2
+aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4gIAlyZXR1cm4gZGV2LT5vZl9ub2RlID09IG5wOwo+ICB9
+Cj4gIAo+ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9hZGRfZW5kcG9pbnRzKHN0cnVjdCBkZXZpY2Ug
+KmRldiwKPiArCQkJCSAgIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKiptYXRjaCwKPiArCQkJCSAg
+IHN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydCkKPiArewo+ICsJc3RydWN0IGRldmljZV9ub2RlICpl
+cCwgKnJlbW90ZTsKPiArCj4gKwlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHBvcnQsIGVwKSB7Cj4g
+KwkJcmVtb3RlID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlcCk7Cj4gKwkJaWYg
+KCFyZW1vdGUgfHwgIW9mX2RldmljZV9pc19hdmFpbGFibGUocmVtb3RlKSkgewo+ICsJCQlvZl9u
+b2RlX3B1dChyZW1vdGUpOwo+ICsJCQljb250aW51ZTsKPiArCQl9IGVsc2UgaWYgKCFvZl9kZXZp
+Y2VfaXNfYXZhaWxhYmxlKHJlbW90ZS0+cGFyZW50KSkgewo+ICsJCQlkZXZfd2FybihkZXYsICJw
+YXJlbnQgZGV2aWNlIG9mICVzIGlzIG5vdCBhdmFpbGFibGVcbiIsCj4gKwkJCQkgcmVtb3RlLT5m
+dWxsX25hbWUpOwo+ICsJCQlvZl9ub2RlX3B1dChyZW1vdGUpOwo+ICsJCQljb250aW51ZTsKPiAr
+CQl9Cj4gKwo+ICsJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29tcGFyZV9vZiwg
+cmVtb3RlKTsKPiArCQlvZl9ub2RlX3B1dChyZW1vdGUpOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0
+aWMgaW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgewo+ICAJc3Ry
+dWN0IGRybV9kZXZpY2UgKmRybTsKPiBAQCAtNDYxLDE0ICs0ODMsNjEgQEAgc3RhdGljIGNvbnN0
+IHN0cnVjdCBjb21wb25lbnRfbWFzdGVyX29wcyByb2NrY2hpcF9kcm1fb3BzID0gewo+ICAKPiAg
+c3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
+dmljZSAqcGRldikKPiAgewo+IC0JaW50IHJldCA9IGRybV9vZl9jb21wb25lbnRfcHJvYmUoJnBk
+ZXYtPmRldiwgY29tcGFyZV9vZiwKPiAtCQkJCQkgJnJvY2tjaGlwX2RybV9vcHMpOwo+ICsJc3Ry
+dWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiArCXN0cnVjdCBjb21wb25lbnRfbWF0Y2gg
+Km1hdGNoID0gTlVMTDsKPiArCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkZXYtPm9mX25vZGU7
+Cj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKnBvcnQ7Cj4gKwlpbnQgaTsKPiAgCj4gLQkvKiBrZWVw
+IGNvbXBhdGliaWxpdHkgd2l0aCBvbGQgY29kZSB0aGF0IHdhcyByZXR1cm5pbmcgLUVOT0RFViAq
+Lwo+IC0JaWYgKHJldCA9PSAtRUlOVkFMKQo+ICsJaWYgKCFucCkKPiAgCQlyZXR1cm4gLUVOT0RF
+VjsKPiArCS8qCj4gKwkgKiBCaW5kIHRoZSBjcnRjIHBvcnRzIGZpcnN0LCBzbyB0aGF0Cj4gKwkg
+KiBkcm1fb2ZfZmluZF9wb3NzaWJsZV9jcnRjcyBjYWxsZWQgZnJvbSBlbmNvZGVyIC5iaW5kIGNh
+bGxiYWNrcwo+ICsJICogd29ya3MgYXMgZXhwZWN0ZWQuCj4gKwkgKi8KPiArCWZvciAoaSA9IDA7
+OyBpKyspIHsKPiArCQlwb3J0ID0gb2ZfcGFyc2VfcGhhbmRsZShucCwgInBvcnRzIiwgaSk7Cj4g
+KwkJaWYgKCFwb3J0KQo+ICsJCQlicmVhazsKPiArCj4gKwkJaWYgKCFvZl9kZXZpY2VfaXNfYXZh
+aWxhYmxlKHBvcnQtPnBhcmVudCkpIHsKPiArCQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4gKwkJCWNv
+bnRpbnVlOwo+ICsJCX0KPiAgCj4gLQlyZXR1cm4gcmV0Owo+ICsJCWNvbXBvbmVudF9tYXRjaF9h
+ZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsIHBvcnQtPnBhcmVudCk7Cj4gKwkJb2Zfbm9kZV9w
+dXQocG9ydCk7Cj4gKwl9Cj4gKwo+ICsJaWYgKGkgPT0gMCkgewo+ICsJCWRldl9lcnIoZGV2LCAi
+bWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4iKTsKPiArCQlyZXR1cm4gLUVOT0RFVjsKPiArCX0K
+PiArCj4gKwlpZiAoIW1hdGNoKSB7Cj4gKwkJZGV2X2VycihkZXYsICJObyBhdmFpbGFibGUgdm9w
+IGZvdW5kIGZvciBkaXNwbGF5LXN1YnN5c3RlbS5cbiIpOwo+ICsJCXJldHVybiAtRU5PREVWOwo+
+ICsJfQo+ICsJLyoKPiArCSAqIEZvciBlYWNoIGJvdW5kIGNydGMsIGJpbmQgdGhlIGVuY29kZXJz
+IGF0dGFjaGVkIHRvIGl0cwo+ICsJICogcmVtb3RlIGVuZHBvaW50Lgo+ICsJICovCj4gKwlmb3Ig
+KGkgPSAwOzsgaSsrKSB7Cj4gKwkJcG9ydCA9IG9mX3BhcnNlX3BoYW5kbGUobnAsICJwb3J0cyIs
+IGkpOwo+ICsJCWlmICghcG9ydCkKPiArCQkJYnJlYWs7Cj4gKwo+ICsJCWlmICghb2ZfZGV2aWNl
+X2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQpKSB7Cj4gKwkJCW9mX25vZGVfcHV0KHBvcnQpOwo+
+ICsJCQljb250aW51ZTsKPiArCQl9Cj4gKwo+ICsJCXJvY2tjaGlwX2FkZF9lbmRwb2ludHMoZGV2
+LCAmbWF0Y2gsIHBvcnQpOwo+ICsJCW9mX25vZGVfcHV0KHBvcnQpOwo+ICsJfQo+ICsKPiArCXJl
+dHVybiBjb21wb25lbnRfbWFzdGVyX2FkZF93aXRoX21hdGNoKGRldiwgJnJvY2tjaGlwX2RybV9v
+cHMsIG1hdGNoKTsKPiAgfQo+ICAKPiAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1f
+cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gLS0gCj4gMS43LjkuNQo+IAo+
+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJp
+LWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBo
+dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgot
+LSAKPT09PT09PT09PT09PT09PT09PT0KfCBJIHdvdWxkIGxpa2UgdG8gfAp8IGZpeCB0aGUgd29y
+bGQsICB8CnwgYnV0IHRoZXkncmUgbm90IHwKfCBnaXZpbmcgbWUgdGhlICAgfAogXCBzb3VyY2Ug
+Y29kZSEgIC8KICAtLS0tLS0tLS0tLS0tLS0KICAgIMKvXF8o44OEKV8vwq8KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
