@@ -1,13 +1,20 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: fix window origin calculation
-Date: Tue, 10 Nov 2015 18:07:16 +0800
-Message-ID: <5641C1D4.8060006@rock-chips.com>
-References: <1447149550-18595-1-git-send-email-mark.yao@rock-chips.com>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
+Subject: Re: [RFC PATCH v3 1/4] drm: Introduce generic probe function for
+ component based masters.
+Date: Tue, 10 Nov 2015 10:09:09 +0000
+Message-ID: <20151110100909.GI963@e106497-lin.cambridge.arm.com>
+References: <1445267270-23126-1-git-send-email-Liviu.Dudau@arm.com>
+ <1445267270-23126-2-git-send-email-Liviu.Dudau@arm.com>
+ <564069CD.2070102@rock-chips.com>
+ <20151109114259.GX8644@n2100.arm.linux.org.uk>
+ <20151109115727.GE963@e106497-lin.cambridge.arm.com>
+ <5641B075.6020602@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1447149550-18595-1-git-send-email-mark.yao@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <5641B075.6020602@rock-chips.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -17,31 +24,30 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCk9uIDExLzEwLzIwMTUgMDU6NTkgUE0sIE1hcmsgWWFvIHdyb3RlOgo+IEZyb206
-IERvbWluaWsgQmVociA8ZGJlaHJAY2hyb21pdW0ub3JnPgo+Cj4gVk9QX1dJTnhfRFNQX1NUIGRv
-ZXMgbm90IHJlcXVpcmUgc3VidHJhY3RpbmcgMSBmcm9tIHRoZSB2YWx1ZXMgd3JpdHRlbiB0bwo+
-IGl0LiBJdCBhY3R1YWxseSBjYXVzZXMgdGhlIHNjcmVlbiB0byBiZSBzaGlmdGVkIGJ5IG9uZSBw
-aXhlbC4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNv
-bT4KCkkgaGF2ZSBtZWV0IHRoZSBzY3JlZW4gc2hpZnQgcHJvYmxlbSBvbiBSSzMwMzYgU0RLIGJv
-YXJkLCBhbmQgdGhpcwpjb3VsZCBmaXggbXkgcHJvYmxlbSwgc28KClRlc3RlZC1ieTogWWFraXIg
-WWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgoKLSBZYWtpcgoKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgICA0ICsrLS0KPiAgIDEgZmlsZSBj
-aGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCA0ODcxOWRmLi40NzMwYWU0
-IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
-QEAgLTk1OSw4ICs5NTksOCBAQCBzdGF0aWMgaW50IHZvcF91cGRhdGVfcGxhbmVfZXZlbnQoc3Ry
-dWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gICAJdmFsID0gKGRlc3QueTIgLSBkZXN0LnkxIC0gMSkg
-PDwgMTY7Cj4gICAJdmFsIHw9IChkZXN0LngyIC0gZGVzdC54MSAtIDEpICYgMHhmZmZmOwo+ICAg
-CVZPUF9XSU5fU0VUKHZvcCwgd2luLCBkc3BfaW5mbywgdmFsKTsKPiAtCXZhbCA9IChkc3Bfc3R5
-IC0gMSkgPDwgMTY7Cj4gLQl2YWwgfD0gKGRzcF9zdHggLSAxKSAmIDB4ZmZmZjsKPiArCXZhbCA9
-IGRzcF9zdHkgPDwgMTY7Cj4gKwl2YWwgfD0gZHNwX3N0eCAmIDB4ZmZmZjsKPiAgIAlWT1BfV0lO
-X1NFVCh2b3AsIHdpbiwgZHNwX3N0LCB2YWwpOwo+ICAgCVZPUF9XSU5fU0VUKHZvcCwgd2luLCBy
-Yl9zd2FwLCByYl9zd2FwKTsKPiAgIAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+T24gVHVlLCBOb3YgMTAsIDIwMTUgYXQgMDQ6NTM6MDlQTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
+Cj4gICAgT24gMjAxNeW5tDEx5pyIMDnml6UgMTk6NTcsIExpdml1IER1ZGF1IHdyb3RlOgo+IAo+
+ICBNZWFud2hpbGUsIHdoYXQgaXMgeW91ciBzdWdnZXN0aW9uIHJlZ2FyZGluZyB0aGUgcGF0Y2hz
+ZXQuIEkndmUgc2VlbiBEYXZpZCBoYXMKPiAgc2VudCBMaW51cyBhIHB1bGwgcmVxdWVzdCBmb3Ig
+NC40LXJjMSB0aGF0IGluY2x1ZGVzIGl0LiBTaG91bGQgd2Ugc2VuZCBhCj4gIHJldmVydCBmb3Ig
+cm9ja2NoaXAgY29tbWl0IGFuZCB0aGVuIHBhdGNoIGxhdGVyIHRoZSBmdW5jdGlvbj8KPiAKPiAg
+ICBIaSBMaXZpdQo+ICAgIMKgwqDCoCBJIGhhZCBzZW50IGEgcGF0Y2ggdG8gcmV2ZXJ0IHRoaXMg
+cm9ja2NoaXAgY29tbWl0LCB2ZXJmaWVkIHJvY2tjaGlwIGRybSB3b3Jrcy4gU28gd2UgY2FuIGRv
+IHRoZSBmaXggbGF0ZXIuCgpZZWFoLCBhbmQgSSdtIHRoaW5raW5nIGFib3V0IEFDSy1pbmcgaXQu
+IE9uIG9uZSBoYW5kIEkgd291bGQgbGlrZSB0bwpoYXZlIHRoaXMgZml4ZWQsIG9uIHRoZSBvdGhl
+ciBoYW5kIEkgZG9uJ3Qgd2FudCB0aGUgcm9ja2NoaXAgcGxhdGZvcm0KdG8gYmUgYnJva2VuLiBC
+dXQgbG9va2luZyBhdCB0aGUgcmVzdCBvZiB0aGUgY2hhbmdlcyBJIG5lZWQgdG8gZG8gaXQKZG9l
+c24ndCBmZWVsIHJpZ2h0IHRvIG1ha2UgeW91IHdhaXQgZm9yIHRoZW0uCgpCZXN0IHJlZ2FyZHMs
+Ckxpdml1Cgo+IAo+ICAgIFRoYW5rcyBhbGwgdGhlIHNhbWUuIDotKQo+IAo+ICAgIC0tIO+8rWFy
+ayBZYW8KCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+Zwo+IGh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2
+ZWwKCgotLSAKPT09PT09PT09PT09PT09PT09PT0KfCBJIHdvdWxkIGxpa2UgdG8gfAp8IGZpeCB0
+aGUgd29ybGQsICB8CnwgYnV0IHRoZXkncmUgbm90IHwKfCBnaXZpbmcgbWUgdGhlICAgfAogXCBz
+b3VyY2UgY29kZSEgIC8KICAtLS0tLS0tLS0tLS0tLS0KICAgIMKvXF8o44OEKV8vwq8KX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
