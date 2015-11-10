@@ -1,83 +1,91 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-Date: Tue, 10 Nov 2015 17:35:31 +0800
-Message-ID: <1447148131-30041-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: dianders@chromium.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: create the fake mmap offset during
+ gem creation
+Date: Tue, 10 Nov 2015 17:38:55 +0800
+Message-ID: <5641BB2F.9040809@rock-chips.com>
+References: <4982827.0pnZflEOSR@phil> <5676968.2ELIqayQry@phil>
+ <5641B832.4070506@rock-chips.com> <7461442.UPGcS8k8bY@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <7461442.UPGcS8k8bY@phil>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We've been seeing some crashes at reboot test on rk3288-based systems,
-which boards have not reset pin connected to NPOR, they reboot by
-setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-a high frequency mode, some IPs might hang during soft reset.
-It appears that we can fix the problem by switching to slow mode before
-reboot, just like what we did before suspend.
-
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-
----
-
- drivers/clk/rockchip/clk-rk3288.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
-
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 9040878..524662c 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -16,6 +16,7 @@
- #include <linux/clk-provider.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/reboot.h>
- #include <linux/syscore_ops.h>
- #include <dt-bindings/clock/rk3288-cru.h>
- #include "clk.h"
-@@ -855,6 +856,34 @@ static void rk3288_clk_sleep_init(void __iomem *reg_base)
- static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
- #endif
- 
-+void __iomem *mode_con_reg;
-+static int rk3288_restart_notify(struct notifier_block *this,
-+				   unsigned long mode, void *cmd)
-+{
-+	writel(0xf3030000, mode_con_reg);
-+	return NOTIFY_DONE;
-+}
-+
-+static struct notifier_block rk3288_restart_handler = {
-+	.notifier_call = rk3288_restart_notify,
-+	/* Switch PLLs other than DPLL (for SDRAM) to slow mode before reboot
-+	 * to avoid crashes in reset, so this priority must bigger than the one
-+	 * in rockchip_restart_handler.
-+	 */
-+	.priority = 129,
-+};
-+
-+void __init rk3288_register_restart_notifier(void __iomem *reg)
-+{
-+	int ret;
-+
-+	mode_con_reg = reg;
-+	ret = register_restart_handler(&rk3288_restart_handler);
-+	if (ret)
-+		pr_err("%s: cannot register restart handler, %d\n",
-+		       __func__, ret);
-+}
-+
- static void __init rk3288_clk_init(struct device_node *np)
- {
- 	void __iomem *reg_base;
-@@ -910,6 +939,8 @@ static void __init rk3288_clk_init(struct device_node *np)
- 	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
-+	rk3288_register_restart_notifier(reg_base + RK3288_MODE_CON);
-+
- 	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
- 	rk3288_clk_sleep_init(reg_base);
- }
--- 
-2.6.3
-
+T24gMjAxNeW5tDEx5pyIMTDml6UgMTc6MjgsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIERp
+ZW5zdGFnLCAxMC4gTm92ZW1iZXIgMjAxNSwgMTc6MjY6MTAgc2NocmllYiBNYXJrIHlhbzoKPj4g
+T24gMjAxNeW5tDEx5pyIMTDml6UgMTQ6NDYsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gSGkg
+TWFyaywKPj4+Cj4+PiBBbSBEaWVuc3RhZywgMTAuIE5vdmVtYmVyIDIwMTUsIDE0OjE3OjQzIHNj
+aHJpZWIgTWFyayB5YW86Cj4+Pj4gSGkgSGVpa28KPj4+PiAgICAgICAgIEkgZG9uJ3QgdGhpbmsg
+dGhpcyBwYXRjaCBpcyBuZWVkZWQgZm9yIHJvY2tjaGlwIGRybSwgc2luY2UKPj4+PiByb2NrY2hp
+cCBkcm0gb25seSB1c2Uga21zLgo+Pj4+IEkgc2F3IHRoZSBkaXNjdXNzaW9uIGFib3V0ICgiZHJt
+L2V4eW5vczogY3JlYXRlIGEgZmFrZSBtbWFwIG9mZnNldCB3aXRoCj4+Pj4gZ2VtIGNyZWF0aW9u
+IiksCj4+Pj4gSW5raSBzYWlkIHRoYXQ6ICJUaGlzIHBhdGNoIG1ha2VzIGRybV9nZW1fY3JlYXRl
+X21tYXBfb2Zmc2V0IHRvIGJlCj4+Pj4gY2FsbGVkIGV2ZW4gaW4gY2FzZSBvZgo+Pj4+IG5vdCB1
+c2luZyBkdW1iKiBpbnRlcmZhY2VzLiBJLmUuLCBleHlub3NfZHJtX2dlbV9jcmVhdGVfaW9jdGwg
+LT4KPj4+PiBleHlub3NfZHJtX2dlbV9tbWFwIgo+Pj4+Cj4+Pj4gU28gSSB0aGluayB0aGlzIHBh
+dGNoIGRvZXNuJ3QgbWFrZSBzZW5zZSBmb3Igcm9ja2NoaXAgZHJtLgo+Pj4gb2sgOi0pIC4gSSdt
+IG5vdCB0aGF0IGtub3dsZWRnYWJsZSB3aGVuIGl0IGNvbWVzIHRvIGRybSBhbmQganVzdCBmb3Vu
+ZCB0aGF0Cj4+PiBzaW1pbGFyIGNoYW5nZSBpbiBleHlub3Mgd2hpbGUgc2VhcmNoaW5nIGZvciB0
+aGUgZG1hIGlzc3VlLgo+Pj4KPj4+IFNvIHdlIGNhbiBkcm9wIHRoaXMgcGF0Y2ggYW5kIHlvdSBj
+b3VsZCBqdXN0IG1lcmdlIHBhdGNoMiBhcyB3ZWxsIGFzCj4+Pgo+Pj4gCVtSRVNFTkQgUEFUQ0hd
+IGRybS9yb2NrY2hpcDogdm9wOiBDb3JyZWN0IGVuYWJsZWQgY2xvY2tzIGR1cmluZyBzZXR1cAo+
+Pj4KPj4+IGZyb20gU2pvZXJkIGFuZCBzZW5kIHRoZXNlIHR3byB0byBEYXZlIGFzIGZpeGVzIGZv
+ciA0LjQ/Cj4+Pgo+PiBSaWdodCwgdGhhdCBwYXRjaCBpcyBuZWVkZWQsIGFuZCBhbHNvIEkgd2Fu
+dCB0byBsYW5kIHR3byBwYXRjaDoKPj4gICAgICAgICBbUkVTRU5EIFBBVENIXSBkcm0vcm9ja2No
+aXA6IGltcG9ydCBkbWFfYnVmIHRvIGdlbQo+IHRoZSBpbXBvcnQgc2hvdWxkIGdvIGludG8gNC41
+IHRob3VnaCAoYXMgaXQgaXMgYSBuZXcgZmVhdHVyZSksIHdoaWxlCj4gdGhlIG90aGVyIHRocmVl
+IGFyZSBmaXhlcyB0aGF0IHNob3VsZCBnbyBpbnRvIHRoZSBjdXJyZW50IDQuNAo+Ck9LLCBHb3Qg
+aXQKPj4gICAgICAgICBbUEFUQ0hdIFJldmVydCAiZHJtL3JvY2tjaGlwOiBDb252ZXJ0IHRoZSBw
+cm9iZSBmdW5jdGlvbiB0byB0aGUKPj4gZ2VuZXJpYyBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCki
+Cj4+Cj4+PiBUaGFua3MKPj4+IEhlaWtvCj4+Pgo+Pj4+IE9uIDIwMTXlubQxMeaciDEw5pelIDAz
+OjUwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+Pj4gU2ltaWxhcmx5IHRvIHRoZSBlcXVpdmFs
+ZW50IGV4eW5vcy1maXggaW4gY29tbWl0IDQ4Y2Y1M2Y0MzQzYQo+Pj4+PiAoImRybS9leHlub3M6
+IGNyZWF0ZSBhIGZha2UgbW1hcCBvZmZzZXQgd2l0aCBnZW0gY3JlYXRpb24iKSB0aGUgcm9ja2No
+aXAKPj4+Pj4gZHJtIGRyaXZlciBhbHNvIGNhbGxzIHRoZSBkcm1fZ2VtX2NyZWF0ZV9tbWFwX29m
+ZnNldCBmYWtlLW9mZnNldCBjcmVhdGlvbgo+Pj4+PiBvbiBldmVyeSBpbnZvY2F0aW9uIG9mIHJv
+Y2tjaGlwX2dlbV9kdW1iX21hcF9vZmZzZXQuCj4+Pj4+Cj4+Pj4+IE1vdmUgdGhhdCB0byB0aGUg
+Y3JlYXRpb24gb2YgdGhlIGdlbSB0byBvbmx5IGNyZWF0ZSB0aGF0IG9mZnNldCBvbmNlLgo+Pj4+
+Pgo+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+
+Pj4+PiAtLS0KPj4+Pj4gICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+Z2VtLmMgfCAxMiArKysrKystLS0tLS0KPj4+Pj4gICAgIDEgZmlsZSBjaGFuZ2VkLCA2IGluc2Vy
+dGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4+Pj4+Cj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4+PiBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKPj4+Pj4gaW5kZXggNGFiMmYyMC4uZTUwZDEx
+MyAxMDA2NDQKPj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV9nZW0uYwo+Pj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2dlbS5jCj4+Pj4+IEBAIC0xMjYsOCArMTI2LDE0IEBAIHN0cnVjdCByb2NrY2hpcF9nZW1fb2Jq
+ZWN0ICoKPj4+Pj4gICAgIAlpZiAocmV0KQo+Pj4+PiAgICAgCQlnb3RvIGVycl9mcmVlX3JrX29i
+ajsKPj4+Pj4gICAgIAo+Pj4+PiArCXJldCA9IGRybV9nZW1fY3JlYXRlX21tYXBfb2Zmc2V0KG9i
+aik7Cj4+Pj4+ICsJaWYgKHJldCkKPj4+Pj4gKwkJZ290byBlcnJfZnJlZV9idWY7Cj4+Pj4+ICsK
+Pj4+Pj4gICAgIAlyZXR1cm4gcmtfb2JqOwo+Pj4+PiAgICAgCj4+Pj4+ICtlcnJfZnJlZV9idWY6
+Cj4+Pj4+ICsJcm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHJrX29iaik7Cj4+Pj4+ICAgICBlcnJfZnJl
+ZV9ya19vYmo6Cj4+Pj4+ICAgICAJa2ZyZWUocmtfb2JqKTsKPj4+Pj4gICAgIAlyZXR1cm4gRVJS
+X1BUUihyZXQpOwo+Pj4+PiBAQCAtMTk2LDcgKzIwMiw2IEBAIGludCByb2NrY2hpcF9nZW1fZHVt
+Yl9tYXBfb2Zmc2V0KHN0cnVjdCBkcm1fZmlsZQo+Pj4gKmZpbGVfcHJpdiwKPj4+Pj4gICAgIAkJ
+CQkgdWludDY0X3QgKm9mZnNldCkKPj4+Pj4gICAgIHsKPj4+Pj4gICAgIAlzdHJ1Y3QgZHJtX2dl
+bV9vYmplY3QgKm9iajsKPj4+Pj4gLQlpbnQgcmV0Owo+Pj4+PiAgICAgCj4+Pj4+ICAgICAJb2Jq
+ID0gZHJtX2dlbV9vYmplY3RfbG9va3VwKGRldiwgZmlsZV9wcml2LCBoYW5kbGUpOwo+Pj4+PiAg
+ICAgCWlmICghb2JqKSB7Cj4+Pj4+IEBAIC0yMDQsMTQgKzIwOSw5IEBAIGludCByb2NrY2hpcF9n
+ZW1fZHVtYl9tYXBfb2Zmc2V0KHN0cnVjdCBkcm1fZmlsZQo+Pj4gKmZpbGVfcHJpdiwKPj4+Pj4g
+ICAgIAkJcmV0dXJuIC1FSU5WQUw7Cj4+Pj4+ICAgICAJfQo+Pj4+PiAgICAgCj4+Pj4+IC0JcmV0
+ID0gZHJtX2dlbV9jcmVhdGVfbW1hcF9vZmZzZXQob2JqKTsKPj4+Pj4gLQlpZiAocmV0KQo+Pj4+
+PiAtCQlnb3RvIG91dDsKPj4+Pj4gLQo+Pj4+PiAgICAgCSpvZmZzZXQgPSBkcm1fdm1hX25vZGVf
+b2Zmc2V0X2FkZHIoJm9iai0+dm1hX25vZGUpOwo+Pj4+PiAgICAgCURSTV9ERUJVR19LTVMoIm9m
+ZnNldCA9IDB4JWxseFxuIiwgKm9mZnNldCk7Cj4+Pj4+ICAgICAKPj4+Pj4gLW91dDoKPj4+Pj4g
+ICAgIAlkcm1fZ2VtX29iamVjdF91bnJlZmVyZW5jZV91bmxvY2tlZChvYmopOwo+Pj4+PiAgICAg
+Cj4+Pj4+ICAgICAJcmV0dXJuIDA7Cj4+Pj4KPj4+Cj4+Pgo+Pgo+Pgo+Cj4KPgoKCi0tIArvvK1h
+cmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
