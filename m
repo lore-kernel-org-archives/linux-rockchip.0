@@ -1,303 +1,175 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v2] usb: dwc2: host: Rewrite the microframe scheduler
-Date: Mon,  9 Nov 2015 14:42:01 -0800
-Message-ID: <1447108921-19795-1-git-send-email-dianders@chromium.org>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: Re: [PATCH] dmaengine: pl330: Fix race in residue reporting
+Date: Tue, 10 Nov 2015 10:44:39 +0900
+Message-ID: <56414C07.3080108@samsung.com>
+References: <1446808295-23149-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <563DF151.2010307@samsung.com> <1447074736.22840.35.camel@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org
-Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-reply-to: <1447074736.22840.35.camel@collabora.co.uk>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Vinod Koul <vinod.koul@intel.com>
+Cc: k.kozlowski.k@gmail.com, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dmaengine@vger.kernel.org, linux-arm-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The old microframe scheduler was hard to follow and had some bugs in
-it.  Specifically, I made some code to visualize what was happening and
-found:
+On 09.11.2015 22:12, Sjoerd Simons wrote:
+> On Sat, 2015-11-07 at 21:40 +0900, Krzysztof Kozlowski wrote:
+>> W dniu 06.11.2015 o 20:11, Sjoerd Simons pisze:
+>>> When a transfer completes there is a small window between the
+>>> descriptor
+>>> being unset as the current active one in the thread and it being
+>>> marked
+>>> as done. This causes the residue to be incorrectly set when
+>>> pl330_tx_status is run in that window. Practically this caused
+>>> issue for me with audio playback as the residue goes up during a
+>>> transfer (as the in-progress transfer is no longer accounted for),
+>>> which makes the higher levels think the audio ringbuffer wrapped
+>>> around
+>>> and thus did a sudden big jump forward.
+>>>
+>>> To resolve this, add a field protected by the dma engine lock to
+>>> indicate the transfer is done but the status hasn't been updated
+>>> yet.
+>>>
+>>> Also fix the locking in pl330_tx_status, as the function inspects
+>>> the
+>>> threads req_running field and queries the dma engine for the
+>>> current
+>>> state of the running transfer the dma engine lock needs to be held
+>>> to
+>>> ensure the active descriptor doesn't change underneath it.
+>>>
+>>> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+>>>
+>>> ---
+>>>
+>>>  drivers/dma/pl330.c | 10 +++++++++-
+>>>  1 file changed, 9 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+>>> index 17ee758..6c8243b 100644
+>>> --- a/drivers/dma/pl330.c
+>>> +++ b/drivers/dma/pl330.c
+>>> @@ -503,6 +503,8 @@ struct dma_pl330_desc {
+>>>  	struct pl330_reqcfg rqcfg;
+>>>  
+>>>  	enum desc_status status;
+>>> +	/* Transfer completed, but not yet moved to DONE state */
+>>> +	bool xferred;
+>>>  
+>>>  	int bytes_requested;
+>>>  	bool last;
+>>> @@ -1463,6 +1465,9 @@ static void dma_pl330_rqcb(struct
+>>> dma_pl330_desc *desc, enum pl330_op_err err)
+>>>  	spin_lock_irqsave(&pch->lock, flags);
+>>>  
+>>>  	desc->status = DONE;
+>>> +	spin_lock(&pch->thread->dmac->lock);
+>>> +	desc->xferred = false;
+>>> +	spin_unlock(&pch->thread->dmac->lock);
+>>>  
+>>>  	spin_unlock_irqrestore(&pch->lock, flags);
+>>>  
+>>> @@ -1595,6 +1600,7 @@ static int pl330_update(struct pl330_dmac
+>>> *pl330)
+>>>  
+>>>  			/* Detach the req */
+>>>  			descdone = thrd->req[active].desc;
+>>> +			descdone->xferred = true;
+>>>  			thrd->req[active].desc = NULL;
+>>
+>> Looking at the code indeed the small window could happen. How can I
+>> reproduce it? Can you describe your system?
+> 
+> I'm using a Rock 2 square (RK3288 based) board, running Debian Jessie
+> and simply playing back audio using vlc & pulseaudio.
+> 
+> For some reason when using vlc, pulseaudio is polling the hw pointer
+> position very very often and seems to hit this tiny window a few times
+> a minute depending a bit on system load. This causes some audiable
+> issues and eventually underflowing (as vlc fills the pulseaudio buffer
+> at a constant rate, but due to this, pulse pushes the data faster then
+> the actual playback rate every so often).
 
-Add W (280 us):
-  WWWWWWWWWW|WWWWWWWWWW|WWWWWWWW  |          |          |          |   |
-Add B (260 us):
-  WWWWWWWWWW|WWWWWWWWWW|WWWWWWWWBB|BBBBBBBBBB|BBBBBBBBBB|BBBB      |   |
-Add C ( 80 us):
-  WWWWWWWWWW|WWWWWWWWWW|WWWWWWWWBB|BBBBBBBBBB|BBBBBBBBBB|BBBBCCCCCC|CC |
-Add K ( 10 us):
-  WWWWWWWWWW|WWWWWWWWWW|WWWWWWWWBB|BBBBBBBBBB|BBBBBBBBBB|BBBBK     |   |
-Add S (170 us):
-  SSSSSSSSSS|SSSSSSS   |        BB|BBBBBBBBBB|BBBBBBBBBB|BBBBK     |   |
-Add L ( 60 us):
-  SSSSSSSSSS|SSSSSSSLLL|LLL     BB|BBBBBBBBBB|BBBBBBBBBB|BBBBK     |   |
-Add W ( 60 us):
-  SSSSSSSSSS|SSSSSSSLLL|LLLWWWWWBB|BBBBBBBBBB|BBBBBBBBBB|BBBBKW    |   |
+Thanks for description, I don't use pulseaudio on my testing setup but
+I'll try to reproduce it anyway.
 
-As you can see, the "W" is broken up in a bogus way.  It's in microframe
-2 and microframe 5.  It's easy to find more examples of bugs with more
-testing.
+> 
+>> As for the change itself, how about adding a new value to
+>> desc_status?
+>> Now you are actually introducing a semi-status field.
+> 
+> The reason i picked this way this was was due to the current locking
+> scheme. The locking order is channel, then controller (when locking
+> both). While processing the events (and update the active descriptor),
+> the controller is locked so the status can't be directly updated (as
+> that's protected by the channel lock). And we can't grab the channel
+> lock without dopping the controller one first :).
+> 
+> Keeping one status field might well be possible, but would require at
+> least reworking the locking here.
 
-This new code uses the existing Linux bitmap code to avoid reinventing
-the wheel.  You can see (ugly) test code for this up on pastebin:
-  http://pastebin.com/GwMuz5HT
+Right, the locking requires new field... If going this way could you
+describe this rationale and information about locking a comment? I mean
+the answer you gave above - the locking requires such field and that the
+field is protected actually by controller lock, not by channel.
 
-Note: no known problems are fixed by this patch, and in fact I can see
-very little impact of the microframe scheduler overall.
+On the other hand, I am looking and the code and looking and I wonder:
+do you really need to protect writing to the "xferred" field? In
+pl330_update() you are setting it to true while getting the list of done
+descriptors.
+The descriptors done are then removed from the thread.
 
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-Since no known bugs are fixed by this code and my current setup hardly
-stress the microframe scheduler at all, please give extra eyes and extra
-testing to this patch.  Thanks!
+In that path then you are setting it to false in dma_pl330_rqcb() for
+these done descriptors - this should not be executed concurrently with
+above.
 
-Changes in v2:
-- Totally rewrote again after writing test code.
-- Now needs to be atop my recent series delaying bandwidth release
+The dma_pl330_rqcb() is also called from abort and fail paths but these
+are use controller's lock (e.g. pl330_dotask()).
 
- drivers/usb/dwc2/core.h      |   9 +++-
- drivers/usb/dwc2/hcd.c       |   3 --
- drivers/usb/dwc2/hcd.h       |   5 +-
- drivers/usb/dwc2/hcd_queue.c | 117 ++++++++++++++++---------------------------
- 4 files changed, 52 insertions(+), 82 deletions(-)
+Just thinking out loud... maybe I am missing something here.
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index a66d3cb62b65..df123de98903 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -649,7 +649,7 @@ struct dwc2_hregs_backup {
-  *                      This value is in microseconds per (micro)frame. The
-  *                      assumption is that all periodic transfers may occur in
-  *                      the same (micro)frame.
-- * @frame_usecs:        Internal variable used by the microframe scheduler
-+ * @periodic_bitmap:    Bitmap used by the microframe scheduler
-  * @frame_number:       Frame number read from the core at SOF. The value ranges
-  *                      from 0 to HFNUM_MAX_FRNUM.
-  * @periodic_qh_count:  Count of periodic QHs, if using several eps. Used for
-@@ -744,6 +744,10 @@ struct dwc2_hsotg {
- #define DWC2_CORE_REV_3_00a	0x4f54300a
- 
- #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
-+
-+/* Total number of microseconds for scheduling */
-+#define	TOTAL_PERIODIC_USEC		630
-+
- 	union dwc2_hcd_internal_flags {
- 		u32 d32;
- 		struct {
-@@ -766,7 +770,8 @@ struct dwc2_hsotg {
- 	struct list_head periodic_sched_assigned;
- 	struct list_head periodic_sched_queued;
- 	u16 periodic_usecs;
--	u16 frame_usecs[8];
-+	unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
-+						   BITS_PER_LONG)];
- 	u16 frame_number;
- 	u16 periodic_qh_count;
- 	bool bus_suspended;
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index b899b06b41cc..5fc86aad542e 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -3089,9 +3089,6 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
- 		hsotg->hc_ptr_array[i] = channel;
- 	}
- 
--	if (hsotg->core_params->uframe_sched > 0)
--		dwc2_hcd_init_usecs(hsotg);
--
- 	/* Initialize hsotg start work */
- 	INIT_DELAYED_WORK(&hsotg->start_work, dwc2_hcd_start_func);
- 
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index b75a8b116f6e..051e8b3bf582 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -236,7 +236,7 @@ enum dwc2_transaction_type {
-  * @interval:           Interval between transfers in (micro)frames
-  * @sched_frame:        (Micro)frame to initialize a periodic transfer.
-  *                      The transfer executes in the following (micro)frame.
-- * @frame_usecs:        Internal variable used by the microframe scheduler
-+ * @start_usecs:        Exact start microsecond value.
-  * @start_split_frame:  (Micro)frame at which last start split was initialized
-  * @ntd:                Actual number of transfer descriptors in a list
-  * @qtd_list:           List of QTDs for this QH
-@@ -270,7 +270,7 @@ struct dwc2_qh {
- 	u16 usecs;
- 	u16 interval;
- 	u16 sched_frame;
--	u16 frame_usecs[8];
-+	u16 start_usecs;
- 	u16 start_split_frame;
- 	u16 ntd;
- 	struct list_head qtd_list;
-@@ -458,7 +458,6 @@ extern void dwc2_hcd_queue_transactions(struct dwc2_hsotg *hsotg,
- 
- /* Schedule Queue Functions */
- /* Implemented in hcd_queue.c */
--extern void dwc2_hcd_init_usecs(struct dwc2_hsotg *hsotg);
- extern struct dwc2_qh *dwc2_hcd_qh_create(struct dwc2_hsotg *hsotg,
- 					  struct dwc2_hcd_urb *urb,
- 					  gfp_t mem_flags);
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 10f27b594e92..c93be0a22369 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -77,17 +77,12 @@ static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 	/* Update claimed usecs per (micro)frame */
- 	hsotg->periodic_usecs -= qh->usecs;
- 
--	if (hsotg->core_params->uframe_sched > 0) {
--		int i;
--
--		for (i = 0; i < 8; i++) {
--			hsotg->frame_usecs[i] += qh->frame_usecs[i];
--			qh->frame_usecs[i] = 0;
--		}
--	} else {
--		/* Release periodic channel reservation */
-+	/* Release periodic channel reservation */
-+	if (hsotg->core_params->uframe_sched > 0)
-+		bitmap_clear(hsotg->periodic_bitmap,
-+			     qh->start_usecs, qh->usecs);
-+	else
- 		hsotg->periodic_channels--;
--	}
- 
- 	/* No more unreserve pending--we're did it */
- 	qh->unreserve_pending = false;
-@@ -417,35 +412,42 @@ static int dwc2_check_periodic_bandwidth(struct dwc2_hsotg *hsotg,
- 
- /**
-  * Microframe scheduler
-- * track the total use in hsotg->frame_usecs
-- * keep each qh use in qh->frame_usecs
-+ * track the total use in hsotg->periodic_bitmap
-+ * keep each qh use in qh->start_usecs
-  * when surrendering the qh then donate the time back
-  */
- static const unsigned short max_uframe_usecs[] = {
- 	100, 100, 100, 100, 100, 100, 30, 0
- };
- 
--void dwc2_hcd_init_usecs(struct dwc2_hsotg *hsotg)
--{
--	int i;
--
--	for (i = 0; i < 8; i++)
--		hsotg->frame_usecs[i] = max_uframe_usecs[i];
--}
--
- static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
-+	unsigned short frame_start = 0;
- 	unsigned short utime = qh->usecs;
- 	int i;
- 
--	for (i = 0; i < 8; i++) {
--		/* At the start hsotg->frame_usecs[i] = max_uframe_usecs[i] */
--		if (utime <= hsotg->frame_usecs[i]) {
--			hsotg->frame_usecs[i] -= utime;
--			qh->frame_usecs[i] += utime;
-+	for (i = 0; i < ARRAY_SIZE(max_uframe_usecs); i++) {
-+		unsigned short frame_time = max_uframe_usecs[i];
-+		unsigned long start;
-+
-+		/* Look for a chunk starting at begin of this frame */
-+		start = bitmap_find_next_zero_area(hsotg->periodic_bitmap,
-+						   TOTAL_PERIODIC_USEC,
-+						   frame_start, utime, 0);
-+
-+		/* The chunk has to totally fit in this frame */
-+		if (start - frame_start + utime <= frame_time) {
-+			bitmap_set(hsotg->periodic_bitmap, start, utime);
-+			qh->start_usecs = start;
-+			dev_dbg(hsotg->dev, "%s: assigned %d us @ %d us\n",
-+				__func__, qh->usecs, qh->start_usecs);
- 			return i;
- 		}
-+
-+		frame_start += frame_time;
- 	}
-+	dev_dbg(hsotg->dev, "%s: failed to assign %d us\n",
-+		__func__, qh->usecs);
- 	return -ENOSPC;
- }
- 
-@@ -455,57 +457,24 @@ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
- 	unsigned short utime = qh->usecs;
--	unsigned short xtime;
--	int t_left;
--	int i;
--	int j;
--	int k;
-+	unsigned long start;
-+
-+	start = bitmap_find_next_zero_area(hsotg->periodic_bitmap,
-+					   TOTAL_PERIODIC_USEC, 0, utime, 0);
-+	if (start >= TOTAL_PERIODIC_USEC) {
-+		dev_dbg(hsotg->dev, "%s: failed to assign %d us\n",
-+			__func__, qh->usecs);
-+		return -ENOSPC;
-+	}
- 
--	for (i = 0; i < 8; i++) {
--		if (hsotg->frame_usecs[i] <= 0)
--			continue;
-+	bitmap_set(hsotg->periodic_bitmap, start, qh->usecs);
-+	qh->start_usecs = start;
- 
--		/*
--		 * we need n consecutive slots so use j as a start slot
--		 * j plus j+1 must be enough time (for now)
--		 */
--		xtime = hsotg->frame_usecs[i];
--		for (j = i + 1; j < 8; j++) {
--			/*
--			 * if we add this frame remaining time to xtime we may
--			 * be OK, if not we need to test j for a complete frame
--			 */
--			if (xtime + hsotg->frame_usecs[j] < utime) {
--				if (hsotg->frame_usecs[j] <
--							max_uframe_usecs[j])
--					continue;
--			}
--			if (xtime >= utime) {
--				t_left = utime;
--				for (k = i; k < 8; k++) {
--					t_left -= hsotg->frame_usecs[k];
--					if (t_left <= 0) {
--						qh->frame_usecs[k] +=
--							hsotg->frame_usecs[k]
--								+ t_left;
--						hsotg->frame_usecs[k] = -t_left;
--						return i;
--					} else {
--						qh->frame_usecs[k] +=
--							hsotg->frame_usecs[k];
--						hsotg->frame_usecs[k] = 0;
--					}
--				}
--			}
--			/* add the frame time to x time */
--			xtime += hsotg->frame_usecs[j];
--			/* we must have a fully available next frame or break */
--			if (xtime < utime &&
--			   hsotg->frame_usecs[j] == max_uframe_usecs[j])
--				continue;
--		}
--	}
--	return -ENOSPC;
-+	dev_dbg(hsotg->dev, "%s: assigned %d us @ %d us\n",
-+		__func__, qh->usecs, qh->start_usecs);
-+
-+	/* Cheat instead of using max_uframe_usecs */
-+	return start / 100;
- }
- 
- static int dwc2_find_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
--- 
-2.6.0.rc2.230.g3dd15c0
+Best regards,
+Krzysztof
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+> 
+> 
+>> Best regards,
+>> Krzysztof
+>>
+>>>  
+>>>  			thrd->req_running = -1;
+>>> @@ -2250,13 +2256,14 @@ pl330_tx_status(struct dma_chan *chan,
+>>> dma_cookie_t cookie,
+>>>  		goto out;
+>>>  
+>>>  	spin_lock_irqsave(&pch->lock, flags);
+>>> +	spin_lock(&pch->thread->dmac->lock);
+>>>  
+>>>  	if (pch->thread->req_running != -1)
+>>>  		running = pch->thread->req[pch->thread-
+>>>> req_running].desc;
+>>>  
+>>>  	/* Check in pending list */
+>>>  	list_for_each_entry(desc, &pch->work_list, node) {
+>>> -		if (desc->status == DONE)
+>>> +		if (desc->xferred || desc->status == DONE)
+>>>  			transferred = desc->bytes_requested;
+>>>  		else if (running && desc == running)
+>>>  			transferred =
+>>> @@ -2281,6 +2288,7 @@ pl330_tx_status(struct dma_chan *chan,
+>>> dma_cookie_t cookie,
+>>>  		if (desc->last)
+>>>  			residual = 0;
+>>>  	}
+>>> +	spin_unlock(&pch->thread->dmac->lock);
+>>>  	spin_unlock_irqrestore(&pch->lock, flags);
+>>>  
+>>>  out:
+>>>
+>>
+> 
