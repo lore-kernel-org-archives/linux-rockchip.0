@@ -1,76 +1,81 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH 1/3] ASoC: rockchip: i2s: compatible with different chips
-Date: Tue, 10 Nov 2015 15:32:07 +0800
-Message-ID: <1447140729-18267-2-git-send-email-sugar.zhang@rock-chips.com>
-References: <1447140729-18267-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447140729-18267-1-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com, heiko@sntech.de
-Cc: alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH] Revert "drm/rockchip: Convert the probe function to the
+ generic drm_of_component_probe()"
+Date: Tue, 10 Nov 2015 16:47:19 +0800
+Message-ID: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, p.zabel@pengutronix.de, Liviu.Dudau@arm.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-there maybe more than one i2s module inside chip, and these i2s modules
-have different channels features.
-
-for example: there are 3 i2s in rk3066, one support 8 channels playback
-and 2 channels capture, but the others only support 2 channels playback
-and 2 channels capture.
-
-in order to compatible with these various chips, we add playback and
-capture property to specify these values.
-
-there are default channels configuration in driver: 8 channels playback
-and 2 channels capture. if not add property, we use the default values.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
- sound/soc/rockchip/rockchip_i2s.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 58ee645..ec88e94 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -451,6 +451,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- {
- 	struct device_node *node = pdev->dev.of_node;
- 	struct rk_i2s_dev *i2s;
-+	struct snd_soc_dai_driver *soc_dai;
- 	struct resource *res;
- 	void __iomem *regs;
- 	int ret;
-@@ -511,17 +512,26 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 			goto err_pm_disable;
- 	}
- 
--	/* refine capture channels */
-+	soc_dai = devm_kzalloc(&pdev->dev,
-+			       sizeof(*soc_dai), GFP_KERNEL);
-+	if (!soc_dai)
-+		return -ENOMEM;
-+
-+	memcpy(soc_dai, &rockchip_i2s_dai, sizeof(*soc_dai));
-+	if (!of_property_read_u32(node, "rockchip,playback-channels", &val)) {
-+		if (val >= 2 && val <= 8)
-+			soc_dai->playback.channels_max = val;
-+	}
-+
- 	if (!of_property_read_u32(node, "rockchip,capture-channels", &val)) {
- 		if (val >= 2 && val <= 8)
--			rockchip_i2s_dai.capture.channels_max = val;
--		else
--			rockchip_i2s_dai.capture.channels_max = 2;
-+			soc_dai->capture.channels_max = val;
- 	}
- 
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rockchip_i2s_component,
--					      &rockchip_i2s_dai, 1);
-+					      soc_dai, 1);
-+
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not register DAI\n");
- 		goto err_suspend;
--- 
-2.3.6
+VGhpcyByZXZlcnRzIGNvbW1pdCA1MmY1ZWI2MDk0MGRlODg5Y2U5OGE4NzZmNjkzM2I1NzRlYWQz
+MjI1LgoKUm9ja2NoaXAgZHJtIGNhbid0IHdvcmsgd2l0aCBnZW5lcmljIGRybV9vZl9jb21wb25l
+bnRfcHJvYmUgbm93CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlw
+cy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8
+ICAgODEgKysrKysrKysrKysrKysrKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgNzUgaW5z
+ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9kcnYuYwppbmRleCBkMjZlMGNjLi5mMjJlMWUxIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKQEAgLTE5LDcgKzE5LDYgQEAKICNpbmNs
+dWRlIDxkcm0vZHJtUC5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNs
+dWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5oPgotI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KICNpbmNs
+dWRlIDxsaW51eC9kbWEtbWFwcGluZy5oPgogI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4K
+ICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KQEAgLTQxOSw2ICs0MTgsMjkgQEAgc3RhdGljIGlu
+dCBjb21wYXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKIAlyZXR1cm4gZGV2
+LT5vZl9ub2RlID09IG5wOwogfQogCitzdGF0aWMgdm9pZCByb2NrY2hpcF9hZGRfZW5kcG9pbnRz
+KHN0cnVjdCBkZXZpY2UgKmRldiwKKwkJCQkgICBzdHJ1Y3QgY29tcG9uZW50X21hdGNoICoqbWF0
+Y2gsCisJCQkJICAgc3RydWN0IGRldmljZV9ub2RlICpwb3J0KQoreworCXN0cnVjdCBkZXZpY2Vf
+bm9kZSAqZXAsICpyZW1vdGU7CisKKwlmb3JfZWFjaF9jaGlsZF9vZl9ub2RlKHBvcnQsIGVwKSB7
+CisJCXJlbW90ZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVfcG9ydF9wYXJlbnQoZXApOworCQlpZiAo
+IXJlbW90ZSB8fCAhb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShyZW1vdGUpKSB7CisJCQlvZl9ub2Rl
+X3B1dChyZW1vdGUpOworCQkJY29udGludWU7CisJCX0gZWxzZSBpZiAoIW9mX2RldmljZV9pc19h
+dmFpbGFibGUocmVtb3RlLT5wYXJlbnQpKSB7CisJCQlkZXZfd2FybihkZXYsICJwYXJlbnQgZGV2
+aWNlIG9mICVzIGlzIG5vdCBhdmFpbGFibGVcbiIsCisJCQkJIHJlbW90ZS0+ZnVsbF9uYW1lKTsK
+KwkJCW9mX25vZGVfcHV0KHJlbW90ZSk7CisJCQljb250aW51ZTsKKwkJfQorCisJCWNvbXBvbmVu
+dF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29tcGFyZV9vZiwgcmVtb3RlKTsKKwkJb2Zfbm9kZV9w
+dXQocmVtb3RlKTsKKwl9Cit9CisKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2KQogewogCXN0cnVjdCBkcm1fZGV2aWNlICpkcm07CkBAIC00NjEsMTQgKzQ4
+Myw2MSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3BzIHJvY2tjaGlw
+X2RybV9vcHMgPSB7CiAKIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3Byb2JlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiB7Ci0JaW50IHJldCA9IGRybV9vZl9jb21wb25l
+bnRfcHJvYmUoJnBkZXYtPmRldiwgY29tcGFyZV9vZiwKLQkJCQkJICZyb2NrY2hpcF9kcm1fb3Bz
+KTsKKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2OworCXN0cnVjdCBjb21wb25lbnRf
+bWF0Y2ggKm1hdGNoID0gTlVMTDsKKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gZGV2LT5vZl9u
+b2RlOworCXN0cnVjdCBkZXZpY2Vfbm9kZSAqcG9ydDsKKwlpbnQgaTsKIAotCS8qIGtlZXAgY29t
+cGF0aWJpbGl0eSB3aXRoIG9sZCBjb2RlIHRoYXQgd2FzIHJldHVybmluZyAtRU5PREVWICovCi0J
+aWYgKHJldCA9PSAtRUlOVkFMKQorCWlmICghbnApCiAJCXJldHVybiAtRU5PREVWOworCS8qCisJ
+ICogQmluZCB0aGUgY3J0YyBwb3J0cyBmaXJzdCwgc28gdGhhdAorCSAqIGRybV9vZl9maW5kX3Bv
+c3NpYmxlX2NydGNzIGNhbGxlZCBmcm9tIGVuY29kZXIgLmJpbmQgY2FsbGJhY2tzCisJICogd29y
+a3MgYXMgZXhwZWN0ZWQuCisJICovCisJZm9yIChpID0gMDs7IGkrKykgeworCQlwb3J0ID0gb2Zf
+cGFyc2VfcGhhbmRsZShucCwgInBvcnRzIiwgaSk7CisJCWlmICghcG9ydCkKKwkJCWJyZWFrOwor
+CisJCWlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQpKSB7CisJCQlvZl9u
+b2RlX3B1dChwb3J0KTsKKwkJCWNvbnRpbnVlOworCQl9CiAKLQlyZXR1cm4gcmV0OworCQljb21w
+b25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBwb3J0LT5wYXJlbnQpOwor
+CQlvZl9ub2RlX3B1dChwb3J0KTsKKwl9CisKKwlpZiAoaSA9PSAwKSB7CisJCWRldl9lcnIoZGV2
+LCAibWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4iKTsKKwkJcmV0dXJuIC1FTk9ERVY7CisJfQor
+CisJaWYgKCFtYXRjaCkgeworCQlkZXZfZXJyKGRldiwgIk5vIGF2YWlsYWJsZSB2b3AgZm91bmQg
+Zm9yIGRpc3BsYXktc3Vic3lzdGVtLlxuIik7CisJCXJldHVybiAtRU5PREVWOworCX0KKwkvKgor
+CSAqIEZvciBlYWNoIGJvdW5kIGNydGMsIGJpbmQgdGhlIGVuY29kZXJzIGF0dGFjaGVkIHRvIGl0
+cworCSAqIHJlbW90ZSBlbmRwb2ludC4KKwkgKi8KKwlmb3IgKGkgPSAwOzsgaSsrKSB7CisJCXBv
+cnQgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicG9ydHMiLCBpKTsKKwkJaWYgKCFwb3J0KQorCQkJ
+YnJlYWs7CisKKwkJaWYgKCFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKHBvcnQtPnBhcmVudCkpIHsK
+KwkJCW9mX25vZGVfcHV0KHBvcnQpOworCQkJY29udGludWU7CisJCX0KKworCQlyb2NrY2hpcF9h
+ZGRfZW5kcG9pbnRzKGRldiwgJm1hdGNoLCBwb3J0KTsKKwkJb2Zfbm9kZV9wdXQocG9ydCk7CisJ
+fQorCisJcmV0dXJuIGNvbXBvbmVudF9tYXN0ZXJfYWRkX3dpdGhfbWF0Y2goZGV2LCAmcm9ja2No
+aXBfZHJtX29wcywgbWF0Y2gpOwogfQogCiBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9y
+bV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKLS0gCjEuNy45LjUKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
