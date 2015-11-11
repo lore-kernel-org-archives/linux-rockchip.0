@@ -1,116 +1,58 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v2] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-Date: Wed, 11 Nov 2015 13:48:11 +0800
-Message-ID: <1447220891-14900-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: dianders@chromium.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Zain Wang <zain.wang@rock-chips.com>
+Subject: [PATCH v3 0/4] crypto: add crypto accelerator support for rk3288
+Date: Wed, 11 Nov 2015 14:35:55 +0800
+Message-ID: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Sender: linux-crypto-owner@vger.kernel.org
+To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We've been seeing some crashes at reboot test on rk3288-based systems,
-which boards have not reset pin connected to NPOR, they reboot by
-setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-a high frequency mode, some IPs might hang during soft reset.
-It appears that we can fix the problem by switching to slow mode before
-reboot, just like what we did before suspend.
+This commit support three cipher(AES/DES/DES3) and two chainmode(ecb/cbc),
+and the more algorithms and new hash drivers will be added later on.
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Changed in v3:
+- add OF depended in Kconfig
+- rename some variate
+- add reset property
+- remove crypto_p variate
 
----
+Changed in v2:
+- remove some part about hash
+- add weak key detection
+- changed some variate's type
 
-Changes in v2:
-replace restart_handlers with the shutdown callback of syscore
+Changed in v1:
+- modify some variate's name
+- modify some variate's type
+- modify some return value
+- remove or modify some print info
+- use more dev_xxx in probe
+- modify the prio of cipher
+- add Kconfig
 
- drivers/clk/rockchip/clk-rk3288.c | 36 +++++++++++++++++++-----------------
- 1 file changed, 19 insertions(+), 17 deletions(-)
+Zain Wang (4):
+  crypto: rockchip/crypto - add DT bindings documentation
+  clk: rockchip: set an ID for crypto clk
+  Crypto: rockchip/crypto - add crypto driver for rk3288
+  ARM: dts: rockchip: Add Crypto node for rk3288
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 9040878..5ce44af 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -16,6 +16,7 @@
- #include <linux/clk-provider.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/reboot.h>
- #include <linux/syscore_ops.h>
- #include <dt-bindings/clock/rk3288-cru.h>
- #include "clk.h"
-@@ -783,9 +784,9 @@ static const char *const rk3288_critical_clocks[] __initconst = {
- 	"pclk_pd_pmu",
- };
- 
--#ifdef CONFIG_PM_SLEEP
- static void __iomem *rk3288_cru_base;
- 
-+#ifdef CONFIG_PM_SLEEP
- /* Some CRU registers will be reset in maskrom when the system
-  * wakes up from fastboot.
-  * So save them before suspend, restore them after resume.
-@@ -839,34 +840,32 @@ static void rk3288_clk_resume(void)
- 			       rk3288_cru_base + reg_id);
- 	}
- }
-+#endif
- 
--static struct syscore_ops rk3288_clk_syscore_ops = {
--	.suspend = rk3288_clk_suspend,
--	.resume = rk3288_clk_resume,
--};
--
--static void rk3288_clk_sleep_init(void __iomem *reg_base)
-+static void rk3288_clk_shutdown(void)
- {
--	rk3288_cru_base = reg_base;
--	register_syscore_ops(&rk3288_clk_syscore_ops);
-+	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
- }
- 
--#else /* CONFIG_PM_SLEEP */
--static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
-+static struct syscore_ops rk3288_clk_syscore_ops = {
-+#ifdef CONFIG_PM_SLEEP
-+	.suspend = rk3288_clk_suspend,
-+	.resume = rk3288_clk_resume,
- #endif
-+	.shutdown = rk3288_clk_shutdown,
-+};
- 
- static void __init rk3288_clk_init(struct device_node *np)
- {
--	void __iomem *reg_base;
- 	struct clk *clk;
- 
--	reg_base = of_iomap(np, 0);
--	if (!reg_base) {
-+	rk3288_cru_base = of_iomap(np, 0);
-+	if (!rk3288_cru_base) {
- 		pr_err("%s: could not map cru region\n", __func__);
- 		return;
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -907,10 +906,13 @@ static void __init rk3288_clk_init(struct device_node *np)
- 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
- 			ARRAY_SIZE(rk3288_cpuclk_rates));
- 
--	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
-+	rockchip_register_softrst(np, 12,
-+				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
- 	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
--	rk3288_clk_sleep_init(reg_base);
-+
-+	register_syscore_ops(&rk3288_clk_syscore_ops);
-+;
- }
- CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+ .../devicetree/bindings/crypto/rockchip-crypto.txt |  29 ++
+ arch/arm/boot/dts/rk3288.dtsi                      |  12 +
+ drivers/clk/rockchip/clk-rk3288.c                  |   2 +-
+ drivers/crypto/Kconfig                             |  11 +
+ drivers/crypto/Makefile                            |   1 +
+ drivers/crypto/rockchip/Makefile                   |   3 +
+ drivers/crypto/rockchip/rk3288_crypto.c            | 392 +++++++++++++++
+ drivers/crypto/rockchip/rk3288_crypto.h            | 220 +++++++++
+ drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c | 527 +++++++++++++++++++++
+ include/dt-bindings/clock/rk3288-cru.h             |   1 +
+ 10 files changed, 1197 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+ create mode 100644 drivers/crypto/rockchip/Makefile
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto.c
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto.h
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
+
 -- 
-2.6.3
-
+1.9.1
