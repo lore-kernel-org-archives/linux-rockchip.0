@@ -1,60 +1,88 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [RFC PATCH v1 2/2] dt-bindings: add document for Innosilicon HDMI on
- Rockchip platform
-Date: Wed, 11 Nov 2015 15:47:32 +0800
-Message-ID: <1447228052-4897-1-git-send-email-ykk@rock-chips.com>
-References: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH] WIP: usb: dwc2: host: Support immediate retries for split transactions
+Date: Wed, 11 Nov 2015 10:31:03 -0800
+Message-ID: <1447266663-31167-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org
+Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-U2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgotLS0KIC4uLi9k
-aXNwbGF5L3JvY2tjaGlwL2lubm9faGRtaS1yb2NrY2hpcC50eHQgICAgICAgIHwgNTAgKysrKysr
-KysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDUwIGluc2VydGlvbnMoKykKIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9y
-b2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlw
-LnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlw
-L2lubm9faGRtaS1yb2NrY2hpcC50eHQKbmV3IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAwMDAw
-MC4uMTg5ODQwOAotLS0gL2Rldi9udWxsCisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2lubm9faGRtaS1yb2NrY2hpcC50eHQKQEAgLTAsMCAr
-MSw1MCBAQAorUm9ja2NoaXAgc3BlY2lmaWMgZXh0ZW5zaW9ucyB0byB0aGUgSW5ub3NpbGljb24g
-SERNSQorPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KKworUmVxdWlyZWQgcHJvcGVy
-dGllczoKKy0gY29tcGF0aWJsZToKKwkicm9ja2NoaXAscmszMDM2LWR3LWhkbWkiOworLSByZWc6
-CisJUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNvbnRyb2xsZXIncyBy
-ZWdpc3RlcnMuCistIGNsb2NrcywgY2xvY2stbmFtZXM6CisJUGhhbmRsZSB0byBoZG1pIGNvbnRy
-b2xsZXIgY2xvY2ssIG5hbWUgc2hvdWxkIGJlICJwY2xrIgorLSBpbnRlcnJ1cHRzOgorCUhETUkg
-aW50ZXJydXB0IG51bWJlcgorLSBwb3J0czoKKwlDb250YWluIG9uZSBwb3J0IG5vZGUgd2l0aCBl
-bmRwb2ludCBkZWZpbml0aW9ucyBhcyBkZWZpbmVkIGluCisJRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2dyYXBoLnR4dC4KKy0gcGluY3RybC0wLCBwaW5jdHJsLW5hbWU6CisJU3dp
-dGNoIHRoZSBpb211eCBvZiBIUEQvQ0VDIHBpbnMgdG8gSERNSSBmdW5jdGlvbi4KKworRXhhbXBs
-ZToKK2hkbWk6IGhkbWlAMjAwMzQwMDAgeworCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMDM2
-LWlubm8taGRtaSI7CisJcmVnID0gPDB4MjAwMzQwMDAgMHg0MDAwPjsKKwlpbnRlcnJ1cHRzID0g
-PEdJQ19TUEkgNDUgSVJRX1RZUEVfTEVWRUxfSElHSD47CisJY2xvY2tzID0gPCZjcnUgIFBDTEtf
-SERNST47CisJY2xvY2stbmFtZXMgPSAicGNsayI7CisJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0
-IjsKKwlwaW5jdHJsLTAgPSA8JmhkbWlfY3RsPjsKKwlzdGF0dXMgPSAiZGlzYWJsZWQiOworCisJ
-aGRtaV9pbjogcG9ydCB7CisJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkjc2l6ZS1jZWxscyA9
-IDwwPjsKKwkJaGRtaV9pbl9sY2RjOiBlbmRwb2ludEAwIHsKKwkJCXJlZyA9IDwwPjsKKwkJCXJl
-bW90ZS1lbmRwb2ludCA9IDwmbGNkY19vdXRfaGRtaT47CisJCX07CisJfTsKK307CisKKyZwaW5j
-dHJsIHsKKwloZG1pIHsKKwkJaGRtaV9jdGw6IGhkbWktY3RsIHsKKwkJCXJvY2tjaGlwLHBpbnMg
-PSA8MSA4ICBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKKwkJCQkJPDEgOSAgUktfRlVOQ18x
-ICZwY2ZnX3B1bGxfbm9uZT4sCisJCQkJCTwxIDEwIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+
-LAorCQkJCQk8MSAxMSBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OworCit9
-OwotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
-cmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
-bAo=
+In some cases, like when you've got a "Microsoft Wireless Keyboard 2000"
+connected to dwc2 with a hub, expected that we'll get some transfer
+errors sometimes.  The controller is expected to try at least 3 times
+before giving up.  See figure "Figure A-67. Normal HS CSPLIT 3 Strikes
+Smash" in the USB spec.
+
+The dwc2 controller has a way to support this by using the "EC_MC"
+field.  The Raspberry Pi driver has logic for setting this right.  See
+fiq_fsm_queue_split_transaction() in their "dwc_otg_hcd.c".  Let's use
+the same logic.
+
+After making this change, we no longer get dropped characters from the
+above mentioned keyboard.  Other devices on the same bus as the keyboard
+also behave more properly.
+
+Thanks for Julius Werner for the expert analysis and suggestions.
+
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+ drivers/usb/dwc2/core.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+index ef73e498e98f..dcb4cd1d3b34 100644
+--- a/drivers/usb/dwc2/core.c
++++ b/drivers/usb/dwc2/core.c
+@@ -1707,6 +1707,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+ 	u32 hcchar;
+ 	u32 hctsiz = 0;
+ 	u16 num_packets;
++	u32 ec_mc;
+ 
+ 	if (dbg_hc(chan))
+ 		dev_vdbg(hsotg->dev, "%s()\n", __func__);
+@@ -1743,6 +1744,13 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+ 
+ 		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
+ 			  TSIZ_XFERSIZE_MASK;
++
++		/* For split set ec_mc for immediate retries */
++		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
++		    chan->ep_type == USB_ENDPOINT_XFER_ISOC)
++			ec_mc = 3;
++		else
++			ec_mc = 1;
+ 	} else {
+ 		if (dbg_hc(chan))
+ 			dev_vdbg(hsotg->dev, "no split\n");
+@@ -1805,6 +1813,9 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+ 
+ 		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
+ 			  TSIZ_XFERSIZE_MASK;
++
++		/* The ec_mc gets the multi_count for non-split */
++		ec_mc = chan->multi_count;
+ 	}
+ 
+ 	chan->start_pkt_count = num_packets;
+@@ -1855,8 +1866,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+ 
+ 	hcchar = dwc2_readl(hsotg->regs + HCCHAR(chan->hc_num));
+ 	hcchar &= ~HCCHAR_MULTICNT_MASK;
+-	hcchar |= chan->multi_count << HCCHAR_MULTICNT_SHIFT &
+-		  HCCHAR_MULTICNT_MASK;
++	hcchar |= (ec_mc << HCCHAR_MULTICNT_SHIFT) & HCCHAR_MULTICNT_MASK;
+ 	dwc2_hc_set_even_odd_frame(hsotg, chan, &hcchar);
+ 
+ 	if (hcchar & HCCHAR_CHDIS)
+-- 
+2.6.0.rc2.230.g3dd15c0
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
