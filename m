@@ -1,57 +1,32 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: fix window origin calculation
-Date: Wed, 11 Nov 2015 08:30:19 +0800
-Message-ID: <56428C1B.5000405@rock-chips.com>
-References: <1447149550-18595-1-git-send-email-mark.yao@rock-chips.com>
- <2130118.giXtpUm1Fo@phil>
+From: Naoki FUKAUMI <naobsd@gmail.com>
+Subject: Re: [PATCH] Revert "drm/rockchip: Convert the probe function to the
+ generic drm_of_component_probe()"
+Date: Wed, 11 Nov 2015 14:06:57 +0900
+Message-ID: <CAFnsNoTBUfWKq3Ou6MZ0T83gYgMRnT=okeNyj-NN49d6aC--MA@mail.gmail.com>
+References: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <2130118.giXtpUm1Fo@phil>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Russell King <linux@arm.linux.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447145239-10546-1-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, p.zabel@pengutronix.de, Liviu.Dudau@arm.com, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDEx5pyIMTDml6UgMjI6NTcsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIERp
-ZW5zdGFnLCAxMC4gTm92ZW1iZXIgMjAxNSwgMTc6NTk6MTAgc2NocmllYiBNYXJrIFlhbzoKPj4g
-RnJvbTogRG9taW5payBCZWhyIDxkYmVockBjaHJvbWl1bS5vcmc+Cj4+Cj4+IFZPUF9XSU54X0RT
-UF9TVCBkb2VzIG5vdCByZXF1aXJlIHN1YnRyYWN0aW5nIDEgZnJvbSB0aGUgdmFsdWVzIHdyaXR0
-ZW4gdG8KPj4gaXQuIEl0IGFjdHVhbGx5IGNhdXNlcyB0aGUgc2NyZWVuIHRvIGJlIHNoaWZ0ZWQg
-Ynkgb25lIHBpeGVsLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
-ay1jaGlwcy5jb20+Cj4gT25lIHRoaW5nIEkgbm90aWNlZCwgdGhlIG9yaWdpbmFsIHBhdGNoIFsw
-XSBoYWQgYSBTaWduZWQtb2ZmIGZyb20KPiBEb21pbmlrIGFscmVhZHkgYW5kIHlvdSBzaG91bGQg
-a2VlcCB0aGF0IGFzIGhlIGlzIHRoZSBhdXRob3IsIGFuZCB0aGVuCj4gYWRkIHlvdXIgU2lnbmVk
-LW9mZiBiZWxvdyB0aGF0LCBhcyB5b3UgYXJlIHRoZSBzdWJtaXR0ZXIsCj4KPiBTbyBpdCB3b3Vs
-ZCBsb29rIGxpa2U6Cj4KPiBTaWduZWQtb2ZmLWJ5OiBEb21pbmlrIEJlaHIgPGRiZWhyQGNocm9t
-aXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
-b20+Cj4KPgo+IFRoYXQgbWF5IG5vdCBuZWVkIGEgcmVwb3N0LCBidXQgc2hvdWxkIHByb2JhYmx5
-IGJlIGNvcnJlY3RlZCB3aGVuIGFwcGx5aW5nCj4gdGhlIHBhdGNoLgo+Cj4gSGVpa28KPgo+IFsw
-XSBodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8yMzMyNTEvCj4K
-R290IGl0LCB0aGFua3MuCj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9kcm1fdm9wLmMgfCAgICA0ICsrLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
-b25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMKPj4gaW5kZXggNDg3MTlkZi4uNDczMGFlNCAxMDA2NDQKPj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IEBAIC05NTksOCAr
-OTU5LDggQEAgc3RhdGljIGludCB2b3BfdXBkYXRlX3BsYW5lX2V2ZW50KHN0cnVjdCBkcm1fcGxh
-bmUgKnBsYW5lLAo+PiAgIAl2YWwgPSAoZGVzdC55MiAtIGRlc3QueTEgLSAxKSA8PCAxNjsKPj4g
-ICAJdmFsIHw9IChkZXN0LngyIC0gZGVzdC54MSAtIDEpICYgMHhmZmZmOwo+PiAgIAlWT1BfV0lO
-X1NFVCh2b3AsIHdpbiwgZHNwX2luZm8sIHZhbCk7Cj4+IC0JdmFsID0gKGRzcF9zdHkgLSAxKSA8
-PCAxNjsKPj4gLQl2YWwgfD0gKGRzcF9zdHggLSAxKSAmIDB4ZmZmZjsKPj4gKwl2YWwgPSBkc3Bf
-c3R5IDw8IDE2Owo+PiArCXZhbCB8PSBkc3Bfc3R4ICYgMHhmZmZmOwo+PiAgIAlWT1BfV0lOX1NF
-VCh2b3AsIHdpbiwgZHNwX3N0LCB2YWwpOwo+PiAgIAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgcmJf
-c3dhcCwgcmJfc3dhcCk7Cj4+ICAgCj4+Cj4KPgo+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
-ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+hi,
+
+On Tue, Nov 10, 2015 at 5:47 PM, Mark Yao <mark.yao@rock-chips.com> wrote:
+> This reverts commit 52f5eb60940de889ce98a876f6933b574ead3225.
+>
+> Rockchip drm can't work with generic drm_of_component_probe now
+>
+> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+
+it makes rockchip-drm probed properly on linux-next-20151111 with
+ multi_v7_defconfig
+ +CONFIG_ROCKCHIP_PM_DOMAINS=y
+ +https://patchwork.kernel.org/patch/7568821/
+
+thank you very much.
+
+Tested-by: FUKAUMI Naoki <naobsd@gmail.com>
