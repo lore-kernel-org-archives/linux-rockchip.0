@@ -1,77 +1,57 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
-Date: Tue, 10 Nov 2015 19:26:59 +0100
-Message-ID: <20151110192659.3eaa800c@bbrezillon>
-References: <1442828009-6241-1-git-send-email-boris.brezillon@free-electrons.com>
-	<2341981.a79ioYM9Es@diego>
-	<20151110173416.GB21727@ulmo>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: fix window origin calculation
+Date: Wed, 11 Nov 2015 08:30:19 +0800
+Message-ID: <56428C1B.5000405@rock-chips.com>
+References: <1447149550-18595-1-git-send-email-mark.yao@rock-chips.com>
+ <2130118.giXtpUm1Fo@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBB7ORCZAKGQEZAHDDHQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <20151110173416.GB21727@ulmo>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@pengutron>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <2130118.giXtpUm1Fo@phil>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Russell King <linux@arm.linux.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
-
-On Tue, 10 Nov 2015 18:34:16 +0100
-Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-
-> On Mon, Oct 19, 2015 at 12:12:12PM +0200, Heiko St=C3=BCbner wrote:
-> > Hi Thierry,
-> >=20
-> > Am Montag, 21. September 2015, 11:33:17 schrieb Boris Brezillon:
-> > > Hello,
-> > >=20
-> > > This series adds support for atomic PWM update, or IOW, the capabilit=
-y
-> > > to update all the parameters of a PWM device (enabled/disabled, perio=
-d,
-> > > duty and polarity) in one go.
-> >=20
-> > is anything more blocking this series? It's now sitting on the lists fo=
-r=20
-> > nearly a month and everybody seems happy with it, so it would be really=
- nice=20
-> > to have in mainline :-) .
-> >=20
-> > Especially as this also makes it possible for Rockchip Chromebooks to a=
-ctually=20
-> > control the logic-regulator that is implemented as pwm-regulator there.
->=20
-> Last time I tried to put this into linux-next I got immediately
-> bombarded by a number of build failures, so I backed things out. The
-> current plan is to give this another try after v4.4-rc1.
-
-Could you paste the build failures (I didn't receive any notification)?
-BTW, I just rebased my branch on pwm/for-next and it seems to compile
-correctly, but maybe you're compiling on more platforms (or different
-drivers than I do).
-
-Best Regards,
-
-Boris
-
-
-
---=20
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-sunxi" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-sunxi+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
-For more options, visit https://groups.google.com/d/optout.
+T24gMjAxNeW5tDEx5pyIMTDml6UgMjI6NTcsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIERp
+ZW5zdGFnLCAxMC4gTm92ZW1iZXIgMjAxNSwgMTc6NTk6MTAgc2NocmllYiBNYXJrIFlhbzoKPj4g
+RnJvbTogRG9taW5payBCZWhyIDxkYmVockBjaHJvbWl1bS5vcmc+Cj4+Cj4+IFZPUF9XSU54X0RT
+UF9TVCBkb2VzIG5vdCByZXF1aXJlIHN1YnRyYWN0aW5nIDEgZnJvbSB0aGUgdmFsdWVzIHdyaXR0
+ZW4gdG8KPj4gaXQuIEl0IGFjdHVhbGx5IGNhdXNlcyB0aGUgc2NyZWVuIHRvIGJlIHNoaWZ0ZWQg
+Ynkgb25lIHBpeGVsLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
+ay1jaGlwcy5jb20+Cj4gT25lIHRoaW5nIEkgbm90aWNlZCwgdGhlIG9yaWdpbmFsIHBhdGNoIFsw
+XSBoYWQgYSBTaWduZWQtb2ZmIGZyb20KPiBEb21pbmlrIGFscmVhZHkgYW5kIHlvdSBzaG91bGQg
+a2VlcCB0aGF0IGFzIGhlIGlzIHRoZSBhdXRob3IsIGFuZCB0aGVuCj4gYWRkIHlvdXIgU2lnbmVk
+LW9mZiBiZWxvdyB0aGF0LCBhcyB5b3UgYXJlIHRoZSBzdWJtaXR0ZXIsCj4KPiBTbyBpdCB3b3Vs
+ZCBsb29rIGxpa2U6Cj4KPiBTaWduZWQtb2ZmLWJ5OiBEb21pbmlrIEJlaHIgPGRiZWhyQGNocm9t
+aXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+Cj4KPgo+IFRoYXQgbWF5IG5vdCBuZWVkIGEgcmVwb3N0LCBidXQgc2hvdWxkIHByb2JhYmx5
+IGJlIGNvcnJlY3RlZCB3aGVuIGFwcGx5aW5nCj4gdGhlIHBhdGNoLgo+Cj4gSGVpa28KPgo+IFsw
+XSBodHRwczovL2Nocm9taXVtLXJldmlldy5nb29nbGVzb3VyY2UuY29tLyMvYy8yMzMyNTEvCj4K
+R290IGl0LCB0aGFua3MuCj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCAgICA0ICsrLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRp
+b25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMKPj4gaW5kZXggNDg3MTlkZi4uNDczMGFlNCAxMDA2NDQKPj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IEBAIC05NTksOCAr
+OTU5LDggQEAgc3RhdGljIGludCB2b3BfdXBkYXRlX3BsYW5lX2V2ZW50KHN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lLAo+PiAgIAl2YWwgPSAoZGVzdC55MiAtIGRlc3QueTEgLSAxKSA8PCAxNjsKPj4g
+ICAJdmFsIHw9IChkZXN0LngyIC0gZGVzdC54MSAtIDEpICYgMHhmZmZmOwo+PiAgIAlWT1BfV0lO
+X1NFVCh2b3AsIHdpbiwgZHNwX2luZm8sIHZhbCk7Cj4+IC0JdmFsID0gKGRzcF9zdHkgLSAxKSA8
+PCAxNjsKPj4gLQl2YWwgfD0gKGRzcF9zdHggLSAxKSAmIDB4ZmZmZjsKPj4gKwl2YWwgPSBkc3Bf
+c3R5IDw8IDE2Owo+PiArCXZhbCB8PSBkc3Bfc3R4ICYgMHhmZmZmOwo+PiAgIAlWT1BfV0lOX1NF
+VCh2b3AsIHdpbiwgZHNwX3N0LCB2YWwpOwo+PiAgIAlWT1BfV0lOX1NFVCh2b3AsIHdpbiwgcmJf
+c3dhcCwgcmJfc3dhcCk7Cj4+ICAgCj4+Cj4KPgo+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
