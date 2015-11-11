@@ -1,112 +1,41 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-Date: Wed, 11 Nov 2015 15:09:59 +0800
-Message-ID: <1447225799-23996-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: dianders@chromium.org
-Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH 0/4] support the efuse for rk3188/rk3066a SoCs and cleanup driver on nvmem.
+Date: Wed, 11 Nov 2015 15:34:27 +0800
+Message-ID: <1447227272-1728-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Kosina <trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We've been seeing some crashes at reboot test on rk3288-based systems,
-which boards have not reset pin connected to NPOR, they reboot by
-setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-a high frequency mode, some IPs might hang during soft reset.
-It appears that we can fix the problem by switching to slow mode before
-reboot, just like what we did before suspend.
+This patchset to support reading the efuse info for more SoCs.
+(Note: support 32 bits SoCs).
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Meanwhile, cleanup sunxi/rockchip drivers for more readability.
 
----
+You can easy to test for following:
 
-Changes in v3:
-remove include reboot.h
+cd /sys/bus/nvmem/devices/rockchip-efuse0
+localhost rockchip-efuse0 # busybox hexdump -C nvmem
 
-Changes in v2:
-replace restart_handlers with the shutdown callback of syscore
 
- drivers/clk/rockchip/clk-rk3288.c | 35 ++++++++++++++++++-----------------
- 1 file changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 9040878..3002d7d 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -783,9 +783,9 @@ static const char *const rk3288_critical_clocks[] __initconst = {
- 	"pclk_pd_pmu",
- };
- 
--#ifdef CONFIG_PM_SLEEP
- static void __iomem *rk3288_cru_base;
- 
-+#ifdef CONFIG_PM_SLEEP
- /* Some CRU registers will be reset in maskrom when the system
-  * wakes up from fastboot.
-  * So save them before suspend, restore them after resume.
-@@ -839,34 +839,32 @@ static void rk3288_clk_resume(void)
- 			       rk3288_cru_base + reg_id);
- 	}
- }
-+#endif
- 
--static struct syscore_ops rk3288_clk_syscore_ops = {
--	.suspend = rk3288_clk_suspend,
--	.resume = rk3288_clk_resume,
--};
--
--static void rk3288_clk_sleep_init(void __iomem *reg_base)
-+static void rk3288_clk_shutdown(void)
- {
--	rk3288_cru_base = reg_base;
--	register_syscore_ops(&rk3288_clk_syscore_ops);
-+	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
- }
- 
--#else /* CONFIG_PM_SLEEP */
--static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
-+static struct syscore_ops rk3288_clk_syscore_ops = {
-+#ifdef CONFIG_PM_SLEEP
-+	.suspend = rk3288_clk_suspend,
-+	.resume = rk3288_clk_resume,
- #endif
-+	.shutdown = rk3288_clk_shutdown,
-+};
- 
- static void __init rk3288_clk_init(struct device_node *np)
- {
--	void __iomem *reg_base;
- 	struct clk *clk;
- 
--	reg_base = of_iomap(np, 0);
--	if (!reg_base) {
-+	rk3288_cru_base = of_iomap(np, 0);
-+	if (!rk3288_cru_base) {
- 		pr_err("%s: could not map cru region\n", __func__);
- 		return;
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -907,10 +905,13 @@ static void __init rk3288_clk_init(struct device_node *np)
- 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
- 			ARRAY_SIZE(rk3288_cpuclk_rates));
- 
--	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
-+	rockchip_register_softrst(np, 12,
-+				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
- 	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
--	rk3288_clk_sleep_init(reg_base);
-+
-+	register_syscore_ops(&rk3288_clk_syscore_ops);
-+;
- }
- CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+Caesar Wang (4):
+  nvmem: sunxi: trivial: fix code style
+  nvmem: rockchip: trivial: Make the driver more readability
+  ARM: dts: rockchip: add eFuse node for rk3066a SoCs
+  ARM: dts: rockchip: add eFuse node for rk3188 SoCs
+
+ arch/arm/boot/dts/rk3066a.dtsi | 13 ++++++
+ arch/arm/boot/dts/rk3188.dtsi  | 13 ++++++
+ drivers/nvmem/rockchip-efuse.c | 90 ++++++++++++++++++++----------------------
+ drivers/nvmem/sunxi_sid.c      |  9 ++---
+ 4 files changed, 71 insertions(+), 54 deletions(-)
+
 -- 
-2.6.3
+1.9.1
 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
