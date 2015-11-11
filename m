@@ -1,85 +1,69 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [REPOST PATCH] usb: dwc2: host: Support immediate retries for split transactions
-Date: Wed, 11 Nov 2015 10:33:52 -0800
-Message-ID: <1447266833-32096-1-git-send-email-dianders@chromium.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC PATCH v1 2/2] dt-bindings: add document for Innosilicon
+ HDMI on Rockchip platform
+Date: Wed, 11 Nov 2015 14:22:36 -0600
+Message-ID: <20151111202236.GA5629@rob-hp-laptop>
+References: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
+ <1447228052-4897-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
-Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1447228052-4897-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thierry Reding <treding@nvidia.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ken Mixte <kmixter@google.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Ben Chan <benchan@google.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In some cases, like when you've got a "Microsoft Wireless Keyboard 2000"
-connected to dwc2 with a hub, expected that we'll get some transfer
-errors sometimes.  The controller is expected to try at least 3 times
-before giving up.  See figure "Figure A-67. Normal HS CSPLIT 3 Strikes
-Smash" in the USB spec.
-
-The dwc2 controller has a way to support this by using the "EC_MC"
-field.  The Raspberry Pi driver has logic for setting this right.  See
-fiq_fsm_queue_split_transaction() in their "dwc_otg_hcd.c".  Let's use
-the same logic.
-
-After making this change, we no longer get dropped characters from the
-above mentioned keyboard.  Other devices on the same bus as the keyboard
-also behave more properly.
-
-Thanks for Julius Werner for the expert analysis and suggestions.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
-Repost without the WIP in tags (sorry for that).
-
- drivers/usb/dwc2/core.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index ef73e498e98f..dcb4cd1d3b34 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -1707,6 +1707,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
- 	u32 hcchar;
- 	u32 hctsiz = 0;
- 	u16 num_packets;
-+	u32 ec_mc;
- 
- 	if (dbg_hc(chan))
- 		dev_vdbg(hsotg->dev, "%s()\n", __func__);
-@@ -1743,6 +1744,13 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
- 
- 		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
- 			  TSIZ_XFERSIZE_MASK;
-+
-+		/* For split set ec_mc for immediate retries */
-+		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
-+		    chan->ep_type == USB_ENDPOINT_XFER_ISOC)
-+			ec_mc = 3;
-+		else
-+			ec_mc = 1;
- 	} else {
- 		if (dbg_hc(chan))
- 			dev_vdbg(hsotg->dev, "no split\n");
-@@ -1805,6 +1813,9 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
- 
- 		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
- 			  TSIZ_XFERSIZE_MASK;
-+
-+		/* The ec_mc gets the multi_count for non-split */
-+		ec_mc = chan->multi_count;
- 	}
- 
- 	chan->start_pkt_count = num_packets;
-@@ -1855,8 +1866,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
- 
- 	hcchar = dwc2_readl(hsotg->regs + HCCHAR(chan->hc_num));
- 	hcchar &= ~HCCHAR_MULTICNT_MASK;
--	hcchar |= chan->multi_count << HCCHAR_MULTICNT_SHIFT &
--		  HCCHAR_MULTICNT_MASK;
-+	hcchar |= (ec_mc << HCCHAR_MULTICNT_SHIFT) & HCCHAR_MULTICNT_MASK;
- 	dwc2_hc_set_even_odd_frame(hsotg, chan, &hcchar);
- 
- 	if (hcchar & HCCHAR_CHDIS)
--- 
-2.6.0.rc2.230.g3dd15c0
+T24gV2VkLCBOb3YgMTEsIDIwMTUgYXQgMDM6NDc6MzJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
+ZToKPiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+CgpBY2tl
+ZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KCj4gLS0tCj4gIC4uLi9kaXNwbGF5
+L3JvY2tjaGlwL2lubm9faGRtaS1yb2NrY2hpcC50eHQgICAgICAgIHwgNTAgKysrKysrKysrKysr
+KysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUg
+bW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9j
+a2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2No
+aXAudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2No
+aXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXgg
+MDAwMDAwMC4uMTg5ODQwOAo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0
+Cj4gQEAgLTAsMCArMSw1MCBAQAo+ICtSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIHRvIHRo
+ZSBJbm5vc2lsaWNvbiBIRE1JCj4gKz09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4g
+Kwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICstIGNvbXBhdGlibGU6Cj4gKwkicm9ja2NoaXAs
+cmszMDM2LWR3LWhkbWkiOwo+ICstIHJlZzoKPiArCVBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQg
+bGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJzLgo+ICstIGNsb2NrcywgY2xvY2st
+bmFtZXM6Cj4gKwlQaGFuZGxlIHRvIGhkbWkgY29udHJvbGxlciBjbG9jaywgbmFtZSBzaG91bGQg
+YmUgInBjbGsiCj4gKy0gaW50ZXJydXB0czoKPiArCUhETUkgaW50ZXJydXB0IG51bWJlcgo+ICst
+IHBvcnRzOgo+ICsJQ29udGFpbiBvbmUgcG9ydCBub2RlIHdpdGggZW5kcG9pbnQgZGVmaW5pdGlv
+bnMgYXMgZGVmaW5lZCBpbgo+ICsJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dy
+YXBoLnR4dC4KPiArLSBwaW5jdHJsLTAsIHBpbmN0cmwtbmFtZToKPiArCVN3aXRjaCB0aGUgaW9t
+dXggb2YgSFBEL0NFQyBwaW5zIHRvIEhETUkgZnVuY3Rpb24uCj4gKwo+ICtFeGFtcGxlOgo+ICto
+ZG1pOiBoZG1pQDIwMDM0MDAwIHsKPiArCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMDM2LWlu
+bm8taGRtaSI7Cj4gKwlyZWcgPSA8MHgyMDAzNDAwMCAweDQwMDA+Owo+ICsJaW50ZXJydXB0cyA9
+IDxHSUNfU1BJIDQ1IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ICsJY2xvY2tzID0gPCZjcnUgIFBD
+TEtfSERNST47Cj4gKwljbG9jay1uYW1lcyA9ICJwY2xrIjsKPiArCXBpbmN0cmwtbmFtZXMgPSAi
+ZGVmYXVsdCI7Cj4gKwlwaW5jdHJsLTAgPSA8JmhkbWlfY3RsPjsKPiArCXN0YXR1cyA9ICJkaXNh
+YmxlZCI7Cj4gKwo+ICsJaGRtaV9pbjogcG9ydCB7Cj4gKwkJI2FkZHJlc3MtY2VsbHMgPSA8MT47
+Cj4gKwkJI3NpemUtY2VsbHMgPSA8MD47Cj4gKwkJaGRtaV9pbl9sY2RjOiBlbmRwb2ludEAwIHsK
+PiArCQkJcmVnID0gPDA+Owo+ICsJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmxjZGNfb3V0X2hkbWk+
+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnBpbmN0cmwgewo+ICsJaGRtaSB7Cj4gKwkJ
+aGRtaV9jdGw6IGhkbWktY3RsIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDwxIDggIFJLX0ZVTkNf
+MSAmcGNmZ19wdWxsX25vbmU+LAo+ICsJCQkJCTwxIDkgIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25v
+bmU+LAo+ICsJCQkJCTwxIDEwIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+LAo+ICsJCQkJCTwx
+IDExIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+ICsKPiArfTsK
+PiAtLSAKPiAxLjkuMQo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKPiBodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
