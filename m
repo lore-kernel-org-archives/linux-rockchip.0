@@ -1,54 +1,138 @@
-From: Zain Wang <zain.wang@rock-chips.com>
-Subject: [PATCH v3 4/4] ARM: dts: rockchip: Add Crypto node for rk3288
-Date: Wed, 11 Nov 2015 14:35:59 +0800
-Message-ID: <1447223759-20730-5-git-send-email-zain.wang@rock-chips.com>
-References: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
-Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] clk: rockchip: switch PLLs to slow mode before reboot
+ for rk3288
+Date: Wed, 11 Nov 2015 07:59:14 +0100
+Message-ID: <5837542.TKsKPxNRPz@phil>
+References: <1447220891-14900-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447220891-14900-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add Crypto node for rk3288 including crypto controller and dma clk.
+Hi Chris,
 
-Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
----
-Changed in v3:
-- add reset property
+one nit below, otherwise
 
-Changed in v2:
-- None
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Changed in v1:
-- remove the _crypto suffix
-- use "rockchip,rk3288-crypto" instead of "rockchip,rk3288"
+Am Mittwoch, 11. November 2015, 13:48:11 schrieb Chris Zhong:
+> We've been seeing some crashes at reboot test on rk3288-based systems,
+> which boards have not reset pin connected to NPOR, they reboot by
+> setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
+> a high frequency mode, some IPs might hang during soft reset.
+> It appears that we can fix the problem by switching to slow mode before
+> reboot, just like what we did before suspend.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v2:
+> replace restart_handlers with the shutdown callback of syscore
+> 
+>  drivers/clk/rockchip/clk-rk3288.c | 36 +++++++++++++++++++-----------------
+>  1 file changed, 19 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> index 9040878..5ce44af 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/clk-provider.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+> +#include <linux/reboot.h>
 
- arch/arm/boot/dts/rk3288.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+unrelated change?
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 6a79c9c..f0d1217 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -778,6 +778,18 @@
- 		status = "disabled";
- 	};
- 
-+	crypto: cypto-controller@ff8a0000 {
-+		compatible = "rockchip,rk3288-crypto";
-+		reg = <0xff8a0000 0x4000>;
-+		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_CRYPTO>, <&cru HCLK_CRYPTO>,
-+			 <&cru SCLK_CRYPTO>, <&cru ACLK_DMAC1>;
-+		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
-+		resets = <&cru SRST_CRYPTO>;
-+		reset-names = "crypto-rst";
-+		status = "okay";
-+	};
-+
- 	vopb: vop@ff930000 {
- 		compatible = "rockchip,rk3288-vop";
- 		reg = <0xff930000 0x19c>;
--- 
-1.9.1
+>  #include <linux/syscore_ops.h>
+>  #include <dt-bindings/clock/rk3288-cru.h>
+>  #include "clk.h"
+> @@ -783,9 +784,9 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+>  	"pclk_pd_pmu",
+>  };
+>  
+> -#ifdef CONFIG_PM_SLEEP
+>  static void __iomem *rk3288_cru_base;
+>  
+> +#ifdef CONFIG_PM_SLEEP
+>  /* Some CRU registers will be reset in maskrom when the system
+>   * wakes up from fastboot.
+>   * So save them before suspend, restore them after resume.
+> @@ -839,34 +840,32 @@ static void rk3288_clk_resume(void)
+>  			       rk3288_cru_base + reg_id);
+>  	}
+>  }
+> +#endif
+>  
+> -static struct syscore_ops rk3288_clk_syscore_ops = {
+> -	.suspend = rk3288_clk_suspend,
+> -	.resume = rk3288_clk_resume,
+> -};
+> -
+> -static void rk3288_clk_sleep_init(void __iomem *reg_base)
+> +static void rk3288_clk_shutdown(void)
+>  {
+> -	rk3288_cru_base = reg_base;
+> -	register_syscore_ops(&rk3288_clk_syscore_ops);
+> +	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
+>  }
+>  
+> -#else /* CONFIG_PM_SLEEP */
+> -static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
+> +static struct syscore_ops rk3288_clk_syscore_ops = {
+> +#ifdef CONFIG_PM_SLEEP
+> +	.suspend = rk3288_clk_suspend,
+> +	.resume = rk3288_clk_resume,
+>  #endif
+> +	.shutdown = rk3288_clk_shutdown,
+> +};
+>  
+>  static void __init rk3288_clk_init(struct device_node *np)
+>  {
+> -	void __iomem *reg_base;
+>  	struct clk *clk;
+>  
+> -	reg_base = of_iomap(np, 0);
+> -	if (!reg_base) {
+> +	rk3288_cru_base = of_iomap(np, 0);
+> +	if (!rk3288_cru_base) {
+>  		pr_err("%s: could not map cru region\n", __func__);
+>  		return;
+>  	}
+>  
+> -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+> +	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
+>  
+>  	/* xin12m is created by an cru-internal divider */
+>  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
+> @@ -907,10 +906,13 @@ static void __init rk3288_clk_init(struct device_node *np)
+>  			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
+>  			ARRAY_SIZE(rk3288_cpuclk_rates));
+>  
+> -	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
+> +	rockchip_register_softrst(np, 12,
+> +				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
+>  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+>  
+>  	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
+> -	rk3288_clk_sleep_init(reg_base);
+> +
+> +	register_syscore_ops(&rk3288_clk_syscore_ops);
+> +;
+>  }
+>  CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+> 
