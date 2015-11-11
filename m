@@ -1,138 +1,112 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2] clk: rockchip: switch PLLs to slow mode before reboot
- for rk3288
-Date: Wed, 11 Nov 2015 07:59:14 +0100
-Message-ID: <5837542.TKsKPxNRPz@phil>
-References: <1447220891-14900-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447220891-14900-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v3] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
+Date: Wed, 11 Nov 2015 15:09:59 +0800
+Message-ID: <1447225799-23996-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: dianders@chromium.org
+Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+We've been seeing some crashes at reboot test on rk3288-based systems,
+which boards have not reset pin connected to NPOR, they reboot by
+setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
+a high frequency mode, some IPs might hang during soft reset.
+It appears that we can fix the problem by switching to slow mode before
+reboot, just like what we did before suspend.
 
-one nit below, otherwise
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
 
-Am Mittwoch, 11. November 2015, 13:48:11 schrieb Chris Zhong:
-> We've been seeing some crashes at reboot test on rk3288-based systems,
-> which boards have not reset pin connected to NPOR, they reboot by
-> setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-> a high frequency mode, some IPs might hang during soft reset.
-> It appears that we can fix the problem by switching to slow mode before
-> reboot, just like what we did before suspend.
-> 
-> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v2:
-> replace restart_handlers with the shutdown callback of syscore
-> 
->  drivers/clk/rockchip/clk-rk3288.c | 36 +++++++++++++++++++-----------------
->  1 file changed, 19 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index 9040878..5ce44af 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -16,6 +16,7 @@
->  #include <linux/clk-provider.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
-> +#include <linux/reboot.h>
+Changes in v3:
+remove include reboot.h
 
-unrelated change?
+Changes in v2:
+replace restart_handlers with the shutdown callback of syscore
 
->  #include <linux/syscore_ops.h>
->  #include <dt-bindings/clock/rk3288-cru.h>
->  #include "clk.h"
-> @@ -783,9 +784,9 @@ static const char *const rk3288_critical_clocks[] __initconst = {
->  	"pclk_pd_pmu",
->  };
->  
-> -#ifdef CONFIG_PM_SLEEP
->  static void __iomem *rk3288_cru_base;
->  
-> +#ifdef CONFIG_PM_SLEEP
->  /* Some CRU registers will be reset in maskrom when the system
->   * wakes up from fastboot.
->   * So save them before suspend, restore them after resume.
-> @@ -839,34 +840,32 @@ static void rk3288_clk_resume(void)
->  			       rk3288_cru_base + reg_id);
->  	}
->  }
-> +#endif
->  
-> -static struct syscore_ops rk3288_clk_syscore_ops = {
-> -	.suspend = rk3288_clk_suspend,
-> -	.resume = rk3288_clk_resume,
-> -};
-> -
-> -static void rk3288_clk_sleep_init(void __iomem *reg_base)
-> +static void rk3288_clk_shutdown(void)
->  {
-> -	rk3288_cru_base = reg_base;
-> -	register_syscore_ops(&rk3288_clk_syscore_ops);
-> +	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
->  }
->  
-> -#else /* CONFIG_PM_SLEEP */
-> -static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
-> +static struct syscore_ops rk3288_clk_syscore_ops = {
-> +#ifdef CONFIG_PM_SLEEP
-> +	.suspend = rk3288_clk_suspend,
-> +	.resume = rk3288_clk_resume,
->  #endif
-> +	.shutdown = rk3288_clk_shutdown,
-> +};
->  
->  static void __init rk3288_clk_init(struct device_node *np)
->  {
-> -	void __iomem *reg_base;
->  	struct clk *clk;
->  
-> -	reg_base = of_iomap(np, 0);
-> -	if (!reg_base) {
-> +	rk3288_cru_base = of_iomap(np, 0);
-> +	if (!rk3288_cru_base) {
->  		pr_err("%s: could not map cru region\n", __func__);
->  		return;
->  	}
->  
-> -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-> +	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
->  
->  	/* xin12m is created by an cru-internal divider */
->  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-> @@ -907,10 +906,13 @@ static void __init rk3288_clk_init(struct device_node *np)
->  			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
->  			ARRAY_SIZE(rk3288_cpuclk_rates));
->  
-> -	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
-> +	rockchip_register_softrst(np, 12,
-> +				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
->  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
->  
->  	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
-> -	rk3288_clk_sleep_init(reg_base);
-> +
-> +	register_syscore_ops(&rk3288_clk_syscore_ops);
-> +;
->  }
->  CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
-> 
+ drivers/clk/rockchip/clk-rk3288.c | 35 ++++++++++++++++++-----------------
+ 1 file changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 9040878..3002d7d 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -783,9 +783,9 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+ 	"pclk_pd_pmu",
+ };
+ 
+-#ifdef CONFIG_PM_SLEEP
+ static void __iomem *rk3288_cru_base;
+ 
++#ifdef CONFIG_PM_SLEEP
+ /* Some CRU registers will be reset in maskrom when the system
+  * wakes up from fastboot.
+  * So save them before suspend, restore them after resume.
+@@ -839,34 +839,32 @@ static void rk3288_clk_resume(void)
+ 			       rk3288_cru_base + reg_id);
+ 	}
+ }
++#endif
+ 
+-static struct syscore_ops rk3288_clk_syscore_ops = {
+-	.suspend = rk3288_clk_suspend,
+-	.resume = rk3288_clk_resume,
+-};
+-
+-static void rk3288_clk_sleep_init(void __iomem *reg_base)
++static void rk3288_clk_shutdown(void)
+ {
+-	rk3288_cru_base = reg_base;
+-	register_syscore_ops(&rk3288_clk_syscore_ops);
++	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
+ }
+ 
+-#else /* CONFIG_PM_SLEEP */
+-static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
++static struct syscore_ops rk3288_clk_syscore_ops = {
++#ifdef CONFIG_PM_SLEEP
++	.suspend = rk3288_clk_suspend,
++	.resume = rk3288_clk_resume,
+ #endif
++	.shutdown = rk3288_clk_shutdown,
++};
+ 
+ static void __init rk3288_clk_init(struct device_node *np)
+ {
+-	void __iomem *reg_base;
+ 	struct clk *clk;
+ 
+-	reg_base = of_iomap(np, 0);
+-	if (!reg_base) {
++	rk3288_cru_base = of_iomap(np, 0);
++	if (!rk3288_cru_base) {
+ 		pr_err("%s: could not map cru region\n", __func__);
+ 		return;
+ 	}
+ 
+-	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
++	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
+ 
+ 	/* xin12m is created by an cru-internal divider */
+ 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
+@@ -907,10 +905,13 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
+ 			ARRAY_SIZE(rk3288_cpuclk_rates));
+ 
+-	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
++	rockchip_register_softrst(np, 12,
++				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+ 	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
+-	rk3288_clk_sleep_init(reg_base);
++
++	register_syscore_ops(&rk3288_clk_syscore_ops);
++;
+ }
+ CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+-- 
+2.6.3
+
