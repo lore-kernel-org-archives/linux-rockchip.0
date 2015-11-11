@@ -1,14 +1,14 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH] WIP: usb: dwc2: host: Support immediate retries for split transactions
-Date: Wed, 11 Nov 2015 10:31:03 -0800
-Message-ID: <1447266663-31167-1-git-send-email-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [REPOST PATCH] usb: dwc2: host: Support immediate retries for split transactions
+Date: Wed, 11 Nov 2015 10:33:52 -0800
+Message-ID: <1447266833-32096-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org
-Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 In some cases, like when you've got a "Microsoft Wireless Keyboard 2000"
@@ -28,8 +28,10 @@ also behave more properly.
 
 Thanks for Julius Werner for the expert analysis and suggestions.
 
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
+Repost without the WIP in tags (sorry for that).
+
  drivers/usb/dwc2/core.c | 14 ++++++++++++--
  1 file changed, 12 insertions(+), 2 deletions(-)
 
@@ -81,8 +83,3 @@ index ef73e498e98f..dcb4cd1d3b34 100644
  	if (hcchar & HCCHAR_CHDIS)
 -- 
 2.6.0.rc2.230.g3dd15c0
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
