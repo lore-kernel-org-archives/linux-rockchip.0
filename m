@@ -1,21 +1,21 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v4 00/10] Better compatible for the rockchip thermal and
- support RK3368 SoCs
-Date: Thu, 12 Nov 2015 10:31:20 -0800
-Message-ID: <20151112183119.GA5289@localhost.localdomain>
-References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
- <20151112182950.GB4361@localhost.localdomain>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 00/10] Better compatible for the rockchip thermal and support RK3368 SoCs
+Date: Thu, 12 Nov 2015 23:14 +0100
+Message-ID: <3751572.i2tVkgaN1o@phil>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com> <20151112182950.GB4361@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <20151112182950.GB4361@localhost.localdomain>
 Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, lkp@intel.com, devicetree@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pm@vger.kernel.org, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+To: Eduardo Valentin <edubezval@gmail.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, lkp@intel.com, devicetree@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pm@vger.kernel.org, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 12, 2015 at 10:29:52AM -0800, Eduardo Valentin wrote:
+Hi Eduardo,
+
+Am Donnerstag, 12. November 2015, 10:29:52 schrieb Eduardo Valentin:
 > On Mon, Nov 09, 2015 at 12:48:52PM +0800, Caesar Wang wrote:
 > > Thank you all for providing inputs and comments on previous versions of
 > > this patchset.
@@ -25,16 +25,8 @@ On Thu, Nov 12, 2015 at 10:29:52AM -0800, Eduardo Valentin wrote:
 > 
 > Do you have any results on existing support? Is the driver still in one
 > piece for rk3288?
-> 
-> I am planing to send your series in next rc cycles. It won't appear in
-> linux-next until merge window finishes.
 
-To be more specific, only patches 1-7. DT bindings go via the right
-machine tree.
+I've tested this series on a rk3288-veyron-jerry and everything still
+runs just fine, so
 
-Thanks
-
-> 
-> BR,
-> 
-> Eduardo Valentin
+Tested-by: Heiko Stuebner <heiko@sntech.de>
