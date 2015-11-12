@@ -1,72 +1,81 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [RFC PATCH v1 2/2] dt-bindings: add document for Innosilicon HDMI
- on Rockchip platform
-Date: Thu, 12 Nov 2015 09:07:34 +0800
-Message-ID: <5643E656.9000709@rock-chips.com>
-References: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
- <1447228052-4897-1-git-send-email-ykk@rock-chips.com>
- <20151111202236.GA5629@rob-hp-laptop>
+From: Zain <zain.wang@rock-chips.com>
+Subject: Re: [PATCH v3 2/4] clk: rockchip: set an ID for crypto clk
+Date: Thu, 12 Nov 2015 09:13:20 +0800
+Message-ID: <5643E7B0.2080901@rock-chips.com>
+References: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
+ <1447223759-20730-3-git-send-email-zain.wang@rock-chips.com>
+ <1790934.FgjVNmeB1J@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151111202236.GA5629@rob-hp-laptop>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thierry Reding <treding@nvidia.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ken Mixte <kmixter@google.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Ben Chan <benchan@google.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <1790934.FgjVNmeB1J@phil>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKT24gMTEvMTIvMjAxNSAwNDoyMiBBTSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gT24g
-V2VkLCBOb3YgMTEsIDIwMTUgYXQgMDM6NDc6MzJQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90ZToK
-Pj4gU2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+IEFja2Vk
-LWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgoKVGhhbmtzIHlvdSBmb3IgcmVzcG9u
-ZGluZyAgIDspCgotIFlha2lyCgo+PiAtLS0KPj4gICAuLi4vZGlzcGxheS9yb2NrY2hpcC9pbm5v
-X2hkbWktcm9ja2NoaXAudHh0ICAgICAgICB8IDUwICsrKysrKysrKysrKysrKysrKysrKysKPj4g
-ICAxIGZpbGUgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKQo+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5v
-X2hkbWktcm9ja2NoaXAudHh0Cj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0IGIv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19o
-ZG1pLXJvY2tjaGlwLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAw
-Li4xODk4NDA4Cj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+PiBA
-QCAtMCwwICsxLDUwIEBACj4+ICtSb2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIHRvIHRoZSBJ
-bm5vc2lsaWNvbiBIRE1JCj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+PiAr
-Cj4+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+PiArLSBjb21wYXRpYmxlOgo+PiArCSJyb2NrY2hp
-cCxyazMwMzYtZHctaGRtaSI7Cj4+ICstIHJlZzoKPj4gKwlQaHlzaWNhbCBiYXNlIGFkZHJlc3Mg
-YW5kIGxlbmd0aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycy4KPj4gKy0gY2xvY2tzLCBj
-bG9jay1uYW1lczoKPj4gKwlQaGFuZGxlIHRvIGhkbWkgY29udHJvbGxlciBjbG9jaywgbmFtZSBz
-aG91bGQgYmUgInBjbGsiCj4+ICstIGludGVycnVwdHM6Cj4+ICsJSERNSSBpbnRlcnJ1cHQgbnVt
-YmVyCj4+ICstIHBvcnRzOgo+PiArCUNvbnRhaW4gb25lIHBvcnQgbm9kZSB3aXRoIGVuZHBvaW50
-IGRlZmluaXRpb25zIGFzIGRlZmluZWQgaW4KPj4gKwlEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZ3JhcGgudHh0Lgo+PiArLSBwaW5jdHJsLTAsIHBpbmN0cmwtbmFtZToKPj4gKwlT
-d2l0Y2ggdGhlIGlvbXV4IG9mIEhQRC9DRUMgcGlucyB0byBIRE1JIGZ1bmN0aW9uLgo+PiArCj4+
-ICtFeGFtcGxlOgo+PiAraGRtaTogaGRtaUAyMDAzNDAwMCB7Cj4+ICsJY29tcGF0aWJsZSA9ICJy
-b2NrY2hpcCxyazMwMzYtaW5uby1oZG1pIjsKPj4gKwlyZWcgPSA8MHgyMDAzNDAwMCAweDQwMDA+
-Owo+PiArCWludGVycnVwdHMgPSA8R0lDX1NQSSA0NSBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPj4g
-KwljbG9ja3MgPSA8JmNydSAgUENMS19IRE1JPjsKPj4gKwljbG9jay1uYW1lcyA9ICJwY2xrIjsK
-Pj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+PiArCXBpbmN0cmwtMCA9IDwmaGRtaV9j
-dGw+Owo+PiArCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4+ICsKPj4gKwloZG1pX2luOiBwb3J0IHsK
-Pj4gKwkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+ICsJCSNzaXplLWNlbGxzID0gPDA+Owo+PiAr
-CQloZG1pX2luX2xjZGM6IGVuZHBvaW50QDAgewo+PiArCQkJcmVnID0gPDA+Owo+PiArCQkJcmVt
-b3RlLWVuZHBvaW50ID0gPCZsY2RjX291dF9oZG1pPjsKPj4gKwkJfTsKPj4gKwl9Owo+PiArfTsK
-Pj4gKwo+PiArJnBpbmN0cmwgewo+PiArCWhkbWkgewo+PiArCQloZG1pX2N0bDogaGRtaS1jdGwg
-ewo+PiArCQkJcm9ja2NoaXAscGlucyA9IDwxIDggIFJLX0ZVTkNfMSAmcGNmZ19wdWxsX25vbmU+
-LAo+PiArCQkJCQk8MSA5ICBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKPj4gKwkJCQkJPDEg
-MTAgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCj4+ICsJCQkJCTwxIDExIFJLX0ZVTkNfMSAm
-cGNmZ19wdWxsX25vbmU+Owo+PiArCQl9Owo+PiArCX07Cj4+ICsKPj4gK307Cj4+IC0tIAo+PiAx
-LjkuMQo+Pgo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwo+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKPj4gaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaS1kZXZlbAo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
-ZXZlbAo=
+
+
+On 2015=E5=B9=B411=E6=9C=8812=E6=97=A5 07:57, Heiko Stuebner wrote:
+> Am Mittwoch, 11. November 2015, 14:35:57 schrieb Zain Wang:
+>> Set an ID for crypto clk, so that it can be called in other part.
+>>
+>> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+> this should go in together with patch4, the dts change, so an Ack fro=
+m the
+> clock-maintainers would be nice :-)
+>
+>
+> Heiko
+Ok! Done!
+Thanks.
+>
+>> ---
+>>
+>> Changed in v3:
+>> - None
+>>
+>> Changed in v2:=20
+>> - None
+>>
+>> Changed in v1:
+>> - define SCLK_CRYPTO in rk3288-cru.h
+>> - use SCLK_CRYPTO instead of SRST_CRYPTO
+>>
+>>  drivers/clk/rockchip/clk-rk3288.c      | 2 +-
+>>  include/dt-bindings/clock/rk3288-cru.h | 1 +
+>>  2 files changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchi=
+p/clk-rk3288.c
+>> index 9040878..3fceda1 100644
+>> --- a/drivers/clk/rockchip/clk-rk3288.c
+>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+>> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_bra=
+nches[] __initdata =3D {
+>>  			RK3288_CLKGATE_CON(0), 4, GFLAGS),
+>>  	GATE(0, "c2c_host", "aclk_cpu_src", 0,
+>>  			RK3288_CLKGATE_CON(13), 8, GFLAGS),
+>> -	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
+>> +	COMPOSITE_NOMUX(SCLK_CRYPTO, "crypto", "aclk_cpu_pre", 0,
+>>  			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
+>>  			RK3288_CLKGATE_CON(5), 4, GFLAGS),
+>>  	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
+>> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bin=
+dings/clock/rk3288-cru.h
+>> index c719aac..30dcd60 100644
+>> --- a/include/dt-bindings/clock/rk3288-cru.h
+>> +++ b/include/dt-bindings/clock/rk3288-cru.h
+>> @@ -86,6 +86,7 @@
+>>  #define SCLK_USBPHY480M_SRC	122
+>>  #define SCLK_PVTM_CORE		123
+>>  #define SCLK_PVTM_GPU		124
+>> +#define SCLK_CRYPTO			125
+>> =20
+>>  #define SCLK_MAC		151
+>>  #define SCLK_MACREF_OUT		152
+>>
+>
+>
+>
