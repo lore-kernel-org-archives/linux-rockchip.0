@@ -1,32 +1,84 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 00/10] Better compatible for the rockchip thermal and support RK3368 SoCs
-Date: Thu, 12 Nov 2015 23:14 +0100
-Message-ID: <3751572.i2tVkgaN1o@phil>
-References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com> <20151112182950.GB4361@localhost.localdomain>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v9 15/17] drm: bridge: analogix/dp: try force hpd after
+ plug in lookup failed
+Date: Thu, 12 Nov 2015 17:38:07 -0600
+Message-ID: <20151112233807.GA9899@rob-hp-laptop>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
+ <1446167355-6387-1-git-send-email-ykk@rock-chips.com>
+ <20151111231042.GA29893@rob-hp-laptop>
+ <5643EAF9.9020508@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20151112182950.GB4361@localhost.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, lkp@intel.com, devicetree@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pm@vger.kernel.org, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Will Deacon <will.deacon@arm.com>, Catalin Marinas <catalin.marinas@arm.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5643EAF9.9020508@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-deve
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Eduardo,
-
-Am Donnerstag, 12. November 2015, 10:29:52 schrieb Eduardo Valentin:
-> On Mon, Nov 09, 2015 at 12:48:52PM +0800, Caesar Wang wrote:
-> > Thank you all for providing inputs and comments on previous versions of
-> > this patchset.
-> > Especially thanks to the (Eduardo, Dmitry, Heiko,....).
-> > 
-> > This series patchs are working for RK3368 on Rockchip platform.
+On Thu, Nov 12, 2015 at 09:27:21AM +0800, Yakir Yang wrote:
+> Hi Rob,
 > 
-> Do you have any results on existing support? Is the driver still in one
-> piece for rk3288?
+> On 11/12/2015 07:10 AM, Rob Herring wrote:
+> >On Fri, Oct 30, 2015 at 09:09:15AM +0800, Yakir Yang wrote:
+> >>Some edp screen do not have hpd signal, so we can't just return
+> >>failed when hpd plug in detect failed.
+> >>
+> >>This is an hardware property, so we need add a devicetree property
+> >>"analogix,need-force-hpd" to indicate this sutiation.
+> >>
+> >>Tested-by: Heiko Stuebner <heiko@sntech.de>
+> >>Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> >>Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> >>---
+> >I didn't find this one in v10. Did it get dropped?
+> 
+> You are in my 'to' list, but I haven't send the whole v10 out,
+> most of them don't need update :)
 
-I've tested this series on a rk3288-veyron-jerry and everything still
-runs just fine, so
+Okay, it's just gmail's inability to follow threading...
+ 
+> This series should be:
+> ---- [v8 0/17 ...]
+>   |---- [v8 1/17 ...]
+>   |---- [v8 2/17 ...]
+>   |---- [v8 3/17 ...]
+>   |---- [...]
+>   |---- [v8 15/17 ...]
+>   |---- [v8 16/17 ...]
+>   |---- [v8 17/17 ...]
+>   |
+>   |---- [v9 10/17 ...]
+>   |---- [v9 15/17 ...]
+>      |---- We are here
+>   |---- [v9 09/17 ...]
+>   |---- [v10 09/17 ...]
+>      |---- Received an acked from you
 
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+
+> >>diff --git a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
+> >>index 7659a7a..74f0e80 100644
+> >>--- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
+> >>+++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
+> >>@@ -22,6 +22,9 @@ Required properties for dp-controller:
+> >>  		from general PHY binding: Should be "dp".
+> >>  Optional properties for dp-controller:
+> >>+	-analogix,need-force-hpd:
+> >>+		Indicate driver need force hpd when hpd detect failed, this
+> >>+		is used for some eDP screen which don't have hpd signal.
+> >This should be a generic property.
+> 
+> This property would only need in some no-hpd case, it would be dropped if
+> panel keep the hotplug signal, that's why I thought it should be optional.
+
+I agree it is optional. I just mean drop the analogix and put in a 
+common binding doc (i.e. create a display/bridge/common.txt). Needing to 
+ignore HPD is probably a common problem.
+
+> I thought if we put this a property to generic property, then we must need
+> to define it in normal device node, not sure whether it is right :)
+
+Sorry, I don't follow.
+
+Rob
