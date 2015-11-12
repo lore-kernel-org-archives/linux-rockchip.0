@@ -1,92 +1,53 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 2/4] clk: rockchip: set an ID for crypto clk
-Date: Thu, 12 Nov 2015 09:40:53 +0100
-Message-ID: <1838616.4qxqO6ir89@phil>
-References: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com> <1790934.FgjVNmeB1J@phil> <5643E7B0.2080901@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v8 10/17] phy: Add driver for rockchip Display Port PHY
+Date: Thu, 12 Nov 2015 10:21:51 +0100
+Message-ID: <1942026.CO9sWmi7sq@phil>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <2368662.QeV0VQYq26@phil> <5643FB43.6090408@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <5643E7B0.2080901@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain <zain.wang@rock-chips.com>
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5643FB43.6090408-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-deve
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 12. November 2015, 09:13:20 schrieb Zain:
->=20
-> On 2015=E5=B9=B411=E6=9C=8812=E6=97=A5 07:57, Heiko Stuebner wrote:
-> > Am Mittwoch, 11. November 2015, 14:35:57 schrieb Zain Wang:
-> >> Set an ID for crypto clk, so that it can be called in other part.
+Hi Yakir,
+
+Am Donnerstag, 12. November 2015, 10:36:51 schrieb Yakir Yang:
+> On 11/12/2015 07:23 AM, Heiko Stuebner wrote:
+> > Am Mittwoch, 28. Oktober 2015, 16:30:33 schrieb Yakir Yang:
+> >> Add phy driver for the Rockchip DisplayPort PHY module. This
+> >> is required to get DisplayPort working in Rockchip SoCs.
 > >>
-> >> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
-> > this should go in together with patch4, the dts change, so an Ack f=
-rom the
-> > clock-maintainers would be nice :-)
+> >> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> >> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > a general thing I have been pondering, we should probably move the
+> > dp-phy under the GRF. Similar to the new power-domains being
+> > a full child of the PMU, the dp-phy is a full child-device of the GRF.
+> >
+> > That would include:
+> > - making the GRF a simply-mfd (just adding that property)
+> > - moving the dts node under it
+> > - making the driver get its regmap from its parent (just like
+> >    drivers/soc/rockchip/pm_domains.c does)
 > >
 > >
-> > Heiko
-> Ok! Done!
-> Thanks.
+> > The usbphy is another example of that, and I think I'll be moving it
+> > below the grf as well.
+> 
+> Sounds great, pretty cool to collect those scattered "GRF" driver,
+> if you want me do some rebase on your changes, please note me :)
 
-I'm not sure I understand that.
-
-There is nothing to do for you here, I was merely stating the fact that
-we will need to get an Acked-by from the clock maintainers, to allow
-me to take both this and the devicetree patch :-)
+nope, that won't be necessary ... I'm currently doing some usbphy
+reorganization/cleanups for 4.5 first, so to keep conflicts down I'll do
+the move probably for 4.6. As I expect your edp series to make it into
+4.5 we'll also not have conflicts here then :-)
 
 
 Heiko
-
-> >
-> >> ---
-> >>
-> >> Changed in v3:
-> >> - None
-> >>
-> >> Changed in v2:=20
-> >> - None
-> >>
-> >> Changed in v1:
-> >> - define SCLK_CRYPTO in rk3288-cru.h
-> >> - use SCLK_CRYPTO instead of SRST_CRYPTO
-> >>
-> >>  drivers/clk/rockchip/clk-rk3288.c      | 2 +-
-> >>  include/dt-bindings/clock/rk3288-cru.h | 1 +
-> >>  2 files changed, 2 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockc=
-hip/clk-rk3288.c
-> >> index 9040878..3fceda1 100644
-> >> --- a/drivers/clk/rockchip/clk-rk3288.c
-> >> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> >> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_b=
-ranches[] __initdata =3D {
-> >>  			RK3288_CLKGATE_CON(0), 4, GFLAGS),
-> >>  	GATE(0, "c2c_host", "aclk_cpu_src", 0,
-> >>  			RK3288_CLKGATE_CON(13), 8, GFLAGS),
-> >> -	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
-> >> +	COMPOSITE_NOMUX(SCLK_CRYPTO, "crypto", "aclk_cpu_pre", 0,
-> >>  			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
-> >>  			RK3288_CLKGATE_CON(5), 4, GFLAGS),
-> >>  	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
-> >> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-b=
-indings/clock/rk3288-cru.h
-> >> index c719aac..30dcd60 100644
-> >> --- a/include/dt-bindings/clock/rk3288-cru.h
-> >> +++ b/include/dt-bindings/clock/rk3288-cru.h
-> >> @@ -86,6 +86,7 @@
-> >>  #define SCLK_USBPHY480M_SRC	122
-> >>  #define SCLK_PVTM_CORE		123
-> >>  #define SCLK_PVTM_GPU		124
-> >> +#define SCLK_CRYPTO			125
-> >> =20
-> >>  #define SCLK_MAC		151
-> >>  #define SCLK_MACREF_OUT		152
-> >>
-> >
-> >
-> >
->=20
->=20
->=20
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
