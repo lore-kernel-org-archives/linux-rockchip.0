@@ -1,108 +1,143 @@
-From: Zain <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 2/4] clk: rockchip: set an ID for crypto clk
-Date: Fri, 13 Nov 2015 14:53:00 +0800
-Message-ID: <564588CC.8030300@rock-chips.com>
-References: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
- <1790934.FgjVNmeB1J@phil> <5643E7B0.2080901@rock-chips.com>
- <1838616.4qxqO6ir89@phil>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH 4/8] phy: rockchip-usb: expose the phy-internal PLLs
+Date: Fri, 13 Nov 2015 14:18:55 +0530
+Message-ID: <5645A3F7.9070708@ti.com>
+References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
+ <1446673454-9529-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1838616.4qxqO6ir89@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446673454-9529-5-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
+On Thursday 05 November 2015 03:14 AM, Heiko Stuebner wrote:
+> The USB phys on Rockchip SoCs contain their own internal PLLs to create
+> the 480MHz needed. Additionally this PLL output is also fed back into the
+> core clock-controller as possible source for clocks like the GPU or others.
+> 
+> Until now this was modelled incorrectly with a "virtual" factor clock in
+> the clock controller. The one big caveat is that if we turn off the usb phy
+> via the siddq signal, all analog components get turned off, including the
+> PLLs. It is therefore possible that a source clock gets disabled without
+> the clock driver ever knowing, possibly making the system hang.
+> 
+> Therefore register the phy-plls as real clocks that the clock driver can
+> then reference again normally, making the clock hirarchy finally reflect
+> the actual hardware.
+> 
+> The phy-ops get converted to simply turning that new clock on and off
+> which in turn controls the siddq signal of the phy.
+> 
+> Through this the driver gains handling for platform-specific data, to
+> handle the phy->clock name association.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  .../devicetree/bindings/phy/rockchip-usb-phy.txt   |   6 +-
+>  drivers/phy/phy-rockchip-usb.c                     | 177 ++++++++++++++++++---
+>  2 files changed, 160 insertions(+), 23 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> index 826454a..68498d5 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> @@ -1,7 +1,10 @@
+>  ROCKCHIP USB2 PHY
+>  
+>  Required properties:
+> - - compatible: rockchip,rk3288-usb-phy
+> + - compatible: matching the soc type, one of
+> +     "rockchip,rk3066a-usb-phy"
+> +     "rockchip,rk3188-usb-phy"
+> +     "rockchip,rk3288-usb-phy"
 
-On 2015=E5=B9=B411=E6=9C=8812=E6=97=A5 16:40, Heiko Stuebner wrote:
-> Am Donnerstag, 12. November 2015, 09:13:20 schrieb Zain:
->> On 2015=E5=B9=B411=E6=9C=8812=E6=97=A5 07:57, Heiko Stuebner wrote:
->>> Am Mittwoch, 11. November 2015, 14:35:57 schrieb Zain Wang:
->>>> Set an ID for crypto clk, so that it can be called in other part.
->>>>
->>>> Signed-off-by: Zain Wang <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> this should go in together with patch4, the dts change, so an Ack f=
-rom the
->>> clock-maintainers would be nice :-)
->>>
->>>
->>> Heiko
->> Ok! Done!
->> Thanks.
-> I'm not sure I understand that.
->
-> There is nothing to do for you here, I was merely stating the fact th=
-at
-> we will need to get an Acked-by from the clock maintainers, to allow
-> me to take both this and the devicetree patch :-)
->
->
-> Heiko
-I am sorry that I think you told me to put the two patches together in
-next version at first.
-Thanks for your writing back.
+Looks like this adds driver support for new SoC? Maybe create a separate patch
+for that?
+>   - rockchip,grf : phandle to the syscon managing the "general
+>     register files"
+>   - #address-cells: should be 1
+> @@ -21,6 +24,7 @@ required properties:
+>  Optional Properties:
+>  - clocks : phandle + clock specifier for the phy clocks
+>  - clock-names: string, clock name, must be "phyclk"
+> +- #clock-cells: for users of the phy-pll, should be 0
+>  
+>  Example:
+>  
+> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+> index f10e130..509497b 100644
+> --- a/drivers/phy/phy-rockchip-usb.c
+> +++ b/drivers/phy/phy-rockchip-usb.c
+> @@ -15,12 +15,14 @@
+>   */
+>  
+>  #include <linux/clk.h>
+> +#include <linux/clk-provider.h>
+>  #include <linux/io.h>
+>  #include <linux/kernel.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+> +#include <linux/of_platform.h>
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regulator/consumer.h>
+> @@ -36,18 +38,35 @@
+>  #define SIDDQ_ON		BIT(13)
+>  #define SIDDQ_OFF		(0 << 13)
+>  
+> +struct rockchip_usb_phys {
+> +	int reg;
+> +	const char *pll_name;
+> +};
+> +
+> +struct rockchip_usb_phy_pdata {
+> +	struct rockchip_usb_phys *phys;
+> +};
+> +
+>  struct rockchip_usb_phy_base {
+>  	struct device *dev;
+>  	struct regmap *reg_base;
+> +	const struct rockchip_usb_phy_pdata *pdata;
+>  };
+>  
+>  struct rockchip_usb_phy {
+>  	struct rockchip_usb_phy_base *base;
+> +	struct device_node *np;
+>  	unsigned int	reg_offset;
+>  	struct clk	*clk;
+> +	struct clk      *clk480m;
+> +	struct clk_hw	clk480m_hw;
+>  	struct phy	*phy;
+>  };
+>  
+> +/*
+> + * Set siddq to 1 to power down usb phy analog blocks,
+> + * set to 0 to enable.
+> + */
 
-Zain
->
->>>> ---
->>>>
->>>> Changed in v3:
->>>> - None
->>>>
->>>> Changed in v2:=20
->>>> - None
->>>>
->>>> Changed in v1:
->>>> - define SCLK_CRYPTO in rk3288-cru.h
->>>> - use SCLK_CRYPTO instead of SRST_CRYPTO
->>>>
->>>>  drivers/clk/rockchip/clk-rk3288.c      | 2 +-
->>>>  include/dt-bindings/clock/rk3288-cru.h | 1 +
->>>>  2 files changed, 2 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockc=
-hip/clk-rk3288.c
->>>> index 9040878..3fceda1 100644
->>>> --- a/drivers/clk/rockchip/clk-rk3288.c
->>>> +++ b/drivers/clk/rockchip/clk-rk3288.c
->>>> @@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_b=
-ranches[] __initdata =3D {
->>>>  			RK3288_CLKGATE_CON(0), 4, GFLAGS),
->>>>  	GATE(0, "c2c_host", "aclk_cpu_src", 0,
->>>>  			RK3288_CLKGATE_CON(13), 8, GFLAGS),
->>>> -	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
->>>> +	COMPOSITE_NOMUX(SCLK_CRYPTO, "crypto", "aclk_cpu_pre", 0,
->>>>  			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
->>>>  			RK3288_CLKGATE_CON(5), 4, GFLAGS),
->>>>  	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
->>>> diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-b=
-indings/clock/rk3288-cru.h
->>>> index c719aac..30dcd60 100644
->>>> --- a/include/dt-bindings/clock/rk3288-cru.h
->>>> +++ b/include/dt-bindings/clock/rk3288-cru.h
->>>> @@ -86,6 +86,7 @@
->>>>  #define SCLK_USBPHY480M_SRC	122
->>>>  #define SCLK_PVTM_CORE		123
->>>>  #define SCLK_PVTM_GPU		124
->>>> +#define SCLK_CRYPTO			125
->>>> =20
->>>>  #define SCLK_MAC		151
->>>>  #define SCLK_MACREF_OUT		152
->>>>
->>>
->>>
->>
->>
->
->
->
+Not related to $patch.
+>  static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
+>  					   bool siddq)
+>  {
+> @@ -55,17 +74,57 @@ static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
+>  			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
+>  }
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks
+Kishon
