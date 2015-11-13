@@ -1,84 +1,103 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v9 15/17] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Thu, 12 Nov 2015 17:38:07 -0600
-Message-ID: <20151112233807.GA9899@rob-hp-laptop>
-References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
- <1446167355-6387-1-git-send-email-ykk@rock-chips.com>
- <20151111231042.GA29893@rob-hp-laptop>
- <5643EAF9.9020508@rock-chips.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [REPOST PATCH] usb: dwc2: host: Support immediate retries for
+ split transactions
+Date: Fri, 13 Nov 2015 03:13:12 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3CB70D@US01WEMBX2.internal.synopsys.com>
+References: <1447266833-32096-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5643EAF9.9020508@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-deve
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "balbi-l0cyMroinI0@public.gmane.org" <balbi-l0cyMroinI0@public.gmane.org>
+Cc: "gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org" <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 12, 2015 at 09:27:21AM +0800, Yakir Yang wrote:
-> Hi Rob,
+On 11/11/2015 10:34 AM, Douglas Anderson wrote:
+> In some cases, like when you've got a "Microsoft Wireless Keyboard 2000"
+> connected to dwc2 with a hub, expected that we'll get some transfer
+> errors sometimes.  The controller is expected to try at least 3 times
+> before giving up.  See figure "Figure A-67. Normal HS CSPLIT 3 Strikes
+> Smash" in the USB spec.
 > 
-> On 11/12/2015 07:10 AM, Rob Herring wrote:
-> >On Fri, Oct 30, 2015 at 09:09:15AM +0800, Yakir Yang wrote:
-> >>Some edp screen do not have hpd signal, so we can't just return
-> >>failed when hpd plug in detect failed.
-> >>
-> >>This is an hardware property, so we need add a devicetree property
-> >>"analogix,need-force-hpd" to indicate this sutiation.
-> >>
-> >>Tested-by: Heiko Stuebner <heiko@sntech.de>
-> >>Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
-> >>Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> >>---
-> >I didn't find this one in v10. Did it get dropped?
+> The dwc2 controller has a way to support this by using the "EC_MC"
+> field.  The Raspberry Pi driver has logic for setting this right.  See
+> fiq_fsm_queue_split_transaction() in their "dwc_otg_hcd.c".  Let's use
+> the same logic.
 > 
-> You are in my 'to' list, but I haven't send the whole v10 out,
-> most of them don't need update :)
-
-Okay, it's just gmail's inability to follow threading...
- 
-> This series should be:
-> ---- [v8 0/17 ...]
->   |---- [v8 1/17 ...]
->   |---- [v8 2/17 ...]
->   |---- [v8 3/17 ...]
->   |---- [...]
->   |---- [v8 15/17 ...]
->   |---- [v8 16/17 ...]
->   |---- [v8 17/17 ...]
->   |
->   |---- [v9 10/17 ...]
->   |---- [v9 15/17 ...]
->      |---- We are here
->   |---- [v9 09/17 ...]
->   |---- [v10 09/17 ...]
->      |---- Received an acked from you
-
-
-> >>diff --git a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-> >>index 7659a7a..74f0e80 100644
-> >>--- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-> >>+++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-> >>@@ -22,6 +22,9 @@ Required properties for dp-controller:
-> >>  		from general PHY binding: Should be "dp".
-> >>  Optional properties for dp-controller:
-> >>+	-analogix,need-force-hpd:
-> >>+		Indicate driver need force hpd when hpd detect failed, this
-> >>+		is used for some eDP screen which don't have hpd signal.
-> >This should be a generic property.
+> After making this change, we no longer get dropped characters from the
+> above mentioned keyboard.  Other devices on the same bus as the keyboard
+> also behave more properly.
 > 
-> This property would only need in some no-hpd case, it would be dropped if
-> panel keep the hotplug signal, that's why I thought it should be optional.
+> Thanks for Julius Werner for the expert analysis and suggestions.
+> 
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> Repost without the WIP in tags (sorry for that).
+> 
+>  drivers/usb/dwc2/core.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+> index ef73e498e98f..dcb4cd1d3b34 100644
+> --- a/drivers/usb/dwc2/core.c
+> +++ b/drivers/usb/dwc2/core.c
+> @@ -1707,6 +1707,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+>  	u32 hcchar;
+>  	u32 hctsiz = 0;
+>  	u16 num_packets;
+> +	u32 ec_mc;
+>  
+>  	if (dbg_hc(chan))
+>  		dev_vdbg(hsotg->dev, "%s()\n", __func__);
+> @@ -1743,6 +1744,13 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+>  
+>  		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
+>  			  TSIZ_XFERSIZE_MASK;
+> +
+> +		/* For split set ec_mc for immediate retries */
+> +		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
+> +		    chan->ep_type == USB_ENDPOINT_XFER_ISOC)
+> +			ec_mc = 3;
+> +		else
+> +			ec_mc = 1;
+>  	} else {
+>  		if (dbg_hc(chan))
+>  			dev_vdbg(hsotg->dev, "no split\n");
+> @@ -1805,6 +1813,9 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+>  
+>  		hctsiz |= chan->xfer_len << TSIZ_XFERSIZE_SHIFT &
+>  			  TSIZ_XFERSIZE_MASK;
+> +
+> +		/* The ec_mc gets the multi_count for non-split */
+> +		ec_mc = chan->multi_count;
+>  	}
+>  
+>  	chan->start_pkt_count = num_packets;
+> @@ -1855,8 +1866,7 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+>  
+>  	hcchar = dwc2_readl(hsotg->regs + HCCHAR(chan->hc_num));
+>  	hcchar &= ~HCCHAR_MULTICNT_MASK;
+> -	hcchar |= chan->multi_count << HCCHAR_MULTICNT_SHIFT &
+> -		  HCCHAR_MULTICNT_MASK;
+> +	hcchar |= (ec_mc << HCCHAR_MULTICNT_SHIFT) & HCCHAR_MULTICNT_MASK;
+>  	dwc2_hc_set_even_odd_frame(hsotg, chan, &hcchar);
+>  
+>  	if (hcchar & HCCHAR_CHDIS)
+> 
 
-I agree it is optional. I just mean drop the analogix and put in a 
-common binding doc (i.e. create a display/bridge/common.txt). Needing to 
-ignore HPD is probably a common problem.
 
-> I thought if we put this a property to generic property, then we must need
-> to define it in normal device node, not sure whether it is right :)
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 
-Sorry, I don't follow.
 
-Rob
+Regards,
+John
