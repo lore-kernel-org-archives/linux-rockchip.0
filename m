@@ -1,91 +1,71 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 4/7] phy: rockchip-usb: add missing of_node_put
-Date: Mon, 16 Nov 2015 12:33:17 +0100
-Message-ID: <1447673600-8881-5-git-send-email-Julia.Lawall@lip6.fr>
-References: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: kernel-janitors@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Andrew Lunn <andrew@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>, Jason Cooper <jason@lakedaemon.net>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v4 09/24] regulator: pwm: use
+ pwm_get/set_default_xxx() helpers where appropriate
+Date: Mon, 16 Nov 2015 13:23:59 +0100
+Message-ID: <20151116132359.39d84279@bbrezillon>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1447664207-24370-10-git-send-email-boris.brezillon@free-electrons.com>
+	<20151116105558.GB31303@sirena.org.uk>
+Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBYMVU6ZAKGQECAPMUNY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+In-Reply-To: <20151116105558.GB31303-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <http://groups.google.com/group/linux-sunxi
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <http://groups.google.com/group/linux-sunxi/subscribe>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>Lee Jones <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-for_each_available_child_of_node performs an of_node_get on each iteration,
-so a return from the middle of the loop requires an of_node_put.
+Hi Mark,
 
-A simplified version of the semantic patch that finds this problem is as
-follows (http://coccinelle.lip6.fr):
+On Mon, 16 Nov 2015 10:55:58 +0000
+Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 
-// <smpl>
-@@
-expression root,e;
-local idexpression child;
-@@
+> On Mon, Nov 16, 2015 at 09:56:32AM +0100, Boris Brezillon wrote:
+> 
+> > +++ b/drivers/regulator/pwm-regulator.c
+> > @@ -56,7 +56,7 @@ static int pwm_regulator_set_voltage_sel(struct regulator_dev *rdev,
+> >  	int dutycycle;
+> >  	int ret;
+> >  
+> > -	pwm_reg_period = pwm_get_period(drvdata->pwm);
+> > +	pwm_reg_period = pwm_get_default_period(drvdata->pwm);
+> >  
+> >  	dutycycle = (pwm_reg_period *
+> >  		    drvdata->duty_cycle_table[selector].dutycycle) / 100;
+> 
+> It's not clear to me that we're not looking for the current period here
+> or in the other use.  Won't configuring based on a period other than the
+> one that has been set give the wrong answer?
 
- for_each_available_child_of_node(root, child) {
-   ... when != of_node_put(child)
-       when != e = child
-(
-   return child;
-|
-*  return ...;
-)
-   ...
- }
-// </smpl>
+Hm, maybe that's naming problem. What I call the 'default' period here
+is actually the period configured in your board file (using a PWM lookup
+table) or your DT. This value represent the period requested by the PWM
+user not a default value specified by the PWM chip driver.
 
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+The reason we're not using the 'current' period value is because it may
+have been set by the bootloader, and may be inappropriate for our use
+case (ie. the period may be to small to represent the different
+voltages).
+ITOH, we're using the current period value when calculating the current
+voltage, because we want to get the correct voltage value, and the PWM
+device may still use the configuration set by the bootloader (not the
+default one specified in your board or DT files).
 
----
- drivers/phy/phy-rockchip-usb.c |   17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+I hope this clarifies the differences between the current and default
+period, and why we should use the default value here.
 
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index 91d6f34..62c43c4 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -108,13 +108,16 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 
- 	for_each_available_child_of_node(dev->of_node, child) {
- 		rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
--		if (!rk_phy)
--			return -ENOMEM;
-+		if (!rk_phy) {
-+			err = -ENOMEM;
-+			goto put_child;
-+		}
- 
- 		if (of_property_read_u32(child, "reg", &reg_offset)) {
- 			dev_err(dev, "missing reg property in node %s\n",
- 				child->name);
--			return -EINVAL;
-+			err = -EINVAL;
-+			goto put_child;
- 		}
- 
- 		rk_phy->reg_offset = reg_offset;
-@@ -127,18 +130,22 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 		rk_phy->phy = devm_phy_create(dev, child, &ops);
- 		if (IS_ERR(rk_phy->phy)) {
- 			dev_err(dev, "failed to create PHY\n");
--			return PTR_ERR(rk_phy->phy);
-+			err = PTR_ERR(rk_phy->phy);
-+			goto put_child;
- 		}
- 		phy_set_drvdata(rk_phy->phy, rk_phy);
- 
- 		/* only power up usb phy when it use, so disable it when init*/
- 		err = rockchip_usb_phy_power(rk_phy, 1);
- 		if (err)
--			return err;
-+			goto put_child;
- 	}
- 
- 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
- 	return PTR_ERR_OR_ZERO(phy_provider);
-+put_child:
-+	of_node_put(child);
-+	return err;
- }
- 
- static const struct of_device_id rockchip_usb_phy_dt_ids[] = {
+Best Regards,
+
+Boris
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
