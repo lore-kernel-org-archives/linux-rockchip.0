@@ -1,153 +1,254 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Zain <zain.wang@rock-chips.com>
 Subject: Re: [PATCH v3 3/4] Crypto: rockchip/crypto - add crypto driver for
  rk3288
-Date: Sat, 14 Nov 2015 23:41:35 +0100
-Message-ID: <18560338.ihuYOPNcR6@phil>
+Date: Mon, 16 Nov 2015 09:49:54 +0800
+Message-ID: <56493642.9010400@rock-chips.com>
 References: <1447223759-20730-1-git-send-email-zain.wang@rock-chips.com>
  <2127222.Jhf4CFAOsX@phil> <564586DB.1020401@rock-chips.com>
+ <18560338.ihuYOPNcR6@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <564586DB.1020401-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Zain <zain.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <18560338.ihuYOPNcR6@phil>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgWmFpbiwKCkFtIEZyZWl0YWcsIDEzLiBOb3ZlbWJlciAyMDE1LCAxNDo0NDo0MyBzY2hyaWVi
-IFphaW46Cj4gCj4gT24gMjAxNeW5tDEx5pyIMTLml6UgMjA6MzIsIEhlaWtvIFN0dWVibmVyIHdy
-b3RlOgo+ID4gSGkgWmFpbiwKPiA+Cj4gPiBJIHdhcyBhYmxlIHRvIHN1Y2Vzc2Z1bGx5IHRlc3Qg
-eW91ciBjcnlwdG8tZHJpdmVyLCBidXQgaGF2ZSBmb3VuZCBzb21lCj4gPiBpbXByb3ZlbWVudHMg
-YmVsb3cgdGhhdCBzaG91bGQgcHJvYmFibHkgZ2V0IGxvb2tlZCBhdDoKPiA+Cj4gPiBBbSBNaXR0
-d29jaCwgMTEuIE5vdmVtYmVyIDIwMTUsIDE0OjM1OjU4IHNjaHJpZWIgWmFpbiBXYW5nOgo+ID4+
-IENyeXB0byBkcml2ZXIgc3VwcG9ydDoKPiA+PiAgICAgIGVjYihhZXMpIGNiYyhhZXMpIGVjYihk
-ZXMpIGNiYyhkZXMpIGVjYihkZXMzX2VkZSkgY2JjKGRlczNfZWRlKQo+ID4+IFlvdSBjYW4gYWxs
-b2MgdGFncyBhYm92ZSBpbiB5b3VyIGNhc2UuCj4gPj4KPiA+PiBBbmQgb3RoZXIgYWxnb3JpdGht
-cyBhbmQgcGxhdGZvcm1zIHdpbGwgYmUgYWRkZWQgbGF0ZXIgb24uCj4gPj4KPiA+PiBTaWduZWQt
-b2ZmLWJ5OiBaYWluIFdhbmcgPHphaW4ud2FuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+PiAtLS0KPiA+
-IFsuLi5dCj4gPgo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2NyeXB0by9yb2NrY2hpcC9yazMy
-ODhfY3J5cHRvLmMgYi9kcml2ZXJzL2NyeXB0by9yb2NrY2hpcC9yazMyODhfY3J5cHRvLmMKPiA+
-PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4+IGluZGV4IDAwMDAwMDAuLmJiMzZiYWEKPiA+PiAt
-LS0gL2Rldi9udWxsCj4gPj4gKysrIGIvZHJpdmVycy9jcnlwdG8vcm9ja2NoaXAvcmszMjg4X2Ny
-eXB0by5jCj4gPj4gQEAgLTAsMCArMSwzOTIgQEAKClsuLi5dCgpzdGF0aWMgdm9pZCBya19jcnlw
-dG9fYWN0aW9uKHZvaWQgKmRhdGEpCnsKCXN0cnVjdCBya19jcnlwdG9faW5mbyAqY3J5cHRvX2lu
-Zm8gPSBkYXRhOwoKCXJlc2V0X2NvbnRyb2xfYXNzZXJ0KGNyeXB0b19pbmZvLT5yc3QpOwp9Cgo+
-ID4+ICtzdGF0aWMgaW50IHJrX2NyeXB0b19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
-ZGV2KQo+ID4+ICt7Cj4gPj4gKwlzdHJ1Y3QgcmVzb3VyY2UgKnJlczsKPiA+PiArCXN0cnVjdCBk
-ZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gPj4gKwlzdHJ1Y3QgcmtfY3J5cHRvX2luZm8gKmNy
-eXB0b19pbmZvOwo+ID4+ICsJaW50IGVyciA9IDA7Cj4gPj4gKwo+ID4+ICsJY3J5cHRvX2luZm8g
-PSBkZXZtX2t6YWxsb2MoJnBkZXYtPmRldiwKPiA+PiArCQkJCSAgIHNpemVvZigqY3J5cHRvX2lu
-Zm8pLCBHRlBfS0VSTkVMKTsKPiA+PiArCWlmICghY3J5cHRvX2luZm8pIHsKPiA+PiArCQllcnIg
-PSAtRU5PTUVNOwo+ID4+ICsJCWdvdG8gZXJyX2NyeXB0bzsKPiA+PiArCX0KPiA+PiArCj4gPj4g
-KwljcnlwdG9faW5mby0+cnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2dldChkZXYsICJjcnlwdG8t
-cnN0Iik7Cj4gPj4gKwlpZiAoSVNfRVJSKGNyeXB0b19pbmZvLT5yc3QpKSB7Cj4gPj4gKwkJZXJy
-ID0gUFRSX0VSUihjcnlwdG9faW5mby0+cnN0KTsKPiA+PiArCQlnb3RvIGVycl9jcnlwdG87Cj4g
-Pj4gKwl9Cj4gPj4gKwo+ID4+ICsJcmVzZXRfY29udHJvbF9hc3NlcnQoY3J5cHRvX2luZm8tPnJz
-dCk7Cj4gPj4gKwl1c2xlZXBfcmFuZ2UoMTAsIDIwKTsKPiA+PiArCXJlc2V0X2NvbnRyb2xfZGVh
-c3NlcnQoY3J5cHRvX2luZm8tPnJzdCk7CgoJZXJyID0gZGV2bV9hZGRfYWN0aW9uKGRldiwgcmtf
-Y3J5cHRvX2FjdGlvbiwgY3J5cHRvX2luZm8pOwoJaWYgKGVycikgewoJCXJlc2V0X2NvbnRyb2xf
-YXNzZXJ0KGNyeXB0b19pbmZvLT5yc3QpOwoJCXJldHVybiBlcnI7Cgl9Cgpmcm9tIGhlcmUgb253
-YXJkcyB0aGUgZGV2bV9hY3Rpb24gd2lsbCBhbHdheXMgYmUgZXhlY3V0ZWQgd2hlbiBlaXRoZXIK
-X3Byb2JlIGZhaWxzLCBvciBhZnRlciByZW1vdmUgZmluaXNoZXMsIHNvIG5vIG5lZWQgdG8gYXNz
-ZXJ0IHRoZSByZXNldAptYW51YWxseS4KCj4gPj4gKwo+ID4+ICsJc3Bpbl9sb2NrX2luaXQoJmNy
-eXB0b19pbmZvLT5sb2NrKTsKPiA+PiArCj4gPj4gKwlyZXMgPSBwbGF0Zm9ybV9nZXRfcmVzb3Vy
-Y2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ID4+ICsJY3J5cHRvX2luZm8tPnJlZyA9IGRl
-dm1faW9yZW1hcF9yZXNvdXJjZSgmcGRldi0+ZGV2LCByZXMpOwo+ID4+ICsJaWYgKElTX0VSUihj
-cnlwdG9faW5mby0+cmVnKSkgewo+ID4+ICsJCWVyciA9IFBUUl9FUlIoY3J5cHRvX2luZm8tPnJl
-Zyk7Cj4gPj4gKwkJZ290byBlcnJfaW9yZW1hcDsKPiA+PiArCX0KPiA+PiArCj4gPj4gKwljcnlw
-dG9faW5mby0+YWNsayA9IGRldm1fY2xrX2dldCgmcGRldi0+ZGV2LCAiYWNsayIpOwo+ID4+ICsJ
-aWYgKElTX0VSUihjcnlwdG9faW5mby0+YWNsaykpIHsKPiA+PiArCQllcnIgPSBQVFJfRVJSKGNy
-eXB0b19pbmZvLT5hY2xrKTsKPiA+PiArCQlnb3RvIGVycl9pb3JlbWFwOwo+ID4+ICsJfQo+ID4+
-ICsKPiA+PiArCWNyeXB0b19pbmZvLT5oY2xrID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYsICJo
-Y2xrIik7Cj4gPj4gKwlpZiAoSVNfRVJSKGNyeXB0b19pbmZvLT5oY2xrKSkgewo+ID4+ICsJCWVy
-ciA9IFBUUl9FUlIoY3J5cHRvX2luZm8tPmhjbGspOwo+ID4+ICsJCWdvdG8gZXJyX2lvcmVtYXA7
-Cj4gPj4gKwl9Cj4gPj4gKwo+ID4+ICsJY3J5cHRvX2luZm8tPnNjbGsgPSBkZXZtX2Nsa19nZXQo
-JnBkZXYtPmRldiwgInNjbGsiKTsKPiA+PiArCWlmIChJU19FUlIoY3J5cHRvX2luZm8tPnNjbGsp
-KSB7Cj4gPj4gKwkJZXJyID0gUFRSX0VSUihjcnlwdG9faW5mby0+c2Nsayk7Cj4gPj4gKwkJZ290
-byBlcnJfaW9yZW1hcDsKPiA+PiArCX0KPiA+PiArCj4gPj4gKwljcnlwdG9faW5mby0+ZG1hY2xr
-ID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYsICJhcGJfcGNsayIpOwo+ID4+ICsJaWYgKElTX0VS
-UihjcnlwdG9faW5mby0+ZG1hY2xrKSkgewo+ID4+ICsJCWVyciA9IFBUUl9FUlIoY3J5cHRvX2lu
-Zm8tPmRtYWNsayk7Cj4gPj4gKwkJZ290byBlcnJfaW9yZW1hcDsKPiA+PiArCX0KPiA+PiArCj4g
-Pj4gKwljcnlwdG9faW5mby0+aXJxID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPiA+PiAr
-CWlmIChjcnlwdG9faW5mby0+aXJxIDwgMCkgewo+ID4+ICsJCWRldl93YXJuKGNyeXB0b19pbmZv
-LT5kZXYsCj4gPj4gKwkJCSAiY29udHJvbCBJbnRlcnJ1cHQgaXMgbm90IGF2YWlsYWJsZS5cbiIp
-Owo+ID4+ICsJCWVyciA9IGNyeXB0b19pbmZvLT5pcnE7Cj4gPj4gKwkJZ290byBlcnJfaW9yZW1h
-cDsKPiA+PiArCX0KPiA+PiArCj4gPj4gKwllcnIgPSBkZXZtX3JlcXVlc3RfaXJxKCZwZGV2LT5k
-ZXYsIGNyeXB0b19pbmZvLT5pcnEsIGNyeXB0b19pcnFfaGFuZGxlLAo+ID4+ICsJCQkgICAgICAg
-SVJRRl9TSEFSRUQsICJyay1jcnlwdG8iLCBwZGV2KTsKPiA+IHlvdSBhcmUgZnJlZWluZyB0aGUg
-aXJxIG1hbnVhbGx5IGJlbG93IGFuZCBpbiBfcmVtb3ZlIHRvby4gQXMgaXQgc3RhbmRzCj4gPiB3
-aXRoIHB1dHRpbmcgdGhlIGlwIGJsb2NrIGluIHJlc2V0IGFnYWluIG9uIHJlbW92ZSB0aGlzIHNo
-b3VsZCBlaXRoZXIgbG9vc2UKPiA+IHRoZSBkZXZtXyBvciB5b3UgY291bGQgYWRkIGEgZGV2bV9h
-Y3Rpb24gdGhhdCBoYW5kbGVzIHRoZSByZXNldCBhc3NlcnQKPiA+IGxpa2UgaW4gWzBdIC0gcmVn
-aXN0ZXJpbmcgdGhlIGRldm1fYWN0aW9uIGFib3ZlIHdoZXJlIHRoZSByZXNldCBpcyBkb25lLgo+
-ID4gVGhhdCB3YXkgeW91IGNvdWxkIHJlYWxseSB1c2UgZGV2X3JlcXVlc3RfaXJxIGFuZCBsb29z
-ZSB0aGUgZnJlZV9pcnEKPiA+IGNhbGxzIGhlcmUgYW5kIGluIHJlbW92ZS4KPiA+Cj4gPiBbMF0g
-aHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTUvMTEvOC8xNTkKPiBJIG1hZGUgYSBtaXN0YWtlIGhl
-cmUuIEkgZGlkIG5vdCByZW1vdmUgZnJlZV9pcnEgd2hlbiB1c2luZwo+IGRldm1fcmVxdWVzdF9p
-cnEuCj4gCj4gQXMgSSBkbyBub3Qga29udyBlbm91Z2ggYWJvdXQgZGV2bV9hY3Rpb24gYW5kIHJl
-c2V0LWFzc2VydCAsIGNhbiBJCj4gcmVtb3ZlIGZyZWVfaXJxCj4gc2ltcGx5IGxpa2UgZHJpdmVy
-cy9pMmMvYnVzZXMvaTJjLXN1bjZpLXAyd2kuYyB1c2VkIGRldm1fcmVxdWVzdF9pcnEgYW5kCj4g
-cmVzZXRfYXNzZXJ0PwoKSSBkaWQgaW5zZXJ0IHN1aXRhYmxlIGNvZGUgb24gaG93IHRoYXQgY291
-bGQgbG9vayBhIGJpdCBhYm92ZSA6LSkKCj4gPgo+ID4gWy4uLl0KPiA+Cj4gPj4gK3N0YXRpYyBp
-bnQgcmtfY3J5cHRvX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ICt7
-Cj4gPj4gKwlzdHJ1Y3QgcmtfY3J5cHRvX2luZm8gKmNyeXB0b190bXAgPSBwbGF0Zm9ybV9nZXRf
-ZHJ2ZGF0YShwZGV2KTsKPiA+PiArCj4gPj4gKwlya19jcnlwdG9fdW5yZWdpc3RlcigpOwo+ID4+
-ICsJcmVzZXRfY29udHJvbF9hc3NlcnQoY3J5cHRvX3RtcC0+cnN0KTsKPiA+IG1haW5seSBteSBj
-b21tZW50IGZyb20gYWJvdmUgYXBwbGllcywgYnV0IGluIGFueSBjYXNlIHRoZSByZXNldC1hc3Nl
-cnQKPiA+IHNob3VsZCBkZWZpbml0bHkgaGFwcGVuIF9hZnRlcl8gdGhlIHRhc2tsZXQgaXMga2ls
-bGVkIGFuZCB0aGUgaXJxIGZyZWVkLAo+ID4gdG8gbWFrZSBzdXJlIG5vdGhpbmcgd2lsbCB3YW50
-IHRvIGFjY2VzcyBkZXZpY2UtcmVnaXN0ZXJzIGFueW1vcmUuCj4gPgo+ID4gW2Rldm0gd29ya3Mg
-c2VxdWVudGlhbGx5LCBzbyB0aGUgZGV2bV9hY3Rpb24gd291bGQgc29sdmUgdGhhdCBhdXRvbWF0
-aWNhbGx5XQo+IEFzIEkgc2FpZCBhYm92ZSwgaXQgc2VlbSB1bm5lY2Vzc2FyeSB0byBhZGQgZGV2
-bV9hY3Rpb24uCj4gCj4gQW5kIGlmIG1vZGlmaWNhdGlvbiBhYm92ZSBpcyBnb29kLCBJIHdpbGwg
-cHVzaCB0YXNrbGV0X2tpbGwgYmVmb3JlCj4gcmVzZXRfY29udHJvbF9hc3NlcnQgaW4gbmV4dCB2
-ZXJzaW9uLgoKSSdtIHVuc3VyZSAuLi4gYnV0IEkgZ3Vlc3MgaWYgeW91IG1vdmUgdGhlIHJlc2V0
-LWFzc2VydCBhZnRlciB0aGUKdGFza2xldF9raWxsIGl0IG1pZ2h0IGJlIG9rLgoKPiA+Cj4gPj4g
-Kwl0YXNrbGV0X2tpbGwoJmNyeXB0b190bXAtPmNyeXB0b190YXNrbGV0KTsKPiA+PiArCWZyZWVf
-aXJxKGNyeXB0b190bXAtPmlycSwgY3J5cHRvX3RtcCk7Cj4gPj4gKwo+ID4+ICsJcmV0dXJuIDA7
-Cj4gPj4gK30KPiA+IFsuLi5dCj4gPgo+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2NyeXB0by9y
-b2NrY2hpcC9yazMyODhfY3J5cHRvLmggYi9kcml2ZXJzL2NyeXB0by9yb2NrY2hpcC9yazMyODhf
-Y3J5cHRvLmgKPiA+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4+IGluZGV4IDAwMDAwMDAuLmI1
-Yjk0OWEKPiA+PiAtLS0gL2Rldi9udWxsCj4gPj4gKysrIGIvZHJpdmVycy9jcnlwdG8vcm9ja2No
-aXAvcmszMjg4X2NyeXB0by5oCj4gPj4gQEAgLTAsMCArMSwyMjAgQEAKPiA+PiArI2RlZmluZSBf
-U0JGKHYsIGYpCQkJKCh2KSA8PCAoZikpCj4gPiB5b3UgYXJlIHVzaW5nIHRoYXQgbWFjcm8gaW4g
-dGhpcyBoZWFkZXIgZm9yIHNpbXBsZSB2YWx1ZSBzaGlmdHMgbGlrZQo+ID4gCSNkZWZpbmUgUktf
-Q1lZUFRPX0hBU0hJTlNFTF9CTE9DS19DSVBIRVJfSU5QVVQJCV9TQkYoMHgwMSwgMCkKPiA+Cj4g
-PiBSZW1vdmluZyB0aGF0IG1hY3JvIGFuZCBkb2luZyB0aGUgc2hpZnQgcmVndWxhcmx5IHdpdGhv
-dXQgYW55IG1hY3JvLCBsaWtlCj4gPiAJI2RlZmluZSBSS19DWVlQVE9fSEFTSElOU0VMX0JMT0NL
-X0NJUEhFUl9JTlBVVAkJKDB4MDEgPDwgMCkKPiA+Cj4gPiAgd291bGQgaW1wcm92ZSBmdXR1cmUg
-cmVhZGFiaWxpdHksIGJlY2F1c2Ugbm93IHlvdSBuZWVkIHRvIGxvb2sgdXAgd2hhdAo+ID4gdGhl
-IG1hY3JvIGFjdHVhbGx5IGRvZXMgYW5kIHRoZSBfU0JGIG1hY3JvIGFsc28gZG9lcyBub3Qgc2lt
-cGxpZnkgYW55dGhpbmcuCj4gPiBBbHNvIHRoYXQgbmFtZSBpcyBxdWl0ZSBnZW5lcmljIHNvIG1h
-eSBjb25mbGljdCB3aXRoIHNvbWV0aGluZyBlbHNlIGVhc2lseS4KPiBPayEgRG9uZSEKPiA+ICBb
-Li4uXQo+ID4KPiA+PiArI2RlZmluZSBDUllQVE9fUkVBRChkZXYsIG9mZnNldCkJCSAgXAo+ID4+
-ICsJCXJlYWRsX3JlbGF4ZWQoKChkZXYpLT5yZWcgKyAob2Zmc2V0KSkpCj4gPj4gKyNkZWZpbmUg
-Q1JZUFRPX1dSSVRFKGRldiwgb2Zmc2V0LCB2YWwpCSAgXAo+ID4+ICsJCXdyaXRlbF9yZWxheGVk
-KCh2YWwpLCAoKGRldiktPnJlZyArIChvZmZzZXQpKSkKPiA+PiArLyogZ2V0IHJlZ2lzdGVyIHZp
-cnQgYWRkcmVzcyAqLwo+ID4+ICsjZGVmaW5lIENSWVBUT19HRVRfUkVHX1ZJUlQoZGV2LCBvZmZz
-ZXQpICAgKChkZXYpLT5yZWcgKyAob2Zmc2V0KSkKPiA+IHNhbWUgYXJndW1lbnQgYXMgYWJvdmUg
-YWJvdXQgcmVhZGFiaWxpdHkgb2YgdGhlIGNvZGUuIFdoYXQgZG8gdGhlc2UKPiA+IG1hY3JvcyBp
-bXByb3ZlIGZyb20ganVzdCBkb2luZyB0aGUgcmVhZGwgYW5kIHdyaXRlbCBjYWxscyBub3JtYWxs
-eT8KPiBJIGFtIHNvcnJ5IHRoYXQgdGhpcyBtYWNybyBpcyBkZWZpbmUgZm9yIGhhc2ggYW5kIG5v
-dCBiZSB1c2VkIGhlcmUuCj4gYmVjYXVzZSB0aGVyZSBhcmUgc29tZSBjb250aW51b3VzIHJlZ2lz
-dGVycyBpbiBoYXNoLAo+IEkgdGhpbmsgd2UgY2FuIHVzZSB0aGlzIG1hY3JvIHdpdGggbWVtY3B5
-IGxpa2UKPiAgICAgICAgIG91dHB1dCA9IENSWVBUT19HRVRfUkVHX1ZJUlQoZGV2LCBSS19DUllQ
-VE9fSEFTSF9ET1VUXzApOwo+ICAgICAgICAgbWVtY3B5KGRldi0+YWhhc2hfcmVxLT5yZXN1bHQs
-IG91dHB1dCwKPiBjcnlwdG9fYWhhc2hfZGlnZXN0c2l6ZSh0Zm0pKTsKPiBpbnN0ZWFkIG9mIG11
-bHRpcGxlIHJlYWRsLgo+IAo+IEkgd2lsbCByZW1vdmUgaXQgaW4gbmV4dCB2ZXJzaW9uIGFuZCBh
-ZGQgaXQgdG8gaGFzaCBwYXRjaCBsYXRlciBvbi4KCkkgYWN0dWFsbCBtZWFudCBhbGwgMyBvZiB0
-aG9zZSBtYWNyb3MgOi0pIC4uLiBhbGwgb2YgdGhlbSBqdXN0IGRpZ3Vpc2UKd2hhdCB0aGUgY29k
-ZSBhY3R1YWxseSBkb2VzLCBzbyBkb24ndCBwcm92aWRlIGFkZGl0aW9uYWwgdmFsdWUgb3Zlcgpq
-dXN0IHVzaW5nIHJlYWRsX3JlbGF4ZWQgZXRjIGRpcmVjdGx5LgoKCkhlaWtvCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+
+On 2015=E5=B9=B411=E6=9C=8815=E6=97=A5 06:41, Heiko Stuebner wrote:
+> Hi Zain,
+>
+> Am Freitag, 13. November 2015, 14:44:43 schrieb Zain:
+>> On 2015=E5=B9=B411=E6=9C=8812=E6=97=A5 20:32, Heiko Stuebner wrote:
+>>> Hi Zain,
+>>>
+>>> I was able to sucessfully test your crypto-driver, but have found s=
+ome
+>>> improvements below that should probably get looked at:
+>>>
+>>> Am Mittwoch, 11. November 2015, 14:35:58 schrieb Zain Wang:
+>>>> Crypto driver support:
+>>>>      ecb(aes) cbc(aes) ecb(des) cbc(des) ecb(des3_ede) cbc(des3_ed=
+e)
+>>>> You can alloc tags above in your case.
+>>>>
+>>>> And other algorithms and platforms will be added later on.
+>>>>
+>>>> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+>>>> ---
+>>> [...]
+>>>
+>>>> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/cry=
+pto/rockchip/rk3288_crypto.c
+>>>> new file mode 100644
+>>>> index 0000000..bb36baa
+>>>> --- /dev/null
+>>>> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
+>>>> @@ -0,0 +1,392 @@
+> [...]
+>
+> static void rk_crypto_action(void *data)
+> {
+> 	struct rk_crypto_info *crypto_info =3D data;
+>
+> 	reset_control_assert(crypto_info->rst);
+> }
+>
+>>>> +static int rk_crypto_probe(struct platform_device *pdev)
+>>>> +{
+>>>> +	struct resource *res;
+>>>> +	struct device *dev =3D &pdev->dev;
+>>>> +	struct rk_crypto_info *crypto_info;
+>>>> +	int err =3D 0;
+>>>> +
+>>>> +	crypto_info =3D devm_kzalloc(&pdev->dev,
+>>>> +				   sizeof(*crypto_info), GFP_KERNEL);
+>>>> +	if (!crypto_info) {
+>>>> +		err =3D -ENOMEM;
+>>>> +		goto err_crypto;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->rst =3D devm_reset_control_get(dev, "crypto-rst");
+>>>> +	if (IS_ERR(crypto_info->rst)) {
+>>>> +		err =3D PTR_ERR(crypto_info->rst);
+>>>> +		goto err_crypto;
+>>>> +	}
+>>>> +
+>>>> +	reset_control_assert(crypto_info->rst);
+>>>> +	usleep_range(10, 20);
+>>>> +	reset_control_deassert(crypto_info->rst);
+> 	err =3D devm_add_action(dev, rk_crypto_action, crypto_info);
+> 	if (err) {
+> 		reset_control_assert(crypto_info->rst);
+> 		return err;
+> 	}
+>
+> from here onwards the devm_action will always be executed when either
+> _probe fails, or after remove finishes, so no need to assert the rese=
+t
+> manually.
+I have known this function,
+rk_crypto_action will be executed next to either failed _probe, or
+_remove automatically.
+It also make sure reset_control_assert can be executed after tasklet_ki=
+ll.
+
+OK! Done!
+>
+>>>> +
+>>>> +	spin_lock_init(&crypto_info->lock);
+>>>> +
+>>>> +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>>>> +	crypto_info->reg =3D devm_ioremap_resource(&pdev->dev, res);
+>>>> +	if (IS_ERR(crypto_info->reg)) {
+>>>> +		err =3D PTR_ERR(crypto_info->reg);
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->aclk =3D devm_clk_get(&pdev->dev, "aclk");
+>>>> +	if (IS_ERR(crypto_info->aclk)) {
+>>>> +		err =3D PTR_ERR(crypto_info->aclk);
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->hclk =3D devm_clk_get(&pdev->dev, "hclk");
+>>>> +	if (IS_ERR(crypto_info->hclk)) {
+>>>> +		err =3D PTR_ERR(crypto_info->hclk);
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->sclk =3D devm_clk_get(&pdev->dev, "sclk");
+>>>> +	if (IS_ERR(crypto_info->sclk)) {
+>>>> +		err =3D PTR_ERR(crypto_info->sclk);
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->dmaclk =3D devm_clk_get(&pdev->dev, "apb_pclk");
+>>>> +	if (IS_ERR(crypto_info->dmaclk)) {
+>>>> +		err =3D PTR_ERR(crypto_info->dmaclk);
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	crypto_info->irq =3D platform_get_irq(pdev, 0);
+>>>> +	if (crypto_info->irq < 0) {
+>>>> +		dev_warn(crypto_info->dev,
+>>>> +			 "control Interrupt is not available.\n");
+>>>> +		err =3D crypto_info->irq;
+>>>> +		goto err_ioremap;
+>>>> +	}
+>>>> +
+>>>> +	err =3D devm_request_irq(&pdev->dev, crypto_info->irq, crypto_ir=
+q_handle,
+>>>> +			       IRQF_SHARED, "rk-crypto", pdev);
+>>> you are freeing the irq manually below and in _remove too. As it st=
+ands
+>>> with putting the ip block in reset again on remove this should eith=
+er loose
+>>> the devm_ or you could add a devm_action that handles the reset ass=
+ert
+>>> like in [0] - registering the devm_action above where the reset is =
+done.
+>>> That way you could really use dev_request_irq and loose the free_ir=
+q
+>>> calls here and in remove.
+>>>
+>>> [0] https://lkml.org/lkml/2015/11/8/159
+>> I made a mistake here. I did not remove free_irq when using
+>> devm_request_irq.
+>>
+>> As I do not konw enough about devm_action and reset-assert , can I
+>> remove free_irq
+>> simply like drivers/i2c/buses/i2c-sun6i-p2wi.c used devm_request_irq=
+ and
+>> reset_assert?
+> I did insert suitable code on how that could look a bit above :-)
+Thanks, done!
+>
+>>> [...]
+>>>
+>>>> +static int rk_crypto_remove(struct platform_device *pdev)
+>>>> +{
+>>>> +	struct rk_crypto_info *crypto_tmp =3D platform_get_drvdata(pdev)=
+;
+>>>> +
+>>>> +	rk_crypto_unregister();
+>>>> +	reset_control_assert(crypto_tmp->rst);
+>>> mainly my comment from above applies, but in any case the reset-ass=
+ert
+>>> should definitly happen _after_ the tasklet is killed and the irq f=
+reed,
+>>> to make sure nothing will want to access device-registers anymore.
+>>>
+>>> [devm works sequentially, so the devm_action would solve that autom=
+atically]
+>> As I said above, it seem unnecessary to add devm_action.
+>>
+>> And if modification above is good, I will push tasklet_kill before
+>> reset_control_assert in next version.
+> I'm unsure ... but I guess if you move the reset-assert after the
+> tasklet_kill it might be ok.
+I guess I can remove it if I added code you provided above since
+reset-assert will be
+executed after _remove by rk_crypto_action.
+>
+>>>> +	tasklet_kill(&crypto_tmp->crypto_tasklet);
+>>>> +	free_irq(crypto_tmp->irq, crypto_tmp);
+>>>> +
+>>>> +	return 0;
+>>>> +}
+>>> [...]
+>>>
+>>>> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/cry=
+pto/rockchip/rk3288_crypto.h
+>>>> new file mode 100644
+>>>> index 0000000..b5b949a
+>>>> --- /dev/null
+>>>> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
+>>>> @@ -0,0 +1,220 @@
+>>>> +#define _SBF(v, f)			((v) << (f))
+>>> you are using that macro in this header for simple value shifts lik=
+e
+>>> 	#define RK_CYYPTO_HASHINSEL_BLOCK_CIPHER_INPUT		_SBF(0x01, 0)
+>>>
+>>> Removing that macro and doing the shift regularly without any macro=
+, like
+>>> 	#define RK_CYYPTO_HASHINSEL_BLOCK_CIPHER_INPUT		(0x01 << 0)
+>>>
+>>>  would improve future readability, because now you need to look up =
+what
+>>> the macro actually does and the _SBF macro also does not simplify a=
+nything.
+>>> Also that name is quite generic so may conflict with something else=
+ easily.
+>> Ok! Done!
+>>>  [...]
+>>>
+>>>> +#define CRYPTO_READ(dev, offset)		  \
+>>>> +		readl_relaxed(((dev)->reg + (offset)))
+>>>> +#define CRYPTO_WRITE(dev, offset, val)	  \
+>>>> +		writel_relaxed((val), ((dev)->reg + (offset)))
+>>>> +/* get register virt address */
+>>>> +#define CRYPTO_GET_REG_VIRT(dev, offset)   ((dev)->reg + (offset)=
+)
+>>> same argument as above about readability of the code. What do these
+>>> macros improve from just doing the readl and writel calls normally?
+>> I am sorry that this macro is define for hash and not be used here.
+>> because there are some continuous registers in hash,
+>> I think we can use this macro with memcpy like
+>>         output =3D CRYPTO_GET_REG_VIRT(dev, RK_CRYPTO_HASH_DOUT_0);
+>>         memcpy(dev->ahash_req->result, output,
+>> crypto_ahash_digestsize(tfm));
+>> instead of multiple readl.
+>>
+>> I will remove it in next version and add it to hash patch later on.
+> I actuall meant all 3 of those macros :-) ... all of them just diguis=
+e
+> what the code actually does, so don't provide additional value over
+> just using readl_relaxed etc directly.
+Right.
+
+Thanks
+Zain
