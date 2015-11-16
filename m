@@ -1,82 +1,61 @@
-From: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Mon, 16 Nov 2015 13:26:09 +0100
-Message-ID: <5649CB61.9090201@st.com>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+From: Daniel Stone <daniels@collabora.com>
+Subject: [PATCH 2/2] drm/rockchip: Send events for same-fb flips
+Date: Mon, 16 Nov 2015 12:50:22 +0000
+Message-ID: <1447678222-6858-2-git-send-email-daniels@collabora.com>
+References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene@kern>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447678222-6858-1-git-send-email-daniels@collabora.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: mark.yao@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
-
-On 11/16/2015 04:06 AM, Masahiro Yamada wrote:
-> Many ARM sub-architectures use prompts followed by "if" conditional,
-> but it is wrong.
->
-> Please notice the difference between
->
->      config ARCH_FOO
->              bool "Foo SoCs" if ARCH_MULTI_V7
->
-> and
->
->      config ARCH_FOO
->              bool "Foo SoCs"
->              depends on ARCH_MULTI_V7
->
-> These two are *not* equivalent!
->
-> In the former statement, it is not ARCH_FOO, but its prompt that
-> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
-> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
-> not unmet dependency, Kconfig never warns.  This is probably not what
-> you want.
->
-> The former should be used only when you need to do so, and you really
-> understand what you are doing.  (In most cases, it should be wrong!)
->
-> For enabling/disabling sub-architectures, the latter is always correct.
->
-> As a good side effect, this commit fixes some entries over 80 columns
-> (mach-imx, mach-integrator, mach-mbevu).
->
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
->
-> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
-> because the correct understanding of Kconfig is required for this patch.
-[...]
->
-> diff --git a/arch/arm/mach-sti/Kconfig b/arch/arm/mach-sti/Kconfig
-> index 125865d..736abe6 100644
-> --- a/arch/arm/mach-sti/Kconfig
-> +++ b/arch/arm/mach-sti/Kconfig
-> @@ -1,5 +1,6 @@
->   menuconfig ARCH_STI
-> -	bool "STMicroelectronics Consumer Electronics SOCs" if ARCH_MULTI_V7
-> +	bool "STMicroelectronics Consumer Electronics SOCs"
-> +	depends on ARCH_MULTI_V7
->   	select ARM_GIC
->   	select ST_IRQCHIP
->   	select ARM_GLOBAL_TIMER
->
-For STI part:
-
-Acked-by: Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>
-
-Thanks
+Um9ja2NoaXAgcHJldmlvdXNseSB0cmVhdGVkIGEgcGFnZWZsaXAgdG8gdGhlIHNhbWUgZnJhbWVi
+dWZmZXIgYXMgYQpuby1vcCwgZGlzY2FyZGluZyB0aGUgZXZlbnQgaWYgb25lIHdhcyByZXF1ZXN0
+ZWQuIFRoaXMgYnJlYWtzIFdlc3RvbiwKd2hpY2gsIHdoZW4gaWRsZSwgc2VuZHMgYSBuby1vcCB2
+YmxhbmsgZXZlbnQgdG8gZGlzY292ZXIgdmJsYW5rCnRpbWluZ3MgaWYgdGhlIHZibGFuayBxdWVy
+eSBpbnRlcmZhY2UgaXMgbm90IHVzYWJsZS4KClNpbGVudGx5IGRyb3BwaW5nIGV2ZW50cyBpcyBh
+bHNvIHF1aXRlIGEgaG9zdGlsZSB0aGluZyB0byBkbyB0bwp1c2Vyc3BhY2UgaW4gZ2VuZXJhbC4K
+ClNpZ25lZC1vZmYtYnk6IERhbmllbCBTdG9uZSA8ZGFuaWVsc0Bjb2xsYWJvcmEuY29tPgpDYzog
+U2pvZXJkIFNpbW9ucyA8c2pvZXJkLnNpbW9uc0Bjb2xsYWJvcmEuY28udWs+CkNjOiBIZWlrbyBT
+dHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fdm9wLmMgfCAzMCArKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLQogMSBm
+aWxlIGNoYW5nZWQsIDE0IGluc2VydGlvbnMoKyksIDE2IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IGRkZjZkYzIuLmRhZDYw
+N2UgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAt
+OTE2LDI1ICs5MTYsMjMgQEAgc3RhdGljIGludCB2b3BfdXBkYXRlX3BsYW5lX2V2ZW50KHN0cnVj
+dCBkcm1fcGxhbmUgKnBsYW5lLAogCSAqIHVucmVmZXJlbmNlIGFueSBwcmV2aW91cyBmcmFtZWJ1
+ZmZlcnMuCiAJICovCiAJbXV0ZXhfbG9jaygmdm9wLT52c3luY19tdXRleCk7Ci0JaWYgKGZiICE9
+IHZvcF93aW5fbGFzdF9wZW5kaW5nX2ZiKHZvcF93aW4pKSB7Ci0JCXJldCA9IGRybV92Ymxhbmtf
+Z2V0KHBsYW5lLT5kZXYsIHZvcC0+cGlwZSk7Ci0JCWlmIChyZXQpIHsKLQkJCURSTV9FUlJPUigi
+ZmFpbGVkIHRvIGdldCB2YmxhbmssICVkXG4iLCByZXQpOwotCQkJbXV0ZXhfdW5sb2NrKCZ2b3At
+PnZzeW5jX211dGV4KTsKLQkJCXJldHVybiByZXQ7Ci0JCX0KKwlyZXQgPSBkcm1fdmJsYW5rX2dl
+dChwbGFuZS0+ZGV2LCB2b3AtPnBpcGUpOworCWlmIChyZXQpIHsKKwkJRFJNX0VSUk9SKCJmYWls
+ZWQgdG8gZ2V0IHZibGFuaywgJWRcbiIsIHJldCk7CisJCW11dGV4X3VubG9jaygmdm9wLT52c3lu
+Y19tdXRleCk7CisJCXJldHVybiByZXQ7CisJfQogCi0JCWRybV9mcmFtZWJ1ZmZlcl9yZWZlcmVu
+Y2UoZmIpOworCWRybV9mcmFtZWJ1ZmZlcl9yZWZlcmVuY2UoZmIpOwogCi0JCXJldCA9IHZvcF93
+aW5fcXVldWVfZmIodm9wX3dpbiwgZmIsIHlyZ2JfbXN0LCBldmVudCk7Ci0JCWlmIChyZXQpIHsK
+LQkJCWRybV92YmxhbmtfcHV0KHBsYW5lLT5kZXYsIHZvcC0+cGlwZSk7Ci0JCQltdXRleF91bmxv
+Y2soJnZvcC0+dnN5bmNfbXV0ZXgpOwotCQkJcmV0dXJuIHJldDsKLQkJfQotCi0JCXZvcC0+dnN5
+bmNfd29ya19wZW5kaW5nID0gdHJ1ZTsKKwlyZXQgPSB2b3Bfd2luX3F1ZXVlX2ZiKHZvcF93aW4s
+IGZiLCB5cmdiX21zdCwgZXZlbnQpOworCWlmIChyZXQpIHsKKwkJZHJtX3ZibGFua19wdXQocGxh
+bmUtPmRldiwgdm9wLT5waXBlKTsKKwkJbXV0ZXhfdW5sb2NrKCZ2b3AtPnZzeW5jX211dGV4KTsK
+KwkJcmV0dXJuIHJldDsKIAl9CisKKwl2b3AtPnZzeW5jX3dvcmtfcGVuZGluZyA9IHRydWU7CiAJ
+bXV0ZXhfdW5sb2NrKCZ2b3AtPnZzeW5jX211dGV4KTsKIAogCXNwaW5fbG9jaygmdm9wLT5yZWdf
+bG9jayk7Ci0tIAoyLjUuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
