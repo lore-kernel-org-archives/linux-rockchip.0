@@ -1,165 +1,109 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/2] usb: dwc2: host: Fix missing device insertions
-Date: Mon, 16 Nov 2015 10:13:36 -0800
-Message-ID: <CAD=FV=U7L-=C5rv+YTQV91kXpieRGA8MpAU+qaXzw_0xYUOXJw@mail.gmail.com>
-References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
-	<87y4dxltzi.fsf@saruman.tx.rr.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH v4 02/24] pwm: use pwm_get_xxx() helpers where
+ appropriate
+Date: Mon, 16 Nov 2015 19:06:46 +0100
+Message-ID: <20151116190646.1d5ba16e@bbrezillon>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1447664207-24370-3-git-send-email-boris.brezillon@free-electrons.com>
+	<CAGhQ9VwEuwazF5Kdw=9R60EovVoiwen6fXiVjL+=EddXPYVGAg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87y4dxltzi.fsf@saruman.tx.rr.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <balbi@ti.com>
-Cc: John Youn <John.Youn@synopsys.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <CAGhQ9VwEuwazF5Kdw=9R60EovVoiwen6fXiVjL+=EddXPYVGAg@mail.gmail.com>
+Sender: linux-input-owner@vger.kernel.org
+To: Joachim Eastwood <manabian@gmail.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Felipe,
+Hi Joachim,
 
-On Mon, Nov 16, 2015 at 9:44 AM, Felipe Balbi <balbi@ti.com> wrote:
->>  extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
->>  #else
->>  static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
->>  { return 0; }
->> -static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
->> +static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
->> +static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
->>  static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
->>  static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
->>  static inline int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
->> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
->> index 27daa42788b1..61601d16e233 100644
->> --- a/drivers/usb/dwc2/core_intr.c
->> +++ b/drivers/usb/dwc2/core_intr.c
->> @@ -239,7 +239,7 @@ static void dwc2_handle_otg_intr(struct dwc2_hsotg *hsotg)
->>                       dev_dbg(hsotg->dev, "a_suspend->a_peripheral (%d)\n",
->>                               hsotg->op_state);
->>                       spin_unlock(&hsotg->lock);
->> -                     dwc2_hcd_disconnect(hsotg);
->> +                     dwc2_hcd_disconnect(hsotg, false);
->
-> because force is unnecessary (it seems to be just an optimization to
-> me), this change is unnecessary.
+On Mon, 16 Nov 2015 18:46:44 +0100
+Joachim  Eastwood <manabian@gmail.com> wrote:
 
-I added "force" in v2 of the patch in response to John's feedback to
-v1.  He pointed out that when you unload the module when you have a
-device connected that my v1 patch would not properly disconnect the
-device (or, rather, it would disconnect it and then reconnect it).
+> Hi Boris
+> 
+> (Adding Ariel for pwm-lpc18xx-sct)
+> 
+> On 16 November 2015 at 09:56, Boris Brezillon
+> <boris.brezillon@free-electrons.com> wrote:
+> > Use pwm_get_xxx() helpers instead of directly accessing the pwm->xxx field.
+> > Doing that will ease adaptation of the PWM framework to support atomic
+> > update.
+> >
+> > Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> > ---
+> > Patch generated with the following coccinelle script:
+> >
+> > --->8---
+> > virtual patch
+> >
+> > @@
+> > struct pwm_device *p;
+> > expression e;
+> > @@
+> > (
+> > -(p)->polarity = e;
+> > +pwm_set_polarity((p), e);
+> > |
+> > -(p)->polarity
+> > +pwm_get_polarity((p))
+> > |
+> > -(p)->period = e;
+> > +pwm_set_period((p), e);
+> > |
+> > -(p)->period
+> > +pwm_get_period((p))
+> > |
+> > -(p)->duty_cycle = e;
+> > +pwm_set_duty_cycle((p), e);
+> > |
+> > -(p)->duty_cycle
+> > +pwm_get_duty_cycle((p))
+> > )
+> > --->8---
+> > ---
+> >  drivers/pwm/pwm-crc.c         | 2 +-
+> >  drivers/pwm/pwm-lpc18xx-sct.c | 2 +-
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/pwm/pwm-crc.c b/drivers/pwm/pwm-crc.c
+> > index 7101c70..2f88543 100644
+> > --- a/drivers/pwm/pwm-crc.c
+> > +++ b/drivers/pwm/pwm-crc.c
+> > @@ -75,7 +75,7 @@ static int crc_pwm_config(struct pwm_chip *c, struct pwm_device *pwm,
+> >                 return -EINVAL;
+> >         }
+> >
+> > -       if (pwm->period != period_ns) {
+> > +       if (pwm_get_period((pwm)) != period_ns) {
+> >                 int clk_div;
+> >
+> >                 /* changing the clk divisor, need to disable fisrt */
+> > diff --git a/drivers/pwm/pwm-lpc18xx-sct.c b/drivers/pwm/pwm-lpc18xx-sct.c
+> > index 9163085..091fa13 100644
+> > --- a/drivers/pwm/pwm-lpc18xx-sct.c
+> > +++ b/drivers/pwm/pwm-lpc18xx-sct.c
+> > @@ -249,7 +249,7 @@ static int lpc18xx_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
+> >                            LPC18XX_PWM_EVSTATEMSK(lpc18xx_data->duty_event),
+> >                            LPC18XX_PWM_EVSTATEMSK_ALL);
+> >
+> > -       if (pwm->polarity == PWM_POLARITY_NORMAL) {
+> > +       if (pwm_get_polarity((pwm)) == PWM_POLARITY_NORMAL) {
+> 
+> What is the deal with the double parentheses?
+> 
+> Think I saw that in some of the other patches as well.
 
-That's why _dwc2_hcd_stop() calls dwc2_hcd_disconnect() with a force of "true".
+It comes from a typo in my coccinelle script. I already fixed it and
+regenerated the faulty patches, so please ignore this aspect while
+reviewing (this will be addressed in the next version).
 
+Thanks,
 
->>  /**
->> + * dwc2_hcd_connect() - Handles connect of the HCD
->> + *
->> + * @hsotg: Pointer to struct dwc2_hsotg
->> + *
->> + * Must be called with interrupt disabled and spinlock held
->> + */
->> +void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
->> +{
->> +     if (hsotg->lx_state != DWC2_L0)
->> +             usb_hcd_resume_root_hub(hsotg->priv);
->> +
->> +     hsotg->flags.b.port_connect_status_change = 1;
->> +     hsotg->flags.b.port_connect_status = 1;
->> +}
->
-> you make no mention of why this is needed. This is basically a refactor,
-> not a fix.
+Boris
 
-This new function is called from two places now, isn't it?
-
-Basically this is a little bit of code that used to be directly in
-dwc2_port_intr().  I still want it there, but I also want to call the
-same bit of code after a disconnect if I detect that the device has
-been inserted again.
-
-
->> @@ -315,6 +333,24 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->>               dwc2_hcd_cleanup_channels(hsotg);
->>
->>       dwc2_host_disconnect(hsotg);
->> +
->> +     /*
->> +      * Add an extra check here to see if we're actually connected but
->> +      * we don't have a detection interrupt pending.  This can happen if:
->> +      *   1. hardware sees connect
->> +      *   2. hardware sees disconnect
->> +      *   3. hardware sees connect
->> +      *   4. dwc2_port_intr() - clears connect interrupt
->> +      *   5. dwc2_handle_common_intr() - calls here
->> +      *
->> +      * Without the extra check here we will end calling disconnect
->> +      * and won't get any future interrupts to handle the connect.
->> +      */
->> +     if (!force) {
->> +             hprt0 = dwc2_readl(hsotg->regs + HPRT0);
->> +             if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
->> +                     dwc2_hcd_connect(hsotg);
->
-> what's inside this 'force' branch is what you really need to fix the
-> problem, right ? It seems like for the -rc cycle, all you need is:
->
-> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-> index 571c21727ff9..967d1e686efe 100644
-> --- a/drivers/usb/dwc2/hcd.c
-> +++ b/drivers/usb/dwc2/hcd.c
-> @@ -276,6 +276,7 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
->   */
->  void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->  {
-> +       u32 hprt0;
->         u32 intr;
->
->         /* Set status flags for the hub driver */
-> @@ -315,6 +316,15 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
->                 dwc2_hcd_cleanup_channels(hsotg);
->
->         dwc2_host_disconnect(hsotg);
-> +
-> +       hprt0 = dwc2_readl(hsotg->regs + HPRT0);
-> +       if (!(hprt0 & (HPRT0_CONNDET | HPRT0_CONNSTS))) {
-> +               if (hsotg->lx_state != DWC2_L0)
-> +                       usb_hcd_resume_roothub(hsotg->priv);
-> +
-> +               hsotg->flags.b.port_connect_status_change = 1;
-> +               hsotg->flags.b.port_connect_status = 1;
-> +       }
-
-I'd really rather not add the duplication unless you insist.  To me it
-makes it clearer to include the (small) refactor in the same patch.
-
-If the refactor makes this change too big for an RC, then it's OK with
-me to just skip this for the RC.  It's not fixing a regression or
-anything.  I have no requirements to have this land in 4.4.  It fixes
-a bug and I thought that the fix was pretty small and safe (despite
-having a diffstat that's bigger than the bare minimum).  I will leave
-it to your judgement.
-
-
->> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
->> index bda0b21b850f..03504ac2fecc 100644
->> --- a/drivers/usb/dwc2/hcd_intr.c
->> +++ b/drivers/usb/dwc2/hcd_intr.c
->> @@ -350,11 +350,7 @@ static void dwc2_port_intr(struct dwc2_hsotg *hsotg)
->>               dev_vdbg(hsotg->dev,
->>                        "--Port Interrupt HPRT0=0x%08x Port Connect Detected--\n",
->>                        hprt0);
->> -             if (hsotg->lx_state != DWC2_L0)
->> -                     usb_hcd_resume_root_hub(hsotg->priv);
->> -
->> -             hsotg->flags.b.port_connect_status_change = 1;
->> -             hsotg->flags.b.port_connect_status = 1;
->> +             dwc2_hcd_connect(hsotg);
->
-> unnecessary change.
->
-> Do you agree  or do you think 'force' is really necessary for this fix ?
-
-As per above, John thought it was a good idea to really make the
-disconnect happen upon module unload.  If you disagree then we could
-probably just totally remove the "dwc2_hcd_disconnect(hsotg);" from
-the _dwc2_hcd_stop() function.
-
-
--Doug
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
