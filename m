@@ -1,113 +1,152 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [RESEND PATCH] drm/rockchip: import dma_buf to gem
-Date: Mon, 16 Nov 2015 17:25:47 +0100
-Message-ID: <20151116162547.GE16848@phenom.ffwll.local>
-References: <1447146717-11423-1-git-send-email-mark.yao@rock-chips.com>
+From: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] usb: dwc2: host: Clear interrupts before handling
+ them
+Date: Mon, 16 Nov 2015 10:28:25 -0600
+Message-ID: <87wpthnc2e.fsf@saruman.tx.rr.com>
+References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
+ <1446582629-30091-2-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1447146717-11423-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Russell King <linux@arm.linux.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============6506695318595091429=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446582629-30091-2-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBOb3YgMTAsIDIwMTUgYXQgMDU6MTE6NTdQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-Cj4gV2Ugd2FudCB0byBkaXNwbGF5IGEgYnVmZmVyIGFsbG9jYXRlZCBieSBvdGhlciBkcml2ZXIs
-IG5lZWQgaW1wb3J0Cj4gdGhlIGJ1ZmZlciB0byBnZW0uCgpEb2VzIHRoaXMgd29yayB3aXRoIHNv
-bWUgb3Blbi1zb3VyY2UgZHJpdmVyL3VzZXJzcGFjZSBvciBpcyB0aGlzIGZvciB0aGUKcHJvcHJp
-ZXRhcnkgc3RhY2sgb25seT8gQSBiaXQgYSBncmV5IGFyZWEgSSBndWVzcywgYnV0IGlmIGl0J3Mg
-b25seSBmb3IKdGhlIHByb3ByaWV0YXJ5IHN0YWNrIEkgdGhpbmsgaXQgc2hvdWxkbid0IGxhbmQg
-aW4gdXBzdHJlYW0gLSBtYWtpbmcgc3VyZQppdCB3b3JrcyB3aXRoIG9wZW4tc291cmNlIChlLmcu
-IFhvcmcgcHJpbWUpIGZpcnN0IHdvdWxkIGJlIGdvb2QuCi1EYW5pZWwKCj4gCj4gU2lnbmVkLW9m
-Zi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+IENoYW5nZXMg
-aW4gcmVzZW5kOgo+IC0gcmViYXNlIHRvIHRoaXMgcGF0Y2ggdG8gbmV3ZXN0IG9yaWdpbi9kcm0t
-bmV4dCA0LjMtcmM1Cj4gQ2hhbmdlcyBpbiB2MjoKPiBBZHZpY2VkIGJ5IFJ1c3NlbGwgS2luZwo+
-IC0gY2hlY2sgc2d0LW5lbnRzID09IDEgd2hlbiBnZXQgaW92YSBmcm9tIHNjYXR0ZXJsaXN0Cj4g
-LSByZW1vdmUgdW51c2VkIGRtYV9tYXBfc2cvZG1hX3VubWFwX3NnLCBkbWFfYnVmX21hcF9hdHRh
-Y2htZW50LT5tYXBfZG1hX2J1Zgo+ICAgc2hvdWxkIGRvIHRoZSBkbWFfbWFwCj4gCj4gIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAgICAxICsKPiAgZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8ICAgNDAgKysrKysrKysrKysr
-KysrKysrKysrKysrKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-Z2VtLmggfCAgICA1ICsrKy0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNlcnRpb25zKCspLCA0
-IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9kcnYuYwo+IGluZGV4IGYyMmUxZTEuLmVhNWIxOWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBAQCAtMjkwLDYgKzI5MCw3IEBAIHN0YXRp
-YyBzdHJ1Y3QgZHJtX2RyaXZlciByb2NrY2hpcF9kcm1fZHJpdmVyID0gewo+ICAJLnByaW1lX2hh
-bmRsZV90b19mZAk9IGRybV9nZW1fcHJpbWVfaGFuZGxlX3RvX2ZkLAo+ICAJLnByaW1lX2ZkX3Rv
-X2hhbmRsZQk9IGRybV9nZW1fcHJpbWVfZmRfdG9faGFuZGxlLAo+ICAJLmdlbV9wcmltZV9pbXBv
-cnQJPSBkcm1fZ2VtX3ByaW1lX2ltcG9ydCwKPiArCS5nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxl
-ID0gcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZSwKPiAgCS5nZW1fcHJpbWVfZXhw
-b3J0CT0gZHJtX2dlbV9wcmltZV9leHBvcnQsCj4gIAkuZ2VtX3ByaW1lX2dldF9zZ190YWJsZQk9
-IHJvY2tjaGlwX2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCj4gIAkuZ2VtX3ByaW1lX3ZtYXAJCT0g
-cm9ja2NoaXBfZ2VtX3ByaW1lX3ZtYXAsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX2dlbS5jCj4gaW5kZXggOGNhZWEwYS4uMWM5NGEzMCAxMDA2NDQKPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCj4gKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IEBAIC0xOCw2ICsxOCw3IEBA
-Cj4gICNpbmNsdWRlIDxkcm0vZHJtX3ZtYV9tYW5hZ2VyLmg+Cj4gIAo+ICAjaW5jbHVkZSA8bGlu
-dXgvZG1hLWF0dHJzLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9kbWEtYnVmLmg+Cj4gIAo+ICAjaW5j
-bHVkZSAicm9ja2NoaXBfZHJtX2Rydi5oIgo+ICAjaW5jbHVkZSAicm9ja2NoaXBfZHJtX2dlbS5o
-Igo+IEBAIC0xMDMsNiArMTA0LDM2IEBAIGludCByb2NrY2hpcF9nZW1fbW1hcChzdHJ1Y3QgZmls
-ZSAqZmlscCwgc3RydWN0IHZtX2FyZWFfc3RydWN0ICp2bWEpCj4gIAlyZXR1cm4gcm9ja2NoaXBf
-ZHJtX2dlbV9vYmplY3RfbW1hcChvYmosIHZtYSk7Cj4gIH0KPiAgCj4gK3N0cnVjdCBkcm1fZ2Vt
-X29iamVjdCAqCj4gK3JvY2tjaGlwX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFibGUoc3RydWN0IGRy
-bV9kZXZpY2UgKmRybSwKPiArCQkJCSAgIHN0cnVjdCBkbWFfYnVmX2F0dGFjaG1lbnQgKmF0dGFj
-aCwKPiArCQkJCSAgIHN0cnVjdCBzZ190YWJsZSAqc2d0KQo+ICt7Cj4gKwlzdHJ1Y3Qgcm9ja2No
-aXBfZ2VtX29iamVjdCAqcmtfb2JqOwo+ICsJc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmo7Cj4g
-Kwo+ICsJLyoKPiArCSAqIFRvZG86IG9ubHkgc3VwcG9ydCBjb250aW51b3VzIGJ1ZmZlciBub3cs
-IHBsYW4gdG8gZm91bmQgYSBtZXRob2QKPiArCSAqIHRvIGltcG9ydCBub24gY29udGludW91cyB3
-aXRoIGlvbW11Lgo+ICsJICovCj4gKwlpZiAoc2d0LT5uZW50cyAhPSAxKQo+ICsJCXJldHVybiBF
-UlJfUFRSKC1FSU5WQUwpOwo+ICsKPiArCXJrX29iaiA9IGt6YWxsb2Moc2l6ZW9mKCpya19vYmop
-LCBHRlBfS0VSTkVMKTsKPiArCWlmICghcmtfb2JqKQo+ICsJCXJldHVybiBFUlJfUFRSKC1FTk9N
-RU0pOwo+ICsKPiArCW9iaiA9ICZya19vYmotPmJhc2U7Cj4gKwo+ICsJZHJtX2dlbV9wcml2YXRl
-X29iamVjdF9pbml0KGRybSwgb2JqLCBhdHRhY2gtPmRtYWJ1Zi0+c2l6ZSk7Cj4gKwo+ICsJcmtf
-b2JqLT5kbWFfYWRkciA9IHNnX2RtYV9hZGRyZXNzKHNndC0+c2dsKTsKPiArCXJrX29iai0+c2d0
-ID0gc2d0Owo+ICsJb2JqLT5zaXplID0gc2dfZG1hX2xlbihzZ3QtPnNnbCk7Cj4gKwo+ICsJcmV0
-dXJuIG9iajsKPiArfQo+ICsKPiAgc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKgo+ICAJcm9j
-a2NoaXBfZ2VtX2NyZWF0ZV9vYmplY3Qoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgdW5zaWduZWQg
-aW50IHNpemUsCj4gIAkJCQkgICBib29sIGFsbG9jX2ttYXApCj4gQEAgLTE0MCwxMSArMTcxLDE0
-IEBAIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
-b2JqKQo+ICB7Cj4gIAlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqOwo+ICAKPiAt
-CWRybV9nZW1fZnJlZV9tbWFwX29mZnNldChvYmopOwo+IC0KPiAgCXJrX29iaiA9IHRvX3JvY2tj
-aGlwX29iaihvYmopOwo+ICAKPiAtCXJvY2tjaGlwX2dlbV9mcmVlX2J1Zihya19vYmopOwo+ICsJ
-aWYgKG9iai0+aW1wb3J0X2F0dGFjaCkgewo+ICsJCWRybV9wcmltZV9nZW1fZGVzdHJveShvYmos
-IHJrX29iai0+c2d0KTsKPiArCX0gZWxzZSB7Cj4gKwkJZHJtX2dlbV9mcmVlX21tYXBfb2Zmc2V0
-KG9iaik7Cj4gKwkJcm9ja2NoaXBfZ2VtX2ZyZWVfYnVmKHJrX29iaik7Cj4gKwl9Cj4gIAo+ICAJ
-a2ZyZWUocmtfb2JqKTsKPiAgfQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2dlbS5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9nZW0uaAo+IGluZGV4IGFkMjI2MTguLjlmZDU4ZTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uaAo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmgKPiBAQCAtMjEsNiArMjEsNyBAQCBzdHJ1
-Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCB7Cj4gIAlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgYmFzZTsK
-PiAgCXVuc2lnbmVkIGludCBmbGFnczsKPiAgCj4gKwlzdHJ1Y3Qgc2dfdGFibGUgKnNndDsKPiAg
-CXZvaWQgKmt2YWRkcjsKPiAgCWRtYV9hZGRyX3QgZG1hX2FkZHI7Cj4gIAlzdHJ1Y3QgZG1hX2F0
-dHJzIGRtYV9hdHRyczsKPiBAQCAtMjgsOCArMjksMTAgQEAgc3RydWN0IHJvY2tjaGlwX2dlbV9v
-YmplY3Qgewo+ICAKPiAgc3RydWN0IHNnX3RhYmxlICpyb2NrY2hpcF9nZW1fcHJpbWVfZ2V0X3Nn
-X3RhYmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKPiAgc3RydWN0IGRybV9nZW1fb2Jq
-ZWN0ICoKPiAtcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190YWJsZShzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZGV2LCBzaXplX3Qgc2l6ZSwKPiArcm9ja2NoaXBfZ2VtX3ByaW1lX2ltcG9ydF9zZ190
-YWJsZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+ICsJCQkJICAgc3RydWN0IGRtYV9idWZfYXR0
-YWNobWVudCAqYXR0YWNoLAo+ICAJCQkJICAgc3RydWN0IHNnX3RhYmxlICpzZ3QpOwo+ICsKPiAg
-dm9pZCAqcm9ja2NoaXBfZ2VtX3ByaW1lX3ZtYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmop
-Owo+ICB2b2lkIHJvY2tjaGlwX2dlbV9wcmltZV92dW5tYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0
-ICpvYmosIHZvaWQgKnZhZGRyKTsKPiAgCj4gLS0gCj4gMS43LjkuNQo+IAo+IAo+IF9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxp
-bmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCgotLSAKRGFuaWVsIFZl
-dHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3
-bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+--===============6506695318595091429==
+Content-Type: multipart/signed; boundary="=-=-="; micalg=pgp-sha1;
+	protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+
+Hi,
+
+Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+> In general it is wise to clear interrupts before processing them.  If
+> you don't do that, you can get:
+>  1. Interrupt happens
+>  2. You look at system state and process interrupt
+>  3. A new interrupt happens
+>  4. You clear interrupt without processing it.
+>
+> This patch was actually a first attempt to fix missing device insertions
+> as described in (usb: dwc2: host: Fix missing device insertions) and it
+> did solve some of the signal bouncing problems but not all of
+> them (which is why I submitted the other patch).  Specifically, this
+> patch itself would sometimes change:
+>  1. hardware sees connect
+>  2. hardware sees disconnect
+>  3. hardware sees connect
+>  4. dwc2_port_intr() - clears connect interrupt
+>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
+>
+> ...to:
+>  1. hardware sees connect
+>  2. hardware sees disconnect
+>  3. dwc2_port_intr() - clears connect interrupt
+>  4. hardware sees connect
+>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
+>
+> ...but with different timing then sometimes we'd still miss cable
+> insertions.
+>
+> In any case, though this patch doesn't fix any (known) problems, it
+> still seems wise as a general policy to clear interrupt before handling
+> them.
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> Changes in v2: None
+>
+>  drivers/usb/dwc2/core_intr.c | 55 ++++++++++++++++++++++----------------=
+------
+>  drivers/usb/dwc2/hcd_intr.c  | 16 ++++++-------
+>  2 files changed, 35 insertions(+), 36 deletions(-)
+>
+> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+> index 61601d16e233..2a166b7eec41 100644
+> --- a/drivers/usb/dwc2/core_intr.c
+> +++ b/drivers/usb/dwc2/core_intr.c
+> @@ -80,15 +80,16 @@ static const char *dwc2_op_state_str(struct dwc2_hsot=
+g *hsotg)
+>   */
+>  static void dwc2_handle_usb_port_intr(struct dwc2_hsotg *hsotg)
+>  {
+> -	u32 hprt0 =3D dwc2_readl(hsotg->regs + HPRT0);
+> +	u32 hprt0;
+>=20=20
+> +	/* Clear interrupt */
+> +	dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
+> +
+> +	hprt0 =3D dwc2_readl(hsotg->regs + HPRT0);
+>  	if (hprt0 & HPRT0_ENACHG) {
+>  		hprt0 &=3D ~HPRT0_ENA;
+>  		dwc2_writel(hprt0, hsotg->regs + HPRT0);
+>  	}
+> -
+> -	/* Clear interrupt */
+> -	dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
+
+isn't this a regression ? You're first clearing the interrupts and only
+then reading to check what's pending, however, what's pending has just
+been cleared. Seems like this should be:
+
+hprt0 =3D dwc2_readl(HPRT0);
+dwc2_writeal(PRTINT, GINTSTS);
+
+
+Also, these two patches look very large for the -rc. I'll move them to
+v4.5 merge window unless you can convince me that they are, indeed, the
+smallest change possible to fix the problem you're facing and that they
+are, indeed, regressions.
+
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWSgQpAAoJEIaOsuA1yqREzzIP/jtPNXJ/3kckdbKH8+qkFmQb
+JUuDc0aSsT7sr4P5Hk6vDXZfKq8cr66ZbeAmXOiGc11Mc9ztDsruLSWeP9qsgU8O
+IZyw0YKTxPAYqTgkSh9/yshL+cFPIxVG3yaRc603Elr190sxR7to0zYdQI5bPvkB
+IlmIsCzOor3e2rDS4EBD9UkBcJXgA0qrvm496qUoO3ovovFPlAzXoYR8UsYX4p9+
+tnb8yikAzgIMcmsPIZl8AbmohC6DWmMUyWlN/XGTA2mdCO4DxfoR/4AWI2dCuhDf
+ie2Rds9c4mKGl+zpxXNdVgKX4TTdfCoalM+QVh52SLRAbCuwbQy9/GMV9qLuTihD
+Nzd9R3XvpwE5vgRcNMQ+KGPDZcGaw+F9oMBYIFZLO9V5R4+xojkMYLgaMMy8mgSS
+tY/i4+zLLI7IEGbqRJSpgEdTRJLeo2q9bEZA2wFU9e/O/rMF4pSKGa9ELYHfAGWz
+8KmxKNe1/AT7t2RvBh+iS/9IXa4TbqfG9oHWVLFDr0G6N+Hb8dCr+8tUfibk3c8t
+QgBmCMpkuD9ZljD5/e5grEaUemszMU7k9SJhXk8jhCQ2s4UmFy0BcL1XwRgK1xmd
+L7dWqQvGh+FOx6oD1XlM07GhD7htPJ+QMpIbkO6cAFzfIEU08XlGqEjUyqkhHBT1
+9jzUDyz+k/qEpB/LEV9v
+=wj6N
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============6506695318595091429==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6506695318595091429==--
