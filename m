@@ -1,278 +1,140 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v9 15/17] drm: bridge: analogix/dp: try force hpd after
- plug in lookup failed
-Date: Fri, 13 Nov 2015 15:31:19 +0800
-Message-ID: <564591C7.3090704@rock-chips.com>
-References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
- <1446167355-6387-1-git-send-email-ykk@rock-chips.com>
- <20151111231042.GA29893@rob-hp-laptop> <5643EAF9.9020508@rock-chips.com>
- <20151112233807.GA9899@rob-hp-laptop>
+From: Michael Trimarchi <michael@amarulasolutions.com>
+Subject: Re: [RFC PATCH] ARM: dts: rockchip: Add wifi support for firefly
+Date: Mon, 16 Nov 2015 08:39:38 +0100
+Message-ID: <CAOf5uwmAFnCGP5_D+uPykYkkvsLnHeiGF6aYaPr2t1U6E1edhg@mail.gmail.com>
+References: <1438956725-4188-1-git-send-email-michael@amarulasolutions.com>
+	<5702275.SOOuh5NPWf@diego>
+	<20150809082640.GA5459@panicking>
+	<4932422.vgAJTm4MIh@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0380717367=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151112233807.GA9899@rob-hp-laptop>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Kukjin Kim <kgene@kernel.org>, robherring2@gmail.com, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, emil.l.velikov@gmail.com, dianders@chromium.org, Kyungmin Park <kyungmin.park@samsung.com>, Kumar Gala <galak@codeaurora.org>, ajaynumb@gmail.com, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <4932422.vgAJTm4MIh@diego>
+Sender: linux-mmc-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Romain Perier <romain.perier@gmail.com>, FUKAUMI Naoki <naobsd@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============0380717367==
-Content-Type: multipart/alternative;
- boundary="------------080409030505040202090008"
+Hi Heiko
 
-This is a multi-part message in MIME format.
---------------080409030505040202090008
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Sorry for long delay, the product was moved from rk3288 to imx6
 
+I will rebase everything and use your patches soon and test
 
-On 11/13/2015 07:38 AM, Rob Herring wrote:
-> On Thu, Nov 12, 2015 at 09:27:21AM +0800, Yakir Yang wrote:
->> Hi Rob,
+Michael
+
+On Sun, Aug 9, 2015 at 9:17 PM, Heiko St=C3=BCbner <heiko@sntech.de> wr=
+ote:
+> Hi Michael,
+>
+> Am Sonntag, 9. August 2015, 10:26:44 schrieb Michael Trimarchi:
+>
+> [...]
+>
+>> > >   num-slots =3D <1>;
+>> > >   pinctrl-names =3D "default";
+>> > >
+>> > > - pinctrl-0 =3D <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>;
+>> > > - vmmc-supply =3D <&vcc_18>;
+>> > > + pinctrl-0 =3D <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdi=
+o0_int>;
+>> > > +
+>> > > + sd-uhs-sdr50;
+>> > > + sd-uhs-sdr104;
+>> > > + sd-uhs-ddr50;
+>> >
+>> > we don't have mmc tuning capabilities yet, so please no sd-uhs-* s=
+tuff.
+>> > That way you should also be able to leave out the clock-freq-min-m=
+ax
+>> > above, as regular "highspeed" does not venture above the 50MHz lim=
+it.
 >>
->> On 11/12/2015 07:10 AM, Rob Herring wrote:
->>> On Fri, Oct 30, 2015 at 09:09:15AM +0800, Yakir Yang wrote:
->>>> Some edp screen do not have hpd signal, so we can't just return
->>>> failed when hpd plug in detect failed.
->>>>
->>>> This is an hardware property, so we need add a devicetree property
->>>> "analogix,need-force-hpd" to indicate this sutiation.
->>>>
->>>> Tested-by: Heiko Stuebner <heiko@sntech.de>
->>>> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
->>>> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
->>>> ---
->>> I didn't find this one in v10. Did it get dropped?
->> You are in my 'to' list, but I haven't send the whole v10 out,
->> most of them don't need update :)
-> Okay, it's just gmail's inability to follow threading...
->   
->> This series should be:
->> ---- [v8 0/17 ...]
->>    |---- [v8 1/17 ...]
->>    |---- [v8 2/17 ...]
->>    |---- [v8 3/17 ...]
->>    |---- [...]
->>    |---- [v8 15/17 ...]
->>    |---- [v8 16/17 ...]
->>    |---- [v8 17/17 ...]
->>    |
->>    |---- [v9 10/17 ...]
->>    |---- [v9 15/17 ...]
->>       |---- We are here
->>    |---- [v9 09/17 ...]
->>    |---- [v10 09/17 ...]
->>       |---- Received an acked from you
+>> Ok, I have tested without it too and it works with a small hack on t=
+he code.
+>> Agree with you
 >
->>>> diff --git a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
->>>> index 7659a7a..74f0e80 100644
->>>> --- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
->>>> +++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
->>>> @@ -22,6 +22,9 @@ Required properties for dp-controller:
->>>>   		from general PHY binding: Should be "dp".
->>>>   Optional properties for dp-controller:
->>>> +	-analogix,need-force-hpd:
->>>> +		Indicate driver need force hpd when hpd detect failed, this
->>>> +		is used for some eDP screen which don't have hpd signal.
->>> This should be a generic property.
->> This property would only need in some no-hpd case, it would be dropped if
->> panel keep the hotplug signal, that's why I thought it should be optional.
-> I agree it is optional. I just mean drop the analogix and put in a
-> common binding doc (i.e. create a display/bridge/common.txt). Needing to
-> ignore HPD is probably a common problem.
-
-Oops, okay, I misunderstand what you mean. I thought you want me to put the
-"analogix,need-force-hpd" to required property, not an optional property :)
-
-I thought this should be a common property of connect, so the common 
-document
-in bridge is not very good, I should be in display/connector/, but I 
-don't know what
-else could I collect for that common document, would like to share more 
-on this point
-
-- Yakir
-
->
->> I thought if we put this a property to generic property, then we must need
->> to define it in normal device node, not sure whether it is right :)
-> Sorry, I don't follow.
->
-> Rob
+> what was this supposed to fix? And what "hack" do you use now?
 >
 >
+>> > > + cap-sdio-irq;
+>> > > +
+>> > > + vmmc-supply =3D <&vcc_wifi>;
+>> >
+>> > the original supply is actually wrong in the dts. vcc_18 is the io=
+ voltage
+>> > used on the
+>> > pins _to_ the card, not to supply the card itself. So vcc_18 is ac=
+tually
+>> > the so called vqmmc-supply.
+>> > vmmc-supply is done regularly from vcc_io. So your voltage hack ab=
+ove can
+>> > go away too.
+>> >
+>> > Bringup should also use a mmc-power-sequency so you can make sure =
+the
+>> > rtc_clock is running, which is also needed by the wifi module.
+>>
+>> Hack is used to because when sdio subsystem compare the wifi voltage
+>> capability returned by a specific message on the bus with the possib=
+le
+>> voltage levels that hardware connection provides and take the minima=
+l. The
+>> card return to support from 2V up and this is the reason to declare =
+it at
+>> 2V. I will retest again
 >
-
-
---------------080409030505040202090008
-Content-Type: text/html; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-
-<html>
-  <head>
-    <meta content="text/html; charset=windows-1252"
-      http-equiv="Content-Type">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    <br>
-    <div class="moz-cite-prefix">On 11/13/2015 07:38 AM, Rob Herring
-      wrote:<br>
-    </div>
-    <blockquote cite="mid:20151112233807.GA9899@rob-hp-laptop"
-      type="cite">
-      <pre wrap="">On Thu, Nov 12, 2015 at 09:27:21AM +0800, Yakir Yang wrote:
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">Hi Rob,
-
-On 11/12/2015 07:10 AM, Rob Herring wrote:
-</pre>
-        <blockquote type="cite">
-          <pre wrap="">On Fri, Oct 30, 2015 at 09:09:15AM +0800, Yakir Yang wrote:
-</pre>
-          <blockquote type="cite">
-            <pre wrap="">Some edp screen do not have hpd signal, so we can't just return
-failed when hpd plug in detect failed.
-
-This is an hardware property, so we need add a devicetree property
-"analogix,need-force-hpd" to indicate this sutiation.
-
-Tested-by: Heiko Stuebner <a class="moz-txt-link-rfc2396E" href="mailto:heiko@sntech.de">&lt;heiko@sntech.de&gt;</a>
-Tested-by: Javier Martinez Canillas <a class="moz-txt-link-rfc2396E" href="mailto:javier@osg.samsung.com">&lt;javier@osg.samsung.com&gt;</a>
-Signed-off-by: Yakir Yang <a class="moz-txt-link-rfc2396E" href="mailto:ykk@rock-chips.com">&lt;ykk@rock-chips.com&gt;</a>
----
-</pre>
-          </blockquote>
-          <pre wrap="">I didn't find this one in v10. Did it get dropped?
-</pre>
-        </blockquote>
-        <pre wrap="">
-You are in my 'to' list, but I haven't send the whole v10 out,
-most of them don't need update :)
-</pre>
-      </blockquote>
-      <pre wrap="">
-Okay, it's just gmail's inability to follow threading...
- 
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">This series should be:
----- [v8 0/17 ...]
-  |---- [v8 1/17 ...]
-  |---- [v8 2/17 ...]
-  |---- [v8 3/17 ...]
-  |---- [...]
-  |---- [v8 15/17 ...]
-  |---- [v8 16/17 ...]
-  |---- [v8 17/17 ...]
-  |
-  |---- [v9 10/17 ...]
-  |---- [v9 15/17 ...]
-     |---- We are here
-  |---- [v9 09/17 ...]
-  |---- [v10 09/17 ...]
-     |---- Received an acked from you
-</pre>
-      </blockquote>
-      <pre wrap="">
-
-</pre>
-      <blockquote type="cite">
-        <blockquote type="cite">
-          <blockquote type="cite">
-            <pre wrap="">diff --git a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-index 7659a7a..74f0e80 100644
---- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-+++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-@@ -22,6 +22,9 @@ Required properties for dp-controller:
- 		from general PHY binding: Should be "dp".
- Optional properties for dp-controller:
-+	-analogix,need-force-hpd:
-+		Indicate driver need force hpd when hpd detect failed, this
-+		is used for some eDP screen which don't have hpd signal.
-</pre>
-          </blockquote>
-          <pre wrap="">This should be a generic property.
-</pre>
-        </blockquote>
-        <pre wrap="">
-This property would only need in some no-hpd case, it would be dropped if
-panel keep the hotplug signal, that's why I thought it should be optional.
-</pre>
-      </blockquote>
-      <pre wrap="">
-I agree it is optional. I just mean drop the analogix and put in a 
-common binding doc (i.e. create a display/bridge/common.txt). Needing to 
-ignore HPD is probably a common problem.</pre>
-    </blockquote>
-    <br>
-    Oops, okay,
-    <meta http-equiv="content-type" content="text/html;
-      charset=windows-1252">
-    <span style="color: rgb(51, 51, 51); font-family: arial; font-size:
-      18px; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: 20px; orphans: auto;
-      text-align: start; text-indent: 0px; text-transform: none;
-      white-space: normal; widows: 1; word-spacing: 0px;
-      -webkit-text-stroke-width: 0px; display: inline !important; float:
-      none; background-color: rgb(255, 255, 255);">I misunderstand what
-      you mean. I thought you want me to put the<br>
-      "analogix,need-force-hpd" to required property, not an optional
-      property :)<br>
-      <br>
-      I thought this should be a common property of connect, so the
-      common document<br>
-      in bridge is not very good, I should be in display/connector/, but
-      I don't know what<br>
-      else could I collect for that common document, would like to share
-      more on this point <br>
-      <br>
-      - Yakir<br>
-      <br>
-    </span>
-    <blockquote cite="mid:20151112233807.GA9899@rob-hp-laptop"
-      type="cite">
-      <pre wrap="">
-
-</pre>
-      <blockquote type="cite">
-        <pre wrap="">I thought if we put this a property to generic property, then we must need
-to define it in normal device node, not sure whether it is right :)
-</pre>
-      </blockquote>
-      <pre wrap="">
-Sorry, I don't follow.
-
-Rob
+> after the supplies are corrected (see vmmc and vqmmc in the patches) =
+the
+> supply for the modules should actually be read as the 3.3V that are s=
+upplying
+> it (from vcc_io ... which is called vbat_wl in the schematics).
+>
+>
+>> > >   status =3D "okay";
+>> >
+>> > missing #address-cells and #size-cells values for the subnodes
+>>
+>> Correct
+>>
+>> > > +
+>> > > + brcmf: bcrmf@0 {
+>> > > +         compatible =3D "brcm,bcm4329-fmac";
+>> > > +         interrupt-parent =3D <&gpio4>;
+>> > > +         reg =3D <0>;
+>> > > +         interrupts =3D <30 IRQ_TYPE_EDGE_FALLING>;
+>> > > +         interrupt-names =3D "host-wake";
+>> > > +         status =3D "okay";
+>> > > + };
+>> > >
+>> > >  };
+>> > >
+>> > >  &sdmmc {
+>> >
+>> > I took the liberty to move stuff around how it should look like, b=
+ut did
+>> > not find the time to actually test this. So maybe you can take a l=
+ook at
+>> > the attached patches.
+>>
+>> Perfect, I will retest as soon as I can and go back to you. Right no=
+w
+>> I have two hardware design around firefly that use the wifi
+>
+> great
+>
+>
+> Heiko
 
 
 
-</pre>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
---------------080409030505040202090008--
-
-
---===============0380717367==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0380717367==--
+--=20
+| Michael Nazzareno Trimarchi                     Amarula Solutions BV =
+|
+| COO  -  Founder                                      Cruquiuskade 47 =
+|
+| +31(0)851119172                                 Amsterdam 1018 AM NL =
+|
+|                  [`as] http://www.amarulasolutions.com               =
+|
