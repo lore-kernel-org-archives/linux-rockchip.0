@@ -1,124 +1,68 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v4 05/24] misc: max77693-haptic: use
- pwm_get_xxx() helpers where appropriate
-Date: Mon, 16 Nov 2015 14:55:09 +0100
-Message-ID: <20151116145509.3ea50eb0@bbrezillon>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1447664207-24370-6-git-send-email-boris.brezillon@free-electrons.com>
-	<5649D5D0.6080204@samsung.com>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] drm/rockchip: Use CRTC vblank event interface
+Date: Mon, 16 Nov 2015 15:37:32 +0100
+Message-ID: <6353124.QZ5oYdxgWE@diego>
+References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBRWDU6ZAKGQE4RAOCJQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <5649D5D0.6080204-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <ji>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447678222-6858-1-git-send-email-daniels@collabora.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Stone <daniels@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Thierry Reding <treding@nvidia.com>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Krzysztof,
-
-On Mon, 16 Nov 2015 22:10:40 +0900
-Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org> wrote:
-
-> W dniu 16.11.2015 o 17:56, Boris Brezillon pisze:
-> > Use pwm_get_xxx() helpers instead of directly accessing the pwm->xxx field.
-> > Doing that will ease adaptation of the PWM framework to support atomic
-> > update.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> > ---
-> > Patch generated with the following coccinelle script:
-> > 
-> > --->8---
-> > virtual patch
-> > 
-> > @@
-> > struct pwm_device *p;
-> > expression e;
-> > @@
-> > (
-> > -(p)->polarity = e;
-> > +pwm_set_polarity((p), e);
-> > |
-> > -(p)->polarity
-> > +pwm_get_polarity((p))
-> > |
-> > -(p)->period = e;
-> > +pwm_set_period((p), e);
-> > |
-> > -(p)->period
-> > +pwm_get_period((p))
-> > |
-> > -(p)->duty_cycle = e;
-> > +pwm_set_duty_cycle((p), e);
-> > |
-> > -(p)->duty_cycle
-> > +pwm_get_duty_cycle((p))
-> > )
-> > --->8---
-> > ---
-> >  drivers/input/misc/max77693-haptic.c | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/input/misc/max77693-haptic.c b/drivers/input/misc/max77693-haptic.c
-> > index 6d96bff..a038fb3 100644
-> > --- a/drivers/input/misc/max77693-haptic.c
-> > +++ b/drivers/input/misc/max77693-haptic.c
-> > @@ -70,10 +70,11 @@ struct max77693_haptic {
-> >  
-> >  static int max77693_haptic_set_duty_cycle(struct max77693_haptic *haptic)
-> >  {
-> > -	int delta = (haptic->pwm_dev->period + haptic->pwm_duty) / 2;
-> > +	int delta = (pwm_get_period((haptic->pwm_dev)) + haptic->pwm_duty) / 2;
-> 
-> Double parentheses over argument are not needed so just:
-> pwm_get_period(haptic->pwm_dev) + ...
-
-Actually it was generated with coccinelle, hence I didn't fix existing
-coding style issues, but I have no problem fixing them.
-
-Thanks,
-
-Boris
-
-> 
-> Beside that patch looks good, so with removing parentheses here and below:
-> 
-> Reviewed-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> 
-> Best regards,
-> Krzysztof
-> 
-> >  	int error;
-> >  
-> > -	error = pwm_config(haptic->pwm_dev, delta, haptic->pwm_dev->period);
-> > +	error = pwm_config(haptic->pwm_dev, delta,
-> > +			   pwm_get_period((haptic->pwm_dev)));
-> >  	if (error) {
-> >  		dev_err(haptic->dev, "failed to configure pwm: %d\n", error);
-> >  		return error;
-> > @@ -245,7 +246,7 @@ static int max77693_haptic_play_effect(struct input_dev *dev, void *data,
-> >  	 * The formula to convert magnitude to pwm_duty as follows:
-> >  	 * - pwm_duty = (magnitude * pwm_period) / MAX_MAGNITUDE(0xFFFF)
-> >  	 */
-> > -	period_mag_multi = (u64)haptic->pwm_dev->period * haptic->magnitude;
-> > +	period_mag_multi = (u64)pwm_get_period((haptic->pwm_dev)) * haptic->magnitude;
-> >  	haptic->pwm_duty = (unsigned int)(period_mag_multi >>
-> >  						MAX_MAGNITUDE_SHIFT);
-> >  
-> > 
-> 
-
-
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+QW0gTW9udGFnLCAxNi4gTm92ZW1iZXIgMjAxNSwgMTI6NTA6MjEgc2NocmllYiBEYW5pZWwgU3Rv
+bmU6Cj4gUGFzc2luZyAtMSBhcyB0aGUgcGlwZSBmb3IgdmJsYW5rIGV2ZW50cyBub3cgdHJpZ2dl
+cnMgYSBXQVJOX09OLCBidXQgaGFkCj4gcHJldmlvdXNseSBtYWRlIG11bHRpLXNjcmVlbiB1bnVz
+YWJsZSBhbnl3YXkuIFBhc3MgdGhlIGNvcnJlY3QgcGlwZSB0bwo+IHRoZSBldmVudC1zZW5kIGZ1
+bmN0aW9uLCBhbmQgdXNlIHRoZSBuZXcgQVBJIHRvIG1ha2UgdGhpcyBhIGJpdCBlYXNpZXIKPiBm
+b3IgdXMuCj4gCj4gRml4ZXMgV0FSTiBwcmVzZW50IHNpbmNlIGNjMWVmMTE4ZmMgZm9yIGV2ZXJ5
+IHBhZ2VmbGlwIGV2ZW50IHNlbnQ6Cj4gWyAgMjA5LjU0OTk2OV0gLS0tLS0tLS0tLS0tWyBjdXQg
+aGVyZSBdLS0tLS0tLS0tLS0tCj4gWyAgMjA5LjU1NDU5Ml0gV0FSTklORzogQ1BVOiAzIFBJRDog
+MjM4IGF0IGRyaXZlcnMvZ3B1L2RybS9kcm1faXJxLmM6OTI0Cj4gZHJtX3ZibGFua19jb3VudF9h
+bmRfdGltZSsweDgwLzB4ODggW2RybV0oKSBbICAyMDkuNTY0ODMyXSBNb2R1bGVzIGxpbmtlZAo+
+IGluOiBbLi4uXQo+IFsgIDIwOS42MTI0MDFdIENQVTogMyBQSUQ6IDIzOCBDb21tOiBpcnEvNDEt
+ZmY5NDAwMDAgVGFpbnRlZDogRyAgICAgICAgVyAgICAKPiAgIDQuMy4wLXJjNisgIzcxIFsgIDIw
+OS42MjA2NDddIEhhcmR3YXJlIG5hbWU6IFJvY2tjaGlwIChEZXZpY2UgVHJlZSkKPiBbICAyMDku
+NjI1MzQ4XSBbPGMwMDFiYjgwPl0gKHVud2luZF9iYWNrdHJhY2UpIGZyb20gWzxjMDAxNjE1Yz5d
+Cj4gKHNob3dfc3RhY2srMHgyMC8weDI0KSBbICAyMDkuNjMzMDc5XSBbPGMwMDE2MTVjPl0gKHNo
+b3dfc3RhY2spIGZyb20KPiBbPGMwMmIyYzUwPl0gKGR1bXBfc3RhY2srMHg4Yy8weDljKSBbICAy
+MDkuNjQwMjg5XSBbPGMwMmIyYzUwPl0KPiAoZHVtcF9zdGFjaykgZnJvbSBbPGMwMDUyZTg4Pl0g
+KHdhcm5fc2xvd3BhdGhfY29tbW9uKzB4OTQvMHhjNCkgWyAKPiAyMDkuNjQ4MzY0XSBbPGMwMDUy
+ZTg4Pl0gKHdhcm5fc2xvd3BhdGhfY29tbW9uKSBmcm9tIFs8YzAwNTJmNzQ+XQo+ICh3YXJuX3Ns
+b3dwYXRoX251bGwrMHgyYy8weDM0KSBbICAyMDkuNjU3MTM5XSBbPGMwMDUyZjc0Pl0KPiAod2Fy
+bl9zbG93cGF0aF9udWxsKSBmcm9tIFs8YmYxN2RjMzA+XSAoZHJtX3ZibGFua19jb3VudF9hbmRf
+dGltZSsweDgwLzB4ODgKPiBbZHJtXSkgWyAgMjA5LjY2Njg3NV0gWzxiZjE3ZGMzMD5dIChkcm1f
+dmJsYW5rX2NvdW50X2FuZF90aW1lIFtkcm1dKSBmcm9tCj4gWzxiZjE3ZTQ4ND5dIChkcm1fc2Vu
+ZF92YmxhbmtfZXZlbnQrMHg3NC8weDdjIFtkcm1dKSBbICAyMDkuNjc3Mzg1XQo+IFs8YmYxN2U0
+ODQ+XSAoZHJtX3NlbmRfdmJsYW5rX2V2ZW50IFtkcm1dKSBmcm9tIFs8YmY0YzExNDQ+XQo+ICh2
+b3Bfd2luX3N0YXRlX2NvbXBsZXRlKzB4NGMvMHg3MCBbcm9ja2NoaXBfZHJtX3ZvcF0pIFsgIDIw
+OS42ODg3NTddCj4gWzxiZjRjMTE0ND5dICh2b3Bfd2luX3N0YXRlX2NvbXBsZXRlIFtyb2NrY2hp
+cF9kcm1fdm9wXSkgZnJvbSBbPGJmNGMzYmRjPl0KPiAodm9wX2lzcl90aHJlYWQrMHgxNzAvMHgx
+ZDQgW3JvY2tjaGlwX2RybV92b3BdKSBbICAyMDkuNzAwODIyXSBbPGJmNGMzYmRjPl0KPiAodm9w
+X2lzcl90aHJlYWQgW3JvY2tjaGlwX2RybV92b3BdKSBmcm9tIFs8YzAwYWI5M2M+XQo+IChpcnFf
+dGhyZWFkX2ZuKzB4MmMvMHg1MCkgWyAgMjA5LjcxMDI4NF0gWzxjMDBhYjkzYz5dIChpcnFfdGhy
+ZWFkX2ZuKSBmcm9tCj4gWzxjMDBhYmNhYz5dIChpcnFfdGhyZWFkKzB4MTNjLzB4MTg4KSBbICAy
+MDkuNzE3OTI3XSBbPGMwMGFiY2FjPl0KPiAoaXJxX3RocmVhZCkgZnJvbSBbPGMwMDcyM2M4Pl0g
+KGt0aHJlYWQrMHhlYy8weDEwNCkgWyAgMjA5LjcyNDk2NV0KPiBbPGMwMDcyM2M4Pl0gKGt0aHJl
+YWQpIGZyb20gWzxjMDAxMTYzOD5dIChyZXRfZnJvbV9mb3JrKzB4MTQvMHgzYykgWyAKPiAyMDku
+NzMyMTcxXSAtLS1bIGVuZCB0cmFjZSAwNjkwYmM2MDRmNWQ1MzVkIF0tLS0KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBEYW5pZWwgU3RvbmUgPGRhbmllbHNAY29sbGFib3JhLmNvbT4KPiBDYzogU2pvZXJk
+IFNpbW9ucyA8c2pvZXJkLnNpbW9uc0Bjb2xsYWJvcmEuY28udWs+Cj4gQ2M6IFRoaWVycnkgUmVk
+aW5nIDx0cmVkaW5nQG52aWRpYS5jb20+Cj4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRl
+Y2guZGU+CgpvbiBhIHJrMzI4OF92ZXlyb25famVycnkKClRlc3RlZC1ieTogSGVpa28gU3R1ZWJu
+ZXIgPGhlaWtvQHNudGVjaC5kZT4KCkV2ZXJ5dGhpbmcgdXAgdG8gR0xFUzIgdXNpbmcgdGhlIGJp
+bmFyeSB1c2Vyc3BhY2UgZHJpdmVyIHN0aWxsIHdvcmtzCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
