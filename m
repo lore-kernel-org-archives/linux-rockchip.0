@@ -1,74 +1,46 @@
-From: <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Subject: RE: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Mon, 16 Nov 2015 10:32:51 +0000
-Message-ID: <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
- <4171977.M1BLuS2ZzP@wuerfel>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 09/24] regulator: pwm: use
+ pwm_get/set_default_xxx() helpers where appropriate
+Date: Mon, 16 Nov 2015 10:55:58 +0000
+Message-ID: <20151116105558.GB31303@sirena.org.uk>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1447664207-24370-10-git-send-email-boris.brezillon@free-electrons.com>
+Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4171977.M1BLuS2ZzP@wuerfel>
-Content-Language: ja-JP
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: arnd-r2nGTMty4D4@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mmarek-IBi9RG/b67k@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-kbuild-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org, agross-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tsahee-IEYhy/pPZWng2XuLRlxkFAC/G2K4zDHf@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, shiraz.linux.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, patrice.chotard-qxv4g6HH51o@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org, michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, davidb-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mappyland78@g
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="z6Eq5LdranGa6ru8"
+Return-path: <linux-sunxi+bncBDQ2L75W5QGBBX7MU2ZAKGQEOGFLFLI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1447664207-24370-10-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <http://groups.google.com/group/linux-sunxi
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <http://groups.google.com/group/linux-sunxi/subscribe>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQXJuZCwNCg0KIA0KPiBPbiBNb25kYXkgMTYgTm92ZW1iZXIgMjAxNSAxMjowNjoxMCBNYXNh
-aGlybyBZYW1hZGEgd3JvdGU6DQo+ID4gTWFueSBBUk0gc3ViLWFyY2hpdGVjdHVyZXMgdXNlIHBy
-b21wdHMgZm9sbG93ZWQgYnkgImlmIiBjb25kaXRpb25hbCwNCj4gPiBidXQgaXQgaXMgd3Jvbmcu
-DQo+ID4NCj4gPiBQbGVhc2Ugbm90aWNlIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4NCj4gPg0KPiA+
-ICAgICBjb25maWcgQVJDSF9GT08NCj4gPiAgICAgICAgICAgICBib29sICJGb28gU29DcyIgaWYg
-QVJDSF9NVUxUSV9WNw0KPiA+DQo+ID4gYW5kDQo+ID4NCj4gPiAgICAgY29uZmlnIEFSQ0hfRk9P
-DQo+ID4gICAgICAgICAgICAgYm9vbCAiRm9vIFNvQ3MiDQo+ID4gICAgICAgICAgICAgZGVwZW5k
-cyBvbiBBUkNIX01VTFRJX1Y3DQo+ID4NCj4gPiBUaGVzZSB0d28gYXJlICpub3QqIGVxdWl2YWxl
-bnQhDQo+ID4NCj4gPiBJbiB0aGUgZm9ybWVyIHN0YXRlbWVudCwgaXQgaXMgbm90IEFSQ0hfRk9P
-LCBidXQgaXRzIHByb21wdCB0aGF0DQo+ID4gZGVwZW5kcyBvbiBBUkNIX01VTFRJX1Y3LiAgU28s
-IGl0IGlzIGNvbXBsZXRlbHkgdmFsaWQgdGhhdCBBUkNIX0ZPTyBpcw0KPiA+IHNlbGVjdGVkIGJ5
-IGFub3RoZXIsIGJ1dCBBUkNIX01VTFRJX1Y3IGlzIHN0aWxsIGRpc2FibGVkLiBBcyBpdCBpcyBu
-b3QNCj4gPiB1bm1ldCBkZXBlbmRlbmN5LCBLY29uZmlnIG5ldmVyIHdhcm5zLiAgVGhpcyBpcyBw
-cm9iYWJseSBub3Qgd2hhdCB5b3UNCj4gPiB3YW50Lg0KPiANCj4gRGlkIHlvdSBlbmNvdW50ZXIg
-YSBjYXNlIHdoZXJlIHNvbWVvbmUgYWN0dWFsbHkgZGlkIGEgJ3NlbGVjdCcgb24gb25lIG9mDQo+
-IHRob3NlIHN5bWJvbHM/IEkgcHJvYmFibHkgaW50cm9kdWNlZCBhIGxvdCBvZiB0aGVtIGFuZCBk
-aWQgbm90IGV4cGVjdCB0aGF0DQo+IHRvIGhhcHBlbi4NCg0KTm8sIGZvciBBUk0gc3ViLWFyY2hp
-dGVjdHVyZXMuDQpCdXQsIHllcyBmb3IgdGhlIEFSTSBjb3JlIHBhcnQuDQoNCg0KRm9yIGV4YW1w
-bGUsIHRoZSBmb2xsb3dpbmcgZW50cnkgaW4gYXJjaC9hcm0vS2NvbmZpZyBpcyBzdXNwaWNvdXMu
-DQoNCmNvbmZpZyBQQ0kNCiAgICAgICAgYm9vbCAiUENJIHN1cHBvcnQiIGlmIE1JR0hUX0hBVkVf
-UENJDQogICAgICAgIGhlbHANCiAgICAgICAgICBGaW5kIG91dCB3aGV0aGVyIHlvdSBoYXZlIGEg
-UENJIG1vdGhlcmJvYXJkLiBQQ0kgaXMgdGhlIG5hbWUgb2YgYQ0KICAgICAgICAgIGJ1cyBzeXN0
-ZW0sIGkuZS4gdGhlIHdheSB0aGUgQ1BVIHRhbGtzIHRvIHRoZSBvdGhlciBzdHVmZiBpbnNpZGUN
-CiAgICAgICAgICB5b3VyIGJveC4gT3RoZXIgYnVzIHN5c3RlbXMgYXJlIElTQSwgRUlTQSwgTWlj
-cm9DaGFubmVsIChNQ0EpIG9yDQogICAgICAgICAgVkVTQS4gSWYgeW91IGhhdmUgUENJLCBzYXkg
-WSwgb3RoZXJ3aXNlIE4uDQoNCg0KDQoNClRyeSAibWFrZSBBUkNIPWFybSBmb290YnJpZGdlX2Rl
-ZmNvbmZpZyIgYW5kIGNoZWNrIHRoZSAuY29uZmlnIGZpbGUuDQoNCkl0IGRlZmluZXMgQ09ORklH
-X1BDST15LCBidXQgbm90IENPTkZJR19NSUdIVF9IQVZFX1BDSS4NCkkgYW0gbm90IHN1cmUgdGhp
-cyBpcyBhIHNhbmUgLmNvbmZpZyBvciBub3QuDQoNCkJ1dCwgYW55d2F5LCBLY29uZmlnIGRvZXMg
-bm90IGNvbXBsYWluIGFib3V0IGl0Lg0KDQoNCldlIGhhdmUgc2ltaWxhciBpc3N1ZXMgZm9yIENQ
-VV9WNiwgQ1BVX1Y2SywgQ1BVX1Y3LCBldGMuDQpUaGUgY29uZmlnIGlzIHNlbGVjdGVkLCBidXQg
-dGhlICJpZiIgY29uZGl0aW9uYWwgaXMgdW5tZXQuDQooSSBkZWNpZGVkIHRvIHBvc3Rwb25lIHRo
-aXMgcHJvYmxlbSBiZWNhdXNlIGl0IHdvdWxkIHRha2Ugc29tZSB0aW1lIHRvIHVuZGVyc3RhbmQN
-CmNvbXBsaWNhdGVkIGRlcGVuZGVuY3kuKQ0KDQpUaGUgdXNlIG9mIGEgcHJvbXB0IGZvbGxvd2Vk
-IGJ5ICJpZiIgd2l0aG91dCBjb3JyZWN0IHVuZGVyc3RhbmRpbmcgaXMgZGFuZ2Vyb3VzDQpiZWNh
-dXNlIGl0IGNvdWxkIGhpZGUgdGhlIHVubWV0IGRlcGVuZGVuY3kgcHJvYmxlbS4NCg0KSSB3YW50
-IHRvIGVsaW1pbmF0ZSB0aGUgcG90ZW50aWFsIHByb2JsZW0gYnkgdGhpcyBwYXRjaA0KYmVmb3Jl
-IHNvbWVib2R5IGludHJvZHVjZSBpbnNhbmUgZGVwZW5kZW5jeS4NCg0KDQo+IA0KPiA+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybS9tYWNoLWludGVncmF0b3IvS2NvbmZpZw0KPiA+IGIvYXJjaC9hcm0v
-bWFjaC1pbnRlZ3JhdG9yL0tjb25maWcNCj4gPiBpbmRleCAwMmQwODM0Li4yZmE5ZDExIDEwMDY0
-NA0KPiA+IC0tLSBhL2FyY2gvYXJtL21hY2gtaW50ZWdyYXRvci9LY29uZmlnDQo+ID4gKysrIGIv
-YXJjaC9hcm0vbWFjaC1pbnRlZ3JhdG9yL0tjb25maWcNCj4gPiBAQCAtMSw1ICsxLDYgQEANCj4g
-PiAgY29uZmlnIEFSQ0hfSU5URUdSQVRPUg0KPiA+IC0JYm9vbCAiQVJNIEx0ZC4gSW50ZWdyYXRv
-ciBmYW1pbHkiIGlmIChBUkNIX01VTFRJX1Y0VCB8fA0KPiBBUkNIX01VTFRJX1Y1IHx8IEFSQ0hf
-TVVMVElfVjYpDQo+ID4gKwlib29sICJBUk0gTHRkLiBJbnRlZ3JhdG9yIGZhbWlseSINCj4gPiAr
-CWRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNFQgfHwgQVJDSF9NVUxUSV9WNSB8fCBBUkNIX01VTFRJ
-X1Y2DQo+ID4gIAlzZWxlY3QgQVJNX0FNQkENCj4gPiAgCXNlbGVjdCBBUk1fUEFUQ0hfUEhZU19W
-SVJUIGlmIE1NVQ0KPiA+ICAJc2VsZWN0IEFVVE9fWlJFTEFERFINCj4gDQo+IFRoZXJlIGlzIG9u
-ZSByZWxhdGVkIGNoYW5nZSB0aGF0IEkgd291bGQgbGlrZSB0byBzZWUsIGFuZCB0aGF0IGlzIHRv
-IGNvbnZlcnQNCj4gYWxsIHRvcC1sZXZlbCAnY29uZmlnJyBzdGF0ZW1lbnRzIHRoYXQgaGF2ZSBz
-dWItb3B0aW9ucyBpbnRvICdtZW51Y29uZmlnJw0KPiBzdGF0ZW1lbnRzIGZvciBjb25zaXN0ZW5j
-eS4gQXQgdGhlIG1vbWVudCwgdGhlIHBsYXRmb3JtIG1lbnUgaGFzIGEgbWl4IG9mDQo+IHBsYXRm
-b3JtLXNlbGVjdGlvbiBhbmQgcGxhdGZvcm0tc3BlY2lmaWMgb3B0aW9ucywgYW5kIEknZCBsaWtl
-IHRvIG1ha2UgdGhhdA0KPiBtb3JlIGNvbnNpc3RlbnQuDQoNCkkgYWdyZWUsIGJ1dCBpbiBhbm90
-aGVyIHBhdGNoIChvciBzZXJpZXMpPw0KDQoNCg0KQmVzdCBSZWdhcmRzDQpNYXNoYWlybyBZYW1h
-ZGENCg0K
+--z6Eq5LdranGa6ru8
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
+
+On Mon, Nov 16, 2015 at 09:56:32AM +0100, Boris Brezillon wrote:
+
+> +++ b/drivers/regulator/pwm-regulator.c
+> @@ -56,7 +56,7 @@ static int pwm_regulator_set_voltage_sel(struct regulator_dev *rdev,
+>  	int dutycycle;
+>  	int ret;
+>  
+> -	pwm_reg_period = pwm_get_period(drvdata->pwm);
+> +	pwm_reg_period = pwm_get_default_period(drvdata->pwm);
+>  
+>  	dutycycle = (pwm_reg_period *
+>  		    drvdata->duty_cycle_table[selector].dutycycle) / 100;
+
+It's not clear to me that we're not looking for the current period here
+or in the other use.  Won't configuring based on a period other than the
+one that has been set give the wrong answer?
+--z6Eq5LdranGa6ru8--
