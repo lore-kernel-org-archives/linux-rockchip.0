@@ -1,65 +1,77 @@
-From: Liviu Dudau <Liviu.Dudau@arm.com>
-Subject: Re: [PATCH 2/2] drm/rockchip: Convert the probe function to the
- generic drm_of_component_probe()
-Date: Mon, 16 Nov 2015 16:52:06 +0000
-Message-ID: <20151116165206.GC4158@e106497-lin.cambridge.arm.com>
-References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
- <1447685093-26129-3-git-send-email-Liviu.Dudau@arm.com>
- <20151116163016.GO8644@n2100.arm.linux.org.uk>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v4 04/24] hwmon: pwm-fan: use pwm_get_xxx()
+ helpers where appropriate
+Date: Mon, 16 Nov 2015 17:53:22 +0100
+Message-ID: <20151116175322.48dba6f9@bbrezillon>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1447664207-24370-5-git-send-email-boris.brezillon@free-electrons.com>
+	<5649FD5B.3000208@roeck-us.net>
+Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20151116163016.GO8644@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBBMUVCZAKGQEKMU5DTA-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+In-Reply-To: <5649FD5B.3000208-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <http://groups.google.com/group/linux-sunxi
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <http://groups.google.com/group/linux-sunxi/subscribe>
+To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gTW9uLCBOb3YgMTYsIDIwMTUgYXQgMDQ6MzA6MTZQTSArMDAwMCwgUnVzc2VsbCBLaW5nIC0g
-QVJNIExpbnV4IHdyb3RlOgo+IEkndmUgdHdlYWtlZCB5b3VyIHBhdGNoIHRvIG1ha2UgdGhlIGFi
-b3ZlIChidWdneSkgY2hhbmdlIGEgbGl0dGxlIGNsZWFyZXIuCj4gCj4gT24gTW9uLCBOb3YgMTYs
-IDIwMTUgYXQgMDI6NDQ6NTNQTSArMDAwMCwgTGl2aXUgRHVkYXUgd3JvdGU6Cj4gPiAtCWZvciAo
-aSA9IDA7OyBpKyspIHsKPiA+IC0JCXBvcnQgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicG9ydHMi
-LCBpKTsKPiA+IC0JCWlmICghcG9ydCkKPiA+IC0JCQlicmVhazsKPiA+IC0KPiA+IC0JCWlmICgh
-b2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShwb3J0LT5wYXJlbnQpKSB7Cj4gPiAtCQkJb2Zfbm9kZV9w
-dXQocG9ydCk7Cj4gPiAtCQkJY29udGludWU7Cj4gPiAtCQl9Cj4gPiAgCj4gPiAtCQljb21wb25l
-bnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBwb3J0LT5wYXJlbnQpOwo+ID4g
-LQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4gPiAtCX0KPiAKPiA+IC1zdGF0aWMgaW50IGNvbXBhcmVf
-b2Yoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ID4gLXsKPiA+IC0Jc3RydWN0IGRl
-dmljZV9ub2RlICpucCA9IGRhdGE7Cj4gPiAtCj4gPiAtCXJldHVybiBkZXYtPm9mX25vZGUgPT0g
-bnA7Cj4gPiAtfQo+IAo+IFRoZSBvcmlnaW5hbCBhYm92ZSBwYXNzZXMgcG9ydC0+cGFyZW50IHRv
-IGNvbXBvbmVudF9tYXRjaF9hZGQoKS4gIFRoaXMKPiBtZWFucyAnbnAnIGluIHRoZSBhYm92ZSBj
-b21wYXJlX29mKCkgZnVuY3Rpb24gaXMgJ3BvcnQtPnBhcmVudCcuCj4gCj4gVGhpcyBtZWFucyB0
-aGUgYWJvdmUgY29tcGFyaXNvbiBpcyBlZmZlY3RpdmVseToKPiAKPiAJZGV2LT5vZl9ub2RlID09
-IHBvcnQtPnBhcmVudAo+IAo+IFRoZSBnZW5lcmljIGNvZGUgaW5zdGVhZCBkb2VzIHRoaXM6Cj4g
-Cj4gICAgICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBh
-cmVfb2YsIHBvcnQpOwo+IAo+IFNvIHdoYXQgd2UgZ2V0IGluIHRoZSBjb21wYXJpc29uIGZ1bmN0
-aW9uIGlzICdwb3J0JyByYXRoZXIgdGhhbgo+ICdwb3J0LT5wYXJlbnQnOgo+IAo+ID4gK3N0YXRp
-YyBpbnQgY29tcGFyZV9wb3J0KHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiA+ICB7
-Cj4gPiArCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkYXRhOwo+ID4gKwlyZXR1cm4gZGV2LT5w
-YXJlbnQtPm9mX25vZGUgPT0gbnA7Cj4gPiArfQo+IAo+IHdoaWNoIG1lYW5zIHRoZSBjb21wYXJp
-c29uIGlzOgo+IAo+IAlkZXYtPnBhcmVudC0+b2Zfbm9kZSA9PSBwb3J0Cj4gCj4gd2hpY2ggaXMg
-YSBkaWZmZXJlbnQgY29tcGFyaXNvbiBmcm9tIHRoZSBhYm92ZS4KPiAKPiBZb3UgaW5zdGVhZCB3
-YW50IHRoaXMgdG8gYmU6Cj4gCj4gCXJldHVybiBkZXYtPm9mX25vZGUgPT0gbnAtPnBhcmVudDsK
-PiAKPiBIZWlrbywgcGxlYXNlIHRlc3QgdGhlIGFib3ZlIGNoYW5nZSB0byBjb21wYXJlX3BvcnQo
-KSAtIEkgdGhpbmsgeW91J2xsCj4gZmluZCB0aGF0IHdpbGwgZml4IHlvdXIgaXNzdWUuCgpTb3Jy
-eSwgSSBhZG1pdCBJJ20gbm90IHZlcnkgZ29vZCBhdCBkb2luZyBwYXRjaGVzIHdpdGhvdXQgYmVp
-bmcgYWJsZQp0byB0ZXN0IHRoZW0uIDooCgpUaGFua3MgZm9yIGhlbHBpbmcgb24gdGhpcyEKCkxp
-dml1Cgo+IAo+IFRoYW5rcy4KPiAKPiAtLSAKPiBGVFRDIGJyb2FkYmFuZCBmb3IgMC44bWlsZSBs
-aW5lOiBjdXJyZW50bHkgYXQgOS42TWJwcyBkb3duIDQwMGticHMgdXAKPiBhY2NvcmRpbmcgdG8g
-c3BlZWR0ZXN0Lm5ldC4KPiAKCi0tIAo9PT09PT09PT09PT09PT09PT09PQp8IEkgd291bGQgbGlr
-ZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdyZSBub3QgfAp8IGdpdmluZyBt
-ZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0tLS0tLS0tLQogICAgwq9cXyjj
-g4QpXy/CrwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Mon, 16 Nov 2015 07:59:23 -0800
+Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org> wrote:
+
+> On 11/16/2015 12:56 AM, Boris Brezillon wrote:
+> > Use pwm_get_xxx() helpers instead of directly accessing the pwm->xxx field.
+> > Doing that will ease adaptation of the PWM framework to support atomic
+> > update.
+> >
+> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> > ---
+> > Patch generated with the following coccinelle script:
+> >
+> > --->8---
+> > virtual patch
+> >
+> > @@
+> > struct pwm_device *p;
+> > expression e;
+> > @@
+> > (
+> > -(p)->polarity = e;
+> > +pwm_set_polarity((p), e);
+> > |
+> > -(p)->polarity
+> > +pwm_get_polarity((p))
+> 
+> s/((p))/(p)/
+> 
+> > |
+> > -(p)->period = e;
+> > +pwm_set_period((p), e);
+> > |
+> > -(p)->period
+> > +pwm_get_period((p))
+> 
+> s/((p))/(p)/
+> 
+> > |
+> > -(p)->duty_cycle = e;
+> > +pwm_set_duty_cycle((p), e);
+> 
+> The (p) seems unnecessary here.
+
+I don't get this one. You mean I should drop one the parenthesis around
+p, right?
+
+
+
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
