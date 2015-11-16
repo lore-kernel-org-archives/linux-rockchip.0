@@ -1,298 +1,267 @@
-From: Liviu Dudau <liviu-I3yL/QOVVjH10XsdtD+oqA@public.gmane.org>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
 Subject: Re: [PATCH 1/2] drm: Improve drm_of_component_probe() to correctly
  handle ports and remote ports.
-Date: Mon, 16 Nov 2015 21:17:35 +0000
-Message-ID: <20151116211735.GA12564@bart.dudau.co.uk>
+Date: Mon, 16 Nov 2015 22:33:38 +0000
+Message-ID: <20151116223337.GN8644@n2100.arm.linux.org.uk>
 References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
  <1447685093-26129-2-git-send-email-Liviu.Dudau@arm.com>
  <20151116162241.GN8644@n2100.arm.linux.org.uk>
  <20151116164907.GA4158@e106497-lin.cambridge.arm.com>
  <20151116172248.GP8644@n2100.arm.linux.org.uk>
+ <20151116211735.GA12564@bart.dudau.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20151116172248.GP8644-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Liviu Dudau <Liviu.Dudau-5wv7dgnIgG8@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20151116211735.GA12564@bart.dudau.co.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Liviu Dudau <liviu@dudau.co.uk>
+Cc: Liviu Dudau <Liviu.Dudau@arm.com>, linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 16, 2015 at 05:22:48PM +0000, Russell King - ARM Linux wrote:
-> Please sensibly wrap your messages.  Your lines are longer than 80 characters which makes it exceedingly difficult for some people to reply to your very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long lines without first reformatting them manually - and why should they bother to reply if they have that kind of additional work?  Thanks.
-
-I usually follow the text above and type in text mode. I am made to suffer
-a Microsoft Exchange server in between me and the open world and I have
-no control if it decides to reformat the message. It is by no means
-my intent to type everything in one line but I also choose sometime to
-have longer lines if I believe that it helps the readability of the text.
-
+On Mon, Nov 16, 2015 at 09:17:35PM +0000, Liviu Dudau wrote:
+> On Mon, Nov 16, 2015 at 05:22:48PM +0000, Russell King - ARM Linux wrote:
+> > Put those two sentences together and please think about it.  If the
+> > pointer type is unknown to component_match_add(), how could it ever
+> > use of_node_get() on it?  What if it's a string?  Or a struct device?
+> > Or something else.
 > 
-> On Mon, Nov 16, 2015 at 04:49:07PM +0000, Liviu Dudau wrote:
-> > On Mon, Nov 16, 2015 at 04:22:41PM +0000, Russell King - ARM Linux wrote:
-> > > On Mon, Nov 16, 2015 at 02:44:52PM +0000, Liviu Dudau wrote:
-> > > > Rockchip DRM driver cannot use the same compare_of() function to match
-> > > > ports and remote ports (aka encoders) as their OF sub-trees look different.
-> > > > Add a second compare function to be used when encoders are added to the
-> > > > component framework and patch the existing users of the function
-> > > > accordingly.
-> > > > 
-> > > > Signed-off-by: Liviu Dudau <Liviu.Dudau-5wv7dgnIgG8@public.gmane.org>
-> > > > ---
-> > > >  drivers/gpu/drm/armada/armada_drv.c |  3 ++-
-> > > >  drivers/gpu/drm/drm_of.c            | 23 ++++++++++++++++++-----
-> > > >  drivers/gpu/drm/imx/imx-drm-core.c  |  3 ++-
-> > > >  include/drm/drm_of.h                |  6 ++++--
-> > > >  4 files changed, 26 insertions(+), 9 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-> > > > index 77ab93d..3a2a929 100644
-> > > > --- a/drivers/gpu/drm/armada/armada_drv.c
-> > > > +++ b/drivers/gpu/drm/armada/armada_drv.c
-> > > > @@ -274,7 +274,8 @@ static int armada_drm_probe(struct platform_device *pdev)
-> > > >  	struct device *dev = &pdev->dev;
-> > > >  	int ret;
-> > > >  
-> > > > -	ret = drm_of_component_probe(dev, compare_dev_name, &armada_master_ops);
-> > > > +	ret = drm_of_component_probe(dev, compare_dev_name, compare_dev_name,
-> > > > +				     &armada_master_ops);
-> > > >  	if (ret != -EINVAL)
-> > > >  		return ret;
-> > > >  
-> > > > diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> > > > index 493c05c..58fafd7 100644
-> > > > --- a/drivers/gpu/drm/drm_of.c
-> > > > +++ b/drivers/gpu/drm/drm_of.c
-> > > > @@ -77,7 +77,8 @@ EXPORT_SYMBOL(drm_of_find_possible_crtcs);
-> > > >   * Returns zero if successful, or one of the standard error codes if it fails.
-> > > >   */
-> > > >  int drm_of_component_probe(struct device *dev,
-> > > > -			   int (*compare_of)(struct device *, void *),
-> > > > +			   int (*compare_port)(struct device *, void *),
-> > > > +			   int (*compare_encoder)(struct device *, void *),
-> > > >  			   const struct component_master_ops *m_ops)
-> > > >  {
-> > > >  	struct device_node *ep, *port, *remote;
-> > > > @@ -101,8 +102,14 @@ int drm_of_component_probe(struct device *dev,
-> > > >  			continue;
-> > > >  		}
-> > > >  
-> > > > -		component_match_add(dev, &match, compare_of, port);
-> > > > -		of_node_put(port);
-> > > > +		component_match_add(dev, &match, compare_port, port);
-> > > > +		/*
-> > > > +		 * component_match_add keeps a reference to the port
-> > > > +		 * variable but does not do proper reference counting,
-> > > > +		 * so we cannot release the reference here. If that
-> > > > +		 * gets fixed, the following line should be uncommented
-> > > > +		 */
-> > > > +		/* of_node_put(port); */
-> > > 
-> > > Even if it is fixed, this line should _never_ be uncommented.  This is
-> > > totally the wrong place to drop the reference.
+> I did not say of_node_get() I said "some reference counting of sorts".
+> One option would be to have (yet) another callback that the user of the
+> components framework has to provide that does resource management.
+
+I really do not see the point of anything other than a "release this
+void pointer" callback which is exactly what I proposed at the
+beginning of this discussion.  There's no reason to add a "take a
+reference on this void pointer" - in fact, adding that brings with
+it a _huge_ amount of complexity, such as:
+
+void component_match_add(struct device *dev, struct component_match **matchptr,
+        int (*compare)(struct device *, void *), void *compare_data)
+
+would become:
+
+void component_match_add(struct device *dev, struct component_match **matchptr,
+	int (*take_ref)(void *),
+	int (*release_ref)(void *),
+	int (*compare)(struct device *, void *), void *compare_data)
+{
+	struct component_match *match = *matchptr;
+
+	if (IS_ERR(match))
+		return;
+
+	if (take_ref) {
+		int ret = take_ref(compare_data);
+		if (ret) {
+			/*
+			 * add code to walk the list of already added
+			 * matches and call their own release_refs
+			 */ 
+			free(match);
+			*matchptr = ERR_PTR(ret);
+			return;
+		}
+	}
+
+And this is exactly why I believe it's pointless to have this callback:
+anything you do in take_ref() you can do before calling this function,
+and if you do it before calling this function, you are more efficient.
+
+However, let's continue on:
+
+	if (!match || match->num == match->alloc) {
+		size_t new_size = match ? match->alloc + 16 : 15;
+
+		match = component_match_realloc(dev, match, new_size);
+
+		... this becomes much more complicated as well -
+		component_match_realloc() can fail (just like standard
+		realloc()), but we'd need to release all the references
+		here as well.
+
+	... rest of existing function ...
+}
+
+Then there's component_master_add_with_match() itself, which has
+several failure points, which also have to do a dance with the
+refcounting.
+
+Rather than all this, what I'm suggesting is:
+
+1. Add component_match_init() which allocates an initial match struct,
+   which contains a head node which stores the error status (so if we
+   fail to extend the array, we can keep the old array around.)
+2. component_match_add() appends to the match array, taking an optional
+   release function for the void pointer.  Any failure adding the current
+   match results in the release function being called.
+3. component_master_add_with_match() does its current job of
+   validating the list, and creating the final array of matches.
+   Any failure at this point walks the array and calls their optional
+   release function.
+4. component_master_del() walks the array and calls their optional
+   release function.
+
+This should result in a relatively simple implementation without multiple
+failure cleanup paths.
+
+There is absolutely zero need for some additional complex resource
+management framework to be built around this at all.
+
+> And for
+> the record, I did thought about it and not for just a few minutes. I also
+> came out of the thought process with the conclusion that while the components
+> framework is doing the job it was coded for, it needs serious improvements
+> in terms of documentation.
+
+Just like the rest of the kernel, I've put it on the same todo list that
+other maintainers put that on, which is the one which is always pushed to
+the very back of the queue, because there's always more pressing matters
+to attend to.  I can pull out lots of examples where I've spent a long
+time getting to know the code where there are almost zero comments - and
+this is one of the reasons why such stuff gets pushed to the back.  If
+everyone documented their code and kept it up to date, then we wouldn't
+need to read any code, and life would be wonderful.
+
+I wouldn't need to spend the time trying to understand kernel code, I
+could use that time to write documentation!
+
+> > > I feel that holding onto a reference to a counted resource without
+> > > incrementing the use count is not the right way of doing things, or
+> > > at least it should be clearly documented in the interface of
+> > > component_match_add() so that people understand the mess they are
+> > > getting into.
 > > 
-> > What if (as implied by the comment) component_match_add() does some
-> > reference counting of sorts? (I know it doesn't get used only with
-> > OF nodes, it is more generic).
+> > That's just crap.  You're not thinking before you hit your keyboard.
 > 
-> Put those two sentences together and please think about it.  If the
-> pointer type is unknown to component_match_add(), how could it ever
-> use of_node_get() on it?  What if it's a string?  Or a struct device?
-> Or something else.
+> Russell, I have no idea what do I need to do in order to gain your respect
+> and for you to start treating me like a human being. Maybe *I* need to
+> lower my expectations and stop hoping to have a civilised discussion with
+> you.
 
-I did not say of_node_get() I said "some reference counting of sorts".
-One option would be to have (yet) another callback that the user of the
-components framework has to provide that does resource management. And for
-the record, I did thought about it and not for just a few minutes. I also
-came out of the thought process with the conclusion that while the components
-framework is doing the job it was coded for, it needs serious improvements
-in terms of documentation.
+Sorry, but I'm direct and blunt in email.  That's the way I am in email.
+It's not about respect, I do respect others, but I say things directly.
 
-> 
-> > I feel that holding onto a reference to a counted resource without
-> > incrementing the use count is not the right way of doing things, or
-> > at least it should be clearly documented in the interface of
-> > component_match_add() so that people understand the mess they are
-> > getting into.
-> 
-> That's just crap.  You're not thinking before you hit your keyboard.
-
-Russell, I have no idea what do I need to do in order to gain your respect
-and for you to start treating me like a human being. Maybe *I* need to
-lower my expectations and stop hoping to have a civilised discussion with
-you.
-
-> Why should component_match_add(), which has _zero_ knowledge about
-> what it's being used with, have documentation attached to it which
-> would be:
-> 
-> "If you use component_match_add() with X, you need to do X'.  If you
-> use it with Y, you need to do Y'.  If you use it with Z, you need to
-> do Z'."
-> 
-> No, that's utterly insane.
-
-No. It is utterly insane not to have documentation when using the framework
-or the function leads to memory leaks. You can say "If you use
-component_match_add() you need to provide a callback for resource management
-if your X or Y or Z needs such operations". The current components framework
-is seriously in need of documentation. To borrow your language, look at the
-crap one needs to put up with when starting to use the framework: to be a
-component one needs to fill the component_ops structure. This is its
-definition:
-
-struct component_ops {
-	int (*bind)(struct device *, struct device *, void *);
-	void (*unbind)(struct device *, struct device *, void *);
-};
-
-Note that there are no names associated with the parameters and no documentation
-to allow one to distinguish between the two struct device pointers. You have
-to look at component_bind() to learn that first parameter is a component's
-dev part and the second is the master's dev part.
-
-You might think that the code is the proper documentation and ultimately that
-is right, but even code is wrong sometimes and (as we discovered with the
-component_match_add() discussion here) its side effects are not easy to spot
-even to the authors of the code.
-
-So, yes, we do need documentation, even if it is insane, because it tells us
-how insanely fragile the code is. Even God, through Moses, has tersely
-documented his Operating System through the 10 commandments.
-
-Another example: of the 6 commits for drivers/base/component.c, 3 of them
-have "fixed ... handling/cleanup/bug". So it is not easy to get it right.
-
-> 
-> > > Where it does make sense is when the array of matches is destroyed.  For
-> > > that, we'd need to add a callback to the master ops struct so that the
-> > > master driver can properly release these pointers.
-> > > 
-> > > I'd keep most of the big comments though (up to "... varable") to
-> > > explain why we don't drop the reference.
+> > Why should component_match_add(), which has _zero_ knowledge about
+> > what it's being used with, have documentation attached to it which
+> > would be:
 > > 
-> > Sorry, if I understand you correctly, you're saying that we should keep
-> > the following comment:
+> > "If you use component_match_add() with X, you need to do X'.  If you
+> > use it with Y, you need to do Y'.  If you use it with Z, you need to
+> > do Z'."
 > > 
-> > 			/*
-> > 			 * component_match_add keeps a reference to the port
-> > 			 * variable.
-> > 			 */
+> > No, that's utterly insane.
 > 
-> Exactly.
-> 
-> > How does that explain why we don't drop the reference? Did you mean the
-> > comment should be truncated somewhere else by chance (like including the
-> > fact the reference counting is not done)?
-> 
-> I'm sorry, I totally fail to understand what's soo difficult for you to
-> understand about the above comment.  I can only conclude that there's
-> something wrong in your understanding of memory pointers, aka addresses.
+> No. It is utterly insane not to have documentation when using the framework
+> or the function leads to memory leaks.
 
-No, I was operating under the belief that if some framework holds a pointer
-to a resource it should also do the management of that resource. Your
-choice for the component framework has been different and you have decided
-that it is just a conduit for data gathering and binding, without any deep
-knowledge of what that data is. But that is not documented anywhere, so I
-don't feel too bad about having a different view.
+I've pointed out that the lack of "how can the void *data pointer be
+freed" is currently something that isn't currently implemented.  That's
+something on my todo list - along with getting some other patches out
+the door for the component helper which I've had knocking around for
+the last 18 months:
 
-> 
-> Each and every memory pointer is a _reference_ to a piece of data - just
-> like your home address is a _reference_ to the location where you live.
-> 
-> Some references we explicitly count, other references we implicitly count,
-> and others we don't bother.
-> 
-> In this case, of_parse_phandle() looks up the reference to the requested
-> device_node struct - and of_parse_phandle() knows that the reference is
-> going to be passed to the caller, outside it's control, so it increments
-> the count of references.
-> 
-> So, the code in drm_of_component_probe() gains a reference _and_ a count
-> against the device_node, the count being a tool to ensure that the
-> reference doesn't become invalid.
-> 
-> We then store _our_ reference to this inside the component helper by
-> means of calling component_add_match().  We don't care about how or
-> where it's stored, only that it is stored.
-> 
-> Hence, because we want to _store_ that away, it would now be incorrect
-> to drop the count against the reference.  We have stored a reference
-> to it inside a helper which knows nothing about the refcounting of this
-> structure.
-> 
-> When the helper gets fixed, it will have a callback to release the stored
-> data, which becomes the responsibility of the creator to provide.  In
-> this case, the reference to the device node by way of pointer value is
-> passed back to the creating code, at which point the refcount is dropped.
-> 
-> There is no need what so ever for the component stuff to mess around
-> with reference counts itself - and adding it will only make things
-> more messy.  I can't see why anyone would even suggest crap like that.
-> 
-> Whenever something takes an opaque object, refcounting has to be done
-> by the code using the opaque object, which has to ensure that the
-> lifetime of the references stored in the opaque object are longer than
-> the opaque object itself.  That's exactly what's going on here.
-> 
-> Please bear in mind that a _reference_ and a _refcount_ are two totally
-> separate things.  A reference would be a copy of your home postal
-> address.  A refcounter would be a box kept at your home address which
-> indicates how many references there are out there.
-> 
-> If you gave me your home postal address on a piece of paper, and I then
-> photocopied it, stored it in a safe, and then destroyed the original
-> copy you gave me, why should I have to increment the refcounter and
-> then immediately decrement it again...
-> 
-> That's exactly what's going on here: we're _temporarily_ transferring
-> the responsibility for the held refcount to the opaque component
-> helper.  The fact that the component helper has no way to transfer
-> responsibility for that held refcount back to us is neither here nor
-> there...
-> 
-> To rephrase using the example above - the reference is stored in the
-> safe, but the safe has been destroyed without regard for its contents.
-> That's where the problem lies: the safe should have been opened, the
-> address obtained, and the refcounter for the address decremented.
-> 
-> If you separate the concept of "reference" from "refcount" and realise
-> that a reference is merely a pointer to something, then I don't see
-> what the issue is with understanding what's going on here.
+Author: Russell King <rmk+kernel@arm.linux.org.uk>
+Date:   Fri Apr 18 23:05:53 2014 +0100
 
-I understand your point. You have also written some excellent piece of
-documentation for the behaviour of the component framework that I feel
-should be included in the kernel rather than being lost in the sea of emails.
+    component: track components via array rather than list
 
-Best regards,
-Liviu
+Author: Russell King <rmk+kernel@arm.linux.org.uk>
+Date:   Wed Apr 23 10:46:11 2014 +0100
 
-> 
-> -- 
-> FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-> according to speedtest.net.
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-> http://lists.freedesktop.org/mailman/listinfo/dri-devel
+    component: move check for unbound master into try_to_bring_up_masters()
+
+Author: Russell King <rmk+kernel@arm.linux.org.uk>
+Date:   Fri Apr 18 22:10:32 2014 +0100
+
+    component: remove old add_components method
+
+Now, consider this: if it takes more than 18 months for me to get my
+/own/ patches into the kernel, what hope do you think there is for me
+to get around to writing documentation?
+
+> You might think that the code is the proper documentation and ultimately that
+> is right, but even code is wrong sometimes and (as we discovered with the
+> component_match_add() discussion here) its side effects are not easy to spot
+> even to the authors of the code.
+
+Sorry?  It's not new to me, I've known about it for the last year or
+more, I just haven't found the time to address it.  So far from "not
+easy to spot even to the authors of the code", the authors of the
+code know it's shortcomings, know it lacks documentation, and know
+it needs more attention.  Even have outstanding patches against it
+for a long time.
+
+> Another example: of the 6 commits for drivers/base/component.c, 3 of them
+> have "fixed ... handling/cleanup/bug". So it is not easy to get it right.
+
+That's stretching it.  2 of them.
+	drivers/base: fix devres handling for master device
+	component: fix missed cleanup in case of devres failure
+
+The third which I assume you refer to:
+	component: fix bug with legacy API
+is a side effect of modifying the code in:
+	component: add support for component match array
+
+which would not have been an issue had the above three outstanding
+commits had gone in - instead, the issue there would've been "hey,
+the legacy API has gone!" due to an addition of a new user in the
+same merge window which would've removed the legacy API.  Hence,
+it's very unfair to say that this is an example of the author not
+understanding his own code.
+
+You'll notice that the above three outstanding commits pre-date this
+last fix.
+
+> No, I was operating under the belief that if some framework holds a pointer
+> to a resource it should also do the management of that resource. Your
+> choice for the component framework has been different and you have decided
+> that it is just a conduit for data gathering and binding, without any deep
+> knowledge of what that data is. But that is not documented anywhere, so I
+> don't feel too bad about having a different view.
+
+It's no different from something like qsort().  qsort() does not care
+what the underlying data is - it's given a pointer to some memory,
+size of elements, the number of elements, and a match function.  It
+doesn't know what's stored there - it could be numbers of apples,
+pointers to addresses, refcounted objects, etc.
+
+This is no different.  It's not some "different choice", it's a
+standard construct going back years in programming history.
+
+All that's going on here is it's gathering up a list of pointers and
+their corresponding comparison function (and if I can get a round tuit,
+a release function).  There are only two chunks of code which have any
+business deferencing those pointers, and they are the comparison
+and release functions.
+
+It would be against programming principles to create an API that takes
+void pointers and then casts them to something else so that they can
+be dereferenced.  Sorry, I don't code like that.  Where there's a void
+pointer, that means "this is an opaque object that's being passed in
+that we won't dereference".
+
+There's another example where this applies.  request_irq(), free_irq()
+and the IRQ handler.  These two functions take a void pointer, and
+have exactly the same behaviour that the component helper has: it's
+an undereferencable cookie as far as they are concerned.  In the IRQ
+case, the only thing that's allowed to dereference those void pointers
+is the IRQ handler, which knows the type of the object.  Same for the
+component helper: the only thing that's allowed to dereference the
+void pointer is the associated compare (and release) functions.
+
+> I understand your point. You have also written some excellent piece of
+> documentation for the behaviour of the component framework that I feel
+> should be included in the kernel rather than being lost in the sea of emails.
+
+No, it's not documentation for the component framework at all.  The
+description was largely a description of memory pointers and reference
+counting in general, which I believe is pretty standard stuff.
+
+However, what I have done above is documented _your_ code by describing
+what _your_ drm_of_component_probe is doing.  I find that rather ironic.
 
 -- 
--------------------
-   .oooO
-   (   )
-    \ (  Oooo.
-     \_) (   )
-          ) /
-         (_/
-
- One small step
-   for me ...
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
