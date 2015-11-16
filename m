@@ -1,68 +1,141 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 09/24] regulator: pwm: use
- pwm_get/set_default_xxx() helpers where appropriate
-Date: Mon, 16 Nov 2015 18:42:38 +0000
-Message-ID: <20151116184238.GJ31303@sirena.org.uk>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
- <1447664207-24370-10-git-send-email-boris.brezillon@free-electrons.com>
- <20151116105558.GB31303@sirena.org.uk>
- <20151116132359.39d84279@bbrezillon>
-Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] usb: dwc2: host: Fix missing device insertions
+Date: Mon, 16 Nov 2015 10:44:28 -0800
+Message-ID: <CAD=FV=XOO1XsHWSgqcvEAPAqhB2Ud5zcydc13k-pJ23L0rTW0Q@mail.gmail.com>
+References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
+	<87y4dxltzi.fsf@saruman.tx.rr.com>
+	<CAD=FV=U7L-=C5rv+YTQV91kXpieRGA8MpAU+qaXzw_0xYUOXJw@mail.gmail.com>
+	<87vb91ls89.fsf@saruman.tx.rr.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="EVh9lyqKgK19OcEf"
-Return-path: <linux-sunxi+bncBDQ2L75W5QGBBPWHVCZAKGQEWU7XRIA-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20151116132359.39d84279@bbrezillon>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <87vb91ls89.fsf-HgARHv6XitJaoMGHk7MhZQC/G2K4zDHf@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---EVh9lyqKgK19OcEf
-Content-Type: text/plain; charset=UTF-8
-Content-Disposition: inline
+Felipe,
 
-On Mon, Nov 16, 2015 at 01:23:59PM +0100, Boris Brezillon wrote:
-> Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > On Mon, Nov 16, 2015 at 09:56:32AM +0100, Boris Brezillon wrote:
+On Mon, Nov 16, 2015 at 10:22 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
+>> I added "force" in v2 of the patch in response to John's feedback to
+>> v1.  He pointed out that when you unload the module when you have a
+>> device connected that my v1 patch would not properly disconnect the
+>> device (or, rather, it would disconnect it and then reconnect it).
+>>
+>> That's why _dwc2_hcd_stop() calls dwc2_hcd_disconnect() with a force
+>> of "true".
+>
+> There's no mention of this in commit log. It would be great to add a:
+>
+> "while at that, also make sure that we don't try to detect a device on
+> module unload because of foo bar baz as pointed out by John Youn".
+>
+> Or something along these lines.
 
-> > > -	pwm_reg_period = pwm_get_period(drvdata->pwm);
-> > > +	pwm_reg_period = pwm_get_default_period(drvdata->pwm);
+...well, except that it's not new behavior.  In other words:
 
-> > It's not clear to me that we're not looking for the current period here
-> > or in the other use.  Won't configuring based on a period other than the
-> > one that has been set give the wrong answer?
+* Without my patch at all: we don't try to detect a device on module unload.
 
-> Hm, maybe that's naming problem. What I call the 'default' period here
-> is actually the period configured in your board file (using a PWM lookup
-> table) or your DT. This value represent the period requested by the PWM
-> user not a default value specified by the PWM chip driver.
+* With my v1 patch: we (incorrectly) did try to detect a device on
+module unload.
 
-> The reason we're not using the 'current' period value is because it may
-> have been set by the bootloader, and may be inappropriate for our use
-> case (ie. the period may be to small to represent the different
-> voltages).
+* With my v2 patch: we're back to not trying to detect a device on
+module unload.
 
-> ITOH, we're using the current period value when calculating the current
-> voltage, because we want to get the correct voltage value, and the PWM
-> device may still use the configuration set by the bootloader (not the
-> default one specified in your board or DT files).
+In other words: my v2 patch (correctly) doesn't change the behavior on
+module unload.  That's why I didn't mention it in the commit message.
+It's in the "v2" changelog though.
 
-> I hope this clarifies the differences between the current and default
-> period, and why we should use the default value here.
 
-To be honest I'm still a bit confused here.  When do we actually apply
-the default setting and why do we keep on having to constantly override
-it rather than doing this once at boot?  It feels wrong to be using it
-every time we set anything.  I'd expect it to be something we only need
-to do at probe time or which would automatically be handled by the PWM
-framework (but that'd have issues changing the state and potentially
-breaking things if done in an uncoordiated fashion).
---EVh9lyqKgK19OcEf--
+I'll try to come up with something for the commit message though.  See
+below for new proposed commit message.
+
+
+>>> you make no mention of why this is needed. This is basically a refactor,
+>>> not a fix.
+>>
+>> This new function is called from two places now, isn't it?
+>>
+>> Basically this is a little bit of code that used to be directly in
+>> dwc2_port_intr().  I still want it there, but I also want to call the
+>> same bit of code after a disconnect if I detect that the device has
+>> been inserted again.
+>
+> I got that :-) But it's not mentioned in commit and it's apparently
+> unnecessary for fixing the bug :-) Another "we're also adding a new
+> hsotg_disconnect() function by means of refactoring to avoid code
+> duplication" would've been enough.
+
+OK, sure.
+
+
+>> I'd really rather not add the duplication unless you insist.  To me it
+>> makes it clearer to include the (small) refactor in the same patch.
+>>
+>> If the refactor makes this change too big for an RC, then it's OK with
+>> me to just skip this for the RC.  It's not fixing a regression or
+>> anything.  I have no requirements to have this land in 4.4.  It fixes
+>> a bug and I thought that the fix was pretty small and safe (despite
+>> having a diffstat that's bigger than the bare minimum).  I will leave
+>> it to your judgement.
+>
+> let's at least modify commit log to make all these extra changes clear
+> that they are needed because of reason (a) or (b) or whatever. If you
+> just send a patch doing much more than it apparently should without no
+> mention as to why it was done this way, I can't know for sure those
+> changes are needed; next thing you know, Greg refuses to apply my pull
+> request because the change is too large :-)
+>
+> We don't want that to happen :-)
+
+Totally understand.  It's your butt on the line for the pull request
+to Greg, so definitely want to make sure you're comfortable with
+anything you pass on.  As always I definitely appreciate your reviews
+and your time.
+
+
+How about if we just add a "Notes" to the end of the patch
+description.  I can repost a patch or you can feel free to change the
+description as per below (just let me know).  ...so in total:
+
+---
+
+usb: dwc2: host: Fix missing device insertions
+
+If you've got your interrupt signals bouncing a bit as you insert your
+USB device, you might end up in a state when the device is connected but
+the driver doesn't know it.
+
+Specifically, the observed order is:
+ 1. hardware sees connect
+ 2. hardware sees disconnect
+ 3. hardware sees connect
+ 4. dwc2_port_intr() - clears connect interrupt
+ 5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
+
+Now you'll be stuck with the cable plugged in and no further interrupts
+coming in but the driver will think we're disconnected.
+
+We'll fix this by checking for the missing connect interrupt and
+re-connecting after the disconnect is posted.  We don't skip the
+disconnect because if there is a transitory disconnect we really want to
+de-enumerate and re-enumerate.
+
+Notes:
+
+1. As part of this change we add a "force" parameter to
+   dwc2_hcd_disconnect() so that when we're unloading the module we
+   avoid the new behavior.  The need for this was pointed out by John
+   Youn.
+2. The bit of code needed at the end of dwc2_hcd_disconnect() is
+   exactly the same bit of code from dwc2_port_intr().  To avoid
+   duplication, we refactor that code out into a new function
+   dwc2_hcd_connect().
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
