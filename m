@@ -1,140 +1,40 @@
-From: Michael Trimarchi <michael@amarulasolutions.com>
-Subject: Re: [RFC PATCH] ARM: dts: rockchip: Add wifi support for firefly
-Date: Mon, 16 Nov 2015 08:39:38 +0100
-Message-ID: <CAOf5uwmAFnCGP5_D+uPykYkkvsLnHeiGF6aYaPr2t1U6E1edhg@mail.gmail.com>
-References: <1438956725-4188-1-git-send-email-michael@amarulasolutions.com>
-	<5702275.SOOuh5NPWf@diego>
-	<20150809082640.GA5459@panicking>
-	<4932422.vgAJTm4MIh@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <4932422.vgAJTm4MIh@diego>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc@vger.kernel.org, Douglas Anderson <dianders@chromium.org>, Romain Perier <romain.perier@gmail.com>, FUKAUMI Naoki <naobsd@gmail.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: [PATCH v4 01/24] pwm: rcar: make use of pwm_is_enabled()
+Date: Mon, 16 Nov 2015 09:56:24 +0100
+Message-ID: <1447664207-24370-2-git-send-email-boris.brezillon@free-electrons.com>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+Return-path: <linux-leds-owner@vger.kernel.org>
+In-Reply-To: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org
+Cc: Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbd
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
+Commit 5c31252c4a86 ("pwm: Add the pwm_is_enabled() helper") introduced a
+new function to test whether a PWM device is enabled or not without
+manipulating PWM internal fields.
+Hiding this is necessary if we want to smoothly move to the atomic PWM
+config approach without impacting PWM drivers.
+Fix this driver to use pwm_is_enabled() instead of directly accessing the
+->flags field.
 
-Sorry for long delay, the product was moved from rk3288 to imx6
+Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+---
+ drivers/pwm/pwm-rcar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I will rebase everything and use your patches soon and test
-
-Michael
-
-On Sun, Aug 9, 2015 at 9:17 PM, Heiko St=C3=BCbner <heiko@sntech.de> wr=
-ote:
-> Hi Michael,
->
-> Am Sonntag, 9. August 2015, 10:26:44 schrieb Michael Trimarchi:
->
-> [...]
->
->> > >   num-slots =3D <1>;
->> > >   pinctrl-names =3D "default";
->> > >
->> > > - pinctrl-0 =3D <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>;
->> > > - vmmc-supply =3D <&vcc_18>;
->> > > + pinctrl-0 =3D <&sdio0_bus4>, <&sdio0_cmd>, <&sdio0_clk>, <&sdi=
-o0_int>;
->> > > +
->> > > + sd-uhs-sdr50;
->> > > + sd-uhs-sdr104;
->> > > + sd-uhs-ddr50;
->> >
->> > we don't have mmc tuning capabilities yet, so please no sd-uhs-* s=
-tuff.
->> > That way you should also be able to leave out the clock-freq-min-m=
-ax
->> > above, as regular "highspeed" does not venture above the 50MHz lim=
-it.
->>
->> Ok, I have tested without it too and it works with a small hack on t=
-he code.
->> Agree with you
->
-> what was this supposed to fix? And what "hack" do you use now?
->
->
->> > > + cap-sdio-irq;
->> > > +
->> > > + vmmc-supply =3D <&vcc_wifi>;
->> >
->> > the original supply is actually wrong in the dts. vcc_18 is the io=
- voltage
->> > used on the
->> > pins _to_ the card, not to supply the card itself. So vcc_18 is ac=
-tually
->> > the so called vqmmc-supply.
->> > vmmc-supply is done regularly from vcc_io. So your voltage hack ab=
-ove can
->> > go away too.
->> >
->> > Bringup should also use a mmc-power-sequency so you can make sure =
-the
->> > rtc_clock is running, which is also needed by the wifi module.
->>
->> Hack is used to because when sdio subsystem compare the wifi voltage
->> capability returned by a specific message on the bus with the possib=
-le
->> voltage levels that hardware connection provides and take the minima=
-l. The
->> card return to support from 2V up and this is the reason to declare =
-it at
->> 2V. I will retest again
->
-> after the supplies are corrected (see vmmc and vqmmc in the patches) =
-the
-> supply for the modules should actually be read as the 3.3V that are s=
-upplying
-> it (from vcc_io ... which is called vbat_wl in the schematics).
->
->
->> > >   status =3D "okay";
->> >
->> > missing #address-cells and #size-cells values for the subnodes
->>
->> Correct
->>
->> > > +
->> > > + brcmf: bcrmf@0 {
->> > > +         compatible =3D "brcm,bcm4329-fmac";
->> > > +         interrupt-parent =3D <&gpio4>;
->> > > +         reg =3D <0>;
->> > > +         interrupts =3D <30 IRQ_TYPE_EDGE_FALLING>;
->> > > +         interrupt-names =3D "host-wake";
->> > > +         status =3D "okay";
->> > > + };
->> > >
->> > >  };
->> > >
->> > >  &sdmmc {
->> >
->> > I took the liberty to move stuff around how it should look like, b=
-ut did
->> > not find the time to actually test this. So maybe you can take a l=
-ook at
->> > the attached patches.
->>
->> Perfect, I will retest as soon as I can and go back to you. Right no=
-w
->> I have two hardware design around firefly that use the wifi
->
-> great
->
->
-> Heiko
-
-
-
---=20
-| Michael Nazzareno Trimarchi                     Amarula Solutions BV =
-|
-| COO  -  Founder                                      Cruquiuskade 47 =
-|
-| +31(0)851119172                                 Amsterdam 1018 AM NL =
-|
-|                  [`as] http://www.amarulasolutions.com               =
-|
+diff --git a/drivers/pwm/pwm-rcar.c b/drivers/pwm/pwm-rcar.c
+index 6e99a63..70899c9 100644
+--- a/drivers/pwm/pwm-rcar.c
++++ b/drivers/pwm/pwm-rcar.c
+@@ -157,7 +157,7 @@ static int rcar_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return div;
+ 
+ 	/* Let the core driver set pwm->period if disabled and duty_ns == 0 */
+-	if (!test_bit(PWMF_ENABLED, &pwm->flags) && !duty_ns)
++	if (!pwm_is_enabled(pwm) && !duty_ns)
+ 		return 0;
+ 
+ 	rcar_pwm_update(rp, RCAR_PWMCR_SYNC, RCAR_PWMCR_SYNC, RCAR_PWMCR);
+-- 
+2.1.4
