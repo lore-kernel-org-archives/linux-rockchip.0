@@ -1,71 +1,88 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v4 09/24] regulator: pwm: use
- pwm_get/set_default_xxx() helpers where appropriate
-Date: Mon, 16 Nov 2015 13:23:59 +0100
-Message-ID: <20151116132359.39d84279@bbrezillon>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1447664207-24370-10-git-send-email-boris.brezillon@free-electrons.com>
-	<20151116105558.GB31303@sirena.org.uk>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Mon, 16 Nov 2015 11:05:16 +0100
+Message-ID: <4171977.M1BLuS2ZzP@wuerfel>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBYMVU6ZAKGQECAPMUNY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <20151116105558.GB31303-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>Lee Jones <l>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens@csie>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
-
-On Mon, 16 Nov 2015 10:55:58 +0000
-Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-
-> On Mon, Nov 16, 2015 at 09:56:32AM +0100, Boris Brezillon wrote:
+On Monday 16 November 2015 12:06:10 Masahiro Yamada wrote:
+> Many ARM sub-architectures use prompts followed by "if" conditional,
+> but it is wrong.
 > 
-> > +++ b/drivers/regulator/pwm-regulator.c
-> > @@ -56,7 +56,7 @@ static int pwm_regulator_set_voltage_sel(struct regulator_dev *rdev,
-> >  	int dutycycle;
-> >  	int ret;
-> >  
-> > -	pwm_reg_period = pwm_get_period(drvdata->pwm);
-> > +	pwm_reg_period = pwm_get_default_period(drvdata->pwm);
-> >  
-> >  	dutycycle = (pwm_reg_period *
-> >  		    drvdata->duty_cycle_table[selector].dutycycle) / 100;
+> Please notice the difference between
 > 
-> It's not clear to me that we're not looking for the current period here
-> or in the other use.  Won't configuring based on a period other than the
-> one that has been set give the wrong answer?
+>     config ARCH_FOO
+>             bool "Foo SoCs" if ARCH_MULTI_V7
+> 
+> and
+> 
+>     config ARCH_FOO
+>             bool "Foo SoCs"
+>             depends on ARCH_MULTI_V7
+> 
+> These two are *not* equivalent!
+> 
+> In the former statement, it is not ARCH_FOO, but its prompt that
+> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
+> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
+> not unmet dependency, Kconfig never warns.  This is probably not what
+> you want.
 
-Hm, maybe that's naming problem. What I call the 'default' period here
-is actually the period configured in your board file (using a PWM lookup
-table) or your DT. This value represent the period requested by the PWM
-user not a default value specified by the PWM chip driver.
+Did you encounter a case where someone actually did a 'select' on one
+of those symbols? I probably introduced a lot of them and did not
+expect that to happen.
 
-The reason we're not using the 'current' period value is because it may
-have been set by the bootloader, and may be inappropriate for our use
-case (ie. the period may be to small to represent the different
-voltages).
-ITOH, we're using the current period value when calculating the current
-voltage, because we want to get the correct voltage value, and the PWM
-device may still use the configuration set by the bootloader (not the
-default one specified in your board or DT files).
+> The former should be used only when you need to do so, and you really
+> understand what you are doing.  (In most cases, it should be wrong!)
+> 
+> For enabling/disabling sub-architectures, the latter is always correct.
+> 
+> As a good side effect, this commit fixes some entries over 80 columns
+> (mach-imx, mach-integrator, mach-mbevu).
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> ---
+> 
+> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
+> because the correct understanding of Kconfig is required for this patch.
 
-I hope this clarifies the differences between the current and default
-period, and why we should use the default value here.
+Yes, we can take it through arm-soc, I don't think it's important but
+I also don't mind the change.
 
-Best Regards,
+> diff --git a/arch/arm/mach-integrator/Kconfig b/arch/arm/mach-integrator/Kconfig
+> index 02d0834..2fa9d11 100644
+> --- a/arch/arm/mach-integrator/Kconfig
+> +++ b/arch/arm/mach-integrator/Kconfig
+> @@ -1,5 +1,6 @@
+>  config ARCH_INTEGRATOR
+> -	bool "ARM Ltd. Integrator family" if (ARCH_MULTI_V4T || ARCH_MULTI_V5 || ARCH_MULTI_V6)
+> +	bool "ARM Ltd. Integrator family"
+> +	depends on ARCH_MULTI_V4T || ARCH_MULTI_V5 || ARCH_MULTI_V6
+>  	select ARM_AMBA
+>  	select ARM_PATCH_PHYS_VIRT if MMU
+>  	select AUTO_ZRELADDR
 
-Boris
+There is one related change that I would like to see, and that is
+to convert all top-level 'config' statements that have sub-options
+into 'menuconfig' statements for consistency. At the moment, the
+platform menu has a mix of platform-selection and platform-specific
+options, and I'd like to make that more consistent.
 
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+	Arnd
