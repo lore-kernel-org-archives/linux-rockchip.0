@@ -1,56 +1,187 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH 2/2] drm/rockchip: Convert the probe function to the
- generic drm_of_component_probe()
-Date: Mon, 16 Nov 2015 16:30:16 +0000
-Message-ID: <20151116163016.GO8644@n2100.arm.linux.org.uk>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
+Subject: Re: [PATCH 1/2] drm: Improve drm_of_component_probe() to correctly
+ handle ports and remote ports.
+Date: Mon, 16 Nov 2015 16:49:07 +0000
+Message-ID: <20151116164907.GA4158@e106497-lin.cambridge.arm.com>
 References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
- <1447685093-26129-3-git-send-email-Liviu.Dudau@arm.com>
+ <1447685093-26129-2-git-send-email-Liviu.Dudau@arm.com>
+ <20151116162241.GN8644@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1447685093-26129-3-git-send-email-Liviu.Dudau@arm.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Liviu Dudau <Liviu.Dudau@arm.com>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <20151116162241.GN8644@n2100.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Eric Anholt <eric@anholt.net>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SSd2ZSB0d2Vha2VkIHlvdXIgcGF0Y2ggdG8gbWFrZSB0aGUgYWJvdmUgKGJ1Z2d5KSBjaGFuZ2Ug
-YSBsaXR0bGUgY2xlYXJlci4KCk9uIE1vbiwgTm92IDE2LCAyMDE1IGF0IDAyOjQ0OjUzUE0gKzAw
-MDAsIExpdml1IER1ZGF1IHdyb3RlOgo+IC0JZm9yIChpID0gMDs7IGkrKykgewo+IC0JCXBvcnQg
-PSBvZl9wYXJzZV9waGFuZGxlKG5wLCAicG9ydHMiLCBpKTsKPiAtCQlpZiAoIXBvcnQpCj4gLQkJ
-CWJyZWFrOwo+IC0KPiAtCQlpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50
-KSkgewo+IC0JCQlvZl9ub2RlX3B1dChwb3J0KTsKPiAtCQkJY29udGludWU7Cj4gLQkJfQo+ICAK
-PiAtCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBwb3J0LT5w
-YXJlbnQpOwo+IC0JCW9mX25vZGVfcHV0KHBvcnQpOwo+IC0JfQoKPiAtc3RhdGljIGludCBjb21w
-YXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiAtewo+IC0Jc3RydWN0IGRl
-dmljZV9ub2RlICpucCA9IGRhdGE7Cj4gLQo+IC0JcmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBucDsK
-PiAtfQoKVGhlIG9yaWdpbmFsIGFib3ZlIHBhc3NlcyBwb3J0LT5wYXJlbnQgdG8gY29tcG9uZW50
-X21hdGNoX2FkZCgpLiAgVGhpcwptZWFucyAnbnAnIGluIHRoZSBhYm92ZSBjb21wYXJlX29mKCkg
-ZnVuY3Rpb24gaXMgJ3BvcnQtPnBhcmVudCcuCgpUaGlzIG1lYW5zIHRoZSBhYm92ZSBjb21wYXJp
-c29uIGlzIGVmZmVjdGl2ZWx5OgoKCWRldi0+b2Zfbm9kZSA9PSBwb3J0LT5wYXJlbnQKClRoZSBn
-ZW5lcmljIGNvZGUgaW5zdGVhZCBkb2VzIHRoaXM6CgogICAgICAgICAgICAgICAgY29tcG9uZW50
-X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9vZiwgcG9ydCk7CgpTbyB3aGF0IHdlIGdl
-dCBpbiB0aGUgY29tcGFyaXNvbiBmdW5jdGlvbiBpcyAncG9ydCcgcmF0aGVyIHRoYW4KJ3BvcnQt
-PnBhcmVudCc6Cgo+ICtzdGF0aWMgaW50IGNvbXBhcmVfcG9ydChzdHJ1Y3QgZGV2aWNlICpkZXYs
-IHZvaWQgKmRhdGEpCj4gIHsKPiArCXN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkYXRhOwo+ICsJ
-cmV0dXJuIGRldi0+cGFyZW50LT5vZl9ub2RlID09IG5wOwo+ICt9Cgp3aGljaCBtZWFucyB0aGUg
-Y29tcGFyaXNvbiBpczoKCglkZXYtPnBhcmVudC0+b2Zfbm9kZSA9PSBwb3J0Cgp3aGljaCBpcyBh
-IGRpZmZlcmVudCBjb21wYXJpc29uIGZyb20gdGhlIGFib3ZlLgoKWW91IGluc3RlYWQgd2FudCB0
-aGlzIHRvIGJlOgoKCXJldHVybiBkZXYtPm9mX25vZGUgPT0gbnAtPnBhcmVudDsKCkhlaWtvLCBw
-bGVhc2UgdGVzdCB0aGUgYWJvdmUgY2hhbmdlIHRvIGNvbXBhcmVfcG9ydCgpIC0gSSB0aGluayB5
-b3UnbGwKZmluZCB0aGF0IHdpbGwgZml4IHlvdXIgaXNzdWUuCgpUaGFua3MuCgotLSAKRlRUQyBi
-cm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBr
-YnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Mon, Nov 16, 2015 at 04:22:41PM +0000, Russell King - ARM Linux wrot=
+e:
+> On Mon, Nov 16, 2015 at 02:44:52PM +0000, Liviu Dudau wrote:
+> > Rockchip DRM driver cannot use the same compare_of() function to ma=
+tch
+> > ports and remote ports (aka encoders) as their OF sub-trees look di=
+fferent.
+> > Add a second compare function to be used when encoders are added to=
+ the
+> > component framework and patch the existing users of the function
+> > accordingly.
+> >=20
+> > Signed-off-by: Liviu Dudau <Liviu.Dudau@arm.com>
+> > ---
+> >  drivers/gpu/drm/armada/armada_drv.c |  3 ++-
+> >  drivers/gpu/drm/drm_of.c            | 23 ++++++++++++++++++-----
+> >  drivers/gpu/drm/imx/imx-drm-core.c  |  3 ++-
+> >  include/drm/drm_of.h                |  6 ++++--
+> >  4 files changed, 26 insertions(+), 9 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/=
+armada/armada_drv.c
+> > index 77ab93d..3a2a929 100644
+> > --- a/drivers/gpu/drm/armada/armada_drv.c
+> > +++ b/drivers/gpu/drm/armada/armada_drv.c
+> > @@ -274,7 +274,8 @@ static int armada_drm_probe(struct platform_dev=
+ice *pdev)
+> >  	struct device *dev =3D &pdev->dev;
+> >  	int ret;
+> > =20
+> > -	ret =3D drm_of_component_probe(dev, compare_dev_name, &armada_mas=
+ter_ops);
+> > +	ret =3D drm_of_component_probe(dev, compare_dev_name, compare_dev=
+_name,
+> > +				     &armada_master_ops);
+> >  	if (ret !=3D -EINVAL)
+> >  		return ret;
+> > =20
+> > diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+> > index 493c05c..58fafd7 100644
+> > --- a/drivers/gpu/drm/drm_of.c
+> > +++ b/drivers/gpu/drm/drm_of.c
+> > @@ -77,7 +77,8 @@ EXPORT_SYMBOL(drm_of_find_possible_crtcs);
+> >   * Returns zero if successful, or one of the standard error codes =
+if it fails.
+> >   */
+> >  int drm_of_component_probe(struct device *dev,
+> > -			   int (*compare_of)(struct device *, void *),
+> > +			   int (*compare_port)(struct device *, void *),
+> > +			   int (*compare_encoder)(struct device *, void *),
+> >  			   const struct component_master_ops *m_ops)
+> >  {
+> >  	struct device_node *ep, *port, *remote;
+> > @@ -101,8 +102,14 @@ int drm_of_component_probe(struct device *dev,
+> >  			continue;
+> >  		}
+> > =20
+> > -		component_match_add(dev, &match, compare_of, port);
+> > -		of_node_put(port);
+> > +		component_match_add(dev, &match, compare_port, port);
+> > +		/*
+> > +		 * component_match_add keeps a reference to the port
+> > +		 * variable but does not do proper reference counting,
+> > +		 * so we cannot release the reference here. If that
+> > +		 * gets fixed, the following line should be uncommented
+> > +		 */
+> > +		/* of_node_put(port); */
+>=20
+> Even if it is fixed, this line should _never_ be uncommented.  This i=
+s
+> totally the wrong place to drop the reference.
+
+What if (as implied by the comment) component_match_add() does some ref=
+erence counting
+of sorts? (I know it doesn't get used only with OF nodes, it is more ge=
+neric). I feel
+that holding onto a reference to a counted resource without incrementin=
+g the use count
+is not the right way of doing things, or at least it should be clearly =
+documented in
+the interface of component_match_add() so that people understand the me=
+ss they are
+getting into.
+
+
+>=20
+> >  	}
+> > =20
+> >  	if (i =3D=3D 0) {
+> > @@ -140,8 +147,14 @@ int drm_of_component_probe(struct device *dev,
+> >  				continue;
+> >  			}
+> > =20
+> > -			component_match_add(dev, &match, compare_of, remote);
+> > -			of_node_put(remote);
+> > +			component_match_add(dev, &match, compare_encoder, remote);
+> > +			/*
+> > +			 * component_match_add keeps a reference to the port
+> > +			 * variable but does not do proper reference counting,
+> > +			 * so we cannot release the reference here. If that
+> > +			 * gets fixed, the following line should be uncommented
+> > +			 */
+> > +			/* of_node_put(remote); */
+>=20
+> Ditto.
+>=20
+> The component helper retains a reference (by pointer value) to the 'p=
+ort'
+> or 'remote', which is then subsequently passed into the supplied
+> 'compare_encoder' or 'compare_port' method.
+>=20
+> If you drop the reference after adding the match, then that pointer c=
+an
+> go away and be re-used for something else - and that means it's total=
+ly
+> useless to the compare functions, since the memory pointed to by it m=
+ay
+> not contain an device_node struct anymore.
+>=20
+> So, it _never_ makes sense to drop the reference at this point.
+
+See my comment above. Keeping a reference to a resource and passing it
+on to other functions (even if they are callbacks) should clearly flag =
+the
+component framework as one of the refcounters.
+
+>=20
+> Where it does make sense is when the array of matches is destroyed.  =
+=46or
+> that, we'd need to add a callback to the master ops struct so that th=
+e
+> master driver can properly release these pointers.
+>=20
+> I'd keep most of the big comments though (up to "... varable") to
+> explain why we don't drop the reference.
+
+Sorry, if I understand you correctly, you're saying that we should keep
+the following comment:
+
+			/*
+			 * component_match_add keeps a reference to the port
+			 * variable.
+			 */
+
+How does that explain why we don't drop the reference? Did you mean the=
+ comment
+should be truncated somewhere else by chance (like including the fact t=
+he
+reference counting is not done)?
+
+Best regards,
+Liviu
+
+>=20
+> --=20
+> FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+> according to speedtest.net.
+>=20
+
+--=20
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    =C2=AF\_(=E3=83=84)_/=C2=AF
