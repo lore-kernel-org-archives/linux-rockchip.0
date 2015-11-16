@@ -1,42 +1,96 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: Send events for same-fb flips
-Date: Mon, 16 Nov 2015 15:37:47 +0100
-Message-ID: <5211128.CWIxWJvBWm@diego>
-References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
- <1447678222-6858-2-git-send-email-daniels@collabora.com>
+From: Liviu Dudau <Liviu.Dudau@arm.com>
+Subject: [PATCH 2/2] drm/rockchip: Convert the probe function to the generic
+ drm_of_component_probe()
+Date: Mon, 16 Nov 2015 14:44:53 +0000
+Message-ID: <1447685093-26129-3-git-send-email-Liviu.Dudau@arm.com>
+References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447678222-6858-2-git-send-email-daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Stone <daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King <rmk+kernel@arm.linux.org.uk>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Eric Anholt <eric@anholt.net>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 16. November 2015, 12:50:22 schrieb Daniel Stone:
-> Rockchip previously treated a pageflip to the same framebuffer as a
-> no-op, discarding the event if one was requested. This breaks Weston,
-> which, when idle, sends a no-op vblank event to discover vblank
-> timings if the vblank query interface is not usable.
-> 
-> Silently dropping events is also quite a hostile thing to do to
-> userspace in general.
-> 
-> Signed-off-by: Daniel Stone <daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Cc: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-on a rk3288_veyron_jerry
-
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-Everything up to GLES2 using the binary userspace driver still works
+VGFrZSB0d286IEluaXRpYWwgYXR0ZW1wdCB0byBjb252ZXJ0IHJvY2tjaGlwIHRvIGRybV9vZl9j
+b21wb25lbnRfcHJvYmUoKQptaXNzZWQgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiBwb3J0cyBhbmQg
+ZW5jb2RlcnMgd2hlbiB1c2luZyB0aGUKY29tcGFyZV9vZigpIGZ1bmN0aW9uLiBOb3cgdGhhdCBk
+cm1fb2ZfY29tcG9uZW50X3Byb2JlKCkgaGFzIGJlZW4gZW5oYW5jZWQsCmxldCdzIHRyeSBhZ2Fp
+biB0aGUgY29udmVyc2lvbi4KClNpZ25lZC1vZmYtYnk6IExpdml1IER1ZGF1IDxMaXZpdS5EdWRh
+dUBhcm0uY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2
+LmMgfCA5OCArKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDE4
+IGluc2VydGlvbnMoKyksIDgwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jCmluZGV4IGYyMmUxZTEuLjU4MWU5OGMgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMTksNiArMTksNyBAQAog
+I2luY2x1ZGUgPGRybS9kcm1QLmg+CiAjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgog
+I2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVyLmg+CisjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgog
+I2luY2x1ZGUgPGxpbnV4L2RtYS1tYXBwaW5nLmg+CiAjaW5jbHVkZSA8bGludXgvcG1fcnVudGlt
+ZS5oPgogI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPgpAQCAtNDExLDM2ICs0MTIsNiBAQCBpbnQg
+cm9ja2NoaXBfZHJtX2VuY29kZXJfZ2V0X211eF9pZChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUs
+CiB9CiBFWFBPUlRfU1lNQk9MX0dQTChyb2NrY2hpcF9kcm1fZW5jb2Rlcl9nZXRfbXV4X2lkKTsK
+IAotc3RhdGljIGludCBjb21wYXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkK
+LXsKLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gZGF0YTsKLQotCXJldHVybiBkZXYtPm9mX25v
+ZGUgPT0gbnA7Ci19Ci0KLXN0YXRpYyB2b2lkIHJvY2tjaGlwX2FkZF9lbmRwb2ludHMoc3RydWN0
+IGRldmljZSAqZGV2LAotCQkJCSAgIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKiptYXRjaCwKLQkJ
+CQkgICBzdHJ1Y3QgZGV2aWNlX25vZGUgKnBvcnQpCi17Ci0Jc3RydWN0IGRldmljZV9ub2RlICpl
+cCwgKnJlbW90ZTsKLQotCWZvcl9lYWNoX2NoaWxkX29mX25vZGUocG9ydCwgZXApIHsKLQkJcmVt
+b3RlID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlcCk7Ci0JCWlmICghcmVtb3Rl
+IHx8ICFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKHJlbW90ZSkpIHsKLQkJCW9mX25vZGVfcHV0KHJl
+bW90ZSk7Ci0JCQljb250aW51ZTsKLQkJfSBlbHNlIGlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJs
+ZShyZW1vdGUtPnBhcmVudCkpIHsKLQkJCWRldl93YXJuKGRldiwgInBhcmVudCBkZXZpY2Ugb2Yg
+JXMgaXMgbm90IGF2YWlsYWJsZVxuIiwKLQkJCQkgcmVtb3RlLT5mdWxsX25hbWUpOwotCQkJb2Zf
+bm9kZV9wdXQocmVtb3RlKTsKLQkJCWNvbnRpbnVlOwotCQl9Ci0KLQkJY29tcG9uZW50X21hdGNo
+X2FkZChkZXYsIG1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwotCQlvZl9ub2RlX3B1dChyZW1v
+dGUpOwotCX0KLX0KLQogc3RhdGljIGludCByb2NrY2hpcF9kcm1fYmluZChzdHJ1Y3QgZGV2aWNl
+ICpkZXYpCiB7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRybTsKQEAgLTQ4MSw2MyArNDUyLDMwIEBA
+IHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50X21hc3Rlcl9vcHMgcm9ja2NoaXBfZHJtX29w
+cyA9IHsKIAkudW5iaW5kID0gcm9ja2NoaXBfZHJtX3VuYmluZCwKIH07CiAKLXN0YXRpYyBpbnQg
+cm9ja2NoaXBfZHJtX3BsYXRmb3JtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
+CitzdGF0aWMgaW50IGNvbXBhcmVfcG9ydChzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEp
+CiB7Ci0Jc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKLQlzdHJ1Y3QgY29tcG9uZW50
+X21hdGNoICptYXRjaCA9IE5VTEw7Ci0Jc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zf
+bm9kZTsKLQlzdHJ1Y3QgZGV2aWNlX25vZGUgKnBvcnQ7Ci0JaW50IGk7CisJc3RydWN0IGRldmlj
+ZV9ub2RlICpucCA9IGRhdGE7CiAKLQlpZiAoIW5wKQotCQlyZXR1cm4gLUVOT0RFVjsKLQkvKgot
+CSAqIEJpbmQgdGhlIGNydGMgcG9ydHMgZmlyc3QsIHNvIHRoYXQKLQkgKiBkcm1fb2ZfZmluZF9w
+b3NzaWJsZV9jcnRjcyBjYWxsZWQgZnJvbSBlbmNvZGVyIC5iaW5kIGNhbGxiYWNrcwotCSAqIHdv
+cmtzIGFzIGV4cGVjdGVkLgotCSAqLwotCWZvciAoaSA9IDA7OyBpKyspIHsKLQkJcG9ydCA9IG9m
+X3BhcnNlX3BoYW5kbGUobnAsICJwb3J0cyIsIGkpOwotCQlpZiAoIXBvcnQpCi0JCQlicmVhazsK
+LQotCQlpZiAoIW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50KSkgewotCQkJb2Zf
+bm9kZV9wdXQocG9ydCk7Ci0JCQljb250aW51ZTsKLQkJfQorCXJldHVybiBkZXYtPnBhcmVudC0+
+b2Zfbm9kZSA9PSBucDsKK30KIAotCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBj
+b21wYXJlX29mLCBwb3J0LT5wYXJlbnQpOwotCQlvZl9ub2RlX3B1dChwb3J0KTsKLQl9CitzdGF0
+aWMgaW50IGNvbXBhcmVfZW5jb2RlcihzdHJ1Y3QgZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCit7
+CisJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRhdGE7CiAKLQlpZiAoaSA9PSAwKSB7Ci0JCWRl
+dl9lcnIoZGV2LCAibWlzc2luZyAncG9ydHMnIHByb3BlcnR5XG4iKTsKLQkJcmV0dXJuIC1FTk9E
+RVY7Ci0JfQorCXJldHVybiBkZXYtPm9mX25vZGUgPT0gbnA7Cit9CiAKLQlpZiAoIW1hdGNoKSB7
+Ci0JCWRldl9lcnIoZGV2LCAiTm8gYXZhaWxhYmxlIHZvcCBmb3VuZCBmb3IgZGlzcGxheS1zdWJz
+eXN0ZW0uXG4iKTsKLQkJcmV0dXJuIC1FTk9ERVY7Ci0JfQotCS8qCi0JICogRm9yIGVhY2ggYm91
+bmQgY3J0YywgYmluZCB0aGUgZW5jb2RlcnMgYXR0YWNoZWQgdG8gaXRzCi0JICogcmVtb3RlIGVu
+ZHBvaW50LgotCSAqLwotCWZvciAoaSA9IDA7OyBpKyspIHsKLQkJcG9ydCA9IG9mX3BhcnNlX3Bo
+YW5kbGUobnAsICJwb3J0cyIsIGkpOwotCQlpZiAoIXBvcnQpCi0JCQlicmVhazsKLQotCQlpZiAo
+IW9mX2RldmljZV9pc19hdmFpbGFibGUocG9ydC0+cGFyZW50KSkgewotCQkJb2Zfbm9kZV9wdXQo
+cG9ydCk7Ci0JCQljb250aW51ZTsKLQkJfQorc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZv
+cm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKK3sKKwlpbnQgcmV0ID0gZHJt
+X29mX2NvbXBvbmVudF9wcm9iZSgmcGRldi0+ZGV2LCBjb21wYXJlX3BvcnQsCisJCQkJCSBjb21w
+YXJlX2VuY29kZXIsICZyb2NrY2hpcF9kcm1fb3BzKTsKIAotCQlyb2NrY2hpcF9hZGRfZW5kcG9p
+bnRzKGRldiwgJm1hdGNoLCBwb3J0KTsKLQkJb2Zfbm9kZV9wdXQocG9ydCk7Ci0JfQorCS8qIGtl
+ZXAgY29tcGF0aWJpbGl0eSB3aXRoIG9sZCBjb2RlIHRoYXQgd2FzIHJldHVybmluZyAtRU5PREVW
+ICovCisJaWYgKHJldCA9PSAtRUlOVkFMKQorCQlyZXR1cm4gLUVOT0RFVjsKIAotCXJldHVybiBj
+b21wb25lbnRfbWFzdGVyX2FkZF93aXRoX21hdGNoKGRldiwgJnJvY2tjaGlwX2RybV9vcHMsIG1h
+dGNoKTsKKwlyZXR1cm4gcmV0OwogfQogCiBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9wbGF0Zm9y
+bV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKLS0gCjIuNi4wCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
