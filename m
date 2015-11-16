@@ -1,79 +1,65 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v4 13/24] hwmon: pwm-fan: use pwm_get/set_default_xxx()
- helpers where appropriate
-Date: Mon, 16 Nov 2015 08:00:54 -0800
-Message-ID: <5649FDB6.9070305@roeck-us.net>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
- <1447664207-24370-14-git-send-email-boris.brezillon@free-electrons.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 0/2] Improve drm_of_component_probe() and move rockchip to
+ use it
+Date: Mon, 16 Nov 2015 17:07:17 +0100
+Message-ID: <2290660.pLIRHdxPYF@diego>
+References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <1447664207-24370-14-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-input-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>, Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org
-Cc: Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Jean-Christophe
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Russell King <rmk+kernel@arm.linux.org.uk>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/16/2015 12:56 AM, Boris Brezillon wrote:
-> pwm_set/get_default_xxx() helpers have been introduced to differentiate
-> the default PWM states (those retrieved through DT, PWM lookup table or
-> statically assigned by the driver) and the current ones.
-> Make use of those helpers where appropriate.
->
-> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> ---
->   drivers/hwmon/pwm-fan.c | 15 +++++++++------
->   1 file changed, 9 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/hwmon/pwm-fan.c b/drivers/hwmon/pwm-fan.c
-> index 105b964..989d7b4 100644
-> --- a/drivers/hwmon/pwm-fan.c
-> +++ b/drivers/hwmon/pwm-fan.c
-> @@ -47,8 +47,9 @@ static int  __set_pwm(struct pwm_fan_ctx *ctx, unsigned long pwm)
->   	if (ctx->pwm_value == pwm)
->   		goto exit_set_pwm_err;
->
-> -	duty = DIV_ROUND_UP(pwm * (pwm_get_period((ctx->pwm)) - 1), MAX_PWM);
-> -	ret = pwm_config(ctx->pwm, duty, pwm_get_period((ctx->pwm)));
-> +	duty = DIV_ROUND_UP(pwm * (pwm_get_default_period((ctx->pwm)) - 1),
-> +			    MAX_PWM);
-> +	ret = pwm_config(ctx->pwm, duty, pwm_get_default_period((ctx->pwm)));
-
-Same here - please no unnecessary ( ) [ which were first introduced by
-the other patch ].
-
-Guenter
-
->   	if (ret)
->   		goto exit_set_pwm_err;
->
-> @@ -234,10 +235,11 @@ static int pwm_fan_probe(struct platform_device *pdev)
->   	platform_set_drvdata(pdev, ctx);
->
->   	/* Set duty cycle to maximum allowed */
-> -	duty_cycle = pwm_get_period((ctx->pwm)) - 1;
-> +	duty_cycle = pwm_get_default_period((ctx->pwm)) - 1;
->   	ctx->pwm_value = MAX_PWM;
->
-> -	ret = pwm_config(ctx->pwm, duty_cycle, pwm_get_period((ctx->pwm)));
-> +	ret = pwm_config(ctx->pwm, duty_cycle,
-> +			 pwm_get_default_period((ctx->pwm)));
->   	if (ret) {
->   		dev_err(&pdev->dev, "Failed to configure PWM\n");
->   		return ret;
-> @@ -309,9 +311,10 @@ static int pwm_fan_resume(struct device *dev)
->   	if (ctx->pwm_value == 0)
->   		return 0;
->
-> -	duty = DIV_ROUND_UP(ctx->pwm_value * (pwm_get_period((ctx->pwm)) - 1),
-> +	duty = DIV_ROUND_UP(ctx->pwm_value *
-> +			    (pwm_get_default_period((ctx->pwm)) - 1),
->   			    MAX_PWM);
-> -	ret = pwm_config(ctx->pwm, duty, pwm_get_period((ctx->pwm)));
-> +	ret = pwm_config(ctx->pwm, duty, pwm_get_default_period((ctx->pwm)));
->   	if (ret)
->   		return ret;
->   	return pwm_enable(ctx->pwm);
->
-
+SGkgTGl2aXUsCgpBbSBNb250YWcsIDE2LiBOb3ZlbWJlciAyMDE1LCAxNDo0NDo1MSBzY2hyaWVi
+IExpdml1IER1ZGF1Ogo+IFdoZW4gSSBoYXZlIGludHJvZHVjZWQgdGhlIGRybV9vZl9jb21wb25l
+bnRfcHJvYmUoKSBmdW5jdGlvbiBJIGhhdmUgbWFuYWdlZAo+IHRvIGJyZWFrIHJvY2tjaGlwJ3Mg
+RFJNIGRyaXZlciBhcyB0aGUgY29tcGFyZV9vZigpIGZ1bmN0aW9uIGhhZCB0byBtYXRjaAo+IGJv
+dGggbG9jYWwgY3J0YyBwb3J0cyBhbmQgcmVtb3RlIGVuY29kZXIgb25lcy4gQXMgc3VnZ2VzdGVk
+IGJ5IFJ1c3NlbGwKPiBLaW5nLCBJIGhhdmUgbm93IGVuaGFuY2VkIHRoZSBkcm1fb2ZfY29tcG9u
+ZW50X3Byb2JlKCkgZnVuY3Rpb24gdG8gdGFrZSB0d28KPiBjb21wYXJpc29uIGZ1bmN0aW9ucywg
+YW5kIGNvbnZlcnRlZCAoYWdhaW4pIHJvY2tjaGlwIGRyaXZlciB0byB1c2UgaXQuCj4gCj4gSSB3
+b3VsZCByZWFsbHkgbGlrZSB0byBnZXQgc29tZSBUZXN0ZWQtQnkgdGhpcyB0aW1lIGlmIHBvc3Np
+YmxlIGZyb20gSU1YLAo+IEFybWFkYSBhbmQgUm9ja2NoaXAgZGV2ZWxvcGVycyBhcyBJIGxhY2sg
+aGFyZHdhcmUgdG8gZG8gdGhhdCBteXNlbGYuCj4gCj4gVGhlIG9ubHkgdGhpbmcgbm90IGltcGxl
+bWVudGVkIGZyb20gUnVzc2VsbCdzIHN1Z2dlc3Rpb24gbGlzdCBpcyB0aGUKPiByZW5hbWluZyBv
+ZiB0aGUgZnVuY3Rpb24gaW50byBkcm1fa21zX2NvbXBvbmVudF9wcm9iZSgpLgoKIHdpdGggdGhl
+c2UgcGF0Y2hlcyBhcHBsaWVkIEkgbG9vc2UgdGhlIGRpc3BsYXkgb24gbXkgcmszMjg4LiBBIGJp
+dCBvZiBkdW1iCmRlYnVnLW91dHB1dCBzaG93cyB0aGF0IHRoZSBjb21wYXJlIGZ1bmN0aW9uIGRv
+ZXMgc2VlbSB0byBkbyBzdHJhbmdlIHRoaW5nczoKClsgICAgMS4wMjA0NzZdIFtkcm1dIEluaXRp
+YWxpemVkIGRybSAxLjEuMCAyMDA2MDgxMApbICAgIDEuMDI1OTQzXSBkcm1fb2ZfY29tcG9uZW50
+X3Byb2JlOiBhZGRpbmcgcG9ydCAvdm9wQGZmOTQwMDAwL3BvcnQKWyAgICAxLjAzMjIyNV0gZHJt
+X29mX2NvbXBvbmVudF9wcm9iZTogYWRkaW5nIHBvcnQgL3ZvcEBmZjkzMDAwMC9wb3J0ClsgICAg
+MS4wMzg0MjFdIGRybV9vZl9jb21wb25lbnRfcHJvYmU6IGFkZGluZyBlbmNvZGVyIC9oZG1pQGZm
+OTgwMDAwClsgICAgMS4wNDQ1MzVdIGRybV9vZl9jb21wb25lbnRfcHJvYmU6IGFkZGluZyBlbmNv
+ZGVyIC9lZHBAZmY5NzAwMDAKWyAgICAxLjA1MDU2Ml0gZHJtX29mX2NvbXBvbmVudF9wcm9iZTog
+YWRkaW5nIGVuY29kZXIgL2hkbWlAZmY5ODAwMDAKWyAgICAxLjA1NjY2M10gZHJtX29mX2NvbXBv
+bmVudF9wcm9iZTogYWRkaW5nIGVuY29kZXIgL2VkcEBmZjk3MDAwMAoKLS0tLSBDb2x1bW5zOglk
+ZXYtPnBhcmVudCAvIGRldgljb21wYXJpbmcJZGV2LT5wYXJlbnQtPm9mX25vZGUJd2l0aAlucAoK
+WyAgICAxLjA2MjY4M10gY29tcGFyZV9wb3J0OiBwbGF0Zm9ybS9mZjk4MDAwMC5oZG1pIGNvbXBh
+cmluZyBOVUxMIHdpdGggL3ZvcEBmZjk0MDAwMC9wb3J0ClsgICAgMS4wNzEwMTddIGNvbXBhcmVf
+cG9ydDogcGxhdGZvcm0vZmY5ODAwMDAuaGRtaSBjb21wYXJpbmcgTlVMTCB3aXRoIC92b3BAZmY5
+NDAwMDAvcG9ydApbICAgIDEuMDc5MDI0XSBjb21wYXJlX3BvcnQ6IHBsYXRmb3JtL2ZmOTMwMDAw
+LnZvcCBjb21wYXJpbmcgTlVMTCB3aXRoIC92b3BAZmY5NDAwMDAvcG9ydApbICAgIDEuMDg3MTE3
+XSBjb21wYXJlX3BvcnQ6IHBsYXRmb3JtL2ZmOTgwMDAwLmhkbWkgY29tcGFyaW5nIE5VTEwgd2l0
+aCAvdm9wQGZmOTQwMDAwL3BvcnQKWyAgICAxLjA5NTEzMF0gY29tcGFyZV9wb3J0OiBwbGF0Zm9y
+bS9mZjkzMDAwMC52b3AgY29tcGFyaW5nIE5VTEwgd2l0aCAvdm9wQGZmOTQwMDAwL3BvcnQKWyAg
+ICAxLjEwMzA1NF0gY29tcGFyZV9wb3J0OiBwbGF0Zm9ybS9mZjk0MDAwMC52b3AgY29tcGFyaW5n
+IE5VTEwgd2l0aCAvdm9wQGZmOTQwMDAwL3BvcnQKWyAgICAxLjExMTU1M10gcGFuZWxfcmVndWxh
+dG9yOiBzdXBwbGllZCBieSB2Y2MzM19zeXMKCgpJIG5lZWQgdG8gZGlnIGRlZXBlciB0byBmaW5k
+IG91dCB3aGF0J3MgaGFwcGVuaW5nIHRoZXJlLCBidXQgbWF5YmUgeW91CmFscmVhZHkgaGF2ZSBz
+b21lIGlkZWEgaW4gdGhlIG1lYW50aW1lIDotKQoKClRoYW5rcwpIZWlrbwpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
