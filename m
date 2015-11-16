@@ -1,151 +1,186 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] usb: dwc2: host: Clear interrupts before handling them
-Date: Mon, 16 Nov 2015 09:22:09 -0800
-Message-ID: <CAD=FV=W-UWJnHZioChnVmPmJQXxMGGOUQiF81h0ZTA4invivVA@mail.gmail.com>
-References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
-	<1446582629-30091-2-git-send-email-dianders@chromium.org>
-	<87wpthnc2e.fsf@saruman.tx.rr.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH 1/2] drm: Improve drm_of_component_probe() to correctly
+ handle ports and remote ports.
+Date: Mon, 16 Nov 2015 17:22:48 +0000
+Message-ID: <20151116172248.GP8644@n2100.arm.linux.org.uk>
+References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
+ <1447685093-26129-2-git-send-email-Liviu.Dudau@arm.com>
+ <20151116162241.GN8644@n2100.arm.linux.org.uk>
+ <20151116164907.GA4158@e106497-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <87wpthnc2e.fsf-HgARHv6XitJaoMGHk7MhZQC/G2K4zDHf@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
-Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20151116164907.GA4158@e106497-lin.cambridge.arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Felipe,
-
-On Mon, Nov 16, 2015 at 8:28 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
->
-> Hi,
->
-> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->> In general it is wise to clear interrupts before processing them.  If
->> you don't do that, you can get:
->>  1. Interrupt happens
->>  2. You look at system state and process interrupt
->>  3. A new interrupt happens
->>  4. You clear interrupt without processing it.
->>
->> This patch was actually a first attempt to fix missing device insertions
->> as described in (usb: dwc2: host: Fix missing device insertions) and it
->> did solve some of the signal bouncing problems but not all of
->> them (which is why I submitted the other patch).  Specifically, this
->> patch itself would sometimes change:
->>  1. hardware sees connect
->>  2. hardware sees disconnect
->>  3. hardware sees connect
->>  4. dwc2_port_intr() - clears connect interrupt
->>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->>
->> ...to:
->>  1. hardware sees connect
->>  2. hardware sees disconnect
->>  3. dwc2_port_intr() - clears connect interrupt
->>  4. hardware sees connect
->>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->>
->> ...but with different timing then sometimes we'd still miss cable
->> insertions.
->>
->> In any case, though this patch doesn't fix any (known) problems, it
->> still seems wise as a general policy to clear interrupt before handling
->> them.
->>
->> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> ---
->> Changes in v2: None
->>
->>  drivers/usb/dwc2/core_intr.c | 55 ++++++++++++++++++++++----------------------
->>  drivers/usb/dwc2/hcd_intr.c  | 16 ++++++-------
->>  2 files changed, 35 insertions(+), 36 deletions(-)
->>
->> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
->> index 61601d16e233..2a166b7eec41 100644
->> --- a/drivers/usb/dwc2/core_intr.c
->> +++ b/drivers/usb/dwc2/core_intr.c
->> @@ -80,15 +80,16 @@ static const char *dwc2_op_state_str(struct dwc2_hsotg *hsotg)
->>   */
->>  static void dwc2_handle_usb_port_intr(struct dwc2_hsotg *hsotg)
->>  {
->> -     u32 hprt0 = dwc2_readl(hsotg->regs + HPRT0);
->> +     u32 hprt0;
->>
->> +     /* Clear interrupt */
->> +     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
->> +
->> +     hprt0 = dwc2_readl(hsotg->regs + HPRT0);
->>       if (hprt0 & HPRT0_ENACHG) {
->>               hprt0 &= ~HPRT0_ENA;
->>               dwc2_writel(hprt0, hsotg->regs + HPRT0);
->>       }
->> -
->> -     /* Clear interrupt */
->> -     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
->
-> isn't this a regression ? You're first clearing the interrupts and only
-> then reading to check what's pending, however, what's pending has just
-> been cleared. Seems like this should be:
->
-> hprt0 = dwc2_readl(HPRT0);
-> dwc2_writeal(PRTINT, GINTSTS);
-
-Actually, we could probably remove the setting of GINTSTS_PRTINT
-completely.  The docs I have say that the GINTSTS_PRTINT is read only
-and that:
-
-> The core sets this bit to indicate a change in port status of one of the
-> DWC_otg core ports in Host mode. The application must read the
-> Host Port Control and Status (HPRT) register to determine the exact
-> event that caused this interrupt. The application must clear the
-> appropriate status bit in the Host Port Control and Status register to
-> clear this bit.
-
-...so writing PRTINT is probably useless, but John can confirm.
-
-...if it wasn't useless to clear PRTINT it would depend on how things
-were implemented.  One (purely speculative) case where my patch would
-be more correct:
-
-1. Interrupt source 1 in HPRT fires.  PRTINT is latched to 1 and
-interrupt handler is called.
-2. Read HPRT
-3. Interrupt source 2 in HPRT fires.  PRTINT is already 1, so no new
-interrupt handler called.
-4. Clear PRTINT
-5. Handle interrupt source 1
-
-...now we'll never get an interrupt for interrupt source 2.
-
-
-In any case, I think this particular change is a no-op, but other
-changes in this patch (probably) aren't.
-
-
-> Also, these two patches look very large for the -rc. I'll move them to
-> v4.5 merge window unless you can convince me that they are, indeed, the
-> smallest change possible to fix the problem you're facing and that they
-> are, indeed, regressions.
-
-Patch #2 should definitely _not_ go into the RC.  It is a relatively
-intrusive patch, fixes no known issues, and has only had light
-testing.  I haven't even landed this change locally in ChromeOS since
-it's a bit scary to me I haven't found any good use for it.  I do keep
-testing with it to see if it fixes any of my issues, though.  ;)
-
-
-I'd like to see patch #1 should go into the RC since it fixes problems
-that are really easy to reproduce.  IMHO It's also neither big nor
-scary.  FWIW it's already landed in the ChromeOS tree as of Oct 20th
-(almost a month).  While it hasn't hit stable channel yet, it's been
-on beta channel and nobody has discovered any issues with it yet.
-
-
-Thanks!  :)
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+UGxlYXNlIHNlbnNpYmx5IHdyYXAgeW91ciBtZXNzYWdlcy4gIFlvdXIgbGluZXMgYXJlIGxvbmdl
+ciB0aGFuIDgwIGNoYXJhY3RlcnMgd2hpY2ggbWFrZXMgaXQgZXhjZWVkaW5nbHkgZGlmZmljdWx0
+IGZvciBzb21lIHBlb3BsZSB0byByZXBseSB0byB5b3VyIHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVy
+eSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkg
+dmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZl
+cnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5
+IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2
+ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVy
+eSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkgdmVyeSB2ZXJ5IHZlcnkg
+dmVyeSBsb25nIGxpbmVzIHdpdGhvdXQgZmlyc3QgcmVmb3JtYXR0aW5nIHRoZW0gbWFudWFsbHkg
+LSBhbmQgd2h5IHNob3VsZCB0aGV5IGJvdGhlciB0byByZXBseSBpZiB0aGV5IGhhdmUgdGhhdCBr
+aW5kIG9mIGFkZGl0aW9uYWwgd29yaz8gIFRoYW5rcy4KCk9uIE1vbiwgTm92IDE2LCAyMDE1IGF0
+IDA0OjQ5OjA3UE0gKzAwMDAsIExpdml1IER1ZGF1IHdyb3RlOgo+IE9uIE1vbiwgTm92IDE2LCAy
+MDE1IGF0IDA0OjIyOjQxUE0gKzAwMDAsIFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90ZToK
+PiA+IE9uIE1vbiwgTm92IDE2LCAyMDE1IGF0IDAyOjQ0OjUyUE0gKzAwMDAsIExpdml1IER1ZGF1
+IHdyb3RlOgo+ID4gPiBSb2NrY2hpcCBEUk0gZHJpdmVyIGNhbm5vdCB1c2UgdGhlIHNhbWUgY29t
+cGFyZV9vZigpIGZ1bmN0aW9uIHRvIG1hdGNoCj4gPiA+IHBvcnRzIGFuZCByZW1vdGUgcG9ydHMg
+KGFrYSBlbmNvZGVycykgYXMgdGhlaXIgT0Ygc3ViLXRyZWVzIGxvb2sgZGlmZmVyZW50Lgo+ID4g
+PiBBZGQgYSBzZWNvbmQgY29tcGFyZSBmdW5jdGlvbiB0byBiZSB1c2VkIHdoZW4gZW5jb2RlcnMg
+YXJlIGFkZGVkIHRvIHRoZQo+ID4gPiBjb21wb25lbnQgZnJhbWV3b3JrIGFuZCBwYXRjaCB0aGUg
+ZXhpc3RpbmcgdXNlcnMgb2YgdGhlIGZ1bmN0aW9uCj4gPiA+IGFjY29yZGluZ2x5Lgo+ID4gPiAK
+PiA+ID4gU2lnbmVkLW9mZi1ieTogTGl2aXUgRHVkYXUgPExpdml1LkR1ZGF1QGFybS5jb20+Cj4g
+PiA+IC0tLQo+ID4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMgfCAgMyAr
+Ky0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAgIHwgMjMgKysrKysr
+KysrKysrKysrKysrLS0tLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWRybS1jb3Jl
+LmMgIHwgIDMgKystCj4gPiA+ICBpbmNsdWRlL2RybS9kcm1fb2YuaCAgICAgICAgICAgICAgICB8
+ICA2ICsrKystLQo+ID4gPiAgNCBmaWxlcyBjaGFuZ2VkLCAyNiBpbnNlcnRpb25zKCspLCA5IGRl
+bGV0aW9ucygtKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm1h
+ZGEvYXJtYWRhX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMKPiA+
+ID4gaW5kZXggNzdhYjkzZC4uM2EyYTkyOSAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FybWFk
+YS9hcm1hZGFfZHJ2LmMKPiA+ID4gQEAgLTI3NCw3ICsyNzQsOCBAQCBzdGF0aWMgaW50IGFybWFk
+YV9kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiA+ID4gIAlzdHJ1Y3Qg
+ZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+ID4gPiAgCWludCByZXQ7Cj4gPiA+ICAKPiA+ID4g
+LQlyZXQgPSBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKGRldiwgY29tcGFyZV9kZXZfbmFtZSwgJmFy
+bWFkYV9tYXN0ZXJfb3BzKTsKPiA+ID4gKwlyZXQgPSBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKGRl
+diwgY29tcGFyZV9kZXZfbmFtZSwgY29tcGFyZV9kZXZfbmFtZSwKPiA+ID4gKwkJCQkgICAgICZh
+cm1hZGFfbWFzdGVyX29wcyk7Cj4gPiA+ICAJaWYgKHJldCAhPSAtRUlOVkFMKQo+ID4gPiAgCQly
+ZXR1cm4gcmV0Owo+ID4gPiAgCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJt
+X29mLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPiA+ID4gaW5kZXggNDkzYzA1Yy4uNThm
+YWZkNyAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jCj4gPiA+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYwo+ID4gPiBAQCAtNzcsNyArNzcsOCBAQCBFWFBP
+UlRfU1lNQk9MKGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKTsKPiA+ID4gICAqIFJldHVybnMg
+emVybyBpZiBzdWNjZXNzZnVsLCBvciBvbmUgb2YgdGhlIHN0YW5kYXJkIGVycm9yIGNvZGVzIGlm
+IGl0IGZhaWxzLgo+ID4gPiAgICovCj4gPiA+ICBpbnQgZHJtX29mX2NvbXBvbmVudF9wcm9iZShz
+dHJ1Y3QgZGV2aWNlICpkZXYsCj4gPiA+IC0JCQkgICBpbnQgKCpjb21wYXJlX29mKShzdHJ1Y3Qg
+ZGV2aWNlICosIHZvaWQgKiksCj4gPiA+ICsJCQkgICBpbnQgKCpjb21wYXJlX3BvcnQpKHN0cnVj
+dCBkZXZpY2UgKiwgdm9pZCAqKSwKPiA+ID4gKwkJCSAgIGludCAoKmNvbXBhcmVfZW5jb2Rlciko
+c3RydWN0IGRldmljZSAqLCB2b2lkICopLAo+ID4gPiAgCQkJICAgY29uc3Qgc3RydWN0IGNvbXBv
+bmVudF9tYXN0ZXJfb3BzICptX29wcykKPiA+ID4gIHsKPiA+ID4gIAlzdHJ1Y3QgZGV2aWNlX25v
+ZGUgKmVwLCAqcG9ydCwgKnJlbW90ZTsKPiA+ID4gQEAgLTEwMSw4ICsxMDIsMTQgQEAgaW50IGRy
+bV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LAo+ID4gPiAgCQkJY29udGlu
+dWU7Cj4gPiA+ICAJCX0KPiA+ID4gIAo+ID4gPiAtCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwg
+Jm1hdGNoLCBjb21wYXJlX29mLCBwb3J0KTsKPiA+ID4gLQkJb2Zfbm9kZV9wdXQocG9ydCk7Cj4g
+PiA+ICsJCWNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfcG9ydCwgcG9y
+dCk7Cj4gPiA+ICsJCS8qCj4gPiA+ICsJCSAqIGNvbXBvbmVudF9tYXRjaF9hZGQga2VlcHMgYSBy
+ZWZlcmVuY2UgdG8gdGhlIHBvcnQKPiA+ID4gKwkJICogdmFyaWFibGUgYnV0IGRvZXMgbm90IGRv
+IHByb3BlciByZWZlcmVuY2UgY291bnRpbmcsCj4gPiA+ICsJCSAqIHNvIHdlIGNhbm5vdCByZWxl
+YXNlIHRoZSByZWZlcmVuY2UgaGVyZS4gSWYgdGhhdAo+ID4gPiArCQkgKiBnZXRzIGZpeGVkLCB0
+aGUgZm9sbG93aW5nIGxpbmUgc2hvdWxkIGJlIHVuY29tbWVudGVkCj4gPiA+ICsJCSAqLwo+ID4g
+PiArCQkvKiBvZl9ub2RlX3B1dChwb3J0KTsgKi8KPiA+IAo+ID4gRXZlbiBpZiBpdCBpcyBmaXhl
+ZCwgdGhpcyBsaW5lIHNob3VsZCBfbmV2ZXJfIGJlIHVuY29tbWVudGVkLiAgVGhpcyBpcwo+ID4g
+dG90YWxseSB0aGUgd3JvbmcgcGxhY2UgdG8gZHJvcCB0aGUgcmVmZXJlbmNlLgo+IAo+IFdoYXQg
+aWYgKGFzIGltcGxpZWQgYnkgdGhlIGNvbW1lbnQpIGNvbXBvbmVudF9tYXRjaF9hZGQoKSBkb2Vz
+IHNvbWUKPiByZWZlcmVuY2UgY291bnRpbmcgb2Ygc29ydHM/IChJIGtub3cgaXQgZG9lc24ndCBn
+ZXQgdXNlZCBvbmx5IHdpdGgKPiBPRiBub2RlcywgaXQgaXMgbW9yZSBnZW5lcmljKS4KClB1dCB0
+aG9zZSB0d28gc2VudGVuY2VzIHRvZ2V0aGVyIGFuZCBwbGVhc2UgdGhpbmsgYWJvdXQgaXQuICBJ
+ZiB0aGUKcG9pbnRlciB0eXBlIGlzIHVua25vd24gdG8gY29tcG9uZW50X21hdGNoX2FkZCgpLCBo
+b3cgY291bGQgaXQgZXZlcgp1c2Ugb2Zfbm9kZV9nZXQoKSBvbiBpdD8gIFdoYXQgaWYgaXQncyBh
+IHN0cmluZz8gIE9yIGEgc3RydWN0IGRldmljZT8KT3Igc29tZXRoaW5nIGVsc2UuCgo+IEkgZmVl
+bCB0aGF0IGhvbGRpbmcgb250byBhIHJlZmVyZW5jZSB0byBhIGNvdW50ZWQgcmVzb3VyY2Ugd2l0
+aG91dAo+IGluY3JlbWVudGluZyB0aGUgdXNlIGNvdW50IGlzIG5vdCB0aGUgcmlnaHQgd2F5IG9m
+IGRvaW5nIHRoaW5ncywgb3IKPiBhdCBsZWFzdCBpdCBzaG91bGQgYmUgY2xlYXJseSBkb2N1bWVu
+dGVkIGluIHRoZSBpbnRlcmZhY2Ugb2YKPiBjb21wb25lbnRfbWF0Y2hfYWRkKCkgc28gdGhhdCBw
+ZW9wbGUgdW5kZXJzdGFuZCB0aGUgbWVzcyB0aGV5IGFyZQo+IGdldHRpbmcgaW50by4KClRoYXQn
+cyBqdXN0IGNyYXAuICBZb3UncmUgbm90IHRoaW5raW5nIGJlZm9yZSB5b3UgaGl0IHlvdXIga2V5
+Ym9hcmQuCldoeSBzaG91bGQgY29tcG9uZW50X21hdGNoX2FkZCgpLCB3aGljaCBoYXMgX3plcm9f
+IGtub3dsZWRnZSBhYm91dAp3aGF0IGl0J3MgYmVpbmcgdXNlZCB3aXRoLCBoYXZlIGRvY3VtZW50
+YXRpb24gYXR0YWNoZWQgdG8gaXQgd2hpY2gKd291bGQgYmU6CgoiSWYgeW91IHVzZSBjb21wb25l
+bnRfbWF0Y2hfYWRkKCkgd2l0aCBYLCB5b3UgbmVlZCB0byBkbyBYJy4gIElmIHlvdQp1c2UgaXQg
+d2l0aCBZLCB5b3UgbmVlZCB0byBkbyBZJy4gIElmIHlvdSB1c2UgaXQgd2l0aCBaLCB5b3UgbmVl
+ZCB0bwpkbyBaJy4iCgpObywgdGhhdCdzIHV0dGVybHkgaW5zYW5lLgoKPiA+IFdoZXJlIGl0IGRv
+ZXMgbWFrZSBzZW5zZSBpcyB3aGVuIHRoZSBhcnJheSBvZiBtYXRjaGVzIGlzIGRlc3Ryb3llZC4g
+IEZvcgo+ID4gdGhhdCwgd2UnZCBuZWVkIHRvIGFkZCBhIGNhbGxiYWNrIHRvIHRoZSBtYXN0ZXIg
+b3BzIHN0cnVjdCBzbyB0aGF0IHRoZQo+ID4gbWFzdGVyIGRyaXZlciBjYW4gcHJvcGVybHkgcmVs
+ZWFzZSB0aGVzZSBwb2ludGVycy4KPiA+IAo+ID4gSSdkIGtlZXAgbW9zdCBvZiB0aGUgYmlnIGNv
+bW1lbnRzIHRob3VnaCAodXAgdG8gIi4uLiB2YXJhYmxlIikgdG8KPiA+IGV4cGxhaW4gd2h5IHdl
+IGRvbid0IGRyb3AgdGhlIHJlZmVyZW5jZS4KPiAKPiBTb3JyeSwgaWYgSSB1bmRlcnN0YW5kIHlv
+dSBjb3JyZWN0bHksIHlvdSdyZSBzYXlpbmcgdGhhdCB3ZSBzaG91bGQga2VlcAo+IHRoZSBmb2xs
+b3dpbmcgY29tbWVudDoKPiAKPiAJCQkvKgo+IAkJCSAqIGNvbXBvbmVudF9tYXRjaF9hZGQga2Vl
+cHMgYSByZWZlcmVuY2UgdG8gdGhlIHBvcnQKPiAJCQkgKiB2YXJpYWJsZS4KPiAJCQkgKi8KCkV4
+YWN0bHkuCgo+IEhvdyBkb2VzIHRoYXQgZXhwbGFpbiB3aHkgd2UgZG9uJ3QgZHJvcCB0aGUgcmVm
+ZXJlbmNlPyBEaWQgeW91IG1lYW4gdGhlCj4gY29tbWVudCBzaG91bGQgYmUgdHJ1bmNhdGVkIHNv
+bWV3aGVyZSBlbHNlIGJ5IGNoYW5jZSAobGlrZSBpbmNsdWRpbmcgdGhlCj4gZmFjdCB0aGUgcmVm
+ZXJlbmNlIGNvdW50aW5nIGlzIG5vdCBkb25lKT8KCkknbSBzb3JyeSwgSSB0b3RhbGx5IGZhaWwg
+dG8gdW5kZXJzdGFuZCB3aGF0J3Mgc29vIGRpZmZpY3VsdCBmb3IgeW91IHRvCnVuZGVyc3RhbmQg
+YWJvdXQgdGhlIGFib3ZlIGNvbW1lbnQuICBJIGNhbiBvbmx5IGNvbmNsdWRlIHRoYXQgdGhlcmUn
+cwpzb21ldGhpbmcgd3JvbmcgaW4geW91ciB1bmRlcnN0YW5kaW5nIG9mIG1lbW9yeSBwb2ludGVy
+cywgYWthIGFkZHJlc3Nlcy4KCkVhY2ggYW5kIGV2ZXJ5IG1lbW9yeSBwb2ludGVyIGlzIGEgX3Jl
+ZmVyZW5jZV8gdG8gYSBwaWVjZSBvZiBkYXRhIC0ganVzdApsaWtlIHlvdXIgaG9tZSBhZGRyZXNz
+IGlzIGEgX3JlZmVyZW5jZV8gdG8gdGhlIGxvY2F0aW9uIHdoZXJlIHlvdSBsaXZlLgoKU29tZSBy
+ZWZlcmVuY2VzIHdlIGV4cGxpY2l0bHkgY291bnQsIG90aGVyIHJlZmVyZW5jZXMgd2UgaW1wbGlj
+aXRseSBjb3VudCwKYW5kIG90aGVycyB3ZSBkb24ndCBib3RoZXIuCgpJbiB0aGlzIGNhc2UsIG9m
+X3BhcnNlX3BoYW5kbGUoKSBsb29rcyB1cCB0aGUgcmVmZXJlbmNlIHRvIHRoZSByZXF1ZXN0ZWQK
+ZGV2aWNlX25vZGUgc3RydWN0IC0gYW5kIG9mX3BhcnNlX3BoYW5kbGUoKSBrbm93cyB0aGF0IHRo
+ZSByZWZlcmVuY2UgaXMKZ29pbmcgdG8gYmUgcGFzc2VkIHRvIHRoZSBjYWxsZXIsIG91dHNpZGUg
+aXQncyBjb250cm9sLCBzbyBpdCBpbmNyZW1lbnRzCnRoZSBjb3VudCBvZiByZWZlcmVuY2VzLgoK
+U28sIHRoZSBjb2RlIGluIGRybV9vZl9jb21wb25lbnRfcHJvYmUoKSBnYWlucyBhIHJlZmVyZW5j
+ZSBfYW5kXyBhIGNvdW50CmFnYWluc3QgdGhlIGRldmljZV9ub2RlLCB0aGUgY291bnQgYmVpbmcg
+YSB0b29sIHRvIGVuc3VyZSB0aGF0IHRoZQpyZWZlcmVuY2UgZG9lc24ndCBiZWNvbWUgaW52YWxp
+ZC4KCldlIHRoZW4gc3RvcmUgX291cl8gcmVmZXJlbmNlIHRvIHRoaXMgaW5zaWRlIHRoZSBjb21w
+b25lbnQgaGVscGVyIGJ5Cm1lYW5zIG9mIGNhbGxpbmcgY29tcG9uZW50X2FkZF9tYXRjaCgpLiAg
+V2UgZG9uJ3QgY2FyZSBhYm91dCBob3cgb3IKd2hlcmUgaXQncyBzdG9yZWQsIG9ubHkgdGhhdCBp
+dCBpcyBzdG9yZWQuCgpIZW5jZSwgYmVjYXVzZSB3ZSB3YW50IHRvIF9zdG9yZV8gdGhhdCBhd2F5
+LCBpdCB3b3VsZCBub3cgYmUgaW5jb3JyZWN0CnRvIGRyb3AgdGhlIGNvdW50IGFnYWluc3QgdGhl
+IHJlZmVyZW5jZS4gIFdlIGhhdmUgc3RvcmVkIGEgcmVmZXJlbmNlCnRvIGl0IGluc2lkZSBhIGhl
+bHBlciB3aGljaCBrbm93cyBub3RoaW5nIGFib3V0IHRoZSByZWZjb3VudGluZyBvZiB0aGlzCnN0
+cnVjdHVyZS4KCldoZW4gdGhlIGhlbHBlciBnZXRzIGZpeGVkLCBpdCB3aWxsIGhhdmUgYSBjYWxs
+YmFjayB0byByZWxlYXNlIHRoZSBzdG9yZWQKZGF0YSwgd2hpY2ggYmVjb21lcyB0aGUgcmVzcG9u
+c2liaWxpdHkgb2YgdGhlIGNyZWF0b3IgdG8gcHJvdmlkZS4gIEluCnRoaXMgY2FzZSwgdGhlIHJl
+ZmVyZW5jZSB0byB0aGUgZGV2aWNlIG5vZGUgYnkgd2F5IG9mIHBvaW50ZXIgdmFsdWUgaXMKcGFz
+c2VkIGJhY2sgdG8gdGhlIGNyZWF0aW5nIGNvZGUsIGF0IHdoaWNoIHBvaW50IHRoZSByZWZjb3Vu
+dCBpcyBkcm9wcGVkLgoKVGhlcmUgaXMgbm8gbmVlZCB3aGF0IHNvIGV2ZXIgZm9yIHRoZSBjb21w
+b25lbnQgc3R1ZmYgdG8gbWVzcyBhcm91bmQKd2l0aCByZWZlcmVuY2UgY291bnRzIGl0c2VsZiAt
+IGFuZCBhZGRpbmcgaXQgd2lsbCBvbmx5IG1ha2UgdGhpbmdzCm1vcmUgbWVzc3kuICBJIGNhbid0
+IHNlZSB3aHkgYW55b25lIHdvdWxkIGV2ZW4gc3VnZ2VzdCBjcmFwIGxpa2UgdGhhdC4KCldoZW5l
+dmVyIHNvbWV0aGluZyB0YWtlcyBhbiBvcGFxdWUgb2JqZWN0LCByZWZjb3VudGluZyBoYXMgdG8g
+YmUgZG9uZQpieSB0aGUgY29kZSB1c2luZyB0aGUgb3BhcXVlIG9iamVjdCwgd2hpY2ggaGFzIHRv
+IGVuc3VyZSB0aGF0IHRoZQpsaWZldGltZSBvZiB0aGUgcmVmZXJlbmNlcyBzdG9yZWQgaW4gdGhl
+IG9wYXF1ZSBvYmplY3QgYXJlIGxvbmdlciB0aGFuCnRoZSBvcGFxdWUgb2JqZWN0IGl0c2VsZi4g
+IFRoYXQncyBleGFjdGx5IHdoYXQncyBnb2luZyBvbiBoZXJlLgoKUGxlYXNlIGJlYXIgaW4gbWlu
+ZCB0aGF0IGEgX3JlZmVyZW5jZV8gYW5kIGEgX3JlZmNvdW50XyBhcmUgdHdvIHRvdGFsbHkKc2Vw
+YXJhdGUgdGhpbmdzLiAgQSByZWZlcmVuY2Ugd291bGQgYmUgYSBjb3B5IG9mIHlvdXIgaG9tZSBw
+b3N0YWwKYWRkcmVzcy4gIEEgcmVmY291bnRlciB3b3VsZCBiZSBhIGJveCBrZXB0IGF0IHlvdXIg
+aG9tZSBhZGRyZXNzIHdoaWNoCmluZGljYXRlcyBob3cgbWFueSByZWZlcmVuY2VzIHRoZXJlIGFy
+ZSBvdXQgdGhlcmUuCgpJZiB5b3UgZ2F2ZSBtZSB5b3VyIGhvbWUgcG9zdGFsIGFkZHJlc3Mgb24g
+YSBwaWVjZSBvZiBwYXBlciwgYW5kIEkgdGhlbgpwaG90b2NvcGllZCBpdCwgc3RvcmVkIGl0IGlu
+IGEgc2FmZSwgYW5kIHRoZW4gZGVzdHJveWVkIHRoZSBvcmlnaW5hbApjb3B5IHlvdSBnYXZlIG1l
+LCB3aHkgc2hvdWxkIEkgaGF2ZSB0byBpbmNyZW1lbnQgdGhlIHJlZmNvdW50ZXIgYW5kCnRoZW4g
+aW1tZWRpYXRlbHkgZGVjcmVtZW50IGl0IGFnYWluLi4uCgpUaGF0J3MgZXhhY3RseSB3aGF0J3Mg
+Z29pbmcgb24gaGVyZTogd2UncmUgX3RlbXBvcmFyaWx5XyB0cmFuc2ZlcnJpbmcKdGhlIHJlc3Bv
+bnNpYmlsaXR5IGZvciB0aGUgaGVsZCByZWZjb3VudCB0byB0aGUgb3BhcXVlIGNvbXBvbmVudApo
+ZWxwZXIuICBUaGUgZmFjdCB0aGF0IHRoZSBjb21wb25lbnQgaGVscGVyIGhhcyBubyB3YXkgdG8g
+dHJhbnNmZXIKcmVzcG9uc2liaWxpdHkgZm9yIHRoYXQgaGVsZCByZWZjb3VudCBiYWNrIHRvIHVz
+IGlzIG5laXRoZXIgaGVyZSBub3IKdGhlcmUuLi4KClRvIHJlcGhyYXNlIHVzaW5nIHRoZSBleGFt
+cGxlIGFib3ZlIC0gdGhlIHJlZmVyZW5jZSBpcyBzdG9yZWQgaW4gdGhlCnNhZmUsIGJ1dCB0aGUg
+c2FmZSBoYXMgYmVlbiBkZXN0cm95ZWQgd2l0aG91dCByZWdhcmQgZm9yIGl0cyBjb250ZW50cy4K
+VGhhdCdzIHdoZXJlIHRoZSBwcm9ibGVtIGxpZXM6IHRoZSBzYWZlIHNob3VsZCBoYXZlIGJlZW4g
+b3BlbmVkLCB0aGUKYWRkcmVzcyBvYnRhaW5lZCwgYW5kIHRoZSByZWZjb3VudGVyIGZvciB0aGUg
+YWRkcmVzcyBkZWNyZW1lbnRlZC4KCklmIHlvdSBzZXBhcmF0ZSB0aGUgY29uY2VwdCBvZiAicmVm
+ZXJlbmNlIiBmcm9tICJyZWZjb3VudCIgYW5kIHJlYWxpc2UKdGhhdCBhIHJlZmVyZW5jZSBpcyBt
+ZXJlbHkgYSBwb2ludGVyIHRvIHNvbWV0aGluZywgdGhlbiBJIGRvbid0IHNlZQp3aGF0IHRoZSBp
+c3N1ZSBpcyB3aXRoIHVuZGVyc3RhbmRpbmcgd2hhdCdzIGdvaW5nIG9uIGhlcmUuCgotLSAKRlRU
+QyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0
+MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVlZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
