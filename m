@@ -1,46 +1,79 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 09/24] regulator: pwm: use
- pwm_get/set_default_xxx() helpers where appropriate
-Date: Mon, 16 Nov 2015 10:55:58 +0000
-Message-ID: <20151116105558.GB31303@sirena.org.uk>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
- <1447664207-24370-10-git-send-email-boris.brezillon@free-electrons.com>
-Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Mon, 16 Nov 2015 11:06:22 +0000
+Message-ID: <20151116110622.GL8644@n2100.arm.linux.org.uk>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+ <4171977.M1BLuS2ZzP@wuerfel>
+ <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="z6Eq5LdranGa6ru8"
-Return-path: <linux-sunxi+bncBDQ2L75W5QGBBX7MU2ZAKGQEOGFLFLI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1447664207-24370-10-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee
+In-Reply-To: <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: yamada.masahiro@socionext.com
+Cc: arnd@arndb.de, linux-arm-kernel@lists.infradead.org, arm@kernel.org, mmarek@suse.com, olof@lixom.net, linux-kbuild@vger.kernel.org, jamie@jamieiles.com, agross@codeaurora.org, kernel@pengutronix.de, gregory.clement@free-electrons.com, linux-sh@vger.kernel.org, tsahee@annapurnalabs.com, linux-arm-msm@vger.kernel.org, linus.walleij@linaro.org, galak@codeaurora.org, plagnioj@jcrosoft.com, dinguyen@opensource.altera.com, baohua@kernel.org, shiraz.linux.kernel@gmail.com, rjui@broadcom.com, patrice.chotard@st.com, kernel@stlinux.com, soren.brinkmann@xilinx.com, horms@verge.net.au, michal.simek@xilinx.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-soc@vger.kernel.org, davidb@codeaurora.org, sbranden@broadcom.com, vireshk@kernel.org, alexandre.belloni@free-electrons.com, kyungmin.park@samsung.com, mappyland78@gmail.com, k.kozlowski@samsung.com, bcm-kernel-fee
 List-Id: linux-rockchip.vger.kernel.org
 
---z6Eq5LdranGa6ru8
-Content-Type: text/plain; charset=UTF-8
-Content-Disposition: inline
-
-On Mon, Nov 16, 2015 at 09:56:32AM +0100, Boris Brezillon wrote:
-
-> +++ b/drivers/regulator/pwm-regulator.c
-> @@ -56,7 +56,7 @@ static int pwm_regulator_set_voltage_sel(struct regulator_dev *rdev,
->  	int dutycycle;
->  	int ret;
+On Mon, Nov 16, 2015 at 10:32:51AM +0000, yamada.masahiro@socionext.com wrote:
+> Hi Arnd,
+> 
 >  
-> -	pwm_reg_period = pwm_get_period(drvdata->pwm);
-> +	pwm_reg_period = pwm_get_default_period(drvdata->pwm);
->  
->  	dutycycle = (pwm_reg_period *
->  		    drvdata->duty_cycle_table[selector].dutycycle) / 100;
+> > On Monday 16 November 2015 12:06:10 Masahiro Yamada wrote:
+> > > Many ARM sub-architectures use prompts followed by "if" conditional,
+> > > but it is wrong.
+> > >
+> > > Please notice the difference between
+> > >
+> > >     config ARCH_FOO
+> > >             bool "Foo SoCs" if ARCH_MULTI_V7
+> > >
+> > > and
+> > >
+> > >     config ARCH_FOO
+> > >             bool "Foo SoCs"
+> > >             depends on ARCH_MULTI_V7
+> > >
+> > > These two are *not* equivalent!
+> > >
+> > > In the former statement, it is not ARCH_FOO, but its prompt that
+> > > depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO is
+> > > selected by another, but ARCH_MULTI_V7 is still disabled. As it is not
+> > > unmet dependency, Kconfig never warns.  This is probably not what you
+> > > want.
+> > 
+> > Did you encounter a case where someone actually did a 'select' on one of
+> > those symbols? I probably introduced a lot of them and did not expect that
+> > to happen.
+> 
+> No, for ARM sub-architectures.
+> But, yes for the ARM core part.
+> 
+> 
+> For example, the following entry in arch/arm/Kconfig is suspicous.
+> 
+> config PCI
+>         bool "PCI support" if MIGHT_HAVE_PCI
+>         help
+>           Find out whether you have a PCI motherboard. PCI is the name of a
+>           bus system, i.e. the way the CPU talks to the other stuff inside
+>           your box. Other bus systems are ISA, EISA, MicroChannel (MCA) or
+>           VESA. If you have PCI, say Y, otherwise N.
+> 
+> 
+> 
+> 
+> Try "make ARCH=arm footbridge_defconfig" and check the .config file.
+> 
+> It defines CONFIG_PCI=y, but not CONFIG_MIGHT_HAVE_PCI.
+> I am not sure this is a sane .config or not.
 
-It's not clear to me that we're not looking for the current period here
-or in the other use.  Won't configuring based on a period other than the
-one that has been set give the wrong answer?
---z6Eq5LdranGa6ru8--
+It's correct.  "MIGHT_HAVE_PCI" is used by platforms which _might_ _have_
+_PCI_, not by platforms which _do_ _have_ _PCI_.  Platforms which _do_
+_have_ _PCI_ select PCI directly, and because "MIGHT_HAVE_PCI" is not
+set, users are not offered an option that they can never disable.
+
+-- 
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
