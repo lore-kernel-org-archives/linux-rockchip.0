@@ -1,83 +1,95 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH v4 04/24] hwmon: pwm-fan: use pwm_get_xxx()
- helpers where appropriate
-Date: Mon, 16 Nov 2015 09:00:05 -0800
-Message-ID: <564A0B95.6010603@roeck-us.net>
-References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
- <1447664207-24370-5-git-send-email-boris.brezillon@free-electrons.com>
- <5649FD5B.3000208@roeck-us.net> <20151116175322.48dba6f9@bbrezillon>
-Reply-To: linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] drm/rockchip: Convert the probe function to the
+ generic drm_of_component_probe()
+Date: Mon, 16 Nov 2015 18:01:30 +0100
+Message-ID: <1568703.PCC29q0Px2@diego>
+References: <1447685093-26129-1-git-send-email-Liviu.Dudau@arm.com>
+ <20151116163016.GO8644@n2100.arm.linux.org.uk>
+ <20151116165206.GC4158@e106497-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Return-path: <linux-sunxi+bncBCKMZDW5VIHBBHUXVCZAKGQEGKBKILQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <20151116175322.48dba6f9@bbrezillon>
-List-Post: <http://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <http://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <http://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <http://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <http://groups.google.com/group/linux-sunxi/subscribe>
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20151116165206.GC4158-2JSQmVVBSi7ZROr8t4l/smS4ubULX0JqMm0uRHvK7Nw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Liviu Dudau <Liviu.Dudau-5wv7dgnIgG8@public.gmane.org>
+Cc: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Eric Anholt <eric-WhKQ6XTQaPysTnJN9+BGXg@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/16/2015 08:53 AM, Boris Brezillon wrote:
-> On Mon, 16 Nov 2015 07:59:23 -0800
-> Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org> wrote:
->
->> On 11/16/2015 12:56 AM, Boris Brezillon wrote:
->>> Use pwm_get_xxx() helpers instead of directly accessing the pwm->xxx field.
->>> Doing that will ease adaptation of the PWM framework to support atomic
->>> update.
->>>
->>> Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
->>> ---
->>> Patch generated with the following coccinelle script:
->>>
->>> --->8---
->>> virtual patch
->>>
->>> @@
->>> struct pwm_device *p;
->>> expression e;
->>> @@
->>> (
->>> -(p)->polarity = e;
->>> +pwm_set_polarity((p), e);
->>> |
->>> -(p)->polarity
->>> +pwm_get_polarity((p))
->>
->> s/((p))/(p)/
->>
->>> |
->>> -(p)->period = e;
->>> +pwm_set_period((p), e);
->>> |
->>> -(p)->period
->>> +pwm_get_period((p))
->>
->> s/((p))/(p)/
->>
->>> |
->>> -(p)->duty_cycle = e;
->>> +pwm_set_duty_cycle((p), e);
->>
->> The (p) seems unnecessary here.
->
-> I don't get this one. You mean I should drop one the parenthesis around
-> p, right?
->
+Am Montag, 16. November 2015, 16:52:06 schrieb Liviu Dudau:
+> On Mon, Nov 16, 2015 at 04:30:16PM +0000, Russell King - ARM Linux wrote:
+> > I've tweaked your patch to make the above (buggy) change a little clearer.
+> > 
+> > On Mon, Nov 16, 2015 at 02:44:53PM +0000, Liviu Dudau wrote:
+> > > -	for (i = 0;; i++) {
+> > > -		port = of_parse_phandle(np, "ports", i);
+> > > -		if (!port)
+> > > -			break;
+> > > -
+> > > -		if (!of_device_is_available(port->parent)) {
+> > > -			of_node_put(port);
+> > > -			continue;
+> > > -		}
+> > > 
+> > > -		component_match_add(dev, &match, compare_of, port->parent);
+> > > -		of_node_put(port);
+> > > -	}
+> > > 
+> > > -static int compare_of(struct device *dev, void *data)
+> > > -{
+> > > -	struct device_node *np = data;
+> > > -
+> > > -	return dev->of_node == np;
+> > > -}
+> > 
+> > The original above passes port->parent to component_match_add().  This
+> > means 'np' in the above compare_of() function is 'port->parent'.
+> > 
+> > This means the above comparison is effectively:
+> > 	dev->of_node == port->parent
+> > 
+> > The generic code instead does this:
+> >                 component_match_add(dev, &match, compare_of, port);
+> > 
+> > So what we get in the comparison function is 'port' rather than
+> > 
+> > 'port->parent':
+> > > +static int compare_port(struct device *dev, void *data)
+> > > 
+> > >  {
+> > > 
+> > > +	struct device_node *np = data;
+> > > +	return dev->parent->of_node == np;
+> > > +}
+> > 
+> > which means the comparison is:
+> > 	dev->parent->of_node == port
+> > 
+> > which is a different comparison from the above.
+> > 
+> > You instead want this to be:
+> > 	return dev->of_node == np->parent;
+> > 
+> > Heiko, please test the above change to compare_port() - I think you'll
+> > find that will fix your issue.
+> 
+> Sorry, I admit I'm not very good at doing patches without being able
+> to test them. :(
+> 
+> Thanks for helping on this!
 
-Same as above - s/(p)/p/. It should never be necessary to write
-	pwm_set_duty_cycle((p), e)
-since
-	pwm_set_duty_cycle(p, e)
-should be the same.
+Russell's hint was correct. With the compare function changed like he pointed 
+out, I again get a working display with your patches :-)
 
-On the other side, I did not see this expression used in any of the patches,
-though maybe I missed it.
+So, thanks Russell for spotting this.
 
-Thanks,
-Guenter
+
+Heiko
