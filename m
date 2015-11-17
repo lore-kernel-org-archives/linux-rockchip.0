@@ -1,8 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
- single_tt hub
-Date: Mon, 16 Nov 2015 16:51:22 -0800
-Message-ID: <1447721484-22548-7-git-send-email-dianders@chromium.org>
+Subject: [PATCH v3 5/8] usb: dwc2: host: Keep track of and use our scheduled
+ microframe
+Date: Mon, 16 Nov 2015 16:51:21 -0800
+Message-ID: <1447721484-22548-6-git-send-email-dianders@chromium.org>
 References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,113 +22,78 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Until we have logic to determine which devices share the same TT let's
-add logic to assume that all devices on a given dwc2 controller are on
-one single_tt hub.  This is better than the previous code that assumed
-that all devices were on one multi_tt hub, since single_tt hubs
-appear (in my experience) to be much more common and any schedule that
-would work on a single_tt hub will also work on a multi_tt hub.  This
-will prevent more than 8 total low/full speed devices to be on the bus
-at one time, but that's a reasonable restriction until we've made things
-smarter.
+The microframe scheduler did a lot of work to pick the proper
+microframe.  Then dwc2_sched_periodic_split() went ahead and ignored
+which microframe we picked if it ever needed to re-assign things.
+
+Let's keep track of the uframe and then we'll always use it.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v3:
-- Assuming single_tt is new for v3; not terribly well tested (yet).
+- Keep track and use our uframe new for v3.
 
 Changes in v2: None
 
- drivers/usb/dwc2/core.h      |  1 +
- drivers/usb/dwc2/hcd_queue.c | 40 +++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 40 insertions(+), 1 deletion(-)
+ drivers/usb/dwc2/hcd.h       |  4 ++++
+ drivers/usb/dwc2/hcd_queue.c | 16 +++++++++++++---
+ 2 files changed, 17 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 567ee2c9e69f..09aa2b5ae29e 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -782,6 +782,7 @@ struct dwc2_hsotg {
- 	u16 periodic_usecs;
- 	unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
- 						   BITS_PER_LONG)];
-+	bool has_split[8];
- 	u16 frame_number;
- 	u16 periodic_qh_count;
- 	bool bus_suspended;
+diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+index a3dbc561fe3f..ff99cb44c89d 100644
+--- a/drivers/usb/dwc2/hcd.h
++++ b/drivers/usb/dwc2/hcd.h
+@@ -231,6 +231,9 @@ enum dwc2_transaction_type {
+  * @do_split:           Full/low speed endpoint on high-speed hub requires split
+  * @td_first:           Index of first activated isochronous transfer descriptor
+  * @td_last:            Index of last activated isochronous transfer descriptor
++ * @sched_uframe:       The microframe that we're scheduled to be in (0 - 7).
++ *                      Whenever we start a new split this is expected to be the
++ *                      lower 3 bits of sched_frame.
+  * @usecs:              Bandwidth in microseconds per (micro)frame
+  * @interval:           Interval between transfers in (micro)frames
+  * @sched_frame:        (Micro)frame to initialize a periodic transfer.
+@@ -263,6 +266,7 @@ struct dwc2_qh {
+ 	u8 do_split;
+ 	u8 td_first;
+ 	u8 td_last;
++	u8 sched_uframe;
+ 	u16 usecs;
+ 	u16 interval;
+ 	u16 sched_frame;
 diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 4c1d9cf482d0..c5a2edb04bec 100644
+index 64b779a5c93f..4c1d9cf482d0 100644
 --- a/drivers/usb/dwc2/hcd_queue.c
 +++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -372,10 +372,33 @@ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-  */
- static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
-+	unsigned long tmp_bmp[DIV_ROUND_UP(TOTAL_PERIODIC_USEC, BITS_PER_LONG)];
-+	unsigned long *bmp;
- 	unsigned short utime = qh->usecs;
- 	unsigned long start;
-+	int i;
+@@ -464,8 +464,10 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 
+ 		/* Set the new frame up */
+ 		if (frame >= 0) {
+-			qh->sched_frame &= ~0x7;
+-			qh->sched_frame |= (frame & 7);
++			qh->sched_uframe = frame;
 +
-+	if (qh->do_split) {
-+		/*
-+		 * Eventually we'll only want to exclude out microframes used by
-+		 * other people on the same TT as us, and then only if we're on
-+		 * a single_tt hub.  ...but until we have that logic, just
-+		 * schedule everyone together.
-+		 */
-+		bmp = tmp_bmp;
-+		memcpy(bmp, hsotg->periodic_bitmap, sizeof(tmp_bmp));
-+		start = 0;
++			/* The next frame that matches our scheduled uframe */
++			qh->sched_frame = ((qh->sched_frame + 7) & ~7) | frame;
+ 			dwc2_sch_dbg(hsotg,
+ 				     "sched_p %p sch=%04x, uf=%d, us=%d\n",
+ 				     qh, qh->sched_frame, frame,
+@@ -668,7 +670,15 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
+ 						     qh->interval);
+ 		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
+ 			qh->sched_frame = frame_number;
+-		qh->sched_frame |= 0x7;
 +
-+		for (i = 0; i < ARRAY_SIZE(max_uframe_usecs); i++) {
-+			if (hsotg->has_split[i])
-+				bitmap_set(bmp, start, max_uframe_usecs[i]);
-+			start += max_uframe_usecs[i];
-+		}
-+	} else {
-+		bmp = hsotg->periodic_bitmap;
-+	}
- 
--	start = bitmap_find_next_zero_area(hsotg->periodic_bitmap,
-+	start = bitmap_find_next_zero_area(bmp,
- 					   TOTAL_PERIODIC_USEC, 0, utime, 0);
- 	if (start >= TOTAL_PERIODIC_USEC) {
- 		dwc2_sch_dbg(hsotg, "%s: failed to assign %d us\n",
-@@ -386,6 +409,13 @@ static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 	bitmap_set(hsotg->periodic_bitmap, start, qh->usecs);
- 	qh->start_usecs = start;
- 
-+	if (qh->do_split) {
-+		for (i = start / EARLY_FRAME_USEC;
-+		     i < DIV_ROUND_UP(start + utime - 1, EARLY_FRAME_USEC);
-+		     i++)
-+			hsotg->has_split[i] = true;
-+	}
++		if (hsotg->core_params->uframe_sched > 0)
++			/* The next frame that matches our scheduled uframe */
++			qh->sched_frame = ((qh->sched_frame + 7) & ~7) |
++					  qh->sched_uframe;
++		else
++			/* The beginning of the next full frame */
++			qh->sched_frame |= 0x7;
 +
- 	dwc2_sch_dbg(hsotg, "%s: assigned %d us @ %d us\n",
- 		     __func__, qh->usecs, qh->start_usecs);
- 
-@@ -533,6 +563,7 @@ static void dwc2_deschedule_periodic(struct dwc2_hsotg *hsotg,
- {
- 	int start = qh->start_usecs;
- 	int utime = qh->usecs;
-+	int i;
- 
- 	list_del_init(&qh->qh_list_entry);
- 
-@@ -546,6 +577,13 @@ static void dwc2_deschedule_periodic(struct dwc2_hsotg *hsotg,
+ 		qh->start_split_frame = qh->sched_frame;
  	}
  
- 	bitmap_clear(hsotg->periodic_bitmap, start, utime);
-+
-+	if (qh->do_split) {
-+		for (i = start / EARLY_FRAME_USEC;
-+		     i < DIV_ROUND_UP(start + utime - 1, EARLY_FRAME_USEC);
-+		     i++)
-+			hsotg->has_split[i] = false;
-+	}
- }
- 
- /**
 -- 
 2.6.0.rc2.230.g3dd15c0
