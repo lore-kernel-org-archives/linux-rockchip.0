@@ -1,77 +1,47 @@
-From: Simon Horman <horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Tue, 17 Nov 2015 10:04:10 -0800
-Message-ID: <20151117180410.GJ23979@verge.net.au>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
+ single_tt hub
+Date: Tue, 17 Nov 2015 13:22:55 -0800
+Message-ID: <CAD=FV=UiGNb=aysw2NGPH-bOkCFvXcovNZOWzUdzR4t4AmVD-A@mail.gmail.com>
+References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
+	<1447721484-22548-7-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens@csie>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447721484-22548-7-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, Alan Stern <stern@rowland.harvard.edu>, Ming Lei <ming.lei@canonical.com>, Douglas Anderson <dianders@chromium.org>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Nov 16, 2015 at 12:06:10PM +0900, Masahiro Yamada wrote:
-> Many ARM sub-architectures use prompts followed by "if" conditional,
-> but it is wrong.
-> 
-> Please notice the difference between
-> 
->     config ARCH_FOO
->             bool "Foo SoCs" if ARCH_MULTI_V7
-> 
-> and
-> 
->     config ARCH_FOO
->             bool "Foo SoCs"
->             depends on ARCH_MULTI_V7
-> 
-> These two are *not* equivalent!
-> 
-> In the former statement, it is not ARCH_FOO, but its prompt that
-> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
-> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
-> not unmet dependency, Kconfig never warns.  This is probably not what
-> you want.
-> 
-> The former should be used only when you need to do so, and you really
-> understand what you are doing.  (In most cases, it should be wrong!)
-> 
-> For enabling/disabling sub-architectures, the latter is always correct.
-> 
-> As a good side effect, this commit fixes some entries over 80 columns
-> (mach-imx, mach-integrator, mach-mbevu).
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Hi,
+
+On Mon, Nov 16, 2015 at 4:51 PM, Douglas Anderson <dianders@chromium.org> wrote:
+> Until we have logic to determine which devices share the same TT let's
+> add logic to assume that all devices on a given dwc2 controller are on
+> one single_tt hub.  This is better than the previous code that assumed
+> that all devices were on one multi_tt hub, since single_tt hubs
+> appear (in my experience) to be much more common and any schedule that
+> would work on a single_tt hub will also work on a multi_tt hub.  This
+> will prevent more than 8 total low/full speed devices to be on the bus
+> at one time, but that's a reasonable restriction until we've made things
+> smarter.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
-> 
-> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
-> because the correct understanding of Kconfig is required for this patch.
+> Changes in v3:
+> - Assuming single_tt is new for v3; not terribly well tested (yet).
+>
+> Changes in v2: None
+>
+>  drivers/usb/dwc2/core.h      |  1 +
+>  drivers/usb/dwc2/hcd_queue.c | 40 +++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 40 insertions(+), 1 deletion(-)
 
-Thanks for cleaning this up.
+Just as a FYI I managed to make this a little better with
+<http://crosreview.com/312981>, but not posting that yet because
+Julius has pointed out some things offline that I could be doing
+better (actually schedule the low speed bus properly).  I'll hopefully
+post something more soon...
 
-
-As per a response to another ARM-SoC-wide patch:
-
-My suggestion is to split this patch up. In its current form
-it seems bound to cause some merge conflicts at some point.
-If you were to submit the mach-shmobile portion as a separate patch
-I would be happy to queue it up.
-
-That aside, I don't have any objections to the mach-shmobile change.
-So if you wish to proceed with a large patch then for the mach-shmobile
-portion:
-
-Acked-by: Simon Horman <horms+renesas-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org>
+-Doug
