@@ -1,41 +1,85 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [RESEND PATCH] drm/rockchip: import dma_buf to gem
-Date: Tue, 17 Nov 2015 16:01:21 +0800
-Message-ID: <564ADED1.7090208@rock-chips.com>
-References: <1447146717-11423-1-git-send-email-mark.yao@rock-chips.com>
- <20151116162547.GE16848@phenom.ffwll.local>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Tue, 17 Nov 2015 11:42:37 +0100
+Message-ID: <564B049D.7000108@gmail.com>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151116162547.GE16848@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Russell King <linux@arm.linux.org.uk>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDEx5pyIMTfml6UgMDA6MjUsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gVHVl
-LCBOb3YgMTAsIDIwMTUgYXQgMDU6MTE6NTdQTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4+ID5X
-ZSB3YW50IHRvIGRpc3BsYXkgYSBidWZmZXIgYWxsb2NhdGVkIGJ5IG90aGVyIGRyaXZlciwgbmVl
-ZCBpbXBvcnQKPj4gPnRoZSBidWZmZXIgdG8gZ2VtLgo+IERvZXMgdGhpcyB3b3JrIHdpdGggc29t
-ZSBvcGVuLXNvdXJjZSBkcml2ZXIvdXNlcnNwYWNlIG9yIGlzIHRoaXMgZm9yIHRoZQo+IHByb3By
-aWV0YXJ5IHN0YWNrIG9ubHk/IEEgYml0IGEgZ3JleSBhcmVhIEkgZ3Vlc3MsIGJ1dCBpZiBpdCdz
-IG9ubHkgZm9yCj4gdGhlIHByb3ByaWV0YXJ5IHN0YWNrIEkgdGhpbmsgaXQgc2hvdWxkbid0IGxh
-bmQgaW4gdXBzdHJlYW0gLSBtYWtpbmcgc3VyZQo+IGl0IHdvcmtzIHdpdGggb3Blbi1zb3VyY2Ug
-KGUuZy4gWG9yZyBwcmltZSkgZmlyc3Qgd291bGQgYmUgZ29vZC4KPiAtRGFuaWVsCj4KSGkgRGFu
-aWVsCiAgICAgSXQgd29ya3Mgb24gb3Blbi1zb3VyY2Ugd2l0aCBmb2xsb3dpbmcgc3RhY2s6CiAg
-ICAgICAgIGlvbiAtPiBkbWFfZmQgIC0+IHByaW1lIGZkIHRvIGhhbmRsZSAtPiBkcm0gLT4gdm9w
-CgogICAgIGlvbiBpcyB0aGUgYW5kcm9pZCBJT04gbWVtb3J5IGFsbG9jYXRvciwgaXRzIGRyaXZl
-ciBhdCAKdXBzdHJlYW0ta2VybmVsL2RyaXZlcnMvc3RhZ2luZy9hbmRyb2lkL2lvbi4KCiAgICAg
-V2UgaGF2ZSBzb21lIGFwcGxpY2F0aW9uIHVzZSBpb24gb24gYW5kcm9pZCwgYW5kIHdhbnQgdG8g
-cG9ydCB0byAKWG9yZyBzaWRlLgoKVGhhbmtzCgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+
+On 16/11/15 04:06, Masahiro Yamada wrote:
+> Many ARM sub-architectures use prompts followed by "if" conditional,
+> but it is wrong.
+>
+> Please notice the difference between
+>
+>      config ARCH_FOO
+>              bool "Foo SoCs" if ARCH_MULTI_V7
+>
+> and
+>
+>      config ARCH_FOO
+>              bool "Foo SoCs"
+>              depends on ARCH_MULTI_V7
+>
+> These two are *not* equivalent!
+>
+> In the former statement, it is not ARCH_FOO, but its prompt that
+> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
+> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
+> not unmet dependency, Kconfig never warns.  This is probably not what
+> you want.
+>
+> The former should be used only when you need to do so, and you really
+> understand what you are doing.  (In most cases, it should be wrong!)
+>
+> For enabling/disabling sub-architectures, the latter is always correct.
+>
+> As a good side effect, this commit fixes some entries over 80 columns
+> (mach-imx, mach-integrator, mach-mbevu).
+>
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> ---
+>
+> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
+> because the correct understanding of Kconfig is required for this patch.
+>
+
+[...]
+
+>   arch/arm/mach-mediatek/Kconfig   |  3 ++-
+
+[...]
+
+> diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
+> index aeece17..0abcc51 100644
+> --- a/arch/arm/mach-mediatek/Kconfig
+> +++ b/arch/arm/mach-mediatek/Kconfig
+> @@ -1,5 +1,6 @@
+>   menuconfig ARCH_MEDIATEK
+> -	bool "Mediatek MT65xx & MT81xx SoC" if ARCH_MULTI_V7
+> +	bool "Mediatek MT65xx & MT81xx SoC"
+> +	depends on ARCH_MULTI_V7
+>   	select ARM_GIC
+>   	select PINCTRL
+>   	select MTK_TIMER
+
+for Mediatek:
+Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
