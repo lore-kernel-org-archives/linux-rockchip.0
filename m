@@ -1,28 +1,74 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 1/2] usb: dwc2: host: Fix missing device insertions
-Date: Mon, 16 Nov 2015 18:37:12 -0800
-Message-ID: <CAD=FV=Ug2Fu3Ya0qrsF13Y4-wyounpU54n1v_gOuzkmi3dsQPQ@mail.gmail.com>
-References: <CAD=FV=VmV8K=ytmy_1fviG-9mxyT3aoSyX7nOg2KKXT_05h_TA@mail.gmail.com>
-	<Pine.LNX.4.44L0.1511161523290.1938-100000@iolanthe.rowland.org>
-	<CAD=FV=UA1oGQw0+582vBD=vDgTVFaWxxgvfGNt+kCX9YTkve_g@mail.gmail.com>
-	<2B3535C5ECE8B5419E3ECBE30077290901DC3D1B42@US01WEMBX2.internal.synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3D1B42@US01WEMBX2.internal.synopsys.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>
-Cc: Alan Stern <stern@rowland.harvard.edu>, Felipe Balbi <balbi@ti.com>, Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Zain Wang <zain.wang@rock-chips.com>
+Subject: [PATCH v4 1/4] crypto: rockchip/crypto - add DT bindings documentation
+Date: Tue, 17 Nov 2015 12:00:44 +0800
+Message-ID: <1447732847-30514-2-git-send-email-zain.wang@rock-chips.com>
+References: <1447732847-30514-1-git-send-email-zain.wang@rock-chips.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <1447732847-30514-1-git-send-email-zain.wang@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-John,
+Add DT bindings documentation for the rk3288 crypto drivers.
 
-On Mon, Nov 16, 2015 at 5:53 PM, John Youn <John.Youn@synopsys.com> wrote:
-> Yup it's only available in host mode. The same with all the
-> host-mode registers. You will get a ModeMis interrupt if you
-> try to access them in device mode.
->
-> I gave my test-by on the v2 patches earlier, no problems here.
+Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
 
-Yup, I appreciate it!  I just wanted to confirm that you tested this
-particular case in gadget mode.  ;)
+---
+Changed in v4:
+- None
+
+Changed in v3:
+- add reset property
+
+Changed in v2:
+- None
+
+Changed in v1:
+- remove the _crypto suffix
+- use "rockchip,rk3288-crypto" instead of "rockchip,rk3288"
+- remove the description of status
+
+ .../devicetree/bindings/crypto/rockchip-crypto.txt | 29 ++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+
+diff --git a/Documentation/devicetree/bindings/crypto/rockchip-crypto.txt b/Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+new file mode 100644
+index 0000000..096df34
+--- /dev/null
++++ b/Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+@@ -0,0 +1,29 @@
++Rockchip Electronics And Security Accelerator
++
++Required properties:
++- compatible: Should be "rockchip,rk3288-crypto"
++- reg: Base physical address of the engine and length of memory mapped
++       region
++- interrupts: Interrupt number
++- clocks: Reference to the clocks about crypto
++- clock-names: "aclk" used to clock data
++	       "hclk" used to clock data
++	       "sclk" used to clock crypto accelerator
++	       "apb_pclk" used to clock dma
++- resets: Must contain an entry for each entry in reset-names.
++	  See ../reset/reset.txt for details.
++- reset-names: Must include the name "crypto-rst".
++
++Examples:
++
++	crypto: cypto-controller@ff8a0000 {
++		compatible = "rockchip,rk3288-crypto";
++		reg = <0xff8a0000 0x4000>;
++		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_CRYPTO>, <&cru HCLK_CRYPTO>,
++			 <&cru SCLK_CRYPTO>, <&cru ACLK_DMAC1>;
++		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
++		resets = <&cru SRST_CRYPTO>;
++		reset-names = "crypto-rst";
++		status = "okay";
++	};
+-- 
+1.9.1
