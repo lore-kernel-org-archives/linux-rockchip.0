@@ -1,7 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v3 3/8] usb: dwc2: host: Add scheduler tracing
-Date: Mon, 16 Nov 2015 16:51:19 -0800
-Message-ID: <1447721484-22548-4-git-send-email-dianders@chromium.org>
+Subject: [PATCH v3 2/8] usb: dwc2: host: Get aligned DMA in a more supported
+ way
+Date: Mon, 16 Nov 2015 16:51:18 -0800
+Message-ID: <1447721484-22548-3-git-send-email-dianders@chromium.org>
 References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,159 +22,497 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In preparation for future changes to the scheduler let's add some
-tracing that makes it easy for us to see what's happening.  By default
-this tracing will be off.
+All other host controllers who want aligned buffers for DMA do it a
+certain way.  Let's do that too instead of working behind the USB core's
+back.  This makes our interrupt handler not take forever and also rips
+out a lot of code, simplifying things a bunch.
 
-Note that I've chosen to point tracing at ftrace rather than the console
-since performance is pretty critical for these traces and ftrace is more
-appropriate for performance-critical traces.
+This also has the side effect of removing the 65535 max transfer size
+limit.
+
+NOTE: The actual code to allocate the aligned buffers is ripped almost
+completely from the tegra EHCI driver.  At some point in the future we
+may want to add this functionality to the USB core to share more code
+everywhere.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
-Changes in v3:
-- scheduler tracing new for v3.
+Changes in v3: None
+Changes in v2:
+- Add a warn if setup_dma is not aligned (Julius Werner).
 
-Changes in v2: None
+ drivers/usb/dwc2/core.c      |  21 +-----
+ drivers/usb/dwc2/hcd.c       | 170 +++++++++++++++++++++----------------------
+ drivers/usb/dwc2/hcd.h       |  10 ---
+ drivers/usb/dwc2/hcd_intr.c  |  65 -----------------
+ drivers/usb/dwc2/hcd_queue.c |   7 +-
+ 5 files changed, 87 insertions(+), 186 deletions(-)
 
- drivers/usb/dwc2/core.h      |  9 +++++++++
- drivers/usb/dwc2/hcd.h       |  5 +++++
- drivers/usb/dwc2/hcd_intr.c  |  7 ++++++-
- drivers/usb/dwc2/hcd_queue.c | 24 +++++++++++++++++++++++-
- 4 files changed, 43 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index a66d3cb62b65..8224a1c21ac3 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -44,6 +44,15 @@
- #include <linux/usb/phy.h>
- #include "hw.h"
+diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+index ef73e498e98f..7e28cfafcfd8 100644
+--- a/drivers/usb/dwc2/core.c
++++ b/drivers/usb/dwc2/core.c
+@@ -1830,19 +1830,11 @@ void dwc2_hc_start_transfer(struct dwc2_hsotg *hsotg,
+ 	}
  
-+#ifdef DWC2_TRACE_SCHEDULER
-+#define dwc2_scheduler_printk trace_printk
-+#else
-+#define dwc2_scheduler_printk no_printk
-+#endif
-+#define dwc2_sch_dbg(hsotg, fmt, ...)					\
-+	dwc2_scheduler_printk(pr_fmt("%s: SCH: " fmt),			\
-+			      dev_name(hsotg->dev), ##__VA_ARGS__)
-+
- static inline u32 dwc2_readl(const void __iomem *addr)
- {
- 	u32 value = __raw_readl(addr);
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 8a4486e1a542..de8c0b0937e6 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -554,6 +554,11 @@ static inline u16 dwc2_frame_num_inc(u16 frame, u16 inc)
- 	return (frame + inc) & HFNUM_MAX_FRNUM;
+ 	if (hsotg->core_params->dma_enable > 0) {
+-		dma_addr_t dma_addr;
+-
+-		if (chan->align_buf) {
+-			if (dbg_hc(chan))
+-				dev_vdbg(hsotg->dev, "align_buf\n");
+-			dma_addr = chan->align_buf;
+-		} else {
+-			dma_addr = chan->xfer_dma;
+-		}
+-		dwc2_writel((u32)dma_addr, hsotg->regs + HCDMA(chan->hc_num));
++		dwc2_writel((u32)chan->xfer_dma,
++			    hsotg->regs + HCDMA(chan->hc_num));
+ 		if (dbg_hc(chan))
+ 			dev_vdbg(hsotg->dev, "Wrote %08lx to HCDMA(%d)\n",
+-				 (unsigned long)dma_addr, chan->hc_num);
++				 (unsigned long)chan->xfer_dma, chan->hc_num);
+ 	}
+ 
+ 	/* Start the split */
+@@ -3137,13 +3129,6 @@ int dwc2_get_hwparams(struct dwc2_hsotg *hsotg)
+ 	width = (hwcfg3 & GHWCFG3_XFER_SIZE_CNTR_WIDTH_MASK) >>
+ 		GHWCFG3_XFER_SIZE_CNTR_WIDTH_SHIFT;
+ 	hw->max_transfer_size = (1 << (width + 11)) - 1;
+-	/*
+-	 * Clip max_transfer_size to 65535. dwc2_hc_setup_align_buf() allocates
+-	 * coherent buffers with this size, and if it's too large we can
+-	 * exhaust the coherent DMA pool.
+-	 */
+-	if (hw->max_transfer_size > 65535)
+-		hw->max_transfer_size = 65535;
+ 	width = (hwcfg3 & GHWCFG3_PACKET_SIZE_CNTR_WIDTH_MASK) >>
+ 		GHWCFG3_PACKET_SIZE_CNTR_WIDTH_SHIFT;
+ 	hw->max_packet_count = (1 << (width + 4)) - 1;
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index e79baf73c234..33495b235b3c 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -598,9 +598,9 @@ static void dwc2_hc_init_split(struct dwc2_hsotg *hsotg,
+ 	chan->hub_port = (u8)hub_port;
  }
  
-+static inline u16 dwc2_frame_num_dec(u16 frame, u16 dec)
-+{
-+	return (frame + HFNUM_MAX_FRNUM + 1 - dec) & HFNUM_MAX_FRNUM;
+-static void *dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
+-			       struct dwc2_host_chan *chan,
+-			       struct dwc2_qtd *qtd, void *bufptr)
++static void dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
++			      struct dwc2_host_chan *chan,
++			      struct dwc2_qtd *qtd)
+ {
+ 	struct dwc2_hcd_urb *urb = qtd->urb;
+ 	struct dwc2_hcd_iso_packet_desc *frame_desc;
+@@ -620,7 +620,6 @@ static void *dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
+ 			else
+ 				chan->xfer_buf = urb->setup_packet;
+ 			chan->xfer_len = 8;
+-			bufptr = NULL;
+ 			break;
+ 
+ 		case DWC2_CONTROL_DATA:
+@@ -647,7 +646,6 @@ static void *dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
+ 				chan->xfer_dma = hsotg->status_buf_dma;
+ 			else
+ 				chan->xfer_buf = hsotg->status_buf;
+-			bufptr = NULL;
+ 			break;
+ 		}
+ 		break;
+@@ -680,14 +678,6 @@ static void *dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
+ 
+ 		chan->xfer_len = frame_desc->length - qtd->isoc_split_offset;
+ 
+-		/* For non-dword aligned buffers */
+-		if (hsotg->core_params->dma_enable > 0 &&
+-		    (chan->xfer_dma & 0x3))
+-			bufptr = (u8 *)urb->buf + frame_desc->offset +
+-					qtd->isoc_split_offset;
+-		else
+-			bufptr = NULL;
+-
+ 		if (chan->xact_pos == DWC2_HCSPLT_XACTPOS_ALL) {
+ 			if (chan->xfer_len <= 188)
+ 				chan->xact_pos = DWC2_HCSPLT_XACTPOS_ALL;
+@@ -696,63 +686,93 @@ static void *dwc2_hc_init_xfer(struct dwc2_hsotg *hsotg,
+ 		}
+ 		break;
+ 	}
 +}
 +
- static inline u16 dwc2_full_frame_num(u16 frame)
- {
- 	return (frame & HFNUM_MAX_FRNUM) >> 3;
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 84190243b8be..c3f6200bc630 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -135,13 +135,18 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
- 	while (qh_entry != &hsotg->periodic_sched_inactive) {
- 		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
- 		qh_entry = qh_entry->next;
--		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number))
-+		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
-+			dwc2_sch_dbg(hsotg,
-+				     "ready %p fn=%04x, sch=%04x\n",
-+				     qh, hsotg->frame_number, qh->sched_frame);
++#define DWC2_USB_DMA_ALIGN 4
 +
- 			/*
- 			 * Move QH to the ready list to be executed next
- 			 * (micro)frame
- 			 */
- 			list_move(&qh->qh_list_entry,
- 				  &hsotg->periodic_sched_ready);
-+		}
- 	}
- 	tr_type = dwc2_hcd_select_transactions(hsotg);
- 	if (tr_type != DWC2_TRANSACTION_NONE)
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 3e1edafc593c..93b26c8fef88 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -113,6 +113,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 						     SCHEDULE_SLOP);
- 		qh->interval = urb->interval;
-+		dwc2_sch_dbg(hsotg, "init %p sch=%04x, fn=%04x, int=%#x\n",
-+			     qh, qh->sched_frame, hsotg->frame_number,
-+			     qh->interval);
- #if 0
- 		/* Increase interrupt polling rate for debugging */
- 		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
-@@ -126,6 +129,11 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 			qh->interval *= 8;
- 			qh->sched_frame |= 0x7;
- 			qh->start_split_frame = qh->sched_frame;
-+			dwc2_sch_dbg(hsotg,
-+				     "init*8 %p sch=%04x, fn=%04x, int=%#x\n",
-+				     qh, qh->sched_frame, hsotg->frame_number,
-+				     qh->interval);
++struct dma_aligned_buffer {
++	void *kmalloc_ptr;
++	void *old_xfer_buffer;
++	u8 data[0];
++};
 +
- 		}
- 		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
- 	}
-@@ -482,6 +490,8 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		if (frame >= 0) {
- 			qh->sched_frame &= ~0x7;
- 			qh->sched_frame |= (frame & 7);
-+			dwc2_sch_dbg(hsotg, "sched_p %p sch=%04x, uf=%d\n",
-+				     qh, qh->sched_frame, frame);
- 		}
++static void dwc2_free_dma_aligned_buffer(struct urb *urb)
++{
++	struct dma_aligned_buffer *temp;
++
++	if (!(urb->transfer_flags & URB_ALIGNED_TEMP_BUFFER))
++		return;
++
++	temp = container_of(urb->transfer_buffer,
++		struct dma_aligned_buffer, data);
  
- 		if (status > 0)
-@@ -583,10 +593,16 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 
- 	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
- 			!hsotg->frame_number) {
-+		u16 new_frame;
+-	return bufptr;
++	if (usb_urb_dir_in(urb))
++		memcpy(temp->old_xfer_buffer, temp->data,
++		       urb->transfer_buffer_length);
++	urb->transfer_buffer = temp->old_xfer_buffer;
++	kfree(temp->kmalloc_ptr);
 +
- 		dev_dbg(hsotg->dev,
- 				"reset frame number counter\n");
--		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
-+		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 				SCHEDULE_SLOP);
-+
-+		dwc2_sch_dbg(hsotg, "reset %p sch=%04x=>%04x\n",
-+			     qh, qh->sched_frame, new_frame);
-+		qh->sched_frame = new_frame;
- 	}
- 
- 	/* Add the new QH to the appropriate schedule */
-@@ -652,6 +668,7 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 				      int sched_next_periodic_split)
- {
- 	u16 incr;
-+	u16 old_frame = qh->sched_frame;
- 
- 	if (sched_next_periodic_split) {
- 		qh->sched_frame = frame_number;
-@@ -677,6 +694,11 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 		qh->sched_frame |= 0x7;
- 		qh->start_split_frame = qh->sched_frame;
- 	}
-+
-+	dwc2_sch_dbg(hsotg, "next(%d) %p fn=%04x, sch=%04x=>%04x (%+d)\n",
-+		     sched_next_periodic_split, qh, frame_number, old_frame,
-+		     qh->sched_frame,
-+		     dwc2_frame_num_dec(qh->sched_frame, old_frame));
++	urb->transfer_flags &= ~URB_ALIGNED_TEMP_BUFFER;
  }
  
+-static int dwc2_hc_setup_align_buf(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+-				   struct dwc2_host_chan *chan,
+-				   struct dwc2_hcd_urb *urb, void *bufptr)
++static int dwc2_alloc_dma_aligned_buffer(struct urb *urb, gfp_t mem_flags)
+ {
+-	u32 buf_size;
+-	struct urb *usb_urb;
+-	struct usb_hcd *hcd;
++	struct dma_aligned_buffer *temp, *kmalloc_ptr;
++	size_t kmalloc_size;
+ 
+-	if (!qh->dw_align_buf) {
+-		if (chan->ep_type != USB_ENDPOINT_XFER_ISOC)
+-			buf_size = hsotg->core_params->max_transfer_size;
+-		else
+-			/* 3072 = 3 max-size Isoc packets */
+-			buf_size = 3072;
++	if (urb->num_sgs || urb->sg ||
++	    urb->transfer_buffer_length == 0 ||
++	    !((uintptr_t)urb->transfer_buffer & (DWC2_USB_DMA_ALIGN - 1)))
++		return 0;
+ 
+-		qh->dw_align_buf = kmalloc(buf_size, GFP_ATOMIC | GFP_DMA);
+-		if (!qh->dw_align_buf)
+-			return -ENOMEM;
+-		qh->dw_align_buf_size = buf_size;
+-	}
++	/* Allocate a buffer with enough padding for alignment */
++	kmalloc_size = urb->transfer_buffer_length +
++		sizeof(struct dma_aligned_buffer) + DWC2_USB_DMA_ALIGN - 1;
+ 
+-	if (chan->xfer_len) {
+-		dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n", __func__);
+-		usb_urb = urb->priv;
++	kmalloc_ptr = kmalloc(kmalloc_size, mem_flags);
++	if (!kmalloc_ptr)
++		return -ENOMEM;
+ 
+-		if (usb_urb) {
+-			if (usb_urb->transfer_flags &
+-			    (URB_SETUP_MAP_SINGLE | URB_DMA_MAP_SG |
+-			     URB_DMA_MAP_PAGE | URB_DMA_MAP_SINGLE)) {
+-				hcd = dwc2_hsotg_to_hcd(hsotg);
+-				usb_hcd_unmap_urb_for_dma(hcd, usb_urb);
+-			}
+-			if (!chan->ep_is_in)
+-				memcpy(qh->dw_align_buf, bufptr,
+-				       chan->xfer_len);
+-		} else {
+-			dev_warn(hsotg->dev, "no URB in dwc2_urb\n");
+-		}
+-	}
++	/* Position our struct dma_aligned_buffer such that data is aligned */
++	temp = PTR_ALIGN(kmalloc_ptr + 1, DWC2_USB_DMA_ALIGN) - 1;
++	temp->kmalloc_ptr = kmalloc_ptr;
++	temp->old_xfer_buffer = urb->transfer_buffer;
++	if (usb_urb_dir_out(urb))
++		memcpy(temp->data, urb->transfer_buffer,
++		       urb->transfer_buffer_length);
++	urb->transfer_buffer = temp->data;
+ 
+-	qh->dw_align_buf_dma = dma_map_single(hsotg->dev,
+-			qh->dw_align_buf, qh->dw_align_buf_size,
+-			chan->ep_is_in ? DMA_FROM_DEVICE : DMA_TO_DEVICE);
+-	if (dma_mapping_error(hsotg->dev, qh->dw_align_buf_dma)) {
+-		dev_err(hsotg->dev, "can't map align_buf\n");
+-		chan->align_buf = 0;
+-		return -EINVAL;
+-	}
++	urb->transfer_flags |= URB_ALIGNED_TEMP_BUFFER;
+ 
+-	chan->align_buf = qh->dw_align_buf_dma;
+ 	return 0;
+ }
+ 
++static int dwc2_map_urb_for_dma(struct usb_hcd *hcd, struct urb *urb,
++				      gfp_t mem_flags)
++{
++	int ret;
++
++	/* We assume setup_dma is always aligned; warn if not */
++	WARN_ON_ONCE(urb->setup_dma &&
++		     (urb->setup_dma & (DWC2_USB_DMA_ALIGN - 1)));
++
++	ret = dwc2_alloc_dma_aligned_buffer(urb, mem_flags);
++	if (ret)
++		return ret;
++
++	ret = usb_hcd_map_urb_for_dma(hcd, urb, mem_flags);
++	if (ret)
++		dwc2_free_dma_aligned_buffer(urb);
++
++	return ret;
++}
++
++static void dwc2_unmap_urb_for_dma(struct usb_hcd *hcd, struct urb *urb)
++{
++	usb_hcd_unmap_urb_for_dma(hcd, urb);
++	dwc2_free_dma_aligned_buffer(urb);
++}
++
+ /**
+  * dwc2_assign_and_init_hc() - Assigns transactions from a QTD to a free host
+  * channel and initializes the host channel to perform the transactions. The
+@@ -767,7 +787,6 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 	struct dwc2_host_chan *chan;
+ 	struct dwc2_hcd_urb *urb;
+ 	struct dwc2_qtd *qtd;
+-	void *bufptr = NULL;
+ 
+ 	if (dbg_qh(qh))
+ 		dev_vdbg(hsotg->dev, "%s(%p,%p)\n", __func__, hsotg, qh);
+@@ -829,16 +848,10 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		!dwc2_hcd_is_pipe_in(&urb->pipe_info))
+ 		urb->actual_length = urb->length;
+ 
+-	if (hsotg->core_params->dma_enable > 0) {
++	if (hsotg->core_params->dma_enable > 0)
+ 		chan->xfer_dma = urb->dma + urb->actual_length;
+-
+-		/* For non-dword aligned case */
+-		if (hsotg->core_params->dma_desc_enable <= 0 &&
+-		    (chan->xfer_dma & 0x3))
+-			bufptr = (u8 *)urb->buf + urb->actual_length;
+-	} else {
++	else
+ 		chan->xfer_buf = (u8 *)urb->buf + urb->actual_length;
+-	}
+ 
+ 	chan->xfer_len = urb->length - urb->actual_length;
+ 	chan->xfer_count = 0;
+@@ -850,27 +863,7 @@ static int dwc2_assign_and_init_hc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		chan->do_split = 0;
+ 
+ 	/* Set the transfer attributes */
+-	bufptr = dwc2_hc_init_xfer(hsotg, chan, qtd, bufptr);
+-
+-	/* Non DWORD-aligned buffer case */
+-	if (bufptr) {
+-		dev_vdbg(hsotg->dev, "Non-aligned buffer\n");
+-		if (dwc2_hc_setup_align_buf(hsotg, qh, chan, urb, bufptr)) {
+-			dev_err(hsotg->dev,
+-				"%s: Failed to allocate memory to handle non-dword aligned buffer\n",
+-				__func__);
+-			/* Add channel back to free list */
+-			chan->align_buf = 0;
+-			chan->multi_count = 0;
+-			list_add_tail(&chan->hc_list_entry,
+-				      &hsotg->free_hc_list);
+-			qtd->in_process = 0;
+-			qh->channel = NULL;
+-			return -ENOMEM;
+-		}
+-	} else {
+-		chan->align_buf = 0;
+-	}
++	dwc2_hc_init_xfer(hsotg, chan, qtd);
+ 
+ 	if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
+ 	    chan->ep_type == USB_ENDPOINT_XFER_ISOC)
+@@ -2904,6 +2897,9 @@ static struct hc_driver dwc2_hc_driver = {
+ 
+ 	.bus_suspend = _dwc2_hcd_suspend,
+ 	.bus_resume = _dwc2_hcd_resume,
++
++	.map_urb_for_dma	= dwc2_map_urb_for_dma,
++	.unmap_urb_for_dma	= dwc2_unmap_urb_for_dma,
+ };
+ 
  /*
+diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+index f105bada2fd1..8a4486e1a542 100644
+--- a/drivers/usb/dwc2/hcd.h
++++ b/drivers/usb/dwc2/hcd.h
+@@ -75,8 +75,6 @@ struct dwc2_qh;
+  *                      (micro)frame
+  * @xfer_buf:           Pointer to current transfer buffer position
+  * @xfer_dma:           DMA address of xfer_buf
+- * @align_buf:          In Buffer DMA mode this will be used if xfer_buf is not
+- *                      DWORD aligned
+  * @xfer_len:           Total number of bytes to transfer
+  * @xfer_count:         Number of bytes transferred so far
+  * @start_pkt_count:    Packet count at start of transfer
+@@ -132,7 +130,6 @@ struct dwc2_host_chan {
+ 
+ 	u8 *xfer_buf;
+ 	dma_addr_t xfer_dma;
+-	dma_addr_t align_buf;
+ 	u32 xfer_len;
+ 	u32 xfer_count;
+ 	u16 start_pkt_count;
+@@ -241,10 +238,6 @@ enum dwc2_transaction_type {
+  * @frame_usecs:        Internal variable used by the microframe scheduler
+  * @start_split_frame:  (Micro)frame at which last start split was initialized
+  * @ntd:                Actual number of transfer descriptors in a list
+- * @dw_align_buf:       Used instead of original buffer if its physical address
+- *                      is not dword-aligned
+- * @dw_align_buf_size:  Size of dw_align_buf
+- * @dw_align_buf_dma:   DMA address for dw_align_buf
+  * @qtd_list:           List of QTDs for this QH
+  * @channel:            Host channel currently processing transfers for this QH
+  * @qh_list_entry:      Entry for QH in either the periodic or non-periodic
+@@ -276,9 +269,6 @@ struct dwc2_qh {
+ 	u16 frame_usecs[8];
+ 	u16 start_split_frame;
+ 	u16 ntd;
+-	u8 *dw_align_buf;
+-	int dw_align_buf_size;
+-	dma_addr_t dw_align_buf_dma;
+ 	struct list_head qtd_list;
+ 	struct dwc2_host_chan *channel;
+ 	struct list_head qh_list_entry;
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index bda0b21b850f..84190243b8be 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -465,18 +465,6 @@ static int dwc2_update_urb_state(struct dwc2_hsotg *hsotg,
+ 		xfer_length = urb->length - urb->actual_length;
+ 	}
+ 
+-	/* Non DWORD-aligned buffer case handling */
+-	if (chan->align_buf && xfer_length) {
+-		dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n", __func__);
+-		dma_unmap_single(hsotg->dev, chan->qh->dw_align_buf_dma,
+-				chan->qh->dw_align_buf_size,
+-				chan->ep_is_in ?
+-				DMA_FROM_DEVICE : DMA_TO_DEVICE);
+-		if (chan->ep_is_in)
+-			memcpy(urb->buf + urb->actual_length,
+-					chan->qh->dw_align_buf, xfer_length);
+-	}
+-
+ 	dev_vdbg(hsotg->dev, "urb->actual_length=%d xfer_length=%d\n",
+ 		 urb->actual_length, xfer_length);
+ 	urb->actual_length += xfer_length;
+@@ -558,21 +546,6 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+ 		frame_desc->status = 0;
+ 		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+ 					chan, chnum, qtd, halt_status, NULL);
+-
+-		/* Non DWORD-aligned buffer case handling */
+-		if (chan->align_buf && frame_desc->actual_length) {
+-			dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n",
+-				 __func__);
+-			dma_unmap_single(hsotg->dev, chan->qh->dw_align_buf_dma,
+-					chan->qh->dw_align_buf_size,
+-					chan->ep_is_in ?
+-					DMA_FROM_DEVICE : DMA_TO_DEVICE);
+-			if (chan->ep_is_in)
+-				memcpy(urb->buf + frame_desc->offset +
+-					qtd->isoc_split_offset,
+-					chan->qh->dw_align_buf,
+-					frame_desc->actual_length);
+-		}
+ 		break;
+ 	case DWC2_HC_XFER_FRAME_OVERRUN:
+ 		urb->error_count++;
+@@ -593,21 +566,6 @@ static enum dwc2_halt_status dwc2_update_isoc_urb_state(
+ 		frame_desc->actual_length = dwc2_get_actual_xfer_length(hsotg,
+ 					chan, chnum, qtd, halt_status, NULL);
+ 
+-		/* Non DWORD-aligned buffer case handling */
+-		if (chan->align_buf && frame_desc->actual_length) {
+-			dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n",
+-				 __func__);
+-			dma_unmap_single(hsotg->dev, chan->qh->dw_align_buf_dma,
+-					chan->qh->dw_align_buf_size,
+-					chan->ep_is_in ?
+-					DMA_FROM_DEVICE : DMA_TO_DEVICE);
+-			if (chan->ep_is_in)
+-				memcpy(urb->buf + frame_desc->offset +
+-					qtd->isoc_split_offset,
+-					chan->qh->dw_align_buf,
+-					frame_desc->actual_length);
+-		}
+-
+ 		/* Skip whole frame */
+ 		if (chan->qh->do_split &&
+ 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC && chan->ep_is_in &&
+@@ -673,8 +631,6 @@ static void dwc2_deactivate_qh(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	}
+ 
+ no_qtd:
+-	if (qh->channel)
+-		qh->channel->align_buf = 0;
+ 	qh->channel = NULL;
+ 	dwc2_hcd_qh_deactivate(hsotg, qh, continue_split);
+ }
+@@ -939,14 +895,6 @@ static int dwc2_xfercomp_isoc_split_in(struct dwc2_hsotg *hsotg,
+ 
+ 	frame_desc->actual_length += len;
+ 
+-	if (chan->align_buf) {
+-		dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n", __func__);
+-		dma_unmap_single(hsotg->dev, chan->qh->dw_align_buf_dma,
+-				chan->qh->dw_align_buf_size, DMA_FROM_DEVICE);
+-		memcpy(qtd->urb->buf + frame_desc->offset +
+-		       qtd->isoc_split_offset, chan->qh->dw_align_buf, len);
+-	}
+-
+ 	qtd->isoc_split_offset += len;
+ 
+ 	if (frame_desc->actual_length >= frame_desc->length) {
+@@ -1169,19 +1117,6 @@ static void dwc2_update_urb_state_abn(struct dwc2_hsotg *hsotg,
+ 		xfer_length = urb->length - urb->actual_length;
+ 	}
+ 
+-	/* Non DWORD-aligned buffer case handling */
+-	if (chan->align_buf && xfer_length && chan->ep_is_in) {
+-		dev_vdbg(hsotg->dev, "%s(): non-aligned buffer\n", __func__);
+-		dma_unmap_single(hsotg->dev, chan->qh->dw_align_buf_dma,
+-				chan->qh->dw_align_buf_size,
+-				chan->ep_is_in ?
+-				DMA_FROM_DEVICE : DMA_TO_DEVICE);
+-		if (chan->ep_is_in)
+-			memcpy(urb->buf + urb->actual_length,
+-					chan->qh->dw_align_buf,
+-					xfer_length);
+-	}
+-
+ 	urb->actual_length += xfer_length;
+ 
+ 	hctsiz = dwc2_readl(hsotg->regs + HCTSIZ(chnum));
+diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+index 7d8d06cfe3c1..3e1edafc593c 100644
+--- a/drivers/usb/dwc2/hcd_queue.c
++++ b/drivers/usb/dwc2/hcd_queue.c
+@@ -232,13 +232,8 @@ struct dwc2_qh *dwc2_hcd_qh_create(struct dwc2_hsotg *hsotg,
+  */
+ void dwc2_hcd_qh_free(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ {
+-	if (hsotg->core_params->dma_desc_enable > 0) {
++	if (hsotg->core_params->dma_desc_enable > 0)
+ 		dwc2_hcd_qh_free_ddma(hsotg, qh);
+-	} else {
+-		/* kfree(NULL) is safe */
+-		kfree(qh->dw_align_buf);
+-		qh->dw_align_buf_dma = (dma_addr_t)0;
+-	}
+ 	kfree(qh);
+ }
+ 
 -- 
 2.6.0.rc2.230.g3dd15c0
