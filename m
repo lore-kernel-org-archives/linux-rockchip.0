@@ -1,104 +1,73 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 4/7] phy: rockchip-usb: add missing of_node_put
-Date: Wed, 18 Nov 2015 22:42:32 +0100
-Message-ID: <3319805.OP3X7Mj3av@diego>
-References: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr> <1447673600-8881-5-git-send-email-Julia.Lawall@lip6.fr>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip
+ reboot notifier driver
+Date: Wed, 18 Nov 2015 16:59:04 -0600
+Message-ID: <20151118225904.GA5429@rob-hp-laptop>
+References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
+ <1447840410-19794-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447673600-8881-5-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Andrew Lunn <andrew@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>, Jason Cooper <jason@lakedaemon.net>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1447840410-19794-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 16. November 2015, 12:33:17 schrieb Julia Lawall:
-> for_each_available_child_of_node performs an of_node_get on each iteration,
-> so a return from the middle of the loop requires an of_node_put.
-> 
-> A simplified version of the semantic patch that finds this problem is as
-> follows (http://coccinelle.lip6.fr):
-> 
-> // <smpl>
-> @@
-> expression root,e;
-> local idexpression child;
-> @@
-> 
->  for_each_available_child_of_node(root, child) {
->    ... when != of_node_put(child)
->        when != e = child
-> (
->    return child;
-> 
-> *  return ...;
-> )
->    ...
->  }
-> // </smpl>
-> 
-> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
+> Add devicetree binding document for rockchip reboot nofifier driver
 
-After 
+Just reading the subject this is way too specific to the Linux driver 
+needs rather than a h/w description. Please don't create fake DT nodes 
+just to bind to drivers. Whatever &pmu is is probably what should have 
+the DT node. Let the driver for it create child devices if you need 
+that.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-on a rk3288-veyron chromebook
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-
+Rob
+> 
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
 > ---
->  drivers/phy/phy-rockchip-usb.c |   17 ++++++++++++-----
->  1 file changed, 12 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-> index 91d6f34..62c43c4 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -108,13 +108,16 @@ static int rockchip_usb_phy_probe(struct
-> platform_device *pdev)
+> Changes in v3:
+>  - add dt binding
 > 
->  	for_each_available_child_of_node(dev->of_node, child) {
->  		rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
-> -		if (!rk_phy)
-> -			return -ENOMEM;
-> +		if (!rk_phy) {
-> +			err = -ENOMEM;
-> +			goto put_child;
-> +		}
+> Changes in v2: None
 > 
->  		if (of_property_read_u32(child, "reg", &reg_offset)) {
->  			dev_err(dev, "missing reg property in node %s\n",
->  				child->name);
-> -			return -EINVAL;
-> +			err = -EINVAL;
-> +			goto put_child;
->  		}
+>  .../bindings/soc/rockchip/rockchip-reboot.txt          | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot.txt
 > 
->  		rk_phy->reg_offset = reg_offset;
-> @@ -127,18 +130,22 @@ static int rockchip_usb_phy_probe(struct
-> platform_device *pdev) rk_phy->phy = devm_phy_create(dev, child, &ops);
->  		if (IS_ERR(rk_phy->phy)) {
->  			dev_err(dev, "failed to create PHY\n");
-> -			return PTR_ERR(rk_phy->phy);
-> +			err = PTR_ERR(rk_phy->phy);
-> +			goto put_child;
->  		}
->  		phy_set_drvdata(rk_phy->phy, rk_phy);
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot.txt b/Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot.txt
+> new file mode 100644
+> index 0000000..6f69c8d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot.txt
+> @@ -0,0 +1,18 @@
+> +Rockchip reboot notifier driver
+> +
+> +This driver get reboot mode arguments from userspace
+> +and stores it in special register. Then the bootloader
+> +will read it and take different action according the
+> +argument stored.
+> +
+> +Required properties:
+> +- compatible: should be "rockchip,reboot"
+> +- regmap: this is phandle to the register map node
+> +- offset: offset in the register map for the storage register (in bytes)
+> +
+> +Examples:
+> +	reboot {
+> +	   compatible = "rockchip,reboot";
+> +	   regmap = <&pmu>;
+> +	   offset = <0x94>;
+> +	};
+> -- 
+> 1.9.1
 > 
->  		/* only power up usb phy when it use, so disable it when init*/
->  		err = rockchip_usb_phy_power(rk_phy, 1);
->  		if (err)
-> -			return err;
-> +			goto put_child;
->  	}
 > 
->  	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
->  	return PTR_ERR_OR_ZERO(phy_provider);
-> +put_child:
-> +	of_node_put(child);
-> +	return err;
->  }
-> 
->  static const struct of_device_id rockchip_usb_phy_dt_ids[] = {
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
