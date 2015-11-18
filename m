@@ -1,53 +1,84 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH v3 1/5] ARM: dts: rockchip: rk3288-veyron: rename pinctrl
- node reboot to reset
-Date: Wed, 18 Nov 2015 17:18:33 +0300
-Message-ID: <564C88B9.3060109@cogentembedded.com>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
- <1447840246-19744-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 4/7] phy: rockchip-usb: add missing of_node_put
+Date: Wed, 18 Nov 2015 20:27:07 +0100
+Message-ID: <19587543.sZ81DoLUBT@diego>
+References: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr> <1447673600-8881-5-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447840246-19744-1-git-send-email-andy.yan@rock-chips.com>
+In-Reply-To: <1447673600-8881-5-git-send-email-Julia.Lawall@lip6.fr>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>, heiko@sntech.de, linux-kernel@vger.kernel.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, khilman@linaro.org, linux@arm.linux.org.uk, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, benchan@google.com, sjg@chromium.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, galak@codeaurora.org, treding@nvidia.com, linux-arm-kernel@lists.infradead.org, wxt@rock-chips.com
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Andrew Lunn <andrew@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>, Jason Cooper <jason@lakedaemon.net>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello.
+Hi Julia,
 
-On 11/18/2015 12:50 PM, Andy Yan wrote:
+Am Montag, 16. November 2015, 12:33:17 schrieb Julia Lawall:
+> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+> index 91d6f34..62c43c4 100644
+> --- a/drivers/phy/phy-rockchip-usb.c
+> +++ b/drivers/phy/phy-rockchip-usb.c
+> @@ -108,13 +108,16 @@ static int rockchip_usb_phy_probe(struct
+> platform_device *pdev)
+> 
+>  	for_each_available_child_of_node(dev->of_node, child) {
+>  		rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
+> -		if (!rk_phy)
+> -			return -ENOMEM;
+> +		if (!rk_phy) {
+> +			err = -ENOMEM;
+> +			goto put_child;
+> +		}
+> 
+>  		if (of_property_read_u32(child, "reg", &reg_offset)) {
+>  			dev_err(dev, "missing reg property in node %s\n",
+>  				child->name);
+> -			return -EINVAL;
+> +			err = -EINVAL;
+> +			goto put_child;
+>  		}
+> 
+>  		rk_phy->reg_offset = reg_offset;
+> @@ -127,18 +130,22 @@ static int rockchip_usb_phy_probe(struct
+> platform_device *pdev) rk_phy->phy = devm_phy_create(dev, child, &ops);
+>  		if (IS_ERR(rk_phy->phy)) {
+>  			dev_err(dev, "failed to create PHY\n");
+> -			return PTR_ERR(rk_phy->phy);
+> +			err = PTR_ERR(rk_phy->phy);
+> +			goto put_child;
+>  		}
+>  		phy_set_drvdata(rk_phy->phy, rk_phy);
+> 
+>  		/* only power up usb phy when it use, so disable it when init*/
+>  		err = rockchip_usb_phy_power(rk_phy, 1);
+>  		if (err)
+> -			return err;
+> +			goto put_child;
+>  	}
+> 
+>  	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+>  	return PTR_ERR_OR_ZERO(phy_provider);
+> +put_child:
+> +	of_node_put(child);
+> +	return err;
+>  }
+> 
+>  static const struct of_device_id rockchip_usb_phy_dt_ids[] = {
 
-> rename pinctrl node reboot to reset to match it's lable name
+hmm, while I agree that the rockchip phy has an issue in the node lifecycle, 
+I'm not sure that patch fixes it fully.
 
-    Label? BTW, I'm not seeing it on this node...
+It currently iterates over each phy, but would only of_node_put the phy it 
+handled last. So if an error happens on the 3rd phy, the first 2 are already 
+instantiated and would also get removed when the overall probe fails, but 
+their of_node would never be "put".
 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->
-> ---
->
-> Changes in v3:
->   - rename a pinctrl node in rk3288-veyron, the original name will be
->     used in the incoming reboot notifier driver
->
-> Changes in v2: None
->
->   arch/arm/boot/dts/rk3288-veyron.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> index 2fa7a0d..292aaaf 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-> +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-> @@ -495,7 +495,7 @@
->   		};
->   	};
->
-> -	reboot {
-> +	reset {
->   		ap_warm_reset_h: ap-warm-reset-h {
->   			rockchip,pins = <RK_GPIO0 13 RK_FUNC_GPIO &pcfg_pull_none>;
->   		};
+I think this goes together with what Brian described in patch1 having the phy-
+core also handle the node-reference. When this is included we could just 
+always put the of_node when finishing its loop iteration, as the phy-core will 
+have its own reference on the node.
 
-MBR, Sergei
+
+Heiko
