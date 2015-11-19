@@ -1,124 +1,48 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] usb: dwc2: host: Clear interrupts before handling them
-Date: Thu, 19 Nov 2015 08:37:33 -0800
-Message-ID: <CAD=FV=WSypaenJcRjhneAkcW=K5J-q-+c7L2=vJj5YAoGaFncw@mail.gmail.com>
-References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
-	<1446582629-30091-2-git-send-email-dianders@chromium.org>
-	<87wpthnc2e.fsf@saruman.tx.rr.com>
-	<CAD=FV=W-UWJnHZioChnVmPmJQXxMGGOUQiF81h0ZTA4invivVA@mail.gmail.com>
-	<2B3535C5ECE8B5419E3ECBE30077290901DC3D696B@US01WEMBX2.internal.synopsys.com>
+From: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: use const and __initconst for smp_operations
+Date: Thu, 19 Nov 2015 16:52:38 +0000
+Message-ID: <564DFE56.3030508@hisilicon.com>
+References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
+ <1447551593-22246-3-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3D696B-Yu2iAY70zvrYN67daEjeMPufCSb+aD3WLzEdoUbNIic@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447551593-22246-3-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, =?windows-1252?Q?Emilio_L=F3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Maxime Ripard <maxime.ripa>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Masahiro,
 
-On Wed, Nov 18, 2015 at 5:43 PM, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
-> On 11/16/2015 9:22 AM, Doug Anderson wrote:
->> Felipe,
->>
->> On Mon, Nov 16, 2015 at 8:28 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
->>>
->>> Hi,
->>>
->>> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->>>> In general it is wise to clear interrupts before processing them.  If
->>>> you don't do that, you can get:
->>>>  1. Interrupt happens
->>>>  2. You look at system state and process interrupt
->>>>  3. A new interrupt happens
->>>>  4. You clear interrupt without processing it.
->>>>
->>>> This patch was actually a first attempt to fix missing device insertions
->>>> as described in (usb: dwc2: host: Fix missing device insertions) and it
->>>> did solve some of the signal bouncing problems but not all of
->>>> them (which is why I submitted the other patch).  Specifically, this
->>>> patch itself would sometimes change:
->>>>  1. hardware sees connect
->>>>  2. hardware sees disconnect
->>>>  3. hardware sees connect
->>>>  4. dwc2_port_intr() - clears connect interrupt
->>>>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->>>>
->>>> ...to:
->>>>  1. hardware sees connect
->>>>  2. hardware sees disconnect
->>>>  3. dwc2_port_intr() - clears connect interrupt
->>>>  4. hardware sees connect
->>>>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->>>>
->>>> ...but with different timing then sometimes we'd still miss cable
->>>> insertions.
->>>>
->>>> In any case, though this patch doesn't fix any (known) problems, it
->>>> still seems wise as a general policy to clear interrupt before handling
->>>> them.
->>>>
->>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>> ---
->>>> Changes in v2: None
->>>>
->>>>  drivers/usb/dwc2/core_intr.c | 55 ++++++++++++++++++++++----------------------
->>>>  drivers/usb/dwc2/hcd_intr.c  | 16 ++++++-------
->>>>  2 files changed, 35 insertions(+), 36 deletions(-)
->>>>
->>>> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
->>>> index 61601d16e233..2a166b7eec41 100644
->>>> --- a/drivers/usb/dwc2/core_intr.c
->>>> +++ b/drivers/usb/dwc2/core_intr.c
->>>> @@ -80,15 +80,16 @@ static const char *dwc2_op_state_str(struct dwc2_hsotg *hsotg)
->>>>   */
->>>>  static void dwc2_handle_usb_port_intr(struct dwc2_hsotg *hsotg)
->>>>  {
->>>> -     u32 hprt0 = dwc2_readl(hsotg->regs + HPRT0);
->>>> +     u32 hprt0;
->>>>
->>>> +     /* Clear interrupt */
->>>> +     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
->>>> +
->>>> +     hprt0 = dwc2_readl(hsotg->regs + HPRT0);
->>>>       if (hprt0 & HPRT0_ENACHG) {
->>>>               hprt0 &= ~HPRT0_ENA;
->>>>               dwc2_writel(hprt0, hsotg->regs + HPRT0);
->>>>       }
->>>> -
->>>> -     /* Clear interrupt */
->>>> -     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
->>>
->>> isn't this a regression ? You're first clearing the interrupts and only
->>> then reading to check what's pending, however, what's pending has just
->>> been cleared. Seems like this should be:
->>>
->>> hprt0 = dwc2_readl(HPRT0);
->>> dwc2_writeal(PRTINT, GINTSTS);
->>
->> Actually, we could probably remove the setting of GINTSTS_PRTINT
->> completely.  The docs I have say that the GINTSTS_PRTINT is read only
->> and that:
->>
->>> The core sets this bit to indicate a change in port status of one of the
->>> DWC_otg core ports in Host mode. The application must read the
->>> Host Port Control and Status (HPRT) register to determine the exact
->>> event that caused this interrupt. The application must clear the
->>> appropriate status bit in the Host Port Control and Status register to
->>> clear this bit.
->>
->> ...so writing PRTINT is probably useless, but John can confirm.
->>
->
-> Yup, it seems it can be removed.
+On 15/11/2015 01:39, Masahiro Yamada wrote:
+> These smp_operations structures are not over-written, so add "const"
+> qualifier and replace __initdata with __initconst.
+> 
+> Also, add "static" where it is possible.
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Acked-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+> Acked-by: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> Acked-by: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
+> ---
+> 
+>  arch/arm/mach-hisi/platmcpm.c        | 2 +-
+>  arch/arm/mach-hisi/platsmp.c         | 6 +++---
 
-How do you guys want this handled?  Should I send up a new version of
-this patch?  ...or should I send a followon patch that does this
-removal?
 
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks!
+For the Hisilicon part,
+Acked-by: Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
+
+Best Regards,
+Wei
