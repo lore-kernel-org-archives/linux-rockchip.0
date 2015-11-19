@@ -1,43 +1,81 @@
 From: Lin Huang <hl@rock-chips.com>
-Subject: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
-Date: Thu, 19 Nov 2015 18:21:10 +0800
-Message-ID: <1447928471-14448-2-git-send-email-hl@rock-chips.com>
+Subject: [PATCH 2/2] devfreq: rockchip: support rk3399 dmc devfreq
+Date: Thu, 19 Nov 2015 18:21:11 +0800
+Message-ID: <1447928471-14448-3-git-send-email-hl@rock-chips.com>
 References: <1447928471-14448-1-git-send-email-hl@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1447928471-14448-1-git-send-email-hl@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de, dianders@chromium.org, mturquette@baylibre.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com
 Cc: linux-clk@vger.kernel.org, sboyd@codeaurora.org, dbasehore@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-support rk3399 dmc clock driver. Note, ddr set rate function will
-use dcf controller which run in ATF, it need to fishish it when rk3399
-arm trust firmware ready.
+rk3399 do ddr frequency scaling use devfreq framework,
+use simple_ondemand policy, and use rk3399 dfi controller
+to get ddr busy time.
 
 Signed-off-by: Lin Huang <hl@rock-chips.com>
 ---
- drivers/clk/rockchip/Makefile         |   1 +
- drivers/clk/rockchip/clk-rk3399-dmc.c | 196 ++++++++++++++++++++++++++++++++++
- include/soc/rockchip/rk3399-dmc-clk.h |  36 +++++++
- 3 files changed, 233 insertions(+)
- create mode 100644 drivers/clk/rockchip/clk-rk3399-dmc.c
- create mode 100644 include/soc/rockchip/rk3399-dmc-clk.h
+ drivers/devfreq/Kconfig               |   1 +
+ drivers/devfreq/Makefile              |   1 +
+ drivers/devfreq/rockchip/Kconfig      |   8 +
+ drivers/devfreq/rockchip/Makefile     |   1 +
+ drivers/devfreq/rockchip/rk3399_dmc.c | 327 ++++++++++++++++++++++++++++++++++
+ 5 files changed, 338 insertions(+)
+ create mode 100644 drivers/devfreq/rockchip/Kconfig
+ create mode 100644 drivers/devfreq/rockchip/Makefile
+ create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
 
-diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
-index b27edd6..98bd955 100644
---- a/drivers/clk/rockchip/Makefile
-+++ b/drivers/clk/rockchip/Makefile
-@@ -13,3 +13,4 @@ obj-$(CONFIG_RESET_CONTROLLER)	+= softrst.o
- obj-y	+= clk-rk3188.o
- obj-y	+= clk-rk3288.o
- obj-y	+= clk-rk3368.o
-+obj-y	+= clk-rk3399-dmc.o
-diff --git a/drivers/clk/rockchip/clk-rk3399-dmc.c b/drivers/clk/rockchip/clk-rk3399-dmc.c
+diff --git a/drivers/devfreq/Kconfig b/drivers/devfreq/Kconfig
+index 64281bb..acb2a57 100644
+--- a/drivers/devfreq/Kconfig
++++ b/drivers/devfreq/Kconfig
+@@ -99,5 +99,6 @@ config ARM_TEGRA_DEVFREQ
+          operating frequencies and voltages with OPP support.
+ 
+ source "drivers/devfreq/event/Kconfig"
++source "drivers/devfreq/rockchip/Kconfig"
+ 
+ endif # PM_DEVFREQ
+diff --git a/drivers/devfreq/Makefile b/drivers/devfreq/Makefile
+index 5134f9e..d844e23 100644
+--- a/drivers/devfreq/Makefile
++++ b/drivers/devfreq/Makefile
+@@ -9,6 +9,7 @@ obj-$(CONFIG_DEVFREQ_GOV_USERSPACE)	+= governor_userspace.o
+ obj-$(CONFIG_ARM_EXYNOS4_BUS_DEVFREQ)	+= exynos/
+ obj-$(CONFIG_ARM_EXYNOS5_BUS_DEVFREQ)	+= exynos/
+ obj-$(CONFIG_ARM_TEGRA_DEVFREQ)		+= tegra-devfreq.o
++obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
+ 
+ # DEVFREQ Event Drivers
+ obj-$(CONFIG_PM_DEVFREQ_EVENT)		+= event/
+diff --git a/drivers/devfreq/rockchip/Kconfig b/drivers/devfreq/rockchip/Kconfig
 new file mode 100644
-index 0000000..03cc044
+index 0000000..ceb7f37
 --- /dev/null
-+++ b/drivers/clk/rockchip/clk-rk3399-dmc.c
-@@ -0,0 +1,196 @@
++++ b/drivers/devfreq/rockchip/Kconfig
+@@ -0,0 +1,8 @@
++config ARM_RK3399_DMC_DEVFREQ
++	tristate "ARM RK3399 DMC DEVFREQ Driver"
++	depends on ARCH_ROCKCHIP
++	select PM_OPP
++	select DEVFREQ_GOV_SIMPLE_ONDEMAND
++	help
++	  This adds the DEVFREQ driver for the RK3399 dmc. It sets the frequency
++	  for the memory controller and reads the usage counts from hardware.
+diff --git a/drivers/devfreq/rockchip/Makefile b/drivers/devfreq/rockchip/Makefile
+new file mode 100644
+index 0000000..c62c105
+--- /dev/null
++++ b/drivers/devfreq/rockchip/Makefile
+@@ -0,0 +1 @@
++obj-$(CONFIG_ARM_RK3399_DMC_DEVFREQ)	+= rk3399_dmc.o
+diff --git a/drivers/devfreq/rockchip/rk3399_dmc.c b/drivers/devfreq/rockchip/rk3399_dmc.c
+new file mode 100644
+index 0000000..6bf4230
+--- /dev/null
++++ b/drivers/devfreq/rockchip/rk3399_dmc.c
+@@ -0,0 +1,327 @@
 +/*
 + * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
 + *
@@ -51,230 +89,320 @@ index 0000000..03cc044
 + * more details.
 + */
 +
-+#include <linux/slab.h>
 +#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/clkdev.h>
++#include <linux/completion.h>
++#include <linux/delay.h>
++#include <linux/devfreq.h>
 +#include <linux/io.h>
-+#include <linux/kernel.h>
++#include <linux/mfd/syscon.h>
 +#include <linux/module.h>
 +#include <linux/of.h>
 +#include <linux/of_address.h>
-+#include <linux/of_irq.h>
 +#include <linux/platform_device.h>
++#include <linux/pm_opp.h>
++#include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
++#include <linux/rwsem.h>
++#include <linux/suspend.h>
++#include <linux/syscore_ops.h>
 +#include <soc/rockchip/rk3399-dmc-clk.h>
 +
-+#define to_rk3399_dmcclk(obj)	container_of(obj, struct rk3399_dmcclk, hw)
++#define RK3399_DMC_NUM_CH	2
 +
-+/* CRU_CLKSEL6_CON*/
-+#define CRU_CLKSEL6_CON		0x118
-+#define CLK_DDRC_PLL_SEL_SHIFT	0x4
-+#define CLK_DDRC_PLL_SEL_MASK	0x3
-+#define CLK_DDRC_DIV_CON_SHIFT	0
-+#define CLK_DDRC_DIV_CON_MASK	0x07
++/* DDRMON_CTRL */
++#define DDRMON_CTRL	0x04
++#define LPDDR4_EN	(1 << 4)
++#define HARDWARE_EN	(1 << 3)
++#define LPDDR3_EN	(1 << 2)
++#define SOFTWARE_EN	(1 << 1)
++#define TIME_CNT_EN	(1 << 0)
 +
-+static unsigned long rk3399_dmcclk_recalc_rate(struct clk_hw *hw,
-+					       unsigned long parent_rate)
++#define DDRMON_CH0_COUNT_NUM		0x28
++#define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
++#define DDRMON_CH1_COUNT_NUM		0x3c
++#define DDRMON_CH1_DFI_ACCESS_NUM	0x40
++
++struct dmc_usage {
++	u32 access;
++	u32 total;
++};
++
++struct rk3399_dmcfreq {
++	struct device *clk_dev;
++	struct devfreq *devfreq;
++	struct devfreq_simple_ondemand_data ondemand_data;
++	struct clk *dmc_clk;
++	struct regulator *vdd_logic;
++	struct dmc_usage ch_usage[RK3399_DMC_NUM_CH];
++	struct rk3399_dmcclk *dmc_data;
++	struct mutex lock;
++	unsigned long rate, target_rate;
++	unsigned long volt, target_volt;
++};
++
++static struct rk3399_dmcfreq dmcfreq;
++
++static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
++				 u32 flags)
 +{
-+	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
++	struct dev_pm_opp *opp;
++	unsigned long old_clk_rate = dmcfreq.rate;
++	unsigned long target_volt, target_rate;
++	int err;
++
++	rcu_read_lock();
++	opp = devfreq_recommended_opp(dev, freq, flags);
++	if (IS_ERR(opp)) {
++		rcu_read_unlock();
++		return PTR_ERR(opp);
++	}
++	target_rate = dev_pm_opp_get_freq(opp);
++	target_volt = dev_pm_opp_get_voltage(opp);
++
++	opp = devfreq_recommended_opp(dev, &dmcfreq.rate, flags);
++	if (IS_ERR(opp)) {
++		rcu_read_unlock();
++		return PTR_ERR(opp);
++	}
++	dmcfreq.volt = dev_pm_opp_get_voltage(opp);
++	rcu_read_unlock();
++
++	if (dmcfreq.rate == dmcfreq.target_rate)
++		return 0;
++
++	mutex_lock(&dmcfreq.lock);
++
++	if (old_clk_rate < target_rate) {
++		err = regulator_set_voltage(dmcfreq.vdd_logic, target_volt,
++					    target_volt);
++		if (err) {
++			dev_err(dev, "Unable to set vol %lu\n", target_volt);
++			goto out;
++		}
++	}
++
++	err = clk_set_rate(dmcfreq.dmc_clk, target_rate);
++	if (err) {
++		dev_err(dev,
++			"Unable to set freq %lu. Current freq %lu. Error %d\n",
++			target_rate, old_clk_rate, err);
++		regulator_set_voltage(dmcfreq.vdd_logic, dmcfreq.volt,
++				      dmcfreq.volt);
++		goto out;
++	}
++
++	dmcfreq.rate = target_rate;
++
++	if (old_clk_rate > target_rate)
++		err = regulator_set_voltage(dmcfreq.vdd_logic, target_volt,
++					    target_volt);
++	if (err)
++		dev_err(dev, "Unable to set vol %lu\n", target_volt);
++out:
++	mutex_unlock(&dmcfreq.lock);
++	return err;
++}
++
++static void rk3399_dmc_start_hardware_counter(void)
++{
++	void __iomem *ctrl_regs = dmcfreq.dmc_data->ctrl_regs;
++	void __iomem *dfi_regs = dmcfreq.dmc_data->dfi_regs;
 +	u32 val;
++	u32 ddr_type;
++
++	/* get ddr type */
++	val = readl_relaxed(ctrl_regs + DENALI_CTL_00);
++	ddr_type = (val >> DRAM_CLASS_SHIFT) & DRAM_CLASS_MASK;
++
++	/* set ddr type to dfi */
++	val = readl_relaxed(dfi_regs + DDRMON_CTRL);
++	if (ddr_type == LPDDR3) {
++		val &= ~LPDDR4_EN;
++		val |= LPDDR3_EN;
++	} else if (ddr_type == LPDDR4) {
++		val &= ~LPDDR3_EN;
++		val |= LPDDR4_EN;
++	} else
++		val &= ~(LPDDR3_EN | LPDDR4_EN);
++
++	/* enable count, use software mode */
++	val &= ~HARDWARE_EN;
++	val |= SOFTWARE_EN;
++
++	writel_relaxed(val, dfi_regs + DDRMON_CTRL);
++}
++
++static void rk3399_dmc_stop_hardware_counter(void)
++{
++	void __iomem *dfi_regs = dmcfreq.dmc_data->dfi_regs;
++	u32 val;
++
++	val = readl_relaxed(dfi_regs + DDRMON_CTRL);
++	val &= ~SOFTWARE_EN;
++	writel_relaxed(val, dfi_regs + DDRMON_CTRL);
++}
++
++static int rk3399_dmc_get_busier_ch(void)
++{
++	u32 tmp, max = 0;
++	u32 i, busier_ch = 0;
++	void __iomem *dfi_regs = dmcfreq.dmc_data->dfi_regs;
++
++	rk3399_dmc_stop_hardware_counter();
++
++	/* Find out which channel is busier */
++	for (i = 0; i < RK3399_DMC_NUM_CH; i++) {
++		dmcfreq.ch_usage[i].access = readl_relaxed(dfi_regs +
++				DDRMON_CH0_DFI_ACCESS_NUM + i * 20);
++		dmcfreq.ch_usage[i].total = readl_relaxed(dfi_regs +
++				DDRMON_CH0_COUNT_NUM + i * 20);
++		tmp = dmcfreq.ch_usage[i].access;
++		if (tmp > max) {
++			busier_ch = i;
++			max = tmp;
++		}
++	}
++	rk3399_dmc_start_hardware_counter();
++
++	return busier_ch;
++}
++
++static int rk3399_dmcfreq_get_dev_status(struct device *dev,
++					 struct devfreq_dev_status *stat)
++{
++	int busier_ch;
++
++	busier_ch = rk3399_dmc_get_busier_ch();
++	stat->current_frequency = dmcfreq.rate;
++	stat->busy_time = dmcfreq.ch_usage[busier_ch].access;
++	stat->total_time = dmcfreq.ch_usage[busier_ch].total;
++
++	return 0;
++}
++
++static int rk3399_dmcfreq_get_cur_freq(struct device *dev, unsigned long *freq)
++{
++	*freq = dmcfreq.rate;
++	return 0;
++}
++
++static void rk3399_dmcfreq_exit(struct device *dev)
++{
++	devfreq_unregister_opp_notifier(dmcfreq.clk_dev, dmcfreq.devfreq);
++}
++
++static struct devfreq_dev_profile rk3399_devfreq_dmc_profile = {
++	.polling_ms	= 200,
++	.target		= rk3399_dmcfreq_target,
++	.get_dev_status	= rk3399_dmcfreq_get_dev_status,
++	.get_cur_freq	= rk3399_dmcfreq_get_cur_freq,
++	.exit		= rk3399_dmcfreq_exit,
++};
++
++static __maybe_unused int rk3399_dmcfreq_suspend(struct device *dev)
++{
++	unsigned long freq = ULONG_MAX;
++
++	dev_info(dmcfreq.clk_dev, "suspending DVFS and going to max freq\n");
++	devfreq_suspend_device(dmcfreq.devfreq);
++	rk3399_dmc_stop_hardware_counter();
++	rk3399_dmcfreq_target(dmcfreq.clk_dev, &freq, 0);
++
++	return 0;
++}
++
++static __maybe_unused int rk3399_dmcfreq_resume(struct device *dev)
++{
++	dev_info(dmcfreq.clk_dev, "resuming DVFS\n");
++	rk3399_dmc_start_hardware_counter();
++	devfreq_resume_device(dmcfreq.devfreq);
++
++	return 0;
++}
++
++static SIMPLE_DEV_PM_OPS(rk3399_dmcfreq_pm, rk3399_dmcfreq_suspend,
++			 rk3399_dmcfreq_resume);
++
++static void rk3399_dmcfreq_shutdown(void)
++{
++	devfreq_suspend_device(dmcfreq.devfreq);
++}
++
++static struct syscore_ops rk3399_dmcfreq_syscore_ops = {
++	.shutdown = rk3399_dmcfreq_shutdown,
++};
++
++static int rk3399_dmcfreq_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++
++	dmcfreq.clk_dev = dev->parent;
++	mutex_init(&dmcfreq.lock);
++
++	dmcfreq.dmc_data =
++		(struct rk3399_dmcclk *)dev_get_drvdata(dmcfreq.clk_dev);
++
++	dmcfreq.vdd_logic = regulator_get(dmcfreq.clk_dev, "logic");
++	if (IS_ERR(dmcfreq.vdd_logic)) {
++		dev_err(dev, "Cannot get the regulator \"vdd_logic\"\n");
++		return PTR_ERR(dmcfreq.vdd_logic);
++	}
++
++	dmcfreq.dmc_clk = devm_clk_get(dev, "dmc_clk");
++	if (IS_ERR(dmcfreq.dmc_clk)) {
++		dev_err(dev, "Cannot get the clk dmc_clk\n");
++		return PTR_ERR(dmcfreq.dmc_clk);
++	};
 +
 +	/*
-+	 * Get parent rate since it changed in this clks set_rate op. The parent
-+	 * rate passed into this function is cached before set_rate is called in
-+	 * the common clk code, so we have to get it here.
++	 * We add a devfreq driver to our parent since it has a device tree node
++	 * with operating points.
 +	 */
-+	parent_rate = clk_get_rate(clk_get_parent(hw->clk));
-+
-+	val = readl(dmc->cru + CRU_CLKSEL6_CON);
-+	val = (val >> CLK_DDRC_DIV_CON_SHIFT) & CLK_DDRC_DIV_CON_MASK;
-+
-+	return parent_rate / (val + 1);
-+}
-+
-+/*
-+ * TODO: set ddr frequcney in dcf which run in ATF
-+ */
-+static int rk3399_dmcclk_set_rate(struct clk_hw *hw, unsigned long rate,
-+				  unsigned long parent_rate)
-+{
-+	return 0;
-+}
-+
-+static u8 rk3399_dmcclk_get_parent(struct clk_hw *hw)
-+{
-+	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
-+	u32 val;
-+
-+	val = readl(dmc->cru + CRU_CLKSEL6_CON);
-+
-+	return (val >> CLK_DDRC_PLL_SEL_SHIFT) &
-+		CLK_DDRC_PLL_SEL_MASK;
-+}
-+
-+static const struct clk_ops rk3399_dmcclk_ops = {
-+	.recalc_rate = rk3399_dmcclk_recalc_rate,
-+	.set_rate = rk3399_dmcclk_set_rate,
-+	.get_parent = rk3399_dmcclk_get_parent,
-+};
-+
-+static const char *parent_clk_names[] = {
-+	"pll_dpll",
-+	"pll_gpll",
-+	"pll_alpll",
-+	"pll_abpll",
-+};
-+
-+static int rk3399_register_dmcclk(struct rk3399_dmcclk *dmc)
-+{
-+	struct clk_init_data init;
-+	struct clk *clk;
-+
-+	init.name = "dmc_clk";
-+	init.parent_names = parent_clk_names;
-+	init.num_parents = ARRAY_SIZE(parent_clk_names);
-+	init.ops = &rk3399_dmcclk_ops;
-+	init.flags = 0;
-+	dmc->hw->init = &init;
-+
-+	clk = devm_clk_register(dmc->dev, dmc->hw);
-+	if (IS_ERR(clk)) {
-+		dev_err(dmc->dev, "could not register cpuclk dmc_clk\n");
-+		return PTR_ERR(clk);
-+	}
-+	clk_register_clkdev(clk, "dmc_clk", NULL);
-+	of_clk_add_provider(dmc->dev->of_node, of_clk_src_simple_get, clk);
-+
-+	return 0;
-+}
-+
-+static int rk3399_dmcclk_probe(struct platform_device *pdev)
-+{
-+	struct rk3399_dmcclk *dmc;
-+	struct resource *res;
-+	struct device_node *node;
-+	int ret;
-+
-+	dmc = devm_kzalloc(&pdev->dev, sizeof(*dmc), GFP_KERNEL);
-+	if (!dmc)
-+		return -ENOMEM;
-+
-+	dmc->hw = devm_kzalloc(&pdev->dev, sizeof(*dmc->hw), GFP_KERNEL);
-+	if (!dmc->hw)
-+		return -ENOMEM;
-+
-+	dmc->dev = &pdev->dev;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	dmc->ctrl_regs = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(dmc->ctrl_regs))
-+		return PTR_ERR(dmc->ctrl_regs);
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-+	dmc->dfi_regs = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(dmc->dfi_regs))
-+		return PTR_ERR(dmc->dfi_regs);
-+
-+	node = of_parse_phandle(dmc->dev->of_node, "rockchip,cru", 0);
-+	if (!node)
-+		return -ENODEV;
-+
-+	ret = of_address_to_resource(node, 0, res);
-+	if (ret)
-+		return ret;
-+
-+	dmc->cru = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(dmc->cru))
-+		return PTR_ERR(dmc->cru);
-+
-+	/* register dpllddr clock */
-+	ret = rk3399_register_dmcclk(dmc);
-+	if (ret) {
-+		dev_err(dmc->dev, "failed to register clk dmc_clk %d\n", ret);
-+		return ret;
++	if (dev_pm_opp_of_add_table(dmcfreq.clk_dev)) {
++		dev_err(dev, "Invalid operating-points in device tree.\n");
++		return -EINVAL;
 +	}
 +
-+	platform_set_drvdata(pdev, dmc);
-+	platform_device_register_data(dmc->dev, "rk3399-dmc-freq",
-+				      PLATFORM_DEVID_AUTO, NULL, 0);
++	of_property_read_u32(dmcfreq.clk_dev->of_node, "upthreshold",
++				&dmcfreq.ondemand_data.upthreshold);
++
++	of_property_read_u32(dmcfreq.clk_dev->of_node, "downdifferential",
++				&dmcfreq.ondemand_data.downdifferential);
++
++	dmcfreq.devfreq = devfreq_add_device(dmcfreq.clk_dev,
++					     &rk3399_devfreq_dmc_profile,
++					     "simple_ondemand",
++					     &dmcfreq.ondemand_data);
++	if (IS_ERR(dmcfreq.devfreq))
++		return PTR_ERR(dmcfreq.devfreq);
++
++	devfreq_register_opp_notifier(dmcfreq.clk_dev, dmcfreq.devfreq);
++
++	register_syscore_ops(&rk3399_dmcfreq_syscore_ops);
 +
 +	return 0;
 +}
 +
-+static const struct of_device_id rk3399_dmcclk_of_match[] = {
-+	{ .compatible = "rockchip,rk3399-dmc", },
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(of, rk3399_dmcclk_of_match);
++static int rk3399_dmcfreq_remove(struct platform_device *pdev)
++{
++	devfreq_remove_device(dmcfreq.devfreq);
++	regulator_put(dmcfreq.vdd_logic);
 +
++	return 0;
++}
 +
-+static struct platform_driver rk3399_dmcclk_driver = {
-+	.probe = rk3399_dmcclk_probe,
++static struct platform_driver rk3399_dmcfreq_driver = {
++	.probe	= rk3399_dmcfreq_probe,
++	.remove	= rk3399_dmcfreq_remove,
 +	.driver = {
-+		.name = "rk3399-dmc",
-+		.of_match_table = rk3399_dmcclk_of_match,
-+		.suppress_bind_attrs = true,
++		.name	= "rk3399-dmc-freq",
++		.pm	= &rk3399_dmcfreq_pm,
 +	},
 +};
++module_platform_driver(rk3399_dmcfreq_driver);
 +
-+static int __init rk3399_dmcclk_modinit(void)
-+{
-+	int ret;
-+
-+	ret = platform_driver_register(&rk3399_dmcclk_driver);
-+	if (ret < 0)
-+		pr_err("Failed to register platform driver %s\n",
-+				rk3399_dmcclk_driver.driver.name);
-+
-+	return ret;
-+}
-+
-+module_init(rk3399_dmcclk_modinit);
-+
-+MODULE_DESCRIPTION("rockchip rk3399 DMC CLK driver");
 +MODULE_LICENSE("GPL v2");
-+
-diff --git a/include/soc/rockchip/rk3399-dmc-clk.h b/include/soc/rockchip/rk3399-dmc-clk.h
-new file mode 100644
-index 0000000..b53fc23
---- /dev/null
-+++ b/include/soc/rockchip/rk3399-dmc-clk.h
-@@ -0,0 +1,36 @@
-+/*
-+* Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
-+*
-+* This program is free software; you can redistribute it and/or modify it
-+* under the terms of the GNU General Public License as published by the
-+* Free Software Foundation; either version 2 of the License, or (at your
-+* option) any later version.
-+*/
-+
-+#ifndef _RK3399_DMC_CLK_H
-+#define _RK3399_DMC_CLK_H
-+
-+enum dram_type_tag {
-+	DDR3 = 6,
-+	LPDDR3 = 7,
-+	LPDDR4 = 0x0b,
-+};
-+
-+/* DENALI_CTL_00 */
-+#define DENALI_CTL_00		0x00
-+#define DRAM_CLASS_MASK		0x0f
-+#define DRAM_CLASS_SHIFT	0x8
-+
-+struct rk3399_dmcclk {
-+	struct device *dev;
-+	struct clk_hw *hw;
-+	u32 cur_freq;
-+	u32 target_freq;
-+	u32 ddr_type;
-+	void __iomem *ctrl_regs;
-+	void __iomem *dfi_regs;
-+	void __iomem *cru;
-+};
-+
-+#endif
-+
++MODULE_DESCRIPTION("RK3399 dmcfreq driver with devfreq framework");
 -- 
 1.9.1
+
