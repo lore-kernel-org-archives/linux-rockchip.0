@@ -1,45 +1,52 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3 03/12] drm/rockchip: return a true clock rate to adjusted_mode
-Date: Thu, 19 Nov 2015 11:35:21 +0800
-Message-ID: <1447904131-29328-4-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v3 04/12] drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+Date: Thu, 19 Nov 2015 11:35:22 +0800
+Message-ID: <1447904131-29328-5-git-send-email-zyw@rock-chips.com>
 References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Cc: Liu Ying <Ying.liu@freescale.com>, Liu Ying <Ying.Liu@freescale.com>, Chris Zhong <zyw@rock-chips.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Sometimes the clock driver can not set a accurate clock_rate for vop,
-get the true rate of vop_dclk and set it back to adjusted_mode, since
-the mipi dsi driver need to use the clock to make the calculation of
-Blanking.
+From: Liu Ying <Ying.liu@freescale.com>
 
+Signed-off-by: Liu Ying <Ying.Liu@freescale.com>
+Acked-by: Thierry Reding <treding@nvidia.com>
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ include/drm/drm_mipi_dsi.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 5d8ae5e..9986b311ed 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1232,6 +1232,12 @@ static int vop_crtc_mode_set(struct drm_crtc *crtc,
- 	reset_control_deassert(vop->dclk_rst);
+diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+index f1d8d0d..3662021 100644
+--- a/include/drm/drm_mipi_dsi.h
++++ b/include/drm/drm_mipi_dsi.h
+@@ -163,6 +163,20 @@ static inline struct mipi_dsi_device *to_mipi_dsi_device(struct device *dev)
+ 	return container_of(dev, struct mipi_dsi_device, dev);
+ }
  
- 	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
++static inline int mipi_dsi_pixel_format_to_bpp(enum mipi_dsi_pixel_format fmt)
++{
++	switch (fmt) {
++	case MIPI_DSI_FMT_RGB888:
++	case MIPI_DSI_FMT_RGB666:
++		return 24;
++	case MIPI_DSI_FMT_RGB666_PACKED:
++		return 18;
++	case MIPI_DSI_FMT_RGB565:
++		return 16;
++	}
++	return -EINVAL;
++}
 +
-+	/*
-+	 * Sometimes the clock driver can not set a accurate clock_rate for vop,
-+	 * get the true rate of vop_dclk and set it back to adjusted_mode.
-+	 */
-+	adjusted_mode->clock = clk_get_rate(vop->dclk) / 1000;
- out:
- 	ret_clk = clk_enable(vop->dclk);
- 	if (ret_clk < 0) {
+ struct mipi_dsi_device *of_find_mipi_dsi_device_by_node(struct device_node *np);
+ int mipi_dsi_attach(struct mipi_dsi_device *dsi);
+ int mipi_dsi_detach(struct mipi_dsi_device *dsi);
 -- 
 2.6.3
