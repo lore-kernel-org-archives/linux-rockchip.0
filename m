@@ -1,104 +1,124 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip reboot
- notifier driver
-Date: Thu, 19 Nov 2015 09:17:37 +0800
-Message-ID: <564D2331.8070503@rock-chips.com>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
- <1447840410-19794-1-git-send-email-andy.yan@rock-chips.com>
- <20151118225904.GA5429@rob-hp-laptop>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] usb: dwc2: host: Clear interrupts before
+ handling them
+Date: Thu, 19 Nov 2015 01:43:35 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3D696B@US01WEMBX2.internal.synopsys.com>
+References: <1446582629-30091-1-git-send-email-dianders@chromium.org>
+ <1446582629-30091-2-git-send-email-dianders@chromium.org>
+ <87wpthnc2e.fsf@saruman.tx.rr.com>
+ <CAD=FV=W-UWJnHZioChnVmPmJQXxMGGOUQiF81h0ZTA4invivVA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20151118225904.GA5429@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip
+ SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
+ Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob:
+On 11/16/2015 9:22 AM, Doug Anderson wrote:
+> Felipe,
+> 
+> On Mon, Nov 16, 2015 at 8:28 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
+>>
+>> Hi,
+>>
+>> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>>> In general it is wise to clear interrupts before processing them.  If
+>>> you don't do that, you can get:
+>>>  1. Interrupt happens
+>>>  2. You look at system state and process interrupt
+>>>  3. A new interrupt happens
+>>>  4. You clear interrupt without processing it.
+>>>
+>>> This patch was actually a first attempt to fix missing device insertions
+>>> as described in (usb: dwc2: host: Fix missing device insertions) and it
+>>> did solve some of the signal bouncing problems but not all of
+>>> them (which is why I submitted the other patch).  Specifically, this
+>>> patch itself would sometimes change:
+>>>  1. hardware sees connect
+>>>  2. hardware sees disconnect
+>>>  3. hardware sees connect
+>>>  4. dwc2_port_intr() - clears connect interrupt
+>>>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
+>>>
+>>> ...to:
+>>>  1. hardware sees connect
+>>>  2. hardware sees disconnect
+>>>  3. dwc2_port_intr() - clears connect interrupt
+>>>  4. hardware sees connect
+>>>  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
+>>>
+>>> ...but with different timing then sometimes we'd still miss cable
+>>> insertions.
+>>>
+>>> In any case, though this patch doesn't fix any (known) problems, it
+>>> still seems wise as a general policy to clear interrupt before handling
+>>> them.
+>>>
+>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>> ---
+>>> Changes in v2: None
+>>>
+>>>  drivers/usb/dwc2/core_intr.c | 55 ++++++++++++++++++++++----------------------
+>>>  drivers/usb/dwc2/hcd_intr.c  | 16 ++++++-------
+>>>  2 files changed, 35 insertions(+), 36 deletions(-)
+>>>
+>>> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+>>> index 61601d16e233..2a166b7eec41 100644
+>>> --- a/drivers/usb/dwc2/core_intr.c
+>>> +++ b/drivers/usb/dwc2/core_intr.c
+>>> @@ -80,15 +80,16 @@ static const char *dwc2_op_state_str(struct dwc2_hsotg *hsotg)
+>>>   */
+>>>  static void dwc2_handle_usb_port_intr(struct dwc2_hsotg *hsotg)
+>>>  {
+>>> -     u32 hprt0 = dwc2_readl(hsotg->regs + HPRT0);
+>>> +     u32 hprt0;
+>>>
+>>> +     /* Clear interrupt */
+>>> +     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
+>>> +
+>>> +     hprt0 = dwc2_readl(hsotg->regs + HPRT0);
+>>>       if (hprt0 & HPRT0_ENACHG) {
+>>>               hprt0 &= ~HPRT0_ENA;
+>>>               dwc2_writel(hprt0, hsotg->regs + HPRT0);
+>>>       }
+>>> -
+>>> -     /* Clear interrupt */
+>>> -     dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
+>>
+>> isn't this a regression ? You're first clearing the interrupts and only
+>> then reading to check what's pending, however, what's pending has just
+>> been cleared. Seems like this should be:
+>>
+>> hprt0 = dwc2_readl(HPRT0);
+>> dwc2_writeal(PRTINT, GINTSTS);
+> 
+> Actually, we could probably remove the setting of GINTSTS_PRTINT
+> completely.  The docs I have say that the GINTSTS_PRTINT is read only
+> and that:
+> 
+>> The core sets this bit to indicate a change in port status of one of the
+>> DWC_otg core ports in Host mode. The application must read the
+>> Host Port Control and Status (HPRT) register to determine the exact
+>> event that caused this interrupt. The application must clear the
+>> appropriate status bit in the Host Port Control and Status register to
+>> clear this bit.
+> 
+> ...so writing PRTINT is probably useless, but John can confirm.
+> 
 
-On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 06:59, Rob Herring wrote:
-> On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
->> Add devicetree binding document for rockchip reboot nofifier driver
-> Just reading the subject this is way too specific to the Linux driver
-> needs rather than a h/w description. Please don't create fake DT node=
-s
-> just to bind to drivers. Whatever &pmu is is probably what should hav=
-e
-> the DT node. Let the driver for it create child devices if you need
-> that.
+Yup, it seems it can be removed.
 
-     This is note a fake DT nodes, we really need it to tell the driver
-      which register to use to store the reboot mode. Because rockchip
-      use different register file to store the reboot mode on different
-      platform, on rk3066,rk3188, rk3288,it use  one of the PMU=20
-register, on
-      the incoming RK3036, it use one of the GRF register, and it use=20
-one  of
-      the PMUGRF register for arm64 platform rk3368. On the other hand,=
- the
-      PMU/GRF/PMUGRF register file are mapped as "syscon", then referen=
-ced
-      by other DT nodes by phandle. So maybe let it as a separate DT=20
-node here
-      is better.
-
-> Rob
->> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> ---
->>
->> Changes in v3:
->>   - add dt binding
->>
->> Changes in v2: None
->>
->>   .../bindings/soc/rockchip/rockchip-reboot.txt          | 18 ++++++=
-++++++++++++
->>   1 file changed, 18 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/soc/rockchip/=
-rockchip-reboot.txt
->>
->> diff --git a/Documentation/devicetree/bindings/soc/rockchip/rockchip=
--reboot.txt b/Documentation/devicetree/bindings/soc/rockchip/rockchip-r=
-eboot.txt
->> new file mode 100644
->> index 0000000..6f69c8d
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot=
-=2Etxt
->> @@ -0,0 +1,18 @@
->> +Rockchip reboot notifier driver
->> +
->> +This driver get reboot mode arguments from userspace
->> +and stores it in special register. Then the bootloader
->> +will read it and take different action according the
->> +argument stored.
->> +
->> +Required properties:
->> +- compatible: should be "rockchip,reboot"
->> +- regmap: this is phandle to the register map node
->> +- offset: offset in the register map for the storage register (in b=
-ytes)
->> +
->> +Examples:
->> +	reboot {
->> +	   compatible =3D "rockchip,reboot";
->> +	   regmap =3D <&pmu>;
->> +	   offset =3D <0x94>;
->> +	};
->> --=20
->> 1.9.1
->>
->>
->
->
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+John
