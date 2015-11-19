@@ -1,17 +1,17 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3 09/12] ARM: dts: rockchip: add rk3288 mipi_dsi nodes
-Date: Thu, 19 Nov 2015 11:35:27 +0800
-Message-ID: <1447904131-29328-10-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v3 10/12] drm/panel: simple: Add support for BOE TV080WUM-NL0
+Date: Thu, 19 Nov 2015 11:35:28 +0800
+Message-ID: <1447904131-29328-11-git-send-email-zyw@rock-chips.com>
 References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: Chris Zhong <zyw@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a mipi_dsi node, and also add mipi_dsi endpoints to vopb and vopl
-output port nodes.
+This adds support for the BOE TV080WUM-NL0 1200x1920 mipi panel to the
+DRM simple panel driver.
 
 Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 ---
@@ -19,72 +19,59 @@ Signed-off-by: Chris Zhong <zyw@rock-chips.com>
 Changes in v3: None
 Changes in v2: None
 
- arch/arm/boot/dts/rk3288.dtsi | 39 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ drivers/gpu/drm/panel/panel-simple.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 6a79c9c..a5c5670 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -798,6 +798,10 @@
- 				reg = <0>;
- 				remote-endpoint = <&hdmi_in_vopb>;
- 			};
-+			vopb_out_mipi: endpoint@1 {
-+				reg = <1>;
-+				remote-endpoint = <&mipi_in_vopb>;
-+			};
- 		};
- 	};
+diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
+index f97b73e..3610e1c 100644
+--- a/drivers/gpu/drm/panel/panel-simple.c
++++ b/drivers/gpu/drm/panel/panel-simple.c
+@@ -1348,6 +1348,36 @@ static const struct panel_desc_dsi panasonic_vvx10f004b00 = {
+ 	.lanes = 4,
+ };
  
-@@ -831,6 +835,10 @@
- 				reg = <0>;
- 				remote-endpoint = <&hdmi_in_vopl>;
- 			};
-+			vopl_out_mipi: endpoint@1 {
-+				reg = <1>;
-+				remote-endpoint = <&mipi_in_vopl>;
-+			};
- 		};
- 	};
- 
-@@ -871,6 +879,37 @@
- 		};
- 	};
- 
-+	mipi_dsi: mipi@ff960000 {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		compatible = "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi";
-+		reg = <0xff960000 0x4000>;
-+		interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_MIPI_24M>, <&cru PCLK_MIPI_DSI0>;
-+		clock-names = "ref", "pclk";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
++static const struct drm_display_mode boe_tv080wum_nl0_mode = {
++	.clock = 160000,
++	.hdisplay = 1200,
++	.hsync_start = 1200 + 120,
++	.hsync_end = 1200 + 120 + 20,
++	.htotal = 1200 + 120 + 20 + 21,
++	.vdisplay = 1920,
++	.vsync_start = 1920 + 21,
++	.vsync_end = 1920 + 21 + 3,
++	.vtotal = 1920 + 21 + 3 + 18,
++	.vrefresh = 60,
++	.flags = DRM_MODE_FLAG_NVSYNC | DRM_MODE_FLAG_NHSYNC,
++};
 +
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <1>;
++static const struct panel_desc_dsi boe_tv080wum_nl0 = {
++	.desc = {
++		.modes = &boe_tv080wum_nl0_mode,
++		.num_modes = 1,
++		.size = {
++			.width = 107,
++			.height = 172,
++		},
++	},
++	.flags = MIPI_DSI_MODE_VIDEO |
++		 MIPI_DSI_MODE_VIDEO_BURST |
++		 MIPI_DSI_MODE_VIDEO_SYNC_PULSE,
++	.format = MIPI_DSI_FMT_RGB888,
++	.lanes = 4,
++};
 +
-+			mipi_in: port {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+				mipi_in_vopb: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_mipi>;
-+				};
-+				mipi_in_vopl: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_mipi>;
-+				};
-+			};
-+		};
-+	};
-+
- 	gic: interrupt-controller@ffc01000 {
- 		compatible = "arm,gic-400";
- 		interrupt-controller;
+ static const struct of_device_id dsi_of_match[] = {
+ 	{
+ 		.compatible = "auo,b080uan01",
+@@ -1362,6 +1392,9 @@ static const struct of_device_id dsi_of_match[] = {
+ 		.compatible = "panasonic,vvx10f004b00",
+ 		.data = &panasonic_vvx10f004b00
+ 	}, {
++		.compatible = "boe,tv080wum-nl0",
++		.data = &boe_tv080wum_nl0
++	}, {
+ 		/* sentinel */
+ 	}
+ };
 -- 
 2.6.3
