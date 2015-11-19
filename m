@@ -1,104 +1,136 @@
-From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip
- reboot notifier driver
-Date: Thu, 19 Nov 2015 16:30:59 +0100
-Message-ID: <20151119153057.GA12486@ulmo.nvidia.com>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
- <1447840410-19794-1-git-send-email-andy.yan@rock-chips.com>
- <20151118225904.GA5429@rob-hp-laptop>
- <564D2331.8070503@rock-chips.com>
- <20151119125643.GE21862@ulmo.nvidia.com>
- <CANbgqASc1fyoV6FJ1g15P27_h0iA_F9h8aP304X8tRovrKrq5A@mail.gmail.com>
+From: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
+ single_tt hub
+Date: Thu, 19 Nov 2015 09:34:11 -0600
+Message-ID: <87lh9uf1fw.fsf@saruman.tx.rr.com>
+References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
+ <1447721484-22548-7-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/04w6evG8XlLl3ft"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CANbgqASc1fyoV6FJ1g15P27_h0iA_F9h8aP304X8tRovrKrq5A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Disposition: inline
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andyshrk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============8619717899737704460=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447721484-22548-7-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---/04w6evG8XlLl3ft
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+--===============8619717899737704460==
+Content-Type: multipart/signed; boundary="=-=-="; micalg=pgp-sha1;
+	protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Nov 19, 2015 at 09:39:02PM +0800, Andy Yan wrote:
-> Hi Thierry:
->=20
-> 2015-11-19 20:56 GMT+08:00 Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>:
->=20
-> > On Thu, Nov 19, 2015 at 09:17:37AM +0800, Andy Yan wrote:
-> > > Hi Rob:
-> > >
-> > > On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 06:59, Rob Herring wrote:
-> > > >On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
-> > > >>Add devicetree binding document for rockchip reboot nofifier driver
-> > > >Just reading the subject this is way too specific to the Linux driver
-> > > >needs rather than a h/w description. Please don't create fake DT nod=
-es
-> > > >just to bind to drivers. Whatever &pmu is is probably what should ha=
-ve
-> > > >the DT node. Let the driver for it create child devices if you need
-> > > >that.
-> > >
-> > >     This is note a fake DT nodes, we really need it to tell the driver
-> > >      which register to use to store the reboot mode. Because rockchip
-> > >      use different register file to store the reboot mode on different
-> > >      platform, on rk3066,rk3188, rk3288,it use  one of the PMU regist=
-er,
-> > on
-> > >      the incoming RK3036, it use one of the GRF register, and it use
-> > one  of
-> > >      the PMUGRF register for arm64 platform rk3368. On the other hand,
-> > the
-> > >      PMU/GRF/PMUGRF register file are mapped as "syscon", then refere=
-nced
-> > >      by other DT nodes by phandle. So maybe let it as a separate DT n=
-ode
-> > > here
-> > >      is better.
-> >
-> > In that case you should probably implement a reboot notifier in each of
-> > the drivers you list and depending on the generation of the SoC. You can
-> > easily parameterize this by matching on the compatible string.
-> >
-> > Thierry
-> >
->=20
->  There is no rockchip specific driver for PMU/GRF/PMUGRF register file I
-> list above=EF=BC=8C they
->  use the generic driver =E2=80=9Csyscon=E2=80=9D
 
-Well, just go and write specific drivers, then.
+Hi,
 
-Thierry
+Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+> Until we have logic to determine which devices share the same TT let's
+> add logic to assume that all devices on a given dwc2 controller are on
+> one single_tt hub.  This is better than the previous code that assumed
+> that all devices were on one multi_tt hub, since single_tt hubs
+> appear (in my experience) to be much more common and any schedule that
+> would work on a single_tt hub will also work on a multi_tt hub.  This
+> will prevent more than 8 total low/full speed devices to be on the bus
+> at one time, but that's a reasonable restriction until we've made things
+> smarter.
+>
+> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> ---
+> Changes in v3:
+> - Assuming single_tt is new for v3; not terribly well tested (yet).
+>
+> Changes in v2: None
+>
+>  drivers/usb/dwc2/core.h      |  1 +
+>  drivers/usb/dwc2/hcd_queue.c | 40 ++++++++++++++++++++++++++++++++++++++=
++-
+>  2 files changed, 40 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+> index 567ee2c9e69f..09aa2b5ae29e 100644
+> --- a/drivers/usb/dwc2/core.h
+> +++ b/drivers/usb/dwc2/core.h
+> @@ -782,6 +782,7 @@ struct dwc2_hsotg {
+>  	u16 periodic_usecs;
+>  	unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
+>  						   BITS_PER_LONG)];
+> +	bool has_split[8];
 
---/04w6evG8XlLl3ft
+why don't you use a u8 instead then just set each bit for each
+"has_split" you need to take care of. This array is kinda ugly.
+
+> @@ -386,6 +409,13 @@ static int dwc2_find_multi_uframe(struct dwc2_hsotg =
+*hsotg, struct dwc2_qh *qh)
+>  	bitmap_set(hsotg->periodic_bitmap, start, qh->usecs);
+>  	qh->start_usecs =3D start;
+>=20=20
+> +	if (qh->do_split) {
+> +		for (i =3D start / EARLY_FRAME_USEC;
+> +		     i < DIV_ROUND_UP(start + utime - 1, EARLY_FRAME_USEC);
+> +		     i++)
+> +			hsotg->has_split[i] =3D true;
+
+hsotg->has_split |=3D BIT(i);
+
+> @@ -546,6 +577,13 @@ static void dwc2_deschedule_periodic(struct dwc2_hso=
+tg *hsotg,
+>  	}
+>=20=20
+>  	bitmap_clear(hsotg->periodic_bitmap, start, utime);
+> +
+> +	if (qh->do_split) {
+> +		for (i =3D start / EARLY_FRAME_USEC;
+> +		     i < DIV_ROUND_UP(start + utime - 1, EARLY_FRAME_USEC);
+> +		     i++)
+> +			hsotg->has_split[i] =3D false;
+
+hsotg->has_split &=3D ~BIT(i);
+
+=2D-=20
+balbi
+
+--=-=-=
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Version: GnuPG v1
 
-iQIcBAABCAAGBQJWTesvAAoJEN0jrNd/PrOhHj4P/jgDFfnxGQJI2CsF8EZJH6NF
-pUjx/bezYfSUjx+pov2f1Di1Xhdikh4e6dmEyTHVNgh8dBBvpYRxRbOrdlQemJVt
-NKfzDgh3U1tnzospyjKq/X6Izbkti+MHdvSz/iAJsEmqo1NHOfN5oLViTiZW00RT
-ST+C/ANTDxQkX5GIoCZlcOdGDGMitXSKosXaj5cxygWGbdl2VOvDENgDU6AwF9KB
-IbU2AekQMcC7cvezGkgxjST/9gQAGlozZyO8Cj9Nh0lzXxj9MuKPe3xV9xl9H4Xi
-QPy7LPaPZTaaN6XKbcnU5o5TtrxCp2LANyH7zXdjOW/6MRGu9kdDHzGd0f0yrjqV
-gM34ayQJGoyLmNwuc/yb+317xkNL5sDH6ijKWnU2stKonmS9jYGhpQ0/Rujv4d/1
-IWvVbviZtnob6lzGB6u4aQ7d9LVvYLfqCo/9BTTgzVHji1bEC60ULI8cSX7ybxmP
-EKC01Naj/lqZFGNIL7xyjm7L9GkvaKvgWHXEWsLYkqWyRKIDfXwGn10nl0B7gNWO
-1J+3LwYX6/anXkpIwjsmkfyRS7hSWZIvQ/ZRQjlqtBN686SbtEodkWtlH22rcUtw
-g3pm+C4yMhbkqPvqCnwsGHX7khIe8ruLFLvf/zfFbxO4Zc1WgPLpeDcSJf7aoWf3
-Osex/mp6Tn6FZpKLZmiz
-=Q2JU
+iQIcBAEBAgAGBQJWTevzAAoJEIaOsuA1yqRE164P/3okfRduTpyxQruf+EPPe1wG
+juAWq0QkbsySPoT/ang4ULeTxnBDJSoN61ztEdfYK63d3R+AxkieBmHR6pusjwEO
+9tnDAZXBB/1NVB4QU9CcRYDoYqzFIAd1bQKrs4YUJvRbgpFl/MrBFGpuMBMyiLM0
+bnMO7k4pl8WU2SGN0Rys4uMa7nV9Gi/C5pMPo3OuzZyhjq36PkQTjuWl8Bv33kj4
+O0QQI+dKxe7RHWqHJ01pN5tc6knf69a4EYcamH0lS0iRMLVHT/X9mUJ1lA4OVcEs
+6Ni2Slvi7TlDhVql0ZQrj9oHhTUva5c3UdqRUa9gHD/2fqRmb8OP89aer2N+4V5z
+anHRRXCsUEdgOlawYsOcYz2HRJfLs6bEc9ZJgJiyiAtdywzNtJv4qpGsnKrbKM5f
+2jNr9jYHYai2lZKggXyV/6Rgng2+xl5MDeGKWe8ilgBz1gxkGfX4n6I63xteYUd2
+YKlKnf5uJvE+6caUKyhPdxJFh4IjvSOjpVD5G/XIErOjvYYtUqvwgLopmRrCIssh
+Tc34PUVnzG1z/IK0e2l5YWGpNzqWqzTd0rw/V8RciUr8HLSrjxLUUUujt9CJZY8n
+JNTLBYtKaKdmG4fWq12dc7NSvRDzLNqLL28jV++VFs89cdbfp1lwedzg/5SPBbo6
+1+jbeS6lbwebmm6JDGnO
+=lmDb
 -----END PGP SIGNATURE-----
+--=-=-=--
 
---/04w6evG8XlLl3ft--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+--===============8619717899737704460==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8619717899737704460==--
