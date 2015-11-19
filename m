@@ -1,70 +1,132 @@
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Subject: Re: [PATCH v3 10/12] drm/panel: simple: Add support for BOE
- TV080WUM-NL0
-Date: Thu, 19 Nov 2015 14:46:21 +0000
-Message-ID: <CACvgo53Z68iuq_9m2oQ+50=o0YK1KKEiKdBOJidCrurf5EGmYw@mail.gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 05/12] Documentation: dt-bindings: Add bindings for
+ Synopsys DW MIPI DSI DRM bridge driver
+Date: Thu, 19 Nov 2015 09:12:28 -0600
+Message-ID: <20151119151228.GA26097@rob-hp-laptop>
 References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
- <1447904131-29328-11-git-send-email-zyw@rock-chips.com>
+ <1447904131-29328-6-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1447904131-29328-11-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1447904131-29328-6-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Liu Ying <Ying.liu-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hyaXMsCgpNaXNzaW5nIFRoaWVycnkgZnJvbSB0aGUgVG8vQ2MgbGlzdCA/IEhpcyBuYW1l
-L2VtYWlsIHNob3VsZCBoYXZlCnBvcHBlZCB1cCB3aGVuIHVzaW5nIHRoZSBnZXRfbWFpbnRlaW5l
-cnMucGwgc2NyaXB0LgoKT24gMTkgTm92ZW1iZXIgMjAxNSBhdCAwMzozNSwgQ2hyaXMgWmhvbmcg
-PHp5d0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gVGhpcyBhZGRzIHN1cHBvcnQgZm9yIHRoZSBC
-T0UgVFYwODBXVU0tTkwwIDEyMDB4MTkyMCBtaXBpIHBhbmVsIHRvIHRoZQo+IERSTSBzaW1wbGUg
-cGFuZWwgZHJpdmVyLgo+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNo
-aXBzLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgaW4gdjM6IE5vbmUKPiBDaGFuZ2VzIGluIHYyOiBO
-b25lCj4KPiAgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMzMgKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAzMyBpbnNlcnRp
-b25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBs
-ZS5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCj4gaW5kZXggZjk3Yjcz
-ZS4uMzYxMGUxYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2lt
-cGxlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMKPiBAQCAt
-MTM0OCw2ICsxMzQ4LDM2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGFuZWxfZGVzY19kc2kgcGFu
-YXNvbmljX3Z2eDEwZjAwNGIwMCA9IHsKPiAgICAgICAgIC5sYW5lcyA9IDQsCj4gIH07Cj4KPiAr
-c3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIGJvZV90djA4MHd1bV9ubDBfbW9k
-ZSA9IHsKPiArICAgICAgIC5jbG9jayA9IDE2MDAwMCwKPiArICAgICAgIC5oZGlzcGxheSA9IDEy
-MDAsCj4gKyAgICAgICAuaHN5bmNfc3RhcnQgPSAxMjAwICsgMTIwLAo+ICsgICAgICAgLmhzeW5j
-X2VuZCA9IDEyMDAgKyAxMjAgKyAyMCwKPiArICAgICAgIC5odG90YWwgPSAxMjAwICsgMTIwICsg
-MjAgKyAyMSwKPiArICAgICAgIC52ZGlzcGxheSA9IDE5MjAsCj4gKyAgICAgICAudnN5bmNfc3Rh
-cnQgPSAxOTIwICsgMjEsCj4gKyAgICAgICAudnN5bmNfZW5kID0gMTkyMCArIDIxICsgMywKPiAr
-ICAgICAgIC52dG90YWwgPSAxOTIwICsgMjEgKyAzICsgMTgsCj4gKyAgICAgICAudnJlZnJlc2gg
-PSA2MCwKPiArICAgICAgIC5mbGFncyA9IERSTV9NT0RFX0ZMQUdfTlZTWU5DIHwgRFJNX01PREVf
-RkxBR19OSFNZTkMsCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2Nf
-ZHNpIGJvZV90djA4MHd1bV9ubDAgPSB7Cj4gKyAgICAgICAuZGVzYyA9IHsKPiArICAgICAgICAg
-ICAgICAgLm1vZGVzID0gJmJvZV90djA4MHd1bV9ubDBfbW9kZSwKPiArICAgICAgICAgICAgICAg
-Lm51bV9tb2RlcyA9IDEsCj4gKyAgICAgICAgICAgICAgIC5zaXplID0gewo+ICsgICAgICAgICAg
-ICAgICAgICAgICAgIC53aWR0aCA9IDEwNywKPiArICAgICAgICAgICAgICAgICAgICAgICAuaGVp
-Z2h0ID0gMTcyLAo+ICsgICAgICAgICAgICAgICB9LAo+ICsgICAgICAgfSwKPiArICAgICAgIC5m
-bGFncyA9IE1JUElfRFNJX01PREVfVklERU8gfAo+ICsgICAgICAgICAgICAgICAgTUlQSV9EU0lf
-TU9ERV9WSURFT19CVVJTVCB8Cj4gKyAgICAgICAgICAgICAgICBNSVBJX0RTSV9NT0RFX1ZJREVP
-X1NZTkNfUFVMU0UsCj4gKyAgICAgICAuZm9ybWF0ID0gTUlQSV9EU0lfRk1UX1JHQjg4OCwKPiAr
-ICAgICAgIC5sYW5lcyA9IDQsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
-dmljZV9pZCBkc2lfb2ZfbWF0Y2hbXSA9IHsKPiAgICAgICAgIHsKPiAgICAgICAgICAgICAgICAg
-LmNvbXBhdGlibGUgPSAiYXVvLGIwODB1YW4wMSIsCj4gQEAgLTEzNjIsNiArMTM5Miw5IEBAIHN0
-YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGRzaV9vZl9tYXRjaFtdID0gewo+ICAgICAg
-ICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJwYW5hc29uaWMsdnZ4MTBmMDA0YjAwIiwKPiAgICAg
-ICAgICAgICAgICAgLmRhdGEgPSAmcGFuYXNvbmljX3Z2eDEwZjAwNGIwMAo+ICAgICAgICAgfSwg
-ewo+ICsgICAgICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJib2UsdHYwODB3dW0tbmwwIiwKPiAr
-ICAgICAgICAgICAgICAgLmRhdGEgPSAmYm9lX3R2MDgwd3VtX25sMAo+ICsgICAgICAgfSwgewoK
-QWxsIHRoZSBuZXcgYWRkaXRpb25hbCBzaG91bGQgYmUgc29ydGVkIGFscGhhYmV0aWNhbGx5IC0g
-Zmlyc3QgYnkKdmVuZG9yIGFuZCB0aGVuIHByb2R1Y3QgbmFtZS4KClJlZ2FyZHMsCkVtaWwKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Thu, Nov 19, 2015 at 11:35:23AM +0800, Chris Zhong wrote:
+> From: Liu Ying <Ying.liu-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
+> 
+> This patch adds device tree bindings for Synopsys DesignWare MIPI DSI
+> host controller DRM bridge driver.
+> 
+> Signed-off-by: Liu Ying <Ying.Liu-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v3:
+> move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
+> 
+> Changes in v2: None
+> 
+>  .../bindings/display/bridge/dw_mipi_dsi.txt        | 76 ++++++++++++++++++++++
+>  1 file changed, 76 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt b/Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
+> new file mode 100644
+> index 0000000..0e5c140
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
+> @@ -0,0 +1,76 @@
+> +Device-Tree bindings for Synopsys DesignWare MIPI DSI host controller
+> +
+> +The controller is a digital core that implements all protocol functions
+> +defined in the MIPI DSI specification, providing an interface between
+> +the system and the MIPI DPHY, and allowing communication with a MIPI DSI
+> +compliant display.
+> +
+> +Required properties:
+> + - #address-cells: Should be <1>.
+> + - #size-cells: Should be <0>.
+> + - compatible: The first compatible string should be "fsl,imx6q-mipi-dsi"
+> +   for i.MX6q/sdl SoCs.  For other SoCs, please refer to their specific
+> +   device tree binding documentations.  A common compatible string
+> +   "snps,dw-mipi-dsi" should be appended for all SoCs.
+> + - reg: Represent the physical address range of the controller.
+> + - interrupts: Represent the controller's interrupt to the CPU(s).
+> + - clocks, clock-names: Phandles to the controller's pll reference
+> +   clock(ref), configuration clock(cfg) and APB clock(pclk), as
+> +   described in [1].
+
+You are missing the gpr property.
+
+> +
+> +For more required properties, please refer to relevant device tree binding
+> +documentations which describe the controller embedded in specific SoCs.
+> +
+> +Required sub-nodes:
+> + - A node to represent a DSI peripheral as described in [2].
+
+Please describe the ports.
+
+> +
+> +For more required sub-nodes, please refer to relevant device tree binding
+> +documentations which describe the controller embedded in specific SoCs.
+> +
+> +[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +[2] Documentation/devicetree/bindings/display/mipi-dsi-bus.txt
+> +
+> +example:
+> +	gpr: iomuxc-gpr@020e0000 {
+> +		/* ... */
+> +	};
+> +
+> +	mipi_dsi: mipi@021e0000 {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
+> +		reg = <0x021e0000 0x4000>;
+> +		interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
+> +		gpr = <&gpr>;
+> +		clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
+> +			 <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
+> +			 <&clks IMX6QDL_CLK_MIPI_IPG>;
+> +		clock-names = "ref", "cfg", "pclk";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@0 {
+> +				reg = <0>;
+> +
+> +				mipi_mux_0: endpoint {
+> +					remote-endpoint = <&ipu1_di0_mipi>;
+> +				};
+> +			};
+> +
+> +			port@1 {
+> +				reg = <1>;
+> +
+> +				mipi_mux_1: endpoint {
+> +					remote-endpoint = <&ipu1_di1_mipi>;
+> +				};
+> +			};
+> +		};
+> +
+> +		panel {
+> +			compatible = "truly,tft480800-16-e-dsi";
+> +			reg = <0>;
+> +			/* ... */
+> +		};
+> +	};
+> -- 
+> 2.6.3
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
