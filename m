@@ -1,97 +1,64 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v3 2/8] phy: rockchip-usb: introduce a common data-struct for the device
-Date: Thu, 19 Nov 2015 22:22:23 +0100
-Message-ID: <1447968149-10979-3-git-send-email-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3 4/8] phy: rockchip-usb: add compatible values for rk3066a
+ and rk3188
+Date: Thu, 19 Nov 2015 22:22:25 +0100
+Message-ID: <1447968149-10979-5-git-send-email-heiko@sntech.de>
 References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447968149-10979-1-git-send-email-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, romain.perier@gmail.com, arnd@arndb.de, hl@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447968149-10979-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This introduces a common struct that holds data belonging to
-the umbrella device that contains all the phys and that we
-want to use later.
+We need custom handling for these two socs in the driver shortly,
+so add the necessary compatible values to binding and driver.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- drivers/phy/phy-rockchip-usb.c | 26 +++++++++++++++++++-------
- 1 file changed, 19 insertions(+), 7 deletions(-)
+ Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt | 5 ++++-
+ drivers/phy/phy-rockchip-usb.c                             | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+index 826454a..9b37242 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
++++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+@@ -1,7 +1,10 @@
+ ROCKCHIP USB2 PHY
+ 
+ Required properties:
+- - compatible: rockchip,rk3288-usb-phy
++ - compatible: matching the soc type, one of
++     "rockchip,rk3066a-usb-phy"
++     "rockchip,rk3188-usb-phy"
++     "rockchip,rk3288-usb-phy"
+  - rockchip,grf : phandle to the syscon managing the "general
+    register files"
+  - #address-cells: should be 1
 diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
-index e941444..2b4802a 100644
+index ff3ac33..16cd533 100644
 --- a/drivers/phy/phy-rockchip-usb.c
 +++ b/drivers/phy/phy-rockchip-usb.c
-@@ -36,9 +36,14 @@
- #define SIDDQ_ON		BIT(13)
- #define SIDDQ_OFF		(0 << 13)
- 
-+struct rockchip_usb_phy_base {
-+	struct device *dev;
-+	struct regmap *reg_base;
-+};
-+
- struct rockchip_usb_phy {
-+	struct rockchip_usb_phy_base *base;
- 	unsigned int	reg_offset;
--	struct regmap	*reg_base;
- 	struct clk	*clk;
- 	struct phy	*phy;
- };
-@@ -46,7 +51,7 @@ struct rockchip_usb_phy {
- static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
- 					   bool siddq)
- {
--	return regmap_write(phy->reg_base, phy->reg_offset,
-+	return regmap_write(phy->base->reg_base, phy->reg_offset,
- 			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
+@@ -176,6 +176,8 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
  }
  
-@@ -101,17 +106,23 @@ static void rockchip_usb_phy_action(void *data)
- static int rockchip_usb_phy_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-+	struct rockchip_usb_phy_base *phy_base;
- 	struct rockchip_usb_phy *rk_phy;
- 	struct phy_provider *phy_provider;
- 	struct device_node *child;
--	struct regmap *grf;
- 	unsigned int reg_offset;
- 	int err;
- 
--	grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
--	if (IS_ERR(grf)) {
-+	phy_base = devm_kzalloc(dev, sizeof(*phy_base), GFP_KERNEL);
-+	if (!phy_base)
-+		return -ENOMEM;
-+
-+	phy_base->dev = dev;
-+	phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
-+							     "rockchip,grf");
-+	if (IS_ERR(phy_base->reg_base)) {
- 		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
--		return PTR_ERR(grf);
-+		return PTR_ERR(phy_base->reg_base);
- 	}
- 
- 	for_each_available_child_of_node(dev->of_node, child) {
-@@ -121,6 +132,8 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 			goto put_child;
- 		}
- 
-+		rk_phy->base = phy_base;
-+
- 		if (of_property_read_u32(child, "reg", &reg_offset)) {
- 			dev_err(dev, "missing reg property in node %s\n",
- 				child->name);
-@@ -129,7 +142,6 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
- 		}
- 
- 		rk_phy->reg_offset = reg_offset;
--		rk_phy->reg_base = grf;
- 
- 		err = devm_add_action(dev, rockchip_usb_phy_action, rk_phy);
- 		if (err)
+ static const struct of_device_id rockchip_usb_phy_dt_ids[] = {
++	{ .compatible = "rockchip,rk3066a-usb-phy" },
++	{ .compatible = "rockchip,rk3188-usb-phy" },
+ 	{ .compatible = "rockchip,rk3288-usb-phy" },
+ 	{}
+ };
 -- 
 2.6.2
