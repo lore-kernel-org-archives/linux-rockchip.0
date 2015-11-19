@@ -1,328 +1,96 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v3 07/12] drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
-Date: Thu, 19 Nov 2015 11:35:25 +0800
-Message-ID: <1447904131-29328-8-git-send-email-zyw@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 08/12] Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
+Date: Thu, 19 Nov 2015 11:35:26 +0800
+Message-ID: <1447904131-29328-9-git-send-email-zyw@rock-chips.com>
 References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1447904131-29328-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support for Synopsys DesignWare MIPI DSI host controller which is
-embedded in the rk3288 SoCs.
+add device tree bindings for rk3288 specific Synopsys DW MIPI DSI driver
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
-Changes in v3: None
+Changes in v3:
+move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+
 Changes in v2: None
 
- drivers/gpu/drm/rockchip/Kconfig                |  10 +
- drivers/gpu/drm/rockchip/Makefile               |   1 +
- drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c | 249 ++++++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c     |   3 +
- 4 files changed, 263 insertions(+)
- create mode 100644 drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      | 56 ++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 35215f6..24395f3 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -25,3 +25,13 @@ config ROCKCHIP_DW_HDMI
- 	  for the Synopsys DesignWare HDMI driver. If you want to
- 	  enable HDMI on RK3288 based SoC, you should selet this
- 	  option.
-+
-+config ROCKCHIP_DW_MIPI_DSI
-+	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
-+	depends on DRM_ROCKCHIP
-+	select DRM_DW_MIPI_DSI
-+	help
-+	 This selects support for Rockchip SoC specific extensions
-+	 for the Synopsys DesignWare HDMI driver. If you want to
-+	 enable MIPI DSI on RK3288 based SoC, you should selet this
-+	 option.
-diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-index f3d8a19..6a97059 100644
---- a/drivers/gpu/drm/rockchip/Makefile
-+++ b/drivers/gpu/drm/rockchip/Makefile
-@@ -6,5 +6,6 @@ rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o rockchip_drm_fbdev.o \
- 		rockchip_drm_gem.o
- 
- obj-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
-+obj-$(CONFIG_ROCKCHIP_DW_MIPI_DSI) += dw_mipi_dsi_rockchip.o
- 
- obj-$(CONFIG_DRM_ROCKCHIP) += rockchipdrm.o rockchip_drm_vop.o
-diff --git a/drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c b/drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
 new file mode 100644
-index 0000000..a0bb4eb
+index 0000000..acd9ec9
 --- /dev/null
-+++ b/drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
-@@ -0,0 +1,249 @@
-+/*
-+ * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ */
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+@@ -0,0 +1,56 @@
++Rockchip specific extensions to the Synopsys Designware MIPI DSI
++================================
 +
-+#include <linux/component.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/regmap.h>
-+#include <linux/videodev2.h>
-+#include <drm/bridge/dw_mipi_dsi.h>
-+#include <drm/drm_crtc_helper.h>
-+#include <drm/drm_mipi_dsi.h>
-+#include <drm/drm_crtc.h>
-+#include <drm/drm_of.h>
++Required properties:
++- compatible: "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi".
++- rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
++- ports: contain a port node with endpoint definitions as defined in [1].
++  For vopb,set the reg = <0> and set the reg = <1> for vopl.
 +
-+#include "rockchip_drm_drv.h"
-+#include "rockchip_drm_vop.h"
++For more required properties, please refer to [2].
 +
-+#define DRIVER_NAME	"rockchip-mipi-dsi"
++[1] Documentation/devicetree/bindings/media/video-interfaces.txt
++[2] Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
 +
-+#define GRF_SOC_CON6                    0x025c
-+#define DSI0_SEL_VOP_LIT                (1 << 6)
-+#define DSI1_SEL_VOP_LIT                (1 << 9)
++Example:
++	mipi_dsi: mipi@ff960000 {
++		#address-cells = <1>;
++		#size-cells = <0>;
++		compatible = "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi";
++		reg = <0xff960000 0x4000>;
++		interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_MIPI_24M>, <&cru PCLK_MIPI_DSI0>;
++		clock-names = "ref", "pclk";
++		rockchip,grf = <&grf>;
++		status = "okay";
 +
-+struct rockchip_mipi_dsi {
-+	struct drm_encoder encoder;
-+	struct device *dev;
-+	struct regmap *regmap;
-+};
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <1>;
 +
-+static inline struct rockchip_mipi_dsi *enc_to_dsi(struct drm_encoder *enc)
-+{
-+	return container_of(enc, struct rockchip_mipi_dsi, encoder);
-+}
++			mipi_in: port {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				mipi_in_vopb: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&vopb_out_mipi>;
++				};
++				mipi_in_vopl: endpoint@1 {
++					reg = <1>;
++					remote-endpoint = <&vopl_out_mipi>;
++				};
++			};
++		};
 +
-+static struct drm_encoder_funcs rockchip_mipi_dsi_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
++		panel {
++			compatible ="boe,tv080wum-nl0";
++			reg = <0>;
 +
-+static int rockchip_mipi_parse_dt(struct rockchip_mipi_dsi *dsi)
-+{
-+	struct device_node *np = dsi->dev->of_node;
-+
-+	dsi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	if (IS_ERR(dsi->regmap)) {
-+		dev_err(dsi->dev, "Unable to get rockchip,grf\n");
-+		return PTR_ERR(dsi->regmap);
-+	}
-+
-+	return 0;
-+}
-+
-+static bool rockchip_mipi_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
-+					const struct drm_display_mode *mode,
-+					struct drm_display_mode *adjusted_mode)
-+{
-+	return true;
-+}
-+
-+static void rockchip_mipi_dsi_encoder_prepare(struct drm_encoder *encoder)
-+{
-+	u32 encoder_pix_fmt, interface_pix_fmt;
-+
-+	encoder_pix_fmt = dw_mipi_dsi_get_encoder_pixel_format(encoder);
-+
-+	switch (encoder_pix_fmt) {
-+	case MIPI_DSI_FMT_RGB888:
-+		interface_pix_fmt = ROCKCHIP_OUT_MODE_P888;
-+		break;
-+	case MIPI_DSI_FMT_RGB666:
-+		interface_pix_fmt = ROCKCHIP_OUT_MODE_P666;
-+		break;
-+	case MIPI_DSI_FMT_RGB565:
-+		interface_pix_fmt = ROCKCHIP_OUT_MODE_P565;
-+		break;
-+	default:
-+		WARN_ON(1);
-+		return;
-+	}
-+
-+	rockchip_drm_crtc_mode_config(encoder->crtc, DRM_MODE_CONNECTOR_DSI,
-+				      interface_pix_fmt);
-+}
-+
-+static void rockchip_mipi_dsi_encoder_mode_set(struct drm_encoder *encoder,
-+					struct drm_display_mode *mode,
-+					struct drm_display_mode *adjusted_mode)
-+{
-+}
-+
-+static void rockchip_mipi_dsi_encoder_commit(struct drm_encoder *encoder)
-+{
-+	struct rockchip_mipi_dsi *dsi = enc_to_dsi(encoder);
-+	u32 val;
-+	int mux  = rockchip_drm_encoder_get_mux_id(dsi->dev->of_node, encoder);
-+
-+	if (mux)
-+		val = DSI0_SEL_VOP_LIT | (DSI0_SEL_VOP_LIT << 16);
-+	else
-+		val = DSI0_SEL_VOP_LIT << 16;
-+
-+	regmap_write(dsi->regmap, GRF_SOC_CON6, val);
-+	dev_dbg(dsi->dev, "vop %s output to dsi0\n",
-+		(mux) ? "LIT" : "BIG");
-+}
-+
-+static void rockchip_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
-+{
-+}
-+
-+static struct drm_encoder_helper_funcs
-+rockchip_mipi_dsi_encoder_helper_funcs = {
-+	.mode_fixup = rockchip_mipi_dsi_encoder_mode_fixup,
-+	.prepare = rockchip_mipi_dsi_encoder_prepare,
-+	.mode_set = rockchip_mipi_dsi_encoder_mode_set,
-+	.commit = rockchip_mipi_dsi_encoder_commit,
-+	.disable = rockchip_mipi_dsi_encoder_disable,
-+};
-+
-+static int rockchip_mipi_dsi_register(struct drm_device *drm,
-+				      struct rockchip_mipi_dsi *dsi)
-+{
-+	struct drm_encoder *encoder = &dsi->encoder;
-+	struct device *dev = dsi->dev;
-+
-+	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm,
-+							     dev->of_node);
-+	/*
-+	 * If we failed to find the CRTC(s) which this encoder is
-+	 * supposed to be connected to, it's because the CRTC has
-+	 * not been registered yet.  Defer probing, and hope that
-+	 * the required CRTC is added later.
-+	 */
-+	if (encoder->possible_crtcs == 0)
-+		return -EPROBE_DEFER;
-+
-+	drm_encoder_helper_add(&dsi->encoder,
-+			       &rockchip_mipi_dsi_encoder_helper_funcs);
-+	drm_encoder_init(drm, &dsi->encoder, &rockchip_mipi_dsi_encoder_funcs,
-+			 DRM_MODE_ENCODER_DSI);
-+	return 0;
-+}
-+
-+static enum drm_mode_status rockchip_mipi_dsi_mode_valid(
-+					struct drm_connector *connector,
-+					struct drm_display_mode *mode)
-+{
-+	/*
-+	 * The VID_PKT_SIZE field in the DSI_VID_PKT_CFG
-+	 * register is 11-bit.
-+	 */
-+	if (mode->hdisplay > 0x7ff)
-+		return MODE_BAD_HVALUE;
-+
-+	/*
-+	 * The V_ACTIVE_LINES field in the DSI_VTIMING_CFG
-+	 * register is 11-bit.
-+	 */
-+	if (mode->vdisplay > 0x7ff)
-+		return MODE_BAD_VVALUE;
-+
-+	return MODE_OK;
-+}
-+
-+static struct dw_mipi_dsi_plat_data rk3288_mipi_dsi_drv_data = {
-+	.max_data_lanes = 4,
-+	.mode_valid = rockchip_mipi_dsi_mode_valid,
-+};
-+
-+static const struct of_device_id rockchip_mipi_dsi_dt_ids[] = {
-+	{
-+	 .compatible = "rockchip,rk3288-mipi-dsi",
-+	 .data = &rk3288_mipi_dsi_drv_data,
-+	},
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, rockchip_mipi_dsi_dt_ids);
-+
-+static int rockchip_mipi_dsi_bind(struct device *dev, struct device *master,
-+			     void *data)
-+{
-+	const struct of_device_id *of_id =
-+			of_match_device(rockchip_mipi_dsi_dt_ids, dev);
-+	const struct dw_mipi_dsi_plat_data *pdata = of_id->data;
-+	struct drm_device *drm = data;
-+	struct rockchip_mipi_dsi *dsi;
-+	int ret;
-+
-+	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-+	if (!dsi)
-+		return -ENOMEM;
-+
-+	dsi->dev = dev;
-+
-+	ret = rockchip_mipi_dsi_register(drm, dsi);
-+	if (ret)
-+		return ret;
-+
-+	ret = rockchip_mipi_parse_dt(dsi);
-+	if (ret)
-+		return ret;
-+
-+	dev_set_drvdata(dev, dsi);
-+
-+	return dw_mipi_dsi_bind(dev, master, data, &dsi->encoder, pdata);
-+}
-+
-+static void rockchip_mipi_dsi_unbind(struct device *dev, struct device *master,
-+	void *data)
-+{
-+	return dw_mipi_dsi_unbind(dev, master, data);
-+}
-+
-+static const struct component_ops rockchip_mipi_dsi_ops = {
-+	.bind	= rockchip_mipi_dsi_bind,
-+	.unbind	= rockchip_mipi_dsi_unbind,
-+};
-+
-+static int rockchip_mipi_dsi_probe(struct platform_device *pdev)
-+{
-+	return component_add(&pdev->dev, &rockchip_mipi_dsi_ops);
-+}
-+
-+static int rockchip_mipi_dsi_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &rockchip_mipi_dsi_ops);
-+	return 0;
-+}
-+
-+static struct platform_driver rockchip_mipi_dsi_driver = {
-+	.probe		= rockchip_mipi_dsi_probe,
-+	.remove		= rockchip_mipi_dsi_remove,
-+	.driver		= {
-+		.of_match_table = rockchip_mipi_dsi_dt_ids,
-+		.name	= DRIVER_NAME,
-+	},
-+};
-+module_platform_driver(rockchip_mipi_dsi_driver);
-+
-+MODULE_DESCRIPTION("ROCKCHIP MIPI DSI host controller driver");
-+MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:" DRIVER_NAME);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 9986b311ed..977c17c 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1194,6 +1194,9 @@ static int vop_crtc_mode_set(struct drm_crtc *crtc,
- 	case DRM_MODE_CONNECTOR_HDMIA:
- 		VOP_CTRL_SET(vop, hdmi_en, 1);
- 		break;
-+	case DRM_MODE_CONNECTOR_DSI:
-+		VOP_CTRL_SET(vop, mipi_en, 1);
-+		break;
- 	default:
- 		DRM_ERROR("unsupport connector_type[%d]\n",
- 			  vop->connector_type);
++			enable-gpios = <&gpio7 3 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&lcd_en>;
++			backlight = <&backlight>;
++			status = "okay";
++		};
++	};
 -- 
 2.6.3
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
