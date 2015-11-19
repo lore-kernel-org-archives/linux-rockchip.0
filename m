@@ -1,46 +1,46 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v3 03/12] drm/rockchip: return a true clock rate to
- adjusted_mode
-Date: Thu, 19 Nov 2015 16:10:03 +0800
-Message-ID: <564D83DB.9040705@rock-chips.com>
-References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
- <1447904131-29328-4-git-send-email-zyw@rock-chips.com>
- <564D756D.9050000@rock-chips.com>
+From: Caesar Wang <sasukewxt-9Onoh4P/yGk@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: temporarily remove emmc hs200 speed
+ from rk3288 minnie
+Date: Thu, 19 Nov 2015 17:42:59 +0800
+Message-ID: <564D99A3.6050009@163.com>
+References: <1816392.5rIXY9jxRH@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <564D756D.9050000@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark yao <mark.yao@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1816392.5rIXY9jxRH@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 11/19/2015 03:08 PM, Mark yao wrote:
-> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 11:35, Chris Zhong wrote:
->> +
->> +    /*
->> +     * Sometimes the clock driver can not set a accurate clock_rate=
-=20
->> for vop,
->> +     * get the true rate of vop_dclk and set it back to adjusted_mo=
-de.
->> +     */
->> +    adjusted_mode->clock =3D clk_get_rate(vop->dclk) / 1000;
->>   out:
->>       ret_clk =3D clk_enable(vop->dclk);
->>       if (ret_clk < 0) {
-> Hi Chris
->      How about use clk_round_rate to check the clock rate first?
->      I think we can check it on vop_crtc_mode_fixup.
-Hi Mark
-     Nice advice, I'll modify it in next version. Thanks.
->
-> Thanks.
-> - =EF=BC=ADark Yao
->
->
->
+SGVpa28sCgpXaGF0IGFyZSB0aGUgcHJvYmxlbXM/CkknbSBpbnRlcmVzdGluZyB0aGF0IC4uLi4u
+Oi0pCgrlnKggMjAxNeW5tDEx5pyIMTnml6UgMTQ6NTYsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoK
+PiBUaGUgZU1NQyBvZiB0aGUgbWlubmllIENocm9tZWJvb2sgZG9lc24ndCBsaWtlIG91ciBjdXJy
+ZW50IG1ldGhvZCBvZgo+IHR1bmluZyBhbmQgd2hpbGUgdGhlcmUgYXJlIHNvbHV0aW9ucyBvbiB0
+aGUgaG9yaXpvbiwgdGhleSBzdGlsbCBuZWVkCkhhbmfvvJ8gIFRoYXQncyBzZWVtIG5vcm1hbCBi
+b290aW5nIHVwIHdpdGggbXkgaGFuZCBtaW5uaWUgYm9hcmQuCgo+IGludmVzdGlnYXRpbmcuIE90
+aGVyIENocm9tZWJvb2tzIHR1bmUganVzdCBmaW5lIHdpdGggdGhlIGVtbWMsIHNvCj4gc2ltcGx5
+IGRpc2FibGUgdHVuaW5nIG9uIE1pbm5pZSBmb3Igbm93Lgo+Cj4gU2lnbmVkLW9mZi1ieTogSGVp
+a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiBBbHJlYWR5IGluIG15IGZpeGVz
+IGJyYW5jaCwgYnV0IHBvc3RlZCBmb3IgY29tcGxldGVuZXMgc2FrZQo+Cj4gICBhcmNoL2FybS9i
+b290L2R0cy9yazMyODgtdmV5cm9uLW1pbm5pZS5kdHMgfCA0ICsrKysKPiAgIDEgZmlsZSBjaGFu
+Z2VkLCA0IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9y
+azMyODgtdmV5cm9uLW1pbm5pZS5kdHMgYi9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdmV5cm9u
+LW1pbm5pZS5kdHMKPiBpbmRleCA4ZmQ4ZWYyLi44NWYwMzczIDEwMDY0NAo+IC0tLSBhL2FyY2gv
+YXJtL2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tbWlubmllLmR0cwo+ICsrKyBiL2FyY2gvYXJtL2Jv
+b3QvZHRzL3JrMzI4OC12ZXlyb24tbWlubmllLmR0cwo+IEBAIC04Niw2ICs4NiwxMCBAQAo+ICAg
+CX07Cj4gICB9Owo+ICAgCj4gKyZlbW1jIHsKPiArCS9kZWxldGUtcHJvcGVydHkvbW1jLWhzMjAw
+LTFfOHY7Cj4gK307Cj4gKwo+ICAgJmdwaW9fa2V5cyB7Cj4gICAJcGluY3RybC0wID0gPCZwd3Jf
+a2V5X2wgJmFwX2xpZF9pbnRfbCAmdm9sdW1fZG93bl9sICZ2b2x1bV91cF9sPjsKPiAgIAoKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
