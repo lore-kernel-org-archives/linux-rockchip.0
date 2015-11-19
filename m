@@ -1,50 +1,37 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: temporarily remove emmc hs200 speed from
- rk3288 minnie
-Date: Thu, 19 Nov 2015 07:56:44 +0100
-Message-ID: <1816392.5rIXY9jxRH@phil>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v3 03/12] drm/rockchip: return a true clock rate to
+ adjusted_mode
+Date: Thu, 19 Nov 2015 15:08:29 +0800
+Message-ID: <564D756D.9050000@rock-chips.com>
+References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
+ <1447904131-29328-4-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447904131-29328-4-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The eMMC of the minnie Chromebook doesn't like our current method of
-tuning and while there are solutions on the horizon, they still need
-investigating. Other Chromebooks tune just fine with the emmc, so
-simply disable tuning on Minnie for now.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
-Already in my fixes branch, but posted for completenes sake
-
- arch/arm/boot/dts/rk3288-veyron-minnie.dts | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index 8fd8ef2..85f0373 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -86,6 +86,10 @@
- 	};
- };
- 
-+&emmc {
-+	/delete-property/mmc-hs200-1_8v;
-+};
-+
- &gpio_keys {
- 	pinctrl-0 = <&pwr_key_l &ap_lid_int_l &volum_down_l &volum_up_l>;
- 
--- 
-2.6.2
+T24gMjAxNeW5tDEx5pyIMTnml6UgMTE6MzUsIENocmlzIFpob25nIHdyb3RlOgo+ICsKPiArCS8q
+Cj4gKwkgKiBTb21ldGltZXMgdGhlIGNsb2NrIGRyaXZlciBjYW4gbm90IHNldCBhIGFjY3VyYXRl
+IGNsb2NrX3JhdGUgZm9yIHZvcCwKPiArCSAqIGdldCB0aGUgdHJ1ZSByYXRlIG9mIHZvcF9kY2xr
+IGFuZCBzZXQgaXQgYmFjayB0byBhZGp1c3RlZF9tb2RlLgo+ICsJICovCj4gKwlhZGp1c3RlZF9t
+b2RlLT5jbG9jayA9IGNsa19nZXRfcmF0ZSh2b3AtPmRjbGspIC8gMTAwMDsKPiAgIG91dDoKPiAg
+IAlyZXRfY2xrID0gY2xrX2VuYWJsZSh2b3AtPmRjbGspOwo+ICAgCWlmIChyZXRfY2xrIDwgMCkg
+ewpIaSBDaHJpcwogICAgICBIb3cgYWJvdXQgdXNlIGNsa19yb3VuZF9yYXRlIHRvIGNoZWNrIHRo
+ZSBjbG9jayByYXRlIGZpcnN0PwogICAgICBJIHRoaW5rIHdlIGNhbiBjaGVjayBpdCBvbiB2b3Bf
+Y3J0Y19tb2RlX2ZpeHVwLgoKVGhhbmtzLgotIO+8rWFyayBZYW8KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
