@@ -1,171 +1,190 @@
-From: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
- single_tt hub
-Date: Thu, 19 Nov 2015 13:20:23 -0600
-Message-ID: <87twoheqyw.fsf@saruman.tx.rr.com>
-References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
- <1447721484-22548-7-git-send-email-dianders@chromium.org>
- <87lh9uf1fw.fsf@saruman.tx.rr.com>
- <CAD=FV=UW-AbY9GnYOS_2V=dZTkL6NiZsO4urpf==qjcRDaEMDA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3870683234588019891=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=UW-AbY9GnYOS_2V=dZTkL6NiZsO4urpf==qjcRDaEMDA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
- Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v3 1/2] usb: dwc2: host: Fix missing device insertions
+Date: Thu, 19 Nov 2015 11:45:12 -0800
+Message-ID: <1447962313-17069-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com
+Cc: Yunzhi Li <lyz@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============3870683234588019891==
-Content-Type: multipart/signed; boundary="=-=-="; micalg=pgp-sha1;
-	protocol="application/pgp-signature"
+If you've got your interrupt signals bouncing a bit as you insert your
+USB device, you might end up in a state when the device is connected but
+the driver doesn't know it.
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Specifically, the observed order is:
+ 1. hardware sees connect
+ 2. hardware sees disconnect
+ 3. hardware sees connect
+ 4. dwc2_port_intr() - clears connect interrupt
+ 5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
 
+Now you'll be stuck with the cable plugged in and no further interrupts
+coming in but the driver will think we're disconnected.
 
-Hi,
+We'll fix this by checking for the missing connect interrupt and
+re-connecting after the disconnect is posted.  We don't skip the
+disconnect because if there is a transitory disconnect we really want to
+de-enumerate and re-enumerate.
 
-Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->>> Until we have logic to determine which devices share the same TT let's
->>> add logic to assume that all devices on a given dwc2 controller are on
->>> one single_tt hub.  This is better than the previous code that assumed
->>> that all devices were on one multi_tt hub, since single_tt hubs
->>> appear (in my experience) to be much more common and any schedule that
->>> would work on a single_tt hub will also work on a multi_tt hub.  This
->>> will prevent more than 8 total low/full speed devices to be on the bus
->>> at one time, but that's a reasonable restriction until we've made things
->>> smarter.
->>>
->>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>> ---
->>> Changes in v3:
->>> - Assuming single_tt is new for v3; not terribly well tested (yet).
->>>
->>> Changes in v2: None
->>>
->>>  drivers/usb/dwc2/core.h      |  1 +
->>>  drivers/usb/dwc2/hcd_queue.c | 40 ++++++++++++++++++++++++++++++++++++=
-+++-
->>>  2 files changed, 40 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
->>> index 567ee2c9e69f..09aa2b5ae29e 100644
->>> --- a/drivers/usb/dwc2/core.h
->>> +++ b/drivers/usb/dwc2/core.h
->>> @@ -782,6 +782,7 @@ struct dwc2_hsotg {
->>>       u16 periodic_usecs;
->>>       unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
->>>                                                  BITS_PER_LONG)];
->>> +     bool has_split[8];
->>
->> why don't you use a u8 instead then just set each bit for each
->> "has_split" you need to take care of. This array is kinda ugly.
->
-> Let's actually drop this patch completely.  Julius and I sat down and
-> he talked me through things, and with my current understanding the
-> current microframe scheduler in dwc2 is broken enough that small
-> little band-aids like this will do little more than just push the
-> problems around.
->
-> I'm a good portion of the way through a better microframe scheduler.
-> I have no doubt that it won't be perfect, but hopefully it will at
-> least be based in reality...
->
-> My latest thinking on the patches in this series:
->
-> 1. usb: dwc2: rockchip: Make the max_transfer_size automatic
->
-> I'll probably separate this out into its own patch so I can stop
-> sending it as part of this series.  ...or if someone wanted to land it
-> then I won't bother.
->
->
-> 2. usb: dwc2: host: Get aligned DMA in a more supported way
->
-> Still can land any time and has good benefits.  I believe that I can't
-> separate this because it will cause conflicts with scheduler patches.
->
->
-> 3. usb: dwc2: host: Add scheduler tracing
->
-> Would be nice to land.
->
->
-> 4. usb: dwc2: host: Rewrite the microframe scheduler
-> 5. usb: dwc2: host: Keep track of and use our scheduled microframe
-> 6. usb: dwc2: host: Assume all devices are on one single_tt hub
->
-> Please drop patches 4-6 right now.
->
->
-> 7. usb: dwc2: host: Add a delay before releasing periodic bandwidth
-> 8. usb: dwc2: host: Giveback URB in tasklet context
+Notes:
+1. As part of this change we add a "force" parameter to
+   dwc2_hcd_disconnect() so that when we're unloading the module we
+   avoid the new behavior.  The need for this was pointed out by John
+   Youn.
+2. The bit of code needed at the end of dwc2_hcd_disconnect() is
+   exactly the same bit of code from dwc2_port_intr().  To avoid
+   duplication, we refactor that code out into a new function
+   dwc2_hcd_connect().
 
-if you can, it's best to send a new series with the changes. This makes
-mine and John's life a lot easier :-)
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Acked-by: John Youn <johnyoun@synopsys.com>
+Tested-by: John Youn <johnyoun@synopsys.com>
+---
+Changes in v3:
+- Add notes to device insertions commit message (Felipe Balbi)
 
-> I'll probably move these back up in the series (like in v2) and put
-> microframe rewrite atop them.  With my current understanding the
-> scheduling is so broken today that the concerns Alan brought up can
-> wait until we have a proper scheduler to be addressed.  In the
-> meantime getting the huge boost in interrupt speed will help with
-> dwc2's correctness (and performance) because it means we're much less
-> likely to miss SOF interrupts.
->
-> If anyone has any review time, giving a review to v2 of these patches
-> would be helpful.  Otherwise I'll double check that v2 still looks
-> good with my current understanding and eventually post them again.
+Changes in v2:
+- Don't reconnect when called from _dwc2_hcd_stop() (John Youn)
 
-That would have to be someone experienced with that IP. I don't even
-have docs :-)
+ drivers/usb/dwc2/core.h      |  6 ++++--
+ drivers/usb/dwc2/core_intr.c |  4 ++--
+ drivers/usb/dwc2/hcd.c       | 40 ++++++++++++++++++++++++++++++++++++++--
+ drivers/usb/dwc2/hcd_intr.c  |  6 +-----
+ 4 files changed, 45 insertions(+), 11 deletions(-)
 
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWTiD4AAoJEIaOsuA1yqREPA8P/0Dy8aBTIdhTaRu0APXOHqL8
-U8qvj5kKyFwNpv4axZhGiKjioW/zjAD/2kE7PgPOfcDd7H22f/XlUtutuSZKizrJ
-NZ5p2Ca/nC0QuY4bvojEuRi4YLNp1o41f/sfejAUgAA6mtLvoHZsYZq3QuVi/1zR
-N8N3d87QHkbkeXXbR6/Qc194VVd7eG2a12+ORRcH6lVzwTCWdi2ecMI8Fx3cjkM9
-1R8Lcy4NXfSUGuWcRJP/R831xjkcjKmByQkTUoghIH4d5QpOgMV2McdzhiSeLHFe
-SfObwXmanIM3M1czaJIt7629ngLmYh86H62Jk2YCEHl6vn4LrzZCfuGd6KYcb7Gi
-EOSd9ur2q3SrXiXIhwa9pn+VHbLycyqrufrP7lrpdPB3diranUozOeTCi8rCqZGG
-a7fNBU8tQ2cAmCpxN/iibU2xusGFr18Sb/URR4OkkWdJwfwGDowsqbWm1iISG8VY
-ai9lHsW3BTpIsAWDRHUcUUsBDNkXssZs4tXtjFlso7C30ohARoQqJxIEauwVJxa9
-MFRzesBnrSHOsYIZ5XfPZ22EFF09KZHrWoOScAYMuM3Nct65EgzkjM5anQY6iGJw
-k7gXt9DYkWlgViGsp6C9Z1Zc07XOM/dySUQcvpCRKynk2tsFTZTH9BrqmJkbiHnt
-HQxTX1cVp0FrNQIjVHht
-=tN3s
------END PGP SIGNATURE-----
---=-=-=--
-
-
---===============3870683234588019891==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3870683234588019891==--
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index a66d3cb62b65..daa1c342cdac 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -1154,12 +1154,14 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
+ 
+ #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+ extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
+-extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg);
++extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
++extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
+ extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
+-static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg) {}
++static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
++static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
+ static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_remove(struct dwc2_hsotg *hsotg) {}
+ static inline int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
+diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_intr.c
+index 27daa42788b1..61601d16e233 100644
+--- a/drivers/usb/dwc2/core_intr.c
++++ b/drivers/usb/dwc2/core_intr.c
+@@ -239,7 +239,7 @@ static void dwc2_handle_otg_intr(struct dwc2_hsotg *hsotg)
+ 			dev_dbg(hsotg->dev, "a_suspend->a_peripheral (%d)\n",
+ 				hsotg->op_state);
+ 			spin_unlock(&hsotg->lock);
+-			dwc2_hcd_disconnect(hsotg);
++			dwc2_hcd_disconnect(hsotg, false);
+ 			spin_lock(&hsotg->lock);
+ 			hsotg->op_state = OTG_STATE_A_PERIPHERAL;
+ 		} else {
+@@ -401,7 +401,7 @@ static void dwc2_handle_disconnect_intr(struct dwc2_hsotg *hsotg)
+ 		dwc2_op_state_str(hsotg));
+ 
+ 	if (hsotg->op_state == OTG_STATE_A_HOST)
+-		dwc2_hcd_disconnect(hsotg);
++		dwc2_hcd_disconnect(hsotg, false);
+ 
+ 	dwc2_writel(GINTSTS_DISCONNINT, hsotg->regs + GINTSTS);
+ }
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index e79baf73c234..e208eac7ff57 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -268,15 +268,33 @@ static void dwc2_hcd_cleanup_channels(struct dwc2_hsotg *hsotg)
+ }
+ 
+ /**
++ * dwc2_hcd_connect() - Handles connect of the HCD
++ *
++ * @hsotg: Pointer to struct dwc2_hsotg
++ *
++ * Must be called with interrupt disabled and spinlock held
++ */
++void dwc2_hcd_connect(struct dwc2_hsotg *hsotg)
++{
++	if (hsotg->lx_state != DWC2_L0)
++		usb_hcd_resume_root_hub(hsotg->priv);
++
++	hsotg->flags.b.port_connect_status_change = 1;
++	hsotg->flags.b.port_connect_status = 1;
++}
++
++/**
+  * dwc2_hcd_disconnect() - Handles disconnect of the HCD
+  *
+  * @hsotg: Pointer to struct dwc2_hsotg
++ * @force: If true, we won't try to reconnect even if we see device connected.
+  *
+  * Must be called with interrupt disabled and spinlock held
+  */
+-void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
++void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force)
+ {
+ 	u32 intr;
++	u32 hprt0;
+ 
+ 	/* Set status flags for the hub driver */
+ 	hsotg->flags.b.port_connect_status_change = 1;
+@@ -315,6 +333,24 @@ void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg)
+ 		dwc2_hcd_cleanup_channels(hsotg);
+ 
+ 	dwc2_host_disconnect(hsotg);
++
++	/*
++	 * Add an extra check here to see if we're actually connected but
++	 * we don't have a detection interrupt pending.  This can happen if:
++	 *   1. hardware sees connect
++	 *   2. hardware sees disconnect
++	 *   3. hardware sees connect
++	 *   4. dwc2_port_intr() - clears connect interrupt
++	 *   5. dwc2_handle_common_intr() - calls here
++	 *
++	 * Without the extra check here we will end calling disconnect
++	 * and won't get any future interrupts to handle the connect.
++	 */
++	if (!force) {
++		hprt0 = dwc2_readl(hsotg->regs + HPRT0);
++		if (!(hprt0 & HPRT0_CONNDET) && (hprt0 & HPRT0_CONNSTS))
++			dwc2_hcd_connect(hsotg);
++	}
+ }
+ 
+ /**
+@@ -2365,7 +2401,7 @@ static void _dwc2_hcd_stop(struct usb_hcd *hcd)
+ 
+ 	spin_lock_irqsave(&hsotg->lock, flags);
+ 	/* Ensure hcd is disconnected */
+-	dwc2_hcd_disconnect(hsotg);
++	dwc2_hcd_disconnect(hsotg, true);
+ 	dwc2_hcd_stop(hsotg);
+ 	hsotg->lx_state = DWC2_L3;
+ 	hcd->state = HC_STATE_HALT;
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index bda0b21b850f..03504ac2fecc 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -350,11 +350,7 @@ static void dwc2_port_intr(struct dwc2_hsotg *hsotg)
+ 		dev_vdbg(hsotg->dev,
+ 			 "--Port Interrupt HPRT0=0x%08x Port Connect Detected--\n",
+ 			 hprt0);
+-		if (hsotg->lx_state != DWC2_L0)
+-			usb_hcd_resume_root_hub(hsotg->priv);
+-
+-		hsotg->flags.b.port_connect_status_change = 1;
+-		hsotg->flags.b.port_connect_status = 1;
++		dwc2_hcd_connect(hsotg);
+ 		hprt0_modify |= HPRT0_CONNDET;
+ 
+ 		/*
+-- 
+2.6.0.rc2.230.g3dd15c0
