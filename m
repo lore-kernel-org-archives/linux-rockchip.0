@@ -1,83 +1,62 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip reboot notifier driver
-Date: Thu, 19 Nov 2015 05:35:48 +0100
-Message-ID: <2082288.pD4oKxtaXL@phil>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com> <20151118225904.GA5429@rob-hp-laptop> <564D2331.8070503@rock-chips.com>
+Subject: Re: [PATCH v4 3/3] ARM: dts: rockchip: Add the OTP gpio pinctrl
+Date: Thu, 19 Nov 2015 05:57:02 +0100
+Message-ID: <1668139.HQCaUDeMrM@phil>
+References: <1445599528-18825-1-git-send-email-wxt@rock-chips.com>
+ <2741625.HAsG2fX6yg@diego> <564D3772.9050402@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <564D2331.8070503-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <564D3772.9050402-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
-
-Am Donnerstag, 19. November 2015, 09:17:37 schrieb Andy Yan:
-> Hi Rob:
->=20
-> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 06:59, Rob Herring wrote:
-> > On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
-> >> Add devicetree binding document for rockchip reboot nofifier drive=
-r
-> > Just reading the subject this is way too specific to the Linux driv=
-er
-> > needs rather than a h/w description. Please don't create fake DT no=
-des
-> > just to bind to drivers. Whatever &pmu is is probably what should h=
-ave
-> > the DT node. Let the driver for it create child devices if you need
-> > that.
->=20
->      This is note a fake DT nodes, we really need it to tell the driv=
-er
->       which register to use to store the reboot mode. Because rockchi=
-p
->       use different register file to store the reboot mode on differe=
-nt
->       platform, on rk3066,rk3188, rk3288,it use  one of the PMU=20
-> register, on
->       the incoming RK3036, it use one of the GRF register, and it use=
-=20
-> one  of
->       the PMUGRF register for arm64 platform rk3368. On the other han=
-d, the
->       PMU/GRF/PMUGRF register file are mapped as "syscon", then refer=
-enced
->       by other DT nodes by phandle. So maybe let it as a separate DT=20
-> node here
->       is better.
-
-or alternatively we could do something similar to what the bl-switcher=20
-cupfreq-driver does. Take a look at
-
-drivers/cpufreq/arm_big_little.c
-drivers/clk/clk-mb86s7x.c
-
-We already have the core restart-handler code in the clock-tree, so cou=
-ld=20
-maybe simply do the
-	platform_device_register_simple("rockchip-reboot", -1, NULL, 0);
-in that common code?
-
-Though I'm not yet sure how to get the platform-data. I guess one optio=
-n would=20
-be to do things like the 3288 suspend code does (arch/arm/mach-rockchip=
-/pm.c=20
-at the bottom), by having the per-soc-data in the driver and then match=
-ing=20
-against the pmu. Because the pmu is not part of the clock controller bi=
-nding=20
-(and probably also shouldn't be).
-
-
-Heiko
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgQ2Flc2FyLAoKQW0gRG9ubmVyc3RhZywgMTkuIE5vdmVtYmVyIDIwMTUsIDEwOjQ0OjAyIHNj
+aHJpZWIgQ2Flc2FyIFdhbmc6Cj4g5ZyoIDIwMTXlubQxMOaciDI15pelIDE1OjU1LCBIZWlrbyBT
+dMO8Ym5lciDlhpnpgZM6Cj4gPiBBbSBGcmVpdGFnLCAyMy4gT2t0b2JlciAyMDE1LCAwODoyNTow
+OCBzY2hyaWViIERvdWcgQW5kZXJzb246Cj4gPj4gT24gRnJpLCBPY3QgMjMsIDIwMTUgYXQgNDoy
+NSBBTSwgQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPj4+IEFkZCB0
+aGUgImluaXQiIGFuZiAic2xlZXAiIHBpbmN0cmwgYXMgdGhlIE9UUCBncGlvIHN0YXRlLgo+ID4+
+PiBXZSBuZWVkIHRoZSBPVFAgcGluIGlzIGdwaW8gc3RhdGUgYmVmb3JlIHJlc2V0dGluZyB0aGUg
+VFNBREMgY29udHJvbGxlciwKPiA+Pj4gc2luY2UgdGhlIHRzaHV0IHBvbGFyaXR5IHdpbGwgZ2Vu
+ZXJhdGUgYSBoaWdoIHNpZ25hbC4KPiA+Pj4KPiA+Pj4gImluaXQiIHBpbmN0cmwgcHJvcGVydHkg
+aXMgZGVmaW5lZCBieSBEb3VnJ3MgUGF0Y2hbMF0uCj4gPj4+Cj4gPj4+IFBhdGNoWzBdOgo+ID4+
+PiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzc0NTQzMTEvCj4gPj4+Cj4gPj4+
+IFNpZ25lZC1vZmYtYnk6IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4gPj4+IFJl
+dmlld2VkLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4gPj4+
+IC0tLQo+ID4+Pgo+ID4+PiBDaGFuZ2VzIGluIHY0OiBOb25lCj4gPj4+Cj4gPj4+IENoYW5nZXMg
+aW4gdjM6Cj4gPj4+ICAgIC0gQWRkIHRoZSAic2xlZXAiIHBpbmN0cmwgYXMgdGhlIGdwaW8gc3Rh
+dGUgaW4gUEFUQ0hbMy8zXQo+ID4+Pgo+ID4+PiBDaGFuZ2VzIGluIHYyOgo+ID4+PiAgICAtIEFk
+ZCBzb21lIGNvbW1pdHMgZm9yIG1vcmUgb2J2aW91cyBpbiBQQVRDSFsyLzJdCj4gPj4+Cj4gPj4+
+IENoYW5nZXMgaW4gdjE6Cj4gPj4+ICAgIC0gQXMgdGhlIERvdWcgY29tbWVudHMsIGRyb3AgdGhl
+IHRoZXJtYWwgZHJpdmVyIHBhdGNocyBzaW5jZQo+ID4+PiAgICAKPiA+Pj4gICAgICB3ZSBjYW4g
+d2l0aCBwaW5jdHJsIGNoYW5naW5nIHRvIHdvcmsuCj4gPj4+ICAgIAo+ID4+PiAgICAtIEFzIHRo
+ZSBEb3VnJ3MgcGF0Y2ggdG8gYWRkIHRoZSAnaW5pdCcgcHJvcGVydHkuCj4gPj4+ICAgCj4gPj4+
+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgfCAxMCArKysrKysrKy0tCj4gPj4+ICAg
+MSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+PiBJIHJl
+YWxpemVkIHRoYXQgdGhlIHN1YmplY3Qgb2YgdGhpcyBwYXRjaCBzaG91bGQgcHJvYmFibHkgY29u
+dGFpbiB0aGUKPiA+PiB3b3JkIHJrMzI4OCwgYnV0IEkgcHJlc3VtZSBIZWlrbyB3b3VsZCByYXRo
+ZXIgYWRkIHRoYXQgaGltc2VsZiB0aGFuCj4gPj4gZm9yIHlvdSB0byBzcGluIHRoaXMgYWdhaW4u
+ICA7KQo+ID4geWVwIDotKSAuLi4gbm8gbmVlZCB0byByZXNwaW4gZm9yIHN1Y2ggYW4gZWFzeSBj
+aGFuZ2UKPiAKPiBUaGF0J3Mgc2VlbSB0aGlzIHBhdGNoIGRpZG4ndCBtZXJnZSBpbnRvIHlvdXIg
+djQuNS1hcm1zb2Mvc29jIGJyYW5jaC46LSkKPiAKPiBJIGd1ZXNzIHRoaXMgcGF0Y2ggc2hvdWxk
+IG1lcmdlIGludG8gIGtlcm5lbC00LjQgc2luY2UgdGhlIFBhdGNoWzEvM10gLyAKPiBbMi8zXSBo
+YXZlIGJlZW4gbWVyZ2VkIGludG8gNC40LXJjMS46LVAKCnRoYW5rcyBmb3IgdGhlIHJlbWluZGVy
+IDotKQoKSXQgc2VlbXMgSSBkaWRuJ3QgZ2V0IGEgbm90aWNlIHdoZW4gdGhlIGNvcmUgdGhlcm1h
+bCBjaGFuZ2VzIHdlcmUgbWVyZ2VkLCBzbyAKdGhpcyBwYXRjaCBzZWVtcyB0byBoYXZlIGRyb3Bw
+ZWQgb2YgbXkgcmFkYXIuIEl0IGlzIGNsZWFybHkgYSBmaXggZm9yIGEgcmVhbCAKaXNzdWUsIHNv
+IEkndmUgYWRkZWQgaXQgdG8gbXkgZml4ZXMgYnJhbmNoIGZvciA0LjQuCgoKSGVpa28KCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
