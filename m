@@ -1,46 +1,38 @@
-From: Caesar Wang <sasukewxt-9Onoh4P/yGk@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: temporarily remove emmc hs200 speed
- from rk3288 minnie
-Date: Thu, 19 Nov 2015 17:42:59 +0800
-Message-ID: <564D99A3.6050009@163.com>
-References: <1816392.5rIXY9jxRH@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1816392.5rIXY9jxRH@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Lin Huang <hl@rock-chips.com>
+Subject: [PATCH 0/2] Bring up rk3399 ddr frequency scaling
+Date: Thu, 19 Nov 2015 18:21:09 +0800
+Message-ID: <1447928471-14448-1-git-send-email-hl@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, dianders@chromium.org, mturquette@baylibre.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com
+Cc: linux-clk@vger.kernel.org, sboyd@codeaurora.org, dbasehore@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgpXaGF0IGFyZSB0aGUgcHJvYmxlbXM/CkknbSBpbnRlcmVzdGluZyB0aGF0IC4uLi4u
-Oi0pCgrlnKggMjAxNeW5tDEx5pyIMTnml6UgMTQ6NTYsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoK
-PiBUaGUgZU1NQyBvZiB0aGUgbWlubmllIENocm9tZWJvb2sgZG9lc24ndCBsaWtlIG91ciBjdXJy
-ZW50IG1ldGhvZCBvZgo+IHR1bmluZyBhbmQgd2hpbGUgdGhlcmUgYXJlIHNvbHV0aW9ucyBvbiB0
-aGUgaG9yaXpvbiwgdGhleSBzdGlsbCBuZWVkCkhhbmfvvJ8gIFRoYXQncyBzZWVtIG5vcm1hbCBi
-b290aW5nIHVwIHdpdGggbXkgaGFuZCBtaW5uaWUgYm9hcmQuCgo+IGludmVzdGlnYXRpbmcuIE90
-aGVyIENocm9tZWJvb2tzIHR1bmUganVzdCBmaW5lIHdpdGggdGhlIGVtbWMsIHNvCj4gc2ltcGx5
-IGRpc2FibGUgdHVuaW5nIG9uIE1pbm5pZSBmb3Igbm93Lgo+Cj4gU2lnbmVkLW9mZi1ieTogSGVp
-a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiBBbHJlYWR5IGluIG15IGZpeGVz
-IGJyYW5jaCwgYnV0IHBvc3RlZCBmb3IgY29tcGxldGVuZXMgc2FrZQo+Cj4gICBhcmNoL2FybS9i
-b290L2R0cy9yazMyODgtdmV5cm9uLW1pbm5pZS5kdHMgfCA0ICsrKysKPiAgIDEgZmlsZSBjaGFu
-Z2VkLCA0IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9ib290L2R0cy9y
-azMyODgtdmV5cm9uLW1pbm5pZS5kdHMgYi9hcmNoL2FybS9ib290L2R0cy9yazMyODgtdmV5cm9u
-LW1pbm5pZS5kdHMKPiBpbmRleCA4ZmQ4ZWYyLi44NWYwMzczIDEwMDY0NAo+IC0tLSBhL2FyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tbWlubmllLmR0cwo+ICsrKyBiL2FyY2gvYXJtL2Jv
-b3QvZHRzL3JrMzI4OC12ZXlyb24tbWlubmllLmR0cwo+IEBAIC04Niw2ICs4NiwxMCBAQAo+ICAg
-CX07Cj4gICB9Owo+ICAgCj4gKyZlbW1jIHsKPiArCS9kZWxldGUtcHJvcGVydHkvbW1jLWhzMjAw
-LTFfOHY7Cj4gK307Cj4gKwo+ICAgJmdwaW9fa2V5cyB7Cj4gICAJcGluY3RybC0wID0gPCZwd3Jf
-a2V5X2wgJmFwX2xpZF9pbnRfbCAmdm9sdW1fZG93bl9sICZ2b2x1bV91cF9sPjsKPiAgIAoKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+these patchset bring up rk3399 ddr frequency scaling flow,
+use devfreq framework and simple_ondemand policy. Ddr set
+rate function will implement in dcf controller which run in
+the ATF, and rk3399 ATF not ready now, so we need finish it
+when rk3399 ATF ready.
+
+Lin Huang (2):
+  clk: rockchip: dmc: support rk3399 dmc clock driver
+  devfreq: rockchip: support rk3399 dmc devfreq
+
+ drivers/clk/rockchip/Makefile         |   1 +
+ drivers/clk/rockchip/clk-rk3399-dmc.c | 196 ++++++++++++++++++++
+ drivers/devfreq/Kconfig               |   1 +
+ drivers/devfreq/Makefile              |   1 +
+ drivers/devfreq/rockchip/Kconfig      |   8 +
+ drivers/devfreq/rockchip/Makefile     |   1 +
+ drivers/devfreq/rockchip/rk3399_dmc.c | 327 ++++++++++++++++++++++++++++++++++
+ include/soc/rockchip/rk3399-dmc-clk.h |  36 ++++
+ 8 files changed, 571 insertions(+)
+ create mode 100644 drivers/clk/rockchip/clk-rk3399-dmc.c
+ create mode 100644 drivers/devfreq/rockchip/Kconfig
+ create mode 100644 drivers/devfreq/rockchip/Makefile
+ create mode 100644 drivers/devfreq/rockchip/rk3399_dmc.c
+ create mode 100644 include/soc/rockchip/rk3399-dmc-clk.h
+
+-- 
+1.9.1
+
