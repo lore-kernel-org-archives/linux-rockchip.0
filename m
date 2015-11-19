@@ -1,80 +1,80 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v4 3/3] ARM: dts: rockchip: Add the OTP gpio pinctrl
-Date: Thu, 19 Nov 2015 10:44:02 +0800
-Message-ID: <564D3772.9050402@gmail.com>
-References: <1445599528-18825-1-git-send-email-wxt@rock-chips.com>
- <1445599528-18825-4-git-send-email-wxt@rock-chips.com>
- <CAD=FV=WBCD8WsXV2mAGUD6y=BFScbFc9U3XA7jAB-rqOLp4qGA@mail.gmail.com>
- <2741625.HAsG2fX6yg@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2741625.HAsG2fX6yg@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Doug Anderson <dianders@chromium.org>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v3 00/12] Add mipi dsi support for rk3288
+Date: Thu, 19 Nov 2015 11:35:18 +0800
+Message-ID: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
+Cc: Chris Zhong <zyw@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Philipp Zabel <p.zabel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Jeff Chen <cym@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>, linux-clk@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Huang Lin <hl@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Pawel Moll <pawel.moll@arm.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Vincent Palatin <vpalatin@chromium.org>, Russell King <linux@arm.linux.org.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-arm-kernel@lists.infradead.orgRu
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
+IP. This series adds support for a Synopsys DesignWare MIPI DSI host
+controller DRM bridge driver and a rockchip MIPI DSI specific DRM
+driver.
 
-=E5=9C=A8 2015=E5=B9=B410=E6=9C=8825=E6=97=A5 15:55, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Am Freitag, 23. Oktober 2015, 08:25:08 schrieb Doug Anderson:
->> On Fri, Oct 23, 2015 at 4:25 AM, Caesar Wang <wxt@rock-chips.com> wr=
-ote:
->>> Add the "init" anf "sleep" pinctrl as the OTP gpio state.
->>> We need the OTP pin is gpio state before resetting the TSADC contro=
-ller,
->>> since the tshut polarity will generate a high signal.
->>>
->>> "init" pinctrl property is defined by Doug's Patch[0].
->>>
->>> Patch[0]:
->>> https://patchwork.kernel.org/patch/7454311/
->>>
->>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->>> Reviewed-by: Douglas Anderson <dianders@chromium.org>
->>> ---
->>>
->>> Changes in v4: None
->>>
->>> Changes in v3:
->>>    - Add the "sleep" pinctrl as the gpio state in PATCH[3/3]
->>>
->>> Changes in v2:
->>>    - Add some commits for more obvious in PATCH[2/2]
->>>
->>> Changes in v1:
->>>    - As the Doug comments, drop the thermal driver patchs since
->>>   =20
->>>      we can with pinctrl changing to work.
->>>   =20
->>>    - As the Doug's patch to add the 'init' property.
->>>  =20
->>>   arch/arm/boot/dts/rk3288.dtsi | 10 ++++++++--
->>>   1 file changed, 8 insertions(+), 2 deletions(-)
->> I realized that the subject of this patch should probably contain th=
-e
->> word rk3288, but I presume Heiko would rather add that himself than
->> for you to spin this again.  ;)
-> yep :-) ... no need to respin for such an easy change
+This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
+This panel only use the MIPI DSI video mode.
 
-That's seem this patch didn't merge into your v4.5-armsoc/soc branch.:-=
-)
+The MIPI DSI feature is tested on rk3288 evb board, backport them to
+chrome os kernel v3.14, and it can display normally.
 
-I guess this patch should merge into  kernel-4.4 since the Patch[1/3] /=
-=20
-[2/3] have been merged into 4.4-rc1.:-P
-
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+This patchset is base on the patchset from Ying.liu@freescale.com.
+<http://www.spinics.net/lists/dri-devel/msg77181.html>
 
 
---=20
-Thanks,
-Caesar
+Changes in v3:
+move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
+move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+move boe,tv080wum-nl0.txt to bindings/display/panel/
+
+Changes in v2:
+add the mipi clk id in a single patch
+As Thierry.Reding comment, add a documentation for this panel.
+
+Chris Zhong (10):
+  clk: rockchip: add id for mipidsi sclk on rk3288
+  clk: rockchip: add mipidsi clocks on rk3288
+  drm/rockchip: return a true clock rate to adjusted_mode
+  drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
+  drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
+  Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
+  ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+  drm/panel: simple: Add support for BOE TV080WUM-NL0
+  drm/panel: simple: Add boe,tv080wum-nl0 simple panel device tree
+    binding
+  ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
+
+Liu Ying (2):
+  drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+  Documentation: dt-bindings: Add bindings for Synopsys DW MIPI DSI DRM
+    bridge driver
+
+ .../bindings/display/bridge/dw_mipi_dsi.txt        |   76 ++
+ .../bindings/display/panel/boe,tv080wum-nl0.txt    |    7 +
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   56 ++
+ arch/arm/boot/dts/rk3288-evb.dtsi                  |   20 +-
+ arch/arm/boot/dts/rk3288.dtsi                      |   39 +
+ drivers/clk/rockchip/clk-rk3288.c                  |    2 +-
+ drivers/gpu/drm/bridge/Kconfig                     |   11 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/dw_mipi_dsi.c               | 1055 ++++++++++++++++++++
+ drivers/gpu/drm/panel/panel-simple.c               |   33 +
+ drivers/gpu/drm/rockchip/Kconfig                   |   10 +
+ drivers/gpu/drm/rockchip/Makefile                  |    1 +
+ drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c    |  249 +++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |    9 +
+ include/drm/bridge/dw_mipi_dsi.h                   |   27 +
+ include/drm/drm_mipi_dsi.h                         |   14 +
+ include/dt-bindings/clock/rk3288-cru.h             |    1 +
+ 17 files changed, 1609 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
+ create mode 100644 Documentation/devicetree/bindings/display/panel/boe,tv080wum-nl0.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+ create mode 100644 drivers/gpu/drm/bridge/dw_mipi_dsi.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
+ create mode 100644 include/drm/bridge/dw_mipi_dsi.h
+
+-- 
+2.6.3
+
