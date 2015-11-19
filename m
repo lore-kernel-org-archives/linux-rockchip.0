@@ -1,69 +1,70 @@
 From: Emil Velikov <emil.l.velikov@gmail.com>
-Subject: Re: [PATCH v3 00/12] Add mipi dsi support for rk3288
-Date: Thu, 19 Nov 2015 14:41:41 +0000
-Message-ID: <CACvgo53YOMpbz1TdVmRBPPz4dv=X+8FoEo0ZcfN5DwbDYi2ZzQ@mail.gmail.com>
+Subject: Re: [PATCH v3 10/12] drm/panel: simple: Add support for BOE
+ TV080WUM-NL0
+Date: Thu, 19 Nov 2015 14:46:21 +0000
+Message-ID: <CACvgo53Z68iuq_9m2oQ+50=o0YK1KKEiKdBOJidCrurf5EGmYw@mail.gmail.com>
 References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
+ <1447904131-29328-11-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447904131-29328-11-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Chris Zhong <zyw@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip <linux-rockchip@lists.infradead.org>, Mark Yao <mark.yao@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Kever Yang <kever.yang@rock-chips.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, Jeff Chen <cym@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Andrew Bresticker <abrestic@chromium.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Roger Chen <roger.chen@rock-chips.com>Russell King <linux>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 19 November 2015 at 03:35, Chris Zhong <zyw@rock-chips.com> wrote:
-> The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
-> IP. This series adds support for a Synopsys DesignWare MIPI DSI host
-> controller DRM bridge driver and a rockchip MIPI DSI specific DRM
-> driver.
->
-> This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
-> This panel only use the MIPI DSI video mode.
->
-> The MIPI DSI feature is tested on rk3288 evb board, backport them to
-> chrome os kernel v3.14, and it can display normally.
->
-> This patchset is base on the patchset from Ying.liu@freescale.com.
-> <http://www.spinics.net/lists/dri-devel/msg77181.html>
->
->
-> Changes in v3:
-> move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
-> move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
-> move boe,tv080wum-nl0.txt to bindings/display/panel/
->
-> Changes in v2:
-> add the mipi clk id in a single patch
-> As Thierry.Reding comment, add a documentation for this panel.
->
-> Chris Zhong (10):
->   clk: rockchip: add id for mipidsi sclk on rk3288
->   clk: rockchip: add mipidsi clocks on rk3288
->   drm/rockchip: return a true clock rate to adjusted_mode
->   drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
-Did you actually rewrite the patch from Liu Ying ?
-Out of curiosity what was the obstacle of this work getting merged ?
-
->   drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
->   Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
->   ARM: dts: rockchip: add rk3288 mipi_dsi nodes
->   drm/panel: simple: Add support for BOE TV080WUM-NL0
->   drm/panel: simple: Add boe,tv080wum-nl0 simple panel device tree
->     binding
-As the DT people will tell you - there is no BOE vendor in
-bindings/vendor-prefixes.txt.
-
->   ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
->
-> Liu Ying (2):
->   drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
->   Documentation: dt-bindings: Add bindings for Synopsys DW MIPI DSI DRM
->     bridge driver
->
-From the above 12 patches only ~6 reached this mailing list is that
-intentional ? Previously I've seen people CC dri-devel for their
-panel/bridge DT patches.
-
-Regards,
-Emil
+SGkgQ2hyaXMsCgpNaXNzaW5nIFRoaWVycnkgZnJvbSB0aGUgVG8vQ2MgbGlzdCA/IEhpcyBuYW1l
+L2VtYWlsIHNob3VsZCBoYXZlCnBvcHBlZCB1cCB3aGVuIHVzaW5nIHRoZSBnZXRfbWFpbnRlaW5l
+cnMucGwgc2NyaXB0LgoKT24gMTkgTm92ZW1iZXIgMjAxNSBhdCAwMzozNSwgQ2hyaXMgWmhvbmcg
+PHp5d0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gVGhpcyBhZGRzIHN1cHBvcnQgZm9yIHRoZSBC
+T0UgVFYwODBXVU0tTkwwIDEyMDB4MTkyMCBtaXBpIHBhbmVsIHRvIHRoZQo+IERSTSBzaW1wbGUg
+cGFuZWwgZHJpdmVyLgo+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNo
+aXBzLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgaW4gdjM6IE5vbmUKPiBDaGFuZ2VzIGluIHYyOiBO
+b25lCj4KPiAgZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jIHwgMzMgKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAzMyBpbnNlcnRp
+b25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBs
+ZS5jIGIvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNpbXBsZS5jCj4gaW5kZXggZjk3Yjcz
+ZS4uMzYxMGUxYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2lt
+cGxlLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcGFuZWwvcGFuZWwtc2ltcGxlLmMKPiBAQCAt
+MTM0OCw2ICsxMzQ4LDM2IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGFuZWxfZGVzY19kc2kgcGFu
+YXNvbmljX3Z2eDEwZjAwNGIwMCA9IHsKPiAgICAgICAgIC5sYW5lcyA9IDQsCj4gIH07Cj4KPiAr
+c3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlIGJvZV90djA4MHd1bV9ubDBfbW9k
+ZSA9IHsKPiArICAgICAgIC5jbG9jayA9IDE2MDAwMCwKPiArICAgICAgIC5oZGlzcGxheSA9IDEy
+MDAsCj4gKyAgICAgICAuaHN5bmNfc3RhcnQgPSAxMjAwICsgMTIwLAo+ICsgICAgICAgLmhzeW5j
+X2VuZCA9IDEyMDAgKyAxMjAgKyAyMCwKPiArICAgICAgIC5odG90YWwgPSAxMjAwICsgMTIwICsg
+MjAgKyAyMSwKPiArICAgICAgIC52ZGlzcGxheSA9IDE5MjAsCj4gKyAgICAgICAudnN5bmNfc3Rh
+cnQgPSAxOTIwICsgMjEsCj4gKyAgICAgICAudnN5bmNfZW5kID0gMTkyMCArIDIxICsgMywKPiAr
+ICAgICAgIC52dG90YWwgPSAxOTIwICsgMjEgKyAzICsgMTgsCj4gKyAgICAgICAudnJlZnJlc2gg
+PSA2MCwKPiArICAgICAgIC5mbGFncyA9IERSTV9NT0RFX0ZMQUdfTlZTWU5DIHwgRFJNX01PREVf
+RkxBR19OSFNZTkMsCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHBhbmVsX2Rlc2Nf
+ZHNpIGJvZV90djA4MHd1bV9ubDAgPSB7Cj4gKyAgICAgICAuZGVzYyA9IHsKPiArICAgICAgICAg
+ICAgICAgLm1vZGVzID0gJmJvZV90djA4MHd1bV9ubDBfbW9kZSwKPiArICAgICAgICAgICAgICAg
+Lm51bV9tb2RlcyA9IDEsCj4gKyAgICAgICAgICAgICAgIC5zaXplID0gewo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIC53aWR0aCA9IDEwNywKPiArICAgICAgICAgICAgICAgICAgICAgICAuaGVp
+Z2h0ID0gMTcyLAo+ICsgICAgICAgICAgICAgICB9LAo+ICsgICAgICAgfSwKPiArICAgICAgIC5m
+bGFncyA9IE1JUElfRFNJX01PREVfVklERU8gfAo+ICsgICAgICAgICAgICAgICAgTUlQSV9EU0lf
+TU9ERV9WSURFT19CVVJTVCB8Cj4gKyAgICAgICAgICAgICAgICBNSVBJX0RTSV9NT0RFX1ZJREVP
+X1NZTkNfUFVMU0UsCj4gKyAgICAgICAuZm9ybWF0ID0gTUlQSV9EU0lfRk1UX1JHQjg4OCwKPiAr
+ICAgICAgIC5sYW5lcyA9IDQsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
+dmljZV9pZCBkc2lfb2ZfbWF0Y2hbXSA9IHsKPiAgICAgICAgIHsKPiAgICAgICAgICAgICAgICAg
+LmNvbXBhdGlibGUgPSAiYXVvLGIwODB1YW4wMSIsCj4gQEAgLTEzNjIsNiArMTM5Miw5IEBAIHN0
+YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGRzaV9vZl9tYXRjaFtdID0gewo+ICAgICAg
+ICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJwYW5hc29uaWMsdnZ4MTBmMDA0YjAwIiwKPiAgICAg
+ICAgICAgICAgICAgLmRhdGEgPSAmcGFuYXNvbmljX3Z2eDEwZjAwNGIwMAo+ICAgICAgICAgfSwg
+ewo+ICsgICAgICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJib2UsdHYwODB3dW0tbmwwIiwKPiAr
+ICAgICAgICAgICAgICAgLmRhdGEgPSAmYm9lX3R2MDgwd3VtX25sMAo+ICsgICAgICAgfSwgewoK
+QWxsIHRoZSBuZXcgYWRkaXRpb25hbCBzaG91bGQgYmUgc29ydGVkIGFscGhhYmV0aWNhbGx5IC0g
+Zmlyc3QgYnkKdmVuZG9yIGFuZCB0aGVuIHByb2R1Y3QgbmFtZS4KClJlZ2FyZHMsCkVtaWwKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
