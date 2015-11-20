@@ -1,143 +1,92 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
- single_tt hub
-Date: Fri, 20 Nov 2015 04:33:39 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3D9354@US01WEMBX2.internal.synopsys.com>
-References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
- <1447721484-22548-7-git-send-email-dianders@chromium.org>
- <87lh9uf1fw.fsf@saruman.tx.rr.com>
- <CAD=FV=UW-AbY9GnYOS_2V=dZTkL6NiZsO4urpf==qjcRDaEMDA@mail.gmail.com>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v3 00/12] Add mipi dsi support for rk3288
+Date: Fri, 20 Nov 2015 15:02:13 +0800
+Message-ID: <564EC575.90109@rock-chips.com>
+References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
+ <CACvgo53YOMpbz1TdVmRBPPz4dv=X+8FoEo0ZcfN5DwbDYi2ZzQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
-Cc: "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip
- SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
- Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CACvgo53YOMpbz1TdVmRBPPz4dv=X+8FoEo0ZcfN5DwbDYi2ZzQ@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip <linux-rockchip@lists.infradead.org>, Mark Yao <mark.yao@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Kever Yang <kever.yang@rock-chips.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, Jeff Chen <cym@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Andrew Bresticker <abrestic@chromium.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Roger Chen <roger.chen@rock-chips.com>Russell King <linux>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/19/2015 8:27 AM, Doug Anderson wrote:
-> Felipe,
-> 
-> On Thu, Nov 19, 2015 at 7:34 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
+Hi Emil
+
+On 11/19/2015 10:41 PM, Emil Velikov wrote:
+> On 19 November 2015 at 03:35, Chris Zhong <zyw@rock-chips.com> wrote:
+>> The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
+>> IP. This series adds support for a Synopsys DesignWare MIPI DSI host
+>> controller DRM bridge driver and a rockchip MIPI DSI specific DRM
+>> driver.
 >>
->> Hi,
+>> This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
+>> This panel only use the MIPI DSI video mode.
 >>
->> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
->>> Until we have logic to determine which devices share the same TT let's
->>> add logic to assume that all devices on a given dwc2 controller are on
->>> one single_tt hub.  This is better than the previous code that assumed
->>> that all devices were on one multi_tt hub, since single_tt hubs
->>> appear (in my experience) to be much more common and any schedule that
->>> would work on a single_tt hub will also work on a multi_tt hub.  This
->>> will prevent more than 8 total low/full speed devices to be on the bus
->>> at one time, but that's a reasonable restriction until we've made things
->>> smarter.
->>>
->>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>> ---
->>> Changes in v3:
->>> - Assuming single_tt is new for v3; not terribly well tested (yet).
->>>
->>> Changes in v2: None
->>>
->>>  drivers/usb/dwc2/core.h      |  1 +
->>>  drivers/usb/dwc2/hcd_queue.c | 40 +++++++++++++++++++++++++++++++++++++++-
->>>  2 files changed, 40 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
->>> index 567ee2c9e69f..09aa2b5ae29e 100644
->>> --- a/drivers/usb/dwc2/core.h
->>> +++ b/drivers/usb/dwc2/core.h
->>> @@ -782,6 +782,7 @@ struct dwc2_hsotg {
->>>       u16 periodic_usecs;
->>>       unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
->>>                                                  BITS_PER_LONG)];
->>> +     bool has_split[8];
+>> The MIPI DSI feature is tested on rk3288 evb board, backport them to
+>> chrome os kernel v3.14, and it can display normally.
 >>
->> why don't you use a u8 instead then just set each bit for each
->> "has_split" you need to take care of. This array is kinda ugly.
-> 
-> Let's actually drop this patch completely.  Julius and I sat down and
-> he talked me through things, and with my current understanding the
-> current microframe scheduler in dwc2 is broken enough that small
-> little band-aids like this will do little more than just push the
-> problems around.
-> 
-> I'm a good portion of the way through a better microframe scheduler.
-> I have no doubt that it won't be perfect, but hopefully it will at
-> least be based in reality...
-> 
-> My latest thinking on the patches in this series:
-> 
-> 1. usb: dwc2: rockchip: Make the max_transfer_size automatic
-> 
-> I'll probably separate this out into its own patch so I can stop
-> sending it as part of this series.  ...or if someone wanted to land it
-> then I won't bother.
-> 
-> 
-> 2. usb: dwc2: host: Get aligned DMA in a more supported way
-> 
-> Still can land any time and has good benefits.  I believe that I can't
-> separate this because it will cause conflicts with scheduler patches.
-> 
-> 
-> 3. usb: dwc2: host: Add scheduler tracing
-> 
-> Would be nice to land.
-> 
-> 
-> 4. usb: dwc2: host: Rewrite the microframe scheduler
-> 5. usb: dwc2: host: Keep track of and use our scheduled microframe
-> 6. usb: dwc2: host: Assume all devices are on one single_tt hub
-> 
-> Please drop patches 4-6 right now.
-> 
-> 
-> 7. usb: dwc2: host: Add a delay before releasing periodic bandwidth
-> 8. usb: dwc2: host: Giveback URB in tasklet context
-> 
-> I'll probably move these back up in the series (like in v2) and put
-> microframe rewrite atop them.  With my current understanding the
-> scheduling is so broken today that the concerns Alan brought up can
-> wait until we have a proper scheduler to be addressed.  In the
-> meantime getting the huge boost in interrupt speed will help with
-> dwc2's correctness (and performance) because it means we're much less
-> likely to miss SOF interrupts.
-> 
-> If anyone has any review time, giving a review to v2 of these patches
-> would be helpful.  Otherwise I'll double check that v2 still looks
-> good with my current understanding and eventually post them again.
-> 
-> -Doug
-> 
+>> This patchset is base on the patchset from Ying.liu@freescale.com.
+>> <http://www.spinics.net/lists/dri-devel/msg77181.html>
+>>
+>>
+>> Changes in v3:
+>> move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
+>> move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+>> move boe,tv080wum-nl0.txt to bindings/display/panel/
+>>
+>> Changes in v2:
+>> add the mipi clk id in a single patch
+>> As Thierry.Reding comment, add a documentation for this panel.
+>>
+>> Chris Zhong (10):
+>>    clk: rockchip: add id for mipidsi sclk on rk3288
+>>    clk: rockchip: add mipidsi clocks on rk3288
+>>    drm/rockchip: return a true clock rate to adjusted_mode
+>>    drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
+> Did you actually rewrite the patch from Liu Ying ?
+I modify the dw_mipi_dsi.c based on the patch from Liu Ying.
+> Out of curiosity what was the obstacle of this work getting merged ?
+There are different version dw controller, and it is too hard to merge them,
+since most registers are different.
+>
+>>    drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
+>>    Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
+>>    ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+>>    drm/panel: simple: Add support for BOE TV080WUM-NL0
+>>    drm/panel: simple: Add boe,tv080wum-nl0 simple panel device tree
+>>      binding
+> As the DT people will tell you - there is no BOE vendor in
+> bindings/vendor-prefixes.txt.
+Yes, I have post a verdor patch in v2 series,
+<https://patchwork.kernel.org/patch/7530791/>
+Maybe I should add it back to series with
 
-Hi Doug,
+Acked-by: Rob Herring<robh@kernel.org>
 
-Patches 1-3:
-Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+>
+>>    ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
+>>
+>> Liu Ying (2):
+>>    drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+>>    Documentation: dt-bindings: Add bindings for Synopsys DW MIPI DSI DRM
+>>      bridge driver
+>>
+> >From the above 12 patches only ~6 reached this mailing list is that
+> intentional ? Previously I've seen people CC dri-devel for their
+> panel/bridge DT patches.
+I use the patman to post the series, forgot to add you and Thierry to 
+the to-list.
+I will fix in next version series. Thanks for your reply.
 
-Patch 2:
-Tested-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+>
+> Regards,
+> Emil
+>
+>
+>
 
-Tested on core version 3.20 using internal TE for un-aligned
-buffers.
 
-I haven't had time to look into the scheduling patches yet. But I
-agree with you that there are fundamental problems. I'll await
-your rewrite.
-
-Regards,
-John
