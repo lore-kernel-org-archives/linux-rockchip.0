@@ -1,14 +1,15 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v4 13/13] ARM: dts: rockchip: add support mipi panel
- tv080wum-nl0 for rk3288-evb
-Date: Fri, 20 Nov 2015 16:15:39 +0800
-Message-ID: <1448007339-10966-14-git-send-email-zyw@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v4 03/13] drm/rockchip: return a true clock rate to
+ adjusted_mode
+Date: Fri, 20 Nov 2015 16:57:04 +0800
+Message-ID: <564EE060.5040404@rock-chips.com>
 References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
+ <1448007339-10966-4-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
+In-Reply-To: <1448007339-10966-4-git-send-email-zyw@rock-chips.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -18,32 +19,34 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com, emil.l.velikov@gmail.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com, linux-arm-kernel@lists.infradead.org
+To: Chris Zhong <zyw@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org, treding@nvidia.com, emil.l.velikov@gmail.com
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyB0djA4MHd1bS1ubDAgcGFuZWwgaXMgYSBtaXBpIHBhbmVsLCBpdCBjYW4gdXNlIGluIE1J
-UElfVFggc29ja2V0Cm9mIHJrMzI4OCBldmIgYm9hcmQuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBa
-aG9uZyA8enl3QHJvY2stY2hpcHMuY29tPgoKLS0tCgpDaGFuZ2VzIGluIHY0OiBOb25lCkNoYW5n
-ZXMgaW4gdjM6IE5vbmUKQ2hhbmdlcyBpbiB2MjogTm9uZQoKIGFyY2gvYXJtL2Jvb3QvZHRzL3Jr
-MzI4OC1ldmIuZHRzaSB8IDIwICsrKysrKysrKysrKysrKysrKystCiAxIGZpbGUgY2hhbmdlZCwg
-MTkgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jv
-b3QvZHRzL3JrMzI4OC1ldmIuZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRz
-aQppbmRleCBmNmQyZTc4Li5kMDQ4NzhmIDEwMDY0NAotLS0gYS9hcmNoL2FybS9ib290L2R0cy9y
-azMyODgtZXZiLmR0c2kKKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LWV2Yi5kdHNpCkBA
-IC00Nyw3ICs0Nyw3IEBACiAJCXJlZyA9IDwweDAgMHg4MDAwMDAwMD47CiAJfTsKIAotCWJhY2ts
-aWdodCB7CisJYmFja2xpZ2h0OiBiYWNrbGlnaHQgewogCQljb21wYXRpYmxlID0gInB3bS1iYWNr
-bGlnaHQiOwogCQlicmlnaHRuZXNzLWxldmVscyA9IDwKIAkJCSAgMCAgIDEgICAyICAgMyAgIDQg
-ICA1ICAgNiAgIDcKQEAgLTE3Nyw2ICsxNzcsMjEgQEAKIAlzdGF0dXMgPSAib2theSI7CiB9Owog
-CismbWlwaV9kc2kgeworCXN0YXR1cyA9ICJva2F5IjsKKworCXBhbmVsIHsKKwkJY29tcGF0aWJs
-ZSA9ImJvZSx0djA4MHd1bS1ubDAiOworCQlyZWcgPSA8MD47CisKKwkJZW5hYmxlLWdwaW9zID0g
-PCZncGlvNyAzIEdQSU9fQUNUSVZFX0hJR0g+OworCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQi
-OworCQlwaW5jdHJsLTAgPSA8JmxjZF9lbj47CisJCWJhY2tsaWdodCA9IDwmYmFja2xpZ2h0PjsK
-KwkJc3RhdHVzID0gIm9rYXkiOworCX07Cit9OworCiAmc2RtbWMgewogCWJ1cy13aWR0aCA9IDw0
-PjsKIAljYXAtbW1jLWhpZ2hzcGVlZDsKQEAgLTI0Nyw2ICsyNjIsOSBAQAogCQlibF9lbjogYmwt
-ZW4gewogCQkJcm9ja2NoaXAscGlucyA9IDw3IDIgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9u
-ZT47CiAJCX07CisJCWxjZF9lbjogbGNkLWVuIHsKKwkJCXJvY2tjaGlwLHBpbnMgPSA8NyAzIFJL
-X0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OworCQl9OwogCX07CiAKIAlidXR0b25zIHsKLS0g
-CjIuNi4zCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+T24gMjAxNeW5tDEx5pyIMjDml6UgMTY6MTUsIENocmlzIFpob25nIHdyb3RlOgo+IFNpbmNlIHRo
+ZSBtaXBpIGRzaSBkcml2ZXIgbmVlZCB0byB1c2UgdGhlIGNsb2NrIG9mIHZvcCB0byBtYWtlIHRo
+ZQo+IGNhbGN1bGF0aW9uIG9mIEJsYW5raW5nLiBCdXQgc29tZXRpbWVzIHRoZSBjbG9jayBkcml2
+ZXIgY2FuIG5vdCBzZXQgYQo+IGFjY3VyYXRlIGNsb2NrX3JhdGUgZm9yIHZvcCwgZ2V0IGl0IGJ5
+IGNsa19yb3VuZF9yYXRlIGJlZm9yZSBtb2RlX3NldCwKPiBzbyB3ZSBjYW4gZ2V0IHRoZSB0cnVl
+IHZhbHVlLgo+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNv
+bT4KPgo+IC0tLQo+Cj4gQ2hhbmdlcyBpbiB2NDoKPiB1c2UgY2xrX3JvdW5kX3JhdGUgdG8gY2hl
+Y2sgdGhlIGNsb2NrIHJhdGUgaW4gdm9wX2NydGNfbW9kZV9maXh1cAo+Cj4gQ2hhbmdlcyBpbiB2
+MzogTm9uZQo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPgo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDUgKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGlu
+c2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYwo+IGluZGV4IDVkOGFlNWUuLmVmZjU0NWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTEzNiw5ICsxMTM2LDE0IEBAIHN0YXRp
+YyBib29sIHZvcF9jcnRjX21vZGVfZml4dXAoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgCQkJ
+CWNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlLAo+ICAgCQkJCXN0cnVjdCBkcm1f
+ZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQo+ICAgewo+ICsJc3RydWN0IHZvcCAqdm9wID0g
+dG9fdm9wKGNydGMpOwo+ICsKPiAgIAlpZiAoYWRqdXN0ZWRfbW9kZS0+aHRvdGFsID09IDAgfHwg
+YWRqdXN0ZWRfbW9kZS0+dnRvdGFsID09IDApCj4gICAJCXJldHVybiBmYWxzZTsKPiAgIAo+ICsJ
+YWRqdXN0ZWRfbW9kZS0+Y2xvY2sgPQo+ICsJCWNsa19yb3VuZF9yYXRlKHZvcC0+ZGNsaywgbW9k
+ZS0+Y2xvY2sgKiAxMDAwKSAvIDEwMDA7Cj4gKwo+ICAgCXJldHVybiB0cnVlOwo+ICAgfQo+ICAg
+Ckxvb2tzIGdvb2QgZm9yIG1lLCBzbwogICAgIEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9A
+cm9jay1jaGlwcy5jb20+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
