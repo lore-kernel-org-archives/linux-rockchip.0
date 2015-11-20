@@ -1,109 +1,143 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip reboot
- notifier driver
-Date: Thu, 19 Nov 2015 19:58:01 -0600
-Message-ID: <CAL_JsqLRbTz-dNcYctXmY=E_y3MZj7XWJC3PqDU=YYek09vnmg@mail.gmail.com>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
- <20151118225904.GA5429@rob-hp-laptop> <564D2331.8070503@rock-chips.com>
- <2082288.pD4oKxtaXL@phil> <564E7473.9080509@rock-chips.com>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
+ single_tt hub
+Date: Fri, 20 Nov 2015 04:33:39 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3D9354@US01WEMBX2.internal.synopsys.com>
+References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
+ <1447721484-22548-7-git-send-email-dianders@chromium.org>
+ <87lh9uf1fw.fsf@saruman.tx.rr.com>
+ <CAD=FV=UW-AbY9GnYOS_2V=dZTkL6NiZsO4urpf==qjcRDaEMDA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <564E7473.9080509@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Kevin Hilman <khilman@linaro.org>, Thierry Reding <treding@nvidia.com>, Caesar Wang <wxt@rock-chips.com>, Simon Glass <sjg@chromium.org>, benchan@google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
+Cc: "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip
+ SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
+ Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 19, 2015 at 7:16 PM, Andy Yan <andy.yan@rock-chips.com> wro=
-te:
-> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 12:35, Heiko Stuebner wrote:
->> Am Donnerstag, 19. November 2015, 09:17:37 schrieb Andy Yan:
->>> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 06:59, Rob Herring wrote:
->>>> On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
->>>>>
->>>>> Add devicetree binding document for rockchip reboot nofifier driv=
-er
->>>>
->>>> Just reading the subject this is way too specific to the Linux dri=
-ver
->>>> needs rather than a h/w description. Please don't create fake DT n=
-odes
->>>> just to bind to drivers. Whatever &pmu is is probably what should =
-have
->>>> the DT node. Let the driver for it create child devices if you nee=
-d
->>>> that.
+On 11/19/2015 8:27 AM, Doug Anderson wrote:
+> Felipe,
+> 
+> On Thu, Nov 19, 2015 at 7:34 AM, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org> wrote:
+>>
+>> Hi,
+>>
+>> Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> writes:
+>>> Until we have logic to determine which devices share the same TT let's
+>>> add logic to assume that all devices on a given dwc2 controller are on
+>>> one single_tt hub.  This is better than the previous code that assumed
+>>> that all devices were on one multi_tt hub, since single_tt hubs
+>>> appear (in my experience) to be much more common and any schedule that
+>>> would work on a single_tt hub will also work on a multi_tt hub.  This
+>>> will prevent more than 8 total low/full speed devices to be on the bus
+>>> at one time, but that's a reasonable restriction until we've made things
+>>> smarter.
 >>>
->>>       This is note a fake DT nodes, we really need it to tell the d=
-river
->>>        which register to use to store the reboot mode. Because rock=
-chip
->>>        use different register file to store the reboot mode on diff=
-erent
->>>        platform, on rk3066,rk3188, rk3288,it use  one of the PMU
->>> register, on
->>>        the incoming RK3036, it use one of the GRF register, and it =
-use
->>> one  of
->>>        the PMUGRF register for arm64 platform rk3368. On the other =
-hand,
->>> the
->>>        PMU/GRF/PMUGRF register file are mapped as "syscon", then
->>> referenced
->>>        by other DT nodes by phandle. So maybe let it as a separate =
-DT
->>> node here
->>>        is better.
+>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>> ---
+>>> Changes in v3:
+>>> - Assuming single_tt is new for v3; not terribly well tested (yet).
+>>>
+>>> Changes in v2: None
+>>>
+>>>  drivers/usb/dwc2/core.h      |  1 +
+>>>  drivers/usb/dwc2/hcd_queue.c | 40 +++++++++++++++++++++++++++++++++++++++-
+>>>  2 files changed, 40 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+>>> index 567ee2c9e69f..09aa2b5ae29e 100644
+>>> --- a/drivers/usb/dwc2/core.h
+>>> +++ b/drivers/usb/dwc2/core.h
+>>> @@ -782,6 +782,7 @@ struct dwc2_hsotg {
+>>>       u16 periodic_usecs;
+>>>       unsigned long periodic_bitmap[DIV_ROUND_UP(TOTAL_PERIODIC_USEC,
+>>>                                                  BITS_PER_LONG)];
+>>> +     bool has_split[8];
 >>
->> or alternatively we could do something similar to what the bl-switch=
-er
->> cupfreq-driver does. Take a look at
->>
->> drivers/cpufreq/arm_big_little.c
->> drivers/clk/clk-mb86s7x.c
->>
->> We already have the core restart-handler code in the clock-tree, so =
-could
->> maybe simply do the
->>         platform_device_register_simple("rockchip-reboot", -1, NULL,=
- 0);
->> in that common code?
->>
->> Though I'm not yet sure how to get the platform-data. I guess one op=
-tion
->> would
->> be to do things like the 3288 suspend code does
->> (arch/arm/mach-rockchip/pm.c
->> at the bottom), by having the per-soc-data in the driver and then ma=
-tching
->> against the pmu. Because the pmu is not part of the clock controller
->> binding
->> (and probably also shouldn't be).
->>
->    Thanks for your suggestion.
->     I have read the code you list above, if we implement the reboot n=
-otifier
->     driver like this, the driver need to add much more code to find t=
-he
-> platform
->     data(like arch/arm/mach-rockhcip/pm.c), what's more, if we have a=
- new
-> soc
->     in the future and the soc use a different register here, we need =
-modify
-> the
->     driver to add a new platform data again, this will bring addition=
-al
-> work.
->
->     Use the DT node pass the register will make the driver code simpl=
-e and
-> clear.
->     Is there any hurt to put this information in the DT?
+>> why don't you use a u8 instead then just set each bit for each
+>> "has_split" you need to take care of. This array is kinda ugly.
+> 
+> Let's actually drop this patch completely.  Julius and I sat down and
+> he talked me through things, and with my current understanding the
+> current microframe scheduler in dwc2 is broken enough that small
+> little band-aids like this will do little more than just push the
+> problems around.
+> 
+> I'm a good portion of the way through a better microframe scheduler.
+> I have no doubt that it won't be perfect, but hopefully it will at
+> least be based in reality...
+> 
+> My latest thinking on the patches in this series:
+> 
+> 1. usb: dwc2: rockchip: Make the max_transfer_size automatic
+> 
+> I'll probably separate this out into its own patch so I can stop
+> sending it as part of this series.  ...or if someone wanted to land it
+> then I won't bother.
+> 
+> 
+> 2. usb: dwc2: host: Get aligned DMA in a more supported way
+> 
+> Still can land any time and has good benefits.  I believe that I can't
+> separate this because it will cause conflicts with scheduler patches.
+> 
+> 
+> 3. usb: dwc2: host: Add scheduler tracing
+> 
+> Would be nice to land.
+> 
+> 
+> 4. usb: dwc2: host: Rewrite the microframe scheduler
+> 5. usb: dwc2: host: Keep track of and use our scheduled microframe
+> 6. usb: dwc2: host: Assume all devices are on one single_tt hub
+> 
+> Please drop patches 4-6 right now.
+> 
+> 
+> 7. usb: dwc2: host: Add a delay before releasing periodic bandwidth
+> 8. usb: dwc2: host: Giveback URB in tasklet context
+> 
+> I'll probably move these back up in the series (like in v2) and put
+> microframe rewrite atop them.  With my current understanding the
+> scheduling is so broken today that the concerns Alan brought up can
+> wait until we have a proper scheduler to be addressed.  In the
+> meantime getting the huge boost in interrupt speed will help with
+> dwc2's correctness (and performance) because it means we're much less
+> likely to miss SOF interrupts.
+> 
+> If anyone has any review time, giving a review to v2 of these patches
+> would be helpful.  Otherwise I'll double check that v2 still looks
+> good with my current understanding and eventually post them again.
+> 
+> -Doug
+> 
 
-Add the data you need to the PMU node. Then the PMU driver can get it
-and pass to the child driver.
+Hi Doug,
 
-Rob
+Patches 1-3:
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+
+Patch 2:
+Tested-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+
+Tested on core version 3.20 using internal TE for un-aligned
+buffers.
+
+I haven't had time to look into the scheduling patches yet. But I
+agree with you that there are fundamental problems. I'll await
+your rewrite.
+
+Regards,
+John
