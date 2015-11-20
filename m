@@ -1,64 +1,58 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: set system-power-controller on
- rk3288-rock2
-Date: Thu, 19 Nov 2015 22:05:04 +0000
-Message-ID: <20151119220503.GA30067@river.lan>
-References: <1447940731-5672-1-git-send-email-john@metanate.com>
- <1807407.tUv2FxFrog@phil>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v3 4/8] phy: rockchip-usb: add compatible values for
+ rk3066a and rk3188
+Date: Thu, 19 Nov 2015 16:32:23 -0800
+Message-ID: <CAD=FV=V=5vP4a32Gonkv+vw7E+B=tP1VoWSfLA6YTh8knJZcfg@mail.gmail.com>
+References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
+	<1447968149-10979-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1807407.tUv2FxFrog@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447968149-10979-5-git-send-email-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Nov 19, 2015 at 10:19:32PM +0100, Heiko Stuebner wrote:
-> Am Donnerstag, 19. November 2015, 13:45:31 schrieb John Keeping:
-> > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> 
-> please always provide at least a short patch description too.
-> I've applied the patch but reworded it to
-> 
-> 	ARM: dts: rockchip: set system-power-controller property on rk3288-rock2
->     
-> 	The act8846 on rock2 boards controls the system power, so add the
-> 	appropriate property to allow turning off the board.
-> 
-> Please holler if you disagree and want it described differently :-) .
+Heiko,
 
-No objections here, that sounds great.
+On Thu, Nov 19, 2015 at 1:22 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> We need custom handling for these two socs in the driver shortly,
+> so add the necessary compatible values to binding and driver.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt | 5 ++++-
+>  drivers/phy/phy-rockchip-usb.c                             | 2 ++
+>  2 files changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> index 826454a..9b37242 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+> @@ -1,7 +1,10 @@
+>  ROCKCHIP USB2 PHY
+>
+>  Required properties:
+> - - compatible: rockchip,rk3288-usb-phy
+> + - compatible: matching the soc type, one of
+> +     "rockchip,rk3066a-usb-phy"
+> +     "rockchip,rk3188-usb-phy"
+> +     "rockchip,rk3288-usb-phy"
 
+I can never quite keep it straight how this is supposed to work, but
+since previously only "rockchip,rk3288-usb-phy" was supported and now
+we have these new compatible strings, I would have expected the new
+strings to specify the old ones as fallback.  That would mean your
+choices would be:
 
-Thanks,
-John
+- "rockchip,rk3288-usb-phy" - A real rk3288
+- "rockchip,rk3188-usb-phy", "rockchip,rk3288-usb-phy" - A rk3188 with
+fallback to 3288 driver.
+- "rockchip,rk3066a-usb-phy", "rockchip,rk3288-usb-phy" - A rk3066a
+with fallback to 3288 driver.
 
-> > ---
-> >  arch/arm/boot/dts/rk3288-rock2-som.dtsi | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-> > index 1813b7c3..1ece66f 100644
-> > --- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-> > +++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-> > @@ -109,6 +109,7 @@
-> >  	act8846: act8846@5a {
-> >  		compatible = "active-semi,act8846";
-> >  		reg = <0x5a>;
-> > +		system-power-controller;
-> >  		inl1-supply = <&vcc_io>;
-> >  		inl2-supply = <&vcc_sys>;
-> >  		inl3-supply = <&vcc_20>;
-> > 
-> 
+That means that if you land the dts changes without the driver changes
+that things still work OK.
+
+-Doug
