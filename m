@@ -1,323 +1,109 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
-Date: Fri, 20 Nov 2015 09:37:15 +0800
-Message-ID: <564E794B.8070002@rock-chips.com>
-References: <1447928471-14448-1-git-send-email-hl@rock-chips.com> <1447928471-14448-2-git-send-email-hl@rock-chips.com> <42589302.5BMrDbIv8M@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: soc: add document for rockchip reboot
+ notifier driver
+Date: Thu, 19 Nov 2015 19:58:01 -0600
+Message-ID: <CAL_JsqLRbTz-dNcYctXmY=E_y3MZj7XWJC3PqDU=YYek09vnmg@mail.gmail.com>
+References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
+ <20151118225904.GA5429@rob-hp-laptop> <564D2331.8070503@rock-chips.com>
+ <2082288.pD4oKxtaXL@phil> <564E7473.9080509@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <42589302.5BMrDbIv8M@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, mturquette@baylibre.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-clk@vger.kernel.org, sboyd@codeaurora.org, dbasehore@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <564E7473.9080509@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Kevin Hilman <khilman@linaro.org>, Thierry Reding <treding@nvidia.com>, Caesar Wang <wxt@rock-chips.com>, Simon Glass <sjg@chromium.org>, benchan@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 20/11/15 05:47, Heiko Stuebner wrote:
-> Hi Lin,
->
-> Am Donnerstag, 19. November 2015, 18:21:10 schrieb Lin Huang:
->> support rk3399 dmc clock driver. Note, ddr set rate function will
->> use dcf controller which run in ATF, it need to fishish it when rk3399
->> arm trust firmware ready.
-> this unfinalized state is slightly unfortunate and I think this code will
-> need to wait until CRU and DDRC specs are available.
->
-> Because this is clearly part of the CRU (labeled CRU_CLKSEL6_CON etc)
-> so shouldn't be a separate driver at all and also what your driver currently
-> only does can still simply be described in the regular scheme as part of
-> a full clock driver like
->
-> PNAME(mux_ddrc_p) = { "pll_dpll", "pll_gpll", "pll_alpll", "pll_abpll" };
-> COMPOSITE_NOGATE(0, "ddrc", mux_ddrc_p, 0,
-> 					RK3399_CLKSEL_CON(6), 4, 2, MFLAGS, 0, 3,
-> 					DFLAGS | CLK_DIVIDER_POWER_OF_TWO),
->
-> So the code needs to actually demonstrate why a separate clock type is
-> really necessary.
->
-> I do understand that we will probably need a special way to talk to this
-> dcf controller but seeing how this interaction will work is really a
-> prequisite to finding a correct solution.
-     if we can use common clock driver, i can put the dfi controller as 
-a  independent driver
-     into devfreq,  this is the best way. But how do we separate the ddr 
-clk_set_rate() ,
-     so we can manipulate dcf controller(actually, we use SMC handle dcf 
-controller in arm trust firmware ),
-     i check clock driver code, it seem there is not way to do that for now.
->
-> Heiko
->
->> ---
->>   drivers/clk/rockchip/Makefile         |   1 +
->>   drivers/clk/rockchip/clk-rk3399-dmc.c | 196 ++++++++++++++++++++++++++++++++++
->>   include/soc/rockchip/rk3399-dmc-clk.h |  36 +++++++
->>   3 files changed, 233 insertions(+)
->>   create mode 100644 drivers/clk/rockchip/clk-rk3399-dmc.c
->>   create mode 100644 include/soc/rockchip/rk3399-dmc-clk.h
+On Thu, Nov 19, 2015 at 7:16 PM, Andy Yan <andy.yan@rock-chips.com> wro=
+te:
+> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 12:35, Heiko Stuebner wrote:
+>> Am Donnerstag, 19. November 2015, 09:17:37 schrieb Andy Yan:
+>>> On 2015=E5=B9=B411=E6=9C=8819=E6=97=A5 06:59, Rob Herring wrote:
+>>>> On Wed, Nov 18, 2015 at 05:53:30PM +0800, Andy Yan wrote:
+>>>>>
+>>>>> Add devicetree binding document for rockchip reboot nofifier driv=
+er
+>>>>
+>>>> Just reading the subject this is way too specific to the Linux dri=
+ver
+>>>> needs rather than a h/w description. Please don't create fake DT n=
+odes
+>>>> just to bind to drivers. Whatever &pmu is is probably what should =
+have
+>>>> the DT node. Let the driver for it create child devices if you nee=
+d
+>>>> that.
+>>>
+>>>       This is note a fake DT nodes, we really need it to tell the d=
+river
+>>>        which register to use to store the reboot mode. Because rock=
+chip
+>>>        use different register file to store the reboot mode on diff=
+erent
+>>>        platform, on rk3066,rk3188, rk3288,it use  one of the PMU
+>>> register, on
+>>>        the incoming RK3036, it use one of the GRF register, and it =
+use
+>>> one  of
+>>>        the PMUGRF register for arm64 platform rk3368. On the other =
+hand,
+>>> the
+>>>        PMU/GRF/PMUGRF register file are mapped as "syscon", then
+>>> referenced
+>>>        by other DT nodes by phandle. So maybe let it as a separate =
+DT
+>>> node here
+>>>        is better.
 >>
->> diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
->> index b27edd6..98bd955 100644
->> --- a/drivers/clk/rockchip/Makefile
->> +++ b/drivers/clk/rockchip/Makefile
->> @@ -13,3 +13,4 @@ obj-$(CONFIG_RESET_CONTROLLER)	+= softrst.o
->>   obj-y	+= clk-rk3188.o
->>   obj-y	+= clk-rk3288.o
->>   obj-y	+= clk-rk3368.o
->> +obj-y	+= clk-rk3399-dmc.o
->> diff --git a/drivers/clk/rockchip/clk-rk3399-dmc.c b/drivers/clk/rockchip/clk-rk3399-dmc.c
->> new file mode 100644
->> index 0000000..03cc044
->> --- /dev/null
->> +++ b/drivers/clk/rockchip/clk-rk3399-dmc.c
->> @@ -0,0 +1,196 @@
->> +/*
->> + * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
->> + *
->> + * This program is free software; you can redistribute it and/or modify it
->> + * under the terms and conditions of the GNU General Public License,
->> + * version 2, as published by the Free Software Foundation.
->> + *
->> + * This program is distributed in the hope it will be useful, but WITHOUT
->> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
->> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
->> + * more details.
->> + */
->> +
->> +#include <linux/slab.h>
->> +#include <linux/clk.h>
->> +#include <linux/clk-provider.h>
->> +#include <linux/clkdev.h>
->> +#include <linux/io.h>
->> +#include <linux/kernel.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/of_address.h>
->> +#include <linux/of_irq.h>
->> +#include <linux/platform_device.h>
->> +#include <soc/rockchip/rk3399-dmc-clk.h>
->> +
->> +#define to_rk3399_dmcclk(obj)	container_of(obj, struct rk3399_dmcclk, hw)
->> +
->> +/* CRU_CLKSEL6_CON*/
->> +#define CRU_CLKSEL6_CON		0x118
->> +#define CLK_DDRC_PLL_SEL_SHIFT	0x4
->> +#define CLK_DDRC_PLL_SEL_MASK	0x3
->> +#define CLK_DDRC_DIV_CON_SHIFT	0
->> +#define CLK_DDRC_DIV_CON_MASK	0x07
->> +
->> +static unsigned long rk3399_dmcclk_recalc_rate(struct clk_hw *hw,
->> +					       unsigned long parent_rate)
->> +{
->> +	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
->> +	u32 val;
->> +
->> +	/*
->> +	 * Get parent rate since it changed in this clks set_rate op. The parent
->> +	 * rate passed into this function is cached before set_rate is called in
->> +	 * the common clk code, so we have to get it here.
->> +	 */
->> +	parent_rate = clk_get_rate(clk_get_parent(hw->clk));
->> +
->> +	val = readl(dmc->cru + CRU_CLKSEL6_CON);
->> +	val = (val >> CLK_DDRC_DIV_CON_SHIFT) & CLK_DDRC_DIV_CON_MASK;
->> +
->> +	return parent_rate / (val + 1);
->> +}
->> +
->> +/*
->> + * TODO: set ddr frequcney in dcf which run in ATF
->> + */
->> +static int rk3399_dmcclk_set_rate(struct clk_hw *hw, unsigned long rate,
->> +				  unsigned long parent_rate)
->> +{
->> +	return 0;
->> +}
->> +
->> +static u8 rk3399_dmcclk_get_parent(struct clk_hw *hw)
->> +{
->> +	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
->> +	u32 val;
->> +
->> +	val = readl(dmc->cru + CRU_CLKSEL6_CON);
->> +
->> +	return (val >> CLK_DDRC_PLL_SEL_SHIFT) &
->> +		CLK_DDRC_PLL_SEL_MASK;
->> +}
->> +
->> +static const struct clk_ops rk3399_dmcclk_ops = {
->> +	.recalc_rate = rk3399_dmcclk_recalc_rate,
->> +	.set_rate = rk3399_dmcclk_set_rate,
->> +	.get_parent = rk3399_dmcclk_get_parent,
->> +};
->> +
->> +static const char *parent_clk_names[] = {
->> +	"pll_dpll",
->> +	"pll_gpll",
->> +	"pll_alpll",
->> +	"pll_abpll",
->> +};
->> +
->> +static int rk3399_register_dmcclk(struct rk3399_dmcclk *dmc)
->> +{
->> +	struct clk_init_data init;
->> +	struct clk *clk;
->> +
->> +	init.name = "dmc_clk";
->> +	init.parent_names = parent_clk_names;
->> +	init.num_parents = ARRAY_SIZE(parent_clk_names);
->> +	init.ops = &rk3399_dmcclk_ops;
->> +	init.flags = 0;
->> +	dmc->hw->init = &init;
->> +
->> +	clk = devm_clk_register(dmc->dev, dmc->hw);
->> +	if (IS_ERR(clk)) {
->> +		dev_err(dmc->dev, "could not register cpuclk dmc_clk\n");
->> +		return PTR_ERR(clk);
->> +	}
->> +	clk_register_clkdev(clk, "dmc_clk", NULL);
->> +	of_clk_add_provider(dmc->dev->of_node, of_clk_src_simple_get, clk);
->> +
->> +	return 0;
->> +}
->> +
->> +static int rk3399_dmcclk_probe(struct platform_device *pdev)
->> +{
->> +	struct rk3399_dmcclk *dmc;
->> +	struct resource *res;
->> +	struct device_node *node;
->> +	int ret;
->> +
->> +	dmc = devm_kzalloc(&pdev->dev, sizeof(*dmc), GFP_KERNEL);
->> +	if (!dmc)
->> +		return -ENOMEM;
->> +
->> +	dmc->hw = devm_kzalloc(&pdev->dev, sizeof(*dmc->hw), GFP_KERNEL);
->> +	if (!dmc->hw)
->> +		return -ENOMEM;
->> +
->> +	dmc->dev = &pdev->dev;
->> +
->> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> +	dmc->ctrl_regs = devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(dmc->ctrl_regs))
->> +		return PTR_ERR(dmc->ctrl_regs);
->> +
->> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
->> +	dmc->dfi_regs = devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(dmc->dfi_regs))
->> +		return PTR_ERR(dmc->dfi_regs);
->> +
->> +	node = of_parse_phandle(dmc->dev->of_node, "rockchip,cru", 0);
->> +	if (!node)
->> +		return -ENODEV;
->> +
->> +	ret = of_address_to_resource(node, 0, res);
->> +	if (ret)
->> +		return ret;
->> +
->> +	dmc->cru = devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(dmc->cru))
->> +		return PTR_ERR(dmc->cru);
->> +
->> +	/* register dpllddr clock */
->> +	ret = rk3399_register_dmcclk(dmc);
->> +	if (ret) {
->> +		dev_err(dmc->dev, "failed to register clk dmc_clk %d\n", ret);
->> +		return ret;
->> +	}
->> +
->> +	platform_set_drvdata(pdev, dmc);
->> +	platform_device_register_data(dmc->dev, "rk3399-dmc-freq",
->> +				      PLATFORM_DEVID_AUTO, NULL, 0);
->> +
->> +	return 0;
->> +}
->> +
->> +static const struct of_device_id rk3399_dmcclk_of_match[] = {
->> +	{ .compatible = "rockchip,rk3399-dmc", },
->> +	{ },
->> +};
->> +MODULE_DEVICE_TABLE(of, rk3399_dmcclk_of_match);
->> +
->> +
->> +static struct platform_driver rk3399_dmcclk_driver = {
->> +	.probe = rk3399_dmcclk_probe,
->> +	.driver = {
->> +		.name = "rk3399-dmc",
->> +		.of_match_table = rk3399_dmcclk_of_match,
->> +		.suppress_bind_attrs = true,
->> +	},
->> +};
->> +
->> +static int __init rk3399_dmcclk_modinit(void)
->> +{
->> +	int ret;
->> +
->> +	ret = platform_driver_register(&rk3399_dmcclk_driver);
->> +	if (ret < 0)
->> +		pr_err("Failed to register platform driver %s\n",
->> +				rk3399_dmcclk_driver.driver.name);
->> +
->> +	return ret;
->> +}
->> +
->> +module_init(rk3399_dmcclk_modinit);
->> +
->> +MODULE_DESCRIPTION("rockchip rk3399 DMC CLK driver");
->> +MODULE_LICENSE("GPL v2");
->> +
->> diff --git a/include/soc/rockchip/rk3399-dmc-clk.h b/include/soc/rockchip/rk3399-dmc-clk.h
->> new file mode 100644
->> index 0000000..b53fc23
->> --- /dev/null
->> +++ b/include/soc/rockchip/rk3399-dmc-clk.h
->> @@ -0,0 +1,36 @@
->> +/*
->> +* Copyright (C) Fuzhou Rockchip Electronics Co.Ltd
->> +*
->> +* This program is free software; you can redistribute it and/or modify it
->> +* under the terms of the GNU General Public License as published by the
->> +* Free Software Foundation; either version 2 of the License, or (at your
->> +* option) any later version.
->> +*/
->> +
->> +#ifndef _RK3399_DMC_CLK_H
->> +#define _RK3399_DMC_CLK_H
->> +
->> +enum dram_type_tag {
->> +	DDR3 = 6,
->> +	LPDDR3 = 7,
->> +	LPDDR4 = 0x0b,
->> +};
->> +
->> +/* DENALI_CTL_00 */
->> +#define DENALI_CTL_00		0x00
->> +#define DRAM_CLASS_MASK		0x0f
->> +#define DRAM_CLASS_SHIFT	0x8
->> +
->> +struct rk3399_dmcclk {
->> +	struct device *dev;
->> +	struct clk_hw *hw;
->> +	u32 cur_freq;
->> +	u32 target_freq;
->> +	u32 ddr_type;
->> +	void __iomem *ctrl_regs;
->> +	void __iomem *dfi_regs;
->> +	void __iomem *cru;
->> +};
->> +
->> +#endif
->> +
+>> or alternatively we could do something similar to what the bl-switch=
+er
+>> cupfreq-driver does. Take a look at
 >>
+>> drivers/cpufreq/arm_big_little.c
+>> drivers/clk/clk-mb86s7x.c
+>>
+>> We already have the core restart-handler code in the clock-tree, so =
+could
+>> maybe simply do the
+>>         platform_device_register_simple("rockchip-reboot", -1, NULL,=
+ 0);
+>> in that common code?
+>>
+>> Though I'm not yet sure how to get the platform-data. I guess one op=
+tion
+>> would
+>> be to do things like the 3288 suspend code does
+>> (arch/arm/mach-rockchip/pm.c
+>> at the bottom), by having the per-soc-data in the driver and then ma=
+tching
+>> against the pmu. Because the pmu is not part of the clock controller
+>> binding
+>> (and probably also shouldn't be).
+>>
+>    Thanks for your suggestion.
+>     I have read the code you list above, if we implement the reboot n=
+otifier
+>     driver like this, the driver need to add much more code to find t=
+he
+> platform
+>     data(like arch/arm/mach-rockhcip/pm.c), what's more, if we have a=
+ new
+> soc
+>     in the future and the soc use a different register here, we need =
+modify
+> the
+>     driver to add a new platform data again, this will bring addition=
+al
+> work.
 >
->
->
+>     Use the DT node pass the register will make the driver code simpl=
+e and
+> clear.
+>     Is there any hurt to put this information in the DT?
 
--- 
-Lin Huang
+Add the data you need to the PMU node. Then the PMU driver can get it
+and pass to the child driver.
 
-
+Rob
