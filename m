@@ -1,52 +1,131 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v4 03/13] drm/rockchip: return a true clock rate to
- adjusted_mode
-Date: Fri, 20 Nov 2015 16:57:04 +0800
-Message-ID: <564EE060.5040404@rock-chips.com>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-4-git-send-email-zyw@rock-chips.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [PATCH v3 00/12] Add mipi dsi support for rk3288
+Date: Fri, 20 Nov 2015 12:19:54 +0000
+Message-ID: <CACvgo52SDcRtkNuNSF6dsw_TXV5wrMmW4_ci_4uX63CJrcBg+w@mail.gmail.com>
+References: <1447904131-29328-1-git-send-email-zyw@rock-chips.com>
+	<CACvgo53YOMpbz1TdVmRBPPz4dv=X+8FoEo0ZcfN5DwbDYi2ZzQ@mail.gmail.com>
+	<564EC575.90109@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448007339-10966-4-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org, treding@nvidia.com, emil.l.velikov@gmail.com
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <564EC575.90109@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip <linux-rockchip@lists.infradead.org>, Mark Yao <mark.yao@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Kever Yang <kever.yang@rock-chips.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org, Vincent Palatin <vpalatin@chromium.org>, Jeff Chen <cym@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Andrew Bresticker <abrestic@chromium.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Roger Chen <roger.chen@rock-chips.com>Russell King <linux>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDEx5pyIMjDml6UgMTY6MTUsIENocmlzIFpob25nIHdyb3RlOgo+IFNpbmNlIHRo
-ZSBtaXBpIGRzaSBkcml2ZXIgbmVlZCB0byB1c2UgdGhlIGNsb2NrIG9mIHZvcCB0byBtYWtlIHRo
-ZQo+IGNhbGN1bGF0aW9uIG9mIEJsYW5raW5nLiBCdXQgc29tZXRpbWVzIHRoZSBjbG9jayBkcml2
-ZXIgY2FuIG5vdCBzZXQgYQo+IGFjY3VyYXRlIGNsb2NrX3JhdGUgZm9yIHZvcCwgZ2V0IGl0IGJ5
-IGNsa19yb3VuZF9yYXRlIGJlZm9yZSBtb2RlX3NldCwKPiBzbyB3ZSBjYW4gZ2V0IHRoZSB0cnVl
-IHZhbHVlLgo+Cj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBzLmNv
-bT4KPgo+IC0tLQo+Cj4gQ2hhbmdlcyBpbiB2NDoKPiB1c2UgY2xrX3JvdW5kX3JhdGUgdG8gY2hl
-Y2sgdGhlIGNsb2NrIHJhdGUgaW4gdm9wX2NydGNfbW9kZV9maXh1cAo+Cj4gQ2hhbmdlcyBpbiB2
-MzogTm9uZQo+IENoYW5nZXMgaW4gdjI6IE5vbmUKPgo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDUgKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCA1IGlu
-c2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
-b3AuYwo+IGluZGV4IDVkOGFlNWUuLmVmZjU0NWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTEzNiw5ICsxMTM2LDE0IEBAIHN0YXRp
-YyBib29sIHZvcF9jcnRjX21vZGVfZml4dXAoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgCQkJ
-CWNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlLAo+ICAgCQkJCXN0cnVjdCBkcm1f
-ZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQo+ICAgewo+ICsJc3RydWN0IHZvcCAqdm9wID0g
-dG9fdm9wKGNydGMpOwo+ICsKPiAgIAlpZiAoYWRqdXN0ZWRfbW9kZS0+aHRvdGFsID09IDAgfHwg
-YWRqdXN0ZWRfbW9kZS0+dnRvdGFsID09IDApCj4gICAJCXJldHVybiBmYWxzZTsKPiAgIAo+ICsJ
-YWRqdXN0ZWRfbW9kZS0+Y2xvY2sgPQo+ICsJCWNsa19yb3VuZF9yYXRlKHZvcC0+ZGNsaywgbW9k
-ZS0+Y2xvY2sgKiAxMDAwKSAvIDEwMDA7Cj4gKwo+ICAgCXJldHVybiB0cnVlOwo+ICAgfQo+ICAg
-Ckxvb2tzIGdvb2QgZm9yIG1lLCBzbwogICAgIEFja2VkLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9A
-cm9jay1jaGlwcy5jb20+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 20 November 2015 at 07:02, Chris Zhong <zyw@rock-chips.com> wrote:
+> Hi Emil
+>
+> On 11/19/2015 10:41 PM, Emil Velikov wrote:
+>>
+>> On 19 November 2015 at 03:35, Chris Zhong <zyw@rock-chips.com> wrote:
+>>>
+>>> The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
+>>> IP. This series adds support for a Synopsys DesignWare MIPI DSI host
+>>> controller DRM bridge driver and a rockchip MIPI DSI specific DRM
+>>> driver.
+>>>
+>>> This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
+>>> This panel only use the MIPI DSI video mode.
+>>>
+>>> The MIPI DSI feature is tested on rk3288 evb board, backport them to
+>>> chrome os kernel v3.14, and it can display normally.
+>>>
+>>> This patchset is base on the patchset from Ying.liu@freescale.com.
+>>> <http://www.spinics.net/lists/dri-devel/msg77181.html>
+>>>
+>>>
+>>> Changes in v3:
+>>> move the dw_mipi_dsi.txt to
+>>> Documentation/devicetree/bindings/display/bridge
+>>> move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+>>> move boe,tv080wum-nl0.txt to bindings/display/panel/
+>>>
+>>> Changes in v2:
+>>> add the mipi clk id in a single patch
+>>> As Thierry.Reding comment, add a documentation for this panel.
+>>>
+>>> Chris Zhong (10):
+>>>    clk: rockchip: add id for mipidsi sclk on rk3288
+>>>    clk: rockchip: add mipidsi clocks on rk3288
+>>>    drm/rockchip: return a true clock rate to adjusted_mode
+>>>    drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
+>>
+>> Did you actually rewrite the patch from Liu Ying ?
+>
+> I modify the dw_mipi_dsi.c based on the patch from Liu Ying.
+If you base your work on top of (i.e. you rework) someone else's patch
+you should retain this authorship and signed-off-by line. This of
+course is not limited to the above patch but a general rule, afaik.
+
+>>
+>> Out of curiosity what was the obstacle of this work getting merged ?
+>
+> There are different version dw controller, and it is too hard to merge them,
+> since most registers are different.
+Have you discussed this limitation with Liu ? Does your work handle
+both versions of the controller ? If so your commit message should say
+something about that. Here are some good sources on the whats and whys
+wrt writing good commit messages [1] [2]
+
+[1] http://who-t.blogspot.co.uk/2009/12/on-commit-messages.html
+[2] http://chris.beams.io/posts/git-commit/
+
+>>
+>>
+>>>    drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
+>>>    Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
+>>>    ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+>>>    drm/panel: simple: Add support for BOE TV080WUM-NL0
+>>>    drm/panel: simple: Add boe,tv080wum-nl0 simple panel device tree
+>>>      binding
+>>
+>> As the DT people will tell you - there is no BOE vendor in
+>> bindings/vendor-prefixes.txt.
+>
+> Yes, I have post a verdor patch in v2 series,
+> <https://patchwork.kernel.org/patch/7530791/>
+> Maybe I should add it back to series with
+>
+> Acked-by: Rob Herring<robh@kernel.org>
+>
+If a patch has been reviewed/acked that's great. Add the tag, but
+please do not drop patches until they are merged. In the latter case
+you can mention that your series depends on branch X from repo Y.
+
+>>
+>>>    ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
+>>>
+>>> Liu Ying (2):
+>>>    drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+>>>    Documentation: dt-bindings: Add bindings for Synopsys DW MIPI DSI DRM
+>>>      bridge driver
+>>>
+>> >From the above 12 patches only ~6 reached this mailing list is that
+>> intentional ? Previously I've seen people CC dri-devel for their
+>> panel/bridge DT patches.
+>
+> I use the patman to post the series, forgot to add you and Thierry to the
+> to-list.
+> I will fix in next version series. Thanks for your reply.
+>
+No need to add me bth. Thierry on the other hand should be Cc'd on the
+patches where he's the maintainer.
+
+As the To/Cc list is already quite excessive - I'd suggest following
+the approach used by veterans in kernel development.
+
+I'm not a veteran kernel dev, but this is what I've noticed over the years:
+ - Subsystem foo - mailing-list, maintainer(s), and optionally the top
+1-2 developers
+ - Other subsystems - mailing-list and optionally the maintainer(s).
+
+Thus in the case of the panel driver you'll get - dri-devel, Thierry
+and optionally(?) devicetree
+For the DT binding for the panel driver - devicetree, Rob, dri-devel, Thierry.
+
+...I think you get the idea :-)
+
+Regards,
+Emil
