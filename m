@@ -1,14 +1,14 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v3 4/8] phy: rockchip-usb: add compatible values for
- rk3066a and rk3188
-Date: Thu, 19 Nov 2015 16:32:23 -0800
-Message-ID: <CAD=FV=V=5vP4a32Gonkv+vw7E+B=tP1VoWSfLA6YTh8knJZcfg@mail.gmail.com>
+Subject: Re: [PATCH v3 2/8] phy: rockchip-usb: introduce a common data-struct
+ for the device
+Date: Thu, 19 Nov 2015 16:38:59 -0800
+Message-ID: <CAD=FV=VdbGfpnhgmUR65b4zD6XpB97qseDrxtRJerRfjd9DpFw@mail.gmail.com>
 References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
-	<1447968149-10979-5-git-send-email-heiko@sntech.de>
+	<1447968149-10979-3-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447968149-10979-5-git-send-email-heiko@sntech.de>
+In-Reply-To: <1447968149-10979-3-git-send-email-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Lin Huang <hl@rock-chips.com>
@@ -17,42 +17,16 @@ List-Id: linux-rockchip.vger.kernel.org
 Heiko,
 
 On Thu, Nov 19, 2015 at 1:22 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> We need custom handling for these two socs in the driver shortly,
-> so add the necessary compatible values to binding and driver.
+> This introduces a common struct that holds data belonging to
+> the umbrella device that contains all the phys and that we
+> want to use later.
 >
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->  Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt | 5 ++++-
->  drivers/phy/phy-rockchip-usb.c                             | 2 ++
->  2 files changed, 6 insertions(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> index 826454a..9b37242 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> @@ -1,7 +1,10 @@
->  ROCKCHIP USB2 PHY
->
->  Required properties:
-> - - compatible: rockchip,rk3288-usb-phy
-> + - compatible: matching the soc type, one of
-> +     "rockchip,rk3066a-usb-phy"
-> +     "rockchip,rk3188-usb-phy"
-> +     "rockchip,rk3288-usb-phy"
+>  drivers/phy/phy-rockchip-usb.c | 26 +++++++++++++++++++-------
+>  1 file changed, 19 insertions(+), 7 deletions(-)
 
-I can never quite keep it straight how this is supposed to work, but
-since previously only "rockchip,rk3288-usb-phy" was supported and now
-we have these new compatible strings, I would have expected the new
-strings to specify the old ones as fallback.  That would mean your
-choices would be:
+Huh, apparently in my whole talk about bindings I forgot my review
+last time.  :(
 
-- "rockchip,rk3288-usb-phy" - A real rk3288
-- "rockchip,rk3188-usb-phy", "rockchip,rk3288-usb-phy" - A rk3188 with
-fallback to 3288 driver.
-- "rockchip,rk3066a-usb-phy", "rockchip,rk3288-usb-phy" - A rk3066a
-with fallback to 3288 driver.
-
-That means that if you land the dts changes without the driver changes
-that things still work OK.
-
--Doug
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
