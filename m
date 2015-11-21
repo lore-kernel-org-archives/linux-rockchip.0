@@ -1,348 +1,43 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 2/2] usb: dwc2: host: Clear interrupts before
- handling them
-Date: Fri, 20 Nov 2015 22:48:29 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC3DAFF7@US01WEMBX2.internal.synopsys.com>
-References: <1448039188-14296-1-git-send-email-dianders@chromium.org>
- <1448039188-14296-2-git-send-email-dianders@chromium.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v4 00/10] Better compatible for the rockchip thermal and support RK3368 SoCs
+Date: Sat, 21 Nov 2015 17:41:47 +0100
+Message-ID: <1718129.opDY4sItVM@phil>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com> <20151112182950.GB4361@localhost.localdomain> <20151112183119.GA5289@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Language: en-US
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "balbi-l0cyMroinI0@public.gmane.org" <balbi-l0cyMroinI0@public.gmane.org>
-Cc: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org" <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, "gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org" <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20151112183119.GA5289-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Kosina <trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 11/20/2015 9:06 AM, Douglas Anderson wrote:
-> In general it is wise to clear interrupts before processing them.  If
-> you don't do that, you can get:
->  1. Interrupt happens
->  2. You look at system state and process interrupt
->  3. A new interrupt happens
->  4. You clear interrupt without processing it.
->=20
-> This patch was actually a first attempt to fix missing device inserti=
-ons
-> as described in (usb: dwc2: host: Fix missing device insertions) and =
-it
-> did solve some of the signal bouncing problems but not all of
-> them (which is why I submitted the other patch).  Specifically, this
-> patch itself would sometimes change:
->  1. hardware sees connect
->  2. hardware sees disconnect
->  3. hardware sees connect
->  4. dwc2_port_intr() - clears connect interrupt
->  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->=20
-> ...to:
->  1. hardware sees connect
->  2. hardware sees disconnect
->  3. dwc2_port_intr() - clears connect interrupt
->  4. hardware sees connect
->  5. dwc2_handle_common_intr() - calls dwc2_hcd_disconnect()
->=20
-> ...but with different timing then sometimes we'd still miss cable
-> insertions.
->=20
-> In any case, though this patch doesn't fix any (known) problems, it
-> still seems wise as a general policy to clear interrupt before handli=
-ng
-> them.
->=20
-> Note that for dwc2_handle_usb_port_intr(), instead of moving the clea=
-r
-> of PRTINT to the beginning of the function we remove it completely.  =
-The
-> only way to clear PRTINT is to clear the sources that set it in the
-> first place.
->=20
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> Changes in v5:
-> - Rebased upon testing/next from 15-11-20.
-> - Fixed missing reset as found by code inspection during rebase.
-> - Now atop fix for missing spinlock in reset.
-> - Dropped John Youn's ack / tested by since there's a bugfix now.
->=20
-> Changes in v4:
-> - Don't replace dwc2_writel with writel (Antti Sepp=E4l=E4).
-> - Update description to explain why we remove PRTINT clear.
->=20
-> Changes in v3:
-> - Don't (uselessly) clear the PRTINT anymore (Felipe Balbi).
->=20
->  drivers/usb/dwc2/core_intr.c | 49 +++++++++++++++++++++-------------=
-----------
->  drivers/usb/dwc2/hcd_intr.c  | 18 ++++++++--------
->  2 files changed, 32 insertions(+), 35 deletions(-)
->=20
-> diff --git a/drivers/usb/dwc2/core_intr.c b/drivers/usb/dwc2/core_int=
-r.c
-> index 61601d16e233..d85c5c9f96c1 100644
-> --- a/drivers/usb/dwc2/core_intr.c
-> +++ b/drivers/usb/dwc2/core_intr.c
-> @@ -86,9 +86,6 @@ static void dwc2_handle_usb_port_intr(struct dwc2_h=
-sotg *hsotg)
->  		hprt0 &=3D ~HPRT0_ENA;
->  		dwc2_writel(hprt0, hsotg->regs + HPRT0);
->  	}
-> -
-> -	/* Clear interrupt */
-> -	dwc2_writel(GINTSTS_PRTINT, hsotg->regs + GINTSTS);
->  }
-> =20
->  /**
-> @@ -98,11 +95,11 @@ static void dwc2_handle_usb_port_intr(struct dwc2=
-_hsotg *hsotg)
->   */
->  static void dwc2_handle_mode_mismatch_intr(struct dwc2_hsotg *hsotg)
->  {
-> -	dev_warn(hsotg->dev, "Mode Mismatch Interrupt: currently in %s mode=
-\n",
-> -		 dwc2_is_host_mode(hsotg) ? "Host" : "Device");
-> -
->  	/* Clear interrupt */
->  	dwc2_writel(GINTSTS_MODEMIS, hsotg->regs + GINTSTS);
-> +
-> +	dev_warn(hsotg->dev, "Mode Mismatch Interrupt: currently in %s mode=
-\n",
-> +		 dwc2_is_host_mode(hsotg) ? "Host" : "Device");
->  }
-> =20
->  /**
-> @@ -276,9 +273,13 @@ static void dwc2_handle_otg_intr(struct dwc2_hso=
-tg *hsotg)
->   */
->  static void dwc2_handle_conn_id_status_change_intr(struct dwc2_hsotg=
- *hsotg)
->  {
-> -	u32 gintmsk =3D dwc2_readl(hsotg->regs + GINTMSK);
-> +	u32 gintmsk;
-> +
-> +	/* Clear interrupt */
-> +	dwc2_writel(GINTSTS_CONIDSTSCHNG, hsotg->regs + GINTSTS);
-> =20
->  	/* Need to disable SOF interrupt immediately */
-> +	gintmsk =3D dwc2_readl(hsotg->regs + GINTMSK);
->  	gintmsk &=3D ~GINTSTS_SOF;
->  	dwc2_writel(gintmsk, hsotg->regs + GINTMSK);
-> =20
-> @@ -295,9 +296,6 @@ static void dwc2_handle_conn_id_status_change_int=
-r(struct dwc2_hsotg *hsotg)
->  		queue_work(hsotg->wq_otg, &hsotg->wf_otg);
->  		spin_lock(&hsotg->lock);
->  	}
-> -
-> -	/* Clear interrupt */
-> -	dwc2_writel(GINTSTS_CONIDSTSCHNG, hsotg->regs + GINTSTS);
->  }
-> =20
->  /**
-> @@ -315,12 +313,12 @@ static void dwc2_handle_session_req_intr(struct=
- dwc2_hsotg *hsotg)
->  {
->  	int ret;
-> =20
-> -	dev_dbg(hsotg->dev, "Session request interrupt - lx_state=3D%d\n",
-> -							hsotg->lx_state);
-> -
->  	/* Clear interrupt */
->  	dwc2_writel(GINTSTS_SESSREQINT, hsotg->regs + GINTSTS);
-> =20
-> +	dev_dbg(hsotg->dev, "Session request interrupt - lx_state=3D%d\n",
-> +							hsotg->lx_state);
-> +
->  	if (dwc2_is_device_mode(hsotg)) {
->  		if (hsotg->lx_state =3D=3D DWC2_L2) {
->  			ret =3D dwc2_exit_hibernation(hsotg, true);
-> @@ -347,6 +345,10 @@ static void dwc2_handle_session_req_intr(struct =
-dwc2_hsotg *hsotg)
->  static void dwc2_handle_wakeup_detected_intr(struct dwc2_hsotg *hsot=
-g)
->  {
->  	int ret;
-> +
-> +	/* Clear interrupt */
-> +	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-> +
->  	dev_dbg(hsotg->dev, "++Resume or Remote Wakeup Detected Interrupt++=
-\n");
->  	dev_dbg(hsotg->dev, "%s lxstate =3D %d\n", __func__, hsotg->lx_stat=
-e);
-> =20
-> @@ -368,10 +370,9 @@ static void dwc2_handle_wakeup_detected_intr(str=
-uct dwc2_hsotg *hsotg)
->  		/* Change to L0 state */
->  		hsotg->lx_state =3D DWC2_L0;
->  	} else {
-> -		if (hsotg->core_params->hibernation) {
-> -			dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
-> +		if (hsotg->core_params->hibernation)
->  			return;
-> -		}
-> +
->  		if (hsotg->lx_state !=3D DWC2_L1) {
->  			u32 pcgcctl =3D dwc2_readl(hsotg->regs + PCGCTL);
-> =20
-> @@ -385,9 +386,6 @@ static void dwc2_handle_wakeup_detected_intr(stru=
-ct dwc2_hsotg *hsotg)
->  			hsotg->lx_state =3D DWC2_L0;
->  		}
->  	}
-> -
-> -	/* Clear interrupt */
-> -	dwc2_writel(GINTSTS_WKUPINT, hsotg->regs + GINTSTS);
->  }
-> =20
->  /*
-> @@ -396,14 +394,14 @@ static void dwc2_handle_wakeup_detected_intr(st=
-ruct dwc2_hsotg *hsotg)
->   */
->  static void dwc2_handle_disconnect_intr(struct dwc2_hsotg *hsotg)
->  {
-> +	dwc2_writel(GINTSTS_DISCONNINT, hsotg->regs + GINTSTS);
-> +
->  	dev_dbg(hsotg->dev, "++Disconnect Detected Interrupt++ (%s) %s\n",
->  		dwc2_is_host_mode(hsotg) ? "Host" : "Device",
->  		dwc2_op_state_str(hsotg));
-> =20
->  	if (hsotg->op_state =3D=3D OTG_STATE_A_HOST)
->  		dwc2_hcd_disconnect(hsotg, false);
-> -
-> -	dwc2_writel(GINTSTS_DISCONNINT, hsotg->regs + GINTSTS);
->  }
-> =20
->  /*
-> @@ -419,6 +417,9 @@ static void dwc2_handle_usb_suspend_intr(struct d=
-wc2_hsotg *hsotg)
->  	u32 dsts;
->  	int ret;
-> =20
-> +	/* Clear interrupt */
-> +	dwc2_writel(GINTSTS_USBSUSP, hsotg->regs + GINTSTS);
-> +
->  	dev_dbg(hsotg->dev, "USB SUSPEND\n");
-> =20
->  	if (dwc2_is_device_mode(hsotg)) {
-> @@ -437,7 +438,7 @@ static void dwc2_handle_usb_suspend_intr(struct d=
-wc2_hsotg *hsotg)
->  			if (!dwc2_is_device_connected(hsotg)) {
->  				dev_dbg(hsotg->dev,
->  						"ignore suspend request before enumeration\n");
-> -				goto clear_int;
-> +				return;
->  			}
-> =20
->  			ret =3D dwc2_enter_hibernation(hsotg);
-> @@ -476,10 +477,6 @@ skip_power_saving:
->  			hsotg->op_state =3D OTG_STATE_A_HOST;
->  		}
->  	}
-> -
-> -clear_int:
-> -	/* Clear interrupt */
-> -	dwc2_writel(GINTSTS_USBSUSP, hsotg->regs + GINTSTS);
->  }
-> =20
->  #define GINTMSK_COMMON	(GINTSTS_WKUPINT | GINTSTS_SESSREQINT |		\
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.=
-c
-> index a1eb48e54858..f8253803a050 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -122,6 +122,9 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsot=
-g)
->  	struct dwc2_qh *qh;
->  	enum dwc2_transaction_type tr_type;
-> =20
-> +	/* Clear interrupt */
-> +	dwc2_writel(GINTSTS_SOF, hsotg->regs + GINTSTS);
-> +
->  #ifdef DEBUG_SOF
->  	dev_vdbg(hsotg->dev, "--Start of Frame Interrupt--\n");
->  #endif
-> @@ -146,9 +149,6 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsot=
-g)
->  	tr_type =3D dwc2_hcd_select_transactions(hsotg);
->  	if (tr_type !=3D DWC2_TRANSACTION_NONE)
->  		dwc2_hcd_queue_transactions(hsotg, tr_type);
-> -
-> -	/* Clear interrupt */
-> -	dwc2_writel(GINTSTS_SOF, hsotg->regs + GINTSTS);
->  }
-> =20
->  /*
-> @@ -312,6 +312,7 @@ static void dwc2_hprt0_enable(struct dwc2_hsotg *=
-hsotg, u32 hprt0,
-> =20
->  	if (do_reset) {
->  		*hprt0_modify |=3D HPRT0_RST;
-> +		dwc2_writel(*hprt0_modify, hsotg->regs + HPRT0);
->  		queue_delayed_work(hsotg->wq_otg, &hsotg->reset_work,
->  				   msecs_to_jiffies(60));
->  	} else {
-> @@ -347,11 +348,12 @@ static void dwc2_port_intr(struct dwc2_hsotg *h=
-sotg)
->  	 * Set flag and clear if detected
->  	 */
->  	if (hprt0 & HPRT0_CONNDET) {
-> +		dwc2_writel(hprt0_modify | HPRT0_CONNDET, hsotg->regs + HPRT0);
-> +
->  		dev_vdbg(hsotg->dev,
->  			 "--Port Interrupt HPRT0=3D0x%08x Port Connect Detected--\n",
->  			 hprt0);
->  		dwc2_hcd_connect(hsotg);
-> -		hprt0_modify |=3D HPRT0_CONNDET;
-> =20
->  		/*
->  		 * The Hub driver asserts a reset when it sees port connect
-> @@ -364,10 +366,10 @@ static void dwc2_port_intr(struct dwc2_hsotg *h=
-sotg)
->  	 * Clear if detected - Set internal flag if disabled
->  	 */
->  	if (hprt0 & HPRT0_ENACHG) {
-> +		dwc2_writel(hprt0_modify | HPRT0_ENACHG, hsotg->regs + HPRT0);
->  		dev_vdbg(hsotg->dev,
->  			 "  --Port Interrupt HPRT0=3D0x%08x Port Enable Changed (now %d)-=
--\n",
->  			 hprt0, !!(hprt0 & HPRT0_ENA));
-> -		hprt0_modify |=3D HPRT0_ENACHG;
->  		if (hprt0 & HPRT0_ENA) {
->  			hsotg->new_connection =3D true;
->  			dwc2_hprt0_enable(hsotg, hprt0, &hprt0_modify);
-> @@ -387,15 +389,13 @@ static void dwc2_port_intr(struct dwc2_hsotg *h=
-sotg)
-> =20
->  	/* Overcurrent Change Interrupt */
->  	if (hprt0 & HPRT0_OVRCURRCHG) {
-> +		dwc2_writel(hprt0_modify | HPRT0_OVRCURRCHG,
-> +			    hsotg->regs + HPRT0);
->  		dev_vdbg(hsotg->dev,
->  			 "  --Port Interrupt HPRT0=3D0x%08x Port Overcurrent Changed--\n"=
-,
->  			 hprt0);
->  		hsotg->flags.b.port_over_current_change =3D 1;
-> -		hprt0_modify |=3D HPRT0_OVRCURRCHG;
->  	}
-> -
-> -	/* Clear Port Interrupts */
-> -	dwc2_writel(hprt0_modify, hsotg->regs + HPRT0);
->  }
-> =20
->  /*
->=20
+Am Donnerstag, 12. November 2015, 10:31:20 schrieb Eduardo Valentin:
+> On Thu, Nov 12, 2015 at 10:29:52AM -0800, Eduardo Valentin wrote:
+> > On Mon, Nov 09, 2015 at 12:48:52PM +0800, Caesar Wang wrote:
+> > > Thank you all for providing inputs and comments on previous versions of
+> > > this patchset.
+> > > Especially thanks to the (Eduardo, Dmitry, Heiko,....).
+> > > 
+> > > This series patchs are working for RK3368 on Rockchip platform.
+> > 
+> > Do you have any results on existing support? Is the driver still in one
+> > piece for rk3288?
+> > 
+> > I am planing to send your series in next rc cycles. It won't appear in
+> > linux-next until merge window finishes.
+> 
+> To be more specific, only patches 1-7. DT bindings go via the right
+> machine tree.
 
-Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Tested-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+after seeing these 7 patches in your next-branch, I've now applied the 3
+dts patches to my dts64 branch for 4.5 as well.
 
-Tested on IP v3.20 on HAPS PCI system.
 
-Regards,
-John
-
+Thanks
+Heiko
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
