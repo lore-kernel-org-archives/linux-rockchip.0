@@ -1,70 +1,84 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: Send events for same-fb flips
-Date: Mon, 23 Nov 2015 15:46:06 +0800
-Message-ID: <5652C43E.10606@rock-chips.com>
-References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
- <1447678222-6858-2-git-send-email-daniels@collabora.com>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v4 10/13] of: add vendor prefix for boe
+Date: Mon, 23 Nov 2015 09:08:18 +0100
+Message-ID: <20151123080816.GC14176@ulmo.nvidia.com>
+References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
+ <1448007339-10966-11-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447678222-6858-2-git-send-email-daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Stone <daniels-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============1309709538=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1448007339-10966-11-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Arnaud Ebalard <arno@natisbad.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Kumar Gala <galak@codeaurora.org>, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com, Jonathan Cameron <jic23@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgrkuo4gMjAxNeW5tDEx5pyIMTbml6UgMjA6NTAsIERhbmllbCBTdG9uZSDlhpnpgZM6Cj4g
-Um9ja2NoaXAgcHJldmlvdXNseSB0cmVhdGVkIGEgcGFnZWZsaXAgdG8gdGhlIHNhbWUgZnJhbWVi
-dWZmZXIgYXMgYQo+IG5vLW9wLCBkaXNjYXJkaW5nIHRoZSBldmVudCBpZiBvbmUgd2FzIHJlcXVl
-c3RlZC4gVGhpcyBicmVha3MgV2VzdG9uLAo+IHdoaWNoLCB3aGVuIGlkbGUsIHNlbmRzIGEgbm8t
-b3AgdmJsYW5rIGV2ZW50IHRvIGRpc2NvdmVyIHZibGFuawo+IHRpbWluZ3MgaWYgdGhlIHZibGFu
-ayBxdWVyeSBpbnRlcmZhY2UgaXMgbm90IHVzYWJsZS4KPgo+IFNpbGVudGx5IGRyb3BwaW5nIGV2
-ZW50cyBpcyBhbHNvIHF1aXRlIGEgaG9zdGlsZSB0aGluZyB0byBkbyB0bwo+IHVzZXJzcGFjZSBp
-biBnZW5lcmFsLgo+Cj4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFN0b25lIDxkYW5pZWxzQGNvbGxh
-Ym9yYS5jb20+Cj4gQ2M6IFNqb2VyZCBTaW1vbnMgPHNqb2VyZC5zaW1vbnNAY29sbGFib3JhLmNv
-LnVrPgo+IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDMwICsrKysrKysrKysr
-KysrLS0tLS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwg
-MTYgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKPiBpbmRleCBkZGY2ZGMyLi5kYWQ2MDdlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTkxNiwyNSArOTE2LDIzIEBAIHN0
-YXRpYyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwK
-PiAgIAkgKiB1bnJlZmVyZW5jZSBhbnkgcHJldmlvdXMgZnJhbWVidWZmZXJzLgo+ICAgCSAqLwo+
-ICAgCW11dGV4X2xvY2soJnZvcC0+dnN5bmNfbXV0ZXgpOwo+IC0JaWYgKGZiICE9IHZvcF93aW5f
-bGFzdF9wZW5kaW5nX2ZiKHZvcF93aW4pKSB7CgpUaGVyZSBpcyBhIHdhcm5pbmcgZm9yIGJ1aWxk
-aW5nLgoKQ0MgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Aubwpkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jOjc1MzozMjogd2FybmluZzog
-Cid2b3Bfd2luX2xhc3RfcGVuZGluZ19mYicgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XdW51c2Vk
-LWZ1bmN0aW9uXQoKTWF5YmUsIHdlIGNhbiBhbHNvIHJlbW92ZSB0aGUgdm9wX3dpbl9sYXN0X3Bl
-bmRpbmdfZmIoKSBmdW5jdGlvbi4KCj4gLQkJcmV0ID0gZHJtX3ZibGFua19nZXQocGxhbmUtPmRl
-diwgdm9wLT5waXBlKTsKPiAtCQlpZiAocmV0KSB7Cj4gLQkJCURSTV9FUlJPUigiZmFpbGVkIHRv
-IGdldCB2YmxhbmssICVkXG4iLCByZXQpOwo+IC0JCQltdXRleF91bmxvY2soJnZvcC0+dnN5bmNf
-bXV0ZXgpOwo+IC0JCQlyZXR1cm4gcmV0Owo+IC0JCX0KPiArCXJldCA9IGRybV92YmxhbmtfZ2V0
-KHBsYW5lLT5kZXYsIHZvcC0+cGlwZSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJRFJNX0VSUk9SKCJm
-YWlsZWQgdG8gZ2V0IHZibGFuaywgJWRcbiIsIHJldCk7Cj4gKwkJbXV0ZXhfdW5sb2NrKCZ2b3At
-PnZzeW5jX211dGV4KTsKPiArCQlyZXR1cm4gcmV0Owo+ICsJfQo+ICAgCj4gLQkJZHJtX2ZyYW1l
-YnVmZmVyX3JlZmVyZW5jZShmYik7Cj4gKwlkcm1fZnJhbWVidWZmZXJfcmVmZXJlbmNlKGZiKTsK
-PiAgIAo+IC0JCXJldCA9IHZvcF93aW5fcXVldWVfZmIodm9wX3dpbiwgZmIsIHlyZ2JfbXN0LCBl
-dmVudCk7Cj4gLQkJaWYgKHJldCkgewo+IC0JCQlkcm1fdmJsYW5rX3B1dChwbGFuZS0+ZGV2LCB2
-b3AtPnBpcGUpOwo+IC0JCQltdXRleF91bmxvY2soJnZvcC0+dnN5bmNfbXV0ZXgpOwo+IC0JCQly
-ZXR1cm4gcmV0Owo+IC0JCX0KPiAtCj4gLQkJdm9wLT52c3luY193b3JrX3BlbmRpbmcgPSB0cnVl
-Owo+ICsJcmV0ID0gdm9wX3dpbl9xdWV1ZV9mYih2b3Bfd2luLCBmYiwgeXJnYl9tc3QsIGV2ZW50
-KTsKPiArCWlmIChyZXQpIHsKPiArCQlkcm1fdmJsYW5rX3B1dChwbGFuZS0+ZGV2LCB2b3AtPnBp
-cGUpOwo+ICsJCW11dGV4X3VubG9jaygmdm9wLT52c3luY19tdXRleCk7Cj4gKwkJcmV0dXJuIHJl
-dDsKPiAgIAl9Cj4gKwo+ICsJdm9wLT52c3luY193b3JrX3BlbmRpbmcgPSB0cnVlOwo+ICAgCW11
-dGV4X3VubG9jaygmdm9wLT52c3luY19tdXRleCk7Cj4gICAKPiAgIAlzcGluX2xvY2soJnZvcC0+
-cmVnX2xvY2spOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+--===============1309709538==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Fba/0zbH8Xs+Fj9o"
+Content-Disposition: inline
+
+--Fba/0zbH8Xs+Fj9o
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Nov 20, 2015 at 04:15:36PM +0800, Chris Zhong wrote:
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> Acked-by: Rob Herring <robh@kernel.org>
+> ---
+>=20
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>=20
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
+
+Applied, with slightly modified commit message.
+
+Thanks,
+Thierry
+
+--Fba/0zbH8Xs+Fj9o
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJWUsluAAoJEN0jrNd/PrOhTrkP/2Kc7Xs7I4OIIqEfYB2AsLjZ
+D4HqIVKpuZLpa1ySIDaHS367lZJDQqKb+zZVnYWOwEgQmry5977P35hyEIrIhqBZ
+3mIOIBr9e8XVeqemzdMZfldeUNERqPZzOpQXOsjTx5k4VlE6Nc5GbeYX177QxCWG
+BgQVIyZ83V4fa8aKV8MQVgDNAadd8xfK5/m7au4L0y3FPEBakyRfsxRdiE/R4eS5
+UvRbEsRAYNI2sDGivAcD3u+FwWhnE4gUp/5VXG4QPjj6kS/Q8KvgcvLT43ROIbKU
+Uvww03KlR6mUcvLrtBbi0BTtwX9l5tSGx3s2tvR+ldT550FjLyasvF5AfqWhYGw+
+R11tgqFApc1tfJAWeJPICTm0xUpCaqBSwhlGYMjXBSBPuDWj5qtyS5/aHGSMgqUE
+lgM1iuwkfpW8ZKGxo1DfTEbqgdbqjxIt0FUsWETo25/5CnNpJR83sDZhvpzQGUNS
+MztZfxQbvAkZrjP0sg2iUI6dPYoMqiTFQS/r22SrtvjtSCTytXGDkfIzyQ/mHlL/
+RgW2qDe3IalnAWkvCwtgeDL7kvm9/XBaTs07PbhfvR5KbGPm5RxHQoV4f1l71hyS
+SsC8fT+Qyqq7AQZ3EaOJ50CTYil8MxOfTlA831HB8RdbKIuOL0j2m70y+N66QRqQ
+tBhMNi0D/ScqsOFMXF5I
+=OUSN
+-----END PGP SIGNATURE-----
+
+--Fba/0zbH8Xs+Fj9o--
+
+--===============1309709538==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1309709538==--
