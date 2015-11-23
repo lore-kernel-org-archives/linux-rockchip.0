@@ -1,98 +1,86 @@
-From: Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v4 12/13] drm/panel: simple: Add boe,tv080wum-nl0 simple
- panel device tree binding
-Date: Mon, 23 Nov 2015 09:10:24 +0100
-Message-ID: <20151123081022.GE14176@ulmo.nvidia.com>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-13-git-send-email-zyw@rock-chips.com>
+From: hl <hl@rock-chips.com>
+Subject: Re: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
+Date: Mon, 23 Nov 2015 17:20:21 +0800
+Message-ID: <5652DA55.7090508@rock-chips.com>
+References: <1447928471-14448-1-git-send-email-hl@rock-chips.com> <42589302.5BMrDbIv8M@phil> <564E794B.8070002@rock-chips.com> <1589931.xBgSB4kSK8@phil>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0070985453=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448007339-10966-13-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1589931.xBgSB4kSK8@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, mturquette@baylibre.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-clk@vger.kernel.org, sboyd@codeaurora.org, dbasehore@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0070985453==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="d9ADC0YsG2v16Js0"
-Content-Disposition: inline
+Hi Heiko,
 
---d9ADC0YsG2v16Js0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 22/11/15 02:30, Heiko Stuebner wrote:
+> Hi Lin,
+>
+> Am Freitag, 20. November 2015, 09:37:15 schrieb hl:
+>> On 20/11/15 05:47, Heiko Stuebner wrote:
+>>> Hi Lin,
+>>>
+>>> Am Donnerstag, 19. November 2015, 18:21:10 schrieb Lin Huang:
+>>>> support rk3399 dmc clock driver. Note, ddr set rate function will
+>>>> use dcf controller which run in ATF, it need to fishish it when rk3399
+>>>> arm trust firmware ready.
+>>> this unfinalized state is slightly unfortunate and I think this code will
+>>> need to wait until CRU and DDRC specs are available.
+>>>
+>>> Because this is clearly part of the CRU (labeled CRU_CLKSEL6_CON etc)
+>>> so shouldn't be a separate driver at all and also what your driver currently
+>>> only does can still simply be described in the regular scheme as part of
+>>> a full clock driver like
+>>>
+>>> PNAME(mux_ddrc_p) = { "pll_dpll", "pll_gpll", "pll_alpll", "pll_abpll" };
+>>> COMPOSITE_NOGATE(0, "ddrc", mux_ddrc_p, 0,
+>>> 					RK3399_CLKSEL_CON(6), 4, 2, MFLAGS, 0, 3,
+>>> 					DFLAGS | CLK_DIVIDER_POWER_OF_TWO),
+>>>
+>>> So the code needs to actually demonstrate why a separate clock type is
+>>> really necessary.
+>>>
+>>> I do understand that we will probably need a special way to talk to this
+>>> dcf controller but seeing how this interaction will work is really a
+>>> prequisite to finding a correct solution.
+>>       if we can use common clock driver, i can put the dfi controller as
+>> a  independent driver
+>>       into devfreq,  this is the best way. But how do we separate the ddr
+>> clk_set_rate() ,
+>>       so we can manipulate dcf controller(actually, we use SMC handle dcf
+>> controller in arm trust firmware ),
+>>       i check clock driver code, it seem there is not way to do that for now.
+> the core problem I have right now is, that I don't understand how the
+> interaction with the dfi controller works at all :-) .
+>
+> One thing that might work, is that your dfi-driver takes the ddrc-clock
+> from the clock controller and then registers a clock notifier to get
+> notified before and after the clock-rate changes. But that depends as
+> stated above on how the dfi-controller needs to be handled.
+>
+> For example the current armclk-handling uses a clock notifier around the
+> actual rate change ... so you could use that as inspiration.
+     Thank you for your inspiration. I think i can handle ddrc clk like 
+the armclk.
+     About the dfi, it will monitor ddr utilization, according this 
+result to do
+     ddr frequency scaling. I think i can implement a dfi drvier, and 
+register it to devfreq,
+     then call the dmc_set_rate fucntion in the dfi drvier, meanwhile i 
+will implement a ddrc clk driver
+     like the armclk, implement set rate funciton, and call the 
+dcf(implement in ATF) in this function.
+>
+>
+> Heiko
+>
+>
+>
+>
 
-On Fri, Nov 20, 2015 at 04:15:38PM +0800, Chris Zhong wrote:
-> This binding specifies a set of common properties for display panels. It
-> can be used as a basis by bindings for specific panels.
-> Bindings for three specific panels are provided to show how the
-> simple panel binding can be used.
->=20
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> Acked-by: Rob Herring <robh@kernel.org>
->=20
-> ---
->=20
-> Changes in v4: None
-> Changes in v3:
-> move boe,tv080wum-nl0.txt to bindings/display/panel/
->=20
-> Changes in v2:
-> As Thierry.Reding comment, add a documentation for this panel.
->=20
->  .../devicetree/bindings/display/panel/boe,tv080wum-nl0.txt         | 7 +=
-++++++
->  1 file changed, 7 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/panel/boe,t=
-v080wum-nl0.txt
+-- 
+Lin Huang
 
-Applied, with a rewritten commit message. The one above seems to be
-copied from the original commit that added the simple-panel binding.
 
-Thanks,
-Thierry
-
---d9ADC0YsG2v16Js0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJWUsnuAAoJEN0jrNd/PrOhJhwP/2+v2FjZR+fgkArEsdukfz86
-GKh+EAFWmCsd5rL7Fcdyi8zVBXXpviOfJ5T2IFGZfswoG39bbNIOaexDMJN7o2K/
-gmrxETegKsyIobXeu9LE4kLWYoSHP536akEnK4zaR4u6A+FL/n1CFnwR2mIW4x36
-GKJdHEMW2Qw6OV/fXYCDmup5J4gQuEgwx1KwcUMkNKavDbSD7qv+/jNtLthx1KjP
-T4Q3ApQoMEB9AWFEc3+ilRomURG/ku60KyLRSK4BsoPEZ9NlTZSVdgY4CCOx0oPX
-evsFLk11x9deRzngvQKBDhooDkrra1otghya1ykVsVSg5oOlrbfEH70sFvvHQZCf
-KNk+ft6MXSu/0Nn9ihqmj83gYCvBECk/6ZatryWVFJTLk/uk9P2iQWEvOrvuqm5/
-4oZGkqwZaJ5pxojJrIyFjL2vIF2ZZIAOGgMQergKb2WumnpIT/MV7WK2efgouc7m
-/J4/2Inoj5OjRgpgOh02cm4+raI7iyhE4qfcf9wyLErk756bCQq+AJdbUNHz2eh6
-Aw45VJTnCnICSre54y+MUHE2VU0dlxpUHaxKEpJ4TmWTIHg/TgviFy9R/+mvEE7T
-AiaLt0yDuJ4WvYeOsLZaM8upk6FQOijndnrZA6VqdLTvR2gDCuez1a1ZROuywfJJ
-b0YAIo0jpe8ooP25i2qH
-=mtQX
------END PGP SIGNATURE-----
-
---d9ADC0YsG2v16Js0--
-
---===============0070985453==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0070985453==--
