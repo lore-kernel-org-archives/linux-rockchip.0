@@ -1,35 +1,49 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 2/2] drm/rockchip: Convert the probe function to the
- generic drm_of_component_probe()
-Date: Mon, 23 Nov 2015 17:39:41 +0800
-Message-ID: <5652DEDD.60603@rock-chips.com>
-References: <1448029325-14602-1-git-send-email-Liviu.Dudau@arm.com> <1448029325-14602-3-git-send-email-Liviu.Dudau@arm.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] ARM: rockchip: devicetree fixes for 4.4
+Date: Mon, 23 Nov 2015 13:12:52 +0100
+Message-ID: <1896520.ssRYuZn5dZ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1448029325-14602-3-git-send-email-Liviu.Dudau@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Liviu Dudau <Liviu.Dudau@arm.com>, Russell King <rmk+kernel@arm.linux.org.uk>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Eric Anholt <eric@anholt.net>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2015=E5=B9=B411=E6=9C=8820=E6=97=A5 22:22, Liviu Dudau wrote:
-> Initial attempt to convert rockchip to drm_of_component_probe() misse=
-d the
-> difference between ports and encoders when using the compare_of() fun=
-ction.
-> Now that drm_of_component_probe() has been enhanced, let's try again =
-the
-> conversion.
->
-> Signed-off-by: Liviu Dudau<Liviu.Dudau@arm.com>
+The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
 
-Looks good for me, and it works on popmetal board, so
-      Acked-by: Mark Yao <mark.yao@rock-chips.com>
+  Linux 4.4-rc1 (2015-11-15 17:00:27 -0800)
 
-Thanks.
+are available in the git repository at:
 
---=20
-=EF=BC=ADark Yao
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-dts32-fixes1
+
+for you to fetch changes up to 784359b824bf2b095b257eefcd9615a3c48f2d8a:
+
+  ARM: dts: rockchip: Add OTP gpio pinctrl to rk3288 tsadc node (2015-11-19 05:50:42 +0100)
+
+----------------------------------------------------------------
+Two fixes to Rockchip devicetree files, disabling the mmc-tuning
+on the veyron-minnie board for now and adding the init state for
+the over-temperature-protection to prevent glitches making the
+system reboot sometimes.
+
+----------------------------------------------------------------
+Caesar Wang (1):
+      ARM: dts: rockchip: Add OTP gpio pinctrl to rk3288 tsadc node
+
+Heiko Stuebner (1):
+      ARM: dts: rockchip: temporarily remove emmc hs200 speed from rk3288 minnie
+
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts |  4 ++++
+ arch/arm/boot/dts/rk3288.dtsi              | 10 ++++++++--
+ 2 files changed, 12 insertions(+), 2 deletions(-)
