@@ -1,91 +1,45 @@
-From: Thierry Reding <treding@nvidia.com>
-Subject: Re: [PATCH v4 11/13] drm/panel: simple: Add support for BOE
- TV080WUM-NL0
-Date: Mon, 23 Nov 2015 09:09:04 +0100
-Message-ID: <20151123080903.GD14176@ulmo.nvidia.com>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-12-git-send-email-zyw@rock-chips.com>
+From: MyungJoo Ham <myungjoo.ham@samsung.com>
+Subject: Re: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
+Date: Mon, 23 Nov 2015 08:09:45 +0000 (GMT)
+Message-ID: <68719599.130141448266183403.JavaMail.weblogic@epmlwas06a>
+Reply-To: myungjoo.ham@samsung.com
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0144390982=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448007339-10966-12-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, rmk+kernel@arm.linux.org.uk, ajaykumar.rs@samsung.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+Return-path: <linux-clk-owner@vger.kernel.org>
+MIME-version: 1.0
+Sender: linux-clk-owner@vger.kernel.org
+To: Lin Huang <hl@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>, "dianders@chromium.org" <dianders@chromium.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>, =?utf-8?Q?=EB=B0=95=EA=B2=BD=EB=AF=BC?= <kyungmin.park@samsung.com>
+Cc: "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0144390982==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="96YOpH+ONegL0A3E"
-Content-Disposition: inline
+PiArc3RhdGljIHVuc2lnbmVkIGxvbmcgcmszMzk5X2RtY2Nsa19yZWNhbGNfcmF0ZShzdHJ1Y3Qg
+Y2xrX2h3ICpodywNCj4gKwkJCQkJICAgICAgIHVuc2lnbmVkIGxvbmcgcGFyZW50X3JhdGUpDQo+
+ICt7DQo+ICsJc3RydWN0IHJrMzM5OV9kbWNjbGsgKmRtYyA9IHRvX3JrMzM5OV9kbWNjbGsoJmh3
+KTsNCj4gKwl1MzIgdmFsOw0KPiArDQo+ICsJLyoNCj4gKwkgKiBHZXQgcGFyZW50IHJhdGUgc2lu
+Y2UgaXQgY2hhbmdlZCBpbiB0aGlzIGNsa3Mgc2V0X3JhdGUgb3AuIFRoZSBwYXJlbnQNCj4gKwkg
+KiByYXRlIHBhc3NlZCBpbnRvIHRoaXMgZnVuY3Rpb24gaXMgY2FjaGVkIGJlZm9yZSBzZXRfcmF0
+ZSBpcyBjYWxsZWQgaW4NCj4gKwkgKiB0aGUgY29tbW9uIGNsayBjb2RlLCBzbyB3ZSBoYXZlIHRv
+IGdldCBpdCBoZXJlLg0KPiArCSAqLw0KPiArCXBhcmVudF9yYXRlID0gY2xrX2dldF9yYXRlKGNs
+a19nZXRfcGFyZW50KGh3LT5jbGspKTsNCj4gKw0KPiArCXZhbCA9IHJlYWRsKGRtYy0+Y3J1ICsg
+Q1JVX0NMS1NFTDZfQ09OKTsNCj4gKwl2YWwgPSAodmFsID4+IENMS19ERFJDX0RJVl9DT05fU0hJ
+RlQpICYgQ0xLX0REUkNfRElWX0NPTl9NQVNLOw0KPiArDQo+ICsJcmV0dXJuIHBhcmVudF9yYXRl
+IC8gKHZhbCArIDEpOw0KPiArfQ0KPiArDQo+ICsvKg0KPiArICogVE9ETzogc2V0IGRkciBmcmVx
+dWNuZXkgaW4gZGNmIHdoaWNoIHJ1biBpbiBBVEYNCj4gKyAqLw0KPiArc3RhdGljIGludCByazMz
+OTlfZG1jY2xrX3NldF9yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUs
+DQo+ICsJCQkJICB1bnNpZ25lZCBsb25nIHBhcmVudF9yYXRlKQ0KPiArew0KPiArCXJldHVybiAw
+Ow0KPiArfQ0KDQpJcyBpdCBjb3JyZWN0IHRoYXQgeW91IGRpZG4ndCBmaWxsIHRoaXMgdXAgYmVj
+YXVzZSB5b3VyDQpUcnVzdHpvbmUgZHJpdmVyIChTTUMpIGlzIG5vdCByZWFkeSB5ZXQ/DQoNClRo
+ZW4sIHdoeSBkb24ndCB5b3UgZmlsbCB0aGF0IGZ1bmN0aW9uIGFzc3VtaW5nIHRoYXQgVHJ1c3Ra
+b25lIGlzIG5vdCBhY3RpdmF0ZWQNCmFuZCBhZGQgU01DIGNhbGwgZnVuY3Rpb25zIHdpdGggaWYg
+b3IgI2lmIGFmdGVyIGl0cyBUcnVzdFpvbmUgZHJpdmVyIGlzIHJlYWR5Pw0KDQpPciBkb2VzIHlv
+dXIgU29DIG1hbmRhdGUgdGhlIHVzYWdlIG90IFRydXN0Wm9uZSwgcmVzdHJpY3RpbmcgdGhlIHVz
+YWdlDQpvZiBDUlVfQ0xLU0VMNl9DT04gd3JpdGU/IChJIGRvbid0IHNlZSB3aHkgU29DIHZlbmRv
+cnMgd2lsbCBkbyB0aGlzLi4pDQoNCg0KSSdsbCBiZSByZWFkeSB0byBtZXJnZSB0aGUgUkszMzk5
+IGRldmZyZXEgZHJpdmVyIGlmIHlvdQ0KZmlsbCB0aGlzIHVwIChhc3N1bWluZyB0aGF0IFRaIGlz
+IG5vdCBlbmFibGVkKSBvcg0KYWRkIFRaIGRyaXZlciBhbmQgU01DIGNhbGxzLg0KDQoNCkNoZWVy
+cywNCk15dW5nSm9vDQpwcy4gYWNjb3JkaW5nIHRvIHJrMzM5X2RtY2Nsa19yZWNhbGNfcmF0ZSgp
+LCBmaWxsaW5nIHJrMzM5X2RtY2Nsa19zZXRfcmF0ZQ0KYXNzdW1pbmcgdGhhdCBUWiBpcyBub3Qg
+ZW5hYmxlZCBzZWVtcyB0cml2aWFsLg==
 
---96YOpH+ONegL0A3E
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Fri, Nov 20, 2015 at 04:15:37PM +0800, Chris Zhong wrote:
-> This adds support for the BOE TV080WUM-NL0 1200x1920 mipi panel to the
-> DRM simple panel driver.
->=20
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->=20
-> ---
->=20
-> Changes in v4:
-> Alphabetically arranged the name
->=20
-> Changes in v3: None
-> Changes in v2: None
->=20
->  drivers/gpu/drm/panel/panel-simple.c | 34 ++++++++++++++++++++++++++++++=
-++++
->  1 file changed, 34 insertions(+)
-
-Applied, with slightly modified commit message.
-
-Thanks,
-Thierry
-
---96YOpH+ONegL0A3E
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJWUsmeAAoJEN0jrNd/PrOhMgoP/2QolOn1lA3r+ipw43xRlg9Y
-BJMT/jql5ZEvPTASrFVIF9QBq+GnUSuZQIo163IfKdjV/XF5jG0J6/iseA8Y5l0M
-shsng7qyjdEPykTrDB/6WsboHWrSxqlEI+8DuTf180h6qapzxQrnJMz9c9MREDk6
-OYVlNofFgrhbBLibtDGLmE5TdjNCbjHSGsJN4WWBvibCHc/7docyQykT9YNkbF87
-P/JQWSeHl73jbn2gXIQh+h9XlK9zxFYpp7JKUA7zWneiBT1r/RlfHiyLVgLRCIk4
-8CFr1FrdTmtlOsrfD9DRPRfleWMRK8ciDyJhXo1cqazyeoK9783Eb2L5TfR7DLu6
-cqKLo2GTBy+pDr7EAVmxxRLz1DZGQ4bYJ/SEB+xa5fRBRDOZ209jmK8u3hJzhNcZ
-ZwY6u6SzidcGolX8ogHCVhJQNChiF/WpLdXJs4U8rM/LT/pDHD58LOhRjrM51Z1S
-N1CE3D+TuFIuMDqA9MYMxIMI9xaG7Q2p94DXoBH6hlDtMIpbOlxjJJpQWYQLnYKH
-x2Yc+1WH2ayvTbjlmIWruicwlkeLNYvv5uyjcfXG5YF1CB6qoyl54jGhcCbdNN+w
-opkZ7iIAXUETHRTcO6gCagCtT8z02+ixehiyTDo8pTBSuTDzunUhezq3OGMz3Fpp
-rYwM9BssNq/RPMZOez4X
-=EVw7
------END PGP SIGNATURE-----
-
---96YOpH+ONegL0A3E--
-
---===============0144390982==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0144390982==--
