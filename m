@@ -1,74 +1,35 @@
-From: hl <hl@rock-chips.com>
-Subject: Re: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
-Date: Mon, 23 Nov 2015 17:26:53 +0800
-Message-ID: <5652DBDD.3070603@rock-chips.com>
-References: <68719599.130141448266183403.JavaMail.weblogic@epmlwas06a>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2 2/2] drm/rockchip: Convert the probe function to the
+ generic drm_of_component_probe()
+Date: Mon, 23 Nov 2015 17:39:41 +0800
+Message-ID: <5652DEDD.60603@rock-chips.com>
+References: <1448029325-14602-1-git-send-email-Liviu.Dudau@arm.com> <1448029325-14602-3-git-send-email-Liviu.Dudau@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <68719599.130141448266183403.JavaMail.weblogic@epmlwas06a>
-Sender: linux-clk-owner@vger.kernel.org
-To: myungjoo.ham@samsung.com, "heiko@sntech.de" <heiko@sntech.de>, "dianders@chromium.org" <dianders@chromium.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>, =?UTF-8?B?67CV6rK966+8?= <kyungmin.park@samsung.com>
-Cc: "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1448029325-14602-3-git-send-email-Liviu.Dudau@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Liviu Dudau <Liviu.Dudau@arm.com>, Russell King <rmk+kernel@arm.linux.org.uk>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Eric Anholt <eric@anholt.net>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi MyungJoo,
+On 2015=E5=B9=B411=E6=9C=8820=E6=97=A5 22:22, Liviu Dudau wrote:
+> Initial attempt to convert rockchip to drm_of_component_probe() misse=
+d the
+> difference between ports and encoders when using the compare_of() fun=
+ction.
+> Now that drm_of_component_probe() has been enhanced, let's try again =
+the
+> conversion.
+>
+> Signed-off-by: Liviu Dudau<Liviu.Dudau@arm.com>
 
-On 23/11/15 16:09, MyungJoo Ham wrote:
->> +static unsigned long rk3399_dmcclk_recalc_rate(struct clk_hw *hw,
->> +					       unsigned long parent_rate)
->> +{
->> +	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
->> +	u32 val;
->> +
->> +	/*
->> +	 * Get parent rate since it changed in this clks set_rate op. The parent
->> +	 * rate passed into this function is cached before set_rate is called in
->> +	 * the common clk code, so we have to get it here.
->> +	 */
->> +	parent_rate = clk_get_rate(clk_get_parent(hw->clk));
->> +
->> +	val = readl(dmc->cru + CRU_CLKSEL6_CON);
->> +	val = (val >> CLK_DDRC_DIV_CON_SHIFT) & CLK_DDRC_DIV_CON_MASK;
->> +
->> +	return parent_rate / (val + 1);
->> +}
->> +
->> +/*
->> + * TODO: set ddr frequcney in dcf which run in ATF
->> + */
->> +static int rk3399_dmcclk_set_rate(struct clk_hw *hw, unsigned long rate,
->> +				  unsigned long parent_rate)
->> +{
->> +	return 0;
->> +}
-> Is it correct that you didn't fill this up because your
-> Trustzone driver (SMC) is not ready yet?
-     Yep, the SMC is not ready yet.
->
-> Then, why don't you fill that function assuming that TrustZone is not activated
-> and add SMC call functions with if or #if after its TrustZone driver is ready?
->
-> Or does your SoC mandate the usage ot TrustZone, restricting the usage
-> of CRU_CLKSEL6_CON write? (I don't see why SoC vendors will do this..)
->
->
-> I'll be ready to merge the RK3399 devfreq driver if you
-> fill this up (assuming that TZ is not enabled) or
-> add TZ driver and SMC calls.
-     Thank you for your reply,  it is good idea use if or #if to 
-distinguish the TrustZone whether ready,
-     i will handle it in next version. I may follow Heiko advice to do 
-some modify in dmc clock and rk3399 devfreq driver,
-     I will upload new version when it's ready.
->
-> Cheers,
-> MyungJoo
-> ps. according to rk339_dmcclk_recalc_rate(), filling rk339_dmcclk_set_rate
-> assuming that TZ is not enabled seems trivial.
+Looks good for me, and it works on popmetal board, so
+      Acked-by: Mark Yao <mark.yao@rock-chips.com>
 
--- 
-Lin Huang
+Thanks.
 
-
+--=20
+=EF=BC=ADark Yao
