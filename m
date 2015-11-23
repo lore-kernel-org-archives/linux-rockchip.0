@@ -1,49 +1,44 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL] ARM: rockchip: devicetree fixes for 4.4
-Date: Mon, 23 Nov 2015 13:12:52 +0100
-Message-ID: <1896520.ssRYuZn5dZ@diego>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH v4 3/4] Crypto: rockchip/crypto - add crypto driver for
+ rk3288
+Date: Mon, 23 Nov 2015 20:51:42 +0800
+Message-ID: <20151123125142.GA7709@gondor.apana.org.au>
+References: <1447732847-30514-1-git-send-email-zain.wang@rock-chips.com>
+ <1447732847-30514-4-git-send-email-zain.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1447732847-30514-4-git-send-email-zain.wang@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Zain Wang <zain.wang@rock-chips.com>
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
+On Tue, Nov 17, 2015 at 12:00:46PM +0800, Zain Wang wrote:
+>
+> +static void rk_ablk_hw_init(struct rk_crypto_info *dev)
+> +{
+> +	struct crypto_ablkcipher *tfm = crypto_ablkcipher_reqtfm(dev->ablk_req);
+> +	struct rk_cipher_ctx *ctx = crypto_ablkcipher_ctx(tfm);
+> +	u32 conf_reg = 0;
+> +
+> +	if (dev->mode & TDES) {
+> +		dev->mode &= ~TDES;
+> +		dev->mode |= RK_CRYPTO_TDES_FIFO_MODE |
+> +			     RK_CRYPTO_TDES_BYTESWAP_KEY |
+> +			     RK_CRYPTO_TDES_BYTESWAP_IV;
+> +		CRYPTO_WRITE(dev, RK_CRYPTO_TDES_CTRL, dev->mode);
+> +
+> +		memcpy(dev->reg + RK_CRYPTO_TDES_IV_0, dev->ablk_req->info, 8);
 
-  Linux 4.4-rc1 (2015-11-15 17:00:27 -0800)
+Please ensure that the IV is copied back after the operation.
+I know that many existing drivers are buggy in this regard but
+they will be fixed soon and we will start enforcing this rule
+so I don't want to add any new drivers that break this rule.
 
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.4-rockchip-dts32-fixes1
-
-for you to fetch changes up to 784359b824bf2b095b257eefcd9615a3c48f2d8a:
-
-  ARM: dts: rockchip: Add OTP gpio pinctrl to rk3288 tsadc node (2015-11-19 05:50:42 +0100)
-
-----------------------------------------------------------------
-Two fixes to Rockchip devicetree files, disabling the mmc-tuning
-on the veyron-minnie board for now and adding the init state for
-the over-temperature-protection to prevent glitches making the
-system reboot sometimes.
-
-----------------------------------------------------------------
-Caesar Wang (1):
-      ARM: dts: rockchip: Add OTP gpio pinctrl to rk3288 tsadc node
-
-Heiko Stuebner (1):
-      ARM: dts: rockchip: temporarily remove emmc hs200 speed from rk3288 minnie
-
- arch/arm/boot/dts/rk3288-veyron-minnie.dts |  4 ++++
- arch/arm/boot/dts/rk3288.dtsi              | 10 ++++++++--
- 2 files changed, 12 insertions(+), 2 deletions(-)
+Thanks,
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
