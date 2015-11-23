@@ -1,84 +1,72 @@
 From: hl <hl@rock-chips.com>
 Subject: Re: [PATCH 1/2] clk: rockchip: dmc: support rk3399 dmc clock driver
-Date: Mon, 23 Nov 2015 17:20:21 +0800
-Message-ID: <5652DA55.7090508@rock-chips.com>
-References: <1447928471-14448-1-git-send-email-hl@rock-chips.com> <42589302.5BMrDbIv8M@phil> <564E794B.8070002@rock-chips.com> <1589931.xBgSB4kSK8@phil>
+Date: Mon, 23 Nov 2015 17:26:53 +0800
+Message-ID: <5652DBDD.3070603@rock-chips.com>
+References: <68719599.130141448266183403.JavaMail.weblogic@epmlwas06a>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1589931.xBgSB4kSK8@phil>
+In-Reply-To: <68719599.130141448266183403.JavaMail.weblogic@epmlwas06a>
 Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, mturquette@baylibre.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-clk@vger.kernel.org, sboyd@codeaurora.org, dbasehore@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: myungjoo.ham@samsung.com, "heiko@sntech.de" <heiko@sntech.de>, "dianders@chromium.org" <dianders@chromium.org>, "mturquette@baylibre.com" <mturquette@baylibre.com>, =?UTF-8?B?67CV6rK966+8?= <kyungmin.park@samsung.com>
+Cc: "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>, "dbasehore@chromium.org" <dbasehore@chromium.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi MyungJoo,
 
-On 22/11/15 02:30, Heiko Stuebner wrote:
-> Hi Lin,
+On 23/11/15 16:09, MyungJoo Ham wrote:
+>> +static unsigned long rk3399_dmcclk_recalc_rate(struct clk_hw *hw,
+>> +					       unsigned long parent_rate)
+>> +{
+>> +	struct rk3399_dmcclk *dmc = to_rk3399_dmcclk(&hw);
+>> +	u32 val;
+>> +
+>> +	/*
+>> +	 * Get parent rate since it changed in this clks set_rate op. The parent
+>> +	 * rate passed into this function is cached before set_rate is called in
+>> +	 * the common clk code, so we have to get it here.
+>> +	 */
+>> +	parent_rate = clk_get_rate(clk_get_parent(hw->clk));
+>> +
+>> +	val = readl(dmc->cru + CRU_CLKSEL6_CON);
+>> +	val = (val >> CLK_DDRC_DIV_CON_SHIFT) & CLK_DDRC_DIV_CON_MASK;
+>> +
+>> +	return parent_rate / (val + 1);
+>> +}
+>> +
+>> +/*
+>> + * TODO: set ddr frequcney in dcf which run in ATF
+>> + */
+>> +static int rk3399_dmcclk_set_rate(struct clk_hw *hw, unsigned long rate,
+>> +				  unsigned long parent_rate)
+>> +{
+>> +	return 0;
+>> +}
+> Is it correct that you didn't fill this up because your
+> Trustzone driver (SMC) is not ready yet?
+     Yep, the SMC is not ready yet.
 >
-> Am Freitag, 20. November 2015, 09:37:15 schrieb hl:
->> On 20/11/15 05:47, Heiko Stuebner wrote:
->>> Hi Lin,
->>>
->>> Am Donnerstag, 19. November 2015, 18:21:10 schrieb Lin Huang:
->>>> support rk3399 dmc clock driver. Note, ddr set rate function will
->>>> use dcf controller which run in ATF, it need to fishish it when rk3399
->>>> arm trust firmware ready.
->>> this unfinalized state is slightly unfortunate and I think this code will
->>> need to wait until CRU and DDRC specs are available.
->>>
->>> Because this is clearly part of the CRU (labeled CRU_CLKSEL6_CON etc)
->>> so shouldn't be a separate driver at all and also what your driver currently
->>> only does can still simply be described in the regular scheme as part of
->>> a full clock driver like
->>>
->>> PNAME(mux_ddrc_p) = { "pll_dpll", "pll_gpll", "pll_alpll", "pll_abpll" };
->>> COMPOSITE_NOGATE(0, "ddrc", mux_ddrc_p, 0,
->>> 					RK3399_CLKSEL_CON(6), 4, 2, MFLAGS, 0, 3,
->>> 					DFLAGS | CLK_DIVIDER_POWER_OF_TWO),
->>>
->>> So the code needs to actually demonstrate why a separate clock type is
->>> really necessary.
->>>
->>> I do understand that we will probably need a special way to talk to this
->>> dcf controller but seeing how this interaction will work is really a
->>> prequisite to finding a correct solution.
->>       if we can use common clock driver, i can put the dfi controller as
->> a  independent driver
->>       into devfreq,  this is the best way. But how do we separate the ddr
->> clk_set_rate() ,
->>       so we can manipulate dcf controller(actually, we use SMC handle dcf
->> controller in arm trust firmware ),
->>       i check clock driver code, it seem there is not way to do that for now.
-> the core problem I have right now is, that I don't understand how the
-> interaction with the dfi controller works at all :-) .
+> Then, why don't you fill that function assuming that TrustZone is not activated
+> and add SMC call functions with if or #if after its TrustZone driver is ready?
 >
-> One thing that might work, is that your dfi-driver takes the ddrc-clock
-> from the clock controller and then registers a clock notifier to get
-> notified before and after the clock-rate changes. But that depends as
-> stated above on how the dfi-controller needs to be handled.
->
-> For example the current armclk-handling uses a clock notifier around the
-> actual rate change ... so you could use that as inspiration.
-     Thank you for your inspiration. I think i can handle ddrc clk like 
-the armclk.
-     About the dfi, it will monitor ddr utilization, according this 
-result to do
-     ddr frequency scaling. I think i can implement a dfi drvier, and 
-register it to devfreq,
-     then call the dmc_set_rate fucntion in the dfi drvier, meanwhile i 
-will implement a ddrc clk driver
-     like the armclk, implement set rate funciton, and call the 
-dcf(implement in ATF) in this function.
+> Or does your SoC mandate the usage ot TrustZone, restricting the usage
+> of CRU_CLKSEL6_CON write? (I don't see why SoC vendors will do this..)
 >
 >
-> Heiko
+> I'll be ready to merge the RK3399 devfreq driver if you
+> fill this up (assuming that TZ is not enabled) or
+> add TZ driver and SMC calls.
+     Thank you for your reply,  it is good idea use if or #if to 
+distinguish the TrustZone whether ready,
+     i will handle it in next version. I may follow Heiko advice to do 
+some modify in dmc clock and rk3399 devfreq driver,
+     I will upload new version when it's ready.
 >
->
->
->
+> Cheers,
+> MyungJoo
+> ps. according to rk339_dmcclk_recalc_rate(), filling rk339_dmcclk_set_rate
+> assuming that TZ is not enabled seems trivial.
 
 -- 
 Lin Huang
