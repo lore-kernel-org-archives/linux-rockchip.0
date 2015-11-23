@@ -1,44 +1,79 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 01/13] clk: rockchip: add id for mipidsi sclk on rk3288
-Date: Mon, 23 Nov 2015 18:29:40 +0100
-Message-ID: <2553166.BXJRVnMEyt@diego>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-2-git-send-email-zyw@rock-chips.com>
+From: Gregory CLEMENT <gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Mon, 23 Nov 2015 19:10:04 +0100
+Message-ID: <877fl8fuyr.fsf@free-electrons.com>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448007339-10966-2-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Kever Yang <kever.yang@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, ajaykumar.rs@samsung.com, Jeff Chen <cym@rock-chips.com>, linux-rockchip@lists.infradead.org, rmk+kernel@arm.linux.org.uk, treding@nvidia.com, devicetree@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Roger Chen <roger.chen@rock-chips.com>, Sonny Rao <sonnyrao@chromium.org>, Huang Lin <hl@rock-chips.com>, emil.l.velikov@gmail.com, Doug Anderson <dianders@chromium.org>, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+ (Masahiro Yamada's message of "Mon, 16 Nov 2015 12:06:10 +0900")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, arm@ke
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2hyaXMsCgpBbSBGcmVpdGFnLCAyMC4gTm92ZW1iZXIgMjAxNSwgMTY6MTU6Mjcgc2Nocmll
-YiBDaHJpcyBaaG9uZzoKPiBBZGRzIGEgbmV3IGlkIGZvciB0aGUgc2NsayBzdXBwbHlpbmcgdGhl
-IG1pcGlkc2kgb24gcmszMjg4IHNvY3MuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcg
-PHp5d0Byb2NrLWNoaXBzLmNvbT4KPiAKPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHY0OiBOb25lCj4g
-Q2hhbmdlcyBpbiB2MzogTm9uZQo+IENoYW5nZXMgaW4gdjI6Cj4gYWRkIHRoZSBtaXBpIGNsayBp
-ZCBpbiBhIHNpbmdsZSBwYXRjaAo+IAo+ICBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzI4
-OC1jcnUuaCB8IDEgKwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZm
-IC0tZ2l0IGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMyODgtY3J1LmgKPiBiL2luY2x1
-ZGUvZHQtYmluZGluZ3MvY2xvY2svcmszMjg4LWNydS5oIGluZGV4IGM3MTlhYWMuLmIwN2NkZDMg
-MTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9yazMyODgtY3J1LmgKPiAr
-KysgYi9pbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL3JrMzI4OC1jcnUuaAo+IEBAIC04Niw2ICs4
-Niw3IEBACj4gICNkZWZpbmUgU0NMS19VU0JQSFk0ODBNX1NSQwkxMjIKPiAgI2RlZmluZSBTQ0xL
-X1BWVE1fQ09SRQkJMTIzCj4gICNkZWZpbmUgU0NMS19QVlRNX0dQVQkJMTI0Cj4gKyNkZWZpbmUg
-U0NMS19NSVBJXzI0TQkJMTI1CgppbiB0aGUgVFJNIChhbmQgdGhlcmVmb3JlIGluIHRoZSBjbG9j
-ay1jb250cm9sbGVyKSB0aGlzIGlzIGxhYmVsZWQgYXMKc2Nsa19taXBpZHNpXzI0bSwgc28gSSdk
-IHRoaW5rIHRoZSBjbG9jay1pZCBzaG91bHMgYWxzbyBjb250YWluIHRoZQpEU0kgcGFydCBhcyB3
-ZWxsLCBtYWtpbmcgaXQgU0NMS19NSVBJRFNJXzI0TQoKCkhlaWtvCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Masahiro,
+ 
+ On lun., nov. 16 2015, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org> wrote:
+
+> Many ARM sub-architectures use prompts followed by "if" conditional,
+> but it is wrong.
+>
+> Please notice the difference between
+>
+>     config ARCH_FOO
+>             bool "Foo SoCs" if ARCH_MULTI_V7
+>
+> and
+>
+>     config ARCH_FOO
+>             bool "Foo SoCs"
+>             depends on ARCH_MULTI_V7
+>
+> These two are *not* equivalent!
+>
+> In the former statement, it is not ARCH_FOO, but its prompt that
+> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
+> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
+> not unmet dependency, Kconfig never warns.  This is probably not what
+> you want.
+>
+> The former should be used only when you need to do so, and you really
+> understand what you are doing.  (In most cases, it should be wrong!)
+>
+> For enabling/disabling sub-architectures, the latter is always correct.
+>
+> As a good side effect, this commit fixes some entries over 80 columns
+> (mach-imx, mach-integrator, mach-mbevu).
+>
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> ---
+>
+> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
+> because the correct understanding of Kconfig is required for this patch.
+>
+
+[...]
+>  arch/arm/mach-mvebu/Kconfig      | 24 ++++++++++++++++--------
+For mvebu part
+Acked-by: Gregory CLEMENT <gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+
+Thanks,
+
+Gregory
+-- 
+Gregory Clement, Free Electrons
+Kernel, drivers, real-time and embedded Linux
+development, consulting, training and support.
+http://free-electrons.com
