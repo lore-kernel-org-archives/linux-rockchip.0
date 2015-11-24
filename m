@@ -1,65 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v7 0/6] Build and support rk3036 SoC platform
-Date: Tue, 24 Nov 2015 01:03:01 +0100
-Message-ID: <1518219.zj9d8yfxJz@diego>
-References: <1446708840-12038-1-git-send-email-zhengxing@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 6/8] usb: dwc2: host: Assume all devices are on one
+ single_tt hub
+Date: Mon, 23 Nov 2015 16:28:04 -0800
+Message-ID: <CAD=FV=UcqEbFuyAq=RpbjmazFGdOyqNgQWQC7UDeL2O1crKn=A@mail.gmail.com>
+References: <1447721484-22548-1-git-send-email-dianders@chromium.org>
+	<1447721484-22548-7-git-send-email-dianders@chromium.org>
+	<87lh9uf1fw.fsf@saruman.tx.rr.com>
+	<CAD=FV=UW-AbY9GnYOS_2V=dZTkL6NiZsO4urpf==qjcRDaEMDA@mail.gmail.com>
+	<2B3535C5ECE8B5419E3ECBE30077290901DC3D9354@US01WEMBX2.internal.synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446708840-12038-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2B3535C5ECE8B5419E3ECBE30077290901DC3D9354-Yu2iAY70zvrYN67daEjeMPufCSb+aD3WLzEdoUbNIic@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Xing Zheng,
+John,
 
-Am Donnerstag, 5. November 2015, 15:33:54 schrieb Xing Zheng:
-> Hi,
->   We need to support rk3036 soc platform via upstream, there are
-> some primary parts for the initial release of minimum system: dts,
-> clk-pll, smp, and clock tree for rk3036, and additional, we can use
-> these startup and run to init processs.
+On Thu, Nov 19, 2015 at 8:33 PM, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+> Patches 1-3:
+> Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+>
+> Patch 2:
+> Tested-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+>
+> Tested on core version 3.20 using internal TE for un-aligned
+> buffers.
+>
+> I haven't had time to look into the scheduling patches yet. But I
+> agree with you that there are fundamental problems. I'll await
+> your rewrite.
 
-[...]
+Thanks!  I'm going to attempt to at least get things reposted with
+your tags before Thanksgiving.  I'm hopeful that I'll actually be able
+to post a RFC patch for the microframe rewrite by then, too!  :)
 
-after talking with Mike and agreeing that I'm again taking the regular
-clock patches to them, I've applied all of this to appropriate branches.
-I did some cosmetics, as explained below.
+I have something that seems to be sane at
+<https://chromium-review.googlesource.com/#/c/313808/>, but it
+obviously still needs a lot of cleanup.  I also need to pick all of
+the things that have landed on Felipe's tree recently and rebase atop
+those.
 
-
-> Xing Zheng (6):
->   dt-bindings: add documentation of rk3036 clock controller
->   clk: rockchip: add dt-binding header for rk3036
->   clk: rockchip: add new pll-type for rk3036 and similar socs
-- wrapped some overly long lines, otherwise this is similar to what
-  Stephen already took for the rk3066-pll-type.
-
-
->   clk: rockchip: add clock controller for rk3036
->   ARM: dts: rockchip: add core rk3036 dts
-- split off the evb into a separate patch
-- reordered some nodes (please order by the address (the @xxxxxxxx)
-- reordered some properties
-- fixed the gic cpu masks
-
-
->   ARM: dts: enable smp for rk3036
-folded into the core dtsi addition
-
-
-Please take a final look at [0] to make sure I didn't mess up anything.
-
-
-Thanks
-Heiko
-
-
-[0]
-https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.5-clk/next
-https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.5-armsoc/dts32
+-Doug
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
