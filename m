@@ -1,41 +1,56 @@
-From: Zain <zain.wang@rock-chips.com>
-Subject: Re: [PATCH v4 2/4] clk: rockchip: set an ID for crypto clk
-Date: Tue, 24 Nov 2015 08:49:39 +0800
-Message-ID: <5653B423.5000406@rock-chips.com>
-References: <1447732847-30514-1-git-send-email-zain.wang@rock-chips.com>
- <1447732847-30514-3-git-send-email-zain.wang@rock-chips.com>
- <3324035.fFJ7jKO18L@diego>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v7 0/6] Build and support rk3036 SoC platform
+Date: Tue, 24 Nov 2015 14:49:36 +0800
+Message-ID: <56540880.6010601@rock-chips.com>
+References: <1446708840-12038-1-git-send-email-zhengxing@rock-chips.com>
+ <1518219.zj9d8yfxJz@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <3324035.fFJ7jKO18L@diego>
-Sender: linux-crypto-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, eddie.cai@rock-chips.com, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1518219.zj9d8yfxJz@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 2015=E5=B9=B411=E6=9C=8824=E6=97=A5 07:24, Heiko St=C3=BCbner wrote:
-> Hi Zain,
->
-> Am Dienstag, 17. November 2015, 12:00:45 schrieb Zain Wang:
->> Set an ID for crypto clk, so that it can be called in other part.
->>
->> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
->> Acked-by: Michael Turquette <mturquette@baylibre.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> I've split this into the header and clk-rk3288.c changes and applied =
-it to my=20
-> clk-ids and clock branch for 4.5
-Thanks for your responding.
-
-Thanks
-Zain
->
-> Thanks
-> Heiko
->
->
->
+T0ssIFRoYW5rcyBIZWlrby4gOi0pCgpPbiAyMDE15bm0MTHmnIgyNOaXpSAwODowMywgSGVpa28g
+U3TDvGJuZXIgd3JvdGU6Cj4gSGkgWGluZyBaaGVuZywKPgo+IEFtIERvbm5lcnN0YWcsIDUuIE5v
+dmVtYmVyIDIwMTUsIDE1OjMzOjU0IHNjaHJpZWIgWGluZyBaaGVuZzoKPj4gSGksCj4+ICAgIFdl
+IG5lZWQgdG8gc3VwcG9ydCByazMwMzYgc29jIHBsYXRmb3JtIHZpYSB1cHN0cmVhbSwgdGhlcmUg
+YXJlCj4+IHNvbWUgcHJpbWFyeSBwYXJ0cyBmb3IgdGhlIGluaXRpYWwgcmVsZWFzZSBvZiBtaW5p
+bXVtIHN5c3RlbTogZHRzLAo+PiBjbGstcGxsLCBzbXAsIGFuZCBjbG9jayB0cmVlIGZvciByazMw
+MzYsIGFuZCBhZGRpdGlvbmFsLCB3ZSBjYW4gdXNlCj4+IHRoZXNlIHN0YXJ0dXAgYW5kIHJ1biB0
+byBpbml0IHByb2Nlc3NzLgo+IFsuLi5dCj4KPiBhZnRlciB0YWxraW5nIHdpdGggTWlrZSBhbmQg
+YWdyZWVpbmcgdGhhdCBJJ20gYWdhaW4gdGFraW5nIHRoZSByZWd1bGFyCj4gY2xvY2sgcGF0Y2hl
+cyB0byB0aGVtLCBJJ3ZlIGFwcGxpZWQgYWxsIG9mIHRoaXMgdG8gYXBwcm9wcmlhdGUgYnJhbmNo
+ZXMuCj4gSSBkaWQgc29tZSBjb3NtZXRpY3MsIGFzIGV4cGxhaW5lZCBiZWxvdy4KPgo+Cj4+IFhp
+bmcgWmhlbmcgKDYpOgo+PiAgICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50YXRpb24gb2Ygcmsz
+MDM2IGNsb2NrIGNvbnRyb2xsZXIKPj4gICAgY2xrOiByb2NrY2hpcDogYWRkIGR0LWJpbmRpbmcg
+aGVhZGVyIGZvciByazMwMzYKPj4gICAgY2xrOiByb2NrY2hpcDogYWRkIG5ldyBwbGwtdHlwZSBm
+b3IgcmszMDM2IGFuZCBzaW1pbGFyIHNvY3MKPiAtIHdyYXBwZWQgc29tZSBvdmVybHkgbG9uZyBs
+aW5lcywgb3RoZXJ3aXNlIHRoaXMgaXMgc2ltaWxhciB0byB3aGF0Cj4gICAgU3RlcGhlbiBhbHJl
+YWR5IHRvb2sgZm9yIHRoZSByazMwNjYtcGxsLXR5cGUuCj4KPgo+PiAgICBjbGs6IHJvY2tjaGlw
+OiBhZGQgY2xvY2sgY29udHJvbGxlciBmb3IgcmszMDM2Cj4+ICAgIEFSTTogZHRzOiByb2NrY2hp
+cDogYWRkIGNvcmUgcmszMDM2IGR0cwo+IC0gc3BsaXQgb2ZmIHRoZSBldmIgaW50byBhIHNlcGFy
+YXRlIHBhdGNoCj4gLSByZW9yZGVyZWQgc29tZSBub2RlcyAocGxlYXNlIG9yZGVyIGJ5IHRoZSBh
+ZGRyZXNzICh0aGUgQHh4eHh4eHh4KQo+IC0gcmVvcmRlcmVkIHNvbWUgcHJvcGVydGllcwo+IC0g
+Zml4ZWQgdGhlIGdpYyBjcHUgbWFza3MKPgo+Cj4+ICAgIEFSTTogZHRzOiBlbmFibGUgc21wIGZv
+ciByazMwMzYKPiBmb2xkZWQgaW50byB0aGUgY29yZSBkdHNpIGFkZGl0aW9uCj4KPgo+IFBsZWFz
+ZSB0YWtlIGEgZmluYWwgbG9vayBhdCBbMF0gdG8gbWFrZSBzdXJlIEkgZGlkbid0IG1lc3MgdXAg
+YW55dGhpbmcuCj4KPgo+IFRoYW5rcwo+IEhlaWtvCj4KPgo+IFswXQo+IGh0dHBzOi8vZ2l0Lmtl
+cm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwvZ2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdC9s
+b2cvP2g9djQuNS1jbGsvbmV4dAo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9r
+ZXJuZWwvZ2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdC9sb2cvP2g9djQuNS1hcm1zb2MvZHRz
+MzIKPgo+Cj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
