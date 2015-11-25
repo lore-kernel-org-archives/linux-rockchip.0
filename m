@@ -1,51 +1,64 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 3/5] dt-bindings: rockchip-thermal: Support the RK3228/RK3399 SoCs compatible
-Date: Wed, 25 Nov 2015 15:56:51 +0100
-Message-ID: <11146001.lIrLtFf7Xg@diego>
-References: <1448438377-29203-1-git-send-email-wxt@rock-chips.com> <1448438377-29203-4-git-send-email-wxt@rock-chips.com>
+From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH v1] net: stmmac: Free rx_skbufs before realloc
+Date: Wed, 25 Nov 2015 16:13:08 +0100
+Message-ID: <5655D004.4040502@st.com>
+References: <1448181858-5935-1-git-send-email-zhengsq@rock-chips.com>	<1448181858-5935-2-git-send-email-zhengsq@rock-chips.com>
+ <20151124.130924.1365382562223060152.davem@davemloft.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1448438377-29203-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20151124.130924.1365382562223060152.davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 25. November 2015, 15:59:35 schrieb Caesar Wang:
-> This patchset attempts to new compatible for thermal founding
-> on RK3228/RK3399 SoCs.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt index
-> 0dfa60d..af5f802 100644
-> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> @@ -2,8 +2,10 @@
-> 
->  Required properties:
->  - compatible : should be "rockchip,<name>-tsadc"
-> +   "rockchip,rk3228-tsadc": found on RK3228 SoCs
->     "rockchip,rk3288-tsadc": found on RK3288 SoCs
->     "rockchip,rk3368-tsadc": found on RK3368 SoCs
-> +   "rockchip,rk3368-tsadc": found on RK3399 SoCs
+Hello
 
-copy'n'paste error, should proably be 
- "rockchip,rk3399-tsadc": found on RK3399 SoCs
+On 11/24/2015 7:09 PM, David Miller wrote:
+> From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Date: Sun, 22 Nov 2015 16:44:18 +0800
+>
+>> From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> The init_dma_desc_rings() may realloc the rx_skbuff[] when
+>> suspend and resume. This patch free the rx_skbuff[] before
+>> reallocing memory.
+>>
+>> Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> This isn't really the right way to fix this.
+>
+> I see two reasonable approaches:
+>
+> 1) suspend liberates the RX ring, although this approach is less
+>     desirable
+>
+> 2) resume doesn't try to allocate already populated RX ring
+>     entries
+>
+> Freeing the whole RX ring just to allocate it again immediately
+> makes no sense at all and is wasteful work.
 
->  - reg : physical base address of the controller and length of memory mapped
-> region.
->  - interrupts : The interrupt number to the cpu. The interrupt specifier
-> format
+This is a bug in this driver version that, to be honest, we fixed with
+the first approach on STi kernel.
+The patch just called the dma_free_rx_skbufs(priv) in the suspend.
+I can give you this patch that is tested on my side too.
+But! I do think we should move on second approach.
+Indeed, also on ST platforms, when we play with suspend states
+the DDR although in self-refresh the data are not lost at all.
+No reason to free and reallocate all in suspend/resume.
+I can test that and then provide another patch to this mailing list
+asap.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Let me know.
+peppe
