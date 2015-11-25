@@ -1,48 +1,130 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 3/5] dt-bindings: rockchip-thermal: Support the
- RK3228/RK3399 SoCs compatible
-Date: Wed, 25 Nov 2015 14:05:39 -0600
-Message-ID: <20151125200539.GC30473@rob-hp-laptop>
-References: <1448438377-29203-1-git-send-email-wxt@rock-chips.com>
- <1448438377-29203-4-git-send-email-wxt@rock-chips.com>
+Subject: Re: [RESEND PATCH v3] dt-bindings: Consolidate SRAM bindings from
+ all vendors
+Date: Wed, 25 Nov 2015 17:48:25 -0600
+Message-ID: <20151125234825.GA17558@rob-hp-laptop>
+References: <1447893769-17088-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1448438377-29203-4-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1447893769-17088-1-git-send-email-k.kozlowski@samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Dan Carpenter <dan.carpenter@oracle.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Sudeep Holla <sudeep.holla@arm.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Kukjin Kim <kgene@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Arnd Bergmann <arnd@arndb.de>, Hans de Goede <hdegoede@redhat.com>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Nov 25, 2015 at 03:59:35PM +0800, Caesar Wang wrote:
-> This patchset attempts to new compatible for thermal founding
-> on RK3228/RK3399 SoCs.
+On Thu, Nov 19, 2015 at 09:42:49AM +0900, Krzysztof Kozlowski wrote:
+> SRAM bindings for various SoCs, using the mmio-sram genalloc
+> API, are spread over different places - per SoC vendor. Since all of
+> these are quite similar (they depend on mmio-sram) move them to a common
+> place.
 > 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Suggested-by: Rob Herring <robh+dt@kernel.org>
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Kukjin Kim <kgene@kernel.org>
+> Acked-by: Maxime Ripard <maxime.ripard@free-electrons.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-Acked-by: Rob Herring <robh@kernel.org>
+Applied, thanks. I said I would apply for 4.4, but it is not really 
+urgent, so I've just applied it for 4.5.
 
+Rob
+
+> 
 > ---
 > 
->  Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 2 ++
->  1 file changed, 2 insertions(+)
+> Changes since v2:
+> 1. Update paths to sram.txt.
 > 
-> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> index 0dfa60d..af5f802 100644
-> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
-> @@ -2,8 +2,10 @@
+> Changes since v1:
+> 1. New patch. Extended suggestion from Rob.
+> ---
+>  Documentation/devicetree/bindings/arm/arm,scpi.txt                      | 2 +-
+>  .../bindings/{arm/rockchip/pmu-sram.txt => sram/rockchip-pmu-sram.txt}  | 0
+>  .../bindings/{arm/rockchip/smp-sram.txt => sram/rockchip-smp-sram.txt}  | 2 +-
+>  .../bindings/{arm/exynos/smp-sysram.txt => sram/samsung-sram.txt}       | 2 +-
+>  Documentation/devicetree/bindings/{misc => sram}/sram.txt               | 0
+>  .../devicetree/bindings/{soc/sunxi/sram.txt => sram/sunxi-sram.txt}     | 2 +-
+>  6 files changed, 4 insertions(+), 4 deletions(-)
+>  rename Documentation/devicetree/bindings/{arm/rockchip/pmu-sram.txt => sram/rockchip-pmu-sram.txt} (100%)
+>  rename Documentation/devicetree/bindings/{arm/rockchip/smp-sram.txt => sram/rockchip-smp-sram.txt} (92%)
+>  rename Documentation/devicetree/bindings/{arm/exynos/smp-sysram.txt => sram/samsung-sram.txt} (95%)
+>  rename Documentation/devicetree/bindings/{misc => sram}/sram.txt (100%)
+>  rename Documentation/devicetree/bindings/{soc/sunxi/sram.txt => sram/sunxi-sram.txt} (97%)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/arm,scpi.txt b/Documentation/devicetree/bindings/arm/arm,scpi.txt
+> index 86302de67c2c..313dabdc14f9 100644
+> --- a/Documentation/devicetree/bindings/arm/arm,scpi.txt
+> +++ b/Documentation/devicetree/bindings/arm/arm,scpi.txt
+> @@ -63,7 +63,7 @@ Required properties:
+>  - compatible : should be "arm,juno-sram-ns" for Non-secure SRAM on Juno
 >  
->  Required properties:
->  - compatible : should be "rockchip,<name>-tsadc"
-> +   "rockchip,rk3228-tsadc": found on RK3228 SoCs
->     "rockchip,rk3288-tsadc": found on RK3288 SoCs
->     "rockchip,rk3368-tsadc": found on RK3368 SoCs
-> +   "rockchip,rk3368-tsadc": found on RK3399 SoCs
->  - reg : physical base address of the controller and length of memory mapped
->  	region.
->  - interrupts : The interrupt number to the cpu. The interrupt specifier format
+>  The rest of the properties should follow the generic mmio-sram description
+> -found in ../../misc/sysram.txt
+> +found in ../../sram/sram.txt
+>  
+>  Each sub-node represents the reserved area for SCPI.
+>  
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+> similarity index 100%
+> rename from Documentation/devicetree/bindings/arm/rockchip/pmu-sram.txt
+> rename to Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip/smp-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> similarity index 92%
+> rename from Documentation/devicetree/bindings/arm/rockchip/smp-sram.txt
+> rename to Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> index d9416fb8db6f..800701ecffca 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip/smp-sram.txt
+> +++ b/Documentation/devicetree/bindings/sram/rockchip-smp-sram.txt
+> @@ -12,7 +12,7 @@ Required sub-node properties:
+>  - compatible : should be "rockchip,rk3066-smp-sram"
+>  
+>  The rest of the properties should follow the generic mmio-sram discription
+> -found in ../../misc/sram.txt
+> +found in Documentation/devicetree/bindings/sram/sram.txt
+>  
+>  Example:
+>  
+> diff --git a/Documentation/devicetree/bindings/arm/exynos/smp-sysram.txt b/Documentation/devicetree/bindings/sram/samsung-sram.txt
+> similarity index 95%
+> rename from Documentation/devicetree/bindings/arm/exynos/smp-sysram.txt
+> rename to Documentation/devicetree/bindings/sram/samsung-sram.txt
+> index 4a0a4f70a0ce..6bc474b2b885 100644
+> --- a/Documentation/devicetree/bindings/arm/exynos/smp-sysram.txt
+> +++ b/Documentation/devicetree/bindings/sram/samsung-sram.txt
+> @@ -15,7 +15,7 @@ Required sub-node properties:
+>  		"samsung,exynos4210-sysram-ns" : for Non-secure SYSRAM
+>  
+>  The rest of the properties should follow the generic mmio-sram discription
+> -found in ../../misc/sysram.txt
+> +found in Documentation/devicetree/bindings/sram/sram.txt
+>  
+>  Example:
+>  
+> diff --git a/Documentation/devicetree/bindings/misc/sram.txt b/Documentation/devicetree/bindings/sram/sram.txt
+> similarity index 100%
+> rename from Documentation/devicetree/bindings/misc/sram.txt
+> rename to Documentation/devicetree/bindings/sram/sram.txt
+> diff --git a/Documentation/devicetree/bindings/soc/sunxi/sram.txt b/Documentation/devicetree/bindings/sram/sunxi-sram.txt
+> similarity index 97%
+> rename from Documentation/devicetree/bindings/soc/sunxi/sram.txt
+> rename to Documentation/devicetree/bindings/sram/sunxi-sram.txt
+> index 067698112f5f..8d5665468fe7 100644
+> --- a/Documentation/devicetree/bindings/soc/sunxi/sram.txt
+> +++ b/Documentation/devicetree/bindings/sram/sunxi-sram.txt
+> @@ -16,7 +16,7 @@ SRAM nodes
+>  ----------
+>  
+>  Each SRAM is described using the mmio-sram bindings documented in
+> -Documentation/devicetree/bindings/misc/sram.txt
+> +Documentation/devicetree/bindings/sram/sram.txt
+>  
+>  Each SRAM will have SRAM sections that are going to be handled by the
+>  SRAM controller as subnodes. These sections are represented following
 > -- 
 > 1.9.1
 > 
