@@ -1,64 +1,30 @@
-From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH v1] net: stmmac: Free rx_skbufs before realloc
-Date: Wed, 25 Nov 2015 16:13:08 +0100
-Message-ID: <5655D004.4040502@st.com>
-References: <1448181858-5935-1-git-send-email-zhengsq@rock-chips.com>	<1448181858-5935-2-git-send-email-zhengsq@rock-chips.com>
- <20151124.130924.1365382562223060152.davem@davemloft.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20151124.130924.1365382562223060152.davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: [PATCH] i2c: rk3x: populate correct variable for sda_falling_time
+Date: Wed, 25 Nov 2015 16:58:18 +0100
+Message-ID: <1448467098-10198-1-git-send-email-wsa@the-dreams.de>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: linux-i2c@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, Wolfram Sang <wsa@the-dreams.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello
+Signed-off-by: Wolfram Sang <wsa@the-dreams.de>
+---
+ drivers/i2c/busses/i2c-rk3x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 11/24/2015 7:09 PM, David Miller wrote:
-> From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Date: Sun, 22 Nov 2015 16:44:18 +0800
->
->> From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> The init_dma_desc_rings() may realloc the rx_skbuff[] when
->> suspend and resume. This patch free the rx_skbuff[] before
->> reallocing memory.
->>
->> Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> This isn't really the right way to fix this.
->
-> I see two reasonable approaches:
->
-> 1) suspend liberates the RX ring, although this approach is less
->     desirable
->
-> 2) resume doesn't try to allocate already populated RX ring
->     entries
->
-> Freeing the whole RX ring just to allocate it again immediately
-> makes no sense at all and is wasteful work.
-
-This is a bug in this driver version that, to be honest, we fixed with
-the first approach on STi kernel.
-The patch just called the dma_free_rx_skbufs(priv) in the suspend.
-I can give you this patch that is tested on my side too.
-But! I do think we should move on second approach.
-Indeed, also on ST platforms, when we play with suspend states
-the DDR although in self-refresh the data are not lost at all.
-No reason to free and reallocate all in suspend/resume.
-I can test that and then provide another patch to this mailing list
-asap.
-
-Let me know.
-peppe
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index c1935ebd6a9c38..9096d17beb5bb0 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -908,7 +908,7 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+ 				 &i2c->scl_fall_ns))
+ 		i2c->scl_fall_ns = 300;
+ 	if (of_property_read_u32(pdev->dev.of_node, "i2c-sda-falling-time-ns",
+-				 &i2c->scl_fall_ns))
++				 &i2c->sda_fall_ns))
+ 		i2c->sda_fall_ns = i2c->scl_fall_ns;
+ 
+ 	strlcpy(i2c->adap.name, "rk3x-i2c", sizeof(i2c->adap.name));
+-- 
+2.1.4
