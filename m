@@ -1,55 +1,61 @@
-From: <yamada.masahiro@socionext.com>
-Subject: RE: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Wed, 25 Nov 2015 02:09:46 +0000
-Message-ID: <4da749fb0cb34349babe18dc3c0d585a@SOC-EX02V.e01.socionext.com>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
- <20151124155857.GB32623@ulmo.nvidia.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kbuild-owner@vger.kernel.org>
-In-Reply-To: <20151124155857.GB32623@ulmo.nvidia.com>
-Content-Language: ja-JP
-Sender: linux-kbuild-owner@vger.kernel.org
-To: thierry.reding@gmail.com, arnd@arndb.de, arm@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, mmarek@suse.com, olof@lixom.net, linux-kbuild@vger.kernel.org, jamie@jamieiles.com, agross@codeaurora.org, kernel@pengutronix.de, gregory.clement@free-electrons.com, linux-sh@vger.kernel.org, tsahee@annapurnalabs.com, linux-arm-msm@vger.kernel.org, linus.walleij@linaro.org, galak@codeaurora.org, plagnioj@jcrosoft.com, dinguyen@opensource.altera.com, baohua@kernel.org, shiraz.linux.kernel@gmail.com, rjui@broadcom.com, patrice.chotard@st.com, kernel@stlinux.com, soren.brinkmann@xilinx.com, horms@verge.net.au, michal.simek@xilinx.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-soc@vger.kernel.org, davidb@codeaurora.org, sbranden@broadcom.com, vireshk@kernel.org, alexandre.belloni@free-electrons.com, kyungmin.park@samsung.com, k.kozlowski@samsung.com, bcm
+From: Zain Wang <zain.wang@rock-chips.com>
+Subject: [PATCH v5 2/4] clk: rockchip: set an ID for crypto clk
+Date: Wed, 25 Nov 2015 13:43:31 +0800
+Message-ID: <1448430213-27203-3-git-send-email-zain.wang@rock-chips.com>
+References: <1448430213-27203-1-git-send-email-zain.wang@rock-chips.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-Reply-To: <1448430213-27203-1-git-send-email-zain.wang@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com
+Cc: linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com, Zain Wang <zain.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQXJuZCwNCg0KQ291bGQgeW91IGFwcGx5IHRoaXMgcGF0Y2ggd2l0aCBBY2tlZC1ieSBzdG9y
-bQ0Kc28gdGhhdCBvdGhlciBzdWJhcmNodGVjdHVyZXMgY2FuIGJhc2Ugb24gaXQ/DQoNCkFsc28s
-IHRoZSBmb2xsb3dpbmcgc2VyaWVzOg0KDQoxLzI6IEFSTTogaGlzaTogZG8gbm90IGV4cG9ydCBz
-bXBfb3BlcmF0aW9ucyBzdHJ1Y3R1cmVzDQoyLzI6IEFSTTogdXNlIGNvbnN0IGFuZCBfX2luaXRj
-b25zdCBmb3Igc21wX29wZXJhdGlvbnMNCg0KDQoNCg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2Fn
-ZS0tLS0tDQo+IEZyb206IFRoaWVycnkgUmVkaW5nIFttYWlsdG86dGhpZXJyeS5yZWRpbmdAZ21h
-aWwuY29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVtYmVyIDI1LCAyMDE1IDEyOjU5IEFNDQo+
-IFRvOiBZYW1hZGEsIE1hc2FoaXJvDQo+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
-ZGVhZC5vcmc7IGFybUBrZXJuZWwub3JnOyBNaWNoYWwgTWFyZWs7DQo+IEFybmQgQmVyZ21hbm47
-IE9sb2YgSm9oYW5zc29uOyBsaW51eC1rYnVpbGRAdmdlci5rZXJuZWwub3JnOyBKYW1pZSBJbGVz
-Ow0KPiBBbmR5IEdyb3NzOyBTYXNjaGEgSGF1ZXI7IEdyZWdvcnkgQ2xlbWVudDsgbGludXgtc2hA
-dmdlci5rZXJuZWwub3JnOw0KPiBUc2FoZWUgWmlkZW5iZXJnOyBsaW51eC1hcm0tbXNtQHZnZXIu
-a2VybmVsLm9yZzsgTGludXMgV2FsbGVpajsgS3VtYXINCj4gR2FsYTsgSmVhbi1DaHJpc3RvcGhl
-IFBsYWduaW9sLVZpbGxhcmQ7IERpbmggTmd1eWVuOyBCYXJyeSBTb25nOyBTaGlyYXoNCj4gSGFz
-aGltOyBSYXkgSnVpOyBQYXRyaWNlIENob3RhcmQ7IGtlcm5lbEBzdGxpbnV4LmNvbTsgU8O2cmVu
-IEJyaW5rbWFubjsNCj4gU2ltb24gSG9ybWFuOyBNaWNoYWwgU2ltZWs7IEhlaWtvIFN0dWVibmVy
-Ow0KPiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1zb2NAdmdlci5r
-ZXJuZWwub3JnOyBEYXZpZA0KPiBCcm93bjsgU2NvdHQgQnJhbmRlbjsgVmlyZXNoIEt1bWFyOyBB
-bGV4YW5kcmUgQmVsbG9uaTsgS3l1bmdtaW4gUGFyazsNCj4gS3J6eXN6dG9mIEtvemxvd3NraTsg
-YmNtLWtlcm5lbC1mZWVkYmFjay1saXN0QGJyb2FkY29tLmNvbTsgRmxvcmlhbg0KPiBGYWluZWxs
-aTsgQWxleGFuZHJlIENvdXJib3Q7IE1hdHRoaWFzIEJydWdnZXI7IEt1a2ppbiBLaW07IFJvYiBI
-ZXJyaW5nOw0KPiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyBzcGVhci1kZXZlbEBsaXN0
-LnN0LmNvbTsgU2ViYXN0aWFuDQo+IEhlc3NlbGJhcnRoOyBTdWRlZXAgSG9sbGE7IEFuZHJldyBM
-dW5uOyBSdXNzZWxsIEtpbmc7DQo+IGxpbnV4LXNhbXN1bmctc29jQHZnZXIua2VybmVsLm9yZzsg
-bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZzsNCj4gbGludXgtdGVncmFAdmdlci5r
-ZXJuZWwub3JnOyBNYXhpbWUgQ29xdWVsaW47IFNyaW5pdmFzIEthbmRhZ2F0bGE7IFNoYXduDQo+
-IEd1bzsgTGl2aXUgRHVkYXU7IEp1biBOaWU7IExvcmVuem8gUGllcmFsaXNpOyBOaWNvbGFzIEZl
-cnJlOyBKYXNvbiBDb29wZXI7DQo+IFN0ZXBoZW4gV2FycmVuOyBLcnp5c3p0b2YgSGFsYXNhOyBX
-ZWkgWHU7IE1hZ251cyBEYW1tOyBDaGVuLVl1IFRzYWk7IE1heGltZQ0KPiBSaXBhcmQNCj4gU3Vi
-amVjdDogUmU6IFtQQVRDSF0gQVJNOiB1c2UgImRlcGVuZHMgb24iIGZvciBTb0MgY29uZmlncyBp
-bnN0ZWFkIG9mICJpZiINCj4gYWZ0ZXIgcHJvbXB0DQo+IA0KPiBPbiBNb24sIE5vdiAxNiwgMjAx
-NSBhdCAxMjowNjoxMFBNICswOTAwLCBNYXNhaGlybyBZYW1hZGEgd3JvdGU6DQo+IFsuLi5dDQo+
-ID4gIGFyY2gvYXJtL21hY2gtdGVncmEvS2NvbmZpZyAgICAgIHwgIDMgKystDQo+IA0KPiBUaGVy
-ZSB3aWxsIGJlIGEgc2xpZ2h0IGNvbmZsaWN0IGJldHdlZW4gdGhpcyBhbmQgYSBwYXRjaCBpbiB0
-aGUgdGVncmEgdHJlZSwNCj4gYnV0IG5vdGhpbmcgdGhhdCB0aGUgQVJNIFNvQyBtYWludGFpbmVy
-cyBjYW4ndCBoYW5kbGUsIHNvOg0KPiANCj4gQWNrZWQtYnk6IFRoaWVycnkgUmVkaW5nIDx0cmVk
-aW5nQG52aWRpYS5jb20+DQo=
+Set an ID for crypto clk, so that it can be called in other part.
+
+Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+Acked-by: Michael Turquette <mturquette@baylibre.com>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+---
+Changed in v5:
+- None
+Changed in v4:
+- None
+Changed in v3:
+- None
+Changed in v2: 
+- None
+Changed in v1:
+- define SCLK_CRYPTO in rk3288-cru.h
+- use SCLK_CRYPTO instead of SRST_CRYPTO
+
+ drivers/clk/rockchip/clk-rk3288.c      | 2 +-
+ include/dt-bindings/clock/rk3288-cru.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 9040878..3fceda1 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -295,7 +295,7 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 			RK3288_CLKGATE_CON(0), 4, GFLAGS),
+ 	GATE(0, "c2c_host", "aclk_cpu_src", 0,
+ 			RK3288_CLKGATE_CON(13), 8, GFLAGS),
+-	COMPOSITE_NOMUX(0, "crypto", "aclk_cpu_pre", 0,
++	COMPOSITE_NOMUX(SCLK_CRYPTO, "crypto", "aclk_cpu_pre", 0,
+ 			RK3288_CLKSEL_CON(26), 6, 2, DFLAGS,
+ 			RK3288_CLKGATE_CON(5), 4, GFLAGS),
+ 	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
+diff --git a/include/dt-bindings/clock/rk3288-cru.h b/include/dt-bindings/clock/rk3288-cru.h
+index c719aac..30dcd60 100644
+--- a/include/dt-bindings/clock/rk3288-cru.h
++++ b/include/dt-bindings/clock/rk3288-cru.h
+@@ -86,6 +86,7 @@
+ #define SCLK_USBPHY480M_SRC	122
+ #define SCLK_PVTM_CORE		123
+ #define SCLK_PVTM_GPU		124
++#define SCLK_CRYPTO			125
+ 
+ #define SCLK_MAC		151
+ #define SCLK_MACREF_OUT		152
+-- 
+1.9.1
