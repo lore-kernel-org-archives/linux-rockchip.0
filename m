@@ -1,38 +1,41 @@
-From: Zain <zain.wang@rock-chips.com>
-Subject: Re: [PATCH v5 2/4] clk: rockchip: set an ID for crypto clk
-Date: Wed, 25 Nov 2015 16:53:06 +0800
-Message-ID: <565576F2.3010906@rock-chips.com>
-References: <1448430213-27203-1-git-send-email-zain.wang@rock-chips.com>
- <1448430213-27203-3-git-send-email-zain.wang@rock-chips.com>
- <2906658.6OeVssif4z@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <2906658.6OeVssif4z@diego>
-Sender: linux-crypto-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: zhengsq@rock-chips.com, hl@rock-chips.com, herbert@gondor.apana.org.au, davem@davemloft.net, mturquette@baylibre.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH] ASoC: rockchip: Fix incorrect VDW value for 24 bit
+Date: Wed, 25 Nov 2015 09:54:11 +0100
+Message-ID: <1448441651-444-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Correct valid data word register value for 24 bit data width. The
+bit value should be 10 (aka 0x2), not 0x10.
 
+This fixes playback of 24 bit audio.
 
-On 2015=E5=B9=B411=E6=9C=8825=E6=97=A5 16:14, Heiko St=C3=BCbner wrote:
-> Hi Zain,
->
-> Am Mittwoch, 25. November 2015, 13:43:31 schrieb Zain Wang:
->> Set an ID for crypto clk, so that it can be called in other part.
->>
->> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
->> Acked-by: Michael Turquette <mturquette@baylibre.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de>
-> I've already taken this patch, so no need to resubmit on further vers=
-ion.
-Thanks for your reminding.
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 
-Zain
->
-> Heiko
->
->
->
+---
+
+ sound/soc/rockchip/rockchip_spdif.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_spdif.h b/sound/soc/rockchip/rockchip_spdif.h
+index 07f86a2..921b409 100644
+--- a/sound/soc/rockchip/rockchip_spdif.h
++++ b/sound/soc/rockchip/rockchip_spdif.h
+@@ -28,9 +28,9 @@
+ #define SPDIF_CFGR_VDW(x)	(x << SPDIF_CFGR_VDW_SHIFT)
+ #define SDPIF_CFGR_VDW_MASK	(0xf << SPDIF_CFGR_VDW_SHIFT)
+ 
+-#define SPDIF_CFGR_VDW_16	SPDIF_CFGR_VDW(0x00)
+-#define SPDIF_CFGR_VDW_20	SPDIF_CFGR_VDW(0x01)
+-#define SPDIF_CFGR_VDW_24	SPDIF_CFGR_VDW(0x10)
++#define SPDIF_CFGR_VDW_16	SPDIF_CFGR_VDW(0x0)
++#define SPDIF_CFGR_VDW_20	SPDIF_CFGR_VDW(0x1)
++#define SPDIF_CFGR_VDW_24	SPDIF_CFGR_VDW(0x2)
+ 
+ /*
+  * DMACR
+-- 
+2.6.2
