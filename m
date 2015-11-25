@@ -1,135 +1,135 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 4/8] phy: rockchip-usb: add compatible values for rk3066a and rk3188
-Date: Wed, 25 Nov 2015 19:24:13 +0100
-Message-ID: <2540710.KYYNZ8ETU0@diego>
-References: <1447968149-10979-1-git-send-email-heiko@sntech.de> <1586601.dy8rrhuEYg@phil> <CAD=FV=VsidpT1K8ZXQf_2WONVdYFjM5_7V-ENHkSTdB3BoETEA@mail.gmail.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 4/8] phy: rockchip-usb: add compatible values for
+ rk3066a and rk3188
+Date: Wed, 25 Nov 2015 10:35:54 -0800
+Message-ID: <CAD=FV=UHRSKwAev8w1j_ZMTw1gZFz72thGAj256dm3Ln0oh8iw@mail.gmail.com>
+References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
+ <1586601.dy8rrhuEYg@phil>
+ <CAD=FV=VsidpT1K8ZXQf_2WONVdYFjM5_7V-ENHkSTdB3BoETEA@mail.gmail.com>
+ <2540710.KYYNZ8ETU0@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VsidpT1K8ZXQf_2WONVdYFjM5_7V-ENHkSTdB3BoETEA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Lin Huang <hl@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2540710.KYYNZ8ETU0@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Lin Huang <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 25. November 2015, 09:04:19 schrieb Doug Anderson:
-> Hi,
-> 
-> On Sun, Nov 22, 2015 at 11:49 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> > Am Donnerstag, 19. November 2015, 16:32:23 schrieb Doug Anderson:
-> >> Heiko,
-> >> 
-> >> On Thu, Nov 19, 2015 at 1:22 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> >> > We need custom handling for these two socs in the driver shortly,
-> >> > so add the necessary compatible values to binding and driver.
-> >> > 
-> >> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> >> > ---
-> >> > 
-> >> >  Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt | 5 ++++-
-> >> >  drivers/phy/phy-rockchip-usb.c                             | 2 ++
-> >> >  2 files changed, 6 insertions(+), 1 deletion(-)
-> >> > 
-> >> > diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> > 
-> > b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> > 
-> >> > index 826454a..9b37242 100644
-> >> > --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> >> > +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> >> > @@ -1,7 +1,10 @@
-> >> > 
-> >> >  ROCKCHIP USB2 PHY
-> >> > 
-> >> >  Required properties:
-> >> > - - compatible: rockchip,rk3288-usb-phy
-> >> > + - compatible: matching the soc type, one of
-> >> > +     "rockchip,rk3066a-usb-phy"
-> >> > +     "rockchip,rk3188-usb-phy"
-> >> > +     "rockchip,rk3288-usb-phy"
-> >> 
-> >> I can never quite keep it straight how this is supposed to work, but
-> >> since previously only "rockchip,rk3288-usb-phy" was supported and now
-> >> we have these new compatible strings, I would have expected the new
-> >> strings to specify the old ones as fallback.  That would mean your
-> >> choices would be:
-> >> 
-> >> - "rockchip,rk3288-usb-phy" - A real rk3288
-> >> - "rockchip,rk3188-usb-phy", "rockchip,rk3288-usb-phy" - A rk3188 with
-> >> fallback to 3288 driver.
-> >> - "rockchip,rk3066a-usb-phy", "rockchip,rk3288-usb-phy" - A rk3066a
-> >> with fallback to 3288 driver.
-> > 
-> > How this is supposed to be done also is sometimes confusing for me :-)
-> > 
-> > But I don't think that specifying the "fallbacks" is part of the binding
-> > at
-> > all, when the binding really is done in a soc-specific way.  For example
-> > following the suggestion of the dt-maintainers at the time we're
-> > specifying
-> > the uarts as
-> > 
-> >         compatible = "rockchip,rk3288-uart", "snps,dw-apb-uart"
-> > 
-> > as a measure to use a more-special driver if there is ever the need for
-> > it.
-> > But here the "snps,dw-apb-uart" actually is a superset (a more generic
-> > implementation), while in the usb-uart-case
-> 
-> Hrm, this gets into the whole issue of coming up with generic names.
-> It's not always easy, especially when marketing gets involved.  If
-> Synopsis comes up with a new APB UART that's not compatible, I guess
-> you call it a v2 and people just need to figure out which one they
-> have?  I remember it being terribly confusing with exynos since
-> Samsung called things "exynos" that were very different, and I think
-> even "exynos5" devices were pretty different form each other.  Anyway,
-> that's getting pretty far afield.
-> 
-> The general way of doing things in Linux is that the first driver
-> there becomes the generic, right?  So if the first supported SoC using
-> this PHY was rk3288 then it gets the name and becomes the generic. If
-> rk3066a and 3188 are 90% the same and initially can actually use the
-> same driver, then they specify the specific "3188" and the generic
-> "3288" as a fallback.  It sounds like that was what was actually done
-> in the DTS files anyway, which is right as far as I'm concerned.
-> 
-> ...but personally I'd love to see it documented.  ...someone reading
-> the binding should be able to create a DTS and it's not obvious from
-> the DTS that "rk3288" is the generic as far as this binding is
-> concerned.
-
-I'd like to disagree here :-)
-
-Generic is actually currently "rockchip-usb-phy", the platform-driver name, 
-but thankfully that hasn't leaked into the dts, as even that name + filename 
-should change in the future. What rk3288 (and before) uses is a Designware 
-picophy with custom registers in the grf, so it should actually be
-"rockchip-usb-picophy" or so. Following socs use a different IP (Innosilicon 
-if I remember correctly), with different clock/pll handling and a whole 
-different set of registers, so will get a new driver.
-
-In terms of hardware compatibility, the phys aren't actually compatible, it's 
-only per chance that the used SIDDQ bit has the same position on all socs :-)
-Everything else seems to move around quite happily in the registers.
-
-
-As it stands now, the rk3188 dts has a compatible of 
-"rockchip,rk3188-usb-phy", "rockchip,rk3288-usb-phy", matching the usable 
-[refraining from calling it generic] driver on old kernels, while now it is 
-supposed to match the actually correct rk3188 variant. So that combination 
-works with the same dts on both old and new kernels fullfilling the ABI-
-stability promise.
-
-With the new matching code (clock-names etc) you actually get issues if you 
-try to match against "rockchip,rk3288-usb-phy" on a rk3188, so there is no 
-"generic" part. And that difference will widen if we need to control other 
-parts of the usb-phy as well.
-
-So essentially that second property should go completely, I just didn't wanted 
-to create the impression of changing the ABI here ;-)
-
-
-Sorry for that wall of text.
-
-Heiko
+SGksCgpPbiBXZWQsIE5vdiAyNSwgMjAxNSBhdCAxMDoyNCBBTSwgSGVpa28gU3TDvGJuZXIgPGhl
+aWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4gQW0gTWl0dHdvY2gsIDI1LiBOb3ZlbWJlciAyMDE1LCAw
+OTowNDoxOSBzY2hyaWViIERvdWcgQW5kZXJzb246Cj4+IEhpLAo+Pgo+PiBPbiBTdW4sIE5vdiAy
+MiwgMjAxNSBhdCAxMTo0OSBBTSwgSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3Jv
+dGU6Cj4+ID4gQW0gRG9ubmVyc3RhZywgMTkuIE5vdmVtYmVyIDIwMTUsIDE2OjMyOjIzIHNjaHJp
+ZWIgRG91ZyBBbmRlcnNvbjoKPj4gPj4gSGVpa28sCj4+ID4+Cj4+ID4+IE9uIFRodSwgTm92IDE5
+LCAyMDE1IGF0IDE6MjIgUE0sIEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3Rl
+Ogo+PiA+PiA+IFdlIG5lZWQgY3VzdG9tIGhhbmRsaW5nIGZvciB0aGVzZSB0d28gc29jcyBpbiB0
+aGUgZHJpdmVyIHNob3J0bHksCj4+ID4+ID4gc28gYWRkIHRoZSBuZWNlc3NhcnkgY29tcGF0aWJs
+ZSB2YWx1ZXMgdG8gYmluZGluZyBhbmQgZHJpdmVyLgo+PiA+PiA+Cj4+ID4+ID4gU2lnbmVkLW9m
+Zi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4gPj4gPiAtLS0KPj4gPj4g
+Pgo+PiA+PiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3JvY2tjaGlw
+LXVzYi1waHkudHh0IHwgNSArKysrLQo+PiA+PiA+ICBkcml2ZXJzL3BoeS9waHktcm9ja2NoaXAt
+dXNiLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMiArKwo+PiA+PiA+ICAyIGZpbGVz
+IGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+PiA+PiA+Cj4+ID4+ID4g
+ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvcm9ja2No
+aXAtdXNiLXBoeS50eHQKPj4gPgo+PiA+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL3BoeS9yb2NrY2hpcC11c2ItcGh5LnR4dAo+PiA+Cj4+ID4+ID4gaW5kZXggODI2NDU0YS4u
+OWIzNzI0MiAxMDA2NDQKPj4gPj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvcGh5L3JvY2tjaGlwLXVzYi1waHkudHh0Cj4+ID4+ID4gKysrIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9yb2NrY2hpcC11c2ItcGh5LnR4dAo+PiA+PiA+IEBA
+IC0xLDcgKzEsMTAgQEAKPj4gPj4gPgo+PiA+PiA+ICBST0NLQ0hJUCBVU0IyIFBIWQo+PiA+PiA+
+Cj4+ID4+ID4gIFJlcXVpcmVkIHByb3BlcnRpZXM6Cj4+ID4+ID4gLSAtIGNvbXBhdGlibGU6IHJv
+Y2tjaGlwLHJrMzI4OC11c2ItcGh5Cj4+ID4+ID4gKyAtIGNvbXBhdGlibGU6IG1hdGNoaW5nIHRo
+ZSBzb2MgdHlwZSwgb25lIG9mCj4+ID4+ID4gKyAgICAgInJvY2tjaGlwLHJrMzA2NmEtdXNiLXBo
+eSIKPj4gPj4gPiArICAgICAicm9ja2NoaXAscmszMTg4LXVzYi1waHkiCj4+ID4+ID4gKyAgICAg
+InJvY2tjaGlwLHJrMzI4OC11c2ItcGh5Igo+PiA+Pgo+PiA+PiBJIGNhbiBuZXZlciBxdWl0ZSBr
+ZWVwIGl0IHN0cmFpZ2h0IGhvdyB0aGlzIGlzIHN1cHBvc2VkIHRvIHdvcmssIGJ1dAo+PiA+PiBz
+aW5jZSBwcmV2aW91c2x5IG9ubHkgInJvY2tjaGlwLHJrMzI4OC11c2ItcGh5IiB3YXMgc3VwcG9y
+dGVkIGFuZCBub3cKPj4gPj4gd2UgaGF2ZSB0aGVzZSBuZXcgY29tcGF0aWJsZSBzdHJpbmdzLCBJ
+IHdvdWxkIGhhdmUgZXhwZWN0ZWQgdGhlIG5ldwo+PiA+PiBzdHJpbmdzIHRvIHNwZWNpZnkgdGhl
+IG9sZCBvbmVzIGFzIGZhbGxiYWNrLiAgVGhhdCB3b3VsZCBtZWFuIHlvdXIKPj4gPj4gY2hvaWNl
+cyB3b3VsZCBiZToKPj4gPj4KPj4gPj4gLSAicm9ja2NoaXAscmszMjg4LXVzYi1waHkiIC0gQSBy
+ZWFsIHJrMzI4OAo+PiA+PiAtICJyb2NrY2hpcCxyazMxODgtdXNiLXBoeSIsICJyb2NrY2hpcCxy
+azMyODgtdXNiLXBoeSIgLSBBIHJrMzE4OCB3aXRoCj4+ID4+IGZhbGxiYWNrIHRvIDMyODggZHJp
+dmVyLgo+PiA+PiAtICJyb2NrY2hpcCxyazMwNjZhLXVzYi1waHkiLCAicm9ja2NoaXAscmszMjg4
+LXVzYi1waHkiIC0gQSByazMwNjZhCj4+ID4+IHdpdGggZmFsbGJhY2sgdG8gMzI4OCBkcml2ZXIu
+Cj4+ID4KPj4gPiBIb3cgdGhpcyBpcyBzdXBwb3NlZCB0byBiZSBkb25lIGFsc28gaXMgc29tZXRp
+bWVzIGNvbmZ1c2luZyBmb3IgbWUgOi0pCj4+ID4KPj4gPiBCdXQgSSBkb24ndCB0aGluayB0aGF0
+IHNwZWNpZnlpbmcgdGhlICJmYWxsYmFja3MiIGlzIHBhcnQgb2YgdGhlIGJpbmRpbmcKPj4gPiBh
+dAo+PiA+IGFsbCwgd2hlbiB0aGUgYmluZGluZyByZWFsbHkgaXMgZG9uZSBpbiBhIHNvYy1zcGVj
+aWZpYyB3YXkuICBGb3IgZXhhbXBsZQo+PiA+IGZvbGxvd2luZyB0aGUgc3VnZ2VzdGlvbiBvZiB0
+aGUgZHQtbWFpbnRhaW5lcnMgYXQgdGhlIHRpbWUgd2UncmUKPj4gPiBzcGVjaWZ5aW5nCj4+ID4g
+dGhlIHVhcnRzIGFzCj4+ID4KPj4gPiAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmsz
+Mjg4LXVhcnQiLCAic25wcyxkdy1hcGItdWFydCIKPj4gPgo+PiA+IGFzIGEgbWVhc3VyZSB0byB1
+c2UgYSBtb3JlLXNwZWNpYWwgZHJpdmVyIGlmIHRoZXJlIGlzIGV2ZXIgdGhlIG5lZWQgZm9yCj4+
+ID4gaXQuCj4+ID4gQnV0IGhlcmUgdGhlICJzbnBzLGR3LWFwYi11YXJ0IiBhY3R1YWxseSBpcyBh
+IHN1cGVyc2V0IChhIG1vcmUgZ2VuZXJpYwo+PiA+IGltcGxlbWVudGF0aW9uKSwgd2hpbGUgaW4g
+dGhlIHVzYi11YXJ0LWNhc2UKPj4KPj4gSHJtLCB0aGlzIGdldHMgaW50byB0aGUgd2hvbGUgaXNz
+dWUgb2YgY29taW5nIHVwIHdpdGggZ2VuZXJpYyBuYW1lcy4KPj4gSXQncyBub3QgYWx3YXlzIGVh
+c3ksIGVzcGVjaWFsbHkgd2hlbiBtYXJrZXRpbmcgZ2V0cyBpbnZvbHZlZC4gIElmCj4+IFN5bm9w
+c2lzIGNvbWVzIHVwIHdpdGggYSBuZXcgQVBCIFVBUlQgdGhhdCdzIG5vdCBjb21wYXRpYmxlLCBJ
+IGd1ZXNzCj4+IHlvdSBjYWxsIGl0IGEgdjIgYW5kIHBlb3BsZSBqdXN0IG5lZWQgdG8gZmlndXJl
+IG91dCB3aGljaCBvbmUgdGhleQo+PiBoYXZlPyAgSSByZW1lbWJlciBpdCBiZWluZyB0ZXJyaWJs
+eSBjb25mdXNpbmcgd2l0aCBleHlub3Mgc2luY2UKPj4gU2Ftc3VuZyBjYWxsZWQgdGhpbmdzICJl
+eHlub3MiIHRoYXQgd2VyZSB2ZXJ5IGRpZmZlcmVudCwgYW5kIEkgdGhpbmsKPj4gZXZlbiAiZXh5
+bm9zNSIgZGV2aWNlcyB3ZXJlIHByZXR0eSBkaWZmZXJlbnQgZm9ybSBlYWNoIG90aGVyLiAgQW55
+d2F5LAo+PiB0aGF0J3MgZ2V0dGluZyBwcmV0dHkgZmFyIGFmaWVsZC4KPj4KPj4gVGhlIGdlbmVy
+YWwgd2F5IG9mIGRvaW5nIHRoaW5ncyBpbiBMaW51eCBpcyB0aGF0IHRoZSBmaXJzdCBkcml2ZXIK
+Pj4gdGhlcmUgYmVjb21lcyB0aGUgZ2VuZXJpYywgcmlnaHQ/ICBTbyBpZiB0aGUgZmlyc3Qgc3Vw
+cG9ydGVkIFNvQyB1c2luZwo+PiB0aGlzIFBIWSB3YXMgcmszMjg4IHRoZW4gaXQgZ2V0cyB0aGUg
+bmFtZSBhbmQgYmVjb21lcyB0aGUgZ2VuZXJpYy4gSWYKPj4gcmszMDY2YSBhbmQgMzE4OCBhcmUg
+OTAlIHRoZSBzYW1lIGFuZCBpbml0aWFsbHkgY2FuIGFjdHVhbGx5IHVzZSB0aGUKPj4gc2FtZSBk
+cml2ZXIsIHRoZW4gdGhleSBzcGVjaWZ5IHRoZSBzcGVjaWZpYyAiMzE4OCIgYW5kIHRoZSBnZW5l
+cmljCj4+ICIzMjg4IiBhcyBhIGZhbGxiYWNrLiAgSXQgc291bmRzIGxpa2UgdGhhdCB3YXMgd2hh
+dCB3YXMgYWN0dWFsbHkgZG9uZQo+PiBpbiB0aGUgRFRTIGZpbGVzIGFueXdheSwgd2hpY2ggaXMg
+cmlnaHQgYXMgZmFyIGFzIEknbSBjb25jZXJuZWQuCj4+Cj4+IC4uLmJ1dCBwZXJzb25hbGx5IEkn
+ZCBsb3ZlIHRvIHNlZSBpdCBkb2N1bWVudGVkLiAgLi4uc29tZW9uZSByZWFkaW5nCj4+IHRoZSBi
+aW5kaW5nIHNob3VsZCBiZSBhYmxlIHRvIGNyZWF0ZSBhIERUUyBhbmQgaXQncyBub3Qgb2J2aW91
+cyBmcm9tCj4+IHRoZSBEVFMgdGhhdCAicmszMjg4IiBpcyB0aGUgZ2VuZXJpYyBhcyBmYXIgYXMg
+dGhpcyBiaW5kaW5nIGlzCj4+IGNvbmNlcm5lZC4KPgo+IEknZCBsaWtlIHRvIGRpc2FncmVlIGhl
+cmUgOi0pCj4KPiBHZW5lcmljIGlzIGFjdHVhbGx5IGN1cnJlbnRseSAicm9ja2NoaXAtdXNiLXBo
+eSIsIHRoZSBwbGF0Zm9ybS1kcml2ZXIgbmFtZSwKPiBidXQgdGhhbmtmdWxseSB0aGF0IGhhc24n
+dCBsZWFrZWQgaW50byB0aGUgZHRzLCBhcyBldmVuIHRoYXQgbmFtZSArIGZpbGVuYW1lCj4gc2hv
+dWxkIGNoYW5nZSBpbiB0aGUgZnV0dXJlLiBXaGF0IHJrMzI4OCAoYW5kIGJlZm9yZSkgdXNlcyBp
+cyBhIERlc2lnbndhcmUKPiBwaWNvcGh5IHdpdGggY3VzdG9tIHJlZ2lzdGVycyBpbiB0aGUgZ3Jm
+LCBzbyBpdCBzaG91bGQgYWN0dWFsbHkgYmUKPiAicm9ja2NoaXAtdXNiLXBpY29waHkiIG9yIHNv
+LiBGb2xsb3dpbmcgc29jcyB1c2UgYSBkaWZmZXJlbnQgSVAgKElubm9zaWxpY29uCj4gaWYgSSBy
+ZW1lbWJlciBjb3JyZWN0bHkpLCB3aXRoIGRpZmZlcmVudCBjbG9jay9wbGwgaGFuZGxpbmcgYW5k
+IGEgd2hvbGUKPiBkaWZmZXJlbnQgc2V0IG9mIHJlZ2lzdGVycywgc28gd2lsbCBnZXQgYSBuZXcg
+ZHJpdmVyLgo+Cj4gSW4gdGVybXMgb2YgaGFyZHdhcmUgY29tcGF0aWJpbGl0eSwgdGhlIHBoeXMg
+YXJlbid0IGFjdHVhbGx5IGNvbXBhdGlibGUsIGl0J3MKPiBvbmx5IHBlciBjaGFuY2UgdGhhdCB0
+aGUgdXNlZCBTSUREUSBiaXQgaGFzIHRoZSBzYW1lIHBvc2l0aW9uIG9uIGFsbCBzb2NzIDotKQo+
+IEV2ZXJ5dGhpbmcgZWxzZSBzZWVtcyB0byBtb3ZlIGFyb3VuZCBxdWl0ZSBoYXBwaWx5IGluIHRo
+ZSByZWdpc3RlcnMuCj4KPgo+IEFzIGl0IHN0YW5kcyBub3csIHRoZSByazMxODggZHRzIGhhcyBh
+IGNvbXBhdGlibGUgb2YKPiAicm9ja2NoaXAscmszMTg4LXVzYi1waHkiLCAicm9ja2NoaXAscmsz
+Mjg4LXVzYi1waHkiLCBtYXRjaGluZyB0aGUgdXNhYmxlCj4gW3JlZnJhaW5pbmcgZnJvbSBjYWxs
+aW5nIGl0IGdlbmVyaWNdIGRyaXZlciBvbiBvbGQga2VybmVscywgd2hpbGUgbm93IGl0IGlzCj4g
+c3VwcG9zZWQgdG8gbWF0Y2ggdGhlIGFjdHVhbGx5IGNvcnJlY3QgcmszMTg4IHZhcmlhbnQuIFNv
+IHRoYXQgY29tYmluYXRpb24KPiB3b3JrcyB3aXRoIHRoZSBzYW1lIGR0cyBvbiBib3RoIG9sZCBh
+bmQgbmV3IGtlcm5lbHMgZnVsbGZpbGxpbmcgdGhlIEFCSS0KPiBzdGFiaWxpdHkgcHJvbWlzZS4K
+Pgo+IFdpdGggdGhlIG5ldyBtYXRjaGluZyBjb2RlIChjbG9jay1uYW1lcyBldGMpIHlvdSBhY3R1
+YWxseSBnZXQgaXNzdWVzIGlmIHlvdQo+IHRyeSB0byBtYXRjaCBhZ2FpbnN0ICJyb2NrY2hpcCxy
+azMyODgtdXNiLXBoeSIgb24gYSByazMxODgsIHNvIHRoZXJlIGlzIG5vCj4gImdlbmVyaWMiIHBh
+cnQuIEFuZCB0aGF0IGRpZmZlcmVuY2Ugd2lsbCB3aWRlbiBpZiB3ZSBuZWVkIHRvIGNvbnRyb2wg
+b3RoZXIKPiBwYXJ0cyBvZiB0aGUgdXNiLXBoeSBhcyB3ZWxsLgo+Cj4gU28gZXNzZW50aWFsbHkg
+dGhhdCBzZWNvbmQgcHJvcGVydHkgc2hvdWxkIGdvIGNvbXBsZXRlbHksIEkganVzdCBkaWRuJ3Qg
+d2FudGVkCj4gdG8gY3JlYXRlIHRoZSBpbXByZXNzaW9uIG9mIGNoYW5naW5nIHRoZSBBQkkgaGVy
+ZSA7LSkKCk9LLCBmYWlyIGVub3VnaC4gIEknbSBub3QgdGVycmlibHkgZmFtaWxpYXIgd2l0aCBy
+azMwNjZhIGFuZCByazMxODgsCnNvIGRpZG4ndCByZWFsaXplIGhvdyBkaWZmZXJlbnQgdGhleSB3
+ZXJlLiAgSSBndWVzcyBJIGFzc3VtZWQgdGhhdAp0aGV5IHdlcmUgbW9yZSBsaWtlIDkwJSBjb21w
+YXRpYmxlLCBidXQgcGVyaGFwcyBub3QuLi4KCkkgYWxzbyB0aGluayBzb21lIG9mIHRoZXNlIGNv
+cm5lciBjYXNlcyBvZiBkZXZpY2UgdHJlZSBzdGlsbCBoYXZlbid0CnNlZXBlZCBpbnRvIG15IGNv
+bnNjaW91c25lc3MgeWV0IGFuZCBiZWNvbWUgaW5zdGluY3QuICBNYXliZSBpbgphbm90aGVyIGZl
+dyB5ZWFycy4gIDspCgotRG91ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
