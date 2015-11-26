@@ -1,129 +1,31 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-Date: Thu, 26 Nov 2015 13:38:25 +0100
-Message-ID: <24978828.KbpsHhykTc@diego>
-References: <1447225799-23996-1-git-send-email-zyw@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v5 01/11] clk: rockchip: add id for mipidsi sclk on rk3288
+Date: Thu, 26 Nov 2015 14:57:58 +0100
+Message-ID: <6274738.i5VADftQYj@diego>
+References: <1448524225-5489-1-git-send-email-zyw@rock-chips.com> <1448524225-5489-2-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1447225799-23996-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: dianders@chromium.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1448524225-5489-2-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Huang Lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jeff Chen <cym-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Roger Chen <roger.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Chris,
 
-Am Mittwoch, 11. November 2015, 15:09:59 schrieb Chris Zhong:
-> We've been seeing some crashes at reboot test on rk3288-based systems,
-> which boards have not reset pin connected to NPOR, they reboot by
-> setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
-> a high frequency mode, some IPs might hang during soft reset.
-> It appears that we can fix the problem by switching to slow mode before
-> reboot, just like what we did before suspend.
+Am Donnerstag, 26. November 2015, 15:50:15 schrieb Chris Zhong:
+> Adds a new id for the sclk supplying the mipidsi on rk3288 socs.
 > 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> 
-> ---
-> 
-> Changes in v3:
-> remove include reboot.h
-> 
-> Changes in v2:
-> replace restart_handlers with the shutdown callback of syscore
-> 
->  drivers/clk/rockchip/clk-rk3288.c | 35 ++++++++++++++++++-----------------
->  1 file changed, 18 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c
-> b/drivers/clk/rockchip/clk-rk3288.c index 9040878..3002d7d 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -783,9 +783,9 @@ static const char *const rk3288_critical_clocks[]
-> __initconst = { "pclk_pd_pmu",
->  };
-> 
-> -#ifdef CONFIG_PM_SLEEP
->  static void __iomem *rk3288_cru_base;
-> 
-> +#ifdef CONFIG_PM_SLEEP
->  /* Some CRU registers will be reset in maskrom when the system
->   * wakes up from fastboot.
->   * So save them before suspend, restore them after resume.
-> @@ -839,34 +839,32 @@ static void rk3288_clk_resume(void)
->  			       rk3288_cru_base + reg_id);
->  	}
->  }
-> +#endif
-> 
-> -static struct syscore_ops rk3288_clk_syscore_ops = {
-> -	.suspend = rk3288_clk_suspend,
-> -	.resume = rk3288_clk_resume,
-> -};
-> -
-> -static void rk3288_clk_sleep_init(void __iomem *reg_base)
-> +static void rk3288_clk_shutdown(void)
->  {
-> -	rk3288_cru_base = reg_base;
-> -	register_syscore_ops(&rk3288_clk_syscore_ops);
-> +	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
->  }
-> 
-> -#else /* CONFIG_PM_SLEEP */
-> -static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
-> +static struct syscore_ops rk3288_clk_syscore_ops = {
-> +#ifdef CONFIG_PM_SLEEP
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-I think we can get rid of these CONFIG_PM_SLEEP conditionals completely.
-It protected against registering the syscore_ops if sleep is disabled, as we 
-were only using these. But now the sleep-related functions will simply not be 
-called, but it doesn't hurt to register the syscore_ops with them included.
-
-And it makes the code look cleaner I think :-)
+applied this patch to my clock-branch for 4.5, after fixing the numbering to 
+not conflict with the new crypto-clock.
 
 
 Heiko
-
-> +	.suspend = rk3288_clk_suspend,
-> +	.resume = rk3288_clk_resume,
->  #endif
-> +	.shutdown = rk3288_clk_shutdown,
-> +};
-> 
->  static void __init rk3288_clk_init(struct device_node *np)
->  {
-> -	void __iomem *reg_base;
->  	struct clk *clk;
-> 
-> -	reg_base = of_iomap(np, 0);
-> -	if (!reg_base) {
-> +	rk3288_cru_base = of_iomap(np, 0);
-> +	if (!rk3288_cru_base) {
->  		pr_err("%s: could not map cru region\n", __func__);
->  		return;
->  	}
-> 
-> -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-> +	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
-> 
->  	/* xin12m is created by an cru-internal divider */
->  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-> @@ -907,10 +905,13 @@ static void __init rk3288_clk_init(struct device_node
-> *np) &rk3288_cpuclk_data, rk3288_cpuclk_rates,
->  			ARRAY_SIZE(rk3288_cpuclk_rates));
-> 
-> -	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
-> +	rockchip_register_softrst(np, 12,
-> +				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
->  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
-> 
->  	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
-> -	rk3288_clk_sleep_init(reg_base);
-> +
-> +	register_syscore_ops(&rk3288_clk_syscore_ops);
-> +;
->  }
->  CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
