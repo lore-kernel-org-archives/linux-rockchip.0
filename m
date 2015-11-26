@@ -1,27 +1,58 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v5 02/11] clk: rockchip: add mipidsi clocks on rk3288
-Date: Thu, 26 Nov 2015 14:58:47 +0100
-Message-ID: <1887650.g9M52OYF2h@diego>
-References: <1448524225-5489-1-git-send-email-zyw@rock-chips.com> <1448524225-5489-3-git-send-email-zyw@rock-chips.com>
+Subject: Re: [PATCH v8 02/17] drm: bridge: analogix/dp: split exynos dp driver to bridge directory
+Date: Thu, 26 Nov 2015 18:30:52 +0100
+Message-ID: <1812354.kkj0DGG9mi@diego>
+References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <1446020519-625-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1448524225-5489-3-git-send-email-zyw@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Chris Zhong <zyw@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1446020519-625-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-deve
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+Hi Yakir,
 
-Am Donnerstag, 26. November 2015, 15:50:16 schrieb Chris Zhong:
-> sclk_mipidsi_24m is the gating of mipi dsi phy.
+Am Mittwoch, 28. Oktober 2015, 16:21:59 schrieb Yakir Yang:
+> Split the dp core driver from exynos directory to bridge directory,
+> and rename the core driver to analogix_dp_*, rename the platform
+> code to exynos_dp.
 > 
-> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-> Acked-by: Stephen Boyd <sboyd@codeaurora.org>
+> Beside the new analogix_dp driver would export four hooks.
+> "analogix_dp_bind()" and "analogix_dp_unbind()"
+> "analogix_dp_detect()" and "analogix_dp_get_modes()"
+> 
+> The bind/unbind symbols is used for analogix platform driver to connect
+> with analogix_dp core driver. And the detect/get_modes is used for analogix
+> platform driver to init the connector.
+> 
+> They reason why connector need register in helper driver is rockchip drm
+> haven't implement the atomic API, but Exynos drm have implement it, so
+> there would need two different connector helper functions, that's why we
+> leave the connector register in helper driver.
+> 
+> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 
-applied this to my clock branch for 4.5
+[...]
 
+> diff --git a/drivers/gpu/drm/exynos/Kconfig b/drivers/gpu/drm/exynos/Kconfig
+> index bd1a415..5f74f80 100644
+> --- a/drivers/gpu/drm/exynos/Kconfig
+> +++ b/drivers/gpu/drm/exynos/Kconfig
+> @@ -55,8 +55,9 @@ config DRM_EXYNOS_DSI
+>  	  This enables support for Exynos MIPI-DSI device.
+> 
+>  config DRM_EXYNOS_DP
+> -	bool "EXYNOS DRM DP driver support"
+> +	bool "EXYNOS specific extensions for Analogix DP driver"
+>  	depends on DRM_EXYNOS && (DRM_EXYNOS_FIMD || DRM_EXYNOS7_DECON)
+> +	select DRM_ANALOGIX_DP
+>  	default DRM_EXYNOS
+>  	select DRM_PANEL
+>  	help
 
-Heiko
+This doesn't apply anymore to 4.4-rc due to other changes in there. The 
+exynos/Makefile is affected as well.
