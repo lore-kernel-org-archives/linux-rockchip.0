@@ -1,96 +1,48 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v5 0/11] Add mipi dsi support for rk3288
-Date: Thu, 26 Nov 2015 15:50:14 +0800
-Message-ID: <1448524225-5489-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
+Subject: [PATCH v5 03/11] drm/rockchip: return a true clock rate to
+ adjusted_mode
+Date: Thu, 26 Nov 2015 15:50:17 +0800
+Message-ID: <1448524225-5489-4-git-send-email-zyw@rock-chips.com>
+References: <1448524225-5489-1-git-send-email-zyw@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1448524225-5489-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
-Cc: Chris Zhong <zyw@rock-chips.com>, Liu Ying <Ying.Liu@freescale.com>, Takashi Iwai <tiwai@suse.de>, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Jeff Chen <cym@rock-chips.com>, linux-clk@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Huang Lin <hl@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Pawel Moll <pawel.moll@arm.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Vincent Palatin <vpalatin@chromium.org>, Russell King <linux@arm.linux.org.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-arm-kernel@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>Liu Ying <Yin>
+Cc: Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
-IP. This series adds support for a Synopsys DesignWare MIPI DSI host
-controller DRM bridge driver and a rockchip MIPI DSI specific DRM
-driver.
-
-This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
-This panel only use the MIPI DSI video mode.
-
-The MIPI DSI feature is tested on rk3288 evb board, backport them to
-chrome os kernel v3.14, and it can display normally.
-
-This patchset is base on the patchset from Ying.liu@freescale.com.
-<http://www.spinics.net/lists/dri-devel/msg77181.html>
-
-Changes in v5:
-- change the mipidsi clk to SCLK_MIPIDSI_24M
-- modify the mipidsi clk name to SCLK_MIPIDSI_24M
-Adviced by Thierry
-- use hyphens instead of underscore
-- use encoder in drm_bridge
-- reformatting the dptdin table
-- use readx_poll_timeout to check register
-- use msleep to wait
-- add a comment to explain how to program phy
-- change the program code to symbolic names
-- check this for validity of find_panel and clk_prepare_enable
-- eliminate the configuration clock
-- some optimization for coding style
-- modify the clk name to SCLK_MIPIDSI_24M
-- add a blank line befor lcd_en
-
-Changes in v4:
-- use clk_round_rate to check the clock rate in vop_crtc_mode_fixup
-- remove the cfg clk
-- remove gpr property from example, since it is noused now.
-- add the description about ports
-- eliminate some warnning
-
-Changes in v3:
-- move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
-- move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
-
-Changes in v2:
-- add the mipi clk id in a single patch
-
-Chris Zhong (9):
-  clk: rockchip: add id for mipidsi sclk on rk3288
-  clk: rockchip: add mipidsi clocks on rk3288
-  drm/rockchip: return a true clock rate to adjusted_mode
-  drm: bridge: allow some funcs to be optional
-  drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
-  drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
-  Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
-  ARM: dts: rockchip: add rk3288 mipi_dsi nodes
-  ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
-
-Liu Ying (2):
-  drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
-  Documentation: dt-bindings: Add bindings for DW MIPI DSI
-
- .../bindings/display/bridge/dw_mipi_dsi.txt        |   74 ++
- .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   56 +
- arch/arm/boot/dts/rk3288-evb.dtsi                  |   20 +-
- arch/arm/boot/dts/rk3288.dtsi                      |   39 +
- drivers/clk/rockchip/clk-rk3288.c                  |    2 +-
- drivers/gpu/drm/bridge/Kconfig                     |   10 +
- drivers/gpu/drm/bridge/Makefile                    |    1 +
- drivers/gpu/drm/bridge/dw-mipi-dsi.c               | 1084 ++++++++++++++++++++
- drivers/gpu/drm/drm_bridge.c                       |    6 +-
- drivers/gpu/drm/rockchip/Kconfig                   |   10 +
- drivers/gpu/drm/rockchip/Makefile                  |    1 +
- drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c    |  249 +++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |    8 +
- include/drm/bridge/dw_mipi_dsi.h                   |   28 +
- include/drm/drm_mipi_dsi.h                         |   14 +
- include/dt-bindings/clock/rk3288-cru.h             |    1 +
- 16 files changed, 1599 insertions(+), 4 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
- create mode 100644 drivers/gpu/drm/bridge/dw-mipi-dsi.c
- create mode 100644 drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
- create mode 100644 include/drm/bridge/dw_mipi_dsi.h
-
--- 
-2.6.3
-
+U2luY2UgdGhlIG1pcGkgZHNpIGRyaXZlciBuZWVkIHRvIHVzZSB0aGUgY2xvY2sgb2Ygdm9wIHRv
+IG1ha2UgdGhlCmNhbGN1bGF0aW9uIG9mIEJsYW5raW5nLiBCdXQgc29tZXRpbWVzIHRoZSBjbG9j
+ayBkcml2ZXIgY2FuIG5vdCBzZXQgYQphY2N1cmF0ZSBjbG9ja19yYXRlIGZvciB2b3AsIGdldCBp
+dCBieSBjbGtfcm91bmRfcmF0ZSBiZWZvcmUgbW9kZV9zZXQsCnNvIHdlIGNhbiBnZXQgdGhlIHRy
+dWUgdmFsdWUuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpcyBaaG9uZyA8enl3QHJvY2stY2hpcHMuY29t
+PgpBY2tlZC1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKLS0tCgpDaGFu
+Z2VzIGluIHY1OiBOb25lCkNoYW5nZXMgaW4gdjQ6Ci0gdXNlIGNsa19yb3VuZF9yYXRlIHRvIGNo
+ZWNrIHRoZSBjbG9jayByYXRlIGluIHZvcF9jcnRjX21vZGVfZml4dXAKCkNoYW5nZXMgaW4gdjM6
+IE5vbmUKQ2hhbmdlcyBpbiB2MjogTm9uZQoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCA1ICsrKysrCiAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCsp
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Au
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggNWQ4
+YWU1ZS4uZWZmNTQ1YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jCkBAIC0xMTM2LDkgKzExMzYsMTQgQEAgc3RhdGljIGJvb2wgdm9wX2NydGNfbW9kZV9m
+aXh1cChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAJCQkJY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5
+X21vZGUgKm1vZGUsCiAJCQkJc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUp
+CiB7CisJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMpOworCiAJaWYgKGFkanVzdGVkX21v
+ZGUtPmh0b3RhbCA9PSAwIHx8IGFkanVzdGVkX21vZGUtPnZ0b3RhbCA9PSAwKQogCQlyZXR1cm4g
+ZmFsc2U7CiAKKwlhZGp1c3RlZF9tb2RlLT5jbG9jayA9CisJCWNsa19yb3VuZF9yYXRlKHZvcC0+
+ZGNsaywgbW9kZS0+Y2xvY2sgKiAxMDAwKSAvIDEwMDA7CisKIAlyZXR1cm4gdHJ1ZTsKIH0KIAot
+LSAKMi42LjMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
