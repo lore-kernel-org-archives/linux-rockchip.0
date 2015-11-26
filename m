@@ -1,61 +1,96 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v4 06/13] drm/bridge: Add Synopsys DesignWare MIPI DSI
- host controller driver
-Date: Thu, 26 Nov 2015 15:03:54 +0800
-Message-ID: <5656AEDA.4080607@rock-chips.com>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-7-git-send-email-zyw@rock-chips.com>
- <20151120160706.GE3300@ulmo.nvidia.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151120160706.GE3300@ulmo.nvidia.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <treding@nvidia.com>
-Cc: Vincent Palatin <vpalatin@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, rmk+kernel@arm.linux.org.uk, Rahul Sharma <rahul.sharma@samsung.com>, ajaykumar.rs@samsung.com
+Subject: [PATCH v5 0/11] Add mipi dsi support for rk3288
+Date: Thu, 26 Nov 2015 15:50:14 +0800
+Message-ID: <1448524225-5489-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
+Cc: Chris Zhong <zyw@rock-chips.com>, Liu Ying <Ying.Liu@freescale.com>, Takashi Iwai <tiwai@suse.de>, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Jeff Chen <cym@rock-chips.com>, linux-clk@vger.kernel.org, Alexandru M Stan <amstan@chromium.org>, Sonny Rao <sonnyrao@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Huang Lin <hl@rock-chips.com>, Inki Dae <inki.dae@samsung.com>, Pawel Moll <pawel.moll@arm.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Vincent Palatin <vpalatin@chromium.org>, Russell King <linux@arm.linux.org.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-arm-kernel@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>Liu Ying <Yin>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgVGhpZXJyeQoKVGhhbmtzIGZvciB5b3VyIGZlZWRiYWNrLgoKCk9uIDExLzIxLzIwMTUgMTI6
-MDcgQU0sIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+IE9uIEZyaSwgTm92IDIwLCAyMDE1IGF0IDA0
-OjE1OjMyUE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+PiBhZGQgU3lub3BzeXMgRGVzaWdu
-V2FyZSBNSVBJIERTSSBob3N0IGNvbnRyb2xsZXIgZHJpdmVyIHN1cHBvcnQuCj4+Cj4+IFNpZ25l
-ZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+Pgo+PiBD
-aGFuZ2VzIGluIHY0Ogo+PiBlbGltaW5hdGUgc29tZSB3YXJubmluZwo+Pgo+PiBDaGFuZ2VzIGlu
-IHYzOiBOb25lCj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4KPj4gICBkcml2ZXJzL2dwdS9kcm0v
-YnJpZGdlL0tjb25maWcgICAgICAgfCAgIDExICsKPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
-L01ha2VmaWxlICAgICAgfCAgICAxICsKPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X21p
-cGlfZHNpLmMgfCAxMDU2ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4gICBp
-bmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAgICAgfCAgIDI3ICsKPj4gICA0IGZpbGVz
-IGNoYW5nZWQsIDEwOTUgaW5zZXJ0aW9ucygrKQo+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
-ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmMKPj4gICBjcmVhdGUgbW9kZSAxMDA2NDQg
-aW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKPj4KPj4KPj4gK3N0cnVjdCBkd19taXBp
-X2RzaSB7Cj4+ICsJc3RydWN0IG1pcGlfZHNpX2hvc3QgZHNpX2hvc3Q7Cj4+ICsJc3RydWN0IGRy
-bV9jb25uZWN0b3IgY29ubmVjdG9yOwo+PiArCXN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcjsK
-PiBzdHJ1Y3QgZHJtX2JyaWRnZSBhbHJlYWR5IGhhcyBhIHBvaW50ZXIgdG8gYW4gZW5jb2Rlciwg
-Y2FuJ3QgeW91IHJldXNlCj4gdGhhdCBpbnN0ZWFkPwo+Cj4+ICsJc3RydWN0IGRybV9icmlkZ2Ug
-KmJyaWRnZTsKPiBUeXBpY2FsbHkgeW91J2QgZW1iZWQgdGhlIGJyaWRnZSBpbnRvIHRoZSBkcml2
-ZXIgc3RydWN0dXJlLgpJJ20gYWxtb3N0IGRvbmUgd2l0aCBhbGwgdGhlIG1vZGlmaWNhdGlvbnMg
-YWNjb3JkaW5nIHRvIHlvdXIgY29tbWVudHMuClJlbWFpbmluZyB0aGlzIHBvaW50IEkgY2FuIG5v
-dCB1bmRlcnN0YW5kLCB0aGUgZHNpIGlzIGEgcG9pbnRlciBvZiAKZHJtX2JyaWRnZSwKaGVuY2Ug
-SSBjYW4gbm90IGdldCB0aGUgYnJpZGdlIGJ5IGNvbnRhaW5lcl9vZi4KQWx0aG91Z2gsIHRoZSAi
-YnJpZGdlLT5kcml2ZXJfcHJpdmF0ZSA9IGRzaSIgaGF2ZSBkb25lIGluIApkd19taXBpX2RzaV9y
-ZWdpc3Rlci4KCj4KPj4gKwlzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbDsKPj4gKwlzdHJ1Y3QgZGV2
-aWNlICpkZXY7Cj4+ICsKPj4gKwl2b2lkIF9faW9tZW0gKmJhc2U7Cj4+ICsKPj4gKwlzdHJ1Y3Qg
-Y2xrICpwbGxyZWZfY2xrOwo+PiArCXN0cnVjdCBjbGsgKmNmZ19jbGs7Cj4+ICsJc3RydWN0IGNs
-ayAqcGNsazsKPj4gKwo+PiArCXVuc2lnbmVkIGludCBsYW5lX21icHM7IC8qIHBlciBsYW5lICov
-Cj4+ICsJdTMyIGNoYW5uZWw7Cj4+ICsJdTMyIGxhbmVzOwo+PiArCXUzMiBmb3JtYXQ7Cj4+ICsJ
-dTE2IGlucHV0X2RpdjsKPj4gKwl1MTYgZmVlZGJhY2tfZGl2Owo+PiArCXN0cnVjdCBkcm1fZGlz
-cGxheV9tb2RlICptb2RlOwo+PiArCj4+ICsJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRf
-ZGF0YSAqcGRhdGE7Cj4+ICsKPj4gKwlib29sIGVuYWJsZWQ7Cj4+ICt9Owo+PiArCj4+Cj4+Cj4+
-IFRoaWVycnkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The rk3288 MIPI DSI is a Synopsys DesignWare MIPI DSI host controller
+IP. This series adds support for a Synopsys DesignWare MIPI DSI host
+controller DRM bridge driver and a rockchip MIPI DSI specific DRM
+driver.
+
+This series also includes a DRM panel driver for BOE TV080WUM-NL0 panel.
+This panel only use the MIPI DSI video mode.
+
+The MIPI DSI feature is tested on rk3288 evb board, backport them to
+chrome os kernel v3.14, and it can display normally.
+
+This patchset is base on the patchset from Ying.liu@freescale.com.
+<http://www.spinics.net/lists/dri-devel/msg77181.html>
+
+Changes in v5:
+- change the mipidsi clk to SCLK_MIPIDSI_24M
+- modify the mipidsi clk name to SCLK_MIPIDSI_24M
+Adviced by Thierry
+- use hyphens instead of underscore
+- use encoder in drm_bridge
+- reformatting the dptdin table
+- use readx_poll_timeout to check register
+- use msleep to wait
+- add a comment to explain how to program phy
+- change the program code to symbolic names
+- check this for validity of find_panel and clk_prepare_enable
+- eliminate the configuration clock
+- some optimization for coding style
+- modify the clk name to SCLK_MIPIDSI_24M
+- add a blank line befor lcd_en
+
+Changes in v4:
+- use clk_round_rate to check the clock rate in vop_crtc_mode_fixup
+- remove the cfg clk
+- remove gpr property from example, since it is noused now.
+- add the description about ports
+- eliminate some warnning
+
+Changes in v3:
+- move the dw_mipi_dsi.txt to Documentation/devicetree/bindings/display/bridge
+- move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+
+Changes in v2:
+- add the mipi clk id in a single patch
+
+Chris Zhong (9):
+  clk: rockchip: add id for mipidsi sclk on rk3288
+  clk: rockchip: add mipidsi clocks on rk3288
+  drm/rockchip: return a true clock rate to adjusted_mode
+  drm: bridge: allow some funcs to be optional
+  drm/bridge: Add Synopsys DesignWare MIPI DSI host controller driver
+  drm: rockchip: Support Synopsys DesignWare MIPI DSI host controller
+  Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
+  ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+  ARM: dts: rockchip: add support mipi panel tv080wum-nl0 for rk3288-evb
+
+Liu Ying (2):
+  drm/dsi: Add a helper to get bits per pixel of MIPI DSI pixel format
+  Documentation: dt-bindings: Add bindings for DW MIPI DSI
+
+ .../bindings/display/bridge/dw_mipi_dsi.txt        |   74 ++
+ .../display/rockchip/dw_mipi_dsi_rockchip.txt      |   56 +
+ arch/arm/boot/dts/rk3288-evb.dtsi                  |   20 +-
+ arch/arm/boot/dts/rk3288.dtsi                      |   39 +
+ drivers/clk/rockchip/clk-rk3288.c                  |    2 +-
+ drivers/gpu/drm/bridge/Kconfig                     |   10 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/dw-mipi-dsi.c               | 1084 ++++++++++++++++++++
+ drivers/gpu/drm/drm_bridge.c                       |    6 +-
+ drivers/gpu/drm/rockchip/Kconfig                   |   10 +
+ drivers/gpu/drm/rockchip/Makefile                  |    1 +
+ drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c    |  249 +++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |    8 +
+ include/drm/bridge/dw_mipi_dsi.h                   |   28 +
+ include/drm/drm_mipi_dsi.h                         |   14 +
+ include/dt-bindings/clock/rk3288-cru.h             |    1 +
+ 16 files changed, 1599 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+ create mode 100644 drivers/gpu/drm/bridge/dw-mipi-dsi.c
+ create mode 100644 drivers/gpu/drm/rockchip/dw_mipi_dsi_rockchip.c
+ create mode 100644 include/drm/bridge/dw_mipi_dsi.h
+
+-- 
+2.6.3
+
