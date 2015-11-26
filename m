@@ -1,73 +1,74 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH v4 06/13] drm/bridge: Add Synopsys DesignWare MIPI DSI
- host controller driver
-Date: Thu, 26 Nov 2015 18:05:55 +0800
-Message-ID: <5656D983.8090203@rock-chips.com>
-References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
- <1448007339-10966-7-git-send-email-zyw@rock-chips.com>
- <20151120160706.GE3300@ulmo.nvidia.com> <5656AEDA.4080607@rock-chips.com>
- <20151126080447.GA28064@ulmo.nvidia.com>
+From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH v1] net: stmmac: Free rx_skbufs before realloc
+Date: Thu, 26 Nov 2015 11:26:03 +0100
+Message-ID: <5656DE3B.9030602@st.com>
+References: <1448181858-5935-1-git-send-email-zhengsq@rock-chips.com>	<1448181858-5935-2-git-send-email-zhengsq@rock-chips.com>
+ <20151124.130924.1365382562223060152.davem@davemloft.net>
+ <5655D004.4040502@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151126080447.GA28064@ulmo.nvidia.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <treding@nvidia.com>
-Cc: Vincent Palatin <vpalatin@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, rmk+kernel@arm.linux.org.uk, Rahul Sharma <rahul.sharma@samsung.com>, ajaykumar.rs@samsung.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5655D004.4040502-qxv4g6HH51o@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAxMS8yNi8yMDE1IDA0OjA0IFBNLCBUaGllcnJ5IFJlZGluZyB3cm90ZToKPiBPbiBUaHUs
-IE5vdiAyNiwgMjAxNSBhdCAwMzowMzo1NFBNICswODAwLCBDaHJpcyBaaG9uZyB3cm90ZToKPj4g
-SGkgVGhpZXJyeQo+Pgo+PiBUaGFua3MgZm9yIHlvdXIgZmVlZGJhY2suCj4+Cj4+Cj4+IE9uIDEx
-LzIxLzIwMTUgMTI6MDcgQU0sIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+Pj4gT24gRnJpLCBOb3Yg
-MjAsIDIwMTUgYXQgMDQ6MTU6MzJQTSArMDgwMCwgQ2hyaXMgWmhvbmcgd3JvdGU6Cj4+Pj4gYWRk
-IFN5bm9wc3lzIERlc2lnbldhcmUgTUlQSSBEU0kgaG9zdCBjb250cm9sbGVyIGRyaXZlciBzdXBw
-b3J0Lgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQ2hyaXMgWmhvbmcgPHp5d0Byb2NrLWNoaXBz
-LmNvbT4KPj4+PiAtLS0KPj4+Pgo+Pj4+IENoYW5nZXMgaW4gdjQ6Cj4+Pj4gZWxpbWluYXRlIHNv
-bWUgd2Fybm5pbmcKPj4+Pgo+Pj4+IENoYW5nZXMgaW4gdjM6IE5vbmUKPj4+PiBDaGFuZ2VzIGlu
-IHYyOiBOb25lCj4+Pj4KPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyAgICAg
-ICB8ICAgMTEgKwo+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZSAgICAgIHwg
-ICAgMSArCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmMgfCAxMDU2
-ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4+PiAgIGluY2x1ZGUvZHJtL2Jy
-aWRnZS9kd19taXBpX2RzaS5oICAgICB8ICAgMjcgKwo+Pj4+ICAgNCBmaWxlcyBjaGFuZ2VkLCAx
-MDk1IGluc2VydGlvbnMoKykKPj4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL2R3X21pcGlfZHNpLmMKPj4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRl
-L2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaAo+Pj4+Cj4+Pj4KPj4+PiArc3RydWN0IGR3X21pcGlf
-ZHNpIHsKPj4+PiArCXN0cnVjdCBtaXBpX2RzaV9ob3N0IGRzaV9ob3N0Owo+Pj4+ICsJc3RydWN0
-IGRybV9jb25uZWN0b3IgY29ubmVjdG9yOwo+Pj4+ICsJc3RydWN0IGRybV9lbmNvZGVyICplbmNv
-ZGVyOwo+Pj4gc3RydWN0IGRybV9icmlkZ2UgYWxyZWFkeSBoYXMgYSBwb2ludGVyIHRvIGFuIGVu
-Y29kZXIsIGNhbid0IHlvdSByZXVzZQo+Pj4gdGhhdCBpbnN0ZWFkPwo+Pj4KPj4+PiArCXN0cnVj
-dCBkcm1fYnJpZGdlICpicmlkZ2U7Cj4+PiBUeXBpY2FsbHkgeW91J2QgZW1iZWQgdGhlIGJyaWRn
-ZSBpbnRvIHRoZSBkcml2ZXIgc3RydWN0dXJlLgo+PiBJJ20gYWxtb3N0IGRvbmUgd2l0aCBhbGwg
-dGhlIG1vZGlmaWNhdGlvbnMgYWNjb3JkaW5nIHRvIHlvdXIgY29tbWVudHMuCj4+IFJlbWFpbmlu
-ZyB0aGlzIHBvaW50IEkgY2FuIG5vdCB1bmRlcnN0YW5kLCB0aGUgZHNpIGlzIGEgcG9pbnRlciBv
-Zgo+PiBkcm1fYnJpZGdlLAo+PiBoZW5jZSBJIGNhbiBub3QgZ2V0IHRoZSBicmlkZ2UgYnkgY29u
-dGFpbmVyX29mLgo+PiBBbHRob3VnaCwgdGhlICJicmlkZ2UtPmRyaXZlcl9wcml2YXRlID0gZHNp
-IiBoYXZlIGRvbmUgaW4KPj4gZHdfbWlwaV9kc2lfcmVnaXN0ZXIuCj4gSSBkb24ndCB1bmRlcnN0
-YW5kLiBJZiB5b3UgZG9uJ3QgbWFrZSBicmlkZ2UgYSBwb2ludGVyLCBidXQgcmF0aGVyIGVtYmVk
-Cj4gaXQgd2l0aGluIHRoZSBzdHJ1Y3R1cmUsIHRoZW4geW91IGNhbiB1c2UgY29udGFpbmVyX29m
-KCksIGNhbid0IHlvdT8gWW91Cj4gZ2V0IGl0IGFsbG9jYXRlZCBhdXRvbWF0aWNhbGx5IGFzIHBh
-cnQgb2YgYWxsb2NhdGluZyB0aGUgZHdfbWlwaV9kc2kKPiBzdHJ1Y3R1cmUuIFNlZSBmb3IgZXhh
-bXBsZSB0aGUgcHM4NjIyIGFuZCBwdG4zNDYwIGJyaWRnZSBkcml2ZXJzLgpZZWFoLCBnb3QgaXQs
-IHRoYW5rcy4gOikKSSBhbSBnb2luZyB0byBtb2RpZnkgaXQgaW4gbmV4dCB2ZXJzaW9uIHBhdGNo
-Lgo+Cj4gT24gYSBzbGlnaHRseSB1bnJlbGF0ZWQgbm90ZSwgSSdtIG5vdCBzdXJlIGlmIHdlIGRp
-c2N1c3NlZCB0aGlzIGFscmVhZHkKPiBvciBpZiBpdCB3YXMgaW4gYW5vdGhlciB0aHJlYWQsIGJ1
-dCB3aHkgaXMgdGhpcyBldmVuIGEgYnJpZGdlIGRyaXZlcj8gQQo+IGJyaWRnZSBpcyB0eXBpY2Fs
-bHkgc29tZSBJQyBvdXRzaWRlIG9mIHRoZSBTb0MsIHdoZXJlYXMgdGhpcyBjbGVhcmx5IGlzCj4g
-SVAgZGVzaWduZWQgaW50byB0aGUgU29DLiBTbyBpdCdzIHJlYWxseSBtb3JlIG9mIGFuIGVuY29k
-ZXIgcmF0aGVyIHRoYW4KPiBhIGJyaWRnZS4KSSBndWVzcyB5b3UgbWVhbiB0aGlzIHRocmVhZCA8
-aHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC81ODE2OTkxLz4KSSB0aGluayB0aGUg
-YnJpZGdlIGlzIGJlbmVmaWNpYWwgdG8gc2hhcmUgdGhlIGR3LW1pcGkgZHJpdmVyIGZvciAKZGlm
-ZmVyZW50IHNvYwp3aXRoIHNhbWUgdmVyc2lvbiBkdy1taXBpIElQLgoKPgo+IFRoaWVycnkKCgoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xp
-c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 11/25/2015 4:13 PM, Giuseppe CAVALLARO wrote:
+> Hello
+>
+> On 11/24/2015 7:09 PM, David Miller wrote:
+>> From: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Date: Sun, 22 Nov 2015 16:44:18 +0800
+>>
+>>> From: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>
+>>> The init_dma_desc_rings() may realloc the rx_skbuff[] when
+>>> suspend and resume. This patch free the rx_skbuff[] before
+>>> reallocing memory.
+>>>
+>>> Signed-off-by: ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> This isn't really the right way to fix this.
+>>
+>> I see two reasonable approaches:
+>>
+>> 1) suspend liberates the RX ring, although this approach is less
+>>     desirable
+>>
+>> 2) resume doesn't try to allocate already populated RX ring
+>>     entries
+>>
+>> Freeing the whole RX ring just to allocate it again immediately
+>> makes no sense at all and is wasteful work.
+>
+> This is a bug in this driver version that, to be honest, we fixed with
+> the first approach on STi kernel.
+> The patch just called the dma_free_rx_skbufs(priv) in the suspend.
+> I can give you this patch that is tested on my side too.
+> But! I do think we should move on second approach.
+> Indeed, also on ST platforms, when we play with suspend states
+> the DDR although in self-refresh the data are not lost at all.
+> No reason to free and reallocate all in suspend/resume.
+> I can test that and then provide another patch to this mailing list
+> asap.
+
+I have just send the patch (directly for approach #2).
+
+Peppe
+
+>
+> Let me know.
+> peppe
+>
+>
+>
