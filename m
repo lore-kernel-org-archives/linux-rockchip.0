@@ -1,65 +1,61 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH 3/5] dt-bindings: rockchip-thermal: Support the
- RK3228/RK3399 SoCs compatible
-Date: Thu, 26 Nov 2015 10:57:49 +0800
-Message-ID: <5656752D.2010707@rock-chips.com>
-References: <1448438377-29203-1-git-send-email-wxt@rock-chips.com>
- <1448438377-29203-4-git-send-email-wxt@rock-chips.com>
- <11146001.lIrLtFf7Xg@diego>
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: Re: [PATCH v4 06/13] drm/bridge: Add Synopsys DesignWare MIPI DSI
+ host controller driver
+Date: Thu, 26 Nov 2015 15:03:54 +0800
+Message-ID: <5656AEDA.4080607@rock-chips.com>
+References: <1448007339-10966-1-git-send-email-zyw@rock-chips.com>
+ <1448007339-10966-7-git-send-email-zyw@rock-chips.com>
+ <20151120160706.GE3300@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <11146001.lIrLtFf7Xg@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20151120160706.GE3300@ulmo.nvidia.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <treding@nvidia.com>
+Cc: Vincent Palatin <vpalatin@chromium.org>, Andrew Bresticker <abrestic@chromium.org>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, rmk+kernel@arm.linux.org.uk, Rahul Sharma <rahul.sharma@samsung.com>, ajaykumar.rs@samsung.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8825=E6=97=A5 22:56, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Am Mittwoch, 25. November 2015, 15:59:35 schrieb Caesar Wang:
->> This patchset attempts to new compatible for thermal founding
->> on RK3228/RK3399 SoCs.
->>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> ---
->>
->>   Documentation/devicetree/bindings/thermal/rockchip-thermal.txt | 2=
- ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/thermal/rockchip-ther=
-mal.txt
->> b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt ind=
-ex
->> 0dfa60d..af5f802 100644
->> --- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> +++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.txt
->> @@ -2,8 +2,10 @@
->>
->>   Required properties:
->>   - compatible : should be "rockchip,<name>-tsadc"
->> +   "rockchip,rk3228-tsadc": found on RK3228 SoCs
->>      "rockchip,rk3288-tsadc": found on RK3288 SoCs
->>      "rockchip,rk3368-tsadc": found on RK3368 SoCs
->> +   "rockchip,rk3368-tsadc": found on RK3399 SoCs
-> copy'n'paste error, should proably be
->   "rockchip,rk3399-tsadc": found on RK3399 SoCs
-
-=46ixed in next version, thanks!
->>   - reg : physical base address of the controller and length of memo=
-ry mapped
->> region.
->>   - interrupts : The interrupt number to the cpu. The interrupt spec=
-ifier
->> format
->
->
->
-
---=20
-caesar wang | software engineer | wxt@rock-chip.com
+SGkgVGhpZXJyeQoKVGhhbmtzIGZvciB5b3VyIGZlZWRiYWNrLgoKCk9uIDExLzIxLzIwMTUgMTI6
+MDcgQU0sIFRoaWVycnkgUmVkaW5nIHdyb3RlOgo+IE9uIEZyaSwgTm92IDIwLCAyMDE1IGF0IDA0
+OjE1OjMyUE0gKzA4MDAsIENocmlzIFpob25nIHdyb3RlOgo+PiBhZGQgU3lub3BzeXMgRGVzaWdu
+V2FyZSBNSVBJIERTSSBob3N0IGNvbnRyb2xsZXIgZHJpdmVyIHN1cHBvcnQuCj4+Cj4+IFNpZ25l
+ZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+Pgo+PiBD
+aGFuZ2VzIGluIHY0Ogo+PiBlbGltaW5hdGUgc29tZSB3YXJubmluZwo+Pgo+PiBDaGFuZ2VzIGlu
+IHYzOiBOb25lCj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4KPj4gICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL0tjb25maWcgICAgICAgfCAgIDExICsKPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdl
+L01ha2VmaWxlICAgICAgfCAgICAxICsKPj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X21p
+cGlfZHNpLmMgfCAxMDU2ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4gICBp
+bmNsdWRlL2RybS9icmlkZ2UvZHdfbWlwaV9kc2kuaCAgICAgfCAgIDI3ICsKPj4gICA0IGZpbGVz
+IGNoYW5nZWQsIDEwOTUgaW5zZXJ0aW9ucygrKQo+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmMKPj4gICBjcmVhdGUgbW9kZSAxMDA2NDQg
+aW5jbHVkZS9kcm0vYnJpZGdlL2R3X21pcGlfZHNpLmgKPj4KPj4KPj4gK3N0cnVjdCBkd19taXBp
+X2RzaSB7Cj4+ICsJc3RydWN0IG1pcGlfZHNpX2hvc3QgZHNpX2hvc3Q7Cj4+ICsJc3RydWN0IGRy
+bV9jb25uZWN0b3IgY29ubmVjdG9yOwo+PiArCXN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcjsK
+PiBzdHJ1Y3QgZHJtX2JyaWRnZSBhbHJlYWR5IGhhcyBhIHBvaW50ZXIgdG8gYW4gZW5jb2Rlciwg
+Y2FuJ3QgeW91IHJldXNlCj4gdGhhdCBpbnN0ZWFkPwo+Cj4+ICsJc3RydWN0IGRybV9icmlkZ2Ug
+KmJyaWRnZTsKPiBUeXBpY2FsbHkgeW91J2QgZW1iZWQgdGhlIGJyaWRnZSBpbnRvIHRoZSBkcml2
+ZXIgc3RydWN0dXJlLgpJJ20gYWxtb3N0IGRvbmUgd2l0aCBhbGwgdGhlIG1vZGlmaWNhdGlvbnMg
+YWNjb3JkaW5nIHRvIHlvdXIgY29tbWVudHMuClJlbWFpbmluZyB0aGlzIHBvaW50IEkgY2FuIG5v
+dCB1bmRlcnN0YW5kLCB0aGUgZHNpIGlzIGEgcG9pbnRlciBvZiAKZHJtX2JyaWRnZSwKaGVuY2Ug
+SSBjYW4gbm90IGdldCB0aGUgYnJpZGdlIGJ5IGNvbnRhaW5lcl9vZi4KQWx0aG91Z2gsIHRoZSAi
+YnJpZGdlLT5kcml2ZXJfcHJpdmF0ZSA9IGRzaSIgaGF2ZSBkb25lIGluIApkd19taXBpX2RzaV9y
+ZWdpc3Rlci4KCj4KPj4gKwlzdHJ1Y3QgZHJtX3BhbmVsICpwYW5lbDsKPj4gKwlzdHJ1Y3QgZGV2
+aWNlICpkZXY7Cj4+ICsKPj4gKwl2b2lkIF9faW9tZW0gKmJhc2U7Cj4+ICsKPj4gKwlzdHJ1Y3Qg
+Y2xrICpwbGxyZWZfY2xrOwo+PiArCXN0cnVjdCBjbGsgKmNmZ19jbGs7Cj4+ICsJc3RydWN0IGNs
+ayAqcGNsazsKPj4gKwo+PiArCXVuc2lnbmVkIGludCBsYW5lX21icHM7IC8qIHBlciBsYW5lICov
+Cj4+ICsJdTMyIGNoYW5uZWw7Cj4+ICsJdTMyIGxhbmVzOwo+PiArCXUzMiBmb3JtYXQ7Cj4+ICsJ
+dTE2IGlucHV0X2RpdjsKPj4gKwl1MTYgZmVlZGJhY2tfZGl2Owo+PiArCXN0cnVjdCBkcm1fZGlz
+cGxheV9tb2RlICptb2RlOwo+PiArCj4+ICsJY29uc3Qgc3RydWN0IGR3X21pcGlfZHNpX3BsYXRf
+ZGF0YSAqcGRhdGE7Cj4+ICsKPj4gKwlib29sIGVuYWJsZWQ7Cj4+ICt9Owo+PiArCj4+Cj4+Cj4+
+IFRoaWVycnkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
