@@ -1,97 +1,32 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/5] thermal: rockchip: fix a trivial typo
-Date: Fri, 27 Nov 2015 10:49:23 +0100
-Message-ID: <5259912.5mmETGszQg@diego>
-References: <1448592746-2129-1-git-send-email-wxt@rock-chips.com> <1448592746-2129-2-git-send-email-wxt@rock-chips.com>
+From: Herbert Xu <herbert@gondor.apana.org.au>
+Subject: Re: [PATCH v5 3/4] Crypto: rockchip/crypto - add crypto driver for
+ rk3288
+Date: Fri, 27 Nov 2015 21:26:03 +0800
+Message-ID: <20151127132603.GB29720@gondor.apana.org.au>
+References: <1448430213-27203-1-git-send-email-zain.wang@rock-chips.com>
+ <1448430213-27203-4-git-send-email-zain.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1448592746-2129-2-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1448430213-27203-4-git-send-email-zain.wang@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Zain Wang <zain.wang@rock-chips.com>
+Cc: zhengsq@rock-chips.com, hl@rock-chips.com, davem@davemloft.net, mturquette@baylibre.com, heiko@sntech.de, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, galak@codeaurora.org, linux@arm.linux.org.uk, mark.rutland@arm.com, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+On Wed, Nov 25, 2015 at 01:43:32PM +0800, Zain Wang wrote:
+> Crypto driver support:
+>      ecb(aes) cbc(aes) ecb(des) cbc(des) ecb(des3_ede) cbc(des3_ede)
+> You can alloc tags above in your case.
+> 
+> And other algorithms and platforms will be added later on.
+> 
+> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+> Tested-by: Heiko Stuebner <heiko@sntech.de>
 
-Am Freitag, 27. November 2015, 10:52:22 schrieb Caesar Wang:
-> This patchset trys to dictate unified format for driver.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v1:
-> - Search more trivial typo for me.
-> 
->  drivers/thermal/rockchip_thermal.c | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c
-> b/drivers/thermal/rockchip_thermal.c index e845841..5a8840b 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -38,7 +38,7 @@ enum tshut_mode {
->  };
-> 
->  /**
-> - * the system Temperature Sensors tshut(tshut) polarity
-> + * The system Temperature Sensors tshut(tshut) polarity
->   * the bit 8 is tshut polarity.
->   * 0: low active, 1: high active
->   */
-> @@ -57,10 +57,10 @@ enum sensor_id {
->  };
-> 
->  /**
-> -* The conversion table has the adc value and temperature.
-> -* ADC_DECREMENT is the adc value decremnet.(e.g. v2_code_table)
-> -* ADC_INCREMNET is the adc value incremnet.(e.g. v3_code_table)
-> -*/
-> + * The conversion table has the adc value and temperature.
-> + * ADC_DECREMENT: the adc value is of diminishing.(e.g. v2_code_table)
-> + * ADC_INCREMENT: the adc value is incremental.(e.g. v3_code_table)
-> + */
->  enum adc_sort_mode {
->  	ADC_DECREMENT = 0,
->  	ADC_INCREMENT,
-> @@ -75,13 +75,13 @@ enum adc_sort_mode {
-
-You could simply move to documenting the fields in the header (like 
-exynos_tmu.c for example) instead of inside the table. I think there are even 
-tools that create documention from these comments, so I'd suggest:
-
-/*
- * struct chip_tsadc_table: hold information about chip-specific differences
- * @id: conversion table
- * @length: size of conversion table
- * @data_mask: mask to apply on data inputs
- * @mode: sort mode of this adc variant (incrementing or decrementing)
- */
->  struct chip_tsadc_table {
->  	const struct tsadc_table *id;
-> 
-> -	/* the array table size*/
-> +	/* The array table size */
->  	unsigned int length;
-> 
-> -	/* that analogic mask data */
-> +	/* That analogic mask data */
->  	u32 data_mask;
-> 
-> -	/* the sort mode is adc value that increment or decrement in table */
-> +	/* The sort mode is adc value that increment or decrement in table */
->  	enum adc_sort_mode mode;
->  };
-> 
-> @@ -617,7 +617,7 @@ rockchip_thermal_register_sensor(struct platform_device
-> *pdev, return 0;
->  }
-> 
-> -/*
-> +/**
->   * Reset TSADC Controller, reset all tsadc registers.
->   */
->  static void rockchip_thermal_reset_controller(struct reset_control *reset)
-
+Applied.
+-- 
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
