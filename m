@@ -1,77 +1,34 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v8 14/17] drm: bridge: analogix/dp: add max link rate and lane count limit for RK3288
-Date: Fri, 27 Nov 2015 14:32:26 +0100
-Message-ID: <2807882.UeSPH80il3@diego>
-References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <1446022561-16870-1-git-send-email-ykk@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: rockchip: devicetree fixes for 4.4
+Date: Fri, 27 Nov 2015 17:45:46 +0100
+Message-ID: <3568593.PCnXbpRtfY@wuerfel>
+References: <1896520.ssRYuZn5dZ@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1446022561-16870-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, dianders@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-deve
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1896520.ssRYuZn5dZ@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 28. Oktober 2015, 16:56:01 schrieb Yakir Yang:
-> There are some IP limit on rk3288 that only support 4 physical lanes
-> of 2.7/1.6 Gbps/lane, so seprate them out by device_type flag.
->=20
-> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> ---
-
-[...]
-
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c index
-> 6307060..563ffb1d 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -890,8 +890,8 @@ static void analogix_dp_commit(struct analogix_dp=
-_device
-> *dp) return;
->  	}
->=20
-> -	ret =3D analogix_dp_set_link_train(dp, dp->video_info.lane_count,
-> -					 dp->video_info.link_rate);
-> +	ret =3D analogix_dp_set_link_train(dp, dp->video_info.max_lane_coun=
-t,
-> +					 dp->video_info.max_link_rate);
->  	if (ret) {
->  		dev_err(dp->dev, "unable to do link train\n");
->  		return;
-> @@ -1156,16 +1156,25 @@ static int analogix_dp_dt_parse_pdata(struct
-> analogix_dp_device *dp) struct device_node *dp_node =3D dp->dev->of_n=
-ode;
->  	struct video_info *video_info =3D &dp->video_info;
->=20
-> -	if (of_property_read_u32(dp_node, "samsung,link-rate",
-> -				 &video_info->link_rate)) {
-> -		dev_err(dp->dev, "failed to get link-rate\n");
-> -		return -EINVAL;
-> -	}
-> -
-> -	if (of_property_read_u32(dp_node, "samsung,lane-count",
-> -				 &video_info->lane_count)) {
-> -		dev_err(dp->dev, "failed to get lane-count\n");
-> -		return -EINVAL;
-> +	switch (dp->plat_data && dp->plat_data->dev_type) {
-
-drivers/gpu/drm/bridge/analogix/analogix_dp_core.c: In function =E2=80=98=
-analogix_dp_dt_parse_pdata=E2=80=99:
-drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1191:10: warning: sw=
-itch condition has boolean value [-Wswitch-bool]
-  switch (dp->plat_data && dp->plat_data->dev_type) {
-          ^
-
-As I think we always will need to distinguish between implementations,
-I guess it should be safe to exit with an error, it that implementation=
--data
-is not available, like just doing before the switch a:
-
-if (!dp->plat_data)
-	return -EINVAL;
+On Monday 23 November 2015 13:12:52 Heiko St=FCbner wrote:
+> Two fixes to Rockchip devicetree files, disabling the mmc-tuning
+> on the veyron-minnie board for now and adding the init state for
+> the over-temperature-protection to prevent glitches making the
+> system reboot sometimes.
+> =
 
 
-Heiko
+Pulled into fixes, thanks for the IRC reminder.
+
+	Arnd
