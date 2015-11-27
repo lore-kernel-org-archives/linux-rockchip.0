@@ -1,38 +1,97 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v8 02/17] drm: bridge: analogix/dp: split exynos dp driver to bridge directory
-Date: Fri, 27 Nov 2015 09:42:28 +0100
-Message-ID: <2318006.v6fLo6Azsc@diego>
-References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com> <1812354.kkj0DGG9mi@diego> <5657AFEC.60004@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/5] thermal: rockchip: fix a trivial typo
+Date: Fri, 27 Nov 2015 10:49:23 +0100
+Message-ID: <5259912.5mmETGszQg@diego>
+References: <1448592746-2129-1-git-send-email-wxt@rock-chips.com> <1448592746-2129-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5657AFEC.60004-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-deve
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1448592746-2129-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yakir,
+Hi Caesar,
 
-Am Freitag, 27. November 2015, 09:20:44 schrieb Yakir Yang:
-> Hi Heiko,
+Am Freitag, 27. November 2015, 10:52:22 schrieb Caesar Wang:
+> This patchset trys to dictate unified format for driver.
 > 
-> Thanks you for feedback, I do see some conflicts in Exynos Make/Kconfig
-> file [02/17] and dtsi file [07/17] when I try to apply this series on
-> 4.4-rc1
-> branch.
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 > 
-> Hmm... Due to I have update some patches to version 10 already, this
-> series may be become harder to reviewed, should I just send the whole
-> series out that update the version to v10.
+> ---
+> 
+> Changes in v1:
+> - Search more trivial typo for me.
+> 
+>  drivers/thermal/rockchip_thermal.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c
+> b/drivers/thermal/rockchip_thermal.c index e845841..5a8840b 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -38,7 +38,7 @@ enum tshut_mode {
+>  };
+> 
+>  /**
+> - * the system Temperature Sensors tshut(tshut) polarity
+> + * The system Temperature Sensors tshut(tshut) polarity
+>   * the bit 8 is tshut polarity.
+>   * 0: low active, 1: high active
+>   */
+> @@ -57,10 +57,10 @@ enum sensor_id {
+>  };
+> 
+>  /**
+> -* The conversion table has the adc value and temperature.
+> -* ADC_DECREMENT is the adc value decremnet.(e.g. v2_code_table)
+> -* ADC_INCREMNET is the adc value incremnet.(e.g. v3_code_table)
+> -*/
+> + * The conversion table has the adc value and temperature.
+> + * ADC_DECREMENT: the adc value is of diminishing.(e.g. v2_code_table)
+> + * ADC_INCREMENT: the adc value is incremental.(e.g. v3_code_table)
+> + */
+>  enum adc_sort_mode {
+>  	ADC_DECREMENT = 0,
+>  	ADC_INCREMENT,
+> @@ -75,13 +75,13 @@ enum adc_sort_mode {
 
-yes, that might make sense, also because people are generally reluctant to 
-fixup patches when simply reviewing/testing.
+You could simply move to documenting the fields in the header (like 
+exynos_tmu.c for example) instead of inside the table. I think there are even 
+tools that create documention from these comments, so I'd suggest:
 
+/*
+ * struct chip_tsadc_table: hold information about chip-specific differences
+ * @id: conversion table
+ * @length: size of conversion table
+ * @data_mask: mask to apply on data inputs
+ * @mode: sort mode of this adc variant (incrementing or decrementing)
+ */
+>  struct chip_tsadc_table {
+>  	const struct tsadc_table *id;
+> 
+> -	/* the array table size*/
+> +	/* The array table size */
+>  	unsigned int length;
+> 
+> -	/* that analogic mask data */
+> +	/* That analogic mask data */
+>  	u32 data_mask;
+> 
+> -	/* the sort mode is adc value that increment or decrement in table */
+> +	/* The sort mode is adc value that increment or decrement in table */
+>  	enum adc_sort_mode mode;
+>  };
+> 
+> @@ -617,7 +617,7 @@ rockchip_thermal_register_sensor(struct platform_device
+> *pdev, return 0;
+>  }
+> 
+> -/*
+> +/**
+>   * Reset TSADC Controller, reset all tsadc registers.
+>   */
+>  static void rockchip_thermal_reset_controller(struct reset_control *reset)
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
