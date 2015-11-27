@@ -1,94 +1,111 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v8 02/17] drm: bridge: analogix/dp: split exynos dp driver
- to bridge directory
-Date: Fri, 27 Nov 2015 09:20:44 +0800
-Message-ID: <5657AFEC.60004@rock-chips.com>
-References: <1446020143-32645-1-git-send-email-ykk@rock-chips.com>
- <1446020519-625-1-git-send-email-ykk@rock-chips.com>
- <1812354.kkj0DGG9mi@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1812354.kkj0DGG9mi@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, ajaynumb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, dri-deve
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH v4] clk: rockchip: switch PLLs to slow mode before reboot for rk3288
+Date: Fri, 27 Nov 2015 10:09:30 +0800
+Message-ID: <1448590170-23776-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: dianders@chromium.org, heiko@sntech.de
+Cc: Chris Zhong <zyw@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+We've been seeing some crashes at reboot test on rk3288-based systems,
+which boards have not reset pin connected to NPOR, they reboot by
+setting 0xfdb9 to RK3288_GLB_SRST_FST register. If the APLL works in
+a high frequency mode, some IPs might hang during soft reset.
+It appears that we can fix the problem by switching to slow mode before
+reboot, just like what we did before suspend.
 
-Thanks you for feedback, I do see some conflicts in Exynos Make/Kconfig
-file [02/17] and dtsi file [07/17] when I try to apply this series on=20
-4.4-rc1
-branch.
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Hmm... Due to I have update some patches to version 10 already, this
-series may be become harder to reviewed, should I just send the whole
-series out that update the version to v10.
+---
 
-Thanks
-- Yakir
+Changes in v4:
+- get rid of the CONFIG_PM_SLEEP conditionals completely
 
+Changes in v3:
+- remove include reboot.h
 
-On 11/27/2015 01:30 AM, Heiko St=FCbner wrote:
-> Hi Yakir,
->
-> Am Mittwoch, 28. Oktober 2015, 16:21:59 schrieb Yakir Yang:
->> Split the dp core driver from exynos directory to bridge directory,
->> and rename the core driver to analogix_dp_*, rename the platform
->> code to exynos_dp.
->>
->> Beside the new analogix_dp driver would export four hooks.
->> "analogix_dp_bind()" and "analogix_dp_unbind()"
->> "analogix_dp_detect()" and "analogix_dp_get_modes()"
->>
->> The bind/unbind symbols is used for analogix platform driver to conn=
-ect
->> with analogix_dp core driver. And the detect/get_modes is used for a=
-nalogix
->> platform driver to init the connector.
->>
->> They reason why connector need register in helper driver is rockchip=
- drm
->> haven't implement the atomic API, but Exynos drm have implement it, =
-so
->> there would need two different connector helper functions, that's wh=
-y we
->> leave the connector register in helper driver.
->>
->> Tested-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
->> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> [...]
->
->> diff --git a/drivers/gpu/drm/exynos/Kconfig b/drivers/gpu/drm/exynos=
-/Kconfig
->> index bd1a415..5f74f80 100644
->> --- a/drivers/gpu/drm/exynos/Kconfig
->> +++ b/drivers/gpu/drm/exynos/Kconfig
->> @@ -55,8 +55,9 @@ config DRM_EXYNOS_DSI
->>   	  This enables support for Exynos MIPI-DSI device.
->>
->>   config DRM_EXYNOS_DP
->> -	bool "EXYNOS DRM DP driver support"
->> +	bool "EXYNOS specific extensions for Analogix DP driver"
->>   	depends on DRM_EXYNOS && (DRM_EXYNOS_FIMD || DRM_EXYNOS7_DECON)
->> +	select DRM_ANALOGIX_DP
->>   	default DRM_EXYNOS
->>   	select DRM_PANEL
->>   	help
-> This doesn't apply anymore to 4.4-rc due to other changes in there. T=
-he
-> exynos/Makefile is affected as well.
->
->
->
->
+Changes in v2:
+- replace restart_handlers with the shutdown callback of syscore
 
+ drivers/clk/rockchip/clk-rk3288.c | 32 ++++++++++++++------------------
+ 1 file changed, 14 insertions(+), 18 deletions(-)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 9040878..97d314d 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -783,10 +783,10 @@ static const char *const rk3288_critical_clocks[] __initconst = {
+ 	"pclk_pd_pmu",
+ };
+ 
+-#ifdef CONFIG_PM_SLEEP
+ static void __iomem *rk3288_cru_base;
+ 
+-/* Some CRU registers will be reset in maskrom when the system
++/*
++ * Some CRU registers will be reset in maskrom when the system
+  * wakes up from fastboot.
+  * So save them before suspend, restore them after resume.
+  */
+@@ -840,33 +840,28 @@ static void rk3288_clk_resume(void)
+ 	}
+ }
+ 
++static void rk3288_clk_shutdown(void)
++{
++	writel_relaxed(0xf3030000, rk3288_cru_base + RK3288_MODE_CON);
++}
++
+ static struct syscore_ops rk3288_clk_syscore_ops = {
+ 	.suspend = rk3288_clk_suspend,
+ 	.resume = rk3288_clk_resume,
++	.shutdown = rk3288_clk_shutdown,
+ };
+ 
+-static void rk3288_clk_sleep_init(void __iomem *reg_base)
+-{
+-	rk3288_cru_base = reg_base;
+-	register_syscore_ops(&rk3288_clk_syscore_ops);
+-}
+-
+-#else /* CONFIG_PM_SLEEP */
+-static void rk3288_clk_sleep_init(void __iomem *reg_base) {}
+-#endif
+-
+ static void __init rk3288_clk_init(struct device_node *np)
+ {
+-	void __iomem *reg_base;
+ 	struct clk *clk;
+ 
+-	reg_base = of_iomap(np, 0);
+-	if (!reg_base) {
++	rk3288_cru_base = of_iomap(np, 0);
++	if (!rk3288_cru_base) {
+ 		pr_err("%s: could not map cru region\n", __func__);
+ 		return;
+ 	}
+ 
+-	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
++	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
+ 
+ 	/* xin12m is created by an cru-internal divider */
+ 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
+@@ -907,10 +902,11 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
+ 			ARRAY_SIZE(rk3288_cpuclk_rates));
+ 
+-	rockchip_register_softrst(np, 12, reg_base + RK3288_SOFTRST_CON(0),
++	rockchip_register_softrst(np, 12,
++				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+ 	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
+-	rk3288_clk_sleep_init(reg_base);
++	register_syscore_ops(&rk3288_clk_syscore_ops);
+ }
+ CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+-- 
+2.6.3
+
