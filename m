@@ -1,50 +1,47 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH] i2c: rk3x: populate correct variable for sda_falling_time
-Date: Mon, 30 Nov 2015 14:27:38 +0100
-Message-ID: <20151130132738.GB1513@katana>
-References: <1448467098-10198-1-git-send-email-wsa@the-dreams.de>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: override thermal settings on
+ veyron-speedy
+Date: Mon, 30 Nov 2015 22:00:41 +0800
+Message-ID: <565C5689.60208@gmail.com>
+References: <2402718.WBE9iyTUZ2@diego> <2523702.pCcOIjvoVs@diego>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="pvezYHf7grwyp3Bc"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1448467098-10198-1-git-send-email-wsa@the-dreams.de>
-Sender: linux-i2c-owner@vger.kernel.org
-To: linux-i2c@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2523702.pCcOIjvoVs@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---pvezYHf7grwyp3Bc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Nov 25, 2015 at 04:58:18PM +0100, Wolfram Sang wrote:
-> Signed-off-by: Wolfram Sang <wsa@the-dreams.de>
-
-Applied to for-current, thanks!
-
-
---pvezYHf7grwyp3Bc
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWXE7KAAoJEBQN5MwUoCm23o4QAJainjeDIRyDFFCTyYl+09Hg
-xZxYIfWnqyo/z3xviIh4Y1UDWfRpPNzu+CIvN1XJGRFNwGAi3MifEockiNTo0ZfE
-H4JJqXvNgqRQtE57oJa9pEW/RrNzxlhKnq5WHdn2Ws0V2NP31E1E1PkO+D6GmuLJ
-kG7RaGK/bVf41ZVRrzySbJEUo5psd52iYji31EP6D1SV6k+R+N664k3w6UCqhUGf
-JopmnrcTEbBvW4CcwBNKjjVJfPgQgCjySBetL7qFJGONMb5giCyxQs/zP/EpXCyQ
-e0ohXu1y1nUP2bnQjM/LQUBbPFjdmuKPpuc8p18DsUNvXPQPgYTwt/Eb69AtcuRE
-tYFSKKbIhliy6zR0ZG7erKwPzYw+pfcQOCNrZIiWRJ0onP+Vjn+UG54noarS87xL
-dGbKQQDb6VgOjEa2f+X5bmjg/eN+I6ESpESZfcJzsWtABn044HuusSY7roMyFo6g
-5aRT6wVCSbH6duyiB2ijBWOMi2Pyy3mXCi4iSaoCPTOdqS+mcldD6vMkBLI/CsgD
-0K3ZqGdnpjN+tmEgvrBxf+6JReDYixKCHetW3o2ue2ZVmtuCYjSFU9LTXETKpSZt
-we4OTrKjIERzU29C4nq6d4iFqfA9DDkt16Xa4YoM4gnCLqODJdnZywyYOEZS4bUq
-R8YFXd+DKMTDkKi8wDSF
-=nFQr
------END PGP SIGNATURE-----
-
---pvezYHf7grwyp3Bc--
+SGkgSGVpa28sCgrlnKggMjAxNeW5tDEx5pyIMzDml6UgMjE6MTQsIEhlaWtvIFN0w7xibmVyIOWG
+memBkzoKPiBBY2NvcmRpbmcgdG8gYSBjb21taXQgb24gdGhlIENocm9tZU9TIGtlcm5lbCwgdGhl
+IHRlbXBlcmF0dXJlIG9mIHRoZSBTcGVlZHkKPiBzdXJmYWNlIGlzIG92ZXIgc2tpbiB0ZW1wZXJh
+dHVyZSBzcGVjLiBTbyBhZGp1c3QgdGhlIHRoZXJtYWwgc2V0dGluZ3MKPiB0byBtaW1pYyB0aGUg
+Q2hyb21lT1MgdHJlZSB0byBzdGF5IHdpdGhpbiB0aGVzZSBzcGVjIGxpbWl0cy4KPgo+IFNpZ25l
+ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrby5zdHVlYm5lckBjb2xsYWJvcmEuY29tPgo+
+IC0tLQo+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHkuZHRzIHwgOCAr
+KysrKysrKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdp
+dCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tc3BlZWR5LmR0cyBiL2FyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tc3BlZWR5LmR0cwo+IGluZGV4IGE3ZWE3ZDAuLmIzNGE3
+YjUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHku
+ZHRzCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHkuZHRzCj4g
+QEAgLTg4LDYgKzg4LDE0IEBACj4gICAJfTsKPiAgIH07Cj4gICAKPiArJmNwdV9hbGVydDAgewo+
+ICsJdGVtcGVyYXR1cmUgPSA8NjUwMDA+Owo+ICt9Owo+ICsKPiArJmNwdV9hbGVydDEgewo+ICsJ
+dGVtcGVyYXR1cmUgPSA8NzAwMDA+Owo+ICt9Owo+ICsKCgpZZXAsIGFzIHRoZSBtYXNzIG9mIHRo
+ZXJtYWwgZGF0YSBmcm9tIE9FTSB3aXRoIGFsbCBraW5kcyBvZiB0ZXN0aW5nLgpUaGUgNjUvNzAg
+ZGVncmVlIGlzIHZlcnkgc3VpdCBmb3Igc3BlZWR5LiAoZS5nLjogUG93ZXIsIFBlcmZvcm1hbmNl
+KS4KClNvLCAgZmVlbCBmcmVlIGFkZCBteSB0YWc6IDotKQoKUmV2aWV3ZWQtYnk6IENhZXNhciBX
+YW5nIDx3eHRAcm9jay1jaGlwcy5jb20+CgoKPiAgICZyazgwOCB7Cj4gICAJcGluY3RybC1uYW1l
+cyA9ICJkZWZhdWx0IjsKPiAgIAlwaW5jdHJsLTAgPSA8JnBtaWNfaW50X2w+OwoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
