@@ -1,98 +1,45 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v1 1/5] thermal: rockchip: fix a trivial typo
-Date: Mon, 30 Nov 2015 10:32:18 +0800
-Message-ID: <565BB532.4010804@gmail.com>
-References: <1448592746-2129-1-git-send-email-wxt@rock-chips.com>
- <1448592746-2129-2-git-send-email-wxt@rock-chips.com>
- <5259912.5mmETGszQg@diego>
+From: Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Mon, 30 Nov 2015 11:43:32 +0100
+Message-ID: <565C2854.6000800@st.com>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <5259912.5mmETGszQg@diego>
-Sender: linux-pm-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Eduardo Valentin <edubezval@gmail.com>, linux-rockchip@lists.infradead.org, Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Kosina <trivial@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens@csie>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
 
-Thanks to take your time to review that.
 
-=E5=9C=A8 2015=E5=B9=B411=E6=9C=8827=E6=97=A5 17:49, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Freitag, 27. November 2015, 10:52:22 schrieb Caesar Wang:
+On 11/16/2015 04:06 AM, Masahiro Yamada wrote:
+> diff --git a/arch/arm/mach-sti/Kconfig b/arch/arm/mach-sti/Kconfig
+> index 125865d..736abe6 100644
+> --- a/arch/arm/mach-sti/Kconfig
+> +++ b/arch/arm/mach-sti/Kconfig
+> @@ -1,5 +1,6 @@
+>   menuconfig ARCH_STI
+> -	bool "STMicroelectronics Consumer Electronics SOCs" if ARCH_MULTI_V7
+> +	bool "STMicroelectronics Consumer Electronics SOCs"
+> +	depends on ARCH_MULTI_V7
+>   	select ARM_GIC
+>   	select ST_IRQCHIP
+>   	select ARM_GLOBAL_TIMER
 
-[...]
->
->   /**
-> -* The conversion table has the adc value and temperature.
-> -* ADC_DECREMENT is the adc value decremnet.(e.g. v2_code_table)
-> -* ADC_INCREMNET is the adc value incremnet.(e.g. v3_code_table)
-> -*/
-> + * The conversion table has the adc value and temperature.
-> + * ADC_DECREMENT: the adc value is of diminishing.(e.g. v2_code_tabl=
-e)
-> + * ADC_INCREMENT: the adc value is incremental.(e.g. v3_code_table)
-> + */
->   enum adc_sort_mode {
->   	ADC_DECREMENT =3D 0,
->   	ADC_INCREMENT,
-> @@ -75,13 +75,13 @@ enum adc_sort_mode {
-> You could simply move to documenting the fields in the header (like
-> exynos_tmu.c for example) instead of inside the table. I think there =
-are even
-> tools that create documention from these comments, so I'd suggest:
->
-> /*
->   * struct chip_tsadc_table: hold information about chip-specific dif=
-ferences
->   * @id: conversion table
->   * @length: size of conversion table
->   * @data_mask: mask to apply on data inputs
->   * @mode: sort mode of this adc variant (incrementing or decrementin=
-g)
->   */
+For STi part:
+Acked-by: Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
 
-That's a good idea for this.
-=46ixed in next patch v2.
-
->>   struct chip_tsadc_table {
->>   	const struct tsadc_table *id;
->>
->> -	/* the array table size*/
->> +	/* The array table size */
->>   	unsigned int length;
->>
->> -	/* that analogic mask data */
->> +	/* That analogic mask data */
->>   	u32 data_mask;
->>
->> -	/* the sort mode is adc value that increment or decrement in table=
- */
->> +	/* The sort mode is adc value that increment or decrement in table=
- */
->>   	enum adc_sort_mode mode;
->>   };
->>
->> @@ -617,7 +617,7 @@ rockchip_thermal_register_sensor(struct platform=
-_device
->> *pdev, return 0;
->>   }
->>
->> -/*
->> +/**
->>    * Reset TSADC Controller, reset all tsadc registers.
->>    */
->>   static void rockchip_thermal_reset_controller(struct reset_control=
- *reset)
->
->
->
->
-> --=20
-> Thanks,
-> Caesar
+Thanks,
+Maxime
