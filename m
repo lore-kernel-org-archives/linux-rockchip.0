@@ -1,14 +1,14 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: rockchip: override thermal settings on
- veyron-speedy
-Date: Mon, 30 Nov 2015 22:00:41 +0800
-Message-ID: <565C5689.60208@gmail.com>
-References: <2402718.WBE9iyTUZ2@diego> <2523702.pCcOIjvoVs@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: update the thermal management on
+ rk3288
+Date: Mon, 30 Nov 2015 15:17:39 +0100
+Message-ID: <11978217.g8EG36HDJ0@diego>
+References: <2402718.WBE9iyTUZ2@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2523702.pCcOIjvoVs@diego>
+In-Reply-To: <2402718.WBE9iyTUZ2@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,30 +18,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgrlnKggMjAxNeW5tDEx5pyIMzDml6UgMjE6MTQsIEhlaWtvIFN0w7xibmVyIOWG
-memBkzoKPiBBY2NvcmRpbmcgdG8gYSBjb21taXQgb24gdGhlIENocm9tZU9TIGtlcm5lbCwgdGhl
-IHRlbXBlcmF0dXJlIG9mIHRoZSBTcGVlZHkKPiBzdXJmYWNlIGlzIG92ZXIgc2tpbiB0ZW1wZXJh
-dHVyZSBzcGVjLiBTbyBhZGp1c3QgdGhlIHRoZXJtYWwgc2V0dGluZ3MKPiB0byBtaW1pYyB0aGUg
-Q2hyb21lT1MgdHJlZSB0byBzdGF5IHdpdGhpbiB0aGVzZSBzcGVjIGxpbWl0cy4KPgo+IFNpZ25l
-ZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrby5zdHVlYm5lckBjb2xsYWJvcmEuY29tPgo+
-IC0tLQo+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHkuZHRzIHwgOCAr
-KysrKysrKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tc3BlZWR5LmR0cyBiL2FyY2gvYXJt
-L2Jvb3QvZHRzL3JrMzI4OC12ZXlyb24tc3BlZWR5LmR0cwo+IGluZGV4IGE3ZWE3ZDAuLmIzNGE3
-YjUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHku
-ZHRzCj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi1zcGVlZHkuZHRzCj4g
-QEAgLTg4LDYgKzg4LDE0IEBACj4gICAJfTsKPiAgIH07Cj4gICAKPiArJmNwdV9hbGVydDAgewo+
-ICsJdGVtcGVyYXR1cmUgPSA8NjUwMDA+Owo+ICt9Owo+ICsKPiArJmNwdV9hbGVydDEgewo+ICsJ
-dGVtcGVyYXR1cmUgPSA8NzAwMDA+Owo+ICt9Owo+ICsKCgpZZXAsIGFzIHRoZSBtYXNzIG9mIHRo
-ZXJtYWwgZGF0YSBmcm9tIE9FTSB3aXRoIGFsbCBraW5kcyBvZiB0ZXN0aW5nLgpUaGUgNjUvNzAg
-ZGVncmVlIGlzIHZlcnkgc3VpdCBmb3Igc3BlZWR5LiAoZS5nLjogUG93ZXIsIFBlcmZvcm1hbmNl
-KS4KClNvLCAgZmVlbCBmcmVlIGFkZCBteSB0YWc6IDotKQoKUmV2aWV3ZWQtYnk6IENhZXNhciBX
-YW5nIDx3eHRAcm9jay1jaGlwcy5jb20+CgoKPiAgICZyazgwOCB7Cj4gICAJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKPiAgIAlwaW5jdHJsLTAgPSA8JnBtaWNfaW50X2w+OwoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Dmitry,
+
+Am Montag, 30. November 2015, 14:13:17 schrieb Heiko St=FCbner:
+> From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> =
+
+> In some cases the machine radiating is very poor,sometime the temperature
+> is rising very quickly on heavy loading.So we need have more frequent
+> polling and better granularity.
+> =
+
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Reviewed-by: Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+
+it looks like I forget to Cc you on this mail, because I'd like to keep you=
+r =
+
+Reviewed-by tag :-) . So can I keep your tag? Otherwise I'll just drop it w=
+hen =
+
+applying.
+
+
+Thanks
+Heiko
+
+> ---
+>  arch/arm/boot/dts/rk3288-thermal.dtsi | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+> =
+
+> diff --git a/arch/arm/boot/dts/rk3288-thermal.dtsi
+> b/arch/arm/boot/dts/rk3288-thermal.dtsi index 3404066..651b962 100644
+> --- a/arch/arm/boot/dts/rk3288-thermal.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-thermal.dtsi
+> @@ -52,7 +52,7 @@ reserve_thermal: reserve_thermal {
+>  };
+> =
+
+>  cpu_thermal: cpu_thermal {
+> -	polling-delay-passive =3D <1000>; /* milliseconds */
+> +	polling-delay-passive =3D <100>; /* milliseconds */
+>  	polling-delay =3D <5000>; /* milliseconds */
+> =
+
+>  	thermal-sensors =3D <&tsadc 1>;
+> @@ -63,6 +63,11 @@ cpu_thermal: cpu_thermal {
+>  			hysteresis =3D <2000>; /* millicelsius */
+>  			type =3D "passive";
+>  		};
+> +		cpu_alert1: cpu_alert1 {
+> +			temperature =3D <75000>; /* millicelsius */
+> +			hysteresis =3D <2000>; /* millicelsius */
+> +			type =3D "passive";
+> +		};
+>  		cpu_crit: cpu_crit {
+>  			temperature =3D <90000>; /* millicelsius */
+>  			hysteresis =3D <2000>; /* millicelsius */
+> @@ -74,13 +79,18 @@ cpu_thermal: cpu_thermal {
+>  		map0 {
+>  			trip =3D <&cpu_alert0>;
+>  			cooling-device =3D
+> +				<&cpu0 THERMAL_NO_LIMIT 6>;
+> +		};
+> +		map1 {
+> +			trip =3D <&cpu_alert1>;
+> +			cooling-device =3D
+>  				<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  		};
+>  	};
+>  };
+> =
+
+>  gpu_thermal: gpu_thermal {
+> -	polling-delay-passive =3D <1000>; /* milliseconds */
+> +	polling-delay-passive =3D <100>; /* milliseconds */
+>  	polling-delay =3D <5000>; /* milliseconds */
+> =
+
+>  	thermal-sensors =3D <&tsadc 2>;
