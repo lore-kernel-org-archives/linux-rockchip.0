@@ -1,54 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 2/2] ARM: dts: rockchip: override thermal settings on
- veyron-speedy
-Date: Mon, 30 Nov 2015 14:14:26 +0100
-Message-ID: <2523702.pCcOIjvoVs@diego>
-References: <2402718.WBE9iyTUZ2@diego>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: rk3x: populate correct variable for sda_falling_time
+Date: Mon, 30 Nov 2015 14:27:38 +0100
+Message-ID: <20151130132738.GB1513@katana>
+References: <1448467098-10198-1-git-send-email-wsa@the-dreams.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2402718.WBE9iyTUZ2@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="pvezYHf7grwyp3Bc"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1448467098-10198-1-git-send-email-wsa@the-dreams.de>
+Sender: linux-i2c-owner@vger.kernel.org
+To: linux-i2c@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-According to a commit on the ChromeOS kernel, the temperature of the Speedy
-surface is over skin temperature spec. So adjust the thermal settings
-to mimic the ChromeOS tree to stay within these spec limits.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-veyron-speedy.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+--pvezYHf7grwyp3Bc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-index a7ea7d0..b34a7b5 100644
---- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
-@@ -88,6 +88,14 @@
- 	};
- };
- 
-+&cpu_alert0 {
-+	temperature = <65000>;
-+};
-+
-+&cpu_alert1 {
-+	temperature = <70000>;
-+};
-+
- &rk808 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pmic_int_l>;
--- 
-2.6.1
+On Wed, Nov 25, 2015 at 04:58:18PM +0100, Wolfram Sang wrote:
+> Signed-off-by: Wolfram Sang <wsa@the-dreams.de>
+
+Applied to for-current, thanks!
+
+
+--pvezYHf7grwyp3Bc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWXE7KAAoJEBQN5MwUoCm23o4QAJainjeDIRyDFFCTyYl+09Hg
+xZxYIfWnqyo/z3xviIh4Y1UDWfRpPNzu+CIvN1XJGRFNwGAi3MifEockiNTo0ZfE
+H4JJqXvNgqRQtE57oJa9pEW/RrNzxlhKnq5WHdn2Ws0V2NP31E1E1PkO+D6GmuLJ
+kG7RaGK/bVf41ZVRrzySbJEUo5psd52iYji31EP6D1SV6k+R+N664k3w6UCqhUGf
+JopmnrcTEbBvW4CcwBNKjjVJfPgQgCjySBetL7qFJGONMb5giCyxQs/zP/EpXCyQ
+e0ohXu1y1nUP2bnQjM/LQUBbPFjdmuKPpuc8p18DsUNvXPQPgYTwt/Eb69AtcuRE
+tYFSKKbIhliy6zR0ZG7erKwPzYw+pfcQOCNrZIiWRJ0onP+Vjn+UG54noarS87xL
+dGbKQQDb6VgOjEa2f+X5bmjg/eN+I6ESpESZfcJzsWtABn044HuusSY7roMyFo6g
+5aRT6wVCSbH6duyiB2ijBWOMi2Pyy3mXCi4iSaoCPTOdqS+mcldD6vMkBLI/CsgD
+0K3ZqGdnpjN+tmEgvrBxf+6JReDYixKCHetW3o2ue2ZVmtuCYjSFU9LTXETKpSZt
+we4OTrKjIERzU29C4nq6d4iFqfA9DDkt16Xa4YoM4gnCLqODJdnZywyYOEZS4bUq
+R8YFXd+DKMTDkKi8wDSF
+=nFQr
+-----END PGP SIGNATURE-----
+
+--pvezYHf7grwyp3Bc--
