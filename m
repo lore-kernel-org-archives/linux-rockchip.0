@@ -1,12 +1,14 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 1/2] ARM: dts: rockchip: update the thermal management on
- rk3288
-Date: Mon, 30 Nov 2015 14:13:17 +0100
-Message-ID: <2402718.WBE9iyTUZ2@diego>
+Subject: [PATCH 2/2] ARM: dts: rockchip: override thermal settings on
+ veyron-speedy
+Date: Mon, 30 Nov 2015 14:14:26 +0100
+Message-ID: <2523702.pCcOIjvoVs@diego>
+References: <2402718.WBE9iyTUZ2@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2402718.WBE9iyTUZ2@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,67 +18,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+According to a commit on the ChromeOS kernel, the temperature of the Speedy
+surface is over skin temperature spec. So adjust the thermal settings
+to mimic the ChromeOS tree to stay within these spec limits.
 
-In some cases the machine radiating is very poor,sometime the temperature
-is rising very quickly on heavy loading.So we need have more frequent
-polling and better granularity.
-
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3288-thermal.dtsi | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288-thermal.dtsi b/arch/arm/boot/dts/rk3288-thermal.dtsi
-index 3404066..651b962 100644
---- a/arch/arm/boot/dts/rk3288-thermal.dtsi
-+++ b/arch/arm/boot/dts/rk3288-thermal.dtsi
-@@ -52,7 +52,7 @@ reserve_thermal: reserve_thermal {
- };
- 
- cpu_thermal: cpu_thermal {
--	polling-delay-passive = <1000>; /* milliseconds */
-+	polling-delay-passive = <100>; /* milliseconds */
- 	polling-delay = <5000>; /* milliseconds */
- 
- 	thermal-sensors = <&tsadc 1>;
-@@ -63,6 +63,11 @@ cpu_thermal: cpu_thermal {
- 			hysteresis = <2000>; /* millicelsius */
- 			type = "passive";
- 		};
-+		cpu_alert1: cpu_alert1 {
-+			temperature = <75000>; /* millicelsius */
-+			hysteresis = <2000>; /* millicelsius */
-+			type = "passive";
-+		};
- 		cpu_crit: cpu_crit {
- 			temperature = <90000>; /* millicelsius */
- 			hysteresis = <2000>; /* millicelsius */
-@@ -74,13 +79,18 @@ cpu_thermal: cpu_thermal {
- 		map0 {
- 			trip = <&cpu_alert0>;
- 			cooling-device =
-+				<&cpu0 THERMAL_NO_LIMIT 6>;
-+		};
-+		map1 {
-+			trip = <&cpu_alert1>;
-+			cooling-device =
- 				<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 		};
+diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+index a7ea7d0..b34a7b5 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+@@ -88,6 +88,14 @@
  	};
  };
  
- gpu_thermal: gpu_thermal {
--	polling-delay-passive = <1000>; /* milliseconds */
-+	polling-delay-passive = <100>; /* milliseconds */
- 	polling-delay = <5000>; /* milliseconds */
- 
- 	thermal-sensors = <&tsadc 2>;
++&cpu_alert0 {
++	temperature = <65000>;
++};
++
++&cpu_alert1 {
++	temperature = <70000>;
++};
++
+ &rk808 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pmic_int_l>;
 -- 
 2.6.1
