@@ -1,54 +1,69 @@
-From: Luis de Bethencourt <luisbg@osg.samsung.com>
-Subject: [PATCH] drm/rockchip: Fix module autoload for OF platform driver
-Date: Mon, 30 Nov 2015 14:56:56 +0000
-Message-ID: <1448895416-9502-1-git-send-email-luisbg@osg.samsung.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: mark.yao@rock-chips.com, airlied@linux.ie, heiko@sntech.de, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, akpm@linux-foundation.org, Luis de Bethencourt <luisbg@osg.samsung.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [RFC PATCH 4/9] drm/rockchip: support atomic asynchronous commit
+Date: Tue,  1 Dec 2015 11:26:26 +0800
+Message-ID: <1448940391-23333-5-git-send-email-mark.yao@rock-chips.com>
+References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This platform driver has a OF device ID table but the OF module
-alias information is not created so module autoloading won't work.
-
-Signed-off-by: Luis de Bethencourt <luisbg@osg.samsung.com>
----
-
-Hi,
-
-This is a Resend of a patch from October 20th [0]
-
-I am adding Andrew Morton to the CC list as was recommended at the Korea Linux
-Forum.
-
-This patch adds the missing MODULE_DEVICE_TABLE() for OF to export
-that information so modules have the correct aliases built-in and
-autoloading works correctly.
-
-A longer explanation by Javier Canillas can be found here:
-https://lkml.org/lkml/2015/7/30/519
-A multitude of similar patches have been merged for other drivers, search
-the git log for "module autoload for OF platform driver".
-
-Thanks,
-Luis
-
-[0] https://lkml.org/lkml/2015/10/20/485
-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 5d8ae5e..5897851 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -374,6 +374,7 @@ static const struct of_device_id vop_driver_dt_match[] = {
- 	  .data = &rk3288_vop },
- 	{},
- };
-+MODULE_DEVICE_TABLE(of, vop_driver_dt_match);
- 
- static inline void vop_writel(struct vop *vop, uint32_t offset, uint32_t v)
- {
--- 
-2.5.3
+SWYgZHJtIGNvcmUgcmVxdWVzdHMgYSBhc3luYyBjb21taXQsIHJvY2tjaGlwX2RybV9hdG9taWNf
+Y29tbWl0CndpbGwgc2NoZWR1bGUgYSB3b3JrIHRhc2sgdG8gdXBkYXRlIGxhdGVyLgoKU2lnbmVk
+LW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8ICAgNjAgKysrKysrKysrKysrKysr
+KysrKysrKy0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDQ3IGluc2VydGlvbnMoKyksIDEzIGRlbGV0
+aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwppbmRl
+eCBjODZkOTNhLi4zMGRkZjRhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV9mYi5jCkBAIC0yOSw2ICsyOSwxMiBAQCBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX2ZiIHsKIAlz
+dHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9ialtST0NLQ0hJUF9NQVhfRkJfQlVGRkVSXTsKIH07CiAK
+K3N0cnVjdCByb2NrY2hpcF9hdG9taWNfY29tbWl0IHsKKwlzdHJ1Y3Qgd29ya19zdHJ1Y3QJd29y
+azsKKwlzdHJ1Y3QgZHJtX2RldmljZQkqZGV2OworCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpz
+dGF0ZTsKK307CisKIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqcm9ja2NoaXBfZmJfZ2V0X2dlbV9v
+Ymooc3RydWN0IGRybV9mcmFtZWJ1ZmZlciAqZmIsCiAJCQkJCSAgICAgICB1bnNpZ25lZCBpbnQg
+cGxhbmUpCiB7CkBAIC0xOTUsMjAgKzIwMSwxMSBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9hdG9t
+aWNfd2FpdF9mb3JfY29tcGxldGUoc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlKQogCX0K
+IH0KIAotaW50IHJvY2tjaGlwX2RybV9hdG9taWNfY29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpk
+ZXYsCi0JCQkgICAgICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlLAotCQkJICAgICAg
+IGJvb2wgYXN5bmMpCitzdGF0aWMgdm9pZAorcm9ja2NoaXBfYXRvbWljX2NvbW1pdF9jb21wbGV0
+ZShzdHJ1Y3Qgcm9ja2NoaXBfYXRvbWljX2NvbW1pdCAqY29tbWl0KQogewotCWludCByZXQ7Ci0K
+LQlpZiAoYXN5bmMpCi0JCXJldHVybiAtRUJVU1k7Ci0KLQlyZXQgPSBkcm1fYXRvbWljX2hlbHBl
+cl9wcmVwYXJlX3BsYW5lcyhkZXYsIHN0YXRlKTsKLQlpZiAocmV0KQotCQlyZXR1cm4gcmV0Owot
+Ci0JZHJtX2F0b21pY19oZWxwZXJfc3dhcF9zdGF0ZShkZXYsIHN0YXRlKTsKKwlzdHJ1Y3QgZHJt
+X2RldmljZSAqZGV2ID0gY29tbWl0LT5kZXY7CisJc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0
+YXRlID0gY29tbWl0LT5zdGF0ZTsKIAogCS8qCiAJICogVE9ETzogZG8gZmVuY2Ugd2FpdCBoZXJl
+LgpAQCAtMjI2LDYgKzIyMyw0MyBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3Ry
+dWN0IGRybV9kZXZpY2UgKmRldiwKIAogCWRybV9hdG9taWNfc3RhdGVfZnJlZShzdGF0ZSk7CiAK
+KwlrZnJlZShjb21taXQpOworfQorCitzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fYXRvbWljX3dv
+cmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKQoreworCXN0cnVjdCByb2NrY2hpcF9hdG9taWNf
+Y29tbWl0ICpjb21taXQgPSBjb250YWluZXJfb2Yod29yaywKKwkJCQkJc3RydWN0IHJvY2tjaGlw
+X2F0b21pY19jb21taXQsIHdvcmspOworCisJcm9ja2NoaXBfYXRvbWljX2NvbW1pdF9jb21wbGV0
+ZShjb21taXQpOworfQorCitpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRy
+bV9kZXZpY2UgKmRldiwKKwkJCSAgICAgICBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUs
+CisJCQkgICAgICAgYm9vbCBhc3luYykKK3sKKwlpbnQgcmV0OworCXN0cnVjdCByb2NrY2hpcF9h
+dG9taWNfY29tbWl0ICpjb21taXQ7CisKKwlyZXQgPSBkcm1fYXRvbWljX2hlbHBlcl9wcmVwYXJl
+X3BsYW5lcyhkZXYsIHN0YXRlKTsKKwlpZiAocmV0KQorCQlyZXR1cm4gcmV0OworCisJZHJtX2F0
+b21pY19oZWxwZXJfc3dhcF9zdGF0ZShkZXYsIHN0YXRlKTsKKworCWNvbW1pdCA9IGt6YWxsb2Mo
+c2l6ZW9mKCpjb21taXQpLCBHRlBfS0VSTkVMKTsKKwlpZiAoIWNvbW1pdCkKKwkJcmV0dXJuIC1F
+Tk9NRU07CisKKwlJTklUX1dPUksoJmNvbW1pdC0+d29yaywgcm9ja2NoaXBfZHJtX2F0b21pY193
+b3JrKTsKKwljb21taXQtPmRldiA9IGRldjsKKwljb21taXQtPnN0YXRlID0gc3RhdGU7CisKKwlp
+ZiAoYXN5bmMpCisJCXNjaGVkdWxlX3dvcmsoJmNvbW1pdC0+d29yayk7CisJZWxzZQorCQlyb2Nr
+Y2hpcF9hdG9taWNfY29tbWl0X2NvbXBsZXRlKGNvbW1pdCk7CisKIAlyZXR1cm4gMDsKIH0KIAot
+LSAKMS43LjkuNQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
