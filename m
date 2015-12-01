@@ -1,65 +1,35 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [RFC PATCH 6/9] drm/rockchip: direct config connecter gate and
- out_mode
-Date: Tue,  1 Dec 2015 11:30:21 +0800
-Message-ID: <1448940621-23447-1-git-send-email-mark.yao@rock-chips.com>
+Subject: [RFC PATCH 7/9] drm/rockchip: force enable vop when do mode setting
+Date: Tue,  1 Dec 2015 11:32:01 +0800
+Message-ID: <1448940721-23488-1-git-send-email-mark.yao@rock-chips.com>
 References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Qm90aCBjb25uZWN0ZXIgZ2F0ZSBhbmQgb3V0X21vZGUgYXJlIG5vdCBjb25mbGljdCB3aXRoIG1v
-ZGUgc2V0CmNvbmZpZ3VyZS4gRGlyZWN0IHNldHRpbmcgY29ubmVjdGVyIGdhdGUgYW5kIG91dF9t
-b2RlLCB0aGF0IGFsbG93CmNvbm5lY3RvciBkbyByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2NvbmZp
-ZyBhZnRlciBtb2RlIHNldC4KClNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2Nr
-LWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jIHwgICA0MSArKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCAx
-OCBpbnNlcnRpb25zKCspLCAyMyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCA2MzE3ZGVhLi5jNjViNDU0IDEwMDY0NAotLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTkwLDkgKzkwLDYgQEAg
-c3RydWN0IHZvcCB7CiAJc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXY7CiAJYm9vbCBpc19lbmFi
-bGVkOwogCi0JaW50IGNvbm5lY3Rvcl90eXBlOwotCWludCBjb25uZWN0b3Jfb3V0X21vZGU7Ci0K
-IAkvKiBtdXRleCB2c3luY18gd29yayAqLwogCXN0cnVjdCBtdXRleCB2c3luY19tdXRleDsKIAli
-b29sIHZzeW5jX3dvcmtfcGVuZGluZzsKQEAgLTEwMjksOCArMTAyNiwyNCBAQCBpbnQgcm9ja2No
-aXBfZHJtX2NydGNfbW9kZV9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjLAogewogCXN0cnVj
-dCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKIAotCXZvcC0+Y29ubmVjdG9yX3R5cGUgPSBjb25u
-ZWN0b3JfdHlwZTsKLQl2b3AtPmNvbm5lY3Rvcl9vdXRfbW9kZSA9IG91dF9tb2RlOworCWlmIChX
-QVJOX09OKCF2b3AtPmlzX2VuYWJsZWQpKQorCQlyZXR1cm4gLUVJTlZBTDsKKworCXN3aXRjaCAo
-Y29ubmVjdG9yX3R5cGUpIHsKKwljYXNlIERSTV9NT0RFX0NPTk5FQ1RPUl9MVkRTOgorCQlWT1Bf
-Q1RSTF9TRVQodm9wLCByZ2JfZW4sIDEpOworCQlicmVhazsKKwljYXNlIERSTV9NT0RFX0NPTk5F
-Q1RPUl9lRFA6CisJCVZPUF9DVFJMX1NFVCh2b3AsIGVkcF9lbiwgMSk7CisJCWJyZWFrOworCWNh
-c2UgRFJNX01PREVfQ09OTkVDVE9SX0hETUlBOgorCQlWT1BfQ1RSTF9TRVQodm9wLCBoZG1pX2Vu
-LCAxKTsKKwkJYnJlYWs7CisJZGVmYXVsdDoKKwkJRFJNX0VSUk9SKCJ1bnN1cHBvcnQgY29ubmVj
-dG9yX3R5cGVbJWRdXG4iLCBjb25uZWN0b3JfdHlwZSk7CisJCXJldHVybiAtRUlOVkFMOworCX07
-CisJVk9QX0NUUkxfU0VUKHZvcCwgb3V0X21vZGUsIG91dF9tb2RlKTsKIAogCXJldHVybiAwOwog
-fQpAQCAtMTEzMiwyNCArMTE0NSw2IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX21vZGVfc2V0X25v
-ZmIoc3RydWN0IGRybV9jcnRjICpjcnRjKQogCiAJCXZvcF9kc3BfaG9sZF92YWxpZF9pcnFfZGlz
-YWJsZSh2b3ApOwogCX0KLQotCXN3aXRjaCAodm9wLT5jb25uZWN0b3JfdHlwZSkgewotCWNhc2Ug
-RFJNX01PREVfQ09OTkVDVE9SX0xWRFM6Ci0JCVZPUF9DVFJMX1NFVCh2b3AsIHJnYl9lbiwgMSk7
-Ci0JCWJyZWFrOwotCWNhc2UgRFJNX01PREVfQ09OTkVDVE9SX2VEUDoKLQkJVk9QX0NUUkxfU0VU
-KHZvcCwgZWRwX2VuLCAxKTsKLQkJYnJlYWs7Ci0JY2FzZSBEUk1fTU9ERV9DT05ORUNUT1JfSERN
-SUE6Ci0JCVZPUF9DVFJMX1NFVCh2b3AsIGhkbWlfZW4sIDEpOwotCQlicmVhazsKLQlkZWZhdWx0
-OgotCQlEUk1fRVJST1IoInVuc3VwcG9ydCBjb25uZWN0b3JfdHlwZVslZF1cbiIsCi0JCQkgIHZv
-cC0+Y29ubmVjdG9yX3R5cGUpOwotCQlnb3RvIG91dDsKLQl9OwotCVZPUF9DVFJMX1NFVCh2b3As
-IG91dF9tb2RlLCB2b3AtPmNvbm5lY3Rvcl9vdXRfbW9kZSk7Ci0KIAl2YWwgPSAweDg7CiAJdmFs
-IHw9IChhZGp1c3RlZF9tb2RlLT5mbGFncyAmIERSTV9NT0RFX0ZMQUdfTkhTWU5DKSA/IDAgOiAx
-OwogCXZhbCB8PSAoYWRqdXN0ZWRfbW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX05WU1lOQykg
-PyAwIDogKDEgPDwgMSk7Ci0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+When do mode setting, mean that we want to enable display output,
+but sometimes, vop_crtc_enable is after mode_set, we can't allow
+that, so force enable vop in mode setting.
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c65b454..7c07537 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1110,6 +1110,7 @@ static void vop_crtc_mode_set_nofb(struct drm_crtc *crtc)
+ 	u16 vact_end = vact_st + vdisplay;
+ 	uint32_t val;
+ 
++	vop_crtc_enable(crtc);
+ 	/*
+ 	 * If dclk rate is zero, mean that scanout is stop,
+ 	 * we don't need wait any more.
+-- 
+1.7.9.5
