@@ -1,57 +1,80 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [RFC PATCH 9/9] drm/rockchip: dw_hdmi: use encoder enable function
-Date: Tue,  1 Dec 2015 11:37:13 +0800
-Message-ID: <1448941034-23645-1-git-send-email-mark.yao@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC PATCH 8/9] drm: bridge/dw_hdmi: Covert to support atomic API
+Date: Tue, 1 Dec 2015 08:21:28 +0100
+Message-ID: <20151201072128.GF17050@phenom.ffwll.local>
 References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+ <1448940953-23604-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Thierry Reding <treding@nvidia.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1448940953-23604-1-git-send-email-mark.yao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Thierry Reding <treding@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-ZW5jb2Rlci5lbmFibGUgaXMgbW9yZSBjb21wYXRpYmxlIHRvIGF0b21pYyBhcGkgdGhhbiBlbmNv
-ZGVyLnByZXBhcmUvY29tbWl0CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
-ay1jaGlwcy5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2No
-aXAuYyB8ICAgMTQgKysrKystLS0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMo
-KyksIDkgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJv
-Y2tjaGlwLmMKaW5kZXggODBkNmZjOC4uY2ZlMDUyYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCkBAIC0xOTUsMTIgKzE5NSwxNSBAQCBzdGF0aWMgdm9p
-ZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0IGRybV9lbmNvZGVyICpl
-bmNvZGVyLAogewogfQogCi1zdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfY29t
-bWl0KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKK3N0YXRpYyB2b2lkIGR3X2hkbWlfcm9j
-a2NoaXBfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogewogCXN0
-cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pID0gdG9fcm9ja2NoaXBfaGRtaShlbmNvZGVyKTsKIAl1
-MzIgdmFsOwogCWludCBtdXg7CiAKKwlyb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2NvbmZpZyhlbmNv
-ZGVyLT5jcnRjLCBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEsCisJCQkJICAgICAgUk9DS0NISVBf
-T1VUX01PREVfQUFBQSk7CisKIAltdXggPSByb2NrY2hpcF9kcm1fZW5jb2Rlcl9nZXRfbXV4X2lk
-KGhkbWktPmRldi0+b2Zfbm9kZSwgZW5jb2Rlcik7CiAJaWYgKG11eCkKIAkJdmFsID0gSERNSV9T
-RUxfVk9QX0xJVCB8IChIRE1JX1NFTF9WT1BfTElUIDw8IDE2KTsKQEAgLTIxMiwxNyArMjE1LDEw
-IEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9jb21taXQoc3RydWN0IGRy
-bV9lbmNvZGVyICplbmNvZGVyKQogCQkobXV4KSA/ICJMSVQiIDogIkJJRyIpOwogfQogCi1zdGF0
-aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfcHJlcGFyZShzdHJ1Y3QgZHJtX2VuY29k
-ZXIgKmVuY29kZXIpCi17Ci0Jcm9ja2NoaXBfZHJtX2NydGNfbW9kZV9jb25maWcoZW5jb2Rlci0+
-Y3J0YywgRFJNX01PREVfQ09OTkVDVE9SX0hETUlBLAotCQkJCSAgICAgIFJPQ0tDSElQX09VVF9N
-T0RFX0FBQUEpOwotfQotCiBzdGF0aWMgc3RydWN0IGRybV9lbmNvZGVyX2hlbHBlcl9mdW5jcyBk
-d19oZG1pX3JvY2tjaGlwX2VuY29kZXJfaGVscGVyX2Z1bmNzID0gewogCS5tb2RlX2ZpeHVwID0g
-ZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVyX21vZGVfZml4dXAsCiAJLm1vZGVfc2V0ICAgPSBkd19o
-ZG1pX3JvY2tjaGlwX2VuY29kZXJfbW9kZV9zZXQsCi0JLnByZXBhcmUgICAgPSBkd19oZG1pX3Jv
-Y2tjaGlwX2VuY29kZXJfcHJlcGFyZSwKLQkuY29tbWl0ICAgICA9IGR3X2hkbWlfcm9ja2NoaXBf
-ZW5jb2Rlcl9jb21taXQsCisJLmVuYWJsZSAgICAgPSBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJf
-ZW5hYmxlLAogCS5kaXNhYmxlICAgID0gZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVyX2Rpc2FibGUs
-CiB9OwogCi0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+On Tue, Dec 01, 2015 at 11:35:53AM +0800, Mark Yao wrote:
+> Fill atomic needed funcs with default atomic helper library.
+> 
+> Rockchip use dw_hdmi, and drm/rockchip will covert to atomic api,
+> we need dw_hdmi support atomic funcs.
+> 
+> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+
+Aren't there drivers around which use dw_hdmi and which are still not yet
+atomic? This would break them. I think we neeed two connector_func tables
+and dw_hdmi needs to check for DRIVER_ATOMIC at runtime and pick the right
+version.
+
+The larger problem here is that "who should register the drm_connector" is
+a bit an unsolved problem, since both the bridge and the driver should be
+able to customize/adjust the drm_connector at the end of a bridge chain.
+This here is just another example of this problem.
+-Daniel
+
+> ---
+>  drivers/gpu/drm/bridge/dw_hdmi.c |    6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/dw_hdmi.c b/drivers/gpu/drm/bridge/dw_hdmi.c
+> index 56de9f1..587065a 100644
+> --- a/drivers/gpu/drm/bridge/dw_hdmi.c
+> +++ b/drivers/gpu/drm/bridge/dw_hdmi.c
+> @@ -22,6 +22,7 @@
+>  
+>  #include <drm/drm_of.h>
+>  #include <drm/drmP.h>
+> +#include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_crtc_helper.h>
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_encoder_slave.h>
+> @@ -1515,11 +1516,14 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
+>  }
+>  
+>  static struct drm_connector_funcs dw_hdmi_connector_funcs = {
+> -	.dpms = drm_helper_connector_dpms,
+> +	.dpms = drm_atomic_helper_connector_dpms,
+>  	.fill_modes = drm_helper_probe_single_connector_modes,
+>  	.detect = dw_hdmi_connector_detect,
+>  	.destroy = dw_hdmi_connector_destroy,
+>  	.force = dw_hdmi_connector_force,
+> +	.reset = drm_atomic_helper_connector_reset,
+> +	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+> +	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+>  };
+>  
+>  static struct drm_connector_helper_funcs dw_hdmi_connector_helper_funcs = {
+> -- 
+> 1.7.9.5
+> 
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> http://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
