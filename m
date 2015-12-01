@@ -1,14 +1,15 @@
-From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [RFC PATCH 2/9] drm/rockchip: Use new vblank api drm_crtc_vblank_*
-Date: Tue, 1 Dec 2015 07:56:00 +0000
-Message-ID: <CAPj87rNs+c5Y01zVPF3a+8puFH1ZWuLZUGoDq6EPfDQB5DVZGw@mail.gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH 8/9] drm: bridge/dw_hdmi: Covert to support atomic API
+Date: Tue, 01 Dec 2015 16:07:02 +0800
+Message-ID: <565D5526.7030009@rock-chips.com>
 References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
- <1448940391-23333-3-git-send-email-mark.yao@rock-chips.com>
+ <1448940953-23604-1-git-send-email-mark.yao@rock-chips.com>
+ <20151201072128.GF17050@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1448940391-23333-3-git-send-email-mark.yao@rock-chips.com>
+In-Reply-To: <20151201072128.GF17050@phenom.ffwll.local>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -18,17 +19,54 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Fabio Estevam <fabio.estevam@freescale.com>, Thierry Reding <treding@nvidia.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAxIERlY2VtYmVyIDIwMTUgYXQgMDM6MjYsIE1hcmsgWWFvIDxtYXJrLnlhb0Byb2Nr
-LWNoaXBzLmNvbT4gd3JvdGU6Cj4gTm8gZnVuY3Rpb25hbCB1cGRhdGUsIGRybV92YmxhbmtfKiBp
-cyB0aGUgbGVnYWN5IHZlcnNpb24gb2YKPiBkcm1fY3J0Y192YmxhbmtfKi4gYW5kIHVzZSBuZXcg
-YXBpIG1ha2UgZHJpdmVyIG1vcmUgY2xlYW4uCj4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8
-bWFyay55YW9Acm9jay1jaGlwcy5jb20+CgpIZWgsIEkgaGFkIHRoZSBzYW1lIHBhdGNoIGluIG15
-IHNlcmllcyB0byBmaXggcGFnZWZsaXAgZXZlbnRzLgoKUmV2aWV3ZWQtYnk6IERhbmllbCBTdG9u
-ZSA8ZGFuaWVsc0Bjb2xsYWJvcmEuY29tPgoKQ2hlZXJzLApEYW5pZWwKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+T24gMjAxNeW5tDEy5pyIMDHml6UgMTU6MjEsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gVHVl
+LCBEZWMgMDEsIDIwMTUgYXQgMTE6MzU6NTNBTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cj4+IEZp
+bGwgYXRvbWljIG5lZWRlZCBmdW5jcyB3aXRoIGRlZmF1bHQgYXRvbWljIGhlbHBlciBsaWJyYXJ5
+Lgo+Pgo+PiBSb2NrY2hpcCB1c2UgZHdfaGRtaSwgYW5kIGRybS9yb2NrY2hpcCB3aWxsIGNvdmVy
+dCB0byBhdG9taWMgYXBpLAo+PiB3ZSBuZWVkIGR3X2hkbWkgc3VwcG9ydCBhdG9taWMgZnVuY3Mu
+Cj4+Cj4+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4K
+PiBBcmVuJ3QgdGhlcmUgZHJpdmVycyBhcm91bmQgd2hpY2ggdXNlIGR3X2hkbWkgYW5kIHdoaWNo
+IGFyZSBzdGlsbCBub3QgeWV0Cj4gYXRvbWljPyBUaGlzIHdvdWxkIGJyZWFrIHRoZW0uIEkgdGhp
+bmsgd2UgbmVlZWQgdHdvIGNvbm5lY3Rvcl9mdW5jIHRhYmxlcwo+IGFuZCBkd19oZG1pIG5lZWRz
+IHRvIGNoZWNrIGZvciBEUklWRVJfQVRPTUlDIGF0IHJ1bnRpbWUgYW5kIHBpY2sgdGhlIHJpZ2h0
+Cj4gdmVyc2lvbi4KClJpZ2h0LCBhbm90aGVyIGRybSBkcml2ZXIgdXNlIGR3X2hkbWkgaXMgaW14
+LCBub3QgeWV0IGF0b21pYywgdGhpcyB3b3VsZCAKYnJlYWsgaXQuCmFzIHlvdSBzYWlkLCBJIHdv
+dWxkIHJlc2VuZCBhIHBhdGNoIHRvIGNoZWNrIERSSVZFUl9BVE9NSUMgYXQgcnVudGltZS4KClRo
+YW5rcwotTWFyawoKPgo+IFRoZSBsYXJnZXIgcHJvYmxlbSBoZXJlIGlzIHRoYXQgIndobyBzaG91
+bGQgcmVnaXN0ZXIgdGhlIGRybV9jb25uZWN0b3IiIGlzCj4gYSBiaXQgYW4gdW5zb2x2ZWQgcHJv
+YmxlbSwgc2luY2UgYm90aCB0aGUgYnJpZGdlIGFuZCB0aGUgZHJpdmVyIHNob3VsZCBiZQo+IGFi
+bGUgdG8gY3VzdG9taXplL2FkanVzdCB0aGUgZHJtX2Nvbm5lY3RvciBhdCB0aGUgZW5kIG9mIGEg
+YnJpZGdlIGNoYWluLgo+IFRoaXMgaGVyZSBpcyBqdXN0IGFub3RoZXIgZXhhbXBsZSBvZiB0aGlz
+IHByb2JsZW0uCj4gLURhbmllbAo+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+ZHdfaGRtaS5jIHwgICAgNiArKysrKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25z
+KCspLCAxIGRlbGV0aW9uKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJp
+ZGdlL2R3X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS5jCj4+IGluZGV4
+IDU2ZGU5ZjEuLjU4NzA2NWEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+ZHdfaGRtaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS5jCj4+IEBA
+IC0yMiw2ICsyMiw3IEBACj4+ICAgCj4+ICAgI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPj4gICAj
+aW5jbHVkZSA8ZHJtL2RybVAuaD4KPj4gKyNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxwZXIu
+aD4KPj4gICAjaW5jbHVkZSA8ZHJtL2RybV9jcnRjX2hlbHBlci5oPgo+PiAgICNpbmNsdWRlIDxk
+cm0vZHJtX2VkaWQuaD4KPj4gICAjaW5jbHVkZSA8ZHJtL2RybV9lbmNvZGVyX3NsYXZlLmg+Cj4+
+IEBAIC0xNTE1LDExICsxNTE2LDE0IEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfY29ubmVjdG9yX2Zv
+cmNlKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IpCj4+ICAgfQo+PiAgIAo+PiAgIHN0
+YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyBkd19oZG1pX2Nvbm5lY3Rvcl9mdW5jcyA9
+IHsKPj4gLQkuZHBtcyA9IGRybV9oZWxwZXJfY29ubmVjdG9yX2RwbXMsCj4+ICsJLmRwbXMgPSBk
+cm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfZHBtcywKPj4gICAJLmZpbGxfbW9kZXMgPSBkcm1f
+aGVscGVyX3Byb2JlX3NpbmdsZV9jb25uZWN0b3JfbW9kZXMsCj4+ICAgCS5kZXRlY3QgPSBkd19o
+ZG1pX2Nvbm5lY3Rvcl9kZXRlY3QsCj4+ICAgCS5kZXN0cm95ID0gZHdfaGRtaV9jb25uZWN0b3Jf
+ZGVzdHJveSwKPj4gICAJLmZvcmNlID0gZHdfaGRtaV9jb25uZWN0b3JfZm9yY2UsCj4+ICsJLnJl
+c2V0ID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX3Jlc2V0LAo+PiArCS5hdG9taWNfZHVw
+bGljYXRlX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0
+ZSwKPj4gKwkuYXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0
+b3JfZGVzdHJveV9zdGF0ZSwKPj4gICB9Owo+PiAgIAo+PiAgIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nv
+bm5lY3Rvcl9oZWxwZXJfZnVuY3MgZHdfaGRtaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzID0gewo+
+PiAtLSAKPj4gMS43LjkuNQo+Pgo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwo+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+IGRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKPj4gaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
