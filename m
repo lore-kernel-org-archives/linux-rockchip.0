@@ -1,51 +1,41 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 2/2] ARM: dts: rockchip: change the correct voltage range for rk3288 evb board
-Date: Wed,  2 Dec 2015 19:12:21 +0800
-Message-ID: <1449054741-25354-2-git-send-email-wxt@rock-chips.com>
-References: <1449054741-25354-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1449054741-25354-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Subject: [RFC] rk3368 idle states
+Date: Wed, 2 Dec 2015 11:18:58 +0000
+Message-ID: <20151202111858.GB18981@red-moon>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In general, the logic voltage is affected by ddr frequency factors.
-We should fix the correct voltage range since assuemd that we have the
-ddr frequency driver in mainline.
+Hi Heiko,
 
-AFAIK, the 1.8v voltage is used by the SD3.0 card.
+while reviewing other dts idle states bindings I spotted the following
+snippet in arch/arm64/boot/dts/rockchip/rk3368.dtsi:
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+cpu_sleep: cpu-sleep-0 {
+       compatible = "arm,idle-state";
+       arm,psci-suspend-param = <0x1010000>;
+       entry-latency-us = <0x3fffffff>;
+       exit-latency-us = <0x40000000>;
+       min-residency-us = <0xffffffff>;
+};
 
----
+Could you please explain to me how you obtained these residency/latency
+values ? They make NO sense whatsoever and I am quite tempted to
+ask you to remove this data from the dts file, it is just wrong.
 
- arch/arm/boot/dts/rk3288-evb-act8846.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-evb-act8846.dts b/arch/arm/boot/dts/rk3288-evb-act8846.dts
-index 43949a6..2797f32 100644
---- a/arch/arm/boot/dts/rk3288-evb-act8846.dts
-+++ b/arch/arm/boot/dts/rk3288-evb-act8846.dts
-@@ -119,8 +119,8 @@
- 
- 			vdd_log: REG3 {
- 				regulator-name = "VDD_LOG";
--				regulator-min-microvolt = <1000000>;
--				regulator-max-microvolt = <1000000>;
-+				regulator-min-microvolt = <700000>;
-+				regulator-max-microvolt = <1500000>;
- 				regulator-always-on;
- 			};
- 
-@@ -133,7 +133,7 @@
- 
- 			vccio_sd: REG5 {
- 				regulator-name = "VCCIO_SD";
--				regulator-min-microvolt = <3300000>;
-+				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <3300000>;
- 				regulator-always-on;
- 			};
--- 
-1.9.1
+Thanks,
+Lorenzo
