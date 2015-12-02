@@ -1,11 +1,15 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: add devicetree node to veyron minnie
-Date: Wed, 02 Dec 2015 19:03:56 +0100
-Message-ID: <2165846.YmcBK0foD2@diego>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 2/3] ARM: dts: rockchip: add veyron-brain board
+Date: Wed, 2 Dec 2015 10:26:23 -0800
+Message-ID: <20151202182623.GA49625@google.com>
+References: <2767415.mEkgRbSSUB@diego>
+ <6340149.qAGjxgRvNd@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <6340149.qAGjxgRvNd@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -15,39 +19,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Minnie provides an elan,ekth3500 touchscreen over the display,
-so add the necessary node to enable it.
+On Tue, Dec 01, 2015 at 06:16:02PM +0100, Heiko St=FCbner wrote:
+> Similar to pinky, brain is a development model and probably also
+> nearing extinction. But to keep pinky from being lonely I'll keep
+> the two brain boards around as well, especially as they as well
+> have easily accessible dut-connectors.
+> =
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-veyron-minnie.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> would cool to get an Ack from ChromeOS-people concerning the
+> license change to GPL2/X11 - as with the dts before
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index 85f0373..699beb0 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -121,6 +121,18 @@
- 	clock-frequency = <400000>;
- 	i2c-scl-falling-time-ns = <50>;
- 	i2c-scl-rising-time-ns = <300>;
-+
-+	touchscreen@10 {
-+		compatible = "elan,ekth3500";
-+		reg = <0x10>;
-+		interrupt-parent = <&gpio2>;
-+		interrupts = <14 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touch_int &touch_rst>;
-+		reset-gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
-+		vcc33-supply = <&vcc33_touch>;
-+		vccio-supply = <&vcc33_touch>;
-+	};
- };
- 
- &rk808 {
--- 
-2.6.1
+For the license changes:
+
+Acked-by: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Not tested or reviewed otherwise.
+
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   5 +
+>  arch/arm/boot/dts/Makefile                         |   1 +
+>  arch/arm/boot/dts/rk3288-veyron-brain.dts          | 139 +++++++++++++++=
+++++++
+>  3 files changed, 145 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/rk3288-veyron-brain.dts
+
+...
+
+Brian
