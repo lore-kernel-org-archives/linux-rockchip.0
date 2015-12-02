@@ -1,43 +1,146 @@
 From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: Send events for same-fb flips
-Date: Wed, 2 Dec 2015 14:07:05 +0000
-Message-ID: <CAPj87rNJwjMCNe5pBkZm5NpXDq93ouu0is0GUZDcsEaX8oiDNw@mail.gmail.com>
-References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
- <1447678222-6858-2-git-send-email-daniels@collabora.com>
- <5652C43E.10606@rock-chips.com> <565E42FB.9050102@rock-chips.com>
+Subject: Re: [RFC PATCH 3/9] drm/rockchip: Convert to support atomic API
+Date: Wed, 2 Dec 2015 14:18:35 +0000
+Message-ID: <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
+References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+	<1448940391-23333-4-git-send-email-mark.yao@rock-chips.com>
+	<CAPj87rPtWgH2WE7_EEC-Q41c7Ew2z8CwPMMQD+cC08G7qNZTeg@mail.gmail.com>
+	<565D68F0.3010905@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <565E42FB.9050102@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <565D68F0.3010905@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Daniel Stone <daniels@collabora.com>, dri-devel <dri-devel@lists.freedesktop.org>, Caesar Wang <wxt@rock-chips.com>
+Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywgQ2Flc2FyLAoKT24gMiBEZWNlbWJlciAyMDE1IGF0IDAxOjAxLCBNYXJrIHlhbyA8
-bWFyay55YW9Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+IE9uIDIwMTXlubQxMeaciDIz5pelIDE1
-OjQ2LCBDYWVzYXIgV2FuZyB3cm90ZToKPj4gVGhlcmUgaXMgYSB3YXJuaW5nIGZvciBidWlsZGlu
-Zy4KPj4KPj4gQ0MgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3Aubwo+
-PiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jOjc1MzozMjogd2Fy
-bmluZzoKPj4gJ3ZvcF93aW5fbGFzdF9wZW5kaW5nX2ZiJyBkZWZpbmVkIGJ1dCBub3QgdXNlZCBb
-LVd1bnVzZWQtZnVuY3Rpb25dCj4+Cj4+IE1heWJlLCB3ZSBjYW4gYWxzbyByZW1vdmUgdGhlIHZv
-cF93aW5fbGFzdF9wZW5kaW5nX2ZiKCkgZnVuY3Rpb24uCgpZb3UncmUgYWJzb2x1dGVseSByaWdo
-dCwgYW5kIEkgaGF2ZSByZW1vdmVkIHRoaXMgaW4gdGhlIG5leHQgcGF0Y2hzZXQsCndoaWNoIEkg
-d2lsbCBmaW5kIHRoZSB0aW1lIHRvIHBvc3Qgc2hvcnRseS4KCj4gQ2FuIHlvdSB0ZXN0IHRoaXMg
-cHJvYmxlbSB3aXRoIG15IG5ldyBhdG9taWMgcGF0Y2hlcz8gSSB0aGluayBhdG9taWMgcGF0Y2gK
-PiBmaXggdGhlIHByb2JsZW0uCgpJIG5lZWQgc29tZSBtb3JlIHRpbWUgdG8gZG8gYSBmdWxsIHJl
-dmlldyBvZiB0aGUgYXRvbWljIHdvcmsuIEJ1dAplaXRoZXIgd2F5LCBhdG9taWMgaXMgbm90IGFw
-cHJvcHJpYXRlIGZvciBhIC1maXhlcyBwdWxsIC0gSSB3b3VsZCBsaWtlCnRvIHNlZSB0aGlzIGlu
-IDQuNCBpZiBwb3NzaWJsZSwgcmF0aGVyIHRoYW4gNC42LgoKQ2hlZXJzLApEYW5pZWwKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVl
-ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Mark,
+Thanks for getting back to this.
+
+On 1 December 2015 at 09:31, Mark yao <mark.yao@rock-chips.com> wrote:
+> On 2015=E5=B9=B412=E6=9C=8801=E6=97=A5 16:18, Daniel Stone wrote:
+>> On 1 December 2015 at 03:26, Mark Yao<mark.yao@rock-chips.com>  wrot=
+e:
+>>> >+       for_each_crtc_in_state(state, crtc, crtc_state, i) {
+>>> >+               if (!crtc->state->active)
+>>> >+                       continue;
+>>> >+
+>>> >+               rockchip_crtc_wait_for_update(crtc);
+>>> >+       }
+>>
+>> I'd be much more comfortable if this passed in an explicit pointer t=
+o
+>> state, or an address to wait for, rather than have wait_for_complete
+>> dig out state with no locking. The latter is potentially racy for
+>> async operations.
+>>
+> Hi Daniel
+>    "if this passed in an explicit pointer to state, or an address to =
+wait
+> for", I don't understand, can you point how it work?
+
+Ah, OK. I mean that rockchip_crtc_wait_for_update takes a drm_crtc
+pointer, and establishes the state from that (e.g.
+crtc->primary->state). This can easily lead to confusion in async
+contexts, as the states attached to a drm_crtc and a drm_plane can
+change here while you wait for it.
+
+It would be better if the call was:
+
+for_each_plane_in_state(state, plane, plane_state, i) {
+    if (plane->type =3D=3D DRM_PLANE_TYPE_PRIMARY)
+        rockchip_crtc_wait_for_update(plane_state->crtc, plane_state);
+}
+
+This way it is very clear, and there is no confusion as to which
+request we are waiting to complete.
+
+In general, using crtc->state or plane->state is a very bad idea,
+_except_ in the atomic_check function where you are calculating
+changes (e.g. if (plane_state->fb->pitches[0] !=3D
+plane->state->fb->pitches[0]) rockchip_plane_state->pitch_changed =3D
+true). After atomic_check, you should always pass around pointers to
+the plane state explicitly, and avoid using the pointers from drm_crtc
+and drm_plane.
+
+Does that help?
+
+>>>          if (is_yuv) {
+>>>                  /*
+>>>                   * Src.x1 can be odd when do clip, but yuv plane s=
+tart
+>>> point
+>>>                   * need align with 2 pixel.
+>>>                   */
+>>> -               val =3D (src.x1 >> 16) % 2;
+>>> -               src.x1 +=3D val << 16;
+>>> -               src.x2 +=3D val << 16;
+>>> +               uint32_t temp =3D (src->x1 >> 16) % 2;
+>>> +
+>>> +               src->x1 +=3D temp << 16;
+>>> +               src->x2 +=3D temp << 16;
+>>>          }
+>>
+>> I know this isn't new, but moving the plane around is bad. If the us=
+er
+>> gives you a pixel boundary that you can't actually use, please rejec=
+t
+>> the configuration rather than silently trying to fix it up.
+>
+> the origin src.x1 would align with 2 pixel, but when we move the dest
+> window, and do clip by output, the src.x1 may be clipped to odd.
+> regect this configuration may let user confuse, sometimes good, somet=
+imes
+> bad.
+
+=46or me, it is more confusing when the display shows something
+different to what I have requested. In some media usecases, doing this
+is a showstopper and will result in products failing acceptance
+testing. Userspace can make a policy decision to try different
+alignments to get _something_ to show (even if it's not what was
+explicitly requested), but doing this in the kernel is inappropriate:
+please just reject it, and have userspace fall back to another
+composition method (e.g. GL) in these cases.
+
+>>> -static void vop_plane_destroy(struct drm_plane *plane)
+>>> +static void vop_atomic_plane_destroy_state(struct drm_plane *plane=
+,
+>>> +                                          struct drm_plane_state *=
+state)
+>>>   {
+>>> -       vop_disable_plane(plane);
+>>> -       drm_plane_cleanup(plane);
+>>> +       struct vop_plane_state *vop_state =3D to_vop_plane_state(st=
+ate);
+>>> +
+>>> +       if (state->fb)
+>>> +               drm_framebuffer_unreference(state->fb);
+>>> +
+>>> +       kfree(vop_state);
+>>>   }
+>>
+>> You can replace this hook with drm_atomic_helper_plane_destroy_state=
+=2E
+>
+>
+> Hmm, only can hook with __drm_atomic_helper_plane_destroy_state.
+
+Ah yes, you're right. But still, using that would be better than duplic=
+ating it.
+
+>     Can you share your Weston environment to me, I'm interesting to t=
+est drm
+> rockchip on weston.
+
+Of course. You can download Weston from http://wayland.freedesktop.org
+- the most interesting dependencies are libevdev, libinput, and
+wayland itself. If you are building newer Weston from git, you'll need
+the wayland-protocols repository as well, from
+anongit.freedesktop.org/git/wayland/wayland-protocols/. Please let me
+know privately if you need some more help with building these, but
+they should be quite straightforward.
+
+Cheers,
+Daniel
