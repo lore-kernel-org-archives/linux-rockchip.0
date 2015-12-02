@@ -1,37 +1,53 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 0/3] Add the rk3368 evb board with the act8846 pmic
-Date: Wed, 02 Dec 2015 00:50:29 +0100
-Message-ID: <5501370.GQCpicsLkL@diego>
-References: <1448961206-23769-1-git-send-email-wxt@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Fix module autoload for OF platform driver
+Date: Wed, 02 Dec 2015 08:57:08 +0800
+Message-ID: <565E41E4.4060606@rock-chips.com>
+References: <1448895416-9502-1-git-send-email-luisbg@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1448961206-23769-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Roger Chen <roger.chen@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Yunzhi Li <lyz@rock-chips.com>, Will Deacon <will.deacon@arm.com>, Romain Perier <romain.perier@gmail.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1448895416-9502-1-git-send-email-luisbg@osg.samsung.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Luis de Bethencourt <luisbg@osg.samsung.com>, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, akpm@linux-foundation.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-Am Dienstag, 1. Dezember 2015, 17:13:23 schrieb Caesar Wang:
-> This series pacthes try to add the evb dts for rk3368 SoCs,
-> This's similar with the rj3288 evb board.
-> 
-> On the moment, pwm/backlight/usb/thermal/emmc stuff can work for this
-> board, I add the base version for the future firstly.
-applied all 3 to relevant branches for 4.5, with some small changes:
-
-> PATCH [1/3]: Force rk3368 PWM clock (and its parents) On
-> That's similar HACK way to work.
-shortened the comment in the code a bit
-
-> PATCH [2/3]: Add the RK3368 EVB board for with the act8846 pmic for dtsi
-Moved some minor stuff around a bit (ordering, etc)
-
-> PATCH [3/3]: Add the PWM node info for rk3368 core.
-this now comes before the addition of the evb files
-
-
-Heiko
+T24gMjAxNeW5tDEx5pyIMzDml6UgMjI6NTYsIEx1aXMgZGUgQmV0aGVuY291cnQgd3JvdGU6Cj4g
+VGhpcyBwbGF0Zm9ybSBkcml2ZXIgaGFzIGEgT0YgZGV2aWNlIElEIHRhYmxlIGJ1dCB0aGUgT0Yg
+bW9kdWxlCj4gYWxpYXMgaW5mb3JtYXRpb24gaXMgbm90IGNyZWF0ZWQgc28gbW9kdWxlIGF1dG9s
+b2FkaW5nIHdvbid0IHdvcmsuCj4KPiBTaWduZWQtb2ZmLWJ5OiBMdWlzIGRlIEJldGhlbmNvdXJ0
+IDxsdWlzYmdAb3NnLnNhbXN1bmcuY29tPgo+IC0tLQo+Cj4gSGksCj4KPiBUaGlzIGlzIGEgUmVz
+ZW5kIG9mIGEgcGF0Y2ggZnJvbSBPY3RvYmVyIDIwdGggWzBdCj4KPiBJIGFtIGFkZGluZyBBbmRy
+ZXcgTW9ydG9uIHRvIHRoZSBDQyBsaXN0IGFzIHdhcyByZWNvbW1lbmRlZCBhdCB0aGUgS29yZWEg
+TGludXgKPiBGb3J1bS4KPgo+IFRoaXMgcGF0Y2ggYWRkcyB0aGUgbWlzc2luZyBNT0RVTEVfREVW
+SUNFX1RBQkxFKCkgZm9yIE9GIHRvIGV4cG9ydAo+IHRoYXQgaW5mb3JtYXRpb24gc28gbW9kdWxl
+cyBoYXZlIHRoZSBjb3JyZWN0IGFsaWFzZXMgYnVpbHQtaW4gYW5kCj4gYXV0b2xvYWRpbmcgd29y
+a3MgY29ycmVjdGx5Lgo+Cj4gQSBsb25nZXIgZXhwbGFuYXRpb24gYnkgSmF2aWVyIENhbmlsbGFz
+IGNhbiBiZSBmb3VuZCBoZXJlOgo+IGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE1LzcvMzAvNTE5
+Cj4gQSBtdWx0aXR1ZGUgb2Ygc2ltaWxhciBwYXRjaGVzIGhhdmUgYmVlbiBtZXJnZWQgZm9yIG90
+aGVyIGRyaXZlcnMsIHNlYXJjaAo+IHRoZSBnaXQgbG9nIGZvciAibW9kdWxlIGF1dG9sb2FkIGZv
+ciBPRiBwbGF0Zm9ybSBkcml2ZXIiLgo+Cj4gVGhhbmtzLAo+IEx1aXMKPgo+IFswXSBodHRwczov
+L2xrbWwub3JnL2xrbWwvMjAxNS8xMC8yMC80ODUKPgo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDEgKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
+aW9uKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
+PiBpbmRleCA1ZDhhZTVlLi41ODk3ODUxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTM3NCw2ICszNzQsNyBAQCBzdGF0aWMgY29uc3Qg
+c3RydWN0IG9mX2RldmljZV9pZCB2b3BfZHJpdmVyX2R0X21hdGNoW10gPSB7Cj4gICAJICAuZGF0
+YSA9ICZyazMyODhfdm9wIH0sCj4gICAJe30sCj4gICB9Owo+ICtNT0RVTEVfREVWSUNFX1RBQkxF
+KG9mLCB2b3BfZHJpdmVyX2R0X21hdGNoKTsKPiAgIAo+ICAgc3RhdGljIGlubGluZSB2b2lkIHZv
+cF93cml0ZWwoc3RydWN0IHZvcCAqdm9wLCB1aW50MzJfdCBvZmZzZXQsIHVpbnQzMl90IHYpCj4g
+ICB7CkFwcGxpZWQgdG8gbXkgZHJtLWZpeGVzLCBUaGFua3MgZm9yIHRoaXMgZml4LgoKLS0gCu+8
+rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
