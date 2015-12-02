@@ -1,41 +1,38 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: [RFC] rk3368 idle states
-Date: Wed, 2 Dec 2015 11:18:58 +0000
-Message-ID: <20151202111858.GB18981@red-moon>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: "jianqun.xu" <jay.xu@rock-chips.com>
+Subject: [PATCH] clk: rockchip: rk3368: protect aclk_bus and aclk_peri clocks
+Date: Wed,  2 Dec 2015 21:22:31 +0800
+Message-ID: <1449062551-2498-1-git-send-email-jay.xu@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: huangtao@rock-chips.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jianqun xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+From: Jianqun xu <jay.xu@rock-chips.com>
 
-while reviewing other dts idle states bindings I spotted the following
-snippet in arch/arm64/boot/dts/rockchip/rk3368.dtsi:
+Add aclk_bus and aclk_peri to the list of rk3368 critical clocks,
+which are the base clocks that supply for all peripherals, never
+to be disabled automatically.
 
-cpu_sleep: cpu-sleep-0 {
-       compatible = "arm,idle-state";
-       arm,psci-suspend-param = <0x1010000>;
-       entry-latency-us = <0x3fffffff>;
-       exit-latency-us = <0x40000000>;
-       min-residency-us = <0xffffffff>;
-};
+Signed-off-by: Jianqun xu <jay.xu@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3368.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Could you please explain to me how you obtained these residency/latency
-values ? They make NO sense whatsoever and I am quite tempted to
-ask you to remove this data from the dts file, it is just wrong.
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 7e6b783..cd9d4aa 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -819,6 +819,8 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ };
+ 
+ static const char *const rk3368_critical_clocks[] __initconst = {
++	"aclk_bus",
++	"aclk_peri",
+ 	"pclk_pd_pmu",
+ };
+ 
+-- 
+1.9.1
 
-Thanks,
-Lorenzo
+
