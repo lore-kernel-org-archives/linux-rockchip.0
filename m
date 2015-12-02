@@ -1,146 +1,62 @@
 From: Daniel Stone <daniel@fooishbar.org>
 Subject: Re: [RFC PATCH 3/9] drm/rockchip: Convert to support atomic API
-Date: Wed, 2 Dec 2015 14:18:35 +0000
-Message-ID: <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
+Date: Wed, 2 Dec 2015 14:22:16 +0000
+Message-ID: <CAPj87rPT7v-SBDbGm9ftER+ykwNBxT5Vtdq_vTXzePQxzCwR4g@mail.gmail.com>
 References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
-	<1448940391-23333-4-git-send-email-mark.yao@rock-chips.com>
-	<CAPj87rPtWgH2WE7_EEC-Q41c7Ew2z8CwPMMQD+cC08G7qNZTeg@mail.gmail.com>
-	<565D68F0.3010905@rock-chips.com>
+ <1448940391-23333-4-git-send-email-mark.yao@rock-chips.com>
+ <CAPj87rPtWgH2WE7_EEC-Q41c7Ew2z8CwPMMQD+cC08G7qNZTeg@mail.gmail.com>
+ <565D68F0.3010905@rock-chips.com>
+ <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <565D68F0.3010905@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark yao <mark.yao@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
-Thanks for getting back to this.
-
-On 1 December 2015 at 09:31, Mark yao <mark.yao@rock-chips.com> wrote:
-> On 2015=E5=B9=B412=E6=9C=8801=E6=97=A5 16:18, Daniel Stone wrote:
->> On 1 December 2015 at 03:26, Mark Yao<mark.yao@rock-chips.com>  wrot=
-e:
->>> >+       for_each_crtc_in_state(state, crtc, crtc_state, i) {
->>> >+               if (!crtc->state->active)
->>> >+                       continue;
->>> >+
->>> >+               rockchip_crtc_wait_for_update(crtc);
->>> >+       }
->>
->> I'd be much more comfortable if this passed in an explicit pointer t=
-o
->> state, or an address to wait for, rather than have wait_for_complete
->> dig out state with no locking. The latter is potentially racy for
->> async operations.
->>
-> Hi Daniel
->    "if this passed in an explicit pointer to state, or an address to =
-wait
-> for", I don't understand, can you point how it work?
-
-Ah, OK. I mean that rockchip_crtc_wait_for_update takes a drm_crtc
-pointer, and establishes the state from that (e.g.
-crtc->primary->state). This can easily lead to confusion in async
-contexts, as the states attached to a drm_crtc and a drm_plane can
-change here while you wait for it.
-
-It would be better if the call was:
-
-for_each_plane_in_state(state, plane, plane_state, i) {
-    if (plane->type =3D=3D DRM_PLANE_TYPE_PRIMARY)
-        rockchip_crtc_wait_for_update(plane_state->crtc, plane_state);
-}
-
-This way it is very clear, and there is no confusion as to which
-request we are waiting to complete.
-
-In general, using crtc->state or plane->state is a very bad idea,
-_except_ in the atomic_check function where you are calculating
-changes (e.g. if (plane_state->fb->pitches[0] !=3D
-plane->state->fb->pitches[0]) rockchip_plane_state->pitch_changed =3D
-true). After atomic_check, you should always pass around pointers to
-the plane state explicitly, and avoid using the pointers from drm_crtc
-and drm_plane.
-
-Does that help?
-
->>>          if (is_yuv) {
->>>                  /*
->>>                   * Src.x1 can be odd when do clip, but yuv plane s=
-tart
->>> point
->>>                   * need align with 2 pixel.
->>>                   */
->>> -               val =3D (src.x1 >> 16) % 2;
->>> -               src.x1 +=3D val << 16;
->>> -               src.x2 +=3D val << 16;
->>> +               uint32_t temp =3D (src->x1 >> 16) % 2;
->>> +
->>> +               src->x1 +=3D temp << 16;
->>> +               src->x2 +=3D temp << 16;
->>>          }
->>
->> I know this isn't new, but moving the plane around is bad. If the us=
-er
->> gives you a pixel boundary that you can't actually use, please rejec=
-t
->> the configuration rather than silently trying to fix it up.
->
-> the origin src.x1 would align with 2 pixel, but when we move the dest
-> window, and do clip by output, the src.x1 may be clipped to odd.
-> regect this configuration may let user confuse, sometimes good, somet=
-imes
-> bad.
-
-=46or me, it is more confusing when the display shows something
-different to what I have requested. In some media usecases, doing this
-is a showstopper and will result in products failing acceptance
-testing. Userspace can make a policy decision to try different
-alignments to get _something_ to show (even if it's not what was
-explicitly requested), but doing this in the kernel is inappropriate:
-please just reject it, and have userspace fall back to another
-composition method (e.g. GL) in these cases.
-
->>> -static void vop_plane_destroy(struct drm_plane *plane)
->>> +static void vop_atomic_plane_destroy_state(struct drm_plane *plane=
-,
->>> +                                          struct drm_plane_state *=
-state)
->>>   {
->>> -       vop_disable_plane(plane);
->>> -       drm_plane_cleanup(plane);
->>> +       struct vop_plane_state *vop_state =3D to_vop_plane_state(st=
-ate);
->>> +
->>> +       if (state->fb)
->>> +               drm_framebuffer_unreference(state->fb);
->>> +
->>> +       kfree(vop_state);
->>>   }
->>
->> You can replace this hook with drm_atomic_helper_plane_destroy_state=
-=2E
->
->
-> Hmm, only can hook with __drm_atomic_helper_plane_destroy_state.
-
-Ah yes, you're right. But still, using that would be better than duplic=
-ating it.
-
->     Can you share your Weston environment to me, I'm interesting to t=
-est drm
-> rockchip on weston.
-
-Of course. You can download Weston from http://wayland.freedesktop.org
-- the most interesting dependencies are libevdev, libinput, and
-wayland itself. If you are building newer Weston from git, you'll need
-the wayland-protocols repository as well, from
-anongit.freedesktop.org/git/wayland/wayland-protocols/. Please let me
-know privately if you need some more help with building these, but
-they should be quite straightforward.
-
-Cheers,
-Daniel
+SGkgTWFyaywKCk9uIDIgRGVjZW1iZXIgMjAxNSBhdCAxNDoxOCwgRGFuaWVsIFN0b25lIDxkYW5p
+ZWxAZm9vaXNoYmFyLm9yZz4gd3JvdGU6Cj4gT24gMSBEZWNlbWJlciAyMDE1IGF0IDA5OjMxLCBN
+YXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiAgICAgQ2FuIHlvdSBz
+aGFyZSB5b3VyIFdlc3RvbiBlbnZpcm9ubWVudCB0byBtZSwgSSdtIGludGVyZXN0aW5nIHRvIHRl
+c3QgZHJtCj4+IHJvY2tjaGlwIG9uIHdlc3Rvbi4KPgo+IE9mIGNvdXJzZS4gWW91IGNhbiBkb3du
+bG9hZCBXZXN0b24gZnJvbSBodHRwOi8vd2F5bGFuZC5mcmVlZGVza3RvcC5vcmcKPiAtIHRoZSBt
+b3N0IGludGVyZXN0aW5nIGRlcGVuZGVuY2llcyBhcmUgbGliZXZkZXYsIGxpYmlucHV0LCBhbmQK
+PiB3YXlsYW5kIGl0c2VsZi4gSWYgeW91IGFyZSBidWlsZGluZyBuZXdlciBXZXN0b24gZnJvbSBn
+aXQsIHlvdSdsbCBuZWVkCj4gdGhlIHdheWxhbmQtcHJvdG9jb2xzIHJlcG9zaXRvcnkgYXMgd2Vs
+bCwgZnJvbQo+IGFub25naXQuZnJlZWRlc2t0b3Aub3JnL2dpdC93YXlsYW5kL3dheWxhbmQtcHJv
+dG9jb2xzLy4gUGxlYXNlIGxldCBtZQo+IGtub3cgcHJpdmF0ZWx5IGlmIHlvdSBuZWVkIHNvbWUg
+bW9yZSBoZWxwIHdpdGggYnVpbGRpbmcgdGhlc2UsIGJ1dAo+IHRoZXkgc2hvdWxkIGJlIHF1aXRl
+IHN0cmFpZ2h0Zm9yd2FyZC4KClNvcnJ5LCBsZWZ0IG9uZSB0aGluZyBvdXQuIFdoZW4gcnVubmlu
+ZywgaWYgeW91IGRvIG5vdCBoYXZlCkdCTS9XYXlsYW5kIGVuYWJsZWQgZm9yIE1hbGkgKG9yIG5v
+IE1hbGkgc3VwcG9ydCksIHlvdSBzaG91bGQgcnVuCndpdGg6Cndlc3RvbiAtLXVzZS1waXhtYW4K
+b3I6Cndlc3Rvbi1sYXVuY2ggLS0gLS11c2UtcGl4bWFuCgpMYXVuY2hpbmcgZnJvbSBTU0ggaXMg
+YSBiaXQgbW9yZSBjb21wbGljYXRlZDoKc3VkbyB3ZXN0b24tbGF1bmNoIC0tdXNlcj0kdXNlcm5h
+bWUgLS10dHk9L2Rldi90dHkzIC0tIC0tdXNlLXBpeG1hbgoKKFJlcGxhY2UgdHR5MyB3aXRoIHRo
+ZSBUVFkgb2YgeW91ciBjaG9pY2U6IGl0IG11c3QgYmUgaW4gdGV4dCBtb2RlLikKCk9uY2UgeW91
+IGhhdmUgZG9uZSB0aGlzLCB5b3Ugd2lsbCBmaW5kIHRocmVlIGlzc3VlczoKICAtIHBhc3Npbmcg
+LTEgdG8gZHJtX3NlbmRfdmJsYW5rIGV2ZW50IGNhdXNlcyBPT1BTIC0gbm93IGZpeGVkIGluIHlv
+dXIgdHJlZQogIC0gbm90IHNlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGZvciBzYW1lLWZiIGZsaXBz
+IGNhdXNlcyBXZXN0b24gaGFuZyAtCmZpeGVkIHdpdGggbXkgcGF0Y2gsIGFuZCBJIGJlbGlldmUg
+bm93IGZpeGVkIGluIGF0b21pYyAodGhvdWdoIGl0IG1heQpzdGlsbCBoYXZlIHNvbWUgdGltaW5n
+IGlzc3VlczsgSSBob3BlIHRvIGdldCB0byByZXZpZXcgdGhpcyBlYXJseSBuZXh0CndlZWspCiAg
+LSBub3QgaGF2aW5nIGEgcHJlY2xvc2UgaG9vayBjYXVzZXMgT09QUyB3aGVuIFdlc3RvbiBleGl0
+cyBpbiB0aGUKbWlkZGxlIG9mIHJlbmRlcmluZyAtIGZpeGVkIGluCmh0dHBzOi8vZ2l0LmNvbGxh
+Ym9yYS5jb20vY2dpdC91c2VyL2RhbmllbHMvbGludXguZ2l0L2NvbW1pdC8/aD13aXAvNC40Lngv
+cm9ja2NoaXAtZHJtLWZpeGVzJmlkPWQxNGYyMWJjZDdlN2ExYjljYTEyOWM0MTFhOWRhOWM5MTEw
+Mzc5NjUKYW5kIHRoZSBwcmVjZWRpbmcgY29tbWl0LCB3aGljaCBJIGhvcGUgdG8gcmUtc2VuZCBm
+b3IgNC40IC1maXhlcyBpbgp0aGUgbmV4dCBjb3VwbGUgb2YgZGF5cwoKSG9wZSB0aGlzIGhlbHBz
+LgoKQ2hlZXJzLApEYW5pZWwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
