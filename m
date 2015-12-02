@@ -1,64 +1,32 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [RFC PATCH 7/9] drm/rockchip: force enable vop when do mode
- setting
-Date: Wed, 2 Dec 2015 23:17:10 +0100
-Message-ID: <20151202221710.GB10243@phenom.ffwll.local>
-References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
- <1448940721-23488-1-git-send-email-mark.yao@rock-chips.com>
- <20151202165536.GA14019@ulmo>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: rk3368: protect aclk_bus and aclk_peri clocks
+Date: Thu, 03 Dec 2015 00:31:37 +0100
+Message-ID: <4430667.DaSfi9RHQ7@diego>
+References: <1449062551-2498-1-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20151202165536.GA14019@ulmo>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1449062551-2498-1-git-send-email-jay.xu@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: "jianqun.xu" <jay.xu@rock-chips.com>
+Cc: huangtao@rock-chips.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCBEZWMgMDIsIDIwMTUgYXQgMDU6NTU6MzZQTSArMDEwMCwgVGhpZXJyeSBSZWRpbmcg
-d3JvdGU6Cj4gT24gVHVlLCBEZWMgMDEsIDIwMTUgYXQgMTE6MzI6MDFBTSArMDgwMCwgTWFyayBZ
-YW8gd3JvdGU6Cj4gPiBXaGVuIGRvIG1vZGUgc2V0dGluZywgbWVhbiB0aGF0IHdlIHdhbnQgdG8g
-ZW5hYmxlIGRpc3BsYXkgb3V0cHV0LAo+ID4gYnV0IHNvbWV0aW1lcywgdm9wX2NydGNfZW5hYmxl
-IGlzIGFmdGVyIG1vZGVfc2V0LCB3ZSBjYW4ndCBhbGxvdwo+ID4gdGhhdCwgc28gZm9yY2UgZW5h
-YmxlIHZvcCBpbiBtb2RlIHNldHRpbmcuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFv
-IDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgICAxICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwg
-MSBpbnNlcnRpb24oKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jCj4gPiBpbmRleCBjNjViNDU0Li43YzA3NTM3IDEwMDY0NAo+ID4gLS0tIGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ID4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ID4gQEAgLTExMTAsNiAr
-MTExMCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX21vZGVfc2V0X25vZmIoc3RydWN0IGRybV9j
-cnRjICpjcnRjKQo+ID4gIAl1MTYgdmFjdF9lbmQgPSB2YWN0X3N0ICsgdmRpc3BsYXk7Cj4gPiAg
-CXVpbnQzMl90IHZhbDsKPiA+ICAKPiA+ICsJdm9wX2NydGNfZW5hYmxlKGNydGMpOwo+ID4gIAkv
-Kgo+ID4gIAkgKiBJZiBkY2xrIHJhdGUgaXMgemVybywgbWVhbiB0aGF0IHNjYW5vdXQgaXMgc3Rv
-cCwKPiA+ICAJICogd2UgZG9uJ3QgbmVlZCB3YWl0IGFueSBtb3JlLgo+IAo+IEhhdmUgeW91IGNv
-bnNpZGVyZWQgc2ltcGx5IG1vdmluZyBldmVyeXRoaW5nIGludG8gLT5lbmFibGUoKT8gVGhhdCdz
-Cj4gd2hhdCBJIGRpZCBmb3IgVGVncmEsIGZvciBtdWNoIHRoZSBzYW1lIHJlYXNvbnMgdGhhdCB5
-b3UgZ2F2ZSBpbiB0aGUKPiBjb21taXQgbWVzc2FnZS4gRG9pbmcgc28gZ2l2ZXMgeW91IGEgbXVj
-aCBzaW1wbGVyIGNhbGwgZ3JhcGguIFJlYWxseQo+IHRoZSBvbmx5IHRoaW5nIHlvdSBuZWVkIHRv
-IGRvIGlzIG1vdmUgYXJvdW5kIHRoZSBjb2RlLCBhbmQgcGVyaGFwcyBhCj4gZGlmZmVyZW50IHdh
-eSB0byBnZXQgYWhvbGQgb2YgdGhlIGRpc3BsYXkgbW9kZSwgYnV0IHlvdSBjYW4gdXNlIHRoZQo+
-IFRlZ3JhIGRyaXZlciBhcyBhIHJlZmVyZW5jZSBmb3IgaG93IHRvIGRvIHRoYXQuCgpZZWFoIGlm
-IHdyaXRpbmcgbW9kZSByZWxhdGVkIHJlZ2lzdGVycyByZXF1aXJlcyB0aGUgdGhpbmcgdG8gYmUg
-b24gb24geW91cgpodyB0aGVuIHlvdSBjYW4ndCB1c2UgdGhlIC0+bW9kZV9zZXQgaG9va3MuIFRo
-b3NlIGFyZSBleHBsaWNpdGx5IGNhbGxlZAp3aGVuIGV2ZXJ5dGhpbmcgaXMgb2ZmIChub3QganVz
-dCBzb21ldGltZXMsIGF0IGxlYXN0IHdpdGggYXRvbWljIGhlbHBlcnMpLgoKTGlrZSBUaGllcnJ5
-IHNhaWQgdGhlIHJlY29tbWVuZGF0aW9uIGlzIHRvIGp1c3Qgc2hvdmVsIHRoYXQgY29kZSBpbnRv
-Ci0+ZW5hYmxlIGhvb2tzLiAtPm1vZGVfc2V0X25vZmIgaXMgbW9zdGx5IHRoZXJlIHRvIHN1cHBv
-cnQgZWFzaWVyCnRyYW5zaXRpb24gZm9yIGRyaXZlcnMgd2hpY2ggc3RhcnRlZCB3aXRoIHRoZSBs
-ZWdhY3kgY3J0YyBoZWxwZXJzLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVu
-Z2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Jianqun,
+
+Am Mittwoch, 2. Dezember 2015, 21:22:31 schrieb jianqun.xu:
+> From: Jianqun xu <jay.xu@rock-chips.com>
+> 
+> Add aclk_bus and aclk_peri to the list of rk3368 critical clocks,
+> which are the base clocks that supply for all peripherals, never
+> to be disabled automatically.
+> 
+> Signed-off-by: Jianqun xu <jay.xu@rock-chips.com>
+
+applied to my clk branch for 4.5
+[after adapting to Caesar's other critical clock]
+
+
+Thanks
+Heiko
