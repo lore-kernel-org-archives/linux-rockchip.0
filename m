@@ -1,99 +1,64 @@
-From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 06/10] thermal: rockchip: consistently use int for
- temperatures
-Date: Wed, 2 Dec 2015 10:38:51 -0800
-Message-ID: <20151202183851.GA91131@google.com>
-References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
- <1447044542-30859-7-git-send-email-wxt@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC PATCH 7/9] drm/rockchip: force enable vop when do mode
+ setting
+Date: Wed, 2 Dec 2015 23:17:10 +0100
+Message-ID: <20151202221710.GB10243@phenom.ffwll.local>
+References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+ <1448940721-23488-1-git-send-email-mark.yao@rock-chips.com>
+ <20151202165536.GA14019@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1447044542-30859-7-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
+In-Reply-To: <20151202165536.GA14019@ulmo>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-On Mon, Nov 09, 2015 at 12:48:58PM +0800, Caesar Wang wrote:
-> As Temperature is currently represented as int not long in the thermal
-> framework since use int intead of unsigned long/long to represent
-> temperature to avoid bogus overheat detection when negative temperature
-> reported.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v4:
-> - fix the warning from the print message.
-> 
-> Changes in v3:
-> - As the Patch v2 comments, Add a new patch to fix it.
-> 
-> Changes in v2: None
-> Changes in v1: None
-> 
->  drivers/thermal/rockchip_thermal.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index 7c5b784..73d47f8 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -88,7 +88,7 @@ struct rockchip_tsadc_chip {
->  	int chn_num;
->  
->  	/* The hardware-controlled tshut property */
-> -	long tshut_temp;
-> +	int tshut_temp;
->  	enum tshut_mode tshut_mode;
->  	enum tshut_polarity tshut_polarity;
->  
-
-...
-
-> @@ -126,7 +126,7 @@ struct rockchip_thermal_data {
->  
->  	void __iomem *regs;
->  
-> -	long tshut_temp;
-> +	int tshut_temp;
-
-FYI, this change is triggering a new warning in Coverity, below:
-
->  	enum tshut_mode tshut_mode;
->  	enum tshut_polarity tshut_polarity;
->  };
-
-...
-
-> @@ -477,7 +477,7 @@ static int rockchip_configure_from_dt(struct device *dev,
->  	}
->  
->  	if (thermal->tshut_temp > INT_MAX) {
-
-     CID 1341498:  Integer handling issues  (CONSTANT_EXPRESSION_RESULT)
-     "thermal->tshut_temp > 2147483647 /* (int)(~0U >> 1) */" is always false regardless of the values of its operands. This occurs as the logical operand of if.
-
-I don't think this condition is even useful any more, so maybe we should
-just kill the 'if' block.
-
-> -		dev_err(dev, "Invalid tshut temperature specified: %ld\n",
-> +		dev_err(dev, "Invalid tshut temperature specified: %d\n",
->  			thermal->tshut_temp);
->  		return -ERANGE;
->  	}
-
-Brian
+T24gV2VkLCBEZWMgMDIsIDIwMTUgYXQgMDU6NTU6MzZQTSArMDEwMCwgVGhpZXJyeSBSZWRpbmcg
+d3JvdGU6Cj4gT24gVHVlLCBEZWMgMDEsIDIwMTUgYXQgMTE6MzI6MDFBTSArMDgwMCwgTWFyayBZ
+YW8gd3JvdGU6Cj4gPiBXaGVuIGRvIG1vZGUgc2V0dGluZywgbWVhbiB0aGF0IHdlIHdhbnQgdG8g
+ZW5hYmxlIGRpc3BsYXkgb3V0cHV0LAo+ID4gYnV0IHNvbWV0aW1lcywgdm9wX2NydGNfZW5hYmxl
+IGlzIGFmdGVyIG1vZGVfc2V0LCB3ZSBjYW4ndCBhbGxvdwo+ID4gdGhhdCwgc28gZm9yY2UgZW5h
+YmxlIHZvcCBpbiBtb2RlIHNldHRpbmcuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFv
+IDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCAgICAxICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwg
+MSBpbnNlcnRpb24oKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jCj4gPiBpbmRleCBjNjViNDU0Li43YzA3NTM3IDEwMDY0NAo+ID4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ID4gKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ID4gQEAgLTExMTAsNiAr
+MTExMCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX21vZGVfc2V0X25vZmIoc3RydWN0IGRybV9j
+cnRjICpjcnRjKQo+ID4gIAl1MTYgdmFjdF9lbmQgPSB2YWN0X3N0ICsgdmRpc3BsYXk7Cj4gPiAg
+CXVpbnQzMl90IHZhbDsKPiA+ICAKPiA+ICsJdm9wX2NydGNfZW5hYmxlKGNydGMpOwo+ID4gIAkv
+Kgo+ID4gIAkgKiBJZiBkY2xrIHJhdGUgaXMgemVybywgbWVhbiB0aGF0IHNjYW5vdXQgaXMgc3Rv
+cCwKPiA+ICAJICogd2UgZG9uJ3QgbmVlZCB3YWl0IGFueSBtb3JlLgo+IAo+IEhhdmUgeW91IGNv
+bnNpZGVyZWQgc2ltcGx5IG1vdmluZyBldmVyeXRoaW5nIGludG8gLT5lbmFibGUoKT8gVGhhdCdz
+Cj4gd2hhdCBJIGRpZCBmb3IgVGVncmEsIGZvciBtdWNoIHRoZSBzYW1lIHJlYXNvbnMgdGhhdCB5
+b3UgZ2F2ZSBpbiB0aGUKPiBjb21taXQgbWVzc2FnZS4gRG9pbmcgc28gZ2l2ZXMgeW91IGEgbXVj
+aCBzaW1wbGVyIGNhbGwgZ3JhcGguIFJlYWxseQo+IHRoZSBvbmx5IHRoaW5nIHlvdSBuZWVkIHRv
+IGRvIGlzIG1vdmUgYXJvdW5kIHRoZSBjb2RlLCBhbmQgcGVyaGFwcyBhCj4gZGlmZmVyZW50IHdh
+eSB0byBnZXQgYWhvbGQgb2YgdGhlIGRpc3BsYXkgbW9kZSwgYnV0IHlvdSBjYW4gdXNlIHRoZQo+
+IFRlZ3JhIGRyaXZlciBhcyBhIHJlZmVyZW5jZSBmb3IgaG93IHRvIGRvIHRoYXQuCgpZZWFoIGlm
+IHdyaXRpbmcgbW9kZSByZWxhdGVkIHJlZ2lzdGVycyByZXF1aXJlcyB0aGUgdGhpbmcgdG8gYmUg
+b24gb24geW91cgpodyB0aGVuIHlvdSBjYW4ndCB1c2UgdGhlIC0+bW9kZV9zZXQgaG9va3MuIFRo
+b3NlIGFyZSBleHBsaWNpdGx5IGNhbGxlZAp3aGVuIGV2ZXJ5dGhpbmcgaXMgb2ZmIChub3QganVz
+dCBzb21ldGltZXMsIGF0IGxlYXN0IHdpdGggYXRvbWljIGhlbHBlcnMpLgoKTGlrZSBUaGllcnJ5
+IHNhaWQgdGhlIHJlY29tbWVuZGF0aW9uIGlzIHRvIGp1c3Qgc2hvdmVsIHRoYXQgY29kZSBpbnRv
+Ci0+ZW5hYmxlIGhvb2tzLiAtPm1vZGVfc2V0X25vZmIgaXMgbW9zdGx5IHRoZXJlIHRvIHN1cHBv
+cnQgZWFzaWVyCnRyYW5zaXRpb24gZm9yIGRyaXZlcnMgd2hpY2ggc3RhcnRlZCB3aXRoIHRoZSBs
+ZWdhY3kgY3J0YyBoZWxwZXJzLgotRGFuaWVsCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVu
+Z2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
