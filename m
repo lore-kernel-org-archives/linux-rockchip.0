@@ -1,78 +1,63 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: Use CRTC vblank event interface
-Date: Wed, 02 Dec 2015 09:02:33 +0800
-Message-ID: <565E4329.1080802@rock-chips.com>
-References: <1447678222-6858-1-git-send-email-daniels@collabora.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 0/4] support the efuse for rk3188/rk3066a SoCs and cleanup
+ driver on nvmem.
+Date: Wed, 2 Dec 2015 10:44:00 +0800
+Message-ID: <565E5AF0.4040802@rock-chips.com>
+References: <1447227272-1728-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1447678222-6858-1-git-send-email-daniels@collabora.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Stone <daniels@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Thierry Reding <treding@nvidia.com>, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1447227272-1728-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jiri Kosina <trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDEx5pyIMTbml6UgMjA6NTAsIERhbmllbCBTdG9uZSB3cm90ZToKPiBQYXNzaW5n
-IC0xIGFzIHRoZSBwaXBlIGZvciB2YmxhbmsgZXZlbnRzIG5vdyB0cmlnZ2VycyBhIFdBUk5fT04s
-IGJ1dCBoYWQKPiBwcmV2aW91c2x5IG1hZGUgbXVsdGktc2NyZWVuIHVudXNhYmxlIGFueXdheS4g
-UGFzcyB0aGUgY29ycmVjdCBwaXBlIHRvCj4gdGhlIGV2ZW50LXNlbmQgZnVuY3Rpb24sIGFuZCB1
-c2UgdGhlIG5ldyBBUEkgdG8gbWFrZSB0aGlzIGEgYml0IGVhc2llcgo+IGZvciB1cy4KPgo+IEZp
-eGVzIFdBUk4gcHJlc2VudCBzaW5jZSBjYzFlZjExOGZjIGZvciBldmVyeSBwYWdlZmxpcCBldmVu
-dCBzZW50Ogo+IFsgIDIwOS41NDk5NjldIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0t
-LS0tLQo+IFsgIDIwOS41NTQ1OTJdIFdBUk5JTkc6IENQVTogMyBQSUQ6IDIzOCBhdCBkcml2ZXJz
-L2dwdS9kcm0vZHJtX2lycS5jOjkyNCBkcm1fdmJsYW5rX2NvdW50X2FuZF90aW1lKzB4ODAvMHg4
-OCBbZHJtXSgpCj4gWyAgMjA5LjU2NDgzMl0gTW9kdWxlcyBsaW5rZWQgaW46IFsuLi5dCj4gWyAg
-MjA5LjYxMjQwMV0gQ1BVOiAzIFBJRDogMjM4IENvbW06IGlycS80MS1mZjk0MDAwMCBUYWludGVk
-OiBHICAgICAgICBXICAgICAgIDQuMy4wLXJjNisgIzcxCj4gWyAgMjA5LjYyMDY0N10gSGFyZHdh
-cmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+IFsgIDIwOS42MjUzNDhdIFs8YzAwMWJi
-ODA+XSAodW53aW5kX2JhY2t0cmFjZSkgZnJvbSBbPGMwMDE2MTVjPl0gKHNob3dfc3RhY2srMHgy
-MC8weDI0KQo+IFsgIDIwOS42MzMwNzldIFs8YzAwMTYxNWM+XSAoc2hvd19zdGFjaykgZnJvbSBb
-PGMwMmIyYzUwPl0gKGR1bXBfc3RhY2srMHg4Yy8weDljKQo+IFsgIDIwOS42NDAyODldIFs8YzAy
-YjJjNTA+XSAoZHVtcF9zdGFjaykgZnJvbSBbPGMwMDUyZTg4Pl0gKHdhcm5fc2xvd3BhdGhfY29t
-bW9uKzB4OTQvMHhjNCkKPiBbICAyMDkuNjQ4MzY0XSBbPGMwMDUyZTg4Pl0gKHdhcm5fc2xvd3Bh
-dGhfY29tbW9uKSBmcm9tIFs8YzAwNTJmNzQ+XSAod2Fybl9zbG93cGF0aF9udWxsKzB4MmMvMHgz
-NCkKPiBbICAyMDkuNjU3MTM5XSBbPGMwMDUyZjc0Pl0gKHdhcm5fc2xvd3BhdGhfbnVsbCkgZnJv
-bSBbPGJmMTdkYzMwPl0gKGRybV92YmxhbmtfY291bnRfYW5kX3RpbWUrMHg4MC8weDg4IFtkcm1d
-KQo+IFsgIDIwOS42NjY4NzVdIFs8YmYxN2RjMzA+XSAoZHJtX3ZibGFua19jb3VudF9hbmRfdGlt
-ZSBbZHJtXSkgZnJvbSBbPGJmMTdlNDg0Pl0gKGRybV9zZW5kX3ZibGFua19ldmVudCsweDc0LzB4
-N2MgW2RybV0pCj4gWyAgMjA5LjY3NzM4NV0gWzxiZjE3ZTQ4ND5dIChkcm1fc2VuZF92Ymxhbmtf
-ZXZlbnQgW2RybV0pIGZyb20gWzxiZjRjMTE0ND5dICh2b3Bfd2luX3N0YXRlX2NvbXBsZXRlKzB4
-NGMvMHg3MCBbcm9ja2NoaXBfZHJtX3ZvcF0pCj4gWyAgMjA5LjY4ODc1N10gWzxiZjRjMTE0ND5d
-ICh2b3Bfd2luX3N0YXRlX2NvbXBsZXRlIFtyb2NrY2hpcF9kcm1fdm9wXSkgZnJvbSBbPGJmNGMz
-YmRjPl0gKHZvcF9pc3JfdGhyZWFkKzB4MTcwLzB4MWQ0IFtyb2NrY2hpcF9kcm1fdm9wXSkKPiBb
-ICAyMDkuNzAwODIyXSBbPGJmNGMzYmRjPl0gKHZvcF9pc3JfdGhyZWFkIFtyb2NrY2hpcF9kcm1f
-dm9wXSkgZnJvbSBbPGMwMGFiOTNjPl0gKGlycV90aHJlYWRfZm4rMHgyYy8weDUwKQo+IFsgIDIw
-OS43MTAyODRdIFs8YzAwYWI5M2M+XSAoaXJxX3RocmVhZF9mbikgZnJvbSBbPGMwMGFiY2FjPl0g
-KGlycV90aHJlYWQrMHgxM2MvMHgxODgpCj4gWyAgMjA5LjcxNzkyN10gWzxjMDBhYmNhYz5dIChp
-cnFfdGhyZWFkKSBmcm9tIFs8YzAwNzIzYzg+XSAoa3RocmVhZCsweGVjLzB4MTA0KQo+IFsgIDIw
-OS43MjQ5NjVdIFs8YzAwNzIzYzg+XSAoa3RocmVhZCkgZnJvbSBbPGMwMDExNjM4Pl0gKHJldF9m
-cm9tX2ZvcmsrMHgxNC8weDNjKQo+IFsgIDIwOS43MzIxNzFdIC0tLVsgZW5kIHRyYWNlIDA2OTBi
-YzYwNGY1ZDUzNWQgXS0tLQo+Cj4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFN0b25lIDxkYW5pZWxz
-QGNvbGxhYm9yYS5jb20+Cj4gQ2M6IFNqb2VyZCBTaW1vbnMgPHNqb2VyZC5zaW1vbnNAY29sbGFi
-b3JhLmNvLnVrPgo+IENjOiBUaGllcnJ5IFJlZGluZyA8dHJlZGluZ0BudmlkaWEuY29tPgo+IENj
-OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICAgZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDIgKy0KPiAgIDEgZmlsZSBjaGFuZ2Vk
-LCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5kZXggNWQ4YWU1ZS4uZGRmNmRjMiAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC0xMjg5
-LDcgKzEyODksNyBAQCBzdGF0aWMgdm9pZCB2b3Bfd2luX3N0YXRlX2NvbXBsZXRlKHN0cnVjdCB2
-b3Bfd2luICp2b3Bfd2luLAo+ICAgCj4gICAJaWYgKHN0YXRlLT5ldmVudCkgewo+ICAgCQlzcGlu
-X2xvY2tfaXJxc2F2ZSgmZHJtLT5ldmVudF9sb2NrLCBmbGFncyk7Cj4gLQkJZHJtX3NlbmRfdmJs
-YW5rX2V2ZW50KGRybSwgLTEsIHN0YXRlLT5ldmVudCk7Cj4gKwkJZHJtX2NydGNfc2VuZF92Ymxh
-bmtfZXZlbnQoY3J0Yywgc3RhdGUtPmV2ZW50KTsKPiAgIAkJc3Bpbl91bmxvY2tfaXJxcmVzdG9y
-ZSgmZHJtLT5ldmVudF9sb2NrLCBmbGFncyk7Cj4gICAJfQo+ICAgCgpBcHBsaWVkIHRvIG15IGRy
-bS1maXhlcywgVGhhbmtzIGZvciB0aGlzIGZpeC4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Srinivas,
+
+What's the think of this series patches?
+
+Let me know if you have any suggestions or ideas.:-)
+
+Thanks!
+
+=E5=9C=A8 2015=E5=B9=B411=E6=9C=8811=E6=97=A5 15:34, Caesar Wang =E5=86=
+=99=E9=81=93:
+> This patchset to support reading the efuse info for more SoCs.
+> (Note: support 32 bits SoCs).
+>
+> Meanwhile, cleanup sunxi/rockchip drivers for more readability.
+>
+> You can easy to test for following:
+>
+> cd /sys/bus/nvmem/devices/rockchip-efuse0
+> localhost rockchip-efuse0 # busybox hexdump -C nvmem
+>
+>
+>
+> Caesar Wang (4):
+>    nvmem: sunxi: trivial: fix code style
+>    nvmem: rockchip: trivial: Make the driver more readability
+>    ARM: dts: rockchip: add eFuse node for rk3066a SoCs
+>    ARM: dts: rockchip: add eFuse node for rk3188 SoCs
+>
+>   arch/arm/boot/dts/rk3066a.dtsi | 13 ++++++
+>   arch/arm/boot/dts/rk3188.dtsi  | 13 ++++++
+>   drivers/nvmem/rockchip-efuse.c | 90 ++++++++++++++++++++-----------=
+-----------
+>   drivers/nvmem/sunxi_sid.c      |  9 ++---
+>   4 files changed, 71 insertions(+), 54 deletions(-)
+>
+
+
+--=20
+caesar wang | software engineer | wxt-TNX95d0MmH73oGB3hsPCZA@public.gmane.org
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
