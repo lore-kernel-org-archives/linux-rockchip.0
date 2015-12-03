@@ -1,84 +1,85 @@
-From: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 2/5] thermal: rockchip: fix a impossible condition
- caused by the warning
-Date: Thu, 3 Dec 2015 12:35:39 -0800
-Message-ID: <20151203203539.GB34901@dtor-ws>
-References: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
- <1449132523-18817-3-git-send-email-wxt@rock-chips.com>
- <20151203201908.GA34901@dtor-ws>
- <20151203203357.GA141945@google.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/9] i2c: document generic DT bindings for timing
+ parameters
+Date: Thu, 3 Dec 2015 14:39:08 -0600
+Message-ID: <20151203203908.GA29831@rob-hp-laptop>
+References: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
+ <1449157899-6572-2-git-send-email-wsa@the-dreams.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-sh-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20151203203357.GA141945-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1449157899-6572-2-git-send-email-wsa@the-dreams.de>
+Sender: linux-sh-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 03, 2015 at 12:33:57PM -0800, Brian Norris wrote:
-> On Thu, Dec 03, 2015 at 12:19:08PM -0800, Dmitry Torokhov wrote:
-> > On Thu, Dec 03, 2015 at 04:48:40PM +0800, Caesar Wang wrote:
-> > > As the Dan report the smatch check the thermal driver warning:
-> > > drivers/thermal/rockchip_thermal.c:551 rockchip_configure_from_dt()
-> > > warn: impossible condition '(thermal->tshut_temp > ((~0 >> 1))) =>
-> > > (s32min-s32max > s32max)'
-> > > 
-> > > Let's we remove the imposssible condition Since the Temperature is
-> > > currently represented as int not long in the thermal driver.
-> > > 
-> > > Fixes: commit 437df2172e8d
-> > > ("thermal: rockchip: consistently use int for temperatures")
-> > > 
-> > > Reported-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-> > > Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > > 
-> > > ---
-> > > 
-> > > Changes in v3:
-> > > - As Brian comments on https://patchwork.kernel.org/patch/7580661/,
-> > >   let's remove the impossible condition.
-> > > 
-> > > Changes in v2: None
-> > > Changes in v1: None
-> > > 
-> > >  drivers/thermal/rockchip_thermal.c | 6 ------
-> > >  1 file changed, 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> > > index ae796ec..611de00 100644
-> > > --- a/drivers/thermal/rockchip_thermal.c
-> > > +++ b/drivers/thermal/rockchip_thermal.c
-> > > @@ -549,12 +549,6 @@ static int rockchip_configure_from_dt(struct device *dev,
-> > >  		thermal->tshut_temp = shut_temp;
-> > >  	}
-> > >  
-> > > -	if (thermal->tshut_temp > INT_MAX) {
-> > > -		dev_err(dev, "Invalid tshut temperature specified: %d\n",
-> > > -			thermal->tshut_temp);
-> > > -		return -ERANGE;
-> > > -	}
-> > 
-> > Well, that is not entirely correct. The value that we read from DT is
-> > u32, but we convert it down to int. I believe you want to move the check
+On Thu, Dec 03, 2015 at 04:51:31PM +0100, Wolfram Sang wrote:
+> From: Wolfram Sang <wsa+renesas@sang-engineering.com>
 > 
-> Do we really account for the possibility of sizeof(int) < sizeof(u32)?
+> Also, sort the properties alphabetically and make indentation
+> consistent. Wording largely taken from i2c-rk3x.txt, thanks guys!
 > 
-> EDIT: A bit after writing the above line, I notice my error, but in case
-> anyone else is thinking the same thing... I guess you're referring to
-> the sign bit, since we're casting unsigned to signed.
+> Only "i2c-scl-internal-delay-ns" is new, the rest is used by two drivers
+> already and was documented in their driver binding documentation.
+> 
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
+> Cc: devicetree@vger.kernel.org
 
-Yes, exactly. Sorry I was not clear.
+Acked-by: Rob Herring <robh@kernel.org>
 
--- 
-Dmitry
+> ---
+>  Documentation/devicetree/bindings/i2c/i2c.txt | 31 ++++++++++++++++++++++-----
+>  1 file changed, 26 insertions(+), 5 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c.txt b/Documentation/devicetree/bindings/i2c/i2c.txt
+> index 8a99150ac3a7fd..a00219f5ee0733 100644
+> --- a/Documentation/devicetree/bindings/i2c/i2c.txt
+> +++ b/Documentation/devicetree/bindings/i2c/i2c.txt
+> @@ -29,12 +29,33 @@ Optional properties
+>  These properties may not be supported by all drivers. However, if a driver
+>  wants to support one of the below features, it should adapt the bindings below.
+>  
+> -- clock-frequency	- frequency of bus clock in Hz.
+> -- wakeup-source		- device can be used as a wakeup source.
+> +- clock-frequency
+> +	frequency of bus clock in Hz.
+>  
+> -- interrupts		- interrupts used by the device.
+> -- interrupt-names	- "irq" and "wakeup" names are recognized by I2C core,
+> -			  other names are left to individual drivers.
+> +- i2c-scl-falling-time-ns
+> +	Number of nanoseconds the SCL signal takes to fall; t(f) in the I2C
+> +	specification.
+> +
+> +- i2c-scl-internal-delay-ns
+> +	Number of nanoseconds the IP core additionally needs to setup SCL.
+> +
+> +- i2c-scl-rising-time-ns
+> +	Number of nanoseconds the SCL signal takes to rise; t(r) in the I2C
+> +	specification.
+> +
+> +- i2c-sda-falling-time-ns
+> +	Number of nanoseconds the SDA signal takes to fall; t(f) in the I2C
+> +	specification.
+> +
+> +- interrupts
+> +	interrupts used by the device.
+> +
+> +- interrupt-names
+> +	"irq" and "wakeup" names are recognized by I2C core, other names are
+> +	left to individual drivers.
+> +
+> +- wakeup-source
+> +	device can be used as a wakeup source.
+>  
+>  Binding may contain optional "interrupts" property, describing interrupts
+>  used by the device. I2C core will assign "irq" interrupt (or the very first
+> -- 
+> 2.1.4
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
