@@ -1,58 +1,74 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: [PATCH 6/9] ARM: shmobile: r8a7790: dtsi: add internal delay for i2c IPs
-Date: Thu,  3 Dec 2015 16:51:36 +0100
-Message-ID: <1449157899-6572-7-git-send-email-wsa@the-dreams.de>
-References: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
-Return-path: <linux-sh-owner@vger.kernel.org>
-In-Reply-To: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
-Sender: linux-sh-owner@vger.kernel.org
-To: linux-i2c@vger.kernel.org
-Cc: linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Wolfram Sang <wsa@the-dreams.de>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Subject: Re: [PATCH v3 2/5] thermal: rockchip: fix a impossible condition
+ caused by the warning
+Date: Thu, 3 Dec 2015 12:19:08 -0800
+Message-ID: <20151203201908.GA34901@dtor-ws>
+References: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
+ <1449132523-18817-3-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1449132523-18817-3-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, huangtao@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, linux-rockchip@lists.infradead.org, computersforpeace@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
+On Thu, Dec 03, 2015 at 04:48:40PM +0800, Caesar Wang wrote:
+> As the Dan report the smatch check the thermal driver warning:
+> drivers/thermal/rockchip_thermal.c:551 rockchip_configure_from_dt()
+> warn: impossible condition '(thermal->tshut_temp > ((~0 >> 1))) =>
+> (s32min-s32max > s32max)'
+> 
+> Let's we remove the imposssible condition Since the Temperature is
+> currently represented as int not long in the thermal driver.
+> 
+> Fixes: commit 437df2172e8d
+> ("thermal: rockchip: consistently use int for temperatures")
+> 
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v3:
+> - As Brian comments on https://patchwork.kernel.org/patch/7580661/,
+>   let's remove the impossible condition.
+> 
+> Changes in v2: None
+> Changes in v1: None
+> 
+>  drivers/thermal/rockchip_thermal.c | 6 ------
+>  1 file changed, 6 deletions(-)
+> 
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+> index ae796ec..611de00 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -549,12 +549,6 @@ static int rockchip_configure_from_dt(struct device *dev,
+>  		thermal->tshut_temp = shut_temp;
+>  	}
+>  
+> -	if (thermal->tshut_temp > INT_MAX) {
+> -		dev_err(dev, "Invalid tshut temperature specified: %d\n",
+> -			thermal->tshut_temp);
+> -		return -ERANGE;
+> -	}
 
-Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
----
- arch/arm/boot/dts/r8a7790.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+Well, that is not entirely correct. The value that we read from DT is
+u32, but we convert it down to int. I believe you want to move the check
+up so that you do:
 
-diff --git a/arch/arm/boot/dts/r8a7790.dtsi b/arch/arm/boot/dts/r8a7790.dtsi
-index 6cfd0dc79bbec0..64a3f4a05f36d0 100644
---- a/arch/arm/boot/dts/r8a7790.dtsi
-+++ b/arch/arm/boot/dts/r8a7790.dtsi
-@@ -417,6 +417,7 @@
- 		interrupts = <0 287 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&mstp9_clks R8A7790_CLK_I2C0>;
- 		power-domains = <&cpg_clocks>;
-+		i2c-scl-internal-delay-ns = <110>;
- 		status = "disabled";
- 	};
- 
-@@ -428,6 +429,7 @@
- 		interrupts = <0 288 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&mstp9_clks R8A7790_CLK_I2C1>;
- 		power-domains = <&cpg_clocks>;
-+		i2c-scl-internal-delay-ns = <6>;
- 		status = "disabled";
- 	};
- 
-@@ -439,6 +441,7 @@
- 		interrupts = <0 286 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&mstp9_clks R8A7790_CLK_I2C2>;
- 		power-domains = <&cpg_clocks>;
-+		i2c-scl-internal-delay-ns = <6>;
- 		status = "disabled";
- 	};
- 
-@@ -450,6 +453,7 @@
- 		interrupts = <0 290 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&mstp9_clks R8A7790_CLK_I2C3>;
- 		power-domains = <&cpg_clocks>;
-+		i2c-scl-internal-delay-ns = <110>;
- 		status = "disabled";
- 	};
- 
+	} else if (tshut_temp > INT_MAX) {
+		dev_err(dev, "Invalid tshut temperature specified: %d\n",
+			thermal->tshut_temp);
+		return -ERANGE;
+	} else {
+		thermal->tshut_temp = shut_temp;
+	}
+
+Thanks.
+
 -- 
-2.1.4
-
+Dmitry
