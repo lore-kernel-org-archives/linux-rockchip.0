@@ -1,85 +1,57 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: rk3368: protect aclk_bus and aclk_peri
- clocks
-Date: Thu, 3 Dec 2015 08:30:01 +0800
-Message-ID: <565F8D09.4010402@rock-chips.com>
-References: <1449062551-2498-1-git-send-email-jay.xu@rock-chips.com>
- <4430667.DaSfi9RHQ7@diego>
+From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 06/10] thermal: rockchip: consistently use int for
+ temperatures
+Date: Wed, 2 Dec 2015 16:49:03 -0800
+Message-ID: <20151203004903.GA9543@google.com>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
+ <1447044542-30859-7-git-send-email-wxt@rock-chips.com>
+ <20151202183851.GA91131@google.com>
+ <565F8FFE.3080807@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <4430667.DaSfi9RHQ7@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: huangtao@rock-chips.com, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <565F8FFE.3080807-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi heiko
+Hi Caesar,
 
-I can see the patches on your clk branch for next
-thanks
+On Thu, Dec 03, 2015 at 08:42:38AM +0800, Caesar Wang wrote:
+> ? 2015?12?03? 02:38, Brian Norris ??:
+> 
+> [.....]
+> >  	if (thermal->tshut_temp > INT_MAX) {
+> >      CID 1341498:  Integer handling issues  (CONSTANT_EXPRESSION_RESULT)
+> >      "thermal->tshut_temp > 2147483647 /* (int)(~0U >> 1) */" is always false regardless of the values of its operands. This occurs as the logical operand of if.
+> >
+> >I don't think this condition is even useful any more, so maybe we should
+> >just kill the 'if' block.
+> 
+> See the patch to fix
+> it.----->(https://patchwork.kernel.org/patch/7720601/)
+> <https://patchwork.kernel.org/patch/7720601/>
 
-=D4=DA 03/12/2015 07:31, Heiko St=A8=B9bner =D0=B4=B5=C0:
-> Hi Jianqun,
->
-> Am Mittwoch, 2. Dezember 2015, 21:22:31 schrieb jianqun.xu:
->> From: Jianqun xu <jay.xu@rock-chips.com>
->>
->> Add aclk_bus and aclk_peri to the list of rk3368 critical clocks,
->> which are the base clocks that supply for all peripherals, never
->> to be disabled automatically.
->>
->> Signed-off-by: Jianqun xu <jay.xu@rock-chips.com>
->
-> applied to my clk branch for 4.5
-> [after adapting to Caesar's other critical clock]
->
->
-> Thanks
-> Heiko
->
->
->
+-	if (thermal->tshut_temp > INT_MAX) {
++	if (!(thermal->tshut_temp < INT_MAX)) {
 
---=20
-***********************************************************************=
-*****
-=D0=ED=BD=A3=C8=BA
-=46uzhou Rockchip Electronics Co., Ltd
-=B5=D8=D6=B7=A3=BA=B8=A3=BD=A8=CA=A1=B8=A3=D6=DD=CA=D0=CD=AD=C5=CC=C2=B7=
-=C8=ED=BC=FE=B4=F3=B5=C089=BA=C5=C8=ED=BC=FE=D4=B0A=C7=F821=BA=C5=C2=A5
-ADDR: No.21 bldg, Fuzhou Software Park,Fuzhou,Fujian,P.R.China
-Email: xjq@rock-chips.com
-***********************************************************************=
-*****
-=B1=A3=C3=DC=CC=E1=CA=BE=A3=BA=B1=BE=D3=CA=BC=FE=BC=B0=C6=E4=B8=BD=BC=FE=
-=BA=AC=D3=D0=BB=FA=C3=DC=D0=C5=CF=A2=C0=B4=D7=D4=B8=A3=D6=DD=C8=F0=D0=BE=
-=CE=A2=B5=E7=D7=D3=B9=C9=B7=DD=D3=D0=CF=DE=B9=AB=CB=BE=A3=AC=BD=F6=B7=A2=
-=20
-=CB=CD=B8=F8=B1=BE=D3=CA=BC=FE=CB=F9=D6=B8=CC=D8=B6=A8=CA=D5=BC=FE=C8=CB=
-=A1=A3=C8=F4=B7=C7=B8=C3=CC=D8=B6=A8=CA=D5=BC=FE=C8=CB=A3=AC=C7=EB=CE=F0=
-=B8=B4=D6=C6=A1=A2 =CA=B9=D3=C3=BB=F2=C5=FB=C2=B6=B1=BE=D3=CA=BC=FE=20
-=B5=C4=C8=CE=BA=CE=C4=DA=C8=DD=A1=A3=C8=F4=CE=F3=CA=D5=B1=BE=D3=CA=BC=FE=
-=A3=AC=C7=EB=B4=D3=CF=B5=CD=B3=D6=D0=D3=C0=BE=C3=D0=D4=C9=BE=B3=FD=B1=BE=
-=D3=CA=BC=FE=BC=B0=CB=F9=D3=D0=B8=BD=BC=FE=A3=AC=B2=A2=D2=D4=BB=D8=B8=B4=
-=20
-=D3=CA=BC=FE=BB=F2=C6=E4=CB=FB=B7=BD=CA=BD=BC=B4=BF=CC=B8=E6=D6=AA=B7=A2=
-=BC=FE=C8=CB=A1=A3=B8=A3=D6=DD=C8=F0=D0=BE=CE=A2=B5=E7=D7=D3=D3=D0=CF=DE=
-=B9=AB=CB=BE=D3=B5=D3=D0=B1=BE=D3=CA=BC=FE=D0=C5=CF=A2=B5=C4=D6=F8=D7=F7=
-=20
-=C8=A8=BC=B0=BD=E2=CA=CD=C8=A8=A3=AC=BD=FB=D6=B9=C8=CE=BA=CE=CE=B4=BE=AD=
-=CA=DA=C8=A8=D0=ED=BF=C9=B5=C4=C7=D6=C8=A8=D0=D0=CE=AA=A1=A3
-IMPORTANT NOTICE: This email is from Fuzhou Rockchip Electronics Co.,=20
-Ltd .The contents of this email and any attachments may contain=20
-information that is privileged, confidential and/or exempt from=20
-disclosure under applicable law and relevant NDA. If you are not the=20
-intended recipient, you are hereby notified that any disclosure,=20
-copying, distribution, or use of the information is STRICTLY PROHIBITED=
-=2E=20
-Please immediately contact the sender as soon as possible and destroy=20
-the material in its entirety in any format. Thank you.
-***********************************************************************=
-*****
+Huh? That still doesn't make much sense. The condition is still
+impossible, since thermal->tshut_temp is an int. You've just made it
+slightly harder for static analyzers to notice the impossibility.
 
+> This patch is merged into kernel 4.4-rc3.
+
+No it isn't, and I'm glad. The patch is silly.
+
+Brian
