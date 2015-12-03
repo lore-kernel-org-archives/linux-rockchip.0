@@ -1,53 +1,66 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [RFC] rk3368 idle states
-Date: Thu, 03 Dec 2015 02:05:01 +0100
-Message-ID: <2472961.2QZIyIIJQ0@diego>
-References: <20151202111858.GB18981@red-moon>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v4 06/10] thermal: rockchip: consistently use int for
+ temperatures
+Date: Thu, 03 Dec 2015 09:16:55 +0800
+Message-ID: <565F9807.4080700@rock-chips.com>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com> <1447044542-30859-7-git-send-email-wxt@rock-chips.com> <20151202183851.GA91131@google.com> <565F8FFE.3080807@rock-chips.com> <20151203004903.GA9543@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20151202111858.GB18981@red-moon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20151203004903.GA9543@google.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Brian Norris <computersforpeace@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>, lkp@intel.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lorenzo,
+Hi Brain,
 
-Am Mittwoch, 2. Dezember 2015, 11:18:58 schrieb Lorenzo Pieralisi:
-> while reviewing other dts idle states bindings I spotted the following
-> snippet in arch/arm64/boot/dts/rockchip/rk3368.dtsi:
-> 
-> cpu_sleep: cpu-sleep-0 {
->        compatible = "arm,idle-state";
->        arm,psci-suspend-param = <0x1010000>;
->        entry-latency-us = <0x3fffffff>;
->        exit-latency-us = <0x40000000>;
->        min-residency-us = <0xffffffff>;
-> };
-> 
-> Could you please explain to me how you obtained these residency/latency
-> values ? They make NO sense whatsoever and I am quite tempted to
-> ask you to remove this data from the dts file, it is just wrong.
+=E4=BA=8E 2015=E5=B9=B412=E6=9C=8803=E6=97=A5 08:49, Brian Norris =E5=86=
+=99=E9=81=93:
+> Hi Caesar,
+>
+> On Thu, Dec 03, 2015 at 08:42:38AM +0800, Caesar Wang wrote:
+>> ? 2015?12?03? 02:38, Brian Norris ??:
+>>
+>> [.....]
+>>>   	if (thermal->tshut_temp > INT_MAX) {
+>>>       CID 1341498:  Integer handling issues  (CONSTANT_EXPRESSION_R=
+ESULT)
+>>>       "thermal->tshut_temp > 2147483647 /* (int)(~0U >> 1) */" is a=
+lways false regardless of the values of its operands. This occurs as th=
+e logical operand of if.
+>>>
+>>> I don't think this condition is even useful any more, so maybe we s=
+hould
+>>> just kill the 'if' block.
+>> See the patch to fix
+>> it.----->(https://patchwork.kernel.org/patch/7720601/)
+>> <https://patchwork.kernel.org/patch/7720601/>
+> -	if (thermal->tshut_temp > INT_MAX) {
+> +	if (!(thermal->tshut_temp < INT_MAX)) {
+>
+> Huh? That still doesn't make much sense. The condition is still
+> impossible, since thermal->tshut_temp is an int. You've just made it
+> slightly harder for static analyzers to notice the impossibility.
 
-I took these values verbatim from the vendor kernel when adding the core 
-rk3368 support.
+Okay, that's possible remove this condition as you said.
 
-I guess I was overly enthusiastic, that psci worked out of the box for smp, 
-that I didn't check the latency/residency values enough at that time. As time-
-values they are really overly long :-) .
+- if (thermal->tshut_temp > INT_MAX) {
+- dev_err(dev, "Invalid tshut temperature specified: %d\n",
+- thermal->tshut_temp);
+- return -ERANGE;
+- }
+
+Thanks!
+>
+>> This patch is merged into kernel 4.4-rc3.
+> No it isn't, and I'm glad. The patch is silly.
+>
+> Brian
+>
+>
+>
 
 
-Nevertheless I have inquired now, what the background of those values is.
-
-
-Heiko
