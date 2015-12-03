@@ -1,14 +1,14 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 3/3] ARM: dts: rockchip: add veyron-minnie board
-Date: Thu, 03 Dec 2015 15:00:33 +0100
-Message-ID: <2137537.DBrTyHZKX9@diego>
-References: <2767415.mEkgRbSSUB@diego> <3359424.qNn8gsFXpA@diego>
- <566020EC.7060606@rock-chips.com>
+Subject: Re: [PATCH 1/3] ARM: dts: rockchip: make sure edp_24m is associated
+ to xin24m on veyron
+Date: Thu, 03 Dec 2015 16:43:02 +0100
+Message-ID: <3006808.mS23SN11BJ@diego>
+References: <2767415.mEkgRbSSUB@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <566020EC.7060606-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <2767415.mEkgRbSSUB@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,56 +18,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2Flc2FyLCBTaGF3biwKCkFtIERvbm5lcnN0YWcsIDMuIERlemVtYmVyIDIwMTUsIDE5OjAx
-OjAwIHNjaHJpZWIgQ2Flc2FyIFdhbmc6Cj4g5ZyoIDIwMTXlubQxMuaciDAz5pelIDE4OjQ0LCBI
-ZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4gPiBBbSBEb25uZXJzdGFnLCAzLiBEZXplbWJlciAyMDE1
-LCAxODoyNzoyNyBzY2hyaWViIENhZXNhciBXYW5nOgo+ID4+IC4uLi4uYnV0LAo+ID4+IHJlYm9v
-dCBsb25nIGxvbmcgdGVzdCwgdGhhdCdzIHNlZW0gbW1jIHR1bmUgaGFzIGEgaXNzdWUuCj4gPj4g
-Cj4gPj4gICAgIDIuNjMwODkyXSBtbWNibGswOiBlcnJvciAtODQgdHJhbnNmZXJyaW5nIGRhdGEs
-IHNlY3RvciAwLCBuciA4LCBjbWQKPiA+PiAKPiA+PiByZXNwb25zZSAweDkwMCwgY2FyZCBzdGF0
-dXMgMHgwCj4gPj4gWyAgICAyLjYzMTAwNl0gbW1jYmxrMDogZXJyb3IgLTExMCBzZW5kaW5nIHN0
-YXR1cyBjb21tYW5kLCByZXRyeWluZwo+ID4+IFsgICAgMi42MzEwMThdIG1tY2JsazA6IGVycm9y
-IC04NCB0cmFuc2ZlcnJpbmcgZGF0YSwgc2VjdG9yIDEsIG5yIDcsIGNtZAo+ID4+IHJlc3BvbnNl
-IDB4OTAwLCBjYXJkIHN0YXR1cyAweDAKPiA+PiBbICAgIDIuNjMxNzAzXSAgbW1jYmxrMDogdW5h
-YmxlIHRvIHJlYWQgcGFydGl0aW9uIHRhYmxlCj4gPj4gLi4uCj4gPiAKPiA+IENvdWxkIHlvdSB0
-cnkgaWYgd2hhdCB3ZSBkbyBvbiBNaW5uaWUgZml4ZXMgdGhhdCBlcnJvciAoZGlzYWJsaW5nIHR1
-bmluZwo+ID4gZm9yIG5vdykgLSBpLmUuIGFkZGluZyB0aGUgZm9sbG93aW5nIHRvIHRoZSBNaWNr
-ZXkgZHRzOgo+ID4gCj4gPiAmZW1tYyB7Cj4gPiAKPiA+IAkvZGVsZXRlLXByb3BlcnR5L21tYy1o
-czIwMC0xXzh2Owo+ID4gCj4gPiB9Owo+IAo+IFllcCwgbWF5YmUgd2UgcmVtb3ZlIHRoaXMgbm9k
-ZSBmaXJzdGx5IGJ1dCBzb21lb25lIGZpeCB0aGUgZW1tYyB0dW5lIGlzc3Vlcy4KCnllcCwgdGhh
-dCBpcyBkZWZpbml0bHkgdGhlIHBsYW4uIEkndmUgbm93IGFsc28gZG9uZSBtb3JlIHRoYW4gYSBk
-b3plbiByZWJvb3QgCnRlc3RzIG9uIG15IGJyYWluIGJvYXJkIGluY2x1ZGluZyBydW5uaW5nIGhk
-cGFybS1zcGVlZHRlc3RzIG9uIHRoZSBlbW1jIHRoZXJlLiAKVHVuaW5nIGFuZCBhbGwgcmVhZHMg
-ZGlkIHJ1biB3aXRob3V0IGFueSBoaWNrdXBzLCBzbyB0aGlzIHJlYWxseSBzZWVtcyB0byBiZSAK
-c29tZWhvdyBsaW1pdGVkLgoKCj4gPj4gQW55d2F5LCB0aGUgZHRzIGlzIGdvb2QgdG8gc3VwcG9y
-dCBtaWNrZXkgbWFjaGluZS4KPiA+PiBJIHRoaW5rIHRoZSBtbWMgdHVuZSBpcyBub3QgcHJlZmVj
-dCBpbiBtYWlubGluZS4KPiA+IAo+ID4geWVhaCwgaXQgc2VlbXMgd2Ugc3RpbGwgaGF2ZSBzb21l
-IGlzc3Vlcy4KPiA+IAo+ID4gQWx0aG91Z2ggaXQgc2VlbXMgb25seSB0aGUgZGlzbmV5LW1pY2Ug
-c2VlbSBhZmZlY3RlZCA7LSkgW21pbm5pZSBhbmQKPiA+IG1pY2tleV0uIFBpbmt5LCBCcmFpbiwg
-U3BlZWR5LCBKYXEgYWxsIHNlZW0gdG8gd29yayBzb21laG93IC0gYXQgbGVhc3QgSQo+ID4gaGF2
-ZW4ndCBnb3R0ZW4gYW55IHJlcG9ydHMgYWJvdXQgdGhhdAo+IAo+IENjIHNoYXduLAo+IE1heWJl
-LCAgU2hhd25AUksgaGFzIHRoZSBpbnRlcmVzdGluZyBpbiBkZWJ1Z2luZyB0aGlzIGlzc3VlLjot
-KQoKU3RyYW5nZWx5IG9uIHRoZSBDaHJvbWVPUyBrZXJuZWwgdHVuaW5nIG9uIE1pbm5pZSBzZWVt
-cyB0byB3b3JrIG9rLiBJIGFscmVhZHkgCmNoZWNrZWQgdGhlIGNvZGUgc29tZXdoYXQgYW5kIHRo
-ZSBjb3JlIGhhbmRsaW5nIHNlZW1zIHRvIGJlIHRoZSBzYW1lIC0gbGlrZSAKdGhlIHBoYXNlIGNs
-b2NrcyBhbmQgdGhlIHR1bmluZyBhbGdvcml0aG0uCgpUaGUgb25seSBzbGlnaHQgZGlmZmVyZW5j
-ZSBpcyB0aGF0IG1haW5saW5lIGlzIHVzaW5nIG1tY19zZW5kX3R1bmluZygpIGluc3RlYWQgCm9m
-IGJ1aWxkaW5nIHRoZSBwYWNrZXQgYnkgaGFuZC4KCkJ1dCBhdCBsZWFzdCBvbiBteSBNaW5uaWUg
-dGhlIHBoYXNlcyB0aGUgZW1tYyBnZXRzIHR1bmVkIHRvIGFyZSBhbHdheXMgCmRpZmZlcmluZyBz
-b21laG93OiAobWFpbmxpbmU6IDIxNi0yMTgsIGNocm9tZW9zOiAxOTgtMjAxKSB3aGlsZSBvbiBt
-eSBqZXJyeSAKdGhlIHZhcmlhbmNlIGlzIG5vdCBhcyBiaWcgKG1haW5saW5lIDE3NiwgY2hyb21l
-b3M6IDE3MikuCgoKU29tZSBtb3JlIGNvbXBhcmlzb25zIEkgZGlkIG9uIE1pbm5pZToKc2RtbWM6
-IHBoYXNlIDE5NyBvbiBib3RoIG1haW5saW5lIGFuZCBjaHJvbWVvcwp3aWZpOiBhcm91bmQgcGhh
-c2UgMjE0IG9uIG1haW5saW5lIGFuZCAyMDQgb24gY2hyb21lb3MKClNvIGF0IGxlYXN0IHRoZSBz
-ZG1tYyBob3N0IHNlZW1zIHByZXR0eSBzdGFibGUgaW4gaXRzIHBoYXNlIGFuZCB0aGUgZGlmZmVy
-ZW5jZSAKb24gd2lmaSBpcyBzbWFsbGVyIHRoYW4gd2l0aCB0aGUgZW1tYyAtIG5vdCBzdXJlIGlm
-IHRoYXQgaGVscHMgdGhvdWdoIDotKQoKCkknbGwgYWxzbyB0cnkgdG8gbG9vayBtb3JlIGludG8g
-dGhhdCBpc3N1ZSwgYnV0IHdvdWxkIGJlIGdsYWQgdG8gaGVhciBvdGhlciAKYnJpZ2h0IGlkZWFz
-IDotKQoKClRoYW5rcwpIZWlrbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Dienstag, 1. Dezember 2015, 18:14:27 schrieb Heiko St=FCbner:
+
+applied all three patches to my dts32 branch for 4.5, after disabling emmc =
+
+tuning on mickey (in a similar fashion as on minnie) for the short term.
+
+> The edp-24m clock has two possible sources: the 24MHz oscillator as well
+> as an external 27MHz input. The power-on-default is the 27MHz clock which
+> is not supplied on all Rockchip boards. While on all current boards and
+> also all Veyron Chromebooks the bootloader seems to adapt the muxing to
+> the internal source, this doesn't seem to be the case on headless veyron
+> devices like brain and mickey making the edp-24m clock an orphan.
+> On the hardware side the 27m input also is not connected at all.
+> =
+
+> With the upcoming deferral of orphan-clocks this results in the power-
+> domain code deferring, as it cannot request the needed clock and if the
+> synchronous reset is sucessfullat all in this case is also unknown.
+> =
+
+> So fix that by making sure, the edp-24m clock is muxed to the internal
+> 24MHz oscillator at all times.
+> =
+
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> It seems I had some issues sending, sorry about the double-mails.
+> =
+
+>  arch/arm/boot/dts/rk3288-veyron.dtsi | 5 +++++
+>  1 file changed, 5 insertions(+)
+> =
+
+> diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi
+> b/arch/arm/boot/dts/rk3288-veyron.dtsi index 5e61f07..9fce91f 100644
+> --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
+> @@ -340,6 +340,11 @@
+>  	i2c-scl-rising-time-ns =3D <1000>;
+>  };
+> =
+
+> +&power {
+> +	assigned-clocks =3D <&cru SCLK_EDP_24M>;
+> +	assigned-clock-parents =3D <&xin24m>;
+> +};
+> +
+>  &pwm1 {
+>  	status =3D "okay";
+>  };
