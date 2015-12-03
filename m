@@ -1,66 +1,63 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v4 06/10] thermal: rockchip: consistently use int for
- temperatures
-Date: Thu, 03 Dec 2015 09:16:55 +0800
-Message-ID: <565F9807.4080700@rock-chips.com>
-References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com> <1447044542-30859-7-git-send-email-wxt@rock-chips.com> <20151202183851.GA91131@google.com> <565F8FFE.3080807@rock-chips.com> <20151203004903.GA9543@google.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH 7/9] drm/rockchip: force enable vop when do mode
+ setting
+Date: Thu, 03 Dec 2015 09:54:56 +0800
+Message-ID: <565FA0F0.1030306@rock-chips.com>
+References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>
+ <1448940721-23488-1-git-send-email-mark.yao@rock-chips.com>
+ <20151202165536.GA14019@ulmo> <20151202221710.GB10243@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20151203004903.GA9543@google.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Brian Norris <computersforpeace@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Eduardo Valentin <edubezval@gmail.com>, lkp@intel.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20151202221710.GB10243@phenom.ffwll.local>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Thierry Reding <thierry.reding@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brain,
-
-=E4=BA=8E 2015=E5=B9=B412=E6=9C=8803=E6=97=A5 08:49, Brian Norris =E5=86=
-=99=E9=81=93:
-> Hi Caesar,
->
-> On Thu, Dec 03, 2015 at 08:42:38AM +0800, Caesar Wang wrote:
->> ? 2015?12?03? 02:38, Brian Norris ??:
->>
->> [.....]
->>>   	if (thermal->tshut_temp > INT_MAX) {
->>>       CID 1341498:  Integer handling issues  (CONSTANT_EXPRESSION_R=
-ESULT)
->>>       "thermal->tshut_temp > 2147483647 /* (int)(~0U >> 1) */" is a=
-lways false regardless of the values of its operands. This occurs as th=
-e logical operand of if.
->>>
->>> I don't think this condition is even useful any more, so maybe we s=
-hould
->>> just kill the 'if' block.
->> See the patch to fix
->> it.----->(https://patchwork.kernel.org/patch/7720601/)
->> <https://patchwork.kernel.org/patch/7720601/>
-> -	if (thermal->tshut_temp > INT_MAX) {
-> +	if (!(thermal->tshut_temp < INT_MAX)) {
->
-> Huh? That still doesn't make much sense. The condition is still
-> impossible, since thermal->tshut_temp is an int. You've just made it
-> slightly harder for static analyzers to notice the impossibility.
-
-Okay, that's possible remove this condition as you said.
-
-- if (thermal->tshut_temp > INT_MAX) {
-- dev_err(dev, "Invalid tshut temperature specified: %d\n",
-- thermal->tshut_temp);
-- return -ERANGE;
-- }
-
-Thanks!
->
->> This patch is merged into kernel 4.4-rc3.
-> No it isn't, and I'm glad. The patch is silly.
->
-> Brian
->
->
->
-
-
+T24gMjAxNeW5tDEy5pyIMDPml6UgMDY6MTcsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24gV2Vk
+LCBEZWMgMDIsIDIwMTUgYXQgMDU6NTU6MzZQTSArMDEwMCwgVGhpZXJyeSBSZWRpbmcgd3JvdGU6
+Cj4+IE9uIFR1ZSwgRGVjIDAxLCAyMDE1IGF0IDExOjMyOjAxQU0gKzA4MDAsIE1hcmsgWWFvIHdy
+b3RlOgo+Pj4gV2hlbiBkbyBtb2RlIHNldHRpbmcsIG1lYW4gdGhhdCB3ZSB3YW50IHRvIGVuYWJs
+ZSBkaXNwbGF5IG91dHB1dCwKPj4+IGJ1dCBzb21ldGltZXMsIHZvcF9jcnRjX2VuYWJsZSBpcyBh
+ZnRlciBtb2RlX3NldCwgd2UgY2FuJ3QgYWxsb3cKPj4+IHRoYXQsIHNvIGZvcmNlIGVuYWJsZSB2
+b3AgaW4gbW9kZSBzZXR0aW5nLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJr
+Lnlhb0Byb2NrLWNoaXBzLmNvbT4KPj4+IC0tLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgICAgMSArCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV92b3AuYwo+Pj4gaW5kZXggYzY1YjQ1NC4uN2MwNzUzNyAxMDA2NDQKPj4+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+IEBAIC0xMTEwLDYgKzExMTAs
+NyBAQCBzdGF0aWMgdm9pZCB2b3BfY3J0Y19tb2RlX3NldF9ub2ZiKHN0cnVjdCBkcm1fY3J0YyAq
+Y3J0YykKPj4+ICAgCXUxNiB2YWN0X2VuZCA9IHZhY3Rfc3QgKyB2ZGlzcGxheTsKPj4+ICAgCXVp
+bnQzMl90IHZhbDsKPj4+ICAgCj4+PiArCXZvcF9jcnRjX2VuYWJsZShjcnRjKTsKPj4+ICAgCS8q
+Cj4+PiAgIAkgKiBJZiBkY2xrIHJhdGUgaXMgemVybywgbWVhbiB0aGF0IHNjYW5vdXQgaXMgc3Rv
+cCwKPj4+ICAgCSAqIHdlIGRvbid0IG5lZWQgd2FpdCBhbnkgbW9yZS4KPj4gSGF2ZSB5b3UgY29u
+c2lkZXJlZCBzaW1wbHkgbW92aW5nIGV2ZXJ5dGhpbmcgaW50byAtPmVuYWJsZSgpPyBUaGF0J3MK
+Pj4gd2hhdCBJIGRpZCBmb3IgVGVncmEsIGZvciBtdWNoIHRoZSBzYW1lIHJlYXNvbnMgdGhhdCB5
+b3UgZ2F2ZSBpbiB0aGUKPj4gY29tbWl0IG1lc3NhZ2UuIERvaW5nIHNvIGdpdmVzIHlvdSBhIG11
+Y2ggc2ltcGxlciBjYWxsIGdyYXBoLiBSZWFsbHkKPj4gdGhlIG9ubHkgdGhpbmcgeW91IG5lZWQg
+dG8gZG8gaXMgbW92ZSBhcm91bmQgdGhlIGNvZGUsIGFuZCBwZXJoYXBzIGEKPj4gZGlmZmVyZW50
+IHdheSB0byBnZXQgYWhvbGQgb2YgdGhlIGRpc3BsYXkgbW9kZSwgYnV0IHlvdSBjYW4gdXNlIHRo
+ZQo+PiBUZWdyYSBkcml2ZXIgYXMgYSByZWZlcmVuY2UgZm9yIGhvdyB0byBkbyB0aGF0Lgo+IFll
+YWggaWYgd3JpdGluZyBtb2RlIHJlbGF0ZWQgcmVnaXN0ZXJzIHJlcXVpcmVzIHRoZSB0aGluZyB0
+byBiZSBvbiBvbiB5b3VyCj4gaHcgdGhlbiB5b3UgY2FuJ3QgdXNlIHRoZSAtPm1vZGVfc2V0IGhv
+b2tzLiBUaG9zZSBhcmUgZXhwbGljaXRseSBjYWxsZWQKPiB3aGVuIGV2ZXJ5dGhpbmcgaXMgb2Zm
+IChub3QganVzdCBzb21ldGltZXMsIGF0IGxlYXN0IHdpdGggYXRvbWljIGhlbHBlcnMpLgo+Cj4g
+TGlrZSBUaGllcnJ5IHNhaWQgdGhlIHJlY29tbWVuZGF0aW9uIGlzIHRvIGp1c3Qgc2hvdmVsIHRo
+YXQgY29kZSBpbnRvCj4gLT5lbmFibGUgaG9va3MuIC0+bW9kZV9zZXRfbm9mYiBpcyBtb3N0bHkg
+dGhlcmUgdG8gc3VwcG9ydCBlYXNpZXIKPiB0cmFuc2l0aW9uIGZvciBkcml2ZXJzIHdoaWNoIHN0
+YXJ0ZWQgd2l0aCB0aGUgbGVnYWN5IGNydGMgaGVscGVycy4KPiAtRGFuaWVsCgpHb29kLCB0aGFu
+a3MsIGFjdHVhbGx5IGl0IHNvbHZlIG15IGNvbmZ1c2lvbi4KCi0tIArvvK1hcmsgWWFvCgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
