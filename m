@@ -1,85 +1,62 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/9] i2c: document generic DT bindings for timing
- parameters
-Date: Thu, 3 Dec 2015 14:39:08 -0600
-Message-ID: <20151203203908.GA29831@rob-hp-laptop>
+From: Mika Westerberg <mika.westerberg@linux.intel.com>
+Subject: Re: [PATCH 2/9] i2c: add generic routine to parse DT for timing
+ information
+Date: Fri, 4 Dec 2015 10:34:28 +0200
+Message-ID: <20151204083428.GC1593@lahna.fi.intel.com>
 References: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
- <1449157899-6572-2-git-send-email-wsa@the-dreams.de>
+ <1449157899-6572-3-git-send-email-wsa@the-dreams.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-sh-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1449157899-6572-2-git-send-email-wsa@the-dreams.de>
+In-Reply-To: <1449157899-6572-3-git-send-email-wsa@the-dreams.de>
 Sender: linux-sh-owner@vger.kernel.org
 To: Wolfram Sang <wsa@the-dreams.de>
-Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>, devicetree@vger.kernel.org
+Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Dec 03, 2015 at 04:51:31PM +0100, Wolfram Sang wrote:
+On Thu, Dec 03, 2015 at 04:51:32PM +0100, Wolfram Sang wrote:
 > From: Wolfram Sang <wsa+renesas@sang-engineering.com>
 > 
-> Also, sort the properties alphabetically and make indentation
-> consistent. Wording largely taken from i2c-rk3x.txt, thanks guys!
-> 
-> Only "i2c-scl-internal-delay-ns" is new, the rest is used by two drivers
-> already and was documented in their driver binding documentation.
+> Inspired from the i2c-rk3x driver (thanks guys!) but refactored and
+> extended. See built-in docs for further information.
 > 
 > Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> Cc: devicetree@vger.kernel.org
-
-Acked-by: Rob Herring <robh@kernel.org>
-
 > ---
->  Documentation/devicetree/bindings/i2c/i2c.txt | 31 ++++++++++++++++++++++-----
->  1 file changed, 26 insertions(+), 5 deletions(-)
+>  drivers/i2c/i2c-core.c | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/i2c.h    | 22 ++++++++++++++++++++++
+>  2 files changed, 72 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c.txt b/Documentation/devicetree/bindings/i2c/i2c.txt
-> index 8a99150ac3a7fd..a00219f5ee0733 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c.txt
-> @@ -29,12 +29,33 @@ Optional properties
->  These properties may not be supported by all drivers. However, if a driver
->  wants to support one of the below features, it should adapt the bindings below.
+> diff --git a/drivers/i2c/i2c-core.c b/drivers/i2c/i2c-core.c
+> index ba8eb087f22465..5c269dd51b2de7 100644
+> --- a/drivers/i2c/i2c-core.c
+> +++ b/drivers/i2c/i2c-core.c
+> @@ -1438,6 +1438,56 @@ static void of_i2c_register_devices(struct i2c_adapter *adap)
+>  	}
+>  }
 >  
-> -- clock-frequency	- frequency of bus clock in Hz.
-> -- wakeup-source		- device can be used as a wakeup source.
-> +- clock-frequency
-> +	frequency of bus clock in Hz.
->  
-> -- interrupts		- interrupts used by the device.
-> -- interrupt-names	- "irq" and "wakeup" names are recognized by I2C core,
-> -			  other names are left to individual drivers.
-> +- i2c-scl-falling-time-ns
-> +	Number of nanoseconds the SCL signal takes to fall; t(f) in the I2C
-> +	specification.
+> +/**
+> + * of_i2c_parse_timings - get I2C related timing parameters from DT
+> + * @node: The DT node to scan for I2C timing properties
+> + * @t: the i2c_timings struct to be filled with values
+> + * @use_defaults: bool to use sane defaults derived from the I2C specification
+> + * 		  when properties are not found, otherwise use 0
+> + *
+> + * Scan the node pointer for the generic I2C DT properties describing timing
+> + * parameters for the signal and fill the given struct with the results. If a
+> + * property was not found and use_defaults was true, then maximum timings are
+> + * assumed which are derived from the I2C specification. If use_defaults is not
+> + * used, the result will be 0, so drivers can apply their own defaults later.
+> + * The latter is mainly intended for avoiding regressions of existing drivers
+> + * which want to switch to this function. New drivers almost always should use
+> + * the defaults.
+> + */
+> +void of_i2c_parse_timings(struct device_node *node, struct i2c_timings *t, bool use_defaults)
+> +{
+> +	memset(t, 0, sizeof(*t));
 > +
-> +- i2c-scl-internal-delay-ns
-> +	Number of nanoseconds the IP core additionally needs to setup SCL.
-> +
-> +- i2c-scl-rising-time-ns
-> +	Number of nanoseconds the SCL signal takes to rise; t(r) in the I2C
-> +	specification.
-> +
-> +- i2c-sda-falling-time-ns
-> +	Number of nanoseconds the SDA signal takes to fall; t(f) in the I2C
-> +	specification.
-> +
-> +- interrupts
-> +	interrupts used by the device.
-> +
-> +- interrupt-names
-> +	"irq" and "wakeup" names are recognized by I2C core, other names are
-> +	left to individual drivers.
-> +
-> +- wakeup-source
-> +	device can be used as a wakeup source.
->  
->  Binding may contain optional "interrupts" property, describing interrupts
->  used by the device. I2C core will assign "irq" interrupt (or the very first
-> -- 
-> 2.1.4
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +	if (of_property_read_u32(node, "clock-frequency", &t->bus_freq_hz) && use_defaults)
+> +		t->bus_freq_hz = 100000;
+
+Why not create device_i2c_parse_timings() instead and use unified device
+properties API?
