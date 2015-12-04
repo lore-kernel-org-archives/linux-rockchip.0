@@ -1,63 +1,64 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 2/9] i2c: add generic routine to parse DT for timing
- information
-Date: Fri, 4 Dec 2015 09:41:40 +0100
-Message-ID: <20151204084140.GD1526@katana>
-References: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
- <1449157899-6572-3-git-send-email-wsa@the-dreams.de>
- <20151204083428.GC1593@lahna.fi.intel.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: add devicetree node to veyron minnie
+Date: Fri, 04 Dec 2015 13:17:55 +0100
+Message-ID: <1659535.pi5COafBrO@diego>
+References: <2165846.YmcBK0foD2@diego>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="tEFtbjk+mNEviIIX"
-Return-path: <linux-sh-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20151204083428.GC1593@lahna.fi.intel.com>
-Sender: linux-sh-owner@vger.kernel.org
-To: Mika Westerberg <mika.westerberg@linux.intel.com>
-Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2165846.YmcBK0foD2@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Mittwoch, 2. Dezember 2015, 19:03:56 schrieb Heiko St=FCbner:
+> Minnie provides an elan,ekth3500 touchscreen over the display,
+> so add the necessary node to enable it.
+> =
 
---tEFtbjk+mNEviIIX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-> > +void of_i2c_parse_timings(struct device_node *node, struct i2c_timings=
- *t, bool use_defaults)
-> > +{
-> > +	memset(t, 0, sizeof(*t));
-> > +
-> > +	if (of_property_read_u32(node, "clock-frequency", &t->bus_freq_hz) &&=
- use_defaults)
-> > +		t->bus_freq_hz =3D 100000;
->=20
-> Why not create device_i2c_parse_timings() instead and use unified device
-> properties API?
+applied to my dts32 branch after doing a s/devicetree/touchscreen/ on the =
 
-Sure, just missed it.
+patch subject :-)
 
 
---tEFtbjk+mNEviIIX
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+> ---
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> =
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
+> diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> b/arch/arm/boot/dts/rk3288-veyron-minnie.dts index 85f0373..699beb0 100644
+> --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+> @@ -121,6 +121,18 @@
+>  	clock-frequency =3D <400000>;
+>  	i2c-scl-falling-time-ns =3D <50>;
+>  	i2c-scl-rising-time-ns =3D <300>;
+> +
+> +	touchscreen@10 {
+> +		compatible =3D "elan,ekth3500";
+> +		reg =3D <0x10>;
+> +		interrupt-parent =3D <&gpio2>;
+> +		interrupts =3D <14 IRQ_TYPE_EDGE_FALLING>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&touch_int &touch_rst>;
+> +		reset-gpios =3D <&gpio2 15 GPIO_ACTIVE_LOW>;
+> +		vcc33-supply =3D <&vcc33_touch>;
+> +		vccio-supply =3D <&vcc33_touch>;
+> +	};
+>  };
+> =
 
-iQIcBAEBAgAGBQJWYVHDAAoJEBQN5MwUoCm2ubwP/2bS6k18AIBEpg9z550wPBNf
-riLNEudioyjnxEpkidwWeV0nYaa7efLAxjagYqTDvXytRSTxvO3b+S2Z125kh0t1
-7cspDpfcuSTrLHJGabQmTUmd/HB7j9QZSyIaJUXgLF+5C7P0Iz8NRHIyTTJS0xCO
-DETYHvm5J9nNkeef88Fp/eBfTY26ev5gZzk1HaoY89+UfEIRDJGExN97v29Y0yIr
-Kv7s7HYVw5pZKf3kN2XZC4c1MM2YBMBKOJ3yqjpdD+5URME2HrFppdQTYdp+Vrlm
-IhecvpCD1VZxVJSBIkaMc38oYSCoq6VfEr0HFJPr9E88BzQQcWq56Ut1zsiOxNRv
-IDoQymkpw02QqaaQyjkoYTc2AhH5v6zdGxnOSIZXQC9WILBOOeu0Pr0D2PRauJZa
-m5bL6wF6IrQ6iolclHn1bRAmPMIZuqSCvM1nDwZyNHrlRmnfMLgsYRS/nR837kAR
-fItnAynX3U8JDHtmd+IbtvdGQ+C3w3JSEZ98vpo/iKYncyR9KphNMKoB82fCRwNk
-S4/igFaU29seVvYR7Ku2kJWEekTOkneQflnaNQEC4BJpLbIaH2Iw3S3rD0MASXV8
-LgwdG0jClcSJ3GVSoY2uIkiCoUfZn7crZ8nnzY/GLwFut3xo04WdRj72/Xvb956m
-6gzRrchtKp4xY8riNOSJ
-=fSXZ
------END PGP SIGNATURE-----
-
---tEFtbjk+mNEviIIX--
+>  &rk808 {
