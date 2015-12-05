@@ -1,82 +1,126 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.5
-Date: Fri, 04 Dec 2015 23:43:41 +0100
-Message-ID: <3167734.Jiqp72JFJP@diego>
+From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: RE: [PATCH 5/8] clk: rockchip: fix usbphy-related clocks
+Date: Fri, 04 Dec 2015 16:07:23 -0800
+Message-ID: <56622abb9f53f_650d3fc0582a72d85a@quark.notmuch>
+References: <1446673454-9529-1-git-send-email-heiko@sntech.de>
+ <1446673454-9529-6-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1446673454-9529-6-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: kishon-l0cyMroinI0@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Heiko Stuebner wrote:
+> The otgphy clocks really only drive the phy blocks. These in turn
+> contain plls that then generate the 480m clocks the clock controller
+> uses to supply some other clocks like uart0, gpu or the video-codec.
+> 
+> So fix this structure to actually respect that hirarchy and removed
+> that usb480m fixed-rate clock working as a placeholder till now, as
+> this wouldn't even work if the supplying phy gets turned off while
+> its pll-output gets used elsewhere.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-as discusses previously, here is round 1 of rockchip clock changes for 4.5.
-This already includes the clock-id branch shared with the armsoc-
-specific changes.
+Acked-by: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 
-Thanks
-Heiko
-
-
-The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
-
-  Linux 4.4-rc1 (2015-11-15 17:00:27 -0800)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.5-rockchip-clk1
-
-for you to fetch changes up to 8ad0df33c62d706f925a5910701255759a68c2e5:
-
-  clk: rockchip: fix rk3368 cpuclk divider offsets (2015-12-03 16:20:02 +0100)
-
-----------------------------------------------------------------
-First round of Rockchip clock changes for 4.5 .
-- one new clock-tree for the rk3036 including a new pll type
-- switch rk3288 plls to slow mode on reboot
-- a bunch of new clock ids
-- some more critical clocks
-
-----------------------------------------------------------------
-Caesar Wang (1):
-      clk: rockchip: Force rk3368 PWM clock (and its parents) on
-
-Chris Zhong (3):
-      clk: rockchip: add id for mipidsi sclk on rk3288
-      clk: rockchip: add mipidsi clock on rk3288
-      clk: rockchip: switch PLLs to slow mode before reboot for rk3288
-
-Heiko Stuebner (3):
-      Merge branch 'v4.5-clk/clkids' into v4.5-clk/next
-      Merge branch 'v4.5-clk/clkids' into v4.5-clk/next
-      clk: rockchip: fix rk3368 cpuclk divider offsets
-
-Jianqun xu (1):
-      clk: rockchip: protect rk3368 aclk_bus and aclk_peri clocks
-
-Xing Zheng (4):
-      clk: rockchip: add dt-binding header for rk3036
-      dt-bindings: add documentation of rk3036 clock controller
-      clk: rockchip: add new pll-type for rk3036 and similar socs
-      clk: rockchip: add clock controller for rk3036
-
-Zain Wang (2):
-      clk: rockchip: add an id for rk3288 crypto clk
-      clk: rockchip: set the id for crypto clk
-
- .../bindings/clock/rockchip,rk3036-cru.txt         |  56 +++
- drivers/clk/rockchip/Makefile                      |   1 +
- drivers/clk/rockchip/clk-pll.c                     | 258 ++++++++++-
- drivers/clk/rockchip/clk-rk3036.c                  | 478 +++++++++++++++++++++
- drivers/clk/rockchip/clk-rk3288.c                  |  36 +-
- drivers/clk/rockchip/clk-rk3368.c                  |  11 +-
- drivers/clk/rockchip/clk.h                         |  32 +-
- include/dt-bindings/clock/rk3036-cru.h             | 193 +++++++++
- include/dt-bindings/clock/rk3288-cru.h             |   2 +
- 9 files changed, 1043 insertions(+), 24 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3036-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk3036.c
- create mode 100644 include/dt-bindings/clock/rk3036-cru.h
-
+> ---
+>  drivers/clk/rockchip/clk-rk3188.c | 11 +++--------
+>  drivers/clk/rockchip/clk-rk3288.c | 16 +++++-----------
+>  2 files changed, 8 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+> index abb4760..7836a97 100644
+> --- a/drivers/clk/rockchip/clk-rk3188.c
+> +++ b/drivers/clk/rockchip/clk-rk3188.c
+> @@ -319,9 +319,9 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+>  	 * the 480m are generated inside the usb block from these clocks,
+>  	 * but they are also a source for the hsicphy clock.
+>  	 */
+> -	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "usb480m", CLK_IGNORE_UNUSED,
+> +	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "xin24m", CLK_IGNORE_UNUSED,
+>  			RK2928_CLKGATE_CON(1), 5, GFLAGS),
+> -	GATE(SCLK_OTGPHY1, "sclk_otgphy1", "usb480m", CLK_IGNORE_UNUSED,
+> +	GATE(SCLK_OTGPHY1, "sclk_otgphy1", "xin24m", CLK_IGNORE_UNUSED,
+>  			RK2928_CLKGATE_CON(1), 6, GFLAGS),
+>  
+>  	COMPOSITE(0, "mac_src", mux_mac_p, 0,
+> @@ -635,7 +635,7 @@ static struct clk_div_table div_rk3188_aclk_core_t[] = {
+>  	{ /* sentinel */ },
+>  };
+>  
+> -PNAME(mux_hsicphy_p)		= { "sclk_otgphy0", "sclk_otgphy1",
+> +PNAME(mux_hsicphy_p)		= { "sclk_otgphy0_480m", "sclk_otgphy1_480m",
+>  				    "gpll", "cpll" };
+>  
+>  static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
+> @@ -739,11 +739,6 @@ static void __init rk3188_common_clk_init(struct device_node *np)
+>  		pr_warn("%s: could not register clock xin12m: %ld\n",
+>  			__func__, PTR_ERR(clk));
+>  
+> -	clk = clk_register_fixed_factor(NULL, "usb480m", "xin24m", 0, 20, 1);
+> -	if (IS_ERR(clk))
+> -		pr_warn("%s: could not register clock usb480m: %ld\n",
+> -			__func__, PTR_ERR(clk));
+> -
+>  	rockchip_clk_register_branches(common_clk_branches,
+>  				  ARRAY_SIZE(common_clk_branches));
+>  
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> index 9040878..7c8a3e9 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -195,8 +195,8 @@ PNAME(mux_hsadcout_p)	= { "hsadc_src", "ext_hsadc" };
+>  PNAME(mux_edp_24m_p)	= { "ext_edp_24m", "xin24m" };
+>  PNAME(mux_tspout_p)	= { "cpll", "gpll", "npll", "xin27m" };
+>  
+> -PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1", "sclk_otgphy2",
+> -				    "sclk_otgphy0" };
+> +PNAME(mux_usbphy480m_p)		= { "sclk_otgphy1_480m", "sclk_otgphy2_480m",
+> +				    "sclk_otgphy0_480m" };
+>  PNAME(mux_hsicphy480m_p)	= { "cpll", "gpll", "usbphy480m_src" };
+>  PNAME(mux_hsicphy12m_p)		= { "hsicphy12m_xin12m", "hsicphy12m_usbphy" };
+>  
+> @@ -506,11 +506,11 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>  			RK3288_CLKSEL_CON(35), 6, 2, MFLAGS, 0, 5, DFLAGS,
+>  			RK3288_CLKGATE_CON(4), 10, GFLAGS),
+>  
+> -	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "usb480m", CLK_IGNORE_UNUSED,
+> +	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "xin24m", CLK_IGNORE_UNUSED,
+>  			RK3288_CLKGATE_CON(13), 4, GFLAGS),
+> -	GATE(SCLK_OTGPHY1, "sclk_otgphy1", "usb480m", CLK_IGNORE_UNUSED,
+> +	GATE(SCLK_OTGPHY1, "sclk_otgphy1", "xin24m", CLK_IGNORE_UNUSED,
+>  			RK3288_CLKGATE_CON(13), 5, GFLAGS),
+> -	GATE(SCLK_OTGPHY2, "sclk_otgphy2", "usb480m", CLK_IGNORE_UNUSED,
+> +	GATE(SCLK_OTGPHY2, "sclk_otgphy2", "xin24m", CLK_IGNORE_UNUSED,
+>  			RK3288_CLKGATE_CON(13), 6, GFLAGS),
+>  	GATE(SCLK_OTG_ADP, "sclk_otg_adp", "xin32k", CLK_IGNORE_UNUSED,
+>  			RK3288_CLKGATE_CON(13), 7, GFLAGS),
+> @@ -874,12 +874,6 @@ static void __init rk3288_clk_init(struct device_node *np)
+>  		pr_warn("%s: could not register clock xin12m: %ld\n",
+>  			__func__, PTR_ERR(clk));
+>  
+> -
+> -	clk = clk_register_fixed_factor(NULL, "usb480m", "xin24m", 0, 20, 1);
+> -	if (IS_ERR(clk))
+> -		pr_warn("%s: could not register clock usb480m: %ld\n",
+> -			__func__, PTR_ERR(clk));
+> -
+>  	clk = clk_register_fixed_factor(NULL, "hclk_vcodec_pre",
+>  					"hclk_vcodec_pre_v", 0, 1, 4);
+>  	if (IS_ERR(clk))
+> -- 
+> 2.6.2
+> 
