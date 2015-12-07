@@ -1,338 +1,259 @@
-From: Zain <zain.wang@rock-chips.com>
-Subject: Re: [RFC PATCH] Crypto: rockchip/crypto - add hash support for crypto
- engine in rk3288
-Date: Mon, 7 Dec 2015 08:40:00 +0800
-Message-ID: <5664D560.1080705@rock-chips.com>
-References: <1449297025-8400-1-git-send-email-zain.wang@rock-chips.com>
- <5662DA49.3050100@gmail.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v10 0/17] Add Analogix Core Display Port Driver
+Date: Mon,  7 Dec 2015 14:37:19 +0800
+Message-ID: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <5662DA49.3050100@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Corentin LABBE <clabbe.montjoie@gmail.com>, heiko@sntech.de, herbert@gondor.apana.org.au, davem@davemloft.net
-Cc: eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Inki Dae <inki.dae@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, javier@osg.samsung.com, emil.l.velikov@gmail.com, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, ajaynumb@gmail.com, Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2015=E5=B9=B412=E6=9C=8805=E6=97=A5 20:36, Corentin LABBE =E5=
-=86=99=E9=81=93:
-> Le 05/12/2015 07:30, Zain Wang a =C3=A9crit :
->> Add md5 sha1 sha256 support for crypto engine in rk3288.
->> This patch can't support multiple updatings because of limited of IC=
-,
->> as result, it can't support import and export too.
->>
->> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
->> ---
->>  drivers/crypto/rockchip/Makefile                   |   1 +
->>  drivers/crypto/rockchip/rk3288_crypto.c            |  33 +-
->>  drivers/crypto/rockchip/rk3288_crypto.h            |  50 ++-
->>  drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  20 +-
->>  drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 369 ++++++++++=
-+++++++++++
->>  5 files changed, 455 insertions(+), 18 deletions(-)
->>  create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ahash.c
->>
->> diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockc=
-hip/Makefile
->> index 7051c6c..30f9129 100644
->> +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
->> @@ -0,0 +1,369 @@
->> +/*
->> + * Crypto acceleration support for Rockchip RK3288
->> + *
->> + * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
->> + *
->> + * Author: Zain Wang <zain.wang@rock-chips.com>
->> + *
->> + * This program is free software; you can redistribute it and/or mo=
-dify it
->> + * under the terms and conditions of the GNU General Public License=
-,
->> + * version 2, as published by the Free Software Foundation.
->> + *
->> + * Some ideas are from marvell/cesa.c and s5p-sss.c driver.
->> + */
->> +#include "rk3288_crypto.h"
->> +
->> +static u8 *outdata[3] =3D {
->> +		"\xda\x39\xa3\xee\x5e\x6b\x4b\x0d\x32\x55"
->> +		"\xbf\xef\x95\x60\x18\x90\xaf\xd8\x07\x09",
->> +
->> +		"\xe3\xb0\xc4\x42\x98\xfc\x1c\x14"
->> +		"\x9a\xfb\xf4\xc8\x99\x6f\xb9\x24"
->> +		"\x27\xae\x41\xe4\x64\x9b\x93\x4c"
->> +		"\xa4\x95\x99\x1b\x78\x52\xb8\x55",
->> +
->> +		"\xd4\x1d\x8c\xd9\x8f\x00\xb2\x04"
->> +		"\xe9\x80\x09\x98\xec\xf8\x42\x7e",
->> +};
->> +
-> Clearly this array must be set const, and a comment about what are th=
-oses numbers is necessary.
-> Perhaps splitting that in three arrays const xxx_zero_message_hash =3D=
- ... is also better.
-It's good idea. I will fix it in next version.
->
->> +static void nodata_process(struct ahash_request *req)
->> +{
->> +	struct crypto_ahash *tfm =3D crypto_ahash_reqtfm(req);
->> +	int rk_digest_size;
->> +
->> +	rk_digest_size =3D crypto_ahash_digestsize(tfm);
->> +
->> +	if (rk_digest_size =3D=3D SHA1_DIGEST_SIZE)
->> +		memcpy(req->result, outdata[0], rk_digest_size);
->> +	else if (rk_digest_size =3D=3D SHA256_DIGEST_SIZE)
->> +		memcpy(req->result, outdata[1], rk_digest_size);
->> +	else if (rk_digest_size =3D=3D MD5_DIGEST_SIZE)
->> +		memcpy(req->result, outdata[2], rk_digest_size);
->> +}
->> +
->> +static void rk_ahash_crypto_complete(struct rk_crypto_info *dev, in=
-t err)
->> +{
->> +	if (dev->ahash_req->base.complete)
->> +		dev->ahash_req->base.complete(&dev->ahash_req->base, err);
->> +}
->> +
->> +static void rk_ahash_hw_init(struct rk_crypto_info *dev)
->> +{
->> +	int reg_status =3D 0;
->> +
->> +	reg_status =3D CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
->> +		     RK_CRYPTO_HASH_FLUSH |
->> +		     _SBF(0xffff, 16);
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
->> +
->> +	reg_status =3D CRYPTO_READ(dev, RK_CRYPTO_CTRL);
->> +	reg_status &=3D (~RK_CRYPTO_HASH_FLUSH);
->> +	reg_status |=3D _SBF(0xffff, 16);
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
->> +
->> +	memset_io(dev->reg + RK_CRYPTO_HASH_DOUT_0, 0, 32);
->> +}
->> +
->> +static void rk_ahash_reg_init(struct rk_crypto_info *dev)
->> +{
->> +	rk_ahash_hw_init(dev);
->> +
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTENA, RK_CRYPTO_HRDMA_ERR_ENA |
->> +					    RK_CRYPTO_HRDMA_DONE_ENA);
->> +
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, RK_CRYPTO_HRDMA_ERR_INT |
->> +					    RK_CRYPTO_HRDMA_DONE_INT);
->> +
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_CTRL, dev->mode |
->> +					       RK_CRYPTO_HASH_SWAP_DO);
->> +
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_CONF, RK_CRYPTO_BYTESWAP_HRFIFO |
->> +					  RK_CRYPTO_BYTESWAP_BRFIFO |
->> +					  RK_CRYPTO_BYTESWAP_BTFIFO);
->> +}
->> +
->> +static int rk_ahash_init(struct ahash_request *req)
->> +{
->> +	struct crypto_ahash *tfm =3D crypto_ahash_reqtfm(req);
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(req->base.tfm);
->> +	struct rk_crypto_info *dev =3D NULL;
->> +	int rk_digest_size;
->> +
->> +	dev =3D tctx->dev;
->> +	dev->left_bytes =3D 0;
->> +	dev->aligned =3D 0;
->> +	dev->ahash_req =3D req;
->> +	dev->mode =3D 0;
->> +	dev->align_size =3D 4;
->> +	dev->sg_dst =3D NULL;
->> +
->> +	tctx->first_op =3D 1;
->> +
->> +	rk_digest_size =3D crypto_ahash_digestsize(tfm);
->> +	if (!rk_digest_size)
->> +		dev_err(dev->dev, "can't get digestsize\n");
->> +	if (rk_digest_size =3D=3D SHA1_DIGEST_SIZE)
->> +		dev->mode =3D RK_CRYPTO_HASH_SHA1;
->> +	else if (rk_digest_size =3D=3D SHA256_DIGEST_SIZE)
->> +		dev->mode =3D RK_CRYPTO_HASH_SHA256;
->> +	else if (rk_digest_size =3D=3D MD5_DIGEST_SIZE)
->> +		dev->mode =3D RK_CRYPTO_HASH_MD5;
->> +
->> +	rk_ahash_reg_init(dev);
->> +	return 0;
->> +}
->> +
->> +static int rk_ahash_final(struct ahash_request *req)
->> +{
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(req->base.tfm);
->> +	struct rk_crypto_info *dev =3D tctx->dev;
->> +	struct crypto_ahash *tfm =3D crypto_ahash_reqtfm(dev->ahash_req);
->> +
->> +	if (!dev->total) {
->> +		nodata_process(dev->ahash_req);
->> +		return 0;
->> +	}
->> +
->> +	/*
->> +	 * IC should process the result again after last dma interrupt.
->> +	 * And the last processing is very quick so than it may entry
->> +	 * interrupt before finishing last interrupt.
->> +	 * So I don't use interrupt finished hash.
->> +	 */
->> +	while (!CRYPTO_READ(dev, RK_CRYPTO_HASH_STS))
->> +		usleep_range(50, 100);
->> +
->> +	memcpy_fromio(dev->ahash_req->result, dev->reg + RK_CRYPTO_HASH_DO=
-UT_0,
->> +		      crypto_ahash_digestsize(tfm));
->> +	return 0;
->> +}
->> +
->> +static int rk_ahash_update(struct ahash_request *req)
->> +{
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(req->base.tfm);
->> +	struct rk_crypto_info *dev =3D tctx->dev;
->> +	int ret;
->> +
->> +	dev->total =3D req->nbytes;
->> +	dev->left_bytes =3D req->nbytes;
->> +	dev->sg_src =3D req->src;
->> +	dev->first =3D req->src;
->> +	dev->nents =3D sg_nents(req->src);
->> +
->> +	/* IC can calculate 0 data hash, so it should finish update here *=
-/
->> +	if (!dev->total) {
->> +		pr_err("[%s:%d] no data\n", __func__, __LINE__);
->> +		return 0;
->> +	}
->> +
->> +	if (tctx->first_op) {
->> +		tctx->first_op =3D 0;
->> +		CRYPTO_WRITE(dev, RK_CRYPTO_HASH_MSG_LEN, dev->total);
->> +	} else {
->> +		/*
->> +		 * IC must know the length of total data at first,
->> +		 * multiple updatings cannot support this variable.
->> +		 */
->> +		dev_warn(dev->dev, "Cannot carry multiple updatings!\n");
->> +		return 0;
->> +	}
->> +	spin_lock(&dev->lock);
->> +	ret =3D crypto_enqueue_request(&dev->queue, &req->base);
->> +	spin_unlock(&dev->lock);
->> +
->> +	tasklet_schedule(&dev->crypto_tasklet);
->> +
->> +	return ret;
->> +}
->> +
->> +static int rk_ahash_finup(struct ahash_request *req)
->> +{
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(req->base.tfm);
->> +	int err;
->> +
->> +	/*
->> +	 * finup should should process one updating and final.
->> +	 * and we should wait for updating in finup so that we can
->> +	 * fetching result by calling rk_ahash_final in finup.
->> +	 */
->> +
->> +	tctx->FLAG_FINUP =3D 1;
->> +	err =3D rk_ahash_update(req);
->> +	if (err =3D=3D -EINPROGRESS || err =3D=3D -EBUSY)
->> +		while (tctx->FLAG_FINUP)
->> +			usleep_range(50, 500);
-> Please write a comment on why do you choose those numbers.
-Ok, it will be fixed in next version.
->
->> +
->> +	return rk_ahash_final(req);
->> +}
->> +
->> +static int rk_ahash_digest(struct ahash_request *req)
->> +{
->> +	return rk_ahash_init(req) ? -EINVAL : rk_ahash_finup(req);
->> +}
->> +
->> +static void crypto_ahash_dma_start(struct rk_crypto_info *dev)
->> +{
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAS, dev->addr_in);
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAL, (dev->count + 3) / 4);
->> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, RK_CRYPTO_HASH_START |
->> +					  (RK_CRYPTO_HASH_START << 16));
->> +}
->> +
->> +static int rk_ahash_set_data_start(struct rk_crypto_info *dev)
->> +{
->> +	int err;
->> +
->> +	err =3D dev->load_data(dev, dev->sg_src, NULL);
->> +	if (!err)
->> +		crypto_ahash_dma_start(dev);
->> +	return err;
->> +}
->> +
->> +static int rk_ahash_start(struct rk_crypto_info *dev)
->> +{
->> +	return rk_ahash_set_data_start(dev);
->> +}
->> +
->> +/*
->> + * return:
->> + * true: some err was occurred
->> + * fault: no err, please continue
->> + */
->> +static int rk_ahash_crypto_rx(struct rk_crypto_info *dev)
->> +{
->> +	int err =3D 0;
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(dev->ahash_req->base.=
-tfm);
->> +
->> +	dev->unload_data(dev);
->> +	if (dev->left_bytes) {
->> +		if (dev->aligned) {
->> +			if (sg_is_last(dev->sg_src)) {
->> +				dev_warn(dev->dev, "[%s:%d], lack of data\n",
->> +					 __func__, __LINE__);
->> +				err =3D -ENOMEM;
->> +				goto out_rx;
->> +			}
->> +			dev->sg_src =3D sg_next(dev->sg_src);
->> +		}
->> +		err =3D rk_ahash_set_data_start(dev);
->> +	} else {
->> +		tctx->FLAG_FINUP =3D 0;
->> +		dev->complete(dev, 0);
->> +		return 0;
->> +	}
->> +
->> +out_rx:
->> +	return err;
->> +}
->> +
->> +static int rk_cra_hash_init(struct crypto_tfm *tfm)
->> +{
->> +	struct rk_ahash_ctx *tctx =3D crypto_tfm_ctx(tfm);
->> +	struct rk_crypto_tmp *algt;
->> +	struct ahash_alg *alg =3D __crypto_ahash_alg(tfm->__crt_alg);
->> +
->> +	algt =3D container_of(alg, struct rk_crypto_tmp, alg.hash);
->> +
->> +	tctx->dev =3D algt->dev;
->> +	tctx->dev->addr_vir =3D (void *)__get_free_page(GFP_KERNEL);
->> +	if (!tctx->dev->addr_vir) {
->> +		pr_err("failed to kmalloc for addr_vir\n");
-> Prefer dev_err instead of pr_err
-Good idea. It will be fixed in next version.
->
-> Regards
->
->
->
->
-Thanks
-Zain
+SGkgYWxsLAoKICAgVGhlIFNhbXN1bmcgRXh5bm9zIGVEUCBjb250cm9sbGVyIGFuZCBSb2NrY2hp
+cCBSSzMyODggZURQIGNvbnRyb2xsZXIKc2hhcmUgdGhlIHNhbWUgSVAsIHNvIGEgbG90IG9mIHBh
+cnRzIGNhbiBiZSByZS11c2VkLiBJIHNwbGl0IHRoZSBjb21tb24KY29kZSBpbnRvIGJyaWRnZSBk
+aXJlY3RvcnksIHRoZW4gcmszMjg4IGFuZCBleHlub3Mgb25seSBuZWVkIHRvIGtlZXAKc29tZSBw
+bGF0Zm9ybSBjb2RlLiBDYXVzZSBJIGNhbid0IGZpbmQgdGhlIGV4YWN0IElQIG5hbWUgb2YgZXh5
+bm9zIGRwCmNvbnRyb2xsZXIsIHNvIEkgZGVjaWRlIHRvIG5hbWUgZHAgY29yZSBkcml2ZXIgd2l0
+aCAiYW5hbG9naXgiIHdoaWNoIEkKZmluZCBpbiByazMyODggZURQIFRSTQoKQnV0ICB0aGVyZSBh
+cmUgc3RpbGwgdGhyZWUgbGlnaHQgcmVnaXN0ZXJzIHNldHRpbmcgZGlmZmVyZW50cyBiZXd0ZWVu
+CmV4eW5vcyBhbmQgcmszMjg4LgoxLiBSSzMyODggaGF2ZSBmaXZlIHNwZWNpYWwgcGxsIHJlc2ln
+dGVycyB3aGljaCBub3QgaW5kaWNhdGEgaW4gZXh5bm9zCiAgIGRwIGNvbnRyb2xsZXIuCjIuIFRo
+ZSBhZGRyZXNzIG9mIERQX1BIWV9QRChkcCBwaHkgcG93ZXIgbWFuYWdlciByZWdpc3RlcikgYXJl
+IGRpZmZlcmVudAogICBiZXR3ZWVuIHJrMzI4OCBhbmQgZXh5bm9zLgozLiBSazMyODggYW5kIGV4
+eW5vcyBoYXZlIGRpZmZlcmVudCBzZXR0aW5nIHdpdGggQVVYX0hXX1JFVFJZX0NUTChkcCBkZWJ1
+ZwogICByZWdpc3RlcikuCgpUaGlzIHNlcmllcyBoYXZlIGJlZW4gd2VsbCB0ZXN0ZWQgb24gUm9j
+a2NoaXAgcGxhdGZvcm0gd2l0aCBlRFAgcGFuZWwgb24KSmVycnkgQ2hyb21lYm9vayBhbmQgRGlz
+cGxheSBQb3J0IE1vbml0b3Igb24gUkszMjg4IGJvYXJkLiBBbHNvIEkgaGF2ZQp0ZXN0ZWQgb24g
+U2Ftc3VuZyBTbm93IGFuZCBQZWFjaCBQaXQgQ2hyb21lYm9va3MsIGFuZCB0aGFua3MgdG8gSmF2
+aWVyQFNhbXN1bmcKaGVscCB0byByZXRlc3QgdGhlIHdob2xlIHNlcmllcyBvbiBTYW1zdW5nIEV4
+eW5vczU4MDAgUGVhY2ggUGkgQ2hyb21lYm9vaywKZ2xhZCB0byBzYXkgdGhhdCB0aGluZ3Mgd29y
+a3MgcmlnaHRsbHkuCgpUaGFua3MsCi0gWWFraXIKCgpDaGFuZ2VzIGluIHYxMDoKLSBDb3JyZWN0
+IHRoZSBST0NLQ0hJUF9BTkFMT0dJWF9EUCBpbmRlbnRhdGlvbiBpbiBLY29uZmlnIHRvIHRhYnMg
+aGVyZSAoSGVpa28pCi0gRml4IHRoZSB3cm9uZyBtYWNybyB2YWx1ZSBvZiBHUkZfRURQX1JFRl9D
+TEtfU0VMX0lOVEVSX0hJV09SRF9NQVNLCiAgICBCSVQoNCkgLT4gQklUKDIwKQotIFJlbW92ZSB0
+aGUgc3VycGx1cyAicGxhdF9kYXRhIiBjaGVjay4gKEhlaWtvKQotICAgICAgIHN3aXRjaCAoZHAt
+PnBsYXRfZGF0YSAmJiBkcC0+cGxhdF9kYXRhLT5kZXZfdHlwZSkgeworICAgICAgIHN3aXRjaCAo
+ZHAtPnBsYXRfZGF0YS0+ZGV2X3R5cGUpIHsKLSBSZXZlcnQgcGFydHMgb2YgR3VzdGF2byBQYWRv
+dmFuJ3MgY2hhbmdlcyBpbiBjb21taXQ6Cglkcm0vZXh5bm9zOiBkbyBub3Qgc3RhcnQgZW5hYmxp
+bmcgRFAgYXQgYmluZCgpIHBoYXNlCiAgQWRkIGRwIHBoeSBwb3dlcm9uIGZ1bmN0aW9uIGluIGJp
+bmQgdGltZS4KCkNoYW5nZXMgaW4gdjk6Ci0gRG9jdW1lbnQgbW9yZSBkZXRhaWxzIGZvciAncG9y
+dHMnIHByb3BlcnR5LgotIFJlbW92ZWQgdGhlIHVudXNlZCB0aGUgdmFyaWFibGUgInJlcyIgaW4g
+cHJvYmUgZnVuY3Rpb24uIChIZWlrbykKLSBSZW1vdmVkIHRoZSB1bnVzZWQgaGVhZCBmaWxlLgoK
+Q2hhbmdlcyBpbiB2ODoKLSBDb3JyZWN0IHRoZSByaWdodCBkb2N1bWVudCBwYXRoIG9mIGRpc3Bs
+YXktdGltaW5nLnR4dCAoSGVpa28pCi0gQ29ycmVjdCB0aGUgbWlzc3BlbGwgb2YgJ2Zyb20nIHRv
+ICdmcm0nLiAoSGVpa28pCi0gTW9kaWZ5IHRoZSBjb21taXQgc3ViamVjdCBuYW1lLiAoSGVpa28p
+Ci0gRml4IHRoZSBtaXhlZCBzcGFjZXJzIG9uIG1hY3JvIGRlZmluaXRpb25zLiAoSGVpa28pCi0g
+UmVtb3ZlIHRoZSB1bm5lY2Vzc2FyeSBlbXB0eSBsaW5lIGFmdGVyIGNsa19wcmVwYXJlX2VuYWJs
+ZS4gKEhlaWtvKQotIFJlbW92ZSB0aGUgc3BlY2lmaWMgYWRkcmVzcyBpbiB0aGUgZXhhbXBsZSBu
+b2RlIG5hbWUuIChIZWlrbykKCkNoYW5nZXMgaW4gdjc6Ci0gQmFjayB0byB1c2UgdGhlIG9mX3By
+b3BlcnR5X3JlYWRfYm9vbCgpIGludGVyZmFjcyB0byBwcm92b2lkIGJhY2t3YXJkCiAgY29tcGF0
+aWJpbGl0eSBvZiAiaHN5bmMtYWN0aXZlLWhpZ2giICJ2c3luYy1hY3RpdmUtaGlnaCIgImludGVy
+bGFjZWQiCiAgdG8gYXZvaWQgLUVPVkVSRkxPVyBlcnJvciAoS3J6eXN6dG9mKQotIFNpbXBseSB0
+aGUgY29tbWl0IG1lc3NhZ2UuIChLaXNob24pCi0gU3ltbWV0cmljYWwgZW5hYmxlL2Rpc2JhbGUg
+dGhlIHBoeSBjbG9jayBhbmQgcG93ZXIuIChLaXNob24pCi0gU2ltcGxpZnkgdGhlIGNvbW1pdCBt
+ZXNzYWdlLiAoS2lzaG9uKQoKQ2hhbmdlcyBpbiB2NjoKLSBGaXggdGhlIEtjb25maWcgcmVjdXJz
+aXZlIGRlcGVuZGVuY3kgKEphdmllcikKLSBGaXggUGVhY2ggUGl0IGhwZCBwcm9wZXJ0eSBuYW1l
+IGVycm9yOgotICAgICAgIGhwZC1ncGlvID0gPCZncHgyIDYgMD47CisgICAgICAgaHBkLWdwaW9z
+ID0gPCZncHgyIDYgMD47CgpDaGFuZ2VzIGluIHY1OgotIENvcnJlY3QgdGhlIGNoZWNrIGNvbmRp
+dGlvbiBvZiBncGlvX2lzX3ZhbGlkIHdoZW4gZHJpdmVyIHRyeSB0byBnZXQKICB0aGUgImhwZC1n
+cGlvcyIgRFQgcHJvcGVyeS4gKEhlaWtvKQotIE1vdmUgdGhlIHBsYXRmb3JtIGF0dGFjaCBjYWxs
+YmFjayBpbiB0aGUgZnJvbnQgb2YgY29yZSBkcml2ZXIgYnJpZGdlCiAgYXR0Y2ggZnVuY3Rpb24u
+IENhdXNlIG9uY2UgcGxhdGZvcm0gZmFpbGVkIGF0IGF0dGFjaCwgY29yZSBkcml2ZXIgc2hvdWxk
+CiAgc3RpbGwgZmFpbGVkLCBzbyBubyBuZWVkIHRvIGluaXQgY29ubmVjdG9yIGJlZm9yZSBwbGF0
+Zm9ybSBhdHRhY2hlZCAoS3J6eXN6dG9mKQotIEtlZXAgY29kZSBzdHlsZSBubyBjaGFuZ2VzIHdp
+dGggdGhlIHByZXZpb3VzIGV4eW5vc19kcF9jb2RlLmMgaW4gdGhpcwogIHBhdGNoLCBhbmQgdXBk
+YXRlIGNvbW1pdCBtZXNzYWdlIGFib3V0IHRoZSBuZXcgZXhwb3J0IHN5bWJvbCAoS3J6eXN6dG9m
+KQotIEdhdGhlciB0aGUgZGV2aWNlIHR5cGUgcGF0Y2ggKHY0IDExLzE2KSBpbnRvIHRoaXMgb25l
+LiAoS3J6eXN6dG9mKQotIGxlYXZlIG91dCB0aGUgY29ubmVjdG9yIHJlZ2lzdHJhdGlvbiB0byBh
+bmFsb2dpeCBwbGF0Zm9ybSBkcml2ZXIuIChUaGllcnJ5KQotIFJlc2VxdWVuY2UgdGhpcyBwYXRj
+aCBhZnRlciBhbmFsb2dpeF9kcCBkcml2ZXIgaGF2ZSBiZWVuIHNwbGl0CiAgZnJvbSBleHlub3Nf
+ZHAgY29kZSwgYW5kIHJlcGhyYXNlIHJlYXNvbmFibGUgY29tbWl0IG1lc3NhZ2UsIGFuZAogIHJl
+bW92ZSBzb21lIGNvbnRyb3ZlcnNpYWwgc3R5bGUgKEtyenlzenRvZikKICAgIC0JCWFuYWxvZ2l4
+X2RwX3dyaXRlX2J5dGVfdG9fZHBjZCgKICAgIC0gCQkJCWRwLCBEUF9URVNUX1JFU1BPTlNFLAog
+ICAgKwkJYW5hbG9naXhfZHBfd3JpdGVfYnl0ZV90b19kcGNkKGRwLAogICAgKwkJCQlEUF9URVNU
+X1JFU1BPTlNFLAoJCQkJRFBfVEVTVF9FRElEX0NIRUNLU1VNX1dSSVRFKTsKLSBTd2l0Y2ggdmlk
+ZW8gdGltaW5nIHR5cGUgdG8gInUzMiIsIHNvIGRyaXZlciBjb3VsZCB1c2UgIm9mX3Byb3BlcnR5
+X3JlYWRfdTMyIgogIHRvIGdldCB0aGUgYmFja3dvcmQgdGltaW5nIHZhbHVlcy4gS3J6eXN6dG9m
+IHN1Z2dlc3QgbWUgdGhhdCBkcml2ZXIgY291bGQgdXNlCiAgdGhlICJvZl9wcm9wZXJ0eV9yZWFk
+X2Jvb2wiIHRvIGdldCBiYWNrd29yZCB0aW1pbmcgdmFsdWVzLCBidXQgdGhhdCBpbnRlcmZhY3MK
+ICB3b3VsZCBtb2RpZnkgdGhlIG9yaWdpbmFsIGRybV9kaXNwbGF5X21vZGUgdGltaW5nIGRpcmVj
+dGx5ICh3aGV0aGVyIHRob3NlCiAgcHJvcGVydGllcyBleGlzdHMgb3Igbm90KS4KLSBDb3JyZWN0
+IHRoZSBtaXNzcGVsbCBpbiBjb21taXQgbWVzc2FnZS4gKEtyenlzenRvZikKLSBSZW1vdmUgdGhl
+IGVtcHR5IGxpbmUgYXQgdGhlIGVuZCBvZiBkb2N1bWVudCwgYW5kIGNvcnJlY3QgdGhlIGVuZHBv
+aW50CiAgbnVtYmVycyBpbiB0aGUgZXhhbXBsZSBEVCBub2RlLCBhbmQgcmVtb3ZlIHRoZSByZWd1
+bGF0b3IgaW9tdXggc2V0dGluZwogIGluIGRyaXZlciBjb2RlIHdoaWxlIHVzaW5nIHRoZSBwaW5j
+dGwgaW4gZGV2aWNldHJlZSBpbnN0ZWFkLiAoSGVpa28pCi0gQWRkIGRldmljZSB0eXBlIGRlY2xh
+cmVkLCBjYXVzZSB0aGUgcHJldmlvdXMgInBsYXRmb3JtIGRldmljZSB0eXBlCiAgc3VwcG9ydCAo
+djQgMTEvMTYpIiBhbHJlYWR5IG1lcmdlIGludG8gKHY1IDAyLzE0KS4KLSBJbXBsZW1lbnQgY29u
+bmVjdG9yIHJlZ2lzdHJhdGlvbiBjb2RlLiAoVGhpZXJyeSkKLSBTcGxpdCBiaW5kaW5nIGRvYydz
+IGZyb20gZHJpdmVyIGNoYW5nZXMuIChSb2IpCi0gQWRkIGVEUCBob3RwbHVnIHBpbmN0cmwgcHJv
+cGVydHkuIChIZWlrbykKLSBSZW1vdmUgInJlZyIgRFQgcHJvcGVydHksIGNhdXNlIGRyaXZlciBj
+b3VsZCBwb3dlcm9uL3Bvd2Vyb2ZmIHBoeSB2aWEKICB0aGUgZXhpc3QgImdyZiIgc3lzY29uIGFs
+cmVhZHkuIEFuZCByZW5hbWUgdGhlIGV4YW1wbGUgRFQgbm9kZSBmcm9tCiAgImVkcF9waHk6IHBo
+eUBmZjc3MDI3NCIgdG8gImVkcF9waHk6IGVkcC1waHkiIGRpcmVjdGx5LiAoSGVpa28pCi0gQWRk
+IGRlaXZjZV9ub2RlIGF0IHRoZSBmcm9udCBvZiBkcml2ZXIsIHVwZGF0ZSBwaHlfb3BzIHR5cGUg
+ZnJvbSAic3RhdGljCiAgc3RydWN0IiB0byAic3RhdGljIGNvbnN0IHN0cnVjdCIuIEFuZCBjb3Jy
+ZWN0IHRoZSBpbnB1dCBwYXJhbXRlcnMgb2YKICBkZXZtX3BoeV9jcmVhdGUoKSBpbnRlcmZhY2Vz
+LiAoSGVpa28pCi0gU3BsaXQgYmluZGluZyBkb2MncyBmcm9tIGRyaXZlciBjaGFuZ2VzLiAoUm9i
+KQotIFVwZGF0ZSB0aGUgcm9ja2NoaXAsZ3JmIGV4cGxhaW4gaW4gZG9jdW1lbnQsIGFuZCBjb3Jy
+ZWN0IHRoZSBjbG9jayByZXF1aXJlZAogIGVsZW1ldHMgaW4gZG9jdW1lbnQuIChSb2IgJiBIZWlr
+bykKLSBGaXggY29tcGlsZWQgZXJyb3IgKEhlaWtvKQotIFVzaW5nIHRoZSBjb25uZWN0b3IgZGlz
+cGxheSBpbmZvIG1lc3NhZ2UgdG8gY29uZmlndXJlIGVEUCBkcml2ZXIgaW5wdXQKICB2aWRlbyBt
+b2RlLCBidXQgaGFyZCBjb2RlIENSVEMgdmlkZW8gb3V0cHV0IG1vZGUgdG8gUkdCYWFhLgoKQ2hh
+bmdlcyBpbiB2NDoKLSBVcGRhdGUgImFuYWxvZ2l4LGhwZC1ncGlvcyIgdG8gImhwZC1ncGlvcyIg
+RFQgcHJvcGVyeS4gKFJvYikKLSBSZW5hbWUgImFuYWxvZ2l4X2RwLWV4eW5vcy5jIiBmaWxlIG5h
+bWUgdG8gImV4eW5vc19kcC5jIiAoSmluZ29vKQotIENyZWF0ZSBhIHNlcGFyYXRlIGZvbGRlciBm
+b3IgYW5hbG9naXggY29kZSBpbiBicmlkZ2UvIChBcmNoaXQpCi0gVXBkYXRlIGNvbW1pdCBtZXNz
+YWdlIG1vcmUgcmVhZGFibGUuIChKaW5nb28pCi0gQWRqdXN0IHRoZSBvcmRlciBmcm9tIDA1IHRv
+IDA0Ci0gUHJvdmlkZSBiYWNrd29yZCBjb21wYXRpYmlsaXR5IHdpdGggc2Ftc3VuZy4gKEtyenlz
+enRvZikKLSBTcGxpdCBhbGwgRFRTIGNoYW5nZXMsIGFuZCBwcm92aWRlIGJhY2t3YXJkIGNvbXBh
+dGliaWxpdHkuIE1hcmsgb2xkCiAgcHJvcGVydGllcyBhcyBkZXByZWNhdGVkIGJ1dCBzdGlsbCBz
+dXBwb3J0IHRoZW0uIChLcnp5c3p0b2YpCi0gVXBkYXRlICJhbmFsb2dpeCxocGQtZ3BpbyIgdG8g
+ImhwZC1ncGlvcyIgcHJvcCBuYW1lLiAoUm9iKQotIERlcHJlY2F0ZWQgc29tZSBwcm9wZXJ0aWVz
+IHdoaWNoIGNvdWxkIHBhcnNlZCBmcm9tIEVkaWQvTW9kZS9EUENELiAoVGhpZXJyeSkKICAgICJh
+bmFsb2dpeCxjb2xvci1zcGFjZSIgJiAiYW5hbG9naXgsY29sb3ItZGVwdGgiICAgJgogICAgImFu
+YWxvZ2l4LGxpbmstcmF0ZSIgICAmICJhbmFsb2dpeCxsYW5lLWNvdW50IiAgICAmCiAgICAiYW5h
+bG9naXgseWNiY3ItY29lZmYiICYgImFuYWxvZ2l4LGR5bmFtaWMtcmFuZ2UiICYKICAgICJ2c3lu
+Yy1hY3RpdmUtaGlnaCIgICAgJiAiaHN5bmMtYWN0aXZlLWhpZ2giICAgICAgJiAiaW50ZXJsYWNl
+cyIKLSBTZXBhcmF0ZSBhbGwgRFRTIGNoYW5nZXMgdG8gYSBzZXBhcmF0ZSBwYXRjaC4gKEtyenlz
+enRvZikKLSBSZW1vdmUgc29tZSBkZXByZWNhdGVkIERUIHByb3BlcnRpZXMgaW4gcm9ja2NoaXAg
+ZHAgZG9jdW1lbnQuCi0gQWRkIGNvbW1pdCBtZXNzYWdlLCBhbmQgcmVtb3ZlIHRoZSByZWR1bmRh
+bnQgcm9ja2NoaXBfZHBfcGh5X2luaXQoKQogIGZ1bmN0aW9uLCBtb3ZlIHRob3NlIGNvZGUgdG8g
+cHJvYmUoKSBtZXRob2QuIEFuZCByZW1vdmUgZHJpdmVyIC5vd25lcgogIG51bWJlci4gKEtpc2hv
+bikKLSBTZXByYXRlIHRoZSBsaW5rLXJhdGUgYW5kIGxhbmUtY291bnQgbGltaXQgb3V0IHdpdGgg
+dGhlIGRldmljZV90eXBlCiAgZmxhZy4gKFRoaWVycnkpCi0gVGFrZSBKaW5nb28gc3VnZ2VzdCwg
+YWRkIGNvbW1pdCBtZXNzYWdlcy4KLSBDYWxsIGRybV9wYW5lbF9wcmVwYXJlKCkgaW4gLmdldF9t
+b2RlcyBmdW5jdGlvbiwgZW5zdXJlIHBhbmVsIHNob3VsZAogIHBvd2VyIG9uIGJlZm9yZSBkcml2
+ZXIgdHJ5IHRvIHJlYWQgZWRpZCBtZXNzYWdlLgoKQ2hhbmdlcyBpbiB2MzoKLSBNb3ZlIGV4eW5v
+cydzIHZpZGVvX3RpbWluZyBjb2RlIHRvIGFuYWxvZ2l4X2RwLWV4eW5vcyBwbGF0Zm9ybSBkcml2
+ZXIsCiAgYWRkIGdldF9tb2RlcyBtZXRob2QgdG8gc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0
+YS4gKFRoaWVycnkpCi0gUmVuYW1lIHNvbWUgInNhbXN1bmcqIiBkdHMgcHJvcGVyeSB0byAiYW5h
+bG9naXgqIi4gKEhlaWtvKQotIFRoZSBsaW5rX3JhdGUgYW5kIGxhbmVfY291bnQgc2hvdWxkbid0
+IGNvbmZpZyB0byB0aGUgRFQgcHJvcGVydHkgdmFsdWUKICBkaXJlY3RseSwgYnV0IHdlIGNhbiB0
+YWtlIHRob3NlIGFzIGhhcmR3YXJlIGxpbWl0ZS4gRm9yIGV4YW1wbGUsIFJLMzI4OAogIG9ubHkg
+c3VwcG9ydCA0IHBoeXNpY2FsIGxhbmVzIG9mIDIuNy8xLjYyIEdicHMvbGFuZSwgc28gRFQgcHJv
+cGVydHkgd291bGQKICBsaWtlICJsaW5rLXJhdGUgPSAweDBhIiAibGFuZS1jb3VudCA9IDQiLiAo
+VGhpZXJyeSkKLSBEeW5hbWljIHBhcnNlIHZpZGVvIHRpbWluZyBpbmZvIGZyb20gc3RydWN0IGRy
+bV9kaXNwbGF5X21vZGUgYW5kCiAgc3RydWN0IGRybV9kaXNwbGF5X2luZm8uIChUaGllcnJ5KQot
+IEFkZCBkZXZpY2V0cmVlIGJpbmRpbmcgZG9jdW1lbnRzLiAoSGVpa28pCi0gUmVtb3ZlIHN5bmMg
+cG9sICYgY29sb3JpbWV0cnkgcHJvcGVyaWVzIGZyb20gdGhlIG5ldyBhbmFsb2dpeCBkcCBkcml2
+ZXIKICBkZXZpY2V0cmVlIGJpbmRpbmcuIChUaGllcnJ5KQotIFVwZGF0ZSB0aGUgZXhpc3QgZXh5
+bm9zIGR0c2kgZmlsZSB3aXRoIHRoZSBsYXRlc3QgRFAgRFQgcHJvcGVyaWVzLgotIExlYXZlICJz
+Y2xrX2VkcF8yNG0iIHRvIHJvY2tjaGlwIGRwIHBoeSBkcml2ZXIgd2hpY2ggbmFtZSB0byAiMjRt
+IiwKICBhbmQgbGVhdmUgInNjbGtfZWRwIiB0byBhbmFsb2dpeCBkcCBjb3JlIGRyaXZlciB3aGlj
+aCBuYW1lIHRvICJkcCIsCiAgYW5kIGxlYXZlICJwY2xrX2VkcCIgdG8gcm9ja2NoaXAgZHAgcGxh
+dGZvcm0gZHJpdmVyIHdoaWNoIG5hbWUgdG8KICAicGNsayIuIChUaGllcnJ5ICYgSGVpa28pCi0g
+QWRkIGRldmljZXRyZWUgYmluZGluZyBkb2N1bWVudC4gKEhlaWtvKQotIFJlbW92ZSAicm9ja2No
+aXAscGFuZWwiIERUIHByb3BlcnR5LCB0YWtlIHVzZSBvZiByZW1vdGUgcG9pbnQgdG8gZ2V0IHBh
+bmVsCiAgbm9kZS4gKEhlaWtvKQotIEFkZCB0aGUgbmV3IGZ1bmN0aW9uIHBvaW50IGRwX3BsYXRk
+YXRhLT5nZXRfbW9kZXMoKSBpbml0LgotIFN1Z2dlc3QsIGFkZCByb2NrY2hpcCBkcCBwaHkgZHJp
+dmVyLCBjb2xsZWN0IHRoZSBwaHkgY2xvY2tzIGFuZAogIHBvd2VyIGNvbnRyb2wuIChIZWlrbykK
+LSBBZGQgImFuYWxvZ2l4LG5lZWQtZm9yY2UtaHBkIiB0byBpbmRpY2F0ZSB3aGV0aGVyIGRyaXZl
+ciBuZWVkIGZvY2UKICBocGQgd2hlbiBocGQgZGV0ZWN0IGZhaWxlZC4KLSBtb3ZlIGRwIGhwZCBk
+ZXRlY3QgdG8gY29ubmVjdG9yIGRldGVjdCBmdW5jdGlvbi4KLSBBZGQgZWRpZCBtb2RlcyBwYXJz
+ZSBzdXBwb3J0CgpDaGFuZ2VzIGluIHYyOgotIFJlbW92ZSBuZXcgY29weXJpZ2h0IChKaW5nb28p
+Ci0gRml4IGNvbXBpbGVkIGZhaWxlZCBkdWUgdG8gYW5hbG9naXhfZHBfZGV2aWNlIG1pc3NwZWxs
+Ci0gSW1wcm92ZWQgY29tbWl0IG1lc3NhZ2UgbW9yZSByZWFkYWJsZSwgYW5kIGF2b2lkIHVzaW5n
+IHNvbWUKICB1bmNvbW1vbiBzdHlsZSBsaWtlIGJlbGxvdzogKEpvZSBQcmVjaGVzKQogICAgLSAg
+cmV0dmFsID0gZXh5bm9zX2RwX3JlYWRfYnl0ZXNfZnJvbV9pMmMoLi4uCiAgCQkJCSAgLi4uKTsK
+ICAgICsgIHJldHZhbCA9CiAgICArICBleHlub3NfZHBfcmVhZF9ieXRlc19mcm9tX2kyYyguLi4u
+Li4pOwotIEdldCBwYW5lbCBub2RlIHdpdGggcmVtb3RlLWVuZHBvaW50IG1ldGhvZCwgYW5kIGNy
+ZWF0ZSBkZXZpY2V0cmVlIGJpbmRpbmcKICBmb3IgZHJpdmVyLiAoSGVpa28pCi0gUmVtb3ZlIHRo
+ZSBjbG9jayBlbmFibGUvZGlzYmFsZSB3aXRoICJzY2xrX2VkcCIgJiAic2Nsa19lZHBfMjRtIiwK
+ICBsZWF2ZSB0aG9zZSBjbG9jayB0byByb2NrY2hpcCBkcCBwaHkgZHJpdmVyLgotIEZpeCBjb21w
+aWxlIGZhaWxlZCBkdXQgdG8gcGh5X3BkX2FkZHIgdmFyaWFibGUgbWlzc3BlbGwgZXJyb3IKCk1h
+cmsgWWFvICgxKToKICBkcm06IHJvY2tjaGlwOiB2b3A6IGFkZCBicGMgYW5kIGNvbG9yIG1vZGUg
+c2V0dGluZwoKWWFraXIgWWFuZyAoMTYpOgogIGRybTogYnJpZGdlOiBhbmFsb2dpeC9kcDogc3Bs
+aXQgZXh5bm9zIGRwIGRyaXZlciB0byBicmlkZ2UgZGlyZWN0b3J5CiAgZHJtOiBicmlkZ2U6IGFu
+YWxvZ2l4L2RwOiBmaXggc29tZSBvYnZpb3VzIGNvZGUgc3R5bGUKICBkcm06IGJyaWRnZTogYW5h
+bG9naXgvZHA6IHJlbW92ZSBkdXBsaWNhdGUgY29uZmlndXJhdGlvbiBvZiBsaW5rIHJhdGUKICAg
+IGFuZCBsaW5rIGNvdW50CiAgZHJtOiBicmlkZ2U6IGFuYWxvZ2l4L2RwOiBkeW5hbWljIHBhcnNl
+IHN5bmNfcG9sICYgaW50ZXJsYWNlICYKICAgIGR5bmFtaWNfcmFuZ2UKICBkdC1iaW5kaW5nczog
+YWRkIGRvY3VtZW50IGZvciBhbmFsb2dpeCBkaXNwbGF5IHBvcnQgZHJpdmVyCiAgQVJNOiBkdHM6
+IGV4eW5vcy9kcDogcmVtb3ZlIHNvbWUgcHJvcGVydGllcyB0aGF0IGRlcHJlY2F0ZWQgYnkKICAg
+IGFuYWxvZ2l4X2RwIGRyaXZlcgogIGRybTogcm9ja2NoaXA6IGRwOiBhZGQgcm9ja2NoaXAgcGxh
+dGZvcm0gZHAgZHJpdmVyCiAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudCBmb3Igcm9ja2NoaXAg
+dmFyaWFudCBvZiBhbmFsb2dpeF9kcAogIHBoeTogQWRkIGRyaXZlciBmb3Igcm9ja2NoaXAgRGlz
+cGxheSBQb3J0IFBIWQogIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnQgZm9yIHJvY2tjaGlwIGRw
+IHBoeQogIGRybTogYnJpZGdlOiBhbmFsb2dpeC9kcDogYWRkIHNvbWUgcmszMjg4IHNwZWNpYWwg
+cmVnaXN0ZXJzIHNldHRpbmcKICBkcm06IGJyaWRnZTogYW5hbG9naXgvZHA6IGFkZCBtYXggbGlu
+ayByYXRlIGFuZCBsYW5lIGNvdW50IGxpbWl0IGZvcgogICAgUkszMjg4CiAgZHJtOiBicmlkZ2U6
+IGFuYWxvZ2l4L2RwOiB0cnkgZm9yY2UgaHBkIGFmdGVyIHBsdWcgaW4gbG9va3VwIGZhaWxlZAog
+IGRybTogYnJpZGdlOiBhbmFsb2dpeC9kcDogbW92ZSBocGQgZGV0ZWN0IHRvIGNvbm5lY3RvciBk
+ZXRlY3QgZnVuY3Rpb24KICBkcm06IGJyaWRnZTogYW5hbG9naXgvZHA6IGFkZCBlZGlkIG1vZGVz
+IHBhcnNlIGluIGdldF9tb2RlcyBtZXRob2QKICBkcm06IGJyaWRnZTogYW5hbG9naXgvZHA6IGV4
+cGFuZCB0aGUgbG9vayB0aW1lIGZvciB3YWl0aW5nIEFVWCBDSAogICAgcmVwbHkKCiAuLi4vYmlu
+ZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0ICAgICAgICB8ICAgNTIgKwogLi4u
+L2JpbmRpbmdzL2Rpc3BsYXkvZXh5bm9zL2V4eW5vc19kcC50eHQgICAgICAgICAgfCAgIDY2ICst
+CiAuLi4vZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQgICAgICB8ICAg
+OTIgKysKIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9yb2NrY2hpcC1kcC1waHkudHh0ICAg
+IHwgICAyMiArCiBhcmNoL2FybS9ib290L2R0cy9leHlub3M1MjUwLWFybmRhbGUuZHRzICAgICAg
+ICAgICB8ICAgIDIgLQogYXJjaC9hcm0vYm9vdC9kdHMvZXh5bm9zNTI1MC1zbWRrNTI1MC5kdHMg
+ICAgICAgICAgfCAgICAyIC0KIGFyY2gvYXJtL2Jvb3QvZHRzL2V4eW5vczUyNTAtc25vdy1jb21t
+b24uZHRzaSAgICAgIHwgICAgNCArLQogYXJjaC9hcm0vYm9vdC9kdHMvZXh5bm9zNTI1MC1zcHJp
+bmcuZHRzICAgICAgICAgICAgfCAgICA0ICstCiBhcmNoL2FybS9ib290L2R0cy9leHlub3M1NDIw
+LXBlYWNoLXBpdC5kdHMgICAgICAgICB8ICAgIDQgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL2V4eW5v
+czU0MjAtc21kazU0MjAuZHRzICAgICAgICAgIHwgICAgMiAtCiBhcmNoL2FybS9ib290L2R0cy9l
+eHlub3M1ODAwLXBlYWNoLXBpLmR0cyAgICAgICAgICB8ICAgIDQgKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2UvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgIHwgICAgMiArCiBkcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICB8ICAgIDEgKwogZHJpdmVy
+cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9LY29uZmlnICAgICAgICAgICAgfCAgICAzICsKIGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvTWFrZWZpbGUgICAgICAgICAgIHwgICAgMSAr
+CiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYyB8IDEz
+ODkgKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2Fu
+YWxvZ2l4X2RwX2NvcmUuaCB8ICAyODYgKysrKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9yZWcuYyAgfCAxMjk0ICsrKysrKysrKysrKysrKysrCiAuLi4vYW5h
+bG9naXgvYW5hbG9naXhfZHBfcmVnLmh9ICAgICAgICAgICAgICAgICAgICB8ICAyNzAgKystLQog
+ZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgfCAgICAz
+ICstCiBkcml2ZXJzL2dwdS9kcm0vZXh5bm9zL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICB8
+ICAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwLmMgICAgICAgICAgICAg
+ICAgIHwgIDM4NCArKysrKwogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHBfY29yZS5j
+ICAgICAgICAgICAgfCAxNTE1IC0tLS0tLS0tLS0tLS0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0v
+ZXh5bm9zL2V4eW5vc19kcF9jb3JlLmggICAgICAgICAgICB8ICAyODIgLS0tLQogZHJpdmVycy9n
+cHUvZHJtL2V4eW5vcy9leHlub3NfZHBfcmVnLmMgICAgICAgICAgICAgfCAxMjYzIC0tLS0tLS0t
+LS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAg
+ICAgIHwgICAgOSArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAg
+ICAgICAgICB8ICAgIDEgKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
+Y2tjaGlwLmMgICAgfCAgNDU3ICsrKysrKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hk
+bWktcm9ja2NoaXAuYyAgICAgICAgfCAgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8ICAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICAgICAgIHwgICAzMiArLQogZHJpdmVycy9waHkvS2Nv
+bmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICA3ICsKIGRyaXZlcnMvcGh5
+L01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgMSArCiBkcml2ZXJz
+L3BoeS9waHktcm9ja2NoaXAtZHAuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxNTEgKysKIGlu
+Y2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dpeF9kcC5oICAgICAgICAgICAgICAgICAgIHwgICA0MiAr
+CiAzNSBmaWxlcyBjaGFuZ2VkLCA0Mzk2IGluc2VydGlvbnMoKyksIDMyNTcgZGVsZXRpb25zKC0p
+CiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
+c3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
+Y2tjaGlwLnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9waHkvcm9ja2NoaXAtZHAtcGh5LnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvS2NvbmZpZwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvTWFrZWZpbGUKIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwogY3Jl
+YXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhf
+ZHBfY29yZS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFs
+b2dpeC9hbmFsb2dpeF9kcF9yZWcuYwogcmVuYW1lIGRyaXZlcnMvZ3B1L2RybS97ZXh5bm9zL2V4
+eW5vc19kcF9yZWcuaCA9PiBicmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmh9ICg2MiUp
+CiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfZHAuYwog
+ZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwX2NvcmUu
+YwogZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2RwX2Nv
+cmUuaAogZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5bm9zX2Rw
+X3JlZy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxv
+Z2l4X2RwLXJvY2tjaGlwLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3BoeS9waHktcm9j
+a2NoaXAtZHAuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHJtL2JyaWRnZS9hbmFsb2dp
+eF9kcC5oCgotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
