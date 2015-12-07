@@ -1,90 +1,69 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v10 08/17] dt-bindings: add document for rockchip variant of
- analogix_dp
-Date: Mon,  7 Dec 2015 14:39:34 +0800
-Message-ID: <1449470374-31191-1-git-send-email-ykk@rock-chips.com>
-References: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
+From: Simon Horman <horms@verge.net.au>
+Subject: Re: [PATCH 0/9] i2c: add generic support for timing parameters in DT
+Date: Mon, 7 Dec 2015 15:39:46 +0900
+Message-ID: <20151207063946.GI22834@verge.net.au>
+References: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Inki Dae <inki.dae@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, javier@osg.samsung.com, emil.l.velikov@gmail.com, Seung-Woo Kim <sw0312.kim@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, Andrzej Hajda <a.hajda@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, ajaynumb@gmail.com, Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-sh-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1449157899-6572-1-git-send-email-wsa@the-dreams.de>
+Sender: linux-sh-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Um9ja2NoaXAgRFAgZHJpdmVyIGlzIGEgaGVscGVyIGRyaXZlciBvZiBhbmFsb2dpeF9kcCBjb2Rl
-ciBkcml2ZXIsCnNvIG1vc3Qgb2YgdGhlIERUIHByb3BlcnR5IHNob3VsZCBiZSBkZXNjcmlwZWQg
-aW4gYW5hbG9naXhfZHAgZG9jdW1lbnQuCgpTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tA
-cm9jay1jaGlwcy5jb20+ClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNo
-LmRlPgotLS0KQ2hhbmdlcyBpbiB2MTA6IE5vbmUKQ2hhbmdlcyBpbiB2OToKLSBEb2N1bWVudCBt
-b3JlIGRldGFpbHMgZm9yICdwb3J0cycgcHJvcGVydHkuCgpDaGFuZ2VzIGluIHY4OgotIE1vZGlm
-eSB0aGUgY29tbWl0IHN1YmplY3QgbmFtZS4gKEhlaWtvKQoKQ2hhbmdlcyBpbiB2NzogTm9uZQpD
-aGFuZ2VzIGluIHY2OiBOb25lCkNoYW5nZXMgaW4gdjU6Ci0gU3BsaXQgYmluZGluZyBkb2MncyBm
-cm9tIGRyaXZlciBjaGFuZ2VzLiAoUm9iKQotIEFkZCBlRFAgaG90cGx1ZyBwaW5jdHJsIHByb3Bl
-cnR5LiAoSGVpa28pCgpDaGFuZ2VzIGluIHY0OiBOb25lCkNoYW5nZXMgaW4gdjM6IE5vbmUKQ2hh
-bmdlcyBpbiB2MjogTm9uZQoKIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tj
-aGlwLnR4dCAgICAgIHwgOTEgKysrKysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQs
-IDkxIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQK
-CmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9y
-b2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC50eHQKbmV3
-IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAwMDAwMC4uZGFlODZjNAotLS0gL2Rldi9udWxsCisr
-KyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2Fu
-YWxvZ2l4X2RwLXJvY2tjaGlwLnR4dApAQCAtMCwwICsxLDkxIEBACitSb2NrY2hpcCBSSzMyODgg
-c3BlY2lmaWMgZXh0ZW5zaW9ucyB0byB0aGUgQW5hbG9naXggRGlzcGxheSBQb3J0Cis9PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PQorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBjb21w
-YXRpYmxlOiAicm9ja2NoaXAscmszMjg4LWVkcCI7CisKKy0gcmVnOiBwaHlzaWNhbCBiYXNlIGFk
-ZHJlc3Mgb2YgdGhlIGNvbnRyb2xsZXIgYW5kIGxlbmd0aAorCistIGNsb2NrczogZnJvbSBjb21t
-b24gY2xvY2sgYmluZGluZzogaGFuZGxlIHRvIGRwIGNsb2NrLgorCSAgb2YgbWVtb3J5IG1hcHBl
-ZCByZWdpb24uCisKKy0gY2xvY2stbmFtZXM6IGZyb20gY29tbW9uIGNsb2NrIGJpbmRpbmc6CisJ
-ICAgICAgIFJlcXVpcmVkIGVsZW1lbnRzOiAiZHAiICJwY2xrIgorCistIHJlc2V0czogTXVzdCBj
-b250YWluIGFuIGVudHJ5IGZvciBlYWNoIGVudHJ5IGluIHJlc2V0LW5hbWVzLgorCSAgU2VlIC4u
-L3Jlc2V0L3Jlc2V0LnR4dCBmb3IgZGV0YWlscy4KKworLSBwaW5jdHJsLW5hbWVzOiBOYW1lcyBj
-b3JyZXNwb25kaW5nIHRvIHRoZSBjaGlwIGhvdHBsdWcgcGluY3RybCBzdGF0ZXMuCistIHBpbmN0
-cmwtMDogcGluLWNvbnRyb2wgbW9kZS4gc2hvdWxkIGJlIDwmZWRwX2hwZD4KKworLSByZXNldC1u
-YW1lczogTXVzdCBpbmNsdWRlIHRoZSBuYW1lICJkcCIKKworLSByb2NrY2hpcCxncmY6IHRoaXMg
-c29jIHNob3VsZCBzZXQgR1JGIHJlZ3MsIHNvIG5lZWQgZ2V0IGdyZiBoZXJlLgorCistIHBvcnRz
-OiB0aGVyZSBhcmUgMiBwb3J0IG5vZGVzIHdpdGggZW5kcG9pbnQgZGVmaW5pdGlvbnMgYXMgZGVm
-aW5lZCBpbgorICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvdmlkZW8t
-aW50ZXJmYWNlcy50eHQuCisgICAgUG9ydCAwOiBjb250YWluZWQgMiBlbmRwb2ludHMsIGNvbm5l
-Y3RpbmcgdG8gdGhlIG91cHV0IG9mIHZvcC4KKyAgICBQb3J0IDE6IGNvbnRhaW5lZCAxIGVuZHBv
-aW50LCBjb25uZWN0aW5nIHRvIHRoZSBpbnB1dCBvZiBwYW5lbC4KKworRm9yIHRoZSBiZWxvdyBw
-cm9wZXJ0aWVzLCBwbGVhc2UgcmVmZXIgdG8gQW5hbG9naXggRFAgYmluZGluZyBkb2N1bWVudDoK
-KyAqIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kcm0vYnJpZGdlL2FuYWxvZ2l4
-X2RwLnR4dAorLSBwaHlzIChyZXF1aXJlZCkKKy0gcGh5LW5hbWVzIChyZXF1aXJlZCkKKy0gaHBk
-LWdwaW9zIChvcHRpb25hbCkKKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KKworRXhhbXBsZToKKwlk
-cC1jb250cm9sbGVyOiBkcEBmZjk3MDAwMCB7CisJCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmsz
-Mjg4LWRwIjsKKwkJcmVnID0gPDB4ZmY5NzAwMDAgMHg0MDAwPjsKKwkJaW50ZXJydXB0cyA9IDxH
-SUNfU1BJIDk4IElSUV9UWVBFX0xFVkVMX0hJR0g+OworCQljbG9ja3MgPSA8JmNydSBTQ0xLX0VE
-UD4sIDwmY3J1IFBDTEtfRURQX0NUUkw+OworCQljbG9jay1uYW1lcyA9ICJkcCIsICJwY2xrIjsK
-KwkJcGh5cyA9IDwmZHBfcGh5PjsKKwkJcGh5LW5hbWVzID0gImRwIjsKKworCQlyb2NrY2hpcCxn
-cmYgPSA8JmdyZj47CisJCXJlc2V0cyA9IDwmY3J1IDExMT47CisJCXJlc2V0LW5hbWVzID0gImRw
-IjsKKworCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCQlwaW5jdHJsLTAgPSA8JmVkcF9o
-cGQ+OworCisJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CisKKwkJcG9ydHMgeworCQkJI2FkZHJlc3Mt
-Y2VsbHMgPSA8MT47CisJCQkjc2l6ZS1jZWxscyA9IDwwPjsKKwkJCWVkcF9pbjogcG9ydEAwIHsK
-KwkJCQlyZWcgPSA8MD47CisJCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CisJCQkJI3NpemUtY2Vs
-bHMgPSA8MD47CisJCQkJZWRwX2luX3ZvcGI6IGVuZHBvaW50QDAgeworCQkJCQlyZWcgPSA8MD47
-CisJCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmdm9wYl9vdXRfZWRwPjsKKwkJCQl9OworCQkJCWVk
-cF9pbl92b3BsOiBlbmRwb2ludEAxIHsKKwkJCQkJcmVnID0gPDE+OworCQkJCQlyZW1vdGUtZW5k
-cG9pbnQgPSA8JnZvcGxfb3V0X2VkcD47CisJCQkJfTsKKwkJCX07CisKKwkJCWVkcF9vdXQ6IHBv
-cnRAMSB7CisJCQkJcmVnID0gPDE+OworCQkJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkJCSNz
-aXplLWNlbGxzID0gPDA+OworCQkJCWVkcF9vdXRfcGFuZWw6IGVuZHBvaW50IHsKKwkJCQkJcmVn
-ID0gPDA+OworCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JnBhbmVsX2luX2VkcD4KKwkJCQl9Owor
-CQkJfTsKKwkJfTsKKwl9OworCisJcGluY3RybCB7CisJCWVkcCB7CisJCQllZHBfaHBkOiBlZHAt
-aHBkIHsKKwkJCQlyb2NrY2hpcCxwaW5zID0gPDcgMTEgUktfRlVOQ18yICZwY2ZnX3B1bGxfbm9u
-ZT47CisJCQl9OworCQl9OworCX07Ci0tIAoxLjkuMQoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVs
-QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Thu, Dec 03, 2015 at 04:51:30PM +0100, Wolfram Sang wrote:
+> Here is a patch series adding better DT support for timing parameters like the
+> raise time or the fall time which are generic for the I2C subsystem. There is a
+> core function for parsing and an implementation for the RCar driver how to use
+> it.
+> 
+> I added people of the designware and rk3x driver to CC because they might be
+> interested in this new function. They provided the basis for this series, so it
+> should be easy to convert them.
+> 
+> Please have a look, test, comment...
+> 
+> Thanks,
+> 
+>     Wolfram
+> 
+> 
+> Changes since RFC:
+> * better tested
+> * added documentation for the new function and the new struct
+> * reworded some commit messages slightly
+> * moved the new property in the dtsi above the "status" property
+> 
+> 
+> Wolfram Sang (9):
+>   i2c: document generic DT bindings for timing parameters
+>   i2c: add generic routine to parse DT for timing information
+>   i2c: rcar: refactor probe function a little
+>   i2c: rcar: switch to i2c generic dt parsing
+>   i2c: rcar: honor additional i2c timings from DT
+
+I have marked the integration patches (below) as deferred pending
+acceptance of the driver changes (above). Please repost the former
+once the latter have been accepted (by you :).
+
+>   ARM: shmobile: r8a7790: dtsi: add internal delay for i2c IPs
+>   ARM: shmobile: r8a7791: dtsi: add internal delay for i2c IPs
+>   ARM: shmobile: r8a7794: dtsi: add internal delay for i2c IPs
+>   arm64: renesas: r8a7795: add internal delay for i2c IPs
+> 
+>  Documentation/devicetree/bindings/i2c/i2c-rcar.txt |  4 ++
+>  Documentation/devicetree/bindings/i2c/i2c.txt      | 31 ++++++++--
+>  arch/arm/boot/dts/r8a7790.dtsi                     |  4 ++
+>  arch/arm/boot/dts/r8a7791.dtsi                     |  6 ++
+>  arch/arm/boot/dts/r8a7794.dtsi                     |  6 ++
+>  arch/arm64/boot/dts/renesas/r8a7795.dtsi           |  7 +++
+>  drivers/i2c/busses/i2c-rcar.c                      | 67 +++++++++++-----------
+>  drivers/i2c/i2c-core.c                             | 50 ++++++++++++++++
+>  include/linux/i2c.h                                | 22 +++++++
+>  9 files changed, 158 insertions(+), 39 deletions(-)
+> 
+> -- 
+> 2.1.4
+> 
