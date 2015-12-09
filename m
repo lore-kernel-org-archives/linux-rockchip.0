@@ -1,128 +1,101 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v1 1/8] pinctrl: rockchip: add support for the rk3228
-Date: Wed, 9 Dec 2015 14:09:05 -0600
-Message-ID: <20151209200905.GA28970@rob-hp-laptop>
+Subject: Re: [PATCH v1 4/8] dt-bindings: add documentation of rk3228 clock
+ controller
+Date: Wed, 9 Dec 2015 14:12:00 -0600
+Message-ID: <20151209201200.GA29732@rob-hp-laptop>
 References: <1449651853-1667-1-git-send-email-jeffy.chen@rock-chips.com>
- <1449651853-1667-2-git-send-email-jeffy.chen@rock-chips.com>
+ <1449651853-1667-5-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-gpio-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1449651853-1667-2-git-send-email-jeffy.chen@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
+In-Reply-To: <1449651853-1667-5-git-send-email-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: heiko@sntech.de, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>
+Cc: heiko@sntech.de, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Xing Zheng <zhengxing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Dec 09, 2015 at 05:04:06PM +0800, Jeffy Chen wrote:
-> The pinctrl of rk3228 is much the same as rk3288's, but
-> without pmu.
+On Wed, Dec 09, 2015 at 05:04:09PM +0800, Jeffy Chen wrote:
+> Add the devicetree binding for the cru on the rk3228 which quite similar
+> structured as previous clock controllers.
 > 
 > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> 
-> ---
-> 
->  .../bindings/pinctrl/rockchip,pinctrl.txt          |  3 +-
 
-For the binding:
+Seems like there is a lot of duplication across Rockchip cru bindings. 
+Perhaps they should be combined? Otherwise:
 
 Acked-by: Rob Herring <robh@kernel.org>
 
->  drivers/pinctrl/pinctrl-rockchip.c                 | 53 ++++++++++++++++++++++
->  2 files changed, 55 insertions(+), 1 deletion(-)
+> ---
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> index 391ef4b..0cd701b 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> @@ -21,7 +21,8 @@ defined as gpio sub-nodes of the pinmux controller.
->  Required properties for iomux controller:
->    - compatible: one of "rockchip,rk2928-pinctrl", "rockchip,rk3066a-pinctrl"
->  		       "rockchip,rk3066b-pinctrl", "rockchip,rk3188-pinctrl"
-> -		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
-> +		       "rockchip,rk3228-pinctrl", "rockchip,rk3288-pinctrl"
-> +		       "rockchip,rk3368-pinctrl"
->    - rockchip,grf: phandle referencing a syscon providing the
->  	 "general register files"
->  
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index a065112..faab36e 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -614,6 +614,40 @@ static void rk3288_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
->  	}
->  }
->  
-> +#define RK3228_PULL_OFFSET		0x100
+>  .../bindings/clock/rockchip,rk3228-cru.txt         | 58 ++++++++++++++++++++++
+>  1 file changed, 58 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3228-cru.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3228-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3228-cru.txt
+> new file mode 100644
+> index 0000000..f323048
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3228-cru.txt
+> @@ -0,0 +1,58 @@
+> +* Rockchip RK3228 Clock and Reset Unit
 > +
-> +static void rk3228_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-> +				    int pin_num, struct regmap **regmap,
-> +				    int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +The RK3228 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
 > +
-> +	*regmap = info->regmap_base;
-> +	*reg = RK3228_PULL_OFFSET;
-> +	*reg += bank->bank_num * RK3188_PULL_BANK_STRIDE;
-> +	*reg += ((pin_num / RK3188_PULL_PINS_PER_REG) * 4);
+> +Required Properties:
 > +
-> +	*bit = (pin_num % RK3188_PULL_PINS_PER_REG);
-> +	*bit *= RK3188_PULL_BITS_PER_PIN;
-> +}
+> +- compatible: should be "rockchip,rk3228-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
 > +
-> +#define RK3228_DRV_GRF_OFFSET		0x200
+> +Optional Properties:
 > +
-> +static void rk3228_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-> +				    int pin_num, struct regmap **regmap,
-> +				    int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing pll rates are not changeable, due to the missing pll lock status.
 > +
-> +	*regmap = info->regmap_base;
-> +	*reg = RK3228_DRV_GRF_OFFSET;
-> +	*reg += bank->bank_num * RK3288_DRV_BANK_STRIDE;
-> +	*reg += ((pin_num / RK3288_DRV_PINS_PER_REG) * 4);
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk3228-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
 > +
-> +	*bit = (pin_num % RK3288_DRV_PINS_PER_REG);
-> +	*bit *= RK3288_DRV_BITS_PER_PIN;
-> +}
+> +External clocks:
 > +
->  #define RK3368_PULL_GRF_OFFSET		0x100
->  #define RK3368_PULL_PMU_OFFSET		0x10
->  
-> @@ -2143,6 +2177,23 @@ static struct rockchip_pin_ctrl rk3188_pin_ctrl = {
->  		.pull_calc_reg		= rk3188_calc_pull_reg_and_bit,
->  };
->  
-> +static struct rockchip_pin_bank rk3228_pin_banks[] = {
-> +	PIN_BANK(0, 32, "gpio0"),
-> +	PIN_BANK(1, 32, "gpio1"),
-> +	PIN_BANK(2, 32, "gpio2"),
-> +	PIN_BANK(3, 32, "gpio3"),
-> +};
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "ext_gmac" - external GMAC clock - optional
+> + - "ext_hsadc" - external HSADC clock - optional
+> + - "phy_50m_out" - output clock of the pll in the mac phy
 > +
-> +static struct rockchip_pin_ctrl rk3228_pin_ctrl = {
-> +		.pin_banks		= rk3228_pin_banks,
-> +		.nr_banks		= ARRAY_SIZE(rk3228_pin_banks),
-> +		.label			= "RK3228-GPIO",
-> +		.type			= RK3288,
-> +		.grf_mux_offset		= 0x0,
-> +		.pull_calc_reg		= rk3228_calc_pull_reg_and_bit,
-> +		.drv_calc_reg		= rk3228_calc_drv_reg_and_bit,
-> +};
+> +Example: Clock controller node:
 > +
->  static struct rockchip_pin_bank rk3288_pin_banks[] = {
->  	PIN_BANK_IOMUX_FLAGS(0, 24, "gpio0", IOMUX_SOURCE_PMU,
->  					     IOMUX_SOURCE_PMU,
-> @@ -2220,6 +2271,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
->  		.data = (void *)&rk3066b_pin_ctrl },
->  	{ .compatible = "rockchip,rk3188-pinctrl",
->  		.data = (void *)&rk3188_pin_ctrl },
-> +	{ .compatible = "rockchip,rk3228-pinctrl",
-> +		.data = (void *)&rk3228_pin_ctrl },
->  	{ .compatible = "rockchip,rk3288-pinctrl",
->  		.data = (void *)&rk3288_pin_ctrl },
->  	{ .compatible = "rockchip,rk3368-pinctrl",
+> +	cru: cru@20000000 {
+> +		compatible = "rockchip,rk3228-cru";
+> +		reg = <0x20000000 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart0: serial@10110000 {
+> +		compatible = "snps,dw-apb-uart";
+> +		reg = <0x10110000 0x100>;
+> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART0>;
+> +	};
 > -- 
 > 2.1.4
 > 
