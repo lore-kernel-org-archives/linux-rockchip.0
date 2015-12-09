@@ -1,74 +1,144 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] ASoC: rockchip: i2s: remove unused variables
-Date: Wed,  9 Dec 2015 10:32:27 +0000
-Message-ID: <1449657147-26959-2-git-send-email-john@metanate.com>
-References: <1449657147-26959-1-git-send-email-john@metanate.com>
+From: LABBE Corentin <clabbe.montjoie@gmail.com>
+Subject: Re: [RFC PATCH V2] Crypto: rockchip/crypto - add hash support for
+ crypto engine in rk3288
+Date: Wed, 9 Dec 2015 11:55:19 +0100
+Message-ID: <20151209105519.GB11883@Red>
+References: <1449656202-17363-1-git-send-email-zain.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1449657147-26959-1-git-send-email-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1449656202-17363-1-git-send-email-zain.wang@rock-chips.com>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Zain Wang <zain.wang@rock-chips.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, davem@davemloft.net, eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The previous commit removed the only use of these variables.
+Hello
 
-Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 15 ---------------
- 1 file changed, 15 deletions(-)
+I have some comments below.
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index acc6225..8b0a588 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -34,13 +34,6 @@ struct rk_i2s_dev {
- 
- 	struct regmap *regmap;
- 
--/*
-- * Used to indicate the tx/rx status.
-- * I2S controller hopes to start the tx and rx together,
-- * also to stop them when they are both try to stop.
--*/
--	bool tx_start;
--	bool rx_start;
- 	bool is_master_mode;
- };
- 
-@@ -84,11 +77,7 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
- 				   I2S_XFER_TXS_START,
- 				   I2S_XFER_TXS_START);
--
--		i2s->tx_start = true;
- 	} else {
--		i2s->tx_start = false;
--
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
- 
-@@ -126,11 +115,7 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
- 				   I2S_XFER_RXS_START,
- 				   I2S_XFER_RXS_START);
--
--		i2s->rx_start = true;
- 	} else {
--		i2s->rx_start = false;
--
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
- 
--- 
-2.6.3.462.gbe2c914
+On Wed, Dec 09, 2015 at 06:16:42PM +0800, Zain Wang wrote:
+> Add md5 sha1 sha256 support for crypto engine in rk3288.
+> This patch can't support multiple updatings because of limited of IC,
+> as result, it can't support import and export too.
+> 
+> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+> ---
+> 
+> Changes in V2:
+> - add some comments to code.
+> - fix some issues about zero message process.
+> 
+>  drivers/crypto/rockchip/Makefile                   |   1 +
+>  drivers/crypto/rockchip/rk3288_crypto.c            |  33 +-
+>  drivers/crypto/rockchip/rk3288_crypto.h            |  50 ++-
+>  drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  20 +-
+>  drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 383 +++++++++++++++++++++
+>  5 files changed, 469 insertions(+), 18 deletions(-)
+>  create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> 
+> @@ -194,6 +221,12 @@ struct rk_crypto_info {
+>  			 struct scatterlist *sg_dst);
+>  	void (*unload_data)(struct rk_crypto_info *dev);
+>  };
+> +/* the private variable of hash */
+> +struct rk_ahash_ctx {
+> +	struct rk_crypto_info		*dev;
+> +	int				FLAG_FINUP;
+
+Why this variable is uppercase ?
+
+> +
+> +
+> +static void zero_message_process(struct ahash_request *req)
+> +{
+> +	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
+> +	int rk_digest_size;
+> +
+> +	rk_digest_size = crypto_ahash_digestsize(tfm);
+> +
+> +	if (rk_digest_size == SHA1_DIGEST_SIZE)
+> +		memcpy(req->result, sha1_zero_message_hash, rk_digest_size);
+> +	else if (rk_digest_size == SHA256_DIGEST_SIZE)
+> +		memcpy(req->result, sha256_zero_message_hash, rk_digest_size);
+> +	else if (rk_digest_size == MD5_DIGEST_SIZE)
+> +		memcpy(req->result, md5_zero_message_hash, rk_digest_size);
+
+A switch would be more pretty, and eventualy handle invalid rk_digest_size value.
+
+> +}
+> +
+> +static void rk_ahash_crypto_complete(struct rk_crypto_info *dev, int err)
+> +{
+> +	if (dev->ahash_req->base.complete)
+> +		dev->ahash_req->base.complete(&dev->ahash_req->base, err);
+> +}
+> +
+> +static void rk_ahash_hw_init(struct rk_crypto_info *dev)
+> +{
+> +	int reg_status = 0;
+> +
+> +	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
+> +		     RK_CRYPTO_HASH_FLUSH | _SBF(0xffff, 16);
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
+> +
+> +	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL);
+> +	reg_status &= (~RK_CRYPTO_HASH_FLUSH);
+> +	reg_status |= _SBF(0xffff, 16);
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
+> +
+> +	memset_io(dev->reg + RK_CRYPTO_HASH_DOUT_0, 0, 32);
+> +}
+> +
+> +static void rk_ahash_reg_init(struct rk_crypto_info *dev)
+> +{
+> +	rk_ahash_hw_init(dev);
+> +
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTENA, RK_CRYPTO_HRDMA_ERR_ENA |
+> +					    RK_CRYPTO_HRDMA_DONE_ENA);
+> +
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, RK_CRYPTO_HRDMA_ERR_INT |
+> +					    RK_CRYPTO_HRDMA_DONE_INT);
+> +
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_CTRL, dev->mode |
+> +					       RK_CRYPTO_HASH_SWAP_DO);
+> +
+> +	CRYPTO_WRITE(dev, RK_CRYPTO_CONF, RK_CRYPTO_BYTESWAP_HRFIFO |
+> +					  RK_CRYPTO_BYTESWAP_BRFIFO |
+> +					  RK_CRYPTO_BYTESWAP_BTFIFO);
+> +}
+> +
+> +static int rk_ahash_init(struct ahash_request *req)
+> +{
+> +	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
+> +	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
+> +	struct rk_crypto_info *dev = NULL;
+> +	int rk_digest_size;
+> +
+> +	dev = tctx->dev;
+> +	dev->left_bytes = 0;
+> +	dev->aligned = 0;
+> +	dev->ahash_req = req;
+> +	dev->mode = 0;
+> +	dev->align_size = 4;
+> +	dev->sg_dst = NULL;
+> +
+> +	tctx->first_op = 1;
+> +
+> +	rk_digest_size = crypto_ahash_digestsize(tfm);
+> +	if (!rk_digest_size)
+> +		dev_err(dev->dev, "can't get digestsize\n");
+
+You print an error but continue, it is strange.
+
+> +	if (rk_digest_size == SHA1_DIGEST_SIZE)
+> +		dev->mode = RK_CRYPTO_HASH_SHA1;
+> +	else if (rk_digest_size == SHA256_DIGEST_SIZE)
+> +		dev->mode = RK_CRYPTO_HASH_SHA256;
+> +	else if (rk_digest_size == MD5_DIGEST_SIZE)
+> +		dev->mode = RK_CRYPTO_HASH_MD5;
+
+A switch will be better here.
+
+Regards
