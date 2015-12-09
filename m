@@ -1,144 +1,135 @@
-From: LABBE Corentin <clabbe.montjoie@gmail.com>
-Subject: Re: [RFC PATCH V2] Crypto: rockchip/crypto - add hash support for
- crypto engine in rk3288
-Date: Wed, 9 Dec 2015 11:55:19 +0100
-Message-ID: <20151209105519.GB11883@Red>
-References: <1449656202-17363-1-git-send-email-zain.wang@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/8] pinctrl: rockchip: add support for the rk3228
+Date: Wed, 09 Dec 2015 12:30:10 +0100
+Message-ID: <2989163.WWcXAyahsV@diego>
+References: <1449651853-1667-1-git-send-email-jeffy.chen@rock-chips.com> <1449651853-1667-2-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1449656202-17363-1-git-send-email-zain.wang@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain Wang <zain.wang@rock-chips.com>
-Cc: heiko@sntech.de, herbert@gondor.apana.org.au, davem@davemloft.net, eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1449651853-1667-2-git-send-email-jeffy.chen@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello
+Hi Jeffy,
 
-I have some comments below.
-
-On Wed, Dec 09, 2015 at 06:16:42PM +0800, Zain Wang wrote:
-> Add md5 sha1 sha256 support for crypto engine in rk3288.
-> This patch can't support multiple updatings because of limited of IC,
-> as result, it can't support import and export too.
+Am Mittwoch, 9. Dezember 2015, 17:04:06 schrieb Jeffy Chen:
+> The pinctrl of rk3228 is much the same as rk3288's, but
+> without pmu.
 > 
-> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+
+After verifying the offset and register-layout values with the TRM
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+
+I just love how that still seems to fit for new socs ;-)
+
+
+Thanks
+Heiko
+
+
 > ---
 > 
-> Changes in V2:
-> - add some comments to code.
-> - fix some issues about zero message process.
+>  .../bindings/pinctrl/rockchip,pinctrl.txt          |  3 +-
+>  drivers/pinctrl/pinctrl-rockchip.c                 | 53
+> ++++++++++++++++++++++ 2 files changed, 55 insertions(+), 1 deletion(-)
 > 
->  drivers/crypto/rockchip/Makefile                   |   1 +
->  drivers/crypto/rockchip/rk3288_crypto.c            |  33 +-
->  drivers/crypto/rockchip/rk3288_crypto.h            |  50 ++-
->  drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  20 +-
->  drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 383 +++++++++++++++++++++
->  5 files changed, 469 insertions(+), 18 deletions(-)
->  create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+> b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt index
+> 391ef4b..0cd701b 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+> @@ -21,7 +21,8 @@ defined as gpio sub-nodes of the pinmux controller.
+>  Required properties for iomux controller:
+>    - compatible: one of "rockchip,rk2928-pinctrl",
+> "rockchip,rk3066a-pinctrl" "rockchip,rk3066b-pinctrl",
+> "rockchip,rk3188-pinctrl"
+> -		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
+> +		       "rockchip,rk3228-pinctrl", "rockchip,rk3288-pinctrl"
+> +		       "rockchip,rk3368-pinctrl"
+>    - rockchip,grf: phandle referencing a syscon providing the
+>  	 "general register files"
 > 
-> @@ -194,6 +221,12 @@ struct rk_crypto_info {
->  			 struct scatterlist *sg_dst);
->  	void (*unload_data)(struct rk_crypto_info *dev);
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
+> b/drivers/pinctrl/pinctrl-rockchip.c index a065112..faab36e 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -614,6 +614,40 @@ static void rk3288_calc_drv_reg_and_bit(struct
+> rockchip_pin_bank *bank, }
+>  }
+> 
+> +#define RK3228_PULL_OFFSET		0x100
+> +
+> +static void rk3228_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
+> +				    int pin_num, struct regmap **regmap,
+> +				    int *reg, u8 *bit)
+> +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +
+> +	*regmap = info->regmap_base;
+> +	*reg = RK3228_PULL_OFFSET;
+> +	*reg += bank->bank_num * RK3188_PULL_BANK_STRIDE;
+> +	*reg += ((pin_num / RK3188_PULL_PINS_PER_REG) * 4);
+> +
+> +	*bit = (pin_num % RK3188_PULL_PINS_PER_REG);
+> +	*bit *= RK3188_PULL_BITS_PER_PIN;
+> +}
+> +
+> +#define RK3228_DRV_GRF_OFFSET		0x200
+> +
+> +static void rk3228_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+> +				    int pin_num, struct regmap **regmap,
+> +				    int *reg, u8 *bit)
+> +{
+> +	struct rockchip_pinctrl *info = bank->drvdata;
+> +
+> +	*regmap = info->regmap_base;
+> +	*reg = RK3228_DRV_GRF_OFFSET;
+> +	*reg += bank->bank_num * RK3288_DRV_BANK_STRIDE;
+> +	*reg += ((pin_num / RK3288_DRV_PINS_PER_REG) * 4);
+> +
+> +	*bit = (pin_num % RK3288_DRV_PINS_PER_REG);
+> +	*bit *= RK3288_DRV_BITS_PER_PIN;
+> +}
+> +
+>  #define RK3368_PULL_GRF_OFFSET		0x100
+>  #define RK3368_PULL_PMU_OFFSET		0x10
+> 
+> @@ -2143,6 +2177,23 @@ static struct rockchip_pin_ctrl rk3188_pin_ctrl = {
+>  		.pull_calc_reg		= rk3188_calc_pull_reg_and_bit,
 >  };
-> +/* the private variable of hash */
-> +struct rk_ahash_ctx {
-> +	struct rk_crypto_info		*dev;
-> +	int				FLAG_FINUP;
-
-Why this variable is uppercase ?
-
+> 
+> +static struct rockchip_pin_bank rk3228_pin_banks[] = {
+> +	PIN_BANK(0, 32, "gpio0"),
+> +	PIN_BANK(1, 32, "gpio1"),
+> +	PIN_BANK(2, 32, "gpio2"),
+> +	PIN_BANK(3, 32, "gpio3"),
+> +};
 > +
+> +static struct rockchip_pin_ctrl rk3228_pin_ctrl = {
+> +		.pin_banks		= rk3228_pin_banks,
+> +		.nr_banks		= ARRAY_SIZE(rk3228_pin_banks),
+> +		.label			= "RK3228-GPIO",
+> +		.type			= RK3288,
+> +		.grf_mux_offset		= 0x0,
+> +		.pull_calc_reg		= rk3228_calc_pull_reg_and_bit,
+> +		.drv_calc_reg		= rk3228_calc_drv_reg_and_bit,
+> +};
 > +
-> +static void zero_message_process(struct ahash_request *req)
-> +{
-> +	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-> +	int rk_digest_size;
-> +
-> +	rk_digest_size = crypto_ahash_digestsize(tfm);
-> +
-> +	if (rk_digest_size == SHA1_DIGEST_SIZE)
-> +		memcpy(req->result, sha1_zero_message_hash, rk_digest_size);
-> +	else if (rk_digest_size == SHA256_DIGEST_SIZE)
-> +		memcpy(req->result, sha256_zero_message_hash, rk_digest_size);
-> +	else if (rk_digest_size == MD5_DIGEST_SIZE)
-> +		memcpy(req->result, md5_zero_message_hash, rk_digest_size);
-
-A switch would be more pretty, and eventualy handle invalid rk_digest_size value.
-
-> +}
-> +
-> +static void rk_ahash_crypto_complete(struct rk_crypto_info *dev, int err)
-> +{
-> +	if (dev->ahash_req->base.complete)
-> +		dev->ahash_req->base.complete(&dev->ahash_req->base, err);
-> +}
-> +
-> +static void rk_ahash_hw_init(struct rk_crypto_info *dev)
-> +{
-> +	int reg_status = 0;
-> +
-> +	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
-> +		     RK_CRYPTO_HASH_FLUSH | _SBF(0xffff, 16);
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
-> +
-> +	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL);
-> +	reg_status &= (~RK_CRYPTO_HASH_FLUSH);
-> +	reg_status |= _SBF(0xffff, 16);
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
-> +
-> +	memset_io(dev->reg + RK_CRYPTO_HASH_DOUT_0, 0, 32);
-> +}
-> +
-> +static void rk_ahash_reg_init(struct rk_crypto_info *dev)
-> +{
-> +	rk_ahash_hw_init(dev);
-> +
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTENA, RK_CRYPTO_HRDMA_ERR_ENA |
-> +					    RK_CRYPTO_HRDMA_DONE_ENA);
-> +
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, RK_CRYPTO_HRDMA_ERR_INT |
-> +					    RK_CRYPTO_HRDMA_DONE_INT);
-> +
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_CTRL, dev->mode |
-> +					       RK_CRYPTO_HASH_SWAP_DO);
-> +
-> +	CRYPTO_WRITE(dev, RK_CRYPTO_CONF, RK_CRYPTO_BYTESWAP_HRFIFO |
-> +					  RK_CRYPTO_BYTESWAP_BRFIFO |
-> +					  RK_CRYPTO_BYTESWAP_BTFIFO);
-> +}
-> +
-> +static int rk_ahash_init(struct ahash_request *req)
-> +{
-> +	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-> +	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
-> +	struct rk_crypto_info *dev = NULL;
-> +	int rk_digest_size;
-> +
-> +	dev = tctx->dev;
-> +	dev->left_bytes = 0;
-> +	dev->aligned = 0;
-> +	dev->ahash_req = req;
-> +	dev->mode = 0;
-> +	dev->align_size = 4;
-> +	dev->sg_dst = NULL;
-> +
-> +	tctx->first_op = 1;
-> +
-> +	rk_digest_size = crypto_ahash_digestsize(tfm);
-> +	if (!rk_digest_size)
-> +		dev_err(dev->dev, "can't get digestsize\n");
-
-You print an error but continue, it is strange.
-
-> +	if (rk_digest_size == SHA1_DIGEST_SIZE)
-> +		dev->mode = RK_CRYPTO_HASH_SHA1;
-> +	else if (rk_digest_size == SHA256_DIGEST_SIZE)
-> +		dev->mode = RK_CRYPTO_HASH_SHA256;
-> +	else if (rk_digest_size == MD5_DIGEST_SIZE)
-> +		dev->mode = RK_CRYPTO_HASH_MD5;
-
-A switch will be better here.
-
-Regards
+>  static struct rockchip_pin_bank rk3288_pin_banks[] = {
+>  	PIN_BANK_IOMUX_FLAGS(0, 24, "gpio0", IOMUX_SOURCE_PMU,
+>  					     IOMUX_SOURCE_PMU,
+> @@ -2220,6 +2271,8 @@ static const struct of_device_id
+> rockchip_pinctrl_dt_match[] = { .data = (void *)&rk3066b_pin_ctrl },
+>  	{ .compatible = "rockchip,rk3188-pinctrl",
+>  		.data = (void *)&rk3188_pin_ctrl },
+> +	{ .compatible = "rockchip,rk3228-pinctrl",
+> +		.data = (void *)&rk3228_pin_ctrl },
+>  	{ .compatible = "rockchip,rk3288-pinctrl",
+>  		.data = (void *)&rk3288_pin_ctrl },
+>  	{ .compatible = "rockchip,rk3368-pinctrl",
