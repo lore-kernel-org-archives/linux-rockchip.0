@@ -1,226 +1,538 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v10 19/19] drm: bridge: analogix/dp: Fix the possible dead lock in bridge disable time
-Date: Thu, 10 Dec 2015 16:55:25 +0800
-Message-ID: <1449737725-13642-1-git-send-email-ykk@rock-chips.com>
-References: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Inki Dae <inki.dae@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Russell King <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, ajaynumb@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] i2c: rk3x: Add two new features for rk3399
+Date: Thu, 10 Dec 2015 12:03:28 +0100
+Message-ID: <2556360.42nCqUelUN@diego>
+References: <1449652306-33897-1-git-send-email-wdc@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1449652306-33897-1-git-send-email-wdc@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: David Wu <wdc@rock-chips.com>
+Cc: wsa@the-dreams.de, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It may caused a dead lock if we flush the hpd work in bridge disable time.
+Hi David,
 
-The normal flow would like:
-  IN --> DRM IOCTL
-        1. Acquire crtc_ww_class_mutex (DRM IOCTL)
-  IN --> analogix_dp_bridge
-        2. Acquire hpd work lock (Flush hpd work)
-        3. HPD work already in idle, no need to run the work function.
-  OUT <-- analogix_dp_bridge
-  OUT <-- DRM IOCTL
+Am Mittwoch, 9. Dezember 2015, 17:11:46 schrieb David Wu:
+> 1. support highspeed.
+> 2. check i2c bus idle status.
 
-The dead lock flow would like:
-  IN --> DRM IOCTL
-        1. Acquire crtc_ww_class_mutex (DRM IOCTL)
-  IN --> analogix_dp_bridge
-        2. Acquire hpd work lock (Flush hpd work)
-  IN --> analogix_dp_hotplug
-  IN --> drm_helper_hpd_irq_event
-        3. Acquire mode_config lock (This lock already have been acquired in previous step 1)
-** Dead Lock Now **
+Listing two separate changes in one patch is a big indicator that it should be 
+split up into two patches. Also please be more verbose (aka explain more) what 
+patches do - and especially why it's needed.
 
-It's wrong to flush the hpd work in bridge->disable time, I guess the
-original code just want to ensure the delay work must be finish before
-encoder disabled.
 
-The flush work in bridge disable time is try to ensure the HPD event
-won't be missed before display card disabled, actually we can take a
-fast respond way(interrupt thread) to update DRM HPD event to fix the
-delay update and possible dead lock.
+From what I've seen below, my personal favorite would probably be:
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
----
-This patch was introduced in v10.1, suggested by Heiko
+patch1: introduce ops struct and move the current calc_divs to it
+patch2: introduce v1, highspeed with that new calc_divs
+patch3: introduce the idle status-check
 
-Changes in v10: None
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
 
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 62 ++++++++++------------
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |  3 +-
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 26 +++++++++
- 3 files changed, 55 insertions(+), 36 deletions(-)
+> Change-Id: I9c22e752af621c0f8dbcbd399c86b34fd810ec38
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 79ba88e..5977e06 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -848,47 +848,40 @@ static void analogix_dp_enable_scramble(struct analogix_dp_device *dp,
- 	}
- }
- 
--static irqreturn_t analogix_dp_irq_handler(int irq, void *arg)
-+static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
- {
- 	struct analogix_dp_device *dp = arg;
--
-+	irqreturn_t ret = IRQ_NONE;
- 	enum dp_irq_type irq_type;
- 
- 	irq_type = analogix_dp_get_irq_type(dp);
--	switch (irq_type) {
--	case DP_IRQ_TYPE_HP_CABLE_IN:
--		dev_dbg(dp->dev, "Received irq - cable in\n");
--		schedule_work(&dp->hotplug_work);
--		analogix_dp_clear_hotplug_interrupts(dp);
--		break;
--	case DP_IRQ_TYPE_HP_CABLE_OUT:
--		dev_dbg(dp->dev, "Received irq - cable out\n");
--		analogix_dp_clear_hotplug_interrupts(dp);
--		break;
--	case DP_IRQ_TYPE_HP_CHANGE:
--		/*
--		 * We get these change notifications once in a while, but there
--		 * is nothing we can do with them. Just ignore it for now and
--		 * only handle cable changes.
--		 */
--		dev_dbg(dp->dev, "Received irq - hotplug change; ignoring.\n");
--		analogix_dp_clear_hotplug_interrupts(dp);
--		break;
--	default:
--		dev_err(dp->dev, "Received irq - unknown type!\n");
--		break;
-+	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
-+		analogix_dp_mute_hpd_interrupt(dp);
-+		ret = IRQ_WAKE_THREAD;
- 	}
--	return IRQ_HANDLED;
-+
-+	return ret;
- }
- 
--static void analogix_dp_hotplug(struct work_struct *work)
-+static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- {
--	struct analogix_dp_device *dp;
-+	struct analogix_dp_device *dp = arg;
-+	enum dp_irq_type irq_type;
-+
-+	irq_type = analogix_dp_get_irq_type(dp);
-+	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
-+	    irq_type & DP_IRQ_TYPE_HP_CABLE_OUT) {
-+		dev_dbg(dp->dev, "Detected cable status changed!\n");
-+		if (dp->drm_dev)
-+			drm_helper_hpd_irq_event(dp->drm_dev);
-+	}
- 
--	dp = container_of(work, struct analogix_dp_device, hotplug_work);
-+	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
-+		analogix_dp_clear_hotplug_interrupts(dp);
-+		analogix_dp_unmute_hpd_interrupt(dp);
-+	}
- 
--	if (dp->drm_dev)
--		drm_helper_hpd_irq_event(dp->drm_dev);
-+	return IRQ_HANDLED;
- }
- 
- static void analogix_dp_commit(struct analogix_dp_device *dp)
-@@ -1041,7 +1034,6 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
- 	}
- 
- 	disable_irq(dp->irq);
--	flush_work(&dp->hotplug_work);
- 	phy_power_off(dp->phy);
- 
- 	if (dp->plat_data->power_off)
-@@ -1300,8 +1292,6 @@ int analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
- 		return -ENODEV;
- 	}
- 
--	INIT_WORK(&dp->hotplug_work, analogix_dp_hotplug);
--
- 	pm_runtime_enable(dev);
- 
- 	phy_power_on(dp->phy);
-@@ -1315,8 +1305,10 @@ int analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
- 
- 	analogix_dp_init_dp(dp);
- 
--	ret = devm_request_irq(&pdev->dev, dp->irq, analogix_dp_irq_handler,
--			       irq_flags, "analogix-dp", dp);
-+	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
-+					analogix_dp_hardirq,
-+					analogix_dp_irq_thread,
-+					irq_flags, "analogix-dp", dp);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to request irq\n");
- 		goto err_disable_pm_runtime;
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index 628c486..ecc467d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -178,7 +178,6 @@ struct analogix_dp_device {
- 
- 	struct video_info	video_info;
- 	struct link_train	link_train;
--	struct work_struct	hotplug_work;
- 	struct phy		*phy;
- 	int			dpms_mode;
- 	int			hpd_gpio;
-@@ -197,6 +196,8 @@ void analogix_dp_init_interrupt(struct analogix_dp_device *dp);
- void analogix_dp_reset(struct analogix_dp_device *dp);
- void analogix_dp_swreset(struct analogix_dp_device *dp);
- void analogix_dp_config_interrupt(struct analogix_dp_device *dp);
-+void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp);
-+void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp);
- enum pll_status analogix_dp_get_pll_lock_status(struct analogix_dp_device *dp);
- void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable);
- void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index dc376bd..00ac13c 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -185,6 +185,32 @@ void analogix_dp_config_interrupt(struct analogix_dp_device *dp)
- 	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
- }
- 
-+void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp)
-+{
-+	u32 reg;
-+
-+	/* 0: mask, 1: unmask */
-+	reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
-+	reg &= ~COMMON_INT_MASK_4;
-+	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
-+
-+	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
-+	reg &= ~INT_STA_MASK;
-+	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
-+}
-+
-+void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp)
-+{
-+	u32 reg;
-+
-+	/* 0: mask, 1: unmask */
-+	reg = COMMON_INT_MASK_4;
-+	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
-+
-+	reg = INT_STA_MASK;
-+	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
-+}
-+
- enum pll_status analogix_dp_get_pll_lock_status(struct analogix_dp_device *dp)
- {
- 	u32 reg;
--- 
-1.9.1
+no change-ids etc from external revision control systems please
+
+
+> Signed-off-by: David Wu <wdc@rock-chips.com>
+> ---
+>  drivers/i2c/busses/i2c-rk3x.c | 336
+> ++++++++++++++++++++++++++++++++++++++++-- 1 file changed, 320
+> insertions(+), 16 deletions(-)
+>  mode change 100644 => 100755 drivers/i2c/busses/i2c-rk3x.c
+> 
+> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> old mode 100644
+> new mode 100755
+> index c1935eb..b1aa702
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
+> @@ -25,6 +25,7 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/regmap.h>
+>  #include <linux/math64.h>
+> +#include <linux/delay.h>
+> 
+> 
+>  /* Register Map */
+> @@ -37,6 +38,7 @@
+>  #define REG_IEN        0x18 /* interrupt enable */
+>  #define REG_IPD        0x1c /* interrupt pending */
+>  #define REG_FCNT       0x20 /* finished count */
+> +#define I2C_ST         0x220 /* i2c pin status */
+
+while the registers are called I2C_* in the TRMs, please keep with the current 
+notation in the driver ... so REG_ST here
+
+
+> 
+>  /* Data buffer offsets */
+>  #define TXBUFFER_BASE 0x100
+> @@ -58,6 +60,12 @@ enum {
+>  #define REG_CON_LASTACK   BIT(5) /* 1: send NACK after last received byte
+> */ #define REG_CON_ACTACK    BIT(6) /* 1: stop if NACK is received */
+> 
+> +#define VERSION_MASK	  0xffff0000
+> +#define VERSION_SHIFT	  16
+> +
+> +#define RK3X_I2C_V0	  0x0
+> +#define RK3X_I2C_V1	  0x1
+> +
+>  /* REG_MRXADDR bits */
+>  #define REG_MRXADDR_VALID(x) BIT(24 + (x)) /* [x*8+7:x*8] of MRX[R]ADDR
+> valid */
+> 
+> @@ -71,6 +79,13 @@ enum {
+>  #define REG_INT_NAKRCV    BIT(6) /* NACK received */
+>  #define REG_INT_ALL       0x7f
+> 
+> +enum {
+> +	I2C_IDLE = 0,
+> +	I2C_SDA_LOW,
+> +	I2C_SCL_LOW,
+> +	BOTH_LOW,
+> +};
+> +
+>  /* Constants */
+>  #define WAIT_TIMEOUT      1000 /* ms */
+>  #define DEFAULT_SCL_RATE  (100 * 1000) /* Hz */
+> @@ -90,10 +105,23 @@ struct rk3x_i2c_soc_data {
+>  	int grf_offset;
+>  };
+> 
+> +struct rk3x_i2c_ops {
+> +	int (*check_idle)(void __iomem *);
+> +	int (*calc_divs)(unsigned long,
+> +			 unsigned long,
+> +			 unsigned long,
+> +			 unsigned long,
+> +			 unsigned long,
+> +			 unsigned long *,
+> +			 unsigned long *,
+> +			 unsigned int *);
+> +};
+> +
+>  struct rk3x_i2c {
+>  	struct i2c_adapter adap;
+>  	struct device *dev;
+>  	struct rk3x_i2c_soc_data *soc_data;
+> +	struct rk3x_i2c_ops ops;
+> 
+>  	/* Hardware resources */
+>  	void __iomem *regs;
+> @@ -116,6 +144,7 @@ struct rk3x_i2c {
+>  	u8 addr;
+>  	unsigned int mode;
+>  	bool is_last_msg;
+> +	unsigned int time_con;
+> 
+>  	/* I2C state machine */
+>  	enum rk3x_i2c_state state;
+> @@ -151,7 +180,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+>  	i2c_writel(i2c, REG_INT_START, REG_IEN);
+> 
+>  	/* enable adapter with correct mode, send START condition */
+> -	val = REG_CON_EN | REG_CON_MOD(i2c->mode) | REG_CON_START;
+> +	val = i2c->time_con | REG_CON_EN | REG_CON_MOD(i2c->mode)
+> +		| REG_CON_START;
+> 
+>  	/* if we want to react to NACK, set ACTACK bit */
+>  	if (!(i2c->msg->flags & I2C_M_IGNORE_NAK))
+> @@ -443,16 +473,19 @@ out:
+>   * @sda_fall_ns: How many ns it takes for SDA to fall.
+>   * @div_low: Divider output for low
+>   * @div_high: Divider output for high
+> + * @con: version0 is not used
+>   *
+>   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that
+> case * a best-effort divider value is returned in divs. If the target rate
+> is * too high, we silently use the highest possible rate.
+>   */
+> -static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long
+> scl_rate, -			      unsigned long scl_rise_ns,
+> -			      unsigned long scl_fall_ns,
+> -			      unsigned long sda_fall_ns,
+> -			      unsigned long *div_low, unsigned long *div_high)
+> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned long
+> scl_rate, +				 unsigned long scl_rise_ns,
+> +				 unsigned long scl_fall_ns,
+> +				 unsigned long sda_fall_ns,
+> +				 unsigned long *div_low,
+> +				 unsigned long *div_high,
+> +				 unsigned int *con)
+>  {
+>  	unsigned long spec_min_low_ns, spec_min_high_ns;
+>  	unsigned long spec_setup_start, spec_max_data_hold_ns;
+> @@ -614,19 +647,244 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate,
+> unsigned long scl_rate, return ret;
+>  }
+> 
+> +/**
+> + * Calculate divider values for desired SCL frequency
+> + *
+> + * @clk_rate: I2C input clock rate
+> + * @scl_rate: Desired SCL rate
+> + * @scl_rise_ns: How many ns it takes for SCL to rise.
+> + * @scl_fall_ns: How many ns it takes for SCL to fall.
+> + * @sda_fall_ns: How many ns it takes for SDA to fall.
+> + * @div_low: Divider output for low
+> + * @div_high: Divider output for high
+> + * @con: SDA update point config used to adjust setup/hold time,
+> + * start setup config for setup_start and hold_start time,
+> + * stop_setup config for setup_stop time.
+> + *
+> + * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that
+> case + * a best-effort divider value is returned in divs. If the target
+> rate is + * too high, we silently use the highest possible rate.
+> +
+> + * l = divl + 1;
+> + * h = divh + 1;
+> + * s = data_upd_st + 1;
+> + * u = start_setup_cnt + 1;
+> + * p = stop_setup_cnt + 1;
+> + * T:Tclk_i2c
+> +
+> + * tHigh = 8 * h * T;
+> + * tLow = 8 * l * T;
+> +
+> + * tHD;sda  = (l * s + 1) * T;
+> + * tSU;sda  = ((8 - l) * s + 1) * T;
+> + * tI2C = 8 * (l + h) * T;
+> +
+> + * tSU;sta  = (8h * u + 1) * T;
+> + * tHD;sta = [8h * (u + 1) - 1]* T;
+> + * tSU;sto =(8h * p + 1) * T;
+> + */
+> +static int rk3x_i2c_v1_calc_divs(unsigned long clk_rate, unsigned long
+> scl_rate, +				 unsigned long scl_rise_ns,
+> +				 unsigned long scl_fall_ns,
+> +				 unsigned long sda_fall_ns,
+> +				 unsigned long *div_low,
+> +				 unsigned long *div_high,
+> +				 unsigned int *con)
+> +{
+> +	unsigned long spec_min_low_ns, spec_min_high_ns;
+> +	unsigned long spec_min_setup_start, spec_min_hold_start;
+> +	unsigned long spec_min_data_setup, spec_max_data_hold_ns;
+> +	unsigned long spec_min_stop_setup;
+> +
+> +	unsigned long min_low_ns, min_high_ns, min_total_ns;
+> +	unsigned long min_setup_start_ns, min_hold_start_ns;
+> +	unsigned long min_stop_setup_ns, max_hold_data_ns, min_setup_data_ns;
+> +
+> +	unsigned long clk_rate_khz, scl_rate_khz;
+> +
+> +	unsigned long min_low_div, min_high_div;
+> +
+> +	unsigned long min_div_for_hold, min_total_div;
+> +	unsigned long extra_div, extra_low_div;
+> +	unsigned long start_setup_cnt, stop_setup_cnt, data_upd_st;
+> +
+> +	int ret = 0;
+> +
+> +	if (WARN_ON(scl_rate > 3400000))
+> +		scl_rate = 3400000;
+> +
+> +	if (WARN_ON(scl_rate < 100000))
+> +		scl_rate = 100000;
+> +
+> +	if (scl_rate <= 100000) {
+> +		spec_min_low_ns = 4700;
+> +		spec_min_high_ns = 4000;
+> +
+> +		spec_min_setup_start = 4700;
+> +		spec_min_hold_start = 4000;
+> +
+> +		spec_max_data_hold_ns = 3450;
+> +		spec_min_data_setup = 250;
+> +		spec_min_stop_setup = 4000;
+> +
+> +		start_setup_cnt = 0;
+> +		stop_setup_cnt = 0;
+> +	} else if (scl_rate <= 400000) {
+> +		spec_min_setup_start = 600;
+> +		spec_min_hold_start = 600;
+> +
+> +		spec_min_low_ns = 1300;
+> +		spec_min_high_ns = 600;
+> +
+> +		spec_min_data_setup = 100;
+> +		spec_max_data_hold_ns = 900;
+> +		spec_min_stop_setup = 600;
+> +
+> +		start_setup_cnt = 0;
+> +		stop_setup_cnt = 0;
+> +	} else if (scl_rate <= 1700000) {
+> +		spec_min_low_ns = 320;
+> +		spec_min_high_ns = 120;
+> +
+> +		spec_min_setup_start = 160;
+> +		spec_min_hold_start = 160;
+> +
+> +		spec_max_data_hold_ns = 150;
+> +		spec_min_data_setup = 10;
+> +		spec_min_stop_setup = 160;
+> +
+> +		start_setup_cnt = 1;
+> +		stop_setup_cnt = 1;
+> +	} else {
+> +		spec_min_low_ns = 160;
+> +		spec_min_high_ns = 60;
+> +
+> +		spec_min_setup_start = 160;
+> +		spec_min_hold_start = 160;
+> +
+> +		spec_min_data_setup = 10;
+> +		spec_max_data_hold_ns = 70;
+> +		spec_min_stop_setup = 160;
+> +
+> +		start_setup_cnt = 2;
+> +		stop_setup_cnt = 2;
+> +	}
+> +
+> +	clk_rate_khz = DIV_ROUND_UP(clk_rate, 1000);
+> +	scl_rate_khz = scl_rate / 1000;
+> +	min_total_div = DIV_ROUND_UP(clk_rate_khz, scl_rate_khz * 8);
+> +
+> +	/*tHigh = 8 * h *T;*/
+> +	min_high_ns = scl_rise_ns + spec_min_high_ns;
+> +	min_high_div = DIV_ROUND_UP(clk_rate_khz * min_high_ns, 8 * 1000000);
+> +
+> +	/*tSU;sta  = (u*8*h + 4)*T + T;*/
+> +	min_setup_start_ns = scl_rise_ns + spec_min_setup_start;
+> +	min_high_div = max(min_high_div,
+> +			   DIV_ROUND_UP(clk_rate_khz * min_setup_start_ns
+> +			   - 1000000, 8 * 1000000 * (1 + start_setup_cnt)));
+> +
+> +	/*tHD;sta = (u + 1) * 8h * T - T;*/
+> +	min_hold_start_ns = scl_rise_ns + spec_min_hold_start;
+> +	min_high_div = max(min_high_div,
+> +			   DIV_ROUND_UP(clk_rate_khz * min_hold_start_ns
+> +			   + 1000000, 8 * 1000000 * (2 + start_setup_cnt)));
+> +
+> +	/*tSU;sto = (p*8*h + 4)*T + T;*/
+> +	min_stop_setup_ns = scl_rise_ns + spec_min_stop_setup;
+> +	min_high_div = max(min_high_div,
+> +			   DIV_ROUND_UP(clk_rate_khz * min_stop_setup_ns
+> +			   - 1000000, 8 * 1000000 * (1 + stop_setup_cnt)));
+> +
+> +	min_low_ns = scl_fall_ns + spec_min_low_ns;
+> +
+> +	/* These are the min dividers needed for min hold times. */
+> +	min_low_div = DIV_ROUND_UP(clk_rate_khz * min_low_ns, 8 * 1000000);
+> +
+> +	min_div_for_hold = (min_low_div + min_high_div);
+> +	min_total_ns = min_low_ns + min_high_ns;
+> +
+> +	/*
+> +	 * This is the maximum divider so we don't go over the maximum.
+> +	 * We don't round up here (we round down) since this is a maximum.
+> +	 */
+> +	 if (min_div_for_hold >= min_total_div) {
+> +		/*
+> +		 * Time needed to meet hold requirements is important.
+> +		 * Just use that.
+> +		 */
+> +		*div_low = min_low_div;
+> +		*div_high = min_high_div;
+> +	} else {
+> +		/*
+> +		 * We've got to distribute some time among the low and high
+> +		 * so we don't run too fast.
+> +		 */
+> +		extra_div = min_total_div - min_div_for_hold;
+> +		extra_low_div = DIV_ROUND_UP(min_low_div * extra_div,
+> +					     min_div_for_hold);
+> +
+> +		*div_low = min_low_div + extra_low_div;
+> +		*div_high = min_high_div + (extra_div - extra_low_div);
+> +	}
+> +
+> +	/*
+> +	 * tHD;sda  = (l * s + 1) * T;
+> +	 * tSU;sda  = ((8 - l) * s + 1) * T;
+> +	 */
+> +	for (data_upd_st = 2; data_upd_st >= 0; data_upd_st--) {
+> +		max_hold_data_ns =  DIV_ROUND_UP(((data_upd_st + 1)
+> +						 * (*div_low) + 1) * 1000000,
+> +						 clk_rate_khz);
+> +		min_setup_data_ns =  DIV_ROUND_UP(((9 - data_upd_st)
+> +						 * (*div_low) + 1) * 1000000,
+> +						 clk_rate_khz);
+> +		if ((max_hold_data_ns < spec_max_data_hold_ns) &&
+> +		    (min_setup_data_ns > spec_min_data_setup))
+> +			break;
+> +	}
+> +
+> +	/*
+> +	 * Adjust to the fact that the hardware has an implicit "+1".
+> +	 * NOTE: Above calculations always produce div_low > 0 and div_high > 0.
+> +	 */
+> +	*div_low = *div_low - 1;
+> +	*div_high = *div_high - 1;
+> +
+> +	/* Maximum divider supported by hw is 0xffff */
+> +	if (*div_low > 0xffff) {
+> +		*div_low = 0xffff;
+> +		ret = -EINVAL;
+> +	}
+> +
+> +	if (*div_high > 0xffff) {
+> +		*div_high = 0xffff;
+> +		ret = -EINVAL;
+> +	}
+> +
+> +	*con = *con & 0x00ff;
+> +	*con |= data_upd_st << 8;
+> +	*con |= start_setup_cnt << 12;
+> +	*con |= stop_setup_cnt << 14;
+> +
+> +	return ret;
+> +}
+> +
+>  static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long
+> clk_rate) {
+> +	unsigned int con = 0;
+>  	unsigned long div_low, div_high;
+>  	u64 t_low_ns, t_high_ns;
+>  	int ret;
+> 
+> -	ret = rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency, i2c->scl_rise_ns,
+> +	ret = i2c->ops.calc_divs(clk_rate, i2c->scl_frequency, i2c->scl_rise_ns,
+>  				 i2c->scl_fall_ns, i2c->sda_fall_ns,
+> -				 &div_low, &div_high);
+> +				 &div_low, &div_high, &con);
+>  	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", i2c->scl_frequency);
+> 
+>  	clk_enable(i2c->clk);
+>  	i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff), REG_CLKDIV);
+> +	i2c->time_con = con;
+>  	clk_disable(i2c->clk);
+> 
+>  	t_low_ns = div_u64(((u64)div_low + 1) * 8 * 1000000000, clk_rate);
+> @@ -661,13 +919,14 @@ static int rk3x_i2c_clk_notifier_cb(struct
+> notifier_block *nb, unsigned long struct clk_notifier_data *ndata = data;
+>  	struct rk3x_i2c *i2c = container_of(nb, struct rk3x_i2c, clk_rate_nb);
+>  	unsigned long div_low, div_high;
+> +	unsigned int con = 0;
+> 
+>  	switch (event) {
+>  	case PRE_RATE_CHANGE:
+> -		if (rk3x_i2c_calc_divs(ndata->new_rate, i2c->scl_frequency,
+> +		if (i2c->ops.calc_divs(ndata->new_rate, i2c->scl_frequency,
+>  				       i2c->scl_rise_ns, i2c->scl_fall_ns,
+>  				       i2c->sda_fall_ns,
+> -				       &div_low, &div_high) != 0)
+> +				       &div_low, &div_high, &con) != 0)
+>  			return NOTIFY_STOP;
+> 
+>  		/* scale up */
+> @@ -690,6 +949,11 @@ static int rk3x_i2c_clk_notifier_cb(struct
+> notifier_block *nb, unsigned long }
+>  }
+> 
+> +static int rockchip_i2c_v1_check_idle(void __iomem *regs)
+> +{
+> +	return readl(regs + I2C_ST) & 0x03;
+> +}
+> +
+>  /**
+>   * Setup I2C registers for an I2C operation specified by msgs, num.
+>   *
+> @@ -777,6 +1041,7 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+>  {
+>  	struct rk3x_i2c *i2c = (struct rk3x_i2c *)adap->algo_data;
+>  	unsigned long timeout, flags;
+> +	int state, retry = 10;
+>  	int ret = 0;
+>  	int i;
+> 
+> @@ -784,6 +1049,21 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+> 
+>  	clk_enable(i2c->clk);
+> 
+> +	if (i2c->ops.check_idle) {
+> +		while (retry) {
+> +			state = i2c->ops.check_idle(i2c);
+> +			if (state == I2C_IDLE)
+> +				break;
+> +			mdelay(10);
+> +			retry--;
+> +		}
+> +		if (retry == 0) {
+> +			dev_err(i2c->dev, "i2c is not in idle(state = %d)\n",
+> +				state);
+> +			return -EIO;
+> +		}
+> +	}
+> +
+>  	i2c->is_last_msg = false;
+> 
+>  	/*
+> @@ -816,7 +1096,8 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+> 
+>  			/* Force a STOP condition without interrupt */
+>  			i2c_writel(i2c, 0, REG_IEN);
+> -			i2c_writel(i2c, REG_CON_EN | REG_CON_STOP, REG_CON);
+> +			i2c_writel(i2c, i2c->time_con | REG_CON_EN |
+> +				   REG_CON_STOP, REG_CON);
+> 
+>  			i2c->state = STATE_IDLE;
+> 
+> @@ -871,6 +1152,7 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
+> u32 value;
+>  	int irq;
+>  	unsigned long clk_rate;
+> +	unsigned int version;
+> 
+>  	i2c = devm_kzalloc(&pdev->dev, sizeof(struct rk3x_i2c), GFP_KERNEL);
+>  	if (!i2c)
+
+shouldn't you do something to the scl_frequency here too? If I'm not blind, 
+even with your patch, the code will limit sclk_frequency to 400kHZ?
+
+So I guess you should your version check+ops-assignment here instead and also 
+cap the scl_frequency accordingly if necessary.
+
+
+> @@ -901,15 +1183,29 @@ static int rk3x_i2c_probe(struct platform_device
+> *pdev) &i2c->scl_rise_ns)) {
+>  		if (i2c->scl_frequency <= 100000)
+>  			i2c->scl_rise_ns = 1000;
+> -		else
+> +		else if (i2c->scl_frequency <= 400000)
+>  			i2c->scl_rise_ns = 300;
+> +		else if (i2c->scl_frequency <= 1700000)
+> +			i2c->scl_rise_ns = 80;
+> +		else
+> +			i2c->scl_rise_ns = 40;
+>  	}
+>  	if (of_property_read_u32(pdev->dev.of_node, "i2c-scl-falling-time-ns",
+> -				 &i2c->scl_fall_ns))
+> -		i2c->scl_fall_ns = 300;
+> +				 &i2c->scl_fall_ns)) {
+> +		if (i2c->scl_frequency <= 400000)
+> +			i2c->scl_fall_ns = 300;
+> +		else if (i2c->scl_frequency <= 1700000)
+> +			i2c->scl_fall_ns = 80;
+> +		else
+> +			i2c->scl_fall_ns = 40;
+> +	}
+>  	if (of_property_read_u32(pdev->dev.of_node, "i2c-sda-falling-time-ns",
+> -				 &i2c->scl_fall_ns))
+> -		i2c->sda_fall_ns = i2c->scl_fall_ns;
+> +				 &i2c->scl_fall_ns)) {
+> +		if (i2c->scl_frequency <= 400000)
+> +			i2c->sda_fall_ns = i2c->scl_fall_ns;
+> +		else
+> +			i2c->sda_fall_ns = 2 * i2c->scl_fall_ns;
+> +	}
+> 
+>  	strlcpy(i2c->adap.name, "rk3x-i2c", sizeof(i2c->adap.name));
+>  	i2c->adap.owner = THIS_MODULE;
+
+
+Thanks
+Heiko
