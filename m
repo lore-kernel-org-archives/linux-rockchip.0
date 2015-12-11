@@ -1,131 +1,57 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [RFC PATCH 3/9] drm/rockchip: Convert to support atomic API
-Date: Fri, 11 Dec 2015 14:26:31 +0800
-Message-ID: <566A6C97.4020207@rock-chips.com>
-References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>	<1448940391-23333-4-git-send-email-mark.yao@rock-chips.com>	<CAPj87rPtWgH2WE7_EEC-Q41c7Ew2z8CwPMMQD+cC08G7qNZTeg@mail.gmail.com>	<565D68F0.3010905@rock-chips.com>
- <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH] ASoC: rockchip: spdif: Set transmit data level to 16 samples
+Date: Fri, 11 Dec 2015 09:45:33 +0100
+Message-ID: <1449823533-6993-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNeW5tDEy5pyIMDLml6UgMjI6MTgsIERhbmllbCBTdG9uZSB3cm90ZToKPiBIaSBNYXJr
-LAo+IFRoYW5rcyBmb3IgZ2V0dGluZyBiYWNrIHRvIHRoaXMuCj4KPiBPbiAxIERlY2VtYmVyIDIw
-MTUgYXQgMDk6MzEsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+
-IE9uIDIwMTXlubQxMuaciDAx5pelIDE2OjE4LCBEYW5pZWwgU3RvbmUgd3JvdGU6Cj4+PiBPbiAx
-IERlY2VtYmVyIDIwMTUgYXQgMDM6MjYsIE1hcmsgWWFvPG1hcmsueWFvQHJvY2stY2hpcHMuY29t
-PiAgd3JvdGU6Cj4+Pj4+ICsgICAgICAgZm9yX2VhY2hfY3J0Y19pbl9zdGF0ZShzdGF0ZSwgY3J0
-YywgY3J0Y19zdGF0ZSwgaSkgewo+Pj4+PiArICAgICAgICAgICAgICAgaWYgKCFjcnRjLT5zdGF0
-ZS0+YWN0aXZlKQo+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKPj4+Pj4g
-Kwo+Pj4+PiArICAgICAgICAgICAgICAgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0
-Yyk7Cj4+Pj4+ICsgICAgICAgfQo+Pj4gSSdkIGJlIG11Y2ggbW9yZSBjb21mb3J0YWJsZSBpZiB0
-aGlzIHBhc3NlZCBpbiBhbiBleHBsaWNpdCBwb2ludGVyIHRvCj4+PiBzdGF0ZSwgb3IgYW4gYWRk
-cmVzcyB0byB3YWl0IGZvciwgcmF0aGVyIHRoYW4gaGF2ZSB3YWl0X2Zvcl9jb21wbGV0ZQo+Pj4g
-ZGlnIG91dCBzdGF0ZSB3aXRoIG5vIGxvY2tpbmcuIFRoZSBsYXR0ZXIgaXMgcG90ZW50aWFsbHkg
-cmFjeSBmb3IKPj4+IGFzeW5jIG9wZXJhdGlvbnMuCj4+Pgo+PiBIaSBEYW5pZWwKPj4gICAgICJp
-ZiB0aGlzIHBhc3NlZCBpbiBhbiBleHBsaWNpdCBwb2ludGVyIHRvIHN0YXRlLCBvciBhbiBhZGRy
-ZXNzIHRvIHdhaXQKPj4gZm9yIiwgSSBkb24ndCB1bmRlcnN0YW5kLCBjYW4geW91IHBvaW50IGhv
-dyBpdCB3b3JrPwo+IEFoLCBPSy4gSSBtZWFuIHRoYXQgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91
-cGRhdGUgdGFrZXMgYSBkcm1fY3J0Ywo+IHBvaW50ZXIsIGFuZCBlc3RhYmxpc2hlcyB0aGUgc3Rh
-dGUgZnJvbSB0aGF0IChlLmcuCj4gY3J0Yy0+cHJpbWFyeS0+c3RhdGUpLiBUaGlzIGNhbiBlYXNp
-bHkgbGVhZCB0byBjb25mdXNpb24gaW4gYXN5bmMKPiBjb250ZXh0cywgYXMgdGhlIHN0YXRlcyBh
-dHRhY2hlZCB0byBhIGRybV9jcnRjIGFuZCBhIGRybV9wbGFuZSBjYW4KPiBjaGFuZ2UgaGVyZSB3
-aGlsZSB5b3Ugd2FpdCBmb3IgaXQuCj4KPiBJdCB3b3VsZCBiZSBiZXR0ZXIgaWYgdGhlIGNhbGwg
-d2FzOgo+Cj4gZm9yX2VhY2hfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBwbGFuZV9zdGF0
-ZSwgaSkgewo+ICAgICAgaWYgKHBsYW5lLT50eXBlID09IERSTV9QTEFORV9UWVBFX1BSSU1BUlkp
-Cj4gICAgICAgICAgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUocGxhbmVfc3RhdGUtPmNy
-dGMsIHBsYW5lX3N0YXRlKTsKPiB9Cj4KPiBUaGlzIHdheSBpdCBpcyB2ZXJ5IGNsZWFyLCBhbmQg
-dGhlcmUgaXMgbm8gY29uZnVzaW9uIGFzIHRvIHdoaWNoCj4gcmVxdWVzdCB3ZSBhcmUgd2FpdGlu
-ZyB0byBjb21wbGV0ZS4KPgo+IEluIGdlbmVyYWwsIHVzaW5nIGNydGMtPnN0YXRlIG9yIHBsYW5l
-LT5zdGF0ZSBpcyBhIHZlcnkgYmFkIGlkZWEsCj4gX2V4Y2VwdF8gaW4gdGhlIGF0b21pY19jaGVj
-ayBmdW5jdGlvbiB3aGVyZSB5b3UgYXJlIGNhbGN1bGF0aW5nCj4gY2hhbmdlcyAoZS5nLiBpZiAo
-cGxhbmVfc3RhdGUtPmZiLT5waXRjaGVzWzBdICE9Cj4gcGxhbmUtPnN0YXRlLT5mYi0+cGl0Y2hl
-c1swXSkgcm9ja2NoaXBfcGxhbmVfc3RhdGUtPnBpdGNoX2NoYW5nZWQgPQo+IHRydWUpLiBBZnRl
-ciBhdG9taWNfY2hlY2ssIHlvdSBzaG91bGQgYWx3YXlzIHBhc3MgYXJvdW5kIHBvaW50ZXJzIHRv
-Cj4gdGhlIHBsYW5lIHN0YXRlIGV4cGxpY2l0bHksIGFuZCBhdm9pZCB1c2luZyB0aGUgcG9pbnRl
-cnMgZnJvbSBkcm1fY3J0Ywo+IGFuZCBkcm1fcGxhbmUuCj4KPiBEb2VzIHRoYXQgaGVscD8KCkhp
-IERhbmllbAoKU29ycnksIEkgZG9uJ3QgYWN0dWFsbHkgdW5kZXJzdGFuZCB3aHkgY3J0Yy0+c3Rh
-dGUgb3IgcGxhbmUtPnN0YXRlIGlzIG5vIApyZWNvbW1lbmRlZApleGNlcHQgYXRvbWljX2NoZWNr
-LCBvbiBhdG9taWNfdXBkYXRlLCB3ZSBuZWVkIHVzZSBwbGFuZS0+c3RhdGUsIGlzIHRoYXQgCmEg
-cHJvYmxlbT8KCkkgZ3Vlc3MgdGhhdCwgZHJtX2F0b21pY19oZWxwZXJfc3dhcF9zdGF0ZSB3b3Vs
-ZCByYWNlIHdpdGggYXN5bmMgb3BlcmF0aW9ucywKc28gdXNlIGNydGMtPnN0YXRlIG9uIGFzeW5j
-IHN0YWNrIGlzIG5vdCBzYWZlLiBpcyBpdCBjb3JyZWN0PwoKSSB0aGluayB3ZSBjYW4gbWFrZSBh
-c3luY2hyb25vdXMgY29tbWl0IHNlcmlhbGl6ZSBhcyB0ZWdyYSBkcm0gZG9uZSB0byAKYXZvaWQg
-dGhpcyBwcm9ibGVtOgoKCiAgIDg2ICAgICAgICAgLyogc2VyaWFsaXplIG91dHN0YW5kaW5nIGFz
-eW5jaHJvbm91cyBjb21taXRzICovCiAgIDg3IG11dGV4X2xvY2soJnRlZ3JhLT5jb21taXQubG9j
-ayk7CiAgIDg4IGZsdXNoX3dvcmsoJnRlZ3JhLT5jb21taXQud29yayk7Cjg5CiAgIDkwIC8qCiAg
-IDkxICAgICAgICAgICogVGhpcyBpcyB0aGUgcG9pbnQgb2Ygbm8gcmV0dXJuIC0gZXZlcnl0aGlu
-ZyBiZWxvdyBuZXZlciAKZmFpbHMgZXhjZXB0CiAgIDkyICAgICAgICAgICogd2hlbiB0aGUgaHcg
-Z29lcyBib25naGl0cy4gV2hpY2ggbWVhbnMgd2UgY2FuIGNvbW1pdCAKdGhlIG5ldyBzdGF0ZSBv
-bgogICA5MyAgICAgICAgICAqIHRoZSBzb2Z0d2FyZSBzaWRlIG5vdy4KICAgOTQgKi8KOTUKICAg
-OTYgICAgICAgICBkcm1fYXRvbWljX2hlbHBlcl9zd2FwX3N0YXRlKGRybSwgc3RhdGUpOwo5Nwog
-ICA5OCAgICAgICAgIGlmIChhc3luYykKICAgOTkgICAgICAgICAgICAgICAgIHRlZ3JhX2F0b21p
-Y19zY2hlZHVsZSh0ZWdyYSwgc3RhdGUpOwogIDEwMCBlbHNlCiAgMTAxICAgICAgICAgICAgICAg
-ICB0ZWdyYV9hdG9taWNfY29tcGxldGUodGVncmEsIHN0YXRlKTsKICAxMDIKICAxMDMgICAgICAg
-ICBtdXRleF91bmxvY2soJnRlZ3JhLT5jb21taXQubG9jayk7CgoKPgo+Pj4+ICAgICAgICAgICBp
-ZiAoaXNfeXV2KSB7Cj4+Pj4gICAgICAgICAgICAgICAgICAgLyoKPj4+PiAgICAgICAgICAgICAg
-ICAgICAgKiBTcmMueDEgY2FuIGJlIG9kZCB3aGVuIGRvIGNsaXAsIGJ1dCB5dXYgcGxhbmUgc3Rh
-cnQKPj4+PiBwb2ludAo+Pj4+ICAgICAgICAgICAgICAgICAgICAqIG5lZWQgYWxpZ24gd2l0aCAy
-IHBpeGVsLgo+Pj4+ICAgICAgICAgICAgICAgICAgICAqLwo+Pj4+IC0gICAgICAgICAgICAgICB2
-YWwgPSAoc3JjLngxID4+IDE2KSAlIDI7Cj4+Pj4gLSAgICAgICAgICAgICAgIHNyYy54MSArPSB2
-YWwgPDwgMTY7Cj4+Pj4gLSAgICAgICAgICAgICAgIHNyYy54MiArPSB2YWwgPDwgMTY7Cj4+Pj4g
-KyAgICAgICAgICAgICAgIHVpbnQzMl90IHRlbXAgPSAoc3JjLT54MSA+PiAxNikgJSAyOwo+Pj4+
-ICsKPj4+PiArICAgICAgICAgICAgICAgc3JjLT54MSArPSB0ZW1wIDw8IDE2Owo+Pj4+ICsgICAg
-ICAgICAgICAgICBzcmMtPngyICs9IHRlbXAgPDwgMTY7Cj4+Pj4gICAgICAgICAgIH0KPj4+IEkg
-a25vdyB0aGlzIGlzbid0IG5ldywgYnV0IG1vdmluZyB0aGUgcGxhbmUgYXJvdW5kIGlzIGJhZC4g
-SWYgdGhlIHVzZXIKPj4+IGdpdmVzIHlvdSBhIHBpeGVsIGJvdW5kYXJ5IHRoYXQgeW91IGNhbid0
-IGFjdHVhbGx5IHVzZSwgcGxlYXNlIHJlamVjdAo+Pj4gdGhlIGNvbmZpZ3VyYXRpb24gcmF0aGVy
-IHRoYW4gc2lsZW50bHkgdHJ5aW5nIHRvIGZpeCBpdCB1cC4KPj4gdGhlIG9yaWdpbiBzcmMueDEg
-d291bGQgYWxpZ24gd2l0aCAyIHBpeGVsLCBidXQgd2hlbiB3ZSBtb3ZlIHRoZSBkZXN0Cj4+IHdp
-bmRvdywgYW5kIGRvIGNsaXAgYnkgb3V0cHV0LCB0aGUgc3JjLngxIG1heSBiZSBjbGlwcGVkIHRv
-IG9kZC4KPj4gcmVnZWN0IHRoaXMgY29uZmlndXJhdGlvbiBtYXkgbGV0IHVzZXIgY29uZnVzZSwg
-c29tZXRpbWVzIGdvb2QsIHNvbWV0aW1lcwo+PiBiYWQuCj4gRm9yIG1lLCBpdCBpcyBtb3JlIGNv
-bmZ1c2luZyB3aGVuIHRoZSBkaXNwbGF5IHNob3dzIHNvbWV0aGluZwo+IGRpZmZlcmVudCB0byB3
-aGF0IEkgaGF2ZSByZXF1ZXN0ZWQuIEluIHNvbWUgbWVkaWEgdXNlY2FzZXMsIGRvaW5nIHRoaXMK
-PiBpcyBhIHNob3dzdG9wcGVyIGFuZCB3aWxsIHJlc3VsdCBpbiBwcm9kdWN0cyBmYWlsaW5nIGFj
-Y2VwdGFuY2UKPiB0ZXN0aW5nLiBVc2Vyc3BhY2UgY2FuIG1ha2UgYSBwb2xpY3kgZGVjaXNpb24g
-dG8gdHJ5IGRpZmZlcmVudAo+IGFsaWdubWVudHMgdG8gZ2V0IF9zb21ldGhpbmdfIHRvIHNob3cg
-KGV2ZW4gaWYgaXQncyBub3Qgd2hhdCB3YXMKPiBleHBsaWNpdGx5IHJlcXVlc3RlZCksIGJ1dCBk
-b2luZyB0aGlzIGluIHRoZSBrZXJuZWwgaXMgaW5hcHByb3ByaWF0ZToKPiBwbGVhc2UganVzdCBy
-ZWplY3QgaXQsIGFuZCBoYXZlIHVzZXJzcGFjZSBmYWxsIGJhY2sgdG8gYW5vdGhlcgo+IGNvbXBv
-c2l0aW9uIG1ldGhvZCAoZS5nLiBHTCkgaW4gdGhlc2UgY2FzZXMuCj4KPj4+PiAtc3RhdGljIHZv
-aWQgdm9wX3BsYW5lX2Rlc3Ryb3koc3RydWN0IGRybV9wbGFuZSAqcGxhbmUpCj4+Pj4gK3N0YXRp
-YyB2b2lkIHZvcF9hdG9taWNfcGxhbmVfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpw
-bGFuZSwKPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ry
-dWN0IGRybV9wbGFuZV9zdGF0ZSAqc3RhdGUpCj4+Pj4gICAgewo+Pj4+IC0gICAgICAgdm9wX2Rp
-c2FibGVfcGxhbmUocGxhbmUpOwo+Pj4+IC0gICAgICAgZHJtX3BsYW5lX2NsZWFudXAocGxhbmUp
-Owo+Pj4+ICsgICAgICAgc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSAqdm9wX3N0YXRlID0gdG9fdm9w
-X3BsYW5lX3N0YXRlKHN0YXRlKTsKPj4+PiArCj4+Pj4gKyAgICAgICBpZiAoc3RhdGUtPmZiKQo+
-Pj4+ICsgICAgICAgICAgICAgICBkcm1fZnJhbWVidWZmZXJfdW5yZWZlcmVuY2Uoc3RhdGUtPmZi
-KTsKPj4+PiArCj4+Pj4gKyAgICAgICBrZnJlZSh2b3Bfc3RhdGUpOwo+Pj4+ICAgIH0KPj4+IFlv
-dSBjYW4gcmVwbGFjZSB0aGlzIGhvb2sgd2l0aCBkcm1fYXRvbWljX2hlbHBlcl9wbGFuZV9kZXN0
-cm95X3N0YXRlLgo+Pgo+PiBIbW0sIG9ubHkgY2FuIGhvb2sgd2l0aCBfX2RybV9hdG9taWNfaGVs
-cGVyX3BsYW5lX2Rlc3Ryb3lfc3RhdGUuCj4gQWggeWVzLCB5b3UncmUgcmlnaHQuIEJ1dCBzdGls
-bCwgdXNpbmcgdGhhdCB3b3VsZCBiZSBiZXR0ZXIgdGhhbiBkdXBsaWNhdGluZyBpdC4KPgo+PiAg
-ICAgIENhbiB5b3Ugc2hhcmUgeW91ciBXZXN0b24gZW52aXJvbm1lbnQgdG8gbWUsIEknbSBpbnRl
-cmVzdGluZyB0byB0ZXN0IGRybQo+PiByb2NrY2hpcCBvbiB3ZXN0b24uCj4gT2YgY291cnNlLiBZ
-b3UgY2FuIGRvd25sb2FkIFdlc3RvbiBmcm9tIGh0dHA6Ly93YXlsYW5kLmZyZWVkZXNrdG9wLm9y
-Zwo+IC0gdGhlIG1vc3QgaW50ZXJlc3RpbmcgZGVwZW5kZW5jaWVzIGFyZSBsaWJldmRldiwgbGli
-aW5wdXQsIGFuZAo+IHdheWxhbmQgaXRzZWxmLiBJZiB5b3UgYXJlIGJ1aWxkaW5nIG5ld2VyIFdl
-c3RvbiBmcm9tIGdpdCwgeW91J2xsIG5lZWQKPiB0aGUgd2F5bGFuZC1wcm90b2NvbHMgcmVwb3Np
-dG9yeSBhcyB3ZWxsLCBmcm9tCj4gYW5vbmdpdC5mcmVlZGVza3RvcC5vcmcvZ2l0L3dheWxhbmQv
-d2F5bGFuZC1wcm90b2NvbHMvLiBQbGVhc2UgbGV0IG1lCj4ga25vdyBwcml2YXRlbHkgaWYgeW91
-IG5lZWQgc29tZSBtb3JlIGhlbHAgd2l0aCBidWlsZGluZyB0aGVzZSwgYnV0Cj4gdGhleSBzaG91
-bGQgYmUgcXVpdGUgc3RyYWlnaHRmb3J3YXJkLgo+Cj4gQ2hlZXJzLAo+IERhbmllbAo+Cj4KPgoK
-Ci0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+Explicitly set the transmit data level on the transceiver to 16 samples
+rather then the default 0. This matches both the level set in the vendor
+kernel and the (seemingly very similar) i2s engine. This fixes audio
+glitches when playing back at 192k rate.
+
+At the same time, fix a trivial typo in the TDL mask definition
+
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+
+---
+
+ sound/soc/rockchip/rockchip_spdif.c | 6 ++++--
+ sound/soc/rockchip/rockchip_spdif.h | 2 +-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index ac72ff5..5a806da 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -152,8 +152,10 @@ static int rk_spdif_trigger(struct snd_pcm_substream *substream,
+ 	case SNDRV_PCM_TRIGGER_RESUME:
+ 	case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
+ 		ret = regmap_update_bits(spdif->regmap, SPDIF_DMACR,
+-				   SPDIF_DMACR_TDE_ENABLE,
+-				   SPDIF_DMACR_TDE_ENABLE);
++				   SPDIF_DMACR_TDE_ENABLE |
++				   SPDIF_DMACR_TDL_MASK,
++				   SPDIF_DMACR_TDE_ENABLE |
++				   SPDIF_DMACR_TDL(16));
+ 
+ 		if (ret != 0)
+ 			return ret;
+diff --git a/sound/soc/rockchip/rockchip_spdif.h b/sound/soc/rockchip/rockchip_spdif.h
+index 921b409..3ef1277 100644
+--- a/sound/soc/rockchip/rockchip_spdif.h
++++ b/sound/soc/rockchip/rockchip_spdif.h
+@@ -42,7 +42,7 @@
+ 
+ #define SPDIF_DMACR_TDL_SHIFT	0
+ #define SPDIF_DMACR_TDL(x)	((x) << SPDIF_DMACR_TDL_SHIFT)
+-#define SPDIF_DMACR_TDL_MASK	(0x1f << SDPIF_DMACR_TDL_SHIFT)
++#define SPDIF_DMACR_TDL_MASK	(0x1f << SPDIF_DMACR_TDL_SHIFT)
+ 
+ /*
+  * XFER
+-- 
+2.6.2
