@@ -1,690 +1,131 @@
-From: Zain Wang <zain.wang@rock-chips.com>
-Subject: [RFC PATCH V3] Crypto: rockchip/crypto - add hash support for crypto engine in rk3288
-Date: Fri, 11 Dec 2015 09:58:23 +0800
-Message-ID: <1449799103-24221-1-git-send-email-zain.wang@rock-chips.com>
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Sender: linux-crypto-owner@vger.kernel.org
-To: heiko@sntech.de, herbert@gondor.apana.org.au, davem@davemloft.net
-Cc: eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, Zain Wang <zain.wang@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH 3/9] drm/rockchip: Convert to support atomic API
+Date: Fri, 11 Dec 2015 14:26:31 +0800
+Message-ID: <566A6C97.4020207@rock-chips.com>
+References: <1448940391-23333-1-git-send-email-mark.yao@rock-chips.com>	<1448940391-23333-4-git-send-email-mark.yao@rock-chips.com>	<CAPj87rPtWgH2WE7_EEC-Q41c7Ew2z8CwPMMQD+cC08G7qNZTeg@mail.gmail.com>	<565D68F0.3010905@rock-chips.com>
+ <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPj87rO9_sXZHidTpNs_ubFaUX8ZtytK=bLpQSQwSy5G2-JGEA@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add md5 sha1 sha256 support for crypto engine in rk3288.
-This patch can't support multiple updatings because of limited of IC,
-as result, it can't support import and export too.
-
-Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
----
-
-Changes in V3:
-- add switch instead of multiple if.
-
-Changes in V2:
-- add some comments to code.
-- fix some issues about zero message process.
-
- drivers/crypto/rockchip/Makefile                   |   1 +
- drivers/crypto/rockchip/rk3288_crypto.c            |  33 +-
- drivers/crypto/rockchip/rk3288_crypto.h            |  50 ++-
- drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  20 +-
- drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 394 +++++++++++++++++++++
- 5 files changed, 480 insertions(+), 18 deletions(-)
- create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ahash.c
-
-diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockchip/Makefile
-index 7051c6c..30f9129 100644
---- a/drivers/crypto/rockchip/Makefile
-+++ b/drivers/crypto/rockchip/Makefile
-@@ -1,3 +1,4 @@
- obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP) += rk_crypto.o
- rk_crypto-objs := rk3288_crypto.o \
- 		  rk3288_crypto_ablkcipher.o \
-+		  rk3288_crypto_ahash.o
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 82f3044..67d69d2 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -190,7 +190,6 @@ static void rk_crypto_tasklet_cb(unsigned long data)
- {
- 	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
- 	struct crypto_async_request *async_req, *backlog;
--	struct rk_cipher_reqctx *ablk_reqctx;
- 	int err = 0;
- 	unsigned long flags;
- 
-@@ -207,10 +206,10 @@ static void rk_crypto_tasklet_cb(unsigned long data)
- 		backlog = NULL;
- 	}
- 
--	if (crypto_tfm_alg_type(async_req->tfm) == CRYPTO_ALG_TYPE_ABLKCIPHER) {
-+	if (crypto_tfm_alg_type(async_req->tfm) == CRYPTO_ALG_TYPE_ABLKCIPHER)
- 		dev->ablk_req = ablkcipher_request_cast(async_req);
--		ablk_reqctx   = ablkcipher_request_ctx(dev->ablk_req);
--	}
-+	else
-+		dev->ahash_req = ahash_request_cast(async_req);
- 	err = dev->start(dev);
- 	if (err)
- 		dev->complete(dev, err);
-@@ -223,6 +222,9 @@ static struct rk_crypto_tmp *rk_cipher_algs[] = {
- 	&rk_cbc_des_alg,
- 	&rk_ecb_des3_ede_alg,
- 	&rk_cbc_des3_ede_alg,
-+	&rk_ahash_sha1,
-+	&rk_ahash_sha256,
-+	&rk_ahash_md5,
- };
- 
- static int rk_crypto_register(struct rk_crypto_info *crypto_info)
-@@ -232,15 +234,24 @@ static int rk_crypto_register(struct rk_crypto_info *crypto_info)
- 
- 	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
- 		rk_cipher_algs[i]->dev = crypto_info;
--		err = crypto_register_alg(&rk_cipher_algs[i]->alg);
-+		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
-+			err = crypto_register_alg(
-+					&rk_cipher_algs[i]->alg.crypto);
-+		else
-+			err = crypto_register_ahash(
-+					&rk_cipher_algs[i]->alg.hash);
- 		if (err)
- 			goto err_cipher_algs;
- 	}
- 	return 0;
- 
- err_cipher_algs:
--	for (k = 0; k < i; k++)
--		crypto_unregister_alg(&rk_cipher_algs[k]->alg);
-+	for (k = 0; k < i; k++) {
-+		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
-+			crypto_unregister_alg(&rk_cipher_algs[k]->alg.crypto);
-+		else
-+			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
-+	}
- 	return err;
- }
- 
-@@ -248,8 +259,12 @@ static void rk_crypto_unregister(void)
- {
- 	unsigned int i;
- 
--	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++)
--		crypto_unregister_alg(&rk_cipher_algs[i]->alg);
-+	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
-+		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
-+			crypto_unregister_alg(&rk_cipher_algs[i]->alg.crypto);
-+		else
-+			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
-+	}
- }
- 
- static void rk_crypto_action(void *data)
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index 604ffe7..01d8299 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -6,6 +6,10 @@
- #include <crypto/algapi.h>
- #include <linux/interrupt.h>
- #include <linux/delay.h>
-+#include <crypto/internal/hash.h>
-+
-+#include "crypto/md5.h"
-+#include "crypto/sha.h"
- 
- #define _SBF(v, f)			((v) << (f))
- 
-@@ -149,6 +153,28 @@
- #define RK_CRYPTO_TDES_KEY3_0		0x0130
- #define RK_CRYPTO_TDES_KEY3_1		0x0134
- 
-+/* HASH */
-+#define RK_CRYPTO_HASH_CTRL		0x0180
-+#define RK_CRYPTO_HASH_SWAP_DO		BIT(3)
-+#define RK_CRYPTO_HASH_SWAP_DI		BIT(2)
-+#define RK_CRYPTO_HASH_SHA1		_SBF(0x00, 0)
-+#define RK_CRYPTO_HASH_MD5		_SBF(0x01, 0)
-+#define RK_CRYPTO_HASH_SHA256		_SBF(0x02, 0)
-+#define RK_CRYPTO_HASH_PRNG		_SBF(0x03, 0)
-+
-+#define RK_CRYPTO_HASH_STS		0x0184
-+#define RK_CRYPTO_HASH_DONE		BIT(0)
-+
-+#define RK_CRYPTO_HASH_MSG_LEN		0x0188
-+#define RK_CRYPTO_HASH_DOUT_0		0x018c
-+#define RK_CRYPTO_HASH_DOUT_1		0x0190
-+#define RK_CRYPTO_HASH_DOUT_2		0x0194
-+#define RK_CRYPTO_HASH_DOUT_3		0x0198
-+#define RK_CRYPTO_HASH_DOUT_4		0x019c
-+#define RK_CRYPTO_HASH_DOUT_5		0x01a0
-+#define RK_CRYPTO_HASH_DOUT_6		0x01a4
-+#define RK_CRYPTO_HASH_DOUT_7		0x01a8
-+
- #define CRYPTO_READ(dev, offset)		  \
- 		readl_relaxed(((dev)->reg + (offset)))
- #define CRYPTO_WRITE(dev, offset, val)	  \
-@@ -166,6 +192,7 @@ struct rk_crypto_info {
- 	struct crypto_queue		queue;
- 	struct tasklet_struct		crypto_tasklet;
- 	struct ablkcipher_request	*ablk_req;
-+	struct ahash_request		*ahash_req;
- 	/* device lock */
- 	spinlock_t			lock;
- 
-@@ -194,6 +221,12 @@ struct rk_crypto_info {
- 			 struct scatterlist *sg_dst);
- 	void (*unload_data)(struct rk_crypto_info *dev);
- };
-+/* the private variable of hash */
-+struct rk_ahash_ctx {
-+	struct rk_crypto_info		*dev;
-+	int				flag_finup;
-+	int				first_op;
-+};
- 
- /* the private variable of cipher */
- struct rk_cipher_ctx {
-@@ -201,9 +234,18 @@ struct rk_cipher_ctx {
- 	unsigned int			keylen;
- };
- 
-+enum alg_type {
-+	ALG_TYPE_HASH,
-+	ALG_TYPE_CIPHER,
-+};
-+
- struct rk_crypto_tmp {
--	struct rk_crypto_info *dev;
--	struct crypto_alg alg;
-+	struct rk_crypto_info		*dev;
-+	union {
-+		struct crypto_alg	crypto;
-+		struct ahash_alg	hash;
-+	} alg;
-+	enum alg_type			type;
- };
- 
- extern struct rk_crypto_tmp rk_ecb_aes_alg;
-@@ -213,4 +255,8 @@ extern struct rk_crypto_tmp rk_cbc_des_alg;
- extern struct rk_crypto_tmp rk_ecb_des3_ede_alg;
- extern struct rk_crypto_tmp rk_cbc_des3_ede_alg;
- 
-+extern struct rk_crypto_tmp rk_ahash_sha1;
-+extern struct rk_crypto_tmp rk_ahash_sha256;
-+extern struct rk_crypto_tmp rk_ahash_md5;
-+
- #endif
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-index 3624080..a260203 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
-@@ -322,7 +322,7 @@ static int rk_ablk_cra_init(struct crypto_tfm *tfm)
- 	struct crypto_alg *alg = tfm->__crt_alg;
- 	struct rk_crypto_tmp *algt;
- 
--	algt = container_of(alg, struct rk_crypto_tmp, alg);
-+	algt = container_of(alg, struct rk_crypto_tmp, alg.crypto);
- 
- 	ctx->dev = algt->dev;
- 	ctx->dev->align_size = crypto_tfm_alg_alignmask(tfm) + 1;
-@@ -343,7 +343,8 @@ static void rk_ablk_cra_exit(struct crypto_tfm *tfm)
- }
- 
- struct rk_crypto_tmp rk_ecb_aes_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "ecb(aes)",
- 		.cra_driver_name	= "ecb-aes-rk",
- 		.cra_priority		= 300,
-@@ -367,7 +368,8 @@ struct rk_crypto_tmp rk_ecb_aes_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_aes_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "cbc(aes)",
- 		.cra_driver_name	= "cbc-aes-rk",
- 		.cra_priority		= 300,
-@@ -392,7 +394,8 @@ struct rk_crypto_tmp rk_cbc_aes_alg = {
- };
- 
- struct rk_crypto_tmp rk_ecb_des_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "ecb(des)",
- 		.cra_driver_name	= "ecb-des-rk",
- 		.cra_priority		= 300,
-@@ -416,7 +419,8 @@ struct rk_crypto_tmp rk_ecb_des_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_des_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "cbc(des)",
- 		.cra_driver_name	= "cbc-des-rk",
- 		.cra_priority		= 300,
-@@ -441,7 +445,8 @@ struct rk_crypto_tmp rk_cbc_des_alg = {
- };
- 
- struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "ecb(des3_ede)",
- 		.cra_driver_name	= "ecb-des3-ede-rk",
- 		.cra_priority		= 300,
-@@ -466,7 +471,8 @@ struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_des3_ede_alg = {
--	.alg = {
-+	.type = ALG_TYPE_CIPHER,
-+	.alg.crypto = {
- 		.cra_name		= "cbc(des3_ede)",
- 		.cra_driver_name	= "cbc-des3-ede-rk",
- 		.cra_priority		= 300,
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-new file mode 100644
-index 0000000..a5795f6
---- /dev/null
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -0,0 +1,394 @@
-+/*
-+ * Crypto acceleration support for Rockchip RK3288
-+ *
-+ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * Author: Zain Wang <zain.wang@rock-chips.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2, as published by the Free Software Foundation.
-+ *
-+ * Some ideas are from marvell/cesa.c and s5p-sss.c driver.
-+ */
-+#include "rk3288_crypto.h"
-+
-+/*
-+ * IC can not process zero message hash,
-+ * so we put the fixed hash out when met zero message.
-+ */
-+const static u8 *sha1_zero_message_hash = {
-+	"\xda\x39\xa3\xee\x5e\x6b\x4b\x0d\x32\x55"
-+	"\xbf\xef\x95\x60\x18\x90\xaf\xd8\x07\x09"
-+};
-+
-+const static u8 *sha256_zero_message_hash = {
-+	"\xe3\xb0\xc4\x42\x98\xfc\x1c\x14"
-+	"\x9a\xfb\xf4\xc8\x99\x6f\xb9\x24"
-+	"\x27\xae\x41\xe4\x64\x9b\x93\x4c"
-+	"\xa4\x95\x99\x1b\x78\x52\xb8\x55"
-+};
-+
-+const static u8 *md5_zero_message_hash = {
-+	"\xd4\x1d\x8c\xd9\x8f\x00\xb2\x04"
-+	"\xe9\x80\x09\x98\xec\xf8\x42\x7e"
-+};
-+
-+
-+static int zero_message_process(struct ahash_request *req)
-+{
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-+
-+	switch (crypto_ahash_digestsize(tfm)) {
-+	case SHA1_DIGEST_SIZE:
-+		memcpy(req->result, sha1_zero_message_hash, SHA1_DIGEST_SIZE);
-+		break;
-+	case SHA256_DIGEST_SIZE:
-+		memcpy(req->result, sha256_zero_message_hash,
-+		       SHA256_DIGEST_SIZE);
-+		break;
-+	case MD5_DIGEST_SIZE:
-+		memcpy(req->result, md5_zero_message_hash, MD5_DIGEST_SIZE);
-+		break;
-+	default:
-+		return -EINVAL;
-+		break;
-+	}
-+
-+	return 0;
-+
-+}
-+
-+static void rk_ahash_crypto_complete(struct rk_crypto_info *dev, int err)
-+{
-+	if (dev->ahash_req->base.complete)
-+		dev->ahash_req->base.complete(&dev->ahash_req->base, err);
-+}
-+
-+static void rk_ahash_hw_init(struct rk_crypto_info *dev)
-+{
-+	int reg_status = 0;
-+
-+	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
-+		     RK_CRYPTO_HASH_FLUSH | _SBF(0xffff, 16);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
-+
-+	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL);
-+	reg_status &= (~RK_CRYPTO_HASH_FLUSH);
-+	reg_status |= _SBF(0xffff, 16);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
-+
-+	memset_io(dev->reg + RK_CRYPTO_HASH_DOUT_0, 0, 32);
-+}
-+
-+static void rk_ahash_reg_init(struct rk_crypto_info *dev)
-+{
-+	rk_ahash_hw_init(dev);
-+
-+	CRYPTO_WRITE(dev, RK_CRYPTO_INTENA, RK_CRYPTO_HRDMA_ERR_ENA |
-+					    RK_CRYPTO_HRDMA_DONE_ENA);
-+
-+	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, RK_CRYPTO_HRDMA_ERR_INT |
-+					    RK_CRYPTO_HRDMA_DONE_INT);
-+
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_CTRL, dev->mode |
-+					       RK_CRYPTO_HASH_SWAP_DO);
-+
-+	CRYPTO_WRITE(dev, RK_CRYPTO_CONF, RK_CRYPTO_BYTESWAP_HRFIFO |
-+					  RK_CRYPTO_BYTESWAP_BRFIFO |
-+					  RK_CRYPTO_BYTESWAP_BTFIFO);
-+}
-+
-+static int rk_ahash_init(struct ahash_request *req)
-+{
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
-+	struct rk_crypto_info *dev = NULL;
-+
-+	dev = tctx->dev;
-+	dev->left_bytes = 0;
-+	dev->aligned = 0;
-+	dev->ahash_req = req;
-+	dev->mode = 0;
-+	dev->align_size = 4;
-+	dev->sg_dst = NULL;
-+
-+	tctx->first_op = 1;
-+
-+	switch (crypto_ahash_digestsize(tfm)) {
-+	case SHA1_DIGEST_SIZE:
-+		dev->mode = RK_CRYPTO_HASH_SHA1;
-+		break;
-+	case SHA256_DIGEST_SIZE:
-+		dev->mode = RK_CRYPTO_HASH_SHA256;
-+		break;
-+	case MD5_DIGEST_SIZE:
-+		dev->mode = RK_CRYPTO_HASH_MD5;
-+		break;
-+	default:
-+		return -EINVAL;
-+		break;
-+	}
-+
-+	rk_ahash_reg_init(dev);
-+	return 0;
-+}
-+
-+static int rk_ahash_update(struct ahash_request *req)
-+{
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
-+	struct rk_crypto_info *dev = tctx->dev;
-+	unsigned long flags;
-+	int ret;
-+
-+	dev->total = req->nbytes;
-+	dev->left_bytes = req->nbytes;
-+	dev->sg_src = req->src;
-+	dev->first = req->src;
-+	dev->nents = sg_nents(req->src);
-+
-+	/* IC can calculate 0 message hash, so it should finish update here */
-+	if (!dev->total) {
-+		return 0;
-+	}
-+
-+	if (tctx->first_op) {
-+		tctx->first_op = 0;
-+		CRYPTO_WRITE(dev, RK_CRYPTO_HASH_MSG_LEN, dev->total);
-+	} else {
-+		/*
-+		 * IC must know the length of total data at first,
-+		 * multiple updatings cannot support this variable.
-+		 */
-+		dev_warn(dev->dev, "Cannot carry multiple updatings!\n");
-+		return 0;
-+	}
-+	spin_lock_irqsave(&dev->lock, flags);
-+	ret = crypto_enqueue_request(&dev->queue, &req->base);
-+	spin_unlock_irqrestore(&dev->lock, flags);
-+
-+	tasklet_schedule(&dev->crypto_tasklet);
-+
-+	return ret;
-+}
-+
-+static int rk_ahash_final(struct ahash_request *req)
-+{
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
-+	struct rk_crypto_info *dev = tctx->dev;
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-+
-+	/* If met 0 message, put the fixed hash out.*/
-+	if (!dev->total)
-+		return zero_message_process(req);
-+
-+	/*
-+	 * IC should process the result again after last dma interrupt.
-+	 * And the last processing is very quick so than it may entry
-+	 * interrupt before finishing last interrupt.
-+	 * So I don't use interrupt finished hash.
-+	 */
-+	while (!CRYPTO_READ(dev, RK_CRYPTO_HASH_STS))
-+		usleep_range(50, 100);
-+
-+	memcpy_fromio(req->result, dev->reg + RK_CRYPTO_HASH_DOUT_0,
-+		      crypto_ahash_digestsize(tfm));
-+	return 0;
-+}
-+
-+static int rk_ahash_finup(struct ahash_request *req)
-+{
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
-+	int err;
-+
-+	/*
-+	 * finup should process one updating and final.
-+	 * and we have to wait for updating in finup so that we can
-+	 * fetching result by calling rk_ahash_final in finup.
-+	 */
-+	tctx->flag_finup = 1;
-+	err = rk_ahash_update(req);
-+	if (err == -EINPROGRESS || err == -EBUSY)
-+		while (tctx->flag_finup)
-+			/*
-+			 * waiting time is relative with the last date len,
-+			 * so here cannot get a fixed time.
-+			 * 50-100 makes system not call here frequently wasting
-+			 * efficiency, and make it response quickly when dma
-+			 * complete.
-+			 */
-+			usleep_range(50, 100);
-+
-+	return rk_ahash_final(req);
-+}
-+
-+static int rk_ahash_digest(struct ahash_request *req)
-+{
-+	return rk_ahash_init(req) ? -EINVAL : rk_ahash_finup(req);
-+}
-+
-+static void crypto_ahash_dma_start(struct rk_crypto_info *dev)
-+{
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAS, dev->addr_in);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAL, (dev->count + 3) / 4);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, RK_CRYPTO_HASH_START |
-+					  (RK_CRYPTO_HASH_START << 16));
-+}
-+
-+static int rk_ahash_set_data_start(struct rk_crypto_info *dev)
-+{
-+	int err;
-+
-+	err = dev->load_data(dev, dev->sg_src, NULL);
-+	if (!err)
-+		crypto_ahash_dma_start(dev);
-+	return err;
-+}
-+
-+static int rk_ahash_start(struct rk_crypto_info *dev)
-+{
-+	return rk_ahash_set_data_start(dev);
-+}
-+
-+/*
-+ * return:
-+ * true: some err was occurred
-+ * fault: no err, please continue
-+ */
-+static int rk_ahash_crypto_rx(struct rk_crypto_info *dev)
-+{
-+	int err = 0;
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(dev->ahash_req->base.tfm);
-+
-+	dev->unload_data(dev);
-+	if (dev->left_bytes) {
-+		if (dev->aligned) {
-+			if (sg_is_last(dev->sg_src)) {
-+				dev_warn(dev->dev, "[%s:%d], Lack of data\n",
-+					 __func__, __LINE__);
-+				err = -ENOMEM;
-+				goto out_rx;
-+			}
-+			dev->sg_src = sg_next(dev->sg_src);
-+		}
-+		err = rk_ahash_set_data_start(dev);
-+	} else {
-+		tctx->flag_finup = 0;
-+		dev->complete(dev, 0);
-+	}
-+
-+out_rx:
-+	return err;
-+}
-+
-+static int rk_cra_hash_init(struct crypto_tfm *tfm)
-+{
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
-+	struct rk_crypto_tmp *algt;
-+	struct ahash_alg *alg = __crypto_ahash_alg(tfm->__crt_alg);
-+
-+	algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
-+
-+	tctx->dev = algt->dev;
-+	tctx->dev->addr_vir = (void *)__get_free_page(GFP_KERNEL);
-+	if (!tctx->dev->addr_vir) {
-+		dev_err(tctx->dev->dev, "failed to kmalloc for addr_vir\n");
-+		return -ENOMEM;
-+	}
-+	tctx->dev->start = rk_ahash_start;
-+	tctx->dev->update = rk_ahash_crypto_rx;
-+	tctx->dev->complete = rk_ahash_crypto_complete;
-+	return tctx->dev->enable_clk(tctx->dev);
-+}
-+
-+static void rk_cra_hash_exit(struct crypto_tfm *tfm)
-+{
-+	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
-+
-+	free_page((unsigned long)tctx->dev->addr_vir);
-+	return tctx->dev->disable_clk(tctx->dev);
-+}
-+
-+struct rk_crypto_tmp rk_ahash_sha1 = {
-+	.type = ALG_TYPE_HASH,
-+	.alg.hash = {
-+		.init = rk_ahash_init,
-+		.update = rk_ahash_update,
-+		.final = rk_ahash_final,
-+		.finup = rk_ahash_finup,
-+		.digest = rk_ahash_digest,
-+		.halg = {
-+			 .digestsize = SHA1_DIGEST_SIZE,
-+			 .statesize = sizeof(struct sha1_state),
-+			 .base = {
-+				  .cra_name = "sha1",
-+				  .cra_driver_name = "rk-sha1",
-+				  .cra_priority = 300,
-+				  .cra_flags = CRYPTO_ALG_ASYNC |
-+					       CRYPTO_ALG_NEED_FALLBACK,
-+				  .cra_blocksize = SHA1_BLOCK_SIZE,
-+				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
-+				  .cra_alignmask = 3,
-+				  .cra_init = rk_cra_hash_init,
-+				  .cra_exit = rk_cra_hash_exit,
-+				  .cra_module = THIS_MODULE,
-+				  }
-+			 }
-+	}
-+};
-+
-+struct rk_crypto_tmp rk_ahash_sha256 = {
-+	.type = ALG_TYPE_HASH,
-+	.alg.hash = {
-+	.init = rk_ahash_init,
-+	.update = rk_ahash_update,
-+	.final = rk_ahash_final,
-+	.finup = rk_ahash_finup,
-+	.digest = rk_ahash_digest,
-+		.halg = {
-+			 .digestsize = SHA256_DIGEST_SIZE,
-+			 .statesize = sizeof(struct sha256_state),
-+			 .base = {
-+				  .cra_name = "sha256",
-+				  .cra_driver_name = "rk-sha256",
-+				  .cra_priority = 300,
-+				  .cra_flags = CRYPTO_ALG_ASYNC |
-+					       CRYPTO_ALG_NEED_FALLBACK,
-+				  .cra_blocksize = SHA256_BLOCK_SIZE,
-+				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
-+				  .cra_alignmask = 0,
-+				  .cra_init = rk_cra_hash_init,
-+				  .cra_exit = rk_cra_hash_exit,
-+				  .cra_module = THIS_MODULE,
-+				  }
-+			 }
-+	}
-+};
-+
-+struct rk_crypto_tmp rk_ahash_md5 = {
-+	.type = ALG_TYPE_HASH,
-+	.alg.hash = {
-+		.init = rk_ahash_init,
-+		.update = rk_ahash_update,
-+		.final = rk_ahash_final,
-+		.finup = rk_ahash_finup,
-+		.digest = rk_ahash_digest,
-+		.halg = {
-+			 .digestsize = MD5_DIGEST_SIZE,
-+			 .statesize = sizeof(struct md5_state),
-+			 .base = {
-+				  .cra_name = "md5",
-+				  .cra_driver_name = "rk-md5",
-+				  .cra_priority = 300,
-+				  .cra_flags = CRYPTO_ALG_ASYNC |
-+					       CRYPTO_ALG_NEED_FALLBACK,
-+				  .cra_blocksize = SHA1_BLOCK_SIZE,
-+				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
-+				  .cra_alignmask = 0,
-+				  .cra_init = rk_cra_hash_init,
-+				  .cra_exit = rk_cra_hash_exit,
-+				  .cra_module = THIS_MODULE,
-+				  }
-+			}
-+	}
-+};
--- 
-1.9.1
+T24gMjAxNeW5tDEy5pyIMDLml6UgMjI6MTgsIERhbmllbCBTdG9uZSB3cm90ZToKPiBIaSBNYXJr
+LAo+IFRoYW5rcyBmb3IgZ2V0dGluZyBiYWNrIHRvIHRoaXMuCj4KPiBPbiAxIERlY2VtYmVyIDIw
+MTUgYXQgMDk6MzEsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+
+IE9uIDIwMTXlubQxMuaciDAx5pelIDE2OjE4LCBEYW5pZWwgU3RvbmUgd3JvdGU6Cj4+PiBPbiAx
+IERlY2VtYmVyIDIwMTUgYXQgMDM6MjYsIE1hcmsgWWFvPG1hcmsueWFvQHJvY2stY2hpcHMuY29t
+PiAgd3JvdGU6Cj4+Pj4+ICsgICAgICAgZm9yX2VhY2hfY3J0Y19pbl9zdGF0ZShzdGF0ZSwgY3J0
+YywgY3J0Y19zdGF0ZSwgaSkgewo+Pj4+PiArICAgICAgICAgICAgICAgaWYgKCFjcnRjLT5zdGF0
+ZS0+YWN0aXZlKQo+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKPj4+Pj4g
+Kwo+Pj4+PiArICAgICAgICAgICAgICAgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0
+Yyk7Cj4+Pj4+ICsgICAgICAgfQo+Pj4gSSdkIGJlIG11Y2ggbW9yZSBjb21mb3J0YWJsZSBpZiB0
+aGlzIHBhc3NlZCBpbiBhbiBleHBsaWNpdCBwb2ludGVyIHRvCj4+PiBzdGF0ZSwgb3IgYW4gYWRk
+cmVzcyB0byB3YWl0IGZvciwgcmF0aGVyIHRoYW4gaGF2ZSB3YWl0X2Zvcl9jb21wbGV0ZQo+Pj4g
+ZGlnIG91dCBzdGF0ZSB3aXRoIG5vIGxvY2tpbmcuIFRoZSBsYXR0ZXIgaXMgcG90ZW50aWFsbHkg
+cmFjeSBmb3IKPj4+IGFzeW5jIG9wZXJhdGlvbnMuCj4+Pgo+PiBIaSBEYW5pZWwKPj4gICAgICJp
+ZiB0aGlzIHBhc3NlZCBpbiBhbiBleHBsaWNpdCBwb2ludGVyIHRvIHN0YXRlLCBvciBhbiBhZGRy
+ZXNzIHRvIHdhaXQKPj4gZm9yIiwgSSBkb24ndCB1bmRlcnN0YW5kLCBjYW4geW91IHBvaW50IGhv
+dyBpdCB3b3JrPwo+IEFoLCBPSy4gSSBtZWFuIHRoYXQgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91
+cGRhdGUgdGFrZXMgYSBkcm1fY3J0Ywo+IHBvaW50ZXIsIGFuZCBlc3RhYmxpc2hlcyB0aGUgc3Rh
+dGUgZnJvbSB0aGF0IChlLmcuCj4gY3J0Yy0+cHJpbWFyeS0+c3RhdGUpLiBUaGlzIGNhbiBlYXNp
+bHkgbGVhZCB0byBjb25mdXNpb24gaW4gYXN5bmMKPiBjb250ZXh0cywgYXMgdGhlIHN0YXRlcyBh
+dHRhY2hlZCB0byBhIGRybV9jcnRjIGFuZCBhIGRybV9wbGFuZSBjYW4KPiBjaGFuZ2UgaGVyZSB3
+aGlsZSB5b3Ugd2FpdCBmb3IgaXQuCj4KPiBJdCB3b3VsZCBiZSBiZXR0ZXIgaWYgdGhlIGNhbGwg
+d2FzOgo+Cj4gZm9yX2VhY2hfcGxhbmVfaW5fc3RhdGUoc3RhdGUsIHBsYW5lLCBwbGFuZV9zdGF0
+ZSwgaSkgewo+ICAgICAgaWYgKHBsYW5lLT50eXBlID09IERSTV9QTEFORV9UWVBFX1BSSU1BUlkp
+Cj4gICAgICAgICAgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUocGxhbmVfc3RhdGUtPmNy
+dGMsIHBsYW5lX3N0YXRlKTsKPiB9Cj4KPiBUaGlzIHdheSBpdCBpcyB2ZXJ5IGNsZWFyLCBhbmQg
+dGhlcmUgaXMgbm8gY29uZnVzaW9uIGFzIHRvIHdoaWNoCj4gcmVxdWVzdCB3ZSBhcmUgd2FpdGlu
+ZyB0byBjb21wbGV0ZS4KPgo+IEluIGdlbmVyYWwsIHVzaW5nIGNydGMtPnN0YXRlIG9yIHBsYW5l
+LT5zdGF0ZSBpcyBhIHZlcnkgYmFkIGlkZWEsCj4gX2V4Y2VwdF8gaW4gdGhlIGF0b21pY19jaGVj
+ayBmdW5jdGlvbiB3aGVyZSB5b3UgYXJlIGNhbGN1bGF0aW5nCj4gY2hhbmdlcyAoZS5nLiBpZiAo
+cGxhbmVfc3RhdGUtPmZiLT5waXRjaGVzWzBdICE9Cj4gcGxhbmUtPnN0YXRlLT5mYi0+cGl0Y2hl
+c1swXSkgcm9ja2NoaXBfcGxhbmVfc3RhdGUtPnBpdGNoX2NoYW5nZWQgPQo+IHRydWUpLiBBZnRl
+ciBhdG9taWNfY2hlY2ssIHlvdSBzaG91bGQgYWx3YXlzIHBhc3MgYXJvdW5kIHBvaW50ZXJzIHRv
+Cj4gdGhlIHBsYW5lIHN0YXRlIGV4cGxpY2l0bHksIGFuZCBhdm9pZCB1c2luZyB0aGUgcG9pbnRl
+cnMgZnJvbSBkcm1fY3J0Ywo+IGFuZCBkcm1fcGxhbmUuCj4KPiBEb2VzIHRoYXQgaGVscD8KCkhp
+IERhbmllbAoKU29ycnksIEkgZG9uJ3QgYWN0dWFsbHkgdW5kZXJzdGFuZCB3aHkgY3J0Yy0+c3Rh
+dGUgb3IgcGxhbmUtPnN0YXRlIGlzIG5vIApyZWNvbW1lbmRlZApleGNlcHQgYXRvbWljX2NoZWNr
+LCBvbiBhdG9taWNfdXBkYXRlLCB3ZSBuZWVkIHVzZSBwbGFuZS0+c3RhdGUsIGlzIHRoYXQgCmEg
+cHJvYmxlbT8KCkkgZ3Vlc3MgdGhhdCwgZHJtX2F0b21pY19oZWxwZXJfc3dhcF9zdGF0ZSB3b3Vs
+ZCByYWNlIHdpdGggYXN5bmMgb3BlcmF0aW9ucywKc28gdXNlIGNydGMtPnN0YXRlIG9uIGFzeW5j
+IHN0YWNrIGlzIG5vdCBzYWZlLiBpcyBpdCBjb3JyZWN0PwoKSSB0aGluayB3ZSBjYW4gbWFrZSBh
+c3luY2hyb25vdXMgY29tbWl0IHNlcmlhbGl6ZSBhcyB0ZWdyYSBkcm0gZG9uZSB0byAKYXZvaWQg
+dGhpcyBwcm9ibGVtOgoKCiAgIDg2ICAgICAgICAgLyogc2VyaWFsaXplIG91dHN0YW5kaW5nIGFz
+eW5jaHJvbm91cyBjb21taXRzICovCiAgIDg3IG11dGV4X2xvY2soJnRlZ3JhLT5jb21taXQubG9j
+ayk7CiAgIDg4IGZsdXNoX3dvcmsoJnRlZ3JhLT5jb21taXQud29yayk7Cjg5CiAgIDkwIC8qCiAg
+IDkxICAgICAgICAgICogVGhpcyBpcyB0aGUgcG9pbnQgb2Ygbm8gcmV0dXJuIC0gZXZlcnl0aGlu
+ZyBiZWxvdyBuZXZlciAKZmFpbHMgZXhjZXB0CiAgIDkyICAgICAgICAgICogd2hlbiB0aGUgaHcg
+Z29lcyBib25naGl0cy4gV2hpY2ggbWVhbnMgd2UgY2FuIGNvbW1pdCAKdGhlIG5ldyBzdGF0ZSBv
+bgogICA5MyAgICAgICAgICAqIHRoZSBzb2Z0d2FyZSBzaWRlIG5vdy4KICAgOTQgKi8KOTUKICAg
+OTYgICAgICAgICBkcm1fYXRvbWljX2hlbHBlcl9zd2FwX3N0YXRlKGRybSwgc3RhdGUpOwo5Nwog
+ICA5OCAgICAgICAgIGlmIChhc3luYykKICAgOTkgICAgICAgICAgICAgICAgIHRlZ3JhX2F0b21p
+Y19zY2hlZHVsZSh0ZWdyYSwgc3RhdGUpOwogIDEwMCBlbHNlCiAgMTAxICAgICAgICAgICAgICAg
+ICB0ZWdyYV9hdG9taWNfY29tcGxldGUodGVncmEsIHN0YXRlKTsKICAxMDIKICAxMDMgICAgICAg
+ICBtdXRleF91bmxvY2soJnRlZ3JhLT5jb21taXQubG9jayk7CgoKPgo+Pj4+ICAgICAgICAgICBp
+ZiAoaXNfeXV2KSB7Cj4+Pj4gICAgICAgICAgICAgICAgICAgLyoKPj4+PiAgICAgICAgICAgICAg
+ICAgICAgKiBTcmMueDEgY2FuIGJlIG9kZCB3aGVuIGRvIGNsaXAsIGJ1dCB5dXYgcGxhbmUgc3Rh
+cnQKPj4+PiBwb2ludAo+Pj4+ICAgICAgICAgICAgICAgICAgICAqIG5lZWQgYWxpZ24gd2l0aCAy
+IHBpeGVsLgo+Pj4+ICAgICAgICAgICAgICAgICAgICAqLwo+Pj4+IC0gICAgICAgICAgICAgICB2
+YWwgPSAoc3JjLngxID4+IDE2KSAlIDI7Cj4+Pj4gLSAgICAgICAgICAgICAgIHNyYy54MSArPSB2
+YWwgPDwgMTY7Cj4+Pj4gLSAgICAgICAgICAgICAgIHNyYy54MiArPSB2YWwgPDwgMTY7Cj4+Pj4g
+KyAgICAgICAgICAgICAgIHVpbnQzMl90IHRlbXAgPSAoc3JjLT54MSA+PiAxNikgJSAyOwo+Pj4+
+ICsKPj4+PiArICAgICAgICAgICAgICAgc3JjLT54MSArPSB0ZW1wIDw8IDE2Owo+Pj4+ICsgICAg
+ICAgICAgICAgICBzcmMtPngyICs9IHRlbXAgPDwgMTY7Cj4+Pj4gICAgICAgICAgIH0KPj4+IEkg
+a25vdyB0aGlzIGlzbid0IG5ldywgYnV0IG1vdmluZyB0aGUgcGxhbmUgYXJvdW5kIGlzIGJhZC4g
+SWYgdGhlIHVzZXIKPj4+IGdpdmVzIHlvdSBhIHBpeGVsIGJvdW5kYXJ5IHRoYXQgeW91IGNhbid0
+IGFjdHVhbGx5IHVzZSwgcGxlYXNlIHJlamVjdAo+Pj4gdGhlIGNvbmZpZ3VyYXRpb24gcmF0aGVy
+IHRoYW4gc2lsZW50bHkgdHJ5aW5nIHRvIGZpeCBpdCB1cC4KPj4gdGhlIG9yaWdpbiBzcmMueDEg
+d291bGQgYWxpZ24gd2l0aCAyIHBpeGVsLCBidXQgd2hlbiB3ZSBtb3ZlIHRoZSBkZXN0Cj4+IHdp
+bmRvdywgYW5kIGRvIGNsaXAgYnkgb3V0cHV0LCB0aGUgc3JjLngxIG1heSBiZSBjbGlwcGVkIHRv
+IG9kZC4KPj4gcmVnZWN0IHRoaXMgY29uZmlndXJhdGlvbiBtYXkgbGV0IHVzZXIgY29uZnVzZSwg
+c29tZXRpbWVzIGdvb2QsIHNvbWV0aW1lcwo+PiBiYWQuCj4gRm9yIG1lLCBpdCBpcyBtb3JlIGNv
+bmZ1c2luZyB3aGVuIHRoZSBkaXNwbGF5IHNob3dzIHNvbWV0aGluZwo+IGRpZmZlcmVudCB0byB3
+aGF0IEkgaGF2ZSByZXF1ZXN0ZWQuIEluIHNvbWUgbWVkaWEgdXNlY2FzZXMsIGRvaW5nIHRoaXMK
+PiBpcyBhIHNob3dzdG9wcGVyIGFuZCB3aWxsIHJlc3VsdCBpbiBwcm9kdWN0cyBmYWlsaW5nIGFj
+Y2VwdGFuY2UKPiB0ZXN0aW5nLiBVc2Vyc3BhY2UgY2FuIG1ha2UgYSBwb2xpY3kgZGVjaXNpb24g
+dG8gdHJ5IGRpZmZlcmVudAo+IGFsaWdubWVudHMgdG8gZ2V0IF9zb21ldGhpbmdfIHRvIHNob3cg
+KGV2ZW4gaWYgaXQncyBub3Qgd2hhdCB3YXMKPiBleHBsaWNpdGx5IHJlcXVlc3RlZCksIGJ1dCBk
+b2luZyB0aGlzIGluIHRoZSBrZXJuZWwgaXMgaW5hcHByb3ByaWF0ZToKPiBwbGVhc2UganVzdCBy
+ZWplY3QgaXQsIGFuZCBoYXZlIHVzZXJzcGFjZSBmYWxsIGJhY2sgdG8gYW5vdGhlcgo+IGNvbXBv
+c2l0aW9uIG1ldGhvZCAoZS5nLiBHTCkgaW4gdGhlc2UgY2FzZXMuCj4KPj4+PiAtc3RhdGljIHZv
+aWQgdm9wX3BsYW5lX2Rlc3Ryb3koc3RydWN0IGRybV9wbGFuZSAqcGxhbmUpCj4+Pj4gK3N0YXRp
+YyB2b2lkIHZvcF9hdG9taWNfcGxhbmVfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpw
+bGFuZSwKPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ry
+dWN0IGRybV9wbGFuZV9zdGF0ZSAqc3RhdGUpCj4+Pj4gICAgewo+Pj4+IC0gICAgICAgdm9wX2Rp
+c2FibGVfcGxhbmUocGxhbmUpOwo+Pj4+IC0gICAgICAgZHJtX3BsYW5lX2NsZWFudXAocGxhbmUp
+Owo+Pj4+ICsgICAgICAgc3RydWN0IHZvcF9wbGFuZV9zdGF0ZSAqdm9wX3N0YXRlID0gdG9fdm9w
+X3BsYW5lX3N0YXRlKHN0YXRlKTsKPj4+PiArCj4+Pj4gKyAgICAgICBpZiAoc3RhdGUtPmZiKQo+
+Pj4+ICsgICAgICAgICAgICAgICBkcm1fZnJhbWVidWZmZXJfdW5yZWZlcmVuY2Uoc3RhdGUtPmZi
+KTsKPj4+PiArCj4+Pj4gKyAgICAgICBrZnJlZSh2b3Bfc3RhdGUpOwo+Pj4+ICAgIH0KPj4+IFlv
+dSBjYW4gcmVwbGFjZSB0aGlzIGhvb2sgd2l0aCBkcm1fYXRvbWljX2hlbHBlcl9wbGFuZV9kZXN0
+cm95X3N0YXRlLgo+Pgo+PiBIbW0sIG9ubHkgY2FuIGhvb2sgd2l0aCBfX2RybV9hdG9taWNfaGVs
+cGVyX3BsYW5lX2Rlc3Ryb3lfc3RhdGUuCj4gQWggeWVzLCB5b3UncmUgcmlnaHQuIEJ1dCBzdGls
+bCwgdXNpbmcgdGhhdCB3b3VsZCBiZSBiZXR0ZXIgdGhhbiBkdXBsaWNhdGluZyBpdC4KPgo+PiAg
+ICAgIENhbiB5b3Ugc2hhcmUgeW91ciBXZXN0b24gZW52aXJvbm1lbnQgdG8gbWUsIEknbSBpbnRl
+cmVzdGluZyB0byB0ZXN0IGRybQo+PiByb2NrY2hpcCBvbiB3ZXN0b24uCj4gT2YgY291cnNlLiBZ
+b3UgY2FuIGRvd25sb2FkIFdlc3RvbiBmcm9tIGh0dHA6Ly93YXlsYW5kLmZyZWVkZXNrdG9wLm9y
+Zwo+IC0gdGhlIG1vc3QgaW50ZXJlc3RpbmcgZGVwZW5kZW5jaWVzIGFyZSBsaWJldmRldiwgbGli
+aW5wdXQsIGFuZAo+IHdheWxhbmQgaXRzZWxmLiBJZiB5b3UgYXJlIGJ1aWxkaW5nIG5ld2VyIFdl
+c3RvbiBmcm9tIGdpdCwgeW91J2xsIG5lZWQKPiB0aGUgd2F5bGFuZC1wcm90b2NvbHMgcmVwb3Np
+dG9yeSBhcyB3ZWxsLCBmcm9tCj4gYW5vbmdpdC5mcmVlZGVza3RvcC5vcmcvZ2l0L3dheWxhbmQv
+d2F5bGFuZC1wcm90b2NvbHMvLiBQbGVhc2UgbGV0IG1lCj4ga25vdyBwcml2YXRlbHkgaWYgeW91
+IG5lZWQgc29tZSBtb3JlIGhlbHAgd2l0aCBidWlsZGluZyB0aGVzZSwgYnV0Cj4gdGhleSBzaG91
+bGQgYmUgcXVpdGUgc3RyYWlnaHRmb3J3YXJkLgo+Cj4gQ2hlZXJzLAo+IERhbmllbAo+Cj4KPgoK
+Ci0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
