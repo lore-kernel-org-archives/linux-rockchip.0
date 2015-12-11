@@ -1,28 +1,36 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] arm: dts: rockchip: Fix typo in rk32288 sdmmc card detect pin name
-Date: Sat, 12 Dec 2015 00:08:17 +0100
-Message-ID: <1649282.ILIgoNi0K6@diego>
-References: <1449845158-8284-1-git-send-email-mbrugger@suse.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [GIT PULL 2/3] rockchip dts32 changes for 4.5
+Date: Sat, 12 Dec 2015 00:27:14 +0100
+Message-ID: <1804962.ITAAA3Svms@wuerfel>
+References: <1936935.FVZdWRYuBf@diego> <18120528.xr1opvZF1r@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1449845158-8284-1-git-send-email-mbrugger@suse.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, olof@lixom.net, lorenzo.pieralisi@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <18120528.xr1opvZF1r@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Matthias,
+On Saturday 05 December 2015 01:56:23 Heiko St=FCbner wrote:
+> First round of arm devicetree changes.
+> Among the bigger changes are two new Veyron boards, support for
+> the dual-core cortex-a7 rk3036 soc and addition of support for
+> the crypto engine of the rk3288. Smaller changes include some
+> IR receivers, updates of thermal settings more reflecting real-
+> life and testing-results.
+> =
 
-Am Freitag, 11. Dezember 2015, 15:45:58 schrieb Matthias Brugger:
-> The card detect pin is currently called sdmcc-cd.
-> This patch fixes the typo and renames the pin to sdmmc-cd.
-> 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 
-applied to my dts32 branch for 4.5, after fixing the rk32288 in the subject
+Pulled into next/dt, thanks!
 
-
-Thanks
-Heiko
+	Arnd
