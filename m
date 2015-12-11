@@ -1,553 +1,690 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v1 7/8] ARM: dts: rockchip: add core rk3228 dtsi
-Date: Fri, 11 Dec 2015 09:53:59 +0800
-Message-ID: <566A2CB7.4050801@rock-chips.com>
-References: <1449651853-1667-1-git-send-email-jeffy.chen@rock-chips.com>
- <1449651853-1667-8-git-send-email-jeffy.chen@rock-chips.com>
- <24573164.okRNXjvZ1B@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <24573164.okRNXjvZ1B@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+From: Zain Wang <zain.wang@rock-chips.com>
+Subject: [RFC PATCH V3] Crypto: rockchip/crypto - add hash support for crypto engine in rk3288
+Date: Fri, 11 Dec 2015 09:58:23 +0800
+Message-ID: <1449799103-24221-1-git-send-email-zain.wang@rock-chips.com>
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Sender: linux-crypto-owner@vger.kernel.org
+To: heiko@sntech.de, herbert@gondor.apana.org.au, davem@davemloft.net
+Cc: eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, Zain Wang <zain.wang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Add md5 sha1 sha256 support for crypto engine in rk3288.
+This patch can't support multiple updatings because of limited of IC,
+as result, it can't support import and export too.
 
-On 2015-12-10 8:32, Heiko Stuebner wrote:
-> Hi Jeffy,
->
-> Am Mittwoch, 9. Dezember 2015, 17:04:12 schrieb Jeffy Chen:
->> Initial release for rk3228 shared dtsi.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>   arch/arm/boot/dts/rk3228.dtsi | 478 ++++++++++++++++++++++++++++++++++++++++++
->>   1 file changed, 478 insertions(+)
->>   create mode 100644 arch/arm/boot/dts/rk3228.dtsi
->>
->> diff --git a/arch/arm/boot/dts/rk3228.dtsi b/arch/arm/boot/dts/rk3228.dtsi
->> new file mode 100644
->> index 0000000..d6b3e40
->> --- /dev/null
->> +++ b/arch/arm/boot/dts/rk3228.dtsi
->> @@ -0,0 +1,478 @@
->> +/*
->> + * This file is dual-licensed: you can use it either under the terms
->> + * of the GPL or the X11 license, at your option. Note that this dual
->> + * licensing only applies to this file, and not this project as a
->> + * whole.
->> + *
->> + *  a) This file is free software; you can redistribute it and/or
->> + *     modify it under the terms of the GNU General Public License as
->> + *     published by the Free Software Foundation; either version 2 of the
->> + *     License, or (at your option) any later version.
->> + *
->> + *     This file is distributed in the hope that it will be useful,
->> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + *     GNU General Public License for more details.
->> + *
->> + * Or, alternatively,
->> + *
->> + *  b) Permission is hereby granted, free of charge, to any person
->> + *     obtaining a copy of this software and associated documentation
->> + *     files (the "Software"), to deal in the Software without
->> + *     restriction, including without limitation the rights to use,
->> + *     copy, modify, merge, publish, distribute, sublicense, and/or
->> + *     sell copies of the Software, and to permit persons to whom the
->> + *     Software is furnished to do so, subject to the following
->> + *     conditions:
->> + *
->> + *     The above copyright notice and this permission notice shall be
->> + *     included in all copies or substantial portions of the Software.
->> + *
->> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
->> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
->> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
->> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
->> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
->> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
->> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
->> + *     OTHER DEALINGS IN THE SOFTWARE.
->> + */
->> +
->> +#include <dt-bindings/gpio/gpio.h>
->> +#include <dt-bindings/interrupt-controller/irq.h>
->> +#include <dt-bindings/interrupt-controller/arm-gic.h>
->> +#include <dt-bindings/pinctrl/rockchip.h>
->> +#include <dt-bindings/clock/rk3228-cru.h>
->> +#include "skeleton.dtsi"
->> +
->> +/ {
->> +	compatible = "rockchip,rk3228";
->> +
->> +	interrupt-parent = <&gic>;
->> +
->> +	aliases {
->> +		serial0 = &uart0;
->> +		serial1 = &uart1;
->> +		serial2 = &uart2;
->> +	};
->> +
->> +	memory {
->> +		device_type = "memory";
->> +		reg = <0x60000000 0x40000000>;
->> +	};
-> The amount of memory is a property of the board
-done.
->> +
->> +	cpus {
->> +		#address-cells = <1>;
->> +		#size-cells = <0>;
-> no enable-method?
->
-> As the rk3228 also does not have a pmu, does the newly created
-> "rockchip,rk3036-smp" work for you?
-unlucky, that doesn't work...and our 3.10 kernel is using psci for 
-rk3228's smp ops, maybe i should check that too, but i know nothing 
-about psci for now :(
->> +
->> +		cpu0: cpu@f00 {
->> +			device_type = "cpu";
->> +			compatible = "arm,cortex-a7";
->> +			reg = <0xf00>;
->> +			resets = <&cru SRST_CORE0>;
->> +			operating-points = <
->> +				/* KHz    uV */
->> +				 816000 1000000
->> +			>;
->> +			clock-latency = <40000>;
->> +			clocks = <&cru ARMCLK>;
->> +		};
->> +
->> +		cpu1: cpu@f01 {
->> +			device_type = "cpu";
->> +			compatible = "arm,cortex-a7";
->> +			reg = <0xf01>;
->> +			resets = <&cru SRST_CORE1>;
->> +		};
->> +
->> +		cpu2: cpu@f02 {
->> +			device_type = "cpu";
->> +			compatible = "arm,cortex-a7";
->> +			reg = <0xf02>;
->> +			resets = <&cru SRST_CORE2>;
->> +		};
->> +
->> +		cpu3: cpu@f03 {
->> +			device_type = "cpu";
->> +			compatible = "arm,cortex-a7";
->> +			reg = <0xf03>;
->> +			resets = <&cru SRST_CORE3>;
->> +		};
->> +	};
->> +
->> +	amba {
->> +		compatible = "arm,amba-bus";
->> +		#address-cells = <1>;
->> +		#size-cells = <1>;
->> +		ranges;
->> +
->> +		pdma: pdma@110f0000 {
->> +			compatible = "arm,pl330", "arm,primecell";
->> +			reg = <0x110f0000 0x4000>;
->> +			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
->> +				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
->> +			#dma-cells = <1>;
->> +			clocks = <&cru ACLK_DMAC>;
->> +			clock-names = "apb_pclk";
->> +		};
->> +	};
->> +
->> +	arm-pmu {
->> +		compatible = "arm,cortex-a7-pmu";
->> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>,
->> +			     <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>,
->> +			     <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>,
->> +			     <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
->> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
->> +	};
->> +
->> +	timer {
->> +		compatible = "arm,armv7-timer";
->> +		arm,cpu-registers-not-fw-configured;
->> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_LEVEL_HIGH)>,
->> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_LEVEL_HIGH)>,
->> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_LEVEL_HIGH)>,
->> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(2) | IRQ_TYPE_LEVEL_HIGH)>;
->> +		clock-frequency = <24000000>;
->> +	};
->> +
->> +	hdmiphy_phy: hdmiphy_phy {
->> +		compatible = "fixed-clock";
->> +		clock-frequency = <594000000>;
->> +		clock-output-names = "hdmiphy_phy";
->> +		#clock-cells = <0>;
->> +	};
->> +
->> +	phy_50m_out: phy_50m_out {
->> +		compatible = "fixed-clock";
->> +		clock-frequency = <50000000>;
->> +		clock-output-names = "phy_50m_out";
->> +		#clock-cells = <0>;
->> +	};
->> +
->> +	usb480m_phy0: usb480m_phy0 {
->> +		compatible = "fixed-clock";
->> +		clock-frequency = <480000000>;
->> +		clock-output-names = "usb480m_phy0";
->> +		#clock-cells = <0>;
->> +	};
->> +
->> +	usb480m_phy1: usb480m_phy1 {
->> +		compatible = "fixed-clock";
->> +		clock-frequency = <480000000>;
->> +		clock-output-names = "usb480m_phy1";
->> +		#clock-cells = <0>;
->> +	};
-> these clocks starting with hdmiphy clock come from IPs in the soc, so the
-> relevant drivers should provide them (see my patch series for the picophy,
-> or how rk808 and hym8563 do it) - especially as these clocks might get
-> turned off in the IP-block itself.
->
-> The clock framework can handle orphans, so just leave these out for now
-> please.
-you're right, done.
->
->> +
->> +	xin24m: oscillator {
->> +		compatible = "fixed-clock";
->> +		clock-frequency = <24000000>;
->> +		clock-output-names = "xin24m";
->> +		#clock-cells = <0>;
->> +	};
->> +
->> +	cru: clock-controller@110e0000 {
->> +		compatible = "rockchip,rk3228-cru";
->> +		reg = <0x110e0000 0x1000>;
->> +		rockchip,grf = <&grf>;
->> +		#clock-cells = <1>;
->> +		#reset-cells = <1>;
->> +		assigned-clocks = <&cru PLL_GPLL>;
->> +		assigned-clock-rates = <594000000>;
->> +	};
->> +
->> +	gic: interrupt-controller@32010000 {
-> please order by register address, so gic should move quite
-> a bit lower.
-done.
->> +		compatible = "arm,gic-400";
->> +		interrupt-controller;
->> +		#interrupt-cells = <3>;
->> +		#address-cells = <0>;
->> +
->> +		reg = <0x32011000 0x1000>,
->> +		      <0x32012000 0x1000>;
-> please also provide the vgic registers and interrupt.
-done.
->
->> +	};
->> +
->> +	grf: syscon@11000000 {
->> +		compatible = "syscon";
->> +		reg = <0x11000000 0x1000>;
->> +	};
->> +
->> +	timer: timer@110c0000 {
->> +		compatible = "rockchip,rk3288-timer";
->> +		reg = <0x110c0000 0x20>;
->> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
->> +		clocks = <&xin24m>, <&cru PCLK_TIMER>;
->> +		clock-names = "timer", "pclk";
->> +	};
->> +
->> +	emmc: dwmmc@30020000 {
->> +		compatible = "rockchip,rk3288-dw-mshc";
->> +		clock-frequency = <37500000>;
->> +		clock-freq-min-max = <400000 37500000>;
->> +		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
->> +		<&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
->> +		clock-names = "biu", "ciu", "ciu_drv", "ciu_sample";
->> +		fifo-depth = <0x100>;
->> +		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
->> +		reg = <0x30020000 0x4000>;
->> +		broken-cd;
->> +		bus-width = <8>;
->> +		cap-mmc-highspeed;
->> +		mmc-ddr-1_8v;
->> +		disable-wp;
->> +		non-removable;
->> +		num-slots = <1>;
->> +		default-sample-phase = <158>;
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-> please separate board and core properties.
-> broken-cd, cap-*, mmc-ddr-1_8v, disable-wp, non-removable
-> are per-board properties as they depend on what is connected to
-> the controller.
-done.
->> +		status = "disabled";
->> +	};
->> +
->> +	pwm0: pwm@110b0000 {
->> +		compatible = "rockchip,rk3288-pwm";
->> +		reg = <0x110b0000 0x10>;
->> +		#pwm-cells = <3>;
->> +		clocks = <&cru PCLK_PWM>;
->> +		clock-names = "pwm";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&pwm0_pin>;
->> +		status = "disabled";
->> +	};
->> +
->> +	pwm1: pwm@110b0010 {
->> +		compatible = "rockchip,rk3288-pwm";
->> +		reg = <0x110b0010 0x10>;
->> +		#pwm-cells = <3>;
->> +		clocks = <&cru PCLK_PWM>;
->> +		clock-names = "pwm";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&pwm1_pin>;
->> +		status = "disabled";
->> +	};
->> +
->> +	pwm2: pwm@110b0020 {
->> +		compatible = "rockchip,rk3288-pwm";
->> +		reg = <0x110b0020 0x10>;
->> +		#pwm-cells = <3>;
->> +		clocks = <&cru PCLK_PWM>;
->> +		clock-names = "pwm";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&pwm2_pin>;
->> +		status = "disabled";
->> +	};
->> +
->> +	pwm3: pwm@110b0030 {
->> +		compatible = "rockchip,rk3288-pwm";
->> +		reg = <0x110b0030 0x10>;
->> +		#pwm-cells = <2>;
->> +		clocks = <&cru PCLK_PWM>;
->> +		clock-names = "pwm";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&pwm3_pin>;
->> +		status = "disabled";
->> +	};
->> +
->> +	uart0: serial@11010000 {
->> +		compatible = "snps,dw-apb-uart";
->> +		reg = <0x11010000 0x100>;
->> +		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
->> +		reg-shift = <2>;
->> +		reg-io-width = <4>;
->> +		clock-frequency = <24000000>;
->> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
->> +		clock-names = "baudclk", "apb_pclk";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
->> +		status = "disabled";
->> +	};
->> +
->> +	uart1: serial@11020000 {
->> +		compatible = "snps,dw-apb-uart";
->> +		reg = <0x11020000 0x100>;
->> +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
->> +		reg-shift = <2>;
->> +		reg-io-width = <4>;
->> +		clock-frequency = <24000000>;
->> +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
->> +		clock-names = "baudclk", "apb_pclk";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&uart1_xfer>;
->> +		status = "disabled";
->> +	};
->> +
->> +	uart2: serial@11030000 {
->> +		compatible = "snps,dw-apb-uart";
->> +		reg = <0x11030000 0x100>;
->> +		interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
->> +		reg-shift = <2>;
->> +		reg-io-width = <4>;
->> +		clock-frequency = <24000000>;
->> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
->> +		clock-names = "baudclk", "apb_pclk";
->> +		pinctrl-names = "default";
->> +		pinctrl-0 = <&uart2_xfer>;
->> +		status = "disabled";
->> +	};
->> +
->> +
->> +	pinctrl: pinctrl {
->> +		compatible = "rockchip,rk3228-pinctrl";
->> +		rockchip,grf = <&grf>;
->> +		#address-cells = <1>;
->> +		#size-cells = <1>;
->> +		ranges;
->> +
->> +		gpio0: gpio0@11110000 {
->> +			compatible = "rockchip,gpio-bank";
->> +			reg = <0x11110000 0x100>;
->> +			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
->> +			clocks = <&cru PCLK_GPIO0>;
->> +
->> +			gpio-controller;
->> +			#gpio-cells = <2>;
->> +
->> +			interrupt-controller;
->> +			#interrupt-cells = <2>;
->> +		};
->> +
->> +		gpio1: gpio1@11120000 {
->> +			compatible = "rockchip,gpio-bank";
->> +			reg = <0x11120000 0x100>;
->> +			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
->> +			clocks = <&cru PCLK_GPIO1>;
->> +
->> +			gpio-controller;
->> +			#gpio-cells = <2>;
->> +
->> +			interrupt-controller;
->> +			#interrupt-cells = <2>;
->> +		};
->> +
->> +		gpio2: gpio2@11130000 {
->> +			compatible = "rockchip,gpio-bank";
->> +			reg = <0x11130000 0x100>;
->> +			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
->> +			clocks = <&cru PCLK_GPIO2>;
->> +
->> +			gpio-controller;
->> +			#gpio-cells = <2>;
->> +
->> +			interrupt-controller;
->> +			#interrupt-cells = <2>;
->> +		};
->> +
->> +		gpio3: gpio3@11140000 {
->> +			compatible = "rockchip,gpio-bank";
->> +			reg = <0x11140000 0x100>;
->> +			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
->> +			clocks = <&cru PCLK_GPIO3>;
->> +
->> +			gpio-controller;
->> +			#gpio-cells = <2>;
->> +
->> +			interrupt-controller;
->> +			#interrupt-cells = <2>;
->> +		};
->> +
->> +		pcfg_pull_up: pcfg-pull-up {
->> +			bias-pull-up;
->> +		};
->> +
->> +		pcfg_pull_down: pcfg-pull-down {
->> +			bias-pull-down;
->> +		};
->> +
->> +		pcfg_pull_none: pcfg-pull-none {
->> +			bias-disable;
->> +		};
->> +
->> +		emmc {
->> +			emmc_clk: emmc-clk {
->> +				rockchip,pins = <2 7 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +
->> +			emmc_cmd: emmc-cmd {
->> +				rockchip,pins = <1 22 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +
->> +			emmc_bus8: emmc-bus8 {
->> +				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 25 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 26 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 27 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 28 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 29 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 30 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 31 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		pwm0 {
->> +			pwm0_pin: pwm0-pin {
->> +				rockchip,pins = <3 21 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		pwm1 {
->> +			pwm1_pin: pwm1-pin {
->> +				rockchip,pins = <0 30 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		pwm2 {
->> +			pwm2_pin: pwm2-pin {
->> +				rockchip,pins = <1 12 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		pwm3 {
->> +			pwm3_pin: pwm3-pin {
->> +				rockchip,pins = <1 11 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		uart0 {
->> +			uart0_xfer: uart0-xfer {
->> +				rockchip,pins = <2 26 RK_FUNC_1 &pcfg_pull_none>,
->> +						<2 27 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart0_cts: uart0-cts {
->> +				rockchip,pins = <2 29 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart0_rts: uart0-rts {
->> +				rockchip,pins = <0 17 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		uart1 {
->> +			uart1_xfer: uart1-xfer {
->> +				rockchip,pins = <1 9 RK_FUNC_1 &pcfg_pull_none>,
->> +						<1 10 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart1_cts: uart1-cts {
->> +				rockchip,pins = <1 8 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart1_rts: uart1-rts {
->> +				rockchip,pins = <1 11 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +		};
->> +
->> +		uart2 {
->> +			uart2_xfer: uart2-xfer {
->> +				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_none>,
->> +						<1 19 RK_FUNC_2 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart2_cts: uart2-cts {
->> +				rockchip,pins = <0 25 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +
->> +			uart2_rts: uart2-rts {
->> +				rockchip,pins = <0 24 RK_FUNC_1 &pcfg_pull_none>;
->> +			};
->> +		};
->> +	};
->> +};
->>
->
+Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
+---
 
+Changes in V3:
+- add switch instead of multiple if.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Changes in V2:
+- add some comments to code.
+- fix some issues about zero message process.
+
+ drivers/crypto/rockchip/Makefile                   |   1 +
+ drivers/crypto/rockchip/rk3288_crypto.c            |  33 +-
+ drivers/crypto/rockchip/rk3288_crypto.h            |  50 ++-
+ drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c |  20 +-
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c      | 394 +++++++++++++++++++++
+ 5 files changed, 480 insertions(+), 18 deletions(-)
+ create mode 100644 drivers/crypto/rockchip/rk3288_crypto_ahash.c
+
+diff --git a/drivers/crypto/rockchip/Makefile b/drivers/crypto/rockchip/Makefile
+index 7051c6c..30f9129 100644
+--- a/drivers/crypto/rockchip/Makefile
++++ b/drivers/crypto/rockchip/Makefile
+@@ -1,3 +1,4 @@
+ obj-$(CONFIG_CRYPTO_DEV_ROCKCHIP) += rk_crypto.o
+ rk_crypto-objs := rk3288_crypto.o \
+ 		  rk3288_crypto_ablkcipher.o \
++		  rk3288_crypto_ahash.o
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index 82f3044..67d69d2 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -190,7 +190,6 @@ static void rk_crypto_tasklet_cb(unsigned long data)
+ {
+ 	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
+ 	struct crypto_async_request *async_req, *backlog;
+-	struct rk_cipher_reqctx *ablk_reqctx;
+ 	int err = 0;
+ 	unsigned long flags;
+ 
+@@ -207,10 +206,10 @@ static void rk_crypto_tasklet_cb(unsigned long data)
+ 		backlog = NULL;
+ 	}
+ 
+-	if (crypto_tfm_alg_type(async_req->tfm) == CRYPTO_ALG_TYPE_ABLKCIPHER) {
++	if (crypto_tfm_alg_type(async_req->tfm) == CRYPTO_ALG_TYPE_ABLKCIPHER)
+ 		dev->ablk_req = ablkcipher_request_cast(async_req);
+-		ablk_reqctx   = ablkcipher_request_ctx(dev->ablk_req);
+-	}
++	else
++		dev->ahash_req = ahash_request_cast(async_req);
+ 	err = dev->start(dev);
+ 	if (err)
+ 		dev->complete(dev, err);
+@@ -223,6 +222,9 @@ static struct rk_crypto_tmp *rk_cipher_algs[] = {
+ 	&rk_cbc_des_alg,
+ 	&rk_ecb_des3_ede_alg,
+ 	&rk_cbc_des3_ede_alg,
++	&rk_ahash_sha1,
++	&rk_ahash_sha256,
++	&rk_ahash_md5,
+ };
+ 
+ static int rk_crypto_register(struct rk_crypto_info *crypto_info)
+@@ -232,15 +234,24 @@ static int rk_crypto_register(struct rk_crypto_info *crypto_info)
+ 
+ 	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
+ 		rk_cipher_algs[i]->dev = crypto_info;
+-		err = crypto_register_alg(&rk_cipher_algs[i]->alg);
++		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
++			err = crypto_register_alg(
++					&rk_cipher_algs[i]->alg.crypto);
++		else
++			err = crypto_register_ahash(
++					&rk_cipher_algs[i]->alg.hash);
+ 		if (err)
+ 			goto err_cipher_algs;
+ 	}
+ 	return 0;
+ 
+ err_cipher_algs:
+-	for (k = 0; k < i; k++)
+-		crypto_unregister_alg(&rk_cipher_algs[k]->alg);
++	for (k = 0; k < i; k++) {
++		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
++			crypto_unregister_alg(&rk_cipher_algs[k]->alg.crypto);
++		else
++			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
++	}
+ 	return err;
+ }
+ 
+@@ -248,8 +259,12 @@ static void rk_crypto_unregister(void)
+ {
+ 	unsigned int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++)
+-		crypto_unregister_alg(&rk_cipher_algs[i]->alg);
++	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
++		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
++			crypto_unregister_alg(&rk_cipher_algs[i]->alg.crypto);
++		else
++			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
++	}
+ }
+ 
+ static void rk_crypto_action(void *data)
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+index 604ffe7..01d8299 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.h
++++ b/drivers/crypto/rockchip/rk3288_crypto.h
+@@ -6,6 +6,10 @@
+ #include <crypto/algapi.h>
+ #include <linux/interrupt.h>
+ #include <linux/delay.h>
++#include <crypto/internal/hash.h>
++
++#include "crypto/md5.h"
++#include "crypto/sha.h"
+ 
+ #define _SBF(v, f)			((v) << (f))
+ 
+@@ -149,6 +153,28 @@
+ #define RK_CRYPTO_TDES_KEY3_0		0x0130
+ #define RK_CRYPTO_TDES_KEY3_1		0x0134
+ 
++/* HASH */
++#define RK_CRYPTO_HASH_CTRL		0x0180
++#define RK_CRYPTO_HASH_SWAP_DO		BIT(3)
++#define RK_CRYPTO_HASH_SWAP_DI		BIT(2)
++#define RK_CRYPTO_HASH_SHA1		_SBF(0x00, 0)
++#define RK_CRYPTO_HASH_MD5		_SBF(0x01, 0)
++#define RK_CRYPTO_HASH_SHA256		_SBF(0x02, 0)
++#define RK_CRYPTO_HASH_PRNG		_SBF(0x03, 0)
++
++#define RK_CRYPTO_HASH_STS		0x0184
++#define RK_CRYPTO_HASH_DONE		BIT(0)
++
++#define RK_CRYPTO_HASH_MSG_LEN		0x0188
++#define RK_CRYPTO_HASH_DOUT_0		0x018c
++#define RK_CRYPTO_HASH_DOUT_1		0x0190
++#define RK_CRYPTO_HASH_DOUT_2		0x0194
++#define RK_CRYPTO_HASH_DOUT_3		0x0198
++#define RK_CRYPTO_HASH_DOUT_4		0x019c
++#define RK_CRYPTO_HASH_DOUT_5		0x01a0
++#define RK_CRYPTO_HASH_DOUT_6		0x01a4
++#define RK_CRYPTO_HASH_DOUT_7		0x01a8
++
+ #define CRYPTO_READ(dev, offset)		  \
+ 		readl_relaxed(((dev)->reg + (offset)))
+ #define CRYPTO_WRITE(dev, offset, val)	  \
+@@ -166,6 +192,7 @@ struct rk_crypto_info {
+ 	struct crypto_queue		queue;
+ 	struct tasklet_struct		crypto_tasklet;
+ 	struct ablkcipher_request	*ablk_req;
++	struct ahash_request		*ahash_req;
+ 	/* device lock */
+ 	spinlock_t			lock;
+ 
+@@ -194,6 +221,12 @@ struct rk_crypto_info {
+ 			 struct scatterlist *sg_dst);
+ 	void (*unload_data)(struct rk_crypto_info *dev);
+ };
++/* the private variable of hash */
++struct rk_ahash_ctx {
++	struct rk_crypto_info		*dev;
++	int				flag_finup;
++	int				first_op;
++};
+ 
+ /* the private variable of cipher */
+ struct rk_cipher_ctx {
+@@ -201,9 +234,18 @@ struct rk_cipher_ctx {
+ 	unsigned int			keylen;
+ };
+ 
++enum alg_type {
++	ALG_TYPE_HASH,
++	ALG_TYPE_CIPHER,
++};
++
+ struct rk_crypto_tmp {
+-	struct rk_crypto_info *dev;
+-	struct crypto_alg alg;
++	struct rk_crypto_info		*dev;
++	union {
++		struct crypto_alg	crypto;
++		struct ahash_alg	hash;
++	} alg;
++	enum alg_type			type;
+ };
+ 
+ extern struct rk_crypto_tmp rk_ecb_aes_alg;
+@@ -213,4 +255,8 @@ extern struct rk_crypto_tmp rk_cbc_des_alg;
+ extern struct rk_crypto_tmp rk_ecb_des3_ede_alg;
+ extern struct rk_crypto_tmp rk_cbc_des3_ede_alg;
+ 
++extern struct rk_crypto_tmp rk_ahash_sha1;
++extern struct rk_crypto_tmp rk_ahash_sha256;
++extern struct rk_crypto_tmp rk_ahash_md5;
++
+ #endif
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
+index 3624080..a260203 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_ablkcipher.c
+@@ -322,7 +322,7 @@ static int rk_ablk_cra_init(struct crypto_tfm *tfm)
+ 	struct crypto_alg *alg = tfm->__crt_alg;
+ 	struct rk_crypto_tmp *algt;
+ 
+-	algt = container_of(alg, struct rk_crypto_tmp, alg);
++	algt = container_of(alg, struct rk_crypto_tmp, alg.crypto);
+ 
+ 	ctx->dev = algt->dev;
+ 	ctx->dev->align_size = crypto_tfm_alg_alignmask(tfm) + 1;
+@@ -343,7 +343,8 @@ static void rk_ablk_cra_exit(struct crypto_tfm *tfm)
+ }
+ 
+ struct rk_crypto_tmp rk_ecb_aes_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "ecb(aes)",
+ 		.cra_driver_name	= "ecb-aes-rk",
+ 		.cra_priority		= 300,
+@@ -367,7 +368,8 @@ struct rk_crypto_tmp rk_ecb_aes_alg = {
+ };
+ 
+ struct rk_crypto_tmp rk_cbc_aes_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "cbc(aes)",
+ 		.cra_driver_name	= "cbc-aes-rk",
+ 		.cra_priority		= 300,
+@@ -392,7 +394,8 @@ struct rk_crypto_tmp rk_cbc_aes_alg = {
+ };
+ 
+ struct rk_crypto_tmp rk_ecb_des_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "ecb(des)",
+ 		.cra_driver_name	= "ecb-des-rk",
+ 		.cra_priority		= 300,
+@@ -416,7 +419,8 @@ struct rk_crypto_tmp rk_ecb_des_alg = {
+ };
+ 
+ struct rk_crypto_tmp rk_cbc_des_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "cbc(des)",
+ 		.cra_driver_name	= "cbc-des-rk",
+ 		.cra_priority		= 300,
+@@ -441,7 +445,8 @@ struct rk_crypto_tmp rk_cbc_des_alg = {
+ };
+ 
+ struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "ecb(des3_ede)",
+ 		.cra_driver_name	= "ecb-des3-ede-rk",
+ 		.cra_priority		= 300,
+@@ -466,7 +471,8 @@ struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
+ };
+ 
+ struct rk_crypto_tmp rk_cbc_des3_ede_alg = {
+-	.alg = {
++	.type = ALG_TYPE_CIPHER,
++	.alg.crypto = {
+ 		.cra_name		= "cbc(des3_ede)",
+ 		.cra_driver_name	= "cbc-des3-ede-rk",
+ 		.cra_priority		= 300,
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+new file mode 100644
+index 0000000..a5795f6
+--- /dev/null
++++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+@@ -0,0 +1,394 @@
++/*
++ * Crypto acceleration support for Rockchip RK3288
++ *
++ * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
++ *
++ * Author: Zain Wang <zain.wang@rock-chips.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2, as published by the Free Software Foundation.
++ *
++ * Some ideas are from marvell/cesa.c and s5p-sss.c driver.
++ */
++#include "rk3288_crypto.h"
++
++/*
++ * IC can not process zero message hash,
++ * so we put the fixed hash out when met zero message.
++ */
++const static u8 *sha1_zero_message_hash = {
++	"\xda\x39\xa3\xee\x5e\x6b\x4b\x0d\x32\x55"
++	"\xbf\xef\x95\x60\x18\x90\xaf\xd8\x07\x09"
++};
++
++const static u8 *sha256_zero_message_hash = {
++	"\xe3\xb0\xc4\x42\x98\xfc\x1c\x14"
++	"\x9a\xfb\xf4\xc8\x99\x6f\xb9\x24"
++	"\x27\xae\x41\xe4\x64\x9b\x93\x4c"
++	"\xa4\x95\x99\x1b\x78\x52\xb8\x55"
++};
++
++const static u8 *md5_zero_message_hash = {
++	"\xd4\x1d\x8c\xd9\x8f\x00\xb2\x04"
++	"\xe9\x80\x09\x98\xec\xf8\x42\x7e"
++};
++
++
++static int zero_message_process(struct ahash_request *req)
++{
++	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
++
++	switch (crypto_ahash_digestsize(tfm)) {
++	case SHA1_DIGEST_SIZE:
++		memcpy(req->result, sha1_zero_message_hash, SHA1_DIGEST_SIZE);
++		break;
++	case SHA256_DIGEST_SIZE:
++		memcpy(req->result, sha256_zero_message_hash,
++		       SHA256_DIGEST_SIZE);
++		break;
++	case MD5_DIGEST_SIZE:
++		memcpy(req->result, md5_zero_message_hash, MD5_DIGEST_SIZE);
++		break;
++	default:
++		return -EINVAL;
++		break;
++	}
++
++	return 0;
++
++}
++
++static void rk_ahash_crypto_complete(struct rk_crypto_info *dev, int err)
++{
++	if (dev->ahash_req->base.complete)
++		dev->ahash_req->base.complete(&dev->ahash_req->base, err);
++}
++
++static void rk_ahash_hw_init(struct rk_crypto_info *dev)
++{
++	int reg_status = 0;
++
++	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
++		     RK_CRYPTO_HASH_FLUSH | _SBF(0xffff, 16);
++	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
++
++	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL);
++	reg_status &= (~RK_CRYPTO_HASH_FLUSH);
++	reg_status |= _SBF(0xffff, 16);
++	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, reg_status);
++
++	memset_io(dev->reg + RK_CRYPTO_HASH_DOUT_0, 0, 32);
++}
++
++static void rk_ahash_reg_init(struct rk_crypto_info *dev)
++{
++	rk_ahash_hw_init(dev);
++
++	CRYPTO_WRITE(dev, RK_CRYPTO_INTENA, RK_CRYPTO_HRDMA_ERR_ENA |
++					    RK_CRYPTO_HRDMA_DONE_ENA);
++
++	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, RK_CRYPTO_HRDMA_ERR_INT |
++					    RK_CRYPTO_HRDMA_DONE_INT);
++
++	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_CTRL, dev->mode |
++					       RK_CRYPTO_HASH_SWAP_DO);
++
++	CRYPTO_WRITE(dev, RK_CRYPTO_CONF, RK_CRYPTO_BYTESWAP_HRFIFO |
++					  RK_CRYPTO_BYTESWAP_BRFIFO |
++					  RK_CRYPTO_BYTESWAP_BTFIFO);
++}
++
++static int rk_ahash_init(struct ahash_request *req)
++{
++	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
++	struct rk_crypto_info *dev = NULL;
++
++	dev = tctx->dev;
++	dev->left_bytes = 0;
++	dev->aligned = 0;
++	dev->ahash_req = req;
++	dev->mode = 0;
++	dev->align_size = 4;
++	dev->sg_dst = NULL;
++
++	tctx->first_op = 1;
++
++	switch (crypto_ahash_digestsize(tfm)) {
++	case SHA1_DIGEST_SIZE:
++		dev->mode = RK_CRYPTO_HASH_SHA1;
++		break;
++	case SHA256_DIGEST_SIZE:
++		dev->mode = RK_CRYPTO_HASH_SHA256;
++		break;
++	case MD5_DIGEST_SIZE:
++		dev->mode = RK_CRYPTO_HASH_MD5;
++		break;
++	default:
++		return -EINVAL;
++		break;
++	}
++
++	rk_ahash_reg_init(dev);
++	return 0;
++}
++
++static int rk_ahash_update(struct ahash_request *req)
++{
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
++	struct rk_crypto_info *dev = tctx->dev;
++	unsigned long flags;
++	int ret;
++
++	dev->total = req->nbytes;
++	dev->left_bytes = req->nbytes;
++	dev->sg_src = req->src;
++	dev->first = req->src;
++	dev->nents = sg_nents(req->src);
++
++	/* IC can calculate 0 message hash, so it should finish update here */
++	if (!dev->total) {
++		return 0;
++	}
++
++	if (tctx->first_op) {
++		tctx->first_op = 0;
++		CRYPTO_WRITE(dev, RK_CRYPTO_HASH_MSG_LEN, dev->total);
++	} else {
++		/*
++		 * IC must know the length of total data at first,
++		 * multiple updatings cannot support this variable.
++		 */
++		dev_warn(dev->dev, "Cannot carry multiple updatings!\n");
++		return 0;
++	}
++	spin_lock_irqsave(&dev->lock, flags);
++	ret = crypto_enqueue_request(&dev->queue, &req->base);
++	spin_unlock_irqrestore(&dev->lock, flags);
++
++	tasklet_schedule(&dev->crypto_tasklet);
++
++	return ret;
++}
++
++static int rk_ahash_final(struct ahash_request *req)
++{
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
++	struct rk_crypto_info *dev = tctx->dev;
++	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
++
++	/* If met 0 message, put the fixed hash out.*/
++	if (!dev->total)
++		return zero_message_process(req);
++
++	/*
++	 * IC should process the result again after last dma interrupt.
++	 * And the last processing is very quick so than it may entry
++	 * interrupt before finishing last interrupt.
++	 * So I don't use interrupt finished hash.
++	 */
++	while (!CRYPTO_READ(dev, RK_CRYPTO_HASH_STS))
++		usleep_range(50, 100);
++
++	memcpy_fromio(req->result, dev->reg + RK_CRYPTO_HASH_DOUT_0,
++		      crypto_ahash_digestsize(tfm));
++	return 0;
++}
++
++static int rk_ahash_finup(struct ahash_request *req)
++{
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
++	int err;
++
++	/*
++	 * finup should process one updating and final.
++	 * and we have to wait for updating in finup so that we can
++	 * fetching result by calling rk_ahash_final in finup.
++	 */
++	tctx->flag_finup = 1;
++	err = rk_ahash_update(req);
++	if (err == -EINPROGRESS || err == -EBUSY)
++		while (tctx->flag_finup)
++			/*
++			 * waiting time is relative with the last date len,
++			 * so here cannot get a fixed time.
++			 * 50-100 makes system not call here frequently wasting
++			 * efficiency, and make it response quickly when dma
++			 * complete.
++			 */
++			usleep_range(50, 100);
++
++	return rk_ahash_final(req);
++}
++
++static int rk_ahash_digest(struct ahash_request *req)
++{
++	return rk_ahash_init(req) ? -EINVAL : rk_ahash_finup(req);
++}
++
++static void crypto_ahash_dma_start(struct rk_crypto_info *dev)
++{
++	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAS, dev->addr_in);
++	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAL, (dev->count + 3) / 4);
++	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, RK_CRYPTO_HASH_START |
++					  (RK_CRYPTO_HASH_START << 16));
++}
++
++static int rk_ahash_set_data_start(struct rk_crypto_info *dev)
++{
++	int err;
++
++	err = dev->load_data(dev, dev->sg_src, NULL);
++	if (!err)
++		crypto_ahash_dma_start(dev);
++	return err;
++}
++
++static int rk_ahash_start(struct rk_crypto_info *dev)
++{
++	return rk_ahash_set_data_start(dev);
++}
++
++/*
++ * return:
++ * true: some err was occurred
++ * fault: no err, please continue
++ */
++static int rk_ahash_crypto_rx(struct rk_crypto_info *dev)
++{
++	int err = 0;
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(dev->ahash_req->base.tfm);
++
++	dev->unload_data(dev);
++	if (dev->left_bytes) {
++		if (dev->aligned) {
++			if (sg_is_last(dev->sg_src)) {
++				dev_warn(dev->dev, "[%s:%d], Lack of data\n",
++					 __func__, __LINE__);
++				err = -ENOMEM;
++				goto out_rx;
++			}
++			dev->sg_src = sg_next(dev->sg_src);
++		}
++		err = rk_ahash_set_data_start(dev);
++	} else {
++		tctx->flag_finup = 0;
++		dev->complete(dev, 0);
++	}
++
++out_rx:
++	return err;
++}
++
++static int rk_cra_hash_init(struct crypto_tfm *tfm)
++{
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
++	struct rk_crypto_tmp *algt;
++	struct ahash_alg *alg = __crypto_ahash_alg(tfm->__crt_alg);
++
++	algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
++
++	tctx->dev = algt->dev;
++	tctx->dev->addr_vir = (void *)__get_free_page(GFP_KERNEL);
++	if (!tctx->dev->addr_vir) {
++		dev_err(tctx->dev->dev, "failed to kmalloc for addr_vir\n");
++		return -ENOMEM;
++	}
++	tctx->dev->start = rk_ahash_start;
++	tctx->dev->update = rk_ahash_crypto_rx;
++	tctx->dev->complete = rk_ahash_crypto_complete;
++	return tctx->dev->enable_clk(tctx->dev);
++}
++
++static void rk_cra_hash_exit(struct crypto_tfm *tfm)
++{
++	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
++
++	free_page((unsigned long)tctx->dev->addr_vir);
++	return tctx->dev->disable_clk(tctx->dev);
++}
++
++struct rk_crypto_tmp rk_ahash_sha1 = {
++	.type = ALG_TYPE_HASH,
++	.alg.hash = {
++		.init = rk_ahash_init,
++		.update = rk_ahash_update,
++		.final = rk_ahash_final,
++		.finup = rk_ahash_finup,
++		.digest = rk_ahash_digest,
++		.halg = {
++			 .digestsize = SHA1_DIGEST_SIZE,
++			 .statesize = sizeof(struct sha1_state),
++			 .base = {
++				  .cra_name = "sha1",
++				  .cra_driver_name = "rk-sha1",
++				  .cra_priority = 300,
++				  .cra_flags = CRYPTO_ALG_ASYNC |
++					       CRYPTO_ALG_NEED_FALLBACK,
++				  .cra_blocksize = SHA1_BLOCK_SIZE,
++				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
++				  .cra_alignmask = 3,
++				  .cra_init = rk_cra_hash_init,
++				  .cra_exit = rk_cra_hash_exit,
++				  .cra_module = THIS_MODULE,
++				  }
++			 }
++	}
++};
++
++struct rk_crypto_tmp rk_ahash_sha256 = {
++	.type = ALG_TYPE_HASH,
++	.alg.hash = {
++	.init = rk_ahash_init,
++	.update = rk_ahash_update,
++	.final = rk_ahash_final,
++	.finup = rk_ahash_finup,
++	.digest = rk_ahash_digest,
++		.halg = {
++			 .digestsize = SHA256_DIGEST_SIZE,
++			 .statesize = sizeof(struct sha256_state),
++			 .base = {
++				  .cra_name = "sha256",
++				  .cra_driver_name = "rk-sha256",
++				  .cra_priority = 300,
++				  .cra_flags = CRYPTO_ALG_ASYNC |
++					       CRYPTO_ALG_NEED_FALLBACK,
++				  .cra_blocksize = SHA256_BLOCK_SIZE,
++				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
++				  .cra_alignmask = 0,
++				  .cra_init = rk_cra_hash_init,
++				  .cra_exit = rk_cra_hash_exit,
++				  .cra_module = THIS_MODULE,
++				  }
++			 }
++	}
++};
++
++struct rk_crypto_tmp rk_ahash_md5 = {
++	.type = ALG_TYPE_HASH,
++	.alg.hash = {
++		.init = rk_ahash_init,
++		.update = rk_ahash_update,
++		.final = rk_ahash_final,
++		.finup = rk_ahash_finup,
++		.digest = rk_ahash_digest,
++		.halg = {
++			 .digestsize = MD5_DIGEST_SIZE,
++			 .statesize = sizeof(struct md5_state),
++			 .base = {
++				  .cra_name = "md5",
++				  .cra_driver_name = "rk-md5",
++				  .cra_priority = 300,
++				  .cra_flags = CRYPTO_ALG_ASYNC |
++					       CRYPTO_ALG_NEED_FALLBACK,
++				  .cra_blocksize = SHA1_BLOCK_SIZE,
++				  .cra_ctxsize = sizeof(struct rk_ahash_ctx),
++				  .cra_alignmask = 0,
++				  .cra_init = rk_cra_hash_init,
++				  .cra_exit = rk_cra_hash_exit,
++				  .cra_module = THIS_MODULE,
++				  }
++			}
++	}
++};
+-- 
+1.9.1
