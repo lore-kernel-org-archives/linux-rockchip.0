@@ -1,35 +1,29 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 0/5] Add eFuse driver of Rockchip SoC
-Date: Sat, 12 Dec 2015 20:21:55 +0100
-Message-ID: <25029139.jfQHqpcHTE@diego>
-References: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
+Subject: Re: [PATCH v2 4/4] arm64: dts: rockchip: Add the needed timer for RK3368 SoC
+Date: Sun, 13 Dec 2015 01:47 +0100
+Message-ID: <1937886.TSnbmHXrLV@diego>
+References: <1443147298-12603-1-git-send-email-wxt@rock-chips.com> <1443147298-12603-5-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1439288024-13359-1-git-send-email-zhengsq@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Shunqian Zheng <zhengsq@rock-chips.com>
-Cc: gregkh@linuxfoundation.org, srinivas.kandagatla@linaro.org, maxime.ripard@free-electrons.com, caesar.wang@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xjq@rock-chips.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1443147298-12603-5-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: daniel.lezcano@linaro.org, will.deacon@arm.com, catalin.marinas@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 11. August 2015, 18:13:39 schrieb Shunqian Zheng:
-> From: ZhengShunQian <zhengsq@rock-chips.com>
+Am Freitag, 25. September 2015, 10:14:58 schrieb Caesar Wang:
+> There is a need of a broadcast timer in this case to ensure proper
+> wakeup when the cpus are in sleep mode and a timer expires.
 > 
-> Base on nvmem framework, this series patches
-> implement the eFuse driver of Rockchip SoC.
-> The data from eFuse contains CPU leakage, chip code and version etc.
-> 
-> The flow of reading data from eFuse is quite simple,
-> configure the CTRL register, write data address to CTRL
-> register, then data is available in DOUT register.
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-I've now applied both the clock-ids addition as well as the dts node for 4.5
-after seeing that the nvmem driver did actually make it into the kernel.
+applied this patch to my dts64 branch for 4.5 .
 
-I've taken the liberty to
-- split the clock-id patch (into header addition and clock-tree reference)
-- already add the efuse_1024 clock id, if someone wants to use that later
+The Kconfig option will probably need to wait for 4.6 though, due to the 
+clocksource change going through Daniel's tree. Or I'll try to submit that 
+post 4.5-rc1 as "fix" ... we'll see.
 
 
 Heiko
