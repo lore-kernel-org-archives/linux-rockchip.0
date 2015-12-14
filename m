@@ -1,72 +1,107 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2 0/9] i2c: add generic support for timing parameters in
- DT
-Date: Mon, 14 Dec 2015 11:00:26 +0100
-Message-ID: <20151214100026.GD1733@katana>
-References: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 0/5] Add reboot notifier driver for rockchip platform
+Date: Mon, 14 Dec 2015 18:30:31 +0800
+Message-ID: <566E9A47.8010004@rock-chips.com>
+References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
+ <45323116.BWNAaZT5p4@diego>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="F8dlzb82+Fcn6AgP"
-Return-path: <linux-sh-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
-Sender: linux-sh-owner@vger.kernel.org
-To: linux-i2c@vger.kernel.org
-Cc: linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <45323116.BWNAaZT5p4@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi John:
 
---F8dlzb82+Fcn6AgP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2015=E5=B9=B412=E6=9C=8812=E6=97=A5 05:29, Heiko St=C3=BCbner wrote:
+> Am Mittwoch, 18. November 2015, 17:47:24 schrieb Andy Yan:
+>> rockchip platform have a protocol to pass the kernel reboot
+>> mode to bootloader by some special registers when system reboot.
+>> By this way the bootloader can take different action according
+>> to the different kernel reboot mode, for example, command
+>> "reboot loader" will reboot the board to rockusb mode, this is
+>> a very convenient way to get the board enter download mode.
+>> And Android system also use this protocol to pass "recovery"=E3=80=81
+>> =E2=80=9Cfastboot=E2=80=9D reboot mode to bootloader. In upstream la=
+nd, We found
+>> tegra platform also use this mechanism.
+>>
+>> Before this version, I have sent two Series, which can be found
+>> at [0] [1]
+>> [0] https://patchwork.kernel.org/patch/7140751/
+>> [1] https://patchwork.kernel.org/patch/7153531/
+> just so it doesn't get lost, this ties into a slightly more generic a=
+pproach,
+> John Stultz is doing for the android reboot reasons:
+>
+> http://thread.gmane.org/gmane.linux.kernel/2103447
+>
+> The only difference is that we'd need to use the pmu syscon for it.
+>
+>
+     Very glad to see your work on this. And your work is more generic=20
+than my.
+      So hope we can share the code. As you can see, the rockchip=20
+platform use
+      a GRF or PMU register to store the reboot reason. So maybe we nee=
+d=20
+a phandle
+      in the DT node to describe it.
+>> Changes in v3:
+>>   - rename a pinctrl node in rk3288-veyron, the original name will b=
+e
+>>     used in the incoming reboot notifier driver
+>>   - add dt binding
+>>   - move from mach-rockchip to drivers/soc/rockchip, as the tegra do=
+es
+>>   - use dts pass the related register
+>>   - add DT node
+>>
+>> Changes in v2:
+>>    - check cpu dt node
+>>    - remove a unnecessary of_put_node in function rockchip_get_pmu_r=
+egmap
+>>    - fix a align issue
+>>    - use reboot_notifier instead of restart_handler
+>>
+>> Andy Yan (5):
+>>    ARM: dts: rockchip: rk3288-veyron: rename pinctrl node reboot to =
+reset
+>>    dt-bindings: soc: add document for rockchip reboot notifier drive=
+r
+>>    soc: rockchip: add reboot notifier driver
+>>    ARM: dts: rockchip: add reboot node
+>>    ARM64: dts: rockchip: add reboot node
+>>
+>>   .../bindings/soc/rockchip/rockchip-reboot.txt      | 18 ++++
+>>   arch/arm/boot/dts/rk3288-veyron.dtsi               |  2 +-
+>>   arch/arm/boot/dts/rk3288.dtsi                      |  6 ++
+>>   arch/arm/boot/dts/rk3xxx.dtsi                      |  6 ++
+>>   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  6 ++
+>>   drivers/soc/rockchip/Kconfig                       |  7 ++
+>>   drivers/soc/rockchip/Makefile                      |  1 +
+>>   drivers/soc/rockchip/loader.h                      | 22 +++++
+>>   drivers/soc/rockchip/reboot.c                      | 98
+>> ++++++++++++++++++++++ 9 files changed, 165 insertions(+), 1 deletio=
+n(-)
+>>   create mode 100644
+>> Documentation/devicetree/bindings/soc/rockchip/rockchip-reboot.txt c=
+reate
+>> mode 100644 drivers/soc/rockchip/loader.h
+>>   create mode 100644 drivers/soc/rockchip/reboot.c
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
-On Tue, Dec 08, 2015 at 10:37:44AM +0100, Wolfram Sang wrote:
-> Here is a patch series adding better DT support for timing parameters lik=
-e the
-> raise time or the fall time which are generic for the I2C subsystem. Ther=
-e is a
-> core function for parsing and an implementation for the RCar driver how t=
-o use
-> it.
->=20
-> I added people of the designware and rk3x driver to CC because they might=
- be
-> interested in this new function. They provided the basis for this series,=
- so it
-> should be easy to convert them.
->=20
-> Please have a look, test, comment...
->=20
-> Thanks,
->=20
->     Wolfram
 
-Applied patches 1-5 to for-next with the change Andy suggested, thanks!
-
-Simon, you can pick up patches 6-9 now, I'd think.
-
-
---F8dlzb82+Fcn6AgP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWbpM6AAoJEBQN5MwUoCm2ZZcP/j3t0aqhOPgG3wmatXvYxWVT
-PvlxqaDh4/tOZgEe52YVCwDo2G5tkU/fg9Or6oC/xUC0dEsN9hmgJ5FCuqoY4i+W
-vfAvFrtmgKXu6w3xKgkmsDsvdCJlBzBDN6jezAKUSxUoWOEUehu3lxeHqriV4t8u
-I2iZLIDvBAF9FXXVy7MZK/jnoW+VOUsY0kHmwaQEzXxK+gmoEXXnRfSFO7rk6j6I
-5knWpbwTOgInmLfJ0QnWPYsHiAMOsO/YvP6QcqjwFDEbBt+GGkb0jqfT8ouUKjCE
-6u6hudd5fID52+egC8w0gZArCVKu9iDsD9hBmtu990tG5CNniWCtDMgu4D6PEzU6
-MHdcP6Sydi2df4otWEnExYO6kxZ8XBoCZKr6wLntRYR842UrLRl04gx/iFjTAEtD
-zyWTkP55yLLlTixCOW4+ohq5cuY87pUkTiBDIy8nCjfxIAqtOuZWpbItPITtXgLC
-sqVOKCVel5fwl39eYlGecWKOPDglCbo8JsEkGLArA8cFW2DAZHF+GF6yycgx09nM
-mYULS+1raIgjF3JrEJtUNr2wc3sSLvjkLaNJQIL+DMsPSpMGgW76MumU/2M9JDCf
-XHEFIFqTV43WGS/n4RORObfmVxDE2J2B+vkw2b3crLTDt69b6LPLc8rATGa+O7LJ
-+so8/w2OqkRFElCd6bgb
-=sGc7
------END PGP SIGNATURE-----
-
---F8dlzb82+Fcn6AgP--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
