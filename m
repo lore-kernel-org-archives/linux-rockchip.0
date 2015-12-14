@@ -1,223 +1,72 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH v3 3/5] soc: rockchip: add reboot notifier driver
-Date: Mon, 14 Dec 2015 12:39:44 +0100
-Message-ID: <10162108.nOThMrrbdf@wuerfel>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com> <1447840582-19850-1-git-send-email-andy.yan@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add eFuse node for rk3066a SoCs
+Date: Mon, 14 Dec 2015 14:06:06 +0100
+Message-ID: <3368238.OTPIyEf9PI@diego>
+References: <1447227272-1728-1-git-send-email-wxt@rock-chips.com> <1447227272-1728-4-git-send-email-wxt@rock-chips.com> <566E926E.7090903@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1447840582-19850-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <566E926E.7090903@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Caesar Wang <wxt@rock-chips.com>, linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wednesday 18 November 2015 17:56:22 Andy Yan wrote:
-> rockchip platform have a protocol to pass the kernel reboot
-> mode to bootloader by some special registers when system reboot.
-> By this way the bootloader can take different action according
-> to the different kernel reboot mode, for example, command
-> "reboot loader" will reboot the board to rockusb mode, this is
-> a very convenient way to get the board enter download mode.
+Hi srini,
+
+Am Montag, 14. Dezember 2015, 09:57:02 schrieb Srinivas Kandagatla:
+> Heiko,
 > 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Adding John Stultz to Cc
-
-I just saw this thread pop up again, and had to think of John's recent
-patch to unify this across platforms.
-
-John, can you have a look at this driver too, and see how it fits in?
-I think this is yet another variant, using an MMIO register rather than
-RAM (as HTC / NVIDIA does) or SRAM (as Qualcomm does), but otherwise
-it conceptually fits in with what you had.
-
-The driver goes through an existing syscon regmap as far as I can
-tell, rather than a memory area or its own device.
-
-	Arnd
-
-> ---
+> Can you take the DT patches in this series via your tree.
 > 
-> Changes in v3:
->  - move from mach-rockchip to drivers/soc/rockchip, as the tegra does
->  - use dts pass the related register
-> 
-> Changes in v2:
->   - check cpu dt node
->   - remove a unnecessary of_put_node in function rockchip_get_pmu_regmap
->   - fix a align issue
->   - use reboot_notifier instead of restart_handler
-> 
->  drivers/soc/rockchip/Kconfig  |  7 ++++
->  drivers/soc/rockchip/Makefile |  1 +
->  drivers/soc/rockchip/loader.h | 22 ++++++++++
->  drivers/soc/rockchip/reboot.c | 98 +++++++++++++++++++++++++++++++++++++++++++
->  4 files changed, 128 insertions(+)
->  create mode 100644 drivers/soc/rockchip/loader.h
->  create mode 100644 drivers/soc/rockchip/reboot.c
-> 
-> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-> index 7140ff8..4edbc44 100644
-> --- a/drivers/soc/rockchip/Kconfig
-> +++ b/drivers/soc/rockchip/Kconfig
-> @@ -15,4 +15,11 @@ config ROCKCHIP_PM_DOMAINS
->  
->            If unsure, say N.
->  
-> +config ROCKCHIP_REBOOT
-> +	bool "Rockchip reboot notifier driver"
-> +	help
-> +	  Say y here will enable reboot notifier support.
-> +	  This will get reboot mode arguments from userspace and
-> +	  store it in special register.
-> +
->  endif
-> diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
-> index 3d73d06..9817496 100644
-> --- a/drivers/soc/rockchip/Makefile
-> +++ b/drivers/soc/rockchip/Makefile
-> @@ -2,3 +2,4 @@
->  # Rockchip Soc drivers
->  #
->  obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
-> +obj-$(CONFIG_ROCKCHIP_REBOOT) += reboot.o
-> diff --git a/drivers/soc/rockchip/loader.h b/drivers/soc/rockchip/loader.h
-> new file mode 100644
-> index 0000000..bf51baa
-> --- /dev/null
-> +++ b/drivers/soc/rockchip/loader.h
-> @@ -0,0 +1,22 @@
-> +#ifndef __MACH_ROCKCHIP_LOADER_H
-> +#define __MACH_ROCKCHIP_LOADER_H
-> +
-> +/*high 24 bits is tag, low 8 bits is type*/
-> +#define SYS_LOADER_REBOOT_FLAG   0x5242C300
-> +
-> +enum {
-> +	BOOT_NORMAL = 0, /* normal boot */
-> +	BOOT_LOADER,     /* enter loader rockusb mode */
-> +	BOOT_MASKROM,    /* enter maskrom rockusb mode (not support now) */
-> +	BOOT_RECOVER,    /* enter recover */
-> +	BOOT_NORECOVER,  /* do not enter recover */
-> +	BOOT_SECONDOS,   /* boot second OS (not support now)*/
-> +	BOOT_WIPEDATA,   /* enter recover and wipe data. */
-> +	BOOT_WIPEALL,    /* enter recover and wipe all data. */
-> +	BOOT_CHECKIMG,   /* check firmware img with backup part*/
-> +	BOOT_FASTBOOT,   /* enter fast boot mode */
-> +	BOOT_SECUREBOOT_DISABLE,
-> +	BOOT_CHARGING,   /* enter charge mode */
-> +	BOOT_MAX         /* MAX VALID BOOT TYPE.*/
-> +};
-> +#endif
-> diff --git a/drivers/soc/rockchip/reboot.c b/drivers/soc/rockchip/reboot.c
-> new file mode 100644
-> index 0000000..048aeb0b
-> --- /dev/null
-> +++ b/drivers/soc/rockchip/reboot.c
-> @@ -0,0 +1,98 @@
-> +/*
-> + * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License as published by
-> + * the Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + */
-> +#include <linux/init.h>
-> +#include <linux/module.h>
-> +#include <linux/kernel.h>
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/reboot.h>
-> +#include <linux/regmap.h>
-> +#include <linux/mfd/syscon.h>
-> +#include "loader.h"
-> +
-> +struct rockchip_reboot {
-> +	struct device *dev;
-> +	struct regmap *map;
-> +	u32 offset;
-> +	struct notifier_block reboot_notifier;
-> +};
-> +
-> +static void rockchip_get_reboot_flag(const char *cmd, u32 *flag)
-> +{
-> +	*flag = SYS_LOADER_REBOOT_FLAG + BOOT_NORMAL;
-> +
-> +	if (cmd) {
-> +		if (!strcmp(cmd, "loader") || !strcmp(cmd, "bootloader"))
-> +			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_LOADER;
-> +		else if (!strcmp(cmd, "recovery"))
-> +			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_RECOVER;
-> +		else if (!strcmp(cmd, "charge"))
-> +			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_CHARGING;
-> +		else if (!strcmp(cmd, "fastboot"))
-> +			*flag = SYS_LOADER_REBOOT_FLAG + BOOT_FASTBOOT;
-> +	}
-> +}
-> +
-> +static int rockchip_reboot_notify(struct notifier_block *this,
-> +				  unsigned long mode, void *cmd)
-> +{
-> +	struct rockchip_reboot *reboot;
-> +	u32 flag;
-> +
-> +	reboot = container_of(this, struct rockchip_reboot, reboot_notifier);
-> +	rockchip_get_reboot_flag(cmd, &flag);
-> +	regmap_write(reboot->map, reboot->offset, flag);
-> +
-> +	return NOTIFY_DONE;
-> +}
-> +
-> +static int __init rockchip_reboot_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_reboot *reboot;
-> +	int ret;
-> +
-> +	reboot = devm_kzalloc(&pdev->dev, sizeof(*reboot), GFP_KERNEL);
-> +	if (!reboot)
-> +		return -ENOMEM;
-> +
-> +	reboot->dev = &pdev->dev;
-> +	reboot->map = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-> +						      "rockchip,regmap");
-> +	if (IS_ERR(reboot->map))
-> +		return PTR_ERR(reboot->map);
-> +
-> +	if (of_property_read_u32(pdev->dev.of_node, "offset", &reboot->offset))
-> +		return -EINVAL;
-> +
-> +	reboot->reboot_notifier.notifier_call = rockchip_reboot_notify;
-> +	ret = register_reboot_notifier(&reboot->reboot_notifier);
-> +	if (ret)
-> +		dev_err(reboot->dev, "can't register reboot notifier\n");
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct of_device_id rockchip_reboot_of_match[] = {
-> +	{ .compatible = "rockchip,reboot" },
-> +	{}
-> +};
-> +
-> +static struct platform_driver rockchip_reboot_driver = {
-> +	.probe = rockchip_reboot_probe,
-> +	.driver = {
-> +		.name = "rockchip-reboot",
-> +		.of_match_table = rockchip_reboot_of_match,
-> +	},
-> +};
-> +module_platform_driver(rockchip_reboot_driver);
-> +
-> +MODULE_AUTHOR("Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org");
-> +MODULE_DESCRIPTION("Rockchip platform reboot notifier driver");
-> +MODULE_LICENSE("GPL");
-> 
+> I picked up nvmem patches from this series.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+yep that was my plan ... just needed to wait for the nvmem parts to be picked.
+
+
+Thanks for the notifying me :-)
+Heiko
+
+
+> 
+> thanks,
+> srini
+> 
+> On 11/11/15 07:34, Caesar Wang wrote:
+> > This patch add the eFuse dt node for rk3066a SoCs.
+> > 
+> > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> > ---
+> > 
+> >   arch/arm/boot/dts/rk3066a.dtsi | 13 +++++++++++++
+> >   1 file changed, 13 insertions(+)
+> > 
+> > diff --git a/arch/arm/boot/dts/rk3066a.dtsi
+> > b/arch/arm/boot/dts/rk3066a.dtsi index 946f187..f61bb8a 100644
+> > --- a/arch/arm/boot/dts/rk3066a.dtsi
+> > +++ b/arch/arm/boot/dts/rk3066a.dtsi
+> > @@ -153,6 +153,19 @@
+> > 
+> >   		clock-names = "timer", "pclk";
+> >   	
+> >   	};
+> > 
+> > +	efuse: efuse@20010000 {
+> > +		compatible = "rockchip,rockchip-efuse";
+> > +		reg = <0x20010000 0x4000>;
+> > +		#address-cells = <1>;
+> > +		#size-cells = <1>;
+> > +		clocks = <&cru PCLK_EFUSE>;
+> > +		clock-names = "pclk_efuse";
+> > +
+> > +		cpu_leakage: cpu_leakage {
+> > +			reg = <0x17 0x1>;
+> > +		};
+> > +	};
+> > +
+> > 
+> >   	timer@20038000 {
+> >   	
+> >   		compatible = "snps,dw-apb-timer-osc";
+> >   		reg = <0x20038000 0x100>;
