@@ -1,57 +1,64 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v2 8/8] drm/rockchip: dw_hdmi: use encoder enable function
-Date: Mon, 14 Dec 2015 16:40:29 +0800
-Message-ID: <1450082429-10466-1-git-send-email-mark.yao@rock-chips.com>
-References: <1450081931-9709-1-git-send-email-mark.yao@rock-chips.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v2 2/9] i2c: add generic routine to parse DT for timing
+ information
+Date: Mon, 14 Dec 2015 10:49:17 +0100
+Message-ID: <20151214094917.GC1733@katana>
+References: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
+ <1449567473-2084-3-git-send-email-wsa@the-dreams.de>
+ <1449572085.30729.28.camel@linux.intel.com>
+ <20151208130323.GB3359@katana>
+ <20151208215103.GA1601@katana>
+ <1449663156.30729.63.camel@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450081931-9709-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="GZVR6ND4mMseVXL/"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1449663156.30729.63.camel@linux.intel.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-ZW5jb2Rlci5lbmFibGUgaXMgbW9yZSBjb21wYXRpYmxlIHRvIGF0b21pYyBhcGkgdGhhbiBlbmNv
-ZGVyLnByZXBhcmUvY29tbWl0CgpTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9j
-ay1jaGlwcy5jb20+Ci0tLQpDaGFuZ2VzIGluIHYyOiBOb25lCgogZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyB8ICAgMTQgKysrKystLS0tLS0tLS0KIDEgZmlsZSBj
-aGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDkgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKaW5kZXggODBkNmZjOC4uY2ZlMDUyYyAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYworKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCkBAIC0xOTUsMTIg
-KzE5NSwxNSBAQCBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfbW9kZV9zZXQo
-c3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAogewogfQogCi1zdGF0aWMgdm9pZCBkd19oZG1p
-X3JvY2tjaGlwX2VuY29kZXJfY29tbWl0KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKK3N0
-YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNv
-ZGVyICplbmNvZGVyKQogewogCXN0cnVjdCByb2NrY2hpcF9oZG1pICpoZG1pID0gdG9fcm9ja2No
-aXBfaGRtaShlbmNvZGVyKTsKIAl1MzIgdmFsOwogCWludCBtdXg7CiAKKwlyb2NrY2hpcF9kcm1f
-Y3J0Y19tb2RlX2NvbmZpZyhlbmNvZGVyLT5jcnRjLCBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEs
-CisJCQkJICAgICAgUk9DS0NISVBfT1VUX01PREVfQUFBQSk7CisKIAltdXggPSByb2NrY2hpcF9k
-cm1fZW5jb2Rlcl9nZXRfbXV4X2lkKGhkbWktPmRldi0+b2Zfbm9kZSwgZW5jb2Rlcik7CiAJaWYg
-KG11eCkKIAkJdmFsID0gSERNSV9TRUxfVk9QX0xJVCB8IChIRE1JX1NFTF9WT1BfTElUIDw8IDE2
-KTsKQEAgLTIxMiwxNyArMjE1LDEwIEBAIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBfZW5j
-b2Rlcl9jb21taXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogCQkobXV4KSA/ICJMSVQi
-IDogIkJJRyIpOwogfQogCi1zdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfcHJl
-cGFyZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCi17Ci0Jcm9ja2NoaXBfZHJtX2NydGNf
-bW9kZV9jb25maWcoZW5jb2Rlci0+Y3J0YywgRFJNX01PREVfQ09OTkVDVE9SX0hETUlBLAotCQkJ
-CSAgICAgIFJPQ0tDSElQX09VVF9NT0RFX0FBQUEpOwotfQotCiBzdGF0aWMgc3RydWN0IGRybV9l
-bmNvZGVyX2hlbHBlcl9mdW5jcyBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfaGVscGVyX2Z1bmNz
-ID0gewogCS5tb2RlX2ZpeHVwID0gZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVyX21vZGVfZml4dXAs
-CiAJLm1vZGVfc2V0ICAgPSBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfbW9kZV9zZXQsCi0JLnBy
-ZXBhcmUgICAgPSBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfcHJlcGFyZSwKLQkuY29tbWl0ICAg
-ICA9IGR3X2hkbWlfcm9ja2NoaXBfZW5jb2Rlcl9jb21taXQsCisJLmVuYWJsZSAgICAgPSBkd19o
-ZG1pX3JvY2tjaGlwX2VuY29kZXJfZW5hYmxlLAogCS5kaXNhYmxlICAgID0gZHdfaGRtaV9yb2Nr
-Y2hpcF9lbmNvZGVyX2Rpc2FibGUsCiB9OwogCi0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--GZVR6ND4mMseVXL/
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Or maybe just be a bit verbose like the original variant
+> int ret;
+>=20
+> ret =3D device_property_read=E2=80=A6(=E2=80=A6);
+> if (ret && use_defaults) {
+> =E2=80=A6
+> }
+>=20
+> Among all variants I like the latter one here. What do you think?
+
+I agree and fixed it like this.
+
+
+--GZVR6ND4mMseVXL/
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWbpCdAAoJEBQN5MwUoCm2oVkP/RjZqDK5AOtqspvmyuxZzCs0
+BQaBbRqL16DL08wDJ4PCzo0q3kbZJluIBCDp+7FGayBnhhhpvcKORLLX3e5B8YOy
+4z1iuP7NptPyb/cor2DeGS7u40W+I1QVcgG0oTAiycjyVzmi483O9ULzryq5dEjk
+3IGGTo4jvEm+cVUxduWduTSX5onX89wfoPIy6pYRt/4gcJiWE4s8JSWnNqMxlMuk
+b+KHMnw/GFMt7yQrskDlvz2xXLqPyQrFgU9ppuUweZHYqUFUEtek3MCEW9WT7qyP
+Py4fR2Bms8qex0rdxDDaeUCDpWuB9SZKuJwyNWg5/G4vlHiPM3V1PiCr0D8fQyCF
+fra3lih05SdEGwB4cIRGlkE6UrFm5Qx4uX4n+AEhTTvomngpnhbMQodRp9hXxQgQ
+N63m2XAf+qGXRq98CGN0plRSMEbk6ZVkrqTbvitnp+8ooCmOn4qf/XxnWA2swugL
+xc9ZGTFbrlHaalrrCfBafHSGdW46BgiahNijNke8HkgfXkFCzmFIswrAYQ1b7vtu
+HruWUiNZt7GFj346mYJHtnpUWK3jv2wzRCU+217ezG4iSqHT6HQWDf1xSewogTX5
+kNJORfdbujcjCwo7Ux8IQifBmF5GSxnnk8lpaZmk7b3OmuGOnb34CYAZdo0XyuXh
+MJtYRrv54ifR7URy5cby
+=ViYu
+-----END PGP SIGNATURE-----
+
+--GZVR6ND4mMseVXL/--
