@@ -1,64 +1,62 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2 2/9] i2c: add generic routine to parse DT for timing
- information
-Date: Mon, 14 Dec 2015 10:49:17 +0100
-Message-ID: <20151214094917.GC1733@katana>
-References: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
- <1449567473-2084-3-git-send-email-wsa@the-dreams.de>
- <1449572085.30729.28.camel@linux.intel.com>
- <20151208130323.GB3359@katana>
- <20151208215103.GA1601@katana>
- <1449663156.30729.63.camel@linux.intel.com>
+From: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add eFuse node for rk3066a SoCs
+Date: Mon, 14 Dec 2015 09:57:02 +0000
+Message-ID: <566E926E.7090903@linaro.org>
+References: <1447227272-1728-1-git-send-email-wxt@rock-chips.com> <1447227272-1728-4-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="GZVR6ND4mMseVXL/"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1449663156.30729.63.camel@linux.intel.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: linux-i2c@vger.kernel.org, linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1447227272-1728-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Heiko,
 
---GZVR6ND4mMseVXL/
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Can you take the DT patches in this series via your tree.
 
-> Or maybe just be a bit verbose like the original variant
-> int ret;
->=20
-> ret =3D device_property_read=E2=80=A6(=E2=80=A6);
-> if (ret && use_defaults) {
-> =E2=80=A6
-> }
->=20
-> Among all variants I like the latter one here. What do you think?
+I picked up nvmem patches from this series.
 
-I agree and fixed it like this.
+thanks,
+srini
 
-
---GZVR6ND4mMseVXL/
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWbpCdAAoJEBQN5MwUoCm2oVkP/RjZqDK5AOtqspvmyuxZzCs0
-BQaBbRqL16DL08wDJ4PCzo0q3kbZJluIBCDp+7FGayBnhhhpvcKORLLX3e5B8YOy
-4z1iuP7NptPyb/cor2DeGS7u40W+I1QVcgG0oTAiycjyVzmi483O9ULzryq5dEjk
-3IGGTo4jvEm+cVUxduWduTSX5onX89wfoPIy6pYRt/4gcJiWE4s8JSWnNqMxlMuk
-b+KHMnw/GFMt7yQrskDlvz2xXLqPyQrFgU9ppuUweZHYqUFUEtek3MCEW9WT7qyP
-Py4fR2Bms8qex0rdxDDaeUCDpWuB9SZKuJwyNWg5/G4vlHiPM3V1PiCr0D8fQyCF
-fra3lih05SdEGwB4cIRGlkE6UrFm5Qx4uX4n+AEhTTvomngpnhbMQodRp9hXxQgQ
-N63m2XAf+qGXRq98CGN0plRSMEbk6ZVkrqTbvitnp+8ooCmOn4qf/XxnWA2swugL
-xc9ZGTFbrlHaalrrCfBafHSGdW46BgiahNijNke8HkgfXkFCzmFIswrAYQ1b7vtu
-HruWUiNZt7GFj346mYJHtnpUWK3jv2wzRCU+217ezG4iSqHT6HQWDf1xSewogTX5
-kNJORfdbujcjCwo7Ux8IQifBmF5GSxnnk8lpaZmk7b3OmuGOnb34CYAZdo0XyuXh
-MJtYRrv54ifR7URy5cby
-=ViYu
------END PGP SIGNATURE-----
-
---GZVR6ND4mMseVXL/--
+On 11/11/15 07:34, Caesar Wang wrote:
+> This patch add the eFuse dt node for rk3066a SoCs.
+>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+>   arch/arm/boot/dts/rk3066a.dtsi | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+> index 946f187..f61bb8a 100644
+> --- a/arch/arm/boot/dts/rk3066a.dtsi
+> +++ b/arch/arm/boot/dts/rk3066a.dtsi
+> @@ -153,6 +153,19 @@
+>   		clock-names = "timer", "pclk";
+>   	};
+>
+> +	efuse: efuse@20010000 {
+> +		compatible = "rockchip,rockchip-efuse";
+> +		reg = <0x20010000 0x4000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		clocks = <&cru PCLK_EFUSE>;
+> +		clock-names = "pclk_efuse";
+> +
+> +		cpu_leakage: cpu_leakage {
+> +			reg = <0x17 0x1>;
+> +		};
+> +	};
+> +
+>   	timer@20038000 {
+>   		compatible = "snps,dw-apb-timer-osc";
+>   		reg = <0x20038000 0x100>;
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
