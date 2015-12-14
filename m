@@ -1,62 +1,72 @@
-From: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 3/4] ARM: dts: rockchip: add eFuse node for rk3066a SoCs
-Date: Mon, 14 Dec 2015 09:57:02 +0000
-Message-ID: <566E926E.7090903@linaro.org>
-References: <1447227272-1728-1-git-send-email-wxt@rock-chips.com> <1447227272-1728-4-git-send-email-wxt@rock-chips.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v2 0/9] i2c: add generic support for timing parameters in
+ DT
+Date: Mon, 14 Dec 2015 11:00:26 +0100
+Message-ID: <20151214100026.GD1733@katana>
+References: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1447227272-1728-4-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="F8dlzb82+Fcn6AgP"
+Return-path: <linux-sh-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1449567473-2084-1-git-send-email-wsa@the-dreams.de>
+Sender: linux-sh-owner@vger.kernel.org
+To: linux-i2c@vger.kernel.org
+Cc: linux-sh@vger.kernel.org, Magnus Damm <magnus.damm@gmail.com>, Simon Horman <horms@verge.net.au>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert@linux-m68k.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Jarkko Nikula <jarkko.nikula@linux.intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
 
-Can you take the DT patches in this series via your tree.
+--F8dlzb82+Fcn6AgP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I picked up nvmem patches from this series.
+On Tue, Dec 08, 2015 at 10:37:44AM +0100, Wolfram Sang wrote:
+> Here is a patch series adding better DT support for timing parameters lik=
+e the
+> raise time or the fall time which are generic for the I2C subsystem. Ther=
+e is a
+> core function for parsing and an implementation for the RCar driver how t=
+o use
+> it.
+>=20
+> I added people of the designware and rk3x driver to CC because they might=
+ be
+> interested in this new function. They provided the basis for this series,=
+ so it
+> should be easy to convert them.
+>=20
+> Please have a look, test, comment...
+>=20
+> Thanks,
+>=20
+>     Wolfram
 
-thanks,
-srini
+Applied patches 1-5 to for-next with the change Andy suggested, thanks!
 
-On 11/11/15 07:34, Caesar Wang wrote:
-> This patch add the eFuse dt node for rk3066a SoCs.
->
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
->   arch/arm/boot/dts/rk3066a.dtsi | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-> index 946f187..f61bb8a 100644
-> --- a/arch/arm/boot/dts/rk3066a.dtsi
-> +++ b/arch/arm/boot/dts/rk3066a.dtsi
-> @@ -153,6 +153,19 @@
->   		clock-names = "timer", "pclk";
->   	};
->
-> +	efuse: efuse@20010000 {
-> +		compatible = "rockchip,rockchip-efuse";
-> +		reg = <0x20010000 0x4000>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		clocks = <&cru PCLK_EFUSE>;
-> +		clock-names = "pclk_efuse";
-> +
-> +		cpu_leakage: cpu_leakage {
-> +			reg = <0x17 0x1>;
-> +		};
-> +	};
-> +
->   	timer@20038000 {
->   		compatible = "snps,dw-apb-timer-osc";
->   		reg = <0x20038000 0x100>;
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Simon, you can pick up patches 6-9 now, I'd think.
+
+
+--F8dlzb82+Fcn6AgP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWbpM6AAoJEBQN5MwUoCm2ZZcP/j3t0aqhOPgG3wmatXvYxWVT
+PvlxqaDh4/tOZgEe52YVCwDo2G5tkU/fg9Or6oC/xUC0dEsN9hmgJ5FCuqoY4i+W
+vfAvFrtmgKXu6w3xKgkmsDsvdCJlBzBDN6jezAKUSxUoWOEUehu3lxeHqriV4t8u
+I2iZLIDvBAF9FXXVy7MZK/jnoW+VOUsY0kHmwaQEzXxK+gmoEXXnRfSFO7rk6j6I
+5knWpbwTOgInmLfJ0QnWPYsHiAMOsO/YvP6QcqjwFDEbBt+GGkb0jqfT8ouUKjCE
+6u6hudd5fID52+egC8w0gZArCVKu9iDsD9hBmtu990tG5CNniWCtDMgu4D6PEzU6
+MHdcP6Sydi2df4otWEnExYO6kxZ8XBoCZKr6wLntRYR842UrLRl04gx/iFjTAEtD
+zyWTkP55yLLlTixCOW4+ohq5cuY87pUkTiBDIy8nCjfxIAqtOuZWpbItPITtXgLC
+sqVOKCVel5fwl39eYlGecWKOPDglCbo8JsEkGLArA8cFW2DAZHF+GF6yycgx09nM
+mYULS+1raIgjF3JrEJtUNr2wc3sSLvjkLaNJQIL+DMsPSpMGgW76MumU/2M9JDCf
+XHEFIFqTV43WGS/n4RORObfmVxDE2J2B+vkw2b3crLTDt69b6LPLc8rATGa+O7LJ
++so8/w2OqkRFElCd6bgb
+=sGc7
+-----END PGP SIGNATURE-----
+
+--F8dlzb82+Fcn6AgP--
