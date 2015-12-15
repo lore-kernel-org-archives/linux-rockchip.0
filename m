@@ -1,89 +1,161 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH v3 3/5] soc: rockchip: add reboot notifier driver
-Date: Tue, 15 Dec 2015 21:38:41 +0100
-Message-ID: <15127971.1juVbocOjP@wuerfel>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
- <3759218.6sItdW65UG@wuerfel> <20151215174234.GB24031@ulmo.nvidia.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: poweroff-issue with dwc2 on Felipe's testing/next branch
+Date: Wed, 16 Dec 2015 00:49:37 +0100
+Message-ID: <2855104.z6YbyzHk7K@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20151215174234.GB24031-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: balbi-l0cyMroinI0@public.gmane.org
+Cc: john.youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tuesday 15 December 2015 18:42:36 Thierry Reding wrote:
-> On Tue, Dec 15, 2015 at 05:34:00PM +0100, Arnd Bergmann wrote:
-> > On Tuesday 15 December 2015 17:31:22 Thierry Reding wrote:
-> > > On Mon, Dec 14, 2015 at 12:39:44PM +0100, Arnd Bergmann wrote:
-> > > > On Wednesday 18 November 2015 17:56:22 Andy Yan wrote:
-> > > > > rockchip platform have a protocol to pass the kernel reboot
-> > > > > mode to bootloader by some special registers when system reboot.
-> > > > > By this way the bootloader can take different action according
-> > > > > to the different kernel reboot mode, for example, command
-> > > > > "reboot loader" will reboot the board to rockusb mode, this is
-> > > > > a very convenient way to get the board enter download mode.
-> > > > > 
-> > > > > Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > > > 
-> > > > Adding John Stultz to Cc
-> > > > 
-> > > > I just saw this thread pop up again, and had to think of John's recent
-> > > > patch to unify this across platforms.
-> > > > 
-> > > > John, can you have a look at this driver too, and see how it fits in?
-> > > > I think this is yet another variant, using an MMIO register rather than
-> > > > RAM (as HTC / NVIDIA does) or SRAM (as Qualcomm does), but otherwise
-> > > > it conceptually fits in with what you had.
-> > > 
-> > > FWIW, Tegra typically does use an MMIO register as well. See
-> > > drivers/soc/tegra/pmc.c:tegra_pmc_restart_notify(). I don't know what
-> > > HTC does, but if it's writing somewhere in RAM it isn't using the
-> > > standard way of resetting the SoC. There's early boot ROM code which I
-> > > think evaluates the PMC_SCRATCH0 register on Tegra to determine which
-> > > mode to boot into. That's before even any firmware gets the chance of
-> > > doing anything.
+Hi,
+
+it seems the recent dwc2 additions to the testing/next branch [0] caused
+some interesting issue for me.
+
+Setting is a regular 4.4-rc3/4 (only with some display-stuff added), and the
+testing/next branch merged in.
+
+If I attach a single usb device everything still works fine, but once it
+is connected through a hub, like the following:
+
+root@localhost:~# lsusb -t
+/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
+    |__ Port 1: Dev 2, If 0, Class=Video, Driver=, 480M
+    |__ Port 1: Dev 2, If 1, Class=Video, Driver=, 480M
+/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=dwc2/1p, 480M
+    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/5p, 480M
+        |__ Port 1: Dev 3, If 0, Class=Vendor Specific Class, Driver=smsc95xx, 480M
+        |__ Port 2: Dev 4, If 0, Class=Mass Storage, Driver=usb-storage, 480M
+
+I get strange results when powering off the device with the usb device
+still attached.
+
+On regular 4.4-rc3
+root@localhost:~# poweroff
+...
+reboot: Power down
+~20sec delay before actual poweroff
+[that delay is only present with a usb hub in between, probably due to the
+big number of interrupts it creates]
 
 
-I just checked the android lollipop tree, and I could not find a pmc_restart_notify
-function, only this file
+With testing/next the device cannot poweroff anymore and instead I get
+[   40.117160] reboot: Power down
+[   68.031372] NMI watchdog: BUG: soft lockup - CPU#0 stuck for 22s! [systemd-shutdow:1]
+[   68.046575] Modules linked in:
+[   68.053084] irq event stamp: 1654975
+[   68.060091] hardirqs last  enabled at (1654974): [<c00156fc>] __irq_svc+0x5c/0x78
+[   68.074935] hardirqs last disabled at (1654975): [<c00156e8>] __irq_svc+0x48/0x78
+[   68.089666] softirqs last  enabled at (1654846): [<c002ef84>] __do_softirq+0x358/0x49c
+[   68.105261] softirqs last disabled at (1654847): [<c002f400>] irq_exit+0x94/0xd4
+[   68.120027] CPU: 0 PID: 1 Comm: systemd-shutdow Not tainted 4.4.0-rc4+ #2761
+[   68.133507] Hardware name: Rockchip (Device Tree)
+[   68.142690] task: ee900d40 ti: ee902000 task.ti: ee902000
+[   68.153237] PC is at rcu_lockdep_current_cpu_online+0x6c/0x90
+[   68.164438] LR is at rcu_read_lock_held+0x38/0x58
+[   68.173683] pc : [<c0095e98>]    lr : [<c0094d00>]    psr: 00010113
+[   68.173683] sp : ee903be8  ip : ee903bf8  fp : ee903bf4
+[   68.195300] r10: c0b884f8  r9 : 00000000  r8 : c0b884f8
+[   68.205429] r7 : ffffbccc  r6 : eed7f680  r5 : 00000001  r4 : ee955800
+[   68.217938] r3 : ee902028  r2 : 0000000f  r1 : c0b1891c  r0 : 00000001
+[   68.230482] Flags: nzcv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment none
+[   68.244141] Control: 10c5387d  Table: 2dae806a  DAC: 00000051
+[   68.255283] CPU: 0 PID: 1 Comm: systemd-shutdow Not tainted 4.4.0-rc4+ #2761
+[   68.268720] Hardware name: Rockchip (Device Tree)
+[   68.278165] [<c0019914>] (unwind_backtrace) from [<c0014bcc>] (show_stack+0x20/0x24)
+[   68.293198] [<c0014bcc>] (show_stack) from [<c02c4584>] (dump_stack+0x84/0xb8)
+[   68.307285] [<c02c4584>] (dump_stack) from [<c0010d74>] (show_regs+0x1c/0x20)
+[   68.321205] [<c0010d74>] (show_regs) from [<c00d993c>] (watchdog_timer_fn+0x1c8/0x250)
+[   68.336579] [<c00d993c>] (watchdog_timer_fn) from [<c00a0e0c>] (__hrtimer_run_queues+0x2cc/0x55c)
+[   68.353819] [<c00a0e0c>] (__hrtimer_run_queues) from [<c00a12a0>] (hrtimer_interrupt+0xac/0x1f8)
+[   68.370795] [<c00a12a0>] (hrtimer_interrupt) from [<c04f1714>] (arch_timer_handler_phys+0x38/0x48)
+[   68.388044] [<c04f1714>] (arch_timer_handler_phys) from [<c008fd34>] (handle_percpu_devid_irq+0x15c/0x314)
+[   68.406687] [<c008fd34>] (handle_percpu_devid_irq) from [<c008b4b8>] (generic_handle_irq+0x28/0x38)
+[   68.424177] [<c008b4b8>] (generic_handle_irq) from [<c008b830>] (__handle_domain_irq+0x9c/0xc4)
+[   68.440945] [<c008b830>] (__handle_domain_irq) from [<c0009518>] (gic_handle_irq+0x58/0x80)
+[   68.457054] [<c0009518>] (gic_handle_irq) from [<c00156f8>] (__irq_svc+0x58/0x78)
+[   68.471405] Exception stack(0xee903b98 to 0xee903be0)
+[   68.481288] 3b80:                                                       00000001 c0b1891c
+[   68.497074] 3ba0: 0000000f ee902028 ee955800 00000001 eed7f680 ffffbccc c0b884f8 00000000
+[   68.512875] 3bc0: c0b884f8 ee903bf4 ee903bf8 ee903be8 c0094d00 c0095e98 00010113 ffffffff
+[   68.528713] [<c00156f8>] (__irq_svc) from [<c0095e98>] (rcu_lockdep_current_cpu_online+0x6c/0x90)
+[   68.545915] [<c0095e98>] (rcu_lockdep_current_cpu_online) from [<c0094d00>] (rcu_read_lock_held+0x38/0x58)
+[   68.564535] [<c0094d00>] (rcu_read_lock_held) from [<c006af0c>] (run_rebalance_domains+0x114/0x3e4)
+[   68.582013] [<c006af0c>] (run_rebalance_domains) from [<c002ee04>] (__do_softirq+0x1d8/0x49c)
+[   68.598529] [<c002ee04>] (__do_softirq) from [<c002f400>] (irq_exit+0x94/0xd4)
+[   68.612591] [<c002f400>] (irq_exit) from [<c008b834>] (__handle_domain_irq+0xa0/0xc4)
+[   68.808119] [<c008b834>] (__handle_domain_irq) from [<c0009518>] (gic_handle_irq+0x58/0x80)
+[   69.004792] [<c0009518>] (gic_handle_irq) from [<c00156f8>] (__irq_svc+0x58/0x78)
+[   69.203767] Exception stack(0xee903d20 to 0xee903d68)
+[   69.402232] 3d20: 00000001 00000010 c134e8f8 ee900d40 00000000 60010013 ee26a834 00000000
+[   69.608139] 3d40: 00000000 00000000 00000000 ee903db4 00000002 ee903d70 ee9012a8 c007f4bc
+[   69.811985] 3d60: 80010013 ffffffff
+[   70.007318] [<c00156f8>] (__irq_svc) from [<c007f4bc>] (lock_acquire+0x190/0x218)
+[   70.212947] [<c007f4bc>] (lock_acquire) from [<c0758f5c>] (mutex_lock_nested+0x78/0x41c)
+[   70.419796] [<c0758f5c>] (mutex_lock_nested) from [<c03d5838>] (regmap_lock_mutex+0x1c/0x20)
+[   70.630771] [<c03d5838>] (regmap_lock_mutex) from [<c03d8e6c>] (regmap_update_bits+0x34/0x70)
+[   70.842523] [<c03d8e6c>] (regmap_update_bits) from [<c03e5a4c>] (rk808_device_shutdown+0x4c/0x74)
+[   71.056896] [<c03e5a4c>] (rk808_device_shutdown) from [<c0012bc8>] (machine_power_off+0x34/0x3c)
+[   71.271604] [<c0012bc8>] (machine_power_off) from [<c004f3d4>] (kernel_power_off+0x6c/0x80)
+[   71.486193] [<c004f3d4>] (kernel_power_off) from [<c004f588>] (SyS_reboot+0x148/0x1d8)
+[   71.701543] [<c004f588>] (SyS_reboot) from [<c000ff80>] (ret_fast_syscall+0x0/0x1c)
+[   71.920475] Kernel panic - not syncing: softlockup: hung tasks
+[   72.134543] CPU: 0 PID: 1 Comm: systemd-shutdow Tainted: G             L  4.4.0-rc4+ #2761
+[   72.353754] Hardware name: Rockchip (Device Tree)
+[   72.567683] [<c0019914>] (unwind_backtrace) from [<c0014bcc>] (show_stack+0x20/0x24)
+[   72.789719] [<c0014bcc>] (show_stack) from [<c02c4584>] (dump_stack+0x84/0xb8)
+[   73.012087] [<c02c4584>] (dump_stack) from [<c01157e4>] (panic+0x9c/0x210)
+[   73.233823] [<c01157e4>] (panic) from [<c00d9984>] (watchdog_timer_fn+0x210/0x250)
+[   73.456871] [<c00d9984>] (watchdog_timer_fn) from [<c00a0e0c>] (__hrtimer_run_queues+0x2cc/0x55c)
+[   73.683212] [<c00a0e0c>] (__hrtimer_run_queues) from [<c00a12a0>] (hrtimer_interrupt+0xac/0x1f8)
+[   73.909999] [<c00a12a0>] (hrtimer_interrupt) from [<c04f1714>] (arch_timer_handler_phys+0x38/0x48)
+[   74.137596] [<c04f1714>] (arch_timer_handler_phys) from [<c008fd34>] (handle_percpu_devid_irq+0x15c/0x314)
+[   74.367459] [<c008fd34>] (handle_percpu_devid_irq) from [<c008b4b8>] (generic_handle_irq+0x28/0x38)
+[   74.596433] [<c008b4b8>] (generic_handle_irq) from [<c008b830>] (__handle_domain_irq+0x9c/0xc4)
+[   74.826935] [<c008b830>] (__handle_domain_irq) from [<c0009518>] (gic_handle_irq+0x58/0x80)
+[   75.057263] [<c0009518>] (gic_handle_irq) from [<c00156f8>] (__irq_svc+0x58/0x78)
+[   75.285610] Exception stack(0xee903b98 to 0xee903be0)
+[   75.509201] 3b80:                                                       00000001 c0b1891c
+[   75.737970] 3ba0: 0000000f ee902028 ee955800 00000001 eed7f680 ffffbccc c0b884f8 00000000
+[   75.965750] 3bc0: c0b884f8 ee903bf4 ee903bf8 ee903be8 c0094d00 c0095e98 00010113 ffffffff
+[   76.193210] [<c00156f8>] (__irq_svc) from [<c0095e98>] (rcu_lockdep_current_cpu_online+0x6c/0x90)
+[   76.422735] [<c0095e98>] (rcu_lockdep_current_cpu_online) from [<c0094d00>] (rcu_read_lock_held+0x38/0x58)
+[   76.654439] [<c0094d00>] (rcu_read_lock_held) from [<c006af0c>] (run_rebalance_domains+0x114/0x3e4)
+[   76.885606] [<c006af0c>] (run_rebalance_domains) from [<c002ee04>] (__do_softirq+0x1d8/0x49c)
+[   77.116138] [<c002ee04>] (__do_softirq) from [<c002f400>] (irq_exit+0x94/0xd4)
+[   77.342544] [<c002f400>] (irq_exit) from [<c008b834>] (__handle_domain_irq+0xa0/0xc4)
+[   77.569812] [<c008b834>] (__handle_domain_irq) from [<c0009518>] (gic_handle_irq+0x58/0x80)
+[   77.801452] [<c0009518>] (gic_handle_irq) from [<c00156f8>] (__irq_svc+0x58/0x78)
+[   78.030528] Exception stack(0xee903d20 to 0xee903d68)
+[   78.254326] 3d20: 00000001 00000010 c134e8f8 ee900d40 00000000 60010013 ee26a834 00000000
+[   78.483633] 3d40: 00000000 00000000 00000000 ee903db4 00000002 ee903d70 ee9012a8 c007f4bc
+[   78.710987] 3d60: 80010013 ffffffff
+[   78.929606] [<c00156f8>] (__irq_svc) from [<c007f4bc>] (lock_acquire+0x190/0x218)
+[   79.156074] [<c007f4bc>] (lock_acquire) from [<c0758f5c>] (mutex_lock_nested+0x78/0x41c)
+[   79.383616] [<c0758f5c>] (mutex_lock_nested) from [<c03d5838>] (regmap_lock_mutex+0x1c/0x20)
+[   79.611793] [<c03d5838>] (regmap_lock_mutex) from [<c03d8e6c>] (regmap_update_bits+0x34/0x70)
+[   79.839125] [<c03d8e6c>] (regmap_update_bits) from [<c03e5a4c>] (rk808_device_shutdown+0x4c/0x74)
+[   80.066755] [<c03e5a4c>] (rk808_device_shutdown) from [<c0012bc8>] (machine_power_off+0x34/0x3c)
+[   80.296308] [<c0012bc8>] (machine_power_off) from [<c004f3d4>] (kernel_power_off+0x6c/0x80)
+[   80.525430] [<c004f3d4>] (kernel_power_off) from [<c004f588>] (SyS_reboot+0x148/0x1d8)
+[   80.753737] [<c004f588>] (SyS_reboot) from [<c000ff80>] (ret_fast_syscall+0x0/0x1c)
+[   80.986626] ---[ end Kernel panic - not syncing: softlockup: hung tasks
 
-https://android.googlesource.com/kernel/tegra/+/android-tegra-flounder-3.10-lollipop-release/drivers/htc_debug/stability/reboot_params.c
 
-with the device that stores into RAM. It looks like HTC ported over
-a driver that they were already using on some Qualcomm MSM8960 device,
-as in 
+There are more pending patches I haven't looked at - so maybe one of them
+improves that, but maybe one of you also has some idea :-) .
 
-https://gitlab.com/MaC/android_kernel_htc_msm8960/blob/859977fc723f59a6b707df1d70e80826ee1dccc4/arch/arm/mach-msm/htc/htc_restart_handler.c
 
-On Android marshmallow (Flounder), that file again does not exist, and
-I don't see how it's done.
+Heiko
 
-> > HTC apparently uses a separate RAM area to pass the reboot reason,
-> > and they have a driver to store that, which is separate from the
-> > driver that they use for actually rebooting the machine.
-> 
-> I wasn't very clear, but the PMC_SCRATCH0 register is used to store the
-> reset reason. It supports the recovery mode, which I think is really an
-> Android thing, "bootloader" will typically cause the bootloader not to
-> boot anything, and "forced-recovery" will go into a recovery mode that
-> is used to bootstrap the device (usually by uploading a "miniloader"
-> that initializes RAM, downloads a bootloader for booting or flashing an
-> operating system, ...).
-> 
-> The write that resets the SoC is to a different register.
 
-So is this scratch register interpreted by some maskrom code, or by code that
-can be provided by the OEM?
+[0] https://git.kernel.org/cgit/linux/kernel/git/balbi/usb.git/log/?h=testing/next
 
-	Arnd
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
