@@ -1,38 +1,39 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: modify rk3288 jaq backlight-level
-Date: Mon, 14 Dec 2015 22:46:32 +0100
-Message-ID: <1868289.Tn7cSBTFBY@diego>
-References: <1449493869-32151-1-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v10 0/17] Add Analogix Core Display Port Driver
+Date: Tue, 15 Dec 2015 01:06:30 +0100
+Message-ID: <4659407.pYb0RRCQQX@diego>
+References: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1449493869-32151-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1449470239-30667-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Mark Yao <mark.yao@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Russell King <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, ajaynumb@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+Hi Yakir,
 
-Am Montag, 7. Dezember 2015, 21:11:08 schrieb Caesar Wang:
-> the panel which jaq use require the pwm duty cycle larger than 3%,
-> when the backlight status from power off to power on, otherwise the
-> backlight will flush, so we modify the second brightness-level to 8,
-> and when the backlight from power off to power on the pwm duty cycle
-> will larger than 3%.
-> 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Am Montag, 7. Dezember 2015, 14:37:19 schrieb Yakir Yang:
+>    The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+> share the same IP, so a lot of parts can be re-used. I split the common
+> code into bridge directory, then rk3288 and exynos only need to keep
+> some platform code. Cause I can't find the exact IP name of exynos dp
+> controller, so I decide to name dp core driver with "analogix" which I
+> find in rk3288 eDP TRM
 
-I've merged the two patches and included them in my series for the veyron edp 
-devicetree changes [0].
+so it looks like the hotplug works nicely now. I was able to test it 
+sucessfully on both a Jerry and a Minnie device without needing to force 
+hotplug :-) .
+
+As I needed to adapt some patches when applying the lastest ones, I think it 
+would be good for a full send of the latest version as v11.
+
+When going over the patches before sending, please also fix the indentation 
+issues in analogix_dp_core.h - both newly added elements to analogix_dp_device 
+use spaces between type and name, where the rest uses tabs.
+[This should of course be fixed in the patches adding these lines :-) ]
 
 
 Heiko
-
-[0] https://github.com/mmind/linux-rockchip/commit/45e3abed0a86c7ee5cea0b35492b65890b928175
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
