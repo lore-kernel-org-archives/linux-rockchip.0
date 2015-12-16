@@ -1,48 +1,76 @@
 From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v6 2/6] drm/dsi: Add a helper to get bits per pixel of MIPI
- DSI pixel format
-Date: Wed, 16 Dec 2015 18:10:12 +0800
-Message-ID: <1450260616-21160-3-git-send-email-zyw@rock-chips.com>
+Subject: [PATCH v6 6/6] ARM: dts: rockchip: add support mipi panel tv080wum-nl0
+Date: Wed, 16 Dec 2015 18:10:16 +0800
+Message-ID: <1450260616-21160-7-git-send-email-zyw@rock-chips.com>
 References: <1450260616-21160-1-git-send-email-zyw@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1450260616-21160-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
-Cc: Chris Zhong <zyw@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Cc: Chris Zhong <zyw@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RnJvbTogTGl1IFlpbmcgPFlpbmcubGl1QGZyZWVzY2FsZS5jb20+CgpTaWduZWQtb2ZmLWJ5OiBM
-aXUgWWluZyA8WWluZy5MaXVAZnJlZXNjYWxlLmNvbT4KQWNrZWQtYnk6IFRoaWVycnkgUmVkaW5n
-IDx0cmVkaW5nQG52aWRpYS5jb20+ClNpZ25lZC1vZmYtYnk6IENocmlzIFpob25nIDx6eXdAcm9j
-ay1jaGlwcy5jb20+Ci0tLQoKQ2hhbmdlcyBpbiB2NjogTm9uZQpDaGFuZ2VzIGluIHY1OiBOb25l
-CkNoYW5nZXMgaW4gdjQ6IE5vbmUKQ2hhbmdlcyBpbiB2MzogTm9uZQoKIGluY2x1ZGUvZHJtL2Ry
-bV9taXBpX2RzaS5oIHwgMTQgKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxNCBpbnNl
-cnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX21pcGlfZHNpLmggYi9pbmNs
-dWRlL2RybS9kcm1fbWlwaV9kc2kuaAppbmRleCBmMWQ4ZDBkLi4zNjYyMDIxIDEwMDY0NAotLS0g
-YS9pbmNsdWRlL2RybS9kcm1fbWlwaV9kc2kuaAorKysgYi9pbmNsdWRlL2RybS9kcm1fbWlwaV9k
-c2kuaApAQCAtMTYzLDYgKzE2MywyMCBAQCBzdGF0aWMgaW5saW5lIHN0cnVjdCBtaXBpX2RzaV9k
-ZXZpY2UgKnRvX21pcGlfZHNpX2RldmljZShzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJcmV0dXJuIGNv
-bnRhaW5lcl9vZihkZXYsIHN0cnVjdCBtaXBpX2RzaV9kZXZpY2UsIGRldik7CiB9CiAKK3N0YXRp
-YyBpbmxpbmUgaW50IG1pcGlfZHNpX3BpeGVsX2Zvcm1hdF90b19icHAoZW51bSBtaXBpX2RzaV9w
-aXhlbF9mb3JtYXQgZm10KQoreworCXN3aXRjaCAoZm10KSB7CisJY2FzZSBNSVBJX0RTSV9GTVRf
-UkdCODg4OgorCWNhc2UgTUlQSV9EU0lfRk1UX1JHQjY2NjoKKwkJcmV0dXJuIDI0OworCWNhc2Ug
-TUlQSV9EU0lfRk1UX1JHQjY2Nl9QQUNLRUQ6CisJCXJldHVybiAxODsKKwljYXNlIE1JUElfRFNJ
-X0ZNVF9SR0I1NjU6CisJCXJldHVybiAxNjsKKwl9CisJcmV0dXJuIC1FSU5WQUw7Cit9CisKIHN0
-cnVjdCBtaXBpX2RzaV9kZXZpY2UgKm9mX2ZpbmRfbWlwaV9kc2lfZGV2aWNlX2J5X25vZGUoc3Ry
-dWN0IGRldmljZV9ub2RlICpucCk7CiBpbnQgbWlwaV9kc2lfYXR0YWNoKHN0cnVjdCBtaXBpX2Rz
-aV9kZXZpY2UgKmRzaSk7CiBpbnQgbWlwaV9kc2lfZGV0YWNoKHN0cnVjdCBtaXBpX2RzaV9kZXZp
-Y2UgKmRzaSk7Ci0tIAoyLjYuMwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+This tv080wum-nl0 panel is a mipi panel, it can use in MIPI_TX socket
+of rk3288 evb board.
+
+Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+
+---
+
+Changes in v6: None
+Changes in v5:
+- add a blank line befor lcd_en
+
+Changes in v4: None
+Changes in v3: None
+
+ arch/arm/boot/dts/rk3288-evb.dtsi | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index f6d2e78..2014992 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -47,7 +47,7 @@
+ 		reg = <0x0 0x80000000>;
+ 	};
+ 
+-	backlight {
++	backlight: backlight {
+ 		compatible = "pwm-backlight";
+ 		brightness-levels = <
+ 			  0   1   2   3   4   5   6   7
+@@ -177,6 +177,20 @@
+ 	status = "okay";
+ };
+ 
++&mipi_dsi {
++	status = "okay";
++	panel {
++		compatible ="boe,tv080wum-nl0";
++		reg = <0>;
++
++		enable-gpios = <&gpio7 3 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&lcd_en>;
++		backlight = <&backlight>;
++		status = "okay";
++	};
++};
++
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-mmc-highspeed;
+@@ -247,6 +261,10 @@
+ 		bl_en: bl-en {
+ 			rockchip,pins = <7 2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
++
++		lcd_en: lcd-en {
++			rockchip,pins = <7 3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
+ 	};
+ 
+ 	buttons {
+-- 
+2.6.3
