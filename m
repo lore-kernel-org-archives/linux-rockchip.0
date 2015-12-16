@@ -1,69 +1,72 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: [PATCH v6 3/6] Documentation: dt-bindings: Add bindings for rk3288 DW MIPI DSI driver
-Date: Wed, 16 Dec 2015 18:10:13 +0800
-Message-ID: <1450260616-21160-4-git-send-email-zyw@rock-chips.com>
+From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 5/6] ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+Date: Wed, 16 Dec 2015 18:10:15 +0800
+Message-ID: <1450260616-21160-6-git-send-email-zyw@rock-chips.com>
 References: <1450260616-21160-1-git-send-email-zyw@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450260616-21160-1-git-send-email-zyw@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
-Cc: Chris Zhong <zyw@rock-chips.com>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1450260616-21160-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org
+Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-add device tree bindings for rk3288 specific Synopsys DW MIPI DSI driver
+Add a mipi_dsi node, and also add mipi_dsi endpoints to vopb and vopl
+output port nodes.
 
-Signed-off-by: Chris Zhong <zyw@rock-chips.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 ---
 
-Changes in v6:
-- update the document, since the bridge device has been deleted.
+Changes in v6: None
+Changes in v5:
+- modify the clk name to SCLK_MIPIDSI_24M
 
-Changes in v5: None
 Changes in v4: None
-Changes in v3:
-- move dw_mipi_dsi_rockchip.txt to bindings/display/rockchip/
+Changes in v3: None
 
- .../display/rockchip/dw_mipi_dsi_rockchip.txt      | 60 ++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+ arch/arm/boot/dts/rk3288.dtsi | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-new file mode 100644
-index 0000000..1753f0c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
-@@ -0,0 +1,60 @@
-+Rockchip specific extensions to the Synopsys Designware MIPI DSI
-+================================
-+
-+Required properties:
-+- #address-cells: Should be <1>.
-+- #size-cells: Should be <0>.
-+- compatible: "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi".
-+- reg: Represent the physical address range of the controller.
-+- interrupts: Represent the controller's interrupt to the CPU(s).
-+- clocks, clock-names: Phandles to the controller's pll reference
-+  clock(ref) and APB clock(pclk), as described in [1].
-+- rockchip,grf: this soc should set GRF regs to mux vopl/vopb.
-+- ports: contain a port node with endpoint definitions as defined in [2].
-+  For vopb,set the reg = <0> and set the reg = <1> for vopl.
-+
-+[1] Documentation/devicetree/bindings/clock/clock-bindings.txt
-+[2] Documentation/devicetree/bindings/media/video-interfaces.txt
-+
-+Example:
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index a9270f7..1086761 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -817,6 +817,10 @@
+ 				reg = <1>;
+ 				remote-endpoint = <&hdmi_in_vopb>;
+ 			};
++			vopb_out_mipi: endpoint@2 {
++				reg = <2>;
++				remote-endpoint = <&mipi_in_vopb>;
++			};
+ 		};
+ 	};
+ 
+@@ -853,6 +857,10 @@
+ 				reg = <1>;
+ 				remote-endpoint = <&hdmi_in_vopl>;
+ 			};
++			vopl_out_mipi: endpoint@2 {
++				reg = <2>;
++				remote-endpoint = <&mipi_in_vopl>;
++			};
+ 		};
+ 	};
+ 
+@@ -954,6 +962,37 @@
+ 		status = "disabled";
+ 	};
+ 
 +	mipi_dsi: mipi@ff960000 {
 +		#address-cells = <1>;
 +		#size-cells = <0>;
 +		compatible = "rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi";
 +		reg = <0xff960000 0x4000>;
 +		interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_MIPI_24M>, <&cru PCLK_MIPI_DSI0>;
++		clocks = <&cru SCLK_MIPIDSI_24M>, <&cru PCLK_MIPI_DSI0>;
 +		clock-names = "ref", "pclk";
 +		rockchip,grf = <&grf>;
-+		status = "okay";
++		status = "disabled";
 +
 +		ports {
 +			#address-cells = <1>;
@@ -83,17 +86,15 @@ index 0000000..1753f0c
 +				};
 +			};
 +		};
-+
-+		panel {
-+			compatible ="boe,tv080wum-nl0";
-+			reg = <0>;
-+
-+			enable-gpios = <&gpio7 3 GPIO_ACTIVE_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&lcd_en>;
-+			backlight = <&backlight>;
-+			status = "okay";
-+		};
 +	};
++
+ 	gic: interrupt-controller@ffc01000 {
+ 		compatible = "arm,gic-400";
+ 		interrupt-controller;
 -- 
 2.6.3
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
