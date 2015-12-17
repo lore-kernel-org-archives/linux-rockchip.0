@@ -1,116 +1,84 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/6] ARM: dts: fix the correct pinctrl control for rk3036
-Date: Fri, 18 Dec 2015 00:28:27 +0100
-Message-ID: <1838222.r8GKl7OzB9@diego>
-References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com> <1450362112-8075-2-git-send-email-wxt@rock-chips.com>
+Subject: Re: [PATCH v1 5/6] ARM: dts: add the sound codec for kylin board
+Date: Fri, 18 Dec 2015 00:33:47 +0100
+Message-ID: <12098155.IWsPK2pU5b@diego>
+References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com> <1450362112-8075-6-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450362112-8075-2-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1450362112-8075-6-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, leozwang@google.com, keescook@google.com, Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, leozwang@google.com, keescook@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 17. Dezember 2015, 22:21:47 schrieb Caesar Wang:
-> The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
-> can't set the status in the internal.
+Am Donnerstag, 17. Dezember 2015, 22:21:51 schrieb Caesar Wang:
+> Support the rt5616 codec for kylin board, but we need
+> enable the i2s firstly.
 > 
-> We should keep the default status for enable the gpio status,
-> In fact, the pull_none is the disable the gpio pull up/down.
-> 
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
-From the signed-off-by's I guess this change was created by Xing (author), 
-right?
-
-
-Heiko
-
 > ---
 > 
->  arch/arm/boot/dts/rk3036.dtsi | 34 +++++++++++++++-------------------
->  1 file changed, 15 insertions(+), 19 deletions(-)
+>  arch/arm/boot/dts/rk3036-kylin.dts | 33 +++++++++++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-> index f8758bf..620e6e0 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -427,12 +427,8 @@
->  			#interrupt-cells = <2>;
->  		};
+> diff --git a/arch/arm/boot/dts/rk3036-kylin.dts
+> b/arch/arm/boot/dts/rk3036-kylin.dts index 69b1e1e..296139b 100644
+> --- a/arch/arm/boot/dts/rk3036-kylin.dts
+> +++ b/arch/arm/boot/dts/rk3036-kylin.dts
+> @@ -46,6 +46,28 @@
+>  	model = "Rockchip RK3036 KylinBoard";
+>  	compatible = "rockchip,rk3036-kylin", "rockchip,rk3036";
 > 
-> -		pcfg_pull_up: pcfg-pull-up {
-> -			bias-pull-up;
-> -		};
-> -
-> -		pcfg_pull_down: pcfg-pull-down {
-> -			bias-pull-down;
-> +		pcfg_pull_default: pcfg_pull_default {
-> +			bias-pull-pin-default;
->  		};
+> +	sound {
+> +		compatible = "simple-audio-card";
+> +		simple-audio-card,format = "i2s";
+> +		simple-audio-card,name = "rockchip,rt5616-codec";
+> +		simple-audio-card,mclk-fs = <64>;
+> +		simple-audio-card,widgets =
+> +			"Microphone", "Microphone Jack",
+> +			"Headphone", "Headphone Jack";
+> +		simple-audio-card,routing =
+> +			"MIC1", "Microphone Jack",
+> +			"MIC2", "Microphone Jack",
+> +			"Microphone Jack", "micbias1",
+> +			"Headphone Jack", "HPOL",
+> +			"Headphone Jack", "HPOR";
+> +		simple-audio-card,cpu {
+> +			sound-dai = <&i2s>;
+> +		};
+> +		simple-audio-card,codec {
+> +			sound-dai = <&rt5616>;
+> +		};
+> +	};
+> +
+>  	vcc_sys: vsys-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc_sys";
+> @@ -261,6 +283,17 @@
 > 
->  		pcfg_pull_none: pcfg-pull-none {
-> @@ -473,18 +469,18 @@
->  			};
+>  &i2c2 {
+>  	status = "okay";
+> +
+> +	rt5616: rt5616@1b {
+> +		#sound-dai-cells = <0>;
+> +		compatible = "rt5616";
+> +		reg = <0x1b>;
+> +	};
+
+I don't see that codec in the asoc-tree [0]. And the compatible
+would of course also need to be "realtek,rt5616".
+
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/broonie/sound.git/tree/sound/soc/codecs?h=for-next
+
+
+> +};
+> +
+> +&i2s {
+> +	#sound-dai-cells = <0>;
+> +	status = "okay";
+>  };
 > 
->  			emmc_cmd: emmc-cmd {
-> -				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_none>;
-> +				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_default>;
->  			};
-> 
->  			emmc_bus8: emmc-bus8 {
-> -				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 25 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 26 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 27 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 28 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 29 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 30 RK_FUNC_2 &pcfg_pull_none>,
-> -						<1 31 RK_FUNC_2 &pcfg_pull_none>;
-> +				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 25 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 26 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 27 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 28 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 29 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 30 RK_FUNC_2 &pcfg_pull_default>,
-> +						<1 31 RK_FUNC_2 &pcfg_pull_default>;
->  			};
->  		};
-> 
-> @@ -522,12 +518,12 @@
-> 
->  		uart0 {
->  			uart0_xfer: uart0-xfer {
-> -				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_up>,
-> +				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_default>,
->  						<0 17 RK_FUNC_1 &pcfg_pull_none>;
->  			};
-> 
->  			uart0_cts: uart0-cts {
-> -				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_up>;
-> +				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_default>;
->  			};
-> 
->  			uart0_rts: uart0-rts {
-> @@ -537,7 +533,7 @@
-> 
->  		uart1 {
->  			uart1_xfer: uart1-xfer {
-> -				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_none>,
-> +				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_default>,
->  						<2 23 RK_FUNC_1 &pcfg_pull_none>;
->  			};
->  			/* no rts / cts for uart1 */
-> @@ -545,7 +541,7 @@
-> 
->  		uart2 {
->  			uart2_xfer: uart2-xfer {
-> -				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_none>,
-> +				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_default>,
->  						<1 19 RK_FUNC_2 &pcfg_pull_none>;
->  			};
->  			/* no rts / cts for uart2 */
+>  &lcdc {
