@@ -1,106 +1,49 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v3 0/8] drm/rockchip: covert to support atomic API
-Date: Thu, 17 Dec 2015 15:27:24 +0100
-Message-ID: <20151217142724.GZ30437@phenom.ffwll.local>
-References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
- <4029109.1DucZWNrFm@diego> <56728F3F.6060309@rock-chips.com>
- <1817698.JgNG3flpWP@diego>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH v3 0/5] Fix a trivial typo and support rk3228/rk3399 SoCs
+ for thermal driver.
+Date: Thu, 17 Dec 2015 12:09:28 -0800
+Message-ID: <20151217200927.GC7999@localhost.localdomain>
+References: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1817698.JgNG3flpWP@diego>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: huangtao@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, dmitry.torokhov@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, computersforpeace@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Jiri Kosina <trivial@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBEZWMgMTcsIDIwMTUgYXQgMDE6MDM6NTNQTSArMDEwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gSGkgTWFyaywKPiAKPiBBbSBEb25uZXJzdGFnLCAxNy4gRGV6ZW1iZXIgMjAxNSwg
-MTg6MzI6MzEgc2NocmllYiBNYXJrIHlhbzoKPiA+IE9uIDIwMTXlubQxMuaciDE35pelIDE4OjAw
-LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiA+ID4gQW0gRG9ubmVyc3RhZywgMTcuIERlemVtYmVy
-IDIwMTUsIDExOjAxOjA3IHNjaHJpZWIgTWFyayBZYW86Cj4gPiA+PiBUaGUgc2VyaWVzIG9mIHBh
-dGNoZXMgY292ZXJ0aW5nIGRybSByb2NrY2hpcCB0byBhdG9taWMgQVBJLCBkbyBzb21lCj4gPiA+
-PiBjbGVhbnVwIGFuZCBzb21lIGZpeGVzIG9uIGF0b21pYyBzaWRlLgo+IAo+IFsuLi5dCj4gCj4g
-PiA+IFBsdWdnaW5nIGluIEhETUkgYWZ0ZXIgYm9vdDoKPiA+ID4gCj4gPiA+IFsgICAyMC41NTk1
-MzRdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0tLQo+ID4gPiBbICAgMjAuNTY0
-NDEyXSBXQVJOSU5HOiBDUFU6IDMgUElEOiA3NCBhdAo+ID4gPiBkcml2ZXJzL2dwdS9kcm0vZHJt
-X2F0b21pY19oZWxwZXIuYzo2ODIKPiA+ID4gZHJtX2F0b21pY19oZWxwZXJfdXBkYXRlX2xlZ2Fj
-eV9tb2Rlc2V0X3N0YXRlKzB4NmMvMHgyMDAoKSBbICAgMjAuNTc2OTkxXQo+ID4gPiBNb2R1bGVz
-IGxpbmtlZCBpbjoKPiA+ID4gWyAgIDIwLjU4MDE3NV0gQ1BVOiAzIFBJRDogNzQgQ29tbTogaXJx
-LzUxLWZmOTgwMDAwIE5vdCB0YWludGVkIDQuNC4wLXJjNSsKPiA+ID4gIzI3ODcgWyAgIDIwLjU4
-NzUwMl0gSGFyZHdhcmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+ID4gPiBbICAgMjAu
-NTkyMzQ3XSBbPGMwMDE5OTE0Pl0gKHVud2luZF9iYWNrdHJhY2UpIGZyb20gWzxjMDAxNGJjYz5d
-Cj4gPiA+IChzaG93X3N0YWNrKzB4MjAvMHgyNCkgWyAgIDIwLjYwMDMxOV0gWzxjMDAxNGJjYz5d
-IChzaG93X3N0YWNrKSBmcm9tCj4gPiA+IFs8YzAyYzQzNDQ+XSAoZHVtcF9zdGFjaysweDg0LzB4
-YjgpIFsgICAyMC42MDc3NzZdIFs8YzAyYzQzNDQ+XQo+ID4gPiAoZHVtcF9zdGFjaykgZnJvbSBb
-PGMwMDI5YTIwPl0gKHdhcm5fc2xvd3BhdGhfY29tbW9uKzB4OTgvMHhjNCkgWyAgCj4gPiA+IDIw
-LjYxNjA4N10gWzxjMDAyOWEyMD5dICh3YXJuX3Nsb3dwYXRoX2NvbW1vbikgZnJvbSBbPGMwMDI5
-YjA4Pl0KPiA+ID4gKHdhcm5fc2xvd3BhdGhfbnVsbCsweDJjLzB4MzQpIFsgICAyMC42MjUxMDZd
-IFs8YzAwMjliMDg+XQo+ID4gPiAod2Fybl9zbG93cGF0aF9udWxsKSBmcm9tIFs8YzAzNjExNDQ+
-XQo+ID4gPiAoZHJtX2F0b21pY19oZWxwZXJfdXBkYXRlX2xlZ2FjeV9tb2Rlc2V0X3N0YXRlKzB4
-NmMvMHgyMDApIFsgICAyMC42MzYzODJdCj4gPiA+IFs8YzAzNjExNDQ+XSAoZHJtX2F0b21pY19o
-ZWxwZXJfdXBkYXRlX2xlZ2FjeV9tb2Rlc2V0X3N0YXRlKSBmcm9tCj4gPiA+IFs8YzAzNjE2ODQ+
-XSAoZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X21vZGVzZXRfZGlzYWJsZXMrMHgxZTQvMHgzNWMp
-IFsgIAo+ID4gPiAyMC42NDk3MzJdIFs8YzAzNjE2ODQ+XSAoZHJtX2F0b21pY19oZWxwZXJfY29t
-bWl0X21vZGVzZXRfZGlzYWJsZXMpIGZyb20KPiA+ID4gWzxjMDM4NzgyYz5dIChyb2NrY2hpcF9h
-dG9taWNfY29tbWl0X2NvbXBsZXRlKzB4MzQvMHgxMDgpIFsgICAyMC42NjE3ODldCj4gPiA+IFs8
-YzAzODc4MmM+XSAocm9ja2NoaXBfYXRvbWljX2NvbW1pdF9jb21wbGV0ZSkgZnJvbSBbPGMwMzg3
-OTg0Pl0KPiA+ID4gKHJvY2tjaGlwX2RybV9hdG9taWNfY29tbWl0KzB4ODQvMHhhMCkgWyAgIDIw
-LjY3MjQ0Ml0gWzxjMDM4Nzk4ND5dCj4gPiA+IChyb2NrY2hpcF9kcm1fYXRvbWljX2NvbW1pdCkg
-ZnJvbSBbPGMwMzg0YzU4Pl0KPiA+ID4gKGRybV9hdG9taWNfY29tbWl0KzB4NjAvMHg3MCkgWyAg
-IDIwLjY4MTcxMV0gWzxjMDM4NGM1OD5dCj4gPiA+IChkcm1fYXRvbWljX2NvbW1pdCkgZnJvbSBb
-PGMwMzYzYWIwPl0gKHJlc3RvcmVfZmJkZXZfbW9kZSsweDEyOC8weDI1OCkgWyAKPiA+ID4gIDIw
-LjY5MDQxOF0gWzxjMDM2M2FiMD5dIChyZXN0b3JlX2ZiZGV2X21vZGUpIGZyb20gWzxjMDM2NTIw
-OD5dCj4gPiA+IChkcm1fZmJfaGVscGVyX3Jlc3RvcmVfZmJkZXZfbW9kZV91bmxvY2tlZCsweDNj
-LzB4ODApIFsgICAyMC43MDEwMzNdCj4gPiA+IFs8YzAzNjUyMDg+XSAoZHJtX2ZiX2hlbHBlcl9y
-ZXN0b3JlX2ZiZGV2X21vZGVfdW5sb2NrZWQpIGZyb20KPiA+ID4gWzxjMDM2NTI5Yz5dIChkcm1f
-ZmJfaGVscGVyX3NldF9wYXIrMHg1MC8weDYwKSBbICAgMjAuNzExOTA3XQo+ID4gPiBbPGMwMzY1
-MjljPl0gKGRybV9mYl9oZWxwZXJfc2V0X3BhcikgZnJvbSBbPGMwMzY1MWI0Pl0KPiA+ID4gKGRy
-bV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudCsweGM4LzB4ZTApIFsgICAyMC43MjE1NjldIFs8YzAz
-NjUxYjQ+XQo+ID4gPiAoZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50KSBmcm9tIFs8YzAzODdi
-ZDA+XQo+ID4gPiAocm9ja2NoaXBfZHJtX291dHB1dF9wb2xsX2NoYW5nZWQrMHgyNC8weDI4KSBb
-ICAgMjAuNzMyMTg1XSBbPGMwMzg3YmQwPl0KPiA+ID4gKHJvY2tjaGlwX2RybV9vdXRwdXRfcG9s
-bF9jaGFuZ2VkKSBmcm9tIFs8YzAzNWFhZjg+XQo+ID4gPiAoZHJtX2ttc19oZWxwZXJfaG90cGx1
-Z19ldmVudCsweDM0LzB4MzgpIFsgICAyMC43NDI4OTFdIFs8YzAzNWFhZjg+XQo+ID4gPiAoZHJt
-X2ttc19oZWxwZXJfaG90cGx1Z19ldmVudCkgZnJvbSBbPGMwMzViNDM0Pl0KPiA+ID4gKGRybV9o
-ZWxwZXJfaHBkX2lycV9ldmVudCsweDEyMC8weDE1MCkgWyAgIDIwLjc1MzA3OF0gWzxjMDM1YjQz
-ND5dCj4gPiA+IChkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQpIGZyb20gWzxjMDM4ZGQxYz5dIChk
-d19oZG1pX2lycSsweDE0Yy8weDE4YykgWyAKPiA+ID4gIDIwLjc2MTc3Ml0gWzxjMDM4ZGQxYz5d
-IChkd19oZG1pX2lycSkgZnJvbSBbPGMwMDhkMDMwPl0KPiA+ID4gKGlycV90aHJlYWRfZm4rMHgy
-Yy8weDQ0KSBbICAgMjAuNzY5MzUwXSBbPGMwMDhkMDMwPl0gKGlycV90aHJlYWRfZm4pCj4gPiA+
-IGZyb20gWzxjMDA4ZDMzYz5dIChpcnFfdGhyZWFkKzB4MTE4LzB4MjFjKSBbICAgMjAuNzc3MDE5
-XSBbPGMwMDhkMzNjPl0KPiA+ID4gKGlycV90aHJlYWQpIGZyb20gWzxjMDA0YmJiOD5dIChrdGhy
-ZWFkKzB4ZjQvMHgxMGMpIFsgICAyMC43ODQwODNdCj4gPiA+IFs8YzAwNGJiYjg+XSAoa3RocmVh
-ZCkgZnJvbSBbPGMwMDEwMDEwPl0gKHJldF9mcm9tX2ZvcmsrMHgxNC8weDI0KSBbICAKPiA+ID4g
-MjAuNzkxMzAwXSAtLS1bIGVuZCB0cmFjZSAzZGVhYTUxZDI4ODA2N2EwIF0tLS0KPiA+IAo+ID4g
-SGkgSGVpa28KPiA+ICAgICAgVGhpcyBpc3N1ZSBjYW4gYmUgZXhwbGFpbmVkIGZyb20gZm9sbG93
-aW5nIHRocmVhZDoKPiA+ICAgICAgICAgaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTUvMTEvMTYv
-NDk4Cj4gPiAKPiA+ICAgICAgWW91IGNhbiBmaXggaXQgYnkgZm9sbG93aW5nIGNoYW5nZXM6Cj4g
-PiAKPiA+IEBAIC0xNjY3LDggKzE2NjcsNiBAQCBzdGF0aWMgaW50IGR3X2hkbWlfcmVnaXN0ZXIo
-c3RydWN0IGRybV9kZXZpY2UKPiA+ICpkcm0sIHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ID4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJmR3X2hkbWlfY29ubmVjdG9yX2Z1bmNz
-LAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRFJNX01PREVfQ09OTkVD
-VE9SX0hETUlBKTsKPiA+IAo+ID4gICAgICAtICAgICAgIGhkbWktPmNvbm5lY3Rvci5lbmNvZGVy
-ID0gZW5jb2RlcjsKPiAKPiB5ZXAgdGhhdCBmaXhlcyB0aGUgd2FybmluZy4gRnJvbSB0aGUgdGhy
-ZWFkIHlvdSBtZW50aW9uLCBpdCBsb29rcyBsaWtlIHRoYXQgCj4gYXNzaWdubWVudCBzaG91bGQg
-YWxzbyBiZSByZW1vdmVkIGluIHRoZSBub24tYXRvbWljIGNhc2UgKGkuTVgpPwo+IAo+IE9yIGlm
-IGl0IGlzIHJlYWxseSBuZWNlc3NhcnkgdGhlcmUgY291bGQgYWxzbyB3cmFwIGl0IGluIGEgY29u
-ZGl0aW9uYWwgdG8gb25seSAKPiBiZSBzZXQgZm9yIHRoZSBub24tYXRvbWljIGNhc2UuCgpJdCB3
-b250IHdvcmsgd2l0aCBub24tYXRvbWljLCBidXQgaXQnbGwgb25seSBicmVhayB0aGluZ3MgZnJv
-bSB0aGUgMm5kCm1vZGVzZXQgb253YXJkcy4gU29tZW9uZSBuZWVkcyB0byBmaXggdGhhdCBidWcs
-IHNpbmNlIGFmYWl1IHRoZSBjb2RlIGl0J2QKYmxvdyB1cCBmb3Igbm9uLWF0b21pYyBpZiB5b3Ug
-cmVtb3ZlIGl0IG9uIGV2ZW4gdGhlIGZpcnN0IG1vZGVzZXQuCi1EYW5pZWwKLS0gCkRhbmllbCBW
-ZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZm
-d2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hello,
+
+On Thu, Dec 03, 2015 at 04:48:38PM +0800, Caesar Wang wrote:
+> This series pacthes to support the next soc for this thermal driver.
+> I don't add the dts thermal data since these SoCs have *_not_* land
+> in this mainline. I believe these SoCs dts will land in this mainline
+> lately,
+> then I will add the thermal data for Heiko.
+> 
+> This series patches can apply into Eduardo branch.
+> https://git.kernel.org/cgit/linux/kernel/git/evalenti/linux-soc-thermal.git
+> 
+> Also, this series pacthes have built on github branch.
+> https://github.com/rockchip-linux/kernel/commits/develop4.4
+> 
+> PATCH[1/5]:
+> That's bit ugly typo, sorry for sending again :(.
+> 
+> PATCH[2/5]:
+> To fix a build warning came from Dan Carpenter report smatch check,
+> Thanks. :)
+> 
+> PATCH[3/5]:
+> Add the rk3228/rk3399 SoCs compatible for dt-bindings.
+> 
+> PATCH[4/5]:
+> Add the rk3228 SoCs for thermal driver.
+> 
+> PATCH[5/5]:
+> Add the rk3399 SoCs for thermal driver based on PATCH[4/5].
+
+I applied all but 2/5.
+
