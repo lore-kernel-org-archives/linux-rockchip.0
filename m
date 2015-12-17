@@ -1,64 +1,79 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v3 8/8] drm/rockchip: dw_hdmi: use encoder enable function
-Date: Thu, 17 Dec 2015 11:13:12 +0800
-Message-ID: <1450321992-31671-1-git-send-email-mark.yao@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v3 7/8] drm: bridge/dw_hdmi: add atomic API support
+Date: Thu, 17 Dec 2015 11:15:52 +0800
+Message-ID: <567228E8.4010904@rock-chips.com>
 References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+ <1450321718-31389-1-git-send-email-mark.yao@rock-chips.com>
+ <1450321718-31389-2-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1450321718-31389-2-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Mark Yao <mark.yao@rock-chips.com>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-encoder.enable is more compatible to atomic api than encoder.prepare/commit
-
-Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
----
-Changes in v3: None
-Changes in v2: None
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c |   14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 525b5a8..8e1605c 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -195,12 +195,15 @@ static void dw_hdmi_rockchip_encoder_mode_set(struct drm_encoder *encoder,
- {
- }
- 
--static void dw_hdmi_rockchip_encoder_commit(struct drm_encoder *encoder)
-+static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
- {
- 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
- 	u32 val;
- 	int mux;
- 
-+	rockchip_drm_crtc_mode_config(encoder->crtc, DRM_MODE_CONNECTOR_HDMIA,
-+				      ROCKCHIP_OUT_MODE_AAAA);
-+
- 	mux = rockchip_drm_encoder_get_mux_id(hdmi->dev->of_node, encoder);
- 	if (mux)
- 		val = HDMI_SEL_VOP_LIT | (HDMI_SEL_VOP_LIT << 16);
-@@ -212,17 +215,10 @@ static void dw_hdmi_rockchip_encoder_commit(struct drm_encoder *encoder)
- 		(mux) ? "LIT" : "BIG");
- }
- 
--static void dw_hdmi_rockchip_encoder_prepare(struct drm_encoder *encoder)
--{
--	rockchip_drm_crtc_mode_config(encoder->crtc, DRM_MODE_CONNECTOR_HDMIA,
--				      ROCKCHIP_OUT_MODE_AAAA);
--}
--
- static struct drm_encoder_helper_funcs dw_hdmi_rockchip_encoder_helper_funcs = {
- 	.mode_fixup = dw_hdmi_rockchip_encoder_mode_fixup,
- 	.mode_set   = dw_hdmi_rockchip_encoder_mode_set,
--	.prepare    = dw_hdmi_rockchip_encoder_prepare,
--	.commit     = dw_hdmi_rockchip_encoder_commit,
-+	.enable     = dw_hdmi_rockchip_encoder_enable,
- 	.disable    = dw_hdmi_rockchip_encoder_disable,
- };
- 
--- 
-1.7.9.5
+U29ycnksIE9wcywgZmF0IGZpbmdlciwgZGlzY2FyZCB0aGlzIGxvc3QgdGhyZWFkIG1haWwuCgpP
+biAyMDE15bm0MTLmnIgxN+aXpSAxMTowOCwgTWFyayBZYW8gd3JvdGU6Cj4gRmlsbCBhdG9taWMg
+bmVlZGVkIGZ1bmNzIHdpdGggZGVmYXVsdCBhdG9taWMgaGVscGVyIGxpYnJhcnkuCj4KPiBSb2Nr
+Y2hpcCB1c2UgZHdfaGRtaSwgYW5kIGRybS9yb2NrY2hpcCB3aWxsIGNvdmVydCB0byBhdG9taWMg
+YXBpLAo+IHdlIG5lZWQgZHdfaGRtaSBzdXBwb3J0IGF0b21pYyBmdW5jcy4KPgo+IE5vdyBhbm90
+aGVyIGRybSBkcml2ZXIgdXNlIGR3X2hkbWkgaXMgaW14LCBub3QgeWV0IGF0b21pYywgc28KPiBj
+aGVjayBEUklWRVJfQVRPTUlDIGF0IHJ1bnRpbWUgdG8gc3BpbHQgYXRvbWljIGFuZCBub3QgYXRv
+bWljLgo+Cj4gQ2M6IFJ1c3NlbGwgS2luZyA8cm1rK2tlcm5lbEBhcm0ubGludXgub3JnLnVrPgo+
+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IENjOiBBbmR5IFlh
+biA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4gQ2M6IEZhYmlvIEVzdGV2YW0gPGZhYmlvLmVz
+dGV2YW1AZnJlZXNjYWxlLmNvbT4KPiBDYzogVGhpZXJyeSBSZWRpbmcgPHRyZWRpbmdAbnZpZGlh
+LmNvbT4KPgo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNv
+bT4KPiAtLS0KPiBDaGFuZ2VzIGluIHYzOiBOb25lCj4gQ2hhbmdlcyBpbiB2MjoKPiBBZHZpY2Vk
+IGJ5IERhbmllbCBWZXR0ZXIKPiAtIGNoZWNrIERSSVZFUl9BVE9NSUMgYXQgcnVudGltZSB0byBz
+cGlsdCBhdG9taWMgYW5kIG5vdCBhdG9taWMuCj4KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+ZHdfaGRtaS5jIHwgICAyMyArKysrKysrKysrKysrKysrKysrKystLQo+ICAgMSBmaWxlIGNoYW5n
+ZWQsIDIxIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3
+X2hkbWkuYwo+IGluZGV4IDU2ZGU5ZjEuLmRjMGJkZDQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3
+X2hkbWkuYwo+IEBAIC0yMiw2ICsyMiw3IEBACj4gICAKPiAgICNpbmNsdWRlIDxkcm0vZHJtX29m
+Lmg+Cj4gICAjaW5jbHVkZSA8ZHJtL2RybVAuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fYXRvbWlj
+X2hlbHBlci5oPgo+ICAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPiAgICNpbmNs
+dWRlIDxkcm0vZHJtX2VkaWQuaD4KPiAgICNpbmNsdWRlIDxkcm0vZHJtX2VuY29kZXJfc2xhdmUu
+aD4KPiBAQCAtMTUyMiw2ICsxNTIzLDE3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9m
+dW5jcyBkd19oZG1pX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiAgIAkuZm9yY2UgPSBkd19oZG1pX2Nv
+bm5lY3Rvcl9mb3JjZSwKPiAgIH07Cj4gICAKPiArc3RhdGljIHN0cnVjdCBkcm1fY29ubmVjdG9y
+X2Z1bmNzIGR3X2hkbWlfYXRvbWljX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiArCS5kcG1zID0gZHJt
+X2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2RwbXMsCj4gKwkuZmlsbF9tb2RlcyA9IGRybV9oZWxw
+ZXJfcHJvYmVfc2luZ2xlX2Nvbm5lY3Rvcl9tb2RlcywKPiArCS5kZXRlY3QgPSBkd19oZG1pX2Nv
+bm5lY3Rvcl9kZXRlY3QsCj4gKwkuZGVzdHJveSA9IGR3X2hkbWlfY29ubmVjdG9yX2Rlc3Ryb3ks
+Cj4gKwkuZm9yY2UgPSBkd19oZG1pX2Nvbm5lY3Rvcl9mb3JjZSwKPiArCS5yZXNldCA9IGRybV9h
+dG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9yZXNldCwKPiArCS5hdG9taWNfZHVwbGljYXRlX3N0YXRl
+ID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0ZSwKPiArCS5hdG9t
+aWNfZGVzdHJveV9zdGF0ZSA9IGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kZXN0cm95X3N0
+YXRlLAo+ICt9Owo+ICsKPiAgIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVu
+Y3MgZHdfaGRtaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzID0gewo+ICAgCS5nZXRfbW9kZXMgPSBk
+d19oZG1pX2Nvbm5lY3Rvcl9nZXRfbW9kZXMsCj4gICAJLm1vZGVfdmFsaWQgPSBkd19oZG1pX2Nv
+bm5lY3Rvcl9tb2RlX3ZhbGlkLAo+IEBAIC0xNjQ1LDggKzE2NTcsMTUgQEAgc3RhdGljIGludCBk
+d19oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHN0cnVjdCBkd19oZG1pICpo
+ZG1pKQo+ICAgCj4gICAJZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfYWRkKCZoZG1pLT5jb25uZWN0b3Is
+Cj4gICAJCQkJICZkd19oZG1pX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MpOwo+IC0JZHJtX2Nvbm5l
+Y3Rvcl9pbml0KGRybSwgJmhkbWktPmNvbm5lY3RvciwgJmR3X2hkbWlfY29ubmVjdG9yX2Z1bmNz
+LAo+IC0JCQkgICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEpOwo+ICsKPiArCWlmIChkcm1fY29y
+ZV9jaGVja19mZWF0dXJlKGRybSwgRFJJVkVSX0FUT01JQykpCj4gKwkJZHJtX2Nvbm5lY3Rvcl9p
+bml0KGRybSwgJmhkbWktPmNvbm5lY3RvciwKPiArCQkJCSAgICZkd19oZG1pX2F0b21pY19jb25u
+ZWN0b3JfZnVuY3MsCj4gKwkJCQkgICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEpOwo+ICsJZWxz
+ZQo+ICsJCWRybV9jb25uZWN0b3JfaW5pdChkcm0sICZoZG1pLT5jb25uZWN0b3IsCj4gKwkJCQkg
+ICAmZHdfaGRtaV9jb25uZWN0b3JfZnVuY3MsCj4gKwkJCQkgICBEUk1fTU9ERV9DT05ORUNUT1Jf
+SERNSUEpOwo+ICAgCj4gICAJaGRtaS0+Y29ubmVjdG9yLmVuY29kZXIgPSBlbmNvZGVyOwo+ICAg
+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
