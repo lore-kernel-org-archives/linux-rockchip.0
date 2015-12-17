@@ -1,75 +1,130 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH v3 0/5] Add reboot notifier driver for rockchip platform
-Date: Wed, 16 Dec 2015 17:16:01 -0800
-Message-ID: <CALAqxLW2HD35kfy2RypvVEYPCuRit8YU=-tqgCev41jksRc7gQ@mail.gmail.com>
-References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
-	<45323116.BWNAaZT5p4@diego>
-	<566E9A47.8010004@rock-chips.com>
+From: Mark Yao <mark.yao@rock-chips.com>
+Subject: [PATCH v3 1/8] drm/rockchip: Use new vblank api drm_crtc_vblank_*
+Date: Thu, 17 Dec 2015 11:01:08 +0800
+Message-ID: <1450321275-31154-2-git-send-email-mark.yao@rock-chips.com>
+References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <566E9A47.8010004@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Kevin Hilman <khilman@linaro.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, wxt@rock-chips.com, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, sjg@chromium.org, lkml <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, treding@nvidia.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, benchan@google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 14, 2015 at 2:30 AM, Andy Yan <andy.yan@rock-chips.com> wro=
-te:
-> On 2015=E5=B9=B412=E6=9C=8812=E6=97=A5 05:29, Heiko St=C3=BCbner wrot=
-e:
->> Am Mittwoch, 18. November 2015, 17:47:24 schrieb Andy Yan:
->>>
->>> rockchip platform have a protocol to pass the kernel reboot
->>> mode to bootloader by some special registers when system reboot.
->>> By this way the bootloader can take different action according
->>> to the different kernel reboot mode, for example, command
->>> "reboot loader" will reboot the board to rockusb mode, this is
->>> a very convenient way to get the board enter download mode.
->>> And Android system also use this protocol to pass "recovery"=E3=80=81
->>> =E2=80=9Cfastboot=E2=80=9D reboot mode to bootloader. In upstream l=
-and, We found
->>> tegra platform also use this mechanism.
->>>
->>> Before this version, I have sent two Series, which can be found
->>> at [0] [1]
->>> [0] https://patchwork.kernel.org/patch/7140751/
->>> [1] https://patchwork.kernel.org/patch/7153531/
->>
->> just so it doesn't get lost, this ties into a slightly more generic
->> approach,
->> John Stultz is doing for the android reboot reasons:
->>
->> http://thread.gmane.org/gmane.linux.kernel/2103447
->>
->> The only difference is that we'd need to use the pmu syscon for it.
->>
->>
->     Very glad to see your work on this. And your work is more generic=
- than
-> my.
->      So hope we can share the code. As you can see, the rockchip plat=
-form
-> use
->      a GRF or PMU register to store the reboot reason. So maybe we ne=
-ed a
-> phandle
->      in the DT node to describe it.
-
-Yea. I need to figure out the best way to represent these various metho=
-ds in DT.
-
-Apologies for not being super responsive here. Been a bit heads down
-trying to finish up some items before holiday break.
-
-=46rom some of Arnd's comments, it sounds like we may need a larger
-generic subsystem for kernel to firmware communications here.  So more
-then likely I'll not have a chance to take another swing at this after
-the new year.
-
-So if in the meantime you want to try to take my code and rework it,
-or extend your code in a similar way, I'll not take any offence. :)
-
-thanks
--john
+Tm8gZnVuY3Rpb25hbCB1cGRhdGUsIGRybV92YmxhbmtfKiBpcyB0aGUgbGVnYWN5IHZlcnNpb24g
+b2YKZHJtX2NydGNfdmJsYW5rXyouIGFuZCB1c2UgbmV3IGFwaSBtYWtlIGRyaXZlciBtb3JlIGNs
+ZWFuLgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgot
+LS0KQ2hhbmdlcyBpbiB2MzogTm9uZQpDaGFuZ2VzIGluIHYyOiBOb25lCgogZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8ICAgMTMgKysrKysrKy0tLS0tLQogZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAgIDcgKysrLS0tLQog
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICAgMjQgKysrKysr
+KysrKystLS0tLS0tLS0tLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDIz
+IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Ry
+di5jCmluZGV4IGYyMmUxZTEuLmNmZDliODMgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtNjQsMTEgKzY0LDExIEBAIHZvaWQgcm9ja2NoaXBfZHJt
+X2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAogfQogRVhQT1JU
+X1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKTsKIAotaW50IHJvY2tj
+aGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKLQkJCQkgY29u
+c3Qgc3RydWN0IHJvY2tjaGlwX2NydGNfZnVuY3MgKmNydGNfZnVuY3MsCi0JCQkJIGludCBwaXBl
+KQoraW50IHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRj
+LAorCQkJCSBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19mdW5jcyAqY3J0Y19mdW5jcykKIHsK
+LQlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXYgPSBkZXYtPmRldl9wcml2YXRlOwor
+CWludCBwaXBlID0gZHJtX2NydGNfaW5kZXgoY3J0Yyk7CisJc3RydWN0IHJvY2tjaGlwX2RybV9w
+cml2YXRlICpwcml2ID0gY3J0Yy0+ZGV2LT5kZXZfcHJpdmF0ZTsKIAogCWlmIChwaXBlID4gUk9D
+S0NISVBfTUFYX0NSVEMpCiAJCXJldHVybiAtRUlOVkFMOwpAQCAtNzksOSArNzksMTAgQEAgaW50
+IHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKIH0K
+IEVYUE9SVF9TWU1CT0xfR1BMKHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3MpOwogCi12b2lk
+IHJvY2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5jcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBp
+bnQgcGlwZSkKK3ZvaWQgcm9ja2NoaXBfdW5yZWdpc3Rlcl9jcnRjX2Z1bmNzKHN0cnVjdCBkcm1f
+Y3J0YyAqY3J0YykKIHsKLQlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXYgPSBkZXYt
+PmRldl9wcml2YXRlOworCWludCBwaXBlID0gZHJtX2NydGNfaW5kZXgoY3J0Yyk7CisJc3RydWN0
+IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2ID0gY3J0Yy0+ZGV2LT5kZXZfcHJpdmF0ZTsKIAog
+CWlmIChwaXBlID4gUk9DS0NISVBfTUFYX0NSVEMpCiAJCXJldHVybjsKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCmluZGV4IGRjNGU1ZjAuLjA2OWQ2ZDQgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaApAQCAtNTIsMTAg
+KzUyLDkgQEAgc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlIHsKIAljb25zdCBzdHJ1Y3Qgcm9j
+a2NoaXBfY3J0Y19mdW5jcyAqY3J0Y19mdW5jc1tST0NLQ0hJUF9NQVhfQ1JUQ107CiB9OwogCi1p
+bnQgcm9ja2NoaXBfcmVnaXN0ZXJfY3J0Y19mdW5jcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAot
+CQkJCSBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19mdW5jcyAqY3J0Y19mdW5jcywKLQkJCQkg
+aW50IHBpcGUpOwotdm9pZCByb2NrY2hpcF91bnJlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRy
+bV9kZXZpY2UgKmRldiwgaW50IHBpcGUpOworaW50IHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVu
+Y3Moc3RydWN0IGRybV9jcnRjICpjcnRjLAorCQkJCSBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0
+Y19mdW5jcyAqY3J0Y19mdW5jcyk7Cit2b2lkIHJvY2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5j
+cyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogaW50IHJvY2tjaGlwX2RybV9lbmNvZGVyX2dldF9t
+dXhfaWQoc3RydWN0IGRldmljZV9ub2RlICpub2RlLAogCQkJCSAgICBzdHJ1Y3QgZHJtX2VuY29k
+ZXIgKmVuY29kZXIpOwogaW50IHJvY2tjaGlwX2RybV9jcnRjX21vZGVfY29uZmlnKHN0cnVjdCBk
+cm1fY3J0YyAqY3J0YywgaW50IGNvbm5lY3Rvcl90eXBlLApkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKaW5kZXggZGQ4ZTA4Ni4uZjgyYzdiYSAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0xMTksOCArMTE5LDYg
+QEAgc3RydWN0IHZvcCB7CiAJLyogdm9wIGRjbGsgcmVzZXQgKi8KIAlzdHJ1Y3QgcmVzZXRfY29u
+dHJvbCAqZGNsa19yc3Q7CiAKLQlpbnQgcGlwZTsKLQogCXN0cnVjdCB2b3Bfd2luIHdpbltdOwog
+fTsKIApAQCAtNjkyLDcgKzY5MCw3IEBAIHN0YXRpYyB2b2lkIHZvcF9lbmFibGUoc3RydWN0IGRy
+bV9jcnRjICpjcnRjKQogCiAJZW5hYmxlX2lycSh2b3AtPmlycSk7CiAKLQlkcm1fdmJsYW5rX29u
+KHZvcC0+ZHJtX2Rldiwgdm9wLT5waXBlKTsKKwlkcm1fY3J0Y192Ymxhbmtfb24oY3J0Yyk7CiAK
+IAlyZXR1cm47CiAKQEAgLTcxMSw3ICs3MDksNyBAQCBzdGF0aWMgdm9pZCB2b3BfZGlzYWJsZShz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJaWYgKCF2b3AtPmlzX2VuYWJsZWQpCiAJCXJldHVybjsK
+IAotCWRybV92Ymxhbmtfb2ZmKGNydGMtPmRldiwgdm9wLT5waXBlKTsKKwlkcm1fY3J0Y192Ymxh
+bmtfb2ZmKGNydGMpOwogCiAJLyoKIAkgKiBWb3Agc3RhbmRieSB3aWxsIHRha2UgZWZmZWN0IGF0
+IGVuZCBvZiBjdXJyZW50IGZyYW1lLApAQCAtOTE4LDcgKzkxNiw3IEBAIHN0YXRpYyBpbnQgdm9w
+X3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAkgKi8KIAltdXRl
+eF9sb2NrKCZ2b3AtPnZzeW5jX211dGV4KTsKIAlpZiAoZmIgIT0gdm9wX3dpbl9sYXN0X3BlbmRp
+bmdfZmIodm9wX3dpbikpIHsKLQkJcmV0ID0gZHJtX3ZibGFua19nZXQocGxhbmUtPmRldiwgdm9w
+LT5waXBlKTsKKwkJcmV0ID0gZHJtX2NydGNfdmJsYW5rX2dldChjcnRjKTsKIAkJaWYgKHJldCkg
+ewogCQkJRFJNX0VSUk9SKCJmYWlsZWQgdG8gZ2V0IHZibGFuaywgJWRcbiIsIHJldCk7CiAJCQlt
+dXRleF91bmxvY2soJnZvcC0+dnN5bmNfbXV0ZXgpOwpAQCAtOTI5LDcgKzkyNyw3IEBAIHN0YXRp
+YyBpbnQgdm9wX3VwZGF0ZV9wbGFuZV9ldmVudChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAog
+CQlyZXQgPSB2b3Bfd2luX3F1ZXVlX2ZiKHZvcF93aW4sIGZiLCB5cmdiX21zdCwgZXZlbnQpOwog
+CQlpZiAocmV0KSB7Ci0JCQlkcm1fdmJsYW5rX3B1dChwbGFuZS0+ZGV2LCB2b3AtPnBpcGUpOwor
+CQkJZHJtX2NydGNfdmJsYW5rX3B1dChjcnRjKTsKIAkJCW11dGV4X3VubG9jaygmdm9wLT52c3lu
+Y19tdXRleCk7CiAJCQlyZXR1cm4gcmV0OwogCQl9CkBAIC0xMDIzLDcgKzEwMjEsNyBAQCBzdGF0
+aWMgaW50IHZvcF9kaXNhYmxlX3BsYW5lKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQogCiAJdm9w
+ID0gdG9fdm9wKHBsYW5lLT5jcnRjKTsKIAotCXJldCA9IGRybV92YmxhbmtfZ2V0KHBsYW5lLT5k
+ZXYsIHZvcC0+cGlwZSk7CisJcmV0ID0gZHJtX2NydGNfdmJsYW5rX2dldChwbGFuZS0+Y3J0Yyk7
+CiAJaWYgKHJldCkgewogCQlEUk1fRVJST1IoImZhaWxlZCB0byBnZXQgdmJsYW5rLCAlZFxuIiwg
+cmV0KTsKIAkJcmV0dXJuIHJldDsKQEAgLTEwMzMsNyArMTAzMSw3IEBAIHN0YXRpYyBpbnQgdm9w
+X2Rpc2FibGVfcGxhbmUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUpCiAKIAlyZXQgPSB2b3Bfd2lu
+X3F1ZXVlX2ZiKHZvcF93aW4sIE5VTEwsIDAsIE5VTEwpOwogCWlmIChyZXQpIHsKLQkJZHJtX3Zi
+bGFua19wdXQocGxhbmUtPmRldiwgdm9wLT5waXBlKTsKKwkJZHJtX2NydGNfdmJsYW5rX3B1dChw
+bGFuZS0+Y3J0Yyk7CiAJCW11dGV4X3VubG9jaygmdm9wLT52c3luY19tdXRleCk7CiAJCXJldHVy
+biByZXQ7CiAJfQpAQCAtMTI5NSw3ICsxMjkzLDcgQEAgc3RhdGljIHZvaWQgdm9wX3dpbl9zdGF0
+ZV9jb21wbGV0ZShzdHJ1Y3Qgdm9wX3dpbiAqdm9wX3dpbiwKIAl9CiAKIAlsaXN0X2RlbCgmc3Rh
+dGUtPmhlYWQpOwotCWRybV92YmxhbmtfcHV0KGNydGMtPmRldiwgdm9wLT5waXBlKTsKKwlkcm1f
+Y3J0Y192YmxhbmtfcHV0KGNydGMpOwogfQogCiBzdGF0aWMgdm9pZCB2b3BfY3J0Y19kZXN0cm95
+KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKQEAgLTE0MTAsNiArMTQwOCw3IEBAIGRvbmU6CiBzdGF0
+aWMgaXJxcmV0dXJuX3Qgdm9wX2lzcihpbnQgaXJxLCB2b2lkICpkYXRhKQogewogCXN0cnVjdCB2
+b3AgKnZvcCA9IGRhdGE7CisJc3RydWN0IGRybV9jcnRjICpjcnRjID0gJnZvcC0+Y3J0YzsKIAl1
+aW50MzJfdCBpbnRyMF9yZWcsIGFjdGl2ZV9pcnFzOwogCXVuc2lnbmVkIGxvbmcgZmxhZ3M7CiAJ
+aW50IHJldCA9IElSUV9OT05FOwpAQCAtMTQzOCw3ICsxNDM3LDcgQEAgc3RhdGljIGlycXJldHVy
+bl90IHZvcF9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKIAl9CiAKIAlpZiAoYWN0aXZlX2lycXMg
+JiBGU19JTlRSKSB7Ci0JCWRybV9oYW5kbGVfdmJsYW5rKHZvcC0+ZHJtX2Rldiwgdm9wLT5waXBl
+KTsKKwkJZHJtX2NydGNfaGFuZGxlX3ZibGFuayhjcnRjKTsKIAkJYWN0aXZlX2lycXMgJj0gfkZT
+X0lOVFI7CiAJCXJldCA9ICh2b3AtPnZzeW5jX3dvcmtfcGVuZGluZykgPyBJUlFfV0FLRV9USFJF
+QUQgOiBJUlFfSEFORExFRDsKIAl9CkBAIC0xNTMxLDggKzE1MzAsNyBAQCBzdGF0aWMgaW50IHZv
+cF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9wICp2b3ApCiAKIAlpbml0X2NvbXBsZXRpb24oJnZvcC0+
+ZHNwX2hvbGRfY29tcGxldGlvbik7CiAJY3J0Yy0+cG9ydCA9IHBvcnQ7Ci0Jdm9wLT5waXBlID0g
+ZHJtX2NydGNfaW5kZXgoY3J0Yyk7Ci0Jcm9ja2NoaXBfcmVnaXN0ZXJfY3J0Y19mdW5jcyhkcm1f
+ZGV2LCAmcHJpdmF0ZV9jcnRjX2Z1bmNzLCB2b3AtPnBpcGUpOworCXJvY2tjaGlwX3JlZ2lzdGVy
+X2NydGNfZnVuY3MoY3J0YywgJnByaXZhdGVfY3J0Y19mdW5jcyk7CiAKIAlyZXR1cm4gMDsKIApA
+QCAtMTU0OCw3ICsxNTQ2LDcgQEAgc3RhdGljIHZvaWQgdm9wX2Rlc3Ryb3lfY3J0YyhzdHJ1Y3Qg
+dm9wICp2b3ApCiB7CiAJc3RydWN0IGRybV9jcnRjICpjcnRjID0gJnZvcC0+Y3J0YzsKIAotCXJv
+Y2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5jcyh2b3AtPmRybV9kZXYsIHZvcC0+cGlwZSk7CisJ
+cm9ja2NoaXBfdW5yZWdpc3Rlcl9jcnRjX2Z1bmNzKGNydGMpOwogCW9mX25vZGVfcHV0KGNydGMt
+PnBvcnQpOwogCWRybV9jcnRjX2NsZWFudXAoY3J0Yyk7CiB9Ci0tIAoxLjcuOS41CgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
