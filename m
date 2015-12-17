@@ -1,72 +1,64 @@
 From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v3 7/8] drm: bridge/dw_hdmi: add atomic API support
-Date: Thu, 17 Dec 2015 11:11:29 +0800
-Message-ID: <1450321889-31561-1-git-send-email-mark.yao@rock-chips.com>
+Subject: [PATCH v3 8/8] drm/rockchip: dw_hdmi: use encoder enable function
+Date: Thu, 17 Dec 2015 11:13:12 +0800
+Message-ID: <1450321992-31671-1-git-send-email-mark.yao@rock-chips.com>
 References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Fabio Estevam <fabio.estevam@freescale.com>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>
+Cc: Mark Yao <mark.yao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RmlsbCBhdG9taWMgbmVlZGVkIGZ1bmNzIHdpdGggZGVmYXVsdCBhdG9taWMgaGVscGVyIGxpYnJh
-cnkuCgpSb2NrY2hpcCB1c2UgZHdfaGRtaSwgYW5kIGRybS9yb2NrY2hpcCB3aWxsIGNvdmVydCB0
-byBhdG9taWMgYXBpLAp3ZSBuZWVkIGR3X2hkbWkgc3VwcG9ydCBhdG9taWMgZnVuY3MuCgpOb3cg
-YW5vdGhlciBkcm0gZHJpdmVyIHVzZSBkd19oZG1pIGlzIGlteCwgbm90IHlldCBhdG9taWMsIHNv
-CmNoZWNrIERSSVZFUl9BVE9NSUMgYXQgcnVudGltZSB0byBzcGlsdCBhdG9taWMgYW5kIG5vdCBh
-dG9taWMuCgpDYzogUnVzc2VsbCBLaW5nIDxybWsra2VybmVsQGFybS5saW51eC5vcmcudWs+CkNj
-OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgpDYzogQW5keSBZYW4gPGFu
-ZHkueWFuQHJvY2stY2hpcHMuY29tPgpDYzogRmFiaW8gRXN0ZXZhbSA8ZmFiaW8uZXN0ZXZhbUBm
-cmVlc2NhbGUuY29tPgpDYzogVGhpZXJyeSBSZWRpbmcgPHRyZWRpbmdAbnZpZGlhLmNvbT4KClNp
-Z25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5n
-ZXMgaW4gdjM6IE5vbmUKQ2hhbmdlcyBpbiB2MjoKQWR2aWNlZCBieSBEYW5pZWwgVmV0dGVyCi0g
-Y2hlY2sgRFJJVkVSX0FUT01JQyBhdCBydW50aW1lIHRvIHNwaWx0IGF0b21pYyBhbmQgbm90IGF0
-b21pYy4KCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3X2hkbWkuYyB8ICAgMjMgKysrKysrKysr
-KysrKysrKysrKysrLS0KIDEgZmlsZSBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspLCAyIGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvZHdfaGRtaS5jIGIv
-ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKaW5kZXggNTZkZTlmMS4uZGMwYmRkNCAx
-MDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9kd19oZG1pLmMKQEAgLTIyLDYgKzIyLDcgQEAKIAogI2luY2x1ZGUg
-PGRybS9kcm1fb2YuaD4KICNpbmNsdWRlIDxkcm0vZHJtUC5oPgorI2luY2x1ZGUgPGRybS9kcm1f
-YXRvbWljX2hlbHBlci5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KICNpbmNs
-dWRlIDxkcm0vZHJtX2VkaWQuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2VuY29kZXJfc2xhdmUuaD4K
-QEAgLTE1MjIsNiArMTUyMywxNyBAQCBzdGF0aWMgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3Mg
-ZHdfaGRtaV9jb25uZWN0b3JfZnVuY3MgPSB7CiAJLmZvcmNlID0gZHdfaGRtaV9jb25uZWN0b3Jf
-Zm9yY2UsCiB9OwogCitzdGF0aWMgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgZHdfaGRtaV9h
-dG9taWNfY29ubmVjdG9yX2Z1bmNzID0geworCS5kcG1zID0gZHJtX2F0b21pY19oZWxwZXJfY29u
-bmVjdG9yX2RwbXMsCisJLmZpbGxfbW9kZXMgPSBkcm1faGVscGVyX3Byb2JlX3NpbmdsZV9jb25u
-ZWN0b3JfbW9kZXMsCisJLmRldGVjdCA9IGR3X2hkbWlfY29ubmVjdG9yX2RldGVjdCwKKwkuZGVz
-dHJveSA9IGR3X2hkbWlfY29ubmVjdG9yX2Rlc3Ryb3ksCisJLmZvcmNlID0gZHdfaGRtaV9jb25u
-ZWN0b3JfZm9yY2UsCisJLnJlc2V0ID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9yX3Jlc2V0
-LAorCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfY29ubmVjdG9y
-X2R1cGxpY2F0ZV9zdGF0ZSwKKwkuYXRvbWljX2Rlc3Ryb3lfc3RhdGUgPSBkcm1fYXRvbWljX2hl
-bHBlcl9jb25uZWN0b3JfZGVzdHJveV9zdGF0ZSwKK307CisKIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nv
-bm5lY3Rvcl9oZWxwZXJfZnVuY3MgZHdfaGRtaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzID0gewog
-CS5nZXRfbW9kZXMgPSBkd19oZG1pX2Nvbm5lY3Rvcl9nZXRfbW9kZXMsCiAJLm1vZGVfdmFsaWQg
-PSBkd19oZG1pX2Nvbm5lY3Rvcl9tb2RlX3ZhbGlkLApAQCAtMTY0NSw4ICsxNjU3LDE1IEBAIHN0
-YXRpYyBpbnQgZHdfaGRtaV9yZWdpc3RlcihzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3Qg
-ZHdfaGRtaSAqaGRtaSkKIAogCWRybV9jb25uZWN0b3JfaGVscGVyX2FkZCgmaGRtaS0+Y29ubmVj
-dG9yLAogCQkJCSAmZHdfaGRtaV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzKTsKLQlkcm1fY29ubmVj
-dG9yX2luaXQoZHJtLCAmaGRtaS0+Y29ubmVjdG9yLCAmZHdfaGRtaV9jb25uZWN0b3JfZnVuY3Ms
-Ci0JCQkgICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEpOworCisJaWYgKGRybV9jb3JlX2NoZWNr
-X2ZlYXR1cmUoZHJtLCBEUklWRVJfQVRPTUlDKSkKKwkJZHJtX2Nvbm5lY3Rvcl9pbml0KGRybSwg
-JmhkbWktPmNvbm5lY3RvciwKKwkJCQkgICAmZHdfaGRtaV9hdG9taWNfY29ubmVjdG9yX2Z1bmNz
-LAorCQkJCSAgIERSTV9NT0RFX0NPTk5FQ1RPUl9IRE1JQSk7CisJZWxzZQorCQlkcm1fY29ubmVj
-dG9yX2luaXQoZHJtLCAmaGRtaS0+Y29ubmVjdG9yLAorCQkJCSAgICZkd19oZG1pX2Nvbm5lY3Rv
-cl9mdW5jcywKKwkJCQkgICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEpOwogCiAJaGRtaS0+Y29u
-bmVjdG9yLmVuY29kZXIgPSBlbmNvZGVyOwogCi0tIAoxLjcuOS41CgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+encoder.enable is more compatible to atomic api than encoder.prepare/commit
+
+Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+---
+Changes in v3: None
+Changes in v2: None
+
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c |   14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 525b5a8..8e1605c 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -195,12 +195,15 @@ static void dw_hdmi_rockchip_encoder_mode_set(struct drm_encoder *encoder,
+ {
+ }
+ 
+-static void dw_hdmi_rockchip_encoder_commit(struct drm_encoder *encoder)
++static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+ {
+ 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
+ 	u32 val;
+ 	int mux;
+ 
++	rockchip_drm_crtc_mode_config(encoder->crtc, DRM_MODE_CONNECTOR_HDMIA,
++				      ROCKCHIP_OUT_MODE_AAAA);
++
+ 	mux = rockchip_drm_encoder_get_mux_id(hdmi->dev->of_node, encoder);
+ 	if (mux)
+ 		val = HDMI_SEL_VOP_LIT | (HDMI_SEL_VOP_LIT << 16);
+@@ -212,17 +215,10 @@ static void dw_hdmi_rockchip_encoder_commit(struct drm_encoder *encoder)
+ 		(mux) ? "LIT" : "BIG");
+ }
+ 
+-static void dw_hdmi_rockchip_encoder_prepare(struct drm_encoder *encoder)
+-{
+-	rockchip_drm_crtc_mode_config(encoder->crtc, DRM_MODE_CONNECTOR_HDMIA,
+-				      ROCKCHIP_OUT_MODE_AAAA);
+-}
+-
+ static struct drm_encoder_helper_funcs dw_hdmi_rockchip_encoder_helper_funcs = {
+ 	.mode_fixup = dw_hdmi_rockchip_encoder_mode_fixup,
+ 	.mode_set   = dw_hdmi_rockchip_encoder_mode_set,
+-	.prepare    = dw_hdmi_rockchip_encoder_prepare,
+-	.commit     = dw_hdmi_rockchip_encoder_commit,
++	.enable     = dw_hdmi_rockchip_encoder_enable,
+ 	.disable    = dw_hdmi_rockchip_encoder_disable,
+ };
+ 
+-- 
+1.7.9.5
