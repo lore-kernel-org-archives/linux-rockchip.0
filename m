@@ -1,49 +1,116 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v3 0/5] Fix a trivial typo and support rk3228/rk3399 SoCs
- for thermal driver.
-Date: Thu, 17 Dec 2015 12:09:28 -0800
-Message-ID: <20151217200927.GC7999@localhost.localdomain>
-References: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/6] ARM: dts: fix the correct pinctrl control for rk3036
+Date: Fri, 18 Dec 2015 00:28:27 +0100
+Message-ID: <1838222.r8GKl7OzB9@diego>
+References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com> <1450362112-8075-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1450362112-8075-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Caesar Wang <wxt@rock-chips.com>
-Cc: huangtao@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, dmitry.torokhov@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, computersforpeace@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Jiri Kosina <trivial@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, leozwang@google.com, keescook@google.com, Xing Zheng <zhengxing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Am Donnerstag, 17. Dezember 2015, 22:21:47 schrieb Caesar Wang:
+> The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
+> can't set the status in the internal.
+> 
+> We should keep the default status for enable the gpio status,
+> In fact, the pull_none is the disable the gpio pull up/down.
+> 
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-On Thu, Dec 03, 2015 at 04:48:38PM +0800, Caesar Wang wrote:
-> This series pacthes to support the next soc for this thermal driver.
-> I don't add the dts thermal data since these SoCs have *_not_* land
-> in this mainline. I believe these SoCs dts will land in this mainline
-> lately,
-> then I will add the thermal data for Heiko.
-> 
-> This series patches can apply into Eduardo branch.
-> https://git.kernel.org/cgit/linux/kernel/git/evalenti/linux-soc-thermal.git
-> 
-> Also, this series pacthes have built on github branch.
-> https://github.com/rockchip-linux/kernel/commits/develop4.4
-> 
-> PATCH[1/5]:
-> That's bit ugly typo, sorry for sending again :(.
-> 
-> PATCH[2/5]:
-> To fix a build warning came from Dan Carpenter report smatch check,
-> Thanks. :)
-> 
-> PATCH[3/5]:
-> Add the rk3228/rk3399 SoCs compatible for dt-bindings.
-> 
-> PATCH[4/5]:
-> Add the rk3228 SoCs for thermal driver.
-> 
-> PATCH[5/5]:
-> Add the rk3399 SoCs for thermal driver based on PATCH[4/5].
+From the signed-off-by's I guess this change was created by Xing (author), 
+right?
 
-I applied all but 2/5.
 
+Heiko
+
+> ---
+> 
+>  arch/arm/boot/dts/rk3036.dtsi | 34 +++++++++++++++-------------------
+>  1 file changed, 15 insertions(+), 19 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+> index f8758bf..620e6e0 100644
+> --- a/arch/arm/boot/dts/rk3036.dtsi
+> +++ b/arch/arm/boot/dts/rk3036.dtsi
+> @@ -427,12 +427,8 @@
+>  			#interrupt-cells = <2>;
+>  		};
+> 
+> -		pcfg_pull_up: pcfg-pull-up {
+> -			bias-pull-up;
+> -		};
+> -
+> -		pcfg_pull_down: pcfg-pull-down {
+> -			bias-pull-down;
+> +		pcfg_pull_default: pcfg_pull_default {
+> +			bias-pull-pin-default;
+>  		};
+> 
+>  		pcfg_pull_none: pcfg-pull-none {
+> @@ -473,18 +469,18 @@
+>  			};
+> 
+>  			emmc_cmd: emmc-cmd {
+> -				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_none>;
+> +				rockchip,pins = <2 1 RK_FUNC_2 &pcfg_pull_default>;
+>  			};
+> 
+>  			emmc_bus8: emmc-bus8 {
+> -				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 25 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 26 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 27 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 28 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 29 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 30 RK_FUNC_2 &pcfg_pull_none>,
+> -						<1 31 RK_FUNC_2 &pcfg_pull_none>;
+> +				rockchip,pins = <1 24 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 25 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 26 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 27 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 28 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 29 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 30 RK_FUNC_2 &pcfg_pull_default>,
+> +						<1 31 RK_FUNC_2 &pcfg_pull_default>;
+>  			};
+>  		};
+> 
+> @@ -522,12 +518,12 @@
+> 
+>  		uart0 {
+>  			uart0_xfer: uart0-xfer {
+> -				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_up>,
+> +				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_default>,
+>  						<0 17 RK_FUNC_1 &pcfg_pull_none>;
+>  			};
+> 
+>  			uart0_cts: uart0-cts {
+> -				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_up>;
+> +				rockchip,pins = <0 18 RK_FUNC_1 &pcfg_pull_default>;
+>  			};
+> 
+>  			uart0_rts: uart0-rts {
+> @@ -537,7 +533,7 @@
+> 
+>  		uart1 {
+>  			uart1_xfer: uart1-xfer {
+> -				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_none>,
+> +				rockchip,pins = <2 22 RK_FUNC_1 &pcfg_pull_default>,
+>  						<2 23 RK_FUNC_1 &pcfg_pull_none>;
+>  			};
+>  			/* no rts / cts for uart1 */
+> @@ -545,7 +541,7 @@
+> 
+>  		uart2 {
+>  			uart2_xfer: uart2-xfer {
+> -				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_none>,
+> +				rockchip,pins = <1 18 RK_FUNC_2 &pcfg_pull_default>,
+>  						<1 19 RK_FUNC_2 &pcfg_pull_none>;
+>  			};
+>  			/* no rts / cts for uart2 */
