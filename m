@@ -1,96 +1,75 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/8] drm/rockchip: covert to support atomic API
-Date: Thu, 17 Dec 2015 13:03:53 +0100
-Message-ID: <1817698.JgNG3flpWP@diego>
-References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
- <4029109.1DucZWNrFm@diego> <56728F3F.6060309@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <56728F3F.6060309@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v1 0/6] Support the rk3036 Kylin board
+Date: Thu, 17 Dec 2015 22:21:46 +0800
+Message-ID: <1450362112-8075-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, leozwang@google.com, keescook@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCkFtIERvbm5lcnN0YWcsIDE3LiBEZXplbWJlciAyMDE1LCAxODozMjozMSBzY2hy
-aWViIE1hcmsgeWFvOgo+IE9uIDIwMTXlubQxMuaciDE35pelIDE4OjAwLCBIZWlrbyBTdMO8Ym5l
-ciB3cm90ZToKPiA+IEFtIERvbm5lcnN0YWcsIDE3LiBEZXplbWJlciAyMDE1LCAxMTowMTowNyBz
-Y2hyaWViIE1hcmsgWWFvOgo+ID4+IFRoZSBzZXJpZXMgb2YgcGF0Y2hlcyBjb3ZlcnRpbmcgZHJt
-IHJvY2tjaGlwIHRvIGF0b21pYyBBUEksIGRvIHNvbWUKPiA+PiBjbGVhbnVwIGFuZCBzb21lIGZp
-eGVzIG9uIGF0b21pYyBzaWRlLgoKWy4uLl0KCj4gPiBQbHVnZ2luZyBpbiBIRE1JIGFmdGVyIGJv
-b3Q6Cj4gPiAKPiA+IFsgICAyMC41NTk1MzRdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0t
-LS0tLS0tLQo+ID4gWyAgIDIwLjU2NDQxMl0gV0FSTklORzogQ1BVOiAzIFBJRDogNzQgYXQKPiA+
-IGRyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hlbHBlci5jOjY4Mgo+ID4gZHJtX2F0b21pY19o
-ZWxwZXJfdXBkYXRlX2xlZ2FjeV9tb2Rlc2V0X3N0YXRlKzB4NmMvMHgyMDAoKSBbICAgMjAuNTc2
-OTkxXQo+ID4gTW9kdWxlcyBsaW5rZWQgaW46Cj4gPiBbICAgMjAuNTgwMTc1XSBDUFU6IDMgUElE
-OiA3NCBDb21tOiBpcnEvNTEtZmY5ODAwMDAgTm90IHRhaW50ZWQgNC40LjAtcmM1Kwo+ID4gIzI3
-ODcgWyAgIDIwLjU4NzUwMl0gSGFyZHdhcmUgbmFtZTogUm9ja2NoaXAgKERldmljZSBUcmVlKQo+
-ID4gWyAgIDIwLjU5MjM0N10gWzxjMDAxOTkxND5dICh1bndpbmRfYmFja3RyYWNlKSBmcm9tIFs8
-YzAwMTRiY2M+XQo+ID4gKHNob3dfc3RhY2srMHgyMC8weDI0KSBbICAgMjAuNjAwMzE5XSBbPGMw
-MDE0YmNjPl0gKHNob3dfc3RhY2spIGZyb20KPiA+IFs8YzAyYzQzNDQ+XSAoZHVtcF9zdGFjaysw
-eDg0LzB4YjgpIFsgICAyMC42MDc3NzZdIFs8YzAyYzQzNDQ+XQo+ID4gKGR1bXBfc3RhY2spIGZy
-b20gWzxjMDAyOWEyMD5dICh3YXJuX3Nsb3dwYXRoX2NvbW1vbisweDk4LzB4YzQpIFsgIAo+ID4g
-MjAuNjE2MDg3XSBbPGMwMDI5YTIwPl0gKHdhcm5fc2xvd3BhdGhfY29tbW9uKSBmcm9tIFs8YzAw
-MjliMDg+XQo+ID4gKHdhcm5fc2xvd3BhdGhfbnVsbCsweDJjLzB4MzQpIFsgICAyMC42MjUxMDZd
-IFs8YzAwMjliMDg+XQo+ID4gKHdhcm5fc2xvd3BhdGhfbnVsbCkgZnJvbSBbPGMwMzYxMTQ0Pl0K
-PiA+IChkcm1fYXRvbWljX2hlbHBlcl91cGRhdGVfbGVnYWN5X21vZGVzZXRfc3RhdGUrMHg2Yy8w
-eDIwMCkgWyAgIDIwLjYzNjM4Ml0KPiA+IFs8YzAzNjExNDQ+XSAoZHJtX2F0b21pY19oZWxwZXJf
-dXBkYXRlX2xlZ2FjeV9tb2Rlc2V0X3N0YXRlKSBmcm9tCj4gPiBbPGMwMzYxNjg0Pl0gKGRybV9h
-dG9taWNfaGVscGVyX2NvbW1pdF9tb2Rlc2V0X2Rpc2FibGVzKzB4MWU0LzB4MzVjKSBbICAKPiA+
-IDIwLjY0OTczMl0gWzxjMDM2MTY4ND5dIChkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfbW9kZXNl
-dF9kaXNhYmxlcykgZnJvbQo+ID4gWzxjMDM4NzgyYz5dIChyb2NrY2hpcF9hdG9taWNfY29tbWl0
-X2NvbXBsZXRlKzB4MzQvMHgxMDgpIFsgICAyMC42NjE3ODldCj4gPiBbPGMwMzg3ODJjPl0gKHJv
-Y2tjaGlwX2F0b21pY19jb21taXRfY29tcGxldGUpIGZyb20gWzxjMDM4Nzk4ND5dCj4gPiAocm9j
-a2NoaXBfZHJtX2F0b21pY19jb21taXQrMHg4NC8weGEwKSBbICAgMjAuNjcyNDQyXSBbPGMwMzg3
-OTg0Pl0KPiA+IChyb2NrY2hpcF9kcm1fYXRvbWljX2NvbW1pdCkgZnJvbSBbPGMwMzg0YzU4Pl0K
-PiA+IChkcm1fYXRvbWljX2NvbW1pdCsweDYwLzB4NzApIFsgICAyMC42ODE3MTFdIFs8YzAzODRj
-NTg+XQo+ID4gKGRybV9hdG9taWNfY29tbWl0KSBmcm9tIFs8YzAzNjNhYjA+XSAocmVzdG9yZV9m
-YmRldl9tb2RlKzB4MTI4LzB4MjU4KSBbIAo+ID4gIDIwLjY5MDQxOF0gWzxjMDM2M2FiMD5dIChy
-ZXN0b3JlX2ZiZGV2X21vZGUpIGZyb20gWzxjMDM2NTIwOD5dCj4gPiAoZHJtX2ZiX2hlbHBlcl9y
-ZXN0b3JlX2ZiZGV2X21vZGVfdW5sb2NrZWQrMHgzYy8weDgwKSBbICAgMjAuNzAxMDMzXQo+ID4g
-WzxjMDM2NTIwOD5dIChkcm1fZmJfaGVscGVyX3Jlc3RvcmVfZmJkZXZfbW9kZV91bmxvY2tlZCkg
-ZnJvbQo+ID4gWzxjMDM2NTI5Yz5dIChkcm1fZmJfaGVscGVyX3NldF9wYXIrMHg1MC8weDYwKSBb
-ICAgMjAuNzExOTA3XQo+ID4gWzxjMDM2NTI5Yz5dIChkcm1fZmJfaGVscGVyX3NldF9wYXIpIGZy
-b20gWzxjMDM2NTFiND5dCj4gPiAoZHJtX2ZiX2hlbHBlcl9ob3RwbHVnX2V2ZW50KzB4YzgvMHhl
-MCkgWyAgIDIwLjcyMTU2OV0gWzxjMDM2NTFiND5dCj4gPiAoZHJtX2ZiX2hlbHBlcl9ob3RwbHVn
-X2V2ZW50KSBmcm9tIFs8YzAzODdiZDA+XQo+ID4gKHJvY2tjaGlwX2RybV9vdXRwdXRfcG9sbF9j
-aGFuZ2VkKzB4MjQvMHgyOCkgWyAgIDIwLjczMjE4NV0gWzxjMDM4N2JkMD5dCj4gPiAocm9ja2No
-aXBfZHJtX291dHB1dF9wb2xsX2NoYW5nZWQpIGZyb20gWzxjMDM1YWFmOD5dCj4gPiAoZHJtX2tt
-c19oZWxwZXJfaG90cGx1Z19ldmVudCsweDM0LzB4MzgpIFsgICAyMC43NDI4OTFdIFs8YzAzNWFh
-Zjg+XQo+ID4gKGRybV9rbXNfaGVscGVyX2hvdHBsdWdfZXZlbnQpIGZyb20gWzxjMDM1YjQzND5d
-Cj4gPiAoZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50KzB4MTIwLzB4MTUwKSBbICAgMjAuNzUzMDc4
-XSBbPGMwMzViNDM0Pl0KPiA+IChkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQpIGZyb20gWzxjMDM4
-ZGQxYz5dIChkd19oZG1pX2lycSsweDE0Yy8weDE4YykgWyAKPiA+ICAyMC43NjE3NzJdIFs8YzAz
-OGRkMWM+XSAoZHdfaGRtaV9pcnEpIGZyb20gWzxjMDA4ZDAzMD5dCj4gPiAoaXJxX3RocmVhZF9m
-bisweDJjLzB4NDQpIFsgICAyMC43NjkzNTBdIFs8YzAwOGQwMzA+XSAoaXJxX3RocmVhZF9mbikK
-PiA+IGZyb20gWzxjMDA4ZDMzYz5dIChpcnFfdGhyZWFkKzB4MTE4LzB4MjFjKSBbICAgMjAuNzc3
-MDE5XSBbPGMwMDhkMzNjPl0KPiA+IChpcnFfdGhyZWFkKSBmcm9tIFs8YzAwNGJiYjg+XSAoa3Ro
-cmVhZCsweGY0LzB4MTBjKSBbICAgMjAuNzg0MDgzXQo+ID4gWzxjMDA0YmJiOD5dIChrdGhyZWFk
-KSBmcm9tIFs8YzAwMTAwMTA+XSAocmV0X2Zyb21fZm9yaysweDE0LzB4MjQpIFsgIAo+ID4gMjAu
-NzkxMzAwXSAtLS1bIGVuZCB0cmFjZSAzZGVhYTUxZDI4ODA2N2EwIF0tLS0KPiAKPiBIaSBIZWlr
-bwo+ICAgICAgVGhpcyBpc3N1ZSBjYW4gYmUgZXhwbGFpbmVkIGZyb20gZm9sbG93aW5nIHRocmVh
-ZDoKPiAgICAgICAgIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE1LzExLzE2LzQ5OAo+IAo+ICAg
-ICAgWW91IGNhbiBmaXggaXQgYnkgZm9sbG93aW5nIGNoYW5nZXM6Cj4gCj4gQEAgLTE2NjcsOCAr
-MTY2Nyw2IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9yZWdpc3RlcihzdHJ1Y3QgZHJtX2RldmljZQo+
-ICpkcm0sIHN0cnVjdCBkd19oZG1pICpoZG1pKQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICZkd19oZG1pX2Nvbm5lY3Rvcl9mdW5jcywKPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBEUk1fTU9ERV9DT05ORUNUT1JfSERNSUEpOwo+IAo+ICAgICAgLSAg
-ICAgICBoZG1pLT5jb25uZWN0b3IuZW5jb2RlciA9IGVuY29kZXI7Cgp5ZXAgdGhhdCBmaXhlcyB0
-aGUgd2FybmluZy4gRnJvbSB0aGUgdGhyZWFkIHlvdSBtZW50aW9uLCBpdCBsb29rcyBsaWtlIHRo
-YXQgCmFzc2lnbm1lbnQgc2hvdWxkIGFsc28gYmUgcmVtb3ZlZCBpbiB0aGUgbm9uLWF0b21pYyBj
-YXNlIChpLk1YKT8KCk9yIGlmIGl0IGlzIHJlYWxseSBuZWNlc3NhcnkgdGhlcmUgY291bGQgYWxz
-byB3cmFwIGl0IGluIGEgY29uZGl0aW9uYWwgdG8gb25seSAKYmUgc2V0IGZvciB0aGUgbm9uLWF0
-b21pYyBjYXNlLgoKCkhlaWtvCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Kylin-board is based on RK3036 SOCs, add the initiation
+version for working.
+
+This series patches have the following decriptions:
+
+PATCH[1/6]:
+ARM: dts: fix the correct pinctrl control for rk3036
+
+The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
+can't set the status in the internal.
+---
+
+PATCH[2/6]:
+ARM: dts: add the lcdc and hdmi node for rk3036
+
+Add the devices is related to display.
+Based on the series patches of Mark Yao's
+---
+
+PATCH[3/6]:
+ARM: dts: add the sdio/sdmmc node for rk3036
+
+Add the wifi/sd card work for kylin board.
+---
+
+PATCH[4/6]:
+ARM: dts: rockchip: add the kylin board for rk3036
+
+Add the dts for kylin board.
+---
+
+PATCH[5/6]:
+ARM: dts: add the sound codec for kylin board
+
+Make the codec rt5616 working on kylin board.
+The realteak have been upstream for Mark Brown,
+I guess need some days to review.
+
+---
+
+PATCH[6/6]:
+ARM: dts: add the sdio node for kylin board
+
+Enable the sdio for kylin board.
+---
+
+
+
+Caesar Wang (6):
+  ARM: dts: fix the correct pinctrl control for rk3036
+  ARM: dts: add the lcdc and hdmi node for rk3036
+  ARM: dts: add the sdio/sdmmc node for rk3036
+  ARM: dts: rockchip: add the kylin board for rk3036
+  ARM: dts: add the sound codec for kylin board
+  ARM: dts: add the sdio node for kylin board
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/rk3036-kylin.dts                 | 345 +++++++++++++++++++++
+ arch/arm/boot/dts/rk3036.dtsi                      | 167 ++++++++--
+ 4 files changed, 498 insertions(+), 19 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3036-kylin.dts
+
+-- 
+1.9.1
