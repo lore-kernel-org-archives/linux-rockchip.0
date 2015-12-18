@@ -1,128 +1,167 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH] usb: dwc2: add shutdown callback to platform variant
-Date: Fri, 18 Dec 2015 19:30:59 +0100
-Message-ID: <2135194.vFtAtbOFPb@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner@collabora.com>
+Subject: [PATCH] clk: rockchip: only enter pll slow-mode directly before reboots on rk3288
+Date: Fri, 18 Dec 2015 19:33:50 +0100
+Message-ID: <1705995.CL2pqRBHZb@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: balbi-l0cyMroinI0@public.gmane.org
-Cc: john.youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
+Cc: dianders@chromium.org, mturquette@baylibre.com, sboyd@codeaurora.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-In specific conditions (involving usb hubs) dwc2 devices can create a
-lot of interrupts, even to the point of overwhelming devices running
-at low frequencies. Some devices need to do special clock handling
-at shutdown-time which may bring the system clock below the threshold
-of being able to handle the dwc2 interrupts. Disabling dwc2-irqs
-in a shutdown callbacks prevents reboots/poweroffs from getting stuck
-in such cases.
+As commit 1d33929e2a2b ("clk: rockchip: switch PLLs to slow mode before
+reboot for rk3288") states, switching the PLLs to slow-mode is only
+necessary when rebooting using the soft-reset done through the CRU.
 
-The hsotg struct already contains an unused irq element, so we can
-just use it to store the irq number for the shutdown callback.
+The dwc2 controllers used create really big number of interrupts in
+special constellations involving usb-hubs and their number is so high,
+it can even overwhelm the interrupt handler if the cpu-speed os to low.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Right now the PLLs are put into slow-mode in a shutdown syscore_ops
+callback which means it happens on all reboots (not only the soft-reset
+ones) and even on poweroff actions.
+
+This can result in the system not powering off and getting stuck instead,
+so we should move the slow-mode change nearer to the actual reboot action.
+
+For this we introduce the possiblity to also set a callback that gets
+called from the restart-handler directly prior to restarting the system
+and move the shutdown-callback to this new option.
+
+With this the slow-mode switch is done only on the necessary reboots
+and also has a smaller possibility of causing artifacts.
+
+Fixes: 1d33929e2a2b ("clk: rockchip: switch PLLs to slow mode before reboot for rk3288")
+Signed-off-by: Heiko Stuebner <heiko.stuebner@collabora.com>
 ---
-I'm also adapting the code on the clock-side to lessen the effects of
-the slow clock (see clk: rockchip: only enter pll slow-mode directly
-before reboots on rk3288), but this patch also fixes the issue of the
-overwhelming irq-number in itself and may be interesting for other/future
-platforms using the dwc2.
+ drivers/clk/rockchip/clk-rk3036.c | 2 +-
+ drivers/clk/rockchip/clk-rk3188.c | 2 +-
+ drivers/clk/rockchip/clk-rk3228.c | 2 +-
+ drivers/clk/rockchip/clk-rk3288.c | 4 ++--
+ drivers/clk/rockchip/clk-rk3368.c | 2 +-
+ drivers/clk/rockchip/clk.c        | 7 ++++++-
+ drivers/clk/rockchip/clk.h        | 2 +-
+ 7 files changed, 13 insertions(+), 8 deletions(-)
 
-
- drivers/usb/dwc2/platform.c | 35 +++++++++++++++++++++++++++--------
- 1 file changed, 27 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
-index 39c1cbf..5510d07 100644
---- a/drivers/usb/dwc2/platform.c
-+++ b/drivers/usb/dwc2/platform.c
-@@ -306,6 +306,25 @@ static int dwc2_driver_remove(struct platform_device *dev)
- 	return 0;
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index 75553af..1651f7d 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -473,6 +473,6 @@ static void __init rk3036_clk_init(struct device_node *np)
+ 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+-	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST);
++	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
+ }
+ CLK_OF_DECLARE(rk3036_cru, "rockchip,rk3036-cru", rk3036_clk_init);
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index 7836a97..3521f6f 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -745,7 +745,7 @@ static void __init rk3188_common_clk_init(struct device_node *np)
+ 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+-	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST);
++	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
  }
  
-+/**
-+ * dwc2_driver_shutdown() - Called on device shutdown
-+ *
-+ * @dev: Platform device
-+ *
-+ * In specific conditions (involving usb hubs) dwc2 devices can create a
-+ * lot of interrupts, even to the point of overwhelming devices running
-+ * at low frequencies. Some devices need to do special clock handling
-+ * at shutdown-time which may bring the system clock below the threshold
-+ * of being able to handle the dwc2 interrupts. Disabling dwc2-irqs
-+ * prevents reboots/poweroffs from getting stuck in such cases.
-+ */
-+static void dwc2_driver_shutdown(struct platform_device *dev)
-+{
-+	struct dwc2_hsotg *hsotg = platform_get_drvdata(dev);
-+
-+	disable_irq(hsotg->irq);
-+}
-+
- static const struct of_device_id dwc2_of_match_table[] = {
- 	{ .compatible = "brcm,bcm2835-usb", .data = &params_bcm2835 },
- 	{ .compatible = "rockchip,rk3066-usb", .data = &params_rk3066 },
-@@ -335,7 +354,6 @@ static int dwc2_driver_probe(struct platform_device *dev)
- 	struct dwc2_hsotg *hsotg;
- 	struct resource *res;
- 	int retval;
--	int irq;
+ static void __init rk3066a_clk_init(struct device_node *np)
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index 87a7e59..981a502 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -673,6 +673,6 @@ static void __init rk3228_clk_init(struct device_node *np)
+ 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
  
- 	match = of_match_device(dwc2_of_match_table, &dev->dev);
- 	if (match && match->data) {
-@@ -401,15 +419,15 @@ static int dwc2_driver_probe(struct platform_device *dev)
- 
- 	dwc2_set_all_params(hsotg->core_params, -1);
- 
--	irq = platform_get_irq(dev, 0);
--	if (irq < 0) {
-+	hsotg->irq = platform_get_irq(dev, 0);
-+	if (hsotg->irq < 0) {
- 		dev_err(&dev->dev, "missing IRQ resource\n");
--		return irq;
-+		return hsotg->irq;
- 	}
- 
- 	dev_dbg(hsotg->dev, "registering common handler for irq%d\n",
--		irq);
--	retval = devm_request_irq(hsotg->dev, irq,
-+		hsotg->irq);
-+	retval = devm_request_irq(hsotg->dev, hsotg->irq,
- 				  dwc2_handle_common_intr, IRQF_SHARED,
- 				  dev_name(hsotg->dev), hsotg);
- 	if (retval)
-@@ -428,14 +446,14 @@ static int dwc2_driver_probe(struct platform_device *dev)
- 	dwc2_set_parameters(hsotg, params);
- 
- 	if (hsotg->dr_mode != USB_DR_MODE_HOST) {
--		retval = dwc2_gadget_init(hsotg, irq);
-+		retval = dwc2_gadget_init(hsotg, hsotg->irq);
- 		if (retval)
- 			goto error;
- 		hsotg->gadget_enabled = 1;
- 	}
- 
- 	if (hsotg->dr_mode != USB_DR_MODE_PERIPHERAL) {
--		retval = dwc2_hcd_init(hsotg, irq);
-+		retval = dwc2_hcd_init(hsotg, hsotg->irq);
- 		if (retval) {
- 			if (hsotg->gadget_enabled)
- 				dwc2_hsotg_remove(hsotg);
-@@ -502,6 +520,7 @@ static struct platform_driver dwc2_platform_driver = {
- 	},
- 	.probe = dwc2_driver_probe,
- 	.remove = dwc2_driver_remove,
-+	.shutdown = dwc2_driver_shutdown,
+-	rockchip_register_restart_notifier(RK3228_GLB_SRST_FST);
++	rockchip_register_restart_notifier(RK3228_GLB_SRST_FST, NULL);
+ }
+ CLK_OF_DECLARE(rk3228_cru, "rockchip,rk3228-cru", rk3228_clk_init);
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 3ecaa9d..2a6eca0 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -848,7 +848,6 @@ static void rk3288_clk_shutdown(void)
+ static struct syscore_ops rk3288_clk_syscore_ops = {
+ 	.suspend = rk3288_clk_suspend,
+ 	.resume = rk3288_clk_resume,
+-	.shutdown = rk3288_clk_shutdown,
  };
  
- module_platform_driver(dwc2_platform_driver);
+ static void __init rk3288_clk_init(struct device_node *np)
+@@ -900,7 +899,8 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+-	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST);
++	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST,
++					   rk3288_clk_shutdown);
+ 	register_syscore_ops(&rk3288_clk_syscore_ops);
+ }
+ CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 1faf160..be0ede5 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -889,6 +889,6 @@ static void __init rk3368_clk_init(struct device_node *np)
+ 	rockchip_register_softrst(np, 15, reg_base + RK3368_SOFTRST_CON(0),
+ 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+ 
+-	rockchip_register_restart_notifier(RK3368_GLB_SRST_FST);
++	rockchip_register_restart_notifier(RK3368_GLB_SRST_FST, NULL);
+ }
+ CLK_OF_DECLARE(rk3368_cru, "rockchip,rk3368-cru", rk3368_clk_init);
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index be6c7fd..443d6f0 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -341,9 +341,13 @@ void __init rockchip_clk_protect_critical(const char *const clocks[],
+ }
+ 
+ static unsigned int reg_restart;
++static void (*cb_restart)(void);
+ static int rockchip_restart_notify(struct notifier_block *this,
+ 				   unsigned long mode, void *cmd)
+ {
++	if (cb_restart)
++		cb_restart();
++
+ 	writel(0xfdb9, reg_base + reg_restart);
+ 	return NOTIFY_DONE;
+ }
+@@ -353,11 +357,12 @@ static struct notifier_block rockchip_restart_handler = {
+ 	.priority = 128,
+ };
+ 
+-void __init rockchip_register_restart_notifier(unsigned int reg)
++void __init rockchip_register_restart_notifier(unsigned int reg, void (*cb)(void))
+ {
+ 	int ret;
+ 
+ 	reg_restart = reg;
++	cb_restart = cb;
+ 	ret = register_restart_handler(&rockchip_restart_handler);
+ 	if (ret)
+ 		pr_err("%s: cannot register restart handler, %d\n",
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 01bc372..809ef81 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -503,7 +503,7 @@ void rockchip_clk_register_armclk(unsigned int lookup_id, const char *name,
+ 			const struct rockchip_cpuclk_rate_table *rates,
+ 			int nrates);
+ void rockchip_clk_protect_critical(const char *const clocks[], int nclocks);
+-void rockchip_register_restart_notifier(unsigned int reg);
++void rockchip_register_restart_notifier(unsigned int reg, void (*cb)(void));
+ 
+ #define ROCKCHIP_SOFTRST_HIWORD_MASK	BIT(0)
+ 
 -- 
 2.6.2
 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
