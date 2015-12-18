@@ -1,7 +1,7 @@
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 07/69] clocksource/drivers/rockchip: Remove dsb() usage
-Date: Fri, 18 Dec 2015 15:17:20 +0100
-Message-ID: <1450448302-27429-7-git-send-email-daniel.lezcano@linaro.org>
+Subject: [PATCH 05/69] clocksource/drivers/rockchip: Make the driver more readable
+Date: Fri, 18 Dec 2015 15:17:18 +0100
+Message-ID: <1450448302-27429-5-git-send-email-daniel.lezcano@linaro.org>
 References: <5672CB9E.7090707@linaro.org>
  <1450448302-27429-1-git-send-email-daniel.lezcano@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -13,50 +13,49 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Caesar Wang <wxt@rock-chips.com>
 
-The dsb() instruction is pointless in this code.
+Let's checkstyle to clean up the macros with such trivial details.
 
-Remove it.
-
-That also fixes the ARM64 compilation issue.
-
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Tested-by: Caesar Wang <wxt@rock-chips.com>
 ---
- drivers/clocksource/rockchip_timer.c | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/clocksource/rockchip_timer.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index b14716b6..8c77a52 100644
+index d3c1742..b14716b6 100644
 --- a/drivers/clocksource/rockchip_timer.c
 +++ b/drivers/clocksource/rockchip_timer.c
-@@ -49,14 +49,12 @@ static inline void __iomem *rk_base(struct clock_event_device *ce)
- static inline void rk_timer_disable(struct clock_event_device *ce)
- {
- 	writel_relaxed(TIMER_DISABLE, rk_base(ce) + TIMER_CONTROL_REG);
--	dsb();
- }
+@@ -17,16 +17,16 @@
  
- static inline void rk_timer_enable(struct clock_event_device *ce, u32 flags)
- {
- 	writel_relaxed(TIMER_ENABLE | TIMER_INT_UNMASK | flags,
- 		       rk_base(ce) + TIMER_CONTROL_REG);
--	dsb();
- }
+ #define TIMER_NAME "rk_timer"
  
- static void rk_timer_update_counter(unsigned long cycles,
-@@ -64,13 +62,11 @@ static void rk_timer_update_counter(unsigned long cycles,
- {
- 	writel_relaxed(cycles, rk_base(ce) + TIMER_LOAD_COUNT0);
- 	writel_relaxed(0, rk_base(ce) + TIMER_LOAD_COUNT1);
--	dsb();
- }
+-#define TIMER_LOAD_COUNT0 0x00
+-#define TIMER_LOAD_COUNT1 0x04
+-#define TIMER_CONTROL_REG 0x10
+-#define TIMER_INT_STATUS 0x18
++#define TIMER_LOAD_COUNT0	0x00
++#define TIMER_LOAD_COUNT1	0x04
++#define TIMER_CONTROL_REG	0x10
++#define TIMER_INT_STATUS	0x18
  
- static void rk_timer_interrupt_clear(struct clock_event_device *ce)
- {
- 	writel_relaxed(1, rk_base(ce) + TIMER_INT_STATUS);
--	dsb();
- }
+-#define TIMER_DISABLE 0x0
+-#define TIMER_ENABLE 0x1
+-#define TIMER_MODE_FREE_RUNNING (0 << 1)
+-#define TIMER_MODE_USER_DEFINED_COUNT (1 << 1)
+-#define TIMER_INT_UNMASK (1 << 2)
++#define TIMER_DISABLE		0x0
++#define TIMER_ENABLE		0x1
++#define TIMER_MODE_FREE_RUNNING			(0 << 1)
++#define TIMER_MODE_USER_DEFINED_COUNT		(1 << 1)
++#define TIMER_INT_UNMASK			(1 << 2)
  
- static inline int rk_timer_set_next_event(unsigned long cycles,
+ struct bc_timer {
+ 	struct clock_event_device ce;
+@@ -173,4 +173,5 @@ static void __init rk_timer_init(struct device_node *np)
+ 
+ 	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
+ }
++
+ CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_init);
 -- 
 1.9.1
