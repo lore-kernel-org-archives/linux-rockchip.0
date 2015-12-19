@@ -1,35 +1,100 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 6/6] dt-bindings: add document for rk3036-vop
-Date: Fri, 18 Dec 2015 22:18:02 -0600
-Message-ID: <20151219041802.GH14936@rob-hp-laptop>
-References: <1450323426-32109-1-git-send-email-mark.yao@rock-chips.com>
- <1450323919-32228-1-git-send-email-mark.yao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 0/6] Support the rk3036 Kylin board
+Date: Sat, 19 Dec 2015 18:16:33 +0100
+Message-ID: <9746732.gszC1tXaj9@diego>
+References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1450323919-32228-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1450362112-8075-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBEZWMgMTcsIDIwMTUgYXQgMTE6NDU6MTlBTSArMDgwMCwgTWFyayBZYW8gd3JvdGU6
-Cj4gQ2M6IFJvYiBIZXJyaW5nIDxyb2JoK2R0QGtlcm5lbC5vcmc+Cj4gQ2M6IFBhd2VsIE1vbGwg
-PHBhd2VsLm1vbGxAYXJtLmNvbT4KPiBDYzogTWFyayBSdXRsYW5kIDxtYXJrLnJ1dGxhbmRAYXJt
-LmNvbT4KPiBDYzogSWFuIENhbXBiZWxsIDxpamMrZGV2aWNldHJlZUBoZWxsaW9uLm9yZy51az4K
-PiBDYzogS3VtYXIgR2FsYSA8Z2FsYWtAY29kZWF1cm9yYS5vcmc+Cj4gQ2M6IGRldmljZXRyZWVA
-dmdlci5rZXJuZWwub3JnCj4gCj4gU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsueWFvQHJv
-Y2stY2hpcHMuY29tPgoKQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Caesar,
+
+Am Donnerstag, 17. Dezember 2015, 22:21:46 schrieb Caesar Wang:
+> Kylin-board is based on RK3036 SOCs, add the initiation
+> version for working.
+
+I've applied:
+- patch1 (please include the "rockchip:" part in dts subjects)
+- patch3 (dito)
+- patch4 (after merging in patch6 and dropping the hdmi+lcdc parts)
+
+Please resubmit the missing parts (audio + graphics) against my dts-branch [0]
+after the relevant maintainers have added the code-parts to their trees.
+
+
+Thanks
+Heiko
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.5-armsoc/dts32
+
+> 
+> This series patches have the following decriptions:
+> 
+> PATCH[1/6]:
+> ARM: dts: fix the correct pinctrl control for rk3036
+> 
+> The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
+> can't set the status in the internal.
+> ---
+> 
+> PATCH[2/6]:
+> ARM: dts: add the lcdc and hdmi node for rk3036
+> 
+> Add the devices is related to display.
+> Based on the series patches of Mark Yao's
+> ---
+> 
+> PATCH[3/6]:
+> ARM: dts: add the sdio/sdmmc node for rk3036
+> 
+> Add the wifi/sd card work for kylin board.
+> ---
+> 
+> PATCH[4/6]:
+> ARM: dts: rockchip: add the kylin board for rk3036
+> 
+> Add the dts for kylin board.
+> ---
+> 
+> PATCH[5/6]:
+> ARM: dts: add the sound codec for kylin board
+> 
+> Make the codec rt5616 working on kylin board.
+> The realteak have been upstream for Mark Brown,
+> I guess need some days to review.
+> 
+> ---
+> 
+> PATCH[6/6]:
+> ARM: dts: add the sdio node for kylin board
+> 
+> Enable the sdio for kylin board.
+> ---
+> 
+> 
+> 
+> Caesar Wang (6):
+>   ARM: dts: fix the correct pinctrl control for rk3036
+>   ARM: dts: add the lcdc and hdmi node for rk3036
+>   ARM: dts: add the sdio/sdmmc node for rk3036
+>   ARM: dts: rockchip: add the kylin board for rk3036
+>   ARM: dts: add the sound codec for kylin board
+>   ARM: dts: add the sdio node for kylin board
+> 
+>  Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>  arch/arm/boot/dts/Makefile                         |   1 +
+>  arch/arm/boot/dts/rk3036-kylin.dts                 | 345
+> +++++++++++++++++++++ arch/arm/boot/dts/rk3036.dtsi                      |
+> 167 ++++++++-- 4 files changed, 498 insertions(+), 19 deletions(-)
+>  create mode 100644 arch/arm/boot/dts/rk3036-kylin.dts
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
