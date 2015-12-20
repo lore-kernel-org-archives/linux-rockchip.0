@@ -1,50 +1,122 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] ARM: dts: veyron: enable the tsadc on pinky board
-Date: Sun, 20 Dec 2015 18:30:34 +0800
-Message-ID: <1450607434-6733-1-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v1 0/6] Support the rk3036 Kylin board
+Date: Sun, 20 Dec 2015 20:49:14 +0800
+Message-ID: <5676A3CA.6090205@gmail.com>
+References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com> <9746732.gszC1tXaj9@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <9746732.gszC1tXaj9@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-I think the tsadc is fakly hand on pinky board,
-maybe that's fixed in newest kernel.
-As the following patch is a example:
-https://patchwork.kernel.org/patch/7472051/
+Hi Heiko,
 
-I don't have meet this issue on pinky board.
-Let me know if that's still hanging on pinky board.
+=E5=9C=A8 2015=E5=B9=B412=E6=9C=8820=E6=97=A5 01:16, Heiko St=C3=BCbner=
+ =E5=86=99=E9=81=93:
+> Hi Caesar,
+>
+> Am Donnerstag, 17. Dezember 2015, 22:21:46 schrieb Caesar Wang:
+>> Kylin-board is based on RK3036 SOCs, add the initiation
+>> version for working.
+> I've applied:
+> - patch1 (please include the "rockchip:" part in dts subjects)
+> - patch3 (dito)
+> - patch4 (after merging in patch6 and dropping the hdmi+lcdc parts)
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Okay, thanks!
 
- arch/arm/boot/dts/rk3288-veyron-pinky.dts | 5 -----
- 1 file changed, 5 deletions(-)
+Sync to the rockchip github=20
+<https://github.com/rockchip-linux/kernel/commits/develop4.4>.
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-index 94b56e3..b587ebf 100644
---- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-@@ -121,8 +121,3 @@
- 		     &sdmmc_wp_gpio &sdmmc_bus4>;
- 	wp-gpios = <&gpio7 10 GPIO_ACTIVE_HIGH>;
- };
--
--&tsadc {
--	/* Some connection is flaky making the tsadc hang the system */
--	status = "disabled";
--};
--- 
-1.9.1
+> Please resubmit the missing parts (audio + graphics) against my dts-b=
+ranch [0]
+> after the relevant maintainers have added the code-parts to their tre=
+es.
+
+=46or codec:
+RT5616 is existing  in
+https://git.kernel.org/cgit/linux/kernel/git/broonie/sound.git/log/?h=3D=
+for-next=20
+now.
+
+=46or 3036 vop:
+I would like wait a moment from Mark Yao updating the driver.
+
+
+>
+> Thanks
+> Heiko
+>
+> [0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip=
+=2Egit/log/?h=3Dv4.5-armsoc/dts32
+>
+>> This series patches have the following decriptions:
+>>
+>> PATCH[1/6]:
+>> ARM: dts: fix the correct pinctrl control for rk3036
+>>
+>> The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
+>> can't set the status in the internal.
+>> ---
+>>
+>> PATCH[2/6]:
+>> ARM: dts: add the lcdc and hdmi node for rk3036
+>>
+>> Add the devices is related to display.
+>> Based on the series patches of Mark Yao's
+>> ---
+>>
+>> PATCH[3/6]:
+>> ARM: dts: add the sdio/sdmmc node for rk3036
+>>
+>> Add the wifi/sd card work for kylin board.
+>> ---
+>>
+>> PATCH[4/6]:
+>> ARM: dts: rockchip: add the kylin board for rk3036
+>>
+>> Add the dts for kylin board.
+>> ---
+>>
+>> PATCH[5/6]:
+>> ARM: dts: add the sound codec for kylin board
+>>
+>> Make the codec rt5616 working on kylin board.
+>> The realteak have been upstream for Mark Brown,
+>> I guess need some days to review.
+>>
+>> ---
+>>
+>> PATCH[6/6]:
+>> ARM: dts: add the sdio node for kylin board
+>>
+>> Enable the sdio for kylin board.
+>> ---
+>>
+>>
+>>
+>> Caesar Wang (6):
+>>    ARM: dts: fix the correct pinctrl control for rk3036
+>>    ARM: dts: add the lcdc and hdmi node for rk3036
+>>    ARM: dts: add the sdio/sdmmc node for rk3036
+>>    ARM: dts: rockchip: add the kylin board for rk3036
+>>    ARM: dts: add the sound codec for kylin board
+>>    ARM: dts: add the sdio node for kylin board
+>>
+>>   Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
+>>   arch/arm/boot/dts/Makefile                         |   1 +
+>>   arch/arm/boot/dts/rk3036-kylin.dts                 | 345
+>> +++++++++++++++++++++ arch/arm/boot/dts/rk3036.dtsi                 =
+     |
+>> 167 ++++++++-- 4 files changed, 498 insertions(+), 19 deletions(-)
+>>   create mode 100644 arch/arm/boot/dts/rk3036-kylin.dts
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
