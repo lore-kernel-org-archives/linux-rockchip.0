@@ -1,122 +1,88 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [PATCH v1 0/6] Support the rk3036 Kylin board
-Date: Sun, 20 Dec 2015 20:49:14 +0800
-Message-ID: <5676A3CA.6090205@gmail.com>
-References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com> <9746732.gszC1tXaj9@diego>
+Date: Sun, 20 Dec 2015 15:44:17 +0100
+Message-ID: <2374106.I3IsqKzjVk@diego>
+References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com>
+ <9746732.gszC1tXaj9@diego> <5676A3CA.6090205@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9746732.gszC1tXaj9@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, leozwang@google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5676A3CA.6090205-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-=E5=9C=A8 2015=E5=B9=B412=E6=9C=8820=E6=97=A5 01:16, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Donnerstag, 17. Dezember 2015, 22:21:46 schrieb Caesar Wang:
->> Kylin-board is based on RK3036 SOCs, add the initiation
->> version for working.
-> I've applied:
-> - patch1 (please include the "rockchip:" part in dts subjects)
-> - patch3 (dito)
-> - patch4 (after merging in patch6 and dropping the hdmi+lcdc parts)
-
-Okay, thanks!
-
-Sync to the rockchip github=20
-<https://github.com/rockchip-linux/kernel/commits/develop4.4>.
-
-> Please resubmit the missing parts (audio + graphics) against my dts-b=
-ranch [0]
-> after the relevant maintainers have added the code-parts to their tre=
-es.
-
-=46or codec:
-RT5616 is existing  in
-https://git.kernel.org/cgit/linux/kernel/git/broonie/sound.git/log/?h=3D=
-for-next=20
-now.
-
-=46or 3036 vop:
-I would like wait a moment from Mark Yao updating the driver.
-
-
->
-> Thanks
-> Heiko
->
-> [0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip=
-=2Egit/log/?h=3Dv4.5-armsoc/dts32
->
->> This series patches have the following decriptions:
->>
->> PATCH[1/6]:
->> ARM: dts: fix the correct pinctrl control for rk3036
->>
->> The pinctrl gpio pull up/down is incorrect since the rk3036 SoCs
->> can't set the status in the internal.
->> ---
->>
->> PATCH[2/6]:
->> ARM: dts: add the lcdc and hdmi node for rk3036
->>
->> Add the devices is related to display.
->> Based on the series patches of Mark Yao's
->> ---
->>
->> PATCH[3/6]:
->> ARM: dts: add the sdio/sdmmc node for rk3036
->>
->> Add the wifi/sd card work for kylin board.
->> ---
->>
->> PATCH[4/6]:
->> ARM: dts: rockchip: add the kylin board for rk3036
->>
->> Add the dts for kylin board.
->> ---
->>
->> PATCH[5/6]:
->> ARM: dts: add the sound codec for kylin board
->>
->> Make the codec rt5616 working on kylin board.
->> The realteak have been upstream for Mark Brown,
->> I guess need some days to review.
->>
->> ---
->>
->> PATCH[6/6]:
->> ARM: dts: add the sdio node for kylin board
->>
->> Enable the sdio for kylin board.
->> ---
->>
->>
->>
->> Caesar Wang (6):
->>    ARM: dts: fix the correct pinctrl control for rk3036
->>    ARM: dts: add the lcdc and hdmi node for rk3036
->>    ARM: dts: add the sdio/sdmmc node for rk3036
->>    ARM: dts: rockchip: add the kylin board for rk3036
->>    ARM: dts: add the sound codec for kylin board
->>    ARM: dts: add the sdio node for kylin board
->>
->>   Documentation/devicetree/bindings/arm/rockchip.txt |   4 +
->>   arch/arm/boot/dts/Makefile                         |   1 +
->>   arch/arm/boot/dts/rk3036-kylin.dts                 | 345
->> +++++++++++++++++++++ arch/arm/boot/dts/rk3036.dtsi                 =
-     |
->> 167 ++++++++-- 4 files changed, 498 insertions(+), 19 deletions(-)
->>   create mode 100644 arch/arm/boot/dts/rk3036-kylin.dts
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQ2Flc2FyLAoKQW0gU29ubnRhZywgMjAuIERlemVtYmVyIDIwMTUsIDIwOjQ5OjE0IHNjaHJp
+ZWIgQ2Flc2FyIFdhbmc6Cj4gSGkgSGVpa28sCj4gCj4g5ZyoIDIwMTXlubQxMuaciDIw5pelIDAx
+OjE2LCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4gPiBIaSBDYWVzYXIsCj4gPiAKPiA+IEFtIERv
+bm5lcnN0YWcsIDE3LiBEZXplbWJlciAyMDE1LCAyMjoyMTo0NiBzY2hyaWViIENhZXNhciBXYW5n
+Ogo+ID4+IEt5bGluLWJvYXJkIGlzIGJhc2VkIG9uIFJLMzAzNiBTT0NzLCBhZGQgdGhlIGluaXRp
+YXRpb24KPiA+PiB2ZXJzaW9uIGZvciB3b3JraW5nLgo+ID4gCj4gPiBJJ3ZlIGFwcGxpZWQ6Cj4g
+PiAtIHBhdGNoMSAocGxlYXNlIGluY2x1ZGUgdGhlICJyb2NrY2hpcDoiIHBhcnQgaW4gZHRzIHN1
+YmplY3RzKQo+ID4gLSBwYXRjaDMgKGRpdG8pCj4gPiAtIHBhdGNoNCAoYWZ0ZXIgbWVyZ2luZyBp
+biBwYXRjaDYgYW5kIGRyb3BwaW5nIHRoZSBoZG1pK2xjZGMgcGFydHMpCj4gCj4gT2theSwgdGhh
+bmtzIQo+IAo+IFN5bmMgdG8gdGhlIHJvY2tjaGlwIGdpdGh1Ygo+IDxodHRwczovL2dpdGh1Yi5j
+b20vcm9ja2NoaXAtbGludXgva2VybmVsL2NvbW1pdHMvZGV2ZWxvcDQuND4uCj4gCj4gPiBQbGVh
+c2UgcmVzdWJtaXQgdGhlIG1pc3NpbmcgcGFydHMgKGF1ZGlvICsgZ3JhcGhpY3MpIGFnYWluc3Qg
+bXkgZHRzLWJyYW5jaAo+ID4gWzBdIGFmdGVyIHRoZSByZWxldmFudCBtYWludGFpbmVycyBoYXZl
+IGFkZGVkIHRoZSBjb2RlLXBhcnRzIHRvIHRoZWlyCj4gPiB0cmVlcy4KPiBGb3IgY29kZWM6Cj4g
+UlQ1NjE2IGlzIGV4aXN0aW5nICBpbgo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51
+eC9rZXJuZWwvZ2l0L2Jyb29uaWUvc291bmQuZ2l0L2xvZy8/aD1mb3ItbmUKPiB4dCBub3cuCgp0
+aGF0IHNlZW1zIHRvIGJlIG1pc3NpbmcgdGhlIGRldmljZXRyZWUtcGFydHMuIEkgdGhpbmsgeW91
+IGNhbiBqdXN0IHNlbmQgYSAKcGF0Y2ggdG8gTWFyayBhZGRpbmcKLSBvZl9kZXZpY2VfaWQgbWF0
+Y2ggdGFibGUKLSBvZl9tYXRjaF90YWJsZSBhc3NpZ25tZW50Ci0gYmluZGluZy1kb2N1bWVudGF0
+aW9uIChpdCBzZWVtcyB0byBoYXZlIG9ubHkgY29tcGF0aWJsZSBhbmQgcmVnIHByb3BldGllcykK
+CgpIZWlrbwoKPiBGb3IgMzAzNiB2b3A6Cj4gSSB3b3VsZCBsaWtlIHdhaXQgYSBtb21lbnQgZnJv
+bSBNYXJrIFlhbyB1cGRhdGluZyB0aGUgZHJpdmVyLgo+IAo+ID4gVGhhbmtzCj4gPiBIZWlrbwo+
+ID4gCj4gPiBbMF0KPiA+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwv
+Z2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdC9sb2cKPiA+IC8/aD12NC41LWFybXNvYy9kdHMz
+Mj4gCj4gPj4gVGhpcyBzZXJpZXMgcGF0Y2hlcyBoYXZlIHRoZSBmb2xsb3dpbmcgZGVjcmlwdGlv
+bnM6Cj4gPj4gCj4gPj4gUEFUQ0hbMS82XToKPiA+PiBBUk06IGR0czogZml4IHRoZSBjb3JyZWN0
+IHBpbmN0cmwgY29udHJvbCBmb3IgcmszMDM2Cj4gPj4gCj4gPj4gVGhlIHBpbmN0cmwgZ3BpbyBw
+dWxsIHVwL2Rvd24gaXMgaW5jb3JyZWN0IHNpbmNlIHRoZSByazMwMzYgU29Dcwo+ID4+IGNhbid0
+IHNldCB0aGUgc3RhdHVzIGluIHRoZSBpbnRlcm5hbC4KPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRD
+SFsyLzZdOgo+ID4+IEFSTTogZHRzOiBhZGQgdGhlIGxjZGMgYW5kIGhkbWkgbm9kZSBmb3Igcmsz
+MDM2Cj4gPj4gCj4gPj4gQWRkIHRoZSBkZXZpY2VzIGlzIHJlbGF0ZWQgdG8gZGlzcGxheS4KPiA+
+PiBCYXNlZCBvbiB0aGUgc2VyaWVzIHBhdGNoZXMgb2YgTWFyayBZYW8ncwo+ID4+IC0tLQo+ID4+
+IAo+ID4+IFBBVENIWzMvNl06Cj4gPj4gQVJNOiBkdHM6IGFkZCB0aGUgc2Rpby9zZG1tYyBub2Rl
+IGZvciByazMwMzYKPiA+PiAKPiA+PiBBZGQgdGhlIHdpZmkvc2QgY2FyZCB3b3JrIGZvciBreWxp
+biBib2FyZC4KPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRDSFs0LzZdOgo+ID4+IEFSTTogZHRzOiBy
+b2NrY2hpcDogYWRkIHRoZSBreWxpbiBib2FyZCBmb3IgcmszMDM2Cj4gPj4gCj4gPj4gQWRkIHRo
+ZSBkdHMgZm9yIGt5bGluIGJvYXJkLgo+ID4+IC0tLQo+ID4+IAo+ID4+IFBBVENIWzUvNl06Cj4g
+Pj4gQVJNOiBkdHM6IGFkZCB0aGUgc291bmQgY29kZWMgZm9yIGt5bGluIGJvYXJkCj4gPj4gCj4g
+Pj4gTWFrZSB0aGUgY29kZWMgcnQ1NjE2IHdvcmtpbmcgb24ga3lsaW4gYm9hcmQuCj4gPj4gVGhl
+IHJlYWx0ZWFrIGhhdmUgYmVlbiB1cHN0cmVhbSBmb3IgTWFyayBCcm93biwKPiA+PiBJIGd1ZXNz
+IG5lZWQgc29tZSBkYXlzIHRvIHJldmlldy4KPiA+PiAKPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRD
+SFs2LzZdOgo+ID4+IEFSTTogZHRzOiBhZGQgdGhlIHNkaW8gbm9kZSBmb3Iga3lsaW4gYm9hcmQK
+PiA+PiAKPiA+PiBFbmFibGUgdGhlIHNkaW8gZm9yIGt5bGluIGJvYXJkLgo+ID4+IC0tLQo+ID4+
+IAo+ID4+IENhZXNhciBXYW5nICg2KToKPiA+PiAgICBBUk06IGR0czogZml4IHRoZSBjb3JyZWN0
+IHBpbmN0cmwgY29udHJvbCBmb3IgcmszMDM2Cj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgbGNk
+YyBhbmQgaGRtaSBub2RlIGZvciByazMwMzYKPiA+PiAgICBBUk06IGR0czogYWRkIHRoZSBzZGlv
+L3NkbW1jIG5vZGUgZm9yIHJrMzAzNgo+ID4+ICAgIEFSTTogZHRzOiByb2NrY2hpcDogYWRkIHRo
+ZSBreWxpbiBib2FyZCBmb3IgcmszMDM2Cj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgc291bmQg
+Y29kZWMgZm9yIGt5bGluIGJvYXJkCj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgc2RpbyBub2Rl
+IGZvciBreWxpbiBib2FyZAo+ID4+ICAgCj4gPj4gICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvYXJtL3JvY2tjaGlwLnR4dCB8ICAgNCArCj4gPj4gICBhcmNoL2FybS9ib290L2R0
+cy9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gPj4gICBhcmNoL2Fy
+bS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzICAgICAgICAgICAgICAgICB8IDM0NQo+ID4+IAo+
+ID4+ICsrKysrKysrKysrKysrKysrKysrKyBhcmNoL2FybS9ib290L2R0cy9yazMwMzYuZHRzaSAg
+ICAgICAgICAgICAgICAgICAgIAo+ID4+IHwKPiA+PiAxNjcgKysrKysrKystLSA0IGZpbGVzIGNo
+YW5nZWQsIDQ5OCBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiA+PiAKPiA+PiAgIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzCj4gPiAK
+PiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiBM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiA+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKPiA+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
