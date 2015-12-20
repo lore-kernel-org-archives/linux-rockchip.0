@@ -1,75 +1,64 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 2/5] thermal: rockchip: fix a impossible condition caused by the warning
-Date: Sun, 20 Dec 2015 17:06:45 +0800
-Message-ID: <1450602405-20883-1-git-send-email-wxt@rock-chips.com>
-References: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1449132523-18817-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: edubezval@gmail.com
-Cc: heiko@sntech.de, dmitry.torokhov@gmail.com, computersforpeace@gmail.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, rui.zhang@intel.com, Caesar Wang <wxt@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v3 7/8] clk: rockchip: fix usbphy-related clocks
+Date: Sun, 20 Dec 2015 14:39:15 +0530
+Message-ID: <5676703B.90300@ti.com>
+References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
+ <1447968149-10979-8-git-send-email-heiko@sntech.de> <566FF0F0.6080803@ti.com>
+ <80597401.Y78Rj8FshV@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <80597401.Y78Rj8FshV@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org
+Cc: hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As the Dan report the smatch check the thermal driver warning:
-drivers/thermal/rockchip_thermal.c:551 rockchip_configure_from_dt()
-warn: impossible condition '(thermal->tshut_temp > ((~0 >> 1))) =>
-(s32min-s32max > s32max)'
+Hi,
 
-Although The shut_temp read from DT is u32,the temperature is currently
-represented as int not long in the thermal driver.
-Let's change to make shut_temp instead of the thermal->tshut_temp for
-the condition.
+On Saturday 19 December 2015 10:51 PM, Heiko St=FCbner wrote:
+> Hi Kishon,
+> =
 
-Fixes: commit 437df2172e8d
-("thermal: rockchip: consistently use int for temperatures")
+> Am Dienstag, 15. Dezember 2015, 16:22:32 schrieb Kishon Vijay Abraham I:
+>> On Friday 20 November 2015 02:52 AM, Heiko Stuebner wrote:
+>>> The otgphy clocks really only drive the phy blocks. These in turn
+>>> contain plls that then generate the 480m clocks the clock controller
+>>> uses to supply some other clocks like uart0, gpu or the video-codec.
+>>>
+>>> So fix this structure to actually respect that hirarchy and removed
+>>> that usb480m fixed-rate clock working as a placeholder till now, as
+>>> this wouldn't even work if the supplying phy gets turned off while
+>>> its pll-output gets used elsewhere.
+>>>
+>>> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>>> Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>
+>> I saw you've given your Acked-by in a previous version of this patch.
+>> Do you want me to take this in linux-phy tree?
+> =
 
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> from my POV, this series should probably go through your tree in one go, =
+as =
 
----
+> this patch depends on the newly exposed clocks from the previous patch. S=
+o to =
 
-Changes in v4:
-- As the Dmitry and Brain comments, let's change to make.sh
-  tshut_temp instead of thermal->tshut_temp.
+> keep bisectability, it should most likely stay together.
 
-Changes in v3:
-- As Brian comments on https://patchwork.kernel.org/patch/7580661/,
-  let's remove the impossible condition.
+I agree. But I can't take another subsystem patch without getting a clear n=
+od
+from the maintainer. I'll wait till tomorrow for Turquette to give his Acke=
+d-by.
 
-Changes in v2:
-- None
-
-Changes in v1:
-- None
-
- drivers/thermal/rockchip_thermal.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index e845841..7106288 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -545,15 +545,14 @@ static int rockchip_configure_from_dt(struct device *dev,
- 			 thermal->chip->tshut_temp);
- 		thermal->tshut_temp = thermal->chip->tshut_temp;
- 	} else {
-+		if (shut_temp > INT_MAX) {
-+			dev_err(dev, "Invalid tshut temperature specified: %d\n",
-+				shut_temp);
-+			return -ERANGE;
-+		}
- 		thermal->tshut_temp = shut_temp;
- 	}
- 
--	if (thermal->tshut_temp > INT_MAX) {
--		dev_err(dev, "Invalid tshut temperature specified: %d\n",
--			thermal->tshut_temp);
--		return -ERANGE;
--	}
--
- 	if (of_property_read_u32(np, "rockchip,hw-tshut-mode", &tshut_mode)) {
- 		dev_warn(dev,
- 			 "Missing tshut mode property, using default (%s)\n",
--- 
-1.9.1
-
+Thanks
+Kishon
