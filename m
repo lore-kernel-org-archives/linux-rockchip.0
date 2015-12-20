@@ -1,88 +1,229 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v1 0/6] Support the rk3036 Kylin board
-Date: Sun, 20 Dec 2015 15:44:17 +0100
-Message-ID: <2374106.I3IsqKzjVk@diego>
-References: <1450362112-8075-1-git-send-email-wxt@rock-chips.com>
- <9746732.gszC1tXaj9@diego> <5676A3CA.6090205@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v1 1/3] i2c: rk3x: add calc_divs ops for new version
+Date: Sun, 20 Dec 2015 17:43:13 +0200
+Message-ID: <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
+References: <1449844384-6236-1-git-send-email-wdc@rock-chips.com>
+	<566F5FAC.3080404@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5676A3CA.6090205-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <566F5FAC.3080404@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: David Wu <wdc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQ2Flc2FyLAoKQW0gU29ubnRhZywgMjAuIERlemVtYmVyIDIwMTUsIDIwOjQ5OjE0IHNjaHJp
-ZWIgQ2Flc2FyIFdhbmc6Cj4gSGkgSGVpa28sCj4gCj4g5ZyoIDIwMTXlubQxMuaciDIw5pelIDAx
-OjE2LCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4gPiBIaSBDYWVzYXIsCj4gPiAKPiA+IEFtIERv
-bm5lcnN0YWcsIDE3LiBEZXplbWJlciAyMDE1LCAyMjoyMTo0NiBzY2hyaWViIENhZXNhciBXYW5n
-Ogo+ID4+IEt5bGluLWJvYXJkIGlzIGJhc2VkIG9uIFJLMzAzNiBTT0NzLCBhZGQgdGhlIGluaXRp
-YXRpb24KPiA+PiB2ZXJzaW9uIGZvciB3b3JraW5nLgo+ID4gCj4gPiBJJ3ZlIGFwcGxpZWQ6Cj4g
-PiAtIHBhdGNoMSAocGxlYXNlIGluY2x1ZGUgdGhlICJyb2NrY2hpcDoiIHBhcnQgaW4gZHRzIHN1
-YmplY3RzKQo+ID4gLSBwYXRjaDMgKGRpdG8pCj4gPiAtIHBhdGNoNCAoYWZ0ZXIgbWVyZ2luZyBp
-biBwYXRjaDYgYW5kIGRyb3BwaW5nIHRoZSBoZG1pK2xjZGMgcGFydHMpCj4gCj4gT2theSwgdGhh
-bmtzIQo+IAo+IFN5bmMgdG8gdGhlIHJvY2tjaGlwIGdpdGh1Ygo+IDxodHRwczovL2dpdGh1Yi5j
-b20vcm9ja2NoaXAtbGludXgva2VybmVsL2NvbW1pdHMvZGV2ZWxvcDQuND4uCj4gCj4gPiBQbGVh
-c2UgcmVzdWJtaXQgdGhlIG1pc3NpbmcgcGFydHMgKGF1ZGlvICsgZ3JhcGhpY3MpIGFnYWluc3Qg
-bXkgZHRzLWJyYW5jaAo+ID4gWzBdIGFmdGVyIHRoZSByZWxldmFudCBtYWludGFpbmVycyBoYXZl
-IGFkZGVkIHRoZSBjb2RlLXBhcnRzIHRvIHRoZWlyCj4gPiB0cmVlcy4KPiBGb3IgY29kZWM6Cj4g
-UlQ1NjE2IGlzIGV4aXN0aW5nICBpbgo+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51
-eC9rZXJuZWwvZ2l0L2Jyb29uaWUvc291bmQuZ2l0L2xvZy8/aD1mb3ItbmUKPiB4dCBub3cuCgp0
-aGF0IHNlZW1zIHRvIGJlIG1pc3NpbmcgdGhlIGRldmljZXRyZWUtcGFydHMuIEkgdGhpbmsgeW91
-IGNhbiBqdXN0IHNlbmQgYSAKcGF0Y2ggdG8gTWFyayBhZGRpbmcKLSBvZl9kZXZpY2VfaWQgbWF0
-Y2ggdGFibGUKLSBvZl9tYXRjaF90YWJsZSBhc3NpZ25tZW50Ci0gYmluZGluZy1kb2N1bWVudGF0
-aW9uIChpdCBzZWVtcyB0byBoYXZlIG9ubHkgY29tcGF0aWJsZSBhbmQgcmVnIHByb3BldGllcykK
-CgpIZWlrbwoKPiBGb3IgMzAzNiB2b3A6Cj4gSSB3b3VsZCBsaWtlIHdhaXQgYSBtb21lbnQgZnJv
-bSBNYXJrIFlhbyB1cGRhdGluZyB0aGUgZHJpdmVyLgo+IAo+ID4gVGhhbmtzCj4gPiBIZWlrbwo+
-ID4gCj4gPiBbMF0KPiA+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwv
-Z2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdC9sb2cKPiA+IC8/aD12NC41LWFybXNvYy9kdHMz
-Mj4gCj4gPj4gVGhpcyBzZXJpZXMgcGF0Y2hlcyBoYXZlIHRoZSBmb2xsb3dpbmcgZGVjcmlwdGlv
-bnM6Cj4gPj4gCj4gPj4gUEFUQ0hbMS82XToKPiA+PiBBUk06IGR0czogZml4IHRoZSBjb3JyZWN0
-IHBpbmN0cmwgY29udHJvbCBmb3IgcmszMDM2Cj4gPj4gCj4gPj4gVGhlIHBpbmN0cmwgZ3BpbyBw
-dWxsIHVwL2Rvd24gaXMgaW5jb3JyZWN0IHNpbmNlIHRoZSByazMwMzYgU29Dcwo+ID4+IGNhbid0
-IHNldCB0aGUgc3RhdHVzIGluIHRoZSBpbnRlcm5hbC4KPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRD
-SFsyLzZdOgo+ID4+IEFSTTogZHRzOiBhZGQgdGhlIGxjZGMgYW5kIGhkbWkgbm9kZSBmb3Igcmsz
-MDM2Cj4gPj4gCj4gPj4gQWRkIHRoZSBkZXZpY2VzIGlzIHJlbGF0ZWQgdG8gZGlzcGxheS4KPiA+
-PiBCYXNlZCBvbiB0aGUgc2VyaWVzIHBhdGNoZXMgb2YgTWFyayBZYW8ncwo+ID4+IC0tLQo+ID4+
-IAo+ID4+IFBBVENIWzMvNl06Cj4gPj4gQVJNOiBkdHM6IGFkZCB0aGUgc2Rpby9zZG1tYyBub2Rl
-IGZvciByazMwMzYKPiA+PiAKPiA+PiBBZGQgdGhlIHdpZmkvc2QgY2FyZCB3b3JrIGZvciBreWxp
-biBib2FyZC4KPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRDSFs0LzZdOgo+ID4+IEFSTTogZHRzOiBy
-b2NrY2hpcDogYWRkIHRoZSBreWxpbiBib2FyZCBmb3IgcmszMDM2Cj4gPj4gCj4gPj4gQWRkIHRo
-ZSBkdHMgZm9yIGt5bGluIGJvYXJkLgo+ID4+IC0tLQo+ID4+IAo+ID4+IFBBVENIWzUvNl06Cj4g
-Pj4gQVJNOiBkdHM6IGFkZCB0aGUgc291bmQgY29kZWMgZm9yIGt5bGluIGJvYXJkCj4gPj4gCj4g
-Pj4gTWFrZSB0aGUgY29kZWMgcnQ1NjE2IHdvcmtpbmcgb24ga3lsaW4gYm9hcmQuCj4gPj4gVGhl
-IHJlYWx0ZWFrIGhhdmUgYmVlbiB1cHN0cmVhbSBmb3IgTWFyayBCcm93biwKPiA+PiBJIGd1ZXNz
-IG5lZWQgc29tZSBkYXlzIHRvIHJldmlldy4KPiA+PiAKPiA+PiAtLS0KPiA+PiAKPiA+PiBQQVRD
-SFs2LzZdOgo+ID4+IEFSTTogZHRzOiBhZGQgdGhlIHNkaW8gbm9kZSBmb3Iga3lsaW4gYm9hcmQK
-PiA+PiAKPiA+PiBFbmFibGUgdGhlIHNkaW8gZm9yIGt5bGluIGJvYXJkLgo+ID4+IC0tLQo+ID4+
-IAo+ID4+IENhZXNhciBXYW5nICg2KToKPiA+PiAgICBBUk06IGR0czogZml4IHRoZSBjb3JyZWN0
-IHBpbmN0cmwgY29udHJvbCBmb3IgcmszMDM2Cj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgbGNk
-YyBhbmQgaGRtaSBub2RlIGZvciByazMwMzYKPiA+PiAgICBBUk06IGR0czogYWRkIHRoZSBzZGlv
-L3NkbW1jIG5vZGUgZm9yIHJrMzAzNgo+ID4+ICAgIEFSTTogZHRzOiByb2NrY2hpcDogYWRkIHRo
-ZSBreWxpbiBib2FyZCBmb3IgcmszMDM2Cj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgc291bmQg
-Y29kZWMgZm9yIGt5bGluIGJvYXJkCj4gPj4gICAgQVJNOiBkdHM6IGFkZCB0aGUgc2RpbyBub2Rl
-IGZvciBreWxpbiBib2FyZAo+ID4+ICAgCj4gPj4gICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvYXJtL3JvY2tjaGlwLnR4dCB8ICAgNCArCj4gPj4gICBhcmNoL2FybS9ib290L2R0
-cy9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gPj4gICBhcmNoL2Fy
-bS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzICAgICAgICAgICAgICAgICB8IDM0NQo+ID4+IAo+
-ID4+ICsrKysrKysrKysrKysrKysrKysrKyBhcmNoL2FybS9ib290L2R0cy9yazMwMzYuZHRzaSAg
-ICAgICAgICAgICAgICAgICAgIAo+ID4+IHwKPiA+PiAxNjcgKysrKysrKystLSA0IGZpbGVzIGNo
-YW5nZWQsIDQ5OCBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiA+PiAKPiA+PiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzCj4gPiAK
-PiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gPiBM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiA+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKPiA+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On Tue, Dec 15, 2015 at 2:32 AM, Jianqun Xu <jay.xu@rock-chips.com> wro=
+te:
+> Hi David:
+>
+> It's better to add a cover-letter, and add changes note for new versi=
+on,
+> such as:
+>
+> changes since v0:
+> - split patch to two patches or more, one patch for one new feature (=
+Heiko)
+>
+> and NOT to have two same signed-off-by
+
+Besides that=E2=80=A6
+
+>>   #define REG_CON_LASTACK   BIT(5) /* 1: send NACK after last receiv=
+ed
+>> byte */
+>>   #define REG_CON_ACTACK    BIT(6) /* 1: stop if NACK is received */
+>>
+>> +#define VERSION_MASK     0xffff0000
+
+GENMASK()
+
+>> +#define VERSION_SHIFT    16
+>> +
+>> +#define RK3X_I2C_V0      0x0
+>> +#define RK3X_I2C_V1      0x1
+>> +
+>>   /* REG_MRXADDR bits */
+>>   #define REG_MRXADDR_VALID(x) BIT(24 + (x)) /* [x*8+7:x*8] of MRX[R=
+]ADDR
+>> valid */
+>>
+>> @@ -90,10 +96,22 @@ struct rk3x_i2c_soc_data {
+>>         int grf_offset;
+>>   };
+>>
+>> +struct rk3x_i2c_ops {
+>> +       int (*calc_divs)(unsigned long,
+>> +                        unsigned long,
+>> +                        unsigned long,
+>> +                        unsigned long,
+>> +                        unsigned long,
+>> +                        unsigned long *,
+>> +                        unsigned long *,
+>> +                        unsigned int *);
+
+Too many arguments, what about struct for them (perhaps two groups)?
+
+>> +};
+>> +
+>>   struct rk3x_i2c {
+>>         struct i2c_adapter adap;
+>>         struct device *dev;
+>>         struct rk3x_i2c_soc_data *soc_data;
+>> +       struct rk3x_i2c_ops ops;
+>>
+>>         /* Hardware resources */
+>>         void __iomem *regs;
+>> @@ -116,6 +134,7 @@ struct rk3x_i2c {
+>>         u8 addr;
+>>         unsigned int mode;
+>>         bool is_last_msg;
+>> +       unsigned int time_con;
+>>
+>>         /* I2C state machine */
+>>         enum rk3x_i2c_state state;
+>> @@ -151,7 +170,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+>>         i2c_writel(i2c, REG_INT_START, REG_IEN);
+>>
+>>         /* enable adapter with correct mode, send START condition */
+>> -       val =3D REG_CON_EN | REG_CON_MOD(i2c->mode) | REG_CON_START;
+>> +       val =3D i2c->time_con | REG_CON_EN | REG_CON_MOD(i2c->mode)
+>> +               | REG_CON_START;
+>>
+>>         /* if we want to react to NACK, set ACTACK bit */
+>>         if (!(i2c->msg->flags & I2C_M_IGNORE_NAK))
+>> @@ -443,16 +463,19 @@ out:
+>>    * @sda_fall_ns: How many ns it takes for SDA to fall.
+>>    * @div_low: Divider output for low
+>>    * @div_high: Divider output for high
+>> + * @con: version0 is not used
+>>    *
+>>    * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow=
+=2E In
+>> that case
+>>    * a best-effort divider value is returned in divs. If the target =
+rate
+>> is
+>>    * too high, we silently use the highest possible rate.
+>>    */
+>> -static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long
+>> scl_rate,
+>> -                             unsigned long scl_rise_ns,
+>> -                             unsigned long scl_fall_ns,
+>> -                             unsigned long sda_fall_ns,
+>> -                             unsigned long *div_low, unsigned long
+>> *div_high)
+>> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned l=
+ong
+>> scl_rate,
+>> +                                unsigned long scl_rise_ns,
+>> +                                unsigned long scl_fall_ns,
+>> +                                unsigned long sda_fall_ns,
+
+Wolfram did some sturct to assign the parameters from device properties=
+=2E
+It might be re-used here.
+
+>> +                                unsigned long *div_low,
+>> +                                unsigned long *div_high,
+>> +                                unsigned int *con)
+>>   {
+>>         unsigned long spec_min_low_ns, spec_min_high_ns;
+>>         unsigned long spec_setup_start, spec_max_data_hold_ns;
+>> @@ -616,17 +639,19 @@ static int rk3x_i2c_calc_divs(unsigned long
+>> clk_rate, unsigned long scl_rate,
+>>
+>>   static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long
+>> clk_rate)
+>>   {
+>> +       unsigned int con =3D 0;
+>>         unsigned long div_low, div_high;
+>>         u64 t_low_ns, t_high_ns;
+>>         int ret;
+>>
+>> -       ret =3D rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency,
+>> i2c->scl_rise_ns,
+>> +       ret =3D i2c->ops.calc_divs(clk_rate, i2c->scl_frequency,
+>> i2c->scl_rise_ns,
+>>                                  i2c->scl_fall_ns, i2c->sda_fall_ns,
+>> -                                &div_low, &div_high);
+>> +                                &div_low, &div_high, &con);
+>>         WARN_ONCE(ret !=3D 0, "Could not reach SCL freq %u",
+>> i2c->scl_frequency);
+>>
+>>         clk_enable(i2c->clk);
+>>         i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff),
+>> REG_CLKDIV);
+>> +       i2c->time_con =3D con;
+>>         clk_disable(i2c->clk);
+>>
+>>         t_low_ns =3D div_u64(((u64)div_low + 1) * 8 * 1000000000, cl=
+k_rate);
+>> @@ -661,13 +686,14 @@ static int rk3x_i2c_clk_notifier_cb(struct
+>> notifier_block *nb, unsigned long
+>>         struct clk_notifier_data *ndata =3D data;
+>>         struct rk3x_i2c *i2c =3D container_of(nb, struct rk3x_i2c,
+>> clk_rate_nb);
+>>         unsigned long div_low, div_high;
+>> +       unsigned int con =3D 0;
+>>
+>>         switch (event) {
+>>         case PRE_RATE_CHANGE:
+>> -               if (rk3x_i2c_calc_divs(ndata->new_rate,
+>> i2c->scl_frequency,
+>> +               if (i2c->ops.calc_divs(ndata->new_rate,
+>> i2c->scl_frequency,
+>>                                        i2c->scl_rise_ns, i2c->scl_fa=
+ll_ns,
+>>                                        i2c->sda_fall_ns,
+>> -                                      &div_low, &div_high) !=3D 0)
+>> +                                      &div_low, &div_high, &con) !=3D=
+ 0)
+>>                         return NOTIFY_STOP;
+>>
+>>                 /* scale up */
+>> @@ -816,7 +842,8 @@ static int rk3x_i2c_xfer(struct i2c_adapter *ada=
+p,
+>>
+>>                         /* Force a STOP condition without interrupt =
+*/
+>>                         i2c_writel(i2c, 0, REG_IEN);
+>> -                       i2c_writel(i2c, REG_CON_EN | REG_CON_STOP,
+>> REG_CON);
+>> +                       i2c_writel(i2c, i2c->time_con | REG_CON_EN |
+>> +                                  REG_CON_STOP, REG_CON);
+>>
+>>                         i2c->state =3D STATE_IDLE;
+>>
+>> @@ -871,6 +898,7 @@ static int rk3x_i2c_probe(struct platform_device
+>> *pdev)
+>>         u32 value;
+>>         int irq;
+>>         unsigned long clk_rate;
+>> +       unsigned int version;
+>>
+>>         i2c =3D devm_kzalloc(&pdev->dev, sizeof(struct rk3x_i2c),
+>> GFP_KERNEL);
+>>         if (!i2c)
+>> @@ -983,6 +1011,10 @@ static int rk3x_i2c_probe(struct platform_devi=
+ce
+>> *pdev)
+>>
+>>         platform_set_drvdata(pdev, i2c);
+>>
+>> +       version =3D (readl(i2c->regs + REG_CON) & VERSION_MASK) >>
+>> VERSION_SHIFT;
+>> +       if (version =3D=3D RK3X_I2C_V0)
+>> +               i2c->ops.calc_divs =3D rk3x_i2c_v0_calc_divs;
+>> +
+>>         ret =3D clk_prepare(i2c->clk);
+>>         if (ret < 0) {
+>>                 dev_err(&pdev->dev, "Could not prepare clock\n");
+>>
+
+
+
+--=20
+With Best Regards,
+Andy Shevchenko
