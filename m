@@ -1,66 +1,126 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 6/6] ARM64: dts: rockchip: add reboot mode node
-Date: Mon, 21 Dec 2015 19:45:23 +0800
-Message-ID: <1450698323-30312-1-git-send-email-andy.yan@rock-chips.com>
-References: <1450697249-29994-1-git-send-email-andy.yan@rock-chips.com>
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 0/5] add missing of_node_put
+Date: Mon, 21 Dec 2015 17:39:43 +0100
+Message-ID: <1450715988-4770-1-git-send-email-Julia.Lawall@lip6.fr>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450697249-29994-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org
-Cc: sjg@chromium.org, alexandre.belloni@free-electrons.com, treding@nvidia.com, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, wxt@rock-chips.com, catalin.marinas@arm.com, olof@lixom.net, geert+renesas@glider.be, linux-rockchip@lists.infradead.org, dbaryshkov@gmail.com, sre@kernel.org, jun.nie@linaro.org, pawel.moll@arm.com, will.deacon@arm.com, akpm@linux-foundation.org, devicetree@vger.kernel.org, linux@arm.linux.org.uk, gregkh@linuxfoundation.org, joel@jms.id.au, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, khilman@linaro.org, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, mark.rutland@arm.com, Andy Yan <andy.yan@rock-chips.com>
+To: linux-rockchip@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-sh@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add reboot mode driver DT node for rk3368 platform
+The various for_each device_node iterators performs an of_node_get on each
+iteration, so a break out of the loop requires an of_node_put.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+The complete semantic patch that fixes this problem is
+(http://coccinelle.lip6.fr):
+
+// <smpl>
+@r@
+local idexpression n;
+expression e1,e2;
+iterator name for_each_node_by_name, for_each_node_by_type,
+for_each_compatible_node, for_each_matching_node,
+for_each_matching_node_and_match, for_each_child_of_node,
+for_each_available_child_of_node, for_each_node_with_property;
+iterator i;
+statement S;
+expression list [n1] es;
+@@
+
+(
+(
+for_each_node_by_name(n,e1) S
+|
+for_each_node_by_type(n,e1) S
+|
+for_each_compatible_node(n,e1,e2) S
+|
+for_each_matching_node(n,e1) S
+|
+for_each_matching_node_and_match(n,e1,e2) S
+|
+for_each_child_of_node(e1,n) S
+|
+for_each_available_child_of_node(e1,n) S
+|
+for_each_node_with_property(n,e1) S
+)
+&
+i(es,n,...) S
+)
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
+   return n;
+|
++  of_node_put(n);
+?  return ...;
+)
+   ...
+ }
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
++  of_node_put(n);
+?  break;
+)
+   ...
+ }
+... when != n
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+identifier l;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
++  of_node_put(n);
+?  goto l;
+)
+   ...
+ }
+...
+l: ... when != n// </smpl>
+
 ---
 
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index cc093a4..776f1be 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -45,6 +45,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip_boot-mode.h>
- 
- / {
- 	compatible = "rockchip,rk3368";
-@@ -202,6 +203,31 @@
- 		method = "smc";
- 	};
- 
-+	reboot_mode {
-+		compatible = "rockchip,reboot-mode";
-+		rockchip,regmap = <&pmugrf>;
-+		offset = <0x200>;
-+		loader {
-+			linux,mode = "loader";
-+			linux,magic = <BOOT_LOADER>;
-+		};
-+
-+		maskrom {
-+			linux,mode = "maskrom";
-+			linux,magic = <BOOT_MASKROM>;
-+		};
-+
-+		recovery {
-+			linux,mode = "recovery";
-+			linux,magic = <BOOT_RECOVERY>;
-+		};
-+
-+		fastboot {
-+			linux,mode = "fastboot";
-+			linux,magic = <BOOT_FASTBOOT>;
-+		};
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupts = <GIC_PPI 13
--- 
-1.9.1
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    1 +
+ drivers/pinctrl/pinctrl-rockchip.c            |    5 ++++-
+ drivers/pinctrl/pinctrl-tegra-xusb.c          |    4 +++-
+ drivers/pinctrl/pinctrl-tegra.c               |    1 +
+ drivers/pinctrl/sh-pfc/pinctrl.c              |    4 +++-
+ drivers/pinctrl/sirf/pinctrl-sirf.c           |    8 ++++++--
+ 6 files changed, 18 insertions(+), 5 deletions(-)
