@@ -1,83 +1,51 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 4/6] drm/rockchip: vop: spilt scale regsters
-Date: Mon, 21 Dec 2015 08:53:53 +0800
-Message-ID: <56774DA1.6040800@rock-chips.com>
-References: <1450323426-32109-1-git-send-email-mark.yao@rock-chips.com>
- <1450323426-32109-5-git-send-email-mark.yao@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner@collabora.com>
+Subject: Re: [PATCH] clk: rockchip: only enter pll slow-mode directly before reboots on rk3288
+Date: Mon, 21 Dec 2015 02:06:10 +0100
+Message-ID: <2178082.zdAf6brHOY@diego>
+References: <1705995.CL2pqRBHZb@diego>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1668249934=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450323426-32109-5-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1705995.CL2pqRBHZb@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-clk@vger.kernel.org, dianders@chromium.org, mturquette@baylibre.com, sboyd@codeaurora.org, Chris Zhong <zyw@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1668249934==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Am Freitag, 18. Dezember 2015, 19:33:50 schrieb Heiko St=FCbner:
+> As commit 1d33929e2a2b ("clk: rockchip: switch PLLs to slow mode befo=
+re
+> reboot for rk3288") states, switching the PLLs to slow-mode is only
+> necessary when rebooting using the soft-reset done through the CRU.
+>=20
+> The dwc2 controllers used create really big number of interrupts in
+> special constellations involving usb-hubs and their number is so high=
+,
+> it can even overwhelm the interrupt handler if the cpu-speed os to lo=
+w.
+>=20
+> Right now the PLLs are put into slow-mode in a shutdown syscore_ops
+> callback which means it happens on all reboots (not only the soft-res=
+et
+> ones) and even on poweroff actions.
+>=20
+> This can result in the system not powering off and getting stuck inst=
+ead,
+> so we should move the slow-mode change nearer to the actual reboot ac=
+tion.
+>=20
+> For this we introduce the possiblity to also set a callback that gets
+> called from the restart-handler directly prior to restarting the syst=
+em
+> and move the shutdown-callback to this new option.
+>=20
+> With this the slow-mode switch is done only on the necessary reboots
+> and also has a smaller possibility of causing artifacts.
+>=20
+> Fixes: 1d33929e2a2b ("clk: rockchip: switch PLLs to slow mode before =
+reboot
+> for rk3288") Signed-off-by: Heiko Stuebner <heiko.stuebner@collabora.=
+com>
 
-<html>
-  <head>
-    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
-pe">
-  </head>
-  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
-    <div class=3D"moz-cite-prefix">On 2015=E5=B9=B412=E6=9C=8817=E6=97=A5=
- 11:37, Mark Yao wrote:<br>
-    </div>
-    <blockquote
-      cite=3D"mid:1450323426-32109-5-git-send-email-mark.yao@rock-chips.c=
-om"
-      type=3D"cite">
-      <pre wrap=3D"">@@ -242,6 +247,11 @@ static inline uint16_t scl_cal_=
-scale(int src, int dst, int shift)
- 	return ((src * 2 - 3) &lt;&lt; (shift - 1)) / (dst - 1);
- }
-=20
-+static inline uint16_t scl_cal_scale2(int src, int dst)
-+{
-+	return (src - 1) &lt;&lt; 12 / (dst - 1);
-+}
-+</pre>
-    </blockquote>
-    <br>
-    Sorry, There is a mistake here, lose a parenthesis
-    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
--8">
-    after code formating, it should be:<br>
-    <pre wrap=3D"">+static inline uint16_t scl_cal_scale2(int src, int ds=
-t)
-+{
-+	return <font color=3D"#ff0000"><b>(</b></font>(src - 1) &lt;&lt; 12<fon=
-t color=3D"#ff0000"><b>)</b></font> / (dst - 1);
-+}
-+</pre>
-    Without the parenthesis would cause rk3036 scale abnormal.<br>
-    I would send v1.1 patch to fix it.<br>
-    <br>
-    Thanks.<br>
-    <pre class=3D"moz-signature" cols=3D"72">--=20
-=EF=BC=ADark Yao</pre>
-  </body>
-</html>
-
-
---===============1668249934==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============1668249934==--
+applied to my clk branch for 4.5
