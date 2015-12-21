@@ -1,12 +1,14 @@
 From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v3 0/8] drm/rockchip: covert to support atomic API
-Date: Mon, 21 Dec 2015 10:28:57 +0800
-Message-ID: <567763E9.3080803@rock-chips.com>
-References: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
+Subject: Re: [RFC PATCH v1 0/2] Introduce Innosilicon HDMI driver on Rockchip
+ platforms
+Date: Mon, 21 Dec 2015 15:25:58 +0800
+Message-ID: <5677A986.10103@rock-chips.com>
+References: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0318908381=="
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450321275-31154-1-git-send-email-mark.yao@rock-chips.com>
+In-Reply-To: <1447227952-4787-1-git-send-email-ykk@rock-chips.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -16,107 +18,41 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0318908381==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-  <head>
-    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
-pe">
-  </head>
-  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
-    <div class=3D"moz-cite-prefix">Hi<br>
-      =C2=A0=C2=A0=C2=A0 I want to push these patches in
-      <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Du=
-tf-8">
-      a couple of days, So just Ping if anyone interested or have some
-      doubt on it.<br>
-      <br>
-      Thanks.<br>
-      -Mark<br>
-      <br>
-      On 2015=E5=B9=B412=E6=9C=8817=E6=97=A5 11:01, Mark Yao wrote:<br>
-    </div>
-    <blockquote
-      cite=3D"mid:1450321275-31154-1-git-send-email-mark.yao@rock-chips.c=
-om"
-      type=3D"cite">
-      <pre wrap=3D"">The series of patches coverting drm rockchip to atom=
-ic API, do some
-cleanup and some fixes on atomic side.
-
-TODO: fence is not support on current version.
-
-Tested on rk3288 popmetal board.
-
-All guys can test it with following url:
- test case: <a class=3D"moz-txt-link-freetext" href=3D"https://github.com=
-/markyzq/libdrm.git">https://github.com/markyzq/libdrm.git</a> atomictest
- kernel:
-  <a class=3D"moz-txt-link-freetext" href=3D"https://github.com/markyzq/k=
-ernel-drm-rockchip.git">https://github.com/markyzq/kernel-drm-rockchip.gi=
-t</a> drm-rockchip-next-12-17
-
-Changes in v3:
-Reported by kbuild test robot
-- fix rockchip_crtc_wait_for_update undefined when build drm rockchip as =
-modules.
-
-Changes in v2:
-- Optimization commit planes sequence.
-- Get vblank count on atomic_begin to protect vblank event.
-Advised by Daniel Stone
-- Direct return -EINVAL when yuv address is not support, instead of adjus=
-t it.
-- code formating and cleanup.
-Advised by Thierry Reding &amp; Daniel Vetter
-- Hook mode_set into crtc enable instead of hack crtc enable on mode set.
-
-v2: <a class=3D"moz-txt-link-freetext" href=3D"http://www.spinics.net/lis=
-ts/arm-kernel/msg468423.html">http://www.spinics.net/lists/arm-kernel/msg=
-468423.html</a>
-v1: <a class=3D"moz-txt-link-freetext" href=3D"http://lists.freedesktop.o=
-rg/archives/dri-devel/2015-November/095745.html">http://lists.freedesktop=
-.org/archives/dri-devel/2015-November/095745.html</a>
-
-Mark Yao (8):
-  drm/rockchip: Use new vblank api drm_crtc_vblank_*
-  drm/rockchip: vop: replace dpms with enable/disable
-  drm/rockchip: Convert to support atomic API
-  drm/rockchip: Optimization vop mode set
-  drm/rockchip: support atomic asynchronous commit
-  drm/rockchip: direct config connecter gate and out_mode
-  drm: bridge/dw_hdmi: add atomic API support
-  drm/rockchip: dw_hdmi: use encoder enable function
-
- drivers/gpu/drm/bridge/dw_hdmi.c            |   23 +-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c |   14 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c |   21 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h |   20 +-
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c  |  123 +++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  782 +++++++++++----------=
-------
- 6 files changed, 495 insertions(+), 488 deletions(-)
-
-</pre>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
-
---===============0318908381==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
-
---===============0318908381==--
+SGkgWWFraXIKICAgICBJIHdhbnQgdG8gY29udmVydCBkcm0vcm9ja2NoaXAgdG8gc3VwcG9ydCBh
+dG9taWMgYXBpLAogICAgIEknZCBsaWtlIHlvdSBjYW4gZG8gc29tZSBtb2RpZnkgdG8gYWRhcHQg
+aXQuCgotIE1hcmsKCk9uIDIwMTXlubQxMeaciDEx5pelIDE1OjQ1LCBZYWtpciBZYW5nIHdyb3Rl
+Ogo+IEhpIGd1eXM6Cj4KPiBIZXJlIGFyZSBhIGJyaWVmIGludHJvZHVjdGlvbiB0byBJbm5vc2ls
+aWNvbiBIRE1JIElQOgo+ICAgLSBTdXBwb3J0IEhETUkgMS40YSwgSERDUCAxLjIgYW5kIERWSSAx
+LjAgc3RhbmRhcmQgY29tcGxpYW50IHRyYW5zbWl0dGVyCj4gICAtIFN1cHBvcnQgSERNSTEuNCBh
+L2IgM0QgZnVuY3Rpb24gZGVmaW5lZCBpbiBIRE1JIDEuNCBhL2Igc3BlYwo+ICAgLSBEaWdpdGFs
+IHZpZGVvIGludGVyZmFjZSBzdXBwb3J0cyBhIHBpeGVsIHNpemUgb2YgMjQsIDMwLCAzNiwgNDhi
+aXRzIGNvbG9yCj4gICAgIGRlcHRoIGluIFJHQgo+ICAgLSBTL1BESUYgb3V0cHV0IHN1cHBvcnRz
+IFBDTSwgRG9sYnkgRGlnaXRhbCwgRFRTIGRpZ2l0YWwgYXVkaW8gdHJhbnNtaXNzaW9uCj4gICAg
+ICgzMi0xOTJrSHogRnMpIHVzaW5nIElFQzYwOTU4IGFuZCBJRUMgNjE5MzcKPiAgIC0gVGhlIEVE
+SUQgYW5kIENFQyBmdW5jdGlvbiBhcmUgYWxzbyBzdXBwb3J0ZWQgYnkgSW5ub3NpbGljb24gSERN
+SSBUcmFuc21pdHRlcgo+ICAgICBDb250cm9sbGUKPgo+IFRoaXMgSVAgaGF2ZSBiZWVuIGludGVn
+cmF0ZWQgb24gc29tZSBSb2NrY2hpcCBDUFVzIChsaWtlIFJLMzAzNi9SSzMxMngpLCBkdWUKPiB0
+byB0aG9zZSBDUFVzIGhhdmVuJ3QgYmVlbiBsYW5kZWQgb24gbWFubGluZSBrZXJuZWwsIHNvIEkg
+Y3JlYXQgYSBicmFuY2ggdG8KPiB2ZXJpZnkgdGhpcyBzZXJpZXMgW2h0dHBzOi8vZ2l0aHViLmNv
+bS9yb2NrY2hpcC1saW51eC9rZXJuZWxdLgo+Cj4gLSBZYWtpcgo+Cj4KPiBZYWtpciBZYW5nICgy
+KToKPiAgICBkcm06IHJvY2tjaGlwL2hkbWk6IGFkZCBJbm5vc2lsaWNvbiBIRE1JIHN1cHBvcnQK
+PiAgICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50IGZvciBJbm5vc2lsaWNvbiBIRE1JIG9uIFJv
+Y2tjaGlwIHBsYXRmb3JtCj4KPiAgIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2lubm9faGRtaS1yb2Nr
+Y2hpcC50eHQgICAgICAgIHwgICA1MCArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2Nv
+bmZpZyAgICAgICAgICAgICAgICAgICB8ICAgIDggKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgICAxICsKPiAgIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICAgICAgIHwgMTAwOCArKysrKysrKysrKysr
+KysrKysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5oICAgICAgICAg
+ICAgICAgfCAgMzY0ICsrKysrKysKPiAgIDUgZmlsZXMgY2hhbmdlZCwgMTQzMSBpbnNlcnRpb25z
+KCspCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+ICAgY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+ICAgY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuaAo+CgoKLS0g
+Cu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5v
+cmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
