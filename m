@@ -1,70 +1,380 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 4/5] pinctrl: rockchip: add missing of_node_put
-Date: Mon, 21 Dec 2015 17:39:47 +0100
-Message-ID: <1450715988-4770-5-git-send-email-Julia.Lawall@lip6.fr>
-References: <1450715988-4770-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v3 5/8] phy: rockchip-usb: expose the phy-internal PLLs
+Date: Mon, 21 Dec 2015 12:00:35 -0800
+Message-ID: <CAEG3pNA3s+KhVArsoNTqq4VnB5TgFtS3n_D-hjFhPdrC8AL=HA@mail.gmail.com>
+References: <1447968149-10979-1-git-send-email-heiko@sntech.de>
+ <1447968149-10979-6-git-send-email-heiko@sntech.de> <566FF124.1030501@ti.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450715988-4770-1-git-send-email-Julia.Lawall@lip6.fr>
+In-Reply-To: <566FF124.1030501@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: kernel-janitors@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@codeaurora.org>, "Stephen Boyd <sboyd@codeaurora.org>, Emilio Lopez
+	<emilio@elopez.com.ar>, Hans de Goede <hdegoede@redhat.com>, linux-clk
+	<linux-clk@vger.kernel.org>, linux-arm-kernel" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Doug Anderson <dianders@chromium.org>, Romain Perier <romain.perier@gmail.com>, Arnd Bergmann <arnd@arndb.de>, Lin Huang <hl@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-for_each_child_of_node performs an of_node_get on each iteration, so a
-return from the loop requires an of_node_put.
+Kishon & Heiko,
 
-A simplified version of the semantic patch that fixes this problem is as
-follows (http://coccinelle.lip6.fr):
+On Tue, Dec 15, 2015 at 2:53 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
+> Hi Mike,
+>
+> On Friday 20 November 2015 02:52 AM, Heiko Stuebner wrote:
+>> The USB phys on Rockchip SoCs contain their own internal PLLs to create
+>> the 480MHz needed. Additionally this PLL output is also fed back into the
+>> core clock-controller as possible source for clocks like the GPU or others.
+>>
+>> Until now this was modelled incorrectly with a "virtual" factor clock in
+>> the clock controller. The one big caveat is that if we turn off the usb phy
+>> via the siddq signal, all analog components get turned off, including the
+>> PLLs. It is therefore possible that a source clock gets disabled without
+>> the clock driver ever knowing, possibly making the system hang.
+>>
+>> Therefore register the phy-plls as real clocks that the clock driver can
+>> then reference again normally, making the clock hirarchy finally reflect
+>> the actual hardware.
+>>
+>> The phy-ops get converted to simply turning that new clock on and off
+>> which in turn controls the siddq signal of the phy.
+>>
+>> Through this the driver gains handling for platform-specific data, to
+>> handle the phy->clock name association.
+>
+> Are you okay with this patch/ Can you give your Acked-by?
 
-// <smpl>
-@@
-local idexpression n;
-expression e,e1;
-@@
+Acked-by: Michael Turquette <mturquette@baylibre.com>
 
- for_each_child_of_node(e1,n) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-   return n;
-|
-+  of_node_put(n);
-?  return ...;
-)
-   ...
- }
-// </smpl>
+>
+> Thanks
+> Kishon
+>
+>>
+>> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+>> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+>> ---
+>>  .../devicetree/bindings/phy/rockchip-usb-phy.txt   |   1 +
+>>  drivers/phy/phy-rockchip-usb.c                     | 188 ++++++++++++++++++---
+>>  2 files changed, 162 insertions(+), 27 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+>> index 9b37242..68498d5 100644
+>> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+>> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
+>> @@ -24,6 +24,7 @@ required properties:
+>>  Optional Properties:
+>>  - clocks : phandle + clock specifier for the phy clocks
+>>  - clock-names: string, clock name, must be "phyclk"
+>> +- #clock-cells: for users of the phy-pll, should be 0
+>>
+>>  Example:
+>>
+>> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-usb.c
+>> index 16cd533..33a80eb 100644
+>> --- a/drivers/phy/phy-rockchip-usb.c
+>> +++ b/drivers/phy/phy-rockchip-usb.c
+>> @@ -15,12 +15,14 @@
+>>   */
+>>
+>>  #include <linux/clk.h>
+>> +#include <linux/clk-provider.h>
+>>  #include <linux/io.h>
+>>  #include <linux/kernel.h>
+>>  #include <linux/module.h>
+>>  #include <linux/mutex.h>
+>>  #include <linux/of.h>
+>>  #include <linux/of_address.h>
+>> +#include <linux/of_platform.h>
+>>  #include <linux/phy/phy.h>
+>>  #include <linux/platform_device.h>
+>>  #include <linux/regulator/consumer.h>
+>> @@ -36,15 +38,28 @@
+>>  #define SIDDQ_ON             BIT(13)
+>>  #define SIDDQ_OFF            (0 << 13)
+>>
+>> +struct rockchip_usb_phys {
+>> +     int reg;
+>> +     const char *pll_name;
+>> +};
+>> +
+>> +struct rockchip_usb_phy_pdata {
+>> +     struct rockchip_usb_phys *phys;
+>> +};
+>> +
+>>  struct rockchip_usb_phy_base {
+>>       struct device *dev;
+>>       struct regmap *reg_base;
+>> +     const struct rockchip_usb_phy_pdata *pdata;
+>>  };
+>>
+>>  struct rockchip_usb_phy {
+>>       struct rockchip_usb_phy_base *base;
+>> +     struct device_node *np;
+>>       unsigned int    reg_offset;
+>>       struct clk      *clk;
+>> +     struct clk      *clk480m;
+>> +     struct clk_hw   clk480m_hw;
+>>       struct phy      *phy;
+>>  };
+>>
+>> @@ -55,17 +70,59 @@ static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
+>>                           SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
+>>  }
+>>
+>> -static int rockchip_usb_phy_power_off(struct phy *_phy)
+>> +static unsigned long rockchip_usb_phy480m_recalc_rate(struct clk_hw *hw,
+>> +                                             unsigned long parent_rate)
+>>  {
+>> -     struct rockchip_usb_phy *phy = phy_get_drvdata(_phy);
+>> -     int ret = 0;
+>> +     return 480000000;
+>> +}
+>> +
+>> +static void rockchip_usb_phy480m_disable(struct clk_hw *hw)
+>> +{
+>> +     struct rockchip_usb_phy *phy = container_of(hw,
+>> +                                                 struct rockchip_usb_phy,
+>> +                                                 clk480m_hw);
+>>
+>>       /* Power down usb phy analog blocks by set siddq 1 */
+>> -     ret = rockchip_usb_phy_power(phy, 1);
+>> -     if (ret)
+>> +     rockchip_usb_phy_power(phy, 1);
+>> +}
+>> +
+>> +static int rockchip_usb_phy480m_enable(struct clk_hw *hw)
+>> +{
+>> +     struct rockchip_usb_phy *phy = container_of(hw,
+>> +                                                 struct rockchip_usb_phy,
+>> +                                                 clk480m_hw);
+>> +
+>> +     /* Power up usb phy analog blocks by set siddq 0 */
+>> +     return rockchip_usb_phy_power(phy, 0);
+>> +}
+>> +
+>> +static int rockchip_usb_phy480m_is_enabled(struct clk_hw *hw)
+>> +{
+>> +     struct rockchip_usb_phy *phy = container_of(hw,
+>> +                                                 struct rockchip_usb_phy,
+>> +                                                 clk480m_hw);
+>> +     int ret;
+>> +     u32 val;
+>> +
+>> +     ret = regmap_read(phy->base->reg_base, phy->reg_offset, &val);
+>> +     if (ret < 0)
+>>               return ret;
+>>
+>> -     clk_disable_unprepare(phy->clk);
+>> +     return (val & SIDDQ_ON) ? 0 : 1;
+>> +}
+>> +
+>> +static const struct clk_ops rockchip_usb_phy480m_ops = {
+>> +     .enable = rockchip_usb_phy480m_enable,
+>> +     .disable = rockchip_usb_phy480m_disable,
+>> +     .is_enabled = rockchip_usb_phy480m_is_enabled,
+>> +     .recalc_rate = rockchip_usb_phy480m_recalc_rate,
+>> +};
+>> +
+>> +static int rockchip_usb_phy_power_off(struct phy *_phy)
+>> +{
+>> +     struct rockchip_usb_phy *phy = phy_get_drvdata(_phy);
+>> +
+>> +     clk_disable_unprepare(phy->clk480m);
+>>
+>>       return 0;
+>>  }
+>> @@ -73,20 +130,8 @@ static int rockchip_usb_phy_power_off(struct phy *_phy)
+>>  static int rockchip_usb_phy_power_on(struct phy *_phy)
+>>  {
+>>       struct rockchip_usb_phy *phy = phy_get_drvdata(_phy);
+>> -     int ret = 0;
+>>
+>> -     ret = clk_prepare_enable(phy->clk);
+>> -     if (ret)
+>> -             return ret;
+>> -
+>> -     /* Power up usb phy analog blocks by set siddq 0 */
+>> -     ret = rockchip_usb_phy_power(phy, 0);
+>> -     if (ret) {
+>> -             clk_disable_unprepare(phy->clk);
+>> -             return ret;
+>> -     }
+>> -
+>> -     return 0;
+>> +     return clk_prepare_enable(phy->clk480m);
+>>  }
+>>
+>>  static const struct phy_ops ops = {
+>> @@ -99,6 +144,9 @@ static void rockchip_usb_phy_action(void *data)
+>>  {
+>>       struct rockchip_usb_phy *rk_phy = data;
+>>
+>> +     of_clk_del_provider(rk_phy->np);
+>> +     clk_unregister(rk_phy->clk480m);
+>> +
+>>       if (rk_phy->clk)
+>>               clk_put(rk_phy->clk);
+>>  }
+>> @@ -108,13 +156,16 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
+>>  {
+>>       struct rockchip_usb_phy *rk_phy;
+>>       unsigned int reg_offset;
+>> -     int err;
+>> +     const char *clk_name;
+>> +     struct clk_init_data init;
+>> +     int err, i;
+>>
+>>       rk_phy = devm_kzalloc(base->dev, sizeof(*rk_phy), GFP_KERNEL);
+>>       if (!rk_phy)
+>>               return -ENOMEM;
+>>
+>>       rk_phy->base = base;
+>> +     rk_phy->np = child;
+>>
+>>       if (of_property_read_u32(child, "reg", &reg_offset)) {
+>>               dev_err(base->dev, "missing reg property in node %s\n",
+>> @@ -124,14 +175,54 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
+>>
+>>       rk_phy->reg_offset = reg_offset;
+>>
+>> -     err = devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
+>> -     if (err)
+>> -             return err;
+>> -
+>>       rk_phy->clk = of_clk_get_by_name(child, "phyclk");
+>>       if (IS_ERR(rk_phy->clk))
+>>               rk_phy->clk = NULL;
+>>
+>> +     i = 0;
+>> +     init.name = NULL;
+>> +     while (base->pdata->phys[i].reg) {
+>> +             if (base->pdata->phys[i].reg == reg_offset) {
+>> +                     init.name = base->pdata->phys[i].pll_name;
+>> +                     break;
+>> +             }
+>> +             i++;
+>> +     }
+>> +
+>> +     if (!init.name) {
+>> +             dev_err(base->dev, "phy data not found\n");
+>> +             return -EINVAL;
+>> +     }
+>> +
+>> +     if (rk_phy->clk) {
+>> +             clk_name = __clk_get_name(rk_phy->clk);
+>> +             init.flags = 0;
+>> +             init.parent_names = &clk_name;
+>> +             init.num_parents = 1;
+>> +     } else {
+>> +             init.flags = CLK_IS_ROOT;
+>> +             init.parent_names = NULL;
+>> +             init.num_parents = 0;
+>> +     }
+>> +
+>> +     init.ops = &rockchip_usb_phy480m_ops;
+>> +     rk_phy->clk480m_hw.init = &init;
+>> +
+>> +     rk_phy->clk480m = clk_register(base->dev, &rk_phy->clk480m_hw);
+>> +     if (IS_ERR(rk_phy->clk480m)) {
+>> +             err = PTR_ERR(rk_phy->clk480m);
+>> +             goto err_clk;
+>> +     }
+>> +
+>> +     err = of_clk_add_provider(child, of_clk_src_simple_get,
+>> +                               rk_phy->clk480m);
+>> +     if (err < 0)
+>> +             goto err_clk_prov;
+>> +
+>> +     err = devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
+>> +     if (err)
+>> +             goto err_devm_action;
+>> +
+>>       rk_phy->phy = devm_phy_create(base->dev, child, &ops);
+>>       if (IS_ERR(rk_phy->phy)) {
+>>               dev_err(base->dev, "failed to create PHY\n");
+>> @@ -141,13 +232,48 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
+>>
+>>       /* only power up usb phy when it use, so disable it when init*/
+>>       return rockchip_usb_phy_power(rk_phy, 1);
+>> +
+>> +err_devm_action:
+>> +     of_clk_del_provider(child);
+>> +err_clk_prov:
+>> +     clk_unregister(rk_phy->clk480m);
+>> +err_clk:
+>> +     if (rk_phy->clk)
+>> +             clk_put(rk_phy->clk);
+>> +     return err;
+>>  }
+>>
+>> +static const struct rockchip_usb_phy_pdata rk3066a_pdata = {
+>> +     .phys = (struct rockchip_usb_phys[]){
+>> +             { .reg = 0x17c, .pll_name = "sclk_otgphy0_480m" },
+>> +             { .reg = 0x188, .pll_name = "sclk_otgphy1_480m" },
+>> +             { /* sentinel */ }
+>> +     },
+>> +};
+>> +
+>> +static const struct rockchip_usb_phy_pdata rk3188_pdata = {
+>> +     .phys = (struct rockchip_usb_phys[]){
+>> +             { .reg = 0x10c, .pll_name = "sclk_otgphy0_480m" },
+>> +             { .reg = 0x11c, .pll_name = "sclk_otgphy1_480m" },
+>> +             { /* sentinel */ }
+>> +     },
+>> +};
+>> +
+>> +static const struct rockchip_usb_phy_pdata rk3288_pdata = {
+>> +     .phys = (struct rockchip_usb_phys[]){
+>> +             { .reg = 0x320, .pll_name = "sclk_otgphy0_480m" },
+>> +             { .reg = 0x334, .pll_name = "sclk_otgphy1_480m" },
+>> +             { .reg = 0x348, .pll_name = "sclk_otgphy2_480m" },
+>> +             { /* sentinel */ }
+>> +     },
+>> +};
+>> +
+>>  static int rockchip_usb_phy_probe(struct platform_device *pdev)
+>>  {
+>>       struct device *dev = &pdev->dev;
+>>       struct rockchip_usb_phy_base *phy_base;
+>>       struct phy_provider *phy_provider;
+>> +     const struct of_device_id *match;
+>>       struct device_node *child;
+>>       int err;
+>>
+>> @@ -155,6 +281,14 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+>>       if (!phy_base)
+>>               return -ENOMEM;
+>>
+>> +     match = of_match_device(dev->driver->of_match_table, dev);
+>> +     if (!match || !match->data) {
+>> +             dev_err(dev, "missing phy data\n");
+>> +             return -EINVAL;
+>> +     }
+>> +
+>> +     phy_base->pdata = match->data;
+>> +
+>>       phy_base->dev = dev;
+>>       phy_base->reg_base = syscon_regmap_lookup_by_phandle(dev->of_node,
+>>                                                            "rockchip,grf");
+>> @@ -176,9 +310,9 @@ static int rockchip_usb_phy_probe(struct platform_device *pdev)
+>>  }
+>>
+>>  static const struct of_device_id rockchip_usb_phy_dt_ids[] = {
+>> -     { .compatible = "rockchip,rk3066a-usb-phy" },
+>> -     { .compatible = "rockchip,rk3188-usb-phy" },
+>> -     { .compatible = "rockchip,rk3288-usb-phy" },
+>> +     { .compatible = "rockchip,rk3066a-usb-phy", .data = &rk3066a_pdata },
+>> +     { .compatible = "rockchip,rk3188-usb-phy", .data = &rk3188_pdata },
+>> +     { .compatible = "rockchip,rk3288-usb-phy", .data = &rk3288_pdata },
+>>       {}
+>>  };
+>>
+>>
 
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
 
----
- drivers/pinctrl/pinctrl-rockchip.c |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 2b88a40..d0305a2 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -1258,8 +1258,10 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
- 		func->groups[i] = child->name;
- 		grp = &info->groups[grp_index++];
- 		ret = rockchip_pinctrl_parse_groups(child, grp, info, i++);
--		if (ret)
-+		if (ret) {
-+			of_node_put(child);
- 			return ret;
-+		}
- 	}
- 
- 	return 0;
-@@ -1304,6 +1306,7 @@ static int rockchip_pinctrl_parse_dt(struct platform_device *pdev,
- 		ret = rockchip_pinctrl_parse_functions(child, info, i++);
- 		if (ret) {
- 			dev_err(&pdev->dev, "failed to parse function\n");
-+			of_node_put(child);
- 			return ret;
- 		}
- 	}
+-- 
+Michael Turquette
+CEO
+BayLibre - At the Heart of Embedded Linux
+http://baylibre.com/
