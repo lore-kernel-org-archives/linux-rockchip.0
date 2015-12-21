@@ -1,229 +1,83 @@
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: [PATCH v1 1/3] i2c: rk3x: add calc_divs ops for new version
-Date: Sun, 20 Dec 2015 17:43:13 +0200
-Message-ID: <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
-References: <1449844384-6236-1-git-send-email-wdc@rock-chips.com>
-	<566F5FAC.3080404@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 4/6] drm/rockchip: vop: spilt scale regsters
+Date: Mon, 21 Dec 2015 08:53:53 +0800
+Message-ID: <56774DA1.6040800@rock-chips.com>
+References: <1450323426-32109-1-git-send-email-mark.yao@rock-chips.com>
+ <1450323426-32109-5-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <566F5FAC.3080404@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: David Wu <wdc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <david.wu@rock-chips.com>
+Content-Type: multipart/mixed; boundary="===============1668249934=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1450323426-32109-5-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 15, 2015 at 2:32 AM, Jianqun Xu <jay.xu@rock-chips.com> wro=
-te:
-> Hi David:
->
-> It's better to add a cover-letter, and add changes note for new versi=
-on,
-> such as:
->
-> changes since v0:
-> - split patch to two patches or more, one patch for one new feature (=
-Heiko)
->
-> and NOT to have two same signed-off-by
+--===============1668249934==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Besides that=E2=80=A6
-
->>   #define REG_CON_LASTACK   BIT(5) /* 1: send NACK after last receiv=
-ed
->> byte */
->>   #define REG_CON_ACTACK    BIT(6) /* 1: stop if NACK is received */
->>
->> +#define VERSION_MASK     0xffff0000
-
-GENMASK()
-
->> +#define VERSION_SHIFT    16
->> +
->> +#define RK3X_I2C_V0      0x0
->> +#define RK3X_I2C_V1      0x1
->> +
->>   /* REG_MRXADDR bits */
->>   #define REG_MRXADDR_VALID(x) BIT(24 + (x)) /* [x*8+7:x*8] of MRX[R=
-]ADDR
->> valid */
->>
->> @@ -90,10 +96,22 @@ struct rk3x_i2c_soc_data {
->>         int grf_offset;
->>   };
->>
->> +struct rk3x_i2c_ops {
->> +       int (*calc_divs)(unsigned long,
->> +                        unsigned long,
->> +                        unsigned long,
->> +                        unsigned long,
->> +                        unsigned long,
->> +                        unsigned long *,
->> +                        unsigned long *,
->> +                        unsigned int *);
-
-Too many arguments, what about struct for them (perhaps two groups)?
-
->> +};
->> +
->>   struct rk3x_i2c {
->>         struct i2c_adapter adap;
->>         struct device *dev;
->>         struct rk3x_i2c_soc_data *soc_data;
->> +       struct rk3x_i2c_ops ops;
->>
->>         /* Hardware resources */
->>         void __iomem *regs;
->> @@ -116,6 +134,7 @@ struct rk3x_i2c {
->>         u8 addr;
->>         unsigned int mode;
->>         bool is_last_msg;
->> +       unsigned int time_con;
->>
->>         /* I2C state machine */
->>         enum rk3x_i2c_state state;
->> @@ -151,7 +170,8 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
->>         i2c_writel(i2c, REG_INT_START, REG_IEN);
->>
->>         /* enable adapter with correct mode, send START condition */
->> -       val =3D REG_CON_EN | REG_CON_MOD(i2c->mode) | REG_CON_START;
->> +       val =3D i2c->time_con | REG_CON_EN | REG_CON_MOD(i2c->mode)
->> +               | REG_CON_START;
->>
->>         /* if we want to react to NACK, set ACTACK bit */
->>         if (!(i2c->msg->flags & I2C_M_IGNORE_NAK))
->> @@ -443,16 +463,19 @@ out:
->>    * @sda_fall_ns: How many ns it takes for SDA to fall.
->>    * @div_low: Divider output for low
->>    * @div_high: Divider output for high
->> + * @con: version0 is not used
->>    *
->>    * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow=
-=2E In
->> that case
->>    * a best-effort divider value is returned in divs. If the target =
-rate
->> is
->>    * too high, we silently use the highest possible rate.
->>    */
->> -static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long
->> scl_rate,
->> -                             unsigned long scl_rise_ns,
->> -                             unsigned long scl_fall_ns,
->> -                             unsigned long sda_fall_ns,
->> -                             unsigned long *div_low, unsigned long
->> *div_high)
->> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned l=
-ong
->> scl_rate,
->> +                                unsigned long scl_rise_ns,
->> +                                unsigned long scl_fall_ns,
->> +                                unsigned long sda_fall_ns,
-
-Wolfram did some sturct to assign the parameters from device properties=
-=2E
-It might be re-used here.
-
->> +                                unsigned long *div_low,
->> +                                unsigned long *div_high,
->> +                                unsigned int *con)
->>   {
->>         unsigned long spec_min_low_ns, spec_min_high_ns;
->>         unsigned long spec_setup_start, spec_max_data_hold_ns;
->> @@ -616,17 +639,19 @@ static int rk3x_i2c_calc_divs(unsigned long
->> clk_rate, unsigned long scl_rate,
->>
->>   static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long
->> clk_rate)
->>   {
->> +       unsigned int con =3D 0;
->>         unsigned long div_low, div_high;
->>         u64 t_low_ns, t_high_ns;
->>         int ret;
->>
->> -       ret =3D rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency,
->> i2c->scl_rise_ns,
->> +       ret =3D i2c->ops.calc_divs(clk_rate, i2c->scl_frequency,
->> i2c->scl_rise_ns,
->>                                  i2c->scl_fall_ns, i2c->sda_fall_ns,
->> -                                &div_low, &div_high);
->> +                                &div_low, &div_high, &con);
->>         WARN_ONCE(ret !=3D 0, "Could not reach SCL freq %u",
->> i2c->scl_frequency);
->>
->>         clk_enable(i2c->clk);
->>         i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff),
->> REG_CLKDIV);
->> +       i2c->time_con =3D con;
->>         clk_disable(i2c->clk);
->>
->>         t_low_ns =3D div_u64(((u64)div_low + 1) * 8 * 1000000000, cl=
-k_rate);
->> @@ -661,13 +686,14 @@ static int rk3x_i2c_clk_notifier_cb(struct
->> notifier_block *nb, unsigned long
->>         struct clk_notifier_data *ndata =3D data;
->>         struct rk3x_i2c *i2c =3D container_of(nb, struct rk3x_i2c,
->> clk_rate_nb);
->>         unsigned long div_low, div_high;
->> +       unsigned int con =3D 0;
->>
->>         switch (event) {
->>         case PRE_RATE_CHANGE:
->> -               if (rk3x_i2c_calc_divs(ndata->new_rate,
->> i2c->scl_frequency,
->> +               if (i2c->ops.calc_divs(ndata->new_rate,
->> i2c->scl_frequency,
->>                                        i2c->scl_rise_ns, i2c->scl_fa=
-ll_ns,
->>                                        i2c->sda_fall_ns,
->> -                                      &div_low, &div_high) !=3D 0)
->> +                                      &div_low, &div_high, &con) !=3D=
- 0)
->>                         return NOTIFY_STOP;
->>
->>                 /* scale up */
->> @@ -816,7 +842,8 @@ static int rk3x_i2c_xfer(struct i2c_adapter *ada=
-p,
->>
->>                         /* Force a STOP condition without interrupt =
-*/
->>                         i2c_writel(i2c, 0, REG_IEN);
->> -                       i2c_writel(i2c, REG_CON_EN | REG_CON_STOP,
->> REG_CON);
->> +                       i2c_writel(i2c, i2c->time_con | REG_CON_EN |
->> +                                  REG_CON_STOP, REG_CON);
->>
->>                         i2c->state =3D STATE_IDLE;
->>
->> @@ -871,6 +898,7 @@ static int rk3x_i2c_probe(struct platform_device
->> *pdev)
->>         u32 value;
->>         int irq;
->>         unsigned long clk_rate;
->> +       unsigned int version;
->>
->>         i2c =3D devm_kzalloc(&pdev->dev, sizeof(struct rk3x_i2c),
->> GFP_KERNEL);
->>         if (!i2c)
->> @@ -983,6 +1011,10 @@ static int rk3x_i2c_probe(struct platform_devi=
-ce
->> *pdev)
->>
->>         platform_set_drvdata(pdev, i2c);
->>
->> +       version =3D (readl(i2c->regs + REG_CON) & VERSION_MASK) >>
->> VERSION_SHIFT;
->> +       if (version =3D=3D RK3X_I2C_V0)
->> +               i2c->ops.calc_divs =3D rk3x_i2c_v0_calc_divs;
->> +
->>         ret =3D clk_prepare(i2c->clk);
->>         if (ret < 0) {
->>                 dev_err(&pdev->dev, "Could not prepare clock\n");
->>
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div class=3D"moz-cite-prefix">On 2015=E5=B9=B412=E6=9C=8817=E6=97=A5=
+ 11:37, Mark Yao wrote:<br>
+    </div>
+    <blockquote
+      cite=3D"mid:1450323426-32109-5-git-send-email-mark.yao@rock-chips.c=
+om"
+      type=3D"cite">
+      <pre wrap=3D"">@@ -242,6 +247,11 @@ static inline uint16_t scl_cal_=
+scale(int src, int dst, int shift)
+ 	return ((src * 2 - 3) &lt;&lt; (shift - 1)) / (dst - 1);
+ }
+=20
++static inline uint16_t scl_cal_scale2(int src, int dst)
++{
++	return (src - 1) &lt;&lt; 12 / (dst - 1);
++}
++</pre>
+    </blockquote>
+    <br>
+    Sorry, There is a mistake here, lose a parenthesis
+    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
+-8">
+    after code formating, it should be:<br>
+    <pre wrap=3D"">+static inline uint16_t scl_cal_scale2(int src, int ds=
+t)
++{
++	return <font color=3D"#ff0000"><b>(</b></font>(src - 1) &lt;&lt; 12<fon=
+t color=3D"#ff0000"><b>)</b></font> / (dst - 1);
++}
++</pre>
+    Without the parenthesis would cause rk3036 scale abnormal.<br>
+    I would send v1.1 patch to fix it.<br>
+    <br>
+    Thanks.<br>
+    <pre class=3D"moz-signature" cols=3D"72">--=20
+=EF=BC=ADark Yao</pre>
+  </body>
+</html>
 
 
+--===============1668249934==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
 
---=20
-With Best Regards,
-Andy Shevchenko
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============1668249934==--
