@@ -1,56 +1,45 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner@collabora.com>
-Subject: [PATCH 1/3] ARM: multi_v7_defconfig: enable Rockchip io-domain driver
-Date: Mon, 21 Dec 2015 22:21:14 +0100
-Message-ID: <2111669.2aeXLpXsWE@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH 2/3] ARM: multi_v7_defconfig: enable rockchip crypto module
+Date: Mon, 21 Dec 2015 22:21:55 +0100
+Message-ID: <2478699.f7vgsBG0hI@diego>
+References: <2111669.2aeXLpXsWE@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2111669.2aeXLpXsWE@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The io-domain driver is necessary to notify the soc about voltages changes
-happening on supplying regulators. Probably the most important user right
-now is the mmc tuning code, where the soc needs to get notified when the
-voltage is dropped to the 1.8V point.
+This enables the newly added hardware crypto module
+found for example on the rk3288.
 
-As this option is necessary to sucessfully tune UHS cards etc, it should
-get built in.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@collabora.com>
+Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
-When booting a Veyron-Jerry from an sd-card it got stuck, as the tuning
-failed due to the missing voltage notification and the mmc completely
-fails initialization of the card, if this happens.
-With this option enabled, I could again boot from my sd-card.
-
-This is based on the 
-
- arch/arm/configs/multi_v7_defconfig | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm/configs/multi_v7_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 69a22fd..be57898 100644
+index be57898..ff7eb19 100644
 --- a/arch/arm/configs/multi_v7_defconfig
 +++ b/arch/arm/configs/multi_v7_defconfig
-@@ -371,6 +371,8 @@ CONFIG_POWER_RESET_GPIO=y
- CONFIG_POWER_RESET_GPIO_RESTART=y
- CONFIG_POWER_RESET_KEYSTONE=y
- CONFIG_POWER_RESET_RMOBILE=y
-+CONFIG_POWER_AVS=y
-+CONFIG_ROCKCHIP_IODOMAIN=y
- CONFIG_SENSORS_LM90=y
- CONFIG_SENSORS_LM95245=y
- CONFIG_SENSORS_NTC_THERMISTOR=m
+@@ -733,6 +733,7 @@ CONFIG_CRYPTO_DEV_TEGRA_AES=y
+ CONFIG_CPUFREQ_DT=y
+ CONFIG_KEYSTONE_IRQ=y
+ CONFIG_CRYPTO_DEV_SUN4I_SS=m
++CONFIG_CRYPTO_DEV_ROCKCHIP=m
+ CONFIG_ARM_CRYPTO=y
+ CONFIG_CRYPTO_SHA1_ARM=m
+ CONFIG_CRYPTO_SHA1_ARM_NEON=m
 -- 
 2.6.4
