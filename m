@@ -1,59 +1,83 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 0/6] add rk3036 vop support
-Date: Tue, 22 Dec 2015 10:39:34 +0800
-Message-ID: <5678B7E6.9040102@rock-chips.com>
-References: <1450323426-32109-1-git-send-email-mark.yao@rock-chips.com>
+From: Naoki FUKAUMI <naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 5/6] ARM: dts: rockchip: add reboot mode node
+Date: Tue, 22 Dec 2015 12:04:01 +0900
+Message-ID: <CAFnsNoQbeAsuESSPeDDs_fQvPv96pBX=jNh=ahpWrTKLrpEExw@mail.gmail.com>
+References: <1450697249-29994-1-git-send-email-andy.yan@rock-chips.com>
+ <1450698149-30260-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450323426-32109-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1450698149-30260-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKICAgICBJIHdhbnQgdG8gcHVzaCB0aGVzZSBwYXRjaGVzIGluIGEgY291cGxlIG9mIGRheXMs
-IFNvIGp1c3QgUGluZyBpZiAKYW55b25lIGludGVyZXN0ZWQgb3IgaGF2ZSBzb21lIGRvdWJ0IG9u
-IGl0LgoKVGhhbmtzLgotTWFyawoKT24gMjAxNeW5tDEy5pyIMTfml6UgMTE6MzcsIE1hcmsgWWFv
-IHdyb3RlOgo+IFRoaXMgc2VyaWVzIG9mIHBhdGNoZXMgYWRkIHJrMzAzNiB2b3Agc3VwcG9ydC4K
-Pgo+IFJLMzAzNiByZWdpc3RlcnMgbGF5b3V0IGlzIHF1aXRlIGRpZmZlcmVuY2Ugd2l0aCByazMy
-ODggbGF5b3V0LAo+IFRoZSBJQyBkZXNpZ24gd2l0aCBkaWZmZXJlbnQgZnJhbWV3b3JrLCByazMw
-MzYgdm9wIGlzIFZPUCBMSVRFLAo+IGFuZCByazMyODggaXMgVk9QIEZVTEwuCj4KPiBSSzMwMzYg
-c3VwcG9ydCB0d28gb3ZlcmxheSBwbGFuZSBhbmQgb25lIGh3YyBwbGFuZSwgbWF4IG91dHB1dAo+
-IHJlc29sdXRpb24gaXMgMTA4MHAuIGl0IHN1cHBvcnQgSU9NTVUsIGFuZCBpdHMgSU9NTVUgc2Ft
-ZSBhcwo+IHJrMzI4OCdzLgo+Cj4gVGhpcyBwYXRjaGVzIGlzIGJhc2VkIG9uIGRybS9yb2NrY2hp
-cCBhdG9taWMgcGF0Y2hlcy4gWzBdCj4KPiBUZXN0ZWQgb24ga3lsaW4gYm9hcmQsIGt5bGluIHJ1
-bnMgb24gNC4xIGtlcm5lbC4KPgo+IGJhY2twb3J0IHRvIDQuMSwgYW5kIHBpY2tlZCBZYWtpciBZ
-YW5nJ3MgaW5ubyBoZG1pIHBhdGNoZXMgWzFdLgo+IHdvcmtzIHdpdGggdGVzdCBwcm9ncmFtIGF0
-b21pY3Rlc3RbMl0gYW5kIG1vZGV0ZXN0Lgo+Cj4gWzBdOiBodHRwczovL2xrbWwub3JnL2xrbWwv
-MjAxNS8xMi8xNi84MjQKPiBbMV06IGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE1LzExLzExLzUz
-Cj4gWzJdOiBodHRwczovL2dpdGh1Yi5jb20vbWFya3l6cS9saWJkcm0uZ2l0IGF0b21pY3Rlc3QK
-Pgo+IE1hcmsgWWFvICg2KToKPiAgICBkcm0vcm9ja2NoaXA6IHZvcDogbWVyZ2Ugdm9wIGNmZ19k
-b25lIGludG8gdm9wX2RhdGEKPiAgICBkcm0vcm9ja2NoaXA6IHZvcDogbW92ZSBpbnRlcnJ1cHQg
-cmVnaXN0ZXJzIGludG8gdm9wX2RhdGEKPiAgICBkcm0vcm9ja2NoaXA6IHZvcDogc3BpbHQgcmVn
-aXN0ZXIgcmVsYXRlZCBpbnRvIHJvY2tjaGlwX3JlZ192b3AuYwo+ICAgIGRybS9yb2NrY2hpcDog
-dm9wOiBzcGlsdCBzY2FsZSByZWdzdGVycyB0byBjb21tb24gYW5kIGV4dGVuc2lvbgo+ICAgIGRy
-bS9yb2NrY2hpcDogdm9wOiBhZGQgcmszMDM2IHZvcCBzdXBwb3J0Cj4gICAgZHQtYmluZGluZ3M6
-IGFkZCBkb2N1bWVudCBmb3IgcmszMDM2LXZvcAo+Cj4gICAuLi4vYmluZGluZ3MvZGlzcGxheS9y
-b2NrY2hpcC9yb2NrY2hpcC12b3AudHh0ICAgICB8ICAgIDEgKwo+ICAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgICAzICstCj4gICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICA0MTEgKysrKy0t
-LS0tLS0tLS0tLS0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
-dm9wLmggICAgICAgIHwgIDIzMCArKysrKystLS0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX3ZvcF9yZWcuYyAgICAgICAgfCAgMzE2ICsrKysrKysrKysrKysrKwo+ICAg
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuaCAgICAgICAgfCAgMTY5
-ICsrKysrKysrCj4gICA2IGZpbGVzIGNoYW5nZWQsIDY5NiBpbnNlcnRpb25zKCspLCA0MzQgZGVs
-ZXRpb25zKC0pCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX3ZvcF9yZWcuYwo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmgKPgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+hi,
+
+On Mon, Dec 21, 2015 at 8:42 PM, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Add reboot mode driver DT node for rk3xxx,rk3288 platform
+>
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+>  arch/arm/boot/dts/rk3288.dtsi                | 25 +++++++++++++++++++++++
+>  arch/arm/boot/dts/rk3xxx.dtsi                | 26 ++++++++++++++++++++++++
+>  include/dt-bindings/soc/rockchip_boot-mode.h | 30 ++++++++++++++++++++++++++++
+>  3 files changed, 81 insertions(+)
+>  create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
+>
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 04ea209..937ba4c 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -170,6 +170,31 @@
+>                 };
+>         };
+>
+> +       reboot_mode {
+> +               compatible = "rockchip,reboot-mode";
+> +               rockchip,regmap = <&pmu>;
+> +               offset = <0x94>;
+> +               loader {
+> +                       linux,mode = "loader";
+> +                       linux,magic = <0x5242C301>;
+> +               };
+> +
+> +               maskrom {
+> +                       linux,mode = "maskrom";
+> +                       linux,magic = <0x5242C302>;
+> +               };
+> +
+> +               recovery {
+> +                       linux,mode = "recovery";
+> +                       linux,magic = <0x5242C303>;
+> +               };
+> +
+> +               fastboot {
+> +                       linux,mode = "fastboot";
+> +                       linux,magic = <0x5242C309>;
+> +               };
+> +       };
+> +
+(snip)
+
+I sometimes use 0xEF08A53C to load bootloader from SD card instead of
+on-board flash memory such as eMMC.
+ https://github.com/linux-rockchip/u-boot-rockchip/blob/u-boot-rk3288/common/cmd_rockusb.c#L893
+
+I don't know any detail about this function.
+(above code says "reboot to maskrom", but it should be wrong from my experience)
+
+do you know something about this function? can you handle this too?
+
+Regards,
