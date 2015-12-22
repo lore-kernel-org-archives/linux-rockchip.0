@@ -1,55 +1,95 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL 3/3] rockchip dts64 changes for 4.5, round 2
-Date: Tue, 22 Dec 2015 13:08:03 -0800
-Message-ID: <20151222210803.GC30172@localhost>
-References: <2532363.CsR3D6sdor@diego>
- <2617670.etrCQQMQaV@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <2617670.etrCQQMQaV@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Heiko St?bner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 4/5] clk: rockchip: rk3036: include downstream muxes into fractional dividers
+Date: Tue, 22 Dec 2015 22:28:01 +0100
+Message-ID: <1450819682-4932-5-git-send-email-heiko@sntech.de>
+References: <1450819682-4932-1-git-send-email-heiko@sntech.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1450819682-4932-1-git-send-email-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk, wxt@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 21, 2015 at 02:28:27AM +0100, Heiko St?bner wrote:
-> Hi Arnd, Kevin, Olof,
-> 
-> and finally a small stack of 64bit devicetree changes, mainly adding the
-> broadcast-timer node for the driver that got improved to support arm64
-> compilations.
-> 
-> So if these 3 look ok, please pull.
-> 
-> 
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit 5378e28c9776fbab6065cfb54417acff3ea5f1fd:
-> 
->   arm64: dts: rockchip: add rk3368 evaluation board (2015-12-02 00:35:22 +0100)
-> 
-> are available in the git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.5-rockchip-dts64-2
-> 
-> for you to fetch changes up to b8084e5b34e83875846053bf9cd951b7640e40fe:
-> 
->   arm64: dts: rockchip: Add the broadcast-timer for RK3368 SoC (2015-12-12 23:20:38 +0100)
+From: Xing Zheng <zhengxing@rock-chips.com>
 
-Merged, thanks.
+Use the newly introduced possibility to combine the fractional dividers
+with their downstream muxes for all fractional dividers on currently
+supported RK3036 SoCs.
 
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3036.c | 34 +++++++++++++++++-----------------
+ 1 file changed, 17 insertions(+), 17 deletions(-)
 
--Olof
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index 7333b053..fb35263 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -227,21 +227,21 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "uart2_src", "uart_pll_clk", 0,
+ 			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
+ 			RK2928_CLKGATE_CON(1), 8, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(17), 0,
+-			RK2928_CLKGATE_CON(1), 9, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(18), 0,
+-			RK2928_CLKGATE_CON(1), 11, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart2_frac", "uart2_src", CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(19), 0,
+-			RK2928_CLKGATE_CON(1), 13, GFLAGS),
++			RK2928_CLKGATE_CON(1), 9, GFLAGS,
+ 	MUX(SCLK_UART0, "sclk_uart0", mux_uart0_p, CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(13), 8, 2, MFLAGS),
++			RK2928_CLKSEL_CON(13), 8, 2, MFLAGS)),
++	COMPOSITE_FRACMUX(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
++			RK2928_CLKSEL_CON(18), 0,
++			RK2928_CLKGATE_CON(1), 11, GFLAGS,
+ 	MUX(SCLK_UART1, "sclk_uart1", mux_uart1_p, CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(14), 8, 2, MFLAGS),
++			RK2928_CLKSEL_CON(14), 8, 2, MFLAGS)),
++	COMPOSITE_FRACMUX(0, "uart2_frac", "uart2_src", CLK_SET_RATE_PARENT,
++			RK2928_CLKSEL_CON(19), 0,
++			RK2928_CLKGATE_CON(1), 13, GFLAGS,
+ 	MUX(SCLK_UART2, "sclk_uart2", mux_uart2_p, CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(15), 8, 2, MFLAGS),
++			RK2928_CLKSEL_CON(15), 8, 2, MFLAGS)),
+ 
+ 	COMPOSITE(0, "aclk_vcodec", mux_pll_src_3plls_p, 0,
+ 			RK2928_CLKSEL_CON(32), 14, 2, MFLAGS, 8, 5, DFLAGS,
+@@ -289,11 +289,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "i2s_src", mux_pll_src_3plls_p, 0,
+ 			RK2928_CLKSEL_CON(3), 14, 2, MFLAGS, 0, 7, DFLAGS,
+ 			RK2928_CLKGATE_CON(0), 9, GFLAGS),
+-	COMPOSITE_FRAC(0, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
++	COMPOSITE_FRACMUX(0, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(7), 0,
+-			RK2928_CLKGATE_CON(0), 10, GFLAGS),
++			RK2928_CLKGATE_CON(0), 10, GFLAGS,
+ 	MUX(0, "i2s_pre", mux_i2s_pre_p, CLK_SET_RATE_PARENT,
+-			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS),
++			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS)),
+ 	COMPOSITE_NODIV(SCLK_I2S_OUT, "i2s_clkout", mux_i2s_clkout_p, 0,
+ 			RK2928_CLKSEL_CON(3), 12, 1, MFLAGS,
+ 			RK2928_CLKGATE_CON(0), 13, GFLAGS),
+@@ -303,11 +303,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "spdif_src", mux_pll_src_3plls_p, 0,
+ 			RK2928_CLKSEL_CON(5), 10, 2, MFLAGS, 0, 7, DFLAGS,
+ 			RK2928_CLKGATE_CON(2), 10, GFLAGS),
+-	COMPOSITE_FRAC(0, "spdif_frac", "spdif_src", 0,
++	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", 0,
+ 			RK2928_CLKSEL_CON(9), 0,
+-			RK2928_CLKGATE_CON(2), 12, GFLAGS),
++			RK2928_CLKGATE_CON(2), 12, GFLAGS,
+ 	MUX(SCLK_SPDIF, "sclk_spdif", mux_spdif_p, 0,
+-			RK2928_CLKSEL_CON(5), 8, 2, MFLAGS),
++			RK2928_CLKSEL_CON(5), 8, 2, MFLAGS)),
+ 
+ 	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "xin12m", CLK_IGNORE_UNUSED,
+ 			RK2928_CLKGATE_CON(1), 5, GFLAGS),
+-- 
+2.6.4
+
