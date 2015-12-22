@@ -1,95 +1,54 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 4/5] clk: rockchip: rk3036: include downstream muxes into fractional dividers
-Date: Tue, 22 Dec 2015 22:28:01 +0100
-Message-ID: <1450819682-4932-5-git-send-email-heiko@sntech.de>
-References: <1450819682-4932-1-git-send-email-heiko@sntech.de>
+Subject: [PATCH v2 0/5] clk: rockchip: fix handling of fractional dividers
+Date: Tue, 22 Dec 2015 22:27:57 +0100
+Message-ID: <1450819682-4932-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1450819682-4932-1-git-send-email-heiko@sntech.de>
 Sender: linux-clk-owner@vger.kernel.org
 To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk, wxt@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk, wxt@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xing Zheng <zhengxing@rock-chips.com>
+Essentially unchanged from the first iteration from back in august, just
+including additional patches depending on that and fixing fractional
+dividers on the rk3036 and spdif parent settings.
 
-Use the newly introduced possibility to combine the fractional dividers
-with their downstream muxes for all fractional dividers on currently
-supported RK3036 SoCs.
+In v1, Stephen seemed essentially ok with it but Mike put forward his wish
+to use his planned approach for connected clocks for handling this.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3036.c | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+While that in itself will be very interesting also for handling Rockchip's
+armclk generically, we're now in the situation that everything related
+to audio output relies on working fractional dividers to produce the
+needed clock frequencies, making audio-output essentially non-working on
+all Rockchip socs in mainline at the moment.
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 7333b053..fb35263 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -227,21 +227,21 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	COMPOSITE_NOMUX(0, "uart2_src", "uart_pll_clk", 0,
- 			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(1), 8, GFLAGS),
--	COMPOSITE_FRAC(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
-+	COMPOSITE_FRACMUX(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(17), 0,
--			RK2928_CLKGATE_CON(1), 9, GFLAGS),
--	COMPOSITE_FRAC(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(18), 0,
--			RK2928_CLKGATE_CON(1), 11, GFLAGS),
--	COMPOSITE_FRAC(0, "uart2_frac", "uart2_src", CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(19), 0,
--			RK2928_CLKGATE_CON(1), 13, GFLAGS),
-+			RK2928_CLKGATE_CON(1), 9, GFLAGS,
- 	MUX(SCLK_UART0, "sclk_uart0", mux_uart0_p, CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(13), 8, 2, MFLAGS),
-+			RK2928_CLKSEL_CON(13), 8, 2, MFLAGS)),
-+	COMPOSITE_FRACMUX(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
-+			RK2928_CLKSEL_CON(18), 0,
-+			RK2928_CLKGATE_CON(1), 11, GFLAGS,
- 	MUX(SCLK_UART1, "sclk_uart1", mux_uart1_p, CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(14), 8, 2, MFLAGS),
-+			RK2928_CLKSEL_CON(14), 8, 2, MFLAGS)),
-+	COMPOSITE_FRACMUX(0, "uart2_frac", "uart2_src", CLK_SET_RATE_PARENT,
-+			RK2928_CLKSEL_CON(19), 0,
-+			RK2928_CLKGATE_CON(1), 13, GFLAGS,
- 	MUX(SCLK_UART2, "sclk_uart2", mux_uart2_p, CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(15), 8, 2, MFLAGS),
-+			RK2928_CLKSEL_CON(15), 8, 2, MFLAGS)),
- 
- 	COMPOSITE(0, "aclk_vcodec", mux_pll_src_3plls_p, 0,
- 			RK2928_CLKSEL_CON(32), 14, 2, MFLAGS, 8, 5, DFLAGS,
-@@ -289,11 +289,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	COMPOSITE(0, "i2s_src", mux_pll_src_3plls_p, 0,
- 			RK2928_CLKSEL_CON(3), 14, 2, MFLAGS, 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(0), 9, GFLAGS),
--	COMPOSITE_FRAC(0, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
-+	COMPOSITE_FRACMUX(0, "i2s_frac", "i2s_src", CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(7), 0,
--			RK2928_CLKGATE_CON(0), 10, GFLAGS),
-+			RK2928_CLKGATE_CON(0), 10, GFLAGS,
- 	MUX(0, "i2s_pre", mux_i2s_pre_p, CLK_SET_RATE_PARENT,
--			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS),
-+			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS)),
- 	COMPOSITE_NODIV(SCLK_I2S_OUT, "i2s_clkout", mux_i2s_clkout_p, 0,
- 			RK2928_CLKSEL_CON(3), 12, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(0), 13, GFLAGS),
-@@ -303,11 +303,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	COMPOSITE(0, "spdif_src", mux_pll_src_3plls_p, 0,
- 			RK2928_CLKSEL_CON(5), 10, 2, MFLAGS, 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 10, GFLAGS),
--	COMPOSITE_FRAC(0, "spdif_frac", "spdif_src", 0,
-+	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", 0,
- 			RK2928_CLKSEL_CON(9), 0,
--			RK2928_CLKGATE_CON(2), 12, GFLAGS),
-+			RK2928_CLKGATE_CON(2), 12, GFLAGS,
- 	MUX(SCLK_SPDIF, "sclk_spdif", mux_spdif_p, 0,
--			RK2928_CLKSEL_CON(5), 8, 2, MFLAGS),
-+			RK2928_CLKSEL_CON(5), 8, 2, MFLAGS)),
- 
- 	GATE(SCLK_OTGPHY0, "sclk_otgphy0", "xin12m", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(1), 5, GFLAGS),
+So I'm somewhat hoping for some sort of intermediate solution here :-)
+
+
+changes in v2:
+- rebase original 3 patches onto 4.4
+- add the 2 new patches from other series, that need that change
+
+Heiko Stuebner (3):
+  clk: add flag for clocks that need to be enabled on rate changes
+  clk: rockchip: handle mux dependency of fractional dividers
+  clk: rockchip: include downstream muxes into fractional dividers
+
+Sjoerd Simons (1):
+  clk: rockchip: Allow the RK3288 SPDIF clocks to change their parent
+
+Xing Zheng (1):
+  clk: rockchip: rk3036: include downstream muxes into fractional
+    dividers
+
+ drivers/clk/clk.c                 |  18 +++++
+ drivers/clk/rockchip/clk-rk3036.c |  34 +++++-----
+ drivers/clk/rockchip/clk-rk3188.c |  80 +++++++++++-----------
+ drivers/clk/rockchip/clk-rk3288.c |  70 +++++++++----------
+ drivers/clk/rockchip/clk.c        | 137 ++++++++++++++++++++++++++++++++++----
+ drivers/clk/rockchip/clk.h        |  19 ++++++
+ include/linux/clk-provider.h      |   1 +
+ 7 files changed, 254 insertions(+), 105 deletions(-)
+
 -- 
 2.6.4
 
