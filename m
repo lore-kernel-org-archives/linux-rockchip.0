@@ -1,68 +1,89 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH v1 6/6] ARM64: dts: rockchip: add reboot-mode node
-Date: Tue, 22 Dec 2015 17:19:49 +0800
-Message-ID: <1450775989-24301-1-git-send-email-andy.yan@rock-chips.com>
-References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH 0/5] Support the codec and wifi/bt for rk3036 Kylin board
+Date: Tue, 22 Dec 2015 17:33:48 +0800
+Message-ID: <1450776833-27639-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org
-Cc: sjg@chromium.org, alexandre.belloni@free-electrons.com, treding@nvidia.com, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, wxt@rock-chips.com, catalin.marinas@arm.com, olof@lixom.net, geert+renesas@glider.be, linux-rockchip@lists.infradead.org, dbaryshkov@gmail.com, sre@kernel.org, jun.nie@linaro.org, pawel.moll@arm.com, will.deacon@arm.com, akpm@linux-foundation.org, devicetree@vger.kernel.org, linux@arm.linux.org.uk, gregkh@linuxfoundation.org, joel@jms.id.au, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, khilman@linaro.org, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, mark.rutland@arm.com, Andy Yan <andy.yan@rock-chips.com>
+To: heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, leozwang@google.com, leecam@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add reboot mode driver DT node for rk3368 platform
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
----
+Add the needed device for kylin board.
 
-Changes in v1: None
+--------------
+This series patches have the following decriptions:
 
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+PATCH[1/5]:
+ARM: dts: set the pinctrl default setting for i2s
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index cc093a4..776f1be 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -45,6 +45,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip_boot-mode.h>
- 
- / {
- 	compatible = "rockchip,rk3368";
-@@ -202,6 +203,31 @@
- 		method = "smc";
- 	};
- 
-+	reboot_mode {
-+		compatible = "rockchip,reboot-mode";
-+		rockchip,regmap = <&pmugrf>;
-+		offset = <0x200>;
-+		loader {
-+			linux,mode = "loader";
-+			linux,magic = <BOOT_LOADER>;
-+		};
-+
-+		maskrom {
-+			linux,mode = "maskrom";
-+			linux,magic = <BOOT_MASKROM>;
-+		};
-+
-+		recovery {
-+			linux,mode = "recovery";
-+			linux,magic = <BOOT_RECOVERY>;
-+		};
-+
-+		fastboot {
-+			linux,mode = "fastboot";
-+			linux,magic = <BOOT_FASTBOOT>;
-+		};
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupts = <GIC_PPI 13
+The kylin will hang in system when enable the i2s,
+we need set the pinctrl default setting for i2s firstly.
+--------------
+
+PATCH[2/5]:
+ARM: dts: add the sound codec for kylin board
+
+Let the codec works.
+
+RT5616 driver is landed in Mark branch.
+(https://git.kernel.org/cgit/linux/kernel/git/broonie/sound.git/commit/
+?h=for-next&id=b1d15059957d33d111e0ed38724a6b2c5caac790)
+
+Maybe need wait the below patch be merged firstly.
+(add an of_match table: https://patchwork.kernel.org/patch/7901951/
+rt5616 document: https://patchwork.kernel.org/patch/7901971/)
+---------------
+
+PATCH[3/5]:
+ARM: dts: rockchip: enable the high speed on sdio for kylin board
+
+This patch is solving the wifi work frequency.
+37.5MHz frequency for rk3036.
+
+The wifi throughput:
+
+iperf -s -i 1
+...
+[  4] 116.0-117.0 sec  2.88 MBytes  24.1 Mbits/sec
+[  4] 117.0-118.0 sec  2.99 MBytes  25.0 Mbits/sec
+[  4] 118.0-119.0 sec  3.01 MBytes  25.2 Mbits/sec
+[  4] 119.0-120.0 sec  2.89 MBytes  24.2 Mbits/sec
+[  4]  0.0-120.4 sec   332 MBytes  23.1 Mbits/sec
+----------------
+
+PATCH[4/5]:
+ARM: dts: add the wifi/bt regulator for kylin board
+
+Add the wifi/bt regulator for wifi module, let the module work on bootup.
+
+Yep, this patch is based on olof patch[0].
+patch[0]:
+https://patchwork.kernel.org/patch/3510571/
+----------------
+
+PATCH[5/5]:
+ARM: dts: enable the uart0 for bluetooth module
+
+Enable the uart0 for BT module working.
+----------------
+
+Note: that's seem the wifi driver has not landed in mainline.
+This driver has existed in rockchip github develop4.1.
+https://github.com/rockchip-linux/kernel/commit/a731ffcd0d6ee3b3e6f015d3e2f7b4bf698a3533
+
+
+
+Caesar Wang (5):
+  ARM: dts: set the pinctrl default setting for i2s
+  ARM: dts: add the sound codec for kylin board
+  ARM: dts: rockchip: enable the high speed on sdio for kylin board
+  ARM: dts: add the wifi/bt regulator for kylin board
+  ARM: dts: enable the uart0 for bluetooth module
+
+ arch/arm/boot/dts/rk3036-kylin.dts | 85 +++++++++++++++++++++++++++++++++++++-
+ arch/arm/boot/dts/rk3036.dtsi      | 12 +++---
+ 2 files changed, 90 insertions(+), 7 deletions(-)
+
 -- 
 1.9.1
