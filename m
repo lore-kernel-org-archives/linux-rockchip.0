@@ -1,65 +1,49 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 5/5] clk: rockchip: Allow the RK3288 SPDIF clocks to change their parent
-Date: Tue, 22 Dec 2015 22:28:02 +0100
-Message-ID: <1450819682-4932-6-git-send-email-heiko@sntech.de>
-References: <1450819682-4932-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1450819682-4932-1-git-send-email-heiko@sntech.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, sjoerd.simons@collabora.co.uk, wxt@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [PATCH 1/3] ARM: multi_v7_defconfig: enable Rockchip io-domain
+ driver
+Date: Tue, 22 Dec 2015 14:56:14 -0800
+Message-ID: <20151222225614.GL30172@localhost>
+References: <2111669.2aeXLpXsWE@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <2111669.2aeXLpXsWE@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko St?bner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+On Mon, Dec 21, 2015 at 10:21:14PM +0100, Heiko St?bner wrote:
+> The io-domain driver is necessary to notify the soc about voltages changes
+> happening on supplying regulators. Probably the most important user right
+> now is the mmc tuning code, where the soc needs to get notified when the
+> voltage is dropped to the 1.8V point.
+> 
+> As this option is necessary to sucessfully tune UHS cards etc, it should
+> get built in.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+> When booting a Veyron-Jerry from an sd-card it got stuck, as the tuning
+> failed due to the missing voltage notification and the mmc completely
+> fails initialization of the card, if this happens.
+> With this option enabled, I could again boot from my sd-card.
+> 
+> This is based on the 
 
-The clock branches leading to sclk_spdif and sclk_spdif_8ch on RK3288
-SoCs only feed those clocks, allow those clocks to change their parents
-all the way up the hierarchy.
+Looks cut off :)
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3288.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Anyway, applied 1-3.
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index e0bb0f0..80065e6 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -317,25 +317,25 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 
- 	MUX(0, "spdif_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK3288_CLKSEL_CON(5), 15, 1, MFLAGS),
--	COMPOSITE_NOMUX(0, "spdif_pre", "spdif_src", 0,
-+	COMPOSITE_NOMUX(0, "spdif_pre", "spdif_src", CLK_SET_RATE_PARENT,
- 			RK3288_CLKSEL_CON(5), 0, 7, DFLAGS,
- 			RK3288_CLKGATE_CON(4), 4, GFLAGS),
--	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", 0,
-+	COMPOSITE_FRACMUX(0, "spdif_frac", "spdif_src", CLK_SET_RATE_PARENT,
- 			RK3288_CLKSEL_CON(9), 0,
- 			RK3288_CLKGATE_CON(4), 5, GFLAGS,
--		MUX(0, "spdif_mux", mux_spdif_p, 0,
-+		MUX(0, "spdif_mux", mux_spdif_p, CLK_SET_RATE_PARENT,
- 				RK3288_CLKSEL_CON(5), 8, 2, MFLAGS)),
--	GATE(SCLK_SPDIF, "sclk_spdif", "spdif_mux", 0,
-+	GATE(SCLK_SPDIF, "sclk_spdif", "spdif_mux", CLK_SET_RATE_PARENT,
- 			RK3288_CLKGATE_CON(4), 6, GFLAGS),
--	COMPOSITE_NOMUX(0, "spdif_8ch_pre", "spdif_src", 0,
-+	COMPOSITE_NOMUX(0, "spdif_8ch_pre", "spdif_src", CLK_SET_RATE_PARENT,
- 			RK3288_CLKSEL_CON(40), 0, 7, DFLAGS,
- 			RK3288_CLKGATE_CON(4), 7, GFLAGS),
--	COMPOSITE_FRACMUX(0, "spdif_8ch_frac", "spdif_8ch_pre", 0,
-+	COMPOSITE_FRACMUX(0, "spdif_8ch_frac", "spdif_8ch_pre", CLK_SET_RATE_PARENT,
- 			RK3288_CLKSEL_CON(41), 0,
- 			RK3288_CLKGATE_CON(4), 8, GFLAGS,
--		MUX(0, "spdif_8ch_mux", mux_spdif_8ch_p, 0,
-+		MUX(0, "spdif_8ch_mux", mux_spdif_8ch_p, CLK_SET_RATE_PARENT,
- 				RK3288_CLKSEL_CON(40), 8, 2, MFLAGS)),
--	GATE(SCLK_SPDIF8CH, "sclk_spdif_8ch", "spdif_8ch_mux", 0,
-+	GATE(SCLK_SPDIF8CH, "sclk_spdif_8ch", "spdif_8ch_mux", CLK_SET_RATE_PARENT,
- 			RK3288_CLKGATE_CON(4), 9, GFLAGS),
- 
- 	GATE(0, "sclk_acc_efuse", "xin24m", 0,
--- 
-2.6.4
 
+-Olof
