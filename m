@@ -1,141 +1,49 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [GIT PULL v2] rockchip clock changes for 4.5
-Date: Tue, 22 Dec 2015 10:19:55 -0800
-Message-ID: <20151222181955.GA6596@quark.deferred.io>
-References: <3167734.Jiqp72JFJP@diego>
- <2321556.9PKkgq9foB@diego>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 1/3] rockchip soc changes for 4.5
+Date: Tue, 22 Dec 2015 13:06:33 -0800
+Message-ID: <20151222210633.GA30172@localhost>
+References: <2532363.CsR3D6sdor@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <2321556.9PKkgq9foB@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <2532363.CsR3D6sdor@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko St?bner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/21, Heiko St=FCbner wrote:
-> Hi Mike, Stephen,
->=20
-> the original pull request seems to have fallen through the cracks, pr=
-obably
-> due to christmas/travels. So this new v2 _supersedes the original one
-> and includes changes that happened during the last 3 weeks.
->=20
-> So please pull
-
-Pulled.
-
-I dropped both your previous PR from my local tree as well as v1 of
-patch 5/8, "clk: rockchip: fix usbphy-related clocks", which has since
-been Acked by me and taken through Kishon's tree.
-
-Let me know if I missed anything.
-
-Thanks,
-Mike
-
->=20
-> Thanks
-> Heiko
->=20
->=20
-> The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7=
-130bec:
->=20
+On Mon, Dec 21, 2015 at 02:21:14AM +0100, Heiko St?bner wrote:
+> Hi Arnd, Kevin, Olof,
+> 
+> after Arnd didn't like the arch-timer-supply fixup for the rk3036, I've
+> dropped that patch for further discussion. So this pull request includes
+> the other changes from that req and additionally a compatible for the
+> newly supported rk3228 quad-core Cortex-A7.
+> 
+> 
+> The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
+> 
 >   Linux 4.4-rc1 (2015-11-15 17:00:27 -0800)
->=20
+> 
 > are available in the git repository at:
->=20
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.=
-git tags/v4.5-rockchip-clk1_1
->=20
-> for you to fetch changes up to dfff24bde7fb8d57482e907d5dfb0be3a9e281=
-19:
->=20
->   clk: rockchip: only enter pll slow-mode directly before reboots on =
-rk3288 (2015-12-21 02:01:19 +0100)
->=20
-> ----------------------------------------------------------------
-> Rockchip clock changes for 4.5 containing
-> - a new pll-type used on rk3036 and other Cortex-A7 socs
-> - new clock-trees for rk3036 and rk3228
-> - switch rk3288 plls to slow mode on reboot
-> - a bunch of new clock ids
-> - some more critical clocks
-> - wrong register offsets for the rk3368 cpuclks
-> - allowing more than 2 parents for the cpuclk
->=20
-> ----------------------------------------------------------------
-> Caesar Wang (1):
->       clk: rockchip: Force rk3368 PWM clock (and its parents) on
->=20
-> Chris Zhong (3):
->       clk: rockchip: add id for mipidsi sclk on rk3288
->       clk: rockchip: add mipidsi clock on rk3288
->       clk: rockchip: switch PLLs to slow mode before reboot for rk328=
-8
->=20
-> Heiko Stuebner (5):
->       Merge branch 'v4.5-clk/clkids' into v4.5-clk/next
->       Merge branch 'v4.5-clk/clkids' into v4.5-clk/next
->       clk: rockchip: fix rk3368 cpuclk divider offsets
->       Merge branch 'v4.5-clk/clkids' into v4.5-clk/next
->       clk: rockchip: only enter pll slow-mode directly before reboots=
- on rk3288
->=20
-> Jeffy Chen (4):
->       clk: rockchip: allow more than 2 parents for cpuclk
->       clk: rockchip: add dt-binding header for rk3228
->       dt-bindings: add documentation of rk3228 clock controller
->       clk: rockchip: add clock controller for rk3228
->=20
-> Jianqun xu (1):
->       clk: rockchip: protect rk3368 aclk_bus and aclk_peri clocks
->=20
-> Xing Zheng (4):
->       clk: rockchip: add dt-binding header for rk3036
->       dt-bindings: add documentation of rk3036 clock controller
->       clk: rockchip: add new pll-type for rk3036 and similar socs
->       clk: rockchip: add clock controller for rk3036
->=20
-> Yakir Yang (1):
->       clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for ac=
-lk_vio
->=20
-> Zain Wang (2):
->       clk: rockchip: add an id for rk3288 crypto clk
->       clk: rockchip: set the id for crypto clk
->=20
-> ZhengShunQian (2):
->       clk: rockchip: Add the clock ids of rk3288 eFuses
->       clk: rockchip: use rk3288-efuse clock ids
->=20
->  .../bindings/clock/rockchip,rk3036-cru.txt         |  56 ++
->  .../bindings/clock/rockchip,rk3228-cru.txt         |  58 ++
->  drivers/clk/rockchip/Makefile                      |   2 +
->  drivers/clk/rockchip/clk-cpu.c                     |   4 +-
->  drivers/clk/rockchip/clk-pll.c                     | 258 +++++++-
->  drivers/clk/rockchip/clk-rk3036.c                  | 478 +++++++++++=
-++++
->  drivers/clk/rockchip/clk-rk3188.c                  |   2 +-
->  drivers/clk/rockchip/clk-rk3228.c                  | 678 +++++++++++=
-++++++++++
->  drivers/clk/rockchip/clk-rk3288.c                  |  42 +-
->  drivers/clk/rockchip/clk-rk3368.c                  |  13 +-
->  drivers/clk/rockchip/clk.c                         |   7 +-
->  drivers/clk/rockchip/clk.h                         |  43 +-
->  include/dt-bindings/clock/rk3036-cru.h             | 193 ++++++
->  include/dt-bindings/clock/rk3228-cru.h             | 220 +++++++
->  include/dt-bindings/clock/rk3288-cru.h             |   4 +
->  15 files changed, 2025 insertions(+), 33 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,=
-rk3036-cru.txt
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,=
-rk3228-cru.txt
->  create mode 100644 drivers/clk/rockchip/clk-rk3036.c
->  create mode 100644 drivers/clk/rockchip/clk-rk3228.c
->  create mode 100644 include/dt-bindings/clock/rk3036-cru.h
->  create mode 100644 include/dt-bindings/clock/rk3228-cru.h
->=20
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.5-rockchip-soc-1
+> 
+> for you to fetch changes up to 2608224c81a7d242a9b451b97011410b182f0da7:
+> 
+>   ARM: rockchip: enable support for RK3228 SoCs (2015-12-16 22:15:06 +0100)
+
+Merged, thanks.
+
+
+-Olof
