@@ -1,117 +1,117 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 4/5] ARM: dts: add the wifi/bt regulator for kylin board
-Date: Tue, 22 Dec 2015 10:50:32 +0100
-Message-ID: <1796344.o2BSs8sx7m@diego>
-References: <1450776833-27639-1-git-send-email-wxt@rock-chips.com> <1450776833-27639-5-git-send-email-wxt@rock-chips.com>
+Subject: Re: [PATCH v1 5/6] ARM: dts: rockchip: add reboot-mode node
+Date: Tue, 22 Dec 2015 12:23:23 +0100
+Message-ID: <3977796.F76XlXnDRQ@diego>
+References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com> <1450775812-24244-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1450776833-27639-5-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1450775812-24244-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leecam-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesaer,
+Hi Andy,
 
-Am Dienstag, 22. Dezember 2015, 17:33:52 schrieb Caesar Wang:
-> Without this the wifi/bluetooth module doesn't work
-> properly at bootup.
+Am Dienstag, 22. Dezember 2015, 17:16:52 schrieb Andy Yan:
+> Add reboot mode driver DT node for rk3xxx,rk3288 platform
+
+in general, I like that concept a lot :-) . Below some small issues.
+
+
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> Patchset: Rockchip kylin board Patch[6/6], bring up kylin board.
-> We need add the wifi regulator to control the power.
-> 
-> (am https://patchwork.kernel.org/patch/7873721/)
 > ---
 > 
->  arch/arm/boot/dts/rk3036-kylin.dts | 43
-> +++++++++++++++++++++++++++++++++++++- 1 file changed, 42 insertions(+), 1
-> deletion(-)
+> Changes in v1:
+> - correct the maskrom magic number
+> - use macro defined in rockchip_boot-mode.h for reboot-mode DT node
 > 
-> diff --git a/arch/arm/boot/dts/rk3036-kylin.dts
-> b/arch/arm/boot/dts/rk3036-kylin.dts index 2ef38be..ed0466f 100644
-> --- a/arch/arm/boot/dts/rk3036-kylin.dts
-> +++ b/arch/arm/boot/dts/rk3036-kylin.dts
-> @@ -76,6 +76,32 @@
->  		regulator-always-on;
->  		regulator-boot-on;
->  	};
-> +
-> +	bt_regulator: bt-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio2 9 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bt_rst_l>;
-> +		regulator-name = "bt_regulator";
-> +	};
-> +
-> +	wifi_regulator: wifi-regulator {
-> +		/*
-> +		 * On the module itself this is one of these (depending
-> +		 * on the actual card populated):
-> +		 * - SDIO_RESET_L_WL_REG_ON
-> +		 * - PDN (power down when low)
-> +		 */
-> +
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio0 26 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_enable_h>;
-> +		regulator-name = "wifi_regulator";
-> +		vin-supply = <&bt_regulator>;
-> +	};
->  };
+>  arch/arm/boot/dts/rk3288.dtsi | 26 ++++++++++++++++++++++++++
+>  arch/arm/boot/dts/rk3xxx.dtsi | 26 ++++++++++++++++++++++++++
+>  2 files changed, 52 insertions(+)
 > 
->  &acodec {
-> @@ -303,12 +329,13 @@
->  	sd-uhs-sdr50;
->  	sd-uhs-sdr104;
->  	cap-sdio-irq;
-> +	card-external-vcc-supply = <&wifi_regulator>;
-
-as I said in our chat, that concept didn't make it into the kernel. mmc-power-
-sequences are the new thing. Please look into the sdio-pwrseq node in rk3288-
-veyron.dtsi for examples.
-
-
-Heiko
-
->  	default-sample-phase = <90>;
->  	keep-power-in-suspend;
->  	non-removable;
->  	num-slots = <1>;
->  	pinctrl-names = "default";
-> -	pinctrl-0 = <&sdio_clk &sdio_cmd &sdio_bus4>;
-> +	pinctrl-0 = <&sdio_clk &sdio_cmd &sdio_bus4 &bt_wake_h>;
->  };
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 04ea209..c6ea207 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -45,6 +45,7 @@
+>  #include <dt-bindings/clock/rk3288-cru.h>
+>  #include <dt-bindings/thermal/thermal.h>
+>  #include <dt-bindings/power/rk3288-power.h>
+> +#include <dt-bindings/soc/rockchip_boot-mode.h>
+>  #include "skeleton.dtsi"
 > 
->  &uart2 {
-> @@ -330,6 +357,20 @@
+>  / {
+> @@ -170,6 +171,31 @@
 >  		};
 >  	};
 > 
-> +	sdio {
-> +		wifi_enable_h: wifienable-h {
-> +			rockchip,pins = <0 26 RK_FUNC_GPIO &pcfg_pull_none>;
+> +	reboot_mode {
+
+nodes are commonly written with a dash "-" instead of an underscore "_".
+
+
+> +		compatible = "rockchip,reboot-mode";
+> +		rockchip,regmap = <&pmu>;
+
+I do believe this should be a sub-node of the pmu, similar to the power-
+domains. Due to the "simple-mfd" compatible of the pmu, it will get probed 
+automatically and the driver can than get the regmap via
+
+	parent = dev->parent;
+	regmap = syscon_node_to_regmap(parent->of_node);
+
+as the power-domains do and therefore also doesn't need the rockchip,regmap 
+property.
+
+
+> +		offset = <0x94>;
+> +		loader {
+> +			linux,mode = "loader";
+> +			linux,magic = <BOOT_LOADER>;
+
+linux,mode seems correct, but the magic value is actually not linux-specific 
+but instead firmware-specific, so I'm not sure about that linux-prefix there
+
+But I guess that would be for the dt-people :-)
+
+
 > +		};
 > +
-> +		bt_rst_l: bt-rst-l {
-> +			rockchip,pins = <2 9 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		maskrom {
+> +			linux,mode = "maskrom";
+> +			linux,magic = <BOOT_MASKROM>;
+> +		};
+
+Just for my understanding, while I expect the bootloader to interpret the 
+other values, does the maskrom read and handle this one?
+
+
+> +
+> +		recovery {
+> +			linux,mode = "recovery";
+> +			linux,magic = <BOOT_RECOVERY>;
 > +		};
 > +
-> +		bt_wake_h: bt-wake-h {
-> +			rockchip,pins = <2 8 RK_FUNC_GPIO &pcfg_pull_default>;
+> +		fastboot {
+> +			linux,mode = "fastboot";
+> +			linux,magic = <BOOT_FASTBOOT>;
 > +		};
 > +	};
 > +
->  	sleep {
->  		global_pwroff: global-pwroff {
->  			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
+>  	reserved-memory {
+>  		#address-cells = <1>;
+>  		#size-cells = <1>;
+
+I do believe rk3288-veyron.dtsi would need some sort of special handling.
+I don't think coreboot interprets most of those handles, but I guess only the 
+maskrom one would be handled by the maskrom?
+
+
+Heiko
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
