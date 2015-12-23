@@ -1,84 +1,48 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v11 17/19] drm: bridge: analogix/dp: expand the look time
- for waiting AUX CH reply
-Date: Wed, 23 Dec 2015 14:00:34 +0800
-Message-ID: <567A3882.3020808@rock-chips.com>
-References: <1450236018-1118-1-git-send-email-ykk@rock-chips.com>
- <1450238257-3274-1-git-send-email-ykk@rock-chips.com>
- <000a01d13cb4$0f81f510$2e85df30$@com> <567A21EC.4010003@rock-chips.com>
+From: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v1 1/6] dt-bindings: misc: add document for reboot-mode driver
+Date: Wed, 23 Dec 2015 00:37:22 -0800
+Message-ID: <CAAtXAHfkfqELHamMVK3-6UE+LtVwimA7oe=QEzfF2WyrHXxcaQ@mail.gmail.com>
+References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
+	<1450775124-23966-1-git-send-email-andy.yan@rock-chips.com>
+	<20151223003217.GA18700@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <567A21EC.4010003@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jingoo Han <jingoohan1@gmail.com>, 'Inki Dae' <inki.dae@samsung.com>, 'Mark Yao' <mark.yao@rock-chips.com>, 'Heiko Stuebner' <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, 'Krzysztof Kozlowski' <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, 'Russell King' <linux@arm.linux.org.uk>, javier@osg.samsung.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 'Kishon Vijay Abraham I' <kishon@ti.com>, linux-rockchip@lists.infradead.org, 'Rob Herring' <robh+dt@kernel.org>, 'Andy Yan' <andy.yan@rock-chips.com>, 'Thierry Reding' <treding@nvidia.com>, 'Gustavo Padovan' <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20151223003217.GA18700@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Dmitry Eremin-Solenikov <dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sebastian Reichel <sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, "pawel.moll-5wv7dgnIgG8@public.gmane.org" <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, khilm
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmluZ29vLAoKT24gMTIvMjMvMjAxNSAxMjoyNCBQTSwgWWFraXIgWWFuZyB3cm90ZToKPiBI
-aSBKaW5nb28sCj4KPiBPbiAxMi8yMi8yMDE1IDA4OjI2IFBNLCBKaW5nb28gSGFuIHdyb3RlOgo+
-PiBPbiBXZWRuZXNkYXksIERlY2VtYmVyIDE2LCAyMDE1IDEyOjU4IFBNLCBZYWtpciBZYW5nIHdy
-b3RlOgo+Pj4gQWZ0ZXIgdGVzdCBvbiByb2NrY2hpb3AgcGxhdGZvcm0sIGkgZm91bmQgc29tZXRp
-bXMgZHJpdmVyIHdvdWxkIGZhaWxlZAo+Pj4gYXQgcmVhZGluZyBFRElEIG1lc3NhZ2UuIEFmdGVy
-IGRlYnVnZ2luZyBtb3JlLCBpIGZvdW5kIHRoYXQgaXQncyBva2F5Cj4+PiB0byByZWFkX2EgYnl0
-ZSBmcm9tIGkyYywgYnV0IGl0IHdvdWxkIGZhaWxlZCBhdCBBVVggdHJhbnNjYXRpb24gaWYgd2UK
-Pj4+IHRyeSB0byByZWFkeSBtdWx0aS1ieXRlcyBmcm9tIGkyYy4KPj4+Cj4+PiBEcml2ZXIganVz
-dCBjYW4ndCByZWNlaXZlZCB0aGUgQVVYIENIIHJlcGx5IGNvbW1hbmQsIGV2ZW4gbm8gQVVYIGVy
-cm9yCj4+PiBjb2RlLiBJIG1heSBndWVzcyB0aGF0IHRoZSBBVVggd2FpdCB0aW1lIGlzIG5vdCBl
-bm91Z2gsIHNvIEkgdHJ5IHRvCj4+PiBleHBhbmQgdGhlIEFVWCB3YWl0IHRpbWUsIGFuZCBpIGRv
-IHNlZSB0aGlzIGNvdWxkIGZpeCB0aGUgRURJRCByZWFkCj4+PiBmYWlsZWQgYXQgcm9ja2NoaXAg
-cGxhdGZvcm0uCj4+Pgo+Pj4gQW5kIEkgdGhvdWdodCB0aGF0IGV4cGFuZCB0aGUgd2FpdCB0aW1l
-IHdvbid0IGh1cnQgRXh5bm9zIHBsYXRmb3JtIHRvbwo+Pj4gbXVjaCwgY2F1c2UgRXh5bm9zIGRp
-ZG4ndCBoYXZlIHRoaXMgcHJvYmxlbSwgdGhlbiBkcml2ZXIgd291bGQgcmVjZWl2ZWQKPj4+IHRo
-ZSByZXBseSBjb21tYW5kIHZlcnkgc29vbiwgc28gbm8gbW9yZSBhZGRpdGlvbmFsIHdhaXQgdGlt
-ZSB3b3VsZCAKPj4+IGJyaW5nCj4+PiB0byBFeHlub3MgcGxhdGZvcm0uCj4+Pgo+Pj4gU2lnbmVk
-LW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgo+Pj4gLS0tCj4+PiBDaGFu
-Z2VzIGluIHYxMTogTm9uZQo+Pj4gQ2hhbmdlcyBpbiB2MTA6IE5vbmUKPj4+IENoYW5nZXMgaW4g
-djk6IE5vbmUKPj4+IENoYW5nZXMgaW4gdjg6IE5vbmUKPj4+IENoYW5nZXMgaW4gdjc6IE5vbmUK
-Pj4+IENoYW5nZXMgaW4gdjY6IE5vbmUKPj4+IENoYW5nZXMgaW4gdjU6IE5vbmUKPj4+IENoYW5n
-ZXMgaW4gdjQ6IE5vbmUKPj4+IENoYW5nZXMgaW4gdjM6IE5vbmUKPj4+IENoYW5nZXMgaW4gdjI6
-IE5vbmUKPj4+Cj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhf
-ZHBfcmVnLmMgfCAyICstCj4+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBk
-ZWxldGlvbigtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Fu
-YWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jCj4+PiBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5h
-bG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPj4+IGluZGV4IGM3ZTI5NTkuLmRjMzc2YmQgMTAwNjQ0
-Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3Jl
-Zy5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X3JlZy5jCj4+PiBAQCAtNDgyLDcgKzQ4Miw3IEBAIGludCBhbmFsb2dpeF9kcF9zdGFydF9hdXhf
-dHJhbnNhY3Rpb24oc3RydWN0IAo+Pj4gYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPj4+ICAgICAg
-IHJlZyA9IHJlYWRsKGRwLT5yZWdfYmFzZSArIEFOQUxPR0lYX0RQX0lOVF9TVEEpOwo+Pj4gICAg
-ICAgd2hpbGUgKCEocmVnICYgUlBMWV9SRUNFSVYpKSB7Cj4+PiAgICAgICAgICAgdGltZW91dF9s
-b29wKys7Cj4+PiAtICAgICAgICBpZiAoRFBfVElNRU9VVF9MT09QX0NPVU5UIDwgdGltZW91dF9s
-b29wKSB7Cj4+PiArICAgICAgICBpZiAoRFBfVElNRU9VVF9MT09QX0NPVU5UICogMTAgPCB0aW1l
-b3V0X2xvb3ApIHsKPj4gTm8sIEkgaGF0ZSB0aGlzIGNvZGluZy4KPj4gYW5hbG9naXhfZHBfcmVn
-LmMgaXMgdGhlIGNvbW1vbiBjb2RlIHRoYXQgY2FuIGJlIHNoYXJlZCBieSB2YXJpb3VzIFNvQ3Mu
-Cj4+IFBsZWFzZSwgZmluZCBhbm90aGVyIHdheS4KPgo+IE9rYXksIEkgaGF2ZSBkb3VibGUgY2hl
-Y2tlZCB0aGF0IGkgZG8gaGF2ZSB0aGlzIHByb2JsZW0gaW4gbXkgc2lkZS4gCj4gSG1tbS4uLi4u
-Cj4gSSB0aG91Z2h0IGl0J3Mgb2theSBmb3IgeW91IGlmIEkgZXhwYW5kIHRoZSAiRFBfVElNRU9V
-VF9MT09QX0NPVU5UIiAKPiBkaXJlY3RseSwKPiBpdCB3b24ndCBodXJ0IEV4eW5vcyBwbGF0Zm9y
-bSB0b28gbXVjaCwgY2F1c2UgRXh5bm9zIGRpZG4ndCBoYXZlIHRoaXMgCj4gcHJvYmxlbSwKPiB0
-aGVuIGRyaXZlciB3b3VsZCByZWNlaXZlZCx0aGUgcmVwbHkgY29tbWFuZCB2ZXJ5IHNvb24sIHNv
-IG5vIG1vcmUgCj4gYWRkaXRpb25hbAo+IHdhaXQgdGltZSB3b3VsZCBicmluZyB0byBFeHlub3Mg
-cGxhdGZvcm0uCj4KCk9oLCBzb3JyeSwgbGl0dGxlIG1pc3Rha2VuLCBJIG1lYW4sIGlzIGl0IG9r
-YXkgZm9yIHlvdSB0byBleHBhbmQgdGhlIAoiRFBfVElNRU9VVF9MT09QX0NPVU5UIiBkaXJlY3Rs
-eSA/CgotIFlha2lyCgoKPiBBbmQgYWN0dWFsbHkgdGhlIGRhdGFzaGVldCBoYXZlbid0IGRlc2Ny
-aWJlZCB0aGUgc3BlYyBvZiBhdXggcmVwbHkgCj4gZGVsYXkgdGltZS4KPgo+IFRoYW5rcywKPiAt
-IFlha2lyCj4KPj4gQmVzdCByZWdhcmRzLAo+PiBKaW5nb28gSGFuCj4+Cj4+Cj4+PiAgICAgICAg
-ICAgICAgIGRldl9lcnIoZHAtPmRldiwgIkFVWCBDSCBjb21tYW5kIHJlcGx5IGZhaWxlZCFcbiIp
-Owo+Pj4gICAgICAgICAgICAgICByZXR1cm4gLUVUSU1FRE9VVDsKPj4+ICAgICAgICAgICB9Cj4+
-PiAtLSAKPj4+IDEuOS4xCj4+Cj4+Cj4+Cj4+Cj4KPgo+Cj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Rob,
+
+On Tue, Dec 22, 2015 at 4:32 PM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+
+> I would like to see the property names here standardized as much as
+> possible. I'm not sure if we can define the properties as a u32 or need
+> some flexibility here.
+
+Quick question, semi on topic. I have a similar case (and a driver in
+the pipeline),
+however all I got is a (persistent over reboot) hardware register to
+which I can write whatever.
+On the other side I'd have u-boot pull out the value, but as it's up
+to u-boot to
+implement whatever it does with this info I'm kinda struggling with the idea
+of a standardized binding. In my case I'd like it to go into 'safe
+mode' or 'firmware update'.
+
+With loader = <0xace0ba5e>, <0xdeadbeef> ... and loader-names <> I
+could have u-boot read the values
+from fdt at boot. Then again I'm not describing hardware, but specific
+settings ...
+
+Would that be acceptable?
+
+Cheers,
+
+Moritz
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
