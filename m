@@ -1,130 +1,63 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v1 0/6] misc: add reboot mode driver
-Date: Wed, 23 Dec 2015 17:31:45 +0800
-Message-ID: <567A6A01.8080305@rock-chips.com>
-References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
- <20151222164742.GA8623@piout.net>
+From: Jean-Francois Moine <moinejf@free.fr>
+Subject: Re: [PATCH v2 0/2] Improve drm_of_component_probe() and move
+ rockchip to use it
+Date: Wed, 23 Dec 2015 10:39:06 +0100
+Message-ID: <20151223103906.2aae53595345240d57d57b41@free.fr>
+References: <1448029325-14602-1-git-send-email-Liviu.Dudau@arm.com>
+ <20151222173800.GU960@e106497-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20151222164742.GA8623-m++hUPXGwpdeoWH0uzbU5w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20151222173800.GU960@e106497-lin.cambridge.arm.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Liviu Dudau <Liviu.Dudau@arm.com>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Russell King <rmk+kernel@arm.linux.org.uk>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Alexandre:
-
-On 2015=E5=B9=B412=E6=9C=8823=E6=97=A5 00:47, Alexandre Belloni wrote:
-> Hi,
->
-> On 22/12/2015 at 17:02:29 +0800, Andy Yan wrote :
->> This driver parse the reboot commands like "reboot loader"
->> and "reboot recovery" to get a boot mode described in the
->> device tree , then call the vendor specific write interfae
->> to store the boot mode in some place like special register
->> or sram , which can be read by the bootloader after system
->> reboot.
->>
->> This is commonly done on Android based devices, in order to
->> reboot the device into fastboot or recovery mode.
->>
->> Before this patch , I have try some hack on[0], and then found
->> John Stultz also doing the same work[1].
->>
->> As John is busy these days, I go on with this work.
->>
->> [0]https://patchwork.kernel.org/patch/7647751/
->> [1]https://patchwork.kernel.org/patch/7802391/
->>
->> Changes in v1:
->> - fix the embarrassed compile warning
->> - correct the maskrom magic number
->> - check for the normal reboot
->> - correct the maskrom magic number
->> - use macro defined in rockchip_boot-mode.h for reboot-mode DT node
->>
->> Andy Yan (6):
->>    dt-bindings: misc: add document for reboot-mode driver
->>    dt-bindings: soc: add document for rockchip reboot-mode driver
->>    misc: add reboot mode driver
->>    soc: rockchip: add reboot mode driver
->>    ARM: dts: rockchip: add reboot-mode node
->>    ARM64: dts: rockchip: add reboot-mode node
->>
-> This seems nice and useful, some further ideas:
->
->>   .../devicetree/bindings/misc/reboot-mode.txt       | 41 +++++++++
->>   .../bindings/soc/rockchip/rockchip,reboot-mode.txt | 39 +++++++++
->>   arch/arm/boot/dts/rk3288.dtsi                      | 26 ++++++
->>   arch/arm/boot/dts/rk3xxx.dtsi                      | 26 ++++++
->>   arch/arm64/boot/dts/rockchip/rk3368.dtsi           | 26 ++++++
->>   drivers/misc/Kconfig                               |  7 ++
->>   drivers/misc/Makefile                              |  1 +
->>   drivers/misc/reboot_mode.c                         | 96 ++++++++++=
-++++++++++++
-> I think this actually belongs to drivers/power/reset/ instead of misc
-
-    I also have the idea to put is in drivers/power/reset,  But conside=
-ring
-    this driver have not bind anything about power, so I put it in=20
-driver/misc
-    at last. So I hope if some people can give more suggestions here.
->
->>   drivers/soc/rockchip/Kconfig                       |  9 ++
->>   drivers/soc/rockchip/Makefile                      |  1 +
->>   drivers/soc/rockchip/reboot.c                      | 68 ++++++++++=
-+++++
-> And maybe that part could be made generic instead of rockchip specifi=
-c.
-> It simply uses a regmap to do the accesses, I guess a lot of other
-> platforms will do that. We have syscon-reboot and syscon-poweroff for=
- example.
->
-> I think then we can extend the "framework" by having generic drivers =
-to
-> store the value in eeprom or nvram for example.
->
-
-    I also hope the write interface can be generic. But I found some=20
-platform
-    use different hardware to store the value. For example, John's patc=
-h=20
-use
-    SRAM on qcom apq8064 to store value for nexus7. It seems there also=
- have
-    some platform use dram or nvram to store it. And these different=20
-hardware use
-    different write method. I don't have a generic way to handle this.
-
-    I have a idea to handle it like this:
-
-+static const struct of_device_id reboot_mode_dt_match[] =3D {
-+        { .compatible =3D "linux,reboot-mode-sfr",    /*for magic valu=
-e=20
-stored in special function register, which  can be accessed by regmap*/
-+                .data =3D (void *)&reboot-mode-sfr },
-+        { .compatible =3D "linux,reboot-mode-sram",  /*for magic value=
-=20
-stored in
-+                .data =3D (void *)&reboot-mode-sram },
-+        { .compatible =3D "linux,reboot-mode-sdram",
-+                .data =3D (void *)&reboot-mode-sdram }, /*for magic va=
-lue=20
-stored
-+        { .compatible =3D "rockchip,reboot-mode-nvram",
-+                .data =3D (void *)&reboot-mode-nvram },
-+        {},
-+};
-
-    the data point to different hardware access method.
-
-   Hope to see more suggestions from you.
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVHVlLCAyMiBEZWMgMjAxNSAxNzozODowMCArMDAwMApMaXZpdSBEdWRhdSA8TGl2aXUuRHVk
+YXVAYXJtLmNvbT4gd3JvdGU6Cgo+IE9uIEZyaSwgTm92IDIwLCAyMDE1IGF0IDAyOjIyOjAzUE0g
+KzAwMDAsIExpdml1IER1ZGF1IHdyb3RlOgo+ID4gSGVsbG8sCj4gPiAKPiA+IFRoaXMgaXMgdjIg
+b2YgdGhlIHBhdGNoc2V0IHRyeWluZyB0byBtYWtlIGRybV9vZl9jb21wb25lbnRfcHJvYmUoKSBj
+b3BlIHdpdGggZmluZGluZwo+ID4gYm90aCBsb2NhbCBjcnRjIHBvcnRzIGFuZCByZW1vdGUgZW5j
+b2RlciBvbmVzLiBIZWlrbyBTdMO8Ym5lciB3YXMgbmljZSBlbm91Z2ggdG8gdGVzdAo+ID4gYW4g
+ZWFybGllciB2ZXJzaW9uIHRoYXQgd2FzIHBhdGNoZWQgZm9sbG93aW5nIFJ1c3NlbGwncyBzdWdn
+ZXN0aW9ucyBvbiByazMyODgsIGJ1dAo+ID4gSSBoYXZlbid0IHNlZW4gYW55IHJlcG9ydHMgZnJv
+bSBpTVggb3IgQXJtYWRhIHVzZXJzLgo+ID4gCj4gPiBDaGFuZ2Vsb2c6Cj4gPiAgdjI6IFVwZGF0
+ZWQgdGhlIGRybV9vZl9jb21wb25lbnRfcHJvYmUoKSBjb21tZW50IHRvIGV4cGxhaW4gd2h5IHRo
+ZSByZWZlcmVuY2UgY291bnQKPiA+ICAgICAgaXMgbm90IGRyb3BwZWQuIEZpeGVkIHRoZSBjb21w
+YXJlX3BvcnQoKSBmdW5jdGlvbiBmb3Igcm9ja2NoaXAgYXMgZGVzY3JpYmVkIGJ5Cj4gPiAgICAg
+IFJ1c3NlbGwuCj4gPiAgdjE6IE9yaWdpbmFsIHN1Ym1pc3Npb24uIGh0dHA6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvYXJjaGl2ZXMvZHJpLWRldmVsLzIwMTUtTm92ZW1iZXIvMDk0NTQ2Lmh0bWwK
+PiAKPiBHZW50bGUgcGluZywgdGhpcyBoYXMgbm93IGJlZW4gdGVzdGVkIGJ5IFJvY2tjaGlwIHBl
+b3BsZSBhbmQgZml4ZXMgdGhlIGVhcmxpZXIgdmVyc2lvbgo+IHRoYXQgaGFkIHRvIGJlIHJldmVy
+dGVkIGluIG1haW5saW5lLiBDYW4gaXQgYmUgaW5jbHVkZWQgaW4gdGhlIC1uZXh0IHNvbWV3aGVy
+ZT8KCkhpIExpdml1LAoKU29ycnkgZm9yIGJlaW5nIGEgYml0IGxhdGUuCgpJIHdhbnRlZCB0byB1
+c2UgZHJtX29mX2NvbXBvbmVudF9wcm9iZSgpIGZvciBhIG5ldyBEUk0gZHJpdmVyLCBidXQgSQpj
+b3VsZCBub3QgZmluZCBhbnkgd2F5IHRvIGRvIGl0OiB5b3UgYWRkIHRoZSAicG9ydHMiIG5vZGVz
+IGFzCmNvbXBvbmVudHMgd2hpbGUsIHVzdWFsbHksIHRoZSBjb21wb25lbnRzIGFyZSB0aGUgZGV2
+aWNlIG5vZGVzCnRoZW1zZWx2ZXMuCgpXaXRoIHRoaXMgc2ltcGxlIHBhdGNoOgoKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYwpp
+bmRleCA0OTNjMDVjLi5kYmQyOTIxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX29m
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jCkBAIC0xMDEsNyArMTAxLDcgQEAgaW50
+IGRybV9vZl9jb21wb25lbnRfcHJvYmUoc3RydWN0IGRldmljZSAqZGV2LAogCQkJY29udGludWU7
+CiAJCX0KIAotCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBw
+b3J0KTsKKwkJY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9vZiwgcG9y
+dC0+cGFyZW50KTsKIAkJb2Zfbm9kZV9wdXQocG9ydCk7CiAJfQogCmV2ZXJ5dGhpbmcgaXMgZWFz
+eSwgbXkgRFQgYmVpbmcgbGlrZToKCglkZV9jb250cm9sbGVyIHsKCQkuLi4KCQlwb3J0cyA9IDwm
+bGNkMF9wPjsKCX07CgoJbGNkX2NvbnRyb2xsZXIgewoJCS4uLgoJCWxjZDBfcDogcG9ydCB7CgkJ
+CWxjZDBfZXA6IGVuZHBvaW50IHsKCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmaGRtaV9lcD47CgkJ
+CX07CgkJfTsKCX07CgpXaGF0IHdhcyB0aGUgcmVhc29uIHRvIGtlZXAgdGhlICJwb3J0cyIgbm9k
+ZSBpbnN0ZWFkIG9mIHRoZSBkZXZpY2U/CgotLSAKS2VuIGFyIGMnaGVudGHDsQl8CSAgICAgICoq
+IEJyZWl6aCBoYSBMaW51eCBhdGF2ISAqKgpKZWYJCXwJCWh0dHA6Ly9tb2luZWpmLmZyZWUuZnIv
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
