@@ -1,14 +1,16 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] ARM: multi_v7_defconfig: enable Rockchip io-domain
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v1 1/6] dt-bindings: misc: add document for reboot-mode
  driver
-Date: Wed, 23 Dec 2015 01:10:58 +0100
-Message-ID: <5336978.7p06ZKmlEQ@diego>
-References: <2111669.2aeXLpXsWE@diego> <20151222225614.GL30172@localhost>
+Date: Tue, 22 Dec 2015 18:32:17 -0600
+Message-ID: <20151223003217.GA18700@rob-hp-laptop>
+References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
+ <1450775124-23966-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20151222225614.GL30172@localhost>
+Content-Disposition: inline
+In-Reply-To: <1450775124-23966-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,36 +20,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 22. Dezember 2015, 14:56:14 schrieb Olof Johansson:
-> On Mon, Dec 21, 2015 at 10:21:14PM +0100, Heiko St?bner wrote:
-> > The io-domain driver is necessary to notify the soc about voltages changes
-> > happening on supplying regulators. Probably the most important user right
-> > now is the mmc tuning code, where the soc needs to get notified when the
-> > voltage is dropped to the 1.8V point.
-> > 
-> > As this option is necessary to sucessfully tune UHS cards etc, it should
-> > get built in.
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko.stuebner-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> > When booting a Veyron-Jerry from an sd-card it got stuck, as the tuning
-> > failed due to the missing voltage notification and the mmc completely
-> > fails initialization of the card, if this happens.
-> > With this option enabled, I could again boot from my sd-card.
-> > 
-> > This is based on the
+On Tue, Dec 22, 2015 at 05:05:24PM +0800, Andy Yan wrote:
+> add device tree bindings document for reboot-mode driver
 > 
-> Looks cut off :)
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v1: None
+> 
+>  .../devicetree/bindings/misc/reboot-mode.txt       | 41 ++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/misc/reboot-mode.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/misc/reboot-mode.txt b/Documentation/devicetree/bindings/misc/reboot-mode.txt
+> new file mode 100644
+> index 0000000..082bc0c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/misc/reboot-mode.txt
+> @@ -0,0 +1,41 @@
+> +Generic reboot mode communication driver
 
-I only wanted to say that this is based on the latest multi_v7 from the 
-armsoc/defconfig branch, but it looks I forgot to finish that sentence ;-)
+You're not describing a driver. It is a mapping of boot modes to values.
+> +
+> +This driver get reboot mode arguments from userspace
 
+Coming from userspace is a Linuxism.
 
-> Anyway, applied 1-3.
+> +and stores it in special register or ram . Then the
+> +bootloader will read it and take different action
+> +according the argument stored.
+> +
+> +Required properties:
+> +        - compatible = "reboot-mode" or other vendor compatible string;
+> +
+> +Each mode is represented as a sub-node of reboot_mode:
+> +
+> +Subnode required properties:
+> +        - linux,mode: reboot mode command,such as "loader","recovery", "fastboot".
+> +        - linux,magic: magic number for the mode, this is vendor specific.
+> +
+> +example:
+> +	reboot_mode {
+> +		compatible = "rockchip,reboot-mode";
+> +		rockchip,regmap = <&pmu>;
+> +		offset = <0x40>;
+> +		loader {
+> +			linux,mode = "loader";
+> +			linux,magic = <0x5242C301>;
+> +		};
 
-Thanks
-Heiko
+These can be much more simply expressed as:
+
+loader = <0x5242c301>;
+
+I would like to see the property names here standardized as much as
+possible. I'm not sure if we can define the properties as a u32 or need
+some flexibility here.
+
+Rob
