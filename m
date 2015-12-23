@@ -1,13 +1,14 @@
 From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 2/2] clk: rockchip: rk3036: fix and add node id for emac clock
-Date: Wed, 23 Dec 2015 17:05:55 +0800
-Message-ID: <1450861555-11213-2-git-send-email-zhengxing@rock-chips.com>
-References: <1450861555-11213-1-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH 2/4] net: ethernet: arc: Keep emac compatibility for more
+ Rockchip SoCs
+Date: Wed, 23 Dec 2015 17:19:48 +0800
+Message-ID: <1450862390-407-2-git-send-email-zhengxing@rock-chips.com>
+References: <1450862390-407-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1450861555-11213-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1450862390-407-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,78 +18,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to referred old version TRM, there is incorrect emac clock node,
-we should fix it. The SEL_21_9 is the parent of SEL_21_4.
-
-In the emac driver, we need to refer HCLK_MAC, and because There are
-only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
-GPLL, and it is unable to provide the accurate rate for mac_ref which
-need to 50MHz probability, we should let it under the APLL and are
-able to set the freq which integer multiples of 50MHz, so we add these
-emac node for reference.
+On the RK3066/RK3188, there was fixed GRF offset configuration to set emac
+and fixed DIV2 mac TX/RX clock. So, we need to easily set and fit to other
+SoCs (RK3036) which maybe have different GRF offset, and need adjust mac
+TX/RX clock.
 
 Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- drivers/clk/rockchip/clk-rk3036.c      |   11 ++++++-----
- include/dt-bindings/clock/rk3036-cru.h |    2 ++
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/arc/emac_rockchip.c |   66 ++++++++++++++++++++----------
+ 1 file changed, 44 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 1016836..92426b0 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -328,13 +328,14 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(16), 0, 2, MFLAGS, 2, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(10), 5, GFLAGS),
+diff --git a/drivers/net/ethernet/arc/emac_rockchip.c b/drivers/net/ethernet/arc/emac_rockchip.c
+index 36e9eb1..d1a9c28 100644
+--- a/drivers/net/ethernet/arc/emac_rockchip.c
++++ b/drivers/net/ethernet/arc/emac_rockchip.c
+@@ -25,17 +25,13 @@
+ #include "emac.h"
  
--	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
--			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
-+	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
-+			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
-+	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
-+			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
- 	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
+ #define DRV_NAME        "rockchip_emac"
+-#define DRV_VERSION     "1.0"
 -
- 	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
--			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
-+			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 6, GFLAGS),
+-#define GRF_MODE_MII		(1UL << 0)
+-#define GRF_MODE_RMII		(0UL << 0)
+-#define GRF_SPEED_10M		(0UL << 1)
+-#define GRF_SPEED_100M		(1UL << 1)
+-#define GRF_SPEED_ENABLE_BIT	(1UL << 17)
+-#define GRF_MODE_ENABLE_BIT	(1UL << 16)
++#define DRV_VERSION     "1.1"
  
- 	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
-@@ -389,7 +390,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
- 	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
- 	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
--	GATE(0, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
-+	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
+ struct emac_rockchip_soc_data {
+-	int grf_offset;
++	unsigned int grf_offset;
++	unsigned int grf_mode_offset;
++	unsigned int grf_speed_offset;
++	bool need_div_macclk;
+ };
  
- 	/* pclk_peri gates */
- 	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 1, GFLAGS),
-diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
-index ebc7a7b..de44109 100644
---- a/include/dt-bindings/clock/rk3036-cru.h
-+++ b/include/dt-bindings/clock/rk3036-cru.h
-@@ -54,6 +54,7 @@
- #define SCLK_PVTM_VIDEO		125
- #define SCLK_MAC		151
- #define SCLK_MACREF		152
-+#define SCLK_MACPLL		153
- #define SCLK_SFC		160
+ struct rockchip_priv_data {
+@@ -44,23 +40,22 @@ struct rockchip_priv_data {
+ 	const struct emac_rockchip_soc_data *soc_data;
+ 	struct regulator *regulator;
+ 	struct clk *refclk;
++	struct clk *macclk;
+ };
  
- /* aclk gates */
-@@ -92,6 +93,7 @@
- #define HCLK_SDMMC		456
- #define HCLK_SDIO		457
- #define HCLK_EMMC		459
-+#define HCLK_MAC		460
- #define HCLK_I2S		462
- #define HCLK_LCDC		465
- #define HCLK_ROM		467
+ static void emac_rockchip_set_mac_speed(void *priv, unsigned int speed)
+ {
+ 	struct rockchip_priv_data *emac = priv;
++	u32 speed_offset = emac->soc_data->grf_speed_offset;
+ 	u32 data;
+ 	int err = 0;
+ 
+-	/* write-enable bits */
+-	data = GRF_SPEED_ENABLE_BIT;
+-
+ 	switch(speed) {
+ 	case 10:
+-		data |= GRF_SPEED_10M;
++		data = (1 << (speed_offset + 16)) | (0 << speed_offset);
+ 		break;
+ 	case 100:
+-		data |= GRF_SPEED_100M;
++		data = (1 << (speed_offset + 16)) | (1 << speed_offset);
+ 		break;
+ 	default:
+ 		pr_err("speed %u not supported\n", speed);
+@@ -73,8 +68,14 @@ static void emac_rockchip_set_mac_speed(void *priv, unsigned int speed)
+ }
+ 
+ static const struct emac_rockchip_soc_data emac_rockchip_dt_data[] = {
+-	{ .grf_offset = 0x154 }, /* rk3066 */
+-	{ .grf_offset = 0x0a4 }, /* rk3188 */
++	{
++	  .grf_offset = 0x154,   .grf_mode_offset = 0,
++	  .grf_speed_offset = 1, .need_div_macclk = 0
++	}, /* rk3066 */
++	{
++	  .grf_offset = 0x0a4,   .grf_mode_offset = 0,
++	  .grf_speed_offset = 1, .need_div_macclk = 0
++	}, /* rk3188 */
+ };
+ 
+ static const struct of_device_id emac_rockchip_dt_ids[] = {
+@@ -110,7 +111,7 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 
+ 	interface = of_get_phy_mode(dev->of_node);
+ 
+-	/* RK3066 and RK3188 SoCs only support RMII */
++	/* RK3036/RK3066/RK3188 SoCs only support RMII */
+ 	if (interface != PHY_INTERFACE_MODE_RMII) {
+ 		dev_err(dev, "unsupported phy interface mode %d\n", interface);
+ 		err = -ENOTSUPP;
+@@ -164,11 +165,12 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	/* write-enable bits */
+-	data = GRF_MODE_ENABLE_BIT | GRF_SPEED_ENABLE_BIT;
+-
+-	data |= GRF_SPEED_100M;
+-	data |= GRF_MODE_RMII;
++	/* Set speed 100M */
++	data = (1 << (priv->soc_data->grf_speed_offset + 16)) |
++	       (1 << priv->soc_data->grf_speed_offset);
++	/* Set RMII mode */
++	data |= (1 << (priv->soc_data->grf_mode_offset + 16)) |
++		(0 << priv->soc_data->grf_mode_offset);
+ 
+ 	err = regmap_write(priv->grf, priv->soc_data->grf_offset, data);
+ 	if (err) {
+@@ -181,6 +183,26 @@ static int emac_rockchip_probe(struct platform_device *pdev)
+ 	if (err)
+ 		dev_err(dev, "failed to change reference clock rate (%d)\n", err);
+ 
++	if (priv->soc_data->need_div_macclk) {
++		priv->macclk = devm_clk_get(dev, "macclk");
++		if (IS_ERR(priv->macclk)) {
++			dev_err(dev, "failed to retrieve mac clock (%ld)\n", PTR_ERR(priv->macclk));
++			err = PTR_ERR(priv->macclk);
++			goto out_regulator_disable;
++		}
++
++		err = clk_prepare_enable(priv->macclk);
++		if (err) {
++			dev_err(dev, "failed to enable mac clock (%d)\n", err);
++			goto out_regulator_disable;
++		}
++
++		/* RMII TX/RX needs always a rate of 25MHz */
++		err = clk_set_rate(priv->macclk, 25000000);
++		if (err)
++			dev_err(dev, "failed to change mac clock rate (%d)\n", err);
++	}
++
+ 	err = arc_emac_probe(ndev, interface);
+ 	if (err) {
+ 		dev_err(dev, "failed to probe arc emac (%d)\n", err);
 -- 
 1.7.9.5
