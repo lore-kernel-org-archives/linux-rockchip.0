@@ -1,85 +1,277 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v1 1/6] dt-bindings: misc: add document for reboot-mode
- driver
-Date: Tue, 22 Dec 2015 18:32:17 -0600
-Message-ID: <20151223003217.GA18700@rob-hp-laptop>
-References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com>
- <1450775124-23966-1-git-send-email-andy.yan@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v11 09/19] phy: Add driver for rockchip Display Port PHY
+Date: Wed, 23 Dec 2015 08:46:42 +0800
+Message-ID: <5679EEF2.1050309@rock-chips.com>
+References: <1450236018-1118-1-git-send-email-ykk@rock-chips.com>
+ <1450237257-2208-1-git-send-email-ykk@rock-chips.com>
+ <000901d13cb3$341b6c40$9c5244c0$@com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1450775124-23966-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <000901d13cb3$341b6c40$9c5244c0$@com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Jingoo Han <jingoohan1@gmail.com>, 'Inki Dae' <inki.dae@samsung.com>, 'Mark Yao' <mark.yao@rock-chips.com>, 'Heiko Stuebner' <heiko@sntech.de>
+Cc: 'Thierry Reding' <treding@nvidia.com>, 'Krzysztof Kozlowski' <k.kozlowski@samsung.com>, 'Rob Herring' <robh+dt@kernel.org>, 'Russell King' <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, 'Gustavo Padovan' <gustavo.padovan@collabora.co.uk>, 'Kishon Vijay Abraham I' <kishon@ti.com>, javier@osg.samsung.com, 'Andy Yan' <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 22, 2015 at 05:05:24PM +0800, Andy Yan wrote:
-> add device tree bindings document for reboot-mode driver
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v1: None
-> 
->  .../devicetree/bindings/misc/reboot-mode.txt       | 41 ++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/misc/reboot-mode.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/misc/reboot-mode.txt b/Documentation/devicetree/bindings/misc/reboot-mode.txt
-> new file mode 100644
-> index 0000000..082bc0c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/misc/reboot-mode.txt
-> @@ -0,0 +1,41 @@
-> +Generic reboot mode communication driver
+Hi Jingoo,
 
-You're not describing a driver. It is a mapping of boot modes to values.
-> +
-> +This driver get reboot mode arguments from userspace
+Thanks for your respond.
 
-Coming from userspace is a Linuxism.
+On 12/22/2015 08:20 PM, Jingoo Han wrote:
+> On Wednesday, December 16, 2015 12:41 PM, Yakir Yang wrote:
+>> Add phy driver for the Rockchip DisplayPort PHY module. This
+>> is required to get DisplayPort working in Rockchip SoCs.
+>>
+>> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+>> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+>> ---
+>> Changes in v11: None
+>> Changes in v10:
+>> - Fix the wrong macro value of GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK
+>>      BIT(4) -> BIT(20)
+>>
+>> Changes in v9:
+>> - Removed the unused the variable "res" in probe function. (Heiko)
+>> - Removed the unused head file.
+>>
+>> Changes in v8:
+>> - Fix the mixed spacers on macro definitions. (Heiko)
+>> - Remove the unnecessary empty line after clk_prepare_enable. (Heiko)
+>>
+>> Changes in v7:
+>> - Simply the commit message. (Kishon)
+>> - Symmetrical enable/disbale the phy clock and power. (Kishon)
+>>
+>> Changes in v6: None
+>> Changes in v5:
+>> - Remove "reg" DT property, cause driver could poweron/poweroff phy via
+>>    the exist "grf" syscon already. And rename the example DT node from
+>>    "edp_phy: phy@ff770274" to "edp_phy: edp-phy" directly. (Heiko)
+>> - Add deivce_node at the front of driver, update phy_ops type from "static
+>>    struct" to "static const struct". And correct the input paramters of
+>>    devm_phy_create() interfaces. (Heiko)
+>>
+>> Changes in v4:
+>> - Add commit message, and remove the redundant rockchip_dp_phy_init()
+>>    function, move those code to probe() method. And remove driver .owner
+>>    number. (Kishon)
+>>
+>> Changes in v3:
+>> - Suggest, add rockchip dp phy driver, collect the phy clocks and
+>>    power control. (Heiko)
+>>
+>> Changes in v2: None
+>>
+>>   drivers/phy/Kconfig           |   7 ++
+>>   drivers/phy/Makefile          |   1 +
+>>   drivers/phy/phy-rockchip-dp.c | 151 ++++++++++++++++++++++++++++++++++++++++++
+>>   3 files changed, 159 insertions(+)
+>>   create mode 100644 drivers/phy/phy-rockchip-dp.c
+>>
+>> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+>> index 7eb5859d..7355819 100644
+>> --- a/drivers/phy/Kconfig
+>> +++ b/drivers/phy/Kconfig
+>> @@ -319,6 +319,13 @@ config PHY_ROCKCHIP_USB
+>>   	help
+>>   	  Enable this to support the Rockchip USB 2.0 PHY.
+>>
+>> +config PHY_ROCKCHIP_DP
+>> +	tristate "Rockchip Display Port PHY Driver"
+>> +	depends on ARCH_ROCKCHIP && OF
+>> +	select GENERIC_PHY
+>> +	help
+>> +	  Enable this to support the Rockchip Display Port PHY.
+>> +
+>>   config PHY_ST_SPEAR1310_MIPHY
+>>   	tristate "ST SPEAR1310-MIPHY driver"
+>>   	select GENERIC_PHY
+>> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+>> index 075db1a..b1700cd 100644
+>> --- a/drivers/phy/Makefile
+>> +++ b/drivers/phy/Makefile
+>> @@ -35,6 +35,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
+>>   obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
+>>   obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
+>>   obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+>> +obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
+>>   obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
+>> diff --git a/drivers/phy/phy-rockchip-dp.c b/drivers/phy/phy-rockchip-dp.c
+>> new file mode 100644
+>> index 0000000..3cb3bf8
+>> --- /dev/null
+>> +++ b/drivers/phy/phy-rockchip-dp.c
+>> @@ -0,0 +1,151 @@
+>> +/*
+>> + * Rockchip DP PHY driver
+>> + *
+>> + * Copyright (C) 2015 FuZhou Rockchip Co., Ltd.
+>> + * Author: Yakir Yang <ykk@@rock-chips.com>
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License as published by
+>> + * the Free Software Foundation; either version 2 of the License.
+>> + */
+>> +
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/clk.h>
+>> +#include <linux/phy/phy.h>
+>> +#include <linux/regmap.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/platform_device.h>
+> Please order these headers alphabetically.
+> It will enhance the readability.
 
-> +and stores it in special register or ram . Then the
-> +bootloader will read it and take different action
-> +according the argument stored.
-> +
-> +Required properties:
-> +        - compatible = "reboot-mode" or other vendor compatible string;
-> +
-> +Each mode is represented as a sub-node of reboot_mode:
-> +
-> +Subnode required properties:
-> +        - linux,mode: reboot mode command,such as "loader","recovery", "fastboot".
-> +        - linux,magic: magic number for the mode, this is vendor specific.
-> +
-> +example:
-> +	reboot_mode {
-> +		compatible = "rockchip,reboot-mode";
-> +		rockchip,regmap = <&pmu>;
-> +		offset = <0x40>;
-> +		loader {
-> +			linux,mode = "loader";
-> +			linux,magic = <0x5242C301>;
-> +		};
+Done,
 
-These can be much more simply expressed as:
+Thanks,
+- Yakir
 
-loader = <0x5242c301>;
-
-I would like to see the property names here standardized as much as
-possible. I'm not sure if we can define the properties as a u32 or need
-some flexibility here.
-
-Rob
+> Best regards,
+> Jingoo Han
+>
+>> +
+>> +#define GRF_SOC_CON12                           0x0274
+>> +
+>> +#define GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK   BIT(20)
+>> +#define GRF_EDP_REF_CLK_SEL_INTER               BIT(4)
+>> +
+>> +#define GRF_EDP_PHY_SIDDQ_HIWORD_MASK           BIT(21)
+>> +#define GRF_EDP_PHY_SIDDQ_ON                    0
+>> +#define GRF_EDP_PHY_SIDDQ_OFF                   BIT(5)
+>> +
+>> +struct rockchip_dp_phy {
+>> +	struct device  *dev;
+>> +	struct regmap  *grf;
+>> +	struct clk     *phy_24m;
+>> +};
+>> +
+>> +static int rockchip_set_phy_state(struct phy *phy, bool enable)
+>> +{
+>> +	struct rockchip_dp_phy *dp = phy_get_drvdata(phy);
+>> +	int ret;
+>> +
+>> +	if (enable) {
+>> +		ret = regmap_write(dp->grf, GRF_SOC_CON12,
+>> +				   GRF_EDP_PHY_SIDDQ_HIWORD_MASK |
+>> +				   GRF_EDP_PHY_SIDDQ_ON);
+>> +		if (ret < 0) {
+>> +			dev_err(dp->dev, "Can't enable PHY power %d\n", ret);
+>> +			return ret;
+>> +		}
+>> +
+>> +		ret = clk_prepare_enable(dp->phy_24m);
+>> +	} else {
+>> +		clk_disable_unprepare(dp->phy_24m);
+>> +
+>> +		ret = regmap_write(dp->grf, GRF_SOC_CON12,
+>> +				   GRF_EDP_PHY_SIDDQ_HIWORD_MASK |
+>> +				   GRF_EDP_PHY_SIDDQ_OFF);
+>> +	}
+>> +
+>> +	return ret;
+>> +}
+>> +
+>> +static int rockchip_dp_phy_power_on(struct phy *phy)
+>> +{
+>> +	return rockchip_set_phy_state(phy, true);
+>> +}
+>> +
+>> +static int rockchip_dp_phy_power_off(struct phy *phy)
+>> +{
+>> +	return rockchip_set_phy_state(phy, false);
+>> +}
+>> +
+>> +static const struct phy_ops rockchip_dp_phy_ops = {
+>> +	.power_on	= rockchip_dp_phy_power_on,
+>> +	.power_off	= rockchip_dp_phy_power_off,
+>> +	.owner		= THIS_MODULE,
+>> +};
+>> +
+>> +static int rockchip_dp_phy_probe(struct platform_device *pdev)
+>> +{
+>> +	struct device *dev = &pdev->dev;
+>> +	struct device_node *np = dev->of_node;
+>> +	struct phy_provider *phy_provider;
+>> +	struct rockchip_dp_phy *dp;
+>> +	struct phy *phy;
+>> +	int ret;
+>> +
+>> +	if (!np)
+>> +		return -ENODEV;
+>> +
+>> +	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+>> +	if (IS_ERR(dp))
+>> +		return -ENOMEM;
+>> +
+>> +	dp->dev = dev;
+>> +
+>> +	dp->phy_24m = devm_clk_get(dev, "24m");
+>> +	if (IS_ERR(dp->phy_24m)) {
+>> +		dev_err(dev, "cannot get clock 24m\n");
+>> +		return PTR_ERR(dp->phy_24m);
+>> +	}
+>> +
+>> +	ret = clk_set_rate(dp->phy_24m, 24000000);
+>> +	if (ret < 0) {
+>> +		dev_err(dp->dev, "cannot set clock phy_24m %d\n", ret);
+>> +		return ret;
+>> +	}
+>> +
+>> +	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+>> +	if (IS_ERR(dp->grf)) {
+>> +		dev_err(dev, "rk3288-dp needs rockchip,grf property\n");
+>> +		return PTR_ERR(dp->grf);
+>> +	}
+>> +
+>> +	ret = regmap_write(dp->grf, GRF_SOC_CON12, GRF_EDP_REF_CLK_SEL_INTER |
+>> +			   GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK);
+>> +	if (ret != 0) {
+>> +		dev_err(dp->dev, "Could not config GRF edp ref clk: %d\n", ret);
+>> +		return ret;
+>> +	}
+>> +
+>> +	phy = devm_phy_create(dev, np, &rockchip_dp_phy_ops);
+>> +	if (IS_ERR(phy)) {
+>> +		dev_err(dev, "failed to create phy\n");
+>> +		return PTR_ERR(phy);
+>> +	}
+>> +	phy_set_drvdata(phy, dp);
+>> +
+>> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+>> +
+>> +	return PTR_ERR_OR_ZERO(phy_provider);
+>> +}
+>> +
+>> +static const struct of_device_id rockchip_dp_phy_dt_ids[] = {
+>> +	{ .compatible = "rockchip,rk3288-dp-phy" },
+>> +	{}
+>> +};
+>> +
+>> +MODULE_DEVICE_TABLE(of, rockchip_dp_phy_dt_ids);
+>> +
+>> +static struct platform_driver rockchip_dp_phy_driver = {
+>> +	.probe		= rockchip_dp_phy_probe,
+>> +	.driver		= {
+>> +		.name	= "rockchip-dp-phy",
+>> +		.of_match_table = rockchip_dp_phy_dt_ids,
+>> +	},
+>> +};
+>> +
+>> +module_platform_driver(rockchip_dp_phy_driver);
+>> +
+>> +MODULE_AUTHOR("Yakir Yang <ykk@rock-chips.com>");
+>> +MODULE_DESCRIPTION("Rockchip DP PHY driver");
+>> +MODULE_LICENSE("GPL v2");
+>> --
+>> 1.9.1
+>>
+>
+>
+>
+>
