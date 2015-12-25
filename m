@@ -1,75 +1,142 @@
-From: Jean-Francois Moine <moinejf@free.fr>
-Subject: Re: [PATCH v2 0/2] Improve drm_of_component_probe() and move
- rockchip to use it
-Date: Fri, 25 Dec 2015 10:38:17 +0100
-Message-ID: <20151225103817.3aa1d89433607ee7fbf5181f@free.fr>
-References: <1448029325-14602-1-git-send-email-Liviu.Dudau@arm.com>
- <20151222173800.GU960@e106497-lin.cambridge.arm.com>
- <20151223103906.2aae53595345240d57d57b41@free.fr>
- <20151223100534.GW960@e106497-lin.cambridge.arm.com>
- <20151223182033.a52356408b9a81e9497464e7@free.fr>
- <20151223185948.GT8644@n2100.arm.linux.org.uk>
- <20151224091528.4f68d0f5838735a1a38c02c6@free.fr>
- <20151224105206.GB8644@n2100.arm.linux.org.uk>
- <20151224132708.10a35feafb44a5bb8e65ba6d@free.fr>
- <20151224123610.GE8644@n2100.arm.linux.org.uk>
+From: "Jingoo Han" <jingoohan1@gmail.com>
+Subject: Re: [PATCH v12 16/18] drm: bridge: analogix/dp: expand the wait time for looking AUX CH reply flag
+Date: Fri, 25 Dec 2015 22:01:44 +0900
+Message-ID: <000001d13f14$6e7210c0$4b563240$@com>
+References: <1450873538-18304-1-git-send-email-ykk@rock-chips.com> <1450875064-19627-1-git-send-email-ykk@rock-chips.com> <000001d13d94$120e0d60$362a2820$@com> <567B48F9.6010902@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151224123610.GE8644@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: devicetree@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Liviu Dudau <Liviu.Dudau@arm.com>, LKML <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <567B48F9.6010902@rock-chips.com>
+Content-Language: ko
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: 'Yakir Yang' <ykk@rock-chips.com>, 'Inki Dae' <inki.dae@samsung.com>, 'Mark Yao' <mark.yao@rock-chips.com>, 'Heiko Stuebner' <heiko@sntech.de>
+Cc: 'Thierry Reding' <treding@nvidia.com>, 'Krzysztof Kozlowski' <k.kozlowski@samsung.com>, 'Rob Herring' <robh+dt@kernel.org>, 'Russell King' <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, 'Gustavo Padovan' <gustavo.padovan@collabora.co.uk>, 'Kishon Vijay Abraham I' <kishon@ti.com>, javier@osg.samsung.com, 'Andy Yan' <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 'Jingoo Han' <jingoohan1@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCAyNCBEZWMgMjAxNSAxMjozNjoxMCArMDAwMApSdXNzZWxsIEtpbmcgLSBBUk0gTGlu
-dXggPGxpbnV4QGFybS5saW51eC5vcmcudWs+IHdyb3RlOgoKPiBJdCBzZWVtcyB0aGF0IHlvdSdy
-ZSB0cnlpbmcgdG8gd29yayBhcm91bmQgYSBsaW1pdGF0aW9uIGluIExpbnV4IGJ5Cj4gbW9kaWZ5
-aW5nIHRoZSBoYXJkd2FyZSByZXByZXNlbnRhdGlvbi4uLgoKU29ycnkgdG8gY29tZSBiYWNrIHRv
-IHRoaXMgdG9waWMsIGJ1dCBJIHRoaW5rIHlvdSBhcmUgd3JvbmcuCgpMb29raW5nIGF0IHRoZSBp
-bXg2IERUcywgdGhlIHByb2JsZW0gY29tZXMgZnJvbSB0aGUgZGlzcGxheS1zdWJzeXN0ZW0Kbm9k
-ZSB3aGljaCBpcyBhIHB1cmUgTGludXggc3BlY2lmaWMgc29mdHdhcmUgZW50aXR5LgoKSWYgeW91
-IHdhbnQgdG8gZGVzY3JpYmUgb25seSB0aGUgaGFyZHdhcmUgaW4gdGhlIERULCBldmVyeXRoaW5n
-IGlzCnNpbXBsZS4KCkEgSVBVIGlzIGEgaW1hZ2UgY29udHJvbGxlciB3aXRoIGl0cyBzdWItZGV2
-aWNlcy4gU2VlbiBmcm9tIHRoZSBzeXN0ZW0sIGl0CmlzIGxpa2UgYSAnYm9hcmQnIHdpdGggaXRz
-IGRldmljZXMgKExDRHMsIGNhbWVyYS4uLikuCgpXaGVuIDIgSVBVcywgdGhlcmUgYXJlIDIgaW5k
-ZXBlbmRhbnQgYm9hcmRzLgoKSGVyZSBpcyB3aGF0IGNvdWxkIGJlIGEgcHVyZSBoYXJkd2FyZSBE
-VDoKCi8qIG5vIGRpc3BsYXktc3Vic3lzdGVtICovCgoJaXB1MTogaXB1QDAyNDAwMDAwIHsJCS8q
-IGltYWdlIGNvbnRyb2xsZXIgLyBib2FyZCAxICovCgkJY29tcGF0aWJsZSA9ICJmc2wsaW14NnEt
-aXB1IjsKCQkuLi4KCQlwb3J0cyA9IDwmaXB1MV9kaTA+LCA8JmlwdTFfZGkxPjsKCX07CglpcHUx
-X2RpMDogZGlAMCB7CQkvKiBkaXNwbGF5IGludGVyZmFjZSAvIGNydGMgMSAqLwoJCWNvbXBhdGli
-bGUgPSAiZnNsLGlteDZxLWRpIjsKCQkuLi4KCQlpcHUxX2RpMF9oZG1pOiBlbmRwb2ludEAxIHsK
-CQkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pX211eF8wPjsKCQl9OwoJCWlwdTFfZGkwX21pcGk6
-IGVuZHBvaW50QDIgewoJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jm1pcGlfbXV4XzA+OwoJCX0KCQku
-Li4KCX07CglpcHUxX2RpMTogZGlAMSB7CQkvKiBkaXNwbGF5IGludGVyZmFjZSAvIGNydGMgMiAq
-LwoJCWNvbXBhdGlibGUgPSAiZnNsLGlteDZxLWRpIjsKCQkuLi4KCQlpcHUxX2RpMV9oZG1pOiBl
-bmRwb2ludEAxIHsKCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pX211eF8xPjsKCQl9OwoJCWlw
-dTFfZGkxX21pcGk6IGVuZHBvaW50QDIgewoJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jm1pcGlfbXV4
-XzE+OwoJCX0KCQkuLi4KCX07CgoJaXB1MjogaXB1QDAyODAwMDAwIHsJCS8qIGltYWdlIGNvbnRy
-b2xsZXIgLyBib2FyZCAyICovCgkJY29tcGF0aWJsZSA9ICJmc2wsaW14NnEtaXB1IjsKCQkuLi4K
-CQlwb3J0cyA9IDwmaXB1Ml9kaTA+LCA8JmlwdTJfZGkxPjsKCX07CglpcHUyX2RpMDogZGlAMCB7
-CQkvKiBkaXNwbGF5IGludGVyZmFjZSAvIGNydGMgMSAqLwoJCWNvbXBhdGlibGUgPSAiZnNsLGlt
-eDZxLWRpIjsKCQkuLi4KCQlpcHUyX2RpMF9oZG1pOiBlbmRwb2ludEAxIHsKCQkJcmVtb3RlLWVu
-ZHBvaW50ID0gPCZoZG1pX211eF8yPjsKCQl9OwoJCWlwdTJfZGkwX21pcGk6IGVuZHBvaW50QDIg
-ewoJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jm1pcGlfbXV4XzI+OwoJCX0KCQkuLi4KCX07CglpcHUy
-X2RpMTogZGlAMSB7CQkvKiBkaXNwbGF5IGludGVyZmFjZSAvIGNydGMgMiAqLwoJCWNvbXBhdGli
-bGUgPSAiZnNsLGlteDZxLWRpIjsKCQkuLi4KCQlpcHUyX2RpMV9oZG1pOiBlbmRwb2ludEAxIHsK
-CQkJcmVtb3RlLWVuZHBvaW50ID0gPCZoZG1pX211eF8zPjsKCQl9OwoJCWlwdTJfZGkxX21pcGk6
-IGVuZHBvaW50QDIgewoJCQlyZW1vdGUtZW5kcG9pbnQgPSA8Jm1pcGlfbXV4XzM+OwoJCX0KCQku
-Li4KCX07CgpUaGVuLCBhIHN0YW5kYXJkIGNvbXBvbmVudCBiaW5kaW5nIChwb3J0LT5wYXJlbnQp
-IHdvcmtzIGZpbmUuLi4KCih5b3UgbWF5IG5vdGUgdGhhdCB0aGUgc2FtZSBwcm9ibGVtIGV4aXN0
-cyB3aXRoIGF1ZGlvOiB0aGUKJ3NpbXBsZS1jYXJkJyBpcyBhbHNvIGEgcHVyZSBMaW51eCBzcGVj
-aWZpYyBzb2Z0d2FyZSBlbnRpdHkpCgotLSAKTWVycnkgQ2hyaXN0bWFzCXwJICAgICAgKiogQnJl
-aXpoIGhhIExpbnV4IGF0YXYhICoqCkplZgkJfAkJaHR0cDovL21vaW5lamYuZnJlZS5mci8KX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Thursday, December 24, 2015 10:23 AM, Yakir Yang wrote:
+> 
+> Hi Jingoo,
+> 
+> Okay, fine, I would drop this patch, until I found the the root cause.
+
+OK, I see.
+
+Best regards,
+Jingoo Han
+
+> 
+> - Yakir
+> 
+> On 12/23/2015 11:10 PM, Jingoo Han wrote:
+> > On Wednesday, December 23, 2015 9:51 PM, Yakir Yang wrote:
+> >> On Rockchip platform, sometimes driver would failed at reading EDID
+> >> message, and it's caused by the AUX reply flag wouldn't received under
+> >> the 100*10us wait time.
+> > The problem is specific for Rockchip platform.
+> > Also, 1 ms is long time.
+> > The best way is that your hardware engineers find the root cause.
+> > I cannot understand why your engineers cannot find the root cause. :-(
+> >
+> >> But after expand the wait time a little, the AUX reply flag would be
+> >> set, so maybe the wait time is a little critical. Besides the analogix
+> >> dp book haven't reminded the standard wait for looking AUX reply flag,
+> >> so I thought it's okay to expand the wait time.
+> >>
+> >> And the external wait time won't hurt Exynos DP too much, cause they
+> >> wouldn't meet this problem, then driver would received the reply command
+> >> very soon, so no more additional wait time would bring to Exynos platform.
+> > Then, when loop time happens on Exynos platform, it will take long time
+> > to return error.
+> >
+> >> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> >> ---
+> >> Changes in v12:
+> >> - Using another way to expand the AUX reply wait time (Jingoo)
+> >>
+> >> Changes in v11: None
+> >> Changes in v10: None
+> >> Changes in v9: None
+> >> Changes in v8: None
+> >> Changes in v7: None
+> >> Changes in v6: None
+> >> Changes in v5: None
+> >> Changes in v4: None
+> >> Changes in v3: None
+> >> Changes in v2: None
+> >>
+> >>   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c | 10 ++++------
+> >>   1 file changed, 4 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> >> b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> >> index cba3ffd..8687eea 100644
+> >> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> >> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+> >> @@ -471,7 +471,7 @@ int analogix_dp_start_aux_transaction(struct analogix_dp_device *dp)
+> >>   {
+> >>   	int reg;
+> >>   	int retval = 0;
+> >> -	int timeout_loop = 0;
+> >> +	unsigned long timeout;
+> >>
+> >>   	/* Enable AUX CH operation */
+> >>   	reg = readl(dp->reg_base + ANALOGIX_DP_AUX_CH_CTL_2);
+> >> @@ -479,14 +479,12 @@ int analogix_dp_start_aux_transaction(struct analogix_dp_device *dp)
+> >>   	writel(reg, dp->reg_base + ANALOGIX_DP_AUX_CH_CTL_2);
+> >>
+> >>   	/* Is AUX CH command reply received? */
+> >> -	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
+> >> -	while (!(reg & RPLY_RECEIV)) {
+> >> -		timeout_loop++;
+> >> -		if (DP_TIMEOUT_LOOP_COUNT < timeout_loop) {
+> >> +	timeout = jiffies + msecs_to_jiffies(5);
+> >> +	while ((readl(dp->reg_base + ANALOGIX_DP_INT_STA) & RPLY_RECEIV) == 0) {
+> >> +		if (time_after(jiffies, timeout)) {
+> >>   			dev_err(dp->dev, "AUX CH command reply failed!\n");
+> >>   			return -ETIMEDOUT;
+> >>   		}
+> >> -		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
+> > Sorry, I don't like your patch.
+> >
+> > The problem happens because of Rockchip platform.
+> > So, you need to add workaround for only Rockchip platform.
+> >
+> > Just add new DT property and new variable for the value for wait time.
+> > When, the probe is called, new wait time value is read from Rockchip DT file.
+> > Then, the new wait time value can be written to the new variable.
+> >
+> >      new DT property: wait-time-aux
+> >      new variable: wait_time_aux
+> >
+> >
+> > If ( ) // New DT
+> >      wait_time_aux = New DT;
+> > else
+> >      wait_time_aux = 10;
+> >
+> >
+> >>   		usleep_range(10, 11);
+> > If there is NO  new wait time value from DT file, the default value '10' is
+> > used for sleep.
+> >
+> > But, if there is new wait time value from DT file, new wait time value
+> > can be used for sleep.
+> >
+> >                   usleep_range(dp->wait_time_aux, dp->wait_time_aux + 1);
+> >
+> > What I want to say is that there should be NO effect on Exynos platform,
+> > because of the hardware bug of Rockchip platform.
+> >
+> > Best regards,
+> > Jingoo Han
+> >
+> >>   	}
+> >>
+> >> --
+> >> 1.9.1
+> >
+> >
+> >
+> >
