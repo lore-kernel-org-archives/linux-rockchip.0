@@ -1,126 +1,186 @@
-From: Shuyu Wei <shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
-Subject: rk3188 emac stuck at high load
-Date: Thu, 24 Dec 2015 15:52:06 +0000
-Message-ID: <SNT151-W399C6D5938D0EC43FAD0F0E7E70@phx.gbl>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 4/4] ARM: dts: rockchip: Add support emac for RK3036
+Date: Fri, 25 Dec 2015 10:36:04 +0800
+Message-ID: <567CAB94.7090701@gmail.com>
+References: <1450862390-407-1-git-send-email-zhengxing@rock-chips.com>
+ <1450862390-407-4-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1450862390-407-4-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-I'm testing Radxa Rock Pro board with mainline kernel 4.4.0-rc6. =
+Hi Xing,
 
-The problem can be reproduced by simultaneously wget two large files at hig=
-h speed to /dev/null.
+=E5=9C=A8 2015=E5=B9=B412=E6=9C=8823=E6=97=A5 17:19, Xing Zheng =E5=86=99=
+=E9=81=93:
+> This patch describe the emac, and we need to let mac clock under
+> the APLL which is able to provide the accurate 50MHz what mac_ref
+> need.
+>
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+>
+>   arch/arm/boot/dts/rk3036-evb.dts   |   25 +++++++++++++++++++++++++
+>   arch/arm/boot/dts/rk3036-kylin.dts |   23 +++++++++++++++++++++++
+>   arch/arm/boot/dts/rk3036.dtsi      |   32 +++++++++++++++++++++++++=
++++++++
+>   3 files changed, 80 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3=
+036-evb.dts
+> index 28a0336..69b96e6 100644
+> --- a/arch/arm/boot/dts/rk3036-evb.dts
+> +++ b/arch/arm/boot/dts/rk3036-evb.dts
+> @@ -62,3 +62,28 @@
+>   &uart2 {
+>   	status =3D "okay";
+>   };
+> +
+> +&emac {
+> +	assigned-clocks =3D <&cru SCLK_MACPLL>;
+> +	assigned-clock-parents =3D <&cru PLL_APLL>;
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
+> +	phy =3D <&phy0>;
+> +	status =3D "okay";
+> +
+> +	phy0: ethernet-phy@0 {
+> +		reg =3D <0>;
+> +	};
+> +};
+> +
+> +&pinctrl {
+> +	pcfg_output_high: pcfg-output-high {
+> +		output-high;
+> +	};
+> +
 
-$wget https://192.168.1.1/file.bin -O /dev/null -q &
-$wget https://192.168.1.1/file.bin -O /dev/null
+That's seem a new preperty for pinctrl on rk3036, we should submit it i=
+n=20
+rk3036 dtsi.
 
-or open two sftp session to download two large files to /dev/null.
+Do we are really need it?
 
-Some addtional information that might help:
-=A0=A0=A0 Downloading from encrypted https links or sftp server triggers th=
-e problem much easier.
-=A0=A0=A0 Disabling SMP in kernel seems to fix the problem.
-=A0=A0=A0 Sometimes the emac just stops sending and receiving frames, somet=
-imes it produces kernel panics like below.
+GPIO2_C6 is pulled up in internal chip.
+So, maybe you only do that:
 
-[ 2191.975729] BUG: Bad page state in process swapper/0=A0 pfn:8d960
-[ 2191.982354] page:ef463180 count:-1 mapcount:0 mapping:=A0 (null) index:0=
-x0
-[ 2191.989047] flags: 0x0()
-[ 2191.991594] page dumped because: nonzero _count
-[ 2191.996127] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.0-rc6 #114
-[ 2192.002475] Hardware name: Rockchip (Device Tree)
-[ 2192.007174] Backtrace: =
+rockchip,pins =3D <2 22 RK_FUNC_GPIO &pcfg_pull_default>;
 
-[ 2192.009658] [<c00134d4>] (dump_backtrace) from [<c0013680>] (show_stack+=
-0x18/0x1c)
-[ 2192.017220]=A0 r7:c051c4f8 r6:ef463180 r5:c05b7000 r4:00000000
-[ 2192.022948] [<c0013668>] (show_stack) from [<c0219d90>] (dump_stack+0x90=
-/0xa0)
-[ 2192.030176] [<c0219d00>] (dump_stack) from [<c00b2cd4>] (bad_page+0xdc/0=
-x12c)
-[ 2192.037302]=A0 r5:c059a100 r4:c05f430c
-[ 2192.040913] [<c00b2bf8>] (bad_page) from [<c00b606c>] (get_page_from_fre=
-elist+0x388/0x95c)
-[ 2192.049166]=A0 r9:00000008 r8:ef463180 r7:c051c4d0 r6:00000000 r5:000000=
-00 r4:c051c4e4
-[ 2192.056982] [<c00b5ce4>] (get_page_from_freelist) from [<c00b6880>] (__a=
-lloc_pages_nodemask+0xd8/0x8e8)
-[ 2192.066362]=A0 r10:c001b068 r9:00000000 r8:ee0b02b0 r7:60000113 r6:00000=
-003 r5:02095220
-[ 2192.074254]=A0 r4:c05ca1c0
-[ 2192.076809] [<c00b67a8>] (__alloc_pages_nodemask) from [<c00b7140>] (__a=
-lloc_page_frag+0xb0/0x160)
-[ 2192.085757]=A0 r10:c001b068 r9:00000000 r8:ee0b02b0 r7:60000113 r6:02080=
-020 r5:00000740
-[ 2192.093650]=A0 r4:eedbc884
-[ 2192.096207] [<c00b7090>] (__alloc_page_frag) from [<c03273b4>] (__netdev=
-_alloc_skb+0xa0/0x104)
-[ 2192.104806]=A0 r7:60000113 r6:eedbc884 r5:ee0b0000 r4:00000740
-[ 2192.110525] [<c0327314>] (__netdev_alloc_skb) from [<c02aac00>] (arc_ema=
-c_poll+0x318/0x57c)
-[ 2192.118865]=A0 r9:00000000 r8:ee0b02b0 r7:0000019c r6:ee163780 r5:000006=
-70 r4:ee0b0000
-[ 2192.126683] [<c02aa8e8>] (arc_emac_poll) from [<c0339ed8>] (net_rx_actio=
-n+0x1f0/0x2ec)
-[ 2192.134590]=A0 r10:c0599df8 r9:c059a100 r8:00073760 r7:0000012c r6:00000=
-028 r5:c02aa8e8
-[ 2192.142483]=A0 r4:ee0b04e0
-[ 2192.145040] [<c0339ce8>] (net_rx_action) from [<c0026f5c>] (__do_softirq=
-+0x134/0x258)
-[ 2192.152860]=A0 r10:c059a080 r9:40000003 r8:00000003 r7:00000100 r6:c0598=
-000 r5:c059a08c
-[ 2192.160751]=A0 r4:00000000
-[ 2192.163303] [<c0026e28>] (__do_softirq) from [<c0027344>] (irq_exit+0xb8=
-/0x120)
-[ 2192.170604]=A0 r10:c04818a4 r9:c059a4a0 r8:ee808000 r7:00000000 r6:00000=
-000 r5:0000001a
-[ 2192.178496]=A0 r4:c05943bc
-[ 2192.181051] [<c002728c>] (irq_exit) from [<c00656a4>] (__handle_domain_i=
-rq+0x68/0xbc)
-[ 2192.188871]=A0 r5:0000001a r4:c05943bc
-[ 2192.192479] [<c006563c>] (__handle_domain_irq) from [<c0009438>] (gic_ha=
-ndle_irq+0x40/0x78)
-[ 2192.200818]=A0 r9:c059a4a0 r8:f0803100 r7:f0802100 r6:c0599f00 r5:f08021=
-0c r4:c059a87c
-[ 2192.208630] [<c00093f8>] (gic_handle_irq) from [<c0014214>] (__irq_svc+0=
-x54/0x70)
-[ 2192.216105] Exception stack(0xc0599f00 to 0xc0599f48)
-[ 2192.221161] 9f00: 00000001 00000000 00000000 c001e940 c0598000 c059a454 =
-00000000 c05ca291
-[ 2192.229336] 9f20: 00000000 c059a4a0 c04818a4 c0599f5c c0599f60 c0599f50 =
-c0010208 c001020c
-[ 2192.237505] 9f40: 60000013 ffffffff
-[ 2192.240990]=A0 r9:c059a4a0 r8:00000000 r7:c0599f34 r6:ffffffff r5:600000=
-13 r4:c001020c
-[ 2192.248810] [<c00101cc>] (arch_cpu_idle) from [<c005bbec>] (default_idle=
-_call+0x28/0x34)
-[ 2192.256899] [<c005bbc4>] (default_idle_call) from [<c005be60>] (cpu_star=
-tup_entry+0x214/0x270)
-[ 2192.265515] [<c005bc4c>] (cpu_startup_entry) from [<c047a6f4>] (rest_ini=
-t+0x80/0x84)
-[ 2192.273248]=A0 r7:ffffffff
-[ 2192.275808] [<c047a674>] (rest_init) from [<c055fca0>] (start_kernel+0x3=
-48/0x354)
-[ 2192.283288] [<c055f958>] (start_kernel) from [<60008078>] (0x60008078)
-[ 2192.289798] Disabling lock debugging due to kernel taint
-[ 2192.300779] rockchip_emac 10204000.ethernet eth0: BUG! Tx Ring full when=
- queue awake!
 
-I'm glad to provide more information if needed.
+> +	emac {
+> +		rmii_rst: rmii-rst {
+> +			rockchip,pins =3D <2 22 RK_FUNC_GPIO &pcfg_output_high>;
+> +		};
+> +	};
+> +};
+> diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/r=
+k3036-kylin.dts
+> index 992f9ca..3fb1cfe 100644
+> --- a/arch/arm/boot/dts/rk3036-kylin.dts
+> +++ b/arch/arm/boot/dts/rk3036-kylin.dts
+> @@ -285,7 +285,24 @@
+>   	status =3D "okay";
+>   };
+>  =20
+> +&emac {
+> +	assigned-clocks =3D <&cru SCLK_MACPLL>;
+> +	assigned-clock-parents =3D <&cru PLL_APLL>;
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
+> +	phy =3D <&phy0>;
+> +	status =3D "okay";
+> +
+> +	phy0: ethernet-phy@0 {
+> +		reg =3D <0>;
+> +	};
+> +};
+> +
+>   &pinctrl {
+> +	pcfg_output_high: pcfg-output-high {
+> +		output-high;
+> +	};
+> +
+>   	pmic {
+>   		pmic_int: pmic-int {
+>   			rockchip,pins =3D <2 2 RK_FUNC_GPIO &pcfg_pull_default>;
+> @@ -297,4 +314,10 @@
+>   			rockchip,pins =3D <2 7 RK_FUNC_1 &pcfg_pull_none>;
+>   		};
+>   	};
+> +
+> +	emac {
+> +		rmii_rst: rmii-rst {
+> +			rockchip,pins =3D <2 22 RK_FUNC_GPIO &pcfg_output_high>;
+> +		};
+> +	};
+>   };
+> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036=
+=2Edtsi
+> index b9567c1..0c09fb3 100644
+> --- a/arch/arm/boot/dts/rk3036.dtsi
+> +++ b/arch/arm/boot/dts/rk3036.dtsi
+> @@ -186,6 +186,20 @@
+>   		status =3D "disabled";
+>   	};
+>  =20
+> +	emac: ethernet@10200000 {
+> +		compatible =3D "rockchip,rk3036-emac", "snps,arc-emac";
+> +		reg =3D <0x10200000 0x4000>;
+> +		interrupts =3D <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		rockchip,grf =3D <&grf>;
+> +		clocks =3D <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
+> +		clock-names =3D "hclk", "macref", "macclk";
+> +		max-speed =3D <100>;
+> +		phy-mode =3D "rmii";
+> +		status =3D "disabled";
+> +	};
+> +
+>   	sdmmc: dwmmc@10214000 {
+>   		compatible =3D "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-msh=
+c";
+>   		reg =3D <0x10214000 0x4000>;
+> @@ -556,6 +570,24 @@
+>   			};
+>   		};
+>  =20
+> +		emac {
+> +			emac_xfer: emac-xfer {
+> +				rockchip,pins =3D <2 10 RK_FUNC_1 &pcfg_pull_none>, /* crs_dvali=
+d */
+> +						<2 13 RK_FUNC_1 &pcfg_pull_none>, /* tx_en */
+> +						<2 14 RK_FUNC_1 &pcfg_pull_none>, /* mac_clk */
+> +						<2 15 RK_FUNC_1 &pcfg_pull_none>, /* rx_err */
+> +						<2 16 RK_FUNC_1 &pcfg_pull_none>, /* rxd1 */
+> +						<2 17 RK_FUNC_1 &pcfg_pull_none>, /* rxd0 */
+> +						<2 18 RK_FUNC_1 &pcfg_pull_none>, /* txd1 */
+> +						<2 19 RK_FUNC_1 &pcfg_pull_none>; /* txd0 */
+> +			};
+> +
+> +			emac_mdio: emac-mdio {
+> +				rockchip,pins =3D <2 12 RK_FUNC_1 &pcfg_pull_none>, /* mac_md */
+> +						<2 25 RK_FUNC_1 &pcfg_pull_none>; /* mac_mdclk */
+> +			};
+> +		};
+> +
+>   		i2c0 {
+>   			i2c0_xfer: i2c0-xfer {
+>   				rockchip,pins =3D <0 0 RK_FUNC_1 &pcfg_pull_none>,
 
-Shuyu Wei
- 		 	   		  =
+
+--=20
+Thanks,
+Caesar
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
