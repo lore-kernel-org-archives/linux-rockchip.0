@@ -1,37 +1,30 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RESEND PATCH v1 3/4] clk: rockchip: rk3036: rename emac ext source clock
-Date: Mon, 28 Dec 2015 17:03:52 +0800
-Message-ID: <1451293433-32392-4-git-send-email-zhengxing@rock-chips.com>
-References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
+Subject: [RESEND PATCH v1 0/4] fix some clock configuration for the RK3036 platform
+Date: Mon, 28 Dec 2015 17:03:49 +0800
+Message-ID: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There is only support rmii in the RK3036, so we should use the correct
-ext clock name.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+Hi:
+  In the development work, we found that some of the previous incorrect
+clock configuration on the RK3036 platform, we should fix them.
 
- drivers/clk/rockchip/clk-rk3036.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 47fe35b..7420cbe 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -133,7 +133,7 @@ PNAME(mux_spdif_p)	= { "spdif_src", "spdif_frac", "xin12m" };
- PNAME(mux_uart0_p)	= { "uart0_src", "uart0_frac", "xin24m" };
- PNAME(mux_uart1_p)	= { "uart1_src", "uart1_frac", "xin24m" };
- PNAME(mux_uart2_p)	= { "uart2_src", "uart2_frac", "xin24m" };
--PNAME(mux_mac_p)	= { "mac_pll_src", "ext_gmac" };
-+PNAME(mux_mac_p)	= { "mac_pll_src", "rmii_clkin" };
- PNAME(mux_dclk_p)	= { "dclk_lcdc", "dclk_cru" };
- 
- static struct rockchip_pll_clock rk3036_pll_clks[] __initdata = {
+
+Xing Zheng (4):
+  clk: rockchip: rk3036: fix the FLAGs for clock mux
+  clk: rockchip: rk3036: fix uarts clock error
+  clk: rockchip: rk3036: rename emac ext source clock
+  clk: rockchip: rk3036: fix and add node id for emac clock
+
+ drivers/clk/rockchip/clk-rk3036.c      |   33 ++++++++++++++++----------------
+ include/dt-bindings/clock/rk3036-cru.h |    2 ++
+ 2 files changed, 19 insertions(+), 16 deletions(-)
+
 -- 
 1.7.9.5
 
