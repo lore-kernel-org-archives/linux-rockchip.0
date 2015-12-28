@@ -1,35 +1,45 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH 1/4] net: ethernet: arc: Probe emac after set RMII clock
-Date: Mon, 28 Dec 2015 15:27:52 +0800
-Message-ID: <5680E478.70808@rock-chips.com>
-References: <1450862390-407-1-git-send-email-zhengxing@rock-chips.com> <20151228.001405.88987723928137143.davem@davemloft.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20151228.001405.88987723928137143.davem@davemloft.net>
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, heiko@sntech.de, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RESEND PATCH v1 2/4] clk: rockchip: rk3036: fix uarts clock error
+Date: Mon, 28 Dec 2015 17:03:51 +0800
+Message-ID: <1451293433-32392-3-git-send-email-zhengxing@rock-chips.com>
+References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
-Sorry, I missed the cover letter.
-I have added it and resent the patchset.
+Due to a copy-paste error the uart1 and uart2 clock div set
+incorrect, we should to fix it.
 
-Thanks.
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
 
-- Xing Zheng
+ drivers/clk/rockchip/clk-rk3036.c |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-On 2015=E5=B9=B412=E6=9C=8828=E6=97=A5 13:14, David Miller wrote:
-> I only see 3 patches in this series.
->
-> Furthermore, you failed to provide a proper "[PATCH 0/4] xxx" posting
-> providing a high level description of what this series is doing, and
-> how it is doing it, and why.
->
-> Thanks.
->
->
->
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index d4ea7b6..47fe35b 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -222,11 +222,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
+ 			RK2928_CLKGATE_CON(1), 8, GFLAGS),
+ 	COMPOSITE_NOMUX(0, "uart1_src", "uart_pll_clk", 0,
+-			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
+-			RK2928_CLKGATE_CON(1), 8, GFLAGS),
++			RK2928_CLKSEL_CON(14), 0, 7, DFLAGS,
++			RK2928_CLKGATE_CON(1), 10, GFLAGS),
+ 	COMPOSITE_NOMUX(0, "uart2_src", "uart_pll_clk", 0,
+-			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
+-			RK2928_CLKGATE_CON(1), 8, GFLAGS),
++			RK2928_CLKSEL_CON(15), 0, 7, DFLAGS,
++			RK2928_CLKGATE_CON(1), 12, GFLAGS),
+ 	COMPOSITE_FRAC(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(17), 0,
+ 			RK2928_CLKGATE_CON(1), 9, GFLAGS),
+-- 
+1.7.9.5
+
+
