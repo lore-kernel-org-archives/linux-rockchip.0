@@ -1,114 +1,101 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RESEND PATCH v1 4/4] clk: rockchip: rk3036: fix and add node id for emac clock
-Date: Mon, 28 Dec 2015 13:41:14 +0100
-Message-ID: <11997168.T384RkEsFx@diego>
-References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com> <1451293433-32392-5-git-send-email-zhengxing@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH v1 0/6] misc: add reboot mode driver
+Date: Mon, 28 Dec 2015 16:28:55 +0100
+Message-ID: <3460735.DIRnhNBgbJ@wuerfel>
+References: <1450774949-23901-1-git-send-email-andy.yan@rock-chips.com> <20151222164742.GA8623@piout.net> <567A6A01.8080305@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1451293433-32392-5-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <567A6A01.8080305-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, joel-U3u1mxZcP9KHXe+LvDLADg@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Montag, 28. Dezember 2015, 17:03:53 schrieb Xing Zheng:
-> Due to referred old version TRM, there is incorrect emac clock node,
-> we should fix it. The SEL_21_9 is the parent of SEL_21_4.
+On Wednesday 23 December 2015 17:31:45 Andy Yan wrote:
 > 
-> In the emac driver, we need to refer HCLK_MAC, and  because There are
-> only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
-> GPLL, and it is unable to provide the accurate rate for mac_ref which
-> need to 50MHz probability, we should let it under the APLL and are
-> able to set the freq which integer multiples of 50MHz, so we add these
-> emac node for reference.
+>     I also have the idea to put is in drivers/power/reset,  But considering
+>     this driver have not bind anything about power, so I put it in 
+> driver/misc
+>     at last. So I hope if some people can give more suggestions here.
 
-I don't really follow here. While I do understand that the emac needs 50MHz, I 
-don't think using the APLL as source is helpful.
+I vote for drivers/power/reset as well. On some platforms, the two things
+are related, on others they are not, but it's good to have it all in one
+place I think.
 
-The APLL is the main clocksource for the cpu-cores, including frequency 
-scaling, and while it currently only lists 816MHz as sole frequency, you're 
-pretty much guaranteed to not get your correct multiple of 50MHz from there 
-either. And limiting the cpu to just do 600MHz to get the mac working sounds 
-pretty bad ;-) .
-
-
-In the rk3036 cru-node the gpll gets set to 594MHz. Is there a special reason 
-why it needs to be 594MHz and cannot be a round 600MHz? Because that would 
-also provide your 50MHz-multiple nicely.
-
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> ---
+> >>   drivers/soc/rockchip/Kconfig                       |  9 ++
+> >>   drivers/soc/rockchip/Makefile                      |  1 +
+> >>   drivers/soc/rockchip/reboot.c                     | 68 +++++++++++++++
+> > And maybe that part could be made generic instead of rockchip specific.
+> > It simply uses a regmap to do the accesses, I guess a lot of other
+> > platforms will do that. We have syscon-reboot and syscon-poweroff for example.
+> >
+> > I think then we can extend the "framework" by having generic drivers to
+> > store the value in eeprom or nvram for example.
+> >
 > 
->  drivers/clk/rockchip/clk-rk3036.c      |   11 ++++++-----
->  include/dt-bindings/clock/rk3036-cru.h |    2 ++
->  2 files changed, 8 insertions(+), 5 deletions(-)
+>     I also hope the write interface can be generic. But I found some 
+> platform
+>     use different hardware to store the value. For example, John's patch 
+> use
+>     SRAM on qcom apq8064 to store value for nexus7. It seems there also have
+>     some platform use dram or nvram to store it. And these different 
+> hardware use
+>     different write method. I don't have a generic way to handle this.
 > 
-> diff --git a/drivers/clk/rockchip/clk-rk3036.c
-> b/drivers/clk/rockchip/clk-rk3036.c index 7420cbe..7863c4d 100644
-> --- a/drivers/clk/rockchip/clk-rk3036.c
-> +++ b/drivers/clk/rockchip/clk-rk3036.c
-> @@ -328,13 +328,14 @@ static struct rockchip_clk_branch
-> rk3036_clk_branches[] __initdata = { RK2928_CLKSEL_CON(16), 0, 2, MFLAGS,
-> 2, 5, DFLAGS,
->  			RK2928_CLKGATE_CON(10), 5, GFLAGS),
+>     I have a idea to handle it like this:
 > 
-> -	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
-> -			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
-> +	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
-> +			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
-> +	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
-> +			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
->  	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
->  			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
-> -
->  	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
-> -			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
-> +			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
->  			RK2928_CLKGATE_CON(2), 6, GFLAGS),
-> 
->  	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
-> @@ -389,7 +390,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[]
-> __initdata = { GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED,
-> RK2928_CLKGATE_CON(7), 3, GFLAGS), GATE(HCLK_I2S, "hclk_i2s", "hclk_peri",
-> 0, RK2928_CLKGATE_CON(7), 2, GFLAGS), GATE(0, "hclk_sfc", "hclk_peri",
-> CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS), -	GATE(0,
-> "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15,
-> GFLAGS), +	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0,
-> RK2928_CLKGATE_CON(3), 5, GFLAGS),
-> 
->  	/* pclk_peri gates */
->  	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED,
-> RK2928_CLKGATE_CON(4), 1, GFLAGS), diff --git
-> a/include/dt-bindings/clock/rk3036-cru.h
-> b/include/dt-bindings/clock/rk3036-cru.h index ebc7a7b..de44109 100644
-> --- a/include/dt-bindings/clock/rk3036-cru.h
-> +++ b/include/dt-bindings/clock/rk3036-cru.h
-> @@ -54,6 +54,7 @@
->  #define SCLK_PVTM_VIDEO		125
->  #define SCLK_MAC		151
->  #define SCLK_MACREF		152
-> +#define SCLK_MACPLL		153
->  #define SCLK_SFC		160
-> 
->  /* aclk gates */
-> @@ -92,6 +93,7 @@
+> +static const struct of_device_id reboot_mode_dt_match[] = {
+> +        { .compatible = "linux,reboot-mode-sfr",    /*for magic value 
+> stored in special function register, which  can be accessed by regmap*/
+> +                .data = (void *)&reboot-mode-sfr },
 
-please separate the hclk addition into two separate patches:
-patch1: add the clock-id to the dt-binding header
-patch2: use the clock in the clock-driver
+I'd make this one syscon-reboot-mode, to go along with syscon-poweroff
+as implemented by drivers/power/reset/syscon-poweroff.c. The syscon concept
+is already generic enough that we don't need a linux prefix for that.
 
->  #define HCLK_SDMMC		456
->  #define HCLK_SDIO		457
->  #define HCLK_EMMC		459
-> +#define HCLK_MAC		460
->  #define HCLK_I2S		462
->  #define HCLK_LCDC		465
->  #define HCLK_ROM		467
+> +        { .compatible = "linux,reboot-mode-sram",  /*for magic value 
+> stored in
+> +                .data = (void *)&reboot-mode-sram },
 
+the sram mode should probably follow the generic SRAM binding and make
+the location that stores the reboot mode a separate partition, unless
+we want to store other data in the same partition, in which case we might
+want to use the same implementation as for the nvram.
 
-Thanks
-Heiko
+> +        { .compatible = "linux,reboot-mode-sdram",
+> +                .data = (void *)&reboot-mode-sdram }, /*for magic value 
+> stored
+
+I think "sdram" is not an appropriate name here, as the main system memory
+might use some other technology, e.g. DRAM or DDR2-SDRAM.
+
+> +        { .compatible = "rockchip,reboot-mode-nvram",
+> +                .data = (void *)&reboot-mode-nvram },
+> +        {},
+> +};
+
+nvram is a complex topic by itself, because there are so many ways to do it.
+I think what you are referring to here is a battery-backed memory that uses
+one or more bytes at a fixed offset to store a particular piece of information,
+as the drivers/char/nvram.c driver does. Maybe we should put the reboot mode
+into that driver then?
+
+There are other nvram drivers at various places in the kernel, and each may
+be slightly different, or completely different, like the EFIVARs driver on
+UEFI firmware or the key/value store on Open Firmware, these probably need
+their own methods and not share the generic driver.
+
+>     the data point to different hardware access method.
+> 
+>    Hope to see more suggestions from you.
+
+It's probably best to leave these four examples as separate drivers and we can
+add further ones when needed.
+
+	Arnd
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
