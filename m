@@ -1,76 +1,83 @@
-From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [RESEND PATCH v1 1/4] clk: rockchip: rk3036: fix the FLAGs for clock
- mux
-Date: Mon, 28 Dec 2015 17:03:50 +0800
-Message-ID: <1451293433-32392-2-git-send-email-zhengxing@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [RESEND PATCH v1 4/4] clk: rockchip: rk3036: fix and add node id for emac clock
+Date: Mon, 28 Dec 2015 17:03:53 +0800
+Message-ID: <1451293433-32392-5-git-send-email-zhengxing@rock-chips.com>
 References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1451293433-32392-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The DFLAGS are used for the clock dividers, the CLKSEL_CON flags
-of COMPOSITE_NODIV type should be MFLAGS.
+Due to referred old version TRM, there is incorrect emac clock node,
+we should fix it. The SEL_21_9 is the parent of SEL_21_4.
 
-Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In the emac driver, we need to refer HCLK_MAC, and  because There are
+only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
+GPLL, and it is unable to provide the accurate rate for mac_ref which
+need to 50MHz probability, we should let it under the APLL and are
+able to set the freq which integer multiples of 50MHz, so we add these
+emac node for reference.
+
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3036.c |   12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/clk/rockchip/clk-rk3036.c      |   11 ++++++-----
+ include/dt-bindings/clock/rk3036-cru.h |    2 ++
+ 2 files changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 7333b053..d4ea7b6 100644
+index 7420cbe..7863c4d 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -204,16 +204,16 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKGATE_CON(2), 2, GFLAGS),
+@@ -328,13 +328,14 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 			RK2928_CLKSEL_CON(16), 0, 2, MFLAGS, 2, 5, DFLAGS,
+ 			RK2928_CLKGATE_CON(10), 5, GFLAGS),
  
- 	COMPOSITE_NODIV(SCLK_TIMER0, "sclk_timer0", mux_timer_p, CLK_IGNORE_UNUSED,
--			RK2928_CLKSEL_CON(2), 4, 1, DFLAGS,
-+			RK2928_CLKSEL_CON(2), 4, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(1), 0, GFLAGS),
- 	COMPOSITE_NODIV(SCLK_TIMER1, "sclk_timer1", mux_timer_p, CLK_IGNORE_UNUSED,
--			RK2928_CLKSEL_CON(2), 5, 1, DFLAGS,
-+			RK2928_CLKSEL_CON(2), 5, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(1), 1, GFLAGS),
- 	COMPOSITE_NODIV(SCLK_TIMER2, "sclk_timer2", mux_timer_p, CLK_IGNORE_UNUSED,
--			RK2928_CLKSEL_CON(2), 6, 1, DFLAGS,
-+			RK2928_CLKSEL_CON(2), 6, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 4, GFLAGS),
- 	COMPOSITE_NODIV(SCLK_TIMER3, "sclk_timer3", mux_timer_p, CLK_IGNORE_UNUSED,
--			RK2928_CLKSEL_CON(2), 7, 1, DFLAGS,
-+			RK2928_CLKSEL_CON(2), 7, 1, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 5, GFLAGS),
+-	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
+-			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
++	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
++			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
++	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
++			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
+ 	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
+-
+ 	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
+-			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
++			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
+ 			RK2928_CLKGATE_CON(2), 6, GFLAGS),
  
- 	MUX(0, "uart_pll_clk", mux_pll_src_apll_dpll_gpll_usb480m_p, 0,
-@@ -262,13 +262,13 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKGATE_CON(3), 2, GFLAGS),
+ 	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
+@@ -389,7 +390,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+ 	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+ 	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+-	GATE(0, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
++	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
  
- 	COMPOSITE_NODIV(0, "sclk_sdmmc_src", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 8, 2, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 8, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 11, GFLAGS),
- 	DIV(SCLK_SDMMC, "sclk_sdmmc", "sclk_sdmmc_src", 0,
- 			RK2928_CLKSEL_CON(11), 0, 7, DFLAGS),
+ 	/* pclk_peri gates */
+ 	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 1, GFLAGS),
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+index ebc7a7b..de44109 100644
+--- a/include/dt-bindings/clock/rk3036-cru.h
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -54,6 +54,7 @@
+ #define SCLK_PVTM_VIDEO		125
+ #define SCLK_MAC		151
+ #define SCLK_MACREF		152
++#define SCLK_MACPLL		153
+ #define SCLK_SFC		160
  
- 	COMPOSITE_NODIV(0, "sclk_sdio_src", mux_mmc_src_p, 0,
--			RK2928_CLKSEL_CON(12), 10, 2, DFLAGS,
-+			RK2928_CLKSEL_CON(12), 10, 2, MFLAGS,
- 			RK2928_CLKGATE_CON(2), 13, GFLAGS),
- 	DIV(SCLK_SDIO, "sclk_sdio", "sclk_sdio_src", 0,
- 			RK2928_CLKSEL_CON(11), 8, 7, DFLAGS),
+ /* aclk gates */
+@@ -92,6 +93,7 @@
+ #define HCLK_SDMMC		456
+ #define HCLK_SDIO		457
+ #define HCLK_EMMC		459
++#define HCLK_MAC		460
+ #define HCLK_I2S		462
+ #define HCLK_LCDC		465
+ #define HCLK_ROM		467
 -- 
 1.7.9.5
