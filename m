@@ -1,317 +1,155 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/2] phy: add a driver for the Rockchip SoC internal eMMC PHY
-Date: Tue, 29 Dec 2015 09:52:08 +0800
-Message-ID: <1451353928-23973-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [RESEND PATCH v1 4/4] clk: rockchip: rk3036: fix and add node id
+ for emac clock
+Date: Tue, 29 Dec 2015 09:59:00 +0800
+Message-ID: <5681E8E4.2010303@rock-chips.com>
+References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com>
+ <1451293433-32392-5-git-send-email-zhengxing@rock-chips.com>
+ <11997168.T384RkEsFx@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <11997168.T384RkEsFx@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Michael Turquette <mturquette@baylibre.com>, Kumar Gala <galak@codeaurora.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, keescook@google.com, linux-clk@vger.kernel.org, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch to add a generic PHY driver for ROCKCHIP eMMC PHY.
-Access the PHY via registers provided by GRF (general register
-files) module.
+Hi Heiko,
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+On 12/28/2015 08:41 PM, Heiko St=FCbner wrote:
+> Hi,
+>
+> Am Montag, 28. Dezember 2015, 17:03:53 schrieb Xing Zheng:
+>> Due to referred old version TRM, there is incorrect emac clock node,
+>> we should fix it. The SEL_21_9 is the parent of SEL_21_4.
+>>
+>> In the emac driver, we need to refer HCLK_MAC, and  because There ar=
+e
+>> only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
+>> GPLL, and it is unable to provide the accurate rate for mac_ref whic=
+h
+>> need to 50MHz probability, we should let it under the APLL and are
+>> able to set the freq which integer multiples of 50MHz, so we add the=
+se
+>> emac node for reference.
+> I don't really follow here. While I do understand that the emac needs=
+ 50MHz, I
+> don't think using the APLL as source is helpful.
+>
+> The APLL is the main clocksource for the cpu-cores, including frequen=
+cy
+> scaling, and while it currently only lists 816MHz as sole frequency, =
+you're
+> pretty much guaranteed to not get your correct multiple of 50MHz from=
+ there
+> either. And limiting the cpu to just do 600MHz to get the mac working=
+ sounds
+> pretty bad ;-) .
+>
+>
+> In the rk3036 cru-node the gpll gets set to 594MHz. Is there a specia=
+l reason
+> why it needs to be 594MHz and cannot be a round 600MHz? Because that =
+would
+> also provide your 50MHz-multiple nicely.
 
- drivers/phy/Kconfig             |   7 ++
- drivers/phy/Makefile            |   1 +
- drivers/phy/phy-rockchip-emmc.c | 256 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 264 insertions(+)
- create mode 100644 drivers/phy/phy-rockchip-emmc.c
+Yes, this magic 594MHz would help to support the standard HDMI=20
+resolutions, here are the math:
 
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index 03cb3ea..47d16e3 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -320,6 +320,13 @@ config PHY_ROCKCHIP_USB
- 	help
- 	  Enable this to support the Rockchip USB 2.0 PHY.
- 
-+config PHY_ROCKCHIP_EMMC
-+	tristate "Rockchip EMMC PHY Driver"
-+	depends on ARCH_ROCKCHIP && OF
-+	select GENERIC_PHY
-+	help
-+	  Enable this to support the Rockchip EMMC PHY.
-+
- config PHY_ST_SPEAR1310_MIPHY
- 	tristate "ST SPEAR1310-MIPHY driver"
- 	select GENERIC_PHY
-diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-index 075db1a..ed8f175 100644
---- a/drivers/phy/Makefile
-+++ b/drivers/phy/Makefile
-@@ -35,6 +35,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
- obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
- obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
- obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
-+obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
- obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
- obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
- obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
-diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
-new file mode 100644
-index 0000000..78f51a2
---- /dev/null
-+++ b/drivers/phy/phy-rockchip-emmc.c
-@@ -0,0 +1,256 @@
-+/*
-+ * Rockchip emmc PHY driver
-+ *
-+ * Copyright (C) 2015 Shawn Lin <shawn.lin@rock-chips.com>
-+ * Copyright (C) 2015 ROCKCHIP, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+/*
-+ * The higher 16-bit of this register is used for write protection
-+ * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-+ */
-+#define HIWORD_UPDATE(val, mask, shift) \
-+		((val) << (shift) | (mask) << ((shift) + 16))
-+
-+/* Register definition */
-+#define GRF_EMMCPHY_CON0	0x0
-+#define GRF_EMMCPHY_CON1	0x4
-+#define GRF_EMMCPHY_CON2	0x8
-+#define GRF_EMMCPHY_CON3	0xc
-+#define GRF_EMMCPHY_CON4	0x10
-+#define GRF_EMMCPHY_CON5	0x14
-+#define GRF_EMMCPHY_CON6	0x18
-+#define GRF_EMMCPHY_STATUS	0x20
-+
-+#define PHYCTRL_PDB_MASK	0x1
-+#define PHYCTRL_PDB_SHIFT	0x0
-+#define PHYCTRL_PDB_PWR_ON	0x1
-+#define PHYCTRL_PDB_PWR_OFF	0x0
-+#define PHYCTRL_ENDLL_MASK	0x1
-+#define PHYCTRL_ENDLL_SHIFT     0x1
-+#define PHYCTRL_ENDLL_ENABLE	0x1
-+#define PHYCTRL_ENDLL_DISABLE	0x0
-+#define PHYCTRL_CALDONE_MASK	0x1
-+#define PHYCTRL_CALDONE_SHIFT   0x6
-+#define PHYCTRL_CALDONE_DONE	0x1
-+#define PHYCTRL_CALDONE_GOING	0x0
-+#define PHYCTRL_DLLRDY_MASK	0x1
-+#define PHYCTRL_DLLRDY_SHIFT	0x5
-+#define PHYCTRL_DLLRDY_DONE	0x1
-+#define PHYCTRL_DLLRDY_GOING	0x0
-+
-+struct rockchip_emmc_phy {
-+	unsigned int	reg_offset;
-+	struct regmap	*reg_base;
-+	struct phy	*phy;
-+	bool		state;
-+};
-+
-+static int rockchip_emmc_phy_power(struct rockchip_emmc_phy *rk_phy,
-+				   bool on_off)
-+{
-+	unsigned int caldone;
-+	unsigned int dllrdy;
-+
-+	/*
-+	 * Keep phyctrl_pdb and phyctrl_endll low to allow
-+	 * initialization of CALIO state M/C DFFs
-+	 */
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
-+				   PHYCTRL_PDB_MASK,
-+				   PHYCTRL_PDB_SHIFT));
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
-+				   PHYCTRL_ENDLL_MASK,
-+				   PHYCTRL_ENDLL_SHIFT));
-+
-+	/* Already finish power_off above */
-+	if (on_off == PHYCTRL_PDB_PWR_OFF)
-+		return 0;
-+
-+	/*
-+	 * According to the user manual, calpad calibration
-+	 * cycle takes more than 2us without the minimal recommended
-+	 * value, so we may need a little margin here
-+	 */
-+	udelay(3);
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_ON,
-+				   PHYCTRL_PDB_MASK,
-+				   PHYCTRL_PDB_SHIFT));
-+
-+	/*
-+	 * According to the user manual, it asks driver to
-+	 * wait 5us for calpad busy trimming
-+	 */
-+	udelay(5);
-+	regmap_read(rk_phy->reg_base,
-+		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+		    &caldone);
-+	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
-+	if (caldone != PHYCTRL_CALDONE_DONE) {
-+		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	/*
-+	 * Enable analog DLL circuits, and we need extra 10.2us
-+	 * for dll to be ready for work.
-+	 */
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
-+				   PHYCTRL_ENDLL_MASK,
-+				   PHYCTRL_ENDLL_SHIFT));
-+	udelay(11);
-+	regmap_read(rk_phy->reg_base,
-+		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+		    &dllrdy);
-+	dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
-+	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
-+		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_power_off(struct phy *phy)
-+{
-+	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
-+	int ret = 0;
-+
-+	if (rk_phy->state == PHYCTRL_PDB_PWR_OFF)
-+		return 0;
-+
-+	/* Power down emmc phy analog blocks */
-+	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_OFF);
-+	if (ret)
-+		return ret;
-+
-+	rk_phy->state = PHYCTRL_PDB_PWR_OFF;
-+
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_power_on(struct phy *phy)
-+{
-+	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
-+	int ret = 0;
-+
-+	if (rk_phy->state == PHYCTRL_PDB_PWR_ON)
-+		return 0;
-+
-+	/* Power up emmc phy analog blocks */
-+	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
-+	if (ret)
-+		return ret;
-+
-+	rk_phy->state = PHYCTRL_PDB_PWR_ON;
-+
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_init(struct phy *phy)
-+{
-+	rockchip_emmc_phy_power_on(phy);
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_exit(struct phy *phy)
-+{
-+	rockchip_emmc_phy_power_off(phy);
-+	return 0;
-+}
-+
-+static const struct phy_ops ops = {
-+	.init		= rockchip_emmc_phy_init,
-+	.exit		= rockchip_emmc_phy_exit,
-+	.power_on	= rockchip_emmc_phy_power_on,
-+	.power_off	= rockchip_emmc_phy_power_off,
-+	.owner		= THIS_MODULE,
-+};
-+
-+static int rockchip_emmc_phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_emmc_phy *rk_phy;
-+	struct phy_provider *phy_provider;
-+	struct regmap *grf;
-+	unsigned int reg_offset;
-+
-+	grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
-+	if (IS_ERR(grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return PTR_ERR(grf);
-+	}
-+
-+	rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
-+	if (!rk_phy)
-+		return -ENOMEM;
-+
-+	if (of_property_read_u32(dev->of_node, "reg", &reg_offset)) {
-+		dev_err(dev, "missing reg property in node %s\n",
-+			dev->of_node->name);
-+		return -EINVAL;
-+	}
-+
-+	rk_phy->reg_offset = reg_offset;
-+	rk_phy->reg_base = grf;
-+
-+	rk_phy->phy = devm_phy_create(dev, dev->of_node, &ops);
-+	if (IS_ERR(rk_phy->phy)) {
-+		dev_err(dev, "failed to create PHY\n");
-+		return PTR_ERR(rk_phy->phy);
-+	}
-+
-+	rk_phy->state = PHYCTRL_PDB_PWR_OFF;
-+
-+	phy_set_drvdata(rk_phy->phy, rk_phy);
-+	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+
-+	return PTR_ERR_OR_ZERO(phy_provider);
-+}
-+
-+static const struct of_device_id rockchip_emmc_phy_dt_ids[] = {
-+	{ .compatible = "rockchip,rk3399-emmc-phy" },
-+	{}
-+};
-+
-+MODULE_DEVICE_TABLE(of, rockchip_emmc_phy_dt_ids);
-+
-+static struct platform_driver rockchip_emmc_driver = {
-+	.probe		= rockchip_emmc_phy_probe,
-+	.driver		= {
-+		.name	= "rockchip-emmc-phy",
-+		.of_match_table = rockchip_emmc_phy_dt_ids,
-+	},
-+};
-+
-+module_platform_driver(rockchip_emmc_driver);
-+
-+MODULE_AUTHOR("Shawn Lin <shawn.lin@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip EMMC PHY driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.3.7
+1920x1080-60Hz DCLK =3D 148.5MHz =3D 594MHz / 4
+1280x720-60Hz DCLK =3D 74.25MHz =3D 594MHz / 8
+720x480-60Hz DCLK =3D 27MHz =3D 594MHz / 22
+
+Thanks,
+- Yakir
+
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> ---
+>>
+>>   drivers/clk/rockchip/clk-rk3036.c      |   11 ++++++-----
+>>   include/dt-bindings/clock/rk3036-cru.h |    2 ++
+>>   2 files changed, 8 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3036.c
+>> b/drivers/clk/rockchip/clk-rk3036.c index 7420cbe..7863c4d 100644
+>> --- a/drivers/clk/rockchip/clk-rk3036.c
+>> +++ b/drivers/clk/rockchip/clk-rk3036.c
+>> @@ -328,13 +328,14 @@ static struct rockchip_clk_branch
+>> rk3036_clk_branches[] __initdata =3D { RK2928_CLKSEL_CON(16), 0, 2, =
+MFLAGS,
+>> 2, 5, DFLAGS,
+>>   			RK2928_CLKGATE_CON(10), 5, GFLAGS),
+>>
+>> -	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
+>> -			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
+>> +	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
+>> +			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
+>> +	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
+>> +			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
+>>   	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
+>>   			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
+>> -
+>>   	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
+>> -			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
+>> +			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
+>>   			RK2928_CLKGATE_CON(2), 6, GFLAGS),
+>>
+>>   	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
+>> @@ -389,7 +390,7 @@ static struct rockchip_clk_branch rk3036_clk_bra=
+nches[]
+>> __initdata =3D { GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNOR=
+E_UNUSED,
+>> RK2928_CLKGATE_CON(7), 3, GFLAGS), GATE(HCLK_I2S, "hclk_i2s", "hclk_=
+peri",
+>> 0, RK2928_CLKGATE_CON(7), 2, GFLAGS), GATE(0, "hclk_sfc", "hclk_peri=
+",
+>> CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS), -	GATE(0,
+>> "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 1=
+5,
+>> GFLAGS), +	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0,
+>> RK2928_CLKGATE_CON(3), 5, GFLAGS),
+>>
+>>   	/* pclk_peri gates */
+>>   	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED,
+>> RK2928_CLKGATE_CON(4), 1, GFLAGS), diff --git
+>> a/include/dt-bindings/clock/rk3036-cru.h
+>> b/include/dt-bindings/clock/rk3036-cru.h index ebc7a7b..de44109 1006=
+44
+>> --- a/include/dt-bindings/clock/rk3036-cru.h
+>> +++ b/include/dt-bindings/clock/rk3036-cru.h
+>> @@ -54,6 +54,7 @@
+>>   #define SCLK_PVTM_VIDEO		125
+>>   #define SCLK_MAC		151
+>>   #define SCLK_MACREF		152
+>> +#define SCLK_MACPLL		153
+>>   #define SCLK_SFC		160
+>>
+>>   /* aclk gates */
+>> @@ -92,6 +93,7 @@
+> please separate the hclk addition into two separate patches:
+> patch1: add the clock-id to the dt-binding header
+> patch2: use the clock in the clock-driver
+>
+>>   #define HCLK_SDMMC		456
+>>   #define HCLK_SDIO		457
+>>   #define HCLK_EMMC		459
+>> +#define HCLK_MAC		460
+>>   #define HCLK_I2S		462
+>>   #define HCLK_LCDC		465
+>>   #define HCLK_ROM		467
+>
+> Thanks
+> Heiko
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+>
+>
+
+
