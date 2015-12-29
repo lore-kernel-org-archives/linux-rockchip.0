@@ -1,50 +1,39 @@
-From: Romain Perier <romain.perier@gmail.com>
-Subject: [PATCH] stmmac: Don't exit mdio registration when mdio subnode is not found in the DTS
-Date: Tue, 29 Dec 2015 15:05:35 +0100
-Message-ID: <1451397935-23643-1-git-send-email-romain.perier@gmail.com>
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: peppe.cavallaro@st.com
-Cc: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [RESEND PATCH v1 0/4] Add support emac for the RK3036 SoC
+ platform
+Date: Tue, 29 Dec 2015 15:53:14 -0500 (EST)
+Message-ID: <20151229.155314.1522114236952280828.davem@davemloft.net>
+References: <1451287341-16453-1-git-send-email-zhengxing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1451287341-16453-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlcxg7vii5yOFA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Originally, most of the platforms using this driver did not define an mdio subnode
-in the devicetree. Commit e34d65 ("stmmac: create of compatible mdio bus for stmmac driver")
-introduced a backward compatibily issue by using of_mdiobus_register explicitly
-with an mdio subnode. This patch fixes the issue by calling the function
-mdiobus_register, when mdio subnode is not found. The driver is now compatible
-with both modes.
 
-Signed-off-by: Romain Perier <romain.perier@gmail.com>
----
- drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+You have to submit this series properly, the same problem happend twice
+now.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-index 16c85cc..0034de44 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-@@ -218,8 +218,7 @@ int stmmac_mdio_register(struct net_device *ndev)
- 		if (mdio_node) {
- 			netdev_dbg(ndev, "FOUND MDIO subnode\n");
- 		} else {
--			netdev_err(ndev, "NO MDIO subnode\n");
--			return 0;
-+			netdev_warn(ndev, "No MDIO subnode found\n");
- 		}
- 	}
- 
-@@ -251,7 +250,10 @@ int stmmac_mdio_register(struct net_device *ndev)
- 	new_bus->phy_mask = mdio_bus_data->phy_mask;
- 	new_bus->parent = priv->device;
- 
--	err = of_mdiobus_register(new_bus, mdio_node);
-+	if (IS_ENABLED(CONFIG_OF) && mdio_node)
-+		err = of_mdiobus_register(new_bus, mdio_node);
-+	else
-+		err = mdiobus_register(new_bus);
- 	if (err != 0) {
- 		pr_err("%s: Cannot register as MDIO bus\n", new_bus->name);
- 		goto bus_register_fail;
--- 
-2.5.0
+When you submit a series you should:
+
+1) Make it clear which tree you expect these changes to be applied
+   to.  Here it is completely ambiguous, do you want it to go into
+   my networking tree or some other subsystem tree?
+
+2) You MUST keep all parties informed about all patches for a series
+   like this.  That means you cannot drop netdev from patch #4 as
+   you did both times.  Doing this aggravates the situation for
+   #1 even more, because if a patch is not CC:'d to netdev it does
+   not enter patchwork.  And if it doesn't go into patchwork, I'm
+   not looking at it.
+
+Thanks.
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
