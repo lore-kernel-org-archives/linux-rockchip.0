@@ -1,30 +1,17 @@
-From: zhangqing-Y9sIeH5OGRo@public.gmane.org
-Subject: [PATCH] rtc: rk808: rename rtc-rk808.c to rtc-rk8xx.c
-Date: Thu, 31 Dec 2015 03:37:37 -0800
-Message-ID: <36904.0996571586$1451533296@news.gmane.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: zhangqing <zhangqing@rock-chips.com>
+Subject: [RESEND PATCH] rtc: rk808: rename rtc-rk808.c to rtc-rk8xx.c
+Date: Thu, 31 Dec 2015 06:14:55 -0800
+Message-ID: <1451571295-4193-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, lee.jones@linaro.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com
+Cc: huangtao@rock-chips.com, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, zhangqing <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
-
-From: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 make rtc-rk8xx.c compatible for all pmic chips.
 for pmic chips(rk808\rk807\rk816\rk818) in the future.
 
-Signed-off-by: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: zhangqing <zhangqing@rock-chips.com>
 ---
  drivers/mfd/rk808.c                      |   2 +-
  drivers/rtc/Kconfig                      |   8 +-
@@ -567,8 +554,8 @@ index 35c9aad..5d946bf 100644
  
 -MODULE_DESCRIPTION("RTC driver for the rk808 series PMICs");
 +MODULE_DESCRIPTION("RTC driver for the rk8xx series PMICs");
- MODULE_AUTHOR("Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
- MODULE_AUTHOR("Zhang Qing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
+ MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
+ MODULE_AUTHOR("Zhang Qing <zhangqing@rock-chips.com>");
  MODULE_LICENSE("GPL");
 -MODULE_ALIAS("platform:rk808-rtc");
 +MODULE_ALIAS("platform:rk8xx-rtc");
