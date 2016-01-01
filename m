@@ -1,65 +1,52 @@
 From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [RESEND PATCH v1 3/4] net: ethernet: arc: Add support emac for
- RK3036
-Date: Fri, 01 Jan 2016 13:55:42 +0100
-Message-ID: <3169681.aSJgN2TRic@wuerfel>
-References: <1451287341-16453-1-git-send-email-zhengxing@rock-chips.com>
- <1451287341-16453-4-git-send-email-zhengxing@rock-chips.com>
- <FFCE9129-357E-4643-A350-9927A5AD5720@gmail.com>
+Subject: [PATCH] [BUG] clk: rockchip: don't mark clock names as initconst
+Date: Fri, 01 Jan 2016 14:42:52 +0100
+Message-ID: <2791943.MBZ53mI7Gp@wuerfel>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <FFCE9129-357E-4643-A350-9927A5AD5720@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Florian Fainelli <f.fainelli@gmail.com>, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Paul Gortmaker <paul.gortmaker@windriver.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Geert Uytterhoeven <geert@linux-m68k.org>, keescook@google.com, davem@davemloft.net, leozwang@google.com
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tuesday 29 December 2015 14:59:59 Florian Fainelli wrote:
-> On December 27, 2015 11:22:20 PM PST, Xing Zheng <zhengxing@rock-chips.com> wrote:
-> >The RK3036's GRFs offset are different with RK3066/RK3188, and need to
-> >set
-> >mac TX/RX clock before probe emac.
-> >
-> >Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> >---
-> <snip>
-> > };
-> > 
-> > static const struct of_device_id emac_rockchip_dt_ids[] = {
-> >-      { .compatible = "rockchip,rk3066-emac", .data =
-> >&emac_rockchip_dt_data[0] },
-> >-      { .compatible = "rockchip,rk3188-emac", .data =
-> >&emac_rockchip_dt_data[1] },
-> >+      { .compatible = "rockchip,rk3036-emac", .data =
-> >&emac_rockchip_dt_data[0] },
-> >+      { .compatible = "rockchip,rk3066-emac", .data =
-> >&emac_rockchip_dt_data[1] },
-> >+      { .compatible = "rockchip,rk3188-emac", .data =
-> >&emac_rockchip_dt_data[2] },
-> >       { /* Sentinel */ }
-> 
-> Food for thought, you might want to use an enum here to index emac_rockchip_dt_data which would be less error prone if you add/remove entries in this structure.
-> 
+The latest changes to the rockchip clk implementation cause
+tons of warnings and/or errors (depending on the configuration):
 
-I would use named structures instead:
+WARNING: vmlinux.o(.data+0x125394): Section mismatch in reference from the variable __compound_literal.125 to the (unknown reference) .init.rodata:(unknown)
 
-static const struct emac_rockchip_soc_data emac_rk3066_emac_data = {
-	.grf_offset = 0x154,
-};
+The reason is a compount literal in a macro that refers to an
+object in the .init.rodata section:
 
-static const struct of_device_id emac_rockchip_dt_ids[] = {
-	{ .compatible = "rockchip,rk3066-emac", .data = &emac_rk3066_emac_data,
-	...
-};
+ #define COMPOSITE_FRACMUX(_id, cname, pname, f, mo, df, go, gs, gf, ch) \
+        {                                                       \
+		...
+                .child          = &(struct rockchip_clk_branch)ch, \
+        }
 
-	Armd
+'ch' here is placed in .data, and I could find no way to override that
+using an attribute or pragma because there is no identifier associated
+with it.
+
+This patch avoids the warning by placing the names in .rodata rather than
+.init.rodata. However, it is not an ideal solution because we really
+want all those data structures to be discarded along with the initdata.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: 8ca1ca8f6039 ("clk: rockchip: handle mux dependency of fractional dividers")
+
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 3f71ee5d1bc9..5cadf5e3fb16 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -244,7 +244,7 @@ struct clk *rockchip_clk_register_inverter(const char *name,
+ 				void __iomem *reg, int shift, int flags,
+ 				spinlock_t *lock);
+ 
+-#define PNAME(x) static const char *const x[] __initconst
++#define PNAME(x) static const char *const x[]
+ 
+ enum rockchip_clk_branch_type {
+ 	branch_composite,
+
