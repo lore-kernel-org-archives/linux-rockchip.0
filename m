@@ -1,70 +1,85 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [RESEND PATCH v1 3/4] net: ethernet: arc: Add support emac for RK3036
-Date: Sat, 2 Jan 2016 10:38:28 +0800
-Message-ID: <6ADB598D-07E0-4E51-A9FE-25B47FD87F7E@rock-chips.com>
-References: <1451287341-16453-1-git-send-email-zhengxing@rock-chips.com> <1451287341-16453-4-git-send-email-zhengxing@rock-chips.com> <FFCE9129-357E-4643-A350-9927A5AD5720@gmail.com> <3169681.aSJgN2TRic@wuerfel>
-Mime-Version: 1.0 (1.0)
-Content-Type: text/plain; charset=gb2312
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3169681.aSJgN2TRic@wuerfel>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-arm-kernel@lists.infradead.org, Florian Fainelli <f.fainelli@gmail.com>, linux-rockchip@lists.infradead.org, heiko@sntech.de, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Paul Gortmaker <paul.gortmaker@windriver.com>, Geert Uytterhoeven <geert@linux-m68k.org>, keescook@google.com, leozwang@google.com, davem@davemloft.net, xing.zheng@rock-chips.com
+From: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] stmmac: Don't exit mdio registration when mdio subnode is
+ not found in the DTS
+Date: Fri, 01 Jan 2016 21:51:17 -0800
+Message-ID: <0E6F98A1-B9F1-48B0-B5CA-A215803E827F@gmail.com>
+References: <1451397935-23643-1-git-send-email-romain.perier@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1451397935-23643-1-git-send-email-romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, peppe.cavallaro-qxv4g6HH51o@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On December 29, 2015 6:05:35 AM PST, Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>Originally, most of the platforms using this driver did not define an
+>mdio subnode
+>in the devicetree. Commit e34d65 ("stmmac: create of compatible mdio
+>bus for stmmac driver")
+>introduced a backward compatibily issue by using of_mdiobus_register
+>explicitly
+>with an mdio subnode. This patch fixes the issue by calling the
+>function
+>mdiobus_register, when mdio subnode is not found. The driver is now
+>compatible
+>with both modes.
+
+Looks reasonable to me, though you will want to make sure the different DTSes get updated to include the proper compatible node for the MDIO bus.
+
+>
+>Signed-off-by: Romain Perier <romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+Please include a Fixes tag to help keep track of changes.
+
+>---
+> drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 8 +++++---
+> 1 file changed, 5 insertions(+), 3 deletions(-)
+>
+>diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+>b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+>index 16c85cc..0034de44 100644
+>--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+>+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+>@@ -218,8 +218,7 @@ int stmmac_mdio_register(struct net_device *ndev)
+> 		if (mdio_node) {
+> 			netdev_dbg(ndev, "FOUND MDIO subnode\n");
+> 		} else {
+>-			netdev_err(ndev, "NO MDIO subnode\n");
+>-			return 0;
+>+			netdev_warn(ndev, "No MDIO subnode found\n");
+> 		}
+> 	}
+> 
+>@@ -251,7 +250,10 @@ int stmmac_mdio_register(struct net_device *ndev)
+> 	new_bus->phy_mask = mdio_bus_data->phy_mask;
+> 	new_bus->parent = priv->device;
+> 
+>-	err = of_mdiobus_register(new_bus, mdio_node);
+>+	if (IS_ENABLED(CONFIG_OF) && mdio_node)
+
+You should be able to drop the IS_ENABLED part since there is an inline provided in the non-OF case which does a fallback to mdiobus_register().
+
+>+		err = of_mdiobus_register(new_bus, mdio_node);
+>+	else
+>+		err = mdiobus_register(new_bus);
+> 	if (err != 0) {
+
+This looks reasonable, does it work if we just assign mdio_node to the pdev->dev.of_node to be backwards compatible with DTSes which have not yet been updated?
+
+> 		pr_err("%s: Cannot register as MDIO bus\n", new_bus->name);
+> 		goto bus_register_fail;
 
 
-OK, I think I will use named structures.
-
-Thanks.
-
-> =D4=DA 2016=C4=EA1=D4=C21=C8=D5=A3=AC20:55=A3=ACArnd Bergmann <arnd@a=
-rndb.de> =D0=B4=B5=C0=A3=BA
->=20
->> On Tuesday 29 December 2015 14:59:59 Florian Fainelli wrote:
->>> On December 27, 2015 11:22:20 PM PST, Xing Zheng <zhengxing@rock-ch=
-ips.com> wrote:
->>> The RK3036's GRFs offset are different with RK3066/RK3188, and need=
- to
->>> set
->>> mac TX/RX clock before probe emac.
->>>=20
->>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->>> ---
->> <snip>
->>> };
->>>=20
->>> static const struct of_device_id emac_rockchip_dt_ids[] =3D {
->>> -      { .compatible =3D "rockchip,rk3066-emac", .data =3D
->>> &emac_rockchip_dt_data[0] },
->>> -      { .compatible =3D "rockchip,rk3188-emac", .data =3D
->>> &emac_rockchip_dt_data[1] },
->>> +      { .compatible =3D "rockchip,rk3036-emac", .data =3D
->>> &emac_rockchip_dt_data[0] },
->>> +      { .compatible =3D "rockchip,rk3066-emac", .data =3D
->>> &emac_rockchip_dt_data[1] },
->>> +      { .compatible =3D "rockchip,rk3188-emac", .data =3D
->>> &emac_rockchip_dt_data[2] },
->>>      { /* Sentinel */ }
->>=20
->> Food for thought, you might want to use an enum here to index emac_r=
-ockchip_dt_data which would be less error prone if you add/remove entri=
-es in this structure.
->=20
-> I would use named structures instead:
->=20
-> static const struct emac_rockchip_soc_data emac_rk3066_emac_data =3D =
-{
->    .grf_offset =3D 0x154,
-> };
->=20
-> static const struct of_device_id emac_rockchip_dt_ids[] =3D {
->    { .compatible =3D "rockchip,rk3066-emac", .data =3D &emac_rk3066_e=
-mac_data,
->    ...
-> };
->=20
->    Armd
->=20
->=20
+-- 
+Florian
