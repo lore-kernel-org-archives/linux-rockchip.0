@@ -1,84 +1,91 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: [PATCH v2] serial: core: remove baud_rates when serial console setup
-Date: Mon,  4 Jan 2016 15:54:46 +0800
-Message-ID: <1451894086-20435-1-git-send-email-jeffy.chen@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] phy: add a driver for the Rockchip SoC internal eMMC
+ PHY
+Date: Mon, 4 Jan 2016 16:36:30 +0800
+Message-ID: <568A2F0E.8070608@rock-chips.com>
+References: <1451353928-23973-1-git-send-email-shawn.lin@rock-chips.com>
+ <568A230F.3000605@ti.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <568A230F.3000605@ti.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, jslaby@suse.com, gregkh@linuxfoundation.org, linux-rockchip@lists.infradead.org
-Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Currently, when tring to set up a serial console with a higher
-baud rate, it would fallback to 921600.
+Hi Kishon,
+On 2016/1/4 15:45, Kishon Vijay Abraham I wrote:
+> Hi,
+>
+> On Tuesday 29 December 2015 07:22 AM, Shawn Lin wrote:
+>> This patch to add a generic PHY driver for ROCKCHIP eMMC PHY.
 
-Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
-Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+[...]
 
----
+>> +
+>> +struct rockchip_emmc_phy {
+>> +	unsigned int	reg_offset;
+>> +	struct regmap	*reg_base;
+>> +	struct phy	*phy;
+>
+> The phy looks unnecessary.
 
-Changes in v2:
-remove baud_rates as Alan's suggestion.
+right, got it.
 
- drivers/tty/serial/serial_core.c | 33 ++-------------------------------
- 1 file changed, 2 insertions(+), 31 deletions(-)
+>> +	bool		state;
+>
+> hmm.. I want to have some sort of state machine in phy core so that individual
+> PHY drivers don't have to maintain the state. However I'm not sure if all the
+> PHY's will require such mechanism.
+>
 
-diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
-index def5199..150547c 100644
---- a/drivers/tty/serial/serial_core.c
-+++ b/drivers/tty/serial/serial_core.c
-@@ -1892,26 +1892,6 @@ uart_parse_options(char *options, int *baud, int *parity, int *bits, int *flow)
- }
- EXPORT_SYMBOL_GPL(uart_parse_options);
- 
--struct baud_rates {
--	unsigned int rate;
--	unsigned int cflag;
--};
--
--static const struct baud_rates baud_rates[] = {
--	{ 921600, B921600 },
--	{ 460800, B460800 },
--	{ 230400, B230400 },
--	{ 115200, B115200 },
--	{  57600, B57600  },
--	{  38400, B38400  },
--	{  19200, B19200  },
--	{   9600, B9600   },
--	{   4800, B4800   },
--	{   2400, B2400   },
--	{   1200, B1200   },
--	{      0, B38400  }
--};
--
- /**
-  *	uart_set_options - setup the serial console parameters
-  *	@port: pointer to the serial ports uart_port structure
-@@ -1927,7 +1907,6 @@ uart_set_options(struct uart_port *port, struct console *co,
- {
- 	struct ktermios termios;
- 	static struct ktermios dummy;
--	int i;
- 
- 	/*
- 	 * Ensure that the serial console lock is initialised
-@@ -1942,16 +1921,8 @@ uart_set_options(struct uart_port *port, struct console *co,
- 
- 	memset(&termios, 0, sizeof(struct ktermios));
- 
--	termios.c_cflag = CREAD | HUPCL | CLOCAL;
--
--	/*
--	 * Construct a cflag setting.
--	 */
--	for (i = 0; baud_rates[i].rate; i++)
--		if (baud_rates[i].rate <= baud)
--			break;
--
--	termios.c_cflag |= baud_rates[i].cflag;
-+	termios.c_cflag |= CREAD | HUPCL | CLOCAL;
-+	tty_termios_encode_baud_rate(&termios, baud, baud);
- 
- 	if (bits == 7)
- 		termios.c_cflag |= CS7;
+In general, phy core is the best place to maintain it.
+Presumably, phy driver maintainer is much likely to
+maintain the corresponding caller driver at the same time, so he/she
+should be in charge of maintaining the on/off, init/exit pairs. From
+this point, it doesn't need the state machine. But, I'm not sure if the
+caller driver will always keep the on/off pairs correct.
+
+
+Anyway, I will remove it from this driver. And may we request a RFC
+for all sub-phy drivers to discuss this issue if we want to add the
+state machine into phy core. How about?
+
+
+>> +};
+>> +
+>> +static int rockchip_emmc_phy_power(struct rockchip_emmc_phy *rk_phy,
+
+[...]
+
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_init(struct phy *phy)
+>> +{
+>> +	rockchip_emmc_phy_power_on(phy);
+>
+> do only phy initialization here, power on can be done later.
+
+yep.
+
+>> +	return 0;
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_exit(struct phy *phy)
+>> +{
+>> +	rockchip_emmc_phy_power_off(phy);
+>
+> same here.
+>
+> Thanks
+> Kishon
+>
+>
+>
+
+
 -- 
-2.1.4
+Best Regards
+Shawn Lin
