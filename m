@@ -1,27 +1,63 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFC PATCH v1 2/2] dt-bindings: add document for rk3229-vop
-Date: Mon, 4 Jan 2016 08:11:21 -0600
-Message-ID: <20160104141121.GA22245@rob-hp-laptop>
-References: <1451908230-25329-1-git-send-email-ykk@rock-chips.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v1 1/3] i2c: rk3x: add calc_divs ops for new version
+Date: Mon, 4 Jan 2016 20:40:42 +0100
+Message-ID: <20160104194042.GD1522@katana>
+References: <1449844384-6236-1-git-send-email-wdc@rock-chips.com>
+ <566F5FAC.3080404@rock-chips.com>
+ <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="AbQceqfdZEv+FvjW"
+Return-path: <linux-i2c-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1451908230-25329-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+In-Reply-To: <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Jianqun Xu <jay.xu@rock-chips.com>, David Wu <wdc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jan 04, 2016 at 07:50:30PM +0800, Yakir Yang wrote:
-> 
-> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt | 1 +
->  1 file changed, 1 insertion(+)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--AbQceqfdZEv+FvjW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> >> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned long
+> >> scl_rate,
+> >> +                                unsigned long scl_rise_ns,
+> >> +                                unsigned long scl_fall_ns,
+> >> +                                unsigned long sda_fall_ns,
+>=20
+> Wolfram did some sturct to assign the parameters from device properties.
+> It might be re-used here.
+
+Yes, I think it makes sense to convert the driver first to use
+the new i2c_parse_fw_timings() function and see if it fits (or if we need
+to extend it perhaps).
+
+David, does this make sense to you?
+
+
+--AbQceqfdZEv+FvjW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWisq6AAoJEBQN5MwUoCm2SKwP/RmDlLqJwqYjBwHWSn30Rh04
+oYA9z0RQ7Bzdcj5Eq+6bcdfTqsVx4AyxyNZSTPsGcU0/QthiPy5Eu9j8tZza2cT/
+tYiKrbK9Lf0qj1qX9kgdiDK0JdY3e7fLxdmfacM9H616BdBwunmhKOGp4WOJyJkK
+xYaPrWBRZQsAx74u5Nv+2bwaBsKEIpOJ6CUu1CeYk9IB4sk9+DZ/GrosSEp1z6tR
++fqRPwhNuyIFI1utO95DtkOoaxT+pFmlRN4olrBw5jitXuJofqTcqnPi6FIvY7hZ
+nE1I3GvgfazMJeVCr6zWweMLFbNx4BInsHN9/vicXWZX3Jz5MPJkarNT9SxnYOEi
+VD2XUqsHsvkiacYAraL84hJBWf3e4FKcg00mA76LiiqPwYVaT1rsDG7TCEOicgGa
+BzRtj7WqtmRAznCOvaaJ0PWHJHdaZtCOH4xVp/2bywIlg37XVKxAHtXNpIryn2xH
+pHoDKyTBhEBMmpkRaO4iO+/tKk17ofsOFWVeOV8z8/uL/90vsM1Fw671vDldD0mu
+4sSO52pBVh+gFgDXU+e9MIdtGqu0tdPa7deEVeQSOu4lZnk9XWMHcL4BAIU+fJnt
+/j4fWsttxW1bqlMjZn2yei4efvZrY+0pUk9swXQVKz9r1BrzNuBQPsZBYwdjJuEP
+7iL0PeOG+LIfbQNwgMW0
+=i3gV
+-----END PGP SIGNATURE-----
+
+--AbQceqfdZEv+FvjW--
