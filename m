@@ -1,104 +1,84 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 6/6] rockchip: kylin: Check fastboot request
-Date: Mon,  4 Jan 2016 15:50:23 +0800
-Message-ID: <1451893823-20309-7-git-send-email-jeffy.chen@rock-chips.com>
-References: <1451893823-20309-1-git-send-email-jeffy.chen@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1451893823-20309-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Subject: [PATCH v2] serial: core: remove baud_rates when serial console setup
+Date: Mon,  4 Jan 2016 15:54:46 +0800
+Message-ID: <1451894086-20435-1-git-send-email-jeffy.chen@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, jslaby@suse.com, gregkh@linuxfoundation.org, linux-rockchip@lists.infradead.org
+Cc: Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-We will save boot mode flag in grf's os_reg[0], if fastboot
-requested or fastboot key pressed, try to enter fastboot mode
-at preboot stage.
+Currently, when tring to set up a serial console with a higher
+baud rate, it would fallback to 921600.
 
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+
 ---
 
- board/kylin/kylin_rk3036/kylin_rk3036.c | 32 ++++++++++++++++++++++++++++++++
- include/configs/kylin_rk3036.h          |  3 +++
- 2 files changed, 35 insertions(+)
+Changes in v2:
+remove baud_rates as Alan's suggestion.
 
-diff --git a/board/kylin/kylin_rk3036/kylin_rk3036.c b/board/kylin/kylin_rk3036/kylin_rk3036.c
-index 40d6b52..df2c123 100644
---- a/board/kylin/kylin_rk3036/kylin_rk3036.c
-+++ b/board/kylin/kylin_rk3036/kylin_rk3036.c
-@@ -8,10 +8,15 @@
- #include <dm.h>
- #include <asm/io.h>
- #include <asm/arch/uart.h>
-+#include <asm/arch-rockchip/grf_rk3036.h>
- #include <asm/arch/sdram_rk3036.h>
-+#include <asm/gpio.h>
- 
- DECLARE_GLOBAL_DATA_PTR;
- 
-+#define GRF_BASE	0x20008000
-+static struct rk3036_grf * const grf = (void *)GRF_BASE;
-+
- void get_ddr_config(struct rk3036_ddr_config *config)
- {
- 	/* K4B4G1646Q config */
-@@ -28,6 +33,33 @@ void get_ddr_config(struct rk3036_ddr_config *config)
- 	config->bw = 1;
+ drivers/tty/serial/serial_core.c | 33 ++-------------------------------
+ 1 file changed, 2 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
+index def5199..150547c 100644
+--- a/drivers/tty/serial/serial_core.c
++++ b/drivers/tty/serial/serial_core.c
+@@ -1892,26 +1892,6 @@ uart_parse_options(char *options, int *baud, int *parity, int *bits, int *flow)
  }
+ EXPORT_SYMBOL_GPL(uart_parse_options);
  
-+#define FASTBOOT_KEY_GPIO 93
-+#define ROCKCHIP_BOOT_MODE_NORMAL	0
-+#define ROCKCHIP_BOOT_MODE_FASTBOOT	1
-+
-+int fastboot_key_pressed(void)
-+{
-+	gpio_request(FASTBOOT_KEY_GPIO, "fastboot_key");
-+	gpio_direction_input(FASTBOOT_KEY_GPIO);
-+	return !gpio_get_value(FASTBOOT_KEY_GPIO);
-+}
-+
-+int board_late_init(void)
-+{
-+	int boot_mode = readl(&grf->os_reg[0]);
-+
-+	/* Clear boot mode */
-+	writel(ROCKCHIP_BOOT_MODE_NORMAL, &grf->os_reg[0]);
-+
-+	if (boot_mode == ROCKCHIP_BOOT_MODE_FASTBOOT ||
-+	    fastboot_key_pressed()) {
-+		printf("enter fastboot!\n");
-+		setenv("preboot", "setenv preboot; fastboot usb0");
-+	}
-+
-+	return 0;
-+}
-+
- int board_init(void)
+-struct baud_rates {
+-	unsigned int rate;
+-	unsigned int cflag;
+-};
+-
+-static const struct baud_rates baud_rates[] = {
+-	{ 921600, B921600 },
+-	{ 460800, B460800 },
+-	{ 230400, B230400 },
+-	{ 115200, B115200 },
+-	{  57600, B57600  },
+-	{  38400, B38400  },
+-	{  19200, B19200  },
+-	{   9600, B9600   },
+-	{   4800, B4800   },
+-	{   2400, B2400   },
+-	{   1200, B1200   },
+-	{      0, B38400  }
+-};
+-
+ /**
+  *	uart_set_options - setup the serial console parameters
+  *	@port: pointer to the serial ports uart_port structure
+@@ -1927,7 +1907,6 @@ uart_set_options(struct uart_port *port, struct console *co,
  {
- 	return 0;
-diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
-index 49997ec..424e81b 100644
---- a/include/configs/kylin_rk3036.h
-+++ b/include/configs/kylin_rk3036.h
-@@ -39,6 +39,9 @@
- 	"mmcpart=5\0" \
- 	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+ 	struct ktermios termios;
+ 	static struct ktermios dummy;
+-	int i;
  
-+#define CONFIG_BOARD_LATE_INIT
-+#define CONFIG_PREBOOT
-+
- #define CONFIG_ANDROID_BOOT_IMAGE
- #define CONFIG_SYS_BOOT_RAMDISK_HIGH
- #define CONFIG_SYS_HUSH_PARSER
+ 	/*
+ 	 * Ensure that the serial console lock is initialised
+@@ -1942,16 +1921,8 @@ uart_set_options(struct uart_port *port, struct console *co,
+ 
+ 	memset(&termios, 0, sizeof(struct ktermios));
+ 
+-	termios.c_cflag = CREAD | HUPCL | CLOCAL;
+-
+-	/*
+-	 * Construct a cflag setting.
+-	 */
+-	for (i = 0; baud_rates[i].rate; i++)
+-		if (baud_rates[i].rate <= baud)
+-			break;
+-
+-	termios.c_cflag |= baud_rates[i].cflag;
++	termios.c_cflag |= CREAD | HUPCL | CLOCAL;
++	tty_termios_encode_baud_rate(&termios, baud, baud);
+ 
+ 	if (bits == 7)
+ 		termios.c_cflag |= CS7;
 -- 
 2.1.4
