@@ -1,81 +1,89 @@
 From: "Huang, Tao" <huangtao@rock-chips.com>
-Subject: Re: [RESEND PATCH] rtc: rk808: rename rtc-rk808.c to rtc-rk8xx.c
-Date: Tue, 5 Jan 2016 16:31:38 +0800
-Message-ID: <568B7F6A.3000607@rock-chips.com>
-References: <1451571295-4193-1-git-send-email-zhangqing@rock-chips.com>
- <20160104094546.GB32724@piout.net>
- <20160104145938.6c053b5a@linux.lan.towertech.it>
+Subject: Re: [PATCH] i2c: rk3x: init module as subsys call
+Date: Tue, 5 Jan 2016 16:48:59 +0800
+Message-ID: <568B837B.50607@rock-chips.com>
+References: <1451962938-17398-1-git-send-email-jay.xu@rock-chips.com>
+ <2513923.8oltbpbAin@phil> <568B73E8.3010901@rock-chips.com>
+ <7893052.zgDX0r4i77@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160104145938.6c053b5a@linux.lan.towertech.it>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: zhangqing <zhangqing@rock-chips.com>, heiko@sntech.de, lee.jones@linaro.org, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <7893052.zgDX0r4i77@phil>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "jianqun.xu" <jay.xu@rock-chips.com>, wsa@the-dreams.de, wdc@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Alessandro:
+Hi, Heiko:
 
-On 2016=E5=B9=B401=E6=9C=8804=E6=97=A5 21:59, Alessandro Zummo wrote:
-> On Mon, 4 Jan 2016 10:45:46 +0100
-> Alexandre Belloni <alexandre.belloni@free-electrons.com> wrote:
+On 2016=E5=B9=B401=E6=9C=8805=E6=97=A5 16:00, Heiko Stuebner wrote:
+> Hi Tao,
 >=20
->> I'm not sure it is useful to do that renaming. It is usual to have o=
-ne
->> driver that supports multiple chips named with the forst chip it
->> supported.
+> Am Dienstag, 5. Januar 2016, 15:42:32 schrieb Huang, Tao:
+
+>> I don't think this is a good idea. This will trigger a lots of init =
+call
+>> failed. Before pmic init, all i2c device driver transmit will failed=
+,
+>> and because i2c is slow bus, and i2c transmit may failed by other
+>> reasons, so the i2c driver and i2c device driver will try many times=
+ to
+>> make sure the transmit completion. These unnecessary transmission wi=
+ll
+>> make Linux boot very slow.
+>=20
+> In general, the slowdown won't be _this_ much if touchscreen drivers =
+need=20
+> one deferral-round before i2c is available. I'm also only pointing ou=
+t=20
+> things I remember from the last time this came up.=20
+>=20
+> rk3x-i2c even was here already:
+> http://www.spinics.net/lists/linux-i2c/msg16680.html
+
+OK. I don't agree with the rule, but we will follow it.
+
+>=20
+>=20
+>> I2C bus should be subsys, and we can easy resolve this problem, why =
+we
+>> depends on a complicated and slow implementation?
+>=20
+> because it's the only safe way to do that. Because now you need i2c-i=
+nit at=20
+> subsys-init time, some months later some other soc may need some othe=
+r=20
+> ordering, especially needing i2c-init later/earlier.
+>=20
+> Going through the deferral mechanism is the only way currently availa=
+ble to=20
+> actually make this work on all socs.
+>=20
+> Tomeu from Collabora is working on some better scheme to optimize dev=
+ice=20
+> probing order but it looks like this may be a bit off still.
+>=20
+>=20
+>>> Your touchscreen will have a "xyz-supply" property and I think the
+>>> regulator-framework should already emit a -EPROBE_DEFER at
+>>> regulator_get,
+>>> when the regulator is specified but not available yet.
 >>
->> Also, what would happen if for example rk855 is not compatible at al=
-l
->> with the previous implementations?
+>> Unfortunately, mostly driver do not support regulator api. They are
+>> suppose power is on.
 >=20
->  Alexandre is absolutely right. There's no need to rename a driver,
->  it would just piss off people who are used to that name and
->  have it in their scripts. Like when your eth0 gets renamed
->  to some obscure enXXX <g>.
->=20
+> Having touchscreen drivers support its proper supply-regulators is no=
+t=20
+> rocket science ;-) [0] , so I would consider this a bug in the touchs=
+creen=20
+> driver itself.
 
-You and Alexandre are right. The rename is just make the driver more
-readable, i.e. let people know this driver suit for more PMIC no just
-rk808. In fact, I don't care the name is rk808 or rk8xx.
-
-The key change of this patch is try to dis-coupling rk808 driver and RT=
-C
-driver. Because of register offset and function is vary between
-different PMIC, we believe it is hard to write one PMIC driver to suit
-all PMIC. So we hope RTC driver can share between all PMIC from rockchi=
-p.
-
-Please review this code:
-
--static int rk808_rtc_probe(struct platform_device *pdev)
-+static int rk8xx_rtc_probe(struct platform_device *pdev)
- {
--	struct rk808 *rk808 =3D dev_get_drvdata(pdev->dev.parent);
-	...
-+	struct i2c_client *client =3D to_i2c_client(pdev->dev.parent);
-
-	...
-
--	rk808_rtc->rk808 =3D rk808;
-+	rk8xx_rtc->regmap =3D devm_regmap_init_i2c(client,
-+					     &rk8xx_rtc_regmap_config);
-	...
-+	rk8xx_rtc->i2c =3D client;
-
-Old driver have struct rk808 pointer, which defined on
-include/linux/mfd/rk808.h
-If we write new PMIC driver, for example rk818, define a new struct
-rk818. How can we get this pointer from RTC driver?
-
-So another way to solve this problem is introduce common struct share
-between all PMIC driver. For example rk8xx.
-
-We solve this problem by create new regmap to access PMIC. As I say
-before, it make RTC driver independent of PMIC driver. Do you agree thi=
-s
-change?
+I don't just talk about touch screen driver, most i2c device driver suc=
+h
+as input sensor/camera/rtc/battery will suffer. So people will see thei=
+r
+drivers do not work or slow down on rk3368 platform :(
 
 Thanks!
 Huang, Tao
