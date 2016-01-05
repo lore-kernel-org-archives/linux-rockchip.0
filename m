@@ -1,69 +1,89 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [RESEND PATCH] rtc: rk808: rename rtc-rk808.c to rtc-rk8xx.c
-Date: Tue, 5 Jan 2016 09:54:53 +0100
-Message-ID: <20160105085135.GG32724@piout.net>
-References: <1451571295-4193-1-git-send-email-zhangqing@rock-chips.com>
- <20160104094546.GB32724@piout.net>
- <20160104145938.6c053b5a@linux.lan.towertech.it>
- <568B7F6A.3000607@rock-chips.com>
+From: Shuyu Wei <sy.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH] ethernet:arc: Move arc_emac_tx_clean() into arc_emac_tx()
+ and disable tx interrupt
+Date: Tue, 5 Jan 2016 17:16:54 +0800
+Message-ID: <BLU436-SMTP1175E4C81F4C2DFF5BF8FEA8FF30@phx.gbl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <568B7F6A.3000607@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Huang, Tao" <huangtao@rock-chips.com>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, zhangqing <zhangqing@rock-chips.com>, heiko@sntech.de, lee.jones@linaro.org, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline; filename="mail.txt"
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Doing tx_clean() inside poll() may scramble the tx ring buffer if 
+tx() is running. This will cause tx to stop working, which can be
+reproduced by simultaneously downloading two large files at high speed.
 
-On 05/01/2016 at 16:31:38 +0800, Huang, Tao wrote :
-> You and Alexandre are right. The rename is just make the driver more
-> readable, i.e. let people know this driver suit for more PMIC no just
-> rk808. In fact, I don't care the name is rk808 or rk8xx.
-> 
+Moving tx_clean() into tx() will prevent this. And tx interrupt is no
+longer needed now.
 
-For this purpose, you can add the name of the supported PMICs in the
-Kconfig.
+Signed-off-by: Shuyu Wei <shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+---
 
-> The key change of this patch is try to dis-coupling rk808 driver and RTC
-> driver. Because of register offset and function is vary between
-> different PMIC, we believe it is hard to write one PMIC driver to suit
-> all PMIC. So we hope RTC driver can share between all PMIC from rockchip.
-> 
-> Please review this code:
-> 
-> -static int rk808_rtc_probe(struct platform_device *pdev)
-> +static int rk8xx_rtc_probe(struct platform_device *pdev)
->  {
-> -	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
-> 	...
-> +	struct i2c_client *client = to_i2c_client(pdev->dev.parent);
-> 
-> 	...
-> 
-> -	rk808_rtc->rk808 = rk808;
-> +	rk8xx_rtc->regmap = devm_regmap_init_i2c(client,
-> +					     &rk8xx_rtc_regmap_config);
-> 	...
-> +	rk8xx_rtc->i2c = client;
-> 
-> Old driver have struct rk808 pointer, which defined on
-> include/linux/mfd/rk808.h
-> If we write new PMIC driver, for example rk818, define a new struct
-> rk818. How can we get this pointer from RTC driver?
-> 
-> So another way to solve this problem is introduce common struct share
-> between all PMIC driver. For example rk8xx.
-> 
-
-That is probably the best solution. If you want to reuse drivers between
-pmic, then have a common structure that you can pass to those drivers.
-
-I believe the regmap_init_i2c should stay in the MFD driver.
-
--- 
-Alexandre Belloni, Free Electrons
-Embedded Linux, Kernel and Android engineering
-http://free-electrons.com
+diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+index abe1eab..34531b3 100644
+--- a/drivers/net/ethernet/arc/emac_main.c
++++ b/drivers/net/ethernet/arc/emac_main.c
+@@ -311,12 +311,10 @@ static int arc_emac_poll(struct napi_struct *napi, int budget)
+ 	struct arc_emac_priv *priv = netdev_priv(ndev);
+ 	unsigned int work_done;
+ 
+-	arc_emac_tx_clean(ndev);
+-
+ 	work_done = arc_emac_rx(ndev, budget);
+ 	if (work_done < budget) {
+ 		napi_complete(napi);
+-		arc_reg_or(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
++		arc_reg_or(priv, R_ENABLE, RXINT_MASK);
+ 	}
+ 
+ 	return work_done;
+@@ -345,9 +343,9 @@ static irqreturn_t arc_emac_intr(int irq, void *dev_instance)
+ 	/* Reset all flags except "MDIO complete" */
+ 	arc_reg_set(priv, R_STATUS, status);
+ 
+-	if (status & (RXINT_MASK | TXINT_MASK)) {
++	if (status & RXINT_MASK) {
+ 		if (likely(napi_schedule_prep(&priv->napi))) {
+-			arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
++			arc_reg_clr(priv, R_ENABLE, RXINT_MASK);
+ 			__napi_schedule(&priv->napi);
+ 		}
+ 	}
+@@ -458,7 +456,7 @@ static int arc_emac_open(struct net_device *ndev)
+ 	arc_reg_set(priv, R_TX_RING, (unsigned int)priv->txbd_dma);
+ 
+ 	/* Enable interrupts */
+-	arc_reg_set(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
++	arc_reg_set(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
+ 
+ 	/* Set CONTROL */
+ 	arc_reg_set(priv, R_CTRL,
+@@ -529,7 +527,7 @@ static int arc_emac_stop(struct net_device *ndev)
+ 	netif_stop_queue(ndev);
+ 
+ 	/* Disable interrupts */
+-	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
++	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
+ 
+ 	/* Disable EMAC */
+ 	arc_reg_clr(priv, R_CTRL, EN_MASK);
+@@ -587,6 +585,8 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+ 	__le32 *info = &priv->txbd[*txbd_curr].info;
+ 	dma_addr_t addr;
+ 
++	arc_emac_tx_clean(ndev);
++
+ 	if (skb_padto(skb, ETH_ZLEN))
+ 		return NETDEV_TX_OK;
