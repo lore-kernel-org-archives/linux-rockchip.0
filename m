@@ -1,62 +1,33 @@
-From: "jianqun.xu" <jay.xu@rock-chips.com>
-Subject: [PATCH] i2c: rk3x: init module as subsys call
-Date: Tue,  5 Jan 2016 11:02:18 +0800
-Message-ID: <1451962938-17398-1-git-send-email-jay.xu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, wsa@the-dreams.de, wdc@rock-chips.com
-Cc: huangtao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, Xu Jianqun <jay.xu@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [RFC PATCH v1 2/2] dt-bindings: add document for rk3229-vop
+Date: Tue, 5 Jan 2016 11:16:21 +0800
+Message-ID: <568B3585.6010704@rock-chips.com>
+References: <1451908230-25329-1-git-send-email-ykk@rock-chips.com>
+ <20160104141121.GA22245@rob-hp-laptop>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160104141121.GA22245@rob-hp-laptop>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xu Jianqun <jay.xu@rock-chips.com>
-
-There is a requirement from pmic device, which is on the i2c bus,
-that the pmic needs to be called earlier then devices powered by
-the outputs of the pmic, if not, the devices maybe fail to probe.
-
-For example, a pmic on i2c0, and touchscreen device on i2c2,
-i2c0: - pmic(rk818)
-i2c2: - ts(gt911), powered by rk818 on i2c0
-
-The problem will happen if the i2c2 node in dts file is ordered
-before i2c0 node, then ts(gt911) will be probed before pmic(rk818),
-since the power from the pmic(rk818) for ts(gt911) hasn't enabled,
-so ts(gt911) will fail to probe due to the failure of i2c test.
-
-But if we set the i2c0 node before i2c2, there is no this issue.
-
-The stable way to make sure that pmic can be intalized before other
-peripher devices is to make the pmic module be subsys call, the i2c
-module need to be subsys call firstly.
-
-Signed-off-by: Xu Jianqun <jay.xu@rock-chips.com>
----
- drivers/i2c/busses/i2c-rk3x.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index c1935eb..00e5959 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -1037,7 +1037,17 @@ static struct platform_driver rk3x_i2c_driver = {
- 	},
- };
- 
--module_platform_driver(rk3x_i2c_driver);
-+static int __init rk3x_i2c_init(void)
-+{
-+	return platform_driver_register(&rk3x_i2c_driver);
-+}
-+subsys_initcall(rk3x_i2c_init);
-+
-+static void __exit rk3x_i2c_exit(void)
-+{
-+	platform_driver_unregister(&rk3x_i2c_driver);
-+}
-+module_exit(rk3x_i2c_exit);
- 
- MODULE_DESCRIPTION("Rockchip RK3xxx I2C Bus driver");
- MODULE_AUTHOR("Max Schwarz <max.schwarz@online.de>");
--- 
-1.9.1
+VGhhbmtzLCBSb2IKCi0gWWFraXIKCk9uIDAxLzA0LzIwMTYgMTA6MTEgUE0sIFJvYiBIZXJyaW5n
+IHdyb3RlOgo+IE9uIE1vbiwgSmFuIDA0LCAyMDE2IGF0IDA3OjUwOjMwUE0gKzA4MDAsIFlha2ly
+IFlhbmcgd3JvdGU6Cj4+IFNpZ25lZC1vZmYtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBz
+LmNvbT4KPj4gLS0tCj4+ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dCB8IDEgKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAx
+IGluc2VydGlvbigrKQo+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+
+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
