@@ -1,310 +1,62 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/2] phy: add a driver for the Rockchip SoC internal eMMC PHY
-Date: Tue,  5 Jan 2016 09:08:01 +0800
-Message-ID: <1451956081-24501-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1451956034-24421-1-git-send-email-shawn.lin@rock-chips.com>
+From: "jianqun.xu" <jay.xu@rock-chips.com>
+Subject: [PATCH] i2c: rk3x: init module as subsys call
+Date: Tue,  5 Jan 2016 11:02:18 +0800
+Message-ID: <1451962938-17398-1-git-send-email-jay.xu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1451956034-24421-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+To: heiko@sntech.de, wsa@the-dreams.de, wdc@rock-chips.com
+Cc: huangtao@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, Xu Jianqun <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch to add a generic PHY driver for ROCKCHIP eMMC PHY.
-Access the PHY via registers provided by GRF (general register
-files) module.
+From: Xu Jianqun <jay.xu@rock-chips.com>
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+There is a requirement from pmic device, which is on the i2c bus,
+that the pmic needs to be called earlier then devices powered by
+the outputs of the pmic, if not, the devices maybe fail to probe.
 
+For example, a pmic on i2c0, and touchscreen device on i2c2,
+i2c0: - pmic(rk818)
+i2c2: - ts(gt911), powered by rk818 on i2c0
+
+The problem will happen if the i2c2 node in dts file is ordered
+before i2c0 node, then ts(gt911) will be probed before pmic(rk818),
+since the power from the pmic(rk818) for ts(gt911) hasn't enabled,
+so ts(gt911) will fail to probe due to the failure of i2c test.
+
+But if we set the i2c0 node before i2c2, there is no this issue.
+
+The stable way to make sure that pmic can be intalized before other
+peripher devices is to make the pmic module be subsys call, the i2c
+module need to be subsys call firstly.
+
+Signed-off-by: Xu Jianqun <jay.xu@rock-chips.com>
 ---
+ drivers/i2c/busses/i2c-rk3x.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-Changes in v2:
-- remove phy from rockchip_emmc_phy
-- remove state from rockchip_emmc_phy
-- remove on/off from init/exit
-
- drivers/phy/Kconfig             |   7 ++
- drivers/phy/Makefile            |   1 +
- drivers/phy/phy-rockchip-emmc.c | 241 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 249 insertions(+)
- create mode 100644 drivers/phy/phy-rockchip-emmc.c
-
-diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-index 03cb3ea..47d16e3 100644
---- a/drivers/phy/Kconfig
-+++ b/drivers/phy/Kconfig
-@@ -320,6 +320,13 @@ config PHY_ROCKCHIP_USB
- 	help
- 	  Enable this to support the Rockchip USB 2.0 PHY.
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index c1935eb..00e5959 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -1037,7 +1037,17 @@ static struct platform_driver rk3x_i2c_driver = {
+ 	},
+ };
  
-+config PHY_ROCKCHIP_EMMC
-+	tristate "Rockchip EMMC PHY Driver"
-+	depends on ARCH_ROCKCHIP && OF
-+	select GENERIC_PHY
-+	help
-+	  Enable this to support the Rockchip EMMC PHY.
-+
- config PHY_ST_SPEAR1310_MIPHY
- 	tristate "ST SPEAR1310-MIPHY driver"
- 	select GENERIC_PHY
-diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-index 075db1a..ed8f175 100644
---- a/drivers/phy/Makefile
-+++ b/drivers/phy/Makefile
-@@ -35,6 +35,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)	+= phy-s5pv210-usb2.o
- obj-$(CONFIG_PHY_EXYNOS5_USBDRD)	+= phy-exynos5-usbdrd.o
- obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)	+= phy-qcom-apq8064-sata.o
- obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
-+obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
- obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)	+= phy-qcom-ipq806x-sata.o
- obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)	+= phy-spear1310-miphy.o
- obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)	+= phy-spear1340-miphy.o
-diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
-new file mode 100644
-index 0000000..6a157c2
---- /dev/null
-+++ b/drivers/phy/phy-rockchip-emmc.c
-@@ -0,0 +1,241 @@
-+/*
-+ * Rockchip emmc PHY driver
-+ *
-+ * Copyright (C) 2015 Shawn Lin <shawn.lin@rock-chips.com>
-+ * Copyright (C) 2015 ROCKCHIP, Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation; either version 2 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/delay.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+/*
-+ * The higher 16-bit of this register is used for write protection
-+ * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-+ */
-+#define HIWORD_UPDATE(val, mask, shift) \
-+		((val) << (shift) | (mask) << ((shift) + 16))
-+
-+/* Register definition */
-+#define GRF_EMMCPHY_CON0	0x0
-+#define GRF_EMMCPHY_CON1	0x4
-+#define GRF_EMMCPHY_CON2	0x8
-+#define GRF_EMMCPHY_CON3	0xc
-+#define GRF_EMMCPHY_CON4	0x10
-+#define GRF_EMMCPHY_CON5	0x14
-+#define GRF_EMMCPHY_CON6	0x18
-+#define GRF_EMMCPHY_STATUS	0x20
-+
-+#define PHYCTRL_PDB_MASK	0x1
-+#define PHYCTRL_PDB_SHIFT	0x0
-+#define PHYCTRL_PDB_PWR_ON	0x1
-+#define PHYCTRL_PDB_PWR_OFF	0x0
-+#define PHYCTRL_ENDLL_MASK	0x1
-+#define PHYCTRL_ENDLL_SHIFT     0x1
-+#define PHYCTRL_ENDLL_ENABLE	0x1
-+#define PHYCTRL_ENDLL_DISABLE	0x0
-+#define PHYCTRL_CALDONE_MASK	0x1
-+#define PHYCTRL_CALDONE_SHIFT   0x6
-+#define PHYCTRL_CALDONE_DONE	0x1
-+#define PHYCTRL_CALDONE_GOING	0x0
-+#define PHYCTRL_DLLRDY_MASK	0x1
-+#define PHYCTRL_DLLRDY_SHIFT	0x5
-+#define PHYCTRL_DLLRDY_DONE	0x1
-+#define PHYCTRL_DLLRDY_GOING	0x0
-+
-+struct rockchip_emmc_phy {
-+	unsigned int	reg_offset;
-+	struct regmap	*reg_base;
-+};
-+
-+static int rockchip_emmc_phy_power(struct rockchip_emmc_phy *rk_phy,
-+				   bool on_off)
+-module_platform_driver(rk3x_i2c_driver);
++static int __init rk3x_i2c_init(void)
 +{
-+	unsigned int caldone;
-+	unsigned int dllrdy;
-+
-+	/*
-+	 * Keep phyctrl_pdb and phyctrl_endll low to allow
-+	 * initialization of CALIO state M/C DFFs
-+	 */
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
-+				   PHYCTRL_PDB_MASK,
-+				   PHYCTRL_PDB_SHIFT));
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
-+				   PHYCTRL_ENDLL_MASK,
-+				   PHYCTRL_ENDLL_SHIFT));
-+
-+	/* Already finish power_off above */
-+	if (on_off == PHYCTRL_PDB_PWR_OFF)
-+		return 0;
-+
-+	/*
-+	 * According to the user manual, calpad calibration
-+	 * cycle takes more than 2us without the minimal recommended
-+	 * value, so we may need a little margin here
-+	 */
-+	udelay(3);
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_PDB_PWR_ON,
-+				   PHYCTRL_PDB_MASK,
-+				   PHYCTRL_PDB_SHIFT));
-+
-+	/*
-+	 * According to the user manual, it asks driver to
-+	 * wait 5us for calpad busy trimming
-+	 */
-+	udelay(5);
-+	regmap_read(rk_phy->reg_base,
-+		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+		    &caldone);
-+	caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
-+	if (caldone != PHYCTRL_CALDONE_DONE) {
-+		pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	/*
-+	 * Enable analog DLL circuits, and we need extra 10.2us
-+	 * for dll to be ready for work.
-+	 */
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-+		     HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
-+				   PHYCTRL_ENDLL_MASK,
-+				   PHYCTRL_ENDLL_SHIFT));
-+	udelay(11);
-+	regmap_read(rk_phy->reg_base,
-+		    rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
-+		    &dllrdy);
-+	dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
-+	if (dllrdy != PHYCTRL_DLLRDY_DONE) {
-+		pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	return 0;
++	return platform_driver_register(&rk3x_i2c_driver);
 +}
++subsys_initcall(rk3x_i2c_init);
 +
-+static int rockchip_emmc_phy_power_off(struct phy *phy)
++static void __exit rk3x_i2c_exit(void)
 +{
-+	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
-+	int ret = 0;
-+
-+	/* Power down emmc phy analog blocks */
-+	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_OFF);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
++	platform_driver_unregister(&rk3x_i2c_driver);
 +}
-+
-+static int rockchip_emmc_phy_power_on(struct phy *phy)
-+{
-+	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
-+	int ret = 0;
-+
-+	/* Power up emmc phy analog blocks */
-+	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_init(struct phy *phy)
-+{
-+	return 0;
-+}
-+
-+static int rockchip_emmc_phy_exit(struct phy *phy)
-+{
-+	return 0;
-+}
-+
-+static const struct phy_ops ops = {
-+	.init		= rockchip_emmc_phy_init,
-+	.exit		= rockchip_emmc_phy_exit,
-+	.power_on	= rockchip_emmc_phy_power_on,
-+	.power_off	= rockchip_emmc_phy_power_off,
-+	.owner		= THIS_MODULE,
-+};
-+
-+static int rockchip_emmc_phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_emmc_phy *rk_phy;
-+	struct phy *generic_phy;
-+	struct phy_provider *phy_provider;
-+	struct regmap *grf;
-+	unsigned int reg_offset;
-+
-+	grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
-+	if (IS_ERR(grf)) {
-+		dev_err(dev, "Missing rockchip,grf property\n");
-+		return PTR_ERR(grf);
-+	}
-+
-+	rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
-+	if (!rk_phy)
-+		return -ENOMEM;
-+
-+	if (of_property_read_u32(dev->of_node, "reg", &reg_offset)) {
-+		dev_err(dev, "missing reg property in node %s\n",
-+			dev->of_node->name);
-+		return -EINVAL;
-+	}
-+
-+	rk_phy->reg_offset = reg_offset;
-+	rk_phy->reg_base = grf;
-+
-+	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
-+	if (IS_ERR(generic_phy)) {
-+		dev_err(dev, "failed to create PHY\n");
-+		return PTR_ERR(generic_phy);
-+	}
-+
-+	phy_set_drvdata(generic_phy, rk_phy);
-+	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+
-+	return PTR_ERR_OR_ZERO(phy_provider);
-+}
-+
-+static const struct of_device_id rockchip_emmc_phy_dt_ids[] = {
-+	{ .compatible = "rockchip,rk3399-emmc-phy" },
-+	{}
-+};
-+
-+MODULE_DEVICE_TABLE(of, rockchip_emmc_phy_dt_ids);
-+
-+static struct platform_driver rockchip_emmc_driver = {
-+	.probe		= rockchip_emmc_phy_probe,
-+	.driver		= {
-+		.name	= "rockchip-emmc-phy",
-+		.of_match_table = rockchip_emmc_phy_dt_ids,
-+	},
-+};
-+
-+module_platform_driver(rockchip_emmc_driver);
-+
-+MODULE_AUTHOR("Shawn Lin <shawn.lin@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip EMMC PHY driver");
-+MODULE_LICENSE("GPL v2");
++module_exit(rk3x_i2c_exit);
+ 
+ MODULE_DESCRIPTION("Rockchip RK3xxx I2C Bus driver");
+ MODULE_AUTHOR("Max Schwarz <max.schwarz@online.de>");
 -- 
-2.3.7
+1.9.1
