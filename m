@@ -1,83 +1,65 @@
 From: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v7 5/5] ARM: dts: rockchip: add support mipi panel tv080wum-nl0
-Date: Wed,  6 Jan 2016 12:03:57 +0800
-Message-ID: <1452053038-32098-6-git-send-email-zyw@rock-chips.com>
-References: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452053038-32098-1-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org
-Cc: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Subject: Re: [PATCH v6.3 4/6] drm: rockchip: Support Synopsys DW MIPI DSI
+Date: Wed, 6 Jan 2016 12:16:52 +0800
+Message-ID: <568C9534.3050700@rock-chips.com>
+References: <1450260616-21160-5-git-send-email-zyw@rock-chips.com>
+ <1450842215-10883-1-git-send-email-zyw@rock-chips.com>
+ <568C7258.3010104@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <568C7258.3010104-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org
+Cc: airlied-cv59FeDIM0c@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This tv080wum-nl0 panel is a mipi panel, it can use in MIPI_TX socket
-of rk3288 evb board.
-
-Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
----
-
-Changes in v7:
-- Move the lcd_en control to act8846 dts
-
-Changes in v6: None
-Changes in v5:
-- add a blank line befor lcd_en
-
-Changes in v4: None
-Changes in v3: None
-
- arch/arm/boot/dts/rk3288-evb-act8846.dts |  2 ++
- arch/arm/boot/dts/rk3288-evb.dtsi        | 12 +++++++++++-
- 2 files changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/rk3288-evb-act8846.dts b/arch/arm/boot/dts/rk3288-evb-act8846.dts
-index e662147..7d5475b 100644
---- a/arch/arm/boot/dts/rk3288-evb-act8846.dts
-+++ b/arch/arm/boot/dts/rk3288-evb-act8846.dts
-@@ -50,6 +50,8 @@
- 		gpio = <&gpio7 3 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lcd_en>;
-+		regulator-always-on;
-+		regulator-boot-on;
- 		regulator-name = "vcc_lcd";
- 		vin-supply = <&vcc_io>;
- 	};
-diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
-index 4faabdb..0c91858 100644
---- a/arch/arm/boot/dts/rk3288-evb.dtsi
-+++ b/arch/arm/boot/dts/rk3288-evb.dtsi
-@@ -47,7 +47,7 @@
- 		reg = <0x0 0x80000000>;
- 	};
- 
--	backlight {
-+	backlight: backlight {
- 		compatible = "pwm-backlight";
- 		brightness-levels = <
- 			  0   1   2   3   4   5   6   7
-@@ -183,6 +183,16 @@
- 	status = "okay";
- };
- 
-+&mipi_dsi {
-+	status = "okay";
-+	panel {
-+		compatible ="boe,tv080wum-nl0";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		status = "okay";
-+	};
-+};
-+
- &sdmmc {
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
--- 
-2.6.3
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTWFyawoKCk9uIDAxLzA2LzIwMTYgMDk6NDggQU0sIE1hcmsgeWFvIHdyb3RlOgo+IE9uIDIw
+MTXlubQxMuaciDIz5pelIDExOjQzLCBDaHJpcyBaaG9uZyB3cm90ZToKPj4gK3N0YXRpYyBpbnQg
+ZHdfbWlwaV9kc2lfcmVnaXN0ZXIoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKPj4gKyAgICAgICAg
+ICAgICAgICAgICAgICBzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPj4gK3sKPj4gKyAgICBzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIgPSAmZHNpLT5lbmNvZGVyOwo+PiArICAgIHN0cnVjdCBk
+cm1fY29ubmVjdG9yICpjb25uZWN0b3IgPSAmZHNpLT5jb25uZWN0b3I7Cj4+ICsgICAgc3RydWN0
+IGRldmljZSAqZGV2ID0gZHNpLT5kZXY7Cj4+ICsgICAgaW50IHJldDsKPj4gKwo+PiArICAgIGVu
+Y29kZXItPnBvc3NpYmxlX2NydGNzID0gZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3MoZHJtLAo+
+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGV2LT5vZl9ub2RlKTsKPj4gKyAg
+ICAvKgo+PiArICAgICAqIElmIHdlIGZhaWxlZCB0byBmaW5kIHRoZSBDUlRDKHMpIHdoaWNoIHRo
+aXMgZW5jb2RlciBpcwo+PiArICAgICAqIHN1cHBvc2VkIHRvIGJlIGNvbm5lY3RlZCB0bywgaXQn
+cyBiZWNhdXNlIHRoZSBDUlRDIGhhcwo+PiArICAgICAqIG5vdCBiZWVuIHJlZ2lzdGVyZWQgeWV0
+LiAgRGVmZXIgcHJvYmluZywgYW5kIGhvcGUgdGhhdAo+PiArICAgICAqIHRoZSByZXF1aXJlZCBD
+UlRDIGlzIGFkZGVkIGxhdGVyLgo+PiArICAgICAqLwo+PiArICAgIGlmIChlbmNvZGVyLT5wb3Nz
+aWJsZV9jcnRjcyA9PSAwKQo+PiArICAgICAgICByZXR1cm4gLUVQUk9CRV9ERUZFUjsKPj4gKwo+
+PiArICAgIGRybV9lbmNvZGVyX2hlbHBlcl9hZGQoJmRzaS0+ZW5jb2RlciwKPj4gKyAgICAgICAg
+ICAgICAgICAgICAmZHdfbWlwaV9kc2lfZW5jb2Rlcl9oZWxwZXJfZnVuY3MpOwo+PiArICAgIHJl
+dCA9IGRybV9lbmNvZGVyX2luaXQoZHJtLCAmZHNpLT5lbmNvZGVyLCAKPj4gJmR3X21pcGlfZHNp
+X2VuY29kZXJfZnVuY3MsCj4+ICsgICAgICAgICAgICAgRFJNX01PREVfRU5DT0RFUl9EU0kpOwo+
+PiArICAgIGlmIChyZXQpIHsKPj4gKyAgICAgICAgZGV2X2VycihkZXYsICJGYWlsZWQgdG8gaW5p
+dGlhbGl6ZSBlbmNvZGVyIHdpdGggZHJtXG4iKTsKPj4gKyAgICAgICAgcmV0dXJuIHJldDsKPj4g
+KyAgICB9Cj4+ICsKPj4gKyAgICBkcm1fY29ubmVjdG9yX2hlbHBlcl9hZGQoY29ubmVjdG9yLAo+
+PiArICAgICAgICAgICAgJmR3X21pcGlfZHNpX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MpOwo+PiAr
+Cj4+ICsgICAgZHJtX2Nvbm5lY3Rvcl9pbml0KGRybSwgJmRzaS0+Y29ubmVjdG9yLAo+PiArICAg
+ICAgICAgICAgICAgJmR3X21pcGlfZHNpX2F0b21pY19jb25uZWN0b3JfZnVuY3MsCj4+ICsgICAg
+ICAgICAgICAgICBEUk1fTU9ERV9DT05ORUNUT1JfRFNJKTsKPj4gKwo+IEhpIENocmlzCj4KPiBJ
+IHRyeSB0byBwaWNrIHlvdXIgcGF0Y2hlcywgYnV0IGZvdW5kIGZvbGxvd2luZyBpc3N1ZXM6Cj4K
+PiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYzog5Zyo5Ye95pWw4oCYZHdf
+bWlwaV9kc2lfcmVnaXN0ZXLigJnkuK06Cj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1p
+cGktZHNpLmM6MTAyNDo1OiDplJnor6/vvJog5o+Q5L6b57uZ5Ye95pWwIAo+IOKAmGRybV9lbmNv
+ZGVyX2luaXTigJnnmoTlrp7lj4LlpKrlsJEKPiBpbmNsdWRlL2RybS9kcm1fY3J0Yy5oOjIyMjA6
+NTog6ZmE5rOo77yaIOWcqOatpOWjsOaYjgo+IG1ha2VbNF06ICoqKiBbZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL2R3LW1pcGktZHNpLm9dIOmUmeivryAxCj4KPiBDYW4geW91IHJlYmFzZSB0byBu
+ZXdlc3QgRGF2ZSdzIGRybS1uZXh0IGFuZCBmaXggdGhpcyBwcm9ibGVtPwpUaGFua3MgTWFyay4K
+SSBoYXZlIHBvc3QgdGhlIHY3IHNlcmlhbCwgZml4IHRoaXMgdGhpcyBjb21waWxlIGVyciBhbmQg
+bW9kaWZ5IHRoZSAKY29uZmlnIHRvIHRyaXN0YXRlIGZvciBtb2R1bGVzIGJ1aWxkCj4KPiBUaGFu
+a3MuCj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
