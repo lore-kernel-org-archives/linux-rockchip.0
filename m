@@ -1,37 +1,50 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2 4/5] clk: rockchip: rk3036: rename emac ext source clock
-Date: Thu,  7 Jan 2016 20:17:36 +0800
-Message-ID: <1452169057-24467-5-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH v2 5/5] clk: rockchip: rk3036: add HCLK_MAC id for emac
+Date: Thu,  7 Jan 2016 20:26:18 +0800
+Message-ID: <1452169578-24565-1-git-send-email-zhengxing@rock-chips.com>
 References: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: heiko@sntech.de
-Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, keescook@google.com, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-There is only support rmii in the RK3036, so we should use the correct
-ext clock name.
+We need to add HCLK_MAC id explicitly because that it is referred
+by hclk in the emac driver.
 
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3036.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3036.c      |    2 +-
+ include/dt-bindings/clock/rk3036-cru.h |    1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 1f00fab..bc7fbac 100644
+index bc7fbac..15cd29a 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -133,7 +133,7 @@ PNAME(mux_spdif_p)	= { "spdif_src", "spdif_frac", "xin12m" };
- PNAME(mux_uart0_p)	= { "uart0_src", "uart0_frac", "xin24m" };
- PNAME(mux_uart1_p)	= { "uart1_src", "uart1_frac", "xin24m" };
- PNAME(mux_uart2_p)	= { "uart2_src", "uart2_frac", "xin24m" };
--PNAME(mux_mac_p)	= { "mac_pll_src", "ext_gmac" };
-+PNAME(mux_mac_p)	= { "mac_pll_src", "rmii_clkin" };
- PNAME(mux_dclk_p)	= { "dclk_lcdc", "dclk_cru" };
+@@ -404,7 +404,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+ 	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+ 	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+-	GATE(0, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
++	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
  
- static struct rockchip_pll_clock rk3036_pll_clks[] __initdata = {
+ 	/* pclk_peri gates */
+ 	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 1, GFLAGS),
+diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+index ebc7a7b..3396591 100644
+--- a/include/dt-bindings/clock/rk3036-cru.h
++++ b/include/dt-bindings/clock/rk3036-cru.h
+@@ -92,6 +92,7 @@
+ #define HCLK_SDMMC		456
+ #define HCLK_SDIO		457
+ #define HCLK_EMMC		459
++#define HCLK_MAC		460
+ #define HCLK_I2S		462
+ #define HCLK_LCDC		465
+ #define HCLK_ROM		467
 -- 
 1.7.9.5
 
