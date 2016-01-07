@@ -1,79 +1,49 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] clk: rockchip: fix some clock gates for rk3368
-Date: Thu,  7 Jan 2016 17:18:07 +0800
-Message-ID: <1452158287-18742-1-git-send-email-wxt@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v2 0/2] Introduce Innosilicon HDMI driver on Rockchip platforms
+Date: Thu,  7 Jan 2016 18:01:36 +0800
+Message-ID: <1452160896-27096-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jianqun xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jianqun xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Reference to the Rockchip RK3368 TRM v1.1, some clock
-gates need to be updated.
-
-Signed-off-by: Jianqun xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-
- drivers/clk/rockchip/clk-rk3368.c | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index be0ede5..21f3ea9 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -780,13 +780,13 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	GATE(PCLK_TSADC, "pclk_tsadc", "pclk_peri", 0, RK3368_CLKGATE_CON(20), 0, GFLAGS),
- 
- 	/* pclk_pd_alive gates */
--	GATE(PCLK_TIMER1, "pclk_timer1", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(14), 8, GFLAGS),
--	GATE(PCLK_TIMER0, "pclk_timer0", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(14), 7, GFLAGS),
--	GATE(0, "pclk_alive_niu", "pclk_pd_alive", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 12, GFLAGS),
--	GATE(PCLK_GRF, "pclk_grf", "pclk_pd_alive", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 11, GFLAGS),
--	GATE(PCLK_GPIO3, "pclk_gpio3", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(14), 3, GFLAGS),
--	GATE(PCLK_GPIO2, "pclk_gpio2", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(14), 2, GFLAGS),
--	GATE(PCLK_GPIO1, "pclk_gpio1", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(14), 1, GFLAGS),
-+	GATE(PCLK_TIMER1, "pclk_timer1", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(22), 13, GFLAGS),
-+	GATE(PCLK_TIMER0, "pclk_timer0", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(22), 12, GFLAGS),
-+	GATE(0, "pclk_alive_niu", "pclk_pd_alive", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(22), 9, GFLAGS),
-+	GATE(PCLK_GRF, "pclk_grf", "pclk_pd_alive", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(22), 8, GFLAGS),
-+	GATE(PCLK_GPIO3, "pclk_gpio3", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(22), 3, GFLAGS),
-+	GATE(PCLK_GPIO2, "pclk_gpio2", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(22), 2, GFLAGS),
-+	GATE(PCLK_GPIO1, "pclk_gpio1", "pclk_pd_alive", 0, RK3368_CLKGATE_CON(22), 1, GFLAGS),
- 
- 	/*
- 	 * pclk_vio gates
-@@ -796,12 +796,12 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	GATE(0, "pclk_dphytx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
- 
- 	/* pclk_pd_pmu gates */
--	GATE(PCLK_PMUGRF, "pclk_pmugrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(17), 0, GFLAGS),
--	GATE(PCLK_GPIO0, "pclk_gpio0", "pclk_pd_pmu", 0, RK3368_CLKGATE_CON(17), 4, GFLAGS),
--	GATE(PCLK_SGRF, "pclk_sgrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(17), 3, GFLAGS),
--	GATE(0, "pclk_pmu_noc", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(17), 2, GFLAGS),
--	GATE(0, "pclk_intmem1", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(17), 1, GFLAGS),
--	GATE(PCLK_PMU, "pclk_pmu", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(17), 2, GFLAGS),
-+	GATE(PCLK_PMUGRF, "pclk_pmugrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 5, GFLAGS),
-+	GATE(PCLK_GPIO0, "pclk_gpio0", "pclk_pd_pmu", 0, RK3368_CLKGATE_CON(23), 4, GFLAGS),
-+	GATE(PCLK_SGRF, "pclk_sgrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 3, GFLAGS),
-+	GATE(0, "pclk_pmu_noc", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 2, GFLAGS),
-+	GATE(0, "pclk_intmem1", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 1, GFLAGS),
-+	GATE(PCLK_PMU, "pclk_pmu", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 0, GFLAGS),
- 
- 	/* timer gates */
- 	GATE(0, "sclk_timer15", "xin24m", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(24), 11, GFLAGS),
--- 
-1.9.1
+CkhlcmUgYXJlIGEgYnJpZWYgaW50cm9kdWN0aW9uIHRvIElubm9zaWxpY29uIEhETUkgSVA6CiAt
+IFN1cHBvcnQgSERNSSAxLjRhLCBIRENQIDEuMiBhbmQgRFZJIDEuMCBzdGFuZGFyZCBjb21wbGlh
+bnQgdHJhbnNtaXR0ZXIKIC0gU3VwcG9ydCBIRE1JMS40IGEvYiAzRCBmdW5jdGlvbiBkZWZpbmVk
+IGluIEhETUkgMS40IGEvYiBzcGVjCiAtIERpZ2l0YWwgdmlkZW8gaW50ZXJmYWNlIHN1cHBvcnRz
+IGEgcGl4ZWwgc2l6ZSBvZiAyNCwgMzAsIDM2LCA0OGJpdHMgY29sb3IKICAgZGVwdGggaW4gUkdC
+CiAtIFMvUERJRiBvdXRwdXQgc3VwcG9ydHMgUENNLCBEb2xieSBEaWdpdGFsLCBEVFMgZGlnaXRh
+bCBhdWRpbyB0cmFuc21pc3Npb24KICAgKDMyLTE5MmtIeiBGcykgdXNpbmcgSUVDNjA5NTggYW5k
+IElFQyA2MTkzNwogLSBUaGUgRURJRCBhbmQgQ0VDIGZ1bmN0aW9uIGFyZSBhbHNvIHN1cHBvcnRl
+ZCBieSBJbm5vc2lsaWNvbiBIRE1JIFRyYW5zbWl0dGVyCiAgIENvbnRyb2xsZQoKCkNoYW5nZXMg
+aW4gdjI6Ci0gVXNpbmcgRFJNIGF0b21pYyBoZWxwZXIgZnVuY3Rpb25zIGZvciBjb25uZWN0b3Ig
+aW5pdCAoTWFyaykKLSBSZW1vdmUgImhkbWktPmNvbm5lY3Rvci5lbmNvZGVyID0gZW5jb2Rlcjsi
+IChNYXJrKQotIENvcnJlY3QgdGhlIG1pc3NwZWxsICJyazMwMzYtZHctaGRtaSIgKEhlaWtvKQoK
+WWFraXIgWWFuZyAoMik6CiAgZHJtOiByb2NrY2hpcC9oZG1pOiBhZGQgSW5ub3NpbGljb24gSERN
+SSBzdXBwb3J0CiAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudCBmb3IgSW5ub3NpbGljb24gSERN
+SSBvbiBSb2NrY2hpcCBwbGF0Zm9ybQoKIC4uLi9kaXNwbGF5L3JvY2tjaGlwL2lubm9faGRtaS1y
+b2NrY2hpcC50eHQgICAgICAgIHwgICA1MCArCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvS2Nv
+bmZpZyAgICAgICAgICAgICAgICAgICB8ICAgIDggKwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICAgICAgIHwgMTAxMCArKysrKysrKysrKysrKysrKysr
+KwogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5oICAgICAgICAgICAgICAgfCAg
+MzY0ICsrKysrKysKIDUgZmlsZXMgY2hhbmdlZCwgMTQzMyBpbnNlcnRpb25zKCspCiBjcmVhdGUg
+bW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9j
+a2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuaAoKLS0gCjIuMS4yCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
