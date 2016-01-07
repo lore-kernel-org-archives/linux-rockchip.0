@@ -1,114 +1,38 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [RESEND PATCH v1 4/4] clk: rockchip: rk3036: fix and add node
- id for emac clock
-Date: Wed, 06 Jan 2016 21:05:56 +0800
-Message-ID: <568D1134.9010305@rock-chips.com>
-References: <1451293433-32392-1-git-send-email-zhengxing@rock-chips.com> <5681E8E4.2010303@rock-chips.com> <5681F121.3070307@rock-chips.com> <1562268.fb58QJ4jV7@diego> <01110793-A349-4006-82A2-4489CE832B19@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [RFC PATCH v1 0/2] Add RK3229 HDMI support
+Date: Thu,  7 Jan 2016 12:34:48 +0800
+Message-ID: <1452141288-9292-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=GB2312
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <01110793-A349-4006-82A2-4489CE832B19@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?GB2312?B?SGVpa28gU3SouWJuZXI=?= <heiko@sntech.de>
-Cc: Yakir Yang <ykk@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Michael Turquette <mturquette@baylibre.com>, Kumar Gala <galak@codeaurora.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, keescook@google.com, linux-clk@vger.kernel.org, leozwang@google.com, xing.zheng@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Russell King <rmk+kernel@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 2016=C4=EA01=D4=C202=C8=D5 10:34, Xing Zheng wrote:
-> Hi Heiko,
->     Thank you for your patch, I will apply and test it later.
->
-> Thanks.
->
->> =D4=DA 2016=C4=EA1=D4=C22=C8=D5=A3=AC06:10=A3=ACHeiko St=A8=B9bner <=
-heiko@sntech.de> =D0=B4=B5=C0=A3=BA
->>
->> Hi Xing,
->>
->> Am Dienstag, 29. Dezember 2015, 10:34:09 schrieb Xing Zheng:
->>> On 2015=C4=EA12=D4=C229=C8=D5 09:59, Yakir Yang wrote:
->>>> On 12/28/2015 08:41 PM, Heiko St=A8=B9bner wrote:
->>>>> Am Montag, 28. Dezember 2015, 17:03:53 schrieb Xing Zheng:
->>>>>> Due to referred old version TRM, there is incorrect emac clock n=
-ode,
->>>>>> we should fix it. The SEL_21_9 is the parent of SEL_21_4.
->>>>>>
->>>>>> In the emac driver, we need to refer HCLK_MAC, and because There=
- are
->>>>>> only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under =
-the
->>>>>> GPLL, and it is unable to provide the accurate rate for mac_ref =
-which
->>>>>> need to 50MHz probability, we should let it under the APLL and a=
-re
->>>>>> able to set the freq which integer multiples of 50MHz, so we add=
- these
->>>>>> emac node for reference.
->>>>> I don't really follow here. While I do understand that the emac n=
-eeds
->>>>> 50MHz, I
->>>>> don't think using the APLL as source is helpful.
->>>>>
->>>>> The APLL is the main clocksource for the cpu-cores, including fre=
-quency
->>>>> scaling, and while it currently only lists 816MHz as sole frequen=
-cy,
->>>>> you're
->>>>> pretty much guaranteed to not get your correct multiple of 50MHz =
-from
->>>>> there
->>>>> either. And limiting the cpu to just do 600MHz to get the mac wor=
-king
->>>>> sounds
->>>>> pretty bad ;-) .
->>>>>
->>>>>
->>>>> In the rk3036 cru-node the gpll gets set to 594MHz. Is there a
->>>>> special reason
->>>>> why it needs to be 594MHz and cannot be a round 600MHz? Because t=
-hat
->>>>> would
->>>>> also provide your 50MHz-multiple nicely.
->>>> Yes, this magic 594MHz would help to support the standard HDMI
->>>> resolutions, here are the math:
->>>>
->>>> 1920x1080-60Hz DCLK =3D 148.5MHz =3D 594MHz / 4
->>>> 1280x720-60Hz DCLK =3D 74.25MHz =3D 594MHz / 8
->>>> 720x480-60Hz DCLK =3D 27MHz =3D 594MHz / 22
->>>>
->>>> Thanks,
->>>> - Yakir
->>> Thanks Yakir.
->>>
->>> Hi Heiko,
->>> From the above, do you have better idea for the RK3036's emac witho=
-ut
->>> ext-oscillator?
->> During the last days I did play a bit with the clock framework. As I=
- don't=20
->> have a Kylin (or any rk3036) board, I did build a test-case with pcl=
-k_cpu on=20
->> the rk3188 (which can be affected by the armclk if not reparented to=
- the=20
->> gpll), which got sucessfully adapted to get back to (or near) the or=
-iginally=20
->> requested frequency.
->>
->> So ideally you could roll back your mux/div split here and try the a=
-ttached=20
->> diff. In theory it should help :-) .
->> As can be seen by the FIXMEs, not fully finished, but I'd like to de=
-termine if=20
->> it fixes the issue at least.
->>
->>
->> Heiko
->> <clk-keep-req-rate.diff>
-
-I tested your patch just now, it seems to work well. I will do more tes=
-ts.
-
-Thank you. :-)
-
+ClJLMzIyOSBoYXZlIGludGVncmF0ZWQgYW4gRGVzaWduZWRXYXJlIEhETUkgY29udHJvbGxlciBh
+bmQgYW4gSU5OTyBIRE1JIHBoeSwKc28gd2UgY2FuIHN0aWxsIHJldXNlIHRoZSBkdy1oZG1pIGRy
+aXZlciBmb3IgUkszMjI5IEhETUkgY29udHJvbGxlciwgYnV0CndlIG5lZWQgdG8gY3JlYXRlIGFu
+IHNlcGFyYXRlIGRyaXZlciBmb3IgUkszMjI5IEhETUkgUEhZLgoKCllha2lyIFlhbmcgKDIpOgog
+IGRybTogcm9ja2NoaXA6IGhkbWk6IGFkZCBSSzMyMjkgSERNSSBzdXBwb3J0CiAgZHQtYmluZGlu
+Z3M6IGFkZCBkb2N1bWVudCBmb3IgcmszMjI5LWhkbWkKCiAuLi4vYmluZGluZ3MvZGlzcGxheS9y
+b2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLnR4dCB8ICAgNCArLQogZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9kdy1oZG1pLmMgICAgICAgICAgICAgICAgICAgfCAgMzMgKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgICAgICAgIHwgMzgwICsrKysrKysrKysrKysr
+KysrKystLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuaCAgICAg
+ICAgfCAxMzcgKysrKysrKysKIGluY2x1ZGUvZHJtL2JyaWRnZS9kd19oZG1pLmggICAgICAgICAg
+ICAgICAgICAgICAgIHwgICA1ICstCiA1IGZpbGVzIGNoYW5nZWQsIDUxOSBpbnNlcnRpb25zKCsp
+LCA0MCBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5oCgotLSAKMi4xLjIKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
