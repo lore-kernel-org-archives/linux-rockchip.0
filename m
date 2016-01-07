@@ -1,43 +1,42 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2 3/5] clk: rockchip: rk3036: fix the div offset for emac clock
-Date: Thu,  7 Jan 2016 20:17:35 +0800
-Message-ID: <1452169057-24467-4-git-send-email-zhengxing@rock-chips.com>
-References: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/5] fix some clock configuration for the RK3036 platform
+Date: Thu,  7 Jan 2016 20:17:32 +0800
+Message-ID: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to reference to old version TRM, there are incorrect emac clock node.
-The SEL_21_9 is used for the parent div, the SEL_21_4 is used for the
-child div.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+Hi:
+  In the development work, we found that some of the previous
+incorrect clock configuration on the RK3036 platform, we should
+fix them.
 
- drivers/clk/rockchip/clk-rk3036.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 04b5249..1f00fab 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -344,12 +344,12 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKGATE_CON(10), 5, GFLAGS),
- 
- 	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
--			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
-+			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 9, 5, DFLAGS),
- 	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
- 
- 	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
--			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
-+			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 6, GFLAGS),
- 
- 	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
+
+Xing Zheng (5):
+  clk: rockchip: rk3036: fix the FLAGs for clock mux
+  clk: rockchip: rk3036: fix uarts clock error
+  clk: rockchip: rk3036: fix the div offset for emac clock
+  clk: rockchip: rk3036: rename emac ext source clock
+  clk: rockchip: rk3036: add HCLK_MAC id for emac
+
+ drivers/clk/rockchip/clk-rk3036.c      |   28 ++++++++++++++--------------
+ include/dt-bindings/clock/rk3036-cru.h |    1 +
+ 2 files changed, 15 insertions(+), 14 deletions(-)
+
 -- 
 1.7.9.5
