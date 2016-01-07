@@ -1,33 +1,61 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 04/12] clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for sclk_i2s_out
-Date: Thu, 07 Jan 2016 11:05:06 +0100
-Message-ID: <290434099.8XFZ9qmNRz@phil>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com> <1452155155-16232-5-git-send-email-wxt@rock-chips.com>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v2 2/2] dt-bindings: add document for Innosilicon HDMI on
+ Rockchip platform
+Date: Thu,  7 Jan 2016 18:07:10 +0800
+Message-ID: <1452161230-27315-1-git-send-email-ykk@rock-chips.com>
+References: <1452160896-27096-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1452155155-16232-5-git-send-email-wxt@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1452160896-27096-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-Am Donnerstag, 7. Januar 2016, 16:25:47 schrieb Caesar Wang:
-> SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is used by
-> extra codecs.
-> 
-> Due to it shouldn't belong to any driver, but we need it enabled,
-> so just mark it as the CLK_IGNORE_UNUSED flag.
-
-What makes you think it shouldn't belong to any driver?
-
-In most schematics I have, i2s_clkout is going to some clock-input of the 
-audio codec - probably the MCLK input on your rt5616. And while the new 
-rt5616 driver does not seem to do clock handling, it should just handle the 
-clock using the normal APIs.
-
-
-Heiko
+U2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgpBY2tlZC1ieTog
+Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KLS0tCkNoYW5nZXMgaW4gdjI6Ci0gQ29ycmVj
+dCB0aGUgbWlzc3BlbGwgInJrMzAzNi1kdy1oZG1pIiAoSGVpa28pCgogLi4uL2Rpc3BsYXkvcm9j
+a2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dCAgICAgICAgfCA1MCArKysrKysrKysrKysrKysr
+KysrKysrCiAxIGZpbGUgY2hhbmdlZCwgNTAgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAw
+NjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2lu
+bm9faGRtaS1yb2NrY2hpcC50eHQKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0IGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1p
+LXJvY2tjaGlwLnR4dApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwLi44MDk2YTI5
+Ci0tLSAvZGV2L251bGwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
+c3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dApAQCAtMCwwICsxLDUwIEBACitS
+b2NrY2hpcCBzcGVjaWZpYyBleHRlbnNpb25zIHRvIHRoZSBJbm5vc2lsaWNvbiBIRE1JCis9PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PQorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBj
+b21wYXRpYmxlOgorCSJyb2NrY2hpcCxyazMwMzYtaW5uby1oZG1pIjsKKy0gcmVnOgorCVBoeXNp
+Y2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJz
+LgorLSBjbG9ja3MsIGNsb2NrLW5hbWVzOgorCVBoYW5kbGUgdG8gaGRtaSBjb250cm9sbGVyIGNs
+b2NrLCBuYW1lIHNob3VsZCBiZSAicGNsayIKKy0gaW50ZXJydXB0czoKKwlIRE1JIGludGVycnVw
+dCBudW1iZXIKKy0gcG9ydHM6CisJQ29udGFpbiBvbmUgcG9ydCBub2RlIHdpdGggZW5kcG9pbnQg
+ZGVmaW5pdGlvbnMgYXMgZGVmaW5lZCBpbgorCURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9ncmFwaC50eHQuCistIHBpbmN0cmwtMCwgcGluY3RybC1uYW1lOgorCVN3aXRjaCB0aGUg
+aW9tdXggb2YgSFBEL0NFQyBwaW5zIHRvIEhETUkgZnVuY3Rpb24uCisKK0V4YW1wbGU6CitoZG1p
+OiBoZG1pQDIwMDM0MDAwIHsKKwljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi1pbm5vLWhk
+bWkiOworCXJlZyA9IDwweDIwMDM0MDAwIDB4NDAwMD47CisJaW50ZXJydXB0cyA9IDxHSUNfU1BJ
+IDQ1IElSUV9UWVBFX0xFVkVMX0hJR0g+OworCWNsb2NrcyA9IDwmY3J1ICBQQ0xLX0hETUk+Owor
+CWNsb2NrLW5hbWVzID0gInBjbGsiOworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJcGlu
+Y3RybC0wID0gPCZoZG1pX2N0bD47CisJc3RhdHVzID0gImRpc2FibGVkIjsKKworCWhkbWlfaW46
+IHBvcnQgeworCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKKwkJI3NpemUtY2VsbHMgPSA8MD47CisJ
+CWhkbWlfaW5fbGNkYzogZW5kcG9pbnRAMCB7CisJCQlyZWcgPSA8MD47CisJCQlyZW1vdGUtZW5k
+cG9pbnQgPSA8JmxjZGNfb3V0X2hkbWk+OworCQl9OworCX07Cit9OworCismcGluY3RybCB7CisJ
+aGRtaSB7CisJCWhkbWlfY3RsOiBoZG1pLWN0bCB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDEgOCAg
+UktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCisJCQkJCTwxIDkgIFJLX0ZVTkNfMSAmcGNmZ19w
+dWxsX25vbmU+LAorCQkJCQk8MSAxMCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKKwkJCQkJ
+PDEgMTEgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT47CisJCX07CisJfTsKKworfTsKLS0gCjIu
+MS4yCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
