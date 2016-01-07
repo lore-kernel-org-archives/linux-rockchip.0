@@ -1,62 +1,93 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 03/12] ARM: dts: rockchip: override the clocks in i2s for kylin board
-Date: Thu,  7 Jan 2016 16:25:46 +0800
-Message-ID: <1452155155-16232-4-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2 06/12] mmc: pwrseq: add support for power-on sequencing through DT
+Date: Thu,  7 Jan 2016 16:25:49 +0800
+Message-ID: <1452155155-16232-7-git-send-email-wxt@rock-chips.com>
 References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452155155-16232-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, leecam-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Caesar Wang <wxt@rock-chips.com>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@nvidia.com>, Javier Martinez Canillas <javier@osg.samsung.com>, NeilBrown <neil@brown.name>
 List-Id: linux-rockchip.vger.kernel.org
 
-The sysclk seems be incorrect since we use the simple card for kylin
-board.
+This patch enables support for power-on sequencing of SDIO
+peripherals through DT.
 
-The simple card call:
+In general, it's quite common that wifi modules and other similar
+peripherals have several signals in addition to the SDIO interface that
+needs wiggling before the module will power on.
 
-asoc_simple_card_probe ->
- asoc_simple_card_dai_link_of ->
-  asoc_simple_card_sub_parse_of ->
-...
-clk = of_clk_get(args.np, 0);
-if (!IS_ERR(clk))
-dai->sysclk = clk_get_rate(clk);
+For example:
+we need enable wifi module power to via the WL_REG_ON
+pin, we need enable it as the regulator if this pin is connected to
+the gpio of cpu.
 
-The sysclk come from the first clock, then first clock is hclk_i2s
-in i2s for rk3036 dtsi.
-So, we can override the clocks to fit the simple card in here.
+Maybe, someone will say that can pull up/down from dts.
+Unfortunately some SoCs can't support pinctrl pull up/down in
+internal.
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Anyway, we can add this patch to supprt the power-on sequencing for
+sdio.
+
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+
 ---
 
-Changes in v2: None
+Changes in v2:
+- This fix inmmc-power-sequences, as Heiko comment on
+  https://patchwork.kernel.org/patch/7903161/
 
- arch/arm/boot/dts/rk3036-kylin.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/mmc/core/pwrseq_simple.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index 27b6326..b642369 100644
---- a/arch/arm/boot/dts/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -288,6 +288,13 @@
+diff --git a/drivers/mmc/core/pwrseq_simple.c b/drivers/mmc/core/pwrseq_simple.c
+index d10538b..455dd0c 100644
+--- a/drivers/mmc/core/pwrseq_simple.c
++++ b/drivers/mmc/core/pwrseq_simple.c
+@@ -14,6 +14,7 @@
+ #include <linux/err.h>
+ #include <linux/of_gpio.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/regulator/consumer.h>
+ 
+ #include <linux/mmc/host.h>
+ 
+@@ -24,6 +25,7 @@ struct mmc_pwrseq_simple {
+ 	bool clk_enabled;
+ 	struct clk *ext_clk;
+ 	struct gpio_descs *reset_gpios;
++	struct regulator *regulator;
  };
  
- &i2s {
-+	/**
-+	 * We should override the clocks since sysclk from the first clock
-+	 * in simple card.
-+	 */
-+	clock-names = "i2s_clk", "i2s_hclk";
-+	clocks = <&cru SCLK_I2S>, <&cru HCLK_I2S>;
+ static void mmc_pwrseq_simple_set_gpios_value(struct mmc_pwrseq_simple *pwrseq,
+@@ -45,6 +47,13 @@ static void mmc_pwrseq_simple_pre_power_on(struct mmc_host *host)
+ 	struct mmc_pwrseq_simple *pwrseq = container_of(host->pwrseq,
+ 					struct mmc_pwrseq_simple, pwrseq);
+ 
++	if (!IS_ERR(pwrseq->regulator)) {
++		dev_dbg(host->parent, "Enabling external regulator\n");
++		if (regulator_enable(pwrseq->regulator))
++			dev_err(host->parent,
++				"Failed to enable external regulator\n");
++	}
 +
- 	#sound-dai-cells = <0>;
- 	status = "okay";
- };
+ 	if (!IS_ERR(pwrseq->ext_clk) && !pwrseq->clk_enabled) {
+ 		clk_prepare_enable(pwrseq->ext_clk);
+ 		pwrseq->clk_enabled = true;
+@@ -117,6 +126,13 @@ struct mmc_pwrseq *mmc_pwrseq_simple_alloc(struct mmc_host *host,
+ 		goto clk_put;
+ 	}
+ 
++	pwrseq->regulator = devm_regulator_get(dev, "ext-vcc");
++	if (IS_ERR(pwrseq->regulator) &&
++	    PTR_ERR(pwrseq->regulator) != -EPROBE_DEFER) {
++		ret = PTR_ERR(pwrseq->regulator);
++		goto clk_put;
++	}
++
+ 	pwrseq->pwrseq.ops = &mmc_pwrseq_simple_ops;
+ 
+ 	return &pwrseq->pwrseq;
 -- 
 1.9.1
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
