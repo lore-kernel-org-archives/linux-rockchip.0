@@ -1,114 +1,53 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v2 11/12] ARM: dts: rockchip: add the lcdc and hdmi node for rk3036
-Date: Thu,  7 Jan 2016 16:25:54 +0800
-Message-ID: <1452155155-16232-12-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 04/12] clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED
+ flag for sclk_i2s_out
+Date: Thu,  7 Jan 2016 16:25:47 +0800
+Message-ID: <1452155155-16232-5-git-send-email-wxt@rock-chips.com>
 References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452155155-16232-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, leecam-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3036 support two overlay plane and one hwc plane,
-it support IOMMU, and its IOMMU same as rk3288's.
+SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is used by
+extra codecs.
 
-Meanwhile, add the inno hdmi for HDMI display.
+Due to it shouldn't belong to any driver, but we need it enabled,
+so just mark it as the CLK_IGNORE_UNUSED flag.
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
 Changes in v2: None
 
- arch/arm/boot/dts/rk3036.dtsi | 61 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ drivers/clk/rockchip/clk-rk3036.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 8f1bb0f..6ff03e3 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -147,6 +147,37 @@
- 		};
- 	};
- 
-+	lcdc_mmu: iommu@10118300 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x10118300 0x100>;
-+		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "lcdc_mmu";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	lcdc: lcdc@10118000 {
-+		compatible = "rockchip,rk3036-lcdc";
-+		reg = <0x10118000 0x19c>;
-+		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_LCDC>, <&cru SCLK_LCDC>, <&cru HCLK_LCDC>;
-+		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-+		resets = <&cru SRST_LCDC1_A>, <&cru SRST_LCDC1_H>, <&cru SRST_LCDC1_D>;
-+		reset-names = "axi", "ahb", "dclk";
-+		iommus = <&lcdc_mmu>;
-+
-+		status = "disabled";
-+
-+		lcdc_out: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			lcdc_out_hdmi: endpoint@0 {
-+				reg = <1>;
-+				remote-endpoint = <&hdmi_in_lcdc>;
-+			};
-+		};
-+	};
-+
- 	gic: interrupt-controller@10139000 {
- 		compatible = "arm,gic-400";
- 		interrupt-controller;
-@@ -274,6 +305,27 @@
- 		status = "disabled";
- 	};
- 
-+	hdmi: hdmi@20034000 {
-+		compatible = "rockchip,rk3036-inno-hdmi";
-+		reg = <0x20034000 0x4000>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru  PCLK_HDMI>;
-+		clock-names = "pclk";
-+		rockchip,grf = <&grf>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmi_ctl>;
-+		status = "disabled";
-+
-+		hdmi_in: port {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			hdmi_in_lcdc: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&lcdc_out_hdmi>;
-+			};
-+		};
-+	};
-+
- 	timer: timer@20044000 {
- 		compatible = "rockchip,rk3036-timer", "rockchip,rk3288-timer";
- 		reg = <0x20044000 0x20>;
-@@ -556,6 +608,15 @@
- 			};
- 		};
- 
-+		hdmi {
-+			hdmi_ctl: hdmi-ctl {
-+				rockchip,pins = <1 8  RK_FUNC_1 &pcfg_pull_none>,
-+						<1 9  RK_FUNC_1 &pcfg_pull_none>,
-+						<1 10 RK_FUNC_1 &pcfg_pull_none>,
-+						<1 11 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		i2c0 {
- 			i2c0_xfer: i2c0-xfer {
- 				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index 34c78f4..c33ed3c 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -310,7 +310,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 			RK2928_CLKSEL_CON(7), 0,
+ 			RK2928_CLKGATE_CON(0), 10, GFLAGS,
+ 			&rk3036_i2s_fracmux),
+-	COMPOSITE_NODIV(SCLK_I2S_OUT, "i2s_clkout", mux_i2s_clkout_p, 0,
++	COMPOSITE_NODIV(SCLK_I2S_OUT, "i2s_clkout", mux_i2s_clkout_p, CLK_IGNORE_UNUSED,
+ 			RK2928_CLKSEL_CON(3), 12, 1, MFLAGS,
+ 			RK2928_CLKGATE_CON(0), 13, GFLAGS),
+ 	GATE(SCLK_I2S, "sclk_i2s", "i2s_pre", CLK_SET_RATE_PARENT,
 -- 
 1.9.1
