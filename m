@@ -1,7 +1,7 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v2 2/5] clk: rockchip: rk3036: fix uarts clock error
-Date: Thu,  7 Jan 2016 20:17:34 +0800
-Message-ID: <1452169057-24467-3-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH v2 3/5] clk: rockchip: rk3036: fix the div offset for emac clock
+Date: Thu,  7 Jan 2016 20:17:35 +0800
+Message-ID: <1452169057-24467-4-git-send-email-zhengxing@rock-chips.com>
 References: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
@@ -10,34 +10,34 @@ To: heiko@sntech.de
 Cc: keescook@google.com, leozwang@google.com, linux-rockchip@lists.infradead.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to a copy-paste error the uart1 and uart2 clock div set
-incorrect, we should to fix it.
+Due to reference to old version TRM, there are incorrect emac clock node.
+The SEL_21_9 is used for the parent div, the SEL_21_4 is used for the
+child div.
 
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3036.c |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/clk/rockchip/clk-rk3036.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 7e3b41c..04b5249 100644
+index 04b5249..1f00fab 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -242,11 +242,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(1), 8, GFLAGS),
- 	COMPOSITE_NOMUX(0, "uart1_src", "uart_pll_clk", 0,
--			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
--			RK2928_CLKGATE_CON(1), 8, GFLAGS),
-+			RK2928_CLKSEL_CON(14), 0, 7, DFLAGS,
-+			RK2928_CLKGATE_CON(1), 10, GFLAGS),
- 	COMPOSITE_NOMUX(0, "uart2_src", "uart_pll_clk", 0,
--			RK2928_CLKSEL_CON(13), 0, 7, DFLAGS,
--			RK2928_CLKGATE_CON(1), 8, GFLAGS),
-+			RK2928_CLKSEL_CON(15), 0, 7, DFLAGS,
-+			RK2928_CLKGATE_CON(1), 12, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(17), 0,
- 			RK2928_CLKGATE_CON(1), 9, GFLAGS,
+@@ -344,12 +344,12 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ 			RK2928_CLKGATE_CON(10), 5, GFLAGS),
+ 
+ 	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
+-			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 4, 5, DFLAGS),
++			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 9, 5, DFLAGS),
+ 	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
+ 
+ 	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
+-			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
++			RK2928_CLKSEL_CON(21), 4, 5, DFLAGS,
+ 			RK2928_CLKGATE_CON(2), 6, GFLAGS),
+ 
+ 	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
 -- 
 1.7.9.5
