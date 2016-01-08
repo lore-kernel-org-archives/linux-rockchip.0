@@ -1,57 +1,52 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 04/12] clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for sclk_i2s_out
-Date: Fri, 08 Jan 2016 10:46:26 +0100
-Message-ID: <20757797.djuaztrzGE@phil>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com> <290434099.8XFZ9qmNRz@phil> <568F80BA.6060209@gmail.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 1/6] common/image-fdt.c: Make boot_get_fdt() perform a
+ check for Android images
+Date: Fri,  8 Jan 2016 18:33:27 +0800
+Message-ID: <1452249212-25183-2-git-send-email-jeffy.chen@rock-chips.com>
+References: <1452249212-25183-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <568F80BA.6060209@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, leecam@google.com, linux-arm-kernel@lists.infradead.org, keescook@google.com, linux-clk@vger.kernel.org, leozwang@google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452249212-25183-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Max Krummenacher <max.krummenacher-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+Android images don't have a fdt.
 
-Am Freitag, 8. Januar 2016, 17:26:18 schrieb Caesar Wang:
-> =E5=9C=A8 2016=E5=B9=B401=E6=9C=8807=E6=97=A5 18:05, Heiko Stuebner =E5=
-=86=99=E9=81=93:
-> > Am Donnerstag, 7. Januar 2016, 16:25:47 schrieb Caesar Wang:
-> >> SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is us=
-ed by
-> >> extra codecs.
-> >>=20
-> >> Due to it shouldn't belong to any driver, but we need it enabled,
-> >> so just mark it as the CLK_IGNORE_UNUSED flag.
-> >=20
-> > What makes you think it shouldn't belong to any driver?
-> >=20
-> > In most schematics I have, i2s_clkout is going to some clock-input =
-of
-> > the
-> > audio codec - probably the MCLK input on your rt5616. And while the=
- new
-> > rt5616 driver does not seem to do clock handling, it should just ha=
-ndle
-> > the clock using the normal APIs.
->=20
-> You are right,  that's seem has to find the root cause.
-> I'm wonder that the codec/i2s is working in kernel v4.1 patch without=
- it.
->=20
-> In general,  the MLCK will be handled in i2s driver if the cpu side i=
-s
-> master.
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
 
-looking at the rt5616 datasheet, that would be BCLK1 instead I think. T=
-his=20
-one does differentiate between being master/slave.
+Changes in v2: None
 
-The master/sysclk (mclk) is also handled in other drivers in all cases.=
-=20
-(da7213.c, da7219.c, max98090.c, max98095.c, probably more)
+ common/image-fdt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-
-Heiko
+diff --git a/common/image-fdt.c b/common/image-fdt.c
+index 5e4e5bd..41aaa0d 100644
+--- a/common/image-fdt.c
++++ b/common/image-fdt.c
+@@ -379,6 +379,10 @@ int boot_get_fdt(int flag, int argc, char * const argv[], uint8_t arch,
+ 				       (long)fdt_addr);
+ 			}
+ 			break;
++#ifdef CONFIG_ANDROID_BOOT_IMAGE
++		case IMAGE_FORMAT_ANDROID:
++			goto no_fdt;
++#endif
+ 		default:
+ 			puts("ERROR: Did not find a cmdline Flattened Device Tree\n");
+ 			goto no_fdt;
+-- 
+2.1.4
