@@ -1,45 +1,58 @@
-From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Subject: Re: [PATCH v2 05/12] mmc: pwrseq: Document optional exteral vcc for
- the simple power sequence
-Date: Fri, 8 Jan 2016 09:13:39 -0300
-Message-ID: <568FA7F3.9090304@osg.samsung.com>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
- <1452155155-16232-6-git-send-email-wxt@rock-chips.com>
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH] ARM: multi_v7_defconfig: Add rockchip audio support
+Date: Fri,  8 Jan 2016 13:16:46 +0100
+Message-ID: <1452255406-2439-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452155155-16232-6-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, leecam-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andreas Fenkart <afenkart-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org, arm@kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Caesar,
+As the rockchip SPDIF driver landed for 4.4 and the required clock
+patches to make it work properly are scheduled for the 4.5 merge window
+it seems time to support for audio device found on rockchip boards in
+the defconfig as well.
 
-On 01/07/2016 05:25 AM, Caesar Wang wrote:
-> This patch adds the exteral vcc optional for the simple power sequence.
-> 
-> Some WLAN chips attached to a SDIO interface, need an external vcc
-> to be operational. Since this is very common, extend the simple MMC
-> power sequence DT binding to support an optional exteral vcc.
-> 
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 
-s/exteral/external in the subject line and other places.
+---
 
-I think that makes sense to extend the simple power sequence provider
-to add a regulator since many SDIO chips may needed it but it seems
-from the commit message of patch 06/12 that you don't actually need
-a regulator but to toggle a WL_REG_ON pin in your WiFi chip.
+ arch/arm/configs/multi_v7_defconfig | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-I'll answer to that patch though.
-
-Best regards,
+diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
+index f6e104d..089b4da 100644
+--- a/arch/arm/configs/multi_v7_defconfig
++++ b/arch/arm/configs/multi_v7_defconfig
+@@ -548,6 +548,10 @@ CONFIG_SND_SOC=m
+ CONFIG_SND_ATMEL_SOC=m
+ CONFIG_SND_ATMEL_SOC_WM8904=m
+ CONFIG_SND_SOC_FSL_SAI=m
++CONFIG_SND_SOC_ROCKCHIP=m
++CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
++CONFIG_SND_SOC_ROCKCHIP_MAX98090=m
++CONFIG_SND_SOC_ROCKCHIP_RT5645=m
+ CONFIG_SND_SOC_SH4_FSI=m
+ CONFIG_SND_SOC_RCAR=m
+ CONFIG_SND_SOC_RSRC_CARD=m
+@@ -564,6 +568,7 @@ CONFIG_SND_SOC_TEGRA_ALC5632=m
+ CONFIG_SND_SOC_TEGRA_MAX98090=m
+ CONFIG_SND_SOC_AK4642=m
+ CONFIG_SND_SOC_SGTL5000=m
++CONFIG_SND_SOC_SPDIF=m
+ CONFIG_SND_SOC_WM8978=m
+ CONFIG_USB=y
+ CONFIG_USB_XHCI_HCD=y
 -- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.7.0.rc3
