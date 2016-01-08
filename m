@@ -1,63 +1,57 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 04/12] clk: rockchip: rk3036: enable the
- CLK_IGNORE_UNUSED flag for sclk_i2s_out
-Date: Fri, 8 Jan 2016 17:26:18 +0800
-Message-ID: <568F80BA.6060209@gmail.com>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
- <1452155155-16232-5-git-send-email-wxt@rock-chips.com>
- <290434099.8XFZ9qmNRz@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/12] clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for sclk_i2s_out
+Date: Fri, 08 Jan 2016 10:46:26 +0100
+Message-ID: <20757797.djuaztrzGE@phil>
+References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com> <290434099.8XFZ9qmNRz@phil> <568F80BA.6060209@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <290434099.8XFZ9qmNRz@phil>
+In-Reply-To: <568F80BA.6060209@gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
+To: Caesar Wang <caesar.upstream@gmail.com>
 Cc: Caesar Wang <wxt@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, leecam@google.com, linux-arm-kernel@lists.infradead.org, keescook@google.com, linux-clk@vger.kernel.org, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+Hi Caesar,
 
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8807=E6=97=A5 18:05, Heiko Stuebner =E5=
+Am Freitag, 8. Januar 2016, 17:26:18 schrieb Caesar Wang:
+> =E5=9C=A8 2016=E5=B9=B401=E6=9C=8807=E6=97=A5 18:05, Heiko Stuebner =E5=
 =86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Donnerstag, 7. Januar 2016, 16:25:47 schrieb Caesar Wang:
->> SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is used=
- by
->> extra codecs.
->>
->> Due to it shouldn't belong to any driver, but we need it enabled,
->> so just mark it as the CLK_IGNORE_UNUSED flag.
-> What makes you think it shouldn't belong to any driver?
->
-> In most schematics I have, i2s_clkout is going to some clock-input of=
- the
-> audio codec - probably the MCLK input on your rt5616. And while the n=
-ew
-> rt5616 driver does not seem to do clock handling, it should just hand=
-le the
-> clock using the normal APIs.
+> > Am Donnerstag, 7. Januar 2016, 16:25:47 schrieb Caesar Wang:
+> >> SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is us=
+ed by
+> >> extra codecs.
+> >>=20
+> >> Due to it shouldn't belong to any driver, but we need it enabled,
+> >> so just mark it as the CLK_IGNORE_UNUSED flag.
+> >=20
+> > What makes you think it shouldn't belong to any driver?
+> >=20
+> > In most schematics I have, i2s_clkout is going to some clock-input =
+of
+> > the
+> > audio codec - probably the MCLK input on your rt5616. And while the=
+ new
+> > rt5616 driver does not seem to do clock handling, it should just ha=
+ndle
+> > the clock using the normal APIs.
+>=20
+> You are right,  that's seem has to find the root cause.
+> I'm wonder that the codec/i2s is working in kernel v4.1 patch without=
+ it.
+>=20
+> In general,  the MLCK will be handled in i2s driver if the cpu side i=
+s
+> master.
 
-You are right,  that's seem has to find the root cause.
-I'm wonder that the codec/i2s is working in kernel v4.1 patch without i=
-t.
+looking at the rt5616 datasheet, that would be BCLK1 instead I think. T=
+his=20
+one does differentiate between being master/slave.
 
-In general,  the MLCK will be handled in i2s driver if the cpu side is=20
-master.
-
->
->
-> Heiko
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+The master/sysclk (mclk) is also handled in other drivers in all cases.=
+=20
+(da7213.c, da7219.c, max98090.c, max98095.c, probably more)
 
 
---=20
-Thanks,
-Caesar
-
+Heiko
