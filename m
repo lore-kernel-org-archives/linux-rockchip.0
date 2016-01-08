@@ -1,57 +1,57 @@
-From: Romain Perier <romain.perier@gmail.com>
-Subject: [PATCH v2] stmmac: Don't exit mdio registration when mdio subnode is not found in the DTS
-Date: Thu,  7 Jan 2016 21:13:28 +0100
-Message-ID: <1452197608-29060-1-git-send-email-romain.perier@gmail.com>
+From: Phil Reid <preid@electromag.com.au>
+Subject: Re: [PATCH] stmmac: Don't exit mdio registration when mdio subnode is
+ not found in the DTS
+Date: Fri, 8 Jan 2016 09:00:09 +0800
+Message-ID: <568F0A19.7010208@electromag.com.au>
+References: <1451397935-23643-1-git-send-email-romain.perier@gmail.com>
+ <0E6F98A1-B9F1-48B0-B5CA-A215803E827F@gmail.com>
+ <CABgxDoLNWEtYtRTrYhp7T=tk3n-aPMCgOP2SL7+DoxFqTk7GuQ@mail.gmail.com>
+ <56880E46.4050206@gmail.com>
+ <CABgxDo+EOVW-RJ1WVY+oHt1tbW7qq9Q_+wK3ywiexh+auEebaA@mail.gmail.com>
+ <568EC072.6050803@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <568EC072.6050803@gmail.com>
 Sender: netdev-owner@vger.kernel.org
-To: peppe.cavallaro@st.com
-Cc: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Florian Fainelli <f.fainelli@gmail.com>, Romain Perier <romain.perier@gmail.com>
+Cc: peppe.cavallaro@st.com, netdev <netdev@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Originally, most of the platforms using this driver did not define an mdio subnode
-in the devicetree. Commit e34d65 ("stmmac: create of compatible mdio bus for stmmac driver")
-introduced a backward compatibily issue by using of_mdiobus_register explicitly
-with an mdio subnode. This patch fixes the issue by calling the function
-mdiobus_register, when mdio subnode is not found. The driver is now compatible
-with both modes.
+On 8/01/2016 3:45 AM, Florian Fainelli wrote:
+> On 03/01/16 06:36, Romain Perier wrote:
+>> Hi,
+>>
+>> 2016-01-02 18:52 GMT+01:00 Florian Fainelli <f.fainelli@gmail.com>:
+>>>
+>>>>> This looks reasonable, does it work if we just assign mdio_node to the pdev->dev.of_node to be backwards compatible with DTSes which have not yet been updated?
+>>>>>
+>>>>
+>>>> I don't understand what you mean. Instead of defining mdio_node with
+>>>> NULL, you propose to assign it to pdev->dev.of_node as its default
+>>>> value... then it would be reassigned with "child_nod" if a subnode
+>>>> with the compatible string "snps,dwmac-mdio" is found, or kept with
+>>>> its default value otherwise... and in this case we could call
+>>>> of_mdiobus_register(new_bus, mdio_node) all the time ? (it removes the
+>>>> conditonnal branch)
+>>>
+>>> Your understanding is correct, this is what I was suggesting, thanks
+>>
+>> So in this case, I already tested this yesterday, it does not work,
+>> basically because the for loop just after of_mdiobus_register is never
+>> executed, probably because new_bus->phy_map is not populated, which is
+>> not the case by calling mdiobus_register for example.
+>> of_mdiobus_register seems to populate this array of phys only for
+>> subnodes found in the devicetree...
+>
+> Fair enough, then you initial patch with dropping IS_ENABLED() and
+> adding a "Fixes" tag should be resubmitted.
+>
+Looks reasonable.
 
-Fixes: e34d65696d2e ("stmmac: create of compatible mdio bus for stmmac driver")
-Signed-off-by: Romain Perier <romain.perier@gmail.com>
----
 
-Changes in v2:
-	- Removed IS_ENABLED macro from the if statement before calling
-	  of_mdiobus_register.
-	- Added Fixes tag in commit message
 
- drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-index 16c85cc..648488d 100644
---- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
-@@ -218,8 +218,7 @@ int stmmac_mdio_register(struct net_device *ndev)
- 		if (mdio_node) {
- 			netdev_dbg(ndev, "FOUND MDIO subnode\n");
- 		} else {
--			netdev_err(ndev, "NO MDIO subnode\n");
--			return 0;
-+			netdev_warn(ndev, "No MDIO subnode found\n");
- 		}
- 	}
- 
-@@ -251,7 +250,10 @@ int stmmac_mdio_register(struct net_device *ndev)
- 	new_bus->phy_mask = mdio_bus_data->phy_mask;
- 	new_bus->parent = priv->device;
- 
--	err = of_mdiobus_register(new_bus, mdio_node);
-+	if (mdio_node)
-+		err = of_mdiobus_register(new_bus, mdio_node);
-+	else
-+		err = mdiobus_register(new_bus);
- 	if (err != 0) {
- 		pr_err("%s: Cannot register as MDIO bus\n", new_bus->name);
- 		goto bus_register_fail;
 -- 
-2.5.0
+Regards
+Phil Reid
