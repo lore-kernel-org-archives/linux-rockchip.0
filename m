@@ -1,35 +1,41 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH] ARM: multi_v7_defconfig: Add rockchip audio support
-Date: Fri, 08 Jan 2016 13:53:29 +0100
-Message-ID: <4970673.6FENizv1M6@wuerfel>
-References: <1452255406-2439-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: "David.Wu" <wdc@rock-chips.com>
+Subject: Re: [PATCH v1 1/3] i2c: rk3x: add calc_divs ops for new version
+Date: Fri, 8 Jan 2016 21:12:29 +0800
+Message-ID: <568FB5BD.9050809@rock-chips.com>
+References: <1449844384-6236-1-git-send-email-wdc@rock-chips.com>
+ <566F5FAC.3080404@rock-chips.com>
+ <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
+ <20160104194042.GD1522@katana>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452255406-2439-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160104194042.GD1522@katana>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>, Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Jianqun Xu <jay.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday 08 January 2016 13:16:46 Sjoerd Simons wrote:
-> As the rockchip SPDIF driver landed for 4.4 and the required clock
-> patches to make it work properly are scheduled for the 4.5 merge window
-> it seems time to support for audio device found on rockchip boards in
-> the defconfig as well.
-> 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-> 
+Hi Wolfram, Andy
 
-Applied to next/defconfig with Heiko's Ack as discussed on IRC.
+Thanks for your suggestion.
+I will  use i2c_parse_fw_timings() function to replace it.
 
-	Arnd
+=E5=9C=A8 2016/1/5 3:40, Wolfram Sang =E5=86=99=E9=81=93:
+>>>> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned=
+ long
+>>>> scl_rate,
+>>>> +                                unsigned long scl_rise_ns,
+>>>> +                                unsigned long scl_fall_ns,
+>>>> +                                unsigned long sda_fall_ns,
+>> Wolfram did some sturct to assign the parameters from device propert=
+ies.
+>> It might be re-used here.
+> Yes, I think it makes sense to convert the driver first to use
+> the new i2c_parse_fw_timings() function and see if it fits (or if we =
+need
+> to extend it perhaps).
+>
+> David, does this make sense to you?
+>
