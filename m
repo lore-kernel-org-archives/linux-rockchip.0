@@ -1,14 +1,15 @@
 From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v1 6/6] rockchip: kylin: Check fastboot request
-Date: Thu, 7 Jan 2016 20:34:12 -0700
-Message-ID: <CAPnjgZ0oUT0zULMeoiLNFBmh-sFebRmjXN=nXsYhEX4qUr1jgw@mail.gmail.com>
+Subject: Re: [PATCH v1 5/6] rockchip: kylin: Enable boot with android boot
+ image
+Date: Thu, 7 Jan 2016 20:34:09 -0700
+Message-ID: <CAPnjgZ1G=5=gqy6yGV1NZ13Zv0BACRYMPpdAoFAi+sv2TPXknw@mail.gmail.com>
 References: <1451893823-20309-1-git-send-email-jeffy.chen@rock-chips.com>
- <1451893823-20309-7-git-send-email-jeffy.chen@rock-chips.com>
+ <1451893823-20309-6-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1451893823-20309-7-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <1451893823-20309-6-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,16 +23,22 @@ To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Jeffy,
+
 On 4 January 2016 at 00:50, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> We will save boot mode flag in grf's os_reg[0], if fastboot
-> requested or fastboot key pressed, try to enter fastboot mode
-> at preboot stage.
+> The android kernel is using appended dtb by default, and store
+> ramdisk right after kernel & dtb.
+> So we needs to relocate ramdisk, and use atags to pass params.
 >
 > Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
 >
->  board/kylin/kylin_rk3036/kylin_rk3036.c | 32 ++++++++++++++++++++++++++++++++
->  include/configs/kylin_rk3036.h          |  3 +++
->  2 files changed, 35 insertions(+)
+>  include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
 
 Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+What kernel version are you using?
+
+Regards,
+Simon
