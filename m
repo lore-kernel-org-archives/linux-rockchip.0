@@ -1,41 +1,70 @@
-From: "David.Wu" <wdc@rock-chips.com>
-Subject: Re: [PATCH v1 1/3] i2c: rk3x: add calc_divs ops for new version
-Date: Fri, 8 Jan 2016 21:12:29 +0800
-Message-ID: <568FB5BD.9050809@rock-chips.com>
-References: <1449844384-6236-1-git-send-email-wdc@rock-chips.com>
- <566F5FAC.3080404@rock-chips.com>
- <CAHp75VfkteDvC0KUXOXDik9rQeanTXLn9Qq3wux-0rxk5ZotNA@mail.gmail.com>
- <20160104194042.GD1522@katana>
+From: Mark Rutland <mark.rutland@arm.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: add power-domain header for RK3368
+ SoCs
+Date: Fri, 8 Jan 2016 14:28:33 +0000
+Message-ID: <20160108142833.GF3097@leverpostej>
+References: <1452278261-16864-1-git-send-email-zhangqing@rock-chips.com>
+ <1452278261-16864-2-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160104194042.GD1522@katana>
+Content-Disposition: inline
+In-Reply-To: <1452278261-16864-2-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>, Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Jianqun Xu <jay.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <david.wu@rock-chips.com>
+To: zhangqing <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, wxt@rock-chips.com, robh+dt@kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Wolfram, Andy
+On Fri, Jan 08, 2016 at 10:37:40AM -0800, zhangqing wrote:
+> According to a description from TRM, add all the power domains.
+> 
+> Signed-off-by: zhangqing <zhangqing@rock-chips.com>
+> ---
+>  include/dt-bindings/power/rk3368-power.h | 28 ++++++++++++++++++++++++++++
+>  1 file changed, 28 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rk3368-power.h
 
-Thanks for your suggestion.
-I will  use i2c_parse_fw_timings() function to replace it.
+You also need to update the related binding file, for the new compatible
+string.
 
-=E5=9C=A8 2016/1/5 3:40, Wolfram Sang =E5=86=99=E9=81=93:
->>>> +static int rk3x_i2c_v0_calc_divs(unsigned long clk_rate, unsigned=
- long
->>>> scl_rate,
->>>> +                                unsigned long scl_rise_ns,
->>>> +                                unsigned long scl_fall_ns,
->>>> +                                unsigned long sda_fall_ns,
->> Wolfram did some sturct to assign the parameters from device propert=
-ies.
->> It might be re-used here.
-> Yes, I think it makes sense to convert the driver first to use
-> the new i2c_parse_fw_timings() function and see if it fits (or if we =
-need
-> to extend it perhaps).
->
-> David, does this make sense to you?
->
+Mark.
+
+> 
+> diff --git a/include/dt-bindings/power/rk3368-power.h b/include/dt-bindings/power/rk3368-power.h
+> new file mode 100644
+> index 0000000..93633d5
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3368-power.h
+> @@ -0,0 +1,28 @@
+> +#ifndef __DT_BINDINGS_POWER_RK3368_POWER_H__
+> +#define __DT_BINDINGS_POWER_RK3368_POWER_H__
+> +
+> +/* VD_CORE */
+> +#define RK3368_PD_A53_L0	0
+> +#define RK3368_PD_A53_L1	1
+> +#define RK3368_PD_A53_L2	2
+> +#define RK3368_PD_A53_L3	3
+> +#define RK3368_PD_SCU_L		4
+> +#define RK3368_PD_A53_B0	5
+> +#define RK3368_PD_A53_B1	6
+> +#define RK3368_PD_A53_B2	7
+> +#define RK3368_PD_A53_B3	8
+> +#define RK3368_PD_SCU_B		9
+> +
+> +/* VD_LOGIC */
+> +#define RK3368_PD_BUS		10
+> +#define RK3368_PD_PERI		11
+> +#define RK3368_PD_VIO		12
+> +#define RK3368_PD_ALIVE		13
+> +#define RK3368_PD_VIDEO		14
+> +#define RK3368_PD_GPU_0		15
+> +#define RK3368_PD_GPU_1		16
+> +
+> +/* VD_PMU */
+> +#define RK3368_PD_PMU		17
+> +
+> +#endif
+> -- 
+> 1.9.1
+> 
+> 
