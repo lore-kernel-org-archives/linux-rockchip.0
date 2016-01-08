@@ -1,56 +1,13 @@
-From: zhangqing <zhangqing@rock-chips.com>
-Subject: [PATCH v2 1/2] dt-bindings: add power-domain header for RK3368 SoCs
-Date: Fri,  8 Jan 2016 10:37:40 -0800
-Message-ID: <1452278261-16864-2-git-send-email-zhangqing@rock-chips.com>
-References: <1452278261-16864-1-git-send-email-zhangqing@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [RFC PATCH 2/2] ARM: dts: rockchip: Update the cpu freqs table
+Date: Fri,  8 Jan 2016 19:25:10 +0800
+Message-ID: <1452252311-13908-2-git-send-email-zhengxing@rock-chips.com>
+References: <1452252311-13908-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452278261-16864-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1452252311-13908-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, wxt@rock-chips.com
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing <zhangqing@rock-chips.com>
+To: linux-rockchip@lists.infradead.org
+Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-According to a description from TRM, add all the power domains.
-
-Signed-off-by: zhangqing <zhangqing@rock-chips.com>
----
- include/dt-bindings/power/rk3368-power.h | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
- create mode 100644 include/dt-bindings/power/rk3368-power.h
-
-diff --git a/include/dt-bindings/power/rk3368-power.h b/include/dt-bindings/power/rk3368-power.h
-new file mode 100644
-index 0000000..93633d5
---- /dev/null
-+++ b/include/dt-bindings/power/rk3368-power.h
-@@ -0,0 +1,28 @@
-+#ifndef __DT_BINDINGS_POWER_RK3368_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3368_POWER_H__
-+
-+/* VD_CORE */
-+#define RK3368_PD_A53_L0	0
-+#define RK3368_PD_A53_L1	1
-+#define RK3368_PD_A53_L2	2
-+#define RK3368_PD_A53_L3	3
-+#define RK3368_PD_SCU_L		4
-+#define RK3368_PD_A53_B0	5
-+#define RK3368_PD_A53_B1	6
-+#define RK3368_PD_A53_B2	7
-+#define RK3368_PD_A53_B3	8
-+#define RK3368_PD_SCU_B		9
-+
-+/* VD_LOGIC */
-+#define RK3368_PD_BUS		10
-+#define RK3368_PD_PERI		11
-+#define RK3368_PD_VIO		12
-+#define RK3368_PD_ALIVE		13
-+#define RK3368_PD_VIDEO		14
-+#define RK3368_PD_GPU_0		15
-+#define RK3368_PD_GPU_1		16
-+
-+/* VD_PMU */
-+#define RK3368_PD_PMU		17
-+
-+#endif
--- 
-1.9.1
+Actually, we need more cpu freqs which are 50MHz integer multiples.
