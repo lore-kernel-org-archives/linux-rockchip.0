@@ -1,58 +1,68 @@
-From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH] ARM: multi_v7_defconfig: Add rockchip audio support
-Date: Fri,  8 Jan 2016 13:16:46 +0100
-Message-ID: <1452255406-2439-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v2 06/12] mmc: pwrseq: add support for power-on sequencing
+ through DT
+Date: Fri, 8 Jan 2016 09:22:31 -0300
+Message-ID: <568FAA07.1010509@osg.samsung.com>
+References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
+ <1452155155-16232-7-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-rockchip@lists.infradead.org, arm@kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1452155155-16232-7-git-send-email-wxt@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@nvidia.com>, NeilBrown <neil@brown.name>
 List-Id: linux-rockchip.vger.kernel.org
 
-As the rockchip SPDIF driver landed for 4.4 and the required clock
-patches to make it work properly are scheduled for the 4.5 merge window
-it seems time to support for audio device found on rockchip boards in
-the defconfig as well.
+Hello Caesar,
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+On 01/07/2016 05:25 AM, Caesar Wang wrote:
+> This patch enables support for power-on sequencing of SDIO
+> peripherals through DT.
+>
 
----
+I think the subject line and this first paragraph are misleading since
+the simple power sequence provider already supports power-on sequencing.
 
- arch/arm/configs/multi_v7_defconfig | 5 +++++
- 1 file changed, 5 insertions(+)
+This patch does not add or enable support but extends the current support
+to also enable a regulator as a part of the SDIO chip power on sequencing.
+ 
+> In general, it's quite common that wifi modules and other similar
+> peripherals have several signals in addition to the SDIO interface that
+> needs wiggling before the module will power on.
+> 
+> For example:
+> we need enable wifi module power to via the WL_REG_ON
+> pin, we need enable it as the regulator if this pin is connected to
+> the gpio of cpu.
+>
 
-diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index f6e104d..089b4da 100644
---- a/arch/arm/configs/multi_v7_defconfig
-+++ b/arch/arm/configs/multi_v7_defconfig
-@@ -548,6 +548,10 @@ CONFIG_SND_SOC=m
- CONFIG_SND_ATMEL_SOC=m
- CONFIG_SND_ATMEL_SOC_WM8904=m
- CONFIG_SND_SOC_FSL_SAI=m
-+CONFIG_SND_SOC_ROCKCHIP=m
-+CONFIG_SND_SOC_ROCKCHIP_SPDIF=m
-+CONFIG_SND_SOC_ROCKCHIP_MAX98090=m
-+CONFIG_SND_SOC_ROCKCHIP_RT5645=m
- CONFIG_SND_SOC_SH4_FSI=m
- CONFIG_SND_SOC_RCAR=m
- CONFIG_SND_SOC_RSRC_CARD=m
-@@ -564,6 +568,7 @@ CONFIG_SND_SOC_TEGRA_ALC5632=m
- CONFIG_SND_SOC_TEGRA_MAX98090=m
- CONFIG_SND_SOC_AK4642=m
- CONFIG_SND_SOC_SGTL5000=m
-+CONFIG_SND_SOC_SPDIF=m
- CONFIG_SND_SOC_WM8978=m
- CONFIG_USB=y
- CONFIG_USB_XHCI_HCD=y
+This part confuses me, so does your chip have an actual regulator that
+needs to be enabled or is just a fake regulator whose gpio property is
+used not to enable the regulator but to toggle the WL_REG_ON pin of
+the WiFi chip?
+ 
+> Maybe, someone will say that can pull up/down from dts.
+> Unfortunately some SoCs can't support pinctrl pull up/down in
+> internal.
+>
+
+Can you please elaborate on this? AFAIU this limitation is the reason
+why you went with the regulator approach so I think it deserve a more
+deep explanation.
+ 
+> Anyway, we can add this patch to supprt the power-on sequencing for
+
+s/supprt/support
+
+> sdio.
+> 
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> 
+
+Best regards,
 -- 
-2.7.0.rc3
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
