@@ -1,9 +1,11 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [RFC PATCH 1/2] clk: rockchip: rk3036: Add to 100MHz integer multiples of cpu freq table
-Date: Fri,  8 Jan 2016 19:25:09 +0800
-Message-ID: <1452252311-13908-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [RESEND RFC PATCH 1/2] clk: rockchip: rk3036: Add to 100MHz integer multiples of cpu freq table
+Date: Fri,  8 Jan 2016 19:31:37 +0800
+Message-ID: <1452252698-16765-2-git-send-email-zhengxing@rock-chips.com>
+References: <1452252698-16765-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1452252698-16765-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
 Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
@@ -87,3 +89,5 @@ index bf9dd9b..f60273c 100644
  static const struct rockchip_cpuclk_reg_data rk3036_cpuclk_data = {
 -- 
 1.7.9.5
+
+
