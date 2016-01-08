@@ -1,143 +1,35 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH] ARM: dts: rockchip: Add support emac for RK3036
-Date: Fri,  8 Jan 2016 09:37:06 +0800
-Message-ID: <1452217026-21155-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, davem@davemloft.net, netdev@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Simon Glass <sjg@chromium.org>
+Subject: Re: [PATCH v1 1/6] common/image-fdt.c: Make boot_get_fdt()
+ perform a check for Android images
+Date: Thu, 7 Jan 2016 20:33:58 -0700
+Message-ID: <CAPnjgZ23onM40qLaOZ7H07j=LeYLbqX5w0CXh7XC15UJk2VUtw@mail.gmail.com>
+References: <1451893823-20309-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1451893823-20309-2-git-send-email-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <1451893823-20309-2-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: U-Boot Mailing List <u-boot@lists.denx.de>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Joe Hershberger <joe.hershberger@ni.com>, Max Krummenacher <max.krummenacher@toradex.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch describe the emac, and we need to let mac clock under
-the APLL which is able to provide the accurate 50MHz what mac_ref
-need.
+On 4 January 2016 at 00:50, Jeffy Chen <jeffy.chen@rock-chips.com> wrote:
+> Android images don't have a fdt.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> ---
+>
+>  common/image-fdt.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
-
- arch/arm/boot/dts/rk3036-evb.dts   |   23 +++++++++++++++++++++++
- arch/arm/boot/dts/rk3036-kylin.dts |   21 +++++++++++++++++++++
- arch/arm/boot/dts/rk3036.dtsi      |   32 ++++++++++++++++++++++++++++++++
- 3 files changed, 76 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
-index 0a2367e..2505b9a 100644
---- a/arch/arm/boot/dts/rk3036-evb.dts
-+++ b/arch/arm/boot/dts/rk3036-evb.dts
-@@ -74,3 +74,26 @@
- &uart2 {
- 	status = "okay";
- };
-+
-+&emac {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
-+	phy = <&phy0>;
-+	status = "okay";
-+
-+	phy0: ethernet-phy@0 {
-+		reg = <0>;
-+	};
-+};
-+
-+&pinctrl {
-+	pcfg_output_high: pcfg-output-high {
-+		output-high;
-+	};
-+
-+	emac {
-+		rmii_rst: rmii-rst {
-+			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
-+};
-diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index 992f9ca..b6ba852 100644
---- a/arch/arm/boot/dts/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -285,7 +285,22 @@
- 	status = "okay";
- };
- 
-+&emac {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
-+	phy = <&phy0>;
-+	status = "okay";
-+
-+	phy0: ethernet-phy@0 {
-+		reg = <0>;
-+	};
-+};
-+
- &pinctrl {
-+	pcfg_output_high: pcfg-output-high {
-+		output-high;
-+	};
-+
- 	pmic {
- 		pmic_int: pmic-int {
- 			rockchip,pins = <2 2 RK_FUNC_GPIO &pcfg_pull_default>;
-@@ -297,4 +312,10 @@
- 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
- 		};
- 	};
-+
-+	emac {
-+		rmii_rst: rmii-rst {
-+			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+	};
- };
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index b9567c1..1cb5877 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -186,6 +186,20 @@
- 		status = "disabled";
- 	};
- 
-+	emac: ethernet@10200000 {
-+		compatible = "rockchip,rk3036-emac", "snps,arc-emac";
-+		reg = <0x10200000 0x4000>;
-+		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		rockchip,grf = <&grf>;
-+		clocks = <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
-+		clock-names = "hclk", "macref", "macclk";
-+		max-speed = <100>;
-+		phy-mode = "rmii";
-+		status = "disabled";
-+	};
-+
- 	sdmmc: dwmmc@10214000 {
- 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x10214000 0x4000>;
-@@ -556,6 +570,24 @@
- 			};
- 		};
- 
-+		emac {
-+			emac_xfer: emac-xfer {
-+				rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_default>, /* crs_dvalid */
-+						<2 13 RK_FUNC_1 &pcfg_pull_default>, /* tx_en */
-+						<2 14 RK_FUNC_1 &pcfg_pull_default>, /* mac_clk */
-+						<2 15 RK_FUNC_1 &pcfg_pull_default>, /* rx_err */
-+						<2 16 RK_FUNC_1 &pcfg_pull_default>, /* rxd1 */
-+						<2 17 RK_FUNC_1 &pcfg_pull_default>, /* rxd0 */
-+						<2 18 RK_FUNC_1 &pcfg_pull_default>, /* txd1 */
-+						<2 19 RK_FUNC_1 &pcfg_pull_default>; /* txd0 */
-+			};
-+
-+			emac_mdio: emac-mdio {
-+				rockchip,pins = <2 12 RK_FUNC_1 &pcfg_pull_default>, /* mac_md */
-+						<2 25 RK_FUNC_1 &pcfg_pull_default>; /* mac_mdclk */
-+			};
-+		};
-+
- 		i2c0 {
- 			i2c0_xfer: i2c0-xfer {
- 				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
--- 
-1.7.9.5
+Acked-by: Simon Glass <sjg@chromium.org>
