@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 2/6] ARM: bootm: Try to use relocated ramdisk
-Date: Fri,  8 Jan 2016 18:33:28 +0800
-Message-ID: <1452249212-25183-3-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v2 6/6] rockchip: kylin: Check fastboot request
+Date: Fri,  8 Jan 2016 18:33:32 +0800
+Message-ID: <1452249212-25183-7-git-send-email-jeffy.chen@rock-chips.com>
 References: <1452249212-25183-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,44 +18,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Jan Kiszka <jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Tom Warren <twarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, York Sun <yorksun-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-After boot_ramdisk_high(), ramdisk would be relocated to
-initrd_start & initrd_end, so use them instead of rd_start & rd_end.
+We will save boot mode flag in grf's os_reg[0], if fastboot
+requested or fastboot key pressed, try to enter fastboot mode
+at preboot stage.
 
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 
-Changes in v2:
-Add comments.
+Changes in v2: None
 
- arch/arm/lib/bootm.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ board/kylin/kylin_rk3036/kylin_rk3036.c | 32 ++++++++++++++++++++++++++++++++
+ include/configs/kylin_rk3036.h          |  3 +++
+ 2 files changed, 35 insertions(+)
 
-diff --git a/arch/arm/lib/bootm.c b/arch/arm/lib/bootm.c
-index a477cae..0838d89 100644
---- a/arch/arm/lib/bootm.c
-+++ b/arch/arm/lib/bootm.c
-@@ -225,7 +225,17 @@ static void boot_prep_linux(bootm_headers_t *images)
- 		if (BOOTM_ENABLE_MEMORY_TAGS)
- 			setup_memory_tags(gd->bd);
- 		if (BOOTM_ENABLE_INITRD_TAG) {
--			if (images->rd_start && images->rd_end) {
-+			/*
-+			 * In boot_ramdisk_high(), it may relocate ramdisk to
-+			 * a specified location. And set images->initrd_start &
-+			 * images->initrd_end to relocated ramdisk's start/end
-+			 * addresses. So use them instead of images->rd_start &
-+			 * images->rd_end when possible.
-+			 */
-+			if (images->initrd_start && images->initrd_end) {
-+				setup_initrd_tag(gd->bd, images->initrd_start,
-+						 images->initrd_end);
-+			} else if (images->rd_start && images->rd_end) {
- 				setup_initrd_tag(gd->bd, images->rd_start,
- 						 images->rd_end);
- 			}
+diff --git a/board/kylin/kylin_rk3036/kylin_rk3036.c b/board/kylin/kylin_rk3036/kylin_rk3036.c
+index 40d6b52..df2c123 100644
+--- a/board/kylin/kylin_rk3036/kylin_rk3036.c
++++ b/board/kylin/kylin_rk3036/kylin_rk3036.c
+@@ -8,10 +8,15 @@
+ #include <dm.h>
+ #include <asm/io.h>
+ #include <asm/arch/uart.h>
++#include <asm/arch-rockchip/grf_rk3036.h>
+ #include <asm/arch/sdram_rk3036.h>
++#include <asm/gpio.h>
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
++#define GRF_BASE	0x20008000
++static struct rk3036_grf * const grf = (void *)GRF_BASE;
++
+ void get_ddr_config(struct rk3036_ddr_config *config)
+ {
+ 	/* K4B4G1646Q config */
+@@ -28,6 +33,33 @@ void get_ddr_config(struct rk3036_ddr_config *config)
+ 	config->bw = 1;
+ }
+ 
++#define FASTBOOT_KEY_GPIO 93
++#define ROCKCHIP_BOOT_MODE_NORMAL	0
++#define ROCKCHIP_BOOT_MODE_FASTBOOT	1
++
++int fastboot_key_pressed(void)
++{
++	gpio_request(FASTBOOT_KEY_GPIO, "fastboot_key");
++	gpio_direction_input(FASTBOOT_KEY_GPIO);
++	return !gpio_get_value(FASTBOOT_KEY_GPIO);
++}
++
++int board_late_init(void)
++{
++	int boot_mode = readl(&grf->os_reg[0]);
++
++	/* Clear boot mode */
++	writel(ROCKCHIP_BOOT_MODE_NORMAL, &grf->os_reg[0]);
++
++	if (boot_mode == ROCKCHIP_BOOT_MODE_FASTBOOT ||
++	    fastboot_key_pressed()) {
++		printf("enter fastboot!\n");
++		setenv("preboot", "setenv preboot; fastboot usb0");
++	}
++
++	return 0;
++}
++
+ int board_init(void)
+ {
+ 	return 0;
+diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
+index 49997ec..424e81b 100644
+--- a/include/configs/kylin_rk3036.h
++++ b/include/configs/kylin_rk3036.h
+@@ -39,6 +39,9 @@
+ 	"mmcpart=5\0" \
+ 	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+ 
++#define CONFIG_BOARD_LATE_INIT
++#define CONFIG_PREBOOT
++
+ #define CONFIG_ANDROID_BOOT_IMAGE
+ #define CONFIG_SYS_BOOT_RAMDISK_HIGH
+ #define CONFIG_SYS_HUSH_PARSER
 -- 
 2.1.4
