@@ -1,50 +1,63 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: multi_v7_defconfig: Change RTC_DRV_HYM8563 to builtin
-Date: Sat, 09 Jan 2016 23:45:52 +0100
-Message-ID: <2746599.O3XccuMTWz@phil>
-References: <1452367683-11160-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <4578616.QcQm44RoCq@phil>
+From: Michael Trimarchi <michael@amarulasolutions.com>
+Subject: [PATCH] ASoC: rockchip: i2s: Add
+	SNDRV_PCM_FMTBIT_S32_LE support
+Date: Sat,  9 Jan 2016 23:47:58 +0100
+Message-ID: <1452379678-14160-1-git-send-email-michael@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4578616.QcQm44RoCq@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, michael@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 9. Januar 2016, 20:33:51 schrieb Heiko Stuebner:
-> Am Samstag, 9. Januar 2016, 20:28:02 schrieb Sjoerd Simons:
-> > Apart from providing an RTC the hym8563 chip on some rockchip boards
-> > (e.g. rock2 square and firefly) also provide the 32khz clock used by the
-> > SoCs thermal sensors.
-> > 
-> > Switch the driver from a module to builtin such that the thermal
-> > protection can work even if modules aren't used/loaded.
-> > 
-> > Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-> 
-> Personally I'm ok with the reasoning for requiring rtc to be build in,
-> but I guess others might disagree. Nevertheless
-> 
-> Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> 
-> and we'll let armsoc-people decide ;-) .
-> 
-> 
-> Ideally we would do the same for the rk808 rtc as well - as it is exactly
-> the same argument / case.
+Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-just so nobody gets the wrong idea, on the rk808, the needed clkout is 
-separate in CONFIG_COMMON_CLK_RK808, not in the rtc. Still currently build 
-as module, so depending on if we can build-in the hym8563, we should change 
-the rk808-clkout accordingly.
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 58ee645..c35700f 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -242,6 +242,9 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 	case SNDRV_PCM_FORMAT_S24_LE:
+ 		val |= I2S_TXCR_VDW(24);
+ 		break;
++	case SNDRV_PCM_FORMAT_S32_LE:
++		val |= I2S_TXCR_VDW(32);
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -360,7 +363,8 @@ static struct snd_soc_dai_driver rockchip_i2s_dai = {
+ 		.formats = (SNDRV_PCM_FMTBIT_S8 |
+ 			    SNDRV_PCM_FMTBIT_S16_LE |
+ 			    SNDRV_PCM_FMTBIT_S20_3LE |
+-			    SNDRV_PCM_FMTBIT_S24_LE),
++			    SNDRV_PCM_FMTBIT_S24_LE |
++			    SNDRV_PCM_FMTBIT_S32_LE),
+ 	},
+ 	.capture = {
+ 		.stream_name = "Capture",
+@@ -370,7 +374,8 @@ static struct snd_soc_dai_driver rockchip_i2s_dai = {
+ 		.formats = (SNDRV_PCM_FMTBIT_S8 |
+ 			    SNDRV_PCM_FMTBIT_S16_LE |
+ 			    SNDRV_PCM_FMTBIT_S20_3LE |
+-			    SNDRV_PCM_FMTBIT_S24_LE),
++			    SNDRV_PCM_FMTBIT_S24_LE |
++			    SNDRV_PCM_FMTBIT_S32_LE),
+ 	},
+ 	.ops = &rockchip_i2s_dai_ops,
+ 	.symmetric_rates = 1,
+-- 
+2.7.0
