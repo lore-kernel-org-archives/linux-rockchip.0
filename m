@@ -1,13 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: multi_v7_defconfig: Change RTC_DRV_HYM8563 to builtin
-Date: Sat, 09 Jan 2016 20:33:51 +0100
-Message-ID: <4578616.QcQm44RoCq@phil>
-References: <1452367683-11160-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Subject: Re: [PATCH v2 0/5] fix some clock configuration for the RK3036
+ platform
+Date: Sat, 09 Jan 2016 21:10:21 +0100
+Message-ID: <2423996.DXmZSXDRX7@phil>
+References: <1452169057-24467-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452367683-11160-1-git-send-email-sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+In-Reply-To: <1452169057-24467-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,30 +18,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 9. Januar 2016, 20:28:02 schrieb Sjoerd Simons:
-> Apart from providing an RTC the hym8563 chip on some rockchip boards
-> (e.g. rock2 square and firefly) also provide the 32khz clock used by the
-> SoCs thermal sensors.
-> 
-> Switch the driver from a module to builtin such that the thermal
-> protection can work even if modules aren't used/loaded.
-> 
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+Hi Xing
 
-Personally I'm ok with the reasoning for requiring rtc to be build in,
-but I guess others might disagree. Nevertheless
+Am Donnerstag, 7. Januar 2016, 20:17:32 schrieb Xing Zheng:
+>   In the development work, we found that some of the previous
+> incorrect clock configuration on the RK3036 platform, we should
+> fix them.
 
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-and we'll let armsoc-people decide ;-) .
+I've applied patches 1-4 as fixes for 4.5 [0] and will apply patch 5
+regularly once 4.5-rc1 is released and I have stable base again.
 
 
-Ideally we would do the same for the rk808 rtc as well - as it is exactly 
-the same argument / case.
+> Xing Zheng (5):
+>   clk: rockchip: rk3036: fix the FLAGs for clock mux
+>   clk: rockchip: rk3036: fix uarts clock error
+>   clk: rockchip: rk3036: fix the div offset for emac clock
+>   clk: rockchip: rk3036: rename emac ext source clock
+
+please make sure to also update the binding document in such cases.
+I've done it myself for this one.
+
+[for people reading along: the rk3036 clock-driver + binding is new in
+4.5 so we should be ok to fix the naming before it is actually released]
 
 
 Heiko
+
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.5-clk/fixes
