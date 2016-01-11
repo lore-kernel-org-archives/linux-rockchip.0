@@ -1,58 +1,62 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC PATCH v2 4/4] dt-bindings: add document for rk3229-hdmi
-Date: Sun, 10 Jan 2016 20:06:18 -0600
-Message-ID: <20160111020618.GA20680@rob-hp-laptop>
-References: <1452156811-18150-1-git-send-email-ykk@rock-chips.com>
- <1452157511-18891-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1452157511-18891-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Zheng Yang <zhengyang@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+From: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 1/3] dt-bindings: add power-domain header for RK3368 SoCs
+Date: Mon, 11 Jan 2016 02:36:38 -0800
+Message-ID: <1452508600-3512-2-git-send-email-zhangqing@rock-chips.com>
+References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452508600-3512-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBKYW4gMDcsIDIwMTYgYXQgMDU6MDU6MTFQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
-ZToKPiBTaWduZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2tAcm9jay1jaGlwcy5jb20+Cj4gLS0t
-Cj4gQ2hhbmdlcyBpbiB2MjogTm9uZQo+IAo+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNw
-bGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0ICAgICAgICAgfCA0ICsrKy0KPiAgMSBm
-aWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1n
-aXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9k
-d19oZG1pLXJvY2tjaGlwLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9k
-aXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0Cj4gaW5kZXggNjY4MDkxZi4uMWNk
-YzYyNyAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlz
-cGxheS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLnR4dAo+ICsrKyBiL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAudHh0
-Cj4gQEAgLTIsNyArMiw3IEBAIFJvY2tjaGlwIHNwZWNpZmljIGV4dGVuc2lvbnMgdG8gdGhlIFN5
-bm9wc3lzIERlc2lnbndhcmUgSERNSQo+ICA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PQo+ICAKPiAgUmVxdWlyZWQgcHJvcGVydGllczoKPiAtLSBjb21wYXRpYmxlOiAicm9ja2NoaXAs
-cmszMjg4LWR3LWhkbWkiOwo+ICstIGNvbXBhdGlibGU6ICJyb2NrY2hpcCxyazMyODgtZHctaGRt
-aSIsICJyb2NrY2hpcCxyazMyMjktZHctaGRtaSI7Cj4gIC0gcmVnOiBQaHlzaWNhbCBiYXNlIGFk
-ZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycy4KPiAgLSBjbG9j
-a3M6IHBoYW5kbGUgdG8gaGRtaSBpYWhiIGFuZCBpc2ZyIGNsb2Nrcy4KPiAgLSBjbG9jay1uYW1l
-czogc2hvdWxkIGJlICJpYWhiIiAiaXNmciIKPiBAQCAtMTUsOCArMTUsMTAgQEAgUmVxdWlyZWQg
-cHJvcGVydGllczoKPiAgICByazMyODggcGxhdGZvcm0KPiAgCj4gIE9wdGlvbmFsIHByb3BlcnRp
-ZXMKPiArLSByZWc6IFBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBleHRl
-cm5hbCBIRE1JIFBIWSdzIHJlZ2lzdGVycy4KClRoaXMgaXMgYWxyZWFkeSByZXF1aXJlZC4uLgoK
-PiAgLSBkZGMtaTJjLWJ1czogcGhhbmRsZSBvZiBhbiBJMkMgY29udHJvbGxlciB1c2VkIGZvciBE
-REMgRURJRCBwcm9iaW5nCj4gIC0gY2xvY2tzLCBjbG9jay1uYW1lczogcGhhbmRsZSB0byB0aGUg
-SERNSSBDRUMgY2xvY2ssIG5hbWUgc2hvdWxkIGJlICJjZWMiCj4gKwkJICAgICAgIHBoYW5kbGUg
-dG8gdGhlIGV4dGVybmFsIEhETUkgUEhZIGNsb2NrLCBuYW1lIHNob3VsZCBiZSAiZXh0cGh5IgoK
-RG9lcyB0aGlzIGNoYW5nZSBhcHBseSB0byByazMyODggb3IganVzdCByazMyMjk/IElmIHRoZSBs
-YXR0ZXIsIHlvdSAKc2hvdWxkIG1ha2UgdGhhdCBjbGVhci4gVGhlIGRyaXZlciBuZWVkcyB0byBh
-bGxvdyBmb3Igb2xkIGR0YidzIHRoYXQgCm9ubHkgaGF2ZSAxIGNsb2NrLgoKQmFzZWQgb24gUGhp
-bGlwcCdzIGZlZWRiYWNrLCB5b3UgYWxzbyBuZWVkIHRvIGFkZCBhIHBoeXMgcHJvcGVydHkuCgpS
-b2IKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+According to a description from TRM, add all the power domains.
+
+Signed-off-by: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ include/dt-bindings/power/rk3368-power.h | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3368-power.h
+
+diff --git a/include/dt-bindings/power/rk3368-power.h b/include/dt-bindings/power/rk3368-power.h
+new file mode 100644
+index 0000000..93633d5
+--- /dev/null
++++ b/include/dt-bindings/power/rk3368-power.h
+@@ -0,0 +1,28 @@
++#ifndef __DT_BINDINGS_POWER_RK3368_POWER_H__
++#define __DT_BINDINGS_POWER_RK3368_POWER_H__
++
++/* VD_CORE */
++#define RK3368_PD_A53_L0	0
++#define RK3368_PD_A53_L1	1
++#define RK3368_PD_A53_L2	2
++#define RK3368_PD_A53_L3	3
++#define RK3368_PD_SCU_L		4
++#define RK3368_PD_A53_B0	5
++#define RK3368_PD_A53_B1	6
++#define RK3368_PD_A53_B2	7
++#define RK3368_PD_A53_B3	8
++#define RK3368_PD_SCU_B		9
++
++/* VD_LOGIC */
++#define RK3368_PD_BUS		10
++#define RK3368_PD_PERI		11
++#define RK3368_PD_VIO		12
++#define RK3368_PD_ALIVE		13
++#define RK3368_PD_VIDEO		14
++#define RK3368_PD_GPU_0		15
++#define RK3368_PD_GPU_1		16
++
++/* VD_PMU */
++#define RK3368_PD_PMU		17
++
++#endif
+-- 
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
