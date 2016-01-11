@@ -1,120 +1,93 @@
 From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v3 2/3] soc: rockchip: power-domain: Modify power domain
- driver for rk3368
-Date: Mon, 11 Jan 2016 21:27:45 +0800
-Message-ID: <5693ADD1.4000207@gmail.com>
-References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com>
- <1452508600-3512-3-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 03/12] ARM: dts: rockchip: override the clocks in i2s
+ for kylin board
+Date: Mon, 11 Jan 2016 21:38:30 +0800
+Message-ID: <5693B056.7010507@gmail.com>
+References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
+ <1452155155-16232-4-git-send-email-wxt@rock-chips.com>
+ <1878139.nbddSBf70A@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452508600-3512-3-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1878139.nbddSBf70A@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: zhangqing <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, leecam@google.com, linux-arm-kernel@lists.infradead.org, keescook@google.com, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi zhangqin,
+Heiko,
 
- From my datasheet "Rockchip RK3368 TRM V2.0.pdf"
-Maybe i'm missing something.
-
-
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8811=E6=97=A5 18:36, zhangqing =E5=86=99=
-=E9=81=93:
-> This driver is modified to support RK3368 SoC.
+=E5=9C=A8 2016=E5=B9=B401=E6=9C=8809=E6=97=A5 10:31, Heiko Stuebner =E5=
+=86=99=E9=81=93:
+> Hi Caesar,
 >
-> Signed-off-by: zhangqing <zhangqing@rock-chips.com>
+> Am Donnerstag, 7. Januar 2016, 16:25:46 schrieb Caesar Wang:
+>> The sysclk seems be incorrect since we use the simple card for kylin
+>> board.
+>>
+>> The simple card call:
+>>
+>> asoc_simple_card_probe ->
+>>   asoc_simple_card_dai_link_of ->
+>>    asoc_simple_card_sub_parse_of ->
+>> ...
+>> clk =3D of_clk_get(args.np, 0);
+>> if (!IS_ERR(clk))
+>> dai->sysclk =3D clk_get_rate(clk);
+>>
+>> The sysclk come from the first clock, then first clock is hclk_i2s
+>> in i2s for rk3036 dtsi.
+>> So, we can override the clocks to fit the simple card in here.
+> It's not that effective, doing that change on a per-board level - as =
+it
+> would possibly need to be repeated for future boards.
+> The i2s driver doesn't care, as it uses named clocks, so I instead di=
+d
+> the swap in the rk3036.dtsi for all boards. Can you check if that is =
+ok
+> for you or if I did overlook something?
+
+That's okay for me.
+
+>
+> Thanks
+> Heiko
+>
+> ------- 8< -------
+> Subject: [PATCH] ARM: dts: rockchip: swap i2s clock ordering on rk303=
+6
+>
+> For sound setups using the simple-card mechanism, the main clock
+> (sysclk) is expected to be the first element. For the i2s-driver
+> itself it doesn't matter, as it uses named clocks, so we can just
+> swap them.
+>
+> Reported-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
->   drivers/soc/rockchip/pm_domains.c | 33 ++++++++++++++++++++++++++++=
-+++++
->   1 file changed, 33 insertions(+)
+>   arch/arm/boot/dts/rk3036.dtsi | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip=
-/pm_domains.c
-> index 534c589..6cdffb1 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -18,6 +18,7 @@
->   #include <linux/regmap.h>
->   #include <linux/mfd/syscon.h>
->   #include <dt-bindings/power/rk3288-power.h>
-> +#include <dt-bindings/power/rk3368-power.h>
->  =20
->   struct rockchip_domain_info {
->   	int pwr_mask;
-> @@ -75,6 +76,9 @@ struct rockchip_pmu {
->   #define DOMAIN_RK3288(pwr, status, req)		\
->   	DOMAIN(pwr, status, req, req, (req) + 16)
->  =20
-> +#define DOMAIN_RK3368(pwr, status, req)		\
-> +	DOMAIN(pwr, status, req, (req) + 16, req)
-> +
+> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036=
+=2Edtsi
+> index 8f1bb0f..ee457a2 100644
+> --- a/arch/arm/boot/dts/rk3036.dtsi
+> +++ b/arch/arm/boot/dts/rk3036.dtsi
+> @@ -241,8 +241,8 @@
+>   		interrupts =3D <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
+>   		#address-cells =3D <1>;
+>   		#size-cells =3D <0>;
+> -		clock-names =3D "i2s_hclk", "i2s_clk";
+> -		clocks =3D <&cru HCLK_I2S>, <&cru SCLK_I2S>;
+> +		clock-names =3D "i2s_clk", "i2s_hclk";
+> +		clocks =3D <&cru SCLK_I2S>, <&cru HCLK_I2S>;
+>   		dmas =3D <&pdma 0>, <&pdma 1>;
+>   		dma-names =3D "tx", "rx";
+>   		pinctrl-names =3D "default";
 
-You should  remove it, that's seem same with the rk3288.
 
-The rk3368 datasheet:
-PMU_PMU_BUS_IDLE_ST  ----->idle_vio[24]----->ack
-PMU_PMU_BUS_IDLE_REQ ---->idle_req_vio[8]----->idle
-
->   static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *=
-pd)
->   {
->   	struct rockchip_pmu *pmu =3D pd->pmu;
-> @@ -444,6 +448,14 @@ static const struct rockchip_domain_info rk3288_=
-pm_domains[] =3D {
->   	[RK3288_PD_GPU]		=3D DOMAIN_RK3288(9, 9, 2),
->   };
->  =20
-> +static const struct rockchip_domain_info rk3368_pm_domains[] =3D {
-> +	[RK3368_PD_PERI]	=3D DOMAIN_RK3368(13, 12, 6),
-> +	[RK3368_PD_VIO]		=3D DOMAIN_RK3368(15, 14, 8),
-> +	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368(14, 13, 7),
-> +	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368(16, 15, 2),
-> +	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368(17, 16, 2),
-> +};
-> +
->   static const struct rockchip_pmu_info rk3288_pmu =3D {
->   	.pwr_offset =3D 0x08,
->   	.status_offset =3D 0x0c,
-> @@ -461,11 +473,32 @@ static const struct rockchip_pmu_info rk3288_pm=
-u =3D {
->   	.domain_info =3D rk3288_pm_domains,
->   };
->  =20
-> +static const struct rockchip_pmu_info rk3368_pmu =3D {
-> +	.pwr_offset =3D 0x0c,
-> +	.status_offset =3D 0x10,
-> +	.req_offset =3D 0x3c,
-> +	.idle_offset =3D 0x40,
-> +	.ack_offset =3D 0x40,
-> +
-> +	.core_pwrcnt_offset =3D 0x48,
-> +	.gpu_pwrcnt_offset =3D 0x50,
-> +
-> +	.core_power_transition_time =3D 24,
-> +	.gpu_power_transition_time =3D 24,
-> +
-> +	.num_domains =3D ARRAY_SIZE(rk3368_pm_domains),
-> +	.domain_info =3D rk3368_pm_domains,
-> +};
-> +
->   static const struct of_device_id rockchip_pm_domain_dt_match[] =3D =
-{
->   	{
->   		.compatible =3D "rockchip,rk3288-power-controller",
->   		.data =3D (void *)&rk3288_pmu,
->   	},
-> +	{
-> +		.compatible =3D "rockchip,rk3368-power-controller",
-> +		.data =3D (void *)&rk3368_pmu,
-> +	},
->   	{ /* sentinel */ },
->   };
->  =20
->
-> --=20
-> Thanks,
-> Caesar
+--=20
+Thanks,
+Caesar
