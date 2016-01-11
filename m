@@ -1,71 +1,39 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: Re: [PATCH v2 06/12] mmc: pwrseq: add support for power-on sequencing
- through DT
-Date: Mon, 11 Jan 2016 13:02:46 -0300
-Message-ID: <5693D226.2000307@osg.samsung.com>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
- <1452155155-16232-7-git-send-email-wxt@rock-chips.com>
- <568FAA07.1010509@osg.samsung.com> <6960259.dpUH8KWsNS@phil>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] ARM: bootm: Try to use relocated ramdisk
+Date: Mon, 11 Jan 2016 09:58:27 -0700
+Message-ID: <CAPnjgZ0S7kzGn9mSqN_1e-zAZDHeRO5V-P27ZvsT9e8nNTyC=w@mail.gmail.com>
+References: <1452249212-25183-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1452249212-25183-3-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <6960259.dpUH8KWsNS@phil>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@nvidia.com>, NeilBrown <neil@brown.name>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452249212-25183-3-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Jan Kiszka <jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Tom Warren <twarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, York Sun <yorksun-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko,
-
-On 01/08/2016 11:42 PM, Heiko Stuebner wrote:
-> Am Freitag, 8. Januar 2016, 09:22:31 schrieb Javier Martinez Canillas:
->>> For example:
->>> we need enable wifi module power to via the WL_REG_ON
->>> pin, we need enable it as the regulator if this pin is connected to
->>> the gpio of cpu.
->>
->> This part confuses me, so does your chip have an actual regulator that
->> needs to be enabled or is just a fake regulator whose gpio property is
->> used not to enable the regulator but to toggle the WL_REG_ON pin of
->> the WiFi chip?
-> 
-> another option would be to use the reset-gpio-handles. rk3288-veyron and I 
-> think some Exynos as well use it that way.
+On 8 January 2016 at 03:33, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> After boot_ramdisk_high(), ramdisk would be relocated to
+> initrd_start & initrd_end, so use them instead of rd_start & rd_end.
 >
-
-Yes I know, my point was that the reset-gpios property should be used
-instead of a fake regulator if what's needed is to toggle a chip pin.
-
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >
->>> Maybe, someone will say that can pull up/down from dts.
->>> Unfortunately some SoCs can't support pinctrl pull up/down in
->>> internal.
->>
->> Can you please elaborate on this? AFAIU this limitation is the reason
->> why you went with the regulator approach so I think it deserve a more
->> deep explanation.
-> 
-> On the rk3036 each pin has an individual unchangable pull direction. So it's 
-> either no bias or pulling in the predefined direction (the pin_default bias 
-> option).
+> ---
 >
+> Changes in v2:
+> Add comments.
+>
+>  arch/arm/lib/bootm.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 
-I think each change has to be justified on its own so I would say that
-having a regulator enabled as a part of a SDIO chip's power sequencing
-is something needed for many platforms, and that this provider should
-be extended to support that (something like commit msg in patch 05/12).
-
-And then in the kylin DTS change (patch 08/12), I would explain why a
-chained regulators approach is used/needed instead of the reset-gpios
-due any platform limitations.
-
-> 
-> Heiko
-> 
-
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
