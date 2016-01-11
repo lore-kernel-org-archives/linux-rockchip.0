@@ -1,37 +1,31 @@
-From: zain <zain.wang@rock-chips.com>
-Subject: Re: [RFC PATCH v5] Crypto: rockchip/crypto - add hash support for
- crypto engine in rk3288
-Date: Mon, 11 Jan 2016 18:26:03 +0800
-Message-ID: <5693833B.8050704@rock-chips.com>
-References: <1452484647-30260-1-git-send-email-wzz@rock-chips.com>
- <20160111083925.GA23039@gondor.apana.org.au>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add support emac for RK3036
+Date: Mon, 11 Jan 2016 12:36:51 +0100
+Message-ID: <2062991.rcWfmTiAzP@phil>
+References: <1452217026-21155-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-crypto-owner@vger.kernel.org>
-In-Reply-To: <20160111083925.GA23039@gondor.apana.org.au>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Herbert Xu <herbert@gondor.apana.org.au>, Zain Wang <wzz@rock-chips.com>
-Cc: heiko@sntech.de, davem@davemloft.net, eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452217026-21155-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Freitag, 8. Januar 2016, 09:37:06 schrieb Xing Zheng:
+> This patch describe the emac, and we need to let mac clock under
+> the APLL which is able to provide the accurate 50MHz what mac_ref
+> need.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+I've queued this to get applied after 4.5-rc1 is out and I have a clean base 
+again to add the needed shared clock-branch.
 
 
-On 2016=E5=B9=B401=E6=9C=8811=E6=97=A5 16:39, Herbert Xu wrote:
-> On Mon, Jan 11, 2016 at 11:57:27AM +0800, Zain Wang wrote:
->> From: Zain Wang <zain.wang@rock-chips.com>
->>
->> Add md5 sha1 sha256 support for crypto engine in rk3288.
->> This patch can't support multiple updatings because of limited of IC=
-,
->> as result, it can't support import and export too.
-> As import and export are a required part of the API you have
-> to implement them or your algorithm can't even be reigstered.
->
-> If you the hardware cannot support them then your choices are
-> limited to a software fallback.
->
-> Cheers,
-Ok! Thanks your comment.
-I will add a software fallback like img-hash.c do
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
