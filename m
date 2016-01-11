@@ -1,30 +1,36 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v2] stmmac: Don't exit mdio registration when mdio
- subnode is not found in the DTS
-Date: Sun, 10 Jan 2016 18:03:17 -0500 (EST)
-Message-ID: <20160110.180317.1091002009651518965.davem@davemloft.net>
-References: <1452197608-29060-1-git-send-email-romain.perier@gmail.com>
+From: Jianqun Xu <jay.xu@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: fix some clock gates for rk3368
+Date: Mon, 11 Jan 2016 08:32:32 +0800
+Message-ID: <5692F820.6030500@rock-chips.com>
+References: <1452158287-18742-1-git-send-email-wxt@rock-chips.com>
+ <1873444.tpQzgfaHRN@phil>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1452197608-29060-1-git-send-email-romain.perier@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: romain.perier@gmail.com
-Cc: peppe.cavallaro@st.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=gbk;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1873444.tpQzgfaHRN@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Caesar Wang <wxt@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Romain Perier <romain.perier@gmail.com>
-Date: Thu,  7 Jan 2016 21:13:28 +0100
+Thanks
 
-> Originally, most of the platforms using this driver did not define an mdio subnode
-> in the devicetree. Commit e34d65 ("stmmac: create of compatible mdio bus for stmmac driver")
-> introduced a backward compatibily issue by using of_mdiobus_register explicitly
-> with an mdio subnode. This patch fixes the issue by calling the function
-> mdiobus_register, when mdio subnode is not found. The driver is now compatible
-> with both modes.
-> 
-> Fixes: e34d65696d2e ("stmmac: create of compatible mdio bus for stmmac driver")
-> Signed-off-by: Romain Perier <romain.perier@gmail.com>
-
-Applied, thanks.
+=D4=DA 10/01/2016 06:26, Heiko Stuebner =D0=B4=B5=C0:
+> Am Donnerstag, 7. Januar 2016, 17:18:07 schrieb Caesar Wang:
+>> From: Jianqun xu <jay.xu@rock-chips.com>
+>>
+>> Reference to the Rockchip RK3368 TRM v1.1, some clock
+>> gates need to be updated.
+>>
+>> Signed-off-by: Jianqun xu <jay.xu@rock-chips.com>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> applied to my clk-fixes branch for 4.5
+>
+>
+> Thanks
+> Heiko
+>
+>
+>
