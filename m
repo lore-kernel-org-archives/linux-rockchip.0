@@ -1,31 +1,120 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add support emac for RK3036
-Date: Mon, 11 Jan 2016 12:36:51 +0100
-Message-ID: <2062991.rcWfmTiAzP@phil>
-References: <1452217026-21155-1-git-send-email-zhengxing@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v3 2/3] soc: rockchip: power-domain: Modify power domain
+ driver for rk3368
+Date: Mon, 11 Jan 2016 21:27:45 +0800
+Message-ID: <5693ADD1.4000207@gmail.com>
+References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com>
+ <1452508600-3512-3-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452217026-21155-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1452508600-3512-3-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: zhangqing <zhangqing@rock-chips.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, khilman@linaro.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, huangtao@rock-chips.com, zyw@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 8. Januar 2016, 09:37:06 schrieb Xing Zheng:
-> This patch describe the emac, and we need to let mac clock under
-> the APLL which is able to provide the accurate 50MHz what mac_ref
-> need.
-> 
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi zhangqin,
 
-I've queued this to get applied after 4.5-rc1 is out and I have a clean base 
-again to add the needed shared clock-branch.
+ From my datasheet "Rockchip RK3368 TRM V2.0.pdf"
+Maybe i'm missing something.
 
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+=E5=9C=A8 2016=E5=B9=B401=E6=9C=8811=E6=97=A5 18:36, zhangqing =E5=86=99=
+=E9=81=93:
+> This driver is modified to support RK3368 SoC.
+>
+> Signed-off-by: zhangqing <zhangqing@rock-chips.com>
+> ---
+>   drivers/soc/rockchip/pm_domains.c | 33 ++++++++++++++++++++++++++++=
++++++
+>   1 file changed, 33 insertions(+)
+>
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip=
+/pm_domains.c
+> index 534c589..6cdffb1 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -18,6 +18,7 @@
+>   #include <linux/regmap.h>
+>   #include <linux/mfd/syscon.h>
+>   #include <dt-bindings/power/rk3288-power.h>
+> +#include <dt-bindings/power/rk3368-power.h>
+>  =20
+>   struct rockchip_domain_info {
+>   	int pwr_mask;
+> @@ -75,6 +76,9 @@ struct rockchip_pmu {
+>   #define DOMAIN_RK3288(pwr, status, req)		\
+>   	DOMAIN(pwr, status, req, req, (req) + 16)
+>  =20
+> +#define DOMAIN_RK3368(pwr, status, req)		\
+> +	DOMAIN(pwr, status, req, (req) + 16, req)
+> +
+
+You should  remove it, that's seem same with the rk3288.
+
+The rk3368 datasheet:
+PMU_PMU_BUS_IDLE_ST  ----->idle_vio[24]----->ack
+PMU_PMU_BUS_IDLE_REQ ---->idle_req_vio[8]----->idle
+
+>   static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *=
+pd)
+>   {
+>   	struct rockchip_pmu *pmu =3D pd->pmu;
+> @@ -444,6 +448,14 @@ static const struct rockchip_domain_info rk3288_=
+pm_domains[] =3D {
+>   	[RK3288_PD_GPU]		=3D DOMAIN_RK3288(9, 9, 2),
+>   };
+>  =20
+> +static const struct rockchip_domain_info rk3368_pm_domains[] =3D {
+> +	[RK3368_PD_PERI]	=3D DOMAIN_RK3368(13, 12, 6),
+> +	[RK3368_PD_VIO]		=3D DOMAIN_RK3368(15, 14, 8),
+> +	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368(14, 13, 7),
+> +	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368(16, 15, 2),
+> +	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368(17, 16, 2),
+> +};
+> +
+>   static const struct rockchip_pmu_info rk3288_pmu =3D {
+>   	.pwr_offset =3D 0x08,
+>   	.status_offset =3D 0x0c,
+> @@ -461,11 +473,32 @@ static const struct rockchip_pmu_info rk3288_pm=
+u =3D {
+>   	.domain_info =3D rk3288_pm_domains,
+>   };
+>  =20
+> +static const struct rockchip_pmu_info rk3368_pmu =3D {
+> +	.pwr_offset =3D 0x0c,
+> +	.status_offset =3D 0x10,
+> +	.req_offset =3D 0x3c,
+> +	.idle_offset =3D 0x40,
+> +	.ack_offset =3D 0x40,
+> +
+> +	.core_pwrcnt_offset =3D 0x48,
+> +	.gpu_pwrcnt_offset =3D 0x50,
+> +
+> +	.core_power_transition_time =3D 24,
+> +	.gpu_power_transition_time =3D 24,
+> +
+> +	.num_domains =3D ARRAY_SIZE(rk3368_pm_domains),
+> +	.domain_info =3D rk3368_pm_domains,
+> +};
+> +
+>   static const struct of_device_id rockchip_pm_domain_dt_match[] =3D =
+{
+>   	{
+>   		.compatible =3D "rockchip,rk3288-power-controller",
+>   		.data =3D (void *)&rk3288_pmu,
+>   	},
+> +	{
+> +		.compatible =3D "rockchip,rk3368-power-controller",
+> +		.data =3D (void *)&rk3368_pmu,
+> +	},
+>   	{ /* sentinel */ },
+>   };
+>  =20
+>
+> --=20
+> Thanks,
+> Caesar
