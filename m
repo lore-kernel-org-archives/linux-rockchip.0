@@ -1,93 +1,71 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 03/12] ARM: dts: rockchip: override the clocks in i2s
- for kylin board
-Date: Mon, 11 Jan 2016 21:38:30 +0800
-Message-ID: <5693B056.7010507@gmail.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH v2 06/12] mmc: pwrseq: add support for power-on sequencing
+ through DT
+Date: Mon, 11 Jan 2016 13:02:46 -0300
+Message-ID: <5693D226.2000307@osg.samsung.com>
 References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
- <1452155155-16232-4-git-send-email-wxt@rock-chips.com>
- <1878139.nbddSBf70A@phil>
+ <1452155155-16232-7-git-send-email-wxt@rock-chips.com>
+ <568FAA07.1010509@osg.samsung.com> <6960259.dpUH8KWsNS@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1878139.nbddSBf70A@phil>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <6960259.dpUH8KWsNS@phil>
+Sender: linux-mmc-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, leecam@google.com, linux-arm-kernel@lists.infradead.org, keescook@google.com, leozwang@google.com
+Cc: Caesar Wang <wxt@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@nvidia.com>, NeilBrown <neil@brown.name>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
+Hello Heiko,
 
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8809=E6=97=A5 10:31, Heiko Stuebner =E5=
-=86=99=E9=81=93:
-> Hi Caesar,
+On 01/08/2016 11:42 PM, Heiko Stuebner wrote:
+> Am Freitag, 8. Januar 2016, 09:22:31 schrieb Javier Martinez Canillas:
+>>> For example:
+>>> we need enable wifi module power to via the WL_REG_ON
+>>> pin, we need enable it as the regulator if this pin is connected to
+>>> the gpio of cpu.
+>>
+>> This part confuses me, so does your chip have an actual regulator that
+>> needs to be enabled or is just a fake regulator whose gpio property is
+>> used not to enable the regulator but to toggle the WL_REG_ON pin of
+>> the WiFi chip?
+> 
+> another option would be to use the reset-gpio-handles. rk3288-veyron and I 
+> think some Exynos as well use it that way.
 >
-> Am Donnerstag, 7. Januar 2016, 16:25:46 schrieb Caesar Wang:
->> The sysclk seems be incorrect since we use the simple card for kylin
->> board.
->>
->> The simple card call:
->>
->> asoc_simple_card_probe ->
->>   asoc_simple_card_dai_link_of ->
->>    asoc_simple_card_sub_parse_of ->
->> ...
->> clk =3D of_clk_get(args.np, 0);
->> if (!IS_ERR(clk))
->> dai->sysclk =3D clk_get_rate(clk);
->>
->> The sysclk come from the first clock, then first clock is hclk_i2s
->> in i2s for rk3036 dtsi.
->> So, we can override the clocks to fit the simple card in here.
-> It's not that effective, doing that change on a per-board level - as =
-it
-> would possibly need to be repeated for future boards.
-> The i2s driver doesn't care, as it uses named clocks, so I instead di=
-d
-> the swap in the rk3036.dtsi for all boards. Can you check if that is =
-ok
-> for you or if I did overlook something?
 
-That's okay for me.
+Yes I know, my point was that the reset-gpios property should be used
+instead of a fake regulator if what's needed is to toggle a chip pin.
 
 >
-> Thanks
+>>> Maybe, someone will say that can pull up/down from dts.
+>>> Unfortunately some SoCs can't support pinctrl pull up/down in
+>>> internal.
+>>
+>> Can you please elaborate on this? AFAIU this limitation is the reason
+>> why you went with the regulator approach so I think it deserve a more
+>> deep explanation.
+> 
+> On the rk3036 each pin has an individual unchangable pull direction. So it's 
+> either no bias or pulling in the predefined direction (the pin_default bias 
+> option).
+>
+
+I think each change has to be justified on its own so I would say that
+having a regulator enabled as a part of a SDIO chip's power sequencing
+is something needed for many platforms, and that this provider should
+be extended to support that (something like commit msg in patch 05/12).
+
+And then in the kylin DTS change (patch 08/12), I would explain why a
+chained regulators approach is used/needed instead of the reset-gpios
+due any platform limitations.
+
+> 
 > Heiko
->
-> ------- 8< -------
-> Subject: [PATCH] ARM: dts: rockchip: swap i2s clock ordering on rk303=
-6
->
-> For sound setups using the simple-card mechanism, the main clock
-> (sysclk) is expected to be the first element. For the i2s-driver
-> itself it doesn't matter, as it uses named clocks, so we can just
-> swap them.
->
-> Reported-by: Caesar Wang <wxt@rock-chips.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->   arch/arm/boot/dts/rk3036.dtsi | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036=
-=2Edtsi
-> index 8f1bb0f..ee457a2 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -241,8 +241,8 @@
->   		interrupts =3D <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
->   		#address-cells =3D <1>;
->   		#size-cells =3D <0>;
-> -		clock-names =3D "i2s_hclk", "i2s_clk";
-> -		clocks =3D <&cru HCLK_I2S>, <&cru SCLK_I2S>;
-> +		clock-names =3D "i2s_clk", "i2s_hclk";
-> +		clocks =3D <&cru SCLK_I2S>, <&cru HCLK_I2S>;
->   		dmas =3D <&pdma 0>, <&pdma 1>;
->   		dma-names =3D "tx", "rx";
->   		pinctrl-names =3D "default";
+> 
 
-
---=20
-Thanks,
-Caesar
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
