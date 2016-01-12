@@ -1,80 +1,91 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] dt-bindings: add power-domain header for RK3368
- SoCs
-Date: Tue, 12 Jan 2016 10:03:13 +0800
-Message-ID: <56945EE1.6020602@gmail.com>
-References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com>
- <1452508600-3512-2-git-send-email-zhangqing@rock-chips.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v1 5/6] rockchip: kylin: Enable boot with android boot
+ image
+Date: Tue, 12 Jan 2016 10:36:04 +0800
+Message-ID: <56946694.40203@rock-chips.com>
+References: <1451893823-20309-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1451893823-20309-6-git-send-email-jeffy.chen@rock-chips.com>
+ <CAPnjgZ1G=5=gqy6yGV1NZ13Zv0BACRYMPpdAoFAi+sv2TPXknw@mail.gmail.com>
+ <568F94B8.60101@rock-chips.com>
+ <CAPnjgZ2_wS1N8uO23+M0RJZovVFx7Wc_uMqOC37nGGBQN7NZZA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452508600-3512-2-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPnjgZ2_wS1N8uO23+M0RJZovVFx7Wc_uMqOC37nGGBQN7NZZA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+Hi Simon,
 
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8811=E6=97=A5 18:36, zhangqing =E5=86=99=
-=E9=81=93:
-> According to a description from TRM, add all the power domains.
+On 2016-1-12 0:58, Simon Glass wrote:
+> Hi Jeffy,
 >
-> Signed-off-by: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Reviewed-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-> ---
->   include/dt-bindings/power/rk3368-power.h | 28 +++++++++++++++++++++=
-+++++++
->   1 file changed, 28 insertions(+)
->   create mode 100644 include/dt-bindings/power/rk3368-power.h
+> On 8 January 2016 at 03:51, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>> Hi Simon,
+>>
+>> On 2016-1-8 11:34, Simon Glass wrote:
+>>> Hi Jeffy,
+>>>
+>>> On 4 January 2016 at 00:50, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>>> The android kernel is using appended dtb by default, and store
+>>>> ramdisk right after kernel & dtb.
+>>>> So we needs to relocate ramdisk, and use atags to pass params.
+>>>>
+>>>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>> ---
+>>>>
+>>>>    include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
+>>>>    1 file changed, 23 insertions(+)
+>>> Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>>
+>>> What kernel version are you using?
+>> It's kernel v4.1 for android project:
+>> git fetch
+>> https://android.googlesource.com/platform/hardware/bsp/kernel/common/v4.1
+>> refs/changes/03/188603/5 && git checkout FETCH_HEAD :)
+> OK - just wondered why it needs ATAGs (CONFIG_SETUP_MEMORY_TAGS) - are
+> there things that device tree does not support?
+I saw our guys used to detect ddr params in the loader, and pass memory 
+areas and reserved areas to kernel...
+and kernel's device tree would only define a common memory node in the 
+dtsi, which is not match the actually memory.
+>   used to
 >
-> diff --git a/include/dt-bindings/power/rk3368-power.h b/include/dt-bi=
-ndings/power/rk3368-power.h
-> new file mode 100644
-> index 0000000..93633d5
-> --- /dev/null
-> +++ b/include/dt-bindings/power/rk3368-power.h
-> @@ -0,0 +1,28 @@
-> +#ifndef __DT_BINDINGS_POWER_RK3368_POWER_H__
-> +#define __DT_BINDINGS_POWER_RK3368_POWER_H__
-> +
-> +/* VD_CORE */
-> +#define RK3368_PD_A53_L0	0
-> +#define RK3368_PD_A53_L1	1
-> +#define RK3368_PD_A53_L2	2
-> +#define RK3368_PD_A53_L3	3
-> +#define RK3368_PD_SCU_L		4
-> +#define RK3368_PD_A53_B0	5
-> +#define RK3368_PD_A53_B1	6
-> +#define RK3368_PD_A53_B2	7
-> +#define RK3368_PD_A53_B3	8
-> +#define RK3368_PD_SCU_B		9
-> +
-> +/* VD_LOGIC */
-> +#define RK3368_PD_BUS		10
-> +#define RK3368_PD_PERI		11
-> +#define RK3368_PD_VIO		12
-> +#define RK3368_PD_ALIVE		13
-> +#define RK3368_PD_VIDEO		14
-> +#define RK3368_PD_GPU_0		15
-> +#define RK3368_PD_GPU_1		16
-> +
-> +/* VD_PMU */
-> +#define RK3368_PD_PMU		17
-> +
-> +#endif
-
-
---=20
-Thanks,
-Caesar
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>>>
+>>> Regards,
+>>> Simon
+>>>
+>> On 2016-1-8 11:34, Simon Glass wrote:
+>>> Hi Jeffy,
+>>>
+>>> On 4 January 2016 at 00:50, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>>> The android kernel is using appended dtb by default, and store
+>>>> ramdisk right after kernel & dtb.
+>>>> So we needs to relocate ramdisk, and use atags to pass params.
+>>>>
+>>>> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>> ---
+>>>>
+>>>>    include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
+>>>>    1 file changed, 23 insertions(+)
+>>> Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>>
+>>> What kernel version are you using?
+>>>
+>>> Regards,
+>>> Simon
+>>>
+> Regards,
+> Simon
+>
