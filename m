@@ -1,13 +1,13 @@
 From: Tom Rini <trini@konsulko.com>
-Subject: Re: [PATCH v4 2/6] ARM: bootm: Try to use relocated ramdisk
-Date: Wed, 13 Jan 2016 10:27:55 -0500
-Message-ID: <20160113152755.GZ3359@bill-the-cat>
+Subject: Re: [PATCH v4 3/6] rockchip: rk3036: Bind GPIO banks
+Date: Wed, 13 Jan 2016 10:28:00 -0500
+Message-ID: <20160113152800.GA3359@bill-the-cat>
 References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-3-git-send-email-jeffy.chen@rock-chips.com>
+ <1452675200-15941-4-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1158278362=="
+Content-Type: multipart/mixed; boundary="===============1695446091=="
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1452675200-15941-3-git-send-email-jeffy.chen@rock-chips.com>
+In-Reply-To: <1452675200-15941-4-git-send-email-jeffy.chen@rock-chips.com>
 List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <http://lists.denx.de/pipermail/u-boot/>
@@ -18,60 +18,58 @@ List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
 To: Jeffy Chen <jeffy.chen@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, Joe Hershberger <joe.hershberger@ni.com>, Jan Kiszka <jan.kiszka@siemens.com>, u-boot@lists.denx.de, Tom Warren <twarren@nvidia.com>, York Sun <yorksun@freescale.com>
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---===============1158278362==
+--===============1695446091==
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="t1CmwkW5H+10rlDA"
+	protocol="application/pgp-signature"; boundary="g//L+7dVdyCocock"
 Content-Disposition: inline
 
 
---t1CmwkW5H+10rlDA
+--g//L+7dVdyCocock
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jan 13, 2016 at 04:53:16PM +0800, Jeffy Chen wrote:
+On Wed, Jan 13, 2016 at 04:53:17PM +0800, Jeffy Chen wrote:
 
-> After boot_ramdisk_high(), ramdisk would be relocated to
-> initrd_start & initrd_end, so use them instead of rd_start & rd_end.
+> Call dm_scan_fdt_node() in rk3036 pinctrl uclass binding.
 >=20
 > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 > Acked-by: Simon Glass <sjg@chromium.org>
->=20
 
 Reviewed-by: Tom Rini <trini@konsulko.com>
 
 --=20
 Tom
 
---t1CmwkW5H+10rlDA
+--g//L+7dVdyCocock
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: Digital signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQIcBAEBAgAGBQJWlmz6AAoJEIRElH1W1v7NPcYQALrkB0/8UslvYfIo6KCyJv4t
-eBJLxRZy8jVYawjxkU3685OSs492/N5XTZHUt6Huxd2HIGrRuRZ3ESW45ToPqUiT
-siharEu6BM5VOCdjK9OokaTF7+VmQvsiwwAW5xrNkHoI+seltFiaQHY/tcsyJjSX
-3toRePdXOyKvL2EO4gDD/o+AAdtGi+hojU9ly1LtnWvlDJIeVftxd9Ri8fQ9b9FM
-vJ6+zOjqPgHLK+fegDpRrmJ8gvGE1+ky+SCuS2yWLJ5gILRCrjbPSoDL0/5X+f76
-7zm2VtEM+v7amidFY+Rkt7NFATJPhwF6Mt5B4PPS97MSH3EdMOFeWPfR89/qv8Ss
-QucPeJbf2D4Zflb9T53H6k8zYbeBZjuKIngPNL0j3+Qqj/JeLTCUXdjPY2T7K+f2
-fctkZhNMhWi9i6Z6IWlnToIJnQqzuhBVTMhdlpgopukRgUFt0VP+SzCdEv3jHgtw
-OruPw4qVTlK49lZMhXtErNn2Ko7cDvB90dNq3opp4GsYmDV7zFi2kOMAT1jLZuwd
-miBiBNeeFWj7kFjVkS578CiuCjdK4Um0a/hrd0y0sNNIsQ+1/BfAd1f3xcFHqaI4
-TSVFcQ7MpqVLNufuDk5pT1fqqT5U8f4MAoB0RT9yySvPz0uDxXuOkIfDja517oXn
-dlHd/ShbyZPTFO5BF4t8
-=lw2+
+iQIcBAEBAgAGBQJWlm0AAAoJEIRElH1W1v7NuWUP/jRrGnjqQyE24BCmwuVma+FI
+HNw2/5mXp/v5ov6kuG5l1v3D9iOFmXM2G8Xg1Zvu0cHirnLTovbSS0LMeokIvV/U
+HzU1LCxlMQ3Oj3vDin9w5ETH02PxXoNgUujjRtzvN9rtfbfxysUPiXiRo+GVoCHA
+MYblcHgQkXcIKTw7PO93b7TNZLr4xxYzc3Yh68DcsJmbQexCG5U2Icgs4ph8MyzL
+g7wJreoYoRWEIMB5SPQdny0oihBJhFz9Igln7O1juCvpeSTUMbZT1NNggBOjeC5g
+b/+M1tNtDcYHbq83mXi6ruS4N9wvHd+g6ZIVX7UgGra4BOVtoEbUJs/HX+zstFtP
+zgzmOoQKEegVnUzwuOn7s+ZfOm6w4DVpPxgRiCy2tnTVG5Vr9tWDWjZU4gSuFpFQ
+N3NxnPEekr5BEhFuVoJnEP2mLtD/AuoNdFCar+DaRjvpQVWJIEs8lU83yjuAIbFY
+PKp0z2ZIIVmHc8T/m4h5aqnyEeyLhuMwX4QVKWXW4Qu3LLW9ZIJDJnZEpubzKSQQ
+RqxjwaVqepZK9NerfjQpjxiuW7G0vLiPhDasr+PKhI90ux9447WD1VDyumRV0+6G
+HAoElq2TwNUtIfDH/Pql9gHsmAuJPqRUXLo4GUehNSyhx2d8sFCRMYoozg49nOvb
+y3AlGbUj85fNsOahSgKO
+=v2/g
 -----END PGP SIGNATURE-----
 
---t1CmwkW5H+10rlDA--
+--g//L+7dVdyCocock--
 
---===============1158278362==
+--===============1695446091==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -82,4 +80,4 @@ U-Boot mailing list
 U-Boot@lists.denx.de
 http://lists.denx.de/mailman/listinfo/u-boot
 
---===============1158278362==--
+--===============1695446091==--
