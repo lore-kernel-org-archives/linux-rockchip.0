@@ -1,64 +1,64 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH 2/2] drm/rockchip: cleanup unnecessary export symbol
-Date: Wed, 13 Jan 2016 16:22:08 +0800
-Message-ID: <1452673328-29188-3-git-send-email-mark.yao@rock-chips.com>
-References: <1452673328-29188-1-git-send-email-mark.yao@rock-chips.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 2/6] ARM: bootm: Try to use relocated ramdisk
+Date: Wed, 13 Jan 2016 16:53:16 +0800
+Message-ID: <1452675200-15941-3-git-send-email-jeffy.chen@rock-chips.com>
+References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452673328-29188-1-git-send-email-mark.yao@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452675200-15941-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Jan Kiszka <jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Tom Warren <twarren-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, York Sun <yorksun-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Tm93IHJvY2tjaGlwX2RybV92b3AuYyBpcyBidWlsZCBpbnRvIHJvY2tjaGlwZHJtLmtvLCBzbwpu
-byBuZWVkIHRvIGV4cG9ydCBmb2xsb3dpbmcgc3ltYm9sIGFueW1vcmU6CiAgICByb2NrY2hpcF9k
-cm1fZG1hX2F0dGFjaF9kZXZpY2UKICAgIHJvY2tjaGlwX2RybV9kbWFfZGV0YWNoX2RldmljZQog
-ICAgcm9ja2NoaXBfZHJtX2RtYV9hdHRhY2hfZGV2aWNlCiAgICByb2NrY2hpcF9kcm1fZG1hX2Rl
-dGFjaF9kZXZpY2UKICAgIHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3MKICAgIHJvY2tjaGlw
-X3VucmVnaXN0ZXJfY3J0Y19mdW5jcwogICAgcm9ja2NoaXBfZmJfZ2V0X2dlbV9vYmoKClNpZ25l
-ZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgICAgNCAtLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgIHwgICAgMSAtCiAyIGZpbGVzIGNo
-YW5nZWQsIDUgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZHJ2LmMKaW5kZXggODM5N2QxYi4uYTBkNTFjYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCkBAIC01NSwxNCArNTUsMTIgQEAgaW50IHJvY2tj
-aGlwX2RybV9kbWFfYXR0YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAog
-CXJldHVybiBhcm1faW9tbXVfYXR0YWNoX2RldmljZShkZXYsIG1hcHBpbmcpOwogfQotRVhQT1JU
-X1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2RtYV9hdHRhY2hfZGV2aWNlKTsKIAogdm9pZCByb2Nr
-Y2hpcF9kcm1fZG1hX2RldGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAJ
-CQkJICAgIHN0cnVjdCBkZXZpY2UgKmRldikKIHsKIAlhcm1faW9tbXVfZGV0YWNoX2RldmljZShk
-ZXYpOwogfQotRVhQT1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNl
-KTsKIAogaW50IHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpj
-cnRjLAogCQkJCSBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfY3J0Y19mdW5jcyAqY3J0Y19mdW5jcykK
-QEAgLTc3LDcgKzc1LDYgQEAgaW50IHJvY2tjaGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0
-IGRybV9jcnRjICpjcnRjLAogCiAJcmV0dXJuIDA7CiB9Ci1FWFBPUlRfU1lNQk9MX0dQTChyb2Nr
-Y2hpcF9yZWdpc3Rlcl9jcnRjX2Z1bmNzKTsKIAogdm9pZCByb2NrY2hpcF91bnJlZ2lzdGVyX2Ny
-dGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjKQogewpAQCAtODksNyArODYsNiBAQCB2b2lk
-IHJvY2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5jcyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAK
-IAlwcml2LT5jcnRjX2Z1bmNzW3BpcGVdID0gTlVMTDsKIH0KLUVYUE9SVF9TWU1CT0xfR1BMKHJv
-Y2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5jcyk7CiAKIHN0YXRpYyBzdHJ1Y3QgZHJtX2NydGMg
-KnJvY2tjaGlwX2NydGNfZnJvbV9waXBlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCiAJCQkJCQlp
-bnQgcGlwZSkKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwppbmRl
-eCBmNzg0NDg4Li5kZDFmOGQzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2ZiLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9mYi5jCkBAIC0zOSw3ICszOSw2IEBAIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqcm9ja2No
-aXBfZmJfZ2V0X2dlbV9vYmooc3RydWN0IGRybV9mcmFtZWJ1ZmZlciAqZmIsCiAKIAlyZXR1cm4g
-cmtfZmItPm9ialtwbGFuZV07CiB9Ci1FWFBPUlRfU1lNQk9MX0dQTChyb2NrY2hpcF9mYl9nZXRf
-Z2VtX29iaik7CiAKIHN0YXRpYyB2b2lkIHJvY2tjaGlwX2RybV9mYl9kZXN0cm95KHN0cnVjdCBk
-cm1fZnJhbWVidWZmZXIgKmZiKQogewotLSAKMS43LjkuNQoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+After boot_ramdisk_high(), ramdisk would be relocated to
+initrd_start & initrd_end, so use them instead of rd_start & rd_end.
+
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+---
+
+Changes in v4: None
+Changes in v3: None
+Changes in v2:
+Add comments.
+
+ arch/arm/lib/bootm.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/lib/bootm.c b/arch/arm/lib/bootm.c
+index a477cae..0838d89 100644
+--- a/arch/arm/lib/bootm.c
++++ b/arch/arm/lib/bootm.c
+@@ -225,7 +225,17 @@ static void boot_prep_linux(bootm_headers_t *images)
+ 		if (BOOTM_ENABLE_MEMORY_TAGS)
+ 			setup_memory_tags(gd->bd);
+ 		if (BOOTM_ENABLE_INITRD_TAG) {
+-			if (images->rd_start && images->rd_end) {
++			/*
++			 * In boot_ramdisk_high(), it may relocate ramdisk to
++			 * a specified location. And set images->initrd_start &
++			 * images->initrd_end to relocated ramdisk's start/end
++			 * addresses. So use them instead of images->rd_start &
++			 * images->rd_end when possible.
++			 */
++			if (images->initrd_start && images->initrd_end) {
++				setup_initrd_tag(gd->bd, images->initrd_start,
++						 images->initrd_end);
++			} else if (images->rd_start && images->rd_end) {
+ 				setup_initrd_tag(gd->bd, images->rd_start,
+ 						 images->rd_end);
+ 			}
+-- 
+2.1.4
