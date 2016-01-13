@@ -1,80 +1,105 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: add reboot-mode node for rk3036 SoCs
-Date: Wed, 13 Jan 2016 10:08:50 +0800
-Message-ID: <1452650930-22883-2-git-send-email-wxt@rock-chips.com>
-References: <1452650930-22883-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452650930-22883-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v2 0/4] add reboot mode driver
+Date: Wed, 13 Jan 2016 10:17:35 +0800
+Message-ID: <5695B3BF.4030505@gmail.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>, heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org
+Cc: mark.rutland@arm.com, geert+renesas@glider.be, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, alexandre.belloni@free-electrons.com, lorenzo.pieralisi@arm.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, cernekee@gmail.com, linux-rockchip@lists.infradead.org, linux@roeck-us.net, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, maxime.ripard@free-electrons.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, linux-pm@vger.kernel.org, sre@kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add reboot mode driver DT node for rk3036 platform.
+Hi ,
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+=E5=9C=A8 2016=E5=B9=B401=E6=9C=8812=E6=97=A5 19:27, Andy Yan =E5=86=99=
+=E9=81=93:
+> This driver parse the reboot commands like "reboot loader"
+> and "reboot recovery" to get a boot mode described in the
+> device tree , then call the corresponding  write interface
+> to store the boot mode magic value in some persistent storage
+> like special register or ram , which can be read by the bootloader
+> after system reboot.
+>
+> This is commonly used on Android based devices, which in order
+> to reboot the device into fastboot or recovery mode.
+>
+> Before this patch , I have try some hack on[0], and then found
+> John Stultz also doing the same work[1].
+>
+> As John is busy these days, I go on with this work.
+>
+> [0]https://patchwork.kernel.org/patch/7647751/
+> [1]https://patchwork.kernel.org/patch/7802391/
+>
+> Changes in v2:
+> - move to dir drivers/power/reset/
+> - make syscon-reboot-mode a generic driver
+> - make this DT node as a subnode of PMU/PMUGRF
+>
+> Changes in v1:
+> - fix the embarrassed compile warning
+> - correct the maskrom magic number
+> - check for the normal reboot
+> - correct the maskrom magic number
+> - use macro defined in rockchip_boot-mode.h for reboot-mode DT node
+>
+> Andy Yan (4):
+>    dt-bindings: power: reset: add document for reboot-mode driver
+>    power: reset: add reboot mode driver
+>    ARM: dts: rockchip: add syscon-reboot-mode node
+>    ARM64: dts: rockchip: add syscon-reboot-mode DT node
 
----
+This series patches are verified by my github based on kernel 4.4 relea=
+se.
+https://github.com/Caesar-github/rockchip/commits/kylin-develop4.4
 
- arch/arm/boot/dts/rk3036.dtsi | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+reboot loader, reboot recovery, reboot fastboot..... these are okay for=
+=20
+rk3288, rk3368. rk3036 Socs on my hand board.
+(Note: the loader need that jeffy send patches to support uboot on=20
+upstream,  that's also okay if you are using the RK loader from Rockchi=
+p)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index ccc69ab..2e583f5 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -43,6 +43,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/clock/rk3036-cru.h>
-+#include <dt-bindings/soc/rockchip_boot-mode.h>
- #include "skeleton.dtsi"
- 
- / {
-@@ -307,8 +308,38 @@
- 	};
- 
- 	grf: syscon@20008000 {
--		compatible = "rockchip,rk3036-grf", "syscon";
-+		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
- 		reg = <0x20008000 0x1000>;
-+
-+		reboot-mode {
-+			compatible = "syscon-reboot-mode";
-+			offset = <0x1d8>;
-+
-+			normal {
-+				linux,mode = "normal";
-+				loader,magic = <BOOT_NORMAL>;
-+			};
-+
-+			loader {
-+				linux,mode = "loader";
-+				loader,magic = <BOOT_LOADER>;
-+			};
-+
-+			maskrom {
-+				linux,mode = "maskrom";
-+				loader,magic = <BOOT_MASKROM>;
-+			};
-+
-+			recovery {
-+				linux,mode = "recovery";
-+				loader,magic = <BOOT_RECOVERY>;
-+			};
-+
-+			fastboot {
-+				linux,mode = "fastboot";
-+				loader,magic = <BOOT_FASTBOOT>;
-+			};
-+		};
- 	};
- 
- 	acodec: acodec-ana@20030000 {
--- 
-1.9.1
+I just send the patch to support the rk3036 dts.=20
+<https://patchwork.kernel.org/patch/8021581/>
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+So feel free add my test tags:
+
+Tested-by: Caesar Wang <wxt@rock-chips.com>
+
+>
+>   .../bindings/power/reset/reboot-mode.txt           |  41 +++++++++
+>   .../bindings/power/reset/syscon-reboot-mode.txt    |  52 ++++++++++=
++
+>   arch/arm/boot/dts/rk3288.dtsi                      |  31 +++++++
+>   arch/arm/boot/dts/rk3xxx.dtsi                      |  33 ++++++-
+>   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  33 ++++++-
+>   drivers/power/reset/Kconfig                        |  16 ++++
+>   drivers/power/reset/Makefile                       |   2 +
+>   drivers/power/reset/reboot-mode.c                  | 100 ++++++++++=
++++++++++++
+>   drivers/power/reset/reboot-mode.h                  |   6 ++
+>   drivers/power/reset/syscon-reboot-mode.c           |  62 ++++++++++=
++++
+>   include/dt-bindings/soc/rockchip_boot-mode.h       |  30 +++++++
+>   11 files changed, 404 insertions(+), 2 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/power/reset/re=
+boot-mode.txt
+>   create mode 100644 Documentation/devicetree/bindings/power/reset/sy=
+scon-reboot-mode.txt
+>   create mode 100644 drivers/power/reset/reboot-mode.c
+>   create mode 100644 drivers/power/reset/reboot-mode.h
+>   create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+>   create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
+>
+
+
+--=20
+Thanks,
+Caesar
+
