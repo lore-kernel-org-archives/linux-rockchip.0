@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 3/6] rockchip: rk3036: Bind GPIO banks
-Date: Wed, 13 Jan 2016 09:59:17 +0800
-Message-ID: <1452650360-24149-4-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 2/6] ARM: bootm: Try to use relocated ramdisk
+Date: Wed, 13 Jan 2016 09:59:16 +0800
+Message-ID: <1452650360-24149-3-git-send-email-jeffy.chen@rock-chips.com>
 References: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,52 +18,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Jan Kiszka <jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, York Sun <yorksun-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Call dm_scan_fdt_node() in rk3036 pinctrl uclass binding.
+After boot_ramdisk_high(), ramdisk would be relocated to
+initrd_start & initrd_end, so use them instead of rd_start & rd_end.
 
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
 ---
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+Add comments.
 
- drivers/pinctrl/rockchip/pinctrl_rk3036.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm/lib/bootm.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/rockchip/pinctrl_rk3036.c b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-index 581b096..1f78bf8 100644
---- a/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-+++ b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-@@ -15,6 +15,7 @@
- #include <asm/arch/hardware.h>
- #include <asm/arch/periph.h>
- #include <dm/pinctrl.h>
-+#include <dm/root.h>
- 
- DECLARE_GLOBAL_DATA_PTR;
- 
-@@ -252,6 +253,12 @@ static struct pinctrl_ops rk3036_pinctrl_ops = {
- 	.get_periph_id	= rk3036_pinctrl_get_periph_id,
- };
- 
-+static int rk3036_pinctrl_bind(struct udevice *dev)
-+{
-+	/* scan child GPIO banks */
-+	return dm_scan_fdt_node(dev, gd->fdt_blob, dev->of_offset, false);
-+}
-+
- static int rk3036_pinctrl_probe(struct udevice *dev)
- {
- 	struct rk3036_pinctrl_priv *priv = dev_get_priv(dev);
-@@ -272,5 +279,6 @@ U_BOOT_DRIVER(pinctrl_rk3036) = {
- 	.of_match	= rk3036_pinctrl_ids,
- 	.priv_auto_alloc_size = sizeof(struct rk3036_pinctrl_priv),
- 	.ops		= &rk3036_pinctrl_ops,
-+	.bind		= rk3036_pinctrl_bind,
- 	.probe		= rk3036_pinctrl_probe,
- };
+diff --git a/arch/arm/lib/bootm.c b/arch/arm/lib/bootm.c
+index a477cae..0838d89 100644
+--- a/arch/arm/lib/bootm.c
++++ b/arch/arm/lib/bootm.c
+@@ -225,7 +225,17 @@ static void boot_prep_linux(bootm_headers_t *images)
+ 		if (BOOTM_ENABLE_MEMORY_TAGS)
+ 			setup_memory_tags(gd->bd);
+ 		if (BOOTM_ENABLE_INITRD_TAG) {
+-			if (images->rd_start && images->rd_end) {
++			/*
++			 * In boot_ramdisk_high(), it may relocate ramdisk to
++			 * a specified location. And set images->initrd_start &
++			 * images->initrd_end to relocated ramdisk's start/end
++			 * addresses. So use them instead of images->rd_start &
++			 * images->rd_end when possible.
++			 */
++			if (images->initrd_start && images->initrd_end) {
++				setup_initrd_tag(gd->bd, images->initrd_start,
++						 images->initrd_end);
++			} else if (images->rd_start && images->rd_end) {
+ 				setup_initrd_tag(gd->bd, images->rd_start,
+ 						 images->rd_end);
+ 			}
 -- 
 2.1.4
