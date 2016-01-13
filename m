@@ -1,147 +1,137 @@
-From: John Keeping <john@metanate.com>
-Subject: Re: [RFC/PATCH] drm/rockchip: don't wait for vblank if fb hasn't
- changed
-Date: Wed, 13 Jan 2016 17:39:54 +0000
-Message-ID: <20160113173954.52e688fc.john@metanate.com>
-References: <1452689614-6570-1-git-send-email-john@metanate.com>
- <20160113142320.GQ19130@phenom.ffwll.local>
- <20160113143425.363ce07a.john@metanate.com>
- <20160113154005.GT19130@phenom.ffwll.local>
- <20160113155529.6048b2c1.john@metanate.com>
- <20160113162156.GA19130@phenom.ffwll.local>
- <20160113164038.5fcf670f.john@metanate.com>
- <20160113171917.GC19130@phenom.ffwll.local>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 6/6] rockchip: kylin: Check fastboot request
+Date: Wed, 13 Jan 2016 13:10:35 -0700
+Message-ID: <CAPnjgZ1pQ4nvwj+6WgrL+tb2bGPyJJHsNC7S-AnkEyWYp4y4Bw@mail.gmail.com>
+References: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1452650360-24149-7-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160113171917.GC19130@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452650360-24149-7-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gV2VkLCAxMyBKYW4gMjAxNiAxODoxOToxNyArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToK
-Cj4gT24gV2VkLCBKYW4gMTMsIDIwMTYgYXQgMDQ6NDA6MzhQTSArMDAwMCwgSm9obiBLZWVwaW5n
-IHdyb3RlOgo+ID4gT24gV2VkLCAxMyBKYW4gMjAxNiAxNzoyMTo1NiArMDEwMCwgRGFuaWVsIFZl
-dHRlciB3cm90ZToKPiA+ICAgCj4gPiA+IE9uIFdlZCwgSmFuIDEzLCAyMDE2IGF0IDAzOjU1OjI5
-UE0gKzAwMDAsIEpvaG4gS2VlcGluZyB3cm90ZTogIAo+ID4gPiA+IE9uIFdlZCwgMTMgSmFuIDIw
-MTYgMTY6NDA6MDUgKzAxMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPiA+ID4gICAgIAo+ID4g
-PiA+ID4gT24gV2VkLCBKYW4gMTMsIDIwMTYgYXQgMDI6MzQ6MjVQTSArMDAwMCwgSm9obiBLZWVw
-aW5nIHdyb3RlOiAgICAKPiA+ID4gPiA+ID4gT24gV2VkLCAxMyBKYW4gMjAxNiAxNToyMzoyMCAr
-MDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToKPiA+ID4gPiA+ID4gICAgICAgCj4gPiA+ID4gPiA+
-ID4gT24gV2VkLCBKYW4gMTMsIDIwMTYgYXQgMTI6NTM6MzRQTSArMDAwMCwgSm9obiBLZWVwaW5n
-IHdyb3RlOiAgICAgIAo+ID4gPiA+ID4gPiA+ID4gQXMgY29tbWVudGVkIGluIGRybV9hdG9taWNf
-aGVscGVyX3dhaXRfZm9yX3ZibGFua3MoKSwgdXNlcnNwYWNlCj4gPiA+ID4gPiA+ID4gPiByZWxp
-ZXMgb24gY3Vyc29yIGlvY3RscyBiZWluZyB1bnN5bmNlZC4gIENvbnZlcnRpbmcgdGhlIHJvY2tj
-aGlwCj4gPiA+ID4gPiA+ID4gPiBkcml2ZXIgdG8gYXRvbWljIGhhcyBzaWduaWZpY2FudGx5IGlt
-cGFjdGVkIGN1cnNvciBwZXJmb3JtYW5jZSBieQo+ID4gPiA+ID4gPiA+ID4gbWFraW5nIGV2ZXJ5
-IGN1cnNvciB1cGRhdGUgd2FpdCBmb3IgdmJsYW5rLgo+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4g
-PiA+ID4gPiBCeSBza2lwcGluZyB0aGUgdmJsYW5rIHN5bmMgd2hlbiB0aGUgZnJhbWVidWZmZXIg
-aGFzIG5vdCBjaGFuZ2VkCj4gPiA+ID4gPiA+ID4gPiAoYXMgaXMgZG9uZSBpbiBkcm1fYXRvbWlj
-X2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKCkpIHdlIGNhbiBhdm9pZAo+ID4gPiA+ID4gPiA+ID4g
-dGhpcyBmb3IgdGhlIGNvbW1vbiBjYXNlIG9mIG1vdmluZyB0aGUgY3Vyc29yIGFuZCBvbmx5IG5l
-ZWQgdG8KPiA+ID4gPiA+ID4gPiA+IGRlbGF5IHRoZSBjdXJzb3IgaW9jdGwgd2hlbiB0aGUgY3Vy
-c29yIGljb24gY2hhbmdlcy4KPiA+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ID4gSSBvcmln
-aW5hbGx5IGluc2VydGVkIGEgY2hlY2sgb24gbGVnYWN5X2N1cnNvcl91cGRhdGUgYXMgd2VsbCwg
-YnV0Cj4gPiA+ID4gPiA+ID4gPiB0aGF0IGNhdXNlZCBhIHN0b3JtIG9mIGlvbW11IHBhZ2UgZmF1
-bHRzLiAgSSBkaWRuJ3QgaW52ZXN0aWdhdGUgdGhlCj4gPiA+ID4gPiA+ID4gPiBjYXVzZSBvZiB0
-aG9zZSBzaW5jZSB0aGlzIGNoYW5nZSBnaXZlcyBlbm91Z2ggb2YgYSBwZXJmb3JtYW5jZQo+ID4g
-PiA+ID4gPiA+ID4gaW1wcm92ZW1lbnQgZm9yIG15IHVzZSBjYXNlLgo+ID4gPiA+ID4gPiA+ID4g
-Cj4gPiA+ID4gPiA+ID4gPiBUaGlzIGlzIFJGQyBiZWNhdXNlIG9mIHRoYXQgYW5kIGJlY2F1c2Ug
-dGhlIGZyYW1lYnVmZmVyX2NoYW5nZWQoKQo+ID4gPiA+ID4gPiA+ID4gZnVuY3Rpb24gaXMgY29w
-aWVkIGZyb20gZHJtX2F0b21pY19oZWxwZXIuYyBhcyBhIHF1aWNrIHdheSB0byB0ZXN0Cj4gPiA+
-ID4gPiA+ID4gPiB0aGUgcmVzdWx0Lgo+ID4gPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+ID4gPiBT
-aWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gPiA+ID4g
-PiA+ID4gLS0tCj4gPiA+ID4gPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9mYi5jIHwgMjcKPiA+ID4gPiA+ID4gPiA+ICsrKysrKysrKysrKysrKysrKysrKysr
-KystLSAxIGZpbGUgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgMgo+ID4gPiA+ID4gPiA+ID4g
-ZGVsZXRpb25zKC0pCj4gPiA+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiA+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiA+ID4gPiA+ID4g
-PiA+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIGluZGV4IGY3
-ODQ0ODguLjhmZDk4MjEKPiA+ID4gPiA+ID4gPiA+IDEwMDY0NCAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiA+ID4gPiA+ID4gPiA+ICsrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ID4gPiA+ID4gPiA+ID4gQEAg
-LTE3Nyw4ICsxNzcsMjggQEAgc3RhdGljIHZvaWQKPiA+ID4gPiA+ID4gPiA+IHJvY2tjaGlwX2Ny
-dGNfd2FpdF9mb3JfdXBkYXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiA+ID4gPiA+ID4gPiA+
-IGNydGNfZnVuY3MtPndhaXRfZm9yX3VwZGF0ZShjcnRjKTsgfQo+ID4gPiA+ID4gPiA+ID4gIAo+
-ID4gPiA+ID4gPiA+ID4gK3N0YXRpYyBib29sIGZyYW1lYnVmZmVyX2NoYW5nZWQoc3RydWN0IGRy
-bV9kZXZpY2UgKmRldiwKPiA+ID4gPiA+ID4gPiA+ICsJCQkJc3RydWN0IGRybV9hdG9taWNfc3Rh
-dGUgKm9sZF9zdGF0ZSwKPiA+ID4gPiA+ID4gPiA+ICsJCQkJc3RydWN0IGRybV9jcnRjICpjcnRj
-KQo+ID4gPiA+ID4gPiA+ID4gK3sKPiA+ID4gPiA+ID4gPiA+ICsJc3RydWN0IGRybV9wbGFuZSAq
-cGxhbmU7Cj4gPiA+ID4gPiA+ID4gPiArCXN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm9sZF9wbGFu
-ZV9zdGF0ZTsKPiA+ID4gPiA+ID4gPiA+ICsJaW50IGk7Cj4gPiA+ID4gPiA+ID4gPiArCj4gPiA+
-ID4gPiA+ID4gPiArCWZvcl9lYWNoX3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUsIG9s
-ZF9wbGFuZV9zdGF0ZSwKPiA+ID4gPiA+ID4gPiA+IGkpIHsKPiA+ID4gPiA+ID4gPiA+ICsJCWlm
-IChwbGFuZS0+c3RhdGUtPmNydGMgIT0gY3J0YyAmJgo+ID4gPiA+ID4gPiA+ID4gKwkJICAgIG9s
-ZF9wbGFuZV9zdGF0ZS0+Y3J0YyAhPSBjcnRjKQo+ID4gPiA+ID4gPiA+ID4gKwkJCWNvbnRpbnVl
-Owo+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4gKwkJaWYgKHBsYW5lLT5zdGF0ZS0+
-ZmIgIT0gb2xkX3BsYW5lX3N0YXRlLT5mYikKPiA+ID4gPiA+ID4gPiA+ICsJCQlyZXR1cm4gdHJ1
-ZTsKPiA+ID4gPiA+ID4gPiA+ICsJfQo+ID4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ID4g
-KwlyZXR1cm4gZmFsc2U7Cj4gPiA+ID4gPiA+ID4gPiArfSAgICAgICAgCj4gPiA+ID4gPiA+ID4g
-Cj4gPiA+ID4gPiA+ID4gUGxlYXNlIGRvbid0IGhhbmQtcm9sbCBsb2dpYyB0aGF0IGFmZmVjdHMg
-c2VtYW50aWNzIGxpa2UgdGhpcy4gSW5zdGVhZAo+ID4gPiA+ID4gPiA+IHBsZWFzZSB1c2UgZHJt
-X2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpLCB3aGljaCBzaG91bGQgZG8gdGhpcwo+
-ID4gPiA+ID4gPiA+IGNvcnJlY3RseSBmb3IgeW91Lgo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4g
-PiA+IElmIHRoYXQncyBub3QgdGhlIGNhc2UgdGhlbiB3ZSBuZWVkIHRvIGltcHJvdmUgdGhlIGdl
-bmVyaWMgaGVscGVyLCBvcgo+ID4gPiA+ID4gPiA+IGZpZ3VyZSBvdXQgd2hhdCdzIGRpZmZlcmVu
-dCB3aXRoIHJvY2toaXAuICAgICAgCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBBY2NvcmRpbmcg
-dG8gY29tbWl0IDYzZWJiOWYgKGRybS9yb2NrY2hpcDogQ29udmVydCB0byBzdXBwb3J0IGF0b21p
-Ywo+ID4gPiA+ID4gPiBBUEkpIGl0J3MgYmVjYXVzZSByb2NrY2hpcCBkb2Vzbid0IGhhdmUgYSBo
-YXJkd2FyZSB2YmxhbmsgY291bnRlci4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IEknbSBub3Qg
-ZW50aXJlbHkgY2xlYXIgb24gd2h5IHRoaXMgcHJldmVudHMgdGhlIHVzZSBvZgo+ID4gPiA+ID4g
-PiBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKCkuICAgICAgCj4gPiA+ID4gPiAK
-PiA+ID4gPiA+IEhtLCB0aGF0IGNvbW1pdCBpc24ndCB0ZXJyaWJseSBoZWxwZnVsLiBJZiB0aGF0
-J3MgcmVhbGx5IG5lZWRlZCB0aGVuIGltbyBJCj4gPiA+ID4gPiB0aGluayB3ZSBzaG91bGQgZXh0
-cmFjdCBhICJkcm1fYXRvbWljX2hlbHBlcl9wbGFuZV9uZWVkc192Ymxhbmtfd2FpdCgpIgo+ID4g
-PiA+ID4gaGVscGVyIHRoYXQncyB1c2VkIGJ5IGJvdGguIEJ1dCBzaW5jZSByb2NrY2hpcCBkb2Vz
-IHZibGFua19nZXQvcHV0IGNhbGxzCj4gPiA+ID4gPiBJJ2QgaG9wZSB2YmxhbmtzIGFjdHVhbGx5
-IHdvcmsgY29ycmVjdGx5LiBBbmQgdGhlbiB0aGUgaGVscGVyIHNob3VsZCB3b3JrCj4gPiA+ID4g
-PiB0b28uICAgIAo+ID4gPiA+IAo+ID4gPiA+IEkgdHJpZWQgc3dpdGNoaW5nIHRoZSBjYWxsIHRv
-IHJvY2tjaGlwX2NydGNfd2FpdF9mb3JfdXBkYXRlKCkgdG8KPiA+ID4gPiBkcm1fYXRvbWljX2hl
-bHBlcl93YWl0X2Zvcl92YmxhbmtzKCkgYW5kIGl0IHdvcmtzIGZpbmUgdW50aWwgSSBzd2l0Y2gK
-PiA+ID4gPiB0aGUgYnVmZmVyIGFzc29jaWF0ZWQgd2l0aCBhIGN1cnNvciwgYXQgd2hpY2ggcG9p
-bnQgSSBnZXQgaW9tbXUgcGFnZQo+ID4gPiA+IGZhdWx0cywgcHJlc3VtYWJseSBiZWNhdXNlIHRo
-ZSBHRU0gYnVmZmVyIGlzIHVucmVmZXJlbmNlZCB0b28gZWFybHkuCj4gPiA+ID4gCj4gPiA+ID4g
-QUZBSUNUIHRoZSBidWZmZXIgd2lsbCBiZSByZWxlYXNlZCB2aWEgZHJtX2F0b21pY19zdGF0ZV9m
-cmVlKCkKPiA+ID4gPiB1bmNvbmRpdGlvbmFsbHksIGJ1dCBJIHN1c3BlY3QgSSdtIG1pc3Npbmcg
-c29tZXRoaW5nIHNpbmNlIHRoYXQgd291bGQKPiA+ID4gPiBtZWFuIGV2ZXJ5IGRyaXZlciB3b3Vs
-ZCBoaXQgYSBzaW1pbGFyIHByb2JsZW0uICAgIAo+ID4gPiAKPiA+ID4gWWVhaCwgd2l0aCB0aGUg
-aGVscGVyIHdlIGFsd2F5cyBza2lwLCB3aGljaCBtZWFucyB3aGVuIHRoZSBjdXJzb3IgYm8KPiA+
-ID4gY2hhbmdlcyB5b3UgaW5kZWVkIHVubWFwIHRvbyBlYXJseS4gU28gY2FuJ3QgZXZlbiBzaGFy
-ZSB0aGUgb3ZlcmFsbAo+ID4gPiBjb25kaXRpb24sIGJ1dCB3ZSBjb3VsZCBkZWZpbml0ZWx5IHNo
-YXJlIHRoZSBsaXR0bGUgZnJhbWVidWZmZXJfY2hhbmdlZAo+ID4gPiBoZWxwZXIuICAKPiA+IAo+
-ID4gVGhhdCBsZWF2ZXMgbWUgd2l0aCB0aGUgcXVlc3Rpb246IHdoeSBkbyBvdGhlciBhdG9taWMg
-ZHJpdmVycyB3b3JrPwo+ID4gCj4gPiBJZiBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92Ymxh
-bmtzKCkgc2tpcHBpbmcgdmJsYW5rcyByZXN1bHRzIGluIHRoZQo+ID4gY3Vyc29yIGJvIGJlaW5n
-IHVubWFwcGVkIHRvbyBlYXJseSBmb3Igcm9ja2NoaXAsIHdoeSBpcyBpdCBub3QgdW5tYXBwZWQK
-PiA+IHRvbyBlYXJseSBmb3IgYWxsIG9mIHRoZSBvdGhlciBkcml2ZXJzIHVzaW5nIHRoYXQgaGVs
-cGVyPyAgCj4gCj4gSXQncyB1bm1hcHBlZCB0b28gZWFybHkgZm9yIGV2ZXJ5b25lLCBpdCdzIGp1
-c3QgdGhhdCBub3JtYWxseSB0aGF0IGRvZXNuJ3QKPiByZXN1bHQgaW4gYSBmaXJld29ya3Mgc2hv
-dy4gV2hhdCB3ZSBtYXliZSBjb3VsZC9zaG91bGQgZG8gaXMgZG8gdGhlCj4gdW5tYXBwaW5nIGFz
-eW5jaHJvbm91c2x5LCBidXQgdGhhdCBydW5zIGludG8gdGhlIG92ZXJhbGwgImN1cnJlbnQgYXRv
-bWljCj4gaGVscGVycyBkb24ndCBkbyBhc3luYyB5ZXQiIHByb2JsZW0uIE1pZ2h0IGJlIGEgZ29v
-ZCBwb2ludCB0byBzdGFydCBmaXhpbmcKPiB0aGlzIHVwIHRob3VnaC4KCk9LLCB0aGFua3MsIEkg
-dGhpbmsgSSdtIGJlZ2lubmluZyB0byB1bmRlcnN0YW5kIGhvdyB0aGlzIGFsbCBmaXRzCnRvZ2V0
-aGVyLgoKSXQgbG9va3MgbGlrZSB0aGVyZSBhcmUgdHdvIG9wdGlvbnMgZm9yIG1lIHRvIGdldCBy
-ZWFzb25hYmxlIGN1cnNvcgpwZXJmb3JtYW5jZSBvbiByb2NrY2hpcCBpbiB0aGUgc2hvcnQgdGVy
-bToKCjEpIEV4cG9ydCB0aGUgY3VycmVudCBmcmFtZWJ1ZmZlcl9jaGFuZ2VkKCkgZnVuY3Rpb24g
-YXMKICAgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZCgpIGFuZCB1c2UgaXQg
-aW4KICAgcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUoKS4KCjIpIEFkZCBhIG1lY2hhbmlz
-bSB0byBzdXBwcmVzcyB0aGUgbGVnYWN5X2N1cnNvcl91cGRhdGUgY2hlY2sgaW4KICAgZHJtX2F0
-b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpIGFuZCBzd2l0Y2ggdGhlIHJvY2tjaGlwIGRy
-aXZlcgogICBvdmVyIHRvIGl0LgoKSW4gYm90aCBvZiB0aGVzZSBjYXNlcyB3ZSdyZSBvbmx5IHJl
-c3RvcmluZyB0aGUgdW5zeW5jZWQgY3Vyc29yIGlvY3RscwpiZWhhdmlvdXIgd2hlbiB0aGUgY3Vy
-c29yIGlzIG1vdmVkIGJ1dCBpdCB3aWxsIHN0aWxsIGJlIGV4cGVuc2l2ZSB3aGVuCnRoZSBjdXJz
-b3IgYm8gY2hhbmdlcy4gIFRoYXQgZ2l2ZXMgc3VmZmljaWVudCBwZXJmb3JtYW5jZSBpbiBteSB0
-ZXN0aW5nLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Jeffy,
+
+On 12 January 2016 at 18:59, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> We will save boot mode flag in grf's os_reg[0], if fastboot
+> requested or fastboot key pressed, try to enter fastboot mode
+> at preboot stage.
+>
+> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> ---
+>
+> Changes in v3:
+> Use rockchip's legacy reboot mode definitions.
+>
+> Changes in v2: None
+>
+>  board/kylin/kylin_rk3036/kylin_rk3036.c | 46 +++++++++++++++++++++++++++++++++
+>  include/configs/kylin_rk3036.h          |  3 +++
+>  2 files changed, 49 insertions(+)
+>
+> diff --git a/board/kylin/kylin_rk3036/kylin_rk3036.c b/board/kylin/kylin_rk3036/kylin_rk3036.c
+> index 40d6b52..4fc31b1 100644
+> --- a/board/kylin/kylin_rk3036/kylin_rk3036.c
+> +++ b/board/kylin/kylin_rk3036/kylin_rk3036.c
+> @@ -8,10 +8,15 @@
+>  #include <dm.h>
+>  #include <asm/io.h>
+>  #include <asm/arch/uart.h>
+> +#include <asm/arch-rockchip/grf_rk3036.h>
+>  #include <asm/arch/sdram_rk3036.h>
+> +#include <asm/gpio.h>
+>
+>  DECLARE_GLOBAL_DATA_PTR;
+>
+> +#define GRF_BASE       0x20008000
+> +static struct rk3036_grf * const grf = (void *)GRF_BASE;
+
+Can you make this a local var in board_late_init()? I does not seem to
+need to be static.
+
+> +
+>  void get_ddr_config(struct rk3036_ddr_config *config)
+>  {
+>         /* K4B4G1646Q config */
+> @@ -28,6 +33,47 @@ void get_ddr_config(struct rk3036_ddr_config *config)
+>         config->bw = 1;
+>  }
+>
+> +#define FASTBOOT_KEY_GPIO 93
+> +
+> +int fastboot_key_pressed(void)
+> +{
+> +       gpio_request(FASTBOOT_KEY_GPIO, "fastboot_key");
+> +       gpio_direction_input(FASTBOOT_KEY_GPIO);
+> +       return !gpio_get_value(FASTBOOT_KEY_GPIO);
+> +}
+> +
+> +enum rockchip_boot_mode {
+> +       ROCKCHIP_BOOT_MODE_NORMAL = 0x5242C300,
+> +       ROCKCHIP_BOOT_MODE_LOADER,
+> +       ROCKCHIP_BOOT_MODE_MASKROM,
+> +       ROCKCHIP_BOOT_MODE_RECOVER,
+> +       ROCKCHIP_BOOT_MODE_NORECOVER,
+> +       ROCKCHIP_BOOT_MODE_SECONDOS,
+> +       ROCKCHIP_BOOT_MODE_WIPEDATA,
+> +       ROCKCHIP_BOOT_MODE_WIPEALL,
+> +       ROCKCHIP_BOOT_MODE_CHECKIMG,
+> +       ROCKCHIP_BOOT_MODE_FASTBOOT,
+> +       ROCKCHIP_BOOT_MODE_SECUREBOOT_DISABLE,
+> +       ROCKCHIP_BOOT_MODE_CHARGING,
+> +       ROCKCHIP_BOOT_MODE_MAX,
+> +};
+> +
+> +int board_late_init(void)
+> +{
+> +       int boot_mode = readl(&grf->os_reg[4]);
+> +
+> +       /* Clear boot mode */
+> +       writel(0, &grf->os_reg[4]);
+> +
+> +       if (boot_mode == ROCKCHIP_BOOT_MODE_FASTBOOT ||
+> +           fastboot_key_pressed()) {
+> +               printf("enter fastboot!\n");
+> +               setenv("preboot", "setenv preboot; fastboot usb0");
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+>  int board_init(void)
+>  {
+>         return 0;
+> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
+> index 49997ec..424e81b 100644
+> --- a/include/configs/kylin_rk3036.h
+> +++ b/include/configs/kylin_rk3036.h
+> @@ -39,6 +39,9 @@
+>         "mmcpart=5\0" \
+>         "loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+>
+> +#define CONFIG_BOARD_LATE_INIT
+> +#define CONFIG_PREBOOT
+> +
+>  #define CONFIG_ANDROID_BOOT_IMAGE
+>  #define CONFIG_SYS_BOOT_RAMDISK_HIGH
+>  #define CONFIG_SYS_HUSH_PARSER
+> --
+> 2.1.4
+>
+>
+
+Regards,
+Simon
