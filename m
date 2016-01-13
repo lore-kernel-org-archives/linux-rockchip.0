@@ -1,7 +1,7 @@
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 6/6] rockchip: kylin: Check fastboot request
-Date: Wed, 13 Jan 2016 16:53:20 +0800
-Message-ID: <1452675200-15941-7-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v4 3/6] rockchip: rk3036: Bind GPIO banks
+Date: Wed, 13 Jan 2016 16:53:17 +0800
+Message-ID: <1452675200-15941-4-git-send-email-jeffy.chen@rock-chips.com>
 References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,93 +21,50 @@ To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We will save boot mode flag in grf's os_reg[4], if fastboot
-requested or fastboot key pressed, try to enter fastboot mode
-at preboot stage.
+Call dm_scan_fdt_node() in rk3036 pinctrl uclass binding.
 
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 
-Changes in v4:
-Remove unused reboot mode definitions.
-
-Changes in v3:
-Use rockchip's legacy reboot mode definitions.
-
+Changes in v4: None
+Changes in v3: None
 Changes in v2: None
 
- board/kylin/kylin_rk3036/kylin_rk3036.c | 32 ++++++++++++++++++++++++++++++++
- include/configs/kylin_rk3036.h          |  3 +++
- 2 files changed, 35 insertions(+)
+ drivers/pinctrl/rockchip/pinctrl_rk3036.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/board/kylin/kylin_rk3036/kylin_rk3036.c b/board/kylin/kylin_rk3036/kylin_rk3036.c
-index 40d6b52..a730d7c 100644
---- a/board/kylin/kylin_rk3036/kylin_rk3036.c
-+++ b/board/kylin/kylin_rk3036/kylin_rk3036.c
-@@ -8,10 +8,15 @@
- #include <dm.h>
- #include <asm/io.h>
- #include <asm/arch/uart.h>
-+#include <asm/arch-rockchip/grf_rk3036.h>
- #include <asm/arch/sdram_rk3036.h>
-+#include <asm/gpio.h>
+diff --git a/drivers/pinctrl/rockchip/pinctrl_rk3036.c b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
+index 581b096..1f78bf8 100644
+--- a/drivers/pinctrl/rockchip/pinctrl_rk3036.c
++++ b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
+@@ -15,6 +15,7 @@
+ #include <asm/arch/hardware.h>
+ #include <asm/arch/periph.h>
+ #include <dm/pinctrl.h>
++#include <dm/root.h>
  
  DECLARE_GLOBAL_DATA_PTR;
  
-+#define GRF_BASE	0x20008000
-+static struct rk3036_grf * const grf = (void *)GRF_BASE;
-+
- void get_ddr_config(struct rk3036_ddr_config *config)
- {
- 	/* K4B4G1646Q config */
-@@ -28,6 +33,33 @@ void get_ddr_config(struct rk3036_ddr_config *config)
- 	config->bw = 1;
- }
+@@ -252,6 +253,12 @@ static struct pinctrl_ops rk3036_pinctrl_ops = {
+ 	.get_periph_id	= rk3036_pinctrl_get_periph_id,
+ };
  
-+#define FASTBOOT_KEY_GPIO 93
-+
-+int fastboot_key_pressed(void)
++static int rk3036_pinctrl_bind(struct udevice *dev)
 +{
-+	gpio_request(FASTBOOT_KEY_GPIO, "fastboot_key");
-+	gpio_direction_input(FASTBOOT_KEY_GPIO);
-+	return !gpio_get_value(FASTBOOT_KEY_GPIO);
++	/* scan child GPIO banks */
++	return dm_scan_fdt_node(dev, gd->fdt_blob, dev->of_offset, false);
 +}
 +
-+#define ROCKCHIP_BOOT_MODE_FASTBOOT	0x5242C309
-+
-+int board_late_init(void)
-+{
-+	int boot_mode = readl(&grf->os_reg[4]);
-+
-+	/* Clear boot mode */
-+	writel(0, &grf->os_reg[4]);
-+
-+	if (boot_mode == ROCKCHIP_BOOT_MODE_FASTBOOT ||
-+	    fastboot_key_pressed()) {
-+		printf("enter fastboot!\n");
-+		setenv("preboot", "setenv preboot; fastboot usb0");
-+	}
-+
-+	return 0;
-+}
-+
- int board_init(void)
+ static int rk3036_pinctrl_probe(struct udevice *dev)
  {
- 	return 0;
-diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
-index 49997ec..424e81b 100644
---- a/include/configs/kylin_rk3036.h
-+++ b/include/configs/kylin_rk3036.h
-@@ -39,6 +39,9 @@
- 	"mmcpart=5\0" \
- 	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
- 
-+#define CONFIG_BOARD_LATE_INIT
-+#define CONFIG_PREBOOT
-+
- #define CONFIG_ANDROID_BOOT_IMAGE
- #define CONFIG_SYS_BOOT_RAMDISK_HIGH
- #define CONFIG_SYS_HUSH_PARSER
+ 	struct rk3036_pinctrl_priv *priv = dev_get_priv(dev);
+@@ -272,5 +279,6 @@ U_BOOT_DRIVER(pinctrl_rk3036) = {
+ 	.of_match	= rk3036_pinctrl_ids,
+ 	.priv_auto_alloc_size = sizeof(struct rk3036_pinctrl_priv),
+ 	.ops		= &rk3036_pinctrl_ops,
++	.bind		= rk3036_pinctrl_bind,
+ 	.probe		= rk3036_pinctrl_probe,
+ };
 -- 
 2.1.4
