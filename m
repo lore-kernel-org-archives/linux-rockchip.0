@@ -1,93 +1,67 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 04/12] clk: rockchip: rk3036: enable the
- CLK_IGNORE_UNUSED flag for sclk_i2s_out
-Date: Wed, 13 Jan 2016 16:10:46 +0800
-Message-ID: <56960686.7030903@gmail.com>
-References: <1452155155-16232-1-git-send-email-wxt@rock-chips.com>
- <290434099.8XFZ9qmNRz@phil> <568F80BA.6060209@gmail.com>
- <20757797.djuaztrzGE@phil>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: fix mask when updating interrupts
+Date: Wed, 13 Jan 2016 16:12:08 +0800
+Message-ID: <569606D8.8060309@rock-chips.com>
+References: <1452621918-32239-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20757797.djuaztrzGE@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <caesar.upstream@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, leecam@google.com, leozwang@google.com, keescook@google.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1452621918-32239-1-git-send-email-john@metanate.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
-
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8808=E6=97=A5 17:46, Heiko Stuebner =E5=
-=86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Freitag, 8. Januar 2016, 17:26:18 schrieb Caesar Wang:
->> =E5=9C=A8 2016=E5=B9=B401=E6=9C=8807=E6=97=A5 18:05, Heiko Stuebner =
-=E5=86=99=E9=81=93:
->>> Am Donnerstag, 7. Januar 2016, 16:25:47 schrieb Caesar Wang:
->>>> SCLk_I2S_OUT is the noc bus clock for i2s module, this clock is us=
-ed by
->>>> extra codecs.
->>>>
->>>> Due to it shouldn't belong to any driver, but we need it enabled,
->>>> so just mark it as the CLK_IGNORE_UNUSED flag.
->>> What makes you think it shouldn't belong to any driver?
->>>
->>> In most schematics I have, i2s_clkout is going to some clock-input =
-of
->>> the
->>> audio codec - probably the MCLK input on your rt5616. And while the=
- new
->>> rt5616 driver does not seem to do clock handling, it should just ha=
-ndle
->>> the clock using the normal APIs.
->> You are right,  that's seem has to find the root cause.
->> I'm wonder that the codec/i2s is working in kernel v4.1 patch withou=
-t it.
->>
->> In general,  the MLCK will be handled in i2s driver if the cpu side =
-is
->> master.
-> looking at the rt5616 datasheet, that would be BCLK1 instead I think.=
- This
-> one does differentiate between being master/slave.
->
-> The master/sysclk (mclk) is also handled in other drivers in all case=
-s.
-> (da7213.c, da7219.c, max98090.c, max98095.c, probably more)
-
-Saw the patch:
-https://patchwork.kernel.org/patch/5427131/
-
-Add the follow that's working.
-
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -288,8 +288,8 @@
-                 interrupts =3D <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-                 #address-cells =3D <1>;
-                 #size-cells =3D <0>;
--               clock-names =3D "i2s_clk", "i2s_hclk";
--               clocks =3D <&cru SCLK_I2S>, <&cru HCLK_I2S>;
-+               clock-names =3D "i2s_clk", "i2s_hclk", "i2s_clk_out";
-+               clocks =3D <&cru SCLK_I2S>, <&cru HCLK_I2S>, <&cru=20
-SCLK_I2S_OUT>;
-
-Okay, I believe Mark likes that works in codec driver.
-
->
->
-> Heiko
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
---=20
-Thanks,
-Caesar
-
+T24gMjAxNuW5tDAx5pyIMTPml6UgMDI6MDUsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBDb21taXQg
+ZGJiM2Q5NCAoZHJtL3JvY2tjaGlwOiB2b3A6IG1vdmUgaW50ZXJydXB0IHJlZ2lzdGVycyBpbnRv
+Cj4gdm9wX2RhdGEpIGludHJvZHVjZWQgbmV3IG1hY3JvcyBmb3IgdXBkYXRpbmcgdGhlIGludGVy
+cnVwdCBjb250cm9sCj4gcmVnaXN0ZXJzIGJ1dCB0aGVzZSBhbHdheXMgdXNlIHRoZSBtYXNrIGZy
+b20gdGhlIHJlZ2lzdGVyIGRlZmluaXRpb24KPiB3aXRob3V0IHJlZmluaW5nIGl0IGZvciB0aGUg
+cGFydGljdWxhciBiaXRzIHRoYXQgYXJlIGJlaW5nIGNoYW5nZWQuCj4KPiBUaGlzIG1lYW5zIHRo
+YXQgd2hlbmV2ZXIgd2UgZW5hYmxlL2Rpc2FibGUgYSBwYXJ0aWN1bGFyIGludGVycnVwdCB3ZSBl
+bmQKPiB1cCBkaXNhYmxpbmcgYWxsIG9mIHRoZSBvdGhlcnMgYXMgYSBzaWRlIGVmZmVjdC4KPgo+
+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Cj4gLS0tCj4g
+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTYgKysrKysr
+KysrLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgNyBkZWxldGlv
+bnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+
+IGluZGV4IDQ2YzJhOGQuLmZkMzcwNTQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNDMsOCArNDMsOCBAQAo+ICAgCj4gICAjZGVmaW5l
+IFJFR19TRVQoeCwgYmFzZSwgcmVnLCB2LCBtb2RlKSBcCj4gICAJCV9fUkVHX1NFVF8jI21vZGUo
+eCwgYmFzZSArIHJlZy5vZmZzZXQsIHJlZy5tYXNrLCByZWcuc2hpZnQsIHYpCj4gLSNkZWZpbmUg
+UkVHX1NFVF9NQVNLKHgsIGJhc2UsIHJlZywgdiwgbW9kZSkgXAo+IC0JCV9fUkVHX1NFVF8jI21v
+ZGUoeCwgYmFzZSArIHJlZy5vZmZzZXQsIHJlZy5tYXNrLCByZWcuc2hpZnQsIHYpCj4gKyNkZWZp
+bmUgUkVHX1NFVF9NQVNLKHgsIGJhc2UsIHJlZywgbWFzaywgdiwgbW9kZSkgXAo+ICsJCV9fUkVH
+X1NFVF8jI21vZGUoeCwgYmFzZSArIHJlZy5vZmZzZXQsIG1hc2ssIHJlZy5zaGlmdCwgdikKPiAg
+IAo+ICAgI2RlZmluZSBWT1BfV0lOX1NFVCh4LCB3aW4sIG5hbWUsIHYpIFwKPiAgIAkJUkVHX1NF
+VCh4LCB3aW4tPmJhc2UsIHdpbi0+cGh5LT5uYW1lLCB2LCBSRUxBWEVEKQo+IEBAIC01OCwxNiAr
+NTgsMTggQEAKPiAgICNkZWZpbmUgVk9QX0lOVFJfR0VUKHZvcCwgbmFtZSkgXAo+ICAgCQl2b3Bf
+cmVhZF9yZWcodm9wLCAwLCAmdm9wLT5kYXRhLT5jdHJsLT5uYW1lKQo+ICAgCj4gLSNkZWZpbmUg
+Vk9QX0lOVFJfU0VUKHZvcCwgbmFtZSwgdikgXAo+IC0JCVJFR19TRVQodm9wLCAwLCB2b3AtPmRh
+dGEtPmludHItPm5hbWUsIHYsIE5PUk1BTCkKPiArI2RlZmluZSBWT1BfSU5UUl9TRVQodm9wLCBu
+YW1lLCBtYXNrLCB2KSBcCj4gKwkJUkVHX1NFVF9NQVNLKHZvcCwgMCwgdm9wLT5kYXRhLT5pbnRy
+LT5uYW1lLCBtYXNrLCB2LCBOT1JNQUwpCj4gICAjZGVmaW5lIFZPUF9JTlRSX1NFVF9UWVBFKHZv
+cCwgbmFtZSwgdHlwZSwgdikgXAo+ICAgCWRvIHsgXAo+IC0JCWludCBpLCByZWcgPSAwOyBcCj4g
+KwkJaW50IGksIHJlZyA9IDAsIG1hc2sgPSAwOyBcCj4gICAJCWZvciAoaSA9IDA7IGkgPCB2b3At
+PmRhdGEtPmludHItPm5pbnRyczsgaSsrKSB7IFwKPiAtCQkJaWYgKHZvcC0+ZGF0YS0+aW50ci0+
+aW50cnNbaV0gJiB0eXBlKSBcCj4gKwkJCWlmICh2b3AtPmRhdGEtPmludHItPmludHJzW2ldICYg
+dHlwZSkgeyBcCj4gICAJCQkJcmVnIHw9ICh2KSA8PCBpOyBcCj4gKwkJCQltYXNrIHw9IDEgPDwg
+aTsgXAo+ICsJCQl9IFwKPiAgIAkJfSBcCj4gLQkJVk9QX0lOVFJfU0VUKHZvcCwgbmFtZSwgcmVn
+KTsgXAo+ICsJCVZPUF9JTlRSX1NFVCh2b3AsIG5hbWUsIG1hc2ssIHJlZyk7IFwKPiAgIAl9IHdo
+aWxlICgwKQo+ICAgI2RlZmluZSBWT1BfSU5UUl9HRVRfVFlQRSh2b3AsIG5hbWUsIHR5cGUpIFwK
+PiAgIAkJdm9wX2dldF9pbnRyX3R5cGUodm9wLCAmdm9wLT5kYXRhLT5pbnRyLT5uYW1lLCB0eXBl
+KQpIaSBKb2huCgpHcmVhdCwgaXQgd29ya3MgZm9yIG1lLCBUaGFua3MgZm9yIHRoaXMgZml4LgoK
+QXBwbGllZCB0byBteSBkcm0tbmV4dCBicmFuY2guCgotLSDvvK1hcmsgWWFvCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
