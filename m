@@ -1,70 +1,72 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 3/6] rockchip: rk3036: Bind GPIO banks
-Date: Wed, 13 Jan 2016 16:53:17 +0800
-Message-ID: <1452675200-15941-4-git-send-email-jeffy.chen@rock-chips.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: [RFC/PATCH] drm/rockchip: don't wait for vblank if fb hasn't changed
+Date: Wed, 13 Jan 2016 12:53:34 +0000
+Message-ID: <1452689614-6570-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452675200-15941-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Call dm_scan_fdt_node() in rk3036 pinctrl uclass binding.
-
-Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-
- drivers/pinctrl/rockchip/pinctrl_rk3036.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/drivers/pinctrl/rockchip/pinctrl_rk3036.c b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-index 581b096..1f78bf8 100644
---- a/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-+++ b/drivers/pinctrl/rockchip/pinctrl_rk3036.c
-@@ -15,6 +15,7 @@
- #include <asm/arch/hardware.h>
- #include <asm/arch/periph.h>
- #include <dm/pinctrl.h>
-+#include <dm/root.h>
- 
- DECLARE_GLOBAL_DATA_PTR;
- 
-@@ -252,6 +253,12 @@ static struct pinctrl_ops rk3036_pinctrl_ops = {
- 	.get_periph_id	= rk3036_pinctrl_get_periph_id,
- };
- 
-+static int rk3036_pinctrl_bind(struct udevice *dev)
-+{
-+	/* scan child GPIO banks */
-+	return dm_scan_fdt_node(dev, gd->fdt_blob, dev->of_offset, false);
-+}
-+
- static int rk3036_pinctrl_probe(struct udevice *dev)
- {
- 	struct rk3036_pinctrl_priv *priv = dev_get_priv(dev);
-@@ -272,5 +279,6 @@ U_BOOT_DRIVER(pinctrl_rk3036) = {
- 	.of_match	= rk3036_pinctrl_ids,
- 	.priv_auto_alloc_size = sizeof(struct rk3036_pinctrl_priv),
- 	.ops		= &rk3036_pinctrl_ops,
-+	.bind		= rk3036_pinctrl_bind,
- 	.probe		= rk3036_pinctrl_probe,
- };
--- 
-2.1.4
+QXMgY29tbWVudGVkIGluIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MoKSwgdXNl
+cnNwYWNlIHJlbGllcwpvbiBjdXJzb3IgaW9jdGxzIGJlaW5nIHVuc3luY2VkLiAgQ29udmVydGlu
+ZyB0aGUgcm9ja2NoaXAgZHJpdmVyIHRvCmF0b21pYyBoYXMgc2lnbmlmaWNhbnRseSBpbXBhY3Rl
+ZCBjdXJzb3IgcGVyZm9ybWFuY2UgYnkgbWFraW5nIGV2ZXJ5CmN1cnNvciB1cGRhdGUgd2FpdCBm
+b3IgdmJsYW5rLgoKQnkgc2tpcHBpbmcgdGhlIHZibGFuayBzeW5jIHdoZW4gdGhlIGZyYW1lYnVm
+ZmVyIGhhcyBub3QgY2hhbmdlZCAoYXMgaXMKZG9uZSBpbiBkcm1fYXRvbWljX2hlbHBlcl93YWl0
+X2Zvcl92YmxhbmtzKCkpIHdlIGNhbiBhdm9pZCB0aGlzIGZvciB0aGUKY29tbW9uIGNhc2Ugb2Yg
+bW92aW5nIHRoZSBjdXJzb3IgYW5kIG9ubHkgbmVlZCB0byBkZWxheSB0aGUgY3Vyc29yIGlvY3Rs
+CndoZW4gdGhlIGN1cnNvciBpY29uIGNoYW5nZXMuCgpJIG9yaWdpbmFsbHkgaW5zZXJ0ZWQgYSBj
+aGVjayBvbiBsZWdhY3lfY3Vyc29yX3VwZGF0ZSBhcyB3ZWxsLCBidXQgdGhhdApjYXVzZWQgYSBz
+dG9ybSBvZiBpb21tdSBwYWdlIGZhdWx0cy4gIEkgZGlkbid0IGludmVzdGlnYXRlIHRoZSBjYXVz
+ZSBvZgp0aG9zZSBzaW5jZSB0aGlzIGNoYW5nZSBnaXZlcyBlbm91Z2ggb2YgYSBwZXJmb3JtYW5j
+ZSBpbXByb3ZlbWVudCBmb3IgbXkKdXNlIGNhc2UuCgpUaGlzIGlzIFJGQyBiZWNhdXNlIG9mIHRo
+YXQgYW5kIGJlY2F1c2UgdGhlIGZyYW1lYnVmZmVyX2NoYW5nZWQoKQpmdW5jdGlvbiBpcyBjb3Bp
+ZWQgZnJvbSBkcm1fYXRvbWljX2hlbHBlci5jIGFzIGEgcXVpY2sgd2F5IHRvIHRlc3QgdGhlCnJl
+c3VsdC4KClNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0t
+LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIHwgMjcgKysrKysr
+KysrKysrKysrKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwg
+MiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Zi
+LmMKaW5kZXggZjc4NDQ4OC4uOGZkOTgyMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3Jv
+Y2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZmIuYwpAQCAtMTc3LDggKzE3NywyOCBAQCBzdGF0aWMgdm9pZCByb2NrY2hp
+cF9jcnRjX3dhaXRfZm9yX3VwZGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJCWNydGNfZnVu
+Y3MtPndhaXRfZm9yX3VwZGF0ZShjcnRjKTsKIH0KIAorc3RhdGljIGJvb2wgZnJhbWVidWZmZXJf
+Y2hhbmdlZChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAorCQkJCXN0cnVjdCBkcm1fYXRvbWljX3N0
+YXRlICpvbGRfc3RhdGUsCisJCQkJc3RydWN0IGRybV9jcnRjICpjcnRjKQoreworCXN0cnVjdCBk
+cm1fcGxhbmUgKnBsYW5lOworCXN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm9sZF9wbGFuZV9zdGF0
+ZTsKKwlpbnQgaTsKKworCWZvcl9lYWNoX3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUs
+IG9sZF9wbGFuZV9zdGF0ZSwgaSkgeworCQlpZiAocGxhbmUtPnN0YXRlLT5jcnRjICE9IGNydGMg
+JiYKKwkJICAgIG9sZF9wbGFuZV9zdGF0ZS0+Y3J0YyAhPSBjcnRjKQorCQkJY29udGludWU7CisK
+KwkJaWYgKHBsYW5lLT5zdGF0ZS0+ZmIgIT0gb2xkX3BsYW5lX3N0YXRlLT5mYikKKwkJCXJldHVy
+biB0cnVlOworCX0KKworCXJldHVybiBmYWxzZTsKK30KKwogc3RhdGljIHZvaWQKLXJvY2tjaGlw
+X2F0b21pY193YWl0X2Zvcl9jb21wbGV0ZShzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqb2xkX3N0
+YXRlKQorcm9ja2NoaXBfYXRvbWljX3dhaXRfZm9yX2NvbXBsZXRlKHN0cnVjdCBkcm1fZGV2aWNl
+ICpkZXYsIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUpCiB7CiAJc3RydWN0IGRy
+bV9jcnRjX3N0YXRlICpvbGRfY3J0Y19zdGF0ZTsKIAlzdHJ1Y3QgZHJtX2NydGMgKmNydGM7CkBA
+IC0xOTQsNiArMjE0LDkgQEAgcm9ja2NoaXBfYXRvbWljX3dhaXRfZm9yX2NvbXBsZXRlKHN0cnVj
+dCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUpCiAJCWlmICghY3J0Yy0+c3RhdGUtPmFjdGl2
+ZSkKIAkJCWNvbnRpbnVlOwogCisJCWlmICghZnJhbWVidWZmZXJfY2hhbmdlZChkZXYsIG9sZF9z
+dGF0ZSwgY3J0YykpCisJCQljb250aW51ZTsKKwogCQlyZXQgPSBkcm1fY3J0Y192YmxhbmtfZ2V0
+KGNydGMpOwogCQlpZiAocmV0ICE9IDApCiAJCQljb250aW51ZTsKQEAgLTI0MSw3ICsyNjQsNyBA
+QCByb2NrY2hpcF9hdG9taWNfY29tbWl0X2NvbXBsZXRlKHN0cnVjdCByb2NrY2hpcF9hdG9taWNf
+Y29tbWl0ICpjb21taXQpCiAKIAlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfcGxhbmVzKGRldiwg
+c3RhdGUsIHRydWUpOwogCi0Jcm9ja2NoaXBfYXRvbWljX3dhaXRfZm9yX2NvbXBsZXRlKHN0YXRl
+KTsKKwlyb2NrY2hpcF9hdG9taWNfd2FpdF9mb3JfY29tcGxldGUoZGV2LCBzdGF0ZSk7CiAKIAlk
+cm1fYXRvbWljX2hlbHBlcl9jbGVhbnVwX3BsYW5lcyhkZXYsIHN0YXRlKTsKIAotLSAKMi43LjAu
+cmMzLjE0MC5nNTIwYTA5MwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
