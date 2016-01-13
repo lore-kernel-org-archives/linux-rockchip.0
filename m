@@ -1,64 +1,73 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] drm/rockchip: vop: fix mask when updating interrupts
-Date: Tue, 12 Jan 2016 18:05:18 +0000
-Message-ID: <1452621918-32239-1-git-send-email-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, John Keeping <john@metanate.com>
+From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v3 5/6] rockchip: kylin: Enable boot with android boot image
+Date: Wed, 13 Jan 2016 09:59:19 +0800
+Message-ID: <1452650360-24149-6-git-send-email-jeffy.chen@rock-chips.com>
+References: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452650360-24149-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit dbb3d94 (drm/rockchip: vop: move interrupt registers into
-vop_data) introduced new macros for updating the interrupt control
-registers but these always use the mask from the register definition
-without refining it for the particular bits that are being changed.
+The android kernel is using appended dtb by default, and store
+ramdisk right after kernel & dtb.
+So we needs to relocate ramdisk, and use atags to pass params.
 
-This means that whenever we enable/disable a particular interrupt we end
-up disabling all of the others as a side effect.
-
-Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 46c2a8d..fd37054 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -43,8 +43,8 @@
+Changes in v3: None
+Changes in v2: None
+
+ include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
+index b750b26..49997ec 100644
+--- a/include/configs/kylin_rk3036.h
++++ b/include/configs/kylin_rk3036.h
+@@ -35,6 +35,29 @@
+ #undef CONFIG_EXTRA_ENV_SETTINGS
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"partitions=" PARTS_DEFAULT \
++	"mmcdev=0\0" \
++	"mmcpart=5\0" \
++	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
++
++#define CONFIG_ANDROID_BOOT_IMAGE
++#define CONFIG_SYS_BOOT_RAMDISK_HIGH
++#define CONFIG_SYS_HUSH_PARSER
++
++#undef CONFIG_BOOTCOMMAND
++#define CONFIG_BOOTCOMMAND \
++	"mmc dev ${mmcdev}; if mmc rescan; then " \
++		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
++		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
++		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
++		"bootm start ${loadaddr}; bootm ramdisk;" \
++		"bootm prep; bootm go;" \
++	"fi;" \
++
++/* Enable atags */
++#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
++#define CONFIG_INITRD_TAG
++#define CONFIG_SETUP_MEMORY_TAGS
++#define CONFIG_CMDLINE_TAG
  
- #define REG_SET(x, base, reg, v, mode) \
- 		__REG_SET_##mode(x, base + reg.offset, reg.mask, reg.shift, v)
--#define REG_SET_MASK(x, base, reg, v, mode) \
--		__REG_SET_##mode(x, base + reg.offset, reg.mask, reg.shift, v)
-+#define REG_SET_MASK(x, base, reg, mask, v, mode) \
-+		__REG_SET_##mode(x, base + reg.offset, mask, reg.shift, v)
+ #endif
  
- #define VOP_WIN_SET(x, win, name, v) \
- 		REG_SET(x, win->base, win->phy->name, v, RELAXED)
-@@ -58,16 +58,18 @@
- #define VOP_INTR_GET(vop, name) \
- 		vop_read_reg(vop, 0, &vop->data->ctrl->name)
- 
--#define VOP_INTR_SET(vop, name, v) \
--		REG_SET(vop, 0, vop->data->intr->name, v, NORMAL)
-+#define VOP_INTR_SET(vop, name, mask, v) \
-+		REG_SET_MASK(vop, 0, vop->data->intr->name, mask, v, NORMAL)
- #define VOP_INTR_SET_TYPE(vop, name, type, v) \
- 	do { \
--		int i, reg = 0; \
-+		int i, reg = 0, mask = 0; \
- 		for (i = 0; i < vop->data->intr->nintrs; i++) { \
--			if (vop->data->intr->intrs[i] & type) \
-+			if (vop->data->intr->intrs[i] & type) { \
- 				reg |= (v) << i; \
-+				mask |= 1 << i; \
-+			} \
- 		} \
--		VOP_INTR_SET(vop, name, reg); \
-+		VOP_INTR_SET(vop, name, mask, reg); \
- 	} while (0)
- #define VOP_INTR_GET_TYPE(vop, name, type) \
- 		vop_get_intr_type(vop, &vop->data->intr->name, type)
 -- 
-2.7.0.rc3.140.g520a093
+2.1.4
