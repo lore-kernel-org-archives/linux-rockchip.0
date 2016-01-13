@@ -1,51 +1,111 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v12 0/18] Add Analogix Core Display Port Driver
-Date: Wed, 13 Jan 2016 15:59:51 +0100
-Message-ID: <2322926.s1viZ6tSS3@phil>
-References: <1450873538-18304-1-git-send-email-ykk@rock-chips.com>
+From: Tom Rini <trini@konsulko.com>
+Subject: Re: [PATCH v4 1/6] common/image-fdt.c: Make boot_get_fdt()
+ perform a check for Android images
+Date: Wed, 13 Jan 2016 10:21:57 -0500
+Message-ID: <20160113152157.GY3359@bill-the-cat>
+References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1452675200-15941-2-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450873538-18304-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Rob Herring <robh+dt@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============0978694393=="
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <1452675200-15941-2-git-send-email-jeffy.chen@rock-chips.com>
+List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jeffy Chen <jeffy.chen@rock-chips.com>, Rob Herring <robh@kernel.org>, Paul Kocialkowski <contact@paulk.fr>
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, Max Krummenacher <max.krummenacher@toradex.com>, Joe Hershberger <joe.hershberger@ni.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgWWFraXIsCgpBbSBNaXR0d29jaCwgMjMuIERlemVtYmVyIDIwMTUsIDIwOjI1OjM4IHNjaHJp
-ZWIgWWFraXIgWWFuZzoKPiAgICBUaGUgU2Ftc3VuZyBFeHlub3MgZURQIGNvbnRyb2xsZXIgYW5k
-IFJvY2tjaGlwIFJLMzI4OCBlRFAgY29udHJvbGxlcgo+IHNoYXJlIHRoZSBzYW1lIElQLCBzbyBh
-IGxvdCBvZiBwYXJ0cyBjYW4gYmUgcmUtdXNlZC4gSSBzcGxpdCB0aGUgY29tbW9uCj4gY29kZSBp
-bnRvIGJyaWRnZSBkaXJlY3RvcnksIHRoZW4gcmszMjg4IGFuZCBleHlub3Mgb25seSBuZWVkIHRv
-IGtlZXAKPiBzb21lIHBsYXRmb3JtIGNvZGUuIENhdXNlIEkgY2FuJ3QgZmluZCB0aGUgZXhhY3Qg
-SVAgbmFtZSBvZiBleHlub3MgZHAKPiBjb250cm9sbGVyLCBzbyBJIGRlY2lkZSB0byBuYW1lIGRw
-IGNvcmUgZHJpdmVyIHdpdGggImFuYWxvZ2l4IiB3aGljaCBJCj4gZmluZCBpbiByazMyODggZURQ
-IFRSTQoKY291bGQgeW91IHJlYmFzZSB5b3VyIHBhdGNoZXMgb24gdG9wIG9mIERhdmUncyBkcm0t
-bmV4dCBicmFuY2ggWzBdIHBsZWFzZT8KVGhlIGV4eW5vcyBwYXJ0IGdvdCBzb21lIGNvbnN0IGF0
-dHJpYnV0ZXMgZm9yIHRoZSAqX2Z1bmNfb3BzIHN0cnVjdHMgYW5kIApkcm1fZW5jb2Rlcl9pbml0
-IGdvdCBhbiBhZGRpdGlvbmFsIHBhcmFtZXRlci4KSSdtIHN0aWxsIGhvcGluZyB0aGF0IHdlIGNh
-biBnZXQgdGhpcyBmaW5hbGx5IGNvbW1pdHRlZCBvbmNlIDQuNS1yYzEgaXMgCnJlbGVhc2VkIGlu
-IDEuNSB3ZWVrcyA6LSkgLgoKSSBkaWQgdHJ5IHRvIG1lcmdlIHRoaW5ncyB0b2dldGhlciBbMV0s
-IHRoZSBzeXN0ZW0gYXQgbGVhc3QgY29tZXMgdXAgYW5kIApkZXRlY3RzIHRoZSBwYW5lbCAoRURJ
-RCBpcyByZWFkIGNvcnJlY3RseSBhbmQgaXQgdHVybnMgdGhlIGJhY2tsaWdodCBvbikgYnV0IApJ
-IGRvbid0IHNlZSBhbnkgb3V0cHV0IG9uIHRoZSBkaXNwbGF5IC0gaGRtaSB3b3JrcyBmaW5lIHRo
-b3VnaCBhbmQgWDExIGlzIApjbGFpbWluZyBldmVyeXRoaW5nIHRvIGJlIGZpbmUgaW4gYm90aCBj
-YXNlcy4KClNvIEkgZG9uJ3Qga25vdyB5ZXQgaWYgSSBtYWRlIGEgbWlzdGFrZSB3aGVuIHB1dHRp
-bmcgdGhpcyB0b2dldGhlciBvciB0aGVyZSAKaXMgYW4gaXNzdWUgb24gdGhlIGRyaXZlci1zaWRl
-LgoKClRoYW5rcwpIZWlrbwoKClswXSBodHRwOi8vY2dpdC5mcmVlZGVza3RvcC5vcmcvfmFpcmxp
-ZWQvbGludXgvbG9nLz9oPWRybS1uZXh0ClsxXSBodHRwczovL2dpdGh1Yi5jb20vbW1pbmQvbGlu
-dXgtcm9ja2NoaXAvdHJlZS90bXAvYW5hbG9naXhkcF92MTItdmV5cm9uCkkgbGVmdCBvdXQgcGF0
-Y2gxNiwgcGVyIHlvdXIgdGFsayB3aXRoIEppbmdvbyBhbmQgbWUgbm90IHNlZWluZyBhbnkgQVVY
-IENIIAplcnJvcnMgd2l0aG91dCBpdC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+
+--===============0978694393==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="xO5xrem3WM9Yl24j"
+Content-Disposition: inline
+
+
+--xO5xrem3WM9Yl24j
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Jan 13, 2016 at 04:53:15PM +0800, Jeffy Chen wrote:
+
+> Android images don't have a fdt.
+>=20
+> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Acked-by: Simon Glass <sjg@chromium.org>
+> ---
+>=20
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+>=20
+>  common/image-fdt.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/common/image-fdt.c b/common/image-fdt.c
+> index 5e4e5bd..41aaa0d 100644
+> --- a/common/image-fdt.c
+> +++ b/common/image-fdt.c
+> @@ -379,6 +379,10 @@ int boot_get_fdt(int flag, int argc, char * const ar=
+gv[], uint8_t arch,
+>  				       (long)fdt_addr);
+>  			}
+>  			break;
+> +#ifdef CONFIG_ANDROID_BOOT_IMAGE
+> +		case IMAGE_FORMAT_ANDROID:
+> +			goto no_fdt;
+> +#endif
+>  		default:
+>  			puts("ERROR: Did not find a cmdline Flattened Device Tree\n");
+>  			goto no_fdt;
+
+Hang on, this doesn't seem right.  Rob or Paul can you comment more
+here?  I know we've gone through some issues in the past with respect to
+booting Android and FDT.  Thanks!
+
+--=20
+Tom
+
+--xO5xrem3WM9Yl24j
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQIcBAEBAgAGBQJWlmuVAAoJEIRElH1W1v7Ny3sP/2Fqxou4TFjK6gsFr8GW3v0m
+189B7muzujztGEfDnsyrz/v5hVU2yk6/N1WOFCIN0HRdqnzufz7CpWUTpQkS6jI2
+JI3z07RwInvpPoMqXHhPA/+4UPt/Jh1jFIgmiJEKvUFbRuDZg8z6BJ6X6pVYePPD
+QJ1msmiWEiUkdB5wYFtqIPc6BzjF6ztHNA8sr7xH6NmfDILh7wG09o3hfHFKwbMc
+CkPY+d1BkU9fbSHdnvCfhuZeCiDGFjTWkQIRvxsXYAYBoziPr4Bx7kLGGPSNgDjg
+ifi9QpFLsWhMFX1w5Vr0Wb4956SYvbJVQzQc5Z73z8DCBkVdA7q0hRG6ieqTyG5v
+35eXfaP3UiZfIUjIWT1T31goheTAtkma5hMsrxBExVm+ktufnfdlnthCAhtRByiu
+htYpsWDIgWWeHYtZIUC88vFHUbDqeXPU1XQ07uAZGJ9aB3zcjMRVkZYR6g40Sgtj
+NEFJiuO2fMmqKYbmFLFb3OQ7ou+nXF0S7SIwUNipddQxDJoVLEOllPupIEuHIlZ8
+sHn76TN0N8J6LXc7lrW9jbIN8OiZJluZPIJqdBKiID/syFHZBLv0k4W440M7wfmu
+ARbVUpsquQ7+6HosaBLFG5ZUOoL/DBzvXV6vU8IiMLrbrHCeE5ud0b++f6SxOCu/
+/3rRuK7JoZct9HsmUpwI
+=WVq6
+-----END PGP SIGNATURE-----
+
+--xO5xrem3WM9Yl24j--
+
+--===============0978694393==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+U-Boot mailing list
+U-Boot@lists.denx.de
+http://lists.denx.de/mailman/listinfo/u-boot
+
+--===============0978694393==--
