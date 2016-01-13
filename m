@@ -1,11 +1,14 @@
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 0/6] rockchip: kylin: Boot with android boot image
-Date: Wed, 13 Jan 2016 09:59:14 +0800
-Message-ID: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v3 1/6] common/image-fdt.c: Make boot_get_fdt() perform a
+ check for Android images
+Date: Wed, 13 Jan 2016 09:59:15 +0800
+Message-ID: <1452650360-24149-2-git-send-email-jeffy.chen@rock-chips.com>
+References: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452650360-24149-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,33 +19,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: Albert Aribaud <albert.u.boot-LhW3hqR2+23R7s880joybQ@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Jan Kiszka <jan.kiszka-kv7WeFo6aLtBDgjK7y7TUQ@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Max Krummenacher <max.krummenacher-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, York Sun <yorksun-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
+Cc: Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Max Krummenacher <max.krummenacher-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-We are porting android to kylin board now.
-This series could let it boot up with android's boot image.
+Android images don't have a fdt.
 
-Changes in v3:
-Use rockchip's legacy reboot mode definitions.
+Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
 
-Changes in v2:
-Add comments.
+Changes in v3: None
+Changes in v2: None
 
-Jeffy Chen (6):
-  common/image-fdt.c: Make boot_get_fdt() perform a check for Android
-    images
-  ARM: bootm: Try to use relocated ramdisk
-  rockchip: rk3036: Bind GPIO banks
-  rockchip: kylin: Add default gpt partition table
-  rockchip: kylin: Enable boot with android boot image
-  rockchip: kylin: Check fastboot request
+ common/image-fdt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- arch/arm/lib/bootm.c                      | 12 ++++++-
- board/kylin/kylin_rk3036/kylin_rk3036.c   | 46 ++++++++++++++++++++++++++
- common/image-fdt.c                        |  4 +++
- drivers/pinctrl/rockchip/pinctrl_rk3036.c |  8 +++++
- include/configs/kylin_rk3036.h            | 55 +++++++++++++++++++++++++++++++
- 5 files changed, 124 insertions(+), 1 deletion(-)
-
+diff --git a/common/image-fdt.c b/common/image-fdt.c
+index 5e4e5bd..41aaa0d 100644
+--- a/common/image-fdt.c
++++ b/common/image-fdt.c
+@@ -379,6 +379,10 @@ int boot_get_fdt(int flag, int argc, char * const argv[], uint8_t arch,
+ 				       (long)fdt_addr);
+ 			}
+ 			break;
++#ifdef CONFIG_ANDROID_BOOT_IMAGE
++		case IMAGE_FORMAT_ANDROID:
++			goto no_fdt;
++#endif
+ 		default:
+ 			puts("ERROR: Did not find a cmdline Flattened Device Tree\n");
+ 			goto no_fdt;
 -- 
 2.1.4
