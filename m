@@ -1,8 +1,7 @@
 From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 1/6] common/image-fdt.c: Make boot_get_fdt() perform a
- check for Android images
-Date: Wed, 13 Jan 2016 16:53:15 +0800
-Message-ID: <1452675200-15941-2-git-send-email-jeffy.chen@rock-chips.com>
+Subject: [PATCH v4 5/6] rockchip: kylin: Enable boot with android boot image
+Date: Wed, 13 Jan 2016 16:53:19 +0800
+Message-ID: <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
 References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,10 +18,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org
-Cc: Joe Hershberger <joe.hershberger-acOepvfBmUk@public.gmane.org>, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Paul Kocialkowski <contact-W9ppeneeCTY@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Peng Fan <Peng.Fan-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Max Krummenacher <max.krummenacher-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Android images don't have a fdt.
+The android kernel is using appended dtb by default, and store
+ramdisk right after kernel & dtb.
+So we needs to relocate ramdisk, and use atags to pass params.
 
 Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
@@ -32,23 +33,42 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- common/image-fdt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/common/image-fdt.c b/common/image-fdt.c
-index 5e4e5bd..41aaa0d 100644
---- a/common/image-fdt.c
-+++ b/common/image-fdt.c
-@@ -379,6 +379,10 @@ int boot_get_fdt(int flag, int argc, char * const argv[], uint8_t arch,
- 				       (long)fdt_addr);
- 			}
- 			break;
-+#ifdef CONFIG_ANDROID_BOOT_IMAGE
-+		case IMAGE_FORMAT_ANDROID:
-+			goto no_fdt;
-+#endif
- 		default:
- 			puts("ERROR: Did not find a cmdline Flattened Device Tree\n");
- 			goto no_fdt;
+diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
+index b750b26..49997ec 100644
+--- a/include/configs/kylin_rk3036.h
++++ b/include/configs/kylin_rk3036.h
+@@ -35,6 +35,29 @@
+ #undef CONFIG_EXTRA_ENV_SETTINGS
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"partitions=" PARTS_DEFAULT \
++	"mmcdev=0\0" \
++	"mmcpart=5\0" \
++	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
++
++#define CONFIG_ANDROID_BOOT_IMAGE
++#define CONFIG_SYS_BOOT_RAMDISK_HIGH
++#define CONFIG_SYS_HUSH_PARSER
++
++#undef CONFIG_BOOTCOMMAND
++#define CONFIG_BOOTCOMMAND \
++	"mmc dev ${mmcdev}; if mmc rescan; then " \
++		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
++		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
++		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
++		"bootm start ${loadaddr}; bootm ramdisk;" \
++		"bootm prep; bootm go;" \
++	"fi;" \
++
++/* Enable atags */
++#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
++#define CONFIG_INITRD_TAG
++#define CONFIG_SETUP_MEMORY_TAGS
++#define CONFIG_CMDLINE_TAG
+ 
+ #endif
+ 
 -- 
 2.1.4
