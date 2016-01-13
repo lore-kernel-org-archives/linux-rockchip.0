@@ -1,86 +1,88 @@
-From: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Subject: Re: [U-Boot] [PATCH v4 6/6] rockchip: kylin: Check fastboot request
-Date: Wed, 13 Jan 2016 10:28:16 -0500
-Message-ID: <20160113152816.GD3359@bill-the-cat>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-7-git-send-email-jeffy.chen@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [RFC/PATCH] drm/rockchip: don't wait for vblank if fb hasn't
+ changed
+Date: Wed, 13 Jan 2016 16:40:05 +0100
+Message-ID: <20160113154005.GT19130@phenom.ffwll.local>
+References: <1452689614-6570-1-git-send-email-john@metanate.com>
+ <20160113142320.GQ19130@phenom.ffwll.local>
+ <20160113143425.363ce07a.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4355372036562723019=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452675200-15941-7-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <20160113143425.363ce07a.john@metanate.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============4355372036562723019==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="b93tKFax9ARJHhqA"
-Content-Disposition: inline
-
-
---b93tKFax9ARJHhqA
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jan 13, 2016 at 04:53:20PM +0800, Jeffy Chen wrote:
-
-> We will save boot mode flag in grf's os_reg[4], if fastboot
-> requested or fastboot key pressed, try to enter fastboot mode
-> at preboot stage.
->=20
-> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->=20
-
-Reviewed-by: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-
---=20
-Tom
-
---b93tKFax9ARJHhqA
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.11 (GNU/Linux)
-
-iQIcBAEBAgAGBQJWlm0PAAoJEIRElH1W1v7Nfo0P/0oj/HLvn/56zAhp4HiIxOyY
-61gvgpjncjJX6UHUyPR2VOHvSelisztusREbnrzFdhq5OKj6Eg5ZEtwjXGHIdHJu
-+lZvBMEJ58R+mEcCftkPQBlnPbIqt0d2dlU9GI07gctow7IVAmcOKvBW04/R7huC
-0JHtqRcTeoIJnGRuPxX6vA7HzyAtAZqYzyYo3q5Alk9UXn+cKlGc/e477nPnJGow
-tYjMufSIgcU3Sl6ZuvSwVjYkwm7f8FIwOS4ufnul6+DYy7701XYklRlsXRfSvysO
-zrawfYW16CmigjVRddYKsARJd9qkDJB07Rw+J1a5v5xx/X+nbrHx04gPAIBOqrcD
-FNpR1e5ZAjvwWXB0dslzbF1aMfWKM91t4rA3cIMKeYB6ZqHAdNT4OdsmW68ubkKf
-Hd+3o3TzeVkwP+OAeHv+7pppn7V1pb4j8JJKKfGyF2U8awsjmDxn2EwcYFPLRBJp
-Q7h2O2j7wOfjzLPK8+bivBTkwP4HYV8t9qGqGO3qLJ2hQwqBaJiLGeH+G8Av0qJw
-qQhCxqCC1vTb+bPsHhFtGJra8QiafNtwm7+0xlAUa1HLoAy+PDPWbjbw6kN83TAF
-8iRU+Hmn+s+WQocutjNJ/dHighKvZoawONl2fkAkFqmapVh0pfn+cvFL4PnLacr8
-lunEy7cEjrosGdCKtJwN
-=++ER
------END PGP SIGNATURE-----
-
---b93tKFax9ARJHhqA--
-
-
---===============4355372036562723019==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4355372036562723019==--
+T24gV2VkLCBKYW4gMTMsIDIwMTYgYXQgMDI6MzQ6MjVQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IE9uIFdlZCwgMTMgSmFuIDIwMTYgMTU6MjM6MjAgKzAxMDAsIERhbmllbCBWZXR0ZXIg
+d3JvdGU6Cj4gCj4gPiBPbiBXZWQsIEphbiAxMywgMjAxNiBhdCAxMjo1MzozNFBNICswMDAwLCBK
+b2huIEtlZXBpbmcgd3JvdGU6Cj4gPiA+IEFzIGNvbW1lbnRlZCBpbiBkcm1fYXRvbWljX2hlbHBl
+cl93YWl0X2Zvcl92YmxhbmtzKCksIHVzZXJzcGFjZQo+ID4gPiByZWxpZXMgb24gY3Vyc29yIGlv
+Y3RscyBiZWluZyB1bnN5bmNlZC4gIENvbnZlcnRpbmcgdGhlIHJvY2tjaGlwCj4gPiA+IGRyaXZl
+ciB0byBhdG9taWMgaGFzIHNpZ25pZmljYW50bHkgaW1wYWN0ZWQgY3Vyc29yIHBlcmZvcm1hbmNl
+IGJ5Cj4gPiA+IG1ha2luZyBldmVyeSBjdXJzb3IgdXBkYXRlIHdhaXQgZm9yIHZibGFuay4KPiA+
+ID4gCj4gPiA+IEJ5IHNraXBwaW5nIHRoZSB2Ymxhbmsgc3luYyB3aGVuIHRoZSBmcmFtZWJ1ZmZl
+ciBoYXMgbm90IGNoYW5nZWQKPiA+ID4gKGFzIGlzIGRvbmUgaW4gZHJtX2F0b21pY19oZWxwZXJf
+d2FpdF9mb3JfdmJsYW5rcygpKSB3ZSBjYW4gYXZvaWQKPiA+ID4gdGhpcyBmb3IgdGhlIGNvbW1v
+biBjYXNlIG9mIG1vdmluZyB0aGUgY3Vyc29yIGFuZCBvbmx5IG5lZWQgdG8KPiA+ID4gZGVsYXkg
+dGhlIGN1cnNvciBpb2N0bCB3aGVuIHRoZSBjdXJzb3IgaWNvbiBjaGFuZ2VzLgo+ID4gPiAKPiA+
+ID4gSSBvcmlnaW5hbGx5IGluc2VydGVkIGEgY2hlY2sgb24gbGVnYWN5X2N1cnNvcl91cGRhdGUg
+YXMgd2VsbCwgYnV0Cj4gPiA+IHRoYXQgY2F1c2VkIGEgc3Rvcm0gb2YgaW9tbXUgcGFnZSBmYXVs
+dHMuICBJIGRpZG4ndCBpbnZlc3RpZ2F0ZSB0aGUKPiA+ID4gY2F1c2Ugb2YgdGhvc2Ugc2luY2Ug
+dGhpcyBjaGFuZ2UgZ2l2ZXMgZW5vdWdoIG9mIGEgcGVyZm9ybWFuY2UKPiA+ID4gaW1wcm92ZW1l
+bnQgZm9yIG15IHVzZSBjYXNlLgo+ID4gPiAKPiA+ID4gVGhpcyBpcyBSRkMgYmVjYXVzZSBvZiB0
+aGF0IGFuZCBiZWNhdXNlIHRoZSBmcmFtZWJ1ZmZlcl9jaGFuZ2VkKCkKPiA+ID4gZnVuY3Rpb24g
+aXMgY29waWVkIGZyb20gZHJtX2F0b21pY19oZWxwZXIuYyBhcyBhIHF1aWNrIHdheSB0byB0ZXN0
+Cj4gPiA+IHRoZSByZXN1bHQuCj4gPiA+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBp
+bmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+ID4gPiAtLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8IDI3Cj4gPiA+ICsrKysrKysrKysrKysrKysrKysr
+KysrKystLSAxIGZpbGUgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgMgo+ID4gPiBkZWxldGlv
+bnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiLmMKPiA+ID4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2ZiLmMgaW5kZXggZjc4NDQ4OC4uOGZkOTgyMQo+ID4gPiAxMDA2NDQgLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gPiA+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ID4gPiBAQCAtMTc3LDggKzE3
+NywyOCBAQCBzdGF0aWMgdm9pZAo+ID4gPiByb2NrY2hpcF9jcnRjX3dhaXRfZm9yX3VwZGF0ZShz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gPiA+IGNydGNfZnVuY3MtPndhaXRfZm9yX3VwZGF0ZShj
+cnRjKTsgfQo+ID4gPiAgCj4gPiA+ICtzdGF0aWMgYm9vbCBmcmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0
+cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gPiA+ICsJCQkJc3RydWN0IGRybV9hdG9taWNfc3RhdGUg
+Km9sZF9zdGF0ZSwKPiA+ID4gKwkJCQlzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gPiA+ICt7Cj4g
+PiA+ICsJc3RydWN0IGRybV9wbGFuZSAqcGxhbmU7Cj4gPiA+ICsJc3RydWN0IGRybV9wbGFuZV9z
+dGF0ZSAqb2xkX3BsYW5lX3N0YXRlOwo+ID4gPiArCWludCBpOwo+ID4gPiArCj4gPiA+ICsJZm9y
+X2VhY2hfcGxhbmVfaW5fc3RhdGUob2xkX3N0YXRlLCBwbGFuZSwgb2xkX3BsYW5lX3N0YXRlLAo+
+ID4gPiBpKSB7Cj4gPiA+ICsJCWlmIChwbGFuZS0+c3RhdGUtPmNydGMgIT0gY3J0YyAmJgo+ID4g
+PiArCQkgICAgb2xkX3BsYW5lX3N0YXRlLT5jcnRjICE9IGNydGMpCj4gPiA+ICsJCQljb250aW51
+ZTsKPiA+ID4gKwo+ID4gPiArCQlpZiAocGxhbmUtPnN0YXRlLT5mYiAhPSBvbGRfcGxhbmVfc3Rh
+dGUtPmZiKQo+ID4gPiArCQkJcmV0dXJuIHRydWU7Cj4gPiA+ICsJfQo+ID4gPiArCj4gPiA+ICsJ
+cmV0dXJuIGZhbHNlOwo+ID4gPiArfSAgCj4gPiAKPiA+IFBsZWFzZSBkb24ndCBoYW5kLXJvbGwg
+bG9naWMgdGhhdCBhZmZlY3RzIHNlbWFudGljcyBsaWtlIHRoaXMuIEluc3RlYWQKPiA+IHBsZWFz
+ZSB1c2UgZHJtX2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpLCB3aGljaCBzaG91bGQg
+ZG8gdGhpcwo+ID4gY29ycmVjdGx5IGZvciB5b3UuCj4gPiAKPiA+IElmIHRoYXQncyBub3QgdGhl
+IGNhc2UgdGhlbiB3ZSBuZWVkIHRvIGltcHJvdmUgdGhlIGdlbmVyaWMgaGVscGVyLCBvcgo+ID4g
+ZmlndXJlIG91dCB3aGF0J3MgZGlmZmVyZW50IHdpdGggcm9ja2hpcC4KPiAKPiBBY2NvcmRpbmcg
+dG8gY29tbWl0IDYzZWJiOWYgKGRybS9yb2NrY2hpcDogQ29udmVydCB0byBzdXBwb3J0IGF0b21p
+Ywo+IEFQSSkgaXQncyBiZWNhdXNlIHJvY2tjaGlwIGRvZXNuJ3QgaGF2ZSBhIGhhcmR3YXJlIHZi
+bGFuayBjb3VudGVyLgo+IAo+IEknbSBub3QgZW50aXJlbHkgY2xlYXIgb24gd2h5IHRoaXMgcHJl
+dmVudHMgdGhlIHVzZSBvZgo+IGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MoKS4K
+CkhtLCB0aGF0IGNvbW1pdCBpc24ndCB0ZXJyaWJseSBoZWxwZnVsLiBJZiB0aGF0J3MgcmVhbGx5
+IG5lZWRlZCB0aGVuIGltbyBJCnRoaW5rIHdlIHNob3VsZCBleHRyYWN0IGEgImRybV9hdG9taWNf
+aGVscGVyX3BsYW5lX25lZWRzX3ZibGFua193YWl0KCkiCmhlbHBlciB0aGF0J3MgdXNlZCBieSBi
+b3RoLiBCdXQgc2luY2Ugcm9ja2NoaXAgZG9lcyB2YmxhbmtfZ2V0L3B1dCBjYWxscwpJJ2QgaG9w
+ZSB2YmxhbmtzIGFjdHVhbGx5IHdvcmsgY29ycmVjdGx5LiBBbmQgdGhlbiB0aGUgaGVscGVyIHNo
+b3VsZCB3b3JrCnRvby4KLURhbmllbAotLSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVl
+ciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
