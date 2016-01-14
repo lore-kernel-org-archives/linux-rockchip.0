@@ -1,77 +1,76 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH 1/3] drm/atomic-helper: Export framebuffer_changed()
-Date: Thu, 14 Jan 2016 14:39:40 +0000
-Message-ID: <55e84a6ee82c0fbd796bb67a630781daa5bdcae0.1452782114.git.john@metanate.com>
-References: <cover.1452782114.git.john@metanate.com>
+From: Julia Lawall <julia.lawall@lip6.fr>
+Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to caculate i2c clocks
+Date: Thu, 14 Jan 2016 15:50:43 +0100 (CET)
+Message-ID: <alpine.DEB.2.10.1601141548100.2509@hadrien>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <cover.1452782114.git.john@metanate.com>
-In-Reply-To: <cover.1452782114.git.john@metanate.com>
-References: <20160114142047.GD19130@phenom.ffwll.local>
- <cover.1452782114.git.john@metanate.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: TEXT/PLAIN; charset=US-ASCII
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: heiko@sntech.de, wsa@the-dreams.de, andy.shevchenko@gmail.com, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, hl@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIFJvY2tjaGlwIGRyaXZlciBjYW5ub3QgdXNlIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9y
-X3ZibGFua3MoKQpiZWNhdXNlIGl0IGhhcyBoYXJkd2FyZSBjb3VudGVycyBmb3IgbmVpdGhlciB2
-YmxhbmtzIG5vciBzY2FubGluZXMuCgpJbiBvcmRlciB0byBzaW1wbGlmeSByZS1pbXBsZW1lbnRp
-bmcgdGhlIGZ1bmN0aW9uYWxpdHkgZm9yIHRoaXMgZHJpdmVyLApleHBvcnQgdGhlIGZyYW1lYnVm
-ZmVyX2NoYW5nZWQoKSBoZWxwZXIgc28gaXQgY2FuIGJlIHJldXNlZC4KClNpZ25lZC1vZmYtYnk6
-IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2Ry
-bV9hdG9taWNfaGVscGVyLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKy0tLS0KIGluY2x1ZGUv
-ZHJtL2RybV9hdG9taWNfaGVscGVyLmggICAgIHwgIDQgKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAy
-NCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9kcm1fYXRvbWljX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVs
-cGVyLmMKaW5kZXggMjY4ZDM3Zi4uNzQ0OTI5MyAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2RybV9hdG9taWNfaGVscGVyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVs
-cGVyLmMKQEAgLTk0OCw5ICs5NDgsMjMgQEAgc3RhdGljIHZvaWQgd2FpdF9mb3JfZmVuY2VzKHN0
-cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJfQogfQogCi1zdGF0aWMgYm9vbCBmcmFtZWJ1ZmZlcl9j
-aGFuZ2VkKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCi0JCQkJc3RydWN0IGRybV9hdG9taWNfc3Rh
-dGUgKm9sZF9zdGF0ZSwKLQkJCQlzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCisvKioKKyAqIGRybV9h
-dG9taWNfaGVscGVyX2ZyYW1lYnVmZmVyX2NoYW5nZWQgLSBjaGVjayBpZiBmcmFtZWJ1ZmZlciBo
-YXMgY2hhbmdlZAorICogQGRldjogRFJNIGRldmljZQorICogQG9sZF9zdGF0ZTogYXRvbWljIHN0
-YXRlIG9iamVjdCB3aXRoIG9sZCBzdGF0ZSBzdHJ1Y3R1cmVzCisgKiBAY3J0YzogRFJNIGNydGMK
-KyAqCisgKiBDaGVja3Mgd2hldGhlciB0aGUgZnJhbWVidWZmZXIgdXNlZCBmb3IgdGhpcyBDUlRD
-IGNoYW5nZXMgYXMgYSByZXN1bHQgb2YKKyAqIHRoZSBhdG9taWMgdXBkYXRlLiAgVGhpcyBpcyB1
-c2VmdWwgZm9yIGRyaXZlcnMgd2hpY2ggY2Fubm90IHVzZQorICogZHJtX2F0b21pY19oZWxwZXJf
-d2FpdF9mb3JfdmJsYW5rcygpIGFuZCBuZWVkIHRvIHJlaW1wbGVtZW50IGl0cworICogZnVuY3Rp
-b25hbGl0eS4KKyAqCisgKiBSZXR1cm5zOgorICogdHJ1ZSBpZiB0aGUgZnJhbWVidWZmZXIgY2hh
-bmdlZC4KKyAqLworYm9vbCBkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0
-cnVjdCBkcm1fZGV2aWNlICpkZXYsCisJCQkJCSAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpv
-bGRfc3RhdGUsCisJCQkJCSAgIHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIHsKIAlzdHJ1Y3QgZHJt
-X3BsYW5lICpwbGFuZTsKIAlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpvbGRfcGxhbmVfc3RhdGU7
-CkBAIC05NjcsNiArOTgxLDcgQEAgc3RhdGljIGJvb2wgZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1
-Y3QgZHJtX2RldmljZSAqZGV2LAogCiAJcmV0dXJuIGZhbHNlOwogfQorRVhQT1JUX1NZTUJPTChk
-cm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKTsKIAogLyoqCiAgKiBkcm1fYXRv
-bWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzIC0gd2FpdCBmb3IgdmJsYW5rIG9uIGNydGNzCkBA
-IC0xMDAxLDcgKzEwMTYsOCBAQCBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKHN0
-cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCWlmIChvbGRfc3RhdGUtPmxlZ2FjeV9jdXJzb3JfdXBk
-YXRlKQogCQkJY29udGludWU7CiAKLQkJaWYgKCFmcmFtZWJ1ZmZlcl9jaGFuZ2VkKGRldiwgb2xk
-X3N0YXRlLCBjcnRjKSkKKwkJaWYgKCFkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFu
-Z2VkKGRldiwKKwkJCQlvbGRfc3RhdGUsIGNydGMpKQogCQkJY29udGludWU7CiAKIAkJcmV0ID0g
-ZHJtX2NydGNfdmJsYW5rX2dldChjcnRjKTsKZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2RybV9h
-dG9taWNfaGVscGVyLmggYi9pbmNsdWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oCmluZGV4IGEy
-ODZjY2UuLjc0ZmNlNzggMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvZHJtL2RybV9hdG9taWNfaGVscGVy
-LmgKKysrIGIvaW5jbHVkZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaApAQCAtNDIsNiArNDIsMTAg
-QEAgaW50IGRybV9hdG9taWNfaGVscGVyX2NvbW1pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAog
-CQkJICAgICBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUsCiAJCQkgICAgIGJvb2wgYXN5
-bmMpOwogCitib29sIGRybV9hdG9taWNfaGVscGVyX2ZyYW1lYnVmZmVyX2NoYW5nZWQoc3RydWN0
-IGRybV9kZXZpY2UgKmRldiwKKwkJCQkJICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm9sZF9z
-dGF0ZSwKKwkJCQkJICAgc3RydWN0IGRybV9jcnRjICpjcnRjKTsKKwogdm9pZCBkcm1fYXRvbWlj
-X2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiAJCQkJCXN0
-cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUpOwogCi0tIAoyLjcuMC4yMjYuZ2ZlOTg2
-ZmUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+It looks like it would be an infinite loop?
+
+julia
+
+---------- Forwarded message ----------
+Date: Thu, 14 Jan 2016 22:42:19 +0800
+From: kbuild test robot <fengguang.wu@intel.com>
+To: kbuild@01.org
+Cc: Julia Lawall <julia.lawall@lip6.fr>
+Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to caculate i2c clocks
+
+CC: kbuild-all@01.org
+In-Reply-To: <1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
+TO: David Wu <david.wu@rock-chips.com>
+CC: heiko@sntech.de
+CC: wsa@the-dreams.de, andy.shevchenko@gmail.com, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, hl@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+
+Hi David,
+
+[auto build test WARNING on wsa/i2c/for-next]
+[also build test WARNING on v4.4 next-20160114]
+[cannot apply to rockchip/for-next]
+[if your patch is applied to the wrong git tree, please drop us a note to help improving the system]
+
+url:    https://github.com/0day-ci/linux/commits/David-Wu/i2c-rk3x-switch-to-i2c-generic-dt-parsing/20160114-203309
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux i2c/for-next
+:::::: branch date: 2 hours ago
+:::::: commit date: 2 hours ago
+
+>> drivers/i2c/busses/i2c-rk3x.c:793:23-34: WARNING: Unsigned expression compared with zero: data_hd_cnt >= 0
+
+git remote add linux-review https://github.com/0day-ci/linux
+git remote update linux-review
+git checkout 5fed4c320427dd34a909f9b408fadf297121924c
+vim +793 drivers/i2c/busses/i2c-rk3x.c
+
+5fed4c32 David Wu 2016-01-14  777  		 * for low (spend more time low).
+5fed4c32 David Wu 2016-01-14  778  		 */
+5fed4c32 David Wu 2016-01-14  779  		extra_div = min_total_div - min_div_for_hold;
+5fed4c32 David Wu 2016-01-14  780  		extra_low_div = DIV_ROUND_UP(min_low_div * extra_div,
+5fed4c32 David Wu 2016-01-14  781  					     min_div_for_hold);
+5fed4c32 David Wu 2016-01-14  782
+5fed4c32 David Wu 2016-01-14  783  		t_output->div_low = min_low_div + extra_low_div;
+5fed4c32 David Wu 2016-01-14  784  		t_output->div_high = min_high_div + (extra_div - extra_low_div);
+5fed4c32 David Wu 2016-01-14  785  	}
+5fed4c32 David Wu 2016-01-14  786
+5fed4c32 David Wu 2016-01-14  787  	/*
+5fed4c32 David Wu 2016-01-14  788  	 * calculate sda data hold count by the rules, thd_sda_count:3
+5fed4c32 David Wu 2016-01-14  789  	 * is a appropriate value to reduce calculated times.
+5fed4c32 David Wu 2016-01-14  790  	 * tHD;sda  = (l * s + 1) * T
+5fed4c32 David Wu 2016-01-14  791  	 * tSU;sda = ((8 - s) * l + 1) * T
+5fed4c32 David Wu 2016-01-14  792  	 */
+5fed4c32 David Wu 2016-01-14 @793  	for (data_hd_cnt = 3; data_hd_cnt >= 0; data_hd_cnt--) {
+5fed4c32 David Wu 2016-01-14  794  		max_hold_data_ns =  DIV_ROUND_UP((data_hd_cnt
+5fed4c32 David Wu 2016-01-14  795  						 * (t_output->div_low) + 1)
+5fed4c32 David Wu 2016-01-14  796  						 * 1000000, clk_rate_khz);
+5fed4c32 David Wu 2016-01-14  797  		min_setup_data_ns =  DIV_ROUND_UP(((8 - data_hd_cnt)
+5fed4c32 David Wu 2016-01-14  798  						 * (t_output->div_low) + 1)
+5fed4c32 David Wu 2016-01-14  799  						 * 1000000, clk_rate_khz);
+5fed4c32 David Wu 2016-01-14  800  		if ((max_hold_data_ns < spec_max_data_hold_ns) &&
+5fed4c32 David Wu 2016-01-14  801  		    (min_setup_data_ns > spec_min_data_setup_ns)) {
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
