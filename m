@@ -1,16 +1,14 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 1/3] drm/atomic-helper: Export framebuffer_changed()
-Date: Thu, 14 Jan 2016 15:56:35 +0100
-Message-ID: <20160114145635.GF19130@phenom.ffwll.local>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 3/3] drm/rockchip: explain why we can't wait_for_vblanks
+Date: Thu, 14 Jan 2016 15:57:05 +0100
+Message-ID: <20160114145705.GA24005@ulmo>
 References: <20160114142047.GD19130@phenom.ffwll.local>
  <cover.1452782114.git.john@metanate.com>
- <55e84a6ee82c0fbd796bb67a630781daa5bdcae0.1452782114.git.john@metanate.com>
+ <107bbc36a316ed0ddc7b5a8bcd9b6db6cbc71d4f.1452782114.git.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0565153683=="
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <55e84a6ee82c0fbd796bb67a630781daa5bdcae0.1452782114.git.john@metanate.com>
+In-Reply-To: <107bbc36a316ed0ddc7b5a8bcd9b6db6cbc71d4f.1452782114.git.john@metanate.com>
 List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
@@ -21,66 +19,90 @@ List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
 Errors-To: dri-devel-bounces@lists.freedesktop.org
 Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: John Keeping <john@metanate.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBKYW4gMTQsIDIwMTYgYXQgMDI6Mzk6NDBQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IFRoZSBSb2NrY2hpcCBkcml2ZXIgY2Fubm90IHVzZSBkcm1fYXRvbWljX2hlbHBlcl93
-YWl0X2Zvcl92YmxhbmtzKCkKPiBiZWNhdXNlIGl0IGhhcyBoYXJkd2FyZSBjb3VudGVycyBmb3Ig
-bmVpdGhlciB2YmxhbmtzIG5vciBzY2FubGluZXMuCj4gCj4gSW4gb3JkZXIgdG8gc2ltcGxpZnkg
-cmUtaW1wbGVtZW50aW5nIHRoZSBmdW5jdGlvbmFsaXR5IGZvciB0aGlzIGRyaXZlciwKPiBleHBv
-cnQgdGhlIGZyYW1lYnVmZmVyX2NoYW5nZWQoKSBoZWxwZXIgc28gaXQgY2FuIGJlIHJldXNlZC4K
-PiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgoKUmV2
-aWV3ZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+IEFuZCBzaW5j
-ZSBJIGRvbid0CmV4cGVjdCBhbnlvbmUgZWxzZSB0byBuZWVkIHRoaXMgYW55dGltZSBzb29uIHBy
-b2JhYmx5IGJlc3QgeW91IGp1c3QgcHVsbAp0aGlzIGluIHRocm91Z2ggcm9ja2NoaXAgdHJlZXMu
-CgpDaGVlcnMsIERhbmllbAoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVs
-cGVyLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKy0tLS0KPiAgaW5jbHVkZS9kcm0vZHJtX2F0
-b21pY19oZWxwZXIuaCAgICAgfCAgNCArKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0
-aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L2RybV9hdG9taWNfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIu
-Ywo+IGluZGV4IDI2OGQzN2YuLjc0NDkyOTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2RybV9hdG9taWNfaGVscGVyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19o
-ZWxwZXIuYwo+IEBAIC05NDgsOSArOTQ4LDIzIEBAIHN0YXRpYyB2b2lkIHdhaXRfZm9yX2ZlbmNl
-cyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJfQo+ICB9Cj4gIAo+IC1zdGF0aWMgYm9vbCBm
-cmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gLQkJCQlzdHJ1Y3Qg
-ZHJtX2F0b21pY19zdGF0ZSAqb2xkX3N0YXRlLAo+IC0JCQkJc3RydWN0IGRybV9jcnRjICpjcnRj
-KQo+ICsvKioKPiArICogZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZCAtIGNo
-ZWNrIGlmIGZyYW1lYnVmZmVyIGhhcyBjaGFuZ2VkCj4gKyAqIEBkZXY6IERSTSBkZXZpY2UKPiAr
-ICogQG9sZF9zdGF0ZTogYXRvbWljIHN0YXRlIG9iamVjdCB3aXRoIG9sZCBzdGF0ZSBzdHJ1Y3R1
-cmVzCj4gKyAqIEBjcnRjOiBEUk0gY3J0Ywo+ICsgKgo+ICsgKiBDaGVja3Mgd2hldGhlciB0aGUg
-ZnJhbWVidWZmZXIgdXNlZCBmb3IgdGhpcyBDUlRDIGNoYW5nZXMgYXMgYSByZXN1bHQgb2YKPiAr
-ICogdGhlIGF0b21pYyB1cGRhdGUuICBUaGlzIGlzIHVzZWZ1bCBmb3IgZHJpdmVycyB3aGljaCBj
-YW5ub3QgdXNlCj4gKyAqIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MoKSBhbmQg
-bmVlZCB0byByZWltcGxlbWVudCBpdHMKPiArICogZnVuY3Rpb25hbGl0eS4KPiArICoKPiArICog
-UmV0dXJuczoKPiArICogdHJ1ZSBpZiB0aGUgZnJhbWVidWZmZXIgY2hhbmdlZC4KPiArICovCj4g
-K2Jvb2wgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZGV2LAo+ICsJCQkJCSAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUs
-Cj4gKwkJCQkJICAgc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3QgZHJtX3Bs
-YW5lICpwbGFuZTsKPiAgCXN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm9sZF9wbGFuZV9zdGF0ZTsK
-PiBAQCAtOTY3LDYgKzk4MSw3IEBAIHN0YXRpYyBib29sIGZyYW1lYnVmZmVyX2NoYW5nZWQoc3Ry
-dWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCj4gIAlyZXR1cm4gZmFsc2U7Cj4gIH0KPiArRVhQT1JU
-X1NZTUJPTChkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKTsKPiAgCj4gIC8q
-Kgo+ICAgKiBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzIC0gd2FpdCBmb3IgdmJs
-YW5rIG9uIGNydGNzCj4gQEAgLTEwMDEsNyArMTAxNiw4IEBAIGRybV9hdG9taWNfaGVscGVyX3dh
-aXRfZm9yX3ZibGFua3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCQlpZiAob2xkX3N0YXRl
-LT5sZWdhY3lfY3Vyc29yX3VwZGF0ZSkKPiAgCQkJY29udGludWU7Cj4gIAo+IC0JCWlmICghZnJh
-bWVidWZmZXJfY2hhbmdlZChkZXYsIG9sZF9zdGF0ZSwgY3J0YykpCj4gKwkJaWYgKCFkcm1fYXRv
-bWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKGRldiwKPiArCQkJCW9sZF9zdGF0ZSwgY3J0
-YykpCj4gIAkJCWNvbnRpbnVlOwo+ICAKPiAgCQlyZXQgPSBkcm1fY3J0Y192YmxhbmtfZ2V0KGNy
-dGMpOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oIGIvaW5j
-bHVkZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaAo+IGluZGV4IGEyODZjY2UuLjc0ZmNlNzggMTAw
-NjQ0Cj4gLS0tIGEvaW5jbHVkZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaAo+ICsrKyBiL2luY2x1
-ZGUvZHJtL2RybV9hdG9taWNfaGVscGVyLmgKPiBAQCAtNDIsNiArNDIsMTAgQEAgaW50IGRybV9h
-dG9taWNfaGVscGVyX2NvbW1pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJCQkgICAgIHN0
-cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSwKPiAgCQkJICAgICBib29sIGFzeW5jKTsKPiAg
-Cj4gK2Jvb2wgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1Y3QgZHJt
-X2RldmljZSAqZGV2LAo+ICsJCQkJCSAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3Rh
-dGUsCj4gKwkJCQkJICAgc3RydWN0IGRybV9jcnRjICpjcnRjKTsKPiArCj4gIHZvaWQgZHJtX2F0
-b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJ
-CQkJCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUpOwo+ICAKPiAtLSAKPiAyLjcu
-MC4yMjYuZ2ZlOTg2ZmUKPiAKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJ
-bnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+--===============0565153683==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
+Content-Disposition: inline
+
+
+--TB36FDmn/VVEgNH/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jan 14, 2016 at 02:39:42PM +0000, John Keeping wrote:
+> Signed-off-by: John Keeping <john@metanate.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm=
+/rockchip/rockchip_drm_fb.c
+> index 679d23a..b267ce4 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+> @@ -177,6 +177,12 @@ static void rockchip_crtc_wait_for_update(struct drm=
+_crtc *crtc)
+>  		crtc_funcs->wait_for_update(crtc);
+>  }
+> =20
+> +/*
+> + * We can't use drm_atomic_helper_wait_for_vblanks() because rk3288 and =
+rk3066
+> + * have hardware counters for neither vblanks nor scanlines.  This funct=
+ion is
+> + * equivalent but uses rockchip_crtc_wait_for_update() instead of waitin=
+g for
+> + * vblank_count to change.
+> + */
+
+This is kind of misleading. From reading earlier parts of the thread the
+reason why drm_atomic_helper_wait_for_vblanks() won't work is because it
+has a potential race condition that can't be detected unless you also
+have a vblank counter. However, the above comment makes it work like
+drm_atomic_helper_wait_for_vblanks() doesn't work in the absence of a
+vblank counter, which isn't quite true.
+
+Perhaps also the drm_atomic_helper_wait_for_vblanks() kerneldoc needs to
+be updated with these restrictions on its use?
+
+Thierry
+
+--TB36FDmn/VVEgNH/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJWl7c/AAoJEN0jrNd/PrOhGcIQAIgv0mGYVVCGkkjSartZH5nt
+Rg4f21655/R/q9BLZ2SsdYivEyjo+n5g2K6segrOBqGmSn8Y96LmXLHQaFLPXNS+
+pPuR0mm8bJYWNmaj3F8Ha+6RbHaXsIf5nf4tJTPu4RGCEHsSBUgF9YaHLhEMP+Ye
+9IeLoaVKqntgeqYewBVdAwhpdvGcd+Hi5W9mCs5x1bPERLT3r60awpaNH2vfuO+i
+aFHd4i9lAKRbx3pD2CV21WHT9k08xNs4lLmxA3YXB2HZIFrTC5haWH4A06MI3s+3
+tlDpyrGrG95SUseWJDtoeFz+7cB+GcCgJ3DYwEjEx14nqwuOpw9bF2o06eNpcOWv
+2NJ0Srm7n1CtAsSMTUzWUAKtEgYlCw+aMSqGaL3pCCTD60/qV4UCeSnyZUVmGUnK
+L2xlygFCb3Qi+ZG93nmFR33d9xxHegnBHyaBKbSxH78XMt7FT3WGXnE+va2u8KRP
+BVH86fl2ec+oG4A5a60ldexkGIgSGFdgWO7CntuRRFs+WtwEDV+4KLWcYV9jvMyU
+jFimPCRg3BSsOzYnTlbitqInRXLuhuiZWOeHbIotRguFkf4hoLRJmn7zvlEl2nMy
+6KV3yJksNYJhk8SaJtvJ34siElfn8L/Rl6eo/G+dgr7vF34EfklY2BwOU1FI7Knm
+d6QCp9NybpCN9I5wxK2w
+=CLe+
+-----END PGP SIGNATURE-----
+
+--TB36FDmn/VVEgNH/--
+
+--===============0565153683==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0
+cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--===============0565153683==--
