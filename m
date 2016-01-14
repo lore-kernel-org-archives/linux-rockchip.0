@@ -1,63 +1,109 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: increase vdd_arm voltage for rk3066a-rayeager board
-Date: Thu, 14 Jan 2016 13:45:02 +0100
-Message-ID: <1709463.R522kSjgXB@phil>
-References: <1452774780-16493-1-git-send-email-andy.yan@rock-chips.com> <1452774860-16572-1-git-send-email-andy.yan@rock-chips.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v3 1/4] i2c: rk3x: switch to i2c generic dt parsing
+Date: Thu, 14 Jan 2016 15:05:15 +0200
+Message-ID: <CAHp75VdtDjNMLH2szW=u-+iogoTc3t5wnOpoGndoadMCetLtDw@mail.gmail.com>
+References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
+	<1452774699-57455-2-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452774860-16572-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1452774699-57455-2-git-send-email-david.wu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Douglas Anderson <dianders@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, cf@rock-chips.com, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
+On Thu, Jan 14, 2016 at 2:31 PM, David Wu <david.wu@rock-chips.com> wrote:
+> Switch to the new generic functions: i2c_parse_fw_timings().
 
-Am Donnerstag, 14. Januar 2016, 20:34:20 schrieb Andy Yan:
-> The current vdd_arm voltage is too low, increase it will make
-> the system more stable.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
->  arch/arm/boot/dts/rk3066a-rayeager.dts | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts
-> b/arch/arm/boot/dts/rk3066a-rayeager.dts index 0bf6876..3d4c104 100644
-> --- a/arch/arm/boot/dts/rk3066a-rayeager.dts
-> +++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
-> @@ -159,6 +159,14 @@
-> 
->  &cpu0 {
->  	cpu0-supply = <&vdd_arm>;
-> +	operating-points = <
-> +		/* kHz    uV */
-> +		1008000 1125000
-> +		816000  1125000
-> +		600000  1100000
-> +		504000  1100000
-> +		312000  1075000
-> +	>;
->  };
-> 
->  &emac {
+Nice one!
+Reviwed-by: Andy Shevchenko <andy.shevchenko@gmail.com>
 
-Does this only apply to the rayeager-board / px2 soc or for all rk3066a/px2 
-boards? I.e. the original values come from some sdk kernel and I might've 
-transcribed that wrong at the time and I remember having problems trying to 
-reach higher frequencies as well.
+Minor comments below.
 
-So could you check what the full operating points looks like for both and if 
-this can move to the rk3066a.dtsi, as both should be able to reach at least 
-1.4GHz / 1.6GHz.
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
 
+> @@ -437,10 +434,7 @@ out:
+>   * Calculate divider values for desired SCL frequency
+>   *
+>   * @clk_rate: I2C input clock rate
+> - * @scl_rate: Desired SCL rate
+> - * @scl_rise_ns: How many ns it takes for SCL to rise.
+> - * @scl_fall_ns: How many ns it takes for SCL to fall.
+> - * @sda_fall_ns: How many ns it takes for SDA to fall.
+> + * @t_input: Known I2C timing information.
 
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Perhaps t_input -> t.
+
+>   * @div_low: Divider output for low
+>   * @div_high: Divider output for high
+>   *
+> @@ -448,11 +442,10 @@ out:
+>   * a best-effort divider value is returned in divs. If the target rate is
+>   * too high, we silently use the highest possible rate.
+>   */
+> -static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
+> -                             unsigned long scl_rise_ns,
+> -                             unsigned long scl_fall_ns,
+> -                             unsigned long sda_fall_ns,
+> -                             unsigned long *div_low, unsigned long *div_high)
+> +static int rk3x_i2c_calc_divs(unsigned long clk_rate,
+> +                             struct i2c_timings *t_input,
+
+Ditto.
+
+> +                             unsigned long *div_low,
+> +                             unsigned long *div_high)
+>  {
+>         unsigned long spec_min_low_ns, spec_min_high_ns;
+>         unsigned long spec_setup_start, spec_max_data_hold_ns;
+
+> @@ -517,18 +510,19 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
+>          * we meet tSU;STA and tHD;STA times.
+>          */
+>         min_high_ns = max(min_high_ns,
+> -               DIV_ROUND_UP((scl_rise_ns + spec_setup_start) * 1000, 875));
+> +               DIV_ROUND_UP((t_input->scl_rise_ns + spec_setup_start) * 1000,
+> +                            875));
+
+To one line (after above change).
+
+>         min_high_ns = max(min_high_ns,
+> -               DIV_ROUND_UP((scl_rise_ns + spec_setup_start +
+> -                             sda_fall_ns + spec_min_high_ns), 2));
+> +               DIV_ROUND_UP((t_input->scl_rise_ns + spec_setup_start +
+> +                             t_input->sda_fall_ns + spec_min_high_ns), 2));
+
+Ditto.
+
+> @@ -620,10 +614,8 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
+>         u64 t_low_ns, t_high_ns;
+>         int ret;
+>
+> -       ret = rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency, i2c->scl_rise_ns,
+> -                                i2c->scl_fall_ns, i2c->sda_fall_ns,
+> -                                &div_low, &div_high);
+> -       WARN_ONCE(ret != 0, "Could not reach SCL freq %u", i2c->scl_frequency);
+> +       ret = rk3x_i2c_calc_divs(clk_rate, &i2c->t, &div_low, &div_high);
+> +       WARN_ONCE(ret != 0, "Could not reach SCL freq %u", i2c->t.bus_freq_hz);
+
+I would recommend to
+
+struct i2c_timings *t = &i2c->t;
+
++       ret = rk3x_i2c_calc_divs(clk_rate, t, &div_low, &div_high);
++       WARN_ONCE(ret != 0, "Could not reach SCL freq %u", t->bus_freq_hz);
+
+> @@ -634,7 +626,7 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
+>         dev_dbg(i2c->dev,
+>                 "CLK %lukhz, Req %uns, Act low %lluns high %lluns\n",
+>                 clk_rate / 1000,
+> -               1000000000 / i2c->scl_frequency,
+> +               1000000000 / i2c->t.bus_freq_hz,
+
+Ditto.
+
+-- 
+With Best Regards,
+Andy Shevchenko
