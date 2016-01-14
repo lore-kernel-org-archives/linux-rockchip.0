@@ -1,69 +1,43 @@
 From: John Keeping <john@metanate.com>
-Subject: [PATCH 2/3] drm/rockchip: don't wait for vblank if fb hasn't changed
-Date: Thu, 14 Jan 2016 14:39:41 +0000
-Message-ID: <2c23f18b4704d4f7126a0300d8875222502deb99.1452782114.git.john@metanate.com>
-References: <cover.1452782114.git.john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cover.1452782114.git.john@metanate.com>
-In-Reply-To: <cover.1452782114.git.john@metanate.com>
-References: <20160114142047.GD19130@phenom.ffwll.local> <cover.1452782114.git.john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Subject: [PATCH 0/3] drm/rockchip: fix cursor performance with atomic
+Date: Thu, 14 Jan 2016 14:39:39 +0000
+Message-ID: <cover.1452782114.git.john@metanate.com>
+References: <20160114142047.GD19130@phenom.ffwll.local>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160114142047.GD19130@phenom.ffwll.local>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Mark yao <mark.yao@rock-chips.com>
-Cc: John Keeping <john@metanate.com>, Daniel Vetter <daniel@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-As commented in drm_atomic_helper_wait_for_vblanks(), userspace relies
-on cursor ioctls being unsynced.  Converting the rockchip driver to
-atomic has significantly impacted cursor performance by making every
-cursor update wait for vblank.
-
-By skipping the vblank sync when the framebuffer has not changed (as is
-done in drm_atomic_helper_wait_for_vblanks()) we can avoid this for the
-common case of moving the cursor and only need to delay the cursor ioctl
-when the cursor icon changes.
-
-We cannot add the check on legacy_cursor_update since that results in
-the cursor bo being unreferenced while the hardware may still be reading
-it.  Fully supporting unsynced cursor updates is left for the future
-when the atomic helper framework supports async updates.
-
-Signed-off-by: John Keeping <john@metanate.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-index f784488..679d23a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
-@@ -178,7 +178,7 @@ static void rockchip_crtc_wait_for_update(struct drm_crtc *crtc)
- }
- 
- static void
--rockchip_atomic_wait_for_complete(struct drm_atomic_state *old_state)
-+rockchip_atomic_wait_for_complete(struct drm_device *dev, struct drm_atomic_state *old_state)
- {
- 	struct drm_crtc_state *old_crtc_state;
- 	struct drm_crtc *crtc;
-@@ -194,6 +194,10 @@ rockchip_atomic_wait_for_complete(struct drm_atomic_state *old_state)
- 		if (!crtc->state->active)
- 			continue;
- 
-+		if (!drm_atomic_helper_framebuffer_changed(dev,
-+				old_state, crtc))
-+			continue;
-+
- 		ret = drm_crtc_vblank_get(crtc);
- 		if (ret != 0)
- 			continue;
-@@ -241,7 +245,7 @@ rockchip_atomic_commit_complete(struct rockchip_atomic_commit *commit)
- 
- 	drm_atomic_helper_commit_planes(dev, state, true);
- 
--	rockchip_atomic_wait_for_complete(state);
-+	rockchip_atomic_wait_for_complete(dev, state);
- 
- 	drm_atomic_helper_cleanup_planes(dev, state);
- 
--- 
-2.7.0.226.gfe986fe
+T24gVGh1LCAxNCBKYW4gMjAxNiAxNToyMDo0NyArMDEwMCwgRGFuaWVsIFZldHRlciB3cm90ZToK
+Cj4gVWdoLiBPaCB3ZWxsLCB0aGVyZSdzIG5vdCByZWFsbHkgYW55dGhpbmcgd2UgY2FuIGRvIGlu
+IGNvcmUgbm9yZSBoZWxwZXJzCj4gdG8gbWFrZSB0aGlzIGVhc2llciBmb3IgZHJpdmVycy4gVGhp
+cyByZWFsbHkgb25seSBjYW4gYmUgZml4ZWQgc2Vuc2libHkgYXQKPiB0aGUgaGFyZHdhcmUgbGV2
+ZWwuCj4gCj4gU28geWVhaCBJIHRoaW5rIGV4cG9zaW5nIGZyYW1lYnVmZmVyX2NoYW5nZWQgYXMg
+YSBoZWxwZXIgaXMgdGhlIHdheSB0byBnbwo+IGhlcmUuCgpPSywgaGVyZSdzIGEgc2VyaWVzIHRv
+IGRvIHRoYXQuICBJIGFsc28gYWRkZWQgYSBjb21tZW50IHRvCnJvY2tjaGlwX2F0b21pY193YWl0
+X2Zvcl9jb21wbGV0ZSgpIGV4cGxhaW5pbmcgd2h5IHdlIGNhbid0IHVzZQpkcm1fYXRvbWljX2hl
+bHBlcl93YWl0X2Zvcl92YmxhbmtzKCkuCgpKb2huIEtlZXBpbmcgKDMpOgogIGRybS9hdG9taWMt
+aGVscGVyOiBFeHBvcnQgZnJhbWVidWZmZXJfY2hhbmdlZCgpCiAgZHJtL3JvY2tjaGlwOiBkb24n
+dCB3YWl0IGZvciB2YmxhbmsgaWYgZmIgaGFzbid0IGNoYW5nZWQKICBkcm0vcm9ja2NoaXA6IGV4
+cGxhaW4gd2h5IHdlIGNhbid0IHdhaXRfZm9yX3ZibGFua3MKCiBkcml2ZXJzL2dwdS9kcm0vZHJt
+X2F0b21pY19oZWxwZXIuYyAgICAgICAgfCAyNCArKysrKysrKysrKysrKysrKysrKy0tLS0KIGRy
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8IDE0ICsrKysrKysrKysr
+Ky0tCiBpbmNsdWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oICAgICAgICAgICAgfCAgNCArKysr
+CiAzIGZpbGVzIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCgotLSAK
+Mi43LjAuMjI2LmdmZTk4NmZlCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
