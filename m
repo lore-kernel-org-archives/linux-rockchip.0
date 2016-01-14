@@ -1,240 +1,94 @@
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: [PATCH v3 2/4] i2c: rk3x: add ops to caculate i2c clocks
-Date: Thu, 14 Jan 2016 15:19:56 +0200
-Message-ID: <CAHp75VdR01_suo3nTWuuT2OEusy6z6KGSg29LKD8T3kY9eGMPA@mail.gmail.com>
-References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
-	<1452774699-57455-3-git-send-email-david.wu@rock-chips.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: increase vdd_arm voltage for
+ rk3066a-rayeager board
+Date: Thu, 14 Jan 2016 21:20:01 +0800
+Message-ID: <5697A081.4060903@rock-chips.com>
+References: <1452774780-16493-1-git-send-email-andy.yan@rock-chips.com>
+ <1452774860-16572-1-git-send-email-andy.yan@rock-chips.com>
+ <1709463.R522kSjgXB@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452774699-57455-3-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Douglas Anderson <dianders@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, cf@rock-chips.com, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <wdc@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1709463.R522kSjgXB@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 14, 2016 at 2:31 PM, David Wu <david.wu@rock-chips.com> wro=
-te:
-> From: David Wu <wdc@rock-chips.com>
->
-> I2c Controller of rk3x is updated for the rules to caculate clocks.
-> So it need a new method to caculate i2c clock timing information
-> for new version. The current method is defined as v0, and new is
-> v1, next maybe v2......
-
-Thanks for an update. My comments below.
-
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-
-> @@ -90,10 +95,27 @@ struct rk3x_i2c_soc_data {
->         int grf_offset;
->  };
->
-> +/**
-> + * struct rk3x_priv_i2c_timings - rk3x I2C timing information
-> + * @div_low: Divider output for low
-> + * @div_high: Divider output for high
-> + */
-> +struct rk3x_priv_i2c_timings {
-> +       unsigned long div_low;
-> +       unsigned long div_high;
-> +};
-> +
-> +struct rk3x_i2c_ops {
-> +       int (*calc_clock)(unsigned long,
-> +                         struct i2c_timings *,
-> +                         struct rk3x_priv_i2c_timings *);
-> +};
-> +
->  struct rk3x_i2c {
->         struct i2c_adapter adap;
->         struct device *dev;
->         struct rk3x_i2c_soc_data *soc_data;
-> +       struct rk3x_i2c_ops ops;
-
-Not much sense for now to have a struct for one member.
-
->
->         /* Hardware resources */
->         void __iomem *regs;
-> @@ -102,6 +124,7 @@ struct rk3x_i2c {
->
-
-What about
-      /* I2C timing settings */
-      struct i2c_timings t;
-
-      /* Divider settings */
-      int (*calc_divs)(unsigned long,
-                        struct i2c_timings *,
-                        unsigned long *div_low,
-                        unsigned long *div_high);
-      unsigned long div_low;
-      unsigned long div_high;
-?
-
-As far as I understand you still calculate divider values.
-
->
->         /* Synchronization & notification */
->         spinlock_t lock;
-> @@ -431,21 +454,20 @@ out:
->  }
->
->  /**
-> - * Calculate divider values for desired SCL frequency
-> + * Calculate timing clock info values for desired SCL frequency
->   *
->   * @clk_rate: I2C input clock rate
-> - * @t_input: Known I2C timing information.
-> - * @div_low: Divider output for low
-> - * @div_high: Divider output for high
-
-=46or now seems better to leave this prototype.
-
-> + * @t_input: Known I2C timing information
-> + * @t_output: Caculated rk3x private timing information that would
-> + * be written into regs
->   *
->   * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. =
-In that case
->   * a best-effort divider value is returned in divs. If the target ra=
-te is
->   * too high, we silently use the highest possible rate.
->   */
-> -static int rk3x_i2c_calc_divs(unsigned long clk_rate,
-> -                             struct i2c_timings *t_input,
-> -                             unsigned long *div_low,
-> -                             unsigned long *div_high)
-> +static int rk3x_i2c_v0_calc_clock(unsigned long clk_rate,
-> +                                 struct i2c_timings *t_input,
-> +                                 struct rk3x_priv_i2c_timings *t_out=
-put)
->  {
->         unsigned long spec_min_low_ns, spec_min_high_ns;
->         unsigned long spec_setup_start, spec_max_data_hold_ns;
-
-
-> @@ -583,25 +605,25 @@ static int rk3x_i2c_calc_divs(unsigned long clk=
-_rate,
->
->                 /* Give low the "ideal" and give high whatever extra =
-is left */
->                 extra_low_div =3D ideal_low_div - min_low_div;
-> -               *div_low =3D ideal_low_div;
-> -               *div_high =3D min_high_div + (extra_div - extra_low_d=
-iv);
-> +               t_output->div_low =3D ideal_low_div;
-> +               t_output->div_high =3D min_high_div + (extra_div - ex=
-tra_low_div);
->         }
->
->         /*
->          * Adjust to the fact that the hardware has an implicit "+1".
->          * NOTE: Above calculations always produce div_low > 0 and di=
-v_high > 0.
->          */
-> -       *div_low =3D *div_low - 1;
-> -       *div_high =3D *div_high - 1;
-> +       t_output->div_low =3D t_output->div_low - 1;
-
--=3D 1
-
-> +       t_output->div_high =3D t_output->div_high - 1;
-
-Ditto.
-
-But without change of prototype those no needed.
-
->
->         /* Maximum divider supported by hw is 0xffff */
-> -       if (*div_low > 0xffff) {
-> -               *div_low =3D 0xffff;
-> +       if (t_output->div_low > 0xffff) {
-> +               t_output->div_low =3D 0xffff;
->                 ret =3D -EINVAL;
->         }
->
-> -       if (*div_high > 0xffff) {
-> -               *div_high =3D 0xffff;
-> +       if (t_output->div_high > 0xffff) {
-> +               t_output->div_high =3D 0xffff;
->                 ret =3D -EINVAL;
->         }
->
-> @@ -610,19 +632,21 @@ static int rk3x_i2c_calc_divs(unsigned long clk=
-_rate,
->
->  static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long c=
-lk_rate)
->  {
-> -       unsigned long div_low, div_high;
->         u64 t_low_ns, t_high_ns;
->         int ret;
->
-> -       ret =3D rk3x_i2c_calc_divs(clk_rate, &i2c->t, &div_low, &div_=
-high);
-> +       ret =3D i2c->ops.calc_clock(clk_rate, &i2c->t, &i2c->t_priv);
->         WARN_ONCE(ret !=3D 0, "Could not reach SCL freq %u", i2c->t.b=
-us_freq_hz);
->
->         clk_enable(i2c->clk);
-> -       i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff), REG_CL=
-KDIV);
-> +       i2c_writel(i2c, (i2c->t_priv.div_high << 16) |
-> +                 (i2c->t_priv.div_low & 0xffff), REG_CLKDIV);
->         clk_disable(i2c->clk);
->
-> -       t_low_ns =3D div_u64(((u64)div_low + 1) * 8 * 1000000000, clk=
-_rate);
-> -       t_high_ns =3D div_u64(((u64)div_high + 1) * 8 * 1000000000, c=
-lk_rate);
-> +       t_low_ns =3D div_u64(((u64)i2c->t_priv.div_low + 1) * 8 * 100=
-0000000,
-> +                          clk_rate);
-> +       t_high_ns =3D div_u64(((u64)i2c->t_priv.div_high + 1) * 8 * 1=
-000000000,
-> +                           clk_rate);
->         dev_dbg(i2c->dev,
->                 "CLK %lukhz, Req %uns, Act low %lluns high %lluns\n",
->                 clk_rate / 1000,
-> @@ -652,12 +676,11 @@ static int rk3x_i2c_clk_notifier_cb(struct noti=
-fier_block *nb, unsigned long
->  {
->         struct clk_notifier_data *ndata =3D data;
->         struct rk3x_i2c *i2c =3D container_of(nb, struct rk3x_i2c, cl=
-k_rate_nb);
-> -       unsigned long div_low, div_high;
->
->         switch (event) {
->         case PRE_RATE_CHANGE:
-> -               if (rk3x_i2c_calc_divs(ndata->new_rate, &i2c->t,
-> -                                      &div_low, &div_high) !=3D 0)
-> +               if (i2c->ops.calc_clock(ndata->new_rate, &i2c->t,
-> +                                       &i2c->t_priv) !=3D 0)
->                         return NOTIFY_STOP;
->
->                 /* scale up */
-> @@ -861,6 +884,7 @@ static int rk3x_i2c_probe(struct platform_device =
-*pdev)
->         u32 value;
->         int irq;
->         unsigned long clk_rate;
-> +       unsigned int version;
-
-No need to have a separate variable=E2=80=A6
-
-> +       version =3D (readl(i2c->regs + REG_CON) & VERSION_MASK) >> VE=
-RSION_SHIFT;
-> +       if (version =3D=3D RK3X_I2C_V0)
-> +               i2c->ops.calc_clock =3D rk3x_i2c_v0_calc_clock;
-
-value =3D readl(i2c->regs + REG_CON);
-if ((value & VERSION_MASK) >> VERSION_SHIFT) =3D=3D RK3X_I2C_V0)
-  i2c->ops.calc_clock =3D rk3x_i2c_v0_calc_clock;
-
---=20
-With Best Regards,
-Andy Shevchenko
+SGkgSGVpa286CgpPbiAyMDE25bm0MDHmnIgxNOaXpSAyMDo0NSwgSGVpa28gU3R1ZWJuZXIgd3Jv
+dGU6Cj4gSGkgQW5keSwKPgo+IEFtIERvbm5lcnN0YWcsIDE0LiBKYW51YXIgMjAxNiwgMjA6MzQ6
+MjAgc2NocmllYiBBbmR5IFlhbjoKPj4gVGhlIGN1cnJlbnQgdmRkX2FybSB2b2x0YWdlIGlzIHRv
+byBsb3csIGluY3JlYXNlIGl0IHdpbGwgbWFrZQo+PiB0aGUgc3lzdGVtIG1vcmUgc3RhYmxlLgo+
+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4+
+IC0tLQo+Pgo+PiAgIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzIHwgOCAr
+KysrKysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+IGIvYXJjaC9h
+cm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMgaW5kZXggMGJmNjg3Ni4uM2Q0YzEwNCAx
+MDA2NDQKPj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMKPj4g
+KysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMKPj4gQEAgLTE1OSw2
+ICsxNTksMTQgQEAKPj4KPj4gICAmY3B1MCB7Cj4+ICAgCWNwdTAtc3VwcGx5ID0gPCZ2ZGRfYXJt
+PjsKPj4gKwlvcGVyYXRpbmctcG9pbnRzID0gPAo+PiArCQkvKiBrSHogICAgdVYgKi8KPj4gKwkJ
+MTAwODAwMCAxMTI1MDAwCj4+ICsJCTgxNjAwMCAgMTEyNTAwMAo+PiArCQk2MDAwMDAgIDExMDAw
+MDAKPj4gKwkJNTA0MDAwICAxMTAwMDAwCj4+ICsJCTMxMjAwMCAgMTA3NTAwMAo+PiArCT47Cj4+
+ICAgfTsKPj4KPj4gICAmZW1hYyB7Cj4gRG9lcyB0aGlzIG9ubHkgYXBwbHkgdG8gdGhlIHJheWVh
+Z2VyLWJvYXJkIC8gcHgyIHNvYyBvciBmb3IgYWxsIHJrMzA2NmEvcHgyCj4gYm9hcmRzPyBJLmUu
+IHRoZSBvcmlnaW5hbCB2YWx1ZXMgY29tZSBmcm9tIHNvbWUgc2RrIGtlcm5lbCBhbmQgSSBtaWdo
+dCd2ZQo+IHRyYW5zY3JpYmVkIHRoYXQgd3JvbmcgYXQgdGhlIHRpbWUgYW5kIEkgcmVtZW1iZXIg
+aGF2aW5nIHByb2JsZW1zIHRyeWluZyB0bwo+IHJlYWNoIGhpZ2hlciBmcmVxdWVuY2llcyBhcyB3
+ZWxsLgo+Cj4gU28gY291bGQgeW91IGNoZWNrIHdoYXQgdGhlIGZ1bGwgb3BlcmF0aW5nIHBvaW50
+cyBsb29rcyBsaWtlIGZvciBib3RoIGFuZCBpZgo+IHRoaXMgY2FuIG1vdmUgdG8gdGhlIHJrMzA2
+NmEuZHRzaSwgYXMgYm90aCBzaG91bGQgYmUgYWJsZSB0byByZWFjaCBhdCBsZWFzdAo+IDEuNEdI
+eiAvIDEuNkdIei4KPgo+Cj4gVGhhbmtzCj4gSGVpa28KPgo+IF9fX19fXwoKICAgICBJIGhhdmUg
+Y2hlY2tlZCB0aGUgc2RrIGtlcm5lbCwgdGhlIG9wcCBmb3IgdGhlIHNkayBib2FyZCBpcyBsaWtl
+IApiZWxsb3c6CgogIC8qKgogICogZHZmc19jcHVfbG9naWNfdGFibGU6IHRhYmxlIGZvciBhcm0g
+YW5kIGxvZ2ljIGR2ZnMKICAqIEBmcmVxdWVuY3kgICA6IGFybSBmcmVxdWVuY3kKICAqIEBjcHVf
+dm9sdCAgICA6IGFybSB2b2x0YWdlIGRlcGVuZCBvbiBmcmVxdWVuY3kKICAqIEBsb2dpY192b2x0
+ICA6IGxvZ2ljIHZvbHRhZ2UgYXJtIHJlcXVlc3RzIGRlcGVuZCBvbiBmcmVxdWVuY3kKICAqIGNv
+bW1lbnRzICAgICA6IG1pbiBhcm0vbG9naWMgdm9sdGFnZQogICovCnN0YXRpYyBzdHJ1Y3QgZHZm
+c19hcm1fdGFibGUgZHZmc19jcHVfbG9naWNfdGFibGVbXSA9IHsKICAgICAgICAgey5mcmVxdWVu
+Y3kgPSAyNTIgKiAxMDAwLCAgICAgICAuY3B1X3ZvbHQgPSAxMDc1ICogMTAwMCwgICAgICAgIAou
+bG9naWNfdm9sdCA9IDExMjUgKiAxMDAwfSwvLzAuOTc1Vi8xLjAwMFYKICAgICAgICAgey5mcmVx
+dWVuY3kgPSA1MDQgKiAxMDAwLCAgICAgICAuY3B1X3ZvbHQgPSAxMTAwICogMTAwMCwgICAgICAg
+IAoubG9naWNfdm9sdCA9IDExMjUgKiAxMDAwfSwvLzAuOTc1Vi8xLjAwMFYKICAgICAgICAgey5m
+cmVxdWVuY3kgPSA4MTYgKiAxMDAwLCAgICAgICAuY3B1X3ZvbHQgPSAxMTI1ICogMTAwMCwgICAg
+ICAgIAoubG9naWNfdm9sdCA9IDExNTAgKiAxMDAwfSwvLzEuMDAwVi8xLjAyNVYKICAgICAgICAg
+ey5mcmVxdWVuY3kgPSAxMDA4ICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMTI1ICogMTAwMCwg
+ICAgICAgIAoubG9naWNfdm9sdCA9IDExNTAgKiAxMDAwfSwvLzEuMDI1Vi8xLjA1MFYKICAgICAg
+ICAgey5mcmVxdWVuY3kgPSAxMjAwICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMTc1ICogMTAw
+MCwgICAgICAgIAoubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEuMTAwVi8xLjA1MFYKICAg
+ICAgICAgey5mcmVxdWVuY3kgPSAxMjcyICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMjI1ICog
+MTAwMCwgICAgICAgIAoubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEuMTUwVi8xLjEwMFYK
+ICAgICAgICAgey5mcmVxdWVuY3kgPSAxNDE2ICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMzAw
+ICogMTAwMCwgICAgICAgIAoubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEuMjI1Vi8xLjEw
+MFYKICAgICAgICAgey5mcmVxdWVuY3kgPSAxNTEyICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAx
+MzUwICogMTAwMCwgICAgICAgIAoubG9naWNfdm9sdCA9IDEyNTAgKiAxMDAwfSwvLzEuMzAwVi8x
+LjE1MFYKICAgICAgICAgey5mcmVxdWVuY3kgPSAxNjA4ICogMTAwMCwgICAgICAuY3B1X3ZvbHQg
+PSAxNDI1ICogMTAwMCwgICAgICAgIAoubG9naWNfdm9sdCA9IDEzMDAgKiAxMDAwfSwvLzEuMzI1
+Vi8xLjE3NVYKICAgICAgICAgey5mcmVxdWVuY3kgPSBDUFVGUkVRX1RBQkxFX0VORH0sCn07Cgog
+IFRoaXMgdGFibGUgaXMgbWFkZSBiYXNlIG9uIG1hc3Mgc3RyZXNzIHRlc3QuIFNvIGlzIGEgc2Fm
+ZSBvcHAgdGFibGUgCmZvciBtb3N0IHJrMzA2NmEgYmFzZSBib2FyZHMuIEJ1dCBpdCBzb21lCiAg
+Ym9hcmQgaXMgbm90IHNvIHdlbGwgaW4gcG93ZXIgc3VwcGx5IGNpcmN1aXQgZGVzaWduLCB0aGUg
+bWF5IGFsc28gbmVlZCAKdG8gYWRqdXN0IGl0LgoKICBGcm9tIHRoZSB0YWJsZSB3ZSBzZWUgdGhh
+dCB0aGUgbG9naWNfdm9sdGFnZSBuZWVkIHRvIGluY3JlYXNlICBhcyB0aGUgCmNwdWZyZXEgaW5j
+cmVhc2UuIEJ1dCBpdCBzZWVtcyB0aGF0IHRoZSBjdXJyZW50IG1haW5saW5lIGtlcm5lbCBkb2Vz
+IG5vdCAKc3VwcG9ydCBhZGp1c3QgdGhlIGxvZ2ljIHZvbHRhZ2Ugd2hlbiBjcHVmcmVxIGNoYW5n
+ZS4gU28gd2UgY2FuIG9ubHkgCnNjYWxlIHRoZSBjcHVmcmVxIHRvIDEuNEdIWiBieSBmaXhlZCB0
+aGUgbG9naWNfdm9sdCBhdCAxLjJWLgoKICBJZiB5b3UgbGlrZSwgSSBjYW4gbW92ZSBpdCB0byBy
+azMwNjZhLmR0c2kgd2l0aCB0aGUgbWF4IGZyZXEgYXQgCjEwMDhNSFosIGFzIEkgaGF2ZW4ndCAg
+dGVzdCB0byAxLjRHSFogIHdpdGggdGhlIG1haW5saW5lIGtlcm5lbC4gT3IgZ2l2ZSAKbWUgc29t
+ZSB0aW1lIHRvIHRlc3QgdG8gc2VlIGlmIHRoZSByYXllYWdlciBib2FyZCBjYW4gcnVuIHRvIDEu
+NEcgc3RhYmxlIAp3aXRoIHRoZSBtYWlubGluZSAuCj4gX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4KPgo+CgoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
