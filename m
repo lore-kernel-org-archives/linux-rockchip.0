@@ -1,76 +1,86 @@
-From: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to caculate i2c clocks
-Date: Thu, 14 Jan 2016 15:50:43 +0100 (CET)
-Message-ID: <alpine.DEB.2.10.1601141548100.2509@hadrien>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/3] drm/atomic-helper: Export framebuffer_changed()
+Date: Thu, 14 Jan 2016 15:56:35 +0100
+Message-ID: <20160114145635.GF19130@phenom.ffwll.local>
+References: <20160114142047.GD19130@phenom.ffwll.local>
+ <cover.1452782114.git.john@metanate.com>
+ <55e84a6ee82c0fbd796bb67a630781daa5bdcae0.1452782114.git.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: heiko@sntech.de, wsa@the-dreams.de, andy.shevchenko@gmail.com, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, hl@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <55e84a6ee82c0fbd796bb67a630781daa5bdcae0.1452782114.git.john@metanate.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-It looks like it would be an infinite loop?
-
-julia
-
----------- Forwarded message ----------
-Date: Thu, 14 Jan 2016 22:42:19 +0800
-From: kbuild test robot <fengguang.wu@intel.com>
-To: kbuild@01.org
-Cc: Julia Lawall <julia.lawall@lip6.fr>
-Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to caculate i2c clocks
-
-CC: kbuild-all@01.org
-In-Reply-To: <1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
-TO: David Wu <david.wu@rock-chips.com>
-CC: heiko@sntech.de
-CC: wsa@the-dreams.de, andy.shevchenko@gmail.com, dianders@chromium.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, hl@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
-
-Hi David,
-
-[auto build test WARNING on wsa/i2c/for-next]
-[also build test WARNING on v4.4 next-20160114]
-[cannot apply to rockchip/for-next]
-[if your patch is applied to the wrong git tree, please drop us a note to help improving the system]
-
-url:    https://github.com/0day-ci/linux/commits/David-Wu/i2c-rk3x-switch-to-i2c-generic-dt-parsing/20160114-203309
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux i2c/for-next
-:::::: branch date: 2 hours ago
-:::::: commit date: 2 hours ago
-
->> drivers/i2c/busses/i2c-rk3x.c:793:23-34: WARNING: Unsigned expression compared with zero: data_hd_cnt >= 0
-
-git remote add linux-review https://github.com/0day-ci/linux
-git remote update linux-review
-git checkout 5fed4c320427dd34a909f9b408fadf297121924c
-vim +793 drivers/i2c/busses/i2c-rk3x.c
-
-5fed4c32 David Wu 2016-01-14  777  		 * for low (spend more time low).
-5fed4c32 David Wu 2016-01-14  778  		 */
-5fed4c32 David Wu 2016-01-14  779  		extra_div = min_total_div - min_div_for_hold;
-5fed4c32 David Wu 2016-01-14  780  		extra_low_div = DIV_ROUND_UP(min_low_div * extra_div,
-5fed4c32 David Wu 2016-01-14  781  					     min_div_for_hold);
-5fed4c32 David Wu 2016-01-14  782
-5fed4c32 David Wu 2016-01-14  783  		t_output->div_low = min_low_div + extra_low_div;
-5fed4c32 David Wu 2016-01-14  784  		t_output->div_high = min_high_div + (extra_div - extra_low_div);
-5fed4c32 David Wu 2016-01-14  785  	}
-5fed4c32 David Wu 2016-01-14  786
-5fed4c32 David Wu 2016-01-14  787  	/*
-5fed4c32 David Wu 2016-01-14  788  	 * calculate sda data hold count by the rules, thd_sda_count:3
-5fed4c32 David Wu 2016-01-14  789  	 * is a appropriate value to reduce calculated times.
-5fed4c32 David Wu 2016-01-14  790  	 * tHD;sda  = (l * s + 1) * T
-5fed4c32 David Wu 2016-01-14  791  	 * tSU;sda = ((8 - s) * l + 1) * T
-5fed4c32 David Wu 2016-01-14  792  	 */
-5fed4c32 David Wu 2016-01-14 @793  	for (data_hd_cnt = 3; data_hd_cnt >= 0; data_hd_cnt--) {
-5fed4c32 David Wu 2016-01-14  794  		max_hold_data_ns =  DIV_ROUND_UP((data_hd_cnt
-5fed4c32 David Wu 2016-01-14  795  						 * (t_output->div_low) + 1)
-5fed4c32 David Wu 2016-01-14  796  						 * 1000000, clk_rate_khz);
-5fed4c32 David Wu 2016-01-14  797  		min_setup_data_ns =  DIV_ROUND_UP(((8 - data_hd_cnt)
-5fed4c32 David Wu 2016-01-14  798  						 * (t_output->div_low) + 1)
-5fed4c32 David Wu 2016-01-14  799  						 * 1000000, clk_rate_khz);
-5fed4c32 David Wu 2016-01-14  800  		if ((max_hold_data_ns < spec_max_data_hold_ns) &&
-5fed4c32 David Wu 2016-01-14  801  		    (min_setup_data_ns > spec_min_data_setup_ns)) {
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+T24gVGh1LCBKYW4gMTQsIDIwMTYgYXQgMDI6Mzk6NDBQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IFRoZSBSb2NrY2hpcCBkcml2ZXIgY2Fubm90IHVzZSBkcm1fYXRvbWljX2hlbHBlcl93
+YWl0X2Zvcl92YmxhbmtzKCkKPiBiZWNhdXNlIGl0IGhhcyBoYXJkd2FyZSBjb3VudGVycyBmb3Ig
+bmVpdGhlciB2YmxhbmtzIG5vciBzY2FubGluZXMuCj4gCj4gSW4gb3JkZXIgdG8gc2ltcGxpZnkg
+cmUtaW1wbGVtZW50aW5nIHRoZSBmdW5jdGlvbmFsaXR5IGZvciB0aGlzIGRyaXZlciwKPiBleHBv
+cnQgdGhlIGZyYW1lYnVmZmVyX2NoYW5nZWQoKSBoZWxwZXIgc28gaXQgY2FuIGJlIHJldXNlZC4K
+PiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgoKUmV2
+aWV3ZWQtYnk6IERhbmllbCBWZXR0ZXIgPGRhbmllbC52ZXR0ZXJAZmZ3bGwuY2g+IEFuZCBzaW5j
+ZSBJIGRvbid0CmV4cGVjdCBhbnlvbmUgZWxzZSB0byBuZWVkIHRoaXMgYW55dGltZSBzb29uIHBy
+b2JhYmx5IGJlc3QgeW91IGp1c3QgcHVsbAp0aGlzIGluIHRocm91Z2ggcm9ja2NoaXAgdHJlZXMu
+CgpDaGVlcnMsIERhbmllbAoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9hdG9taWNfaGVs
+cGVyLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKy0tLS0KPiAgaW5jbHVkZS9kcm0vZHJtX2F0
+b21pY19oZWxwZXIuaCAgICAgfCAgNCArKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0
+aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L2RybV9hdG9taWNfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxwZXIu
+Ywo+IGluZGV4IDI2OGQzN2YuLjc0NDkyOTMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L2RybV9hdG9taWNfaGVscGVyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19o
+ZWxwZXIuYwo+IEBAIC05NDgsOSArOTQ4LDIzIEBAIHN0YXRpYyB2b2lkIHdhaXRfZm9yX2ZlbmNl
+cyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJfQo+ICB9Cj4gIAo+IC1zdGF0aWMgYm9vbCBm
+cmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gLQkJCQlzdHJ1Y3Qg
+ZHJtX2F0b21pY19zdGF0ZSAqb2xkX3N0YXRlLAo+IC0JCQkJc3RydWN0IGRybV9jcnRjICpjcnRj
+KQo+ICsvKioKPiArICogZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZCAtIGNo
+ZWNrIGlmIGZyYW1lYnVmZmVyIGhhcyBjaGFuZ2VkCj4gKyAqIEBkZXY6IERSTSBkZXZpY2UKPiAr
+ICogQG9sZF9zdGF0ZTogYXRvbWljIHN0YXRlIG9iamVjdCB3aXRoIG9sZCBzdGF0ZSBzdHJ1Y3R1
+cmVzCj4gKyAqIEBjcnRjOiBEUk0gY3J0Ywo+ICsgKgo+ICsgKiBDaGVja3Mgd2hldGhlciB0aGUg
+ZnJhbWVidWZmZXIgdXNlZCBmb3IgdGhpcyBDUlRDIGNoYW5nZXMgYXMgYSByZXN1bHQgb2YKPiAr
+ICogdGhlIGF0b21pYyB1cGRhdGUuICBUaGlzIGlzIHVzZWZ1bCBmb3IgZHJpdmVycyB3aGljaCBj
+YW5ub3QgdXNlCj4gKyAqIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MoKSBhbmQg
+bmVlZCB0byByZWltcGxlbWVudCBpdHMKPiArICogZnVuY3Rpb25hbGl0eS4KPiArICoKPiArICog
+UmV0dXJuczoKPiArICogdHJ1ZSBpZiB0aGUgZnJhbWVidWZmZXIgY2hhbmdlZC4KPiArICovCj4g
+K2Jvb2wgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZGV2LAo+ICsJCQkJCSAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUs
+Cj4gKwkJCQkJICAgc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3QgZHJtX3Bs
+YW5lICpwbGFuZTsKPiAgCXN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm9sZF9wbGFuZV9zdGF0ZTsK
+PiBAQCAtOTY3LDYgKzk4MSw3IEBAIHN0YXRpYyBib29sIGZyYW1lYnVmZmVyX2NoYW5nZWQoc3Ry
+dWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCj4gIAlyZXR1cm4gZmFsc2U7Cj4gIH0KPiArRVhQT1JU
+X1NZTUJPTChkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKTsKPiAgCj4gIC8q
+Kgo+ICAgKiBkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzIC0gd2FpdCBmb3IgdmJs
+YW5rIG9uIGNydGNzCj4gQEAgLTEwMDEsNyArMTAxNiw4IEBAIGRybV9hdG9taWNfaGVscGVyX3dh
+aXRfZm9yX3ZibGFua3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCQlpZiAob2xkX3N0YXRl
+LT5sZWdhY3lfY3Vyc29yX3VwZGF0ZSkKPiAgCQkJY29udGludWU7Cj4gIAo+IC0JCWlmICghZnJh
+bWVidWZmZXJfY2hhbmdlZChkZXYsIG9sZF9zdGF0ZSwgY3J0YykpCj4gKwkJaWYgKCFkcm1fYXRv
+bWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKGRldiwKPiArCQkJCW9sZF9zdGF0ZSwgY3J0
+YykpCj4gIAkJCWNvbnRpbnVlOwo+ICAKPiAgCQlyZXQgPSBkcm1fY3J0Y192YmxhbmtfZ2V0KGNy
+dGMpOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oIGIvaW5j
+bHVkZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaAo+IGluZGV4IGEyODZjY2UuLjc0ZmNlNzggMTAw
+NjQ0Cj4gLS0tIGEvaW5jbHVkZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaAo+ICsrKyBiL2luY2x1
+ZGUvZHJtL2RybV9hdG9taWNfaGVscGVyLmgKPiBAQCAtNDIsNiArNDIsMTAgQEAgaW50IGRybV9h
+dG9taWNfaGVscGVyX2NvbW1pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJCQkgICAgIHN0
+cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSwKPiAgCQkJICAgICBib29sIGFzeW5jKTsKPiAg
+Cj4gK2Jvb2wgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1Y3QgZHJt
+X2RldmljZSAqZGV2LAo+ICsJCQkJCSAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3Rh
+dGUsCj4gKwkJCQkJICAgc3RydWN0IGRybV9jcnRjICpjcnRjKTsKPiArCj4gIHZvaWQgZHJtX2F0
+b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJ
+CQkJCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUpOwo+ICAKPiAtLSAKPiAyLjcu
+MC4yMjYuZ2ZlOTg2ZmUKPiAKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJ
+bnRlbCBDb3Jwb3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
