@@ -1,351 +1,110 @@
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to caculate i2c clocks
-Date: Thu, 14 Jan 2016 15:29:30 +0200
-Message-ID: <CAHp75VcweSAdUbe8V1UxsNXeQ-7gpeMS8DAdVe1MiCXVPHNjLA@mail.gmail.com>
-References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
-	<1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
+From: Eddie Cai <eddie.cai.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: increase vdd_arm voltage for
+ rk3066a-rayeager board
+Date: Thu, 14 Jan 2016 21:50:53 +0800
+Message-ID: <CANCyOWak0wMNRPxkJtE2DJ1UvCneWxuNXjwjxjM3+_Jjuaahvw@mail.gmail.com>
+References: <1452774780-16493-1-git-send-email-andy.yan@rock-chips.com>
+ <1452774860-16572-1-git-send-email-andy.yan@rock-chips.com>
+ <1709463.R522kSjgXB@phil> <5697A081.4060903@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Douglas Anderson <dianders@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, cf@rock-chips.com, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5697A081.4060903-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 14, 2016 at 2:31 PM, David Wu <david.wu@rock-chips.com> wrote:
-> There was an timing issue about "repeated start" time at the I2C
-> controller of version0, controller appears to drop SDA at .875x (7/8)
-> programmed clk high. The rule(.875x) isn't enough to meet tSU;STA
-> requirements on 100k's Standard-mode. To resolve this issue,
-> data_upd_st, start_setup_cnt and stop_setup_cnt configs for I2C
-> timing information are added, new rules are designed to calculate
-> the timing information at new v1.
-
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -58,10 +58,15 @@ enum {
->  #define REG_CON_LASTACK   BIT(5) /* 1: send NACK after last received byte */
->  #define REG_CON_ACTACK    BIT(6) /* 1: stop if NACK is received */
->
-> +#define REG_CON_SDA_CNT(cnt)  ((cnt) << 8)
-> +#define REG_CON_STA_CNT(cnt)  ((cnt) << 12)
-> +#define REG_CON_STO_CNT(cnt)  ((cnt) << 14)
-> +
->  #define VERSION_MASK     GENMASK(31, 16)
->  #define VERSION_SHIFT    16
->
->  #define RK3X_I2C_V0      0x0
-> +#define RK3X_I2C_V1      0x1
->
->  /* REG_MRXADDR bits */
->  #define REG_MRXADDR_VALID(x) BIT(24 + (x)) /* [x*8+7:x*8] of MRX[R]ADDR valid */
-> @@ -99,10 +104,16 @@ struct rk3x_i2c_soc_data {
->   * struct rk3x_priv_i2c_timings - rk3x I2C timing information
->   * @div_low: Divider output for low
->   * @div_high: Divider output for high
-> + * @thd_sda_count: SDA update point config used to adjust sda setup/hold time
-> + * @tsu_sta_count: Start setup config for setup start time and hold start time
-> + * @tsu_sto_count: Stop setup config for setup stop time
->   */
->  struct rk3x_priv_i2c_timings {
->         unsigned long div_low;
->         unsigned long div_high;
-> +       unsigned int thd_sda_count;
-> +       unsigned int tsu_sta_count;
-> +       unsigned int tsu_sto_count;
->  };
-
-And in this (or even separate) patch makes sense to introduce
-extension structure, which is struct rk3x_priv_i2c_timings.
-
->  struct rk3x_i2c_ops {
-> @@ -154,6 +165,13 @@ static inline u32 i2c_readl(struct rk3x_i2c *i2c, unsigned int offset)
->         return readl(i2c->regs + offset);
->  }
->
-> +static inline u32 rk3x_i2c_get_con_count(struct rk3x_i2c *i2c)
-> +{
-> +       return REG_CON_SDA_CNT(i2c->t_priv.thd_sda_count) |
-> +              REG_CON_STA_CNT(i2c->t_priv.tsu_sta_count) |
-> +              REG_CON_STO_CNT(i2c->t_priv.tsu_sto_count);
-> +}
-> +
->  /* Reset all interrupt pending bits */
->  static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
->  {
-> @@ -165,13 +183,13 @@ static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
->   */
->  static void rk3x_i2c_start(struct rk3x_i2c *i2c)
->  {
-> -       u32 val;
-> +       u32 val = rk3x_i2c_get_con_count(i2c);
->
->         rk3x_i2c_clean_ipd(i2c);
->         i2c_writel(i2c, REG_INT_START, REG_IEN);
->
->         /* enable adapter with correct mode, send START condition */
-> -       val = REG_CON_EN | REG_CON_MOD(i2c->mode) | REG_CON_START;
-> +       val = val | REG_CON_EN | REG_CON_MOD(i2c->mode) | REG_CON_START;
->
->         /* if we want to react to NACK, set ACTACK bit */
->         if (!(i2c->msg->flags & I2C_M_IGNORE_NAK))
-> @@ -212,7 +230,7 @@ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
->                  * get the intended effect by resetting its internal state
->                  * and issuing an ordinary START.
->                  */
-> -               i2c_writel(i2c, 0, REG_CON);
-> +               i2c_writel(i2c, rk3x_i2c_get_con_count(i2c), REG_CON);
->
->                 /* signal that we are finished with the current msg */
->                 wake_up(&i2c->wait);
-> @@ -630,6 +648,211 @@ static int rk3x_i2c_v0_calc_clock(unsigned long clk_rate,
->         return ret;
->  }
->
-> +/**
-> + * Calculate timing clock info values for desired SCL frequency
-> + *
-> + * @clk_rate: I2C input clock rate
-> + * @t_input: Known I2C timing information
-> + * @t_output: Caculated rk3x private timing information that would
-> + * be written into regs
-> + * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow. In that case
-> + * a best-effort divider value is returned in divs. If the target rate is
-> + * too high, we silently use the highest possible rate.
-> + * The following formulas are v1's method to calculate clock.
-> + *
-> + * l = divl + 1;
-> + * h = divh + 1;
-> + * s = data_upd_st + 1;
-> + * u = start_setup_cnt + 1;
-> + * p = stop_setup_cnt + 1;
-> + * T = Tclk_i2c;
-> +
-> + * tHigh = 8 * h * T;
-> + * tLow = 8 * l * T;
-> +
-> + * tHD;sda = (l * s + 1) * T;
-> + * tSU;sda = [(8 - s) * l + 1] * T;
-> + * tI2C = 8 * (l + h) * T;
-> +
-> + * tSU;sta = (8h * u + 1) * T;
-> + * tHD;sta = [8h * (u + 1) - 1] * T;
-> + * tSU;sto = (8h * p + 1) * T;
-> + */
-> +static int rk3x_i2c_v1_calc_clock(unsigned long clk_rate,
-> +                                 struct i2c_timings *t_input,
-> +                                 struct rk3x_priv_i2c_timings *t_output)
-> +{
-
-I see some similarities with existing code for v0. Can be refactored?
-
-> +       unsigned long spec_min_low_ns, spec_min_high_ns;
-> +       unsigned long spec_min_setup_start_ns, spec_min_stop_setup_ns;
-> +       unsigned long spec_min_data_setup_ns, spec_max_data_hold_ns;
-> +
-> +       unsigned long min_low_ns, min_high_ns, min_total_ns;
-> +       unsigned long min_setup_start_ns, min_setup_data_ns;
-> +       unsigned long min_stop_setup_ns, max_hold_data_ns;
-> +
-> +       unsigned long clk_rate_khz, scl_rate_khz;
-> +
-> +       unsigned long min_low_div, min_high_div;
-> +
-> +       unsigned long min_div_for_hold, min_total_div;
-> +       unsigned long extra_div, extra_low_div;
-> +       unsigned long data_hd_cnt;
-> +
-> +       int ret = 0;
-> +
-> +       /* Support standard-mode and fast-mode */
-> +       if (WARN_ON(t_input->bus_freq_hz > 400000))
-> +               t_input->bus_freq_hz = 400000;
-> +
-> +       /* prevent scl_rate_khz from becoming 0 */
-> +       if (WARN_ON(t_input->bus_freq_hz < 1000))
-> +               t_input->bus_freq_hz = 1000;
-> +
-> +       /*
-> +        * min_low_ns: The minimum number of ns we need to hold low to
-> +        *             meet I2C specification, should include fall time.
-> +        * min_high_ns: The minimum number of ns we need to hold high to
-> +        *              meet I2C specification, should include rise time.
-> +        */
-> +       if (t_input->bus_freq_hz <= 100000) {
-> +               spec_min_low_ns = 4700;
-> +               spec_min_high_ns = 4000;
-> +
-> +               spec_min_setup_start_ns = 4700;
-> +               spec_min_stop_setup_ns = 4000;
-> +
-> +               spec_min_data_setup_ns = 250;
-> +                spec_max_data_hold_ns = 3450;
-> +       } else if (t_input->bus_freq_hz <= 400000) {
-> +               spec_min_low_ns = 1300;
-> +               spec_min_high_ns = 600;
-> +
-> +               spec_min_setup_start_ns = 600;
-> +               spec_min_stop_setup_ns = 600;
-> +
-> +               spec_min_data_setup_ns = 100;
-> +               spec_max_data_hold_ns = 900;
-> +       }
-> +
-> +       /* caculate min-divh and min-divl */
-> +       clk_rate_khz = DIV_ROUND_UP(clk_rate, 1000);
-> +       scl_rate_khz = t_input->bus_freq_hz / 1000;
-> +       min_total_div = DIV_ROUND_UP(clk_rate_khz, scl_rate_khz * 8);
-> +
-> +       min_high_ns = t_input->scl_rise_ns + spec_min_high_ns;
-> +       min_high_div = DIV_ROUND_UP(clk_rate_khz * min_high_ns, 8 * 1000000);
-> +
-> +       min_low_ns = t_input->scl_fall_ns + spec_min_low_ns;
-> +       min_low_div = DIV_ROUND_UP(clk_rate_khz * min_low_ns, 8 * 1000000);
-> +
-> +       /* Final divh and divl must be greater than 0, otherwise the
-> +        * hardware would not output the i2c clk.
-> +        */
-> +       if (min_high_div <= 1)
-> +               min_high_div = 2;
-> +       if (min_low_div <= 1)
-> +               min_low_div = 2;
-> +
-> +       /* These are the min dividers needed for min hold times. */
-> +       min_div_for_hold = (min_low_div + min_high_div);
-> +       min_total_ns = min_low_ns + min_high_ns;
-> +
-> +       /*
-> +        * This is the maximum divider so we don't go over the maximum.
-> +        * We don't round up here (we round down) since this is a maximum.
-> +        */
-> +        if (min_div_for_hold >= min_total_div) {
-> +               /*
-> +                * Time needed to meet hold requirements is important.
-> +                * Just use that.
-> +                */
-> +               t_output->div_low = min_low_div;
-> +               t_output->div_high = min_high_div;
-> +       } else {
-> +               /*
-> +                * We've got to distribute some time among the low and high
-> +                * so we don't run too fast.
-> +                * We'll try to split things up by the scale of min_low_div and
-> +                * min_high_div, biasing slightly towards having a higher div
-> +                * for low (spend more time low).
-> +                */
-> +               extra_div = min_total_div - min_div_for_hold;
-> +               extra_low_div = DIV_ROUND_UP(min_low_div * extra_div,
-> +                                            min_div_for_hold);
-> +
-> +               t_output->div_low = min_low_div + extra_low_div;
-> +               t_output->div_high = min_high_div + (extra_div - extra_low_div);
-> +       }
-> +
-> +       /*
-> +        * calculate sda data hold count by the rules, thd_sda_count:3
-> +        * is a appropriate value to reduce calculated times.
-> +        * tHD;sda  = (l * s + 1) * T
-> +        * tSU;sda = ((8 - s) * l + 1) * T
-> +        */
-> +       for (data_hd_cnt = 3; data_hd_cnt >= 0; data_hd_cnt--) {
-> +               max_hold_data_ns =  DIV_ROUND_UP((data_hd_cnt
-> +                                                * (t_output->div_low) + 1)
-> +                                                * 1000000, clk_rate_khz);
-> +               min_setup_data_ns =  DIV_ROUND_UP(((8 - data_hd_cnt)
-> +                                                * (t_output->div_low) + 1)
-> +                                                * 1000000, clk_rate_khz);
-> +               if ((max_hold_data_ns < spec_max_data_hold_ns) &&
-> +                   (min_setup_data_ns > spec_min_data_setup_ns)) {
-> +                       t_output->thd_sda_count = data_hd_cnt;
-> +                       break;
-> +               }
-> +       }
-> +
-> +       /*
-> +        * calculate start setup count, and we aren't care tHD;STA.
-> +        * If the start setup count meets the rule of tSU;sta, it also
-> +        * meets the rule of tHD;STA.
-> +        * tSU;sta = (8h * u + 1) * T
-> +        * tHD;sta = [8h * (u + 1) - 1] * T
-> +        */
-> +       min_setup_start_ns = t_input->scl_rise_ns + spec_min_setup_start_ns;
-> +       t_output->tsu_sta_count = DIV_ROUND_UP(clk_rate_khz * min_setup_start_ns
-> +                          - 1000000, 8 * 1000000 * (t_output->div_high));
-> +
-> +       /*
-> +        * calculate start setup count by the rule:
-> +        * tSU;sto =(8h * p + 1) * T
-> +        */
-> +       min_stop_setup_ns = t_input->scl_rise_ns + spec_min_stop_setup_ns;
-> +       t_output->tsu_sto_count = DIV_ROUND_UP(clk_rate_khz * min_stop_setup_ns
-> +                          - 1000000, 8 * 1000000 * (t_output->div_high));
-> +
-> +       /*
-> +        * Adjust to the fact that the hardware has an implicit "+1".
-> +        * NOTE: Above calculations always produce div_low > 0 and div_high > 0.
-> +        */
-> +       t_output->div_low -= 1;
-> +       t_output->div_high -= 1;
-> +
-> +       /* Maximum divider supported by hw is 0xffff */
-> +       if (t_output->div_low > 0xffff) {
-> +               t_output->div_low = 0xffff;
-> +               ret = -EINVAL;
-> +       }
-> +
-> +       if (t_output->div_high > 0xffff) {
-> +               t_output->div_high = 0xffff;
-> +               ret = -EINVAL;
-> +       }
-> +
-> +       /*
-> +        * Adjust to the fact that the hardware has an implicit "+1".
-> +        * NOTE: Above calculations always produce thd_sda_count > 0,
-> +        * tsu_sta_count > 0 and tsu_sta_count > 0.
-> +        */
-> +       t_output->thd_sda_count -= 1;
-> +       t_output->tsu_sta_count -= 1;
-> +       t_output->tsu_sto_count -= 1;
-> +
-> +       return ret;
-> +}
-> +
->  static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
->  {
->         u64 t_low_ns, t_high_ns;
-> @@ -829,7 +1052,8 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
->
->                         /* Force a STOP condition without interrupt */
->                         i2c_writel(i2c, 0, REG_IEN);
-> -                       i2c_writel(i2c, REG_CON_EN | REG_CON_STOP, REG_CON);
-> +                       i2c_writel(i2c, rk3x_i2c_get_con_count(i2c) |
-> +                                       REG_CON_EN | REG_CON_STOP, REG_CON);
->
->                         i2c->state = STATE_IDLE;
->
-> @@ -969,7 +1193,9 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
->         platform_set_drvdata(pdev, i2c);
->
->         version = (readl(i2c->regs + REG_CON) & VERSION_MASK) >> VERSION_SHIFT;
-> -       if (version == RK3X_I2C_V0)
-> +       if (version == RK3X_I2C_V1)
-> +               i2c->ops.calc_clock = rk3x_i2c_v1_calc_clock;
-> +       else
->                 i2c->ops.calc_clock = rk3x_i2c_v0_calc_clock;
-
-Perhaps time to use switch-case:
-
-switch ((value & MASK) >> SHIFT) {
-case V1:
-v1();
-break;
-case V0:
-default:
-v0();
-break;
-}
-
--- 
-With Best Regards,
-Andy Shevchenko
+SGkgSGVpa28KCkkgZG9uJ3Qgd2FudCBvcGVuIHNvdXJjZSB2ZXJzaW9uIGtlcm5lbCBzdXBwb3J0
+IHRvbyBoaWdoIGZyZXF1ZW5jeS4KTWFueSBwZW9wbGUgdXNlIFJLMzA2Ni9QWDIgb24gdGhlaXIg
+Ym9hcmQuIFdlIGRvbid0IGtub3cgaWYgdGhlaXIKbGF5b3V0IGlzIGdvb2QgZW5vdWdoIHRvIHN1
+cHBvcnQgaGlnaGVyIGZyZXF1ZW5jeS4gaWUuIGJhZCBsYXlvdXQgd2lsbApjYXVzZSBtb3JlIHZv
+bHRhZ2UgZHJvcCBvbiB0aGUgVkREX0NQVSBwb3dlciByYWlsLiBTbyBpdCBtYXkgbmVlZApoaWdo
+ZXIgdm9sdGFnZS4gSSB0aGluayBzdGFibGUgaXMgbW9yZSBpbXBvcnRhbnQgaGVyZS4gUGVvcGxl
+IHdhbnQKaGlnaGVyIGZyZXF1ZW5jeSBjYW4gYWRkIG1vcmUgb3BwIGRlcGVuZCBvbiB0aGVpciBi
+b2FyZCdzIGxheW91dC4KCjIwMTYtMDEtMTQgMjE6MjAgR01UKzA4OjAwIEFuZHkgWWFuIDxhbmR5
+LnlhbkByb2NrLWNoaXBzLmNvbT46Cj4gSGkgSGVpa286Cj4KPgo+IE9uIDIwMTblubQwMeaciDE0
+5pelIDIwOjQ1LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4KPj4gSGkgQW5keSwKPj4KPj4gQW0g
+RG9ubmVyc3RhZywgMTQuIEphbnVhciAyMDE2LCAyMDozNDoyMCBzY2hyaWViIEFuZHkgWWFuOgo+
+Pj4KPj4+IFRoZSBjdXJyZW50IHZkZF9hcm0gdm9sdGFnZSBpcyB0b28gbG93LCBpbmNyZWFzZSBp
+dCB3aWxsIG1ha2UKPj4+IHRoZSBzeXN0ZW0gbW9yZSBzdGFibGUuCj4+Pgo+Pj4gU2lnbmVkLW9m
+Zi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgo+Pj4gLS0tCj4+Pgo+Pj4g
+ICBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLXJheWVhZ2VyLmR0cyB8IDggKysrKysrKysKPj4+
+ICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9h
+cmNoL2FybS9ib290L2R0cy9yazMwNjZhLXJheWVhZ2VyLmR0cwo+Pj4gYi9hcmNoL2FybS9ib290
+L2R0cy9yazMwNjZhLXJheWVhZ2VyLmR0cyBpbmRleCAwYmY2ODc2Li4zZDRjMTA0IDEwMDY0NAo+
+Pj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMKPj4+ICsrKyBi
+L2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+PiBAQCAtMTU5LDYgKzE1
+OSwxNCBAQAo+Pj4KPj4+ICAgJmNwdTAgewo+Pj4gICAgICAgICBjcHUwLXN1cHBseSA9IDwmdmRk
+X2FybT47Cj4+PiArICAgICAgIG9wZXJhdGluZy1wb2ludHMgPSA8Cj4+PiArICAgICAgICAgICAg
+ICAgLyoga0h6ICAgIHVWICovCj4+PiArICAgICAgICAgICAgICAgMTAwODAwMCAxMTI1MDAwCj4+
+PiArICAgICAgICAgICAgICAgODE2MDAwICAxMTI1MDAwCj4+PiArICAgICAgICAgICAgICAgNjAw
+MDAwICAxMTAwMDAwCj4+PiArICAgICAgICAgICAgICAgNTA0MDAwICAxMTAwMDAwCj4+PiArICAg
+ICAgICAgICAgICAgMzEyMDAwICAxMDc1MDAwCj4+PiArICAgICAgID47Cj4+PiAgIH07Cj4+Pgo+
+Pj4gICAmZW1hYyB7Cj4+Cj4+IERvZXMgdGhpcyBvbmx5IGFwcGx5IHRvIHRoZSByYXllYWdlci1i
+b2FyZCAvIHB4MiBzb2Mgb3IgZm9yIGFsbAo+PiByazMwNjZhL3B4Mgo+PiBib2FyZHM/IEkuZS4g
+dGhlIG9yaWdpbmFsIHZhbHVlcyBjb21lIGZyb20gc29tZSBzZGsga2VybmVsIGFuZCBJIG1pZ2h0
+J3ZlCj4+IHRyYW5zY3JpYmVkIHRoYXQgd3JvbmcgYXQgdGhlIHRpbWUgYW5kIEkgcmVtZW1iZXIg
+aGF2aW5nIHByb2JsZW1zIHRyeWluZwo+PiB0bwo+PiByZWFjaCBoaWdoZXIgZnJlcXVlbmNpZXMg
+YXMgd2VsbC4KPj4KPj4gU28gY291bGQgeW91IGNoZWNrIHdoYXQgdGhlIGZ1bGwgb3BlcmF0aW5n
+IHBvaW50cyBsb29rcyBsaWtlIGZvciBib3RoIGFuZAo+PiBpZgo+PiB0aGlzIGNhbiBtb3ZlIHRv
+IHRoZSByazMwNjZhLmR0c2ksIGFzIGJvdGggc2hvdWxkIGJlIGFibGUgdG8gcmVhY2ggYXQKPj4g
+bGVhc3QKPj4gMS40R0h6IC8gMS42R0h6Lgo+Pgo+Pgo+PiBUaGFua3MKPj4gSGVpa28KPj4KPj4g
+X19fX19fCj4KPgo+ICAgICBJIGhhdmUgY2hlY2tlZCB0aGUgc2RrIGtlcm5lbCwgdGhlIG9wcCBm
+b3IgdGhlIHNkayBib2FyZCBpcyBsaWtlIGJlbGxvdzoKPgo+ICAvKioKPiAgKiBkdmZzX2NwdV9s
+b2dpY190YWJsZTogdGFibGUgZm9yIGFybSBhbmQgbG9naWMgZHZmcwo+ICAqIEBmcmVxdWVuY3kg
+ICA6IGFybSBmcmVxdWVuY3kKPiAgKiBAY3B1X3ZvbHQgICAgOiBhcm0gdm9sdGFnZSBkZXBlbmQg
+b24gZnJlcXVlbmN5Cj4gICogQGxvZ2ljX3ZvbHQgIDogbG9naWMgdm9sdGFnZSBhcm0gcmVxdWVz
+dHMgZGVwZW5kIG9uIGZyZXF1ZW5jeQo+ICAqIGNvbW1lbnRzICAgICA6IG1pbiBhcm0vbG9naWMg
+dm9sdGFnZQo+ICAqLwo+IHN0YXRpYyBzdHJ1Y3QgZHZmc19hcm1fdGFibGUgZHZmc19jcHVfbG9n
+aWNfdGFibGVbXSA9IHsKPiAgICAgICAgIHsuZnJlcXVlbmN5ID0gMjUyICogMTAwMCwgICAgICAg
+LmNwdV92b2x0ID0gMTA3NSAqIDEwMDAsCj4gLmxvZ2ljX3ZvbHQgPSAxMTI1ICogMTAwMH0sLy8w
+Ljk3NVYvMS4wMDBWCj4gICAgICAgICB7LmZyZXF1ZW5jeSA9IDUwNCAqIDEwMDAsICAgICAgIC5j
+cHVfdm9sdCA9IDExMDAgKiAxMDAwLAo+IC5sb2dpY192b2x0ID0gMTEyNSAqIDEwMDB9LC8vMC45
+NzVWLzEuMDAwVgo+ICAgICAgICAgey5mcmVxdWVuY3kgPSA4MTYgKiAxMDAwLCAgICAgICAuY3B1
+X3ZvbHQgPSAxMTI1ICogMTAwMCwKPiAubG9naWNfdm9sdCA9IDExNTAgKiAxMDAwfSwvLzEuMDAw
+Vi8xLjAyNVYKPiAgICAgICAgIHsuZnJlcXVlbmN5ID0gMTAwOCAqIDEwMDAsICAgICAgLmNwdV92
+b2x0ID0gMTEyNSAqIDEwMDAsCj4gLmxvZ2ljX3ZvbHQgPSAxMTUwICogMTAwMH0sLy8xLjAyNVYv
+MS4wNTBWCj4gICAgICAgICB7LmZyZXF1ZW5jeSA9IDEyMDAgKiAxMDAwLCAgICAgIC5jcHVfdm9s
+dCA9IDExNzUgKiAxMDAwLAo+IC5sb2dpY192b2x0ID0gMTIwMCAqIDEwMDB9LC8vMS4xMDBWLzEu
+MDUwVgo+ICAgICAgICAgey5mcmVxdWVuY3kgPSAxMjcyICogMTAwMCwgICAgICAuY3B1X3ZvbHQg
+PSAxMjI1ICogMTAwMCwKPiAubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEuMTUwVi8xLjEw
+MFYKPiAgICAgICAgIHsuZnJlcXVlbmN5ID0gMTQxNiAqIDEwMDAsICAgICAgLmNwdV92b2x0ID0g
+MTMwMCAqIDEwMDAsCj4gLmxvZ2ljX3ZvbHQgPSAxMjAwICogMTAwMH0sLy8xLjIyNVYvMS4xMDBW
+Cj4gICAgICAgICB7LmZyZXF1ZW5jeSA9IDE1MTIgKiAxMDAwLCAgICAgIC5jcHVfdm9sdCA9IDEz
+NTAgKiAxMDAwLAo+IC5sb2dpY192b2x0ID0gMTI1MCAqIDEwMDB9LC8vMS4zMDBWLzEuMTUwVgo+
+ICAgICAgICAgey5mcmVxdWVuY3kgPSAxNjA4ICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxNDI1
+ICogMTAwMCwKPiAubG9naWNfdm9sdCA9IDEzMDAgKiAxMDAwfSwvLzEuMzI1Vi8xLjE3NVYKPiAg
+ICAgICAgIHsuZnJlcXVlbmN5ID0gQ1BVRlJFUV9UQUJMRV9FTkR9LAo+IH07Cj4KPiAgVGhpcyB0
+YWJsZSBpcyBtYWRlIGJhc2Ugb24gbWFzcyBzdHJlc3MgdGVzdC4gU28gaXMgYSBzYWZlIG9wcCB0
+YWJsZSBmb3IKPiBtb3N0IHJrMzA2NmEgYmFzZSBib2FyZHMuIEJ1dCBpdCBzb21lCj4gIGJvYXJk
+IGlzIG5vdCBzbyB3ZWxsIGluIHBvd2VyIHN1cHBseSBjaXJjdWl0IGRlc2lnbiwgdGhlIG1heSBh
+bHNvIG5lZWQgdG8KPiBhZGp1c3QgaXQuCj4KPiAgRnJvbSB0aGUgdGFibGUgd2Ugc2VlIHRoYXQg
+dGhlIGxvZ2ljX3ZvbHRhZ2UgbmVlZCB0byBpbmNyZWFzZSAgYXMgdGhlCj4gY3B1ZnJlcSBpbmNy
+ZWFzZS4gQnV0IGl0IHNlZW1zIHRoYXQgdGhlIGN1cnJlbnQgbWFpbmxpbmUga2VybmVsIGRvZXMg
+bm90Cj4gc3VwcG9ydCBhZGp1c3QgdGhlIGxvZ2ljIHZvbHRhZ2Ugd2hlbiBjcHVmcmVxIGNoYW5n
+ZS4gU28gd2UgY2FuIG9ubHkgc2NhbGUKPiB0aGUgY3B1ZnJlcSB0byAxLjRHSFogYnkgZml4ZWQg
+dGhlIGxvZ2ljX3ZvbHQgYXQgMS4yVi4KPgo+ICBJZiB5b3UgbGlrZSwgSSBjYW4gbW92ZSBpdCB0
+byByazMwNjZhLmR0c2kgd2l0aCB0aGUgbWF4IGZyZXEgYXQgMTAwOE1IWiwgYXMKPiBJIGhhdmVu
+J3QgIHRlc3QgdG8gMS40R0haICB3aXRoIHRoZSBtYWlubGluZSBrZXJuZWwuIE9yIGdpdmUgbWUg
+c29tZSB0aW1lIHRvCj4gdGVzdCB0byBzZWUgaWYgdGhlIHJheWVhZ2VyIGJvYXJkIGNhbiBydW4g
+dG8gMS40RyBzdGFibGUgd2l0aCB0aGUgbWFpbmxpbmUgLgo+Cj4+IF9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+
+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPj4KPj4KPj4KPj4KPgo+
+Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4g
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
