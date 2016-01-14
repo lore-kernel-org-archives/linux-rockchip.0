@@ -1,16 +1,13 @@
-From: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [U-Boot] [PATCH v4 5/6] rockchip: kylin: Enable boot with android
- boot image
-Date: Thu, 14 Jan 2016 10:31:34 +0800
-Message-ID: <56970886.2040009@rock-chips.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] ARM: dts: rockchip: add reboot-mode node for rk3036 SoCs
+Date: Thu, 14 Jan 2016 10:55:24 +0800
+Message-ID: <1452740124-32558-1-git-send-email-wxt@rock-chips.com>
+References: <1452650930-22883-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160113152811.GC3359@bill-the-cat>
+In-Reply-To: <1452650930-22883-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,68 +17,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tom,
+Add reboot mode driver DT node for rk3036 platform.
 
-On 2016-1-13 23:28, Tom Rini wrote:
-> On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen wrote:
->
->> The android kernel is using appended dtb by default, and store
->> ramdisk right after kernel & dtb.
->> So we needs to relocate ramdisk, and use atags to pass params.
->>
->> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Acked-by: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->> ---
->>
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->>
->>   include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
->>   1 file changed, 23 insertions(+)
->>
->> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
->> index b750b26..49997ec 100644
->> --- a/include/configs/kylin_rk3036.h
->> +++ b/include/configs/kylin_rk3036.h
->> @@ -35,6 +35,29 @@
->>   #undef CONFIG_EXTRA_ENV_SETTINGS
->>   #define CONFIG_EXTRA_ENV_SETTINGS \
->>   	"partitions=" PARTS_DEFAULT \
->> +	"mmcdev=0\0" \
->> +	"mmcpart=5\0" \
->> +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
->> +
->> +#define CONFIG_ANDROID_BOOT_IMAGE
->> +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
-> This should already be set.
-Right, i'll remove it...
->> +#define CONFIG_SYS_HUSH_PARSER
->> +
->> +#undef CONFIG_BOOTCOMMAND
->> +#define CONFIG_BOOTCOMMAND \
->> +	"mmc dev ${mmcdev}; if mmc rescan; then " \
->> +		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
->> +		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
->> +		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
->> +		"bootm start ${loadaddr}; bootm ramdisk;" \
->> +		"bootm prep; bootm go;" \
->> +	"fi;" \
->> +
->> +/* Enable atags */
->> +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
->> +#define CONFIG_INITRD_TAG
->> +#define CONFIG_SETUP_MEMORY_TAGS
->> +#define CONFIG_CMDLINE_TAG
-> But I'm confused as to what exactly is going on here.  Appended dtb is
-> not the same as ATAGS.  And you shouldn't need to split up bootm like
-> that.  Can you please explain a bit more?  Thanks!
-The u-boot will pass atags to kernel, and kernel will merge those atags 
-into the appended dtb(fdt).
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-The default bootm flow would not pass ramdisk state, but we need it, so 
-we should add this state into default flow, or just use split bootm cmds :)
+---
+
+ arch/arm/boot/dts/rk3036.dtsi | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index ccc69ab..74e3bc1 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -43,6 +43,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/clock/rk3036-cru.h>
++#include <dt-bindings/soc/rockchip_boot-mode.h>
+ #include "skeleton.dtsi"
+ 
+ / {
+@@ -307,8 +308,33 @@
+ 	};
+ 
+ 	grf: syscon@20008000 {
+-		compatible = "rockchip,rk3036-grf", "syscon";
++		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
+ 		reg = <0x20008000 0x1000>;
++
++		reboot-mode {
++			compatible = "syscon-reboot-mode";
++			offset = <0x1d8>;
++
++			normal {
++				linux,mode = "normal";
++				loader,magic = <BOOT_NORMAL>;
++			};
++
++			loader {
++				linux,mode = "loader";
++				loader,magic = <BOOT_LOADER>;
++			};
++
++			recovery {
++				linux,mode = "recovery";
++				loader,magic = <BOOT_RECOVERY>;
++			};
++
++			fastboot {
++				linux,mode = "fastboot";
++				loader,magic = <BOOT_FASTBOOT>;
++			};
++		};
+ 	};
+ 
+ 	acodec: acodec-ana@20030000 {
+-- 
+1.9.1
