@@ -1,204 +1,69 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [RFC/PATCH] drm/rockchip: don't wait for vblank if fb hasn't
- changed
-Date: Thu, 14 Jan 2016 15:20:47 +0100
-Message-ID: <20160114142047.GD19130@phenom.ffwll.local>
-References: <20160113143425.363ce07a.john@metanate.com>
- <20160113154005.GT19130@phenom.ffwll.local>
- <20160113155529.6048b2c1.john@metanate.com>
- <20160113162156.GA19130@phenom.ffwll.local>
- <20160113164038.5fcf670f.john@metanate.com>
- <20160113171917.GC19130@phenom.ffwll.local>
- <20160113173954.52e688fc.john@metanate.com>
- <5696F6F4.5060908@rock-chips.com>
- <CAKMK7uGQ47eLS2HxUP2+tQcf5cZm+eoGryCRrBzA2b8=77ox-Q@mail.gmail.com>
- <5697606D.50603@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <5697606D.50603@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH 2/3] drm/rockchip: don't wait for vblank if fb hasn't changed
+Date: Thu, 14 Jan 2016 14:39:41 +0000
+Message-ID: <2c23f18b4704d4f7126a0300d8875222502deb99.1452782114.git.john@metanate.com>
+References: <cover.1452782114.git.john@metanate.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1452782114.git.john@metanate.com>
+In-Reply-To: <cover.1452782114.git.john@metanate.com>
+References: <20160114142047.GD19130@phenom.ffwll.local> <cover.1452782114.git.john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Mark yao <mark.yao@rock-chips.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: John Keeping <john@metanate.com>, Daniel Vetter <daniel@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVGh1LCBKYW4gMTQsIDIwMTYgYXQgMDQ6NDY6MzdQTSArMDgwMCwgTWFyayB5YW8gd3JvdGU6
-Cj4gT24gMjAxNuW5tDAx5pyIMTTml6UgMTY6MzIsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPk9u
-IFRodSwgSmFuIDE0LCAyMDE2IGF0IDI6MTYgQU0sIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNo
-aXBzLmNvbT4gd3JvdGU6Cj4gPj5PbiAyMDE25bm0MDHmnIgxNOaXpSAwMTozOSwgSm9obiBLZWVw
-aW5nIHdyb3RlOgo+ID4+Pk9uIFdlZCwgMTMgSmFuIDIwMTYgMTg6MTk6MTcgKzAxMDAsIERhbmll
-bCBWZXR0ZXIgd3JvdGU6Cj4gPj4+Cj4gPj4+Pk9uIFdlZCwgSmFuIDEzLCAyMDE2IGF0IDA0OjQw
-OjM4UE0gKzAwMDAsIEpvaG4gS2VlcGluZyB3cm90ZToKPiA+Pj4+Pk9uIFdlZCwgMTMgSmFuIDIw
-MTYgMTc6MjE6NTYgKzAxMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPj4+Pj4KPiA+Pj4+Pj5P
-biBXZWQsIEphbiAxMywgMjAxNiBhdCAwMzo1NToyOVBNICswMDAwLCBKb2huIEtlZXBpbmcgd3Jv
-dGU6Cj4gPj4+Pj4+Pk9uIFdlZCwgMTMgSmFuIDIwMTYgMTY6NDA6MDUgKzAxMDAsIERhbmllbCBW
-ZXR0ZXIgd3JvdGU6Cj4gPj4+Pj4+Pgo+ID4+Pj4+Pj4+T24gV2VkLCBKYW4gMTMsIDIwMTYgYXQg
-MDI6MzQ6MjVQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdyb3RlOgo+ID4+Pj4+Pj4+Pk9uIFdlZCwg
-MTMgSmFuIDIwMTYgMTU6MjM6MjAgKzAxMDAsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gPj4+Pj4+
-Pj4+Cj4gPj4+Pj4+Pj4+Pk9uIFdlZCwgSmFuIDEzLCAyMDE2IGF0IDEyOjUzOjM0UE0gKzAwMDAs
-IEpvaG4gS2VlcGluZyB3cm90ZToKPiA+Pj4+Pj4+Pj4+PkFzIGNvbW1lbnRlZCBpbiBkcm1fYXRv
-bWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKCksIHVzZXJzcGFjZQo+ID4+Pj4+Pj4+Pj4+cmVs
-aWVzIG9uIGN1cnNvciBpb2N0bHMgYmVpbmcgdW5zeW5jZWQuICBDb252ZXJ0aW5nIHRoZSByb2Nr
-Y2hpcAo+ID4+Pj4+Pj4+Pj4+ZHJpdmVyIHRvIGF0b21pYyBoYXMgc2lnbmlmaWNhbnRseSBpbXBh
-Y3RlZCBjdXJzb3IgcGVyZm9ybWFuY2UgYnkKPiA+Pj4+Pj4+Pj4+Pm1ha2luZyBldmVyeSBjdXJz
-b3IgdXBkYXRlIHdhaXQgZm9yIHZibGFuay4KPiA+Pj4+Pj4+Pj4+Pgo+ID4+Pj4+Pj4+Pj4+Qnkg
-c2tpcHBpbmcgdGhlIHZibGFuayBzeW5jIHdoZW4gdGhlIGZyYW1lYnVmZmVyIGhhcyBub3QgY2hh
-bmdlZAo+ID4+Pj4+Pj4+Pj4+KGFzIGlzIGRvbmUgaW4gZHJtX2F0b21pY19oZWxwZXJfd2FpdF9m
-b3JfdmJsYW5rcygpKSB3ZSBjYW4gYXZvaWQKPiA+Pj4+Pj4+Pj4+PnRoaXMgZm9yIHRoZSBjb21t
-b24gY2FzZSBvZiBtb3ZpbmcgdGhlIGN1cnNvciBhbmQgb25seSBuZWVkIHRvCj4gPj4+Pj4+Pj4+
-Pj5kZWxheSB0aGUgY3Vyc29yIGlvY3RsIHdoZW4gdGhlIGN1cnNvciBpY29uIGNoYW5nZXMuCj4g
-Pj4+Pj4+Pj4+Pj4KPiA+Pj4+Pj4+Pj4+Pkkgb3JpZ2luYWxseSBpbnNlcnRlZCBhIGNoZWNrIG9u
-IGxlZ2FjeV9jdXJzb3JfdXBkYXRlIGFzIHdlbGwsIGJ1dAo+ID4+Pj4+Pj4+Pj4+dGhhdCBjYXVz
-ZWQgYSBzdG9ybSBvZiBpb21tdSBwYWdlIGZhdWx0cy4gIEkgZGlkbid0IGludmVzdGlnYXRlCj4g
-Pj4+Pj4+Pj4+Pj50aGUKPiA+Pj4+Pj4+Pj4+PmNhdXNlIG9mIHRob3NlIHNpbmNlIHRoaXMgY2hh
-bmdlIGdpdmVzIGVub3VnaCBvZiBhIHBlcmZvcm1hbmNlCj4gPj4+Pj4+Pj4+Pj5pbXByb3ZlbWVu
-dCBmb3IgbXkgdXNlIGNhc2UuCj4gPj4+Pj4+Pj4+Pj4KPiA+Pj4+Pj4+Pj4+PlRoaXMgaXMgUkZD
-IGJlY2F1c2Ugb2YgdGhhdCBhbmQgYmVjYXVzZSB0aGUgZnJhbWVidWZmZXJfY2hhbmdlZCgpCj4g
-Pj4+Pj4+Pj4+Pj5mdW5jdGlvbiBpcyBjb3BpZWQgZnJvbSBkcm1fYXRvbWljX2hlbHBlci5jIGFz
-IGEgcXVpY2sgd2F5IHRvIHRlc3QKPiA+Pj4+Pj4+Pj4+PnRoZSByZXN1bHQuCj4gPj4+Pj4+Pj4+
-Pj4KPiA+Pj4+Pj4+Pj4+PlNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0
-ZS5jb20+Cj4gPj4+Pj4+Pj4+Pj4tLS0KPiA+Pj4+Pj4+Pj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyB8IDI3Cj4gPj4+Pj4+Pj4+Pj4rKysrKysrKysrKysr
-KysrKysrKysrKysrLS0gMSBmaWxlIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKyksIDIKPiA+Pj4+
-Pj4+Pj4+PmRlbGV0aW9ucygtKQo+ID4+Pj4+Pj4+Pj4+Cj4gPj4+Pj4+Pj4+Pj5kaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gPj4+Pj4+Pj4+
-Pj5iL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyBpbmRleAo+ID4+
-Pj4+Pj4+Pj4+Zjc4NDQ4OC4uOGZkOTgyMQo+ID4+Pj4+Pj4+Pj4+MTAwNjQ0IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+ID4+Pj4+Pj4+Pj4+KysrIGIv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCj4gPj4+Pj4+Pj4+Pj5A
-QCAtMTc3LDggKzE3NywyOCBAQCBzdGF0aWMgdm9pZAo+ID4+Pj4+Pj4+Pj4+cm9ja2NoaXBfY3J0
-Y193YWl0X2Zvcl91cGRhdGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ID4+Pj4+Pj4+Pj4+Y3J0
-Y19mdW5jcy0+d2FpdF9mb3JfdXBkYXRlKGNydGMpOyB9Cj4gPj4+Pj4+Pj4+Pj4gICArc3RhdGlj
-IGJvb2wgZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ID4+Pj4+
-Pj4+Pj4+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2F0b21pY19z
-dGF0ZQo+ID4+Pj4+Pj4+Pj4+Km9sZF9zdGF0ZSwKPiA+Pj4+Pj4+Pj4+PisgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ID4+Pj4+Pj4+Pj4+K3sK
-PiA+Pj4+Pj4+Pj4+PisgICAgICAgc3RydWN0IGRybV9wbGFuZSAqcGxhbmU7Cj4gPj4+Pj4+Pj4+
-Pj4rICAgICAgIHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm9sZF9wbGFuZV9zdGF0ZTsKPiA+Pj4+
-Pj4+Pj4+PisgICAgICAgaW50IGk7Cj4gPj4+Pj4+Pj4+Pj4rCj4gPj4+Pj4+Pj4+Pj4rICAgICAg
-IGZvcl9lYWNoX3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUsIG9sZF9wbGFuZV9zdGF0
-ZSwKPiA+Pj4+Pj4+Pj4+PmkpIHsKPiA+Pj4+Pj4+Pj4+PisgICAgICAgICAgICAgICBpZiAocGxh
-bmUtPnN0YXRlLT5jcnRjICE9IGNydGMgJiYKPiA+Pj4+Pj4+Pj4+PisgICAgICAgICAgICAgICAg
-ICAgb2xkX3BsYW5lX3N0YXRlLT5jcnRjICE9IGNydGMpCj4gPj4+Pj4+Pj4+Pj4rICAgICAgICAg
-ICAgICAgICAgICAgICBjb250aW51ZTsKPiA+Pj4+Pj4+Pj4+PisKPiA+Pj4+Pj4+Pj4+PisgICAg
-ICAgICAgICAgICBpZiAocGxhbmUtPnN0YXRlLT5mYiAhPSBvbGRfcGxhbmVfc3RhdGUtPmZiKQo+
-ID4+Pj4+Pj4+Pj4+KyAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHRydWU7Cj4gPj4+Pj4+
-Pj4+Pj4rICAgICAgIH0KPiA+Pj4+Pj4+Pj4+PisKPiA+Pj4+Pj4+Pj4+PisgICAgICAgcmV0dXJu
-IGZhbHNlOwo+ID4+Pj4+Pj4+Pj4+K30KPiA+Pj4+Pj4+Pj4+UGxlYXNlIGRvbid0IGhhbmQtcm9s
-bCBsb2dpYyB0aGF0IGFmZmVjdHMgc2VtYW50aWNzIGxpa2UgdGhpcy4KPiA+Pj4+Pj4+Pj4+SW5z
-dGVhZAo+ID4+Pj4+Pj4+Pj5wbGVhc2UgdXNlIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3Zi
-bGFua3MoKSwgd2hpY2ggc2hvdWxkIGRvCj4gPj4+Pj4+Pj4+PnRoaXMKPiA+Pj4+Pj4+Pj4+Y29y
-cmVjdGx5IGZvciB5b3UuCj4gPj4+Pj4+Pj4+Pgo+ID4+Pj4+Pj4+Pj5JZiB0aGF0J3Mgbm90IHRo
-ZSBjYXNlIHRoZW4gd2UgbmVlZCB0byBpbXByb3ZlIHRoZSBnZW5lcmljIGhlbHBlciwKPiA+Pj4+
-Pj4+Pj4+b3IKPiA+Pj4+Pj4+Pj4+ZmlndXJlIG91dCB3aGF0J3MgZGlmZmVyZW50IHdpdGggcm9j
-a2hpcC4KPiA+Pj4+Pj4+Pj5BY2NvcmRpbmcgdG8gY29tbWl0IDYzZWJiOWYgKGRybS9yb2NrY2hp
-cDogQ29udmVydCB0byBzdXBwb3J0IGF0b21pYwo+ID4+Pj4+Pj4+PkFQSSkgaXQncyBiZWNhdXNl
-IHJvY2tjaGlwIGRvZXNuJ3QgaGF2ZSBhIGhhcmR3YXJlIHZibGFuayBjb3VudGVyLgo+ID4+Pj4+
-Pj4+Pgo+ID4+Pj4+Pj4+PkknbSBub3QgZW50aXJlbHkgY2xlYXIgb24gd2h5IHRoaXMgcHJldmVu
-dHMgdGhlIHVzZSBvZgo+ID4+Pj4+Pj4+PmRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFu
-a3MoKS4KPiA+Pj4+Pj4+PkhtLCB0aGF0IGNvbW1pdCBpc24ndCB0ZXJyaWJseSBoZWxwZnVsLiBJ
-ZiB0aGF0J3MgcmVhbGx5IG5lZWRlZCB0aGVuCj4gPj4+Pj4+Pj5pbW8gSQo+ID4+Pj4+Pj4+dGhp
-bmsgd2Ugc2hvdWxkIGV4dHJhY3QgYQo+ID4+Pj4+Pj4+ImRybV9hdG9taWNfaGVscGVyX3BsYW5l
-X25lZWRzX3ZibGFua193YWl0KCkiCj4gPj4+Pj4+Pj5oZWxwZXIgdGhhdCdzIHVzZWQgYnkgYm90
-aC4gQnV0IHNpbmNlIHJvY2tjaGlwIGRvZXMgdmJsYW5rX2dldC9wdXQKPiA+Pj4+Pj4+PmNhbGxz
-Cj4gPj4+Pj4+Pj5JJ2QgaG9wZSB2YmxhbmtzIGFjdHVhbGx5IHdvcmsgY29ycmVjdGx5LiBBbmQg
-dGhlbiB0aGUgaGVscGVyIHNob3VsZAo+ID4+Pj4+Pj4+d29yawo+ID4+Pj4+Pj4+dG9vLgo+ID4+
-Pj4+Pj5JIHRyaWVkIHN3aXRjaGluZyB0aGUgY2FsbCB0byByb2NrY2hpcF9jcnRjX3dhaXRfZm9y
-X3VwZGF0ZSgpIHRvCj4gPj4+Pj4+PmRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3Mo
-KSBhbmQgaXQgd29ya3MgZmluZSB1bnRpbCBJIHN3aXRjaAo+ID4+Pj4+Pj50aGUgYnVmZmVyIGFz
-c29jaWF0ZWQgd2l0aCBhIGN1cnNvciwgYXQgd2hpY2ggcG9pbnQgSSBnZXQgaW9tbXUgcGFnZQo+
-ID4+Pj4+Pj5mYXVsdHMsIHByZXN1bWFibHkgYmVjYXVzZSB0aGUgR0VNIGJ1ZmZlciBpcyB1bnJl
-ZmVyZW5jZWQgdG9vIGVhcmx5Lgo+ID4+Pj4+Pj4KPiA+Pj4+Pj4+QUZBSUNUIHRoZSBidWZmZXIg
-d2lsbCBiZSByZWxlYXNlZCB2aWEgZHJtX2F0b21pY19zdGF0ZV9mcmVlKCkKPiA+Pj4+Pj4+dW5j
-b25kaXRpb25hbGx5LCBidXQgSSBzdXNwZWN0IEknbSBtaXNzaW5nIHNvbWV0aGluZyBzaW5jZSB0
-aGF0IHdvdWxkCj4gPj4+Pj4+Pm1lYW4gZXZlcnkgZHJpdmVyIHdvdWxkIGhpdCBhIHNpbWlsYXIg
-cHJvYmxlbS4KPiA+Pj4+Pj5ZZWFoLCB3aXRoIHRoZSBoZWxwZXIgd2UgYWx3YXlzIHNraXAsIHdo
-aWNoIG1lYW5zIHdoZW4gdGhlIGN1cnNvciBibwo+ID4+Pj4+PmNoYW5nZXMgeW91IGluZGVlZCB1
-bm1hcCB0b28gZWFybHkuIFNvIGNhbid0IGV2ZW4gc2hhcmUgdGhlIG92ZXJhbGwKPiA+Pj4+Pj5j
-b25kaXRpb24sIGJ1dCB3ZSBjb3VsZCBkZWZpbml0ZWx5IHNoYXJlIHRoZSBsaXR0bGUgZnJhbWVi
-dWZmZXJfY2hhbmdlZAo+ID4+Pj4+PmhlbHBlci4KPiA+Pj4+PlRoYXQgbGVhdmVzIG1lIHdpdGgg
-dGhlIHF1ZXN0aW9uOiB3aHkgZG8gb3RoZXIgYXRvbWljIGRyaXZlcnMgd29yaz8KPiA+Pj4+Pgo+
-ID4+Pj4+SWYgZHJtX2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpIHNraXBwaW5nIHZi
-bGFua3MgcmVzdWx0cyBpbiB0aGUKPiA+Pj4+PmN1cnNvciBibyBiZWluZyB1bm1hcHBlZCB0b28g
-ZWFybHkgZm9yIHJvY2tjaGlwLCB3aHkgaXMgaXQgbm90IHVubWFwcGVkCj4gPj4+Pj50b28gZWFy
-bHkgZm9yIGFsbCBvZiB0aGUgb3RoZXIgZHJpdmVycyB1c2luZyB0aGF0IGhlbHBlcj8KPiA+Pj4+
-SXQncyB1bm1hcHBlZCB0b28gZWFybHkgZm9yIGV2ZXJ5b25lLCBpdCdzIGp1c3QgdGhhdCBub3Jt
-YWxseSB0aGF0Cj4gPj4+PmRvZXNuJ3QKPiA+Pj4+cmVzdWx0IGluIGEgZmlyZXdvcmtzIHNob3cu
-IFdoYXQgd2UgbWF5YmUgY291bGQvc2hvdWxkIGRvIGlzIGRvIHRoZQo+ID4+Pj51bm1hcHBpbmcg
-YXN5bmNocm9ub3VzbHksIGJ1dCB0aGF0IHJ1bnMgaW50byB0aGUgb3ZlcmFsbCAiY3VycmVudCBh
-dG9taWMKPiA+Pj4+aGVscGVycyBkb24ndCBkbyBhc3luYyB5ZXQiIHByb2JsZW0uIE1pZ2h0IGJl
-IGEgZ29vZCBwb2ludCB0byBzdGFydAo+ID4+Pj5maXhpbmcKPiA+Pj4+dGhpcyB1cCB0aG91Z2gu
-Cj4gPj4+T0ssIHRoYW5rcywgSSB0aGluayBJJ20gYmVnaW5uaW5nIHRvIHVuZGVyc3RhbmQgaG93
-IHRoaXMgYWxsIGZpdHMKPiA+Pj50b2dldGhlci4KPiA+Pj4KPiA+Pj5JdCBsb29rcyBsaWtlIHRo
-ZXJlIGFyZSB0d28gb3B0aW9ucyBmb3IgbWUgdG8gZ2V0IHJlYXNvbmFibGUgY3Vyc29yCj4gPj4+
-cGVyZm9ybWFuY2Ugb24gcm9ja2NoaXAgaW4gdGhlIHNob3J0IHRlcm06Cj4gPj4+Cj4gPj4+MSkg
-RXhwb3J0IHRoZSBjdXJyZW50IGZyYW1lYnVmZmVyX2NoYW5nZWQoKSBmdW5jdGlvbiBhcwo+ID4+
-PiAgICAgZHJtX2F0b21pY19oZWxwZXJfZnJhbWVidWZmZXJfY2hhbmdlZCgpIGFuZCB1c2UgaXQg
-aW4KPiA+Pj4gICAgIHJvY2tjaGlwX2NydGNfd2FpdF9mb3JfdXBkYXRlKCkuCj4gPj4+Cj4gPj4+
-MikgQWRkIGEgbWVjaGFuaXNtIHRvIHN1cHByZXNzIHRoZSBsZWdhY3lfY3Vyc29yX3VwZGF0ZSBj
-aGVjayBpbgo+ID4+PiAgICAgZHJtX2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpIGFu
-ZCBzd2l0Y2ggdGhlIHJvY2tjaGlwIGRyaXZlcgo+ID4+PiAgICAgb3ZlciB0byBpdC4KPiA+Pj4K
-PiA+Pj5JbiBib3RoIG9mIHRoZXNlIGNhc2VzIHdlJ3JlIG9ubHkgcmVzdG9yaW5nIHRoZSB1bnN5
-bmNlZCBjdXJzb3IgaW9jdGxzCj4gPj4+YmVoYXZpb3VyIHdoZW4gdGhlIGN1cnNvciBpcyBtb3Zl
-ZCBidXQgaXQgd2lsbCBzdGlsbCBiZSBleHBlbnNpdmUgd2hlbgo+ID4+PnRoZSBjdXJzb3IgYm8g
-Y2hhbmdlcy4gIFRoYXQgZ2l2ZXMgc3VmZmljaWVudCBwZXJmb3JtYW5jZSBpbiBteSB0ZXN0aW5n
-Lgo+ID4+Pgo+ID4+Pgo+ID4+Pgo+ID4+VGhhbmtzIGZvciBwb2ludCB0aGF0Lgo+ID4+Cj4gPj5i
-ZWNhdXNlIHJvY2tjaGlwIG5vdCBzdXBwb3J0IGhhcmR3YXJlIHZibGFuayBjb3VudGVyLCB1c2UK
-PiA+PmRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MgaGF2ZSB1bmRlciBpc3N1ZXM6
-Cj4gPj4KPiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
-IDwtLSBIVyB2c3luYyBpcnEgYW5kIHJlZyB0YWtlCj4gPj5lZmZlY3QKPiA+PiAgICAgICAgICAg
-ICBwbGFuZV9jb21taXQgIC0tLT4gIHwKPiA+PiAgICAgIGdldF92YmxhbmsgYW5kIHdhaXQgLT4g
-ICB8Cj4gPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCA8
-LS0gaGFuZGxlX3ZibGFuaywKPiA+PnZibGFuay0+Y291bnQgKyAxCj4gPj4gICAgICAgICAgICAg
-ICAgICBjbGVhbnVwX2ZiICAgLS0tPiB8Cj4gPj4gICAgICAgICAgICAgICBpb21tdSBjcmFzaCAg
-LS0tPiAgfAo+ID4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgPC0tIEhXIHZzeW5jIGlycSBhbmQgcmVnIHRha2UKPiA+PmVmZmVjdAo+ID4+dGhlcmUgaXMg
-bm8gaGFyZHdhcmUgdmJsYW5rIGNvdW50ZXIgb24gcm9ja2NoaXAgdm9wLCB3ZSBjYW4ndCBlbnN1
-cmUgdGhlCj4gPj5jb25zaXN0ZW5jeSBvZiByZWcgdGFrZSBlZmZlY3QgYW5kIHZibGFuay0+Y291
-bnQsCj4gPj5pZiBwbGFuZSBjb21taXQgaGl0IGludG8gdGhlIHBlcmlvZCBvZiAgcmVnIHRha2Ug
-ZWZmZWN0IGFuZCB2YmxhbmstPmNvdW50LAo+ID4+Y2xlYW51cF9mYiBoYXBwZW4gYmVmb3JlIG9s
-ZF9mYiBzd2FwIG91dCBmcm9tIHZvcCwKPiA+PnRoZW4gaW9tbXUgY3Jhc2guCj4gPj4KPiA+PlRo
-YXQgaXMgd2h5IEkgc3BlY2lhbCB0aGUgd2FpdF9mb3JfdmJsYW5rcywgd2UgbmVlZCBjaGVjayB0
-aGUgcmVnIHJlYWxseQo+ID4+dGFrZSBlZmZlY3QgYmVmb3JlIGNsZWFuIHVwIG9sZCBmYi4KPiA+
-PmF0IHZvcF93aW5fcGVuZGluZ19pc19jb21wbGV0ZSBmdW5jdGlvbiwgY2hlY2sgd2luIGVuYWJs
-ZSBhbmQgd2luIGFkZHJlc3MsCj4gPj50byBlbnN1cmUgdGhhdC4KPiA+Pgo+ID4+Tm90IG9ubHkg
-cm9ja2NoaXAgZHJtIGRvIHRoYXQgdGhpbmc6Cj4gPj4KPiA+PmV4eW5vcyBhbHNvIGNoZWNrIGFk
-ZHJlc3MgYmVmb3JlIGNsZWFudXAgZmIKPiA+PiAgICAgICAgIGlmIChzdGFydCA9PSBzdGFydF9z
-KQo+ID4+ICAgICAgICAgICAgIGV4eW5vc19kcm1fY3J0Y19maW5pc2hfdXBkYXRlKGN0eC0+Y3J0
-YywgcGxhbmUpOwo+ID4+Cj4gPj5UaGFua3MuCj4gPkRvIHlvdSBoYXZlIGEgc2NhbmxpbmUgY291
-bnRlciBvciBzb21ldGhpbmcgc2ltaWxhciBhdCBsZWFzdD8gQW55Cj4gPm90aGVyIGluZGljYXRp
-b24gYWJvdXQgaG93IGZhciBhbG9uZyB0aGUgY2hpcCBpcyB3aXRoIHNjYW5uaW5nIG91dD8gV2UK
-PiA+dXNlIHRoYXQgaW4gaTkxNSB0byBhdm9pZCByYWNlcyB3aXRoIHRoZSBpbnRlcnJ1cHQgaGFu
-ZGxlciBhbmQgZGV0ZWN0Cj4gPnRoaXMgdy9hIHNjZW5hcmlvLgo+ID4KPiA+SSB0aGluayBpZiB5
-b3UgaGF2ZSBhIHNjYW5saW5lIGNvdW50ZXIgdGhlbiBpdCBzaG91bGQgbWFnaWNhbGx5IHdvcmss
-Cj4gPnNpbmNlIHRoZSB2YmxhbmsgY29kZSB3aWxsIHJlYWxpemUgdGhhdCB5b3UncmUgYWxyZWFk
-eSBwYXN0IHRoZSBsYXN0Cj4gPnZibGFuayBpbnRlcnJ1cHQgYW5kIC9zaG91bGQvIGhhdmUgaW5j
-cmVtZW50ZWQgYWxyZWFkeS4gT3Igc29tZXRoaW5nCj4gPmxpa2UgdGhhdC4KPiA+Cj4gPk90aGVy
-d2lzZSBpZiB0aGlzIGlzIGNvbW1vbiB3ZSBtaWdodCB3YW50IHRvIGZpZ3VyZSBvdXQgaG93IHRv
-IHNvbHZlCj4gPnRoaXMgaW4gYSBnZW5lcmljIHdheS4gSXQncyBvbmUgb2YgdGhlc2UgcHJvYmxl
-bXMgdGhhdCB3aWxsIG1ha2UKPiA+Z2VuZXJpYyBhc3luYyBzdXBwb3J0IGFsbW9zdCBpbXBvc3Np
-YmxlLgo+ID4tRGFuaWVsCj4gCj4gTm8sIGJvdGggcmszMjg4IG9yIHJrMzAzNiBub3Qgc3VwcG9y
-dCBoYXJkd2FyZSB2YmxhbmsgY291bnRlciBhbmQgc2NhbmxpbmUKPiBjb3VudGVyLgo+IAo+IEF0
-IGFuZHJvaWQgc2lkZSwgd2UgdXNlIHNhbWUgd2F5LCBjaGVjayBhZGRyZXNzIGFuZCBlbmFibGUg
-Yml0IHRvIGVuc3VyZQo+IHJlZ2lzdGVyIHRha2UgZWZmZWN0Lgo+IAo+IE9uIGZ1dHVyZSBjaGlw
-cywgIHNjYW5saW5lIGNvdW50ZXIgYW5kIGhhcmR3YXJlIGNvdW50ZXIgd291bGQgYmUgc3VwcG9y
-dCwKPiBidXQgbm90IG5vdy4KClVnaC4gT2ggd2VsbCwgdGhlcmUncyBub3QgcmVhbGx5IGFueXRo
-aW5nIHdlIGNhbiBkbyBpbiBjb3JlIG5vcmUgaGVscGVycwp0byBtYWtlIHRoaXMgZWFzaWVyIGZv
-ciBkcml2ZXJzLiBUaGlzIHJlYWxseSBvbmx5IGNhbiBiZSBmaXhlZCBzZW5zaWJseSBhdAp0aGUg
-aGFyZHdhcmUgbGV2ZWwuCgpTbyB5ZWFoIEkgdGhpbmsgZXhwb3NpbmcgZnJhbWVidWZmZXJfY2hh
-bmdlZCBhcyBhIGhlbHBlciBpcyB0aGUgd2F5IHRvIGdvCmhlcmUuCgpUaGFua3MsIERhbmllbAot
-LSAKRGFuaWVsIFZldHRlcgpTb2Z0d2FyZSBFbmdpbmVlciwgSW50ZWwgQ29ycG9yYXRpb24KaHR0
-cDovL2Jsb2cuZmZ3bGwuY2gKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+As commented in drm_atomic_helper_wait_for_vblanks(), userspace relies
+on cursor ioctls being unsynced.  Converting the rockchip driver to
+atomic has significantly impacted cursor performance by making every
+cursor update wait for vblank.
+
+By skipping the vblank sync when the framebuffer has not changed (as is
+done in drm_atomic_helper_wait_for_vblanks()) we can avoid this for the
+common case of moving the cursor and only need to delay the cursor ioctl
+when the cursor icon changes.
+
+We cannot add the check on legacy_cursor_update since that results in
+the cursor bo being unreferenced while the hardware may still be reading
+it.  Fully supporting unsynced cursor updates is left for the future
+when the atomic helper framework supports async updates.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index f784488..679d23a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -178,7 +178,7 @@ static void rockchip_crtc_wait_for_update(struct drm_crtc *crtc)
+ }
+ 
+ static void
+-rockchip_atomic_wait_for_complete(struct drm_atomic_state *old_state)
++rockchip_atomic_wait_for_complete(struct drm_device *dev, struct drm_atomic_state *old_state)
+ {
+ 	struct drm_crtc_state *old_crtc_state;
+ 	struct drm_crtc *crtc;
+@@ -194,6 +194,10 @@ rockchip_atomic_wait_for_complete(struct drm_atomic_state *old_state)
+ 		if (!crtc->state->active)
+ 			continue;
+ 
++		if (!drm_atomic_helper_framebuffer_changed(dev,
++				old_state, crtc))
++			continue;
++
+ 		ret = drm_crtc_vblank_get(crtc);
+ 		if (ret != 0)
+ 			continue;
+@@ -241,7 +245,7 @@ rockchip_atomic_commit_complete(struct rockchip_atomic_commit *commit)
+ 
+ 	drm_atomic_helper_commit_planes(dev, state, true);
+ 
+-	rockchip_atomic_wait_for_complete(state);
++	rockchip_atomic_wait_for_complete(dev, state);
+ 
+ 	drm_atomic_helper_cleanup_planes(dev, state);
+ 
+-- 
+2.7.0.226.gfe986fe
