@@ -1,14 +1,11 @@
-From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 6/6] rockchip: kylin: Check fastboot request
-Date: Wed, 13 Jan 2016 13:10:35 -0700
-Message-ID: <CAPnjgZ1pQ4nvwj+6WgrL+tb2bGPyJJHsNC7S-AnkEyWYp4y4Bw@mail.gmail.com>
-References: <1452650360-24149-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452650360-24149-7-git-send-email-jeffy.chen@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: make more compatible for rk3036 SoCs
+Date: Thu, 14 Jan 2016 09:08:41 +0800
+Message-ID: <1452733721-28110-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452650360-24149-7-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,120 +15,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, huang lin <hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jeffy,
+This patch will be better to support and compatible for rk3036.
+Although some other SoCs drivers also can work for rk3036, that will
+prevent some mutatin factors for drivers.
 
-On 12 January 2016 at 18:59, Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> We will save boot mode flag in grf's os_reg[0], if fastboot
-> requested or fastboot key pressed, try to enter fastboot mode
-> at preboot stage.
->
-> Signed-off-by: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> ---
->
-> Changes in v3:
-> Use rockchip's legacy reboot mode definitions.
->
-> Changes in v2: None
->
->  board/kylin/kylin_rk3036/kylin_rk3036.c | 46 +++++++++++++++++++++++++++++++++
->  include/configs/kylin_rk3036.h          |  3 +++
->  2 files changed, 49 insertions(+)
->
-> diff --git a/board/kylin/kylin_rk3036/kylin_rk3036.c b/board/kylin/kylin_rk3036/kylin_rk3036.c
-> index 40d6b52..4fc31b1 100644
-> --- a/board/kylin/kylin_rk3036/kylin_rk3036.c
-> +++ b/board/kylin/kylin_rk3036/kylin_rk3036.c
-> @@ -8,10 +8,15 @@
->  #include <dm.h>
->  #include <asm/io.h>
->  #include <asm/arch/uart.h>
-> +#include <asm/arch-rockchip/grf_rk3036.h>
->  #include <asm/arch/sdram_rk3036.h>
-> +#include <asm/gpio.h>
->
->  DECLARE_GLOBAL_DATA_PTR;
->
-> +#define GRF_BASE       0x20008000
-> +static struct rk3036_grf * const grf = (void *)GRF_BASE;
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
-Can you make this a local var in board_late_init()? I does not seem to
-need to be static.
+ arch/arm/boot/dts/rk3036.dtsi | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-> +
->  void get_ddr_config(struct rk3036_ddr_config *config)
->  {
->         /* K4B4G1646Q config */
-> @@ -28,6 +33,47 @@ void get_ddr_config(struct rk3036_ddr_config *config)
->         config->bw = 1;
->  }
->
-> +#define FASTBOOT_KEY_GPIO 93
-> +
-> +int fastboot_key_pressed(void)
-> +{
-> +       gpio_request(FASTBOOT_KEY_GPIO, "fastboot_key");
-> +       gpio_direction_input(FASTBOOT_KEY_GPIO);
-> +       return !gpio_get_value(FASTBOOT_KEY_GPIO);
-> +}
-> +
-> +enum rockchip_boot_mode {
-> +       ROCKCHIP_BOOT_MODE_NORMAL = 0x5242C300,
-> +       ROCKCHIP_BOOT_MODE_LOADER,
-> +       ROCKCHIP_BOOT_MODE_MASKROM,
-> +       ROCKCHIP_BOOT_MODE_RECOVER,
-> +       ROCKCHIP_BOOT_MODE_NORECOVER,
-> +       ROCKCHIP_BOOT_MODE_SECONDOS,
-> +       ROCKCHIP_BOOT_MODE_WIPEDATA,
-> +       ROCKCHIP_BOOT_MODE_WIPEALL,
-> +       ROCKCHIP_BOOT_MODE_CHECKIMG,
-> +       ROCKCHIP_BOOT_MODE_FASTBOOT,
-> +       ROCKCHIP_BOOT_MODE_SECUREBOOT_DISABLE,
-> +       ROCKCHIP_BOOT_MODE_CHARGING,
-> +       ROCKCHIP_BOOT_MODE_MAX,
-> +};
-> +
-> +int board_late_init(void)
-> +{
-> +       int boot_mode = readl(&grf->os_reg[4]);
-> +
-> +       /* Clear boot mode */
-> +       writel(0, &grf->os_reg[4]);
-> +
-> +       if (boot_mode == ROCKCHIP_BOOT_MODE_FASTBOOT ||
-> +           fastboot_key_pressed()) {
-> +               printf("enter fastboot!\n");
-> +               setenv("preboot", "setenv preboot; fastboot usb0");
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  int board_init(void)
->  {
->         return 0;
-> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
-> index 49997ec..424e81b 100644
-> --- a/include/configs/kylin_rk3036.h
-> +++ b/include/configs/kylin_rk3036.h
-> @@ -39,6 +39,9 @@
->         "mmcpart=5\0" \
->         "loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
->
-> +#define CONFIG_BOARD_LATE_INIT
-> +#define CONFIG_PREBOOT
-> +
->  #define CONFIG_ANDROID_BOOT_IMAGE
->  #define CONFIG_SYS_BOOT_RAMDISK_HIGH
->  #define CONFIG_SYS_HUSH_PARSER
-> --
-> 2.1.4
->
->
-
-Regards,
-Simon
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index ee457a2..7897449 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -161,7 +161,7 @@
+ 	};
+ 
+ 	usb_otg: usb@10180000 {
+-		compatible = "rockchip,rk3288-usb", "rockchip,rk3066-usb",
++		compatible = "rockchip,rk3036-usb", "rockchip,rk3066-usb",
+ 				"snps,dwc2";
+ 		reg = <0x10180000 0x40000>;
+ 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+@@ -176,7 +176,7 @@
+ 	};
+ 
+ 	usb_host: usb@101c0000 {
+-		compatible = "rockchip,rk3288-usb", "rockchip,rk3066-usb",
++		compatible = "rockchip,rk3036-usb", "rockchip,rk3066-usb",
+ 				"snps,dwc2";
+ 		reg = <0x101c0000 0x40000>;
+ 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+@@ -211,7 +211,7 @@
+ 	};
+ 
+ 	emmc: dwmmc@1021c000 {
+-		compatible = "rockchip,rk3288-dw-mshc";
++		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x1021c000 0x4000>;
+ 		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+ 		broken-cd;
+@@ -327,7 +327,7 @@
+ 	};
+ 
+ 	i2c1: i2c@20056000 {
+-		compatible = "rockchip,rk3288-i2c";
++		compatible = "rockchip,rk3036-i2c", "rockchip,rk3288-i2c";
+ 		reg = <0x20056000 0x1000>;
+ 		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+ 		#address-cells = <1>;
+@@ -340,7 +340,7 @@
+ 	};
+ 
+ 	i2c2: i2c@2005a000 {
+-		compatible = "rockchip,rk3288-i2c";
++		compatible = "rockchip,rk3036-i2c", "rockchip,rk3288-i2c";
+ 		reg = <0x2005a000 0x1000>;
+ 		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+ 		#address-cells = <1>;
+@@ -395,7 +395,7 @@
+ 	};
+ 
+ 	i2c0: i2c@20072000 {
+-		compatible = "rockchip,rk3288-i2c";
++		compatible = "rockchip,rk3036-i2c", "rockchip,rk3288-i2c";
+ 		reg = <0x20072000 0x1000>;
+ 		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 		#address-cells = <1>;
+-- 
+1.9.1
