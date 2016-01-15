@@ -1,168 +1,206 @@
-From: Javier Martinez Canillas <javier@dowhile0.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for orion-r68
-Date: Fri, 15 Jan 2016 12:31:22 -0300
-Message-ID: <CABxcv=nDs2jw0-zZK7jBmtLDEmvAPUNNMST0XBK75OyUGDXmRg@mail.gmail.com>
-References: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com>
-	<2174023.jkjdoEECkq@phil>
-	<CABxcv=nkry9PUg5pp+6jKjYb_G=iEfMa7+evZOrUkifDS8h5BA@mail.gmail.com>
-	<1804889.MQWMfNjko2@phil>
+From: Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
+ android boot image
+Date: Fri, 15 Jan 2016 16:42:21 +0100
+Message-ID: <1452872541.3905.21.camel@gmail.com>
+References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
+ <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
+ <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
+ <20160114162227.GY3359@bill-the-cat> <569842F2.4080808@rock-chips.com>
+ <20160115005950.GC3359@bill-the-cat> <5698577B.8040209@rock-chips.com>
+ <20160115144224.GR3359@bill-the-cat>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1804889.MQWMfNjko2@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Thierry Reding <treding@nvidia.com>, Alexandru Stan <amstan@chromium.org>, Arnd Bergmann <arnd@arndb.de>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, Naoki FUKAUMI <naobsd@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, mbrugger@suse.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, p.zabel@pengutro
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20160115144224.GR3359@bill-the-cat>
+List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <http://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Tom Rini <trini@konsulko.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Simon Glass <sjg@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko,
+Am Freitag, den 15.01.2016, 09:42 -0500 schrieb Tom Rini:
+> On Fri, Jan 15, 2016 at 10:20:43AM +0800, Jeffy Chen wrote:
+> > Hi Tom,
+> > 
+> > On 2016-1-15 8:59, Tom Rini wrote:
+> > > On Fri, Jan 15, 2016 at 08:53:06AM +0800, Jeffy Chen wrote:
+> > > > Hi Tom,
+> > > > 
+> > > > On 2016-1-15 0:22, Tom Rini wrote:
+> > > > > On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
+> > > > > > Hi Tom,
+> > > > > > 
+> > > > > > On 2016-1-13 23:28, Tom Rini wrote:
+> > > > > > > On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen
+> > > > > > > wrote:
+> > > > > > > 
+> > > > > > > > The android kernel is using appended dtb by default,
+> > > > > > > > and store
+> > > > > > > > ramdisk right after kernel & dtb.
+> > > > > > > > So we needs to relocate ramdisk, and use atags to pass
+> > > > > > > > params.
+> > > > > > > > 
+> > > > > > > > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> > > > > > > > Acked-by: Simon Glass <sjg@chromium.org>
+> > > > > > > > ---
+> > > > > > > > 
+> > > > > > > > Changes in v4: None
+> > > > > > > > Changes in v3: None
+> > > > > > > > Changes in v2: None
+> > > > > > > > 
+> > > > > > > >  include/configs/kylin_rk3036.h | 23
+> > > > > > > > +++++++++++++++++++++++
+> > > > > > > >  1 file changed, 23 insertions(+)
+> > > > > > > > 
+> > > > > > > > diff --git a/include/configs/kylin_rk3036.h
+> > > > > > > > b/include/configs/kylin_rk3036.h
+> > > > > > > > index b750b26..49997ec 100644
+> > > > > > > > --- a/include/configs/kylin_rk3036.h
+> > > > > > > > +++ b/include/configs/kylin_rk3036.h
+> > > > > > > > @@ -35,6 +35,29 @@
+> > > > > > > >  #undef CONFIG_EXTRA_ENV_SETTINGS
+> > > > > > > >  #define CONFIG_EXTRA_ENV_SETTINGS \
+> > > > > > > >  	"partitions=" PARTS_DEFAULT \
+> > > > > > > > +	"mmcdev=0\0" \
+> > > > > > > > +	"mmcpart=5\0" \
+> > > > > > > > +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR)
+> > > > > > > > "\0" \
+> > > > > > > > +
+> > > > > > > > +#define CONFIG_ANDROID_BOOT_IMAGE
+> > > > > > > > +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
+> > > > > > > This should already be set.
+> > > > > > Right, i'll remove it...
+> > > > > > > > +#define CONFIG_SYS_HUSH_PARSER
+> > > > > > > > +
+> > > > > > > > +#undef CONFIG_BOOTCOMMAND
+> > > > > > > > +#define CONFIG_BOOTCOMMAND \
+> > > > > > > > +	"mmc dev ${mmcdev}; if mmc rescan; then " \
+> > > > > > > > +		"part start mmc ${mmcdev} ${mmcpart}
+> > > > > > > > boot_start;" \
+> > > > > > > > +		"part size mmc ${mmcdev} ${mmcpart}
+> > > > > > > > boot_size;" \
+> > > > > > > > +		"mmc read ${loadaddr} ${boot_start}
+> > > > > > > > ${boot_size};" \
+> > > > > > > > +		"bootm start ${loadaddr}; bootm
+> > > > > > > > ramdisk;" \
+> > > > > > > > +		"bootm prep; bootm go;" \
+> > > > > > > > +	"fi;" \
+> > > > > > > > +
+> > > > > > > > +/* Enable atags */
+> > > > > > > > +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
+> > > > > > > > +#define CONFIG_INITRD_TAG
+> > > > > > > > +#define CONFIG_SETUP_MEMORY_TAGS
+> > > > > > > > +#define CONFIG_CMDLINE_TAG
+> > > > > > > But I'm confused as to what exactly is going on here. 
+> > > > > > >  Appended dtb is
+> > > > > > > not the same as ATAGS.  And you shouldn't need to split
+> > > > > > > up bootm like
+> > > > > > > that.  Can you please explain a bit more?  Thanks!
+> > > > > > The u-boot will pass atags to kernel, and kernel will merge
+> > > > > > those
+> > > > > > atags into the appended dtb(fdt).
+> > > > > > 
+> > > > > > The default bootm flow would not pass ramdisk state, but we
+> > > > > > need it,
+> > > > > > so we should add this state into default flow, or just use
+> > > > > > split
+> > > > > > bootm cmds :)
+> > > > > That seems very strange.  Is the ramdisk concatenated with
+> > > > > the kernel
+> > > > > and dtb as well (and that's why bootm ramdisk somehow finds
+> > > > > it but
+> > > > > normal bootm doesn't as you aren't passing in a ramdisk
+> > > > > address) ?
+> > > > Yes, the ramdisk concatenated with the kernel and dtb as
+> > > > well(u-boot/include/android_image.h: struct andr_img_hdr).
+> > > > 
+> > > > And the normal bootm cmd would find it by parsing andr_img_hdr
+> > > > struct.
+> > > > But we still need bootm ramdisk state, because it will call
+> > > > boot_ramdisk_high to relocate ramdisk area :)
+> > > > 
+> > > > I found if not relocate it to somewhere else, it would be
+> > > > corrupted
+> > > > after kernel's decompressing(during update fdt area).
+> > > So 'bootm $loadaddr' of an Android image sees, but does not
+> > > relocate the
+> > > ramdisk that is included in the image, but bootm ramdisk does? 
+> > >  That
+> > > sounds like a bug in the regular bootm handling.
+> > Yep, the default bootm flow would not contain ramdisk relocate
+> > state:
+> > 
+> > vi common/cmd_bootm.c
+> >         return do_bootm_states(cmdtp, flag, argc, argv,
+> > BOOTM_STATE_START |
+> >                 BOOTM_STATE_FINDOS | BOOTM_STATE_FINDOTHER |
+> >                 BOOTM_STATE_LOADOS |
+> > #if defined(CONFIG_PPC) || defined(CONFIG_MIPS)
+> >                 BOOTM_STATE_OS_CMDLINE |
+> > #endif
+> >                 BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO |
+> >                 BOOTM_STATE_OS_GO, &images, 1);
+> > 
+> > But i'm not sure if it's ok to add it here...
+> 
+> Actually, maybe so.  This made me do some digging again back into
+> Simon's series that refactored the bootm code.  In the long long ago,
+> nearly every architecture would call bootm_ramdisk_high to relocate
+> the
+> ramdisk and set the environment (and poke the DT).  But it wasn't
+> always
+> clear when / why it would do this.  And it got consolidated.  And
+> here's
+> where it's tricky.  It looks correct today, still, to make sure that
+> we
+> relocate the ramdisk.  image_setup_linux() checks
+> IMAGE_ENABLE_RAMDISK_HIGH which is toggled by
+> CONFIG_SYS_BOOT_RAMDISK_HIGH.  But for example, MIPS whacked _back_
+> in a
+> local call to make sure the ramdisk was being relocated because it
+> wasn't back in 2014 into boot_prep_linux.  It may even be related to
+> some of the initrd rated things Masahiro has found recently.  So
+> something is wrong down in this core code.  
 
-On Fri, Jan 15, 2016 at 11:26 AM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Am Freitag, 15. Januar 2016, 11:22:52 schrieb Javier Martinez Canillas:
->> Hello Heiko,
->>
->> On Fri, Jan 15, 2016 at 11:03 AM, Heiko Stuebner <heiko@sntech.de> wrote:
->> > Hi Javier,
->> >
->> > Am Freitag, 15. Januar 2016, 10:28:44 schrieb Javier Martinez Canillas:
->> >> This is not a complete review but I just wanted to comment on two
->> >
->> >> things that I noticed:
->> > same for me for now :-)
->> >
->> >> On Fri, Jan 15, 2016 at 10:06 AM, Matthias Brugger
->> >> <matthias.bgg@gmail.com> wrote:
->> >>
->> >> [snip]
->> >>
->> >> > +       };
->> >> > +
->> >> > +       vcc_18: vcc18-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vcc_18";
->> >> > +               regulator-min-microvolt = <1800000>;
->> >> > +               regulator-max-microvolt = <1800000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_sys>;
->> >> > +       };
->> >> > +
->> >> > +       /* supplies both host and otg */
->> >> > +       vcc_host: vcc-host-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               gpio = <&gpio0 4 GPIO_ACTIVE_LOW>;
->> >> > +               pinctrl-names = "default";
->> >> > +               pinctrl-0 = <&host_vbus_drv>;
->> >> > +               regulator-name = "vcc_host";
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_sys>;
->> >> > +       };
->> >> > +
->> >> > +       vccio_sd: vcc-io-sd-regulator {
->> >> > +               regulator-name= "vccio_sd";
->> >> > +               gpio = <&gpio0 9 GPIO_ACTIVE_LOW>;
->> >> > +               regulator-min-microvolt = <3300000>;
->> >> > +               regulator-max-microvolt = <3300000>;
->
-> that seems to be missing essential regulator properties
-> like a compatible.
->
+one problem is the different behaviour of bootm between legacy uImages
+and FIT uImages. In case of legacy uImages, the core code automatically
+relocates initramfs and DTB. In case of FIT uImages, the arch-specific
+do_bootm_linux() still has to do that. This was only somehow addressed
+by adding the helper function image_setup_linux() and calling it from
+do_bootm_linux(). But you can't use that function with legacy uImages,
+because initramfs and DTB would be relocated twice because the states
+BOOTM_STATE_RAMDISK and BOOTM_STATE_FDT are not checked. Because of
+that image_setup_linux() also leads to a different behaviour when
+calling bootm as a single command and calling bootm with sub-steps.
 
-Oh right, I missed that when first reading the patch.
+So the current bootm implementation on MIPS is the only way for me to
+make bootm working with all possible combinations of legacy/FIT uImage,
+with/without initramfs, with/without DTB and single/multiple bootm
+calls. I suspect that the current implementation on ARM does not work
+with all possible combinations.
 
->> >> > +       };
->> >> > +
->> >> > +       vcc_sd: vcc-sd-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vcc_sd";
->> >> > +               gpio = <&gpio3 11 GPIO_ACTIVE_LOW>;
->> >> > +               regulator-min-microvolt = <3300000>;
->> >> > +               regulator-max-microvolt = <3300000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_io>;
->> >> > +       };
->> >> > +
->> >> > +       vcc_io: vcc-io-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vcc_io";
->> >> > +               regulator-min-microvolt = <3300000>;
->> >> > +               regulator-max-microvolt = <3300000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_sys>;
->> >> > +       };
->> >> > +
->> >> > +       vcc_lan: vcc-lan-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vcc_lan";
->> >> > +               regulator-min-microvolt = <3300000>;
->> >> > +               regulator-max-microvolt = <3300000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_io>;
->> >> > +       };
->> >> > +
->> >> > +       vcc_sys: vcc-sys-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vcc_sys";
->> >> > +               regulator-min-microvolt = <5000000>;
->> >> > +               regulator-max-microvolt = <5000000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +       };
->> >> > +
->> >> > +       vccio_wl: vccio-wl-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vccio_wl";
->> >> > +               regulator-min-microvolt = <3300000>;
->> >> > +               regulator-max-microvolt = <3300000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_io>;
->> >> > +       };
->> >> > +
->> >> > +       vdd_10: vdd-10-regulator {
->> >> > +               compatible = "regulator-fixed";
->> >> > +               regulator-name = "vdd_10";
->> >> > +               regulator-min-microvolt = <1000000>;
->> >> > +               regulator-max-microvolt = <1000000>;
->> >> > +               regulator-always-on;
->> >> > +               regulator-boot-on;
->> >> > +               vin-supply = <&vcc_sys>;
->> >> > +       };
->> >> > +};
->> >>
->> >> There is only one regulator that is not marked as always-on. This will
->> >> prevent the regulator subsystem to disable unused regulators. Do you
->> >> really need all of them to be always-on?
->> >
->> > I do believe the regulators should be more or less correct. Sadly there
->> > are no real schematics for that specific device available, but the
->> > reference design for rk3368-based tv-boxes uses a hirarchy of
->> > hard-wired individual regulators without any ability to control for
->> > most of them [aka always on].
->> >
->> > And due to the r68 not sporting any different real pmic, I'd believe the
->> > Orion will most likely also follow that scheme.
->>
->> I see, thanks a lot for the clarification. But then in that case I
->> wonder what's the point of defining the gpio property in the fixed
->> regulator device nodes?
->
-> the ones with gpio properties actually can be turned off - here they are the
-> different supplies for usb and sd-card only, so leaf-regulators without
-> further children.
->
+> Jeffy, can you try and debug
+> this a bit since you have a failing case in front of you?  Otherwise
+> I'll put it on my TODO list.  Thanks!
+> 
 
-Ok, sorry I misunderstood and thought you were referring to all
-regulators. I of course agree that regulators that can't be turned of
-should be marked as always-on. I just asked this to be revisit and
-only mark as always-on the ones that really should be.
+Some ideas for a possible refactoring of the bootm core code:
+- remove arch-specific do_bootm_linux() and image_setup_linux()
+- rename functions like boot_prep_linux() and boot_jump_linux() to
+arch_boot_prep_linux() and arch_boot_jump_linux() and declare them as
+__weak and add a default implementation, the arch code can overwrite
+them
+- refactor the core code to call those functions at the appropriate
+locations
 
->
-> Heiko
-
-Best regards,
-Javier
+-- 
+- Daniel
