@@ -1,58 +1,88 @@
-From: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
- output clock to codec
-Date: Fri, 15 Jan 2016 13:48:04 -0800
-Message-ID: <CAPz6YkWt-iXS6P4QBBoq3v3i7ZAGGu6=_9AHw4qgevEwDwbdTA@mail.gmail.com>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
- <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
- <20160115174623.GZ6588@sirena.org.uk>
+From: John Stultz <john.stultz@linaro.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Fri, 15 Jan 2016 14:41:55 -0800
+Message-ID: <CALAqxLUxh3=LhoHxqiRm_5L4G6m1Vctp=aUg+9_uAtLkFwW9bw@mail.gmail.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+	<1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160115174623.GZ6588-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Kees Cook <keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, linux@roeck-us.net, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, geert+renesas@glider.be, sre@kernel.org, Olof Johansson <olof@lixom.net>, dbaryshkov@gmail.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, jun.nie@linaro.org, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, f.fainelli@gmail.com, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, cernekee@gmail.com, lkml <linux-kernel@vger.kern>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 15, 2016 at 9:46 AM, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> On Fri, Jan 15, 2016 at 09:49:50PM +0800, Caesar Wang wrote:
+On Tue, Jan 12, 2016 at 3:29 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+> add device tree binding document for reboot-mode driver
 >
->> We need to claim the clock which is driving the codec so that when we
->> enable clock gating, we continue to clock the codec when needed.
->> I make this an optional clock since there might be some applications
->> where we don't need it but can still use the I2S block.
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 >
->> - As the perious discuss on https://patchwork.kernel.org/patch/5427131/,
->>   I think Mark likes do it in codec driver, I have to say I agree this
->>   patch in here since that's the i2s block output. I don't know if the
->>   Mark has changed his mind.
+> ---
 >
-> If the I2S block is providing a clock to the CODEC then that's what the
-> software should do so that the CODEC can gate and ungate the clock as
-> required.  This patch has the I2S block using a clock, not providing
-> one.
+> Changes in v2: None
+> Changes in v1: None
+>
+>  .../bindings/power/reset/reboot-mode.txt           | 41 +++++++++++++++++
+>  .../bindings/power/reset/syscon-reboot-mode.txt    | 52 ++++++++++++++++++++++
+>  2 files changed, 93 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+>
+> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mode.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> new file mode 100644
+> index 0000000..81d9f66
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> @@ -0,0 +1,41 @@
+> +Generic reboot mode core map driver
+> +
+> +This driver get reboot mode arguments and call the write
+> +interface to stores the magic value in special register
+> +or ram . Then the bootloader can read it and take different
+> +action according to the argument stored.
+> +
+> +Required properties:
+> +- compatible: only support "syscon-reboot-mode" now.
+> +
+> +Each mode is represented as a sub-node of reboot_mode:
+> +
+> +Subnode required properties:
+> +- linux,mode: reboot mode command,such as "loader", "recovery", "fastboot".
+> +- loader,magic: magic number for the mode, this is vendor specific.
+> +
+> +Example:
+> +       reboot_mode {
+> +               compatible = "syscon-reboot-mode";
+> +               offset = <0x40>;
+> +
+> +               loader {
+> +                       linux,mode = "loader";
+> +                       loader,magic = <BOOT_LOADER>;
+> +               };
+> +
+> +               maskrom {
+> +                       linux,mode = "maskrom";
+> +                       loader,magic = <BOOT_MASKROM>;
+> +               };
+> +
+> +               recovery {
+> +                       linux,mode = "recovery";
+> +                       loader,magic = <BOOT_RECOVERY>;
+> +               };
+> +
+> +               fastboot {
+> +                       linux,mode = "fastboot";
+> +                       loader,magic = <BOOT_FASTBOOT>;
+> +               };
+> +        };
 
-From my read of the clock diagram for RK3288  there is a single clock
-signal (labeled "clk_i2s0") that comes out of a fractional divider,
-and it is split such that one path gets sent to the I2S block and the
-second path is sent to a mux after which that signal is sent to an
-external pin that goes to the codec.
 
-There are separate clock gates for the two paths: one for the I2S
-block and one after that mux before the external pin.
+So one minor thought here. While the commands are somewhat vendor
+specific, would it be a good idea for the example commands to match
+the common commands on Android devices?  For example, usually
+"bootloader" is what gets you into fastboot mode on nexus devices.
 
-I'm not sure if it's being modeled that way in the Linux code or not,
-but at least physically I don't think this clock signal actually goes
-through the I2S block before being sent to the codec.
-
-Does that help clarify?
+thanks
+-john
