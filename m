@@ -1,7 +1,7 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3 4/9] ARM: dts: rockchip: enable the uart0 for kylin board
-Date: Fri, 15 Jan 2016 21:49:51 +0800
-Message-ID: <1452865796-23527-5-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v3 8/9] ARM: dts: rockchip: add reboot-mode node for rk3036 SoCs
+Date: Fri, 15 Jan 2016 21:49:55 +0800
+Message-ID: <1452865796-23527-9-git-send-email-wxt@rock-chips.com>
 References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
@@ -10,30 +10,63 @@ To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 Cc: leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch is enabling the uart0 for bluetooth module.
+Add reboot mode driver DT node for rk3036 platform.
+This patch adds the needed reboot mode node for rk3036.
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
 Changes in v3: None
 
- arch/arm/boot/dts/rk3036-kylin.dts | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm/boot/dts/rk3036.dtsi | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index 30a9aca..2a45be7 100644
---- a/arch/arm/boot/dts/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -316,6 +316,10 @@
- 	status = "okay";
- };
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index cf0968c..f5ecfff 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -43,6 +43,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/clock/rk3036-cru.h>
++#include <dt-bindings/soc/rockchip_boot-mode.h>
+ #include "skeleton.dtsi"
  
-+&uart0 {
-+	status = "okay";
-+};
+ / {
+@@ -297,8 +298,33 @@
+ 	};
+ 
+ 	grf: syscon@20008000 {
+-		compatible = "rockchip,rk3036-grf", "syscon";
++		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
+ 		reg = <0x20008000 0x1000>;
 +
- &usb_host {
- 	status = "okay";
- };
++		reboot-mode {
++			compatible = "syscon-reboot-mode";
++			offset = <0x1d8>;
++
++			normal {
++				linux,mode = "normal";
++				loader,magic = <BOOT_NORMAL>;
++			};
++
++			loader {
++				linux,mode = "loader";
++				loader,magic = <BOOT_LOADER>;
++			};
++
++			recovery {
++				linux,mode = "recovery";
++				loader,magic = <BOOT_RECOVERY>;
++			};
++
++			fastboot {
++				linux,mode = "fastboot";
++				loader,magic = <BOOT_FASTBOOT>;
++			};
++		};
+ 	};
+ 
+ 	acodec: acodec-ana@20030000 {
 -- 
 1.9.1
