@@ -1,7 +1,7 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3 6/9] ARM: dts: rockchip: add the sdio power sequence for kylin board
-Date: Fri, 15 Jan 2016 21:49:53 +0800
-Message-ID: <1452865796-23527-7-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v3 5/9] ARM: dts: rockchip: enable the high speed on sdio for kylin board
+Date: Fri, 15 Jan 2016 21:49:52 +0800
+Message-ID: <1452865796-23527-6-git-send-email-wxt@rock-chips.com>
 References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
@@ -10,77 +10,39 @@ To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 Cc: leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the sdio power sequence for kylin board.
-The WLAN attached to a SDIO interface, wifi/bluetooth have
-reset and power been needed to enable.
+We want to the higher speed for wifi module working.
 
-AFAIK, the simple power sequence provider sets a value for multiple GPIOs.
-So the reset and power of WlAN chip can be handled in mmc power sequence.
-On the module itself this is one of these, that should can be handled
-by reset GPIOs in simple mmc power sequence.
+Bootup kernel log:
+...
+mmc_host mmc0: Bus speed (slot 0) = 37125000Hz (slot req 37500000Hz,
+actual 37125000HZ div = 0)
 
-The Bluetooth host wake is high active from bootup, this patch is also
-set pinctrl bias as the default to enable the pull up in soc internal.
+or run 'cat /sys/kernel/debug/clk/clk_summary |grep phase -C 1' to check
+Otherwise, the mmc0 will run 400khz defalult value to work.
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
 ---
 
-Changes in v3:
-- As Javier/Heiko discuss on https://patchwork.kernel.org/patch/7974311/,
-  try to change dts with reset-gpios handle.
+Changes in v3: None
 
- arch/arm/boot/dts/rk3036-kylin.dts | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ arch/arm/boot/dts/rk3036-kylin.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index 4fbd0a3..d30a6dd 100644
+index 2a45be7..4fbd0a3 100644
 --- a/arch/arm/boot/dts/rk3036-kylin.dts
 +++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -78,6 +78,23 @@
- 		regulator-always-on;
- 		regulator-boot-on;
- 	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_wake_h>;
-+
-+		/*
-+		 * On the module itself this is one of these (depending
-+		 * on the actual card populated):
-+		 * - SDIO_RESET_L_WL_REG_ON
-+		 * - SDIO_RESET_L_WL_RST
-+		 * - SDIO_RESET_L_BT_EN
-+		 */
-+		reset-gpios = <&gpio0 26 GPIO_ACTIVE_LOW>, /* WL_REG_ON */
-+			      <&gpio0 27 GPIO_ACTIVE_LOW>, /* WL_RST */
-+			      <&gpio2 9  GPIO_ACTIVE_LOW>; /* BT_EN */
-+	};
- };
+@@ -303,6 +303,11 @@
  
- &acodec {
-@@ -311,6 +328,7 @@
+ 	broken-cd;
+ 	bus-width = <4>;
++	cap-sd-highspeed;
++	sd-uhs-sdr12;
++	sd-uhs-sdr25;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
  	cap-sdio-irq;
  	default-sample-phase = <90>;
  	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
- 	non-removable;
- 	num-slots = <1>;
- 	pinctrl-names = "default";
-@@ -348,6 +366,12 @@
- 		};
- 	};
- 
-+	sdio {
-+		bt_wake_h: bt-wake-h {
-+			rockchip,pins = <2 8 RK_FUNC_GPIO &pcfg_pull_default>;
-+		};
-+	};
-+
- 	sleep {
- 		global_pwroff: global-pwroff {
- 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
 -- 
 1.9.1
