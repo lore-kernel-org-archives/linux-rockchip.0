@@ -1,56 +1,54 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
- output clock to codec
-Date: Fri, 15 Jan 2016 17:46:23 +0000
-Message-ID: <20160115174623.GZ6588@sirena.org.uk>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
- <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+From: John Stultz <john.stultz@linaro.org>
+Subject: Re: [PATCH v2 2/4] power: reset: add reboot mode driver
+Date: Fri, 15 Jan 2016 12:27:57 -0800
+Message-ID: <CALAqxLVNUG_cVbavXC34sNPv68jbMghti31+PrgQ7mpPngXh6g@mail.gmail.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+	<1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="0mrGdROycKaeLXMw"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, leozwang@google.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Sonny Rao <sonnyrao@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, linux@roeck-us.net, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, geert+renesas@glider.be, sre@kernel.org, Olof Johansson <olof@lixom.net>, dbaryshkov@gmail.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, jun.nie@linaro.org, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, f.fainelli@gmail.com, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, cernekee@gmail.com, lkml <linux-kernel@vger.kern>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Tue, Jan 12, 2016 at 3:31 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
+> This driver parse the reboot commands like "reboot loader"
+> and "reboot recovery" to get a boot mode described in the
+> device tree , then call the write interfae to store the boot
+> mode in some persistent storage  like special register or ram,
+> which can be read by the bootloader after system reboot, then
+> the bootloader can take different action according to the mode
+> stored.
+>
+> This is commonly used on Android based devices, which in order
+> to reboot the device into fastboot or recovery mode.
+>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 
---0mrGdROycKaeLXMw
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Fri, Jan 15, 2016 at 09:49:50PM +0800, Caesar Wang wrote:
+Hey Andy!
+  Thanks for keeping this work going! I've just successfully reworked
+my Nexus7 tree to use your implementation (using the syscon version,
+setting up a syscon for IMEM as Bjorn had requested earlier).
 
-> We need to claim the clock which is driving the codec so that when we
-> enable clock gating, we continue to clock the codec when needed.
-> I make this an optional clock since there might be some applications
-> where we don't need it but can still use the I2S block.
+All is working well so far!
 
-> - As the perious discuss on https://patchwork.kernel.org/patch/5427131/,
->   I think Mark likes do it in codec driver, I have to say I agree this
->   patch in here since that's the i2s block output. I don't know if the
->   Mark has changed his mind.
+The one thing I was working on supporting with my own version that
+seems to be missing here are for devices that use string based codes,
+rather then magic numbers.
 
-If the I2S block is providing a clock to the CODEC then that's what the
-software should do so that the CODEC can gate and ungate the clock as
-required.  This patch has the I2S block using a clock, not providing
-one.
+This was mostly a theoretical issue. I think the Galaxy Nexus used it,
+and when I was looking at some of the HTC devices, they support a text
+based reason along with the magic code, but at least in some
+implementations the text mode isn't used, so I suspect there its just
+for extra debugging.  So this may not be critical to solve until
+someone tries to add support for such a device.
 
---0mrGdROycKaeLXMw
-Content-Type: application/pgp-signature; name="signature.asc"
+Anyway, I'm going to look at porting this to the HiKey board next
+(which just uses reserved ram, not syscon), so I'll try to do a an
+SRAM driver implementaiton to see how that goes.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWmTBuAAoJECTWi3JdVIfQxzYH/RAMDGJxEqdk+Z7ifUNw/RMW
-VX40ruh59hW9RrB3pSu+W2Sb5Yc+AVKaejtsQaj0413Gd62jM4zqfP/oerelX6VL
-WV4HQm/s8c6ZsgQSHAo6cQxrIz+y0CggUrNhqMAlKcHKmFPV7WIHwDspxPVk/KxJ
-h1hVmOrc07Rj7Y9lbSqWyMSuEkb6Y8ohYqCZ5PITx2bw/mSJl3saQ04g78gxO17I
-2/muwHtnBhT4eAyn1Lw0OgBU0kDWqmglMgEx9ahX+cjHgq8R4bKB+G6HccetgYle
-cdwTeeg+Sl5A7yXnRgV8yEAcc4EcnV0poCElL/SKz0QdzyxRffyIi3IacKjPJPQ=
-=eVRq
------END PGP SIGNATURE-----
-
---0mrGdROycKaeLXMw--
+thanks!
+-john
