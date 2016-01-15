@@ -1,156 +1,145 @@
-From: "David.Wu" <wdc@rock-chips.com>
-Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to calculate i2c clocks
-Date: Fri, 15 Jan 2016 17:39:13 +0800
-Message-ID: <5698BE41.30005@rock-chips.com>
-References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
- <1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
- <CAD=FV=UXMzEQiKcMa7VjDx+arcbRo1e-0HPHBnG8GP7k6uFt1g@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: increase vdd_arm voltage for
+ rk3066a-rayeager board
+Date: Fri, 15 Jan 2016 10:58:51 +0100
+Message-ID: <4106425.0qUJ88UPmV@phil>
+References: <1452774780-16493-1-git-send-email-andy.yan@rock-chips.com>
+ <24626895.xt4u2Kuv7p@phil> <5698BD27.3050700@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=UXMzEQiKcMa7VjDx+arcbRo1e-0HPHBnG8GP7k6uFt1g@mail.gmail.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, andy.shevchenko@gmail.com, Tao Huang <huangtao@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <5698BD27.3050700-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Eddie Cai <eddie.cai.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug=EF=BC=8C
-
-=E5=9C=A8 2016/1/15 0:12, Doug Anderson =E5=86=99=E9=81=93:
-> Hi,
->
-> On Thu, Jan 14, 2016 at 4:31 AM, David Wu <david.wu@rock-chips.com> w=
-rote:
->> There was an timing issue about "repeated start" time at the I2C
->> controller of version0, controller appears to drop SDA at .875x (7/8=
-)
->> programmed clk high. The rule(.875x) isn't enough to meet tSU;STA
->> requirements on 100k's Standard-mode. To resolve this issue,
->> data_upd_st, start_setup_cnt and stop_setup_cnt configs for I2C
->> timing information are added, new rules are designed to calculate
->> the timing information at new v1.
-> I'm curious: does new hardware behave differently and that's why you
-> need v1?
-Yes , i didn't describe clearly about difference between old and new.
-Old and new hardware behave the same except some timing rules.
-
-v0 is the same with the v1 for tHigh and tLow :
-  tHigh =3D 8 * divh * pclk_cycle;
-  tLow =3D 8 * divl * pclk_cycle;
-
-v0 rules' difference:
-     start setup=EF=BC=9A 7/8 * tHigh + 1 pclk cycle
-     start hold :    2 * =EF=BC=887/8 * tHigh=EF=BC=89 - 1 pclk cycle
-     stop setup :   7/8 * tHigh + 1 pclk cycle
-
-     data setup:    1/2 tLow - 1 pclk cycle
-     data hold :    1/2  tLow + 1  pclk cycle
-
-=46or 100k's example:
-     spec_min_low_ns =3D 4700;
-     spec_min_high_ns =3D 4000;
-     spec_min_setup_start_ns =3D 4700;
-
-We could calculate the timing info by the rules of v0, and ignore effec=
-t=20
-of the pclk cycle here.
-     tSU;sta >=3D4700;
-     tHigh_min =3D tSU;sta * 8/7 >=3D 5372ns;
-     tHigh_min  =3D max(tHigh_min, spec_min_high_ns) =3D 5372ns;
-
-We get the final scl clk rate is 99k(1000000000 / (5372ns + 4700ns)), =20
-it looks ok for the 100k
-Standard mode. But the timing point of repeat start and low time is ver=
-y=20
-critical, it is dangerous
-to some slave devices which are perhaps not so specified.
-So need to give some time margin for them, that would increase the cycl=
-e=20
-time and reduce
-the clk rate, the final rate we get may be 97k or 96k.
-
-In fact, we must think about scl rise time and scl fall time, and get=20
-final clk may be 93k or less.
-After that, we get about 7 percent lost at clk rate, it would reduce th=
-e=20
-efficiency of i2c transfer.
-
-In other words, we could say there is a timing issue about "repeat=20
-start" time when we want
-accurate 100k's rate, it is short to meet I2C spec requirements.
-3.4M clk rate also has the same issue.
-
-The start_setup count is added to fix this issue, tHigh is not need to=20
-considered of "repeat start" time.
-After divs calculated, the count would be calculated to meet i2c spec.
-v1 rule:
-start setup=EF=BC=9A tHigh + 1 pclk cycle
-start hold:  [8h * (u + 1) - 1] * T;
-  tSU;sto =3D (8h * p + 1) * T;
------------------------------------------------------------------------=
-----------------------------------------
-
-The data_upd_st is added for the Data set-up time and Data hold time on=
-=20
-Highspeed mode.
-=46or 1.7M's example on v0:
-     tHD;DAT =3D 1/2 tLow=EF=BC=9B
-     tHD;DAT <=3D spec_max_data_hold_ns =3D 150ns
-     tLow <=3D 2 * tHD;DAT <=3D 300ns;
-     tLow >=3D spec_min_low_ns =3D 320ns;
-According to these, we could not get a value for tLow, need changes for=
-=20
-the rule: tHD;DAT =3D 1/2 tLow.
-
-Cut the tLow into eight euqal parts=EF=BC=8Cthe range of data_upd_st is=
- 1 ~ 7.
-It seems that v1 rule could resolve the issue.
-v1 rule:
-     tHD;sda =3D n/8 * tLow;
-     tSU;sda =3D [(8 - n)/8 * tLow;
-
-3.4M clk rate also has the same issue.
-
->   ...or does old and new hardware behave the same and you're
-> just introducing v1 so you don't mess with how old boards are working=
-?
-The registers of counts added would not effect old boards.
-No matter what values of count was written in regs, that old i2c=20
-controller didn't care,
-it worked by original timing rule.
-
-After picking this patch, pmic-rk818 and touchscreen-gt911 worked well=20
-on the rk3368 sdk
-board which use old method.
-
->
-> >From the description it sounds as if the old code had problems as 10=
-0k too...
->
-> If the new controller is different, I'd probably reword like the
-> following (you'd have to re-wordwrap):
->
-> There was an timing issue about "repeated start" time at the I2C
-> controller of version0, controller appears to drop SDA at .875x (7/8)
-> programmed clk high. On version 1 of the controller, the rule(.875x)
-> isn't enough to meet tSU;STA
-> requirements on 100k's Standard-mode. To resolve this issue,
-> data_upd_st, start_setup_cnt and stop_setup_cnt configs for I2C
-> timing information are added, new rules are designed to calculate
-> the timing information at new v1.
-
-There was an timing issue about "repeated start" time at the I2C
-controller of version0, controller appears to drop SDA at .875x (7/8)
-programmed clk high. On version 1 of the controller, the rule(.875x)
-isn't enough to meet tSU;STA requirements on 100k's Standard-mode.
-
-To resolve this issue,data_upd_st, start_setup_cnt and stop_setup_cnt
-configs for I2C timing information are added, new rules are designed
-to calculate the timing information at new v1.
-
-> -Doug
->
->
->
+QW0gRnJlaXRhZywgMTUuIEphbnVhciAyMDE2LCAxNzozNDozMSBzY2hyaWViIEFuZHkgWWFuOgo+
+IEhpIEhlaWtvOgo+IAo+IE9uIDIwMTblubQwMeaciDE15pelIDE3OjIyLCBIZWlrbyBTdHVlYm5l
+ciB3cm90ZToKPiA+IEhpIEFuZHksIEVkZGllLAo+ID4gCj4gPiBBbSBGcmVpdGFnLCAxNS4gSmFu
+dWFyIDIwMTYsIDA5OjExOjE2IHNjaHJpZWIgQW5keSBZYW46Cj4gPj4gT24gMjAxNuW5tDAx5pyI
+MTTml6UgMjE6NTAsIEVkZGllIENhaSB3cm90ZToKPiA+Pj4gSGkgSGVpa28KPiA+Pj4gCj4gPj4+
+IEkgZG9uJ3Qgd2FudCBvcGVuIHNvdXJjZSB2ZXJzaW9uIGtlcm5lbCBzdXBwb3J0IHRvbyBoaWdo
+IGZyZXF1ZW5jeS4KPiA+Pj4gTWFueSBwZW9wbGUgdXNlIFJLMzA2Ni9QWDIgb24gdGhlaXIgYm9h
+cmQuIFdlIGRvbid0IGtub3cgaWYgdGhlaXIKPiA+Pj4gbGF5b3V0IGlzIGdvb2QgZW5vdWdoIHRv
+IHN1cHBvcnQgaGlnaGVyIGZyZXF1ZW5jeS4gaWUuIGJhZCBsYXlvdXQgd2lsbAo+ID4+PiBjYXVz
+ZSBtb3JlIHZvbHRhZ2UgZHJvcCBvbiB0aGUgVkREX0NQVSBwb3dlciByYWlsLiBTbyBpdCBtYXkg
+bmVlZAo+ID4+PiBoaWdoZXIgdm9sdGFnZS4gSSB0aGluayBzdGFibGUgaXMgbW9yZSBpbXBvcnRh
+bnQgaGVyZS4gUGVvcGxlIHdhbnQKPiA+Pj4gaGlnaGVyIGZyZXF1ZW5jeSBjYW4gYWRkIG1vcmUg
+b3BwIGRlcGVuZCBvbiB0aGVpciBib2FyZCdzIGxheW91dC4KPiA+Pj4gCj4gPj4+IDIwMTYtMDEt
+MTQgMjE6MjAgR01UKzA4OjAwIEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT46Cj4g
+Pj4+PiBIaSBIZWlrbzoKPiA+Pj4+IAo+ID4+Pj4gT24gMjAxNuW5tDAx5pyIMTTml6UgMjA6NDUs
+IEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4+Pj4+IEhpIEFuZHksCj4gPj4+Pj4gCj4gPj4+Pj4g
+QW0gRG9ubmVyc3RhZywgMTQuIEphbnVhciAyMDE2LCAyMDozNDoyMCBzY2hyaWViIEFuZHkgWWFu
+Ogo+ID4+Pj4+PiBUaGUgY3VycmVudCB2ZGRfYXJtIHZvbHRhZ2UgaXMgdG9vIGxvdywgaW5jcmVh
+c2UgaXQgd2lsbCBtYWtlCj4gPj4+Pj4+IHRoZSBzeXN0ZW0gbW9yZSBzdGFibGUuCj4gPj4+Pj4+
+IAo+ID4+Pj4+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5j
+b20+Cj4gPj4+Pj4+IC0tLQo+ID4+Pj4+PiAKPiA+Pj4+Pj4gICAgIGFyY2gvYXJtL2Jvb3QvZHRz
+L3JrMzA2NmEtcmF5ZWFnZXIuZHRzIHwgOCArKysrKysrKwo+ID4+Pj4+PiAgICAgMSBmaWxlIGNo
+YW5nZWQsIDggaW5zZXJ0aW9ucygrKQo+ID4+Pj4+PiAKPiA+Pj4+Pj4gZGlmZiAtLWdpdCBhL2Fy
+Y2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4gPj4+Pj4+IGIvYXJjaC9hcm0v
+Ym9vdC9kdHMvcmszMDY2YS1yYXllYWdlci5kdHMgaW5kZXggMGJmNjg3Ni4uM2Q0YzEwNAo+ID4+
+Pj4+PiAxMDA2NDQKPiA+Pj4+Pj4gLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXll
+YWdlci5kdHMKPiA+Pj4+Pj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXllYWdl
+ci5kdHMKPiA+Pj4+Pj4gQEAgLTE1OSw2ICsxNTksMTQgQEAKPiA+Pj4+Pj4gCj4gPj4+Pj4+ICAg
+ICAmY3B1MCB7Cj4gPj4+Pj4+ICAgICAKPiA+Pj4+Pj4gICAgICAgICAgIGNwdTAtc3VwcGx5ID0g
+PCZ2ZGRfYXJtPjsKPiA+Pj4+Pj4gCj4gPj4+Pj4+ICsgICAgICAgb3BlcmF0aW5nLXBvaW50cyA9
+IDwKPiA+Pj4+Pj4gKyAgICAgICAgICAgICAgIC8qIGtIeiAgICB1ViAqLwo+ID4+Pj4+PiArICAg
+ICAgICAgICAgICAgMTAwODAwMCAxMTI1MDAwCj4gPj4+Pj4+ICsgICAgICAgICAgICAgICA4MTYw
+MDAgIDExMjUwMDAKPiA+Pj4+Pj4gKyAgICAgICAgICAgICAgIDYwMDAwMCAgMTEwMDAwMAo+ID4+
+Pj4+PiArICAgICAgICAgICAgICAgNTA0MDAwICAxMTAwMDAwCj4gPj4+Pj4+ICsgICAgICAgICAg
+ICAgICAzMTIwMDAgIDEwNzUwMDAKPiA+Pj4+Pj4gKyAgICAgICA+Owo+ID4+Pj4+PiAKPiA+Pj4+
+Pj4gICAgIH07Cj4gPj4+Pj4+ICAgICAKPiA+Pj4+Pj4gICAgICZlbWFjIHsKPiA+Pj4+PiAKPiA+
+Pj4+PiBEb2VzIHRoaXMgb25seSBhcHBseSB0byB0aGUgcmF5ZWFnZXItYm9hcmQgLyBweDIgc29j
+IG9yIGZvciBhbGwKPiA+Pj4+PiByazMwNjZhL3B4Mgo+ID4+Pj4+IGJvYXJkcz8gSS5lLiB0aGUg
+b3JpZ2luYWwgdmFsdWVzIGNvbWUgZnJvbSBzb21lIHNkayBrZXJuZWwgYW5kIEkKPiA+Pj4+PiBt
+aWdodCd2ZQo+ID4+Pj4+IHRyYW5zY3JpYmVkIHRoYXQgd3JvbmcgYXQgdGhlIHRpbWUgYW5kIEkg
+cmVtZW1iZXIgaGF2aW5nIHByb2JsZW1zCj4gPj4+Pj4gdHJ5aW5nCj4gPj4+Pj4gdG8KPiA+Pj4+
+PiByZWFjaCBoaWdoZXIgZnJlcXVlbmNpZXMgYXMgd2VsbC4KPiA+Pj4+PiAKPiA+Pj4+PiBTbyBj
+b3VsZCB5b3UgY2hlY2sgd2hhdCB0aGUgZnVsbCBvcGVyYXRpbmcgcG9pbnRzIGxvb2tzIGxpa2Ug
+Zm9yCj4gPj4+Pj4gYm90aAo+ID4+Pj4+IGFuZAo+ID4+Pj4+IGlmCj4gPj4+Pj4gdGhpcyBjYW4g
+bW92ZSB0byB0aGUgcmszMDY2YS5kdHNpLCBhcyBib3RoIHNob3VsZCBiZSBhYmxlIHRvIHJlYWNo
+Cj4gPj4+Pj4gYXQKPiA+Pj4+PiBsZWFzdAo+ID4+Pj4+IDEuNEdIeiAvIDEuNkdIei4KPiA+Pj4+
+PiAKPiA+Pj4+PiAKPiA+Pj4+PiBUaGFua3MKPiA+Pj4+PiBIZWlrbwo+ID4+Pj4+IAo+ID4+Pj4+
+IF9fX19fXwo+ID4+Pj4+IAo+ID4+Pj4gICAgICAgSSBoYXZlIGNoZWNrZWQgdGhlIHNkayBrZXJu
+ZWwsIHRoZSBvcHAgZm9yIHRoZSBzZGsgYm9hcmQgaXMKPiA+Pj4+ICAgICAgIGxpa2UKPiA+IAo+
+ID4gYmVsbG93Ogo+ID4+Pj4gICAgLyoqCj4gPj4+PiAgICAqIGR2ZnNfY3B1X2xvZ2ljX3RhYmxl
+OiB0YWJsZSBmb3IgYXJtIGFuZCBsb2dpYyBkdmZzCj4gPj4+PiAgICAqIEBmcmVxdWVuY3kgICA6
+IGFybSBmcmVxdWVuY3kKPiA+Pj4+ICAgICogQGNwdV92b2x0ICAgIDogYXJtIHZvbHRhZ2UgZGVw
+ZW5kIG9uIGZyZXF1ZW5jeQo+ID4+Pj4gICAgKiBAbG9naWNfdm9sdCAgOiBsb2dpYyB2b2x0YWdl
+IGFybSByZXF1ZXN0cyBkZXBlbmQgb24gZnJlcXVlbmN5Cj4gPj4+PiAgICAqIGNvbW1lbnRzICAg
+ICA6IG1pbiBhcm0vbG9naWMgdm9sdGFnZQo+ID4+Pj4gICAgKi8KPiA+Pj4+IAo+ID4+Pj4gc3Rh
+dGljIHN0cnVjdCBkdmZzX2FybV90YWJsZSBkdmZzX2NwdV9sb2dpY190YWJsZVtdID0gewo+ID4+
+Pj4gCj4gPj4+PiAgICAgICAgICAgey5mcmVxdWVuY3kgPSAyNTIgKiAxMDAwLCAgICAgICAuY3B1
+X3ZvbHQgPSAxMDc1ICogMTAwMCwKPiA+Pj4+IAo+ID4+Pj4gLmxvZ2ljX3ZvbHQgPSAxMTI1ICog
+MTAwMH0sLy8wLjk3NVYvMS4wMDBWCj4gPj4+PiAKPiA+Pj4+ICAgICAgICAgICB7LmZyZXF1ZW5j
+eSA9IDUwNCAqIDEwMDAsICAgICAgIC5jcHVfdm9sdCA9IDExMDAgKiAxMDAwLAo+ID4+Pj4gCj4g
+Pj4+PiAubG9naWNfdm9sdCA9IDExMjUgKiAxMDAwfSwvLzAuOTc1Vi8xLjAwMFYKPiA+Pj4+IAo+
+ID4+Pj4gICAgICAgICAgIHsuZnJlcXVlbmN5ID0gODE2ICogMTAwMCwgICAgICAgLmNwdV92b2x0
+ID0gMTEyNSAqIDEwMDAsCj4gPj4+PiAKPiA+Pj4+IC5sb2dpY192b2x0ID0gMTE1MCAqIDEwMDB9
+LC8vMS4wMDBWLzEuMDI1Vgo+ID4+Pj4gCj4gPj4+PiAgICAgICAgICAgey5mcmVxdWVuY3kgPSAx
+MDA4ICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMTI1ICogMTAwMCwKPiA+Pj4+IAo+ID4+Pj4g
+LmxvZ2ljX3ZvbHQgPSAxMTUwICogMTAwMH0sLy8xLjAyNVYvMS4wNTBWCj4gPj4+PiAKPiA+Pj4+
+ICAgICAgICAgICB7LmZyZXF1ZW5jeSA9IDEyMDAgKiAxMDAwLCAgICAgIC5jcHVfdm9sdCA9IDEx
+NzUgKiAxMDAwLAo+ID4+Pj4gCj4gPj4+PiAubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEu
+MTAwVi8xLjA1MFYKPiA+Pj4+IAo+ID4+Pj4gICAgICAgICAgIHsuZnJlcXVlbmN5ID0gMTI3MiAq
+IDEwMDAsICAgICAgLmNwdV92b2x0ID0gMTIyNSAqIDEwMDAsCj4gPj4+PiAKPiA+Pj4+IC5sb2dp
+Y192b2x0ID0gMTIwMCAqIDEwMDB9LC8vMS4xNTBWLzEuMTAwVgo+ID4+Pj4gCj4gPj4+PiAgICAg
+ICAgICAgey5mcmVxdWVuY3kgPSAxNDE2ICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMzAwICog
+MTAwMCwKPiA+Pj4+IAo+ID4+Pj4gLmxvZ2ljX3ZvbHQgPSAxMjAwICogMTAwMH0sLy8xLjIyNVYv
+MS4xMDBWCj4gPj4+PiAKPiA+Pj4+ICAgICAgICAgICB7LmZyZXF1ZW5jeSA9IDE1MTIgKiAxMDAw
+LCAgICAgIC5jcHVfdm9sdCA9IDEzNTAgKiAxMDAwLAo+ID4+Pj4gCj4gPj4+PiAubG9naWNfdm9s
+dCA9IDEyNTAgKiAxMDAwfSwvLzEuMzAwVi8xLjE1MFYKPiA+Pj4+IAo+ID4+Pj4gICAgICAgICAg
+IHsuZnJlcXVlbmN5ID0gMTYwOCAqIDEwMDAsICAgICAgLmNwdV92b2x0ID0gMTQyNSAqIDEwMDAs
+Cj4gPj4+PiAKPiA+Pj4+IC5sb2dpY192b2x0ID0gMTMwMCAqIDEwMDB9LC8vMS4zMjVWLzEuMTc1
+Vgo+ID4+Pj4gCj4gPj4+PiAgICAgICAgICAgey5mcmVxdWVuY3kgPSBDUFVGUkVRX1RBQkxFX0VO
+RH0sCj4gPj4+PiAKPiA+Pj4+IH07Cj4gPj4+PiAKPiA+Pj4+ICAgIFRoaXMgdGFibGUgaXMgbWFk
+ZSBiYXNlIG9uIG1hc3Mgc3RyZXNzIHRlc3QuIFNvIGlzIGEgc2FmZSBvcHAKPiA+Pj4+ICAgIHRh
+YmxlCj4gPj4+PiAgICBmb3IKPiA+Pj4+IAo+ID4+Pj4gbW9zdCByazMwNjZhIGJhc2UgYm9hcmRz
+LiBCdXQgaXQgc29tZQo+ID4+Pj4gCj4gPj4+PiAgICBib2FyZCBpcyBub3Qgc28gd2VsbCBpbiBw
+b3dlciBzdXBwbHkgY2lyY3VpdCBkZXNpZ24sIHRoZSBtYXkgYWxzbwo+ID4+Pj4gICAgbmVlZCB0
+bwo+ID4+Pj4gCj4gPj4+PiBhZGp1c3QgaXQuCj4gPj4+PiAKPiA+Pj4+ICAgIEZyb20gdGhlIHRh
+YmxlIHdlIHNlZSB0aGF0IHRoZSBsb2dpY192b2x0YWdlIG5lZWQgdG8gaW5jcmVhc2UgIGFzCj4g
+Pj4+PiAgICB0aGUKPiA+Pj4+IAo+ID4+Pj4gY3B1ZnJlcSBpbmNyZWFzZS4gQnV0IGl0IHNlZW1z
+IHRoYXQgdGhlIGN1cnJlbnQgbWFpbmxpbmUga2VybmVsIGRvZXMKPiA+Pj4+IG5vdAo+ID4+Pj4g
+c3VwcG9ydCBhZGp1c3QgdGhlIGxvZ2ljIHZvbHRhZ2Ugd2hlbiBjcHVmcmVxIGNoYW5nZS4gU28g
+d2UgY2FuIG9ubHkKPiA+Pj4+IHNjYWxlIHRoZSBjcHVmcmVxIHRvIDEuNEdIWiBieSBmaXhlZCB0
+aGUgbG9naWNfdm9sdCBhdCAxLjJWLgo+ID4+Pj4gCj4gPj4+PiAgICBJZiB5b3UgbGlrZSwgSSBj
+YW4gbW92ZSBpdCB0byByazMwNjZhLmR0c2kgd2l0aCB0aGUgbWF4IGZyZXEgYXQKPiA+Pj4+ICAg
+IDEwMDhNSFosIGFzPj4KPiA+Pj4+IAo+ID4+Pj4gSSBoYXZlbid0ICB0ZXN0IHRvIDEuNEdIWiAg
+d2l0aCB0aGUgbWFpbmxpbmUga2VybmVsLiBPciBnaXZlIG1lIHNvbWUKPiA+Pj4+IHRpbWUgdG8g
+dGVzdCB0byBzZWUgaWYgdGhlIHJheWVhZ2VyIGJvYXJkIGNhbiBydW4gdG8gMS40RyBzdGFibGUg
+d2l0aAo+ID4+Pj4gdGhlIG1haW5saW5lIC4KPiA+Pj4+IAo+ID4+ICAgICBJIGhhdmUgcnVuIFJh
+eWVhZ2VyICBib2FyZCB3aXRoIGNwdWZyZXEgZnJlZWx5IGNoYW5nZSBmcm9tCj4gPj4gCj4gPj4g
+MzEyTUhafjE0MTZNSFogZm9yIDExIGhvdXJzIG5vdywgaXQncyBzdGFibGUuIE1heWJlIHdlIGNh
+biBzZXQgdGhlCj4gPj4gZGVmYXVsdCBvcHAgdGFibGUgZm9yIHJrMzA2NmEvUFgyIGZyb20gMzEy
+TUhafjE0MTZIWiBpbiBjdXJyZW50Cj4gPj4gbWFpbmxpbmUuCj4gPiAKPiA+IFRoYW5rcyBmb3Ig
+ZG9pbmcgdGhhdCBzdHJlc3MgdGVzdCBhbmQgbWFraW5nIHRoYXQgdGhlIGRlZmF1bHQgc2V0dGlu
+Zwo+ID4gd291bGQgYmUgYSBuaWNlIHdheSB0byBnbyA6LSkgLgo+ID4gCj4gPiBJIGp1c3QgY2hl
+Y2tlZCwgdGhlIG90aGVyIDIgcmszMDY2YSBib2FyZHMgd2UgY3VycmVudGx5IHN1cHBvcnQgKEhh
+eW91Cj4gPiBNYXJzYm9hcmQgYW5kIEJRIEN1cmllMikgdXNlIHRoZSBleGFjdCBzYW1lIHBvd2Vy
+LWxheW91dCAodHBzNjUyMTAgKwo+ID4gcHdtLQo+ID4gcmVndWxhdG9yIGZvciB2ZGRfbG9nKSwg
+c28gc2hvdWxkIGJlIHF1aXRlIHNhdmUgdG8gZG8uCj4gPiAKPiA+IAo+ID4gSGVpa28KPiA+IEhl
+aWtvCj4gCj4gICAgQWN0dWFsbHksIGFsbCB0aGUgcm9ja2NoaXAgcmszMDY2IGJhc2UgcGxhdGZv
+cm0gdXNlIHRoZSBzYW1lIHBvd2VyCj4gc3VwcGx5IGRlc2lnbiggY29udHJvbCB2ZGRfbG9naWMg
+dm9sdGFnZSBieSBwd20pLgo+ICAgIFNvIEkgY2FuIG1vdmUgdGhlIG9wcCB0YWJsZSB3aXRoIG1h
+eCBmcmVxIDE0MTZNSFogdG8gcmszMDY2YS5kdHNpIGFuZAo+IGtlZXAgdGhlIHB3bS1yZWd1bGF0
+b3IgaW4gYm9hcmQgc3BlY2lmaWMgZHRzPwoKWWVwLCBvcHAgaW4gZHRzaSBhbmQgcHdtLXJlZ3Vs
+YXRvciBpbiBib2FyZCBmaWxlcyBpcyB0aGUgY29ycmVjdCBzcGxpdC4KCkkuZS4gdGhhdCB0aGUg
+cHdtMyBpcyBob29rZWQgdXAgdG8gdmRkX2xvZyBpcyBzdGlsbCBhIGJvYXJkLXNwZWNpZmljIHNl
+dHVwIGFzIAp0aGVyZSBpcyBhIHRpbnkgY2hhbmNlIHRoYXQgc29tZSAob3IgZnV0dXJlKSBib2Fy
+ZCBtaWdodCBkaXZlcmdlIGZyb20gdGhhdC4KRm9yIHRoZSBzYW1lIHJlYXNvbiB3ZSdyZSBoYXZp
+bmcgdGhlIG5lYXJseSBzYW1lIHNldHVwIGZvciB0aGUgYWN0ODg0NiBpbiAKbW9zdCBib2FyZCBm
+aWxlcyBhbmQgbm90IGluIHRoZSBjb3JlIGR0c2kuCgoKSGVpa28KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
