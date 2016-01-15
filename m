@@ -1,140 +1,150 @@
-From: Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for orion-r68
-Date: Fri, 15 Jan 2016 10:28:44 -0300
-Message-ID: <CABxcv=m+hK3xS8_fYNns-xE5DaLHD0D_Yj8McjM72Y_5V=YmSw@mail.gmail.com>
-References: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com>
-	<1452863192-29231-2-git-send-email-matthias.bgg@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452863192-29231-2-git-send-email-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Ol
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v3 1/9] ARM: dts: rockchip: add hdmi/vop device node for rk3036
+Date: Fri, 15 Jan 2016 21:49:48 +0800
+Message-ID: <1452865796-23527-2-git-send-email-wxt@rock-chips.com>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Matthias,
+This patch adds the needed display info for rk3036 SOCs.
 
-This is not a complete review but I just wanted to comment on two
-things that I noticed:
+The rk3036 support two overlay plane and one hwc plane,
+it support IOMMU, and its IOMMU same as rk3288's.
+Meanwhile, add the inno hdmi for HDMI display.
 
-On Fri, Jan 15, 2016 at 10:06 AM, Matthias Brugger
-<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+---
 
-[snip]
+Changes in v3: None
 
-> +       };
-> +
-> +       vcc_18: vcc18-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_18";
-> +               regulator-min-microvolt = <1800000>;
-> +               regulator-max-microvolt = <1800000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_sys>;
-> +       };
-> +
-> +       /* supplies both host and otg */
-> +       vcc_host: vcc-host-regulator {
-> +               compatible = "regulator-fixed";
-> +               gpio = <&gpio0 4 GPIO_ACTIVE_LOW>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&host_vbus_drv>;
-> +               regulator-name = "vcc_host";
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_sys>;
-> +       };
-> +
-> +       vccio_sd: vcc-io-sd-regulator {
-> +               regulator-name= "vccio_sd";
-> +               gpio = <&gpio0 9 GPIO_ACTIVE_LOW>;
-> +               regulator-min-microvolt = <3300000>;
-> +               regulator-max-microvolt = <3300000>;
-> +       };
-> +
-> +       vcc_sd: vcc-sd-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_sd";
-> +               gpio = <&gpio3 11 GPIO_ACTIVE_LOW>;
-> +               regulator-min-microvolt = <3300000>;
-> +               regulator-max-microvolt = <3300000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_io>;
-> +       };
-> +
-> +       vcc_io: vcc-io-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_io";
-> +               regulator-min-microvolt = <3300000>;
-> +               regulator-max-microvolt = <3300000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_sys>;
-> +       };
-> +
-> +       vcc_lan: vcc-lan-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_lan";
-> +               regulator-min-microvolt = <3300000>;
-> +               regulator-max-microvolt = <3300000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_io>;
-> +       };
-> +
-> +       vcc_sys: vcc-sys-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vcc_sys";
-> +               regulator-min-microvolt = <5000000>;
-> +               regulator-max-microvolt = <5000000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +       };
-> +
-> +       vccio_wl: vccio-wl-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vccio_wl";
-> +               regulator-min-microvolt = <3300000>;
-> +               regulator-max-microvolt = <3300000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_io>;
-> +       };
-> +
-> +       vdd_10: vdd-10-regulator {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "vdd_10";
-> +               regulator-min-microvolt = <1000000>;
-> +               regulator-max-microvolt = <1000000>;
-> +               regulator-always-on;
-> +               regulator-boot-on;
-> +               vin-supply = <&vcc_sys>;
-> +       };
-> +};
+ arch/arm/boot/dts/rk3036-kylin.dts | 12 +++++++
+ arch/arm/boot/dts/rk3036.dtsi      | 66 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 78 insertions(+)
 
-There is only one regulator that is not marked as always-on. This will
-prevent the regulator subsystem to disable unused regulators. Do you
-really need all of them to be always-on?
-
-> +
-> +&emmc {
-> +       broken-cd;
-> +       bus-width = <8>;
-> +       cap-mmc-highspeed;
-> +       disable-wp;
-> +       mmc-pwrseq = <&emmc_pwrseq>;
-> +       non-removable;
-
-Non-removable assumes always present so there is no need for
-broken-cd. In fact, these two properties are mutually exclusive
-according to Documentation/devicetree/bindings/mmc/mmc.txt.
-
-Best regards,
-Javier
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index b287625..30a9aca 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -88,6 +88,10 @@
+ 	status = "okay";
+ };
+ 
++&hdmi {
++	status = "okay";
++};
++
+ &i2c1 {
+ 	clock-frequency = <400000>;
+ 
+@@ -320,6 +324,14 @@
+ 	status = "okay";
+ };
+ 
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
+ &pinctrl {
+ 	pmic {
+ 		pmic_int: pmic-int {
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index ee457a2..0b128be 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -147,6 +147,42 @@
+ 		};
+ 	};
+ 
++	vop: vop@10118000 {
++		compatible = "rockchip,rk3036-vop";
++		reg = <0x10118000 0x19c>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_LCDC>, <&cru SCLK_LCDC>, <&cru HCLK_LCDC>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		resets = <&cru SRST_LCDC1_A>, <&cru SRST_LCDC1_H>, <&cru SRST_LCDC1_D>;
++		reset-names = "axi", "ahb", "dclk";
++		iommus = <&vop_mmu>;
++
++		status = "disabled";
++
++		vop_out: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vop_out_hdmi: endpoint@0 {
++				reg = <1>;
++				remote-endpoint = <&hdmi_in_vop>;
++			};
++		};
++	};
++
++	display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop_out>;
++	};
++
++	vop_mmu: iommu@10118300 {
++		compatible = "rockchip,iommu";
++		reg = <0x10118300 0x100>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vop_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	gic: interrupt-controller@10139000 {
+ 		compatible = "arm,gic-400";
+ 		interrupt-controller;
+@@ -274,6 +310,27 @@
+ 		status = "disabled";
+ 	};
+ 
++	hdmi: hdmi@20034000 {
++		compatible = "rockchip,rk3036-inno-hdmi";
++		reg = <0x20034000 0x4000>;
++		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru  PCLK_HDMI>;
++		clock-names = "pclk";
++		rockchip,grf = <&grf>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdmi_ctl>;
++		status = "disabled";
++
++		hdmi_in: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			hdmi_in_vop: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&vop_out_hdmi>;
++			};
++		};
++	};
++
+ 	timer: timer@20044000 {
+ 		compatible = "rockchip,rk3036-timer", "rockchip,rk3288-timer";
+ 		reg = <0x20044000 0x20>;
+@@ -588,6 +645,15 @@
+ 			};
+ 		};
+ 
++		hdmi {
++			hdmi_ctl: hdmi-ctl {
++				rockchip,pins = <1 8  RK_FUNC_1 &pcfg_pull_none>,
++						<1 9  RK_FUNC_1 &pcfg_pull_none>,
++						<1 10 RK_FUNC_1 &pcfg_pull_none>,
++						<1 11 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_default>,
+-- 
+1.9.1
