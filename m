@@ -1,105 +1,111 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
- android boot image
-Date: Fri, 15 Jan 2016 08:53:06 +0800
-Message-ID: <569842F2.4080808@rock-chips.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
- <20160114162227.GY3359@bill-the-cat>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: increase vdd_arm voltage for
+ rk3066a-rayeager board
+Date: Fri, 15 Jan 2016 09:11:16 +0800
+Message-ID: <56984734.6000806@rock-chips.com>
+References: <1452774780-16493-1-git-send-email-andy.yan@rock-chips.com>
+ <1452774860-16572-1-git-send-email-andy.yan@rock-chips.com>
+ <1709463.R522kSjgXB@phil> <5697A081.4060903@rock-chips.com>
+ <CANCyOWak0wMNRPxkJtE2DJ1UvCneWxuNXjwjxjM3+_Jjuaahvw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20160114162227.GY3359@bill-the-cat>
-List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CANCyOWak0wMNRPxkJtE2DJ1UvCneWxuNXjwjxjM3+_Jjuaahvw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Eddie Cai <eddie.cai.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tom,
-
-On 2016-1-15 0:22, Tom Rini wrote:
-> On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
->> Hi Tom,
->>
->> On 2016-1-13 23:28, Tom Rini wrote:
->>> On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen wrote:
->>>
->>>> The android kernel is using appended dtb by default, and store
->>>> ramdisk right after kernel & dtb.
->>>> So we needs to relocate ramdisk, and use atags to pass params.
->>>>
->>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>>> Acked-by: Simon Glass <sjg@chromium.org>
->>>> ---
->>>>
->>>> Changes in v4: None
->>>> Changes in v3: None
->>>> Changes in v2: None
->>>>
->>>>   include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
->>>>   1 file changed, 23 insertions(+)
->>>>
->>>> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
->>>> index b750b26..49997ec 100644
->>>> --- a/include/configs/kylin_rk3036.h
->>>> +++ b/include/configs/kylin_rk3036.h
->>>> @@ -35,6 +35,29 @@
->>>>   #undef CONFIG_EXTRA_ENV_SETTINGS
->>>>   #define CONFIG_EXTRA_ENV_SETTINGS \
->>>>   	"partitions=" PARTS_DEFAULT \
->>>> +	"mmcdev=0\0" \
->>>> +	"mmcpart=5\0" \
->>>> +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
->>>> +
->>>> +#define CONFIG_ANDROID_BOOT_IMAGE
->>>> +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
->>> This should already be set.
->> Right, i'll remove it...
->>>> +#define CONFIG_SYS_HUSH_PARSER
->>>> +
->>>> +#undef CONFIG_BOOTCOMMAND
->>>> +#define CONFIG_BOOTCOMMAND \
->>>> +	"mmc dev ${mmcdev}; if mmc rescan; then " \
->>>> +		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
->>>> +		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
->>>> +		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
->>>> +		"bootm start ${loadaddr}; bootm ramdisk;" \
->>>> +		"bootm prep; bootm go;" \
->>>> +	"fi;" \
->>>> +
->>>> +/* Enable atags */
->>>> +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
->>>> +#define CONFIG_INITRD_TAG
->>>> +#define CONFIG_SETUP_MEMORY_TAGS
->>>> +#define CONFIG_CMDLINE_TAG
->>> But I'm confused as to what exactly is going on here.  Appended dtb is
->>> not the same as ATAGS.  And you shouldn't need to split up bootm like
->>> that.  Can you please explain a bit more?  Thanks!
->> The u-boot will pass atags to kernel, and kernel will merge those
->> atags into the appended dtb(fdt).
->>
->> The default bootm flow would not pass ramdisk state, but we need it,
->> so we should add this state into default flow, or just use split
->> bootm cmds :)
-> That seems very strange.  Is the ramdisk concatenated with the kernel
-> and dtb as well (and that's why bootm ramdisk somehow finds it but
-> normal bootm doesn't as you aren't passing in a ramdisk address) ?
-Yes, the ramdisk concatenated with the kernel and dtb as 
-well(u-boot/include/android_image.h: struct andr_img_hdr).
-
-And the normal bootm cmd would find it by parsing andr_img_hdr struct.
-But we still need bootm ramdisk state, because it will call 
-boot_ramdisk_high to relocate ramdisk area :)
-
-I found if not relocate it to somewhere else, it would be corrupted 
-after kernel's decompressing(during update fdt area).
+SGkgSGVpa286CgpPbiAyMDE25bm0MDHmnIgxNOaXpSAyMTo1MCwgRWRkaWUgQ2FpIHdyb3RlOgo+
+IEhpIEhlaWtvCj4KPiBJIGRvbid0IHdhbnQgb3BlbiBzb3VyY2UgdmVyc2lvbiBrZXJuZWwgc3Vw
+cG9ydCB0b28gaGlnaCBmcmVxdWVuY3kuCj4gTWFueSBwZW9wbGUgdXNlIFJLMzA2Ni9QWDIgb24g
+dGhlaXIgYm9hcmQuIFdlIGRvbid0IGtub3cgaWYgdGhlaXIKPiBsYXlvdXQgaXMgZ29vZCBlbm91
+Z2ggdG8gc3VwcG9ydCBoaWdoZXIgZnJlcXVlbmN5LiBpZS4gYmFkIGxheW91dCB3aWxsCj4gY2F1
+c2UgbW9yZSB2b2x0YWdlIGRyb3Agb24gdGhlIFZERF9DUFUgcG93ZXIgcmFpbC4gU28gaXQgbWF5
+IG5lZWQKPiBoaWdoZXIgdm9sdGFnZS4gSSB0aGluayBzdGFibGUgaXMgbW9yZSBpbXBvcnRhbnQg
+aGVyZS4gUGVvcGxlIHdhbnQKPiBoaWdoZXIgZnJlcXVlbmN5IGNhbiBhZGQgbW9yZSBvcHAgZGVw
+ZW5kIG9uIHRoZWlyIGJvYXJkJ3MgbGF5b3V0Lgo+Cj4gMjAxNi0wMS0xNCAyMToyMCBHTVQrMDg6
+MDAgQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPjoKPj4gSGkgSGVpa286Cj4+Cj4+
+Cj4+IE9uIDIwMTblubQwMeaciDE05pelIDIwOjQ1LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+
+IEhpIEFuZHksCj4+Pgo+Pj4gQW0gRG9ubmVyc3RhZywgMTQuIEphbnVhciAyMDE2LCAyMDozNDoy
+MCBzY2hyaWViIEFuZHkgWWFuOgo+Pj4+IFRoZSBjdXJyZW50IHZkZF9hcm0gdm9sdGFnZSBpcyB0
+b28gbG93LCBpbmNyZWFzZSBpdCB3aWxsIG1ha2UKPj4+PiB0aGUgc3lzdGVtIG1vcmUgc3RhYmxl
+Lgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMu
+Y29tPgo+Pj4+IC0tLQo+Pj4+Cj4+Pj4gICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2YS1yYXll
+YWdlci5kdHMgfCA4ICsrKysrKysrCj4+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9u
+cygrKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzA2NmEtcmF5
+ZWFnZXIuZHRzCj4+Pj4gYi9hcmNoL2FybS9ib290L2R0cy9yazMwNjZhLXJheWVhZ2VyLmR0cyBp
+bmRleCAwYmY2ODc2Li4zZDRjMTA0IDEwMDY0NAo+Pj4+IC0tLSBhL2FyY2gvYXJtL2Jvb3QvZHRz
+L3JrMzA2NmEtcmF5ZWFnZXIuZHRzCj4+Pj4gKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDY2
+YS1yYXllYWdlci5kdHMKPj4+PiBAQCAtMTU5LDYgKzE1OSwxNCBAQAo+Pj4+Cj4+Pj4gICAgJmNw
+dTAgewo+Pj4+ICAgICAgICAgIGNwdTAtc3VwcGx5ID0gPCZ2ZGRfYXJtPjsKPj4+PiArICAgICAg
+IG9wZXJhdGluZy1wb2ludHMgPSA8Cj4+Pj4gKyAgICAgICAgICAgICAgIC8qIGtIeiAgICB1ViAq
+Lwo+Pj4+ICsgICAgICAgICAgICAgICAxMDA4MDAwIDExMjUwMDAKPj4+PiArICAgICAgICAgICAg
+ICAgODE2MDAwICAxMTI1MDAwCj4+Pj4gKyAgICAgICAgICAgICAgIDYwMDAwMCAgMTEwMDAwMAo+
+Pj4+ICsgICAgICAgICAgICAgICA1MDQwMDAgIDExMDAwMDAKPj4+PiArICAgICAgICAgICAgICAg
+MzEyMDAwICAxMDc1MDAwCj4+Pj4gKyAgICAgICA+Owo+Pj4+ICAgIH07Cj4+Pj4KPj4+PiAgICAm
+ZW1hYyB7Cj4+PiBEb2VzIHRoaXMgb25seSBhcHBseSB0byB0aGUgcmF5ZWFnZXItYm9hcmQgLyBw
+eDIgc29jIG9yIGZvciBhbGwKPj4+IHJrMzA2NmEvcHgyCj4+PiBib2FyZHM/IEkuZS4gdGhlIG9y
+aWdpbmFsIHZhbHVlcyBjb21lIGZyb20gc29tZSBzZGsga2VybmVsIGFuZCBJIG1pZ2h0J3ZlCj4+
+PiB0cmFuc2NyaWJlZCB0aGF0IHdyb25nIGF0IHRoZSB0aW1lIGFuZCBJIHJlbWVtYmVyIGhhdmlu
+ZyBwcm9ibGVtcyB0cnlpbmcKPj4+IHRvCj4+PiByZWFjaCBoaWdoZXIgZnJlcXVlbmNpZXMgYXMg
+d2VsbC4KPj4+Cj4+PiBTbyBjb3VsZCB5b3UgY2hlY2sgd2hhdCB0aGUgZnVsbCBvcGVyYXRpbmcg
+cG9pbnRzIGxvb2tzIGxpa2UgZm9yIGJvdGggYW5kCj4+PiBpZgo+Pj4gdGhpcyBjYW4gbW92ZSB0
+byB0aGUgcmszMDY2YS5kdHNpLCBhcyBib3RoIHNob3VsZCBiZSBhYmxlIHRvIHJlYWNoIGF0Cj4+
+PiBsZWFzdAo+Pj4gMS40R0h6IC8gMS42R0h6Lgo+Pj4KPj4+Cj4+PiBUaGFua3MKPj4+IEhlaWtv
+Cj4+Pgo+Pj4gX19fX19fCj4+Cj4+ICAgICAgSSBoYXZlIGNoZWNrZWQgdGhlIHNkayBrZXJuZWws
+IHRoZSBvcHAgZm9yIHRoZSBzZGsgYm9hcmQgaXMgbGlrZSBiZWxsb3c6Cj4+Cj4+ICAgLyoqCj4+
+ICAgKiBkdmZzX2NwdV9sb2dpY190YWJsZTogdGFibGUgZm9yIGFybSBhbmQgbG9naWMgZHZmcwo+
+PiAgICogQGZyZXF1ZW5jeSAgIDogYXJtIGZyZXF1ZW5jeQo+PiAgICogQGNwdV92b2x0ICAgIDog
+YXJtIHZvbHRhZ2UgZGVwZW5kIG9uIGZyZXF1ZW5jeQo+PiAgICogQGxvZ2ljX3ZvbHQgIDogbG9n
+aWMgdm9sdGFnZSBhcm0gcmVxdWVzdHMgZGVwZW5kIG9uIGZyZXF1ZW5jeQo+PiAgICogY29tbWVu
+dHMgICAgIDogbWluIGFybS9sb2dpYyB2b2x0YWdlCj4+ICAgKi8KPj4gc3RhdGljIHN0cnVjdCBk
+dmZzX2FybV90YWJsZSBkdmZzX2NwdV9sb2dpY190YWJsZVtdID0gewo+PiAgICAgICAgICB7LmZy
+ZXF1ZW5jeSA9IDI1MiAqIDEwMDAsICAgICAgIC5jcHVfdm9sdCA9IDEwNzUgKiAxMDAwLAo+PiAu
+bG9naWNfdm9sdCA9IDExMjUgKiAxMDAwfSwvLzAuOTc1Vi8xLjAwMFYKPj4gICAgICAgICAgey5m
+cmVxdWVuY3kgPSA1MDQgKiAxMDAwLCAgICAgICAuY3B1X3ZvbHQgPSAxMTAwICogMTAwMCwKPj4g
+LmxvZ2ljX3ZvbHQgPSAxMTI1ICogMTAwMH0sLy8wLjk3NVYvMS4wMDBWCj4+ICAgICAgICAgIHsu
+ZnJlcXVlbmN5ID0gODE2ICogMTAwMCwgICAgICAgLmNwdV92b2x0ID0gMTEyNSAqIDEwMDAsCj4+
+IC5sb2dpY192b2x0ID0gMTE1MCAqIDEwMDB9LC8vMS4wMDBWLzEuMDI1Vgo+PiAgICAgICAgICB7
+LmZyZXF1ZW5jeSA9IDEwMDggKiAxMDAwLCAgICAgIC5jcHVfdm9sdCA9IDExMjUgKiAxMDAwLAo+
+PiAubG9naWNfdm9sdCA9IDExNTAgKiAxMDAwfSwvLzEuMDI1Vi8xLjA1MFYKPj4gICAgICAgICAg
+ey5mcmVxdWVuY3kgPSAxMjAwICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMTc1ICogMTAwMCwK
+Pj4gLmxvZ2ljX3ZvbHQgPSAxMjAwICogMTAwMH0sLy8xLjEwMFYvMS4wNTBWCj4+ICAgICAgICAg
+IHsuZnJlcXVlbmN5ID0gMTI3MiAqIDEwMDAsICAgICAgLmNwdV92b2x0ID0gMTIyNSAqIDEwMDAs
+Cj4+IC5sb2dpY192b2x0ID0gMTIwMCAqIDEwMDB9LC8vMS4xNTBWLzEuMTAwVgo+PiAgICAgICAg
+ICB7LmZyZXF1ZW5jeSA9IDE0MTYgKiAxMDAwLCAgICAgIC5jcHVfdm9sdCA9IDEzMDAgKiAxMDAw
+LAo+PiAubG9naWNfdm9sdCA9IDEyMDAgKiAxMDAwfSwvLzEuMjI1Vi8xLjEwMFYKPj4gICAgICAg
+ICAgey5mcmVxdWVuY3kgPSAxNTEyICogMTAwMCwgICAgICAuY3B1X3ZvbHQgPSAxMzUwICogMTAw
+MCwKPj4gLmxvZ2ljX3ZvbHQgPSAxMjUwICogMTAwMH0sLy8xLjMwMFYvMS4xNTBWCj4+ICAgICAg
+ICAgIHsuZnJlcXVlbmN5ID0gMTYwOCAqIDEwMDAsICAgICAgLmNwdV92b2x0ID0gMTQyNSAqIDEw
+MDAsCj4+IC5sb2dpY192b2x0ID0gMTMwMCAqIDEwMDB9LC8vMS4zMjVWLzEuMTc1Vgo+PiAgICAg
+ICAgICB7LmZyZXF1ZW5jeSA9IENQVUZSRVFfVEFCTEVfRU5EfSwKPj4gfTsKPj4KPj4gICBUaGlz
+IHRhYmxlIGlzIG1hZGUgYmFzZSBvbiBtYXNzIHN0cmVzcyB0ZXN0LiBTbyBpcyBhIHNhZmUgb3Bw
+IHRhYmxlIGZvcgo+PiBtb3N0IHJrMzA2NmEgYmFzZSBib2FyZHMuIEJ1dCBpdCBzb21lCj4+ICAg
+Ym9hcmQgaXMgbm90IHNvIHdlbGwgaW4gcG93ZXIgc3VwcGx5IGNpcmN1aXQgZGVzaWduLCB0aGUg
+bWF5IGFsc28gbmVlZCB0bwo+PiBhZGp1c3QgaXQuCj4+Cj4+ICAgRnJvbSB0aGUgdGFibGUgd2Ug
+c2VlIHRoYXQgdGhlIGxvZ2ljX3ZvbHRhZ2UgbmVlZCB0byBpbmNyZWFzZSAgYXMgdGhlCj4+IGNw
+dWZyZXEgaW5jcmVhc2UuIEJ1dCBpdCBzZWVtcyB0aGF0IHRoZSBjdXJyZW50IG1haW5saW5lIGtl
+cm5lbCBkb2VzIG5vdAo+PiBzdXBwb3J0IGFkanVzdCB0aGUgbG9naWMgdm9sdGFnZSB3aGVuIGNw
+dWZyZXEgY2hhbmdlLiBTbyB3ZSBjYW4gb25seSBzY2FsZQo+PiB0aGUgY3B1ZnJlcSB0byAxLjRH
+SFogYnkgZml4ZWQgdGhlIGxvZ2ljX3ZvbHQgYXQgMS4yVi4KPj4KPj4gICBJZiB5b3UgbGlrZSwg
+SSBjYW4gbW92ZSBpdCB0byByazMwNjZhLmR0c2kgd2l0aCB0aGUgbWF4IGZyZXEgYXQgMTAwOE1I
+WiwgYXMKPj4gSSBoYXZlbid0ICB0ZXN0IHRvIDEuNEdIWiAgd2l0aCB0aGUgbWFpbmxpbmUga2Vy
+bmVsLiBPciBnaXZlIG1lIHNvbWUgdGltZSB0bwo+PiB0ZXN0IHRvIHNlZSBpZiB0aGUgcmF5ZWFn
+ZXIgYm9hcmQgY2FuIHJ1biB0byAxLjRHIHN0YWJsZSB3aXRoIHRoZSBtYWlubGluZSAuCj4+Cj4+
+CgogICBJIGhhdmUgcnVuIFJheWVhZ2VyICBib2FyZCB3aXRoIGNwdWZyZXEgZnJlZWx5IGNoYW5n
+ZSBmcm9tIAozMTJNSFp+MTQxNk1IWiBmb3IgMTEgaG91cnMgbm93LCBpdCdzIHN0YWJsZS4gTWF5
+YmUgd2UgY2FuIHNldCB0aGUgCmRlZmF1bHQgb3BwIHRhYmxlIGZvciByazMwNjZhL1BYMiBmcm9t
+IDMxMk1IWn4xNDE2SFogaW4gY3VycmVudCBtYWlubGluZS4KCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
