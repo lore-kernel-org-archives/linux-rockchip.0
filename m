@@ -1,87 +1,139 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 7/9] ARM: dts: rockchip: add the sdmmc for kylin board
-Date: Fri, 15 Jan 2016 21:49:54 +0800
-Message-ID: <1452865796-23527-8-git-send-email-wxt@rock-chips.com>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for orion-r68
+Date: Fri, 15 Jan 2016 15:03:52 +0100
+Message-ID: <2174023.jkjdoEECkq@phil>
+References: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com> <1452863192-29231-2-git-send-email-matthias.bgg@gmail.com> <CABxcv=m+hK3xS8_fYNns-xE5DaLHD0D_Yj8McjM72Y_5V=YmSw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452865796-23527-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CABxcv=m+hK3xS8_fYNns-xE5DaLHD0D_Yj8McjM72Y_5V=YmSw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, mbrugger-IBi9RG/b67k@public.gmane.org, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Olof
 List-Id: linux-rockchip.vger.kernel.org
 
-Although We can add the sdmmc node, shouldn't enable it.
-Since the sdmmc is reusing the same pin with uart2.
-Unfortunately, the uart2 is used by the debug port, so that will cause
-the debug information can't display on console if enabling the sdmmc.
+Hi Javier,
 
-As we have supported the sdmmc (sd card) on hardware for kylin board.
-So, maybe we can have the sdmmc node in kylin dts, not to enable it.
+Am Freitag, 15. Januar 2016, 10:28:44 schrieb Javier Martinez Canillas:
+> This is not a complete review but I just wanted to comment on two
+> things that I noticed:
 
-Anyway, you only need add the okay status if someone want to enable the
-sdmmc.
+same for me for now :-)
 
-e.g.
-if you use the adb to debug with android os.
-You can add the
-status = "okay" to enable the sdmmc for sd card working.
-The defauly status is disabling it.
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> On Fri, Jan 15, 2016 at 10:06 AM, Matthias Brugger
+> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> 
+> [snip]
+> 
+> > +       };
+> > +
+> > +       vcc_18: vcc18-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vcc_18";
+> > +               regulator-min-microvolt = <1800000>;
+> > +               regulator-max-microvolt = <1800000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_sys>;
+> > +       };
+> > +
+> > +       /* supplies both host and otg */
+> > +       vcc_host: vcc-host-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               gpio = <&gpio0 4 GPIO_ACTIVE_LOW>;
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&host_vbus_drv>;
+> > +               regulator-name = "vcc_host";
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_sys>;
+> > +       };
+> > +
+> > +       vccio_sd: vcc-io-sd-regulator {
+> > +               regulator-name= "vccio_sd";
+> > +               gpio = <&gpio0 9 GPIO_ACTIVE_LOW>;
+> > +               regulator-min-microvolt = <3300000>;
+> > +               regulator-max-microvolt = <3300000>;
+> > +       };
+> > +
+> > +       vcc_sd: vcc-sd-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vcc_sd";
+> > +               gpio = <&gpio3 11 GPIO_ACTIVE_LOW>;
+> > +               regulator-min-microvolt = <3300000>;
+> > +               regulator-max-microvolt = <3300000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_io>;
+> > +       };
+> > +
+> > +       vcc_io: vcc-io-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vcc_io";
+> > +               regulator-min-microvolt = <3300000>;
+> > +               regulator-max-microvolt = <3300000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_sys>;
+> > +       };
+> > +
+> > +       vcc_lan: vcc-lan-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vcc_lan";
+> > +               regulator-min-microvolt = <3300000>;
+> > +               regulator-max-microvolt = <3300000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_io>;
+> > +       };
+> > +
+> > +       vcc_sys: vcc-sys-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vcc_sys";
+> > +               regulator-min-microvolt = <5000000>;
+> > +               regulator-max-microvolt = <5000000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +       };
+> > +
+> > +       vccio_wl: vccio-wl-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vccio_wl";
+> > +               regulator-min-microvolt = <3300000>;
+> > +               regulator-max-microvolt = <3300000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_io>;
+> > +       };
+> > +
+> > +       vdd_10: vdd-10-regulator {
+> > +               compatible = "regulator-fixed";
+> > +               regulator-name = "vdd_10";
+> > +               regulator-min-microvolt = <1000000>;
+> > +               regulator-max-microvolt = <1000000>;
+> > +               regulator-always-on;
+> > +               regulator-boot-on;
+> > +               vin-supply = <&vcc_sys>;
+> > +       };
+> > +};
+> 
+> There is only one regulator that is not marked as always-on. This will
+> prevent the regulator subsystem to disable unused regulators. Do you
+> really need all of them to be always-on?
 
----
+I do believe the regulators should be more or less correct. Sadly there are 
+no real schematics for that specific device available, but the reference 
+design for rk3368-based tv-boxes uses a hirarchy of hard-wired individual 
+regulators without any ability to control for most of them [aka always on].
 
-Changes in v3:
-- fix the commit content in sdmmc patch.
+And due to the r68 not sporting any different real pmic, I'd believe the 
+Orion will most likely also follow that scheme.
 
- arch/arm/boot/dts/rk3036-kylin.dts | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index d30a6dd..8bdbb95 100644
---- a/arch/arm/boot/dts/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -335,6 +335,17 @@
- 	pinctrl-0 = <&sdio_clk &sdio_cmd &sdio_bus4>;
- };
- 
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	card-detect-delay = <200>;
-+	disable-wp;
-+	num-slots = <1>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_cd>, <&sdmmc_bus4>;
-+};
-+
- &uart2 {
- 	status = "okay";
- };
-@@ -372,6 +383,12 @@
- 		};
- 	};
- 
-+	sdmmc {
-+		sdmmc_pwr: sdmmc-pwr {
-+			rockchip,pins = <2 28 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	sleep {
- 		global_pwroff: global-pwroff {
- 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
--- 
-1.9.1
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
