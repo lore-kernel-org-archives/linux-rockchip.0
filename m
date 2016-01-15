@@ -1,126 +1,235 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
- android boot image
-Date: Fri, 15 Jan 2016 10:20:43 +0800
-Message-ID: <5698577B.8040209@rock-chips.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
- <20160114162227.GY3359@bill-the-cat> <569842F2.4080808@rock-chips.com>
- <20160115005950.GC3359@bill-the-cat>
+From: "David.Wu" <wdc@rock-chips.com>
+Subject: Re: [PATCH v3 2/4] i2c: rk3x: add ops to caculate i2c clocks
+Date: Fri, 15 Jan 2016 16:34:44 +0800
+Message-ID: <5698AF24.2030202@rock-chips.com>
+References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
+ <1452774699-57455-3-git-send-email-david.wu@rock-chips.com>
+ <CAHp75VdR01_suo3nTWuuT2OEusy6z6KGSg29LKD8T3kY9eGMPA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20160115005950.GC3359@bill-the-cat>
-List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <CAHp75VdR01_suo3nTWuuT2OEusy6z6KGSg29LKD8T3kY9eGMPA@mail.gmail.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Andy Shevchenko <andy.shevchenko@gmail.com>, David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Douglas Anderson <dianders@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, cf@rock-chips.com, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tom,
 
-On 2016-1-15 8:59, Tom Rini wrote:
-> On Fri, Jan 15, 2016 at 08:53:06AM +0800, Jeffy Chen wrote:
->> Hi Tom,
->>
->> On 2016-1-15 0:22, Tom Rini wrote:
->>> On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
->>>> Hi Tom,
->>>>
->>>> On 2016-1-13 23:28, Tom Rini wrote:
->>>>> On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen wrote:
->>>>>
->>>>>> The android kernel is using appended dtb by default, and store
->>>>>> ramdisk right after kernel & dtb.
->>>>>> So we needs to relocate ramdisk, and use atags to pass params.
->>>>>>
->>>>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>>>>> Acked-by: Simon Glass <sjg@chromium.org>
->>>>>> ---
->>>>>>
->>>>>> Changes in v4: None
->>>>>> Changes in v3: None
->>>>>> Changes in v2: None
->>>>>>
->>>>>>   include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
->>>>>>   1 file changed, 23 insertions(+)
->>>>>>
->>>>>> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
->>>>>> index b750b26..49997ec 100644
->>>>>> --- a/include/configs/kylin_rk3036.h
->>>>>> +++ b/include/configs/kylin_rk3036.h
->>>>>> @@ -35,6 +35,29 @@
->>>>>>   #undef CONFIG_EXTRA_ENV_SETTINGS
->>>>>>   #define CONFIG_EXTRA_ENV_SETTINGS \
->>>>>>   	"partitions=" PARTS_DEFAULT \
->>>>>> +	"mmcdev=0\0" \
->>>>>> +	"mmcpart=5\0" \
->>>>>> +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
->>>>>> +
->>>>>> +#define CONFIG_ANDROID_BOOT_IMAGE
->>>>>> +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
->>>>> This should already be set.
->>>> Right, i'll remove it...
->>>>>> +#define CONFIG_SYS_HUSH_PARSER
->>>>>> +
->>>>>> +#undef CONFIG_BOOTCOMMAND
->>>>>> +#define CONFIG_BOOTCOMMAND \
->>>>>> +	"mmc dev ${mmcdev}; if mmc rescan; then " \
->>>>>> +		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
->>>>>> +		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
->>>>>> +		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
->>>>>> +		"bootm start ${loadaddr}; bootm ramdisk;" \
->>>>>> +		"bootm prep; bootm go;" \
->>>>>> +	"fi;" \
->>>>>> +
->>>>>> +/* Enable atags */
->>>>>> +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
->>>>>> +#define CONFIG_INITRD_TAG
->>>>>> +#define CONFIG_SETUP_MEMORY_TAGS
->>>>>> +#define CONFIG_CMDLINE_TAG
->>>>> But I'm confused as to what exactly is going on here.  Appended dtb is
->>>>> not the same as ATAGS.  And you shouldn't need to split up bootm like
->>>>> that.  Can you please explain a bit more?  Thanks!
->>>> The u-boot will pass atags to kernel, and kernel will merge those
->>>> atags into the appended dtb(fdt).
->>>>
->>>> The default bootm flow would not pass ramdisk state, but we need it,
->>>> so we should add this state into default flow, or just use split
->>>> bootm cmds :)
->>> That seems very strange.  Is the ramdisk concatenated with the kernel
->>> and dtb as well (and that's why bootm ramdisk somehow finds it but
->>> normal bootm doesn't as you aren't passing in a ramdisk address) ?
->> Yes, the ramdisk concatenated with the kernel and dtb as
->> well(u-boot/include/android_image.h: struct andr_img_hdr).
->>
->> And the normal bootm cmd would find it by parsing andr_img_hdr struct.
->> But we still need bootm ramdisk state, because it will call
->> boot_ramdisk_high to relocate ramdisk area :)
->>
->> I found if not relocate it to somewhere else, it would be corrupted
->> after kernel's decompressing(during update fdt area).
-> So 'bootm $loadaddr' of an Android image sees, but does not relocate the
-> ramdisk that is included in the image, but bootm ramdisk does?  That
-> sounds like a bug in the regular bootm handling.
-Yep, the default bootm flow would not contain ramdisk relocate state:
+Hi Andy,
 
-vi common/cmd_bootm.c
-         return do_bootm_states(cmdtp, flag, argc, argv, BOOTM_STATE_START |
-                 BOOTM_STATE_FINDOS | BOOTM_STATE_FINDOTHER |
-                 BOOTM_STATE_LOADOS |
-#if defined(CONFIG_PPC) || defined(CONFIG_MIPS)
-                 BOOTM_STATE_OS_CMDLINE |
-#endif
-                 BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO |
-                 BOOTM_STATE_OS_GO, &images, 1);
+=E5=9C=A8 2016/1/14 21:19, Andy Shevchenko =E5=86=99=E9=81=93:
+> On Thu, Jan 14, 2016 at 2:31 PM, David Wu <david.wu@rock-chips.com> w=
+rote:
+>> From: David Wu <wdc@rock-chips.com>
+>>
+>> I2c Controller of rk3x is updated for the rules to caculate clocks.
+>> So it need a new method to caculate i2c clock timing information
+>> for new version. The current method is defined as v0, and new is
+>> v1, next maybe v2......
+> Thanks for an update. My comments below.
+>
+>> --- a/drivers/i2c/busses/i2c-rk3x.c
+>> +++ b/drivers/i2c/busses/i2c-rk3x.c
+>> @@ -90,10 +95,27 @@ struct rk3x_i2c_soc_data {
+>>          int grf_offset;
+>>   };
+>>
+>> +/**
+>> + * struct rk3x_priv_i2c_timings - rk3x I2C timing information
+>> + * @div_low: Divider output for low
+>> + * @div_high: Divider output for high
+>> + */
+>> +struct rk3x_priv_i2c_timings {
+>> +       unsigned long div_low;
+>> +       unsigned long div_high;
+>> +};
+>> +
+>> +struct rk3x_i2c_ops {
+>> +       int (*calc_clock)(unsigned long,
+>> +                         struct i2c_timings *,
+>> +                         struct rk3x_priv_i2c_timings *);
+>> +};
+>> +
+>>   struct rk3x_i2c {
+>>          struct i2c_adapter adap;
+>>          struct device *dev;
+>>          struct rk3x_i2c_soc_data *soc_data;
+>> +       struct rk3x_i2c_ops ops;
+> Not much sense for now to have a struct for one member.
 
-But i'm not sure if it's ok to add it here...
+Yes, it looks ok not to do change here.
+
+>>          /* Hardware resources */
+>>          void __iomem *regs;
+>> @@ -102,6 +124,7 @@ struct rk3x_i2c {
+>>
+> What about
+>        /* I2C timing settings */
+>        struct i2c_timings t;
+>
+>        /* Divider settings */
+>        int (*calc_divs)(unsigned long,
+>                          struct i2c_timings *,
+>                          unsigned long *div_low,
+>                          unsigned long *div_high);
+>        unsigned long div_low;
+>        unsigned long div_high;
+> ?
+>
+> As far as I understand you still calculate divider values.
+>
+>>          /* Synchronization & notification */
+>>          spinlock_t lock;
+>> @@ -431,21 +454,20 @@ out:
+>>   }
+>>
+>>   /**
+>> - * Calculate divider values for desired SCL frequency
+>> + * Calculate timing clock info values for desired SCL frequency
+>>    *
+>>    * @clk_rate: I2C input clock rate
+>> - * @t_input: Known I2C timing information.
+>> - * @div_low: Divider output for low
+>> - * @div_high: Divider output for high
+> For now seems better to leave this prototype.
+>
+>> + * @t_input: Known I2C timing information
+>> + * @t_output: Caculated rk3x private timing information that would
+>> + * be written into regs
+>>    *
+>>    * Returns: 0 on success, -EINVAL if the goal SCL rate is too slow=
+=2E In that case
+>>    * a best-effort divider value is returned in divs. If the target =
+rate is
+>>    * too high, we silently use the highest possible rate.
+>>    */
+>> -static int rk3x_i2c_calc_divs(unsigned long clk_rate,
+>> -                             struct i2c_timings *t_input,
+>> -                             unsigned long *div_low,
+>> -                             unsigned long *div_high)
+>> +static int rk3x_i2c_v0_calc_clock(unsigned long clk_rate,
+>> +                                 struct i2c_timings *t_input,
+>> +                                 struct rk3x_priv_i2c_timings *t_ou=
+tput)
+>>   {
+>>          unsigned long spec_min_low_ns, spec_min_high_ns;
+>>          unsigned long spec_setup_start, spec_max_data_hold_ns;
+>
+>> @@ -583,25 +605,25 @@ static int rk3x_i2c_calc_divs(unsigned long cl=
+k_rate,
+>>
+>>                  /* Give low the "ideal" and give high whatever extr=
+a is left */
+>>                  extra_low_div =3D ideal_low_div - min_low_div;
+>> -               *div_low =3D ideal_low_div;
+>> -               *div_high =3D min_high_div + (extra_div - extra_low_=
+div);
+>> +               t_output->div_low =3D ideal_low_div;
+>> +               t_output->div_high =3D min_high_div + (extra_div - e=
+xtra_low_div);
+>>          }
+>>
+>>          /*
+>>           * Adjust to the fact that the hardware has an implicit "+1=
+".
+>>           * NOTE: Above calculations always produce div_low > 0 and =
+div_high > 0.
+>>           */
+>> -       *div_low =3D *div_low - 1;
+>> -       *div_high =3D *div_high - 1;
+>> +       t_output->div_low =3D t_output->div_low - 1;
+> -=3D 1
+>
+>> +       t_output->div_high =3D t_output->div_high - 1;
+> Ditto.
+>
+> But without change of prototype those no needed.
+>
+>>          /* Maximum divider supported by hw is 0xffff */
+>> -       if (*div_low > 0xffff) {
+>> -               *div_low =3D 0xffff;
+>> +       if (t_output->div_low > 0xffff) {
+>> +               t_output->div_low =3D 0xffff;
+>>                  ret =3D -EINVAL;
+>>          }
+>>
+>> -       if (*div_high > 0xffff) {
+>> -               *div_high =3D 0xffff;
+>> +       if (t_output->div_high > 0xffff) {
+>> +               t_output->div_high =3D 0xffff;
+>>                  ret =3D -EINVAL;
+>>          }
+>>
+>> @@ -610,19 +632,21 @@ static int rk3x_i2c_calc_divs(unsigned long cl=
+k_rate,
+>>
+>>   static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long=
+ clk_rate)
+>>   {
+>> -       unsigned long div_low, div_high;
+>>          u64 t_low_ns, t_high_ns;
+>>          int ret;
+>>
+>> -       ret =3D rk3x_i2c_calc_divs(clk_rate, &i2c->t, &div_low, &div=
+_high);
+>> +       ret =3D i2c->ops.calc_clock(clk_rate, &i2c->t, &i2c->t_priv)=
+;
+>>          WARN_ONCE(ret !=3D 0, "Could not reach SCL freq %u", i2c->t=
+=2Ebus_freq_hz);
+>>
+>>          clk_enable(i2c->clk);
+>> -       i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff), REG_C=
+LKDIV);
+>> +       i2c_writel(i2c, (i2c->t_priv.div_high << 16) |
+>> +                 (i2c->t_priv.div_low & 0xffff), REG_CLKDIV);
+>>          clk_disable(i2c->clk);
+>>
+>> -       t_low_ns =3D div_u64(((u64)div_low + 1) * 8 * 1000000000, cl=
+k_rate);
+>> -       t_high_ns =3D div_u64(((u64)div_high + 1) * 8 * 1000000000, =
+clk_rate);
+>> +       t_low_ns =3D div_u64(((u64)i2c->t_priv.div_low + 1) * 8 * 10=
+00000000,
+>> +                          clk_rate);
+>> +       t_high_ns =3D div_u64(((u64)i2c->t_priv.div_high + 1) * 8 * =
+1000000000,
+>> +                           clk_rate);
+>>          dev_dbg(i2c->dev,
+>>                  "CLK %lukhz, Req %uns, Act low %lluns high %lluns\n=
+",
+>>                  clk_rate / 1000,
+>> @@ -652,12 +676,11 @@ static int rk3x_i2c_clk_notifier_cb(struct not=
+ifier_block *nb, unsigned long
+>>   {
+>>          struct clk_notifier_data *ndata =3D data;
+>>          struct rk3x_i2c *i2c =3D container_of(nb, struct rk3x_i2c, =
+clk_rate_nb);
+>> -       unsigned long div_low, div_high;
+>>
+>>          switch (event) {
+>>          case PRE_RATE_CHANGE:
+>> -               if (rk3x_i2c_calc_divs(ndata->new_rate, &i2c->t,
+>> -                                      &div_low, &div_high) !=3D 0)
+>> +               if (i2c->ops.calc_clock(ndata->new_rate, &i2c->t,
+>> +                                       &i2c->t_priv) !=3D 0)
+>>                          return NOTIFY_STOP;
+>>
+>>                  /* scale up */
+>> @@ -861,6 +884,7 @@ static int rk3x_i2c_probe(struct platform_device=
+ *pdev)
+>>          u32 value;
+>>          int irq;
+>>          unsigned long clk_rate;
+>> +       unsigned int version;
+> No need to have a separate variable=E2=80=A6
+>
+>> +       version =3D (readl(i2c->regs + REG_CON) & VERSION_MASK) >> V=
+ERSION_SHIFT;
+>> +       if (version =3D=3D RK3X_I2C_V0)
+>> +               i2c->ops.calc_clock =3D rk3x_i2c_v0_calc_clock;
+> value =3D readl(i2c->regs + REG_CON);
+> if ((value & VERSION_MASK) >> VERSION_SHIFT) =3D=3D RK3X_I2C_V0)
+>    i2c->ops.calc_clock =3D rk3x_i2c_v0_calc_clock;
+>
