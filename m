@@ -1,62 +1,156 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v3 2/2] dt-bindings: add document for Innosilicon HDMI on
- Rockchip platform
-Date: Fri, 15 Jan 2016 17:38:19 +0800
-Message-ID: <1452850699-31811-1-git-send-email-ykk@rock-chips.com>
-References: <1452850598-30859-1-git-send-email-ykk@rock-chips.com>
+From: "David.Wu" <wdc@rock-chips.com>
+Subject: Re: [PATCH v3 3/4] i2c: rk3x: new method to calculate i2c clocks
+Date: Fri, 15 Jan 2016 17:39:13 +0800
+Message-ID: <5698BE41.30005@rock-chips.com>
+References: <1452774699-57455-1-git-send-email-david.wu@rock-chips.com>
+ <1452774699-57455-4-git-send-email-david.wu@rock-chips.com>
+ <CAD=FV=UXMzEQiKcMa7VjDx+arcbRo1e-0HPHBnG8GP7k6uFt1g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452850598-30859-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UXMzEQiKcMa7VjDx+arcbRo1e-0HPHBnG8GP7k6uFt1g@mail.gmail.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, andy.shevchenko@gmail.com, Tao Huang <huangtao@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Lin Huang <hl@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-U2lnbmVkLW9mZi1ieTogWWFraXIgWWFuZyA8eWtrQHJvY2stY2hpcHMuY29tPgpBY2tlZC1ieTog
-Um9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4KLS0tCkNoYW5nZXMgaW4gdjM6IE5vbmUKQ2hh
-bmdlcyBpbiB2MjoKLSBDb3JyZWN0IHRoZSBtaXNzcGVsbCAicmszMDM2LWR3LWhkbWkiIChIZWlr
-bykKCiAuLi4vZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0ICAgICAgICB8
-IDUwICsrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA1MCBpbnNlcnRpb25z
-KCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAoKZGlmZiAtLWdpdCBhL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2lubm9faGRt
-aS1yb2NrY2hpcC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
-eS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0Cm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cmlu
-ZGV4IDAwMDAwMDAuLjgwOTZhMjkKLS0tIC9kZXYvbnVsbAorKysgYi9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9pbm5vX2hkbWktcm9ja2NoaXAudHh0
-CkBAIC0wLDAgKzEsNTAgQEAKK1JvY2tjaGlwIHNwZWNpZmljIGV4dGVuc2lvbnMgdG8gdGhlIElu
-bm9zaWxpY29uIEhETUkKKz09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CisKK1JlcXVp
-cmVkIHByb3BlcnRpZXM6CistIGNvbXBhdGlibGU6CisJInJvY2tjaGlwLHJrMzAzNi1pbm5vLWhk
-bWkiOworLSByZWc6CisJUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNv
-bnRyb2xsZXIncyByZWdpc3RlcnMuCistIGNsb2NrcywgY2xvY2stbmFtZXM6CisJUGhhbmRsZSB0
-byBoZG1pIGNvbnRyb2xsZXIgY2xvY2ssIG5hbWUgc2hvdWxkIGJlICJwY2xrIgorLSBpbnRlcnJ1
-cHRzOgorCUhETUkgaW50ZXJydXB0IG51bWJlcgorLSBwb3J0czoKKwlDb250YWluIG9uZSBwb3J0
-IG5vZGUgd2l0aCBlbmRwb2ludCBkZWZpbml0aW9ucyBhcyBkZWZpbmVkIGluCisJRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dyYXBoLnR4dC4KKy0gcGluY3RybC0wLCBwaW5jdHJs
-LW5hbWU6CisJU3dpdGNoIHRoZSBpb211eCBvZiBIUEQvQ0VDIHBpbnMgdG8gSERNSSBmdW5jdGlv
-bi4KKworRXhhbXBsZToKK2hkbWk6IGhkbWlAMjAwMzQwMDAgeworCWNvbXBhdGlibGUgPSAicm9j
-a2NoaXAscmszMDM2LWlubm8taGRtaSI7CisJcmVnID0gPDB4MjAwMzQwMDAgMHg0MDAwPjsKKwlp
-bnRlcnJ1cHRzID0gPEdJQ19TUEkgNDUgSVJRX1RZUEVfTEVWRUxfSElHSD47CisJY2xvY2tzID0g
-PCZjcnUgIFBDTEtfSERNST47CisJY2xvY2stbmFtZXMgPSAicGNsayI7CisJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKKwlwaW5jdHJsLTAgPSA8JmhkbWlfY3RsPjsKKwlzdGF0dXMgPSAiZGlz
-YWJsZWQiOworCisJaGRtaV9pbjogcG9ydCB7CisJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkj
-c2l6ZS1jZWxscyA9IDwwPjsKKwkJaGRtaV9pbl9sY2RjOiBlbmRwb2ludEAwIHsKKwkJCXJlZyA9
-IDwwPjsKKwkJCXJlbW90ZS1lbmRwb2ludCA9IDwmbGNkY19vdXRfaGRtaT47CisJCX07CisJfTsK
-K307CisKKyZwaW5jdHJsIHsKKwloZG1pIHsKKwkJaGRtaV9jdGw6IGhkbWktY3RsIHsKKwkJCXJv
-Y2tjaGlwLHBpbnMgPSA8MSA4ICBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPiwKKwkJCQkJPDEg
-OSAgUktfRlVOQ18xICZwY2ZnX3B1bGxfbm9uZT4sCisJCQkJCTwxIDEwIFJLX0ZVTkNfMSAmcGNm
-Z19wdWxsX25vbmU+LAorCQkJCQk8MSAxMSBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKKwkJ
-fTsKKwl9OworCit9OwotLSAKMS45LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+Hi Doug=EF=BC=8C
+
+=E5=9C=A8 2016/1/15 0:12, Doug Anderson =E5=86=99=E9=81=93:
+> Hi,
+>
+> On Thu, Jan 14, 2016 at 4:31 AM, David Wu <david.wu@rock-chips.com> w=
+rote:
+>> There was an timing issue about "repeated start" time at the I2C
+>> controller of version0, controller appears to drop SDA at .875x (7/8=
+)
+>> programmed clk high. The rule(.875x) isn't enough to meet tSU;STA
+>> requirements on 100k's Standard-mode. To resolve this issue,
+>> data_upd_st, start_setup_cnt and stop_setup_cnt configs for I2C
+>> timing information are added, new rules are designed to calculate
+>> the timing information at new v1.
+> I'm curious: does new hardware behave differently and that's why you
+> need v1?
+Yes , i didn't describe clearly about difference between old and new.
+Old and new hardware behave the same except some timing rules.
+
+v0 is the same with the v1 for tHigh and tLow :
+  tHigh =3D 8 * divh * pclk_cycle;
+  tLow =3D 8 * divl * pclk_cycle;
+
+v0 rules' difference:
+     start setup=EF=BC=9A 7/8 * tHigh + 1 pclk cycle
+     start hold :    2 * =EF=BC=887/8 * tHigh=EF=BC=89 - 1 pclk cycle
+     stop setup :   7/8 * tHigh + 1 pclk cycle
+
+     data setup:    1/2 tLow - 1 pclk cycle
+     data hold :    1/2  tLow + 1  pclk cycle
+
+=46or 100k's example:
+     spec_min_low_ns =3D 4700;
+     spec_min_high_ns =3D 4000;
+     spec_min_setup_start_ns =3D 4700;
+
+We could calculate the timing info by the rules of v0, and ignore effec=
+t=20
+of the pclk cycle here.
+     tSU;sta >=3D4700;
+     tHigh_min =3D tSU;sta * 8/7 >=3D 5372ns;
+     tHigh_min  =3D max(tHigh_min, spec_min_high_ns) =3D 5372ns;
+
+We get the final scl clk rate is 99k(1000000000 / (5372ns + 4700ns)), =20
+it looks ok for the 100k
+Standard mode. But the timing point of repeat start and low time is ver=
+y=20
+critical, it is dangerous
+to some slave devices which are perhaps not so specified.
+So need to give some time margin for them, that would increase the cycl=
+e=20
+time and reduce
+the clk rate, the final rate we get may be 97k or 96k.
+
+In fact, we must think about scl rise time and scl fall time, and get=20
+final clk may be 93k or less.
+After that, we get about 7 percent lost at clk rate, it would reduce th=
+e=20
+efficiency of i2c transfer.
+
+In other words, we could say there is a timing issue about "repeat=20
+start" time when we want
+accurate 100k's rate, it is short to meet I2C spec requirements.
+3.4M clk rate also has the same issue.
+
+The start_setup count is added to fix this issue, tHigh is not need to=20
+considered of "repeat start" time.
+After divs calculated, the count would be calculated to meet i2c spec.
+v1 rule:
+start setup=EF=BC=9A tHigh + 1 pclk cycle
+start hold:  [8h * (u + 1) - 1] * T;
+  tSU;sto =3D (8h * p + 1) * T;
+-----------------------------------------------------------------------=
+----------------------------------------
+
+The data_upd_st is added for the Data set-up time and Data hold time on=
+=20
+Highspeed mode.
+=46or 1.7M's example on v0:
+     tHD;DAT =3D 1/2 tLow=EF=BC=9B
+     tHD;DAT <=3D spec_max_data_hold_ns =3D 150ns
+     tLow <=3D 2 * tHD;DAT <=3D 300ns;
+     tLow >=3D spec_min_low_ns =3D 320ns;
+According to these, we could not get a value for tLow, need changes for=
+=20
+the rule: tHD;DAT =3D 1/2 tLow.
+
+Cut the tLow into eight euqal parts=EF=BC=8Cthe range of data_upd_st is=
+ 1 ~ 7.
+It seems that v1 rule could resolve the issue.
+v1 rule:
+     tHD;sda =3D n/8 * tLow;
+     tSU;sda =3D [(8 - n)/8 * tLow;
+
+3.4M clk rate also has the same issue.
+
+>   ...or does old and new hardware behave the same and you're
+> just introducing v1 so you don't mess with how old boards are working=
+?
+The registers of counts added would not effect old boards.
+No matter what values of count was written in regs, that old i2c=20
+controller didn't care,
+it worked by original timing rule.
+
+After picking this patch, pmic-rk818 and touchscreen-gt911 worked well=20
+on the rk3368 sdk
+board which use old method.
+
+>
+> >From the description it sounds as if the old code had problems as 10=
+0k too...
+>
+> If the new controller is different, I'd probably reword like the
+> following (you'd have to re-wordwrap):
+>
+> There was an timing issue about "repeated start" time at the I2C
+> controller of version0, controller appears to drop SDA at .875x (7/8)
+> programmed clk high. On version 1 of the controller, the rule(.875x)
+> isn't enough to meet tSU;STA
+> requirements on 100k's Standard-mode. To resolve this issue,
+> data_upd_st, start_setup_cnt and stop_setup_cnt configs for I2C
+> timing information are added, new rules are designed to calculate
+> the timing information at new v1.
+
+There was an timing issue about "repeated start" time at the I2C
+controller of version0, controller appears to drop SDA at .875x (7/8)
+programmed clk high. On version 1 of the controller, the rule(.875x)
+isn't enough to meet tSU;STA requirements on 100k's Standard-mode.
+
+To resolve this issue,data_upd_st, start_setup_cnt and stop_setup_cnt
+configs for I2C timing information are added, new rules are designed
+to calculate the timing information at new v1.
+
+> -Doug
+>
+>
+>
