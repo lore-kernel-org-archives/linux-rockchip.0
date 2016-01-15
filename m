@@ -1,100 +1,86 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing output clock to codec
-Date: Fri, 15 Jan 2016 21:49:50 +0800
-Message-ID: <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH v3 6/9] ARM: dts: rockchip: add the sdio power sequence for kylin board
+Date: Fri, 15 Jan 2016 21:49:53 +0800
+Message-ID: <1452865796-23527-7-git-send-email-wxt@rock-chips.com>
 References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Sonny Rao <sonnyrao@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>
+Cc: leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sonny Rao <sonnyrao@chromium.org>
+This patch adds the sdio power sequence for kylin board.
+The WLAN attached to a SDIO interface, wifi/bluetooth have
+reset and power been needed to enable.
 
-We need to claim the clock which is driving the codec so that when we
-enable clock gating, we continue to clock the codec when needed.
-I make this an optional clock since there might be some applications
-where we don't need it but can still use the I2S block.
+AFAIK, the simple power sequence provider sets a value for multiple GPIOs.
+So the reset and power of WlAN chip can be handled in mmc power sequence.
+On the module itself this is one of these, that should can be handled
+by reset GPIOs in simple mmc power sequence.
 
-Signed-off-by: Sonny Rao <sonnyrao@chromium.org>
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+The Bluetooth host wake is high active from bootup, this patch is also
+set pinctrl bias as the default to enable the pull up in soc internal.
+
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
 ---
 
 Changes in v3:
-- As the perious discuss on https://patchwork.kernel.org/patch/5427131/,
-  I think Mark likes do it in codec driver, I have to say I agree this
-  patch in here since that's the i2s block output. I don't know if the
-  Mark has changed his mind.
-- Add the suspend/resume handle the clock.
+- As Javier/Heiko discuss on https://patchwork.kernel.org/patch/7974311/,
+  try to change dts with reset-gpios handle.
 
- sound/soc/rockchip/rockchip_i2s.c | 24 ++++++++++++++++++++++++
+ arch/arm/boot/dts/rk3036-kylin.dts | 24 ++++++++++++++++++++++++
  1 file changed, 24 insertions(+)
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 58ee645..5889bba 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -28,6 +28,7 @@ struct rk_i2s_dev {
- 
- 	struct clk *hclk;
- 	struct clk *mclk;
-+	struct clk *oclk;
- 
- 	struct snd_dmaengine_dai_dma_data capture_dma_data;
- 	struct snd_dmaengine_dai_dma_data playback_dma_data;
-@@ -47,6 +48,9 @@ static int i2s_runtime_suspend(struct device *dev)
- {
- 	struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
- 
-+	if (i2s->oclk)
-+		clk_disable_unprepare(i2s->oclk);
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 4fbd0a3..d30a6dd 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -78,6 +78,23 @@
+ 		regulator-always-on;
+ 		regulator-boot-on;
+ 	};
 +
- 	clk_disable_unprepare(i2s->mclk);
- 
- 	return 0;
-@@ -63,6 +67,14 @@ static int i2s_runtime_resume(struct device *dev)
- 		return ret;
- 	}
- 
-+	if (i2s->oclk) {
-+		ret = clk_prepare_enable(i2s->oclk);
-+		if (ret) {
-+			dev_err(i2s->dev, "oclk enable failed %d\n", ret);
-+			return ret;
-+		}
-+	}
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_wake_h>;
 +
- 	return 0;
- }
++		/*
++		 * On the module itself this is one of these (depending
++		 * on the actual card populated):
++		 * - SDIO_RESET_L_WL_REG_ON
++		 * - SDIO_RESET_L_WL_RST
++		 * - SDIO_RESET_L_BT_EN
++		 */
++		reset-gpios = <&gpio0 26 GPIO_ACTIVE_LOW>, /* WL_REG_ON */
++			      <&gpio0 27 GPIO_ACTIVE_LOW>, /* WL_RST */
++			      <&gpio2 9  GPIO_ACTIVE_LOW>; /* BT_EN */
++	};
+ };
  
-@@ -480,6 +492,15 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		return PTR_ERR(i2s->mclk);
- 	}
+ &acodec {
+@@ -311,6 +328,7 @@
+ 	cap-sdio-irq;
+ 	default-sample-phase = <90>;
+ 	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
+ 	non-removable;
+ 	num-slots = <1>;
+ 	pinctrl-names = "default";
+@@ -348,6 +366,12 @@
+ 		};
+ 	};
  
-+	i2s->oclk = devm_clk_get(&pdev->dev, "i2s_clk_out");
-+	if (IS_ERR(i2s->oclk)) {
-+		dev_dbg(&pdev->dev, "Didn't find output clock\n");
-+		i2s->oclk = NULL;
-+	}
++	sdio {
++		bt_wake_h: bt-wake-h {
++			rockchip,pins = <2 8 RK_FUNC_GPIO &pcfg_pull_default>;
++		};
++	};
 +
-+	if (i2s->oclk)
-+		ret = clk_prepare_enable(i2s->oclk);
-+
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	regs = devm_ioremap_resource(&pdev->dev, res);
- 	if (IS_ERR(regs))
-@@ -552,6 +573,9 @@ static int rockchip_i2s_remove(struct platform_device *pdev)
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		i2s_runtime_suspend(&pdev->dev);
- 
-+	if (i2s->oclk)
-+		clk_disable_unprepare(i2s->oclk);
-+
- 	clk_disable_unprepare(i2s->mclk);
- 	clk_disable_unprepare(i2s->hclk);
- 
+ 	sleep {
+ 		global_pwroff: global-pwroff {
+ 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
 -- 
 1.9.1
