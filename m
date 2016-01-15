@@ -1,206 +1,56 @@
-From: Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
-Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
- android boot image
-Date: Fri, 15 Jan 2016 16:42:21 +0100
-Message-ID: <1452872541.3905.21.camel@gmail.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
- <20160114162227.GY3359@bill-the-cat> <569842F2.4080808@rock-chips.com>
- <20160115005950.GC3359@bill-the-cat> <5698577B.8040209@rock-chips.com>
- <20160115144224.GR3359@bill-the-cat>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
+ output clock to codec
+Date: Fri, 15 Jan 2016 17:46:23 +0000
+Message-ID: <20160115174623.GZ6588@sirena.org.uk>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+ <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20160115144224.GR3359@bill-the-cat>
-List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Simon Glass <sjg@chromium.org>, Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0mrGdROycKaeLXMw"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, leozwang@google.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com, Sonny Rao <sonnyrao@chromium.org>, Jianqun Xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, den 15.01.2016, 09:42 -0500 schrieb Tom Rini:
-> On Fri, Jan 15, 2016 at 10:20:43AM +0800, Jeffy Chen wrote:
-> > Hi Tom,
-> > 
-> > On 2016-1-15 8:59, Tom Rini wrote:
-> > > On Fri, Jan 15, 2016 at 08:53:06AM +0800, Jeffy Chen wrote:
-> > > > Hi Tom,
-> > > > 
-> > > > On 2016-1-15 0:22, Tom Rini wrote:
-> > > > > On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
-> > > > > > Hi Tom,
-> > > > > > 
-> > > > > > On 2016-1-13 23:28, Tom Rini wrote:
-> > > > > > > On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen
-> > > > > > > wrote:
-> > > > > > > 
-> > > > > > > > The android kernel is using appended dtb by default,
-> > > > > > > > and store
-> > > > > > > > ramdisk right after kernel & dtb.
-> > > > > > > > So we needs to relocate ramdisk, and use atags to pass
-> > > > > > > > params.
-> > > > > > > > 
-> > > > > > > > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> > > > > > > > Acked-by: Simon Glass <sjg@chromium.org>
-> > > > > > > > ---
-> > > > > > > > 
-> > > > > > > > Changes in v4: None
-> > > > > > > > Changes in v3: None
-> > > > > > > > Changes in v2: None
-> > > > > > > > 
-> > > > > > > >  include/configs/kylin_rk3036.h | 23
-> > > > > > > > +++++++++++++++++++++++
-> > > > > > > >  1 file changed, 23 insertions(+)
-> > > > > > > > 
-> > > > > > > > diff --git a/include/configs/kylin_rk3036.h
-> > > > > > > > b/include/configs/kylin_rk3036.h
-> > > > > > > > index b750b26..49997ec 100644
-> > > > > > > > --- a/include/configs/kylin_rk3036.h
-> > > > > > > > +++ b/include/configs/kylin_rk3036.h
-> > > > > > > > @@ -35,6 +35,29 @@
-> > > > > > > >  #undef CONFIG_EXTRA_ENV_SETTINGS
-> > > > > > > >  #define CONFIG_EXTRA_ENV_SETTINGS \
-> > > > > > > >  	"partitions=" PARTS_DEFAULT \
-> > > > > > > > +	"mmcdev=0\0" \
-> > > > > > > > +	"mmcpart=5\0" \
-> > > > > > > > +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR)
-> > > > > > > > "\0" \
-> > > > > > > > +
-> > > > > > > > +#define CONFIG_ANDROID_BOOT_IMAGE
-> > > > > > > > +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
-> > > > > > > This should already be set.
-> > > > > > Right, i'll remove it...
-> > > > > > > > +#define CONFIG_SYS_HUSH_PARSER
-> > > > > > > > +
-> > > > > > > > +#undef CONFIG_BOOTCOMMAND
-> > > > > > > > +#define CONFIG_BOOTCOMMAND \
-> > > > > > > > +	"mmc dev ${mmcdev}; if mmc rescan; then " \
-> > > > > > > > +		"part start mmc ${mmcdev} ${mmcpart}
-> > > > > > > > boot_start;" \
-> > > > > > > > +		"part size mmc ${mmcdev} ${mmcpart}
-> > > > > > > > boot_size;" \
-> > > > > > > > +		"mmc read ${loadaddr} ${boot_start}
-> > > > > > > > ${boot_size};" \
-> > > > > > > > +		"bootm start ${loadaddr}; bootm
-> > > > > > > > ramdisk;" \
-> > > > > > > > +		"bootm prep; bootm go;" \
-> > > > > > > > +	"fi;" \
-> > > > > > > > +
-> > > > > > > > +/* Enable atags */
-> > > > > > > > +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
-> > > > > > > > +#define CONFIG_INITRD_TAG
-> > > > > > > > +#define CONFIG_SETUP_MEMORY_TAGS
-> > > > > > > > +#define CONFIG_CMDLINE_TAG
-> > > > > > > But I'm confused as to what exactly is going on here. 
-> > > > > > >  Appended dtb is
-> > > > > > > not the same as ATAGS.  And you shouldn't need to split
-> > > > > > > up bootm like
-> > > > > > > that.  Can you please explain a bit more?  Thanks!
-> > > > > > The u-boot will pass atags to kernel, and kernel will merge
-> > > > > > those
-> > > > > > atags into the appended dtb(fdt).
-> > > > > > 
-> > > > > > The default bootm flow would not pass ramdisk state, but we
-> > > > > > need it,
-> > > > > > so we should add this state into default flow, or just use
-> > > > > > split
-> > > > > > bootm cmds :)
-> > > > > That seems very strange.  Is the ramdisk concatenated with
-> > > > > the kernel
-> > > > > and dtb as well (and that's why bootm ramdisk somehow finds
-> > > > > it but
-> > > > > normal bootm doesn't as you aren't passing in a ramdisk
-> > > > > address) ?
-> > > > Yes, the ramdisk concatenated with the kernel and dtb as
-> > > > well(u-boot/include/android_image.h: struct andr_img_hdr).
-> > > > 
-> > > > And the normal bootm cmd would find it by parsing andr_img_hdr
-> > > > struct.
-> > > > But we still need bootm ramdisk state, because it will call
-> > > > boot_ramdisk_high to relocate ramdisk area :)
-> > > > 
-> > > > I found if not relocate it to somewhere else, it would be
-> > > > corrupted
-> > > > after kernel's decompressing(during update fdt area).
-> > > So 'bootm $loadaddr' of an Android image sees, but does not
-> > > relocate the
-> > > ramdisk that is included in the image, but bootm ramdisk does? 
-> > >  That
-> > > sounds like a bug in the regular bootm handling.
-> > Yep, the default bootm flow would not contain ramdisk relocate
-> > state:
-> > 
-> > vi common/cmd_bootm.c
-> >         return do_bootm_states(cmdtp, flag, argc, argv,
-> > BOOTM_STATE_START |
-> >                 BOOTM_STATE_FINDOS | BOOTM_STATE_FINDOTHER |
-> >                 BOOTM_STATE_LOADOS |
-> > #if defined(CONFIG_PPC) || defined(CONFIG_MIPS)
-> >                 BOOTM_STATE_OS_CMDLINE |
-> > #endif
-> >                 BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO |
-> >                 BOOTM_STATE_OS_GO, &images, 1);
-> > 
-> > But i'm not sure if it's ok to add it here...
-> 
-> Actually, maybe so.  This made me do some digging again back into
-> Simon's series that refactored the bootm code.  In the long long ago,
-> nearly every architecture would call bootm_ramdisk_high to relocate
-> the
-> ramdisk and set the environment (and poke the DT).  But it wasn't
-> always
-> clear when / why it would do this.  And it got consolidated.  And
-> here's
-> where it's tricky.  It looks correct today, still, to make sure that
-> we
-> relocate the ramdisk.  image_setup_linux() checks
-> IMAGE_ENABLE_RAMDISK_HIGH which is toggled by
-> CONFIG_SYS_BOOT_RAMDISK_HIGH.  But for example, MIPS whacked _back_
-> in a
-> local call to make sure the ramdisk was being relocated because it
-> wasn't back in 2014 into boot_prep_linux.  It may even be related to
-> some of the initrd rated things Masahiro has found recently.  So
-> something is wrong down in this core code.  
 
-one problem is the different behaviour of bootm between legacy uImages
-and FIT uImages. In case of legacy uImages, the core code automatically
-relocates initramfs and DTB. In case of FIT uImages, the arch-specific
-do_bootm_linux() still has to do that. This was only somehow addressed
-by adding the helper function image_setup_linux() and calling it from
-do_bootm_linux(). But you can't use that function with legacy uImages,
-because initramfs and DTB would be relocated twice because the states
-BOOTM_STATE_RAMDISK and BOOTM_STATE_FDT are not checked. Because of
-that image_setup_linux() also leads to a different behaviour when
-calling bootm as a single command and calling bootm with sub-steps.
+--0mrGdROycKaeLXMw
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-So the current bootm implementation on MIPS is the only way for me to
-make bootm working with all possible combinations of legacy/FIT uImage,
-with/without initramfs, with/without DTB and single/multiple bootm
-calls. I suspect that the current implementation on ARM does not work
-with all possible combinations.
+On Fri, Jan 15, 2016 at 09:49:50PM +0800, Caesar Wang wrote:
 
-> Jeffy, can you try and debug
-> this a bit since you have a failing case in front of you?  Otherwise
-> I'll put it on my TODO list.  Thanks!
-> 
+> We need to claim the clock which is driving the codec so that when we
+> enable clock gating, we continue to clock the codec when needed.
+> I make this an optional clock since there might be some applications
+> where we don't need it but can still use the I2S block.
 
-Some ideas for a possible refactoring of the bootm core code:
-- remove arch-specific do_bootm_linux() and image_setup_linux()
-- rename functions like boot_prep_linux() and boot_jump_linux() to
-arch_boot_prep_linux() and arch_boot_jump_linux() and declare them as
-__weak and add a default implementation, the arch code can overwrite
-them
-- refactor the core code to call those functions at the appropriate
-locations
+> - As the perious discuss on https://patchwork.kernel.org/patch/5427131/,
+>   I think Mark likes do it in codec driver, I have to say I agree this
+>   patch in here since that's the i2s block output. I don't know if the
+>   Mark has changed his mind.
 
--- 
-- Daniel
+If the I2S block is providing a clock to the CODEC then that's what the
+software should do so that the CODEC can gate and ungate the clock as
+required.  This patch has the I2S block using a clock, not providing
+one.
+
+--0mrGdROycKaeLXMw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWmTBuAAoJECTWi3JdVIfQxzYH/RAMDGJxEqdk+Z7ifUNw/RMW
+VX40ruh59hW9RrB3pSu+W2Sb5Yc+AVKaejtsQaj0413Gd62jM4zqfP/oerelX6VL
+WV4HQm/s8c6ZsgQSHAo6cQxrIz+y0CggUrNhqMAlKcHKmFPV7WIHwDspxPVk/KxJ
+h1hVmOrc07Rj7Y9lbSqWyMSuEkb6Y8ohYqCZ5PITx2bw/mSJl3saQ04g78gxO17I
+2/muwHtnBhT4eAyn1Lw0OgBU0kDWqmglMgEx9ahX+cjHgq8R4bKB+G6HccetgYle
+cdwTeeg+Sl5A7yXnRgV8yEAcc4EcnV0poCElL/SKz0QdzyxRffyIi3IacKjPJPQ=
+=eVRq
+-----END PGP SIGNATURE-----
+
+--0mrGdROycKaeLXMw--
