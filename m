@@ -1,54 +1,58 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH v2 2/4] power: reset: add reboot mode driver
-Date: Fri, 15 Jan 2016 12:27:57 -0800
-Message-ID: <CALAqxLVNUG_cVbavXC34sNPv68jbMghti31+PrgQ7mpPngXh6g@mail.gmail.com>
-References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
-	<1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
+From: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
+ output clock to codec
+Date: Fri, 15 Jan 2016 13:48:04 -0800
+Message-ID: <CAPz6YkWt-iXS6P4QBBoq3v3i7ZAGGu6=_9AHw4qgevEwDwbdTA@mail.gmail.com>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+ <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+ <20160115174623.GZ6588@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, linux@roeck-us.net, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, geert+renesas@glider.be, sre@kernel.org, Olof Johansson <olof@lixom.net>, dbaryshkov@gmail.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, jun.nie@linaro.org, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, f.fainelli@gmail.com, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, cernekee@gmail.com, lkml <linux-kernel@vger.kern>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160115174623.GZ6588-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Kees Cook <keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jan 12, 2016 at 3:31 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
-> This driver parse the reboot commands like "reboot loader"
-> and "reboot recovery" to get a boot mode described in the
-> device tree , then call the write interfae to store the boot
-> mode in some persistent storage  like special register or ram,
-> which can be read by the bootloader after system reboot, then
-> the bootloader can take different action according to the mode
-> stored.
+On Fri, Jan 15, 2016 at 9:46 AM, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> On Fri, Jan 15, 2016 at 09:49:50PM +0800, Caesar Wang wrote:
 >
-> This is commonly used on Android based devices, which in order
-> to reboot the device into fastboot or recovery mode.
+>> We need to claim the clock which is driving the codec so that when we
+>> enable clock gating, we continue to clock the codec when needed.
+>> I make this an optional clock since there might be some applications
+>> where we don't need it but can still use the I2S block.
 >
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>> - As the perious discuss on https://patchwork.kernel.org/patch/5427131/,
+>>   I think Mark likes do it in codec driver, I have to say I agree this
+>>   patch in here since that's the i2s block output. I don't know if the
+>>   Mark has changed his mind.
+>
+> If the I2S block is providing a clock to the CODEC then that's what the
+> software should do so that the CODEC can gate and ungate the clock as
+> required.  This patch has the I2S block using a clock, not providing
+> one.
 
+From my read of the clock diagram for RK3288  there is a single clock
+signal (labeled "clk_i2s0") that comes out of a fractional divider,
+and it is split such that one path gets sent to the I2S block and the
+second path is sent to a mux after which that signal is sent to an
+external pin that goes to the codec.
 
-Hey Andy!
-  Thanks for keeping this work going! I've just successfully reworked
-my Nexus7 tree to use your implementation (using the syscon version,
-setting up a syscon for IMEM as Bjorn had requested earlier).
+There are separate clock gates for the two paths: one for the I2S
+block and one after that mux before the external pin.
 
-All is working well so far!
+I'm not sure if it's being modeled that way in the Linux code or not,
+but at least physically I don't think this clock signal actually goes
+through the I2S block before being sent to the codec.
 
-The one thing I was working on supporting with my own version that
-seems to be missing here are for devices that use string based codes,
-rather then magic numbers.
-
-This was mostly a theoretical issue. I think the Galaxy Nexus used it,
-and when I was looking at some of the HTC devices, they support a text
-based reason along with the magic code, but at least in some
-implementations the text mode isn't used, so I suspect there its just
-for extra debugging.  So this may not be critical to solve until
-someone tries to add support for such a device.
-
-Anyway, I'm going to look at porting this to the HiKey board next
-(which just uses reserved ram, not syscon), so I'll try to do a an
-SRAM driver implementaiton to see how that goes.
-
-thanks!
--john
+Does that help clarify?
