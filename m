@@ -1,217 +1,150 @@
-From: Simon Glass <sjg@chromium.org>
-Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
- android boot image
-Date: Fri, 15 Jan 2016 18:18:17 -0700
-Message-ID: <CAPnjgZ1SUJDVPFVXgJjEYgom7tEdaORUAjQ8QfQ8jCpw=NtcJQ@mail.gmail.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
- <20160114162227.GY3359@bill-the-cat> <569842F2.4080808@rock-chips.com>
- <20160115005950.GC3359@bill-the-cat> <5698577B.8040209@rock-chips.com>
- <20160115144224.GR3359@bill-the-cat> <1452872541.3905.21.camel@gmail.com>
+From: Naoki FUKAUMI <naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add basic support for orion-r68
+Date: Sat, 16 Jan 2016 10:22:40 +0900
+Message-ID: <CAFnsNoQ0Y11kQaTiQL-xEoTxAbZW4vzZDFrZC8ccS4egBx4NEg@mail.gmail.com>
+References: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com>
+	<1452863192-29231-2-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <1452872541.3905.21.camel@gmail.com>
-List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
-Cc: U-Boot Mailing List <u-boot@lists.denx.de>, Tom Rini <trini@konsulko.com>, linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452863192-29231-2-git-send-email-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, mbrugger-IBi9RG/b67k@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On 15 January 2016 at 08:42, Daniel Schwierzeck
-<daniel.schwierzeck@gmail.com> wrote:
-> Am Freitag, den 15.01.2016, 09:42 -0500 schrieb Tom Rini:
->> On Fri, Jan 15, 2016 at 10:20:43AM +0800, Jeffy Chen wrote:
->> > Hi Tom,
->> >
->> > On 2016-1-15 8:59, Tom Rini wrote:
->> > > On Fri, Jan 15, 2016 at 08:53:06AM +0800, Jeffy Chen wrote:
->> > > > Hi Tom,
->> > > >
->> > > > On 2016-1-15 0:22, Tom Rini wrote:
->> > > > > On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
->> > > > > > Hi Tom,
->> > > > > >
->> > > > > > On 2016-1-13 23:28, Tom Rini wrote:
->> > > > > > > On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen
->> > > > > > > wrote:
->> > > > > > >
->> > > > > > > > The android kernel is using appended dtb by default,
->> > > > > > > > and store
->> > > > > > > > ramdisk right after kernel & dtb.
->> > > > > > > > So we needs to relocate ramdisk, and use atags to pass
->> > > > > > > > params.
->> > > > > > > >
->> > > > > > > > Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->> > > > > > > > Acked-by: Simon Glass <sjg@chromium.org>
->> > > > > > > > ---
->> > > > > > > >
->> > > > > > > > Changes in v4: None
->> > > > > > > > Changes in v3: None
->> > > > > > > > Changes in v2: None
->> > > > > > > >
->> > > > > > > >  include/configs/kylin_rk3036.h | 23
->> > > > > > > > +++++++++++++++++++++++
->> > > > > > > >  1 file changed, 23 insertions(+)
->> > > > > > > >
->> > > > > > > > diff --git a/include/configs/kylin_rk3036.h
->> > > > > > > > b/include/configs/kylin_rk3036.h
->> > > > > > > > index b750b26..49997ec 100644
->> > > > > > > > --- a/include/configs/kylin_rk3036.h
->> > > > > > > > +++ b/include/configs/kylin_rk3036.h
->> > > > > > > > @@ -35,6 +35,29 @@
->> > > > > > > >  #undef CONFIG_EXTRA_ENV_SETTINGS
->> > > > > > > >  #define CONFIG_EXTRA_ENV_SETTINGS \
->> > > > > > > >         "partitions=" PARTS_DEFAULT \
->> > > > > > > > +       "mmcdev=0\0" \
->> > > > > > > > +       "mmcpart=5\0" \
->> > > > > > > > +       "loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR)
->> > > > > > > > "\0" \
->> > > > > > > > +
->> > > > > > > > +#define CONFIG_ANDROID_BOOT_IMAGE
->> > > > > > > > +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
->> > > > > > > This should already be set.
->> > > > > > Right, i'll remove it...
->> > > > > > > > +#define CONFIG_SYS_HUSH_PARSER
->> > > > > > > > +
->> > > > > > > > +#undef CONFIG_BOOTCOMMAND
->> > > > > > > > +#define CONFIG_BOOTCOMMAND \
->> > > > > > > > +       "mmc dev ${mmcdev}; if mmc rescan; then " \
->> > > > > > > > +               "part start mmc ${mmcdev} ${mmcpart}
->> > > > > > > > boot_start;" \
->> > > > > > > > +               "part size mmc ${mmcdev} ${mmcpart}
->> > > > > > > > boot_size;" \
->> > > > > > > > +               "mmc read ${loadaddr} ${boot_start}
->> > > > > > > > ${boot_size};" \
->> > > > > > > > +               "bootm start ${loadaddr}; bootm
->> > > > > > > > ramdisk;" \
->> > > > > > > > +               "bootm prep; bootm go;" \
->> > > > > > > > +       "fi;" \
->> > > > > > > > +
->> > > > > > > > +/* Enable atags */
->> > > > > > > > +#define CONFIG_SYS_BOOTPARAMS_LEN      (64*1024)
->> > > > > > > > +#define CONFIG_INITRD_TAG
->> > > > > > > > +#define CONFIG_SETUP_MEMORY_TAGS
->> > > > > > > > +#define CONFIG_CMDLINE_TAG
->> > > > > > > But I'm confused as to what exactly is going on here.
->> > > > > > >  Appended dtb is
->> > > > > > > not the same as ATAGS.  And you shouldn't need to split
->> > > > > > > up bootm like
->> > > > > > > that.  Can you please explain a bit more?  Thanks!
->> > > > > > The u-boot will pass atags to kernel, and kernel will merge
->> > > > > > those
->> > > > > > atags into the appended dtb(fdt).
->> > > > > >
->> > > > > > The default bootm flow would not pass ramdisk state, but we
->> > > > > > need it,
->> > > > > > so we should add this state into default flow, or just use
->> > > > > > split
->> > > > > > bootm cmds :)
->> > > > > That seems very strange.  Is the ramdisk concatenated with
->> > > > > the kernel
->> > > > > and dtb as well (and that's why bootm ramdisk somehow finds
->> > > > > it but
->> > > > > normal bootm doesn't as you aren't passing in a ramdisk
->> > > > > address) ?
->> > > > Yes, the ramdisk concatenated with the kernel and dtb as
->> > > > well(u-boot/include/android_image.h: struct andr_img_hdr).
->> > > >
->> > > > And the normal bootm cmd would find it by parsing andr_img_hdr
->> > > > struct.
->> > > > But we still need bootm ramdisk state, because it will call
->> > > > boot_ramdisk_high to relocate ramdisk area :)
->> > > >
->> > > > I found if not relocate it to somewhere else, it would be
->> > > > corrupted
->> > > > after kernel's decompressing(during update fdt area).
->> > > So 'bootm $loadaddr' of an Android image sees, but does not
->> > > relocate the
->> > > ramdisk that is included in the image, but bootm ramdisk does?
->> > >  That
->> > > sounds like a bug in the regular bootm handling.
->> > Yep, the default bootm flow would not contain ramdisk relocate
->> > state:
->> >
->> > vi common/cmd_bootm.c
->> >         return do_bootm_states(cmdtp, flag, argc, argv,
->> > BOOTM_STATE_START |
->> >                 BOOTM_STATE_FINDOS | BOOTM_STATE_FINDOTHER |
->> >                 BOOTM_STATE_LOADOS |
->> > #if defined(CONFIG_PPC) || defined(CONFIG_MIPS)
->> >                 BOOTM_STATE_OS_CMDLINE |
->> > #endif
->> >                 BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO |
->> >                 BOOTM_STATE_OS_GO, &images, 1);
->> >
->> > But i'm not sure if it's ok to add it here...
->>
->> Actually, maybe so.  This made me do some digging again back into
->> Simon's series that refactored the bootm code.  In the long long ago,
->> nearly every architecture would call bootm_ramdisk_high to relocate
->> the
->> ramdisk and set the environment (and poke the DT).  But it wasn't
->> always
->> clear when / why it would do this.  And it got consolidated.  And
->> here's
->> where it's tricky.  It looks correct today, still, to make sure that
->> we
->> relocate the ramdisk.  image_setup_linux() checks
->> IMAGE_ENABLE_RAMDISK_HIGH which is toggled by
->> CONFIG_SYS_BOOT_RAMDISK_HIGH.  But for example, MIPS whacked _back_
->> in a
->> local call to make sure the ramdisk was being relocated because it
->> wasn't back in 2014 into boot_prep_linux.  It may even be related to
->> some of the initrd rated things Masahiro has found recently.  So
->> something is wrong down in this core code.
->
-> one problem is the different behaviour of bootm between legacy uImages
-> and FIT uImages. In case of legacy uImages, the core code automatically
-> relocates initramfs and DTB. In case of FIT uImages, the arch-specific
-> do_bootm_linux() still has to do that. This was only somehow addressed
-> by adding the helper function image_setup_linux() and calling it from
-> do_bootm_linux(). But you can't use that function with legacy uImages,
-> because initramfs and DTB would be relocated twice because the states
-> BOOTM_STATE_RAMDISK and BOOTM_STATE_FDT are not checked. Because of
-> that image_setup_linux() also leads to a different behaviour when
-> calling bootm as a single command and calling bootm with sub-steps.
->
-> So the current bootm implementation on MIPS is the only way for me to
-> make bootm working with all possible combinations of legacy/FIT uImage,
-> with/without initramfs, with/without DTB and single/multiple bootm
-> calls. I suspect that the current implementation on ARM does not work
-> with all possible combinations.
->
->> Jeffy, can you try and debug
->> this a bit since you have a failing case in front of you?  Otherwise
->> I'll put it on my TODO list.  Thanks!
->>
->
-> Some ideas for a possible refactoring of the bootm core code:
-> - remove arch-specific do_bootm_linux() and image_setup_linux()
-> - rename functions like boot_prep_linux() and boot_jump_linux() to
-> arch_boot_prep_linux() and arch_boot_jump_linux() and declare them as
-> __weak and add a default implementation, the arch code can overwrite
-> them
-> - refactor the core code to call those functions at the appropriate
-> locations
+this is not full review.
 
-Perhaps we need a more formal API between bootm and the arch-specific
-implementation of the various pieces.
+On Fri, Jan 15, 2016 at 10:06 PM, Matthias Brugger
+<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 
-Also it would be great to add more tests for bootm. I made a start
-based on what I could figure out about the behaviour
-(tests/image/test-fit.py), but we should do more.
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Documentation/devicetree/bindings/arm/rockchip.txt
+> index 8e985dd..fa97d93 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.txt
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+> @@ -72,3 +72,7 @@ Rockchip platforms device tree bindings
+>  - Rockchip R88 board:
+>      Required root node properties:
+>        - compatible = "rockchip,r88", "rockchip,rk3368";
+> +
+> +- Tronsmart Orion R68
+> +    Required root node properties:
+> +      - compatible = "tronsmart,orion-r68", "rockchip,rk3368";
+
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68.dts
+> new file mode 100644
+> index 0000000..3f71d506
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68.dts
+> @@ -0,0 +1,370 @@
+> +/*
+> + * Copyright (c) 2015 Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>
+> + *
+> + * This file is dual-licensed: you can use it either under the terms
+> + * of the GPL or the X11 license, at your option. Note that this dual
+> + * licensing only applies to this file, and not this project as a
+> + * whole.
+> + *
+> + *  a) This file is free software; you can redistribute it and/or
+> + *     modify it under the terms of the GNU General Public License as
+> + *     published by the Free Software Foundation; either version 2 of the
+> + *     License, or (at your option) any later version.
+> + *
+> + *     This file is distributed in the hope that it will be useful,
+> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + *     GNU General Public License for more details.
+> + *
+> + * Or, alternatively,
+> + *
+> + *  b) Permission is hereby granted, free of charge, to any person
+> + *     obtaining a copy of this software and associated documentation
+> + *     files (the "Software"), to deal in the Software without
+> + *     restriction, including without limitation the rights to use,
+> + *     copy, modify, merge, publish, distribute, sublicense, and/or
+> + *     sell copies of the Software, and to permit persons to whom the
+> + *     Software is furnished to do so, subject to the following
+> + *     conditions:
+> + *
+> + *     The above copyright notice and this permission notice shall be
+> + *     included in all copies or substantial portions of the Software.
+> + *
+> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> + *     OTHER DEALINGS IN THE SOFTWARE.
+> + */
+> +
+> +/dts-v1/;
+> +#include "rk3368.dtsi"
+> +
+> +/ {
+> +       model = "Rockchip Orion R68";
+> +       compatible = "tronsmart,orion-r68", "rockchip,rk3368";
+> +
+> +       chosen {
+> +               stdout-path = "serial2:115200n8";
+> +       };
+> +
+> +       memory {
+> +               device_type = "memory";
+> +               reg = <0x0 0x0 0x0 0x40000000>;
+> +       };
+
+there are (at least) 4 models/revisions in Tronsmart Orion R68, Meta
+or Pro, 100M or 1000M ethernet. probably there are more variants from
+other vendors based on same board.
+I don't say all variants need to be supported here now, but it may
+need few more description.
+
+I have Orion R68 Meta 1000M version. there is a label on the board,
+"Netxeon RK68G V2.0 2G/16G/AP6335". it might be called
+"netxeon,rk68g-v2.0" or something like that.
+
+> +       leds: gpio-leds {
+> +               compatible = "gpio-leds";
+> +
+> +               work {
+> +                       gpios = <&gpio3 29 GPIO_ACTIVE_HIGH>;
+> +                       label = "orion:purple:led";
+> +                       pinctrl-names = "default";
+> +                       pinctrl-0 = <&led_ctl>;
+> +                       default-state = "on";
+> +               };
+> +       };
+
+> +       leds {
+> +               stby_pwren: stby-pwren {
+> +                       rockchip,pins = <0 12 RK_FUNC_GPIO &pcfg_pull_none>;
+> +               };
+> +
+> +               led_ctl: led-ctl {
+> +                       rockchip,pins = <3 29 RK_FUNC_GPIO &pcfg_pull_none>;
+> +               };
+> +       };
+
+on my board, there is no "purple" LED, <&gpio3 29 GPIO_ACTIVE_HIGH> is
+red LED, <&gpio0 12 GPIO_ACTIVE_HIGH> is blue LED.
+
+did you already confirm all GPIO connection written in your dts?
+
+> +&uart2 {
+> +       status = "okay";
+> +};
+
+uart4 is working for me. (as a console)
 
 Regards,
-Simon
+
+--
+FUKAUMI Naoki
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
