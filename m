@@ -1,96 +1,30 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 8/9] ARM: dts: rockchip: add reboot-mode node for
- rk3036 SoCs
-Date: Sun, 17 Jan 2016 20:18:46 +0100
-Message-ID: <3866840.JFJvXxmQit@phil>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
- <1452865796-23527-9-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 9/9] ARM: dts: rockchip: add pl330-broken-no-flushp quirk for rk3036 SoCs
+Date: Sun, 17 Jan 2016 20:20:48 +0100
+Message-ID: <2986016.zV0HQZEBmn@phil>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com> <1452865796-23527-10-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452865796-23527-9-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1452865796-23527-10-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar, Andy,
+Hi Caesar,
 
-Am Freitag, 15. Januar 2016, 21:49:55 schrieb Caesar Wang:
-> Add reboot mode driver DT node for rk3036 platform.
-> This patch adds the needed reboot mode node for rk3036.
+Am Freitag, 15. Januar 2016, 21:49:56 schrieb Caesar Wang:
+> Pl330 integrated in rk3036 platform that doesn't support
+> DMAFLUSHP function. So we add 'arm,pl330-broken-no-flushp' quirk
+> for rk3036.
 > 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-this obviously depends on Andy's reboot series.
-
-Andy, could you include this patch into further submissions of your series 
-please? That way it won't keep floating unconnected on the lists :-)
+can you try to find out if Shawn plans on respinning his work on the pl330 
+quirk that is needed for this. His last submission seems to be from october.
 
 
 Thanks
 Heiko
-
-> ---
-> 
-> Changes in v3: None
-> 
->  arch/arm/boot/dts/rk3036.dtsi | 28 +++++++++++++++++++++++++++-
->  1 file changed, 27 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-> index cf0968c..f5ecfff 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -43,6 +43,7 @@
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/pinctrl/rockchip.h>
->  #include <dt-bindings/clock/rk3036-cru.h>
-> +#include <dt-bindings/soc/rockchip_boot-mode.h>
->  #include "skeleton.dtsi"
-> 
->  / {
-> @@ -297,8 +298,33 @@
->  	};
-> 
->  	grf: syscon@20008000 {
-> -		compatible = "rockchip,rk3036-grf", "syscon";
-> +		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
->  		reg = <0x20008000 0x1000>;
-> +
-> +		reboot-mode {
-> +			compatible = "syscon-reboot-mode";
-> +			offset = <0x1d8>;
-> +
-> +			normal {
-> +				linux,mode = "normal";
-> +				loader,magic = <BOOT_NORMAL>;
-> +			};
-> +
-> +			loader {
-> +				linux,mode = "loader";
-> +				loader,magic = <BOOT_LOADER>;
-> +			};
-> +
-> +			recovery {
-> +				linux,mode = "recovery";
-> +				loader,magic = <BOOT_RECOVERY>;
-> +			};
-> +
-> +			fastboot {
-> +				linux,mode = "fastboot";
-> +				loader,magic = <BOOT_FASTBOOT>;
-> +			};
-> +		};
->  	};
-> 
->  	acodec: acodec-ana@20030000 {
