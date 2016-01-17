@@ -1,29 +1,25 @@
-From: Peter Hurley <peter-WaGBZJeGNqdsbIuE7sb01tBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v2] serial: core: remove baud_rates when serial console
- setup
-Date: Sat, 16 Jan 2016 07:49:23 -0800
-Message-ID: <569A6683.3080702@hurleysoftware.com>
-References: <1451894086-20435-1-git-send-email-jeffy.chen@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/2] devicetree: bindings: Add vendor prefix for Tronsmart
+Date: Sat, 16 Jan 2016 18:17:39 -0600
+Message-ID: <20160117001739.GA11246@rob-hp-laptop>
+References: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1451894086-20435-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jslaby-IBi9RG/b67k@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1452863192-29231-1-git-send-email-matthias.bgg@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, heiko@sntech.de, catalin.marinas@arm.com, will.deacon@arm.com, dianders@chromium.org, romain.perier@gmail.com, amstan@chromium.org, naobsd@gmail.com, sjoerd.simons@collabora.co.uk, andy.yan@rock-chips.com, briannorris@chromium.org, treding@nvidia.com, jic23@kernel.org, arnd@arndb.de, dmitry.torokhov@gmail.com, p.zabel@pengutronix.de, mbrugger@suse.com, olof@lixom.net, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/03/2016 11:54 PM, Jeffy Chen wrote:
-> Currently, when tring to set up a serial console with a higher
-> baud rate, it would fallback to 921600.
+On Fri, Jan 15, 2016 at 02:06:31PM +0100, Matthias Brugger wrote:
+> Tronsmart is a China based company building consumer electronic
+> devices.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-Reviewed-by: Peter Hurley <peter-WaGBZJeGNqdsbIuE7sb01tBPR1lH4CV8@public.gmane.org>
+Acked-by: Rob Herring <robh@kernel.org>
