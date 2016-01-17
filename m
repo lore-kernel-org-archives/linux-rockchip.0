@@ -1,40 +1,35 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 7/9] ARM: dts: rockchip: add the sdmmc for kylin board
-Date: Sun, 17 Jan 2016 20:37:17 +0100
-Message-ID: <2230942.JkKsuulFEe@phil>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com> <1452865796-23527-8-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 0/2] fix rk3066a based boards hang when cpufreq changes
+Date: Mon, 18 Jan 2016 00:16:50 +0100
+Message-ID: <1825501.4ZfleL6hBQ@phil>
+References: <1452864223-423-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452865796-23527-8-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, leozwang@google.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, keescook@google.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452864223-423-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, inux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 15. Januar 2016, 21:49:54 schrieb Caesar Wang:
-> Although We can add the sdmmc node, shouldn't enable it.
-> Since the sdmmc is reusing the same pin with uart2.
-> Unfortunately, the uart2 is used by the debug port, so that will cause
-> the debug information can't display on console if enabling the sdmmc.
-> 
-> As we have supported the sdmmc (sd card) on hardware for kylin board.
-> So, maybe we can have the sdmmc node in kylin dts, not to enable it.
-> 
-> Anyway, you only need add the okay status if someone want to enable the
-> sdmmc.
-> 
-> e.g.
-> if you use the adb to debug with android os.
-> You can add the
-> status = "okay" to enable the sdmmc for sd card working.
-> The defauly status is disabling it.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Hi Andy,
 
-applied to my dts32 branch for 4.6
+Am Freitag, 15. Januar 2016, 21:23:43 schrieb Andy Yan:
+> I found the rayeager board always hang in the system boot
+> process or when cpufreq change. When check the BSP code[0]
+> from ChipSpark, I found the current vdd_arm voltage is too
+> low and so is the vdd_logic voltage, which should be modulated
+> by PWM3.
+> 
+> So I increase the vdd_arm voltage and enabled pwm3 as a pwm
+> regulator here.
 
+applied both to my dts32 branch for 4.6
 
 Thanks
 Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
