@@ -1,51 +1,57 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RFC/PATCH] drm/rockchip: don't wait for vblank if fb hasn't
- changed
-Date: Sun, 17 Jan 2016 16:21:08 +0100
-Message-ID: <5745581.hZKD3MVpjF@phil>
-References: <1452689614-6570-1-git-send-email-john@metanate.com>
+Subject: [GIT PULL] clk fixes for 4.5
+Date: Sun, 17 Jan 2016 20:07:01 +0100
+Message-ID: <1578308.XWWZ6XYns5@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452689614-6570-1-git-send-email-john@metanate.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTWl0dHdvY2gsIDEzLiBKYW51YXIgMjAxNiwgMTI6NTM6MzQgc2NocmllYiBKb2huIEtlZXBp
-bmc6Cj4gQXMgY29tbWVudGVkIGluIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3Mo
-KSwgdXNlcnNwYWNlIHJlbGllcwo+IG9uIGN1cnNvciBpb2N0bHMgYmVpbmcgdW5zeW5jZWQuICBD
-b252ZXJ0aW5nIHRoZSByb2NrY2hpcCBkcml2ZXIgdG8KPiBhdG9taWMgaGFzIHNpZ25pZmljYW50
-bHkgaW1wYWN0ZWQgY3Vyc29yIHBlcmZvcm1hbmNlIGJ5IG1ha2luZyBldmVyeQo+IGN1cnNvciB1
-cGRhdGUgd2FpdCBmb3IgdmJsYW5rLgo+IAo+IEJ5IHNraXBwaW5nIHRoZSB2Ymxhbmsgc3luYyB3
-aGVuIHRoZSBmcmFtZWJ1ZmZlciBoYXMgbm90IGNoYW5nZWQgKGFzIGlzCj4gZG9uZSBpbiBkcm1f
-YXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKCkpIHdlIGNhbiBhdm9pZCB0aGlzIGZvciB0
-aGUKPiBjb21tb24gY2FzZSBvZiBtb3ZpbmcgdGhlIGN1cnNvciBhbmQgb25seSBuZWVkIHRvIGRl
-bGF5IHRoZSBjdXJzb3IgaW9jdGwKPiB3aGVuIHRoZSBjdXJzb3IgaWNvbiBjaGFuZ2VzLgo+IAo+
-IEkgb3JpZ2luYWxseSBpbnNlcnRlZCBhIGNoZWNrIG9uIGxlZ2FjeV9jdXJzb3JfdXBkYXRlIGFz
-IHdlbGwsIGJ1dCB0aGF0Cj4gY2F1c2VkIGEgc3Rvcm0gb2YgaW9tbXUgcGFnZSBmYXVsdHMuICBJ
-IGRpZG4ndCBpbnZlc3RpZ2F0ZSB0aGUgY2F1c2Ugb2YKPiB0aG9zZSBzaW5jZSB0aGlzIGNoYW5n
-ZSBnaXZlcyBlbm91Z2ggb2YgYSBwZXJmb3JtYW5jZSBpbXByb3ZlbWVudCBmb3IgbXkKPiB1c2Ug
-Y2FzZS4KPiAKPiBUaGlzIGlzIFJGQyBiZWNhdXNlIG9mIHRoYXQgYW5kIGJlY2F1c2UgdGhlIGZy
-YW1lYnVmZmVyX2NoYW5nZWQoKQo+IGZ1bmN0aW9uIGlzIGNvcGllZCBmcm9tIGRybV9hdG9taWNf
-aGVscGVyLmMgYXMgYSBxdWljayB3YXkgdG8gdGVzdCB0aGUKPiByZXN1bHQuCj4gCj4gU2lnbmVk
-LW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KCkkndmUgc2VlbiB0aGUg
-ZWZmZWN0cyBub3cgYXMgd2VsbCBhZnRlciBtYWtpbmcgdGhlIGF0b21pYyBwYXJ0cyB3b3JrIG9u
-IGluIApteSBkZXZ0cmVlIC0gaS5lLiBzbHVnZ2lzaCBjdXJzb3IgbW92ZW1lbnRzLgoKVGhpcyBw
-YXRjaCBmaXhlcyB0aGF0IGlzc3VlLCBzbyBhdCBsZWFzdDoKVGVzdGVkLWJ5OiBIZWlrbyBTdHVl
-Ym5lciA8aGVpa29Ac250ZWNoLmRlPgoKClJpZ2h0IG5vdyBJIHN0aWxsIHNlZSBmbGlja2VyaW5n
-IG9uIGFuaW1hdGVkIGN1cnNvcnMgdGhvdWdoIChsaWtlIG9uZXMgdXNlZCAKYnkgS0RFKSwgdGhh
-dCB3YXNuJ3QgcHJlc2VudCBiZWZvcmUuCgoKSGVpa28KX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Mike, Stephen,
+
+based on the clk-for-linus-4.5 tag that got merged into mainline
+some asorted fixes for Rockchip clocks.
+
+So, please pull
+
+
+Thanks
+Heiko
+
+The following changes since commit 3da834e3e5a4a5d26882955298b55a9ed37a00bc:
+
+  clk: remove duplicated COMMON_CLK_NXP record from clk/Kconfig (2016-01-13 18:09:52 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.5-rockchip-clkfixes1
+
+for you to fetch changes up to 8931f8e02979e4180566907019d432527c80abf7:
+
+  clk: rockchip: rk3368: fix some clock gates (2016-01-16 16:01:21 +0100)
+
+----------------------------------------------------------------
+Fixes for wrong register offsets in both rk3036 and rk3368.
+Also rename the external input for the emac on rk3036, which
+should still be ok to do, as that binding was only introduced
+during this merge-window.
+
+----------------------------------------------------------------
+Jianqun xu (1):
+      clk: rockchip: rk3368: fix some clock gates
+
+Xing Zheng (4):
+      clk: rockchip: rk3036: fix the FLAGs for clock mux
+      clk: rockchip: rk3036: fix uarts clock error
+      clk: rockchip: rk3036: fix the div offset for emac clock
+      clk: rockchip: rk3036: rename emac ext source clock
+
+ .../bindings/clock/rockchip,rk3036-cru.txt         |  2 +-
+ drivers/clk/rockchip/clk-rk3036.c                  | 26 +++++++++++-----------
+ drivers/clk/rockchip/clk-rk3368.c                  | 26 +++++++++++-----------
+ 3 files changed, 27 insertions(+), 27 deletions(-)
+
