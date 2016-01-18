@@ -1,48 +1,64 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip/dsi: fix handling
- mipi_dsi_pixel_format_to_bpp result
-Date: Mon, 18 Jan 2016 08:46:10 +0800
-Message-ID: <569C35D2.5060709@rock-chips.com>
-References: <1452761942-23864-1-git-send-email-a.hajda@samsung.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 8/9] ARM: dts: rockchip: add reboot-mode node for
+ rk3036 SoCs
+Date: Mon, 18 Jan 2016 09:11:58 +0800
+Message-ID: <569C3BDE.1040108@rock-chips.com>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+ <1452865796-23527-9-git-send-email-wxt@rock-chips.com>
+ <3866840.JFJvXxmQit@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452761942-23864-1-git-send-email-a.hajda@samsung.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, list@263.net, DRM DRIVERS FOR ROCKCHIP <dri-devel@lists.freedesktop.org>, ARM/Rockchip SoC support <linux-rockchip@lists.infradead.org>, open@263.net, Marek Szyprowski <m.szyprowski@samsung.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3866840.JFJvXxmQit@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAx5pyIMTTml6UgMTY6NTksIEFuZHJ6ZWogSGFqZGEgd3JvdGU6Cj4gVGhlIGZ1
-bmN0aW9uIGNhbiByZXR1cm4gbmVnYXRpdmUgdmFsdWUgc28gaXQgc2hvdWxkIGJlIGFzc2lnbmVk
-IHRvIHNpZ25lZAo+IHZhcmlhYmxlLgo+Cj4gVGhlIHByb2JsZW0gaGFzIGJlZW4gZGV0ZWN0ZWQg
-dXNpbmcgcGF0Y2gKPiBzY3JpcHRzL2NvY2NpbmVsbGUvdGVzdHMvdW5zaWduZWRfbGVzc2VyX3Ro
-YW5femVyby5jb2NjaS4KPgo+IFNpZ25lZC1vZmYtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFA
-c2Ftc3VuZy5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
-c2kuYyB8IDMgKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0
-aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IDdi
-ZmUyNDMuLmY4ZjhmMjkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
-LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
-Ywo+IEBAIC00NjEsMTAgKzQ2MSwxMSBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0
-KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgCj4gICBzdGF0aWMgaW50IGR3X21pcGlfZHNp
-X2dldF9sYW5lX2JwcyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIHsKPiAtCXVuc2lnbmVk
-IGludCBicHAsIGksIHByZTsKPiArCXVuc2lnbmVkIGludCBpLCBwcmU7Cj4gICAJdW5zaWduZWQg
-bG9uZyBtcGNsaywgcGxscmVmLCB0bXA7Cj4gICAJdW5zaWduZWQgaW50IG0gPSAxLCBuID0gMSwg
-dGFyZ2V0X21icHMgPSAxMDAwOwo+ICAgCXVuc2lnbmVkIGludCBtYXhfbWJwcyA9IGRwdGRpbl9t
-YXBbQVJSQVlfU0laRShkcHRkaW5fbWFwKSAtIDFdLm1heF9tYnBzOwo+ICsJaW50IGJwcDsKPiAg
-IAo+ICAgCWJwcCA9IG1pcGlfZHNpX3BpeGVsX2Zvcm1hdF90b19icHAoZHNpLT5mb3JtYXQpOwo+
-ICAgCWlmIChicHAgPCAwKSB7CgpMb29rcyBnb29kIGZvciBtZSwgQXBwbGllZCB0byBteSBkcm0t
-bmV4dCBicmFuY2guIDotKQoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+SGkgSGVpa28sIENhZXNhcjoKCk9uIDIwMTblubQwMeaciDE45pelIDAzOjE4LCBIZWlrbyBTdHVl
+Ym5lciB3cm90ZToKPiBIaSBDYWVzYXIsIEFuZHksCj4KPiBBbSBGcmVpdGFnLCAxNS4gSmFudWFy
+IDIwMTYsIDIxOjQ5OjU1IHNjaHJpZWIgQ2Flc2FyIFdhbmc6Cj4+IEFkZCByZWJvb3QgbW9kZSBk
+cml2ZXIgRFQgbm9kZSBmb3IgcmszMDM2IHBsYXRmb3JtLgo+PiBUaGlzIHBhdGNoIGFkZHMgdGhl
+IG5lZWRlZCByZWJvb3QgbW9kZSBub2RlIGZvciByazMwMzYuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6
+IENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4gdGhpcyBvYnZpb3VzbHkgZGVwZW5k
+cyBvbiBBbmR5J3MgcmVib290IHNlcmllcy4KPgo+IEFuZHksIGNvdWxkIHlvdSBpbmNsdWRlIHRo
+aXMgcGF0Y2ggaW50byBmdXJ0aGVyIHN1Ym1pc3Npb25zIG9mIHlvdXIgc2VyaWVzCj4gcGxlYXNl
+PyBUaGF0IHdheSBpdCB3b24ndCBrZWVwIGZsb2F0aW5nIHVuY29ubmVjdGVkIG9uIHRoZSBsaXN0
+cyA6LSkKPgo+Cj4gVGhhbmtzCj4gSGVpa28KPgoKCiAgICAgT2theSwgSSB3aWxsIGFkZCBpdCBp
+biBteSBuZXh0IHNlcmllcy4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjM6IE5vbmUKPj4KPj4g
+ICBhcmNoL2FybS9ib290L2R0cy9yazMwMzYuZHRzaSB8IDI4ICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMjcgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlv
+bigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMDM2LmR0c2kgYi9h
+cmNoL2FybS9ib290L2R0cy9yazMwMzYuZHRzaQo+PiBpbmRleCBjZjA5NjhjLi5mNWVjZmZmIDEw
+MDY0NAo+PiAtLS0gYS9hcmNoL2FybS9ib290L2R0cy9yazMwMzYuZHRzaQo+PiArKysgYi9hcmNo
+L2FybS9ib290L2R0cy9yazMwMzYuZHRzaQo+PiBAQCAtNDMsNiArNDMsNyBAQAo+PiAgICNpbmNs
+dWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9hcm0tZ2ljLmg+Cj4+ICAgI2lu
+Y2x1ZGUgPGR0LWJpbmRpbmdzL3BpbmN0cmwvcm9ja2NoaXAuaD4KPj4gICAjaW5jbHVkZSA8ZHQt
+YmluZGluZ3MvY2xvY2svcmszMDM2LWNydS5oPgo+PiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Nv
+Yy9yb2NrY2hpcF9ib290LW1vZGUuaD4KPj4gICAjaW5jbHVkZSAic2tlbGV0b24uZHRzaSIKPj4K
+Pj4gICAvIHsKPj4gQEAgLTI5Nyw4ICsyOTgsMzMgQEAKPj4gICAJfTsKPj4KPj4gICAJZ3JmOiBz
+eXNjb25AMjAwMDgwMDAgewo+PiAtCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzAzNi1ncmYi
+LCAic3lzY29uIjsKPj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMwMzYtZ3JmIiwgInN5
+c2NvbiIsICJzaW1wbGUtbWZkIjsKPj4gICAJCXJlZyA9IDwweDIwMDA4MDAwIDB4MTAwMD47Cj4+
+ICsKPj4gKwkJcmVib290LW1vZGUgewo+PiArCQkJY29tcGF0aWJsZSA9ICJzeXNjb24tcmVib290
+LW1vZGUiOwo+PiArCQkJb2Zmc2V0ID0gPDB4MWQ4PjsKPj4gKwo+PiArCQkJbm9ybWFsIHsKPj4g
+KwkJCQlsaW51eCxtb2RlID0gIm5vcm1hbCI7Cj4+ICsJCQkJbG9hZGVyLG1hZ2ljID0gPEJPT1Rf
+Tk9STUFMPjsKPj4gKwkJCX07Cj4+ICsKPj4gKwkJCWxvYWRlciB7Cj4+ICsJCQkJbGludXgsbW9k
+ZSA9ICJsb2FkZXIiOwo+PiArCQkJCWxvYWRlcixtYWdpYyA9IDxCT09UX0xPQURFUj47Cj4+ICsJ
+CQl9Owo+PiArCj4+ICsJCQlyZWNvdmVyeSB7Cj4+ICsJCQkJbGludXgsbW9kZSA9ICJyZWNvdmVy
+eSI7Cj4+ICsJCQkJbG9hZGVyLG1hZ2ljID0gPEJPT1RfUkVDT1ZFUlk+Owo+PiArCQkJfTsKPj4g
+Kwo+PiArCQkJZmFzdGJvb3Qgewo+PiArCQkJCWxpbnV4LG1vZGUgPSAiZmFzdGJvb3QiOwo+PiAr
+CQkJCWxvYWRlcixtYWdpYyA9IDxCT09UX0ZBU1RCT09UPjsKPj4gKwkJCX07Cj4+ICsJCX07Cj4+
+ICAgCX07Cj4+Cj4+ICAgCWFjb2RlYzogYWNvZGVjLWFuYUAyMDAzMDAwMCB7Cj4KPgo+Cj4KCgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
