@@ -1,35 +1,48 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 0/2] fix rk3066a based boards hang when cpufreq changes
-Date: Mon, 18 Jan 2016 00:16:50 +0100
-Message-ID: <1825501.4ZfleL6hBQ@phil>
-References: <1452864223-423-1-git-send-email-andy.yan@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip/dsi: fix handling
+ mipi_dsi_pixel_format_to_bpp result
+Date: Mon, 18 Jan 2016 08:46:10 +0800
+Message-ID: <569C35D2.5060709@rock-chips.com>
+References: <1452761942-23864-1-git-send-email-a.hajda@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452864223-423-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, inux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1452761942-23864-1-git-send-email-a.hajda@samsung.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrzej Hajda <a.hajda@samsung.com>
+Cc: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, list@263.net, DRM DRIVERS FOR ROCKCHIP <dri-devel@lists.freedesktop.org>, ARM/Rockchip SoC support <linux-rockchip@lists.infradead.org>, open@263.net, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
-
-Am Freitag, 15. Januar 2016, 21:23:43 schrieb Andy Yan:
-> I found the rayeager board always hang in the system boot
-> process or when cpufreq change. When check the BSP code[0]
-> from ChipSpark, I found the current vdd_arm voltage is too
-> low and so is the vdd_logic voltage, which should be modulated
-> by PWM3.
-> 
-> So I increase the vdd_arm voltage and enabled pwm3 as a pwm
-> regulator here.
-
-applied both to my dts32 branch for 4.6
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxNuW5tDAx5pyIMTTml6UgMTY6NTksIEFuZHJ6ZWogSGFqZGEgd3JvdGU6Cj4gVGhlIGZ1
+bmN0aW9uIGNhbiByZXR1cm4gbmVnYXRpdmUgdmFsdWUgc28gaXQgc2hvdWxkIGJlIGFzc2lnbmVk
+IHRvIHNpZ25lZAo+IHZhcmlhYmxlLgo+Cj4gVGhlIHByb2JsZW0gaGFzIGJlZW4gZGV0ZWN0ZWQg
+dXNpbmcgcGF0Y2gKPiBzY3JpcHRzL2NvY2NpbmVsbGUvdGVzdHMvdW5zaWduZWRfbGVzc2VyX3Ro
+YW5femVyby5jb2NjaS4KPgo+IFNpZ25lZC1vZmYtYnk6IEFuZHJ6ZWogSGFqZGEgPGEuaGFqZGFA
+c2Ftc3VuZy5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
+c2kuYyB8IDMgKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0
+aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+IGluZGV4IDdi
+ZmUyNDMuLmY4ZjhmMjkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
+LW1pcGktZHNpLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ku
+Ywo+IEBAIC00NjEsMTAgKzQ2MSwxMSBAQCBzdGF0aWMgaW50IGR3X21pcGlfZHNpX3BoeV9pbml0
+KHN0cnVjdCBkd19taXBpX2RzaSAqZHNpKQo+ICAgCj4gICBzdGF0aWMgaW50IGR3X21pcGlfZHNp
+X2dldF9sYW5lX2JwcyhzdHJ1Y3QgZHdfbWlwaV9kc2kgKmRzaSkKPiAgIHsKPiAtCXVuc2lnbmVk
+IGludCBicHAsIGksIHByZTsKPiArCXVuc2lnbmVkIGludCBpLCBwcmU7Cj4gICAJdW5zaWduZWQg
+bG9uZyBtcGNsaywgcGxscmVmLCB0bXA7Cj4gICAJdW5zaWduZWQgaW50IG0gPSAxLCBuID0gMSwg
+dGFyZ2V0X21icHMgPSAxMDAwOwo+ICAgCXVuc2lnbmVkIGludCBtYXhfbWJwcyA9IGRwdGRpbl9t
+YXBbQVJSQVlfU0laRShkcHRkaW5fbWFwKSAtIDFdLm1heF9tYnBzOwo+ICsJaW50IGJwcDsKPiAg
+IAo+ICAgCWJwcCA9IG1pcGlfZHNpX3BpeGVsX2Zvcm1hdF90b19icHAoZHNpLT5mb3JtYXQpOwo+
+ICAgCWlmIChicHAgPCAwKSB7CgpMb29rcyBnb29kIGZvciBtZSwgQXBwbGllZCB0byBteSBkcm0t
+bmV4dCBicmFuY2guIDotKQoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
