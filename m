@@ -1,38 +1,33 @@
-From: =?UTF-8?q?Pawe=C5=82=20Jarosz?= <paweljarosz3691@gmail.com>
-Subject: [PATCH 1/3] clk: rockchip: Add new id for rk3066 tsadc clock
-Date: Tue, 19 Jan 2016 13:09:19 +0100
-Message-ID: <1453205361-27267-2-git-send-email-paweljarosz3691@gmail.com>
-References: <1453205361-27267-1-git-send-email-paweljarosz3691@gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v7 4/5] ARM: dts: rockchip: add rk3288 mipi_dsi nodes
+Date: Tue, 19 Jan 2016 16:29:34 +0100
+Message-ID: <1528812.keQSB3ssvU@phil>
+References: <1452053038-32098-1-git-send-email-zyw@rock-chips.com> <1452053038-32098-5-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1453205361-27267-1-git-send-email-paweljarosz3691@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, sboyd@codeaurora.org, mturquette@baylibre.com
-Cc: =?UTF-8?q?Pawe=C5=82=20Jarosz?= <paweljarosz3691@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452053038-32098-5-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds new id for the sclk supplying the tsadc on rk3066 socs.
+Am Mittwoch, 6. Januar 2016, 12:03:56 schrieb Chris Zhong:
+> Add a mipi_dsi node, and also add mipi_dsi endpoints to vopb and vopl
+> output port nodes.
+> 
+> Signed-off-by: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Signed-off-by: Pawe=C5=82 Jarosz <paweljarosz3691@gmail.com>
----
- include/dt-bindings/clock/rk3188-cru-common.h | 1 +
- 1 file changed, 1 insertion(+)
+applied to my dts32 branch for 4.6
 
-diff --git a/include/dt-bindings/clock/rk3188-cru-common.h b/include/dt=
--bindings/clock/rk3188-cru-common.h
-index 8df77a7..4f53e70 100644
---- a/include/dt-bindings/clock/rk3188-cru-common.h
-+++ b/include/dt-bindings/clock/rk3188-cru-common.h
-@@ -55,6 +55,7 @@
- #define SCLK_TIMER6		90
- #define SCLK_JTAG		91
- #define SCLK_SMC		92
-+#define SCLK_TSADC		93
-=20
- #define DCLK_LCDC0		190
- #define DCLK_LCDC1		191
---=20
-1.9.1
+after moving it to the correct position.
+Please make sure to sort nodes by their register addresses in the future.
 
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
