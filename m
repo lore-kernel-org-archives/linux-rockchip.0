@@ -1,426 +1,123 @@
-From: Shunqian Zheng <zhengsq@rock-chips.com>
-Subject: [PATCH v1] iommu/rockchip: reconstruct to support multi slaves
-Date: Tue, 19 Jan 2016 15:03:00 +0800
-Message-ID: <1453186980-21055-1-git-send-email-zhengsq@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: joro@8bytes.org, heiko@sntech.de
-Cc: iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, djkurtz@chromium.org, ZhengShunQian <zhengsq@rock-chips.com>
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Tue, 19 Jan 2016 16:31:27 +0800
+Message-ID: <569DF45F.3050908@rock-chips.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+ <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
+ <CALAqxLUxh3=LhoHxqiRm_5L4G6m1Vctp=aUg+9_uAtLkFwW9bw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CALAqxLUxh3=LhoHxqiRm_5L4G6m1Vctp=aUg+9_uAtLkFwW9bw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, =?UTF-8?Q?Pawe=c5=82_Moll?= <pawel.moll-5wv7dgnIgG8@public.gmane.org>, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux PM list <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, cernekee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, lkml <linux-kernel-u79uwXL29Tb/PtFMR13I2A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: ZhengShunQian <zhengsq@rock-chips.com>
+Hi John:
 
-There are some IPs, such as video encoder/decoder, contains 2 slave iommus,
-one for reading and the other for writing. They share the same irq and
-clock with master.
+On 2016=E5=B9=B401=E6=9C=8816=E6=97=A5 06:41, John Stultz wrote:
+> On Tue, Jan 12, 2016 at 3:29 AM, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org> w=
+rote:
+>> add device tree binding document for reboot-mode driver
+>>
+>> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> ---
+>>
+>> Changes in v2: None
+>> Changes in v1: None
+>>
+>>   .../bindings/power/reset/reboot-mode.txt           | 41 ++++++++++=
++++++++
+>>   .../bindings/power/reset/syscon-reboot-mode.txt    | 52 ++++++++++=
+++++++++++++
+>>   2 files changed, 93 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/power/reset/r=
+eboot-mode.txt
+>>   create mode 100644 Documentation/devicetree/bindings/power/reset/s=
+yscon-reboot-mode.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mo=
+de.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>> new file mode 100644
+>> index 0000000..81d9f66
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>> @@ -0,0 +1,41 @@
+>> +Generic reboot mode core map driver
+>> +
+>> +This driver get reboot mode arguments and call the write
+>> +interface to stores the magic value in special register
+>> +or ram . Then the bootloader can read it and take different
+>> +action according to the argument stored.
+>> +
+>> +Required properties:
+>> +- compatible: only support "syscon-reboot-mode" now.
+>> +
+>> +Each mode is represented as a sub-node of reboot_mode:
+>> +
+>> +Subnode required properties:
+>> +- linux,mode: reboot mode command,such as "loader", "recovery", "fa=
+stboot".
+>> +- loader,magic: magic number for the mode, this is vendor specific.
+>> +
+>> +Example:
+>> +       reboot_mode {
+>> +               compatible =3D "syscon-reboot-mode";
+>> +               offset =3D <0x40>;
+>> +
+>> +               loader {
+>> +                       linux,mode =3D "loader";
+>> +                       loader,magic =3D <BOOT_LOADER>;
+>> +               };
+>> +
+>> +               maskrom {
+>> +                       linux,mode =3D "maskrom";
+>> +                       loader,magic =3D <BOOT_MASKROM>;
+>> +               };
+>> +
+>> +               recovery {
+>> +                       linux,mode =3D "recovery";
+>> +                       loader,magic =3D <BOOT_RECOVERY>;
+>> +               };
+>> +
+>> +               fastboot {
+>> +                       linux,mode =3D "fastboot";
+>> +                       loader,magic =3D <BOOT_FASTBOOT>;
+>> +               };
+>> +        };
+>
+> So one minor thought here. While the commands are somewhat vendor
+> specific, would it be a good idea for the example commands to match
+> the common commands on Android devices?  For example, usually
+> "bootloader" is what gets you into fastboot mode on nexus devices.
+>
+> thanks
+> -john
+>
+>
+>
+>
 
-This patch reconstructs to support this case by making them share the same
-Page Directory, Page Tables and even the register operations.
-That means every instruction to the reading MMU registers would be
-duplicated to the writing MMU and vice versa.
+   When I run the "adb help" , I got the following message:
+   adb reboot [bootloader|recovery] - reboots the device, optionally=20
+into the bootloader or recovery program
+   adb reboot-bootloader        - reboots the device into the bootloade=
+r
 
-Signed-off-by: ZhengShunQian <zhengsq@rock-chips.com>
----
- drivers/iommu/rockchip-iommu.c | 214 ++++++++++++++++++++++++++---------------
- 1 file changed, 135 insertions(+), 79 deletions(-)
+   It  only says "adb reboot-bootloader" will reboot the device into=20
+bootloader, not specific to fastboot.
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index ebf0adb..a6f593a 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -86,7 +86,8 @@ struct rk_iommu_domain {
- 
- struct rk_iommu {
- 	struct device *dev;
--	void __iomem *base;
-+	void __iomem **bases;
-+	int num_mmu;
- 	int irq;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-@@ -271,47 +272,70 @@ static u32 rk_iova_page_offset(dma_addr_t iova)
- 	return (u32)(iova & RK_IOVA_PAGE_MASK) >> RK_IOVA_PAGE_SHIFT;
- }
- 
--static u32 rk_iommu_read(struct rk_iommu *iommu, u32 offset)
-+static u32 rk_iommu_read(void __iomem *base, u32 offset)
- {
--	return readl(iommu->base + offset);
-+	return readl(base + offset);
- }
- 
--static void rk_iommu_write(struct rk_iommu *iommu, u32 offset, u32 value)
-+static void rk_iommu_write(void __iomem *base, u32 offset, u32 value)
- {
--	writel(value, iommu->base + offset);
-+	writel(value, base + offset);
- }
- 
- static void rk_iommu_command(struct rk_iommu *iommu, u32 command)
- {
--	writel(command, iommu->base + RK_MMU_COMMAND);
-+	int i;
-+
-+	for (i = 0; i < iommu->num_mmu; i++)
-+		writel(command, iommu->bases[i] + RK_MMU_COMMAND);
- }
- 
-+static void rk_iommu_base_command(void __iomem *base, u32 command)
-+{
-+	writel(command, base + RK_MMU_COMMAND);
-+}
- static void rk_iommu_zap_lines(struct rk_iommu *iommu, dma_addr_t iova,
- 			       size_t size)
- {
-+	int i;
-+
- 	dma_addr_t iova_end = iova + size;
- 	/*
- 	 * TODO(djkurtz): Figure out when it is more efficient to shootdown the
- 	 * entire iotlb rather than iterate over individual iovas.
- 	 */
--	for (; iova < iova_end; iova += SPAGE_SIZE)
--		rk_iommu_write(iommu, RK_MMU_ZAP_ONE_LINE, iova);
-+	for (i = 0; i < iommu->num_mmu; i++)
-+		for (; iova < iova_end; iova += SPAGE_SIZE)
-+			rk_iommu_write(iommu->bases[i], RK_MMU_ZAP_ONE_LINE, iova);
- }
- 
- static bool rk_iommu_is_stall_active(struct rk_iommu *iommu)
- {
--	return rk_iommu_read(iommu, RK_MMU_STATUS) & RK_MMU_STATUS_STALL_ACTIVE;
-+	bool active = true;
-+	int i;
-+
-+	for (i = 0; i < iommu->num_mmu; i++)
-+		active &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-+					RK_MMU_STATUS_STALL_ACTIVE;
-+
-+	return active;
- }
- 
- static bool rk_iommu_is_paging_enabled(struct rk_iommu *iommu)
- {
--	return rk_iommu_read(iommu, RK_MMU_STATUS) &
--			     RK_MMU_STATUS_PAGING_ENABLED;
-+	bool enable = true;
-+	int i;
-+
-+	for (i = 0; i < iommu->num_mmu; i++)
-+		enable &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-+					RK_MMU_STATUS_PAGING_ENABLED;
-+
-+	return enable;
- }
- 
- static int rk_iommu_enable_stall(struct rk_iommu *iommu)
- {
--	int ret;
-+	int ret, i;
- 
- 	if (rk_iommu_is_stall_active(iommu))
- 		return 0;
-@@ -324,15 +348,16 @@ static int rk_iommu_enable_stall(struct rk_iommu *iommu)
- 
- 	ret = rk_wait_for(rk_iommu_is_stall_active(iommu), 1);
- 	if (ret)
--		dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
--			rk_iommu_read(iommu, RK_MMU_STATUS));
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
-+				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
- 
- 	return ret;
- }
- 
- static int rk_iommu_disable_stall(struct rk_iommu *iommu)
- {
--	int ret;
-+	int ret, i;
- 
- 	if (!rk_iommu_is_stall_active(iommu))
- 		return 0;
-@@ -341,15 +366,16 @@ static int rk_iommu_disable_stall(struct rk_iommu *iommu)
- 
- 	ret = rk_wait_for(!rk_iommu_is_stall_active(iommu), 1);
- 	if (ret)
--		dev_err(iommu->dev, "Disable stall request timed out, status: %#08x\n",
--			rk_iommu_read(iommu, RK_MMU_STATUS));
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			dev_err(iommu->dev, "Disable stall request timed out, status: %#08x\n",
-+				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
- 
- 	return ret;
- }
- 
- static int rk_iommu_enable_paging(struct rk_iommu *iommu)
- {
--	int ret;
-+	int ret, i;
- 
- 	if (rk_iommu_is_paging_enabled(iommu))
- 		return 0;
-@@ -358,15 +384,16 @@ static int rk_iommu_enable_paging(struct rk_iommu *iommu)
- 
- 	ret = rk_wait_for(rk_iommu_is_paging_enabled(iommu), 1);
- 	if (ret)
--		dev_err(iommu->dev, "Enable paging request timed out, status: %#08x\n",
--			rk_iommu_read(iommu, RK_MMU_STATUS));
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			dev_err(iommu->dev, "Enable paging request timed out, status: %#08x\n",
-+				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
- 
- 	return ret;
- }
- 
- static int rk_iommu_disable_paging(struct rk_iommu *iommu)
- {
--	int ret;
-+	int ret, i;
- 
- 	if (!rk_iommu_is_paging_enabled(iommu))
- 		return 0;
-@@ -375,41 +402,49 @@ static int rk_iommu_disable_paging(struct rk_iommu *iommu)
- 
- 	ret = rk_wait_for(!rk_iommu_is_paging_enabled(iommu), 1);
- 	if (ret)
--		dev_err(iommu->dev, "Disable paging request timed out, status: %#08x\n",
--			rk_iommu_read(iommu, RK_MMU_STATUS));
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			dev_err(iommu->dev, "Disable paging request timed out, status: %#08x\n",
-+				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
- 
- 	return ret;
- }
- 
- static int rk_iommu_force_reset(struct rk_iommu *iommu)
- {
--	int ret;
-+	int ret, i;
- 	u32 dte_addr;
- 
- 	/*
- 	 * Check if register DTE_ADDR is working by writing DTE_ADDR_DUMMY
- 	 * and verifying that upper 5 nybbles are read back.
- 	 */
--	rk_iommu_write(iommu, RK_MMU_DTE_ADDR, DTE_ADDR_DUMMY);
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, DTE_ADDR_DUMMY);
- 
--	dte_addr = rk_iommu_read(iommu, RK_MMU_DTE_ADDR);
--	if (dte_addr != (DTE_ADDR_DUMMY & RK_DTE_PT_ADDRESS_MASK)) {
--		dev_err(iommu->dev, "Error during raw reset. MMU_DTE_ADDR is not functioning\n");
--		return -EFAULT;
-+		dte_addr = rk_iommu_read(iommu->bases[i], RK_MMU_DTE_ADDR);
-+		if (dte_addr != (DTE_ADDR_DUMMY & RK_DTE_PT_ADDRESS_MASK)) {
-+			dev_err(iommu->dev, "Error during raw reset. MMU_DTE_ADDR is not functioning\n");
-+			return -EFAULT;
-+		}
- 	}
- 
- 	rk_iommu_command(iommu, RK_MMU_CMD_FORCE_RESET);
- 
--	ret = rk_wait_for(rk_iommu_read(iommu, RK_MMU_DTE_ADDR) == 0x00000000,
--			  FORCE_RESET_TIMEOUT);
--	if (ret)
--		dev_err(iommu->dev, "FORCE_RESET command timed out\n");
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		ret = rk_wait_for(rk_iommu_read(iommu->bases[i], RK_MMU_DTE_ADDR) == 0x00000000,
-+				  FORCE_RESET_TIMEOUT);
-+		if (ret) {
-+			dev_err(iommu->dev, "FORCE_RESET command timed out\n");
-+			return ret;
-+		}
-+	}
- 
--	return ret;
-+	return 0;
- }
- 
--static void log_iova(struct rk_iommu *iommu, dma_addr_t iova)
-+static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
- {
-+	void __iomem *base = iommu->bases[index];
- 	u32 dte_index, pte_index, page_offset;
- 	u32 mmu_dte_addr;
- 	phys_addr_t mmu_dte_addr_phys, dte_addr_phys;
-@@ -425,7 +460,7 @@ static void log_iova(struct rk_iommu *iommu, dma_addr_t iova)
- 	pte_index = rk_iova_pte_index(iova);
- 	page_offset = rk_iova_page_offset(iova);
- 
--	mmu_dte_addr = rk_iommu_read(iommu, RK_MMU_DTE_ADDR);
-+	mmu_dte_addr = rk_iommu_read(base, RK_MMU_DTE_ADDR);
- 	mmu_dte_addr_phys = (phys_addr_t)mmu_dte_addr;
- 
- 	dte_addr_phys = mmu_dte_addr_phys + (4 * dte_index);
-@@ -460,51 +495,56 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
- 	u32 status;
- 	u32 int_status;
- 	dma_addr_t iova;
-+	irqreturn_t ret = IRQ_NONE;
-+	int i;
- 
--	int_status = rk_iommu_read(iommu, RK_MMU_INT_STATUS);
--	if (int_status == 0)
--		return IRQ_NONE;
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		int_status = rk_iommu_read(iommu->bases[i], RK_MMU_INT_STATUS);
-+		if (int_status == 0)
-+			continue;
- 
--	iova = rk_iommu_read(iommu, RK_MMU_PAGE_FAULT_ADDR);
-+		ret = IRQ_HANDLED;
-+		iova = rk_iommu_read(iommu->bases[i], RK_MMU_PAGE_FAULT_ADDR);
- 
--	if (int_status & RK_MMU_IRQ_PAGE_FAULT) {
--		int flags;
-+		if (int_status & RK_MMU_IRQ_PAGE_FAULT) {
-+			int flags;
- 
--		status = rk_iommu_read(iommu, RK_MMU_STATUS);
--		flags = (status & RK_MMU_STATUS_PAGE_FAULT_IS_WRITE) ?
--				IOMMU_FAULT_WRITE : IOMMU_FAULT_READ;
-+			status = rk_iommu_read(iommu->bases[i], RK_MMU_STATUS);
-+			flags = (status & RK_MMU_STATUS_PAGE_FAULT_IS_WRITE) ?
-+					IOMMU_FAULT_WRITE : IOMMU_FAULT_READ;
- 
--		dev_err(iommu->dev, "Page fault at %pad of type %s\n",
--			&iova,
--			(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
-+			dev_err(iommu->dev, "Page fault at %pad of type %s\n",
-+				&iova,
-+				(flags == IOMMU_FAULT_WRITE) ? "write" : "read");
- 
--		log_iova(iommu, iova);
-+			log_iova(iommu, i, iova);
- 
--		/*
--		 * Report page fault to any installed handlers.
--		 * Ignore the return code, though, since we always zap cache
--		 * and clear the page fault anyway.
--		 */
--		if (iommu->domain)
--			report_iommu_fault(iommu->domain, iommu->dev, iova,
--					   flags);
--		else
--			dev_err(iommu->dev, "Page fault while iommu not attached to domain?\n");
-+			/*
-+			 * Report page fault to any installed handlers.
-+			 * Ignore the return code, though, since we always zap cache
-+			 * and clear the page fault anyway.
-+			 */
-+			if (iommu->domain)
-+				report_iommu_fault(iommu->domain, iommu->dev, iova,
-+						   flags);
-+			else
-+				dev_err(iommu->dev, "Page fault while iommu not attached to domain?\n");
- 
--		rk_iommu_command(iommu, RK_MMU_CMD_ZAP_CACHE);
--		rk_iommu_command(iommu, RK_MMU_CMD_PAGE_FAULT_DONE);
--	}
-+			rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
-+			rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_PAGE_FAULT_DONE);
-+		}
- 
--	if (int_status & RK_MMU_IRQ_BUS_ERROR)
--		dev_err(iommu->dev, "BUS_ERROR occurred at %pad\n", &iova);
-+		if (int_status & RK_MMU_IRQ_BUS_ERROR)
-+			dev_err(iommu->dev, "BUS_ERROR occurred at %pad\n", &iova);
- 
--	if (int_status & ~RK_MMU_IRQ_MASK)
--		dev_err(iommu->dev, "unexpected int_status: %#08x\n",
--			int_status);
-+		if (int_status & ~RK_MMU_IRQ_MASK)
-+			dev_err(iommu->dev, "unexpected int_status: %#08x\n",
-+				int_status);
- 
--	rk_iommu_write(iommu, RK_MMU_INT_CLEAR, int_status);
-+		rk_iommu_write(iommu->bases[i], RK_MMU_INT_CLEAR, int_status);
-+	}
- 
--	return IRQ_HANDLED;
-+	return ret;
- }
- 
- static phys_addr_t rk_iommu_iova_to_phys(struct iommu_domain *domain,
-@@ -746,7 +786,7 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
- 	struct rk_iommu *iommu;
- 	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
- 	unsigned long flags;
--	int ret;
-+	int ret, i;
- 	phys_addr_t dte_addr;
- 
- 	/*
-@@ -773,9 +813,11 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
- 		return ret;
- 
- 	dte_addr = virt_to_phys(rk_domain->dt);
--	rk_iommu_write(iommu, RK_MMU_DTE_ADDR, dte_addr);
--	rk_iommu_command(iommu, RK_MMU_CMD_ZAP_CACHE);
--	rk_iommu_write(iommu, RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, dte_addr);
-+		rk_iommu_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
-+		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
-+	}
- 
- 	ret = rk_iommu_enable_paging(iommu);
- 	if (ret)
-@@ -798,6 +840,7 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
- 	struct rk_iommu *iommu;
- 	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
- 	unsigned long flags;
-+	int i;
- 
- 	/* Allow 'virtual devices' (eg drm) to detach from domain */
- 	iommu = rk_iommu_from_dev(dev);
-@@ -811,8 +854,10 @@ static void rk_iommu_detach_device(struct iommu_domain *domain,
- 	/* Ignore error while disabling, just keep going */
- 	rk_iommu_enable_stall(iommu);
- 	rk_iommu_disable_paging(iommu);
--	rk_iommu_write(iommu, RK_MMU_INT_MASK, 0);
--	rk_iommu_write(iommu, RK_MMU_DTE_ADDR, 0);
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, 0);
-+		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, 0);
-+	}
- 	rk_iommu_disable_stall(iommu);
- 
- 	devm_free_irq(dev, iommu->irq, iommu);
-@@ -988,6 +1033,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rk_iommu *iommu;
- 	struct resource *res;
-+	int i;
- 
- 	iommu = devm_kzalloc(dev, sizeof(*iommu), GFP_KERNEL);
- 	if (!iommu)
-@@ -995,11 +1041,21 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, iommu);
- 	iommu->dev = dev;
-+	iommu->num_mmu = 0;
-+	iommu->bases = devm_kzalloc(dev, sizeof(*iommu->bases) * iommu->num_mmu,
-+				    GFP_KERNEL);
-+	if (!iommu->bases)
-+		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	iommu->base = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(iommu->base))
--		return PTR_ERR(iommu->base);
-+	for (i = 0; i < pdev->num_resources; i++) {
-+		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
-+		iommu->bases[i] = devm_ioremap_resource(&pdev->dev, res);
-+		if (IS_ERR(iommu->bases[i]))
-+			continue;
-+		iommu->num_mmu++;
-+	}
-+	if (iommu->num_mmu == 0)
-+		return PTR_ERR(iommu->bases[0]);
- 
- 	iommu->irq = platform_get_irq(pdev, 0);
- 	if (iommu->irq < 0) {
--- 
-1.9.1
+   I add @Simon from Google here, maybe he can give some suggestions.
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
