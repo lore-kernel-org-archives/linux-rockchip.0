@@ -1,111 +1,29 @@
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Tue, 19 Jan 2016 13:02:34 +0100
-Message-ID: <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
- <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com> <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+From: =?UTF-8?q?Pawe=C5=82=20Jarosz?= <paweljarosz3691@gmail.com>
+Subject: [PATCH 0/3] Add rk3066 tsadc device tree bindings
+Date: Tue, 19 Jan 2016 13:09:18 +0100
+Message-ID: <1453205361-27267-1-git-send-email-paweljarosz3691@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
+To: heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, sboyd@codeaurora.org, mturquette@baylibre.com
+Cc: =?UTF-8?q?Pawe=C5=82=20Jarosz?= <paweljarosz3691@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> wro=
-te:
-> Hi,
->
-> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips.c=
-om> wrote:
->> Hi Heiko,
->>
->> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
->>>
->>> Hi Kever,
->>>
->>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
->>>>
->>>> we are going to make a clock usage solution for rk3288:
->>>> 1. CPLL and GPLL always not change after assign init;
->>>> 2. NPLL default as 500MHz, may used for most scene;
->>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
->>>>     frequency requirement.
->>>>
->>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
->>>
->>> In general I'm not really sure if allowing one component to arbitar=
-ily
->>> change
->>> a shared clock wouldn't result in trouble.
->>>
->>> At the moment only dclk_vop0 is included in your series, while the =
-hdmi
->>> controller can connect to both vop0 and vop1.
->>> And as Doug mentioned the gpu also has the npll as one possible sou=
-rce.
->>
->> I think the problem GPU HANGs with 480MHz clock from usbphy has
->> been fixed with my patch to gerrit:
->> https://chromium-review.googlesource.com/#/c/229554/
->>>
->>>
->>> Looking through the clock-tree there are a lot more components poss=
-ibly
->>> using
->>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, is=
-p,
->>> hevc,
->>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with somehow
->>> reserving
->>> the npll for VOP0 alone.
->>
->> It's true that I customized the usage of npll for VOP0 when we need =
-some
->> very special frequency, but it doesn't means other modules can't use=
- the
->> npll, it will always decided by clock core for module clocks that wh=
-ich
->> parent
->> is the best.
->
-> We will just need to be very careful.  As I've mentioned in the past
-> we'll need to think about what happens to other clocks that happen to
-> be parented by NPLL whenever we change it.
->
-> So if we do this:
->
-> 1. NPLL happens to be 500MHz.
-> 2. We set GPU to be 500MHz and it picks NPLL.
-> 3. We change NPLL to a different speed (like 600MHz).
->
-> ...I believe in this scenario the GPU would start running at 600MHz
-> immediately.  We'd need to add special code to watch out for this and
-> pick an alternate clock for the GPU (like the USB 480) before the NPL=
-L
-> change.  If NPLL later changes back to 500MHz and the GPU still wante=
-d
-> 500MHz, we'd have to decide what to do.
->
-> The summary is: it's pretty complicated
+This patchset adds devicetree bindings for rockchip rk3066 tsadc with n=
+eeded dependencies.
 
-Hello,
+Pawe=C5=82 Jarosz (3):
+  clk: rockchip: Add new id for rk3066 tsadc clock
+  clk: rockchip: add tsadc clock on rk3066
+  ARM: dts: rockchip: add tsadc node
 
-I have heard that this is still an issue in RK3288 support in mainline
-so have given a look and wonder if you have considered having the
-consumers of a shared clock (which could be a child clock) use
-PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate,
-or to abort them if that's not possible.
+ arch/arm/boot/dts/rk3066a.dtsi                | 11 +++++++++++
+ drivers/clk/rockchip/clk-rk3188.c             |  2 +-
+ include/dt-bindings/clock/rk3188-cru-common.h |  1 +
+ 3 files changed, 13 insertions(+), 1 deletion(-)
 
-Alternatively, a consumer can set min and max constraints if it
-doesn't want for others to mess with its provider, and let the other
-consumer deal with failed rate changes (probably by choosing another
-provider).
+--=20
+1.9.1
 
-Have I missed any problems with that?
-
-Thanks,
-
-Tomeu
