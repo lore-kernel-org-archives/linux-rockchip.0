@@ -1,86 +1,111 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 1/3] drm/atomic-helper: Export framebuffer_changed()
-Date: Tue, 19 Jan 2016 12:03:34 +0100
-Message-ID: <20160119110334.GA19130@phenom.ffwll.local>
-References: <cover.1452782114.git.john@metanate.com>
- <cover.1453200263.git.john@metanate.com>
- <f89bf1d5b69d52656f7125b7c240ddd525f27930.1453200263.git.john@metanate.com>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Tue, 19 Jan 2016 13:02:34 +0100
+Message-ID: <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+ <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com> <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <f89bf1d5b69d52656f7125b7c240ddd525f27930.1453200263.git.john@metanate.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBKYW4gMTksIDIwMTYgYXQgMTA6NDY6NThBTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IFRoZSBSb2NrY2hpcCBkcml2ZXIgY2Fubm90IHVzZSBkcm1fYXRvbWljX2hlbHBlcl93
-YWl0X2Zvcl92YmxhbmtzKCkKPiBiZWNhdXNlIGl0IGhhcyBoYXJkd2FyZSBjb3VudGVycyBmb3Ig
-bmVpdGhlciB2YmxhbmtzIG5vciBzY2FubGluZXMuCj4gCj4gSW4gb3JkZXIgdG8gc2ltcGxpZnkg
-cmUtaW1wbGVtZW50aW5nIHRoZSBmdW5jdGlvbmFsaXR5IGZvciB0aGlzIGRyaXZlciwKPiBleHBv
-cnQgdGhlIGZyYW1lYnVmZmVyX2NoYW5nZWQoKSBoZWxwZXIgc28gaXQgY2FuIGJlIHJldXNlZC4K
-PiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29tPgo+IFJl
-dmlld2VkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgoKQWxzbyBh
-Y2sgZm9yIG1lcmdpbmcgdGhyb3VnaCByb2NrY2hpcCBnaXQgdHJlZXMuIEkgZGlzY3Vzc2VkIHRo
-aXMgd2l0aApEYXZlIEFpcmxpZSwgaGUncyBvayB3aXRoIHRoYXQuCi1EYW5pZWwKCj4gLS0tCj4g
-VW5jaGFuZ2VkIHNpbmNlIHYxLgo+IAo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2F0b21pY19oZWxw
-ZXIuYyB8IDI0ICsrKysrKysrKysrKysrKysrKysrLS0tLQo+ICBpbmNsdWRlL2RybS9kcm1fYXRv
-bWljX2hlbHBlci5oICAgICB8ICA0ICsrKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCAyNCBpbnNlcnRp
-b25zKCspLCA0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-ZHJtX2F0b21pY19oZWxwZXIuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hlbHBlci5j
-Cj4gaW5kZXggMjY4ZDM3Zi4uNzQ0OTI5MyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-ZHJtX2F0b21pY19oZWxwZXIuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fYXRvbWljX2hl
-bHBlci5jCj4gQEAgLTk0OCw5ICs5NDgsMjMgQEAgc3RhdGljIHZvaWQgd2FpdF9mb3JfZmVuY2Vz
-KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIAl9Cj4gIH0KPiAgCj4gLXN0YXRpYyBib29sIGZy
-YW1lYnVmZmVyX2NoYW5nZWQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAtCQkJCXN0cnVjdCBk
-cm1fYXRvbWljX3N0YXRlICpvbGRfc3RhdGUsCj4gLQkJCQlzdHJ1Y3QgZHJtX2NydGMgKmNydGMp
-Cj4gKy8qKgo+ICsgKiBkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkIC0gY2hl
-Y2sgaWYgZnJhbWVidWZmZXIgaGFzIGNoYW5nZWQKPiArICogQGRldjogRFJNIGRldmljZQo+ICsg
-KiBAb2xkX3N0YXRlOiBhdG9taWMgc3RhdGUgb2JqZWN0IHdpdGggb2xkIHN0YXRlIHN0cnVjdHVy
-ZXMKPiArICogQGNydGM6IERSTSBjcnRjCj4gKyAqCj4gKyAqIENoZWNrcyB3aGV0aGVyIHRoZSBm
-cmFtZWJ1ZmZlciB1c2VkIGZvciB0aGlzIENSVEMgY2hhbmdlcyBhcyBhIHJlc3VsdCBvZgo+ICsg
-KiB0aGUgYXRvbWljIHVwZGF0ZS4gIFRoaXMgaXMgdXNlZnVsIGZvciBkcml2ZXJzIHdoaWNoIGNh
-bm5vdCB1c2UKPiArICogZHJtX2F0b21pY19oZWxwZXJfd2FpdF9mb3JfdmJsYW5rcygpIGFuZCBu
-ZWVkIHRvIHJlaW1wbGVtZW50IGl0cwo+ICsgKiBmdW5jdGlvbmFsaXR5Lgo+ICsgKgo+ICsgKiBS
-ZXR1cm5zOgo+ICsgKiB0cnVlIGlmIHRoZSBmcmFtZWJ1ZmZlciBjaGFuZ2VkLgo+ICsgKi8KPiAr
-Ym9vbCBkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0cnVjdCBkcm1fZGV2
-aWNlICpkZXYsCj4gKwkJCQkJICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm9sZF9zdGF0ZSwK
-PiArCQkJCQkgICBzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gIHsKPiAgCXN0cnVjdCBkcm1fcGxh
-bmUgKnBsYW5lOwo+ICAJc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqb2xkX3BsYW5lX3N0YXRlOwo+
-IEBAIC05NjcsNiArOTgxLDcgQEAgc3RhdGljIGJvb2wgZnJhbWVidWZmZXJfY2hhbmdlZChzdHJ1
-Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAKPiAgCXJldHVybiBmYWxzZTsKPiAgfQo+ICtFWFBPUlRf
-U1lNQk9MKGRybV9hdG9taWNfaGVscGVyX2ZyYW1lYnVmZmVyX2NoYW5nZWQpOwo+ICAKPiAgLyoq
-Cj4gICAqIGRybV9hdG9taWNfaGVscGVyX3dhaXRfZm9yX3ZibGFua3MgLSB3YWl0IGZvciB2Ymxh
-bmsgb24gY3J0Y3MKPiBAQCAtMTAwMSw3ICsxMDE2LDggQEAgZHJtX2F0b21pY19oZWxwZXJfd2Fp
-dF9mb3JfdmJsYW5rcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+ICAJCWlmIChvbGRfc3RhdGUt
-PmxlZ2FjeV9jdXJzb3JfdXBkYXRlKQo+ICAJCQljb250aW51ZTsKPiAgCj4gLQkJaWYgKCFmcmFt
-ZWJ1ZmZlcl9jaGFuZ2VkKGRldiwgb2xkX3N0YXRlLCBjcnRjKSkKPiArCQlpZiAoIWRybV9hdG9t
-aWNfaGVscGVyX2ZyYW1lYnVmZmVyX2NoYW5nZWQoZGV2LAo+ICsJCQkJb2xkX3N0YXRlLCBjcnRj
-KSkKPiAgCQkJY29udGludWU7Cj4gIAo+ICAJCXJldCA9IGRybV9jcnRjX3ZibGFua19nZXQoY3J0
-Yyk7Cj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJtL2RybV9hdG9taWNfaGVscGVyLmggYi9pbmNs
-dWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oCj4gaW5kZXggYTI4NmNjZS4uNzRmY2U3OCAxMDA2
-NDQKPiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fYXRvbWljX2hlbHBlci5oCj4gKysrIGIvaW5jbHVk
-ZS9kcm0vZHJtX2F0b21pY19oZWxwZXIuaAo+IEBAIC00Miw2ICs0MiwxMCBAQCBpbnQgZHJtX2F0
-b21pY19oZWxwZXJfY29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIAkJCSAgICAgc3Ry
-dWN0IGRybV9hdG9taWNfc3RhdGUgKnN0YXRlLAo+ICAJCQkgICAgIGJvb2wgYXN5bmMpOwo+ICAK
-PiArYm9vbCBkcm1fYXRvbWljX2hlbHBlcl9mcmFtZWJ1ZmZlcl9jaGFuZ2VkKHN0cnVjdCBkcm1f
-ZGV2aWNlICpkZXYsCj4gKwkJCQkJICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm9sZF9zdGF0
-ZSwKPiArCQkJCQkgICBzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwo+ICsKPiAgdm9pZCBkcm1fYXRv
-bWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4gIAkJ
-CQkJc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKm9sZF9zdGF0ZSk7Cj4gIAo+IC0tIAo+IDIuNy4w
-LjIyNi5nZmU5ODZmZQo+IAoKLS0gCkRhbmllbCBWZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIElu
-dGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZmd2xsLmNoCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> wro=
+te:
+> Hi,
+>
+> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips.c=
+om> wrote:
+>> Hi Heiko,
+>>
+>> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
+>>>
+>>> Hi Kever,
+>>>
+>>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
+>>>>
+>>>> we are going to make a clock usage solution for rk3288:
+>>>> 1. CPLL and GPLL always not change after assign init;
+>>>> 2. NPLL default as 500MHz, may used for most scene;
+>>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
+>>>>     frequency requirement.
+>>>>
+>>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
+>>>
+>>> In general I'm not really sure if allowing one component to arbitar=
+ily
+>>> change
+>>> a shared clock wouldn't result in trouble.
+>>>
+>>> At the moment only dclk_vop0 is included in your series, while the =
+hdmi
+>>> controller can connect to both vop0 and vop1.
+>>> And as Doug mentioned the gpu also has the npll as one possible sou=
+rce.
+>>
+>> I think the problem GPU HANGs with 480MHz clock from usbphy has
+>> been fixed with my patch to gerrit:
+>> https://chromium-review.googlesource.com/#/c/229554/
+>>>
+>>>
+>>> Looking through the clock-tree there are a lot more components poss=
+ibly
+>>> using
+>>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, is=
+p,
+>>> hevc,
+>>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with somehow
+>>> reserving
+>>> the npll for VOP0 alone.
+>>
+>> It's true that I customized the usage of npll for VOP0 when we need =
+some
+>> very special frequency, but it doesn't means other modules can't use=
+ the
+>> npll, it will always decided by clock core for module clocks that wh=
+ich
+>> parent
+>> is the best.
+>
+> We will just need to be very careful.  As I've mentioned in the past
+> we'll need to think about what happens to other clocks that happen to
+> be parented by NPLL whenever we change it.
+>
+> So if we do this:
+>
+> 1. NPLL happens to be 500MHz.
+> 2. We set GPU to be 500MHz and it picks NPLL.
+> 3. We change NPLL to a different speed (like 600MHz).
+>
+> ...I believe in this scenario the GPU would start running at 600MHz
+> immediately.  We'd need to add special code to watch out for this and
+> pick an alternate clock for the GPU (like the USB 480) before the NPL=
+L
+> change.  If NPLL later changes back to 500MHz and the GPU still wante=
+d
+> 500MHz, we'd have to decide what to do.
+>
+> The summary is: it's pretty complicated
+
+Hello,
+
+I have heard that this is still an issue in RK3288 support in mainline
+so have given a look and wonder if you have considered having the
+consumers of a shared clock (which could be a child clock) use
+PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate,
+or to abort them if that's not possible.
+
+Alternatively, a consumer can set min and max constraints if it
+doesn't want for others to mess with its provider, and let the other
+consumer deal with failed rate changes (probably by choosing another
+provider).
+
+Have I missed any problems with that?
+
+Thanks,
+
+Tomeu
