@@ -1,11 +1,22 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH] clk: rockchip: Add support for multiple clock providers
-Date: Wed, 20 Jan 2016 16:40:01 +0800
-Message-ID: <1453279201-24086-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] clk: rockchip: Add support for multiple clock providers
+Date: Wed, 20 Jan 2016 17:06:49 +0800
+Message-ID: <1453280809-3120-1-git-send-email-zhengxing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 There are need to support Multi-CRUs probability in future, but
@@ -14,17 +25,20 @@ it is not supported on the current Rockchip Clock Framework.
 Therefore, this patch add support a provider as the parameter
 handler when we call the clock register functions for per CRU.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
+Changes in v2:
+- Fix missed to call rockchip_clk_common_cru_init when SoCs clock init.
+
  drivers/clk/rockchip/clk-rk3036.c |   15 +++--
- drivers/clk/rockchip/clk-rk3188.c |   38 +++++++-----
- drivers/clk/rockchip/clk-rk3228.c |   13 ++--
- drivers/clk/rockchip/clk-rk3288.c |   15 +++--
- drivers/clk/rockchip/clk-rk3368.c |   17 +++---
+ drivers/clk/rockchip/clk-rk3188.c |   40 ++++++++-----
+ drivers/clk/rockchip/clk-rk3228.c |   15 +++--
+ drivers/clk/rockchip/clk-rk3288.c |   17 ++++--
+ drivers/clk/rockchip/clk-rk3368.c |   19 +++---
  drivers/clk/rockchip/clk.c        |  120 +++++++++++++++++++++++--------------
  drivers/clk/rockchip/clk.h        |   35 ++++++++---
- 7 files changed, 162 insertions(+), 91 deletions(-)
+ 7 files changed, 170 insertions(+), 91 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
 index 483913b..050ad13 100644
@@ -79,10 +93,10 @@ index 483913b..050ad13 100644
  }
  CLK_OF_DECLARE(rk3036_cru, "rockchip,rk3036-cru", rk3036_clk_init);
 diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 7f7444c..2e9388d 100644
+index 7f7444c..338a22e 100644
 --- a/drivers/clk/rockchip/clk-rk3188.c
 +++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -750,18 +750,17 @@ static const char *const rk3188_critical_clocks[] __initconst = {
+@@ -750,18 +750,19 @@ static const char *const rk3188_critical_clocks[] __initconst = {
  	"pclk_peri",
  };
  
@@ -100,13 +114,15 @@ index 7f7444c..2e9388d 100644
 -	}
 +	if (!reg_base)
 +		panic("%s: could not map cru region\n", __func__);
++
++	ctx = rockchip_clk_init(reg_base, CLK_NR_CLKS);
  
 -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(reg_base, CLK_NR_CLKS);
++	rockchip_clk_common_cru_init(np);
  
  	/* xin12m is created by an cru-internal divider */
  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -774,45 +773,51 @@ static void __init rk3188_common_clk_init(struct device_node *np)
+@@ -774,45 +775,51 @@ static void __init rk3188_common_clk_init(struct device_node *np)
  		pr_warn("%s: could not register clock usb480m: %ld\n",
  			__func__, PTR_ERR(clk));
  
@@ -168,7 +184,7 @@ index 7f7444c..2e9388d 100644
  				  mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
  				  &rk3188_cpuclk_data, rk3188_cpuclk_rates,
  				  ARRAY_SIZE(rk3188_cpuclk_rates));
-@@ -836,6 +841,7 @@ static void __init rk3188a_clk_init(struct device_node *np)
+@@ -836,6 +843,7 @@ static void __init rk3188a_clk_init(struct device_node *np)
  
  	rockchip_clk_protect_critical(rk3188_critical_clocks,
  				      ARRAY_SIZE(rk3188_critical_clocks));
@@ -177,7 +193,7 @@ index 7f7444c..2e9388d 100644
  CLK_OF_DECLARE(rk3188a_cru, "rockchip,rk3188a-cru", rk3188a_clk_init);
  
 diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 981a502..635284a 100644
+index 981a502..2457c57 100644
 --- a/drivers/clk/rockchip/clk-rk3228.c
 +++ b/drivers/clk/rockchip/clk-rk3228.c
 @@ -623,6 +623,7 @@ static const char *const rk3228_critical_clocks[] __initconst = {
@@ -188,16 +204,18 @@ index 981a502..635284a 100644
  	void __iomem *reg_base;
  	struct clk *clk;
  
-@@ -632,7 +633,7 @@ static void __init rk3228_clk_init(struct device_node *np)
+@@ -632,7 +633,9 @@ static void __init rk3228_clk_init(struct device_node *np)
  		return;
  	}
  
 -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
 +	ctx = rockchip_clk_init(reg_base, CLK_NR_CLKS);
++
++	rockchip_clk_common_cru_init(np);
  
  	/* xin12m is created by an cru-internal divider */
  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -657,15 +658,15 @@ static void __init rk3228_clk_init(struct device_node *np)
+@@ -657,15 +660,15 @@ static void __init rk3228_clk_init(struct device_node *np)
  		pr_warn("%s: could not register clock hclk_rkvdec_pre: %ld\n",
  			__func__, PTR_ERR(clk));
  
@@ -216,7 +234,7 @@ index 981a502..635284a 100644
  			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
  			&rk3228_cpuclk_data, rk3228_cpuclk_rates,
  			ARRAY_SIZE(rk3228_cpuclk_rates));
-@@ -673,6 +674,8 @@ static void __init rk3228_clk_init(struct device_node *np)
+@@ -673,6 +676,8 @@ static void __init rk3228_clk_init(struct device_node *np)
  	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
  
@@ -227,7 +245,7 @@ index 981a502..635284a 100644
  }
  CLK_OF_DECLARE(rk3228_cru, "rockchip,rk3228-cru", rk3228_clk_init);
 diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 984fc18..4bf3c21 100644
+index 984fc18..d2680e8 100644
 --- a/drivers/clk/rockchip/clk-rk3288.c
 +++ b/drivers/clk/rockchip/clk-rk3288.c
 @@ -878,6 +878,7 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
@@ -238,16 +256,18 @@ index 984fc18..4bf3c21 100644
  	struct clk *clk;
  
  	rk3288_cru_base = of_iomap(np, 0);
-@@ -886,7 +887,7 @@ static void __init rk3288_clk_init(struct device_node *np)
+@@ -886,7 +887,9 @@ static void __init rk3288_clk_init(struct device_node *np)
  		return;
  	}
  
 -	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
 +	ctx = rockchip_clk_init(rk3288_cru_base, CLK_NR_CLKS);
++
++	rockchip_clk_common_cru_init(np);
  
  	/* xin12m is created by an cru-internal divider */
  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -912,17 +913,17 @@ static void __init rk3288_clk_init(struct device_node *np)
+@@ -912,17 +915,17 @@ static void __init rk3288_clk_init(struct device_node *np)
  		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
  			__func__, PTR_ERR(clk));
  	else
@@ -269,7 +289,7 @@ index 984fc18..4bf3c21 100644
  			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
  			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
  			ARRAY_SIZE(rk3288_cpuclk_rates));
-@@ -931,8 +932,10 @@ static void __init rk3288_clk_init(struct device_node *np)
+@@ -931,8 +934,10 @@ static void __init rk3288_clk_init(struct device_node *np)
  				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
  
@@ -282,7 +302,7 @@ index 984fc18..4bf3c21 100644
  }
  CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
 diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index be0ede5..864dd29 100644
+index be0ede5..08376bb 100644
 --- a/drivers/clk/rockchip/clk-rk3368.c
 +++ b/drivers/clk/rockchip/clk-rk3368.c
 @@ -831,6 +831,7 @@ static const char *const rk3368_critical_clocks[] __initconst = {
@@ -293,16 +313,18 @@ index be0ede5..864dd29 100644
  	void __iomem *reg_base;
  	struct clk *clk;
  
-@@ -840,7 +841,7 @@ static void __init rk3368_clk_init(struct device_node *np)
+@@ -840,7 +841,9 @@ static void __init rk3368_clk_init(struct device_node *np)
  		return;
  	}
  
 -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
 +	ctx = rockchip_clk_init(reg_base, CLK_NR_CLKS);
++
++	rockchip_clk_common_cru_init(np);
  
  	/* xin12m is created by a cru-internal divider */
  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -866,22 +867,22 @@ static void __init rk3368_clk_init(struct device_node *np)
+@@ -866,22 +869,22 @@ static void __init rk3368_clk_init(struct device_node *np)
  		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
  			__func__, PTR_ERR(clk));
  	else
@@ -330,7 +352,7 @@ index be0ede5..864dd29 100644
  			mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
  			&rk3368_cpuclkl_data, rk3368_cpuclkl_rates,
  			ARRAY_SIZE(rk3368_cpuclkl_rates));
-@@ -889,6 +890,8 @@ static void __init rk3368_clk_init(struct device_node *np)
+@@ -889,6 +892,8 @@ static void __init rk3368_clk_init(struct device_node *np)
  	rockchip_register_softrst(np, 15, reg_base + RK3368_SOFTRST_CON(0),
  				  ROCKCHIP_SOFTRST_HIWORD_MASK);
  
@@ -689,5 +711,3 @@ index ff8bd23..f6552b6 100644
  
 -- 
 1.7.9.5
-
-
