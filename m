@@ -1,37 +1,36 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 4/4] clk: rockchip: rk3368: fix hdmi_cec gate-register
-Date: Wed, 20 Jan 2016 22:49:20 +0100
-Message-ID: <1453326560-20475-4-git-send-email-heiko@sntech.de>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 1/4] clk: rockchip: fix cpuclk mux bit of big cpu-cluster
+Date: Wed, 20 Jan 2016 14:06:27 -0800
+Message-ID: <56A004E3.5000309@codeaurora.org>
 References: <1453326560-20475-1-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1453326560-20475-1-git-send-email-heiko@sntech.de>
 Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com, zhangqing@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com, zhangqing@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Fix a typo making the sclk_hdmi_cec access a wrong register to handle
-its gate.
+On 01/20/2016 01:49 PM, Heiko Stuebner wrote:
+> Both clusters have their mux bit in bit 7 of their respective register.
+> For whatever reason the big cluster currently lists bit 15 which is
+> definitly wrong.
+>
+> Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
+> Reported-by: Zhang Qing <zhangqing@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+> I plan to include them into my clk-fixes branch, so posted for reference
+> and possible objections ;-)
 
-Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3368.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+None of these patches are fixes to regressions introduced in the merge
+window for v4.5, so we wouldn't be considering them for clk-fixes. We
+can certainly queue them up in clk-next for v4.6 and let stable process
+funnel them to the right stable trees though.
 
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 6037beb..57acb62 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -442,7 +442,7 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	GATE(SCLK_HDMI_HDCP, "sclk_hdmi_hdcp", "xin24m", 0,
- 			RK3368_CLKGATE_CON(4), 13, GFLAGS),
- 	GATE(SCLK_HDMI_CEC, "sclk_hdmi_cec", "xin32k", 0,
--			RK3368_CLKGATE_CON(5), 12, GFLAGS),
-+			RK3368_CLKGATE_CON(4), 12, GFLAGS),
- 
- 	COMPOSITE_NODIV(0, "vip_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK3368_CLKSEL_CON(21), 15, 1, MFLAGS,
 -- 
-2.6.4
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
 
