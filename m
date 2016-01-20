@@ -1,362 +1,170 @@
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: [PATCH] ARM64: dts: rockchip: Add GeekBox config
-Date: Wed, 20 Jan 2016 17:38:33 +0100
-Message-ID: <1453307913-8907-1-git-send-email-afaerber@suse.de>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Wed, 20 Jan 2016 08:50:51 -0800
+Message-ID: <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+	<48806799.thBSifdUp8@diego>
+	<54647142.4080800@rock-chips.com>
+	<CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+	<CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED
-	DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM64 PORT" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The GeekBox contains an MXM3 module with a Rockchip RK3368 SoC.
-Some connectors are available directly on the module.
+Tomeu,
 
-This adds initial support, namely serial, PMIC and USB.
+On Tue, Jan 19, 2016 at 4:02 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> w=
+rote:
+> On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> w=
+rote:
+>> Hi,
+>>
+>> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips.=
+com> wrote:
+>>> Hi Heiko,
+>>>
+>>> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
+>>>>
+>>>> Hi Kever,
+>>>>
+>>>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
+>>>>>
+>>>>> we are going to make a clock usage solution for rk3288:
+>>>>> 1. CPLL and GPLL always not change after assign init;
+>>>>> 2. NPLL default as 500MHz, may used for most scene;
+>>>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
+>>>>>     frequency requirement.
+>>>>>
+>>>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
+>>>>
+>>>> In general I'm not really sure if allowing one component to arbita=
+rily
+>>>> change
+>>>> a shared clock wouldn't result in trouble.
+>>>>
+>>>> At the moment only dclk_vop0 is included in your series, while the=
+ hdmi
+>>>> controller can connect to both vop0 and vop1.
+>>>> And as Doug mentioned the gpu also has the npll as one possible so=
+urce.
+>>>
+>>> I think the problem GPU HANGs with 480MHz clock from usbphy has
+>>> been fixed with my patch to gerrit:
+>>> https://chromium-review.googlesource.com/#/c/229554/
+>>>>
+>>>>
+>>>> Looking through the clock-tree there are a lot more components pos=
+sibly
+>>>> using
+>>>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, i=
+sp,
+>>>> hevc,
+>>>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with someho=
+w
+>>>> reserving
+>>>> the npll for VOP0 alone.
+>>>
+>>> It's true that I customized the usage of npll for VOP0 when we need=
+ some
+>>> very special frequency, but it doesn't means other modules can't us=
+e the
+>>> npll, it will always decided by clock core for module clocks that w=
+hich
+>>> parent
+>>> is the best.
+>>
+>> We will just need to be very careful.  As I've mentioned in the past
+>> we'll need to think about what happens to other clocks that happen t=
+o
+>> be parented by NPLL whenever we change it.
+>>
+>> So if we do this:
+>>
+>> 1. NPLL happens to be 500MHz.
+>> 2. We set GPU to be 500MHz and it picks NPLL.
+>> 3. We change NPLL to a different speed (like 600MHz).
+>>
+>> ...I believe in this scenario the GPU would start running at 600MHz
+>> immediately.  We'd need to add special code to watch out for this an=
+d
+>> pick an alternate clock for the GPU (like the USB 480) before the NP=
+LL
+>> change.  If NPLL later changes back to 500MHz and the GPU still want=
+ed
+>> 500MHz, we'd have to decide what to do.
+>>
+>> The summary is: it's pretty complicated
+>
+> Hello,
+>
+> I have heard that this is still an issue in RK3288 support in mainlin=
+e
+> so have given a look and wonder if you have considered having the
+> consumers of a shared clock (which could be a child clock) use
+> PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate,
+> or to abort them if that's not possible.
+>
+> Alternatively, a consumer can set min and max constraints if it
+> doesn't want for others to mess with its provider, and let the other
+> consumer deal with failed rate changes (probably by choosing another
+> provider).
+>
+> Have I missed any problems with that?
 
-Signed-off-by: Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
----
- Hi Heiko,
-=20
- Here's an initial shot at a .dts for GeekBox.
- GMAC was not yet working for me.
-=20
- Regards,
- Andreas
+I don't think it's really that simple, but I certainly could be wrong.
 
- arch/arm64/boot/dts/rockchip/Makefile            |   1 +
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts  |  48 +++++
- arch/arm64/boot/dts/rockchip/rk3368-geekbox.dtsi | 242 +++++++++++++++=
-++++++++
- 3 files changed, 291 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-geekbox.dtsi
+Summary of the system:
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dt=
-s/rockchip/Makefile
-index e3f0b5f..df37865 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,4 +1,5 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-evb-act8846.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-geekbox.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-r88.dtb
-=20
- always		:=3D $(dtb-y)
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm=
-64/boot/dts/rockchip/rk3368-geekbox.dts
-new file mode 100644
-index 0000000..eb24ecd
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-@@ -0,0 +1,48 @@
-+/*
-+ * Copyright (c) 2016 Andreas F=C3=A4rber
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of =
-the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+#include "rk3368-geekbox.dtsi"
-+
-+/ {
-+	model =3D "GeekBox";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dtsi b/arch/ar=
-m64/boot/dts/rockchip/rk3368-geekbox.dtsi
-new file mode 100644
-index 0000000..f083cdb
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dtsi
-@@ -0,0 +1,242 @@
-+/*
-+ * Copyright (c) 2016 Andreas F=C3=A4rber
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of =
-the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#include "rk3368.dtsi"
-+
-+/ {
-+	compatible =3D "geekbuying,geekbox", "rockchip,rk3368";
-+
-+	chosen {
-+		stdout-path =3D "serial2:115200n8";
-+	};
-+
-+	memory {
-+		device_type =3D "memory";
-+		reg =3D <0x0 0x0 0x0 0x80000000>;
-+	};
-+
-+	leds: gpio-leds {
-+		compatible =3D "gpio-leds";
-+
-+		blue {
-+			gpios =3D <&gpio2 2 GPIO_ACTIVE_HIGH>;
-+			label =3D "geekbox:blue:led";
-+			default-state =3D "on";
-+		};
-+
-+		red {
-+			gpios =3D <&gpio2 3 GPIO_ACTIVE_HIGH>;
-+			label =3D "geekbox:red:led";
-+			default-state =3D "off";
-+		};
-+	};
-+
-+	vcc_sys: vcc-sys-regulator {
-+		compatible =3D "regulator-fixed";
-+		regulator-name =3D "vcc_sys";
-+		regulator-min-microvolt =3D <5000000>;
-+		regulator-max-microvolt =3D <5000000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&i2c0 {
-+	status =3D "okay";
-+
-+	rk808: pmic@1b {
-+		compatible =3D "rockchip,rk808";
-+		reg =3D <0x1b>;
-+		pinctrl-names =3D "default";
-+		pinctrl-0 =3D <&pmic_int>, <&pmic_sleep>;
-+		interrupt-parent =3D <&gpio0>;
-+		interrupts =3D <5 IRQ_TYPE_LEVEL_LOW>;
-+		rockchip,system-power-controller;
-+		vcc1-supply =3D <&vcc_sys>;
-+		vcc2-supply =3D <&vcc_sys>;
-+		vcc3-supply =3D <&vcc_sys>;
-+		vcc4-supply =3D <&vcc_sys>;
-+		vcc6-supply =3D <&vcc_sys>;
-+		vcc7-supply =3D <&vcc_sys>;
-+		vcc8-supply =3D <&vcc_io>;
-+		vcc9-supply =3D <&vcc_sys>;
-+		vcc10-supply =3D <&vcc_sys>;
-+		vcc11-supply =3D <&vcc_sys>;
-+		vcc12-supply =3D <&vcc_io>;
-+		clock-output-names =3D "xin32k", "rk808-clkout2";
-+		#clock-cells =3D <1>;
-+
-+		regulators {
-+			vdd_cpu: DCDC_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <700000>;
-+				regulator-max-microvolt =3D <1500000>;
-+				regulator-name =3D "vdd_cpu";
-+			};
-+
-+			vdd_log: DCDC_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <700000>;
-+				regulator-max-microvolt =3D <1500000>;
-+				regulator-name =3D "vdd_log";
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name =3D "vcc_ddr";
-+			};
-+
-+			vcc_io: DCDC_REG4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <3300000>;
-+				regulator-max-microvolt =3D <3300000>;
-+				regulator-name =3D "vcc_io";
-+			};
-+
-+			vcc18_flash: LDO_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1800000>;
-+				regulator-max-microvolt =3D <1800000>;
-+				regulator-name =3D "vcc18_flash";
-+			};
-+
-+			vcc33_lcd: LDO_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <3300000>;
-+				regulator-max-microvolt =3D <3300000>;
-+				regulator-name =3D "vcc33_lcd";
-+			};
-+
-+			vdd_10: LDO_REG3 {
-+				regulator-always-on;
-+				regulator-min-microvolt =3D <1000000>;
-+				regulator-max-microvolt =3D <1000000>;
-+				regulator-name =3D "vdd_10";
-+			};
-+
-+			vcca_18: LDO_REG4 {
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1800000>;
-+				regulator-max-microvolt =3D <1800000>;
-+				regulator-name =3D "vcca_18";
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1800000>;
-+				regulator-max-microvolt =3D <3300000>;
-+				regulator-name =3D "vccio_sd";
-+			};
-+
-+			vdd10_lcd: LDO_REG6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1000000>;
-+				regulator-max-microvolt =3D <1000000>;
-+				regulator-name =3D "vdd10_lcd";
-+			};
-+
-+			vcc_18: LDO_REG7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1800000>;
-+				regulator-max-microvolt =3D <1800000>;
-+				regulator-name =3D "vcc_18";
-+			};
-+
-+			vcc18_lcd: LDO_REG8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt =3D <1800000>;
-+				regulator-max-microvolt =3D <1800000>;
-+				regulator-name =3D "vcc18_lcd";
-+			};
-+
-+			vcc_sd: SWITCH_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name =3D "vcc_sd";
-+			};
-+
-+			vcc_lan: SWITCH_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name =3D "vcc_lan";
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_sleep: pmic-sleep {
-+			rockchip,pins =3D <0 0 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		pmic_int: pmic-int {
-+			rockchip,pins =3D <0 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&uart2 {
-+	status =3D "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status =3D "okay";
-+};
-+
-+&usb_otg {
-+	status =3D "okay";
-+};
-+
-+&wdt {
-+	status =3D "okay";
-+};
---=20
-2.6.2
+* There are two VOPs (video processors) on rk3288: the big one and the
+little one.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+* The big VOP can handle higher resolutions than the little one but
+uses more power.
+
+* Both VOPs two can be sourced from CPLL, GPLL, or NPLL.
+
+* Both VOPs can be setup to process video for either HDMI, eDP, LVDS, .=
+=2E.
+
+* NPLL is the "new" PLL and is kinda like an extra PLL that's not used
+for any of the core peripherals.  It's intended to be one that's
+changed dynamically based on system needs.
+
+* GPLL appears intended (in current designs) to run at 594 MHz on
+rk3288 using a special "low jitter" setting.  This is intended to be
+the source clock for HDMI when running the very common 148.5 and 74.25
+rates.  It also it intended to be the source clock for various other
+peripherals like i2c, eMMC, SD, etc.  This also runs the GPU when the
+GPU is running at ~600MHz or ~300MHz.
+
+* CPLL appears intended (in current designs) to run at 400MHz.  There
+are some peripherals that run off this plus the GPU at 400MHz, 200MHz,
+or 100MHz.
+
+
+Let's imagine that we're booting up on a laptop where the builtin
+panel is hooked up via eDP.  Let's say that the panel really wants
+76.42 MHz but that will work just fine with 74.25 MHz too.  If this is
+a system that has no other graphics needs, we'd want eDP to take NPLL
+and grab 76.42 MHz.  Make the best rate, right?
+
+=2E..but what about if it's a system with an HDMI port?  The eDP panel
+is built in and we know it works with 74.25 MHz, but the user could
+plug into all sorts of HDMI devices and they may require some very
+special PLL rates to get there.  So if we happen to take NPLL for eDP
+we'll need to know to switch away from it once something is plugged
+into HDMI.  We don't want to block the HDMI request since we know we
+can run eDP at 74.25 off GPLL.  Presumably we could see the HDMI
+request and then try to remux the eDP on the fly.  ...but what decides
+the HDMI is more important to eDP?  You might want different rules if
+the eDP port is somehow exposed and the user might plug different
+panels into it...
+
+
+-Doug
