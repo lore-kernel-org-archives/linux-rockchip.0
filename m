@@ -1,36 +1,57 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH 1/4] clk: rockchip: fix cpuclk mux bit of big cpu-cluster
-Date: Wed, 20 Jan 2016 14:06:27 -0800
-Message-ID: <56A004E3.5000309@codeaurora.org>
-References: <1453326560-20475-1-git-send-email-heiko@sntech.de>
+Subject: Re: [PATCH v2] clk-divider: make sure read-only dividers do not
+ write to their register
+Date: Wed, 20 Jan 2016 14:16:56 -0800
+Message-ID: <20160120221604.GC12841@codeaurora.org>
+References: <8710207.gKyLbM2bKY@phil>
+ <3578615.iBrKplh45Q@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1453326560-20475-1-git-send-email-heiko@sntech.de>
+Content-Disposition: inline
+In-Reply-To: <3578615.iBrKplh45Q@phil>
 Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com, zhangqing@rock-chips.com
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, James Hogan <james.hogan@imgtec.com>, Zhang Qing <zhangqing@rock-chips.com>, Joonyoung Shim <jy0922.shim@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/20/2016 01:49 PM, Heiko Stuebner wrote:
-> Both clusters have their mux bit in bit 7 of their respective register.
-> For whatever reason the big cluster currently lists bit 15 which is
-> definitly wrong.
->
-> Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
+On 01/20, Heiko Stuebner wrote:
+> Commit e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1") removed
+> the special ops struct for read-only clocks and instead opted to handle
+> them regularly.
+> 
+> On the rk3368 this results in breakage as aclkm now gets set a value.
+> While it is the same divider value, the A53 core still doesn't like it,
+> which can result in the cpu ending up in a hang.
+> The reason being that "ACLKENMasserts one clock cycle before the rising
+> edge of ACLKM" and the clock should only be touched when STANDBYWFIL2
+> is asserted.
+> 
+> So make sure read-only clocks don't touch the clock-register at all
+> even if only writing the same value, as even writing the same value
+> may not be safe in all cases.
+> 
+> Fixes: e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1")
 > Reported-by: Zhang Qing <zhangqing@rock-chips.com>
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Reviewed-by: James Hogan <james.hogan@imgtec.com>
 > ---
-> I plan to include them into my clk-fixes branch, so posted for reference
-> and possible objections ;-)
 
-None of these patches are fixes to regressions introduced in the merge
-window for v4.5, so we wouldn't be considering them for clk-fixes. We
-can certainly queue them up in clk-next for v4.6 and let stable process
-funnel them to the right stable trees though.
+Hmph, the same patch[1] has been sitting in my inbox for months
+now but I never got a response to my last question and then
+forgot about it. I'll repeat the question here and hopefully we
+can finish the discussion.
+
+Maybe it would make more sense to have different ops for read
+only dividers? The clk_set_rate op would be empty, while we would
+have proper recalc_rate and round_rate ops. We can't just flat
+out revert commit e6d5e7d90be9 (clk-divider: Fix READ_ONLY when
+divider > 1, 2014-11-14) because that will introduce the problem
+that it was fixing, but as long as we implement round_rate in
+addition to recalc_rate it should work.
+
+[1] http://lkml.kernel.org/r/1428392806-14538-1-git-send-email-jy0922.shim@samsung.com
 
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
 a Linux Foundation Collaborative Project
-
