@@ -1,43 +1,61 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/4] clk: rockchip: fix cpuclk mux bit of big cpu-cluster
-Date: Wed, 20 Jan 2016 23:25:57 +0100
-Message-ID: <2048998.GeQnePRN87@phil>
-References: <1453326560-20475-1-git-send-email-heiko@sntech.de>
- <56A004E3.5000309@codeaurora.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] clk-divider: make sure read-only dividers do not write to their register
+Date: Wed, 20 Jan 2016 23:29:56 +0100
+Message-ID: <2694181.qDMgtzpC9k@phil>
+References: <8710207.gKyLbM2bKY@phil> <3578615.iBrKplh45Q@phil> <20160120221604.GC12841@codeaurora.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56A004E3.5000309-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20160120221604.GC12841@codeaurora.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, James Hogan <james.hogan@imgtec.com>, Zhang Qing <zhangqing@rock-chips.com>, Joonyoung Shim <jy0922.shim@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 20. Januar 2016, 14:06:27 schrieb Stephen Boyd:
-> On 01/20/2016 01:49 PM, Heiko Stuebner wrote:
-> > Both clusters have their mux bit in bit 7 of their respective register.
-> > For whatever reason the big cluster currently lists bit 15 which is
-> > definitly wrong.
+Am Mittwoch, 20. Januar 2016, 14:16:56 schrieb Stephen Boyd:
+> On 01/20, Heiko Stuebner wrote:
+> > Commit e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1")
+> > removed the special ops struct for read-only clocks and instead opted
+> > to handle them regularly.
 > > 
-> > Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
-> > Reported-by: Zhang Qing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > On the rk3368 this results in breakage as aclkm now gets set a value.
+> > While it is the same divider value, the A53 core still doesn't like it,
+> > which can result in the cpu ending up in a hang.
+> > The reason being that "ACLKENMasserts one clock cycle before the rising
+> > edge of ACLKM" and the clock should only be touched when STANDBYWFIL2
+> > is asserted.
+> > 
+> > So make sure read-only clocks don't touch the clock-register at all
+> > even if only writing the same value, as even writing the same value
+> > may not be safe in all cases.
+> > 
+> > Fixes: e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1")
+> > Reported-by: Zhang Qing <zhangqing@rock-chips.com>
+> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> > Reviewed-by: James Hogan <james.hogan@imgtec.com>
 > > ---
-> > I plan to include them into my clk-fixes branch, so posted for reference
-> > and possible objections ;-)
 > 
-> None of these patches are fixes to regressions introduced in the merge
-> window for v4.5, so we wouldn't be considering them for clk-fixes. We
-> can certainly queue them up in clk-next for v4.6 and let stable process
-> funnel them to the right stable trees though.
+> Hmph, the same patch[1] has been sitting in my inbox for months
+> now but I never got a response to my last question and then
+> forgot about it. I'll repeat the question here and hopefully we
+> can finish the discussion.
+> 
+> Maybe it would make more sense to have different ops for read
+> only dividers? The clk_set_rate op would be empty, while we would
+> have proper recalc_rate and round_rate ops. We can't just flat
+> out revert commit e6d5e7d90be9 (clk-divider: Fix READ_ONLY when
+> divider > 1, 2014-11-14) because that will introduce the problem
+> that it was fixing, but as long as we implement round_rate in
+> addition to recalc_rate it should work.
+> 
+> [1]
+> http://lkml.kernel.org/r/1428392806-14538-1-git-send-email-jy0922.shim@sa
+> msung.com
 
-ok, I'll move them over to that part then :-)
+Sorry for the second submission then. That really is from quite a while ago. 
+Reintroducing a secondary ops-struct with a round-rate sounds fine for my 
+side - I'll give that a shot tomorrow.
+
+
+Heiko
