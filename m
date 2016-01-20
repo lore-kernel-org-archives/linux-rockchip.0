@@ -1,47 +1,42 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
- reboot-mode driver
-Date: Wed, 20 Jan 2016 12:25:44 -0800
-Message-ID: <CALAqxLVY7mg2arS7u63fRow8Ln2u7hbrfFf1h2UcoojtwJMRyw@mail.gmail.com>
-References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
-	<1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
-	<20160120182840.GA15741@rob-hp-laptop>
-	<CALAqxLVvJqL60nKfrDiZ+p-1ujxuG72iUN3DCvEE3WJ9bpnGLA@mail.gmail.com>
-	<CAL_Jsq+suCyqSi+cJiVLuA0aZKSciAaeUKW9A5Y_X_3wyW60Ug@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAL_Jsq+suCyqSi+cJiVLuA0aZKSciAaeUKW9A5Y_X_3wyW60Ug@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, Guenter Roeck <linux@roeck-us.net>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Sebastian Reichel <sre@kernel.org>, Olof Johansson <olof@lixom.net>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Jun Nie <jun.nie@linaro.org>, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, Florian Fainelli <f.fainelli@gmail.com>, Will Deacon <will.deacon@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 3/4] clk: rockchip: rk3368: fix parents of video encoder/decoder
+Date: Wed, 20 Jan 2016 22:49:19 +0100
+Message-ID: <1453326560-20475-3-git-send-email-heiko@sntech.de>
+References: <1453326560-20475-1-git-send-email-heiko@sntech.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1453326560-20475-1-git-send-email-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com, zhangqing@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jan 20, 2016 at 11:53 AM, Rob Herring <robh@kernel.org> wrote:
-> On Wed, Jan 20, 2016 at 12:47 PM, John Stultz <john.stultz@linaro.org> wrote:
-> The question here really is will we ever need additional data for each
-> mode (in the DT) besides "magic". We can do some amount of extending
-> the property like allowing more that single 32-bit value. We can't mix
-> strings and integers though. If we don't need that, then lets go with
-> the more concise approach. This isn't really an evolving area.
-> Selecting boot mode/device has existed for a long time on PCs (it is
-> fixed list in the IPMI spec for example). So I can't imagine that we'd
-> have to extend this, but I'd like to hear thoughts on it. You had
-> mentioned the Galaxy Nexus having a value and a string, but I'd find
-> it surprising if the bootloader actually uses the string.
+The vdpu and vepu clocks can also be parented to the npll and current
+parent list also is wrong as it would use the npll as "usbphy" source,
+so adapt the parent to the correct one.
 
-So I've been told the galaxy nexus and possibly other older TI
-hardware used only a string.
+Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3368.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-And the HTC implementations I've seen have code for both a string and
-command to be placed, but usually don't actually copy anything to the
-string address (which suggest its not used by the bootloader, as you
-note).
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 3c9733e..6037beb 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -384,10 +384,10 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	 * Clock-Architecture Diagram 3
+ 	 */
+ 
+-	COMPOSITE(0, "aclk_vepu", mux_pll_src_cpll_gpll_usb_p, 0,
++	COMPOSITE(0, "aclk_vepu", mux_pll_src_cpll_gpll_npll_usb_p, 0,
+ 			RK3368_CLKSEL_CON(15), 6, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3368_CLKGATE_CON(4), 6, GFLAGS),
+-	COMPOSITE(0, "aclk_vdpu", mux_pll_src_cpll_gpll_usb_p, 0,
++	COMPOSITE(0, "aclk_vdpu", mux_pll_src_cpll_gpll_npll_usb_p, 0,
+ 			RK3368_CLKSEL_CON(15), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK3368_CLKGATE_CON(4), 7, GFLAGS),
+ 
+-- 
+2.6.4
 
-Either way, we'd have to extend or implement a new driver, but that's
-a bridge I think we can cross later when we see such hardware support
-upstream (rather then try to create a super driver that handles
-everything a creative firmware developer could come up with).
-
-thanks
--john
