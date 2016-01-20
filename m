@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/4] clk: rockchip: fix rk3368 cpuclk core dividers
-Date: Wed, 20 Jan 2016 22:49:18 +0100
-Message-ID: <1453326560-20475-2-git-send-email-heiko@sntech.de>
+Subject: [PATCH 4/4] clk: rockchip: rk3368: fix hdmi_cec gate-register
+Date: Wed, 20 Jan 2016 22:49:20 +0100
+Message-ID: <1453326560-20475-4-git-send-email-heiko@sntech.de>
 References: <1453326560-20475-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1453326560-20475-1-git-send-email-heiko@sntech.de>
@@ -10,75 +10,28 @@ To: mturquette@baylibre.com, sboyd@codeaurora.org
 Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com, zhangqing@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Similar to commit 9880d4277f6a ("clk: rockchip: fix rk3288 cpuclk core
-dividers") it seems the cpuclk dividers are one to high on the rk3368
-as well.
-
-And again similar to the previous fix, we opt to make the divider list
-contain the values to be written to use the same paradigm for them on all
-supported socs.
+Fix a typo making the sclk_hdmi_cec access a wrong register to handle
+its gate.
 
 Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
-Reported-by: Zhang Qing <zhangqing@rock-chips.com>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/rockchip/clk-rk3368.c | 40 +++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ drivers/clk/rockchip/clk-rk3368.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index f6667b8..3c9733e 100644
+index 6037beb..57acb62 100644
 --- a/drivers/clk/rockchip/clk-rk3368.c
 +++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -218,29 +218,29 @@ static const struct rockchip_cpuclk_reg_data rk3368_cpuclkl_data = {
- 	}
+@@ -442,7 +442,7 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	GATE(SCLK_HDMI_HDCP, "sclk_hdmi_hdcp", "xin24m", 0,
+ 			RK3368_CLKGATE_CON(4), 13, GFLAGS),
+ 	GATE(SCLK_HDMI_CEC, "sclk_hdmi_cec", "xin32k", 0,
+-			RK3368_CLKGATE_CON(5), 12, GFLAGS),
++			RK3368_CLKGATE_CON(4), 12, GFLAGS),
  
- static struct rockchip_cpuclk_rate_table rk3368_cpuclkb_rates[] __initdata = {
--	RK3368_CPUCLKB_RATE(1512000000, 2, 6, 6),
--	RK3368_CPUCLKB_RATE(1488000000, 2, 5, 5),
--	RK3368_CPUCLKB_RATE(1416000000, 2, 5, 5),
--	RK3368_CPUCLKB_RATE(1200000000, 2, 4, 4),
--	RK3368_CPUCLKB_RATE(1008000000, 2, 4, 4),
--	RK3368_CPUCLKB_RATE( 816000000, 2, 3, 3),
--	RK3368_CPUCLKB_RATE( 696000000, 2, 3, 3),
--	RK3368_CPUCLKB_RATE( 600000000, 2, 2, 2),
--	RK3368_CPUCLKB_RATE( 408000000, 2, 2, 2),
--	RK3368_CPUCLKB_RATE( 312000000, 2, 2, 2),
-+	RK3368_CPUCLKB_RATE(1512000000, 1, 5, 5),
-+	RK3368_CPUCLKB_RATE(1488000000, 1, 4, 4),
-+	RK3368_CPUCLKB_RATE(1416000000, 1, 4, 4),
-+	RK3368_CPUCLKB_RATE(1200000000, 1, 3, 3),
-+	RK3368_CPUCLKB_RATE(1008000000, 1, 3, 3),
-+	RK3368_CPUCLKB_RATE( 816000000, 1, 2, 2),
-+	RK3368_CPUCLKB_RATE( 696000000, 1, 2, 2),
-+	RK3368_CPUCLKB_RATE( 600000000, 1, 1, 1),
-+	RK3368_CPUCLKB_RATE( 408000000, 1, 1, 1),
-+	RK3368_CPUCLKB_RATE( 312000000, 1, 1, 1),
- };
- 
- static struct rockchip_cpuclk_rate_table rk3368_cpuclkl_rates[] __initdata = {
--	RK3368_CPUCLKL_RATE(1512000000, 2, 7, 7),
--	RK3368_CPUCLKL_RATE(1488000000, 2, 6, 6),
--	RK3368_CPUCLKL_RATE(1416000000, 2, 6, 6),
--	RK3368_CPUCLKL_RATE(1200000000, 2, 5, 5),
--	RK3368_CPUCLKL_RATE(1008000000, 2, 5, 5),
--	RK3368_CPUCLKL_RATE( 816000000, 2, 4, 4),
--	RK3368_CPUCLKL_RATE( 696000000, 2, 3, 3),
--	RK3368_CPUCLKL_RATE( 600000000, 2, 3, 3),
--	RK3368_CPUCLKL_RATE( 408000000, 2, 2, 2),
--	RK3368_CPUCLKL_RATE( 312000000, 2, 2, 2),
-+	RK3368_CPUCLKL_RATE(1512000000, 1, 6, 6),
-+	RK3368_CPUCLKL_RATE(1488000000, 1, 5, 5),
-+	RK3368_CPUCLKL_RATE(1416000000, 1, 5, 5),
-+	RK3368_CPUCLKL_RATE(1200000000, 1, 4, 4),
-+	RK3368_CPUCLKL_RATE(1008000000, 1, 4, 4),
-+	RK3368_CPUCLKL_RATE( 816000000, 1, 3, 3),
-+	RK3368_CPUCLKL_RATE( 696000000, 1, 2, 2),
-+	RK3368_CPUCLKL_RATE( 600000000, 1, 2, 2),
-+	RK3368_CPUCLKL_RATE( 408000000, 1, 1, 1),
-+	RK3368_CPUCLKL_RATE( 312000000, 1, 1, 1),
- };
- 
- static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	COMPOSITE_NODIV(0, "vip_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3368_CLKSEL_CON(21), 15, 1, MFLAGS,
 -- 
 2.6.4
 
