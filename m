@@ -1,45 +1,208 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [patch] drm: rockchip: signedness bug in
- dw_mipi_dsi_get_lane_bps()
-Date: Thu, 21 Jan 2016 00:14:25 +0100
-Message-ID: <181674264.ynnWZU1Yz8@phil>
-References: <20160120095352.GA19898@mwanda>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2] clk: rockchip: Add support for multiple clock providers
+Date: Thu, 21 Jan 2016 00:38:30 +0100
+Message-ID: <3395528.oy9qVuyESf@phil>
+References: <1453280809-3120-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160120095352.GA19898@mwanda>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453280809-3120-1-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGFuLAoKQW0gTWl0dHdvY2gsIDIwLiBKYW51YXIgMjAxNiwgMTI6NTM6NTIgc2NocmllYiBE
-YW4gQ2FycGVudGVyOgo+ICJicHAiIG5lZWRzIHRvIGJlIHNpZ25lZCBmb3IgdGhlIGVycm9yIGhh
-bmRsaW5nIHRvIHdvcmsuCj4gCj4gRml4ZXM6IDg0ZTA1NDA4ZmNmZSAoJ2RybTogcm9ja2NoaXA6
-IFN1cHBvcnQgU3lub3BzeXMgRFcgTUlQSSBEU0knKQo+IFNpZ25lZC1vZmYtYnk6IERhbiBDYXJw
-ZW50ZXIgPGRhbi5jYXJwZW50ZXJAb3JhY2xlLmNvbT4KClRoZXJlJ3MgYWxzbyAiZHJtL3JvY2tj
-aGlwL2RzaTogZml4IGhhbmRsaW5nIG1pcGlfZHNpX3BpeGVsX2Zvcm1hdF90b19icHAgCnJlc3Vs
-dCIgZnJvbSBBbmRyemVqIEhhamRhIGZyb20gamFudWFyeSB0aGUgMTR0aCBkb2luZyB0aGUgc2Ft
-ZSBjaGFuZ2UuCgoKSGVpa28KCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9kdy1taXBpLWRzaS5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1k
-c2kuYyBpbmRleCA3YmZlMjQzLi5jMzVlNWFmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2R3LW1pcGktZHNpLmMKPiBAQCAtNDYxLDcgKzQ2MSw4IEBAIHN0YXRpYyBpbnQgZHdfbWlwaV9k
-c2lfcGh5X2luaXQoc3RydWN0IGR3X21pcGlfZHNpCj4gKmRzaSkKPiAKPiAgc3RhdGljIGludCBk
-d19taXBpX2RzaV9nZXRfbGFuZV9icHMoc3RydWN0IGR3X21pcGlfZHNpICpkc2kpCj4gIHsKPiAt
-CXVuc2lnbmVkIGludCBicHAsIGksIHByZTsKPiArCWludCBicHA7Cj4gKwl1bnNpZ25lZCBpbnQg
-aSwgcHJlOwo+ICAJdW5zaWduZWQgbG9uZyBtcGNsaywgcGxscmVmLCB0bXA7Cj4gIAl1bnNpZ25l
-ZCBpbnQgbSA9IDEsIG4gPSAxLCB0YXJnZXRfbWJwcyA9IDEwMDA7Cj4gIAl1bnNpZ25lZCBpbnQg
-bWF4X21icHMgPSBkcHRkaW5fbWFwW0FSUkFZX1NJWkUoZHB0ZGluX21hcCkgLSAKMV0ubWF4X21i
-cHM7CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+Am Mittwoch, 20. Januar 2016, 17:06:49 schrieb Xing Zheng:
+> There are need to support Multi-CRUs probability in future, but
+> it is not supported on the current Rockchip Clock Framework.
+> 
+> Therefore, this patch add support a provider as the parameter
+> handler when we call the clock register functions for per CRU.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+overall this looks really nice. Thanks for following up on our talk so 
+quickly :-) .
+
+
+> ---
+> 
+> Changes in v2:
+> - Fix missed to call rockchip_clk_common_cru_init when SoCs clock init.
+> 
+>  drivers/clk/rockchip/clk-rk3036.c |   15 +++--
+>  drivers/clk/rockchip/clk-rk3188.c |   40 ++++++++-----
+>  drivers/clk/rockchip/clk-rk3228.c |   15 +++--
+>  drivers/clk/rockchip/clk-rk3288.c |   17 ++++--
+>  drivers/clk/rockchip/clk-rk3368.c |   19 +++---
+>  drivers/clk/rockchip/clk.c        |  120
+> +++++++++++++++++++++++-------------- drivers/clk/rockchip/clk.h        |
+>   35 ++++++++---
+>  7 files changed, 170 insertions(+), 91 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3036.c
+> b/drivers/clk/rockchip/clk-rk3036.c index 483913b..050ad13 100644
+> --- a/drivers/clk/rockchip/clk-rk3036.c
+> +++ b/drivers/clk/rockchip/clk-rk3036.c
+> @@ -434,6 +434,7 @@ static const char *const rk3036_critical_clocks[]
+> __initconst = {
+> 
+>  static void __init rk3036_clk_init(struct device_node *np)
+>  {
+> +	struct rockchip_clk_provider *ctx;
+>  	void __iomem *reg_base;
+>  	struct clk *clk;
+> 
+> @@ -443,7 +444,9 @@ static void __init rk3036_clk_init(struct device_node
+> *np) return;
+>  	}
+> 
+> -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+> +	ctx = rockchip_clk_init(reg_base, CLK_NR_CLKS);
+> +
+> +	rockchip_clk_common_cru_init(np);
+> 
+>  	/* xin12m is created by an cru-internal divider */
+>  	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
+> @@ -473,15 +476,15 @@ static void __init rk3036_clk_init(struct
+> device_node *np) pr_warn("%s: could not register clock sclk_macref_out:
+> %ld\n", __func__, PTR_ERR(clk));
+> 
+> -	rockchip_clk_register_plls(rk3036_pll_clks,
+> +	rockchip_clk_register_plls(ctx, rk3036_pll_clks,
+>  				   ARRAY_SIZE(rk3036_pll_clks),
+>  				   RK3036_GRF_SOC_STATUS0);
+> -	rockchip_clk_register_branches(rk3036_clk_branches,
+> +	rockchip_clk_register_branches(ctx, rk3036_clk_branches,
+>  				  ARRAY_SIZE(rk3036_clk_branches));
+>  	rockchip_clk_protect_critical(rk3036_critical_clocks,
+>  				      ARRAY_SIZE(rk3036_critical_clocks));
+> 
+> -	rockchip_clk_register_armclk(ARMCLK, "armclk",
+> +	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+>  			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
+>  			&rk3036_cpuclk_data, rk3036_cpuclk_rates,
+>  			ARRAY_SIZE(rk3036_cpuclk_rates));
+> @@ -489,6 +492,8 @@ static void __init rk3036_clk_init(struct device_node
+> *np) rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
+> ROCKCHIP_SOFTRST_HIWORD_MASK);
+> 
+> -	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
+> +	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL);
+> +
+> +	rockchip_clk_of_add_provider(np, ctx);
+>  }
+>  CLK_OF_DECLARE(rk3036_cru, "rockchip,rk3036-cru", rk3036_clk_init);
+> diff --git a/drivers/clk/rockchip/clk-rk3188.c
+> b/drivers/clk/rockchip/clk-rk3188.c index 7f7444c..338a22e 100644
+> --- a/drivers/clk/rockchip/clk-rk3188.c
+> +++ b/drivers/clk/rockchip/clk-rk3188.c
+> @@ -750,18 +750,19 @@ static const char *const rk3188_critical_clocks[]
+> __initconst = { "pclk_peri",
+>  };
+> 
+> -static void __init rk3188_common_clk_init(struct device_node *np)
+> +static struct rockchip_clk_provider *__init rk3188_common_clk_init(struct
+> device_node *np) {
+> +	struct rockchip_clk_provider *ctx;
+>  	void __iomem *reg_base;
+>  	struct clk *clk;
+> 
+>  	reg_base = of_iomap(np, 0);
+> -	if (!reg_base) {
+> -		pr_err("%s: could not map cru region\n", __func__);
+> -		return;
+> -	}
+> +	if (!reg_base)
+> +		panic("%s: could not map cru region\n", __func__);
+
+I don't believe in doing panics everywhere :-), please do
+	return ERR_PTR(-ENOMEM);
+here and in similar locations and let the top-most caller handle errors.
+
+
+
+> @@ -260,27 +261,49 @@ static struct clk
+> *rockchip_clk_register_frac_branch(const char *name, return clk;
+>  }
+> 
+> -static DEFINE_SPINLOCK(clk_lock);
+> -static struct clk **clk_table;
+> -static void __iomem *reg_base;
+> -static struct clk_onecell_data clk_data;
+>  static struct device_node *cru_node;
+
+please also include the devicetree node into the ctx struct. That way we can 
+keep track of all of them (when there are multiple).
+
+
+>  static struct regmap *grf;
+> 
+> -void __init rockchip_clk_init(struct device_node *np, void __iomem *base,
+> -			      unsigned long nr_clks)
+> +struct rockchip_clk_provider *__init rockchip_clk_init(
+> +			void __iomem *base, unsigned long nr_clks)
+>  {
+> -	reg_base = base;
+> -	cru_node = np;
+> -	grf = ERR_PTR(-EPROBE_DEFER);
+> +	struct rockchip_clk_provider *ctx;
+> +	struct clk **clk_table;
+> +	int i;
+> +
+> +	ctx = kzalloc(sizeof(struct rockchip_clk_provider), GFP_KERNEL);
+> +	if (!ctx)
+> +		panic("could not allocate clock provider context.\n");
+
+as I wrote above, please return a real error here. Especially when there are 
+multiple clock controllers, it might actually get a bit farther in cases 
+when only one of them fails, which might help in debugging underlying issues 
+in such cases.
+
+
+> 
+>  	clk_table = kcalloc(nr_clks, sizeof(struct clk *), GFP_KERNEL);
+>  	if (!clk_table)
+> -		pr_err("%s: could not allocate clock lookup table\n", __func__);
+> +		panic("could not allocate clock lookup table\n");
+
+same here (and kfree the ctx from above before returning)
+
+
+> +
+> +	for (i = 0; i < nr_clks; ++i)
+> +		clk_table[i] = ERR_PTR(-ENOENT);
+> +
+> +	ctx->reg_base = base;
+> +	ctx->clk_data.clks = clk_table;
+> +	ctx->clk_data.clk_num = nr_clks;
+> +	spin_lock_init(&ctx->lock);
+> +
+> +	return ctx;
+> +}
+> 
+> -	clk_data.clks = clk_table;
+> -	clk_data.clk_num = nr_clks;
+> -	of_clk_add_provider(np, of_clk_src_onecell_get, &clk_data);
+> +void __init rockchip_clk_common_cru_init(struct device_node *np)
+> +{
+> +	cru_node = np;
+> +	grf = ERR_PTR(-EPROBE_DEFER);
+
+I'm not sure why this is a separate function. Setting the node pointer (into 
+the new struct as written above) can still happen in rockchip_clk_init, and 
+initializing the global grf pointer as well.
+
+
+Heiko
