@@ -1,47 +1,51 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 0/3] SoC: rockchip: support power domain for RK3368
-Date: Wed, 20 Jan 2016 09:26:45 +0100
-Message-ID: <3061119.C8moAIEzLL@phil>
-References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com> <569F6135.1070902@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <569F6135.1070902-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH] clk: rockchip: rk3036: Add apll as the critical clock
+Date: Wed, 20 Jan 2016 16:37:17 +0800
+Message-ID: <1453279037-23971-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+The apll may be closed if there are some child clock nodes below
+it when the device startup. Therefore, the apll should be keep
+critical.
 
-Am Mittwoch, 20. Januar 2016, 02:28:05 schrieb zhangqing:
-> On 01/11/2016 02:36 AM, zhangqing wrote:
-> > add pd id in rk3368-power.h
-> > modify pm_domains.c to support RK3368 SoC
-> > add RK3368 document for Rockchip power domains
-> > 
-> > zhangqing (3):
-> >    dt-bindings: add power-domain header for RK3368 SoCs
-> >    soc: rockchip: power-domain: Modify power domain driver for rk3368
-> >    dt-bindings: modify document of Rockchip power domains
-> 
-> Are there any other questions about the three patches.Please review.
+The apll tree like this:
+    pll_apll
+       apll
+          armclk
+             pclk_dbg
+             aclk_core_pre
+          aclk_hvec
+          uart_pll_clk
+             uart2_src
+                uart2_frac
+             uart1_src
+                uart1_frac
+             uart0_src
+                uart0_frac
 
-actually the patches look fine. I just need to wait for 4.5-rc1 to be 
-released (probably sunday) before I can apply them.
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
+
+ drivers/clk/rockchip/clk-rk3036.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+index ebce980..483913b 100644
+--- a/drivers/clk/rockchip/clk-rk3036.c
++++ b/drivers/clk/rockchip/clk-rk3036.c
+@@ -425,6 +425,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+ };
+ 
+ static const char *const rk3036_critical_clocks[] __initconst = {
++	"apll",
+ 	"aclk_cpu",
+ 	"aclk_peri",
+ 	"hclk_peri",
+-- 
+1.7.9.5
 
 
-Heiko
-
-> 
-> >   .../bindings/soc/rockchip/power_domain.txt         | 21 ++++++++++++++
-> >   drivers/soc/rockchip/pm_domains.c                  | 33
-> >   ++++++++++++++++++++++ include/dt-bindings/power/rk3368-power.h      
-> >       | 28 ++++++++++++++++++ 3 files changed, 82 insertions(+)
-> >   create mode 100644 include/dt-bindings/power/rk3368-power.h
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
