@@ -1,170 +1,110 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Wed, 20 Jan 2016 08:50:51 -0800
-Message-ID: <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
-	<48806799.thBSifdUp8@diego>
-	<54647142.4080800@rock-chips.com>
-	<CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
-	<CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Wed, 20 Jan 2016 12:28:40 -0600
+Message-ID: <20160120182840.GA15741@rob-hp-laptop>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+ <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org, linux@roeck-us.net, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, geert+renesas@glider.be, sre@kernel.org, olof@lixom.net, dbaryshkov@gmail.com, alexandre.belloni@free-electrons.com, jun.nie@linaro.org, pawel.moll@arm.com, f.fainelli@gmail.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, cernekee@gmail.com, linux-kernel@vger.kernel.org, dwmw2@infradead.org, mark.rutland@arm.com, maxime.ripard@free-electrons.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Tomeu,
+On Tue, Jan 12, 2016 at 07:29:49PM +0800, Andy Yan wrote:
+> add device tree binding document for reboot-mode driver
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2: None
+> Changes in v1: None
+> 
+>  .../bindings/power/reset/reboot-mode.txt           | 41 +++++++++++++++++
+>  .../bindings/power/reset/syscon-reboot-mode.txt    | 52 ++++++++++++++++++++++
+>  2 files changed, 93 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mode.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> new file mode 100644
+> index 0000000..81d9f66
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> @@ -0,0 +1,41 @@
+> +Generic reboot mode core map driver
+> +
+> +This driver get reboot mode arguments and call the write
+> +interface to stores the magic value in special register
+> +or ram . Then the bootloader can read it and take different
+> +action according to the argument stored.
+> +
+> +Required properties:
+> +- compatible: only support "syscon-reboot-mode" now.
+> +
+> +Each mode is represented as a sub-node of reboot_mode:
+> +
+> +Subnode required properties:
+> +- linux,mode: reboot mode command,such as "loader", "recovery", "fastboot".
+> +- loader,magic: magic number for the mode, this is vendor specific.
+> +
+> +Example:
+> +	reboot_mode {
 
-On Tue, Jan 19, 2016 at 4:02 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> w=
-rote:
-> On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> w=
-rote:
->> Hi,
->>
->> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips.=
-com> wrote:
->>> Hi Heiko,
->>>
->>> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
->>>>
->>>> Hi Kever,
->>>>
->>>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
->>>>>
->>>>> we are going to make a clock usage solution for rk3288:
->>>>> 1. CPLL and GPLL always not change after assign init;
->>>>> 2. NPLL default as 500MHz, may used for most scene;
->>>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
->>>>>     frequency requirement.
->>>>>
->>>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
->>>>
->>>> In general I'm not really sure if allowing one component to arbita=
-rily
->>>> change
->>>> a shared clock wouldn't result in trouble.
->>>>
->>>> At the moment only dclk_vop0 is included in your series, while the=
- hdmi
->>>> controller can connect to both vop0 and vop1.
->>>> And as Doug mentioned the gpu also has the npll as one possible so=
-urce.
->>>
->>> I think the problem GPU HANGs with 480MHz clock from usbphy has
->>> been fixed with my patch to gerrit:
->>> https://chromium-review.googlesource.com/#/c/229554/
->>>>
->>>>
->>>> Looking through the clock-tree there are a lot more components pos=
-sibly
->>>> using
->>>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, i=
-sp,
->>>> hevc,
->>>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with someho=
-w
->>>> reserving
->>>> the npll for VOP0 alone.
->>>
->>> It's true that I customized the usage of npll for VOP0 when we need=
- some
->>> very special frequency, but it doesn't means other modules can't us=
-e the
->>> npll, it will always decided by clock core for module clocks that w=
-hich
->>> parent
->>> is the best.
->>
->> We will just need to be very careful.  As I've mentioned in the past
->> we'll need to think about what happens to other clocks that happen t=
-o
->> be parented by NPLL whenever we change it.
->>
->> So if we do this:
->>
->> 1. NPLL happens to be 500MHz.
->> 2. We set GPU to be 500MHz and it picks NPLL.
->> 3. We change NPLL to a different speed (like 600MHz).
->>
->> ...I believe in this scenario the GPU would start running at 600MHz
->> immediately.  We'd need to add special code to watch out for this an=
-d
->> pick an alternate clock for the GPU (like the USB 480) before the NP=
-LL
->> change.  If NPLL later changes back to 500MHz and the GPU still want=
-ed
->> 500MHz, we'd have to decide what to do.
->>
->> The summary is: it's pretty complicated
->
-> Hello,
->
-> I have heard that this is still an issue in RK3288 support in mainlin=
-e
-> so have given a look and wonder if you have considered having the
-> consumers of a shared clock (which could be a child clock) use
-> PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate,
-> or to abort them if that's not possible.
->
-> Alternatively, a consumer can set min and max constraints if it
-> doesn't want for others to mess with its provider, and let the other
-> consumer deal with failed rate changes (probably by choosing another
-> provider).
->
-> Have I missed any problems with that?
+reboot-mode instead please.
 
-I don't think it's really that simple, but I certainly could be wrong.
+> +		compatible = "syscon-reboot-mode";
+> +		offset = <0x40>;
 
-Summary of the system:
+This doc by itself is a little confusing. For example, is a child of the 
+syscon node? I would remove offset (and perhaps compatible) from this 
+example.
 
-* There are two VOPs (video processors) on rk3288: the big one and the
-little one.
+> +
+> +		loader {
+> +			linux,mode = "loader";
+> +			loader,magic = <BOOT_LOADER>;
+> +		};
 
-* The big VOP can handle higher resolutions than the little one but
-uses more power.
+Sorry, my previous suggestion was not clear. I'm suggesting get rid of 
+the subnodes and just do properties like this:
 
-* Both VOPs two can be sourced from CPLL, GPLL, or NPLL.
+loader = <BOOT_LOADER>;
+maskrom = <BOOT_MASKROM>;
 
-* Both VOPs can be setup to process video for either HDMI, eDP, LVDS, .=
-=2E.
-
-* NPLL is the "new" PLL and is kinda like an extra PLL that's not used
-for any of the core peripherals.  It's intended to be one that's
-changed dynamically based on system needs.
-
-* GPLL appears intended (in current designs) to run at 594 MHz on
-rk3288 using a special "low jitter" setting.  This is intended to be
-the source clock for HDMI when running the very common 148.5 and 74.25
-rates.  It also it intended to be the source clock for various other
-peripherals like i2c, eMMC, SD, etc.  This also runs the GPU when the
-GPU is running at ~600MHz or ~300MHz.
-
-* CPLL appears intended (in current designs) to run at 400MHz.  There
-are some peripherals that run off this plus the GPU at 400MHz, 200MHz,
-or 100MHz.
+That's the same amount of information unless node names and linux,mode 
+values are going to diverge. Do they need to? I can't see a reason.
 
 
-Let's imagine that we're booting up on a laptop where the builtin
-panel is hooked up via eDP.  Let's say that the panel really wants
-76.42 MHz but that will work just fine with 74.25 MHz too.  If this is
-a system that has no other graphics needs, we'd want eDP to take NPLL
-and grab 76.42 MHz.  Make the best rate, right?
+We need to be clear what loader means. More specifically, it is boot 
+into bootloader shell. 
 
-=2E..but what about if it's a system with an HDMI port?  The eDP panel
-is built in and we know it works with 74.25 MHz, but the user could
-plug into all sorts of HDMI devices and they may require some very
-special PLL rates to get there.  So if we happen to take NPLL for eDP
-we'll need to know to switch away from it once something is plugged
-into HDMI.  We don't want to block the HDMI request since we know we
-can run eDP at 74.25 off GPLL.  Presumably we could see the HDMI
-request and then try to remux the eDP on the fly.  ...but what decides
-the HDMI is more important to eDP?  You might want different rules if
-the eDP port is somehow exposed and the user might plug different
-panels into it...
+> +
+> +		maskrom {
 
+In theory, the bootrom could have multiple modes. This typically means a 
+USB download mode. So perhaps a more precise name would be 
+"rom-download". 
 
--Doug
+In chips I'm familiar with the bootrom mode is selected via a different 
+mechanism than the secondary bootloader modes, but I suppose the same 
+mechanism could be used.
+
+> +			linux,mode = "maskrom";
+> +			loader,magic = <BOOT_MASKROM>;
+> +		};
+> +
+> +		recovery {
+> +			linux,mode = "recovery";
+> +			loader,magic = <BOOT_RECOVERY>;
+> +		};
+> +
+> +		fastboot {
+> +			linux,mode = "fastboot";
+> +			loader,magic = <BOOT_FASTBOOT>;
+> +		};
