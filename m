@@ -1,186 +1,186 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 3/4] ARM: dts: rockchip: add syscon-reboot-mode node
-Date: Thu, 21 Jan 2016 09:38:17 +0100
-Message-ID: <56A098F9.5020100@gmail.com>
-References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
- <1452598378-8371-1-git-send-email-andy.yan@rock-chips.com>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Thu, 21 Jan 2016 10:03:21 +0100
+Message-ID: <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+ <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
+ <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+ <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com> <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452598378-8371-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, cernekee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On 20 January 2016 at 17:50, Doug Anderson <dianders@chromium.org> wrot=
+e:
+> Tomeu,
+>
+> On Tue, Jan 19, 2016 at 4:02 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net>=
+ wrote:
+>> On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> =
+wrote:
+>>> Hi,
+>>>
+>>> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips=
+=2Ecom> wrote:
+>>>> Hi Heiko,
+>>>>
+>>>> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
+>>>>>
+>>>>> Hi Kever,
+>>>>>
+>>>>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
+>>>>>>
+>>>>>> we are going to make a clock usage solution for rk3288:
+>>>>>> 1. CPLL and GPLL always not change after assign init;
+>>>>>> 2. NPLL default as 500MHz, may used for most scene;
+>>>>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
+>>>>>>     frequency requirement.
+>>>>>>
+>>>>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
+>>>>>
+>>>>> In general I'm not really sure if allowing one component to arbit=
+arily
+>>>>> change
+>>>>> a shared clock wouldn't result in trouble.
+>>>>>
+>>>>> At the moment only dclk_vop0 is included in your series, while th=
+e hdmi
+>>>>> controller can connect to both vop0 and vop1.
+>>>>> And as Doug mentioned the gpu also has the npll as one possible s=
+ource.
+>>>>
+>>>> I think the problem GPU HANGs with 480MHz clock from usbphy has
+>>>> been fixed with my patch to gerrit:
+>>>> https://chromium-review.googlesource.com/#/c/229554/
+>>>>>
+>>>>>
+>>>>> Looking through the clock-tree there are a lot more components po=
+ssibly
+>>>>> using
+>>>>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, =
+isp,
+>>>>> hevc,
+>>>>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with someh=
+ow
+>>>>> reserving
+>>>>> the npll for VOP0 alone.
+>>>>
+>>>> It's true that I customized the usage of npll for VOP0 when we nee=
+d some
+>>>> very special frequency, but it doesn't means other modules can't u=
+se the
+>>>> npll, it will always decided by clock core for module clocks that =
+which
+>>>> parent
+>>>> is the best.
+>>>
+>>> We will just need to be very careful.  As I've mentioned in the pas=
+t
+>>> we'll need to think about what happens to other clocks that happen =
+to
+>>> be parented by NPLL whenever we change it.
+>>>
+>>> So if we do this:
+>>>
+>>> 1. NPLL happens to be 500MHz.
+>>> 2. We set GPU to be 500MHz and it picks NPLL.
+>>> 3. We change NPLL to a different speed (like 600MHz).
+>>>
+>>> ...I believe in this scenario the GPU would start running at 600MHz
+>>> immediately.  We'd need to add special code to watch out for this a=
+nd
+>>> pick an alternate clock for the GPU (like the USB 480) before the N=
+PLL
+>>> change.  If NPLL later changes back to 500MHz and the GPU still wan=
+ted
+>>> 500MHz, we'd have to decide what to do.
+>>>
+>>> The summary is: it's pretty complicated
+>>
+>> Hello,
+>>
+>> I have heard that this is still an issue in RK3288 support in mainli=
+ne
+>> so have given a look and wonder if you have considered having the
+>> consumers of a shared clock (which could be a child clock) use
+>> PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate=
+,
+>> or to abort them if that's not possible.
+>>
+>> Alternatively, a consumer can set min and max constraints if it
+>> doesn't want for others to mess with its provider, and let the other
+>> consumer deal with failed rate changes (probably by choosing another
+>> provider).
+>>
+>> Have I missed any problems with that?
+>
+> I don't think it's really that simple, but I certainly could be wrong=
+=2E
+>
+> Summary of the system:
+>
+> * There are two VOPs (video processors) on rk3288: the big one and th=
+e
+> little one.
+>
+> * The big VOP can handle higher resolutions than the little one but
+> uses more power.
+>
+> * Both VOPs two can be sourced from CPLL, GPLL, or NPLL.
+>
+> * Both VOPs can be setup to process video for either HDMI, eDP, LVDS,=
+ ...
+>
+> * NPLL is the "new" PLL and is kinda like an extra PLL that's not use=
+d
+> for any of the core peripherals.  It's intended to be one that's
+> changed dynamically based on system needs.
+>
+> * GPLL appears intended (in current designs) to run at 594 MHz on
+> rk3288 using a special "low jitter" setting.  This is intended to be
+> the source clock for HDMI when running the very common 148.5 and 74.2=
+5
+> rates.  It also it intended to be the source clock for various other
+> peripherals like i2c, eMMC, SD, etc.  This also runs the GPU when the
+> GPU is running at ~600MHz or ~300MHz.
+>
+> * CPLL appears intended (in current designs) to run at 400MHz.  There
+> are some peripherals that run off this plus the GPU at 400MHz, 200MHz=
+,
+> or 100MHz.
+>
+>
+> Let's imagine that we're booting up on a laptop where the builtin
+> panel is hooked up via eDP.  Let's say that the panel really wants
+> 76.42 MHz but that will work just fine with 74.25 MHz too.  If this i=
+s
+> a system that has no other graphics needs, we'd want eDP to take NPLL
+> and grab 76.42 MHz.  Make the best rate, right?
+>
+> ...but what about if it's a system with an HDMI port?  The eDP panel
+> is built in and we know it works with 74.25 MHz, but the user could
+> plug into all sorts of HDMI devices and they may require some very
+> special PLL rates to get there.  So if we happen to take NPLL for eDP
+> we'll need to know to switch away from it once something is plugged
+> into HDMI.  We don't want to block the HDMI request since we know we
+> can run eDP at 74.25 off GPLL.  Presumably we could see the HDMI
+> request and then try to remux the eDP on the fly.  ...but what decide=
+s
+> the HDMI is more important to eDP?  You might want different rules if
+> the eDP port is somehow exposed and the user might plug different
+> panels into it...
 
+So we have a mechanism for detecting a conflict in the clock
+hierarchy, and a mechanism to solve it, but we are missing a way for
+userspace to communicate policy regarding which clocks should be given
+priority when solving such a conflict?
 
-On 12/01/16 12:32, Andy Yan wrote:
-> Rockchip platform use a SYSCON mapped register store
-> the reboot mode magic value for bootloader to use when
-> system reboot. So add syscon-reboot-mode driver DT node
-> for rk3xxx,rk3288 platform
->
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> ---
+Regards,
 
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
->
-> Changes in v2:
-> - make this node as a subnode of PMU
->
-> Changes in v1:
-> - correct the maskrom magic number
-> - use macro defined in rockchip_boot-mode.h for reboot-mode DT node
->
->   arch/arm/boot/dts/rk3288.dtsi                | 31 ++++++++++++++++++++++++++
->   arch/arm/boot/dts/rk3xxx.dtsi                | 33 +++++++++++++++++++++++++++-
->   include/dt-bindings/soc/rockchip_boot-mode.h | 30 +++++++++++++++++++++++++
->   3 files changed, 93 insertions(+), 1 deletion(-)
->   create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
->
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index 04ea209..4e49fb7 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -45,6 +45,7 @@
->   #include <dt-bindings/clock/rk3288-cru.h>
->   #include <dt-bindings/thermal/thermal.h>
->   #include <dt-bindings/power/rk3288-power.h>
-> +#include <dt-bindings/soc/rockchip_boot-mode.h>
->   #include "skeleton.dtsi"
->
->   / {
-> @@ -712,6 +713,36 @@
->   				clocks = <&cru ACLK_GPU>;
->   			};
->   		};
-> +
-> +		reboot-mode {
-> +			compatible = "syscon-reboot-mode";
-> +			offset = <0x94>;
-> +
-> +			normal {
-> +				linux,mode = "normal";
-> +				loader,magic = <BOOT_NORMAL>;
-> +			};
-> +
-> +			loader {
-> +				linux,mode = "loader";
-> +				loader,magic = <BOOT_LOADER>;
-> +			};
-> +
-> +			maskrom {
-> +				linux,mode = "maskrom";
-> +				loader,magic = <BOOT_MASKROM>;
-> +			};
-> +
-> +			recovery {
-> +				linux,mode = "recovery";
-> +				loader,magic = <BOOT_RECOVERY>;
-> +			};
-> +
-> +			fastboot {
-> +				linux,mode = "fastboot";
-> +				loader,magic = <BOOT_FASTBOOT>;
-> +			};
-> +		};
->   	};
->
->   	sgrf: syscon@ff740000 {
-> diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-> index 4497d28..58af546 100644
-> --- a/arch/arm/boot/dts/rk3xxx.dtsi
-> +++ b/arch/arm/boot/dts/rk3xxx.dtsi
-> @@ -43,6 +43,7 @@
->
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/soc/rockchip_boot-mode.h>
->   #include "skeleton.dtsi"
->
->   / {
-> @@ -242,8 +243,38 @@
->   	};
->
->   	pmu: pmu@20004000 {
-> -		compatible = "rockchip,rk3066-pmu", "syscon";
-> +		compatible = "rockchip,rk3066-pmu", "syscon", "simple-mfd";
->   		reg = <0x20004000 0x100>;
-> +
-> +		reboot-mode {
-> +			compatible = "syscon-reboot-mode";
-> +			offset = <0x40>;
-> +
-> +			normal {
-> +				linux,mode = "normal";
-> +				loader,magic = <BOOT_NORMAL>;
-> +			};
-> +
-> +			loader {
-> +				linux,mode = "loader";
-> +				loader,magic = <BOOT_LOADER>;
-> +			};
-> +
-> +			maskrom {
-> +				linux,mode = "maskrom";
-> +				loader,magic = <BOOT_MASKROM>;
-> +			};
-> +
-> +			recovery {
-> +				linux,mode = "recovery";
-> +				loader,magic = <BOOT_RECOVERY>;
-> +			};
-> +
-> +			fastboot {
-> +				linux,mode = "fastboot";
-> +				loader,magic = <BOOT_FASTBOOT>;
-> +			};
-> +		};
->   	};
->
->   	grf: grf@20008000 {
-> diff --git a/include/dt-bindings/soc/rockchip_boot-mode.h b/include/dt-bindings/soc/rockchip_boot-mode.h
-> new file mode 100644
-> index 0000000..eedf113
-> --- /dev/null
-> +++ b/include/dt-bindings/soc/rockchip_boot-mode.h
-> @@ -0,0 +1,30 @@
-> +#ifndef __ROCKCHIP_BOOT_MODE_H
-> +#define __ROCKCHIP_BOOT_MODE_H
-> +
-> +/*high 24 bits is tag, low 8 bits is type*/
-> +#define	REBOOT_FLAG		0x5242C300
-> +/* normal boot */
-> +#define	BOOT_NORMAL		(REBOOT_FLAG + 0)
-> +/* enter loader rockusb mode */
-> +#define	BOOT_LOADER		(REBOOT_FLAG + 1)
-> +/* enter maskrom rockusb mode */
-> +#define	BOOT_MASKROM		(0xEF08A53C)
-> +/* enter recovery */
-> +#define	BOOT_RECOVERY		(REBOOT_FLAG + 3)
-> +/* do not enter recover */
-> +#define	BOOT_NORECOVER		(REBOOT_FLAG + 4)
-> +/* boot second OS*/
-> +#define	BOOT_SECONDOS		(REBOOT_FLAG + 5)
-> +/* enter recover and wipe data. */
-> +#define	BOOT_WIPEDATA		(REBOOT_FLAG + 6)
-> +/* enter recover and wipe all data. */
-> +#define	BOOT_WIPEALL		(REBOOT_FLAG + 7)
-> +/* check firmware img with backup part*/
-> +#define	BOOT_CHECKIMG		(REBOOT_FLAG + 8)
-> + /* enter fast boot mode */
-> +#define	BOOT_FASTBOOT		(REBOOT_FLAG + 9)
-> +#define	BOOT_SECUREBOOT_DISABLE	(REBOOT_FLAG + 10)
-> +/* enter charge mode */
-> +#define	BOOT_CHARGING		(REBOOT_FLAG + 11)
-> +
-> +#endif
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Tomeu
