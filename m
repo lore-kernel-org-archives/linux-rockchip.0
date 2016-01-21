@@ -1,186 +1,65 @@
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Thu, 21 Jan 2016 10:03:21 +0100
-Message-ID: <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
- <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
- <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
- <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com> <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: rk3036: Add apll as the critical clock
+Date: Thu, 21 Jan 2016 10:21:50 +0100
+Message-ID: <7538210.fX6mmzZ75v@phil>
+References: <1453279037-23971-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+In-Reply-To: <1453279037-23971-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 20 January 2016 at 17:50, Doug Anderson <dianders@chromium.org> wrot=
-e:
-> Tomeu,
->
-> On Tue, Jan 19, 2016 at 4:02 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net>=
- wrote:
->> On 13 November 2014 at 23:59, Doug Anderson <dianders@chromium.org> =
-wrote:
->>> Hi,
->>>
->>> On Thu, Nov 13, 2014 at 12:52 AM, Kever Yang <kever.yang@rock-chips=
-=2Ecom> wrote:
->>>> Hi Heiko,
->>>>
->>>> On 11/07/2014 05:06 AM, Heiko St=C3=BCbner wrote:
->>>>>
->>>>> Hi Kever,
->>>>>
->>>>> Am Dienstag, 4. November 2014, 15:52:34 schrieb Kever Yang:
->>>>>>
->>>>>> we are going to make a clock usage solution for rk3288:
->>>>>> 1. CPLL and GPLL always not change after assign init;
->>>>>> 2. NPLL default as 500MHz, may used for most scene;
->>>>>> 3. NPLL may be changed by VOP(HDMI) clock for some special
->>>>>>     frequency requirement.
->>>>>>
->>>>>>      I test it with rk3288 evb on top of Heiko's clk-for-next
->>>>>
->>>>> In general I'm not really sure if allowing one component to arbit=
-arily
->>>>> change
->>>>> a shared clock wouldn't result in trouble.
->>>>>
->>>>> At the moment only dclk_vop0 is included in your series, while th=
-e hdmi
->>>>> controller can connect to both vop0 and vop1.
->>>>> And as Doug mentioned the gpu also has the npll as one possible s=
-ource.
->>>>
->>>> I think the problem GPU HANGs with 480MHz clock from usbphy has
->>>> been fixed with my patch to gerrit:
->>>> https://chromium-review.googlesource.com/#/c/229554/
->>>>>
->>>>>
->>>>> Looking through the clock-tree there are a lot more components po=
-ssibly
->>>>> using
->>>>> (or wanting to use) the npll: of course the VOPs, the edp, hdmi, =
-isp,
->>>>> hevc,
->>>>> gpu, tsp uart0 and gmac. So I'm slightly uncomfortable with someh=
-ow
->>>>> reserving
->>>>> the npll for VOP0 alone.
->>>>
->>>> It's true that I customized the usage of npll for VOP0 when we nee=
-d some
->>>> very special frequency, but it doesn't means other modules can't u=
-se the
->>>> npll, it will always decided by clock core for module clocks that =
-which
->>>> parent
->>>> is the best.
->>>
->>> We will just need to be very careful.  As I've mentioned in the pas=
-t
->>> we'll need to think about what happens to other clocks that happen =
-to
->>> be parented by NPLL whenever we change it.
->>>
->>> So if we do this:
->>>
->>> 1. NPLL happens to be 500MHz.
->>> 2. We set GPU to be 500MHz and it picks NPLL.
->>> 3. We change NPLL to a different speed (like 600MHz).
->>>
->>> ...I believe in this scenario the GPU would start running at 600MHz
->>> immediately.  We'd need to add special code to watch out for this a=
-nd
->>> pick an alternate clock for the GPU (like the USB 480) before the N=
-PLL
->>> change.  If NPLL later changes back to 500MHz and the GPU still wan=
-ted
->>> 500MHz, we'd have to decide what to do.
->>>
->>> The summary is: it's pretty complicated
->>
->> Hello,
->>
->> I have heard that this is still an issue in RK3288 support in mainli=
-ne
->> so have given a look and wonder if you have considered having the
->> consumers of a shared clock (which could be a child clock) use
->> PRE_RATE_CHANGE notifications to adapt to changes in a parent's rate=
-,
->> or to abort them if that's not possible.
->>
->> Alternatively, a consumer can set min and max constraints if it
->> doesn't want for others to mess with its provider, and let the other
->> consumer deal with failed rate changes (probably by choosing another
->> provider).
->>
->> Have I missed any problems with that?
->
-> I don't think it's really that simple, but I certainly could be wrong=
-=2E
->
-> Summary of the system:
->
-> * There are two VOPs (video processors) on rk3288: the big one and th=
-e
-> little one.
->
-> * The big VOP can handle higher resolutions than the little one but
-> uses more power.
->
-> * Both VOPs two can be sourced from CPLL, GPLL, or NPLL.
->
-> * Both VOPs can be setup to process video for either HDMI, eDP, LVDS,=
- ...
->
-> * NPLL is the "new" PLL and is kinda like an extra PLL that's not use=
-d
-> for any of the core peripherals.  It's intended to be one that's
-> changed dynamically based on system needs.
->
-> * GPLL appears intended (in current designs) to run at 594 MHz on
-> rk3288 using a special "low jitter" setting.  This is intended to be
-> the source clock for HDMI when running the very common 148.5 and 74.2=
-5
-> rates.  It also it intended to be the source clock for various other
-> peripherals like i2c, eMMC, SD, etc.  This also runs the GPU when the
-> GPU is running at ~600MHz or ~300MHz.
->
-> * CPLL appears intended (in current designs) to run at 400MHz.  There
-> are some peripherals that run off this plus the GPU at 400MHz, 200MHz=
-,
-> or 100MHz.
->
->
-> Let's imagine that we're booting up on a laptop where the builtin
-> panel is hooked up via eDP.  Let's say that the panel really wants
-> 76.42 MHz but that will work just fine with 74.25 MHz too.  If this i=
-s
-> a system that has no other graphics needs, we'd want eDP to take NPLL
-> and grab 76.42 MHz.  Make the best rate, right?
->
-> ...but what about if it's a system with an HDMI port?  The eDP panel
-> is built in and we know it works with 74.25 MHz, but the user could
-> plug into all sorts of HDMI devices and they may require some very
-> special PLL rates to get there.  So if we happen to take NPLL for eDP
-> we'll need to know to switch away from it once something is plugged
-> into HDMI.  We don't want to block the HDMI request since we know we
-> can run eDP at 74.25 off GPLL.  Presumably we could see the HDMI
-> request and then try to remux the eDP on the fly.  ...but what decide=
-s
-> the HDMI is more important to eDP?  You might want different rules if
-> the eDP port is somehow exposed and the user might plug different
-> panels into it...
+Hi Xing,
 
-So we have a mechanism for detecting a conflict in the clock
-hierarchy, and a mechanism to solve it, but we are missing a way for
-userspace to communicate policy regarding which clocks should be given
-priority when solving such a conflict?
+Am Mittwoch, 20. Januar 2016, 16:37:17 schrieb Xing Zheng:
+> The apll may be closed if there are some child clock nodes below
+> it when the device startup. Therefore, the apll should be keep
+> critical.
+> 
+> The apll tree like this:
+>     pll_apll
+>        apll
+>           armclk
+>              pclk_dbg
+>              aclk_core_pre
+>           aclk_hvec
+>           uart_pll_clk
+>              uart2_src
+>                 uart2_frac
+>              uart1_src
+>                 uart1_frac
+>              uart0_src
+>                 uart0_frac
 
-Regards,
+can you find out which of those clocks does cause your hang?
+Because things like the uart-clocks for example should be handled by their 
+driver already, at the time the clk_disable_unused runs(). So I'd really 
+like the critical clock to be the actually needed clock.
 
-Tomeu
+Thanks
+Heiko
+
+
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> ---
+> 
+>  drivers/clk/rockchip/clk-rk3036.c |    1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3036.c
+> b/drivers/clk/rockchip/clk-rk3036.c index ebce980..483913b 100644
+> --- a/drivers/clk/rockchip/clk-rk3036.c
+> +++ b/drivers/clk/rockchip/clk-rk3036.c
+> @@ -425,6 +425,7 @@ static struct rockchip_clk_branch
+> rk3036_clk_branches[] __initdata = { };
+> 
+>  static const char *const rk3036_critical_clocks[] __initconst = {
+> +	"apll",
+>  	"aclk_cpu",
+>  	"aclk_peri",
+>  	"hclk_peri",
+
