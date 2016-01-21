@@ -1,76 +1,55 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: Bump sd card pin drive strength up on
- firefly boards
-Date: Thu, 21 Jan 2016 13:57:13 +0100
-Message-ID: <1453381033-3479-1-git-send-email-w.egorov@phytec.de>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH] drm/rockchip: respect CONFIG_DRM_FBDEV_EMULATION
+Date: Thu, 21 Jan 2016 13:53:46 +0000
+Message-ID: <1453384426-32617-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-It seems some firefly boards need 12mA drive strength for sdmmc.
-Using 4mA/8mA drive strength will cause the kernel to fail to recognize
-the sd card correctly.
-Increased the sdmmc lines drive strength from 4mA to 12mA.
-
-Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-firefly.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 4e3fd9a..49ec20d 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -408,6 +408,11 @@
- 		output-low;
- 	};
- 
-+	pcfg_pull_up_drv_12ma: pcfg-pull-up-drv-12ma {
-+		bias-pull-up;
-+		drive-strength = <12>;
-+	};
-+
- 	act8846 {
- 		pwr_hold: pwr-hold {
- 			rockchip,pins = <0 1 RK_FUNC_GPIO &pcfg_output_high>;
-@@ -457,6 +462,25 @@
- 	};
- 
- 	sdmmc {
-+		/*
-+		 * Default drive strength isn't enough to achieve even
-+		 * high-speed mode on firefly board so bump up to 12ma.
-+		 */
-+		sdmmc_bus4: sdmmc-bus4 {
-+			rockchip,pins = <6 16 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
-+					<6 17 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
-+					<6 18 RK_FUNC_1 &pcfg_pull_up_drv_12ma>,
-+					<6 19 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
-+		};
-+
-+		sdmmc_clk: sdmmc-clk {
-+			rockchip,pins = <6 20 RK_FUNC_1 &pcfg_pull_none_12ma>;
-+		};
-+
-+		sdmmc_cmd: sdmmc-cmd {
-+			rockchip,pins = <6 21 RK_FUNC_1 &pcfg_pull_up_drv_12ma>;
-+		};
-+
- 		sdmmc_pwr: sdmmc-pwr {
- 			rockchip,pins = <7 11 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
--- 
-1.9.1
+SWYgRFJNX0ZCREVWX0VNVUxBVElPTiBpcyBub3Qgc2VsZWN0ZWQgaW4gdGhlIGNvbmZpZyB0aGVu
+IHdlIHNob3VsZCBub3QKc2V0dXAgYSBmcmFtZWJ1ZmZlciBjb25zb2xlLgoKU2lnbmVkLW9mZi1i
+eTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgfCAgMyArKy0KIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaCB8IDExICsrKysrKysrKysrCiAyIGZpbGVzIGNo
+YW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+TWFrZWZpbGUKaW5kZXggYTRlMDNiYy4uZjZhODA5YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL01ha2VmaWxlCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtl
+ZmlsZQpAQCAtMiw4ICsyLDkgQEAKICMgTWFrZWZpbGUgZm9yIHRoZSBkcm0gZGV2aWNlIGRyaXZl
+ci4gIFRoaXMgZHJpdmVyIHByb3ZpZGVzIHN1cHBvcnQgZm9yIHRoZQogIyBEaXJlY3QgUmVuZGVy
+aW5nIEluZnJhc3RydWN0dXJlIChEUkkpIGluIFhGcmVlODYgNC4xLjAgYW5kIGhpZ2hlci4KIAot
+cm9ja2NoaXBkcm0teSA6PSByb2NrY2hpcF9kcm1fZHJ2Lm8gcm9ja2NoaXBfZHJtX2ZiLm8gcm9j
+a2NoaXBfZHJtX2ZiZGV2Lm8gXAorcm9ja2NoaXBkcm0teSA6PSByb2NrY2hpcF9kcm1fZHJ2Lm8g
+cm9ja2NoaXBfZHJtX2ZiLm8gXAogCQlyb2NrY2hpcF9kcm1fZ2VtLm8gcm9ja2NoaXBfZHJtX3Zv
+cC5vCityb2NrY2hpcGRybS0kKENPTkZJR19EUk1fRkJERVZfRU1VTEFUSU9OKSArPSByb2NrY2hp
+cF9kcm1fZmJkZXYubwogCiBvYmotJChDT05GSUdfUk9DS0NISVBfRFdfSERNSSkgKz0gZHdfaGRt
+aS1yb2NrY2hpcC5vCiBvYmotJChDT05GSUdfUk9DS0NISVBfRFdfTUlQSV9EU0kpICs9IGR3LW1p
+cGktZHNpLm8KZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZmJkZXYuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYu
+aAppbmRleCA1MDQzMmU5Li43MzcxOGM1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV9mYmRldi5oCkBAIC0xNSw3ICsxNSwxOCBAQAogI2lmbmRlZiBfUk9DS0NI
+SVBfRFJNX0ZCREVWX0gKICNkZWZpbmUgX1JPQ0tDSElQX0RSTV9GQkRFVl9ICiAKKyNpZmRlZiBD
+T05GSUdfRFJNX0ZCREVWX0VNVUxBVElPTgogaW50IHJvY2tjaGlwX2RybV9mYmRldl9pbml0KHN0
+cnVjdCBkcm1fZGV2aWNlICpkZXYpOwogdm9pZCByb2NrY2hpcF9kcm1fZmJkZXZfZmluaShzdHJ1
+Y3QgZHJtX2RldmljZSAqZGV2KTsKKyNlbHNlCitzdGF0aWMgaW5saW5lIGludCByb2NrY2hpcF9k
+cm1fZmJkZXZfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KQoreworCXJldHVybiAwOworfQor
+CitzdGF0aWMgaW5saW5lIHZvaWQgcm9ja2NoaXBfZHJtX2ZiZGV2X2Zpbmkoc3RydWN0IGRybV9k
+ZXZpY2UgKmRldikKK3sKK30KKyNlbmRpZgogCiAjZW5kaWYgLyogX1JPQ0tDSElQX0RSTV9GQkRF
+Vl9IICovCi0tIAoyLjcuMC4yMjYuZ2ZlOTg2ZmUKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpLWRldmVsCg==
