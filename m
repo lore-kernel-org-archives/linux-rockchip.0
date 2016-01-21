@@ -1,151 +1,239 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
- reboot-mode driver
-Date: Thu, 21 Jan 2016 14:27:57 +0800
-Message-ID: <56A07A6D.3010406@rock-chips.com>
-References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
- <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
- <20160120182840.GA15741@rob-hp-laptop>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH v2] clk: rockchip: Add support for multiple clock
+ providers
+Date: Thu, 21 Jan 2016 14:49:43 +0800
+Message-ID: <56A07F87.2060400@rock-chips.com>
+References: <1453280809-3120-1-git-send-email-zhengxing@rock-chips.com>
+ <3395528.oy9qVuyESf@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160120182840.GA15741@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, cernekee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <3395528.oy9qVuyESf@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob:
-    thanks for your review.
-On 2016=E5=B9=B401=E6=9C=8821=E6=97=A5 02:28, Rob Herring wrote:
-> On Tue, Jan 12, 2016 at 07:29:49PM +0800, Andy Yan wrote:
->> add device tree binding document for reboot-mode driver
+Hi, Heiko,
+     Thank you for your reply.
+
+On 2016=E5=B9=B401=E6=9C=8821=E6=97=A5 07:38, Heiko Stuebner wrote:
+> Hi,
+>
+> Am Mittwoch, 20. Januar 2016, 17:06:49 schrieb Xing Zheng:
+>> There are need to support Multi-CRUs probability in future, but
+>> it is not supported on the current Rockchip Clock Framework.
 >>
->> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> Therefore, this patch add support a provider as the parameter
+>> handler when we call the clock register functions for per CRU.
 >>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> overall this looks really nice. Thanks for following up on our talk s=
+o
+> quickly :-) .
+>
 >> ---
 >>
->> Changes in v2: None
->> Changes in v1: None
+>> Changes in v2:
+>> - Fix missed to call rockchip_clk_common_cru_init when SoCs clock in=
+it.
 >>
->>   .../bindings/power/reset/reboot-mode.txt           | 41 ++++++++++=
-+++++++
->>   .../bindings/power/reset/syscon-reboot-mode.txt    | 52 ++++++++++=
-++++++++++++
->>   2 files changed, 93 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/power/reset/r=
-eboot-mode.txt
->>   create mode 100644 Documentation/devicetree/bindings/power/reset/s=
-yscon-reboot-mode.txt
+>>   drivers/clk/rockchip/clk-rk3036.c |   15 +++--
+>>   drivers/clk/rockchip/clk-rk3188.c |   40 ++++++++-----
+>>   drivers/clk/rockchip/clk-rk3228.c |   15 +++--
+>>   drivers/clk/rockchip/clk-rk3288.c |   17 ++++--
+>>   drivers/clk/rockchip/clk-rk3368.c |   19 +++---
+>>   drivers/clk/rockchip/clk.c        |  120
+>> +++++++++++++++++++++++-------------- drivers/clk/rockchip/clk.h    =
+    |
+>>    35 ++++++++---
+>>   7 files changed, 170 insertions(+), 91 deletions(-)
 >>
->> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mo=
-de.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
->> new file mode 100644
->> index 0000000..81d9f66
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
->> @@ -0,0 +1,41 @@
->> +Generic reboot mode core map driver
+>> diff --git a/drivers/clk/rockchip/clk-rk3036.c
+>> b/drivers/clk/rockchip/clk-rk3036.c index 483913b..050ad13 100644
+>> --- a/drivers/clk/rockchip/clk-rk3036.c
+>> +++ b/drivers/clk/rockchip/clk-rk3036.c
+>> @@ -434,6 +434,7 @@ static const char *const rk3036_critical_clocks[=
+]
+>> __initconst =3D {
+>>
+>>   static void __init rk3036_clk_init(struct device_node *np)
+>>   {
+>> +	struct rockchip_clk_provider *ctx;
+>>   	void __iomem *reg_base;
+>>   	struct clk *clk;
+>>
+>> @@ -443,7 +444,9 @@ static void __init rk3036_clk_init(struct device=
+_node
+>> *np) return;
+>>   	}
+>>
+>> -	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+>> +	ctx =3D rockchip_clk_init(reg_base, CLK_NR_CLKS);
 >> +
->> +This driver get reboot mode arguments and call the write
->> +interface to stores the magic value in special register
->> +or ram . Then the bootloader can read it and take different
->> +action according to the argument stored.
+>> +	rockchip_clk_common_cru_init(np);
+>>
+>>   	/* xin12m is created by an cru-internal divider */
+>>   	clk =3D clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1,=
+ 2);
+>> @@ -473,15 +476,15 @@ static void __init rk3036_clk_init(struct
+>> device_node *np) pr_warn("%s: could not register clock sclk_macref_o=
+ut:
+>> %ld\n", __func__, PTR_ERR(clk));
+>>
+>> -	rockchip_clk_register_plls(rk3036_pll_clks,
+>> +	rockchip_clk_register_plls(ctx, rk3036_pll_clks,
+>>   				   ARRAY_SIZE(rk3036_pll_clks),
+>>   				   RK3036_GRF_SOC_STATUS0);
+>> -	rockchip_clk_register_branches(rk3036_clk_branches,
+>> +	rockchip_clk_register_branches(ctx, rk3036_clk_branches,
+>>   				  ARRAY_SIZE(rk3036_clk_branches));
+>>   	rockchip_clk_protect_critical(rk3036_critical_clocks,
+>>   				      ARRAY_SIZE(rk3036_critical_clocks));
+>>
+>> -	rockchip_clk_register_armclk(ARMCLK, "armclk",
+>> +	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+>>   			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
+>>   			&rk3036_cpuclk_data, rk3036_cpuclk_rates,
+>>   			ARRAY_SIZE(rk3036_cpuclk_rates));
+>> @@ -489,6 +492,8 @@ static void __init rk3036_clk_init(struct device=
+_node
+>> *np) rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(=
+0),
+>> ROCKCHIP_SOFTRST_HIWORD_MASK);
+>>
+>> -	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
+>> +	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL)=
+;
 >> +
->> +Required properties:
->> +- compatible: only support "syscon-reboot-mode" now.
->> +
->> +Each mode is represented as a sub-node of reboot_mode:
->> +
->> +Subnode required properties:
->> +- linux,mode: reboot mode command,such as "loader", "recovery", "fa=
-stboot".
->> +- loader,magic: magic number for the mode, this is vendor specific.
->> +
->> +Example:
->> +	reboot_mode {
-> reboot-mode instead please.
->
+>> +	rockchip_clk_of_add_provider(np, ctx);
+>>   }
+>>   CLK_OF_DECLARE(rk3036_cru, "rockchip,rk3036-cru", rk3036_clk_init)=
+;
+>> diff --git a/drivers/clk/rockchip/clk-rk3188.c
+>> b/drivers/clk/rockchip/clk-rk3188.c index 7f7444c..338a22e 100644
+>> --- a/drivers/clk/rockchip/clk-rk3188.c
+>> +++ b/drivers/clk/rockchip/clk-rk3188.c
+>> @@ -750,18 +750,19 @@ static const char *const rk3188_critical_clock=
+s[]
+>> __initconst =3D { "pclk_peri",
+>>   };
+>>
+>> -static void __init rk3188_common_clk_init(struct device_node *np)
+>> +static struct rockchip_clk_provider *__init rk3188_common_clk_init(=
+struct
+>> device_node *np) {
+>> +	struct rockchip_clk_provider *ctx;
+>>   	void __iomem *reg_base;
+>>   	struct clk *clk;
+>>
+>>   	reg_base =3D of_iomap(np, 0);
+>> -	if (!reg_base) {
+>> -		pr_err("%s: could not map cru region\n", __func__);
+>> -		return;
+>> -	}
+>> +	if (!reg_base)
+>> +		panic("%s: could not map cru region\n", __func__);
+> I don't believe in doing panics everywhere :-), please do
+> 	return ERR_PTR(-ENOMEM);
+> here and in similar locations and let the top-most caller handle erro=
+rs.
+Done.
+>> @@ -260,27 +261,49 @@ static struct clk
+>> *rockchip_clk_register_frac_branch(const char *name, return clk;
+>>   }
+>>
+>> -static DEFINE_SPINLOCK(clk_lock);
+>> -static struct clk **clk_table;
+>> -static void __iomem *reg_base;
+>> -static struct clk_onecell_data clk_data;
+>>   static struct device_node *cru_node;
+> please also include the devicetree node into the ctx struct. That way=
+ we can
+> keep track of all of them (when there are multiple).
+In my opinion, I am a bit worried about the function=20
+rockchip_clk_get_grf, it just refer to
+common CRU node to acquire global GRF regmap. And the function is=20
+non-parameter,
+so, I think I will add ctx as parameter in the clk-pll.c.
 
-     Sorry, I have already correct it in DT file, forget it here. It=20
-will be changed in next version.
+And, there are the same feature between PLL lock status in the=20
+GRF_SOC_STATUSx and the
+the lock bit of CRU_xPLL_CONx. They are coexsit on some SoCs like=20
+RK3036/RK3228/RK3288/RK3368,
+there is only GRF_SOC_STATUSx on some SoCs like RK3066/RK3188.
+AFAIK,  there are not the bits of PLL lock status in the GRF_SOC_STATUS=
+x=20
+any more in future, like RK3399.
+Therefore, we should add some patches to keep the checking PLL lock=20
+status compatibility.
 
->> +		compatible =3D "syscon-reboot-mode";
->> +		offset =3D <0x40>;
-> This doc by itself is a little confusing. For example, is a child of =
-the
-> syscon node? I would remove offset (and perhaps compatible) from this
-> example.
-
-    Yes, is a child of a syscon mapped node. For example, Rockchip=20
-platform use a register of PMU(rk3066/rk3288) or GRF(rk3036), PMU and=20
-GRF are aleady mapped by syscon.
-    offset and compatible are used by write interface driver like=20
-syscon-reboot-mode.c. If you don't like it appear in the core map doc, =
-I=20
-will move it to the syscon-reboot-mode.txt?
+BTW, it looks that there are too many place call the=20
+rockchip_clk_get_grf, and they looks
+like unused? Should we remove them?
+>>   static struct regmap *grf;
+>>
+>> -void __init rockchip_clk_init(struct device_node *np, void __iomem =
+*base,
+>> -			      unsigned long nr_clks)
+>> +struct rockchip_clk_provider *__init rockchip_clk_init(
+>> +			void __iomem *base, unsigned long nr_clks)
+>>   {
+>> -	reg_base =3D base;
+>> -	cru_node =3D np;
+>> -	grf =3D ERR_PTR(-EPROBE_DEFER);
+>> +	struct rockchip_clk_provider *ctx;
+>> +	struct clk **clk_table;
+>> +	int i;
 >> +
->> +		loader {
->> +			linux,mode =3D "loader";
->> +			loader,magic =3D <BOOT_LOADER>;
->> +		};
-> Sorry, my previous suggestion was not clear. I'm suggesting get rid o=
-f
-> the subnodes and just do properties like this:
+>> +	ctx =3D kzalloc(sizeof(struct rockchip_clk_provider), GFP_KERNEL);
+>> +	if (!ctx)
+>> +		panic("could not allocate clock provider context.\n");
+> as I wrote above, please return a real error here. Especially when th=
+ere are
+> multiple clock controllers, it might actually get a bit farther in ca=
+ses
+> when only one of them fails, which might help in debugging underlying=
+ issues
+> in such cases.
+Done.
+>>   	clk_table =3D kcalloc(nr_clks, sizeof(struct clk *), GFP_KERNEL);
+>>   	if (!clk_table)
+>> -		pr_err("%s: could not allocate clock lookup table\n", __func__);
+>> +		panic("could not allocate clock lookup table\n");
+> same here (and kfree the ctx from above before returning)
+Done.
+>> +
+>> +	for (i =3D 0; i < nr_clks; ++i)
+>> +		clk_table[i] =3D ERR_PTR(-ENOENT);
+>> +
+>> +	ctx->reg_base =3D base;
+>> +	ctx->clk_data.clks =3D clk_table;
+>> +	ctx->clk_data.clk_num =3D nr_clks;
+>> +	spin_lock_init(&ctx->lock);
+>> +
+>> +	return ctx;
+>> +}
+>>
+>> -	clk_data.clks =3D clk_table;
+>> -	clk_data.clk_num =3D nr_clks;
+>> -	of_clk_add_provider(np, of_clk_src_onecell_get, &clk_data);
+>> +void __init rockchip_clk_common_cru_init(struct device_node *np)
+>> +{
+>> +	cru_node =3D np;
+>> +	grf =3D ERR_PTR(-EPROBE_DEFER);
+> I'm not sure why this is a separate function. Setting the node pointe=
+r (into
+> the new struct as written above) can still happen in rockchip_clk_ini=
+t, and
+> initializing the global grf pointer as well.
+Done.
 >
-> loader =3D <BOOT_LOADER>;
-> maskrom =3D <BOOT_MASKROM>;
->
-> That's the same amount of information unless node names and linux,mod=
-e
-> values are going to diverge. Do they need to? I can't see a reason.
+> Heiko
+Thanks.
 
-     Because the command"linux,mode" and value"loader,magic" is vendor=20
-specific. I don't know what commands and how many mode other platform=20
-will use. So as John says in his reply, this sort of flexibility help u=
-s=20
-adapt the driver to different hardware/system environments.
->
-> We need to be clear what loader means. More specifically, it is boot
-> into bootloader shell.
-     Actually, Rockchip platform will reboot into a bootloader download=
-=20
-mode with this command. This mode can download faster than maskrom=20
-download mode.
->> +
->> +		maskrom {
-> In theory, the bootrom could have multiple modes. This typically mean=
-s a
-> USB download mode. So perhaps a more precise name would be
-> "rom-download".
->
-> In chips I'm familiar with the bootrom mode is selected via a differe=
-nt
-> mechanism than the secondary bootloader modes, but I suppose the same
-> mechanism could be used.
-    Yes , they use the same mechanism.
->> +			linux,mode =3D "maskrom";
->> +			loader,magic =3D <BOOT_MASKROM>;
->> +		};
->> +
->> +		recovery {
->> +			linux,mode =3D "recovery";
->> +			loader,magic =3D <BOOT_RECOVERY>;
->> +		};
->> +
->> +		fastboot {
->> +			linux,mode =3D "fastboot";
->> +			loader,magic =3D <BOOT_FASTBOOT>;
->> +		};
->
->
->
+- Xing Zheng
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
