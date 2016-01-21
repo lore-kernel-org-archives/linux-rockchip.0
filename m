@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v4 10/21] usb: dwc2: host: Giveback URB in tasklet context
-Date: Wed, 20 Jan 2016 21:04:21 -0800
-Message-ID: <1453352672-27890-11-git-send-email-dianders@chromium.org>
+Subject: [PATCH v4 05/21] usb: dwc2: host: Avoid use of chan->qh after qh freed
+Date: Wed, 20 Jan 2016 21:04:16 -0800
+Message-ID: <1453352672-27890-6-git-send-email-dianders@chromium.org>
 References: <1453352672-27890-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,64 +21,77 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In commit 94dfd7edfd5c ("USB: HCD: support giveback of URB in tasklet
-context") support was added to give back the URB in tasklet context.
-Let's take advantage of this in dwc2.
+When poking around with USB devices with slub_debug enabled, I found
+another obvious use after free.  Turns out that in dwc2_hc_n_intr() I
+was in a state when the contents of chan->qh was filled with 0x6b,
+indicating that chan->qh was freed but chan still had a reference to
+it.
 
-This speeds up the dwc2 interrupt handler considerably.
+Let's make sure that whenever we free qh we also make sure we remove a
+reference from its channel.
 
-Note that this requires the change ("usb: dwc2: host: Add a delay before
-releasing periodic bandwidth") to come first.
-
-Note that, as per Alan Stern in
-<https://patchwork.kernel.org/patch/7555771/>, we also need to make sure
-that the extra delay before the device drivers submit more data doesn't
-break the scheduler.  At the moment the scheduler is pretty broken (see
-future patches) so it's hard to be 100% certain, but I have yet to see
-any new breakage introduced by this delay.  ...and speeding up interrupt
-processing for dwc2 is a huge deal because it means we've got a better
-chance of not missing SOF interrupts.  That means we've got an overall
-win here.
-
-Note that when playing USB audio and using a USB webcam and having
-several USB keyboards plugged in, the crackling on the USB audio device
-is noticably reduced with this patch.
+The bug fixed here doesn't appear to be new--I believe I just got lucky
+and happened to see it while stress testing.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
 Changes in v4:
-- A bit earlier in the list of patches than in v3.
+- Avoid use of chan->qh after qh freed new for v4.
 
 Changes in v3: None
-Changes in v2:
-- Commit message now says that URB giveback change needs delay change.
+Changes in v2: None
 
- drivers/usb/dwc2/hcd.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/usb/dwc2/hcd.c      |  8 ++++++++
+ drivers/usb/dwc2/hcd_intr.c | 10 ++++++++++
+ 2 files changed, 18 insertions(+)
 
 diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index d2356d52ac7b..fa684c68b8f6 100644
+index bc4bdbc1534e..7783c8ba0173 100644
 --- a/drivers/usb/dwc2/hcd.c
 +++ b/drivers/usb/dwc2/hcd.c
-@@ -2336,9 +2336,7 @@ void dwc2_host_complete(struct dwc2_hsotg *hsotg, struct dwc2_qtd *qtd,
- 	kfree(qtd->urb);
- 	qtd->urb = NULL;
+@@ -164,6 +164,9 @@ static void dwc2_qh_list_free(struct dwc2_hsotg *hsotg,
+ 					 qtd_list_entry)
+ 			dwc2_hcd_qtd_unlink_and_free(hsotg, qtd, qh);
  
--	spin_unlock(&hsotg->lock);
- 	usb_hcd_giveback_urb(dwc2_hsotg_to_hcd(hsotg), urb, status);
--	spin_lock(&hsotg->lock);
- }
++		if (qh->channel && qh->channel->qh == qh)
++			qh->channel->qh = NULL;
++
+ 		spin_unlock_irqrestore(&hsotg->lock, flags);
+ 		dwc2_hcd_qh_free(hsotg, qh);
+ 		spin_lock_irqsave(&hsotg->lock, flags);
+@@ -554,7 +557,12 @@ static int dwc2_hcd_endpoint_disable(struct dwc2_hsotg *hsotg,
+ 		dwc2_hcd_qtd_unlink_and_free(hsotg, qtd, qh);
  
- /*
-@@ -2957,7 +2955,7 @@ static struct hc_driver dwc2_hc_driver = {
- 	.hcd_priv_size = sizeof(struct wrapper_priv_data),
+ 	ep->hcpriv = NULL;
++
++	if (qh->channel && qh->channel->qh == qh)
++		qh->channel->qh = NULL;
++
+ 	spin_unlock_irqrestore(&hsotg->lock, flags);
++
+ 	dwc2_hcd_qh_free(hsotg, qh);
  
- 	.irq = _dwc2_hcd_irq,
--	.flags = HCD_MEMORY | HCD_USB2,
-+	.flags = HCD_MEMORY | HCD_USB2 | HCD_BH,
+ 	return 0;
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 352c98364317..99efc2bd1617 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -1935,6 +1935,16 @@ static void dwc2_hc_n_intr(struct dwc2_hsotg *hsotg, int chnum)
+ 	}
  
- 	.start = _dwc2_hcd_start,
- 	.stop = _dwc2_hcd_stop,
+ 	dwc2_writel(hcint, hsotg->regs + HCINT(chnum));
++
++	/*
++	 * If we got an interrupt after someone called
++	 * dwc2_hcd_endpoint_disable() we don't want to crash below
++	 */
++	if (!chan->qh) {
++		dev_warn(hsotg->dev, "Interrupt on disabled channel\n");
++		return;
++	}
++
+ 	chan->hcint = hcint;
+ 	hcint &= hcintmsk;
+ 
 -- 
 2.7.0.rc3.207.g0ac5344
