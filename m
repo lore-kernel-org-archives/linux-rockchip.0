@@ -1,71 +1,53 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2] drm/rockchip: respect CONFIG_DRM_FBDEV_EMULATION
-Date: Thu, 21 Jan 2016 18:19:34 +0000
-Message-ID: <20160121181934.76cb2c03.john@metanate.com>
-References: <1453384426-32617-1-git-send-email-john@metanate.com>
- <20160121165251.GO19130@phenom.ffwll.local>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v12.1 07/17] drm: rockchip: dp: add rockchip platform dp driver
+Date: Thu, 21 Jan 2016 20:11:45 +0100
+Message-ID: <7132332.jmLRiUjx3U@phil>
+References: <1450873538-18304-1-git-send-email-ykk@rock-chips.com> <1453197893-13413-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160121165251.GO19130@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>, Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1453197893-13413-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SWYgRFJNX0ZCREVWX0VNVUxBVElPTiBpcyBub3Qgc2VsZWN0ZWQgaW4gdGhlIGNvbmZpZyB0aGVu
-IHdlIGNhbiBzYXZlIGEKYml0IG9mIHNwYWNlIGJ5IG5vdCBpbmNsdWRpbmcgdGhlIGZyYW1lYnVm
-ZmVyIGNvZGUuCgpTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29t
-PgotLS0KT24gVGh1LCAyMSBKYW4gMjAxNiAxNzo1Mjo1MSArMDEwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKCj4gT24gVGh1LCBKYW4gMjEsIDIwMTYgYXQgMDE6NTM6NDZQTSArMDAwMCwgSm9obiBL
-ZWVwaW5nIHdyb3RlOgo+ID4gSWYgRFJNX0ZCREVWX0VNVUxBVElPTiBpcyBub3Qgc2VsZWN0ZWQg
-aW4gdGhlIGNvbmZpZyB0aGVuIHdlIHNob3VsZCBub3QKPiA+IHNldHVwIGEgZnJhbWVidWZmZXIg
-Y29uc29sZS4gIAo+IAo+IEl0IHNob3VsZCBqdXN0IG1hZ2ljYWxseSB3b3JrLCBhbmQgdGhpcyBw
-YXRjaCBoZXJlIGp1c3QgcmVtb3ZlcyBhIGJpdCBtb3JlCj4gZGVhZCBjb2RlIGluIHRoZSByb2Nr
-Y2hpcCBkcml2ZXIgaXRzZWxmIHRoYXQncyBub3QgbmVlZGVkIGluIGNhc2UgZmJkZXYKPiBlbXVs
-YXRpb24gaXMgZGlzYWJsZWQuCj4gCj4gQ2FuIHlvdSBwbGVhc2UgZG91YmxlLWNoZWNrIHRoaXMg
-aXMgdGhlIGNhc2UgYW5kIHRoZW4gcmVzZW5kIHdpdGggYQo+IGNsYXJpZmllZCBjb21taXQgbWVz
-c2FnZT8KCllvdSdyZSByaWdodCwgaXQgZG9lcyB3b3JrIHdpdGhvdXQgdGhpcyBjaGFuZ2UsIHNv
-IHRoaXMgaXMganVzdCB0byBzYXZlCmEgYml0IG9mIHNwYWNlIHdoZW4gd2UgZG9uJ3QgbmVlZCB0
-aGlzIGZlYXR1cmUuCgp2MjoKLSBjaGFuZ2UgY29tbWl0IG1lc3NhZ2UgdG8gY2xhcmlmeSB0aGF0
-IHRoaXMgaXMgb25seSB0byByZW1vdmUgc29tZSBkZWFkCiAgY29kZQoKIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICB8ICAzICsrLQogZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5oIHwgMTEgKysrKysrKysrKysKIDIgZmlsZXMg
-Y2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9NYWtlZmlsZQppbmRleCBhNGUwM2JjLi5mNmE4MDlhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01h
-a2VmaWxlCkBAIC0yLDggKzIsOSBAQAogIyBNYWtlZmlsZSBmb3IgdGhlIGRybSBkZXZpY2UgZHJp
-dmVyLiAgVGhpcyBkcml2ZXIgcHJvdmlkZXMgc3VwcG9ydCBmb3IgdGhlCiAjIERpcmVjdCBSZW5k
-ZXJpbmcgSW5mcmFzdHJ1Y3R1cmUgKERSSSkgaW4gWEZyZWU4NiA0LjEuMCBhbmQgaGlnaGVyLgog
-Ci1yb2NrY2hpcGRybS15IDo9IHJvY2tjaGlwX2RybV9kcnYubyByb2NrY2hpcF9kcm1fZmIubyBy
-b2NrY2hpcF9kcm1fZmJkZXYubyBcCityb2NrY2hpcGRybS15IDo9IHJvY2tjaGlwX2RybV9kcnYu
-byByb2NrY2hpcF9kcm1fZmIubyBcCiAJCXJvY2tjaGlwX2RybV9nZW0ubyByb2NrY2hpcF9kcm1f
-dm9wLm8KK3JvY2tjaGlwZHJtLSQoQ09ORklHX0RSTV9GQkRFVl9FTVVMQVRJT04pICs9IHJvY2tj
-aGlwX2RybV9mYmRldi5vCiAKIG9iai0kKENPTkZJR19ST0NLQ0hJUF9EV19IRE1JKSArPSBkd19o
-ZG1pLXJvY2tjaGlwLm8KIG9iai0kKENPTkZJR19ST0NLQ0hJUF9EV19NSVBJX0RTSSkgKz0gZHct
-bWlwaS1kc2kubwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9mYmRldi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRl
-di5oCmluZGV4IDUwNDMyZTkuLjczNzE4YzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmgKQEAgLTE1LDcgKzE1LDE4IEBACiAjaWZuZGVmIF9ST0NL
-Q0hJUF9EUk1fRkJERVZfSAogI2RlZmluZSBfUk9DS0NISVBfRFJNX0ZCREVWX0gKIAorI2lmZGVm
-IENPTkZJR19EUk1fRkJERVZfRU1VTEFUSU9OCiBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2luaXQo
-c3RydWN0IGRybV9kZXZpY2UgKmRldik7CiB2b2lkIHJvY2tjaGlwX2RybV9mYmRldl9maW5pKHN0
-cnVjdCBkcm1fZGV2aWNlICpkZXYpOworI2Vsc2UKK3N0YXRpYyBpbmxpbmUgaW50IHJvY2tjaGlw
-X2RybV9mYmRldl9pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCit7CisJcmV0dXJuIDA7Cit9
-CisKK3N0YXRpYyBpbmxpbmUgdm9pZCByb2NrY2hpcF9kcm1fZmJkZXZfZmluaShzdHJ1Y3QgZHJt
-X2RldmljZSAqZGV2KQoreworfQorI2VuZGlmCiAKICNlbmRpZiAvKiBfUk9DS0NISVBfRFJNX0ZC
-REVWX0ggKi8KLS0gCjIuNy4wLjIyNi5nZmU5ODZmZQoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Yakir,
+
+Am Dienstag, 19. Januar 2016, 18:04:53 schrieb Yakir Yang:
+> Rockchip have three clocks for dp controller, we leave pclk_edp
+> to analogix_dp driver control, and keep the sclk_edp_24m and
+> sclk_edp in platform driver.
+> 
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> ---
+
+[...]
+
+> +static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
+> +{
+> +	struct drm_encoder *encoder = &dp->encoder;
+> +	struct drm_device *drm_dev = dp->drm_dev;
+> +	struct device *dev = dp->dev;
+> +	int ret;
+> +
+> +	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+> +							     dev->of_node);
+> +	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+> +
+> +	ret = drm_encoder_init(drm_dev, encoder, &rockchip_dp_encoder_funcs,
+> +			       DRM_MODE_ENCODER_TMDS);
+
+should be
++			       DRM_MODE_ENCODER_TMDS, NULL);
+
+Exynos-side seems to be ok though.
+
+With the adapted v12.1 patches it applies cleanly and display is working as 
+well. So with the thing above fixed, you could resubmit a full v13, 
+especially as you want to drop patch 16 as discussed there.
+
+
+Heiko
