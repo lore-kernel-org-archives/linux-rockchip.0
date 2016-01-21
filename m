@@ -1,45 +1,122 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Thu, 21 Jan 2016 12:11:00 -0800
-Message-ID: <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
-	<48806799.thBSifdUp8@diego>
-	<54647142.4080800@rock-chips.com>
-	<CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
-	<CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
-	<CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
-	<CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v3] clk-divider: make sure read-only dividers do not write to their register
+Date: Thu, 21 Jan 2016 21:53:09 +0100
+Message-ID: <4666170.lmsMJxAogk@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, James Hogan <james.hogan@imgtec.com>, Zhang Qing <zhangqing@rock-chips.com>, Joachim Eastwood <manabian@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Commit e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1") removed
+the special ops struct for read-only clocks and instead opted to handle
+them inside the regular ops.
 
-On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
-> So we have a mechanism for detecting a conflict in the clock
-> hierarchy, and a mechanism to solve it, but we are missing a way for
-> userspace to communicate policy regarding which clocks should be given
-> priority when solving such a conflict?
+On the rk3368 this results in breakage as aclkm now gets set a value.
+While it is the same divider value, the A53 core still doesn't like it,
+which can result in the cpu ending up in a hang.
+The reason being that "ACLKENMasserts one clock cycle before the rising
+edge of ACLKM" and the clock should only be touched when STANDBYWFIL2
+is asserted.
 
-Hrmmm, I guess it could be userspace that makes the decision.  It does
-seem a little odd to force it to userspace in all cases, though.  For
-a particular laptop that is designed with a specific panel connected
-up eDP it seems less than ideal to push this into userspace.  If the
-kernel could just work in the expected sane way (or at least work that
-way by default) it would be ideal.
+To fix this, reintroduce the read-only ops but do include the round_rate
+callback. That way no writes that may be unsafe are done to the divider
+register in any case.
 
-If the kernel doesn't try to do anything sane by default then you're
-creating a requirement for everyone's userspace to somehow figure this
-out.  Do you expect there to be UI here, or that this would be
-something that would be figured out by the Linux distribution?
-Certainly exposing UI on something like a laptop with a builtin panel
-wouldn't make any sense to me, but it might make sense if you had an
-eval board with different display connectors on it.  If there's no UI,
-would the Linux distribution need to somehow identify which board we
-were on and then have a big lookup table about how to configure
-things?
+The Rockchip use of the clk_divider_ops is adapted to this split again,
+as is the nxp, lpc18xx-ccu driver that was included since the original
+commit. On lpc18xx-ccu the divider seems to always be read-only
+so only uses the new ops now.
+
+Fixes: e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1")
+Reported-by: Zhang Qing <zhangqing@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+changes in v3:
+- instead of bailing out of set_rate, reintroduce the _ro_ops
+  with added round_rate callback, as requested by Stephen
+changes in v2:
+- emphasize that even setting the same divider may be unsafe
+
+ drivers/clk/clk-divider.c         | 11 ++++++++++-
+ drivers/clk/nxp/clk-lpc18xx-ccu.c |  2 +-
+ drivers/clk/rockchip/clk.c        |  4 +++-
+ include/linux/clk-provider.h      |  1 +
+ 4 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/clk/clk-divider.c b/drivers/clk/clk-divider.c
+index ded3ff4..aa1dacd 100644
+--- a/drivers/clk/clk-divider.c
++++ b/drivers/clk/clk-divider.c
+@@ -423,6 +423,12 @@ const struct clk_ops clk_divider_ops = {
+ };
+ EXPORT_SYMBOL_GPL(clk_divider_ops);
+ 
++const struct clk_ops clk_divider_ro_ops = {
++	.recalc_rate = clk_divider_recalc_rate,
++	.round_rate = clk_divider_round_rate,
++};
++EXPORT_SYMBOL_GPL(clk_divider_ro_ops);
++
+ static struct clk *_register_divider(struct device *dev, const char *name,
+ 		const char *parent_name, unsigned long flags,
+ 		void __iomem *reg, u8 shift, u8 width,
+@@ -446,7 +452,10 @@ static struct clk *_register_divider(struct device *dev, const char *name,
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	init.name = name;
+-	init.ops = &clk_divider_ops;
++	if (clk_divider_flags & CLK_DIVIDER_READ_ONLY)
++		init.ops = &clk_divider_ro_ops;
++	else
++		init.ops = &clk_divider_ops;
+ 	init.flags = flags | CLK_IS_BASIC;
+ 	init.parent_names = (parent_name ? &parent_name: NULL);
+ 	init.num_parents = (parent_name ? 1 : 0);
+diff --git a/drivers/clk/nxp/clk-lpc18xx-ccu.c b/drivers/clk/nxp/clk-lpc18xx-ccu.c
+index 13aabbb..558da89 100644
+--- a/drivers/clk/nxp/clk-lpc18xx-ccu.c
++++ b/drivers/clk/nxp/clk-lpc18xx-ccu.c
+@@ -222,7 +222,7 @@ static void lpc18xx_ccu_register_branch_gate_div(struct lpc18xx_clk_branch *bran
+ 		div->width = 1;
+ 
+ 		div_hw = &div->hw;
+-		div_ops = &clk_divider_ops;
++		div_ops = &clk_divider_ro_ops;
+ 	}
+ 
+ 	branch->gate.reg = branch->offset + reg_base;
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index d9a0b5d..f7e8693 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -90,7 +90,9 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 		div->width = div_width;
+ 		div->lock = lock;
+ 		div->table = div_table;
+-		div_ops = &clk_divider_ops;
++		div_ops = (div_flags & CLK_DIVIDER_READ_ONLY)
++						? &clk_divider_ro_ops
++						: &clk_divider_ops;
+ 	}
+ 
+ 	clk = clk_register_composite(NULL, name, parent_names, num_parents,
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index 1143e38..408a60d 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -385,6 +385,7 @@ struct clk_divider {
+ #define CLK_DIVIDER_MAX_AT_ZERO		BIT(6)
+ 
+ extern const struct clk_ops clk_divider_ops;
++extern const struct clk_ops clk_divider_ro_ops;
+ 
+ unsigned long divider_recalc_rate(struct clk_hw *hw, unsigned long parent_rate,
+ 		unsigned int val, const struct clk_div_table *table,
+-- 
+2.6.4
+
+
