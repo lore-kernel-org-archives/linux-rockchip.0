@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v4 11/21] usb: dwc2: host: Use periodic interrupt even with DMA
-Date: Wed, 20 Jan 2016 21:04:22 -0800
-Message-ID: <1453352672-27890-12-git-send-email-dianders@chromium.org>
+Subject: [PATCH v4 10/21] usb: dwc2: host: Giveback URB in tasklet context
+Date: Wed, 20 Jan 2016 21:04:21 -0800
+Message-ID: <1453352672-27890-11-git-send-email-dianders@chromium.org>
 References: <1453352672-27890-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,154 +21,64 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The old code in dwc2_process_periodic_channels() would only enable the
-"periodic empty" interrupt if we weren't using DMA.  That wasn't right
-since we can still get into cases where we have small FIFOs even on
-systems that have DMA (the rk3288 is a prime example).
+In commit 94dfd7edfd5c ("USB: HCD: support giveback of URB in tasklet
+context") support was added to give back the URB in tasklet context.
+Let's take advantage of this in dwc2.
 
-Let's always enable/disable the "periodic empty" when appropriate.  As
-part of this:
+This speeds up the dwc2 interrupt handler considerably.
 
-* Always call dwc2_process_periodic_channels() even if there's nothing
-  in periodic_sched_assigned (we move the queue empty check so we still
-  avoid the extra work).  That will make extra certain that we will
-  properly disable the "periodic empty" interrupt even if there's
-  nothing queued up.
+Note that this requires the change ("usb: dwc2: host: Add a delay before
+releasing periodic bandwidth") to come first.
 
-* Move the enable of "periodic empty" due to non-empty
-  periodic_sched_assigned to be for slave mode (non-DMA mode) only.
-  Presumably this was the original intention of the check for DMA since
-  it seems to match the comments above where in slave mode we leave
-  things on the assigned queue.
+Note that, as per Alan Stern in
+<https://patchwork.kernel.org/patch/7555771/>, we also need to make sure
+that the extra delay before the device drivers submit more data doesn't
+break the scheduler.  At the moment the scheduler is pretty broken (see
+future patches) so it's hard to be 100% certain, but I have yet to see
+any new breakage introduced by this delay.  ...and speeding up interrupt
+processing for dwc2 is a huge deal because it means we've got a better
+chance of not missing SOF interrupts.  That means we've got an overall
+win here.
 
-Note that even before this change slave mode didn't work for me, so I
-can't say for sure that my understanding of slave mode is correct.
-However, this shouldn't change anything for slave mode so if slave mode
-worked for someone in the past it ought to still work.
-
-With this change, I no longer get constant misses reported by my other
-debugging code (and with future patches) when I've got:
-* Rockchip rk3288 Chromebook, using port ff540000
-  -> Pluggable 7-port Hub with Charging (powered)
-     -> Microsoft Wireless Keyboard 2000 in port 1.
-     -> Das Keyboard in port 2.
-     -> Jabra Speaker in port 3
-     -> Logitech, Inc. Webcam C600 in port 4
-     -> Microsoft Sidewinder X6 Keyboard in port 5
-
-...and I'm playing music on the USB speaker and capturing video from the
-webcam.
+Note that when playing USB audio and using a USB webcam and having
+several USB keyboards plugged in, the crackling on the USB audio device
+is noticably reduced with this patch.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
 Changes in v4:
-- Use periodic interrupt even with DMA new for v4.
+- A bit earlier in the list of patches than in v3.
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+- Commit message now says that URB giveback change needs delay change.
 
- drivers/usb/dwc2/hcd.c | 71 +++++++++++++++++++++++---------------------------
- 1 file changed, 32 insertions(+), 39 deletions(-)
+ drivers/usb/dwc2/hcd.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index fa684c68b8f6..350453999bad 100644
+index d2356d52ac7b..fa684c68b8f6 100644
 --- a/drivers/usb/dwc2/hcd.c
 +++ b/drivers/usb/dwc2/hcd.c
-@@ -1104,10 +1104,14 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
- 	u32 fspcavail;
- 	u32 gintmsk;
- 	int status;
--	int no_queue_space = 0;
--	int no_fifo_space = 0;
-+	bool no_queue_space = false;
-+	bool no_fifo_space = false;
- 	u32 qspcavail;
+@@ -2336,9 +2336,7 @@ void dwc2_host_complete(struct dwc2_hsotg *hsotg, struct dwc2_qtd *qtd,
+ 	kfree(qtd->urb);
+ 	qtd->urb = NULL;
  
-+	/* If empty list then just adjust interrupt enables */
-+	if (list_empty(&hsotg->periodic_sched_assigned))
-+		goto exit;
-+
- 	if (dbg_perio())
- 		dev_vdbg(hsotg->dev, "Queue periodic transactions\n");
+-	spin_unlock(&hsotg->lock);
+ 	usb_hcd_giveback_urb(dwc2_hsotg_to_hcd(hsotg), urb, status);
+-	spin_lock(&hsotg->lock);
+ }
  
-@@ -1185,42 +1189,32 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
- 		}
- 	}
+ /*
+@@ -2957,7 +2955,7 @@ static struct hc_driver dwc2_hc_driver = {
+ 	.hcd_priv_size = sizeof(struct wrapper_priv_data),
  
--	if (hsotg->core_params->dma_enable <= 0) {
--		tx_status = dwc2_readl(hsotg->regs + HPTXSTS);
--		qspcavail = (tx_status & TXSTS_QSPCAVAIL_MASK) >>
--			    TXSTS_QSPCAVAIL_SHIFT;
--		fspcavail = (tx_status & TXSTS_FSPCAVAIL_MASK) >>
--			    TXSTS_FSPCAVAIL_SHIFT;
--		if (dbg_perio()) {
--			dev_vdbg(hsotg->dev,
--				 "  P Tx Req Queue Space Avail (after queue): %d\n",
--				 qspcavail);
--			dev_vdbg(hsotg->dev,
--				 "  P Tx FIFO Space Avail (after queue): %d\n",
--				 fspcavail);
--		}
--
--		if (!list_empty(&hsotg->periodic_sched_assigned) ||
--		    no_queue_space || no_fifo_space) {
--			/*
--			 * May need to queue more transactions as the request
--			 * queue or Tx FIFO empties. Enable the periodic Tx
--			 * FIFO empty interrupt. (Always use the half-empty
--			 * level to ensure that new requests are loaded as
--			 * soon as possible.)
--			 */
--			gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+exit:
-+	if (no_queue_space || no_fifo_space ||
-+	    (hsotg->core_params->dma_enable <= 0 &&
-+	     !list_empty(&hsotg->periodic_sched_assigned))) {
-+		/*
-+		 * May need to queue more transactions as the request
-+		 * queue or Tx FIFO empties. Enable the periodic Tx
-+		 * FIFO empty interrupt. (Always use the half-empty
-+		 * level to ensure that new requests are loaded as
-+		 * soon as possible.)
-+		 */
-+		gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		if (!(gintmsk & GINTSTS_PTXFEMP)) {
- 			gintmsk |= GINTSTS_PTXFEMP;
- 			dwc2_writel(gintmsk, hsotg->regs + GINTMSK);
--		} else {
--			/*
--			 * Disable the Tx FIFO empty interrupt since there are
--			 * no more transactions that need to be queued right
--			 * now. This function is called from interrupt
--			 * handlers to queue more transactions as transfer
--			 * states change.
--			 */
--			gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		}
-+	} else {
-+		/*
-+		 * Disable the Tx FIFO empty interrupt since there are
-+		 * no more transactions that need to be queued right
-+		 * now. This function is called from interrupt
-+		 * handlers to queue more transactions as transfer
-+		 * states change.
-+		*/
-+		gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		if (gintmsk & GINTSTS_PTXFEMP) {
- 			gintmsk &= ~GINTSTS_PTXFEMP;
- 			dwc2_writel(gintmsk, hsotg->regs + GINTMSK);
- 		}
-@@ -1367,9 +1361,8 @@ void dwc2_hcd_queue_transactions(struct dwc2_hsotg *hsotg,
- 	dev_vdbg(hsotg->dev, "Queue Transactions\n");
- #endif
- 	/* Process host channels associated with periodic transfers */
--	if ((tr_type == DWC2_TRANSACTION_PERIODIC ||
--	     tr_type == DWC2_TRANSACTION_ALL) &&
--	    !list_empty(&hsotg->periodic_sched_assigned))
-+	if (tr_type == DWC2_TRANSACTION_PERIODIC ||
-+	    tr_type == DWC2_TRANSACTION_ALL)
- 		dwc2_process_periodic_channels(hsotg);
+ 	.irq = _dwc2_hcd_irq,
+-	.flags = HCD_MEMORY | HCD_USB2,
++	.flags = HCD_MEMORY | HCD_USB2 | HCD_BH,
  
- 	/* Process host channels associated with non-periodic transfers */
+ 	.start = _dwc2_hcd_start,
+ 	.stop = _dwc2_hcd_stop,
 -- 
 2.7.0.rc3.207.g0ac5344
