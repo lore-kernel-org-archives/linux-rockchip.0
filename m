@@ -1,53 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v12.1 07/17] drm: rockchip: dp: add rockchip platform dp driver
-Date: Thu, 21 Jan 2016 20:11:45 +0100
-Message-ID: <7132332.jmLRiUjx3U@phil>
-References: <1450873538-18304-1-git-send-email-ykk@rock-chips.com> <1453197893-13413-1-git-send-email-ykk@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Thu, 21 Jan 2016 12:11:00 -0800
+Message-ID: <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+	<48806799.thBSifdUp8@diego>
+	<54647142.4080800@rock-chips.com>
+	<CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+	<CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+	<CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+	<CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1453197893-13413-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Inki Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Mike Turquette <mturquette@linaro.org>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yakir,
+Hi,
 
-Am Dienstag, 19. Januar 2016, 18:04:53 schrieb Yakir Yang:
-> Rockchip have three clocks for dp controller, we leave pclk_edp
-> to analogix_dp driver control, and keep the sclk_edp_24m and
-> sclk_edp in platform driver.
-> 
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
-> ---
+On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+> So we have a mechanism for detecting a conflict in the clock
+> hierarchy, and a mechanism to solve it, but we are missing a way for
+> userspace to communicate policy regarding which clocks should be given
+> priority when solving such a conflict?
 
-[...]
+Hrmmm, I guess it could be userspace that makes the decision.  It does
+seem a little odd to force it to userspace in all cases, though.  For
+a particular laptop that is designed with a specific panel connected
+up eDP it seems less than ideal to push this into userspace.  If the
+kernel could just work in the expected sane way (or at least work that
+way by default) it would be ideal.
 
-> +static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
-> +{
-> +	struct drm_encoder *encoder = &dp->encoder;
-> +	struct drm_device *drm_dev = dp->drm_dev;
-> +	struct device *dev = dp->dev;
-> +	int ret;
-> +
-> +	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
-> +							     dev->of_node);
-> +	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
-> +
-> +	ret = drm_encoder_init(drm_dev, encoder, &rockchip_dp_encoder_funcs,
-> +			       DRM_MODE_ENCODER_TMDS);
-
-should be
-+			       DRM_MODE_ENCODER_TMDS, NULL);
-
-Exynos-side seems to be ok though.
-
-With the adapted v12.1 patches it applies cleanly and display is working as 
-well. So with the thing above fixed, you could resubmit a full v13, 
-especially as you want to drop patch 16 as discussed there.
-
-
-Heiko
+If the kernel doesn't try to do anything sane by default then you're
+creating a requirement for everyone's userspace to somehow figure this
+out.  Do you expect there to be UI here, or that this would be
+something that would be figured out by the Linux distribution?
+Certainly exposing UI on something like a laptop with a builtin panel
+wouldn't make any sense to me, but it might make sense if you had an
+eval board with different display connectors on it.  If there's no UI,
+would the Linux distribution need to somehow identify which board we
+were on and then have a big lookup table about how to configure
+things?
