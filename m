@@ -1,48 +1,92 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH] drm/rockchip: fix wrong pitch/size using on gem
-Date: Thu, 21 Jan 2016 09:17:16 +0800
-Message-ID: <1453339036-22864-1-git-send-email-mark.yao@rock-chips.com>
+From: zhangqing <zhangqing@rock-chips.com>
+Subject: Re: [PATCH 2/4] clk: rockchip: fix rk3368 cpuclk core dividers
+Date: Thu, 21 Jan 2016 01:42:42 -0800
+Message-ID: <56A0A812.5090803@rock-chips.com>
+References: <1453326560-20475-1-git-send-email-heiko@sntech.de> <1453326560-20475-2-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1453326560-20475-2-git-send-email-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, xf@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-YXJncy0+cGl0Y2ggYW5kIGFyZ3MtPnNpemUgbWF5IG5vdCBiZSBzZXQgYnkgdXNlcnNwYWNlLCBz
-b21ldGltZXMKdXNlcnNwYWNlIG9ubHkgbWFsbG9jIGFyZ3MgYW5kIG5vdCBtZW1zZXQgYXJncyB0
-byB6ZXJvLCB0aGVuCmFyZ3MtPnBpdGNoIGFuZCBhcmdzLT5zaXplIGlzIHJhbmRvbSwgaXQgaXMg
-dmVyeSBkYW5nZXIgdG8gdXNlCnBpdGNoL3NpemUgb24gZ2VtLgoKcGl0Y2gncyB0eXBlIGlzIHUz
-MiwgYW5kIG1pbl9waXRjaCdzIHR5cGUgaXMgaW50LCBleGFtcGxlLApwaXRjaCBpcyAweGZmZmZm
-ZmZmLCB0aGVuIHBpdGNoIDwgbWluX3BpdGNoIHJldHVybiB0cnVlLCB0aGVuIGdlbSB3aWxsCmFs
-bG9jIHZlcnkgdmVyeSBiaWcgYnVmZmZlciwgaXQgd291bGQgZWF0IGFsbCB0aGUgbWVtb3J5IGFu
-ZCBjYXVzZSBrZXJuZWwKY3Jhc2guCgpTdG9wIHVzaW5nIHBpdGNoL3NpemUgZnJvbSBhcmdzLCBj
-YWxjIHRoZW0gZnJvbSBvdGhlciBhcmdzLgoKU2lnbmVkLW9mZi1ieTogTWFyayBZYW8gPG1hcmsu
-eWFvQHJvY2stY2hpcHMuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZ2VtLmMgfCAgICA5ICsrLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9u
-cygrKSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9nZW0uYwppbmRleCBkOTA4MzIxLi4xOGUwNzMzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKQEAgLTIzNCwxMyArMjM0LDggQEAgaW50IHJvY2tj
-aGlwX2dlbV9kdW1iX2NyZWF0ZShzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKIAkvKgogCSAq
-IGFsaWduIHRvIDY0IGJ5dGVzIHNpbmNlIE1hbGkgcmVxdWlyZXMgaXQuCiAJICovCi0JbWluX3Bp
-dGNoID0gQUxJR04obWluX3BpdGNoLCA2NCk7Ci0KLQlpZiAoYXJncy0+cGl0Y2ggPCBtaW5fcGl0
-Y2gpCi0JCWFyZ3MtPnBpdGNoID0gbWluX3BpdGNoOwotCi0JaWYgKGFyZ3MtPnNpemUgPCBhcmdz
-LT5waXRjaCAqIGFyZ3MtPmhlaWdodCkKLQkJYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJn
-cy0+aGVpZ2h0OworCWFyZ3MtPnBpdGNoID0gQUxJR04obWluX3BpdGNoLCA2NCk7CisJYXJncy0+
-c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0OwogCiAJcmtfb2JqID0gcm9ja2NoaXBf
-Z2VtX2NyZWF0ZV93aXRoX2hhbmRsZShmaWxlX3ByaXYsIGRldiwgYXJncy0+c2l6ZSwKIAkJCQkJ
-CSAmYXJncy0+aGFuZGxlKTsKLS0gCjEuNy45LjUKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
-aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+hi:
+
+On 01/20/2016 01:49 PM, Heiko Stuebner wrote:
+> Similar to commit 9880d4277f6a ("clk: rockchip: fix rk3288 cpuclk core
+> dividers") it seems the cpuclk dividers are one to high on the rk3368
+> as well.
+>
+> And again similar to the previous fix, we opt to make the divider list
+> contain the values to be written to use the same paradigm for them on all
+> supported socs.
+>
+> Fixes: 3536c97a52db ("clk: rockchip: add rk3368 clock controller")
+> Reported-by: Zhang Qing <zhangqing@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+Reviewed-by: zhangqing <zhangqing@rock-chips.com>
+
+> ---
+>   drivers/clk/rockchip/clk-rk3368.c | 40 +++++++++++++++++++--------------------
+>   1 file changed, 20 insertions(+), 20 deletions(-)
+>
+> diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+> index f6667b8..3c9733e 100644
+> --- a/drivers/clk/rockchip/clk-rk3368.c
+> +++ b/drivers/clk/rockchip/clk-rk3368.c
+> @@ -218,29 +218,29 @@ static const struct rockchip_cpuclk_reg_data rk3368_cpuclkl_data = {
+>   	}
+>
+>   static struct rockchip_cpuclk_rate_table rk3368_cpuclkb_rates[] __initdata = {
+> -	RK3368_CPUCLKB_RATE(1512000000, 2, 6, 6),
+> -	RK3368_CPUCLKB_RATE(1488000000, 2, 5, 5),
+> -	RK3368_CPUCLKB_RATE(1416000000, 2, 5, 5),
+> -	RK3368_CPUCLKB_RATE(1200000000, 2, 4, 4),
+> -	RK3368_CPUCLKB_RATE(1008000000, 2, 4, 4),
+> -	RK3368_CPUCLKB_RATE( 816000000, 2, 3, 3),
+> -	RK3368_CPUCLKB_RATE( 696000000, 2, 3, 3),
+> -	RK3368_CPUCLKB_RATE( 600000000, 2, 2, 2),
+> -	RK3368_CPUCLKB_RATE( 408000000, 2, 2, 2),
+> -	RK3368_CPUCLKB_RATE( 312000000, 2, 2, 2),
+> +	RK3368_CPUCLKB_RATE(1512000000, 1, 5, 5),
+> +	RK3368_CPUCLKB_RATE(1488000000, 1, 4, 4),
+> +	RK3368_CPUCLKB_RATE(1416000000, 1, 4, 4),
+> +	RK3368_CPUCLKB_RATE(1200000000, 1, 3, 3),
+> +	RK3368_CPUCLKB_RATE(1008000000, 1, 3, 3),
+> +	RK3368_CPUCLKB_RATE( 816000000, 1, 2, 2),
+> +	RK3368_CPUCLKB_RATE( 696000000, 1, 2, 2),
+> +	RK3368_CPUCLKB_RATE( 600000000, 1, 1, 1),
+> +	RK3368_CPUCLKB_RATE( 408000000, 1, 1, 1),
+> +	RK3368_CPUCLKB_RATE( 312000000, 1, 1, 1),
+>   };
+>
+>   static struct rockchip_cpuclk_rate_table rk3368_cpuclkl_rates[] __initdata = {
+> -	RK3368_CPUCLKL_RATE(1512000000, 2, 7, 7),
+> -	RK3368_CPUCLKL_RATE(1488000000, 2, 6, 6),
+> -	RK3368_CPUCLKL_RATE(1416000000, 2, 6, 6),
+> -	RK3368_CPUCLKL_RATE(1200000000, 2, 5, 5),
+> -	RK3368_CPUCLKL_RATE(1008000000, 2, 5, 5),
+> -	RK3368_CPUCLKL_RATE( 816000000, 2, 4, 4),
+> -	RK3368_CPUCLKL_RATE( 696000000, 2, 3, 3),
+> -	RK3368_CPUCLKL_RATE( 600000000, 2, 3, 3),
+> -	RK3368_CPUCLKL_RATE( 408000000, 2, 2, 2),
+> -	RK3368_CPUCLKL_RATE( 312000000, 2, 2, 2),
+> +	RK3368_CPUCLKL_RATE(1512000000, 1, 6, 6),
+> +	RK3368_CPUCLKL_RATE(1488000000, 1, 5, 5),
+> +	RK3368_CPUCLKL_RATE(1416000000, 1, 5, 5),
+> +	RK3368_CPUCLKL_RATE(1200000000, 1, 4, 4),
+> +	RK3368_CPUCLKL_RATE(1008000000, 1, 4, 4),
+> +	RK3368_CPUCLKL_RATE( 816000000, 1, 3, 3),
+> +	RK3368_CPUCLKL_RATE( 696000000, 1, 2, 2),
+> +	RK3368_CPUCLKL_RATE( 600000000, 1, 2, 2),
+> +	RK3368_CPUCLKL_RATE( 408000000, 1, 1, 1),
+> +	RK3368_CPUCLKL_RATE( 312000000, 1, 1, 1),
+>   };
+>
+>   static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+>
+
