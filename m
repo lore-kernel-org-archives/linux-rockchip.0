@@ -1,20 +1,20 @@
-From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 07/21] usb: dwc2: hcd: fix split transfer schedule
- sequence
-Date: Thu, 21 Jan 2016 13:24:31 +0800
-Message-ID: <201601211352.VXgeFvup%fengguang.wu@intel.com>
-References: <1453352672-27890-8-git-send-email-dianders@chromium.org>
+From: kbuild test robot <lkp@intel.com>
+Subject: Re: [PATCH v4 20/21] usb: dwc2: host: Totally redo the microframe
+ scheduler
+Date: Thu, 21 Jan 2016 13:49:56 +0800
+Message-ID: <201601211347.ZCkJhHmY%fengguang.wu@intel.com>
+References: <1453352672-27890-21-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="fUYQa+Pmc3FrFX/N"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/mixed; boundary="ReaqsoxgOBHFXBhH"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1453352672-27890-8-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <1453352672-27890-21-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: kbuild-all@01.org, John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---fUYQa+Pmc3FrFX/N
+--ReaqsoxgOBHFXBhH
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -32,36 +32,43 @@ reproduce:
 
 All errors (new ones prefixed by >>):
 
+   In file included from drivers/usb/dwc2/core.c:57:0:
+>> drivers/usb/dwc2/hcd.h:345:44: error: 'DWC2_HS_SCHEDULE_UFRAMES' undeclared here (not in a function)
+     struct dwc2_hs_transfer_time hs_transfers[DWC2_HS_SCHEDULE_UFRAMES];
+                                               ^
    drivers/usb/dwc2/core.c: In function 'dwc2_hc_start_transfer':
->> drivers/usb/dwc2/core.c:1876:17: error: 'struct dwc2_hsotg' has no member named 'split_order'
+   drivers/usb/dwc2/core.c:1964:17: error: 'struct dwc2_hsotg' has no member named 'split_order'
               &hsotg->split_order);
                     ^
 --
->> /bin/bash: line 0: [: -ge: unary operator expected
+   In file included from drivers/usb/dwc2/core_intr.c:54:0:
+>> drivers/usb/dwc2/hcd.h:345:44: error: 'DWC2_HS_SCHEDULE_UFRAMES' undeclared here (not in a function)
+     struct dwc2_hs_transfer_time hs_transfers[DWC2_HS_SCHEDULE_UFRAMES];
+                                               ^
 
-vim +1876 drivers/usb/dwc2/core.c
+vim +/DWC2_HS_SCHEDULE_UFRAMES +345 drivers/usb/dwc2/hcd.h
 
-  1870				ec_mc = 3;
-  1871			else
-  1872				ec_mc = 1;
-  1873	
-  1874			/* Put ourselves on the list to keep order straight */
-  1875			list_move_tail(&chan->split_order_list_entry,
-> 1876				       &hsotg->split_order);
-  1877		} else {
-  1878			if (dbg_hc(chan))
-  1879				dev_vdbg(hsotg->dev, "no split\n");
+   339		u16 device_us;
+   340		u16 host_interval;
+   341		u16 device_interval;
+   342		u16 next_active_frame;
+   343		u16 start_active_frame;
+   344		s16 num_hs_transfers;
+ > 345		struct dwc2_hs_transfer_time hs_transfers[DWC2_HS_SCHEDULE_UFRAMES];
+   346		u32 ls_start_schedule_slice;
+   347		u16 ntd;
+   348		struct list_head qtd_list;
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---fUYQa+Pmc3FrFX/N
+--ReaqsoxgOBHFXBhH
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICL1qoFYAAy5jb25maWcAjFzdcxu3rn/vX6FJ78M5D2lsx3XSueMHapcrsdqvkFxZ8suO
+H4sICMFuoFYAAy5jb25maWcAjFzdcxu3rn/vX6FJ78M5D2lsx3XSueMHapcrsdqvkFxZ8suO
 Yiut5/gj13La5L+/ALirJblY9/QhHQEgFyRB8AcQ9M8//TwT316eHnYvdze7+/sfsz/2j/vn
 3cv+dvbl7n7/v7O0mpWVnclU2V9AOL97/Pb93fePF+3F+ez8l/NfTmar/fPj/n6WPD1+ufvj
 G7S9e3r86eefkqrM1ALE5spe/uh/bqhl8Hv4oUpjdZNYVZVtKpMqlXpgVo2tG9tmlS6EvXyz
@@ -483,8 +490,4 @@ Y485VnHdF+gFVaWpMDpbGLhxWmGjl2Y4e64iw1yGONodxSJLRWhZl12Zuq/8BnNrWiylahLS
 YytJLE1N1lziLZ5SCRR1Zsf1xBiXJQyXEzCtUK51TeoCev7TnBEBwuhGYCnc0Vyjp0hOWiLH
 QQAaoa0ixqdGS5ulXh5RaL8ZhDEIkP8HmxnxpUZUAQA=
 
---fUYQa+Pmc3FrFX/N--
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--ReaqsoxgOBHFXBhH--
