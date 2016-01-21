@@ -1,393 +1,100 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v4 09/21] usb: dwc2: host: Add a delay before releasing
- periodic bandwidth
-Date: Wed, 20 Jan 2016 21:04:20 -0800
-Message-ID: <1453352672-27890-10-git-send-email-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v4 18/21] usb: dwc2: host: Add dwc2_hcd_get_future_frame_number() call
+Date: Wed, 20 Jan 2016 21:04:29 -0800
+Message-ID: <1453352672-27890-19-git-send-email-dianders@chromium.org>
 References: <1453352672-27890-1-git-send-email-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453352672-27890-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453352672-27890-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We'd like to be able to use HCD_BH in order to speed up the dwc2 host
-interrupt handler quite a bit.  However, according to the kernel doc for
-usb_submit_urb() (specifically the part about "Reserved Bandwidth
-Transfers"), we need to keep a reservation active as long as a device
-driver keeps submitting.  That was easy to do when we gave back the URB
-in the interrupt context: we just looked at when our queue was empty and
-released the reserved bandwidth then.  ...but now we need a little more
-complexity.
+As we start getting more exact about our scheduling it's becoming more
+and more important to know exactly how far through the current frame we
+are.  This lets us make decisions about whether there's still time left
+to start a new transaction in the current frame.
 
-We'll follow EHCI's lead in commit 9118f9eb4f1e ("USB: EHCI: improve
-interrupt qh unlink") and add a 5ms delay.  Since we don't have a whole
-timer infrastructure in dwc2, we'll just add a timer per QH.  The
-overhead for this is very small.
+We'll add dwc2_hcd_get_future_frame_number() which will tell you what
+the frame number will be a certain number of microseconds (us) from
+now.  We can use this information to help decide if there's enough time
+left in the frame for a transaction that will take a certain duration.
 
-Note that the dwc2 scheduler is pretty broken (see future patches to fix
-it).  This patch attempts to replicate all old behavior and just add the
-proper delay.
+This is expected to be used by a future change ("usb: dwc2: host:
+Properly set even/odd frame").
 
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
 Changes in v4:
-- Moved periodic bandwidth release delay patch earlier again.
+- Add dwc2_hcd_get_future_frame_number() call new for v4.
 
-Changes in v3:
-- Moved periodic bandwidth release delay patch later in the series.
+Changes in v3: None
+Changes in v2: None
 
-Changes in v2:
-- Periodic bandwidth release delay new for V2
+ drivers/usb/dwc2/core.h |  4 ++++
+ drivers/usb/dwc2/hcd.c  | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
- drivers/usb/dwc2/hcd.h       |   6 ++
- drivers/usb/dwc2/hcd_queue.c | 237 +++++++++++++++++++++++++++++++++----------
- 2 files changed, 187 insertions(+), 56 deletions(-)
-
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 809bc4ff9116..79473ea35bd6 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -215,6 +215,7 @@ enum dwc2_transaction_type {
- /**
-  * struct dwc2_qh - Software queue head structure
-  *
-+ * @hsotg:              The HCD state structure for the DWC OTG controller
-  * @ep_type:            Endpoint type. One of the following values:
-  *                       - USB_ENDPOINT_XFER_CONTROL
-  *                       - USB_ENDPOINT_XFER_BULK
-@@ -252,13 +253,16 @@ enum dwc2_transaction_type {
-  * @n_bytes:            Xfer Bytes array. Each element corresponds to a transfer
-  *                      descriptor and indicates original XferSize value for the
-  *                      descriptor
-+ * @unreserve_timer:    Timer for releasing periodic reservation.
-  * @tt_buffer_dirty     True if clear_tt_buffer_complete is pending
-+ * @unreserve_pending:  True if we planned to unreserve but haven't yet.
-  *
-  * A Queue Head (QH) holds the static characteristics of an endpoint and
-  * maintains a list of transfers (QTDs) for that endpoint. A QH structure may
-  * be entered in either the non-periodic or periodic schedule.
-  */
- struct dwc2_qh {
-+	struct dwc2_hsotg *hsotg;
- 	u8 ep_type;
- 	u8 ep_is_in;
- 	u16 maxp;
-@@ -281,7 +285,9 @@ struct dwc2_qh {
- 	dma_addr_t desc_list_dma;
- 	u32 desc_list_sz;
- 	u32 *n_bytes;
-+	struct timer_list unreserve_timer;
- 	unsigned tt_buffer_dirty:1;
-+	unsigned unreserve_pending:1;
- };
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index 64d45a2053bb..52cbea28d0e9 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -1235,12 +1235,16 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
  
- /**
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 0e9faa75593c..b9e4867e1afd 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -53,6 +53,94 @@
- #include "core.h"
- #include "hcd.h"
- 
-+/* Wait this long before releasing periodic reservation */
-+#define DWC2_UNRESERVE_DELAY (msecs_to_jiffies(5))
-+
-+/**
-+ * dwc2_do_unreserve() - Actually release the periodic reservation
-+ *
-+ * This function actually releases the periodic bandwidth that was reserved
-+ * by the given qh.
-+ *
-+ * @hsotg: The HCD state structure for the DWC OTG controller
-+ * @qh:    QH for the periodic transfer.
-+ */
-+static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-+{
-+	assert_spin_locked(&hsotg->lock);
-+
-+	WARN_ON(!qh->unreserve_pending);
-+
-+	/* No more unreserve pending--we're doing it */
-+	qh->unreserve_pending = false;
-+
-+	if (WARN_ON(!list_empty(&qh->qh_list_entry)))
-+		list_del_init(&qh->qh_list_entry);
-+
-+	/* Update claimed usecs per (micro)frame */
-+	hsotg->periodic_usecs -= qh->usecs;
-+
-+	if (hsotg->core_params->uframe_sched > 0) {
-+		int i;
-+
-+		for (i = 0; i < 8; i++) {
-+			hsotg->frame_usecs[i] += qh->frame_usecs[i];
-+			qh->frame_usecs[i] = 0;
-+		}
-+	} else {
-+		/* Release periodic channel reservation */
-+		hsotg->periodic_channels--;
-+	}
-+}
-+
-+/**
-+ * dwc2_unreserve_timer_fn() - Timer function to release periodic reservation
-+ *
-+ * According to the kernel doc for usb_submit_urb() (specifically the part about
-+ * "Reserved Bandwidth Transfers"), we need to keep a reservation active as
-+ * long as a device driver keeps submitting.  Since we're using HCD_BH to give
-+ * back the URB we need to give the driver a little bit of time before we
-+ * release the reservation.  This worker is called after the appropriate
-+ * delay.
-+ *
-+ * @work: Pointer to a qh unreserve_work.
-+ */
-+static void dwc2_unreserve_timer_fn(unsigned long data)
-+{
-+	struct dwc2_qh *qh = (struct dwc2_qh *)data;
-+	struct dwc2_hsotg *hsotg = qh->hsotg;
-+	unsigned long flags;
-+
-+	/*
-+	 * Wait for the lock, or for us to be scheduled again.  We
-+	 * could be scheduled again if:
-+	 * - We started executing but didn't get the lock yet.
-+	 * - A new reservation came in, but cancel didn't take effect
-+	 *   because we already started executing.
-+	 * - The timer has been kicked again.
-+	 * In that case cancel and wait for the next call.
-+	 */
-+	while (!spin_trylock_irqsave(&hsotg->lock, flags)) {
-+		if (timer_pending(&qh->unreserve_timer))
-+			return;
-+	}
-+
-+	/*
-+	 * Might be no more unreserve pending if:
-+	 * - We started executing but didn't get the lock yet.
-+	 * - A new reservation came in, but cancel didn't take effect
-+	 *   because we already started executing.
-+	 *
-+	 * We can't put this in the loop above because unreserve_pending needs
-+	 * to be accessed under lock, so we can only check it once we got the
-+	 * lock.
-+	 */
-+	if (qh->unreserve_pending)
-+		dwc2_do_unreserve(hsotg, qh);
-+
-+	spin_unlock_irqrestore(&hsotg->lock, flags);
-+}
-+
- /**
-  * dwc2_qh_init() - Initializes a QH structure
-  *
-@@ -71,6 +159,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 	dev_vdbg(hsotg->dev, "%s()\n", __func__);
- 
- 	/* Initialize QH */
-+	qh->hsotg = hsotg;
-+	setup_timer(&qh->unreserve_timer, dwc2_unreserve_timer_fn,
-+		    (unsigned long)qh);
- 	qh->ep_type = dwc2_hcd_get_pipe_type(&urb->pipe_info);
- 	qh->ep_is_in = dwc2_hcd_is_pipe_in(&urb->pipe_info) ? 1 : 0;
- 
-@@ -240,6 +331,15 @@ struct dwc2_qh *dwc2_hcd_qh_create(struct dwc2_hsotg *hsotg,
-  */
- void dwc2_hcd_qh_free(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
-+	/* Make sure any unreserve work is finished. */
-+	if (del_timer_sync(&qh->unreserve_timer)) {
-+		unsigned long flags;
-+
-+		spin_lock_irqsave(&hsotg->lock, flags);
-+		dwc2_do_unreserve(hsotg, qh);
-+		spin_unlock_irqrestore(&hsotg->lock, flags);
-+	}
-+
- 	if (qh->desc_list)
- 		dwc2_hcd_qh_free_ddma(hsotg, qh);
- 	kfree(qh);
-@@ -477,51 +577,74 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
- 	int status;
- 
--	if (hsotg->core_params->uframe_sched > 0) {
--		int frame = -1;
--
--		status = dwc2_find_uframe(hsotg, qh);
--		if (status == 0)
--			frame = 7;
--		else if (status > 0)
--			frame = status - 1;
--
--		/* Set the new frame up */
--		if (frame >= 0) {
--			qh->sched_frame &= ~0x7;
--			qh->sched_frame |= (frame & 7);
--			dwc2_sch_dbg(hsotg, "QH=%p sched_p sch=%04x, uf=%d\n",
--				     qh, qh->sched_frame, frame);
-+	status = dwc2_check_max_xfer_size(hsotg, qh);
-+	if (status) {
-+		dev_dbg(hsotg->dev,
-+			"%s: Channel max transfer size too small for periodic transfer\n",
-+			__func__);
-+		return status;
-+	}
-+
-+	/* Cancel pending unreserve; if canceled OK, unreserve was pending */
-+	if (del_timer(&qh->unreserve_timer))
-+		WARN_ON(!qh->unreserve_pending);
-+
-+	/*
-+	 * Only need to reserve if there's not an unreserve pending, since if an
-+	 * unreserve is pending then by definition our old reservation is still
-+	 * valid.  Unreserve might still be pending even if we didn't cancel if
-+	 * dwc2_unreserve_timer_fn() already started.  Code in the timer handles
-+	 * that case.
-+	 */
-+	if (!qh->unreserve_pending) {
-+		if (hsotg->core_params->uframe_sched > 0) {
-+			int frame = -1;
-+
-+			status = dwc2_find_uframe(hsotg, qh);
-+			if (status == 0)
-+				frame = 7;
-+			else if (status > 0)
-+				frame = status - 1;
-+
-+			/* Set the new frame up */
-+			if (frame >= 0) {
-+				qh->sched_frame &= ~0x7;
-+				qh->sched_frame |= (frame & 7);
-+				dwc2_sch_dbg(hsotg,
-+					     "QH=%p sched_p sch=%04x, uf=%d\n",
-+					     qh, qh->sched_frame, frame);
-+			}
-+
-+			if (status > 0)
-+				status = 0;
-+		} else {
-+			status = dwc2_periodic_channel_available(hsotg);
-+			if (status) {
-+				dev_info(hsotg->dev,
-+					"%s: No host channel available for periodic transfer\n",
-+					__func__);
-+				return status;
-+			}
-+
-+			status = dwc2_check_periodic_bandwidth(hsotg, qh);
- 		}
- 
--		if (status > 0)
--			status = 0;
--	} else {
--		status = dwc2_periodic_channel_available(hsotg);
- 		if (status) {
--			dev_info(hsotg->dev,
--				 "%s: No host channel available for periodic transfer\n",
--				 __func__);
-+			dev_dbg(hsotg->dev,
-+				"%s: Insufficient periodic bandwidth for periodic transfer\n",
-+				__func__);
- 			return status;
- 		}
- 
--		status = dwc2_check_periodic_bandwidth(hsotg, qh);
--	}
-+		if (hsotg->core_params->uframe_sched <= 0)
-+			/* Reserve periodic channel */
-+			hsotg->periodic_channels++;
- 
--	if (status) {
--		dev_dbg(hsotg->dev,
--			"%s: Insufficient periodic bandwidth for periodic transfer\n",
--			__func__);
--		return status;
-+		/* Update claimed usecs per (micro)frame */
-+		hsotg->periodic_usecs += qh->usecs;
- 	}
- 
--	status = dwc2_check_max_xfer_size(hsotg, qh);
--	if (status) {
--		dev_dbg(hsotg->dev,
--			"%s: Channel max transfer size too small for periodic transfer\n",
--			__func__);
--		return status;
--	}
-+	qh->unreserve_pending = 0;
- 
- 	if (hsotg->core_params->dma_desc_enable > 0)
- 		/* Don't rely on SOF and start in ready schedule */
-@@ -531,13 +654,6 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		list_add_tail(&qh->qh_list_entry,
- 			      &hsotg->periodic_sched_inactive);
- 
--	if (hsotg->core_params->uframe_sched <= 0)
--		/* Reserve periodic channel */
--		hsotg->periodic_channels++;
--
--	/* Update claimed usecs per (micro)frame */
--	hsotg->periodic_usecs += qh->usecs;
--
- 	return status;
+ #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+ extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
++extern int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us);
+ extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
+ extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
+ extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
++static inline int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg,
++						   int us)
++{ return 0; }
+ static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
+ static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index 32c160e3e13e..69a2a175100a 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -1942,6 +1942,35 @@ int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ 	return (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
  }
  
-@@ -551,22 +667,31 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- static void dwc2_deschedule_periodic(struct dwc2_hsotg *hsotg,
- 				     struct dwc2_qh *qh)
- {
--	int i;
-+	bool did_modify;
- 
--	list_del_init(&qh->qh_list_entry);
-+	assert_spin_locked(&hsotg->lock);
- 
--	/* Update claimed usecs per (micro)frame */
--	hsotg->periodic_usecs -= qh->usecs;
++int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us)
++{
++	u32 hprt = dwc2_readl(hsotg->regs + HPRT0);
++	u32 hfir = dwc2_readl(hsotg->regs + HFIR);
++	u32 hfnum = dwc2_readl(hsotg->regs + HFNUM);
++	unsigned int us_per_frame;
++	unsigned int frame_number;
++	unsigned int remaining;
++	unsigned int interval;
++	unsigned int phy_clks;
++
++	/* High speed has 125 us per (micro) frame; others are 1 ms per */
++	us_per_frame = (hprt & HPRT0_SPD_MASK) ? 1000 : 125;
++
++	/* Extract fields */
++	frame_number = (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
++	remaining = (hfnum & HFNUM_FRREM_MASK) >> HFNUM_FRREM_SHIFT;
++	interval = (hfir & HFIR_FRINT_MASK) >> HFIR_FRINT_SHIFT;
++
 +	/*
-+	 * Schedule the unreserve to happen in a little bit.  Cases here:
-+	 * - Unreserve worker might be sitting there waiting to grab the lock.
-+	 *   In this case it will notice it's been schedule again and will
-+	 *   quit.
-+	 * - Unreserve worker might not be scheduled.
-+	 *
-+	 * We should never already be scheduled since dwc2_schedule_periodic()
-+	 * should have canceled the scheduled unreserve timer (hence the
-+	 * warning on did_modify).
-+	 *
-+	 * We add + 1 to the timer to guarantee that at least 1 jiffy has
-+	 * passed (otherwise if the jiffy counter might tick right after we
-+	 * read it and we'll get no delay).
++	 * Number of phy clocks since the last tick of the frame number after
++	 * "us" has passed.
 +	 */
-+	did_modify = mod_timer(&qh->unreserve_timer,
-+			       jiffies + DWC2_UNRESERVE_DELAY + 1);
-+	WARN_ON(did_modify);
-+	qh->unreserve_pending = 1;
- 
--	if (hsotg->core_params->uframe_sched > 0) {
--		for (i = 0; i < 8; i++) {
--			hsotg->frame_usecs[i] += qh->frame_usecs[i];
--			qh->frame_usecs[i] = 0;
--		}
--	} else {
--		/* Release periodic channel reservation */
--		hsotg->periodic_channels--;
--	}
-+	list_del_init(&qh->qh_list_entry);
- }
- 
- /**
++	phy_clks = (interval - remaining) +
++		   DIV_ROUND_UP(interval * us, us_per_frame);
++
++	return dwc2_frame_num_inc(frame_number, phy_clks / interval);
++}
++
+ int dwc2_hcd_is_b_host(struct dwc2_hsotg *hsotg)
+ {
+ 	return hsotg->op_state == OTG_STATE_B_HOST;
 -- 
 2.7.0.rc3.207.g0ac5344
