@@ -1,8 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v4 14/21] usb: dwc2: host: Split code out to make
- dwc2_do_reserve()
-Date: Wed, 20 Jan 2016 21:04:25 -0800
-Message-ID: <1453352672-27890-15-git-send-email-dianders@chromium.org>
+Subject: [PATCH v4 21/21] usb: dwc2: host: If using uframe scheduler,
+ end splits better
+Date: Wed, 20 Jan 2016 21:04:32 -0800
+Message-ID: <1453352672-27890-22-git-send-email-dianders@chromium.org>
 References: <1453352672-27890-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,158 +22,92 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This no-op change splits code out of dwc2_schedule_periodic() into a
-dwc2_do_reserve() function.  This makes it a little easier to follow the
-logic.
+The microframe scheduler figured out exactly how many transfers we need
+for a split transaction.  Let's use this knowledge to know when to end
+things.
+
+Without this I found that certain devices would just keep responding
+with tons of NYET resonses on their INT_IN endpoint.  These would just
+keep going and going and eventually we'd decide to terminate the
+transfer (because the whole frame changed), but by that time the
+scheduler would decide that we "missed" the start of the next transfer.
+I can also imagine that if we blow past the end of our scheduled time we
+may mess up other things that were scheduled to happen.
+
+No known test cases are improved by this patch except that the scheduler
+code doesn't yell about MISSES constantly anymore.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v4:
-- Split code out to make dwc2_do_reserve() new for v4.
+- If using uframe scheduler, end splits better new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/hcd_queue.c | 112 ++++++++++++++++++++++++++-----------------
- 1 file changed, 67 insertions(+), 45 deletions(-)
+ drivers/usb/dwc2/hcd_intr.c | 48 +++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 42 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 8a2067bc1e62..9ce407e5017d 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -245,6 +245,70 @@ static int dwc2_find_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- }
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 1875e4590a3c..2519e1bdad1a 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -1353,14 +1353,50 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
  
- /**
-+ * dwc2_do_reserve() - Make a periodic reservation
-+ *
-+ * Try to allocate space in the periodic schedule.  Depending on parameters
-+ * this might use the microframe scheduler or the dumb scheduler.
-+ *
-+ * @hsotg: The HCD state structure for the DWC OTG controller
-+ * @qh:    QH for the periodic transfer.
-+ *
-+ * Returns: 0 upon success; error upon failure.
-+ */
-+static int dwc2_do_reserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-+{
-+	int status;
+ 		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
+ 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC) {
+-			int frnum = dwc2_hcd_get_frame_number(hsotg);
++			struct dwc2_qh *qh = chan->qh;
++			bool past_end;
 +
-+	if (hsotg->core_params->uframe_sched > 0) {
-+		int frame = -1;
++			if (hsotg->core_params->uframe_sched <= 0) {
++				int frnum = dwc2_hcd_get_frame_number(hsotg);
 +
-+		status = dwc2_find_uframe(hsotg, qh);
-+		if (status == 0)
-+			frame = 7;
-+		else if (status > 0)
-+			frame = status - 1;
-+
-+		/* Set the new frame up */
-+		if (frame >= 0) {
-+			qh->next_active_frame &= ~0x7;
-+			qh->next_active_frame |= (frame & 7);
-+			dwc2_sch_dbg(hsotg,
-+				     "QH=%p sched_p nxt=%04x, uf=%d\n",
-+				     qh, qh->next_active_frame, frame);
-+		}
-+
-+		if (status > 0)
-+			status = 0;
-+	} else {
-+		status = dwc2_periodic_channel_available(hsotg);
-+		if (status) {
-+			dev_info(hsotg->dev,
-+				 "%s: No host channel available for periodic transfer\n",
-+				 __func__);
-+			return status;
-+		}
-+
-+		status = dwc2_check_periodic_bandwidth(hsotg, qh);
-+	}
-+
-+	if (status) {
-+		dev_dbg(hsotg->dev,
-+			"%s: Insufficient periodic bandwidth for periodic transfer\n",
-+			__func__);
-+		return status;
-+	}
-+
-+	if (hsotg->core_params->uframe_sched <= 0)
-+		/* Reserve periodic channel */
-+		hsotg->periodic_channels++;
-+
-+	/* Update claimed usecs per (micro)frame */
-+	hsotg->periodic_usecs += qh->host_us;
-+
-+	return 0;
-+}
-+
-+/**
-  * dwc2_do_unreserve() - Actually release the periodic reservation
-  *
-  * This function actually releases the periodic bandwidth that was reserved
-@@ -393,51 +457,9 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 	 * that case.
- 	 */
- 	if (!qh->unreserve_pending) {
--		if (hsotg->core_params->uframe_sched > 0) {
--			int frame = -1;
--
--			status = dwc2_find_uframe(hsotg, qh);
--			if (status == 0)
--				frame = 7;
--			else if (status > 0)
--				frame = status - 1;
--
--			/* Set the new frame up */
--			if (frame >= 0) {
--				qh->next_active_frame &= ~0x7;
--				qh->next_active_frame |= (frame & 7);
--				dwc2_sch_dbg(hsotg,
--					     "QH=%p sched_p nxt=%04x, uf=%d\n",
--					     qh, qh->next_active_frame, frame);
--			}
--
--			if (status > 0)
--				status = 0;
--		} else {
--			status = dwc2_periodic_channel_available(hsotg);
--			if (status) {
--				dev_info(hsotg->dev,
--					"%s: No host channel available for periodic transfer\n",
--					__func__);
--				return status;
--			}
--
--			status = dwc2_check_periodic_bandwidth(hsotg, qh);
--		}
--
--		if (status) {
--			dev_dbg(hsotg->dev,
--				"%s: Insufficient periodic bandwidth for periodic transfer\n",
--				__func__);
-+		status = dwc2_do_reserve(hsotg, qh);
-+		if (status)
- 			return status;
--		}
--
--		if (hsotg->core_params->uframe_sched <= 0)
--			/* Reserve periodic channel */
--			hsotg->periodic_channels++;
--
--		/* Update claimed usecs per (micro)frame */
--		hsotg->periodic_usecs += qh->host_us;
- 	}
++				/* Don't have num_hs_transfers; simple logic */
++				past_end = dwc2_full_frame_num(frnum) !=
++				     dwc2_full_frame_num(qh->next_active_frame);
++			} else {
++				int end_frnum;
  
- 	qh->unreserve_pending = 0;
-@@ -450,7 +472,7 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		list_add_tail(&qh->qh_list_entry,
- 			      &hsotg->periodic_sched_inactive);
- 
--	return status;
-+	return 0;
- }
- 
- /**
+-			if (dwc2_full_frame_num(frnum) !=
+-			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
+ 				/*
+-				 * No longer in the same full speed frame.
+-				 * Treat this as a transaction error.
+-				 */
++				* Figure out the end frame based on schedule.
++				*
++				* We don't want to go on trying again and again
++				* forever.  Let's stop when we've done all the
++				* transfers that were scheduled.
++				*
++				* We're going to be comparing start_active_frame
++				* and next_active_frame, both of which are 1
++				* before the time the packet goes on the wire,
++				* so that cancels out.  Basically if had 1
++				* transfer and we saw 1 NYET then we're done.
++				* We're getting a NYET here so if next >=
++				* (start + num_transfers) we're done. The
++				* complexity is that for all but ISOC_OUT we
++				* skip one slot.
++				*/
++				end_frnum = dwc2_frame_num_inc(
++					qh->start_active_frame,
++					qh->num_hs_transfers);
++
++				if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
++				    qh->ep_is_in)
++					end_frnum =
++					       dwc2_frame_num_inc(end_frnum, 1);
++
++				past_end = dwc2_frame_num_le(
++					end_frnum, qh->next_active_frame);
++			}
++
++			if (past_end) {
++				/* Treat this as a transaction error. */
+ #if 0
+ 				/*
+ 				 * Todo: Fix system performance so this can
 -- 
 2.7.0.rc3.207.g0ac5344
