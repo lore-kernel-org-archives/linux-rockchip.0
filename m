@@ -1,8 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v4 04/21] usb: dwc2: host: Set host_perio_tx_fifo_size to 304
- for rk3066
-Date: Wed, 20 Jan 2016 21:04:15 -0800
-Message-ID: <1453352672-27890-5-git-send-email-dianders@chromium.org>
+Subject: [PATCH v4 01/21] usb: dwc2: rockchip: Make the max_transfer_size
+ automatic
+Date: Wed, 20 Jan 2016 21:04:12 -0800
+Message-ID: <1453352672-27890-2-git-send-email-dianders@chromium.org>
 References: <1453352672-27890-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,30 +22,26 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Looking at rk3288, there are two dwc2 ports.  One has 960
-total_fifo_size and the other 972.
+Previously we needed to set the max_transfer_size to explicitly be 65535
+because the old driver would detect that our hardware could support much
+bigger transfers and then would try to do them.  This wouldn't work
+since the DMA alignment code couldn't support it.
 
-We're currently assigning 528 + 128 + 256 = 912.  That means we're
-wasting 48 words on one port and 60 words on the other.  Since we have
-one settings block for both ports, let's just eat the 48 words that we
-know we have and assign them to what's probably the most
-latency-senstive part of the system: periodic transfers.
+Later in commit e8f8c14d9da7 ("usb: dwc2: clip max_transfer_size to
+65535") upstream added support for clipping this automatically.  Since
+that commit it has been OK to just use "-1" (default), but nobody
+bothered to change it.
 
-Presumably other rk3288 parts using the rk3066 settings also have these
-extra 48 words as well.
-
-Note: ideally we'd adjust dwc2_calculate_dynamic_fifo() to handle this
-more dynamically, but until that's done hardcoding things here seems OK.
-
-NOTE: no known use cases are improved by this patch, but in my stressful
-USB tests I certainly see my periodic FIFO filling up both before and
-after this change.  Presumably there are some USB configurations where
-the periodic FIFO would have been filled before where it no longer is.
+Let's change it to default now for two reasons:
+- It's nice to use autodetected params.
+- If we can remove the 65535 limit, we can transfer more!
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
 Changes in v4:
-- Set host_perio_tx_fifo_size to 304 for rk3066 new for v4.
+- Add John's Acks from <https://patchwork.kernel.org/patch/7631551>
 
 Changes in v3: None
 Changes in v2: None
@@ -54,17 +50,17 @@ Changes in v2: None
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
-index b6d7666e715c..afdcdeee266d 100644
+index 510f787434b3..5008a467ce06 100644
 --- a/drivers/usb/dwc2/platform.c
 +++ b/drivers/usb/dwc2/platform.c
-@@ -128,7 +128,7 @@ static const struct dwc2_core_params params_rk3066 = {
- 	.en_multiple_tx_fifo		= -1,
- 	.host_rx_fifo_size		= 528,	/* 528 DWORDs */
+@@ -129,7 +129,7 @@ static const struct dwc2_core_params params_rk3066 = {
+ 	.host_rx_fifo_size		= 520,	/* 520 DWORDs */
  	.host_nperio_tx_fifo_size	= 128,	/* 128 DWORDs */
--	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
-+	.host_perio_tx_fifo_size	= 304,	/* 304 DWORDs */
- 	.max_transfer_size		= -1,
+ 	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
+-	.max_transfer_size		= 65535,
++	.max_transfer_size		= -1,
  	.max_packet_count		= -1,
  	.host_channels			= -1,
+ 	.phy_type			= -1,
 -- 
 2.7.0.rc3.207.g0ac5344
