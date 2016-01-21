@@ -1,871 +1,279 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v3] clk: rockchip: Add support for multiple clock providers
-Date: Thu, 21 Jan 2016 15:22:18 +0800
-Message-ID: <1453360938-10775-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: keescook@google.com, leozwang@google.com, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 2/4] power: reset: add reboot mode driver
+Date: Thu, 21 Jan 2016 09:37:36 +0100
+Message-ID: <56A098D0.6040205@gmail.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+ <1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>, heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org
+Cc: mark.rutland@arm.com, geert+renesas@glider.be, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, alexandre.belloni@free-electrons.com, lorenzo.pieralisi@arm.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, cernekee@gmail.com, linux-rockchip@lists.infradead.org, linux@roeck-us.net, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, robh+dt@kernel.org, maxime.ripard@free-electrons.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, linux-pm@vger.kernel.org, sre@kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are need to support Multi-CRUs probability in future, but
-it is not supported on the current Rockchip Clock Framework.
-
-Therefore, this patch add support a provider as the parameter
-handler when we call the clock register functions for per CRU.
-
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
-
-Changes in v3:
-- Remove panic, use the normal error codes for returning.
-- The ctx struct include the cru_node and grf members for pll tracking.
-
-Changes in v2:
-- Fix missed to call rockchip_clk_common_cru_init when SoCs clock init.
-
- drivers/clk/rockchip/clk-pll.c    |   30 ++++----
- drivers/clk/rockchip/clk-rk3036.c |   17 +++--
- drivers/clk/rockchip/clk-rk3188.c |   48 +++++++++----
- drivers/clk/rockchip/clk-rk3228.c |   17 +++--
- drivers/clk/rockchip/clk-rk3288.c |   19 +++--
- drivers/clk/rockchip/clk-rk3368.c |   21 ++++--
- drivers/clk/rockchip/clk.c        |  144 +++++++++++++++++++++++--------------
- drivers/clk/rockchip/clk.h        |   49 +++++++++----
- 8 files changed, 229 insertions(+), 116 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index b7e66c9..649db7d 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -46,6 +46,8 @@ struct rockchip_clk_pll {
- 	const struct rockchip_pll_rate_table *rate_table;
- 	unsigned int		rate_count;
- 	spinlock_t		*lock;
-+
-+	struct rockchip_clk_provider *ctx;
- };
- 
- #define to_rockchip_clk_pll(_hw) container_of(_hw, struct rockchip_clk_pll, hw)
-@@ -90,7 +92,7 @@ static long rockchip_pll_round_rate(struct clk_hw *hw,
-  */
- static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- {
--	struct regmap *grf = rockchip_clk_get_grf();
-+	struct regmap *grf = rockchip_clk_get_grf(pll->ctx);
- 	unsigned int val;
- 	int delay = 24000000, ret;
- 
-@@ -246,7 +248,7 @@ static int rockchip_rk3036_pll_set_rate(struct clk_hw *hw, unsigned long drate,
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
- 	const struct rockchip_pll_rate_table *rate;
- 	unsigned long old_rate = rockchip_rk3036_pll_recalc_rate(hw, prate);
--	struct regmap *grf = rockchip_clk_get_grf();
-+	struct regmap *grf = rockchip_clk_get_grf(pll->ctx);
- 
- 	if (IS_ERR(grf)) {
- 		pr_debug("%s: grf regmap not available, aborting rate change\n",
-@@ -485,7 +487,7 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
- 	const struct rockchip_pll_rate_table *rate;
- 	unsigned long old_rate = rockchip_rk3066_pll_recalc_rate(hw, prate);
--	struct regmap *grf = rockchip_clk_get_grf();
-+	struct regmap *grf = rockchip_clk_get_grf(pll->ctx);
- 
- 	if (IS_ERR(grf)) {
- 		pr_debug("%s: grf regmap not available, aborting rate change\n",
-@@ -558,7 +560,7 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
- 		 rate->no, cur.no, rate->nf, cur.nf, rate->nb, cur.nb);
- 	if (rate->nr != cur.nr || rate->no != cur.no || rate->nf != cur.nf
- 						     || rate->nb != cur.nb) {
--		struct regmap *grf = rockchip_clk_get_grf();
-+		struct regmap *grf = rockchip_clk_get_grf(pll->ctx);
- 
- 		if (IS_ERR(grf))
- 			return;
-@@ -590,12 +592,13 @@ static const struct clk_ops rockchip_rk3066_pll_clk_ops = {
-  * Common registering of pll clocks
-  */
- 
--struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
-+struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
-+		enum rockchip_pll_type pll_type,
- 		const char *name, const char *const *parent_names,
--		u8 num_parents, void __iomem *base, int con_offset,
--		int grf_lock_offset, int lock_shift, int mode_offset,
--		int mode_shift, struct rockchip_pll_rate_table *rate_table,
--		u8 clk_pll_flags, spinlock_t *lock)
-+		u8 num_parents, int con_offset, int grf_lock_offset,
-+		int lock_shift, int mode_offset, int mode_shift,
-+		struct rockchip_pll_rate_table *rate_table,
-+		u8 clk_pll_flags)
- {
- 	const char *pll_parents[3];
- 	struct clk_init_data init;
-@@ -619,11 +622,11 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 	/* create the mux on top of the real pll */
- 	pll->pll_mux_ops = &clk_mux_ops;
- 	pll_mux = &pll->pll_mux;
--	pll_mux->reg = base + mode_offset;
-+	pll_mux->reg = ctx->reg_base + mode_offset;
- 	pll_mux->shift = mode_shift;
- 	pll_mux->mask = PLL_MODE_MASK;
- 	pll_mux->flags = 0;
--	pll_mux->lock = lock;
-+	pll_mux->lock = &ctx->lock;
- 	pll_mux->hw.init = &init;
- 
- 	if (pll_type == pll_rk3036 || pll_type == pll_rk3066)
-@@ -690,11 +693,12 @@ struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
- 
- 	pll->hw.init = &init;
- 	pll->type = pll_type;
--	pll->reg_base = base + con_offset;
-+	pll->reg_base = ctx->reg_base + con_offset;
- 	pll->lock_offset = grf_lock_offset;
- 	pll->lock_shift = lock_shift;
- 	pll->flags = clk_pll_flags;
--	pll->lock = lock;
-+	pll->lock = &ctx->lock;
-+	pll->ctx = ctx;
- 
- 	pll_clk = clk_register(NULL, &pll->hw);
- 	if (IS_ERR(pll_clk)) {
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 483913b..3df5893 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -434,6 +434,7 @@ static const char *const rk3036_critical_clocks[] __initconst = {
- 
- static void __init rk3036_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	void __iomem *reg_base;
- 	struct clk *clk;
- 
-@@ -443,7 +444,11 @@ static void __init rk3036_clk_init(struct device_node *np)
- 		return;
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: rockchip clk init failed\n", __func__);
-+		return;
-+	}
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -473,15 +478,15 @@ static void __init rk3036_clk_init(struct device_node *np)
- 		pr_warn("%s: could not register clock sclk_macref_out: %ld\n",
- 			__func__, PTR_ERR(clk));
- 
--	rockchip_clk_register_plls(rk3036_pll_clks,
-+	rockchip_clk_register_plls(ctx, rk3036_pll_clks,
- 				   ARRAY_SIZE(rk3036_pll_clks),
- 				   RK3036_GRF_SOC_STATUS0);
--	rockchip_clk_register_branches(rk3036_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3036_clk_branches,
- 				  ARRAY_SIZE(rk3036_clk_branches));
- 	rockchip_clk_protect_critical(rk3036_critical_clocks,
- 				      ARRAY_SIZE(rk3036_critical_clocks));
- 
--	rockchip_clk_register_armclk(ARMCLK, "armclk",
-+	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
- 			&rk3036_cpuclk_data, rk3036_cpuclk_rates,
- 			ARRAY_SIZE(rk3036_cpuclk_rates));
-@@ -489,6 +494,8 @@ static void __init rk3036_clk_init(struct device_node *np)
- 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
--	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
-+	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL);
-+
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3036_cru, "rockchip,rk3036-cru", rk3036_clk_init);
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 7f7444c..adb08b2 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -750,18 +750,23 @@ static const char *const rk3188_critical_clocks[] __initconst = {
- 	"pclk_peri",
- };
- 
--static void __init rk3188_common_clk_init(struct device_node *np)
-+static struct rockchip_clk_provider *__init rk3188_common_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	void __iomem *reg_base;
- 	struct clk *clk;
- 
- 	reg_base = of_iomap(np, 0);
- 	if (!reg_base) {
- 		pr_err("%s: could not map cru region\n", __func__);
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: rockchip clk init failed\n", __func__);
-+		return ERR_PTR(-ENOMEM);
-+	}
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -774,45 +779,61 @@ static void __init rk3188_common_clk_init(struct device_node *np)
- 		pr_warn("%s: could not register clock usb480m: %ld\n",
- 			__func__, PTR_ERR(clk));
- 
--	rockchip_clk_register_branches(common_clk_branches,
-+	rockchip_clk_register_branches(ctx, common_clk_branches,
- 				  ARRAY_SIZE(common_clk_branches));
- 
- 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
--	rockchip_register_restart_notifier(RK2928_GLB_SRST_FST, NULL);
-+	rockchip_register_restart_notifier(ctx, RK2928_GLB_SRST_FST, NULL);
-+
-+	return ctx;
- }
- 
- static void __init rk3066a_clk_init(struct device_node *np)
- {
--	rk3188_common_clk_init(np);
--	rockchip_clk_register_plls(rk3066_pll_clks,
-+	struct rockchip_clk_provider *ctx;
-+
-+	ctx = rk3188_common_clk_init(np);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: common clk init failed\n", __func__);
-+		return;
-+	}
-+
-+	rockchip_clk_register_plls(ctx, rk3066_pll_clks,
- 				   ARRAY_SIZE(rk3066_pll_clks),
- 				   RK3066_GRF_SOC_STATUS);
--	rockchip_clk_register_branches(rk3066a_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3066a_clk_branches,
- 				  ARRAY_SIZE(rk3066a_clk_branches));
--	rockchip_clk_register_armclk(ARMCLK, "armclk",
-+	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
- 			&rk3066_cpuclk_data, rk3066_cpuclk_rates,
- 			ARRAY_SIZE(rk3066_cpuclk_rates));
- 	rockchip_clk_protect_critical(rk3188_critical_clocks,
- 				      ARRAY_SIZE(rk3188_critical_clocks));
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3066a_cru, "rockchip,rk3066a-cru", rk3066a_clk_init);
- 
- static void __init rk3188a_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	struct clk *clk1, *clk2;
- 	unsigned long rate;
- 	int ret;
- 
--	rk3188_common_clk_init(np);
--	rockchip_clk_register_plls(rk3188_pll_clks,
-+	ctx = rk3188_common_clk_init(np);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: common clk init failed\n", __func__);
-+		return;
-+	}
-+
-+	rockchip_clk_register_plls(ctx, rk3188_pll_clks,
- 				   ARRAY_SIZE(rk3188_pll_clks),
- 				   RK3188_GRF_SOC_STATUS);
--	rockchip_clk_register_branches(rk3188_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3188_clk_branches,
- 				  ARRAY_SIZE(rk3188_clk_branches));
--	rockchip_clk_register_armclk(ARMCLK, "armclk",
-+	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 				  mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
- 				  &rk3188_cpuclk_data, rk3188_cpuclk_rates,
- 				  ARRAY_SIZE(rk3188_cpuclk_rates));
-@@ -836,6 +857,7 @@ static void __init rk3188a_clk_init(struct device_node *np)
- 
- 	rockchip_clk_protect_critical(rk3188_critical_clocks,
- 				      ARRAY_SIZE(rk3188_critical_clocks));
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3188a_cru, "rockchip,rk3188a-cru", rk3188a_clk_init);
- 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 981a502..3bf572e 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -623,6 +623,7 @@ static const char *const rk3228_critical_clocks[] __initconst = {
- 
- static void __init rk3228_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	void __iomem *reg_base;
- 	struct clk *clk;
- 
-@@ -632,7 +633,11 @@ static void __init rk3228_clk_init(struct device_node *np)
- 		return;
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: rockchip clk init failed\n", __func__);
-+		return;
-+	}
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -657,15 +662,15 @@ static void __init rk3228_clk_init(struct device_node *np)
- 		pr_warn("%s: could not register clock hclk_rkvdec_pre: %ld\n",
- 			__func__, PTR_ERR(clk));
- 
--	rockchip_clk_register_plls(rk3228_pll_clks,
-+	rockchip_clk_register_plls(ctx, rk3228_pll_clks,
- 				   ARRAY_SIZE(rk3228_pll_clks),
- 				   RK3228_GRF_SOC_STATUS0);
--	rockchip_clk_register_branches(rk3228_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3228_clk_branches,
- 				  ARRAY_SIZE(rk3228_clk_branches));
- 	rockchip_clk_protect_critical(rk3228_critical_clocks,
- 				      ARRAY_SIZE(rk3228_critical_clocks));
- 
--	rockchip_clk_register_armclk(ARMCLK, "armclk",
-+	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
- 			&rk3228_cpuclk_data, rk3228_cpuclk_rates,
- 			ARRAY_SIZE(rk3228_cpuclk_rates));
-@@ -673,6 +678,8 @@ static void __init rk3228_clk_init(struct device_node *np)
- 	rockchip_register_softrst(np, 9, reg_base + RK2928_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
--	rockchip_register_restart_notifier(RK3228_GLB_SRST_FST, NULL);
-+	rockchip_register_restart_notifier(ctx, RK3228_GLB_SRST_FST, NULL);
-+
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3228_cru, "rockchip,rk3228-cru", rk3228_clk_init);
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 984fc18..bc87146 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -878,6 +878,7 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
- 
- static void __init rk3288_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	struct clk *clk;
- 
- 	rk3288_cru_base = of_iomap(np, 0);
-@@ -886,7 +887,11 @@ static void __init rk3288_clk_init(struct device_node *np)
- 		return;
- 	}
- 
--	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: rockchip clk init failed\n", __func__);
-+		return;
-+	}
- 
- 	/* xin12m is created by an cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -912,17 +917,17 @@ static void __init rk3288_clk_init(struct device_node *np)
- 		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
- 			__func__, PTR_ERR(clk));
- 	else
--		rockchip_clk_add_lookup(clk, PCLK_WDT);
-+		rockchip_clk_add_lookup(ctx, clk, PCLK_WDT);
- 
--	rockchip_clk_register_plls(rk3288_pll_clks,
-+	rockchip_clk_register_plls(ctx, rk3288_pll_clks,
- 				   ARRAY_SIZE(rk3288_pll_clks),
- 				   RK3288_GRF_SOC_STATUS1);
--	rockchip_clk_register_branches(rk3288_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
- 				  ARRAY_SIZE(rk3288_clk_branches));
- 	rockchip_clk_protect_critical(rk3288_critical_clocks,
- 				      ARRAY_SIZE(rk3288_critical_clocks));
- 
--	rockchip_clk_register_armclk(ARMCLK, "armclk",
-+	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
- 			mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
- 			&rk3288_cpuclk_data, rk3288_cpuclk_rates,
- 			ARRAY_SIZE(rk3288_cpuclk_rates));
-@@ -931,8 +936,10 @@ static void __init rk3288_clk_init(struct device_node *np)
- 				  rk3288_cru_base + RK3288_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
--	rockchip_register_restart_notifier(RK3288_GLB_SRST_FST,
-+	rockchip_register_restart_notifier(ctx, RK3288_GLB_SRST_FST,
- 					   rk3288_clk_shutdown);
- 	register_syscore_ops(&rk3288_clk_syscore_ops);
-+
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index be0ede5..0b68338 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -831,6 +831,7 @@ static const char *const rk3368_critical_clocks[] __initconst = {
- 
- static void __init rk3368_clk_init(struct device_node *np)
- {
-+	struct rockchip_clk_provider *ctx;
- 	void __iomem *reg_base;
- 	struct clk *clk;
- 
-@@ -840,7 +841,11 @@ static void __init rk3368_clk_init(struct device_node *np)
- 		return;
- 	}
- 
--	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-+	if (IS_ERR(ctx)) {
-+		pr_err("%s: rockchip clk init failed\n", __func__);
-+		return;
-+	}
- 
- 	/* xin12m is created by a cru-internal divider */
- 	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
-@@ -866,22 +871,22 @@ static void __init rk3368_clk_init(struct device_node *np)
- 		pr_warn("%s: could not register clock pclk_wdt: %ld\n",
- 			__func__, PTR_ERR(clk));
- 	else
--		rockchip_clk_add_lookup(clk, PCLK_WDT);
-+		rockchip_clk_add_lookup(ctx, clk, PCLK_WDT);
- 
--	rockchip_clk_register_plls(rk3368_pll_clks,
-+	rockchip_clk_register_plls(ctx, rk3368_pll_clks,
- 				   ARRAY_SIZE(rk3368_pll_clks),
- 				   RK3368_GRF_SOC_STATUS0);
--	rockchip_clk_register_branches(rk3368_clk_branches,
-+	rockchip_clk_register_branches(ctx, rk3368_clk_branches,
- 				  ARRAY_SIZE(rk3368_clk_branches));
- 	rockchip_clk_protect_critical(rk3368_critical_clocks,
- 				      ARRAY_SIZE(rk3368_critical_clocks));
- 
--	rockchip_clk_register_armclk(ARMCLKB, "armclkb",
-+	rockchip_clk_register_armclk(ctx, ARMCLKB, "armclkb",
- 			mux_armclkb_p, ARRAY_SIZE(mux_armclkb_p),
- 			&rk3368_cpuclkb_data, rk3368_cpuclkb_rates,
- 			ARRAY_SIZE(rk3368_cpuclkb_rates));
- 
--	rockchip_clk_register_armclk(ARMCLKL, "armclkl",
-+	rockchip_clk_register_armclk(ctx, ARMCLKL, "armclkl",
- 			mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
- 			&rk3368_cpuclkl_data, rk3368_cpuclkl_rates,
- 			ARRAY_SIZE(rk3368_cpuclkl_rates));
-@@ -889,6 +894,8 @@ static void __init rk3368_clk_init(struct device_node *np)
- 	rockchip_register_softrst(np, 15, reg_base + RK3368_SOFTRST_CON(0),
- 				  ROCKCHIP_SOFTRST_HIWORD_MASK);
- 
--	rockchip_register_restart_notifier(RK3368_GLB_SRST_FST, NULL);
-+	rockchip_register_restart_notifier(ctx, RK3368_GLB_SRST_FST, NULL);
-+
-+	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3368_cru, "rockchip,rk3368-cru", rk3368_clk_init);
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index d9a0b5d..a1e9921 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -2,6 +2,9 @@
-  * Copyright (c) 2014 MundoReader S.L.
-  * Author: Heiko Stuebner <heiko@sntech.de>
-  *
-+ * Copyright (c) 2016 Rockchip Electronics Co. Ltd.
-+ * Author: Xing Zheng <zhengxing@rock-chips.com>
-+ *
-  * based on
-  *
-  * samsung/clk.c
-@@ -150,7 +153,8 @@ static int rockchip_clk_frac_notifier_cb(struct notifier_block *nb,
- 	return notifier_from_errno(ret);
- }
- 
--static struct clk *rockchip_clk_register_frac_branch(const char *name,
-+static struct clk *rockchip_clk_register_frac_branch(
-+		struct rockchip_clk_provider *ctx, const char *name,
- 		const char *const *parent_names, u8 num_parents,
- 		void __iomem *base, int muxdiv_offset, u8 div_flags,
- 		int gate_offset, u8 gate_shift, u8 gate_flags,
-@@ -243,7 +247,7 @@ static struct clk *rockchip_clk_register_frac_branch(const char *name,
- 		if (IS_ERR(mux_clk))
- 			return clk;
- 
--		rockchip_clk_add_lookup(mux_clk, child->id);
-+		rockchip_clk_add_lookup(ctx, mux_clk, child->id);
- 
- 		/* notifier on the fraction divider to catch rate changes */
- 		if (frac->mux_frac_idx >= 0) {
-@@ -260,66 +264,94 @@ static struct clk *rockchip_clk_register_frac_branch(const char *name,
- 	return clk;
- }
- 
--static DEFINE_SPINLOCK(clk_lock);
--static struct clk **clk_table;
--static void __iomem *reg_base;
--static struct clk_onecell_data clk_data;
--static struct device_node *cru_node;
--static struct regmap *grf;
--
--void __init rockchip_clk_init(struct device_node *np, void __iomem *base,
--			      unsigned long nr_clks)
-+struct rockchip_clk_provider *__init rockchip_clk_init(struct device_node *np,
-+			void __iomem *base, unsigned long nr_clks)
- {
--	reg_base = base;
--	cru_node = np;
--	grf = ERR_PTR(-EPROBE_DEFER);
-+	struct rockchip_clk_provider *ctx;
-+	struct clk **clk_table;
-+	int i;
-+
-+	ctx = kzalloc(sizeof(struct rockchip_clk_provider), GFP_KERNEL);
-+	if (!ctx) {
-+		pr_err("%s: Could not allocate clock provider context\n",
-+			__func__);
-+		return ERR_PTR(-ENOMEM);
-+	}
- 
- 	clk_table = kcalloc(nr_clks, sizeof(struct clk *), GFP_KERNEL);
--	if (!clk_table)
--		pr_err("%s: could not allocate clock lookup table\n", __func__);
-+	if (!clk_table) {
-+		pr_err("%s: Could not allocate clock lookup table\n",
-+			__func__);
-+		goto err_free;
-+	}
- 
--	clk_data.clks = clk_table;
--	clk_data.clk_num = nr_clks;
--	of_clk_add_provider(np, of_clk_src_onecell_get, &clk_data);
-+	for (i = 0; i < nr_clks; ++i)
-+		clk_table[i] = ERR_PTR(-ENOENT);
-+
-+	ctx->reg_base = base;
-+	ctx->clk_data.clks = clk_table;
-+	ctx->clk_data.clk_num = nr_clks;
-+	ctx->cru_node = np;
-+	ctx->grf = ERR_PTR(-EPROBE_DEFER);
-+	spin_lock_init(&ctx->lock);
-+
-+	return ctx;
-+
-+err_free:
-+	kfree(ctx);
-+	return ERR_PTR(-ENOMEM);
-+}
-+
-+void __init rockchip_clk_of_add_provider(struct device_node *np,
-+				struct rockchip_clk_provider *ctx)
-+{
-+	if (np) {
-+		if (of_clk_add_provider(np, of_clk_src_onecell_get,
-+					&ctx->clk_data))
-+			panic("could not register clk provider\n");
-+	}
- }
- 
--struct regmap *rockchip_clk_get_grf(void)
-+struct regmap *rockchip_clk_get_grf(struct rockchip_clk_provider *ctx)
- {
--	if (IS_ERR(grf))
--		grf = syscon_regmap_lookup_by_phandle(cru_node, "rockchip,grf");
--	return grf;
-+	if (IS_ERR(ctx->grf))
-+		ctx->grf = syscon_regmap_lookup_by_phandle(ctx->cru_node, "rockchip,grf");
-+	return ctx->grf;
- }
- 
--void rockchip_clk_add_lookup(struct clk *clk, unsigned int id)
-+void rockchip_clk_add_lookup(struct rockchip_clk_provider *ctx,
-+			     struct clk *clk, unsigned int id)
- {
--	if (clk_table && id)
--		clk_table[id] = clk;
-+	if (ctx->clk_data.clks && id)
-+		ctx->clk_data.clks[id] = clk;
- }
- 
--void __init rockchip_clk_register_plls(struct rockchip_pll_clock *list,
-+void __init rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
-+				struct rockchip_pll_clock *list,
- 				unsigned int nr_pll, int grf_lock_offset)
- {
- 	struct clk *clk;
- 	int idx;
- 
- 	for (idx = 0; idx < nr_pll; idx++, list++) {
--		clk = rockchip_clk_register_pll(list->type, list->name,
-+		clk = rockchip_clk_register_pll(ctx, list->type, list->name,
- 				list->parent_names, list->num_parents,
--				reg_base, list->con_offset, grf_lock_offset,
-+				list->con_offset, grf_lock_offset,
- 				list->lock_shift, list->mode_offset,
- 				list->mode_shift, list->rate_table,
--				list->pll_flags, &clk_lock);
-+				list->pll_flags);
- 		if (IS_ERR(clk)) {
- 			pr_err("%s: failed to register clock %s\n", __func__,
- 				list->name);
- 			continue;
- 		}
- 
--		rockchip_clk_add_lookup(clk, list->id);
-+		rockchip_clk_add_lookup(ctx, clk, list->id);
- 	}
- }
- 
- void __init rockchip_clk_register_branches(
-+				      struct rockchip_clk_provider *ctx,
- 				      struct rockchip_clk_branch *list,
- 				      unsigned int nr_clk)
- {
-@@ -335,56 +367,56 @@ void __init rockchip_clk_register_branches(
- 		case branch_mux:
- 			clk = clk_register_mux(NULL, list->name,
- 				list->parent_names, list->num_parents,
--				flags, reg_base + list->muxdiv_offset,
-+				flags, ctx->reg_base + list->muxdiv_offset,
- 				list->mux_shift, list->mux_width,
--				list->mux_flags, &clk_lock);
-+				list->mux_flags, &ctx->lock);
- 			break;
- 		case branch_divider:
- 			if (list->div_table)
- 				clk = clk_register_divider_table(NULL,
- 					list->name, list->parent_names[0],
--					flags, reg_base + list->muxdiv_offset,
-+					flags, ctx->reg_base + list->muxdiv_offset,
- 					list->div_shift, list->div_width,
- 					list->div_flags, list->div_table,
--					&clk_lock);
-+					&ctx->lock);
- 			else
- 				clk = clk_register_divider(NULL, list->name,
- 					list->parent_names[0], flags,
--					reg_base + list->muxdiv_offset,
-+					ctx->reg_base + list->muxdiv_offset,
- 					list->div_shift, list->div_width,
--					list->div_flags, &clk_lock);
-+					list->div_flags, &ctx->lock);
- 			break;
- 		case branch_fraction_divider:
--			clk = rockchip_clk_register_frac_branch(list->name,
-+			clk = rockchip_clk_register_frac_branch(ctx, list->name,
- 				list->parent_names, list->num_parents,
--				reg_base, list->muxdiv_offset, list->div_flags,
-+				ctx->reg_base, list->muxdiv_offset, list->div_flags,
- 				list->gate_offset, list->gate_shift,
- 				list->gate_flags, flags, list->child,
--				&clk_lock);
-+				&ctx->lock);
- 			break;
- 		case branch_gate:
- 			flags |= CLK_SET_RATE_PARENT;
- 
- 			clk = clk_register_gate(NULL, list->name,
- 				list->parent_names[0], flags,
--				reg_base + list->gate_offset,
--				list->gate_shift, list->gate_flags, &clk_lock);
-+				ctx->reg_base + list->gate_offset,
-+				list->gate_shift, list->gate_flags, &ctx->lock);
- 			break;
- 		case branch_composite:
- 			clk = rockchip_clk_register_branch(list->name,
- 				list->parent_names, list->num_parents,
--				reg_base, list->muxdiv_offset, list->mux_shift,
-+				ctx->reg_base, list->muxdiv_offset, list->mux_shift,
- 				list->mux_width, list->mux_flags,
- 				list->div_shift, list->div_width,
- 				list->div_flags, list->div_table,
- 				list->gate_offset, list->gate_shift,
--				list->gate_flags, flags, &clk_lock);
-+				list->gate_flags, flags, &ctx->lock);
- 			break;
- 		case branch_mmc:
- 			clk = rockchip_clk_register_mmc(
- 				list->name,
- 				list->parent_names, list->num_parents,
--				reg_base + list->muxdiv_offset,
-+				ctx->reg_base + list->muxdiv_offset,
- 				list->div_shift
- 			);
- 			break;
-@@ -392,8 +424,8 @@ void __init rockchip_clk_register_branches(
- 			clk = rockchip_clk_register_inverter(
- 				list->name, list->parent_names,
- 				list->num_parents,
--				reg_base + list->muxdiv_offset,
--				list->div_shift, list->div_flags, &clk_lock);
-+				ctx->reg_base + list->muxdiv_offset,
-+				list->div_shift, list->div_flags, &ctx->lock);
- 			break;
- 		}
- 
-@@ -410,11 +442,12 @@ void __init rockchip_clk_register_branches(
- 			continue;
- 		}
- 
--		rockchip_clk_add_lookup(clk, list->id);
-+		rockchip_clk_add_lookup(ctx, clk, list->id);
- 	}
- }
- 
--void __init rockchip_clk_register_armclk(unsigned int lookup_id,
-+void __init rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
-+			unsigned int lookup_id,
- 			const char *name, const char *const *parent_names,
- 			u8 num_parents,
- 			const struct rockchip_cpuclk_reg_data *reg_data,
-@@ -424,15 +457,15 @@ void __init rockchip_clk_register_armclk(unsigned int lookup_id,
- 	struct clk *clk;
- 
- 	clk = rockchip_clk_register_cpuclk(name, parent_names, num_parents,
--					   reg_data, rates, nrates, reg_base,
--					   &clk_lock);
-+					   reg_data, rates, nrates, ctx->reg_base,
-+					   &ctx->lock);
- 	if (IS_ERR(clk)) {
- 		pr_err("%s: failed to register clock %s: %ld\n",
- 		       __func__, name, PTR_ERR(clk));
- 		return;
- 	}
- 
--	rockchip_clk_add_lookup(clk, lookup_id);
-+	rockchip_clk_add_lookup(ctx, clk, lookup_id);
- }
- 
- void __init rockchip_clk_protect_critical(const char *const clocks[],
-@@ -449,6 +482,7 @@ void __init rockchip_clk_protect_critical(const char *const clocks[],
- 	}
- }
- 
-+static void __iomem *rst_base;
- static unsigned int reg_restart;
- static void (*cb_restart)(void);
- static int rockchip_restart_notify(struct notifier_block *this,
-@@ -457,7 +491,7 @@ static int rockchip_restart_notify(struct notifier_block *this,
- 	if (cb_restart)
- 		cb_restart();
- 
--	writel(0xfdb9, reg_base + reg_restart);
-+	writel(0xfdb9, rst_base + reg_restart);
- 	return NOTIFY_DONE;
- }
- 
-@@ -466,10 +500,12 @@ static struct notifier_block rockchip_restart_handler = {
- 	.priority = 128,
- };
- 
--void __init rockchip_register_restart_notifier(unsigned int reg, void (*cb)(void))
-+void __init rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
-+					       unsigned int reg, void (*cb)(void))
- {
- 	int ret;
- 
-+	rst_base = ctx->reg_base;
- 	reg_restart = reg;
- 	cb_restart = cb;
- 	ret = register_restart_handler(&rockchip_restart_handler);
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index ff8bd23..658de63 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -27,6 +27,7 @@
- #define CLK_ROCKCHIP_CLK_H
- 
- #include <linux/io.h>
-+#include <linux/clk-provider.h>
- 
- struct clk;
- 
-@@ -127,6 +128,20 @@ enum rockchip_pll_type {
- 	.nb = _nb,						\
- }
- 
-+/**
-+ * struct rockchip_clk_provider: information about clock provider
-+ * @reg_base: virtual address for the register base.
-+ * @clk_data: holds clock related data like clk* and number of clocks.
-+ * @lock: maintains exclusion between callbacks for a given clock-provider.
-+ */
-+struct rockchip_clk_provider {
-+	void __iomem *reg_base;
-+	struct clk_onecell_data clk_data;
-+	struct device_node *cru_node;
-+	struct regmap *grf;
-+	spinlock_t lock;
-+};
-+
- struct rockchip_pll_rate_table {
- 	unsigned long rate;
- 	unsigned int nr;
-@@ -194,12 +209,13 @@ struct rockchip_pll_clock {
- 		.rate_table	= _rtable,				\
- 	}
- 
--struct clk *rockchip_clk_register_pll(enum rockchip_pll_type pll_type,
-+struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
-+		enum rockchip_pll_type pll_type,
- 		const char *name, const char *const *parent_names,
--		u8 num_parents, void __iomem *base, int con_offset,
--		int grf_lock_offset, int lock_shift, int reg_mode,
--		int mode_shift, struct rockchip_pll_rate_table *rate_table,
--		u8 clk_pll_flags, spinlock_t *lock);
-+		u8 num_parents, int con_offset, int grf_lock_offset,
-+		int lock_shift, int mode_offset, int mode_shift,
-+		struct rockchip_pll_rate_table *rate_table,
-+		u8 clk_pll_flags);
- 
- struct rockchip_cpuclk_clksel {
- 	int reg;
-@@ -508,21 +524,28 @@ struct rockchip_clk_branch {
- 		.div_flags	= if,				\
- 	}
- 
--void rockchip_clk_init(struct device_node *np, void __iomem *base,
--		       unsigned long nr_clks);
--struct regmap *rockchip_clk_get_grf(void);
--void rockchip_clk_add_lookup(struct clk *clk, unsigned int id);
--void rockchip_clk_register_branches(struct rockchip_clk_branch *clk_list,
-+struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
-+			void __iomem *base, unsigned long nr_clks);
-+void rockchip_clk_of_add_provider(struct device_node *np,
-+				struct rockchip_clk_provider *ctx);
-+struct regmap *rockchip_clk_get_grf(struct rockchip_clk_provider *ctx);
-+void rockchip_clk_add_lookup(struct rockchip_clk_provider *ctx,
-+			     struct clk *clk, unsigned int id);
-+void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
-+				    struct rockchip_clk_branch *list,
- 				    unsigned int nr_clk);
--void rockchip_clk_register_plls(struct rockchip_pll_clock *pll_list,
-+void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
-+				struct rockchip_pll_clock *pll_list,
- 				unsigned int nr_pll, int grf_lock_offset);
--void rockchip_clk_register_armclk(unsigned int lookup_id, const char *name,
-+void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
-+			unsigned int lookup_id, const char *name,
- 			const char *const *parent_names, u8 num_parents,
- 			const struct rockchip_cpuclk_reg_data *reg_data,
- 			const struct rockchip_cpuclk_rate_table *rates,
- 			int nrates);
- void rockchip_clk_protect_critical(const char *const clocks[], int nclocks);
--void rockchip_register_restart_notifier(unsigned int reg, void (*cb)(void));
-+void rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
-+					unsigned int reg, void (*cb)(void));
- 
- #define ROCKCHIP_SOFTRST_HIWORD_MASK	BIT(0)
- 
--- 
-1.7.9.5
 
 
+On 12/01/16 12:31, Andy Yan wrote:
+> This driver parse the reboot commands like "reboot loader"
+> and "reboot recovery" to get a boot mode described in the
+> device tree , then call the write interfae to store the boot
+> mode in some persistent storage  like special register or ram,
+> which can be read by the bootloader after system reboot, then
+> the bootloader can take different action according to the mode
+> stored.
+>
+> This is commonly used on Android based devices, which in order
+> to reboot the device into fastboot or recovery mode.
+>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>
+> ---
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+>
+> Changes in v2:
+> - move to dir drivers/power/reset/
+> - make syscon-reboot-mode a generic driver
+>
+> Changes in v1:
+> - fix the embarrassed compile warning
+> - correct the maskrom magic number
+> - check for the normal reboot
+>
+>   drivers/power/reset/Kconfig              |  16 +++++
+>   drivers/power/reset/Makefile             |   2 +
+>   drivers/power/reset/reboot-mode.c        | 100 +++++++++++++++++++++++++++++++
+>   drivers/power/reset/reboot-mode.h        |   6 ++
+>   drivers/power/reset/syscon-reboot-mode.c |  62 +++++++++++++++++++
+>   5 files changed, 186 insertions(+)
+>   create mode 100644 drivers/power/reset/reboot-mode.c
+>   create mode 100644 drivers/power/reset/reboot-mode.h
+>   create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+>
+> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
+> index 1131cf7..2e6d873 100644
+> --- a/drivers/power/reset/Kconfig
+> +++ b/drivers/power/reset/Kconfig
+> @@ -173,5 +173,21 @@ config POWER_RESET_ZX
+>   	help
+>   	  Reboot support for ZTE SoCs.
+>
+> +config REBOOT_MODE
+> +	tristate
+> +	depends on OF
+> +	help
+> +	 This driver will help to pass the system reboot mode
+> +	 to bootloader
+> +
+> +config SYSCON_REBOOT_MODE
+> +	bool "Generic SYSCON regmap reboot mode driver"
+> +	select REBOOT_MODE
+> +	help
+> +	 Say y here will enable reboot mode driver. This will
+> +	 get reboot mode arguments and store it in SYSCON mapped
+> +	 register, then the bootloader can read it to take different
+> +	 action according to the mode.
+> +
+>   endif
+>
+> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
+> index 096fa67..a63865b 100644
+> --- a/drivers/power/reset/Makefile
+> +++ b/drivers/power/reset/Makefile
+> @@ -20,3 +20,5 @@ obj-$(CONFIG_POWER_RESET_SYSCON) += syscon-reboot.o
+>   obj-$(CONFIG_POWER_RESET_SYSCON_POWEROFF) += syscon-poweroff.o
+>   obj-$(CONFIG_POWER_RESET_RMOBILE) += rmobile-reset.o
+>   obj-$(CONFIG_POWER_RESET_ZX) += zx-reboot.o
+> +obj-$(CONFIG_REBOOT_MODE) += reboot-mode.o
+> +obj-$(CONFIG_SYSCON_REBOOT_MODE) += syscon-reboot-mode.o
+> diff --git a/drivers/power/reset/reboot-mode.c b/drivers/power/reset/reboot-mode.c
+> new file mode 100644
+> index 0000000..92b7b4d
+> --- /dev/null
+> +++ b/drivers/power/reset/reboot-mode.c
+> @@ -0,0 +1,100 @@
+> +/*
+> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +#include <linux/device.h>
+> +#include <linux/init.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/reboot.h>
+> +#include "reboot-mode.h"
+> +
+> +struct mode_info {
+> +	const char *mode;
+> +	int magic;
+> +	struct list_head list;
+> +};
+> +
+> +struct reboot_mode_driver {
+> +	struct list_head head;
+> +	int (*write)(int magic);
+> +	struct notifier_block reboot_notifier;
+> +};
+> +
+> +static int get_reboot_mode_magic(struct reboot_mode_driver *reboot,
+> +				 const char *cmd)
+> +{
+> +	const char *normal = "normal";
+> +	int magic = 0;
+> +	struct mode_info *info;
+> +
+> +	if (!cmd)
+> +		cmd = normal;
+> +
+> +	list_for_each_entry(info, &reboot->head, list) {
+> +		if (!strcmp(info->mode, cmd)) {
+> +			magic = info->magic;
+> +			break;
+> +		}
+> +	}
+> +
+> +	return magic;
+> +}
+> +
+> +static int reboot_mode_notify(struct notifier_block *this,
+> +			      unsigned long mode, void *cmd)
+> +{
+> +	struct reboot_mode_driver *reboot;
+> +	int magic;
+> +
+> +	reboot = container_of(this, struct reboot_mode_driver, reboot_notifier);
+> +	magic = get_reboot_mode_magic(reboot, cmd);
+> +	if (magic)
+> +		reboot->write(magic);
+> +
+> +	return NOTIFY_DONE;
+> +}
+> +
+> +int reboot_mode_register(struct device *dev, int (*write)(int))
+> +{
+> +	struct reboot_mode_driver *reboot;
+> +	struct mode_info *info;
+> +	struct device_node *child;
+> +	int ret;
+> +
+> +	reboot = devm_kzalloc(dev, sizeof(*reboot), GFP_KERNEL);
+> +	if (!reboot)
+> +		return -ENOMEM;
+> +
+> +	reboot->write = write;
+> +	INIT_LIST_HEAD(&reboot->head);
+> +	for_each_child_of_node(dev->of_node, child) {
+> +		info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+> +		if (!info)
+> +			return -ENOMEM;
+> +		info->mode = of_get_property(child, "linux,mode", NULL);
+> +		if (of_property_read_u32(child, "loader,magic", &info->magic)) {
+> +			dev_err(dev, "reboot mode %s without magic number\n",
+> +				info->mode);
+> +			devm_kfree(dev, info);
+> +			continue;
+> +		}
+> +		list_add_tail(&info->list, &reboot->head);
+> +	}
+> +	reboot->reboot_notifier.notifier_call = reboot_mode_notify;
+> +	ret = register_reboot_notifier(&reboot->reboot_notifier);
+> +	if (ret)
+> +		dev_err(dev, "can't register reboot notifier\n");
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(reboot_mode_register);
+> +
+> +MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com");
+> +MODULE_DESCRIPTION("System reboot mode driver");
+> +MODULE_LICENSE("GPL v2");
+> diff --git a/drivers/power/reset/reboot-mode.h b/drivers/power/reset/reboot-mode.h
+> new file mode 100644
+> index 0000000..76646e7
+> --- /dev/null
+> +++ b/drivers/power/reset/reboot-mode.h
+> @@ -0,0 +1,6 @@
+> +#ifndef __REBOOT_MODE_H__
+> +#define __REBOOT_MODE_H__
+> +
+> +extern int reboot_mode_register(struct device *dev, int (*write)(int));
+> +
+> +#endif
+> diff --git a/drivers/power/reset/syscon-reboot-mode.c b/drivers/power/reset/syscon-reboot-mode.c
+> new file mode 100644
+> index 0000000..b9370f3
+> --- /dev/null
+> +++ b/drivers/power/reset/syscon-reboot-mode.c
+> @@ -0,0 +1,62 @@
+> +/*
+> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +#include <linux/init.h>
+> +#include <linux/module.h>
+> +#include <linux/kernel.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/reboot.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+> +#include "reboot-mode.h"
+> +
+> +static struct regmap *map;
+> +static u32 offset;
+> +
+> +static int syscon_reboot_mode_write(int magic)
+> +{
+> +	regmap_write(map, offset, magic);
+> +
+> +	return 0;
+> +}
+> +
+> +static int syscon_reboot_mode_probe(struct platform_device *pdev)
+> +{
+> +	int ret;
+> +
+> +	map = syscon_node_to_regmap(pdev->dev.parent->of_node);
+> +	if (IS_ERR(map))
+> +		return PTR_ERR(map);
+> +	if (of_property_read_u32(pdev->dev.of_node, "offset", &offset))
+> +		return -EINVAL;
+> +	ret = reboot_mode_register(&pdev->dev, syscon_reboot_mode_write);
+> +	if (ret)
+> +		dev_err(&pdev->dev, "can't register reboot mode\n");
+> +
+> +	return ret;
+> +}
+> +
+> +static const struct of_device_id syscon_reboot_mode_of_match[] = {
+> +	{ .compatible = "syscon-reboot-mode" },
+> +	{}
+> +};
+> +
+> +static struct platform_driver syscon_reboot_mode_driver = {
+> +	.probe = syscon_reboot_mode_probe,
+> +	.driver = {
+> +		.name = "syscon-reboot-mode",
+> +		.of_match_table = syscon_reboot_mode_of_match,
+> +	},
+> +};
+> +module_platform_driver(syscon_reboot_mode_driver);
+> +
+> +MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com");
+> +MODULE_DESCRIPTION("SYSCON reboot mode driver");
+> +MODULE_LICENSE("GPL v2");
+>
