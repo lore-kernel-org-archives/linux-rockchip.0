@@ -1,55 +1,91 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] drm/rockchip: respect CONFIG_DRM_FBDEV_EMULATION
-Date: Thu, 21 Jan 2016 13:53:46 +0000
-Message-ID: <1453384426-32617-1-git-send-email-john@metanate.com>
+From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v3 3/5] soc: rockchip: add reboot notifier driver
+Date: Thu, 21 Jan 2016 17:20:37 +0100
+Message-ID: <20160121162035.GG647@ulmo.nvidia.com>
+References: <1447840044-19689-1-git-send-email-andy.yan@rock-chips.com>
+ <15127971.1juVbocOjP@wuerfel>
+ <20151228092054.GA29195@ulmo.nvidia.com>
+ <2250962.OgUpqMgY4k@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ulDeV4rPMk/y39in"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2250962.OgUpqMgY4k@wuerfel>
+Content-Disposition: inline
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SWYgRFJNX0ZCREVWX0VNVUxBVElPTiBpcyBub3Qgc2VsZWN0ZWQgaW4gdGhlIGNvbmZpZyB0aGVu
-IHdlIHNob3VsZCBub3QKc2V0dXAgYSBmcmFtZWJ1ZmZlciBjb25zb2xlLgoKU2lnbmVkLW9mZi1i
-eTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgfCAgMyArKy0KIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaCB8IDExICsrKysrKysrKysrCiAyIGZpbGVzIGNo
-YW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-TWFrZWZpbGUKaW5kZXggYTRlMDNiYy4uZjZhODA5YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL01ha2VmaWxlCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtl
-ZmlsZQpAQCAtMiw4ICsyLDkgQEAKICMgTWFrZWZpbGUgZm9yIHRoZSBkcm0gZGV2aWNlIGRyaXZl
-ci4gIFRoaXMgZHJpdmVyIHByb3ZpZGVzIHN1cHBvcnQgZm9yIHRoZQogIyBEaXJlY3QgUmVuZGVy
-aW5nIEluZnJhc3RydWN0dXJlIChEUkkpIGluIFhGcmVlODYgNC4xLjAgYW5kIGhpZ2hlci4KIAot
-cm9ja2NoaXBkcm0teSA6PSByb2NrY2hpcF9kcm1fZHJ2Lm8gcm9ja2NoaXBfZHJtX2ZiLm8gcm9j
-a2NoaXBfZHJtX2ZiZGV2Lm8gXAorcm9ja2NoaXBkcm0teSA6PSByb2NrY2hpcF9kcm1fZHJ2Lm8g
-cm9ja2NoaXBfZHJtX2ZiLm8gXAogCQlyb2NrY2hpcF9kcm1fZ2VtLm8gcm9ja2NoaXBfZHJtX3Zv
-cC5vCityb2NrY2hpcGRybS0kKENPTkZJR19EUk1fRkJERVZfRU1VTEFUSU9OKSArPSByb2NrY2hp
-cF9kcm1fZmJkZXYubwogCiBvYmotJChDT05GSUdfUk9DS0NISVBfRFdfSERNSSkgKz0gZHdfaGRt
-aS1yb2NrY2hpcC5vCiBvYmotJChDT05GSUdfUk9DS0NISVBfRFdfTUlQSV9EU0kpICs9IGR3LW1p
-cGktZHNpLm8KZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZmJkZXYuaCBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYu
-aAppbmRleCA1MDQzMmU5Li43MzcxOGM1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2ZiZGV2LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV9mYmRldi5oCkBAIC0xNSw3ICsxNSwxOCBAQAogI2lmbmRlZiBfUk9DS0NI
-SVBfRFJNX0ZCREVWX0gKICNkZWZpbmUgX1JPQ0tDSElQX0RSTV9GQkRFVl9ICiAKKyNpZmRlZiBD
-T05GSUdfRFJNX0ZCREVWX0VNVUxBVElPTgogaW50IHJvY2tjaGlwX2RybV9mYmRldl9pbml0KHN0
-cnVjdCBkcm1fZGV2aWNlICpkZXYpOwogdm9pZCByb2NrY2hpcF9kcm1fZmJkZXZfZmluaShzdHJ1
-Y3QgZHJtX2RldmljZSAqZGV2KTsKKyNlbHNlCitzdGF0aWMgaW5saW5lIGludCByb2NrY2hpcF9k
-cm1fZmJkZXZfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2KQoreworCXJldHVybiAwOworfQor
-CitzdGF0aWMgaW5saW5lIHZvaWQgcm9ja2NoaXBfZHJtX2ZiZGV2X2Zpbmkoc3RydWN0IGRybV9k
-ZXZpY2UgKmRldikKK3sKK30KKyNlbmRpZgogCiAjZW5kaWYgLyogX1JPQ0tDSElQX0RSTV9GQkRF
-Vl9IICovCi0tIAoyLjcuMC4yMjYuZ2ZlOTg2ZmUKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+--ulDeV4rPMk/y39in
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 28, 2015 at 04:35:46PM +0100, Arnd Bergmann wrote:
+> On Monday 28 December 2015 10:20:56 Thierry Reding wrote:
+> > > > > HTC apparently uses a separate RAM area to pass the reboot reason,
+> > > > > and they have a driver to store that, which is separate from the
+> > > > > driver that they use for actually rebooting the machine.
+> > > >=20
+> > > > I wasn't very clear, but the PMC_SCRATCH0 register is used to store=
+ the
+> > > > reset reason. It supports the recovery mode, which I think is reall=
+y an
+> > > > Android thing, "bootloader" will typically cause the bootloader not=
+ to
+> > > > boot anything, and "forced-recovery" will go into a recovery mode t=
+hat
+> > > > is used to bootstrap the device (usually by uploading a "miniloader"
+> > > > that initializes RAM, downloads a bootloader for booting or flashin=
+g an
+> > > > operating system, ...).
+> > > >=20
+> > > > The write that resets the SoC is to a different register.
+> > >=20
+> > > So is this scratch register interpreted by some maskrom code, or by c=
+ode that
+> > > can be provided by the OEM?
+> >=20
+> > My understanding is that its interpreted both by what's called BootROM
+> > on Tegra (I guess that's what you call "maskrom code") and the system's
+> > bootloader. The BootROM cannot typically be replaced by the OEM, but it
+> > is quite typical for the bootloader to differ between devices.
+>=20
+> Ok, so not maskrom (which would not be OEM specific, but hardcoded for
+> the chip) but rather some form of PROM. This means we can only guess
+> that all OEMs use the same protocol but in theory someone could have
+> implemented an incompatible BootROM, but it's also possible that HTC
+> just ignore the register entirely and implement the same thing separately.
+
+I wasn't being clear, the BootROM is hardcoded for the chip, I'm not
+aware of a way to replace it once the chip's taped out.
+
+Thierry
+
+--ulDeV4rPMk/y39in
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJWoQVTAAoJEN0jrNd/PrOhrTUQAJ6jgKk7HnaFcXXrFjxoSrUA
+Oswvi3LQav1rsFNVKp3vC/NUkdgZJVcl2Qr8AluGtJFvCqZxI0AQfCbuNbEtB/dq
+Fa/wPTenfl0eWJkSyUdxkW6OWkSqMobxZ4pXkJ+saW3ixjLs0/2mArsh1/RjPC3b
+lgIfII5j8rxRIZi8RdSiPzPIWc1+w+3bZhkhW52qpmd9q4o7yrhbzRofNDevDg39
+ELkTPUmm1FyEwTYDbQ9rc7YY/1Nx3rBOTEct0Y76sU0OdRbeykNkJYlNZkL47/E3
+omR2V+9LEMUVIOuEyG0iOzaKmBU0VtO5v5LSqbduRirwX196pSlSBR9A9xqnaa1q
+5ha3aKIbVaeRKSSE0xCAoJJyyXKuclOgEvvla10HsgBuI0V3zzFbJJFCjN+o146c
+eos5VvmakQrbam+kwVyARuME8RCIS/1C6Xbq/wYACFHAtYA0oleLUe/7W2ZgTEoE
+bojfEI8saWOTgML6IQq+lpHQQZSKBodv7EJN5YkGkn4L9kn5je7NXUp2YRtWp6ow
+gjNL7qhqgfc66wOqHuXJmsiUwZ1eZM1RgHTzmgAFrksH/9xbVLI5cpuhxVhNNX8N
+pB9JqSEuzqC0idU0hwhVebxnIfWYT5J2FWOkfFcYhz8V1uv+bT+4xUkkw8Ys73ww
+qoLvb0VT53+agu6EIYD1
+=GaH6
+-----END PGP SIGNATURE-----
+
+--ulDeV4rPMk/y39in--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
