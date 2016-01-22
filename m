@@ -1,114 +1,53 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 21/21] usb: dwc2: host: If using uframe scheduler,
- end splits better
-Date: Fri, 22 Jan 2016 10:18:56 -0800
-Message-ID: <1453486736-15358-22-git-send-email-dianders@chromium.org>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 2/9] dt/bindings: arm-pl330: add description of arm,
+ pl330-broken-no-flushp
+Date: Fri, 22 Jan 2016 16:29:24 -0600
+Message-ID: <20160122222924.GA21881@rob-hp-laptop>
+References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
+ <1453460812-8498-3-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453486736-15358-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1453460812-8498-3-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The microframe scheduler figured out exactly how many transfers we need
-for a split transaction.  Let's use this knowledge to know when to end
-things.
+On Fri, Jan 22, 2016 at 07:06:45PM +0800, Caesar Wang wrote:
+> From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> This patch adds the "arm, pl330-broken-no-flushp" for arm-pl330.
+> 
+> Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> ---
+> 
+> Changes in v7:
+> - modify the subject to be better match.
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3:
+> - add Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> Changes in v2:
+> - add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
+> Changes in v1:
+> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+>   by Krzysztof.
+> 
+>  Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-Without this I found that certain devices would just keep responding
-with tons of NYET resonses on their INT_IN endpoint.  These would just
-keep going and going and eventually we'd decide to terminate the
-transfer (because the whole frame changed), but by that time the
-scheduler would decide that we "missed" the start of the next transfer.
-I can also imagine that if we blow past the end of our scheduled time we
-may mess up other things that were scheduled to happen.
-
-No known test cases are improved by this patch except that the scheduler
-code doesn't yell about MISSES constantly anymore.
-
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
-Changes in v5: None
-Changes in v4:
-- If using uframe scheduler, end splits better new for v4.
-
-Changes in v3: None
-Changes in v2: None
-
- drivers/usb/dwc2/hcd_intr.c | 48 +++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 42 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 1875e4590a3c..2519e1bdad1a 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -1353,14 +1353,50 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
- 
- 		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
- 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC) {
--			int frnum = dwc2_hcd_get_frame_number(hsotg);
-+			struct dwc2_qh *qh = chan->qh;
-+			bool past_end;
-+
-+			if (hsotg->core_params->uframe_sched <= 0) {
-+				int frnum = dwc2_hcd_get_frame_number(hsotg);
-+
-+				/* Don't have num_hs_transfers; simple logic */
-+				past_end = dwc2_full_frame_num(frnum) !=
-+				     dwc2_full_frame_num(qh->next_active_frame);
-+			} else {
-+				int end_frnum;
- 
--			if (dwc2_full_frame_num(frnum) !=
--			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
- 				/*
--				 * No longer in the same full speed frame.
--				 * Treat this as a transaction error.
--				 */
-+				* Figure out the end frame based on schedule.
-+				*
-+				* We don't want to go on trying again and again
-+				* forever.  Let's stop when we've done all the
-+				* transfers that were scheduled.
-+				*
-+				* We're going to be comparing start_active_frame
-+				* and next_active_frame, both of which are 1
-+				* before the time the packet goes on the wire,
-+				* so that cancels out.  Basically if had 1
-+				* transfer and we saw 1 NYET then we're done.
-+				* We're getting a NYET here so if next >=
-+				* (start + num_transfers) we're done. The
-+				* complexity is that for all but ISOC_OUT we
-+				* skip one slot.
-+				*/
-+				end_frnum = dwc2_frame_num_inc(
-+					qh->start_active_frame,
-+					qh->num_hs_transfers);
-+
-+				if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
-+				    qh->ep_is_in)
-+					end_frnum =
-+					       dwc2_frame_num_inc(end_frnum, 1);
-+
-+				past_end = dwc2_frame_num_le(
-+					end_frnum, qh->next_active_frame);
-+			}
-+
-+			if (past_end) {
-+				/* Treat this as a transaction error. */
- #if 0
- 				/*
- 				 * Todo: Fix system performance so this can
--- 
-2.7.0.rc3.207.g0ac5344
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
