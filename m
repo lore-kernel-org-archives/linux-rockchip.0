@@ -1,74 +1,129 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v7 5/9] ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3xxx platform
-Date: Fri, 22 Jan 2016 19:06:48 +0800
-Message-ID: <1453460812-8498-6-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v7 1/9] dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev transmit
+Date: Fri, 22 Jan 2016 19:06:44 +0800
+Message-ID: <1453460812-8498-2-git-send-email-wxt@rock-chips.com>
 References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453460812-8498-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vinod.koul@intel.com>
+Cc: Sonny Rao <sonnyrao@chromium.org>, shawn.lin@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Boojin Kim <boojin.kim@samsung.com>, Addy Ke <addy.ke@rock-chips.com>, Olof Johansson <olof@lixom.net>, Caesar Wang <wxt@rock-chips.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Boojin Kim <boojin.kim@samsung.com>
 
-Pl330 integrated in rk3xxx platform doesn't support
-DMAFLUSHP function. So we add arm,pl330-broken-no-flushp quirk
-for it.
+This patch adds to support burst mode for dev-to-mem and
+mem-to-dev transmit.
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-cc: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Boojin Kim <boojin.kim@samsung.com>
+Signed-off-by: Addy Ke <addy.ke@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+cc: Heiko Stuebner <heiko@sntech.de>
+cc: Doug Anderson <dianders@chromium.org>
+cc: Olof Johansson <olof@lixom.net>
+
+Reviewed-by: Sonny Rao <sonnyrao@chromium.org>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
 ---
 
-Changes in v7: None
+Changes in v7:
+- As vinod comments, fix the subsystem name.
+
 Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+Changes in v5:
+- add Mark's tag for spi changes
+- remove unnecessary whitespace change
+- use switch statement for i2s quirk
+
+Changes in v4:
+- remove spi & i2s dts changes and query quirk from dmaengine API
+  suggeseted by Mark.
+- fix typo
+- Add dmaengine_get_quirk hook and implement it for pl330
+
+Changes in v3:
+- add Sunny's tag
+- add more rockchip drivers' changes in this patchset
+
+Changes in v2:
+- amend the author
+- reorder the patches suggested by Doug
+- add Reviewed-by: Doug Anderson <dianders@chromium.org> for
+  rk3288.dtsi patch and arm-pl330.txt patch
+
 Changes in v1:
 - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
   by Krzysztof.
+- add From original author.
+- remove Sunny's tag
 
- arch/arm/boot/dts/rk3xxx.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/dma/pl330.c | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index 99eeea7..0012049 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -80,6 +80,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA1>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 		};
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 17ee758..7cdf8d4 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -1141,10 +1141,13 @@ static inline int _ldst_devtomem(unsigned dry_run, u8 buf[],
+ 		const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
++	enum pl330_cond cond;
++
++	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
  
- 		dmac1_ns: dma-controller@2001c000 {
-@@ -90,6 +91,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA1>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 			status = "disabled";
- 		};
+ 	while (cyc--) {
+-		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
+-		off += _emit_LDP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
++		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
++		off += _emit_LDP(dry_run, &buf[off], cond, pxs->desc->peri);
+ 		off += _emit_ST(dry_run, &buf[off], ALWAYS);
+ 		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
+ 	}
+@@ -1156,11 +1159,14 @@ static inline int _ldst_memtodev(unsigned dry_run, u8 buf[],
+ 		const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
++	enum pl330_cond cond;
++
++	cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
  
-@@ -101,6 +103,7 @@
- 			#dma-cells = <1>;
- 			clocks = <&cru ACLK_DMA2>;
- 			clock-names = "apb_pclk";
-+			arm,pl330-broken-no-flushp;
- 		};
- 	};
+ 	while (cyc--) {
+-		off += _emit_WFP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
++		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+ 		off += _emit_LD(dry_run, &buf[off], ALWAYS);
+-		off += _emit_STP(dry_run, &buf[off], SINGLE, pxs->desc->peri);
++		off += _emit_STP(dry_run, &buf[off], cond, pxs->desc->peri);
+ 		off += _emit_FLUSHP(dry_run, &buf[off], pxs->desc->peri);
+ 	}
  
+@@ -1199,7 +1205,7 @@ static inline int _loop(unsigned dry_run, u8 buf[],
+ 	struct _arg_LPEND lpend;
+ 
+ 	if (*bursts == 1)
+-		return _bursts(dry_run, buf, pxs, 1);
++		return _bursts(pl330, dry_run, buf, pxs, 1);
+ 
+ 	/* Max iterations possible in DMALP is 256 */
+ 	if (*bursts >= 256*256) {
+@@ -2560,7 +2566,7 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
+ 
+ 		desc->rqtype = direction;
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = 1;
++		desc->rqcfg.brst_len = pch->burst_len;
+ 		desc->bytes_requested = period_len;
+ 		fill_px(&desc->px, dst, src, period_len);
+ 
+@@ -2705,7 +2711,7 @@ pl330_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
+ 		}
+ 
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = 1;
++		desc->rqcfg.brst_len = pch->burst_len;
+ 		desc->rqtype = direction;
+ 		desc->bytes_requested = sg_dma_len(sg);
+ 	}
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
