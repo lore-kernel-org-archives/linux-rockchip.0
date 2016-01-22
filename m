@@ -1,7 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 12/21] usb: dwc2: host: Rename some fields in struct dwc2_qh
-Date: Fri, 22 Jan 2016 10:18:47 -0800
-Message-ID: <1453486736-15358-13-git-send-email-dianders@chromium.org>
+Subject: [PATCH v5 18/21] usb: dwc2: host: Add
+ dwc2_hcd_get_future_frame_number() call
+Date: Fri, 22 Jan 2016 10:18:53 -0800
+Message-ID: <1453486736-15358-19-git-send-email-dianders@chromium.org>
 References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,468 +22,92 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This no-op change just does some renames to simplify a future patch.
+As we start getting more exact about our scheduling it's becoming more
+and more important to know exactly how far through the current frame we
+are.  This lets us make decisions about whether there's still time left
+to start a new transaction in the current frame.
 
-1. The "interval" field is renamed to "host_interval" to make it more
-   obvious that this interval may be 8 times the interval that the
-   device sees (if we're doing split transactions).  A future patch will
-   also add the "device_interval" field.
-2. The "usecs" field is renamed to "host_us" again to make it more
-   obvious that this is the time for the transaction as seen by the
-   host.  For split transactions the device may see a much longer
-   transaction time.  A future patch will also add "device_us".
-3. The "sched_frame" field is renamed to "next_active_frame".  The name
-   "sched_frame" kept confusing me because it felt like something more
-   permament (the QH's reservation or something).  The name
-   "next_active_frame" makes it more obvious that this field is
-   constantly changing.
+We'll add dwc2_hcd_get_future_frame_number() which will tell you what
+the frame number will be a certain number of microseconds (us) from
+now.  We can use this information to help decide if there's enough time
+left in the frame for a transaction that will take a certain duration.
+
+This is expected to be used by a future change ("usb: dwc2: host:
+Properly set even/odd frame").
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v5: None
 Changes in v4:
-- Rename some fields in struct dwc2_qh new for v4.
+- Add dwc2_hcd_get_future_frame_number() call new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/hcd.h       |  20 ++++----
- drivers/usb/dwc2/hcd_ddma.c  |  37 ++++++++-------
- drivers/usb/dwc2/hcd_intr.c  |  10 ++--
- drivers/usb/dwc2/hcd_queue.c | 107 ++++++++++++++++++++++---------------------
- 4 files changed, 92 insertions(+), 82 deletions(-)
+ drivers/usb/dwc2/core.h |  4 ++++
+ drivers/usb/dwc2/hcd.c  | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 79473ea35bd6..10c35585a2bd 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -236,10 +236,14 @@ enum dwc2_transaction_type {
-  * @do_split:           Full/low speed endpoint on high-speed hub requires split
-  * @td_first:           Index of first activated isochronous transfer descriptor
-  * @td_last:            Index of last activated isochronous transfer descriptor
-- * @usecs:              Bandwidth in microseconds per (micro)frame
-- * @interval:           Interval between transfers in (micro)frames
-- * @sched_frame:        (Micro)frame to initialize a periodic transfer.
-- *                      The transfer executes in the following (micro)frame.
-+ * @host_us:            Bandwidth in microseconds per transfer as seen by host
-+ * @host_interval:      Interval between transfers as seen by the host.  If
-+ *                      the host is high speed and the device is low speed this
-+ *                      will be 8 times device interval.
-+ * @next_active_frame:  (Micro)frame before we next need to put something on
-+ *                      the bus.  We'll move the qh to active here.  If the
-+ *                      host is in high speed mode this will be a uframe.  If
-+ *                      the host is in low speed mode this will be a full frame.
-  * @frame_usecs:        Internal variable used by the microframe scheduler
-  * @start_split_frame:  (Micro)frame at which last start split was initialized
-  * @ntd:                Actual number of transfer descriptors in a list
-@@ -272,9 +276,9 @@ struct dwc2_qh {
- 	u8 do_split;
- 	u8 td_first;
- 	u8 td_last;
--	u16 usecs;
--	u16 interval;
--	u16 sched_frame;
-+	u16 host_us;
-+	u16 host_interval;
-+	u16 next_active_frame;
- 	u16 frame_usecs[8];
- 	u16 start_split_frame;
- 	u16 ntd;
-@@ -651,7 +655,7 @@ static inline u16 dwc2_hcd_get_ep_bandwidth(struct dwc2_hsotg *hsotg,
- 		return 0;
- 	}
+diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+index 64d45a2053bb..52cbea28d0e9 100644
+--- a/drivers/usb/dwc2/core.h
++++ b/drivers/usb/dwc2/core.h
+@@ -1235,12 +1235,16 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
  
--	return qh->usecs;
-+	return qh->host_us;
+ #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+ extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
++extern int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us);
+ extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
+ extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
+ extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
++static inline int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg,
++						   int us)
++{ return 0; }
+ static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
+ static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index 03072d1fd44d..83dc92da10a0 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -1947,6 +1947,35 @@ int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ 	return (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
  }
  
- extern void dwc2_hcd_save_data_toggle(struct dwc2_hsotg *hsotg,
-diff --git a/drivers/usb/dwc2/hcd_ddma.c b/drivers/usb/dwc2/hcd_ddma.c
-index 16b261cfa92d..26b00270ca0b 100644
---- a/drivers/usb/dwc2/hcd_ddma.c
-+++ b/drivers/usb/dwc2/hcd_ddma.c
-@@ -81,7 +81,7 @@ static u16 dwc2_max_desc_num(struct dwc2_qh *qh)
- static u16 dwc2_frame_incr_val(struct dwc2_qh *qh)
- {
- 	return qh->dev_speed == USB_SPEED_HIGH ?
--	       (qh->interval + 8 - 1) / 8 : qh->interval;
-+	       (qh->host_interval + 8 - 1) / 8 : qh->host_interval;
- }
- 
- static int dwc2_desc_list_alloc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
-@@ -252,7 +252,7 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 	chan = qh->channel;
- 	inc = dwc2_frame_incr_val(qh);
- 	if (qh->ep_type == USB_ENDPOINT_XFER_ISOC)
--		i = dwc2_frame_list_idx(qh->sched_frame);
-+		i = dwc2_frame_list_idx(qh->next_active_frame);
- 	else
- 		i = 0;
- 
-@@ -278,13 +278,13 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		return;
- 
- 	chan->schinfo = 0;
--	if (chan->speed == USB_SPEED_HIGH && qh->interval) {
-+	if (chan->speed == USB_SPEED_HIGH && qh->host_interval) {
- 		j = 1;
- 		/* TODO - check this */
--		inc = (8 + qh->interval - 1) / qh->interval;
-+		inc = (8 + qh->host_interval - 1) / qh->host_interval;
- 		for (i = 0; i < inc; i++) {
- 			chan->schinfo |= j;
--			j = j << qh->interval;
-+			j = j << qh->host_interval;
- 		}
- 	} else {
- 		chan->schinfo = 0xff;
-@@ -431,7 +431,10 @@ static u16 dwc2_calc_starting_frame(struct dwc2_hsotg *hsotg,
- 
- 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 
--	/* sched_frame is always frame number (not uFrame) both in FS and HS! */
++int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us)
++{
++	u32 hprt = dwc2_readl(hsotg->regs + HPRT0);
++	u32 hfir = dwc2_readl(hsotg->regs + HFIR);
++	u32 hfnum = dwc2_readl(hsotg->regs + HFNUM);
++	unsigned int us_per_frame;
++	unsigned int frame_number;
++	unsigned int remaining;
++	unsigned int interval;
++	unsigned int phy_clks;
++
++	/* High speed has 125 us per (micro) frame; others are 1 ms per */
++	us_per_frame = (hprt & HPRT0_SPD_MASK) ? 1000 : 125;
++
++	/* Extract fields */
++	frame_number = (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
++	remaining = (hfnum & HFNUM_FRREM_MASK) >> HFNUM_FRREM_SHIFT;
++	interval = (hfir & HFIR_FRINT_MASK) >> HFIR_FRINT_SHIFT;
++
 +	/*
-+	 * next_active_frame is always frame number (not uFrame) both in FS
-+	 * and HS!
++	 * Number of phy clocks since the last tick of the frame number after
++	 * "us" has passed.
 +	 */
- 
- 	/*
- 	 * skip_frames is used to limit activated descriptors number
-@@ -514,13 +517,13 @@ static u16 dwc2_recalc_initial_desc_idx(struct dwc2_hsotg *hsotg,
- 		 */
- 		fr_idx_tmp = dwc2_frame_list_idx(frame);
- 		fr_idx = (FRLISTEN_64_SIZE +
--			  dwc2_frame_list_idx(qh->sched_frame) - fr_idx_tmp)
--			 % dwc2_frame_incr_val(qh);
-+			  dwc2_frame_list_idx(qh->next_active_frame) -
-+			  fr_idx_tmp) % dwc2_frame_incr_val(qh);
- 		fr_idx = (fr_idx + fr_idx_tmp) % FRLISTEN_64_SIZE;
- 	} else {
--		qh->sched_frame = dwc2_calc_starting_frame(hsotg, qh,
-+		qh->next_active_frame = dwc2_calc_starting_frame(hsotg, qh,
- 							   &skip_frames);
--		fr_idx = dwc2_frame_list_idx(qh->sched_frame);
-+		fr_idx = dwc2_frame_list_idx(qh->next_active_frame);
- 	}
- 
- 	qh->td_first = qh->td_last = dwc2_frame_to_desc_idx(qh, fr_idx);
-@@ -583,7 +586,7 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
- 	u16 next_idx;
- 
- 	idx = qh->td_last;
--	inc = qh->interval;
-+	inc = qh->host_interval;
- 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 	cur_idx = dwc2_frame_list_idx(hsotg->frame_number);
- 	next_idx = dwc2_desclist_idx_inc(qh->td_last, inc, qh->dev_speed);
-@@ -605,11 +608,11 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
- 		}
- 	}
- 
--	if (qh->interval) {
--		ntd_max = (dwc2_max_desc_num(qh) + qh->interval - 1) /
--				qh->interval;
-+	if (qh->host_interval) {
-+		ntd_max = (dwc2_max_desc_num(qh) + qh->host_interval - 1) /
-+				qh->host_interval;
- 		if (skip_frames && !qh->channel)
--			ntd_max -= skip_frames / qh->interval;
-+			ntd_max -= skip_frames / qh->host_interval;
- 	}
- 
- 	max_xfer_size = qh->dev_speed == USB_SPEED_HIGH ?
-@@ -1029,7 +1032,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
- 							  idx);
- 			if (rc < 0)
- 				return;
--			idx = dwc2_desclist_idx_inc(idx, qh->interval,
-+			idx = dwc2_desclist_idx_inc(idx, qh->host_interval,
- 						    chan->speed);
- 			if (!rc)
- 				continue;
-@@ -1039,7 +1042,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
- 
- 			/* rc == DWC2_CMPL_STOP */
- 
--			if (qh->interval >= 32)
-+			if (qh->host_interval >= 32)
- 				goto stop_scan;
- 
- 			qh->td_first = idx;
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 5d25a5ec9736..b54a0c41d34f 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -138,9 +138,11 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
- 	while (qh_entry != &hsotg->periodic_sched_inactive) {
- 		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
- 		qh_entry = qh_entry->next;
--		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
--			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, sch=%04x\n",
--				      qh, hsotg->frame_number, qh->sched_frame);
-+		if (dwc2_frame_num_le(qh->next_active_frame,
-+				      hsotg->frame_number)) {
-+			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, nxt=%04x\n",
-+				      qh, hsotg->frame_number,
-+				      qh->next_active_frame);
- 
- 			/*
- 			 * Move QH to the ready list to be executed next
-@@ -1350,7 +1352,7 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
- 			int frnum = dwc2_hcd_get_frame_number(hsotg);
- 
- 			if (dwc2_full_frame_num(frnum) !=
--			    dwc2_full_frame_num(chan->qh->sched_frame)) {
-+			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
- 				/*
- 				 * No longer in the same full speed frame.
- 				 * Treat this as a transaction error.
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index b9e4867e1afd..39f4de6279f8 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -78,7 +78,7 @@ static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		list_del_init(&qh->qh_list_entry);
- 
- 	/* Update claimed usecs per (micro)frame */
--	hsotg->periodic_usecs -= qh->usecs;
-+	hsotg->periodic_usecs -= qh->host_us;
- 
- 	if (hsotg->core_params->uframe_sched > 0) {
- 		int i;
-@@ -193,40 +193,40 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		int bytecount =
- 			dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
- 
--		qh->usecs = NS_TO_US(usb_calc_bus_time(qh->do_split ?
--				USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
--				qh->ep_type == USB_ENDPOINT_XFER_ISOC,
--				bytecount));
-+		qh->host_us = NS_TO_US(usb_calc_bus_time(qh->do_split ?
-+			      USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
-+			      qh->ep_type == USB_ENDPOINT_XFER_ISOC,
-+			      bytecount));
- 
- 		/* Ensure frame_number corresponds to the reality */
- 		hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 		/* Start in a slightly future (micro)frame */
--		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
-+		qh->next_active_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 						     SCHEDULE_SLOP);
--		qh->interval = urb->interval;
--		dwc2_sch_dbg(hsotg, "QH=%p init sch=%04x, fn=%04x, int=%#x\n",
--			     qh, qh->sched_frame, hsotg->frame_number,
--			     qh->interval);
-+		qh->host_interval = urb->interval;
-+		dwc2_sch_dbg(hsotg, "QH=%p init nxt=%04x, fn=%04x, int=%#x\n",
-+			     qh, qh->next_active_frame, hsotg->frame_number,
-+			     qh->host_interval);
- #if 0
- 		/* Increase interrupt polling rate for debugging */
- 		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
--			qh->interval = 8;
-+			qh->host_interval = 8;
- #endif
- 		hprt = dwc2_readl(hsotg->regs + HPRT0);
- 		prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
- 		if (prtspd == HPRT0_SPD_HIGH_SPEED &&
- 		    (dev_speed == USB_SPEED_LOW ||
- 		     dev_speed == USB_SPEED_FULL)) {
--			qh->interval *= 8;
--			qh->sched_frame |= 0x7;
--			qh->start_split_frame = qh->sched_frame;
-+			qh->host_interval *= 8;
-+			qh->next_active_frame |= 0x7;
-+			qh->start_split_frame = qh->next_active_frame;
- 			dwc2_sch_dbg(hsotg,
--				     "QH=%p init*8 sch=%04x, fn=%04x, int=%#x\n",
--				     qh, qh->sched_frame, hsotg->frame_number,
--				     qh->interval);
-+				     "QH=%p init*8 nxt=%04x, fn=%04x, int=%#x\n",
-+				     qh, qh->next_active_frame,
-+				     hsotg->frame_number, qh->host_interval);
- 
- 		}
--		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
-+		dev_dbg(hsotg->dev, "interval=%d\n", qh->host_interval);
- 	}
- 
- 	dev_vdbg(hsotg->dev, "DWC OTG HCD QH Initialized\n");
-@@ -277,9 +277,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 
- 	if (qh->ep_type == USB_ENDPOINT_XFER_INT) {
- 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - usecs = %d\n",
--			 qh->usecs);
-+			 qh->host_us);
- 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - interval = %d\n",
--			 qh->interval);
-+			 qh->host_interval);
- 	}
- }
- 
-@@ -404,19 +404,19 @@ static int dwc2_check_periodic_bandwidth(struct dwc2_hsotg *hsotg,
- 		 * High speed mode
- 		 * Max periodic usecs is 80% x 125 usec = 100 usec
- 		 */
--		max_claimed_usecs = 100 - qh->usecs;
-+		max_claimed_usecs = 100 - qh->host_us;
- 	} else {
- 		/*
- 		 * Full speed mode
- 		 * Max periodic usecs is 90% x 1000 usec = 900 usec
- 		 */
--		max_claimed_usecs = 900 - qh->usecs;
-+		max_claimed_usecs = 900 - qh->host_us;
- 	}
- 
- 	if (hsotg->periodic_usecs > max_claimed_usecs) {
- 		dev_err(hsotg->dev,
- 			"%s: already claimed usecs %d, required usecs %d\n",
--			__func__, hsotg->periodic_usecs, qh->usecs);
-+			__func__, hsotg->periodic_usecs, qh->host_us);
- 		status = -ENOSPC;
- 	}
- 
-@@ -443,7 +443,7 @@ void dwc2_hcd_init_usecs(struct dwc2_hsotg *hsotg)
- 
- static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
++	phy_clks = (interval - remaining) +
++		   DIV_ROUND_UP(interval * us, us_per_frame);
++
++	return dwc2_frame_num_inc(frame_number, phy_clks / interval);
++}
++
+ int dwc2_hcd_is_b_host(struct dwc2_hsotg *hsotg)
  {
--	unsigned short utime = qh->usecs;
-+	unsigned short utime = qh->host_us;
- 	int i;
- 
- 	for (i = 0; i < 8; i++) {
-@@ -462,7 +462,7 @@ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-  */
- static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
--	unsigned short utime = qh->usecs;
-+	unsigned short utime = qh->host_us;
- 	unsigned short xtime;
- 	int t_left;
- 	int i;
-@@ -608,11 +608,11 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 
- 			/* Set the new frame up */
- 			if (frame >= 0) {
--				qh->sched_frame &= ~0x7;
--				qh->sched_frame |= (frame & 7);
-+				qh->next_active_frame &= ~0x7;
-+				qh->next_active_frame |= (frame & 7);
- 				dwc2_sch_dbg(hsotg,
--					     "QH=%p sched_p sch=%04x, uf=%d\n",
--					     qh, qh->sched_frame, frame);
-+					     "QH=%p sched_p nxt=%04x, uf=%d\n",
-+					     qh, qh->next_active_frame, frame);
- 			}
- 
- 			if (status > 0)
-@@ -641,7 +641,7 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 			hsotg->periodic_channels++;
- 
- 		/* Update claimed usecs per (micro)frame */
--		hsotg->periodic_usecs += qh->usecs;
-+		hsotg->periodic_usecs += qh->host_us;
- 	}
- 
- 	qh->unreserve_pending = 0;
-@@ -716,7 +716,7 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		/* QH already in a schedule */
- 		return 0;
- 
--	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
-+	if (!dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number) &&
- 			!hsotg->frame_number) {
- 		u16 new_frame;
- 
-@@ -725,9 +725,9 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 				SCHEDULE_SLOP);
- 
--		dwc2_sch_vdbg(hsotg, "QH=%p reset sch=%04x=>%04x\n",
--			      qh, qh->sched_frame, new_frame);
--		qh->sched_frame = new_frame;
-+		dwc2_sch_vdbg(hsotg, "QH=%p reset nxt=%04x=>%04x\n",
-+			      qh, qh->next_active_frame, new_frame);
-+		qh->next_active_frame = new_frame;
- 	}
- 
- 	/* Add the new QH to the appropriate schedule */
-@@ -793,10 +793,10 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 				      int sched_next_periodic_split)
- {
- 	u16 incr;
--	u16 old_frame = qh->sched_frame;
-+	u16 old_frame = qh->next_active_frame;
- 
- 	if (sched_next_periodic_split) {
--		qh->sched_frame = frame_number;
-+		qh->next_active_frame = frame_number;
- 		incr = dwc2_frame_num_inc(qh->start_split_frame, 1);
- 		if (dwc2_frame_num_le(frame_number, incr)) {
- 			/*
-@@ -807,23 +807,24 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 			 */
- 			if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
- 			    qh->ep_is_in != 0) {
--				qh->sched_frame =
--					dwc2_frame_num_inc(qh->sched_frame, 1);
-+				qh->next_active_frame = dwc2_frame_num_inc(
-+					qh->next_active_frame, 1);
- 			}
- 		}
- 	} else {
--		qh->sched_frame = dwc2_frame_num_inc(qh->start_split_frame,
--						     qh->interval);
--		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
--			qh->sched_frame = frame_number;
--		qh->sched_frame |= 0x7;
--		qh->start_split_frame = qh->sched_frame;
-+		qh->next_active_frame =
-+			dwc2_frame_num_inc(qh->start_split_frame,
-+					   qh->host_interval);
-+		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
-+			qh->next_active_frame = frame_number;
-+		qh->next_active_frame |= 0x7;
-+		qh->start_split_frame = qh->next_active_frame;
- 	}
- 
--	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, sch=%04x=>%04x (%+d)\n",
-+	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, nxt=%04x=>%04x (%+d)\n",
- 		      qh, sched_next_periodic_split, frame_number, old_frame,
--		      qh->sched_frame,
--		      dwc2_frame_num_dec(qh->sched_frame, old_frame));
-+		      qh->next_active_frame,
-+		      dwc2_frame_num_dec(qh->next_active_frame, old_frame));
- }
- 
- /*
-@@ -861,10 +862,10 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		dwc2_sched_periodic_split(hsotg, qh, frame_number,
- 					  sched_next_periodic_split);
- 	} else {
--		qh->sched_frame = dwc2_frame_num_inc(qh->sched_frame,
--						     qh->interval);
--		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
--			qh->sched_frame = frame_number;
-+		qh->next_active_frame = dwc2_frame_num_inc(
-+			qh->next_active_frame, qh->host_interval);
-+		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
-+			qh->next_active_frame = frame_number;
- 	}
- 
- 	if (list_empty(&qh->qtd_list)) {
-@@ -876,9 +877,9 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 	 * appropriate queue
- 	 */
- 	if ((hsotg->core_params->uframe_sched > 0 &&
--	     dwc2_frame_num_le(qh->sched_frame, frame_number)) ||
-+	     dwc2_frame_num_le(qh->next_active_frame, frame_number)) ||
- 	    (hsotg->core_params->uframe_sched <= 0 &&
--	     qh->sched_frame == frame_number))
-+	     qh->next_active_frame == frame_number))
- 		list_move_tail(&qh->qh_list_entry,
- 			       &hsotg->periodic_sched_ready);
- 	else
+ 	return hsotg->op_state == OTG_STATE_B_HOST;
 -- 
 2.7.0.rc3.207.g0ac5344
