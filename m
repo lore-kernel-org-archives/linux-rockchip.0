@@ -1,53 +1,93 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 2/9] dt/bindings: arm-pl330: add description of arm,
- pl330-broken-no-flushp
-Date: Fri, 22 Jan 2016 16:29:24 -0600
-Message-ID: <20160122222924.GA21881@rob-hp-laptop>
-References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
- <1453460812-8498-3-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1453460812-8498-3-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] usb: dwc2: host: Properly set the HFIR
+Date: Fri, 22 Jan 2016 15:56:10 -0800
+Message-ID: <1453506971-31445-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
+Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jan 22, 2016 at 07:06:45PM +0800, Caesar Wang wrote:
-> From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> This patch adds the "arm, pl330-broken-no-flushp" for arm-pl330.
-> 
-> Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> ---
-> 
-> Changes in v7:
-> - modify the subject to be better match.
-> 
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3:
-> - add Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Changes in v2:
-> - add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Changes in v1:
-> - rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
->   by Krzysztof.
-> 
->  Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
->  1 file changed, 1 insertion(+)
+According to the most up to date version of the dwc2 databook, the FRINT
+field of the HFIR register should be programmed to:
+* 125 us * (PHY clock freq for HS) - 1
+* 1000 us * (PHY clock freq for FS/LS) - 1
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This is opposed to older versions of the doc that claimed it should be:
+* 125 us * (PHY clock freq for HS)
+* 1000 us * (PHY clock freq for FS/LS)
+
+In case you didn't spot it, the difference is the "- 1".
+
+Let's add the "- 1" to match the newest user manual.  It's presumed that
+the "- 1" should have always been there and that this was always a
+documentation error.  If some hardware needs the "- 1" and other
+hardware doesn't, we'll have to add a configuration parameter for it in
+the future.
+
+I checked things before and after this patch on rk3288 using a Total
+Phase Beagle 5000 analyzer.
+
+Before this patch, a low speed mouse shows constant Frame Timing Jitter
+errors.  After this patch errors have gone away.
+
+Before this patch SOF packets move forward about 1 us per 4 ms.  After
+this patch the SOF packets move backward about 1 us per 255 ms.  Some
+specific SOF timestamps from the analyzer are below.
+
+Before:
+  6.603.790
+  6.603.916
+  6.604.041
+  6.604.166
+  ...
+  6.607.541
+  6.607.667
+  6.607.792
+  6.607.917
+  ...
+  6.611.417
+  6.611.543
+  6.611.668
+  6.611.793
+
+After:
+  6.215.159
+  6.215.284
+  6.215.408
+  6.215.533
+  6.215.658
+  ...
+  6.470.658
+  6.470.783
+  6.470.907
+  ...
+  6.726.032
+  6.726.157
+  6.725.281
+  6.725.406
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/usb/dwc2/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+index 39a0fa8a4c0a..c7798476e25b 100644
+--- a/drivers/usb/dwc2/core.c
++++ b/drivers/usb/dwc2/core.c
+@@ -2251,10 +2251,10 @@ u32 dwc2_calc_frame_interval(struct dwc2_hsotg *hsotg)
+ 
+ 	if ((hprt0 & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT == HPRT0_SPD_HIGH_SPEED)
+ 		/* High speed case */
+-		return 125 * clock;
++		return 125 * clock - 1;
+ 	else
+ 		/* FS/LS case */
+-		return 1000 * clock;
++		return 1000 * clock - 1;
+ }
+ 
+ /**
+-- 
+2.7.0.rc3.207.g0ac5344
