@@ -1,30 +1,42 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] Documentation: rockchip-dw-mshc: add RK3368 dw-mshc description
-Date: Fri, 22 Jan 2016 14:20:05 +0100
-Message-ID: <1671570.Z9uqteZdW0@phil>
-References: <1453379529-5148-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: Bump sd card pin drive strength up on
+ firefly boards
+Date: Fri, 22 Jan 2016 14:33:13 +0100
+Message-ID: <1922254.O59ZZAW3Pv@phil>
+References: <1453381033-3479-1-git-send-email-w.egorov@phytec.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453379529-5148-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453381033-3479-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 21. Januar 2016, 20:32:09 schrieb Shawn Lin:
-> rk3368 dtsi file add dw-mshc compatible "rockchip,rk3368-dw-mshc"
-> but didn't add it into rockchip-dw-mshc.txt.
+Am Donnerstag, 21. Januar 2016, 13:57:13 schrieb Wadim Egorov:
+> It seems some firefly boards need 12mA drive strength for sdmmc.
+> Using 4mA/8mA drive strength will cause the kernel to fail to recognize
+> the sd card correctly.
+> Increased the sdmmc lines drive strength from 4mA to 12mA.
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
 
-applied to my dts32 branch for 4.6 with Rob's ack
+applied to my dts32 branch for 4.6.
+
+As I said somewhere on IRC before, it might be worthwhile to bump the 
+default drive-strength at some point, but so far it seems the minimal needed 
+values seem to diverge (8mA on Veyron, 12ma [4mA on mine] on firefly and 
+seemingly 4mA working fine on the Rock2). So I guess we'll postpone that a 
+bit more until we have more datapoints ;-)
 
 
-Thanks
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
