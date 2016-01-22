@@ -1,62 +1,75 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 07/21] usb: dwc2: hcd: fix split transfer schedule sequence
-Date: Thu, 21 Jan 2016 16:24:10 -0800
-Message-ID: <CAD=FV=W8+A0MduBs+_he5EKXsLbDxqVu419+Lco+SiUNUyw6Cw@mail.gmail.com>
-References: <1453352672-27890-8-git-send-email-dianders@chromium.org>
-	<201601211352.VXgeFvup%fengguang.wu@intel.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: respect CONFIG_DRM_FBDEV_EMULATION
+Date: Fri, 22 Jan 2016 09:07:44 +0800
+Message-ID: <56A180E0.6090601@rock-chips.com>
+References: <1453384426-32617-1-git-send-email-john@metanate.com>	<20160121165251.GO19130@phenom.ffwll.local>
+ <20160121181934.76cb2c03.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <201601211352.VXgeFvup%fengguang.wu@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kbuild test robot <lkp@intel.com>
-Cc: "kbuild-all@01.org" <kbuild-all@01.org>, John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, Alan Stern <stern@rowland.harvard.edu>, Ming Lei <ming.lei@canonical.com>, Yunzhi Li <lyz@rock-chips.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160121181934.76cb2c03.john@metanate.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>, Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Jan 20, 2016 at 9:24 PM, kbuild test robot <lkp@intel.com> wrote:
-> Hi Douglas,
->
-> [auto build test ERROR on next-20160120]
-> [cannot apply to v4.4-rc8 v4.4-rc7 v4.4-rc6 v4.4]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improving the system]
->
-> url:    https://github.com/0day-ci/linux/commits/Douglas-Anderson/usb-dwc2-host-Fix-and-speed-up-all-the-stuff-especially-with-splits/20160121-131414
-> config: x86_64-randconfig-x019-01201142 (attached as .config)
-> reproduce:
->         # save the attached .config to linux build tree
->         make ARCH=x86_64
->
-> All errors (new ones prefixed by >>):
->
->    drivers/usb/dwc2/core.c: In function 'dwc2_hc_start_transfer':
->>> drivers/usb/dwc2/core.c:1876:17: error: 'struct dwc2_hsotg' has no member named 'split_order'
->               &hsotg->split_order);
->                     ^
-> --
->>> /bin/bash: line 0: [: -ge: unary operator expected
->
-> vim +1876 drivers/usb/dwc2/core.c
->
->   1870                          ec_mc = 3;
->   1871                  else
->   1872                          ec_mc = 1;
->   1873
->   1874                  /* Put ourselves on the list to keep order straight */
->   1875                  list_move_tail(&chan->split_order_list_entry,
->> 1876                                 &hsotg->split_order);
->   1877          } else {
->   1878                  if (dbg_hc(chan))
->   1879                          dev_vdbg(hsotg->dev, "no split\n");
->
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-
-I've got a fix this and the other error reported by the bot.  I'll
-plan to fix both tomorrow and send up a v5 unless someone gives me
-some other feedback on the series that takes me longer than a day to
-deal with.
-
--Doug
+T24gMjAxNuW5tDAx5pyIMjLml6UgMDI6MTksIEpvaG4gS2VlcGluZyB3cm90ZToKPiBJZiBEUk1f
+RkJERVZfRU1VTEFUSU9OIGlzIG5vdCBzZWxlY3RlZCBpbiB0aGUgY29uZmlnIHRoZW4gd2UgY2Fu
+IHNhdmUgYQo+IGJpdCBvZiBzcGFjZSBieSBub3QgaW5jbHVkaW5nIHRoZSBmcmFtZWJ1ZmZlciBj
+b2RlLgo+Cj4gU2lnbmVkLW9mZi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4K
+PiAtLS0KPiBPbiBUaHUsIDIxIEphbiAyMDE2IDE3OjUyOjUxICswMTAwLCBEYW5pZWwgVmV0dGVy
+IHdyb3RlOgo+Cj4+IE9uIFRodSwgSmFuIDIxLCAyMDE2IGF0IDAxOjUzOjQ2UE0gKzAwMDAsIEpv
+aG4gS2VlcGluZyB3cm90ZToKPj4+IElmIERSTV9GQkRFVl9FTVVMQVRJT04gaXMgbm90IHNlbGVj
+dGVkIGluIHRoZSBjb25maWcgdGhlbiB3ZSBzaG91bGQgbm90Cj4+PiBzZXR1cCBhIGZyYW1lYnVm
+ZmVyIGNvbnNvbGUuCj4+IEl0IHNob3VsZCBqdXN0IG1hZ2ljYWxseSB3b3JrLCBhbmQgdGhpcyBw
+YXRjaCBoZXJlIGp1c3QgcmVtb3ZlcyBhIGJpdCBtb3JlCj4+IGRlYWQgY29kZSBpbiB0aGUgcm9j
+a2NoaXAgZHJpdmVyIGl0c2VsZiB0aGF0J3Mgbm90IG5lZWRlZCBpbiBjYXNlIGZiZGV2Cj4+IGVt
+dWxhdGlvbiBpcyBkaXNhYmxlZC4KPj4KPj4gQ2FuIHlvdSBwbGVhc2UgZG91YmxlLWNoZWNrIHRo
+aXMgaXMgdGhlIGNhc2UgYW5kIHRoZW4gcmVzZW5kIHdpdGggYQo+PiBjbGFyaWZpZWQgY29tbWl0
+IG1lc3NhZ2U/Cj4gWW91J3JlIHJpZ2h0LCBpdCBkb2VzIHdvcmsgd2l0aG91dCB0aGlzIGNoYW5n
+ZSwgc28gdGhpcyBpcyBqdXN0IHRvIHNhdmUKPiBhIGJpdCBvZiBzcGFjZSB3aGVuIHdlIGRvbid0
+IG5lZWQgdGhpcyBmZWF0dXJlLgo+Cj4gdjI6Cj4gLSBjaGFuZ2UgY29tbWl0IG1lc3NhZ2UgdG8g
+Y2xhcmlmeSB0aGF0IHRoaXMgaXMgb25seSB0byByZW1vdmUgc29tZSBkZWFkCj4gICAgY29kZQo+
+Cj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgfCAgMyAr
+Ky0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaCB8IDEx
+ICsrKysrKysrKysrCj4gICAyIGZpbGVzIGNoYW5nZWQsIDEzIGluc2VydGlvbnMoKyksIDEgZGVs
+ZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZp
+bGUgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUKPiBpbmRleCBhNGUwM2JjLi5m
+NmE4MDlhIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQo+IEBAIC0yLDggKzIsOSBA
+QAo+ICAgIyBNYWtlZmlsZSBmb3IgdGhlIGRybSBkZXZpY2UgZHJpdmVyLiAgVGhpcyBkcml2ZXIg
+cHJvdmlkZXMgc3VwcG9ydCBmb3IgdGhlCj4gICAjIERpcmVjdCBSZW5kZXJpbmcgSW5mcmFzdHJ1
+Y3R1cmUgKERSSSkgaW4gWEZyZWU4NiA0LjEuMCBhbmQgaGlnaGVyLgo+ICAgCj4gLXJvY2tjaGlw
+ZHJtLXkgOj0gcm9ja2NoaXBfZHJtX2Rydi5vIHJvY2tjaGlwX2RybV9mYi5vIHJvY2tjaGlwX2Ry
+bV9mYmRldi5vIFwKPiArcm9ja2NoaXBkcm0teSA6PSByb2NrY2hpcF9kcm1fZHJ2Lm8gcm9ja2No
+aXBfZHJtX2ZiLm8gXAo+ICAgCQlyb2NrY2hpcF9kcm1fZ2VtLm8gcm9ja2NoaXBfZHJtX3ZvcC5v
+Cj4gK3JvY2tjaGlwZHJtLSQoQ09ORklHX0RSTV9GQkRFVl9FTVVMQVRJT04pICs9IHJvY2tjaGlw
+X2RybV9mYmRldi5vCj4gICAKPiAgIG9iai0kKENPTkZJR19ST0NLQ0hJUF9EV19IRE1JKSArPSBk
+d19oZG1pLXJvY2tjaGlwLm8KPiAgIG9iai0kKENPTkZJR19ST0NLQ0hJUF9EV19NSVBJX0RTSSkg
+Kz0gZHctbWlwaS1kc2kubwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiZGV2LmggYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2ZiZGV2LmgKPiBpbmRleCA1MDQzMmU5Li43MzcxOGM1IDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaAo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuaAo+IEBAIC0xNSw3ICsxNSwxOCBA
+QAo+ICAgI2lmbmRlZiBfUk9DS0NISVBfRFJNX0ZCREVWX0gKPiAgICNkZWZpbmUgX1JPQ0tDSElQ
+X0RSTV9GQkRFVl9ICj4gICAKPiArI2lmZGVmIENPTkZJR19EUk1fRkJERVZfRU1VTEFUSU9OCj4g
+ICBpbnQgcm9ja2NoaXBfZHJtX2ZiZGV2X2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldik7Cj4g
+ICB2b2lkIHJvY2tjaGlwX2RybV9mYmRldl9maW5pKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpOwo+
+ICsjZWxzZQo+ICtzdGF0aWMgaW5saW5lIGludCByb2NrY2hpcF9kcm1fZmJkZXZfaW5pdChzdHJ1
+Y3QgZHJtX2RldmljZSAqZGV2KQo+ICt7Cj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGlj
+IGlubGluZSB2b2lkIHJvY2tjaGlwX2RybV9mYmRldl9maW5pKHN0cnVjdCBkcm1fZGV2aWNlICpk
+ZXYpCj4gK3sKPiArfQo+ICsjZW5kaWYKPiAgIAo+ICAgI2VuZGlmIC8qIF9ST0NLQ0hJUF9EUk1f
+RkJERVZfSCAqLwoKTG9va3MgZ29vZCBhbmQgaXQgd29ya3Mgb24gbXkgcG9wbWV0YWwgYm9hcmQu
+CgpBcHBsaWVkIHRvIG15IGJyYW5jaDotKSAuCgotLSAK77ytYXJrIFlhbwoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
