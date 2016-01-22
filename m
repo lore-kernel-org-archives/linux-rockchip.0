@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 11/21] usb: dwc2: host: Use periodic interrupt even with DMA
-Date: Fri, 22 Jan 2016 10:18:46 -0800
-Message-ID: <1453486736-15358-12-git-send-email-dianders@chromium.org>
+Subject: [PATCH v5 12/21] usb: dwc2: host: Rename some fields in struct dwc2_qh
+Date: Fri, 22 Jan 2016 10:18:47 -0800
+Message-ID: <1453486736-15358-13-git-send-email-dianders@chromium.org>
 References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,155 +21,468 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The old code in dwc2_process_periodic_channels() would only enable the
-"periodic empty" interrupt if we weren't using DMA.  That wasn't right
-since we can still get into cases where we have small FIFOs even on
-systems that have DMA (the rk3288 is a prime example).
+This no-op change just does some renames to simplify a future patch.
 
-Let's always enable/disable the "periodic empty" when appropriate.  As
-part of this:
-
-* Always call dwc2_process_periodic_channels() even if there's nothing
-  in periodic_sched_assigned (we move the queue empty check so we still
-  avoid the extra work).  That will make extra certain that we will
-  properly disable the "periodic empty" interrupt even if there's
-  nothing queued up.
-
-* Move the enable of "periodic empty" due to non-empty
-  periodic_sched_assigned to be for slave mode (non-DMA mode) only.
-  Presumably this was the original intention of the check for DMA since
-  it seems to match the comments above where in slave mode we leave
-  things on the assigned queue.
-
-Note that even before this change slave mode didn't work for me, so I
-can't say for sure that my understanding of slave mode is correct.
-However, this shouldn't change anything for slave mode so if slave mode
-worked for someone in the past it ought to still work.
-
-With this change, I no longer get constant misses reported by my other
-debugging code (and with future patches) when I've got:
-* Rockchip rk3288 Chromebook, using port ff540000
-  -> Pluggable 7-port Hub with Charging (powered)
-     -> Microsoft Wireless Keyboard 2000 in port 1.
-     -> Das Keyboard in port 2.
-     -> Jabra Speaker in port 3
-     -> Logitech, Inc. Webcam C600 in port 4
-     -> Microsoft Sidewinder X6 Keyboard in port 5
-
-...and I'm playing music on the USB speaker and capturing video from the
-webcam.
+1. The "interval" field is renamed to "host_interval" to make it more
+   obvious that this interval may be 8 times the interval that the
+   device sees (if we're doing split transactions).  A future patch will
+   also add the "device_interval" field.
+2. The "usecs" field is renamed to "host_us" again to make it more
+   obvious that this is the time for the transaction as seen by the
+   host.  For split transactions the device may see a much longer
+   transaction time.  A future patch will also add "device_us".
+3. The "sched_frame" field is renamed to "next_active_frame".  The name
+   "sched_frame" kept confusing me because it felt like something more
+   permament (the QH's reservation or something).  The name
+   "next_active_frame" makes it more obvious that this field is
+   constantly changing.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v5: None
 Changes in v4:
-- Use periodic interrupt even with DMA new for v4.
+- Rename some fields in struct dwc2_qh new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/hcd.c | 71 +++++++++++++++++++++++---------------------------
- 1 file changed, 32 insertions(+), 39 deletions(-)
+ drivers/usb/dwc2/hcd.h       |  20 ++++----
+ drivers/usb/dwc2/hcd_ddma.c  |  37 ++++++++-------
+ drivers/usb/dwc2/hcd_intr.c  |  10 ++--
+ drivers/usb/dwc2/hcd_queue.c | 107 ++++++++++++++++++++++---------------------
+ 4 files changed, 92 insertions(+), 82 deletions(-)
 
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index 9fd14b74b49c..584c64114a82 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -1109,10 +1109,14 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
- 	u32 fspcavail;
- 	u32 gintmsk;
- 	int status;
--	int no_queue_space = 0;
--	int no_fifo_space = 0;
-+	bool no_queue_space = false;
-+	bool no_fifo_space = false;
- 	u32 qspcavail;
+diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+index 79473ea35bd6..10c35585a2bd 100644
+--- a/drivers/usb/dwc2/hcd.h
++++ b/drivers/usb/dwc2/hcd.h
+@@ -236,10 +236,14 @@ enum dwc2_transaction_type {
+  * @do_split:           Full/low speed endpoint on high-speed hub requires split
+  * @td_first:           Index of first activated isochronous transfer descriptor
+  * @td_last:            Index of last activated isochronous transfer descriptor
+- * @usecs:              Bandwidth in microseconds per (micro)frame
+- * @interval:           Interval between transfers in (micro)frames
+- * @sched_frame:        (Micro)frame to initialize a periodic transfer.
+- *                      The transfer executes in the following (micro)frame.
++ * @host_us:            Bandwidth in microseconds per transfer as seen by host
++ * @host_interval:      Interval between transfers as seen by the host.  If
++ *                      the host is high speed and the device is low speed this
++ *                      will be 8 times device interval.
++ * @next_active_frame:  (Micro)frame before we next need to put something on
++ *                      the bus.  We'll move the qh to active here.  If the
++ *                      host is in high speed mode this will be a uframe.  If
++ *                      the host is in low speed mode this will be a full frame.
+  * @frame_usecs:        Internal variable used by the microframe scheduler
+  * @start_split_frame:  (Micro)frame at which last start split was initialized
+  * @ntd:                Actual number of transfer descriptors in a list
+@@ -272,9 +276,9 @@ struct dwc2_qh {
+ 	u8 do_split;
+ 	u8 td_first;
+ 	u8 td_last;
+-	u16 usecs;
+-	u16 interval;
+-	u16 sched_frame;
++	u16 host_us;
++	u16 host_interval;
++	u16 next_active_frame;
+ 	u16 frame_usecs[8];
+ 	u16 start_split_frame;
+ 	u16 ntd;
+@@ -651,7 +655,7 @@ static inline u16 dwc2_hcd_get_ep_bandwidth(struct dwc2_hsotg *hsotg,
+ 		return 0;
+ 	}
  
-+	/* If empty list then just adjust interrupt enables */
-+	if (list_empty(&hsotg->periodic_sched_assigned))
-+		goto exit;
-+
- 	if (dbg_perio())
- 		dev_vdbg(hsotg->dev, "Queue periodic transactions\n");
+-	return qh->usecs;
++	return qh->host_us;
+ }
  
-@@ -1190,42 +1194,32 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
+ extern void dwc2_hcd_save_data_toggle(struct dwc2_hsotg *hsotg,
+diff --git a/drivers/usb/dwc2/hcd_ddma.c b/drivers/usb/dwc2/hcd_ddma.c
+index 16b261cfa92d..26b00270ca0b 100644
+--- a/drivers/usb/dwc2/hcd_ddma.c
++++ b/drivers/usb/dwc2/hcd_ddma.c
+@@ -81,7 +81,7 @@ static u16 dwc2_max_desc_num(struct dwc2_qh *qh)
+ static u16 dwc2_frame_incr_val(struct dwc2_qh *qh)
+ {
+ 	return qh->dev_speed == USB_SPEED_HIGH ?
+-	       (qh->interval + 8 - 1) / 8 : qh->interval;
++	       (qh->host_interval + 8 - 1) / 8 : qh->host_interval;
+ }
+ 
+ static int dwc2_desc_list_alloc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+@@ -252,7 +252,7 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	chan = qh->channel;
+ 	inc = dwc2_frame_incr_val(qh);
+ 	if (qh->ep_type == USB_ENDPOINT_XFER_ISOC)
+-		i = dwc2_frame_list_idx(qh->sched_frame);
++		i = dwc2_frame_list_idx(qh->next_active_frame);
+ 	else
+ 		i = 0;
+ 
+@@ -278,13 +278,13 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 		return;
+ 
+ 	chan->schinfo = 0;
+-	if (chan->speed == USB_SPEED_HIGH && qh->interval) {
++	if (chan->speed == USB_SPEED_HIGH && qh->host_interval) {
+ 		j = 1;
+ 		/* TODO - check this */
+-		inc = (8 + qh->interval - 1) / qh->interval;
++		inc = (8 + qh->host_interval - 1) / qh->host_interval;
+ 		for (i = 0; i < inc; i++) {
+ 			chan->schinfo |= j;
+-			j = j << qh->interval;
++			j = j << qh->host_interval;
+ 		}
+ 	} else {
+ 		chan->schinfo = 0xff;
+@@ -431,7 +431,10 @@ static u16 dwc2_calc_starting_frame(struct dwc2_hsotg *hsotg,
+ 
+ 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
+ 
+-	/* sched_frame is always frame number (not uFrame) both in FS and HS! */
++	/*
++	 * next_active_frame is always frame number (not uFrame) both in FS
++	 * and HS!
++	 */
+ 
+ 	/*
+ 	 * skip_frames is used to limit activated descriptors number
+@@ -514,13 +517,13 @@ static u16 dwc2_recalc_initial_desc_idx(struct dwc2_hsotg *hsotg,
+ 		 */
+ 		fr_idx_tmp = dwc2_frame_list_idx(frame);
+ 		fr_idx = (FRLISTEN_64_SIZE +
+-			  dwc2_frame_list_idx(qh->sched_frame) - fr_idx_tmp)
+-			 % dwc2_frame_incr_val(qh);
++			  dwc2_frame_list_idx(qh->next_active_frame) -
++			  fr_idx_tmp) % dwc2_frame_incr_val(qh);
+ 		fr_idx = (fr_idx + fr_idx_tmp) % FRLISTEN_64_SIZE;
+ 	} else {
+-		qh->sched_frame = dwc2_calc_starting_frame(hsotg, qh,
++		qh->next_active_frame = dwc2_calc_starting_frame(hsotg, qh,
+ 							   &skip_frames);
+-		fr_idx = dwc2_frame_list_idx(qh->sched_frame);
++		fr_idx = dwc2_frame_list_idx(qh->next_active_frame);
+ 	}
+ 
+ 	qh->td_first = qh->td_last = dwc2_frame_to_desc_idx(qh, fr_idx);
+@@ -583,7 +586,7 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
+ 	u16 next_idx;
+ 
+ 	idx = qh->td_last;
+-	inc = qh->interval;
++	inc = qh->host_interval;
+ 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
+ 	cur_idx = dwc2_frame_list_idx(hsotg->frame_number);
+ 	next_idx = dwc2_desclist_idx_inc(qh->td_last, inc, qh->dev_speed);
+@@ -605,11 +608,11 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
  		}
  	}
  
--	if (hsotg->core_params->dma_enable <= 0) {
--		tx_status = dwc2_readl(hsotg->regs + HPTXSTS);
--		qspcavail = (tx_status & TXSTS_QSPCAVAIL_MASK) >>
--			    TXSTS_QSPCAVAIL_SHIFT;
--		fspcavail = (tx_status & TXSTS_FSPCAVAIL_MASK) >>
--			    TXSTS_FSPCAVAIL_SHIFT;
--		if (dbg_perio()) {
--			dev_vdbg(hsotg->dev,
--				 "  P Tx Req Queue Space Avail (after queue): %d\n",
--				 qspcavail);
--			dev_vdbg(hsotg->dev,
--				 "  P Tx FIFO Space Avail (after queue): %d\n",
--				 fspcavail);
--		}
--
--		if (!list_empty(&hsotg->periodic_sched_assigned) ||
--		    no_queue_space || no_fifo_space) {
--			/*
--			 * May need to queue more transactions as the request
--			 * queue or Tx FIFO empties. Enable the periodic Tx
--			 * FIFO empty interrupt. (Always use the half-empty
--			 * level to ensure that new requests are loaded as
--			 * soon as possible.)
--			 */
--			gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+exit:
-+	if (no_queue_space || no_fifo_space ||
-+	    (hsotg->core_params->dma_enable <= 0 &&
-+	     !list_empty(&hsotg->periodic_sched_assigned))) {
-+		/*
-+		 * May need to queue more transactions as the request
-+		 * queue or Tx FIFO empties. Enable the periodic Tx
-+		 * FIFO empty interrupt. (Always use the half-empty
-+		 * level to ensure that new requests are loaded as
-+		 * soon as possible.)
-+		 */
-+		gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		if (!(gintmsk & GINTSTS_PTXFEMP)) {
- 			gintmsk |= GINTSTS_PTXFEMP;
- 			dwc2_writel(gintmsk, hsotg->regs + GINTMSK);
--		} else {
--			/*
--			 * Disable the Tx FIFO empty interrupt since there are
--			 * no more transactions that need to be queued right
--			 * now. This function is called from interrupt
--			 * handlers to queue more transactions as transfer
--			 * states change.
--			 */
--			gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		}
-+	} else {
-+		/*
-+		 * Disable the Tx FIFO empty interrupt since there are
-+		 * no more transactions that need to be queued right
-+		 * now. This function is called from interrupt
-+		 * handlers to queue more transactions as transfer
-+		 * states change.
-+		*/
-+		gintmsk = dwc2_readl(hsotg->regs + GINTMSK);
-+		if (gintmsk & GINTSTS_PTXFEMP) {
- 			gintmsk &= ~GINTSTS_PTXFEMP;
- 			dwc2_writel(gintmsk, hsotg->regs + GINTMSK);
- 		}
-@@ -1372,9 +1366,8 @@ void dwc2_hcd_queue_transactions(struct dwc2_hsotg *hsotg,
- 	dev_vdbg(hsotg->dev, "Queue Transactions\n");
- #endif
- 	/* Process host channels associated with periodic transfers */
--	if ((tr_type == DWC2_TRANSACTION_PERIODIC ||
--	     tr_type == DWC2_TRANSACTION_ALL) &&
--	    !list_empty(&hsotg->periodic_sched_assigned))
-+	if (tr_type == DWC2_TRANSACTION_PERIODIC ||
-+	    tr_type == DWC2_TRANSACTION_ALL)
- 		dwc2_process_periodic_channels(hsotg);
+-	if (qh->interval) {
+-		ntd_max = (dwc2_max_desc_num(qh) + qh->interval - 1) /
+-				qh->interval;
++	if (qh->host_interval) {
++		ntd_max = (dwc2_max_desc_num(qh) + qh->host_interval - 1) /
++				qh->host_interval;
+ 		if (skip_frames && !qh->channel)
+-			ntd_max -= skip_frames / qh->interval;
++			ntd_max -= skip_frames / qh->host_interval;
+ 	}
  
- 	/* Process host channels associated with non-periodic transfers */
+ 	max_xfer_size = qh->dev_speed == USB_SPEED_HIGH ?
+@@ -1029,7 +1032,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
+ 							  idx);
+ 			if (rc < 0)
+ 				return;
+-			idx = dwc2_desclist_idx_inc(idx, qh->interval,
++			idx = dwc2_desclist_idx_inc(idx, qh->host_interval,
+ 						    chan->speed);
+ 			if (!rc)
+ 				continue;
+@@ -1039,7 +1042,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
+ 
+ 			/* rc == DWC2_CMPL_STOP */
+ 
+-			if (qh->interval >= 32)
++			if (qh->host_interval >= 32)
+ 				goto stop_scan;
+ 
+ 			qh->td_first = idx;
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 5d25a5ec9736..b54a0c41d34f 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -138,9 +138,11 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
+ 	while (qh_entry != &hsotg->periodic_sched_inactive) {
+ 		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
+ 		qh_entry = qh_entry->next;
+-		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
+-			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, sch=%04x\n",
+-				      qh, hsotg->frame_number, qh->sched_frame);
++		if (dwc2_frame_num_le(qh->next_active_frame,
++				      hsotg->frame_number)) {
++			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, nxt=%04x\n",
++				      qh, hsotg->frame_number,
++				      qh->next_active_frame);
+ 
+ 			/*
+ 			 * Move QH to the ready list to be executed next
+@@ -1350,7 +1352,7 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
+ 			int frnum = dwc2_hcd_get_frame_number(hsotg);
+ 
+ 			if (dwc2_full_frame_num(frnum) !=
+-			    dwc2_full_frame_num(chan->qh->sched_frame)) {
++			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
+ 				/*
+ 				 * No longer in the same full speed frame.
+ 				 * Treat this as a transaction error.
+diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+index b9e4867e1afd..39f4de6279f8 100644
+--- a/drivers/usb/dwc2/hcd_queue.c
++++ b/drivers/usb/dwc2/hcd_queue.c
+@@ -78,7 +78,7 @@ static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		list_del_init(&qh->qh_list_entry);
+ 
+ 	/* Update claimed usecs per (micro)frame */
+-	hsotg->periodic_usecs -= qh->usecs;
++	hsotg->periodic_usecs -= qh->host_us;
+ 
+ 	if (hsotg->core_params->uframe_sched > 0) {
+ 		int i;
+@@ -193,40 +193,40 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 		int bytecount =
+ 			dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
+ 
+-		qh->usecs = NS_TO_US(usb_calc_bus_time(qh->do_split ?
+-				USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
+-				qh->ep_type == USB_ENDPOINT_XFER_ISOC,
+-				bytecount));
++		qh->host_us = NS_TO_US(usb_calc_bus_time(qh->do_split ?
++			      USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
++			      qh->ep_type == USB_ENDPOINT_XFER_ISOC,
++			      bytecount));
+ 
+ 		/* Ensure frame_number corresponds to the reality */
+ 		hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
+ 		/* Start in a slightly future (micro)frame */
+-		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
++		qh->next_active_frame = dwc2_frame_num_inc(hsotg->frame_number,
+ 						     SCHEDULE_SLOP);
+-		qh->interval = urb->interval;
+-		dwc2_sch_dbg(hsotg, "QH=%p init sch=%04x, fn=%04x, int=%#x\n",
+-			     qh, qh->sched_frame, hsotg->frame_number,
+-			     qh->interval);
++		qh->host_interval = urb->interval;
++		dwc2_sch_dbg(hsotg, "QH=%p init nxt=%04x, fn=%04x, int=%#x\n",
++			     qh, qh->next_active_frame, hsotg->frame_number,
++			     qh->host_interval);
+ #if 0
+ 		/* Increase interrupt polling rate for debugging */
+ 		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
+-			qh->interval = 8;
++			qh->host_interval = 8;
+ #endif
+ 		hprt = dwc2_readl(hsotg->regs + HPRT0);
+ 		prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
+ 		if (prtspd == HPRT0_SPD_HIGH_SPEED &&
+ 		    (dev_speed == USB_SPEED_LOW ||
+ 		     dev_speed == USB_SPEED_FULL)) {
+-			qh->interval *= 8;
+-			qh->sched_frame |= 0x7;
+-			qh->start_split_frame = qh->sched_frame;
++			qh->host_interval *= 8;
++			qh->next_active_frame |= 0x7;
++			qh->start_split_frame = qh->next_active_frame;
+ 			dwc2_sch_dbg(hsotg,
+-				     "QH=%p init*8 sch=%04x, fn=%04x, int=%#x\n",
+-				     qh, qh->sched_frame, hsotg->frame_number,
+-				     qh->interval);
++				     "QH=%p init*8 nxt=%04x, fn=%04x, int=%#x\n",
++				     qh, qh->next_active_frame,
++				     hsotg->frame_number, qh->host_interval);
+ 
+ 		}
+-		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
++		dev_dbg(hsotg->dev, "interval=%d\n", qh->host_interval);
+ 	}
+ 
+ 	dev_vdbg(hsotg->dev, "DWC OTG HCD QH Initialized\n");
+@@ -277,9 +277,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 
+ 	if (qh->ep_type == USB_ENDPOINT_XFER_INT) {
+ 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - usecs = %d\n",
+-			 qh->usecs);
++			 qh->host_us);
+ 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - interval = %d\n",
+-			 qh->interval);
++			 qh->host_interval);
+ 	}
+ }
+ 
+@@ -404,19 +404,19 @@ static int dwc2_check_periodic_bandwidth(struct dwc2_hsotg *hsotg,
+ 		 * High speed mode
+ 		 * Max periodic usecs is 80% x 125 usec = 100 usec
+ 		 */
+-		max_claimed_usecs = 100 - qh->usecs;
++		max_claimed_usecs = 100 - qh->host_us;
+ 	} else {
+ 		/*
+ 		 * Full speed mode
+ 		 * Max periodic usecs is 90% x 1000 usec = 900 usec
+ 		 */
+-		max_claimed_usecs = 900 - qh->usecs;
++		max_claimed_usecs = 900 - qh->host_us;
+ 	}
+ 
+ 	if (hsotg->periodic_usecs > max_claimed_usecs) {
+ 		dev_err(hsotg->dev,
+ 			"%s: already claimed usecs %d, required usecs %d\n",
+-			__func__, hsotg->periodic_usecs, qh->usecs);
++			__func__, hsotg->periodic_usecs, qh->host_us);
+ 		status = -ENOSPC;
+ 	}
+ 
+@@ -443,7 +443,7 @@ void dwc2_hcd_init_usecs(struct dwc2_hsotg *hsotg)
+ 
+ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ {
+-	unsigned short utime = qh->usecs;
++	unsigned short utime = qh->host_us;
+ 	int i;
+ 
+ 	for (i = 0; i < 8; i++) {
+@@ -462,7 +462,7 @@ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+  */
+ static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ {
+-	unsigned short utime = qh->usecs;
++	unsigned short utime = qh->host_us;
+ 	unsigned short xtime;
+ 	int t_left;
+ 	int i;
+@@ -608,11 +608,11 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 
+ 			/* Set the new frame up */
+ 			if (frame >= 0) {
+-				qh->sched_frame &= ~0x7;
+-				qh->sched_frame |= (frame & 7);
++				qh->next_active_frame &= ~0x7;
++				qh->next_active_frame |= (frame & 7);
+ 				dwc2_sch_dbg(hsotg,
+-					     "QH=%p sched_p sch=%04x, uf=%d\n",
+-					     qh, qh->sched_frame, frame);
++					     "QH=%p sched_p nxt=%04x, uf=%d\n",
++					     qh, qh->next_active_frame, frame);
+ 			}
+ 
+ 			if (status > 0)
+@@ -641,7 +641,7 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 			hsotg->periodic_channels++;
+ 
+ 		/* Update claimed usecs per (micro)frame */
+-		hsotg->periodic_usecs += qh->usecs;
++		hsotg->periodic_usecs += qh->host_us;
+ 	}
+ 
+ 	qh->unreserve_pending = 0;
+@@ -716,7 +716,7 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		/* QH already in a schedule */
+ 		return 0;
+ 
+-	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
++	if (!dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number) &&
+ 			!hsotg->frame_number) {
+ 		u16 new_frame;
+ 
+@@ -725,9 +725,9 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ 		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
+ 				SCHEDULE_SLOP);
+ 
+-		dwc2_sch_vdbg(hsotg, "QH=%p reset sch=%04x=>%04x\n",
+-			      qh, qh->sched_frame, new_frame);
+-		qh->sched_frame = new_frame;
++		dwc2_sch_vdbg(hsotg, "QH=%p reset nxt=%04x=>%04x\n",
++			      qh, qh->next_active_frame, new_frame);
++		qh->next_active_frame = new_frame;
+ 	}
+ 
+ 	/* Add the new QH to the appropriate schedule */
+@@ -793,10 +793,10 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
+ 				      int sched_next_periodic_split)
+ {
+ 	u16 incr;
+-	u16 old_frame = qh->sched_frame;
++	u16 old_frame = qh->next_active_frame;
+ 
+ 	if (sched_next_periodic_split) {
+-		qh->sched_frame = frame_number;
++		qh->next_active_frame = frame_number;
+ 		incr = dwc2_frame_num_inc(qh->start_split_frame, 1);
+ 		if (dwc2_frame_num_le(frame_number, incr)) {
+ 			/*
+@@ -807,23 +807,24 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
+ 			 */
+ 			if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
+ 			    qh->ep_is_in != 0) {
+-				qh->sched_frame =
+-					dwc2_frame_num_inc(qh->sched_frame, 1);
++				qh->next_active_frame = dwc2_frame_num_inc(
++					qh->next_active_frame, 1);
+ 			}
+ 		}
+ 	} else {
+-		qh->sched_frame = dwc2_frame_num_inc(qh->start_split_frame,
+-						     qh->interval);
+-		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
+-			qh->sched_frame = frame_number;
+-		qh->sched_frame |= 0x7;
+-		qh->start_split_frame = qh->sched_frame;
++		qh->next_active_frame =
++			dwc2_frame_num_inc(qh->start_split_frame,
++					   qh->host_interval);
++		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
++			qh->next_active_frame = frame_number;
++		qh->next_active_frame |= 0x7;
++		qh->start_split_frame = qh->next_active_frame;
+ 	}
+ 
+-	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, sch=%04x=>%04x (%+d)\n",
++	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, nxt=%04x=>%04x (%+d)\n",
+ 		      qh, sched_next_periodic_split, frame_number, old_frame,
+-		      qh->sched_frame,
+-		      dwc2_frame_num_dec(qh->sched_frame, old_frame));
++		      qh->next_active_frame,
++		      dwc2_frame_num_dec(qh->next_active_frame, old_frame));
+ }
+ 
+ /*
+@@ -861,10 +862,10 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 		dwc2_sched_periodic_split(hsotg, qh, frame_number,
+ 					  sched_next_periodic_split);
+ 	} else {
+-		qh->sched_frame = dwc2_frame_num_inc(qh->sched_frame,
+-						     qh->interval);
+-		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
+-			qh->sched_frame = frame_number;
++		qh->next_active_frame = dwc2_frame_num_inc(
++			qh->next_active_frame, qh->host_interval);
++		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
++			qh->next_active_frame = frame_number;
+ 	}
+ 
+ 	if (list_empty(&qh->qtd_list)) {
+@@ -876,9 +877,9 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	 * appropriate queue
+ 	 */
+ 	if ((hsotg->core_params->uframe_sched > 0 &&
+-	     dwc2_frame_num_le(qh->sched_frame, frame_number)) ||
++	     dwc2_frame_num_le(qh->next_active_frame, frame_number)) ||
+ 	    (hsotg->core_params->uframe_sched <= 0 &&
+-	     qh->sched_frame == frame_number))
++	     qh->next_active_frame == frame_number))
+ 		list_move_tail(&qh->qh_list_entry,
+ 			       &hsotg->periodic_sched_ready);
+ 	else
 -- 
 2.7.0.rc3.207.g0ac5344
