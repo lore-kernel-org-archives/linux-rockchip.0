@@ -1,7 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 08/21] usb: dwc2: host: Add scheduler tracing
-Date: Fri, 22 Jan 2016 10:18:43 -0800
-Message-ID: <1453486736-15358-9-git-send-email-dianders@chromium.org>
+Subject: [PATCH v5 10/21] usb: dwc2: host: Giveback URB in tasklet context
+Date: Fri, 22 Jan 2016 10:18:45 -0800
+Message-ID: <1453486736-15358-11-git-send-email-dianders@chromium.org>
 References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,170 +21,65 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In preparation for future changes to the scheduler let's add some
-tracing that makes it easy for us to see what's happening.  By default
-this tracing will be off.
+In commit 94dfd7edfd5c ("USB: HCD: support giveback of URB in tasklet
+context") support was added to give back the URB in tasklet context.
+Let's take advantage of this in dwc2.
 
-By changing "core.h" you can easily trace to ftrace, the console, or
-nowhere.
+This speeds up the dwc2 interrupt handler considerably.
+
+Note that this requires the change ("usb: dwc2: host: Add a delay before
+releasing periodic bandwidth") to come first.
+
+Note that, as per Alan Stern in
+<https://patchwork.kernel.org/patch/7555771/>, we also need to make sure
+that the extra delay before the device drivers submit more data doesn't
+break the scheduler.  At the moment the scheduler is pretty broken (see
+future patches) so it's hard to be 100% certain, but I have yet to see
+any new breakage introduced by this delay.  ...and speeding up interrupt
+processing for dwc2 is a huge deal because it means we've got a better
+chance of not missing SOF interrupts.  That means we've got an overall
+win here.
+
+Note that when playing USB audio and using a USB webcam and having
+several USB keyboards plugged in, the crackling on the USB audio device
+is noticably reduced with this patch.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
 Changes in v5: None
 Changes in v4:
-- Retooled scheduler tracing a bit, so left off John's Ack from v3.
+- A bit earlier in the list of patches than in v3.
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+- Commit message now says that URB giveback change needs delay change.
 
- drivers/usb/dwc2/core.h      | 20 ++++++++++++++++++++
- drivers/usb/dwc2/hcd.h       |  5 +++++
- drivers/usb/dwc2/hcd_intr.c  |  6 +++++-
- drivers/usb/dwc2/hcd_queue.c | 24 +++++++++++++++++++++++-
- 4 files changed, 53 insertions(+), 2 deletions(-)
+ drivers/usb/dwc2/hcd.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 538cf38af0e4..18f9e4045643 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -44,6 +44,26 @@
- #include <linux/usb/phy.h>
- #include "hw.h"
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index 87ad5bf2d166..9fd14b74b49c 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -2341,9 +2341,7 @@ void dwc2_host_complete(struct dwc2_hsotg *hsotg, struct dwc2_qtd *qtd,
+ 	kfree(qtd->urb);
+ 	qtd->urb = NULL;
  
-+/*
-+ * Suggested defines for tracers:
-+ * - no_printk:    Disable tracing
-+ * - pr_info:      Print this info to the console
-+ * - trace_printk: Print this info to trace buffer (good for verbose logging)
-+ */
-+
-+#define DWC2_TRACE_SCHEDULER		no_printk
-+#define DWC2_TRACE_SCHEDULER_VB		no_printk
-+
-+/* Detailed scheduler tracing, but won't overwhelm console */
-+#define dwc2_sch_dbg(hsotg, fmt, ...)					\
-+	DWC2_TRACE_SCHEDULER(pr_fmt("%s: SCH: " fmt),			\
-+			     dev_name(hsotg->dev), ##__VA_ARGS__)
-+
-+/* Verbose scheduler tracing */
-+#define dwc2_sch_vdbg(hsotg, fmt, ...)					\
-+	DWC2_TRACE_SCHEDULER_VB(pr_fmt("%s: SCH: " fmt),		\
-+				dev_name(hsotg->dev), ##__VA_ARGS__)
-+
- static inline u32 dwc2_readl(const void __iomem *addr)
- {
- 	u32 value = __raw_readl(addr);
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 1b46e2e617cc..809bc4ff9116 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -563,6 +563,11 @@ static inline u16 dwc2_frame_num_inc(u16 frame, u16 inc)
- 	return (frame + inc) & HFNUM_MAX_FRNUM;
- }
- 
-+static inline u16 dwc2_frame_num_dec(u16 frame, u16 dec)
-+{
-+	return (frame + HFNUM_MAX_FRNUM + 1 - dec) & HFNUM_MAX_FRNUM;
-+}
-+
- static inline u16 dwc2_full_frame_num(u16 frame)
- {
- 	return (frame & HFNUM_MAX_FRNUM) >> 3;
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 577c91096a51..5d25a5ec9736 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -138,13 +138,17 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
- 	while (qh_entry != &hsotg->periodic_sched_inactive) {
- 		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
- 		qh_entry = qh_entry->next;
--		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number))
-+		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
-+			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, sch=%04x\n",
-+				      qh, hsotg->frame_number, qh->sched_frame);
-+
- 			/*
- 			 * Move QH to the ready list to be executed next
- 			 * (micro)frame
- 			 */
- 			list_move_tail(&qh->qh_list_entry,
- 				  &hsotg->periodic_sched_ready);
-+		}
- 	}
- 	tr_type = dwc2_hcd_select_transactions(hsotg);
- 	if (tr_type != DWC2_TRANSACTION_NONE)
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index bc632a72f611..0e9faa75593c 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -113,6 +113,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 						     SCHEDULE_SLOP);
- 		qh->interval = urb->interval;
-+		dwc2_sch_dbg(hsotg, "QH=%p init sch=%04x, fn=%04x, int=%#x\n",
-+			     qh, qh->sched_frame, hsotg->frame_number,
-+			     qh->interval);
- #if 0
- 		/* Increase interrupt polling rate for debugging */
- 		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
-@@ -126,6 +129,11 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 			qh->interval *= 8;
- 			qh->sched_frame |= 0x7;
- 			qh->start_split_frame = qh->sched_frame;
-+			dwc2_sch_dbg(hsotg,
-+				     "QH=%p init*8 sch=%04x, fn=%04x, int=%#x\n",
-+				     qh, qh->sched_frame, hsotg->frame_number,
-+				     qh->interval);
-+
- 		}
- 		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
- 	}
-@@ -482,6 +490,8 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		if (frame >= 0) {
- 			qh->sched_frame &= ~0x7;
- 			qh->sched_frame |= (frame & 7);
-+			dwc2_sch_dbg(hsotg, "QH=%p sched_p sch=%04x, uf=%d\n",
-+				     qh, qh->sched_frame, frame);
- 		}
- 
- 		if (status > 0)
-@@ -583,10 +593,16 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 
- 	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
- 			!hsotg->frame_number) {
-+		u16 new_frame;
-+
- 		dev_dbg(hsotg->dev,
- 				"reset frame number counter\n");
--		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
-+		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 				SCHEDULE_SLOP);
-+
-+		dwc2_sch_vdbg(hsotg, "QH=%p reset sch=%04x=>%04x\n",
-+			      qh, qh->sched_frame, new_frame);
-+		qh->sched_frame = new_frame;
- 	}
- 
- 	/* Add the new QH to the appropriate schedule */
-@@ -652,6 +668,7 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 				      int sched_next_periodic_split)
- {
- 	u16 incr;
-+	u16 old_frame = qh->sched_frame;
- 
- 	if (sched_next_periodic_split) {
- 		qh->sched_frame = frame_number;
-@@ -677,6 +694,11 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 		qh->sched_frame |= 0x7;
- 		qh->start_split_frame = qh->sched_frame;
- 	}
-+
-+	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, sch=%04x=>%04x (%+d)\n",
-+		      qh, sched_next_periodic_split, frame_number, old_frame,
-+		      qh->sched_frame,
-+		      dwc2_frame_num_dec(qh->sched_frame, old_frame));
+-	spin_unlock(&hsotg->lock);
+ 	usb_hcd_giveback_urb(dwc2_hsotg_to_hcd(hsotg), urb, status);
+-	spin_lock(&hsotg->lock);
  }
  
  /*
+@@ -2962,7 +2960,7 @@ static struct hc_driver dwc2_hc_driver = {
+ 	.hcd_priv_size = sizeof(struct wrapper_priv_data),
+ 
+ 	.irq = _dwc2_hcd_irq,
+-	.flags = HCD_MEMORY | HCD_USB2,
++	.flags = HCD_MEMORY | HCD_USB2 | HCD_BH,
+ 
+ 	.start = _dwc2_hcd_start,
+ 	.stop = _dwc2_hcd_stop,
 -- 
 2.7.0.rc3.207.g0ac5344
