@@ -1,8 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 15/21] usb: dwc2: host: Add scheduler logging for missed
- SOFs
-Date: Fri, 22 Jan 2016 10:18:50 -0800
-Message-ID: <1453486736-15358-16-git-send-email-dianders@chromium.org>
+Subject: [PATCH v5 21/21] usb: dwc2: host: If using uframe scheduler,
+ end splits better
+Date: Fri, 22 Jan 2016 10:18:56 -0800
+Message-ID: <1453486736-15358-22-git-send-email-dianders@chromium.org>
 References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,89 +22,93 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We'll use the new "scheduler verbose debugging" macro to log missed
-SOFs.  This is fast enough (assuming you configure it to use the ftrace
-buffer) that we can do it without worrying about the speed hit.  The
-overhead hit if the scheduler tracing is set to "no_printk" should be
-near zero.
+The microframe scheduler figured out exactly how many transfers we need
+for a split transaction.  Let's use this knowledge to know when to end
+things.
+
+Without this I found that certain devices would just keep responding
+with tons of NYET resonses on their INT_IN endpoint.  These would just
+keep going and going and eventually we'd decide to terminate the
+transfer (because the whole frame changed), but by that time the
+scheduler would decide that we "missed" the start of the next transfer.
+I can also imagine that if we blow past the end of our scheduled time we
+may mess up other things that were scheduled to happen.
+
+No known test cases are improved by this patch except that the scheduler
+code doesn't yell about MISSES constantly anymore.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v5: None
 Changes in v4:
-- Add scheduler logging for missed SOFs new for v4.
+- If using uframe scheduler, end splits better new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/core.h     |  3 ++-
- drivers/usb/dwc2/hcd.c      |  2 +-
- drivers/usb/dwc2/hcd_intr.c | 12 ++++++++----
- 3 files changed, 11 insertions(+), 6 deletions(-)
+ drivers/usb/dwc2/hcd_intr.c | 48 +++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 42 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 18f9e4045643..64d45a2053bb 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -809,9 +809,10 @@ struct dwc2_hsotg {
- 	bool bus_suspended;
- 	bool new_connection;
- 
-+	u16 last_frame_num;
-+
- #ifdef CONFIG_USB_DWC2_TRACK_MISSED_SOFS
- #define FRAME_NUM_ARRAY_SIZE 1000
--	u16 last_frame_num;
- 	u16 *frame_num_array;
- 	u16 *last_frame_num_array;
- 	int frame_num_idx;
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index 584c64114a82..03072d1fd44d 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -3082,8 +3082,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
- 			FRAME_NUM_ARRAY_SIZE, GFP_KERNEL);
- 	if (!hsotg->last_frame_num_array)
- 		goto error1;
--	hsotg->last_frame_num = HFNUM_MAX_FRNUM;
- #endif
-+	hsotg->last_frame_num = HFNUM_MAX_FRNUM;
- 
- 	/* Check if the bus driver or platform code has setup a dma_mask */
- 	if (hsotg->core_params->dma_enable > 0 &&
 diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index b54a0c41d34f..1875e4590a3c 100644
+index 1875e4590a3c..2519e1bdad1a 100644
 --- a/drivers/usb/dwc2/hcd_intr.c
 +++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -55,12 +55,16 @@
- /* This function is for debug only */
- static void dwc2_track_missed_sofs(struct dwc2_hsotg *hsotg)
- {
--#ifdef CONFIG_USB_DWC2_TRACK_MISSED_SOFS
- 	u16 curr_frame_number = hsotg->frame_number;
-+	u16 expected = dwc2_frame_num_inc(hsotg->last_frame_num, 1);
+@@ -1353,14 +1353,50 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
+ 
+ 		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
+ 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC) {
+-			int frnum = dwc2_hcd_get_frame_number(hsotg);
++			struct dwc2_qh *qh = chan->qh;
++			bool past_end;
 +
-+	if (expected != curr_frame_number)
-+		dwc2_sch_vdbg(hsotg, "MISSED SOF %04x != %04x\n",
-+			expected, curr_frame_number);
++			if (hsotg->core_params->uframe_sched <= 0) {
++				int frnum = dwc2_hcd_get_frame_number(hsotg);
++
++				/* Don't have num_hs_transfers; simple logic */
++				past_end = dwc2_full_frame_num(frnum) !=
++				     dwc2_full_frame_num(qh->next_active_frame);
++			} else {
++				int end_frnum;
  
-+#ifdef CONFIG_USB_DWC2_TRACK_MISSED_SOFS
- 	if (hsotg->frame_num_idx < FRAME_NUM_ARRAY_SIZE) {
--		if (((hsotg->last_frame_num + 1) & HFNUM_MAX_FRNUM) !=
--		    curr_frame_number) {
-+		if (expected != curr_frame_number) {
- 			hsotg->frame_num_array[hsotg->frame_num_idx] =
- 					curr_frame_number;
- 			hsotg->last_frame_num_array[hsotg->frame_num_idx] =
-@@ -79,8 +83,8 @@ static void dwc2_track_missed_sofs(struct dwc2_hsotg *hsotg)
- 		}
- 		hsotg->dumped_frame_num_array = 1;
- 	}
--	hsotg->last_frame_num = curr_frame_number;
- #endif
-+	hsotg->last_frame_num = curr_frame_number;
- }
- 
- static void dwc2_hc_handle_tt_clear(struct dwc2_hsotg *hsotg,
+-			if (dwc2_full_frame_num(frnum) !=
+-			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
+ 				/*
+-				 * No longer in the same full speed frame.
+-				 * Treat this as a transaction error.
+-				 */
++				* Figure out the end frame based on schedule.
++				*
++				* We don't want to go on trying again and again
++				* forever.  Let's stop when we've done all the
++				* transfers that were scheduled.
++				*
++				* We're going to be comparing start_active_frame
++				* and next_active_frame, both of which are 1
++				* before the time the packet goes on the wire,
++				* so that cancels out.  Basically if had 1
++				* transfer and we saw 1 NYET then we're done.
++				* We're getting a NYET here so if next >=
++				* (start + num_transfers) we're done. The
++				* complexity is that for all but ISOC_OUT we
++				* skip one slot.
++				*/
++				end_frnum = dwc2_frame_num_inc(
++					qh->start_active_frame,
++					qh->num_hs_transfers);
++
++				if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
++				    qh->ep_is_in)
++					end_frnum =
++					       dwc2_frame_num_inc(end_frnum, 1);
++
++				past_end = dwc2_frame_num_le(
++					end_frnum, qh->next_active_frame);
++			}
++
++			if (past_end) {
++				/* Treat this as a transaction error. */
+ #if 0
+ 				/*
+ 				 * Todo: Fix system performance so this can
 -- 
 2.7.0.rc3.207.g0ac5344
