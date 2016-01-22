@@ -1,111 +1,174 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: rk3036: Add apll as the critical clock
-Date: Fri, 22 Jan 2016 15:49:08 +0800
-Message-ID: <56A1DEF4.2070409@rock-chips.com>
-References: <1453279037-23971-1-git-send-email-zhengxing@rock-chips.com> <7538210.fX6mmzZ75v@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <7538210.fX6mmzZ75v@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v7 0/9] Fix broken DMAFLUSHP on Rockchips platform
+Date: Fri, 22 Jan 2016 19:06:43 +0800
+Message-ID: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+This series patches are apply on linus master branch.
+Okay, this series patches verified on my github.
+(https://github.com/Caesar-github/rockchip/commits/for-dma-tests)
 
-On 2016=E5=B9=B401=E6=9C=8821=E6=97=A5 17:21, Heiko Stuebner wrote:
-> Hi Xing,
->
-> Am Mittwoch, 20. Januar 2016, 16:37:17 schrieb Xing Zheng:
->> The apll may be closed if there are some child clock nodes below
->> it when the device startup. Therefore, the apll should be keep
->> critical.
->>
->> The apll tree like this:
->>      pll_apll
->>         apll
->>            armclk
->>               pclk_dbg
->>               aclk_core_pre
->>            aclk_hvec
->>            uart_pll_clk
->>               uart2_src
->>                  uart2_frac
->>               uart1_src
->>                  uart1_frac
->>               uart0_src
->>                  uart0_frac
-> can you find out which of those clocks does cause your hang?
-> Because things like the uart-clocks for example should be handled by =
-their
-> driver already, at the time the clk_disable_unused runs(). So I'd rea=
-lly
-> like the critical clock to be the actually needed clock.
->
-> Thanks
-> Heiko
+Linux version 4.4.0+ (wxt@ubuntu)  (Ubuntu/Linaro 4.7.3-12ubuntu1) ) #14
+SMP Fri Jan 22 18:13:12 CST 2016
 
-It looks like that we call the rockchip_rk3036_pll_disable cause the=20
-apll is diabled.
-I think the diabled tracing like this:
-1. All of uart0_frac~uart2_frac are branch_fraction_divider type, they=20
-have CLK_SET_RATE_UNGATE flag,
-2. I enable cpufreq configs on the rk3036_defconfig, the default cpu=20
-freq is 600MHz durning loader, when startup it is 816MHz with default D=
-TS.
-Therefore, cpu freq will be change rate 600MHz to 816MHz then call=20
-clk_change_rate.
-3. With the flag CLK_SET_RATE_UNGATE, triggering call clk_core_disable.=
-=20
-In here, it will recursively close all of uart gates, finally, to call=20
-the root
-parent diable callback that is rockchip_rk3036_pll_disable.
+The perious version 6 from Shawn.
+(http://www.spinics.net/lists/dmaengine/msg06606.html)
+I pick them up to go on upstream since Shawn hasn't much time to track them.
+----
 
-The disble log:
-[ 1.074186] clk_change_rate -- CLK_SET_RATE_UNGATE name: uart2_frac,=20
-parent: uart2_src, core->flags =3D 0x00000424
-[ 1.105722] clk_gate_endisable -- name: uart2_frac, parent: uart2_src,=20
-enable =3D 0
-[ 1.110125] clk_gate_endisable -- name: uart2_src, parent: uart_pll_clk=
-,=20
-enable =3D 0
-[ 2.604445] rockchip_rk3036_pll_disable -- name: pll_apll, parent: xin2=
-4m
+The purpose of the DMAFLUSHP instruction:
+- Tell the peripheral to clear its status and control registers.
+- Send a message to the peripheral to resend its level status.
 
-Therefore, I am considering uart_pll_clk hang onto gpll, or add it into=
-=20
-the critical clock replace using apll...
+There are 3 timings described in PL330 Technical Reference Manual:
+- Timing 1: Burst request, can work well without DMAFLUSHP.
+- Timing 2: Single and burst request, DMAC will ignore the single
+            transfer request. This timing happens if there are single
+            and burst request.
+- Timing 3: Single transfers for a burst request, DMAC should signals
+            datype to request the peripheral to flush the contents of
+            any control registers. This timing happens if there is
+            not enough MFIFO to places the burst data.
 
-If there are some mistake, please correct me. :-)
+A peripheral may signal a DMA request during the execution of
+DMAFLUSHP instruction, that cause DMA request being ignored by DMAC.
 
-Thanks.
+But DMAC and all peripherals on RK3X SoCs DO NOT support DMAFLUSHP.
+It can't send a message to the peripheral to resend DMA request,
+and the peripheral can't acknowledge a flush request from DMAC.
+So all DMA requests should NOT be ignored by DMAC, and DMAC will not
+notify the peripheral to flush.
 
->
->
->> Signed-off-by: Xing Zheng<zhengxing@rock-chips.com>
->> ---
->>
->>   drivers/clk/rockchip/clk-rk3036.c |    1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3036.c
->> b/drivers/clk/rockchip/clk-rk3036.c index ebce980..483913b 100644
->> --- a/drivers/clk/rockchip/clk-rk3036.c
->> +++ b/drivers/clk/rockchip/clk-rk3036.c
->> @@ -425,6 +425,7 @@ static struct rockchip_clk_branch
->> rk3036_clk_branches[] __initdata =3D { };
->>
->>   static const char *const rk3036_critical_clocks[] __initconst =3D =
-{
->> +	"apll",
->>   	"aclk_cpu",
->>   	"aclk_peri",
->>   	"hclk_peri",
->
->
->
+To fix this problem, we need:
+- Do NOT execute DMAFLUSHP instruction.
+- Timing 2 and timing 3 should not happen.
+
+Because on RK3X SoCs, there are 6 or below  channels and 32 MFIFO depth
+for DMAC_BUS, and 8 channels and 64 MFIFO depth for DMAC_PERI, it is
+impossible to hit the timing 3 if burst length is equal or less than 4.
+
+Since the request type signal by the peripheral can only be set by
+software. We can set Rockchip Soc's GRF_PERIDMAC_CON0[2:1] to select single
+or burst request, if it is set b01,  all of the peripharals will signal a brust
+request. So the timing 2 will not happen, too.
+
+So DMAC on RK3X can support single or burst transfer, but can't support
+mixed transfer.
+
+Because burst transfer is more efficient than single transfer, this is
+confirmed by our ASIC team, who strongly suggest to use burst transfer.
+And this is confirmed by Addy's test on RK3288-Pink2 board, the speed of
+spi flash burst transfer will increase about two times than single transfer.
+Also, I have tested dw_mmc with pl330 on RK3188 platform to double confirm
+the result. That means burst transfer is reansonable.
+
+So we need a quirk not to execute DMAFLUSHP instruction and to use burst
+transfer.
+
+Note:
+- The Rockchip Soc default value of GRF_PERIDMAC_CON0[2:1] is b01. To
+  support brust transfer, these bits should not be changed in bootloader.
+
+Todo:
+remove the patches releated to i2s, that will send them at later.
+- https://patchwork.kernel.org/patch/7399581/
+- https://patchwork.kernel.org/patch/7399671/
 
 
+Changes in v7:
+- As vinod comments, fix the subsystem name.
+- modify the subject to be better match.
+- fix the subsystem.
+- fix the subject.
+- fix the subject.
+
+Changes in v6:
+- remove expose quirk and add dma max_burst caps for clients
+- remove expose quirks and add max_burst for dmaengine
+- remove quirks and get dma caps in order to limit burst
+
+Changes in v5:
+- add Mark's tag for spi changes
+- remove unnecessary whitespace change
+- use switch statement for i2s quirk
+
+Changes in v4:
+- remove spi & i2s dts changes and query quirk from dmaengine API
+  suggeseted by Mark.
+- fix typo
+- Add dmaengine_get_quirk hook and implement it for pl330
+
+Changes in v3:
+- add Sunny's tag
+- add more rockchip drivers' changes in this patchset
+- add Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+- add Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+- add Reviewed-by: Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+Changes in v2:
+- amend the author
+- reorder the patches suggested by Doug
+- add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> for
+  rk3288.dtsi patch and arm-pl330.txt patch
+- add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+- amend the author
+- fix Olof's mail address
+- amend the author
+- add Reviewed-by: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+- amend Olof's mail address
+
+Changes in v1:
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+- add From original author.
+- remove Sunny's tag
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+- remove Sunny's tag
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+  - remove Sunny's tag
+- rename broken-no-flushp to "arm,pl330-broken-no-flushp" suggested
+  by Krzysztof.
+
+Addy Ke (3):
+  dmaengine: pl330: add quirk for broken no flushp
+  ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3288 platform
+  spi: rockchip: modify DMA max burst to 1
+
+Boojin Kim (1):
+  dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev
+    transmit
+
+Caesar Wang (1):
+  ARM: dts: add pl330-broken-no-flushp quirk for rk3036 SoCs
+
+Shawn Lin (4):
+  dt/bindings: arm-pl330: add description of arm, pl330-broken-no-flushp
+  ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3xxx platform
+  dmaengine: core: expose max burst capability to clients
+  dmaengine: pl330: add max burst for dmaengine
+
+ .../devicetree/bindings/dma/arm-pl330.txt          |   1 +
+ arch/arm/boot/dts/rk3036.dtsi                      |   1 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   3 +
+ arch/arm/boot/dts/rk3xxx.dtsi                      |   3 +
+ drivers/dma/dmaengine.c                            |   1 +
+ drivers/dma/pl330.c                                | 106 +++++++++++++++------
+ drivers/spi/spi-rockchip.c                         |  12 ++-
+ include/linux/dmaengine.h                          |   4 +
+ 8 files changed, 99 insertions(+), 32 deletions(-)
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
