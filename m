@@ -1,42 +1,73 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Bump sd card pin drive strength up on
- firefly boards
-Date: Fri, 22 Jan 2016 14:33:13 +0100
-Message-ID: <1922254.O59ZZAW3Pv@phil>
-References: <1453381033-3479-1-git-send-email-w.egorov@phytec.de>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Fri, 22 Jan 2016 15:00:27 +0100
+Message-ID: <CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+ <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
+ <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+ <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+ <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+ <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com> <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453381033-3479-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, naobsd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 21. Januar 2016, 13:57:13 schrieb Wadim Egorov:
-> It seems some firefly boards need 12mA drive strength for sdmmc.
-> Using 4mA/8mA drive strength will cause the kernel to fail to recognize
-> the sd card correctly.
-> Increased the sdmmc lines drive strength from 4mA to 12mA.
-> 
-> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+On 21 January 2016 at 21:11, Doug Anderson <dianders@chromium.org> wrote:
+> Hi,
+>
+> On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>> So we have a mechanism for detecting a conflict in the clock
+>> hierarchy, and a mechanism to solve it, but we are missing a way for
+>> userspace to communicate policy regarding which clocks should be given
+>> priority when solving such a conflict?
+>
+> Hrmmm, I guess it could be userspace that makes the decision.  It does
+> seem a little odd to force it to userspace in all cases, though.  For
+> a particular laptop that is designed with a specific panel connected
+> up eDP it seems less than ideal to push this into userspace.  If the
+> kernel could just work in the expected sane way (or at least work that
+> way by default) it would be ideal.
 
-applied to my dts32 branch for 4.6.
+Ah, I was wrongly assuming that the kernel didn't have enough
+information to make an informed decision in this case, sorry.
 
-As I said somewhere on IRC before, it might be worthwhile to bump the 
-default drive-strength at some point, but so far it seems the minimal needed 
-values seem to diverge (8mA on Veyron, 12ma [4mA on mine] on firefly and 
-seemingly 4mA working fine on the Rock2). So I guess we'll postpone that a 
-bit more until we have more datapoints ;-)
+Guess the per-user rate limits don't help here because the consumer
+with higher priority could work with frequencies other than the ideal.
 
+And we cannot have a consumer listening for PRE_RATE_CHANGE and
+aborting unwanted changes or rerouting the ancestors of the clocks of
+other consumers because that would be a massive violation of
+separation of concerns.
 
-Heiko
+If we were to rearrange the clock topology from within the CCF, then
+consumers need to have a way to communicate to the core that they are
+more important than other consumers. clk_set_important(clk, true)
+could be enough in this case, but would be insufficient in more
+complex cases where more than two clocks could use the same PLL.
+
+> If the kernel doesn't try to do anything sane by default then you're
+> creating a requirement for everyone's userspace to somehow figure this
+> out.  Do you expect there to be UI here, or that this would be
+> something that would be figured out by the Linux distribution?
+> Certainly exposing UI on something like a laptop with a builtin panel
+> wouldn't make any sense to me, but it might make sense if you had an
+> eval board with different display connectors on it.  If there's no UI,
+> would the Linux distribution need to somehow identify which board we
+> were on and then have a big lookup table about how to configure
+> things?
+
+If we don't actually need input from userspace for this use case, I
+wouldn't go this way right now, because it seems to me like it could
+be a really big timesink for little gain.
+
+Once someone comes with a situation in which feedback from userspace
+is really needed, that person can propose such an interface ;)
+
+Regards,
+
+Tomeu
