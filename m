@@ -1,105 +1,73 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Fri, 22 Jan 2016 09:07:50 -0800
-Message-ID: <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
-	<48806799.thBSifdUp8@diego>
-	<54647142.4080800@rock-chips.com>
-	<CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
-	<CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
-	<CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
-	<CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
-	<CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
-	<CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
+ output clock to codec
+Date: Fri, 22 Jan 2016 17:18:15 +0000
+Message-ID: <20160122171815.GD6588@sirena.org.uk>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+ <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+ <20160115174623.GZ6588@sirena.org.uk>
+ <CAPz6YkWt-iXS6P4QBBoq3v3i7ZAGGu6=_9AHw4qgevEwDwbdTA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="0X5AUaifkWPNnJg2"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAPz6YkWt-iXS6P4QBBoq3v3i7ZAGGu6=_9AHw4qgevEwDwbdTA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sonny Rao <sonnyrao@chromium.org>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, leozwang@google.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Kees Cook <keescook@google.com>, Jianqun Xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Tomeu,
 
-On Fri, Jan 22, 2016 at 6:00 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
-> On 21 January 2016 at 21:11, Doug Anderson <dianders@chromium.org> wrote:
->> Hi,
->>
->> On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
->>> So we have a mechanism for detecting a conflict in the clock
->>> hierarchy, and a mechanism to solve it, but we are missing a way for
->>> userspace to communicate policy regarding which clocks should be given
->>> priority when solving such a conflict?
->>
->> Hrmmm, I guess it could be userspace that makes the decision.  It does
->> seem a little odd to force it to userspace in all cases, though.  For
->> a particular laptop that is designed with a specific panel connected
->> up eDP it seems less than ideal to push this into userspace.  If the
->> kernel could just work in the expected sane way (or at least work that
->> way by default) it would be ideal.
->
-> Ah, I was wrongly assuming that the kernel didn't have enough
-> information to make an informed decision in this case, sorry.
->
-> Guess the per-user rate limits don't help here because the consumer
-> with higher priority could work with frequencies other than the ideal.
->
-> And we cannot have a consumer listening for PRE_RATE_CHANGE and
-> aborting unwanted changes or rerouting the ancestors of the clocks of
-> other consumers because that would be a massive violation of
-> separation of concerns.
->
-> If we were to rearrange the clock topology from within the CCF, then
-> consumers need to have a way to communicate to the core that they are
-> more important than other consumers. clk_set_important(clk, true)
-> could be enough in this case, but would be insufficient in more
-> complex cases where more than two clocks could use the same PLL.
+--0X5AUaifkWPNnJg2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-With something like the above I'd still expect some complexity
-depending on the probe order.  If a less important device grabs the
-clock first, it might be forced to re-think its clocks later.  That
-might be disconcerting.
+On Fri, Jan 15, 2016 at 01:48:04PM -0800, Sonny Rao wrote:
+> On Fri, Jan 15, 2016 at 9:46 AM, Mark Brown <broonie@kernel.org> wrote:
 
-OK, so I was just involved in a change recently that made me realize
-that maybe our original problems were tied to the fact that our
-builtin panels were trying to specify a clock that was impossible to
-achieve with CPLL / GPLL.  It was a known problem that the request
-would be denied and the CCF would just pick the closest rate it could.
-Probably the right thing is to solve _that_ problem first.  If using
-simple panel you could do a change like
-<https://chromium-review.googlesource.com/#/c/323211/> (though
-presumably you'd have to handle people using the same panel in other
-laptops).  You might also be able to do funny things to fixup the mode
-like dbehr tried to do in
-<https://chromium-review.googlesource.com/#/c/270017/>.  By doing this
-and making sure that
+> > If the I2S block is providing a clock to the CODEC then that's what the
+> > software should do so that the CODEC can gate and ungate the clock as
+> > required.  This patch has the I2S block using a clock, not providing
+> > one.
 
-With that being said, how about this as a solution:
+> From my read of the clock diagram for RK3288  there is a single clock
+> signal (labeled "clk_i2s0") that comes out of a fractional divider,
+> and it is split such that one path gets sent to the I2S block and the
+> second path is sent to a mux after which that signal is sent to an
+> external pin that goes to the codec.
 
-1. Figure some way (presumably some type of device tree property?) to
-make sure that the builtin panel chose a clock that was achievable by
-dividing CPLL / GPLL on rk3288.  If you have eDP but no builtin panel
-you wouldn't specify this and you'd just let the system pick whatever
-it wanted.
+> There are separate clock gates for the two paths: one for the I2S
+> block and one after that mux before the external pin.
 
-2. We use "assigned-clocks" to (by default) make NPLL something silly
-and unattractive.  This will keep the common clock framework from
-picking it to use as the source if the clock could be made just as
-well from CPLL / GPLL (or find some other way to make NPLL a lower
-priority muxing option).
+> I'm not sure if it's being modeled that way in the Linux code or not,
+> but at least physically I don't think this clock signal actually goes
+> through the I2S block before being sent to the codec.
 
-3. We use the "dibs" rule in that the first display driver to claim
-NPLL blocks anyone else from changing things.
+That's not really the issue here, the issue is that it's not the I2S
+controller that is consuming the clock so it should not be the I2S
+controller driver that ensures that the clock is enabled.  The driver
+that manages the clock should be the one that uses it, like I say this
+means you should add the code to enable the clock to the CODEC driver if
+the CODEC driver needs the clock enabled.
 
+> Does that help clarify?
 
-In the above on a laptop with a builtin panel and an HDMI port you'd
-get the panel using CPLL / GPLL and HDMI getting CPLL, GPLL or NPLL
-(and it would be able to change NPLL if needed).
+The problem here isn't a lack of clarity in the situation.
 
+--0X5AUaifkWPNnJg2
+Content-Type: application/pgp-signature; name="signature.asc"
 
-In the above on a dev board with a lot of ports then the first device
-probed would get the most flexibility.  Future devices would be
-limited in their choices.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
--Doug
+iQEcBAEBCAAGBQJWomRWAAoJECTWi3JdVIfQrHoH/0sT/vkxLuO2qCJ7LnZUWuS+
+ALnGdYuKSu8661DwWSgJBxjeZMeso+m/mlgiUTI8KxDyRkE2tNj3Q/W29OvoC2PZ
++7B3sgtRxDdkW7kx0QN7kgHMciixZY5ud4g4WnNf5gx61U83fpnzPZ8TV3o2MPR2
+B+Luetgno4jykJwnbL/2J/NwOGD2JBnQJweeyli95zfQnGCnyuhjEQdz8mettrYD
+i3h4VEJlojluMFlwhnr84+6pgwvMm38ufNmJbd+Ftufl30y6mAx24BCpaz4iy0GS
+48g60apIuhpDIHzf+3Io2Fd5CD+N+Ves7DfU0lRPHnueq/eGPNihVOUgghi+xtU=
+=9en3
+-----END PGP SIGNATURE-----
+
+--0X5AUaifkWPNnJg2--
