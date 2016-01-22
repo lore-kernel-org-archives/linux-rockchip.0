@@ -1,8 +1,7 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v5 18/21] usb: dwc2: host: Add
- dwc2_hcd_get_future_frame_number() call
-Date: Fri, 22 Jan 2016 10:18:53 -0800
-Message-ID: <1453486736-15358-19-git-send-email-dianders@chromium.org>
+Subject: [PATCH v5 13/21] usb: dwc2: host: Reorder things in hcd_queue.c
+Date: Fri, 22 Jan 2016 10:18:48 -0800
+Message-ID: <1453486736-15358-14-git-send-email-dianders@chromium.org>
 References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,92 +21,662 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As we start getting more exact about our scheduling it's becoming more
-and more important to know exactly how far through the current frame we
-are.  This lets us make decisions about whether there's still time left
-to start a new transaction in the current frame.
+This no-op change just reorders a few functions in hcd_queue.c in order
+to prepare for future changes.  Motivations here:
 
-We'll add dwc2_hcd_get_future_frame_number() which will tell you what
-the frame number will be a certain number of microseconds (us) from
-now.  We can use this information to help decide if there's enough time
-left in the frame for a transaction that will take a certain duration.
+The functions dwc2_hcd_qh_free() and dwc2_hcd_qh_create() are exported
+functions.  They are not called within the file.  That means that they
+should be near the bottom so that they can easily call static helpers.
 
-This is expected to be used by a future change ("usb: dwc2: host:
-Properly set even/odd frame").
+The function dwc2_qh_init() is only called by dwc2_hcd_qh_create() and
+should move near the bottom with it.
+
+The only reason that the dwc2_unreserve_timer_fn() timer function (and
+its subroutine dwc2_do_unreserve()) were so high in the file was that
+they needed to be above dwc2_qh_init().  Now that dwc2_qh_init() has
+been moved down it can be moved down a bit.  A later patch will split
+the reserve code out of dwc2_schedule_periodic() and the reserve
+function should be near the unreserve function.  The reserve function
+needs to be below dwc2_find_uframe() since it calls that.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
 Changes in v5: None
 Changes in v4:
-- Add dwc2_hcd_get_future_frame_number() call new for v4.
+- Reorder things in hcd_queue.c new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/core.h |  4 ++++
- drivers/usb/dwc2/hcd.c  | 29 +++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
+ drivers/usb/dwc2/hcd_queue.c | 600 +++++++++++++++++++++----------------------
+ 1 file changed, 300 insertions(+), 300 deletions(-)
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 64d45a2053bb..52cbea28d0e9 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -1235,12 +1235,16 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
+diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+index 39f4de6279f8..8a2067bc1e62 100644
+--- a/drivers/usb/dwc2/hcd_queue.c
++++ b/drivers/usb/dwc2/hcd_queue.c
+@@ -57,295 +57,6 @@
+ #define DWC2_UNRESERVE_DELAY (msecs_to_jiffies(5))
  
- #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
- extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
-+extern int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us);
- extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
- extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
- extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
- #else
- static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
- { return 0; }
-+static inline int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg,
-+						   int us)
-+{ return 0; }
- static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
- static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
- static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index 03072d1fd44d..83dc92da10a0 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -1947,6 +1947,35 @@ int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
- 	return (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
- }
+ /**
+- * dwc2_do_unreserve() - Actually release the periodic reservation
+- *
+- * This function actually releases the periodic bandwidth that was reserved
+- * by the given qh.
+- *
+- * @hsotg: The HCD state structure for the DWC OTG controller
+- * @qh:    QH for the periodic transfer.
+- */
+-static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+-{
+-	assert_spin_locked(&hsotg->lock);
+-
+-	WARN_ON(!qh->unreserve_pending);
+-
+-	/* No more unreserve pending--we're doing it */
+-	qh->unreserve_pending = false;
+-
+-	if (WARN_ON(!list_empty(&qh->qh_list_entry)))
+-		list_del_init(&qh->qh_list_entry);
+-
+-	/* Update claimed usecs per (micro)frame */
+-	hsotg->periodic_usecs -= qh->host_us;
+-
+-	if (hsotg->core_params->uframe_sched > 0) {
+-		int i;
+-
+-		for (i = 0; i < 8; i++) {
+-			hsotg->frame_usecs[i] += qh->frame_usecs[i];
+-			qh->frame_usecs[i] = 0;
+-		}
+-	} else {
+-		/* Release periodic channel reservation */
+-		hsotg->periodic_channels--;
+-	}
+-}
+-
+-/**
+- * dwc2_unreserve_timer_fn() - Timer function to release periodic reservation
+- *
+- * According to the kernel doc for usb_submit_urb() (specifically the part about
+- * "Reserved Bandwidth Transfers"), we need to keep a reservation active as
+- * long as a device driver keeps submitting.  Since we're using HCD_BH to give
+- * back the URB we need to give the driver a little bit of time before we
+- * release the reservation.  This worker is called after the appropriate
+- * delay.
+- *
+- * @work: Pointer to a qh unreserve_work.
+- */
+-static void dwc2_unreserve_timer_fn(unsigned long data)
+-{
+-	struct dwc2_qh *qh = (struct dwc2_qh *)data;
+-	struct dwc2_hsotg *hsotg = qh->hsotg;
+-	unsigned long flags;
+-
+-	/*
+-	 * Wait for the lock, or for us to be scheduled again.  We
+-	 * could be scheduled again if:
+-	 * - We started executing but didn't get the lock yet.
+-	 * - A new reservation came in, but cancel didn't take effect
+-	 *   because we already started executing.
+-	 * - The timer has been kicked again.
+-	 * In that case cancel and wait for the next call.
+-	 */
+-	while (!spin_trylock_irqsave(&hsotg->lock, flags)) {
+-		if (timer_pending(&qh->unreserve_timer))
+-			return;
+-	}
+-
+-	/*
+-	 * Might be no more unreserve pending if:
+-	 * - We started executing but didn't get the lock yet.
+-	 * - A new reservation came in, but cancel didn't take effect
+-	 *   because we already started executing.
+-	 *
+-	 * We can't put this in the loop above because unreserve_pending needs
+-	 * to be accessed under lock, so we can only check it once we got the
+-	 * lock.
+-	 */
+-	if (qh->unreserve_pending)
+-		dwc2_do_unreserve(hsotg, qh);
+-
+-	spin_unlock_irqrestore(&hsotg->lock, flags);
+-}
+-
+-/**
+- * dwc2_qh_init() - Initializes a QH structure
+- *
+- * @hsotg: The HCD state structure for the DWC OTG controller
+- * @qh:    The QH to init
+- * @urb:   Holds the information about the device/endpoint needed to initialize
+- *         the QH
+- */
+-#define SCHEDULE_SLOP 10
+-static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+-			 struct dwc2_hcd_urb *urb)
+-{
+-	int dev_speed, hub_addr, hub_port;
+-	char *speed, *type;
+-
+-	dev_vdbg(hsotg->dev, "%s()\n", __func__);
+-
+-	/* Initialize QH */
+-	qh->hsotg = hsotg;
+-	setup_timer(&qh->unreserve_timer, dwc2_unreserve_timer_fn,
+-		    (unsigned long)qh);
+-	qh->ep_type = dwc2_hcd_get_pipe_type(&urb->pipe_info);
+-	qh->ep_is_in = dwc2_hcd_is_pipe_in(&urb->pipe_info) ? 1 : 0;
+-
+-	qh->data_toggle = DWC2_HC_PID_DATA0;
+-	qh->maxp = dwc2_hcd_get_mps(&urb->pipe_info);
+-	INIT_LIST_HEAD(&qh->qtd_list);
+-	INIT_LIST_HEAD(&qh->qh_list_entry);
+-
+-	/* FS/LS Endpoint on HS Hub, NOT virtual root hub */
+-	dev_speed = dwc2_host_get_speed(hsotg, urb->priv);
+-
+-	dwc2_host_hub_info(hsotg, urb->priv, &hub_addr, &hub_port);
+-
+-	if ((dev_speed == USB_SPEED_LOW || dev_speed == USB_SPEED_FULL) &&
+-	    hub_addr != 0 && hub_addr != 1) {
+-		dev_vdbg(hsotg->dev,
+-			 "QH init: EP %d: TT found at hub addr %d, for port %d\n",
+-			 dwc2_hcd_get_ep_num(&urb->pipe_info), hub_addr,
+-			 hub_port);
+-		qh->do_split = 1;
+-	}
+-
+-	if (qh->ep_type == USB_ENDPOINT_XFER_INT ||
+-	    qh->ep_type == USB_ENDPOINT_XFER_ISOC) {
+-		/* Compute scheduling parameters once and save them */
+-		u32 hprt, prtspd;
+-
+-		/* Todo: Account for split transfers in the bus time */
+-		int bytecount =
+-			dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
+-
+-		qh->host_us = NS_TO_US(usb_calc_bus_time(qh->do_split ?
+-			      USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
+-			      qh->ep_type == USB_ENDPOINT_XFER_ISOC,
+-			      bytecount));
+-
+-		/* Ensure frame_number corresponds to the reality */
+-		hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
+-		/* Start in a slightly future (micro)frame */
+-		qh->next_active_frame = dwc2_frame_num_inc(hsotg->frame_number,
+-						     SCHEDULE_SLOP);
+-		qh->host_interval = urb->interval;
+-		dwc2_sch_dbg(hsotg, "QH=%p init nxt=%04x, fn=%04x, int=%#x\n",
+-			     qh, qh->next_active_frame, hsotg->frame_number,
+-			     qh->host_interval);
+-#if 0
+-		/* Increase interrupt polling rate for debugging */
+-		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
+-			qh->host_interval = 8;
+-#endif
+-		hprt = dwc2_readl(hsotg->regs + HPRT0);
+-		prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
+-		if (prtspd == HPRT0_SPD_HIGH_SPEED &&
+-		    (dev_speed == USB_SPEED_LOW ||
+-		     dev_speed == USB_SPEED_FULL)) {
+-			qh->host_interval *= 8;
+-			qh->next_active_frame |= 0x7;
+-			qh->start_split_frame = qh->next_active_frame;
+-			dwc2_sch_dbg(hsotg,
+-				     "QH=%p init*8 nxt=%04x, fn=%04x, int=%#x\n",
+-				     qh, qh->next_active_frame,
+-				     hsotg->frame_number, qh->host_interval);
+-
+-		}
+-		dev_dbg(hsotg->dev, "interval=%d\n", qh->host_interval);
+-	}
+-
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH Initialized\n");
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - qh = %p\n", qh);
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Device Address = %d\n",
+-		 dwc2_hcd_get_dev_addr(&urb->pipe_info));
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Endpoint %d, %s\n",
+-		 dwc2_hcd_get_ep_num(&urb->pipe_info),
+-		 dwc2_hcd_is_pipe_in(&urb->pipe_info) ? "IN" : "OUT");
+-
+-	qh->dev_speed = dev_speed;
+-
+-	switch (dev_speed) {
+-	case USB_SPEED_LOW:
+-		speed = "low";
+-		break;
+-	case USB_SPEED_FULL:
+-		speed = "full";
+-		break;
+-	case USB_SPEED_HIGH:
+-		speed = "high";
+-		break;
+-	default:
+-		speed = "?";
+-		break;
+-	}
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Speed = %s\n", speed);
+-
+-	switch (qh->ep_type) {
+-	case USB_ENDPOINT_XFER_ISOC:
+-		type = "isochronous";
+-		break;
+-	case USB_ENDPOINT_XFER_INT:
+-		type = "interrupt";
+-		break;
+-	case USB_ENDPOINT_XFER_CONTROL:
+-		type = "control";
+-		break;
+-	case USB_ENDPOINT_XFER_BULK:
+-		type = "bulk";
+-		break;
+-	default:
+-		type = "?";
+-		break;
+-	}
+-
+-	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Type = %s\n", type);
+-
+-	if (qh->ep_type == USB_ENDPOINT_XFER_INT) {
+-		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - usecs = %d\n",
+-			 qh->host_us);
+-		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - interval = %d\n",
+-			 qh->host_interval);
+-	}
+-}
+-
+-/**
+- * dwc2_hcd_qh_create() - Allocates and initializes a QH
+- *
+- * @hsotg:        The HCD state structure for the DWC OTG controller
+- * @urb:          Holds the information about the device/endpoint needed
+- *                to initialize the QH
+- * @atomic_alloc: Flag to do atomic allocation if needed
+- *
+- * Return: Pointer to the newly allocated QH, or NULL on error
+- */
+-struct dwc2_qh *dwc2_hcd_qh_create(struct dwc2_hsotg *hsotg,
+-					  struct dwc2_hcd_urb *urb,
+-					  gfp_t mem_flags)
+-{
+-	struct dwc2_qh *qh;
+-
+-	if (!urb->priv)
+-		return NULL;
+-
+-	/* Allocate memory */
+-	qh = kzalloc(sizeof(*qh), mem_flags);
+-	if (!qh)
+-		return NULL;
+-
+-	dwc2_qh_init(hsotg, qh, urb);
+-
+-	if (hsotg->core_params->dma_desc_enable > 0 &&
+-	    dwc2_hcd_qh_init_ddma(hsotg, qh, mem_flags) < 0) {
+-		dwc2_hcd_qh_free(hsotg, qh);
+-		return NULL;
+-	}
+-
+-	return qh;
+-}
+-
+-/**
+- * dwc2_hcd_qh_free() - Frees the QH
+- *
+- * @hsotg: HCD instance
+- * @qh:    The QH to free
+- *
+- * QH should already be removed from the list. QTD list should already be empty
+- * if called from URB Dequeue.
+- *
+- * Must NOT be called with interrupt disabled or spinlock held
+- */
+-void dwc2_hcd_qh_free(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+-{
+-	/* Make sure any unreserve work is finished. */
+-	if (del_timer_sync(&qh->unreserve_timer)) {
+-		unsigned long flags;
+-
+-		spin_lock_irqsave(&hsotg->lock, flags);
+-		dwc2_do_unreserve(hsotg, qh);
+-		spin_unlock_irqrestore(&hsotg->lock, flags);
+-	}
+-
+-	if (qh->desc_list)
+-		dwc2_hcd_qh_free_ddma(hsotg, qh);
+-	kfree(qh);
+-}
+-
+-/**
+  * dwc2_periodic_channel_available() - Checks that a channel is available for a
+  * periodic transfer
+  *
+@@ -518,19 +229,104 @@ static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
  
-+int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us)
-+{
-+	u32 hprt = dwc2_readl(hsotg->regs + HPRT0);
-+	u32 hfir = dwc2_readl(hsotg->regs + HFIR);
-+	u32 hfnum = dwc2_readl(hsotg->regs + HFNUM);
-+	unsigned int us_per_frame;
-+	unsigned int frame_number;
-+	unsigned int remaining;
-+	unsigned int interval;
-+	unsigned int phy_clks;
+ static int dwc2_find_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+ {
+-	int ret;
++	int ret;
 +
-+	/* High speed has 125 us per (micro) frame; others are 1 ms per */
-+	us_per_frame = (hprt & HPRT0_SPD_MASK) ? 1000 : 125;
-+
-+	/* Extract fields */
-+	frame_number = (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
-+	remaining = (hfnum & HFNUM_FRREM_MASK) >> HFNUM_FRREM_SHIFT;
-+	interval = (hfir & HFIR_FRINT_MASK) >> HFIR_FRINT_SHIFT;
-+
-+	/*
-+	 * Number of phy clocks since the last tick of the frame number after
-+	 * "us" has passed.
-+	 */
-+	phy_clks = (interval - remaining) +
-+		   DIV_ROUND_UP(interval * us, us_per_frame);
-+
-+	return dwc2_frame_num_inc(frame_number, phy_clks / interval);
++	if (qh->dev_speed == USB_SPEED_HIGH) {
++		/* if this is a hs transaction we need a full frame */
++		ret = dwc2_find_single_uframe(hsotg, qh);
++	} else {
++		/*
++		 * if this is a fs transaction we may need a sequence
++		 * of frames
++		 */
++		ret = dwc2_find_multi_uframe(hsotg, qh);
++	}
++	return ret;
 +}
 +
- int dwc2_hcd_is_b_host(struct dwc2_hsotg *hsotg)
- {
- 	return hsotg->op_state == OTG_STATE_B_HOST;
++/**
++ * dwc2_do_unreserve() - Actually release the periodic reservation
++ *
++ * This function actually releases the periodic bandwidth that was reserved
++ * by the given qh.
++ *
++ * @hsotg: The HCD state structure for the DWC OTG controller
++ * @qh:    QH for the periodic transfer.
++ */
++static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
++{
++	assert_spin_locked(&hsotg->lock);
++
++	WARN_ON(!qh->unreserve_pending);
++
++	/* No more unreserve pending--we're doing it */
++	qh->unreserve_pending = false;
++
++	if (WARN_ON(!list_empty(&qh->qh_list_entry)))
++		list_del_init(&qh->qh_list_entry);
++
++	/* Update claimed usecs per (micro)frame */
++	hsotg->periodic_usecs -= qh->host_us;
++
++	if (hsotg->core_params->uframe_sched > 0) {
++		int i;
++
++		for (i = 0; i < 8; i++) {
++			hsotg->frame_usecs[i] += qh->frame_usecs[i];
++			qh->frame_usecs[i] = 0;
++		}
++	} else {
++		/* Release periodic channel reservation */
++		hsotg->periodic_channels--;
++	}
++}
++
++/**
++ * dwc2_unreserve_timer_fn() - Timer function to release periodic reservation
++ *
++ * According to the kernel doc for usb_submit_urb() (specifically the part about
++ * "Reserved Bandwidth Transfers"), we need to keep a reservation active as
++ * long as a device driver keeps submitting.  Since we're using HCD_BH to give
++ * back the URB we need to give the driver a little bit of time before we
++ * release the reservation.  This worker is called after the appropriate
++ * delay.
++ *
++ * @work: Pointer to a qh unreserve_work.
++ */
++static void dwc2_unreserve_timer_fn(unsigned long data)
++{
++	struct dwc2_qh *qh = (struct dwc2_qh *)data;
++	struct dwc2_hsotg *hsotg = qh->hsotg;
++	unsigned long flags;
+ 
+-	if (qh->dev_speed == USB_SPEED_HIGH) {
+-		/* if this is a hs transaction we need a full frame */
+-		ret = dwc2_find_single_uframe(hsotg, qh);
+-	} else {
+-		/*
+-		 * if this is a fs transaction we may need a sequence
+-		 * of frames
+-		 */
+-		ret = dwc2_find_multi_uframe(hsotg, qh);
++	/*
++	 * Wait for the lock, or for us to be scheduled again.  We
++	 * could be scheduled again if:
++	 * - We started executing but didn't get the lock yet.
++	 * - A new reservation came in, but cancel didn't take effect
++	 *   because we already started executing.
++	 * - The timer has been kicked again.
++	 * In that case cancel and wait for the next call.
++	 */
++	while (!spin_trylock_irqsave(&hsotg->lock, flags)) {
++		if (timer_pending(&qh->unreserve_timer))
++			return;
+ 	}
+-	return ret;
++
++	/*
++	 * Might be no more unreserve pending if:
++	 * - We started executing but didn't get the lock yet.
++	 * - A new reservation came in, but cancel didn't take effect
++	 *   because we already started executing.
++	 *
++	 * We can't put this in the loop above because unreserve_pending needs
++	 * to be accessed under lock, so we can only check it once we got the
++	 * lock.
++	 */
++	if (qh->unreserve_pending)
++		dwc2_do_unreserve(hsotg, qh);
++
++	spin_unlock_irqrestore(&hsotg->lock, flags);
+ }
+ 
+ /**
+@@ -695,6 +491,210 @@ static void dwc2_deschedule_periodic(struct dwc2_hsotg *hsotg,
+ }
+ 
+ /**
++ * dwc2_qh_init() - Initializes a QH structure
++ *
++ * @hsotg: The HCD state structure for the DWC OTG controller
++ * @qh:    The QH to init
++ * @urb:   Holds the information about the device/endpoint needed to initialize
++ *         the QH
++ */
++#define SCHEDULE_SLOP 10
++static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
++			 struct dwc2_hcd_urb *urb)
++{
++	int dev_speed, hub_addr, hub_port;
++	char *speed, *type;
++
++	dev_vdbg(hsotg->dev, "%s()\n", __func__);
++
++	/* Initialize QH */
++	qh->hsotg = hsotg;
++	setup_timer(&qh->unreserve_timer, dwc2_unreserve_timer_fn,
++		    (unsigned long)qh);
++	qh->ep_type = dwc2_hcd_get_pipe_type(&urb->pipe_info);
++	qh->ep_is_in = dwc2_hcd_is_pipe_in(&urb->pipe_info) ? 1 : 0;
++
++	qh->data_toggle = DWC2_HC_PID_DATA0;
++	qh->maxp = dwc2_hcd_get_mps(&urb->pipe_info);
++	INIT_LIST_HEAD(&qh->qtd_list);
++	INIT_LIST_HEAD(&qh->qh_list_entry);
++
++	/* FS/LS Endpoint on HS Hub, NOT virtual root hub */
++	dev_speed = dwc2_host_get_speed(hsotg, urb->priv);
++
++	dwc2_host_hub_info(hsotg, urb->priv, &hub_addr, &hub_port);
++
++	if ((dev_speed == USB_SPEED_LOW || dev_speed == USB_SPEED_FULL) &&
++	    hub_addr != 0 && hub_addr != 1) {
++		dev_vdbg(hsotg->dev,
++			 "QH init: EP %d: TT found at hub addr %d, for port %d\n",
++			 dwc2_hcd_get_ep_num(&urb->pipe_info), hub_addr,
++			 hub_port);
++		qh->do_split = 1;
++	}
++
++	if (qh->ep_type == USB_ENDPOINT_XFER_INT ||
++	    qh->ep_type == USB_ENDPOINT_XFER_ISOC) {
++		/* Compute scheduling parameters once and save them */
++		u32 hprt, prtspd;
++
++		/* Todo: Account for split transfers in the bus time */
++		int bytecount =
++			dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
++
++		qh->host_us = NS_TO_US(usb_calc_bus_time(qh->do_split ?
++			      USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
++			      qh->ep_type == USB_ENDPOINT_XFER_ISOC,
++			      bytecount));
++
++		/* Ensure frame_number corresponds to the reality */
++		hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
++		/* Start in a slightly future (micro)frame */
++		qh->next_active_frame = dwc2_frame_num_inc(hsotg->frame_number,
++						     SCHEDULE_SLOP);
++		qh->host_interval = urb->interval;
++		dwc2_sch_dbg(hsotg, "QH=%p init nxt=%04x, fn=%04x, int=%#x\n",
++			     qh, qh->next_active_frame, hsotg->frame_number,
++			     qh->host_interval);
++#if 0
++		/* Increase interrupt polling rate for debugging */
++		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
++			qh->host_interval = 8;
++#endif
++		hprt = dwc2_readl(hsotg->regs + HPRT0);
++		prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
++		if (prtspd == HPRT0_SPD_HIGH_SPEED &&
++		    (dev_speed == USB_SPEED_LOW ||
++		     dev_speed == USB_SPEED_FULL)) {
++			qh->host_interval *= 8;
++			qh->next_active_frame |= 0x7;
++			qh->start_split_frame = qh->next_active_frame;
++			dwc2_sch_dbg(hsotg,
++				     "QH=%p init*8 nxt=%04x, fn=%04x, int=%#x\n",
++				     qh, qh->next_active_frame,
++				     hsotg->frame_number, qh->host_interval);
++
++		}
++		dev_dbg(hsotg->dev, "interval=%d\n", qh->host_interval);
++	}
++
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH Initialized\n");
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - qh = %p\n", qh);
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Device Address = %d\n",
++		 dwc2_hcd_get_dev_addr(&urb->pipe_info));
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Endpoint %d, %s\n",
++		 dwc2_hcd_get_ep_num(&urb->pipe_info),
++		 dwc2_hcd_is_pipe_in(&urb->pipe_info) ? "IN" : "OUT");
++
++	qh->dev_speed = dev_speed;
++
++	switch (dev_speed) {
++	case USB_SPEED_LOW:
++		speed = "low";
++		break;
++	case USB_SPEED_FULL:
++		speed = "full";
++		break;
++	case USB_SPEED_HIGH:
++		speed = "high";
++		break;
++	default:
++		speed = "?";
++		break;
++	}
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Speed = %s\n", speed);
++
++	switch (qh->ep_type) {
++	case USB_ENDPOINT_XFER_ISOC:
++		type = "isochronous";
++		break;
++	case USB_ENDPOINT_XFER_INT:
++		type = "interrupt";
++		break;
++	case USB_ENDPOINT_XFER_CONTROL:
++		type = "control";
++		break;
++	case USB_ENDPOINT_XFER_BULK:
++		type = "bulk";
++		break;
++	default:
++		type = "?";
++		break;
++	}
++
++	dev_vdbg(hsotg->dev, "DWC OTG HCD QH - Type = %s\n", type);
++
++	if (qh->ep_type == USB_ENDPOINT_XFER_INT) {
++		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - usecs = %d\n",
++			 qh->host_us);
++		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - interval = %d\n",
++			 qh->host_interval);
++	}
++}
++
++/**
++ * dwc2_hcd_qh_create() - Allocates and initializes a QH
++ *
++ * @hsotg:        The HCD state structure for the DWC OTG controller
++ * @urb:          Holds the information about the device/endpoint needed
++ *                to initialize the QH
++ * @atomic_alloc: Flag to do atomic allocation if needed
++ *
++ * Return: Pointer to the newly allocated QH, or NULL on error
++ */
++struct dwc2_qh *dwc2_hcd_qh_create(struct dwc2_hsotg *hsotg,
++					  struct dwc2_hcd_urb *urb,
++					  gfp_t mem_flags)
++{
++	struct dwc2_qh *qh;
++
++	if (!urb->priv)
++		return NULL;
++
++	/* Allocate memory */
++	qh = kzalloc(sizeof(*qh), mem_flags);
++	if (!qh)
++		return NULL;
++
++	dwc2_qh_init(hsotg, qh, urb);
++
++	if (hsotg->core_params->dma_desc_enable > 0 &&
++	    dwc2_hcd_qh_init_ddma(hsotg, qh, mem_flags) < 0) {
++		dwc2_hcd_qh_free(hsotg, qh);
++		return NULL;
++	}
++
++	return qh;
++}
++
++/**
++ * dwc2_hcd_qh_free() - Frees the QH
++ *
++ * @hsotg: HCD instance
++ * @qh:    The QH to free
++ *
++ * QH should already be removed from the list. QTD list should already be empty
++ * if called from URB Dequeue.
++ *
++ * Must NOT be called with interrupt disabled or spinlock held
++ */
++void dwc2_hcd_qh_free(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
++{
++	/* Make sure any unreserve work is finished. */
++	if (del_timer_sync(&qh->unreserve_timer)) {
++		unsigned long flags;
++
++		spin_lock_irqsave(&hsotg->lock, flags);
++		dwc2_do_unreserve(hsotg, qh);
++		spin_unlock_irqrestore(&hsotg->lock, flags);
++	}
++
++	if (qh->desc_list)
++		dwc2_hcd_qh_free_ddma(hsotg, qh);
++	kfree(qh);
++}
++
++/**
+  * dwc2_hcd_qh_add() - Adds a QH to either the non periodic or periodic
+  * schedule if it is not already in the schedule. If the QH is already in
+  * the schedule, no action is taken.
 -- 
 2.7.0.rc3.207.g0ac5344
