@@ -1,93 +1,66 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH] usb: dwc2: host: Properly set the HFIR
-Date: Fri, 22 Jan 2016 15:56:10 -0800
-Message-ID: <1453506971-31445-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
-Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [GIT PULL] clk fixes for 4.5
+Date: Fri, 22 Jan 2016 16:00:43 -0800
+Message-ID: <20160123000043.19367.6646@quark.deferred.io>
+References: <1578308.XWWZ6XYns5@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1578308.XWWZ6XYns5@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-According to the most up to date version of the dwc2 databook, the FRINT
-field of the HFIR register should be programmed to:
-* 125 us * (PHY clock freq for HS) - 1
-* 1000 us * (PHY clock freq for FS/LS) - 1
+Quoting Heiko Stuebner (2016-01-17 11:07:01)
+> Hi Mike, Stephen,
+> 
+> based on the clk-for-linus-4.5 tag that got merged into mainline
+> some asorted fixes for Rockchip clocks.
+> 
+> So, please pull
 
-This is opposed to older versions of the doc that claimed it should be:
-* 125 us * (PHY clock freq for HS)
-* 1000 us * (PHY clock freq for FS/LS)
+Pulled.
 
-In case you didn't spot it, the difference is the "- 1".
+Regards,
+Mike
 
-Let's add the "- 1" to match the newest user manual.  It's presumed that
-the "- 1" should have always been there and that this was always a
-documentation error.  If some hardware needs the "- 1" and other
-hardware doesn't, we'll have to add a configuration parameter for it in
-the future.
-
-I checked things before and after this patch on rk3288 using a Total
-Phase Beagle 5000 analyzer.
-
-Before this patch, a low speed mouse shows constant Frame Timing Jitter
-errors.  After this patch errors have gone away.
-
-Before this patch SOF packets move forward about 1 us per 4 ms.  After
-this patch the SOF packets move backward about 1 us per 255 ms.  Some
-specific SOF timestamps from the analyzer are below.
-
-Before:
-  6.603.790
-  6.603.916
-  6.604.041
-  6.604.166
-  ...
-  6.607.541
-  6.607.667
-  6.607.792
-  6.607.917
-  ...
-  6.611.417
-  6.611.543
-  6.611.668
-  6.611.793
-
-After:
-  6.215.159
-  6.215.284
-  6.215.408
-  6.215.533
-  6.215.658
-  ...
-  6.470.658
-  6.470.783
-  6.470.907
-  ...
-  6.726.032
-  6.726.157
-  6.725.281
-  6.725.406
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
- drivers/usb/dwc2/core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index 39a0fa8a4c0a..c7798476e25b 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -2251,10 +2251,10 @@ u32 dwc2_calc_frame_interval(struct dwc2_hsotg *hsotg)
- 
- 	if ((hprt0 & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT == HPRT0_SPD_HIGH_SPEED)
- 		/* High speed case */
--		return 125 * clock;
-+		return 125 * clock - 1;
- 	else
- 		/* FS/LS case */
--		return 1000 * clock;
-+		return 1000 * clock - 1;
- }
- 
- /**
--- 
-2.7.0.rc3.207.g0ac5344
+> 
+> 
+> Thanks
+> Heiko
+> 
+> The following changes since commit 3da834e3e5a4a5d26882955298b55a9ed37a00bc:
+> 
+>   clk: remove duplicated COMMON_CLK_NXP record from clk/Kconfig (2016-01-13 18:09:52 -0800)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.5-rockchip-clkfixes1
+> 
+> for you to fetch changes up to 8931f8e02979e4180566907019d432527c80abf7:
+> 
+>   clk: rockchip: rk3368: fix some clock gates (2016-01-16 16:01:21 +0100)
+> 
+> ----------------------------------------------------------------
+> Fixes for wrong register offsets in both rk3036 and rk3368.
+> Also rename the external input for the emac on rk3036, which
+> should still be ok to do, as that binding was only introduced
+> during this merge-window.
+> 
+> ----------------------------------------------------------------
+> Jianqun xu (1):
+>       clk: rockchip: rk3368: fix some clock gates
+> 
+> Xing Zheng (4):
+>       clk: rockchip: rk3036: fix the FLAGs for clock mux
+>       clk: rockchip: rk3036: fix uarts clock error
+>       clk: rockchip: rk3036: fix the div offset for emac clock
+>       clk: rockchip: rk3036: rename emac ext source clock
+> 
+>  .../bindings/clock/rockchip,rk3036-cru.txt         |  2 +-
+>  drivers/clk/rockchip/clk-rk3036.c                  | 26 +++++++++++-----------
+>  drivers/clk/rockchip/clk-rk3368.c                  | 26 +++++++++++-----------
+>  3 files changed, 27 insertions(+), 27 deletions(-)
+> 
