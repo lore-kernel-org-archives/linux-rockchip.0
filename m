@@ -1,39 +1,57 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 0/3] clk: rockchip: rk3368: fix some error for rk3368 clk
-Date: Mon, 25 Jan 2016 11:14:28 +0100
-Message-ID: <1616798.0SYvlcg7vJ@diego>
-References: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM64: rk3368: add tuning clk for emmc and sdmmc
+Date: Mon, 25 Jan 2016 11:32:51 +0100
+Message-ID: <8282572.0k5rjtDfQ3@diego>
+References: <1453707223-28855-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Zhang Qing <zhangqing@rock-chips.com>
-Cc: zhengxing@rock-chips.com, xf@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1453707223-28855-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Shawn,
 
-Am Montag, 25. Januar 2016, 08:55:59 schrieb Zhang Qing:
-> From: zhangqing <zhangqing@rock-chips.com>
+Am Montag, 25. Januar 2016, 15:33:43 schrieb Shawn Lin:
+> Add tuning clk for emmc and sdmmc, otherwise I get
+> the following failure while enabling mmc-hs200-1_8v.
 > 
-> modify edp_24m parent select bit.
-> enable CLK_SET_RATE_PARENT flag for spdif_8ch and i2s_2ch.
+> dwmmc_rockchip ff0f0000.dwmmc: Tuning clock (sample_clk) not defined.
+> mmc0: tuning execution failed
+> mmc0: error -5 whilst initialising MMC card
 > 
-> zhangqing (3):
->   clk: rockchip: rk3368: fix edp_24m parent
->   clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for
->     spdif_8ch
->   clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for i2s_2ch
+> With it
+> dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to 170
+> mmc0: new HS200 MMC card at address 0001
+> mmcblk0: mmc0:0001 M8G1GC 7.28 GiB
+> 
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-applied all 3 to my clk branch for 4.6.
+applied to my dts64 branch for 4.6
 
-I've modified patches 2+3 to keep the line-alingment (= move the CLK_SET_PARENT 
-to the line above). In the clock trees I really like to keep the structure 
-identical over all clocks (and thus ignore the 80 column limit in parts) to 
-make reading the large lists easier, as now everything always is in the same 
-place.
+I've adapted the subject to
+	arm64: dts: rockchip: add rk3368 tuning clk for emmc and sdmmc
+to follow the format used there (it doesn't seem 100% consistent between socs)
+
+
+>  		clock-freq-min-max = <400000 150000000>;
+>  		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>;
+>  		clock-names = "biu", "ciu";
+> +		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+> +			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+>  		fifo-depth = <0x100>;
+>  		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+>  		status = "disabled";
+
+I've also removed the duplicate clock entry here ;-)
 
 
 Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
