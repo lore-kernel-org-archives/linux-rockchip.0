@@ -1,51 +1,52 @@
 From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Subject: [PATCH] brcmfmac: sdio: Increase the default timeouts a bit
-Date: Mon, 25 Jan 2016 11:47:29 +0100
-Message-ID: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Subject: Re: [PATCH 1/2] drm/rockchip: Don't build rockchip_drm_vop as
+ modules
+Date: Mon, 25 Jan 2016 11:54:07 +0100
+Message-ID: <1453719247.30130.22.camel@collabora.co.uk>
+References: <1452673328-29188-1-git-send-email-mark.yao@rock-chips.com>
+	 <1452673328-29188-2-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1452673328-29188-2-git-send-email-mark.yao@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kalle Valo <kvalo@codeaurora.org>
-Cc: Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev@vger.kernel.org, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
-the card responds very quickly most of the time, unfortunately during
-initialisation it sometimes seems to take just a bit over 2 seconds to
-respond.
+On Wed, 2016-01-13 at 16:22 +0800, Mark Yao wrote:
+> rockchip_drm_vop's module init had moved to rockchip_vop_reg.c
+> so no need to build rockchip_drm_vop.ko
 
-This results intialization failing with message like:
-  brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
-  brcmf_bus_start: failed: -52
-  brcmf_sdio_firmware_callback: dongle is not responding
+Looks like this didn't make it for the Linux 4.5 merge window, which
+unfortunately means in 4.5-rc1 DRM on rockchip is broken :/
 
-Increasing the timeout to allow for a bit more headroom allows the
-card to initialize reliably.
-
-A quick search online after diagnosing/fixing this showed that Google
-has a similar patch in their ChromeOS tree, so this doesn't seem
-specific to the board I'm using.
-
-Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-
+> Signed-off-by: Mark Yao <mark.yao@rock-chips.com>
+> ---
+> =C2=A0drivers/gpu/drm/rockchip/Makefile |=C2=A0=C2=A0=C2=A0=C2=A05 ++=
 ---
+> =C2=A01 file changed, 2 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/Makefile
+> b/drivers/gpu/drm/rockchip/Makefile
+> index a9d380f..9e6e992 100644
+> --- a/drivers/gpu/drm/rockchip/Makefile
+> +++ b/drivers/gpu/drm/rockchip/Makefile
+> @@ -3,9 +3,8 @@
+> =C2=A0# Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and hi=
+gher.
+> =C2=A0
+> =C2=A0rockchipdrm-y :=3D rockchip_drm_drv.o rockchip_drm_fb.o
+> rockchip_drm_fbdev.o \
+> -		rockchip_drm_gem.o
+> +		rockchip_drm_gem.o rockchip_drm_vop.o
+> =C2=A0
+> =C2=A0obj-$(CONFIG_ROCKCHIP_DW_HDMI) +=3D dw_hdmi-rockchip.o
+> =C2=A0
+> -obj-$(CONFIG_DRM_ROCKCHIP) +=3D rockchipdrm.o rockchip_drm_vop.o \
+> -				rockchip_vop_reg.o
+> +obj-$(CONFIG_DRM_ROCKCHIP) +=3D rockchipdrm.o rockchip_vop_reg.o
 
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-index dd66143..75ac4bd 100644
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -45,8 +45,8 @@
- #include "chip.h"
- #include "firmware.h"
- 
--#define DCMD_RESP_TIMEOUT	msecs_to_jiffies(2000)
--#define CTL_DONE_TIMEOUT	msecs_to_jiffies(2000)
-+#define DCMD_RESP_TIMEOUT	msecs_to_jiffies(2500)
-+#define CTL_DONE_TIMEOUT	msecs_to_jiffies(2500)
- 
- #ifdef DEBUG
- 
--- 
-2.7.0
+--=20
+Sjoerd Simons
+Collabora Ltd.
