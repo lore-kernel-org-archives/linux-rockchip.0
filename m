@@ -1,38 +1,39 @@
-From: Zhang Qing <zhangqing@rock-chips.com>
-Subject: [PATCH v1 3/3] clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for i2s_2ch
-Date: Mon, 25 Jan 2016 08:56:02 -0800
-Message-ID: <1453740962-8556-4-git-send-email-zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1 0/3] clk: rockchip: rk3368: fix some error for rk3368 clk
+Date: Mon, 25 Jan 2016 11:14:28 +0100
+Message-ID: <1616798.0SYvlcg7vJ@diego>
 References: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, zhengxing@rock-chips.com, xf@rock-chips.com
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing <zhangqing@rock-chips.com>
+To: Zhang Qing <zhangqing@rock-chips.com>
+Cc: zhengxing@rock-chips.com, xf@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zhangqing <zhangqing@rock-chips.com>
+Hi,
 
-I2S_2CH set freq need to select parent and calculate parent freq.
-so just mark it as the CLK_SET_RATE_PARENT flag.
+Am Montag, 25. Januar 2016, 08:55:59 schrieb Zhang Qing:
+> From: zhangqing <zhangqing@rock-chips.com>
+> 
+> modify edp_24m parent select bit.
+> enable CLK_SET_RATE_PARENT flag for spdif_8ch and i2s_2ch.
+> 
+> zhangqing (3):
+>   clk: rockchip: rk3368: fix edp_24m parent
+>   clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for
+>     spdif_8ch
+>   clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for i2s_2ch
 
-Signed-off-by: zhangqing <zhangqing@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3368.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+applied all 3 to my clk branch for 4.6.
 
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 58ef08b..5ceb536 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -363,7 +363,8 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	COMPOSITE_FRAC(0, "i2s_2ch_frac", "i2s_2ch_src", CLK_SET_RATE_PARENT,
- 			RK3368_CLKSEL_CON(54), 0,
- 			RK3368_CLKGATE_CON(5), 14, GFLAGS),
--	COMPOSITE_NODIV(SCLK_I2S_2CH, "sclk_i2s_2ch", mux_i2s_2ch_p, 0,
-+	COMPOSITE_NODIV(SCLK_I2S_2CH, "sclk_i2s_2ch", mux_i2s_2ch_p,
-+			CLK_SET_RATE_PARENT,
- 			RK3368_CLKSEL_CON(53), 8, 2, MFLAGS,
- 			RK3368_CLKGATE_CON(5), 15, GFLAGS),
- 
--- 
-1.9.1
+I've modified patches 2+3 to keep the line-alingment (= move the CLK_SET_PARENT 
+to the line above). In the clock trees I really like to keep the structure 
+identical over all clocks (and thus ignore the 80 column limit in parts) to 
+make reading the large lists easier, as now everything always is in the same 
+place.
+
+
+Heiko
