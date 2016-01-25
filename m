@@ -1,28 +1,38 @@
 From: Zhang Qing <zhangqing@rock-chips.com>
-Subject: [PATCH v1 0/3] clk: rockchip: rk3368: fix some error for rk3368 clk
-Date: Mon, 25 Jan 2016 08:55:59 -0800
-Message-ID: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
+Subject: [PATCH v1 2/3] clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for spdif_8ch
+Date: Mon, 25 Jan 2016 08:56:01 -0800
+Message-ID: <1453740962-8556-3-git-send-email-zhangqing@rock-chips.com>
+References: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453740962-8556-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, zhengxing@rock-chips.com, xf@rock-chips.com
 Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, zhangqing <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: zhangqing <zhangqing@rock-chips.com>
 
-modify edp_24m parent select bit.
-enable CLK_SET_RATE_PARENT flag for spdif_8ch and i2s_2ch.
+SPDIF_8CH set freq need to select parent and calculate parent freq.
+so just mark it as the CLK_SET_RATE_PARENT flag.
 
-zhangqing (3):
-  clk: rockchip: rk3368: fix edp_24m parent
-  clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for
-    spdif_8ch
-  clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for i2s_2ch
+Signed-off-by: zhangqing <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3368.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
- drivers/clk/rockchip/clk-rk3368.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
-
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 4885e6b..58ef08b 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -353,7 +353,8 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	COMPOSITE_FRAC(0, "spdif_8ch_frac", "spdif_8ch_src", CLK_SET_RATE_PARENT,
+ 			RK3368_CLKSEL_CON(32), 0,
+ 			RK3368_CLKGATE_CON(6), 5, GFLAGS),
+-	COMPOSITE_NODIV(SCLK_SPDIF_8CH, "sclk_spdif_8ch", mux_spdif_8ch_p, 0,
++	COMPOSITE_NODIV(SCLK_SPDIF_8CH, "sclk_spdif_8ch", mux_spdif_8ch_p,
++			CLK_SET_RATE_PARENT,
+ 			RK3368_CLKSEL_CON(31), 8, 2, MFLAGS,
+ 			RK3368_CLKGATE_CON(6), 6, GFLAGS),
+ 	COMPOSITE(0, "i2s_2ch_src", mux_pll_src_cpll_gpll_p, 0,
 -- 
 1.9.1
-
-
