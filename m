@@ -1,57 +1,51 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM64: rk3368: add tuning clk for emmc and sdmmc
-Date: Mon, 25 Jan 2016 11:32:51 +0100
-Message-ID: <8282572.0k5rjtDfQ3@diego>
-References: <1453707223-28855-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453707223-28855-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Subject: [PATCH] brcmfmac: sdio: Increase the default timeouts a bit
+Date: Mon, 25 Jan 2016 11:47:29 +0100
+Message-ID: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kalle Valo <kvalo@codeaurora.org>
+Cc: Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev@vger.kernel.org, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
+the card responds very quickly most of the time, unfortunately during
+initialisation it sometimes seems to take just a bit over 2 seconds to
+respond.
 
-Am Montag, 25. Januar 2016, 15:33:43 schrieb Shawn Lin:
-> Add tuning clk for emmc and sdmmc, otherwise I get
-> the following failure while enabling mmc-hs200-1_8v.
-> 
-> dwmmc_rockchip ff0f0000.dwmmc: Tuning clock (sample_clk) not defined.
-> mmc0: tuning execution failed
-> mmc0: error -5 whilst initialising MMC card
-> 
-> With it
-> dwmmc_rockchip ff0f0000.dwmmc: Successfully tuned phase to 170
-> mmc0: new HS200 MMC card at address 0001
-> mmcblk0: mmc0:0001 M8G1GC 7.28 GiB
-> 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+This results intialization failing with message like:
+  brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
+  brcmf_bus_start: failed: -52
+  brcmf_sdio_firmware_callback: dongle is not responding
 
-applied to my dts64 branch for 4.6
+Increasing the timeout to allow for a bit more headroom allows the
+card to initialize reliably.
 
-I've adapted the subject to
-	arm64: dts: rockchip: add rk3368 tuning clk for emmc and sdmmc
-to follow the format used there (it doesn't seem 100% consistent between socs)
+A quick search online after diagnosing/fixing this showed that Google
+has a similar patch in their ChromeOS tree, so this doesn't seem
+specific to the board I'm using.
 
+Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
 
->  		clock-freq-min-max = <400000 150000000>;
->  		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>;
->  		clock-names = "biu", "ciu";
-> +		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-> +			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
->  		fifo-depth = <0x100>;
->  		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
->  		status = "disabled";
+---
 
-I've also removed the duplicate clock entry here ;-)
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+index dd66143..75ac4bd 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
+@@ -45,8 +45,8 @@
+ #include "chip.h"
+ #include "firmware.h"
+ 
+-#define DCMD_RESP_TIMEOUT	msecs_to_jiffies(2000)
+-#define CTL_DONE_TIMEOUT	msecs_to_jiffies(2000)
++#define DCMD_RESP_TIMEOUT	msecs_to_jiffies(2500)
++#define CTL_DONE_TIMEOUT	msecs_to_jiffies(2500)
+ 
+ #ifdef DEBUG
+ 
+-- 
+2.7.0
