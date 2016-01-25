@@ -1,109 +1,75 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] ARM: dts: rockchip: add support emac for RK3036
-Date: Tue, 26 Jan 2016 00:06:27 +0800
-Message-ID: <56A64803.8070006@gmail.com>
-References: <1453725488-5279-1-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders@google.com>
+Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
+Date: Mon, 25 Jan 2016 08:28:31 -0800
+Message-ID: <CAD=FV=WL3jYEgVe-m6QcAyQwfJgdX4J5OtKisKwyoKOrTSpEQA@mail.gmail.com>
+References: <1442828009-6241-1-git-send-email-boris.brezillon@free-electrons.com>
+	<2341981.a79ioYM9Es@diego>
+	<20151110173416.GB21727@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453725488-5279-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <20151110173416.GB21727@ulmo>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>, Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-pwm <linux-pwm@vger.kernel.org>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbdev@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-sunxi@googlegroups.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>"linux-kernel@vger.kernel.org" <li>
 List-Id: linux-rockchip.vger.kernel.org
 
+Thierry and Boris,
 
-
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8825=E6=97=A5 20:38, Caesar Wang =E5=86=
-=99=E9=81=93:
-> From: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+On Tue, Nov 10, 2015 at 9:34 AM, Thierry Reding
+<thierry.reding@gmail.com> wrote:
+> On Mon, Oct 19, 2015 at 12:12:12PM +0200, Heiko St=C3=BCbner wrote:
+>> Hi Thierry,
+>>
+>> Am Montag, 21. September 2015, 11:33:17 schrieb Boris Brezillon:
+>> > Hello,
+>> >
+>> > This series adds support for atomic PWM update, or IOW, the capabi=
+lity
+>> > to update all the parameters of a PWM device (enabled/disabled, pe=
+riod,
+>> > duty and polarity) in one go.
+>>
+>> is anything more blocking this series? It's now sitting on the lists=
+ for
+>> nearly a month and everybody seems happy with it, so it would be rea=
+lly nice
+>> to have in mainline :-) .
+>>
+>> Especially as this also makes it possible for Rockchip Chromebooks t=
+o actually
+>> control the logic-regulator that is implemented as pwm-regulator the=
+re.
 >
-> This patch describe the emac, and we need to let mac clock under
-> the APLL which is able to provide the accurate 50MHz what mac_ref
-> need.
->
-> This patch makes the emac parent clock is DPLL instead of APLL.
-> since that will cause some unstable things if the cpufreq is working.
->
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> ---
-[...]
-> diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036=
-=2Edtsi
-> index 7897449..436c77a 100644
-> --- a/arch/arm/boot/dts/rk3036.dtsi
-> +++ b/arch/arm/boot/dts/rk3036.dtsi
-> @@ -186,6 +186,27 @@
->   		status =3D "disabled";
->   	};
->  =20
-> +	emac: ethernet@10200000 {
-> +		compatible =3D "rockchip,rk3036-emac", "snps,arc-emac";
-> +		reg =3D <0x10200000 0x4000>;
-> +		interrupts =3D <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +		rockchip,grf =3D <&grf>;
-> +		clocks =3D <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
-> +		clock-names =3D "hclk", "macref", "macclk";
-> +		/*
-> +		 * Fix the emac parent clock is DPLL instead of APLL.
-> +		 * since that will cause some unstable things if the cpufreq
-> +		 * is working. (e.g: the accurate 50MHz what mac_ref need)
-> +		 */
-> +		assigned-clocks =3D <&cru SCLK_MACPLL>;
-> +		assigned-clock-parents =3D <&cru PLL_DPLL>;
+> Last time I tried to put this into linux-next I got immediately
+> bombarded by a number of build failures, so I backed things out. The
+> current plan is to give this another try after v4.4-rc1.
 
-This patch depends on the clock patch. :-( =EF=BC=88still in my work br=
-anch)
+We're now into the 4.5 timeframe.  Does anyone have a concrete set of
+things that need to happen before this patch series makes it into
+mainline?
 
-> +		max-speed =3D <100>;
-> +		phy-mode =3D "rmii";
-> +		status =3D "disabled";
-> +	};
-> +
->   	sdmmc: dwmmc@10214000 {
->   		compatible =3D "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-msh=
-c";
->   		reg =3D <0x10214000 0x4000>;
-> @@ -556,6 +577,24 @@
->   			};
->   		};
->  =20
-> +		emac {
-> +			emac_xfer: emac-xfer {
-> +				rockchip,pins =3D <2 10 RK_FUNC_1 &pcfg_pull_default>, /* crs_dv=
-alid */
-> +						<2 13 RK_FUNC_1 &pcfg_pull_default>, /* tx_en */
-> +						<2 14 RK_FUNC_1 &pcfg_pull_default>, /* mac_clk */
-> +						<2 15 RK_FUNC_1 &pcfg_pull_default>, /* rx_err */
-> +						<2 16 RK_FUNC_1 &pcfg_pull_default>, /* rxd1 */
-> +						<2 17 RK_FUNC_1 &pcfg_pull_default>, /* rxd0 */
-> +						<2 18 RK_FUNC_1 &pcfg_pull_default>, /* txd1 */
-> +						<2 19 RK_FUNC_1 &pcfg_pull_default>; /* txd0 */
-> +			};
-> +
-> +			emac_mdio: emac-mdio {
-> +				rockchip,pins =3D <2 12 RK_FUNC_1 &pcfg_pull_default>, /* mac_md=
- */
-> +						<2 25 RK_FUNC_1 &pcfg_pull_default>; /* mac_mdclk */
-> +			};
-> +		};
-> +
->   		i2c0 {
->   			i2c0_xfer: i2c0-xfer {
->   				rockchip,pins =3D <0 0 RK_FUNC_1 &pcfg_pull_none>,
+=46rom searching I see that the latest version of this series is v4 and
+there are a smattering of comments on the 24-patch series.  Presumably
+a v5 needs to be posted to address those things.
 
---=20
-Thanks,
-Caesar
+=2E..but it looks like the big sticking point is that Boris is waiting
+for a response to his questions in
+<https://patchwork.kernel.org/patch/7622881/>.  Thierry: can you give
+Boris some direction for what else he needs to do?  We need to come up
+with _some_ solution since this series gets us much better support for
+PWM regulators.  Without this series or some other solution, PWM
+regulators aren't usable in mainline on any system that uses them for
+system-critical rails.  Nearly all Rockchip reference boards and
+shipping devices uses a PWM regulator for the system-critidal "logic"
+rail.  That means any patches which need to change this rail in Linux
+are blocked.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+If there's already been off-list discussion and Boris already knows
+what the next steps are then my apologies and I'll wait patiently for
+the next series.  ;)
+
+Thanks!
+
+-Doug
