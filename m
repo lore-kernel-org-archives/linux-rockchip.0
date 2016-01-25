@@ -1,36 +1,70 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 0/3] SoC: rockchip: support power domain for RK3368
-Date: Sun, 24 Jan 2016 23:52:20 +0100
-Message-ID: <25506007.ZijpbXfFGZ@diego>
-References: <1452508600-3512-1-git-send-email-zhangqing@rock-chips.com>
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing
+ output clock to codec
+Date: Mon, 25 Jan 2016 09:15:31 +0800
+Message-ID: <56A57733.8020200@rock-chips.com>
+References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com>
+ <1452865796-23527-4-git-send-email-wxt@rock-chips.com>
+ <20160115174623.GZ6588@sirena.org.uk>
+ <CAPz6YkWt-iXS6P4QBBoq3v3i7ZAGGu6=_9AHw4qgevEwDwbdTA@mail.gmail.com>
+ <20160122171815.GD6588@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452508600-3512-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: zhangqing <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, khilman-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160122171815.GD6588-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Kees Cook <keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
-
-Am Montag, 11. Januar 2016, 02:36:37 schrieb zhangqing:
-> add pd id in rk3368-power.h
-> modify pm_domains.c to support RK3368 SoC
-> add RK3368 document for Rockchip power domains
-> 
-> zhangqing (3):
->   dt-bindings: add power-domain header for RK3368 SoCs
->   soc: rockchip: power-domain: Modify power domain driver for rk3368
->   dt-bindings: modify document of Rockchip power domains
-
-applied all 3 to appropriate branches for 4.6
-
-
-Thanks
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgTWFyawoK1NogMjMvMDEvMjAxNiAwMToxOCwgTWFyayBCcm93biDQtLXAOgo+IE9uIEZyaSwg
+SmFuIDE1LCAyMDE2IGF0IDAxOjQ4OjA0UE0gLTA4MDAsIFNvbm55IFJhbyB3cm90ZToKPj4gT24g
+RnJpLCBKYW4gMTUsIDIwMTYgYXQgOTo0NiBBTSwgTWFyayBCcm93biA8YnJvb25pZUBrZXJuZWwu
+b3JnPiB3cm90ZToKPgo+Pj4gSWYgdGhlIEkyUyBibG9jayBpcyBwcm92aWRpbmcgYSBjbG9jayB0
+byB0aGUgQ09ERUMgdGhlbiB0aGF0J3Mgd2hhdCB0aGUKPj4+IHNvZnR3YXJlIHNob3VsZCBkbyBz
+byB0aGF0IHRoZSBDT0RFQyBjYW4gZ2F0ZSBhbmQgdW5nYXRlIHRoZSBjbG9jayBhcwo+Pj4gcmVx
+dWlyZWQuICBUaGlzIHBhdGNoIGhhcyB0aGUgSTJTIGJsb2NrIHVzaW5nIGEgY2xvY2ssIG5vdCBw
+cm92aWRpbmcKPj4+IG9uZS4KPgo+PiAgRnJvbSBteSByZWFkIG9mIHRoZSBjbG9jayBkaWFncmFt
+IGZvciBSSzMyODggIHRoZXJlIGlzIGEgc2luZ2xlIGNsb2NrCj4+IHNpZ25hbCAobGFiZWxlZCAi
+Y2xrX2kyczAiKSB0aGF0IGNvbWVzIG91dCBvZiBhIGZyYWN0aW9uYWwgZGl2aWRlciwKPj4gYW5k
+IGl0IGlzIHNwbGl0IHN1Y2ggdGhhdCBvbmUgcGF0aCBnZXRzIHNlbnQgdG8gdGhlIEkyUyBibG9j
+ayBhbmQgdGhlCj4+IHNlY29uZCBwYXRoIGlzIHNlbnQgdG8gYSBtdXggYWZ0ZXIgd2hpY2ggdGhh
+dCBzaWduYWwgaXMgc2VudCB0byBhbgo+PiBleHRlcm5hbCBwaW4gdGhhdCBnb2VzIHRvIHRoZSBj
+b2RlYy4KPgo+PiBUaGVyZSBhcmUgc2VwYXJhdGUgY2xvY2sgZ2F0ZXMgZm9yIHRoZSB0d28gcGF0
+aHM6IG9uZSBmb3IgdGhlIEkyUwo+PiBibG9jayBhbmQgb25lIGFmdGVyIHRoYXQgbXV4IGJlZm9y
+ZSB0aGUgZXh0ZXJuYWwgcGluLgo+Cj4+IEknbSBub3Qgc3VyZSBpZiBpdCdzIGJlaW5nIG1vZGVs
+ZWQgdGhhdCB3YXkgaW4gdGhlIExpbnV4IGNvZGUgb3Igbm90LAo+PiBidXQgYXQgbGVhc3QgcGh5
+c2ljYWxseSBJIGRvbid0IHRoaW5rIHRoaXMgY2xvY2sgc2lnbmFsIGFjdHVhbGx5IGdvZXMKPj4g
+dGhyb3VnaCB0aGUgSTJTIGJsb2NrIGJlZm9yZSBiZWluZyBzZW50IHRvIHRoZSBjb2RlYy4KPgo+
+IFRoYXQncyBub3QgcmVhbGx5IHRoZSBpc3N1ZSBoZXJlLCB0aGUgaXNzdWUgaXMgdGhhdCBpdCdz
+IG5vdCB0aGUgSTJTCj4gY29udHJvbGxlciB0aGF0IGlzIGNvbnN1bWluZyB0aGUgY2xvY2sgc28g
+aXQgc2hvdWxkIG5vdCBiZSB0aGUgSTJTCj4gY29udHJvbGxlciBkcml2ZXIgdGhhdCBlbnN1cmVz
+IHRoYXQgdGhlIGNsb2NrIGlzIGVuYWJsZWQuICBUaGUgZHJpdmVyCj4gdGhhdCBtYW5hZ2VzIHRo
+ZSBjbG9jayBzaG91bGQgYmUgdGhlIG9uZSB0aGF0IHVzZXMgaXQsIGxpa2UgSSBzYXkgdGhpcwo+
+IG1lYW5zIHlvdSBzaG91bGQgYWRkIHRoZSBjb2RlIHRvIGVuYWJsZSB0aGUgY2xvY2sgdG8gdGhl
+IENPREVDIGRyaXZlciBpZgo+IHRoZSBDT0RFQyBkcml2ZXIgbmVlZHMgdGhlIGNsb2NrIGVuYWJs
+ZWQuCj4KQWdyZWUsIG5vdyB3ZSBhbG1vc3QgdXNlIHRoZSBzaW1wbGUtY2FyZCBmb3IgdGhlIENP
+REVDIGRyaXZlciwgc28gSSAKdGhpbmsgd2Ugc2hvdWxkIGVuYWJsZSB0aGUgbWNsayhpMnMtb3V0
+Y2xrKSBpbiB0aGUgc2ltcGxlLWNhcmQgZHJpdmVyLCAKaXMgaXQgPwoKSSBmb3VuZCBhIHN1Ym5v
+ZGUgcHJvcGVydHkgZnJvbSBzaW1wbGUtY2FyZCBkb2N1bWVudDoKLSBtY2xrLWZzICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIDogTXVsdGlwbGljYXRpb24gZmFjdG9yIGJldHdlZW4gCnN0
+cmVhbQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmF0ZSBhbmQg
+Y29kZWMgbWNsaywgYXBwbGllZCAKb25seSBmb3IKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIHRoZSBkYWktbGluay4KQnV0IHRoZSBwcm9wZXJ0eSByZXNwb25zaWJs
+ZSB0byB0aGUgZmFjdG9yLCBub3QgY2FyZSBpZiB0aGUgbWNsayBzb3VyY2UgCmNsb2NrIGlzIGVu
+YWJsZWQgb3Igbm90LiBTbyBkb2VzIHRoZSBzaW1wbGUtY2FyZCBkcml2ZXIgY2FuIGFkZCBzdXBw
+b3J0IAp0byBlbmFibGUvZGlzYWJsZSBtY2xrID8KCj4+IERvZXMgdGhhdCBoZWxwIGNsYXJpZnk/
+Cj4KPiBUaGUgcHJvYmxlbSBoZXJlIGlzbid0IGEgbGFjayBvZiBjbGFyaXR5IGluIHRoZSBzaXR1
+YXRpb24uCj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
