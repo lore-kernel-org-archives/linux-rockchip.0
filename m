@@ -1,13 +1,14 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: rk3188 emac stuck at high load
-Date: Mon, 25 Jan 2016 20:49:36 +0800
-Message-ID: <56A619E0.7060901@gmail.com>
-References: <SNT151-W399C6D5938D0EC43FAD0F0E7E70@phx.gbl>
+From: Shuyu Wei <shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+Subject: RE: rk3188 emac stuck at high load
+Date: Mon, 25 Jan 2016 13:33:02 +0000
+Message-ID: <SNT151-W396F79221B612690406E88E7C70@phx.gbl>
+References: <SNT151-W399C6D5938D0EC43FAD0F0E7E70@phx.gbl>,
+ <56A619E0.7060901@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-2022-jp"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <SNT151-W399C6D5938D0EC43FAD0F0E7E70-MsuGFMq8XAE@public.gmane.org>
+In-Reply-To: <56A619E0.7060901-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,146 +18,172 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgU2h1eXUsCgpUaGFua3MgeW91ciByZXBvcnQhICBEbyB5b3UgaGF2ZSBmaXhlZCB0aGlzIGlz
-c3VlPwpJIGd1ZXNzIHRoYXQgY2F1c2VkIGJ5IHRoZSBjcHVmcmVxLgoKaWYgeW91IHJ1biAnY2F0
-IHN5cy9rZXJuZWwvZGVidWcvY2xrL2Nsa19zdW1tYXJ5JyB0byBjaGVjayB0aGUgZW1hYyAKcGFy
-ZW50IGNsb2NrLCBJcyBpdCB0aGUgQVBMTD8KTWF5YmUgeW91IGNhbiBjaGFuZ2UgdGhlIHBhcmVu
-dCBjbG9jayB0byBmaXggdGhpcyBpc3N1ZSBpZiBpdCdzLgoKRm94IGV4YW1wbGU6CnVib29077ya
-Cmh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC91LWJvb3QvY29tbWl0L2Q2NGVmNmIy
-NzJkODRjOTJiZDAyYTc5MjVmNTAwODgwNjMzYzg1OTkKCmtlcm5lbDoKaHR0cHM6Ly9wYXRjaHdv
-cmsua2VybmVsLm9yZy9wYXRjaC84MTA4MjMxLwoKCkkgdHJ5IHRvIGluc3RhbGwgbWFueSBzb21l
-dGhpbmdzIHdpdGggdWJ1bnR1IG9zIG9uIHJrMzAzNi4gKHRoYXQncyBhbHNvIAp3b3JraW5nIHdp
-dGggdGhlIGVtYWMuLikKCi4uLi4uCkdldDozNSBodHRwOi8vcG9ydHMudWJ1bnR1LmNvbS91YnVu
-dHUtcG9ydHMvIHdpbHkvbWFpbiAKbGlicHl0aG9uMi43LW1pbmltYWwgYXJtaGYgMi43LjEwLTR1
-YnVudHUxIFszMzgga0JdCkdldDozNiBodHRwOi8vcG9ydHMudWJ1bnR1LmNvbS91YnVudHUtcG9y
-dHMvIHdpbHkvbWFpbiAKbGlicHl0aG9uMi43LXN0ZGxpYiBhcm1oZiAyLjcuMTAtNHVidW50dTEg
-WzE3NTAga0JdCkdldDozNyBodHRwOi8vcG9ydHMudWJ1bnR1LmNvbS91YnVudHUtcG9ydHMvIHdp
-bHkvbWFpbiBsaWJweXRob24yLjcgCmFybWhmIDIuNy4xMC00dWJ1bnR1MSBbOTM1IGtCXQpHZXQ6
-MzggaHR0cDovL3BvcnRzLnVidW50dS5jb20vdWJ1bnR1LXBvcnRzLyB3aWx5L21haW4gdmltLXJ1
-bnRpbWUgYWxsIAoyOjcuNC43MTItMnVidW50dTQgWzQ5ODQga0JdCjg1JSBbMzggdmltLXJ1bnRp
-bWUgNDQwNSBrQi80OTg0IGtCIDg4JV0gMTk1IGtCL3MgMTFzWyAgMzE0LjY4NTY0MV0gQlVHOiAK
-QmFkIHBhZ2Ugc3RhdGUgaW4gcHJvY2VzcyBzd2FwcGVyLzAgcGZuOjdlMApbICAzMTQuNjkxNjA3
-XSBwYWdlOmRmZmNlZTAwIGNvdW50Oi0xIG1hcGNvdW50OjAgbWFwcGluZzogIChudWxsKSBpbmRl
-eDoweDAKWyAgMzE0LjY5ODMxMV0gZmxhZ3M6IDB4MCgpClsgIDMxNC43MDA4NjZdIHBhZ2UgZHVt
-cGVkIGJlY2F1c2U6IG5vbnplcm8gX2NvdW50Cjg4JSBbMzggdmltLXJ1bnRpbWUgNDczOCBrQi80
-OTg0IGtCIDk1JV0gMTk1IGtCL3MgOXNbICAzMTYuMDk2MDEzXSAKc2tidWZmOiBza2Jfb3Zlcl9w
-YW5pYzogdGV4dDpjMDRhZTE5YyBsZW46Mjg3OCBwPgpbICAzMTYuMTA4NDcxXSAtLS0tLS0tLS0t
-LS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0KWyAgMzE2LjExMzEwOV0ga2VybmVsIEJVRyBhdCAK
-L2hvbWUvd3h0L3dvcmsvYW5kcm9pZC9icmlsbG8va2VybmVsL25ldC9jb3JlL3NrYnVmZi5jOjEw
-MiEKWyAgMzE2LjEyMDkzOF0gSW50ZXJuYWwgZXJyb3I6IE9vcHMgLSBCVUc6IDAgWyMxXSBTTVAg
-QVJNClsgIDMxNi4xMjYwNzldIE1vZHVsZXMgbGlua2VkIGluOgpbICAzMTYuMTI5MTY2XSBDUFU6
-IDAgUElEOiAwIENvbW06IHN3YXBwZXIvMCBUYWludGVkOiBHIEIgICAgICAgICAgIAo0LjQuMC1y
-YzgrICMzNQpbICAzMTYuMTM2NzMyXSBIYXJkd2FyZSBuYW1lOiBSb2NrY2hpcCAoRGV2aWNlIFRy
-ZWUpClsgIDMxNi4xNDE0NDRdIHRhc2s6IGMwZjBjMGIwIHRpOiBjMGYwMDAwMCB0YXNrLnRpOiBj
-MGYwMDAwMApbICAzMTYuMTQ2ODYyXSBQQyBpcyBhdCBza2JfcGFuaWMrMHg2MC8weDZjClsgIDMx
-Ni4xNTA3OTldIExSIGlzIGF0IF9yYXdfc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSsweDFjLzB4MjQK
-WyAgMzE2LjE1NjI5MV0gcGMgOiBbPGMwOTNmNjk0Pl0gICAgbHIgOiBbPGMwOTQ3ZmIwPl0gcHNy
-OiA2MDAwMDExMwpbICAzMTYuMTU2MjkxXSBzcCA6IGMwZjAxZDg4ICBpcCA6IGMwZjAxYzA4ICBm
-cCA6IGMwZjAxZGJjClsgIDMxNi4xNjc3NjFdIHIxMDogZGY3MTg1NDAgIHI5IDogZGVhYmJjYzAg
-IHI4IDogMDAwMDAzYTAKWyAgMzE2LjE3Mjk4OV0gcjcgOiBjMGMzYmEwYSAgcjYgOiBkZWJiMGMw
-MCAgcjUgOiBkZWJiMGM2NCAgcjQgOiBkZWJiMTdhMgpbICAzMTYuMTc5NTE3XSByMyA6IGMwZTkz
-M2I4ICByMiA6IDAwMDAwMDAwICByMSA6IDYwMDAwMTEzICByMCA6IDAwMDAwMDdkCi4uLgpbICAz
-MTYuMzcyOTk0XSBbPGMwOTNmNjk0Pl0gKHNrYl9wYW5pYykgZnJvbSBbPGMwNzM1M2I4Pl0gCihz
-a2JfcHV0KzB4NTQvMHg2MCkKWyAgMzE2LjM3OTg4OF0gWzxjMDczNTNiOD5dIChza2JfcHV0KSBm
-cm9tIFs8YzA0YWUxOWM+XSAKKGFyY19lbWFjX3BvbGwrMHgyNmMvMHg0YmMpClsgIDMxNi4zODcy
-OTldIFs8YzA0YWUxOWM+XSAoYXJjX2VtYWNfcG9sbCkgZnJvbSBbPGMwNzQ1NmI0Pl0gCihuZXRf
-cnhfYWN0aW9uKzB4ZjQvMHgzMDgpClsgIDMxNi4zOTUxNDZdIFs8YzA3NDU2YjQ+XSAobmV0X3J4
-X2FjdGlvbikgZnJvbSBbPGMwMTIzNjVjPl0gCihfX2RvX3NvZnRpcnErMHgxMGMvMHgyZDgpClsg
-IDMxNi40MDI5OTFdIFs8YzAxMjM2NWM+XSAoX19kb19zb2Z0aXJxKSBmcm9tIFs8YzAxMjNhZGM+
-XSAKKGlycV9leGl0KzB4OTQvMHgxMDQpClsgIDMxNi40MTAzMTNdIFs8YzAxMjNhZGM+XSAoaXJx
-X2V4aXQpIGZyb20gWzxjMDE2YTc3OD5dIAooX19oYW5kbGVfZG9tYWluX2lycSsweDk4LzB4YmMp
-ClsgIDMxNi40MTgxNTZdIFs8YzAxNmE3Nzg+XSAoX19oYW5kbGVfZG9tYWluX2lycSkgZnJvbSBb
-PGMwMTAxNDNjPl0gCihnaWNfaGFuZGxlX2lycSsweDU4LzB4YTApClsgIDMxNi40MjY1MTRdIFs8
-YzAxMDE0M2M+XSAoZ2ljX2hhbmRsZV9pcnEpIGZyb20gWzxjMDEwYmU5ND5dIAooX19pcnFfc3Zj
-KzB4NTQvCgrlnKggMjAxNeW5tDEy5pyIMjTml6UgMjM6NTIsIFNodXl1IFdlaSDlhpnpgZM6Cj4g
-SGksCj4gSSdtIHRlc3RpbmcgUmFkeGEgUm9jayBQcm8gYm9hcmQgd2l0aCBtYWlubGluZSBrZXJu
-ZWwgNC40LjAtcmM2Lgo+IFRoZSBwcm9ibGVtIGNhbiBiZSByZXByb2R1Y2VkIGJ5IHNpbXVsdGFu
-ZW91c2x5IHdnZXQgdHdvIGxhcmdlIGZpbGVzIGF0IGhpZ2ggc3BlZWQgdG8gL2Rldi9udWxsLgo+
-Cj4gJHdnZXQgaHR0cHM6Ly8xOTIuMTY4LjEuMS9maWxlLmJpbiAtTyAvZGV2L251bGwgLXEgJgo+
-ICR3Z2V0IGh0dHBzOi8vMTkyLjE2OC4xLjEvZmlsZS5iaW4gLU8gL2Rldi9udWxsCj4KPiBvciBv
-cGVuIHR3byBzZnRwIHNlc3Npb24gdG8gZG93bmxvYWQgdHdvIGxhcmdlIGZpbGVzIHRvIC9kZXYv
-bnVsbC4KPgo+IFNvbWUgYWRkdGlvbmFsIGluZm9ybWF0aW9uIHRoYXQgbWlnaHQgaGVscDoKPiAg
-ICAgIERvd25sb2FkaW5nIGZyb20gZW5jcnlwdGVkIGh0dHBzIGxpbmtzIG9yIHNmdHAgc2VydmVy
-IHRyaWdnZXJzIHRoZSBwcm9ibGVtIG11Y2ggZWFzaWVyLgo+ICAgICAgRGlzYWJsaW5nIFNNUCBp
-biBrZXJuZWwgc2VlbXMgdG8gZml4IHRoZSBwcm9ibGVtLgo+ICAgICAgU29tZXRpbWVzIHRoZSBl
-bWFjIGp1c3Qgc3RvcHMgc2VuZGluZyBhbmQgcmVjZWl2aW5nIGZyYW1lcywgc29tZXRpbWVzIGl0
-IHByb2R1Y2VzIGtlcm5lbCBwYW5pY3MgbGlrZSBiZWxvdy4KPgo+IFsgMjE5MS45NzU3MjldIEJV
-RzogQmFkIHBhZ2Ugc3RhdGUgaW4gcHJvY2VzcyBzd2FwcGVyLzAgIHBmbjo4ZDk2MAo+IFsgMjE5
-MS45ODIzNTRdIHBhZ2U6ZWY0NjMxODAgY291bnQ6LTEgbWFwY291bnQ6MCBtYXBwaW5nOiAgKG51
-bGwpIGluZGV4OjB4MAo+IFsgMjE5MS45ODkwNDddIGZsYWdzOiAweDAoKQo+IFsgMjE5MS45OTE1
-OTRdIHBhZ2UgZHVtcGVkIGJlY2F1c2U6IG5vbnplcm8gX2NvdW50Cj4gWyAyMTkxLjk5NjEyN10g
-Q1BVOiAwIFBJRDogMCBDb21tOiBzd2FwcGVyLzAgTm90IHRhaW50ZWQgNC40LjAtcmM2ICMxMTQK
-PiBbIDIxOTIuMDAyNDc1XSBIYXJkd2FyZSBuYW1lOiBSb2NrY2hpcCAoRGV2aWNlIFRyZWUpCj4g
-WyAyMTkyLjAwNzE3NF0gQmFja3RyYWNlOgo+IFsgMjE5Mi4wMDk2NThdIFs8YzAwMTM0ZDQ+XSAo
-ZHVtcF9iYWNrdHJhY2UpIGZyb20gWzxjMDAxMzY4MD5dIChzaG93X3N0YWNrKzB4MTgvMHgxYykK
-PiBbIDIxOTIuMDE3MjIwXSAgcjc6YzA1MWM0ZjggcjY6ZWY0NjMxODAgcjU6YzA1YjcwMDAgcjQ6
-MDAwMDAwMDAKPiBbIDIxOTIuMDIyOTQ4XSBbPGMwMDEzNjY4Pl0gKHNob3dfc3RhY2spIGZyb20g
-WzxjMDIxOWQ5MD5dIChkdW1wX3N0YWNrKzB4OTAvMHhhMCkKPiBbIDIxOTIuMDMwMTc2XSBbPGMw
-MjE5ZDAwPl0gKGR1bXBfc3RhY2spIGZyb20gWzxjMDBiMmNkND5dIChiYWRfcGFnZSsweGRjLzB4
-MTJjKQo+IFsgMjE5Mi4wMzczMDJdICByNTpjMDU5YTEwMCByNDpjMDVmNDMwYwo+IFsgMjE5Mi4w
-NDA5MTNdIFs8YzAwYjJiZjg+XSAoYmFkX3BhZ2UpIGZyb20gWzxjMDBiNjA2Yz5dIChnZXRfcGFn
-ZV9mcm9tX2ZyZWVsaXN0KzB4Mzg4LzB4OTVjKQo+IFsgMjE5Mi4wNDkxNjZdICByOTowMDAwMDAw
-OCByODplZjQ2MzE4MCByNzpjMDUxYzRkMCByNjowMDAwMDAwMCByNTowMDAwMDAwMCByNDpjMDUx
-YzRlNAo+IFsgMjE5Mi4wNTY5ODJdIFs8YzAwYjVjZTQ+XSAoZ2V0X3BhZ2VfZnJvbV9mcmVlbGlz
-dCkgZnJvbSBbPGMwMGI2ODgwPl0gKF9fYWxsb2NfcGFnZXNfbm9kZW1hc2srMHhkOC8weDhlOCkK
-PiBbIDIxOTIuMDY2MzYyXSAgcjEwOmMwMDFiMDY4IHI5OjAwMDAwMDAwIHI4OmVlMGIwMmIwIHI3
-OjYwMDAwMTEzIHI2OjAwMDAwMDAzIHI1OjAyMDk1MjIwCj4gWyAyMTkyLjA3NDI1NF0gIHI0OmMw
-NWNhMWMwCj4gWyAyMTkyLjA3NjgwOV0gWzxjMDBiNjdhOD5dIChfX2FsbG9jX3BhZ2VzX25vZGVt
-YXNrKSBmcm9tIFs8YzAwYjcxNDA+XSAoX19hbGxvY19wYWdlX2ZyYWcrMHhiMC8weDE2MCkKPiBb
-IDIxOTIuMDg1NzU3XSAgcjEwOmMwMDFiMDY4IHI5OjAwMDAwMDAwIHI4OmVlMGIwMmIwIHI3OjYw
-MDAwMTEzIHI2OjAyMDgwMDIwIHI1OjAwMDAwNzQwCj4gWyAyMTkyLjA5MzY1MF0gIHI0OmVlZGJj
-ODg0Cj4gWyAyMTkyLjA5NjIwN10gWzxjMDBiNzA5MD5dIChfX2FsbG9jX3BhZ2VfZnJhZykgZnJv
-bSBbPGMwMzI3M2I0Pl0gKF9fbmV0ZGV2X2FsbG9jX3NrYisweGEwLzB4MTA0KQo+IFsgMjE5Mi4x
-MDQ4MDZdICByNzo2MDAwMDExMyByNjplZWRiYzg4NCByNTplZTBiMDAwMCByNDowMDAwMDc0MAo+
-IFsgMjE5Mi4xMTA1MjVdIFs8YzAzMjczMTQ+XSAoX19uZXRkZXZfYWxsb2Nfc2tiKSBmcm9tIFs8
-YzAyYWFjMDA+XSAoYXJjX2VtYWNfcG9sbCsweDMxOC8weDU3YykKPiBbIDIxOTIuMTE4ODY1XSAg
-cjk6MDAwMDAwMDAgcjg6ZWUwYjAyYjAgcjc6MDAwMDAxOWMgcjY6ZWUxNjM3ODAgcjU6MDAwMDA2
-NzAgcjQ6ZWUwYjAwMDAKPiBbIDIxOTIuMTI2NjgzXSBbPGMwMmFhOGU4Pl0gKGFyY19lbWFjX3Bv
-bGwpIGZyb20gWzxjMDMzOWVkOD5dIChuZXRfcnhfYWN0aW9uKzB4MWYwLzB4MmVjKQo+IFsgMjE5
-Mi4xMzQ1OTBdICByMTA6YzA1OTlkZjggcjk6YzA1OWExMDAgcjg6MDAwNzM3NjAgcjc6MDAwMDAx
-MmMgcjY6MDAwMDAwMjggcjU6YzAyYWE4ZTgKPiBbIDIxOTIuMTQyNDgzXSAgcjQ6ZWUwYjA0ZTAK
-PiBbIDIxOTIuMTQ1MDQwXSBbPGMwMzM5Y2U4Pl0gKG5ldF9yeF9hY3Rpb24pIGZyb20gWzxjMDAy
-NmY1Yz5dIChfX2RvX3NvZnRpcnErMHgxMzQvMHgyNTgpCj4gWyAyMTkyLjE1Mjg2MF0gIHIxMDpj
-MDU5YTA4MCByOTo0MDAwMDAwMyByODowMDAwMDAwMyByNzowMDAwMDEwMCByNjpjMDU5ODAwMCBy
-NTpjMDU5YTA4Ywo+IFsgMjE5Mi4xNjA3NTFdICByNDowMDAwMDAwMAo+IFsgMjE5Mi4xNjMzMDNd
-IFs8YzAwMjZlMjg+XSAoX19kb19zb2Z0aXJxKSBmcm9tIFs8YzAwMjczNDQ+XSAoaXJxX2V4aXQr
-MHhiOC8weDEyMCkKPiBbIDIxOTIuMTcwNjA0XSAgcjEwOmMwNDgxOGE0IHI5OmMwNTlhNGEwIHI4
-OmVlODA4MDAwIHI3OjAwMDAwMDAwIHI2OjAwMDAwMDAwIHI1OjAwMDAwMDFhCj4gWyAyMTkyLjE3
-ODQ5Nl0gIHI0OmMwNTk0M2JjCj4gWyAyMTkyLjE4MTA1MV0gWzxjMDAyNzI4Yz5dIChpcnFfZXhp
-dCkgZnJvbSBbPGMwMDY1NmE0Pl0gKF9faGFuZGxlX2RvbWFpbl9pcnErMHg2OC8weGJjKQo+IFsg
-MjE5Mi4xODg4NzFdICByNTowMDAwMDAxYSByNDpjMDU5NDNiYwo+IFsgMjE5Mi4xOTI0NzldIFs8
-YzAwNjU2M2M+XSAoX19oYW5kbGVfZG9tYWluX2lycSkgZnJvbSBbPGMwMDA5NDM4Pl0gKGdpY19o
-YW5kbGVfaXJxKzB4NDAvMHg3OCkKPiBbIDIxOTIuMjAwODE4XSAgcjk6YzA1OWE0YTAgcjg6ZjA4
-MDMxMDAgcjc6ZjA4MDIxMDAgcjY6YzA1OTlmMDAgcjU6ZjA4MDIxMGMgcjQ6YzA1OWE4N2MKPiBb
-IDIxOTIuMjA4NjMwXSBbPGMwMDA5M2Y4Pl0gKGdpY19oYW5kbGVfaXJxKSBmcm9tIFs8YzAwMTQy
-MTQ+XSAoX19pcnFfc3ZjKzB4NTQvMHg3MCkKPiBbIDIxOTIuMjE2MTA1XSBFeGNlcHRpb24gc3Rh
-Y2soMHhjMDU5OWYwMCB0byAweGMwNTk5ZjQ4KQo+IFsgMjE5Mi4yMjExNjFdIDlmMDA6IDAwMDAw
-MDAxIDAwMDAwMDAwIDAwMDAwMDAwIGMwMDFlOTQwIGMwNTk4MDAwIGMwNTlhNDU0IDAwMDAwMDAw
-IGMwNWNhMjkxCj4gWyAyMTkyLjIyOTMzNl0gOWYyMDogMDAwMDAwMDAgYzA1OWE0YTAgYzA0ODE4
-YTQgYzA1OTlmNWMgYzA1OTlmNjAgYzA1OTlmNTAgYzAwMTAyMDggYzAwMTAyMGMKPiBbIDIxOTIu
-MjM3NTA1XSA5ZjQwOiA2MDAwMDAxMyBmZmZmZmZmZgo+IFsgMjE5Mi4yNDA5OTBdICByOTpjMDU5
-YTRhMCByODowMDAwMDAwMCByNzpjMDU5OWYzNCByNjpmZmZmZmZmZiByNTo2MDAwMDAxMyByNDpj
-MDAxMDIwYwo+IFsgMjE5Mi4yNDg4MTBdIFs8YzAwMTAxY2M+XSAoYXJjaF9jcHVfaWRsZSkgZnJv
-bSBbPGMwMDViYmVjPl0gKGRlZmF1bHRfaWRsZV9jYWxsKzB4MjgvMHgzNCkKPiBbIDIxOTIuMjU2
-ODk5XSBbPGMwMDViYmM0Pl0gKGRlZmF1bHRfaWRsZV9jYWxsKSBmcm9tIFs8YzAwNWJlNjA+XSAo
-Y3B1X3N0YXJ0dXBfZW50cnkrMHgyMTQvMHgyNzApCj4gWyAyMTkyLjI2NTUxNV0gWzxjMDA1YmM0
-Yz5dIChjcHVfc3RhcnR1cF9lbnRyeSkgZnJvbSBbPGMwNDdhNmY0Pl0gKHJlc3RfaW5pdCsweDgw
-LzB4ODQpCj4gWyAyMTkyLjI3MzI0OF0gIHI3OmZmZmZmZmZmCj4gWyAyMTkyLjI3NTgwOF0gWzxj
-MDQ3YTY3ND5dIChyZXN0X2luaXQpIGZyb20gWzxjMDU1ZmNhMD5dIChzdGFydF9rZXJuZWwrMHgz
-NDgvMHgzNTQpCj4gWyAyMTkyLjI4MzI4OF0gWzxjMDU1Zjk1OD5dIChzdGFydF9rZXJuZWwpIGZy
-b20gWzw2MDAwODA3OD5dICgweDYwMDA4MDc4KQo+IFsgMjE5Mi4yODk3OThdIERpc2FibGluZyBs
-b2NrIGRlYnVnZ2luZyBkdWUgdG8ga2VybmVsIHRhaW50Cj4gWyAyMTkyLjMwMDc3OV0gcm9ja2No
-aXBfZW1hYyAxMDIwNDAwMC5ldGhlcm5ldCBldGgwOiBCVUchIFR4IFJpbmcgZnVsbCB3aGVuIHF1
-ZXVlIGF3YWtlIQo+Cj4gSSdtIGdsYWQgdG8gcHJvdmlkZSBtb3JlIGluZm9ybWF0aW9uIGlmIG5l
-ZWRlZC4KPgo+IFNodXl1IFdlaQo+ICAgCQkgCSAgIAkJCj4gX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKCi0tIApUaGFua3MsCkNh
-ZXNhcgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hi Caesar,
+
+Thanks for your reply, I thought I have fixed the issue by this patch:
+http://lists.infradead.org/pipermail/linux-rockchip/2016-January/006412.html
+Maybe I sent it to the wrong maintainer so it didn't get noticed.
+I'll try your solution and report as soon as possible. 
+----------------------------------------
+> Subject: Re: rk3188 emac stuck at high load
+> To: shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org
+> CC: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+> From: caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+> Date: Mon, 25 Jan 2016 20:49:36 +0800
+>
+> Hi Shuyu,
+>
+> Thanks your report! Do you have fixed this issue?
+> I guess that caused by the cpufreq.
+>
+> if you run 'cat sys/kernel/debug/clk/clk_summary' to check the emac
+> parent clock, Is it the APLL?
+> Maybe you can change the parent clock to fix this issue if it's.
+>
+> Fox example:
+> uboot：
+> https://github.com/rockchip-linux/u-boot/commit/d64ef6b272d84c92bd02a7925f500880633c8599
+>
+> kernel:
+> https://patchwork.kernel.org/patch/8108231/
+>
+>
+> I try to install many somethings with ubuntu os on rk3036. (that's also
+> working with the emac..)
+>
+> .....
+> Get:35 http://ports.ubuntu.com/ubuntu-ports/ wily/main
+> libpython2.7-minimal armhf 2.7.10-4ubuntu1 [338 kB]
+> Get:36 http://ports.ubuntu.com/ubuntu-ports/ wily/main
+> libpython2.7-stdlib armhf 2.7.10-4ubuntu1 [1750 kB]
+> Get:37 http://ports.ubuntu.com/ubuntu-ports/ wily/main libpython2.7
+> armhf 2.7.10-4ubuntu1 [935 kB]
+> Get:38 http://ports.ubuntu.com/ubuntu-ports/ wily/main vim-runtime all
+> 2:7.4.712-2ubuntu4 [4984 kB]
+> 85% [38 vim-runtime 4405 kB/4984 kB 88%] 195 kB/s 11s[ 314.685641] BUG:
+> Bad page state in process swapper/0 pfn:7e0
+> [ 314.691607] page:dffcee00 count:-1 mapcount:0 mapping: (null) index:0x0
+> [ 314.698311] flags: 0x0()
+> [ 314.700866] page dumped because: nonzero _count
+> 88% [38 vim-runtime 4738 kB/4984 kB 95%] 195 kB/s 9s[ 316.096013]
+> skbuff: skb_over_panic: text:c04ae19c len:2878 p>
+> [ 316.108471] ------------[ cut here ]------------
+> [ 316.113109] kernel BUG at
+> /home/wxt/work/android/brillo/kernel/net/core/skbuff.c:102!
+> [ 316.120938] Internal error: Oops - BUG: 0 [#1] SMP ARM
+> [ 316.126079] Modules linked in:
+> [ 316.129166] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G B
+> 4.4.0-rc8+ #35
+> [ 316.136732] Hardware name: Rockchip (Device Tree)
+> [ 316.141444] task: c0f0c0b0 ti: c0f00000 task.ti: c0f00000
+> [ 316.146862] PC is at skb_panic+0x60/0x6c
+> [ 316.150799] LR is at _raw_spin_unlock_irqrestore+0x1c/0x24
+> [ 316.156291] pc : [<c093f694>] lr : [<c0947fb0>] psr: 60000113
+> [ 316.156291] sp : c0f01d88 ip : c0f01c08 fp : c0f01dbc
+> [ 316.167761] r10: df718540 r9 : deabbcc0 r8 : 000003a0
+> [ 316.172989] r7 : c0c3ba0a r6 : debb0c00 r5 : debb0c64 r4 : debb17a2
+> [ 316.179517] r3 : c0e933b8 r2 : 00000000 r1 : 60000113 r0 : 0000007d
+> ...
+> [ 316.372994] [<c093f694>] (skb_panic) from [<c07353b8>]
+> (skb_put+0x54/0x60)
+> [ 316.379888] [<c07353b8>] (skb_put) from [<c04ae19c>]
+> (arc_emac_poll+0x26c/0x4bc)
+> [ 316.387299] [<c04ae19c>] (arc_emac_poll) from [<c07456b4>]
+> (net_rx_action+0xf4/0x308)
+> [ 316.395146] [<c07456b4>] (net_rx_action) from [<c012365c>]
+> (__do_softirq+0x10c/0x2d8)
+> [ 316.402991] [<c012365c>] (__do_softirq) from [<c0123adc>]
+> (irq_exit+0x94/0x104)
+> [ 316.410313] [<c0123adc>] (irq_exit) from [<c016a778>]
+> (__handle_domain_irq+0x98/0xbc)
+> [ 316.418156] [<c016a778>] (__handle_domain_irq) from [<c010143c>]
+> (gic_handle_irq+0x58/0xa0)
+> [ 316.426514] [<c010143c>] (gic_handle_irq) from [<c010be94>]
+> (__irq_svc+0x54/
+>
+> 在 2015年12月24日 23:52, Shuyu Wei 写道:
+>> Hi,
+>> I'm testing Radxa Rock Pro board with mainline kernel 4.4.0-rc6.
+>> The problem can be reproduced by simultaneously wget two large files at high speed to /dev/null.
+>>
+>> $wget https://192.168.1.1/file.bin -O /dev/null -q &
+>> $wget https://192.168.1.1/file.bin -O /dev/null
+>>
+>> or open two sftp session to download two large files to /dev/null.
+>>
+>> Some addtional information that might help:
+>> Downloading from encrypted https links or sftp server triggers the problem much easier.
+>> Disabling SMP in kernel seems to fix the problem.
+>> Sometimes the emac just stops sending and receiving frames, sometimes it produces kernel panics like below.
+>>
+>> [ 2191.975729] BUG: Bad page state in process swapper/0 pfn:8d960
+>> [ 2191.982354] page:ef463180 count:-1 mapcount:0 mapping: (null) index:0x0
+>> [ 2191.989047] flags: 0x0()
+>> [ 2191.991594] page dumped because: nonzero _count
+>> [ 2191.996127] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.4.0-rc6 #114
+>> [ 2192.002475] Hardware name: Rockchip (Device Tree)
+>> [ 2192.007174] Backtrace:
+>> [ 2192.009658] [<c00134d4>] (dump_backtrace) from [<c0013680>] (show_stack+0x18/0x1c)
+>> [ 2192.017220] r7:c051c4f8 r6:ef463180 r5:c05b7000 r4:00000000
+>> [ 2192.022948] [<c0013668>] (show_stack) from [<c0219d90>] (dump_stack+0x90/0xa0)
+>> [ 2192.030176] [<c0219d00>] (dump_stack) from [<c00b2cd4>] (bad_page+0xdc/0x12c)
+>> [ 2192.037302] r5:c059a100 r4:c05f430c
+>> [ 2192.040913] [<c00b2bf8>] (bad_page) from [<c00b606c>] (get_page_from_freelist+0x388/0x95c)
+>> [ 2192.049166] r9:00000008 r8:ef463180 r7:c051c4d0 r6:00000000 r5:00000000 r4:c051c4e4
+>> [ 2192.056982] [<c00b5ce4>] (get_page_from_freelist) from [<c00b6880>] (__alloc_pages_nodemask+0xd8/0x8e8)
+>> [ 2192.066362] r10:c001b068 r9:00000000 r8:ee0b02b0 r7:60000113 r6:00000003 r5:02095220
+>> [ 2192.074254] r4:c05ca1c0
+>> [ 2192.076809] [<c00b67a8>] (__alloc_pages_nodemask) from [<c00b7140>] (__alloc_page_frag+0xb0/0x160)
+>> [ 2192.085757] r10:c001b068 r9:00000000 r8:ee0b02b0 r7:60000113 r6:02080020 r5:00000740
+>> [ 2192.093650] r4:eedbc884
+>> [ 2192.096207] [<c00b7090>] (__alloc_page_frag) from [<c03273b4>] (__netdev_alloc_skb+0xa0/0x104)
+>> [ 2192.104806] r7:60000113 r6:eedbc884 r5:ee0b0000 r4:00000740
+>> [ 2192.110525] [<c0327314>] (__netdev_alloc_skb) from [<c02aac00>] (arc_emac_poll+0x318/0x57c)
+>> [ 2192.118865] r9:00000000 r8:ee0b02b0 r7:0000019c r6:ee163780 r5:00000670 r4:ee0b0000
+>> [ 2192.126683] [<c02aa8e8>] (arc_emac_poll) from [<c0339ed8>] (net_rx_action+0x1f0/0x2ec)
+>> [ 2192.134590] r10:c0599df8 r9:c059a100 r8:00073760 r7:0000012c r6:00000028 r5:c02aa8e8
+>> [ 2192.142483] r4:ee0b04e0
+>> [ 2192.145040] [<c0339ce8>] (net_rx_action) from [<c0026f5c>] (__do_softirq+0x134/0x258)
+>> [ 2192.152860] r10:c059a080 r9:40000003 r8:00000003 r7:00000100 r6:c0598000 r5:c059a08c
+>> [ 2192.160751] r4:00000000
+>> [ 2192.163303] [<c0026e28>] (__do_softirq) from [<c0027344>] (irq_exit+0xb8/0x120)
+>> [ 2192.170604] r10:c04818a4 r9:c059a4a0 r8:ee808000 r7:00000000 r6:00000000 r5:0000001a
+>> [ 2192.178496] r4:c05943bc
+>> [ 2192.181051] [<c002728c>] (irq_exit) from [<c00656a4>] (__handle_domain_irq+0x68/0xbc)
+>> [ 2192.188871] r5:0000001a r4:c05943bc
+>> [ 2192.192479] [<c006563c>] (__handle_domain_irq) from [<c0009438>] (gic_handle_irq+0x40/0x78)
+>> [ 2192.200818] r9:c059a4a0 r8:f0803100 r7:f0802100 r6:c0599f00 r5:f080210c r4:c059a87c
+>> [ 2192.208630] [<c00093f8>] (gic_handle_irq) from [<c0014214>] (__irq_svc+0x54/0x70)
+>> [ 2192.216105] Exception stack(0xc0599f00 to 0xc0599f48)
+>> [ 2192.221161] 9f00: 00000001 00000000 00000000 c001e940 c0598000 c059a454 00000000 c05ca291
+>> [ 2192.229336] 9f20: 00000000 c059a4a0 c04818a4 c0599f5c c0599f60 c0599f50 c0010208 c001020c
+>> [ 2192.237505] 9f40: 60000013 ffffffff
+>> [ 2192.240990] r9:c059a4a0 r8:00000000 r7:c0599f34 r6:ffffffff r5:60000013 r4:c001020c
+>> [ 2192.248810] [<c00101cc>] (arch_cpu_idle) from [<c005bbec>] (default_idle_call+0x28/0x34)
+>> [ 2192.256899] [<c005bbc4>] (default_idle_call) from [<c005be60>] (cpu_startup_entry+0x214/0x270)
+>> [ 2192.265515] [<c005bc4c>] (cpu_startup_entry) from [<c047a6f4>] (rest_init+0x80/0x84)
+>> [ 2192.273248] r7:ffffffff
+>> [ 2192.275808] [<c047a674>] (rest_init) from [<c055fca0>] (start_kernel+0x348/0x354)
+>> [ 2192.283288] [<c055f958>] (start_kernel) from [<60008078>] (0x60008078)
+>> [ 2192.289798] Disabling lock debugging due to kernel taint
+>> [ 2192.300779] rockchip_emac 10204000.ethernet eth0: BUG! Tx Ring full when queue awake!
+>>
+>> I'm glad to provide more information if needed.
+>>
+>> Shuyu Wei
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+>
+> --
+> Thanks,
+> Caesar
+>
+ 		 	   		  
