@@ -1,74 +1,36 @@
-From: Julian Calaby <julian.calaby@gmail.com>
-Subject: Re: [PATCH] brcmfmac: sdio: Increase the default timeouts a bit
-Date: Mon, 25 Jan 2016 22:06:35 +1100
-Message-ID: <CAGRGNgXWE=b52Mcy8NsKBZS_4gz-TUiuFipjsuTZh1xjja=uUg@mail.gmail.com>
-References: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 1/2] drm/rockchip: Don't build rockchip_drm_vop as modules
+Date: Mon, 25 Jan 2016 12:09:31 +0100
+Message-ID: <4712230.210ZLu46G4@diego>
+References: <1452673328-29188-1-git-send-email-mark.yao@rock-chips.com>
+ <1452673328-29188-2-git-send-email-mark.yao@rock-chips.com>
+ <1453719247.30130.22.camel@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Sender: netdev-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1453719247.30130.22.camel@collabora.co.uk>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-Cc: Kalle Valo <kvalo@codeaurora.org>, Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless <linux-wireless@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev <netdev@vger.kernel.org>, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sjoerd,
-
-On Mon, Jan 25, 2016 at 9:47 PM, Sjoerd Simons
-<sjoerd.simons@collabora.co.uk> wrote:
-> On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
-> the card responds very quickly most of the time, unfortunately during
-> initialisation it sometimes seems to take just a bit over 2 seconds to
-> respond.
->
-> This results intialization failing with message like:
->   brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
->   brcmf_bus_start: failed: -52
->   brcmf_sdio_firmware_callback: dongle is not responding
->
-> Increasing the timeout to allow for a bit more headroom allows the
-> card to initialize reliably.
->
-> A quick search online after diagnosing/fixing this showed that Google
-> has a similar patch in their ChromeOS tree, so this doesn't seem
-> specific to the board I'm using.
->
-> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-
-Looks sane to me.
-
-Reviewed-by: Julian Calaby <julian.calaby@gmail.com>
-
->  drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> index dd66143..75ac4bd 100644
-> --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-> @@ -45,8 +45,8 @@
->  #include "chip.h"
->  #include "firmware.h"
->
-> -#define DCMD_RESP_TIMEOUT      msecs_to_jiffies(2000)
-> -#define CTL_DONE_TIMEOUT       msecs_to_jiffies(2000)
-> +#define DCMD_RESP_TIMEOUT      msecs_to_jiffies(2500)
-> +#define CTL_DONE_TIMEOUT       msecs_to_jiffies(2500)
->
->  #ifdef DEBUG
->
-> --
-> 2.7.0
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-wireless" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-
-
-
--- 
-Julian Calaby
-
-Email: julian.calaby@gmail.com
-Profile: http://www.google.com/profiles/julian.calaby/
+QW0gTW9udGFnLCAyNS4gSmFudWFyIDIwMTYsIDExOjU0OjA3IHNjaHJpZWIgU2pvZXJkIFNpbW9u
+czoKPiBPbiBXZWQsIDIwMTYtMDEtMTMgYXQgMTY6MjIgKzA4MDAsIE1hcmsgWWFvIHdyb3RlOgo+
+ID4gcm9ja2NoaXBfZHJtX3ZvcCdzIG1vZHVsZSBpbml0IGhhZCBtb3ZlZCB0byByb2NrY2hpcF92
+b3BfcmVnLmMKPiA+IHNvIG5vIG5lZWQgdG8gYnVpbGQgcm9ja2NoaXBfZHJtX3ZvcC5rbwo+IAo+
+IExvb2tzIGxpa2UgdGhpcyBkaWRuJ3QgbWFrZSBpdCBmb3IgdGhlIExpbnV4IDQuNSBtZXJnZSB3
+aW5kb3csIHdoaWNoCj4gdW5mb3J0dW5hdGVseSBtZWFucyBpbiA0LjUtcmMxIERSTSBvbiByb2Nr
+Y2hpcCBpcyBicm9rZW4gOi8KCmJ1dCBpdCBpcyBpbiB0aGUgZml4ZXMgcHVsbCByZXF1ZXN0IE1h
+cmsgc2VudCB0byBEYXZlIG9uIGZyaWRheQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
