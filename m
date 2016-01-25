@@ -1,64 +1,181 @@
-From: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: Assign RK3288 EDP_24M input centrally
-Date: Mon, 25 Jan 2016 12:19:26 +0100
-Message-ID: <1453720766-13086-1-git-send-email-sjoerd.simons@collabora.co.uk>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2] ARM: dts: rockchip: add support emac for RK3036
+Date: Mon, 25 Jan 2016 20:38:08 +0800
+Message-ID: <1453725488-5279-1-git-send-email-wxt@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The EDP 24M clock can be fed either by an SoC internal fixed clock or
-from an external IC. Change the default parent to the internal clock in
-the main rk3288 dtsi, to ensure (by default) it gets setup with a
-non-orphaned clock (hardware defaults to the externa clock).
+From: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-This prevents potential issues when the clock framework get support for
-deferring on orphaned clocks, while specific boards can always change
-the parent clock if an external input is preferred.
+This patch describe the emac, and we need to let mac clock under
+the APLL which is able to provide the accurate 50MHz what mac_ref
+need.
 
-Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>
+This patch makes the emac parent clock is DPLL instead of APLL.
+since that will cause some unstable things if the cpufreq is working.
+
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 ---
 
- arch/arm/boot/dts/rk3288-veyron.dtsi | 5 -----
- arch/arm/boot/dts/rk3288.dtsi        | 3 +++
- 2 files changed, 3 insertions(+), 5 deletions(-)
+Changes in v2:
+- add the assigned clock parent for emac.
+  https://github.com/rockchip-linux/u-boot/commit/d64ef6b272d84c92bd02a7925f500880633c8599
+- change the emac to a better place.
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 9fce91f..5e61f07 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -340,11 +340,6 @@
- 	i2c-scl-rising-time-ns = <1000>;
+ arch/arm/boot/dts/rk3036-evb.dts   | 23 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3036-kylin.dts | 21 ++++++++++++++++++++
+ arch/arm/boot/dts/rk3036.dtsi      | 39 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 83 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
+index 28a0336..d7d3719 100644
+--- a/arch/arm/boot/dts/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rk3036-evb.dts
+@@ -47,6 +47,17 @@
+ 	compatible = "rockchip,rk3036-evb", "rockchip,rk3036";
  };
  
--&power {
--	assigned-clocks = <&cru SCLK_EDP_24M>;
--	assigned-clock-parents = <&xin24m>;
--};
--
- &pwm1 {
++&emac {
++	pinctrl-names = "default";
++	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
++	phy = <&phy0>;
++	status = "okay";
++
++	phy0: ethernet-phy@0 {
++		reg = <0>;
++	};
++};
++
+ &i2c1 {
+ 	status = "okay";
+ 
+@@ -62,3 +73,15 @@
+ &uart2 {
  	status = "okay";
  };
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 8ac49f3..03bb747 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -630,6 +630,9 @@
- 			#address-cells = <1>;
- 			#size-cells = <0>;
- 
-+			assigned-clocks = <&cru SCLK_EDP_24M>;
-+			assigned-clock-parents = <&xin24m>;
 +
- 			/*
- 			 * Note: Although SCLK_* are the working clocks
- 			 * of device without including on the NOC, needed for
++&pinctrl {
++	pcfg_output_high: pcfg-output-high {
++		output-high;
++	};
++
++	emac {
++		rmii_rst: rmii-rst {
++			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_output_high>;
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 190f22c..0bc127b 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -101,6 +101,17 @@
+ 	status = "okay";
+ };
+ 
++&emac {
++	pinctrl-names = "default";
++	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
++	phy = <&phy0>;
++	status = "okay";
++
++	phy0: ethernet-phy@0 {
++		reg = <0>;
++	};
++};
++
+ &emmc {
+ 	status = "okay";
+ };
+@@ -359,6 +370,16 @@
+ };
+ 
+ &pinctrl {
++	pcfg_output_high: pcfg-output-high {
++		output-high;
++	};
++
++	emac {
++		rmii_rst: rmii-rst {
++			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_output_high>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int: pmic-int {
+ 			rockchip,pins = <2 2 RK_FUNC_GPIO &pcfg_pull_default>;
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 7897449..436c77a 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -186,6 +186,27 @@
+ 		status = "disabled";
+ 	};
+ 
++	emac: ethernet@10200000 {
++		compatible = "rockchip,rk3036-emac", "snps,arc-emac";
++		reg = <0x10200000 0x4000>;
++		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
++		clock-names = "hclk", "macref", "macclk";
++		/*
++		 * Fix the emac parent clock is DPLL instead of APLL.
++		 * since that will cause some unstable things if the cpufreq
++		 * is working. (e.g: the accurate 50MHz what mac_ref need)
++		 */
++		assigned-clocks = <&cru SCLK_MACPLL>;
++		assigned-clock-parents = <&cru PLL_DPLL>;
++		max-speed = <100>;
++		phy-mode = "rmii";
++		status = "disabled";
++	};
++
+ 	sdmmc: dwmmc@10214000 {
+ 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x10214000 0x4000>;
+@@ -556,6 +577,24 @@
+ 			};
+ 		};
+ 
++		emac {
++			emac_xfer: emac-xfer {
++				rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_default>, /* crs_dvalid */
++						<2 13 RK_FUNC_1 &pcfg_pull_default>, /* tx_en */
++						<2 14 RK_FUNC_1 &pcfg_pull_default>, /* mac_clk */
++						<2 15 RK_FUNC_1 &pcfg_pull_default>, /* rx_err */
++						<2 16 RK_FUNC_1 &pcfg_pull_default>, /* rxd1 */
++						<2 17 RK_FUNC_1 &pcfg_pull_default>, /* rxd0 */
++						<2 18 RK_FUNC_1 &pcfg_pull_default>, /* txd1 */
++						<2 19 RK_FUNC_1 &pcfg_pull_default>; /* txd0 */
++			};
++
++			emac_mdio: emac-mdio {
++				rockchip,pins = <2 12 RK_FUNC_1 &pcfg_pull_default>, /* mac_md */
++						<2 25 RK_FUNC_1 &pcfg_pull_default>; /* mac_mdclk */
++			};
++		};
++
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+ 				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
 -- 
-2.7.0
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.9.1
