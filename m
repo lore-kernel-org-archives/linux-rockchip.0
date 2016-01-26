@@ -1,439 +1,58 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [PATCH v4] phy: rockchip-usb: add handler for usb-uart functionality
-Date: Tue, 26 Jan 2016 01:21:39 +0100
-Message-ID: <2609586.28qbVUeppF@diego>
+From: Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>
+Subject: Re: [PATCH v6] drm/rockchip: hdmi: add Innosilicon HDMI support
+Date: Tue, 26 Jan 2016 01:45:19 +0100
+Message-ID: <1453769119.17181.37.camel@tiscali.nl>
+References: <1453686197-20975-1-git-send-email-ykk@rock-chips.com>
+	 <1453686430-21470-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, romain.perier@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1453686430-21470-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ken Mixte <kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Ben Chan <benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Most newer Rockchip SoCs provide the possibility to use a usb-phy
-as passthrough for the debug uart (uart2), making it possible to
-for example get console output without needing to open the device.
+On ma, 2016-01-25 at 09:47 +0800, Yakir Yang wrote:
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
 
-This patch adds an early_initcall to enable this functionality
-conditionally via the commandline and also disables the corresponding
-usb controller in the devicetree.
+> +config ROCKCHIP_INNO_HDMI
+> +	tristate "Rockchip specific extensions for Innosilicon HDMI"
+> +        depends on DRM_ROCKCHIP
+> +        help
+> +	  This selects support for Rockchip SoC specific extensions
+> +	  for the Innosilicon HDMI driver. If you want to enable
+> +	  HDMI on RK3036 based SoC, you should selet this option.
 
-Currently only data for the rk3288 is provided, but at least the
-rk3188 and arm64 rk3368 also provide this functionality and will be
-enabled later.
+(Really trivial: start indentation with tabs only, please. And
+s/selet/select/.)
 
-On a spliced usb cable the signals are tx on white wire(D+) and
-rx on green wire(D-).
+> --- /dev/null
+> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
 
-The one caveat is that currently the reconfiguration of the phy
-happens as early_initcall, as the code depends on the unflattened
-devicetree being available. Everything is fine if only a regular
-console is active as the console-replay will happen after the
-reconfiguation. But with earlycon active output up to smp-init
-currently will get lost.
+> + * This software is licensed under the terms of the GNU General
+> Public
+> + * License version 2, as published by the Free Software Foundation,
+> and
+> + * may be copied, distributed, and modified under those terms.
 
-The phy is an optional property for the connected dwc2 controller,
-so we still provide the phy device but fail all phy-ops with -EBUSY
-to make sure the dwc2 does not try to transmit anything on the
-repurposed phy.
+This states this file is licensed GPL v2 only.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-changes in v4:
-- drop the rest of the phy-series, as the patches have gotten applied
+> +MODULE_LICENSE("GPL");
 
-So far, this hasn't gotten eyeballs yet, so citing discussion-parts fro=
-m
-the v3 coverletter:
+And, according to include/linux/module.h, this means "GNU Public License
+v2 or later".
 
-The patch, while not associated with the new pll handling, also builds
-on the groundwork introduced there and adds support for the function
-repurposing one of the phys as passthrough for uart-data. This enables
-attaching a ttl converter to the D+ and D- pins of an usb cable to
-receive uart data this way, when it is not really possible to attach
-a regular serial console to a board.
+So I think there's a (subtle) mismatch between the license ident used
+for this driver and the comment above.
 
-One point of critique in my first iteration [0] of this was, that
-due to when the reconfiguration happens we may miss parts of the logs
-when earlycon is enabled. So far early_initcall gets used as the
-unflattened devicetree is necessary to set this up. Doing this for
-example in the early_param directly would require parsing the flattened
-devicetree to get needed nodes and properties.
-
-I still maintain that if you're working on anything before smp-bringup
-you should use a real dev-board instead or try to solder uart cables
-on hopefully available test-points  .
+Thanks,
 
 
- Documentation/kernel-parameters.txt |   6 +
- drivers/phy/phy-rockchip-usb.c      | 231 ++++++++++++++++++++++++++++=
-++------
- 2 files changed, 201 insertions(+), 36 deletions(-)
-
-diff --git a/Documentation/kernel-parameters.txt b/Documentation/kernel=
--parameters.txt
-index 87d40a7..d91417b 100644
---- a/Documentation/kernel-parameters.txt
-+++ b/Documentation/kernel-parameters.txt
-@@ -3486,6 +3486,12 @@ bytes respectively. Such letter suffixes can als=
-o be entirely omitted.
-=20
- 	ro		[KNL] Mount root device read-only on boot
-=20
-+	rockchip.usb_uart
-+			Enable the uart passthrough on the designated usb port
-+			on Rockchip SoCs. When active, the signals of the
-+			debug-uart get routed to the D+ and D- pins of the usb
-+			port and the regular usb controller gets disabled.
-+
- 	root=3D		[KNL] Root filesystem
- 			See name_to_dev_t comment in init/do_mounts.c.
-=20
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-=
-usb.c
-index 33a80eb..e162513 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -30,21 +30,23 @@
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
-=20
--/*
-- * The higher 16-bit of this register is used for write protection
-- * only if BIT(13 + 16) set to 1 the BIT(13) can be written.
-- */
--#define SIDDQ_WRITE_ENA	BIT(29)
--#define SIDDQ_ON		BIT(13)
--#define SIDDQ_OFF		(0 << 13)
-+static int enable_usb_uart;
-+
-+#define HIWORD_UPDATE(val, mask) \
-+		((val) | (mask) << 16)
-+
-+#define UOC_CON0_SIDDQ BIT(13)
-=20
- struct rockchip_usb_phys {
- 	int reg;
- 	const char *pll_name;
- };
-=20
-+struct rockchip_usb_phy_base;
- struct rockchip_usb_phy_pdata {
- 	struct rockchip_usb_phys *phys;
-+	int (*init_usb_uart)(struct regmap *grf);
-+	int usb_uart_phy;
- };
-=20
- struct rockchip_usb_phy_base {
-@@ -61,13 +63,15 @@ struct rockchip_usb_phy {
- 	struct clk      *clk480m;
- 	struct clk_hw	clk480m_hw;
- 	struct phy	*phy;
-+	bool		uart_enabled;
- };
-=20
- static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
- 					   bool siddq)
- {
--	return regmap_write(phy->base->reg_base, phy->reg_offset,
--			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
-+	u32 val =3D HIWORD_UPDATE(siddq ? UOC_CON0_SIDDQ : 0, UOC_CON0_SIDDQ)=
-;
-+
-+	return regmap_write(phy->base->reg_base, phy->reg_offset, val);
- }
-=20
- static unsigned long rockchip_usb_phy480m_recalc_rate(struct clk_hw *h=
-w,
-@@ -108,7 +112,7 @@ static int rockchip_usb_phy480m_is_enabled(struct c=
-lk_hw *hw)
- 	if (ret < 0)
- 		return ret;
-=20
--	return (val & SIDDQ_ON) ? 0 : 1;
-+	return (val & UOC_CON0_SIDDQ) ? 0 : 1;
- }
-=20
- static const struct clk_ops rockchip_usb_phy480m_ops =3D {
-@@ -122,6 +126,9 @@ static int rockchip_usb_phy_power_off(struct phy *_=
-phy)
- {
- 	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
-=20
-+	if (phy->uart_enabled)
-+		return -EBUSY;
-+
- 	clk_disable_unprepare(phy->clk480m);
-=20
- 	return 0;
-@@ -131,6 +138,9 @@ static int rockchip_usb_phy_power_on(struct phy *_p=
-hy)
- {
- 	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
-=20
-+	if (phy->uart_enabled)
-+		return -EBUSY;
-+
- 	return clk_prepare_enable(phy->clk480m);
- }
-=20
-@@ -144,8 +154,10 @@ static void rockchip_usb_phy_action(void *data)
- {
- 	struct rockchip_usb_phy *rk_phy =3D data;
-=20
--	of_clk_del_provider(rk_phy->np);
--	clk_unregister(rk_phy->clk480m);
-+	if (!rk_phy->uart_enabled) {
-+		of_clk_del_provider(rk_phy->np);
-+		clk_unregister(rk_phy->clk480m);
-+	}
-=20
- 	if (rk_phy->clk)
- 		clk_put(rk_phy->clk);
-@@ -194,30 +206,35 @@ static int rockchip_usb_phy_init(struct rockchip_=
-usb_phy_base *base,
- 		return -EINVAL;
- 	}
-=20
--	if (rk_phy->clk) {
--		clk_name =3D __clk_get_name(rk_phy->clk);
--		init.flags =3D 0;
--		init.parent_names =3D &clk_name;
--		init.num_parents =3D 1;
-+	if (enable_usb_uart && base->pdata->usb_uart_phy =3D=3D i) {
-+		dev_dbg(base->dev, "phy%d used as uart output\n", i);
-+		rk_phy->uart_enabled =3D true;
- 	} else {
--		init.flags =3D CLK_IS_ROOT;
--		init.parent_names =3D NULL;
--		init.num_parents =3D 0;
--	}
-+		if (rk_phy->clk) {
-+			clk_name =3D __clk_get_name(rk_phy->clk);
-+			init.flags =3D 0;
-+			init.parent_names =3D &clk_name;
-+			init.num_parents =3D 1;
-+		} else {
-+			init.flags =3D CLK_IS_ROOT;
-+			init.parent_names =3D NULL;
-+			init.num_parents =3D 0;
-+		}
-=20
--	init.ops =3D &rockchip_usb_phy480m_ops;
--	rk_phy->clk480m_hw.init =3D &init;
-+		init.ops =3D &rockchip_usb_phy480m_ops;
-+		rk_phy->clk480m_hw.init =3D &init;
-=20
--	rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw);
--	if (IS_ERR(rk_phy->clk480m)) {
--		err =3D PTR_ERR(rk_phy->clk480m);
--		goto err_clk;
--	}
-+		rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw);
-+		if (IS_ERR(rk_phy->clk480m)) {
-+			err =3D PTR_ERR(rk_phy->clk480m);
-+			goto err_clk;
-+		}
-=20
--	err =3D of_clk_add_provider(child, of_clk_src_simple_get,
--				  rk_phy->clk480m);
--	if (err < 0)
--		goto err_clk_prov;
-+		err =3D of_clk_add_provider(child, of_clk_src_simple_get,
-+					rk_phy->clk480m);
-+		if (err < 0)
-+			goto err_clk_prov;
-+	}
-=20
- 	err =3D devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
- 	if (err)
-@@ -230,13 +247,21 @@ static int rockchip_usb_phy_init(struct rockchip_=
-usb_phy_base *base,
- 	}
- 	phy_set_drvdata(rk_phy->phy, rk_phy);
-=20
--	/* only power up usb phy when it use, so disable it when init*/
--	return rockchip_usb_phy_power(rk_phy, 1);
-+	/*
-+	 * When acting as uart-pipe, just keep clock on otherwise
-+	 * only power up usb phy when it use, so disable it when init
-+	 */
-+	if (rk_phy->uart_enabled)
-+		return clk_prepare_enable(rk_phy->clk);
-+	else
-+		return rockchip_usb_phy_power(rk_phy, 1);
-=20
- err_devm_action:
--	of_clk_del_provider(child);
-+	if (!rk_phy->uart_enabled)
-+		of_clk_del_provider(child);
- err_clk_prov:
--	clk_unregister(rk_phy->clk480m);
-+	if (!rk_phy->uart_enabled)
-+		clk_unregister(rk_phy->clk480m);
- err_clk:
- 	if (rk_phy->clk)
- 		clk_put(rk_phy->clk);
-@@ -259,6 +284,86 @@ static const struct rockchip_usb_phy_pdata rk3188_=
-pdata =3D {
- 	},
- };
-=20
-+#define RK3288_UOC0_CON0				0x320
-+#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
-+#define RK3288_UOC0_CON0_DISABLE			BIT(4)
-+
-+#define RK3288_UOC0_CON2				0x328
-+#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
-+
-+#define RK3288_UOC0_CON3				0x32c
-+#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
-+#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
-+#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
-+#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
-+#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
-+#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
-+#define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
-+#define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
-+
-+/*
-+ * Enable the bypass of uart2 data through the otg usb phy.
-+ * Original description in the TRM.
-+ * 1. Disable the OTG block by setting OTGDISABLE0 to 1=E2=80=99b1.
-+ * 2. Disable the pull-up resistance on the D+ line by setting
-+ *    OPMODE0[1:0] to 2=E2=80=99b01.
-+ * 3. To ensure that the XO, Bias, and PLL blocks are powered down in =
-Suspend
-+ *    mode, set COMMONONN to 1=E2=80=99b1.
-+ * 4. Place the USB PHY in Suspend mode by setting SUSPENDM0 to 1=E2=80=
-=99b0.
-+ * 5. Set BYPASSSEL0 to 1=E2=80=99b1.
-+ * 6. To transmit data, controls BYPASSDMEN0, and BYPASSDMDATA0.
-+ * To receive data, monitor FSVPLUS0.
-+ *
-+ * The actual code in the vendor kernel does some things differently.
-+ */
-+static int __init rk3288_init_usb_uart(struct regmap *grf)
-+{
-+	u32 val;
-+	int ret;
-+
-+	/*
-+	 * COMMON_ON and DISABLE settings are described in the TRM,
-+	 * but were not present in the original code.
-+	 * Also disable the analog phy components to save power.
-+	 */
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
-+				| RK3288_UOC0_CON0_DISABLE
-+				| UOC_CON0_SIDDQ,
-+			    RK3288_UOC0_CON0_COMMON_ON_N
-+				| RK3288_UOC0_CON0_DISABLE
-+				| UOC_CON0_SIDDQ);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON0, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
-+			    RK3288_UOC0_CON2_SOFT_CON_SEL);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON2, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
-+				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
-+				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
-+			    RK3288_UOC0_CON3_UTMI_SUSPENDN
-+				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
-+				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
-+				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_BYPASSSEL
-+				| RK3288_UOC0_CON3_BYPASSDMEN,
-+			    RK3288_UOC0_CON3_BYPASSSEL
-+				| RK3288_UOC0_CON3_BYPASSDMEN);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
- static const struct rockchip_usb_phy_pdata rk3288_pdata =3D {
- 	.phys =3D (struct rockchip_usb_phys[]){
- 		{ .reg =3D 0x320, .pll_name =3D "sclk_otgphy0_480m" },
-@@ -266,6 +371,8 @@ static const struct rockchip_usb_phy_pdata rk3288_p=
-data =3D {
- 		{ .reg =3D 0x348, .pll_name =3D "sclk_otgphy2_480m" },
- 		{ /* sentinel */ }
- 	},
-+	.init_usb_uart =3D rk3288_init_usb_uart,
-+	.usb_uart_phy =3D 0,
- };
-=20
- static int rockchip_usb_phy_probe(struct platform_device *pdev)
-@@ -328,6 +435,58 @@ static struct platform_driver rockchip_usb_driver =
-=3D {
-=20
- module_platform_driver(rockchip_usb_driver);
-=20
-+static int __init rockchip_init_usb_uart(void)
-+{
-+	const struct of_device_id *match;
-+	const struct rockchip_usb_phy_pdata *data;
-+	struct device_node *np;
-+	struct regmap *grf;
-+	int ret;
-+
-+	if (!enable_usb_uart)
-+		return 0;
-+
-+	np =3D of_find_matching_node_and_match(NULL, rockchip_usb_phy_dt_ids,
-+					     &match);
-+	if (!np) {
-+		pr_err("%s: failed to find usbphy node\n", __func__);
-+		return -ENOTSUPP;
-+	}
-+
-+	pr_debug("%s: using settings for %s\n", __func__, match->compatible);
-+	data =3D match->data;
-+
-+	if (!data->init_usb_uart) {
-+		pr_err("%s: usb-uart not available on %s\n",
-+		       __func__, match->compatible);
-+		return -ENOTSUPP;
-+	}
-+
-+	grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	if (IS_ERR(grf)) {
-+		pr_err("%s: Missing rockchip,grf property, %lu\n",
-+		       __func__, PTR_ERR(grf));
-+		return PTR_ERR(grf);
-+	}
-+
-+	ret =3D data->init_usb_uart(grf);
-+	if (ret) {
-+		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
-+		enable_usb_uart =3D 0;
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+early_initcall(rockchip_init_usb_uart);
-+
-+static int __init rockchip_usb_uart(char *buf)
-+{
-+	enable_usb_uart =3D true;
-+	return 0;
-+}
-+early_param("rockchip.usb_uart", rockchip_usb_uart);
-+
- MODULE_AUTHOR("Yunzhi Li <lyz@rock-chips.com>");
- MODULE_DESCRIPTION("Rockchip USB 2.0 PHY driver");
- MODULE_LICENSE("GPL v2");
---=20
-2.6.4
+Paul Bolle
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
