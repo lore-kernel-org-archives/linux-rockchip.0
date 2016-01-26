@@ -1,96 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 3/9] ASoC: rockchip: i2s: add support for grabbing output clock to codec
-Date: Tue, 26 Jan 2016 10:52:25 +0100
-Message-ID: <2073307.S3XLZp3hP0@diego>
-References: <1452865796-23527-1-git-send-email-wxt@rock-chips.com> <20160122171815.GD6588@sirena.org.uk> <56A57733.8020200@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56A57733.8020200@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, Sonny Rao <sonnyrao@chromium.org>, Caesar Wang <wxt@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, leozwang@google.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Kees Cook <keescook@google.com>
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH] clk: rockchip: Reparent hclk_rom, hclk_i2s0 and hclk_spdif to hclk_cpubus on RK3066/RK3188
+Date: Tue, 26 Jan 2016 15:44:10 +0300
+Message-ID: <1453812250-11819-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: stable@vger.kernel.org, Alexander Kochetkov <al.kochet@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jay,
+In order to make peripherals (rom, i2s0 or spdif) accessible via cpu,
+hclk_cpubus gate must be opened. Without that all accesses (readl/writel)
+return wrong data.
 
-Am Montag, 25. Januar 2016, 09:15:31 schrieb Jianqun Xu:
-> =E5=9C=A8 23/01/2016 01:18, Mark Brown =E5=86=99=E9=81=93:
-> > On Fri, Jan 15, 2016 at 01:48:04PM -0800, Sonny Rao wrote:
-> >> On Fri, Jan 15, 2016 at 9:46 AM, Mark Brown <broonie@kernel.org> w=
-rote:
-> >>> If the I2S block is providing a clock to the CODEC then that's wh=
-at the
-> >>> software should do so that the CODEC can gate and ungate the cloc=
-k as
-> >>> required.  This patch has the I2S block using a clock, not provid=
-ing
-> >>> one.
-> >>>=20
-> >>  From my read of the clock diagram for RK3288  there is a single c=
-lock
-> >>=20
-> >> signal (labeled "clk_i2s0") that comes out of a fractional divider=
-,
-> >> and it is split such that one path gets sent to the I2S block and =
-the
-> >> second path is sent to a mux after which that signal is sent to an
-> >> external pin that goes to the codec.
-> >>=20
-> >> There are separate clock gates for the two paths: one for the I2S
-> >> block and one after that mux before the external pin.
-> >>=20
-> >> I'm not sure if it's being modeled that way in the Linux code or n=
-ot,
-> >> but at least physically I don't think this clock signal actually g=
-oes
-> >> through the I2S block before being sent to the codec.
-> >=20
-> > That's not really the issue here, the issue is that it's not the I2=
-S
-> > controller that is consuming the clock so it should not be the I2S
-> > controller driver that ensures that the clock is enabled.  The driv=
-er
-> > that manages the clock should be the one that uses it, like I say t=
-his
-> > means you should add the code to enable the clock to the CODEC driv=
-er if
-> > the CODEC driver needs the clock enabled.
->=20
-> Agree, now we almost use the simple-card for the CODEC driver, so I
-> think we should enable the mclk(i2s-outclk) in the simple-card driver=
-,
-> is it ?
->=20
-> I found a subnode property from simple-card document:
-> - mclk-fs                               : Multiplication factor betwe=
-en
-> stream
->                                            rate and codec mclk, appli=
-ed
-> only for
->                                            the dai-link.
-> But the property responsible to the factor, not care if the mclk sour=
-ce
-> clock is enabled or not. So does the simple-card driver can add suppo=
-rt
-> to enable/disable mclk ?
+The patch fixes regression introduced by recent clock code.
 
-The mclk-input is part of the codec I'd think. So you'd want the clocks=
--
-property in the i2c entry describing the codec itself and implement the=
- clk=20
-operations in the codec driver as well.
+Fixes: 78eaf6095cc763c ("clk: rockchip: disable unused clocks")
 
-See codec-drivers for da7213, da7218,max98090 and many more for referen=
-ce.
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 
+CC: linux-clk@vger.kernel.org
+CC: linux-arm-kernel@lists.infradead.org
+CC: linux-rockchip@lists.infradead.org
+CC: linux-kernel@vger.kernel.org
+CC: stable@vger.kernel.org # 4.1.x-
+---
+ drivers/clk/rockchip/clk-rk3188.c |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Heiko
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index abb4760..54b88a6 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -429,10 +429,10 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+ 	GATE(0, "aclk_strc_sys", "aclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 10, GFLAGS),
+ 
+ 	/* hclk_cpu gates */
+-	GATE(HCLK_ROM, "hclk_rom", "hclk_cpu", 0, RK2928_CLKGATE_CON(5), 6, GFLAGS),
+-	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+-	GATE(HCLK_SPDIF, "hclk_spdif", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 1, GFLAGS),
+ 	GATE(0, "hclk_cpubus", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 8, GFLAGS),
++	GATE(HCLK_ROM, "hclk_rom", "hclk_cpubus", 0, RK2928_CLKGATE_CON(5), 6, GFLAGS),
++	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_cpubus", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
++	GATE(HCLK_SPDIF, "hclk_spdif", "hclk_cpubus", 0, RK2928_CLKGATE_CON(7), 1, GFLAGS),
+ 	/* hclk_ahb2apb is part of a clk branch */
+ 	GATE(0, "hclk_vio_bus", "hclk_cpu", 0, RK2928_CLKGATE_CON(6), 12, GFLAGS),
+ 	GATE(HCLK_LCDC0, "hclk_lcdc0", "hclk_cpu", 0, RK2928_CLKGATE_CON(6), 1, GFLAGS),
+-- 
+1.7.9.5
 
-
-
-> >> Does that help clarify?
-> >=20
-> > The problem here isn't a lack of clarity in the situation.
