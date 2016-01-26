@@ -1,170 +1,119 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: power: reset: add document for
- reboot-mode driver
-Date: Tue, 26 Jan 2016 15:35:33 +0800
-Message-ID: <56A721C5.4050606@rock-chips.com>
-References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
- <1452598189-8272-1-git-send-email-andy.yan@rock-chips.com>
- <20160120182840.GA15741@rob-hp-laptop> <56A07A6D.3010406@rock-chips.com>
- <20160125171134.GA21713@rob-hp-laptop>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Tue, 26 Jan 2016 09:28:48 +0100
+Message-ID: <CAAObsKBS45kbvdmdvFxwSo=B9GXRLoX2g7WQYVmZJ0KFnwSejw@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+ <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
+ <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+ <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+ <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+ <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
+ <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
+ <CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com> <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20160125171134.GA21713@rob-hp-laptop>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: heiko@sntech.de, arnd@arndb.de, john.stultz@linaro.org, linux@roeck-us.net, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, geert+renesas@glider.be, sre@kernel.org, olof@lixom.net, dbaryshkov@gmail.com, alexandre.belloni@free-electrons.com, jun.nie@linaro.org, pawel.moll@arm.com, f.fainelli@gmail.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, cernekee@gmail.com, linux-kernel@vger.kernel.org, dwmw2@infradead.org, mark.rutland@arm.com, maxime.ripard@free-electrons.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob:
-
-On 2016=E5=B9=B401=E6=9C=8826=E6=97=A5 01:11, Rob Herring wrote:
-> On Thu, Jan 21, 2016 at 02:27:57PM +0800, Andy Yan wrote:
->> Hi Rob:
->>     thanks for your review.
->> On 2016=E5=B9=B401=E6=9C=8821=E6=97=A5 02:28, Rob Herring wrote:
->>> On Tue, Jan 12, 2016 at 07:29:49PM +0800, Andy Yan wrote:
->>>> add device tree binding document for reboot-mode driver
->>>>
->>>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->>>>
->>>> ---
->>>>
->>>> Changes in v2: None
->>>> Changes in v1: None
->>>>
->>>>   .../bindings/power/reset/reboot-mode.txt           | 41 ++++++++=
-+++++++++
->>>>   .../bindings/power/reset/syscon-reboot-mode.txt    | 52 ++++++++=
-++++++++++++++
->>>>   2 files changed, 93 insertions(+)
->>>>   create mode 100644 Documentation/devicetree/bindings/power/reset=
-/reboot-mode.txt
->>>>   create mode 100644 Documentation/devicetree/bindings/power/reset=
-/syscon-reboot-mode.txt
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-=
-mode.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.tx=
-t
->>>> new file mode 100644
->>>> index 0000000..81d9f66
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.tx=
-t
->>>> @@ -0,0 +1,41 @@
->>>> +Generic reboot mode core map driver
-> [...]
+On 22 January 2016 at 18:07, Doug Anderson <dianders@chromium.org> wrote:
+> Tomeu,
 >
->>>> +		compatible =3D "syscon-reboot-mode";
->>>> +		offset =3D <0x40>;
->>> This doc by itself is a little confusing. For example, is a child o=
-f the
->>> syscon node? I would remove offset (and perhaps compatible) from th=
-is
->>> example.
->>     Yes, is a child of a syscon mapped node. For example, Rockchip p=
-latform
->> use a register of PMU(rk3066/rk3288) or GRF(rk3036), PMU and GRF are=
- aleady
->> mapped by syscon.
->>     offset and compatible are used by write interface driver like
->> syscon-reboot-mode.c. If you don't like it appear in the core map do=
-c, I
->> will move it to the syscon-reboot-mode.txt?
-> Yes, try to make this doc stand on its own. It will obviously be
-> incomplete lacking information on where in the DT it goes. So perhaps=
- a
-> note stating reboot-mode node location is defined in platform specifi=
-c
-> binding docs.
->
->>>> +
->>>> +		loader {
->>>> +			linux,mode =3D "loader";
->>>> +			loader,magic =3D <BOOT_LOADER>;
->>>> +		};
->>> Sorry, my previous suggestion was not clear. I'm suggesting get rid=
- of
->>> the subnodes and just do properties like this:
+> On Fri, Jan 22, 2016 at 6:00 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>> On 21 January 2016 at 21:11, Doug Anderson <dianders@chromium.org> wrote:
+>>> Hi,
 >>>
->>> loader =3D <BOOT_LOADER>;
->>> maskrom =3D <BOOT_MASKROM>;
+>>> On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>>>> So we have a mechanism for detecting a conflict in the clock
+>>>> hierarchy, and a mechanism to solve it, but we are missing a way for
+>>>> userspace to communicate policy regarding which clocks should be given
+>>>> priority when solving such a conflict?
 >>>
->>> That's the same amount of information unless node names and linux,m=
-ode
->>> values are going to diverge. Do they need to? I can't see a reason.
->>      Because the command"linux,mode" and value"loader,magic" is vend=
-or
->> specific. I don't know what commands and how many mode other platfor=
-m will
->> use. So as John says in his reply, this sort of flexibility help us =
-adapt
->> the driver to different hardware/system environments.
-> The only part of "reboot to fastboot" that is vendor specific would b=
-e
-> the magic value. While we can have custom modes, we should standardiz=
-e
-> the common ones as much as possible. As I pointed out in my reply to
-> John, we can still support vendor specific modes with just a property=
-=2E
-
-     Based your reply to John, I rebuild the code like bellow, I hope t=
-his
-     is what you mean.
-
-     DTS file:
-     reboot-mode {
-                         compatible =3D "syscon-reboot-mode";
-                         offset =3D <0x94>;
-                         mode-normal =3D <BOOT_NORMAL>;
-                         mode-recovery =3D <BOOT_RECOVERY>;
-                         mode-fastboot =3D <BOOT_FASTBOOT>;
-                         mode-loader =3D <BOOT_LOADER>;
-                         mode-maskrom =3D <BOOT_MASKROM>;
-                 };
-
-
-    driver:
-
-     #define PREFIX "mode-"
-
-     struct property *prop;
-     size_t len =3D strlen(PREFIX);
-     for_each_property_of_node(dev->of_node, prop) {
-                 if (len > strlen(prop->name) || strncmp(prop->name,=20
-PREFIX, len))
-                         continue;
-                 info =3D devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-                 if (!info)
-                         return -ENOMEM;
-                 strcpy(info->mode, prop->name + len);
-                 if (of_property_read_u32(dev->of_node, prop->name,=20
-&info->magic)) {
-                         dev_err(dev, "reboot mode %s without magic=20
-number\n",
-                                 info->mode);
-                         devm_kfree(dev, info);
-                         continue;
-                 }
-                 list_add_tail(&info->list, &reboot->head);
-         }
-
-
->>> We need to be clear what loader means. More specifically, it is boo=
-t
->>> into bootloader shell.
->>      Actually, Rockchip platform will reboot into a bootloader downl=
-oad mode
->> with this command. This mode can download faster than maskrom downlo=
-ad mode.
-> My point is proven. I assumed one thing and you meant something else.
-> Doesn't matter what the mode is, just needs to be clear.
+>>> Hrmmm, I guess it could be userspace that makes the decision.  It does
+>>> seem a little odd to force it to userspace in all cases, though.  For
+>>> a particular laptop that is designed with a specific panel connected
+>>> up eDP it seems less than ideal to push this into userspace.  If the
+>>> kernel could just work in the expected sane way (or at least work that
+>>> way by default) it would be ideal.
+>>
+>> Ah, I was wrongly assuming that the kernel didn't have enough
+>> information to make an informed decision in this case, sorry.
+>>
+>> Guess the per-user rate limits don't help here because the consumer
+>> with higher priority could work with frequencies other than the ideal.
+>>
+>> And we cannot have a consumer listening for PRE_RATE_CHANGE and
+>> aborting unwanted changes or rerouting the ancestors of the clocks of
+>> other consumers because that would be a massive violation of
+>> separation of concerns.
+>>
+>> If we were to rearrange the clock topology from within the CCF, then
+>> consumers need to have a way to communicate to the core that they are
+>> more important than other consumers. clk_set_important(clk, true)
+>> could be enough in this case, but would be insufficient in more
+>> complex cases where more than two clocks could use the same PLL.
 >
-> Rob
+> With something like the above I'd still expect some complexity
+> depending on the probe order.  If a less important device grabs the
+> clock first, it might be forced to re-think its clocks later.  That
+> might be disconcerting.
+
+How much disconcerting do you think this could be? Hopefully those
+devices should probe quite close to each other, right?
+
+> OK, so I was just involved in a change recently that made me realize
+> that maybe our original problems were tied to the fact that our
+> builtin panels were trying to specify a clock that was impossible to
+> achieve with CPLL / GPLL.  It was a known problem that the request
+> would be denied and the CCF would just pick the closest rate it could.
+> Probably the right thing is to solve _that_ problem first.  If using
+> simple panel you could do a change like
+> <https://chromium-review.googlesource.com/#/c/323211/> (though
+> presumably you'd have to handle people using the same panel in other
+> laptops).  You might also be able to do funny things to fixup the mode
+> like dbehr tried to do in
+> <https://chromium-review.googlesource.com/#/c/270017/>.  By doing this
+> and making sure that
+
+Are we missing something here?
+
+> With that being said, how about this as a solution:
+>
+> 1. Figure some way (presumably some type of device tree property?) to
+> make sure that the builtin panel chose a clock that was achievable by
+> dividing CPLL / GPLL on rk3288.  If you have eDP but no builtin panel
+> you wouldn't specify this and you'd just let the system pick whatever
+> it wanted.
+>
+> 2. We use "assigned-clocks" to (by default) make NPLL something silly
+> and unattractive.  This will keep the common clock framework from
+> picking it to use as the source if the clock could be made just as
+> well from CPLL / GPLL (or find some other way to make NPLL a lower
+> priority muxing option).
+>
+> 3. We use the "dibs" rule in that the first display driver to claim
+> NPLL blocks anyone else from changing things.
 >
 >
+> In the above on a laptop with a builtin panel and an HDMI port you'd
+> get the panel using CPLL / GPLL and HDMI getting CPLL, GPLL or NPLL
+> (and it would be able to change NPLL if needed).
 >
+>
+> In the above on a dev board with a lot of ports then the first device
+> probed would get the most flexibility.  Future devices would be
+> limited in their choices.
 
+Not sure of this, sounds a bit ad-hoc and may be avoiding to address
+limitations in the CCF that need to be solved anyway? So far it still
+looks to me like the CCF needs to get better at allocating limited
+resources.
 
+Mike, Stephen, what do you think?
+
+Thanks,
+
+Tomeu
