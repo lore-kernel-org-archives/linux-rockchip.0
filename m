@@ -1,26 +1,42 @@
 From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: Re: [PATCH] clk: rockchip: Reparent hclk_rom, hclk_i2s0 and hclk_spdif to hclk_cpubus on RK3066/RK3188
-Date: Tue, 26 Jan 2016 16:16:57 +0300
-Message-ID: <0F6CFF20-C3D2-4A4D-83D5-1DE6014BB75D@gmail.com>
-References: <1453812250-11819-1-git-send-email-al.kochet@gmail.com> <18195479.b78tX8z5U3@diego>
-Mime-Version: 1.0 (Mac OS X Mail 9.2 \(3112\))
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <18195479.b78tX8z5U3@diego>
-Sender: stable-owner@vger.kernel.org
-To: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: stable@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] clk: rockchip: add hclk_cpubus to the list of rk3188 critical clocks
+Date: Tue, 26 Jan 2016 16:34:00 +0300
+Message-ID: <1453815240-15354-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: stable@vger.kernel.org, Alexander Kochetkov <al.kochet@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+hclk_cpubus needs to keep running because it is needed for devices like
+the rom, i2s0 or spdif to be accessible via cpu. Without that all
+accesses to devices (readl/writel) return wrong data. So add it
+to the list of critical clocks.
 
-> 26 =D1=8F=D0=BD=D0=B2. 2016 =D0=B3., =D0=B2 16:04, Heiko St=C3=BCbner=
- <heiko@sntech.de> =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BB(=D0=B0):
->=20
-> Can you instead try to add hclk_cpubus to the critical clock list ple=
-ase?
+Fixes: 78eaf6095cc763c ("clk: rockchip: disable unused clocks")
 
-Yes, adding hclk_cpubus to rk3188_critical_clocks also fixes problem.
-So, I=E2=80=99ll send another patch now.
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 
-Thank, you.
+CC: linux-clk@vger.kernel.org
+CC: linux-arm-kernel@lists.infradead.org
+CC: linux-rockchip@lists.infradead.org
+CC: linux-kernel@vger.kernel.org
+CC: stable@vger.kernel.org # 4.1.x-
+---
+ drivers/clk/rockchip/clk-rk3188.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index abb4760..fe728f8 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -718,6 +718,7 @@ static const char *const rk3188_critical_clocks[] __initconst = {
+ 	"hclk_peri",
+ 	"pclk_cpu",
+ 	"pclk_peri",
++	"hclk_cpubus"
+ };
+ 
+ static void __init rk3188_common_clk_init(struct device_node *np)
+-- 
+1.7.9.5
