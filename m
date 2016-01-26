@@ -1,89 +1,60 @@
-From: Shuyu Wei <sy.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH RESEND] ethernet:arc: Move arc_emac_tx_clean() into
- arc_emac_tx() and disable tx interrut
-Date: Tue, 26 Jan 2016 12:47:54 +0800
-Message-ID: <BLU437-SMTP334CF4A4131F7C0E3397498FD80@phx.gbl>
+From: Arend van Spriel <aspriel@gmail.com>
+Subject: Re: [PATCH] brcmfmac: sdio: Increase the default timeouts a bit
+Date: Tue, 26 Jan 2016 07:29:54 +0100
+Message-ID: <56A71262.8000804@gmail.com>
+References: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
+ <CAGRGNgXWE=b52Mcy8NsKBZS_4gz-TUiuFipjsuTZh1xjja=uUg@mail.gmail.com>
+ <56A641CC.6020500@gmail.com>
+ <CAGRGNgVftXxnq06MOHKNVzVjvCkwCM8Bc+Sfs4NoOQR=sfYP-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline; filename="mail.txt"
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <CAGRGNgVftXxnq06MOHKNVzVjvCkwCM8Bc+Sfs4NoOQR=sfYP-g@mail.gmail.com>
+Sender: netdev-owner@vger.kernel.org
+To: Julian Calaby <julian.calaby@gmail.com>
+Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Kalle Valo <kvalo@codeaurora.org>, Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless <linux-wireless@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev <netdev@vger.kernel.org>, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Doing tx_clean() inside poll() may scramble the tx ring buffer if 
-tx() is running. This will cause tx to stop working, which can be
-reproduced by simultaneously downloading two large files at high speed.
+On 26-01-16 00:41, Julian Calaby wrote:
+> Hi Arend,
+> 
+> On Tue, Jan 26, 2016 at 2:39 AM, Arend van Spriel <aspriel@gmail.com> wrote:
+>> On 25-01-16 12:06, Julian Calaby wrote:
+>>> Hi Sjoerd,
+>>>
+>>> On Mon, Jan 25, 2016 at 9:47 PM, Sjoerd Simons
+>>> <sjoerd.simons@collabora.co.uk> wrote:
+>>>> On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
+>>>> the card responds very quickly most of the time, unfortunately during
+>>>> initialisation it sometimes seems to take just a bit over 2 seconds to
+>>>> respond.
+>>>>
+>>>> This results intialization failing with message like:
+>>>>   brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
+>>>>   brcmf_bus_start: failed: -52
+>>>>   brcmf_sdio_firmware_callback: dongle is not responding
+>>>>
+>>>> Increasing the timeout to allow for a bit more headroom allows the
+>>>> card to initialize reliably.
+>>>>
+>>>> A quick search online after diagnosing/fixing this showed that Google
+>>>> has a similar patch in their ChromeOS tree, so this doesn't seem
+>>>> specific to the board I'm using.
+>>>>
+>>>> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+>>>
+>>> Looks sane to me.
+>>>
+>>> Reviewed-by: Julian Calaby <julian.calaby@gmail.com>
+>>
+>> Not really a cleanup patch :-p , but thanks for the review.
+> 
+> I'm trying to review any "small" patch from (relatively) new people.
 
-Moving tx_clean() into tx() will prevent this. And tx interrupt is no
-longer needed now.
+And it is surely appreciated. Just read your reply in "cleanup patch
+pile" thread and felt I had to make the stupid remark with just fun
+intended.
 
-Signed-off-by: Shuyu Wei <shuyu.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
----
-
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index abe1eab..34531b3 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -311,12 +311,10 @@ static int arc_emac_poll(struct napi_struct *napi, int budget)
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
- 	unsigned int work_done;
- 
--	arc_emac_tx_clean(ndev);
--
- 	work_done = arc_emac_rx(ndev, budget);
- 	if (work_done < budget) {
- 		napi_complete(napi);
--		arc_reg_or(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
-+		arc_reg_or(priv, R_ENABLE, RXINT_MASK);
- 	}
- 
- 	return work_done;
-@@ -345,9 +343,9 @@ static irqreturn_t arc_emac_intr(int irq, void *dev_instance)
- 	/* Reset all flags except "MDIO complete" */
- 	arc_reg_set(priv, R_STATUS, status);
- 
--	if (status & (RXINT_MASK | TXINT_MASK)) {
-+	if (status & RXINT_MASK) {
- 		if (likely(napi_schedule_prep(&priv->napi))) {
--			arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
-+			arc_reg_clr(priv, R_ENABLE, RXINT_MASK);
- 			__napi_schedule(&priv->napi);
- 		}
- 	}
-@@ -458,7 +456,7 @@ static int arc_emac_open(struct net_device *ndev)
- 	arc_reg_set(priv, R_TX_RING, (unsigned int)priv->txbd_dma);
- 
- 	/* Enable interrupts */
--	arc_reg_set(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
-+	arc_reg_set(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
- 
- 	/* Set CONTROL */
- 	arc_reg_set(priv, R_CTRL,
-@@ -529,7 +527,7 @@ static int arc_emac_stop(struct net_device *ndev)
- 	netif_stop_queue(ndev);
- 
- 	/* Disable interrupts */
--	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
-+	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
- 
- 	/* Disable EMAC */
- 	arc_reg_clr(priv, R_CTRL, EN_MASK);
-@@ -587,6 +585,8 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 	__le32 *info = &priv->txbd[*txbd_curr].info;
- 	dma_addr_t addr;
- 
-+	arc_emac_tx_clean(ndev);
-+
- 	if (skb_padto(skb, ETH_ZLEN))
- 		return NETDEV_TX_OK;
+Regards,
+Arend
