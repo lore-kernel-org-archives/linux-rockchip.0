@@ -1,57 +1,35 @@
-From: Julian Calaby <julian.calaby@gmail.com>
-Subject: Re: [PATCH] brcmfmac: sdio: Increase the default timeouts a bit
-Date: Tue, 26 Jan 2016 10:41:37 +1100
-Message-ID: <CAGRGNgVftXxnq06MOHKNVzVjvCkwCM8Bc+Sfs4NoOQR=sfYP-g@mail.gmail.com>
-References: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
- <CAGRGNgXWE=b52Mcy8NsKBZS_4gz-TUiuFipjsuTZh1xjja=uUg@mail.gmail.com> <56A641CC.6020500@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 0/3] Add rk3066 tsadc device tree bindings
+Date: Tue, 26 Jan 2016 01:13:39 +0100
+Message-ID: <4176431.EN0Q2CUI1l@diego>
+References: <1453205361-27267-1-git-send-email-paweljarosz3691@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <56A641CC.6020500@gmail.com>
-Sender: netdev-owner@vger.kernel.org
-To: Arend van Spriel <aspriel@gmail.com>
-Cc: Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Kalle Valo <kvalo@codeaurora.org>, Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless <linux-wireless@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev <netdev@vger.kernel.org>, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453205361-27267-1-git-send-email-paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?utf-8?B?UGF3ZcWC?= Jarosz <paweljarosz3691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arend,
-
-On Tue, Jan 26, 2016 at 2:39 AM, Arend van Spriel <aspriel@gmail.com> wrote:
-> On 25-01-16 12:06, Julian Calaby wrote:
->> Hi Sjoerd,
->>
->> On Mon, Jan 25, 2016 at 9:47 PM, Sjoerd Simons
->> <sjoerd.simons@collabora.co.uk> wrote:
->>> On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
->>> the card responds very quickly most of the time, unfortunately during
->>> initialisation it sometimes seems to take just a bit over 2 seconds to
->>> respond.
->>>
->>> This results intialization failing with message like:
->>>   brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
->>>   brcmf_bus_start: failed: -52
->>>   brcmf_sdio_firmware_callback: dongle is not responding
->>>
->>> Increasing the timeout to allow for a bit more headroom allows the
->>> card to initialize reliably.
->>>
->>> A quick search online after diagnosing/fixing this showed that Google
->>> has a similar patch in their ChromeOS tree, so this doesn't seem
->>> specific to the board I'm using.
->>>
->>> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
->>
->> Looks sane to me.
->>
->> Reviewed-by: Julian Calaby <julian.calaby@gmail.com>
->
-> Not really a cleanup patch :-p , but thanks for the review.
-
-I'm trying to review any "small" patch from (relatively) new people.
-
-Thanks,
-
--- 
-Julian Calaby
-
-Email: julian.calaby@gmail.com
-Profile: http://www.google.com/profiles/julian.calaby/
+SGksCgpBbSBEaWVuc3RhZywgMTkuIEphbnVhciAyMDE2LCAxMzowOToxOCBzY2hyaWViIFBhd2XF
+giBKYXJvc3o6Cj4gVGhpcyBwYXRjaHNldCBhZGRzIGRldmljZXRyZWUgYmluZGluZ3MgZm9yIHJv
+Y2tjaGlwIHJrMzA2NiB0c2FkYyB3aXRoIG5lZWRlZAo+IGRlcGVuZGVuY2llcy4KPiAKPiBQYXdl
+xYIgSmFyb3N6ICgzKToKPiAgIGNsazogcm9ja2NoaXA6IEFkZCBuZXcgaWQgZm9yIHJrMzA2NiB0
+c2FkYyBjbG9jawo+ICAgY2xrOiByb2NrY2hpcDogYWRkIHRzYWRjIGNsb2NrIG9uIHJrMzA2Ngo+
+ICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBhZGQgdHNhZGMgbm9kZQoKYXBwbGllZCBhbGwgdGhyZWUg
+dG8gYXBwcm9wcmlhdGUgYnJhbmNoZXMgZm9yIDQuNgoKSSd2ZSByZW1vdmVkIHRoZSB2cmVmLXN1
+cHBseSBmcm9tIHRoZSBkdHNpIGFuZCBtb3ZlZCBzb21lIHByb3BlcnRpZXMgYXJvdW5kIGEgCmJp
+dC4KCgpIZWlrbwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
