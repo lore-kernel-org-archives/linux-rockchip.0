@@ -1,119 +1,71 @@
-From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
-Date: Tue, 26 Jan 2016 09:28:48 +0100
-Message-ID: <CAAObsKBS45kbvdmdvFxwSo=B9GXRLoX2g7WQYVmZJ0KFnwSejw@mail.gmail.com>
-References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
- <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
- <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
- <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
- <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
- <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
- <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
- <CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com> <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
+From: Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v1 0/3] Add VP8 deocder for rk3229 & rk3288
+Date: Tue, 26 Jan 2016 17:04:03 +0800
+Message-ID: <1453799046-307-1-git-send-email-jung.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, zhaojun <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-api-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Antti Palosaari <crope-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Ricardo Ribalda Delgado <ricardo.ribalda-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, herman.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22 January 2016 at 18:07, Doug Anderson <dianders@chromium.org> wrote:
-> Tomeu,
->
-> On Fri, Jan 22, 2016 at 6:00 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
->> On 21 January 2016 at 21:11, Doug Anderson <dianders@chromium.org> wrote:
->>> Hi,
->>>
->>> On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
->>>> So we have a mechanism for detecting a conflict in the clock
->>>> hierarchy, and a mechanism to solve it, but we are missing a way for
->>>> userspace to communicate policy regarding which clocks should be given
->>>> priority when solving such a conflict?
->>>
->>> Hrmmm, I guess it could be userspace that makes the decision.  It does
->>> seem a little odd to force it to userspace in all cases, though.  For
->>> a particular laptop that is designed with a specific panel connected
->>> up eDP it seems less than ideal to push this into userspace.  If the
->>> kernel could just work in the expected sane way (or at least work that
->>> way by default) it would be ideal.
->>
->> Ah, I was wrongly assuming that the kernel didn't have enough
->> information to make an informed decision in this case, sorry.
->>
->> Guess the per-user rate limits don't help here because the consumer
->> with higher priority could work with frequencies other than the ideal.
->>
->> And we cannot have a consumer listening for PRE_RATE_CHANGE and
->> aborting unwanted changes or rerouting the ancestors of the clocks of
->> other consumers because that would be a massive violation of
->> separation of concerns.
->>
->> If we were to rearrange the clock topology from within the CCF, then
->> consumers need to have a way to communicate to the core that they are
->> more important than other consumers. clk_set_important(clk, true)
->> could be enough in this case, but would be insufficient in more
->> complex cases where more than two clocks could use the same PLL.
->
-> With something like the above I'd still expect some complexity
-> depending on the probe order.  If a less important device grabs the
-> clock first, it might be forced to re-think its clocks later.  That
-> might be disconcerting.
+From: zhaojun <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-How much disconcerting do you think this could be? Hopefully those
-devices should probe quite close to each other, right?
 
-> OK, so I was just involved in a change recently that made me realize
-> that maybe our original problems were tied to the fact that our
-> builtin panels were trying to specify a clock that was impossible to
-> achieve with CPLL / GPLL.  It was a known problem that the request
-> would be denied and the CCF would just pick the closest rate it could.
-> Probably the right thing is to solve _that_ problem first.  If using
-> simple panel you could do a change like
-> <https://chromium-review.googlesource.com/#/c/323211/> (though
-> presumably you'd have to handle people using the same panel in other
-> laptops).  You might also be able to do funny things to fixup the mode
-> like dbehr tried to do in
-> <https://chromium-review.googlesource.com/#/c/270017/>.  By doing this
-> and making sure that
+====================
+Introduction
+====================
 
-Are we missing something here?
+The purpose of this series is to add the driver for vp8
+decoder on rk3229 & rk3288 platform, and will support
+more formats in the future.
 
-> With that being said, how about this as a solution:
->
-> 1. Figure some way (presumably some type of device tree property?) to
-> make sure that the builtin panel chose a clock that was achievable by
-> dividing CPLL / GPLL on rk3288.  If you have eDP but no builtin panel
-> you wouldn't specify this and you'd just let the system pick whatever
-> it wanted.
->
-> 2. We use "assigned-clocks" to (by default) make NPLL something silly
-> and unattractive.  This will keep the common clock framework from
-> picking it to use as the source if the clock could be made just as
-> well from CPLL / GPLL (or find some other way to make NPLL a lower
-> priority muxing option).
->
-> 3. We use the "dibs" rule in that the first display driver to claim
-> NPLL blocks anyone else from changing things.
->
->
-> In the above on a laptop with a builtin panel and an HDMI port you'd
-> get the panel using CPLL / GPLL and HDMI getting CPLL, GPLL or NPLL
-> (and it would be able to change NPLL if needed).
->
->
-> In the above on a dev board with a lot of ports then the first device
-> probed would get the most flexibility.  Future devices would be
-> limited in their choices.
+The driver uses v4l2 framework and RK IOMMU.
+RK IOMMU has not yet been merged.
 
-Not sure of this, sounds a bit ad-hoc and may be avoiding to address
-limitations in the CCF that need to be solved anyway? So far it still
-looks to me like the CCF needs to get better at allocating limited
-resources.
 
-Mike, Stephen, what do you think?
 
-Thanks,
+zhaojun (3):
+  media: v4l: Add VP8 format support in V4L2 framework
+  media: VPU: support Rockchip VPU
+  media: vcodec: rockchip: Add Rockchip VP8 decoder driver
 
-Tomeu
+ drivers/media/platform/rockchip-vpu/Makefile       |    7 +
+ .../media/platform/rockchip-vpu/rkvpu_hw_vp8d.c    |  798 ++++++++++
+ .../platform/rockchip-vpu/rockchip_vp8d_regs.h     | 1594 ++++++++++++++++++++
+ drivers/media/platform/rockchip-vpu/rockchip_vpu.c |  799 ++++++++++
+ .../platform/rockchip-vpu/rockchip_vpu_common.h    |  439 ++++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_dec.c | 1007 +++++++++++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_dec.h |   33 +
+ .../media/platform/rockchip-vpu/rockchip_vpu_hw.c  |  295 ++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_hw.h  |  100 ++
+ drivers/media/v4l2-core/v4l2-ctrls.c               |   17 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    3 +
+ drivers/media/v4l2-core/videobuf2-dma-contig.c     |   51 +-
+ include/media/v4l2-ctrls.h                         |    2 +
+ include/media/videobuf2-dma-contig.h               |   11 +-
+ include/uapi/linux/v4l2-controls.h                 |   98 ++
+ include/uapi/linux/videodev2.h                     |    5 +
+ 16 files changed, 5238 insertions(+), 21 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip-vpu/Makefile
+ create mode 100644 drivers/media/platform/rockchip-vpu/rkvpu_hw_vp8d.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vp8d_regs.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_common.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h
+
+-- 
+1.9.1
