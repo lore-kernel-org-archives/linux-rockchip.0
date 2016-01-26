@@ -1,106 +1,58 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v1 0/3] Add VP8 deocder for rk3229 & rk3288
-Date: Tue, 26 Jan 2016 15:00:56 +0100
-Message-ID: <CAFqH_52UbNW86Bx3Zo9rxPWjx_018j+BBy55ZwzNs9Kf2X7v7Q@mail.gmail.com>
-References: <1453799046-307-1-git-send-email-jung.zhao@rock-chips.com>
-	<56A73CB9.2040802@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [Bug] usb: dwc2: Add functions to set and clear force mode
+Date: Tue, 26 Jan 2016 08:05:44 -0800
+Message-ID: <CAD=FV=Xk4v=1QMYG9XmXh6hJLKU6i_wVakOArF1du-Z_4_+Neg@mail.gmail.com>
+References: <56A7603C.1000409@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-api-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56A73CB9.2040802-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-api-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sakari Ailus <sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-api-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Antti Palosaari <crope-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Ricardo Ribalda Delgado <ricardo.ribalda-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, herman.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56A7603C.1000409-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jung,
+Hi,
 
-2016-01-26 10:30 GMT+01:00 Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>:
-> Hi jun,
->
-> Where is the dt-bingding documentation about your VP8 controller?
->
-> And would you please share some info about rk3229? I can just find
-> rk3228 in mainline, otherwise may someone think it's a misspell.
->
-> Thanks.
+On Tue, Jan 26, 2016 at 4:02 AM, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Hi  John, Felipe
 >
 >
-> On 2016/1/26 17:04, Jung Zhao wrote:
->>
->> From: zhaojun <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->>
->> ====================
->> Introduction
->> ====================
->>
->> The purpose of this series is to add the driver for vp8
->> decoder on rk3229 & rk3288 platform, and will support
->> more formats in the future.
->>
->> The driver uses v4l2 framework and RK IOMMU.
->> RK IOMMU has not yet been merged.
->>
-
-Can you share or specify what patches are needed, are they already
-send to upstream ? So people that want to test your series knows what
-they need to apply
-
-I think that, at least, this patch is required:
-
-iommu/rockchip: reconstruct to support multi slaves [1]
-
-If this is not already accepted, maybe is a good idea include this
-patch in the patch series
-
-[1] http://www.gossamer-threads.com/lists/linux/kernel/2347458
-
->>
->>
->> zhaojun (3):
->>    media: v4l: Add VP8 format support in V4L2 framework
->>    media: VPU: support Rockchip VPU
->>    media: vcodec: rockchip: Add Rockchip VP8 decoder driver
->>
->>   drivers/media/platform/rockchip-vpu/Makefile       |    7 +
->>   .../media/platform/rockchip-vpu/rkvpu_hw_vp8d.c    |  798 ++++++++++
->>   .../platform/rockchip-vpu/rockchip_vp8d_regs.h     | 1594
->> ++++++++++++++++++++
->>   drivers/media/platform/rockchip-vpu/rockchip_vpu.c |  799 ++++++++++
->>   .../platform/rockchip-vpu/rockchip_vpu_common.h    |  439 ++++++
->>   .../media/platform/rockchip-vpu/rockchip_vpu_dec.c | 1007 +++++++++++++
->>   .../media/platform/rockchip-vpu/rockchip_vpu_dec.h |   33 +
->>   .../media/platform/rockchip-vpu/rockchip_vpu_hw.c  |  295 ++++
->>   .../media/platform/rockchip-vpu/rockchip_vpu_hw.h  |  100 ++
->>   drivers/media/v4l2-core/v4l2-ctrls.c               |   17 +-
->>   drivers/media/v4l2-core/v4l2-ioctl.c               |    3 +
->>   drivers/media/v4l2-core/videobuf2-dma-contig.c     |   51 +-
->>   include/media/v4l2-ctrls.h                         |    2 +
->>   include/media/videobuf2-dma-contig.h               |   11 +-
->>   include/uapi/linux/v4l2-controls.h                 |   98 ++
->>   include/uapi/linux/videodev2.h                     |    5 +
->>   16 files changed, 5238 insertions(+), 21 deletions(-)
->>   create mode 100644 drivers/media/platform/rockchip-vpu/Makefile
->>   create mode 100644 drivers/media/platform/rockchip-vpu/rkvpu_hw_vp8d.c
->>   create mode 100644
->> drivers/media/platform/rockchip-vpu/rockchip_vp8d_regs.h
->>   create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu.c
->>   create mode 100644
->> drivers/media/platform/rockchip-vpu/rockchip_vpu_common.h
->>   create mode 100644
->> drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.c
->>   create mode 100644
->> drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.h
->>   create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.c
->>   create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h
->>
+> I'm no familiar with usb stuff.
+> then I found this patch will break usb working for rk3036 SoCs, maybe more
+> SoCs.
+> Says, U disk can't work on usb host.
+>
+> The failure log:
+>
+>    32.645481] usb usb2-port1: connect-debounce failed
 >
 >
-> --
-> Best Regards
-> Shawn Lin
+> Tested by following branch:
+> https://github.com/Caesar-github/rockchip/tree/kylin/next   (kernel:
+> 4.5-rc1)
 >
+> Revert "usb: dwc2: Add functions to set and clear force mode" will work for
+> it.
+>
+>
+> Maybe, someone have some suggestions or ideas?
 
-Best Regards,
-Enric
+Can you check if this series helps you?
+
+http://marc.info/?l=linux-usb&m=145255851516121&w=2
+
+I know USB on mainline was failing pretty badly for me for rk3288
+until I applied those patches, though I didn't debug it further than
+just applying those patches.
+
+-Doug
