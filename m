@@ -1,80 +1,116 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 03/21] usb: dwc2: host: Set host_rx_fifo_size to 528
- for rk3066
-Date: Wed, 27 Jan 2016 18:13:12 +0800
-Message-ID: <56A89838.3040202@rock-chips.com>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org> <1453486736-15358-4-git-send-email-dianders@chromium.org>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH 0/5] clk: rockchip: add full support for HDMI clock on rk3288
+Date: Wed, 27 Jan 2016 11:20:35 +0100
+Message-ID: <CAAObsKDsJgUA9dL+1Fdc616ofLdMqaUOwHhDkBWz7MV5_LJu9Q@mail.gmail.com>
+References: <1415087559-19444-1-git-send-email-kever.yang@rock-chips.com>
+ <48806799.thBSifdUp8@diego> <54647142.4080800@rock-chips.com>
+ <CAD=FV=Vzec3Qm-kc6zZ4VxSREoZbzVkWbzp-noHYdcEVrLYYSw@mail.gmail.com>
+ <CAAObsKChYN5nmcm5OWnAzNRGDi_QGSoKvN+0FizhjeT-3mmeXQ@mail.gmail.com>
+ <CAD=FV=Wgu=xQ9PcVqfzcedXVU3Rh-HKbBVxHuqgV9OZJEYhYvg@mail.gmail.com>
+ <CAAObsKC1v--mZwkiG-c7P2Bwi2-_txbeqaW4Vd5h-noAVNbhjA@mail.gmail.com>
+ <CAD=FV=VB93wYigRJ8wa8YL6P+Q+-fRokPiCB-Fo1pC_zAdh2oA@mail.gmail.com>
+ <CAAObsKCMh3Bk_oNJdLbU2F9b7jrnFZOp2uFR_oPqUoJ3W1gfaQ@mail.gmail.com>
+ <CAD=FV=W=LCJk4m049hBnm7BOYudnVe=oa3jdcSrrZZUU9rFtog@mail.gmail.com>
+ <CAAObsKBS45kbvdmdvFxwSo=B9GXRLoX2g7WQYVmZJ0KFnwSejw@mail.gmail.com> <CAD=FV=Une-DJ+0zV6Hmx5EmKXCEApb2Zx1FuJaUQf7MT9OPsug@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453486736-15358-4-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, John Youn <John.Youn@synopsys.com>, balbi@ti.com
-Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=Une-DJ+0zV6Hmx5EmKXCEApb2Zx1FuJaUQf7MT9OPsug@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Kever Yang <kever.yang@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sonny Rao <sonnyrao@chromium.org>, Addy Ke <addy.ke@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, ZhenFu Fang <fzf@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>, =?UTF-8?B?5aea5pm65oOF?= <yzq@rock-chips.com>, =?UTF-8?B?5oi05YWL6ZyWIChKYWNrKQ==?= <dkl@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+On 26 January 2016 at 17:32, Doug Anderson <dianders@chromium.org> wrote:
+> Tomeu,
+>
+> On Tue, Jan 26, 2016 at 12:28 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>> On 22 January 2016 at 18:07, Doug Anderson <dianders@chromium.org> wrote:
+>>> Tomeu,
+>>>
+>>> On Fri, Jan 22, 2016 at 6:00 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>>>> On 21 January 2016 at 21:11, Doug Anderson <dianders@chromium.org> wrote:
+>>>>> Hi,
+>>>>>
+>>>>> On Thu, Jan 21, 2016 at 1:03 AM, Tomeu Vizoso <tomeu@tomeuvizoso.net> wrote:
+>>>>>> So we have a mechanism for detecting a conflict in the clock
+>>>>>> hierarchy, and a mechanism to solve it, but we are missing a way for
+>>>>>> userspace to communicate policy regarding which clocks should be given
+>>>>>> priority when solving such a conflict?
+>>>>>
+>>>>> Hrmmm, I guess it could be userspace that makes the decision.  It does
+>>>>> seem a little odd to force it to userspace in all cases, though.  For
+>>>>> a particular laptop that is designed with a specific panel connected
+>>>>> up eDP it seems less than ideal to push this into userspace.  If the
+>>>>> kernel could just work in the expected sane way (or at least work that
+>>>>> way by default) it would be ideal.
+>>>>
+>>>> Ah, I was wrongly assuming that the kernel didn't have enough
+>>>> information to make an informed decision in this case, sorry.
+>>>>
+>>>> Guess the per-user rate limits don't help here because the consumer
+>>>> with higher priority could work with frequencies other than the ideal.
+>>>>
+>>>> And we cannot have a consumer listening for PRE_RATE_CHANGE and
+>>>> aborting unwanted changes or rerouting the ancestors of the clocks of
+>>>> other consumers because that would be a massive violation of
+>>>> separation of concerns.
+>>>>
+>>>> If we were to rearrange the clock topology from within the CCF, then
+>>>> consumers need to have a way to communicate to the core that they are
+>>>> more important than other consumers. clk_set_important(clk, true)
+>>>> could be enough in this case, but would be insufficient in more
+>>>> complex cases where more than two clocks could use the same PLL.
+>>>
+>>> With something like the above I'd still expect some complexity
+>>> depending on the probe order.  If a less important device grabs the
+>>> clock first, it might be forced to re-think its clocks later.  That
+>>> might be disconcerting.
+>>
+>> How much disconcerting do you think this could be? Hopefully those
+>> devices should probe quite close to each other, right?
+>
+> Probe: probably, though with defers it could be several seconds.
+>
+> ...but remember that display interfaces tend to be hotplug.  That
+> might mean that the HDMI interface won't try to set the clock until
+> much, much later.
 
-On 01/23/2016 02:18 AM, Douglas Anderson wrote:
-> As documented in dwc2_calculate_dynamic_fifo(), host_rx_fifo_size should
-> really be:
->   2 * ((Largest Packet size / 4) + 1 + 1) + n
->   with n = number of host channel.
->
-> We have 9 host channels, so
->   2 * ((1024/4) + 2) + 9 = 516 + 9 = 525
->
-> We've got 960 / 972 total_fifo_size on rk3288 (and presumably on
-> rk3066) and 525 + 128 + 256 = 909 so we're still under on both ports
-> even when we increment by 5.
->
-> Since we have space, Kever Yang suggests bumping by 8.  He says this
-> will meet INCR16 access and next fifo type can start with a aligned
-> address.
-I have double check this feature, the INCR16 is actually a burst 16
-on to the bus, the aligned problem only happen on the DRAM
-access, and it's OK for internal RAM access via internal DMA.
+I'm still having trouble grasping what's the impact to users. Is it
+that if HDMI gets the contended clock first and the internal panel
+device only probes after a second or so, then the user may notice a
+change in frequency in the HDMI screen when the panel lights up?
 
-Bump to 8 looks much better when we check the FIFO setting if we
-have enough memory, right? :)
+Though in that particular case I'm not sure if the impact is that big
+for the user, wonder if such rearranging of the clock hierarchy can
+cause bigger problems in other situations.
 
-rk3066/rk3188/rk3288 have the same hw config for dwc2 controller,
-so this patch should works on those files.
+The on-demand probing series could help here because a downstream that
+cared about these issues could just rearrange the contents of the DT
+(maybe with a script as part of the build process) so that the panel
+is always probed first, but well, that one collided with an iceberg.
 
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+>>> OK, so I was just involved in a change recently that made me realize
+>>> that maybe our original problems were tied to the fact that our
+>>> builtin panels were trying to specify a clock that was impossible to
+>>> achieve with CPLL / GPLL.  It was a known problem that the request
+>>> would be denied and the CCF would just pick the closest rate it could.
+>>> Probably the right thing is to solve _that_ problem first.  If using
+>>> simple panel you could do a change like
+>>> <https://chromium-review.googlesource.com/#/c/323211/> (though
+>>> presumably you'd have to handle people using the same panel in other
+>>> laptops).  You might also be able to do funny things to fixup the mode
+>>> like dbehr tried to do in
+>>> <https://chromium-review.googlesource.com/#/c/270017/>.  By doing this
+>>> and making sure that
+>>
+>> Are we missing something here?
 >
-> ...so let's bump up by 8.  In the future, it would be nice if
-> dwc2_calculate_dynamic_fifo() could handle the "too small" FIFO case and
-> come up with something more dynamically.  When we do that we can figure
-> out how to allocate the extra 48 / 60 bytes of FIFO that we're currently
-> wasting.
->
-> NOTE: no known bugs are fixed by this patch, but it seems like a simple
-> fix and ought to fix someone.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Changes in v5: None
-> Changes in v4:
-> - Set host_rx_fifo_size to 528 for rk3066 new for v4.
->
-> Changes in v3: None
-> Changes in v2: None
->
->   drivers/usb/dwc2/platform.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
-> index 5008a467ce06..b6d7666e715c 100644
-> --- a/drivers/usb/dwc2/platform.c
-> +++ b/drivers/usb/dwc2/platform.c
-> @@ -126,7 +126,7 @@ static const struct dwc2_core_params params_rk3066 = {
->   	.speed				= -1,
->   	.enable_dynamic_fifo		= 1,
->   	.en_multiple_tx_fifo		= -1,
-> -	.host_rx_fifo_size		= 520,	/* 520 DWORDs */
-> +	.host_rx_fifo_size		= 528,	/* 528 DWORDs */
->   	.host_nperio_tx_fifo_size	= 128,	/* 128 DWORDs */
->   	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
->   	.max_transfer_size		= -1,
+> Eh?
+
+The sentence above seemed to have been cut in the middle and I was
+wondering if there's something relevant I'm missing because of it.
+
+Thanks,
+
+Tomeu
