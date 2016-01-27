@@ -1,342 +1,91 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 3/3] clk: rockchip: convert manually created factor clocks to the new type
-Date: Thu, 28 Jan 2016 01:01:46 +0100
-Message-ID: <1453939306-984-4-git-send-email-heiko@sntech.de>
-References: <1453939306-984-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1453939306-984-1-git-send-email-heiko@sntech.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, zhangqing@rock-chips.com, wxt@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v5 03/21] usb: dwc2: host: Set host_rx_fifo_size to 528
+ for rk3066
+Date: Wed, 27 Jan 2016 11:44:26 -0800
+Message-ID: <CAD=FV=XKAzVOLCkFBH1nXeiaKeU4FoFN2CuRNMankA4xsgPsuw@mail.gmail.com>
+References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
+ <1453486736-15358-4-git-send-email-dianders@chromium.org>
+ <56A89838.3040202@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56A89838.3040202-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "Herrero,
+ Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab,
+ Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Clean up the init code and move the creation of factor clocks to the
-appropriate positions coming from the clock architecture diagrams.
+Kever,
 
-This also unifies the artificial separation of the hclk_vcodec etc clocks
-again.
+On Wed, Jan 27, 2016 at 2:13 AM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> Hi Doug,
+>
+> On 01/23/2016 02:18 AM, Douglas Anderson wrote:
+>>
+>> As documented in dwc2_calculate_dynamic_fifo(), host_rx_fifo_size should
+>> really be:
+>>   2 * ((Largest Packet size / 4) + 1 + 1) + n
+>>   with n = number of host channel.
+>>
+>> We have 9 host channels, so
+>>   2 * ((1024/4) + 2) + 9 = 516 + 9 = 525
+>>
+>> We've got 960 / 972 total_fifo_size on rk3288 (and presumably on
+>> rk3066) and 525 + 128 + 256 = 909 so we're still under on both ports
+>> even when we increment by 5.
+>>
+>> Since we have space, Kever Yang suggests bumping by 8.  He says this
+>> will meet INCR16 access and next fifo type can start with a aligned
+>> address.
+>
+> I have double check this feature, the INCR16 is actually a burst 16
+> on to the bus, the aligned problem only happen on the DRAM
+> access, and it's OK for internal RAM access via internal DMA.
+>
+> Bump to 8 looks much better when we check the FIFO setting if we
+> have enough memory, right? :)
+>
+> rk3066/rk3188/rk3288 have the same hw config for dwc2 controller,
+> so this patch should works on those files.
+>
+> Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-We do keep the separate definition of some watchdog and usb480m pseudo
-clocks for now, as they're not real factor clocks from the clock-tree
-but placeholders for fixes to come (usb480m gets supplied by the
-missing driver for the new usbphy type and the watchdog-gate is sitting
-somewhere else together which we cannot model currently).
+Thanks for double-checking and thanks for the review!
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/clk-rk3036.c | 32 +++++++-------------------------
- drivers/clk/rockchip/clk-rk3188.c | 10 +++-------
- drivers/clk/rockchip/clk-rk3228.c | 33 ++++++---------------------------
- drivers/clk/rockchip/clk-rk3288.c | 23 ++++++-----------------
- drivers/clk/rockchip/clk-rk3368.c | 29 +++++++----------------------
- 5 files changed, 29 insertions(+), 98 deletions(-)
+If it's all the same to you, I'll probably change it back to 525 and
+then increase the periodic FIFO size by 3 DWORDS in the next patch.
+12 bytes may not be much, but might as well make use of them to
+improve performance / compatibility?
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 38139dc..eaabb43 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -177,6 +177,9 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	GATE(0, "gpll_armclk", "gpll", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(0), 6, GFLAGS),
- 
-+	/* xin12m is created by a cru-internal divider */
-+	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
-+
- 	/*
- 	 * Clock-Architecture Diagram 2
- 	 */
-@@ -187,6 +190,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKGATE_CON(0), 8, GFLAGS),
- 	COMPOSITE_NOGATE(0, "ddrphy2x", mux_ddrphy_p, CLK_IGNORE_UNUSED,
- 			RK2928_CLKSEL_CON(26), 8, 1, MFLAGS, 0, 2, DFLAGS | CLK_DIVIDER_POWER_OF_TWO),
-+	FACTOR(0, "ddrphy", "ddrphy2x", 0, 1, 2),
- 
- 	COMPOSITE_NOMUX(0, "pclk_dbg", "armclk", CLK_IGNORE_UNUSED,
- 			RK2928_CLKSEL_CON(1), 0, 4, DFLAGS | CLK_DIVIDER_READ_ONLY,
-@@ -263,6 +267,8 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	COMPOSITE(0, "aclk_vcodec", mux_pll_src_3plls_p, 0,
- 			RK2928_CLKSEL_CON(32), 14, 2, MFLAGS, 8, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(3), 11, GFLAGS),
-+	FACTOR_GATE(HCLK_VCODEC, "hclk_vcodec", "aclk_vcodec", 0, 1, 4,
-+			RK2928_CLKGATE_CON(3), 12, GFLAGS),
- 
- 	COMPOSITE(0, "aclk_hvec", mux_pll_src_3plls_p, 0,
- 			RK2928_CLKSEL_CON(20), 0, 2, MFLAGS, 2, 5, DFLAGS,
-@@ -351,6 +357,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	COMPOSITE_NOMUX(SCLK_MAC, "mac_clk", "mac_clk_ref", 0,
- 			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 6, GFLAGS),
-+	FACTOR(0, "sclk_macref_out", "hclk_peri_src", 0, 1, 2),
- 
- 	MUX(SCLK_HDMI, "dclk_hdmi", mux_dclk_p, 0,
- 			RK2928_CLKSEL_CON(31), 0, 1, MFLAGS),
-@@ -379,8 +386,6 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	GATE(HCLK_VIO_BUS, "hclk_vio_bus", "hclk_disp_pre", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(6), 12, GFLAGS),
- 	GATE(HCLK_LCDC, "hclk_lcdc", "hclk_disp_pre", 0, RK2928_CLKGATE_CON(9), 5, GFLAGS),
- 
--	/* hclk_video gates */
--	GATE(HCLK_VCODEC, "hclk_vcodec", "hclk_vcodec_pre", 0, RK2928_CLKGATE_CON(3), 12, GFLAGS),
- 
- 	/* xin24m gates */
- 	GATE(SCLK_PVTM_CORE, "sclk_pvtm_core", "xin24m", 0, RK2928_CLKGATE_CON(10), 0, GFLAGS),
-@@ -444,34 +449,11 @@ static void __init rk3036_clk_init(struct device_node *np)
- 
- 	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 
--	/* xin12m is created by an cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	clk = clk_register_fixed_factor(NULL, "usb480m", "xin24m", 0, 20, 1);
- 	if (IS_ERR(clk))
- 		pr_warn("%s: could not register clock usb480m: %ld\n",
- 			__func__, PTR_ERR(clk));
- 
--	clk = clk_register_fixed_factor(NULL, "ddrphy", "ddrphy2x", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock ddrphy: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "hclk_vcodec_pre",
--					"aclk_vcodec", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock hclk_vcodec_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "sclk_macref_out",
--					"hclk_peri_src", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock sclk_macref_out: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	rockchip_clk_register_plls(rk3036_pll_clks,
- 				   ARRAY_SIZE(rk3036_pll_clks),
- 				   RK3036_GRF_SOC_STATUS0);
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index cc1d09d..a9900d5 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -339,6 +339,9 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
- 	INVERTER(0, "pclk_cif0", "pclkin_cif0",
- 			RK2928_CLKSEL_CON(30), 8, IFLAGS),
- 
-+	/* xin12m is created by a cru-internal divider */
-+	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
-+
- 	/*
- 	 * the 480m are generated inside the usb block from these clocks,
- 	 * but they are also a source for the hsicphy clock.
-@@ -754,7 +757,6 @@ static const char *const rk3188_critical_clocks[] __initconst = {
- static void __init rk3188_common_clk_init(struct device_node *np)
- {
- 	void __iomem *reg_base;
--	struct clk *clk;
- 
- 	reg_base = of_iomap(np, 0);
- 	if (!reg_base) {
-@@ -764,12 +766,6 @@ static void __init rk3188_common_clk_init(struct device_node *np)
- 
- 	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 
--	/* xin12m is created by an cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	rockchip_clk_register_branches(common_clk_branches,
- 				  ARRAY_SIZE(common_clk_branches));
- 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 981a502..fb57c94 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -187,7 +187,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 			RK2928_CLKGATE_CON(7), 1, GFLAGS),
- 	GATE(0, "ddrc", "ddrphy_pre", CLK_IGNORE_UNUSED,
- 			RK2928_CLKGATE_CON(8), 5, GFLAGS),
--	GATE(0, "ddrphy", "ddrphy_pre", CLK_IGNORE_UNUSED,
-+	FACTOR_GATE(0, "ddrphy", "ddrphy4x", CLK_IGNORE_UNUSED, 1, 4,
- 			RK2928_CLKGATE_CON(7), 0, GFLAGS),
- 
- 	/* PD_CORE */
-@@ -240,13 +240,13 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 	COMPOSITE(0, "aclk_vpu_pre", mux_pll_src_4plls_p, 0,
- 			RK2928_CLKSEL_CON(32), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(3), 11, GFLAGS),
--	GATE(0, "hclk_vpu_src", "aclk_vpu_pre", 0,
-+	FACTOR_GATE(0, "hclk_vpu_pre", "aclk_vpu_pre", 0, 1, 4,
- 			RK2928_CLKGATE_CON(4), 4, GFLAGS),
- 
- 	COMPOSITE(0, "aclk_rkvdec_pre", mux_pll_src_4plls_p, 0,
- 			RK2928_CLKSEL_CON(28), 6, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(3), 2, GFLAGS),
--	GATE(0, "hclk_rkvdec_src", "aclk_rkvdec_pre", 0,
-+	FACTOR_GATE(0, "hclk_rkvdec_pre", "aclk_rkvdec_pre", 0, 1, 4,
- 			RK2928_CLKGATE_CON(4), 5, GFLAGS),
- 
- 	COMPOSITE(0, "sclk_vdec_cabac", mux_pll_src_4plls_p, 0,
-@@ -371,6 +371,9 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 	MUX(0, "dclk_vop", mux_dclk_vop_p, 0,
- 			RK2928_CLKSEL_CON(27), 1, 1, MFLAGS),
- 
-+	/* xin12m is created by a cru-internal divider */
-+	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
-+
- 	COMPOSITE(0, "i2s0_src", mux_pll_src_2plls_p, 0,
- 			RK2928_CLKSEL_CON(9), 15, 1, MFLAGS, 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(0), 3, GFLAGS),
-@@ -624,7 +627,6 @@ static const char *const rk3228_critical_clocks[] __initconst = {
- static void __init rk3228_clk_init(struct device_node *np)
- {
- 	void __iomem *reg_base;
--	struct clk *clk;
- 
- 	reg_base = of_iomap(np, 0);
- 	if (!reg_base) {
-@@ -634,29 +636,6 @@ static void __init rk3228_clk_init(struct device_node *np)
- 
- 	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 
--	/* xin12m is created by an cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--				__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "ddrphy_pre", "ddrphy4x", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock ddrphy_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "hclk_vpu_pre",
--					"hclk_vpu_src", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock hclk_vpu_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "hclk_rkvdec_pre",
--					"hclk_rkvdec_src", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock hclk_rkvdec_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	rockchip_clk_register_plls(rk3228_pll_clks,
- 				   ARRAY_SIZE(rk3228_pll_clks),
- 				   RK3228_GRF_SOC_STATUS0);
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index 0d23937..b4c3c4b 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -333,6 +333,9 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	GATE(0, "aclk_bus_2pmu", "aclk_cpu_pre", CLK_IGNORE_UNUSED,
- 			RK3288_CLKGATE_CON(0), 7, GFLAGS),
- 
-+	/* xin12m is created by a cru-internal divider */
-+	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
-+
- 	COMPOSITE(0, "i2s_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK3288_CLKSEL_CON(4), 15, 1, MFLAGS, 0, 7, DFLAGS,
- 			RK3288_CLKGATE_CON(4), 1, GFLAGS),
-@@ -399,12 +402,10 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	 */
- 	GATE(ACLK_VCODEC, "aclk_vcodec", "aclk_vdpu", 0,
- 		RK3288_CLKGATE_CON(9), 0, GFLAGS),
--	/*
--	 * We introduce a virtul node of hclk_vodec_pre_v to split one clock
--	 * struct with a gate and a fix divider into two node in software.
--	 */
--	GATE(0, "hclk_vcodec_pre_v", "aclk_vdpu", 0,
-+
-+	FACTOR_GATE(0, "hclk_vcodec_pre", "aclk_vdpu", 0, 1, 4,
- 		RK3288_CLKGATE_CON(3), 10, GFLAGS),
-+
- 	GATE(HCLK_VCODEC, "hclk_vcodec", "hclk_vcodec_pre", 0,
- 		RK3288_CLKGATE_CON(9), 1, GFLAGS),
- 
-@@ -888,18 +889,6 @@ static void __init rk3288_clk_init(struct device_node *np)
- 
- 	rockchip_clk_init(np, rk3288_cru_base, CLK_NR_CLKS);
- 
--	/* xin12m is created by an cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "hclk_vcodec_pre",
--					"hclk_vcodec_pre_v", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock hclk_vcodec_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	/* Watchdog pclk is controlled by RK3288_SGRF_SOC_CON0[1]. */
- 	clk = clk_register_fixed_factor(NULL, "pclk_wdt", "pclk_pd_alive", 0, 1, 1);
- 	if (IS_ERR(clk))
-diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index e90abe8..1065f3e 100644
---- a/drivers/clk/rockchip/clk-rk3368.c
-+++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -248,6 +248,9 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	 * Clock-Architecture Diagram 2
- 	 */
- 
-+	/* xin12m is created by an cru-internal divider */
-+	FACTOR(0, "xin12m", "xin24m", 0, 1, 2),
-+
- 	MUX(SCLK_USBPHY480M, "usbphy_480m", mux_usbphy480m_p, CLK_SET_RATE_PARENT,
- 			RK3368_CLKSEL_CON(13), 8, 1, MFLAGS),
- 
-@@ -299,7 +302,7 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	COMPOSITE_NOGATE_DIVTBL(0, "ddrphy_src", mux_ddrphy_p, CLK_IGNORE_UNUSED,
- 			RK3368_CLKSEL_CON(13), 4, 1, MFLAGS, 0, 2, DFLAGS, div_ddrphy_t),
- 
--	GATE(0, "sclk_ddr", "ddrphy_div4", CLK_IGNORE_UNUSED,
-+	FACTOR_GATE(0, "sclk_ddr", "ddrphy_src", CLK_IGNORE_UNUSED, 1, 4,
- 			RK3368_CLKGATE_CON(6), 14, GFLAGS),
- 	GATE(0, "sclk_ddr4x", "ddrphy_src", CLK_IGNORE_UNUSED,
- 			RK3368_CLKGATE_CON(6), 15, GFLAGS),
-@@ -392,10 +395,10 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 			RK3368_CLKGATE_CON(4), 7, GFLAGS),
- 
- 	/*
--	 * We introduce a virtual node of hclk_vodec_pre_v to split one clock
--	 * struct with a gate and a fix divider into two node in software.
-+	 * We use aclk_vdpu by default ---GRF_SOC_CON0[7] setting in system,
-+	 * so we ignore the mux and make clocks nodes as following,
- 	 */
--	GATE(0, "hclk_video_pre_v", "aclk_vdpu", 0,
-+	FACTOR_GATE(0, "hclk_video_pre", "aclk_vdpu", 0, 1, 4,
- 		RK3368_CLKGATE_CON(4), 8, GFLAGS),
- 
- 	COMPOSITE(0, "sclk_hevc_cabac_src", mux_pll_src_cpll_gpll_npll_usb_p, 0,
-@@ -842,24 +845,6 @@ static void __init rk3368_clk_init(struct device_node *np)
- 
- 	rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
- 
--	/* xin12m is created by a cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "xin12m", "xin24m", 0, 1, 2);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	/* ddrphy_div4 is created by a cru-internal divider */
--	clk = clk_register_fixed_factor(NULL, "ddrphy_div4", "ddrphy_src", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock xin12m: %ld\n",
--			__func__, PTR_ERR(clk));
--
--	clk = clk_register_fixed_factor(NULL, "hclk_video_pre",
--					"hclk_video_pre_v", 0, 1, 4);
--	if (IS_ERR(clk))
--		pr_warn("%s: could not register clock hclk_vcodec_pre: %ld\n",
--			__func__, PTR_ERR(clk));
--
- 	/* Watchdog pclk is controlled by sgrf_soc_con3[7]. */
- 	clk = clk_register_fixed_factor(NULL, "pclk_wdt", "pclk_pd_alive", 0, 1, 1);
- 	if (IS_ERR(clk))
--- 
-2.6.4
+Presumably you're also OK with the next patch in the series: ("usb:
+dwc2: host: Set host_perio_tx_fifo_size to 304 for rk3066")?
 
+
+Note to anyone who may be thinking of applying patches in this series:
+
+* You can skip both this and the next patch if you wish and any other
+patches in the series are unaffected.
+
+* You can request that I spin just these two patches and I will do it
+ASAP.  Otherwise I'll add that fix to the next spin of the whole
+series.
+
+* You can make the changes yourself to this patch and the next one
+(this patch should be 525 and the next should increase
+host_perio_tx_fifo_size to 307).
+
+I'm OK with any of those 3 things.  ;)
+
+
+-Doug
