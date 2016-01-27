@@ -1,152 +1,269 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v5 06/21] usb: dwc2: host: Always add to the tail of queues
-Date: Wed, 27 Jan 2016 18:23:54 +0800
-Message-ID: <56A89ABA.7000809@rock-chips.com>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org> <1453486736-15358-7-git-send-email-dianders@chromium.org>
+From: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] power: reset: add reboot mode driver
+Date: Wed, 27 Jan 2016 11:53:19 +0100
+Message-ID: <CAAtXAHd-m5GAUnvx9At9_UOoi1M4g25P0M-vwoC+Xc-PXtdwqw@mail.gmail.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+	<1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453486736-15358-7-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org
-Cc: william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1452598319-8324-1-git-send-email-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, John Stultz <john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org, Sebastian Reichel <sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, Dmitry Eremin-Solenikov <dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, "pawel.moll-5wv7dgnIgG8@public.gmane.org" <pawel.moll-5wv7dgnIgG8@public.gmane.org>, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, cernekee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.orgLinux Kernel Mailing List <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Hi Andy,
 
-This is obviously a bug in dwc2 driver which not meet the usb 2.0
-spec, and this patch can fix it.
-
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Thanks,
-- Kever
-On 01/23/2016 02:18 AM, Douglas Anderson wrote:
-> The queues the the dwc2 host controller used are truly queues.  That
-> means FIFO or first in first out.
+On Tue, Jan 12, 2016 at 12:31 PM, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+> This driver parse the reboot commands like "reboot loader"
+> and "reboot recovery" to get a boot mode described in the
+> device tree , then call the write interfae to store the boot
+> mode in some persistent storage  like special register or ram,
+> which can be read by the bootloader after system reboot, then
+> the bootloader can take different action according to the mode
+> stored.
 >
-> Unfortunately though the code was iterating through these queues
-> starting from the head, some places in the code was adding things to the
-> queue by adding at the head instead of the tail.  That means last in
-> first out.  Doh.
+> This is commonly used on Android based devices, which in order
+> to reboot the device into fastboot or recovery mode.
 >
-> Go through and just always add to the tail.
+> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >
-> Doing this makes things much happier when I've got:
-> * 7-port USB 2.0 Single-TT hub
-> * - Microsoft 2.4 GHz Transceiver v7.0 dongle
-> * - Jabra speakerphone playing music
->
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
-> Changes in v5: None
-> Changes in v4:
-> - Always add to the tail of queues new for v4.
 >
-> Changes in v3: None
-> Changes in v2: None
+> Changes in v2:
+> - move to dir drivers/power/reset/
+> - make syscon-reboot-mode a generic driver
 >
->   drivers/usb/dwc2/hcd.c       | 11 ++++++-----
->   drivers/usb/dwc2/hcd_ddma.c  |  4 ++--
->   drivers/usb/dwc2/hcd_intr.c  |  4 ++--
->   drivers/usb/dwc2/hcd_queue.c |  6 ++++--
->   4 files changed, 14 insertions(+), 11 deletions(-)
+> Changes in v1:
+> - fix the embarrassed compile warning
+> - correct the maskrom magic number
+> - check for the normal reboot
 >
-> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-> index 7783c8ba0173..d2daaea88d91 100644
-> --- a/drivers/usb/dwc2/hcd.c
-> +++ b/drivers/usb/dwc2/hcd.c
-> @@ -969,7 +969,8 @@ enum dwc2_transaction_type dwc2_hcd_select_transactions(
->   		 * periodic assigned schedule
->   		 */
->   		qh_ptr = qh_ptr->next;
-> -		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_assigned);
-> +		list_move_tail(&qh->qh_list_entry,
-> +			       &hsotg->periodic_sched_assigned);
->   		ret_val = DWC2_TRANSACTION_PERIODIC;
->   	}
->   
-> @@ -1002,8 +1003,8 @@ enum dwc2_transaction_type dwc2_hcd_select_transactions(
->   		 * non-periodic active schedule
->   		 */
->   		qh_ptr = qh_ptr->next;
-> -		list_move(&qh->qh_list_entry,
-> -			  &hsotg->non_periodic_sched_active);
-> +		list_move_tail(&qh->qh_list_entry,
-> +			       &hsotg->non_periodic_sched_active);
->   
->   		if (ret_val == DWC2_TRANSACTION_NONE)
->   			ret_val = DWC2_TRANSACTION_NON_PERIODIC;
-> @@ -1176,8 +1177,8 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
->   			 * Move the QH from the periodic assigned schedule to
->   			 * the periodic queued schedule
->   			 */
-> -			list_move(&qh->qh_list_entry,
-> -				  &hsotg->periodic_sched_queued);
-> +			list_move_tail(&qh->qh_list_entry,
-> +				       &hsotg->periodic_sched_queued);
->   
->   			/* done queuing high bandwidth */
->   			hsotg->queuing_high_bandwidth = 0;
-> diff --git a/drivers/usb/dwc2/hcd_ddma.c b/drivers/usb/dwc2/hcd_ddma.c
-> index 36606fc33c0d..16b261cfa92d 100644
-> --- a/drivers/usb/dwc2/hcd_ddma.c
-> +++ b/drivers/usb/dwc2/hcd_ddma.c
-> @@ -1327,8 +1327,8 @@ void dwc2_hcd_complete_xfer_ddma(struct dwc2_hsotg *hsotg,
->   			dwc2_hcd_qh_unlink(hsotg, qh);
->   		} else {
->   			/* Keep in assigned schedule to continue transfer */
-> -			list_move(&qh->qh_list_entry,
-> -				  &hsotg->periodic_sched_assigned);
-> +			list_move_tail(&qh->qh_list_entry,
-> +				       &hsotg->periodic_sched_assigned);
->   			/*
->   			 * If channel has been halted during giveback of urb
->   			 * then prevent any new scheduling.
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-> index 99efc2bd1617..2c521c00e5e0 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -143,7 +143,7 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
->   			 * Move QH to the ready list to be executed next
->   			 * (micro)frame
->   			 */
-> -			list_move(&qh->qh_list_entry,
-> +			list_move_tail(&qh->qh_list_entry,
->   				  &hsotg->periodic_sched_ready);
->   	}
->   	tr_type = dwc2_hcd_select_transactions(hsotg);
-> @@ -794,7 +794,7 @@ static void dwc2_halt_channel(struct dwc2_hsotg *hsotg,
->   			 * halt to be queued when the periodic schedule is
->   			 * processed.
->   			 */
-> -			list_move(&chan->qh->qh_list_entry,
-> +			list_move_tail(&chan->qh->qh_list_entry,
->   				  &hsotg->periodic_sched_assigned);
->   
->   			/*
-> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-> index e0933a9dfad7..bc632a72f611 100644
-> --- a/drivers/usb/dwc2/hcd_queue.c
-> +++ b/drivers/usb/dwc2/hcd_queue.c
-> @@ -732,9 +732,11 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
->   	     dwc2_frame_num_le(qh->sched_frame, frame_number)) ||
->   	    (hsotg->core_params->uframe_sched <= 0 &&
->   	     qh->sched_frame == frame_number))
-> -		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_ready);
-> +		list_move_tail(&qh->qh_list_entry,
-> +			       &hsotg->periodic_sched_ready);
->   	else
-> -		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_inactive);
-> +		list_move_tail(&qh->qh_list_entry,
-> +			       &hsotg->periodic_sched_inactive);
->   }
->   
->   /**
+>  drivers/power/reset/Kconfig              |  16 +++++
+>  drivers/power/reset/Makefile             |   2 +
+>  drivers/power/reset/reboot-mode.c        | 100 +++++++++++++++++++++++++++++++
+>  drivers/power/reset/reboot-mode.h        |   6 ++
+>  drivers/power/reset/syscon-reboot-mode.c |  62 +++++++++++++++++++
+>  5 files changed, 186 insertions(+)
+>  create mode 100644 drivers/power/reset/reboot-mode.c
+>  create mode 100644 drivers/power/reset/reboot-mode.h
+>  create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+>
+> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconfig
+> index 1131cf7..2e6d873 100644
+> --- a/drivers/power/reset/Kconfig
+> +++ b/drivers/power/reset/Kconfig
+> @@ -173,5 +173,21 @@ config POWER_RESET_ZX
+>         help
+>           Reboot support for ZTE SoCs.
+>
+> +config REBOOT_MODE
+> +       tristate
+> +       depends on OF
+> +       help
+> +        This driver will help to pass the system reboot mode
+> +        to bootloader
+> +
+> +config SYSCON_REBOOT_MODE
+> +       bool "Generic SYSCON regmap reboot mode driver"
+> +       select REBOOT_MODE
+> +       help
+> +        Say y here will enable reboot mode driver. This will
+> +        get reboot mode arguments and store it in SYSCON mapped
+> +        register, then the bootloader can read it to take different
+> +        action according to the mode.
+> +
+>  endif
+>
+> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Makefile
+> index 096fa67..a63865b 100644
+> --- a/drivers/power/reset/Makefile
+> +++ b/drivers/power/reset/Makefile
+> @@ -20,3 +20,5 @@ obj-$(CONFIG_POWER_RESET_SYSCON) += syscon-reboot.o
+>  obj-$(CONFIG_POWER_RESET_SYSCON_POWEROFF) += syscon-poweroff.o
+>  obj-$(CONFIG_POWER_RESET_RMOBILE) += rmobile-reset.o
+>  obj-$(CONFIG_POWER_RESET_ZX) += zx-reboot.o
+> +obj-$(CONFIG_REBOOT_MODE) += reboot-mode.o
+> +obj-$(CONFIG_SYSCON_REBOOT_MODE) += syscon-reboot-mode.o
+> diff --git a/drivers/power/reset/reboot-mode.c b/drivers/power/reset/reboot-mode.c
+> new file mode 100644
+> index 0000000..92b7b4d
+> --- /dev/null
+> +++ b/drivers/power/reset/reboot-mode.c
+> @@ -0,0 +1,100 @@
+> +/*
+> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +#include <linux/device.h>
+> +#include <linux/init.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/reboot.h>
+> +#include "reboot-mode.h"
+> +
+> +struct mode_info {
+> +       const char *mode;
+> +       int magic;
+> +       struct list_head list;
+> +};
+> +
+> +struct reboot_mode_driver {
+> +       struct list_head head;
+> +       int (*write)(int magic);
+> +       struct notifier_block reboot_notifier;
+> +};
+> +
+> +static int get_reboot_mode_magic(struct reboot_mode_driver *reboot,
+> +                                const char *cmd)
+> +{
+> +       const char *normal = "normal";
+> +       int magic = 0;
+> +       struct mode_info *info;
+> +
+> +       if (!cmd)
+> +               cmd = normal;
+> +
+> +       list_for_each_entry(info, &reboot->head, list) {
+> +               if (!strcmp(info->mode, cmd)) {
+> +                       magic = info->magic;
+> +                       break;
+> +               }
+> +       }
+> +
+> +       return magic;
+> +}
+> +
+> +static int reboot_mode_notify(struct notifier_block *this,
+> +                             unsigned long mode, void *cmd)
+> +{
+> +       struct reboot_mode_driver *reboot;
+> +       int magic;
+> +
+> +       reboot = container_of(this, struct reboot_mode_driver, reboot_notifier);
+> +       magic = get_reboot_mode_magic(reboot, cmd);
+> +       if (magic)
+> +               reboot->write(magic);
+> +
+> +       return NOTIFY_DONE;
+> +}
+> +
+> +int reboot_mode_register(struct device *dev, int (*write)(int))
+> +{
+> +       struct reboot_mode_driver *reboot;
+> +       struct mode_info *info;
+> +       struct device_node *child;
+> +       int ret;
+> +
+> +       reboot = devm_kzalloc(dev, sizeof(*reboot), GFP_KERNEL);
+> +       if (!reboot)
+> +               return -ENOMEM;
+> +
+> +       reboot->write = write;
+> +       INIT_LIST_HEAD(&reboot->head);
+> +       for_each_child_of_node(dev->of_node, child) {
+> +               info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+> +               if (!info)
+> +                       return -ENOMEM;
+> +               info->mode = of_get_property(child, "linux,mode", NULL);
+> +               if (of_property_read_u32(child, "loader,magic", &info->magic)) {
+> +                       dev_err(dev, "reboot mode %s without magic number\n",
+> +                               info->mode);
+> +                       devm_kfree(dev, info);
+> +                       continue;
+> +               }
+> +               list_add_tail(&info->list, &reboot->head);
+> +       }
+> +       reboot->reboot_notifier.notifier_call = reboot_mode_notify;
+> +       ret = register_reboot_notifier(&reboot->reboot_notifier);
+> +       if (ret)
+> +               dev_err(dev, "can't register reboot notifier\n");
+> +
+> +       return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(reboot_mode_register);
+> +
+> +MODULE_AUTHOR("Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org");
+> +MODULE_DESCRIPTION("System reboot mode driver");
+> +MODULE_LICENSE("GPL v2");
+> diff --git a/drivers/power/reset/reboot-mode.h b/drivers/power/reset/reboot-mode.h
+> new file mode 100644
+> index 0000000..76646e7
+> --- /dev/null
+> +++ b/drivers/power/reset/reboot-mode.h
+> @@ -0,0 +1,6 @@
+> +#ifndef __REBOOT_MODE_H__
+> +#define __REBOOT_MODE_H__
+> +
+> +extern int reboot_mode_register(struct device *dev, int (*write)(int));
+> +
+> +#endif
+> diff --git a/drivers/power/reset/syscon-reboot-mode.c b/drivers/power/reset/syscon-reboot-mode.c
+> new file mode 100644
+> index 0000000..b9370f3
+> --- /dev/null
+> +++ b/drivers/power/reset/syscon-reboot-mode.c
+> @@ -0,0 +1,62 @@
+> +/*
+> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +#include <linux/init.h>
+> +#include <linux/module.h>
+> +#include <linux/kernel.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/reboot.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mfd/syscon.h>
+> +#include "reboot-mode.h"
+> +
+> +static struct regmap *map;
+> +static u32 offset;
+> +
+> +static int syscon_reboot_mode_write(int magic)
+> +{
+> +       regmap_write(map, offset, magic);
+
+See suggestion below. I think using regmap_update_bits() would be even
+more useful for cases where you have other stuff in that register, too.
+
+> +
+> +       return 0;
+> +}
+> +
+> +static int syscon_reboot_mode_probe(struct platform_device *pdev)
+> +{
+> +       int ret;
+> +
+> +       map = syscon_node_to_regmap(pdev->dev.parent->of_node);
+> +       if (IS_ERR(map))
+> +               return PTR_ERR(map);
+> +       if (of_property_read_u32(pdev->dev.of_node, "offset", &offset))
+> +               return -EINVAL;
+
+I think it would be worthwhile to have a mask value here, that you can use
+with regmap_update_bits()
+
++           if (of_property_read_u32(pdev->dev.of_node, "mask", &mask))
++                   return -EINVAL;
 
 
+Cheers,
+
+Moritz
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
