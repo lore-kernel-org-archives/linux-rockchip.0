@@ -1,104 +1,186 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v5 16/21] usb: dwc2: host: Manage frame nums better in scheduler
-Date: Wed, 27 Jan 2016 12:49:15 -0800
-Message-ID: <CAD=FV=VkWRAohh5fSPwanHgKjr5MTYH4s82wtg-Ob9OyAKYWEw@mail.gmail.com>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
-	<1453486736-15358-17-git-send-email-dianders@chromium.org>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v5 07/21] usb: dwc2: hcd: fix split transfer schedule
+ sequence
+Date: Thu, 28 Jan 2016 09:20:22 +0800
+Message-ID: <56A96CD6.3040807@rock-chips.com>
+References: <1453486736-15358-1-git-send-email-dianders@chromium.org> <1453486736-15358-8-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453486736-15358-17-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453486736-15358-8-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, John Youn <John.Youn@synopsys.com>, balbi@ti.com
+Cc: huangtao@rock-chips.com, gregory.herrero@intel.com, heiko@sntech.de, johnyoun@synopsys.com, gregkh@linuxfoundation.org, ming.lei@canonical.com, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yousaf.kaukab@intel.com, stern@rowland.harvard.edu, william.wu@rock-chips.com, Julius Werner <jwerner@chromium.org>, dinguyen@opensource.altera.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Doug,
 
-On Fri, Jan 22, 2016 at 10:18 AM, Douglas Anderson
-<dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> The dwc2 scheduler (contained in hcd_queue.c) was a bit confusing in the
-> way it initted / kept track of which frames a QH was going to be active
-> in.  Let's clean things up a little bit in preparation for a rewrite of
-> the microframe scheduler.
+I test this patch with USB 2.0 analyzer, and it make the CSPLIT in the
+same order with the SSPLIT, so
+
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+Tested-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
+On 01/23/2016 02:18 AM, Douglas Anderson wrote:
+> We're supposed to keep outstanding splits in order.  Keep track of a
+> list of the order of splits and process channel interrupts in that
+> order.
 >
-> Specifically:
-> * Old code would pick a frame number in dwc2_qh_init() and would try to
->   pick it "in a slightly future (micro)frame".  As far as I can tell the
->   reason for this was that there was a delay between dwc2_qh_init() and
->   when we actually wanted to dwc2_hcd_qh_add().  ...but apparently this
->   attempt to be slightly in the future wasn't enough because
->   dwc2_hcd_qh_add() then had code to reset things if the frame _wasn't_
->   in the future.  There's no reason not to just pick the frame later.
->   For non-periodic QH we now pick the frame in dwc2_hcd_qh_add().  For
->   periodic QH we pick the frame at dwc2_schedule_periodic() time.
-> * The old "dwc2_qh_init() actually assigned to "hsotg->frame_number".
->   This doesn't seem like a great idea since that variable is supposed to
->   be used to keep track of which SOF the interrupt handler has seen.
->   Let's be clean: anyone who wants the current frame number (instead of
->   the one as of the last interrupt) should ask for it.
-> * The old code wasn't terribly consistent about trying to use the frame
->   that the microframe scheduler assigned to it.  In
->   dwc2_sched_periodic_split() when it was scheduling the first frame it
->   always "ORed" in 0x7 (!).  Since the frame goes on the wire 1 uFrame
->   after next_active_frame it meant that the SSPLIT would always try for
->   uFrame 0 and the transaction would happen on the low speed bus during
->   uFrame 1.  This is irregardless of what the microframe scheduler
->   said.
-> * The old code assumed it would get called to schedule the next in a
->   periodic split very quickly.  That is if next_active_frame was
->   0 (transfer on wire in uFrame 1) it assumed it was getting called to
->   schedule the next uFrame during uFrame 1 too (so it could queue
->   something up for uFrame 2).  It should be possible to actually queue
->   something up for uFrame 2 while in uFrame 2 (AKA queue up ASAP).  To
->   do this, code needs to look at the previously scheduled frame when
->   deciding when to next be active, not look at the current frame number.
-> * If there was no microframe scheduler, the old code would check for
->   whether we should be active using "qh->next_active_frame ==
->   frame_number".  This seemed like a race waiting to happen.  ...plus
->   there's no way that you wouldn't want to schedule if next_active_frame
->   was actually less than frame number.
+> Without this change and the following setup:
+> * Rockchip rk3288 Chromebook, using port ff540000
+>    -> Pluggable 7-port Hub with Charging (powered)
+>       -> Microsoft Wireless Keyboard 2000 in port 1.
+>       -> Das Keyboard in port 2.
 >
-> Note that this change doesn't make 100% sense on its own since it's
-> expecting some sanity in the frame numbers assigned by the microframe
-> scheduler and (as per the future patch which rewries it) I think that
-> the current microframe scheduler is quite insane.  However, it seems
-> like splitting this up from the microframe scheduler patch makes things
-> into smaller chunks and hopefully adds to clarity rather than reduces
-> it.  The two patches could certainly be squashed.  Not that in the very
-> least, I don't see any obvious bad behavior introduced with just this
-> patch.
+> ...I find that I get dropped keys on the Microsoft keyboard (I'm sure
+> there are other combinations that fail, but this documents my test).
+> Specifically I've been typing "hahahahahahaha" on the keyboard and often
+> see keys dropped or repeated.
 >
-> I've attempted to keep the config parameter to disable the microframe
-> scheduler in tact in this change, though I'm not sure it's worth it.
-> Obviously the code is touched a lot so it's possible I regressed
-> something when the microframe scheduler is disabled, though I did some
-> basic testing and it seemed to work OK.  I'm still not 100% sure why you
-> wouldn't want the microframe scheduler (presuming it works), so maybe a
-> future patch (or a future version of this patch?) could remove that
-> parameter.
+> After this change the above setup works properly.  This patch is based
+> on a previous patch proposed by Yunzhi Li ("usb: dwc2: hcd: fix periodic
+> transfer schedule sequence")
 >
-> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Signed-off-by: Yunzhi Li <lyz@rock-chips.com>
 > ---
-> Changes in v5: None
+> Changes in v5:
+> - Move list maintenance to hcd.c to avoid gadget-only compile error
+>
 > Changes in v4:
-> - Manage frame nums better in scheduler new for v4.
+> - fix split transfer schedule sequence new for v4.
 >
 > Changes in v3: None
 > Changes in v2: None
 >
->  drivers/usb/dwc2/hcd.h       |  10 +-
->  drivers/usb/dwc2/hcd_queue.c | 355 ++++++++++++++++++++++++++++++++-----------
->  2 files changed, 273 insertions(+), 92 deletions(-)
-
-As an FYI to anyone considering reviewing or applying this particular patch.
-
-It's proposed to squash
-<https://chromium-review.googlesource.com/#/c/324185/> as a fixup to
-this patch for the next version.  This is intended to fix problems
-that Alan Stern reported at
-<http://www.spinics.net/lists/linux-usb/msg135678.html>
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>   drivers/usb/dwc2/core.c     |  2 ++
+>   drivers/usb/dwc2/core.h     |  2 ++
+>   drivers/usb/dwc2/hcd.c      |  8 ++++++++
+>   drivers/usb/dwc2/hcd.h      |  2 ++
+>   drivers/usb/dwc2/hcd_intr.c | 17 +++++++++++++++++
+>   5 files changed, 31 insertions(+)
+>
+> diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
+> index 73f2771b7740..ed73b26818c0 100644
+> --- a/drivers/usb/dwc2/core.c
+> +++ b/drivers/usb/dwc2/core.c
+> @@ -1676,6 +1676,8 @@ void dwc2_hc_cleanup(struct dwc2_hsotg *hsotg, struct dwc2_host_chan *chan)
+>   
+>   	chan->xfer_started = 0;
+>   
+> +	list_del_init(&chan->split_order_list_entry);
+> +
+>   	/*
+>   	 * Clear channel interrupt enables and any unhandled channel interrupt
+>   	 * conditions
+> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
+> index 7fb6434f4639..538cf38af0e4 100644
+> --- a/drivers/usb/dwc2/core.h
+> +++ b/drivers/usb/dwc2/core.h
+> @@ -657,6 +657,7 @@ struct dwc2_hregs_backup {
+>    *                      periodic_sched_ready because it must be rescheduled for
+>    *                      the next frame. Otherwise, the item moves to
+>    *                      periodic_sched_inactive.
+> + * @split_order:        List keeping track of channels doing splits, in order.
+>    * @periodic_usecs:     Total bandwidth claimed so far for periodic transfers.
+>    *                      This value is in microseconds per (micro)frame. The
+>    *                      assumption is that all periodic transfers may occur in
+> @@ -780,6 +781,7 @@ struct dwc2_hsotg {
+>   	struct list_head periodic_sched_ready;
+>   	struct list_head periodic_sched_assigned;
+>   	struct list_head periodic_sched_queued;
+> +	struct list_head split_order;
+>   	u16 periodic_usecs;
+>   	u16 frame_usecs[8];
+>   	u16 frame_number;
+> diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+> index d2daaea88d91..87ad5bf2d166 100644
+> --- a/drivers/usb/dwc2/hcd.c
+> +++ b/drivers/usb/dwc2/hcd.c
+> @@ -1045,6 +1045,11 @@ static int dwc2_queue_transaction(struct dwc2_hsotg *hsotg,
+>   {
+>   	int retval = 0;
+>   
+> +	if (chan->do_split)
+> +		/* Put ourselves on the list to keep order straight */
+> +		list_move_tail(&chan->split_order_list_entry,
+> +			       &hsotg->split_order);
+> +
+>   	if (hsotg->core_params->dma_enable > 0) {
+>   		if (hsotg->core_params->dma_desc_enable > 0) {
+>   			if (!chan->xfer_started ||
+> @@ -3151,6 +3156,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
+>   	INIT_LIST_HEAD(&hsotg->periodic_sched_assigned);
+>   	INIT_LIST_HEAD(&hsotg->periodic_sched_queued);
+>   
+> +	INIT_LIST_HEAD(&hsotg->split_order);
+> +
+>   	/*
+>   	 * Create a host channel descriptor for each host channel implemented
+>   	 * in the controller. Initialize the channel descriptor array.
+> @@ -3164,6 +3171,7 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
+>   		if (channel == NULL)
+>   			goto error3;
+>   		channel->hc_num = i;
+> +		INIT_LIST_HEAD(&channel->split_order_list_entry);
+>   		hsotg->hc_ptr_array[i] = channel;
+>   	}
+>   
+> diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
+> index 42f2e4e233da..1b46e2e617cc 100644
+> --- a/drivers/usb/dwc2/hcd.h
+> +++ b/drivers/usb/dwc2/hcd.h
+> @@ -106,6 +106,7 @@ struct dwc2_qh;
+>    * @hc_list_entry:      For linking to list of host channels
+>    * @desc_list_addr:     Current QH's descriptor list DMA address
+>    * @desc_list_sz:       Current QH's descriptor list size
+> + * @split_order_list_entry: List entry for keeping track of the order of splits
+>    *
+>    * This structure represents the state of a single host channel when acting in
+>    * host mode. It contains the data items needed to transfer packets to an
+> @@ -158,6 +159,7 @@ struct dwc2_host_chan {
+>   	struct list_head hc_list_entry;
+>   	dma_addr_t desc_list_addr;
+>   	u32 desc_list_sz;
+> +	struct list_head split_order_list_entry;
+>   };
+>   
+>   struct dwc2_hcd_pipe_info {
+> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+> index 2c521c00e5e0..577c91096a51 100644
+> --- a/drivers/usb/dwc2/hcd_intr.c
+> +++ b/drivers/usb/dwc2/hcd_intr.c
+> @@ -2067,6 +2067,7 @@ static void dwc2_hc_intr(struct dwc2_hsotg *hsotg)
+>   {
+>   	u32 haint;
+>   	int i;
+> +	struct dwc2_host_chan *chan, *chan_tmp;
+>   
+>   	haint = dwc2_readl(hsotg->regs + HAINT);
+>   	if (dbg_perio()) {
+> @@ -2075,6 +2076,22 @@ static void dwc2_hc_intr(struct dwc2_hsotg *hsotg)
+>   		dev_vdbg(hsotg->dev, "HAINT=%08x\n", haint);
+>   	}
+>   
+> +	/*
+> +	 * According to USB 2.0 spec section 11.18.8, a host must
+> +	 * issue complete-split transactions in a microframe for a
+> +	 * set of full-/low-speed endpoints in the same relative
+> +	 * order as the start-splits were issued in a microframe for.
+> +	 */
+> +	list_for_each_entry_safe(chan, chan_tmp, &hsotg->split_order,
+> +				 split_order_list_entry) {
+> +		int hc_num = chan->hc_num;
+> +
+> +		if (haint & (1 << hc_num)) {
+> +			dwc2_hc_n_intr(hsotg, hc_num);
+> +			haint &= ~(1 << hc_num);
+> +		}
+> +	}
+> +
+>   	for (i = 0; i < hsotg->core_params->host_channels; i++) {
+>   		if (haint & (1 << i))
+>   			dwc2_hc_n_intr(hsotg, i);
