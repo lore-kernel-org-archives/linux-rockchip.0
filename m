@@ -1,231 +1,35 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2] pinctrl: rockchip: add support for the rk3399
-Date: Thu, 28 Jan 2016 17:56:45 +0100
-Message-ID: <7536813.E6m4KCLL9V@diego>
-References: <1451997055-47655-1-git-send-email-wdc@rock-chips.com> <1452152498-21780-1-git-send-email-wdc@rock-chips.com>
+Subject: Re: [PATCH] clk: rockchip: Allow sclk_i2s0 and i2s0_frac to change their parents rate on rk3188
+Date: Thu, 28 Jan 2016 18:01:08 +0100
+Message-ID: <1687954.9WCMHmWDJQ@diego>
+References: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1452152498-21780-1-git-send-email-wdc@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <wdc@rock-chips.com>
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexander Kochetkov <al.kochet@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Hi Alexander,
 
-Am Donnerstag, 7. Januar 2016, 15:41:38 schrieb David Wu:
-> From: David Wu <david.wu@rock-chips.com>
+Am Mittwoch, 27. Januar 2016, 15:24:29 schrieb Alexander Kochetkov:
+> Allow sclk_i2s0 and i2s0_frac to change their parents rate as
+> that the upstream dividers are purely there to feed sclk_i2s0
 > 
-> The pinctrl of rk3399 is much different from other's,
-> especially the 3bits of drive strength.
+> Tested on radxarock-lite.
 > 
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> ---
-> change from v1:
-> - need spin_unlock_irqrestore for set drive default case
-> 
->  .../bindings/pinctrl/rockchip,pinctrl.txt          |   1 +
->  drivers/pinctrl/pinctrl-rockchip.c                 | 339
-> ++++++++++++++++++++- 2 files changed, 326 insertions(+), 14 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt index
-> 391ef4b..3bb9456 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-> @@ -22,6 +22,7 @@ Required properties for iomux controller:
->    - compatible: one of "rockchip,rk2928-pinctrl",
-> "rockchip,rk3066a-pinctrl" "rockchip,rk3066b-pinctrl",
-> "rockchip,rk3188-pinctrl"
->  		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
-> +		       "rockchip,rk3399-pinctrl"
->    - rockchip,grf: phandle referencing a syscon providing the
->  	 "general register files"
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> b/drivers/pinctrl/pinctrl-rockchip.c index a065112..9d61c6e 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
 
-[...]
+doesn't apply due to the fractional divider change going into 4.5
 
-> @@ -685,19 +821,60 @@ static int rockchip_get_drive_perpin(struct
-> rockchip_pin_bank *bank, struct rockchip_pin_ctrl *ctrl = info->ctrl;
->  	struct regmap *regmap;
->  	int reg, ret;
-> -	u32 data;
-> +	u32 data, temp, rmask_bits;
->  	u8 bit;
-> +	int drv_type = bank->drv[pin_num / 8].drv_type;
-> 
->  	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
-> 
-> +	switch (drv_type) {
-> +	case DRV_TYPE_IO_1V8_3V0_AUTO:
-> +	case DRV_TYPE_IO_3V3_ONLY:
-> +		if (RK3399_DRV_3BITS_PER_PIN + bit >= 16) {
+please respin on top of 4.5-rc1 (or my clock-branch for 4.6 [0],
+but should be the same in that regard).
 
-According to the doc excerpts, wouldn't the big special handling only be 
-necessary for for gpio3b5 alone (+ other banks) ... i.e. the one setting being 
-split over both registers?
-If so I think doing something like the following might be easier to 
-understand? Same of course for the set-counterpart. [Beware if I missed up the 
-indices somewhere :-) ]
 
-rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-switch(bit) {
-case 0 ... 12:
-	/* regular case, nothing to do */
-	break;
-case 15:
-	/* drive-strength offset is special, as it is spread over 2 registers */
-	ret = regmap_read(regmap, reg, &data);
-	if (ret)
-		return ret;
+Thanks
+Heiko
 
-	ret = regmap_read(regmap, reg + 0x4, &temp);
-	if (ret)
-		return ret;
-
-	/*
-	 * the bit data[15] contains bit 0 of the value
-	 * while temp[1:0] containts bits 2 and 1
-	 */
-	data >>= 15;
-	temp &= 0x3;
-	temp <<= 1;
-	data |= temp;
-
-	return rockchip_perpin_drv_list[drv_type][data];
-case 18 ... 21:
-	/* setting fully enclosed in the second register */
-	rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-	reg += 4;
-	bit -= 18;
-}
-
-> +			/* need to read regs twice */
-> +			ret = regmap_read(regmap, reg, &temp);
-> +			if (ret)
-> +				return ret;
-> +
-> +			temp >>= bit;
-> +			rmask_bits = 16 - bit;
-> +			temp &= (1 << rmask_bits) - 1;
-> +
-> +			reg = reg + 0x4;
-> +			ret = regmap_read(regmap, reg, &data);
-> +			if (ret)
-> +				return ret;
-> +
-> +			rmask_bits = RK3399_DRV_3BITS_PER_PIN
-> +				+ bit - 16;
-> +			data &= (1 << rmask_bits) - 1;
-> +			data <<= 16 - bit;
-> +			data |= temp;
-> +
-> +			return rockchip_perpin_drv_list[drv_type][data];
-> +		}
-> +
-> +		rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-> +		break;
-> +	case DRV_TYPE_IO_DEFAULT:
-> +	case DRV_TYPE_IO_1V8_OR_3V0:
-> +	case DRV_TYPE_IO_1V8_ONLY:
-> +		rmask_bits = RK3288_DRV_BITS_PER_PIN;
-> +		break;
-> +	default:
-> +		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
-> +			drv_type);
-> +		return -EINVAL;
-> +	}
-> +
->  	ret = regmap_read(regmap, reg, &data);
->  	if (ret)
->  		return ret;
-> 
->  	data >>= bit;
-> -	data &= (1 << RK3288_DRV_BITS_PER_PIN) - 1;
-> +	data &= (1 << rmask_bits) - 1;
-> 
-> -	return rockchip_perpin_drv_list[data];
-> +	return rockchip_perpin_drv_list[drv_type][data];
->  }
-> 
->  static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
-
-[...]
-
-> @@ -729,8 +913,45 @@ static int rockchip_set_drive_perpin(struct
-> rockchip_pin_bank *bank,
-> 
->  	spin_lock_irqsave(&bank->slock, flags);
-> 
-> +	switch (drv_type) {
-> +	case DRV_TYPE_IO_1V8_3V0_AUTO:
-> +	case DRV_TYPE_IO_3V3_ONLY:
-> +		if (RK3399_DRV_3BITS_PER_PIN + bit >= 16) {
-> +			/* need to write regs twice */
-> +			rmask_bits = 16 - bit;
-> +			/* enable the write to the equivalent lower bits */
-> +			data = ((1 << rmask_bits) - 1) << (bit + 16);
-> +			rmask = data | (data >> 16);
-> +			ret &= (1 << rmask_bits) - 1;
-> +			data |= (ret << bit);
-> +
-> +			ret = regmap_update_bits(regmap, reg, rmask, data);
-> +			if (ret)
-> +				return ret;
-> +
-> +			ret = i >> rmask_bits;
-> +			rmask_bits = RK3399_DRV_3BITS_PER_PIN + bit - 16;
-> +			reg = reg + 0x4;
-> +			bit = 0;
-
-Apart from a change similar to the above, should the setting maybe also 
-directly return and not depend on the final write?
-
-> +		} else {
-> +			rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-> +		}
-> +		break;
-> +	case DRV_TYPE_IO_DEFAULT:
-> +	case DRV_TYPE_IO_1V8_OR_3V0:
-> +	case DRV_TYPE_IO_1V8_ONLY:
-> +		rmask_bits = RK3288_DRV_BITS_PER_PIN;
-> +		break;
-> +	default:
-> +		spin_unlock_irqrestore(&bank->slock, flags);
-> +		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
-> +			drv_type);
-> +		return -EINVAL;
-> +
-> +	}
-> +
->  	/* enable the write to the equivalent lower bits */
-> -	data = ((1 << RK3288_DRV_BITS_PER_PIN) - 1) << (bit + 16);
-> +	data = ((1 << rmask_bits) - 1) << (bit + 16);
->  	rmask = data | (data >> 16);
->  	data |= (ret << bit);
-> 
-
-[...]
-
-> @@ -2208,6 +2461,62 @@ static struct rockchip_pin_ctrl rk3368_pin_ctrl = {
->  		.drv_calc_reg		= rk3368_calc_drv_reg_and_bit,
->  };
-> 
-> +static struct rockchip_pin_bank rk3399_pin_banks[] = {
-> +	PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(0, 32, "gpio0", IOMUX_SOURCE_PMU,
-> +					IOMUX_SOURCE_PMU,
-> +					IOMUX_SOURCE_PMU,
-> +					IOMUX_SOURCE_PMU,
-> +					DRV_TYPE_IO_1V8_ONLY,
-> +					DRV_TYPE_IO_1V8_ONLY,
-> +					0,
-> +					0,
-
-DRV_TYPE_IO_DEFAULT instead of 0 please.
-
+[0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.6-clk/next
