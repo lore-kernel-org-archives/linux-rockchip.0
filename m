@@ -1,195 +1,66 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 08/21] usb: dwc2: host: Add scheduler tracing
-Date: Thu, 28 Jan 2016 11:39:14 +0800
-Message-ID: <56A98D62.8040505@rock-chips.com>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org> <1453486736-15358-9-git-send-email-dianders@chromium.org>
+Subject: Re: [PATCH v5 04/21] usb: dwc2: host: Set host_perio_tx_fifo_size
+ to 304 for rk3066
+Date: Thu, 28 Jan 2016 14:41:14 +0800
+Message-ID: <56A9B80A.2020506@rock-chips.com>
+References: <1453486736-15358-1-git-send-email-dianders@chromium.org>	<1453486736-15358-5-git-send-email-dianders@chromium.org>	<56A986B4.2050002@rock-chips.com> <CAD=FV=VAkY0ijkUBrgjY04+OfYq35u=MbqbbomeQxp_J179iHw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453486736-15358-9-git-send-email-dianders@chromium.org>
+In-Reply-To: <CAD=FV=VAkY0ijkUBrgjY04+OfYq35u=MbqbbomeQxp_J179iHw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, John Youn <John.Youn@synopsys.com>, balbi@ti.com
-Cc: huangtao@rock-chips.com, gregory.herrero@intel.com, heiko@sntech.de, johnyoun@synopsys.com, gregkh@linuxfoundation.org, ming.lei@canonical.com, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, yousaf.kaukab@intel.com, stern@rowland.harvard.edu, william.wu@rock-chips.com, Julius Werner <jwerner@chromium.org>, dinguyen@opensource.altera.com
+To: Doug Anderson <dianders@chromium.org>
+Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Tao Huang <huangtao@rock-chips.com>, "Herrero, Gregory" <gregory.herrero@intel.com>, =?UTF-8?B?SGVpa28gU3TDvGI=?= =?UTF-8?B?bmVy?= <heiko@sntech.de>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ming Lei <ming.lei@canonical.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Alan Stern <stern@rowland.harvard.edu>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu@rock-chips.com>, Julius Werner <jwerner@chromium.org>, Dinh Nguyen <dinguyen@opensource.altera.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Doug,
 
-     Very good idea here, I used to add some local patch and with USB
-analyzer to debug this part of code, and we can use more tools with
-your patch now, I can try kernelshark next time.
+We are in HOST mode, we only need to receive data from USB camera
+with RX FIFO, and no need to use TX FIFO for USB webcam, right? :)
 
-     Do you consider to add tracing for qtd? Then we can track the whole
-lift cycle of urb in dwc2 driver.
+Any way, I think we need to NAK this patch after look into the design
+of dwc2 controller. Because all the dwc2 controller inside the Rockchip
+chips don't support the thresholding FIFO mode, in this case, there is
+no more transaction before a whole packet is send out and the dwc2 only
+care if the available FIFO is enough for next packet or not.
 
-     For this patch:
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+So, the addition 48 words won't help to shorten the latency for data prepare
+in this case.
 
 Thanks,
 - Kever
-On 01/23/2016 02:18 AM, Douglas Anderson wrote:
-> In preparation for future changes to the scheduler let's add some
-> tracing that makes it easy for us to see what's happening.  By default
-> this tracing will be off.
+On 01/28/2016 11:28 AM, Doug Anderson wrote:
+> Kever,
 >
-> By changing "core.h" you can easily trace to ftrace, the console, or
-> nowhere.
+> On Wed, Jan 27, 2016 at 7:10 PM, Kever Yang <kever.yang@rock-chips.com> wrote:
+>> Hi Doug,
+>>
+>> We are using the minimum FIFO size mode for TX now, which only
+>> equal to one max packet size.
+>>
+>> The addition FIFO size may help shorten the inter-packet data
+>> prepare latency when the bus/DRAM is busy.
+>>
+>> For the actual usage in TX, we have very little change to use the
+>> period TX FIFO with more than one max packet size in host mode.
+>> So far as I know, usb audio use the isochronous tx FIFO, but this
+>> king of device won't have much data payload and won't, I haven't
+>> see a usb audio have more data than 1024byte/ms.
+>>
+>> So I suggest we assign this 48 words to host_nperio_tx_fifi_size instead
+>> if we have to do this. Because we are using device base on bulk transaction
+>> like U-disk very frequently.
+> Try using a USB webcam.  With that plus a USB audio device it's easy
+> to overwhelm the periodic TX FIFO.
 >
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Changes in v5: None
-> Changes in v4:
-> - Retooled scheduler tracing a bit, so left off John's Ack from v3.
+> If we overwhelm the periodic TX FIFO we might actually fail to
+> transmit ISO or INT packets at the scheduled time.  That seems more
+> serious of a problem to try to fix than eeking out a tiny bit
+> performance on a USB disk.  ...but of course, it all depends on what
+> you consider important.  ;)
 >
-> Changes in v3: None
-> Changes in v2: None
+> We could split the difference, I suppose and put half on each?
 >
->   drivers/usb/dwc2/core.h      | 20 ++++++++++++++++++++
->   drivers/usb/dwc2/hcd.h       |  5 +++++
->   drivers/usb/dwc2/hcd_intr.c  |  6 +++++-
->   drivers/usb/dwc2/hcd_queue.c | 24 +++++++++++++++++++++++-
->   4 files changed, 53 insertions(+), 2 deletions(-)
+> -Doug
 >
-> diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-> index 538cf38af0e4..18f9e4045643 100644
-> --- a/drivers/usb/dwc2/core.h
-> +++ b/drivers/usb/dwc2/core.h
-> @@ -44,6 +44,26 @@
->   #include <linux/usb/phy.h>
->   #include "hw.h"
->   
-> +/*
-> + * Suggested defines for tracers:
-> + * - no_printk:    Disable tracing
-> + * - pr_info:      Print this info to the console
-> + * - trace_printk: Print this info to trace buffer (good for verbose logging)
-> + */
-> +
-> +#define DWC2_TRACE_SCHEDULER		no_printk
-> +#define DWC2_TRACE_SCHEDULER_VB		no_printk
-> +
-> +/* Detailed scheduler tracing, but won't overwhelm console */
-> +#define dwc2_sch_dbg(hsotg, fmt, ...)					\
-> +	DWC2_TRACE_SCHEDULER(pr_fmt("%s: SCH: " fmt),			\
-> +			     dev_name(hsotg->dev), ##__VA_ARGS__)
-> +
-> +/* Verbose scheduler tracing */
-> +#define dwc2_sch_vdbg(hsotg, fmt, ...)					\
-> +	DWC2_TRACE_SCHEDULER_VB(pr_fmt("%s: SCH: " fmt),		\
-> +				dev_name(hsotg->dev), ##__VA_ARGS__)
-> +
->   static inline u32 dwc2_readl(const void __iomem *addr)
->   {
->   	u32 value = __raw_readl(addr);
-> diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-> index 1b46e2e617cc..809bc4ff9116 100644
-> --- a/drivers/usb/dwc2/hcd.h
-> +++ b/drivers/usb/dwc2/hcd.h
-> @@ -563,6 +563,11 @@ static inline u16 dwc2_frame_num_inc(u16 frame, u16 inc)
->   	return (frame + inc) & HFNUM_MAX_FRNUM;
->   }
->   
-> +static inline u16 dwc2_frame_num_dec(u16 frame, u16 dec)
-> +{
-> +	return (frame + HFNUM_MAX_FRNUM + 1 - dec) & HFNUM_MAX_FRNUM;
-> +}
-> +
->   static inline u16 dwc2_full_frame_num(u16 frame)
->   {
->   	return (frame & HFNUM_MAX_FRNUM) >> 3;
-> diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-> index 577c91096a51..5d25a5ec9736 100644
-> --- a/drivers/usb/dwc2/hcd_intr.c
-> +++ b/drivers/usb/dwc2/hcd_intr.c
-> @@ -138,13 +138,17 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
->   	while (qh_entry != &hsotg->periodic_sched_inactive) {
->   		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
->   		qh_entry = qh_entry->next;
-> -		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number))
-> +		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
-> +			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, sch=%04x\n",
-> +				      qh, hsotg->frame_number, qh->sched_frame);
-> +
->   			/*
->   			 * Move QH to the ready list to be executed next
->   			 * (micro)frame
->   			 */
->   			list_move_tail(&qh->qh_list_entry,
->   				  &hsotg->periodic_sched_ready);
-> +		}
->   	}
->   	tr_type = dwc2_hcd_select_transactions(hsotg);
->   	if (tr_type != DWC2_TRANSACTION_NONE)
-> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-> index bc632a72f611..0e9faa75593c 100644
-> --- a/drivers/usb/dwc2/hcd_queue.c
-> +++ b/drivers/usb/dwc2/hcd_queue.c
-> @@ -113,6 +113,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
->   		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
->   						     SCHEDULE_SLOP);
->   		qh->interval = urb->interval;
-> +		dwc2_sch_dbg(hsotg, "QH=%p init sch=%04x, fn=%04x, int=%#x\n",
-> +			     qh, qh->sched_frame, hsotg->frame_number,
-> +			     qh->interval);
->   #if 0
->   		/* Increase interrupt polling rate for debugging */
->   		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
-> @@ -126,6 +129,11 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
->   			qh->interval *= 8;
->   			qh->sched_frame |= 0x7;
->   			qh->start_split_frame = qh->sched_frame;
-> +			dwc2_sch_dbg(hsotg,
-> +				     "QH=%p init*8 sch=%04x, fn=%04x, int=%#x\n",
-> +				     qh, qh->sched_frame, hsotg->frame_number,
-> +				     qh->interval);
-> +
->   		}
->   		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
->   	}
-> @@ -482,6 +490,8 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
->   		if (frame >= 0) {
->   			qh->sched_frame &= ~0x7;
->   			qh->sched_frame |= (frame & 7);
-> +			dwc2_sch_dbg(hsotg, "QH=%p sched_p sch=%04x, uf=%d\n",
-> +				     qh, qh->sched_frame, frame);
->   		}
->   
->   		if (status > 0)
-> @@ -583,10 +593,16 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
->   
->   	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
->   			!hsotg->frame_number) {
-> +		u16 new_frame;
-> +
->   		dev_dbg(hsotg->dev,
->   				"reset frame number counter\n");
-> -		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
-> +		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
->   				SCHEDULE_SLOP);
-> +
-> +		dwc2_sch_vdbg(hsotg, "QH=%p reset sch=%04x=>%04x\n",
-> +			      qh, qh->sched_frame, new_frame);
-> +		qh->sched_frame = new_frame;
->   	}
->   
->   	/* Add the new QH to the appropriate schedule */
-> @@ -652,6 +668,7 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
->   				      int sched_next_periodic_split)
->   {
->   	u16 incr;
-> +	u16 old_frame = qh->sched_frame;
->   
->   	if (sched_next_periodic_split) {
->   		qh->sched_frame = frame_number;
-> @@ -677,6 +694,11 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
->   		qh->sched_frame |= 0x7;
->   		qh->start_split_frame = qh->sched_frame;
->   	}
-> +
-> +	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, sch=%04x=>%04x (%+d)\n",
-> +		      qh, sched_next_periodic_split, frame_number, old_frame,
-> +		      qh->sched_frame,
-> +		      dwc2_frame_num_dec(qh->sched_frame, old_frame));
->   }
->   
->   /*
