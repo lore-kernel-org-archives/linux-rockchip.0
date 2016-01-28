@@ -1,101 +1,164 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v4 8/9] ASoC: rt5616: add the mclk for the codec driver
-Date: Thu, 28 Jan 2016 16:43:37 +0800
-Message-ID: <1453970618-4383-9-git-send-email-wxt@rock-chips.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 2/9] ARM: dts: rockchip: add hdmi/vop device node for rk3036
+Date: Thu, 28 Jan 2016 16:43:31 +0800
+Message-ID: <1453970618-4383-3-git-send-email-wxt@rock-chips.com>
 References: <1453970618-4383-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453970618-4383-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org
-Cc: hl@rock-chips.com, jay.xu@rock-chips.com, jeffy.chen@rock-chips.com, linux-rockchip@lists.infradead.org, keescook@google.com, cf@rock-chips.com, sonnyrao@chromium.org, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, alsa-devel@alsa-project.org, Mark Brown <broonie@kernel.org>, Oder Chiou <oder_chiou@realtek.com>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Bard Liao <bardliao@realtek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453970618-4383-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the code to enable the clock to the CODEC driver
-if it needs the clock enabled.
+This patch adds the needed display info for rk3036 SOCs.
 
-In some case, We need to claim the clock which is driving the codec
-so that when we enable clock gating, we continue to clock the codec
-when needed.
+The rk3036 support two overlay plane and one hwc plane,
+it supports IOMMU, and its IOMMU same as rk3288's.
+Meanwhile, add the inno hdmi for HDMI display.
 
-if mclk provided, to enable and disable the clock source.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
 ---
 
 Changes in v4:
-- AS the previous discussed by them, add the mclk for codec.
-  (https://patchwork.kernel.org/patch/8041001/)
+- solve the lastest conflict, picked up from
+  https://patchwork.kernel.org/patch/8040961/.
 
- sound/soc/codecs/rt5616.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ arch/arm/boot/dts/rk3036-kylin.dts | 12 +++++++
+ arch/arm/boot/dts/rk3036.dtsi      | 66 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 78 insertions(+)
 
-diff --git a/sound/soc/codecs/rt5616.c b/sound/soc/codecs/rt5616.c
-index d4bdf9f..fdca636 100644
---- a/sound/soc/codecs/rt5616.c
-+++ b/sound/soc/codecs/rt5616.c
-@@ -12,6 +12,7 @@
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/init.h>
-+#include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/pm.h>
- #include <linux/i2c.h>
-@@ -144,6 +145,7 @@ struct rt5616_priv {
- 	struct snd_soc_codec *codec;
- 	struct delayed_work patch_work;
- 	struct regmap *regmap;
-+	struct clk *mclk;
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 3332a7f..1037ad6 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -116,6 +116,10 @@
+ 	status = "okay";
+ };
  
- 	int sysclk;
- 	int sysclk_src;
-@@ -1159,7 +1161,34 @@ static int rt5616_set_dai_pll(struct snd_soc_dai *dai, int pll_id, int source,
- static int rt5616_set_bias_level(struct snd_soc_codec *codec,
- 				 enum snd_soc_bias_level level)
- {
-+	struct rt5616_priv *rt5616 = snd_soc_codec_get_drvdata(codec);
-+	int ret;
++&hdmi {
++	status = "okay";
++};
 +
- 	switch (level) {
-+
-+	case SND_SOC_BIAS_ON:
-+		break;
-+
-+	case SND_SOC_BIAS_PREPARE:
-+		/*
-+		 * SND_SOC_BIAS_PREPARE is called while preparing for a
-+		 * transition to ON or away from ON. If current bias_level
-+		 * is SND_SOC_BIAS_ON, then it is preparing for a transition
-+		 * away from ON. Disable the clock in that case, otherwise
-+		 * enable it.
-+		 */
-+		if (IS_ERR(rt5616->mclk))
-+			break;
-+
-+		if (snd_soc_codec_get_bias_level(codec) == SND_SOC_BIAS_ON) {
-+			clk_disable_unprepare(rt5616->mclk);
-+		} else {
-+			ret = clk_prepare_enable(rt5616->mclk);
-+			if (ret)
-+				return ret;
-+		}
-+		break;
-+
- 	case SND_SOC_BIAS_STANDBY:
- 		if (snd_soc_codec_get_bias_level(codec) == SND_SOC_BIAS_OFF) {
- 			snd_soc_update_bits(codec, RT5616_PWR_ANLG1,
-@@ -1198,6 +1227,11 @@ static int rt5616_probe(struct snd_soc_codec *codec)
- {
- 	struct rt5616_priv *rt5616 = snd_soc_codec_get_drvdata(codec);
+ &i2c1 {
+ 	clock-frequency = <400000>;
  
-+	/* Check if MCLK provided */
-+	rt5616->mclk = devm_clk_get(codec->dev, "mclk");
-+	if (PTR_ERR(rt5616->mclk) == -EPROBE_DEFER)
-+		return -EPROBE_DEFER;
-+
- 	rt5616->codec = codec;
+@@ -369,6 +373,14 @@
+ 	status = "okay";
+ };
  
- 	return 0;
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
+ &pinctrl {
+ 	leds {
+ 		led_ctl: led-ctl {
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 7897449..7abe3e2 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -147,6 +147,42 @@
+ 		};
+ 	};
+ 
++	vop: vop@10118000 {
++		compatible = "rockchip,rk3036-vop";
++		reg = <0x10118000 0x19c>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_LCDC>, <&cru SCLK_LCDC>, <&cru HCLK_LCDC>;
++		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		resets = <&cru SRST_LCDC1_A>, <&cru SRST_LCDC1_H>, <&cru SRST_LCDC1_D>;
++		reset-names = "axi", "ahb", "dclk";
++		iommus = <&vop_mmu>;
++
++		status = "disabled";
++
++		vop_out: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			vop_out_hdmi: endpoint@0 {
++				reg = <1>;
++				remote-endpoint = <&hdmi_in_vop>;
++			};
++		};
++	};
++
++	display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop_out>;
++	};
++
++	vop_mmu: iommu@10118300 {
++		compatible = "rockchip,iommu";
++		reg = <0x10118300 0x100>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vop_mmu";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	gic: interrupt-controller@10139000 {
+ 		compatible = "arm,gic-400";
+ 		interrupt-controller;
+@@ -274,6 +310,27 @@
+ 		status = "disabled";
+ 	};
+ 
++	hdmi: hdmi@20034000 {
++		compatible = "rockchip,rk3036-inno-hdmi";
++		reg = <0x20034000 0x4000>;
++		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru  PCLK_HDMI>;
++		clock-names = "pclk";
++		rockchip,grf = <&grf>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdmi_ctl>;
++		status = "disabled";
++
++		hdmi_in: port {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			hdmi_in_vop: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&vop_out_hdmi>;
++			};
++		};
++	};
++
+ 	timer: timer@20044000 {
+ 		compatible = "rockchip,rk3036-timer", "rockchip,rk3288-timer";
+ 		reg = <0x20044000 0x20>;
+@@ -588,6 +645,15 @@
+ 			};
+ 		};
+ 
++		hdmi {
++			hdmi_ctl: hdmi-ctl {
++				rockchip,pins = <1 8  RK_FUNC_1 &pcfg_pull_none>,
++						<1 9  RK_FUNC_1 &pcfg_pull_none>,
++						<1 10 RK_FUNC_1 &pcfg_pull_none>,
++						<1 11 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins = <0 16 RK_FUNC_1 &pcfg_pull_default>,
 -- 
 1.9.1
