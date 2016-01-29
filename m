@@ -1,45 +1,23 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v6 22/22] usb: dwc2: host: If using uframe scheduler,
- end splits better
-Date: Thu, 28 Jan 2016 18:20:13 -0800
-Message-ID: <1454034013-24657-23-git-send-email-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v6 18/22] usb: dwc2: host: Schedule periodic right away if it's time
+Date: Thu, 28 Jan 2016 18:20:09 -0800
+Message-ID: <1454034013-24657-19-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1454034013-24657-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454034013-24657-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
+Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, stefan.wahren@i2se.com, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The microframe scheduler figured out exactly how many transfers we need
-for a split transaction.  Let's use this knowledge to know when to end
-things.
+In dwc2_hcd_qh_deactivate() we will put some things on the
+periodic_sched_ready list.  These things won't be taken off the ready
+list until the next SOF, which might be a little late.  Let's put them
+on right away.
 
-Without this I found that certain devices would just keep responding
-with tons of NYET resonses on their INT_IN endpoint.  These would just
-keep going and going and eventually we'd decide to terminate the
-transfer (because the whole frame changed), but by that time the
-scheduler would decide that we "missed" the start of the next transfer.
-I can also imagine that if we blow past the end of our scheduled time we
-may mess up other things that were scheduled to happen.
-
-No known test cases are improved by this patch except that the scheduler
-code doesn't yell about MISSES constantly anymore.
-
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
 ---
 Changes in v6:
 - Add Heiko's Tested-by.
@@ -47,74 +25,46 @@ Changes in v6:
 
 Changes in v5: None
 Changes in v4:
-- If using uframe scheduler, end splits better new for v4.
+- Schedule periodic right away if it's time new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/hcd_intr.c | 48 +++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 42 insertions(+), 6 deletions(-)
+ drivers/usb/dwc2/hcd_queue.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index dc285667233a..f7a325a8c741 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -1363,14 +1363,50 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
+diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+index 9b3c435339ee..3abb34a5fc5b 100644
+--- a/drivers/usb/dwc2/hcd_queue.c
++++ b/drivers/usb/dwc2/hcd_queue.c
+@@ -1080,12 +1080,26 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	 * Note: we purposely use the frame_number from the "hsotg" structure
+ 	 * since we know SOF interrupt will handle future frames.
+ 	 */
+-	if (dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number))
++	if (dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number)) {
++		enum dwc2_transaction_type tr_type;
++
++		/*
++		 * We're bypassing the SOF handler which is normally what puts
++		 * us on the ready list because we're in a hurry and need to
++		 * try to catch up.
++		 */
++		dwc2_sch_vdbg(hsotg, "QH=%p IMM ready fn=%04x, nxt=%04x\n",
++			      qh, frame_number, qh->next_active_frame);
+ 		list_move_tail(&qh->qh_list_entry,
+ 			       &hsotg->periodic_sched_ready);
+-	else
++
++		tr_type = dwc2_hcd_select_transactions(hsotg);
++		if (tr_type != DWC2_TRANSACTION_NONE)
++			dwc2_hcd_queue_transactions(hsotg, tr_type);
++	} else {
+ 		list_move_tail(&qh->qh_list_entry,
+ 			       &hsotg->periodic_sched_inactive);
++	}
+ }
  
- 		if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
- 		    chan->ep_type == USB_ENDPOINT_XFER_ISOC) {
--			int frnum = dwc2_hcd_get_frame_number(hsotg);
-+			struct dwc2_qh *qh = chan->qh;
-+			bool past_end;
-+
-+			if (hsotg->core_params->uframe_sched <= 0) {
-+				int frnum = dwc2_hcd_get_frame_number(hsotg);
-+
-+				/* Don't have num_hs_transfers; simple logic */
-+				past_end = dwc2_full_frame_num(frnum) !=
-+				     dwc2_full_frame_num(qh->next_active_frame);
-+			} else {
-+				int end_frnum;
- 
--			if (dwc2_full_frame_num(frnum) !=
--			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
- 				/*
--				 * No longer in the same full speed frame.
--				 * Treat this as a transaction error.
--				 */
-+				* Figure out the end frame based on schedule.
-+				*
-+				* We don't want to go on trying again and again
-+				* forever.  Let's stop when we've done all the
-+				* transfers that were scheduled.
-+				*
-+				* We're going to be comparing start_active_frame
-+				* and next_active_frame, both of which are 1
-+				* before the time the packet goes on the wire,
-+				* so that cancels out.  Basically if had 1
-+				* transfer and we saw 1 NYET then we're done.
-+				* We're getting a NYET here so if next >=
-+				* (start + num_transfers) we're done. The
-+				* complexity is that for all but ISOC_OUT we
-+				* skip one slot.
-+				*/
-+				end_frnum = dwc2_frame_num_inc(
-+					qh->start_active_frame,
-+					qh->num_hs_transfers);
-+
-+				if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
-+				    qh->ep_is_in)
-+					end_frnum =
-+					       dwc2_frame_num_inc(end_frnum, 1);
-+
-+				past_end = dwc2_frame_num_le(
-+					end_frnum, qh->next_active_frame);
-+			}
-+
-+			if (past_end) {
-+				/* Treat this as a transaction error. */
- #if 0
- 				/*
- 				 * Todo: Fix system performance so this can
+ /**
 -- 
 2.7.0.rc3.207.g0ac5344
