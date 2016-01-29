@@ -1,7 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v6 06/22] usb: dwc2: host: fix split transfer schedule sequence
-Date: Thu, 28 Jan 2016 18:19:57 -0800
-Message-ID: <1454034013-24657-7-git-send-email-dianders@chromium.org>
+Subject: [PATCH v6 19/22] usb: dwc2: host: Add
+ dwc2_hcd_get_future_frame_number() call
+Date: Thu, 28 Jan 2016 18:20:10 -0800
+Message-ID: <1454034013-24657-20-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,178 +19,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We're supposed to keep outstanding splits in order.  Keep track of a
-list of the order of splits and process channel interrupts in that
-order.
+As we start getting more exact about our scheduling it's becoming more
+and more important to know exactly how far through the current frame we
+are.  This lets us make decisions about whether there's still time left
+to start a new transaction in the current frame.
 
-Without this change and the following setup:
-* Rockchip rk3288 Chromebook, using port ff540000
-  -> Pluggable 7-port Hub with Charging (powered)
-     -> Microsoft Wireless Keyboard 2000 in port 1.
-     -> Das Keyboard in port 2.
+We'll add dwc2_hcd_get_future_frame_number() which will tell you what
+the frame number will be a certain number of microseconds (us) from
+now.  We can use this information to help decide if there's enough time
+left in the frame for a transaction that will take a certain duration.
 
-...I find that I get dropped keys on the Microsoft keyboard (I'm sure
-there are other combinations that fail, but this documents my test).
-Specifically I've been typing "hahahahahahaha" on the keyboard and often
-see keys dropped or repeated.
-
-After this change the above setup works properly.  This patch is based
-on a previous patch proposed by Yunzhi Li ("usb: dwc2: hcd: fix periodic
-transfer schedule sequence")
+This is expected to be used by a future change ("usb: dwc2: host:
+Properly set even/odd frame").
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Yunzhi Li <lyz-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
 ---
 Changes in v6:
-- Fix patch tags (hcd -> host)
-- Add Kever's Reviewed-by.
-- Add Kever's Tested-by.
 - Add Heiko's Tested-by.
 - Add Stefan's Tested-by.
 
-Changes in v5:
-- Move list maintenance to hcd.c to avoid gadget-only compile error
-
+Changes in v5: None
 Changes in v4:
-- fix split transfer schedule sequence new for v4.
+- Add dwc2_hcd_get_future_frame_number() call new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/core.c     |  2 ++
- drivers/usb/dwc2/core.h     |  2 ++
- drivers/usb/dwc2/hcd.c      |  8 ++++++++
- drivers/usb/dwc2/hcd.h      |  2 ++
- drivers/usb/dwc2/hcd_intr.c | 17 +++++++++++++++++
- 5 files changed, 31 insertions(+)
+ drivers/usb/dwc2/core.h |  4 ++++
+ drivers/usb/dwc2/hcd.c  | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index 73f2771b7740..ed73b26818c0 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -1676,6 +1676,8 @@ void dwc2_hc_cleanup(struct dwc2_hsotg *hsotg, struct dwc2_host_chan *chan)
- 
- 	chan->xfer_started = 0;
- 
-+	list_del_init(&chan->split_order_list_entry);
-+
- 	/*
- 	 * Clear channel interrupt enables and any unhandled channel interrupt
- 	 * conditions
 diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 7fb6434f4639..538cf38af0e4 100644
+index 64d45a2053bb..52cbea28d0e9 100644
 --- a/drivers/usb/dwc2/core.h
 +++ b/drivers/usb/dwc2/core.h
-@@ -657,6 +657,7 @@ struct dwc2_hregs_backup {
-  *                      periodic_sched_ready because it must be rescheduled for
-  *                      the next frame. Otherwise, the item moves to
-  *                      periodic_sched_inactive.
-+ * @split_order:        List keeping track of channels doing splits, in order.
-  * @periodic_usecs:     Total bandwidth claimed so far for periodic transfers.
-  *                      This value is in microseconds per (micro)frame. The
-  *                      assumption is that all periodic transfers may occur in
-@@ -780,6 +781,7 @@ struct dwc2_hsotg {
- 	struct list_head periodic_sched_ready;
- 	struct list_head periodic_sched_assigned;
- 	struct list_head periodic_sched_queued;
-+	struct list_head split_order;
- 	u16 periodic_usecs;
- 	u16 frame_usecs[8];
- 	u16 frame_number;
+@@ -1235,12 +1235,16 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
+ 
+ #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+ extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
++extern int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us);
+ extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
+ extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
+ extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
+ #else
+ static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ { return 0; }
++static inline int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg,
++						   int us)
++{ return 0; }
+ static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
+ static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
+ static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
 diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index 349194342c90..0b6ebc7fff3f 100644
+index f48da015fa5e..8edd0b45f41c 100644
 --- a/drivers/usb/dwc2/hcd.c
 +++ b/drivers/usb/dwc2/hcd.c
-@@ -1045,6 +1045,11 @@ static int dwc2_queue_transaction(struct dwc2_hsotg *hsotg,
- {
- 	int retval = 0;
+@@ -1947,6 +1947,35 @@ int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
+ 	return (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
+ }
  
-+	if (chan->do_split)
-+		/* Put ourselves on the list to keep order straight */
-+		list_move_tail(&chan->split_order_list_entry,
-+			       &hsotg->split_order);
++int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us)
++{
++	u32 hprt = dwc2_readl(hsotg->regs + HPRT0);
++	u32 hfir = dwc2_readl(hsotg->regs + HFIR);
++	u32 hfnum = dwc2_readl(hsotg->regs + HFNUM);
++	unsigned int us_per_frame;
++	unsigned int frame_number;
++	unsigned int remaining;
++	unsigned int interval;
++	unsigned int phy_clks;
 +
- 	if (hsotg->core_params->dma_enable > 0) {
- 		if (hsotg->core_params->dma_desc_enable > 0) {
- 			if (!chan->xfer_started ||
-@@ -3153,6 +3158,8 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
- 	INIT_LIST_HEAD(&hsotg->periodic_sched_assigned);
- 	INIT_LIST_HEAD(&hsotg->periodic_sched_queued);
- 
-+	INIT_LIST_HEAD(&hsotg->split_order);
++	/* High speed has 125 us per (micro) frame; others are 1 ms per */
++	us_per_frame = (hprt & HPRT0_SPD_MASK) ? 1000 : 125;
 +
- 	/*
- 	 * Create a host channel descriptor for each host channel implemented
- 	 * in the controller. Initialize the channel descriptor array.
-@@ -3166,6 +3173,7 @@ int dwc2_hcd_init(struct dwc2_hsotg *hsotg, int irq)
- 		if (channel == NULL)
- 			goto error3;
- 		channel->hc_num = i;
-+		INIT_LIST_HEAD(&channel->split_order_list_entry);
- 		hsotg->hc_ptr_array[i] = channel;
- 	}
- 
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 42f2e4e233da..1b46e2e617cc 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -106,6 +106,7 @@ struct dwc2_qh;
-  * @hc_list_entry:      For linking to list of host channels
-  * @desc_list_addr:     Current QH's descriptor list DMA address
-  * @desc_list_sz:       Current QH's descriptor list size
-+ * @split_order_list_entry: List entry for keeping track of the order of splits
-  *
-  * This structure represents the state of a single host channel when acting in
-  * host mode. It contains the data items needed to transfer packets to an
-@@ -158,6 +159,7 @@ struct dwc2_host_chan {
- 	struct list_head hc_list_entry;
- 	dma_addr_t desc_list_addr;
- 	u32 desc_list_sz;
-+	struct list_head split_order_list_entry;
- };
- 
- struct dwc2_hcd_pipe_info {
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 2c521c00e5e0..577c91096a51 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -2067,6 +2067,7 @@ static void dwc2_hc_intr(struct dwc2_hsotg *hsotg)
- {
- 	u32 haint;
- 	int i;
-+	struct dwc2_host_chan *chan, *chan_tmp;
- 
- 	haint = dwc2_readl(hsotg->regs + HAINT);
- 	if (dbg_perio()) {
-@@ -2075,6 +2076,22 @@ static void dwc2_hc_intr(struct dwc2_hsotg *hsotg)
- 		dev_vdbg(hsotg->dev, "HAINT=%08x\n", haint);
- 	}
- 
++	/* Extract fields */
++	frame_number = (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
++	remaining = (hfnum & HFNUM_FRREM_MASK) >> HFNUM_FRREM_SHIFT;
++	interval = (hfir & HFIR_FRINT_MASK) >> HFIR_FRINT_SHIFT;
++
 +	/*
-+	 * According to USB 2.0 spec section 11.18.8, a host must
-+	 * issue complete-split transactions in a microframe for a
-+	 * set of full-/low-speed endpoints in the same relative
-+	 * order as the start-splits were issued in a microframe for.
++	 * Number of phy clocks since the last tick of the frame number after
++	 * "us" has passed.
 +	 */
-+	list_for_each_entry_safe(chan, chan_tmp, &hsotg->split_order,
-+				 split_order_list_entry) {
-+		int hc_num = chan->hc_num;
++	phy_clks = (interval - remaining) +
++		   DIV_ROUND_UP(interval * us, us_per_frame);
 +
-+		if (haint & (1 << hc_num)) {
-+			dwc2_hc_n_intr(hsotg, hc_num);
-+			haint &= ~(1 << hc_num);
-+		}
-+	}
++	return dwc2_frame_num_inc(frame_number, phy_clks / interval);
++}
 +
- 	for (i = 0; i < hsotg->core_params->host_channels; i++) {
- 		if (haint & (1 << i))
- 			dwc2_hc_n_intr(hsotg, i);
+ int dwc2_hcd_is_b_host(struct dwc2_hsotg *hsotg)
+ {
+ 	return hsotg->op_state == OTG_STATE_B_HOST;
 -- 
 2.7.0.rc3.207.g0ac5344
