@@ -1,61 +1,78 @@
-From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v6 01/22] usb: dwc2: rockchip: Make the max_transfer_size automatic
-Date: Thu, 28 Jan 2016 18:19:52 -0800
-Message-ID: <1454034013-24657-2-git-send-email-dianders@chromium.org>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v6 09/22] usb: dwc2: host: Giveback URB in tasklet context
+Date: Thu, 28 Jan 2016 18:20:00 -0800
+Message-ID: <1454034013-24657-10-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1454034013-24657-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454034013-24657-1-git-send-email-dianders@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
+Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, stefan.wahren@i2se.com, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Previously we needed to set the max_transfer_size to explicitly be 65535
-because the old driver would detect that our hardware could support much
-bigger transfers and then would try to do them.  This wouldn't work
-since the DMA alignment code couldn't support it.
+In commit 94dfd7edfd5c ("USB: HCD: support giveback of URB in tasklet
+context") support was added to give back the URB in tasklet context.
+Let's take advantage of this in dwc2.
 
-Later in commit e8f8c14d9da7 ("usb: dwc2: clip max_transfer_size to
-65535") upstream added support for clipping this automatically.  Since
-that commit it has been OK to just use "-1" (default), but nobody
-bothered to change it.
+This speeds up the dwc2 interrupt handler considerably.
 
-Let's change it to default now for two reasons:
-- It's nice to use autodetected params.
-- If we can remove the 65535 limit, we can transfer more!
+Note that this requires the change ("usb: dwc2: host: Add a delay before
+releasing periodic bandwidth") to come first.
 
-Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Note that, as per Alan Stern in
+<https://patchwork.kernel.org/patch/7555771/>, we also need to make sure
+that the extra delay before the device drivers submit more data doesn't
+break the scheduler.  At the moment the scheduler is pretty broken (see
+future patches) so it's hard to be 100% certain, but I have yet to see
+any new breakage introduced by this delay.  ...and speeding up interrupt
+processing for dwc2 is a huge deal because it means we've got a better
+chance of not missing SOF interrupts.  That means we've got an overall
+win here.
+
+Note that when playing USB audio and using a USB webcam and having
+several USB keyboards plugged in, the crackling on the USB audio device
+is noticably reduced with this patch.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
 ---
-Changes in v6: None
+Changes in v6:
+- Add Stefan's Tested-by.
+
 Changes in v5: None
 Changes in v4:
-- Add John's Acks from <https://patchwork.kernel.org/patch/7631551>
+- A bit earlier in the list of patches than in v3.
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+- Commit message now says that URB giveback change needs delay change.
 
- drivers/usb/dwc2/platform.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/usb/dwc2/hcd.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
-index 510f787434b3..5008a467ce06 100644
---- a/drivers/usb/dwc2/platform.c
-+++ b/drivers/usb/dwc2/platform.c
-@@ -129,7 +129,7 @@ static const struct dwc2_core_params params_rk3066 = {
- 	.host_rx_fifo_size		= 520,	/* 520 DWORDs */
- 	.host_nperio_tx_fifo_size	= 128,	/* 128 DWORDs */
- 	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
--	.max_transfer_size		= 65535,
-+	.max_transfer_size		= -1,
- 	.max_packet_count		= -1,
- 	.host_channels			= -1,
- 	.phy_type			= -1,
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index 0b6ebc7fff3f..40558478a192 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -2341,9 +2341,7 @@ void dwc2_host_complete(struct dwc2_hsotg *hsotg, struct dwc2_qtd *qtd,
+ 	kfree(qtd->urb);
+ 	qtd->urb = NULL;
+ 
+-	spin_unlock(&hsotg->lock);
+ 	usb_hcd_giveback_urb(dwc2_hsotg_to_hcd(hsotg), urb, status);
+-	spin_lock(&hsotg->lock);
+ }
+ 
+ /*
+@@ -2964,7 +2962,7 @@ static struct hc_driver dwc2_hc_driver = {
+ 	.hcd_priv_size = sizeof(struct wrapper_priv_data),
+ 
+ 	.irq = _dwc2_hcd_irq,
+-	.flags = HCD_MEMORY | HCD_USB2,
++	.flags = HCD_MEMORY | HCD_USB2 | HCD_BH,
+ 
+ 	.start = _dwc2_hcd_start,
+ 	.stop = _dwc2_hcd_stop,
 -- 
 2.7.0.rc3.207.g0ac5344
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
