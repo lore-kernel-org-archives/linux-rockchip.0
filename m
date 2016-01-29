@@ -1,115 +1,53 @@
-From: Jean-Francois Moine <moinejf@free.fr>
-Subject: Re: [PATCH v8 1/2] drm/rockchip: hdmi: add Innosilicon HDMI support
-Date: Fri, 29 Jan 2016 08:20:00 +0100
-Message-ID: <20160129082000.b25fd19cea94c4f3ec45e17f@free.fr>
-References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
- <1454050059-31196-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1454050059-31196-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thierry Reding <treding@nvidia.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ken Mixte <kmixter@google.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Ben Chan <benchan@google.com>, linux-arm-kernel@lists.infradead.org
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH v2] clk: rockchip: Allow sclk_i2s0 and i2s0_frac to change their parents rate on rk3188
+Date: Fri, 29 Jan 2016 10:58:02 +0300
+Message-ID: <1454054282-16303-1-git-send-email-al.kochet@gmail.com>
+References: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCAyOSBKYW4gMjAxNiAxNDo0NzozOSArMDgwMApZYWtpciBZYW5nIDx5a2tAcm9jay1j
-aGlwcy5jb20+IHdyb3RlOgoKPiBUaGUgSW5ub3NpbGljb24gSERNSSBpcyBhIGxvdyBwb3dlciBI
-RE1JIDEuNCB0cmFuc21pdHRlcgo+IElQLCBhbmQgaXQgaGF2ZSBiZWVuIGludGVncmF0ZWQgb24g
-c29tZSByb2NrY2hpcCBDUFVzCj4gKGxpa2UgUkszMDM2LCBSSzMxMngpLgo+IAo+IFNpZ25lZC1v
-ZmYtYnk6IFlha2lyIFlhbmcgPHlra0Byb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIGlu
-IHY4Ogo+IC0gRG9uJ3QgY2hlY2sgd2hldGhlciBlbmNvZGVyIG91dHB1dCBmb3JtYXQgaXMgUkdC
-IGNvbG9yc3BhY2UsIGNhdXNlIGRyaXZlcgo+ICAgZGVmYXVsdCBjb25maWd1cmUgdGhlIG91dHB1
-dCBjb2xvcnNwYWNlIHRvIFJHQi4gKFpoZW5nWWFuZykKPiAtIENvcnJlY3QgdGhlIGNoZWNrIGNv
-bmRpdGlvbiBpbiBpbm5vX2hkbWlfY29uZmlnX3ZpZGVvX2NzYygpIChaaGVuZ1lhbmcpCj4gICAg
-IC0gaWYgKGRhdGEtPmVuY19vdXRfZm9ybWF0ID09IGRhdGEtPmVuY19vdXRfZm9ybWF0KSB7Cj4g
-ICAgICsgaWYgKGRhdGEtPmVuY19pbl9mb3JtYXQgPT0gZGF0YS0+ZW5jX291dF9mb3JtYXQpIHsK
-PiAKPiBDaGFuZ2VzIGluIHY3Ogo+IC0gQ29ycmVjdCB0aGUgbW9kdWxlIGxpY25lc2Ugc3RhdGVt
-ZW50IChQYXVsKQo+ICAgICAgLSBNT0RVTEVfTElDRU5TRSgiR1BMIik7Cj4gICAgICArIE1PRFVM
-RV9MSUNFTlNFKCJHUEx2MiIpOwo+IC0gU3RhcnQgaW5kZW50YXRpb24gd2l0aCB0YWJzIGFuZCBm
-aXggdGhlIG1pc3NwZWxsIGluIEtjb25maWcgKFBhdWwpCj4gLSBDYXJyeSB0aGUgbG9zdCBkZXZp
-Y2UtYmluZGluZyBkb2N1bWVudCAoSGVpa28pCj4gCj4gQ2hhbmdlcyBpbiB2NjoKPiAtIFJlYmFz
-ZSB0aGUgTWFrZWZpbGUvS2NvbmZpZyBmaWxlcyB3aGljaCBhZGQgYnkgQ2hyaXMncyByb2NrY2hp
-cC1taXBpIGRyaXZlciAoQ2Flc2VyKQo+IAo+IENoYW5nZXMgaW4gdjU6Cj4gLSBVc2UgaGRtaV9p
-bmZvZnJhbWUgaGVscGVyIGZ1bmN0aW9ucyB0byBwYWNrZWQgdGhlIGluZm9mcmFtZSAoUnVzc2Vs
-bCkKPiAtIFJlbW92ZSB0aGUgdW51c2VkIGRvdWJsZSB3YWl0X2Zvcl9jb21wbGV0aW9uX3RpbWVv
-dXQgZm9yIGRkYyB0cmFuc2ZlciAoUnVzc2VsbCkKPiAtIFJlbW92ZSB0aGUgdW51c2VkIGxvY2Fs
-IHZhcmlhYmxlIGluICJpbm5vX2hkbWlfaTJjX3dyaXRlKCkiIGZ1bmN0aW9uIChSdXNzZWxsKQo+
-IAo+IENoYW5nZXMgaW4gdjQ6Cj4gLSBNb2RpZnkgdGhlIGNvbW1pdCB0aXRsZSAiZHJtL3JvY2tj
-aGlwOiBoZG1pOiAuLi4iIChNYXJrKQo+IC0gQ29ycmVjdCB0aGUgIkRLTVMiIHRvICJEUE1TIiAo
-TWFyaykKPiAtIEZpeCBvdmVyIDgwIGNoYXJhY3RlcnMgcHJvYmxlbXMgKE1hcmspCj4gLSBSZW1v
-dmUgZW5jb2RlciAucHJlcGFyZS8uY29tbWl0IGhlbHBlciBmdW5jdGlvbnMsIGFuZCBtb3ZlIHRo
-ZSB2b3AgbW9kZQo+IGNvbmZpZ3VyZSBmdW5jdGlvbiBpbnRvIGVuY29kZXIgLmVuYWJsZSBoZWxw
-ZXIgZnVuY3Rpb25zLiAoTWFyaykKPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gVXNlIGVuY29kZXIg
-ZW5hYmxlL2Rpc2FibGUgZnVuY3Rpb24sIGFuZCByZW1vdmUgdGhlIGVuY29kZXIgRFBNUyBmdW5j
-dGlvbgo+IC0gS2VlcCBIRE1JIFBMTCBwb3dlciBvbiBpbiBzdGFuZGJ5IG1vZGUKPiAKPiBDaGFu
-Z2VzIGluIHYyOgo+IC0gVXNpbmcgRFJNIGF0b21pYyBoZWxwZXIgZnVuY3Rpb25zIGZvciBjb25u
-ZWN0b3IgaW5pdCAoTWFyaykKPiAtIFJlbW92ZSAiaGRtaS0+Y29ubmVjdG9yLmVuY29kZXIgPSBl
-bmNvZGVyOyIgKE1hcmspCj4gCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAg
-ICB8ICAgOCArCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZSAgICB8ICAgMSAr
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYyB8IDkzOSArKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5u
-b19oZG1pLmggfCAzNjIgKysrKysrKysrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCAxMzEwIGlu
-c2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9pbm5vX2hkbWkuYwo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2lubm9faGRtaS5oCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPiBpbmRleCA4NTcz
-OTg1Li43NmIzMzYyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29u
-ZmlnCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPiBAQCAtMzUsMyAr
-MzUsMTEgQEAgY29uZmlnIFJPQ0tDSElQX0RXX01JUElfRFNJCj4gIAkgZm9yIHRoZSBTeW5vcHN5
-cyBEZXNpZ25XYXJlIEhETUkgZHJpdmVyLiBJZiB5b3Ugd2FudCB0bwo+ICAJIGVuYWJsZSBNSVBJ
-IERTSSBvbiBSSzMyODggYmFzZWQgU29DLCB5b3Ugc2hvdWxkIHNlbGV0IHRoaXMKPiAgCSBvcHRp
-b24uCj4gKwo+ICtjb25maWcgUk9DS0NISVBfSU5OT19IRE1JCj4gKwl0cmlzdGF0ZSAiUm9ja2No
-aXAgc3BlY2lmaWMgZXh0ZW5zaW9ucyBmb3IgSW5ub3NpbGljb24gSERNSSIKPiArCWRlcGVuZHMg
-b24gRFJNX1JPQ0tDSElQCj4gKwloZWxwCj4gKwkgIFRoaXMgc2VsZWN0cyBzdXBwb3J0IGZvciBS
-b2NrY2hpcCBTb0Mgc3BlY2lmaWMgZXh0ZW5zaW9ucwo+ICsJICBmb3IgdGhlIElubm9zaWxpY29u
-IEhETUkgZHJpdmVyLiBJZiB5b3Ugd2FudCB0byBlbmFibGUKPiArCSAgSERNSSBvbiBSSzMwMzYg
-YmFzZWQgU29DLCB5b3Ugc2hvdWxkIHNlbGVjdCB0aGlzIG9wdGlvbi4KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL01ha2VmaWxlIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL01ha2VmaWxlCj4gaW5kZXggZjZhODA5YS4uZGY4ZmJlZiAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvTWFrZWZpbGUKPiBAQCAtOCw1ICs4LDYgQEAgcm9ja2NoaXBkcm0tJChDT05GSUdfRFJN
-X0ZCREVWX0VNVUxBVElPTikgKz0gcm9ja2NoaXBfZHJtX2ZiZGV2Lm8KPiAgCj4gIG9iai0kKENP
-TkZJR19ST0NLQ0hJUF9EV19IRE1JKSArPSBkd19oZG1pLXJvY2tjaGlwLm8KPiAgb2JqLSQoQ09O
-RklHX1JPQ0tDSElQX0RXX01JUElfRFNJKSArPSBkdy1taXBpLWRzaS5vCj4gK29iai0kKENPTkZJ
-R19ST0NLQ0hJUF9JTk5PX0hETUkpICs9IGlubm9faGRtaS5vCj4gIAo+ICBvYmotJChDT05GSUdf
-RFJNX1JPQ0tDSElQKSArPSByb2NrY2hpcGRybS5vIHJvY2tjaGlwX3ZvcF9yZWcubwo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4
-IDAwMDAwMDAuLmM5OWQ4OGQKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2lubm9faGRtaS5jCj4gQEAgLTAsMCArMSw5MzkgQEAKPiArLyoKPiArICogQ29w
-eXJpZ2h0IChDKSBGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uTHRkCj4gKyAqICAgIFpo
-ZW5nIFlhbmcgPHpoZW5neWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiArICogICAgWWFraXIgWWFuZyA8
-eWtrQHJvY2stY2hpcHMuY29tPgo+ICsgKgo+ICsgKiBUaGlzIHNvZnR3YXJlIGlzIGxpY2Vuc2Vk
-IHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGljCj4gKyAqIExpY2Vuc2Ug
-dmVyc2lvbiAyLCBhcyBwdWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbiwg
-YW5kCj4gKyAqIG1heSBiZSBjb3BpZWQsIGRpc3RyaWJ1dGVkLCBhbmQgbW9kaWZpZWQgdW5kZXIg
-dGhvc2UgdGVybXMuCj4gKyAqCj4gKyAqIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0
-aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAo+ICsgKiBidXQgV0lUSE9VVCBBTlkgV0FS
-UkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgo+ICsgKiBNRVJDSEFO
-VEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlCj4g
-KyAqIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMuCj4gKyAqLwo+
-ICsKPiArI2luY2x1ZGUgPGxpbnV4L2lycS5oPgo+ICsjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4g
-KyNpbmNsdWRlIDxsaW51eC9kZWxheS5oPgo+ICsjaW5jbHVkZSA8bGludXgvZXJyLmg+Cj4gKyNp
-bmNsdWRlIDxsaW51eC9oZG1pLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4g
-KyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+Cj4g
-KyNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2UuaD4KPiArCj4gKyNpbmNsdWRlIDxkcm0vZHJtX29m
-Lmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICsjaW5jbHVkZSA8ZHJtL2RybV9hdG9taWNf
-aGVscGVyLmg+Cj4gKyNpbmNsdWRlIDxkcm0vZHJtX2NydGNfaGVscGVyLmg+Cj4gKyNpbmNsdWRl
-IDxkcm0vZHJtX2VkaWQuaD4KPiArI2luY2x1ZGUgPGRybS9kcm1fZW5jb2Rlcl9zbGF2ZS5oPgoK
-VGhpcyBpcyBub3QgbmVlZGVkLgoKPiArCj4gKyNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2Lmgi
-Cj4gKyNpbmNsdWRlICJyb2NrY2hpcF9kcm1fdm9wLmgiCj4gKwo+ICsjaW5jbHVkZSAiaW5ub19o
-ZG1pLmgiCglbc25pcF0KCi0tIApLZW4gYXIgYydoZW50YcOxCXwJICAgICAgKiogQnJlaXpoIGhh
-IExpbnV4IGF0YXYhICoqCkplZgkJfAkJaHR0cDovL21vaW5lamYuZnJlZS5mci8KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Allow sclk_i2s0 and i2s0_frac to change their parents rate as
+that the upstream dividers are purely there to feed sclk_i2s0
+
+Tested on radxarock-lite.
+
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+
+Changes in v2:
+Rebased on top of 4.5-rc1 of branch[1]
+
+[1] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.6-clk/next
+
+---
+ drivers/clk/rockchip/clk-rk3188.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index cc1d09d..629c65d 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -666,7 +666,7 @@ PNAME(mux_hsicphy_p)		= { "sclk_otgphy0_480m", "sclk_otgphy1_480m",
+ 				    "gpll", "cpll" };
+ 
+ static struct rockchip_clk_branch rk3188_i2s0_fracmux __initdata =
+-	MUX(SCLK_I2S0, "sclk_i2s0", mux_sclk_i2s0_p, 0,
++	MUX(SCLK_I2S0, "sclk_i2s0", mux_sclk_i2s0_p, CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS);
+ 
+ static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
+@@ -722,7 +722,7 @@ static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
+ 	COMPOSITE_NOMUX(0, "i2s0_pre", "i2s_src", 0,
+ 			RK2928_CLKSEL_CON(3), 0, 7, DFLAGS,
+ 			RK2928_CLKGATE_CON(0), 9, GFLAGS),
+-	COMPOSITE_FRACMUX(0, "i2s0_frac", "i2s0_pre", 0,
++	COMPOSITE_FRACMUX(0, "i2s0_frac", "i2s0_pre", CLK_SET_RATE_PARENT,
+ 			RK2928_CLKSEL_CON(7), 0,
+ 			RK2928_CLKGATE_CON(0), 10, GFLAGS,
+ 			&rk3188_i2s0_fracmux),
+-- 
+1.7.9.5
+
