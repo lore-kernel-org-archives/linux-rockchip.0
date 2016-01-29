@@ -1,61 +1,67 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4 6/9] ASoC: rt5616: add mclk property for rt5616
- document
-Date: Fri, 29 Jan 2016 10:28:00 -0600
-Message-ID: <20160129162800.GA10835@rob-hp-laptop>
-References: <1453970618-4383-1-git-send-email-wxt@rock-chips.com>
- <1453970618-4383-7-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [Bug] usb: dwc2: Add functions to set and clear force mode
+Date: Fri, 29 Jan 2016 11:11:59 -0800
+Message-ID: <CAD=FV=Uab6H6sFVj_bPRs7H4HcBi2pqZK3HDCHQxC+EDk=inDA@mail.gmail.com>
+References: <56A7603C.1000409@rock-chips.com>
+ <CAD=FV=Xk4v=1QMYG9XmXh6hJLKU6i_wVakOArF1du-Z_4_+Neg@mail.gmail.com>
+ <56A8277F.9@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1453970618-4383-7-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, hl@rock-chips.com, jay.xu@rock-chips.com, jeffy.chen@rock-chips.com, linux-rockchip@lists.infradead.org, keescook@google.com, cf@rock-chips.com, sonnyrao@chromium.org, leozwang@google.com, devicetree@vger.kernel.org, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56A8277F.9-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 28, 2016 at 04:43:35PM +0800, Caesar Wang wrote:
-> This patch add the mclk property for the CODEC driver,
-> since sometime the CODEC driver needs the clock enabled.
-
-s/add/adds/
-
-s/sometime/sometimes/
-
-> The system clock of ALC5616 can be selected from MCLK,
-> That's also make as the codec master clock provider,
-
-That also makes the codec the master clock provider.
-
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> 
-> ---
-> 
-> Changes in v4:
-> - Add this patch included in kylin series patches.
-> 
->  Documentation/devicetree/bindings/sound/rt5616.txt | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/rt5616.txt b/Documentation/devicetree/bindings/sound/rt5616.txt
-> index efc48c6..e410858 100644
-> --- a/Documentation/devicetree/bindings/sound/rt5616.txt
-> +++ b/Documentation/devicetree/bindings/sound/rt5616.txt
-> @@ -8,6 +8,12 @@ Required properties:
->  
->  - reg : The I2C address of the device.
->  
-> +Optional properties:
-> +
-> +- clocks: The phandle of the master clock to the CODEC.
-> +
-> +- clock-names: Should be "mclk".
-> +
->  Pins on the device (for linking into audio routes) for RT5616:
->  
->    * IN1P
-> -- 
-> 1.9.1
-> 
+Q2Flc2FyLAoKT24gVHVlLCBKYW4gMjYsIDIwMTYgYXQgNjoxMiBQTSwgQ2Flc2FyIFdhbmcgPGNh
+ZXNhci51cHN0cmVhbUBnbWFpbC5jb20+IHdyb3RlOgo+IFRoYW5rcyBEb3VnJ3MgcmVwbHkuCj4K
+PiBDYzogV3VsZgo+IOWcqCAyMDE25bm0MDHmnIgyN+aXpSAwMDowNSwgRG91ZyBBbmRlcnNvbiDl
+hpnpgZM6Cj4+Cj4+IEhpLAo+Pgo+PiBPbiBUdWUsIEphbiAyNiwgMjAxNiBhdCA0OjAyIEFNLCBD
+YWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+PiBIaSAgSm9obiwg
+RmVsaXBlCj4+Pgo+Pj4KPj4+IEknbSBubyBmYW1pbGlhciB3aXRoIHVzYiBzdHVmZi4KPj4+IHRo
+ZW4gSSBmb3VuZCB0aGlzIHBhdGNoIHdpbGwgYnJlYWsgdXNiIHdvcmtpbmcgZm9yIHJrMzAzNiBT
+b0NzLCBtYXliZQo+Pj4gbW9yZQo+Pj4gU29Dcy4KPj4+IFNheXMsIFUgZGlzayBjYW4ndCB3b3Jr
+IG9uIHVzYiBob3N0Lgo+Pj4KPj4+IFRoZSBmYWlsdXJlIGxvZzoKPj4+Cj4+PiAgICAgMzIuNjQ1
+NDgxXSB1c2IgdXNiMi1wb3J0MTogY29ubmVjdC1kZWJvdW5jZSBmYWlsZWQKPj4+Cj4+Pgo+Pj4g
+VGVzdGVkIGJ5IGZvbGxvd2luZyBicmFuY2g6Cj4+PiBodHRwczovL2dpdGh1Yi5jb20vQ2Flc2Fy
+LWdpdGh1Yi9yb2NrY2hpcC90cmVlL2t5bGluL25leHQgICAoa2VybmVsOgo+Pj4gNC41LXJjMSkK
+Pj4+Cj4+PiBSZXZlcnQgInVzYjogZHdjMjogQWRkIGZ1bmN0aW9ucyB0byBzZXQgYW5kIGNsZWFy
+IGZvcmNlIG1vZGUiIHdpbGwgd29yawo+Pj4gZm9yCj4+PiBpdC4KPj4+Cj4+Pgo+Pj4gTWF5YmUs
+IHNvbWVvbmUgaGF2ZSBzb21lIHN1Z2dlc3Rpb25zIG9yIGlkZWFzPwo+Pgo+PiBDYW4geW91IGNo
+ZWNrIGlmIHRoaXMgc2VyaWVzIGhlbHBzIHlvdT8KPj4KPj4gaHR0cDovL21hcmMuaW5mby8/bD1s
+aW51eC11c2ImbT0xNDUyNTU4NTE1MTYxMjEmdz0yCj4KPgo+IFVubHVja2lseSwgdGhpcyBzZXJp
+ZXMgcGF0Y2hlcyBjYW4ndCBmaXggaXQgb24gcmszMDM2IFNvQ3MuCj4gSSByZXZlcnQgdGhpcyBD
+TCAoInVzYjogZHdjMjogQWRkIGZ1bmN0aW9ucyB0byBzZXQgYW5kIGNsZWFyIGZvcmNlIG1vZGUi
+KSB0bwo+IHdvcmsgZmlyc3RseS4KCllvdSdyZSAxMDAlIHBvc2l0aXZlPyAgSW4gcGFydGljdWxh
+ciB5b3UgbWFkZSBzdXJlIHlvdSBoYWQgdGhpcyBwYXRjaAoob25lIG9mIHRoZSB0d28gaW4gSm9o
+bidzIHNlcmllcyBJIHBvaW50ZWQgYXQpLCB3aGljaCBleHBsaWNpdGx5Cm1lbnRpb25zIGZpeGlu
+ZyBhIHByb2JsZW0gd2l0aCB0aGUgcGF0Y2ggeW91IG1lbnRpb24/CgpBdXRob3I6ICAgICBKb2hu
+IFlvdW4gPEpvaG4uWW91bkBzeW5vcHN5cy5jb20+CkF1dGhvckRhdGU6IE1vbiBKYW4gMTEgMTY6
+MzI6MjggMjAxNiAtMDgwMAoKICAgIHVzYjogZHdjMjogRml4IHByb2JlIHByb2JsZW0gb24gYmNt
+MjgzNQoKICAgIEZpeGVzIGFuIGlzc3VlIGZvdW5kIG9uIFJhc3BiZXJyeSBQSSBwbGF0Zm9ybSB0
+aGF0IHByZXZlbnRzIHByb2JlLiBEb24ndAogICAgc2tpcCBzZXR0aW5nIHRoZSBmb3JjZSBtb2Rl
+IGlmIGl0J3MgYWxyZWFkeSBzZXQuCgogICAgRml4ZXM6IDA5Yzk2OTgwZGM3MiAoInVzYjogZHdj
+MjogQWRkIGZ1bmN0aW9ucyB0byBzZXQgYW5kIGNsZWFyIGZvcmNlIG1vZGUiKQogICAgU2lnbmVk
+LW9mZi1ieTogSm9obiBZb3VuIDxqb2hueW91bkBzeW5vcHN5cy5jb20+CiAgICBSZXBvcnRlZC1i
+eTogU3RlZmFuIFdhaHJlbiA8c3RlZmFuLndhaHJlbkBpMnNlLmNvbT4KICAgIFJlcG9ydGVkLWJ5
+OiBSZW1pIFBvbW1hcmVsIDxyZXBrQHRyaXBsZWZhdS5sdD4KICAgIFRlc3RlZC1ieTogU3RlZmFu
+IFdhaHJlbiA8c3RlZmFuLndhaHJlbkBpMnNlLmNvbT4KICAgIFRlc3RlZC1ieTogUmVtaSBQb21t
+YXJlbCA8cmVwa0B0cmlwbGVmYXUubHQ+CgoKTWF5YmUgdHJ5IGFnYWluIGp1c3QgaW4gY2FzZSB0
+aGVyZSB3YXMgc29tZSBwcm9ibGVtIHVwZGF0aW5nIHlvdXIKa2VybmVsIHdoZW4geW91IHRlc3Rl
+ZCBiZWZvcmU/ICBJZiB5b3UncmUgc3VyZSB5b3UgY2FuIHJlcHJvZHVjZSB0aGUKcHJvYmxlbSBl
+dmVuIHdpdGggSm9obidzIHR3byBwYXRjaGVzLCBwZXJoYXBzIHlvdSBjYW4gZ2l2ZSBtb3JlCmRl
+dGFpbHMgYWJvdXQgd2hhdCBwYXJ0IG9mIGhpcyBwYXRjaCBicm9rZSB0aGluZ3MgZm9yIHlvdS4K
+Ci1Eb3VnCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
