@@ -1,39 +1,75 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v5 05/21] usb: dwc2: host: Avoid use of chan->qh after qh freed
-Date: Thu, 28 Jan 2016 15:26:36 -0800
-Message-ID: <CAD=FV=X=oRSXvxYvEQJY0aFCLFoGT7C2mDoiKxaODQmtFRwYFQ@mail.gmail.com>
-References: <1453486736-15358-1-git-send-email-dianders@chromium.org>
-	<1453486736-15358-6-git-send-email-dianders@chromium.org>
-	<56A98A47.2010705@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v7 0/2] Add Rockchip Inno-HDMI driver
+Date: Fri, 29 Jan 2016 09:49:55 +0800
+Message-ID: <56AAC543.8080108@rock-chips.com>
+References: <1453777142-30119-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56A98A47.2010705-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1453777142-30119-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Wed, Jan 27, 2016 at 7:25 PM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Hi Doug,
->
-> The NULL pointer bug is one of the most frequent issue we met
-> during hot plug stress test, thanks for this bug fix.
->
-> Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> Thanks,
-> - Kever
-
-Thanks for your review.  I think I actually found one more place where
-I needed to clean up the channel->qh, so I'll include that in my next
-version.  I'll plan to keep your reviewed-by.  Please yell if you want
-it removed.
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxNuW5tDAx5pyIMjbml6UgMTA6NTksIFlha2lyIFlhbmcgd3JvdGU6Cj4gSGVyZSBhcmUg
+YSBicmllZiBpbnRyb2R1Y3Rpb24gdG8gSW5ub3NpbGljb24gSERNSSBJUDoKPiAgICAtIFN1cHBv
+cnQgSERNSSAxLjRhLCBIRENQIDEuMiBhbmQgRFZJIDEuMCBzdGFuZGFyZCBjb21wbGlhbnQgdHJh
+bnNtaXR0ZXIKPiAgICAtIFN1cHBvcnQgSERNSTEuNCBhL2IgM0QgZnVuY3Rpb24gZGVmaW5lZCBp
+biBIRE1JIDEuNCBhL2Igc3BlYwo+ICAgIC0gRGlnaXRhbCB2aWRlbyBpbnRlcmZhY2Ugc3VwcG9y
+dHMgYSBwaXhlbCBzaXplIG9mIDI0LCAzMCwgMzYsIDQ4Yml0cyBjb2xvciBkZXB0aCBpbiBSR0IK
+PiAgICAtIFMvUERJRiBvdXRwdXQgc3VwcG9ydHMgUENNLCBEb2xieSBEaWdpdGFsLCBEVFMgZGln
+aXRhbCBhdWRpbyB0cmFuc21pc3Npb24KPiAgICAgICgzMi0xOTJrSHogRnMpIHVzaW5nIElFQzYw
+OTU4IGFuZCBJRUMgNjE5MzcKPiAgICAtIFRoZSBFRElEIGFuZCBDRUMgZnVuY3Rpb24gYXJlIGFs
+c28gc3VwcG9ydGVkIGJ5IElubm9zaWxpY29uIEhETUkgVHJhbnNtaXR0ZXIgQ29udHJvbGxlCj4K
+PiBDaGFuZ2VzIGluIHY3Ogo+IC0gQ29ycmVjdCB0aGUgbW9kdWxlIGxpY25lc2Ugc3RhdGVtZW50
+IChQYXVsKQo+ICAgICAgIC0gTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+ICAgICAgICsgTU9EVUxF
+X0xJQ0VOU0UoIkdQTCB2MiIpOwo+IC0gU3RhcnQgaW5kZW50YXRpb24gd2l0aCB0YWJzIGFuZCBm
+aXggdGhlIG1pc3NwZWxsIGluIEtjb25maWcgKFBhdWwpCj4gLSBDYXJyeSB0aGUgbG9zdCBkZXZp
+Y2UtYmluZGluZyBkb2N1bWVudCAoSGVpa28pCj4KPiBDaGFuZ2VzIGluIHY2Ogo+IC0gUmViYXNl
+IHRoZSBNYWtlZmlsZS9LY29uZmlnIGZpbGVzIHdoaWNoIGFkZCBieSBDaHJpcydzIHJvY2tjaGlw
+LW1pcGkgZHJpdmVyIChDYWVzZXIpCj4KPiBDaGFuZ2VzIGluIHY1Ogo+IC0gVXNlIGhkbWlfaW5m
+b2ZyYW1lIGhlbHBlciBmdW5jdGlvbnMgdG8gcGFja2VkIHRoZSBpbmZvZnJhbWUgKFJ1c3NlbGwp
+Cj4gLSBSZW1vdmUgdGhlIHVudXNlZCBkb3VibGUgd2FpdF9mb3JfY29tcGxldGlvbl90aW1lb3V0
+IGZvciBkZGMgdHJhbnNmZXIgKFJ1c3NlbGwpCj4gLSBSZW1vdmUgdGhlIHVudXNlZCBsb2NhbCB2
+YXJpYWJsZSBpbiAiaW5ub19oZG1pX2kyY193cml0ZSgpIiBmdW5jdGlvbiAoUnVzc2VsbCkKPgo+
+IENoYW5nZXMgaW4gdjQ6Cj4gLSBNb2RpZnkgdGhlIGNvbW1pdCB0aXRsZSAiZHJtL3JvY2tjaGlw
+OiBoZG1pOiAuLi4iIChNYXJrKQo+IC0gQ29ycmVjdCB0aGUgIkRLTVMiIHRvICJEUE1TIiAoTWFy
+aykKPiAtIEZpeCBvdmVyIDgwIGNoYXJhY3RlcnMgcHJvYmxlbXMgKE1hcmspCj4gLSBSZW1vdmUg
+ZW5jb2RlciAucHJlcGFyZS8uY29tbWl0IGhlbHBlciBmdW5jdGlvbnMsIGFuZCBtb3ZlIHRoZSB2
+b3AgbW9kZQo+IGNvbmZpZ3VyZSBmdW5jdGlvbiBpbnRvIGVuY29kZXIgLmVuYWJsZSBoZWxwZXIg
+ZnVuY3Rpb25zLiAoTWFyaykKPgo+IENoYW5nZXMgaW4gdjM6Cj4gLSBVc2UgZW5jb2RlciBlbmFi
+bGUvZGlzYWJsZSBmdW5jdGlvbiwgYW5kIHJlbW92ZSB0aGUgZW5jb2RlciBEUE1TIGZ1bmN0aW9u
+Cj4gLSBLZWVwIEhETUkgUExMIHBvd2VyIG9uIGluIHN0YW5kYnkgbW9kZQo+Cj4gQ2hhbmdlcyBp
+biB2MjoKPiAtIFVzaW5nIERSTSBhdG9taWMgaGVscGVyIGZ1bmN0aW9ucyBmb3IgY29ubmVjdG9y
+IGluaXQgKE1hcmspCj4gLSBSZW1vdmUgImhkbWktPmNvbm5lY3Rvci5lbmNvZGVyID0gZW5jb2Rl
+cjsiIChNYXJrKQo+IC0gQWRkIHRoZSBBY2tlZC1ieSB0YWdzIGZyb20gUm9iCj4gLSBDb3JyZWN0
+IHRoZSBtaXNzcGVsbCAicmszMDM2LWR3LWhkbWkiIChIZWlrbykKPgo+IFlha2lyIFlhbmcgKDIp
+Ogo+ICAgIGRybS9yb2NrY2hpcDogaGRtaTogYWRkIElubm9zaWxpY29uIEhETUkgc3VwcG9ydAo+
+ICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnQgZm9yIElubm9zaWxpY29uIEhETUkgb24gUm9j
+a2NoaXAgcGxhdGZvcm0KPgo+ICAgLi4uL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tj
+aGlwLnR4dCAgICAgICAgfCAgNTAgKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29u
+ZmlnICAgICAgICAgICAgICAgICAgIHwgICA4ICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAxICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICAgICAgIHwgOTQxICsrKysrKysrKysrKysrKysr
+KysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5oICAgICAgICAgICAg
+ICAgfCAzNjIgKysrKysrKysKPiAgIDUgZmlsZXMgY2hhbmdlZCwgMTM2MiBpbnNlcnRpb25zKCsp
+Cj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+ICAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+ICAgY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuaAo+CgpQaW5nLCBp
+bm5vIEhETUkgZHJpdmVyIGxvb2tzIGdvb2QgZm9yIG1lLCBhbmQgaXQgd29ya3MsIFNvIEknZCBs
+aWtlIHRvIAptZXJnZSBpdCBpbnRvIGRybS9yb2NrY2hpcCBpZiB0aGVyZSBpcyBubyBkb3VidCB0
+aGVzZSBkYXlzLgoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
