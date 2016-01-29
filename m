@@ -1,8 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v6 19/22] usb: dwc2: host: Add
- dwc2_hcd_get_future_frame_number() call
-Date: Thu, 28 Jan 2016 18:20:10 -0800
-Message-ID: <1454034013-24657-20-git-send-email-dianders@chromium.org>
+Subject: [PATCH v6 11/22] usb: dwc2: host: There's not really a TT for the
+ root hub
+Date: Thu, 28 Jan 2016 18:20:02 -0800
+Message-ID: <1454034013-24657-12-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,98 +22,96 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-As we start getting more exact about our scheduling it's becoming more
-and more important to know exactly how far through the current frame we
-are.  This lets us make decisions about whether there's still time left
-to start a new transaction in the current frame.
+I find that when I plug a full speed (NOT high speed) hub into a dwc2
+port and then I plug a bunch of devices into that full speed hub that
+dwc2 goes bat guano crazy.  Specifically, it just spews errors like this
+in the console:
+  usb usb1: clear tt 1 (9043) error -22
 
-We'll add dwc2_hcd_get_future_frame_number() which will tell you what
-the frame number will be a certain number of microseconds (us) from
-now.  We can use this information to help decide if there's enough time
-left in the frame for a transaction that will take a certain duration.
+The specific test case I used looks like this:
+/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=dwc2/1p, 480M
+    |__ Port 1: Dev 17, If 0, Class=Hub, Driver=hub/4p, 12M
+        |__ Port 2: Dev 19, If 0, ..., Driver=usbhid, 1.5M
+        |__ Port 4: Dev 20, If 0, ..., Driver=usbhid, 12M
+        |__ Port 4: Dev 20, If 1, ..., Driver=usbhid, 12M
+        |__ Port 4: Dev 20, If 2, ..., Driver=usbhid, 12M
 
-This is expected to be used by a future change ("usb: dwc2: host:
-Properly set even/odd frame").
+Showing VID/PID:
+ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+ Bus 001 Device 017: ID 03eb:3301 Atmel Corp. at43301 4-Port Hub
+ Bus 001 Device 020: ID 045e:0745 Microsoft Corp. Nano Transceiver ...
+ Bus 001 Device 019: ID 046d:c404 Logitech, Inc. TrackMan Wheel
+
+I spent a bunch of time trying to figure out why there are errors to
+begin with.  I believe that the issue may be a hardware issue where the
+transceiver sometimes accidentally sends a PREAMBLE packet if you send a
+packet to a full speed device right after one to a low speed device.
+Luckily the USB driver retries and the second time things work OK.
+
+In any case, things kinda seem work despite the errors, except for the
+"clear tt" spew mucking up my console.  Chalk it up for a win for
+retries and robust protocols.
+
+So getting back to the "clear tt" problem, it appears that we get those
+because there's not actually a TT here to clear.  It's my understanding
+that when dwc2 operates in low speed or full speed mode that there's no
+real TT out there.  That makes all these attempts to "clear the TT"
+somewhat meaningless and also causes the spew in the log.
+
+Let's just skip all the useless TT clears.  Eventually we should root
+cause the errors, but even if we do this is still a proper fix and is
+likely to avoid the "clear tt" error in the future.
+
+Note that hooking up a Full Speed USB Audio Device (Jabra 510) to this
+same hub with the keyboard / trackball shows that even audio works over
+this janky connection.  As a point to note, this particular change (skip
+bogus TT clears) compared to just commenting out the dev_err() in
+hub_tt_work() actually produces better audio.
+
+Note: don't ask me where I got a full speed USB hub or whether the
+massive amount of dust that accumulated on it while it was in my junk
+box affected its funtionality.  Just smile and nod.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
 ---
 Changes in v6:
-- Add Heiko's Tested-by.
-- Add Stefan's Tested-by.
+- There's not really a TT for the root hub new for v6
 
 Changes in v5: None
-Changes in v4:
-- Add dwc2_hcd_get_future_frame_number() call new for v4.
-
+Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/core.h |  4 ++++
- drivers/usb/dwc2/hcd.c  | 29 +++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
+ drivers/usb/dwc2/hcd_intr.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/usb/dwc2/core.h b/drivers/usb/dwc2/core.h
-index 64d45a2053bb..52cbea28d0e9 100644
---- a/drivers/usb/dwc2/core.h
-+++ b/drivers/usb/dwc2/core.h
-@@ -1235,12 +1235,16 @@ static inline int dwc2_hsotg_set_test_mode(struct dwc2_hsotg *hsotg,
- 
- #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
- extern int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg);
-+extern int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us);
- extern void dwc2_hcd_connect(struct dwc2_hsotg *hsotg);
- extern void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force);
- extern void dwc2_hcd_start(struct dwc2_hsotg *hsotg);
- #else
- static inline int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
- { return 0; }
-+static inline int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg,
-+						   int us)
-+{ return 0; }
- static inline void dwc2_hcd_connect(struct dwc2_hsotg *hsotg) {}
- static inline void dwc2_hcd_disconnect(struct dwc2_hsotg *hsotg, bool force) {}
- static inline void dwc2_hcd_start(struct dwc2_hsotg *hsotg) {}
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index f48da015fa5e..8edd0b45f41c 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -1947,6 +1947,35 @@ int dwc2_hcd_get_frame_number(struct dwc2_hsotg *hsotg)
- 	return (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
- }
- 
-+int dwc2_hcd_get_future_frame_number(struct dwc2_hsotg *hsotg, int us)
-+{
-+	u32 hprt = dwc2_readl(hsotg->regs + HPRT0);
-+	u32 hfir = dwc2_readl(hsotg->regs + HFIR);
-+	u32 hfnum = dwc2_readl(hsotg->regs + HFNUM);
-+	unsigned int us_per_frame;
-+	unsigned int frame_number;
-+	unsigned int remaining;
-+	unsigned int interval;
-+	unsigned int phy_clks;
-+
-+	/* High speed has 125 us per (micro) frame; others are 1 ms per */
-+	us_per_frame = (hprt & HPRT0_SPD_MASK) ? 1000 : 125;
-+
-+	/* Extract fields */
-+	frame_number = (hfnum & HFNUM_FRNUM_MASK) >> HFNUM_FRNUM_SHIFT;
-+	remaining = (hfnum & HFNUM_FRREM_MASK) >> HFNUM_FRREM_SHIFT;
-+	interval = (hfir & HFIR_FRINT_MASK) >> HFIR_FRINT_SHIFT;
-+
-+	/*
-+	 * Number of phy clocks since the last tick of the frame number after
-+	 * "us" has passed.
-+	 */
-+	phy_clks = (interval - remaining) +
-+		   DIV_ROUND_UP(interval * us, us_per_frame);
-+
-+	return dwc2_frame_num_inc(frame_number, phy_clks / interval);
-+}
-+
- int dwc2_hcd_is_b_host(struct dwc2_hsotg *hsotg)
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 5d25a5ec9736..fe44870f84eb 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -87,6 +87,7 @@ static void dwc2_hc_handle_tt_clear(struct dwc2_hsotg *hsotg,
+ 				    struct dwc2_host_chan *chan,
+ 				    struct dwc2_qtd *qtd)
  {
- 	return hsotg->op_state == OTG_STATE_B_HOST;
++	struct usb_device *root_hub = dwc2_hsotg_to_hcd(hsotg)->self.root_hub;
+ 	struct urb *usb_urb;
+ 
+ 	if (!chan->qh)
+@@ -102,6 +103,15 @@ static void dwc2_hc_handle_tt_clear(struct dwc2_hsotg *hsotg,
+ 	if (!usb_urb || !usb_urb->dev || !usb_urb->dev->tt)
+ 		return;
+ 
++	/*
++	 * The root hub doesn't really have a TT, but Linux thinks it
++	 * does because how could you have a "high speed hub" that
++	 * directly talks directly to low speed devices without a TT?
++	 * It's all lies.  Lies, I tell you.
++	 */
++	if (usb_urb->dev->tt->hub == root_hub)
++		return;
++
+ 	if (qtd->urb->status != -EPIPE && qtd->urb->status != -EREMOTEIO) {
+ 		chan->qh->tt_buffer_dirty = 1;
+ 		if (usb_hub_clear_tt_buffer(usb_urb))
 -- 
 2.7.0.rc3.207.g0ac5344
