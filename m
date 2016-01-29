@@ -1,75 +1,61 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v7 0/2] Add Rockchip Inno-HDMI driver
-Date: Fri, 29 Jan 2016 09:49:55 +0800
-Message-ID: <56AAC543.8080108@rock-chips.com>
-References: <1453777142-30119-1-git-send-email-ykk@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1453777142-30119-1-git-send-email-ykk@rock-chips.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v6 01/22] usb: dwc2: rockchip: Make the max_transfer_size automatic
+Date: Thu, 28 Jan 2016 18:19:52 -0800
+Message-ID: <1454034013-24657-2-git-send-email-dianders@chromium.org>
+References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1454034013-24657-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAx5pyIMjbml6UgMTA6NTksIFlha2lyIFlhbmcgd3JvdGU6Cj4gSGVyZSBhcmUg
-YSBicmllZiBpbnRyb2R1Y3Rpb24gdG8gSW5ub3NpbGljb24gSERNSSBJUDoKPiAgICAtIFN1cHBv
-cnQgSERNSSAxLjRhLCBIRENQIDEuMiBhbmQgRFZJIDEuMCBzdGFuZGFyZCBjb21wbGlhbnQgdHJh
-bnNtaXR0ZXIKPiAgICAtIFN1cHBvcnQgSERNSTEuNCBhL2IgM0QgZnVuY3Rpb24gZGVmaW5lZCBp
-biBIRE1JIDEuNCBhL2Igc3BlYwo+ICAgIC0gRGlnaXRhbCB2aWRlbyBpbnRlcmZhY2Ugc3VwcG9y
-dHMgYSBwaXhlbCBzaXplIG9mIDI0LCAzMCwgMzYsIDQ4Yml0cyBjb2xvciBkZXB0aCBpbiBSR0IK
-PiAgICAtIFMvUERJRiBvdXRwdXQgc3VwcG9ydHMgUENNLCBEb2xieSBEaWdpdGFsLCBEVFMgZGln
-aXRhbCBhdWRpbyB0cmFuc21pc3Npb24KPiAgICAgICgzMi0xOTJrSHogRnMpIHVzaW5nIElFQzYw
-OTU4IGFuZCBJRUMgNjE5MzcKPiAgICAtIFRoZSBFRElEIGFuZCBDRUMgZnVuY3Rpb24gYXJlIGFs
-c28gc3VwcG9ydGVkIGJ5IElubm9zaWxpY29uIEhETUkgVHJhbnNtaXR0ZXIgQ29udHJvbGxlCj4K
-PiBDaGFuZ2VzIGluIHY3Ogo+IC0gQ29ycmVjdCB0aGUgbW9kdWxlIGxpY25lc2Ugc3RhdGVtZW50
-IChQYXVsKQo+ICAgICAgIC0gTU9EVUxFX0xJQ0VOU0UoIkdQTCIpOwo+ICAgICAgICsgTU9EVUxF
-X0xJQ0VOU0UoIkdQTCB2MiIpOwo+IC0gU3RhcnQgaW5kZW50YXRpb24gd2l0aCB0YWJzIGFuZCBm
-aXggdGhlIG1pc3NwZWxsIGluIEtjb25maWcgKFBhdWwpCj4gLSBDYXJyeSB0aGUgbG9zdCBkZXZp
-Y2UtYmluZGluZyBkb2N1bWVudCAoSGVpa28pCj4KPiBDaGFuZ2VzIGluIHY2Ogo+IC0gUmViYXNl
-IHRoZSBNYWtlZmlsZS9LY29uZmlnIGZpbGVzIHdoaWNoIGFkZCBieSBDaHJpcydzIHJvY2tjaGlw
-LW1pcGkgZHJpdmVyIChDYWVzZXIpCj4KPiBDaGFuZ2VzIGluIHY1Ogo+IC0gVXNlIGhkbWlfaW5m
-b2ZyYW1lIGhlbHBlciBmdW5jdGlvbnMgdG8gcGFja2VkIHRoZSBpbmZvZnJhbWUgKFJ1c3NlbGwp
-Cj4gLSBSZW1vdmUgdGhlIHVudXNlZCBkb3VibGUgd2FpdF9mb3JfY29tcGxldGlvbl90aW1lb3V0
-IGZvciBkZGMgdHJhbnNmZXIgKFJ1c3NlbGwpCj4gLSBSZW1vdmUgdGhlIHVudXNlZCBsb2NhbCB2
-YXJpYWJsZSBpbiAiaW5ub19oZG1pX2kyY193cml0ZSgpIiBmdW5jdGlvbiAoUnVzc2VsbCkKPgo+
-IENoYW5nZXMgaW4gdjQ6Cj4gLSBNb2RpZnkgdGhlIGNvbW1pdCB0aXRsZSAiZHJtL3JvY2tjaGlw
-OiBoZG1pOiAuLi4iIChNYXJrKQo+IC0gQ29ycmVjdCB0aGUgIkRLTVMiIHRvICJEUE1TIiAoTWFy
-aykKPiAtIEZpeCBvdmVyIDgwIGNoYXJhY3RlcnMgcHJvYmxlbXMgKE1hcmspCj4gLSBSZW1vdmUg
-ZW5jb2RlciAucHJlcGFyZS8uY29tbWl0IGhlbHBlciBmdW5jdGlvbnMsIGFuZCBtb3ZlIHRoZSB2
-b3AgbW9kZQo+IGNvbmZpZ3VyZSBmdW5jdGlvbiBpbnRvIGVuY29kZXIgLmVuYWJsZSBoZWxwZXIg
-ZnVuY3Rpb25zLiAoTWFyaykKPgo+IENoYW5nZXMgaW4gdjM6Cj4gLSBVc2UgZW5jb2RlciBlbmFi
-bGUvZGlzYWJsZSBmdW5jdGlvbiwgYW5kIHJlbW92ZSB0aGUgZW5jb2RlciBEUE1TIGZ1bmN0aW9u
-Cj4gLSBLZWVwIEhETUkgUExMIHBvd2VyIG9uIGluIHN0YW5kYnkgbW9kZQo+Cj4gQ2hhbmdlcyBp
-biB2MjoKPiAtIFVzaW5nIERSTSBhdG9taWMgaGVscGVyIGZ1bmN0aW9ucyBmb3IgY29ubmVjdG9y
-IGluaXQgKE1hcmspCj4gLSBSZW1vdmUgImhkbWktPmNvbm5lY3Rvci5lbmNvZGVyID0gZW5jb2Rl
-cjsiIChNYXJrKQo+IC0gQWRkIHRoZSBBY2tlZC1ieSB0YWdzIGZyb20gUm9iCj4gLSBDb3JyZWN0
-IHRoZSBtaXNzcGVsbCAicmszMDM2LWR3LWhkbWkiIChIZWlrbykKPgo+IFlha2lyIFlhbmcgKDIp
-Ogo+ICAgIGRybS9yb2NrY2hpcDogaGRtaTogYWRkIElubm9zaWxpY29uIEhETUkgc3VwcG9ydAo+
-ICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnQgZm9yIElubm9zaWxpY29uIEhETUkgb24gUm9j
-a2NoaXAgcGxhdGZvcm0KPgo+ICAgLi4uL2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tj
-aGlwLnR4dCAgICAgICAgfCAgNTAgKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29u
-ZmlnICAgICAgICAgICAgICAgICAgIHwgICA4ICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAxICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9pbm5vX2hkbWkuYyAgICAgICAgICAgICAgIHwgOTQxICsrKysrKysrKysrKysrKysr
-KysrKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRtaS5oICAgICAgICAgICAg
-ICAgfCAzNjIgKysrKysrKysKPiAgIDUgZmlsZXMgY2hhbmdlZCwgMTM2MiBpbnNlcnRpb25zKCsp
-Cj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2Rpc3BsYXkvcm9ja2NoaXAvaW5ub19oZG1pLXJvY2tjaGlwLnR4dAo+ICAgY3JlYXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwo+ICAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuaAo+CgpQaW5nLCBp
-bm5vIEhETUkgZHJpdmVyIGxvb2tzIGdvb2QgZm9yIG1lLCBhbmQgaXQgd29ya3MsIFNvIEknZCBs
-aWtlIHRvIAptZXJnZSBpdCBpbnRvIGRybS9yb2NrY2hpcCBpZiB0aGVyZSBpcyBubyBkb3VidCB0
-aGVzZSBkYXlzLgoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Previously we needed to set the max_transfer_size to explicitly be 65535
+because the old driver would detect that our hardware could support much
+bigger transfers and then would try to do them.  This wouldn't work
+since the DMA alignment code couldn't support it.
+
+Later in commit e8f8c14d9da7 ("usb: dwc2: clip max_transfer_size to
+65535") upstream added support for clipping this automatically.  Since
+that commit it has been OK to just use "-1" (default), but nobody
+bothered to change it.
+
+Let's change it to default now for two reasons:
+- It's nice to use autodetected params.
+- If we can remove the 65535 limit, we can transfer more!
+
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Acked-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Changes in v6: None
+Changes in v5: None
+Changes in v4:
+- Add John's Acks from <https://patchwork.kernel.org/patch/7631551>
+
+Changes in v3: None
+Changes in v2: None
+
+ drivers/usb/dwc2/platform.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+index 510f787434b3..5008a467ce06 100644
+--- a/drivers/usb/dwc2/platform.c
++++ b/drivers/usb/dwc2/platform.c
+@@ -129,7 +129,7 @@ static const struct dwc2_core_params params_rk3066 = {
+ 	.host_rx_fifo_size		= 520,	/* 520 DWORDs */
+ 	.host_nperio_tx_fifo_size	= 128,	/* 128 DWORDs */
+ 	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
+-	.max_transfer_size		= 65535,
++	.max_transfer_size		= -1,
+ 	.max_packet_count		= -1,
+ 	.host_channels			= -1,
+ 	.phy_type			= -1,
+-- 
+2.7.0.rc3.207.g0ac5344
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
