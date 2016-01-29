@@ -1,483 +1,304 @@
 From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v6 13/22] usb: dwc2: host: Rename some fields in struct dwc2_qh
-Date: Thu, 28 Jan 2016 18:20:04 -0800
-Message-ID: <1454034013-24657-14-git-send-email-dianders@chromium.org>
-References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
+Subject: [PATCH v6 0/22] usb: dwc2: host: Fix and speed up all the stuff, especially with splits
+Date: Thu, 28 Jan 2016 18:19:51 -0800
+Message-ID: <1454034013-24657-1-git-send-email-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1454034013-24657-1-git-send-email-dianders@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
 Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, stefan.wahren@i2se.com, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This no-op change just does some renames to simplify a future patch.
+This is a bit of catchall series for all the bug fix and performance
+patches I've been working on over the last few months.  Note that for
+dwc2 we need to do LOTS in software and need super low interrupt
+latency, so most performance improvements actually fix real bugs.
 
-1. The "interval" field is renamed to "host_interval" to make it more
-   obvious that this interval may be 8 times the interval that the
-   device sees (if we're doing split transactions).  A future patch will
-   also add the "device_interval" field.
-2. The "usecs" field is renamed to "host_us" again to make it more
-   obvious that this is the time for the transaction as seen by the
-   host.  For split transactions the device may see a much longer
-   transaction time.  A future patch will also add "device_us".
-3. The "sched_frame" field is renamed to "next_active_frame".  The name
-   "sched_frame" kept confusing me because it felt like something more
-   permament (the QH's reservation or something).  The name
-   "next_active_frame" makes it more obvious that this field is
-   constantly changing.
+Patches are structured to start with no-brainer stuff that could be
+applied ASAP, especially things I've already gotten Acks for.  Things
+get slightly more RFC / RFT like as we get farther down the series.
+Anything that can be landed sooner rather than later (especially those
+Acked long ago) would help in re-posts (I'm not biased, of course).
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
----
+It's been a few months since my last post of this series.  In the
+meantime I've added a bunch of small bugfixes to the start of it and
+also TOTALLY REWROTE the microframe scheduler.  I'll say up front: I
+know nothing about USB.  I haven't read the whole spec.  I'm not
+terribly familiar with the OHCI, EHCI, and XHCI drivers in the kernel.
+...and I'm pretty clueless overall.  Nevertheless, I've attempted to
+write up a fancy scheduler based on the portion of the spec talking
+about microframe scheduling requirements.  This rewritten scheduler does
+seem to help when I start jamming lots of USB things into a hub, so
+presumably the code is a reasonably starting point.  Given my current
+understanding of USB the old code was fairly insane, so presumably even
+if my new patch isn't perfect it's better than what we had.
+
+Anyway, on to the patches:
+
+1. usb: dwc2: rockchip: Make the max_transfer_size automatic
+
+   No brainer.  Can land any time.
+
+2. usb: dwc2: host: Get aligned DMA in a more supported way
+
+   Although this touches a lot of code, it's mostly just deleting
+   stuff.  The way this is working is nearly the same as tegra.  Biggest
+   objection I expect is that it has too much duplication with tegra and
+   musb.  I'd personally prefer to land it now and remove duplication
+   later, but up to others.  Speeding up interrupt handler helps with
+   SOF scheduling, so this is not just a dumb optimization.
+
+3. usb: dwc2: host: Set host_rx_fifo_size to 525 for rk3066
+
+   Seems like a good idea and small impact, but if someone hates it or
+   it breaks on some Rockchip SoC, just drop it.  I've only tested on
+   rk3288 so it would be nice if someone with access to more Rockchip
+   SoCs can give a tested by.
+
+4. usb: dwc2: host: Avoid use of chan->qh after qh freed
+
+   Simple bugfix.  Unrelated to the series but thrown in here.
+
+5. usb: dwc2: host: Always add to the tail of queues
+
+   Big functionality improvement.  Small patch.  Suggest applying ASAP.
+
+6. usb: dwc2: host: fix split transfer schedule sequence
+
+   Unless I'm misunderstanding, this should be a no-brainer to fix.
+   Could be some bikeshedding on how to fix this.  Let me know if/how
+   you want me to spin.  Otherwise I'd say land it and it will fix a
+   bunch of stuff.
+
+7. usb: dwc2: host: Add scheduler tracing
+
+   Shouldn't hurt anything.  If you have bikesheds, let me know.  Many
+   future patches require this one just because they add additional
+   traces.
+
+8. usb: dwc2: host: Add a delay before releasing periodic bandwidth
+9. usb: dwc2: host: Giveback URB in tasklet context
+
+   I think we should take these.  They improve things a bunch and I have
+   found no regressions due to them.  Additional testing appreciated, of
+   course.
+
+10. usb: dwc2: host: Properly set the HFIR
+
+   I sent this out on its own, but since I'm resending the series I
+   figured I'm jam it in here.  Can really go anywhere in the series or
+   applied totally on its own.
+
+11. usb: dwc2: host: There's not really a TT for the root hub
+
+   Seems right to me, but if someone knows better then please drop.
+   Wasn't part of the previous series so doesn't have any Tested-by
+   tags, though Stefan did indicated that he tried it and it didn't
+   appear to break anything for him.
+
+   Can be applied totally on its own.
+
+12. usb: dwc2: host: Use periodic interrupt even with DMA
+
+   Just came up with this one recently so it's had slightly less
+   testing.  ...but it certainly fixed a bunch of stuff.  Could probably
+   be moved around in the series to be pretty much anywhere.  I don't
+   think this has a huge impact until we fix the scheduler (below) but
+   at the same time I'm pretty sure it's something that's been wrong for
+   a long time.
+
+13. usb: dwc2: host: Rename some fields in struct dwc2_qh
+14. usb: dwc2: host: Reorder things in hcd_queue.c
+15. usb: dwc2: host: Split code out to make dwc2_do_reserve()
+
+   Cleanups to make future patches easier to understand.  Bikeshed away.
+   All no-op changes.
+
+16. usb: dwc2: host: Add scheduler logging for missed SOFs
+
+   I found this to be quite helpful.  If you hate it, drop it from the
+   series.
+
+17. usb: dwc2: host: Manage frame nums better in scheduler
+
+   Doesn't totally make sense on its own, but a good halfway point to
+   the microframe scheduler.  ...and shouldn't regress anything.  Allows
+   us to do the "Properly set even/odd frame" patch below which
+   definitely improves things.
+
+18. usb: dwc2: host: Schedule periodic right away if it's time
+
+   Yet another small change to make scheduling tighter.
+
+19. usb: dwc2: host: Add dwc2_hcd_get_future_frame_number() call
+
+   Prep for ("usb: dwc2: host: Properly set even/odd frame")
+
+20. usb: dwc2: host: Properly set even/odd frame
+
+   Helps quite a bit.  Helps even more after the redone microframe
+   scheduler.  Feel free to tidy up if you see easy ways to do this.
+   Maybe someone has a better way to estimate time on the wire?
+
+21. usb: dwc2: host: Totally redo the microframe scheduler
+
+   Eyeballs please!  I think I've stared at this too much and now my
+   eyes are glazing over.  This definitely helps but also probably needs
+   a few more spins?  Of course, if nobody wants to review it, IMHO
+   checking it in as-is is WAAAAY better than what we had before.
+
+22. usb: dwc2: host: If using uframe scheduler, end splits better
+
+   Low confidence in this one.  Worry that it will end something too
+   soon, but haven't seen it yet.
+
+===
+
+Below is discussion of some of the speedup stuff (mostly relevant to the
+first few patches).
+
+===
+
+The dwc2 interrupt handler is quite slow.  On rk3288 with a few things
+plugged into the ports and with cpufreq locked at 696MHz (to simulate
+real world idle system), I can easily observe dwc2_handle_hcd_intr()
+taking > 120 us, sometimes > 150 us.  Note that SOF interrupts come
+every 125 us with high speed USB, so taking > 120 us in the interrupt
+handler is a big deal.
+
+The patches here will speed up the interrupt controller significantly.
+After this series, I have a hard time seeing the interrupt controller
+taking > 20 us and I don't ever see it taking > 30 us ever in my tests
+unless I bring the cpufreq back down.  With the cpufreq at 126 MHz I can
+still see the interrupt handler take > 50 us, so I'm sure we could
+improve this further.  ...but hey, it's a start.
+
+This series also shows big speed improvements when testing with a USB
+Gigabit Ethernet adapter.  Previously the tested adapter would top out
+at about 15MB/s.  After these changes it gets about 23MB/s.
+
+In addition to the speedup, this series also has the advantage of
+simplifying dwc2 and making it more like everyone else (introducing the
+possibility of future simplifications).  Picking this series up will
+help your diffstat and likely win you friends.  ;)
+
+===
+
+Steps for gathering data with ftrace (for some reason I have to run
+twice):
+
+cd /sys/devices/system/cpu/cpu0/cpufreq/
+echo userspace > scaling_governor
+echo 696000 > scaling_setspeed
+
+cd /sys/kernel/debug/tracing
+echo 0 > tracing_on
+echo "" > trace
+echo nop > current_tracer
+echo function_graph > current_tracer
+echo dwc2_handle_hcd_intr > set_graph_function
+echo dwc2_handle_common_intr >> set_graph_function
+echo dwc2_handle_hcd_intr > set_ftrace_filter
+echo dwc2_handle_common_intr >> set_ftrace_filter
+echo funcgraph-abstime > trace_options
+echo 70 > tracing_thresh
+echo 1 > /sys/kernel/debug/tracing/tracing_on
+
+sleep 2
+cat trace
+
 Changes in v6:
-- Add Heiko's Tested-by.
-- Add Stefan's Tested-by.
+- Add Kever's Reviewed-bys.
+- Add Kever's Tested-bys.
+- Add Heiko's Tested-bys.
+- Add Stefan's Tested-bys.
+- Back to 525 dwords, not 528.
+- Add one more instance of check; kept Reviewed-by / Tested-by (OK?).
+- Fix patch tags (hcd -> host)
+- Incorporated Properly set the HFIR patch to big series in v6
+- There's not really a TT for the root hub new for v6
+- Fix bug where periodic things get scheduled too quick (Alan Stern)
+- Removed incorrect limit on number of channels (Heiko Stuebner).
+- Fixed order of operations bug in debug print.
 
-Changes in v5: None
+Changes in v5:
+- Move list maintenance to hcd.c to avoid gadget-only compile error
+- Moved defines outside of ifdef to avoid gadget-only compile error.
+
 Changes in v4:
+- Add John's Acks from <https://patchwork.kernel.org/patch/7631551>
+- Set host_rx_fifo_size to 528 for rk3066 new for v4.
+- Avoid use of chan->qh after qh freed new for v4.
+- Always add to the tail of queues new for v4.
+- fix split transfer schedule sequence new for v4.
+- Retooled scheduler tracing a bit, so left off John's Ack from v3.
+- Moved periodic bandwidth release delay patch earlier again.
+- A bit earlier in the list of patches than in v3.
+- Use periodic interrupt even with DMA new for v4.
 - Rename some fields in struct dwc2_qh new for v4.
+- Reorder things in hcd_queue.c new for v4.
+- Split code out to make dwc2_do_reserve() new for v4.
+- Add scheduler logging for missed SOFs new for v4.
+- Manage frame nums better in scheduler new for v4.
+- Schedule periodic right away if it's time new for v4.
+- Add dwc2_hcd_get_future_frame_number() call new for v4.
+- Properly set even/odd frame new for v4.
+- Figured out what the microframe scheduler was supposed to do.
+- Microframe rewrite is totally different from v3, hopefully more right.
+- Microframe rewrite is later in the series now.
+- If using uframe scheduler, end splits better new for v4.
 
-Changes in v3: None
-Changes in v2: None
+Changes in v3:
+- Moved periodic bandwidth release delay patch later in the series.
+- The uframe scheduler patch is folded into optimization series.
+- Optimize uframe scheduler "single uframe" case a little.
+- uframe scheduler now atop logging patches.
+- uframe scheduler now before delayed bandwidth release patches.
+- Add defines like EARLY_FRAME_USEC
+- Reorder dwc2_deschedule_periodic() in prep for future patches.
+- uframe scheduler now shows real usefulness w/ future patches!
+- Assuming single_tt is new for v3; not terribly well tested (yet).
+- Keep track and use our uframe new for v3.
 
- drivers/usb/dwc2/hcd.h       |  20 ++++----
- drivers/usb/dwc2/hcd_ddma.c  |  37 ++++++++-------
- drivers/usb/dwc2/hcd_intr.c  |  10 ++--
- drivers/usb/dwc2/hcd_queue.c | 107 ++++++++++++++++++++++---------------------
- 4 files changed, 92 insertions(+), 82 deletions(-)
+Changes in v2:
+- Add a warn if setup_dma is not aligned (Julius Werner).
+- Periodic bandwidth release delay new for V2
+- Commit message now says that URB giveback change needs delay change.
+- Totally rewrote uframe scheduler again after writing test code.
+- uframe scheduler atop delayed bandwidth release patches.
 
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 79473ea35bd6..10c35585a2bd 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -236,10 +236,14 @@ enum dwc2_transaction_type {
-  * @do_split:           Full/low speed endpoint on high-speed hub requires split
-  * @td_first:           Index of first activated isochronous transfer descriptor
-  * @td_last:            Index of last activated isochronous transfer descriptor
-- * @usecs:              Bandwidth in microseconds per (micro)frame
-- * @interval:           Interval between transfers in (micro)frames
-- * @sched_frame:        (Micro)frame to initialize a periodic transfer.
-- *                      The transfer executes in the following (micro)frame.
-+ * @host_us:            Bandwidth in microseconds per transfer as seen by host
-+ * @host_interval:      Interval between transfers as seen by the host.  If
-+ *                      the host is high speed and the device is low speed this
-+ *                      will be 8 times device interval.
-+ * @next_active_frame:  (Micro)frame before we next need to put something on
-+ *                      the bus.  We'll move the qh to active here.  If the
-+ *                      host is in high speed mode this will be a uframe.  If
-+ *                      the host is in low speed mode this will be a full frame.
-  * @frame_usecs:        Internal variable used by the microframe scheduler
-  * @start_split_frame:  (Micro)frame at which last start split was initialized
-  * @ntd:                Actual number of transfer descriptors in a list
-@@ -272,9 +276,9 @@ struct dwc2_qh {
- 	u8 do_split;
- 	u8 td_first;
- 	u8 td_last;
--	u16 usecs;
--	u16 interval;
--	u16 sched_frame;
-+	u16 host_us;
-+	u16 host_interval;
-+	u16 next_active_frame;
- 	u16 frame_usecs[8];
- 	u16 start_split_frame;
- 	u16 ntd;
-@@ -651,7 +655,7 @@ static inline u16 dwc2_hcd_get_ep_bandwidth(struct dwc2_hsotg *hsotg,
- 		return 0;
- 	}
- 
--	return qh->usecs;
-+	return qh->host_us;
- }
- 
- extern void dwc2_hcd_save_data_toggle(struct dwc2_hsotg *hsotg,
-diff --git a/drivers/usb/dwc2/hcd_ddma.c b/drivers/usb/dwc2/hcd_ddma.c
-index 16b261cfa92d..26b00270ca0b 100644
---- a/drivers/usb/dwc2/hcd_ddma.c
-+++ b/drivers/usb/dwc2/hcd_ddma.c
-@@ -81,7 +81,7 @@ static u16 dwc2_max_desc_num(struct dwc2_qh *qh)
- static u16 dwc2_frame_incr_val(struct dwc2_qh *qh)
- {
- 	return qh->dev_speed == USB_SPEED_HIGH ?
--	       (qh->interval + 8 - 1) / 8 : qh->interval;
-+	       (qh->host_interval + 8 - 1) / 8 : qh->host_interval;
- }
- 
- static int dwc2_desc_list_alloc(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
-@@ -252,7 +252,7 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 	chan = qh->channel;
- 	inc = dwc2_frame_incr_val(qh);
- 	if (qh->ep_type == USB_ENDPOINT_XFER_ISOC)
--		i = dwc2_frame_list_idx(qh->sched_frame);
-+		i = dwc2_frame_list_idx(qh->next_active_frame);
- 	else
- 		i = 0;
- 
-@@ -278,13 +278,13 @@ static void dwc2_update_frame_list(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		return;
- 
- 	chan->schinfo = 0;
--	if (chan->speed == USB_SPEED_HIGH && qh->interval) {
-+	if (chan->speed == USB_SPEED_HIGH && qh->host_interval) {
- 		j = 1;
- 		/* TODO - check this */
--		inc = (8 + qh->interval - 1) / qh->interval;
-+		inc = (8 + qh->host_interval - 1) / qh->host_interval;
- 		for (i = 0; i < inc; i++) {
- 			chan->schinfo |= j;
--			j = j << qh->interval;
-+			j = j << qh->host_interval;
- 		}
- 	} else {
- 		chan->schinfo = 0xff;
-@@ -431,7 +431,10 @@ static u16 dwc2_calc_starting_frame(struct dwc2_hsotg *hsotg,
- 
- 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 
--	/* sched_frame is always frame number (not uFrame) both in FS and HS! */
-+	/*
-+	 * next_active_frame is always frame number (not uFrame) both in FS
-+	 * and HS!
-+	 */
- 
- 	/*
- 	 * skip_frames is used to limit activated descriptors number
-@@ -514,13 +517,13 @@ static u16 dwc2_recalc_initial_desc_idx(struct dwc2_hsotg *hsotg,
- 		 */
- 		fr_idx_tmp = dwc2_frame_list_idx(frame);
- 		fr_idx = (FRLISTEN_64_SIZE +
--			  dwc2_frame_list_idx(qh->sched_frame) - fr_idx_tmp)
--			 % dwc2_frame_incr_val(qh);
-+			  dwc2_frame_list_idx(qh->next_active_frame) -
-+			  fr_idx_tmp) % dwc2_frame_incr_val(qh);
- 		fr_idx = (fr_idx + fr_idx_tmp) % FRLISTEN_64_SIZE;
- 	} else {
--		qh->sched_frame = dwc2_calc_starting_frame(hsotg, qh,
-+		qh->next_active_frame = dwc2_calc_starting_frame(hsotg, qh,
- 							   &skip_frames);
--		fr_idx = dwc2_frame_list_idx(qh->sched_frame);
-+		fr_idx = dwc2_frame_list_idx(qh->next_active_frame);
- 	}
- 
- 	qh->td_first = qh->td_last = dwc2_frame_to_desc_idx(qh, fr_idx);
-@@ -583,7 +586,7 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
- 	u16 next_idx;
- 
- 	idx = qh->td_last;
--	inc = qh->interval;
-+	inc = qh->host_interval;
- 	hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 	cur_idx = dwc2_frame_list_idx(hsotg->frame_number);
- 	next_idx = dwc2_desclist_idx_inc(qh->td_last, inc, qh->dev_speed);
-@@ -605,11 +608,11 @@ static void dwc2_init_isoc_dma_desc(struct dwc2_hsotg *hsotg,
- 		}
- 	}
- 
--	if (qh->interval) {
--		ntd_max = (dwc2_max_desc_num(qh) + qh->interval - 1) /
--				qh->interval;
-+	if (qh->host_interval) {
-+		ntd_max = (dwc2_max_desc_num(qh) + qh->host_interval - 1) /
-+				qh->host_interval;
- 		if (skip_frames && !qh->channel)
--			ntd_max -= skip_frames / qh->interval;
-+			ntd_max -= skip_frames / qh->host_interval;
- 	}
- 
- 	max_xfer_size = qh->dev_speed == USB_SPEED_HIGH ?
-@@ -1029,7 +1032,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
- 							  idx);
- 			if (rc < 0)
- 				return;
--			idx = dwc2_desclist_idx_inc(idx, qh->interval,
-+			idx = dwc2_desclist_idx_inc(idx, qh->host_interval,
- 						    chan->speed);
- 			if (!rc)
- 				continue;
-@@ -1039,7 +1042,7 @@ static void dwc2_complete_isoc_xfer_ddma(struct dwc2_hsotg *hsotg,
- 
- 			/* rc == DWC2_CMPL_STOP */
- 
--			if (qh->interval >= 32)
-+			if (qh->host_interval >= 32)
- 				goto stop_scan;
- 
- 			qh->td_first = idx;
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index fe44870f84eb..d929db5e7f3f 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -148,9 +148,11 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
- 	while (qh_entry != &hsotg->periodic_sched_inactive) {
- 		qh = list_entry(qh_entry, struct dwc2_qh, qh_list_entry);
- 		qh_entry = qh_entry->next;
--		if (dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number)) {
--			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, sch=%04x\n",
--				      qh, hsotg->frame_number, qh->sched_frame);
-+		if (dwc2_frame_num_le(qh->next_active_frame,
-+				      hsotg->frame_number)) {
-+			dwc2_sch_vdbg(hsotg, "QH=%p ready fn=%04x, nxt=%04x\n",
-+				      qh, hsotg->frame_number,
-+				      qh->next_active_frame);
- 
- 			/*
- 			 * Move QH to the ready list to be executed next
-@@ -1360,7 +1362,7 @@ static void dwc2_hc_nyet_intr(struct dwc2_hsotg *hsotg,
- 			int frnum = dwc2_hcd_get_frame_number(hsotg);
- 
- 			if (dwc2_full_frame_num(frnum) !=
--			    dwc2_full_frame_num(chan->qh->sched_frame)) {
-+			    dwc2_full_frame_num(chan->qh->next_active_frame)) {
- 				/*
- 				 * No longer in the same full speed frame.
- 				 * Treat this as a transaction error.
-diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index b9e4867e1afd..39f4de6279f8 100644
---- a/drivers/usb/dwc2/hcd_queue.c
-+++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -78,7 +78,7 @@ static void dwc2_do_unreserve(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		list_del_init(&qh->qh_list_entry);
- 
- 	/* Update claimed usecs per (micro)frame */
--	hsotg->periodic_usecs -= qh->usecs;
-+	hsotg->periodic_usecs -= qh->host_us;
- 
- 	if (hsotg->core_params->uframe_sched > 0) {
- 		int i;
-@@ -193,40 +193,40 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		int bytecount =
- 			dwc2_hb_mult(qh->maxp) * dwc2_max_packet(qh->maxp);
- 
--		qh->usecs = NS_TO_US(usb_calc_bus_time(qh->do_split ?
--				USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
--				qh->ep_type == USB_ENDPOINT_XFER_ISOC,
--				bytecount));
-+		qh->host_us = NS_TO_US(usb_calc_bus_time(qh->do_split ?
-+			      USB_SPEED_HIGH : dev_speed, qh->ep_is_in,
-+			      qh->ep_type == USB_ENDPOINT_XFER_ISOC,
-+			      bytecount));
- 
- 		/* Ensure frame_number corresponds to the reality */
- 		hsotg->frame_number = dwc2_hcd_get_frame_number(hsotg);
- 		/* Start in a slightly future (micro)frame */
--		qh->sched_frame = dwc2_frame_num_inc(hsotg->frame_number,
-+		qh->next_active_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 						     SCHEDULE_SLOP);
--		qh->interval = urb->interval;
--		dwc2_sch_dbg(hsotg, "QH=%p init sch=%04x, fn=%04x, int=%#x\n",
--			     qh, qh->sched_frame, hsotg->frame_number,
--			     qh->interval);
-+		qh->host_interval = urb->interval;
-+		dwc2_sch_dbg(hsotg, "QH=%p init nxt=%04x, fn=%04x, int=%#x\n",
-+			     qh, qh->next_active_frame, hsotg->frame_number,
-+			     qh->host_interval);
- #if 0
- 		/* Increase interrupt polling rate for debugging */
- 		if (qh->ep_type == USB_ENDPOINT_XFER_INT)
--			qh->interval = 8;
-+			qh->host_interval = 8;
- #endif
- 		hprt = dwc2_readl(hsotg->regs + HPRT0);
- 		prtspd = (hprt & HPRT0_SPD_MASK) >> HPRT0_SPD_SHIFT;
- 		if (prtspd == HPRT0_SPD_HIGH_SPEED &&
- 		    (dev_speed == USB_SPEED_LOW ||
- 		     dev_speed == USB_SPEED_FULL)) {
--			qh->interval *= 8;
--			qh->sched_frame |= 0x7;
--			qh->start_split_frame = qh->sched_frame;
-+			qh->host_interval *= 8;
-+			qh->next_active_frame |= 0x7;
-+			qh->start_split_frame = qh->next_active_frame;
- 			dwc2_sch_dbg(hsotg,
--				     "QH=%p init*8 sch=%04x, fn=%04x, int=%#x\n",
--				     qh, qh->sched_frame, hsotg->frame_number,
--				     qh->interval);
-+				     "QH=%p init*8 nxt=%04x, fn=%04x, int=%#x\n",
-+				     qh, qh->next_active_frame,
-+				     hsotg->frame_number, qh->host_interval);
- 
- 		}
--		dev_dbg(hsotg->dev, "interval=%d\n", qh->interval);
-+		dev_dbg(hsotg->dev, "interval=%d\n", qh->host_interval);
- 	}
- 
- 	dev_vdbg(hsotg->dev, "DWC OTG HCD QH Initialized\n");
-@@ -277,9 +277,9 @@ static void dwc2_qh_init(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 
- 	if (qh->ep_type == USB_ENDPOINT_XFER_INT) {
- 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - usecs = %d\n",
--			 qh->usecs);
-+			 qh->host_us);
- 		dev_vdbg(hsotg->dev, "DWC OTG HCD QH - interval = %d\n",
--			 qh->interval);
-+			 qh->host_interval);
- 	}
- }
- 
-@@ -404,19 +404,19 @@ static int dwc2_check_periodic_bandwidth(struct dwc2_hsotg *hsotg,
- 		 * High speed mode
- 		 * Max periodic usecs is 80% x 125 usec = 100 usec
- 		 */
--		max_claimed_usecs = 100 - qh->usecs;
-+		max_claimed_usecs = 100 - qh->host_us;
- 	} else {
- 		/*
- 		 * Full speed mode
- 		 * Max periodic usecs is 90% x 1000 usec = 900 usec
- 		 */
--		max_claimed_usecs = 900 - qh->usecs;
-+		max_claimed_usecs = 900 - qh->host_us;
- 	}
- 
- 	if (hsotg->periodic_usecs > max_claimed_usecs) {
- 		dev_err(hsotg->dev,
- 			"%s: already claimed usecs %d, required usecs %d\n",
--			__func__, hsotg->periodic_usecs, qh->usecs);
-+			__func__, hsotg->periodic_usecs, qh->host_us);
- 		status = -ENOSPC;
- 	}
- 
-@@ -443,7 +443,7 @@ void dwc2_hcd_init_usecs(struct dwc2_hsotg *hsotg)
- 
- static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
--	unsigned short utime = qh->usecs;
-+	unsigned short utime = qh->host_us;
- 	int i;
- 
- 	for (i = 0; i < 8; i++) {
-@@ -462,7 +462,7 @@ static int dwc2_find_single_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
-  */
- static int dwc2_find_multi_uframe(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- {
--	unsigned short utime = qh->usecs;
-+	unsigned short utime = qh->host_us;
- 	unsigned short xtime;
- 	int t_left;
- 	int i;
-@@ -608,11 +608,11 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 
- 			/* Set the new frame up */
- 			if (frame >= 0) {
--				qh->sched_frame &= ~0x7;
--				qh->sched_frame |= (frame & 7);
-+				qh->next_active_frame &= ~0x7;
-+				qh->next_active_frame |= (frame & 7);
- 				dwc2_sch_dbg(hsotg,
--					     "QH=%p sched_p sch=%04x, uf=%d\n",
--					     qh, qh->sched_frame, frame);
-+					     "QH=%p sched_p nxt=%04x, uf=%d\n",
-+					     qh, qh->next_active_frame, frame);
- 			}
- 
- 			if (status > 0)
-@@ -641,7 +641,7 @@ static int dwc2_schedule_periodic(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 			hsotg->periodic_channels++;
- 
- 		/* Update claimed usecs per (micro)frame */
--		hsotg->periodic_usecs += qh->usecs;
-+		hsotg->periodic_usecs += qh->host_us;
- 	}
- 
- 	qh->unreserve_pending = 0;
-@@ -716,7 +716,7 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		/* QH already in a schedule */
- 		return 0;
- 
--	if (!dwc2_frame_num_le(qh->sched_frame, hsotg->frame_number) &&
-+	if (!dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number) &&
- 			!hsotg->frame_number) {
- 		u16 new_frame;
- 
-@@ -725,9 +725,9 @@ int dwc2_hcd_qh_add(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
- 		new_frame = dwc2_frame_num_inc(hsotg->frame_number,
- 				SCHEDULE_SLOP);
- 
--		dwc2_sch_vdbg(hsotg, "QH=%p reset sch=%04x=>%04x\n",
--			      qh, qh->sched_frame, new_frame);
--		qh->sched_frame = new_frame;
-+		dwc2_sch_vdbg(hsotg, "QH=%p reset nxt=%04x=>%04x\n",
-+			      qh, qh->next_active_frame, new_frame);
-+		qh->next_active_frame = new_frame;
- 	}
- 
- 	/* Add the new QH to the appropriate schedule */
-@@ -793,10 +793,10 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 				      int sched_next_periodic_split)
- {
- 	u16 incr;
--	u16 old_frame = qh->sched_frame;
-+	u16 old_frame = qh->next_active_frame;
- 
- 	if (sched_next_periodic_split) {
--		qh->sched_frame = frame_number;
-+		qh->next_active_frame = frame_number;
- 		incr = dwc2_frame_num_inc(qh->start_split_frame, 1);
- 		if (dwc2_frame_num_le(frame_number, incr)) {
- 			/*
-@@ -807,23 +807,24 @@ static void dwc2_sched_periodic_split(struct dwc2_hsotg *hsotg,
- 			 */
- 			if (qh->ep_type != USB_ENDPOINT_XFER_ISOC ||
- 			    qh->ep_is_in != 0) {
--				qh->sched_frame =
--					dwc2_frame_num_inc(qh->sched_frame, 1);
-+				qh->next_active_frame = dwc2_frame_num_inc(
-+					qh->next_active_frame, 1);
- 			}
- 		}
- 	} else {
--		qh->sched_frame = dwc2_frame_num_inc(qh->start_split_frame,
--						     qh->interval);
--		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
--			qh->sched_frame = frame_number;
--		qh->sched_frame |= 0x7;
--		qh->start_split_frame = qh->sched_frame;
-+		qh->next_active_frame =
-+			dwc2_frame_num_inc(qh->start_split_frame,
-+					   qh->host_interval);
-+		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
-+			qh->next_active_frame = frame_number;
-+		qh->next_active_frame |= 0x7;
-+		qh->start_split_frame = qh->next_active_frame;
- 	}
- 
--	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, sch=%04x=>%04x (%+d)\n",
-+	dwc2_sch_vdbg(hsotg, "QH=%p next(%d) fn=%04x, nxt=%04x=>%04x (%+d)\n",
- 		      qh, sched_next_periodic_split, frame_number, old_frame,
--		      qh->sched_frame,
--		      dwc2_frame_num_dec(qh->sched_frame, old_frame));
-+		      qh->next_active_frame,
-+		      dwc2_frame_num_dec(qh->next_active_frame, old_frame));
- }
- 
- /*
-@@ -861,10 +862,10 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 		dwc2_sched_periodic_split(hsotg, qh, frame_number,
- 					  sched_next_periodic_split);
- 	} else {
--		qh->sched_frame = dwc2_frame_num_inc(qh->sched_frame,
--						     qh->interval);
--		if (dwc2_frame_num_le(qh->sched_frame, frame_number))
--			qh->sched_frame = frame_number;
-+		qh->next_active_frame = dwc2_frame_num_inc(
-+			qh->next_active_frame, qh->host_interval);
-+		if (dwc2_frame_num_le(qh->next_active_frame, frame_number))
-+			qh->next_active_frame = frame_number;
- 	}
- 
- 	if (list_empty(&qh->qtd_list)) {
-@@ -876,9 +877,9 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
- 	 * appropriate queue
- 	 */
- 	if ((hsotg->core_params->uframe_sched > 0 &&
--	     dwc2_frame_num_le(qh->sched_frame, frame_number)) ||
-+	     dwc2_frame_num_le(qh->next_active_frame, frame_number)) ||
- 	    (hsotg->core_params->uframe_sched <= 0 &&
--	     qh->sched_frame == frame_number))
-+	     qh->next_active_frame == frame_number))
- 		list_move_tail(&qh->qh_list_entry,
- 			       &hsotg->periodic_sched_ready);
- 	else
+Douglas Anderson (22):
+  usb: dwc2: rockchip: Make the max_transfer_size automatic
+  usb: dwc2: host: Get aligned DMA in a more supported way
+  usb: dwc2: host: Set host_rx_fifo_size to 525 for rk3066
+  usb: dwc2: host: Avoid use of chan->qh after qh freed
+  usb: dwc2: host: Always add to the tail of queues
+  usb: dwc2: host: fix split transfer schedule sequence
+  usb: dwc2: host: Add scheduler tracing
+  usb: dwc2: host: Add a delay before releasing periodic bandwidth
+  usb: dwc2: host: Giveback URB in tasklet context
+  usb: dwc2: host: Properly set the HFIR
+  usb: dwc2: host: There's not really a TT for the root hub
+  usb: dwc2: host: Use periodic interrupt even with DMA
+  usb: dwc2: host: Rename some fields in struct dwc2_qh
+  usb: dwc2: host: Reorder things in hcd_queue.c
+  usb: dwc2: host: Split code out to make dwc2_do_reserve()
+  usb: dwc2: host: Add scheduler logging for missed SOFs
+  usb: dwc2: host: Manage frame nums better in scheduler
+  usb: dwc2: host: Schedule periodic right away if it's time
+  usb: dwc2: host: Add dwc2_hcd_get_future_frame_number() call
+  usb: dwc2: host: Properly set even/odd frame
+  usb: dwc2: host: Totally redo the microframe scheduler
+  usb: dwc2: host: If using uframe scheduler, end splits better
+
+ drivers/usb/dwc2/core.c      |  119 ++-
+ drivers/usb/dwc2/core.h      |  114 ++-
+ drivers/usb/dwc2/hcd.c       |  392 ++++++---
+ drivers/usb/dwc2/hcd.h       |  126 ++-
+ drivers/usb/dwc2/hcd_ddma.c  |   41 +-
+ drivers/usb/dwc2/hcd_intr.c  |  174 ++--
+ drivers/usb/dwc2/hcd_queue.c | 1965 ++++++++++++++++++++++++++++++++++--------
+ drivers/usb/dwc2/platform.c  |    4 +-
+ 8 files changed, 2276 insertions(+), 659 deletions(-)
+
 -- 
 2.7.0.rc3.207.g0ac5344
