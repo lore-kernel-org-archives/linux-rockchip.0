@@ -1,7 +1,8 @@
 From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH v6 04/22] usb: dwc2: host: Avoid use of chan->qh after qh freed
-Date: Thu, 28 Jan 2016 18:19:55 -0800
-Message-ID: <1454034013-24657-5-git-send-email-dianders@chromium.org>
+Subject: [PATCH v6 03/22] usb: dwc2: host: Set host_rx_fifo_size to 525 for
+ rk3066
+Date: Thu, 28 Jan 2016 18:19:54 -0800
+Message-ID: <1454034013-24657-4-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,96 +22,57 @@ To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMro
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When poking around with USB devices with slub_debug enabled, I found
-another obvious use after free.  Turns out that in dwc2_hc_n_intr() I
-was in a state when the contents of chan->qh was filled with 0x6b,
-indicating that chan->qh was freed but chan still had a reference to
-it.
+As documented in dwc2_calculate_dynamic_fifo(), host_rx_fifo_size should
+really be:
+ 2 * ((Largest Packet size / 4) + 1 + 1) + n
+ with n = number of host channel.
 
-Let's make sure that whenever we free qh we also make sure we remove a
-reference from its channel.
+We have 9 host channels, so
+ 2 * ((1024/4) + 2) + 9 = 516 + 9 = 525
 
-The bug fixed here doesn't appear to be new--I believe I just got lucky
-and happened to see it while stress testing.
+We've got 960 / 972 total_fifo_size on rk3288 (and presumably on
+rk3066) and 525 + 128 + 256 = 909 so we're still under on both ports
+even when we increment by 5.
+
+In the future, it would be nice if dwc2_calculate_dynamic_fifo() could
+handle the "too small" FIFO case and come up with something more
+dynamically.  When we do that we can figure out how to allocate the
+extra 48 / 60 bytes of FIFO that we're currently wasting.
+
+NOTE: no known bugs are fixed by this patch, but it seems like a simple
+fix and ought to fix someone.
 
 Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
 ---
 Changes in v6:
-- Add one more instance of check; kept Reviewed-by / Tested-by (OK?).
+- Back to 525 dwords, not 528.
 - Add Kever's Reviewed-by.
 - Add Heiko's Tested-by.
-- Add Stefan's Tested-by.
 
 Changes in v5: None
 Changes in v4:
-- Avoid use of chan->qh after qh freed new for v4.
+- Set host_rx_fifo_size to 528 for rk3066 new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/hcd.c      | 10 ++++++++++
- drivers/usb/dwc2/hcd_intr.c | 10 ++++++++++
- 2 files changed, 20 insertions(+)
+ drivers/usb/dwc2/platform.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
-index bc4bdbc1534e..e2d2e9be366e 100644
---- a/drivers/usb/dwc2/hcd.c
-+++ b/drivers/usb/dwc2/hcd.c
-@@ -164,6 +164,9 @@ static void dwc2_qh_list_free(struct dwc2_hsotg *hsotg,
- 					 qtd_list_entry)
- 			dwc2_hcd_qtd_unlink_and_free(hsotg, qtd, qh);
- 
-+		if (qh->channel && qh->channel->qh == qh)
-+			qh->channel->qh = NULL;
-+
- 		spin_unlock_irqrestore(&hsotg->lock, flags);
- 		dwc2_hcd_qh_free(hsotg, qh);
- 		spin_lock_irqsave(&hsotg->lock, flags);
-@@ -554,7 +557,12 @@ static int dwc2_hcd_endpoint_disable(struct dwc2_hsotg *hsotg,
- 		dwc2_hcd_qtd_unlink_and_free(hsotg, qtd, qh);
- 
- 	ep->hcpriv = NULL;
-+
-+	if (qh->channel && qh->channel->qh == qh)
-+		qh->channel->qh = NULL;
-+
- 	spin_unlock_irqrestore(&hsotg->lock, flags);
-+
- 	dwc2_hcd_qh_free(hsotg, qh);
- 
- 	return 0;
-@@ -2782,6 +2790,8 @@ static int _dwc2_hcd_urb_enqueue(struct usb_hcd *hcd, struct urb *urb,
- fail3:
- 	dwc2_urb->priv = NULL;
- 	usb_hcd_unlink_urb_from_ep(hcd, urb);
-+	if (qh_allocated && qh->channel && qh->channel->qh == qh)
-+		qh->channel->qh = NULL;
- fail2:
- 	spin_unlock_irqrestore(&hsotg->lock, flags);
- 	urb->hcpriv = NULL;
-diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
-index 352c98364317..99efc2bd1617 100644
---- a/drivers/usb/dwc2/hcd_intr.c
-+++ b/drivers/usb/dwc2/hcd_intr.c
-@@ -1935,6 +1935,16 @@ static void dwc2_hc_n_intr(struct dwc2_hsotg *hsotg, int chnum)
- 	}
- 
- 	dwc2_writel(hcint, hsotg->regs + HCINT(chnum));
-+
-+	/*
-+	 * If we got an interrupt after someone called
-+	 * dwc2_hcd_endpoint_disable() we don't want to crash below
-+	 */
-+	if (!chan->qh) {
-+		dev_warn(hsotg->dev, "Interrupt on disabled channel\n");
-+		return;
-+	}
-+
- 	chan->hcint = hcint;
- 	hcint &= hcintmsk;
- 
+diff --git a/drivers/usb/dwc2/platform.c b/drivers/usb/dwc2/platform.c
+index 5008a467ce06..b277e521a311 100644
+--- a/drivers/usb/dwc2/platform.c
++++ b/drivers/usb/dwc2/platform.c
+@@ -126,7 +126,7 @@ static const struct dwc2_core_params params_rk3066 = {
+ 	.speed				= -1,
+ 	.enable_dynamic_fifo		= 1,
+ 	.en_multiple_tx_fifo		= -1,
+-	.host_rx_fifo_size		= 520,	/* 520 DWORDs */
++	.host_rx_fifo_size		= 525,	/* 525 DWORDs */
+ 	.host_nperio_tx_fifo_size	= 128,	/* 128 DWORDs */
+ 	.host_perio_tx_fifo_size	= 256,	/* 256 DWORDs */
+ 	.max_transfer_size		= -1,
 -- 
 2.7.0.rc3.207.g0ac5344
