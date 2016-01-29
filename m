@@ -1,204 +1,154 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v6 20/22] usb: dwc2: host: Properly set even/odd frame
-Date: Thu, 28 Jan 2016 18:20:11 -0800
-Message-ID: <1454034013-24657-21-git-send-email-dianders@chromium.org>
+From: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: [PATCH v6 05/22] usb: dwc2: host: Always add to the tail of queues
+Date: Thu, 28 Jan 2016 18:19:56 -0800
+Message-ID: <1454034013-24657-6-git-send-email-dianders@chromium.org>
 References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Youn <John.Youn@synopsys.com>, balbi@ti.com, kever.yang@rock-chips.com
-Cc: william.wu@rock-chips.com, huangtao@rock-chips.com, heiko@sntech.de, stefan.wahren@i2se.com, linux-rockchip@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, Julius Werner <jwerner@chromium.org>, gregory.herrero@intel.com, yousaf.kaukab@intel.com, dinguyen@opensource.altera.com, stern@rowland.harvard.edu, ming.lei@canonical.com, Douglas Anderson <dianders@chromium.org>, johnyoun@synopsys.com, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1454034013-24657-1-git-send-email-dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, balbi-l0cyMroinI0@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, stefan.wahren-eS4NqCHxEME@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-When setting up ISO and INT transfers dwc2 needs to specify whether the
-transfer is for an even or an odd frame (or microframe if the controller
-is running in high speed mode).
+The queues the the dwc2 host controller used are truly queues.  That
+means FIFO or first in first out.
 
-The controller appears to use this as a simple way to figure out if a
-transfer should happen right away (in the current microframe) or should
-happen at the start of the next microframe.  Said another way:
+Unfortunately though the code was iterating through these queues
+starting from the head, some places in the code was adding things to the
+queue by adding at the head instead of the tail.  That means last in
+first out.  Doh.
 
-- If you set "odd" and the current frame number is odd it appears that
-  the controller will try to transfer right away.  Same thing if you set
-  "even" and the current frame number is even.
-- If the oddness you set and the oddness of the frame number are
-  _different_, the transfer will be delayed until the frame number
-  changes.
+Go through and just always add to the tail.
 
-As I understand it, the above technique allows you to plan ahead of time
-where possible by always working on the next frame.  ...but it still
-allows you to properly respond immediately to things that happened in
-the previous frame.
+Doing this makes things much happier when I've got:
+* 7-port USB 2.0 Single-TT hub
+* - Microsoft 2.4 GHz Transceiver v7.0 dongle
+* - Jabra speakerphone playing music
 
-The old dwc2_hc_set_even_odd_frame() didn't really handle this concept.
-It always looked at the frame number and setup the transfer to happen in
-the next frame.  In some cases that meant that certain transactions
-would be transferred in the wrong frame.
-
-We'll try our best to set the even / odd to do the transfer in the
-scheduled frame.  If that fails then we'll do an ugly "schedule ASAP".
-We'll also modify the scheduler code to handle this and not try to
-schedule a second transfer for the same frame.
-
-Note that this change relies on the work to redo the microframe
-scheduler.  It can work atop ("usb: dwc2: host: Manage frame nums better
-in scheduler") but it works even better after ("usb: dwc2: host: Totally
-redo the microframe scheduler").
-
-With this change my stressful USB test (USB webcam + USB audio +
-keyboards) has less audio crackling than before.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
+Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
 ---
 Changes in v6:
+- Add Kever's Reviewed-by.
 - Add Heiko's Tested-by.
 - Add Stefan's Tested-by.
 
 Changes in v5: None
 Changes in v4:
-- Properly set even/odd frame new for v4.
+- Always add to the tail of queues new for v4.
 
 Changes in v3: None
 Changes in v2: None
 
- drivers/usb/dwc2/core.c      | 92 +++++++++++++++++++++++++++++++++++++++++++-
- drivers/usb/dwc2/hcd_queue.c | 11 +++++-
- 2 files changed, 100 insertions(+), 3 deletions(-)
+ drivers/usb/dwc2/hcd.c       | 11 ++++++-----
+ drivers/usb/dwc2/hcd_ddma.c  |  4 ++--
+ drivers/usb/dwc2/hcd_intr.c  |  4 ++--
+ drivers/usb/dwc2/hcd_queue.c |  6 ++++--
+ 4 files changed, 14 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index a5db20f12ee4..c143f26bd9d9 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -1703,9 +1703,97 @@ static void dwc2_hc_set_even_odd_frame(struct dwc2_hsotg *hsotg,
- {
- 	if (chan->ep_type == USB_ENDPOINT_XFER_INT ||
- 	    chan->ep_type == USB_ENDPOINT_XFER_ISOC) {
--		/* 1 if _next_ frame is odd, 0 if it's even */
--		if (!(dwc2_hcd_get_frame_number(hsotg) & 0x1))
-+		int host_speed;
-+		int xfer_ns;
-+		int xfer_us;
-+		int bytes_in_fifo;
-+		u16 fifo_space;
-+		u16 frame_number;
-+		u16 wire_frame;
-+
-+		/*
-+		 * Try to figure out if we're an even or odd frame. If we set
-+		 * even and the current frame number is even the the transfer
-+		 * will happen immediately.  Similar if both are odd. If one is
-+		 * even and the other is odd then the transfer will happen when
-+		 * the frame number ticks.
-+		 *
-+		 * There's a bit of a balancing act to get this right.
-+		 * Sometimes we may want to send data in the current frame (AK
-+		 * right away).  We might want to do this if the frame number
-+		 * _just_ ticked, but we might also want to do this in order
-+		 * to continue a split transaction that happened late in a
-+		 * microframe (so we didn't know to queue the next transfer
-+		 * until the frame number had ticked).  The problem is that we
-+		 * need a lot of knowledge to know if there's actually still
-+		 * time to send things or if it would be better to wait until
-+		 * the next frame.
-+		 *
-+		 * We can look at how much time is left in the current frame
-+		 * and make a guess about whether we'll have time to transfer.
-+		 * We'll do that.
-+		 */
-+
-+		/* Get speed host is running at */
-+		host_speed = (chan->speed != USB_SPEED_HIGH &&
-+			      !chan->do_split) ? chan->speed : USB_SPEED_HIGH;
-+
-+		/* See how many bytes are in the periodic FIFO right now */
-+		fifo_space = (dwc2_readl(hsotg->regs + HPTXSTS) &
-+			      TXSTS_FSPCAVAIL_MASK) >> TXSTS_FSPCAVAIL_SHIFT;
-+		bytes_in_fifo = sizeof(u32) *
-+				(hsotg->core_params->host_perio_tx_fifo_size -
-+				 fifo_space);
-+
-+		/*
-+		 * Roughly estimate bus time for everything in the periodic
-+		 * queue + our new transfer.  This is "rough" because we're
-+		 * using a function that makes takes into account IN/OUT
-+		 * and INT/ISO and we're just slamming in one value for all
-+		 * transfers.  This should be an over-estimate and that should
-+		 * be OK, but we can probably tighten it.
-+		 */
-+		xfer_ns = usb_calc_bus_time(host_speed, false, false,
-+					    chan->xfer_len + bytes_in_fifo);
-+		xfer_us = NS_TO_US(xfer_ns);
-+
-+		/* See what frame number we'll be at by the time we finish */
-+		frame_number = dwc2_hcd_get_future_frame_number(hsotg, xfer_us);
-+
-+		/* This is when we were scheduled to be on the wire */
-+		wire_frame = dwc2_frame_num_inc(chan->qh->next_active_frame, 1);
-+
-+		/*
-+		 * If we'd finish _after_ the frame we're scheduled in then
-+		 * it's hopeless.  Just schedule right away and hope for the
-+		 * best.  Note that it _might_ be wise to call back into the
-+		 * scheduler to pick a better frame, but this is better than
-+		 * nothing.
-+		 */
-+		if (dwc2_frame_num_gt(frame_number, wire_frame)) {
-+			dwc2_sch_vdbg(hsotg,
-+				      "QH=%p EO MISS fr=%04x=>%04x (%+d)\n",
-+				      chan->qh, wire_frame, frame_number,
-+				      dwc2_frame_num_dec(frame_number,
-+							 wire_frame));
-+			wire_frame = frame_number;
-+
-+			/*
-+			 * We picked a different frame number; communicate this
-+			 * back to the scheduler so it doesn't try to schedule
-+			 * another in the same frame.
-+			 *
-+			 * Remember that next_active_frame is 1 before the wire
-+			 * frame.
-+			 */
-+			chan->qh->next_active_frame =
-+				dwc2_frame_num_dec(frame_number, 1);
-+		}
-+
-+		if (wire_frame & 1)
- 			*hcchar |= HCCHAR_ODDFRM;
-+		else
-+			*hcchar &= ~HCCHAR_ODDFRM;
+diff --git a/drivers/usb/dwc2/hcd.c b/drivers/usb/dwc2/hcd.c
+index e2d2e9be366e..349194342c90 100644
+--- a/drivers/usb/dwc2/hcd.c
++++ b/drivers/usb/dwc2/hcd.c
+@@ -969,7 +969,8 @@ enum dwc2_transaction_type dwc2_hcd_select_transactions(
+ 		 * periodic assigned schedule
+ 		 */
+ 		qh_ptr = qh_ptr->next;
+-		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_assigned);
++		list_move_tail(&qh->qh_list_entry,
++			       &hsotg->periodic_sched_assigned);
+ 		ret_val = DWC2_TRANSACTION_PERIODIC;
  	}
- }
  
+@@ -1002,8 +1003,8 @@ enum dwc2_transaction_type dwc2_hcd_select_transactions(
+ 		 * non-periodic active schedule
+ 		 */
+ 		qh_ptr = qh_ptr->next;
+-		list_move(&qh->qh_list_entry,
+-			  &hsotg->non_periodic_sched_active);
++		list_move_tail(&qh->qh_list_entry,
++			       &hsotg->non_periodic_sched_active);
+ 
+ 		if (ret_val == DWC2_TRANSACTION_NONE)
+ 			ret_val = DWC2_TRANSACTION_NON_PERIODIC;
+@@ -1176,8 +1177,8 @@ static void dwc2_process_periodic_channels(struct dwc2_hsotg *hsotg)
+ 			 * Move the QH from the periodic assigned schedule to
+ 			 * the periodic queued schedule
+ 			 */
+-			list_move(&qh->qh_list_entry,
+-				  &hsotg->periodic_sched_queued);
++			list_move_tail(&qh->qh_list_entry,
++				       &hsotg->periodic_sched_queued);
+ 
+ 			/* done queuing high bandwidth */
+ 			hsotg->queuing_high_bandwidth = 0;
+diff --git a/drivers/usb/dwc2/hcd_ddma.c b/drivers/usb/dwc2/hcd_ddma.c
+index 36606fc33c0d..16b261cfa92d 100644
+--- a/drivers/usb/dwc2/hcd_ddma.c
++++ b/drivers/usb/dwc2/hcd_ddma.c
+@@ -1327,8 +1327,8 @@ void dwc2_hcd_complete_xfer_ddma(struct dwc2_hsotg *hsotg,
+ 			dwc2_hcd_qh_unlink(hsotg, qh);
+ 		} else {
+ 			/* Keep in assigned schedule to continue transfer */
+-			list_move(&qh->qh_list_entry,
+-				  &hsotg->periodic_sched_assigned);
++			list_move_tail(&qh->qh_list_entry,
++				       &hsotg->periodic_sched_assigned);
+ 			/*
+ 			 * If channel has been halted during giveback of urb
+ 			 * then prevent any new scheduling.
+diff --git a/drivers/usb/dwc2/hcd_intr.c b/drivers/usb/dwc2/hcd_intr.c
+index 99efc2bd1617..2c521c00e5e0 100644
+--- a/drivers/usb/dwc2/hcd_intr.c
++++ b/drivers/usb/dwc2/hcd_intr.c
+@@ -143,7 +143,7 @@ static void dwc2_sof_intr(struct dwc2_hsotg *hsotg)
+ 			 * Move QH to the ready list to be executed next
+ 			 * (micro)frame
+ 			 */
+-			list_move(&qh->qh_list_entry,
++			list_move_tail(&qh->qh_list_entry,
+ 				  &hsotg->periodic_sched_ready);
+ 	}
+ 	tr_type = dwc2_hcd_select_transactions(hsotg);
+@@ -794,7 +794,7 @@ static void dwc2_halt_channel(struct dwc2_hsotg *hsotg,
+ 			 * halt to be queued when the periodic schedule is
+ 			 * processed.
+ 			 */
+-			list_move(&chan->qh->qh_list_entry,
++			list_move_tail(&chan->qh->qh_list_entry,
+ 				  &hsotg->periodic_sched_assigned);
+ 
+ 			/*
 diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
-index 3abb34a5fc5b..5f909747b5a4 100644
+index e0933a9dfad7..bc632a72f611 100644
 --- a/drivers/usb/dwc2/hcd_queue.c
 +++ b/drivers/usb/dwc2/hcd_queue.c
-@@ -985,6 +985,14 @@ static int dwc2_next_periodic_start(struct dwc2_hsotg *hsotg,
- 	 *   and next_active_frame are always 1 frame before we want things
- 	 *   to be active and we assume we can still get scheduled in the
- 	 *   current frame number.
-+	 * - It's possible for start_active_frame (now incremented) to be
-+	 *   next_active_frame if we got an EO MISS (even_odd miss) which
-+	 *   basically means that we detected there wasn't enough time for
-+	 *   the last packet and dwc2_hc_set_even_odd_frame() rescheduled us
-+	 *   at the last second.  We want to make sure we don't schedule
-+	 *   another transfer for the same frame.  My test webcam doesn't seem
-+	 *   terribly upset by missing a transfer but really doesn't like when
-+	 *   we do two transfers in the same frame.
- 	 * - Some misses are expected.  Specifically, in order to work
- 	 *   perfectly dwc2 really needs quite spectacular interrupt latency
- 	 *   requirements.  It needs to be able to handle its interrupts
-@@ -995,7 +1003,8 @@ static int dwc2_next_periodic_start(struct dwc2_hsotg *hsotg,
- 	 *   guarantee that a system will have interrupt latency < 125 us, so
- 	 *   we have to be robust to some misses.
- 	 */
--	if (dwc2_frame_num_gt(prev_frame_number, qh->start_active_frame)) {
-+	if (qh->start_active_frame == qh->next_active_frame ||
-+	    dwc2_frame_num_gt(prev_frame_number, qh->start_active_frame)) {
- 		u16 ideal_start = qh->start_active_frame;
+@@ -732,9 +732,11 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh,
+ 	     dwc2_frame_num_le(qh->sched_frame, frame_number)) ||
+ 	    (hsotg->core_params->uframe_sched <= 0 &&
+ 	     qh->sched_frame == frame_number))
+-		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_ready);
++		list_move_tail(&qh->qh_list_entry,
++			       &hsotg->periodic_sched_ready);
+ 	else
+-		list_move(&qh->qh_list_entry, &hsotg->periodic_sched_inactive);
++		list_move_tail(&qh->qh_list_entry,
++			       &hsotg->periodic_sched_inactive);
+ }
  
- 		/* Adjust interval as per gcd with plan length. */
+ /**
 -- 
 2.7.0.rc3.207.g0ac5344
