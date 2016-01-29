@@ -1,53 +1,46 @@
-From: Alexander Kochetkov <al.kochet@gmail.com>
-Subject: [PATCH v2] clk: rockchip: Allow sclk_i2s0 and i2s0_frac to change their parents rate on rk3188
-Date: Fri, 29 Jan 2016 10:58:02 +0300
-Message-ID: <1454054282-16303-1-git-send-email-al.kochet@gmail.com>
-References: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1453897469-2134-1-git-send-email-al.kochet@gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Alexander Kochetkov <al.kochet@gmail.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RFC PATCH] ARM: dts: rockchip: increase the mclk_fs to 512 for kylin board
+Date: Fri, 29 Jan 2016 16:49:21 +0800
+Message-ID: <1454057361-22923-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Allow sclk_i2s0 and i2s0_frac to change their parents rate as
-that the upstream dividers are purely there to feed sclk_i2s0
+If we playback the 8KHz FS audio with the 256 mclk_fs, we need the
+mclk = 256 * 8000 = 2.048MHz, the frac div is 594 / 2.048 = 290,
+the frac div value 0x00809015 set to the CRU_CLKSEL7_CON will cause
+to hang.
 
-Tested on radxarock-lite.
+We increase the mclk_fs to 512, will get the mclk = 512 * 8000 =
+4.096MHz, use 0x01009015 instead of 0x00809015 to work around this
+issue. We will keep tracking it.
 
-Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
-
-Changes in v2:
-Rebased on top of 4.5-rc1 of branch[1]
-
-[1] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=v4.6-clk/next
-
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/clk/rockchip/clk-rk3188.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index cc1d09d..629c65d 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -666,7 +666,7 @@ PNAME(mux_hsicphy_p)		= { "sclk_otgphy0_480m", "sclk_otgphy1_480m",
- 				    "gpll", "cpll" };
- 
- static struct rockchip_clk_branch rk3188_i2s0_fracmux __initdata =
--	MUX(SCLK_I2S0, "sclk_i2s0", mux_sclk_i2s0_p, 0,
-+	MUX(SCLK_I2S0, "sclk_i2s0", mux_sclk_i2s0_p, CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(3), 8, 2, MFLAGS);
- 
- static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
-@@ -722,7 +722,7 @@ static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
- 	COMPOSITE_NOMUX(0, "i2s0_pre", "i2s_src", 0,
- 			RK2928_CLKSEL_CON(3), 0, 7, DFLAGS,
- 			RK2928_CLKGATE_CON(0), 9, GFLAGS),
--	COMPOSITE_FRACMUX(0, "i2s0_frac", "i2s0_pre", 0,
-+	COMPOSITE_FRACMUX(0, "i2s0_frac", "i2s0_pre", CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(7), 0,
- 			RK2928_CLKGATE_CON(0), 10, GFLAGS,
- 			&rk3188_i2s0_fracmux),
+ arch/arm/boot/dts/rk3036-kylin.dts |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 190f22c..be468f9 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -67,7 +67,7 @@
+ 		compatible = "simple-audio-card";
+ 		simple-audio-card,format = "i2s";
+ 		simple-audio-card,name = "rockchip,rt5616-codec";
+-		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,mclk-fs = <512>;
+ 		simple-audio-card,widgets =
+ 			"Microphone", "Microphone Jack",
+ 			"Headphone", "Headphone Jack";
 -- 
 1.7.9.5
 
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
