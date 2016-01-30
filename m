@@ -1,47 +1,27 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v3] clk-divider: make sure read-only dividers do not
- write to their register
-Date: Fri, 29 Jan 2016 17:29:23 -0800
-Message-ID: <20160130012923.GF4848@codeaurora.org>
-References: <4666170.lmsMJxAogk@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4666170.lmsMJxAogk@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, James Hogan <james.hogan@imgtec.com>, Zhang Qing <zhangqing@rock-chips.com>, Joachim Eastwood <manabian@gmail.com>
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v3 0/2] add pinctrl support for rk3399
+Date: Sat, 30 Jan 2016 19:31:55 +0800
+Message-ID: <1454153517-52969-1-git-send-email-david.wu@rock-chips.com>
+References: <1451997055-47655-1-git-send-email-wdc@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1451997055-47655-1-git-send-email-wdc@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01/21, Heiko Stuebner wrote:
-> Commit e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1") removed
-> the special ops struct for read-only clocks and instead opted to handle
-> them inside the regular ops.
-> 
-> On the rk3368 this results in breakage as aclkm now gets set a value.
-> While it is the same divider value, the A53 core still doesn't like it,
-> which can result in the cpu ending up in a hang.
-> The reason being that "ACLKENMasserts one clock cycle before the rising
-> edge of ACLKM" and the clock should only be touched when STANDBYWFIL2
-> is asserted.
-> 
-> To fix this, reintroduce the read-only ops but do include the round_rate
-> callback. That way no writes that may be unsafe are done to the divider
-> register in any case.
-> 
-> The Rockchip use of the clk_divider_ops is adapted to this split again,
-> as is the nxp, lpc18xx-ccu driver that was included since the original
-> commit. On lpc18xx-ccu the divider seems to always be read-only
-> so only uses the new ops now.
-> 
-> Fixes: e6d5e7d90be9 ("clk-divider: Fix READ_ONLY when divider > 1")
-> Reported-by: Zhang Qing <zhangqing@rock-chips.com>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
+Test on rk3399 fpga-board
 
-Applied to clk-next
+David Wu (2):
+  pinctrl: rockchip: add support for the rk3399
+  dt-bindings: rockchip-pinctrl: Support the RK3399 SoCs compatible
+
+ .../bindings/pinctrl/rockchip,pinctrl.txt          |   1 +
+ drivers/pinctrl/pinctrl-rockchip.c                 | 372 ++++++++++++++++++++-
+ 2 files changed, 359 insertions(+), 14 deletions(-)
 
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+1.9.1
+
+
