@@ -1,119 +1,45 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v4 9/9] ARM: dts: rockchip: support the spi for rk3036
-Date: Mon, 1 Feb 2016 14:32:59 +0800
-Message-ID: <56AEFC1B.60407@gmail.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 1/9] ARM: dts: rockchip: add the leds control for kylin
+ board
+Date: Mon, 1 Feb 2016 14:40:57 +0800
+Message-ID: <56AEFDF9.2030905@gmail.com>
 References: <1453970618-4383-1-git-send-email-wxt@rock-chips.com>
- <1453970618-4383-10-git-send-email-wxt@rock-chips.com>
- <3295129.SttO6ack9z@phil>
+ <1453970618-4383-2-git-send-email-wxt@rock-chips.com>
+ <2785565.JmZWWova7F@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3295129.SttO6ack9z@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, hl@rock-chips.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, sonnyrao@chromium.org, jeffy.chen@rock-chips.com, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, keescook@google.com, cf@rock-chips.com, jay.xu@rock-chips.com, leozwang@google.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2785565.JmZWWova7F@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko,
-
-=E5=9C=A8 2016=E5=B9=B401=E6=9C=8831=E6=97=A5 19:06, Heiko Stuebner =E5=
-=86=99=E9=81=93:
-> Hi Caesar,
->
-> Am Donnerstag, 28. Januar 2016, 16:43:38 schrieb Caesar Wang:
-
-[...]
-
->
->   	memory {
-> @@ -485,6 +486,23 @@
->   		status =3D "disabled";
->   	};
->
-> +	spi: spi@20074000 {
-> +		compatible =3D "rockchip,rockchip-spi";
-> +		reg =3D <0x20074000 0x1000>;
-> +		interrupts =3D <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +		pinctrl-names =3D "default";
-> +		pinctrl-0 =3D <&spi_txd &spi_rxd &spi_clk &spi_cs0 &spi_cs1>;
-> Do we really want to enable both chip-selects by default?
->
-> On the rk3288 Lin Huang wrote:
->      * It's assumed that most users of the SPI ports are using chip s=
-elect
->        0.  Thus the default pinctrl for the ports enables chip select=
- 0
->        (but not chip select 1 on ports that have it).  If a board wan=
-ts to
->        use chip select 1 or wants a GPIO chip select the board should
->        override the pinctrl (just like boards can override UART pinct=
-rl if
->        they have hardware flow control).
->
-> Do we expect again mostly a use of cs0 or will in the major cases bot=
-h chip-
-> selects be needed?
-
-Sound resonable.
-In general, every cs and spi devices should be the one match one.
-
-That should be resonable if we want to use chip select 1 or want a GPIO=
- chip select the board should
-override the pinctrl.
-
->> +		num-cs =3D <2>;
->> +		clocks =3D<&cru PCLK_SPI>, <&cru SCLK_SPI>;
->> +		clock-names =3D "apb-pclk","spi_pclk";
->> +		dmas =3D <&pdma 8>, <&pdma 9>;
->> +		#dma-cells =3D <2>;
-> What do you need #dma-cells for? This is not a dma-controller :-)
-
-=46ixed.
-
->
->
->> +		dma-names =3D "tx", "rx";
->> +		status =3D "disabled";
->> +	};
->
-> Also I'd suggest an ordering like:
->
-> +	spi: spi@20074000 {
-> +		compatible =3D "rockchip,rockchip-spi";
-> +		reg =3D <0x20074000 0x1000>;
-> +		interrupts =3D <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks =3D<&cru PCLK_SPI>, <&cru SCLK_SPI>;
-> +		clock-names =3D "apb-pclk","spi_pclk";
-> +		dmas =3D <&pdma 8>, <&pdma 9>;
-> +		dma-names =3D "tx", "rx";
-> +		num-cs =3D <2>;
-> +		pinctrl-names =3D "default";
-> +		pinctrl-0 =3D <&spi_txd &spi_rxd &spi_clk &spi_cs0 &spi_cs1>;
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
-> +		status =3D "disabled";
-> +	};
-
-Okay, I will remove the cs1/num-cs in here.
-
-Thanks.
-
--
-Caesar
-
->
-> Heiko
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
---=20
-Thanks,
-Caesar
+CgrlnKggMjAxNuW5tDAx5pyIMzHml6UgMTg6NDYsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBB
+bSBEb25uZXJzdGFnLCAyOC4gSmFudWFyIDIwMTYsIDE2OjQzOjMwIHNjaHJpZWIgQ2Flc2FyIFdh
+bmc6Cj4+IEFzIHRoZSBreWxpbiBzY2hlbWF0aWMgZHJhd2luZywgYWRkIHRoZSBuZWVkZWQgd29y
+ayBsZWQgZm9yCj4+IGt5bGluIGJvYXJkLgo+Pgo+PiBSdW46Cj4+IGVjaG8gMCA+IC9zeXMvY2xh
+c3MvbGVkcy9reWxpbjpyZWQ6bGVkL2JyaWdodG5lc3MKPj4gZWNobyAxID4gL3N5cy9jbGFzcy9s
+ZWRzL2t5bGluOnJlZDpsZWQvYnJpZ2h0bmVzcwo+Pgo+PiBUaGUgbGVkIGNhbiBub3JtYWwgb24v
+b2ZmIG9uIGt5bGluIGJvYXJkLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0
+QHJvY2stY2hpcHMuY29tPgo+IGFwcGxpZWQgdG8gbXkgZHRzMzItYnJhbmNoIGZvciA0LjYKCk9r
+YXksIHRoYW5rcy4KSSdtIGFzc3VtaW5nIHRoaXMgcGF0Y2ggaXMgYXBwbGllZCB0byB5b3VyIGxv
+Y2FsIGJyYW5jaCBzaW5jZSBJIGhhdmUgbm90IAp5ZXQgc2VlIG9uIHlvdXIgYnJhbmNoWzBdLjot
+KQoKYnJhbmNoWzBdOiAKaHR0cHM6Ly9naXQua2VybmVsLm9yZy9jZ2l0L2xpbnV4L2tlcm5lbC9n
+aXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0L2xvZy8/aD12NC42LWFybXNvYy9kdHMzMgoKCgo+
+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAoKCi0tIApUaGFua3MsCkNhZXNhcgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
