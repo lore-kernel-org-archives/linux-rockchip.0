@@ -1,161 +1,340 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v6 18/22] usb: dwc2: host: Schedule periodic right away if
- it's time
-Date: Sun, 31 Jan 2016 20:36:05 -0800
-Message-ID: <CAD=FV=XJgmXm255=cmtqpVM0iJeWCzC5O8BtE2XY4y5Txvk+gg@mail.gmail.com>
-References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-	<1454034013-24657-19-git-send-email-dianders@chromium.org>
-	<56ADD580.1070505@rock-chips.com>
-	<CAD=FV=XUjAbSQhr9LtPG=5ycPbv6UBsA0rvfrPd25EndnjxRrw@mail.gmail.com>
-	<56AED1B6.7020409@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] phy: add a driver for the Rockchip SoC internal
+ eMMC PHY
+Date: Mon, 1 Feb 2016 11:33:43 +0530
+Message-ID: <56AEF53F.3050206@ti.com>
+References: <1451956034-24421-1-git-send-email-shawn.lin@rock-chips.com>
+ <1451956081-24501-1-git-send-email-shawn.lin@rock-chips.com>
+ <56A5D39B.8090008@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56AED1B6.7020409-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56A5D39B.8090008-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Kever,
 
-On Sun, Jan 31, 2016 at 7:32 PM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Doug,
->
->
-> On 02/01/2016 06:09 AM, Doug Anderson wrote:
->>
->> Kever,
->>
->> On Sun, Jan 31, 2016 at 1:36 AM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> wrote:
->>>
->>> Doug,
->>>
->>>
->>> On 01/29/2016 10:20 AM, Douglas Anderson wrote:
->>>>
->>>> In dwc2_hcd_qh_deactivate() we will put some things on the
->>>> periodic_sched_ready list.  These things won't be taken off the ready
->>>> list until the next SOF, which might be a little late.  Let's put them
->>>> on right away.
->>>>
->>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
->>>> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->>>> Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
->>>> ---
->>>> Changes in v6:
->>>> - Add Heiko's Tested-by.
->>>> - Add Stefan's Tested-by.
->>>>
->>>> Changes in v5: None
->>>> Changes in v4:
->>>> - Schedule periodic right away if it's time new for v4.
->>>>
->>>> Changes in v3: None
->>>> Changes in v2: None
->>>>
->>>>    drivers/usb/dwc2/hcd_queue.c | 18 ++++++++++++++++--
->>>>    1 file changed, 16 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
->>>> index 9b3c435339ee..3abb34a5fc5b 100644
->>>> --- a/drivers/usb/dwc2/hcd_queue.c
->>>> +++ b/drivers/usb/dwc2/hcd_queue.c
->>>> @@ -1080,12 +1080,26 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg
->>>> *hsotg, struct dwc2_qh *qh,
->>>>           * Note: we purposely use the frame_number from the "hsotg"
->>>> structure
->>>>           * since we know SOF interrupt will handle future frames.
->>>>           */
->>>> -       if (dwc2_frame_num_le(qh->next_active_frame,
->>>> hsotg->frame_number))
->>>> +       if (dwc2_frame_num_le(qh->next_active_frame,
->>>> hsotg->frame_number))
->>>> {
->>>> +               enum dwc2_transaction_type tr_type;
->>>> +
->>>> +               /*
->>>> +                * We're bypassing the SOF handler which is normally
->>>> what
->>>> puts
->>>> +                * us on the ready list because we're in a hurry and
->>>> need
->>>> to
->>>> +                * try to catch up.
->>>> +                */
->>>> +               dwc2_sch_vdbg(hsotg, "QH=%p IMM ready fn=%04x,
->>>> nxt=%04x\n",
->>>> +                             qh, frame_number, qh->next_active_frame);
->>>>                  list_move_tail(&qh->qh_list_entry,
->>>>                                 &hsotg->periodic_sched_ready);
->>>> -       else
->>>> +
->>>> +               tr_type = dwc2_hcd_select_transactions(hsotg);
->>>
->>> Do we need to add select_transactions call here? If we get into this
->>> function in interrupt
->>> and once we put the qh in ready queue, the qh can be handled in this
->>> frame
->>> again by the
->>> later function call of dwc_hcd_select_transactions, so what we need to to
->>> here is put
->>> it in ready list instead of inactive queue, and wait for the schedule.
->>
->> I'm not sure I understand.  Can you restate?
->>
->>
->> I'll try to explain more in the meantime...
->>
->> Both before and after my change, this function would place something
->> on the ready queue if the next_active_frame <= the frame number as of
->> last SOF interrupt (aka hsotg->frame_number).  Otherwise it goes on
->> the inactive queue.  Assuming that the previous change ("usb: dwc2:
->> host: Manage frame nums better in scheduler") worked properly then
->> next_active_frame shouldn't be less than (hsotg->frame_number - 1).
->> Remember that next_active_frame is always 1 before the wire frame, so
->> if "next_active_frame == hsotg->frame_number - 1" it means that we
->> need to get the transfer on the wire _right away_.  If
->> "next_active_frame == hsotg->frame_number" the transfer doesn't need
->> to go on the wire right away, but since dwc2 can be prepped one frame
->> in advance it doesn't hurt to give it to the hardware right away if
->> there's space.
->>
->> As I understand it, if we stick something on the ready queue it won't
->> generally get looked at until the next SOF interrupt.  That means
->> we'll be too late if "next_active_frame == hsotg->frame_number - 1"
->> and we'll possibly be too late (depending on interrupt latency) if
->> "next_active_frame == hsotg->frame_number"
->>
-> I understand this patch and agree with your point of schedule the
-> periodic right away instead of at least next frame.
-> My point is, there are only two call to dwc2_hcd_qh_deactivate(), from
-> dwc2_hcd_urb_dequeue() and dwc2_release_channel(), we don't need
-> to do the schedule for dequeue, and there is one
-> dwc2_hcd_select_transactions() call at the end of dwc2_release_channel(),
-> maybe we don't need another dwc2_hcd_select_transactions() here.
->
-> I think the duration from this point to the function call of
-> dwc2_hcd_select_transactions()
-> in dwc2_release_channel() will be the main factor for us to decide if
-> we need to add a function call of  dwc2_hcd_select_transactions() here.
 
-Oh, now I get what you're saying!
+On Monday 25 January 2016 01:19 PM, Shawn Lin wrote:
+> Hello Kishon,
+> 
+> Any changce to apply this patch?  :)
 
-A) You've got dwc2_release_channel() -> dwc2_deactivate_qh() ->
-dwc2_hcd_qh_deactivate()
-...and always in that case we'll do a select / queue, so we don't need it there.
+back from vacation. Will review it this week. Sorry for the delay.
 
-B) You've got dwc2_hcd_urb_dequeue() -> dwc2_hcd_qh_deactivate()
+Thanks
+Kishon
 
-...but why don't we need it for dwc2_hcd_urb_dequeue()?  Yes, you're
-not continuing a split so timing isn't quite as urgent, but you still
-might have an INT or ISOC packet that's scheduled with an interval of
-1.  We still might want to schedule right away if there are remaining
-QTDs, right?
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> On 2016/1/5 9:08, Shawn Lin wrote:
+>> This patch to add a generic PHY driver for ROCKCHIP eMMC PHY.
+>> Access the PHY via registers provided by GRF (general register
+>> files) module.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - remove phy from rockchip_emmc_phy
+>> - remove state from rockchip_emmc_phy
+>> - remove on/off from init/exit
+>>
+>>   drivers/phy/Kconfig             |   7 ++
+>>   drivers/phy/Makefile            |   1 +
+>>   drivers/phy/phy-rockchip-emmc.c | 241 ++++++++++++++++++++++++++++++++++++++++
+>>   3 files changed, 249 insertions(+)
+>>   create mode 100644 drivers/phy/phy-rockchip-emmc.c
+>>
+>> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+>> index 03cb3ea..47d16e3 100644
+>> --- a/drivers/phy/Kconfig
+>> +++ b/drivers/phy/Kconfig
+>> @@ -320,6 +320,13 @@ config PHY_ROCKCHIP_USB
+>>       help
+>>         Enable this to support the Rockchip USB 2.0 PHY.
+>>
+>> +config PHY_ROCKCHIP_EMMC
+>> +    tristate "Rockchip EMMC PHY Driver"
+>> +    depends on ARCH_ROCKCHIP && OF
+>> +    select GENERIC_PHY
+>> +    help
+>> +      Enable this to support the Rockchip EMMC PHY.
+>> +
+>>   config PHY_ST_SPEAR1310_MIPHY
+>>       tristate "ST SPEAR1310-MIPHY driver"
+>>       select GENERIC_PHY
+>> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+>> index 075db1a..ed8f175 100644
+>> --- a/drivers/phy/Makefile
+>> +++ b/drivers/phy/Makefile
+>> @@ -35,6 +35,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)    +=
+>> phy-s5pv210-usb2.o
+>>   obj-$(CONFIG_PHY_EXYNOS5_USBDRD)    += phy-exynos5-usbdrd.o
+>>   obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)    += phy-qcom-apq8064-sata.o
+>>   obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
+>> +obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
+>>   obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)    += phy-qcom-ipq806x-sata.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)    += phy-spear1310-miphy.o
+>>   obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)    += phy-spear1340-miphy.o
+>> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+>> new file mode 100644
+>> index 0000000..6a157c2
+>> --- /dev/null
+>> +++ b/drivers/phy/phy-rockchip-emmc.c
+>> @@ -0,0 +1,241 @@
+>> +/*
+>> + * Rockchip emmc PHY driver
+>> + *
+>> + * Copyright (C) 2015 Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> + * Copyright (C) 2015 ROCKCHIP, Inc.
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License as published by
+>> + * the Free Software Foundation; either version 2 of the License.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/delay.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/phy/phy.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/regmap.h>
+>> +
+>> +/*
+>> + * The higher 16-bit of this register is used for write protection
+>> + * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+>> + */
+>> +#define HIWORD_UPDATE(val, mask, shift) \
+>> +        ((val) << (shift) | (mask) << ((shift) + 16))
+>> +
+>> +/* Register definition */
+>> +#define GRF_EMMCPHY_CON0    0x0
+>> +#define GRF_EMMCPHY_CON1    0x4
+>> +#define GRF_EMMCPHY_CON2    0x8
+>> +#define GRF_EMMCPHY_CON3    0xc
+>> +#define GRF_EMMCPHY_CON4    0x10
+>> +#define GRF_EMMCPHY_CON5    0x14
+>> +#define GRF_EMMCPHY_CON6    0x18
+>> +#define GRF_EMMCPHY_STATUS    0x20
+>> +
+>> +#define PHYCTRL_PDB_MASK    0x1
+>> +#define PHYCTRL_PDB_SHIFT    0x0
+>> +#define PHYCTRL_PDB_PWR_ON    0x1
+>> +#define PHYCTRL_PDB_PWR_OFF    0x0
+>> +#define PHYCTRL_ENDLL_MASK    0x1
+>> +#define PHYCTRL_ENDLL_SHIFT     0x1
+>> +#define PHYCTRL_ENDLL_ENABLE    0x1
+>> +#define PHYCTRL_ENDLL_DISABLE    0x0
+>> +#define PHYCTRL_CALDONE_MASK    0x1
+>> +#define PHYCTRL_CALDONE_SHIFT   0x6
+>> +#define PHYCTRL_CALDONE_DONE    0x1
+>> +#define PHYCTRL_CALDONE_GOING    0x0
+>> +#define PHYCTRL_DLLRDY_MASK    0x1
+>> +#define PHYCTRL_DLLRDY_SHIFT    0x5
+>> +#define PHYCTRL_DLLRDY_DONE    0x1
+>> +#define PHYCTRL_DLLRDY_GOING    0x0
+>> +
+>> +struct rockchip_emmc_phy {
+>> +    unsigned int    reg_offset;
+>> +    struct regmap    *reg_base;
+>> +};
+>> +
+>> +static int rockchip_emmc_phy_power(struct rockchip_emmc_phy *rk_phy,
+>> +                   bool on_off)
+>> +{
+>> +    unsigned int caldone;
+>> +    unsigned int dllrdy;
+>> +
+>> +    /*
+>> +     * Keep phyctrl_pdb and phyctrl_endll low to allow
+>> +     * initialization of CALIO state M/C DFFs
+>> +     */
+>> +    regmap_write(rk_phy->reg_base,
+>> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>> +             HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
+>> +                   PHYCTRL_PDB_MASK,
+>> +                   PHYCTRL_PDB_SHIFT));
+>> +    regmap_write(rk_phy->reg_base,
+>> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>> +             HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
+>> +                   PHYCTRL_ENDLL_MASK,
+>> +                   PHYCTRL_ENDLL_SHIFT));
+>> +
+>> +    /* Already finish power_off above */
+>> +    if (on_off == PHYCTRL_PDB_PWR_OFF)
+>> +        return 0;
+>> +
+>> +    /*
+>> +     * According to the user manual, calpad calibration
+>> +     * cycle takes more than 2us without the minimal recommended
+>> +     * value, so we may need a little margin here
+>> +     */
+>> +    udelay(3);
+>> +    regmap_write(rk_phy->reg_base,
+>> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>> +             HIWORD_UPDATE(PHYCTRL_PDB_PWR_ON,
+>> +                   PHYCTRL_PDB_MASK,
+>> +                   PHYCTRL_PDB_SHIFT));
+>> +
+>> +    /*
+>> +     * According to the user manual, it asks driver to
+>> +     * wait 5us for calpad busy trimming
+>> +     */
+>> +    udelay(5);
+>> +    regmap_read(rk_phy->reg_base,
+>> +            rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+>> +            &caldone);
+>> +    caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
+>> +    if (caldone != PHYCTRL_CALDONE_DONE) {
+>> +        pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
+>> +        return -ETIMEDOUT;
+>> +    }
+>> +
+>> +    /*
+>> +     * Enable analog DLL circuits, and we need extra 10.2us
+>> +     * for dll to be ready for work.
+>> +     */
+>> +    regmap_write(rk_phy->reg_base,
+>> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+>> +             HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
+>> +                   PHYCTRL_ENDLL_MASK,
+>> +                   PHYCTRL_ENDLL_SHIFT));
+>> +    udelay(11);
+>> +    regmap_read(rk_phy->reg_base,
+>> +            rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
+>> +            &dllrdy);
+>> +    dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
+>> +    if (dllrdy != PHYCTRL_DLLRDY_DONE) {
+>> +        pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
+>> +        return -ETIMEDOUT;
+>> +    }
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_power_off(struct phy *phy)
+>> +{
+>> +    struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+>> +    int ret = 0;
+>> +
+>> +    /* Power down emmc phy analog blocks */
+>> +    ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_OFF);
+>> +    if (ret)
+>> +        return ret;
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_power_on(struct phy *phy)
+>> +{
+>> +    struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+>> +    int ret = 0;
+>> +
+>> +    /* Power up emmc phy analog blocks */
+>> +    ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
+>> +    if (ret)
+>> +        return ret;
+>> +
+>> +    return 0;
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_init(struct phy *phy)
+>> +{
+>> +    return 0;
+>> +}
+>> +
+>> +static int rockchip_emmc_phy_exit(struct phy *phy)
+>> +{
+>> +    return 0;
+>> +}
+>> +
+>> +static const struct phy_ops ops = {
+>> +    .init        = rockchip_emmc_phy_init,
+>> +    .exit        = rockchip_emmc_phy_exit,
+>> +    .power_on    = rockchip_emmc_phy_power_on,
+>> +    .power_off    = rockchip_emmc_phy_power_off,
+>> +    .owner        = THIS_MODULE,
+>> +};
+>> +
+>> +static int rockchip_emmc_phy_probe(struct platform_device *pdev)
+>> +{
+>> +    struct device *dev = &pdev->dev;
+>> +    struct rockchip_emmc_phy *rk_phy;
+>> +    struct phy *generic_phy;
+>> +    struct phy_provider *phy_provider;
+>> +    struct regmap *grf;
+>> +    unsigned int reg_offset;
+>> +
+>> +    grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
+>> +    if (IS_ERR(grf)) {
+>> +        dev_err(dev, "Missing rockchip,grf property\n");
+>> +        return PTR_ERR(grf);
+>> +    }
+>> +
+>> +    rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
+>> +    if (!rk_phy)
+>> +        return -ENOMEM;
+>> +
+>> +    if (of_property_read_u32(dev->of_node, "reg", &reg_offset)) {
+>> +        dev_err(dev, "missing reg property in node %s\n",
+>> +            dev->of_node->name);
+>> +        return -EINVAL;
+>> +    }
+>> +
+>> +    rk_phy->reg_offset = reg_offset;
+>> +    rk_phy->reg_base = grf;
+>> +
+>> +    generic_phy = devm_phy_create(dev, dev->of_node, &ops);
+>> +    if (IS_ERR(generic_phy)) {
+>> +        dev_err(dev, "failed to create PHY\n");
+>> +        return PTR_ERR(generic_phy);
+>> +    }
+>> +
+>> +    phy_set_drvdata(generic_phy, rk_phy);
+>> +    phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+>> +
+>> +    return PTR_ERR_OR_ZERO(phy_provider);
+>> +}
+>> +
+>> +static const struct of_device_id rockchip_emmc_phy_dt_ids[] = {
+>> +    { .compatible = "rockchip,rk3399-emmc-phy" },
+>> +    {}
+>> +};
+>> +
+>> +MODULE_DEVICE_TABLE(of, rockchip_emmc_phy_dt_ids);
+>> +
+>> +static struct platform_driver rockchip_emmc_driver = {
+>> +    .probe        = rockchip_emmc_phy_probe,
+>> +    .driver        = {
+>> +        .name    = "rockchip-emmc-phy",
+>> +        .of_match_table = rockchip_emmc_phy_dt_ids,
+>> +    },
+>> +};
+>> +
+>> +module_platform_driver(rockchip_emmc_driver);
+>> +
+>> +MODULE_AUTHOR("Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
+>> +MODULE_DESCRIPTION("Rockchip EMMC PHY driver");
+>> +MODULE_LICENSE("GPL v2");
+>>
+> 
+> 
