@@ -1,53 +1,73 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v6 10/22] usb: dwc2: host: Properly set the HFIR
-Date: Sun, 31 Jan 2016 14:19:37 -0800
-Message-ID: <CAD=FV=UNi4xu0=tt0cwAFaCHiwyPm_UoGrckvzMG196Q9Egg7g@mail.gmail.com>
-References: <1454034013-24657-1-git-send-email-dianders@chromium.org>
-	<1454034013-24657-11-git-send-email-dianders@chromium.org>
-	<56ADD2AF.3040901@rock-chips.com>
+From: "David.Wu" <wdc@rock-chips.com>
+Subject: Re: [PATCH v3 2/2] dt-bindings: rockchip-pinctrl: Support the RK3399
+ SoCs compatible
+Date: Mon, 1 Feb 2016 10:35:30 +0800
+Message-ID: <56AEC472.9030909@rock-chips.com>
+References: <1451997055-47655-1-git-send-email-wdc@rock-chips.com>
+ <1454153517-52969-1-git-send-email-david.wu@rock-chips.com>
+ <1454153517-52969-3-git-send-email-david.wu@rock-chips.com>
+ <14543443.RsRWh5K5Uv@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56ADD2AF.3040901@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Stefan Wahren <stefan.wahren@i2se.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-rpi-kernel@lists.infradead.org, Julius Werner <jwerner@chromium.org>, "Herrero, Gregory" <gregory.herrero@intel.com>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Dinh Nguyen <dinguyen@opensource.altera.com>, Alan Stern <stern@rowland.harvard.edu>, Ming Lei <ming.lei@canonical.com>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <14543443.RsRWh5K5Uv@phil>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>
+Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Kever,
+Hi Heiko,
 
-On Sun, Jan 31, 2016 at 1:23 AM, Kever Yang <kever.yang@rock-chips.com> wrote:
-> Doug,
+=E5=9C=A8 2016/1/30 20:16, Heiko Stuebner =E5=86=99=E9=81=93:
+> Hi David,
 >
-> On 01/29/2016 10:20 AM, Douglas Anderson wrote:
+> Am Samstag, 30. Januar 2016, 19:31:57 schrieb David Wu:
+>> Change-Id: Ic1bdb3dc358837e97d7b48dd58be2f8d9d08d766
+> please no Change-Id, it's missing the Signed-off, and as Linus Wallei=
+j said,
+> the compatible addition to the documentation can maybe stay in the pi=
+nctrl-
+> patch itself.
+>
+> I think both Linus and me overlooked that the binding-doc-addition wa=
+s
+> already correctly included in your v2 patch at the top :-)
+>
+
+Okay, I will merge it in one patch. sorry for my misunderstand.
+
+
+> Heiko
+>
+>> ---
+>>   Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt | 1=
+ +
+>>   1 file changed, 1 insertion(+)
 >>
->> According to the most up to date version of the dwc2 databook, the FRINT
->> field of the HFIR register should be programmed to:
->> * 125 us * (PHY clock freq for HS) - 1
->> * 1000 us * (PHY clock freq for FS/LS) - 1
+>> diff --git
+>> a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+>> b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt ind=
+ex
+>> 391ef4b..3bb9456 100644
+>> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+>> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+>> @@ -22,6 +22,7 @@ Required properties for iomux controller:
+>>     - compatible: one of "rockchip,rk2928-pinctrl",
+>> "rockchip,rk3066a-pinctrl" "rockchip,rk3066b-pinctrl",
+>> "rockchip,rk3188-pinctrl"
+>>   		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
+>> +		       "rockchip,rk3399-pinctrl"
+>>     - rockchip,grf: phandle referencing a syscon providing the
+>>   	 "general register files"
 >
-> I got 3 version of dwc_otg databook, 2.74a, 2.94a and 3.10a,
-> all the doc describe the FrInt as:
-
-Can you check to see if you can get 3.30a (October 2015)?
-
-
-> * 125 us * (PHY clock freq for HS)
-> * 1000 us * (PHY clock freq for FS/LS)
 >
-> Maybe John can help to check the design.
-
-Yes, this really needs John or someone at Synopsys.
-
-
-> There are some feature different in new and old version, but not sure
-> if this is one of then.
 >
-> The doc says If no value is programmed, the corecalculates the value
-> based on the PHY clock specified in the FS/LS PHY Clock select field of
-> Host configuration register(HCFG.FLSLPclkSel), does this work?
 
-It seems to.  It looks like that's what makes our firmware work.  I'm
-not 100% sure if there are any downsides to that approach...
 
--Doug
+--
+To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
+n
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
