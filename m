@@ -1,340 +1,119 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] phy: add a driver for the Rockchip SoC internal
- eMMC PHY
-Date: Mon, 1 Feb 2016 11:33:43 +0530
-Message-ID: <56AEF53F.3050206@ti.com>
-References: <1451956034-24421-1-git-send-email-shawn.lin@rock-chips.com>
- <1451956081-24501-1-git-send-email-shawn.lin@rock-chips.com>
- <56A5D39B.8090008@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v4 9/9] ARM: dts: rockchip: support the spi for rk3036
+Date: Mon, 1 Feb 2016 14:32:59 +0800
+Message-ID: <56AEFC1B.60407@gmail.com>
+References: <1453970618-4383-1-git-send-email-wxt@rock-chips.com>
+ <1453970618-4383-10-git-send-email-wxt@rock-chips.com>
+ <3295129.SttO6ack9z@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56A5D39B.8090008-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3295129.SttO6ack9z@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Caesar Wang <wxt@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, hl@rock-chips.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, sonnyrao@chromium.org, jeffy.chen@rock-chips.com, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org, keescook@google.com, cf@rock-chips.com, jay.xu@rock-chips.com, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Heiko,
+
+=E5=9C=A8 2016=E5=B9=B401=E6=9C=8831=E6=97=A5 19:06, Heiko Stuebner =E5=
+=86=99=E9=81=93:
+> Hi Caesar,
+>
+> Am Donnerstag, 28. Januar 2016, 16:43:38 schrieb Caesar Wang:
+
+[...]
+
+>
+>   	memory {
+> @@ -485,6 +486,23 @@
+>   		status =3D "disabled";
+>   	};
+>
+> +	spi: spi@20074000 {
+> +		compatible =3D "rockchip,rockchip-spi";
+> +		reg =3D <0x20074000 0x1000>;
+> +		interrupts =3D <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&spi_txd &spi_rxd &spi_clk &spi_cs0 &spi_cs1>;
+> Do we really want to enable both chip-selects by default?
+>
+> On the rk3288 Lin Huang wrote:
+>      * It's assumed that most users of the SPI ports are using chip s=
+elect
+>        0.  Thus the default pinctrl for the ports enables chip select=
+ 0
+>        (but not chip select 1 on ports that have it).  If a board wan=
+ts to
+>        use chip select 1 or wants a GPIO chip select the board should
+>        override the pinctrl (just like boards can override UART pinct=
+rl if
+>        they have hardware flow control).
+>
+> Do we expect again mostly a use of cs0 or will in the major cases bot=
+h chip-
+> selects be needed?
+
+Sound resonable.
+In general, every cs and spi devices should be the one match one.
+
+That should be resonable if we want to use chip select 1 or want a GPIO=
+ chip select the board should
+override the pinctrl.
+
+>> +		num-cs =3D <2>;
+>> +		clocks =3D<&cru PCLK_SPI>, <&cru SCLK_SPI>;
+>> +		clock-names =3D "apb-pclk","spi_pclk";
+>> +		dmas =3D <&pdma 8>, <&pdma 9>;
+>> +		#dma-cells =3D <2>;
+> What do you need #dma-cells for? This is not a dma-controller :-)
+
+=46ixed.
+
+>
+>
+>> +		dma-names =3D "tx", "rx";
+>> +		status =3D "disabled";
+>> +	};
+>
+> Also I'd suggest an ordering like:
+>
+> +	spi: spi@20074000 {
+> +		compatible =3D "rockchip,rockchip-spi";
+> +		reg =3D <0x20074000 0x1000>;
+> +		interrupts =3D <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks =3D<&cru PCLK_SPI>, <&cru SCLK_SPI>;
+> +		clock-names =3D "apb-pclk","spi_pclk";
+> +		dmas =3D <&pdma 8>, <&pdma 9>;
+> +		dma-names =3D "tx", "rx";
+> +		num-cs =3D <2>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&spi_txd &spi_rxd &spi_clk &spi_cs0 &spi_cs1>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+
+Okay, I will remove the cs1/num-cs in here.
+
+Thanks.
+
+-
+Caesar
+
+>
+> Heiko
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
-On Monday 25 January 2016 01:19 PM, Shawn Lin wrote:
-> Hello Kishon,
-> 
-> Any changce to apply this patch?  :)
-
-back from vacation. Will review it this week. Sorry for the delay.
-
-Thanks
-Kishon
-
-> 
-> On 2016/1/5 9:08, Shawn Lin wrote:
->> This patch to add a generic PHY driver for ROCKCHIP eMMC PHY.
->> Access the PHY via registers provided by GRF (general register
->> files) module.
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> ---
->>
->> Changes in v2:
->> - remove phy from rockchip_emmc_phy
->> - remove state from rockchip_emmc_phy
->> - remove on/off from init/exit
->>
->>   drivers/phy/Kconfig             |   7 ++
->>   drivers/phy/Makefile            |   1 +
->>   drivers/phy/phy-rockchip-emmc.c | 241 ++++++++++++++++++++++++++++++++++++++++
->>   3 files changed, 249 insertions(+)
->>   create mode 100644 drivers/phy/phy-rockchip-emmc.c
->>
->> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
->> index 03cb3ea..47d16e3 100644
->> --- a/drivers/phy/Kconfig
->> +++ b/drivers/phy/Kconfig
->> @@ -320,6 +320,13 @@ config PHY_ROCKCHIP_USB
->>       help
->>         Enable this to support the Rockchip USB 2.0 PHY.
->>
->> +config PHY_ROCKCHIP_EMMC
->> +    tristate "Rockchip EMMC PHY Driver"
->> +    depends on ARCH_ROCKCHIP && OF
->> +    select GENERIC_PHY
->> +    help
->> +      Enable this to support the Rockchip EMMC PHY.
->> +
->>   config PHY_ST_SPEAR1310_MIPHY
->>       tristate "ST SPEAR1310-MIPHY driver"
->>       select GENERIC_PHY
->> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
->> index 075db1a..ed8f175 100644
->> --- a/drivers/phy/Makefile
->> +++ b/drivers/phy/Makefile
->> @@ -35,6 +35,7 @@ phy-exynos-usb2-$(CONFIG_PHY_S5PV210_USB2)    +=
->> phy-s5pv210-usb2.o
->>   obj-$(CONFIG_PHY_EXYNOS5_USBDRD)    += phy-exynos5-usbdrd.o
->>   obj-$(CONFIG_PHY_QCOM_APQ8064_SATA)    += phy-qcom-apq8064-sata.o
->>   obj-$(CONFIG_PHY_ROCKCHIP_USB) += phy-rockchip-usb.o
->> +obj-$(CONFIG_PHY_ROCKCHIP_EMMC) += phy-rockchip-emmc.o
->>   obj-$(CONFIG_PHY_QCOM_IPQ806X_SATA)    += phy-qcom-ipq806x-sata.o
->>   obj-$(CONFIG_PHY_ST_SPEAR1310_MIPHY)    += phy-spear1310-miphy.o
->>   obj-$(CONFIG_PHY_ST_SPEAR1340_MIPHY)    += phy-spear1340-miphy.o
->> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
->> new file mode 100644
->> index 0000000..6a157c2
->> --- /dev/null
->> +++ b/drivers/phy/phy-rockchip-emmc.c
->> @@ -0,0 +1,241 @@
->> +/*
->> + * Rockchip emmc PHY driver
->> + *
->> + * Copyright (C) 2015 Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> + * Copyright (C) 2015 ROCKCHIP, Inc.
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License as published by
->> + * the Free Software Foundation; either version 2 of the License.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + */
->> +
->> +#include <linux/delay.h>
->> +#include <linux/mfd/syscon.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/of_address.h>
->> +#include <linux/phy/phy.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/regmap.h>
->> +
->> +/*
->> + * The higher 16-bit of this register is used for write protection
->> + * only if BIT(x + 16) set to 1 the BIT(x) can be written.
->> + */
->> +#define HIWORD_UPDATE(val, mask, shift) \
->> +        ((val) << (shift) | (mask) << ((shift) + 16))
->> +
->> +/* Register definition */
->> +#define GRF_EMMCPHY_CON0    0x0
->> +#define GRF_EMMCPHY_CON1    0x4
->> +#define GRF_EMMCPHY_CON2    0x8
->> +#define GRF_EMMCPHY_CON3    0xc
->> +#define GRF_EMMCPHY_CON4    0x10
->> +#define GRF_EMMCPHY_CON5    0x14
->> +#define GRF_EMMCPHY_CON6    0x18
->> +#define GRF_EMMCPHY_STATUS    0x20
->> +
->> +#define PHYCTRL_PDB_MASK    0x1
->> +#define PHYCTRL_PDB_SHIFT    0x0
->> +#define PHYCTRL_PDB_PWR_ON    0x1
->> +#define PHYCTRL_PDB_PWR_OFF    0x0
->> +#define PHYCTRL_ENDLL_MASK    0x1
->> +#define PHYCTRL_ENDLL_SHIFT     0x1
->> +#define PHYCTRL_ENDLL_ENABLE    0x1
->> +#define PHYCTRL_ENDLL_DISABLE    0x0
->> +#define PHYCTRL_CALDONE_MASK    0x1
->> +#define PHYCTRL_CALDONE_SHIFT   0x6
->> +#define PHYCTRL_CALDONE_DONE    0x1
->> +#define PHYCTRL_CALDONE_GOING    0x0
->> +#define PHYCTRL_DLLRDY_MASK    0x1
->> +#define PHYCTRL_DLLRDY_SHIFT    0x5
->> +#define PHYCTRL_DLLRDY_DONE    0x1
->> +#define PHYCTRL_DLLRDY_GOING    0x0
->> +
->> +struct rockchip_emmc_phy {
->> +    unsigned int    reg_offset;
->> +    struct regmap    *reg_base;
->> +};
->> +
->> +static int rockchip_emmc_phy_power(struct rockchip_emmc_phy *rk_phy,
->> +                   bool on_off)
->> +{
->> +    unsigned int caldone;
->> +    unsigned int dllrdy;
->> +
->> +    /*
->> +     * Keep phyctrl_pdb and phyctrl_endll low to allow
->> +     * initialization of CALIO state M/C DFFs
->> +     */
->> +    regmap_write(rk_phy->reg_base,
->> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->> +             HIWORD_UPDATE(PHYCTRL_PDB_PWR_OFF,
->> +                   PHYCTRL_PDB_MASK,
->> +                   PHYCTRL_PDB_SHIFT));
->> +    regmap_write(rk_phy->reg_base,
->> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->> +             HIWORD_UPDATE(PHYCTRL_ENDLL_DISABLE,
->> +                   PHYCTRL_ENDLL_MASK,
->> +                   PHYCTRL_ENDLL_SHIFT));
->> +
->> +    /* Already finish power_off above */
->> +    if (on_off == PHYCTRL_PDB_PWR_OFF)
->> +        return 0;
->> +
->> +    /*
->> +     * According to the user manual, calpad calibration
->> +     * cycle takes more than 2us without the minimal recommended
->> +     * value, so we may need a little margin here
->> +     */
->> +    udelay(3);
->> +    regmap_write(rk_phy->reg_base,
->> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->> +             HIWORD_UPDATE(PHYCTRL_PDB_PWR_ON,
->> +                   PHYCTRL_PDB_MASK,
->> +                   PHYCTRL_PDB_SHIFT));
->> +
->> +    /*
->> +     * According to the user manual, it asks driver to
->> +     * wait 5us for calpad busy trimming
->> +     */
->> +    udelay(5);
->> +    regmap_read(rk_phy->reg_base,
->> +            rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
->> +            &caldone);
->> +    caldone = (caldone >> PHYCTRL_CALDONE_SHIFT) & PHYCTRL_CALDONE_MASK;
->> +    if (caldone != PHYCTRL_CALDONE_DONE) {
->> +        pr_err("rockchip_emmc_phy_power: caldone timeout.\n");
->> +        return -ETIMEDOUT;
->> +    }
->> +
->> +    /*
->> +     * Enable analog DLL circuits, and we need extra 10.2us
->> +     * for dll to be ready for work.
->> +     */
->> +    regmap_write(rk_phy->reg_base,
->> +             rk_phy->reg_offset + GRF_EMMCPHY_CON6,
->> +             HIWORD_UPDATE(PHYCTRL_ENDLL_ENABLE,
->> +                   PHYCTRL_ENDLL_MASK,
->> +                   PHYCTRL_ENDLL_SHIFT));
->> +    udelay(11);
->> +    regmap_read(rk_phy->reg_base,
->> +            rk_phy->reg_offset + GRF_EMMCPHY_STATUS,
->> +            &dllrdy);
->> +    dllrdy = (dllrdy >> PHYCTRL_DLLRDY_SHIFT) & PHYCTRL_DLLRDY_MASK;
->> +    if (dllrdy != PHYCTRL_DLLRDY_DONE) {
->> +        pr_err("rockchip_emmc_phy_power: dllrdy timeout.\n");
->> +        return -ETIMEDOUT;
->> +    }
->> +
->> +    return 0;
->> +}
->> +
->> +static int rockchip_emmc_phy_power_off(struct phy *phy)
->> +{
->> +    struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
->> +    int ret = 0;
->> +
->> +    /* Power down emmc phy analog blocks */
->> +    ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_OFF);
->> +    if (ret)
->> +        return ret;
->> +
->> +    return 0;
->> +}
->> +
->> +static int rockchip_emmc_phy_power_on(struct phy *phy)
->> +{
->> +    struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
->> +    int ret = 0;
->> +
->> +    /* Power up emmc phy analog blocks */
->> +    ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
->> +    if (ret)
->> +        return ret;
->> +
->> +    return 0;
->> +}
->> +
->> +static int rockchip_emmc_phy_init(struct phy *phy)
->> +{
->> +    return 0;
->> +}
->> +
->> +static int rockchip_emmc_phy_exit(struct phy *phy)
->> +{
->> +    return 0;
->> +}
->> +
->> +static const struct phy_ops ops = {
->> +    .init        = rockchip_emmc_phy_init,
->> +    .exit        = rockchip_emmc_phy_exit,
->> +    .power_on    = rockchip_emmc_phy_power_on,
->> +    .power_off    = rockchip_emmc_phy_power_off,
->> +    .owner        = THIS_MODULE,
->> +};
->> +
->> +static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->> +{
->> +    struct device *dev = &pdev->dev;
->> +    struct rockchip_emmc_phy *rk_phy;
->> +    struct phy *generic_phy;
->> +    struct phy_provider *phy_provider;
->> +    struct regmap *grf;
->> +    unsigned int reg_offset;
->> +
->> +    grf = syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf");
->> +    if (IS_ERR(grf)) {
->> +        dev_err(dev, "Missing rockchip,grf property\n");
->> +        return PTR_ERR(grf);
->> +    }
->> +
->> +    rk_phy = devm_kzalloc(dev, sizeof(*rk_phy), GFP_KERNEL);
->> +    if (!rk_phy)
->> +        return -ENOMEM;
->> +
->> +    if (of_property_read_u32(dev->of_node, "reg", &reg_offset)) {
->> +        dev_err(dev, "missing reg property in node %s\n",
->> +            dev->of_node->name);
->> +        return -EINVAL;
->> +    }
->> +
->> +    rk_phy->reg_offset = reg_offset;
->> +    rk_phy->reg_base = grf;
->> +
->> +    generic_phy = devm_phy_create(dev, dev->of_node, &ops);
->> +    if (IS_ERR(generic_phy)) {
->> +        dev_err(dev, "failed to create PHY\n");
->> +        return PTR_ERR(generic_phy);
->> +    }
->> +
->> +    phy_set_drvdata(generic_phy, rk_phy);
->> +    phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
->> +
->> +    return PTR_ERR_OR_ZERO(phy_provider);
->> +}
->> +
->> +static const struct of_device_id rockchip_emmc_phy_dt_ids[] = {
->> +    { .compatible = "rockchip,rk3399-emmc-phy" },
->> +    {}
->> +};
->> +
->> +MODULE_DEVICE_TABLE(of, rockchip_emmc_phy_dt_ids);
->> +
->> +static struct platform_driver rockchip_emmc_driver = {
->> +    .probe        = rockchip_emmc_phy_probe,
->> +    .driver        = {
->> +        .name    = "rockchip-emmc-phy",
->> +        .of_match_table = rockchip_emmc_phy_dt_ids,
->> +    },
->> +};
->> +
->> +module_platform_driver(rockchip_emmc_driver);
->> +
->> +MODULE_AUTHOR("Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
->> +MODULE_DESCRIPTION("Rockchip EMMC PHY driver");
->> +MODULE_LICENSE("GPL v2");
->>
-> 
-> 
+--=20
+Thanks,
+Caesar
