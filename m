@@ -1,589 +1,150 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v5] pinctrl: rockchip: add support for the rk3399
-Date: Mon,  1 Feb 2016 10:58:21 +0800
-Message-ID: <1454295501-32165-1-git-send-email-david.wu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v6 18/22] usb: dwc2: host: Schedule periodic right away
+ if it's time
+Date: Mon, 01 Feb 2016 11:32:06 +0800
+Message-ID: <56AED1B6.7020409@rock-chips.com>
+References: <1454034013-24657-1-git-send-email-dianders@chromium.org>	<1454034013-24657-19-git-send-email-dianders@chromium.org>	<56ADD580.1070505@rock-chips.com> <CAD=FV=XUjAbSQhr9LtPG=5ycPbv6UBsA0rvfrPd25EndnjxRrw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=XUjAbSQhr9LtPG=5ycPbv6UBsA0rvfrPd25EndnjxRrw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: John Youn <John.Youn@synopsys.com>, Felipe Balbi <balbi@ti.com>, Tao Huang <huangtao@rock-chips.com>, Stefan Wahren <stefan.wahren@i2se.com>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, John Youn <johnyoun@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ming Lei <ming.lei@canonical.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "Kaukab, Yousaf" <yousaf.kaukab@intel.com>, Alan Stern <stern@rowland.harvard.edu>, linux-rpi-kernel@lists.infradead.org, "Herrero, Gregory" <gregory.herrero@intel.com>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu@rock-chips.com>, Julius Werner <jwerner@chromium.org>, Dinh Nguyen <dinguyen@opensource.altera.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The pinctrl of rk3399 is much different from other's,
-especially the 3bits of drive strength.
+Doug,
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-Changes in v5:
-- merge the binding-doc-addition in one patch (Linus Heiko) 
-- fix the comment of bit15 drive setting (Heiko)
+On 02/01/2016 06:09 AM, Doug Anderson wrote:
+> Kever,
+>
+> On Sun, Jan 31, 2016 at 1:36 AM, Kever Yang <kever.yang@rock-chips.com> wrote:
+>> Doug,
+>>
+>>
+>> On 01/29/2016 10:20 AM, Douglas Anderson wrote:
+>>> In dwc2_hcd_qh_deactivate() we will put some things on the
+>>> periodic_sched_ready list.  These things won't be taken off the ready
+>>> list until the next SOF, which might be a little late.  Let's put them
+>>> on right away.
+>>>
+>>> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+>>> Tested-by: Heiko Stuebner <heiko@sntech.de>
+>>> Tested-by: Stefan Wahren <stefan.wahren@i2se.com>
+>>> ---
+>>> Changes in v6:
+>>> - Add Heiko's Tested-by.
+>>> - Add Stefan's Tested-by.
+>>>
+>>> Changes in v5: None
+>>> Changes in v4:
+>>> - Schedule periodic right away if it's time new for v4.
+>>>
+>>> Changes in v3: None
+>>> Changes in v2: None
+>>>
+>>>    drivers/usb/dwc2/hcd_queue.c | 18 ++++++++++++++++--
+>>>    1 file changed, 16 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+>>> index 9b3c435339ee..3abb34a5fc5b 100644
+>>> --- a/drivers/usb/dwc2/hcd_queue.c
+>>> +++ b/drivers/usb/dwc2/hcd_queue.c
+>>> @@ -1080,12 +1080,26 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg
+>>> *hsotg, struct dwc2_qh *qh,
+>>>           * Note: we purposely use the frame_number from the "hsotg"
+>>> structure
+>>>           * since we know SOF interrupt will handle future frames.
+>>>           */
+>>> -       if (dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number))
+>>> +       if (dwc2_frame_num_le(qh->next_active_frame, hsotg->frame_number))
+>>> {
+>>> +               enum dwc2_transaction_type tr_type;
+>>> +
+>>> +               /*
+>>> +                * We're bypassing the SOF handler which is normally what
+>>> puts
+>>> +                * us on the ready list because we're in a hurry and need
+>>> to
+>>> +                * try to catch up.
+>>> +                */
+>>> +               dwc2_sch_vdbg(hsotg, "QH=%p IMM ready fn=%04x,
+>>> nxt=%04x\n",
+>>> +                             qh, frame_number, qh->next_active_frame);
+>>>                  list_move_tail(&qh->qh_list_entry,
+>>>                                 &hsotg->periodic_sched_ready);
+>>> -       else
+>>> +
+>>> +               tr_type = dwc2_hcd_select_transactions(hsotg);
+>> Do we need to add select_transactions call here? If we get into this
+>> function in interrupt
+>> and once we put the qh in ready queue, the qh can be handled in this frame
+>> again by the
+>> later function call of dwc_hcd_select_transactions, so what we need to to
+>> here is put
+>> it in ready list instead of inactive queue, and wait for the schedule.
+> I'm not sure I understand.  Can you restate?
+>
+>
+> I'll try to explain more in the meantime...
+>
+> Both before and after my change, this function would place something
+> on the ready queue if the next_active_frame <= the frame number as of
+> last SOF interrupt (aka hsotg->frame_number).  Otherwise it goes on
+> the inactive queue.  Assuming that the previous change ("usb: dwc2:
+> host: Manage frame nums better in scheduler") worked properly then
+> next_active_frame shouldn't be less than (hsotg->frame_number - 1).
+> Remember that next_active_frame is always 1 before the wire frame, so
+> if "next_active_frame == hsotg->frame_number - 1" it means that we
+> need to get the transfer on the wire _right away_.  If
+> "next_active_frame == hsotg->frame_number" the transfer doesn't need
+> to go on the wire right away, but since dwc2 can be prepped one frame
+> in advance it doesn't hurt to give it to the hardware right away if
+> there's space.
+>
+> As I understand it, if we stick something on the ready queue it won't
+> generally get looked at until the next SOF interrupt.  That means
+> we'll be too late if "next_active_frame == hsotg->frame_number - 1"
+> and we'll possibly be too late (depending on interrupt latency) if
+> "next_active_frame == hsotg->frame_number"
+>
+I understand this patch and agree with your point of schedule the
+periodic right away instead of at least next frame.
+My point is, there are only two call to dwc2_hcd_qh_deactivate(), from
+dwc2_hcd_urb_dequeue() and dwc2_release_channel(), we don't need
+to do the schedule for dequeue, and there is one
+dwc2_hcd_select_transactions() call at the end of dwc2_release_channel(),
+maybe we don't need another dwc2_hcd_select_transactions() here.
 
-Change in v4: None
+I think the duration from this point to the function call of 
+dwc2_hcd_select_transactions()
+in dwc2_release_channel() will be the main factor for us to decide if
+we need to add a function call of  dwc2_hcd_select_transactions() here.
 
-Change in v3:
-- use switch-case to distinguish special 3bits width per pin (Heiko)
-
-Change in v2:
-- need spin_unlock_irqrestore for set drive default case
-
- .../bindings/pinctrl/rockchip,pinctrl.txt          |   1 +
- drivers/pinctrl/pinctrl-rockchip.c                 | 369 ++++++++++++++++++++-
- 2 files changed, 356 insertions(+), 14 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-index 391ef4b..3bb9456 100644
---- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
-@@ -22,6 +22,7 @@ Required properties for iomux controller:
-   - compatible: one of "rockchip,rk2928-pinctrl", "rockchip,rk3066a-pinctrl"
- 		       "rockchip,rk3066b-pinctrl", "rockchip,rk3188-pinctrl"
- 		       "rockchip,rk3288-pinctrl", "rockchip,rk3368-pinctrl"
-+		       "rockchip,rk3399-pinctrl"
-   - rockchip,grf: phandle referencing a syscon providing the
- 	 "general register files"
- 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a065112..d485f22 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -64,6 +64,7 @@ enum rockchip_pinctrl_type {
- 	RK3188,
- 	RK3288,
- 	RK3368,
-+	RK3399,
- };
- 
- /**
-@@ -86,6 +87,31 @@ struct rockchip_iomux {
- };
- 
- /**
-+ * enum type index corresponding to rockchip_perpin_drv_list arrays index.
-+ */
-+enum rockchip_pin_drv_type {
-+	DRV_TYPE_IO_DEFAULT = 0,
-+	DRV_TYPE_IO_1V8_OR_3V0,
-+	DRV_TYPE_IO_1V8_ONLY,
-+	DRV_TYPE_IO_1V8_3V0_AUTO,
-+	DRV_TYPE_IO_3V3_ONLY,
-+	DRV_TYPE_MAX
-+};
-+
-+/**
-+ * @drv_type: drive strength variant using rockchip_perpin_drv_type
-+ * @offset: if initialized to -1 it will be autocalculated, by specifying
-+ *	    an initial offset value the relevant source offset can be reset
-+ *	    to a new value for autocalculating the following drive strength
-+ *	    registers. if used chips own cal_drv func instead to calculate
-+ *	    registers offset, the variant could be ignored.
-+ */
-+struct rockchip_drv {
-+	enum rockchip_pin_drv_type	drv_type;
-+	int				offset;
-+};
-+
-+/**
-  * @reg_base: register base of the gpio bank
-  * @reg_pull: optional separate register for additional pull settings
-  * @clk: clock of the gpio bank
-@@ -96,6 +122,7 @@ struct rockchip_iomux {
-  * @name: name of the bank
-  * @bank_num: number of the bank, to account for holes
-  * @iomux: array describing the 4 iomux sources of the bank
-+ * @drv: array describing the 4 drive strength sources of the bank
-  * @valid: are all necessary informations present
-  * @of_node: dt node of this bank
-  * @drvdata: common pinctrl basedata
-@@ -115,6 +142,7 @@ struct rockchip_pin_bank {
- 	char				*name;
- 	u8				bank_num;
- 	struct rockchip_iomux		iomux[4];
-+	struct rockchip_drv		drv[4];
- 	bool				valid;
- 	struct device_node		*of_node;
- 	struct rockchip_pinctrl		*drvdata;
-@@ -151,6 +179,47 @@ struct rockchip_pin_bank {
- 		},							\
- 	}
- 
-+#define PIN_BANK_DRV_FLAGS(id, pins, label, type0, type1, type2, type3) \
-+	{								\
-+		.bank_num	= id,					\
-+		.nr_pins	= pins,					\
-+		.name		= label,				\
-+		.iomux		= {					\
-+			{ .offset = -1 },				\
-+			{ .offset = -1 },				\
-+			{ .offset = -1 },				\
-+			{ .offset = -1 },				\
-+		},							\
-+		.drv		= {					\
-+			{ .drv_type = type0, .offset = -1 },		\
-+			{ .drv_type = type1, .offset = -1 },		\
-+			{ .drv_type = type2, .offset = -1 },		\
-+			{ .drv_type = type3, .offset = -1 },		\
-+		},							\
-+	}
-+
-+#define PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(id, pins, label, iom0, iom1,	\
-+					iom2, iom3, drv0, drv1, drv2,	\
-+					drv3, offset0, offset1,		\
-+					offset2, offset3)		\
-+	{								\
-+		.bank_num	= id,					\
-+		.nr_pins	= pins,					\
-+		.name		= label,				\
-+		.iomux		= {					\
-+			{ .type = iom0, .offset = -1 },			\
-+			{ .type = iom1, .offset = -1 },			\
-+			{ .type = iom2, .offset = -1 },			\
-+			{ .type = iom3, .offset = -1 },			\
-+		},							\
-+		.drv		= {					\
-+			{ .drv_type = drv0, .offset = offset0 },	\
-+			{ .drv_type = drv1, .offset = offset1 },	\
-+			{ .drv_type = drv2, .offset = offset2 },	\
-+			{ .drv_type = drv3, .offset = offset3 },	\
-+		},							\
-+	}
-+
- /**
-  */
- struct rockchip_pin_ctrl {
-@@ -161,6 +230,9 @@ struct rockchip_pin_ctrl {
- 	enum rockchip_pinctrl_type	type;
- 	int				grf_mux_offset;
- 	int				pmu_mux_offset;
-+	int				grf_drv_offset;
-+	int				pmu_drv_offset;
-+
- 	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
- 				    int pin_num, struct regmap **regmap,
- 				    int *reg, u8 *bit);
-@@ -676,7 +748,68 @@ static void rk3368_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 	}
- }
- 
--static int rockchip_perpin_drv_list[] = { 2, 4, 8, 12 };
-+#define RK3399_PULL_GRF_OFFSET		0xe040
-+#define RK3399_PULL_PMU_OFFSET		0x40
-+#define RK3399_DRV_3BITS_PER_PIN	3
-+
-+static void rk3399_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					 int pin_num, struct regmap **regmap,
-+					 int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The bank0:16 and bank1:32 pins are located in PMU */
-+	if ((bank->bank_num == 0) || (bank->bank_num == 1)) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK3399_PULL_PMU_OFFSET;
-+
-+		*reg += bank->bank_num * RK3188_PULL_BANK_STRIDE;
-+
-+		*reg += ((pin_num / RK3188_PULL_PINS_PER_REG) * 4);
-+		*bit = pin_num % RK3188_PULL_PINS_PER_REG;
-+		*bit *= RK3188_PULL_BITS_PER_PIN;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK3399_PULL_GRF_OFFSET;
-+
-+		/* correct the offset, as we're starting with the 3rd bank */
-+		*reg -= 0x20;
-+		*reg += bank->bank_num * RK3188_PULL_BANK_STRIDE;
-+		*reg += ((pin_num / RK3188_PULL_PINS_PER_REG) * 4);
-+
-+		*bit = (pin_num % RK3188_PULL_PINS_PER_REG);
-+		*bit *= RK3188_PULL_BITS_PER_PIN;
-+	}
-+}
-+
-+static void rk3399_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+	int drv_num = (pin_num / 8);
-+
-+	/*  The bank0:16 and bank1:32 pins are located in PMU */
-+	if ((bank->bank_num == 0) || (bank->bank_num == 1))
-+		*regmap = info->regmap_pmu;
-+	else
-+		*regmap = info->regmap_base;
-+
-+	*reg = bank->drv[drv_num].offset;
-+	if ((bank->drv[drv_num].drv_type == DRV_TYPE_IO_1V8_3V0_AUTO) ||
-+	    (bank->drv[drv_num].drv_type == DRV_TYPE_IO_3V3_ONLY))
-+		*bit = (pin_num % 8) * 3;
-+	else
-+		*bit = (pin_num % 8) * 2;
-+}
-+
-+static int rockchip_perpin_drv_list[DRV_TYPE_MAX][8] = {
-+	{ 2, 4, 8, 12, -1, -1, -1, -1 },
-+	{ 3, 6, 9, 12, -1, -1, -1, -1 },
-+	{ 5, 10, 15, 20, -1, -1, -1, -1 },
-+	{ 4, 6, 8, 10, 12, 14, 16, 18 },
-+	{ 4, 7, 10, 13, 16, 19, 22, 26 }
-+};
- 
- static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
- 				     int pin_num)
-@@ -685,19 +818,74 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
- 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
- 	struct regmap *regmap;
- 	int reg, ret;
--	u32 data;
-+	u32 data, temp, rmask_bits;
- 	u8 bit;
-+	int drv_type = bank->drv[pin_num / 8].drv_type;
- 
- 	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
- 
-+	switch (drv_type) {
-+	case DRV_TYPE_IO_1V8_3V0_AUTO:
-+	case DRV_TYPE_IO_3V3_ONLY:
-+		rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-+		switch (bit) {
-+		case 0 ... 12:
-+			/* regular case, nothing to do */
-+			break;
-+		case 15:
-+			/*
-+			 * drive-strength offset is special, as it is
-+			 * spread over 2 registers
-+			 */
-+			ret = regmap_read(regmap, reg, &data);
-+			if (ret)
-+				return ret;
-+
-+			ret = regmap_read(regmap, reg + 0x4, &temp);
-+			if (ret)
-+				return ret;
-+
-+			/*
-+			 * the bit data[15] contains bit 0 of the value
-+			 * while temp[1:0] contains bits 2 and 1
-+			 */
-+			data >>= 15;
-+			temp &= 0x3;
-+			temp <<= 1;
-+			data |= temp;
-+
-+			return rockchip_perpin_drv_list[drv_type][data];
-+		case 18 ... 21:
-+			/* setting fully enclosed in the second register */
-+			reg += 4;
-+			bit -= 16;
-+			break;
-+		default:
-+			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
-+				bit, drv_type);
-+			return -EINVAL;
-+		}
-+
-+		break;
-+	case DRV_TYPE_IO_DEFAULT:
-+	case DRV_TYPE_IO_1V8_OR_3V0:
-+	case DRV_TYPE_IO_1V8_ONLY:
-+		rmask_bits = RK3288_DRV_BITS_PER_PIN;
-+		break;
-+	default:
-+		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
-+			drv_type);
-+		return -EINVAL;
-+	}
-+
- 	ret = regmap_read(regmap, reg, &data);
- 	if (ret)
- 		return ret;
- 
- 	data >>= bit;
--	data &= (1 << RK3288_DRV_BITS_PER_PIN) - 1;
-+	data &= (1 << rmask_bits) - 1;
- 
--	return rockchip_perpin_drv_list[data];
-+	return rockchip_perpin_drv_list[drv_type][data];
- }
- 
- static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
-@@ -708,16 +896,23 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 	struct regmap *regmap;
- 	unsigned long flags;
- 	int reg, ret, i;
--	u32 data, rmask;
-+	u32 data, rmask, rmask_bits, temp;
- 	u8 bit;
-+	int drv_type = bank->drv[pin_num / 8].drv_type;
-+
-+	dev_dbg(info->dev, "setting drive of GPIO%d-%d to %d\n",
-+		bank->bank_num, pin_num, strength);
- 
- 	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
- 
- 	ret = -EINVAL;
--	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list); i++) {
--		if (rockchip_perpin_drv_list[i] == strength) {
-+	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list[drv_type]); i++) {
-+		if (rockchip_perpin_drv_list[drv_type][i] == strength) {
- 			ret = i;
- 			break;
-+		} else if (rockchip_perpin_drv_list[drv_type][i] < 0) {
-+			ret = rockchip_perpin_drv_list[drv_type][i];
-+			break;
- 		}
- 	}
- 
-@@ -729,8 +924,64 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 
- 	spin_lock_irqsave(&bank->slock, flags);
- 
-+	switch (drv_type) {
-+	case DRV_TYPE_IO_1V8_3V0_AUTO:
-+	case DRV_TYPE_IO_3V3_ONLY:
-+		rmask_bits = RK3399_DRV_3BITS_PER_PIN;
-+		switch (bit) {
-+		case 0 ... 12:
-+			/* regular case, nothing to do */
-+			break;
-+		case 15:
-+			/*
-+			 * drive-strength offset is special, as it is spread
-+			 * over 2 registers, the bit data[15] contains bit 0
-+			 * of the value while temp[1:0] contains bits 2 and 1
-+			 */
-+			data = (ret & 0x1) << 15;
-+			temp = (ret >> 0x1) & 0x3;
-+
-+			rmask = BIT(15) | BIT(31);
-+			data |= BIT(31);
-+			ret = regmap_update_bits(regmap, reg, rmask, data);
-+			if (ret) {
-+				spin_unlock_irqrestore(&bank->slock, flags);
-+				return ret;
-+			}
-+
-+			rmask = 0x3 | (0x3 << 16);
-+			temp |= (0x3 << 16);
-+			reg += 0x4;
-+			ret = regmap_update_bits(regmap, reg, rmask, temp);
-+
-+			spin_unlock_irqrestore(&bank->slock, flags);
-+			return ret;
-+		case 18 ... 21:
-+			/* setting fully enclosed in the second register */
-+			reg += 4;
-+			bit -= 16;
-+			break;
-+		default:
-+			spin_unlock_irqrestore(&bank->slock, flags);
-+			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
-+				bit, drv_type);
-+			return -EINVAL;
-+		}
-+		break;
-+	case DRV_TYPE_IO_DEFAULT:
-+	case DRV_TYPE_IO_1V8_OR_3V0:
-+	case DRV_TYPE_IO_1V8_ONLY:
-+		rmask_bits = RK3288_DRV_BITS_PER_PIN;
-+		break;
-+	default:
-+		spin_unlock_irqrestore(&bank->slock, flags);
-+		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
-+			drv_type);
-+		return -EINVAL;
-+	}
-+
- 	/* enable the write to the equivalent lower bits */
--	data = ((1 << RK3288_DRV_BITS_PER_PIN) - 1) << (bit + 16);
-+	data = ((1 << rmask_bits) - 1) << (bit + 16);
- 	rmask = data | (data >> 16);
- 	data |= (ret << bit);
- 
-@@ -767,6 +1018,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-+	case RK3399:
- 		data >>= bit;
- 		data &= (1 << RK3188_PULL_BITS_PER_PIN) - 1;
- 
-@@ -823,6 +1075,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-+	case RK3399:
- 		spin_lock_irqsave(&bank->slock, flags);
- 
- 		/* enable the write to the equivalent lower bits */
-@@ -1003,6 +1256,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case RK3188:
- 	case RK3288:
- 	case RK3368:
-+	case RK3399:
- 		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
- 	}
- 
-@@ -1860,7 +2114,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 	struct device_node *np;
- 	struct rockchip_pin_ctrl *ctrl;
- 	struct rockchip_pin_bank *bank;
--	int grf_offs, pmu_offs, i, j;
-+	int grf_offs, pmu_offs, drv_grf_offs, drv_pmu_offs, i, j;
- 
- 	match = of_match_node(rockchip_pinctrl_dt_match, node);
- 	ctrl = (struct rockchip_pin_ctrl *)match->data;
-@@ -1884,6 +2138,8 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 
- 	grf_offs = ctrl->grf_mux_offset;
- 	pmu_offs = ctrl->pmu_mux_offset;
-+	drv_pmu_offs = ctrl->pmu_drv_offset;
-+	drv_grf_offs = ctrl->grf_drv_offset;
- 	bank = ctrl->pin_banks;
- 	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
- 		int bank_pins = 0;
-@@ -1893,27 +2149,39 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 		bank->pin_base = ctrl->nr_pins;
- 		ctrl->nr_pins += bank->nr_pins;
- 
--		/* calculate iomux offsets */
-+		/* calculate iomux and drv offsets */
- 		for (j = 0; j < 4; j++) {
- 			struct rockchip_iomux *iom = &bank->iomux[j];
-+			struct rockchip_drv *drv = &bank->drv[j];
- 			int inc;
- 
- 			if (bank_pins >= bank->nr_pins)
- 				break;
- 
--			/* preset offset value, set new start value */
-+			/* preset iomux offset value, set new start value */
- 			if (iom->offset >= 0) {
- 				if (iom->type & IOMUX_SOURCE_PMU)
- 					pmu_offs = iom->offset;
- 				else
- 					grf_offs = iom->offset;
--			} else { /* set current offset */
-+			} else { /* set current iomux offset */
- 				iom->offset = (iom->type & IOMUX_SOURCE_PMU) ?
- 							pmu_offs : grf_offs;
- 			}
- 
--			dev_dbg(d->dev, "bank %d, iomux %d has offset 0x%x\n",
--				 i, j, iom->offset);
-+			/* preset drv offset value, set new start value */
-+			if (drv->offset >= 0) {
-+				if (iom->type & IOMUX_SOURCE_PMU)
-+					drv_pmu_offs = drv->offset;
-+				else
-+					drv_grf_offs = drv->offset;
-+			} else { /* set current drv offset */
-+				drv->offset = (iom->type & IOMUX_SOURCE_PMU) ?
-+						drv_pmu_offs : drv_grf_offs;
-+			}
-+
-+			dev_dbg(d->dev, "bank %d, iomux %d has iom_offset 0x%x drv_offset 0x%x\n",
-+				i, j, iom->offset, drv->offset);
- 
- 			/*
- 			 * Increase offset according to iomux width.
-@@ -1925,6 +2193,21 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 			else
- 				grf_offs += inc;
- 
-+			/*
-+			 * Increase offset according to drv width.
-+			 * 3bit drive-strenth'es are spread over two registers.
-+			 */
-+			if ((drv->drv_type == DRV_TYPE_IO_1V8_3V0_AUTO) ||
-+			    (drv->drv_type == DRV_TYPE_IO_3V3_ONLY))
-+				inc = 8;
-+			else
-+				inc = 4;
-+
-+			if (iom->type & IOMUX_SOURCE_PMU)
-+				drv_pmu_offs += inc;
-+			else
-+				drv_grf_offs += inc;
-+
- 			bank_pins += 8;
- 		}
- 	}
-@@ -2208,6 +2491,62 @@ static struct rockchip_pin_ctrl rk3368_pin_ctrl = {
- 		.drv_calc_reg		= rk3368_calc_drv_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rk3399_pin_banks[] = {
-+	PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(0, 32, "gpio0", IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					DRV_TYPE_IO_1V8_ONLY,
-+					DRV_TYPE_IO_1V8_ONLY,
-+					DRV_TYPE_IO_DEFAULT,
-+					DRV_TYPE_IO_DEFAULT,
-+					0x0,
-+					0x8,
-+					-1,
-+					-1
-+					),
-+	PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(1, 32, "gpio1", IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					IOMUX_SOURCE_PMU,
-+					DRV_TYPE_IO_1V8_OR_3V0,
-+					DRV_TYPE_IO_1V8_OR_3V0,
-+					DRV_TYPE_IO_1V8_OR_3V0,
-+					DRV_TYPE_IO_1V8_OR_3V0,
-+					0x20,
-+					0x28,
-+					0x30,
-+					0x38
-+					),
-+	PIN_BANK_DRV_FLAGS(2, 32, "gpio2", DRV_TYPE_IO_1V8_OR_3V0,
-+			   DRV_TYPE_IO_1V8_OR_3V0,
-+			   DRV_TYPE_IO_1V8_ONLY,
-+			   DRV_TYPE_IO_1V8_ONLY
-+			   ),
-+	PIN_BANK_DRV_FLAGS(3, 32, "gpio3", DRV_TYPE_IO_3V3_ONLY,
-+			   DRV_TYPE_IO_3V3_ONLY,
-+			   DRV_TYPE_IO_3V3_ONLY,
-+			   DRV_TYPE_IO_1V8_OR_3V0
-+			   ),
-+	PIN_BANK_DRV_FLAGS(4, 32, "gpio4", DRV_TYPE_IO_1V8_OR_3V0,
-+			   DRV_TYPE_IO_1V8_3V0_AUTO,
-+			   DRV_TYPE_IO_1V8_OR_3V0,
-+			   DRV_TYPE_IO_1V8_OR_3V0
-+			   ),
-+};
-+
-+static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
-+		.pin_banks		= rk3399_pin_banks,
-+		.nr_banks		= ARRAY_SIZE(rk3399_pin_banks),
-+		.label			= "RK3399-GPIO",
-+		.type			= RK3399,
-+		.grf_mux_offset		= 0xe000,
-+		.pmu_mux_offset		= 0x0,
-+		.grf_drv_offset		= 0xe100,
-+		.pmu_drv_offset		= 0x80,
-+		.pull_calc_reg		= rk3399_calc_pull_reg_and_bit,
-+		.drv_calc_reg		= rk3399_calc_drv_reg_and_bit,
-+};
- 
- static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 	{ .compatible = "rockchip,rk2928-pinctrl",
-@@ -2224,6 +2563,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 		.data = (void *)&rk3288_pin_ctrl },
- 	{ .compatible = "rockchip,rk3368-pinctrl",
- 		.data = (void *)&rk3368_pin_ctrl },
-+	{ .compatible = "rockchip,rk3399-pinctrl",
-+		.data = (void *)&rk3399_pin_ctrl },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, rockchip_pinctrl_dt_match);
--- 
-1.9.1
-
-
+Thanks,
+- Kever
+> Note that before my series, there were more places than just the SOF
+> interrupt that would update hsotg->frame_number (see "usb: dwc2: host:
+> Manage frame nums better in scheduler" for fix).  Also before my
+> series (specially "usb: dwc2: host: Manage frame nums better in
+> scheduler") we used the actual current frame number when doing
+> comparisons.  Also before my series (specifically "usb: dwc2: host:
+> Properly set even/odd frame") we didn't really place things in the
+> frame that they were scheduled in anyway.
+>
+>
+> Also note that I believe that when dwc2_hcd_qh_deactivate() is called
+> our spinlock is held which means that the SOF interrupt either ran
+> before our function or won't run till after it.
+>
+>>> +               if (tr_type != DWC2_TRANSACTION_NONE)
+>>> +                       dwc2_hcd_queue_transactions(hsotg, tr_type);
+>>> +       } else {
+>>>                  list_move_tail(&qh->qh_list_entry,
+>>>                                 &hsotg->periodic_sched_inactive);
+>>> +       }
+>>>    }
+>>>      /**
+>>
+>>
