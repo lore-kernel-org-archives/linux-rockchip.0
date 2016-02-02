@@ -1,51 +1,26 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 5/8] ASoC: rt5616: add mclk property for rt5616
- document
-Date: Tue, 2 Feb 2016 19:36:07 +0000
-Message-ID: <20160202193607.GW4455@sirena.org.uk>
-References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
- <1454384680-7197-1-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: free memory for error handle
+Date: Tue, 02 Feb 2016 22:11:54 +0100
+Message-ID: <1720574.6lM2zyED9Z@diego>
+References: <1454384270-20018-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="QILrdhYozogw5Vly"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1454384680-7197-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: bardliao-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, oder_chiou-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454384270-20018-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Dienstag, 2. Februar 2016, 11:37:50 schrieb Shawn Lin:
+> Add free memeory if rockchip_clk_register_branch
+> failed.
+> 
+> Fixes: a245fecbb806 ("clk: rockchip: add basic infrastructure...")
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
---QILrdhYozogw5Vly
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+applied to my clk-branch for 4.6
 
-On Tue, Feb 02, 2016 at 11:44:38AM +0800, Caesar Wang wrote:
-> This patch adds the mclk property for the CODEC driver,
-> since sometimes the CODEC driver needs the clock enabled.
-
-This appears to be a resend of a patch that's already been applied.  If
-any changes are required please send incremental patches against current
-git.
-
---QILrdhYozogw5Vly
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWsQUmAAoJECTWi3JdVIfQ8J4H/2IWfvlAqE68iuc+PBhsuyZ7
-JI/GXQfW1kF+C1XbpCYA02GgNn+BOyAkn61LgyQvJBde8bRNpRvnRhFFCfAQxjXY
-8KIQXm8Ooh/276OggNjHis6caj83SUHJRZvZGYPqAMdVJCz5ul7N4BqwG57CKuYO
-x9e3NcN1TGNiEkqm+lZpuKHqOa4mlw6zEnnYtrcKGLs+JiXFtMdlDHkIt+4hBVZb
-oLdTiLgnHJTIdUlk2jDcDkawIEMoK1gmlqSKdrDlUMhWPsmgNN32TWuEWXJdHxDU
-Qxrk1jw+Xz7xGESxc6DrVAMfHmnj1wUfbYzz/1AWY2amqR/IVetlhBjYU4lggGQ=
-=epdQ
------END PGP SIGNATURE-----
-
---QILrdhYozogw5Vly--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks
+Heiko
