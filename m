@@ -1,56 +1,57 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] clk: rockchip: free memory for error handle
-Date: Tue,  2 Feb 2016 11:37:50 +0800
-Message-ID: <1454384270-20018-1-git-send-email-shawn.lin@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v5 5/8] ASoC: rt5616: add mclk property for rt5616 document
+Date: Tue,  2 Feb 2016 11:44:38 +0800
+Message-ID: <1454384680-7197-1-git-send-email-wxt@rock-chips.com>
+References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+To: broonie@kernel.org, bardliao@realtek.com
+Cc: alsa-devel@alsa-project.org, oder_chiou@realtek.com, robh+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, keescook@google.com, linux-kernel@vger.kernel.org, jeffy.chen@rock-chips.com, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add free memeory if rockchip_clk_register_branch
-failed.
+This patch adds the mclk property for the CODEC driver,
+since sometimes the CODEC driver needs the clock enabled.
 
-Fixes: a245fecbb806 ("clk: rockchip: add basic infrastructure...")
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+The system clock of ALC5616 can be selected from MCLK,
+That also makes the codec the master clock provider.
+
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
+
+Cc:  alsa-devel@alsa-project.org
+Cc:  Mark Brown <broonie@kernel.org>
+Cc:  Bard Liao <bardliao@realtek.com>
+
 ---
 
- drivers/clk/rockchip/clk.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+Changes in v5:
+- Fix the wrong word, as the Rob comments on
+  https://patchwork.kernel.org/patch/8147731/.
+- Cc the related alsa experts.
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index d9a0b5d..62fbe2c 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -70,7 +70,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
- 	if (gate_offset >= 0) {
- 		gate = kzalloc(sizeof(*gate), GFP_KERNEL);
- 		if (!gate)
--			return ERR_PTR(-ENOMEM);
-+			goto err_gate;
+Changes in v4:
+- Add this patch included in kylin series patches.
+
+ Documentation/devicetree/bindings/sound/rt5616.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/rt5616.txt b/Documentation/devicetree/bindings/sound/rt5616.txt
+index efc48c6..e410858 100644
+--- a/Documentation/devicetree/bindings/sound/rt5616.txt
++++ b/Documentation/devicetree/bindings/sound/rt5616.txt
+@@ -8,6 +8,12 @@ Required properties:
  
- 		gate->flags = gate_flags;
- 		gate->reg = base + gate_offset;
-@@ -82,7 +82,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
- 	if (div_width > 0) {
- 		div = kzalloc(sizeof(*div), GFP_KERNEL);
- 		if (!div)
--			return ERR_PTR(-ENOMEM);
-+			goto err_div;
+ - reg : The I2C address of the device.
  
- 		div->flags = div_flags;
- 		div->reg = base + muxdiv_offset;
-@@ -100,6 +100,11 @@ static struct clk *rockchip_clk_register_branch(const char *name,
- 				     flags);
++Optional properties:
++
++- clocks: The phandle of the master clock to the CODEC.
++
++- clock-names: Should be "mclk".
++
+ Pins on the device (for linking into audio routes) for RT5616:
  
- 	return clk;
-+err_div:
-+	kfree(gate);
-+err_gate:
-+	kfree(mux);
-+	return ERR_PTR(-ENOMEM);
- }
- 
- struct rockchip_clk_frac {
+   * IN1P
 -- 
-2.3.7
+1.9.1
