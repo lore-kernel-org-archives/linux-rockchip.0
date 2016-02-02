@@ -1,86 +1,183 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v5 2/8] clk: rockchip: rk3036: fix and add node id for emac clock
-Date: Tue,  2 Feb 2016 11:48:19 +0800
-Message-ID: <1454384899-7270-1-git-send-email-wxt@rock-chips.com>
-References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, keescook@google.com, linux-kernel@vger.kernel.org, jeffy.chen@rock-chips.com, leozwang@google.com, zhengxing <zhengxing@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v6 18/22] usb: dwc2: host: Schedule periodic right away
+ if it's time
+Date: Tue, 02 Feb 2016 15:04:29 +0800
+Message-ID: <56B054FD.5090000@rock-chips.com>
+References: <1454034013-24657-1-git-send-email-dianders@chromium.org>	<1454034013-24657-19-git-send-email-dianders@chromium.org>	<56ADD580.1070505@rock-chips.com>	<CAD=FV=XUjAbSQhr9LtPG=5ycPbv6UBsA0rvfrPd25EndnjxRrw@mail.gmail.com>	<56AED1B6.7020409@rock-chips.com>	<CAD=FV=XJgmXm255=cmtqpVM0iJeWCzC5O8BtE2XY4y5Txvk+gg@mail.gmail.com> <CAD=FV=UXoRB74yCePrNqC7gUJM=rnz484peAR=n3zOpCiJ2UFw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD=FV=UXoRB74yCePrNqC7gUJM=rnz484peAR=n3zOpCiJ2UFw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Ming Lei <ming.lei-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "Kaukab, Yousaf" <yousaf.kaukab-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "Herrero, Gregory" <gregory.herrero-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Dinh Nguyen <dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: zhengxing <zhengxing@rock-chips.com>
+Doug,
 
-In the emac driver, we need to refer HCLK_MAC since there are
-only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
-GPLL, and it is unable to provide the accurate rate for mac_ref which
-need to 50MHz probability, we should let it under the DPLL and are
-able to set the freq which integer multiples of 50MHz, so we add these
-emac node for reference.
+On 02/02/2016 08:36 AM, Doug Anderson wrote:
+> Kever,
+>
+> On Sun, Jan 31, 2016 at 8:36 PM, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>> Kever,
+>>
+>> On Sun, Jan 31, 2016 at 7:32 PM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>>> Doug,
+>>>
+>>>
+>>> On 02/01/2016 06:09 AM, Doug Anderson wrote:
+>>>> Kever,
+>>>>
+>>>> On Sun, Jan 31, 2016 at 1:36 AM, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>> wrote:
+>>>>> Doug,
+>>>>>
+>>>>>
+>>>>> On 01/29/2016 10:20 AM, Douglas Anderson wrote:
+>>>>>> In dwc2_hcd_qh_deactivate() we will put some things on the
+>>>>>> periodic_sched_ready list.  These things won't be taken off the ready
+>>>>>> list until the next SOF, which might be a little late.  Let's put them
+>>>>>> on right away.
+>>>>>>
+>>>>>> Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>>>>>> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>>>>>> Tested-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+>>>>>> ---
+>>>>>> Changes in v6:
+>>>>>> - Add Heiko's Tested-by.
+>>>>>> - Add Stefan's Tested-by.
+>>>>>>
+>>>>>> Changes in v5: None
+>>>>>> Changes in v4:
+>>>>>> - Schedule periodic right away if it's time new for v4.
+>>>>>>
+>>>>>> Changes in v3: None
+>>>>>> Changes in v2: None
+>>>>>>
+>>>>>>     drivers/usb/dwc2/hcd_queue.c | 18 ++++++++++++++++--
+>>>>>>     1 file changed, 16 insertions(+), 2 deletions(-)
+>>>>>>
+>>>>>> diff --git a/drivers/usb/dwc2/hcd_queue.c b/drivers/usb/dwc2/hcd_queue.c
+>>>>>> index 9b3c435339ee..3abb34a5fc5b 100644
+>>>>>> --- a/drivers/usb/dwc2/hcd_queue.c
+>>>>>> +++ b/drivers/usb/dwc2/hcd_queue.c
+>>>>>> @@ -1080,12 +1080,26 @@ void dwc2_hcd_qh_deactivate(struct dwc2_hsotg
+>>>>>> *hsotg, struct dwc2_qh *qh,
+>>>>>>            * Note: we purposely use the frame_number from the "hsotg"
+>>>>>> structure
+>>>>>>            * since we know SOF interrupt will handle future frames.
+>>>>>>            */
+>>>>>> -       if (dwc2_frame_num_le(qh->next_active_frame,
+>>>>>> hsotg->frame_number))
+>>>>>> +       if (dwc2_frame_num_le(qh->next_active_frame,
+>>>>>> hsotg->frame_number))
+>>>>>> {
+>>>>>> +               enum dwc2_transaction_type tr_type;
+>>>>>> +
+>>>>>> +               /*
+>>>>>> +                * We're bypassing the SOF handler which is normally
+>>>>>> what
+>>>>>> puts
+>>>>>> +                * us on the ready list because we're in a hurry and
+>>>>>> need
+>>>>>> to
+>>>>>> +                * try to catch up.
+>>>>>> +                */
+>>>>>> +               dwc2_sch_vdbg(hsotg, "QH=%p IMM ready fn=%04x,
+>>>>>> nxt=%04x\n",
+>>>>>> +                             qh, frame_number, qh->next_active_frame);
+>>>>>>                   list_move_tail(&qh->qh_list_entry,
+>>>>>>                                  &hsotg->periodic_sched_ready);
+>>>>>> -       else
+>>>>>> +
+>>>>>> +               tr_type = dwc2_hcd_select_transactions(hsotg);
+>>>>> Do we need to add select_transactions call here? If we get into this
+>>>>> function in interrupt
+>>>>> and once we put the qh in ready queue, the qh can be handled in this
+>>>>> frame
+>>>>> again by the
+>>>>> later function call of dwc_hcd_select_transactions, so what we need to to
+>>>>> here is put
+>>>>> it in ready list instead of inactive queue, and wait for the schedule.
+>>>> I'm not sure I understand.  Can you restate?
+>>>>
+>>>>
+>>>> I'll try to explain more in the meantime...
+>>>>
+>>>> Both before and after my change, this function would place something
+>>>> on the ready queue if the next_active_frame <= the frame number as of
+>>>> last SOF interrupt (aka hsotg->frame_number).  Otherwise it goes on
+>>>> the inactive queue.  Assuming that the previous change ("usb: dwc2:
+>>>> host: Manage frame nums better in scheduler") worked properly then
+>>>> next_active_frame shouldn't be less than (hsotg->frame_number - 1).
+>>>> Remember that next_active_frame is always 1 before the wire frame, so
+>>>> if "next_active_frame == hsotg->frame_number - 1" it means that we
+>>>> need to get the transfer on the wire _right away_.  If
+>>>> "next_active_frame == hsotg->frame_number" the transfer doesn't need
+>>>> to go on the wire right away, but since dwc2 can be prepped one frame
+>>>> in advance it doesn't hurt to give it to the hardware right away if
+>>>> there's space.
+>>>>
+>>>> As I understand it, if we stick something on the ready queue it won't
+>>>> generally get looked at until the next SOF interrupt.  That means
+>>>> we'll be too late if "next_active_frame == hsotg->frame_number - 1"
+>>>> and we'll possibly be too late (depending on interrupt latency) if
+>>>> "next_active_frame == hsotg->frame_number"
+>>>>
+>>> I understand this patch and agree with your point of schedule the
+>>> periodic right away instead of at least next frame.
+>>> My point is, there are only two call to dwc2_hcd_qh_deactivate(), from
+>>> dwc2_hcd_urb_dequeue() and dwc2_release_channel(), we don't need
+>>> to do the schedule for dequeue, and there is one
+>>> dwc2_hcd_select_transactions() call at the end of dwc2_release_channel(),
+>>> maybe we don't need another dwc2_hcd_select_transactions() here.
+>>>
+>>> I think the duration from this point to the function call of
+>>> dwc2_hcd_select_transactions()
+>>> in dwc2_release_channel() will be the main factor for us to decide if
+>>> we need to add a function call of  dwc2_hcd_select_transactions() here.
+>> Oh, now I get what you're saying!
+>>
+>> A) You've got dwc2_release_channel() -> dwc2_deactivate_qh() ->
+>> dwc2_hcd_qh_deactivate()
+>> ...and always in that case we'll do a select / queue, so we don't need it there.
+>>
+>> B) You've got dwc2_hcd_urb_dequeue() -> dwc2_hcd_qh_deactivate()
+>>
+>> ...but why don't we need it for dwc2_hcd_urb_dequeue()?  Yes, you're
+>> not continuing a split so timing isn't quite as urgent, but you still
+>> might have an INT or ISOC packet that's scheduled with an interval of
+>> 1.  We still might want to schedule right away if there are remaining
+>> QTDs, right?
+> I ran out of time to fully test today, but I couldn't actually get a
+> case where we needed to schedule right away for B).  ...so given your
+> point about the the select / queue already present in case A, we could
+> probably just drop this patch ("usb: dwc2: host: Schedule periodic
+> right away if it's time") and if we can find a case where it's needed
+> in case B we can add the select / queue there.
+>
+> Sound OK?  I'll try to do more testing tomorrow...
+Yes, we don't get a case we need to schedule right away for case B).
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+For INT or ISOC packet, I can recall I have seen somewhere but I can find
+it now, the synchronous transfer is happen in the next uframe instead of 
+the uframe
+when the host channel initialized, so there is no difference of setting the
+host channel register sooner or later inside the same frame.
+Which means the existent code should be OK for case A).
 
----
+We can drop this patch before we have the exact use case.
 
-Changes in v5: None
-Changes in v4:
-- fix the commit, pick up from the
-  https://patchwork.kernel.org/patch/7976631/.
-- The emac parent shouldn't depend on the APLL. instead of DPLL.
+Thanks,
+- Kever
 
- drivers/clk/rockchip/clk-rk3036.c      | 9 ++++++---
- include/dt-bindings/clock/rk3036-cru.h | 2 ++
- 2 files changed, 8 insertions(+), 3 deletions(-)
+>
+> -Doug
+>
 
-diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index be71a41..701f702 100644
---- a/drivers/clk/rockchip/clk-rk3036.c
-+++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -343,8 +343,11 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(16), 0, 2, MFLAGS, 2, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(10), 5, GFLAGS),
- 
--	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
--			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 9, 5, DFLAGS),
-+	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
-+			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
-+	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
-+			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
-+
- 	MUX(SCLK_MACREF, "mac_clk_ref", mux_mac_p, CLK_SET_RATE_PARENT,
- 			RK2928_CLKSEL_CON(21), 3, 1, MFLAGS),
- 
-@@ -404,7 +407,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
- 	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
- 	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
- 	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
--	GATE(0, "hclk_mac", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 15, GFLAGS),
-+	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
- 
- 	/* pclk_peri gates */
- 	GATE(0, "pclk_peri_matrix", "pclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(4), 1, GFLAGS),
-diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
-index ebc7a7b..de44109 100644
---- a/include/dt-bindings/clock/rk3036-cru.h
-+++ b/include/dt-bindings/clock/rk3036-cru.h
-@@ -54,6 +54,7 @@
- #define SCLK_PVTM_VIDEO		125
- #define SCLK_MAC		151
- #define SCLK_MACREF		152
-+#define SCLK_MACPLL		153
- #define SCLK_SFC		160
- 
- /* aclk gates */
-@@ -92,6 +93,7 @@
- #define HCLK_SDMMC		456
- #define HCLK_SDIO		457
- #define HCLK_EMMC		459
-+#define HCLK_MAC		460
- #define HCLK_I2S		462
- #define HCLK_LCDC		465
- #define HCLK_ROM		467
--- 
-1.9.1
 
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
