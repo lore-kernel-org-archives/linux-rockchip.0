@@ -1,122 +1,172 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [Bug] usb: dwc2: Add functions to set and clear force mode
-Date: Tue, 2 Feb 2016 10:53:00 +0800
-Message-ID: <56B01A0C.3070801@gmail.com>
-References: <56A7603C.1000409@rock-chips.com>
- <CAD=FV=Xk4v=1QMYG9XmXh6hJLKU6i_wVakOArF1du-Z_4_+Neg@mail.gmail.com>
- <56A8277F.9@gmail.com>
- <CAD=FV=Uab6H6sFVj_bPRs7H4HcBi2pqZK3HDCHQxC+EDk=inDA@mail.gmail.com>
- <56AF3D80.90807@gmail.com> <56AF3DCB.20808@gmail.com>
- <2B3535C5ECE8B5419E3ECBE30077290901DC42FD26@US01WEMBX2.internal.synopsys.com>
- <56B01785.3030803@163.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v5 0/8] Add the family patches to support for
+	kylin board
+Date: Tue,  2 Feb 2016 11:33:52 +0800
+Message-ID: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56B01785.3030803-9Onoh4P/yGk@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?5ZC06Imv5bOw?= <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, CaesarWang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: heiko@sntech.de, linux-rockchip@lists.infradead.org, keescook@google.com
+Cc: huangtao@rock-chips.com, alsa-devel@alsa-project.org, hl@rock-chips.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, cf@rock-chips.com, cjf@rock-chips.com, zhengsq@rock-chips.com, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Sm9obiwKCkkgd2lsbCBzdWdnZXN0IHRoZSBtc2xlZXAoMjUpIGRlbGF5IHNob3VsZCAgcHV0IGlu
-IAonZHdjMl9mb3JjZV9kcl9tb2RlKCknIGluc3RlYWQgb2YgdGhlICdkd2MyX2NsZWFyX2ZvcmNl
-X21vZGUoKScKCuWcqCAyMDE25bm0MDLmnIgwMuaXpSAxMDo0MiwgQ2Flc2FyIFdhbmcg5YaZ6YGT
-Ogo+IEhpIEpvaG4sCj4KPiDlnKggMjAxNuW5tDAy5pyIMDLml6UgMDc6MzEsIEpvaG4gWW91biDl
-hpnpgZM6Cj4+IE9uIDIvMS8yMDE2IDM6MTMgQU0sIENhZXNhciBXYW5nIHdyb3RlOgo+Pj4KPj4+
-IOWcqCAyMDE25bm0MDLmnIgwMeaXpSAxOToxMiwgQ2Flc2FyIFdhbmcg5YaZ6YGTOgo+Pj4+IERv
-dWcKPj4+Pgo+Pj4+IOWcqCAyMDE25bm0MDHmnIgzMOaXpSAwMzoxMSwgRG91ZyBBbmRlcnNvbiDl
-hpnpgZM6Cj4+Pj4+IENhZXNhciwKPj4+Pj4KPj4+Pj4gT24gVHVlLCBKYW4gMjYsIDIwMTYgYXQg
-NjoxMiBQTSwgQ2Flc2FyIFdhbmcKPj4+Pj4gPGNhZXNhci51cHN0cmVhbUBnbWFpbC5jb20+IHdy
-b3RlOgo+Pj4+Pj4gVGhhbmtzIERvdWcncyByZXBseS4KPj4+Pj4+Cj4+Pj4+PiBDYzogV3VsZgo+
-Pj4+Pj4g5ZyoIDIwMTblubQwMeaciDI35pelIDAwOjA1LCBEb3VnIEFuZGVyc29uIOWGmemBkzoK
-Pj4+Pj4+PiBIaSwKPj4+Pj4+Pgo+Pj4+Pj4+IE9uIFR1ZSwgSmFuIDI2LCAyMDE2IGF0IDQ6MDIg
-QU0sIENhZXNhciBXYW5nIDx3eHRAcm9jay1jaGlwcy5jb20+Cj4+Pj4+Pj4gd3JvdGU6Cj4+Pj4+
-Pj4+IEhpICBKb2huLCBGZWxpcGUKPj4+Pj4+Pj4KPj4+Pj4+Pj4KPj4+Pj4+Pj4gSSdtIG5vIGZh
-bWlsaWFyIHdpdGggdXNiIHN0dWZmLgo+Pj4+Pj4+PiB0aGVuIEkgZm91bmQgdGhpcyBwYXRjaCB3
-aWxsIGJyZWFrIHVzYiB3b3JraW5nIGZvciByazMwMzYgU29DcywgCj4+Pj4+Pj4+IG1heWJlCj4+
-Pj4+Pj4+IG1vcmUKPj4+Pj4+Pj4gU29Dcy4KPj4+Pj4+Pj4gU2F5cywgVSBkaXNrIGNhbid0IHdv
-cmsgb24gdXNiIGhvc3QuCj4+Pj4+Pj4+Cj4+Pj4+Pj4+IFRoZSBmYWlsdXJlIGxvZzoKPj4+Pj4+
-Pj4KPj4+Pj4+Pj4gICAgICAgMzIuNjQ1NDgxXSB1c2IgdXNiMi1wb3J0MTogY29ubmVjdC1kZWJv
-dW5jZSBmYWlsZWQKPj4+Pj4+Pj4KPj4+Pj4+Pj4KPj4+Pj4+Pj4gVGVzdGVkIGJ5IGZvbGxvd2lu
-ZyBicmFuY2g6Cj4+Pj4+Pj4+IGh0dHBzOi8vZ2l0aHViLmNvbS9DYWVzYXItZ2l0aHViL3JvY2tj
-aGlwL3RyZWUva3lsaW4vbmV4dCAoa2VybmVsOgo+Pj4+Pj4+PiA0LjUtcmMxKQo+Pj4+Pj4+Pgo+
-Pj4+Pj4+PiBSZXZlcnQgInVzYjogZHdjMjogQWRkIGZ1bmN0aW9ucyB0byBzZXQgYW5kIGNsZWFy
-IGZvcmNlIG1vZGUiIHdpbGwKPj4+Pj4+Pj4gd29yawo+Pj4+Pj4+PiBmb3IKPj4+Pj4+Pj4gaXQu
-Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+IE1heWJlLCBzb21lb25lIGhhdmUgc29tZSBzdWdn
-ZXN0aW9ucyBvciBpZGVhcz8KPj4+Pj4+PiBDYW4geW91IGNoZWNrIGlmIHRoaXMgc2VyaWVzIGhl
-bHBzIHlvdT8KPj4+Pj4+Pgo+Pj4+Pj4+IGh0dHA6Ly9tYXJjLmluZm8vP2w9bGludXgtdXNiJm09
-MTQ1MjU1ODUxNTE2MTIxJnc9Mgo+Pj4+Pj4gVW5sdWNraWx5LCB0aGlzIHNlcmllcyBwYXRjaGVz
-IGNhbid0IGZpeCBpdCBvbiByazMwMzYgU29Dcy4KPj4+Pj4+IEkgcmV2ZXJ0IHRoaXMgQ0wgKCJ1
-c2I6IGR3YzI6IEFkZCBmdW5jdGlvbnMgdG8gc2V0IGFuZCBjbGVhciBmb3JjZQo+Pj4+Pj4gbW9k
-ZSIpIHRvCj4+Pj4+PiB3b3JrIGZpcnN0bHkuCj4+Pj4+IFlvdSdyZSAxMDAlIHBvc2l0aXZlPyAg
-SW4gcGFydGljdWxhciB5b3UgbWFkZSBzdXJlIHlvdSBoYWQgdGhpcyBwYXRjaAo+Pj4+PiAob25l
-IG9mIHRoZSB0d28gaW4gSm9obidzIHNlcmllcyBJIHBvaW50ZWQgYXQpLCB3aGljaCBleHBsaWNp
-dGx5Cj4+Pj4+IG1lbnRpb25zIGZpeGluZyBhIHByb2JsZW0gd2l0aCB0aGUgcGF0Y2ggeW91IG1l
-bnRpb24/Cj4+Pj4gSSdtIDEwMCUgcG9zaXRpdmUgdGhlIEpvaG4ncyBwYXRjaGVzIGNhbiBmaXgg
-dGhpcyBpc3N1ZQo+Pj4gU29ycnksIEpvaG4ncyBwYXRjaGVzIGNhbid0IGZpeCB0aGlzIGlzc3Vl
-Lgo+Pj4KPj4+Cj4+Pj4gQXMgdGhlIGZvbGxvd2luZyB2ZXJpZmllZCBvbgo+Pj4+IGh0dHBzOi8v
-Z2l0aHViLmNvbS9DYWVzYXItZ2l0aHViL3JvY2tjaGlwL2NvbW1pdHMvZm9yLXVzYi10ZXN0cwo+
-Pj4+Cj4+Pj4gQW55d2F5LCBNZWFud2hpbGUgaWYgd2UgYWRkIHRoZSBmb2xsbG93aW5nIHBhdGNo
-IGNhbiB3b3JrIGZvciBtZS4gSQo+Pj4+IHdpbGwgdHJhY2sgaXQgb24gdG9tb3Jyb3cgaWYgeW91
-IGhhdmUgb3RoZXIgc3VnZ2VzdGlvbnMuCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91
-c2IvZHdjMi9jb3JlLmMgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwo+Pj4+Cj4+Pj4gaW5kZXgg
-ZTk5MWQ1NS4uOTBmNGFiZiAxMDA2NDQKPj4+Pgo+Pj4+IC0tLSBhL2RyaXZlcnMvdXNiL2R3YzIv
-Y29yZS5jCj4+Pj4KPj4+PiArKysgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwo+Pj4+Cj4+Pj4g
-QEAgLTYzNyw2ICs2MzcsMTMgQEAgaW50IGR3YzJfY29yZV9yZXNldF9hbmRfZm9yY2VfZHJfbW9k
-ZShzdHJ1Y3QKPj4+PiBkd2MyX2hzb3RnICpoc290ZykKPj4+Pgo+Pj4+ICAgICAgICAgICAgICAg
-ICAgcmV0dXJuIHJldHZhbDsKPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiAgICAgICAgICBkd2MyX2ZvcmNl
-X2RyX21vZGUoaHNvdGcpOwo+Pj4+Cj4+Pj4gKwo+Pj4+Cj4+Pj4gKyAgICAgICAvKgo+Pj4+Cj4+
-Pj4gKyAgICAgICAgKiBOT1RFOiBUaGlzIGxvbmcgc2xlZXAgaXNfdmVyeV8gIGltcG9ydGFudCwg
-b3RoZXJ3aXNlIHRoZSAKPj4+PiBjb3JlCj4+Pj4gd2lsbAo+Pj4+Cj4+Pj4gKyAgICAgICAgKiBu
-b3Qgc3RheSBpbiBob3N0IG1vZGUgYWZ0ZXIgYSBjb25uZWN0b3IgSUQgY2hhbmdlIQo+Pj4+Cj4+
-Pj4gKyAgICAgICAgKi8KPj4+Pgo+Pj4+ICsgICAgICAgIHVzbGVlcF9yYW5nZSgxNTAwMDAsIDE2
-MDAwMCk7Cj4+Pj4KPj4+PiArCj4+Pj4KPj4+PiAgICAgICAgICByZXR1cm4gMDsKPj4+Pgo+Pj4+
-ICAgfQo+Pj4+Cj4+IEhpIENlc2FyLAo+Pgo+PiBPbiB5b3VyIHBsYXRmb3JtLCBpcyB0aGUgZHdj
-MiBjb250cm9sbGVyIE9URz8gSWYgc28sIHdoYXQgbW9kZSBpcyB0aGUKPj4gZHJpdmVyIHJ1bm5p
-bmcgaW4gKGRyX21vZGU9SE9TVCwgUEVSSVBIRVJBTCwgb3IgT1RHKT8KPgo+Cj4gSXQncyB0aGUg
-SG9zdCBtb2RlLiAoIFVTQl9EUl9NT0RFX0hPU1QpCj4KPj4KPj4gVGhlIGZvcmNlIG1vZGUgb25s
-eSByZXF1aXJlcyAyNW1zIGRlbGF5IGJ1dCBtYXliZSB0aGUgc2xlZXAgbmVlZHMgdG8KPj4gYmUg
-bG9uZ2VyIG9uIHlvdXIgc3lzdGVtIGZvciBzb21lIG90aGVyIHJlYXNvbi4gV2hpY2ggaXMgdW5m
-b3J0dW5hdGUKPj4gYmVjYXVzZSAxNTBtcyBpcyB2ZXJ5IGxvbmcuCj4+Cj4+IFVuZGVyIHdoYXQg
-Y29uZGl0aW9uIGRvIHlvdSBzZWUgdGhlIHByb2JsZW0uIElzIGl0IG9uIGNvbm5lY3RvciBJRAo+
-PiBjaGFuZ2U/IElmIHNvIHdlIG1pZ2h0IHB1dCB0aGUgbG9uZyBkZWxheSBpbiBhIG1vcmUgYXBw
-cm9wcmlhdGUKPj4gbG9jYXRpb24gc28gYXMgbm90IHRvIGFmZmVjdCBkZWxheSBpbiBwcm9iZS4K
-Pj4KPj4gQWxzbywgY291bGQgeW91IHRyeSAqb25seSogcmV2ZXJ0aW5nIHRoZSBmb2xsb3dpbmc6
-Cj4+Cj4+IGNvbW1pdCA5N2U0NjM4ODZiODczZjYyYmVhMjI5M2U3ZWRmODFmZGI4ODRiODRmICgi
-dXNiOiBkd2MyOiBSZWR1Y2UKPj4gZGVsYXkgd2hlbiBmb3JjaW5nIG1vZGUgaW4gcmVzZXQiKQo+
-Cj4gSSdtIHN1cmUgY2FuJ3Qgd29yayBpZiB3ZSByZXZlcnQgaXQuCj4gbG9nCj4gLi4uOgo+ICJb
-ICAgIDUuNzA1OTcxXSB1c2IgdXNiMi1wb3J0MTogY29ubmVjdC1kZWJvdW5jZSBmYWlsZWQiCj4K
-PiBkNGIzZmYxIFJldmVydCAidXNiOiBkd2MyOiBSZWR1Y2UgZGVsYXkgd2hlbiBmb3JjaW5nIG1v
-ZGUgaW4gcmVzZXQiCj4gYzY5NjU0ZiB1c2I6IGR3YzI6IEZpeCBwcm9iZSBwcm9ibGVtIG9uIGJj
-bTI4Mwo+IGI5ZGEwZmYgUmV2ZXJ0ICJ1c2I6IGR3YzI6IE1vdmUgcmVzZXQgaW50byBkd2MyX2dl
-dF9od3BhcmFtcygpCj4KPiAtLSAKPgo+IFRoZW4sIGFkZCB0aGUgZm9sbG93aW5nIHBhdGNoIGNh
-biB3b3JrLgo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jIGIvZHJpdmVy
-cy91c2IvZHdjMi9jb3JlLmMKPiBpbmRleCBlOTkxZDU1Li45MGY0YWJmIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jCj4gKysrIGIvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMK
-PiBAQCAtNjM3LDYgKzYzNywxMyBAQCBpbnQgZHdjMl9jb3JlX3Jlc2V0X2FuZF9mb3JjZV9kcl9t
-b2RlKHN0cnVjdCAKPiBkd2MyX2hzb3RnICpoc290ZykKPiAgICAgICAgICAgICAgICAgcmV0dXJu
-IHJldHZhbDsKPgo+ICAgICAgICAgZHdjMl9mb3JjZV9kcl9tb2RlKGhzb3RnKTsKPiArCj4gKyAg
-ICAgICAvKgo+ICsgICAgICAgICogTk9URTogVGhpcyBsb25nIHNsZWVwIGlzIF92ZXJ5XyBpbXBv
-cnRhbnQsIG90aGVyd2lzZSB0aGUgCj4gY29yZSB3aWxsCj4gKyAgICAgICAgKiBub3Qgc3RheSBp
-biBob3N0IG1vZGUgYWZ0ZXIgYSBjb25uZWN0b3IgSUQgY2hhbmdlIQo+ICsgICAgICAgICovCj4g
-KyAgICAgICAgdXNsZWVwX3JhbmdlKDE1MDAwMCwgMTYwMDAwKTsKPiArCj4gICAgICAgICByZXR1
-cm4gMDsKPiAgfQo+Cj4+IFRoZSBvcmlnaW5hbCBwYXRjaCB5b3UgcmVmZXJyZWQgdG8gcHJlc2Vy
-dmVzIHRoZSBsb25nIGRlbGF5IGF0IHRoZQo+PiBwb2ludCBpdCBpcyB1c2VkIGZvciBPVEcgYnV0
-IHRoZW4gdGhpcyBsYXRlciBwYXRjaCAoOTdlNDYzODgpCj4+IGRlY3JlYXNlZCB0aGUgdmFsdWUu
-IFNvIG1heWJlIHdlIGNhbiBqdXN0IHJldmVydCB0aGlzIGxhdGVyIHBhdGNoLgo+Pgo+PiBSZWdh
-cmRzLAo+PiBKb2huCj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCj4+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+PiBMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAKPgo+Cj4KCi0tIApUaGFua3MsCkNhZXNhcgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi all,
+
+This series patches are based on kernel 4.5-rc1 version, also
+is based on Heiko's branch.
+(kernel/git/mmind/linux-rockchip.git -b for-next & v4.5-clk/fixes)
+
+e.g: boot log..
+Linux version 4.5.0-rc1+ (wxt@ubuntu) ....#60 SMP Thu Jan 28 12:54:50 CST 2016
+
+1) The kylin history series patches:
+
+V0:
+https://lkml.org/lkml/2015/12/22/168
+V1:
+https://lkml.org/lkml/2015/12/17/319
+V2:
+https://lkml.org/lkml/2016/1/7/66
+V3:
+http://www.spinics.net/lists/arm-kernel/msg474796.html
+V4:
+https://lkml.org/lkml/2016/1/28/132
+
+This series patches are verified on the following github:
+https://github.com/Caesar-github/rockchip/tree/kylin/next
+
+This series has 8 patches: (8--->1)
+c455bf5 ARM: dts: rockchip: support the spi for rk3036
+41bbd5d ASoC: rt5616: add the mclk for the codec driver
+6ee2dc0 ASoC: rt5616: trivial: fix the typo
+2775e41 ASoC: rt5616: add mclk property for rt5616 document
+b4ec10b ARM: dts: rockchip: add mclk for rt5616 on kylin board
+8d272a1 ARM: dts: rockchip: add support emac for RK3036
+02e501f clk: rockchip: rk3036: fix and add node id for emac clock
+b948f42 ARM: dts: rockchip: add hdmi/vop device node for rk3036
+....
+
+This series patches can apply into Heiko for-next branch.
+(https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/log/?h=for-next)
+Also, ths ASoC can apply into Mark branch.
+---
+
+2) This series patches have the following decriptions:
+
+PATCH[1/8]: ====> add hdmi/vop display node for rk3036
+ARM: dts: rockchip: add hdmi/vop device node for rk3036
+
+This Patch is based on Ykk's Inno HDMI V7 patches. That's verified on
+my github.
+
+bd5ed3e ARM: dts: rockchip: add hdmi/vop device node for rk3036
+438e7bd FROMLIST: dt-bindings: add document for Innosilicon HDMI on Rockchip platform
+((am from https://patchwork.kernel.org/patch/8117611/))
+ad0623b FROMLIST: drm/rockchip: hdmi: add Innosilicon HDMI support
+((am https://patchwork.kernel.org/patch/8117571/))
+
+PATCH[2/8-3/8]: Add the emac patch
+
+The emac clock is depend APLL, That shoud be incorrect.
+We should fix it on the DPLL.
+
+df91ab ARM: dts: rockchip: add support emac for RK3036
+d5c2781 clk: rockchip: rk3036: fix and add node id for emac clock
+
+That's verified on kylin board with ubuntu os.
+
+How to test and verify?
+
+You can refer to the following wiki document.
+http://rockchip.wikidot.com/linux-develop-guide
+
+PATCH[4/8-7/8]: Make the codec work on kylin board
+
+41bbd5d ASoC: rt5616: add the mclk for the codec driver
+6ee2dc0 ASoC: rt5616: trivial: fix the typo
+2775e41 ASoC: rt5616: add mclk property for rt5616 document
+b4ec10b ARM: dts: rockchip: add mclk for rt5616 on kylin board
+
+As the previous discussed on https://patchwork.kernel.org/patch/8041001/
+Move the mclk into codec driver to enable and disable.
+
+How to test and verify?
+
+You can refer to the following wiki document.
+http://rockchip.wikidot.com/linux-develop-guide
+
+PATCH[8/8]: Make the codec work on kylin board
+
+Add the spi node for rk3036 dts, that's seem not related to the kylin.
+Maybe the future will support the spi on kylin board or connect the spi devices.
+
+f0fff43 ARM: dts: rockchip: support the spi for rk3036
+---
+
+Thanks your reviewing! :)
+
+-
+Caesar
+
+
+Changes in v5:
+- remove unused commit content.
+- Fix the wrong word, as the Rob comments on
+  https://patchwork.kernel.org/patch/8147731/.
+- Cc the related alsa experts.
+-Cc releated alsa experts.
+- Cc related alsa experts.
+- Remove the unused, as Heiko comments on https://patchwork.kernel.org/patch/8147761/
+- Modify the commit.
+
+Changes in v4:
+- solve the lastest conflict, picked up from
+  https://patchwork.kernel.org/patch/8040961/.
+- fix the commit, pick up from the
+  https://patchwork.kernel.org/patch/7976631/.
+- The emac parent shouldn't depend on the APLL. instead of DPLL.
+- included in the kylin series patches.
+- This patch picked up from https://patchwork.kernel.org/patch/7924971/
+- Change to solve the conflict based on the Heiko's branch.
+- Make the emac parent as the DPLL.
+- AS the previous discussed by them, add the mclk for codec.
+ (https://patchwork.kernel.org/patch/8041001/)
+- Add this patch included in kylin series patches.
+- Add this patch included in kylin series patches.
+- AS the previous discussed by them, add the mclk for codec.
+  (https://patchwork.kernel.org/patch/8041001/)
+- Add this patch included in kylin series patches.
+
+Caesar Wang (6):
+  ARM: dts: rockchip: add hdmi/vop device node for rk3036
+  ARM: dts: rockchip: add mclk for rt5616 on kylin board
+  ASoC: rt5616: add mclk property for rt5616 document
+  ASoC: rt5616: trivial: fix the typo
+  ASoC: rt5616: add the mclk for the codec driver
+  ARM: dts: rockchip: support the spi for rk3036
+
+zhengxing (2):
+  clk: rockchip: rk3036: fix and add node id for emac clock
+  ARM: dts: rockchip: add support emac for RK3036
+
+ Documentation/devicetree/bindings/sound/rt5616.txt |   6 +
+ arch/arm/boot/dts/rk3036-evb.dts                   |  23 ++
+ arch/arm/boot/dts/rk3036-kylin.dts                 |  35 ++
+ arch/arm/boot/dts/rk3036.dtsi                      | 145 ++++++++
+ drivers/clk/rockchip/clk-rk3036.c                  |   9 +-
+ include/dt-bindings/clock/rk3036-cru.h             |   2 +
+ sound/soc/codecs/rt5616.c                          | 410 +++++++++++----------
+ 7 files changed, 442 insertions(+), 188 deletions(-)
+
+-- 
+1.9.1
