@@ -1,189 +1,306 @@
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Subject: Re: [PATCH v4 5/6] rockchip: kylin: Enable boot with
- android boot image
-Date: Tue, 2 Feb 2016 15:13:01 +0800
-Message-ID: <56B056FD.70006@rock-chips.com>
-References: <1452675200-15941-1-git-send-email-jeffy.chen@rock-chips.com>
- <1452675200-15941-6-git-send-email-jeffy.chen@rock-chips.com>
- <20160113152811.GC3359@bill-the-cat> <56970886.2040009@rock-chips.com>
- <20160114162227.GY3359@bill-the-cat> <569842F2.4080808@rock-chips.com>
- <20160115005950.GC3359@bill-the-cat> <5698577B.8040209@rock-chips.com>
- <20160125190709.GN3359@bill-the-cat>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 2/4] power: reset: add reboot mode driver
+Date: Tue, 2 Feb 2016 15:31:17 +0800
+Message-ID: <56B05B45.7040207@rock-chips.com>
+References: <1452598029-8222-1-git-send-email-andy.yan@rock-chips.com>
+ <1452598319-8324-1-git-send-email-andy.yan@rock-chips.com>
+ <CAAtXAHd-m5GAUnvx9At9_UOoi1M4g25P0M-vwoC+Xc-PXtdwqw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20160125190709.GN3359@bill-the-cat>
-List-Unsubscribe: <http://lists.denx.de/mailman/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <http://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <http://lists.denx.de/mailman/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAAtXAHd-m5GAUnvx9At9_UOoi1M4g25P0M-vwoC+Xc-PXtdwqw@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Moritz Fischer <moritz.fischer@ettus.com>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>, John Stultz <john.stultz@linaro.org>, linux@roeck-us.net, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, geert+renesas@glider.be, Sebastian Reichel <sre@kernel.org>, olof@lixom.net, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, jun.nie@linaro.org, "pawel.moll@arm.com" <pawel.moll@arm.com>, f.fainelli@gmail.com, Will Deacon <will.deacon@arm.com>, linux-rockchip@lists.infradead.org, Devicetree List <devicetree@vger.kernel.org>, linux-pm@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, lorenzo.pieralisi@arm.com, cernekee@gmail.comLinux Kernel Mailing List <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tom,
+Hi Moritz:
 
-Sorry for being late..
-
-On 2016-1-26 3:07, Tom Rini wrote:
-> On Fri, Jan 15, 2016 at 10:20:43AM +0800, Jeffy Chen wrote:
->> Hi Tom,
->>
->> On 2016-1-15 8:59, Tom Rini wrote:
->>> On Fri, Jan 15, 2016 at 08:53:06AM +0800, Jeffy Chen wrote:
->>>> Hi Tom,
->>>>
->>>> On 2016-1-15 0:22, Tom Rini wrote:
->>>>> On Thu, Jan 14, 2016 at 10:31:34AM +0800, Jeffy Chen wrote:
->>>>>> Hi Tom,
->>>>>>
->>>>>> On 2016-1-13 23:28, Tom Rini wrote:
->>>>>>> On Wed, Jan 13, 2016 at 04:53:19PM +0800, Jeffy Chen wrote:
->>>>>>>
->>>>>>>> The android kernel is using appended dtb by default, and store
->>>>>>>> ramdisk right after kernel & dtb.
->>>>>>>> So we needs to relocate ramdisk, and use atags to pass params.
->>>>>>>>
->>>>>>>> Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
->>>>>>>> Acked-by: Simon Glass <sjg@chromium.org>
->>>>>>>> ---
->>>>>>>>
->>>>>>>> Changes in v4: None
->>>>>>>> Changes in v3: None
->>>>>>>> Changes in v2: None
->>>>>>>>
->>>>>>>>   include/configs/kylin_rk3036.h | 23 +++++++++++++++++++++++
->>>>>>>>   1 file changed, 23 insertions(+)
->>>>>>>>
->>>>>>>> diff --git a/include/configs/kylin_rk3036.h b/include/configs/kylin_rk3036.h
->>>>>>>> index b750b26..49997ec 100644
->>>>>>>> --- a/include/configs/kylin_rk3036.h
->>>>>>>> +++ b/include/configs/kylin_rk3036.h
->>>>>>>> @@ -35,6 +35,29 @@
->>>>>>>>   #undef CONFIG_EXTRA_ENV_SETTINGS
->>>>>>>>   #define CONFIG_EXTRA_ENV_SETTINGS \
->>>>>>>>   	"partitions=" PARTS_DEFAULT \
->>>>>>>> +	"mmcdev=0\0" \
->>>>>>>> +	"mmcpart=5\0" \
->>>>>>>> +	"loadaddr=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
->>>>>>>> +
->>>>>>>> +#define CONFIG_ANDROID_BOOT_IMAGE
->>>>>>>> +#define CONFIG_SYS_BOOT_RAMDISK_HIGH
->>>>>>> This should already be set.
->>>>>> Right, i'll remove it...
->>>>>>>> +#define CONFIG_SYS_HUSH_PARSER
->>>>>>>> +
->>>>>>>> +#undef CONFIG_BOOTCOMMAND
->>>>>>>> +#define CONFIG_BOOTCOMMAND \
->>>>>>>> +	"mmc dev ${mmcdev}; if mmc rescan; then " \
->>>>>>>> +		"part start mmc ${mmcdev} ${mmcpart} boot_start;" \
->>>>>>>> +		"part size mmc ${mmcdev} ${mmcpart} boot_size;" \
->>>>>>>> +		"mmc read ${loadaddr} ${boot_start} ${boot_size};" \
->>>>>>>> +		"bootm start ${loadaddr}; bootm ramdisk;" \
->>>>>>>> +		"bootm prep; bootm go;" \
->>>>>>>> +	"fi;" \
->>>>>>>> +
->>>>>>>> +/* Enable atags */
->>>>>>>> +#define CONFIG_SYS_BOOTPARAMS_LEN	(64*1024)
->>>>>>>> +#define CONFIG_INITRD_TAG
->>>>>>>> +#define CONFIG_SETUP_MEMORY_TAGS
->>>>>>>> +#define CONFIG_CMDLINE_TAG
->>>>>>> But I'm confused as to what exactly is going on here.  Appended dtb is
->>>>>>> not the same as ATAGS.  And you shouldn't need to split up bootm like
->>>>>>> that.  Can you please explain a bit more?  Thanks!
->>>>>> The u-boot will pass atags to kernel, and kernel will merge those
->>>>>> atags into the appended dtb(fdt).
->>>>>>
->>>>>> The default bootm flow would not pass ramdisk state, but we need it,
->>>>>> so we should add this state into default flow, or just use split
->>>>>> bootm cmds :)
->>>>> That seems very strange.  Is the ramdisk concatenated with the kernel
->>>>> and dtb as well (and that's why bootm ramdisk somehow finds it but
->>>>> normal bootm doesn't as you aren't passing in a ramdisk address) ?
->>>> Yes, the ramdisk concatenated with the kernel and dtb as
->>>> well(u-boot/include/android_image.h: struct andr_img_hdr).
->>>>
->>>> And the normal bootm cmd would find it by parsing andr_img_hdr struct.
->>>> But we still need bootm ramdisk state, because it will call
->>>> boot_ramdisk_high to relocate ramdisk area :)
->>>>
->>>> I found if not relocate it to somewhere else, it would be corrupted
->>>> after kernel's decompressing(during update fdt area).
->>> So 'bootm $loadaddr' of an Android image sees, but does not relocate the
->>> ramdisk that is included in the image, but bootm ramdisk does?  That
->>> sounds like a bug in the regular bootm handling.
->> Yep, the default bootm flow would not contain ramdisk relocate state:
->>
->> vi common/cmd_bootm.c
->>          return do_bootm_states(cmdtp, flag, argc, argv, BOOTM_STATE_START |
->>                  BOOTM_STATE_FINDOS | BOOTM_STATE_FINDOTHER |
->>                  BOOTM_STATE_LOADOS |
->> #if defined(CONFIG_PPC) || defined(CONFIG_MIPS)
->>                  BOOTM_STATE_OS_CMDLINE |
->> #endif
->>                  BOOTM_STATE_OS_PREP | BOOTM_STATE_OS_FAKE_GO |
->>                  BOOTM_STATE_OS_GO, &images, 1);
->>
->> But i'm not sure if it's ok to add it here...
-> So, I've poked aruond a bit more on some of my TI platforms at least.
-> Can you look at the following things on yours?
-> 1) Do you still see the problem on top of tree? Masahiro fixed at least
-> one problem just before v2016.01
-Yes, after rebase to tag "v2016.01-rc4", i could still repro it with the 
-normal bootm cmd.
-
-It seems we would call boot_ramdisk_high if fdt enabled in the prep stage:
-
-  vi common/image.c
-
-#ifdef CONFIG_LMB
-int image_setup_linux(bootm_headers_t *images)
-{
-...
-         if (IMAGE_ENABLE_RAMDISK_HIGH) {
-                 rd_len = images->rd_end - images->rd_start;
-                 ret = boot_ramdisk_high(lmb, images->rd_start, rd_len,
-                                 initrd_start, initrd_end);
-                 if (ret)
-                         return ret;
-         }
-
-  vi arch/arm/lib/bootm.c
-
-/* Subcommand: PREP */
-static void boot_prep_linux(bootm_headers_t *images)
-
-         if (IMAGE_ENABLE_OF_LIBFDT && images->ft_len) {
-#ifdef CONFIG_OF_LIBFDT
-                 debug("using: FDT\n");
-                 if (image_setup_linux(images)) {
-                         printf("FDT creation failed! hanging...");
-                         hang();
-                 }
-#endif
-
-
-And as Daniel said, these would "leads to a different behaviour when 
-calling bootm as a single command and calling bootm with sub-steps."
-
-If IMAGE_ENABLE_OF_LIBFDT is enabled & images->ft_len is not zero, 
-boot_ramdisk_high would be called twice with splited bootm cmds. And in 
-our kylin case (IMAGE_ENABLE_OF_LIBFDT is disabled), the 
-boot_ramdisk_high would not be called with normal bootm cmd :(
-
-> 2) Instead of fdt_high / initrd_high can you look at bootm_low /
-> bootm_size ?  include/configs/ti_armv7_common.h has these along with a
-> big comment about what the overall constraints are.
-On current kylin board, we're not using fdt_high or initrd_high.
-The bootm_low / bootm_size would be CONFIG_SYS_SDRAM_BASE / 
-gd->bd->bi_dram[0].size by default(if not define those env), and arm 
-arch will reserve 4K at the end for stack, so the ramdisk would be 
-relocated to around (dram_end - 4K) :)
-> Thanks!
+On 2016=E5=B9=B401=E6=9C=8827=E6=97=A5 18:53, Moritz Fischer wrote:
+> Hi Andy,
 >
+> On Tue, Jan 12, 2016 at 12:31 PM, Andy Yan <andy.yan@rock-chips.com> =
+wrote:
+>> This driver parse the reboot commands like "reboot loader"
+>> and "reboot recovery" to get a boot mode described in the
+>> device tree , then call the write interfae to store the boot
+>> mode in some persistent storage  like special register or ram,
+>> which can be read by the bootloader after system reboot, then
+>> the bootloader can take different action according to the mode
+>> stored.
+>>
+>> This is commonly used on Android based devices, which in order
+>> to reboot the device into fastboot or recovery mode.
+>>
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - move to dir drivers/power/reset/
+>> - make syscon-reboot-mode a generic driver
+>>
+>> Changes in v1:
+>> - fix the embarrassed compile warning
+>> - correct the maskrom magic number
+>> - check for the normal reboot
+>>
+>>   drivers/power/reset/Kconfig              |  16 +++++
+>>   drivers/power/reset/Makefile             |   2 +
+>>   drivers/power/reset/reboot-mode.c        | 100 +++++++++++++++++++=
+++++++++++++
+>>   drivers/power/reset/reboot-mode.h        |   6 ++
+>>   drivers/power/reset/syscon-reboot-mode.c |  62 +++++++++++++++++++
+>>   5 files changed, 186 insertions(+)
+>>   create mode 100644 drivers/power/reset/reboot-mode.c
+>>   create mode 100644 drivers/power/reset/reboot-mode.h
+>>   create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+>>
+>> diff --git a/drivers/power/reset/Kconfig b/drivers/power/reset/Kconf=
+ig
+>> index 1131cf7..2e6d873 100644
+>> --- a/drivers/power/reset/Kconfig
+>> +++ b/drivers/power/reset/Kconfig
+>> @@ -173,5 +173,21 @@ config POWER_RESET_ZX
+>>          help
+>>            Reboot support for ZTE SoCs.
+>>
+>> +config REBOOT_MODE
+>> +       tristate
+>> +       depends on OF
+>> +       help
+>> +        This driver will help to pass the system reboot mode
+>> +        to bootloader
+>> +
+>> +config SYSCON_REBOOT_MODE
+>> +       bool "Generic SYSCON regmap reboot mode driver"
+>> +       select REBOOT_MODE
+>> +       help
+>> +        Say y here will enable reboot mode driver. This will
+>> +        get reboot mode arguments and store it in SYSCON mapped
+>> +        register, then the bootloader can read it to take different
+>> +        action according to the mode.
+>> +
+>>   endif
+>>
+>> diff --git a/drivers/power/reset/Makefile b/drivers/power/reset/Make=
+file
+>> index 096fa67..a63865b 100644
+>> --- a/drivers/power/reset/Makefile
+>> +++ b/drivers/power/reset/Makefile
+>> @@ -20,3 +20,5 @@ obj-$(CONFIG_POWER_RESET_SYSCON) +=3D syscon-reboo=
+t.o
+>>   obj-$(CONFIG_POWER_RESET_SYSCON_POWEROFF) +=3D syscon-poweroff.o
+>>   obj-$(CONFIG_POWER_RESET_RMOBILE) +=3D rmobile-reset.o
+>>   obj-$(CONFIG_POWER_RESET_ZX) +=3D zx-reboot.o
+>> +obj-$(CONFIG_REBOOT_MODE) +=3D reboot-mode.o
+>> +obj-$(CONFIG_SYSCON_REBOOT_MODE) +=3D syscon-reboot-mode.o
+>> diff --git a/drivers/power/reset/reboot-mode.c b/drivers/power/reset=
+/reboot-mode.c
+>> new file mode 100644
+>> index 0000000..92b7b4d
+>> --- /dev/null
+>> +++ b/drivers/power/reset/reboot-mode.c
+>> @@ -0,0 +1,100 @@
+>> +/*
+>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>> + *
+>> + * This program is free software; you can redistribute it and/or mo=
+dify
+>> + * it under the terms of the GNU General Public License as publishe=
+d by
+>> + * the Free Software Foundation; either version 2 of the License, o=
+r
+>> + * (at your option) any later version.
+>> + */
+>> +#include <linux/device.h>
+>> +#include <linux/init.h>
+>> +#include <linux/kernel.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/reboot.h>
+>> +#include "reboot-mode.h"
+>> +
+>> +struct mode_info {
+>> +       const char *mode;
+>> +       int magic;
+>> +       struct list_head list;
+>> +};
+>> +
+>> +struct reboot_mode_driver {
+>> +       struct list_head head;
+>> +       int (*write)(int magic);
+>> +       struct notifier_block reboot_notifier;
+>> +};
+>> +
+>> +static int get_reboot_mode_magic(struct reboot_mode_driver *reboot,
+>> +                                const char *cmd)
+>> +{
+>> +       const char *normal =3D "normal";
+>> +       int magic =3D 0;
+>> +       struct mode_info *info;
+>> +
+>> +       if (!cmd)
+>> +               cmd =3D normal;
+>> +
+>> +       list_for_each_entry(info, &reboot->head, list) {
+>> +               if (!strcmp(info->mode, cmd)) {
+>> +                       magic =3D info->magic;
+>> +                       break;
+>> +               }
+>> +       }
+>> +
+>> +       return magic;
+>> +}
+>> +
+>> +static int reboot_mode_notify(struct notifier_block *this,
+>> +                             unsigned long mode, void *cmd)
+>> +{
+>> +       struct reboot_mode_driver *reboot;
+>> +       int magic;
+>> +
+>> +       reboot =3D container_of(this, struct reboot_mode_driver, reb=
+oot_notifier);
+>> +       magic =3D get_reboot_mode_magic(reboot, cmd);
+>> +       if (magic)
+>> +               reboot->write(magic);
+>> +
+>> +       return NOTIFY_DONE;
+>> +}
+>> +
+>> +int reboot_mode_register(struct device *dev, int (*write)(int))
+>> +{
+>> +       struct reboot_mode_driver *reboot;
+>> +       struct mode_info *info;
+>> +       struct device_node *child;
+>> +       int ret;
+>> +
+>> +       reboot =3D devm_kzalloc(dev, sizeof(*reboot), GFP_KERNEL);
+>> +       if (!reboot)
+>> +               return -ENOMEM;
+>> +
+>> +       reboot->write =3D write;
+>> +       INIT_LIST_HEAD(&reboot->head);
+>> +       for_each_child_of_node(dev->of_node, child) {
+>> +               info =3D devm_kzalloc(dev, sizeof(*info), GFP_KERNEL=
+);
+>> +               if (!info)
+>> +                       return -ENOMEM;
+>> +               info->mode =3D of_get_property(child, "linux,mode", =
+NULL);
+>> +               if (of_property_read_u32(child, "loader,magic", &inf=
+o->magic)) {
+>> +                       dev_err(dev, "reboot mode %s without magic n=
+umber\n",
+>> +                               info->mode);
+>> +                       devm_kfree(dev, info);
+>> +                       continue;
+>> +               }
+>> +               list_add_tail(&info->list, &reboot->head);
+>> +       }
+>> +       reboot->reboot_notifier.notifier_call =3D reboot_mode_notify=
+;
+>> +       ret =3D register_reboot_notifier(&reboot->reboot_notifier);
+>> +       if (ret)
+>> +               dev_err(dev, "can't register reboot notifier\n");
+>> +
+>> +       return ret;
+>> +}
+>> +EXPORT_SYMBOL_GPL(reboot_mode_register);
+>> +
+>> +MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com");
+>> +MODULE_DESCRIPTION("System reboot mode driver");
+>> +MODULE_LICENSE("GPL v2");
+>> diff --git a/drivers/power/reset/reboot-mode.h b/drivers/power/reset=
+/reboot-mode.h
+>> new file mode 100644
+>> index 0000000..76646e7
+>> --- /dev/null
+>> +++ b/drivers/power/reset/reboot-mode.h
+>> @@ -0,0 +1,6 @@
+>> +#ifndef __REBOOT_MODE_H__
+>> +#define __REBOOT_MODE_H__
+>> +
+>> +extern int reboot_mode_register(struct device *dev, int (*write)(in=
+t));
+>> +
+>> +#endif
+>> diff --git a/drivers/power/reset/syscon-reboot-mode.c b/drivers/powe=
+r/reset/syscon-reboot-mode.c
+>> new file mode 100644
+>> index 0000000..b9370f3
+>> --- /dev/null
+>> +++ b/drivers/power/reset/syscon-reboot-mode.c
+>> @@ -0,0 +1,62 @@
+>> +/*
+>> + * Copyright (c) 2016, Fuzhou Rockchip Electronics Co., Ltd
+>> + *
+>> + * This program is free software; you can redistribute it and/or mo=
+dify
+>> + * it under the terms of the GNU General Public License as publishe=
+d by
+>> + * the Free Software Foundation; either version 2 of the License, o=
+r
+>> + * (at your option) any later version.
+>> + */
+>> +#include <linux/init.h>
+>> +#include <linux/module.h>
+>> +#include <linux/kernel.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/reboot.h>
+>> +#include <linux/regmap.h>
+>> +#include <linux/mfd/syscon.h>
+>> +#include "reboot-mode.h"
+>> +
+>> +static struct regmap *map;
+>> +static u32 offset;
+>> +
+>> +static int syscon_reboot_mode_write(int magic)
+>> +{
+>> +       regmap_write(map, offset, magic);
+> See suggestion below. I think using regmap_update_bits() would be eve=
+n
+> more useful for cases where you have other stuff in that register, to=
+o.
+>
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static int syscon_reboot_mode_probe(struct platform_device *pdev)
+>> +{
+>> +       int ret;
+>> +
+>> +       map =3D syscon_node_to_regmap(pdev->dev.parent->of_node);
+>> +       if (IS_ERR(map))
+>> +               return PTR_ERR(map);
+>> +       if (of_property_read_u32(pdev->dev.of_node, "offset", &offse=
+t))
+>> +               return -EINVAL;
+> I think it would be worthwhile to have a mask value here, that you ca=
+n use
+> with regmap_update_bits()
+
+     That sounds reasonable,  I already fond some drivers like tegra[0]
+     only use some bits to store the mode value. So I will add it in V3=
+=2E
+
+    [0] drivers/soc/tegra/pmc.c
+>
+> +           if (of_property_read_u32(pdev->dev.of_node, "mask", &mask=
+))
+> +                   return -EINVAL;
+>
+>
+> Cheers,
+>
+> Moritz
+>
+>
+>
+
+
