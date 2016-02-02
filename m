@@ -1,78 +1,51 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: power: reset: add document for
- reboot-mode driver
-Date: Tue, 2 Feb 2016 10:29:32 -0800
-Message-ID: <CALAqxLXBMOicSm41jnD2pqmYEGCA9cy9RfrdXFPNM1m_iH53WA@mail.gmail.com>
-References: <1454406981-4692-1-git-send-email-andy.yan@rock-chips.com>
-	<1454407151-4751-1-git-send-email-andy.yan@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 5/8] ASoC: rt5616: add mclk property for rt5616
+ document
+Date: Tue, 2 Feb 2016 19:36:07 +0000
+Message-ID: <20160202193607.GW4455@sirena.org.uk>
+References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
+ <1454384680-7197-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1454407151-4751-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Moritz Fischer <moritz.fischer@ettus.com>, matthias.bgg@gmail.com, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Jun Nie <jun.nie@linaro.org>, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, mbrugger@suse.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infrade>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="QILrdhYozogw5Vly"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1454384680-7197-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: bardliao-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, oder_chiou-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 2, 2016 at 1:59 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
-> add device tree bindings document for reboot-mode driver
->
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->
-> ---
->
-> Changes in v3:
-> - descirbe all reboot mode as properity instead of subnode
->
-> Changes in v2: None
-> Changes in v1: None
->
->  .../bindings/power/reset/reboot-mode.txt           | 26 ++++++++++++++++
->  .../bindings/power/reset/syscon-reboot-mode.txt    | 36 ++++++++++++++++++++++
->  2 files changed, 62 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
->  create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
->
-> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mode.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
-> new file mode 100644
-> index 0000000..517080f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
-> @@ -0,0 +1,26 @@
-> +Generic reboot mode core map driver
-> +
-> +This driver get reboot mode arguments and call the write
-> +interface to stores the magic value in special register
-> +or ram . Then the bootloader can read it and take different
-> +action according the argument stored.
-> +
-> +All mode properties are vendor specific, it is a indication to tell
-> +the bootloder what to do when the system reboot, and should be named
-> +as mode-xxx = <magic> (xxx is mode name).
-> +
-> +- mode-normal: Normal reboot mode, system reboot with command "reboot".
-> +- mode-recovery: Android Recovery mode, it is a mode to format the device or update a new image.
-> +- mode-fastboot: Android fastboot mode, it's a mode to  re-flash partitions on the device.
 
-One minor tweak here, on most Android devices (atleast most Nexus
-devices) getting to fastboot is done via "reboot bootloader" not
-"reboot fastboot".
+--QILrdhYozogw5Vly
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-If we are going to document the commands here to establish a standard,
-I'd prefer we use use what existing userspace expects:
+On Tue, Feb 02, 2016 at 11:44:38AM +0800, Caesar Wang wrote:
+> This patch adds the mclk property for the CODEC driver,
+> since sometimes the CODEC driver needs the clock enabled.
 
-So across nexus devices, there's really two consistent commands:
-"bootloader", and "recovery"
+This appears to be a resend of a patch that's already been applied.  If
+any changes are required please send incremental patches against current
+git.
 
-Nexus 6p:  https://android.googlesource.com/kernel/msm.git/+/android-msm-bullhead-3.10-marshmallow-mr1/drivers/power/reset/msm-poweroff.c#230
-Nexus 9: https://android.googlesource.com/kernel/tegra.git/+/android-tegra-flounder-3.10-marshmallow-mr1/drivers/htc_debug/stability/reboot_params.c#86
-Nexus 7: https://android.googlesource.com/kernel/msm.git/+/android-msm-flo-3.4-marshmallow-mr1/arch/arm/mach-msm/restart.c#273
-Nexus 10: https://android.googlesource.com/kernel/exynos.git/+/android-exynos-manta-3.4-lollipop-mr1/arch/arm/mach-exynos/board-manta-power.c#422
+--QILrdhYozogw5Vly
+Content-Type: application/pgp-signature; name="signature.asc"
 
-While I don't object to having a duplicative mode-fastboot (it is more
-clear as to what the command does), or the other oem specific modes, I
-think we should make it clear that the Android userspace expects the
-"bootloader" and "recovery" commands and document them here.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-thanks
--john
+iQEcBAEBCAAGBQJWsQUmAAoJECTWi3JdVIfQ8J4H/2IWfvlAqE68iuc+PBhsuyZ7
+JI/GXQfW1kF+C1XbpCYA02GgNn+BOyAkn61LgyQvJBde8bRNpRvnRhFFCfAQxjXY
+8KIQXm8Ooh/276OggNjHis6caj83SUHJRZvZGYPqAMdVJCz5ul7N4BqwG57CKuYO
+x9e3NcN1TGNiEkqm+lZpuKHqOa4mlw6zEnnYtrcKGLs+JiXFtMdlDHkIt+4hBVZb
+oLdTiLgnHJTIdUlk2jDcDkawIEMoK1gmlqSKdrDlUMhWPsmgNN32TWuEWXJdHxDU
+Qxrk1jw+Xz7xGESxc6DrVAMfHmnj1wUfbYzz/1AWY2amqR/IVetlhBjYU4lggGQ=
+=epdQ
+-----END PGP SIGNATURE-----
+
+--QILrdhYozogw5Vly--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
