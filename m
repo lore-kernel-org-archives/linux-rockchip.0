@@ -1,105 +1,56 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH v5 8/8] ARM: dts: rockchip: support the spi for rk3036
-Date: Tue,  2 Feb 2016 11:40:53 +0800
-Message-ID: <1454384453-7127-4-git-send-email-wxt@rock-chips.com>
-References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
- <1454384453-7127-1-git-send-email-wxt@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] clk: rockchip: free memory for error handle
+Date: Tue,  2 Feb 2016 11:37:50 +0800
+Message-ID: <1454384270-20018-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1454384453-7127-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, keescook@google.com, linux-kernel@vger.kernel.org, jeffy.chen@rock-chips.com, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the needed spi node for rk3036 dts.
+Add free memeory if rockchip_clk_register_branch
+failed.
 
-We have to use the 4 bus emmc to work if someone want to support
-the spi devices, since the pins are re-used by emmc data[5-8] and spi.
-In some caseswe need to support the spi devices, that will waste the
-emmc performance.
-
-Moment, the kylin/evb hasn't the spi devices to work, so maybe we need wait
-the new required to enable in kylin/evb board.
-
-Anyway, the spi should be needed land in rk3036 dts.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
+Fixes: a245fecbb806 ("clk: rockchip: add basic infrastructure...")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
-Changes in v5:
-- Remove the unused, as Heiko comments on https://patchwork.kernel.org/patch/8147761/
-- Modify the commit.
+ drivers/clk/rockchip/clk.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-Changes in v4:
-- Add this patch included in kylin series patches.
-
- arch/arm/boot/dts/rk3036.dtsi | 40 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 40 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 532f232..30bb316 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -60,6 +60,7 @@
- 		serial0 = &uart0;
- 		serial1 = &uart1;
- 		serial2 = &uart2;
-+		spi = &spi;
- 	};
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index d9a0b5d..62fbe2c 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -70,7 +70,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 	if (gate_offset >= 0) {
+ 		gate = kzalloc(sizeof(*gate), GFP_KERNEL);
+ 		if (!gate)
+-			return ERR_PTR(-ENOMEM);
++			goto err_gate;
  
- 	memory {
-@@ -485,6 +486,21 @@
- 		status = "disabled";
- 	};
+ 		gate->flags = gate_flags;
+ 		gate->reg = base + gate_offset;
+@@ -82,7 +82,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 	if (div_width > 0) {
+ 		div = kzalloc(sizeof(*div), GFP_KERNEL);
+ 		if (!div)
+-			return ERR_PTR(-ENOMEM);
++			goto err_div;
  
-+	spi: spi@20074000 {
-+		compatible = "rockchip,rockchip-spi";
-+		reg = <0x20074000 0x1000>;
-+		interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks =<&cru PCLK_SPI>, <&cru SCLK_SPI>;
-+		clock-names = "apb-pclk","spi_pclk";
-+		dmas = <&pdma 8>, <&pdma 9>;
-+		dma-names = "tx", "rx";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&spi_txd &spi_rxd &spi_clk &spi_cs0>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	pinctrl: pinctrl {
- 		compatible = "rockchip,rk3036-pinctrl";
- 		rockchip,grf = <&grf>;
-@@ -723,5 +739,29 @@
- 			};
- 			/* no rts / cts for uart2 */
- 		};
-+
-+		spi {
-+			spi_txd:spi-txd {
-+				rockchip,pins = <1 29 RK_FUNC_3 &pcfg_pull_default>;
-+			};
-+
-+			spi_rxd:spi-rxd {
-+				rockchip,pins = <1 28 RK_FUNC_3 &pcfg_pull_default>;
-+			};
-+
-+			spi_clk:spi-clk {
-+				rockchip,pins = <2 0 RK_FUNC_2 &pcfg_pull_default>;
-+			};
-+
-+			spi_cs0:spi-cs0 {
-+				rockchip,pins = <1 30 RK_FUNC_3 &pcfg_pull_default>;
-+
-+			};
-+
-+			spi_cs1:spi-cs1 {
-+				rockchip,pins = <1 31 RK_FUNC_3 &pcfg_pull_default>;
-+
-+			};
-+		};
- 	};
- };
+ 		div->flags = div_flags;
+ 		div->reg = base + muxdiv_offset;
+@@ -100,6 +100,11 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 				     flags);
+ 
+ 	return clk;
++err_div:
++	kfree(gate);
++err_gate:
++	kfree(mux);
++	return ERR_PTR(-ENOMEM);
+ }
+ 
+ struct rockchip_clk_frac {
 -- 
-1.9.1
+2.3.7
