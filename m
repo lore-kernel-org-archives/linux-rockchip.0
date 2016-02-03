@@ -1,80 +1,85 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3 4/4] ARM64: dts: rockchip: add syscon-reboot-mode DT
- node
-Date: Wed, 3 Feb 2016 10:07:50 +0800
-Message-ID: <56B160F6.20308@rock-chips.com>
-References: <1454406981-4692-1-git-send-email-andy.yan@rock-chips.com>
- <1454407999-5476-1-git-send-email-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1454407999-5476-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>, john.stultz@linaro.org
-Cc: robh+dt@kernel.org, arnd@arndb.de, shawn.lin@rock-chips.com, mark.rutland@arm.com, heiko@sntech.de, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, alexandre.belloni@free-electrons.com, lorenzo.pieralisi@arm.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, richard@nod.at, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, mbrugger@suse.com, sre@kernel.org, galak@codeaurora.org, jun.nie@linaro.org, dwmw2@infradead.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH 0/8] Support and fixes the rk3228 SoCS for thermal
+Date: Wed,  3 Feb 2016 12:12:39 +0800
+Message-ID: <1454472767-5767-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, edubezval@gmail.com
+Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@arm.linux.org.uk>, linux-clk@vger.kernel.org, Jeffy Chen <jeffy.chen@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/2/2 18:13, Andy Yan wrote:
-> Add syscon-reboot-mode driver DT node for rk3368 platform
->
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->
+Hello Eduardo, Heiko, Michael & Stephen:
 
-Work fine with my rk3368-sheep board :)
+This series pacthes to support the rk3228 SoCs thermal.
 
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
+They have the following patches to work on rk3228 SoCs.
 
-> ---
->
-> Changes in v3:
-> - descirbe all reboot mode as property instead of subnode
->
-> Changes in v2:
-> - make this node as a subnode of pmugrf
->
-> Changes in v1: None
->
->   arch/arm64/boot/dts/rockchip/rk3368.dtsi | 14 +++++++++++++-
->   1 file changed, 13 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> index 122777b..5213713 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-> @@ -45,6 +45,7 @@
->   #include <dt-bindings/interrupt-controller/irq.h>
->   #include <dt-bindings/interrupt-controller/arm-gic.h>
->   #include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip_boot-mode.h>
->   #include <dt-bindings/thermal/thermal.h>
->
->   / {
-> @@ -554,8 +555,19 @@
->   	};
->
->   	pmugrf: syscon@ff738000 {
-> -		compatible = "rockchip,rk3368-pmugrf", "syscon";
-> +		compatible = "rockchip,rk3368-pmugrf", "syscon", "simple-mfd";
->   		reg = <0x0 0xff738000 0x0 0x1000>;
-> +
-> +		reboot-mode {
-> +			compatible = "syscon-reboot-mode";
-> +			offset = <0x200>;
-> +			mode-normal = <BOOT_NORMAL>;
-> +			mode-recovery = <BOOT_RECOVERY>;
-> +			mode-fastboot = <BOOT_FASTBOOT>;
-> +			mode-loader = <BOOT_LOADER>;
-> +			mode-maskrom = <BOOT_MASKROM>;
-> +
-> +		};
->   	};
->
->   	cru: clock-controller@ff760000 {
->
+bdc79c0 ARM: dts: rockchip: add the thermal main info found on rk3228
+22ea3c3 ARM: dts: rockchip: enable the tsadc for rk3228 evb
+b907b75 thermal: rockchip: fix the tsadc sequence output on rk3228/rk3399
+fb11fbd thermal: rockchip: the rename compatibles for rockchip SoCs
+df9c1bd thermal: rockchip: fix calculation error for code_to_temp
+bd2720c thermal: rockchip: fix a impossible condition caused by the warning
+8cf2d1b clk: rockchip: add the tsadc clocks found on rk3228 SoCs
+1a6f334 clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
 
+Verified on https://github.com/Caesar-github/rockchip/tree/rk3228-thermal-tests.
+This series patches are based on
+Linux version 4.5.0-rc1+ (wxt@ubuntu) (...) #186 SMP Tue Feb 2 17:11:48 CST 2016
+
+---
+
+Hi Michael,Stephen
+PATCH[1/8-2/8]:
+Add the tsadc needed clocks for rk3228 SoCs
+
+Hi Eduardo,
+PATCH[3/8]:
+To fix a build warning came from Dan Carpenter report smatch check,
+Thanks.
+As the patch exists in https://patchwork.kernel.org/patch/7757311/
+
+PATCH[4/8]:
+fix calculation error for code_to_temp
+That's a error since the copy causes.
+
+PATCH[5/8]:
+the rename compatibles for rockchip SoCs
+As the more and more rockchip SOCs are supported in thermal driver. this pacth
+supposed to be compatible for better.
+
+PATCH[6/8]:
+fix the tsadc sequence output on rk3228/rk3399
+Fixes the tsadc sequence output since the rk3228/rk3399 SoCs design.
+
+Hi Heiko,
+PATCH[7/8-8/8]: thermal DTS
+1) add the thermal main info found on rk3228
+2) enable the tsadc for rk3228 evb
+
+I'd appreciate if someone have free time to review that. :)
+
+
+
+Caesar Wang (7):
+  clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
+  clk: rockchip: add the tsadc clocks found on rk3228 SoCs
+  thermal: rockchip: fix a impossible condition caused by the warning
+  thermal: rockchip: the rename compatibles for rockchip SoCs
+  thermal: rockchip: fix the tsadc sequence output on rk3228/rk3399
+  ARM: dts: rockchip: enable the tsadc for rk3228 evb
+  ARM: dts: rockchip: add the thermal main info found on rk3228
+
+Elaine Zhang (1):
+  thermal: rockchip: fix calculation error for code_to_temp
+
+ arch/arm/boot/dts/rk3228-evb.dts       |   7 +
+ arch/arm/boot/dts/rk3228.dtsi          |  69 ++++++++++
+ drivers/clk/rockchip/clk-rk3228.c      |   4 +-
+ drivers/thermal/rockchip_thermal.c     | 239 +++++++++++++++++++--------------
+ include/dt-bindings/clock/rk3228-cru.h |   2 +
+ 5 files changed, 216 insertions(+), 105 deletions(-)
 
 -- 
-Best Regards
-Shawn Lin
+1.9.1
 
