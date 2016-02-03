@@ -1,83 +1,80 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [Bug] usb: dwc2: Add functions to set and clear force mode
-Date: Wed, 3 Feb 2016 01:32:07 +0000
-Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC4323F1@US01WEMBX2.internal.synopsys.com>
-References: <56A7603C.1000409@rock-chips.com>
- <CAD=FV=Xk4v=1QMYG9XmXh6hJLKU6i_wVakOArF1du-Z_4_+Neg@mail.gmail.com>
- <56A8277F.9@gmail.com>
- <CAD=FV=Uab6H6sFVj_bPRs7H4HcBi2pqZK3HDCHQxC+EDk=inDA@mail.gmail.com>
- <56AF3D80.90807@gmail.com> <56AF3DCB.20808@gmail.com>
- <2B3535C5ECE8B5419E3ECBE30077290901DC42FD26@US01WEMBX2.internal.synopsys.com>
- <56B01785.3030803@163.com> <56B01A0C.3070801@gmail.com>
- <2B3535C5ECE8B5419E3ECBE30077290901DC431FDB@US01WEMBX2.internal.synopsys.com>
- <56B14B6D.1060808@gmail.com>
- <2B3535C5ECE8B5419E3ECBE30077290901DC4322F0@US01WEMBX2.internal.synopsys.com>
- <56B15398.3040105@gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v3 4/4] ARM64: dts: rockchip: add syscon-reboot-mode DT
+ node
+Date: Wed, 3 Feb 2016 10:07:50 +0800
+Message-ID: <56B160F6.20308@rock-chips.com>
+References: <1454406981-4692-1-git-send-email-andy.yan@rock-chips.com>
+ <1454407999-5476-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gb2312"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?gb2312?B?zuLBvLfl?= <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1454407999-5476-1-git-send-email-andy.yan@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>, john.stultz@linaro.org
+Cc: robh+dt@kernel.org, arnd@arndb.de, shawn.lin@rock-chips.com, mark.rutland@arm.com, heiko@sntech.de, catalin.marinas@arm.com, will.deacon@arm.com, linux-kernel@vger.kernel.org, alexandre.belloni@free-electrons.com, lorenzo.pieralisi@arm.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, richard@nod.at, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, mbrugger@suse.com, sre@kernel.org, galak@codeaurora.org, jun.nie@linaro.org, dwmw2@infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMi8yLzIwMTYgNToxMCBQTSwgQ2Flc2FyIFdhbmcgd3JvdGU6Cj4gCj4gCj4g1NogMjAxNsTq
-MDLUwjAzyNUgMDk6MDgsIEpvaG4gWW91biDQtLXAOgo+PiBPbiAyLzIvMjAxNiA0OjM2IFBNLCBD
-YWVzYXIgV2FuZyB3cm90ZToKPj4+IEhpIEpvaG4sCj4+Pgo+Pj4g1NogMjAxNsTqMDLUwjAzyNUg
-MDg6MDMsIEpvaG4gWW91biDQtLXAOgo+Pj4+IE9uIDIvMS8yMDE2IDY6NTMgUE0sIENhZXNhciBX
-YW5nIHdyb3RlOgo+Pj4+PiBKb2huLAo+Pj4+Pgo+Pj4+PiBJIHdpbGwgc3VnZ2VzdCB0aGUgbXNs
-ZWVwKDI1KSBkZWxheSBzaG91bGQgIHB1dCBpbgo+Pj4+PiAnZHdjMl9mb3JjZV9kcl9tb2RlKCkn
-IGluc3RlYWQgb2YgdGhlICdkd2MyX2NsZWFyX2ZvcmNlX21vZGUoKScKPj4+Pj4KPj4+PiBIaSBD
-YWVzYXIsCj4+Pj4KPj4+PiBBcmUgeW91IHNheWluZyB0aGF0IGp1c3QgbXNsZWVwKDI1KSBpbiB0
-aGF0IGZ1bmN0aW9uIGxpa2UgdGhpcyBzb2x2ZXMKPj4+PiB5b3VyIGlzc3VlPwo+Pj4+Cj4+Pj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvY29yZS5jIGIvZHJpdmVycy91c2IvZHdjMi9j
-b3JlLmMKPj4+PiBpbmRleCAzOWEwZmE4Li5lOGE5Njg4IDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZl
-cnMvdXNiL2R3YzIvY29yZS5jCj4+Pj4gKysrIGIvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMKPj4+
-PiBAQCAtNjI1LDYgKzYyNSw4IEBAIHZvaWQgZHdjMl9mb3JjZV9kcl9tb2RlKHN0cnVjdCBkd2My
-X2hzb3RnICpoc290ZykKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICBfX2Z1bmNfXywg
-aHNvdGctPmRyX21vZGUpOwo+Pj4+ICAgICAgICAgICAgICAgICAgIGJyZWFrOwo+Pj4+ICAgICAg
-ICAgICB9Cj4+Pj4gKwo+Pj4+ICsgICAgICAgbXNsZWVwKDI1KTsKPj4+IFllcCwgdGhhdCB3aWxs
-IHNvbHZlIHRoaXMgaXNzdWUuCj4+Pgo+PiBPayB0aGFua3MuIFRob3VnaCB0aGF0IHN0aWxsIHNl
-ZW1zIHN0cmFuZ2Ugc2luY2UgeW91IHNob3VsZCBiZSBnZXR0aW5nCj4+IHRoZSBtc2xlZXAoMjUp
-IGZyb20gZWl0aGVyIHRoZSBkd2MyX2ZvcmNlX21vZGUoKSBvcgo+PiBkd2MyX2NsZWFyX2ZvcmNl
-X21vZGUoKS4KPj4KPj4gQ2FuIHlvdSBjaGVjayBpZiB0aGUgZm9sbG93aW5nIHBhdGNoIHdvcmtz
-Pwo+Pgo+PiBJZiBzbywgSSB0aGluayB3ZSBjYW4gZ28gd2l0aCB0aGF0IHRvIGZpeCB0aGUgcmVn
-cmVzc2lvbiBmb3IKPj4gbm93LiBPdGhlcndpc2UgSSdsbCBqdXN0IGFkZCB0aGUgZXh0cmEgbXNs
-ZWVwKDI1KSBhbmQgcmV2aXNpdCB0aGlzCj4+IGxhdGVyLgo+Pgo+PiBSZWdhcmRzLAo+PiBKb2hu
-Cj4+Cj4+IC0tLS0+OC0tLS0KPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvY29y
-ZS5jIGIvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMKPj4gaW5kZXggZTk5MWQ1NS4uMTNjMDYwYyAx
-MDA2NDQKPj4gLS0tIGEvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMKPj4gKysrIGIvZHJpdmVycy91
-c2IvZHdjMi9jb3JlLmMKPj4gQEAgLTU3Niw3ICs1NzYsNiBAQCBzdGF0aWMgYm9vbCBkd2MyX2Zv
-cmNlX21vZGUoc3RydWN0IGR3YzJfaHNvdGcgKmhzb3RnLCBib29sIGhvc3QpCj4+ICAgICAgICAg
-IGd1c2JjZmcgfD0gc2V0Owo+PiAgICAgICAgICBkd2MyX3dyaXRlbChndXNiY2ZnLCBoc290Zy0+
-cmVncyArIEdVU0JDRkcpOwo+PiAgIAo+PiAtICAgICAgIG1zbGVlcCgyNSk7Cj4+ICAgICAgICAg
-IHJldHVybiB0cnVlOwo+PiAgIH0KPj4gICAKPj4gQEAgLTU5Niw3ICs1OTUsNiBAQCBzdGF0aWMg
-dm9pZCBkd2MyX2NsZWFyX2ZvcmNlX21vZGUoc3RydWN0IGR3YzJfaHNvdGcgKmhzb3RnKQo+PiAg
-ICAgICAgICAgKiBOT1RFOiBUaGlzIGxvbmcgc2xlZXAgaXMgX3ZlcnlfIGltcG9ydGFudCwgb3Ro
-ZXJ3aXNlIHRoZSBjb3JlIHdpbGwKPj4gICAgICAgICAgICogbm90IHN0YXkgaW4gaG9zdCBtb2Rl
-IGFmdGVyIGEgY29ubmVjdG9yIElEIGNoYW5nZSEKPj4gICAgICAgICAgICovCj4+IC0gICAgICAg
-bXNsZWVwKDI1KTsKPj4gICB9Cj4+ICAgCj4+ICAgLyoKPj4gQEAgLTYxOSw2ICs2MTcsOCBAQCB2
-b2lkIGR3YzJfZm9yY2VfZHJfbW9kZShzdHJ1Y3QgZHdjMl9oc290ZyAqaHNvdGcpCj4+ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgX19mdW5jX18sIGhzb3RnLT5kcl9tb2RlKTsKPj4gICAgICAg
-ICAgICAgICAgICBicmVhazsKPj4gICAgICAgICAgfQo+PiArCj4+ICsgICAgICAgbXNsZWVwKDI1
-KTsKPj4gICB9Cj4gCj4gUmlnaHQsIHRoYXQgd29ya3MgZm9yIG1lLgo+IAoKT2ssIGludGVyZXN0
-aW5nLiBBY3R1YWxseSB0aGlzIHdvbid0IHdvcmsgZWl0aGVyIHNpbmNlIHdlIG5lZWQgdGhlCnNl
-cGFyYXRlIG1zbGVlcHMgd2hlbiB0aG9zZSBmdW5jdGlvbnMgYXJlIGNhbGxlZCBmcm9tIG90aGVy
-IGNvbnRleHRzLgoKSXMgeW91ciBjb250cm9sbGVyIGJ5IGNoYW5jZSAqbm90KiBPVEcgY2FwYWJs
-ZSwgaS5lLgoKZHdjMl9od19pc19vdGcoaHNvdGcpID09IGZhbHNlCgpUaGVuIHRoZSBtc2xlZXAg
-aW4gZHdjMl9mb3JjZV9tb2RlKCkgaXMgc2tpcHBlZC4KClRoZW4sIGZvciBzb21lIHJlYXNvbiwg
-c2tpcHBpbmcgaXQgKGV2ZW4gdGhvdWdoIG5vdGhpbmcgd2FzIGZvcmNlZCkKY2F1c2VzIHRoZSBm
-YWlsdXJlIG9uIHlvdXIgcGxhdGZvcm0uCgpSZWdhcmRzLApKb2huCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 2016/2/2 18:13, Andy Yan wrote:
+> Add syscon-reboot-mode driver DT node for rk3368 platform
+>
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>
+
+Work fine with my rk3368-sheep board :)
+
+Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> ---
+>
+> Changes in v3:
+> - descirbe all reboot mode as property instead of subnode
+>
+> Changes in v2:
+> - make this node as a subnode of pmugrf
+>
+> Changes in v1: None
+>
+>   arch/arm64/boot/dts/rockchip/rk3368.dtsi | 14 +++++++++++++-
+>   1 file changed, 13 insertions(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> index 122777b..5213713 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -45,6 +45,7 @@
+>   #include <dt-bindings/interrupt-controller/irq.h>
+>   #include <dt-bindings/interrupt-controller/arm-gic.h>
+>   #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip_boot-mode.h>
+>   #include <dt-bindings/thermal/thermal.h>
+>
+>   / {
+> @@ -554,8 +555,19 @@
+>   	};
+>
+>   	pmugrf: syscon@ff738000 {
+> -		compatible = "rockchip,rk3368-pmugrf", "syscon";
+> +		compatible = "rockchip,rk3368-pmugrf", "syscon", "simple-mfd";
+>   		reg = <0x0 0xff738000 0x0 0x1000>;
+> +
+> +		reboot-mode {
+> +			compatible = "syscon-reboot-mode";
+> +			offset = <0x200>;
+> +			mode-normal = <BOOT_NORMAL>;
+> +			mode-recovery = <BOOT_RECOVERY>;
+> +			mode-fastboot = <BOOT_FASTBOOT>;
+> +			mode-loader = <BOOT_LOADER>;
+> +			mode-maskrom = <BOOT_MASKROM>;
+> +
+> +		};
+>   	};
+>
+>   	cru: clock-controller@ff760000 {
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
