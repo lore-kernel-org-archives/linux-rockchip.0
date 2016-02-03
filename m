@@ -1,43 +1,45 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 1/8] clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
-Date: Wed,  3 Feb 2016 12:12:40 +0800
-Message-ID: <1454472767-5767-2-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH 2/8] clk: rockchip: add the tsadc clocks found on rk3228 SoCs
+Date: Wed,  3 Feb 2016 12:12:41 +0800
+Message-ID: <1454472767-5767-3-git-send-email-wxt@rock-chips.com>
 References: <1454472767-5767-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1454472767-5767-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-clk-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, edubezval@gmail.com
-Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>
+Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Caesar Wang <wxt@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds 'SCLK_TSADC' and 'PCLK_TSADC' id found on rk3228 SoCs.
-That will be needed by TSADC controller.
+This patch adds the needed clocks for rk3228 tsadc.
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
- include/dt-bindings/clock/rk3228-cru.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/clk/rockchip/clk-rk3228.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rk3228-cru.h b/include/dt-bindings/clock/rk3228-cru.h
-index a78dd89..cd2e06b 100644
---- a/include/dt-bindings/clock/rk3228-cru.h
-+++ b/include/dt-bindings/clock/rk3228-cru.h
-@@ -29,6 +29,7 @@
- #define SCLK_SDMMC		68
- #define SCLK_SDIO		69
- #define SCLK_EMMC		71
-+#define SCLK_TSADC		72
- #define SCLK_UART0		77
- #define SCLK_UART1		78
- #define SCLK_UART2		79
-@@ -68,6 +69,7 @@
- #define PCLK_UART0		341
- #define PCLK_UART1		342
- #define PCLK_UART2		343
-+#define PCLK_TSADC		344
- #define PCLK_PWM		350
- #define PCLK_TIMER		353
- #define PCLK_PERI		363
+diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
+index 981a502..6374fef 100644
+--- a/drivers/clk/rockchip/clk-rk3228.c
++++ b/drivers/clk/rockchip/clk-rk3228.c
+@@ -422,7 +422,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
+ 	GATE(0, "sclk_otgphy1", "xin24m", 0,
+ 			RK2928_CLKGATE_CON(1), 6, GFLAGS),
+ 
+-	COMPOSITE_NOMUX(0, "sclk_tsadc", "xin24m", 0,
++	COMPOSITE_NOMUX(SCLK_TSADC, "sclk_tsadc", "xin24m", 0,
+ 			RK2928_CLKSEL_CON(24), 6, 10, DFLAGS,
+ 			RK2928_CLKGATE_CON(2), 8, GFLAGS),
+ 
+@@ -582,7 +582,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
+ 	GATE(PCLK_UART0, "pclk_uart0", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 12, GFLAGS),
+ 	GATE(PCLK_UART1, "pclk_uart1", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 13, GFLAGS),
+ 	GATE(PCLK_UART2, "pclk_uart2", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 14, GFLAGS),
+-	GATE(0, "pclk_tsadc", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 15, GFLAGS),
++	GATE(PCLK_TSADC, "pclk_tsadc", "pclk_cpu", 0, RK2928_CLKGATE_CON(9), 15, GFLAGS),
+ 	GATE(PCLK_GRF, "pclk_grf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(10), 0, GFLAGS),
+ 	GATE(0, "pclk_cru", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(10), 1, GFLAGS),
+ 	GATE(0, "pclk_sgrf", "pclk_cpu", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(10), 2, GFLAGS),
 -- 
 1.9.1
+
