@@ -1,43 +1,69 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v5 5/8] ASoC: rt5616: add mclk property for
- rt5616 document
-Date: Wed, 3 Feb 2016 08:52:34 +0800
-Message-ID: <56B14F52.3080008@rock-chips.com>
-References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
- <1454384680-7197-1-git-send-email-wxt@rock-chips.com>
- <20160202193607.GW4455@sirena.org.uk>
+From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [Bug] usb: dwc2: Add functions to set and clear force mode
+Date: Wed, 3 Feb 2016 01:08:01 +0000
+Message-ID: <2B3535C5ECE8B5419E3ECBE30077290901DC4322F0@US01WEMBX2.internal.synopsys.com>
+References: <56A7603C.1000409@rock-chips.com>
+ <CAD=FV=Xk4v=1QMYG9XmXh6hJLKU6i_wVakOArF1du-Z_4_+Neg@mail.gmail.com>
+ <56A8277F.9@gmail.com>
+ <CAD=FV=Uab6H6sFVj_bPRs7H4HcBi2pqZK3HDCHQxC+EDk=inDA@mail.gmail.com>
+ <56AF3D80.90807@gmail.com> <56AF3DCB.20808@gmail.com>
+ <2B3535C5ECE8B5419E3ECBE30077290901DC42FD26@US01WEMBX2.internal.synopsys.com>
+ <56B01785.3030803@163.com> <56B01A0C.3070801@gmail.com>
+ <2B3535C5ECE8B5419E3ECBE30077290901DC431FDB@US01WEMBX2.internal.synopsys.com>
+ <56B14B6D.1060808@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="gb2312"
 Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160202193607.GW4455@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: oder_chiou@realtek.com, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, jeffy.chen@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, keescook@google.com, bardliao@realtek.com, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?gb2312?B?zuLBvLfl?= <wulf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgrlnKggMjAxNuW5tDAy5pyIMDPml6UgMDM6MzYsIE1hcmsgQnJvd24g5YaZ6YGTOgo+IE9uIFR1
-ZSwgRmViIDAyLCAyMDE2IGF0IDExOjQ0OjM4QU0gKzA4MDAsIENhZXNhciBXYW5nIHdyb3RlOgo+
-PiBUaGlzIHBhdGNoIGFkZHMgdGhlIG1jbGsgcHJvcGVydHkgZm9yIHRoZSBDT0RFQyBkcml2ZXIs
-Cj4+IHNpbmNlIHNvbWV0aW1lcyB0aGUgQ09ERUMgZHJpdmVyIG5lZWRzIHRoZSBjbG9jayBlbmFi
-bGVkLgo+IFRoaXMgYXBwZWFycyB0byBiZSBhIHJlc2VuZCBvZiBhIHBhdGNoIHRoYXQncyBhbHJl
-YWR5IGJlZW4gYXBwbGllZC4gIElmCj4gYW55IGNoYW5nZXMgYXJlIHJlcXVpcmVkIHBsZWFzZSBz
-ZW5kIGluY3JlbWVudGFsIHBhdGNoZXMgYWdhaW5zdCBjdXJyZW50Cj4gZ2l0LgoKU29ycnkgZm9y
-IG5vaXNpbmcuICBJIGhhdmVuJ3QgZ290IHlvdXIgYXV0byByZXBseSBpZiB0aGUgcGF0Y2ggYXBw
-bGllZC46LSgKQW55d2F5LCB0aGUgYXBwbGllZCBwYXRjaGVzIGFyZSBPSyBmb3IgbWUuCgpUaGFu
-a3MhCgoKCi0KQ2Flc2FyCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgotLSAKY2Flc2FyIHdhbmcgfCBzb2Z0d2FyZSBl
-bmdpbmVlciB8IHd4dEByb2NrLWNoaXAuY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpBbHNhLWRldmVsIG1haWxpbmcgbGlzdApBbHNhLWRldmVsQGFs
-c2EtcHJvamVjdC5vcmcKaHR0cDovL21haWxtYW4uYWxzYS1wcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2Fsc2EtZGV2ZWwK
+T24gMi8yLzIwMTYgNDozNiBQTSwgQ2Flc2FyIFdhbmcgd3JvdGU6Cj4gSGkgSm9obiwKPiAKPiDU
+2iAyMDE2xOowMtTCMDPI1SAwODowMywgSm9obiBZb3VuINC0tcA6Cj4+IE9uIDIvMS8yMDE2IDY6
+NTMgUE0sIENhZXNhciBXYW5nIHdyb3RlOgo+Pj4gSm9obiwKPj4+Cj4+PiBJIHdpbGwgc3VnZ2Vz
+dCB0aGUgbXNsZWVwKDI1KSBkZWxheSBzaG91bGQgIHB1dCBpbgo+Pj4gJ2R3YzJfZm9yY2VfZHJf
+bW9kZSgpJyBpbnN0ZWFkIG9mIHRoZSAnZHdjMl9jbGVhcl9mb3JjZV9tb2RlKCknCj4+Pgo+PiBI
+aSBDYWVzYXIsCj4+Cj4+IEFyZSB5b3Ugc2F5aW5nIHRoYXQganVzdCBtc2xlZXAoMjUpIGluIHRo
+YXQgZnVuY3Rpb24gbGlrZSB0aGlzIHNvbHZlcwo+PiB5b3VyIGlzc3VlPwo+Pgo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwo+
+PiBpbmRleCAzOWEwZmE4Li5lOGE5Njg4IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3VzYi9kd2My
+L2NvcmUuYwo+PiArKysgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwo+PiBAQCAtNjI1LDYgKzYy
+NSw4IEBAIHZvaWQgZHdjMl9mb3JjZV9kcl9tb2RlKHN0cnVjdCBkd2MyX2hzb3RnICpoc290ZykK
+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICBfX2Z1bmNfXywgaHNvdGctPmRyX21vZGUpOwo+
+PiAgICAgICAgICAgICAgICAgIGJyZWFrOwo+PiAgICAgICAgICB9Cj4+ICsKPj4gKyAgICAgICBt
+c2xlZXAoMjUpOwo+IAo+IFllcCwgdGhhdCB3aWxsIHNvbHZlIHRoaXMgaXNzdWUuCj4gCgpPayB0
+aGFua3MuIFRob3VnaCB0aGF0IHN0aWxsIHNlZW1zIHN0cmFuZ2Ugc2luY2UgeW91IHNob3VsZCBi
+ZSBnZXR0aW5nCnRoZSBtc2xlZXAoMjUpIGZyb20gZWl0aGVyIHRoZSBkd2MyX2ZvcmNlX21vZGUo
+KSBvcgpkd2MyX2NsZWFyX2ZvcmNlX21vZGUoKS4KCkNhbiB5b3UgY2hlY2sgaWYgdGhlIGZvbGxv
+d2luZyBwYXRjaCB3b3Jrcz8KCklmIHNvLCBJIHRoaW5rIHdlIGNhbiBnbyB3aXRoIHRoYXQgdG8g
+Zml4IHRoZSByZWdyZXNzaW9uIGZvcgpub3cuIE90aGVyd2lzZSBJJ2xsIGp1c3QgYWRkIHRoZSBl
+eHRyYSBtc2xlZXAoMjUpIGFuZCByZXZpc2l0IHRoaXMKbGF0ZXIuCgpSZWdhcmRzLApKb2huCgot
+LS0tPjgtLS0tCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy91c2IvZHdjMi9jb3JlLmMgYi9kcml2ZXJz
+L3VzYi9kd2MyL2NvcmUuYwppbmRleCBlOTkxZDU1Li4xM2MwNjBjIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL3VzYi9kd2MyL2NvcmUuYworKysgYi9kcml2ZXJzL3VzYi9kd2MyL2NvcmUuYwpAQCAtNTc2
+LDcgKzU3Niw2IEBAIHN0YXRpYyBib29sIGR3YzJfZm9yY2VfbW9kZShzdHJ1Y3QgZHdjMl9oc290
+ZyAqaHNvdGcsIGJvb2wgaG9zdCkKICAgICAgICBndXNiY2ZnIHw9IHNldDsKICAgICAgICBkd2My
+X3dyaXRlbChndXNiY2ZnLCBoc290Zy0+cmVncyArIEdVU0JDRkcpOwogCi0gICAgICAgbXNsZWVw
+KDI1KTsKICAgICAgICByZXR1cm4gdHJ1ZTsKIH0KIApAQCAtNTk2LDcgKzU5NSw2IEBAIHN0YXRp
+YyB2b2lkIGR3YzJfY2xlYXJfZm9yY2VfbW9kZShzdHJ1Y3QgZHdjMl9oc290ZyAqaHNvdGcpCiAg
+ICAgICAgICogTk9URTogVGhpcyBsb25nIHNsZWVwIGlzIF92ZXJ5XyBpbXBvcnRhbnQsIG90aGVy
+d2lzZSB0aGUgY29yZSB3aWxsCiAgICAgICAgICogbm90IHN0YXkgaW4gaG9zdCBtb2RlIGFmdGVy
+IGEgY29ubmVjdG9yIElEIGNoYW5nZSEKICAgICAgICAgKi8KLSAgICAgICBtc2xlZXAoMjUpOwog
+fQogCiAvKgpAQCAtNjE5LDYgKzYxNyw4IEBAIHZvaWQgZHdjMl9mb3JjZV9kcl9tb2RlKHN0cnVj
+dCBkd2MyX2hzb3RnICpoc290ZykKICAgICAgICAgICAgICAgICAgICAgICAgIF9fZnVuY19fLCBo
+c290Zy0+ZHJfbW9kZSk7CiAgICAgICAgICAgICAgICBicmVhazsKICAgICAgICB9CisKKyAgICAg
+ICBtc2xlZXAoMjUpOwogfQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
