@@ -1,49 +1,77 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 0/5] ARM: rockchip: move io-domains under GRF
-Date: Fri,  5 Feb 2016 22:20:13 +0100
-Message-ID: <1454707218-23676-1-git-send-email-heiko@sntech.de>
+From: Kevin Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH 1/5] PM / AVS: rockchip-io: make io-domains a child of the GRF
+Date: Fri, 05 Feb 2016 14:47:08 -0800
+Message-ID: <7hio22bwr7.fsf@baylibre.com>
+References: <1454707218-23676-1-git-send-email-heiko@sntech.de>
+	<1454707218-23676-2-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1454707218-23676-2-git-send-email-heiko@sntech.de> (Heiko
+	Stuebner's message of "Fri, 5 Feb 2016 22:20:14 +0100")
 Sender: linux-pm-owner@vger.kernel.org
-To: rjw@rjwysocki.net, khilman@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sjoerd.simons@collabora.co.uk, dianders@chromium.org, david.wu@rock-chips.com, Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: rjw@rjwysocki.net, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sjoerd.simons@collabora.co.uk, dianders@chromium.org, david.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The GRF contains both individual settings-bits as well as somewhat more
-fully blocks like different phy-controls and also the io-voltage selection.
-Similar to the power-domains living under the pmu, things like said
-io-voltage selection should live under the grf instead of separate
-nodes higher up.
+Heiko Stuebner <heiko@sntech.de> writes:
 
-This is even more important now that socs like the rk3368 and probably
-more future socs seem to contain more than one GRF-area (a second one
-under the PMU power-domain) with each containing a part of the voltage
-selection. So having that in the correct place also prevents confusion.
+> IO-domain handling is part of the general register files, so should live
+> under the grf directly. This change allows the grf to be a simple-mfd and
+> the io-domains fetching the syscon regmap from that parent-node.
+>
+> The old binding is of course preserved, though deprecated.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
+Acked-by: Kevin Hilman <khilman@baylibre.com>
 
-Ideally patch1 would go into 4.6 through the power or avs tree and the
-devicetree-related things should wait until after the next merge window
-due to the updated binding, which I can then simply apply to my dts
-branches.
-
-
-Heiko Stuebner (5):
-  PM / AVS: rockchip-io: make io-domains a child of the GRF
-  ARM: dts: rockchip: make rk3288-grf a simple-mfd
-  ARM: dts: rockchip: move rk3288 io-domain nodes to the grf
-  arm64: dts: rockchip: make rk3368 grf syscons simple-mfds as well
-  arm64: dts: rockchip: add rk3368 iodomains
-
- .../bindings/power/rockchip-io-domain.txt          |  4 ++-
- arch/arm/boot/dts/rk3288-firefly.dtsi              | 33 +++++++++++----------
- arch/arm/boot/dts/rk3288-popmetal.dts              | 34 ++++++++++++----------
- arch/arm/boot/dts/rk3288-rock2-som.dtsi            | 34 ++++++++++++----------
- arch/arm/boot/dts/rk3288-veyron.dtsi               | 28 +++++++++---------
- arch/arm/boot/dts/rk3288.dtsi                      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts        | 22 ++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  4 +--
- drivers/power/avs/rockchip-io-domain.c             | 10 ++++++-
- 9 files changed, 105 insertions(+), 66 deletions(-)
-
--- 
-2.6.4
-
+> ---
+>  Documentation/devicetree/bindings/power/rockchip-io-domain.txt |  4 +++-
+>  drivers/power/avs/rockchip-io-domain.c                         | 10 +++++++++-
+>  2 files changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> index b8627e7..7ed5518 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> +++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+> @@ -35,8 +35,10 @@ Required properties:
+>    - "rockchip,rk3288-io-voltage-domain" for rk3288
+>    - "rockchip,rk3368-io-voltage-domain" for rk3368
+>    - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
+> -- rockchip,grf: phandle to the syscon managing the "general register files"
+>  
+> +Deprecated properties:
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +    Systems should move the io-domains to a sub-node of the grf simple-mfd.
+>  
+>  You specify supplies using the standard regulator bindings by including
+>  a phandle the relevant regulator.  All specified supplies must be able
+> diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
+> index 8099456..a5a07d8 100644
+> --- a/drivers/power/avs/rockchip-io-domain.c
+> +++ b/drivers/power/avs/rockchip-io-domain.c
+> @@ -278,6 +278,7 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
+>  	struct device_node *np = pdev->dev.of_node;
+>  	const struct of_device_id *match;
+>  	struct rockchip_iodomain *iod;
+> +	struct device *parent;
+>  	int i, ret = 0;
+>  
+>  	if (!np)
+> @@ -293,7 +294,14 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
+>  	match = of_match_node(rockchip_iodomain_match, np);
+>  	iod->soc_data = (struct rockchip_iodomain_soc_data *)match->data;
+>  
+> -	iod->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +	parent = pdev->dev.parent;
+> +	if (parent && parent->of_node) {
+> +		iod->grf = syscon_node_to_regmap(parent->of_node);
+> +	} else {
+> +		dev_dbg(&pdev->dev, "falling back to old binding\n");
+> +		iod->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> +	}
+> +
+>  	if (IS_ERR(iod->grf)) {
+>  		dev_err(&pdev->dev, "couldn't find grf regmap\n");
+>  		return PTR_ERR(iod->grf);
