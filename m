@@ -1,77 +1,41 @@
-From: Kevin Hilman <khilman@baylibre.com>
-Subject: Re: [PATCH 1/5] PM / AVS: rockchip-io: make io-domains a child of the GRF
-Date: Fri, 05 Feb 2016 14:47:08 -0800
-Message-ID: <7hio22bwr7.fsf@baylibre.com>
-References: <1454707218-23676-1-git-send-email-heiko@sntech.de>
-	<1454707218-23676-2-git-send-email-heiko@sntech.de>
+From: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: brcmfmac: sdio: Increase the default timeouts a bit
+Date: Sat,  6 Feb 2016 11:59:10 +0000 (UTC)
+Message-ID: <20160206115910.E1D026029F@smtp.codeaurora.org>
+References: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1454707218-23676-2-git-send-email-heiko@sntech.de> (Heiko
-	Stuebner's message of "Fri, 5 Feb 2016 22:20:14 +0100")
-Sender: linux-pm-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: rjw@rjwysocki.net, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sjoerd.simons@collabora.co.uk, dianders@chromium.org, david.wu@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1453718849-3508-1-git-send-email-sjoerd.simons@collabora.co.uk>
+Sender: netdev-owner@vger.kernel.org
+To: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+Cc: Paul Stewart <pstew@chromium.org>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Arend van Spriel <arend@broadcom.com>, Pieter-Paul Giesberts <pieterpg@broadcom.com>, brcm80211-dev-list@broadcom.com, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, Hante Meuleman <meuleman@broadcom.com>, Brett Rudley <brudley@broadcom.com>, netdev@vger.kernel.org, "Franky (Zhenhui) Lin" <frankyl@broadcom.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Heiko Stuebner <heiko@sntech.de> writes:
 
-> IO-domain handling is part of the general register files, so should live
-> under the grf directly. This change allows the grf to be a simple-mfd and
-> the io-domains fetching the syscon regmap from that parent-node.
->
-> The old binding is of course preserved, though deprecated.
->
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> On a Radxa Rock2 board with a Ampak AP6335 (Broadcom 4339 core) it seems
+> the card responds very quickly most of the time, unfortunately during
+> initialisation it sometimes seems to take just a bit over 2 seconds to
+> respond.
+> 
+> This results intialization failing with message like:
+>   brcmf_c_preinit_dcmds: Retreiving cur_etheraddr failed, -52
+>   brcmf_bus_start: failed: -52
+>   brcmf_sdio_firmware_callback: dongle is not responding
+> 
+> Increasing the timeout to allow for a bit more headroom allows the
+> card to initialize reliably.
+> 
+> A quick search online after diagnosing/fixing this showed that Google
+> has a similar patch in their ChromeOS tree, so this doesn't seem
+> specific to the board I'm using.
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+> Reviewed-by: Julian Calaby <julian.calaby@gmail.com>
+> Acked-by: Arend van Spriel <arend@broadcom.com>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
-Acked-by: Kevin Hilman <khilman@baylibre.com>
+Thanks, applied to wireless-drivers-next.git.
 
-> ---
->  Documentation/devicetree/bindings/power/rockchip-io-domain.txt |  4 +++-
->  drivers/power/avs/rockchip-io-domain.c                         | 10 +++++++++-
->  2 files changed, 12 insertions(+), 2 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> index b8627e7..7ed5518 100644
-> --- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> +++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> @@ -35,8 +35,10 @@ Required properties:
->    - "rockchip,rk3288-io-voltage-domain" for rk3288
->    - "rockchip,rk3368-io-voltage-domain" for rk3368
->    - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
-> -- rockchip,grf: phandle to the syscon managing the "general register files"
->  
-> +Deprecated properties:
-> +- rockchip,grf: phandle to the syscon managing the "general register files"
-> +    Systems should move the io-domains to a sub-node of the grf simple-mfd.
->  
->  You specify supplies using the standard regulator bindings by including
->  a phandle the relevant regulator.  All specified supplies must be able
-> diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-> index 8099456..a5a07d8 100644
-> --- a/drivers/power/avs/rockchip-io-domain.c
-> +++ b/drivers/power/avs/rockchip-io-domain.c
-> @@ -278,6 +278,7 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
->  	struct device_node *np = pdev->dev.of_node;
->  	const struct of_device_id *match;
->  	struct rockchip_iodomain *iod;
-> +	struct device *parent;
->  	int i, ret = 0;
->  
->  	if (!np)
-> @@ -293,7 +294,14 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
->  	match = of_match_node(rockchip_iodomain_match, np);
->  	iod->soc_data = (struct rockchip_iodomain_soc_data *)match->data;
->  
-> -	iod->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	parent = pdev->dev.parent;
-> +	if (parent && parent->of_node) {
-> +		iod->grf = syscon_node_to_regmap(parent->of_node);
-> +	} else {
-> +		dev_dbg(&pdev->dev, "falling back to old binding\n");
-> +		iod->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	}
-> +
->  	if (IS_ERR(iod->grf)) {
->  		dev_err(&pdev->dev, "couldn't find grf regmap\n");
->  		return PTR_ERR(iod->grf);
+Kalle Valo
