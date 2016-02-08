@@ -1,69 +1,90 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 0/9] Fix broken DMAFLUSHP on Rockchips platform
-Date: Mon, 8 Feb 2016 14:02:57 +0000
-Message-ID: <20160208140257.GC7265@sirena.org.uk>
-References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
- <56AF01B6.6030204@gmail.com>
- <20160208031134.GI2531@localhost>
- <3817335.PXCk0JfYDT@phil>
- <20160208131419.GA19598@localhost>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="hYooF8G/hrfVAmum"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160208131419.GA19598@localhost>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Julien Chauveau <chauveau.julien@gmail.com>
+Subject: Re: [PATCH v2 07/10] ARM64: dts: rockchip: Add power key to GeekBox
+Date: Mon, 8 Feb 2016 17:26:04 +0100
+Message-ID: <99011D31-E0AE-4F02-B769-E10617EA4F01@gmail.com>
+References: <1454897859-7601-1-git-send-email-afaerber@suse.de> <1454897859-7601-8-git-send-email-afaerber@suse.de>
+Mime-Version: 1.0 (Mac OS X Mail 9.2 \(3112\))
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454897859-7601-8-git-send-email-afaerber@suse.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: =?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hello Andreas,
 
---hYooF8G/hrfVAmum
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Le 8 f=C3=A9vr. 2016 =C3=A0 03:17, Andreas F=C3=A4rber <afaerber@suse=
+=2Ede> a =C3=A9crit :
+>=20
+> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
+> ---
+> v2: New
+>=20
+> arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts | 22 ++++++++++++++++=
+++++++
+> 1 file changed, 22 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/a=
+rm64/boot/dts/rockchip/rk3368-geekbox.dts
+> index e84383fd6f10..fe5aa785cfda 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+> @@ -70,6 +70,22 @@
+> 		pinctrl-0 =3D <&ir_int>;
+> 	};
+>=20
+> +	keys: gpio-keys {
+> +		compatible =3D "gpio-keys";
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&pwr_key>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
 
-On Mon, Feb 08, 2016 at 06:44:19PM +0530, Vinod Koul wrote:
-> On Mon, Feb 08, 2016 at 10:27:04AM +0100, Heiko Stuebner wrote:
+I think #address-cells and #size-cells are not necessary.
 
-> > I think the more regular way is for the driver maintainer to take the=
-=20
-> > driver-specific stuff and the devicetree parts going through the specif=
-ic arm-
-> > tree. But if you really want to take the whole series, for patches 4,5,6
+> +
+> +		button@0 {
+> +			reg =3D <0>;
 
-> Yes but that causes cross tree dependencies, which looking at this won't =
-be
-> a big problem, so I can safely merge dmaengine changes and rest can go th=
-ru
-> ARM tree.
+reg can be removed too.
 
-Not for the DT stuff - since the DT is supposed to be a stable ABI there
-really shouldn't be any hard dependencies on things outside the DT.
+> +			gpio-key,wakeup =3D <1>;
 
-> Typically submitter should say which tree he/she prefers, which was not
-> provided..
+You should use the new "wakeup-source =C2=BB property.
 
-It's the norm for DT stuff.
+> +			gpios =3D <&gpio0 2 GPIO_ACTIVE_LOW>;
+> +			label =3D "GPIO Power";
+> +			linux,code =3D <116>;
 
---hYooF8G/hrfVAmum
-Content-Type: application/pgp-signature; name="signature.asc"
+#include <dt-bindings/input/input.h>
+and use KEY_POWER instead of 116
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+> +		};
+> +	};
+> +
+> 	leds: gpio-leds {
+> 		compatible =3D "gpio-leds";
+>=20
+> @@ -265,6 +281,12 @@
+> 		};
+> 	};
+>=20
+> +	keys {
+> +		pwr_key: pwr-key {
+> +			rockchip,pins =3D <0 2 RK_FUNC_GPIO &pcfg_pull_up>;
 
-iQEcBAEBCAAGBQJWuKARAAoJECTWi3JdVIfQ5+IH/RfdkKdGgrryPKWH6j09ZoLc
-23CoxN0Y3eUCdKOZU7ywHHGMr4ZsPzSTW1fjYJv7+CxNDlRUXQBYT3DvggoQ4idz
-0jkIyf7JUhYnLoo/5LaUulLF2qvkHKjanJH/rbZh4xgn7lUe+qpCX8TLko7SDIph
-jVCNJAQhkQ/Ca1Fi2IK1eMSHgc3hmpXiY+sOVjlGigO07+WCye0QNGXQ0arpKrY3
-Ea2hVRR6o6zajuVHm332gQiyTVY9S0ZgwDuJ3uqk/vkjh1gn2CExDEYZFiP5LaHi
-suo0XW2KcvsBhhLCpqzMyHRBTnMC8uSsHenzE/jVYu3xXkEN3r9pfT9S0DQG1Rg=
-=g7sB
------END PGP SIGNATURE-----
+Is there a reason you want to enable the internal pull-up resistor on t=
+his pin?
 
---hYooF8G/hrfVAmum--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+The schematic shows there's already an external pull-up resistor so the=
+ internal one should not be needed.
+
+
+> +		};
+> +	};
+> +
+> 	pmic {
+> 		pmic_sleep: pmic-sleep {
+> 			rockchip,pins =3D <0 0 RK_FUNC_2 &pcfg_pull_none>;
