@@ -1,70 +1,58 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v7 0/5] Add mipi dsi support for rk3288
-Date: Mon, 8 Feb 2016 17:56:27 +0530
-Message-ID: <56B88973.6000701@codeaurora.org>
-References: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
- <56B869F4.6090507@codeaurora.org> <5060470.dfeHX20DRa@phil>
+From: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v7 0/9] Fix broken DMAFLUSHP on Rockchips platform
+Date: Mon, 8 Feb 2016 18:44:19 +0530
+Message-ID: <20160208131419.GA19598@localhost>
+References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com>
+ <56AF01B6.6030204@gmail.com>
+ <20160208031134.GI2531@localhost>
+ <3817335.PXCk0JfYDT@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5060470.dfeHX20DRa@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, treding@nvidia.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Chris Zhong <zyw@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <3817335.PXCk0JfYDT@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwMi8wOC8yMDE2IDA0OjIyIFBNLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiBIaSBBcmNo
-aXQsCj4KPiBBbSBNb250YWcsIDguIEZlYnJ1YXIgMjAxNiwgMTU6NDI6MDQgc2NocmllYiBBcmNo
-aXQgVGFuZWphOgo+PiBPbiAwMS8wNi8yMDE2IDA5OjMzIEFNLCBDaHJpcyBaaG9uZyB3cm90ZToK
-Pj4+IFRoZSByazMyODggTUlQSSBEU0kgaXMgYSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJ
-IGhvc3QgY29udHJvbGxlcgo+Pj4gSVAuIFRoaXMgc2VyaWVzIGFkZHMgc3VwcG9ydCBmb3IgYSBT
-eW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJIGhvc3QKPj4+IGNvbnRyb2xsZXIgRFJNIGRyaXZl
-ci4KPj4+Cj4+PiBUaGUgTUlQSSBEU0kgZmVhdHVyZSBpcyB0ZXN0ZWQgb24gcmszMjg4IGV2YiBi
-b2FyZCwgYmFja3BvcnQgdGhlbSB0bwo+Pj4gY2hyb21lIG9zIGtlcm5lbCBjaHJvbWVfdjMuMTQs
-IGFuZCBpdCBjYW4gZGlzcGxheSBub3JtYWxseS4KPj4+Cj4+PiBUaGlzIHBhdGNoc2V0IGlzIGJh
-c2Ugb24gdGhlIHBhdGNoc2V0IGZyb20gWWluZy5saXVAZnJlZXNjYWxlLmNvbS4KPj4+IDxodHRw
-Oi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2RyaS1kZXZlbC9tc2c3NzE4MS5odG1sPgo+Pj4KPj4+
-IEFjY29yZGluZyB0byB0aGUgc3VnZ2VzdGlvbiBmcm9tIFRoaWVycnksIEkgaGF2ZSBnZXQgcmlk
-IG9mIHRoZSBicmlkZ2UsCj4+PiBhbmQgcmVnaXN0ZXIgdGhlIGVuY29kZXIgJiBjb25uZWN0ZXIg
-aW4gZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLmMuCj4+Cj4+IEkndmUgcmFpc2VkIHRoaXMgcXVl
-c3Rpb24gdG9vIGxhdGUsIGJ1dCB3aGF0IHdhcyB0aGUgcmVhc29uIHRvIG5vdAo+PiBpbXBsZW1l
-bnQgdGhlIERTSSBibG9jayBhcyBhIGJyaWRnZSBkcml2ZXI/Cj4KPiBUaGVyZSBzZWVtcyB0byBh
-bHdheXMgYmUgc29tZSBzb3J0IG9mIGNvbnRlbnRpb24gYWJvdXQgdGhvc2UgYmVpbmcgYnJpZGdl
-Cj4gZHJpdmVycyAtIEkgdGhpbmsgSSByZW1lbWJlciBUaGllcnJ5IHNwZWFraW5nIHVwIGFib3V0
-IHRoYXQuIEJ1dCBJIGRvbid0Cj4gcmVtZW1iZXIgaWYgYW55IGRpZmZlcmVudCBzb2x1dGlvbiB3
-YXMgc3VnZ2VzdGVkLgoKV2VsbCwgeWVhaCwgdGhlc2UgY2FuIGJlIGNvbnNpZGVyZWQgYXMgZW5j
-b2RlcnMgdG9vLiBJIGd1ZXNzIGl0J3MganVzdApub3QgdmVyeSBjb21tb24gdG8gaGF2ZSBlbmNv
-ZGVyIGRyaXZlcnMgb3V0c2lkZSBvZiB0aGUga21zIGRyaXZlciwgaW4KY29tcGFyaXNvbiB0byBi
-cmlkZ2VzLgoKVGhlIGFkdmFudGFnZSBvZiBoYXZpbmcgc3VjaCBzaGFyZWQgSVBzIGFzIGJyaWRn
-ZXMgaXMgdGhhdCB0aGV5IGNhbiBiZQp1c2VkIGJ5IGttcyBkcml2ZXJzIHRoYXQgYWxyZWFkeSBp
-bXBsZW1lbnQgYW4gZW5jb2RlciBpbiB0aGUgZGlzcGxheQpjaGFpbi4KCj4KPiBBbHNvIGFzIHdl
-IGhhdmUgc2VlbiB3aXRoIGN1cnJlbnQgc2hhcmVkIElQcyAoZHctaGRtaSArIGFuYWxvZ2l4LWRw
-KSB0aGVyZQo+IGFyZSBhbHdheXMgaW1wbGVtZW50YXRpb24tc3BlY2lmaWMgcGFydHMgYW5kIGRl
-Y2lkaW5nIHdoaWNoIG5lZWRzIHRvIGxhbmQKPiB3aGVyZSBpcyBkaWZmaWN1bHQgd2l0aG91dCB0
-aGUgc2Vjb25kYXJ5IHVzZXIgcHJlc2VudC4KClllYWgsIEkgY2FuIGltYWdpbmUgaXQgYmVpbmcg
-aGFyZCB0byBzZXBhcmF0ZSBvdXQgdGhlIGltcGxlbWVudGF0aW9uCnNwZWNpZmljIGFuZCBjb3Jl
-IHBhcnRzLgoKPgo+IFRoZSBmaXJzdCBpdGVyYXRpb25zIHdoZXJlIHVzaW5nIGEgYnJpZGdlLWRy
-aXZlci1iYXNlIGZvciBpdCBidXQgSSBndWVzcyBpdAo+IHdhcyB0byBtdWNoIGhhc3NsZSB3aXRo
-b3V0IHNlZWluZyBhbm90aGVyIHVzZXIgb24gdGhlIGhvcml6b24uCj4KPgo+PiBUaGUgZHJtL2hp
-c2lsaWNvbiBJUCBzZWVtcyB0byB1c2UgYSB2ZXJ5IHNpbWlsYXIgRFNJIERlc2lnbndhcmUgSVAg
-KHRoZQo+PiByZWdpc3RlciBvZmZzZXRzIHNlZW1zIHRvIGJlIHRoZSBzYW1lKS4gVGhlcmUgaXMg
-YSBnb29kIHBvdGVudGlhbCBvZgo+PiByZS11c2UgaGVyZSBieSBkaWZmZXJlbnQga21zIGRyaXZl
-cnMgaGVyZSB0aGUgd2F5IGl0J3MgYWxyZWFkeSBkb25lIGZvcgo+PiBEVyBIRE1JIGFuZCB0aGUg
-YW5hbG9naXggRFAgZHJpdmVyIHRoYXQncyBpbiByZXZpZXcgcHJvY2Vzcy4KPgo+IEkgZ3Vlc3Ms
-IHRoZSBzZWNvbmQgdXNlciBub3cgZ2V0cyB0byBkbyB0aGUgZ2VuZXJhbGl6YXRpb24gOy0pCgpJ
-ZiBub3QgdGhlIGdlbmVyYWxpemF0aW9uLCB0aGVuIGF0IGxlYXN0IGFuIGFzc2Vzc21lbnQgaWYg
-aXQncyB3b3J0aCB0aGUKZWZmb3J0IG9yIG5vdCA6KQoKQXJjaGl0CgotLSAKVGhlIFF1YWxjb21t
-IElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIHRoZSBDb2RlIEF1cm9yYSAK
-Rm9ydW0sIGhvc3RlZCBieSBUaGUgTGludXggRm91bmRhdGlvbgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Heiko,
+
+On Mon, Feb 08, 2016 at 10:27:04AM +0100, Heiko Stuebner wrote:
+> Hi Vinod,
+> 
+> Am Montag, 8. Februar 2016, 08:41:34 schrieb Vinod Koul:
+> > On Mon, Feb 01, 2016 at 02:56:54PM +0800, Caesar Wang wrote:
+> > > Hello Vinod,
+> > > 
+> > > Is there any chance apply the DMA patches?:-)
+> > 
+> > I was waiting for any ACKs on ARM patches before I merge this series.
+> 
+> I think the more regular way is for the driver maintainer to take the 
+> driver-specific stuff and the devicetree parts going through the specific arm-
+> tree. But if you really want to take the whole series, for patches 4,5,6
+
+Yes but that causes cross tree dependencies, which looking at this won't be
+a big problem, so I can safely merge dmaengine changes and rest can go thru
+ARM tree.
+
+Typically submitter should say which tree he/she prefers, which was not
+provided..
+
+So, are all okay to merge the entire series thru dmaengine tree or
+independent. I don't mind either
+
+> - ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3288 platform
+> - ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3xxx platform
+> - ARM: dts: add pl330-broken-no-flushp quirk for rk3036 SoCs
+> 
+> Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+
+Thanks
+-- 
+~Vinod
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
