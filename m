@@ -1,88 +1,71 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v7 0/5] Add mipi dsi support for rk3288
-Date: Mon, 8 Feb 2016 15:42:04 +0530
-Message-ID: <56B869F4.6090507@codeaurora.org>
-References: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 04/10] ARM64: dts: rockchip: Add GMAC to GeekBox
+Date: Mon, 08 Feb 2016 11:28:22 +0100
+Message-ID: <5875277.Y7zJ7W9GkY@phil>
+References: <1454897859-7601-1-git-send-email-afaerber@suse.de> <1454897859-7601-5-git-send-email-afaerber@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Chris Zhong <zyw@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1454897859-7601-5-git-send-email-afaerber@suse.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAwMS8wNi8yMDE2IDA5OjMzIEFNLCBDaHJpcyBaaG9uZyB3cm90ZToKPgo+IFRoZSBy
-azMyODggTUlQSSBEU0kgaXMgYSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJIGhvc3QgY29u
-dHJvbGxlcgo+IElQLiBUaGlzIHNlcmllcyBhZGRzIHN1cHBvcnQgZm9yIGEgU3lub3BzeXMgRGVz
-aWduV2FyZSBNSVBJIERTSSBob3N0Cj4gY29udHJvbGxlciBEUk0gZHJpdmVyLgo+Cj4gVGhlIE1J
-UEkgRFNJIGZlYXR1cmUgaXMgdGVzdGVkIG9uIHJrMzI4OCBldmIgYm9hcmQsIGJhY2twb3J0IHRo
-ZW0gdG8KPiBjaHJvbWUgb3Mga2VybmVsIGNocm9tZV92My4xNCwgYW5kIGl0IGNhbiBkaXNwbGF5
-IG5vcm1hbGx5Lgo+Cj4gVGhpcyBwYXRjaHNldCBpcyBiYXNlIG9uIHRoZSBwYXRjaHNldCBmcm9t
-IFlpbmcubGl1QGZyZWVzY2FsZS5jb20uCj4gPGh0dHA6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMv
-ZHJpLWRldmVsL21zZzc3MTgxLmh0bWw+Cj4KPiBBY2NvcmRpbmcgdG8gdGhlIHN1Z2dlc3Rpb24g
-ZnJvbSBUaGllcnJ5LCBJIGhhdmUgZ2V0IHJpZCBvZiB0aGUgYnJpZGdlLAo+IGFuZCByZWdpc3Rl
-ciB0aGUgZW5jb2RlciAmIGNvbm5lY3RlciBpbiBkcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYy4K
-CkkndmUgcmFpc2VkIHRoaXMgcXVlc3Rpb24gdG9vIGxhdGUsIGJ1dCB3aGF0IHdhcyB0aGUgcmVh
-c29uIHRvIG5vdAppbXBsZW1lbnQgdGhlIERTSSBibG9jayBhcyBhIGJyaWRnZSBkcml2ZXI/CgpU
-aGUgZHJtL2hpc2lsaWNvbiBJUCBzZWVtcyB0byB1c2UgYSB2ZXJ5IHNpbWlsYXIgRFNJIERlc2ln
-bndhcmUgSVAgKHRoZQpyZWdpc3RlciBvZmZzZXRzIHNlZW1zIHRvIGJlIHRoZSBzYW1lKS4gVGhl
-cmUgaXMgYSBnb29kIHBvdGVudGlhbCBvZgpyZS11c2UgaGVyZSBieSBkaWZmZXJlbnQga21zIGRy
-aXZlcnMgaGVyZSB0aGUgd2F5IGl0J3MgYWxyZWFkeSBkb25lIGZvcgpEVyBIRE1JIGFuZCB0aGUg
-YW5hbG9naXggRFAgZHJpdmVyIHRoYXQncyBpbiByZXZpZXcgcHJvY2Vzcy4KCkFyY2hpdAoKPiBB
-ZnRlciBiYWNrcG9ydCBiZWxvdyBwYXRjaGVzIGZyb20gbGludXgtbmV4dCwgSSBjYW4gbWVyZ2Ug
-dGhpcyBzZXJpYWwgaW50bwo+IERhdmUncyBkcm0tbmV4dCBicmFuY2guCj4KPiA5NGQ1ZDZhMGZi
-ZjMgY2xrOiByb2NrY2hpcDogYWRkIGFuIGlkIGZvciByazMyODggY3J5cHRvIGNsawo+IGM2ZDQ5
-ZmJjZmNjNCBjbGs6IHJvY2tjaGlwOiBhZGQgaWQgZm9yIG1pcGlkc2kgc2NsayBvbiByazMyODgK
-PiBhMmY0YzU2MGYxOGUgY2xrOiByb2NrY2hpcDogYWRkIG1pcGlkc2kgY2xvY2sgb24gcmszMjg4
-Cj4gNjljOTIzNzQzNjQwIEFSTTogZHRzOiByb2NrY2hpcDogY29ycmVjdCB0aGUgbmFtZSBvZiBS
-RUc4IGZvciByazMyODgtZXZiLWFjdDg4NDYKPiA2NjI1MTNhMTRjOWQgQVJNOiBkdHM6IHJvY2tj
-aGlwOiBhZGQgMiByZWd1bGF0b3JzIGZvciByazMyODgtZXZiLWFjdDg4NDYKPiBiMDQwNjFlNjU5
-OWIgQVJNOiBkdHM6IHJvY2tjaGlwOiBtb3ZlIHRoZSBwdWJsaWMgcGFydCB0byByazMyODgtZXZi
-IGNvbW1vbgo+Cj4KPiBDaGFuZ2VzIGluIHY3Ogo+IC0gbW9kaWZ5IHRoZSBjb25maWcgdG8gdHJp
-c3RhdGUgZm9yIG1vZHVsZXMgYnVpbGQgKE1hcmsgWWFvKQo+IC0gUGFzcyBOVUxMICduYW1lJyB0
-byBkcm1fZW5jb2Rlcl9pbml0KCkgdG8gZml4IGNvbXBpbGUgZXJyIChNYXJrIFlhbykKPiAtIE1v
-dmUgdGhlIGxjZF9lbiBjb250cm9sIHRvIGFjdDg4NDYgZHRzCj4KPiBDaGFuZ2VzIGluIHY2Ogo+
-IC0gdXBkYXRlIHRoZSBkb2N1bWVudCwgc2luY2UgdGhlIGJyaWRnZSBkZXZpY2UgaGFzIGJlZW4g
-ZGVsZXRlZC4KPiAtIG1vdmUgdGhlIG1pcGlfZW4gZ2F0ZSB0byBvY2tjaGlwX2RybV9jcnRjX21v
-ZGVfY29uZmlnCj4gLSBSZW1vdmUgdGhlIGF0b21pYyBmZWF0dXJlIGNoZWNrIChNYXJrIFlhbykK
-PiAtIEFkZCBhdG9taWMgQVBJIHN1cHBvcnQgKEhlaWtvIFN0w7xibmUpCj4gLSBEbyBub3QgdXNl
-IGJyaWRnZSBkcml2ZXIgKFRoaWVycnkgUmVkaW5nKQo+IC0gT3B0aW1pemF0aW9uIHRoZSBwaHkg
-aW5pdCBzZXF1ZW5jZQo+Cj4gQ2hhbmdlcyBpbiB2NToKPiAtIG1vZGlmeSB0aGUgY2xrIG5hbWUg
-dG8gU0NMS19NSVBJRFNJXzI0TQo+IC0gYWRkIGEgYmxhbmsgbGluZSBiZWZvciBsY2RfZW4KPgo+
-IENoYW5nZXMgaW4gdjQ6Cj4gLSB1c2UgY2xrX3JvdW5kX3JhdGUgdG8gY2hlY2sgdGhlIGNsb2Nr
-IHJhdGUgaW4gdm9wX2NydGNfbW9kZV9maXh1cAo+Cj4gQ2hhbmdlcyBpbiB2MzoKPiAtIG1vdmUg
-ZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0IHRvIGJpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvCj4K
-PiBDaHJpcyBaaG9uZyAoNSk6Cj4gICAgZHJtL3JvY2tjaGlwOiByZXR1cm4gYSB0cnVlIGNsb2Nr
-IHJhdGUgdG8gYWRqdXN0ZWRfbW9kZQo+ICAgIERvY3VtZW50YXRpb246IGR0LWJpbmRpbmdzOiBB
-ZGQgYmluZGluZ3MgZm9yIHJrMzI4OCBEVyBNSVBJIERTSSBkcml2ZXIKPiAgICBkcm06IHJvY2tj
-aGlwOiBTdXBwb3J0IFN5bm9wc3lzIERXIE1JUEkgRFNJCj4gICAgQVJNOiBkdHM6IHJvY2tjaGlw
-OiBhZGQgcmszMjg4IG1pcGlfZHNpIG5vZGVzCj4gICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBhZGQg
-c3VwcG9ydCBtaXBpIHBhbmVsIHR2MDgwd3VtLW5sMAo+Cj4gICAuLi4vZGlzcGxheS9yb2NrY2hp
-cC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQgICAgICB8ICAgNjAgKwo+ICAgYXJjaC9hcm0vYm9v
-dC9kdHMvcmszMjg4LWV2Yi1hY3Q4ODQ2LmR0cyAgICAgICAgICAgfCAgICAyICsKPiAgIGFyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRzaSAgICAgICAgICAgICAgICAgIHwgICAxMiArLQo+
-ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgICAgICAgICAgICAgICAgICAgICAgfCAg
-IDM5ICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAg
-ICAgIHwgICAxMCArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAg
-ICAgICAgICAgICB8ICAgIDEgKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLmMgICAgICAgICAgICAgfCAxMTk2ICsrKysrKysrKysrKysrKysrKysrCj4gICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICAgIDggKwo+ICAg
-OCBmaWxlcyBjaGFuZ2VkLCAxMzI3IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
-eS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+CgotLSAKVGhlIFF1YWxj
-b21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIHRoZSBDb2RlIEF1cm9y
-YSAKRm9ydW0sIGhvc3RlZCBieSBUaGUgTGludXggRm91bmRhdGlvbgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
-aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Andreas,
+
+Am Montag, 8. Februar 2016, 03:17:33 schrieb Andreas F=E4rber:
+> Signed-off-by: Andreas F=E4rber <afaerber@suse.de>
+
+is there some special reason that gmac, emmc, ir, etc are in separate=20
+patches? I guess I'll just fold them into the core patch otherwise.
+
+
+Heiko
+
+> ---
+>  v2: New
+>=20
+>  arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts | 20 +++++++++++++++=
++++++
+> 1 file changed, 20 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+> b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts index
+> bc91d39758ab..a8dcf3c2b0c1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+> @@ -56,6 +56,13 @@
+>  		reg =3D <0x0 0x0 0x0 0x80000000>;
+>  	};
+>=20
+> +	ext_gmac: gmac-clk {
+> +		compatible =3D "fixed-clock";
+> +		clock-frequency =3D <125000000>;
+> +		clock-output-names =3D "ext_gmac";
+> +		#clock-cells =3D <0>;
+> +	};
+> +
+>  	leds: gpio-leds {
+>  		compatible =3D "gpio-leds";
+>=20
+> @@ -82,6 +89,19 @@
+>  	};
+>  };
+>=20
+> +&gmac {
+> +	status =3D "okay";
+> +	phy-supply =3D <&vcc_lan>;
+> +	phy-mode =3D "rgmii";
+> +	clock_in_out =3D "input";
+> +	assigned-clocks =3D <&cru SCLK_MAC>;
+> +	assigned-clock-parents =3D <&ext_gmac>;
+> +	pinctrl-names =3D "default";
+> +	pinctrl-0 =3D <&rgmii_pins>;
+> +	tx_delay =3D <0x30>;
+> +	rx_delay =3D <0x10>;
+> +};
+> +
+>  &i2c0 {
+>  	status =3D "okay";
