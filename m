@@ -1,41 +1,88 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v7 0/9] Fix broken DMAFLUSHP on Rockchips platform
-Date: Mon, 08 Feb 2016 10:27:04 +0100
-Message-ID: <3817335.PXCk0JfYDT@phil>
-References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com> <56AF01B6.6030204@gmail.com> <20160208031134.GI2531@localhost>
+From: Archit Taneja <architt@codeaurora.org>
+Subject: Re: [PATCH v7 0/5] Add mipi dsi support for rk3288
+Date: Mon, 8 Feb 2016 15:42:04 +0530
+Message-ID: <56B869F4.6090507@codeaurora.org>
+References: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160208031134.GI2531@localhost>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sonny Rao <sonnyrao-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1452053038-32098-1-git-send-email-zyw@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Chris Zhong <zyw@rock-chips.com>, heiko@sntech.de, linux-rockchip@lists.infradead.org, mark.yao@rock-chips.com, treding@nvidia.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Vinod,
-
-Am Montag, 8. Februar 2016, 08:41:34 schrieb Vinod Koul:
-> On Mon, Feb 01, 2016 at 02:56:54PM +0800, Caesar Wang wrote:
-> > Hello Vinod,
-> > 
-> > Is there any chance apply the DMA patches?:-)
-> 
-> I was waiting for any ACKs on ARM patches before I merge this series.
-
-I think the more regular way is for the driver maintainer to take the 
-driver-specific stuff and the devicetree parts going through the specific arm-
-tree. But if you really want to take the whole series, for patches 4,5,6
-
-- ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3288 platform
-- ARM: dts: Add arm, pl330-broken-no-flushp quirk for rk3xxx platform
-- ARM: dts: add pl330-broken-no-flushp quirk for rk3036 SoCs
-
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGksCgpPbiAwMS8wNi8yMDE2IDA5OjMzIEFNLCBDaHJpcyBaaG9uZyB3cm90ZToKPgo+IFRoZSBy
+azMyODggTUlQSSBEU0kgaXMgYSBTeW5vcHN5cyBEZXNpZ25XYXJlIE1JUEkgRFNJIGhvc3QgY29u
+dHJvbGxlcgo+IElQLiBUaGlzIHNlcmllcyBhZGRzIHN1cHBvcnQgZm9yIGEgU3lub3BzeXMgRGVz
+aWduV2FyZSBNSVBJIERTSSBob3N0Cj4gY29udHJvbGxlciBEUk0gZHJpdmVyLgo+Cj4gVGhlIE1J
+UEkgRFNJIGZlYXR1cmUgaXMgdGVzdGVkIG9uIHJrMzI4OCBldmIgYm9hcmQsIGJhY2twb3J0IHRo
+ZW0gdG8KPiBjaHJvbWUgb3Mga2VybmVsIGNocm9tZV92My4xNCwgYW5kIGl0IGNhbiBkaXNwbGF5
+IG5vcm1hbGx5Lgo+Cj4gVGhpcyBwYXRjaHNldCBpcyBiYXNlIG9uIHRoZSBwYXRjaHNldCBmcm9t
+IFlpbmcubGl1QGZyZWVzY2FsZS5jb20uCj4gPGh0dHA6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMv
+ZHJpLWRldmVsL21zZzc3MTgxLmh0bWw+Cj4KPiBBY2NvcmRpbmcgdG8gdGhlIHN1Z2dlc3Rpb24g
+ZnJvbSBUaGllcnJ5LCBJIGhhdmUgZ2V0IHJpZCBvZiB0aGUgYnJpZGdlLAo+IGFuZCByZWdpc3Rl
+ciB0aGUgZW5jb2RlciAmIGNvbm5lY3RlciBpbiBkcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYy4K
+CkkndmUgcmFpc2VkIHRoaXMgcXVlc3Rpb24gdG9vIGxhdGUsIGJ1dCB3aGF0IHdhcyB0aGUgcmVh
+c29uIHRvIG5vdAppbXBsZW1lbnQgdGhlIERTSSBibG9jayBhcyBhIGJyaWRnZSBkcml2ZXI/CgpU
+aGUgZHJtL2hpc2lsaWNvbiBJUCBzZWVtcyB0byB1c2UgYSB2ZXJ5IHNpbWlsYXIgRFNJIERlc2ln
+bndhcmUgSVAgKHRoZQpyZWdpc3RlciBvZmZzZXRzIHNlZW1zIHRvIGJlIHRoZSBzYW1lKS4gVGhl
+cmUgaXMgYSBnb29kIHBvdGVudGlhbCBvZgpyZS11c2UgaGVyZSBieSBkaWZmZXJlbnQga21zIGRy
+aXZlcnMgaGVyZSB0aGUgd2F5IGl0J3MgYWxyZWFkeSBkb25lIGZvcgpEVyBIRE1JIGFuZCB0aGUg
+YW5hbG9naXggRFAgZHJpdmVyIHRoYXQncyBpbiByZXZpZXcgcHJvY2Vzcy4KCkFyY2hpdAoKPiBB
+ZnRlciBiYWNrcG9ydCBiZWxvdyBwYXRjaGVzIGZyb20gbGludXgtbmV4dCwgSSBjYW4gbWVyZ2Ug
+dGhpcyBzZXJpYWwgaW50bwo+IERhdmUncyBkcm0tbmV4dCBicmFuY2guCj4KPiA5NGQ1ZDZhMGZi
+ZjMgY2xrOiByb2NrY2hpcDogYWRkIGFuIGlkIGZvciByazMyODggY3J5cHRvIGNsawo+IGM2ZDQ5
+ZmJjZmNjNCBjbGs6IHJvY2tjaGlwOiBhZGQgaWQgZm9yIG1pcGlkc2kgc2NsayBvbiByazMyODgK
+PiBhMmY0YzU2MGYxOGUgY2xrOiByb2NrY2hpcDogYWRkIG1pcGlkc2kgY2xvY2sgb24gcmszMjg4
+Cj4gNjljOTIzNzQzNjQwIEFSTTogZHRzOiByb2NrY2hpcDogY29ycmVjdCB0aGUgbmFtZSBvZiBS
+RUc4IGZvciByazMyODgtZXZiLWFjdDg4NDYKPiA2NjI1MTNhMTRjOWQgQVJNOiBkdHM6IHJvY2tj
+aGlwOiBhZGQgMiByZWd1bGF0b3JzIGZvciByazMyODgtZXZiLWFjdDg4NDYKPiBiMDQwNjFlNjU5
+OWIgQVJNOiBkdHM6IHJvY2tjaGlwOiBtb3ZlIHRoZSBwdWJsaWMgcGFydCB0byByazMyODgtZXZi
+IGNvbW1vbgo+Cj4KPiBDaGFuZ2VzIGluIHY3Ogo+IC0gbW9kaWZ5IHRoZSBjb25maWcgdG8gdHJp
+c3RhdGUgZm9yIG1vZHVsZXMgYnVpbGQgKE1hcmsgWWFvKQo+IC0gUGFzcyBOVUxMICduYW1lJyB0
+byBkcm1fZW5jb2Rlcl9pbml0KCkgdG8gZml4IGNvbXBpbGUgZXJyIChNYXJrIFlhbykKPiAtIE1v
+dmUgdGhlIGxjZF9lbiBjb250cm9sIHRvIGFjdDg4NDYgZHRzCj4KPiBDaGFuZ2VzIGluIHY2Ogo+
+IC0gdXBkYXRlIHRoZSBkb2N1bWVudCwgc2luY2UgdGhlIGJyaWRnZSBkZXZpY2UgaGFzIGJlZW4g
+ZGVsZXRlZC4KPiAtIG1vdmUgdGhlIG1pcGlfZW4gZ2F0ZSB0byBvY2tjaGlwX2RybV9jcnRjX21v
+ZGVfY29uZmlnCj4gLSBSZW1vdmUgdGhlIGF0b21pYyBmZWF0dXJlIGNoZWNrIChNYXJrIFlhbykK
+PiAtIEFkZCBhdG9taWMgQVBJIHN1cHBvcnQgKEhlaWtvIFN0w7xibmUpCj4gLSBEbyBub3QgdXNl
+IGJyaWRnZSBkcml2ZXIgKFRoaWVycnkgUmVkaW5nKQo+IC0gT3B0aW1pemF0aW9uIHRoZSBwaHkg
+aW5pdCBzZXF1ZW5jZQo+Cj4gQ2hhbmdlcyBpbiB2NToKPiAtIG1vZGlmeSB0aGUgY2xrIG5hbWUg
+dG8gU0NMS19NSVBJRFNJXzI0TQo+IC0gYWRkIGEgYmxhbmsgbGluZSBiZWZvciBsY2RfZW4KPgo+
+IENoYW5nZXMgaW4gdjQ6Cj4gLSB1c2UgY2xrX3JvdW5kX3JhdGUgdG8gY2hlY2sgdGhlIGNsb2Nr
+IHJhdGUgaW4gdm9wX2NydGNfbW9kZV9maXh1cAo+Cj4gQ2hhbmdlcyBpbiB2MzoKPiAtIG1vdmUg
+ZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0IHRvIGJpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvCj4K
+PiBDaHJpcyBaaG9uZyAoNSk6Cj4gICAgZHJtL3JvY2tjaGlwOiByZXR1cm4gYSB0cnVlIGNsb2Nr
+IHJhdGUgdG8gYWRqdXN0ZWRfbW9kZQo+ICAgIERvY3VtZW50YXRpb246IGR0LWJpbmRpbmdzOiBB
+ZGQgYmluZGluZ3MgZm9yIHJrMzI4OCBEVyBNSVBJIERTSSBkcml2ZXIKPiAgICBkcm06IHJvY2tj
+aGlwOiBTdXBwb3J0IFN5bm9wc3lzIERXIE1JUEkgRFNJCj4gICAgQVJNOiBkdHM6IHJvY2tjaGlw
+OiBhZGQgcmszMjg4IG1pcGlfZHNpIG5vZGVzCj4gICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBhZGQg
+c3VwcG9ydCBtaXBpIHBhbmVsIHR2MDgwd3VtLW5sMAo+Cj4gICAuLi4vZGlzcGxheS9yb2NrY2hp
+cC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQgICAgICB8ICAgNjAgKwo+ICAgYXJjaC9hcm0vYm9v
+dC9kdHMvcmszMjg4LWV2Yi1hY3Q4ODQ2LmR0cyAgICAgICAgICAgfCAgICAyICsKPiAgIGFyY2gv
+YXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIuZHRzaSAgICAgICAgICAgICAgICAgIHwgICAxMiArLQo+
+ICAgYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgICAgICAgICAgICAgICAgICAgICAgfCAg
+IDM5ICsKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAg
+ICAgIHwgICAxMCArCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAg
+ICAgICAgICAgICB8ICAgIDEgKwo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLmMgICAgICAgICAgICAgfCAxMTk2ICsrKysrKysrKysrKysrKysrKysrCj4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jICAgICAgICB8ICAgIDggKwo+ICAg
+OCBmaWxlcyBjaGFuZ2VkLCAxMzI3IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAgIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9yb2NrY2hpcC9kd19taXBpX2RzaV9yb2NrY2hpcC50eHQKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2kuYwo+CgotLSAKVGhlIFF1YWxj
+b21tIElubm92YXRpb24gQ2VudGVyLCBJbmMuIGlzIGEgbWVtYmVyIG9mIHRoZSBDb2RlIEF1cm9y
+YSAKRm9ydW0sIGhvc3RlZCBieSBUaGUgTGludXggRm91bmRhdGlvbgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
