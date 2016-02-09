@@ -1,24 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v7 6/9] ARM: dts: add pl330-broken-no-flushp quirk for rk3036 SoCs
-Date: Tue, 09 Feb 2016 18:29:50 +0100
-Message-ID: <1488837.V2iXLjBOmC@phil>
-References: <1453460812-8498-1-git-send-email-wxt@rock-chips.com> <1453460812-8498-7-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: replace gpio-key,
+ wakeup with wakeup-source property
+Date: Wed, 10 Feb 2016 00:32:51 +0100
+Message-ID: <48510660.EJbbczq5fX@phil>
+References: <1454968512-11956-1-git-send-email-sudeep.holla@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453460812-8498-7-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Vinod Koul <vinod.koul@intel.com>, Sonny Rao <sonnyrao@chromium.org>, shawn.lin@rock-chips.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1454968512-11956-1-git-send-email-sudeep.holla-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 22. Januar 2016, 19:06:49 schrieb Caesar Wang:
-> Pl330 integrated in rk3036 platform that doesn't support
-> DMAFLUSHP function. So we add 'arm,pl330-broken-no-flushp' quirk
-> for rk3036.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Hi Sudeep,
 
-applied the 3 (4/9, 5/9, 6/9) dts patches to my dts32 branch for 4.6
-(after fixing the patch subjects to match the general style-convention)
+Am Montag, 8. Februar 2016, 21:55:12 schrieb Sudeep Holla:
+> Keyboard driver for GPIO buttons(gpio-keys) checks for the legacy
+> "gpio-key,wakeup" boolean property to enable gpio buttons as wakeup
+> source.
+> 
+> Few dts files assign value "1" to gpio-key,wakeup and in one instance a
+> value "0" is assigned probably assuming it won't be enabled as a wakeup
+> source. Since the presence of the boolean property indicates it is
+> enabled, value of "0" have no value.
+> 
+> This patch replaces the legacy "gpio-key,wakeup" with the unified
+> "wakeup-source" property which inturn fixes the above mentioned issue.
+> 
+> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Signed-off-by: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3066a-bqcurie2.dts          | 3 +--
+>  arch/arm/boot/dts/rk3066a-rayeager.dts          | 2 +-
+>  arch/arm/boot/dts/rk3188-radxarock.dts          | 2 +-
+>  arch/arm/boot/dts/rk3288-evb.dtsi               | 2 +-
+>  arch/arm/boot/dts/rk3288-firefly.dtsi           | 2 +-
+>  arch/arm/boot/dts/rk3288-popmetal.dts           | 2 +-
+>  arch/arm/boot/dts/rk3288-r89.dts                | 2 +-
+>  arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 2 +-
+>  arch/arm/boot/dts/rk3288-veyron.dtsi            | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi    | 2 +-
+>  arch/arm64/boot/dts/rockchip/rk3368-r88.dts     | 2 +-
+>  11 files changed, 11 insertions(+), 12 deletions(-)
+> 
+> Hi Heiko,
+> 
+> You can reviewed this, however there are couple of ARM64 dts additions.
+> Also most of the other platform/SoC maintainers preferred to take it via
+> their tree and few of these got missed during v4.5 merge window.
+> Can you take it via your tree for v4.6 ?
+
+I've split the patch in two, as the 32 and 64 bit devicetree parts go 
+through separate branches and applied both to their respective branches for 
+v4.6
+
+
+Heiko
