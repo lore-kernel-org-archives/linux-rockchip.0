@@ -1,113 +1,121 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 4/4] rockchip dts32 changes for 4.6
-Date: Thu, 11 Feb 2016 16:12:35 +0100
-Message-ID: <22050679.RDDVtpO0ps@phil>
-References: <1734524.3yNt5L3F1F@phil>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Thu, 11 Feb 2016 11:04:57 -0600
+Message-ID: <20160211170457.GA19851@rob-hp-laptop>
+References: <1454406981-4692-1-git-send-email-andy.yan@rock-chips.com>
+ <1454407151-4751-1-git-send-email-andy.yan@rock-chips.com>
+ <20160204230814.GA4847@rob-hp-laptop>
+ <CALAqxLVyznpLd2MLgGr28TDECpLZ=RpmhxH-SHqntXfBsctcmQ@mail.gmail.com>
+ <20160205043507.GB4847@rob-hp-laptop>
+ <CALAqxLUnbFHjTuJXYXSruV3W0JJ09Fxz=KBe69tZDTd_3_+rxw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1734524.3yNt5L3F1F@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CALAqxLUnbFHjTuJXYXSruV3W0JJ09Fxz=KBe69tZDTd_3_+rxw@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: John Stultz <john.stultz@linaro.org>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Arnd Bergmann <arnd@arndb.de>, Moritz Fischer <moritz.fischer@ettus.com>, Matthias Brugger <matthias.bgg@gmail.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Jun Nie <jun.nie@linaro.org>, =?utf-8?B?UGF3ZcWC?= Moll <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Linux PM list <linux-pm@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, mbrugger@suse.com, "linux-arm-kernel@lists.infradead.org" <linux-ar>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQXJuZCwgT2xvZiwgS2V2aW4sCgphbmQgZmluYWxseSB0aGlzIGlzIHRoZSBiaWdnZXN0IHNl
-dCAuLi4gMzJiaXQgZGV2aWNldHJlZSBjaGFuZ2VzLgpGb3IgdGhlIGNsb2NrLWlkcyB0aGlzIGlu
-Y2x1ZGVzIGEgc2hhcmVkIGJyYW5jaCB0aGF0IGdldHMgc2hhcmVkCndpdGggdGhlIGNsb2NrLWJy
-YW5jaCBzZW50IHRvIHRoZSBjbG9jay1tYWludGFpbmVycy4KCkFzIHRoZSB0YWcgZGVzY3JpYmVz
-LCBjb250ZW50cyBhcmUgcHJldHR5IGRpdmVyc2UgYnV0IHNpbXBsZSBjaGFuZ2VzLgoKClRoYW5r
-cwpIZWlrbwoKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgOTJlOTYzZjUwZmM3
-NDA0MWI1ZTllNzQ0YzMzMGRjYTQ4ZTA0ZjA4ZDoKCiAgTGludXggNC41LXJjMSAoMjAxNi0wMS0y
-NCAxMzowNjo0NyAtMDgwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0
-OgoKICBnaXQ6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1pbmQv
-bGludXgtcm9ja2NoaXAuZ2l0IHRhZ3MvdjQuNi1yb2NrY2hpcC1kdHMzMi0xCgpmb3IgeW91IHRv
-IGZldGNoIGNoYW5nZXMgdXAgdG8gNzQxZDNiMGMxZjYxODdkYmY5YjUwOWI2Nzc2Yzc3ODI4ZDRj
-NjZkNToKCiAgQVJNOiBkdHM6IGNyb3MtZWMta2V5Ym9hcmQ6IEFkZCBMT0NLIGtleSB0byBrZXli
-b2FyZCBtYXRyaXggKDIwMTYtMDItMTAgMjI6NDE6NTMgKzAxMDApCgotLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkFzc29ydGVk
-IGJ1bmNoIG9mIDMyYml0IFJvY2tjaGlwIGRldmljZXRyZWUgY2hhbmdlcy4gTW9yZSBjbG9ja3Ms
-Cm5vZGVzIGFuZCBmaXhlcyBsaWtlIHRoZSBpbmNyZWFzZWQgZHJpdmUtc3RyZW5ndGggb24gdGhl
-IGZpcmVmbHkuCk1vc3QgaW50ZXJlc3RpbmcgaXMgbWF5YmUgdGhlIGVuYWJsZW1lbnQgb2YgdGhl
-IHBsMzMwIG9wdGlvbgpmb3IgaGFuZGxpbmcgdGhlIGJyb2tlbiBmbHVzaHAgb3BlcmF0aW9uIHRo
-YXQgaXMgcHJlc2VudCBvbiB0aGUKY3VycmVudCBSb2NrY2hpcCBTb0NzLiBUb2dldGhlciB3aXRo
-IHRoZSBkcml2ZXItc2lkZSBlbmFibGVtZW50CnRoaXMgc2hvdWxkIGdpdmUgdXMgd29ya2luZyBk
-bWEgZmluYWxseS4KCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0KQWRkeSBLZSAoMSk6CiAgICAgIEFSTTogZHRzOiByb2NrY2hp
-cDogQWRkIGFybSwgcGwzMzAtYnJva2VuLW5vLWZsdXNocCBxdWlyayBmb3IgcmszMjg4IHBsYXRm
-b3JtCgpBbmR5IFlhbiAoMik6CiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogZW5hYmxlIHB3bTMg
-YXMgcHdtIHJlZ3VsYXRvciBmb3IgcmszMDY2YSBiYXNlZCBib2FyZHMKICAgICAgQVJNOiBkdHM6
-IHJvY2tjaGlwOiBpbmNyZWFzZSB2ZGRfYXJtIHZvbHRhZ2UgZm9yIHJrMzA2NmEgYmFzZWQgYm9h
-cmRzCgpDYWVzYXIgV2FuZyAoMTEpOgogICAgICBBUk06IGR0czogcm9ja2NoaXA6IHNldCB0aGUg
-cGluY3RybCBkZWZhdWx0IHNldHRpbmcgZm9yIHJrMzAzNiBpMnMKICAgICAgQVJNOiBkdHM6IHJv
-Y2tjaGlwOiBhZGQgdGhlIHNvdW5kIHNldHVwIGZvciByazMwMzYta3lsaW4gYm9hcmQKICAgICAg
-QVJNOiBkdHM6IHJvY2tjaGlwOiBlbmFibGUgdGhlIHVhcnQwIGZvciBreWxpbiBib2FyZAogICAg
-ICBBUk06IGR0czogcm9ja2NoaXA6IGVuYWJsZSB0aGUgaGlnaCBzcGVlZCBvbiBzZGlvIGZvciBr
-eWxpbiBib2FyZAogICAgICBBUk06IGR0czogcm9ja2NoaXA6IGFkZCB0aGUgc2RpbyBwb3dlciBz
-ZXF1ZW5jZSBmb3Iga3lsaW4gYm9hcmQKICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBhZGQgdGhl
-IHNkbW1jIGZvciBreWxpbiBib2FyZAogICAgICBBUk06IGR0czogcm9ja2NoaXA6IGFkZCBzb2Mt
-c3BlY2lmaWMgY29tcGF0aWJsZXMgZm9yIHJrMzAzNiBTb0NzCiAgICAgIEFSTTogZHRzOiByb2Nr
-Y2hpcDogYWRkIHRoZSBsZWRzIGNvbnRyb2wgZm9yIHJrMzAzNi1reWxpbiBib2FyZAogICAgICBB
-Uk06IGR0czogcm9ja2NoaXA6IGFkZCBtY2xrIGZvciBydDU2MTYgb24gcmszMDM2IGt5bGluIGJv
-YXJkCiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogc3VwcG9ydCB0aGUgc3BpIGZvciByazMwMzYK
-ICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBhZGQgYXJtLHBsMzMwLWJyb2tlbi1uby1mbHVzaHAg
-cXVpcmsgZm9yIHJrMzAzNiBTb0NzCgpDaHJpcyBaaG9uZyAoMSk6CiAgICAgIEFSTTogZHRzOiBy
-b2NrY2hpcDogYWRkIHJrMzI4OCBtaXBpX2RzaSBub2RlcwoKSGVpa28gU3R1ZWJuZXIgKDMpOgog
-ICAgICBBUk06IGR0czogcm9ja2NoaXA6IHN3YXAgaTJzIGNsb2NrIG9yZGVyaW5nIG9uIHJrMzAz
-NgogICAgICBBUk06IGR0czogcm9ja2NoaXA6IGFkZCBjbG9jay1jZWxscyBmb3IgdXNiIHBoeSBu
-b2RlcwogICAgICBNZXJnZSBicmFuY2ggJ3Y0LjYtc2hhcmVkL2Nsa2lkcycgaW50byB2NC42LWFy
-bXNvYy9kdHMzMgoKSmFtZXMgQ2hhbyAoMSk6CiAgICAgIEFSTTogZHRzOiBjcm9zLWVjLWtleWJv
-YXJkOiBBZGQgTE9DSyBrZXkgdG8ga2V5Ym9hcmQgbWF0cml4CgpQYXdlxYIgSmFyb3N6ICgyKToK
-ICAgICAgY2xrOiByb2NrY2hpcDogQWRkIG5ldyBpZCBmb3IgcmszMDY2IHRzYWRjIGNsb2NrCiAg
-ICAgIEFSTTogZHRzOiByb2NrY2hpcDogYWRkIHRzYWRjIG5vZGUKClJvbWFpbiBQZXJpZXIgKDEp
-OgogICAgICBBUk06IGR0czogcm9ja2NoaXA6IEFkZCBMRURzIHZpYSBncGlvLWxlZHMgZm9yIFJh
-ZHhhIFJvY2syIFNxdWFyZQoKU2hhd24gTGluICgzKToKICAgICAgZHQtYmluZGluZ3M6IHJvY2tj
-aGlwLWR3LW1zaGM6IGFkZCBSSzMzNjggZHctbXNoYyBkZXNjcmlwdGlvbgogICAgICBkdC1iaW5k
-aW5nczogcm9ja2NoaXAtZHctbXNoYzogYWRkIFJLMzAzNiBkdy1tc2hjIGRlc2NyaXB0aW9uCiAg
-ICAgIEFSTTogZHRzOiByb2NrY2hpcDogQWRkIGFybSwgcGwzMzAtYnJva2VuLW5vLWZsdXNocCBx
-dWlyayBmb3IgcmszeHh4IHBsYXRmb3JtCgpTam9lcmQgU2ltb25zICgzKToKICAgICAgQVJNOiBk
-dHM6IHJvY2tjaGlwOiBBZGQgdGhlIGlvZG9tYWlucyBmb3IgdGhlIFJvY2syIFNPTQogICAgICBB
-Uk06IGR0czogcm9ja2NoaXA6IEFkZCB0aGUgU0RJTyB3aWZpIG9uIFJhZHhhIFJvY2syIHNxdWFy
-ZQogICAgICBBUk06IGR0czogcm9ja2NoaXA6IEFzc2lnbiBSSzMyODggRURQXzI0TSBpbnB1dCBj
-ZW50cmFsbHkKClN1ZGVlcCBIb2xsYSAoMSk6CiAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogcmVw
-bGFjZSBncGlvLWtleSx3YWtldXAgd2l0aCB3YWtldXAtc291cmNlIHByb3BlcnR5CgpXYWRpbSBF
-Z29yb3YgKDEpOgogICAgICBBUk06IGR0czogcm9ja2NoaXA6IEJ1bXAgc2QgY2FyZCBwaW4gZHJp
-dmUgc3RyZW5ndGggdXAgb24gZmlyZWZseSBib2FyZHMKClhpbmcgWmhlbmcgKDEpOgogICAgICBB
-Uk06IGR0czogcm9ja2NoaXA6IGluY3JlYXNlIHRoZSBtY2xrX2ZzIHRvIDUxMiBmb3Iga3lsaW4g
-Ym9hcmQKCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tbWMvcm9ja2NoaXAtZHctbXNoYy50eHQg
-ICB8ICAgMiArCiBhcmNoL2FybS9ib290L2R0cy9jcm9zLWVjLWtleWJvYXJkLmR0c2kgICAgICAg
-ICAgICB8ICAgMSArCiBhcmNoL2FybS9ib290L2R0cy9yazMwMzYta3lsaW4uZHRzICAgICAgICAg
-ICAgICAgICB8IDEwNCArKysrKysrKysrKysrKysrKysrKysKIGFyY2gvYXJtL2Jvb3QvZHRzL3Jr
-MzAzNi5kdHNpICAgICAgICAgICAgICAgICAgICAgIHwgIDY5ICsrKysrKysrKysrLS0tCiBhcmNo
-L2FybS9ib290L2R0cy9yazMwNjZhLWJxY3VyaWUyLmR0cyAgICAgICAgICAgICB8ICAxOSArKyst
-CiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLW1hcnNib2FyZC5kdHMgICAgICAgICAgICB8ICAx
-NiArKysrCiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLXJheWVhZ2VyLmR0cyAgICAgICAgICAg
-ICB8ICAxOCArKystCiBhcmNoL2FybS9ib290L2R0cy9yazMwNjZhLmR0c2kgICAgICAgICAgICAg
-ICAgICAgICB8ICAyNCArKysrLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMTg4LXJhZHhhcm9jay5k
-dHMgICAgICAgICAgICAgfCAgIDIgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzE4OC5kdHNpICAg
-ICAgICAgICAgICAgICAgICAgIHwgICAyICsKIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC1ldmIu
-ZHRzaSAgICAgICAgICAgICAgICAgIHwgICAyICstCiBhcmNoL2FybS9ib290L2R0cy9yazMyODgt
-ZmlyZWZseS5kdHNpICAgICAgICAgICAgICB8ICAyNiArKysrKy0KIGFyY2gvYXJtL2Jvb3QvZHRz
-L3JrMzI4OC1wb3BtZXRhbC5kdHMgICAgICAgICAgICAgIHwgICAyICstCiBhcmNoL2FybS9ib290
-L2R0cy9yazMyODgtcjg5LmR0cyAgICAgICAgICAgICAgICAgICB8ICAgMiArLQogYXJjaC9hcm0v
-Ym9vdC9kdHMvcmszMjg4LXJvY2syLXNvbS5kdHNpICAgICAgICAgICAgfCAgMjYgKysrKysrCiBh
-cmNoL2FybS9ib290L2R0cy9yazMyODgtcm9jazItc3F1YXJlLmR0cyAgICAgICAgICB8ICA0OCAr
-KysrKysrKystCiBhcmNoL2FybS9ib290L2R0cy9yazMyODgtdmV5cm9uLWNocm9tZWJvb2suZHRz
-aSAgICB8ICAgMiArLQogYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXZleXJvbi5kdHNpICAgICAg
-ICAgICAgICAgfCAgIDcgKy0KIGFyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpICAgICAgICAg
-ICAgICAgICAgICAgIHwgIDQ4ICsrKysrKysrKysKIGFyY2gvYXJtL2Jvb3QvZHRzL3JrM3h4eC5k
-dHNpICAgICAgICAgICAgICAgICAgICAgIHwgICAzICsKIGluY2x1ZGUvZHQtYmluZGluZ3MvY2xv
-Y2svcmszMTg4LWNydS1jb21tb24uaCAgICAgIHwgICAxICsKIDIxIGZpbGVzIGNoYW5nZWQsIDM4
-OSBpbnNlcnRpb25zKCspLCAzNSBkZWxldGlvbnMoLSkKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, Feb 04, 2016 at 09:03:44PM -0800, John Stultz wrote:
+> On Thu, Feb 4, 2016 at 8:35 PM, Rob Herring <robh@kernel.org> wrote:
+> > On Thu, Feb 04, 2016 at 03:46:15PM -0800, John Stultz wrote:
+> >> On Thu, Feb 4, 2016 at 3:08 PM, Rob Herring <robh@kernel.org> wrote:
+> >> > On Tue, Feb 02, 2016 at 05:59:11PM +0800, Andy Yan wrote:
+> >> >> +Example:
+> >> >> +     reboot-mode {
+> >> >> +             mode-normal = <BOOT_NORMAL>;
+> >> >> +             mode-recovery = <BOOT_RECOVERY>;
+> >> >> +             mode-fastboot = <BOOT_FASTBOOT>;
+> >> >
+> >> > I tend to agree with John on calling this mode-bootloader.
+> >> >
+> >> > OTOH, fastboot is more specific about what the mode is. The name in DT
+> >> > and the userspace name don't necessarily have to be the same.
+> >>
+> >> Wait. This is a bit confusing. The utility of adding a property name
+> >> and using that name be the reboot command parsed for made sense
+> >> (compared to earlier versions which had command strings) as it made
+> >> the dts more terse.   But it sounds here like you're suggesting we
+> >> should have some logic in the driver that translates "reboot fastboot"
+> >> to mode-bootloader or vice versa.
+> >
+> > I said early on the DT names and kernel-userspace names should not
+> > necessarily be linked. They can be, but we shouldn't require that.
+> 
+> Sigh. Ok. It seemed it was due to earlier comments (maybe from others,
+> but I thought it was you), that we moved from specifying a command
+> string, to using the label. But if you think the label name and the
+> commands shouldn't be linked, it seems like we should re-introduce
+> that. No?
+> 
+> Unless your thinking we need some sort of static in-kernel mapping of
+> commands to label names? But that just seems painfully indirect for
+> little gain ("Its obvious! For that mode, you use this term here, and
+> that different term over there!").
+
+Tying it to a Linux ABI makes the binding Linux specific. I don't have a 
+problem that the strings happen to be the same, but we should have some 
+understanding that they may not be and allow for that.
+
+> > My concern with mode-bootloader is what if you can boot into multiple
+> > bootloader modes. Say USB mass storage is one option. "bootloader" is
+> > not real specific.
+> 
+> True. But as I think we agreed below, "bootloader" and "recovery" are
+> basically defacto standards, and I think it would be a bad idea to try
+> to declare all the existing android tooling and docs wrong just
+> because the command is vague, technically.
+
+Okay, as long as they are clearly documented what they mean.
+
+
+> >> >> +             mode-loader = <BOOT_LOADER>;
+> >> >
+> >> > This one needs a better name. Maybe it should be 'rockchip,mode-loader'
+> >> > as it is vendor specific. Either way, loader is vague. Perhaps
+> >> > rockchip,mode-bl-download?
+> >>
+> >> Hrm. So how what reboot command do you expect to trigger that?
+> >
+> > Whatever your OS has defined to map to that.
+> >
+> > We could just decide the kernel will strip <vendor> and 'mode-' and
+> > match commands against what remains.
+> 
+> That part sounds sane, although I do think having vendor prefixes are
+> reasonable for actual commands as well.
+
+Well, you could still have "rockchip,mode-rockchip-bl-download"... 
+
+We can bikeshed that when get there.
+
+The other way random custom modes could be done is just allow the raw 
+value to be passed from userspace converting the string to a number. 
+Then we have no abstraction rather than half way abstracting it.
+
+> >> I think one of the difficult things here is that there's no real
+> >> standards for all bios/bootloader modes. So they are somewhat
+> >> firmware/bootloader/device specific, and thus we need something that
+> >> is flexible enough to allow lots of different modes to be easily
+> >> specified.  That said, this does expose a userspace interface (though
+> >> one could argue kernel ABI doesn't cross reboots :) so we should try
+> >> to have some consistency so the same userspace can work on various
+> >> devices.
+> >
+> > There is: UEFI. Boot mode efivars are standard. But then they are pretty
+> > much PC oriented though. It is more which device to boot off of, but
+> > there is network boot or boot to bios setup.
+> 
+> Well, there's a partial standard there.  I'm told for android on x86,
+> there is no UEFI standard way to communicate rebooting to fastboot or
+> recovery. Every device does its own device specific driver.
+
+So much for standards. However, while these specific modes have not been 
+standardized, there is a set of standard modes and these could have been 
+added to the existing mechanism. So there at least exists some model to 
+draw inspiration from.
+
+Rob
