@@ -1,35 +1,64 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: rockchip-pinctrl: Support the RK3399
- SoCs compatible
-Date: Thu, 11 Feb 2016 14:52:42 +0100
-Message-ID: <CACRpkdZvS2RY2LqFQ1dMz8vecMgG7zmxw8JEj5KLTiqYCSsJ=w@mail.gmail.com>
-References: <1451997055-47655-1-git-send-email-wdc@rock-chips.com>
-	<1454153517-52969-1-git-send-email-david.wu@rock-chips.com>
-	<1454153517-52969-3-git-send-email-david.wu@rock-chips.com>
-	<14543443.RsRWh5K5Uv@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 1/4] rockchip soc-driver changes for 4.6
+Date: Thu, 11 Feb 2016 15:47:12 +0100
+Message-ID: <1734524.3yNt5L3F1F@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <14543443.RsRWh5K5Uv@phil>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: David Wu <david.wu@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Jan 30, 2016 at 1:16 PM, Heiko Stuebner <heiko@sntech.de> wrote:
-> Hi David,
->
-> Am Samstag, 30. Januar 2016, 19:31:57 schrieb David Wu:
->> Change-Id: Ic1bdb3dc358837e97d7b48dd58be2f8d9d08d766
->
-> please no Change-Id, it's missing the Signed-off, and as Linus Walleij said,
-> the compatible addition to the documentation can maybe stay in the pinctrl-
-> patch itself.
->
-> I think both Linus and me overlooked that the binding-doc-addition was
-> already correctly included in your v2 patch at the top :-)
+Hi Arnd, Olof, Kevin,
 
-Yeah I merged that now anyways so the string is there.
+please find below soc driver changes for Rockchip for 4.6
+The tag describes the changes a little bit more.
 
-Yours,
-Linus Walleij
+
+Thanks
+Heiko
+
+
+The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
+
+  Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-drivers1
+
+for you to fetch changes up to 1d961f11a108af9f7fbe89cc950a8d16ddbdbb28:
+
+  soc: rockchip: power-domain: fix err handle while probing (2016-02-02 22:18:31 +0100)
+
+----------------------------------------------------------------
+Support for the power-domains on rk3368 and a fix for
+a wrong handling of for_each_available_child_of_node.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      Merge branch 'v4.6-shared/pdids' into v4.6-armsoc/drivers
+
+Shawn Lin (1):
+      soc: rockchip: power-domain: fix err handle while probing
+
+zhangqing (3):
+      dt-bindings: add power-domain header for RK3368 SoCs
+      dt-bindings: modify document of Rockchip power domains
+      soc: rockchip: power-domain: Modify power domain driver for rk3368
+
+ .../bindings/soc/rockchip/power_domain.txt         | 21 +++++++++++++
+ drivers/soc/rockchip/pm_domains.c                  | 34 ++++++++++++++++++++++
+ include/dt-bindings/power/rk3368-power.h           | 28 ++++++++++++++++++
+ 3 files changed, 83 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3368-power.h
