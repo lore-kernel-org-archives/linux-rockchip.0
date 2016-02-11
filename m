@@ -1,30 +1,107 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v5] pinctrl: rockchip: add support for the rk3399
-Date: Wed, 10 Feb 2016 16:42:04 +0100
-Message-ID: <CACRpkdYsYse-EYQ2YJFbRRMVrfp-0k-CctvCZtGtzNgJNyo1Bg@mail.gmail.com>
-References: <1454295501-32165-1-git-send-email-david.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] first bunch of rockchip clock changes for 4.6
+Date: Thu, 11 Feb 2016 14:00:02 +0100
+Message-ID: <3862076.Cf1OAGsbuq@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1454295501-32165-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Tao Huang <huangtao@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 1, 2016 at 3:58 AM, David Wu <david.wu@rock-chips.com> wrote:
+Hi Mike, Stephen,
 
-> The pinctrl of rk3399 is much different from other's,
-> especially the 3bits of drive strength.
->
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> ---
-> Changes in v5:
-> - merge the binding-doc-addition in one patch (Linus Heiko)
-> - fix the comment of bit15 drive setting (Heiko)
+no new clock trees this time, but more clock ids and fixes for issues
+present for a longer time (not introduced during the 4.5-rc1 merge wind=
+ow)
+that Stephen thought should go through the regular process.
 
-Patch applied.
+Most "interesting" change might be that we now handle factors correctly
+according to their position in the clock-tree instead of registering th=
+em
+individually during init - which became a clutch.
 
-Yours,
-Linus Walleij
+So if nothing stands out, please pull
+
+
+Thanks
+Heiko
+
+The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04=
+f08d:
+
+  Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.gi=
+t tags/v4.6-rockchip-clk1
+
+for you to fetch changes up to 36714529f8bbd4f8eaf93b50f4a64c52a24879aa=
+:
+
+  clk: rockchip: convert manually created factor clocks to the new type=
+ (2016-02-04 15:54:20 +0100)
+
+----------------------------------------------------------------
+Introduction of a factor type and a variant containing a gate
+to be able to also declare factor clocks in their correct
+place in the clock tree instead of having to register factor
+clocks in the init callback separately. And as always some more
+clock-ids and non-regression fixes for mistakes introduced in
+past kernel releases.
+
+----------------------------------------------------------------
+Alexander Kochetkov (2):
+      clk: rockchip: add hclk_cpubus to the list of rk3188 critical clo=
+cks
+      clk: rockchip: Allow sclk_i2s0 and i2s0_frac to change their pare=
+nts rate on rk3188
+
+Heiko Stuebner (9):
+      clk: rockchip: rk3368: fix cpuclk mux bit of big cpu-cluster
+      clk: rockchip: rk3368: fix cpuclk core dividers
+      clk: rockchip: rk3368: fix parents of video encoder/decoder
+      clk: rockchip: rk3368: fix hdmi_cec gate-register
+      clk: rockchip: fix usbphy-related clocks
+      Merge branch 'v4.6-shared/clkids' into v4.6-clk/next
+      clk: rockchip: fix parent of hclk_vcodec on rk3036
+      clk: rockchip: add a factor clock type
+      clk: rockchip: convert manually created factor clocks to the new =
+type
+
+Pawe=C5=82 Jarosz (2):
+      clk: rockchip: Add new id for rk3066 tsadc clock
+      clk: rockchip: add tsadc clock on rk3066
+
+Shawn Lin (2):
+      clk: rockchip: fix wrong mmc phase shift for rk3228
+      clk: rockchip: free memory in error cases when registering clock =
+branches
+
+Yakir Yang (1):
+      clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for hclk=
+_vio_bus
+
+zhangqing (3):
+      clk: rockchip: rk3368: fix edp_24m parent
+      clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for sp=
+dif_8ch
+      clk: rockchip: rk3368: enable the CLK_SET_RATE_PARENT flag for i2=
+s_2ch
+
+ arch/arm/boot/dts/rk3288-veyron.dtsi          |  2 +-
+ drivers/clk/rockchip/clk-rk3036.c             | 33 +++--------
+ drivers/clk/rockchip/clk-rk3188.c             | 27 +++------
+ drivers/clk/rockchip/clk-rk3228.c             | 38 +++----------
+ drivers/clk/rockchip/clk-rk3288.c             | 38 ++++---------
+ drivers/clk/rockchip/clk-rk3368.c             | 82 +++++++++++--------=
+--------
+ drivers/clk/rockchip/clk.c                    | 64 +++++++++++++++++++=
++-
+ drivers/clk/rockchip/clk.h                    | 28 +++++++++
+ include/dt-bindings/clock/rk3188-cru-common.h |  1 +
+ 9 files changed, 159 insertions(+), 154 deletions(-)
+
