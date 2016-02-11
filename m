@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 2/4] rockchip arm64 changes for 4.6
-Date: Thu, 11 Feb 2016 15:50:51 +0100
-Message-ID: <2157996.gfpT01ltKJ@phil>
+Subject: [GIT PULL 3/4] rockchip dts64 changes for 4.6
+Date: Thu, 11 Feb 2016 15:52:40 +0100
+Message-ID: <29700148.FpDzERqiyH@phil>
 References: <1734524.3yNt5L3F1F@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,15 +23,12 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Arnd, Olof, Kevin,
 
-This one change enables the rockchip timer driver on 64bit socs as well,
-after it got fixed to actually work on 64bit in 4.5-rc1.
+some small 64bit devicetree changes for 4.6 that allow mmc tuning and
+use the newer wakeup-source property for the gpio-keys.
 
-This time I actually also updated the subject from my previous send-attempt, 
-so here it is again.
 
 Thanks
 Heiko
-
 
 The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 
@@ -39,22 +36,24 @@ The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 
 are available in the git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git 
-tags/v4.6-rockchip-soc64-1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-dts64-1
 
-for you to fetch changes up to c840f28bbf643c361c463bcb8fb815d0b2dad4e8:
+for you to fetch changes up to e6f49b118f73a769ec51ed28a085e9dccd67f9a1:
 
-  arm64: Enable the timer on Rockchip architecture (2016-01-24 23:33:14 
-+0100)
+  arm64: dts: rockchip: replace gpio-key,wakeup with wakeup-source property (2016-02-10 00:23:24 +0100)
 
 ----------------------------------------------------------------
-Enable the rockchip-specific timers on arm64 rockchip platforms.
-The driver got reworked to not use arm32-specific dsb calls in
-4.5-rc1, so now we can safely enable it.
+Define the tuning-related mmc clocks and move from
+gpio-key,wakeup to the more generic wakeup-source property.
 
 ----------------------------------------------------------------
-Caesar Wang (1):
-      arm64: Enable the timer on Rockchip architecture
+Shawn Lin (1):
+      arm64: dts: rockchip: add rk3368 tuning clk for emmc and sdmmc
 
- arch/arm64/Kconfig.platforms | 1 +
- 1 file changed, 1 insertion(+)
+Sudeep Holla (1):
+      arm64: dts: rockchip: replace gpio-key,wakeup with wakeup-source property
+
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts  |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi     | 10 ++++++----
+ 3 files changed, 8 insertions(+), 6 deletions(-)
