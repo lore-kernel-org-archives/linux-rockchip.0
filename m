@@ -1,38 +1,44 @@
-From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+From: Heiko Stuebner <heiko@sntech.de>
 Subject: Re: [GIT PULL] first bunch of rockchip clock changes for 4.6
-Date: Thu, 11 Feb 2016 18:19:36 -0800
-Message-ID: <20160212021936.3210.79199@quark.deferred.io>
-References: <3862076.Cf1OAGsbuq@phil>
+Date: Fri, 12 Feb 2016 12:39:43 +0100
+Message-ID: <1494732.M6VqoIU5NQ@phil>
+References: <3862076.Cf1OAGsbuq@phil> <20160212021936.3210.79199@quark.deferred.io>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3862076.Cf1OAGsbuq@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20160212021936.3210.79199@quark.deferred.io>
+Sender: linux-clk-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Heiko,
+Hi Mike,
 
-Quoting Heiko Stuebner (2016-02-11 05:00:02)
-> Yakir Yang (1):
->       clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for hclk_vio_bus
+Am Donnerstag, 11. Februar 2016, 18:19:36 schrieb Michael Turquette:
+> Quoting Heiko Stuebner (2016-02-11 05:00:02)
+> 
+> > Yakir Yang (1):
+> >       clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for
+> >       hclk_vio_bus
+> 
+> Thanks for sending the very readable PR. One question below,
+> 
+> We'll likely have critical clock and handoff clock support merged in the
+> next few days. I'm starting to audit any new CLK_IGNORE_UNUSED flag
+> usage to see if it should use either of those two flags. Is the above
+> patch a candidate?
 
-Thanks for sending the very readable PR. One question below,
+the above clock is part of the interconnect. We don't model that yet, but I 
+guess that would make it more a candidate for the handoff-type instead.
 
-We'll likely have critical clock and handoff clock support merged in the
-next few days. I'm starting to audit any new CLK_IGNORE_UNUSED flag
-usage to see if it should use either of those two flags. Is the above
-patch a candidate?
+I'd guess for the Rockchip side, everything that is CLK_IGNORE_UNUSED should 
+be the handoff type (leaf-clocks used by some component we don't control 
+yet). 
 
-Thanks,
-Mike
+The clocks we already register as critical most likely are the ones that 
+should be critical, as they are central clocks where it causes havok when 
+they get disabled :-) .
+
+
+Heiko
