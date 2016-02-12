@@ -1,56 +1,98 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [GIT PULL] first bunch of rockchip clock changes for 4.6
-Date: Fri, 12 Feb 2016 17:26:47 +0100
-Message-ID: <2084107.OlAREkXC0f@phil>
-References: <3862076.Cf1OAGsbuq@phil> <1494732.M6VqoIU5NQ@phil> <20160212151329.1685.89663@quark.deferred.io>
+From: Alex Deucher <alexdeucher@gmail.com>
+Subject: Re: [PATCH 04/17] drm/amdgpu: removed optional dummy encoder
+ mode_fixup function.
+Date: Fri, 12 Feb 2016 11:31:04 -0500
+Message-ID: <CADnq5_N1smWVyhC68fwS4DO_E9NJ=ztSZMaSoZ3YKvSCtaM8Zg@mail.gmail.com>
+References: <daniel.vetter@ffwll.ch,>
+	<1455285069-2819-1-git-send-email-palminha@synopsys.com>
+	<1455285069-2819-5-git-send-email-palminha@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160212151329.1685.89663@quark.deferred.io>
-Sender: linux-clk-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>
-Cc: sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1455285069-2819-5-git-send-email-palminha@synopsys.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
+Cc: Maling list - DRI developers <dri-devel@lists.freedesktop.org>, k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, Benjamin Gaignard <benjamin.gaignard@linaro.org>, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, vincent.abriou@st.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 12. Februar 2016, 07:13:29 schrieb Michael Turquette:
-> Quoting Heiko Stuebner (2016-02-12 03:39:43)
-> > Am Donnerstag, 11. Februar 2016, 18:19:36 schrieb Michael Turquette:
-> > > Quoting Heiko Stuebner (2016-02-11 05:00:02)
-> > > 
-> > > > Yakir Yang (1):
-> > > >       clk: rockchip: rk3036: enable the CLK_IGNORE_UNUSED flag for
-> > > >       hclk_vio_bus
-> > > 
-> > > Thanks for sending the very readable PR. One question below,
-> > > 
-> > > We'll likely have critical clock and handoff clock support merged in
-> > > the
-> > > next few days. I'm starting to audit any new CLK_IGNORE_UNUSED flag
-> > > usage to see if it should use either of those two flags. Is the above
-> > > patch a candidate?
-> > 
-> > the above clock is part of the interconnect. We don't model that yet,
-> > but I guess that would make it more a candidate for the handoff-type
-> > instead.
-> > 
-> > I'd guess for the Rockchip side, everything that is CLK_IGNORE_UNUSED
-> > should be the handoff type (leaf-clocks used by some component we don't
-> > control yet).
-> > 
-> > The clocks we already register as critical most likely are the ones that
-> > should be critical, as they are central clocks where it causes havok
-> > when
-> > they get disabled :-) .
-> 
-> OK. It sounds like you might go back and clean up these clocks to use
-> the new infrastructure once it gets merged,
+On Fri, Feb 12, 2016 at 8:50 AM, Carlos Palminha
+<CARLOS.PALMINHA@synopsys.com> wrote:
+> ---
+>  drivers/gpu/drm/amd/amdgpu/dce_v10_0.c | 8 --------
+>  drivers/gpu/drm/amd/amdgpu/dce_v11_0.c | 8 --------
+>  drivers/gpu/drm/amd/amdgpu/dce_v8_0.c  | 8 --------
+>  3 files changed, 24 deletions(-)
 
-that has always be the plan ;-) .
+Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
 
-> so I'll go ahead and pull this tag now.
-
-thanks, that will make life a bit easier when I don't have to rip the branch 
-apart again, but can do the conversion on top.
-
-
+>
+> diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
+> index 093599a..3483018 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
+> @@ -3624,16 +3624,8 @@ dce_v10_0_ext_dpms(struct drm_encoder *encoder, int mode)
+>
+>  }
+>
+> -static bool dce_v10_0_ext_mode_fixup(struct drm_encoder *encoder,
+> -                                   const struct drm_display_mode *mode,
+> -                                   struct drm_display_mode *adjusted_mode)
+> -{
+> -       return true;
+> -}
+> -
+>  static const struct drm_encoder_helper_funcs dce_v10_0_ext_helper_funcs = {
+>         .dpms = dce_v10_0_ext_dpms,
+> -       .mode_fixup = dce_v10_0_ext_mode_fixup,
+>         .prepare = dce_v10_0_ext_prepare,
+>         .mode_set = dce_v10_0_ext_mode_set,
+>         .commit = dce_v10_0_ext_commit,
+> diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
+> index 8e67249..36deea1 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
+> @@ -3619,16 +3619,8 @@ dce_v11_0_ext_dpms(struct drm_encoder *encoder, int mode)
+>
+>  }
+>
+> -static bool dce_v11_0_ext_mode_fixup(struct drm_encoder *encoder,
+> -                                   const struct drm_display_mode *mode,
+> -                                   struct drm_display_mode *adjusted_mode)
+> -{
+> -       return true;
+> -}
+> -
+>  static const struct drm_encoder_helper_funcs dce_v11_0_ext_helper_funcs = {
+>         .dpms = dce_v11_0_ext_dpms,
+> -       .mode_fixup = dce_v11_0_ext_mode_fixup,
+>         .prepare = dce_v11_0_ext_prepare,
+>         .mode_set = dce_v11_0_ext_mode_set,
+>         .commit = dce_v11_0_ext_commit,
+> diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
+> index d0e128c..25dd8b6 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
+> @@ -3554,16 +3554,8 @@ dce_v8_0_ext_dpms(struct drm_encoder *encoder, int mode)
+>
+>  }
+>
+> -static bool dce_v8_0_ext_mode_fixup(struct drm_encoder *encoder,
+> -                                   const struct drm_display_mode *mode,
+> -                                   struct drm_display_mode *adjusted_mode)
+> -{
+> -       return true;
+> -}
+> -
+>  static const struct drm_encoder_helper_funcs dce_v8_0_ext_helper_funcs = {
+>         .dpms = dce_v8_0_ext_dpms,
+> -       .mode_fixup = dce_v8_0_ext_mode_fixup,
+>         .prepare = dce_v8_0_ext_prepare,
+>         .mode_set = dce_v8_0_ext_mode_set,
+>         .commit = dce_v8_0_ext_commit,
+> --
+> 2.5.0
+>
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
