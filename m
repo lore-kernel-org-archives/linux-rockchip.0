@@ -1,7 +1,7 @@
 From: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Subject: [PATCH 05/17] drm/ast: removed optional dummy encoder mode_fixup function.
-Date: Fri, 12 Feb 2016 13:53:28 +0000
-Message-ID: <1455285208-2889-1-git-send-email-palminha@synopsys.com>
+Subject: [PATCH 06/17] drm/bochs: removed optional dummy encoder mode_fixup function.
+Date: Fri, 12 Feb 2016 13:54:04 +0000
+Message-ID: <1455285244-2978-1-git-send-email-palminha@synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-samsung-soc-owner@vger.kernel.org>
@@ -11,34 +11,34 @@ Cc: CARLOS.PALMINHA@synopsys.com, airlied@linux.ie, jingoohan1@gmail.com, kgene@
 List-Id: linux-rockchip.vger.kernel.org
 
 ---
- drivers/gpu/drm/ast/ast_mode.c | 8 --------
+ drivers/gpu/drm/bochs/bochs_kms.c | 8 --------
  1 file changed, 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/ast/ast_mode.c b/drivers/gpu/drm/ast/ast_mode.c
-index 0123458..f221e2d 100644
---- a/drivers/gpu/drm/ast/ast_mode.c
-+++ b/drivers/gpu/drm/ast/ast_mode.c
-@@ -710,13 +710,6 @@ static void ast_encoder_dpms(struct drm_encoder *encoder, int mode)
- 
+diff --git a/drivers/gpu/drm/bochs/bochs_kms.c b/drivers/gpu/drm/bochs/bochs_kms.c
+index 2849f1b..317c27f 100644
+--- a/drivers/gpu/drm/bochs/bochs_kms.c
++++ b/drivers/gpu/drm/bochs/bochs_kms.c
+@@ -152,13 +152,6 @@ static void bochs_crtc_init(struct drm_device *dev)
+ 	drm_crtc_helper_add(crtc, &bochs_helper_funcs);
  }
  
--static bool ast_mode_fixup(struct drm_encoder *encoder,
--			   const struct drm_display_mode *mode,
--			   struct drm_display_mode *adjusted_mode)
+-static bool bochs_encoder_mode_fixup(struct drm_encoder *encoder,
+-				     const struct drm_display_mode *mode,
+-				     struct drm_display_mode *adjusted_mode)
 -{
 -	return true;
 -}
 -
- static void ast_encoder_mode_set(struct drm_encoder *encoder,
- 			       struct drm_display_mode *mode,
- 			       struct drm_display_mode *adjusted_mode)
-@@ -736,7 +729,6 @@ static void ast_encoder_commit(struct drm_encoder *encoder)
+ static void bochs_encoder_mode_set(struct drm_encoder *encoder,
+ 				   struct drm_display_mode *mode,
+ 				   struct drm_display_mode *adjusted_mode)
+@@ -179,7 +172,6 @@ static void bochs_encoder_commit(struct drm_encoder *encoder)
  
- static const struct drm_encoder_helper_funcs ast_enc_helper_funcs = {
- 	.dpms = ast_encoder_dpms,
--	.mode_fixup = ast_mode_fixup,
- 	.prepare = ast_encoder_prepare,
- 	.commit = ast_encoder_commit,
- 	.mode_set = ast_encoder_mode_set,
+ static const struct drm_encoder_helper_funcs bochs_encoder_helper_funcs = {
+ 	.dpms = bochs_encoder_dpms,
+-	.mode_fixup = bochs_encoder_mode_fixup,
+ 	.mode_set = bochs_encoder_mode_set,
+ 	.prepare = bochs_encoder_prepare,
+ 	.commit = bochs_encoder_commit,
 -- 
 2.5.0
