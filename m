@@ -1,7 +1,7 @@
 From: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Subject: [PATCH 02/17] drm/udl: removed optional dummy encoder mode_fixup function.
-Date: Fri, 12 Feb 2016 13:50:54 +0000
-Message-ID: <1455285069-2819-3-git-send-email-palminha@synopsys.com>
+Subject: [PATCH 03/17] drm/exynos: removed optional dummy encoder mode_fixup function.
+Date: Fri, 12 Feb 2016 13:50:55 +0000
+Message-ID: <1455285069-2819-4-git-send-email-palminha@synopsys.com>
 References: <daniel.vetter@ffwll.ch,>
  <1455285069-2819-1-git-send-email-palminha@synopsys.com>
 Mime-Version: 1.0
@@ -14,34 +14,34 @@ Cc: CARLOS.PALMINHA@synopsys.com, airlied@linux.ie, jingoohan1@gmail.com, kgene@
 List-Id: linux-rockchip.vger.kernel.org
 
 ---
- drivers/gpu/drm/udl/udl_encoder.c | 8 --------
+ drivers/gpu/drm/exynos/exynos_drm_dsi.c | 8 --------
  1 file changed, 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/udl/udl_encoder.c b/drivers/gpu/drm/udl/udl_encoder.c
-index a181a64..59a4b34 100644
---- a/drivers/gpu/drm/udl/udl_encoder.c
-+++ b/drivers/gpu/drm/udl/udl_encoder.c
-@@ -26,13 +26,6 @@ static void udl_encoder_disable(struct drm_encoder *encoder)
- {
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+index e977a81..736115c 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+@@ -1597,13 +1597,6 @@ static int exynos_dsi_create_connector(struct drm_encoder *encoder)
+ 	return 0;
  }
  
--static bool udl_mode_fixup(struct drm_encoder *encoder,
--			   const struct drm_display_mode *mode,
--			   struct drm_display_mode *adjusted_mode)
+-static bool exynos_dsi_mode_fixup(struct drm_encoder *encoder,
+-				  const struct drm_display_mode *mode,
+-				  struct drm_display_mode *adjusted_mode)
 -{
 -	return true;
 -}
 -
- static void udl_encoder_prepare(struct drm_encoder *encoder)
- {
+ static void exynos_dsi_mode_set(struct drm_encoder *encoder,
+ 				struct drm_display_mode *mode,
+ 				struct drm_display_mode *adjusted_mode)
+@@ -1623,7 +1616,6 @@ static void exynos_dsi_mode_set(struct drm_encoder *encoder,
  }
-@@ -54,7 +47,6 @@ udl_encoder_dpms(struct drm_encoder *encoder, int mode)
  
- static const struct drm_encoder_helper_funcs udl_helper_funcs = {
- 	.dpms = udl_encoder_dpms,
--	.mode_fixup = udl_mode_fixup,
- 	.prepare = udl_encoder_prepare,
- 	.mode_set = udl_encoder_mode_set,
- 	.commit = udl_encoder_commit,
+ static const struct drm_encoder_helper_funcs exynos_dsi_encoder_helper_funcs = {
+-	.mode_fixup = exynos_dsi_mode_fixup,
+ 	.mode_set = exynos_dsi_mode_set,
+ 	.enable = exynos_dsi_enable,
+ 	.disable = exynos_dsi_disable,
 -- 
 2.5.0
