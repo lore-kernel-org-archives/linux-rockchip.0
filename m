@@ -1,86 +1,44 @@
 From: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Subject: [PATCH 04/17] drm/amdgpu: removed optional dummy encoder mode_fixup function.
-Date: Fri, 12 Feb 2016 13:50:56 +0000
-Message-ID: <1455285069-2819-5-git-send-email-palminha@synopsys.com>
-References: <daniel.vetter@ffwll.ch,>
- <1455285069-2819-1-git-send-email-palminha@synopsys.com>
+Subject: [PATCH 05/17] drm/ast: removed optional dummy encoder mode_fixup function.
+Date: Fri, 12 Feb 2016 13:53:28 +0000
+Message-ID: <1455285208-2889-1-git-send-email-palminha@synopsys.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1455285069-2819-1-git-send-email-palminha@synopsys.com>
 Sender: linux-samsung-soc-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org
 Cc: CARLOS.PALMINHA@synopsys.com, airlied@linux.ie, jingoohan1@gmail.com, kgene@kernel.org, k.kozlowski@samsung.com, patrik.r.jakobsson@gmail.com, p.zabel@pengutronix.de, mark.yao@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org, vincent.abriou@st.com, kraxel@redhat.com, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, virtualization@lists.linux-foundation.org
 List-Id: linux-rockchip.vger.kernel.org
 
 ---
- drivers/gpu/drm/amd/amdgpu/dce_v10_0.c | 8 --------
- drivers/gpu/drm/amd/amdgpu/dce_v11_0.c | 8 --------
- drivers/gpu/drm/amd/amdgpu/dce_v8_0.c  | 8 --------
- 3 files changed, 24 deletions(-)
+ drivers/gpu/drm/ast/ast_mode.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
-index 093599a..3483018 100644
---- a/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
-+++ b/drivers/gpu/drm/amd/amdgpu/dce_v10_0.c
-@@ -3624,16 +3624,8 @@ dce_v10_0_ext_dpms(struct drm_encoder *encoder, int mode)
+diff --git a/drivers/gpu/drm/ast/ast_mode.c b/drivers/gpu/drm/ast/ast_mode.c
+index 0123458..f221e2d 100644
+--- a/drivers/gpu/drm/ast/ast_mode.c
++++ b/drivers/gpu/drm/ast/ast_mode.c
+@@ -710,13 +710,6 @@ static void ast_encoder_dpms(struct drm_encoder *encoder, int mode)
  
  }
  
--static bool dce_v10_0_ext_mode_fixup(struct drm_encoder *encoder,
--				    const struct drm_display_mode *mode,
--				    struct drm_display_mode *adjusted_mode)
+-static bool ast_mode_fixup(struct drm_encoder *encoder,
+-			   const struct drm_display_mode *mode,
+-			   struct drm_display_mode *adjusted_mode)
 -{
 -	return true;
 -}
 -
- static const struct drm_encoder_helper_funcs dce_v10_0_ext_helper_funcs = {
- 	.dpms = dce_v10_0_ext_dpms,
--	.mode_fixup = dce_v10_0_ext_mode_fixup,
- 	.prepare = dce_v10_0_ext_prepare,
- 	.mode_set = dce_v10_0_ext_mode_set,
- 	.commit = dce_v10_0_ext_commit,
-diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
-index 8e67249..36deea1 100644
---- a/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
-+++ b/drivers/gpu/drm/amd/amdgpu/dce_v11_0.c
-@@ -3619,16 +3619,8 @@ dce_v11_0_ext_dpms(struct drm_encoder *encoder, int mode)
+ static void ast_encoder_mode_set(struct drm_encoder *encoder,
+ 			       struct drm_display_mode *mode,
+ 			       struct drm_display_mode *adjusted_mode)
+@@ -736,7 +729,6 @@ static void ast_encoder_commit(struct drm_encoder *encoder)
  
- }
- 
--static bool dce_v11_0_ext_mode_fixup(struct drm_encoder *encoder,
--				    const struct drm_display_mode *mode,
--				    struct drm_display_mode *adjusted_mode)
--{
--	return true;
--}
--
- static const struct drm_encoder_helper_funcs dce_v11_0_ext_helper_funcs = {
- 	.dpms = dce_v11_0_ext_dpms,
--	.mode_fixup = dce_v11_0_ext_mode_fixup,
- 	.prepare = dce_v11_0_ext_prepare,
- 	.mode_set = dce_v11_0_ext_mode_set,
- 	.commit = dce_v11_0_ext_commit,
-diff --git a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
-index d0e128c..25dd8b6 100644
---- a/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
-+++ b/drivers/gpu/drm/amd/amdgpu/dce_v8_0.c
-@@ -3554,16 +3554,8 @@ dce_v8_0_ext_dpms(struct drm_encoder *encoder, int mode)
- 
- }
- 
--static bool dce_v8_0_ext_mode_fixup(struct drm_encoder *encoder,
--				    const struct drm_display_mode *mode,
--				    struct drm_display_mode *adjusted_mode)
--{
--	return true;
--}
--
- static const struct drm_encoder_helper_funcs dce_v8_0_ext_helper_funcs = {
- 	.dpms = dce_v8_0_ext_dpms,
--	.mode_fixup = dce_v8_0_ext_mode_fixup,
- 	.prepare = dce_v8_0_ext_prepare,
- 	.mode_set = dce_v8_0_ext_mode_set,
- 	.commit = dce_v8_0_ext_commit,
+ static const struct drm_encoder_helper_funcs ast_enc_helper_funcs = {
+ 	.dpms = ast_encoder_dpms,
+-	.mode_fixup = ast_mode_fixup,
+ 	.prepare = ast_encoder_prepare,
+ 	.commit = ast_encoder_commit,
+ 	.mode_set = ast_encoder_mode_set,
 -- 
 2.5.0
