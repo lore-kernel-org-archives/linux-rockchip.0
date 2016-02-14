@@ -1,67 +1,74 @@
-From: Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
-Subject: Re: [PATCH] usb: dwc2: Add extra delay when forcing dr_mode
-Date: Sat, 13 Feb 2016 22:40:54 +0100
-Message-ID: <7C5BF428-E5A3-44A1-A294-9E8018E382AB@mniewoehner.de>
-References: <cover.1454633496.git.johnyoun@synopsys.com> <52b1b554810ac3a434e3c570cade28cab3dd6b1e.1454633496.git.johnyoun@synopsys.com> <24688651.GlpVaD0cKm@phil>
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <24688651.GlpVaD0cKm@phil>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 01/17] drm/virtio: removed optional dummy encoder
+ mode_fixup function.
+Date: Sun, 14 Feb 2016 19:25:08 +0100
+Message-ID: <20160214182508.GF11240@phenom.ffwll.local>
+References: <daniel.vetter@ffwll.ch,>
+ <1455285069-2819-1-git-send-email-palminha@synopsys.com>
+ <1455285069-2819-2-git-send-email-palminha@synopsys.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1455285069-2819-2-git-send-email-palminha@synopsys.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
+Cc: dri-devel@lists.freedesktop.org, k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, benjamin.gaignard@linaro.org, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi John,
-Hi Heiko,
+On Fri, Feb 12, 2016 at 01:50:53PM +0000, Carlos Palminha wrote:
 
-on rk3188 25 ms don=92t seem to be enough also.
-Increasing the sleep time to 50 ms solve the problem for me while 32 ms=
- seem to be the absolute minimum.
+Sob-line from you is missing on all patches, I can't merge them. Also
+please copypaste a default blurb to all patches that this is only recently
+no longer needed. And dunno what happened to your patch series, the
+threading is somehow broken. In case your mail server doesn't accept a big
+patch series you can first format .patch files using git format-patch with
+threading enabled (should be the default) and then send them out in
+chunks.
 
-Best regards
-Michael
+When resending please also add the r-b tag from Alex for amdgpu/radoen.
 
+Thanks, Daniel
 
-
-Am 13.02.2016 um 22:13 schrieb Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>:
-
-> Am Donnerstag, 4. Februar 2016, 17:50:34 schrieb John Youn:
->> Fixes an issue found on rockchip rk3036-based SOC platforms. For som=
-e
->> reason, the existing msleep(25) is not enough after the force mode. =
-The
->> following patch was reported to fix the issue.
->>=20
->> This does increase the probe delay again slightly, but not up to the
->> level it was before the original series of patches that this fixes. =
-It
->> does not cause any other issues when tested on Synopsys HAPS and Alt=
-era
->> socfpga platforms.
->>=20
->> Need to revisit this series next release to see if we can address th=
-ese
->> issues without having an unconditional delay.
->>=20
->> Fixes: 09c96980dc72 ("usb: dwc2: Add functions to set and clear forc=
-e
->> mode") Reported-by: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> Tested-by: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->> Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
->=20
-> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> (also on a rk3036 where I hit the described problem)
->=20
->=20
+> ---
+>  drivers/gpu/drm/virtio/virtgpu_display.c | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/virtio/virtgpu_display.c b/drivers/gpu/drm/virtio/virtgpu_display.c
+> index a165f03..429aa31 100644
+> --- a/drivers/gpu/drm/virtio/virtgpu_display.c
+> +++ b/drivers/gpu/drm/virtio/virtgpu_display.c
+> @@ -282,13 +282,6 @@ static const struct drm_crtc_helper_funcs virtio_gpu_crtc_helper_funcs = {
+>  	.atomic_check  = virtio_gpu_crtc_atomic_check,
+>  };
+>  
+> -static bool virtio_gpu_enc_mode_fixup(struct drm_encoder *encoder,
+> -				      const struct drm_display_mode *mode,
+> -				      struct drm_display_mode *adjusted_mode)
+> -{
+> -	return true;
+> -}
+> -
+>  static void virtio_gpu_enc_mode_set(struct drm_encoder *encoder,
+>  				    struct drm_display_mode *mode,
+>  				    struct drm_display_mode *adjusted_mode)
+> @@ -362,7 +355,6 @@ virtio_gpu_best_encoder(struct drm_connector *connector)
+>  }
+>  
+>  static const struct drm_encoder_helper_funcs virtio_gpu_enc_helper_funcs = {
+> -	.mode_fixup = virtio_gpu_enc_mode_fixup,
+>  	.mode_set   = virtio_gpu_enc_mode_set,
+>  	.enable     = virtio_gpu_enc_enable,
+>  	.disable    = virtio_gpu_enc_disable,
+> -- 
+> 2.5.0
+> 
 > _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
