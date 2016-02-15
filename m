@@ -1,74 +1,81 @@
-From: Shawn Lin <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>
-Subject: Re: [PATCH v1 3/6] rockchip: power-domain: add support for sub-power
- domains
-Date: Mon, 15 Feb 2016 17:52:08 +0800
-Message-ID: <56C19FC8.8030204@kernel-upstream.org>
-References: <1455525531-14083-1-git-send-email-zhangqing@rock-chips.com>
- <1455525531-14083-4-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1455525531-14083-4-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH 0/2] Add Rockchip display port phy driver support
+Date: Mon, 15 Feb 2016 19:01:11 +0800
+Message-ID: <1455534071-31230-1-git-send-email-ykk@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-5ZyoIDIwMTYvMi8xNSAxNjozOCwgRWxhaW5lIFpoYW5nIOWGmemBkzoKPiBUaGlzIHBhdGNoIGFk
-ZHMgc3VwcG9ydCBmb3IgbWFraW5nIG9uZSBwb3dlciBkb21haW4gYSBzdWItZG9tYWluIG9mCj4g
-b3RoZXIgZG9tYWluLiBUaGlzIGlzIHVzZWZ1bCBmb3IgbW9kZWxpbmcgcG93ZXIgZGVwZW5kZW5j
-ZXMsCj4gd2hpY2ggbmVlZHMgdG8gaGF2ZSBtb3JlIHRoYW4gb25lIHBvd2VyIGRvbWFpbiBlbmFi
-bGVkIHRvIGJlIG9wZXJhdGlvbmFsLgo+Cj4gU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6
-aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3NvYy9yb2NrY2hpcC9w
-bV9kb21haW5zLmMgfCA1MSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysK
-PiAgIDEgZmlsZSBjaGFuZ2VkLCA1MSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9zb2Mvcm9ja2NoaXAvcG1fZG9tYWlucy5jIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvcG1f
-ZG9tYWlucy5jCj4gaW5kZXggMzUwNTI3Yi4uYzRjMmFlYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L3NvYy9yb2NrY2hpcC9wbV9kb21haW5zLmMKPiArKysgYi9kcml2ZXJzL3NvYy9yb2NrY2hpcC9w
-bV9kb21haW5zLmMKPiBAQCAtMzcyLDYgKzM3Miw1MSBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9j
-b25maWd1cmVfcGRfY250KHN0cnVjdCByb2NrY2hpcF9wbXUgKnBtdSwKPiAgIAlyZWdtYXBfd3Jp
-dGUocG11LT5yZWdtYXAsIGRvbWFpbl9yZWdfb2Zmc2V0ICsgNCwgY291bnQpOwo+ICAgfQo+Cj4g
-K3N0YXRpYyBpbnQgcm9ja2NoaXBfcG1fYWRkX3N1YmRvbWFpbihzdHJ1Y3Qgcm9ja2NoaXBfcG11
-ICpwbXUsCj4gKwkJCQkgICAgIHN0cnVjdCBkZXZpY2Vfbm9kZSAqcGFyZW50KQo+ICt7Cj4gKwlz
-dHJ1Y3QgZGV2aWNlX25vZGUgKm5wOwo+ICsJaW50IGVycm9yOwo+ICsKPiArCWZvcl9lYWNoX2No
-aWxkX29mX25vZGUocGFyZW50LCBucCkgewo+ICsJCXN0cnVjdCBnZW5lcmljX3BtX2RvbWFpbiAq
-Y2hpbGRfZG9tYWluLCAqcGFyZW50X2RvbWFpbjsKPiArCQl1MzIgaWR4ID0gfjA7Cj4gKwo+ICsJ
-CWlmIChvZl9wcm9wZXJ0eV9yZWFkX3UzMihwYXJlbnQsICJyZWciLCAmaWR4KSkgewo+ICsJCQlk
-ZXZfZXJyKHBtdS0+ZGV2LAo+ICsJCQkJIiVzOiBmYWlsZWQgdG8gcmV0cmlldmUgZG9tYWluIGlk
-IChyZWcpXG4iLAo+ICsJCQkJcGFyZW50LT5uYW1lKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cgpt
-aXNzIG9mX25vZGVfcHV0LgoKPiArCQl9Cj4gKwkJcGFyZW50X2RvbWFpbiA9IHBtdS0+Z2VucGRf
-ZGF0YS5kb21haW5zW2lkeF07Cj4gKwo+ICsJCWVycm9yID0gcm9ja2NoaXBfcG1fYWRkX29uZV9k
-b21haW4ocG11LCBucCk7Cj4gKwkJaWYgKGVycm9yKSB7Cj4gKwkJCWRldl9lcnIocG11LT5kZXYs
-ICJmYWlsZWQgdG8gaGFuZGxlIG5vZGUgJXM6ICVkXG4iLAo+ICsJCQkJbnAtPm5hbWUsIGVycm9y
-KTsKPiArCQkJcmV0dXJuIC1FTk9ERVY7CgpEaXR0bwoKPiArCQl9Cj4gKwo+ICsJCWlmIChvZl9w
-cm9wZXJ0eV9yZWFkX3UzMihucCwgInJlZyIsICZpZHgpKSB7Cj4gKwkJCWRldl9lcnIocG11LT5k
-ZXYsCj4gKwkJCQkiJXM6IGZhaWxlZCB0byByZXRyaWV2ZSBkb21haW4gaWQgKHJlZylcbiIsCj4g
-KwkJCQlucC0+bmFtZSk7Cj4gKwkJCXJldHVybiAtRUlOVkFMOwoKRGl0dG8KCj4gKwkJfQo+ICsJ
-CWNoaWxkX2RvbWFpbiA9IHBtdS0+Z2VucGRfZGF0YS5kb21haW5zW2lkeF07Cj4gKwo+ICsJCWlm
-IChwbV9nZW5wZF9hZGRfc3ViZG9tYWluKHBhcmVudF9kb21haW4sIGNoaWxkX2RvbWFpbikpCj4g
-KwkJCXByX3dhcm4oIiVzIGZhaWxlZCB0byBhZGQgc3ViZG9tYWluOiAlc1xuIiwKPiArCQkJCXBh
-cmVudF9kb21haW4tPm5hbWUsIGNoaWxkX2RvbWFpbi0+bmFtZSk7Cj4gKwkJZWxzZQo+ICsJCQlw
-cl93YXJuKCIlcyBhZGQgc3ViZG9tYWluOiAlc1xuIiwKPiArCQkJCXBhcmVudF9kb21haW4tPm5h
-bWUsIGNoaWxkX2RvbWFpbi0+bmFtZSk7Cj4gKwo+ICsJCXJvY2tjaGlwX3BtX2FkZF9zdWJkb21h
-aW4ocG11LCBucCk7Cj4gKwl9Cj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiAgIHN0YXRpYyBpbnQg
-cm9ja2NoaXBfcG1fZG9tYWluX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4g
-ICB7Cj4gICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiBAQCAtNDM3LDYgKzQ4
-MiwxMiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BtX2RvbWFpbl9wcm9iZShzdHJ1Y3QgcGxhdGZv
-cm1fZGV2aWNlICpwZGV2KQo+ICAgCQkJCW5vZGUtPm5hbWUsIGVycm9yKTsKPiAgIAkJCWdvdG8g
-ZXJyX291dDsKPiAgIAkJfQo+ICsJCWVycm9yID0gcm9ja2NoaXBfcG1fYWRkX3N1YmRvbWFpbihw
-bXUsIG5vZGUpOwo+ICsJCWlmIChlcnJvciA8IDApIHsKPiArCQkJZGV2X2VycihkZXYsICJmYWls
-ZWQgdG8gaGFuZGxlIHN1YmRvbWFpbiBub2RlICVzOiAlZFxuIiwKPiArCQkJCW5vZGUtPm5hbWUs
-IGVycm9yKTsKPiArCQkJZ290byBlcnJfb3V0Owo+ICsJCX0KPiAgIAl9Cj4KPiAgIAlpZiAoZXJy
-b3IpIHsKPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+
+Hi Kison,
+
+This series is splited from Analogix DP DRM thread [0], and Heiko suggest this
+should be an independent thread which may be easy for you to apply.
+
+Best regards,
+Yakir
+
+[0]: https://patchwork.kernel.org/patch/8086571/
+
+
+Changes in v12:
+- Re-order the include headers file alphabetically in phy-rockchip-dp.c (Jingoo)
+
+Changes in v11:
+- Correct the title of this rockchip dp phy document(Rob)
+- Add the ack from Rob Herring
+
+Changes in v10:
+- Fix the wrong macro value of GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK
+    BIT(4) -> BIT(20)
+
+Changes in v9:
+- Removed the unused the variable "res" in probe function. (Heiko)
+- Removed the unused head file.
+
+Changes in v8:
+- Fix the mixed spacers on macro definitions. (Heiko)
+- Remove the unnecessary empty line after clk_prepare_enable. (Heiko)
+- Remove the specific address in the example node name. (Heiko)
+
+Changes in v7:
+- Simply the commit message. (Kishon)
+- Symmetrical enable/disbale the phy clock and power. (Kishon)
+- Simplify the commit message. (Kishon)
+
+Changes in v5:
+- Remove "reg" DT property, cause driver could poweron/poweroff phy via
+  the exist "grf" syscon already. And rename the example DT node from
+  "edp_phy: phy@ff770274" to "edp_phy: edp-phy" directly. (Heiko)
+- Add deivce_node at the front of driver, update phy_ops type from "static
+  struct" to "static const struct". And correct the input paramters of
+  devm_phy_create() interfaces. (Heiko)
+- Split binding doc's from driver changes. (Rob)
+- Update the rockchip,grf explain in document, and correct the clock required
+  elemets in document. (Rob & Heiko)
+
+Changes in v4:
+- Add commit message, and remove the redundant rockchip_dp_phy_init()
+  function, move those code to probe() method. And remove driver .owner
+  number. (Kishon)
+
+Changes in v3:
+- Suggest, add rockchip dp phy driver, collect the phy clocks and
+  power control. (Heiko)
+
+Yakir Yang (2):
+  phy: Add driver for rockchip Display Port PHY
+  dt-bindings: add document for rockchip dp phy
+
+ .../devicetree/bindings/phy/rockchip-dp-phy.txt    |  22 +++
+ drivers/phy/Kconfig                                |   7 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-rockchip-dp.c                      | 151 +++++++++++++++++++++
+ 4 files changed, 181 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+ create mode 100644 drivers/phy/phy-rockchip-dp.c
+
+-- 
+1.9.1
