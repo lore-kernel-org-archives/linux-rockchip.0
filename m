@@ -1,70 +1,39 @@
-From: John Youn <John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] usb: dwc2: Add extra delay when forcing dr_mode
-Date: Mon, 15 Feb 2016 15:30:20 -0800
-Message-ID: <205d8514e547231b928b14c4e61d12feb2e9a0c3.1455576846.git.johnyoun@synopsys.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RESEND PATCH 0/8] Support and fixes the rk3228 SoCS for thermal
+Date: Tue, 16 Feb 2016 00:25:39 +0100
+Message-ID: <3650760.H1YezDtoUE@phil>
+References: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>, edubezval@gmail.com
+Cc: huangtao@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Fixes an issue found on rockchip rk3036 and rk3188 SOC platforms. For
-some reason, the existing msleep(25) is not enough after the force mode.
-The following patch was reported to fix the issue.
+Am Montag, 15. Februar 2016, 15:33:25 schrieb Caesar Wang:
+> Hello Eduardo, Heiko, Michael & Stephen:
+> 
+> This series pacthes to support the rk3228 SoCs thermal.
+> 
+> They have the following patches to work on rk3228 SoCs.
+> 
 
-This does increase the probe delay again slightly, but not up to the
-level it was before the original series of patches that this fixes. It
-does not cause any other issues when tested on Synopsys HAPS and Altera
-socfpga platforms.
+> 1a6f334 clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
+> 8cf2d1b clk: rockchip: add the tsadc clocks found on rk3228 SoCs
+> bdc79c0 ARM: dts: rockchip: add the thermal main info found on rk3228
+> 22ea3c3 ARM: dts: rockchip: enable the tsadc for rk3228 evb
 
-Need to revisit this series next release to see if we can address these
-issues without having an unconditional delay.
+clk and devicetree patches look good and I'll pick those up once Eduardo is 
+ok with (and has taken) the thermal-specific changes:
 
-Fixes: 09c96980dc72 ("usb: dwc2: Add functions to set and clear force mode")
-Reported-by: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Reported-by: Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
-Tested-by: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: John Youn <johnyoun-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
----
-
-Hi Felipe,
-
-This fixes a problem introduced in 4.5-rc1. Could you please queue for
-the next -rc?
-
-Thanks,
-John
-
-v2:
-- Upped the delay to 50 ms for rk3188. Reported by Michael Niewoehner.
+> bd2720c thermal: rockchip: fix a impossible condition caused by the
+> warning df9c1bd thermal: rockchip: fix calculation error for code_to_temp
+> fb11fbd thermal: rockchip: the rename compatibles for rockchip SoCs
+> b907b75 thermal: rockchip: fix the tsadc sequence output on rk3228/rk3399
 
 
- drivers/usb/dwc2/core.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Heiko
 
-diff --git a/drivers/usb/dwc2/core.c b/drivers/usb/dwc2/core.c
-index e991d55..46c4ba7 100644
---- a/drivers/usb/dwc2/core.c
-+++ b/drivers/usb/dwc2/core.c
-@@ -619,6 +619,12 @@ void dwc2_force_dr_mode(struct dwc2_hsotg *hsotg)
- 			 __func__, hsotg->dr_mode);
- 		break;
- 	}
-+
-+	/*
-+	 * NOTE: This is required for some rockchip soc based
-+	 * platforms.
-+	 */
-+	msleep(50);
- }
- 
- /*
--- 
-2.6.3
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
