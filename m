@@ -1,187 +1,74 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v3 1/4] dt-bindings: power: reset: add document for
- reboot-mode driver
-Date: Mon, 15 Feb 2016 17:43:06 +0800
-Message-ID: <56C19DAA.5030602@rock-chips.com>
-References: <1454406981-4692-1-git-send-email-andy.yan@rock-chips.com>
- <1454407151-4751-1-git-send-email-andy.yan@rock-chips.com>
- <20160204230814.GA4847@rob-hp-laptop>
- <CALAqxLVyznpLd2MLgGr28TDECpLZ=RpmhxH-SHqntXfBsctcmQ@mail.gmail.com>
- <20160205043507.GB4847@rob-hp-laptop>
- <CALAqxLUnbFHjTuJXYXSruV3W0JJ09Fxz=KBe69tZDTd_3_+rxw@mail.gmail.com>
+From: Shawn Lin <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>
+Subject: Re: [PATCH v1 3/6] rockchip: power-domain: add support for sub-power
+ domains
+Date: Mon, 15 Feb 2016 17:52:08 +0800
+Message-ID: <56C19FC8.8030204@kernel-upstream.org>
+References: <1455525531-14083-1-git-send-email-zhangqing@rock-chips.com>
+ <1455525531-14083-4-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CALAqxLUnbFHjTuJXYXSruV3W0JJ09Fxz=KBe69tZDTd_3_+rxw@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: John Stultz <john.stultz@linaro.org>, Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, lkml <linux-kernel@vger.kernel.org>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnd Bergmann <arnd@arndb.de>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Richard Weinberger <richard@nod.at>, Linux PM list <linux-pm@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, =?UTF-8?Q?Pawe=c5=82_Moll?= <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Moritz
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455525531-14083-4-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob & John:
-
-On 2016=E5=B9=B402=E6=9C=8805=E6=97=A5 13:03, John Stultz wrote:
-> On Thu, Feb 4, 2016 at 8:35 PM, Rob Herring <robh@kernel.org> wrote:
->> On Thu, Feb 04, 2016 at 03:46:15PM -0800, John Stultz wrote:
->>> On Thu, Feb 4, 2016 at 3:08 PM, Rob Herring <robh@kernel.org> wrote=
-:
->>>> On Tue, Feb 02, 2016 at 05:59:11PM +0800, Andy Yan wrote:
->>>>> +Example:
->>>>> +     reboot-mode {
->>>>> +             mode-normal =3D <BOOT_NORMAL>;
->>>>> +             mode-recovery =3D <BOOT_RECOVERY>;
->>>>> +             mode-fastboot =3D <BOOT_FASTBOOT>;
->>>> I tend to agree with John on calling this mode-bootloader.
->>>>
->>>> OTOH, fastboot is more specific about what the mode is. The name i=
-n DT
->>>> and the userspace name don't necessarily have to be the same.
->>> Wait. This is a bit confusing. The utility of adding a property nam=
-e
->>> and using that name be the reboot command parsed for made sense
->>> (compared to earlier versions which had command strings) as it made
->>> the dts more terse.   But it sounds here like you're suggesting we
->>> should have some logic in the driver that translates "reboot fastbo=
-ot"
->>> to mode-bootloader or vice versa.
->> I said early on the DT names and kernel-userspace names should not
->> necessarily be linked. They can be, but we shouldn't require that.
-> Sigh. Ok. It seemed it was due to earlier comments (maybe from others=
-,
-> but I thought it was you), that we moved from specifying a command
-> string, to using the label. But if you think the label name and the
-> commands shouldn't be linked, it seems like we should re-introduce
-> that. No?
->
-> Unless your thinking we need some sort of static in-kernel mapping of
-> commands to label names? But that just seems painfully indirect for
-> little gain ("Its obvious! For that mode, you use this term here, and
-> that different term over there!").
->
->> My concern with mode-bootloader is what if you can boot into multipl=
-e
->> bootloader modes. Say USB mass storage is one option. "bootloader" i=
-s
->> not real specific.
-> True. But as I think we agreed below, "bootloader" and "recovery" are
-> basically defacto standards, and I think it would be a bad idea to tr=
-y
-> to declare all the existing android tooling and docs wrong just
-> because the command is vague, technically.
->
->
->>>>> +             mode-loader =3D <BOOT_LOADER>;
->>>> This one needs a better name. Maybe it should be 'rockchip,mode-lo=
-ader'
->>>> as it is vendor specific. Either way, loader is vague. Perhaps
->>>> rockchip,mode-bl-download?
->>> Hrm. So how what reboot command do you expect to trigger that?
->> Whatever your OS has defined to map to that.
->>
->> We could just decide the kernel will strip <vendor> and 'mode-' and
->> match commands against what remains.
-> That part sounds sane, although I do think having vendor prefixes are
-> reasonable for actual commands as well.
->
->
->>> I think one of the difficult things here is that there's no real
->>> standards for all bios/bootloader modes. So they are somewhat
->>> firmware/bootloader/device specific, and thus we need something tha=
-t
->>> is flexible enough to allow lots of different modes to be easily
->>> specified.  That said, this does expose a userspace interface (thou=
-gh
->>> one could argue kernel ABI doesn't cross reboots :) so we should tr=
-y
->>> to have some consistency so the same userspace can work on various
->>> devices.
->> There is: UEFI. Boot mode efivars are standard. But then they are pr=
-etty
->> much PC oriented though. It is more which device to boot off of, but
->> there is network boot or boot to bios setup.
-> Well, there's a partial standard there.  I'm told for android on x86,
-> there is no UEFI standard way to communicate rebooting to fastboot or
-> recovery. Every device does its own device specific driver.
->
->
->>> I do think the "bootloader" and "recovery" arguments are somewhat
->>> defacto standards, well established on most android devices.
->> Yes, otherwise I'd be completely against "mode-bootloader" as the
->> property.
-> Ok.
->
->>> I think here the concern is rockchip probably has some userspace th=
-at
->>> is already using "reboot maskrom" or "reboot loader" for their own
->>> uses. And its a bit of a pain to ask that userspace to be reworked =
-to
->> Perhaps those are only for development and change would not be so
->> painful.
-> Andy: Can you comment here? How critical are the specific commands
-> you've used here for your userspace?
->
-     Have some discussion with my colleague, we decided remove the"=20
-maskrom" mode in next version.
-   Actually, this mode is not so used so often.
-     But "reboot loader" is frequently used  in development by all the=20
-rockchip platform related people, even
-some widely used factory tools use this command.So we really hope it ca=
-n=20
-compatible with the existing tools
-and user experience.
->>> use "reboot rom-download" or "reboot rockchip,rom-download" dependi=
-ng
->>> on how we try to deal with these.  (Granted, non-upstream interface=
-s
->>> aren't official, so that is their risk somewhat, but we avoid being
->>> smug about that :)
->> Or vendor specific modes require vendor specific translation in the
->> kernel.
-> True.
->
->
->> To some extent we need to design what is right and worry about futur=
-e
->> devices rather than cater to past devices. There's always some
->> compromise. What would you design ignoring the existing conditions.
->> Start there and then figure out how to make it work with current
->> designs.
-> Fair enough. I just want to make sure we're not getting too caught up
-> with design purity and are willing the meet the world where it is.
->
->>> Another part of the issue is there isn't really a way to probe for
->>> reboot cmd capability here. As much as I'd rather not complicate
->>> things, one couldn't easily extend existing userspace to work with
->>> current kernels as well as future kernels, since the reboot with an
->>> invalid command won't fail. The machine still resets. So you can't =
-try
->>> one and fallback to the other.
->> Well, that's nice. Maybe we should change that? Or we're stuck with
->> that ABI?
-> Maybe? I'm not sure what might have trouble with reboot failing if it
-> sticks any extra noise in the reboot command.
-> I'd probably lean towards sticking with the existing behavior.
->
->>> Maybe there needs to be a sysfs entry with the list of the supporte=
-d commands?
->> You can just read the DT. Although, the problem then is what happens
->> when we move to the next firmware interface. We see that some with
->> devices having userspace dependencies on ATAGS.
-> Heh. I guess. Thought I suspect "Just read the DT to sort out the
-> available reboot modes" is probably not what most userspace wants to
-> hear. :)
->
-> thanks
-> -john
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
-
-
+5ZyoIDIwMTYvMi8xNSAxNjozOCwgRWxhaW5lIFpoYW5nIOWGmemBkzoKPiBUaGlzIHBhdGNoIGFk
+ZHMgc3VwcG9ydCBmb3IgbWFraW5nIG9uZSBwb3dlciBkb21haW4gYSBzdWItZG9tYWluIG9mCj4g
+b3RoZXIgZG9tYWluLiBUaGlzIGlzIHVzZWZ1bCBmb3IgbW9kZWxpbmcgcG93ZXIgZGVwZW5kZW5j
+ZXMsCj4gd2hpY2ggbmVlZHMgdG8gaGF2ZSBtb3JlIHRoYW4gb25lIHBvd2VyIGRvbWFpbiBlbmFi
+bGVkIHRvIGJlIG9wZXJhdGlvbmFsLgo+Cj4gU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6
+aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3NvYy9yb2NrY2hpcC9w
+bV9kb21haW5zLmMgfCA1MSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysK
+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1MSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9zb2Mvcm9ja2NoaXAvcG1fZG9tYWlucy5jIGIvZHJpdmVycy9zb2Mvcm9ja2NoaXAvcG1f
+ZG9tYWlucy5jCj4gaW5kZXggMzUwNTI3Yi4uYzRjMmFlYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L3NvYy9yb2NrY2hpcC9wbV9kb21haW5zLmMKPiArKysgYi9kcml2ZXJzL3NvYy9yb2NrY2hpcC9w
+bV9kb21haW5zLmMKPiBAQCAtMzcyLDYgKzM3Miw1MSBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9j
+b25maWd1cmVfcGRfY250KHN0cnVjdCByb2NrY2hpcF9wbXUgKnBtdSwKPiAgIAlyZWdtYXBfd3Jp
+dGUocG11LT5yZWdtYXAsIGRvbWFpbl9yZWdfb2Zmc2V0ICsgNCwgY291bnQpOwo+ICAgfQo+Cj4g
+K3N0YXRpYyBpbnQgcm9ja2NoaXBfcG1fYWRkX3N1YmRvbWFpbihzdHJ1Y3Qgcm9ja2NoaXBfcG11
+ICpwbXUsCj4gKwkJCQkgICAgIHN0cnVjdCBkZXZpY2Vfbm9kZSAqcGFyZW50KQo+ICt7Cj4gKwlz
+dHJ1Y3QgZGV2aWNlX25vZGUgKm5wOwo+ICsJaW50IGVycm9yOwo+ICsKPiArCWZvcl9lYWNoX2No
+aWxkX29mX25vZGUocGFyZW50LCBucCkgewo+ICsJCXN0cnVjdCBnZW5lcmljX3BtX2RvbWFpbiAq
+Y2hpbGRfZG9tYWluLCAqcGFyZW50X2RvbWFpbjsKPiArCQl1MzIgaWR4ID0gfjA7Cj4gKwo+ICsJ
+CWlmIChvZl9wcm9wZXJ0eV9yZWFkX3UzMihwYXJlbnQsICJyZWciLCAmaWR4KSkgewo+ICsJCQlk
+ZXZfZXJyKHBtdS0+ZGV2LAo+ICsJCQkJIiVzOiBmYWlsZWQgdG8gcmV0cmlldmUgZG9tYWluIGlk
+IChyZWcpXG4iLAo+ICsJCQkJcGFyZW50LT5uYW1lKTsKPiArCQkJcmV0dXJuIC1FSU5WQUw7Cgpt
+aXNzIG9mX25vZGVfcHV0LgoKPiArCQl9Cj4gKwkJcGFyZW50X2RvbWFpbiA9IHBtdS0+Z2VucGRf
+ZGF0YS5kb21haW5zW2lkeF07Cj4gKwo+ICsJCWVycm9yID0gcm9ja2NoaXBfcG1fYWRkX29uZV9k
+b21haW4ocG11LCBucCk7Cj4gKwkJaWYgKGVycm9yKSB7Cj4gKwkJCWRldl9lcnIocG11LT5kZXYs
+ICJmYWlsZWQgdG8gaGFuZGxlIG5vZGUgJXM6ICVkXG4iLAo+ICsJCQkJbnAtPm5hbWUsIGVycm9y
+KTsKPiArCQkJcmV0dXJuIC1FTk9ERVY7CgpEaXR0bwoKPiArCQl9Cj4gKwo+ICsJCWlmIChvZl9w
+cm9wZXJ0eV9yZWFkX3UzMihucCwgInJlZyIsICZpZHgpKSB7Cj4gKwkJCWRldl9lcnIocG11LT5k
+ZXYsCj4gKwkJCQkiJXM6IGZhaWxlZCB0byByZXRyaWV2ZSBkb21haW4gaWQgKHJlZylcbiIsCj4g
+KwkJCQlucC0+bmFtZSk7Cj4gKwkJCXJldHVybiAtRUlOVkFMOwoKRGl0dG8KCj4gKwkJfQo+ICsJ
+CWNoaWxkX2RvbWFpbiA9IHBtdS0+Z2VucGRfZGF0YS5kb21haW5zW2lkeF07Cj4gKwo+ICsJCWlm
+IChwbV9nZW5wZF9hZGRfc3ViZG9tYWluKHBhcmVudF9kb21haW4sIGNoaWxkX2RvbWFpbikpCj4g
+KwkJCXByX3dhcm4oIiVzIGZhaWxlZCB0byBhZGQgc3ViZG9tYWluOiAlc1xuIiwKPiArCQkJCXBh
+cmVudF9kb21haW4tPm5hbWUsIGNoaWxkX2RvbWFpbi0+bmFtZSk7Cj4gKwkJZWxzZQo+ICsJCQlw
+cl93YXJuKCIlcyBhZGQgc3ViZG9tYWluOiAlc1xuIiwKPiArCQkJCXBhcmVudF9kb21haW4tPm5h
+bWUsIGNoaWxkX2RvbWFpbi0+bmFtZSk7Cj4gKwo+ICsJCXJvY2tjaGlwX3BtX2FkZF9zdWJkb21h
+aW4ocG11LCBucCk7Cj4gKwl9Cj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiAgIHN0YXRpYyBpbnQg
+cm9ja2NoaXBfcG1fZG9tYWluX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4g
+ICB7Cj4gICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiBAQCAtNDM3LDYgKzQ4
+MiwxMiBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BtX2RvbWFpbl9wcm9iZShzdHJ1Y3QgcGxhdGZv
+cm1fZGV2aWNlICpwZGV2KQo+ICAgCQkJCW5vZGUtPm5hbWUsIGVycm9yKTsKPiAgIAkJCWdvdG8g
+ZXJyX291dDsKPiAgIAkJfQo+ICsJCWVycm9yID0gcm9ja2NoaXBfcG1fYWRkX3N1YmRvbWFpbihw
+bXUsIG5vZGUpOwo+ICsJCWlmIChlcnJvciA8IDApIHsKPiArCQkJZGV2X2VycihkZXYsICJmYWls
+ZWQgdG8gaGFuZGxlIHN1YmRvbWFpbiBub2RlICVzOiAlZFxuIiwKPiArCQkJCW5vZGUtPm5hbWUs
+IGVycm9yKTsKPiArCQkJZ290byBlcnJfb3V0Owo+ICsJCX0KPiAgIAl9Cj4KPiAgIAlpZiAoZXJy
+b3IpIHsKPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
