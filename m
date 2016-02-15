@@ -1,39 +1,43 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 6/6] soc: rockchip: power-domain: check the existing of regmap
-Date: Mon, 15 Feb 2016 11:33:57 +0800
-Message-ID: <1455507237-13161-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [RESEND PATCH 1/8] clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
+Date: Mon, 15 Feb 2016 15:33:26 +0800
+Message-ID: <1455521613-27340-2-git-send-email-wxt@rock-chips.com>
+References: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>, edubezval@gmail.com
+Cc: huangtao@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Check return value of syscon_node_to_regmap for
-rockchip_pm_domain_probe. If err value is returned, probe
-procedure should abort.
+This patch adds 'SCLK_TSADC' and 'PCLK_TSADC' id found on rk3228 SoCs.
+That will be needed by TSADC controller.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
- drivers/soc/rockchip/pm_domains.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ include/dt-bindings/clock/rk3228-cru.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 534c589..3c4a44d 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -402,6 +402,10 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
- 	}
- 
- 	pmu->regmap = syscon_node_to_regmap(parent->of_node);
-+	if (IS_ERR(pmu->regmap)) {
-+		dev_err(dev, "no regmap available\n");
-+		return -ENODEV;
-+	}
- 
- 	/*
- 	 * Configure power up and down transition delays for CORE
+diff --git a/include/dt-bindings/clock/rk3228-cru.h b/include/dt-bindings/clock/rk3228-cru.h
+index a78dd89..cd2e06b 100644
+--- a/include/dt-bindings/clock/rk3228-cru.h
++++ b/include/dt-bindings/clock/rk3228-cru.h
+@@ -29,6 +29,7 @@
+ #define SCLK_SDMMC		68
+ #define SCLK_SDIO		69
+ #define SCLK_EMMC		71
++#define SCLK_TSADC		72
+ #define SCLK_UART0		77
+ #define SCLK_UART1		78
+ #define SCLK_UART2		79
+@@ -68,6 +69,7 @@
+ #define PCLK_UART0		341
+ #define PCLK_UART1		342
+ #define PCLK_UART2		343
++#define PCLK_TSADC		344
+ #define PCLK_PWM		350
+ #define PCLK_TIMER		353
+ #define PCLK_PERI		363
 -- 
-2.3.7
+1.9.1
