@@ -1,85 +1,37 @@
-From: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Subject: Re: [PATCH v2 03/17] drm/exynos: removed optional dummy encoder
-	mode_fixup function.
-Date: Mon, 15 Feb 2016 15:18:34 +0000
-Message-ID: <56C1EC4A.1000803@synopsys.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2 10/17] drm/imx: removed optional dummy encoder
+ mode_fixup function.
+Date: Mon, 15 Feb 2016 17:16:55 +0100
+Message-ID: <1455553015.4899.38.camel@pengutronix.de>
 References: <cover.1455540137.git.palminha@synopsys.com>
-	<3768b670931572de51fca1102efa18d20dd770ee.1455540137.git.palminha@synopsys.com>
-	<CAMeQTsZLdMOnk7-isneoUyFBbQdiRUsGH6+EhD8W1LNB=80LVQ@mail.gmail.com>
+ <8bf274e8f6908142a9f940d3f2913e4a735e0caa.1455540137.git.palminha@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <virtualization-bounces@lists.linux-foundation.org>
-In-Reply-To: <CAMeQTsZLdMOnk7-isneoUyFBbQdiRUsGH6+EhD8W1LNB=80LVQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>,
-	<mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
-List-Post: <mailto:virtualization@lists.linux-foundation.org>
-List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>,
-	<mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
-Sender: virtualization-bounces@lists.linux-foundation.org
-Errors-To: virtualization-bounces@lists.linux-foundation.org
-To: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>, Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, heiko@sntech.de, benjamin.gaignard@linaro.org, David Airlie <airlied@linux.ie>, jingoohan1@gmail.com, dri-devel <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, p.zabel@pengutronix.de, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org, mark.yao@rock-chips.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <8bf274e8f6908142a9f940d3f2913e4a735e0caa.1455540137.git.palminha@synopsys.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
+Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, dri-devel@lists.freedesktop.org, benjamin.gaignard@linaro.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Patrik,
-
-No particular reason... i was grepping along the development and probably didn't noticed that exynos was not completely nuked... :)
-
-Regards,
-C.Palminha
-
-On 15-02-2016 13:49, Patrik Jakobsson wrote:
-> Hi Carlos
-> 
-> Any particular reason why this patch isn't squashed with patch 8/17?
-> 
-> Thanks
-> Patrik
-> 
-> 
-> On Mon, Feb 15, 2016 at 1:58 PM, Carlos Palminha
-> <CARLOS.PALMINHA@synopsys.com> wrote:
->> mode_fixup function for encoder drivers became optional with patch
->> http://patchwork.freedesktop.org/patch/msgid/1455106522-32307-1-git-send-email-palminha@synopsys.com
->>
->> This patch set nukes all the dummy mode_fixup implementations.
->>
->> (made on top of Daniel topic/drm-misc branch)
->>
->> Signed-off-by: Carlos Palminha <palminha@synopsys.com>
->> ---
->>  drivers/gpu/drm/exynos/exynos_drm_dsi.c | 8 --------
->>  1 file changed, 8 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
->> index e977a81..736115c 100644
->> --- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
->> +++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
->> @@ -1597,13 +1597,6 @@ static int exynos_dsi_create_connector(struct drm_encoder *encoder)
->>         return 0;
->>  }
->>
->> -static bool exynos_dsi_mode_fixup(struct drm_encoder *encoder,
->> -                                 const struct drm_display_mode *mode,
->> -                                 struct drm_display_mode *adjusted_mode)
->> -{
->> -       return true;
->> -}
->> -
->>  static void exynos_dsi_mode_set(struct drm_encoder *encoder,
->>                                 struct drm_display_mode *mode,
->>                                 struct drm_display_mode *adjusted_mode)
->> @@ -1623,7 +1616,6 @@ static void exynos_dsi_mode_set(struct drm_encoder *encoder,
->>  }
->>
->>  static const struct drm_encoder_helper_funcs exynos_dsi_encoder_helper_funcs = {
->> -       .mode_fixup = exynos_dsi_mode_fixup,
->>         .mode_set = exynos_dsi_mode_set,
->>         .enable = exynos_dsi_enable,
->>         .disable = exynos_dsi_disable,
->> --
->> 2.5.0
->>
+QW0gTW9udGFnLCBkZW4gMTUuMDIuMjAxNiwgMTM6MDAgKzAwMDAgc2NocmllYiBDYXJsb3MgUGFs
+bWluaGE6Cj4gbW9kZV9maXh1cCBmdW5jdGlvbiBmb3IgZW5jb2RlciBkcml2ZXJzIGJlY2FtZSBv
+cHRpb25hbCB3aXRoIHBhdGNoCj4gaHR0cDovL3BhdGNod29yay5mcmVlZGVza3RvcC5vcmcvcGF0
+Y2gvbXNnaWQvMTQ1NTEwNjUyMi0zMjMwNy0xLWdpdC1zZW5kLWVtYWlsLXBhbG1pbmhhQHN5bm9w
+c3lzLmNvbQo+IAo+IFRoaXMgcGF0Y2ggc2V0IG51a2VzIGFsbCB0aGUgZHVtbXkgbW9kZV9maXh1
+cCBpbXBsZW1lbnRhdGlvbnMuCj4gCj4gKG1hZGUgb24gdG9wIG9mIERhbmllbCB0b3BpYy9kcm0t
+bWlzYyBicmFuY2gpCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2FybG9zIFBhbG1pbmhhIDxwYWxtaW5o
+YUBzeW5vcHN5cy5jb20+CgpBY2tlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRy
+b25peC5kZT4KCnJlZ2FyZHMKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
