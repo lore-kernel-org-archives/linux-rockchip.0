@@ -1,33 +1,49 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix the incorrect otp-out pin on rk3368
-Date: Mon, 15 Feb 2016 22:12:50 +0100
-Message-ID: <1884614.IJaL3hhOqa@phil>
-References: <1455507058-10824-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 6/6] soc: rockchip: power-domain: check the existing of regmap
+Date: Mon, 15 Feb 2016 22:26:04 +0100
+Message-ID: <1766177.2LWUTugthY@phil>
+References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com> <1455507237-13161-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1455507058-10824-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1455507237-13161-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-Am Montag, 15. Februar 2016, 11:30:58 schrieb Caesar Wang:
-> This patch fixes the incorrect Over-temperature protection pin.
-> since the rk3368 io list said the otp pin is gpio0a3.
+Am Montag, 15. Februar 2016, 11:33:57 schrieb Shawn Lin:
+> Check return value of syscon_node_to_regmap for
+> rockchip_pm_domain_probe. If err value is returned, probe
+> procedure should abort.
 > 
-> Anyway, that should be fixed in here.
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+applied to my armsoc/drivers branch for 4.6 with one change below
+
+> ---
 > 
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>  drivers/soc/rockchip/pm_domains.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/soc/rockchip/pm_domains.c
+> b/drivers/soc/rockchip/pm_domains.c index 534c589..3c4a44d 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -402,6 +402,10 @@ static int rockchip_pm_domain_probe(struct
+> platform_device *pdev) }
+> 
+>  	pmu->regmap = syscon_node_to_regmap(parent->of_node);
+> +	if (IS_ERR(pmu->regmap)) {
+> +		dev_err(dev, "no regmap available\n");
+> +		return -ENODEV;
 
-applied to my dts branch for 4.6
+Instead of returning ENODEV I did go with
 
-Thanks
+		return PTR_ERR(pmu->regmap);
+
+the error from trying to grab the regmap.
+
+
 Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
