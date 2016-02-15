@@ -1,44 +1,57 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [RESEND PATCH 8/8] ARM: dts: rockchip: enable the tsadc for rk3228 evb
-Date: Mon, 15 Feb 2016 15:33:33 +0800
-Message-ID: <1455521613-27340-9-git-send-email-wxt@rock-chips.com>
-References: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v1 1/6] rockchip: power-domain: make idle handling optional
+Date: Mon, 15 Feb 2016 16:38:46 +0800
+Message-ID: <1455525531-14083-2-git-send-email-zhangqing@rock-chips.com>
+References: <1455525531-14083-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <1455525531-14083-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, edubezval@gmail.com
-Cc: huangtao@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+To: heiko@sntech.de, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch enables the tsadc for rk3228 evb board.
+Not all new socs need to handle idle states on domain state changes,
+so add the possibility to make them optional.
 
-The rk3228 evb board uses the CRU to reset the chip since it hasn't the
-PMIC to connect it, and TSHUT is low active on evb board.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
+ drivers/soc/rockchip/pm_domains.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
- arch/arm/boot/dts/rk3228-evb.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3228-evb.dts b/arch/arm/boot/dts/rk3228-evb.dts
-index e3898b8..c75cc41 100644
---- a/arch/arm/boot/dts/rk3228-evb.dts
-+++ b/arch/arm/boot/dts/rk3228-evb.dts
-@@ -61,6 +61,13 @@
- 	status = "okay";
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 6cdffb1..3dcc611 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -63,14 +63,16 @@ struct rockchip_pmu {
  };
  
-+&tsadc {
-+	status = "okay";
+ #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain, genpd)
++#define NULL_BIT		-32
++#define OVERFLOW_MASK		32
+ 
+ #define DOMAIN(pwr, status, req, idle, ack)	\
+ {						\
+ 	.pwr_mask = BIT(pwr),			\
+ 	.status_mask = BIT(status),		\
+-	.req_mask = BIT(req),			\
+-	.idle_mask = BIT(idle),			\
+-	.ack_mask = BIT(ack),			\
++	.req_mask = (req >= 0) ? BIT(req) : OVERFLOW_MASK,		\
++	.idle_mask = (idle >= 0) ? BIT(idle) : OVERFLOW_MASK,	\
++	.ack_mask = (ack >= 0) ? BIT(ack) : OVERFLOW_MASK,		\
+ }
+ 
+ #define DOMAIN_RK3288(pwr, status, req)		\
+@@ -96,6 +98,9 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	unsigned int val;
+ 
++	if (pd_info->req_mask >= OVERFLOW_MASK)
++		return 0;
 +
-+	rockchip,hw-tshut-mode = <0>; /* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-polarity = <1>; /* tshut polarity 0:LOW 1:HIGH */
-+};
-+
- &uart2 {
- 	status = "okay";
- };
+ 	regmap_update_bits(pmu->regmap, pmu->info->req_offset,
+ 			   pd_info->req_mask, idle ? -1U : 0);
+ 
 -- 
 1.9.1
