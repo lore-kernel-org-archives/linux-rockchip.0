@@ -1,39 +1,53 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 0/6] Some trivial fixes for rockchip clk/pm stuff
-Date: Mon, 15 Feb 2016 11:32:33 +0800
-Message-ID: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 09/10] arm64: dts: Add main Thermal info to rk3368.dtsi
+Date: Mon, 15 Feb 2016 11:36:36 +0800
+Message-ID: <56C147C4.20704@gmail.com>
+References: <1447044542-30859-1-git-send-email-wxt@rock-chips.com>
+ <1447044542-30859-10-git-send-email-wxt@rock-chips.com>
+ <42802946.20XC68fnyM@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <42802946.20XC68fnyM@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-Happy Chinese new year, Rockchipers!
-
-This patchset fix some trivial things for rockchip clk/pm
-driver when learning clk stuff which I'm interested in during the
-holiday.
-
-All of them is based on Heiko's tree(master branch):
-git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-
-
-
-Shawn Lin (6):
-  clk: rockchip: handle alt_parent in err cases when registering cpuclk
-  clk: rockchip: check grf when waiting pll lock
-  clk: rockchip: don't return NULL when registering inverter fails
-  clk: rockchip: don't return NULL when registering mmc branch fails
-  clk: rockchip: fix coding style for clk-cpu.c
-  soc: rockchip: power-domain: check the existing of regmap
-
- drivers/clk/rockchip/clk-cpu.c       | 8 +++++---
- drivers/clk/rockchip/clk-inverter.c  | 8 ++------
- drivers/clk/rockchip/clk-mmc-phase.c | 8 ++------
- drivers/clk/rockchip/clk-pll.c       | 8 +++++++-
- drivers/soc/rockchip/pm_domains.c    | 4 ++++
- 5 files changed, 20 insertions(+), 16 deletions(-)
-
--- 
-2.3.7
+CgrlnKggMjAxNuW5tDAy5pyIMDnml6UgMTY6MzAsIEhlaWtvIFN0dWVibmVyIOWGmemBkzoKPiBI
+aSBDYWVzYXIsCj4KPiBBbSBNb250YWcsIDkuIE5vdmVtYmVyIDIwMTUsIDEyOjQ5OjAxIHNjaHJp
+ZWIgQ2Flc2FyIFdhbmc6Cj4+IFRoaXMgcGF0Y2ggYWRkIHRoZSB0aGVybWFsIG5lZWRlZCBpbmZv
+IG9uIFJLMzM2OC4KPj4gTWVhbndoaWxlLCBzdXBwb3J0IHRoZSB0cmlwcyB0byB0aHJvdHRsZSBm
+b3IgdGhlcm1hbC4KPj4KPj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNo
+aXBzLmNvbT4KPj4gQWNrZWQtYnk6IEVkdWFyZG8gVmFsZW50aW4gPGVkdWJlenZhbEBnbWFpbC5j
+b20+Cj4gWy4uLl0KPgo+PiBAQCAtODI5LDYgKzg1NSwxNiBAQAo+PiAgIAkJCX07Cj4+ICAgCQl9
+Owo+Pgo+PiArCQl0c2FkYyB7Cj4+ICsJCQlvdHBfZ3Bpbzogb3RwLWdwaW8gewo+PiArCQkJCXJv
+Y2tjaGlwLHBpbnMgPSA8MCAxMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPj4gKwkJ
+CX07Cj4+ICsKPj4gKwkJCW90cF9vdXQ6IG90cC1vdXQgewo+PiArCQkJCXJvY2tjaGlwLHBpbnMg
+PSA8MCAxMCBSS19GVU5DXzEgJnBjZmdfcHVsbF9ub25lPjsKPj4gKwkJCX07Cj4+ICsJCX07Cj4+
+ICsKPj4gICAJCXVhcnQwIHsKPj4gICAJCQl1YXJ0MF94ZmVyOiB1YXJ0MC14ZmVyIHsKPj4gICAJ
+CQkJcm9ja2NoaXAscGlucyA9IDwyIDI0IFJLX0ZVTkNfMSAmcGNmZ19wdWxsX3VwPiwKPiBBcyBp
+dCBjYW1lIHVwIGp1c3Qgbm93LCB0aGVzZSBwaW5jdHJsIHNldHRpbmdzIHNlZW0gc3RyYW5nZS4g
+SS5lLiBhY2NvcmRpbmcKPiB0byB0aGUgVFJNIGdwaW8wYjIgWz0gZ3BpbzAgMTBdIGZ1bmNfMSBp
+cyBzY19yc3QsIHdoaWNoIHNlZW1zIHRvIGJlIHRoZQo+IHNtYXJ0Y2FyZCBjb250cm9sbGVyPwo+
+Cj4gSXQgY2FtZSB1cCBiZWNhdXNlIGl0IHNlZW1zIHRoZSBUcm9uc21hcnQgUjY4IGJvYXJkIHNl
+ZW1zIHRvIHVzZSB0aGlzIHBpbgo+IGZvciBjb250cm9sbGluZyB0aGUgdmNjX2hvc3QgcmVndWxh
+dG9yIGluc3RlYWQuCgpZZXAsIHRoYXQncyB0aGUgaW5jb3JyZWN0IG92ZXItdGVtcGVyYXR1cmUg
+cHJvdGVjdGlvbiBwaW4uIDotKAoKRml4ZWQgaW4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
+Zy9wYXRjaC84MzA4ODMxLwoKVGhhbmtzIEhlaWtvLgoKPgo+IEhlaWtvCj4KPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgoKLS0g
+ClRoYW5rcywKQ2Flc2FyCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
