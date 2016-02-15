@@ -1,49 +1,22 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 6/6] soc: rockchip: power-domain: check the existing of regmap
-Date: Mon, 15 Feb 2016 22:26:04 +0100
-Message-ID: <1766177.2LWUTugthY@phil>
-References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com> <1455507237-13161-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/6] clk: rockchip: handle alt_parent in err cases when registering cpuclk
+Date: Mon, 15 Feb 2016 22:39:17 +0100
+Message-ID: <7052638.ZSmMH6ScWV@phil>
+References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com> <1455507195-12955-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1455507237-13161-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1455507195-12955-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 15. Februar 2016, 11:33:57 schrieb Shawn Lin:
-> Check return value of syscon_node_to_regmap for
-> rockchip_pm_domain_probe. If err value is returned, probe
-> procedure should abort.
+Am Montag, 15. Februar 2016, 11:33:15 schrieb Shawn Lin:
+> Add clk_disable_unprepare to handle cpuclk->alt_parent if
+> rockchip_clk_register_cpuclk fails.
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-applied to my armsoc/drivers branch for 4.6 with one change below
-
-> ---
-> 
->  drivers/soc/rockchip/pm_domains.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/soc/rockchip/pm_domains.c
-> b/drivers/soc/rockchip/pm_domains.c index 534c589..3c4a44d 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -402,6 +402,10 @@ static int rockchip_pm_domain_probe(struct
-> platform_device *pdev) }
-> 
->  	pmu->regmap = syscon_node_to_regmap(parent->of_node);
-> +	if (IS_ERR(pmu->regmap)) {
-> +		dev_err(dev, "no regmap available\n");
-> +		return -ENODEV;
-
-Instead of returning ENODEV I did go with
-
-		return PTR_ERR(pmu->regmap);
-
-the error from trying to grab the regmap.
-
-
-Heiko
+applied to my clk branch for 4.6
