@@ -1,48 +1,51 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/6] clk: rockchip: check grf when waiting pll lock
-Date: Mon, 15 Feb 2016 11:33:25 +0800
-Message-ID: <1455507205-12996-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 3/6] clk: rockchip: don't return NULL when registering inverter fails
+Date: Mon, 15 Feb 2016 11:33:33 +0800
+Message-ID: <1455507213-13037-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-rockchip_clk_get_grf pass on return value from
-syscon_regmap_lookup_by_phandle, so we check grf to
-make sure whether to do the following things or not.
+Avoid return NULL if rockchip_clk_register_inverter fails, otherwise
+rockchip_clk_register_branches print "unknown clock type". The acutal
+case is that it's a known clock type but we fail to regiser it, which
+may makes user confuse the reason of failure.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-pll.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ drivers/clk/rockchip/clk-inverter.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index b7e66c9..dddbc29 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -90,10 +90,16 @@ static long rockchip_pll_round_rate(struct clk_hw *hw,
-  */
- static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- {
--	struct regmap *grf = rockchip_clk_get_grf();
-+	struct regmap *grf;
- 	unsigned int val;
- 	int delay = 24000000, ret;
+diff --git a/drivers/clk/rockchip/clk-inverter.c b/drivers/clk/rockchip/clk-inverter.c
+index 7cbf43b..dcb6e37 100644
+--- a/drivers/clk/rockchip/clk-inverter.c
++++ b/drivers/clk/rockchip/clk-inverter.c
+@@ -90,7 +90,7 @@ struct clk *rockchip_clk_register_inverter(const char *name,
  
-+	grf = rockchip_clk_get_grf();
-+	if (IS_ERR(grf)) {
-+		pr_err("%s: grf regmap not available\n", __func__);
-+		return -ENODEV;
-+	}
-+
- 	while (delay > 0) {
- 		ret = regmap_read(grf, pll->lock_offset, &val);
- 		if (ret) {
+ 	inv_clock = kmalloc(sizeof(*inv_clock), GFP_KERNEL);
+ 	if (!inv_clock)
+-		return NULL;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	init.name = name;
+ 	init.num_parents = num_parents;
+@@ -106,11 +106,7 @@ struct clk *rockchip_clk_register_inverter(const char *name,
+ 
+ 	clk = clk_register(NULL, &inv_clock->hw);
+ 	if (IS_ERR(clk))
+-		goto err_free;
++		kfree(inv_clock);
+ 
+ 	return clk;
+-
+-err_free:
+-	kfree(inv_clock);
+-	return NULL;
+ }
 -- 
 2.3.7
-
-
