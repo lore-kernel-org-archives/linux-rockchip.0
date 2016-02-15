@@ -1,23 +1,22 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/6] clk: rockchip: don't return NULL when registering mmc branch fails
-Date: Mon, 15 Feb 2016 23:42:07 +0100
-Message-ID: <2062369.hCVujqfC1c@phil>
-References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com> <1455507221-13078-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 5/6] clk: rockchip: fix coding style for clk-cpu.c
+Date: Mon, 15 Feb 2016 23:42:24 +0100
+Message-ID: <1551462.HZJRzxyFeP@phil>
+References: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com> <1455507230-13120-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455507221-13078-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1455507230-13120-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 15. Februar 2016, 11:33:41 schrieb Shawn Lin:
-> Avoid return NULL if rockchip_clk_register_mmc fails, otherwise
-> rockchip_clk_register_branches print "unknown clock type". The acutal
-> case is that it's a known clock type but we fail to regiser it, which
-> may makes user confuse the reason of failure.
+Am Montag, 15. Februar 2016, 11:33:50 schrieb Shawn Lin:
+> Fix the issue reported by checkpatch:
+> ERROR: space prohibited before that ',' (ctx:WxW)
+> +               writel(clksel->val , cpuclk->reg_base + clksel->reg);
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
