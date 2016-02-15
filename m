@@ -1,46 +1,39 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix the incorrect otp-out pin on rk3368
-Date: Mon, 15 Feb 2016 11:30:58 +0800
-Message-ID: <1455507058-10824-1-git-send-email-wxt@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/6] Some trivial fixes for rockchip clk/pm stuff
+Date: Mon, 15 Feb 2016 11:32:33 +0800
+Message-ID: <1455507153-12914-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch fixes the incorrect Over-temperature protection pin.
-since the rk3368 io list said the otp pin is gpio0a3.
 
-Anyway, that should be fixed in here.
+Happy Chinese new year, Rockchipers!
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+This patchset fix some trivial things for rockchip clk/pm
+driver when learning clk stuff which I'm interested in during the
+holiday.
 
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+All of them is based on Heiko's tree(master branch):
+git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 49d1191..3949163 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -926,11 +926,11 @@
- 
- 		tsadc {
- 			otp_gpio: otp-gpio {
--				rockchip,pins = <0 10 RK_FUNC_GPIO &pcfg_pull_none>;
-+				rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_none>;
- 			};
- 
- 			otp_out: otp-out {
--				rockchip,pins = <0 10 RK_FUNC_1 &pcfg_pull_none>;
-+				rockchip,pins = <0 3 RK_FUNC_1 &pcfg_pull_none>;
- 			};
- 		};
- 
+
+
+Shawn Lin (6):
+  clk: rockchip: handle alt_parent in err cases when registering cpuclk
+  clk: rockchip: check grf when waiting pll lock
+  clk: rockchip: don't return NULL when registering inverter fails
+  clk: rockchip: don't return NULL when registering mmc branch fails
+  clk: rockchip: fix coding style for clk-cpu.c
+  soc: rockchip: power-domain: check the existing of regmap
+
+ drivers/clk/rockchip/clk-cpu.c       | 8 +++++---
+ drivers/clk/rockchip/clk-inverter.c  | 8 ++------
+ drivers/clk/rockchip/clk-mmc-phase.c | 8 ++------
+ drivers/clk/rockchip/clk-pll.c       | 8 +++++++-
+ drivers/soc/rockchip/pm_domains.c    | 4 ++++
+ 5 files changed, 20 insertions(+), 16 deletions(-)
+
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.3.7
