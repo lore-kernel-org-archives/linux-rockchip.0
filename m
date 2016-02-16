@@ -1,38 +1,106 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH v2 15/17] drm/rockchip: removed optional dummy encoder
- mode_fixup function.
-Date: Tue, 16 Feb 2016 08:39:09 +0800
-Message-ID: <56C26FAD.5040102@rock-chips.com>
-References: <cover.1455540137.git.palminha@synopsys.com>
- <cae559aa2c04a906c21ed5ebe4861f92440e6910.1455540137.git.palminha@synopsys.com>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v8 0/2] Add Rockchip Inno-HDMI driver
+Date: Tue, 16 Feb 2016 08:44:41 +0800
+Message-ID: <56C270F9.9030707@rock-chips.com>
+References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <cae559aa2c04a906c21ed5ebe4861f92440e6910.1455540137.git.palminha@synopsys.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>, dri-devel@lists.freedesktop.org
-Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, benjamin.gaignard@linaro.org, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1454049768-30872-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ken Mixte <kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Ben Chan <benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAy5pyIMTXml6UgMjE6MDEsIENhcmxvcyBQYWxtaW5oYSB3cm90ZToKPiBtb2Rl
-X2ZpeHVwIGZ1bmN0aW9uIGZvciBlbmNvZGVyIGRyaXZlcnMgYmVjYW1lIG9wdGlvbmFsIHdpdGgg
-cGF0Y2gKPiBodHRwOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC9tc2dpZC8xNDU1
-MTA2NTIyLTMyMzA3LTEtZ2l0LXNlbmQtZW1haWwtcGFsbWluaGFAc3lub3BzeXMuY29tCj4KPiBU
-aGlzIHBhdGNoIHNldCBudWtlcyBhbGwgdGhlIGR1bW15IG1vZGVfZml4dXAgaW1wbGVtZW50YXRp
-b25zLgo+Cj4gKG1hZGUgb24gdG9wIG9mIERhbmllbCB0b3BpYy9kcm0tbWlzYyBicmFuY2gpCj4K
-PiBTaWduZWQtb2ZmLWJ5OiBDYXJsb3MgUGFsbWluaGEgPHBhbG1pbmhhQHN5bm9wc3lzLmNvbT4K
-PiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgOCAtLS0t
-LS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDggZGVsZXRpb25zKC0pCj4KPgpBY2tlZC1ieTogTWFy
-ayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzCk1hcmsKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi
+
+Ping, it seems inno hdmi driver is ready, So I'd like to merge it into=20
+drm/rockchip if there is no doubt these days.
+
+Thanks.
+Mark
+On 2016=E5=B9=B401=E6=9C=8829=E6=97=A5 14:42, Yakir Yang wrote:
+> Here are a brief introduction to Innosilicon HDMI IP:
+>    - Support HDMI 1.4a, HDCP 1.2 and DVI 1.0 standard compliant trans=
+mitter
+>    - Support HDMI1.4 a/b 3D function defined in HDMI 1.4 a/b spec
+>    - Digital video interface supports a pixel size of 24, 30, 36, 48b=
+its color depth in RGB
+>    - S/PDIF output supports PCM, Dolby Digital, DTS digital audio tra=
+nsmission
+>      (32-192kHz Fs) using IEC60958 and IEC 61937
+>    - The EDID and CEC function are also supported by Innosilicon HDMI=
+ Transmitter Controlle
+>
+> Changes in v8:
+> - Don't check whether encoder output format is RGB colorspace, cause =
+driver
+>    default configure the output colorspace to RGB. (ZhengYang)
+> - Correct the check condition in inno_hdmi_config_video_csc() (ZhengY=
+ang)
+>      - if (data->enc_out_format =3D=3D data->enc_out_format) {
+>      + if (data->enc_in_format =3D=3D data->enc_out_format) {
+>
+> Changes in v7:
+> - Correct the module licnese statement (Paul)
+>       - MODULE_LICENSE("GPL");
+>       + MODULE_LICENSE("GPLv2");
+> - Start indentation with tabs and fix the misspell in Kconfig (Paul)
+> - Carry the lost device-binding document (Heiko)
+>
+> Changes in v6:
+> - Rebase the Makefile/Kconfig files which add by Chris's rockchip-mip=
+i driver (Caeser)
+>
+> Changes in v5:
+> - Use hdmi_infoframe helper functions to packed the infoframe (Russel=
+l)
+> - Remove the unused double wait_for_completion_timeout for ddc transf=
+er (Russell)
+> - Remove the unused local variable in "inno_hdmi_i2c_write()" functio=
+n (Russell)
+>
+> Changes in v4:
+> - Modify the commit title "drm/rockchip: hdmi: ..." (Mark)
+> - Correct the "DKMS" to "DPMS" (Mark)
+> - Fix over 80 characters problems (Mark)
+> - Remove encoder .prepare/.commit helper functions, and move the vop =
+mode
+> configure function into encoder .enable helper functions. (Mark)
+>
+> Changes in v3:
+> - Use encoder enable/disable function, and remove the encoder DPMS fu=
+nction
+> - Keep HDMI PLL power on in standby mode
+>
+> Changes in v2:
+> - Using DRM atomic helper functions for connector init (Mark)
+> - Remove "hdmi->connector.encoder =3D encoder;" (Mark)
+> - Add the Acked-by tags from Rob
+> - Correct the misspell "rk3036-dw-hdmi" (Heiko)
+>
+> Yakir Yang (2):
+>    drm/rockchip: hdmi: add Innosilicon HDMI support
+>    dt-bindings: add document for Innosilicon HDMI on Rockchip platfor=
+m
+>
+>   .../display/rockchip/inno_hdmi-rockchip.txt        |  50 ++
+>   drivers/gpu/drm/rockchip/Kconfig                   |   8 +
+>   drivers/gpu/drm/rockchip/Makefile                  |   1 +
+>   drivers/gpu/drm/rockchip/inno_hdmi.c               | 939 ++++++++++=
++++++++++++
+>   drivers/gpu/drm/rockchip/inno_hdmi.h               | 362 ++++++++
+>   5 files changed, 1360 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/display/rockch=
+ip/inno_hdmi-rockchip.txt
+>   create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi.c
+>   create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi.h
+>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
