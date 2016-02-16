@@ -1,49 +1,92 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] spi/rockchip: Add dt-binding for Rockchip rk3399 spi
-Date: Tue, 16 Feb 2016 13:22:23 +0000
-Message-ID: <20160216132223.GM18327@sirena.org.uk>
-References: <1455614538-4415-1-git-send-email-jay.xu@rock-chips.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v2 03/17] drm/exynos: removed optional dummy encoder
+	mode_fixup function.
+Date: Tue, 16 Feb 2016 15:31:28 +0100
+Message-ID: <20160216143128.GE32705@phenom.ffwll.local>
+References: <cover.1455540137.git.palminha@synopsys.com>
+	<3768b670931572de51fca1102efa18d20dd770ee.1455540137.git.palminha@synopsys.com>
+	<CAMeQTsZLdMOnk7-isneoUyFBbQdiRUsGH6+EhD8W1LNB=80LVQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="S66JdqtemGhvbcZP"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <virtualization-bounces@lists.linux-foundation.org>
 Content-Disposition: inline
-In-Reply-To: <1455614538-4415-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "jianqun.xu" <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <CAMeQTsZLdMOnk7-isneoUyFBbQdiRUsGH6+EhD8W1LNB=80LVQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>,
+	<mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
+List-Post: <mailto:virtualization@lists.linux-foundation.org>
+List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>,
+	<mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
+Sender: virtualization-bounces@lists.linux-foundation.org
+Errors-To: virtualization-bounces@lists.linux-foundation.org
+To: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, jingoohan1@gmail.com, Carlos Palminha <CARLOS.PALMINHA@synopsys.com>, dri-devel <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, benjamin.gaignard@linaro.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Feb 15, 2016 at 02:49:09PM +0100, Patrik Jakobsson wrote:
+> Hi Carlos
+> 
+> Any particular reason why this patch isn't squashed with patch 8/17?
 
---S66JdqtemGhvbcZP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I've squashed them while applying.
+-Daniel
 
-On Tue, Feb 16, 2016 at 05:22:18PM +0800, jianqun.xu wrote:
+> 
+> Thanks
+> Patrik
+> 
+> 
+> On Mon, Feb 15, 2016 at 1:58 PM, Carlos Palminha
+> <CARLOS.PALMINHA@synopsys.com> wrote:
+> > mode_fixup function for encoder drivers became optional with patch
+> > http://patchwork.freedesktop.org/patch/msgid/1455106522-32307-1-git-send-email-palminha@synopsys.com
+> >
+> > This patch set nukes all the dummy mode_fixup implementations.
+> >
+> > (made on top of Daniel topic/drm-misc branch)
+> >
+> > Signed-off-by: Carlos Palminha <palminha@synopsys.com>
+> > ---
+> >  drivers/gpu/drm/exynos/exynos_drm_dsi.c | 8 --------
+> >  1 file changed, 8 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> > index e977a81..736115c 100644
+> > --- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> > +++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+> > @@ -1597,13 +1597,6 @@ static int exynos_dsi_create_connector(struct drm_encoder *encoder)
+> >         return 0;
+> >  }
+> >
+> > -static bool exynos_dsi_mode_fixup(struct drm_encoder *encoder,
+> > -                                 const struct drm_display_mode *mode,
+> > -                                 struct drm_display_mode *adjusted_mode)
+> > -{
+> > -       return true;
+> > -}
+> > -
+> >  static void exynos_dsi_mode_set(struct drm_encoder *encoder,
+> >                                 struct drm_display_mode *mode,
+> >                                 struct drm_display_mode *adjusted_mode)
+> > @@ -1623,7 +1616,6 @@ static void exynos_dsi_mode_set(struct drm_encoder *encoder,
+> >  }
+> >
+> >  static const struct drm_encoder_helper_funcs exynos_dsi_encoder_helper_funcs = {
+> > -       .mode_fixup = exynos_dsi_mode_fixup,
+> >         .mode_set = exynos_dsi_mode_set,
+> >         .enable = exynos_dsi_enable,
+> >         .disable = exynos_dsi_disable,
+> > --
+> > 2.5.0
+> >
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
->  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 1 +
->  1 file changed, 1 insertion(+)
-
-I'd expect this to be added to both the driver and the binding document
-not just the document.
-
---S66JdqtemGhvbcZP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWwyKBAAoJECTWi3JdVIfQoIIH/j/sFv004jY3w5Ck017sM/y0
-sPGRISR6P7RbH7M6WumZp0qtgB8pQzor224ZZOJvMkp2vlky2QUIhJBEORjutid8
-iJeMbhbBqK0xnZ22b73QWuit65gU9LVlum62+K8PTJpMQQKAqfqLXrSJ2HGbhsbi
-8gFovTJ2mnH9gn3lZPLxZgzrBdRimD/Yj7cGSE6o7yEr0Yey1WRw5JtAtmOeB8u1
-qalirlw/PGZ0QnkDulXXTn2LaVe5ZWGz8IuNtNb9N8JEcRRkOSFaAG3wbG3qlIYu
-9fgpfnfOjAEasuisNyhMRzrpVvl3dKNPJWB4VYTisVcy8GmPqovkKm+IFOu1NDU=
-=2sp1
------END PGP SIGNATURE-----
-
---S66JdqtemGhvbcZP--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
