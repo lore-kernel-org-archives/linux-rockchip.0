@@ -1,34 +1,49 @@
-From: "jianqun.xu" <jay.xu@rock-chips.com>
-Subject: [PATCH] spi/rockchip: Add dt-binding for Rockchip rk3399 spi
-Date: Tue, 16 Feb 2016 17:22:18 +0800
-Message-ID: <1455614538-4415-1-git-send-email-jay.xu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, jwerner@chromium.org, broonie@kernel.org
-Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Xu Jianqun <jay.xu@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] spi/rockchip: Add dt-binding for Rockchip rk3399 spi
+Date: Tue, 16 Feb 2016 13:22:23 +0000
+Message-ID: <20160216132223.GM18327@sirena.org.uk>
+References: <1455614538-4415-1-git-send-email-jay.xu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="S66JdqtemGhvbcZP"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1455614538-4415-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "jianqun.xu" <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xu Jianqun <jay.xu@rock-chips.com>
 
-Add compatible support for Rockchip rk3399 spi.
+--S66JdqtemGhvbcZP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Xu Jianqun <jay.xu@rock-chips.com>
----
- Documentation/devicetree/bindings/spi/spi-rockchip.txt | 1 +
- 1 file changed, 1 insertion(+)
+On Tue, Feb 16, 2016 at 05:22:18PM +0800, jianqun.xu wrote:
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.txt b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-index 0c491bd..1b14d69 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.txt
-@@ -9,6 +9,7 @@ Required Properties:
-     "rockchip,rk3066-spi" for rk3066.
-     "rockchip,rk3188-spi", "rockchip,rk3066-spi" for rk3188.
-     "rockchip,rk3288-spi", "rockchip,rk3066-spi" for rk3288.
-+    "rockchip,rk3399-spi", "rockchip,rk3066-spi" for rk3399.
- - reg: physical base address of the controller and length of memory mapped
-        region.
- - interrupts: The interrupt number to the cpu. The interrupt specifier format
--- 
-1.9.1
+>  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 1 +
+>  1 file changed, 1 insertion(+)
+
+I'd expect this to be added to both the driver and the binding document
+not just the document.
+
+--S66JdqtemGhvbcZP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWwyKBAAoJECTWi3JdVIfQoIIH/j/sFv004jY3w5Ck017sM/y0
+sPGRISR6P7RbH7M6WumZp0qtgB8pQzor224ZZOJvMkp2vlky2QUIhJBEORjutid8
+iJeMbhbBqK0xnZ22b73QWuit65gU9LVlum62+K8PTJpMQQKAqfqLXrSJ2HGbhsbi
+8gFovTJ2mnH9gn3lZPLxZgzrBdRimD/Yj7cGSE6o7yEr0Yey1WRw5JtAtmOeB8u1
+qalirlw/PGZ0QnkDulXXTn2LaVe5ZWGz8IuNtNb9N8JEcRRkOSFaAG3wbG3qlIYu
+9fgpfnfOjAEasuisNyhMRzrpVvl3dKNPJWB4VYTisVcy8GmPqovkKm+IFOu1NDU=
+=2sp1
+-----END PGP SIGNATURE-----
+
+--S66JdqtemGhvbcZP--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
