@@ -1,32 +1,33 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v8 0/2] Add Rockchip Inno-HDMI driver
-Date: Tue, 16 Feb 2016 15:35:07 +0100
-Message-ID: <1519836.S7OnrkT0mU@phil>
-References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
- <56C270F9.9030707@rock-chips.com>
+Subject: Re: [PATCH] spi/rockchip: Add dt-binding for Rockchip rk3399 spi
+Date: Tue, 16 Feb 2016 15:37:02 +0100
+Message-ID: <1730751.NYv1NxJVuB@phil>
+References: <1455614538-4415-1-git-send-email-jay.xu@rock-chips.com> <20160216132223.GM18327@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <56C270F9.9030707@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Zheng Yang <zhengyang@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ken Mixte <kmixter@google.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Ben Chan <benchan@google.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160216132223.GM18327@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: "jianqun.xu" <jay.xu@rock-chips.com>, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, jwerner@chromium.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWFyaywKCkFtIERpZW5zdGFnLCAxNi4gRmVicnVhciAyMDE2LCAwODo0NDo0MSBzY2hyaWVi
-IE1hcmsgeWFvOgo+IFBpbmcsIGl0IHNlZW1zIGlubm8gaGRtaSBkcml2ZXIgaXMgcmVhZHksIFNv
-IEknZCBsaWtlIHRvIG1lcmdlIGl0IGludG8KPiBkcm0vcm9ja2NoaXAgaWYgdGhlcmUgaXMgbm8g
-ZG91YnQgdGhlc2UgZGF5cy4KCkkgdGhpbmsgeW91IGNhbiBqdXN0IGdvIGFoZWFkICB3aXRoIHBp
-Y2tpbmcgdGhlbSB1cCwgSSB0aGluayB0aGV5IGhhdmUgCnJpcGVuZWQgZW5vdWdoIDotKQoKCkhl
-aWtvCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Am Dienstag, 16. Februar 2016, 13:22:23 schrieb Mark Brown:
+> On Tue, Feb 16, 2016 at 05:22:18PM +0800, jianqun.xu wrote:
+> >  Documentation/devicetree/bindings/spi/spi-rockchip.txt | 1 +
+> >  1 file changed, 1 insertion(+)
+> 
+> I'd expect this to be added to both the driver and the binding document
+> not just the document.
+
+It seems the driver can still use the rk3066-variant - aka nobody has found 
+specific issues in the rk3399 IP implementation.
+
+Having the more specific IP names already in the dts before actually using 
+them was suggested by devicetree people to not have to exchange everything 
+once specific issues were found. 
+
+So right now it's using the fallback-mechanism of binding to the rk3066 
+name, but if some obstacle appears it will only take adding the binding in 
+the driver to make it work (even with old devicetrees).
