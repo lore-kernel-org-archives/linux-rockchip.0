@@ -1,39 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH 0/8] Support and fixes the rk3228 SoCS for thermal
-Date: Tue, 16 Feb 2016 00:25:39 +0100
-Message-ID: <3650760.H1YezDtoUE@phil>
-References: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2 15/17] drm/rockchip: removed optional dummy encoder
+ mode_fixup function.
+Date: Tue, 16 Feb 2016 08:39:09 +0800
+Message-ID: <56C26FAD.5040102@rock-chips.com>
+References: <cover.1455540137.git.palminha@synopsys.com>
+ <cae559aa2c04a906c21ed5ebe4861f92440e6910.1455540137.git.palminha@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, edubezval@gmail.com
-Cc: huangtao@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <cae559aa2c04a906c21ed5ebe4861f92440e6910.1455540137.git.palminha@synopsys.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>, dri-devel@lists.freedesktop.org
+Cc: k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, benjamin.gaignard@linaro.org, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 15. Februar 2016, 15:33:25 schrieb Caesar Wang:
-> Hello Eduardo, Heiko, Michael & Stephen:
-> 
-> This series pacthes to support the rk3228 SoCs thermal.
-> 
-> They have the following patches to work on rk3228 SoCs.
-> 
-
-> 1a6f334 clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
-> 8cf2d1b clk: rockchip: add the tsadc clocks found on rk3228 SoCs
-> bdc79c0 ARM: dts: rockchip: add the thermal main info found on rk3228
-> 22ea3c3 ARM: dts: rockchip: enable the tsadc for rk3228 evb
-
-clk and devicetree patches look good and I'll pick those up once Eduardo is 
-ok with (and has taken) the thermal-specific changes:
-
-> bd2720c thermal: rockchip: fix a impossible condition caused by the
-> warning df9c1bd thermal: rockchip: fix calculation error for code_to_temp
-> fb11fbd thermal: rockchip: the rename compatibles for rockchip SoCs
-> b907b75 thermal: rockchip: fix the tsadc sequence output on rk3228/rk3399
-
-
-Heiko
-
+T24gMjAxNuW5tDAy5pyIMTXml6UgMjE6MDEsIENhcmxvcyBQYWxtaW5oYSB3cm90ZToKPiBtb2Rl
+X2ZpeHVwIGZ1bmN0aW9uIGZvciBlbmNvZGVyIGRyaXZlcnMgYmVjYW1lIG9wdGlvbmFsIHdpdGgg
+cGF0Y2gKPiBodHRwOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC9tc2dpZC8xNDU1
+MTA2NTIyLTMyMzA3LTEtZ2l0LXNlbmQtZW1haWwtcGFsbWluaGFAc3lub3BzeXMuY29tCj4KPiBU
+aGlzIHBhdGNoIHNldCBudWtlcyBhbGwgdGhlIGR1bW15IG1vZGVfZml4dXAgaW1wbGVtZW50YXRp
+b25zLgo+Cj4gKG1hZGUgb24gdG9wIG9mIERhbmllbCB0b3BpYy9kcm0tbWlzYyBicmFuY2gpCj4K
+PiBTaWduZWQtb2ZmLWJ5OiBDYXJsb3MgUGFsbWluaGEgPHBhbG1pbmhhQHN5bm9wc3lzLmNvbT4K
+PiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS5jIHwgOCAtLS0t
+LS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDggZGVsZXRpb25zKC0pCj4KPgpBY2tlZC1ieTogTWFy
+ayBZYW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzCk1hcmsKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
