@@ -1,102 +1,53 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 00/17] drm encoders cleanup: nuke optional dummy
- encoder mode_fixup function.
-Date: Tue, 16 Feb 2016 15:38:21 +0100
-Message-ID: <20160216143821.GG32705@phenom.ffwll.local>
-References: <cover.1455540137.git.palminha@synopsys.com>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [RESEND PATCH 1/8] clk: rockchip: add id of the tsadc clock found on
+ rk3228 SoCs
+Date: Tue, 16 Feb 2016 14:43:01 -0800
+Message-ID: <20160216224301.2278.88600@quark.deferred.io>
+References: <1455521613-27340-1-git-send-email-wxt@rock-chips.com>
+ <1455521613-27340-2-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <cover.1455540137.git.palminha@synopsys.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Carlos Palminha <CARLOS.PALMINHA@synopsys.com>
-Cc: dri-devel@lists.freedesktop.org, k.kozlowski@samsung.com, linux-samsung-soc@vger.kernel.org, benjamin.gaignard@linaro.org, jingoohan1@gmail.com, virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org, kgene@kernel.org, vincent.abriou@st.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1455521613-27340-2-git-send-email-wxt@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, edubezval@gmail.com
+Cc: huangtao@rock-chips.com, linux-pm@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 15, 2016 at 12:57:04PM +0000, Carlos Palminha wrote:
-> mode_fixup function for encoder drivers became optional with patch
-> http://patchwork.freedesktop.org/patch/msgid/1455106522-32307-1-git-send-email-palminha@synopsys.com
+Quoting Caesar Wang (2016-02-14 23:33:26)
+> This patch adds 'SCLK_TSADC' and 'PCLK_TSADC' id found on rk3228 SoCs.
+> That will be needed by TSADC controller.
 > 
-> This patch set nukes all the dummy mode_fixup implementations.
-> 
-> (made on top of Daniel topic/drm-misc branch)
-> 
-> Changes v1->v2: incorporated Daniel comments
-> * added signed-off-by line to all patches
-> * threading enabled due to e-mail server constraints
-> * common blurb lines to all patches
-> * add reviewed by Alex, to patches 4 and 14
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-I've thrown them all into a topic branch for soaking, and plan to merge
-into drm-misc in the next few days.
+Acked-by: Michael Turquette <mturquette@baylibre.com>
 
-Thanks, Daniel
-
+> ---
 > 
-> Carlos Palminha (17):
->   drm/virtio: removed optional dummy encoder mode_fixup function.
->   drm/udl: removed optional dummy encoder mode_fixup function.
->   drm/exynos: removed optional dummy encoder mode_fixup function.
->   drm/amdgpu: removed optional dummy encoder mode_fixup function.
->   drm/ast: removed optional dummy encoder mode_fixup function.
->   drm/bochs: removed optional dummy encoder mode_fixup function.
->   drm/cirrus: removed optional dummy encoder mode_fixup function.
->   drm/exynos: removed optional dummy encoder mode_fixup function.
->   drm/gma500: removed optional dummy encoder mode_fixup function.
->   drm/imx: removed optional dummy encoder mode_fixup function.
->   drm/msm/mdp: removed optional dummy encoder mode_fixup function.
->   drm/mgag200: removed optional dummy encoder mode_fixup function.
->   drm/qxl: removed optional dummy encoder mode_fixup function.
->   drm/radeon: removed optional dummy encoder mode_fixup function.
->   drm/rockchip: removed optional dummy encoder mode_fixup function.
->   drm/sti: removed optional dummy encoder mode_fixup function.
->   drm/tilcdc: removed optional dummy encoder mode_fixup function.
+>  include/dt-bindings/clock/rk3228-cru.h | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
->  drivers/gpu/drm/amd/amdgpu/dce_v10_0.c           |  8 --------
->  drivers/gpu/drm/amd/amdgpu/dce_v11_0.c           |  8 --------
->  drivers/gpu/drm/amd/amdgpu/dce_v8_0.c            |  8 --------
->  drivers/gpu/drm/ast/ast_mode.c                   |  8 --------
->  drivers/gpu/drm/bochs/bochs_kms.c                |  8 --------
->  drivers/gpu/drm/cirrus/cirrus_mode.c             |  9 ---------
->  drivers/gpu/drm/exynos/exynos_dp_core.c          |  8 --------
->  drivers/gpu/drm/exynos/exynos_drm_dpi.c          |  8 --------
->  drivers/gpu/drm/exynos/exynos_drm_dsi.c          |  8 --------
->  drivers/gpu/drm/exynos/exynos_drm_vidi.c         |  8 --------
->  drivers/gpu/drm/gma500/cdv_intel_crt.c           |  1 -
->  drivers/gpu/drm/gma500/cdv_intel_hdmi.c          |  1 -
->  drivers/gpu/drm/gma500/gma_display.c             |  7 -------
->  drivers/gpu/drm/gma500/gma_display.h             |  3 ---
->  drivers/gpu/drm/gma500/oaktrail_hdmi.c           |  1 -
->  drivers/gpu/drm/imx/dw_hdmi-imx.c                |  8 --------
->  drivers/gpu/drm/imx/imx-ldb.c                    |  8 --------
->  drivers/gpu/drm/imx/imx-tve.c                    |  8 --------
->  drivers/gpu/drm/imx/parallel-display.c           |  8 --------
->  drivers/gpu/drm/mgag200/mgag200_mode.c           |  8 --------
->  drivers/gpu/drm/msm/mdp/mdp4/mdp4_dsi_encoder.c  |  8 --------
->  drivers/gpu/drm/msm/mdp/mdp4/mdp4_dtv_encoder.c  |  8 --------
->  drivers/gpu/drm/msm/mdp/mdp4/mdp4_lcdc_encoder.c |  8 --------
->  drivers/gpu/drm/msm/mdp/mdp5/mdp5_cmd_encoder.c  |  9 ---------
->  drivers/gpu/drm/msm/mdp/mdp5/mdp5_encoder.c      |  8 --------
->  drivers/gpu/drm/qxl/qxl_display.c                |  9 ---------
->  drivers/gpu/drm/radeon/atombios_encoders.c       |  8 --------
->  drivers/gpu/drm/rockchip/dw-mipi-dsi.c           |  8 --------
->  drivers/gpu/drm/sti/sti_tvout.c                  | 10 ----------
->  drivers/gpu/drm/tilcdc/tilcdc_panel.c            |  9 ---------
->  drivers/gpu/drm/tilcdc/tilcdc_tfp410.c           |  9 ---------
->  drivers/gpu/drm/udl/udl_encoder.c                |  8 --------
->  drivers/gpu/drm/virtio/virtgpu_display.c         |  8 --------
->  33 files changed, 244 deletions(-)
-> 
+> diff --git a/include/dt-bindings/clock/rk3228-cru.h b/include/dt-bindings/clock/rk3228-cru.h
+> index a78dd89..cd2e06b 100644
+> --- a/include/dt-bindings/clock/rk3228-cru.h
+> +++ b/include/dt-bindings/clock/rk3228-cru.h
+> @@ -29,6 +29,7 @@
+>  #define SCLK_SDMMC             68
+>  #define SCLK_SDIO              69
+>  #define SCLK_EMMC              71
+> +#define SCLK_TSADC             72
+>  #define SCLK_UART0             77
+>  #define SCLK_UART1             78
+>  #define SCLK_UART2             79
+> @@ -68,6 +69,7 @@
+>  #define PCLK_UART0             341
+>  #define PCLK_UART1             342
+>  #define PCLK_UART2             343
+> +#define PCLK_TSADC             344
+>  #define PCLK_PWM               350
+>  #define PCLK_TIMER             353
+>  #define PCLK_PERI              363
 > -- 
-> 2.5.0
+> 1.9.1
 > 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
