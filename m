@@ -1,54 +1,50 @@
 From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] spi/rockchip: Add dt-binding for Rockchip rk3399 spi
-Date: Wed, 17 Feb 2016 10:53:40 +0000
-Message-ID: <20160217105340.GI7544@sirena.org.uk>
-References: <1455614538-4415-1-git-send-email-jay.xu@rock-chips.com>
- <1730751.NYv1NxJVuB@phil>
- <56C3BD26.3030704@rock-chips.com>
- <4579617.rz6Yi2sU5M@phil>
+Subject: Re: [PATCH 3/6] ASoC: rockchip: add bindings for rk3399 i2s
+Date: Wed, 17 Feb 2016 11:03:06 +0000
+Message-ID: <20160217110306.GJ7544@sirena.org.uk>
+References: <1455673992-16469-1-git-send-email-jay.xu@rock-chips.com>
+ <1455673992-16469-4-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="MFZs98Tklfu0WsCO"
+	protocol="application/pgp-signature"; boundary="HcccYpVZDxQ8hzPO"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <4579617.rz6Yi2sU5M@phil>
+In-Reply-To: <1455673992-16469-4-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "jianqun.xu" <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---MFZs98Tklfu0WsCO
+--HcccYpVZDxQ8hzPO
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Feb 17, 2016 at 07:45:09AM +0100, Heiko Stuebner wrote:
+On Wed, Feb 17, 2016 at 09:53:09AM +0800, jianqun.xu wrote:
 
-> That was meant as a reply to Mark's comment, explaining why the double=20
-> compatible and the driver only binding to the rk3066-one right now.
+> ---
+>  Documentation/devicetree/bindings/sound/rockchip-i2s.txt | 1 +
+>  1 file changed, 1 insertion(+)
 
-It's still better to have the compatible explicitly listed in the
-driver even if it doesn't change the configuration at all at this time.
-That way we've at least got a record that the handling is currently
-identical to whatever other devices it is the same as.
+As with the other patch I'd expect to see a matching driver update if
+only for documentation purposes.
 
---MFZs98Tklfu0WsCO
+--HcccYpVZDxQ8hzPO
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJWxFEzAAoJECTWi3JdVIfQpSMH/iIQEMaBTr073bYABr7CUWTB
-vSenoz4L/R5tay4B4iUErwGFCE25MCyQ+8oOexnKfBdFmaXtH7TFDp4KmGVRwsc7
-EneDEvTNs5vC7kdxbJ2fPpR6uiH1CI53pzFk7KnagrZEztQMJkvNTWn/nW8FNJed
-xMcbJSwTWUKGqx8lEL+KKOxSKPE6Q34WhcOsXClisEDmay9OQCMNrqyGBS5UL8Et
-DXp7pYmOh3TsPIUF1FKPQHFoE7mlwwI4k0FcjuVY6qevvUmU16xYzaSPfyQjpHRw
-Gb48Qzg/lnoIRmIzQttjbAa2NCV96C9GpKtM+eQP/TeOhRFn57g/xLRVM/Czy2s=
-=SYQ8
+iQEcBAEBCAAGBQJWxFNpAAoJECTWi3JdVIfQBNwH/RDHhEG4xShG93p1M3JtnD4X
+VIcba8QO4RLYXCKKHEiy0/JYu9aCKo3z/vd6XGy2VUGLIX4B8nXgUFYEYB27/IQ8
+BhNHjH6gzWAnhHY7h6pkjcl0fsKYourevToGY7o4sGTYL+qsyRqdT0JxFI3psmwv
+vvyFPLhBK3ALxuvIdtovPuycCK4TUY67Tp7zLW0PeLPS7jKz/oByDcowvm84XGiJ
+aN+JJrq2AxwjJNFZNxzib2g5X0K5CSCF65/SQAs4pB38iBg+44QGbmq4Mr9IB8Hw
+2V69/NKSIum/xglPvd0J+FjnanQv+NR9BLa9s1z4H4QTyCJ1qjc1Yken037PalM=
+=ifXB
 -----END PGP SIGNATURE-----
 
---MFZs98Tklfu0WsCO--
+--HcccYpVZDxQ8hzPO--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
