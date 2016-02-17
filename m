@@ -1,42 +1,35 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 4/4] media: vcodec: rockchip: Add Rockchip VP8 decoder driver
-Date: Wed, 17 Feb 2016 08:17:37 -0800
-Message-ID: <CAD=FV=UStodcwk6w7=x2iDizq0uVPuHSr9W8XbWDnLmrKAhQdA@mail.gmail.com>
-References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
-	<1455705787-25856-1-git-send-email-jung.zhao@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v8.1 1/2] drm/rockchip: hdmi: add Innosilicon HDMI support
+Date: Wed, 17 Feb 2016 22:00:17 +0100
+Message-ID: <3883951.Go5JsyhPRt@phil>
+References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com> <1454492697-7837-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1455705787-25856-1-git-send-email-jung.zhao@rock-chips.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Jung Zhao <jung.zhao@rock-chips.com>
-Cc: Tomasz Figa <tfiga@chromium.org>, Pawel Osciak <posciak@chromium.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Philipp Zabel <p.zabel@pengutronix.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1454492697-7837-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ken Mixte <kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Ben Chan <benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Am Mittwoch, 3. Februar 2016, 17:44:57 schrieb Yakir Yang:
+> The Innosilicon HDMI is a low power HDMI 1.4 transmitter
+> IP, and it have been integrated on some rockchip CPUs
+> (like RK3036, RK312x).
+> 
+> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-On Wed, Feb 17, 2016 at 2:43 AM, Jung Zhao <jung.zhao@rock-chips.com> wrote:
-> +       dma_set_attr(DMA_ATTR_NO_KERNEL_MAPPING, &attrs_novm);
-> +       vpu->alloc_ctx = vb2_dma_contig_init_ctx_attrs(&pdev->dev,
-> +                                                      &attrs_novm);
-> +       if (IS_ERR(vpu->alloc_ctx)) {
-> +               ret = PTR_ERR(vpu->alloc_ctx);
-> +               goto err_dma_contig;
-> +       }
-> +
-> +       vpu->alloc_ctx_vm = vb2_dma_contig_init_ctx(&pdev->dev);
-> +       if (IS_ERR(vpu->alloc_ctx_vm)) {
-> +               ret = PTR_ERR(vpu->alloc_ctx_vm);
-> +               goto err_dma_contig_vm;
-> +       }
+On a Kylin board against 4.5-rc
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-I'm not qualified to review this whole driver, so just adding my $0.02...
+@Mark: While testing I noticed a black box around my cursor. It moves with 
+the cursor, so seems to be the plane itself - the hdmi driver is of course 
+innocent. May there exist an issue with plane transparency?
 
-Could you please fold
-<https://chromium-review.googlesource.com/322336> into your patch
-submission?  All of the necessary patches have landed in RMK's tree
-upstream and are currently present in linuxnext.
 
-Thanks!
-
--Doug
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
