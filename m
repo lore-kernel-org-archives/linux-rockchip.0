@@ -1,69 +1,91 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 4/6] pinctrl: rockchip: add bindings for rk3399 pinctrl
-Date: Wed, 17 Feb 2016 15:23:14 +0800
-Message-ID: <56C41FE2.8020800@rock-chips.com>
-References: <1455673992-16469-1-git-send-email-jay.xu@rock-chips.com>
- <1455673992-16469-5-git-send-email-jay.xu@rock-chips.com>
- <19942952.P4nUQKPo3g@phil>
+From: Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/4] Add Rockchip VP8 Video Decoder Driver
+Date: Wed, 17 Feb 2016 18:41:13 +0800
+Message-ID: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <19942952.P4nUQKPo3g@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Guennadi Liakhovetski <g.liakhovetski-Mmb7MZpHnFY@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The purpose of this series is to add Rockchip VPU driver for
+hw video codec in Rockchip's RK3229 and RK3288 SOCs. Rockchip
+Video VPU Driver is able to handle video decoding of in a
+range of formats(Now only support VP8, and more formats will
+be supported in future).
+
+The VPU driver depends on Request API[1] and RK IOMMU[2].
+
+[1]http://www.spinics.net/lists/linux-media/msg95733.html
+[2]http://www.gossamer-threads.com/lists/linux/kernel/2347458
+
+Since VP8 headers and controls for the V4L2 API and framework
+and the changes to videobuf2 were authored and written by
+Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> and Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>.
+These parts are 'NOT FOR REVIEW' and will be submitted by
+themselves. But these patches are very important for Rockchip VPU
+Driver, I cherrypick them from Chromium OS Tree[3] and use
+for reference here.
+
+[3]https://chromium.googlesource.com/chromiumos/third_party/kernel
 
 
-=D4=DA 17/02/2016 14:47, Heiko Stuebner =D0=B4=B5=C0:
-> Hi Jianqun,
->
-> Am Mittwoch, 17. Februar 2016, 09:53:10 schrieb jianqun.xu:
->> From: Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> Add devicetree bindings for pinctrl found on rk3399
->> processors from rockchip.
->>
->> Signed-off-by: Xu Jianqun <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>   Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt | 2=
- +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git
->> a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
->> b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt ind=
-ex
->> 0cd701b..c68b955 100644
->> --- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
->> +++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
->> @@ -22,7 +22,7 @@ Required properties for iomux controller:
->>     - compatible: one of "rockchip,rk2928-pinctrl",
->> "rockchip,rk3066a-pinctrl" "rockchip,rk3066b-pinctrl",
->> "rockchip,rk3188-pinctrl"
->>   		       "rockchip,rk3228-pinctrl", "rockchip,rk3288-pinctrl"
->> -		       "rockchip,rk3368-pinctrl"
->> +		       "rockchip,rk3368-pinctrl", "rockchip,rk3399-pinctrl"
->>     - rockchip,grf: phandle referencing a syscon providing the
->>   	 "general register files"
->
-> that is already contained in David's core pinctrl patch that already =
-got
-> applied to the pinctrl tree.
->
-Sorry very much, I forgot it after a long time of spring holiday
-thanks
->
-> Heiko
->
->
->
+Changes in v2:
+- add [NOT FOR REVIEW] tag for patches from Chromium OS Tree(Tomasz)
+- update copyright message
+- list all the related signed-off names
+- make commit message more readable(Enric)
+- fix format error of commit message(Tomasz)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Jung Zhao (1):
+  media: vcodec: rockchip: Add Rockchip VP8 decoder driver
+
+Pawel Osciak (2):
+  [NOT FOR REVIEW] v4l: Add private compound control type.
+  [NOT FOR REVIEW] v4l: Add VP8 low-level decoder API controls.
+
+Tomasz Figa (1):
+  [NOT FOR REVIEW] videobuf2-dc: Let drivers specify DMA attrs
+
+ drivers/media/platform/Kconfig                     |   11 +
+ drivers/media/platform/Makefile                    |    1 +
+ drivers/media/platform/rockchip-vpu/Makefile       |    7 +
+ .../media/platform/rockchip-vpu/rkvpu_hw_vp8d.c    |  798 ++++++++++
+ .../platform/rockchip-vpu/rockchip_vp8d_regs.h     | 1594 ++++++++++++++++++++
+ drivers/media/platform/rockchip-vpu/rockchip_vpu.c |  803 ++++++++++
+ .../platform/rockchip-vpu/rockchip_vpu_common.h    |  439 ++++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_dec.c | 1007 +++++++++++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_dec.h |   33 +
+ .../media/platform/rockchip-vpu/rockchip_vpu_hw.c  |  295 ++++
+ .../media/platform/rockchip-vpu/rockchip_vpu_hw.h  |  100 ++
+ drivers/media/v4l2-core/v4l2-ctrls.c               |   13 +
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
+ drivers/media/v4l2-core/videobuf2-dma-contig.c     |   33 +-
+ include/media/v4l2-ctrls.h                         |    2 +
+ include/media/videobuf2-dma-contig.h               |   11 +-
+ include/uapi/linux/v4l2-controls.h                 |   94 ++
+ include/uapi/linux/videodev2.h                     |    5 +
+ 18 files changed, 5235 insertions(+), 12 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip-vpu/Makefile
+ create mode 100644 drivers/media/platform/rockchip-vpu/rkvpu_hw_vp8d.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vp8d_regs.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_common.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.h
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.c
+ create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h
+
+-- 
+1.9.1
