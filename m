@@ -1,11 +1,14 @@
 From: Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 0/4] Add Rockchip VP8 Video Decoder Driver
-Date: Wed, 17 Feb 2016 18:41:13 +0800
-Message-ID: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
+Subject: [PATCH v2 1/4] [NOT FOR REVIEW] v4l: Add private compound control
+ type.
+Date: Wed, 17 Feb 2016 18:42:10 +0800
+Message-ID: <1455705730-25607-1-git-send-email-jung.zhao@rock-chips.com>
+References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455705673-25484-1-git-send-email-jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,28 +22,14 @@ To: tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, posciak-F7+t8E8rja9g9hUCZPvPm
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The purpose of this series is to add Rockchip VPU driver for
-hw video codec in Rockchip's RK3229 and RK3288 SOCs. Rockchip
-Video VPU Driver is able to handle video decoding of in a
-range of formats(Now only support VP8, and more formats will
-be supported in future).
+From: Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-The VPU driver depends on Request API[1] and RK IOMMU[2].
+V4L2_CTRL_TYPE_PRIVATE is to be used for private driver compound
+controls that use the "ptr" member of struct v4l2_ext_control.
 
-[1]http://www.spinics.net/lists/linux-media/msg95733.html
-[2]http://www.gossamer-threads.com/lists/linux/kernel/2347458
-
-Since VP8 headers and controls for the V4L2 API and framework
-and the changes to videobuf2 were authored and written by
-Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> and Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>.
-These parts are 'NOT FOR REVIEW' and will be submitted by
-themselves. But these patches are very important for Rockchip VPU
-Driver, I cherrypick them from Chromium OS Tree[3] and use
-for reference here.
-
-[3]https://chromium.googlesource.com/chromiumos/third_party/kernel
-
-
+Signed-off-by: Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 Changes in v2:
 - add [NOT FOR REVIEW] tag for patches from Chromium OS Tree(Tomasz)
 - update copyright message
@@ -48,44 +37,37 @@ Changes in v2:
 - make commit message more readable(Enric)
 - fix format error of commit message(Tomasz)
 
-Jung Zhao (1):
-  media: vcodec: rockchip: Add Rockchip VP8 decoder driver
+ drivers/media/v4l2-core/v4l2-ctrls.c | 4 ++++
+ include/uapi/linux/videodev2.h       | 2 ++
+ 2 files changed, 6 insertions(+)
 
-Pawel Osciak (2):
-  [NOT FOR REVIEW] v4l: Add private compound control type.
-  [NOT FOR REVIEW] v4l: Add VP8 low-level decoder API controls.
-
-Tomasz Figa (1):
-  [NOT FOR REVIEW] videobuf2-dc: Let drivers specify DMA attrs
-
- drivers/media/platform/Kconfig                     |   11 +
- drivers/media/platform/Makefile                    |    1 +
- drivers/media/platform/rockchip-vpu/Makefile       |    7 +
- .../media/platform/rockchip-vpu/rkvpu_hw_vp8d.c    |  798 ++++++++++
- .../platform/rockchip-vpu/rockchip_vp8d_regs.h     | 1594 ++++++++++++++++++++
- drivers/media/platform/rockchip-vpu/rockchip_vpu.c |  803 ++++++++++
- .../platform/rockchip-vpu/rockchip_vpu_common.h    |  439 ++++++
- .../media/platform/rockchip-vpu/rockchip_vpu_dec.c | 1007 +++++++++++++
- .../media/platform/rockchip-vpu/rockchip_vpu_dec.h |   33 +
- .../media/platform/rockchip-vpu/rockchip_vpu_hw.c  |  295 ++++
- .../media/platform/rockchip-vpu/rockchip_vpu_hw.h  |  100 ++
- drivers/media/v4l2-core/v4l2-ctrls.c               |   13 +
- drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
- drivers/media/v4l2-core/videobuf2-dma-contig.c     |   33 +-
- include/media/v4l2-ctrls.h                         |    2 +
- include/media/videobuf2-dma-contig.h               |   11 +-
- include/uapi/linux/v4l2-controls.h                 |   94 ++
- include/uapi/linux/videodev2.h                     |    5 +
- 18 files changed, 5235 insertions(+), 12 deletions(-)
- create mode 100644 drivers/media/platform/rockchip-vpu/Makefile
- create mode 100644 drivers/media/platform/rockchip-vpu/rkvpu_hw_vp8d.c
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vp8d_regs.h
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu.c
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_common.h
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.c
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_dec.h
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.c
- create mode 100644 drivers/media/platform/rockchip-vpu/rockchip_vpu_hw.h
-
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-core/v4l2-ctrls.c
+index 890520d..527d65c 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls.c
+@@ -1525,6 +1525,10 @@ static int std_validate(const struct v4l2_ctrl *ctrl, u32 idx,
+ 			return -ERANGE;
+ 		return 0;
+ 
++	/* FIXME:just return 0 for now */
++	case V4L2_CTRL_TYPE_PRIVATE:
++		return 0;
++
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 29a6b78..53ac896 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -1517,6 +1517,8 @@ enum v4l2_ctrl_type {
+ 	V4L2_CTRL_TYPE_U8	     = 0x0100,
+ 	V4L2_CTRL_TYPE_U16	     = 0x0101,
+ 	V4L2_CTRL_TYPE_U32	     = 0x0102,
++
++	V4L2_CTRL_TYPE_PRIVATE       = 0xffff,
+ };
+ 
+ /*  Used in the VIDIOC_QUERYCTRL ioctl for querying controls */
 -- 
 1.9.1
