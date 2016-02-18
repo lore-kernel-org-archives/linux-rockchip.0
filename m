@@ -1,118 +1,28 @@
-From: "jianqun.xu" <jay.xu@rock-chips.com>
-Subject: [PATCH v2 3/4] dt-bindings: add documentation of rk3399 clock controller
-Date: Thu, 18 Feb 2016 10:36:22 +0800
-Message-ID: <1455762983-29980-4-git-send-email-jay.xu@rock-chips.com>
-References: <1455762983-29980-1-git-send-email-jay.xu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455762983-29980-1-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, jwerner@chromium.org, broonie@kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, linus.walleij@linaro.org, sjoerd.simons@collabora.co.uk
-Cc: huangtao@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: =?UTF-8?Q?Re=3A_=E7=AD=94=E5=A4=8D=3A_=5BPATCH_v2_4=2F4=5D_media=3A_vcodec=3A_rockchip=3A_?=
+	=?UTF-8?Q?Add_Rockchip_VP8_decoder_driver?=
+Date: Wed, 17 Feb 2016 18:50:24 -0800
+Message-ID: <CAD=FV=VPRVtMju+RRx4VRq2Rt1VdZXDrdcTENmc3UCRhWq=WNw@mail.gmail.com>
+References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
+	<1455705787-25856-1-git-send-email-jung.zhao@rock-chips.com>
+	<CAD=FV=UStodcwk6w7=x2iDizq0uVPuHSr9W8XbWDnLmrKAhQdA@mail.gmail.com>
+	<56c5194b.4848620a.a927c.ffffaafbSMTPIN_ADDED_BROKEN@mx.google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <56c5194b.4848620a.a927c.ffffaafbSMTPIN_ADDED_BROKEN@mx.google.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Jun Zhao <jung.zhao@rock-chips.com>
+Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philipp Zabel <p.zabel@pengutronix.de>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Pawel Osciak <posciak@chromium.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xing Zheng <zhengxing@rock-chips.com>
+Jun,
 
-Add the devicetree binding for the cru on the rk3399 which quite
-similar structured as previous clock controllers.
+On Wed, Feb 17, 2016 at 5:06 PM, Jun Zhao <jung.zhao@rock-chips.com> wrote:
+> Hi Doug,
+> I will add your patch and your name in signed-off-by. Is that appropriate?
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
-changes in v2:
-- none
+That's fine.  Make sure you're Signed-off-by is first since my little
+patch is a pretty tiny part of the whole change.
 
- .../bindings/clock/rockchip,rk3399-cru.txt         | 82 ++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
-
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
-new file mode 100644
-index 0000000..07bcc6e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
-@@ -0,0 +1,82 @@
-+* Rockchip RK3399 Clock and Reset Unit
-+
-+The RK3399 clock controller generates and supplies clock to various
-+controllers within the SoC and also implements a reset controller for SoC
-+peripherals.
-+
-+Required Properties:
-+
-+- compatible: PMU for CRU should be "rockchip,rk3399-pmucru"
-+- compatible: CRU should be "rockchip,rk3399-cru"
-+- reg: physical base address of the controller and length of memory mapped
-+  region.
-+- #clock-cells: should be 1.
-+- #reset-cells: should be 1.
-+
-+Optional Properties:
-+
-+- rockchip,grf: phandle to the syscon managing the "general register files"
-+  If missing, pll rates are not changeable, due to the missing pll lock status.
-+
-+Each clock is assigned an identifier and client nodes can use this identifier
-+to specify the clock which they consume. All available clocks are defined as
-+preprocessor macros in the dt-bindings/clock/rk3399-cru.h headers and can be
-+used in device tree sources. Similar macros exist for the reset sources in
-+these files.
-+
-+External clocks:
-+
-+There are several clocks that are generated outside the SoC. It is expected
-+that they are defined using standard clock bindings with following
-+clock-output-names:
-+ - "xin24m" - crystal input - required,
-+ - "xin32k" - rtc clock - optional,
-+ - "ext_i2s" - external I2S clock - optional,
-+ - "ext_gmac" - external GMAC clock - optional
-+ - "ext_hsadc" - external HSADC clock - optional,
-+ - "ext_isp" - external ISP clock - optional,
-+ - "ext_jtag" - external JTAG clock - optional
-+ - "ext_vip" - external VIP clock - optional,
-+ - "usbotg_out" - output clock of the pll in the otg phy
-+
-+Example: General Register Files
-+
-+	pmugrf: syscon@ff320000 {
-+		compatible = "rockchip,rk3399-pmugrf", "syscon";
-+		reg = <0x0 0xff320000 0x0 0x1000>;
-+	};
-+
-+	grf: syscon@ff770000 {
-+		compatible = "rockchip,rk3399-grf", "syscon";
-+		reg = <0x0 0xff770000 0x0 0x10000>;
-+	};
-+
-+Example: Clock controller node:
-+
-+	pmucru: pmu-clock-controller@ff750000 {
-+		compatible = "rockchip,rk3399-pmucru";
-+		reg = <0x0 0xff750000 0x0 0x1000>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+	cru: clock-controller@ff760000 {
-+		compatible = "rockchip,rk3399-cru";
-+		reg = <0x0 0xff760000 0x0 0x1000>;
-+		rockchip,grf = <&grf>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+Example: UART controller node that consumes the clock generated by the clock
-+  controller:
-+
-+	uart0: serial@ff1a0000 {
-+		compatible = "rockchip,rk3399-uart", "snps,dw-apb-uart";
-+		reg = <0x0 0xff180000 0x0 0x100>;
-+		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
-+		clock-names = "baudclk", "apb_pclk";
-+		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+	};
--- 
-1.9.1
+-Doug
