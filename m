@@ -1,110 +1,81 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v8 0/2] Add Rockchip Inno-HDMI driver
-Date: Thu, 18 Feb 2016 15:55:00 +0800
-Message-ID: <56C578D4.30108@rock-chips.com>
-References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
- <56C560B2.6020208@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 4/6] dt/bindings: power: add RK3399 SoCs header for power-domain
+Date: Thu, 18 Feb 2016 11:07:16 +0800
+Message-ID: <1455764838-12928-5-git-send-email-zhangqing@rock-chips.com>
+References: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56C560B2.6020208@rock-chips.com>
+In-Reply-To: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: David Airlie <airlied@linux.ie>, Thierry Reding <treding@nvidia.com>, Rob Herring <robh+dt@kernel.org>, Ken Mixte <kmixter@google.com>, Ben Chan <benchan@google.com>, Zheng Yang <zhengyang@rock-chips.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+According to a description from TRM, add all the power domains
 
-Thanks for your apply ;)
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ include/dt-bindings/power/rk3399-power.h | 53 ++++++++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3399-power.h
 
-- Yakir
-
-On 02/18/2016 02:12 PM, Mark yao wrote:
-> On 2016=E5=B9=B401=E6=9C=8829=E6=97=A5 14:42, Yakir Yang wrote:
->> Here are a brief introduction to Innosilicon HDMI IP:
->>    - Support HDMI 1.4a, HDCP 1.2 and DVI 1.0 standard compliant=20
->> transmitter
->>    - Support HDMI1.4 a/b 3D function defined in HDMI 1.4 a/b spec
->>    - Digital video interface supports a pixel size of 24, 30, 36,=20
->> 48bits color depth in RGB
->>    - S/PDIF output supports PCM, Dolby Digital, DTS digital audio=20
->> transmission
->>      (32-192kHz Fs) using IEC60958 and IEC 61937
->>    - The EDID and CEC function are also supported by Innosilicon HDM=
-I=20
->> Transmitter Controlle
->>
->> Changes in v8:
->> - Don't check whether encoder output format is RGB colorspace, cause=
-=20
->> driver
->>    default configure the output colorspace to RGB. (ZhengYang)
->> - Correct the check condition in inno_hdmi_config_video_csc()=20
->> (ZhengYang)
->>      - if (data->enc_out_format =3D=3D data->enc_out_format) {
->>      + if (data->enc_in_format =3D=3D data->enc_out_format) {
->>
->> Changes in v7:
->> - Correct the module licnese statement (Paul)
->>       - MODULE_LICENSE("GPL");
->>       + MODULE_LICENSE("GPLv2");
->> - Start indentation with tabs and fix the misspell in Kconfig (Paul)
->> - Carry the lost device-binding document (Heiko)
->>
->> Changes in v6:
->> - Rebase the Makefile/Kconfig files which add by Chris's=20
->> rockchip-mipi driver (Caeser)
->>
->> Changes in v5:
->> - Use hdmi_infoframe helper functions to packed the infoframe (Russe=
-ll)
->> - Remove the unused double wait_for_completion_timeout for ddc=20
->> transfer (Russell)
->> - Remove the unused local variable in "inno_hdmi_i2c_write()"=20
->> function (Russell)
->>
->> Changes in v4:
->> - Modify the commit title "drm/rockchip: hdmi: ..." (Mark)
->> - Correct the "DKMS" to "DPMS" (Mark)
->> - Fix over 80 characters problems (Mark)
->> - Remove encoder .prepare/.commit helper functions, and move the vop=
-=20
->> mode
->> configure function into encoder .enable helper functions. (Mark)
->>
->> Changes in v3:
->> - Use encoder enable/disable function, and remove the encoder DPMS=20
->> function
->> - Keep HDMI PLL power on in standby mode
->>
->> Changes in v2:
->> - Using DRM atomic helper functions for connector init (Mark)
->> - Remove "hdmi->connector.encoder =3D encoder;" (Mark)
->> - Add the Acked-by tags from Rob
->> - Correct the misspell "rk3036-dw-hdmi" (Heiko)
->>
->> Yakir Yang (2):
->>    drm/rockchip: hdmi: add Innosilicon HDMI support
->>    dt-bindings: add document for Innosilicon HDMI on Rockchip platfo=
-rm
->>
->>   .../display/rockchip/inno_hdmi-rockchip.txt        |  50 ++
->>   drivers/gpu/drm/rockchip/Kconfig                   |   8 +
->>   drivers/gpu/drm/rockchip/Makefile                  |   1 +
->>   drivers/gpu/drm/rockchip/inno_hdmi.c               | 939=20
->> +++++++++++++++++++++
->>   drivers/gpu/drm/rockchip/inno_hdmi.h               | 362 ++++++++
->>   5 files changed, 1360 insertions(+)
->>   create mode 100644=20
->> Documentation/devicetree/bindings/display/rockchip/inno_hdmi-rockchi=
-p.txt
->>   create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi.c
->>   create mode 100644 drivers/gpu/drm/rockchip/inno_hdmi.h
->>
->
-> Applied to my branch :-) .
->
-> Thanks.
->
+diff --git a/include/dt-bindings/power/rk3399-power.h b/include/dt-bindings/power/rk3399-power.h
+new file mode 100644
+index 0000000..69fbd67
+--- /dev/null
++++ b/include/dt-bindings/power/rk3399-power.h
+@@ -0,0 +1,53 @@
++#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
++#define __DT_BINDINGS_POWER_RK3399_POWER_H__
++
++/* VD_CORE_L */
++#define RK3399_PD_A53_L0	0
++#define RK3399_PD_A53_L1	1
++#define RK3399_PD_A53_L2	2
++#define RK3399_PD_A53_L3	3
++#define RK3399_PD_SCU_L		4
++
++/* VD_CORE_B */
++#define RK3399_PD_A72_B0	5
++#define RK3399_PD_A72_B1	6
++#define RK3399_PD_SCU_B		7
++
++/* VD_CENTER */
++#define RK3399_PD_CENTER	8
++#define RK3399_PD_VCODEC	9
++#define RK3399_PD_RGA		10
++#define RK3399_PD_IEP		11
++#define RK3399_PD_VDU		12
++
++/* VD_LOGIC */
++#define RK3399_PD_PERILP	13
++#define RK3399_PD_PERIHP	14
++#define RK3399_PD_VIO		15
++#define RK3399_PD_VO		16
++#define RK3399_PD_VOPB		17
++#define RK3399_PD_VOPL		18
++#define RK3399_PD_ISP0		19
++#define RK3399_PD_ISP1		20
++#define RK3399_PD_HDCP		21
++#define RK3399_PD_TCPD0		22
++#define RK3399_PD_TCPD1		23
++#define RK3399_PD_GIC		24
++#define RK3399_PD_ALIVE		25
++#define RK3399_PD_USB3		26
++#define RK3399_PD_SD		27
++#define RK3399_PD_CCI		28
++#define RK3399_PD_CCI0		29
++#define RK3399_PD_CCI1		30
++#define RK3399_PD_GMAC		31
++#define RK3399_PD_EMMC		32
++#define RK3399_PD_EDP		33
++#define RK3399_PD_SDIOAUDIO	34
++
++/* VD_GPU */
++#define RK3399_PD_GPU		35
++
++/* VD_PMU */
++#define RK3399_PD_PMU		36
++
++#endif
+-- 
+1.9.1
