@@ -1,28 +1,54 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: =?UTF-8?Q?Re=3A_=E7=AD=94=E5=A4=8D=3A_=5BPATCH_v2_4=2F4=5D_media=3A_vcodec=3A_rockchip=3A_?=
-	=?UTF-8?Q?Add_Rockchip_VP8_decoder_driver?=
-Date: Wed, 17 Feb 2016 18:50:24 -0800
-Message-ID: <CAD=FV=VPRVtMju+RRx4VRq2Rt1VdZXDrdcTENmc3UCRhWq=WNw@mail.gmail.com>
-References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
-	<1455705787-25856-1-git-send-email-jung.zhao@rock-chips.com>
-	<CAD=FV=UStodcwk6w7=x2iDizq0uVPuHSr9W8XbWDnLmrKAhQdA@mail.gmail.com>
-	<56c5194b.4848620a.a927c.ffffaafbSMTPIN_ADDED_BROKEN@mx.google.com>
+From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v8.1 1/2] drm/rockchip: hdmi: add Innosilicon HDMI support
+Date: Thu, 18 Feb 2016 10:54:02 +0800
+Message-ID: <56C5324A.5080009@rock-chips.com>
+References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com> <1454492697-7837-1-git-send-email-ykk@rock-chips.com> <3883951.Go5JsyhPRt@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <56c5194b.4848620a.a927c.ffffaafbSMTPIN_ADDED_BROKEN@mx.google.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Jun Zhao <jung.zhao@rock-chips.com>
-Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philipp Zabel <p.zabel@pengutronix.de>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Pawel Osciak <posciak@chromium.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3883951.Go5JsyhPRt@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ken Mixte <kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Ben Chan <benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Jun,
+On 2016=E5=B9=B402=E6=9C=8818=E6=97=A5 05:00, Heiko Stuebner wrote:
+> Am Mittwoch, 3. Februar 2016, 17:44:57 schrieb Yakir Yang:
+>> The Innosilicon HDMI is a low power HDMI 1.4 transmitter
+>> IP, and it have been integrated on some rockchip CPUs
+>> (like RK3036, RK312x).
+>>
+>> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> On a Kylin board against 4.5-rc
+> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-On Wed, Feb 17, 2016 at 5:06 PM, Jun Zhao <jung.zhao@rock-chips.com> wrote:
-> Hi Doug,
-> I will add your patch and your name in signed-off-by. Is that appropriate?
+Good, Thanks your Tested-by.
 
-That's fine.  Make sure you're Signed-off-by is first since my little
-patch is a pretty tiny part of the whole change.
+> @Mark: While testing I noticed a black box around my cursor. It moves=
+ with
+> the cursor, so seems to be the plane itself - the hdmi driver is of c=
+ourse
+> innocent. May there exist an issue with plane transparency?
 
--Doug
+Oh, yes, it's my problem, forget to add transparency for rk3036 plane, =
+I=20
+will do it later soon.
+
+>
+>
+> Heiko
+>
+>
+>
+
+--=20
+=EF=BC=ADark Yao
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
