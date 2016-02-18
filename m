@@ -1,44 +1,113 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 0/6] rockchip: power-domain: fix pm domain for support
- RK3399 SoC
-Date: Thu, 18 Feb 2016 11:07:12 +0800
-Message-ID: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 5/6] rockchip: power-domain: Modify power domain driver for rk3399
+Date: Thu, 18 Feb 2016 11:08:05 +0800
+Message-ID: <1455764885-12979-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-fix some idle handling
-support sub-power domain
-add rk3399-power.h
-modify power domain for RK3399 SoC
-modify document for RK3399 Soc
+This driver is modified to support RK3399 SoC.
 
-Elaine Zhang (6):
-  rockchip: power-domain: make idle handling optional
-  rockchip: power-domain: allow domains only handling idle requests
-  rockchip: power-domain: add support for sub-power domains
-  dt/bindings: power: add RK3399 SoCs header for power-domain
-  rockchip: power-domain: Modify power domain driver for rk3399
-  dt/bindings: rockchip: modify document of Rockchip power domains
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/soc/rockchip/pm_domains.c | 55 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
 
- .../bindings/soc/rockchip/power_domain.txt         |  21 ++++
- drivers/soc/rockchip/pm_domains.c                  | 131 ++++++++++++++++++++-
- include/dt-bindings/power/rk3399-power.h           |  53 +++++++++
- 3 files changed, 200 insertions(+), 5 deletions(-)
- create mode 100644 include/dt-bindings/power/rk3399-power.h
-
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 8cdf1b2..067e655 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -19,6 +19,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <dt-bindings/power/rk3288-power.h>
+ #include <dt-bindings/power/rk3368-power.h>
++#include <dt-bindings/power/rk3399-power.h>
+ 
+ struct rockchip_domain_info {
+ 	int pwr_mask;
+@@ -81,6 +82,9 @@ struct rockchip_pmu {
+ #define DOMAIN_RK3368(pwr, status, req)		\
+ 	DOMAIN(pwr, status, req, (req) + 16, req)
+ 
++#define DOMAIN_RK3399(pwr, status, req)                \
++	DOMAIN(pwr, status, req, req, req)
++
+ static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+@@ -522,6 +526,36 @@ static const struct rockchip_domain_info rk3368_pm_domains[] = {
+ 	[RK3368_PD_GPU_1]	= DOMAIN_RK3368(17, 16, 2),
+ };
+ 
++static const struct rockchip_domain_info rk3399_pm_domains[] = {
++	[RK3399_PD_TCPD0]       = DOMAIN_RK3399(8, 8, NULL_BIT),
++	[RK3399_PD_TCPD1]       = DOMAIN_RK3399(9, 9, NULL_BIT),
++	[RK3399_PD_CCI]         = DOMAIN_RK3399(10, 10, NULL_BIT),
++	[RK3399_PD_CCI0]        = DOMAIN_RK3399(NULL_BIT, NULL_BIT, 15),
++	[RK3399_PD_CCI1]        = DOMAIN_RK3399(NULL_BIT, NULL_BIT, 16),
++	[RK3399_PD_PERILP]      = DOMAIN_RK3399(11, 11, 1),
++	[RK3399_PD_PERIHP]      = DOMAIN_RK3399(12, 12, 2),
++	[RK3399_PD_CENTER]      = DOMAIN_RK3399(13, 13, 14),
++	[RK3399_PD_VIO]         = DOMAIN_RK3399(14, 14, 17),
++	[RK3399_PD_GPU]         = DOMAIN_RK3399(15, 15, 0),
++	[RK3399_PD_VCODEC]      = DOMAIN_RK3399(16, 16, 3),
++	[RK3399_PD_VDU]         = DOMAIN_RK3399(17, 17, 4),
++	[RK3399_PD_RGA]         = DOMAIN_RK3399(18, 18, 5),
++	[RK3399_PD_IEP]         = DOMAIN_RK3399(19, 19, 6),
++	[RK3399_PD_VO]          = DOMAIN_RK3399(20, 20, NULL_BIT),
++	[RK3399_PD_VOPB]        = DOMAIN_RK3399(NULL_BIT, NULL_BIT, 7),
++	[RK3399_PD_VOPL]        = DOMAIN_RK3399(NULL_BIT, NULL_BIT, 8),
++	[RK3399_PD_ISP0]        = DOMAIN_RK3399(22, 22, 9),
++	[RK3399_PD_ISP1]        = DOMAIN_RK3399(23, 23, 10),
++	[RK3399_PD_HDCP]        = DOMAIN_RK3399(24, 24, 11),
++	[RK3399_PD_GMAC]        = DOMAIN_RK3399(25, 25, 23),
++	[RK3399_PD_EMMC]        = DOMAIN_RK3399(26, 26, 24),
++	[RK3399_PD_USB3]        = DOMAIN_RK3399(27, 27, 12),
++	[RK3399_PD_EDP]         = DOMAIN_RK3399(28, 28, 22),
++	[RK3399_PD_GIC]         = DOMAIN_RK3399(29, 29, 27),
++	[RK3399_PD_SD]          = DOMAIN_RK3399(30, 30, 28),
++	[RK3399_PD_SDIOAUDIO]   = DOMAIN_RK3399(31, 31, 29),
++};
++
+ static const struct rockchip_pmu_info rk3288_pmu = {
+ 	.pwr_offset = 0x08,
+ 	.status_offset = 0x0c,
+@@ -556,6 +590,23 @@ static const struct rockchip_pmu_info rk3368_pmu = {
+ 	.domain_info = rk3368_pm_domains,
+ };
+ 
++static const struct rockchip_pmu_info rk3399_pmu = {
++	.pwr_offset = 0x14,
++	.status_offset = 0x18,
++	.req_offset = 0x60,
++	.idle_offset = 0x64,
++	.ack_offset = 0x68,
++
++	.core_pwrcnt_offset = 0x9c,
++	.gpu_pwrcnt_offset = 0xa4,
++
++	.core_power_transition_time = 24,
++	.gpu_power_transition_time = 24,
++
++	.num_domains = ARRAY_SIZE(rk3399_pm_domains),
++	.domain_info = rk3399_pm_domains,
++};
++
+ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3288-power-controller",
+@@ -565,6 +616,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 		.compatible = "rockchip,rk3368-power-controller",
+ 		.data = (void *)&rk3368_pmu,
+ 	},
++	{
++		.compatible = "rockchip,rk3399-power-controller",
++		.data = (void *)&rk3399_pmu,
++	},
+ 	{ /* sentinel */ },
+ };
+ 
 -- 
 1.9.1
