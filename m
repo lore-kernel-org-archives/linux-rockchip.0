@@ -1,87 +1,90 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2.1 2/4] spi: rockchip: add bindings for rk3399 spi
-Date: Thu, 18 Feb 2016 13:57:51 +0000
-Message-ID: <20160218135751.GE7129@sirena.org.uk>
-References: <1455762983-29980-1-git-send-email-jay.xu@rock-chips.com>
- <1455762983-29980-3-git-send-email-jay.xu@rock-chips.com>
- <20160218094108.GA7129@sirena.org.uk> <2327512.KAqs6H56Km@phil>
- <56C5959D.3030806@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 5/6] dt-bindings: add documentation of rk3399 clock
+ controller
+Date: Thu, 18 Feb 2016 08:36:48 -0600
+Message-ID: <20160218143648.GL9654@rob-hp-laptop>
+References: <1455673992-16469-1-git-send-email-jay.xu@rock-chips.com>
+ <1455674089-16567-1-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8626422643958836163=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56C5959D.3030806-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1455674089-16567-1-git-send-email-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "jianqun.xu" <jay.xu@rock-chips.com>
+Cc: heiko@sntech.de, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, jwerner@chromium.org, broonie@kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, linus.walleij@linaro.org, sjoerd.simons@collabora.co.uk, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Wed, Feb 17, 2016 at 09:54:49AM +0800, jianqun.xu wrote:
+> From: Xing Zheng <zhengxing@rock-chips.com>
+> 
+> Add the devicetree binding for the cru on the rk3399 which quite
+> similar structured as previous clock controllers.
+> 
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> ---
+>  .../bindings/clock/rockchip,rk3399-cru.txt         | 82 ++++++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> new file mode 100644
+> index 0000000..07bcc6e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> @@ -0,0 +1,82 @@
+> +* Rockchip RK3399 Clock and Reset Unit
 
---===============8626422643958836163==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vv4Sf/kQfcwinyKX"
-Content-Disposition: inline
+[...]
 
+> +Example: General Register Files
+> +
+> +	pmugrf: syscon@ff320000 {
+> +		compatible = "rockchip,rk3399-pmugrf", "syscon";
 
---vv4Sf/kQfcwinyKX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Is this documented?
 
-On Thu, Feb 18, 2016 at 05:57:49PM +0800, Jianqun Xu wrote:
+> +		reg = <0x0 0xff320000 0x0 0x1000>;
+> +	};
+> +
+> +	grf: syscon@ff770000 {
+> +		compatible = "rockchip,rk3399-grf", "syscon";
 
-> I'm a little confuse, I have upstreamed rockchip-i2s, and the i2s driver set
-> the compatible like:
-> - compatible: should be one of the followings
->    - "rockchip,rk3066-i2s": for rk3066
->    - "rockchip,rk3188-i2s", "rockchip,rk3066-i2s": for rk3188
->    - "rockchip,rk3288-i2s", "rockchip,rk3066-i2s": for rk3288
->    - "rockchip,rk3399-i2s", "rockchip,rk3066-i2s": for rk3399
-> and the driver only has
-> static const struct of_device_id rockchip_i2s_match[] = {
-> 	{ .compatible = "rockchip,rk3066-i2s", },
-> 	{},
-> };
+ditto.
 
-> The spi of rk3399 as same as rk3066, rk3188, rk3288, like i2s, if they are
-> keep different rules ?
-
-No, that's just something that got missed in review and which should be
-fixed.
-
---vv4Sf/kQfcwinyKX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWxc3eAAoJECTWi3JdVIfQPn0H/1pS4pSP4GUrIc3s5JcMgdb8
-A1r+80mR2QyxZ2sjmslLv63Q4zSbMJSqRMC/RVxpPFZ4LirQgduYB+ihu+nFwL6S
-i7lANd9ruQZlOek9z7J9WzvhLeu4VMVdo2xI2TdgmQz+98BBUJYno5FdtIWiooWB
-csR5iGR3B7fJ9tV6wRI/2/a6sTchYGKK9TTGDPJuY0NNJeLmMhFB9+AWRM+P9a3T
-BUtaeKx2dWfd/ze9fh54H7wAlt2LncLMYZgvPbfhmCui++z6PrASjxIcx85rlpPb
-TckG56n+Xhx5CkxR9iT+6QxpFDSnmTLw6kD+Umz/cJ2NLshD40xqXiIbWF8tuNk=
-=r/QX
------END PGP SIGNATURE-----
-
---vv4Sf/kQfcwinyKX--
-
-
---===============8626422643958836163==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8626422643958836163==--
+> +		reg = <0x0 0xff770000 0x0 0x10000>;
+> +	};
+> +
+> +Example: Clock controller node:
+> +
+> +	pmucru: pmu-clock-controller@ff750000 {
+> +		compatible = "rockchip,rk3399-pmucru";
+> +		reg = <0x0 0xff750000 0x0 0x1000>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +	cru: clock-controller@ff760000 {
+> +		compatible = "rockchip,rk3399-cru";
+> +		reg = <0x0 0xff760000 0x0 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart0: serial@ff1a0000 {
+> +		compatible = "rockchip,rk3399-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xff180000 0x0 0x100>;
+> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +	};
+> -- 
+> 1.9.1
+> 
+> 
