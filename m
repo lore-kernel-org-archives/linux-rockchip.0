@@ -1,49 +1,102 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 0/6] rockchip: power-domain: fix pm domain for support RK3399 SoC
-Date: Fri, 19 Feb 2016 00:48:44 +0100
-Message-ID: <1552427.8VgrhmbCO1@phil>
-References: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v2 6/6] dt/bindings: rockchip: modify document of Rockchip power domains
+Date: Fri, 19 Feb 2016 00:52:19 +0100
+Message-ID: <2204493.j28NF0gtji@phil>
+References: <1455764899-13028-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1455764899-13028-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Elaine Zhang <zhangqing@rock-chips.com>
 Cc: wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+Am Donnerstag, 18. Februar 2016, 11:08:19 schrieb Elaine Zhang:
+> Add binding documentation for the power domains
+> found on Rockchip RK3399 SoCs
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-your sending mechanism could use some improvements :-)
-I always get patches 1-4 correctly as replies to the cover-letter while 
-patches 5+6 always come separately (missing in-reply-to?).
+This patch should probably include the devicetree people
 
-I guess using git send-email might help with that.
+Rob Herring <robh+dt@kernel.org>
+Pawel Moll <pawel.moll@arm.com>
+Mark Rutland <mark.rutland@arm.com>
+Ian Campbell <ijc+devicetree@hellion.org.uk>
+Kumar Gala <galak@codeaurora.org>
+devicetree@vger.kernel.org
 
-Also, Kevin Hilman was very involved in reviewing the original Rockchip 
-power-domain driver, so it might be nice to include him in further versions.
+
+> ---
+>  .../bindings/soc/rockchip/power_domain.txt          | 21
+> +++++++++++++++++++++ 1 file changed, 21 insertions(+)
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt index
+> 13dc6a3..c65d401 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> @@ -7,6 +7,7 @@ Required properties for power domain controller:
+>  - compatible: Should be one of the following.
+>  	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+>  	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
+> +	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+>  - #power-domain-cells: Number of cells in a power-domain specifier.
+>  	Should be 1 for multiple PM domains.
+>  - #address-cells: Should be 1.
+> @@ -16,6 +17,7 @@ Required properties for power domain sub nodes:
+>  - reg: index of the power domain, should use macros in:
+>  	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power
+> domain. "include/dt-bindings/power/rk3368-power.h" - for RK3368 type
+> power domain. +	"include/dt-bindings/power/rk3399-power.h" - for RK3399
+> type power domain. - clocks (optional): phandles to clocks which need to
+> be enabled while power domain switches state.
+> 
+> @@ -45,12 +47,25 @@ Example:
+>                  };
+>          };
+> 
+> +	power: power-controller {
+> +		compatible = "rockchip,rk3399-power-controller";
+> +		#power-domain-cells = <1>;
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		pd_gpu {
+> +			reg = <RK3399_PD_GPU>;
+> +			clocks = <&cru ACLK_GPU>;
+> +		};
+> +	};
+> +
+
+I don't think we need to add another example for every type of power-domain controller :-) .
+
+>  Node of a device using power domains must have a power-domains property,
+>  containing a phandle to the power device node and an index specifying
+> which power domain to use.
+>  The index should use macros in:
+>  	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power
+> domain. "include/dt-bindings/power/rk3368-power.h" - for rk3368 type
+> power domain. +	"include/dt-bindings/power/rk3399-power.h" - for rk3399
+> type power domain.
+> 
+>  Example of the node using power domain:
+> 
+> @@ -65,3 +80,9 @@ Example of the node using power domain:
+>                  power-domains = <&power RK3368_PD_GPU_1>;
+>                  /* ... */
+>          };
+> +
+> +	node {
+> +		/* ... */
+> +		power-domains = <&power RK3399_PD_GPU>;
+> +		/* ... */
+> +	};
+
+same here
 
 
 Heiko
-
-Am Donnerstag, 18. Februar 2016, 11:07:12 schrieb Elaine Zhang:
-> fix some idle handling
-> support sub-power domain
-> add rk3399-power.h
-> modify power domain for RK3399 SoC
-> modify document for RK3399 Soc
-> 
-> Elaine Zhang (6):
->   rockchip: power-domain: make idle handling optional
->   rockchip: power-domain: allow domains only handling idle requests
->   rockchip: power-domain: add support for sub-power domains
->   dt/bindings: power: add RK3399 SoCs header for power-domain
->   rockchip: power-domain: Modify power domain driver for rk3399
->   dt/bindings: rockchip: modify document of Rockchip power domains
-> 
->  .../bindings/soc/rockchip/power_domain.txt         |  21 ++++
->  drivers/soc/rockchip/pm_domains.c                  | 131
-> ++++++++++++++++++++- include/dt-bindings/power/rk3399-power.h          
-> |  53 +++++++++ 3 files changed, 200 insertions(+), 5 deletions(-)
->  create mode 100644 include/dt-bindings/power/rk3399-power.h
