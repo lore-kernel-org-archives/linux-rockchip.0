@@ -1,54 +1,79 @@
-From: Mark yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v8.1 1/2] drm/rockchip: hdmi: add Innosilicon HDMI support
-Date: Thu, 18 Feb 2016 10:54:02 +0800
-Message-ID: <56C5324A.5080009@rock-chips.com>
-References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com> <1454492697-7837-1-git-send-email-ykk@rock-chips.com> <3883951.Go5JsyhPRt@phil>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v8 0/2] Add Rockchip Inno-HDMI driver
+Date: Thu, 18 Feb 2016 14:12:02 +0800
+Message-ID: <56C560B2.6020208@rock-chips.com>
+References: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3883951.Go5JsyhPRt@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ken Mixte <kmixter-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Ben Chan <benchan-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Zheng Yang <zhengyang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1454049768-30872-1-git-send-email-ykk@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ben Chan <benchan@google.com>, Ken Mixte <kmixter@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Thierry Reding <treding@nvidia.com>, linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016=E5=B9=B402=E6=9C=8818=E6=97=A5 05:00, Heiko Stuebner wrote:
-> Am Mittwoch, 3. Februar 2016, 17:44:57 schrieb Yakir Yang:
->> The Innosilicon HDMI is a low power HDMI 1.4 transmitter
->> IP, and it have been integrated on some rockchip CPUs
->> (like RK3036, RK312x).
->>
->> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> On a Kylin board against 4.5-rc
-> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-Good, Thanks your Tested-by.
-
-> @Mark: While testing I noticed a black box around my cursor. It moves=
- with
-> the cursor, so seems to be the plane itself - the hdmi driver is of c=
-ourse
-> innocent. May there exist an issue with plane transparency?
-
-Oh, yes, it's my problem, forget to add transparency for rk3036 plane, =
-I=20
-will do it later soon.
-
->
->
-> Heiko
->
->
->
-
---=20
-=EF=BC=ADark Yao
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxNuW5tDAx5pyIMjnml6UgMTQ6NDIsIFlha2lyIFlhbmcgd3JvdGU6Cj4gSGVyZSBhcmUg
+YSBicmllZiBpbnRyb2R1Y3Rpb24gdG8gSW5ub3NpbGljb24gSERNSSBJUDoKPiAgICAtIFN1cHBv
+cnQgSERNSSAxLjRhLCBIRENQIDEuMiBhbmQgRFZJIDEuMCBzdGFuZGFyZCBjb21wbGlhbnQgdHJh
+bnNtaXR0ZXIKPiAgICAtIFN1cHBvcnQgSERNSTEuNCBhL2IgM0QgZnVuY3Rpb24gZGVmaW5lZCBp
+biBIRE1JIDEuNCBhL2Igc3BlYwo+ICAgIC0gRGlnaXRhbCB2aWRlbyBpbnRlcmZhY2Ugc3VwcG9y
+dHMgYSBwaXhlbCBzaXplIG9mIDI0LCAzMCwgMzYsIDQ4Yml0cyBjb2xvciBkZXB0aCBpbiBSR0IK
+PiAgICAtIFMvUERJRiBvdXRwdXQgc3VwcG9ydHMgUENNLCBEb2xieSBEaWdpdGFsLCBEVFMgZGln
+aXRhbCBhdWRpbyB0cmFuc21pc3Npb24KPiAgICAgICgzMi0xOTJrSHogRnMpIHVzaW5nIElFQzYw
+OTU4IGFuZCBJRUMgNjE5MzcKPiAgICAtIFRoZSBFRElEIGFuZCBDRUMgZnVuY3Rpb24gYXJlIGFs
+c28gc3VwcG9ydGVkIGJ5IElubm9zaWxpY29uIEhETUkgVHJhbnNtaXR0ZXIgQ29udHJvbGxlCj4K
+PiBDaGFuZ2VzIGluIHY4Ogo+IC0gRG9uJ3QgY2hlY2sgd2hldGhlciBlbmNvZGVyIG91dHB1dCBm
+b3JtYXQgaXMgUkdCIGNvbG9yc3BhY2UsIGNhdXNlIGRyaXZlcgo+ICAgIGRlZmF1bHQgY29uZmln
+dXJlIHRoZSBvdXRwdXQgY29sb3JzcGFjZSB0byBSR0IuIChaaGVuZ1lhbmcpCj4gLSBDb3JyZWN0
+IHRoZSBjaGVjayBjb25kaXRpb24gaW4gaW5ub19oZG1pX2NvbmZpZ192aWRlb19jc2MoKSAoWmhl
+bmdZYW5nKQo+ICAgICAgLSBpZiAoZGF0YS0+ZW5jX291dF9mb3JtYXQgPT0gZGF0YS0+ZW5jX291
+dF9mb3JtYXQpIHsKPiAgICAgICsgaWYgKGRhdGEtPmVuY19pbl9mb3JtYXQgPT0gZGF0YS0+ZW5j
+X291dF9mb3JtYXQpIHsKPgo+IENoYW5nZXMgaW4gdjc6Cj4gLSBDb3JyZWN0IHRoZSBtb2R1bGUg
+bGljbmVzZSBzdGF0ZW1lbnQgKFBhdWwpCj4gICAgICAgLSBNT0RVTEVfTElDRU5TRSgiR1BMIik7
+Cj4gICAgICAgKyBNT0RVTEVfTElDRU5TRSgiR1BMdjIiKTsKPiAtIFN0YXJ0IGluZGVudGF0aW9u
+IHdpdGggdGFicyBhbmQgZml4IHRoZSBtaXNzcGVsbCBpbiBLY29uZmlnIChQYXVsKQo+IC0gQ2Fy
+cnkgdGhlIGxvc3QgZGV2aWNlLWJpbmRpbmcgZG9jdW1lbnQgKEhlaWtvKQo+Cj4gQ2hhbmdlcyBp
+biB2NjoKPiAtIFJlYmFzZSB0aGUgTWFrZWZpbGUvS2NvbmZpZyBmaWxlcyB3aGljaCBhZGQgYnkg
+Q2hyaXMncyByb2NrY2hpcC1taXBpIGRyaXZlciAoQ2Flc2VyKQo+Cj4gQ2hhbmdlcyBpbiB2NToK
+PiAtIFVzZSBoZG1pX2luZm9mcmFtZSBoZWxwZXIgZnVuY3Rpb25zIHRvIHBhY2tlZCB0aGUgaW5m
+b2ZyYW1lIChSdXNzZWxsKQo+IC0gUmVtb3ZlIHRoZSB1bnVzZWQgZG91YmxlIHdhaXRfZm9yX2Nv
+bXBsZXRpb25fdGltZW91dCBmb3IgZGRjIHRyYW5zZmVyIChSdXNzZWxsKQo+IC0gUmVtb3ZlIHRo
+ZSB1bnVzZWQgbG9jYWwgdmFyaWFibGUgaW4gImlubm9faGRtaV9pMmNfd3JpdGUoKSIgZnVuY3Rp
+b24gKFJ1c3NlbGwpCj4KPiBDaGFuZ2VzIGluIHY0Ogo+IC0gTW9kaWZ5IHRoZSBjb21taXQgdGl0
+bGUgImRybS9yb2NrY2hpcDogaGRtaTogLi4uIiAoTWFyaykKPiAtIENvcnJlY3QgdGhlICJES01T
+IiB0byAiRFBNUyIgKE1hcmspCj4gLSBGaXggb3ZlciA4MCBjaGFyYWN0ZXJzIHByb2JsZW1zIChN
+YXJrKQo+IC0gUmVtb3ZlIGVuY29kZXIgLnByZXBhcmUvLmNvbW1pdCBoZWxwZXIgZnVuY3Rpb25z
+LCBhbmQgbW92ZSB0aGUgdm9wIG1vZGUKPiBjb25maWd1cmUgZnVuY3Rpb24gaW50byBlbmNvZGVy
+IC5lbmFibGUgaGVscGVyIGZ1bmN0aW9ucy4gKE1hcmspCj4KPiBDaGFuZ2VzIGluIHYzOgo+IC0g
+VXNlIGVuY29kZXIgZW5hYmxlL2Rpc2FibGUgZnVuY3Rpb24sIGFuZCByZW1vdmUgdGhlIGVuY29k
+ZXIgRFBNUyBmdW5jdGlvbgo+IC0gS2VlcCBIRE1JIFBMTCBwb3dlciBvbiBpbiBzdGFuZGJ5IG1v
+ZGUKPgo+IENoYW5nZXMgaW4gdjI6Cj4gLSBVc2luZyBEUk0gYXRvbWljIGhlbHBlciBmdW5jdGlv
+bnMgZm9yIGNvbm5lY3RvciBpbml0IChNYXJrKQo+IC0gUmVtb3ZlICJoZG1pLT5jb25uZWN0b3Iu
+ZW5jb2RlciA9IGVuY29kZXI7IiAoTWFyaykKPiAtIEFkZCB0aGUgQWNrZWQtYnkgdGFncyBmcm9t
+IFJvYgo+IC0gQ29ycmVjdCB0aGUgbWlzc3BlbGwgInJrMzAzNi1kdy1oZG1pIiAoSGVpa28pCj4K
+PiBZYWtpciBZYW5nICgyKToKPiAgICBkcm0vcm9ja2NoaXA6IGhkbWk6IGFkZCBJbm5vc2lsaWNv
+biBIRE1JIHN1cHBvcnQKPiAgICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50IGZvciBJbm5vc2ls
+aWNvbiBIRE1JIG9uIFJvY2tjaGlwIHBsYXRmb3JtCj4KPiAgIC4uLi9kaXNwbGF5L3JvY2tjaGlw
+L2lubm9faGRtaS1yb2NrY2hpcC50eHQgICAgICAgIHwgIDUwICsrCj4gICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgICB8ICAgOCArCj4gICBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICB8ICAgMSArCj4gICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMgICAgICAgICAgICAgICB8IDkzOSAr
+KysrKysrKysrKysrKysrKysrKysKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hk
+bWkuaCAgICAgICAgICAgICAgIHwgMzYyICsrKysrKysrCj4gICA1IGZpbGVzIGNoYW5nZWQsIDEz
+NjAgaW5zZXJ0aW9ucygrKQo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL2lubm9faGRtaS1yb2NrY2hpcC50eHQK
+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1p
+LmMKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19o
+ZG1pLmgKPgoKQXBwbGllZCB0byBteSBicmFuY2ggOi0pIC4KClRoYW5rcy4KCi0tIArvvK1hcmsg
+WWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
+LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBz
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
