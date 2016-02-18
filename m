@@ -1,82 +1,59 @@
-From: Jung Zhao <jung.zhao@rock-chips.com>
-Subject: Re: [PATCH v2 3/4] [NOT FOR REVIEW] videobuf2-dc: Let drivers specify
- DMA attrs
-Date: Thu, 18 Feb 2016 08:59:17 +0800
-Message-ID: <CAD82f72vPddBJeDuRCG38-sopk6BPrY49ggAugeGQC_GUg-Fyw@mail.gmail.com>
-References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>
-	<1455705771-25771-1-git-send-email-jung.zhao@rock-chips.com>
-	<CAD=FV=V8tZvvqVCC4CMD9T-PYL+_3DojGq8jBEtm1raMYzw=3Q@mail.gmail.com>
+From: "Jun Zhao" <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?utf-8?Q?=E7=AD=94=E5=A4=8D:_=5BPATCH_v2_4/4=5D_media:_vcodec?=
+ =?utf-8?Q?:_rockchip:_Add_Rockchip_VP8_dec?= =?utf-8?Q?oder_driver?=
+Date: Thu, 18 Feb 2016 09:06:27 +0800
+Message-ID: <3620.32511407069$1455757650@news.gmane.org>
+References: <1455705673-25484-1-git-send-email-jung.zhao@rock-chips.com>	<1455705787-25856-1-git-send-email-jung.zhao@rock-chips.com>
+ <CAD=FV=UStodcwk6w7=x2iDizq0uVPuHSr9W8XbWDnLmrKAhQdA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=V8tZvvqVCC4CMD9T-PYL+_3DojGq8jBEtm1raMYzw=3Q@mail.gmail.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tomasz Figa <tfiga@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Philipp Zabel <p.zabel@pengutronix.de>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Pawel Osciak <posciak@chromium.org>, Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=UStodcwk6w7=x2iDizq0uVPuHSr9W8XbWDnLmrKAhQdA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: zh-cn
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: 'Doug Anderson' <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: 'Mauro Carvalho Chehab' <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, 'Tomasz Figa' <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "'open list:ARM/Rockchip SoC...'" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, 'Hans Verkuil' <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, 'Laurent Pinchart' <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, 'Philipp Zabel' <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, 'Guennadi Liakhovetski' <g.liakhovetski-Mmb7MZpHnFY@public.gmane.org>, 'Pawel Osciak' <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, 'Linux Media Mailing List' <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-Thanks for your work. I will fix this mistake.
-
-2016-02-18 0:12 GMT+08:00 Doug Anderson <dianders@chromium.org>:
-> Hi,
->
-> On Wed, Feb 17, 2016 at 2:42 AM, Jung Zhao <jung.zhao@rock-chips.com>=
- wrote:
->> From: Tomasz Figa <tfiga@chromium.org>
->>
->> DMA allocations might be subject to certain reqiurements specific to=
- the
->> hardware using the buffers, such as availability of kernel mapping (=
-for
->> contents fix-ups in the driver). The only entity that knows them is =
-the
->> driver, so it must share this knowledge with vb2-dc.
->>
->> This patch extends the alloc_ctx initialization interface to let the
->> driver specify DMA attrs, which are then stored inside the allocatio=
-n
->> context and will be used for all allocations with that context.
->>
->> As a side effect, all dma_*_coherent() calls are turned into
->> dma_*_attrs() calls, because the attributes need to be carried over
->> through all DMA operations.
->>
->> Signed-off-by: Tomasz Figa <tfiga@chromium.org>
->> Signed-off-by: Jung Zhao <jung.zhao@rock-chips.com>
->> ---
->> Changes in v2: None
->>
->>  drivers/media/v4l2-core/videobuf2-dma-contig.c | 33 +++++++++++++++=
-++---------
->>  include/media/videobuf2-dma-contig.h           | 11 ++++++++-
->>  2 files changed, 32 insertions(+), 12 deletions(-)
->
-> This patch is already present in linuxnext.  I submitted it to Russel=
-l
-> King's Patch Tracking System a bit ago and got notice that it landed.
-> Checking linuxnext today I see:
->
-> ccc66e738252 ARM: 8508/2: videobuf2-dc: Let drivers specify DMA attrs
->
-> -Doug
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-
---=20
-Best Regards,
-Jung
-
-****************************************
-=E7=A6=8F=E5=B7=9E=E7=91=9E=E8=8A=AF=E5=BE=AE=E7=94=B5=E5=AD=90=E6=9C=89=
-=E9=99=90=E5=85=AC=E5=8F=B8 (Rockchip)
-=E8=B5=B5=E4=BF=8A (Jung Zhao)
-=E7=AE=97=E6=B3=95=E5=B7=A5=E7=A8=8B=E5=B8=88 (Algorithm Engineer)
-+86-591-83991906-8944
-****************************************
+SGkgRG91ZywKSSB3aWxsIGFkZCB5b3VyIHBhdGNoIGFuZCB5b3VyIG5hbWUgaW4gc2lnbmVkLW9m
+Zi1ieS4gSXMgdGhhdCBhcHByb3ByaWF0ZT8KCkJlc3QgcmVnYXJkcywKSnVuZwoKKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgrnpo/lt57nkZ7oiq/lvq7nlLXlrZDmnInp
+mZDlhazlj7ggKFJvY2tjaGlwKQrotbXkv4ogKEp1bmcgWmhhbykK566X5rOV5bel56iL5biIIChB
+bGdvcml0aG0gRW5naW5lZXIpCis4Ni01OTEtODM5OTE5MDYtODk0NAoqKioqKioqKioqKioqKioq
+KioqKioqKioqKioqKioqKioqKioqKioqCgoKLS0tLS3pgq7ku7bljp/ku7YtLS0tLQrlj5Hku7bk
+uro6IGRpYW5kZXJzQGdvb2dsZS5jb20gW21haWx0bzpkaWFuZGVyc0Bnb29nbGUuY29tXSDku6Po
+oaggRG91ZyBBbmRlcnNvbgrlj5HpgIHml7bpl7Q6IDIwMTblubQy5pyIMTjml6UgMDoxOArmlLbk
+u7bkuro6IEp1bmcgWmhhbwrmioTpgIE6IFRvbWFzeiBGaWdhOyBQYXdlbCBPc2NpYWs7IE1hdXJv
+IENhcnZhbGhvIENoZWhhYjsgSGFucyBWZXJrdWlsOyBMYXVyZW50IFBpbmNoYXJ0OyBHdWVubmFk
+aSBMaWFraG92ZXRza2k7IFBoaWxpcHAgWmFiZWw7IG9wZW4gbGlzdDpBUk0vUm9ja2NoaXAgU29D
+Li4uOyBMaW51eCBNZWRpYSBNYWlsaW5nIExpc3QK5Li76aKYOiBSZTogW1BBVENIIHYyIDQvNF0g
+bWVkaWE6IHZjb2RlYzogcm9ja2NoaXA6IEFkZCBSb2NrY2hpcCBWUDggZGVjb2RlciBkcml2ZXIK
+CkhlbGxvLAoKT24gV2VkLCBGZWIgMTcsIDIwMTYgYXQgMjo0MyBBTSwgSnVuZyBaaGFvIDxqdW5n
+LnpoYW9Acm9jay1jaGlwcy5jb20+IHdyb3RlOgo+ICsgICAgICAgZG1hX3NldF9hdHRyKERNQV9B
+VFRSX05PX0tFUk5FTF9NQVBQSU5HLCAmYXR0cnNfbm92bSk7Cj4gKyAgICAgICB2cHUtPmFsbG9j
+X2N0eCA9IHZiMl9kbWFfY29udGlnX2luaXRfY3R4X2F0dHJzKCZwZGV2LT5kZXYsCj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZhdHRyc19u
+b3ZtKTsKPiArICAgICAgIGlmIChJU19FUlIodnB1LT5hbGxvY19jdHgpKSB7Cj4gKyAgICAgICAg
+ICAgICAgIHJldCA9IFBUUl9FUlIodnB1LT5hbGxvY19jdHgpOwo+ICsgICAgICAgICAgICAgICBn
+b3RvIGVycl9kbWFfY29udGlnOwo+ICsgICAgICAgfQo+ICsKPiArICAgICAgIHZwdS0+YWxsb2Nf
+Y3R4X3ZtID0gdmIyX2RtYV9jb250aWdfaW5pdF9jdHgoJnBkZXYtPmRldik7Cj4gKyAgICAgICBp
+ZiAoSVNfRVJSKHZwdS0+YWxsb2NfY3R4X3ZtKSkgewo+ICsgICAgICAgICAgICAgICByZXQgPSBQ
+VFJfRVJSKHZwdS0+YWxsb2NfY3R4X3ZtKTsKPiArICAgICAgICAgICAgICAgZ290byBlcnJfZG1h
+X2NvbnRpZ192bTsKPiArICAgICAgIH0KCkknbSBub3QgcXVhbGlmaWVkIHRvIHJldmlldyB0aGlz
+IHdob2xlIGRyaXZlciwgc28ganVzdCBhZGRpbmcgbXkgJDAuMDIuLi4KCkNvdWxkIHlvdSBwbGVh
+c2UgZm9sZAo8aHR0cHM6Ly9jaHJvbWl1bS1yZXZpZXcuZ29vZ2xlc291cmNlLmNvbS8zMjIzMzY+
+IGludG8geW91ciBwYXRjaApzdWJtaXNzaW9uPyAgQWxsIG9mIHRoZSBuZWNlc3NhcnkgcGF0Y2hl
+cyBoYXZlIGxhbmRlZCBpbiBSTUsncyB0cmVlCnVwc3RyZWFtIGFuZCBhcmUgY3VycmVudGx5IHBy
+ZXNlbnQgaW4gbGludXhuZXh0LgoKVGhhbmtzIQoKLURvdWcKCgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
