@@ -1,7 +1,7 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 4/6] dt/bindings: power: add RK3399 SoCs header for power-domain
-Date: Thu, 18 Feb 2016 11:07:16 +0800
-Message-ID: <1455764838-12928-5-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v2 1/6] rockchip: power-domain: make idle handling optional
+Date: Thu, 18 Feb 2016 11:07:13 +0800
+Message-ID: <1455764838-12928-2-git-send-email-zhangqing@rock-chips.com>
 References: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com>
@@ -10,72 +10,48 @@ To: heiko@sntech.de, wxt@rock-chips.com
 Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-According to a description from TRM, add all the power domains
+Not all new socs need to handle idle states on domain state changes,
+so add the possibility to make them optional.
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- include/dt-bindings/power/rk3399-power.h | 53 ++++++++++++++++++++++++++++++++
- 1 file changed, 53 insertions(+)
- create mode 100644 include/dt-bindings/power/rk3399-power.h
+ drivers/soc/rockchip/pm_domains.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/include/dt-bindings/power/rk3399-power.h b/include/dt-bindings/power/rk3399-power.h
-new file mode 100644
-index 0000000..69fbd67
---- /dev/null
-+++ b/include/dt-bindings/power/rk3399-power.h
-@@ -0,0 +1,53 @@
-+#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3399_POWER_H__
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 6cdffb1..3dcc611 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -63,14 +63,16 @@ struct rockchip_pmu {
+ };
+ 
+ #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain, genpd)
++#define NULL_BIT		-32
++#define OVERFLOW_MASK		32
+ 
+ #define DOMAIN(pwr, status, req, idle, ack)	\
+ {						\
+ 	.pwr_mask = BIT(pwr),			\
+ 	.status_mask = BIT(status),		\
+-	.req_mask = BIT(req),			\
+-	.idle_mask = BIT(idle),			\
+-	.ack_mask = BIT(ack),			\
++	.req_mask = (req >= 0) ? BIT(req) : OVERFLOW_MASK,		\
++	.idle_mask = (idle >= 0) ? BIT(idle) : OVERFLOW_MASK,	\
++	.ack_mask = (ack >= 0) ? BIT(ack) : OVERFLOW_MASK,		\
+ }
+ 
+ #define DOMAIN_RK3288(pwr, status, req)		\
+@@ -96,6 +98,9 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	unsigned int val;
+ 
++	if (pd_info->req_mask >= OVERFLOW_MASK)
++		return 0;
 +
-+/* VD_CORE_L */
-+#define RK3399_PD_A53_L0	0
-+#define RK3399_PD_A53_L1	1
-+#define RK3399_PD_A53_L2	2
-+#define RK3399_PD_A53_L3	3
-+#define RK3399_PD_SCU_L		4
-+
-+/* VD_CORE_B */
-+#define RK3399_PD_A72_B0	5
-+#define RK3399_PD_A72_B1	6
-+#define RK3399_PD_SCU_B		7
-+
-+/* VD_CENTER */
-+#define RK3399_PD_CENTER	8
-+#define RK3399_PD_VCODEC	9
-+#define RK3399_PD_RGA		10
-+#define RK3399_PD_IEP		11
-+#define RK3399_PD_VDU		12
-+
-+/* VD_LOGIC */
-+#define RK3399_PD_PERILP	13
-+#define RK3399_PD_PERIHP	14
-+#define RK3399_PD_VIO		15
-+#define RK3399_PD_VO		16
-+#define RK3399_PD_VOPB		17
-+#define RK3399_PD_VOPL		18
-+#define RK3399_PD_ISP0		19
-+#define RK3399_PD_ISP1		20
-+#define RK3399_PD_HDCP		21
-+#define RK3399_PD_TCPD0		22
-+#define RK3399_PD_TCPD1		23
-+#define RK3399_PD_GIC		24
-+#define RK3399_PD_ALIVE		25
-+#define RK3399_PD_USB3		26
-+#define RK3399_PD_SD		27
-+#define RK3399_PD_CCI		28
-+#define RK3399_PD_CCI0		29
-+#define RK3399_PD_CCI1		30
-+#define RK3399_PD_GMAC		31
-+#define RK3399_PD_EMMC		32
-+#define RK3399_PD_EDP		33
-+#define RK3399_PD_SDIOAUDIO	34
-+
-+/* VD_GPU */
-+#define RK3399_PD_GPU		35
-+
-+/* VD_PMU */
-+#define RK3399_PD_PMU		36
-+
-+#endif
+ 	regmap_update_bits(pmu->regmap, pmu->info->req_offset,
+ 			   pd_info->req_mask, idle ? -1U : 0);
+ 
 -- 
 1.9.1
