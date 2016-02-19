@@ -1,49 +1,89 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v4 3/6] spi: rockchip: add bindings for rk3399 spi
-Date: Fri, 19 Feb 2016 14:38:17 +0800
-Message-ID: <56C6B859.8060608@rock-chips.com>
-References: <1455846978-4272-1-git-send-email-jay.xu@rock-chips.com>
- <1455846978-4272-4-git-send-email-jay.xu@rock-chips.com>
- <2298327.hkyYk2mMRK@phil>
+From: Shuyu Wei <sy.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH RESEND] ethernet:arc: Move arc_emac_tx_clean() into
+ arc_emac_tx() and disable tx interrut
+Date: Fri, 19 Feb 2016 14:59:42 +0800
+Message-ID: <BLU436-SMTP169C63F9B677DE7B0A77CF38FA00@phx.gbl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2298327.hkyYk2mMRK@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline; filename="mail.txt"
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
+Doing tx_clean() inside poll() may scramble the tx ring buffer if 
+tx() is running. This will cause tx to stop working, which can be
+reproduced by simultaneously downloading two large files at high speed.
 
-=D4=DA 19/02/2016 14:31, Heiko Stuebner =D0=B4=B5=C0:
-> Hi Jianqun,
->
-> Am Freitag, 19. Februar 2016, 09:56:15 schrieb jianqun.xu:
->> From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> Add devicetree bindings for Rockchip rk3399 spi which found on
->> Rockchip rk3399 SoCs.
->>
->> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->
-> Mark already applied this patch yesterday.
->
+Moving tx_clean() into tx() will prevent this. And tx interrupt is no
+longer needed now.
 
-Good news, so the patch will be removed in next version's patchset.
+Signed-off-by: Shuyu Wei <sy.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>
+---
 
-thanks
->
-> Heiko
->
->
->
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+index abe1eab..34531b3 100644
+--- a/drivers/net/ethernet/arc/emac_main.c
++++ b/drivers/net/ethernet/arc/emac_main.c
+@@ -311,12 +311,10 @@ static int arc_emac_poll(struct napi_struct *napi, int budget)
+ 	struct arc_emac_priv *priv = netdev_priv(ndev);
+ 	unsigned int work_done;
+ 
+-	arc_emac_tx_clean(ndev);
+-
+ 	work_done = arc_emac_rx(ndev, budget);
+ 	if (work_done < budget) {
+ 		napi_complete(napi);
+-		arc_reg_or(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
++		arc_reg_or(priv, R_ENABLE, RXINT_MASK);
+ 	}
+ 
+ 	return work_done;
+@@ -345,9 +343,9 @@ static irqreturn_t arc_emac_intr(int irq, void *dev_instance)
+ 	/* Reset all flags except "MDIO complete" */
+ 	arc_reg_set(priv, R_STATUS, status);
+ 
+-	if (status & (RXINT_MASK | TXINT_MASK)) {
++	if (status & RXINT_MASK) {
+ 		if (likely(napi_schedule_prep(&priv->napi))) {
+-			arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
++			arc_reg_clr(priv, R_ENABLE, RXINT_MASK);
+ 			__napi_schedule(&priv->napi);
+ 		}
+ 	}
+@@ -458,7 +456,7 @@ static int arc_emac_open(struct net_device *ndev)
+ 	arc_reg_set(priv, R_TX_RING, (unsigned int)priv->txbd_dma);
+ 
+ 	/* Enable interrupts */
+-	arc_reg_set(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
++	arc_reg_set(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
+ 
+ 	/* Set CONTROL */
+ 	arc_reg_set(priv, R_CTRL,
+@@ -529,7 +527,7 @@ static int arc_emac_stop(struct net_device *ndev)
+ 	netif_stop_queue(ndev);
+ 
+ 	/* Disable interrupts */
+-	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
++	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
+ 
+ 	/* Disable EMAC */
+ 	arc_reg_clr(priv, R_CTRL, EN_MASK);
+@@ -587,6 +585,8 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+ 	__le32 *info = &priv->txbd[*txbd_curr].info;
+ 	dma_addr_t addr;
+ 
++	arc_emac_tx_clean(ndev);
++
+ 	if (skb_padto(skb, ETH_ZLEN))
+ 		return NETDEV_TX_OK;
