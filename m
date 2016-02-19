@@ -1,92 +1,39 @@
-From: Michael Niewoehner <linux@mniewoehner.de>
-Subject: Re: [PATCH RESEND] ethernet:arc: Move arc_emac_tx_clean() into arc_emac_tx() and disable tx interrut
-Date: Fri, 19 Feb 2016 12:13:56 +0100
-Message-ID: <85B47C95-B524-4A25-90C7-95AE614AB3A2@mniewoehner.de>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH RESEND] ethernet:arc: Move arc_emac_tx_clean() into
+ arc_emac_tx() and disable tx interrut
+Date: Fri, 19 Feb 2016 21:59:27 +0800
+Message-ID: <56C71FBF.1070303@rock-chips.com>
 References: <BLU436-SMTP169C63F9B677DE7B0A77CF38FA00@phx.gbl>
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 8BIT
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <BLU436-SMTP169C63F9B677DE7B0A77CF38FA00@phx.gbl>
-Sender: netdev-owner@vger.kernel.org
-To: Shuyu Wei <sy.w@outlook.com>
-Cc: caesar.upstream@gmail.com, heiko@sntech.de, davem@davemloft.net, zhengxing@rock-chips.com, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org
+ <85B47C95-B524-4A25-90C7-95AE614AB3A2@mniewoehner.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <85B47C95-B524-4A25-90C7-95AE614AB3A2-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michael Niewoehner <linux-zzFNMPX9jIaDjmgdnaGrkw@public.gmane.org>
+Cc: caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shuyu Wei <sy.w-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am 19.02.2016 um 07:59 schrieb Shuyu Wei <sy.w@outlook.com>:
-
-> Doing tx_clean() inside poll() may scramble the tx ring buffer if 
-> tx() is running. This will cause tx to stop working, which can be
-> reproduced by simultaneously downloading two large files at high speed.
-> 
-> Moving tx_clean() into tx() will prevent this. And tx interrupt is no
-> longer needed now.
-> 
-> Signed-off-by: Shuyu Wei <sy.w@outlook.com>
-
-Tested-by: Michael Niewoehner <linux@mniewoehner.de>
-
-> ---
-> 
-> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-> index abe1eab..34531b3 100644
-> --- a/drivers/net/ethernet/arc/emac_main.c
-> +++ b/drivers/net/ethernet/arc/emac_main.c
-> @@ -311,12 +311,10 @@ static int arc_emac_poll(struct napi_struct *napi, int budget)
-> 	struct arc_emac_priv *priv = netdev_priv(ndev);
-> 	unsigned int work_done;
-> 
-> -	arc_emac_tx_clean(ndev);
-> -
-> 	work_done = arc_emac_rx(ndev, budget);
-> 	if (work_done < budget) {
-> 		napi_complete(napi);
-> -		arc_reg_or(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
-> +		arc_reg_or(priv, R_ENABLE, RXINT_MASK);
-> 	}
-> 
-> 	return work_done;
-> @@ -345,9 +343,9 @@ static irqreturn_t arc_emac_intr(int irq, void *dev_instance)
-> 	/* Reset all flags except "MDIO complete" */
-> 	arc_reg_set(priv, R_STATUS, status);
-> 
-> -	if (status & (RXINT_MASK | TXINT_MASK)) {
-> +	if (status & RXINT_MASK) {
-> 		if (likely(napi_schedule_prep(&priv->napi))) {
-> -			arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK);
-> +			arc_reg_clr(priv, R_ENABLE, RXINT_MASK);
-> 			__napi_schedule(&priv->napi);
-> 		}
-> 	}
-> @@ -458,7 +456,7 @@ static int arc_emac_open(struct net_device *ndev)
-> 	arc_reg_set(priv, R_TX_RING, (unsigned int)priv->txbd_dma);
-> 
-> 	/* Enable interrupts */
-> -	arc_reg_set(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
-> +	arc_reg_set(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
-> 
-> 	/* Set CONTROL */
-> 	arc_reg_set(priv, R_CTRL,
-> @@ -529,7 +527,7 @@ static int arc_emac_stop(struct net_device *ndev)
-> 	netif_stop_queue(ndev);
-> 
-> 	/* Disable interrupts */
-> -	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | TXINT_MASK | ERR_MASK);
-> +	arc_reg_clr(priv, R_ENABLE, RXINT_MASK | ERR_MASK);
-> 
-> 	/* Disable EMAC */
-> 	arc_reg_clr(priv, R_CTRL, EN_MASK);
-> @@ -587,6 +585,8 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
-> 	__le32 *info = &priv->txbd[*txbd_curr].info;
-> 	dma_addr_t addr;
-> 
-> +	arc_emac_tx_clean(ndev);
-> +
-> 	if (skb_padto(skb, ETH_ZLEN))
-> 		return NETDEV_TX_OK;
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAxNuW5tDAy5pyIMTnml6UgMTk6MTMsIE1pY2hhZWwgTmlld29laG5lciB3cm90ZToKPiBB
+bSAxOS4wMi4yMDE2IHVtIDA3OjU5IHNjaHJpZWIgU2h1eXUgV2VpPHN5LndAb3V0bG9vay5jb20+
+Ogo+Cj4+IERvaW5nIHR4X2NsZWFuKCkgaW5zaWRlIHBvbGwoKSBtYXkgc2NyYW1ibGUgdGhlIHR4
+IHJpbmcgYnVmZmVyIGlmCj4+IHR4KCkgaXMgcnVubmluZy4gVGhpcyB3aWxsIGNhdXNlIHR4IHRv
+IHN0b3Agd29ya2luZywgd2hpY2ggY2FuIGJlCj4+IHJlcHJvZHVjZWQgYnkgc2ltdWx0YW5lb3Vz
+bHkgZG93bmxvYWRpbmcgdHdvIGxhcmdlIGZpbGVzIGF0IGhpZ2ggc3BlZWQuCj4+Cj4+IE1vdmlu
+ZyB0eF9jbGVhbigpIGludG8gdHgoKSB3aWxsIHByZXZlbnQgdGhpcy4gQW5kIHR4IGludGVycnVw
+dCBpcyBubwo+PiBsb25nZXIgbmVlZGVkIG5vdy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2h1eXUg
+V2VpPHN5LndAb3V0bG9vay5jb20+Cj4gVGVzdGVkLWJ5OiBNaWNoYWVsIE5pZXdvZWhuZXI8bGlu
+dXhAbW5pZXdvZWhuZXIuZGU+ClRlc3RlZC1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2st
+Y2hpcHMuY29tPgoKVGhhbmtzLgoKLS0gCi0gWGluZyBaaGVuZwoKCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
