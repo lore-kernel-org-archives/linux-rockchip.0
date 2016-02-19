@@ -1,149 +1,116 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 3/6] rockchip: power-domain: add support for sub-power domains
-Date: Fri, 19 Feb 2016 01:20:03 +0100
-Message-ID: <1828664.WUMlfLyMuz@phil>
-References: <1455764838-12928-1-git-send-email-zhangqing@rock-chips.com> <1455764838-12928-4-git-send-email-zhangqing@rock-chips.com>
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 5/6] dt-bindings: add documentation of rk3399 clock
+ controller
+Date: Fri, 19 Feb 2016 08:48:15 +0800
+Message-ID: <56C6664F.8070600@rock-chips.com>
+References: <1455673992-16469-1-git-send-email-jay.xu@rock-chips.com>
+ <1455674089-16567-1-git-send-email-jay.xu@rock-chips.com>
+ <20160218143648.GL9654@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455764838-12928-4-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>, Kevin Hilman <khilman@baylibre.com>
-Cc: wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=gbk;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160218143648.GL9654@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+Hi Rob
 
-Am Donnerstag, 18. Februar 2016, 11:07:15 schrieb Elaine Zhang:
-> This patch adds support for making one power domain a sub-domain of
-> other domain. This is useful for modeling power dependences,
-> which needs to have more than one power domain enabled to be operational.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->  drivers/soc/rockchip/pm_domains.c | 54
-> +++++++++++++++++++++++++++++++++++++++ 1 file changed, 54 insertions(+)
-> 
-> diff --git a/drivers/soc/rockchip/pm_domains.c
-> b/drivers/soc/rockchip/pm_domains.c index 350527b..8cdf1b2 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -372,6 +372,54 @@ static void rockchip_configure_pd_cnt(struct
-> rockchip_pmu *pmu, regmap_write(pmu->regmap, domain_reg_offset + 4,
-> count);
->  }
-> 
-> +static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
-> +				     struct device_node *parent)
-> +{
-> +	struct device_node *np;
-> +	int error;
-> +
-> +	for_each_child_of_node(parent, np) {
-> +		struct generic_pm_domain *child_domain, *parent_domain;
-> +		u32 idx = ~0;
-> +
-> +		if (of_property_read_u32(parent, "reg", &idx)) {
-> +			dev_err(pmu->dev,
-> +				"%s: failed to retrieve domain id (reg)\n",
-> +				parent->name);
-> +			of_node_put(parent);
-> +			return -EINVAL;
-> +		}
-> +		parent_domain = pmu->genpd_data.domains[idx];
-> +
-> +		error = rockchip_pm_add_one_domain(pmu, np);
-> +		if (error) {
-> +			dev_err(pmu->dev, "failed to handle node %s: %d\n",
-> +				np->name, error);
-> +			of_node_put(np);
-> +			return -ENODEV;
-> +		}
-> +
-> +		if (of_property_read_u32(np, "reg", &idx)) {
-> +			dev_err(pmu->dev,
-> +				"%s: failed to retrieve domain id (reg)\n",
-> +				np->name);
-> +			of_node_put(np);
-> +			return -EINVAL;
-> +		}
-> +		child_domain = pmu->genpd_data.domains[idx];
-> +
-> +		if (pm_genpd_add_subdomain(parent_domain, child_domain))
-> +			pr_warn("%s failed to add subdomain: %s\n",
-> +				parent_domain->name, child_domain->name);
+=D4=DA 18/02/2016 22:36, Rob Herring =D0=B4=B5=C0:
+> On Wed, Feb 17, 2016 at 09:54:49AM +0800, jianqun.xu wrote:
+>> From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>
+>> Add the devicetree binding for the cru on the rk3399 which quite
+>> similar structured as previous clock controllers.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>   .../bindings/clock/rockchip,rk3399-cru.txt         | 82 ++++++++++=
+++++++++++++
+>>   1 file changed, 82 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/clock/rockchi=
+p,rk3399-cru.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399=
+-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.=
+txt
+>> new file mode 100644
+>> index 0000000..07bcc6e
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.tx=
+t
+>> @@ -0,0 +1,82 @@
+>> +* Rockchip RK3399 Clock and Reset Unit
+>
+> [...]
+>
+>> +Example: General Register Files
+>> +
+>> +	pmugrf: syscon@ff320000 {
+>> +		compatible =3D "rockchip,rk3399-pmugrf", "syscon";
+>
+> Is this documented?
+Since there is no documentation for rockchip grf from early SoCs, I=20
+think if we need to add a new devicetree documentation, such as
+Documentation/devicetree/bindings/clock/rockchip,rk3399-grf.txt ?
 
-should probably be dev_err here
+If you agree, I will add it in next patch
 
+>
+>> +		reg =3D <0x0 0xff320000 0x0 0x1000>;
+>> +	};
+>> +
+>> +	grf: syscon@ff770000 {
+>> +		compatible =3D "rockchip,rk3399-grf", "syscon";
+>
+> ditto.
+>
+>> +		reg =3D <0x0 0xff770000 0x0 0x10000>;
+>> +	};
+>> +
+>> +Example: Clock controller node:
+>> +
+>> +	pmucru: pmu-clock-controller@ff750000 {
+>> +		compatible =3D "rockchip,rk3399-pmucru";
+>> +		reg =3D <0x0 0xff750000 0x0 0x1000>;
+>> +		#clock-cells =3D <1>;
+>> +		#reset-cells =3D <1>;
+>> +	};
+>> +
+>> +	cru: clock-controller@ff760000 {
+>> +		compatible =3D "rockchip,rk3399-cru";
+>> +		reg =3D <0x0 0xff760000 0x0 0x1000>;
+>> +		rockchip,grf =3D <&grf>;
+>> +		#clock-cells =3D <1>;
+>> +		#reset-cells =3D <1>;
+>> +	};
+>> +
+>> +Example: UART controller node that consumes the clock generated by =
+the clock
+>> +  controller:
+>> +
+>> +	uart0: serial@ff1a0000 {
+>> +		compatible =3D "rockchip,rk3399-uart", "snps,dw-apb-uart";
+>> +		reg =3D <0x0 0xff180000 0x0 0x100>;
+>> +		clocks =3D <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+>> +		clock-names =3D "baudclk", "apb_pclk";
+>> +		interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
+>> +		reg-shift =3D <2>;
+>> +		reg-io-width =3D <4>;
+>> +	};
+>> --
+>> 1.9.1
+>>
+>>
+>
+>
+>
 
-> +		else
-> +			pr_warn("%s add subdomain: %s\n",
-> +				parent_domain->name, child_domain->name);
-
-you don't need pr_warn / dev_warn on sucess
-
-> +
-> +		rockchip_pm_add_subdomain(pmu, np);
-> +	}
-> +	return 0;
-> +}
-> +
-
-In general the code looks like you're going to group the domains 
-hirarchically, like
-
-       power: power-controller {
-               compatible = "rockchip,rk3399-power-controller";
-
-               pd_cci {
-                       reg = <RK3399_PD_CCI>;
-                       clocks = ...;
-
-			pd_cci0 {
-				reg = <RK3399_PD_CCI0>;
-				clocks = ...;
-			};
-               };
-       };
-
-This isn't documented in the dt-binding and also isn't really improving
-reading these declarations. Instead as I said before, I think I'd like more 
-get inspiration from how Exynos is doing that already (arch/arm/mach-
-exynos/pm_domains.c at "Assign the child power domains to their parents") 
-simply declaring an additional power-domains property like:
-
-       power: power-controller {
-               compatible = "rockchip,rk3399-power-controller";
-
-               pd_cci {
-                       reg = <RK3399_PD_CCI>;
-                       clocks = ...;
-               };
-
-		pd_cci0 {
-			reg = <RK3399_PD_CCI0>;
-			clocks = ...;
-			power-domains = <&power RK3399_PD_CCI>;
-		};
-       };
-
->  static int rockchip_pm_domain_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> @@ -437,6 +485,12 @@ static int rockchip_pm_domain_probe(struct
-> platform_device *pdev) node->name, error);
->  			goto err_out;
->  		}
-
-blank line here
-
-> +		error = rockchip_pm_add_subdomain(pmu, node);
-> +		if (error < 0) {
-> +			dev_err(dev, "failed to handle subdomain node %s: %d\n",
-> +				node->name, error);
-> +			goto err_out;
-> +		}
->  	}
-> 
->  	if (error) {
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
