@@ -1,15 +1,16 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v5 2/8] clk: rockchip: rk3036: fix and add node id for
  emac clock
-Date: Sun, 21 Feb 2016 03:26:56 +0100
-Message-ID: <2143221.dkVJ5VuQke@phil>
+Date: Sun, 21 Feb 2016 10:45:11 +0800
+Message-ID: <56C924B7.8090301@gmail.com>
 References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
  <1454384899-7270-1-git-send-email-wxt@rock-chips.com>
+ <2143221.dkVJ5VuQke@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1454384899-7270-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <2143221.dkVJ5VuQke@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,61 +20,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar, Xing,
-
-Am Dienstag, 2. Februar 2016, 11:48:19 schrieb Caesar Wang:
-> From: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
-> In the emac driver, we need to refer HCLK_MAC since there are
-> only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under the
-> GPLL, and it is unable to provide the accurate rate for mac_ref which
-> need to 50MHz probability, we should let it under the DPLL and are
-> able to set the freq which integer multiples of 50MHz, so we add these
-> emac node for reference.
-> 
-> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-[...]
-
-> --- a/drivers/clk/rockchip/clk-rk3036.c
-> +++ b/drivers/clk/rockchip/clk-rk3036.c
-> @@ -343,8 +343,11 @@ static struct rockchip_clk_branch
-> rk3036_clk_branches[] __initdata = { RK2928_CLKSEL_CON(16), 0, 2, MFLAGS,
-> 2, 5, DFLAGS,
->  			RK2928_CLKGATE_CON(10), 5, GFLAGS),
-> 
-> -	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
-> -			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 9, 5, DFLAGS),
-> +	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
-> +			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
-> +	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
-> +			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
-> +
-
-CLK_SET_RATE_NO_REPARENT should do the trick as well.
-
-And the whole hclk + clkid part should be separate patches. I took the 
-liberty of splitting them already in [0] to see if I could get the emac 
-running on my kylin board.
-
-Probing emac + phy does suceed, but there is no link-detection.
-Building your kylin-develop4.4 branch [1] results in the same (aka no 
-transmission). 
-
-Only with the original uboot + 4.1-based kernel that was already on the 
-device did I manage to get a network connection.
-
-Is there some additional setup missing somewhere?
-
-
-Heiko
-
-[0] https://github.com/mmind/linux-rockchip/commits/tmp/rk3036-emac
-The 3 additional patches are not strictly necessary there.
-
-[1] https://github.com/rockchip-linux/kernel/tree/kylin-develop4.4
+SGVpa28sCgrlnKggMjAxNuW5tDAy5pyIMjHml6UgMTA6MjYsIEhlaWtvIFN0dWVibmVyIOWGmemB
+kzoKPiBIaSBDYWVzYXIsIFhpbmcsCj4KPiBBbSBEaWVuc3RhZywgMi4gRmVicnVhciAyMDE2LCAx
+MTo0ODoxOSBzY2hyaWViIENhZXNhciBXYW5nOgo+PiBGcm9tOiB6aGVuZ3hpbmcgPHpoZW5neGlu
+Z0Byb2NrLWNoaXBzLmNvbT4KPj4KPj4gSW4gdGhlIGVtYWMgZHJpdmVyLCB3ZSBuZWVkIHRvIHJl
+ZmVyIEhDTEtfTUFDIHNpbmNlIHRoZXJlIGFyZQo+PiBvbmx5IDNQTExzIChBUExML0dQTEwvRFBM
+TCkgb24gdGhlIHJrMzAzNiwgbW9zdCBjbG9jayBhcmUgdW5kZXIgdGhlCj4+IEdQTEwsIGFuZCBp
+dCBpcyB1bmFibGUgdG8gcHJvdmlkZSB0aGUgYWNjdXJhdGUgcmF0ZSBmb3IgbWFjX3JlZiB3aGlj
+aAo+PiBuZWVkIHRvIDUwTUh6IHByb2JhYmlsaXR5LCB3ZSBzaG91bGQgbGV0IGl0IHVuZGVyIHRo
+ZSBEUExMIGFuZCBhcmUKPj4gYWJsZSB0byBzZXQgdGhlIGZyZXEgd2hpY2ggaW50ZWdlciBtdWx0
+aXBsZXMgb2YgNTBNSHosIHNvIHdlIGFkZCB0aGVzZQo+PiBlbWFjIG5vZGUgZm9yIHJlZmVyZW5j
+ZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMu
+Y29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+
+IFsuLi5dCj4KPj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzAzNi5jCj4+ICsr
+KyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMwMzYuYwo+PiBAQCAtMzQzLDggKzM0Mywx
+MSBAQCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2gKPj4gcmszMDM2X2Nsa19icmFu
+Y2hlc1tdIF9faW5pdGRhdGEgPSB7IFJLMjkyOF9DTEtTRUxfQ09OKDE2KSwgMCwgMiwgTUZMQUdT
+LAo+PiAyLCA1LCBERkxBR1MsCj4+ICAgCQkJUksyOTI4X0NMS0dBVEVfQ09OKDEwKSwgNSwgR0ZM
+QUdTKSwKPj4KPj4gLQlDT01QT1NJVEVfTk9HQVRFKDAsICJtYWNfcGxsX3NyYyIsIG11eF9wbGxf
+c3JjXzNwbGxzX3AsIDAsCj4+IC0JCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDAsIDIsIE1GTEFH
+UywgOSwgNSwgREZMQUdTKSwKPj4gKwlNVVgoU0NMS19NQUNQTEwsICJtYWNfcGxsX3ByZSIsIG11
+eF9wbGxfc3JjXzNwbGxzX3AsIDAsCj4+ICsJCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDAsIDIs
+IE1GTEFHUyksCj4+ICsJRElWKDAsICJtYWNfcGxsX3NyYyIsICJtYWNfcGxsX3ByZSIsIDAsCj4+
+ICsJCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDksIDUsIERGTEFHUyksCj4+ICsKPiBDTEtfU0VU
+X1JBVEVfTk9fUkVQQVJFTlQgc2hvdWxkIGRvIHRoZSB0cmljayBhcyB3ZWxsLgo+Cj4gQW5kIHRo
+ZSB3aG9sZSBoY2xrICsgY2xraWQgcGFydCBzaG91bGQgYmUgc2VwYXJhdGUgcGF0Y2hlcy4gSSB0
+b29rIHRoZQo+IGxpYmVydHkgb2Ygc3BsaXR0aW5nIHRoZW0gYWxyZWFkeSBpbiBbMF0gdG8gc2Vl
+IGlmIEkgY291bGQgZ2V0IHRoZSBlbWFjCj4gcnVubmluZyBvbiBteSBreWxpbiBib2FyZC4KPgo+
+IFByb2JpbmcgZW1hYyArIHBoeSBkb2VzIHN1Y2VlZCwgYnV0IHRoZXJlIGlzIG5vIGxpbmstZGV0
+ZWN0aW9uLgo+IEJ1aWxkaW5nIHlvdXIga3lsaW4tZGV2ZWxvcDQuNCBicmFuY2ggWzFdIHJlc3Vs
+dHMgaW4gdGhlIHNhbWUgKGFrYSBubwo+IHRyYW5zbWlzc2lvbikuCj4KPiBPbmx5IHdpdGggdGhl
+IG9yaWdpbmFsIHVib290ICsgNC4xLWJhc2VkIGtlcm5lbCB0aGF0IHdhcyBhbHJlYWR5IG9uIHRo
+ZQo+IGRldmljZSBkaWQgSSBtYW5hZ2UgdG8gZ2V0IGEgbmV0d29yayBjb25uZWN0aW9uLgoKSSBn
+dWVzcyB5b3UgbmVlZCBhcHBseSB0aGUgdWJvb3QgcGF0Y2hbMF0uCgpwYXRjaFswXToKaHR0cDov
+L2xpc3RzLmRlbnguZGUvcGlwZXJtYWlsL3UtYm9vdC8yMDE2LUZlYnJ1YXJ5LzI0NTgxNC5odG1s
+CgpvciBnZXQgdGhlIHVib290IGZyb20gcm9ja2NoaXAgZ2l0aHViOgpodHRwczovL2dpdGh1Yi5j
+b20vcm9ja2NoaXAtbGludXgvdS1ib290L2NvbW1pdHMvcmszMDM2CgoKPgo+IElzIHRoZXJlIHNv
+bWUgYWRkaXRpb25hbCBzZXR1cCBtaXNzaW5nIHNvbWV3aGVyZT8KPgo+Cj4gSGVpa28KPgo+IFsw
+XSBodHRwczovL2dpdGh1Yi5jb20vbW1pbmQvbGludXgtcm9ja2NoaXAvY29tbWl0cy90bXAvcmsz
+MDM2LWVtYWMKPiBUaGUgMyBhZGRpdGlvbmFsIHBhdGNoZXMgYXJlIG5vdCBzdHJpY3RseSBuZWNl
+c3NhcnkgdGhlcmUuCj4KPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tl
+cm5lbC90cmVlL2t5bGluLWRldmVsb3A0LjQKClRoZSBsYXN0ZXN0IGt5bGluLWRldmVsb3AuNC40
+LnkgZnJvbSBteSBnaXRodWI6Cmh0dHBzOi8vZ2l0aHViLmNvbS9DYWVzYXItZ2l0aHViL3JvY2tj
+aGlwL3RyZWUva3lsaW4vZGV2ZWxvcC00LjQueQoKCj4KPgo+IF9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgotLSAKVGhhbmtzLApD
+YWVzYXIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
