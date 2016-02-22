@@ -1,52 +1,102 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v1 0/2] patches to add support for rockchip rt5640 card
-Date: Mon, 22 Feb 2016 20:04:16 +0900
-Message-ID: <20160222110416.GC18327@sirena.org.uk>
-References: <1456127815-68575-1-git-send-email-sugar.zhang@rock-chips.com>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH 0/2] Add Rockchip display port phy driver support
+Date: Mon, 22 Feb 2016 16:45:10 +0530
+Message-ID: <56CAEDBE.2050808@ti.com>
+References: <1455534071-31230-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="DLy7ErigvZFpjC4N"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1456127815-68575-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Oder Chiou <oder_chiou-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Bard Liao <bardliao-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455534071-31230-1-git-send-email-ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
 
---DLy7ErigvZFpjC4N
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Monday 15 February 2016 04:31 PM, Yakir Yang wrote:
+> 
+> Hi Kison,
+> 
+> This series is splited from Analogix DP DRM thread [0], and Heiko suggest this
+> should be an independent thread which may be easy for you to apply.
 
-On Mon, Feb 22, 2016 at 03:56:53PM +0800, Sugar Zhang wrote:
+Indeed. Merged now thanks. (Changed the year to 2016 in the file header before
+merging)
 
-> Sugar Zhang (2):
->   ASoC: rockchip: i2s: add default values for registers
->   ASoC: rt5640: add master clock handling for rt5640
+Thanks
+Kishon
 
-These appear to be commpletly unrelated patches so should each be sent
-individually rather than as a series - that way there is no confusion
-about them possibly depending on each other and they are easier to
-review and apply.
-
---DLy7ErigvZFpjC4N
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWyusvAAoJECTWi3JdVIfQZhkH/jNZD0jV7sEbj+S5zX225hTs
-fnDTx29It6Yyw87P+vtDI+kM/MU8lMbxXJRV85sF+O/atiGwc0yrdKmLekkyRhrI
-eEsJQbq11J1nN31aYHMcOeC9oHx1pDSedTkT3z4oJDE0WPADaiPmLlaGJR/u0+Oh
-rA94BGqPQ/spz9FZY5rxb2M3lF+VD9eT8gWTES2v8T+k0VYjXvdSyJwbJPG7/SSe
-NU3ZIwk3e/AoqjlPWt/ZzbUKnK2C7CHzs5x2FLLsv3iwTrEussk8x6oGXoKoOw65
-8PBk/6bbXbhFfdwP9ZKxohbplfVubXZL5ho0G9PK4icp8s3Y7WZRliPUTZCwfG4=
-=+0Fx
------END PGP SIGNATURE-----
-
---DLy7ErigvZFpjC4N--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Best regards,
+> Yakir
+> 
+> [0]: https://patchwork.kernel.org/patch/8086571/
+> 
+> 
+> Changes in v12:
+> - Re-order the include headers file alphabetically in phy-rockchip-dp.c (Jingoo)
+> 
+> Changes in v11:
+> - Correct the title of this rockchip dp phy document(Rob)
+> - Add the ack from Rob Herring
+> 
+> Changes in v10:
+> - Fix the wrong macro value of GRF_EDP_REF_CLK_SEL_INTER_HIWORD_MASK
+>     BIT(4) -> BIT(20)
+> 
+> Changes in v9:
+> - Removed the unused the variable "res" in probe function. (Heiko)
+> - Removed the unused head file.
+> 
+> Changes in v8:
+> - Fix the mixed spacers on macro definitions. (Heiko)
+> - Remove the unnecessary empty line after clk_prepare_enable. (Heiko)
+> - Remove the specific address in the example node name. (Heiko)
+> 
+> Changes in v7:
+> - Simply the commit message. (Kishon)
+> - Symmetrical enable/disbale the phy clock and power. (Kishon)
+> - Simplify the commit message. (Kishon)
+> 
+> Changes in v5:
+> - Remove "reg" DT property, cause driver could poweron/poweroff phy via
+>   the exist "grf" syscon already. And rename the example DT node from
+>   "edp_phy: phy@ff770274" to "edp_phy: edp-phy" directly. (Heiko)
+> - Add deivce_node at the front of driver, update phy_ops type from "static
+>   struct" to "static const struct". And correct the input paramters of
+>   devm_phy_create() interfaces. (Heiko)
+> - Split binding doc's from driver changes. (Rob)
+> - Update the rockchip,grf explain in document, and correct the clock required
+>   elemets in document. (Rob & Heiko)
+> 
+> Changes in v4:
+> - Add commit message, and remove the redundant rockchip_dp_phy_init()
+>   function, move those code to probe() method. And remove driver .owner
+>   number. (Kishon)
+> 
+> Changes in v3:
+> - Suggest, add rockchip dp phy driver, collect the phy clocks and
+>   power control. (Heiko)
+> 
+> Yakir Yang (2):
+>   phy: Add driver for rockchip Display Port PHY
+>   dt-bindings: add document for rockchip dp phy
+> 
+>  .../devicetree/bindings/phy/rockchip-dp-phy.txt    |  22 +++
+>  drivers/phy/Kconfig                                |   7 +
+>  drivers/phy/Makefile                               |   1 +
+>  drivers/phy/phy-rockchip-dp.c                      | 151 +++++++++++++++++++++
+>  4 files changed, 181 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-dp-phy.txt
+>  create mode 100644 drivers/phy/phy-rockchip-dp.c
+> 
