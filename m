@@ -1,76 +1,26 @@
-From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v5 2/8] clk: rockchip: rk3036: fix and add node id for
- emac clock
-Date: Sun, 21 Feb 2016 10:45:11 +0800
-Message-ID: <56C924B7.8090301@gmail.com>
-References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com>
- <1454384899-7270-1-git-send-email-wxt@rock-chips.com>
- <2143221.dkVJ5VuQke@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2143221.dkVJ5VuQke@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH v1 0/2] patches to add support for rockchip rt5640 card
+Date: Mon, 22 Feb 2016 15:56:53 +0800
+Message-ID: <1456127815-68575-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, heiko@sntech.de
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Oder Chiou <oder_chiou@realtek.com>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Bard Liao <bardliao@realtek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgrlnKggMjAxNuW5tDAy5pyIMjHml6UgMTA6MjYsIEhlaWtvIFN0dWVibmVyIOWGmemB
-kzoKPiBIaSBDYWVzYXIsIFhpbmcsCj4KPiBBbSBEaWVuc3RhZywgMi4gRmVicnVhciAyMDE2LCAx
-MTo0ODoxOSBzY2hyaWViIENhZXNhciBXYW5nOgo+PiBGcm9tOiB6aGVuZ3hpbmcgPHpoZW5neGlu
-Z0Byb2NrLWNoaXBzLmNvbT4KPj4KPj4gSW4gdGhlIGVtYWMgZHJpdmVyLCB3ZSBuZWVkIHRvIHJl
-ZmVyIEhDTEtfTUFDIHNpbmNlIHRoZXJlIGFyZQo+PiBvbmx5IDNQTExzIChBUExML0dQTEwvRFBM
-TCkgb24gdGhlIHJrMzAzNiwgbW9zdCBjbG9jayBhcmUgdW5kZXIgdGhlCj4+IEdQTEwsIGFuZCBp
-dCBpcyB1bmFibGUgdG8gcHJvdmlkZSB0aGUgYWNjdXJhdGUgcmF0ZSBmb3IgbWFjX3JlZiB3aGlj
-aAo+PiBuZWVkIHRvIDUwTUh6IHByb2JhYmlsaXR5LCB3ZSBzaG91bGQgbGV0IGl0IHVuZGVyIHRo
-ZSBEUExMIGFuZCBhcmUKPj4gYWJsZSB0byBzZXQgdGhlIGZyZXEgd2hpY2ggaW50ZWdlciBtdWx0
-aXBsZXMgb2YgNTBNSHosIHNvIHdlIGFkZCB0aGVzZQo+PiBlbWFjIG5vZGUgZm9yIHJlZmVyZW5j
-ZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMu
-Y29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgo+
-IFsuLi5dCj4KPj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzAzNi5jCj4+ICsr
-KyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMwMzYuYwo+PiBAQCAtMzQzLDggKzM0Mywx
-MSBAQCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2gKPj4gcmszMDM2X2Nsa19icmFu
-Y2hlc1tdIF9faW5pdGRhdGEgPSB7IFJLMjkyOF9DTEtTRUxfQ09OKDE2KSwgMCwgMiwgTUZMQUdT
-LAo+PiAyLCA1LCBERkxBR1MsCj4+ICAgCQkJUksyOTI4X0NMS0dBVEVfQ09OKDEwKSwgNSwgR0ZM
-QUdTKSwKPj4KPj4gLQlDT01QT1NJVEVfTk9HQVRFKDAsICJtYWNfcGxsX3NyYyIsIG11eF9wbGxf
-c3JjXzNwbGxzX3AsIDAsCj4+IC0JCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDAsIDIsIE1GTEFH
-UywgOSwgNSwgREZMQUdTKSwKPj4gKwlNVVgoU0NMS19NQUNQTEwsICJtYWNfcGxsX3ByZSIsIG11
-eF9wbGxfc3JjXzNwbGxzX3AsIDAsCj4+ICsJCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDAsIDIs
-IE1GTEFHUyksCj4+ICsJRElWKDAsICJtYWNfcGxsX3NyYyIsICJtYWNfcGxsX3ByZSIsIDAsCj4+
-ICsJCQlSSzI5MjhfQ0xLU0VMX0NPTigyMSksIDksIDUsIERGTEFHUyksCj4+ICsKPiBDTEtfU0VU
-X1JBVEVfTk9fUkVQQVJFTlQgc2hvdWxkIGRvIHRoZSB0cmljayBhcyB3ZWxsLgo+Cj4gQW5kIHRo
-ZSB3aG9sZSBoY2xrICsgY2xraWQgcGFydCBzaG91bGQgYmUgc2VwYXJhdGUgcGF0Y2hlcy4gSSB0
-b29rIHRoZQo+IGxpYmVydHkgb2Ygc3BsaXR0aW5nIHRoZW0gYWxyZWFkeSBpbiBbMF0gdG8gc2Vl
-IGlmIEkgY291bGQgZ2V0IHRoZSBlbWFjCj4gcnVubmluZyBvbiBteSBreWxpbiBib2FyZC4KPgo+
-IFByb2JpbmcgZW1hYyArIHBoeSBkb2VzIHN1Y2VlZCwgYnV0IHRoZXJlIGlzIG5vIGxpbmstZGV0
-ZWN0aW9uLgo+IEJ1aWxkaW5nIHlvdXIga3lsaW4tZGV2ZWxvcDQuNCBicmFuY2ggWzFdIHJlc3Vs
-dHMgaW4gdGhlIHNhbWUgKGFrYSBubwo+IHRyYW5zbWlzc2lvbikuCj4KPiBPbmx5IHdpdGggdGhl
-IG9yaWdpbmFsIHVib290ICsgNC4xLWJhc2VkIGtlcm5lbCB0aGF0IHdhcyBhbHJlYWR5IG9uIHRo
-ZQo+IGRldmljZSBkaWQgSSBtYW5hZ2UgdG8gZ2V0IGEgbmV0d29yayBjb25uZWN0aW9uLgoKSSBn
-dWVzcyB5b3UgbmVlZCBhcHBseSB0aGUgdWJvb3QgcGF0Y2hbMF0uCgpwYXRjaFswXToKaHR0cDov
-L2xpc3RzLmRlbnguZGUvcGlwZXJtYWlsL3UtYm9vdC8yMDE2LUZlYnJ1YXJ5LzI0NTgxNC5odG1s
-CgpvciBnZXQgdGhlIHVib290IGZyb20gcm9ja2NoaXAgZ2l0aHViOgpodHRwczovL2dpdGh1Yi5j
-b20vcm9ja2NoaXAtbGludXgvdS1ib290L2NvbW1pdHMvcmszMDM2CgoKPgo+IElzIHRoZXJlIHNv
-bWUgYWRkaXRpb25hbCBzZXR1cCBtaXNzaW5nIHNvbWV3aGVyZT8KPgo+Cj4gSGVpa28KPgo+IFsw
-XSBodHRwczovL2dpdGh1Yi5jb20vbW1pbmQvbGludXgtcm9ja2NoaXAvY29tbWl0cy90bXAvcmsz
-MDM2LWVtYWMKPiBUaGUgMyBhZGRpdGlvbmFsIHBhdGNoZXMgYXJlIG5vdCBzdHJpY3RseSBuZWNl
-c3NhcnkgdGhlcmUuCj4KPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tl
-cm5lbC90cmVlL2t5bGluLWRldmVsb3A0LjQKClRoZSBsYXN0ZXN0IGt5bGluLWRldmVsb3AuNC40
-LnkgZnJvbSBteSBnaXRodWI6Cmh0dHBzOi8vZ2l0aHViLmNvbS9DYWVzYXItZ2l0aHViL3JvY2tj
-aGlwL3RyZWUva3lsaW4vZGV2ZWxvcC00LjQueQoKCj4KPgo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCgotLSAKVGhhbmtzLApD
-YWVzYXIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+add default values for i2s registers from TRM.
+rt5640: add master clock handing.
+
+
+Sugar Zhang (2):
+  ASoC: rockchip: i2s: add default values for registers
+  ASoC: rt5640: add master clock handling for rt5640
+
+ Documentation/devicetree/bindings/sound/rt5640.txt |  3 +++
+ sound/soc/codecs/rt5640.c                          | 31 ++++++++++++++++++++++
+ sound/soc/codecs/rt5640.h                          |  2 ++
+ sound/soc/rockchip/rockchip_i2s.c                  | 10 +++++++
+ 4 files changed, 46 insertions(+)
+
+-- 
+1.9.1
