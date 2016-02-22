@@ -1,447 +1,300 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v5.1] phy: rockchip-usb: add handler for usb-uart functionality
-Date: Mon, 22 Feb 2016 12:41:05 +0100
-Message-ID: <1670829.9XWsDys3pl@phil>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v5.1] phy: rockchip-usb: add handler for usb-uart
+ functionality
+Date: Mon, 22 Feb 2016 17:15:34 +0530
+Message-ID: <56CAF4DE.2060708@ti.com>
+References: <1670829.9XWsDys3pl@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, romain.perier@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1670829.9XWsDys3pl@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romain.perier-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Most newer Rockchip SoCs provide the possibility to use a usb-phy
-as passthrough for the debug uart (uart2), making it possible to
-for example get console output without needing to open the device.
-
-This patch adds an early_initcall to enable this functionality
-conditionally via the commandline and also disables the corresponding
-usb controller in the devicetree.
-
-Currently only data for the rk3288 is provided, but at least the
-rk3188 and arm64 rk3368 also provide this functionality and will be
-enabled later.
-
-On a spliced usb cable the signals are tx on white wire(D+) and
-rx on green wire(D-).
-
-The one caveat is that currently the reconfiguration of the phy
-happens as early_initcall, as the code depends on the unflattened
-devicetree being available. Everything is fine if only a regular
-console is active as the console-replay will happen after the
-reconfiguation. But with earlycon active output up to smp-init
-currently will get lost.
-
-The phy is an optional property for the connected dwc2 controller,
-so we still provide the phy device but fail all phy-ops with -EBUSY
-to make sure the dwc2 does not try to transmit anything on the
-repurposed phy.
-
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
-changes in v5.1:
-- fix corruptions that happened when sending v5
-changes in v5:
-- only compile debug uart functionality if the phy is compiled in
-  fixes initcall conflict and debug functionality also is only really
-  usable if it's available early
-changes in v4:
-- drop the rest of the phy-series, as the patches have gotten applied
-
-So far, this hasn't gotten eyeballs yet, so citing discussion-parts fro=
-m
-the v3 coverletter:
-
-The patch, while not associated with the new pll handling, also builds
-on the groundwork introduced there and adds support for the function
-repurposing one of the phys as passthrough for uart-data. This enables
-attaching a ttl converter to the D+ and D- pins of an usb cable to
-receive uart data this way, when it is not really possible to attach
-a regular serial console to a board.
-
-One point of critique in my first iteration [0] of this was, that
-due to when the reconfiguration happens we may miss parts of the logs
-when earlycon is enabled. So far early_initcall gets used as the
-unflattened devicetree is necessary to set this up. Doing this for
-example in the early_param directly would require parsing the flattened
-devicetree to get needed nodes and properties.
-
-I still maintain that if you're working on anything before smp-bringup
-you should use a real dev-board instead or try to solder uart cables
-on hopefully available test-points  .
-
-
- Documentation/kernel-parameters.txt |   6 +
- drivers/phy/phy-rockchip-usb.c      | 233 ++++++++++++++++++++++++++++=
-++------
- 2 files changed, 203 insertions(+), 36 deletions(-)
-
-diff --git a/Documentation/kernel-parameters.txt b/Documentation/kernel=
--parameters.txt
-index 87d40a7..d91417b 100644
---- a/Documentation/kernel-parameters.txt
-+++ b/Documentation/kernel-parameters.txt
-@@ -3486,6 +3486,12 @@ bytes respectively. Such letter suffixes can als=
-o be entirely omitted.
-=20
- 	ro		[KNL] Mount root device read-only on boot
-=20
-+	rockchip.usb_uart
-+			Enable the uart passthrough on the designated usb port
-+			on Rockchip SoCs. When active, the signals of the
-+			debug-uart get routed to the D+ and D- pins of the usb
-+			port and the regular usb controller gets disabled.
-+
- 	root=3D		[KNL] Root filesystem
- 			See name_to_dev_t comment in init/do_mounts.c.
-=20
-diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchip-=
-usb.c
-index 33a80eb..f62d899 100644
---- a/drivers/phy/phy-rockchip-usb.c
-+++ b/drivers/phy/phy-rockchip-usb.c
-@@ -30,21 +30,23 @@
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
-=20
--/*
-- * The higher 16-bit of this register is used for write protection
-- * only if BIT(13 + 16) set to 1 the BIT(13) can be written.
-- */
--#define SIDDQ_WRITE_ENA	BIT(29)
--#define SIDDQ_ON		BIT(13)
--#define SIDDQ_OFF		(0 << 13)
-+static int enable_usb_uart;
-+
-+#define HIWORD_UPDATE(val, mask) \
-+		((val) | (mask) << 16)
-+
-+#define UOC_CON0_SIDDQ BIT(13)
-=20
- struct rockchip_usb_phys {
- 	int reg;
- 	const char *pll_name;
- };
-=20
-+struct rockchip_usb_phy_base;
- struct rockchip_usb_phy_pdata {
- 	struct rockchip_usb_phys *phys;
-+	int (*init_usb_uart)(struct regmap *grf);
-+	int usb_uart_phy;
- };
-=20
- struct rockchip_usb_phy_base {
-@@ -61,13 +63,15 @@ struct rockchip_usb_phy {
- 	struct clk      *clk480m;
- 	struct clk_hw	clk480m_hw;
- 	struct phy	*phy;
-+	bool		uart_enabled;
- };
-=20
- static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
- 					   bool siddq)
- {
--	return regmap_write(phy->base->reg_base, phy->reg_offset,
--			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
-+	u32 val =3D HIWORD_UPDATE(siddq ? UOC_CON0_SIDDQ : 0, UOC_CON0_SIDDQ)=
-;
-+
-+	return regmap_write(phy->base->reg_base, phy->reg_offset, val);
- }
-=20
- static unsigned long rockchip_usb_phy480m_recalc_rate(struct clk_hw *h=
-w,
-@@ -108,7 +112,7 @@ static int rockchip_usb_phy480m_is_enabled(struct c=
-lk_hw *hw)
- 	if (ret < 0)
- 		return ret;
-=20
--	return (val & SIDDQ_ON) ? 0 : 1;
-+	return (val & UOC_CON0_SIDDQ) ? 0 : 1;
- }
-=20
- static const struct clk_ops rockchip_usb_phy480m_ops =3D {
-@@ -122,6 +126,9 @@ static int rockchip_usb_phy_power_off(struct phy *_=
-phy)
- {
- 	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
-=20
-+	if (phy->uart_enabled)
-+		return -EBUSY;
-+
- 	clk_disable_unprepare(phy->clk480m);
-=20
- 	return 0;
-@@ -131,6 +138,9 @@ static int rockchip_usb_phy_power_on(struct phy *_p=
-hy)
- {
- 	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
-=20
-+	if (phy->uart_enabled)
-+		return -EBUSY;
-+
- 	return clk_prepare_enable(phy->clk480m);
- }
-=20
-@@ -144,8 +154,10 @@ static void rockchip_usb_phy_action(void *data)
- {
- 	struct rockchip_usb_phy *rk_phy =3D data;
-=20
--	of_clk_del_provider(rk_phy->np);
--	clk_unregister(rk_phy->clk480m);
-+	if (!rk_phy->uart_enabled) {
-+		of_clk_del_provider(rk_phy->np);
-+		clk_unregister(rk_phy->clk480m);
-+	}
-=20
- 	if (rk_phy->clk)
- 		clk_put(rk_phy->clk);
-@@ -194,30 +206,35 @@ static int rockchip_usb_phy_init(struct rockchip_=
-usb_phy_base *base,
- 		return -EINVAL;
- 	}
-=20
--	if (rk_phy->clk) {
--		clk_name =3D __clk_get_name(rk_phy->clk);
--		init.flags =3D 0;
--		init.parent_names =3D &clk_name;
--		init.num_parents =3D 1;
-+	if (enable_usb_uart && base->pdata->usb_uart_phy =3D=3D i) {
-+		dev_dbg(base->dev, "phy%d used as uart output\n", i);
-+		rk_phy->uart_enabled =3D true;
- 	} else {
--		init.flags =3D CLK_IS_ROOT;
--		init.parent_names =3D NULL;
--		init.num_parents =3D 0;
--	}
-+		if (rk_phy->clk) {
-+			clk_name =3D __clk_get_name(rk_phy->clk);
-+			init.flags =3D 0;
-+			init.parent_names =3D &clk_name;
-+			init.num_parents =3D 1;
-+		} else {
-+			init.flags =3D CLK_IS_ROOT;
-+			init.parent_names =3D NULL;
-+			init.num_parents =3D 0;
-+		}
-=20
--	init.ops =3D &rockchip_usb_phy480m_ops;
--	rk_phy->clk480m_hw.init =3D &init;
-+		init.ops =3D &rockchip_usb_phy480m_ops;
-+		rk_phy->clk480m_hw.init =3D &init;
-=20
--	rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw);
--	if (IS_ERR(rk_phy->clk480m)) {
--		err =3D PTR_ERR(rk_phy->clk480m);
--		goto err_clk;
--	}
-+		rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw);
-+		if (IS_ERR(rk_phy->clk480m)) {
-+			err =3D PTR_ERR(rk_phy->clk480m);
-+			goto err_clk;
-+		}
-=20
--	err =3D of_clk_add_provider(child, of_clk_src_simple_get,
--				  rk_phy->clk480m);
--	if (err < 0)
--		goto err_clk_prov;
-+		err =3D of_clk_add_provider(child, of_clk_src_simple_get,
-+					rk_phy->clk480m);
-+		if (err < 0)
-+			goto err_clk_prov;
-+	}
-=20
- 	err =3D devm_add_action(base->dev, rockchip_usb_phy_action, rk_phy);
- 	if (err)
-@@ -230,13 +247,21 @@ static int rockchip_usb_phy_init(struct rockchip_=
-usb_phy_base *base,
- 	}
- 	phy_set_drvdata(rk_phy->phy, rk_phy);
-=20
--	/* only power up usb phy when it use, so disable it when init*/
--	return rockchip_usb_phy_power(rk_phy, 1);
-+	/*
-+	 * When acting as uart-pipe, just keep clock on otherwise
-+	 * only power up usb phy when it use, so disable it when init
-+	 */
-+	if (rk_phy->uart_enabled)
-+		return clk_prepare_enable(rk_phy->clk);
-+	else
-+		return rockchip_usb_phy_power(rk_phy, 1);
-=20
- err_devm_action:
--	of_clk_del_provider(child);
-+	if (!rk_phy->uart_enabled)
-+		of_clk_del_provider(child);
- err_clk_prov:
--	clk_unregister(rk_phy->clk480m);
-+	if (!rk_phy->uart_enabled)
-+		clk_unregister(rk_phy->clk480m);
- err_clk:
- 	if (rk_phy->clk)
- 		clk_put(rk_phy->clk);
-@@ -259,6 +284,86 @@ static const struct rockchip_usb_phy_pdata rk3188_=
-pdata =3D {
- 	},
- };
-=20
-+#define RK3288_UOC0_CON0				0x320
-+#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
-+#define RK3288_UOC0_CON0_DISABLE			BIT(4)
-+
-+#define RK3288_UOC0_CON2				0x328
-+#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
-+
-+#define RK3288_UOC0_CON3				0x32c
-+#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
-+#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
-+#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
-+#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
-+#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
-+#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
-+#define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
-+#define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
-+
-+/*
-+ * Enable the bypass of uart2 data through the otg usb phy.
-+ * Original description in the TRM.
-+ * 1. Disable the OTG block by setting OTGDISABLE0 to 1=E2=80=99b1.
-+ * 2. Disable the pull-up resistance on the D+ line by setting
-+ *    OPMODE0[1:0] to 2=E2=80=99b01.
-+ * 3. To ensure that the XO, Bias, and PLL blocks are powered down in =
-Suspend
-+ *    mode, set COMMONONN to 1=E2=80=99b1.
-+ * 4. Place the USB PHY in Suspend mode by setting SUSPENDM0 to 1=E2=80=
-=99b0.
-+ * 5. Set BYPASSSEL0 to 1=E2=80=99b1.
-+ * 6. To transmit data, controls BYPASSDMEN0, and BYPASSDMDATA0.
-+ * To receive data, monitor FSVPLUS0.
-+ *
-+ * The actual code in the vendor kernel does some things differently.
-+ */
-+static int __init rk3288_init_usb_uart(struct regmap *grf)
-+{
-+	u32 val;
-+	int ret;
-+
-+	/*
-+	 * COMMON_ON and DISABLE settings are described in the TRM,
-+	 * but were not present in the original code.
-+	 * Also disable the analog phy components to save power.
-+	 */
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
-+				| RK3288_UOC0_CON0_DISABLE
-+				| UOC_CON0_SIDDQ,
-+			    RK3288_UOC0_CON0_COMMON_ON_N
-+				| RK3288_UOC0_CON0_DISABLE
-+				| UOC_CON0_SIDDQ);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON0, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
-+			    RK3288_UOC0_CON2_SOFT_CON_SEL);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON2, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
-+				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
-+				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
-+			    RK3288_UOC0_CON3_UTMI_SUSPENDN
-+				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
-+				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
-+				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
-+	if (ret)
-+		return ret;
-+
-+	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_BYPASSSEL
-+				| RK3288_UOC0_CON3_BYPASSDMEN,
-+			    RK3288_UOC0_CON3_BYPASSSEL
-+				| RK3288_UOC0_CON3_BYPASSDMEN);
-+	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
- static const struct rockchip_usb_phy_pdata rk3288_pdata =3D {
- 	.phys =3D (struct rockchip_usb_phys[]){
- 		{ .reg =3D 0x320, .pll_name =3D "sclk_otgphy0_480m" },
-@@ -266,6 +371,8 @@ static const struct rockchip_usb_phy_pdata rk3288_p=
-data =3D {
- 		{ .reg =3D 0x348, .pll_name =3D "sclk_otgphy2_480m" },
- 		{ /* sentinel */ }
- 	},
-+	.init_usb_uart =3D rk3288_init_usb_uart,
-+	.usb_uart_phy =3D 0,
- };
-=20
- static int rockchip_usb_phy_probe(struct platform_device *pdev)
-@@ -328,6 +435,60 @@ static struct platform_driver rockchip_usb_driver =
-=3D {
-=20
- module_platform_driver(rockchip_usb_driver);
-=20
-+#ifndef MODULE
-+static int __init rockchip_init_usb_uart(void)
-+{
-+	const struct of_device_id *match;
-+	const struct rockchip_usb_phy_pdata *data;
-+	struct device_node *np;
-+	struct regmap *grf;
-+	int ret;
-+
-+	if (!enable_usb_uart)
-+		return 0;
-+
-+	np =3D of_find_matching_node_and_match(NULL, rockchip_usb_phy_dt_ids,
-+					     &match);
-+	if (!np) {
-+		pr_err("%s: failed to find usbphy node\n", __func__);
-+		return -ENOTSUPP;
-+	}
-+
-+	pr_debug("%s: using settings for %s\n", __func__, match->compatible);
-+	data =3D match->data;
-+
-+	if (!data->init_usb_uart) {
-+		pr_err("%s: usb-uart not available on %s\n",
-+		       __func__, match->compatible);
-+		return -ENOTSUPP;
-+	}
-+
-+	grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	if (IS_ERR(grf)) {
-+		pr_err("%s: Missing rockchip,grf property, %lu\n",
-+		       __func__, PTR_ERR(grf));
-+		return PTR_ERR(grf);
-+	}
-+
-+	ret =3D data->init_usb_uart(grf);
-+	if (ret) {
-+		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
-+		enable_usb_uart =3D 0;
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+early_initcall(rockchip_init_usb_uart);
-+
-+static int __init rockchip_usb_uart(char *buf)
-+{
-+	enable_usb_uart =3D true;
-+	return 0;
-+}
-+early_param("rockchip.usb_uart", rockchip_usb_uart);
-+#endif
-+
- MODULE_AUTHOR("Yunzhi Li <lyz@rock-chips.com>");
- MODULE_DESCRIPTION("Rockchip USB 2.0 PHY driver");
- MODULE_LICENSE("GPL v2");
---=20
-2.6.4
+SGksCgpPbiBNb25kYXkgMjIgRmVicnVhcnkgMjAxNiAwNToxMSBQTSwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4gTW9zdCBuZXdlciBSb2NrY2hpcCBTb0NzIHByb3ZpZGUgdGhlIHBvc3NpYmlsaXR5
+IHRvIHVzZSBhIHVzYi1waHkKPiBhcyBwYXNzdGhyb3VnaCBmb3IgdGhlIGRlYnVnIHVhcnQgKHVh
+cnQyKSwgbWFraW5nIGl0IHBvc3NpYmxlIHRvCj4gZm9yIGV4YW1wbGUgZ2V0IGNvbnNvbGUgb3V0
+cHV0IHdpdGhvdXQgbmVlZGluZyB0byBvcGVuIHRoZSBkZXZpY2UuCj4gCj4gVGhpcyBwYXRjaCBh
+ZGRzIGFuIGVhcmx5X2luaXRjYWxsIHRvIGVuYWJsZSB0aGlzIGZ1bmN0aW9uYWxpdHkKPiBjb25k
+aXRpb25hbGx5IHZpYSB0aGUgY29tbWFuZGxpbmUgYW5kIGFsc28gZGlzYWJsZXMgdGhlIGNvcnJl
+c3BvbmRpbmcKPiB1c2IgY29udHJvbGxlciBpbiB0aGUgZGV2aWNldHJlZS4KPiAKPiBDdXJyZW50
+bHkgb25seSBkYXRhIGZvciB0aGUgcmszMjg4IGlzIHByb3ZpZGVkLCBidXQgYXQgbGVhc3QgdGhl
+Cj4gcmszMTg4IGFuZCBhcm02NCByazMzNjggYWxzbyBwcm92aWRlIHRoaXMgZnVuY3Rpb25hbGl0
+eSBhbmQgd2lsbCBiZQo+IGVuYWJsZWQgbGF0ZXIuCj4gCj4gT24gYSBzcGxpY2VkIHVzYiBjYWJs
+ZSB0aGUgc2lnbmFscyBhcmUgdHggb24gd2hpdGUgd2lyZShEKykgYW5kCj4gcnggb24gZ3JlZW4g
+d2lyZShELSkuCj4gCj4gVGhlIG9uZSBjYXZlYXQgaXMgdGhhdCBjdXJyZW50bHkgdGhlIHJlY29u
+ZmlndXJhdGlvbiBvZiB0aGUgcGh5Cj4gaGFwcGVucyBhcyBlYXJseV9pbml0Y2FsbCwgYXMgdGhl
+IGNvZGUgZGVwZW5kcyBvbiB0aGUgdW5mbGF0dGVuZWQKPiBkZXZpY2V0cmVlIGJlaW5nIGF2YWls
+YWJsZS4gRXZlcnl0aGluZyBpcyBmaW5lIGlmIG9ubHkgYSByZWd1bGFyCj4gY29uc29sZSBpcyBh
+Y3RpdmUgYXMgdGhlIGNvbnNvbGUtcmVwbGF5IHdpbGwgaGFwcGVuIGFmdGVyIHRoZQo+IHJlY29u
+ZmlndWF0aW9uLiBCdXQgd2l0aCBlYXJseWNvbiBhY3RpdmUgb3V0cHV0IHVwIHRvIHNtcC1pbml0
+Cj4gY3VycmVudGx5IHdpbGwgZ2V0IGxvc3QuCj4gCj4gVGhlIHBoeSBpcyBhbiBvcHRpb25hbCBw
+cm9wZXJ0eSBmb3IgdGhlIGNvbm5lY3RlZCBkd2MyIGNvbnRyb2xsZXIsCj4gc28gd2Ugc3RpbGwg
+cHJvdmlkZSB0aGUgcGh5IGRldmljZSBidXQgZmFpbCBhbGwgcGh5LW9wcyB3aXRoIC1FQlVTWQo+
+IHRvIG1ha2Ugc3VyZSB0aGUgZHdjMiBkb2VzIG5vdCB0cnkgdG8gdHJhbnNtaXQgYW55dGhpbmcg
+b24gdGhlCj4gcmVwdXJwb3NlZCBwaHkuCj4gCj4gU2lnbmVkLW9mZi1ieTogSGVpa28gU3R1ZWJu
+ZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAtLS0KPiBjaGFuZ2VzIGluIHY1LjE6Cj4gLSBmaXggY29y
+cnVwdGlvbnMgdGhhdCBoYXBwZW5lZCB3aGVuIHNlbmRpbmcgdjUKCkkgc3RpbGwgc2VlIHRoZSBj
+b3JydXB0aW9uLgoKVGhpcyBpcyBob3cgSSBzZWUgdGhlIHBhdGNoIGFmdGVyIGRvd25sb2FkaW5n
+IChmcm9tIGJvdGggbXV0dCBhbmQgdGh1bmRlcmJpcmQpCkBAIC0zNDg2LDYgKzM0ODYsMTIgQEAg
+Ynl0ZXMgcmVzcGVjdGl2ZWx5LiBTdWNoIGxldHRlciBzdWZmaXhlcyBjYW4gYWxzbyBiZT0KIGVu
+dGlyZWx5IG9taXR0ZWQuCj0yMAogICAgICAgIHJvICAgICAgICAgICAgICBbS05MXSBNb3VudCBy
+b290IGRldmljZSByZWFkLW9ubHkgb24gYm9vdAo9MjAKKyAgICAgICByb2NrY2hpcC51c2JfdWFy
+dAorICAgICAgICAgICAgICAgICAgICAgICBFbmFibGUgdGhlIHVhcnQgcGFzc3Rocm91Z2ggb24g
+dGhlIGRlc2lnbmF0ZWQgdXNiIHBvcnQKKyAgICAgICAgICAgICAgICAgICAgICAgb24gUm9ja2No
+aXAgU29Dcy4gV2hlbiBhY3RpdmUsIHRoZSBzaWduYWxzIG9mIHRoZQorICAgICAgICAgICAgICAg
+ICAgICAgICBkZWJ1Zy11YXJ0IGdldCByb3V0ZWQgdG8gdGhlIEQrIGFuZCBELSBwaW5zIG9mIHRo
+ZSB1c2IKKyAgICAgICAgICAgICAgICAgICAgICAgcG9ydCBhbmQgdGhlIHJlZ3VsYXIgdXNiIGNv
+bnRyb2xsZXIgZ2V0cyBkaXNhYmxlZC4KKwogICAgICAgIHJvb3Q9M0QgICAgICAgICBbS05MXSBS
+b290IGZpbGVzeXN0ZW0KICAgICAgICAgICAgICAgICAgICAgICAgU2VlIG5hbWVfdG9fZGV2X3Qg
+Y29tbWVudCBpbiBpbml0L2RvX21vdW50cy5jLgo9MjAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGh5
+L3BoeS1yb2NrY2hpcC11c2IuYyBiL2RyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC11c2IuPQpjCmlu
+ZGV4IDMzYTgwZWIuLmY2MmQ4OTkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGh5L3BoeS1yb2NrY2hp
+cC11c2IuYworKysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdXNiLmMKQEAgLTMwLDIxICsz
+MCwyMyBAQAogI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgogI2luY2x1ZGUgPGxpbnV4L21mZC9z
+eXNjb24uaD4KPTIwCi0vKgotICogVGhlIGhpZ2hlciAxNi1iaXQgb2YgdGhpcyByZWdpc3RlciBp
+cyB1c2VkIGZvciB3cml0ZSBwcm90ZWN0aW9uCi0gKiBvbmx5IGlmIEJJVCgxMyArIDE2KSBzZXQg
+dG8gMSB0aGUgQklUKDEzKSBjYW4gYmUgd3JpdHRlbi4KLSAqLwotI2RlZmluZSBTSUREUV9XUklU
+RV9FTkEgICAgICAgIEJJVCgyOSkKLSNkZWZpbmUgU0lERFFfT04gICAgICAgICAgICAgICBCSVQo
+MTMpCi0jZGVmaW5lIFNJRERRX09GRiAgICAgICAgICAgICAgKDAgPDwgMTMpCitzdGF0aWMgaW50
+IGVuYWJsZV91c2JfdWFydDsKKworI2RlZmluZSBISVdPUkRfVVBEQVRFKHZhbCwgbWFzaykgXAor
+ICAgICAgICAgICAgICAgKCh2YWwpIHwgKG1hc2spIDw8IDE2KQorCisjZGVmaW5lIFVPQ19DT04w
+X1NJRERRIEJJVCgxMykKPTIwCiBzdHJ1Y3Qgcm9ja2NoaXBfdXNiX3BoeXMgewogICAgICAgIGlu
+dCByZWc7CiAgICAgICAgY29uc3QgY2hhciAqcGxsX25hbWU7CiB9Owo9MjAKPHNuaXA+Ci4KLgoK
+SSBkaWRuJ3Qgc2VlIHRoaXMgcHJvYmxlbSB3aXRoIHRoZSBvdGhlciBwYXRjaGVzIEkgYXBwbGll
+ZCB0b2RheS4KClRoYW5rcwpLaXNob24KCj4gY2hhbmdlcyBpbiB2NToKPiAtIG9ubHkgY29tcGls
+ZSBkZWJ1ZyB1YXJ0IGZ1bmN0aW9uYWxpdHkgaWYgdGhlIHBoeSBpcyBjb21waWxlZCBpbgo+ICAg
+Zml4ZXMgaW5pdGNhbGwgY29uZmxpY3QgYW5kIGRlYnVnIGZ1bmN0aW9uYWxpdHkgYWxzbyBpcyBv
+bmx5IHJlYWxseQo+ICAgdXNhYmxlIGlmIGl0J3MgYXZhaWxhYmxlIGVhcmx5Cj4gY2hhbmdlcyBp
+biB2NDoKPiAtIGRyb3AgdGhlIHJlc3Qgb2YgdGhlIHBoeS1zZXJpZXMsIGFzIHRoZSBwYXRjaGVz
+IGhhdmUgZ290dGVuIGFwcGxpZWQKPiAKPiBTbyBmYXIsIHRoaXMgaGFzbid0IGdvdHRlbiBleWVi
+YWxscyB5ZXQsIHNvIGNpdGluZyBkaXNjdXNzaW9uLXBhcnRzIGZyb20KPiB0aGUgdjMgY292ZXJs
+ZXR0ZXI6Cj4gCj4gVGhlIHBhdGNoLCB3aGlsZSBub3QgYXNzb2NpYXRlZCB3aXRoIHRoZSBuZXcg
+cGxsIGhhbmRsaW5nLCBhbHNvIGJ1aWxkcwo+IG9uIHRoZSBncm91bmR3b3JrIGludHJvZHVjZWQg
+dGhlcmUgYW5kIGFkZHMgc3VwcG9ydCBmb3IgdGhlIGZ1bmN0aW9uCj4gcmVwdXJwb3Npbmcgb25l
+IG9mIHRoZSBwaHlzIGFzIHBhc3N0aHJvdWdoIGZvciB1YXJ0LWRhdGEuIFRoaXMgZW5hYmxlcwo+
+IGF0dGFjaGluZyBhIHR0bCBjb252ZXJ0ZXIgdG8gdGhlIEQrIGFuZCBELSBwaW5zIG9mIGFuIHVz
+YiBjYWJsZSB0bwo+IHJlY2VpdmUgdWFydCBkYXRhIHRoaXMgd2F5LCB3aGVuIGl0IGlzIG5vdCBy
+ZWFsbHkgcG9zc2libGUgdG8gYXR0YWNoCj4gYSByZWd1bGFyIHNlcmlhbCBjb25zb2xlIHRvIGEg
+Ym9hcmQuCj4gCj4gT25lIHBvaW50IG9mIGNyaXRpcXVlIGluIG15IGZpcnN0IGl0ZXJhdGlvbiBb
+MF0gb2YgdGhpcyB3YXMsIHRoYXQKPiBkdWUgdG8gd2hlbiB0aGUgcmVjb25maWd1cmF0aW9uIGhh
+cHBlbnMgd2UgbWF5IG1pc3MgcGFydHMgb2YgdGhlIGxvZ3MKPiB3aGVuIGVhcmx5Y29uIGlzIGVu
+YWJsZWQuIFNvIGZhciBlYXJseV9pbml0Y2FsbCBnZXRzIHVzZWQgYXMgdGhlCj4gdW5mbGF0dGVu
+ZWQgZGV2aWNldHJlZSBpcyBuZWNlc3NhcnkgdG8gc2V0IHRoaXMgdXAuIERvaW5nIHRoaXMgZm9y
+Cj4gZXhhbXBsZSBpbiB0aGUgZWFybHlfcGFyYW0gZGlyZWN0bHkgd291bGQgcmVxdWlyZSBwYXJz
+aW5nIHRoZSBmbGF0dGVuZWQKPiBkZXZpY2V0cmVlIHRvIGdldCBuZWVkZWQgbm9kZXMgYW5kIHBy
+b3BlcnRpZXMuCj4gCj4gSSBzdGlsbCBtYWludGFpbiB0aGF0IGlmIHlvdSdyZSB3b3JraW5nIG9u
+IGFueXRoaW5nIGJlZm9yZSBzbXAtYnJpbmd1cAo+IHlvdSBzaG91bGQgdXNlIGEgcmVhbCBkZXYt
+Ym9hcmQgaW5zdGVhZCBvciB0cnkgdG8gc29sZGVyIHVhcnQgY2FibGVzCj4gb24gaG9wZWZ1bGx5
+IGF2YWlsYWJsZSB0ZXN0LXBvaW50cyAgLgo+IAo+IAo+ICBEb2N1bWVudGF0aW9uL2tlcm5lbC1w
+YXJhbWV0ZXJzLnR4dCB8ICAgNiArCj4gIGRyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC11c2IuYyAg
+ICAgIHwgMjMzICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLQo+ICAyIGZpbGVz
+IGNoYW5nZWQsIDIwMyBpbnNlcnRpb25zKCspLCAzNiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0t
+Z2l0IGEvRG9jdW1lbnRhdGlvbi9rZXJuZWwtcGFyYW1ldGVycy50eHQgYi9Eb2N1bWVudGF0aW9u
+L2tlcm5lbC1wYXJhbWV0ZXJzLnR4dAo+IGluZGV4IDg3ZDQwYTcuLmQ5MTQxN2IgMTAwNjQ0Cj4g
+LS0tIGEvRG9jdW1lbnRhdGlvbi9rZXJuZWwtcGFyYW1ldGVycy50eHQKPiArKysgYi9Eb2N1bWVu
+dGF0aW9uL2tlcm5lbC1wYXJhbWV0ZXJzLnR4dAo+IEBAIC0zNDg2LDYgKzM0ODYsMTIgQEAgYnl0
+ZXMgcmVzcGVjdGl2ZWx5LiBTdWNoIGxldHRlciBzdWZmaXhlcyBjYW4gYWxzbyBiZSBlbnRpcmVs
+eSBvbWl0dGVkLgo+ICAKPiAgCXJvCQlbS05MXSBNb3VudCByb290IGRldmljZSByZWFkLW9ubHkg
+b24gYm9vdAo+ICAKPiArCXJvY2tjaGlwLnVzYl91YXJ0Cj4gKwkJCUVuYWJsZSB0aGUgdWFydCBw
+YXNzdGhyb3VnaCBvbiB0aGUgZGVzaWduYXRlZCB1c2IgcG9ydAo+ICsJCQlvbiBSb2NrY2hpcCBT
+b0NzLiBXaGVuIGFjdGl2ZSwgdGhlIHNpZ25hbHMgb2YgdGhlCj4gKwkJCWRlYnVnLXVhcnQgZ2V0
+IHJvdXRlZCB0byB0aGUgRCsgYW5kIEQtIHBpbnMgb2YgdGhlIHVzYgo+ICsJCQlwb3J0IGFuZCB0
+aGUgcmVndWxhciB1c2IgY29udHJvbGxlciBnZXRzIGRpc2FibGVkLgo+ICsKPiAgCXJvb3Q9CQlb
+S05MXSBSb290IGZpbGVzeXN0ZW0KPiAgCQkJU2VlIG5hbWVfdG9fZGV2X3QgY29tbWVudCBpbiBp
+bml0L2RvX21vdW50cy5jLgo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcGh5LXJvY2tj
+aGlwLXVzYi5jIGIvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLXVzYi5jCj4gaW5kZXggMzNhODBl
+Yi4uZjYyZDg5OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdXNiLmMK
+PiArKysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtdXNiLmMKPiBAQCAtMzAsMjEgKzMwLDIz
+IEBACj4gICNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L21mZC9z
+eXNjb24uaD4KPiAgCj4gLS8qCj4gLSAqIFRoZSBoaWdoZXIgMTYtYml0IG9mIHRoaXMgcmVnaXN0
+ZXIgaXMgdXNlZCBmb3Igd3JpdGUgcHJvdGVjdGlvbgo+IC0gKiBvbmx5IGlmIEJJVCgxMyArIDE2
+KSBzZXQgdG8gMSB0aGUgQklUKDEzKSBjYW4gYmUgd3JpdHRlbi4KPiAtICovCj4gLSNkZWZpbmUg
+U0lERFFfV1JJVEVfRU5BCUJJVCgyOSkKPiAtI2RlZmluZSBTSUREUV9PTgkJQklUKDEzKQo+IC0j
+ZGVmaW5lIFNJRERRX09GRgkJKDAgPDwgMTMpCj4gK3N0YXRpYyBpbnQgZW5hYmxlX3VzYl91YXJ0
+Owo+ICsKPiArI2RlZmluZSBISVdPUkRfVVBEQVRFKHZhbCwgbWFzaykgXAo+ICsJCSgodmFsKSB8
+IChtYXNrKSA8PCAxNikKPiArCj4gKyNkZWZpbmUgVU9DX0NPTjBfU0lERFEgQklUKDEzKQo+ICAK
+PiAgc3RydWN0IHJvY2tjaGlwX3VzYl9waHlzIHsKPiAgCWludCByZWc7Cj4gIAljb25zdCBjaGFy
+ICpwbGxfbmFtZTsKPiAgfTsKPiAgCj4gK3N0cnVjdCByb2NrY2hpcF91c2JfcGh5X2Jhc2U7Cj4g
+IHN0cnVjdCByb2NrY2hpcF91c2JfcGh5X3BkYXRhIHsKPiAgCXN0cnVjdCByb2NrY2hpcF91c2Jf
+cGh5cyAqcGh5czsKPiArCWludCAoKmluaXRfdXNiX3VhcnQpKHN0cnVjdCByZWdtYXAgKmdyZik7
+Cj4gKwlpbnQgdXNiX3VhcnRfcGh5Owo+ICB9Owo+ICAKPiAgc3RydWN0IHJvY2tjaGlwX3VzYl9w
+aHlfYmFzZSB7Cj4gQEAgLTYxLDEzICs2MywxNSBAQCBzdHJ1Y3Qgcm9ja2NoaXBfdXNiX3BoeSB7
+Cj4gIAlzdHJ1Y3QgY2xrICAgICAgKmNsazQ4MG07Cj4gIAlzdHJ1Y3QgY2xrX2h3CWNsazQ4MG1f
+aHc7Cj4gIAlzdHJ1Y3QgcGh5CSpwaHk7Cj4gKwlib29sCQl1YXJ0X2VuYWJsZWQ7Cj4gIH07Cj4g
+IAo+ICBzdGF0aWMgaW50IHJvY2tjaGlwX3VzYl9waHlfcG93ZXIoc3RydWN0IHJvY2tjaGlwX3Vz
+Yl9waHkgKnBoeSwKPiAgCQkJCQkgICBib29sIHNpZGRxKQo+ICB7Cj4gLQlyZXR1cm4gcmVnbWFw
+X3dyaXRlKHBoeS0+YmFzZS0+cmVnX2Jhc2UsIHBoeS0+cmVnX29mZnNldCwKPiAtCQkJICAgIFNJ
+RERRX1dSSVRFX0VOQSB8IChzaWRkcSA/IFNJRERRX09OIDogU0lERFFfT0ZGKSk7Cj4gKwl1MzIg
+dmFsID0gSElXT1JEX1VQREFURShzaWRkcSA/IFVPQ19DT04wX1NJRERRIDogMCwgVU9DX0NPTjBf
+U0lERFEpOwo+ICsKPiArCXJldHVybiByZWdtYXBfd3JpdGUocGh5LT5iYXNlLT5yZWdfYmFzZSwg
+cGh5LT5yZWdfb2Zmc2V0LCB2YWwpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdW5zaWduZWQgbG9uZyBy
+b2NrY2hpcF91c2JfcGh5NDgwbV9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3ICpodywKPiBAQCAt
+MTA4LDcgKzExMiw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfdXNiX3BoeTQ4MG1faXNfZW5hYmxl
+ZChzdHJ1Y3QgY2xrX2h3ICpodykKPiAgCWlmIChyZXQgPCAwKQo+ICAJCXJldHVybiByZXQ7Cj4g
+IAo+IC0JcmV0dXJuICh2YWwgJiBTSUREUV9PTikgPyAwIDogMTsKPiArCXJldHVybiAodmFsICYg
+VU9DX0NPTjBfU0lERFEpID8gMCA6IDE7Cj4gIH0KPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
+Y2xrX29wcyByb2NrY2hpcF91c2JfcGh5NDgwbV9vcHMgPSB7Cj4gQEAgLTEyMiw2ICsxMjYsOSBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX3VzYl9waHlfcG93ZXJfb2ZmKHN0cnVjdCBwaHkgKl9waHkp
+Cj4gIHsKPiAgCXN0cnVjdCByb2NrY2hpcF91c2JfcGh5ICpwaHkgPSBwaHlfZ2V0X2RydmRhdGEo
+X3BoeSk7Cj4gIAo+ICsJaWYgKHBoeS0+dWFydF9lbmFibGVkKQo+ICsJCXJldHVybiAtRUJVU1k7
+Cj4gKwo+ICAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKHBoeS0+Y2xrNDgwbSk7Cj4gIAo+ICAJcmV0
+dXJuIDA7Cj4gQEAgLTEzMSw2ICsxMzgsOSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3VzYl9waHlf
+cG93ZXJfb24oc3RydWN0IHBoeSAqX3BoeSkKPiAgewo+ICAJc3RydWN0IHJvY2tjaGlwX3VzYl9w
+aHkgKnBoeSA9IHBoeV9nZXRfZHJ2ZGF0YShfcGh5KTsKPiAgCj4gKwlpZiAocGh5LT51YXJ0X2Vu
+YWJsZWQpCj4gKwkJcmV0dXJuIC1FQlVTWTsKPiArCj4gIAlyZXR1cm4gY2xrX3ByZXBhcmVfZW5h
+YmxlKHBoeS0+Y2xrNDgwbSk7Cj4gIH0KPiAgCj4gQEAgLTE0NCw4ICsxNTQsMTAgQEAgc3RhdGlj
+IHZvaWQgcm9ja2NoaXBfdXNiX3BoeV9hY3Rpb24odm9pZCAqZGF0YSkKPiAgewo+ICAJc3RydWN0
+IHJvY2tjaGlwX3VzYl9waHkgKnJrX3BoeSA9IGRhdGE7Cj4gIAo+IC0Jb2ZfY2xrX2RlbF9wcm92
+aWRlcihya19waHktPm5wKTsKPiAtCWNsa191bnJlZ2lzdGVyKHJrX3BoeS0+Y2xrNDgwbSk7Cj4g
+KwlpZiAoIXJrX3BoeS0+dWFydF9lbmFibGVkKSB7Cj4gKwkJb2ZfY2xrX2RlbF9wcm92aWRlcihy
+a19waHktPm5wKTsKPiArCQljbGtfdW5yZWdpc3Rlcihya19waHktPmNsazQ4MG0pOwo+ICsJfQo+
+ICAKPiAgCWlmIChya19waHktPmNsaykKPiAgCQljbGtfcHV0KHJrX3BoeS0+Y2xrKTsKPiBAQCAt
+MTk0LDMwICsyMDYsMzUgQEAgc3RhdGljIGludCByb2NrY2hpcF91c2JfcGh5X2luaXQoc3RydWN0
+IHJvY2tjaGlwX3VzYl9waHlfYmFzZSAqYmFzZSwKPiAgCQlyZXR1cm4gLUVJTlZBTDsKPiAgCX0K
+PiAgCj4gLQlpZiAocmtfcGh5LT5jbGspIHsKPiAtCQljbGtfbmFtZSA9IF9fY2xrX2dldF9uYW1l
+KHJrX3BoeS0+Y2xrKTsKPiAtCQlpbml0LmZsYWdzID0gMDsKPiAtCQlpbml0LnBhcmVudF9uYW1l
+cyA9ICZjbGtfbmFtZTsKPiAtCQlpbml0Lm51bV9wYXJlbnRzID0gMTsKPiArCWlmIChlbmFibGVf
+dXNiX3VhcnQgJiYgYmFzZS0+cGRhdGEtPnVzYl91YXJ0X3BoeSA9PSBpKSB7Cj4gKwkJZGV2X2Ri
+ZyhiYXNlLT5kZXYsICJwaHklZCB1c2VkIGFzIHVhcnQgb3V0cHV0XG4iLCBpKTsKPiArCQlya19w
+aHktPnVhcnRfZW5hYmxlZCA9IHRydWU7Cj4gIAl9IGVsc2Ugewo+IC0JCWluaXQuZmxhZ3MgPSBD
+TEtfSVNfUk9PVDsKPiAtCQlpbml0LnBhcmVudF9uYW1lcyA9IE5VTEw7Cj4gLQkJaW5pdC5udW1f
+cGFyZW50cyA9IDA7Cj4gLQl9Cj4gKwkJaWYgKHJrX3BoeS0+Y2xrKSB7Cj4gKwkJCWNsa19uYW1l
+ID0gX19jbGtfZ2V0X25hbWUocmtfcGh5LT5jbGspOwo+ICsJCQlpbml0LmZsYWdzID0gMDsKPiAr
+CQkJaW5pdC5wYXJlbnRfbmFtZXMgPSAmY2xrX25hbWU7Cj4gKwkJCWluaXQubnVtX3BhcmVudHMg
+PSAxOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCWluaXQuZmxhZ3MgPSBDTEtfSVNfUk9PVDsKPiArCQkJ
+aW5pdC5wYXJlbnRfbmFtZXMgPSBOVUxMOwo+ICsJCQlpbml0Lm51bV9wYXJlbnRzID0gMDsKPiAr
+CQl9Cj4gIAo+IC0JaW5pdC5vcHMgPSAmcm9ja2NoaXBfdXNiX3BoeTQ4MG1fb3BzOwo+IC0Jcmtf
+cGh5LT5jbGs0ODBtX2h3LmluaXQgPSAmaW5pdDsKPiArCQlpbml0Lm9wcyA9ICZyb2NrY2hpcF91
+c2JfcGh5NDgwbV9vcHM7Cj4gKwkJcmtfcGh5LT5jbGs0ODBtX2h3LmluaXQgPSAmaW5pdDsKPiAg
+Cj4gLQlya19waHktPmNsazQ4MG0gPSBjbGtfcmVnaXN0ZXIoYmFzZS0+ZGV2LCAmcmtfcGh5LT5j
+bGs0ODBtX2h3KTsKPiAtCWlmIChJU19FUlIocmtfcGh5LT5jbGs0ODBtKSkgewo+IC0JCWVyciA9
+IFBUUl9FUlIocmtfcGh5LT5jbGs0ODBtKTsKPiAtCQlnb3RvIGVycl9jbGs7Cj4gLQl9Cj4gKwkJ
+cmtfcGh5LT5jbGs0ODBtID0gY2xrX3JlZ2lzdGVyKGJhc2UtPmRldiwgJnJrX3BoeS0+Y2xrNDgw
+bV9odyk7Cj4gKwkJaWYgKElTX0VSUihya19waHktPmNsazQ4MG0pKSB7Cj4gKwkJCWVyciA9IFBU
+Ul9FUlIocmtfcGh5LT5jbGs0ODBtKTsKPiArCQkJZ290byBlcnJfY2xrOwo+ICsJCX0KPiAgCj4g
+LQllcnIgPSBvZl9jbGtfYWRkX3Byb3ZpZGVyKGNoaWxkLCBvZl9jbGtfc3JjX3NpbXBsZV9nZXQs
+Cj4gLQkJCQkgIHJrX3BoeS0+Y2xrNDgwbSk7Cj4gLQlpZiAoZXJyIDwgMCkKPiAtCQlnb3RvIGVy
+cl9jbGtfcHJvdjsKPiArCQllcnIgPSBvZl9jbGtfYWRkX3Byb3ZpZGVyKGNoaWxkLCBvZl9jbGtf
+c3JjX3NpbXBsZV9nZXQsCj4gKwkJCQkJcmtfcGh5LT5jbGs0ODBtKTsKPiArCQlpZiAoZXJyIDwg
+MCkKPiArCQkJZ290byBlcnJfY2xrX3Byb3Y7Cj4gKwl9Cj4gIAo+ICAJZXJyID0gZGV2bV9hZGRf
+YWN0aW9uKGJhc2UtPmRldiwgcm9ja2NoaXBfdXNiX3BoeV9hY3Rpb24sIHJrX3BoeSk7Cj4gIAlp
+ZiAoZXJyKQo+IEBAIC0yMzAsMTMgKzI0NywyMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3VzYl9w
+aHlfaW5pdChzdHJ1Y3Qgcm9ja2NoaXBfdXNiX3BoeV9iYXNlICpiYXNlLAo+ICAJfQo+ICAJcGh5
+X3NldF9kcnZkYXRhKHJrX3BoeS0+cGh5LCBya19waHkpOwo+ICAKPiAtCS8qIG9ubHkgcG93ZXIg
+dXAgdXNiIHBoeSB3aGVuIGl0IHVzZSwgc28gZGlzYWJsZSBpdCB3aGVuIGluaXQqLwo+IC0JcmV0
+dXJuIHJvY2tjaGlwX3VzYl9waHlfcG93ZXIocmtfcGh5LCAxKTsKPiArCS8qCj4gKwkgKiBXaGVu
+IGFjdGluZyBhcyB1YXJ0LXBpcGUsIGp1c3Qga2VlcCBjbG9jayBvbiBvdGhlcndpc2UKPiArCSAq
+IG9ubHkgcG93ZXIgdXAgdXNiIHBoeSB3aGVuIGl0IHVzZSwgc28gZGlzYWJsZSBpdCB3aGVuIGlu
+aXQKPiArCSAqLwo+ICsJaWYgKHJrX3BoeS0+dWFydF9lbmFibGVkKQo+ICsJCXJldHVybiBjbGtf
+cHJlcGFyZV9lbmFibGUocmtfcGh5LT5jbGspOwo+ICsJZWxzZQo+ICsJCXJldHVybiByb2NrY2hp
+cF91c2JfcGh5X3Bvd2VyKHJrX3BoeSwgMSk7Cj4gIAo+ICBlcnJfZGV2bV9hY3Rpb246Cj4gLQlv
+Zl9jbGtfZGVsX3Byb3ZpZGVyKGNoaWxkKTsKPiArCWlmICghcmtfcGh5LT51YXJ0X2VuYWJsZWQp
+Cj4gKwkJb2ZfY2xrX2RlbF9wcm92aWRlcihjaGlsZCk7Cj4gIGVycl9jbGtfcHJvdjoKPiAtCWNs
+a191bnJlZ2lzdGVyKHJrX3BoeS0+Y2xrNDgwbSk7Cj4gKwlpZiAoIXJrX3BoeS0+dWFydF9lbmFi
+bGVkKQo+ICsJCWNsa191bnJlZ2lzdGVyKHJrX3BoeS0+Y2xrNDgwbSk7Cj4gIGVycl9jbGs6Cj4g
+IAlpZiAocmtfcGh5LT5jbGspCj4gIAkJY2xrX3B1dChya19waHktPmNsayk7Cj4gQEAgLTI1OSw2
+ICsyODQsODYgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF91c2JfcGh5X3BkYXRhIHJr
+MzE4OF9wZGF0YSA9IHsKPiAgCX0sCj4gIH07Cj4gIAo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NP
+TjAJCQkJMHgzMjAKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04wX0NPTU1PTl9PTl9OCQkJQklU
+KDApCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OMF9ESVNBQkxFCQkJQklUKDQpCj4gKwo+ICsj
+ZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjIJCQkJMHgzMjgKPiArI2RlZmluZSBSSzMyODhfVU9DMF9D
+T04yX1NPRlRfQ09OX1NFTAkJCUJJVCgyKQo+ICsKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04z
+CQkJCTB4MzJjCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX1NVU1BFTkROCQkJQklU
+KDApCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX09QTU9ERV9OT0RSSVZJTkcJCSgx
+IDw8IDEpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX09QTU9ERV9NQVNLCQkoMyA8
+PCAxKQo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjNfVVRNSV9YQ1ZSU0VFTENUX0ZTVFJBTlND
+CSgxIDw8IDMpCj4gKyNkZWZpbmUgUkszMjg4X1VPQzBfQ09OM19VVE1JX1hDVlJTRUVMQ1RfTUFT
+SwkJKDMgPDwgMykKPiArI2RlZmluZSBSSzMyODhfVU9DMF9DT04zX1VUTUlfVEVSTVNFTF9GVUxM
+U1BFRUQJCUJJVCg1KQo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjNfQllQQVNTRE1FTgkJCUJJ
+VCg2KQo+ICsjZGVmaW5lIFJLMzI4OF9VT0MwX0NPTjNfQllQQVNTU0VMCQkJQklUKDcpCj4gKwo+
+ICsvKgo+ICsgKiBFbmFibGUgdGhlIGJ5cGFzcyBvZiB1YXJ0MiBkYXRhIHRocm91Z2ggdGhlIG90
+ZyB1c2IgcGh5Lgo+ICsgKiBPcmlnaW5hbCBkZXNjcmlwdGlvbiBpbiB0aGUgVFJNLgo+ICsgKiAx
+LiBEaXNhYmxlIHRoZSBPVEcgYmxvY2sgYnkgc2V0dGluZyBPVEdESVNBQkxFMCB0byAx4oCZYjEu
+Cj4gKyAqIDIuIERpc2FibGUgdGhlIHB1bGwtdXAgcmVzaXN0YW5jZSBvbiB0aGUgRCsgbGluZSBi
+eSBzZXR0aW5nCj4gKyAqICAgIE9QTU9ERTBbMTowXSB0byAy4oCZYjAxLgo+ICsgKiAzLiBUbyBl
+bnN1cmUgdGhhdCB0aGUgWE8sIEJpYXMsIGFuZCBQTEwgYmxvY2tzIGFyZSBwb3dlcmVkIGRvd24g
+aW4gU3VzcGVuZAo+ICsgKiAgICBtb2RlLCBzZXQgQ09NTU9OT05OIHRvIDHigJliMS4KPiArICog
+NC4gUGxhY2UgdGhlIFVTQiBQSFkgaW4gU3VzcGVuZCBtb2RlIGJ5IHNldHRpbmcgU1VTUEVORE0w
+IHRvIDHigJliMC4KPiArICogNS4gU2V0IEJZUEFTU1NFTDAgdG8gMeKAmWIxLgo+ICsgKiA2LiBU
+byB0cmFuc21pdCBkYXRhLCBjb250cm9scyBCWVBBU1NETUVOMCwgYW5kIEJZUEFTU0RNREFUQTAu
+Cj4gKyAqIFRvIHJlY2VpdmUgZGF0YSwgbW9uaXRvciBGU1ZQTFVTMC4KPiArICoKPiArICogVGhl
+IGFjdHVhbCBjb2RlIGluIHRoZSB2ZW5kb3Iga2VybmVsIGRvZXMgc29tZSB0aGluZ3MgZGlmZmVy
+ZW50bHkuCj4gKyAqLwo+ICtzdGF0aWMgaW50IF9faW5pdCByazMyODhfaW5pdF91c2JfdWFydChz
+dHJ1Y3QgcmVnbWFwICpncmYpCj4gK3sKPiArCXUzMiB2YWw7Cj4gKwlpbnQgcmV0Owo+ICsKPiAr
+CS8qCj4gKwkgKiBDT01NT05fT04gYW5kIERJU0FCTEUgc2V0dGluZ3MgYXJlIGRlc2NyaWJlZCBp
+biB0aGUgVFJNLAo+ICsJICogYnV0IHdlcmUgbm90IHByZXNlbnQgaW4gdGhlIG9yaWdpbmFsIGNv
+ZGUuCj4gKwkgKiBBbHNvIGRpc2FibGUgdGhlIGFuYWxvZyBwaHkgY29tcG9uZW50cyB0byBzYXZl
+IHBvd2VyLgo+ICsJICovCj4gKwl2YWwgPSBISVdPUkRfVVBEQVRFKFJLMzI4OF9VT0MwX0NPTjBf
+Q09NTU9OX09OX04KPiArCQkJCXwgUkszMjg4X1VPQzBfQ09OMF9ESVNBQkxFCj4gKwkJCQl8IFVP
+Q19DT04wX1NJRERRLAo+ICsJCQkgICAgUkszMjg4X1VPQzBfQ09OMF9DT01NT05fT05fTgo+ICsJ
+CQkJfCBSSzMyODhfVU9DMF9DT04wX0RJU0FCTEUKPiArCQkJCXwgVU9DX0NPTjBfU0lERFEpOwo+
+ICsJcmV0ID0gcmVnbWFwX3dyaXRlKGdyZiwgUkszMjg4X1VPQzBfQ09OMCwgdmFsKTsKPiArCWlm
+IChyZXQpCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwl2YWwgPSBISVdPUkRfVVBEQVRFKFJLMzI4
+OF9VT0MwX0NPTjJfU09GVF9DT05fU0VMLAo+ICsJCQkgICAgUkszMjg4X1VPQzBfQ09OMl9TT0ZU
+X0NPTl9TRUwpOwo+ICsJcmV0ID0gcmVnbWFwX3dyaXRlKGdyZiwgUkszMjg4X1VPQzBfQ09OMiwg
+dmFsKTsKPiArCWlmIChyZXQpCj4gKwkJcmV0dXJuIHJldDsKPiArCj4gKwl2YWwgPSBISVdPUkRf
+VVBEQVRFKFJLMzI4OF9VT0MwX0NPTjNfVVRNSV9PUE1PREVfTk9EUklWSU5HCj4gKwkJCQl8IFJL
+MzI4OF9VT0MwX0NPTjNfVVRNSV9YQ1ZSU0VFTENUX0ZTVFJBTlNDCj4gKwkJCQl8IFJLMzI4OF9V
+T0MwX0NPTjNfVVRNSV9URVJNU0VMX0ZVTExTUEVFRCwKPiArCQkJICAgIFJLMzI4OF9VT0MwX0NP
+TjNfVVRNSV9TVVNQRU5ETgo+ICsJCQkJfCBSSzMyODhfVU9DMF9DT04zX1VUTUlfT1BNT0RFX01B
+U0sKPiArCQkJCXwgUkszMjg4X1VPQzBfQ09OM19VVE1JX1hDVlJTRUVMQ1RfTUFTSwo+ICsJCQkJ
+fCBSSzMyODhfVU9DMF9DT04zX1VUTUlfVEVSTVNFTF9GVUxMU1BFRUQpOwo+ICsJcmV0ID0gcmVn
+bWFwX3dyaXRlKGdyZiwgUkszMjg4X1VPQzBfQ09OMywgdmFsKTsKPiArCWlmIChyZXQpCj4gKwkJ
+cmV0dXJuIHJldDsKPiArCj4gKwl2YWwgPSBISVdPUkRfVVBEQVRFKFJLMzI4OF9VT0MwX0NPTjNf
+QllQQVNTU0VMCj4gKwkJCQl8IFJLMzI4OF9VT0MwX0NPTjNfQllQQVNTRE1FTiwKPiArCQkJICAg
+IFJLMzI4OF9VT0MwX0NPTjNfQllQQVNTU0VMCj4gKwkJCQl8IFJLMzI4OF9VT0MwX0NPTjNfQllQ
+QVNTRE1FTik7Cj4gKwlyZXQgPSByZWdtYXBfd3JpdGUoZ3JmLCBSSzMyODhfVU9DMF9DT04zLCB2
+YWwpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsKPiArCXJldHVybiAwOwo+ICt9
+Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3VzYl9waHlfcGRhdGEgcmszMjg4
+X3BkYXRhID0gewo+ICAJLnBoeXMgPSAoc3RydWN0IHJvY2tjaGlwX3VzYl9waHlzW10pewo+ICAJ
+CXsgLnJlZyA9IDB4MzIwLCAucGxsX25hbWUgPSAic2Nsa19vdGdwaHkwXzQ4MG0iIH0sCj4gQEAg
+LTI2Niw2ICszNzEsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3VzYl9waHlfcGRh
+dGEgcmszMjg4X3BkYXRhID0gewo+ICAJCXsgLnJlZyA9IDB4MzQ4LCAucGxsX25hbWUgPSAic2Ns
+a19vdGdwaHkyXzQ4MG0iIH0sCj4gIAkJeyAvKiBzZW50aW5lbCAqLyB9Cj4gIAl9LAo+ICsJLmlu
+aXRfdXNiX3VhcnQgPSByazMyODhfaW5pdF91c2JfdWFydCwKPiArCS51c2JfdWFydF9waHkgPSAw
+LAo+ICB9Owo+ICAKPiAgc3RhdGljIGludCByb2NrY2hpcF91c2JfcGh5X3Byb2JlKHN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gQEAgLTMyOCw2ICs0MzUsNjAgQEAgc3RhdGljIHN0cnVj
+dCBwbGF0Zm9ybV9kcml2ZXIgcm9ja2NoaXBfdXNiX2RyaXZlciA9IHsKPiAgCj4gIG1vZHVsZV9w
+bGF0Zm9ybV9kcml2ZXIocm9ja2NoaXBfdXNiX2RyaXZlcik7Cj4gIAo+ICsjaWZuZGVmIE1PRFVM
+RQo+ICtzdGF0aWMgaW50IF9faW5pdCByb2NrY2hpcF9pbml0X3VzYl91YXJ0KHZvaWQpCj4gK3sK
+PiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ICsJY29uc3Qgc3RydWN0IHJv
+Y2tjaGlwX3VzYl9waHlfcGRhdGEgKmRhdGE7Cj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wOwo+
+ICsJc3RydWN0IHJlZ21hcCAqZ3JmOwo+ICsJaW50IHJldDsKPiArCj4gKwlpZiAoIWVuYWJsZV91
+c2JfdWFydCkKPiArCQlyZXR1cm4gMDsKPiArCj4gKwlucCA9IG9mX2ZpbmRfbWF0Y2hpbmdfbm9k
+ZV9hbmRfbWF0Y2goTlVMTCwgcm9ja2NoaXBfdXNiX3BoeV9kdF9pZHMsCj4gKwkJCQkJICAgICAm
+bWF0Y2gpOwo+ICsJaWYgKCFucCkgewo+ICsJCXByX2VycigiJXM6IGZhaWxlZCB0byBmaW5kIHVz
+YnBoeSBub2RlXG4iLCBfX2Z1bmNfXyk7Cj4gKwkJcmV0dXJuIC1FTk9UU1VQUDsKPiArCX0KPiAr
+Cj4gKwlwcl9kZWJ1ZygiJXM6IHVzaW5nIHNldHRpbmdzIGZvciAlc1xuIiwgX19mdW5jX18sIG1h
+dGNoLT5jb21wYXRpYmxlKTsKPiArCWRhdGEgPSBtYXRjaC0+ZGF0YTsKPiArCj4gKwlpZiAoIWRh
+dGEtPmluaXRfdXNiX3VhcnQpIHsKPiArCQlwcl9lcnIoIiVzOiB1c2ItdWFydCBub3QgYXZhaWxh
+YmxlIG9uICVzXG4iLAo+ICsJCSAgICAgICBfX2Z1bmNfXywgbWF0Y2gtPmNvbXBhdGlibGUpOwo+
+ICsJCXJldHVybiAtRU5PVFNVUFA7Cj4gKwl9Cj4gKwo+ICsJZ3JmID0gc3lzY29uX3JlZ21hcF9s
+b29rdXBfYnlfcGhhbmRsZShucCwgInJvY2tjaGlwLGdyZiIpOwo+ICsJaWYgKElTX0VSUihncmYp
+KSB7Cj4gKwkJcHJfZXJyKCIlczogTWlzc2luZyByb2NrY2hpcCxncmYgcHJvcGVydHksICVsdVxu
+IiwKPiArCQkgICAgICAgX19mdW5jX18sIFBUUl9FUlIoZ3JmKSk7Cj4gKwkJcmV0dXJuIFBUUl9F
+UlIoZ3JmKTsKPiArCX0KPiArCj4gKwlyZXQgPSBkYXRhLT5pbml0X3VzYl91YXJ0KGdyZik7Cj4g
+KwlpZiAocmV0KSB7Cj4gKwkJcHJfZXJyKCIlczogY291bGQgbm90IGluaXQgdXNiX3VhcnQsICVk
+XG4iLCBfX2Z1bmNfXywgcmV0KTsKPiArCQllbmFibGVfdXNiX3VhcnQgPSAwOwo+ICsJCXJldHVy
+biByZXQ7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArZWFybHlfaW5pdGNhbGwocm9j
+a2NoaXBfaW5pdF91c2JfdWFydCk7Cj4gKwo+ICtzdGF0aWMgaW50IF9faW5pdCByb2NrY2hpcF91
+c2JfdWFydChjaGFyICpidWYpCj4gK3sKPiArCWVuYWJsZV91c2JfdWFydCA9IHRydWU7Cj4gKwly
+ZXR1cm4gMDsKPiArfQo+ICtlYXJseV9wYXJhbSgicm9ja2NoaXAudXNiX3VhcnQiLCByb2NrY2hp
+cF91c2JfdWFydCk7Cj4gKyNlbmRpZgo+ICsKPiAgTU9EVUxFX0FVVEhPUigiWXVuemhpIExpIDxs
+eXpAcm9jay1jaGlwcy5jb20+Iik7Cj4gIE1PRFVMRV9ERVNDUklQVElPTigiUm9ja2NoaXAgVVNC
+IDIuMCBQSFkgZHJpdmVyIik7Cj4gIE1PRFVMRV9MSUNFTlNFKCJHUEwgdjIiKTsKPiAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
