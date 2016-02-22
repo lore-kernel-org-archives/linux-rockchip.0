@@ -1,118 +1,561 @@
-From: Liviu Dudau <Liviu.Dudau@arm.com>
-Subject: Re: [PATCH v2 1/2] drm: Improve drm_of_component_probe() to
- correctly handle ports and remote ports.
-Date: Mon, 22 Feb 2016 11:51:47 +0000
-Message-ID: <20160222115147.GR1123@e106497-lin.cambridge.arm.com>
-References: <1448029325-14602-1-git-send-email-Liviu.Dudau@arm.com>
- <1448029325-14602-2-git-send-email-Liviu.Dudau@arm.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5.1] phy: rockchip-usb: add handler for usb-uart functionality
+Date: Mon, 22 Feb 2016 12:53:21 +0100
+Message-ID: <2151229.sTi0mmqIUM@phil>
+References: <1670829.9XWsDys3pl@phil> <56CAF4DE.2060708@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1448029325-14602-2-git-send-email-Liviu.Dudau@arm.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King <rmk+kernel@arm.linux.org.uk>, Mark Yao <mark.yao@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, David Airlie <airlied@linux.ie>, Eric Anholt <eric@anholt.net>
-Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, LAKML <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56CAF4DE.2060708@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, romain.perier@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBOb3YgMjAsIDIwMTUgYXQgMDI6MjI6MDRQTSArMDAwMCwgTGl2aXUgRHVkYXUgd3Jv
-dGU6Cj4gUm9ja2NoaXAgRFJNIGRyaXZlciBjYW5ub3QgdXNlIHRoZSBzYW1lIGNvbXBhcmVfb2Yo
-KSBmdW5jdGlvbiB0bwo+IG1hdGNoIHBvcnRzIGFuZCByZW1vdGUgcG9ydHMgKGFrYSBlbmNvZGVy
-cykgYXMgdGhlaXIgT0Ygc3ViLXRyZWVzCj4gbG9vayBkaWZmZXJlbnQuIEFkZCBhIHNlY29uZCBj
-b21wYXJlIGZ1bmN0aW9uIHRvIGJlIHVzZWQgd2hlbiBlbmNvZGVycwo+IGFyZSBhZGRlZCB0byB0
-aGUgY29tcG9uZW50IGZyYW1ld29yayBhbmQgcGF0Y2ggdGhlIGV4aXN0aW5nIHVzZXJzIG9mCj4g
-dGhlIGZ1bmN0aW9uIGFjY29yZGluZ2x5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IExpdml1IER1ZGF1
-IDxMaXZpdS5EdWRhdUBhcm0uY29tPgoKUnVzc2VsbCwKClJlc3VyZWN0aW5nIHRoaXMgb2xkIHBh
-dGNoIGZyb20gYXJvdW5kIENocmlzdG1hcyB0aW1lIChiYWQgdGltZSBmb3IgcGF0Y2ggcmV2aWV3
-KS4KCkFyZSB5b3UgaGFwcHkgZW5vdWdoIHdpdGggdGhpcyB2ZXJzaW9uIHRvIHJlLWlzc3VlIHRo
-ZSBBY2sgb3IgZG8geW91IHRoaW5rIEkgc3RpbGwKbmVlZCB0byB3b3JrIG9uIGl0PwoKQmVzdCBy
-ZWdhcmRzLApMaXZpdQoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2
-LmMgfCAgMyArKy0KPiAgZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jICAgICAgICAgICAgfCAxOSAr
-KysrKysrKysrKysrKy0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWRybS1jb3JlLmMg
-IHwgIDMgKystCj4gIGluY2x1ZGUvZHJtL2RybV9vZi5oICAgICAgICAgICAgICAgIHwgIDYgKysr
-Ky0tCj4gIDQgZmlsZXMgY2hhbmdlZCwgMjIgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMgYi9k
-cml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYwo+IGluZGV4IDc3YWI5M2QuLjNhMmE5
-MjkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMKPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYwo+IEBAIC0yNzQsNyArMjc0
-LDggQEAgc3RhdGljIGludCBhcm1hZGFfZHJtX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCj4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+ICAJaW50IHJldDsK
-PiAgCj4gLQlyZXQgPSBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKGRldiwgY29tcGFyZV9kZXZfbmFt
-ZSwgJmFybWFkYV9tYXN0ZXJfb3BzKTsKPiArCXJldCA9IGRybV9vZl9jb21wb25lbnRfcHJvYmUo
-ZGV2LCBjb21wYXJlX2Rldl9uYW1lLCBjb21wYXJlX2Rldl9uYW1lLAo+ICsJCQkJICAgICAmYXJt
-YWRhX21hc3Rlcl9vcHMpOwo+ICAJaWYgKHJldCAhPSAtRUlOVkFMKQo+ICAJCXJldHVybiByZXQ7
-Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX29mLmMKPiBpbmRleCA0OTNjMDVjLi4zNDU4OWQzIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9kcm1fb2YuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYwo+
-IEBAIC03Nyw3ICs3Nyw4IEBAIEVYUE9SVF9TWU1CT0woZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0
-Y3MpOwo+ICAgKiBSZXR1cm5zIHplcm8gaWYgc3VjY2Vzc2Z1bCwgb3Igb25lIG9mIHRoZSBzdGFu
-ZGFyZCBlcnJvciBjb2RlcyBpZiBpdCBmYWlscy4KPiAgICovCj4gIGludCBkcm1fb2ZfY29tcG9u
-ZW50X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAtCQkJICAgaW50ICgqY29tcGFyZV9vZiko
-c3RydWN0IGRldmljZSAqLCB2b2lkICopLAo+ICsJCQkgICBpbnQgKCpjb21wYXJlX3BvcnQpKHN0
-cnVjdCBkZXZpY2UgKiwgdm9pZCAqKSwKPiArCQkJICAgaW50ICgqY29tcGFyZV9lbmNvZGVyKShz
-dHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4gIAkJCSAgIGNvbnN0IHN0cnVjdCBjb21wb25lbnRf
-bWFzdGVyX29wcyAqbV9vcHMpCj4gIHsKPiAgCXN0cnVjdCBkZXZpY2Vfbm9kZSAqZXAsICpwb3J0
-LCAqcmVtb3RlOwo+IEBAIC0xMDEsOCArMTAyLDEyIEBAIGludCBkcm1fb2ZfY29tcG9uZW50X3By
-b2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAgCQkJY29udGludWU7Cj4gIAkJfQo+ICAKPiAtCQlj
-b21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBwb3J0KTsKPiAtCQlv
-Zl9ub2RlX3B1dChwb3J0KTsKPiArCQljb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBj
-b21wYXJlX3BvcnQsIHBvcnQpOwo+ICsJCS8qCj4gKwkJICogY29tcG9uZW50X21hdGNoX2FkZCBr
-ZWVwcyBhIHJlZmVyZW5jZSB0byB0aGUgcG9ydAo+ICsJCSAqIHZhcmlhYmxlLCBzbyB3ZSBuZWVk
-IHRvIGtlZXAgdGhlIHJlZmVyZW5jZSBjb3VudAo+ICsJCSAqIGluY3JlbWVudCBmcm9tIG9mX3Bh
-cnNlX3BoYW5kbGUoKQo+ICsJCSAqLwo+ICAJfQo+ICAKPiAgCWlmIChpID09IDApIHsKPiBAQCAt
-MTQwLDggKzE0NSwxMiBAQCBpbnQgZHJtX29mX2NvbXBvbmVudF9wcm9iZShzdHJ1Y3QgZGV2aWNl
-ICpkZXYsCj4gIAkJCQljb250aW51ZTsKPiAgCQkJfQo+ICAKPiAtCQkJY29tcG9uZW50X21hdGNo
-X2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9vZiwgcmVtb3RlKTsKPiAtCQkJb2Zfbm9kZV9wdXQo
-cmVtb3RlKTsKPiArCQkJY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9l
-bmNvZGVyLCByZW1vdGUpOwo+ICsJCQkvKgo+ICsJCQkgKiBjb21wb25lbnRfbWF0Y2hfYWRkIGtl
-ZXBzIGEgcmVmZXJlbmNlIHRvIHRoZSBwb3J0Cj4gKwkJCSAqIHZhcmlhYmxlLCBzbyB3ZSBuZWVk
-IHRvIGtlZXAgdGhlIHJlZmVyZW5jZSBjb3VudAo+ICsJCQkgKiBpbmNyZW1lbnQgZnJvbSBvZl9n
-cmFwaF9nZXRfcmVtb3RlX3BvcnRfcGFyZW50KCkKPiArCQkJICovCj4gIAkJfQo+ICAJCW9mX25v
-ZGVfcHV0KHBvcnQpOwo+ICAJfQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaW14L2lt
-eC1kcm0tY29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL2lteC9pbXgtZHJtLWNvcmUuYwo+IGluZGV4
-IDY0ZjE2ZWEuLjBkMzY0MTAgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2lteC9pbXgt
-ZHJtLWNvcmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9pbXgvaW14LWRybS1jb3JlLmMKPiBA
-QCAtNTMxLDcgKzUzMSw4IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50X21hc3Rlcl9v
-cHMgaW14X2RybV9vcHMgPSB7Cj4gIAo+ICBzdGF0aWMgaW50IGlteF9kcm1fcGxhdGZvcm1fcHJv
-YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgewo+IC0JaW50IHJldCA9IGRybV9v
-Zl9jb21wb25lbnRfcHJvYmUoJnBkZXYtPmRldiwgY29tcGFyZV9vZiwgJmlteF9kcm1fb3BzKTsK
-PiArCWludCByZXQgPSBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKCZwZGV2LT5kZXYsIGNvbXBhcmVf
-b2YsIGNvbXBhcmVfb2YsCj4gKwkJCQkJICZpbXhfZHJtX29wcyk7Cj4gIAo+ICAJaWYgKCFyZXQp
-Cj4gIAkJcmV0ID0gZG1hX3NldF9jb2hlcmVudF9tYXNrKCZwZGV2LT5kZXYsIERNQV9CSVRfTUFT
-SygzMikpOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fb2YuaCBiL2luY2x1ZGUvZHJt
-L2RybV9vZi5oCj4gaW5kZXggODU0NDY2NS4uMWMyOWU0MiAxMDA2NDQKPiAtLS0gYS9pbmNsdWRl
-L2RybS9kcm1fb2YuaAo+ICsrKyBiL2luY2x1ZGUvZHJtL2RybV9vZi5oCj4gQEAgLTEwLDcgKzEw
-LDggQEAgc3RydWN0IGRldmljZV9ub2RlOwo+ICBleHRlcm4gdWludDMyX3QgZHJtX29mX2ZpbmRf
-cG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgCQkJCQkgICBzdHJ1Y3Qg
-ZGV2aWNlX25vZGUgKnBvcnQpOwo+ICBleHRlcm4gaW50IGRybV9vZl9jb21wb25lbnRfcHJvYmUo
-c3RydWN0IGRldmljZSAqZGV2LAo+IC0JCQkJICBpbnQgKCpjb21wYXJlX29mKShzdHJ1Y3QgZGV2
-aWNlICosIHZvaWQgKiksCj4gKwkJCQkgIGludCAoKmNvbXBhcmVfcG9ydCkoc3RydWN0IGRldmlj
-ZSAqLCB2b2lkICopLAo+ICsJCQkJICBpbnQgKCpjb21wYXJlX2VuY29kZXIpKHN0cnVjdCBkZXZp
-Y2UgKiwgdm9pZCAqKSwKPiAgCQkJCSAgY29uc3Qgc3RydWN0IGNvbXBvbmVudF9tYXN0ZXJfb3Bz
-ICptX29wcyk7Cj4gICNlbHNlCj4gIHN0YXRpYyBpbmxpbmUgdWludDMyX3QgZHJtX29mX2ZpbmRf
-cG9zc2libGVfY3J0Y3Moc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiBAQCAtMjEsNyArMjIsOCBA
-QCBzdGF0aWMgaW5saW5lIHVpbnQzMl90IGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKHN0cnVj
-dCBkcm1fZGV2aWNlICpkZXYsCj4gIAo+ICBzdGF0aWMgaW5saW5lIGludAo+ICBkcm1fb2ZfY29t
-cG9uZW50X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPiAtCQkgICAgICAgaW50ICgqY29tcGFy
-ZV9vZikoc3RydWN0IGRldmljZSAqLCB2b2lkICopLAo+ICsJCSAgICAgICBpbnQgKCpjb21wYXJl
-X3BvcnQpKHN0cnVjdCBkZXZpY2UgKiwgdm9pZCAqKSwKPiArCQkgICAgICAgaW50ICgqY29tcGFy
-ZV9lbmNvZGVyKShzdHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4gIAkJICAgICAgIGNvbnN0IHN0
-cnVjdCBjb21wb25lbnRfbWFzdGVyX29wcyAqbV9vcHMpCj4gIHsKPiAgCXJldHVybiAtRUlOVkFM
-Owo+IC0tIAo+IDIuNi4yCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwo+IGh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcmktZGV2ZWwKCi0tIAo9PT09PT09PT09PT09PT09PT09PQp8IEkgd291bGQgbGlrZSB0
-byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdyZSBub3QgfAp8IGdpdmluZyBtZSB0
-aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0tLS0tLS0tLQogICAgwq9cXyjjg4Qp
-Xy/CrwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Montag, 22. Februar 2016, 17:15:34 schrieb Kishon Vijay Abraham I:
+> > changes in v5.1:
+> > - fix corruptions that happened when sending v5
+>=20
+> I still see the corruption.
+>=20
+> This is how I see the patch after downloading (from both mutt and
+> thunderbird)
+
+interesting ... I see this now too, but "git am" was happy with the enc=
+oding=20
+it seems, I did a
+	git am foo.mbox
+	git format-patch -1
+	diff -u new.patch orig.patch
+
+and the result did match (minus the comment section).
+Anyway, I'll go with git send-email now ;-)
+
+
+Sorry about that
+Heiko
+
+> @@ -3486,6 +3486,12 @@ bytes respectively. Such letter
+> suffixes can also be=3D entirely omitted.
+> =3D20
+>         ro              [KNL] Mount root device read-only on boot
+> =3D20
+> +       rockchip.usb_uart
+> +                       Enable the uart passthrough on the designated=
+ usb
+> port +                       on Rockchip SoCs. When active, the signa=
+ls
+> of the +                       debug-uart get routed to the D+ and D-
+> pins of the usb +                       port and the regular usb
+> controller gets disabled. +
+>         root=3D3D         [KNL] Root filesystem
+>                         See name_to_dev_t comment in init/do_mounts.c=
+=2E
+> =3D20
+> diff --git a/drivers/phy/phy-rockchip-usb.c
+> b/drivers/phy/phy-rockchip-usb.=3D c
+> index 33a80eb..f62d899 100644
+> --- a/drivers/phy/phy-rockchip-usb.c
+> +++ b/drivers/phy/phy-rockchip-usb.c
+> @@ -30,21 +30,23 @@
+>  #include <linux/regmap.h>
+>  #include <linux/mfd/syscon.h>
+> =3D20
+> -/*
+> - * The higher 16-bit of this register is used for write protection
+> - * only if BIT(13 + 16) set to 1 the BIT(13) can be written.
+> - */
+> -#define SIDDQ_WRITE_ENA        BIT(29)
+> -#define SIDDQ_ON               BIT(13)
+> -#define SIDDQ_OFF              (0 << 13)
+> +static int enable_usb_uart;
+> +
+> +#define HIWORD_UPDATE(val, mask) \
+> +               ((val) | (mask) << 16)
+> +
+> +#define UOC_CON0_SIDDQ BIT(13)
+> =3D20
+>  struct rockchip_usb_phys {
+>         int reg;
+>         const char *pll_name;
+>  };
+> =3D20
+> <snip>
+> .
+> .
+>=20
+> I didn't see this problem with the other patches I applied today.
+>=20
+> Thanks
+> Kishon
+>=20
+> > changes in v5:
+> > - only compile debug uart functionality if the phy is compiled in
+> >=20
+> >   fixes initcall conflict and debug functionality also is only real=
+ly
+> >   usable if it's available early
+> >=20
+> > changes in v4:
+> > - drop the rest of the phy-series, as the patches have gotten appli=
+ed
+> >=20
+> > So far, this hasn't gotten eyeballs yet, so citing discussion-parts=
+ from
+> > the v3 coverletter:
+> >=20
+> > The patch, while not associated with the new pll handling, also bui=
+lds
+> > on the groundwork introduced there and adds support for the functio=
+n
+> > repurposing one of the phys as passthrough for uart-data. This enab=
+les
+> > attaching a ttl converter to the D+ and D- pins of an usb cable to
+> > receive uart data this way, when it is not really possible to attac=
+h
+> > a regular serial console to a board.
+> >=20
+> > One point of critique in my first iteration [0] of this was, that
+> > due to when the reconfiguration happens we may miss parts of the lo=
+gs
+> > when earlycon is enabled. So far early_initcall gets used as the
+> > unflattened devicetree is necessary to set this up. Doing this for
+> > example in the early_param directly would require parsing the flatt=
+ened
+> > devicetree to get needed nodes and properties.
+> >=20
+> > I still maintain that if you're working on anything before smp-brin=
+gup
+> > you should use a real dev-board instead or try to solder uart cable=
+s
+> > on hopefully available test-points  .
+> >=20
+> >  Documentation/kernel-parameters.txt |   6 +
+> >  drivers/phy/phy-rockchip-usb.c      | 233
+> >  ++++++++++++++++++++++++++++++------ 2 files changed, 203
+> >  insertions(+), 36 deletions(-)
+> >=20
+> > diff --git a/Documentation/kernel-parameters.txt
+> > b/Documentation/kernel-parameters.txt index 87d40a7..d91417b 100644
+> > --- a/Documentation/kernel-parameters.txt
+> > +++ b/Documentation/kernel-parameters.txt
+> > @@ -3486,6 +3486,12 @@ bytes respectively. Such letter suffixes can=
+ also
+> > be entirely omitted.>=20
+> >  	ro		[KNL] Mount root device read-only on boot
+> >=20
+> > +	rockchip.usb_uart
+> > +			Enable the uart passthrough on the designated usb port
+> > +			on Rockchip SoCs. When active, the signals of the
+> > +			debug-uart get routed to the D+ and D- pins of the usb
+> > +			port and the regular usb controller gets disabled.
+> > +
+> >=20
+> >  	root=3D		[KNL] Root filesystem
+> >  =09
+> >  			See name_to_dev_t comment in init/do_mounts.c.
+> >=20
+> > diff --git a/drivers/phy/phy-rockchip-usb.c
+> > b/drivers/phy/phy-rockchip-usb.c index 33a80eb..f62d899 100644
+> > --- a/drivers/phy/phy-rockchip-usb.c
+> > +++ b/drivers/phy/phy-rockchip-usb.c
+> > @@ -30,21 +30,23 @@
+> >=20
+> >  #include <linux/regmap.h>
+> >  #include <linux/mfd/syscon.h>
+> >=20
+> > -/*
+> > - * The higher 16-bit of this register is used for write protection
+> > - * only if BIT(13 + 16) set to 1 the BIT(13) can be written.
+> > - */
+> > -#define SIDDQ_WRITE_ENA	BIT(29)
+> > -#define SIDDQ_ON		BIT(13)
+> > -#define SIDDQ_OFF		(0 << 13)
+> > +static int enable_usb_uart;
+> > +
+> > +#define HIWORD_UPDATE(val, mask) \
+> > +		((val) | (mask) << 16)
+> > +
+> > +#define UOC_CON0_SIDDQ BIT(13)
+> >=20
+> >  struct rockchip_usb_phys {
+> > =20
+> >  	int reg;
+> >  	const char *pll_name;
+> > =20
+> >  };
+> >=20
+> > +struct rockchip_usb_phy_base;
+> >=20
+> >  struct rockchip_usb_phy_pdata {
+> > =20
+> >  	struct rockchip_usb_phys *phys;
+> >=20
+> > +	int (*init_usb_uart)(struct regmap *grf);
+> > +	int usb_uart_phy;
+> >=20
+> >  };
+> > =20
+> >  struct rockchip_usb_phy_base {
+> >=20
+> > @@ -61,13 +63,15 @@ struct rockchip_usb_phy {
+> >=20
+> >  	struct clk      *clk480m;
+> >  	struct clk_hw	clk480m_hw;
+> >  	struct phy	*phy;
+> >=20
+> > +	bool		uart_enabled;
+> >=20
+> >  };
+> > =20
+> >  static int rockchip_usb_phy_power(struct rockchip_usb_phy *phy,
+> > =20
+> >  					   bool siddq)
+> > =20
+> >  {
+> >=20
+> > -	return regmap_write(phy->base->reg_base, phy->reg_offset,
+> > -			    SIDDQ_WRITE_ENA | (siddq ? SIDDQ_ON : SIDDQ_OFF));
+> > +	u32 val =3D HIWORD_UPDATE(siddq ? UOC_CON0_SIDDQ : 0,=20
+UOC_CON0_SIDDQ);
+> > +
+> > +	return regmap_write(phy->base->reg_base, phy->reg_offset, val);
+> >=20
+> >  }
+> > =20
+> >  static unsigned long rockchip_usb_phy480m_recalc_rate(struct clk_h=
+w
+> >  *hw,
+> >=20
+> > @@ -108,7 +112,7 @@ static int rockchip_usb_phy480m_is_enabled(stru=
+ct
+> > clk_hw *hw)>=20
+> >  	if (ret < 0)
+> >  =09
+> >  		return ret;
+> >=20
+> > -	return (val & SIDDQ_ON) ? 0 : 1;
+> > +	return (val & UOC_CON0_SIDDQ) ? 0 : 1;
+> >=20
+> >  }
+> > =20
+> >  static const struct clk_ops rockchip_usb_phy480m_ops =3D {
+> >=20
+> > @@ -122,6 +126,9 @@ static int rockchip_usb_phy_power_off(struct ph=
+y
+> > *_phy)>=20
+> >  {
+> > =20
+> >  	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
+> >=20
+> > +	if (phy->uart_enabled)
+> > +		return -EBUSY;
+> > +
+> >=20
+> >  	clk_disable_unprepare(phy->clk480m);
+> >  =09
+> >  	return 0;
+> >=20
+> > @@ -131,6 +138,9 @@ static int rockchip_usb_phy_power_on(struct phy
+> > *_phy)>=20
+> >  {
+> > =20
+> >  	struct rockchip_usb_phy *phy =3D phy_get_drvdata(_phy);
+> >=20
+> > +	if (phy->uart_enabled)
+> > +		return -EBUSY;
+> > +
+> >=20
+> >  	return clk_prepare_enable(phy->clk480m);
+> > =20
+> >  }
+> >=20
+> > @@ -144,8 +154,10 @@ static void rockchip_usb_phy_action(void *data=
+)
+> >=20
+> >  {
+> > =20
+> >  	struct rockchip_usb_phy *rk_phy =3D data;
+> >=20
+> > -	of_clk_del_provider(rk_phy->np);
+> > -	clk_unregister(rk_phy->clk480m);
+> > +	if (!rk_phy->uart_enabled) {
+> > +		of_clk_del_provider(rk_phy->np);
+> > +		clk_unregister(rk_phy->clk480m);
+> > +	}
+> >=20
+> >  	if (rk_phy->clk)
+> >  =09
+> >  		clk_put(rk_phy->clk);
+> >=20
+> > @@ -194,30 +206,35 @@ static int rockchip_usb_phy_init(struct
+> > rockchip_usb_phy_base *base,>=20
+> >  		return -EINVAL;
+> >  =09
+> >  	}
+> >=20
+> > -	if (rk_phy->clk) {
+> > -		clk_name =3D __clk_get_name(rk_phy->clk);
+> > -		init.flags =3D 0;
+> > -		init.parent_names =3D &clk_name;
+> > -		init.num_parents =3D 1;
+> > +	if (enable_usb_uart && base->pdata->usb_uart_phy =3D=3D i) {
+> > +		dev_dbg(base->dev, "phy%d used as uart output\n", i);
+> > +		rk_phy->uart_enabled =3D true;
+> >=20
+> >  	} else {
+> >=20
+> > -		init.flags =3D CLK_IS_ROOT;
+> > -		init.parent_names =3D NULL;
+> > -		init.num_parents =3D 0;
+> > -	}
+> > +		if (rk_phy->clk) {
+> > +			clk_name =3D __clk_get_name(rk_phy->clk);
+> > +			init.flags =3D 0;
+> > +			init.parent_names =3D &clk_name;
+> > +			init.num_parents =3D 1;
+> > +		} else {
+> > +			init.flags =3D CLK_IS_ROOT;
+> > +			init.parent_names =3D NULL;
+> > +			init.num_parents =3D 0;
+> > +		}
+> >=20
+> > -	init.ops =3D &rockchip_usb_phy480m_ops;
+> > -	rk_phy->clk480m_hw.init =3D &init;
+> > +		init.ops =3D &rockchip_usb_phy480m_ops;
+> > +		rk_phy->clk480m_hw.init =3D &init;
+> >=20
+> > -	rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw);
+> > -	if (IS_ERR(rk_phy->clk480m)) {
+> > -		err =3D PTR_ERR(rk_phy->clk480m);
+> > -		goto err_clk;
+> > -	}
+> > +		rk_phy->clk480m =3D clk_register(base->dev, &rk_phy->clk480m_hw)=
+;
+> > +		if (IS_ERR(rk_phy->clk480m)) {
+> > +			err =3D PTR_ERR(rk_phy->clk480m);
+> > +			goto err_clk;
+> > +		}
+> >=20
+> > -	err =3D of_clk_add_provider(child, of_clk_src_simple_get,
+> > -				  rk_phy->clk480m);
+> > -	if (err < 0)
+> > -		goto err_clk_prov;
+> > +		err =3D of_clk_add_provider(child, of_clk_src_simple_get,
+> > +					rk_phy->clk480m);
+> > +		if (err < 0)
+> > +			goto err_clk_prov;
+> > +	}
+> >=20
+> >  	err =3D devm_add_action(base->dev, rockchip_usb_phy_action, rk_ph=
+y);
+> >  	if (err)
+> >=20
+> > @@ -230,13 +247,21 @@ static int rockchip_usb_phy_init(struct
+> > rockchip_usb_phy_base *base,>=20
+> >  	}
+> >  	phy_set_drvdata(rk_phy->phy, rk_phy);
+> >=20
+> > -	/* only power up usb phy when it use, so disable it when init*/
+> > -	return rockchip_usb_phy_power(rk_phy, 1);
+> > +	/*
+> > +	 * When acting as uart-pipe, just keep clock on otherwise
+> > +	 * only power up usb phy when it use, so disable it when init
+> > +	 */
+> > +	if (rk_phy->uart_enabled)
+> > +		return clk_prepare_enable(rk_phy->clk);
+> > +	else
+> > +		return rockchip_usb_phy_power(rk_phy, 1);
+> >=20
+> >  err_devm_action:
+> > -	of_clk_del_provider(child);
+> > +	if (!rk_phy->uart_enabled)
+> > +		of_clk_del_provider(child);
+> >=20
+> >  err_clk_prov:
+> > -	clk_unregister(rk_phy->clk480m);
+> > +	if (!rk_phy->uart_enabled)
+> > +		clk_unregister(rk_phy->clk480m);
+> >=20
+> >  err_clk:
+> >  	if (rk_phy->clk)
+> >  =09
+> >  		clk_put(rk_phy->clk);
+> >=20
+> > @@ -259,6 +284,86 @@ static const struct rockchip_usb_phy_pdata
+> > rk3188_pdata =3D {>=20
+> >  	},
+> > =20
+> >  };
+> >=20
+> > +#define RK3288_UOC0_CON0				0x320
+> > +#define RK3288_UOC0_CON0_COMMON_ON_N			BIT(0)
+> > +#define RK3288_UOC0_CON0_DISABLE			BIT(4)
+> > +
+> > +#define RK3288_UOC0_CON2				0x328
+> > +#define RK3288_UOC0_CON2_SOFT_CON_SEL			BIT(2)
+> > +
+> > +#define RK3288_UOC0_CON3				0x32c
+> > +#define RK3288_UOC0_CON3_UTMI_SUSPENDN			BIT(0)
+> > +#define RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING		(1 << 1)
+> > +#define RK3288_UOC0_CON3_UTMI_OPMODE_MASK		(3 << 1)
+> > +#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC	(1 << 3)
+> > +#define RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK		(3 << 3)
+> > +#define RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED		BIT(5)
+> > +#define RK3288_UOC0_CON3_BYPASSDMEN			BIT(6)
+> > +#define RK3288_UOC0_CON3_BYPASSSEL			BIT(7)
+> > +
+> > +/*
+> > + * Enable the bypass of uart2 data through the otg usb phy.
+> > + * Original description in the TRM.
+> > + * 1. Disable the OTG block by setting OTGDISABLE0 to 1=E2=80=99b1=
+=2E
+> > + * 2. Disable the pull-up resistance on the D+ line by setting
+> > + *    OPMODE0[1:0] to 2=E2=80=99b01.
+> > + * 3. To ensure that the XO, Bias, and PLL blocks are powered down=
+ in
+> > Suspend + *    mode, set COMMONONN to 1=E2=80=99b1.
+> > + * 4. Place the USB PHY in Suspend mode by setting SUSPENDM0 to 1=E2=
+=80=99b0.
+> > + * 5. Set BYPASSSEL0 to 1=E2=80=99b1.
+> > + * 6. To transmit data, controls BYPASSDMEN0, and BYPASSDMDATA0.
+> > + * To receive data, monitor FSVPLUS0.
+> > + *
+> > + * The actual code in the vendor kernel does some things different=
+ly.
+> > + */
+> > +static int __init rk3288_init_usb_uart(struct regmap *grf)
+> > +{
+> > +	u32 val;
+> > +	int ret;
+> > +
+> > +	/*
+> > +	 * COMMON_ON and DISABLE settings are described in the TRM,
+> > +	 * but were not present in the original code.
+> > +	 * Also disable the analog phy components to save power.
+> > +	 */
+> > +	val =3D HIWORD_UPDATE(RK3288_UOC0_CON0_COMMON_ON_N
+> > +				| RK3288_UOC0_CON0_DISABLE
+> > +				| UOC_CON0_SIDDQ,
+> > +			    RK3288_UOC0_CON0_COMMON_ON_N
+> > +				| RK3288_UOC0_CON0_DISABLE
+> > +				| UOC_CON0_SIDDQ);
+> > +	ret =3D regmap_write(grf, RK3288_UOC0_CON0, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	val =3D HIWORD_UPDATE(RK3288_UOC0_CON2_SOFT_CON_SEL,
+> > +			    RK3288_UOC0_CON2_SOFT_CON_SEL);
+> > +	ret =3D regmap_write(grf, RK3288_UOC0_CON2, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_UTMI_OPMODE_NODRIVING
+> > +				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_FSTRANSC
+> > +				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED,
+> > +			    RK3288_UOC0_CON3_UTMI_SUSPENDN
+> > +				| RK3288_UOC0_CON3_UTMI_OPMODE_MASK
+> > +				| RK3288_UOC0_CON3_UTMI_XCVRSEELCT_MASK
+> > +				| RK3288_UOC0_CON3_UTMI_TERMSEL_FULLSPEED);
+> > +	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	val =3D HIWORD_UPDATE(RK3288_UOC0_CON3_BYPASSSEL
+> > +				| RK3288_UOC0_CON3_BYPASSDMEN,
+> > +			    RK3288_UOC0_CON3_BYPASSSEL
+> > +				| RK3288_UOC0_CON3_BYPASSDMEN);
+> > +	ret =3D regmap_write(grf, RK3288_UOC0_CON3, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >=20
+> >  static const struct rockchip_usb_phy_pdata rk3288_pdata =3D {
+> > =20
+> >  	.phys =3D (struct rockchip_usb_phys[]){
+> >  =09
+> >  		{ .reg =3D 0x320, .pll_name =3D "sclk_otgphy0_480m" },
+> >=20
+> > @@ -266,6 +371,8 @@ static const struct rockchip_usb_phy_pdata
+> > rk3288_pdata =3D {>=20
+> >  		{ .reg =3D 0x348, .pll_name =3D "sclk_otgphy2_480m" },
+> >  		{ /* sentinel */ }
+> >  =09
+> >  	},
+> >=20
+> > +	.init_usb_uart =3D rk3288_init_usb_uart,
+> > +	.usb_uart_phy =3D 0,
+> >=20
+> >  };
+> > =20
+> >  static int rockchip_usb_phy_probe(struct platform_device *pdev)
+> >=20
+> > @@ -328,6 +435,60 @@ static struct platform_driver rockchip_usb_dri=
+ver =3D
+> > {>=20
+> >  module_platform_driver(rockchip_usb_driver);
+> >=20
+> > +#ifndef MODULE
+> > +static int __init rockchip_init_usb_uart(void)
+> > +{
+> > +	const struct of_device_id *match;
+> > +	const struct rockchip_usb_phy_pdata *data;
+> > +	struct device_node *np;
+> > +	struct regmap *grf;
+> > +	int ret;
+> > +
+> > +	if (!enable_usb_uart)
+> > +		return 0;
+> > +
+> > +	np =3D of_find_matching_node_and_match(NULL, rockchip_usb_phy_dt_=
+ids,
+> > +					     &match);
+> > +	if (!np) {
+> > +		pr_err("%s: failed to find usbphy node\n", __func__);
+> > +		return -ENOTSUPP;
+> > +	}
+> > +
+> > +	pr_debug("%s: using settings for %s\n", __func__, match-
+>compatible);
+> > +	data =3D match->data;
+> > +
+> > +	if (!data->init_usb_uart) {
+> > +		pr_err("%s: usb-uart not available on %s\n",
+> > +		       __func__, match->compatible);
+> > +		return -ENOTSUPP;
+> > +	}
+> > +
+> > +	grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+> > +	if (IS_ERR(grf)) {
+> > +		pr_err("%s: Missing rockchip,grf property, %lu\n",
+> > +		       __func__, PTR_ERR(grf));
+> > +		return PTR_ERR(grf);
+> > +	}
+> > +
+> > +	ret =3D data->init_usb_uart(grf);
+> > +	if (ret) {
+> > +		pr_err("%s: could not init usb_uart, %d\n", __func__, ret);
+> > +		enable_usb_uart =3D 0;
+> > +		return ret;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +early_initcall(rockchip_init_usb_uart);
+> > +
+> > +static int __init rockchip_usb_uart(char *buf)
+> > +{
+> > +	enable_usb_uart =3D true;
+> > +	return 0;
+> > +}
+> > +early_param("rockchip.usb_uart", rockchip_usb_uart);
+> > +#endif
+> > +
+> >=20
+> >  MODULE_AUTHOR("Yunzhi Li <lyz@rock-chips.com>");
+> >  MODULE_DESCRIPTION("Rockchip USB 2.0 PHY driver");
+> >  MODULE_LICENSE("GPL v2");
