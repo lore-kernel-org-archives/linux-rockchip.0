@@ -1,112 +1,136 @@
-From: "'Doug Anderson' via linux-sunxi" <linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
-Date: Tue, 23 Feb 2016 10:42:03 -0800
-Message-ID: <CAD=FV=VM3cOQ0HqwLANBw9MVBCyFTrSyPe_dGzgPucuMUEWRKA@mail.gmail.com>
-References: <20151110173416.GB21727@ulmo>
-	<CAD=FV=WL3jYEgVe-m6QcAyQwfJgdX4J5OtKisKwyoKOrTSpEQA@mail.gmail.com>
-	<20160125170855.GA10182@ulmo>
-	<CAD=FV=Xvxeqo3imUmjukC5iYk3EZkrJ04G7C1B-w4xyr-r6-2Q@mail.gmail.com>
-	<20160203145337.GD9650@ulmo>
-	<CAD=FV=U_x1cxx6RrHuVgVV8GbOwm9DXXJcyiArbbQySUOaxrvQ@mail.gmail.com>
-	<20160222175929.GA23899@ulmo>
-	<CAD=FV=UCErW3EjYRtwt49_ztNR7cyY4U0o4R_dxdomer-Ac2Dg@mail.gmail.com>
-	<20160223143859.GA27656@ulmo>
-	<CAD=FV=UvxG3MYD4MKQJqN7W68uMjd-s+FH-e8tkrLCpS0RLmZQ@mail.gmail.com>
-	<20160223181448.GA14754@ulmo.nvidia.com>
-Reply-To: dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 5/6] dt-bindings: add documentation of rk3399 clock
+ controller
+Date: Tue, 23 Feb 2016 14:27:59 -0600
+Message-ID: <20160223202759.GA11885@rob-hp-laptop>
+References: <1455846978-4272-1-git-send-email-jay.xu@rock-chips.com>
+ <1455847186-4423-1-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBDR6JO4Q7MHRB7GPWK3AKGQE4O52ITY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <20160223181448.GA14754-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel@l>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1455847186-4423-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "jianqun.xu" <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Thierry,
+On Fri, Feb 19, 2016 at 09:59:46AM +0800, jianqun.xu wrote:
+> From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Add the devicetree binding for the cru on the rk3399 which quite
+> similar structured as previous clock controllers.
+> 
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> changes in v4:
+> - none
+> changes in v3:
+> - none
+> changes in v2:
+> - none
+> 
+>  .../bindings/clock/rockchip,rk3399-cru.txt         | 82 ++++++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
 
-On Tue, Feb 23, 2016 at 10:14 AM, Thierry Reding
-<thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> pwm_get_period(): get the period of the PWM; if the PWM has not yet
->> been configured by software this gets the default period (possibly
->> specified by the device tree).
->
-> No. I think we'll need a different construct for the period defined by
-> DT or board files. pwm_get_period() is the legacy API to retrieve the
-> "current" period, even if it was lying a little before the atomic API.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
-Ah, got it.  I think I missed that you considered pwm_get_period()
-legacy and that you eventually wanted to get rid of it.  OK, then what
-you say makes sense.
-
-
->> That should work with one minor problem.  If HW readout isn't
->> supported then pwm_get_state() in probe will presumably return 0 for
->> the duty cycle.  That means it will change the voltage.  That's in
->> contrast to how I think things work today where the voltage isn't
->> changed until the first set_voltage() call.  At least the last time I
->> tested things get_voltage() would simply report an incorrect value
->> until the first set_voltage().  I think existing behavior (reporting
->> the wrong value) is better than new behavior (change the value at
->> probe).
->
-> That's exactly the point. Reporting a wrong value isn't really a good
-> option. Changing the voltage on boot is the only way to make the logical
-> state match the hardware state on boot. Chances are that if you don't
-> have hardware readout support you probably don't care what state your
-> regulator will be in.
->
-> Then again, if we don't support hardware readout, setting up the logical
-> state with data from DT (or board files) and defaulting the duty cycle
-> to 0, we end up with exactly what we had before, even with the atomic
-> API, right? Maybe that's okay, too.
-
-IMHO this is a change in behavior that will break existing users.
-Anyone using a PWM regulator will suddenly find their voltage changing
-at bootup.  Certainly today all users of the PWM regulator don't seem
-to mind (apparently) the the voltage is reported incorrectly at bootup
-but I bet they'd mind if the voltage suddenly started changing for
-them at bootup.
-
-It seems better to preserve existing behavior and print a warning that
-the voltage will be reported incorrectly until HW Readout is
-supported.
-
-Of course, we're only talking about two real users in mainline here:
-Rockchip boards and the "stih407-family".  If we just fix both of
-those to support HW Readout before landing the change then I'm fine
-with doing what you say.
-
-
->> ...and if set_voltage() remains untouched then we can solve my probe
->> problem by renaming pwm_get_state() to pwm_get_hw_state() and having
->> it return an error if HW readout is not supported.  Then we only call
->> pwm_get_args() / pwm_apply_state() when we support HW readout.
->
-> The problem is that we make the API clumsy to use. If we don't sync the
-> "initial" state (as defined by DT or board files) to hardware at any
-> point, then we need to add the pwm_args construct and always stick to
-> it. I think it weird to have to use the pwm_args.period instead of the
-> current period.
->
-> So we're back to square one, really. That's exactly what Mark brought up
-> originally.
-
-I had missed the part where you wanted to deprecate pwm_get_period().
-Thus my points here aren't really valid.
-
-In my mind the old API was perfectly fine (and actually quite clean /
-simple to use) except in the special case of avoiding the PWM
-regulator glitches.  With that mindset I think my previous email make
-sense.  However, this is your subsystem to maintain and if you think
-moving everyone to a new atomic API makes more sense then you're in
-the best position to make that decision.  :)
-
-
--Doug
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> new file mode 100644
+> index 0000000..07bcc6e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> @@ -0,0 +1,82 @@
+> +* Rockchip RK3399 Clock and Reset Unit
+> +
+> +The RK3399 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller for SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: PMU for CRU should be "rockchip,rk3399-pmucru"
+> +- compatible: CRU should be "rockchip,rk3399-cru"
+> +- reg: physical base address of the controller and length of memory mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register files"
+> +  If missing, pll rates are not changeable, due to the missing pll lock status.
+> +
+> +Each clock is assigned an identifier and client nodes can use this identifier
+> +to specify the clock which they consume. All available clocks are defined as
+> +preprocessor macros in the dt-bindings/clock/rk3399-cru.h headers and can be
+> +used in device tree sources. Similar macros exist for the reset sources in
+> +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "xin32k" - rtc clock - optional,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "ext_gmac" - external GMAC clock - optional
+> + - "ext_hsadc" - external HSADC clock - optional,
+> + - "ext_isp" - external ISP clock - optional,
+> + - "ext_jtag" - external JTAG clock - optional
+> + - "ext_vip" - external VIP clock - optional,
+> + - "usbotg_out" - output clock of the pll in the otg phy
+> +
+> +Example: General Register Files
+> +
+> +	pmugrf: syscon@ff320000 {
+> +		compatible = "rockchip,rk3399-pmugrf", "syscon";
+> +		reg = <0x0 0xff320000 0x0 0x1000>;
+> +	};
+> +
+> +	grf: syscon@ff770000 {
+> +		compatible = "rockchip,rk3399-grf", "syscon";
+> +		reg = <0x0 0xff770000 0x0 0x10000>;
+> +	};
+> +
+> +Example: Clock controller node:
+> +
+> +	pmucru: pmu-clock-controller@ff750000 {
+> +		compatible = "rockchip,rk3399-pmucru";
+> +		reg = <0x0 0xff750000 0x0 0x1000>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +	cru: clock-controller@ff760000 {
+> +		compatible = "rockchip,rk3399-cru";
+> +		reg = <0x0 0xff760000 0x0 0x1000>;
+> +		rockchip,grf = <&grf>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +	};
+> +
+> +Example: UART controller node that consumes the clock generated by the clock
+> +  controller:
+> +
+> +	uart0: serial@ff1a0000 {
+> +		compatible = "rockchip,rk3399-uart", "snps,dw-apb-uart";
+> +		reg = <0x0 0xff180000 0x0 0x100>;
+> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +	};
+> -- 
+> 1.9.1
+> 
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
