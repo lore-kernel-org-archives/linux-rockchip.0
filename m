@@ -1,52 +1,138 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
-Date: Tue, 23 Feb 2016 06:24:38 +0900
-Message-ID: <20160222212438.GG18327@sirena.org.uk>
-References: <1442828009-6241-1-git-send-email-boris.brezillon@free-electrons.com>
- <2341981.a79ioYM9Es@diego>
- <20151110173416.GB21727@ulmo>
- <CAD=FV=WL3jYEgVe-m6QcAyQwfJgdX4J5OtKisKwyoKOrTSpEQA@mail.gmail.com>
- <20160125170855.GA10182@ulmo>
- <CAD=FV=Xvxeqo3imUmjukC5iYk3EZkrJ04G7C1B-w4xyr-r6-2Q@mail.gmail.com>
- <20160203145337.GD9650@ulmo>
- <CAD=FV=U_x1cxx6RrHuVgVV8GbOwm9DXXJcyiArbbQySUOaxrvQ@mail.gmail.com>
- <20160222175929.GA23899@ulmo>
- <CAD=FV=UCErW3EjYRtwt49_ztNR7cyY4U0o4R_dxdomer-Ac2Dg@mail.gmail.com>
-Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v5 2/8] clk: rockchip: rk3036: fix and add node id for emac clock
+Date: Tue, 23 Feb 2016 01:02:51 +0100
+Message-ID: <1547339.dzsB9RftPO@phil>
+References: <1454384032-6794-1-git-send-email-wxt@rock-chips.com> <2143221.dkVJ5VuQke@phil> <56C924B7.8090301@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xzjdnLf1/heGxxoo"
-Return-path: <linux-sunxi+bncBDQ2L75W5QGBBNHZVW3AKGQE74KLQ2Y-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=UCErW3EjYRtwt49_ztNR7cyY4U0o4R_dxdomer-Ac2Dg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm->
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56C924B7.8090301@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <caesar.upstream@gmail.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, zhengxing <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, jeffy.chen@rock-chips.com, linux-kernel@vger.kernel.org, leozwang@google.com, keescook@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
---xzjdnLf1/heGxxoo
-Content-Type: text/plain; charset=UTF-8
-Content-Disposition: inline
+Am Sonntag, 21. Februar 2016, 10:45:11 schrieb Caesar Wang:
+> Heiko,
+>=20
+> =E5=9C=A8 2016=E5=B9=B402=E6=9C=8821=E6=97=A5 10:26, Heiko Stuebner =E5=
+=86=99=E9=81=93:
+> > Hi Caesar, Xing,
+> >=20
+> > Am Dienstag, 2. Februar 2016, 11:48:19 schrieb Caesar Wang:
+> >> From: zhengxing <zhengxing@rock-chips.com>
+> >>=20
+> >> In the emac driver, we need to refer HCLK_MAC since there are
+> >> only 3PLLs (APLL/GPLL/DPLL) on the rk3036, most clock are under th=
+e
+> >> GPLL, and it is unable to provide the accurate rate for mac_ref wh=
+ich
+> >> need to 50MHz probability, we should let it under the DPLL and are
+> >> able to set the freq which integer multiples of 50MHz, so we add t=
+hese
+> >> emac node for reference.
+> >>=20
+> >> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> >> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> >=20
+> > [...]
+> >=20
+> >> --- a/drivers/clk/rockchip/clk-rk3036.c
+> >> +++ b/drivers/clk/rockchip/clk-rk3036.c
+> >> @@ -343,8 +343,11 @@ static struct rockchip_clk_branch
+> >> rk3036_clk_branches[] __initdata =3D { RK2928_CLKSEL_CON(16), 0, 2=
+,
+> >> MFLAGS,
+> >> 2, 5, DFLAGS,
+> >>=20
+> >>   			RK2928_CLKGATE_CON(10), 5, GFLAGS),
+> >>=20
+> >> -	COMPOSITE_NOGATE(0, "mac_pll_src", mux_pll_src_3plls_p, 0,
+> >> -			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS, 9, 5, DFLAGS),
+> >> +	MUX(SCLK_MACPLL, "mac_pll_pre", mux_pll_src_3plls_p, 0,
+> >> +			RK2928_CLKSEL_CON(21), 0, 2, MFLAGS),
+> >> +	DIV(0, "mac_pll_src", "mac_pll_pre", 0,
+> >> +			RK2928_CLKSEL_CON(21), 9, 5, DFLAGS),
+> >> +
+> >=20
+> > CLK_SET_RATE_NO_REPARENT should do the trick as well.
+> >=20
+> > And the whole hclk + clkid part should be separate patches. I took =
+the
+> > liberty of splitting them already in [0] to see if I could get the =
+emac
+> > running on my kylin board.
+> >=20
+> > Probing emac + phy does suceed, but there is no link-detection.
+> > Building your kylin-develop4.4 branch [1] results in the same (aka =
+no
+> > transmission).
+> >=20
+> > Only with the original uboot + 4.1-based kernel that was already on=
+ the
+> > device did I manage to get a network connection.
+>=20
+> I guess you need apply the uboot patch[0].
+>=20
+> patch[0]:
+> http://lists.denx.de/pipermail/u-boot/2016-February/245814.html
+>=20
+> or get the uboot from rockchip github:
+> https://github.com/rockchip-linux/u-boot/commits/rk3036
 
-On Mon, Feb 22, 2016 at 11:15:09AM -0800, Doug Anderson wrote:
+I have a uboot with the ddr-freq change already, and the clocks look li=
+ke
+expected (both on the android system as well as on my mainline kernel w=
+ith
+the adapted clock change):
 
-> Note that historically I remember that Linus Torvalds has stated that
-> there is no stable API within the Linux kernel and that forcing the
-> in-kernel API to never change was bad for software development.  I
-> tracked down my memory and found
-> <http://lwn.net/1999/0211/a/lt-binary.html>.  Linus is rabid about not
-> breaking userspace, but in general there's no strong requirement to
-> never change the driver API inside the kernel.  That being said,
-> changing the driver API causes a lot of churn, so presumably changing
-> it in a backward compatible way (like adding to the API instead of
-> changing it) will make things happier.
+    pll_dpll                              1            1   400000000   =
+       0 0 =20
+       dpll                               1            1   400000000   =
+       0 0 =20
+          mac_pll_src                     1            1    50000000   =
+       0 0 =20
+             mac_clk_ref                  3            3    50000000   =
+       0 0 =20
+                mac_clk                   1            1    25000000   =
+       0 0 =20
 
-You do need to fix the users though, change is fine but you can't cause
-people's systems to break.
---xzjdnLf1/heGxxoo--
+The probing itself also seems to work like a charm:
+
+[    3.064437] rockchip_emac 10200000.ethernet: ARC EMAC detected with =
+id: 0x7fd02
+[    3.072123] rockchip_emac 10200000.ethernet: IRQ is 29
+[    3.090055] rockchip_emac 10200000.ethernet: MAC address is now a2:d=
+6:55:be:be:ad
+[    3.100732] libphy: Synopsys MII Bus: probed
+[    3.202432] rockchip_emac 10200000.ethernet: connected to RTL8201F E=
+thernet phy with id 0x1cc816
+(same with the real generic phy)
+
+Digging a bit into the phy status it looks like it never detects the li=
+nk,
+so my current guess is that I have some sort of clock issue that isn't
+shown in the general clock summary, as the phy should only need the
+mac clock to do the link negotiation. I'll dig some more.
+
+
+Heiko
+
+> > Is there some additional setup missing somewhere?
+> >=20
+> >=20
+> > Heiko
+> >=20
+> > [0] https://github.com/mmind/linux-rockchip/commits/tmp/rk3036-emac
+> > The 3 additional patches are not strictly necessary there.
+> >=20
+> > [1] https://github.com/rockchip-linux/kernel/tree/kylin-develop4.4
+>=20
+> The lastest kylin-develop.4.4.y from my github:
+> https://github.com/Caesar-github/rockchip/tree/kylin/develop-4.4.y
+>=20
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
