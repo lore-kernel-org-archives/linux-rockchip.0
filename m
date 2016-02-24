@@ -1,14 +1,15 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 1/4] rockchip soc-driver changes for 4.6
-Date: Wed, 24 Feb 2016 13:50:46 -0800
-Message-ID: <20160224215046.GK10126@localhost>
+Subject: Re: [GIT PULL 4/4] rockchip dts32 changes for 4.6
+Date: Wed, 24 Feb 2016 13:53:28 -0800
+Message-ID: <20160224215328.GN10126@localhost>
 References: <1734524.3yNt5L3F1F@phil>
+ <22050679.RDDVtpO0ps@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1734524.3yNt5L3F1F@phil>
+In-Reply-To: <22050679.RDDVtpO0ps@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,11 +23,14 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 11, 2016 at 03:47:12PM +0100, Heiko Stuebner wrote:
+On Thu, Feb 11, 2016 at 04:12:35PM +0100, Heiko Stuebner wrote:
 > Hi Arnd, Olof, Kevin,
 > 
-> please find below soc driver changes for Rockchip for 4.6
-> The tag describes the changes a little bit more.
+> and finally this is the biggest set ... 32bit devicetree changes.
+> For the clock-ids this includes a shared branch that gets shared
+> with the clock-branch sent to the clock-maintainers.
+> 
+> As the tag describes, contents are pretty diverse but simple changes.
 > 
 > 
 > Thanks
@@ -39,13 +43,21 @@ On Thu, Feb 11, 2016 at 03:47:12PM +0100, Heiko Stuebner wrote:
 > 
 > are available in the git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-drivers1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-dts32-1
 > 
-> for you to fetch changes up to 1d961f11a108af9f7fbe89cc950a8d16ddbdbb28:
+> for you to fetch changes up to 741d3b0c1f6187dbf9b509b6776c77828d4c66d5:
 > 
->   soc: rockchip: power-domain: fix err handle while probing (2016-02-02 22:18:31 +0100)
+>   ARM: dts: cros-ec-keyboard: Add LOCK key to keyboard matrix (2016-02-10 22:41:53 +0100)
+> 
+> ----------------------------------------------------------------
+> Assorted bunch of 32bit Rockchip devicetree changes. More clocks,
+> nodes and fixes like the increased drive-strength on the firefly.
+> Most interesting is maybe the enablement of the pl330 option
+> for handling the broken flushp operation that is present on the
+> current Rockchip SoCs. Together with the driver-side enablement
+> this should give us working dma finally.
 
-Merged, thanks.
+Merged, thanks!
 
 
 -Olof
