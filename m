@@ -1,41 +1,37 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 4/4] rockchip dts32 changes for 4.6
-Date: Wed, 24 Feb 2016 13:53:28 -0800
-Message-ID: <20160224215328.GN10126@localhost>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [GIT PULL 3/4] rockchip dts64 changes for 4.6
+Date: Wed, 24 Feb 2016 13:52:12 -0800
+Message-ID: <20160224215212.GM10126@localhost>
 References: <1734524.3yNt5L3F1F@phil>
- <22050679.RDDVtpO0ps@phil>
+ <29700148.FpDzERqiyH@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <22050679.RDDVtpO0ps@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <29700148.FpDzERqiyH@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, arm@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 11, 2016 at 04:12:35PM +0100, Heiko Stuebner wrote:
+On Thu, Feb 11, 2016 at 03:52:40PM +0100, Heiko Stuebner wrote:
 > Hi Arnd, Olof, Kevin,
 > 
-> and finally this is the biggest set ... 32bit devicetree changes.
-> For the clock-ids this includes a shared branch that gets shared
-> with the clock-branch sent to the clock-maintainers.
-> 
-> As the tag describes, contents are pretty diverse but simple changes.
+> some small 64bit devicetree changes for 4.6 that allow mmc tuning and
+> use the newer wakeup-source property for the gpio-keys.
 > 
 > 
 > Thanks
 > Heiko
-> 
 > 
 > The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 > 
@@ -43,21 +39,17 @@ On Thu, Feb 11, 2016 at 04:12:35PM +0100, Heiko Stuebner wrote:
 > 
 > are available in the git repository at:
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-dts32-1
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-dts64-1
 > 
-> for you to fetch changes up to 741d3b0c1f6187dbf9b509b6776c77828d4c66d5:
+> for you to fetch changes up to e6f49b118f73a769ec51ed28a085e9dccd67f9a1:
 > 
->   ARM: dts: cros-ec-keyboard: Add LOCK key to keyboard matrix (2016-02-10 22:41:53 +0100)
+>   arm64: dts: rockchip: replace gpio-key,wakeup with wakeup-source property (2016-02-10 00:23:24 +0100)
 > 
 > ----------------------------------------------------------------
-> Assorted bunch of 32bit Rockchip devicetree changes. More clocks,
-> nodes and fixes like the increased drive-strength on the firefly.
-> Most interesting is maybe the enablement of the pl330 option
-> for handling the broken flushp operation that is present on the
-> current Rockchip SoCs. Together with the driver-side enablement
-> this should give us working dma finally.
+> Define the tuning-related mmc clocks and move from
+> gpio-key,wakeup to the more generic wakeup-source property.
 
-Merged, thanks!
+Merged, thanks.
 
 
 -Olof
