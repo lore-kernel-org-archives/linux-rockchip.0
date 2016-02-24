@@ -1,38 +1,28 @@
-From: Laxman Dewangan <ldewangan@nvidia.com>
-Subject: [PATCH 44/50] pinctrl: rockchip: Use devm_pinctrl_register() for pinctrl registration
-Date: Wed, 24 Feb 2016 18:46:09 +0530
-Message-ID: <1456319775-3216-45-git-send-email-ldewangan@nvidia.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 0/2] ARM: dts: rockchip: fix some interrupts on rk3288
+Date: Wed, 24 Feb 2016 14:37:05 +0100
+Message-ID: <2022698.P5dgKXtQhu@phil>
+References: <1456234860-18832-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
+In-Reply-To: <1456234860-18832-1-git-send-email-john@metanate.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, Laxman Dewangan <ldewangan@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+To: John Keeping <john@metanate.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use devm_pinctrl_register() for pin control registration.
+Am Dienstag, 23. Februar 2016, 13:40:58 schrieb John Keeping:
+> None of these are used by drivers so these don't fix any bugs but maybe
+> they'll save someone debugging time in the future.
+> 
+> John Keeping (2):
+>   ARM: dts: rockchip: fix MIPI interrupt on rk3288
+>   ARM: dts: rockchip: fix audio interrupts on rk3288
 
-Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/pinctrl/pinctrl-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+applied both to my dts32 branch for 4.6 after verifying against the TRM as 
+well.
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index bf032b9..3427103 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -1636,7 +1636,7 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
- 	if (ret)
- 		return ret;
- 
--	info->pctl_dev = pinctrl_register(ctrldesc, &pdev->dev, info);
-+	info->pctl_dev = devm_pinctrl_register(&pdev->dev, ctrldesc, info);
- 	if (IS_ERR(info->pctl_dev)) {
- 		dev_err(&pdev->dev, "could not register pinctrl driver\n");
- 		return PTR_ERR(info->pctl_dev);
--- 
-2.1.4
+Thanks for catching these
+Heiko
