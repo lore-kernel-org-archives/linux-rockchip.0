@@ -1,28 +1,40 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/4] soc: rockchip: add bindings for Rockchip grf
-Date: Wed, 24 Feb 2016 15:35:31 +0100
-Message-ID: <1832389.c46G87NAnj@phil>
-References: <1456210864-29037-1-git-send-email-jay.xu@rock-chips.com> <1456210864-29037-2-git-send-email-jay.xu@rock-chips.com>
+From: Dinh Nguyen <dinguyen@opensource.altera.com>
+Subject: Re: [PATCH] dmaengine: pl330: fix to support the brust mode
+Date: Wed, 24 Feb 2016 11:09:25 -0600
+Message-ID: <56CDE3C5.2090809@opensource.altera.com>
+References: <1456285945-19258-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456210864-29037-2-git-send-email-jay.xu@rock-chips.com>
+In-Reply-To: <1456285945-19258-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "jianqun.xu" <jay.xu@rock-chips.com>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, galak@codeaurora.org, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, linus.walleij@linaro.org, sjoerd.simons@collabora.co.uk, jwerner@chromium.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org
+To: Caesar Wang <wxt@rock-chips.com>, vinod.koul@intel.com
+Cc: dan.j.williams@intel.com, linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, heiko@sntech.de, dianders@chromium.org, sonnyrao@chromium.org, al.kochet@gmail.com, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, boojin.kim@samsung.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. Februar 2016, 15:01:01 schrieb jianqun.xu:
-> From: Jianqun Xu <jay.xu@rock-chips.com>
+Just a small nit:
+
+On 02/23/2016 09:52 PM, Caesar Wang wrote:
+> This patch fixes the brust mode that will break DMA uart on SoCFPGA.
 > 
-> Add devicetree bindings for Rockchip grf which found on
-> Rockchip SoCs.
+> In some cases, some SoCS didn't support the multi-brust
+> even if the devices who use the pl330 claim support the maxbrust.
 > 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
-applied to my dts32 branch for 4.6 with Rob's Ack.
+s/brust/burst
+s/maxbrust/burst
 
+> Fixes: commit 848e977
+> "dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev transmit"
+>
+> Reported-by: Dinh Nguyen <dinguyen@opensource.altera.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> ---
 
-Thanks
-Heiko
+Tested on SoCFPGA:
+
+Tested-by: Dinh Nguyen <dinguyen@opensource.altera.com>
+
+Thanks,
+Dinh
