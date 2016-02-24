@@ -1,57 +1,29 @@
-From: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] spi/rockchip: Make sure spi clk is on in rockchip_spi_set_cs
-Date: Wed, 24 Feb 2016 18:00:04 +0800
-Message-ID: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Addy Ke <addy.ke-JkTZp4/KTbpWk0Htik3J/w@public.gmane.org>, "shawn.lin" <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH v1 0/4] Add clock ids for RK3228 HDMI/VOP modules
+Date: Wed, 24 Feb 2016 18:05:03 +0800
+Message-ID: <1456308303-29706-1-git-send-email-ykk@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip_spi_set_cs could be called by spi_setup, but
-spi_setup may be called by device driver after runtime suspend.
-Then the spi clock is closed, rockchip_spi_set_cs may access the
-spi registers, which causes cpu block in some socs.
 
-Fixes: 64e36824b32 ("spi/rockchip: add driver for Rockchip RK3xxx")
-Cc: Addy Ke <addy.ke-JkTZp4/KTbpWk0Htik3J/w@public.gmane.org>
-Cc: shawn.lin <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>
-Signed-off-by: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+Add clocks ids for RK3228 HDMI/VOP modules which driver already have been
+posted.
 
- drivers/spi/spi-rockchip.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+RK3228 HDMI driver: https://patchwork.kernel.org/patch/7974671
+RK3228 VOP driver: https://patchwork.kernel.org/patch/7952591
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 79a8bc4..035767c 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -265,7 +265,10 @@ static inline u32 rx_max(struct rockchip_spi *rs)
- static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
- {
- 	u32 ser;
--	struct rockchip_spi *rs = spi_master_get_devdata(spi->master);
-+	struct spi_master *master = spi->master;
-+	struct rockchip_spi *rs = spi_master_get_devdata(master);
-+
-+	pm_runtime_get_sync(rs->dev);
+Yakir Yang (4):
+  clk: rockchip: add the new clock ids for RK3228 VOP
+  clk: rockchip: set the clock ids for RK3228 VOP
+  clk: rockchip: add the new clock ids for RK3228 HDMI
+  clk: rockchip: set the clock ids for RK3228 HDMI
 
- 	ser = readl_relaxed(rs->regs + ROCKCHIP_SPI_SER) & SER_MASK;
+ drivers/clk/rockchip/clk-rk3228.c      | 14 +++++++-------
+ include/dt-bindings/clock/rk3228-cru.h | 10 ++++++++++
+ 2 files changed, 17 insertions(+), 7 deletions(-)
 
-@@ -290,6 +293,8 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
- 		ser &= ~(1 << spi->chip_select);
-
- 	writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
-+
-+	pm_runtime_put_sync(rs->dev);
- }
-
- static int rockchip_spi_prepare_message(struct spi_master *master,
---
+-- 
 1.9.1
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
