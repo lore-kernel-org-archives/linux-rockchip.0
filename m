@@ -1,103 +1,164 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 1/4] soc: rockchip: add bindings for Rockchip grf
-Date: Wed, 24 Feb 2016 08:18:16 +0800
-Message-ID: <56CCF6C8.6010602@rock-chips.com>
-References: <1456210864-29037-1-git-send-email-jay.xu@rock-chips.com>
- <1456210864-29037-2-git-send-email-jay.xu@rock-chips.com>
- <20160223221555.GA7531@rob-hp-laptop>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160223221555.GA7531@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-IBi9RG/b67k@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [RESEND PATCH] clk: rockchip: include downstream muxes into fractional dividers on rk3368
+Date: Wed, 24 Feb 2016 08:44:11 +0800
+Message-ID: <1456274651-23202-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, zhengxing@rock-chips.com, xf@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob
+During the initial conversion to the newly introduced combined fractional
+dividers+muxes the rk3368 clocks were left out, so convert them now.
 
-=D4=DA 24/02/2016 06:15, Rob Herring =D0=B4=B5=C0:
-> On Tue, Feb 23, 2016 at 03:01:01PM +0800, jianqun.xu wrote:
->> From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
->> Add devicetree bindings for Rockchip grf which found on
->> Rockchip SoCs.
->>
->> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->> changes in v2:
->> - add grf.txt (Heiko)
->>
->>   .../devicetree/bindings/soc/rockchip/grf.txt       | 35 ++++++++++=
-++++++++++++
->>   1 file changed, 35 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/soc/rockchip/=
-grf.txt
->>
->> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt =
-b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
->> new file mode 100644
->> index 0000000..7fb0410
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
->> @@ -0,0 +1,35 @@
->> +* Rockchip General Register Files (GRF)
->> +
->> +The general register file will be used to do static set by software=
-, which
->> +is composed of many registers for system control.
->> +
->> +From RK3368 SoCs, the GRF is divided into two sections,
->> +- GRF, used for general non-secure system,
->> +- PMUGRF, used for always on sysyem
->
-> s/sysyem/system/
->
-> Otherwise:
->
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->
-ok, thanks
->> +
->> +Required Properties:
->> +
->> +- compatible: GRF should be one of the followings
->> +   - "rockchip,rk3066-grf", "syscon": for rk3066
->> +   - "rockchip,rk3188-grf", "syscon": for rk3188
->> +   - "rockchip,rk3228-grf", "syscon": for rk3228
->> +   - "rockchip,rk3288-grf", "syscon": for rk3288
->> +   - "rockchip,rk3368-grf", "syscon": for rk3368
->> +   - "rockchip,rk3399-grf", "syscon": for rk3399
->> +- compatible: PMUGRF should be one of the followings
->> +   - "rockchip,rk3368-pmugrf", "syscon": for rk3368
->> +   - "rockchip,rk3399-pmugrf", "syscon": for rk3399
->> +- reg: physical base address of the controller and length of memory=
- mapped
->> +  region.
->> +
->> +Example: GRF and PMUGRF of RK3399 SoCs
->> +
->> +	pmugrf: syscon@ff320000 {
->> +		compatible =3D "rockchip,rk3399-pmugrf", "syscon";
->> +		reg =3D <0x0 0xff320000 0x0 0x1000>;
->> +	};
->> +
->> +	grf: syscon@ff770000 {
->> +		compatible =3D "rockchip,rk3399-grf", "syscon";
->> +		reg =3D <0x0 0xff770000 0x0 0x10000>;
->> +	};
->> --
->> 1.9.1
->>
->>
->
->
->
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-rk3368.c | 97 ++++++++++++++++++++++++---------------
+ 1 file changed, 60 insertions(+), 37 deletions(-)
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index c2b0421..a2bb122 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -243,6 +243,34 @@ static struct rockchip_cpuclk_rate_table rk3368_cpuclkl_rates[] __initdata = {
+ 	RK3368_CPUCLKL_RATE( 312000000, 1, 1, 1),
+ };
+ 
++static struct rockchip_clk_branch rk3368_i2s_8ch_fracmux __initdata =
++	MUX(0, "i2s_8ch_pre", mux_i2s_8ch_pre_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(27), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_spdif_8ch_fracmux __initdata =
++	MUX(0, "spdif_8ch_pre", mux_spdif_8ch_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(31), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_i2s_2ch_fracmux __initdata =
++	MUX(0, "i2s_2ch_pre", mux_i2s_2ch_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(53), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_uart0_fracmux __initdata =
++	MUX(SCLK_UART0, "sclk_uart0", mux_uart0_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(33), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_uart1_fracmux __initdata =
++	MUX(SCLK_UART1, "sclk_uart1", mux_uart1_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(35), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_uart3_fracmux __initdata =
++	MUX(SCLK_UART3, "sclk_uart3", mux_uart3_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(39), 8, 2, MFLAGS);
++
++static struct rockchip_clk_branch rk3368_uart4_fracmux __initdata =
++	MUX(SCLK_UART4, "sclk_uart4", mux_uart4_p, CLK_SET_RATE_PARENT,
++	    RK3368_CLKSEL_CON(41), 8, 2, MFLAGS);
++
+ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	/*
+ 	 * Clock-Architecture Diagram 2
+@@ -339,11 +367,10 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "i2s_8ch_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3368_CLKSEL_CON(27), 12, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(6), 1, GFLAGS),
+-	COMPOSITE_FRAC(0, "i2s_8ch_frac", "i2s_8ch_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(28), 0,
+-			RK3368_CLKGATE_CON(6), 2, GFLAGS),
+-	MUX(0, "i2s_8ch_pre", mux_i2s_8ch_pre_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(27), 8, 2, MFLAGS),
++	COMPOSITE_FRACMUX(0, "i2s_8ch_frac", "i2s_8ch_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(28), 0,
++			  RK3368_CLKGATE_CON(6), 2, GFLAGS,
++			  &rk3368_i2s_8ch_fracmux),
+ 	COMPOSITE_NODIV(SCLK_I2S_8CH_OUT, "i2s_8ch_clkout", mux_i2s_8ch_clkout_p, 0,
+ 			RK3368_CLKSEL_CON(27), 15, 1, MFLAGS,
+ 			RK3368_CLKGATE_CON(6), 0, GFLAGS),
+@@ -352,21 +379,21 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "spdif_8ch_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3368_CLKSEL_CON(31), 12, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(6), 4, GFLAGS),
+-	COMPOSITE_FRAC(0, "spdif_8ch_frac", "spdif_8ch_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(32), 0,
+-			RK3368_CLKGATE_CON(6), 5, GFLAGS),
+-	COMPOSITE_NODIV(SCLK_SPDIF_8CH, "sclk_spdif_8ch", mux_spdif_8ch_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(31), 8, 2, MFLAGS,
+-			RK3368_CLKGATE_CON(6), 6, GFLAGS),
++	COMPOSITE_FRACMUX(0, "spdif_8ch_frac", "spdif_8ch_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(32), 0,
++			  RK3368_CLKGATE_CON(6), 5, GFLAGS,
++			  &rk3368_spdif_8ch_fracmux),
++	GATE(SCLK_SPDIF_8CH, "sclk_spdif_8ch", "spdif_8ch_pre", CLK_SET_RATE_PARENT,
++	     RK3368_CLKGATE_CON(6), 6, GFLAGS),
+ 	COMPOSITE(0, "i2s_2ch_src", mux_pll_src_cpll_gpll_p, 0,
+ 			RK3368_CLKSEL_CON(53), 12, 1, MFLAGS, 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(5), 13, GFLAGS),
+-	COMPOSITE_FRAC(0, "i2s_2ch_frac", "i2s_2ch_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(54), 0,
+-			RK3368_CLKGATE_CON(5), 14, GFLAGS),
+-	COMPOSITE_NODIV(SCLK_I2S_2CH, "sclk_i2s_2ch", mux_i2s_2ch_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(53), 8, 2, MFLAGS,
+-			RK3368_CLKGATE_CON(5), 15, GFLAGS),
++	COMPOSITE_FRACMUX(0, "i2s_2ch_frac", "i2s_2ch_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(54), 0,
++			  RK3368_CLKGATE_CON(5), 14, GFLAGS,
++			  &rk3368_i2s_2ch_fracmux),
++	GATE(SCLK_I2S_2CH, "sclk_i2s_2ch", "i2s_2ch_pre", CLK_SET_RATE_PARENT,
++	     RK3368_CLKGATE_CON(5), 15, GFLAGS),
+ 
+ 	COMPOSITE(0, "sclk_tsp", mux_pll_src_cpll_gpll_npll_p, 0,
+ 			RK3368_CLKSEL_CON(46), 6, 2, MFLAGS, 0, 5, DFLAGS,
+@@ -562,38 +589,34 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "uart0_src", mux_pll_src_cpll_gpll_usb_usb_p, 0,
+ 			RK3368_CLKSEL_CON(33), 12, 2, MFLAGS, 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(2), 0, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(34), 0,
+-			RK3368_CLKGATE_CON(2), 1, GFLAGS),
+-	MUX(SCLK_UART0, "sclk_uart0", mux_uart0_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(33), 8, 2, MFLAGS),
++	COMPOSITE_FRACMUX(0, "uart0_frac", "uart0_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(34), 0,
++			  RK3368_CLKGATE_CON(2), 1, GFLAGS,
++			  &rk3368_uart0_fracmux),
+ 
+ 	COMPOSITE_NOMUX(0, "uart1_src", "uart_src", 0,
+ 			RK3368_CLKSEL_CON(35), 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(2), 2, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(36), 0,
+-			RK3368_CLKGATE_CON(2), 3, GFLAGS),
+-	MUX(SCLK_UART1, "sclk_uart1", mux_uart1_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(35), 8, 2, MFLAGS),
++	COMPOSITE_FRACMUX(0, "uart1_frac", "uart1_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(36), 0,
++			  RK3368_CLKGATE_CON(2), 3, GFLAGS,
++			  &rk3368_uart1_fracmux),
+ 
+ 	COMPOSITE_NOMUX(0, "uart3_src", "uart_src", 0,
+ 			RK3368_CLKSEL_CON(39), 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(2), 6, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart3_frac", "uart3_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(40), 0,
+-			RK3368_CLKGATE_CON(2), 7, GFLAGS),
+-	MUX(SCLK_UART3, "sclk_uart3", mux_uart3_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(39), 8, 2, MFLAGS),
++	COMPOSITE_FRACMUX(0, "uart3_frac", "uart3_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(40), 0,
++			  RK3368_CLKGATE_CON(2), 7, GFLAGS,
++			  &rk3368_uart3_fracmux),
+ 
+ 	COMPOSITE_NOMUX(0, "uart4_src", "uart_src", 0,
+ 			RK3368_CLKSEL_CON(41), 0, 7, DFLAGS,
+ 			RK3368_CLKGATE_CON(2), 8, GFLAGS),
+-	COMPOSITE_FRAC(0, "uart4_frac", "uart4_src", CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(42), 0,
+-			RK3368_CLKGATE_CON(2), 9, GFLAGS),
+-	MUX(SCLK_UART4, "sclk_uart4", mux_uart4_p, CLK_SET_RATE_PARENT,
+-			RK3368_CLKSEL_CON(41), 8, 2, MFLAGS),
++	COMPOSITE_FRACMUX(0, "uart4_frac", "uart4_src", CLK_SET_RATE_PARENT,
++			  RK3368_CLKSEL_CON(42), 0,
++			  RK3368_CLKGATE_CON(2), 9, GFLAGS,
++			  &rk3368_uart4_fracmux),
+ 
+ 	COMPOSITE(0, "mac_pll_src", mux_pll_src_npll_cpll_gpll_p, 0,
+ 			RK3368_CLKSEL_CON(43), 6, 2, MFLAGS, 0, 5, DFLAGS,
+-- 
+1.9.1
