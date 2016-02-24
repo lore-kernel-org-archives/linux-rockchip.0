@@ -1,40 +1,51 @@
-From: Dinh Nguyen <dinguyen@opensource.altera.com>
-Subject: Re: [PATCH] dmaengine: pl330: fix to support the brust mode
-Date: Wed, 24 Feb 2016 11:09:37 -0600
-Message-ID: <56CDE3D1.2000901@opensource.altera.com>
-References: <1456285945-19258-1-git-send-email-wxt@rock-chips.com>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL 1/4] rockchip soc-driver changes for 4.6
+Date: Wed, 24 Feb 2016 13:50:46 -0800
+Message-ID: <20160224215046.GK10126@localhost>
+References: <1734524.3yNt5L3F1F@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456285945-19258-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>, vinod.koul@intel.com
-Cc: dan.j.williams@intel.com, linux-kernel@vger.kernel.org, dmaengine@vger.kernel.org, heiko@sntech.de, dianders@chromium.org, sonnyrao@chromium.org, al.kochet@gmail.com, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, boojin.kim@samsung.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1734524.3yNt5L3F1F@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Just a small nit:
-
-On 02/23/2016 09:52 PM, Caesar Wang wrote:
-> This patch fixes the brust mode that will break DMA uart on SoCFPGA.
+On Thu, Feb 11, 2016 at 03:47:12PM +0100, Heiko Stuebner wrote:
+> Hi Arnd, Olof, Kevin,
 > 
-> In some cases, some SoCS didn't support the multi-brust
-> even if the devices who use the pl330 claim support the maxbrust.
+> please find below soc driver changes for Rockchip for 4.6
+> The tag describes the changes a little bit more.
 > 
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
+> 
+>   Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-drivers1
+> 
+> for you to fetch changes up to 1d961f11a108af9f7fbe89cc950a8d16ddbdbb28:
+> 
+>   soc: rockchip: power-domain: fix err handle while probing (2016-02-02 22:18:31 +0100)
 
-s/brust/burst
-s/maxbrust/maxburst
+Merged, thanks.
 
-> Fixes: commit 848e977
-> "dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev transmit"
->
-> Reported-by: Dinh Nguyen <dinguyen@opensource.altera.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
 
-Tested on SoCFPGA:
-
-Tested-by: Dinh Nguyen <dinguyen@opensource.altera.com>
-
-Thanks,
-Dinh
+-Olof
