@@ -1,28 +1,47 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 0/2] ARM: dts: rockchip: fix some interrupts on rk3288
-Date: Wed, 24 Feb 2016 14:37:05 +0100
-Message-ID: <2022698.P5dgKXtQhu@phil>
-References: <1456234860-18832-1-git-send-email-john@metanate.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: add mipi_dsi to VIO power domain on rk3288
+Date: Wed, 24 Feb 2016 15:21:20 +0100
+Message-ID: <1682563.dHMl0I8iqX@phil>
+References: <1456231181-13989-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456234860-18832-1-git-send-email-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1456231181-13989-1-git-send-email-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. Februar 2016, 13:40:58 schrieb John Keeping:
-> None of these are used by drivers so these don't fix any bugs but maybe
-> they'll save someone debugging time in the future.
+Am Dienstag, 23. Februar 2016, 12:39:41 schrieb John Keeping:
+> The MIPI controllers are part of the VIO power domain so add the
+> necessary property to indicate this for the controller we support.
 > 
-> John Keeping (2):
->   ARM: dts: rockchip: fix MIPI interrupt on rk3288
->   ARM: dts: rockchip: fix audio interrupts on rk3288
+> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3288.dtsi | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index d879a89..a92a3b5 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -890,6 +890,7 @@
+>  		clocks = <&cru SCLK_MIPIDSI_24M>, <&cru PCLK_MIPI_DSI0>;
+>  		clock-names = "ref", "pclk";
+>  		rockchip,grf = <&grf>;
+> +		power-domains = <&power RK3288_PD_VIO>;
+>  		status = "disabled";
 
-applied both to my dts32 branch for 4.6 after verifying against the TRM as 
-well.
+applied to my dts32 branch after moving power-domains above rockchip,grf and 
+adapting to the "#address-cells" and "#size-cells" present in the dtsi.
 
-Thanks for catching these
+
+Thanks
 Heiko
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
