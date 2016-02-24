@@ -1,50 +1,77 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH v1 2/4] clk: rockchip: set the clock ids for RK3228 VOP
-Date: Wed, 24 Feb 2016 18:54:18 +0800
-Message-ID: <1456311258-4311-1-git-send-email-ykk@rock-chips.com>
-References: <1456308303-29706-1-git-send-email-ykk@rock-chips.com>
+From: "Huang, Tao" <huangtao@rock-chips.com>
+Subject: Re: [PATCH] spi/rockchip: Make sure spi clk is on in
+ rockchip_spi_set_cs
+Date: Wed, 24 Feb 2016 19:09:57 +0800
+Message-ID: <56CD8F85.2090204@rock-chips.com>
+References: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456308303-29706-1-git-send-email-ykk@rock-chips.com>
+In-Reply-To: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Huibin Hong <huibin.hong@rock-chips.com>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, "shawn.lin" <shawn.lin@kernel-upstream.org>, linux-rockchip@lists.infradead.org, Addy Ke <addy.ke@rockchip.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3228.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Hi, Mark:
 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index 981a502..8747b25 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -368,7 +368,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(29), 0, 3, DFLAGS),
- 	DIV(0, "sclk_vop_pre", "sclk_vop_src", 0,
- 			RK2928_CLKSEL_CON(27), 8, 8, DFLAGS),
--	MUX(0, "dclk_vop", mux_dclk_vop_p, 0,
-+	MUX(DCLK_VOP, "dclk_vop", mux_dclk_vop_p, 0,
- 			RK2928_CLKSEL_CON(27), 1, 1, MFLAGS),
- 
- 	COMPOSITE(0, "i2s0_src", mux_pll_src_2plls_p, 0,
-@@ -503,7 +503,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 	GATE(0, "aclk_iep", "aclk_iep_pre", 0, RK2928_CLKGATE_CON(13), 2, GFLAGS),
- 	GATE(0, "aclk_iep_noc", "aclk_iep_pre", 0, RK2928_CLKGATE_CON(13), 9, GFLAGS),
- 
--	GATE(0, "aclk_vop", "aclk_vop_pre", 0, RK2928_CLKGATE_CON(13), 5, GFLAGS),
-+	GATE(ACLK_VOP, "aclk_vop", "aclk_vop_pre", 0, RK2928_CLKGATE_CON(13), 5, GFLAGS),
- 	GATE(0, "aclk_vop_noc", "aclk_vop_pre", 0, RK2928_CLKGATE_CON(13), 12, GFLAGS),
- 
- 	GATE(0, "aclk_hdcp", "aclk_hdcp_pre", 0, RK2928_CLKGATE_CON(14), 10, GFLAGS),
-@@ -511,7 +511,7 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 
- 	GATE(0, "hclk_rga", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 1, GFLAGS),
- 	GATE(0, "hclk_iep", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 3, GFLAGS),
--	GATE(0, "hclk_vop", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 6, GFLAGS),
-+	GATE(HCLK_VOP, "hclk_vop", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 6, GFLAGS),
- 	GATE(0, "hclk_vio_ahb_arbi", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 7, GFLAGS),
- 	GATE(0, "hclk_vio_noc", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 8, GFLAGS),
- 	GATE(0, "hclk_vop_noc", "hclk_vio_pre", 0, RK2928_CLKGATE_CON(13), 13, GFLAGS),
--- 
-1.9.1
+Another way to solve this bug is add runtime PM support while spi setup=
+=2E
+Some other chips may have some problem, for example mt65xx and orion,
+which access hardware register too.
+
+On 2016=E5=B9=B402=E6=9C=8824=E6=97=A5 18:00, Huibin Hong wrote:
+> Rockchip_spi_set_cs could be called by spi_setup, but
+> spi_setup may be called by device driver after runtime suspend.
+> Then the spi clock is closed, rockchip_spi_set_cs may access the
+> spi registers, which causes cpu block in some socs.
+>=20
+> Fixes: 64e36824b32 ("spi/rockchip: add driver for Rockchip RK3xxx")
+> Cc: Addy Ke <addy.ke@rockchip.com>
+> Cc: shawn.lin <shawn.lin@kernel-upstream.org>
+> Signed-off-by: Huibin Hong <huibin.hong@rock-chips.com>
+> ---
+>=20
+>  drivers/spi/spi-rockchip.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index 79a8bc4..035767c 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -265,7 +265,10 @@ static inline u32 rx_max(struct rockchip_spi *rs=
+)
+>  static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+>  {
+>  	u32 ser;
+> -	struct rockchip_spi *rs =3D spi_master_get_devdata(spi->master);
+> +	struct spi_master *master =3D spi->master;
+> +	struct rockchip_spi *rs =3D spi_master_get_devdata(master);
+> +
+> +	pm_runtime_get_sync(rs->dev);
+>=20
+>  	ser =3D readl_relaxed(rs->regs + ROCKCHIP_SPI_SER) & SER_MASK;
+>=20
+> @@ -290,6 +293,8 @@ static void rockchip_spi_set_cs(struct spi_device=
+ *spi, bool enable)
+>  		ser &=3D ~(1 << spi->chip_select);
+>=20
+>  	writel_relaxed(ser, rs->regs + ROCKCHIP_SPI_SER);
+> +
+> +	pm_runtime_put_sync(rs->dev);
+>  }
+>=20
+>  static int rockchip_spi_prepare_message(struct spi_master *master,
+> --
+> 1.9.1
+>=20
+>=20
+>=20
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>=20
+>=20
+>=20
