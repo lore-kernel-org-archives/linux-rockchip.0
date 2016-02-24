@@ -1,7 +1,7 @@
 From: Dinh Nguyen <dinguyen@opensource.altera.com>
 Subject: Re: [PATCH] dmaengine: pl330: fix to support the brust mode
-Date: Wed, 24 Feb 2016 11:09:25 -0600
-Message-ID: <56CDE3C5.2090809@opensource.altera.com>
+Date: Wed, 24 Feb 2016 11:09:37 -0600
+Message-ID: <56CDE3D1.2000901@opensource.altera.com>
 References: <1456285945-19258-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="windows-1252"
@@ -23,7 +23,7 @@ On 02/23/2016 09:52 PM, Caesar Wang wrote:
 > 
 
 s/brust/burst
-s/maxbrust/burst
+s/maxbrust/maxburst
 
 > Fixes: commit 848e977
 > "dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev transmit"
