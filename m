@@ -1,52 +1,75 @@
-From: Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH 3/4] clk: rockchip: add dt-binding header for rk3399
-Date: Thu, 25 Feb 2016 08:42:57 +0800
-Message-ID: <56CE4E11.7090808@rock-chips.com>
-References: <1456210864-29037-1-git-send-email-jay.xu@rock-chips.com>
- <1456210864-29037-4-git-send-email-jay.xu@rock-chips.com>
- <4483822.0pRK7cKepF@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2] dmaengine: pl330: fix to support the burst mode
+Date: Thu, 25 Feb 2016 09:00:53 +0800
+Message-ID: <1456362053-1425-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4483822.0pRK7cKepF@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, galak@codeaurora.org, broonie@kernel.org, perex@perex.cz, tiwai@suse.com, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, linus.walleij@linaro.org, sjoerd.simons@collabora.co.uk, jwerner@chromium.org, huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org, Xing Zheng <zhengxing@rock-chips.com>
+To: vinod.koul@intel.com
+Cc: dan.j.williams@intel.com, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, al.kochet@gmail.com, dinguyen@opensource.altera.com, b.zolnierkie@samsung.com, heiko@sntech.de, dianders@chromium.org, sonnyrao@chromium.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko:
+This patch fixes the burst mode that will break DMA uart on SoCFPGA.
 
-=D4=DA 24/02/2016 21:27, Heiko Stuebner =D0=B4=B5=C0:
-> Hi Jianqun,
->
-> Am Dienstag, 23. Februar 2016, 15:01:03 schrieb jianqun.xu:
->> From: Xing Zheng <zhengxing@rock-chips.com>
->>
->> Add the dt-bindings header for the rk3399, that gets shared between
->> the clock controller and the clock references in the dts.
->>
->> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
->
-> looks ok so far, do you have an estimate when the revised clk driver =
-will be
-> sent? Before committing to support this binding header forever I'd li=
-ke to
-> take a look over the clock-tree itself, just to be sure ;-)
->
-No problem, since the cru head file is needed by many drivers, so it=20
-must be pushed as
-soon as possible.
+In some cases, some SoCS didn't support the multi-burst
+even if the devices who use the pl330 claim support the maxburst.
 
-It's better to send the clk driver by Xing in a separate patch. I will=20
-co-work with xing.
+Fixes: commit 848e977
+"dmaengine: pl330: support burst mode for dev-to-mem and mem-to-dev transmit"
 
-Thanks
->
-> Thanks
-> Heiko
->
->
->
+Reported-by: Dinh Nguyen <dinguyen@opensource.altera.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Tested-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+Tested-by: Dinh Nguyen <dinguyen@opensource.altera.com>
+
+---
+
+Changes in v2:
+- s/brust/burst
+- add Dinh and Bartlomiej test tags.
+
+ drivers/dma/pl330.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 1b0453b..372b435 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -1161,7 +1161,7 @@ static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+ 	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+ 		cond = BURST;
+ 	else
+-		cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
++		cond = SINGLE;
+ 
+ 	while (cyc--) {
+ 		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+@@ -1186,8 +1186,7 @@ static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+ 	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+ 		cond = BURST;
+ 	else
+-		cond = (pxs->desc->rqcfg.brst_len == 1) ? SINGLE : BURST;
+-
++		cond = SINGLE;
+ 
+ 	while (cyc--) {
+ 		off += _emit_WFP(dry_run, &buf[off], cond, pxs->desc->peri);
+@@ -2598,7 +2597,7 @@ static struct dma_async_tx_descriptor *pl330_prep_dma_cyclic(
+ 
+ 		desc->rqtype = direction;
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = pch->burst_len;
++		desc->rqcfg.brst_len = 1;
+ 		desc->bytes_requested = period_len;
+ 		fill_px(&desc->px, dst, src, period_len);
+ 
+@@ -2743,7 +2742,7 @@ pl330_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
+ 		}
+ 
+ 		desc->rqcfg.brst_size = pch->burst_sz;
+-		desc->rqcfg.brst_len = pch->burst_len;
++		desc->rqcfg.brst_len = 1;
+ 		desc->rqtype = direction;
+ 		desc->bytes_requested = sg_dma_len(sg);
+ 	}
+-- 
+1.9.1
