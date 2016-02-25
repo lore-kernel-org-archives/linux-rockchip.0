@@ -1,7 +1,8 @@
 From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 2/6] power-domain: allow domains only handling idle requests
-Date: Thu, 25 Feb 2016 10:12:13 +0800
-Message-ID: <1456366337-10808-3-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v3 3/6] rockchip: power-domain: add support for sub-power
+ domains
+Date: Thu, 25 Feb 2016 10:12:14 +0800
+Message-ID: <1456366337-10808-4-git-send-email-zhangqing@rock-chips.com>
 References: <1456366337-10808-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,64 +22,95 @@ To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/
 Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On some Rockchip SoC there exist child-domains only handling their
-idle state with the actual power-state handled by a parent-domain.
-
-So allow such types of domains. For them, we can determine their
-state (on/of) by checking the inverse idle-state instead.
-
-There exist one special case if both idle as well power handling
-were set as not present, but as the domain-data is defined in the
-code itself, we can expect the reasonable developer to define them
-
-So allow such types of domains. For them, we can determine their
-state (on/of) by checking the inverse idle-state instead.
-
-There exist one special case if both idle as well power handling
-were set as not present, but as the domain-data is defined in the
-code itself, we can expect the reasonable developer to define them
-in a correct, without adding more checks.
+This patch adds support for making one power domain a sub-domain of
+other domain. This is useful for modeling power dependences,
+which needs to have more than one power domain enabled to be operational.
 
 Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/soc/rockchip/pm_domains.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/soc/rockchip/pm_domains.c | 63 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
 diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 50c0641..d0990a3 100644
+index d0990a3..264cbfe 100644
 --- a/drivers/soc/rockchip/pm_domains.c
 +++ b/drivers/soc/rockchip/pm_domains.c
-@@ -66,8 +66,8 @@ struct rockchip_pmu {
+@@ -370,6 +370,62 @@ static void rockchip_configure_pd_cnt(struct rockchip_pmu *pmu,
+ 	regmap_write(pmu->regmap, domain_reg_offset + 4, count);
+ }
  
- #define DOMAIN(pwr, status, req, idle, ack)	\
- {						\
--	.pwr_mask = BIT(pwr),			\
--	.status_mask = BIT(status),		\
-+	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
-+	.status_mask = (status >= 0) ? BIT(status) : 0,	\
- 	.req_mask = (req >= 0) ? BIT(req) : 0,		\
- 	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
- 	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
-@@ -119,6 +119,10 @@ static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
- 	struct rockchip_pmu *pmu = pd->pmu;
- 	unsigned int val;
- 
-+	/* check idle status for idle-only domains */
-+	if (pd->info->status_mask <= 0)
-+		return !rockchip_pmu_domain_is_idle(pd);
++static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
++				     struct device_node *parent)
++{
++	struct device_node *np;
++	struct generic_pm_domain *child_domain, *parent_domain;
++	int error;
 +
- 	regmap_read(pmu->regmap, pmu->info->status_offset, &val);
- 
- 	/* 1'b0: power on, 1'b1: power off */
-@@ -130,6 +134,9 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
++	for_each_child_of_node(parent, np) {
++		u32 idx = ~0;
++
++		if (of_property_read_u32(parent, "reg", &idx)) {
++			dev_err(pmu->dev,
++				"%s: failed to retrieve domain id (reg)\n",
++				parent->name);
++			goto err_out;
++		}
++		parent_domain = pmu->genpd_data.domains[idx];
++
++		error = rockchip_pm_add_one_domain(pmu, np);
++		if (error) {
++			dev_err(pmu->dev, "failed to handle node %s: %d\n",
++				np->name, error);
++			goto err_out;
++		}
++
++		if (of_property_read_u32(np, "reg", &idx)) {
++			dev_err(pmu->dev,
++				"%s: failed to retrieve domain id (reg)\n",
++				np->name);
++			goto err_out;
++		}
++		child_domain = pmu->genpd_data.domains[idx];
++
++		if (pm_genpd_add_subdomain(parent_domain, child_domain)) {
++			dev_err(pmu->dev, "%s failed to add subdomain: %s\n",
++				parent_domain->name, child_domain->name);
++			goto err_out;
++		} else
++			dev_info(pmu->dev, "%s add subdomain: %s\n",
++				parent_domain->name, child_domain->name);
++
++		error = rockchip_pm_add_subdomain(pmu, np);
++		if (error < 0)
++			goto rm_sub_domain;
++	}
++	return 0;
++
++err_out:
++	of_node_put(parent);
++	of_node_put(np);
++	return -EINVAL;
++rm_sub_domain:
++	pm_genpd_remove_subdomain(parent_domain, child_domain);
++	return error;
++}
++
+ static int rockchip_pm_domain_probe(struct platform_device *pdev)
  {
- 	struct rockchip_pmu *pmu = pd->pmu;
- 
-+	if (pd->info->pwr_mask <= 0)
-+		return;
+ 	struct device *dev = &pdev->dev;
+@@ -440,6 +496,13 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+ 			of_node_put(node);
+ 			goto err_out;
+ 		}
 +
- 	regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
- 			   pd->info->pwr_mask, on ? 0 : -1U);
++		error = rockchip_pm_add_subdomain(pmu, node);
++		if (error < 0) {
++			dev_err(dev, "failed to handle subdomain node %s: %d\n",
++				node->name, error);
++			goto err_out;
++		}
+ 	}
  
+ 	if (error) {
 -- 
 1.9.1
