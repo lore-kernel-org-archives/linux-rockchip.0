@@ -1,90 +1,38 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 2/9] clocksource/drivers/rockchip: Add err handle for rk_timer_init
-Date: Thu, 25 Feb 2016 14:37:10 +0100
-Message-ID: <1456407438-6131-2-git-send-email-daniel.lezcano@linaro.org>
-References: <56CF00F6.9010301@linaro.org>
- <1456407438-6131-1-git-send-email-daniel.lezcano@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456407438-6131-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tglx@linutronix.de
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Rockchip
-	SoC..." <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [patch] drm/rockchip: inno_hdmi: fix an error code
+Date: Fri, 26 Feb 2016 00:30:29 +0300
+Message-ID: <20160225213029.GA18267@mwanda>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, Yakir Yang <ykk@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Shawn Lin <shawn.lin@rock-chips.com>
-
-Currently rockchip_timer doesn't do some basic cleanup work when
-failing to init the timer. Let's add err handle routine to deal
-with all the err cases.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
----
- drivers/clocksource/rockchip_timer.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index 8c77a52..b991b28 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -122,23 +122,23 @@ static void __init rk_timer_init(struct device_node *np)
- 	pclk = of_clk_get_by_name(np, "pclk");
- 	if (IS_ERR(pclk)) {
- 		pr_err("Failed to get pclk for '%s'\n", TIMER_NAME);
--		return;
-+		goto out_unmap;
- 	}
- 
- 	if (clk_prepare_enable(pclk)) {
- 		pr_err("Failed to enable pclk for '%s'\n", TIMER_NAME);
--		return;
-+		goto out_unmap;
- 	}
- 
- 	timer_clk = of_clk_get_by_name(np, "timer");
- 	if (IS_ERR(timer_clk)) {
- 		pr_err("Failed to get timer clock for '%s'\n", TIMER_NAME);
--		return;
-+		goto out_timer_clk;
- 	}
- 
- 	if (clk_prepare_enable(timer_clk)) {
- 		pr_err("Failed to enable timer clock\n");
--		return;
-+		goto out_timer_clk;
- 	}
- 
- 	bc_timer.freq = clk_get_rate(timer_clk);
-@@ -146,7 +146,7 @@ static void __init rk_timer_init(struct device_node *np)
- 	irq = irq_of_parse_and_map(np, 0);
- 	if (!irq) {
- 		pr_err("Failed to map interrupts for '%s'\n", TIMER_NAME);
--		return;
-+		goto out_irq;
- 	}
- 
- 	ce->name = TIMER_NAME;
-@@ -164,10 +164,19 @@ static void __init rk_timer_init(struct device_node *np)
- 	ret = request_irq(irq, rk_timer_interrupt, IRQF_TIMER, TIMER_NAME, ce);
- 	if (ret) {
- 		pr_err("Failed to initialize '%s': %d\n", TIMER_NAME, ret);
--		return;
-+		goto out_irq;
- 	}
- 
- 	clockevents_config_and_register(ce, bc_timer.freq, 1, UINT_MAX);
-+
-+	return;
-+
-+out_irq:
-+	clk_disable_unprepare(timer_clk);
-+out_timer_clk:
-+	clk_disable_unprepare(pclk);
-+out_unmap:
-+	iounmap(bc_timer.base);
- }
- 
- CLOCKSOURCE_OF_DECLARE(rk_timer, "rockchip,rk3288-timer", rk_timer_init);
--- 
-1.9.1
+V2Ugd2VyZSBhY2NpZGVudGFsbHkgcmV0dXJuaW5nIFBUUl9FUlIoTlVMTCkgd2hpY2ggbWVhbnMg
+c3VjY2VzcyB3aGVuIHdlCndhbnRlZCB0byByZXR1cm4gYSBuZWdhdGl2ZSBlcnJvciBjb2RlLgoK
+Rml4ZXM6IDQxMmQ0YWU2YjdhNSAoJ2RybS9yb2NrY2hpcDogaGRtaTogYWRkIElubm9zaWxpY29u
+IEhETUkgc3VwcG9ydCcpClNpZ25lZC1vZmYtYnk6IERhbiBDYXJwZW50ZXIgPGRhbi5jYXJwZW50
+ZXJAb3JhY2xlLmNvbT4KCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5u
+b19oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvaW5ub19oZG1pLmMKaW5kZXggMTBk
+NjJmZi4uZjI1MjQ0MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9f
+aGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9pbm5vX2hkbWkuYwpAQCAtODU1
+LDggKzg1NSw5IEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX2JpbmQoc3RydWN0IGRldmljZSAqZGV2
+LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCiAKIAloZG1pLT5kZGMgPSBpbm5vX2hkbWlfaTJjX2Fk
+YXB0ZXIoaGRtaSk7CiAJaWYgKElTX0VSUihoZG1pLT5kZGMpKSB7CisJCXJldCA9IFBUUl9FUlIo
+aGRtaS0+ZGRjKTsKIAkJaGRtaS0+ZGRjID0gTlVMTDsKLQkJcmV0dXJuIFBUUl9FUlIoaGRtaS0+
+ZGRjKTsKKwkJcmV0dXJuIHJldDsKIAl9CiAKIAkvKgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
