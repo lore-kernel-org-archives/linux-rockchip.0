@@ -1,81 +1,32 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v4 4/6] dt/bindings: power: add RK3399 SoCs header for power-domain
-Date: Fri, 26 Feb 2016 14:10:24 +0800
-Message-ID: <1456467026-16030-5-git-send-email-zhangqing@rock-chips.com>
-References: <1456467026-16030-1-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v4 0/6] rockchip: power-domain: fix pm domain for support RK3399 SoC
+Date: Fri, 26 Feb 2016 14:10:20 +0800
+Message-ID: <1456467026-16030-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456467026-16030-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, khilman@baylibre.com, wxt@rock-chips.com
 Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-According to a description from TRM, add all the power domains
+fix some idle handling
+support sub-power domain
+add rk3399-power.h
+modify document for RK3399 Soc
+modify power domain for RK3399 SoC
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- include/dt-bindings/power/rk3399-power.h | 53 ++++++++++++++++++++++++++++++++
- 1 file changed, 53 insertions(+)
+Elaine Zhang (6):
+  rockchip: power-domain: make idle handling optional
+  power-domain: allow domains only handling idle requests
+  rockchip: power-domain: add support for sub-power domains
+  dt/bindings: power: add RK3399 SoCs header for power-domain
+  dt/bindings: rockchip: modify document of Rockchip power domains
+  rockchip: power-domain: Modify power domain driver for rk3399
+
+ .../bindings/soc/rockchip/power_domain.txt         |  41 ++++++
+ drivers/soc/rockchip/pm_domains.c                  | 138 ++++++++++++++++++++-
+ include/dt-bindings/power/rk3399-power.h           |  53 ++++++++
+ 3 files changed, 227 insertions(+), 5 deletions(-)
  create mode 100644 include/dt-bindings/power/rk3399-power.h
 
-diff --git a/include/dt-bindings/power/rk3399-power.h b/include/dt-bindings/power/rk3399-power.h
-new file mode 100644
-index 0000000..69fbd67
---- /dev/null
-+++ b/include/dt-bindings/power/rk3399-power.h
-@@ -0,0 +1,53 @@
-+#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3399_POWER_H__
-+
-+/* VD_CORE_L */
-+#define RK3399_PD_A53_L0	0
-+#define RK3399_PD_A53_L1	1
-+#define RK3399_PD_A53_L2	2
-+#define RK3399_PD_A53_L3	3
-+#define RK3399_PD_SCU_L		4
-+
-+/* VD_CORE_B */
-+#define RK3399_PD_A72_B0	5
-+#define RK3399_PD_A72_B1	6
-+#define RK3399_PD_SCU_B		7
-+
-+/* VD_CENTER */
-+#define RK3399_PD_CENTER	8
-+#define RK3399_PD_VCODEC	9
-+#define RK3399_PD_RGA		10
-+#define RK3399_PD_IEP		11
-+#define RK3399_PD_VDU		12
-+
-+/* VD_LOGIC */
-+#define RK3399_PD_PERILP	13
-+#define RK3399_PD_PERIHP	14
-+#define RK3399_PD_VIO		15
-+#define RK3399_PD_VO		16
-+#define RK3399_PD_VOPB		17
-+#define RK3399_PD_VOPL		18
-+#define RK3399_PD_ISP0		19
-+#define RK3399_PD_ISP1		20
-+#define RK3399_PD_HDCP		21
-+#define RK3399_PD_TCPD0		22
-+#define RK3399_PD_TCPD1		23
-+#define RK3399_PD_GIC		24
-+#define RK3399_PD_ALIVE		25
-+#define RK3399_PD_USB3		26
-+#define RK3399_PD_SD		27
-+#define RK3399_PD_CCI		28
-+#define RK3399_PD_CCI0		29
-+#define RK3399_PD_CCI1		30
-+#define RK3399_PD_GMAC		31
-+#define RK3399_PD_EMMC		32
-+#define RK3399_PD_EDP		33
-+#define RK3399_PD_SDIOAUDIO	34
-+
-+/* VD_GPU */
-+#define RK3399_PD_GPU		35
-+
-+/* VD_PMU */
-+#define RK3399_PD_PMU		36
-+
-+#endif
 -- 
 1.9.1
