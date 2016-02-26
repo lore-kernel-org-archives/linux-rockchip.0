@@ -1,7 +1,7 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v4 3/6] rockchip: power-domain: add support for sub-power domains
-Date: Fri, 26 Feb 2016 14:10:23 +0800
-Message-ID: <1456467026-16030-4-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v4 5/6] dt/bindings: rockchip: modify document of Rockchip power domains
+Date: Fri, 26 Feb 2016 14:12:15 +0800
+Message-ID: <1456467135-16115-1-git-send-email-zhangqing@rock-chips.com>
 References: <1456467026-16030-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1456467026-16030-1-git-send-email-zhangqing@rock-chips.com>
@@ -10,95 +10,89 @@ To: heiko@sntech.de, khilman@baylibre.com, wxt@rock-chips.com
 Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds support for making one power domain a sub-domain of
-other domain. This is useful for modeling power dependences,
-which needs to have more than one power domain enabled to be operational.
+Add binding documentation for the power domains
+found on Rockchip RK3399 SoCs
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- drivers/soc/rockchip/pm_domains.c | 63 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
+ .../bindings/soc/rockchip/power_domain.txt         | 41 ++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 0465a06..fdb74f9 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -370,6 +370,62 @@ static void rockchip_configure_pd_cnt(struct rockchip_pmu *pmu,
- 	regmap_write(pmu->regmap, domain_reg_offset + 4, count);
- }
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+index 13dc6a3..9eb43fa 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
++++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+@@ -7,6 +7,7 @@ Required properties for power domain controller:
+ - compatible: Should be one of the following.
+ 	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+ 	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
++	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+ - #power-domain-cells: Number of cells in a power-domain specifier.
+ 	Should be 1 for multiple PM domains.
+ - #address-cells: Should be 1.
+@@ -16,6 +17,7 @@ Required properties for power domain sub nodes:
+ - reg: index of the power domain, should use macros in:
+ 	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
+ 	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
++	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
+ - clocks (optional): phandles to clocks which need to be enabled while power domain
+ 	switches state.
  
-+static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
-+				     struct device_node *parent)
-+{
-+	struct device_node *np;
-+	struct generic_pm_domain *child_domain, *parent_domain;
-+	int error;
-+
-+	for_each_child_of_node(parent, np) {
-+		u32 idx = ~0;
-+
-+		if (of_property_read_u32(parent, "reg", &idx)) {
-+			dev_err(pmu->dev,
-+				"%s: failed to retrieve domain id (reg)\n",
-+				parent->name);
-+			goto err_out;
-+		}
-+		parent_domain = pmu->genpd_data.domains[idx];
-+
-+		error = rockchip_pm_add_one_domain(pmu, np);
-+		if (error) {
-+			dev_err(pmu->dev, "failed to handle node %s: %d\n",
-+				np->name, error);
-+			goto err_out;
-+		}
-+
-+		if (of_property_read_u32(np, "reg", &idx)) {
-+			dev_err(pmu->dev,
-+				"%s: failed to retrieve domain id (reg)\n",
-+				np->name);
-+			goto err_out;
-+		}
-+		child_domain = pmu->genpd_data.domains[idx];
-+
-+		if (pm_genpd_add_subdomain(parent_domain, child_domain)) {
-+			dev_err(pmu->dev, "%s failed to add subdomain: %s\n",
-+				parent_domain->name, child_domain->name);
-+			goto err_out;
-+		} else
-+			dev_info(pmu->dev, "%s add subdomain: %s\n",
-+				parent_domain->name, child_domain->name);
-+
-+		error = rockchip_pm_add_subdomain(pmu, np);
-+		if (error < 0)
-+			goto rm_sub_domain;
-+	}
-+	return 0;
-+
-+err_out:
-+	of_node_put(parent);
-+	of_node_put(np);
-+	return -EINVAL;
-+rm_sub_domain:
-+	pm_genpd_remove_subdomain(parent_domain, child_domain);
-+	return error;
-+}
-+
- static int rockchip_pm_domain_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -440,6 +496,13 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
- 			of_node_put(node);
- 			goto err_out;
- 		}
-+
-+		error = rockchip_pm_add_subdomain(pmu, node);
-+		if (error < 0) {
-+			dev_err(dev, "failed to handle subdomain node %s: %d\n",
-+				node->name, error);
-+			goto err_out;
-+		}
- 	}
+@@ -45,12 +47,45 @@ Example:
+                 };
+         };
  
- 	if (error) {
++Example 2:
++
++	power: power-controller {
++		compatible = "rockchip,rk3399-power-controller";
++		#power-domain-cells = <1>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		/*parent domain*/
++		pd_vio {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			reg = <RK3399_PD_VIO>;
++
++			/*child domain of pd_vio*/
++			pd_vo {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <RK3399_PD_VO>;
++
++				/*child domain of pd_vo*/
++				pd_vopb {
++					reg = <RK3399_PD_VOPB>;
++				};
++
++				pd_vopl {
++					reg = <RK3399_PD_VOPL>;
++				};
++			};
++		};
++	};
++
+ Node of a device using power domains must have a power-domains property,
+ containing a phandle to the power device node and an index specifying which
+ power domain to use.
+ The index should use macros in:
+ 	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power domain.
+ 	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power domain.
++	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power domain.
+ 
+ Example of the node using power domain:
+ 
+@@ -65,3 +100,9 @@ Example of the node using power domain:
+                 power-domains = <&power RK3368_PD_GPU_1>;
+                 /* ... */
+         };
++
++	node {
++		/* ... */
++		power-domains = <&power RK3399_PD_VOPB>;
++		/* ... */
++	};
 -- 
 1.9.1
