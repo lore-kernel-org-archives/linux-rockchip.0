@@ -1,25 +1,33 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [RESEND PATCH] clk: rockchip: include downstream muxes into fractional dividers on rk3368
-Date: Fri, 26 Feb 2016 02:13:48 +0100
-Message-ID: <4704515.DI1k3PeUbF@phil>
-References: <1456274651-23202-1-git-send-email-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v1 0/4] Add clock ids for RK3228 HDMI/VOP modules
+Date: Fri, 26 Feb 2016 02:14:26 +0100
+Message-ID: <2198453.NY4VYR4LaI@phil>
+References: <1456308303-29706-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456274651-23202-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1456308303-29706-1-git-send-email-ykk@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: zhengxing@rock-chips.com, xf@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh+dt@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 24. Februar 2016, 08:44:11 schrieb Elaine Zhang:
-> During the initial conversion to the newly introduced combined fractional
-> dividers+muxes the rk3368 clocks were left out, so convert them now.
+Am Mittwoch, 24. Februar 2016, 18:05:03 schrieb Yakir Yang:
+> Add clocks ids for RK3228 HDMI/VOP modules which driver already have been
+> posted.
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> RK3228 HDMI driver: https://patchwork.kernel.org/patch/7974671
+> RK3228 VOP driver: https://patchwork.kernel.org/patch/7952591
+> 
+> Yakir Yang (4):
+>   clk: rockchip: add the new clock ids for RK3228 VOP
+>   clk: rockchip: set the clock ids for RK3228 VOP
+>   clk: rockchip: add the new clock ids for RK3228 HDMI
+>   clk: rockchip: set the clock ids for RK3228 HDMI
 
-applied to my clk-branch
+applied all 4 to my clk-branch
+
 
 Thanks
 Heiko
