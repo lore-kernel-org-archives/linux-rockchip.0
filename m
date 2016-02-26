@@ -1,52 +1,38 @@
-From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] spi/rockchip: Make sure spi clk is on in
- rockchip_spi_set_cs
-Date: Fri, 26 Feb 2016 10:31:50 +0800
-Message-ID: <56CFB916.5010403@rock-chips.com>
-References: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
- <56CD8F85.2090204@rock-chips.com> <20160226015829.GC18327@sirena.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160226015829.GC18327-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "shawn.lin" <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH v2 0/3] Rockchip: rk3399: Add core dtsi for rk3399
+Date: Fri, 26 Feb 2016 11:12:18 +0800
+Message-ID: <1456456341-14282-1-git-send-email-jay.xu@rock-chips.com>
+References: <1456210864-29037-1-git-send-email-jay.xu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456210864-29037-1-git-send-email-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, broonie@kernel.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, linus.walleij@linaro.org, sjoerd.simons@collabora.co.uk, zhengxing@rock-chips.com
+Cc: huangtao@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org, jwerner@chromium.org, Jianqun Xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016=E5=B9=B402=E6=9C=8826=E6=97=A5 09:58, Mark Brown wrote:
->=20
->> Another way to solve this bug is add runtime PM support while spi se=
-tup.
->> Some other chips may have some problem, for example mt65xx and orion=
-,
->> which access hardware register too.
->=20
-> No, this is telling you you're doing something wrong - setup() might =
-be
-> called while another transfer is in progress so you shouldn't be
-> changing the hardware setup (see Documentation/spi/spi-summary).  Thi=
-s
-> means that you normally shouldn't be writing to registers there.  Mov=
-ing
-> this to prepare_message() instead is probably what you want.
->=20
-You misunderstand me. I talk about spi_setup, as
-Documentation/spi/spi-summary, which would normally be called from
-probe() before the first I/O is done to the device.
-spi_setup will call spi_set_cs(spi, false), which introduced with commi=
-t
-1a7b7ee72c21 ("spi: Ensure that CS line is in non-active state after
-spi_setup()"). And spi_set_cs will call spi->master->set_cs, and set_cs
-callback will access register. Without clk enable, I believe some
-drivers will failed to run.
+There is the new SoCs from Rockchip which named rk3399, the
+patches are added to support them.
 
-Best Regards,
+Jianqun Xu (1):
+  ARM64: dts: rockchip: add core dtsi file for rk3399
 
-Huang, Tao
+Xing Zheng (2):
+  dt-bindings: add bindings for rk3399 clock controller
+  clk: rockchip: add dt-binding header for rk3399
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ .../bindings/clock/rockchip,rk3399-cru.txt         |  82 ++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 950 +++++++++++++++++++++
+ include/dt-bindings/clock/rk3399-cru.h             | 716 ++++++++++++++++
+ 3 files changed, 1748 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399.dtsi
+ create mode 100644 include/dt-bindings/clock/rk3399-cru.h
+
+-- 
+changes in v2:
+- remove applied grf patch (applied by Heiko)
+- add "rockchip,grf = <&pmugrf>" for pmucru node (xing)
+- add NR_CLK defination (xing)
+
+1.9.1
