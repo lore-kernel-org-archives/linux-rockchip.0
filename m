@@ -1,48 +1,153 @@
-From: =?utf-8?B?U8O2cmVu?= Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [RFC PATCH] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Fri, 26 Feb 2016 07:27:14 -0800
-Message-ID: <20160226152714.GD3173@xsjsorenbubuntu>
-References: <1454610017-25499-1-git-send-email-grygorii.strashko@ti.com>
- <20160204224128.GG4215@xsjsorenbubuntu>
- <CAAtXAHcV-9gXcZOX8dzUOBZUwj9M=O4MAsMCJNQYAP+os-D7Tg@mail.gmail.com>
- <20160204233950.GH4215@xsjsorenbubuntu> <56D04D17.6030502@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <56D04D17.6030502-l0cyMroinI0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
-Cc: kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, nsekhar-l0cyMroinI0@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Jun Nie <jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Shawn Guo <shawnguo@kern>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] ARM: errata: Workaround errata A12 818325/852422 A17 852423
+Date: Fri, 26 Feb 2016 11:20:59 -0800
+Message-ID: <1456514459-12176-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King <linux@arm.linux.org.uk>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: olof@lixom.net, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, Huang Tao <huangtao@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, nico@linaro.org, ard.biesheuvel@linaro.org, chris.brandt@renesas.com, sebastian.hesselbarth@gmail.com, Anson.Huang@freescale.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCAyMDE2LTAyLTI2IGF0IDE1OjAzOjE5ICswMjAwLCBHcnlnb3JpaSBTdHJhc2hrbyB3
-cm90ZToKPiBPbiAwMi8wNS8yMDE2IDAxOjM5IEFNLCBTw7ZyZW4gQnJpbmttYW5uIHdyb3RlOgo+
-ID4gT24gVGh1LCAyMDE2LTAyLTA0IGF0IDE1OjE0OjQ3IC0wODAwLCBNb3JpdHogRmlzY2hlciB3
-cm90ZToKPiA+PiBIaSBTb2VyZW4sCj4gPj4KPiA+PiBPbiBUaHUsIEZlYiA0LCAyMDE2IGF0IDI6
-NDEgUE0sIFPDtnJlbiBCcmlua21hbm4KPiA+PiA8c29yZW4uYnJpbmttYW5uQHhpbGlueC5jb20+
-IHdyb3RlOgo+ID4+Cj4gPj4+IEJ1dCB3aXRoIHRoaXMgY2hhbmdlIHRoZSAnaWYgIUNQVV9GUkVR
-JyBiZWNvbWVzIG9ic29sZXRlLgo+ID4+IEknbSBjb25mdXNlZCwgY291bGQgeW91IGV4cGxhaW4g
-dGhhdCBzdGF0ZW1lbnQ/IFlvdSBkb24ndCB3YW50IHBlb3BsZQo+ID4+IGFjY2lkZW50YWxseSBy
-dW5uaW5nIHdpdGggR1Qgd2hlbiBDUFVfRlJFUSBpcyBvbiwgcmlnaHQ/Cj4gPiAKPiA+IENvcnJl
-Y3QuIEJ1dCB3aXRoIHRoaXMgS2NvbmZpZyByZXdvcmsgeW91IGNhbiBqdXN0IGRlc2VsZWN0IGl0
-IGluCj4gPiBLY29uZmlnLiBUaGUgZ2VuZXJpYyBIQVZFX0dUIGNvdWxkIGFsd2F5cyBiZSBzZWxl
-Y3RlZC4KPiA+IAo+IAo+IAo+IERvbid0IGtub3cgd2hvbSBzaG91bGQgaSBhc2sgLSBidXQgd2hh
-dCB3aWxsIGJlIHRoZSBmaW5hbCBjb25jbHVzaW9uIGhlcmU/Cj4gQ2FuIGl0IGJlIG1lcmdlZD8K
-CkkgdGhpbmsgd2UgZG9uJ3QgYnJlYWsgYW55dGhpbmcgZWl0aGVyIHdheS4gV291bGQganVzdCBi
-ZSBzb21lCmFkZGl0aW9uYWwgY2xlYW4gdXAgdG8gZ2V0IHJpZCBvZiB0aGF0IG1lbnRpb25lZCBj
-b25zdHJhaW50ICh3aGljaApkb2Vzbid0IHJlYWxseSB3b3JrIHdlbGwgYW55d2F5IGluIHRoZSBt
-dWx0aS1hcmNoIGtlcm5lbCkuIFNvLCBubyByZWFsCm9iamVjdGlvbnMgdG8gbWVyZ2luZyBpdCBm
-cm9tIG15IHNpZGUuCgoJVGhhbmtzLAoJU8O2cmVuCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+There are several similar errata on Cortex A12 and A17 that all have the
+same workaround: setting bit[12] of the Feature Register.  Technically
+the list of errata are:
+
+- A12 818325: Execution of an UNPREDICTABLE STR or STM instruction might
+  deadlock.  Fixed in r0p1.
+- A12 852422: Execution of a sequence of instructions might lead to
+  either a data corruption or a CPU deadlock.  Not fixed in any A12s
+  yet.
+- A17 852423: Execution of a sequence of instructions might lead to
+  either a data corruption or a CPU deadlock.  Not fixed in any A17s
+  yet.
+
+Since A12 got renamed to A17 it seems likely that there won't be any
+future Cortex-A12 cores, so we'll enable for all Cortex-A12.
+
+For Cortex-A17 I believe that all known revisions are affected and that
+all knows revisions means <= r1p2.  Presumably if a new A17 was released
+it would have this problem fixed.
+
+Note that in <https://patchwork.kernel.org/patch/4735341/> folks
+previously expressed opposition to this change because:
+A) It was thought to only apply to r0p0 and there were no known r0p0
+   boards supported in mainline.
+B) It was argued that such a workaround beloned in firmware.
+
+Now that this same fix solves other errata on real boards (like rk3288)
+point A) is addressed.
+
+Point B) is impossible to address on boards like rk3288.  On rk3288 the
+firmware doesn't stay resident in RAM and isn't involved at all in the
+suspend/resume process nor in the SMP bringup process.  That means that
+the most the firmware could do would be to set the bit on "core 0" and
+this bit would be lost at suspend/resume time.  It is true that we could
+write a "generic" solution that saved the boot-time "core 0" value of
+this register and applied it at SMP bringup / resume time.  However,
+since this register (described as the "Feature Register" in errata)
+appears to be undocumented (as far as I can tell) and is only modified
+for these errata, that "generic" solution seems questionably cleaner.
+The generic solution also won't fix existing users that haven't happened
+to do a FW update.
+
+Note that in ARM64 presumably PSCI will be universal and fixes like this
+will end up in ATF.  Hopefully we are nearing the end of this style of
+errata workaround.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Huang Tao <huangtao@rock-chips.com>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+---
+Note that I have only tested this on Rockchip rk3288 (A12).  It seemed
+like a good idea to apply this to A17 as well but it would be nice to
+get some testing.  Also: if all A17 boards use PSCI and the firmware
+has a fix for this then we can remove the A17 erratum from this patch.
+
+ arch/arm/Kconfig      | 26 ++++++++++++++++++++++++++
+ arch/arm/mm/proc-v7.S | 27 +++++++++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+
+diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+index 98de149b7715..40a6c15e7595 100644
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
+@@ -1165,6 +1165,32 @@ config ARM_ERRATA_773022
+ 	  loop buffer may deliver incorrect instructions. This
+ 	  workaround disables the loop buffer to avoid the erratum.
+ 
++config ARM_ERRATA_818325_852422
++	bool "ARM errata: A12: some seqs of opposed cond code instrs => deadlock or corruption"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for:
++	  - Cortex-A12 818325: Execution of an UNPREDICTABLE STR or STM
++	    instruction might deadlock.  Fixed in r0p1.
++	  - Cortex-A12 852422: Execution of a sequence of instructions might
++	    lead to either a data corruption or a CPU deadlock.  Not fixed in
++	    any Cortex-A12 cores yet.
++	  This workaround for all both errata involves setting bit[12] of the
++	  Feature Register. This bit disables an optimisation applied to a
++	  sequence of 2 instructions that use opposing condition codes.
++
++config ARM_ERRATA_852423
++	bool "ARM errata: A17: some seqs of opposed cond code instrs => deadlock or corruption"
++	depends on CPU_V7
++	help
++	  This option enables the workaround for:
++	  - Cortex-A17 852423: Execution of a sequence of instructions might
++	    lead to either a data corruption or a CPU deadlock.  Not fixed in
++	    any Cortex-A17 cores yet.
++	  This is identical to Cortex-A12 erratum 852422.  It is a separate
++	  config option from the A12 erratum due to the way errata are checked
++	  for and handled.
++
+ endmenu
+ 
+ source "arch/arm/common/Kconfig"
+diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
+index 0f8963a7e7d9..96d2972d4d93 100644
+--- a/arch/arm/mm/proc-v7.S
++++ b/arch/arm/mm/proc-v7.S
+@@ -353,6 +353,23 @@ __ca9_errata:
+ #endif
+ 	b	__errata_finish
+ 
++__ca12_errata:
++#ifdef CONFIG_ARM_ERRATA_818325_852422
++	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orr	r10, r10, #1 << 12		@ set bit #12
++	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++	b	__errata_finish
++
++__ca17_errata:
++#ifdef CONFIG_ARM_ERRATA_852423
++	cmp	r6, #0x12			@ only present up to r1p2
++	mrcle	p15, 0, r10, c15, c0, 1		@ read diagnostic register
++	orrle	r10, r10, #1 << 12		@ set bit #12
++	mcrle	p15, 0, r10, c15, c0, 1		@ write diagnostic register
++#endif
++	b	__errata_finish
++
+ __ca15_errata:
+ #ifdef CONFIG_ARM_ERRATA_773022
+ 	cmp	r6, #0x4			@ only present up to r0p4
+@@ -443,6 +460,16 @@ __v7_setup_cont:
+ 	teq	r0, r10
+ 	beq	__ca9_errata
+ 
++	/* Cortex-A12 Errata */
++	ldr	r10, =0x00000c0d		@ Cortex-A12 primary part number
++	teq	r0, r10
++	beq	__ca12_errata
++
++	/* Cortex-A17 Errata */
++	ldr	r10, =0x00000c0e		@ Cortex-A17 primary part number
++	teq	r0, r10
++	beq	__ca17_errata
++
+ 	/* Cortex-A15 Errata */
+ 	ldr	r10, =0x00000c0f		@ Cortex-A15 primary part number
+ 	teq	r0, r10
+-- 
+2.7.0.rc3.207.g0ac5344
