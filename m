@@ -1,28 +1,43 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [RFC PATCH v6] Crypto: rockchip/crypto - add hash support for
- crypto engine in rk3288
-Date: Sat, 27 Feb 2016 20:33:04 +0100
-Message-ID: <20160227193304.GA9123@gondor.apana.org.au>
-References: <1455588901-14377-1-git-send-email-wzz@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1455588901-14377-1-git-send-email-wzz@rock-chips.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Zain Wang <wzz@rock-chips.com>
-Cc: heiko@sntech.de, davem@davemloft.net, eddie.cai@rock-chips.com, linux-rockchip@lists.infradead.org, linux-crypto@vger.kernel.org, Zain Wang <zain.wang@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH 0/5] Add more clock compatible features and support the RK3399 clock
+Date: Mon, 29 Feb 2016 19:25:56 +0800
+Message-ID: <1456745161-12954-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Feb 16, 2016 at 10:15:01AM +0800, Zain Wang wrote:
-> From: Zain Wang <zain.wang@rock-chips.com>
-> 
-> Add md5 sha1 sha256 support for crypto engine in rk3288.
-> 
-> Signed-off-by: Zain Wang <zain.wang@rock-chips.com>
 
-Patch applied.  Thanks!
+Hi,
+  The patch series add support more mux parameters and multiple
+clock providers for the rockchip features of the clock framework,
+and support the clock controller for the RK3399.
+
+
+
+Xing Zheng (5):
+  clk: rockchip: add more mux parameters for new pll sources
+  clk: rockchip: Add support for multiple clock providers
+  clk: rockchip: add new pll-type for rk3399 and similar socs
+  clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
+  clk: rockchip: add clock controller for the RK3399
+
+ drivers/clk/rockchip/Makefile     |    1 +
+ drivers/clk/rockchip/clk-cpu.c    |   14 +-
+ drivers/clk/rockchip/clk-pll.c    |  309 +++++++-
+ drivers/clk/rockchip/clk-rk3036.c |   20 +-
+ drivers/clk/rockchip/clk-rk3188.c |   54 +-
+ drivers/clk/rockchip/clk-rk3228.c |   20 +-
+ drivers/clk/rockchip/clk-rk3288.c |   22 +-
+ drivers/clk/rockchip/clk-rk3368.c |   27 +-
+ drivers/clk/rockchip/clk-rk3399.c | 1547 +++++++++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk.c        |  148 ++--
+ drivers/clk/rockchip/clk.h        |   98 ++-
+ 11 files changed, 2136 insertions(+), 124 deletions(-)
+ create mode 100644 drivers/clk/rockchip/clk-rk3399.c
+
 -- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+1.7.9.5
+
+
