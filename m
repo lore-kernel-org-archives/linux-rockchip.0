@@ -1,51 +1,60 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with "discard"
-Date: Tue,  1 Mar 2016 15:12:53 +0800
-Message-ID: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 2/3] clk: rockchip: add dt-binding header for rk3399
+Date: Tue, 1 Mar 2016 17:19:07 +0800
+Message-ID: <56D55E8B.6070804@rock-chips.com>
+References: <1456456341-14282-1-git-send-email-jay.xu@rock-chips.com>
+ <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
+ <1456814401-10711-3-git-send-email-jay.xu@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1456814401-10711-3-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Without MMC_CAP_ERASE support, we fail to mount partition
-with "discard" option since mmc_queue_setup_discard is limited
-for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
-blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
-the following log from f2fs(actually similar to other file system):
+Hi Jay,
 
-mounting with "discard" option, but the device does not support discard
+On 2016=E5=B9=B403=E6=9C=8801=E6=97=A5 14:40, Jianqun Xu wrote:
+> From: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> Add the dt-bindings header for the rk3399, that gets shared between
+> the clock controller and the clock references in the dts.
+>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> changes in v3:
+> - add pmucru definations
+>
+>   include/dt-bindings/clock/rk3399-cru.h | 716 ++++++++++++++++++++++=
++++++++++++
+>   1 file changed, 716 insertions(+)
+>   create mode 100644 include/dt-bindings/clock/rk3399-cru.h
+>
+> diff --git a/include/dt-bindings/clock/rk3399-cru.h b/include/dt-bind=
+ings/clock/rk3399-cru.h
+> new file mode 100644
+> index 0000000..77bb1ec
+> --- /dev/null
+> +++ b/include/dt-bindings/clock/rk3399-cru.h
+> @@ -0,0 +1,716 @@
+> +/*
+> + * Copyright (c) 2015 Rockchip Electronics Co. Ltd.
+The Copyright should be 2016.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+Thanks.
 
- drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+--=20
+- Xing Zheng
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 84e50f3..2eda118 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 	return 0;
- }
- 
-+/* Common capabilities of RK3288 SoC */
-+static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
-+	MMC_CAP_ERASE,
-+	MMC_CAP_ERASE,
-+	MMC_CAP_ERASE,
-+	MMC_CAP_ERASE,
-+};
-+
- static const struct dw_mci_drv_data rk2928_drv_data = {
- 	.init			= dw_mci_rockchip_init,
- };
- 
- static const struct dw_mci_drv_data rk3288_drv_data = {
-+	.caps			= dw_mci_rk3288_dwmmc_caps,
- 	.set_ios		= dw_mci_rk3288_set_ios,
- 	.execute_tuning		= dw_mci_rk3288_execute_tuning,
- 	.parse_dt		= dw_mci_rk3288_parse_dt,
--- 
-2.3.7
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
