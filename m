@@ -1,49 +1,50 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH 0/5] Add more clock compatible features and support the RK3399 clock
-Date: Tue,  1 Mar 2016 18:07:36 +0800
-Message-ID: <1456826861-7612-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
+Subject: [PATCH 4/5] clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
+Date: Tue,  1 Mar 2016 18:07:40 +0800
+Message-ID: <1456826861-7612-5-git-send-email-zhengxing@rock-chips.com>
+References: <1456826861-7612-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456826861-7612-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Because there are some frac clock mux nodes don't need gate node on
+the RK3399.
 
-Series-version: 2
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
 
-Series-changes: 2
-- rename the aplll/apllb to lpll/bpll
-- add drv/sample clock nodes for sdmmc/sdio
+ drivers/clk/rockchip/clk.h |   16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-Hi,
-  The patch series add support more mux parameters and multiple
-clock providers for the rockchip features of the clock framework,
-and support the clock controller for the RK3399.
-
-
-
-Xing Zheng (5):
-  clk: rockchip: add more mux parameters for new pll sources
-  clk: rockchip: Add support for multiple clock providers
-  clk: rockchip: add new pll-type for rk3399 and similar socs
-  clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
-  clk: rockchip: add clock controller for the RK3399
-
- drivers/clk/rockchip/Makefile     |    1 +
- drivers/clk/rockchip/clk-cpu.c    |   14 +-
- drivers/clk/rockchip/clk-pll.c    |  309 +++++++-
- drivers/clk/rockchip/clk-rk3036.c |   20 +-
- drivers/clk/rockchip/clk-rk3188.c |   54 +-
- drivers/clk/rockchip/clk-rk3228.c |   20 +-
- drivers/clk/rockchip/clk-rk3288.c |   22 +-
- drivers/clk/rockchip/clk-rk3368.c |   27 +-
- drivers/clk/rockchip/clk-rk3399.c | 1553 +++++++++++++++++++++++++++++++++++++
- drivers/clk/rockchip/clk.c        |  148 ++--
- drivers/clk/rockchip/clk.h        |   96 ++-
- 11 files changed, 2140 insertions(+), 124 deletions(-)
- create mode 100644 drivers/clk/rockchip/clk-rk3399.c
-
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 36b4938..bfafd67 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -463,6 +463,22 @@ struct rockchip_clk_branch {
+ 		.child		= ch,				\
+ 	}
+ 
++#define COMPOSITE_FRACMUX_NOGATE(_id, cname, pname, f, mo, df, ch) \
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_fraction_divider,	\
++		.name		= cname,			\
++		.parent_names	= (const char *[]){ pname },	\
++		.num_parents	= 1,				\
++		.flags		= f,				\
++		.muxdiv_offset	= mo,				\
++		.div_shift	= 16,				\
++		.div_width	= 16,				\
++		.div_flags	= df,				\
++		.gate_offset	= -1,				\
++		.child		= ch,				\
++	}
++
+ #define MUX(_id, cname, pnames, f, o, s, w, mf)			\
+ 	{							\
+ 		.id		= _id,				\
 -- 
 1.7.9.5
-
-
