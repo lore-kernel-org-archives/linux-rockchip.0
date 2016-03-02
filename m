@@ -1,40 +1,67 @@
-From: John Stultz <john.stultz@linaro.org>
-Subject: Re: [PATCH v4 2/4] power: reset: add reboot mode driver
-Date: Tue, 1 Mar 2016 10:29:09 -0800
-Message-ID: <CALAqxLXB4rxWMteUnc4xdg1cRTP2jPc6jTiViAgTrn0kz6qewA@mail.gmail.com>
-References: <1456834172-5425-1-git-send-email-andy.yan@rock-chips.com>
-	<1456834338-5521-1-git-send-email-andy.yan@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
+ "discard"
+Date: Wed, 02 Mar 2016 10:29:30 +0900
+Message-ID: <56D641FA.8010606@samsung.com>
+References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456834338-5521-1-git-send-email-andy.yan@rock-chips.com>
+In-reply-to: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?Q?Pawe=C5=82_Moll?= <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, lkml <linux-kernel@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Olof Johansson <olof@lixom.net>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, Sebastian Reichel <sre@kernel.org>, Jun Nie <jun.nie@linaro.org>, Eduardo Valentin <edubezval@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Will Deacon <will.deacon@arm.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Caesar Wang <wxt@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Russell
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 1, 2016 at 4:12 AM, Andy Yan <andy.yan@rock-chips.com> wrote:
-> This driver parse the reboot commands like "reboot loader"
-> and "reboot recovery" to get a boot mode described in the
-> device tree , then call the write interfae to store the boot
-> mode in some place like special register or sram , which can
-> be read by the bootloader after system reboot, then the bootloader
-> can take different action according to the mode stored.
->
-> This is commonly used on Android based devices, in order to
-> reboot the device into fastboot or recovery mode.
->
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: Moritz Fischer <moritz.fischer@ettus.com>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Hi Shawn.
 
+On 03/01/2016 04:12 PM, Shawn Lin wrote:
+> Without MMC_CAP_ERASE support, we fail to mount partition
+> with "discard" option since mmc_queue_setup_discard is limited
+> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
+> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
+> the following log from f2fs(actually similar to other file system):
+> 
+> mounting with "discard" option, but the device does not support discard
 
-Thanks Andy for your persistence pushing this!
+We can enable MMC_CAP_ERASE by default, since other SoC also needs this capability.
+I had sent some patch for enabling by default, but at that time i didn't remember why not enabled by default.
+I will check that reason..and share the information.
 
-This patch works well on my nexus7.
+Best Regards,
+Jaehoon Chung
 
-Tested-by: John Stultz <john.stultz@linaro.org>
-Acked-by: John Stultz <john.stultz@linaro.org>
-
-thanks
--john
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 84e50f3..2eda118 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+>  	return 0;
+>  }
+>  
+> +/* Common capabilities of RK3288 SoC */
+> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +};
+> +
+>  static const struct dw_mci_drv_data rk2928_drv_data = {
+>  	.init			= dw_mci_rockchip_init,
+>  };
+>  
+>  static const struct dw_mci_drv_data rk3288_drv_data = {
+> +	.caps			= dw_mci_rk3288_dwmmc_caps,
+>  	.set_ios		= dw_mci_rk3288_set_ios,
+>  	.execute_tuning		= dw_mci_rk3288_execute_tuning,
+>  	.parse_dt		= dw_mci_rk3288_parse_dt,
+> 
