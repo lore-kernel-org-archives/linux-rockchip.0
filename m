@@ -1,97 +1,63 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
- "discard"
-Date: Wed, 2 Mar 2016 09:46:14 +0800
-Message-ID: <56D645E6.80508@rock-chips.com>
-References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
- <56D641FA.8010606@samsung.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 14/14] ASoC: rockchip: use __maybe_unused to
+	hide st_irq_syscfg_resume
+Date: Wed,  2 Mar 2016 16:59:06 +0100
+Message-ID: <1456934350-1389172-15-git-send-email-arnd@arndb.de>
+References: <1456934350-1389172-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56D641FA.8010606@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, shawn.lin@kernel-upstream.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1456934350-1389172-1-git-send-email-arnd@arndb.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: alsa-devel@alsa-project.org, Arnd Bergmann <arnd@arndb.de>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/3/2 9:29, Jaehoon Chung =E5=86=99=E9=81=93:
-> Hi Shawn.
->
-> On 03/01/2016 04:12 PM, Shawn Lin wrote:
->> Without MMC_CAP_ERASE support, we fail to mount partition
->> with "discard" option since mmc_queue_setup_discard is limited
->> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
->> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
->> the following log from f2fs(actually similar to other file system):
->>
->> mounting with "discard" option, but the device does not support disc=
-ard
->
-> We can enable MMC_CAP_ERASE by default, since other SoC also needs th=
-is capability.
-> I had sent some patch for enabling by default, but at that time i did=
-n't remember why not enabled by default.
-> I will check that reason..and share the information.
+The rockchip spdif driver uses SIMPLE_DEV_PM_OPS to conditionally
+set its power management functions, but we get a warning
+about rk_spdif_runtime_resume being unused when CONFIG_PM is not
+set:
 
-Hi Jaehoon,
+sound/soc/rockchip/rockchip_spdif.c:67:12: error: 'rk_spdif_runtime_resume' defined but not used [-Werror=unused-function]
 
-Thanks for checking that. I didn't notice this part of code either unti=
-l
-I began to develop f2fs last month.
-yes, I can't find any reasons not to enable it for dw_mmc because I loo=
-k
-more into dwmmc-databooks to see if any version of IP can't support
-ERASE/TRIM command, and find none of them. So, enabling it by default i=
-s
-safe.
+This adds a __maybe_unused annotation so the compiler knows
+it can silently drop it instead of warning.
 
->
-> Best Regards,
-> Jaehoon Chung
->
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> ---
->>
->>   drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
->>   1 file changed, 9 insertions(+)
->>
->> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/d=
-w_mmc-rockchip.c
->> index 84e50f3..2eda118 100644
->> --- a/drivers/mmc/host/dw_mmc-rockchip.c
->> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci =
-*host)
->>   	return 0;
->>   }
->>
->> +/* Common capabilities of RK3288 SoC */
->> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] =3D {
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +};
->> +
->>   static const struct dw_mci_drv_data rk2928_drv_data =3D {
->>   	.init			=3D dw_mci_rockchip_init,
->>   };
->>
->>   static const struct dw_mci_drv_data rk3288_drv_data =3D {
->> +	.caps			=3D dw_mci_rk3288_dwmmc_caps,
->>   	.set_ios		=3D dw_mci_rk3288_set_ios,
->>   	.execute_tuning		=3D dw_mci_rk3288_execute_tuning,
->>   	.parse_dt		=3D dw_mci_rk3288_parse_dt,
->>
->
->
->
->
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ sound/soc/rockchip/rockchip_spdif.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
---=20
-Best Regards
-Shawn Lin
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index 5a806da89f42..274599d4caeb 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -54,7 +54,7 @@ static const struct of_device_id rk_spdif_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rk_spdif_match);
+ 
+-static int rk_spdif_runtime_suspend(struct device *dev)
++static int __maybe_unused rk_spdif_runtime_suspend(struct device *dev)
+ {
+ 	struct rk_spdif_dev *spdif = dev_get_drvdata(dev);
+ 
+@@ -64,7 +64,7 @@ static int rk_spdif_runtime_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int rk_spdif_runtime_resume(struct device *dev)
++static int __maybe_unused rk_spdif_runtime_resume(struct device *dev)
+ {
+ 	struct rk_spdif_dev *spdif = dev_get_drvdata(dev);
+ 	int ret;
+-- 
+2.7.0
