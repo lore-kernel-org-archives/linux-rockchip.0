@@ -1,115 +1,43 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v5 6/6] rockchip: power-domain: Modify power domain driver for rk3399
-Date: Thu,  3 Mar 2016 16:09:51 +0800
-Message-ID: <1456992591-25383-1-git-send-email-zhangqing@rock-chips.com>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+From: "Jon Medhurst (Tixy)" <tixy@linaro.org>
+Subject: Re: [PATCH] ARM: dts: add "simple-bus" to "arm, amba-bus"
+ compatible nodes
+Date: Thu, 03 Mar 2016 10:12:55 +0000
+Message-ID: <1456999975.2856.18.camel@linaro.org>
+References: <1456804620-8750-1-git-send-email-yamada.masahiro@socionext.com>
+	 <20160301114610.GB30602@leverpostej>
+	 <CAK7LNAQzkg5F8wUeF+p30jf9CrpNxi7UTNfqXQgybP2XbEKJag@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <CAK7LNAQzkg5F8wUeF+p30jf9CrpNxi7UTNfqXQgybP2XbEKJag@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, khilman@baylibre.com, wxt@rock-chips.com
-Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Heiko Stuebner <heiko@sntech.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Wei Xu <xuwei5@hisilicon.com>, David Brown <david.brown@linaro.org>, arm@kernel.org, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, Andy Gross <andy.gross@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, linux-soc@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver is modified to support RK3399 SoC.
+On Thu, 2016-03-03 at 12:07 +0900, Masahiro Yamada wrote:
+[...]
+> This patch is derived from Rob Herring' comment
+> "BTW, we should also kill off "amba-bus" which is an ambiguous term"
+> in the following thread:
+> http://lkml.iu.edu/hypermail/linux/kernel/1601.0/01822.html
+> 
+> 
+> So, the plan would be like this:
+> 
+> [1] Make device trees not depend on "arm,amba-bus"   (this commit)
+> [2] New device trees should no longer use "arm,amba-bus" alone.
+> [3] Go though some releases until we do not care about the backward
+> compatibility
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/soc/rockchip/pm_domains.c | 55 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
+Why would we stop caring about backwards compatibility? If I was a user
+of any of the platforms in question and updated my kernel, I wouldn't
+expect to have to debug why it was broken, then install a new dtb to fix
+it - which may be a tricky thing to do, depending on the firmware used
+to boot Linux.
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 1777e8e..8cdd877 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -19,6 +19,7 @@
- #include <linux/mfd/syscon.h>
- #include <dt-bindings/power/rk3288-power.h>
- #include <dt-bindings/power/rk3368-power.h>
-+#include <dt-bindings/power/rk3399-power.h>
- 
- struct rockchip_domain_info {
- 	int pwr_mask;
-@@ -79,6 +80,9 @@ struct rockchip_pmu {
- #define DOMAIN_RK3368(pwr, status, req)		\
- 	DOMAIN(pwr, status, req, (req) + 16, req)
- 
-+#define DOMAIN_RK3399(pwr, status, req)                \
-+	DOMAIN(pwr, status, req, req, req)
-+
- static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
- {
- 	struct rockchip_pmu *pmu = pd->pmu;
-@@ -535,6 +539,36 @@ static const struct rockchip_domain_info rk3368_pm_domains[] = {
- 	[RK3368_PD_GPU_1]	= DOMAIN_RK3368(17, 16, 2),
- };
- 
-+static const struct rockchip_domain_info rk3399_pm_domains[] = {
-+	[RK3399_PD_TCPD0]	= DOMAIN_RK3399(8, 8, -1),
-+	[RK3399_PD_TCPD1]	= DOMAIN_RK3399(9, 9, -1),
-+	[RK3399_PD_CCI]	= DOMAIN_RK3399(10, 10, -1),
-+	[RK3399_PD_CCI0]	= DOMAIN_RK3399(-1, -1, 15),
-+	[RK3399_PD_CCI1]	= DOMAIN_RK3399(-1, -1, 16),
-+	[RK3399_PD_PERILP]	= DOMAIN_RK3399(11, 11, 1),
-+	[RK3399_PD_PERIHP]	= DOMAIN_RK3399(12, 12, 2),
-+	[RK3399_PD_CENTER]	= DOMAIN_RK3399(13, 13, 14),
-+	[RK3399_PD_VIO]	= DOMAIN_RK3399(14, 14, 17),
-+	[RK3399_PD_GPU]	= DOMAIN_RK3399(15, 15, 0),
-+	[RK3399_PD_VCODEC]	= DOMAIN_RK3399(16, 16, 3),
-+	[RK3399_PD_VDU]	= DOMAIN_RK3399(17, 17, 4),
-+	[RK3399_PD_RGA]	= DOMAIN_RK3399(18, 18, 5),
-+	[RK3399_PD_IEP]	= DOMAIN_RK3399(19, 19, 6),
-+	[RK3399_PD_VO]	= DOMAIN_RK3399(20, 20, -1),
-+	[RK3399_PD_VOPB]	= DOMAIN_RK3399(-1, -1, 7),
-+	[RK3399_PD_VOPL]	= DOMAIN_RK3399(-1, -1, 8),
-+	[RK3399_PD_ISP0]	= DOMAIN_RK3399(22, 22, 9),
-+	[RK3399_PD_ISP1]	= DOMAIN_RK3399(23, 23, 10),
-+	[RK3399_PD_HDCP]	= DOMAIN_RK3399(24, 24, 11),
-+	[RK3399_PD_GMAC]	= DOMAIN_RK3399(25, 25, 23),
-+	[RK3399_PD_EMMC]	= DOMAIN_RK3399(26, 26, 24),
-+	[RK3399_PD_USB3]	= DOMAIN_RK3399(27, 27, 12),
-+	[RK3399_PD_EDP]	= DOMAIN_RK3399(28, 28, 22),
-+	[RK3399_PD_GIC]	= DOMAIN_RK3399(29, 29, 27),
-+	[RK3399_PD_SD]	= DOMAIN_RK3399(30, 30, 28),
-+	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399(31, 31, 29),
-+};
-+
- static const struct rockchip_pmu_info rk3288_pmu = {
- 	.pwr_offset = 0x08,
- 	.status_offset = 0x0c,
-@@ -569,6 +603,23 @@ static const struct rockchip_pmu_info rk3368_pmu = {
- 	.domain_info = rk3368_pm_domains,
- };
- 
-+static const struct rockchip_pmu_info rk3399_pmu = {
-+	.pwr_offset = 0x14,
-+	.status_offset = 0x18,
-+	.req_offset = 0x60,
-+	.idle_offset = 0x64,
-+	.ack_offset = 0x68,
-+
-+	.core_pwrcnt_offset = 0x9c,
-+	.gpu_pwrcnt_offset = 0xa4,
-+
-+	.core_power_transition_time = 24,
-+	.gpu_power_transition_time = 24,
-+
-+	.num_domains = ARRAY_SIZE(rk3399_pm_domains),
-+	.domain_info = rk3399_pm_domains,
-+};
-+
- static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 	{
- 		.compatible = "rockchip,rk3288-power-controller",
-@@ -578,6 +629,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 		.compatible = "rockchip,rk3368-power-controller",
- 		.data = (void *)&rk3368_pmu,
- 	},
-+	{
-+		.compatible = "rockchip,rk3399-power-controller",
-+		.data = (void *)&rk3399_pmu,
-+	},
- 	{ /* sentinel */ },
- };
- 
+> [4] Drop "arm,amba-bus" from of_default_bus_match_table
+
 -- 
-1.9.1
+Tixy
