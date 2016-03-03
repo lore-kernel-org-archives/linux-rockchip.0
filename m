@@ -1,105 +1,63 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v4 0/4] add reboot mode driver
-Date: Thu, 3 Mar 2016 09:52:49 +0800
-Message-ID: <56D798F1.9060709@gmail.com>
-References: <1456834172-5425-1-git-send-email-andy.yan@rock-chips.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH] ARM: dts: add "simple-bus" to "arm,amba-bus" compatible nodes
+Date: Thu, 3 Mar 2016 12:07:32 +0900
+Message-ID: <CAK7LNAQzkg5F8wUeF+p30jf9CrpNxi7UTNfqXQgybP2XbEKJag@mail.gmail.com>
+References: <1456804620-8750-1-git-send-email-yamada.masahiro@socionext.com>
+	<20160301114610.GB30602@leverpostej>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456834172-5425-1-git-send-email-andy.yan@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: robh+dt@kernel.org, john.stultz@linaro.org, arnd@arndb.de, heiko@sntech.de, mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, sre@kernel.org, alexandre.belloni@free-electrons.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, richard@nod.at, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, edubezval@gmail.com, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+In-Reply-To: <20160301114610.GB30602@leverpostej>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
+Cc: arm@kernel.org, Russell King <linux@arm.linux.org.uk>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Andy Gross <andy.gross@linaro.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-samsung-soc@vger.kernel.org, David Brown <david.brown@linaro.org>, Pawel Moll <pawel.moll@arm.com>, Wei Xu <xuwei5@hisilicon.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-soc@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andy,
+Hi Mark,
 
 
-This series patches ware verified on my github with RK3368 evb and=20
-RK30236 board.
-https://github.com/Caesar-github/rockchip/tree/for-reboot-mode-tests
-
-
-=E5=9C=A8 2016=E5=B9=B403=E6=9C=8801=E6=97=A5 20:09, Andy Yan =E5=86=99=
-=E9=81=93:
-> This driver parse the reboot commands like "reboot loader"
-> and "reboot recovery" to get a boot mode described in the
-> device tree , then call the corresponding  write interfae
-> to store the boot mode in some place like special register
-> or ram , which can be read by the bootloader after system
-> reboot.
+2016-03-01 20:46 GMT+09:00 Mark Rutland <mark.rutland@arm.com>:
+> On Tue, Mar 01, 2016 at 12:57:00PM +0900, Masahiro Yamada wrote:
+>> The "arm,amba-bus" string in the of_default_bus_match_table is
+>> ambiguous.  This prepares for killing it off in a long run.
 >
-> This is commonly done on Android based devices, in order to
-> reboot the device into fastboot or recovery mode.
+> I don't follow the purpose of this patch.
 >
+> There's no way we can remove kernel-side support for "arm,amba-bus", as
+> there are DTBs that rely on it.
 >
-> Changes in v4:
-> - remove mode-maskrom
-> - rename mode-fastboot to mode-bootloader to keep compatible with the=
- exiting Android device
-> - make this driver depends on OF to avoid kbuild test error
+> If we're going to merge "arm,amba-bus" in the kernel with "simple-bus",
+> such that there is no distinction between the two, then that doesn't
+> require any DTBs to be updated.
 >
-> Changes in v3:
-> - descirbe all reboot mode as properity instead of subnode
-> - scan multi properities
-> - add mask value for some platform which only use some bits of the re=
-gister
->    to store boot mode magic value
-> - descirbe all reboot mode as property instead of subnode
-> - add rk3036 support
-> - descirbe all reboot mode as properity instead of subnode
+> The only reason I would see for changing dts files would be a subsequent
+> clean-up for consistency, but at that point "arm,amba-bus" could be
+> dropped entirely.
 >
-> Changes in v2:
-> - move to dir drivers/power/reset/
-> - make syscon-reboot-mode a generic driver
-> - make this node as a subnode of PMU
-> - make this node as a subnode of pmugrf
+> So this patch makes no sense to me.
 >
-> Changes in v1:
-> - fix the embarrassed compile warning
-> - correct the maskrom magic number
-> - check for the normal reboot
-> - correct the maskrom magic number
-> - use macro defined in rockchip_boot-mode.h for reboot-mode DT node
->
-> Andy Yan (4):
->    dt-bindings: power: reset: add document for reboot-mode driver
->    power: reset: add reboot mode driver
->    ARM: dts: rockchip: add syscon-reboot-mode DT node
->    ARM64: dts: rockchip: add syscon-reboot-mode DT node
-
-Tested-by: Caesar Wang <wxt@rock-chips.com>
-
-
->
->   .../bindings/power/reset/reboot-mode.txt           |  24 +++++
->   .../bindings/power/reset/syscon-reboot-mode.txt    |  35 +++++++
->   arch/arm/boot/dts/rk3036.dtsi                      |  11 ++-
->   arch/arm/boot/dts/rk3288.dtsi                      |  10 ++
->   arch/arm/boot/dts/rk3xxx.dtsi                      |  12 ++-
->   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  13 ++-
->   drivers/power/reset/Kconfig                        |  16 ++++
->   drivers/power/reset/Makefile                       |   2 +
->   drivers/power/reset/reboot-mode.c                  | 105 ++++++++++=
-+++++++++++
->   drivers/power/reset/reboot-mode.h                  |   6 ++
->   drivers/power/reset/syscon-reboot-mode.c           |  64 ++++++++++=
-+++
->   include/dt-bindings/soc/rockchip_boot-mode.h       |  30 ++++++
->   12 files changed, 325 insertions(+), 3 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/power/reset/re=
-boot-mode.txt
->   create mode 100644 Documentation/devicetree/bindings/power/reset/sy=
-scon-reboot-mode.txt
->   create mode 100644 drivers/power/reset/reboot-mode.c
->   create mode 100644 drivers/power/reset/reboot-mode.h
->   create mode 100644 drivers/power/reset/syscon-reboot-mode.c
->   create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
+> Thanks,
+> Mark.
 >
 
+This patch is derived from Rob Herring' comment
+"BTW, we should also kill off "amba-bus" which is an ambiguous term"
+in the following thread:
+http://lkml.iu.edu/hypermail/linux/kernel/1601.0/01822.html
 
---=20
-Thanks,
-Caesar
+
+So, the plan would be like this:
+
+[1] Make device trees not depend on "arm,amba-bus"   (this commit)
+[2] New device trees should no longer use "arm,amba-bus" alone.
+[3] Go though some releases until we do not care about the backward
+compatibility
+[4] Drop "arm,amba-bus" from of_default_bus_match_table
+
+
+No?
+
+
+-- 
+Best Regards
+Masahiro Yamada
