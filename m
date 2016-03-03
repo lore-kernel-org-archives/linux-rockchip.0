@@ -1,10 +1,10 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
 Subject: [PATCH v5 5/6] dt/bindings: rockchip: modify document of Rockchip power domains
-Date: Thu,  3 Mar 2016 16:05:54 +0800
-Message-ID: <1456992354-25237-1-git-send-email-zhangqing@rock-chips.com>
-References: <[PATCH v5 0_6] rockchip: power-domain: fix pm domain for support RK3399 SoC.eml>
+Date: Thu,  3 Mar 2016 16:09:17 +0800
+Message-ID: <1456992557-25331-1-git-send-email-zhangqing@rock-chips.com>
+References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <[PATCH v5 0_6] rockchip: power-domain: fix pm domain for support RK3399 SoC.eml>
+In-Reply-To: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de, khilman@baylibre.com, wxt@rock-chips.com
 Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
