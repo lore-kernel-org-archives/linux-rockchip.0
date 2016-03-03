@@ -1,58 +1,73 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH] thermal: rockchip: disable thermal->clk in err case
-Date: Thu, 3 Mar 2016 11:34:40 +0800
-Message-ID: <56D7B0D0.7090605@gmail.com>
-References: <1455503242-19907-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1455503242-19907-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v5 2/6] power-domain: allow domains only handling idle requests
+Date: Thu,  3 Mar 2016 16:03:49 +0800
+Message-ID: <1456992233-25164-3-git-send-email-zhangqing@rock-chips.com>
+References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, khilman@baylibre.com, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi ,
+On some Rockchip SoC there exist child-domains only handling their
+idle state with the actual power-state handled by a parent-domain.
 
-Sorry for the missing it.
+So allow such types of domains. For them, we can determine their
+state (on/of) by checking the inverse idle-state instead.
 
-=E5=9C=A8 2016=E5=B9=B402=E6=9C=8815=E6=97=A5 10:27, Shawn Lin =E5=86=99=
-=E9=81=93:
-> Disable thermal->clk when enabling pclk fails in
-> resume routine.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+There exist one special case if both idle as well power handling
+were set as not present, but as the domain-data is defined in the
+code itself, we can expect the reasonable developer to define them
 
-Reviewed-by: Caesar Wang <wxt@rock-chips.com>
+So allow such types of domains. For them, we can determine their
+state (on/of) by checking the inverse idle-state instead.
 
-> ---
->
->   drivers/thermal/rockchip_thermal.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/roc=
-kchip_thermal.c
-> index 9787e8a..b54f6db 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -656,8 +656,10 @@ static int __maybe_unused rockchip_thermal_resum=
-e(struct device *dev)
->   		return error;
->  =20
->   	error =3D clk_enable(thermal->pclk);
-> -	if (error)
-> +	if (error) {
-> +		clk_disable(thermal->clk);
->   		return error;
-> +	}
->  =20
->   	rockchip_thermal_reset_controller(thermal->reset);
->  =20
+There exist one special case if both idle as well power handling
+were set as not present, but as the domain-data is defined in the
+code itself, we can expect the reasonable developer to define them
+in a correct, without adding more checks.
 
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ drivers/soc/rockchip/pm_domains.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
---=20
-Thanks,
-Caesar
-
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index c46312d..0465a06 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -66,8 +66,8 @@ struct rockchip_pmu {
+ 
+ #define DOMAIN(pwr, status, req, idle, ack)	\
+ {						\
+-	.pwr_mask = BIT(pwr),			\
+-	.status_mask = BIT(status),		\
++	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
++	.status_mask = (status >= 0) ? BIT(status) : 0,	\
+ 	.req_mask = (req >= 0) ? BIT(req) : 0,		\
+ 	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
+ 	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
+@@ -119,6 +119,10 @@ static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 	unsigned int val;
+ 
++	/* check idle status for idle-only domains */
++	if (pd->info->status_mask == 0)
++		return !rockchip_pmu_domain_is_idle(pd);
++
+ 	regmap_read(pmu->regmap, pmu->info->status_offset, &val);
+ 
+ 	/* 1'b0: power on, 1'b1: power off */
+@@ -130,6 +134,9 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+ 
++	if (pd->info->pwr_mask == 0)
++		return;
++
+ 	regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
+ 			   pd->info->pwr_mask, on ? 0 : -1U);
+ 
+-- 
+1.9.1
