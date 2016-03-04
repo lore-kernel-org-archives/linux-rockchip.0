@@ -1,64 +1,34 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH] ARM: dts: add "simple-bus" to "arm,amba-bus" compatible nodes
-Date: Thu, 3 Mar 2016 14:44:22 -0600
-Message-ID: <CAL_Jsq+sYG3UNvQ0k4cZQ0JcenObsmo7R=0qgLtUqdOJXWO-nQ@mail.gmail.com>
-References: <1456804620-8750-1-git-send-email-yamada.masahiro@socionext.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: fix crtc size in plane check
+Date: Fri, 04 Mar 2016 09:04:57 +0800
+Message-ID: <56D8DF39.8020104@rock-chips.com>
+References: <1456143779-16208-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-In-Reply-To: <1456804620-8750-1-git-send-email-yamada.masahiro@socionext.com>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: "arm@kernel.org" <arm@kernel.org>, Russell King <linux@arm.linux.org.uk>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Kumar Gala <galak@codeaurora.org>, Andy Gross <andy.gross@linaro.org>, Dinh Nguyen <dinguyen@opensource.altera.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, David Brown <david.brown@linaro.org>, Pawel Moll <pawel.moll@arm.com>, Wei Xu <xuwei5@hisilicon.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, linux-soc@vger.kernel.org"linux-arm-kernel@lists.infradead.org" <linux-ar>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1456143779-16208-1-git-send-email-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Feb 29, 2016 at 9:57 PM, Masahiro Yamada
-<yamada.masahiro@socionext.com> wrote:
-> The "arm,amba-bus" string in the of_default_bus_match_table is
-> ambiguous.  This prepares for killing it off in a long run.
->
-> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
-> ---
->
->  arch/arm/boot/dts/axm55xx.dtsi             | 2 +-
->  arch/arm/boot/dts/exynos3250.dtsi          | 2 +-
->  arch/arm/boot/dts/exynos4.dtsi             | 2 +-
->  arch/arm/boot/dts/exynos4415.dtsi          | 2 +-
->  arch/arm/boot/dts/exynos5250.dtsi          | 2 +-
->  arch/arm/boot/dts/exynos5420.dtsi          | 2 +-
->  arch/arm/boot/dts/exynos5440.dtsi          | 2 +-
->  arch/arm/boot/dts/hi3620.dtsi              | 2 +-
->  arch/arm/boot/dts/hip01.dtsi               | 2 +-
->  arch/arm/boot/dts/hisi-x5hd2.dtsi          | 2 +-
->  arch/arm/boot/dts/qcom-apq8064.dtsi        | 2 +-
->  arch/arm/boot/dts/qcom-msm8660.dtsi        | 2 +-
->  arch/arm/boot/dts/qcom-msm8960.dtsi        | 2 +-
->  arch/arm/boot/dts/rk3036.dtsi              | 2 +-
->  arch/arm/boot/dts/rk3228.dtsi              | 2 +-
->  arch/arm/boot/dts/rk3288.dtsi              | 2 +-
->  arch/arm/boot/dts/rk3xxx.dtsi              | 2 +-
->  arch/arm/boot/dts/s5pv210.dtsi             | 2 +-
->  arch/arm/boot/dts/socfpga.dtsi             | 2 +-
->  arch/arm/boot/dts/socfpga_arria10.dtsi     | 2 +-
->  arch/arm/boot/dts/ste-nomadik-stn8815.dtsi | 2 +-
->  arch/arm/boot/dts/ste-u300.dts             | 2 +-
->  arch/arm/boot/dts/versatile-ab.dts         | 2 +-
->  23 files changed, 23 insertions(+), 23 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/axm55xx.dtsi b/arch/arm/boot/dts/axm55xx.dtsi
-> index ea288f0..8da4582 100644
-> --- a/arch/arm/boot/dts/axm55xx.dtsi
-> +++ b/arch/arm/boot/dts/axm55xx.dtsi
-> @@ -107,7 +107,7 @@
->                 };
->
->                 amba {
-> -                       compatible = "arm,amba-bus";
-> +                       compatible = "arm,amba-bus", "simple-bus";
-
-Actually, I would remove arm,amba-bus completely to prevent its
-spread. Both have been matched since ARM DT support began in the
-kernel. AFAICT, FreeBSD only uses simple-bus. If so, then this patch
-fixes FreeBSD on these systems (if that was the only issue).
-
-Rob
+T24gMjAxNuW5tDAy5pyIMjLml6UgMjA6MjIsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBJZiB0aGUg
+Z2VvbWV0cnkgb2YgYSBjcnRjIGlzIGNoYW5naW5nIGluIGFuIGF0b21pYyB1cGRhdGUgdGhlbiB3
+ZSBtdWNoCgpJIHRoaW5rICJ3ZSBtdWNoIHZhbGlkYXRlIiBzaG91bGQgYmUgIndlIG11c3QgdmFs
+aWRhdGUiLjotKQoKPiB2YWxpZGF0ZSB0aGUgcGxhbmUgc2l6ZSBhZ2FpbnN0IHRoZSBuZXcgc3Rh
+dGUgb2YgdGhlIGNydGMgYW5kIG5vdCB0aGUKPiBjdXJyZW50IHNpemUsIG90aGVyd2lzZSBpZiB0
+aGUgY3J0YyBzaXplIGlzIGluY3JlYXNpbmcgdGhlIHBsYW5lIHdpbGwgYmUKPiBjcm9wcGVkIGF0
+IHRoZSBwcmV2aW91cyBzaXplIGFuZCB3aWxsIG5vdCBmaWxsIHRoZSBzY3JlZW4uCj4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmc8am9obkBtZXRhbmF0ZS5jb20+CgotLSAK77ytYXJrIFlh
+bwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
+L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
