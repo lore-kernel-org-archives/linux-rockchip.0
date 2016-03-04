@@ -1,34 +1,73 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: fix crtc size in plane check
-Date: Fri, 04 Mar 2016 09:04:57 +0800
-Message-ID: <56D8DF39.8020104@rock-chips.com>
-References: <1456143779-16208-1-git-send-email-john@metanate.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] some more rockchip clock changes for 4.6
+Date: Fri, 04 Mar 2016 02:37:34 +0100
+Message-ID: <1510327.LAx2hyWq2l@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1456143779-16208-1-git-send-email-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@metanate.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAy5pyIMjLml6UgMjA6MjIsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBJZiB0aGUg
-Z2VvbWV0cnkgb2YgYSBjcnRjIGlzIGNoYW5naW5nIGluIGFuIGF0b21pYyB1cGRhdGUgdGhlbiB3
-ZSBtdWNoCgpJIHRoaW5rICJ3ZSBtdWNoIHZhbGlkYXRlIiBzaG91bGQgYmUgIndlIG11c3QgdmFs
-aWRhdGUiLjotKQoKPiB2YWxpZGF0ZSB0aGUgcGxhbmUgc2l6ZSBhZ2FpbnN0IHRoZSBuZXcgc3Rh
-dGUgb2YgdGhlIGNydGMgYW5kIG5vdCB0aGUKPiBjdXJyZW50IHNpemUsIG90aGVyd2lzZSBpZiB0
-aGUgY3J0YyBzaXplIGlzIGluY3JlYXNpbmcgdGhlIHBsYW5lIHdpbGwgYmUKPiBjcm9wcGVkIGF0
-IHRoZSBwcmV2aW91cyBzaXplIGFuZCB3aWxsIG5vdCBmaWxsIHRoZSBzY3JlZW4uCj4KPiBTaWdu
-ZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmc8am9obkBtZXRhbmF0ZS5jb20+CgotLSAK77ytYXJrIFlh
-bwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
-ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczov
-L2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Mike, Stephen,
+
+this pull request is based on the last tag 4.6 and I think the signed
+tag below should explain that just right :-) .
+So if nothing stands out, please pull.
+
+
+Thanks
+Heiko
+
+The following changes since commit 36714529f8bbd4f8eaf93b50f4a64c52a24879aa:
+
+  clk: rockchip: convert manually created factor clocks to the new type (2016-02-04 15:54:20 +0100)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-clk2
+
+for you to fetch changes up to 7af8a26ce7055dd74853ea7c2b9752961e3491da:
+
+  clk: rockchip: include downstream muxes into fractional dividers on rk3368 (2016-02-26 02:08:45 +0100)
+
+----------------------------------------------------------------
+Inclusion of the rk3368 fractional dividers into our handling scheme,
+fixes for missing error-handling in mmc-phase, inverters and cpu-clocks
+and some more clock-ids.
+
+----------------------------------------------------------------
+Caesar Wang (2):
+      clk: rockchip: add id of the tsadc clock found on rk3228 SoCs
+      clk: rockchip: add the tsadc clocks found on rk3228 SoCs
+
+Elaine Zhang (1):
+      clk: rockchip: include downstream muxes into fractional dividers on rk3368
+
+Heiko Stuebner (1):
+      Merge branch 'v4.6-shared/clkids' into v4.6-clk/next
+
+Shawn Lin (5):
+      clk: rockchip: disable alt_parent clk in err cases when registering cpuclk
+      clk: rockchip: check grf when waiting pll lock
+      clk: rockchip: don't return NULL when registering inverter fails
+      clk: rockchip: don't return NULL when registering mmc branch fails
+      clk: rockchip: fix coding style for clk-cpu.c
+
+Yakir Yang (4):
+      clk: rockchip: add the new clock ids for RK3228 VOP
+      clk: rockchip: add the new clock ids for RK3228 HDMI
+      clk: rockchip: set the clock ids for RK3228 VOP
+      clk: rockchip: set the clock ids for RK3228 HDMI
+
+ drivers/clk/rockchip/clk-cpu.c         |  8 +--
+ drivers/clk/rockchip/clk-inverter.c    |  8 +--
+ drivers/clk/rockchip/clk-mmc-phase.c   |  8 +--
+ drivers/clk/rockchip/clk-pll.c         |  5 ++
+ drivers/clk/rockchip/clk-rk3228.c      | 18 +++----
+ drivers/clk/rockchip/clk-rk3368.c      | 97 +++++++++++++++++++++-------------
+ include/dt-bindings/clock/rk3228-cru.h | 12 +++++
+ 7 files changed, 95 insertions(+), 61 deletions(-)
+
