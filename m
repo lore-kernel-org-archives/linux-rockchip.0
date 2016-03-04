@@ -1,44 +1,81 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [GIT PULL] some more rockchip clock changes for 4.6
-Date: Fri, 4 Mar 2016 09:38:00 -0800
-Message-ID: <20160304173800.GG24999@codeaurora.org>
-References: <1510327.LAx2hyWq2l@diego>
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH 2/2] drm/rockchip: vop: Fix vop crtc cleanup
+Date: Fri,  4 Mar 2016 15:22:02 -0800
+Message-ID: <1457133723-24869-2-git-send-email-dianders@chromium.org>
+References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1510327.LAx2hyWq2l@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
+Cc: Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/04, Heiko Stuebner wrote:
-> Hi Mike, Stephen,
-> 
-> this pull request is based on the last tag 4.6 and I think the signed
-> tag below should explain that just right :-) .
-> So if nothing stands out, please pull.
-> 
-> 
-> Thanks
-> Heiko
-> 
-> The following changes since commit 36714529f8bbd4f8eaf93b50f4a64c52a24879aa:
-> 
->   clk: rockchip: convert manually created factor clocks to the new type (2016-02-04 15:54:20 +0100)
-> 
-> are available in the git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-clk2
-> 
-> for you to fetch changes up to 7af8a26ce7055dd74853ea7c2b9752961e3491da:
-> 
->   clk: rockchip: include downstream muxes into fractional dividers on rk3368 (2016-02-26 02:08:45 +0100)
-> 
-
-Thanks, pulled.
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+VGhpcyBmaXhlcyBhIGZldyBwcm9ibGVtcyBpbiB0aGUgdm9wIGNydGMgY2xlYW51cCAoaGFuZGxp
+bmcgZXJyb3IKcGF0aHMgYW5kIGNsZWFudXAgdXBvbiBleGl0KToKCiogVGhlIHZvcF9jcmVhdGVf
+Y3J0YygpIGVycm9yIHBhdGggaGFkIGFuIHVuc2FmZSB2ZXJzaW9uIG9mIHRoZQogIGl0ZXJhdG9y
+IHVzZWQgZm9yIGl0ZXJhdGluZyBvdmVyIGFsbCBwbGFuZXMgKHRob3VnaCBpdCB3YXMKICBkZXN0
+cm95aW5nIHBsYW5lcyBpbiB0aGUgaXRlcmF0b3Igc28gc2hvdWxkIGhhdmUgdXNlZCB0aGUgc2Fm
+ZQogIHZlcnNpb24pCgoqIHZvcF9kZXN0cm95X2NydGMoKSAtIHdhc24ndCBjYWxsaW5nIHZvcF9w
+bGFuZV9kZXN0cm95KCksIHdoaWNoIG1hZGUKICBzbHViX2RlYnVnIHVuaGFwcHksIGF0IGxlYXN0
+IGlmIHdlIGVuZGVkIHVwIHJ1bm5pbmcgdGhpcyBkdWUgdG8gYQogIGRlZmVycmVkIHByb2JlLgoK
+KiBJbiB2b3BfY3JlYXRlX2NydGMoKSBpZiB3ZSB3ZXJlIG1pc3NpbmcgdGhlICJwb3J0IiBkZXZp
+Y2UgdHJlZSBub2RlCiAgd2Ugd291bGQgZmFpbCBidXQgbm90IHJldHVybiBhbiBlcnJvciAoZm91
+bmQgYnkgY29kZSBpbnNwZWN0aW9uKS4KCkZpeCB0aGVzZSBwcm9ibGVtcy4KClNpZ25lZC1vZmYt
+Ynk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMjcgKysrKysrKysrKysrKysr
+KysrKysrKysrLS0tCiAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlv
+bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRl
+eCBmZDM3MDU0OGQ3ZDcuLmY4NmY3OTdmMTBmZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC0xMTA4LDcgKzExMDgsNyBAQCBzdGF0aWMgaW50IHZv
+cF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9wICp2b3ApCiAJY29uc3Qgc3RydWN0IHZvcF9kYXRhICp2
+b3BfZGF0YSA9IHZvcC0+ZGF0YTsKIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSB2b3AtPmRldjsKIAlz
+dHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiA9IHZvcC0+ZHJtX2RldjsKLQlzdHJ1Y3QgZHJtX3Bs
+YW5lICpwcmltYXJ5ID0gTlVMTCwgKmN1cnNvciA9IE5VTEwsICpwbGFuZTsKKwlzdHJ1Y3QgZHJt
+X3BsYW5lICpwcmltYXJ5ID0gTlVMTCwgKmN1cnNvciA9IE5VTEwsICpwbGFuZSwgKnRtcDsKIAlz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRjOwogCXN0cnVjdCBkZXZpY2Vfbm9kZSAq
+cG9ydDsKIAlpbnQgcmV0OwpAQCAtMTE0OCw3ICsxMTQ4LDcgQEAgc3RhdGljIGludCB2b3BfY3Jl
+YXRlX2NydGMoc3RydWN0IHZvcCAqdm9wKQogCXJldCA9IGRybV9jcnRjX2luaXRfd2l0aF9wbGFu
+ZXMoZHJtX2RldiwgY3J0YywgcHJpbWFyeSwgY3Vyc29yLAogCQkJCQkmdm9wX2NydGNfZnVuY3Ms
+IE5VTEwpOwogCWlmIChyZXQpCi0JCXJldHVybiByZXQ7CisJCWdvdG8gZXJyX2NsZWFudXBfcGxh
+bmVzOwogCiAJZHJtX2NydGNfaGVscGVyX2FkZChjcnRjLCAmdm9wX2NydGNfaGVscGVyX2Z1bmNz
+KTsKIApAQCAtMTE4MSw2ICsxMTgxLDcgQEAgc3RhdGljIGludCB2b3BfY3JlYXRlX2NydGMoc3Ry
+dWN0IHZvcCAqdm9wKQogCWlmICghcG9ydCkgewogCQlEUk1fRVJST1IoIm5vIHBvcnQgbm9kZSBm
+b3VuZCBpbiAlc1xuIiwKIAkJCSAgZGV2LT5vZl9ub2RlLT5mdWxsX25hbWUpOworCQlyZXQgPSAt
+RU5PRU5UOwogCQlnb3RvIGVycl9jbGVhbnVwX2NydGM7CiAJfQogCkBAIC0xMTk0LDcgKzExOTUs
+OCBAQCBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1Y3Qgdm9wICp2b3ApCiBlcnJfY2xl
+YW51cF9jcnRjOgogCWRybV9jcnRjX2NsZWFudXAoY3J0Yyk7CiBlcnJfY2xlYW51cF9wbGFuZXM6
+Ci0JbGlzdF9mb3JfZWFjaF9lbnRyeShwbGFuZSwgJmRybV9kZXYtPm1vZGVfY29uZmlnLnBsYW5l
+X2xpc3QsIGhlYWQpCisJbGlzdF9mb3JfZWFjaF9lbnRyeV9zYWZlKHBsYW5lLCB0bXAsICZkcm1f
+ZGV2LT5tb2RlX2NvbmZpZy5wbGFuZV9saXN0LAorCQkJCSBoZWFkKQogCQlkcm1fcGxhbmVfY2xl
+YW51cChwbGFuZSk7CiAJcmV0dXJuIHJldDsKIH0KQEAgLTEyMDIsOSArMTIwNCwyOCBAQCBlcnJf
+Y2xlYW51cF9wbGFuZXM6CiBzdGF0aWMgdm9pZCB2b3BfZGVzdHJveV9jcnRjKHN0cnVjdCB2b3Ag
+KnZvcCkKIHsKIAlzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSAmdm9wLT5jcnRjOworCXN0cnVjdCBk
+cm1fZGV2aWNlICpkcm1fZGV2ID0gdm9wLT5kcm1fZGV2OworCXN0cnVjdCBkcm1fcGxhbmUgKnBs
+YW5lLCAqdG1wOwogCiAJcm9ja2NoaXBfdW5yZWdpc3Rlcl9jcnRjX2Z1bmNzKGNydGMpOwogCW9m
+X25vZGVfcHV0KGNydGMtPnBvcnQpOworCisJLyoKKwkgKiBXZSBuZWVkIHRvIGNsZWFudXAgdGhl
+IHBsYW5lcyBub3cuICBXaHk/CisJICoKKwkgKiBUaGUgcGxhbmVzIGFyZSAiJnZvcC0+d2luW2ld
+LmJhc2UiLiAgVGhhdCBtZWFucyB0aGUgbWVtb3J5IGlzCisJICogYWxsIHBhcnQgb2YgdGhlIGJp
+ZyAic3RydWN0IHZvcCIgY2h1bmsgb2YgbWVtb3J5LiAgVGhhdCBtZW1vcnkKKwkgKiB3YXMgZGV2
+bSBhbGxvY2F0ZWQgYW5kIGFzc29jaWF0ZWQgd2l0aCB0aGlzIGNvbXBvbmVudC4gIFdlIG5lZWQg
+dG8KKwkgKiBmcmVlIGl0IG91cnNlbHZlcyBiZWZvcmUgdm9wX3VuYmluZCgpIGZpbmlzaGVzLgor
+CSAqLworCWxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZShwbGFuZSwgdG1wLCAmZHJtX2Rldi0+bW9k
+ZV9jb25maWcucGxhbmVfbGlzdCwKKwkJCQkgaGVhZCkKKwkJdm9wX3BsYW5lX2Rlc3Ryb3kocGxh
+bmUpOworCisJLyoKKwkgKiBEZXN0cm95IENSVEMgYWZ0ZXIgdm9wX3BsYW5lX2Rlc3Ryb3koKSBz
+aW5jZSB2b3BfZGlzYWJsZV9wbGFuZSgpCisJICogcmVmZXJlbmNlcyB0aGUgQ1JUQy4KKwkgKi8K
+IAlkcm1fY3J0Y19jbGVhbnVwKGNydGMpOwogfQogCi0tIAoyLjcuMC5yYzMuMjA3LmcwYWM1MzQ0
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
+ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
+aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
