@@ -1,69 +1,44 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2] drm/rockchip: vop: fix crtc size in plane check
-Date: Fri,  4 Mar 2016 11:04:03 +0000
-Message-ID: <1457089443-6069-1-git-send-email-john@metanate.com>
-References: <56D8DF39.8020104@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [GIT PULL] some more rockchip clock changes for 4.6
+Date: Fri, 4 Mar 2016 09:38:00 -0800
+Message-ID: <20160304173800.GG24999@codeaurora.org>
+References: <1510327.LAx2hyWq2l@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <56D8DF39.8020104@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1510327.LAx2hyWq2l@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SWYgdGhlIGdlb21ldHJ5IG9mIGEgY3J0YyBpcyBjaGFuZ2luZyBpbiBhbiBhdG9taWMgdXBkYXRl
-IHRoZW4gd2UgbXVzdAp2YWxpZGF0ZSB0aGUgcGxhbmUgc2l6ZSBhZ2FpbnN0IHRoZSBuZXcgc3Rh
-dGUgb2YgdGhlIGNydGMgYW5kIG5vdCB0aGUKY3VycmVudCBzaXplLCBvdGhlcndpc2UgaWYgdGhl
-IGNydGMgc2l6ZSBpcyBpbmNyZWFzaW5nIHRoZSBwbGFuZSB3aWxsIGJlCmNyb3BwZWQgYXQgdGhl
-IHByZXZpb3VzIHNpemUgYW5kIHdpbGwgbm90IGZpbGwgdGhlIHNjcmVlbi4KClNpZ25lZC1vZmYt
-Ynk6IEpvaG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQpPbiBGcmksIDA0IE1hciAy
-MDE2IDA5OjA0OjU3ICswODAwLCBNYXJrIHlhbyB3cm90ZToKPiBPbiAyMDE25bm0MDLmnIgyMuaX
-pSAyMDoyMiwgSm9obiBLZWVwaW5nIHdyb3RlOgo+ID4gSWYgdGhlIGdlb21ldHJ5IG9mIGEgY3J0
-YyBpcyBjaGFuZ2luZyBpbiBhbiBhdG9taWMgdXBkYXRlIHRoZW4gd2UgbXVjaCAgCj4gCj4gSSB0
-aGluayAid2UgbXVjaCB2YWxpZGF0ZSIgc2hvdWxkIGJlICJ3ZSBtdXN0IHZhbGlkYXRlIi46LSkK
-ClllcywgaGVyZSdzIHYyIHdpdGggdGhhdCBmaXhlZC4KCj4gPiB2YWxpZGF0ZSB0aGUgcGxhbmUg
-c2l6ZSBhZ2FpbnN0IHRoZSBuZXcgc3RhdGUgb2YgdGhlIGNydGMgYW5kIG5vdCB0aGUKPiA+IGN1
-cnJlbnQgc2l6ZSwgb3RoZXJ3aXNlIGlmIHRoZSBjcnRjIHNpemUgaXMgaW5jcmVhc2luZyB0aGUg
-cGxhbmUgd2lsbCBiZQo+ID4gY3JvcHBlZCBhdCB0aGUgcHJldmlvdXMgc2l6ZSBhbmQgd2lsbCBu
-b3QgZmlsbCB0aGUgc2NyZWVuLgoKIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMgfCAxNCArKysrKysrKy0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9u
-cygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYwppbmRleCBmZDM3MDU0Li44MmQ1NWJkIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTU0OSw2ICs1NDksNyBAQCBzdGF0aWMgaW50
-IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJCQkgICBz
-dHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpzdGF0ZSkKIHsKIAlzdHJ1Y3QgZHJtX2NydGMgKmNydGMg
-PSBzdGF0ZS0+Y3J0YzsKKwlzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKmNydGNfc3RhdGU7CiAJc3Ry
-dWN0IGRybV9mcmFtZWJ1ZmZlciAqZmIgPSBzdGF0ZS0+ZmI7CiAJc3RydWN0IHZvcF93aW4gKnZv
-cF93aW4gPSB0b192b3Bfd2luKHBsYW5lKTsKIAlzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICp2b3Bf
-cGxhbmVfc3RhdGUgPSB0b192b3BfcGxhbmVfc3RhdGUoc3RhdGUpOwpAQCAtNTYzLDEyICs1NjQs
-MTMgQEAgc3RhdGljIGludCB2b3BfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fcGxhbmUg
-KnBsYW5lLAogCWludCBtYXhfc2NhbGUgPSB3aW4tPnBoeS0+c2NsID8gRlJBQ18xNl8xNig4LCAx
-KSA6CiAJCQkJCURSTV9QTEFORV9IRUxQRVJfTk9fU0NBTElORzsKIAotCWNydGMgPSBjcnRjID8g
-Y3J0YyA6IHBsYW5lLT5zdGF0ZS0+Y3J0YzsKLQkvKgotCSAqIEJvdGggY3J0YyBvciBwbGFuZS0+
-c3RhdGUtPmNydGMgY2FuIGJlIG51bGwuCi0JICovCiAJaWYgKCFjcnRjIHx8ICFmYikKIAkJZ290
-byBvdXRfZGlzYWJsZTsKKworCWNydGNfc3RhdGUgPSBkcm1fYXRvbWljX2dldF9leGlzdGluZ19j
-cnRjX3N0YXRlKHN0YXRlLT5zdGF0ZSwgY3J0Yyk7CisJaWYgKFdBUk5fT04oIWNydGNfc3RhdGUp
-KQorCQlyZXR1cm4gLUVJTlZBTDsKKwogCXNyYy0+eDEgPSBzdGF0ZS0+c3JjX3g7CiAJc3JjLT55
-MSA9IHN0YXRlLT5zcmNfeTsKIAlzcmMtPngyID0gc3RhdGUtPnNyY194ICsgc3RhdGUtPnNyY193
-OwpAQCAtNTgwLDggKzU4Miw4IEBAIHN0YXRpYyBpbnQgdm9wX3BsYW5lX2F0b21pY19jaGVjayhz
-dHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAogCWNsaXAueDEgPSAwOwogCWNsaXAueTEgPSAwOwot
-CWNsaXAueDIgPSBjcnRjLT5tb2RlLmhkaXNwbGF5OwotCWNsaXAueTIgPSBjcnRjLT5tb2RlLnZk
-aXNwbGF5OworCWNsaXAueDIgPSBjcnRjX3N0YXRlLT5hZGp1c3RlZF9tb2RlLmhkaXNwbGF5Owor
-CWNsaXAueTIgPSBjcnRjX3N0YXRlLT5hZGp1c3RlZF9tb2RlLnZkaXNwbGF5OwogCiAJcmV0ID0g
-ZHJtX3BsYW5lX2hlbHBlcl9jaGVja191cGRhdGUocGxhbmUsIGNydGMsIHN0YXRlLT5mYiwKIAkJ
-CQkJICAgIHNyYywgZGVzdCwgJmNsaXAsCi0tIAoyLjcuMC4yMjYuZ2ZlOTg2ZmUKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 03/04, Heiko Stuebner wrote:
+> Hi Mike, Stephen,
+> 
+> this pull request is based on the last tag 4.6 and I think the signed
+> tag below should explain that just right :-) .
+> So if nothing stands out, please pull.
+> 
+> 
+> Thanks
+> Heiko
+> 
+> The following changes since commit 36714529f8bbd4f8eaf93b50f4a64c52a24879aa:
+> 
+>   clk: rockchip: convert manually created factor clocks to the new type (2016-02-04 15:54:20 +0100)
+> 
+> are available in the git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.6-rockchip-clk2
+> 
+> for you to fetch changes up to 7af8a26ce7055dd74853ea7c2b9752961e3491da:
+> 
+>   clk: rockchip: include downstream muxes into fractional dividers on rk3368 (2016-02-26 02:08:45 +0100)
+> 
+
+Thanks, pulled.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
