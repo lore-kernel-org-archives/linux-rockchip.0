@@ -1,58 +1,47 @@
-From: John Keeping <john@keeping.me.uk>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
 Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
  error path
-Date: Sat, 5 Mar 2016 12:11:16 +0000
-Message-ID: <20160305121005.GA11966@serenity.lan>
+Date: Sat, 5 Mar 2016 12:39:42 +0000
+Message-ID: <20160305123942.GE19428@n2100.arm.linux.org.uk>
 References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+ <20160305121005.GA11966@serenity.lan>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
 Content-Disposition: inline
-In-Reply-To: <1457133723-24869-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20160305121005.GA11966@serenity.lan>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@keeping.me.uk>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 04, 2016 at 03:22:01PM -0800, Douglas Anderson wrote:
-> The drm_encoder_cleanup() was missing both from the error path of
-> dw_hdmi_rockchip_bind().  This caused a crash when slub_debug was
-> enabled and we ended up deferring probe of HDMI at boot.
-> 
-> This call isn't needed from unbind() because if dw_hdmi_bind() returns
-> no error then it takes over the job of freeing the encoder (in
-> dw_hdmi_unbind).
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-
-Does dw_hdmi-imx need a similar change?  I wonder if it would be cleaner
-to push this into dw_hdmi_bind() if it affects all of the platforms..
-
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index 3d3cf2f8891e..88776aba984e 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -293,7 +293,16 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
->  	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
->  			 DRM_MODE_ENCODER_TMDS, NULL);
->  
-> -	return dw_hdmi_bind(dev, master, data, encoder, iores, irq, plat_data);
-> +	ret = dw_hdmi_bind(dev, master, data, encoder, iores, irq, plat_data);
-> +
-> +	/*
-> +	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
-> +	 * which would have called the encoder cleanup.  Do it manually.
-> +	 */
-> +	if (ret)
-> +		drm_encoder_cleanup(encoder);
-> +
-> +	return ret;
->  }
->  
->  static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
-> -- 
-> 2.7.0.rc3.207.g0ac5344
+T24gU2F0LCBNYXIgMDUsIDIwMTYgYXQgMTI6MTE6MTZQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
+b3RlOgo+IE9uIEZyaSwgTWFyIDA0LCAyMDE2IGF0IDAzOjIyOjAxUE0gLTA4MDAsIERvdWdsYXMg
+QW5kZXJzb24gd3JvdGU6Cj4gPiBUaGUgZHJtX2VuY29kZXJfY2xlYW51cCgpIHdhcyBtaXNzaW5n
+IGJvdGggZnJvbSB0aGUgZXJyb3IgcGF0aCBvZgo+ID4gZHdfaGRtaV9yb2NrY2hpcF9iaW5kKCku
+ICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdoZW4gc2x1Yl9kZWJ1ZyB3YXMKPiA+IGVuYWJsZWQgYW5k
+IHdlIGVuZGVkIHVwIGRlZmVycmluZyBwcm9iZSBvZiBIRE1JIGF0IGJvb3QuCj4gPiAKPiA+IFRo
+aXMgY2FsbCBpc24ndCBuZWVkZWQgZnJvbSB1bmJpbmQoKSBiZWNhdXNlIGlmIGR3X2hkbWlfYmlu
+ZCgpIHJldHVybnMKPiA+IG5vIGVycm9yIHRoZW4gaXQgdGFrZXMgb3ZlciB0aGUgam9iIG9mIGZy
+ZWVpbmcgdGhlIGVuY29kZXIgKGluCj4gPiBkd19oZG1pX3VuYmluZCkuCj4gPiAKPiA+IFNpZ25l
+ZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiA+IC0t
+LQo+IAo+IERvZXMgZHdfaGRtaS1pbXggbmVlZCBhIHNpbWlsYXIgY2hhbmdlPyAgSSB3b25kZXIg
+aWYgaXQgd291bGQgYmUgY2xlYW5lcgo+IHRvIHB1c2ggdGhpcyBpbnRvIGR3X2hkbWlfYmluZCgp
+IGlmIGl0IGFmZmVjdHMgYWxsIG9mIHRoZSBwbGF0Zm9ybXMuLgoKSSBkb24ndCB0aGluayBtb3Zp
+bmcgaXQgdGhlcmUgd291bGQgbWFrZSBzZW5zZSAtIGtlZXAgdGhlIGluaXRpYWxpc2F0aW9uCmFu
+ZCBjbGVhbnVwIHRvZ2V0aGVyIGluIHRoZSBzYW1lIGZpbGUgc28gdGhhdCBpdCdzIGNvbnRhaW5l
+ZCB0b2dldGhlci4KCi0tIApSTUsncyBQYXRjaCBzeXN0ZW06IGh0dHA6Ly93d3cuYXJtLmxpbnV4
+Lm9yZy51ay9kZXZlbG9wZXIvcGF0Y2hlcy8KRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGlu
+ZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVl
+ZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
