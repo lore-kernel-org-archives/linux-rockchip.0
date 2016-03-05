@@ -1,50 +1,37 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
- error path
-Date: Fri,  4 Mar 2016 15:22:01 -0800
-Message-ID: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: add bindings for spdif
+	controller
+Date: Fri, 4 Mar 2016 22:30:35 -0600
+Message-ID: <20160305043035.GF13525@rob-hp-laptop>
+References: <1457087514-1837-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>
-Cc: Douglas Anderson <dianders@chromium.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <1457087514-1837-1-git-send-email-sugar.zhang@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, broonie@kernel.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhlIGRybV9lbmNvZGVyX2NsZWFudXAoKSB3YXMgbWlzc2luZyBib3RoIGZyb20gdGhlIGVycm9y
-IHBhdGggb2YKZHdfaGRtaV9yb2NrY2hpcF9iaW5kKCkuICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdo
-ZW4gc2x1Yl9kZWJ1ZyB3YXMKZW5hYmxlZCBhbmQgd2UgZW5kZWQgdXAgZGVmZXJyaW5nIHByb2Jl
-IG9mIEhETUkgYXQgYm9vdC4KClRoaXMgY2FsbCBpc24ndCBuZWVkZWQgZnJvbSB1bmJpbmQoKSBi
-ZWNhdXNlIGlmIGR3X2hkbWlfYmluZCgpIHJldHVybnMKbm8gZXJyb3IgdGhlbiBpdCB0YWtlcyBv
-dmVyIHRoZSBqb2Igb2YgZnJlZWluZyB0aGUgZW5jb2RlciAoaW4KZHdfaGRtaV91bmJpbmQpLgoK
-U2lnbmVkLW9mZi1ieTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgot
-LS0KIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgfCAxMSArKysr
-KysrKysrLQogMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkK
-CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5j
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwppbmRleCAzZDNj
-ZjJmODg5MWUuLjg4Nzc2YWJhOTg0ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3X2hkbWktcm9ja2NoaXAuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdf
-aGRtaS1yb2NrY2hpcC5jCkBAIC0yOTMsNyArMjkzLDE2IEBAIHN0YXRpYyBpbnQgZHdfaGRtaV9y
-b2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLAog
-CWRybV9lbmNvZGVyX2luaXQoZHJtLCBlbmNvZGVyLCAmZHdfaGRtaV9yb2NrY2hpcF9lbmNvZGVy
-X2Z1bmNzLAogCQkJIERSTV9NT0RFX0VOQ09ERVJfVE1EUywgTlVMTCk7CiAKLQlyZXR1cm4gZHdf
-aGRtaV9iaW5kKGRldiwgbWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBpb3JlcywgaXJxLCBwbGF0X2Rh
-dGEpOworCXJldCA9IGR3X2hkbWlfYmluZChkZXYsIG1hc3RlciwgZGF0YSwgZW5jb2RlciwgaW9y
-ZXMsIGlycSwgcGxhdF9kYXRhKTsKKworCS8qCisJICogSWYgZHdfaGRtaV9iaW5kKCkgZmFpbHMg
-d2UnbGwgbmV2ZXIgY2FsbCBkd19oZG1pX3VuYmluZCgpLAorCSAqIHdoaWNoIHdvdWxkIGhhdmUg
-Y2FsbGVkIHRoZSBlbmNvZGVyIGNsZWFudXAuICBEbyBpdCBtYW51YWxseS4KKwkgKi8KKwlpZiAo
-cmV0KQorCQlkcm1fZW5jb2Rlcl9jbGVhbnVwKGVuY29kZXIpOworCisJcmV0dXJuIHJldDsKIH0K
-IAogc3RhdGljIHZvaWQgZHdfaGRtaV9yb2NrY2hpcF91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2
-LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCi0tIAoyLjcuMC5yYzMuMjA3LmcwYWM1MzQ0CgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Fri, Mar 04, 2016 at 06:31:54PM +0800, Sugar Zhang wrote:
+> this patch add compatible for rk3366/rk3368/rk3399 spdif,
+> these three spdifs share the same type.
+> 
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> ---
+> 
+>  Documentation/devicetree/bindings/sound/rockchip-spdif.txt |  8 ++++++--
+>  sound/soc/rockchip/rockchip_spdif.c                        | 13 ++++++++++---
+>  2 files changed, 16 insertions(+), 5 deletions(-)
+
+Acked-by: Rob Herring <robh@kernel.org>
