@@ -1,47 +1,59 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
- error path
-Date: Sat, 5 Mar 2016 12:39:42 +0000
-Message-ID: <20160305123942.GE19428@n2100.arm.linux.org.uk>
-References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
- <20160305121005.GA11966@serenity.lan>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] spi/rockchip: Make sure spi clk is on in
+ rockchip_spi_set_cs
+Date: Sat, 5 Mar 2016 13:45:31 +0900
+Message-ID: <20160305044531.GB18327@sirena.org.uk>
+References: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
+ <56CD8F85.2090204@rock-chips.com>
+ <20160226015829.GC18327@sirena.org.uk>
+ <56CFB916.5010403@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="YTJxIO/azM2K2lD0"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20160305121005.GA11966@serenity.lan>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: John Keeping <john@keeping.me.uk>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <56CFB916.5010403-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "shawn.lin" <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCBNYXIgMDUsIDIwMTYgYXQgMTI6MTE6MTZQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdy
-b3RlOgo+IE9uIEZyaSwgTWFyIDA0LCAyMDE2IGF0IDAzOjIyOjAxUE0gLTA4MDAsIERvdWdsYXMg
-QW5kZXJzb24gd3JvdGU6Cj4gPiBUaGUgZHJtX2VuY29kZXJfY2xlYW51cCgpIHdhcyBtaXNzaW5n
-IGJvdGggZnJvbSB0aGUgZXJyb3IgcGF0aCBvZgo+ID4gZHdfaGRtaV9yb2NrY2hpcF9iaW5kKCku
-ICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdoZW4gc2x1Yl9kZWJ1ZyB3YXMKPiA+IGVuYWJsZWQgYW5k
-IHdlIGVuZGVkIHVwIGRlZmVycmluZyBwcm9iZSBvZiBIRE1JIGF0IGJvb3QuCj4gPiAKPiA+IFRo
-aXMgY2FsbCBpc24ndCBuZWVkZWQgZnJvbSB1bmJpbmQoKSBiZWNhdXNlIGlmIGR3X2hkbWlfYmlu
-ZCgpIHJldHVybnMKPiA+IG5vIGVycm9yIHRoZW4gaXQgdGFrZXMgb3ZlciB0aGUgam9iIG9mIGZy
-ZWVpbmcgdGhlIGVuY29kZXIgKGluCj4gPiBkd19oZG1pX3VuYmluZCkuCj4gPiAKPiA+IFNpZ25l
-ZC1vZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4KPiA+IC0t
-LQo+IAo+IERvZXMgZHdfaGRtaS1pbXggbmVlZCBhIHNpbWlsYXIgY2hhbmdlPyAgSSB3b25kZXIg
-aWYgaXQgd291bGQgYmUgY2xlYW5lcgo+IHRvIHB1c2ggdGhpcyBpbnRvIGR3X2hkbWlfYmluZCgp
-IGlmIGl0IGFmZmVjdHMgYWxsIG9mIHRoZSBwbGF0Zm9ybXMuLgoKSSBkb24ndCB0aGluayBtb3Zp
-bmcgaXQgdGhlcmUgd291bGQgbWFrZSBzZW5zZSAtIGtlZXAgdGhlIGluaXRpYWxpc2F0aW9uCmFu
-ZCBjbGVhbnVwIHRvZ2V0aGVyIGluIHRoZSBzYW1lIGZpbGUgc28gdGhhdCBpdCdzIGNvbnRhaW5l
-ZCB0b2dldGhlci4KCi0tIApSTUsncyBQYXRjaCBzeXN0ZW06IGh0dHA6Ly93d3cuYXJtLmxpbnV4
-Lm9yZy51ay9kZXZlbG9wZXIvcGF0Y2hlcy8KRlRUQyBicm9hZGJhbmQgZm9yIDAuOG1pbGUgbGlu
-ZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBrYnBzIHVwCmFjY29yZGluZyB0byBzcGVl
-ZHRlc3QubmV0LgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
-aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--YTJxIO/azM2K2lD0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Feb 26, 2016 at 10:31:50AM +0800, Huang, Tao wrote:
+
+> You misunderstand me. I talk about spi_setup, as
+> Documentation/spi/spi-summary, which would normally be called from
+> probe() before the first I/O is done to the device.
+> spi_setup will call spi_set_cs(spi, false), which introduced with commit
+> 1a7b7ee72c21 ("spi: Ensure that CS line is in non-active state after
+> spi_setup()"). And spi_set_cs will call spi->master->set_cs, and set_cs
+> callback will access register. Without clk enable, I believe some
+> drivers will failed to run.
+
+That's definitely very driver specific, a large proportion of devices
+don't manage their chip selects via the SPI controller at all.
+
+--YTJxIO/azM2K2lD0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJW2mRqAAoJECTWi3JdVIfQZt8H+gOI5ydHv+WUOYUgx906u8ur
+jSrNy4ntmcmu/rma0sMnm5XplfSjfcjpyZAf1drVRii0K6jWsyuriMXimS2J2kPc
+ZHYyEg9E/tbMcLB0xvo855YUIRz269QK0cX0j0VbA5qnikyNfBogqLCaVPK/Hgx4
+gXDL4ye0c/vIIRExgWjIUezBIwsQP5tKlccsS516WxvNk3SQFnn+ZtgLXNSVlKh2
+cWiF1gg80fncvS4IsQbv3PyTNg7ws8woYZv39df/ksYnNrGMSwWUz3u/9uvq75/w
+S4xT9agud1xWzlWeoZ/RyW8/jD+gjjaQytaAC9lY7u141Uuho9S1dEVk48SHo3o=
+=ZuRK
+-----END PGP SIGNATURE-----
+
+--YTJxIO/azM2K2lD0--
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
