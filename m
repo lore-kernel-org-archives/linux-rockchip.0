@@ -1,37 +1,69 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH] ASoC: rockchip: add bindings for spdif
-	controller
-Date: Fri, 4 Mar 2016 22:30:35 -0600
-Message-ID: <20160305043035.GF13525@rob-hp-laptop>
-References: <1457087514-1837-1-git-send-email-sugar.zhang@rock-chips.com>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] serial: core: remove baud_rates when serial console
+ setup
+Date: Sat, 5 Mar 2016 18:21:51 +0800
+Message-ID: <56DAB33F.50802@gmail.com>
+References: <1451894086-20435-1-git-send-email-jeffy.chen@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Disposition: inline
-In-Reply-To: <1457087514-1837-1-git-send-email-sugar.zhang@rock-chips.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, broonie@kernel.org, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1451894086-20435-1-git-send-email-jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jeffy Chen <jeffy.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jslaby-IBi9RG/b67k@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Mar 04, 2016 at 06:31:54PM +0800, Sugar Zhang wrote:
-> this patch add compatible for rk3366/rk3368/rk3399 spdif,
-> these three spdifs share the same type.
-> 
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> ---
-> 
->  Documentation/devicetree/bindings/sound/rockchip-spdif.txt |  8 ++++++--
->  sound/soc/rockchip/rockchip_spdif.c                        | 13 ++++++++++---
->  2 files changed, 16 insertions(+), 5 deletions(-)
-
-Acked-by: Rob Herring <robh@kernel.org>
+SGksCgpJIGRvbid0IHNlZSB0aGlzIHBhdGNoIGluIG1haW5saW5lLjotKApTb3JyeSBmb3Igbm9p
+c2UgaWYgdGhpcyBwYXRjaCBoYXMgYXBwbGllZCBieSBHcmVnLgoK5ZyoIDIwMTblubQwMeaciDA0
+5pelIDE1OjU0LCBKZWZmeSBDaGVuIOWGmemBkzoKPiBDdXJyZW50bHksIHdoZW4gdHJpbmcgdG8g
+c2V0IHVwIGEgc2VyaWFsIGNvbnNvbGUgd2l0aCBhIGhpZ2hlcgo+IGJhdWQgcmF0ZSwgaXQgd291
+bGQgZmFsbGJhY2sgdG8gOTIxNjAwLgo+Cj4gVGVzdGVkLWJ5OiBKaWFucXVuIFh1IDxqYXkueHVA
+cm9jay1jaGlwcy5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSmVmZnkgQ2hlbiA8amVmZnkuY2hlbkBy
+b2NrLWNoaXBzLmNvbT4KClZlcmlmaWVkIG9uIFJLMzIyOC9SSzMyMjkgU29Dcy4KVGVzdGVkLWJ5
+OiBDYWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPgoKCj4KPiAtLS0KPgo+IENoYW5nZXMg
+aW4gdjI6Cj4gcmVtb3ZlIGJhdWRfcmF0ZXMgYXMgQWxhbidzIHN1Z2dlc3Rpb24uCj4KPiAgIGRy
+aXZlcnMvdHR5L3NlcmlhbC9zZXJpYWxfY29yZS5jIHwgMzMgKystLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAzMSBkZWxl
+dGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3R0eS9zZXJpYWwvc2VyaWFsX2NvcmUu
+YyBiL2RyaXZlcnMvdHR5L3NlcmlhbC9zZXJpYWxfY29yZS5jCj4gaW5kZXggZGVmNTE5OS4uMTUw
+NTQ3YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3R0eS9zZXJpYWwvc2VyaWFsX2NvcmUuYwo+ICsr
+KyBiL2RyaXZlcnMvdHR5L3NlcmlhbC9zZXJpYWxfY29yZS5jCj4gQEAgLTE4OTIsMjYgKzE4OTIs
+NiBAQCB1YXJ0X3BhcnNlX29wdGlvbnMoY2hhciAqb3B0aW9ucywgaW50ICpiYXVkLCBpbnQgKnBh
+cml0eSwgaW50ICpiaXRzLCBpbnQgKmZsb3cpCj4gICB9Cj4gICBFWFBPUlRfU1lNQk9MX0dQTCh1
+YXJ0X3BhcnNlX29wdGlvbnMpOwo+ICAgCj4gLXN0cnVjdCBiYXVkX3JhdGVzIHsKPiAtCXVuc2ln
+bmVkIGludCByYXRlOwo+IC0JdW5zaWduZWQgaW50IGNmbGFnOwo+IC19Owo+IC0KPiAtc3RhdGlj
+IGNvbnN0IHN0cnVjdCBiYXVkX3JhdGVzIGJhdWRfcmF0ZXNbXSA9IHsKPiAtCXsgOTIxNjAwLCBC
+OTIxNjAwIH0sCj4gLQl7IDQ2MDgwMCwgQjQ2MDgwMCB9LAo+IC0JeyAyMzA0MDAsIEIyMzA0MDAg
+fSwKPiAtCXsgMTE1MjAwLCBCMTE1MjAwIH0sCj4gLQl7ICA1NzYwMCwgQjU3NjAwICB9LAo+IC0J
+eyAgMzg0MDAsIEIzODQwMCAgfSwKPiAtCXsgIDE5MjAwLCBCMTkyMDAgIH0sCj4gLQl7ICAgOTYw
+MCwgQjk2MDAgICB9LAo+IC0JeyAgIDQ4MDAsIEI0ODAwICAgfSwKPiAtCXsgICAyNDAwLCBCMjQw
+MCAgIH0sCj4gLQl7ICAgMTIwMCwgQjEyMDAgICB9LAo+IC0JeyAgICAgIDAsIEIzODQwMCAgfQo+
+IC19Owo+IC0KPiAgIC8qKgo+ICAgICoJdWFydF9zZXRfb3B0aW9ucyAtIHNldHVwIHRoZSBzZXJp
+YWwgY29uc29sZSBwYXJhbWV0ZXJzCj4gICAgKglAcG9ydDogcG9pbnRlciB0byB0aGUgc2VyaWFs
+IHBvcnRzIHVhcnRfcG9ydCBzdHJ1Y3R1cmUKPiBAQCAtMTkyNyw3ICsxOTA3LDYgQEAgdWFydF9z
+ZXRfb3B0aW9ucyhzdHJ1Y3QgdWFydF9wb3J0ICpwb3J0LCBzdHJ1Y3QgY29uc29sZSAqY28sCj4g
+ICB7Cj4gICAJc3RydWN0IGt0ZXJtaW9zIHRlcm1pb3M7Cj4gICAJc3RhdGljIHN0cnVjdCBrdGVy
+bWlvcyBkdW1teTsKPiAtCWludCBpOwo+ICAgCj4gICAJLyoKPiAgIAkgKiBFbnN1cmUgdGhhdCB0
+aGUgc2VyaWFsIGNvbnNvbGUgbG9jayBpcyBpbml0aWFsaXNlZAo+IEBAIC0xOTQyLDE2ICsxOTIx
+LDggQEAgdWFydF9zZXRfb3B0aW9ucyhzdHJ1Y3QgdWFydF9wb3J0ICpwb3J0LCBzdHJ1Y3QgY29u
+c29sZSAqY28sCj4gICAKPiAgIAltZW1zZXQoJnRlcm1pb3MsIDAsIHNpemVvZihzdHJ1Y3Qga3Rl
+cm1pb3MpKTsKPiAgIAo+IC0JdGVybWlvcy5jX2NmbGFnID0gQ1JFQUQgfCBIVVBDTCB8IENMT0NB
+TDsKPiAtCj4gLQkvKgo+IC0JICogQ29uc3RydWN0IGEgY2ZsYWcgc2V0dGluZy4KPiAtCSAqLwo+
+IC0JZm9yIChpID0gMDsgYmF1ZF9yYXRlc1tpXS5yYXRlOyBpKyspCj4gLQkJaWYgKGJhdWRfcmF0
+ZXNbaV0ucmF0ZSA8PSBiYXVkKQo+IC0JCQlicmVhazsKPiAtCj4gLQl0ZXJtaW9zLmNfY2ZsYWcg
+fD0gYmF1ZF9yYXRlc1tpXS5jZmxhZzsKPiArCXRlcm1pb3MuY19jZmxhZyB8PSBDUkVBRCB8IEhV
+UENMIHwgQ0xPQ0FMOwo+ICsJdHR5X3Rlcm1pb3NfZW5jb2RlX2JhdWRfcmF0ZSgmdGVybWlvcywg
+YmF1ZCwgYmF1ZCk7Cj4gICAKPiAgIAlpZiAoYml0cyA9PSA3KQo+ICAgCQl0ZXJtaW9zLmNfY2Zs
+YWcgfD0gQ1M3OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
