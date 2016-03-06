@@ -1,38 +1,54 @@
-From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] spi/rockchip: fix endian mode for 16-bit transfers
-Date: Sun,  6 Mar 2016 13:04:17 +0300
-Message-ID: <1457258657-19154-1-git-send-email-al.kochet@gmail.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: [PATCH v3 2/8] Documentation: devicetree: rockchip: Document GeekBox
+Date: Sun,  6 Mar 2016 20:53:51 +0100
+Message-ID: <1457294038-14243-3-git-send-email-afaerber@suse.de>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1457294038-14243-1-git-send-email-afaerber-l3A5Bk7waGM@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED
+	DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Rockchip SoC
+	support" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-16-bit transfers must be in big endian mode on wire.
+Use "geekbuying,geekbox" compatible string.
 
-Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
 ---
- drivers/spi/spi-rockchip.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ v2 -> v3: Unchanged
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index aa9561f..ef77df7 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -510,7 +510,8 @@ static void rockchip_spi_config(struct rockchip_spi *rs)
- 	int rsd = 0;
- 
- 	u32 cr0 = (CR0_BHT_8BIT << CR0_BHT_OFFSET)
--		| (CR0_SSD_ONE << CR0_SSD_OFFSET);
-+		| (CR0_SSD_ONE << CR0_SSD_OFFSET)
-+		| (CR0_EM_BIG << CR0_EM_OFFSET);
- 
- 	cr0 |= (rs->n_bytes << CR0_DFS_OFFSET);
- 	cr0 |= ((rs->mode & 0x3) << CR0_SCPH_OFFSET);
--- 
-1.7.9.5
+ v2: New (Heiko)
+=20
+ Documentation/devicetree/bindings/arm/rockchip.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.txt b/Docum=
+entation/devicetree/bindings/arm/rockchip.txt
+index 078c14fcdaaa..f633595b196c 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.txt
++++ b/Documentation/devicetree/bindings/arm/rockchip.txt
+@@ -87,6 +87,10 @@ Rockchip platforms device tree bindings
+ 		     "google,veyron-speedy-rev3", "google,veyron-speedy-rev2",
+ 		     "google,veyron-speedy", "google,veyron", "rockchip,rk3288";
+=20
++- GeekBuying GeekBox:
++    Required root node properties:
++      - compatible =3D "geekbuying,geekbox", "rockchip,rk3368";
++
+ - Rockchip RK3368 evb:
+     Required root node properties:
+       - compatible =3D "rockchip,rk3368-evb-act8846", "rockchip,rk3368=
+";
+--=20
+2.6.2
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
