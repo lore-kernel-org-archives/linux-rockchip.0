@@ -1,58 +1,37 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] spi/rockchip: Make sure spi clk is on in
- rockchip_spi_set_cs
-Date: Sat, 5 Mar 2016 13:45:31 +0900
-Message-ID: <20160305044531.GB18327@sirena.org.uk>
-References: <1456308004-29102-1-git-send-email-huibin.hong@rock-chips.com>
- <56CD8F85.2090204@rock-chips.com>
- <20160226015829.GC18327@sirena.org.uk>
- <56CFB916.5010403@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="YTJxIO/azM2K2lD0"
+From: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] spi/rockchip: fix endian mode for 16-bit transfers
+Date: Sun,  6 Mar 2016 13:04:17 +0300
+Message-ID: <1457258657-19154-1-git-send-email-al.kochet@gmail.com>
 Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <56CFB916.5010403-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Huibin Hong <huibin.hong-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "shawn.lin" <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Addy Ke <addy.ke-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+16-bit transfers must be in big endian mode on wire.
 
---YTJxIO/azM2K2lD0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/spi/spi-rockchip.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On Fri, Feb 26, 2016 at 10:31:50AM +0800, Huang, Tao wrote:
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index aa9561f..ef77df7 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -510,7 +510,8 @@ static void rockchip_spi_config(struct rockchip_spi *rs)
+ 	int rsd = 0;
+ 
+ 	u32 cr0 = (CR0_BHT_8BIT << CR0_BHT_OFFSET)
+-		| (CR0_SSD_ONE << CR0_SSD_OFFSET);
++		| (CR0_SSD_ONE << CR0_SSD_OFFSET)
++		| (CR0_EM_BIG << CR0_EM_OFFSET);
+ 
+ 	cr0 |= (rs->n_bytes << CR0_DFS_OFFSET);
+ 	cr0 |= ((rs->mode & 0x3) << CR0_SCPH_OFFSET);
+-- 
+1.7.9.5
 
-> You misunderstand me. I talk about spi_setup, as
-> Documentation/spi/spi-summary, which would normally be called from
-> probe() before the first I/O is done to the device.
-> spi_setup will call spi_set_cs(spi, false), which introduced with commit
-> 1a7b7ee72c21 ("spi: Ensure that CS line is in non-active state after
-> spi_setup()"). And spi_set_cs will call spi->master->set_cs, and set_cs
-> callback will access register. Without clk enable, I believe some
-> drivers will failed to run.
-
-That's definitely very driver specific, a large proportion of devices
-don't manage their chip selects via the SPI controller at all.
-
---YTJxIO/azM2K2lD0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJW2mRqAAoJECTWi3JdVIfQZt8H+gOI5ydHv+WUOYUgx906u8ur
-jSrNy4ntmcmu/rma0sMnm5XplfSjfcjpyZAf1drVRii0K6jWsyuriMXimS2J2kPc
-ZHYyEg9E/tbMcLB0xvo855YUIRz269QK0cX0j0VbA5qnikyNfBogqLCaVPK/Hgx4
-gXDL4ye0c/vIIRExgWjIUezBIwsQP5tKlccsS516WxvNk3SQFnn+ZtgLXNSVlKh2
-cWiF1gg80fncvS4IsQbv3PyTNg7ws8woYZv39df/ksYnNrGMSwWUz3u/9uvq75/w
-S4xT9agud1xWzlWeoZ/RyW8/jD+gjjaQytaAC9lY7u141Uuho9S1dEVk48SHo3o=
-=ZuRK
------END PGP SIGNATURE-----
-
---YTJxIO/azM2K2lD0--
 --
 To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
