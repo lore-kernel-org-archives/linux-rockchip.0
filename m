@@ -1,108 +1,87 @@
-From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
 Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Mon, 7 Mar 2016 16:09:24 +0100
-Message-ID: <56DD99A4.5030004@st.com>
+Date: Mon, 7 Mar 2016 16:46:52 +0100
+Message-ID: <56DDA26C.3050301@suse.de>
 References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
  <56DD7172.4000707@suse.de> <2714888.1DdqvJZ8cb@diego>
  <56DD7593.5060003@suse.de> <56DD8176.2080603@st.com>
- <56DD8FBE.9010200@suse.de>
+ <56DD8FBE.9010200@suse.de> <56DD99A4.5030004@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56DD8FBE.9010200-l3A5Bk7waGM@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?windows-1252?Q?Andreas_F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?windows-1252?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <56DD99A4.5030004@st.com>
+Sender: netdev-owner@vger.kernel.org
+To: Giuseppe CAVALLARO <peppe.cavallaro@st.com>
+Cc: Gabriel Fernandez <gabriel.fernandez@linaro.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, devicetree@vger.kernel.org, LAKML <linux-arm-kernel@lists.infradead.org>, Alexandre TORGUE <alexandre.torgue@st.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Andreas
+Hi Peppe,
 
-On 3/7/2016 3:27 PM, Andreas F=E4rber wrote:
-> Hello Giuseppe,
->
-> Am 07.03.2016 um 14:26 schrieb Giuseppe CAVALLARO:
->> On 3/7/2016 1:35 PM, Andreas F=E4rber wrote:
->>> Am 07.03.2016 um 13:24 schrieb Heiko St=FCbner:
->>>> Am Montag, 7. M=E4rz 2016, 13:17:54 schrieb Andreas F=E4rber:
->>>>> Am 06.03.2016 um 20:53 schrieb Andreas F=E4rber:
->>>>>> On next-20160304 the GMAC seems to have regressed, it no longer
->>>>>> finds the
->>>>>> PHY:
->>>>>>
->>>>>> libphy: PHY stmmac-0:ffffffff not found
->>
->> snps,phy-addr is not correct. Can you check it?
->
-> It was never set:
->
-> https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/tree/arc=
-h/arm64/boot/dts/rockchip/rk3368.dtsi#n436
->
-> https://github.com/afaerber/linux/blob/96c5b5fd395fee5713755e93e677fb011c=
-b9ddc0/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts#L114
->
->> In the stmmac_mdio if this is not passed as parameter the bus should
->> be scanned and the first IDs found should select the right address.
->> I suppose in your box there is a real transceiver, so maybe the patch
->> from Gabriel is not actually necessary.
->
-> On the GeekBox module there's an RTL8211E phy.
->
-> Indeed, reverting Gabriel's commit fixes the observed error messages:
->
-> rk_gmac-dwmac ff290000.ethernet eth0: Link is Up - 1Gbps/Full - flow
-> control rx/tx
+Am 07.03.2016 um 16:09 schrieb Giuseppe CAVALLARO:
+> On 3/7/2016 3:27 PM, Andreas F=E4rber wrote:
+>> Indeed, reverting Gabriel's commit fixes the observed error messages
+[...]
+>> However, I am unable to ping any hosts on the network now.
+>=20
+> hmm, this could be another problem. I wonder if you can
+> check which recent patch is introducing the problem on ARM64.
+> For example if this depends on Oct_2015 update.
 
-so this means that the phy is found and the link auto-negotiated.
+I've had success reverting drivers/net/ethernet/stmicro/ up to and
+including "stmmac: first frame prep at the end of xmit routine", i.e.
+top 7 commits.
 
-Gabriel, it sounds that the patch solved a regression you found on
-a configuration where the MAC dialogs with a switch but it breaks the
-setup with use a std transceiver.
+http://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/=
+drivers/net/ethernet/stmicro?id=3D0e80bdc9a72df3b31a9fc2012102a6cc8d664=
+e93
 
-> http://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/dr=
-ivers/net/ethernet/stmicro?id=3D88f8b1bb41c6208f81b6a480244533ded7b59493
->
-> However, I am unable to ping any hosts on the network now.
+> If you share some logs to me I can take a look at them.
+> Then we can try to check if the problem in on rx or tx path.
+> I also ask you yo check the axi settings.
 
-hmm, this could be another problem. I wonder if you can
-check which recent patch is introducing the problem on ARM64.
-For example if this depends on Oct_2015 update.
+On the reverted (good) branch I see in dmesg:
 
-If you share some logs to me I can take a look at them.
-Then we can try to check if the problem in on rx or tx path.
-I also ask you yo check the axi settings.
+[  +0.001100] rk_gmac-dwmac ff290000.ethernet: Looking up phy-supply
+from device tree
+[  +0.000030] rk808 0-001b: Looking up vcc12-supply from device tree
+[  +0.000013] vcc_lan: supplied by vcc_io
+[  +0.000120] rk_gmac-dwmac ff290000.ethernet: clock input or output?
+(input).
+[  +0.000010] rk_gmac-dwmac ff290000.ethernet: TX delay(0x30).
+[  +0.000007] rk_gmac-dwmac ff290000.ethernet: RX delay(0x10).
+[  +0.000014] rk_gmac-dwmac ff290000.ethernet: init for RGMII
+[  +0.000104] rk_gmac-dwmac ff290000.ethernet: clock input from PHY
+[  +0.005099] rk_gmac-dwmac ff290000.ethernet: no reset control found
+[  +0.000007] stmmac - user ID: 0x10, Synopsys ID: 0x35
+[  +0.000002]  Ring mode enabled
+[  +0.000006]  DMA HW capability register supported
+[  +0.000000]  Normal descriptors
+[  +0.000004]  RX Checksum Offload Engine supported (type 2)
+[  +0.000002]  TX Checksum insertion supported
+[  +0.000002]  Wake-Up On Lan supported
+[  +0.000052]  Enable RX Mitigation via HW Watchdog Timer
+[  +0.000683] rk_gmac-dwmac ff290000.ethernet eth0: No MDIO subnode fou=
+nd
+[  +0.000124] of_get_named_gpiod_flags: can't parse 'snps,reset-gpio'
+property of node '/ethernet@ff290000[0]'
+[  +0.004219] libphy: stmmac: probed
+[  +0.000010] eth0: PHY ID 001cc915 at 0 IRQ POLL (stmmac-0:00) active
+[  +0.000005] eth0: PHY ID 001cc915 at 1 IRQ POLL (stmmac-0:01)
 
-Let me know
+[  +0.881011] eth0: device MAC address 4a:78:dd:10:b3:17
+[  +4.003065] rk_gmac-dwmac ff290000.ethernet eth0: Link is Up -
+1Gbps/Full - flow control rx/tx
 
-Regards
-peppe
+The MAC address is random, changing each time. Otherwise there's no log
+difference I spot to the pre-Gabriel broken state.
 
->
-> Regards,
-> Andreas
->
->>>>>> eth0: Could not attach to PHY
->>>>>> stmmac_open: Cannot attach to PHY (error: -19)
->>>>>
->>>>> Still with us in next-20160307. CC'ing stmmac maintainers.
->>
->> peppe
->>
->>>>
->>>> do you remember from what revision you rebased away from, when it was
->>>> still
->>>> working (as a known-good state)?
->>>
->>> Hm, next-20160111 possibly... leaving all the 5 days and 4 days ago
->>> changes as candidates ("stmmac: share reset function between dwmac100
->>> and dwmac1000" .. "stmmac: Fix 'eth0: No PHY found' regression").
->
+If you need more info, let me know where to find it.
+
+Thanks,
+Andreas
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
+rnberg)
