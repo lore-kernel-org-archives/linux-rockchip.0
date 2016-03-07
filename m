@@ -1,103 +1,54 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
- error path
-Date: Mon, 07 Mar 2016 19:56:18 +0100
-Message-ID: <2630588.ZOL2q0FzuV@diego>
-References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
- <1693114.6CV9KAkHOO@diego>
- <CAD=FV=WeAp+SQFqrecPr4GwdpUVx+y=rzgAdUTGSZExd_B=Sjg@mail.gmail.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: [PATCH RESEND] Documentation: devicetree: Clean up gpio-keys
+ example
+Date: Mon, 7 Mar 2016 20:25:31 +0100
+Message-ID: <56DDD5AB.1090707@suse.de>
+References: <1457375055-5544-1-git-send-email-afaerber@suse.de>
+ <CABxcv=kEDoP3_Q3OKh1rGJ3=nFxRydu7L7bv5C=bNbmXyFt8dQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD=FV=WeAp+SQFqrecPr4GwdpUVx+y=rzgAdUTGSZExd_B=Sjg@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CABxcv=kEDoP3_Q3OKh1rGJ3=nFxRydu7L7bv5C=bNbmXyFt8dQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Javier Martinez Canillas <javier-0uQlZySMnqxg9hUCZPvPmw@public.gmane.org>
+Cc: linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91ZywKCkFtIE1vbnRhZywgNy4gTcOkcnogMjAxNiwgMTA6NDk6NTMgc2NocmllYiBEb3Vn
-IEFuZGVyc29uOgo+IE9uIE1vbiwgTWFyIDcsIDIwMTYgYXQgOTo1NyBBTSwgSGVpa28gU3TDvGJu
-ZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4gPiBBbSBNb250YWcsIDcuIE3DpHJ6IDIwMTYs
-IDA5OjM2OjA3IHNjaHJpZWIgRG91ZyBBbmRlcnNvbjoKPiA+PiBIaSwKPiA+PiAKPiA+PiBPbiBN
-b24sIE1hciA3LCAyMDE2IGF0IDEyOjM3IEFNLCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlw
-cy5jb20+IAp3cm90ZToKPiA+PiA+IE9uIDIwMTblubQwM+aciDA15pelIDIwOjM5LCBSdXNzZWxs
-IEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4gPj4gPj4gT24gU2F0LCBNYXIgMDUsIDIwMTYgYXQg
-MTI6MTE6MTZQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdyb3RlOgo+ID4+ID4+PiBPbiBGcmksIE1h
-ciAwNCwgMjAxNiBhdCAwMzoyMjowMVBNIC0wODAwLCBEb3VnbGFzIEFuZGVyc29uIHdyb3RlOgo+
-ID4+ID4+Pj4gVGhlIGRybV9lbmNvZGVyX2NsZWFudXAoKSB3YXMgbWlzc2luZyBib3RoIGZyb20g
-dGhlIGVycm9yIHBhdGggb2YKPiA+PiA+Pj4+IGR3X2hkbWlfcm9ja2NoaXBfYmluZCgpLiAgVGhp
-cyBjYXVzZWQgYSBjcmFzaCB3aGVuIHNsdWJfZGVidWcgd2FzCj4gPj4gPj4+PiBlbmFibGVkIGFu
-ZCB3ZSBlbmRlZCB1cCBkZWZlcnJpbmcgcHJvYmUgb2YgSERNSSBhdCBib290Lgo+ID4+ID4+Pj4g
-Cj4gPj4gPj4+PiBUaGlzIGNhbGwgaXNuJ3QgbmVlZGVkIGZyb20gdW5iaW5kKCkgYmVjYXVzZSBp
-ZiBkd19oZG1pX2JpbmQoKQo+ID4+ID4+Pj4gcmV0dXJucwo+ID4+ID4+Pj4gbm8gZXJyb3IgdGhl
-biBpdCB0YWtlcyBvdmVyIHRoZSBqb2Igb2YgZnJlZWluZyB0aGUgZW5jb2RlciAoaW4KPiA+PiA+
-Pj4+IGR3X2hkbWlfdW5iaW5kKS4KPiA+PiA+Pj4+IAo+ID4+ID4+Pj4gU2lnbmVkLW9mZi1ieTog
-RG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+ID4+ID4+Pj4gLS0tCj4g
-Pj4gPj4+IAo+ID4+ID4+PiBEb2VzIGR3X2hkbWktaW14IG5lZWQgYSBzaW1pbGFyIGNoYW5nZT8g
-IEkgd29uZGVyIGlmIGl0IHdvdWxkIGJlCj4gPj4gPj4+IGNsZWFuZXIKPiA+PiA+Pj4gdG8gcHVz
-aCB0aGlzIGludG8gZHdfaGRtaV9iaW5kKCkgaWYgaXQgYWZmZWN0cyBhbGwgb2YgdGhlIHBsYXRm
-b3Jtcy4uCj4gPj4gPj4gCj4gPj4gPj4gSSBkb24ndCB0aGluayBtb3ZpbmcgaXQgdGhlcmUgd291
-bGQgbWFrZSBzZW5zZSAtIGtlZXAgdGhlCj4gPj4gPj4gaW5pdGlhbGlzYXRpb24KPiA+PiA+PiBh
-bmQgY2xlYW51cCB0b2dldGhlciBpbiB0aGUgc2FtZSBmaWxlIHNvIHRoYXQgaXQncyBjb250YWlu
-ZWQgdG9nZXRoZXIuCj4gPj4gPiAKPiA+PiA+IEkgZG9uJ3QgbGlrZSB0aGlzIHBhdGNoIHRvbywg
-aW5pdGlhbGlzYXRpb24gYW5kIGNsZWFudXAgbm90IGluIHRoZSBzYW1lCj4gPj4gPiBmaWxlIGxv
-b2tzIGJhZCwKPiA+PiA+IAo+ID4+ID4gSG93IGFib3V0Ogo+ID4+ID4gCj4gPj4gPiBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYwo+ID4+ID4gdm9pZCBkd19oZG1pX3VuYmluZChzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZAo+ID4+ID4gKmRhdGEp
-Cj4gPj4gPiAKPiA+PiA+ICAgICAgICAgaGRtaV93cml0ZWIoaGRtaSwgfjAsIEhETUlfSUhfTVVU
-RV9QSFlfU1RBVDApOwo+ID4+ID4gCj4gPj4gPiBoZG1pLT5jb25uZWN0b3IuZnVuY3MtPmRlc3Ry
-b3koJmhkbWktPmNvbm5lY3Rvcik7Cj4gPj4gPiAtICAgICAgIGhkbWktPmVuY29kZXItPmZ1bmNz
-LT5kZXN0cm95KGhkbWktPmVuY29kZXIpOwo+ID4+ID4gCj4gPj4gPiBkcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gPj4gPiBzdGF0aWMgaW50IGR3X2hkbWlfcm9j
-a2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UKPiA+PiA+ICptYXN0
-ZXIsCj4gPj4gPiAKPiA+PiA+IC0gICAgICAgcmV0dXJuIGR3X2hkbWlfYmluZChkZXYsIG1hc3Rl
-ciwgZGF0YSwgZW5jb2RlciwgaW9yZXMsIGlycSwKPiA+PiA+IHBsYXRfZGF0YSk7Cj4gPj4gPiAr
-ICAgICAgIHJldCA9IGR3X2hkbWlfYmluZChkZXYsIG1hc3RlciwgZGF0YSwgZW5jb2RlciwgaW9y
-ZXMsIGlycSwKPiA+PiA+IHBsYXRfZGF0YSk7Cj4gPj4gPiArICAgICAgIGlmIChyZXQpCj4gPj4g
-PiArICAgICAgICAgICAgICAgZHJtX2VuY29kZXJfY2xlYW51cChlbmNvZGVyKTsKPiA+PiA+ICsK
-PiA+PiA+ICsgICAgICAgcmV0dXJuIHJldDsKPiA+PiA+IAo+ID4+ID4gIH0KPiA+PiA+ICAKPiA+
-PiA+ICBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHN0cnVjdCBkZXZpY2UKPiA+PiA+IAo+ID4+ID4gKm1hc3RlciwKPiA+PiA+IAo+ID4+ID4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdm9pZCAqZGF0YSkKPiA+PiA+ICAK
-PiA+PiA+ICB7Cj4gPj4gPiAKPiA+PiA+ICsgICAgICAgZHJtX2VuY29kZXJfY2xlYW51cCguLi4p
-Owo+ID4+ID4gCj4gPj4gPiAgICAgICAgIHJldHVybiBkd19oZG1pX3VuYmluZChkZXYsIG1hc3Rl
-ciwgZGF0YSk7Cj4gPj4gPiAgCj4gPj4gPiAgfQo+ID4+IAo+ID4+IFRoYXQnYSBhIHJlYXNvbmFi
-bGUgc3VnZ2VzdGlvbiBpbiB0aGVvcnkuICAuLi5idXQgd2UgcnVuIGludG8gdGhlIHNhbWUKPiA+
-PiBwcm9ibGVtIEkndmUgcnVuIGludG8gYmVmb3JlIHdpdGggdGhlIHN0cmFuZ2UgcmVsYXRpb25z
-aGlwIGJldHdlZW4KPiA+PiBkd19oZG1pIGFuZCBpdHMgZGVzY2VuZGFudHMuCj4gPiAKPiA+IEkg
-ZG9uJ3QgdGhpbmsgaGFuZGluZyBvZmYgdGhlIGNsZWFudXAgcmVzcG9uc2liaWxpdHkgaXMgcmVh
-bGx5IGluIHF1ZXN0aW9uCj4gPiBoZXJlLiBJLmUuIEkgZG8gYmVsaWV2ZSBpdCBzaG91bGQgYWxz
-byBiZSBmaW5lIHRvIGV4cGVjdCAoYXMgZGVmaW5pdGlvbikKPiA+IHRoZSBjb3JlIGRyaXZlciB0
-byBjbGVhbnVwIHRoZSBlbmNvZGVyIF9hZnRlcl8gaXQgc3VjZXNzZnVsbHkgY2xhaW1lZCBpdAo+
-ID4gaW4gZHdfaGRtaV9iaW5kKCkuCj4gPiAKPiA+IFdlIGRvIHRoZSBzYW1lIGluIHRoZSByb2Nr
-Y2hpcCBwb3dlci1kb21haW5zLCBoYW5kaW5nIG9mZiB0aGUgc3RydWN0IGNsay0KPiA+IHBvaW50
-ZXIgdG8gdGhlIHBtX2NsayBzdHVmZiAoZHVlIHRvIHRoZSBjbGstcG9pbnRlciBiZWluZyB1bmlx
-dWUKPiA+IHBlci1kZXZpY2UKPiA+IG5vd2FkYXlzKS4KPiA+IAo+ID4gU28ganVzdCBtYWtpbmcg
-c3VyZSBpdCBpcyBzdWNlc3NmdWxseSBoYW5kZWQgb2ZmIHNob3VsZCBhbHNvIGJlIG9rLgo+IAo+
-IElmIEkgdW5kZXJzdGFuZCBjb3JyZWN0bHksIHRoYXQgbWVhbnMgeW91J2QgYmUgT0sgd2l0aCB0
-aGUgb3JpZ2luYWwKPiBwYXRjaCBJIHBvc3RlZD8gIEluIHRoYXQgY2FzZSBjbGVhbnVwIGNvbnRp
-bnVlcyB0byBoYXBwZW4gaW4gdGhlIG1haW4KPiBkdy1oZG1pLmMgaWYgZHdfaGRtaV9iaW5kKCkg
-c3VjY2VlZHMgYW5kIG15IHBhdGNoIGZpeGVzIHRoZSBjbGVhbnVwCj4gd2hlbiBkd19oZG1pX2Jp
-bmQoKSBmYWlscyAoYW5kIHRodXMgY2xlYW51cCByZXNwb25zaWJpbGl0eSB3YXMgbm90Cj4gaGFu
-ZGVkIG9mZikuCgpjb3JyZWN0LiBJIGRvbid0IHNlZSB0aGUgbmVlZCB0byBkdXBsaWNhdGUgdGhl
-IGNsZWFudXAgKCthZGRlZCBpbmZyYXN0cnVjdHVyZSAKdG8gYWN0dWFsbHkgZ2V0IHRoZSBlbmNv
-ZGVyIGluIHVuYmluZCkgaW4gYWxsIGluc3RhbmNlcywgaWYgd2UganVzdCBkZWZpbmUgdGhhdCAK
-dGhlIGR3X2hkbWkgY29yZSB0YWtlcyBjb250cm9sIG9mIHRoZSBlbmNvZGVyIF9hZnRlcl8gaXQg
-c3VjZXNzZnVsbHkgYm91bmQuCgpTbyBvbmx5IGlmIGR3X2hkbWlfYmluZCgpIGZhaWxzIGRvZXMg
-dGhlIGh3LXNwZWNpZmljIGluc3RhbmNlIG5lZWQgdG8gY2xlYW4gdXAgCnRoZSBlbmNvZGVyIGl0
-IGNyZWF0ZWQuCgoKPiBBbHNvOiBJIG5vdGljZWQgdGhhdCBSdXNzZWxsIGFsc28gZGlkbid0IHNl
-ZW0gdG8gc2F5IHRoYXQgbXkgb3JpZ2luYWwKPiBwYXRjaCB3YXMgYmFkLiAgSSB0aGluayBoZSBq
-dXN0IHNhaWQgdGhhdCBoZSBkaWRuJ3QgbGlrZSBKb2huCj4gS2VlcGluZydzIHN1Z2dlc3Rpb24u
-Cgp0aGF0IHdhcyBteSByZWFkaW5nIGFzIHdlbGwuCgoKSGVpa28KX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi,
+
+Am 07.03.2016 um 19:34 schrieb Javier Martinez Canillas:
+> On Mon, Mar 7, 2016 at 3:24 PM, Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org=
+> wrote:
+>> Drop #address-cells and #size-cells, which are not required by the
+>> gpio-keys binding documentation, as button sub-nodes are not devices=
+=2E
+>>
+>> Reported-by: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> Signed-off-by: Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
+>=20
+> Looks good to me.
+>=20
+> Reviewed-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+
+Thanks. Quick summary for non-Rockchip reviewers:
+
+This is a resend of: https://patchwork.kernel.org/patch/8513851/
+
+To avoid future resends: https://patchwork.kernel.org/patch/8521501/
+
+Rockchip arm64 cleanup: https://patchwork.kernel.org/patch/8513951/
+Patch prompting all this: https://patchwork.kernel.org/patch/8513921/
+
+Cheers,
+Andreas
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG=
+ N=C3=BCrnberg)
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
