@@ -1,52 +1,88 @@
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Mon, 7 Mar 2016 18:15:53 +0100
-Message-ID: <56DDB749.1020808@suse.de>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
- <56DD7172.4000707@suse.de> <2714888.1DdqvJZ8cb@diego>
- <56DD7593.5060003@suse.de> <56DD8176.2080603@st.com>
- <56DD8FBE.9010200@suse.de> <56DD99A4.5030004@st.com>
- <56DDA26C.3050301@suse.de> <56DDA3D5.3090209@st.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
+ error path
+Date: Mon, 7 Mar 2016 09:36:07 -0800
+Message-ID: <CAD=FV=XMvYYwOHH_SEovAeHV1Sv9BbiAP4fGnF3Gq3aS1hfQaw@mail.gmail.com>
+References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+ <20160305121005.GA11966@serenity.lan>
+ <20160305123942.GE19428@n2100.arm.linux.org.uk>
+ <56DD3DAF.8090700@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <56DDA3D5.3090209@st.com>
-Sender: netdev-owner@vger.kernel.org
-To: Giuseppe CAVALLARO <peppe.cavallaro@st.com>
-Cc: Gabriel Fernandez <gabriel.fernandez@linaro.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, devicetree@vger.kernel.org, LAKML <linux-arm-kernel@lists.infradead.org>, Alexandre TORGUE <alexandre.torgue@st.com>, Fabrice GASNIER <fabrice.gasnier@st.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <56DD3DAF.8090700@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am 07.03.2016 um 16:52 schrieb Giuseppe CAVALLARO:
-> On 3/7/2016 4:46 PM, Andreas F=E4rber wrote:
->> Am 07.03.2016 um 16:09 schrieb Giuseppe CAVALLARO:
->>> On 3/7/2016 3:27 PM, Andreas F=E4rber wrote:
->>>> Indeed, reverting Gabriel's commit fixes the observed error messag=
-es
->> [...]
->>>> However, I am unable to ping any hosts on the network now.
->>>
->>> hmm, this could be another problem. I wonder if you can
->>> check which recent patch is introducing the problem on ARM64.
->>> For example if this depends on Oct_2015 update.
->>
->> I've had success reverting drivers/net/ethernet/stmicro/ up to and
->> including "stmmac: first frame prep at the end of xmit routine", i.e=
-=2E
->> top 7 commits.
->=20
-> Andreas, I will check it and let you know asap.
-
-I verified that it's just these two commits that I need to revert:
-
-"stmmac: Fix 'eth0: No PHY found' regression"
-"stmmac: first frame prep at the end of xmit routine"
-
-Those in between don't cause conflicts and seem to work okay.
-
-Andreas
-
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
+SGksCgpPbiBNb24sIE1hciA3LCAyMDE2IGF0IDEyOjM3IEFNLCBNYXJrIHlhbyA8bWFyay55YW9A
+cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+IE9uIDIwMTblubQwM+aciDA15pelIDIwOjM5LCBSdXNz
+ZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4+Cj4+IE9uIFNhdCwgTWFyIDA1LCAyMDE2IGF0
+IDEyOjExOjE2UE0gKzAwMDAsIEpvaG4gS2VlcGluZyB3cm90ZToKPj4+Cj4+PiBPbiBGcmksIE1h
+ciAwNCwgMjAxNiBhdCAwMzoyMjowMVBNIC0wODAwLCBEb3VnbGFzIEFuZGVyc29uIHdyb3RlOgo+
+Pj4+Cj4+Pj4gVGhlIGRybV9lbmNvZGVyX2NsZWFudXAoKSB3YXMgbWlzc2luZyBib3RoIGZyb20g
+dGhlIGVycm9yIHBhdGggb2YKPj4+PiBkd19oZG1pX3JvY2tjaGlwX2JpbmQoKS4gIFRoaXMgY2F1
+c2VkIGEgY3Jhc2ggd2hlbiBzbHViX2RlYnVnIHdhcwo+Pj4+IGVuYWJsZWQgYW5kIHdlIGVuZGVk
+IHVwIGRlZmVycmluZyBwcm9iZSBvZiBIRE1JIGF0IGJvb3QuCj4+Pj4KPj4+PiBUaGlzIGNhbGwg
+aXNuJ3QgbmVlZGVkIGZyb20gdW5iaW5kKCkgYmVjYXVzZSBpZiBkd19oZG1pX2JpbmQoKSByZXR1
+cm5zCj4+Pj4gbm8gZXJyb3IgdGhlbiBpdCB0YWtlcyBvdmVyIHRoZSBqb2Igb2YgZnJlZWluZyB0
+aGUgZW5jb2RlciAoaW4KPj4+PiBkd19oZG1pX3VuYmluZCkuCj4+Pj4KPj4+PiBTaWduZWQtb2Zm
+LWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+Pj4gLS0tCj4+
+Pgo+Pj4gRG9lcyBkd19oZG1pLWlteCBuZWVkIGEgc2ltaWxhciBjaGFuZ2U/ICBJIHdvbmRlciBp
+ZiBpdCB3b3VsZCBiZSBjbGVhbmVyCj4+PiB0byBwdXNoIHRoaXMgaW50byBkd19oZG1pX2JpbmQo
+KSBpZiBpdCBhZmZlY3RzIGFsbCBvZiB0aGUgcGxhdGZvcm1zLi4KPj4KPj4gSSBkb24ndCB0aGlu
+ayBtb3ZpbmcgaXQgdGhlcmUgd291bGQgbWFrZSBzZW5zZSAtIGtlZXAgdGhlIGluaXRpYWxpc2F0
+aW9uCj4+IGFuZCBjbGVhbnVwIHRvZ2V0aGVyIGluIHRoZSBzYW1lIGZpbGUgc28gdGhhdCBpdCdz
+IGNvbnRhaW5lZCB0b2dldGhlci4KPj4KPgo+IEkgZG9uJ3QgbGlrZSB0aGlzIHBhdGNoIHRvbywg
+aW5pdGlhbGlzYXRpb24gYW5kIGNsZWFudXAgbm90IGluIHRoZSBzYW1lIGZpbGUKPiBsb29rcyBi
+YWQsCj4KPiBIb3cgYWJvdXQ6Cj4KPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYwo+
+IHZvaWQgZHdfaGRtaV91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICpt
+YXN0ZXIsIHZvaWQgKmRhdGEpCj4gICAgICAgICBoZG1pX3dyaXRlYihoZG1pLCB+MCwgSERNSV9J
+SF9NVVRFX1BIWV9TVEFUMCk7Cj4KPiBoZG1pLT5jb25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmhk
+bWktPmNvbm5lY3Rvcik7Cj4gLSAgICAgICBoZG1pLT5lbmNvZGVyLT5mdW5jcy0+ZGVzdHJveSho
+ZG1pLT5lbmNvZGVyKTsKPgo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tj
+aGlwLmMKPiBzdGF0aWMgaW50IGR3X2hkbWlfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpk
+ZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPgo+IC0gICAgICAgcmV0dXJuIGR3X2hkbWlfYmlu
+ZChkZXYsIG1hc3RlciwgZGF0YSwgZW5jb2RlciwgaW9yZXMsIGlycSwKPiBwbGF0X2RhdGEpOwo+
+ICsgICAgICAgcmV0ID0gZHdfaGRtaV9iaW5kKGRldiwgbWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBp
+b3JlcywgaXJxLAo+IHBsYXRfZGF0YSk7Cj4gKyAgICAgICBpZiAocmV0KQo+ICsgICAgICAgICAg
+ICAgICBkcm1fZW5jb2Rlcl9jbGVhbnVwKGVuY29kZXIpOwo+ICsKPiArICAgICAgIHJldHVybiBy
+ZXQ7Cj4gIH0KPgo+ICBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX3VuYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UKPiAqbWFzdGVyLAo+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIHZvaWQgKmRhdGEpCj4gIHsKPiArICAgICAgIGRybV9lbmNvZGVy
+X2NsZWFudXAoLi4uKTsKPiAgICAgICAgIHJldHVybiBkd19oZG1pX3VuYmluZChkZXYsIG1hc3Rl
+ciwgZGF0YSk7Cj4gIH0KClRoYXQnYSBhIHJlYXNvbmFibGUgc3VnZ2VzdGlvbiBpbiB0aGVvcnku
+ICAuLi5idXQgd2UgcnVuIGludG8gdGhlIHNhbWUKcHJvYmxlbSBJJ3ZlIHJ1biBpbnRvIGJlZm9y
+ZSB3aXRoIHRoZSBzdHJhbmdlIHJlbGF0aW9uc2hpcCBiZXR3ZWVuCmR3X2hkbWkgYW5kIGl0cyBk
+ZXNjZW5kYW50cy4KClNwZWNpZmljYWxseToKCiogInN0cnVjdCBkd19oZG1pIiwgd2hpY2ggaGFz
+IGEgcG9pbnRlciB0byBlbmNvZGVyLCBpcyBwcml2YXRlIHRvIGR3LWhkbWkuYwoKKiBXZSBjb3Vs
+ZCBnZXQgdGhlIGVuY29kZXIgaWYgd2UgaGFkIGEgcG9pbnRlciB0byB0aGUgInN0cnVjdApyb2Nr
+Y2hpcF9oZG1pIiwgYnV0IHRoZXJlJ3Mgbm8gd2F5IHRvIGdldCB0aGF0LiAgWW91IHdvdWxkIF90
+aGlua18geW91CmNvdWxkIGdldCBpdCBiYWNrIHVzaW5nIHBsYXRmb3JtX2dldF9kcnZkYXRhKCkg
+YmVjYXVzZSBpdCB3YXMgc3Rhc2hlZAp3aXRoIHBsYXRmb3JtX3NldF9kcnZkYXRhKCkuICAuLi5i
+dXQgeW91J2QgYmUgd3JvbmcuICBUaGUKcGxhdGZvcm1fc2V0X2RydmRhdGEoKSBpcyBqdXN0IHRo
+ZXJlIHRvIGZvb2wgeW91LiAgSSBiZWxpZXZlIHdoZW4geW91CmNhbGwgZHdfaGRtaV9iaW5kKCkg
+aXQgY2xvYmJlcnMgeW91ciBkcnZkYXRhIHdoZW4gaXQgY2FsbHMKZGV2X3NldF9kcnZkYXRhKGRl
+diwgaGRtaSk7CgoKU2FpZCBhbm90aGVyIHdheTogdGFraW5nIHlvdXIgc3VnZ2VzdGlvbiBtZWFu
+cyB3ZSBuZWVkIHRvIGFkZCBzb21lIHdheQpmb3IgZHdfaGRtaS1yb2NrY2hpcC5jIHRvIGdldCBh
+IHBvaW50ZXIgdG8gdGhlIGVuY29kZXIgZnJvbSBhICJzdHJ1Y3QKZGV2aWNlIi4gIFdlIGNvdWxk
+IChBKSBtb3ZlIHRoZSAic3RydWN0IGR3X2hkbWkiIGRlZmluaXRpb24gdG8gYQpwcml2YXRlIGhl
+YWRlciBhbmQgYWxsb3cgZHdfaGRtaS1yb2NrY2hpcC5jIHRvIGluY2x1ZGUgaXQgb3Igd2UgY291
+bGQKKEIpIGFkZCBhIGR3X2hkbWlfZ2V0X2VuY29kZXIoKSBBUEkgY2FsbCB0aGF0IGR3X2hkbWkt
+cm9ja2NoaXAuYyBjb3VsZApjYWxsLgoKCklmIHNvbWVvbmUgd291bGQgbGV0IG1lIGtub3cgd2hl
+dGhlciAoQSkgb3IgKEIpIGlzIE9LIEknbSBoYXBweSB0byBwb3N0IGEgcGF0Y2guCgoKLi4ub3Is
+IG9mIGNvdXJzZSwgaWYgSSd2ZSBtYWRlIGEgbWlzdGFrZSBpbiBhbGwgdGhlIGFib3ZlLCBmZWVs
+IGZyZWUKdG8gcG9pbnQgaXQgb3V0LgoKCi1Eb3VnCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbAo=
