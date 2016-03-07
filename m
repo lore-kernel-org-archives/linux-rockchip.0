@@ -1,388 +1,93 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/3] mailbox: rockchip: Add Rockchip mailbox driver
-Date: Mon, 07 Mar 2016 19:48:23 +0100
-Message-ID: <3952968.vXrbfbrlZ2@diego>
-References: <1445931106-683-1-git-send-email-wxt@rock-chips.com> <1445931106-683-3-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
+ error path
+Date: Mon, 7 Mar 2016 10:49:53 -0800
+Message-ID: <CAD=FV=WeAp+SQFqrecPr4GwdpUVx+y=rzgAdUTGSZExd_B=Sjg@mail.gmail.com>
+References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+ <56DD3DAF.8090700@rock-chips.com>
+ <CAD=FV=XMvYYwOHH_SEovAeHV1Sv9BbiAP4fGnF3Gq3aS1hfQaw@mail.gmail.com>
+ <1693114.6CV9KAkHOO@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445931106-683-3-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, frank.wang@rock-chips.com, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1693114.6CV9KAkHOO@diego>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jassi,
-
-Am Dienstag, 27. Oktober 2015, 15:31:45 schrieb Caesar Wang:
-> This driver is found on RK3368 SoCs.
-> 
-> The Mailbox module is a simple APB peripheral that allows both
-> the Cortex-A53 MCU system to communicate by writing operation to
-> generate interrupt.
-> The registers are accessible by both CPU via APB interface.
-> 
-> The Mailbox has the following main features:
-> 
-> 1) Support dual-core system: Cortex-A53 and MCU.
-> 2) Support APB interface.
-> 3) Support four mailbox elements, each element includes one data word,
->    one command word register and one flag bit that can represent
->    one interrupt.
-> 4) Four interrupts to Cortex-A53.
-> 5) Four interrupts to MCU.
-> 6) Provide 32 lock registers for software to use to indicate whether
->    mailbox is occupied.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-
-it seems this patch has fallen through the cracks. Could you take a look if it 
-needs anything else?
-
-
-Thanks
-Heiko
-
-> ---
-> 
-> Changes in v1:
-> - PATCH[2/3] driver:
-> - The commit: %s/@/(num order).
-> - Add the module authors to instead of the notes.
-> - Add the COMPILE_TEST to auto compile test in Kconfig.
-> - Let the chan_to_idx() trys to instead of rockchip_mbox_chan.idx.
-> - Let's enable/disable the interrupt in startup/shutdown.
-> - Move the share memory and tx buf into the client drivers.
-> 
->  drivers/mailbox/Kconfig            |   9 ++
->  drivers/mailbox/Makefile           |   2 +
->  drivers/mailbox/rockchip-mailbox.c | 286
-> +++++++++++++++++++++++++++++++++++++ 3 files changed, 297 insertions(+)
->  create mode 100644 drivers/mailbox/rockchip-mailbox.c
-> 
-> diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
-> index bbec500..8b8d46e 100644
-> --- a/drivers/mailbox/Kconfig
-> +++ b/drivers/mailbox/Kconfig
-> @@ -43,6 +43,15 @@ config OMAP_MBOX_KFIFO_SIZE
->  	  This can also be changed at runtime (via the mbox_kfifo_size
->  	  module parameter).
-> 
-> +config ROCKCHIP_MBOX
-> +	bool "Rockchip Soc Intergrated Mailbox Support"
-> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	help
-> +	  This driver provides support for inter-processor communication
-> +	  between CPU cores and MCU processor on Some Rockchip SOCs.
-> +	  Please check it that the Soc you use have Mailbox hardware.
-> +	  Say Y here if you want to use the Rockchip Mailbox support.
-> +
->  config PCC
->  	bool "Platform Communication Channel Driver"
->  	depends on ACPI
-> diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
-> index 8e6d822..730cb5d 100644
-> --- a/drivers/mailbox/Makefile
-> +++ b/drivers/mailbox/Makefile
-> @@ -8,6 +8,8 @@ obj-$(CONFIG_PL320_MBOX)	+= pl320-ipc.o
-> 
->  obj-$(CONFIG_OMAP2PLUS_MBOX)	+= omap-mailbox.o
-> 
-> +obj-$(CONFIG_ROCKCHIP_MBOX)	+= rockchip-mailbox.o
-> +
->  obj-$(CONFIG_PCC)		+= pcc.o
-> 
->  obj-$(CONFIG_ALTERA_MBOX)	+= mailbox-altera.o
-> diff --git a/drivers/mailbox/rockchip-mailbox.c
-> b/drivers/mailbox/rockchip-mailbox.c new file mode 100644
-> index 0000000..5ccdc6b
-> --- /dev/null
-> +++ b/drivers/mailbox/rockchip-mailbox.c
-> @@ -0,0 +1,286 @@
-> +/*
-> + * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms and conditions of the GNU General Public License,
-> + * version 2, as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-> for + * more details.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/io.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mailbox_controller.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +
-> +#define MAILBOX_A2B_INTEN		0x00
-> +#define MAILBOX_A2B_STATUS		0x04
-> +#define MAILBOX_A2B_CMD(x)		(0x08 + (x) * 8)
-> +#define MAILBOX_A2B_DAT(x)		(0x0c + (x) * 8)
-> +
-> +#define MAILBOX_B2A_INTEN		0x28
-> +#define MAILBOX_B2A_STATUS		0x2C
-> +#define MAILBOX_B2A_CMD(x)		(0x30 + (x) * 8)
-> +#define MAILBOX_B2A_DAT(x)		(0x34 + (x) * 8)
-> +
-> +struct rockchip_mbox_msg {
-> +	u32 cmd;
-> +	int rx_size;
-> +};
-> +
-> +struct rockchip_mbox_data {
-> +	int num_chans;
-> +};
-> +
-> +struct rockchip_mbox_chan {
-> +	int idx;
-> +	int irq;
-> +	struct rockchip_mbox_msg *msg;
-> +	struct rockchip_mbox *mb;
-> +};
-> +
-> +struct rockchip_mbox {
-> +	struct mbox_controller mbox;
-> +	struct clk *pclk;
-> +	void __iomem *mbox_base;
-> +
-> +	/* The base address of share memory to transfer data */
-> +	void __iomem *buf_base;
-> +
-> +	/* The maximum size of buf for each channel */
-> +	u32 buf_size;
-> +
-> +	struct rockchip_mbox_chan *chans;
-> +};
-> +
-> +static int rockchip_mbox_send_data(struct mbox_chan *chan, void *data)
-> +{
-> +	struct rockchip_mbox *mb = dev_get_drvdata(chan->mbox->dev);
-> +	struct rockchip_mbox_msg *msg = data;
-> +	struct rockchip_mbox_chan *chans = mb->chans;
-> +
-> +	if (!msg)
-> +		return -EINVAL;
-> +
-> +	if (msg->rx_size > mb->buf_size) {
-> +		dev_err(mb->mbox.dev, "Transmit size over buf size(%d)\n",
-> +			mb->buf_size);
-> +		return -EINVAL;
-> +	}
-> +
-> +	dev_dbg(mb->mbox.dev, "Chan[%d]: A2B message, cmd 0x%08x\n",
-> +		chans->idx, msg->cmd);
-> +
-> +	mb->chans[chans->idx].msg = msg;
-> +
-> +	writel_relaxed(msg->cmd, mb->mbox_base + MAILBOX_A2B_CMD(chans->idx));
-> +	writel_relaxed(msg->rx_size, mb->mbox_base +
-> +		       MAILBOX_A2B_DAT(chans->idx));
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_mbox_startup(struct mbox_chan *chan)
-> +{
-> +	struct rockchip_mbox *mb = dev_get_drvdata(chan->mbox->dev);
-> +
-> +	/* Enable all B2A interrupts */
-> +	writel_relaxed((1 << mb->mbox.num_chans) - 1,
-> +		       mb->mbox_base + MAILBOX_B2A_INTEN);
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_mbox_shutdown(struct mbox_chan *chan)
-> +{
-> +	struct rockchip_mbox *mb = dev_get_drvdata(chan->mbox->dev);
-> +	struct rockchip_mbox_chan *chans = mb->chans;
-> +
-> +	/* Disable all B2A interrupts */
-> +	writel_relaxed(0, mb->mbox_base + MAILBOX_B2A_INTEN);
-> +
-> +	mb->chans[chans->idx].msg = NULL;
-> +}
-> +
-> +static const struct mbox_chan_ops rockchip_mbox_chan_ops = {
-> +	.send_data	= rockchip_mbox_send_data,
-> +	.startup	= rockchip_mbox_startup,
-> +	.shutdown	= rockchip_mbox_shutdown,
-> +};
-> +
-> +static irqreturn_t rockchip_mbox_irq(int irq, void *dev_id)
-> +{
-> +	int idx;
-> +	struct rockchip_mbox *mb = (struct rockchip_mbox *)dev_id;
-> +	u32 status = readl_relaxed(mb->mbox_base + MAILBOX_B2A_STATUS);
-> +
-> +	for (idx = 0; idx < mb->mbox.num_chans; idx++) {
-> +		if ((status & (1 << idx)) && (irq == mb->chans[idx].irq)) {
-> +			/* Clear mbox interrupt */
-> +			writel_relaxed(1 << idx,
-> +				       mb->mbox_base + MAILBOX_B2A_STATUS);
-> +			return IRQ_WAKE_THREAD;
-> +		}
-> +	}
-> +
-> +	return IRQ_NONE;
-> +}
-> +
-> +static irqreturn_t rockchip_mbox_isr(int irq, void *dev_id)
-> +{
-> +	int idx;
-> +	struct rockchip_mbox_msg *msg = NULL;
-> +	struct rockchip_mbox *mb = (struct rockchip_mbox *)dev_id;
-> +
-> +	for (idx = 0; idx < mb->mbox.num_chans; idx++) {
-> +		if (irq != mb->chans[idx].irq)
-> +			continue;
-> +
-> +		msg = mb->chans[idx].msg;
-> +		if (!msg) {
-> +			dev_err(mb->mbox.dev,
-> +				"Chan[%d]: B2A message is NULL\n", idx);
-> +			break; /* spurious */
-> +		}
-> +
-> +		mbox_chan_received_data(&mb->mbox.chans[idx], msg);
-> +		mb->chans[idx].msg = NULL;
-> +
-> +		dev_dbg(mb->mbox.dev, "Chan[%d]: B2A message, cmd 0x%08x\n",
-> +			idx, msg->cmd);
-> +
-> +		break;
-> +	}
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static const struct rockchip_mbox_data rk3368_drv_data = {
-> +	.num_chans = 4,
-> +};
-> +
-> +static const struct of_device_id rockchip_mbox_of_match[] = {
-> +	{ .compatible = "rockchip,rk3368-mailbox", .data = &rk3368_drv_data},
-> +	{ },
-> +};
-> +MODULE_DEVICE_TABLE(of, rockchp_mbox_of_match);
-> +
-> +static int rockchip_mbox_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_mbox *mb;
-> +	const struct of_device_id *match;
-> +	const struct rockchip_mbox_data *drv_data;
-> +	struct resource *res;
-> +	int ret, irq, i;
-> +
-> +	if (!pdev->dev.of_node)
-> +		return -ENODEV;
-> +
-> +	match = of_match_node(rockchip_mbox_of_match, pdev->dev.of_node);
-> +	drv_data = (const struct rockchip_mbox_data *)match->data;
-> +
-> +	mb = devm_kzalloc(&pdev->dev, sizeof(*mb), GFP_KERNEL);
-> +	if (!mb)
-> +		return -ENOMEM;
-> +
-> +	mb->chans = devm_kcalloc(&pdev->dev, drv_data->num_chans,
-> +				 sizeof(*mb->chans), GFP_KERNEL);
-> +	if (!mb->chans)
-> +		return -ENOMEM;
-> +
-> +	mb->mbox.chans = devm_kcalloc(&pdev->dev, drv_data->num_chans,
-> +				      sizeof(*mb->mbox.chans), GFP_KERNEL);
-> +	if (!mb->mbox.chans)
-> +		return -ENOMEM;
-> +
-> +	platform_set_drvdata(pdev, mb);
-> +
-> +	mb->mbox.dev = &pdev->dev;
-> +	mb->mbox.num_chans = drv_data->num_chans;
-> +	mb->mbox.ops = &rockchip_mbox_chan_ops;
-> +	mb->mbox.txdone_irq = true;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	if (!res)
-> +		return -ENODEV;
-> +
-> +	mb->mbox_base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(mb->mbox_base))
-> +		return PTR_ERR(mb->mbox_base);
-> +
-> +	/* Each channel has two buffers for A2B and B2A */
-> +	mb->buf_size = resource_size(res) / (drv_data->num_chans * 2);
-> +
-> +	mb->pclk = devm_clk_get(&pdev->dev, "pclk_mailbox");
-> +	if (IS_ERR(mb->pclk)) {
-> +		ret = PTR_ERR(mb->pclk);
-> +		dev_err(&pdev->dev, "failed to get pclk_mailbox clock: %d\n",
-> +			ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = clk_prepare_enable(mb->pclk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "failed to enable pclk: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	for (i = 0; i < mb->mbox.num_chans; i++) {
-> +		irq = platform_get_irq(pdev, i);
-> +		if (irq < 0)
-> +			return irq;
-> +
-> +		ret = devm_request_threaded_irq(&pdev->dev, irq,
-> +						rockchip_mbox_irq,
-> +						rockchip_mbox_isr, IRQF_ONESHOT,
-> +						dev_name(&pdev->dev), mb);
-> +		if (ret < 0)
-> +			return ret;
-> +
-> +		mb->chans[i].idx = i;
-> +		mb->chans[i].irq = irq;
-> +		mb->chans[i].mb = mb;
-> +		mb->chans[i].msg = NULL;
-> +	}
-> +
-> +	ret = mbox_controller_register(&mb->mbox);
-> +	if (ret < 0)
-> +		dev_err(&pdev->dev, "Failed to register mailbox: %d\n", ret);
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_mbox_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_mbox *mb = platform_get_drvdata(pdev);
-> +
-> +	if (!mb)
-> +		return -EINVAL;
-> +
-> +	mbox_controller_unregister(&mb->mbox);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver rockchip_mbox_driver = {
-> +	.probe	= rockchip_mbox_probe,
-> +	.remove	= rockchip_mbox_remove,
-> +	.driver = {
-> +		.name = "rockchip-mailbox",
-> +		.of_match_table = of_match_ptr(rockchip_mbox_of_match),
-> +	},
-> +};
-> +
-> +module_platform_driver(rockchip_mbox_driver);
-> +
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_DESCRIPTION("Rockchip mailbox: communicate between CPU cores and
-> MCU"); +MODULE_AUTHOR("Addy Ke <addy.ke@rock-chips.com>");
-> +MODULE_AUTHOR("Caesar Wang <wxt@rock-chips.com>");
+SGksCgpPbiBNb24sIE1hciA3LCAyMDE2IGF0IDk6NTcgQU0sIEhlaWtvIFN0w7xibmVyIDxoZWlr
+b0BzbnRlY2guZGU+IHdyb3RlOgo+IEFtIE1vbnRhZywgNy4gTcOkcnogMjAxNiwgMDk6MzY6MDcg
+c2NocmllYiBEb3VnIEFuZGVyc29uOgo+PiBIaSwKPj4KPj4gT24gTW9uLCBNYXIgNywgMjAxNiBh
+dCAxMjozNyBBTSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4g
+PiBPbiAyMDE25bm0MDPmnIgwNeaXpSAyMDozOSwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4IHdy
+b3RlOgo+PiA+PiBPbiBTYXQsIE1hciAwNSwgMjAxNiBhdCAxMjoxMToxNlBNICswMDAwLCBKb2hu
+IEtlZXBpbmcgd3JvdGU6Cj4+ID4+PiBPbiBGcmksIE1hciAwNCwgMjAxNiBhdCAwMzoyMjowMVBN
+IC0wODAwLCBEb3VnbGFzIEFuZGVyc29uIHdyb3RlOgo+PiA+Pj4+IFRoZSBkcm1fZW5jb2Rlcl9j
+bGVhbnVwKCkgd2FzIG1pc3NpbmcgYm90aCBmcm9tIHRoZSBlcnJvciBwYXRoIG9mCj4+ID4+Pj4g
+ZHdfaGRtaV9yb2NrY2hpcF9iaW5kKCkuICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdoZW4gc2x1Yl9k
+ZWJ1ZyB3YXMKPj4gPj4+PiBlbmFibGVkIGFuZCB3ZSBlbmRlZCB1cCBkZWZlcnJpbmcgcHJvYmUg
+b2YgSERNSSBhdCBib290Lgo+PiA+Pj4+Cj4+ID4+Pj4gVGhpcyBjYWxsIGlzbid0IG5lZWRlZCBm
+cm9tIHVuYmluZCgpIGJlY2F1c2UgaWYgZHdfaGRtaV9iaW5kKCkgcmV0dXJucwo+PiA+Pj4+IG5v
+IGVycm9yIHRoZW4gaXQgdGFrZXMgb3ZlciB0aGUgam9iIG9mIGZyZWVpbmcgdGhlIGVuY29kZXIg
+KGluCj4+ID4+Pj4gZHdfaGRtaV91bmJpbmQpLgo+PiA+Pj4+Cj4+ID4+Pj4gU2lnbmVkLW9mZi1i
+eTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+PiA+Pj4+IC0tLQo+
+PiA+Pj4KPj4gPj4+IERvZXMgZHdfaGRtaS1pbXggbmVlZCBhIHNpbWlsYXIgY2hhbmdlPyAgSSB3
+b25kZXIgaWYgaXQgd291bGQgYmUgY2xlYW5lcgo+PiA+Pj4gdG8gcHVzaCB0aGlzIGludG8gZHdf
+aGRtaV9iaW5kKCkgaWYgaXQgYWZmZWN0cyBhbGwgb2YgdGhlIHBsYXRmb3Jtcy4uCj4+ID4+Cj4+
+ID4+IEkgZG9uJ3QgdGhpbmsgbW92aW5nIGl0IHRoZXJlIHdvdWxkIG1ha2Ugc2Vuc2UgLSBrZWVw
+IHRoZSBpbml0aWFsaXNhdGlvbgo+PiA+PiBhbmQgY2xlYW51cCB0b2dldGhlciBpbiB0aGUgc2Ft
+ZSBmaWxlIHNvIHRoYXQgaXQncyBjb250YWluZWQgdG9nZXRoZXIuCj4+ID4KPj4gPiBJIGRvbid0
+IGxpa2UgdGhpcyBwYXRjaCB0b28sIGluaXRpYWxpc2F0aW9uIGFuZCBjbGVhbnVwIG5vdCBpbiB0
+aGUgc2FtZQo+PiA+IGZpbGUgbG9va3MgYmFkLAo+PiA+Cj4+ID4gSG93IGFib3V0Ogo+PiA+Cj4+
+ID4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKPj4gPiB2b2lkIGR3X2hkbWlfdW5i
+aW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVyLCB2b2lkICpkYXRh
+KQo+PiA+Cj4+ID4gICAgICAgICBoZG1pX3dyaXRlYihoZG1pLCB+MCwgSERNSV9JSF9NVVRFX1BI
+WV9TVEFUMCk7Cj4+ID4KPj4gPiBoZG1pLT5jb25uZWN0b3IuZnVuY3MtPmRlc3Ryb3koJmhkbWkt
+PmNvbm5lY3Rvcik7Cj4+ID4gLSAgICAgICBoZG1pLT5lbmNvZGVyLT5mdW5jcy0+ZGVzdHJveSho
+ZG1pLT5lbmNvZGVyKTsKPj4gPgo+PiA+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1p
+LXJvY2tjaGlwLmMKPj4gPiBzdGF0aWMgaW50IGR3X2hkbWlfcm9ja2NoaXBfYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UKPj4gPiAqbWFzdGVyLAo+PiA+Cj4+ID4gLSAgICAg
+ICByZXR1cm4gZHdfaGRtaV9iaW5kKGRldiwgbWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBpb3Jlcywg
+aXJxLAo+PiA+IHBsYXRfZGF0YSk7Cj4+ID4gKyAgICAgICByZXQgPSBkd19oZG1pX2JpbmQoZGV2
+LCBtYXN0ZXIsIGRhdGEsIGVuY29kZXIsIGlvcmVzLCBpcnEsCj4+ID4gcGxhdF9kYXRhKTsKPj4g
+PiArICAgICAgIGlmIChyZXQpCj4+ID4gKyAgICAgICAgICAgICAgIGRybV9lbmNvZGVyX2NsZWFu
+dXAoZW5jb2Rlcik7Cj4+ID4gKwo+PiA+ICsgICAgICAgcmV0dXJuIHJldDsKPj4gPgo+PiA+ICB9
+Cj4+ID4KPj4gPiAgc3RhdGljIHZvaWQgZHdfaGRtaV9yb2NrY2hpcF91bmJpbmQoc3RydWN0IGRl
+dmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlCj4+ID4KPj4gPiAqbWFzdGVyLAo+PiA+Cj4+ID4gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdm9pZCAqZGF0YSkKPj4gPgo+PiA+ICB7
+Cj4+ID4KPj4gPiArICAgICAgIGRybV9lbmNvZGVyX2NsZWFudXAoLi4uKTsKPj4gPgo+PiA+ICAg
+ICAgICAgcmV0dXJuIGR3X2hkbWlfdW5iaW5kKGRldiwgbWFzdGVyLCBkYXRhKTsKPj4gPgo+PiA+
+ICB9Cj4+Cj4+IFRoYXQnYSBhIHJlYXNvbmFibGUgc3VnZ2VzdGlvbiBpbiB0aGVvcnkuICAuLi5i
+dXQgd2UgcnVuIGludG8gdGhlIHNhbWUKPj4gcHJvYmxlbSBJJ3ZlIHJ1biBpbnRvIGJlZm9yZSB3
+aXRoIHRoZSBzdHJhbmdlIHJlbGF0aW9uc2hpcCBiZXR3ZWVuCj4+IGR3X2hkbWkgYW5kIGl0cyBk
+ZXNjZW5kYW50cy4KPgo+IEkgZG9uJ3QgdGhpbmsgaGFuZGluZyBvZmYgdGhlIGNsZWFudXAgcmVz
+cG9uc2liaWxpdHkgaXMgcmVhbGx5IGluIHF1ZXN0aW9uCj4gaGVyZS4gSS5lLiBJIGRvIGJlbGll
+dmUgaXQgc2hvdWxkIGFsc28gYmUgZmluZSB0byBleHBlY3QgKGFzIGRlZmluaXRpb24pIHRoZQo+
+IGNvcmUgZHJpdmVyIHRvIGNsZWFudXAgdGhlIGVuY29kZXIgX2FmdGVyXyBpdCBzdWNlc3NmdWxs
+eSBjbGFpbWVkIGl0IGluCj4gZHdfaGRtaV9iaW5kKCkuCj4KPiBXZSBkbyB0aGUgc2FtZSBpbiB0
+aGUgcm9ja2NoaXAgcG93ZXItZG9tYWlucywgaGFuZGluZyBvZmYgdGhlIHN0cnVjdCBjbGstCj4g
+cG9pbnRlciB0byB0aGUgcG1fY2xrIHN0dWZmIChkdWUgdG8gdGhlIGNsay1wb2ludGVyIGJlaW5n
+IHVuaXF1ZSBwZXItZGV2aWNlCj4gbm93YWRheXMpLgo+Cj4gU28ganVzdCBtYWtpbmcgc3VyZSBp
+dCBpcyBzdWNlc3NmdWxseSBoYW5kZWQgb2ZmIHNob3VsZCBhbHNvIGJlIG9rLgoKSWYgSSB1bmRl
+cnN0YW5kIGNvcnJlY3RseSwgdGhhdCBtZWFucyB5b3UnZCBiZSBPSyB3aXRoIHRoZSBvcmlnaW5h
+bApwYXRjaCBJIHBvc3RlZD8gIEluIHRoYXQgY2FzZSBjbGVhbnVwIGNvbnRpbnVlcyB0byBoYXBw
+ZW4gaW4gdGhlIG1haW4KZHctaGRtaS5jIGlmIGR3X2hkbWlfYmluZCgpIHN1Y2NlZWRzIGFuZCBt
+eSBwYXRjaCBmaXhlcyB0aGUgY2xlYW51cAp3aGVuIGR3X2hkbWlfYmluZCgpIGZhaWxzIChhbmQg
+dGh1cyBjbGVhbnVwIHJlc3BvbnNpYmlsaXR5IHdhcyBub3QKaGFuZGVkIG9mZikuCgpBbHNvOiBJ
+IG5vdGljZWQgdGhhdCBSdXNzZWxsIGFsc28gZGlkbid0IHNlZW0gdG8gc2F5IHRoYXQgbXkgb3Jp
+Z2luYWwKcGF0Y2ggd2FzIGJhZC4gIEkgdGhpbmsgaGUganVzdCBzYWlkIHRoYXQgaGUgZGlkbid0
+IGxpa2UgSm9obgpLZWVwaW5nJ3Mgc3VnZ2VzdGlvbi4KClBsZWFzZSBjb3JyZWN0IGFueSBtaXN1
+bmRlcnN0YW5kaW5ncy4gIFRoYW5rcyEKCi1Eb3VnCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
+c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaS1kZXZlbAo=
