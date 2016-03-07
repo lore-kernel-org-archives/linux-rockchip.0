@@ -1,100 +1,49 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in
- error path
-Date: Mon, 07 Mar 2016 18:57:16 +0100
-Message-ID: <1693114.6CV9KAkHOO@diego>
-References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
- <56DD3DAF.8090700@rock-chips.com>
- <CAD=FV=XMvYYwOHH_SEovAeHV1Sv9BbiAP4fGnF3Gq3aS1hfQaw@mail.gmail.com>
+Subject: Re: [PATCH v3 4/8] Documentation: devicetree: Clean up gpio-keys example
+Date: Mon, 07 Mar 2016 19:05:39 +0100
+Message-ID: <15855134.NAdvd5CP0M@diego>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de> <1457294038-14243-5-git-send-email-afaerber@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD=FV=XMvYYwOHH_SEovAeHV1Sv9BbiAP4fGnF3Gq3aS1hfQaw@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1457294038-14243-5-git-send-email-afaerber@suse.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Julien Chauveau <chauveau.julien@gmail.com>, open list <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gTW9udGFnLCA3LiBNw6RyeiAyMDE2LCAwOTozNjowNyBzY2hyaWViIERvdWcgQW5kZXJzb246
-Cj4gSGksCj4gCj4gT24gTW9uLCBNYXIgNywgMjAxNiBhdCAxMjozNyBBTSwgTWFyayB5YW8gPG1h
-cmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiA+IE9uIDIwMTblubQwM+aciDA15pelIDIw
-OjM5LCBSdXNzZWxsIEtpbmcgLSBBUk0gTGludXggd3JvdGU6Cj4gPj4gT24gU2F0LCBNYXIgMDUs
-IDIwMTYgYXQgMTI6MTE6MTZQTSArMDAwMCwgSm9obiBLZWVwaW5nIHdyb3RlOgo+ID4+PiBPbiBG
-cmksIE1hciAwNCwgMjAxNiBhdCAwMzoyMjowMVBNIC0wODAwLCBEb3VnbGFzIEFuZGVyc29uIHdy
-b3RlOgo+ID4+Pj4gVGhlIGRybV9lbmNvZGVyX2NsZWFudXAoKSB3YXMgbWlzc2luZyBib3RoIGZy
-b20gdGhlIGVycm9yIHBhdGggb2YKPiA+Pj4+IGR3X2hkbWlfcm9ja2NoaXBfYmluZCgpLiAgVGhp
-cyBjYXVzZWQgYSBjcmFzaCB3aGVuIHNsdWJfZGVidWcgd2FzCj4gPj4+PiBlbmFibGVkIGFuZCB3
-ZSBlbmRlZCB1cCBkZWZlcnJpbmcgcHJvYmUgb2YgSERNSSBhdCBib290Lgo+ID4+Pj4gCj4gPj4+
-PiBUaGlzIGNhbGwgaXNuJ3QgbmVlZGVkIGZyb20gdW5iaW5kKCkgYmVjYXVzZSBpZiBkd19oZG1p
-X2JpbmQoKSByZXR1cm5zCj4gPj4+PiBubyBlcnJvciB0aGVuIGl0IHRha2VzIG92ZXIgdGhlIGpv
-YiBvZiBmcmVlaW5nIHRoZSBlbmNvZGVyIChpbgo+ID4+Pj4gZHdfaGRtaV91bmJpbmQpLgo+ID4+
-Pj4gCj4gPj4+PiBTaWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJv
-bWl1bS5vcmc+Cj4gPj4+PiAtLS0KPiA+Pj4gCj4gPj4+IERvZXMgZHdfaGRtaS1pbXggbmVlZCBh
-IHNpbWlsYXIgY2hhbmdlPyAgSSB3b25kZXIgaWYgaXQgd291bGQgYmUgY2xlYW5lcgo+ID4+PiB0
-byBwdXNoIHRoaXMgaW50byBkd19oZG1pX2JpbmQoKSBpZiBpdCBhZmZlY3RzIGFsbCBvZiB0aGUg
-cGxhdGZvcm1zLi4KPiA+PiAKPiA+PiBJIGRvbid0IHRoaW5rIG1vdmluZyBpdCB0aGVyZSB3b3Vs
-ZCBtYWtlIHNlbnNlIC0ga2VlcCB0aGUgaW5pdGlhbGlzYXRpb24KPiA+PiBhbmQgY2xlYW51cCB0
-b2dldGhlciBpbiB0aGUgc2FtZSBmaWxlIHNvIHRoYXQgaXQncyBjb250YWluZWQgdG9nZXRoZXIu
-Cj4gPiAKPiA+IEkgZG9uJ3QgbGlrZSB0aGlzIHBhdGNoIHRvbywgaW5pdGlhbGlzYXRpb24gYW5k
-IGNsZWFudXAgbm90IGluIHRoZSBzYW1lCj4gPiBmaWxlIGxvb2tzIGJhZCwKPiA+IAo+ID4gSG93
-IGFib3V0Ogo+ID4gCj4gPiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2R3LWhkbWkuYwo+ID4gdm9p
-ZCBkd19oZG1pX3VuYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rl
-ciwgdm9pZCAqZGF0YSkKPiA+IAo+ID4gICAgICAgICBoZG1pX3dyaXRlYihoZG1pLCB+MCwgSERN
-SV9JSF9NVVRFX1BIWV9TVEFUMCk7Cj4gPiAKPiA+IGhkbWktPmNvbm5lY3Rvci5mdW5jcy0+ZGVz
-dHJveSgmaGRtaS0+Y29ubmVjdG9yKTsKPiA+IC0gICAgICAgaGRtaS0+ZW5jb2Rlci0+ZnVuY3Mt
-PmRlc3Ryb3koaGRtaS0+ZW5jb2Rlcik7Cj4gPiAKPiA+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9kd19oZG1pLXJvY2tjaGlwLmMKPiA+IHN0YXRpYyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9iaW5k
-KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZQo+ID4gKm1hc3RlciwKPiA+IAo+ID4g
-LSAgICAgICByZXR1cm4gZHdfaGRtaV9iaW5kKGRldiwgbWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBp
-b3JlcywgaXJxLAo+ID4gcGxhdF9kYXRhKTsKPiA+ICsgICAgICAgcmV0ID0gZHdfaGRtaV9iaW5k
-KGRldiwgbWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBpb3JlcywgaXJxLAo+ID4gcGxhdF9kYXRhKTsK
-PiA+ICsgICAgICAgaWYgKHJldCkKPiA+ICsgICAgICAgICAgICAgICBkcm1fZW5jb2Rlcl9jbGVh
-bnVwKGVuY29kZXIpOwo+ID4gKwo+ID4gKyAgICAgICByZXR1cm4gcmV0Owo+ID4gCj4gPiAgfQo+
-ID4gIAo+ID4gIHN0YXRpYyB2b2lkIGR3X2hkbWlfcm9ja2NoaXBfdW5iaW5kKHN0cnVjdCBkZXZp
-Y2UgKmRldiwgc3RydWN0IGRldmljZQo+ID4gCj4gPiAqbWFzdGVyLAo+ID4gCj4gPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpkYXRhKQo+ID4gIAo+ID4gIHsKPiA+
-IAo+ID4gKyAgICAgICBkcm1fZW5jb2Rlcl9jbGVhbnVwKC4uLik7Cj4gPiAKPiA+ICAgICAgICAg
-cmV0dXJuIGR3X2hkbWlfdW5iaW5kKGRldiwgbWFzdGVyLCBkYXRhKTsKPiA+ICAKPiA+ICB9Cj4g
-Cj4gVGhhdCdhIGEgcmVhc29uYWJsZSBzdWdnZXN0aW9uIGluIHRoZW9yeS4gIC4uLmJ1dCB3ZSBy
-dW4gaW50byB0aGUgc2FtZQo+IHByb2JsZW0gSSd2ZSBydW4gaW50byBiZWZvcmUgd2l0aCB0aGUg
-c3RyYW5nZSByZWxhdGlvbnNoaXAgYmV0d2Vlbgo+IGR3X2hkbWkgYW5kIGl0cyBkZXNjZW5kYW50
-cy4KCkkgZG9uJ3QgdGhpbmsgaGFuZGluZyBvZmYgdGhlIGNsZWFudXAgcmVzcG9uc2liaWxpdHkg
-aXMgcmVhbGx5IGluIHF1ZXN0aW9uIApoZXJlLiBJLmUuIEkgZG8gYmVsaWV2ZSBpdCBzaG91bGQg
-YWxzbyBiZSBmaW5lIHRvIGV4cGVjdCAoYXMgZGVmaW5pdGlvbikgdGhlIApjb3JlIGRyaXZlciB0
-byBjbGVhbnVwIHRoZSBlbmNvZGVyIF9hZnRlcl8gaXQgc3VjZXNzZnVsbHkgY2xhaW1lZCBpdCBp
-biAKZHdfaGRtaV9iaW5kKCkuCgpXZSBkbyB0aGUgc2FtZSBpbiB0aGUgcm9ja2NoaXAgcG93ZXIt
-ZG9tYWlucywgaGFuZGluZyBvZmYgdGhlIHN0cnVjdCBjbGstCnBvaW50ZXIgdG8gdGhlIHBtX2Ns
-ayBzdHVmZiAoZHVlIHRvIHRoZSBjbGstcG9pbnRlciBiZWluZyB1bmlxdWUgcGVyLWRldmljZSAK
-bm93YWRheXMpLgoKU28ganVzdCBtYWtpbmcgc3VyZSBpdCBpcyBzdWNlc3NmdWxseSBoYW5kZWQg
-b2ZmIHNob3VsZCBhbHNvIGJlIG9rLgoKCkhlaWtvCgo+IAo+IFNwZWNpZmljYWxseToKPiAKPiAq
-ICJzdHJ1Y3QgZHdfaGRtaSIsIHdoaWNoIGhhcyBhIHBvaW50ZXIgdG8gZW5jb2RlciwgaXMgcHJp
-dmF0ZSB0byBkdy1oZG1pLmMKPiAKPiAqIFdlIGNvdWxkIGdldCB0aGUgZW5jb2RlciBpZiB3ZSBo
-YWQgYSBwb2ludGVyIHRvIHRoZSAic3RydWN0Cj4gcm9ja2NoaXBfaGRtaSIsIGJ1dCB0aGVyZSdz
-IG5vIHdheSB0byBnZXQgdGhhdC4gIFlvdSB3b3VsZCBfdGhpbmtfIHlvdQo+IGNvdWxkIGdldCBp
-dCBiYWNrIHVzaW5nIHBsYXRmb3JtX2dldF9kcnZkYXRhKCkgYmVjYXVzZSBpdCB3YXMgc3Rhc2hl
-ZAo+IHdpdGggcGxhdGZvcm1fc2V0X2RydmRhdGEoKS4gIC4uLmJ1dCB5b3UnZCBiZSB3cm9uZy4g
-IFRoZQo+IHBsYXRmb3JtX3NldF9kcnZkYXRhKCkgaXMganVzdCB0aGVyZSB0byBmb29sIHlvdS4g
-IEkgYmVsaWV2ZSB3aGVuIHlvdQo+IGNhbGwgZHdfaGRtaV9iaW5kKCkgaXQgY2xvYmJlcnMgeW91
-ciBkcnZkYXRhIHdoZW4gaXQgY2FsbHMKPiBkZXZfc2V0X2RydmRhdGEoZGV2LCBoZG1pKTsKPiAK
-PiAKPiBTYWlkIGFub3RoZXIgd2F5OiB0YWtpbmcgeW91ciBzdWdnZXN0aW9uIG1lYW5zIHdlIG5l
-ZWQgdG8gYWRkIHNvbWUgd2F5Cj4gZm9yIGR3X2hkbWktcm9ja2NoaXAuYyB0byBnZXQgYSBwb2lu
-dGVyIHRvIHRoZSBlbmNvZGVyIGZyb20gYSAic3RydWN0Cj4gZGV2aWNlIi4gIFdlIGNvdWxkIChB
-KSBtb3ZlIHRoZSAic3RydWN0IGR3X2hkbWkiIGRlZmluaXRpb24gdG8gYQo+IHByaXZhdGUgaGVh
-ZGVyIGFuZCBhbGxvdyBkd19oZG1pLXJvY2tjaGlwLmMgdG8gaW5jbHVkZSBpdCBvciB3ZSBjb3Vs
-ZAo+IChCKSBhZGQgYSBkd19oZG1pX2dldF9lbmNvZGVyKCkgQVBJIGNhbGwgdGhhdCBkd19oZG1p
-LXJvY2tjaGlwLmMgY291bGQKPiBjYWxsLgo+IAo+IAo+IElmIHNvbWVvbmUgd291bGQgbGV0IG1l
-IGtub3cgd2hldGhlciAoQSkgb3IgKEIpIGlzIE9LIEknbSBoYXBweSB0byBwb3N0IGEKPiBwYXRj
-aC4KPiAKPiAKPiAuLi5vciwgb2YgY291cnNlLCBpZiBJJ3ZlIG1hZGUgYSBtaXN0YWtlIGluIGFs
-bCB0aGUgYWJvdmUsIGZlZWwgZnJlZQo+IHRvIHBvaW50IGl0IG91dC4KPiAKPiAKPiAtRG91ZwoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Sonntag, 6. M=E4rz 2016, 20:53:53 schrieb Andreas F=E4rber:
+> Drop #address-cells and #size-cells, which are not required by the
+> gpio-keys binding documentation, as button sub-nodes are not devices.
+>=20
+> Reported-by: Julien Chauveau <chauveau.julien@gmail.com>
+> Signed-off-by: Andreas F=E4rber <afaerber@suse.de>
+> ---
+
+changes to input-device bindings should go through the input tree, and =
+thus=20
+include Dmitry Thorokhov and the linux-input lists.
+
+
+Heiko
+
+>  v3: New (Julien)
+>=20
+>  Documentation/devicetree/bindings/input/gpio-keys.txt | 2 --
+>  1 file changed, 2 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/input/gpio-keys.txt
+> b/Documentation/devicetree/bindings/input/gpio-keys.txt index
+> 21641236c095..1552a11f6786 100644
+> --- a/Documentation/devicetree/bindings/input/gpio-keys.txt
+> +++ b/Documentation/devicetree/bindings/input/gpio-keys.txt
+> @@ -34,8 +34,6 @@ Example nodes:
+>=20
+>  	gpio_keys {
+>  			compatible =3D "gpio-keys";
+> -			#address-cells =3D <1>;
+> -			#size-cells =3D <0>;
+>  			autorepeat;
+>  			button@21 {
+>  				label =3D "GPIO Key UP";
