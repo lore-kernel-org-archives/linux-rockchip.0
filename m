@@ -1,117 +1,63 @@
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: [PATCH v3 8/8] arm64: dts: rockchip: Add Landingship config
-Date: Sun,  6 Mar 2016 20:53:57 +0100
-Message-ID: <1457294038-14243-9-git-send-email-afaerber@suse.de>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup()
+ in error path
+Date: Mon, 07 Mar 2016 16:37:03 +0800
+Message-ID: <56DD3DAF.8090700@rock-chips.com>
+References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
+ <20160305121005.GA11966@serenity.lan>
+ <20160305123942.GE19428@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1457294038-14243-1-git-send-email-afaerber-l3A5Bk7waGM@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED
-	DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM64 PORT" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160305123942.GE19428@n2100.arm.linux.org.uk>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
----
- v2 -> v3:
- * Changed compatible string to include geekbox- (Heiko)
- * Rebroke compatible strings line
- * Disabled i2c1 to avoid hang (next-20160304)
-=20
- v2: New - showcases inclusion of GeekBox module config
-=20
- arch/arm64/boot/dts/rockchip/Makefile              |  1 +
- .../dts/rockchip/rk3368-geekbox-landingship.dts    | 57 ++++++++++++++=
-++++++++
- 2 files changed, 58 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-geekbox-landing=
-ship.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dt=
-s/rockchip/Makefile
-index df37865e8ced..201bcd9863ce 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,5 +1,6 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-evb-act8846.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-geekbox.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-geekbox-landingship.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) +=3D rk3368-r88.dtb
-=20
- always		:=3D $(dtb-y)
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox-landingship.dt=
-s b/arch/arm64/boot/dts/rockchip/rk3368-geekbox-landingship.dts
-new file mode 100644
-index 000000000000..a28ace9512bb
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox-landingship.dts
-@@ -0,0 +1,57 @@
-+/*
-+ * Copyright (c) 2016 Andreas F=C3=A4rber
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of =
-the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+#include "rk3368-geekbox.dts"
-+
-+/ {
-+	model =3D "GeekBox on Landingship";
-+	compatible =3D "geekbuying,geekbox-landingship",
-+		     "geekbuying,geekbox", "rockchip,rk3368";
-+};
-+
-+&i2c1 {
-+	status =3D "disabled";
-+};
-+
-+&i2c2 {
-+	status =3D "okay";
-+};
---=20
-2.6.2
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gMjAxNuW5tDAz5pyIMDXml6UgMjA6MzksIFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90
+ZToKPiBPbiBTYXQsIE1hciAwNSwgMjAxNiBhdCAxMjoxMToxNlBNICswMDAwLCBKb2huIEtlZXBp
+bmcgd3JvdGU6Cj4+IE9uIEZyaSwgTWFyIDA0LCAyMDE2IGF0IDAzOjIyOjAxUE0gLTA4MDAsIERv
+dWdsYXMgQW5kZXJzb24gd3JvdGU6Cj4+PiBUaGUgZHJtX2VuY29kZXJfY2xlYW51cCgpIHdhcyBt
+aXNzaW5nIGJvdGggZnJvbSB0aGUgZXJyb3IgcGF0aCBvZgo+Pj4gZHdfaGRtaV9yb2NrY2hpcF9i
+aW5kKCkuICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdoZW4gc2x1Yl9kZWJ1ZyB3YXMKPj4+IGVuYWJs
+ZWQgYW5kIHdlIGVuZGVkIHVwIGRlZmVycmluZyBwcm9iZSBvZiBIRE1JIGF0IGJvb3QuCj4+Pgo+
+Pj4gVGhpcyBjYWxsIGlzbid0IG5lZWRlZCBmcm9tIHVuYmluZCgpIGJlY2F1c2UgaWYgZHdfaGRt
+aV9iaW5kKCkgcmV0dXJucwo+Pj4gbm8gZXJyb3IgdGhlbiBpdCB0YWtlcyBvdmVyIHRoZSBqb2Ig
+b2YgZnJlZWluZyB0aGUgZW5jb2RlciAoaW4KPj4+IGR3X2hkbWlfdW5iaW5kKS4KPj4+Cj4+PiBT
+aWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+
+PiAtLS0KPj4gRG9lcyBkd19oZG1pLWlteCBuZWVkIGEgc2ltaWxhciBjaGFuZ2U/ICBJIHdvbmRl
+ciBpZiBpdCB3b3VsZCBiZSBjbGVhbmVyCj4+IHRvIHB1c2ggdGhpcyBpbnRvIGR3X2hkbWlfYmlu
+ZCgpIGlmIGl0IGFmZmVjdHMgYWxsIG9mIHRoZSBwbGF0Zm9ybXMuLgo+IEkgZG9uJ3QgdGhpbmsg
+bW92aW5nIGl0IHRoZXJlIHdvdWxkIG1ha2Ugc2Vuc2UgLSBrZWVwIHRoZSBpbml0aWFsaXNhdGlv
+bgo+IGFuZCBjbGVhbnVwIHRvZ2V0aGVyIGluIHRoZSBzYW1lIGZpbGUgc28gdGhhdCBpdCdzIGNv
+bnRhaW5lZCB0b2dldGhlci4KPgoKSSBkb24ndCBsaWtlIHRoaXMgcGF0Y2ggdG9vLCBpbml0aWFs
+aXNhdGlvbiBhbmQgY2xlYW51cCBub3QgaW4gdGhlIHNhbWUgCmZpbGUgbG9va3MgYmFkLAoKSG93
+IGFib3V0OgoKZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKdm9pZCBkd19oZG1pX3Vu
+YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0
+YSkKICAgICAgICAgaGRtaV93cml0ZWIoaGRtaSwgfjAsIEhETUlfSUhfTVVURV9QSFlfU1RBVDAp
+OwoKaGRtaS0+Y29ubmVjdG9yLmZ1bmNzLT5kZXN0cm95KCZoZG1pLT5jb25uZWN0b3IpOwotICAg
+ICAgIGhkbWktPmVuY29kZXItPmZ1bmNzLT5kZXN0cm95KGhkbWktPmVuY29kZXIpOwoKZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwpzdGF0aWMgaW50IGR3X2hkbWlf
+cm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwK
+Ci0gICAgICAgcmV0dXJuIGR3X2hkbWlfYmluZChkZXYsIG1hc3RlciwgZGF0YSwgZW5jb2Rlciwg
+aW9yZXMsIGlycSwgCnBsYXRfZGF0YSk7CisgICAgICAgcmV0ID0gZHdfaGRtaV9iaW5kKGRldiwg
+bWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBpb3JlcywgaXJxLCAKcGxhdF9kYXRhKTsKKyAgICAgICBp
+ZiAocmV0KQorICAgICAgICAgICAgICAgZHJtX2VuY29kZXJfY2xlYW51cChlbmNvZGVyKTsKKwor
+ICAgICAgIHJldHVybiByZXQ7CiAgfQoKICBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX3Vu
+YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgCiptYXN0ZXIsCiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpkYXRhKQogIHsKKyAgICAgICBkcm1f
+ZW5jb2Rlcl9jbGVhbnVwKC4uLik7CiAgICAgICAgIHJldHVybiBkd19oZG1pX3VuYmluZChkZXYs
+IG1hc3RlciwgZGF0YSk7CiAgfQoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
