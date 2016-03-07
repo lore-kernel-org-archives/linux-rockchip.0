@@ -1,63 +1,35 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup()
- in error path
-Date: Mon, 07 Mar 2016 16:37:03 +0800
-Message-ID: <56DD3DAF.8090700@rock-chips.com>
-References: <1457133723-24869-1-git-send-email-dianders@chromium.org>
- <20160305121005.GA11966@serenity.lan>
- <20160305123942.GE19428@n2100.arm.linux.org.uk>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
+Date: Mon, 7 Mar 2016 13:17:54 +0100
+Message-ID: <56DD7172.4000707@suse.de>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160305123942.GE19428@n2100.arm.linux.org.uk>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>, John Keeping <john@keeping.me.uk>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Douglas Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+Sender: netdev-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>, Heiko Stuebner <heiko@sntech.de>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAz5pyIMDXml6UgMjA6MzksIFJ1c3NlbGwgS2luZyAtIEFSTSBMaW51eCB3cm90
-ZToKPiBPbiBTYXQsIE1hciAwNSwgMjAxNiBhdCAxMjoxMToxNlBNICswMDAwLCBKb2huIEtlZXBp
-bmcgd3JvdGU6Cj4+IE9uIEZyaSwgTWFyIDA0LCAyMDE2IGF0IDAzOjIyOjAxUE0gLTA4MDAsIERv
-dWdsYXMgQW5kZXJzb24gd3JvdGU6Cj4+PiBUaGUgZHJtX2VuY29kZXJfY2xlYW51cCgpIHdhcyBt
-aXNzaW5nIGJvdGggZnJvbSB0aGUgZXJyb3IgcGF0aCBvZgo+Pj4gZHdfaGRtaV9yb2NrY2hpcF9i
-aW5kKCkuICBUaGlzIGNhdXNlZCBhIGNyYXNoIHdoZW4gc2x1Yl9kZWJ1ZyB3YXMKPj4+IGVuYWJs
-ZWQgYW5kIHdlIGVuZGVkIHVwIGRlZmVycmluZyBwcm9iZSBvZiBIRE1JIGF0IGJvb3QuCj4+Pgo+
-Pj4gVGhpcyBjYWxsIGlzbid0IG5lZWRlZCBmcm9tIHVuYmluZCgpIGJlY2F1c2UgaWYgZHdfaGRt
-aV9iaW5kKCkgcmV0dXJucwo+Pj4gbm8gZXJyb3IgdGhlbiBpdCB0YWtlcyBvdmVyIHRoZSBqb2Ig
-b2YgZnJlZWluZyB0aGUgZW5jb2RlciAoaW4KPj4+IGR3X2hkbWlfdW5iaW5kKS4KPj4+Cj4+PiBT
-aWduZWQtb2ZmLWJ5OiBEb3VnbGFzIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+Cj4+
-PiAtLS0KPj4gRG9lcyBkd19oZG1pLWlteCBuZWVkIGEgc2ltaWxhciBjaGFuZ2U/ICBJIHdvbmRl
-ciBpZiBpdCB3b3VsZCBiZSBjbGVhbmVyCj4+IHRvIHB1c2ggdGhpcyBpbnRvIGR3X2hkbWlfYmlu
-ZCgpIGlmIGl0IGFmZmVjdHMgYWxsIG9mIHRoZSBwbGF0Zm9ybXMuLgo+IEkgZG9uJ3QgdGhpbmsg
-bW92aW5nIGl0IHRoZXJlIHdvdWxkIG1ha2Ugc2Vuc2UgLSBrZWVwIHRoZSBpbml0aWFsaXNhdGlv
-bgo+IGFuZCBjbGVhbnVwIHRvZ2V0aGVyIGluIHRoZSBzYW1lIGZpbGUgc28gdGhhdCBpdCdzIGNv
-bnRhaW5lZCB0b2dldGhlci4KPgoKSSBkb24ndCBsaWtlIHRoaXMgcGF0Y2ggdG9vLCBpbml0aWFs
-aXNhdGlvbiBhbmQgY2xlYW51cCBub3QgaW4gdGhlIHNhbWUgCmZpbGUgbG9va3MgYmFkLAoKSG93
-IGFib3V0OgoKZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kdy1oZG1pLmMKdm9pZCBkd19oZG1pX3Vu
-YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9pZCAqZGF0
-YSkKICAgICAgICAgaGRtaV93cml0ZWIoaGRtaSwgfjAsIEhETUlfSUhfTVVURV9QSFlfU1RBVDAp
-OwoKaGRtaS0+Y29ubmVjdG9yLmZ1bmNzLT5kZXN0cm95KCZoZG1pLT5jb25uZWN0b3IpOwotICAg
-ICAgIGhkbWktPmVuY29kZXItPmZ1bmNzLT5kZXN0cm95KGhkbWktPmVuY29kZXIpOwoKZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYwpzdGF0aWMgaW50IGR3X2hkbWlf
-cm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwK
-Ci0gICAgICAgcmV0dXJuIGR3X2hkbWlfYmluZChkZXYsIG1hc3RlciwgZGF0YSwgZW5jb2Rlciwg
-aW9yZXMsIGlycSwgCnBsYXRfZGF0YSk7CisgICAgICAgcmV0ID0gZHdfaGRtaV9iaW5kKGRldiwg
-bWFzdGVyLCBkYXRhLCBlbmNvZGVyLCBpb3JlcywgaXJxLCAKcGxhdF9kYXRhKTsKKyAgICAgICBp
-ZiAocmV0KQorICAgICAgICAgICAgICAgZHJtX2VuY29kZXJfY2xlYW51cChlbmNvZGVyKTsKKwor
-ICAgICAgIHJldHVybiByZXQ7CiAgfQoKICBzdGF0aWMgdm9pZCBkd19oZG1pX3JvY2tjaGlwX3Vu
-YmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgCiptYXN0ZXIsCiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpkYXRhKQogIHsKKyAgICAgICBkcm1f
-ZW5jb2Rlcl9jbGVhbnVwKC4uLik7CiAgICAgICAgIHJldHVybiBkd19oZG1pX3VuYmluZChkZXYs
-IG1hc3RlciwgZGF0YSk7CiAgfQoKVGhhbmtzLgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am 06.03.2016 um 20:53 schrieb Andreas F=C3=A4rber:
+> On next-20160304 the GMAC seems to have regressed, it no longer finds=
+ the PHY:
+>=20
+> libphy: PHY stmmac-0:ffffffff not found
+> eth0: Could not attach to PHY
+> stmmac_open: Cannot attach to PHY (error: -19)
+
+Still with us in next-20160307. CC'ing stmmac maintainers.
+
+http://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/log/dri=
+vers/net/ethernet/stmicro
+
+Regards,
+Andreas
+
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG=
+ N=C3=BCrnberg)
