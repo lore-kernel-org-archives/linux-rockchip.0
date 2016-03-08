@@ -1,64 +1,75 @@
-From: Julien Chauveau <chauveau.julien@gmail.com>
-Subject: Re: [PATCH RESEND] Documentation: devicetree: Clean up gpio-keys example
-Date: Tue, 8 Mar 2016 10:41:37 +0100
-Message-ID: <525564DD-D0D3-4DEB-9306-3A23288FD83F@gmail.com>
-References: <1457375055-5544-1-git-send-email-afaerber@suse.de> <CAMuHMdVMVYaygvKd3qgTz2fF9SuLA_zEYRoZZrJO+2zmP=jxag@mail.gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 9.2 \(3112\))
-Content-Type: text/plain; charset=utf-8
+From: Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
+Date: Tue, 8 Mar 2016 11:03:27 +0100
+Message-ID: <CAG374jBLD5YuBT=r3V98OqdUTXMepvQ_tLz4XMJdQMzzGYi22A@mail.gmail.com>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+ <56DD7172.4000707@suse.de> <2714888.1DdqvJZ8cb@diego> <56DD7593.5060003@suse.de>
+ <56DD8176.2080603@st.com> <56DD8FBE.9010200@suse.de> <56DD99A4.5030004@st.com>
+ <56DDA26C.3050301@suse.de> <56DDA3D5.3090209@st.com> <56DDB749.1020808@suse.de>
+ <CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <CAMuHMdVMVYaygvKd3qgTz2fF9SuLA_zEYRoZZrJO+2zmP=jxag@mail.gmail.com>
-Sender: linux-input-owner@vger.kernel.org
-To: =?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, "linux-input@vger.kernel.org" <linux-input@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Andreas and Dinh  Thanks for your feedback i will check it.
 
-> Le 8 mars 2016 =C3=A0 09:54, Geert Uytterhoeven <geert@linux-m68k.org=
-> a =C3=A9crit :
->=20
-> On Mon, Mar 7, 2016 at 7:24 PM, Andreas F=C3=A4rber <afaerber@suse.de=
-> wrote:
->> Drop #address-cells and #size-cells, which are not required by the
->> gpio-keys binding documentation, as button sub-nodes are not devices=
-=2E
->>=20
->> Reported-by: Julien Chauveau <chauveau.julien@gmail.com>
->> Signed-off-by: Andreas F=C3=A4rber <afaerber@suse.de>
->> ---
->> Documentation/devicetree/bindings/input/gpio-keys.txt | 2 --
->> 1 file changed, 2 deletions(-)
->>=20
->> diff --git a/Documentation/devicetree/bindings/input/gpio-keys.txt b=
-/Documentation/devicetree/bindings/input/gpio-keys.txt
->> index 21641236c095..1552a11f6786 100644
->> --- a/Documentation/devicetree/bindings/input/gpio-keys.txt
->> +++ b/Documentation/devicetree/bindings/input/gpio-keys.txt
->> @@ -34,8 +34,6 @@ Example nodes:
->>=20
->>        gpio_keys {
->>                        compatible =3D "gpio-keys";
->> -                       #address-cells =3D <1>;
->> -                       #size-cells =3D <0>;
->>                        autorepeat;
->>                        button@21 {
->=20
-> FYI, with "[PATCH] scripts/dtc: Update to upstream version 53bf130b1c=
-dd":
-> (http://www.spinics.net/lists/devicetree/msg117206.html) applied:
->=20
-> Warning (unit_address_vs_reg): Node /keyboard/button@21 has a unit
-> name, but no reg property
->=20
+Best regards
 
-Hi Andreas,
-This means you can also drop the unit-address (the @21 part) for the bu=
-tton.
-What about using a more relevant name like "key_up" instead of "button"=
-?
+Gabriel
 
-Julien--
-To unsubscribe from this list: send the line "unsubscribe linux-input" =
-in
-the body of a message to majordomo@vger.kernel.org
+On 8 March 2016 at 00:22, Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> On Mon, Mar 7, 2016 at 11:15 AM, Andreas F=C3=A4rber <afaerber@suse.d=
+e> wrote:
+>> Am 07.03.2016 um 16:52 schrieb Giuseppe CAVALLARO:
+>>> On 3/7/2016 4:46 PM, Andreas F=C3=A4rber wrote:
+>>>> Am 07.03.2016 um 16:09 schrieb Giuseppe CAVALLARO:
+>>>>> On 3/7/2016 3:27 PM, Andreas F=C3=A4rber wrote:
+>>>>>> Indeed, reverting Gabriel's commit fixes the observed error mess=
+ages
+>>>> [...]
+>>>>>> However, I am unable to ping any hosts on the network now.
+>>>>>
+>>>>> hmm, this could be another problem. I wonder if you can
+>>>>> check which recent patch is introducing the problem on ARM64.
+>>>>> For example if this depends on Oct_2015 update.
+>>>>
+>>>> I've had success reverting drivers/net/ethernet/stmicro/ up to and
+>>>> including "stmmac: first frame prep at the end of xmit routine", i=
+=2Ee.
+>>>> top 7 commits.
+>>>
+>>> Andreas, I will check it and let you know asap.
+>>
+>> I verified that it's just these two commits that I need to revert:
+>>
+>> "stmmac: Fix 'eth0: No PHY found' regression"
+>> "stmmac: first frame prep at the end of xmit routine"
+>>
+>> Those in between don't cause conflicts and seem to work okay.
+>>
+>
+> I'm seeing the same issue on the SoCFPGA platform:
+>
+> libphy: PHY stmmac-0:ffffffff not found
+> eth0: Could not attach to PHY
+> stmmac_open: Cannot attach to PHY (error: -19)
+>
+> If I just revert:
+>
+>  "stmmac: Fix 'eth0: No PHY found' regression"
+>
+> then the issue goes away.
+>
+> Thanks,
+> Dinh
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
