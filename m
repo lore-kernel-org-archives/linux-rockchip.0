@@ -1,55 +1,55 @@
-From: Dinh Nguyen <dinh.linux@gmail.com>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Tue, 8 Mar 2016 09:45:04 -0600
-Message-ID: <CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
-	<56DD7172.4000707@suse.de>
-	<2714888.1DdqvJZ8cb@diego>
-	<56DD7593.5060003@suse.de>
-	<56DD8176.2080603@st.com>
-	<56DD8FBE.9010200@suse.de>
-	<56DD99A4.5030004@st.com>
-	<56DDA26C.3050301@suse.de>
-	<56DDA3D5.3090209@st.com>
-	<56DDB749.1020808@suse.de>
-	<CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
-	<56DE7E1D.5070508@st.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [RESEND PATCH v2 5/5] clk: rockchip: add clock controller for the RK3399
+Date: Tue, 8 Mar 2016 15:34:44 -0800
+Message-ID: <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg@mail.gmail.com>
+References: <1456827275-8035-1-git-send-email-zhengxing@rock-chips.com>
+	<1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <56DE7E1D.5070508@st.com>
-Sender: netdev-owner@vger.kernel.org
-To: Giuseppe CAVALLARO <peppe.cavallaro@st.com>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Gabriel Fernandez <gabriel.fernandez@linaro.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, netdev@vger.kernel.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, LAKML <linux-arm-kernel@lists.infradead.org>, Alexandre TORGUE <alexandre.torgue@st.com>, Fabrice GASNIER <fabrice.gasnier@st.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>, Xu Jianqun <jay.xu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tao Huang <huangtao@rock-chips.com>, elaine.zhang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 8, 2016 at 1:24 AM, Giuseppe CAVALLARO
-<peppe.cavallaro@st.com> wrote:
-> Hi Dinh,
->
-> On 3/8/2016 12:22 AM, Dinh Nguyen wrote:
-> [snip]
->>
->>
->> I'm seeing the same issue on the SoCFPGA platform:
->>
->> libphy: PHY stmmac-0:ffffffff not found
->> eth0: Could not attach to PHY
->> stmmac_open: Cannot attach to PHY (error: -19)
->>
->> If I just revert:
->>
->>   "stmmac: Fix 'eth0: No PHY found' regression"
->>
->> then the issue goes away.
->
->
-> do you have this patch "stmmac: first frame prep at the end of xmit routine"
-> ? Or you just reverted
->   "stmmac: Fix 'eth0: No PHY found' regression"
+Xing Zheng,
 
-I only reverted "stmmac: Fix 'eth0: No PHY found' regression". I do have the
-patch "stmmac: first frame prep at the end of the xmit routine", but I did not
-need to revert that patch.
+On Tue, Mar 1, 2016 at 2:15 AM, Xing Zheng <zhengxing@rock-chips.com> wrote:
+> +       MMC(SCLK_SDMMC_DRV,     "emmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
+> +       MMC(SCLK_SDMMC_SAMPLE,  "emmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
 
-Dinh
+Can you and Jianqun Xu please coordinate?  Though I don't have a TRM
+for rk3399 and I haven't looked through this whole patch, I know for
+sure there's a problem when I pick the latest patch series from both
+of you it doesn't compile.
+
+I believe this is the latest from each of you in patchwork:
+
+8462411   [v3,1/3] dt-bindings: add bindings for rk3399 clock controller
+8462431   [v3,2/3] clk: rockchip: add dt-binding header for rk3399
+8462441   [v3,3/3] ARM64: dts: rockchip: add core dtsi file for rk3399
+
+8463741   [RESEND,v2,1/5] clk: rockchip: add more mux parameters for
+new pll sources
+8463801   [RESEND,v2,2/5] clk: rockchip: Add support for multiple
+clock providers
+8463771   [RESEND,v2,3/5] clk: rockchip: add new pll-type for rk3399
+and similar socs
+8463781   [RESEND,v2,4/5] clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
+8463831   [RESEND,v2,5/5] clk: rockchip: add clock controller for the RK3399
+
+
+Specifically your patch from March 1st refers to SCLK_SDMMC_DRV and
+SCLK_SDMMC_SAMPLE.  Those defines existed in Jianqun Xu's patch back
+on Feb 19th <https://patchwork.kernel.org/patch/8355411/>, but his
+latest patch series from March 1st
+<https://patchwork.kernel.org/patch/8462431/> no longer has those
+#defines.
+
+Can you two resolve this so I can pick both patch series and see that
+they compile?  ...or let me know where I messed up, of course.
+
+Thanks!
+
+-Doug
