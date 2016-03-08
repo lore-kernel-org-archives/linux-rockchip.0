@@ -1,14 +1,14 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Subject: Re: [GIT PULL 1/3] rockchip soc changes for 4.5
-Date: Mon, 7 Mar 2016 16:46:04 -0800
-Message-ID: <CAD=FV=Wr0f6d=tJCCfQa59pNDe1PEj44hdqCKFKricYdv7D+0w@mail.gmail.com>
-References: <1936935.FVZdWRYuBf@diego> <1650675.1PTvAK3nr8@wuerfel>
- <2125152.VIQO6FufKf@diego>
+Date: Tue, 08 Mar 2016 01:50:50 +0100
+Message-ID: <3859490.BDucKaOEBr@diego>
+References: <1936935.FVZdWRYuBf@diego> <2125152.VIQO6FufKf@diego>
+ <CAD=FV=Wr0f6d=tJCCfQa59pNDe1PEj44hdqCKFKricYdv7D+0w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2125152.VIQO6FufKf@diego>
+In-Reply-To: <CAD=FV=Wr0f6d=tJCCfQa59pNDe1PEj44hdqCKFKricYdv7D+0w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,54 +18,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVpa28sCgpPbiBGcmksIERlYyAxMSwgMjAxNSBhdCA0OjU3IFBNLCBIZWlrbyBTdMO8Ym5lciA8
-aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBIaSBBcm5kLAo+Cj4gQW0gU2Ftc3RhZywgMTIuIERl
-emVtYmVyIDIwMTUsIDAxOjMwOjE3IHNjaHJpZWIgQXJuZCBCZXJnbWFubjoKPj4gT24gU2F0dXJk
-YXkgMDUgRGVjZW1iZXIgMjAxNSAwMTo1MzozOCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gPiBT
-TVAgc3BlY2lhbCBjYXNlIGZvciB0aGUgcmszMDM2IGFuZCBtYWtpbmcgc3VyZSB0aGUgYXJjaC10
-aW1lcgo+PiA+IHN1cHBseSBpcyBlbmFibGVkLCBzaW1pbGFyIHRvIHRoZSByazMyODguCj4+Cj4+
-IFRoYXQgaXMgYSByYXRoZXIgdWdseSBoYWNrLCBJJ2QgcHJlZmVyIGlmIHRoaXMgY291bGQgYmUg
-ZG9uZSBjbGVhbmVyCj4+IHJhdGhlciB0aGFuIGR1cGxpY2F0ZWQgaW50byBhbm90aGVyIHBsYWNl
-Lgo+Cj4gSSBkbyBhZ3JlZSB0aGF0IGl0IGlzIHJhdGhlciB1Z2x5IDotKSAuCj4KPiBUaGUgZ2Vu
-ZXJhbCBvcGluaW9uIHNlZW1zIHRvIGJlLCB0aGF0IGZpcm13YXJlIGlzIHN1cHBvc2VkIHRvIG1h
-a2Ugc3VyZSB0aGlzCj4gdGltZXIgaXMgZW5hYmxlZCBhbmQgYXQgdGhlIHRpbWUgd2hlbiBpdCBn
-b3QgaW50cm9kdWNlZCB0aGUgY29uc2Vuc3VzIHdhcyB0bwo+IG5vdCBoYWNrIHVwIHRoZSBhcmNo
-LXRpbWVyIHRvIGZhY2lsaXRhdGUgdGhpcyBhbmQgImp1c3QiIHB1dCBpdCBpbnRvIHRoZSBzb2MK
-PiBjb2RlIGZvciB0aGUgYWZmZWN0ZWQgY3B1Lgo+Cj4gSXQgc2VlbXMgbGlrZSB0aGUgcmVhbGx5
-IG5ldyByazMyMjggKHF1YWQtY29yZSBBNyBhbmQgdXNpbmcgcHNjaSBub3cpIGFjdHVhbGx5Cj4g
-Z2V0cyB0aGlzIHJpZ2h0IG5vdywgaW4gaGF2aW5nIGl0cyBmaXJtd2FyZSB0YWtpbmcgY2FyZSBv
-ZiB0aGlzLiBTbyBpdCBsb29rcwo+IGxpa2UgdGhpcyBob3BlZnVsbHkgd29uJ3QgYmUgbmVlZGVk
-IGV2ZW4gZm9yIGZ1dHVyZSBhcm0zMiBzb2NzLgo+Cj4gSSBndWVzcyBJIHNob3VsZCBsb29rIGF0
-IHdoYXQgdGhlIG5ldyBhbmQgc2hpbnkgbWFpbmxpbmUgdWJvb3Qgc3VwcG9ydCBkb2VzCj4gZm9y
-IHRoaXMsIGJ1dCBJIGRvIHRoaW5rIGl0IG1pZ2h0IGFjdHVhbGx5IGRvIGl0IHJpZ2h0IGFzIHdl
-bGwuCj4KPiBTbyB0aGlzIGlzIHJlYWxseSBvbmx5IGEgaGFjayBmb3IgZmxha3kgdmVuZG9yLWJv
-b3Rsb2FkZXJzLgo+Cj4KPiBXaGljaCBicmluZ3MgbWUgdG8gLi4uCj4KPj4gU29ycnkgZm9yIG5v
-dCBzZWVpbmcgdGhpcyBlYXJsaWVyLiBDYW4geW91IHJlcGxhY2UgdGhlIGhhcmRjb2RlZAo+PiBS
-SzMwMzZfVElNRVJfUEhZUyBhbmQgUkszMjg4X1RJTUVSNl83X1BIWVMgY29uc3RhbnRzIHdpdGgg
-YSBEVAo+PiBsb29rdXAsIHRvIG1ha2UgaXQgc29tZXdoYXQgbGVzcyBoYWNreT8KPgo+IEknbSBu
-b3QgcmVhbGx5IHN1cmUgaG93IHRoYXQgaXMgc3VwcG9zZWQgdG8gbG9vayBsaWtlLiBUZWNobmlj
-YWxseSBub3RoaW5nCj4gc2hvdWxkIGV2ZXIgdG91Y2ggdGhhdCB0aW1lciwgYXMgaXQgd2lsbCBv
-bmx5IG1ha2UgdGhlIHN5c3RlbSBoYW5nIGlmIGl0IGdldHMKPiBkaXNhYmxlZC4KPgo+IFdlIGRv
-IGhhdmUgYSBiaW5kaW5nIGZvciB0aGUgdGltZXIgaXAgYmxvY2sgKHJvY2tjaGlwLHJrMzI4OC10
-aW1lcikgYnV0IG9mCj4gY291cnNlIGNhbm5vdCB1c2UgdGhhdCwgdG8gbWFrZSBzdXJlIHRoZSBy
-ZWd1bGFyIHRpbWVyIGRyaXZlciBkb2Vzbid0IGJpbmQgdG8KPiBpdC4gU28gSSBndWVzcyB3ZSBj
-b3VsZCBkbyBzb21ldGhpbmcgbGlrZToKPgo+Cj4gdGltZXJAMjAwNDQwYTAgewo+ICAgICAgICAg
-Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxhcmNoLXRpbWVyLXN1cHBseSI7Cj4gICAgICAgICByZWcg
-PSA8MHgyMDA0NDBhMCAweDIwPjsKPiB9Owo+Cj4gdHJ5IHRvIGZpbmQgdGhpcyBhbmQgZW5hYmxl
-IGl0LCBidXQgZHVwbGljYXRpbmcgdGhlIGhhY2sgYW5kIHNwcmVhZGluZyBpdCBpbnRvCj4gdGhl
-IGR0cyBhcyB3ZWxsIHNvbWVob3cgZG9lc24ndCBmZWVsIGxpa2UgYW4gaW1wcm92ZW1lbnQgOy0p
-IC4KPgo+IEJ1dCBJIG1heWJlIHlvdSBoYXZlIGEgbmljZXIgaWRlYSBvbiBob3cgdG8gZG8gdGhp
-cywgdGhhbiBtZS4KCkluIGEga2VybmVsIHRyZWUgZHJvcCBmcm9tIFJvY2tjaGlwIEkgbm90aWNl
-ZCB0aGF0IHRoZXkncmUgc3RpbGwKY2FycnlpbmcgYXJvdW5kIHRoZSBwYXRjaCAiQVJNOiByb2Nr
-Y2hpcDogbWFrZSBzdXJlIHRpbWVyNSBpcyBlbmFibGVkCm9uIHJrMzAzNiBwbGF0Zm9ybXMiIGFz
-IGlmIGl0IG1hZGUgaXQgdXBzdHJlYW0sIGJ1dCBhcyBwZXIgdGhpcyB0aHJlYWQKaXQgZGlkbid0
-LgoKRG9lcyBzb21lb25lIGhhdmUgb3duZXJzaGlwIHJlc29sdmluZyB0aGlzPyAgUGVyaGFwcyBl
-dmVyeW9uZSBoYXMKdXBkYXRlZCB0byBhIGJvb3Rsb2FkZXIgdGhhdCBhdm9pZHMgdGhlIG5lZWQg
-Zm9yIHRoaXMgcGF0Y2ggbm93PwoKLURvdWcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Am Montag, 7. M=E4rz 2016, 16:46:04 schrieb Doug Anderson:
+> On Fri, Dec 11, 2015 at 4:57 PM, Heiko St=FCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> > Hi Arnd,
+> > =
+
+> > Am Samstag, 12. Dezember 2015, 01:30:17 schrieb Arnd Bergmann:
+> >> On Saturday 05 December 2015 01:53:38 Heiko St=FCbner wrote:
+> >> > SMP special case for the rk3036 and making sure the arch-timer
+> >> > supply is enabled, similar to the rk3288.
+> >> =
+
+> >> That is a rather ugly hack, I'd prefer if this could be done cleaner
+> >> rather than duplicated into another place.
+> > =
+
+> > I do agree that it is rather ugly :-) .
+> > =
+
+> > The general opinion seems to be, that firmware is supposed to make sure
+> > this timer is enabled and at the time when it got introduced the
+> > consensus was to not hack up the arch-timer to facilitate this and "jus=
+t"
+> > put it into the soc code for the affected cpu.
+> > =
+
+> > It seems like the really new rk3228 (quad-core A7 and using psci now)
+> > actually gets this right now, in having its firmware taking care of thi=
+s.
+> > So it looks like this hopefully won't be needed even for future arm32
+> > socs.
+> > =
+
+> > I guess I should look at what the new and shiny mainline uboot support
+> > does
+> > for this, but I do think it might actually do it right as well.
+> > =
+
+> > So this is really only a hack for flaky vendor-bootloaders.
+> > =
+
+> > =
+
+> > Which brings me to ...
+> > =
+
+> >> Sorry for not seeing this earlier. Can you replace the hardcoded
+> >> RK3036_TIMER_PHYS and RK3288_TIMER6_7_PHYS constants with a DT
+> >> lookup, to make it somewhat less hacky?
+> > =
+
+> > I'm not really sure how that is supposed to look like. Technically noth=
+ing
+> > should ever touch that timer, as it will only make the system hang if it
+> > gets disabled.
+> > =
+
+> > We do have a binding for the timer ip block (rockchip,rk3288-timer) but=
+ of
+> > course cannot use that, to make sure the regular timer driver doesn't b=
+ind
+> > to it. So I guess we could do something like:
+> > =
+
+> > =
+
+> > timer@200440a0 {
+> > =
+
+> >         compatible =3D "rockchip,arch-timer-supply";
+> >         reg =3D <0x200440a0 0x20>;
+> > =
+
+> > };
+> > =
+
+> > try to find this and enable it, but duplicating the hack and spreading =
+it
+> > into the dts as well somehow doesn't feel like an improvement ;-) .
+> > =
+
+> > But I maybe you have a nicer idea on how to do this, than me.
+> =
+
+> In a kernel tree drop from Rockchip I noticed that they're still
+> carrying around the patch "ARM: rockchip: make sure timer5 is enabled
+> on rk3036 platforms" as if it made it upstream, but as per this thread
+> it didn't.
+> =
+
+> Does someone have ownership resolving this?  Perhaps everyone has
+> updated to a bootloader that avoids the need for this patch now?
+
+running on kylin, with the provided uboot sources (mainline uboot + some =
+
+patches) the rk3036 runs just fine, without that timer enablement being nee=
+ded.
+
+So if nobody shouts (and does the needed work), I intend to just let it dro=
+p.
+
+
+Heiko
