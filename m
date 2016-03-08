@@ -1,16 +1,16 @@
 From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v5 3/6] rockchip: power-domain: add support for sub-power
- domains
-Date: Tue, 8 Mar 2016 18:41:36 +0800
-Message-ID: <56DEAC60.9000803@gmail.com>
+Subject: Re: [PATCH v5 4/6] dt/bindings: power: add RK3399 SoCs header for
+ power-domain
+Date: Tue, 8 Mar 2016 18:45:06 +0800
+Message-ID: <56DEAD32.7090405@gmail.com>
 References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
- <1456992233-25164-4-git-send-email-zhangqing@rock-chips.com>
+ <1456992233-25164-5-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456992233-25164-4-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <1456992233-25164-5-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Elaine Zhang <zhangqing@rock-chips.com>, wxt@rock-chips.com
 Cc: heiko@sntech.de, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
@@ -20,84 +20,82 @@ List-Id: linux-rockchip.vger.kernel.org
 
 =E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:03, Elaine Zhang =E5=86=
 =99=E9=81=93:
-> This patch adds support for making one power domain a sub-domain of
-> other domain. This is useful for modeling power dependences,
-> which needs to have more than one power domain enabled to be operatio=
-nal.
+> According to a description from TRM, add all the power domains
 >
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
->   drivers/soc/rockchip/pm_domains.c | 64 ++++++++++++++++++++++++++++=
+>   include/dt-bindings/power/rk3399-power.h | 53 +++++++++++++++++++++=
 +++++++++++
->   1 file changed, 64 insertions(+)
+>   1 file changed, 53 insertions(+)
+>   create mode 100644 include/dt-bindings/power/rk3399-power.h
 >
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip=
-/pm_domains.c
-> index 0465a06..1777e8e 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -370,6 +370,63 @@ static void rockchip_configure_pd_cnt(struct roc=
-kchip_pmu *pmu,
->   	regmap_write(pmu->regmap, domain_reg_offset + 4, count);
->   }
->  =20
-> +static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
-> +				     struct device_node *parent)
-> +{
-[...]
-> +		child_domain =3D pmu->genpd_data.domains[idx];
+> diff --git a/include/dt-bindings/power/rk3399-power.h b/include/dt-bi=
+ndings/power/rk3399-power.h
+> new file mode 100644
+> index 0000000..69fbd67
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3399-power.h
+> @@ -0,0 +1,53 @@
+> +#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
+> +#define __DT_BINDINGS_POWER_RK3399_POWER_H__
 > +
-> +		if (pm_genpd_add_subdomain(parent_domain, child_domain)) {
-> +			dev_err(pmu->dev, "%s failed to add subdomain: %s\n",
-> +				parent_domain->name, child_domain->name);
-> +			goto err_out;
-> +		} else {
-> +			dev_info(pmu->dev, "%s add subdomain: %s\n",
-> +				parent_domain->name, child_domain->name);
-> +		}
+> +/* VD_CORE_L */
+> +#define RK3399_PD_A53_L0	0
+> +#define RK3399_PD_A53_L1	1
+> +#define RK3399_PD_A53_L2	2
+> +#define RK3399_PD_A53_L3	3
+> +#define RK3399_PD_SCU_L		4
+> +
+> +/* VD_CORE_B */
+> +#define RK3399_PD_A72_B0	5
+> +#define RK3399_PD_A72_B1	6
+> +#define RK3399_PD_SCU_B		7
+> +
+> +/* VD_CENTER */
+> +#define RK3399_PD_CENTER	8
+> +#define RK3399_PD_VCODEC	9
+> +#define RK3399_PD_RGA		10
+> +#define RK3399_PD_IEP		11
+> +#define RK3399_PD_VDU		12
+> +
+> +/* VD_LOGIC */
+> +#define RK3399_PD_PERILP	13
+> +#define RK3399_PD_PERIHP	14
+> +#define RK3399_PD_VIO		15
+> +#define RK3399_PD_VO		16
+=2E..
+ISP?
+> +#define RK3399_PD_VOPB		17
+> +#define RK3399_PD_VOPL		18
+> +#define RK3399_PD_ISP0		19
+> +#define RK3399_PD_ISP1		20
+> +#define RK3399_PD_HDCP		21
+> +#define RK3399_PD_TCPD0		22
+> +#define RK3399_PD_TCPD1		23
+> +#define RK3399_PD_GIC		24
+> +#define RK3399_PD_ALIVE		25
+> +#define RK3399_PD_USB3		26
+> +#define RK3399_PD_SD		27
+> +#define RK3399_PD_CCI		28
+> +#define RK3399_PD_CCI0		29
+> +#define RK3399_PD_CCI1		30
+> +#define RK3399_PD_GMAC		31
+> +#define RK3399_PD_EMMC		32
+> +#define RK3399_PD_EDP		33
+> +#define RK3399_PD_SDIOAUDIO	34
+> +
+> +/* VD_GPU */
+> +#define RK3399_PD_GPU		35
+> +
+> +/* VD_PMU */
+> +#define RK3399_PD_PMU		36
+> +
 
-s/dev_info/dev_dbg
+Would you please follow the TRM?
 
-CHECK: Alignment should match open parenthesis
 
-#416: FILE: drivers/soc/rockchip/pm_domains.c:416:
-+            dev_info(pmu->dev, "%s add subdomain: %s\n",
-+                parent_domain->name, child_domain->name);
 
-> +
-> +		error =3D rockchip_pm_add_subdomain(pmu, np);
-> +		if (error < 0)
-> +			goto rm_sub_domain;
-> +	}
-> +	return 0;
-> +
-> +err_out:
-> +	of_node_put(parent);
-> +	of_node_put(np);
-> +	return -EINVAL;
-> +rm_sub_domain:
-> +	pm_genpd_remove_subdomain(parent_domain, child_domain);
-> +	return error;
-> +}
-> +
->   static int rockchip_pm_domain_probe(struct platform_device *pdev)
->   {
->   	struct device *dev =3D &pdev->dev;
-> @@ -440,6 +497,13 @@ static int rockchip_pm_domain_probe(struct platf=
-orm_device *pdev)
->   			of_node_put(node);
->   			goto err_out;
->   		}
-> +
-> +		error =3D rockchip_pm_add_subdomain(pmu, node);
-> +		if (error < 0) {
-> +			dev_err(dev, "failed to handle subdomain node %s: %d\n",
-> +				node->name, error);
-> +			goto err_out;
-> +		}
->   	}
->  =20
->   	if (error) {
+> +#endif
 
 
 --=20
