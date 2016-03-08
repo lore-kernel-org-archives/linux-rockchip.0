@@ -1,52 +1,138 @@
-From: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
-Subject: Re: [RFC PATCH] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Tue, 8 Mar 2016 17:55:51 +0700
-Message-ID: <56DEAFB7.50105@ti.com>
-References: <1454610017-25499-1-git-send-email-grygorii.strashko@ti.com>
- <20160204224128.GG4215@xsjsorenbubuntu>
- <CAAtXAHcV-9gXcZOX8dzUOBZUwj9M=O4MAsMCJNQYAP+os-D7Tg@mail.gmail.com>
- <20160204233950.GH4215@xsjsorenbubuntu> <56D04D17.6030502@ti.com>
- <20160226152714.GD3173@xsjsorenbubuntu>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v5 6/6] rockchip: power-domain: Modify power domain driver
+ for rk3399
+Date: Tue, 8 Mar 2016 18:59:26 +0800
+Message-ID: <56DEB08E.5060805@gmail.com>
+References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+ <1456992591-25383-1-git-send-email-zhangqing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160226152714.GD3173@xsjsorenbubuntu>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Cc: kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, nsekhar-l0cyMroinI0@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Jun Nie <jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456992591-25383-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Elaine Zhang <zhangqing@rock-chips.com>, wxt@rock-chips.com
+Cc: heiko@sntech.de, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDIvMjYvMjAxNiAxMDoyNyBQTSwgU8O2cmVuIEJyaW5rbWFubiB3cm90ZToKPiBPbiBGcmks
-IDIwMTYtMDItMjYgYXQgMTU6MDM6MTkgKzAyMDAsIEdyeWdvcmlpIFN0cmFzaGtvIHdyb3RlOgo+
-PiBPbiAwMi8wNS8yMDE2IDAxOjM5IEFNLCBTw7ZyZW4gQnJpbmttYW5uIHdyb3RlOgo+Pj4gT24g
-VGh1LCAyMDE2LTAyLTA0IGF0IDE1OjE0OjQ3IC0wODAwLCBNb3JpdHogRmlzY2hlciB3cm90ZToK
-Pj4+PiBIaSBTb2VyZW4sCj4+Pj4KPj4+PiBPbiBUaHUsIEZlYiA0LCAyMDE2IGF0IDI6NDEgUE0s
-IFPDtnJlbiBCcmlua21hbm4KPj4+PiA8c29yZW4uYnJpbmttYW5uQHhpbGlueC5jb20+IHdyb3Rl
-Ogo+Pj4+Cj4+Pj4+IEJ1dCB3aXRoIHRoaXMgY2hhbmdlIHRoZSAnaWYgIUNQVV9GUkVRJyBiZWNv
-bWVzIG9ic29sZXRlLgo+Pj4+IEknbSBjb25mdXNlZCwgY291bGQgeW91IGV4cGxhaW4gdGhhdCBz
-dGF0ZW1lbnQ/IFlvdSBkb24ndCB3YW50IHBlb3BsZQo+Pj4+IGFjY2lkZW50YWxseSBydW5uaW5n
-IHdpdGggR1Qgd2hlbiBDUFVfRlJFUSBpcyBvbiwgcmlnaHQ/Cj4+Pgo+Pj4gQ29ycmVjdC4gQnV0
-IHdpdGggdGhpcyBLY29uZmlnIHJld29yayB5b3UgY2FuIGp1c3QgZGVzZWxlY3QgaXQgaW4KPj4+
-IEtjb25maWcuIFRoZSBnZW5lcmljIEhBVkVfR1QgY291bGQgYWx3YXlzIGJlIHNlbGVjdGVkLgo+
-Pj4KPj4KPj4KPj4gRG9uJ3Qga25vdyB3aG9tIHNob3VsZCBpIGFzayAtIGJ1dCB3aGF0IHdpbGwg
-YmUgdGhlIGZpbmFsIGNvbmNsdXNpb24gaGVyZT8KPj4gQ2FuIGl0IGJlIG1lcmdlZD8KPiAKPiBJ
-IHRoaW5rIHdlIGRvbid0IGJyZWFrIGFueXRoaW5nIGVpdGhlciB3YXkuIFdvdWxkIGp1c3QgYmUg
-c29tZQo+IGFkZGl0aW9uYWwgY2xlYW4gdXAgdG8gZ2V0IHJpZCBvZiB0aGF0IG1lbnRpb25lZCBj
-b25zdHJhaW50ICh3aGljaAo+IGRvZXNuJ3QgcmVhbGx5IHdvcmsgd2VsbCBhbnl3YXkgaW4gdGhl
-IG11bHRpLWFyY2gga2VybmVsKS4gU28sIG5vIHJlYWwKPiBvYmplY3Rpb25zIHRvIG1lcmdpbmcg
-aXQgZnJvbSBteSBzaWRlLgo+IAoKWWVhaC4gVGhhbmtzCgpJJ2xsIHJlLXNlbmQgaXQgYWZ0ZXIg
-NC42LXJjLgpCdXQgV2hhdCBJJ20gbm90IGZ1bGx5IHVuZGVyc3RhbmQgaXMgaG93IHRvIGdldCBp
-dCBtZXJnZWQgdGFraW5nIGludG8gYWNjb3VudCB0aGF0Cml0IHRvdWNoZXMgZmV3IG1hY2hlcyAm
-IGNsb2Nrc291cmNlIDooIAoKLS0gCnJlZ2FyZHMsCi1ncnlnb3JpaQoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+
+=E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:09, Elaine Zhang =E5=86=
+=99=E9=81=93:
+> This driver is modified to support RK3399 SoC.
+>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+Reviewed-by: Caesar Wang  <wxt@rock-chips.com>
+
+> ---
+>   drivers/soc/rockchip/pm_domains.c | 55 ++++++++++++++++++++++++++++=
++++++++++++
+>   1 file changed, 55 insertions(+)
+>
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip=
+/pm_domains.c
+> index 1777e8e..8cdd877 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -19,6 +19,7 @@
+>   #include <linux/mfd/syscon.h>
+>   #include <dt-bindings/power/rk3288-power.h>
+>   #include <dt-bindings/power/rk3368-power.h>
+> +#include <dt-bindings/power/rk3399-power.h>
+>  =20
+>   struct rockchip_domain_info {
+>   	int pwr_mask;
+> @@ -79,6 +80,9 @@ struct rockchip_pmu {
+>   #define DOMAIN_RK3368(pwr, status, req)		\
+>   	DOMAIN(pwr, status, req, (req) + 16, req)
+>  =20
+> +#define DOMAIN_RK3399(pwr, status, req)                \
+> +	DOMAIN(pwr, status, req, req, req)
+> +
+>   static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *=
+pd)
+>   {
+>   	struct rockchip_pmu *pmu =3D pd->pmu;
+> @@ -535,6 +539,36 @@ static const struct rockchip_domain_info rk3368_=
+pm_domains[] =3D {
+>   	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368(17, 16, 2),
+>   };
+>  =20
+> +static const struct rockchip_domain_info rk3399_pm_domains[] =3D {
+> +	[RK3399_PD_TCPD0]	=3D DOMAIN_RK3399(8, 8, -1),
+> +	[RK3399_PD_TCPD1]	=3D DOMAIN_RK3399(9, 9, -1),
+> +	[RK3399_PD_CCI]	=3D DOMAIN_RK3399(10, 10, -1),
+> +	[RK3399_PD_CCI0]	=3D DOMAIN_RK3399(-1, -1, 15),
+> +	[RK3399_PD_CCI1]	=3D DOMAIN_RK3399(-1, -1, 16),
+> +	[RK3399_PD_PERILP]	=3D DOMAIN_RK3399(11, 11, 1),
+> +	[RK3399_PD_PERIHP]	=3D DOMAIN_RK3399(12, 12, 2),
+> +	[RK3399_PD_CENTER]	=3D DOMAIN_RK3399(13, 13, 14),
+> +	[RK3399_PD_VIO]	=3D DOMAIN_RK3399(14, 14, 17),
+> +	[RK3399_PD_GPU]	=3D DOMAIN_RK3399(15, 15, 0),
+> +	[RK3399_PD_VCODEC]	=3D DOMAIN_RK3399(16, 16, 3),
+> +	[RK3399_PD_VDU]	=3D DOMAIN_RK3399(17, 17, 4),
+> +	[RK3399_PD_RGA]	=3D DOMAIN_RK3399(18, 18, 5),
+> +	[RK3399_PD_IEP]	=3D DOMAIN_RK3399(19, 19, 6),
+> +	[RK3399_PD_VO]	=3D DOMAIN_RK3399(20, 20, -1),
+> +	[RK3399_PD_VOPB]	=3D DOMAIN_RK3399(-1, -1, 7),
+> +	[RK3399_PD_VOPL]	=3D DOMAIN_RK3399(-1, -1, 8),
+> +	[RK3399_PD_ISP0]	=3D DOMAIN_RK3399(22, 22, 9),
+> +	[RK3399_PD_ISP1]	=3D DOMAIN_RK3399(23, 23, 10),
+> +	[RK3399_PD_HDCP]	=3D DOMAIN_RK3399(24, 24, 11),
+> +	[RK3399_PD_GMAC]	=3D DOMAIN_RK3399(25, 25, 23),
+> +	[RK3399_PD_EMMC]	=3D DOMAIN_RK3399(26, 26, 24),
+> +	[RK3399_PD_USB3]	=3D DOMAIN_RK3399(27, 27, 12),
+> +	[RK3399_PD_EDP]	=3D DOMAIN_RK3399(28, 28, 22),
+> +	[RK3399_PD_GIC]	=3D DOMAIN_RK3399(29, 29, 27),
+> +	[RK3399_PD_SD]	=3D DOMAIN_RK3399(30, 30, 28),
+> +	[RK3399_PD_SDIOAUDIO]	=3D DOMAIN_RK3399(31, 31, 29),
+> +};
+> +
+>   static const struct rockchip_pmu_info rk3288_pmu =3D {
+>   	.pwr_offset =3D 0x08,
+>   	.status_offset =3D 0x0c,
+> @@ -569,6 +603,23 @@ static const struct rockchip_pmu_info rk3368_pmu=
+ =3D {
+>   	.domain_info =3D rk3368_pm_domains,
+>   };
+>  =20
+> +static const struct rockchip_pmu_info rk3399_pmu =3D {
+> +	.pwr_offset =3D 0x14,
+> +	.status_offset =3D 0x18,
+> +	.req_offset =3D 0x60,
+> +	.idle_offset =3D 0x64,
+> +	.ack_offset =3D 0x68,
+> +
+> +	.core_pwrcnt_offset =3D 0x9c,
+> +	.gpu_pwrcnt_offset =3D 0xa4,
+> +
+> +	.core_power_transition_time =3D 24,
+> +	.gpu_power_transition_time =3D 24,
+> +
+> +	.num_domains =3D ARRAY_SIZE(rk3399_pm_domains),
+> +	.domain_info =3D rk3399_pm_domains,
+> +};
+> +
+>   static const struct of_device_id rockchip_pm_domain_dt_match[] =3D =
+{
+>   	{
+>   		.compatible =3D "rockchip,rk3288-power-controller",
+> @@ -578,6 +629,10 @@ static const struct of_device_id rockchip_pm_dom=
+ain_dt_match[] =3D {
+>   		.compatible =3D "rockchip,rk3368-power-controller",
+>   		.data =3D (void *)&rk3368_pmu,
+>   	},
+> +	{
+> +		.compatible =3D "rockchip,rk3399-power-controller",
+> +		.data =3D (void *)&rk3399_pmu,
+> +	},
+>   	{ /* sentinel */ },
+>   };
+>  =20
+
+
+--=20
+Thanks,
+Caesar
