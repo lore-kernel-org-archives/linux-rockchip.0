@@ -1,73 +1,71 @@
-From: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Mon, 7 Mar 2016 17:22:24 -0600
-Message-ID: <CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
-	<56DD7172.4000707@suse.de>
-	<2714888.1DdqvJZ8cb@diego>
-	<56DD7593.5060003@suse.de>
-	<56DD8176.2080603@st.com>
-	<56DD8FBE.9010200@suse.de>
-	<56DD99A4.5030004@st.com>
-	<56DDA26C.3050301@suse.de>
-	<56DDA3D5.3090209@st.com>
-	<56DDB749.1020808@suse.de>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [GIT PULL 1/3] rockchip soc changes for 4.5
+Date: Mon, 7 Mar 2016 16:46:04 -0800
+Message-ID: <CAD=FV=Wr0f6d=tJCCfQa59pNDe1PEj44hdqCKFKricYdv7D+0w@mail.gmail.com>
+References: <1936935.FVZdWRYuBf@diego> <1650675.1PTvAK3nr8@wuerfel>
+ <2125152.VIQO6FufKf@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56DDB749.1020808-l3A5Bk7waGM@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Cc: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2125152.VIQO6FufKf@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 7, 2016 at 11:15 AM, Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>=
- wrote:
-> Am 07.03.2016 um 16:52 schrieb Giuseppe CAVALLARO:
->> On 3/7/2016 4:46 PM, Andreas F=C3=A4rber wrote:
->>> Am 07.03.2016 um 16:09 schrieb Giuseppe CAVALLARO:
->>>> On 3/7/2016 3:27 PM, Andreas F=C3=A4rber wrote:
->>>>> Indeed, reverting Gabriel's commit fixes the observed error messa=
-ges
->>> [...]
->>>>> However, I am unable to ping any hosts on the network now.
->>>>
->>>> hmm, this could be another problem. I wonder if you can
->>>> check which recent patch is introducing the problem on ARM64.
->>>> For example if this depends on Oct_2015 update.
->>>
->>> I've had success reverting drivers/net/ethernet/stmicro/ up to and
->>> including "stmmac: first frame prep at the end of xmit routine", i.=
-e.
->>> top 7 commits.
->>
->> Andreas, I will check it and let you know asap.
->
-> I verified that it's just these two commits that I need to revert:
->
-> "stmmac: Fix 'eth0: No PHY found' regression"
-> "stmmac: first frame prep at the end of xmit routine"
->
-> Those in between don't cause conflicts and seem to work okay.
->
-
-I'm seeing the same issue on the SoCFPGA platform:
-
-libphy: PHY stmmac-0:ffffffff not found
-eth0: Could not attach to PHY
-stmmac_open: Cannot attach to PHY (error: -19)
-
-If I just revert:
-
- "stmmac: Fix 'eth0: No PHY found' regression"
-
-then the issue goes away.
-
-Thanks,
-Dinh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGVpa28sCgpPbiBGcmksIERlYyAxMSwgMjAxNSBhdCA0OjU3IFBNLCBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiBIaSBBcm5kLAo+Cj4gQW0gU2Ftc3RhZywgMTIuIERl
+emVtYmVyIDIwMTUsIDAxOjMwOjE3IHNjaHJpZWIgQXJuZCBCZXJnbWFubjoKPj4gT24gU2F0dXJk
+YXkgMDUgRGVjZW1iZXIgMjAxNSAwMTo1MzozOCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gPiBT
+TVAgc3BlY2lhbCBjYXNlIGZvciB0aGUgcmszMDM2IGFuZCBtYWtpbmcgc3VyZSB0aGUgYXJjaC10
+aW1lcgo+PiA+IHN1cHBseSBpcyBlbmFibGVkLCBzaW1pbGFyIHRvIHRoZSByazMyODguCj4+Cj4+
+IFRoYXQgaXMgYSByYXRoZXIgdWdseSBoYWNrLCBJJ2QgcHJlZmVyIGlmIHRoaXMgY291bGQgYmUg
+ZG9uZSBjbGVhbmVyCj4+IHJhdGhlciB0aGFuIGR1cGxpY2F0ZWQgaW50byBhbm90aGVyIHBsYWNl
+Lgo+Cj4gSSBkbyBhZ3JlZSB0aGF0IGl0IGlzIHJhdGhlciB1Z2x5IDotKSAuCj4KPiBUaGUgZ2Vu
+ZXJhbCBvcGluaW9uIHNlZW1zIHRvIGJlLCB0aGF0IGZpcm13YXJlIGlzIHN1cHBvc2VkIHRvIG1h
+a2Ugc3VyZSB0aGlzCj4gdGltZXIgaXMgZW5hYmxlZCBhbmQgYXQgdGhlIHRpbWUgd2hlbiBpdCBn
+b3QgaW50cm9kdWNlZCB0aGUgY29uc2Vuc3VzIHdhcyB0bwo+IG5vdCBoYWNrIHVwIHRoZSBhcmNo
+LXRpbWVyIHRvIGZhY2lsaXRhdGUgdGhpcyBhbmQgImp1c3QiIHB1dCBpdCBpbnRvIHRoZSBzb2MK
+PiBjb2RlIGZvciB0aGUgYWZmZWN0ZWQgY3B1Lgo+Cj4gSXQgc2VlbXMgbGlrZSB0aGUgcmVhbGx5
+IG5ldyByazMyMjggKHF1YWQtY29yZSBBNyBhbmQgdXNpbmcgcHNjaSBub3cpIGFjdHVhbGx5Cj4g
+Z2V0cyB0aGlzIHJpZ2h0IG5vdywgaW4gaGF2aW5nIGl0cyBmaXJtd2FyZSB0YWtpbmcgY2FyZSBv
+ZiB0aGlzLiBTbyBpdCBsb29rcwo+IGxpa2UgdGhpcyBob3BlZnVsbHkgd29uJ3QgYmUgbmVlZGVk
+IGV2ZW4gZm9yIGZ1dHVyZSBhcm0zMiBzb2NzLgo+Cj4gSSBndWVzcyBJIHNob3VsZCBsb29rIGF0
+IHdoYXQgdGhlIG5ldyBhbmQgc2hpbnkgbWFpbmxpbmUgdWJvb3Qgc3VwcG9ydCBkb2VzCj4gZm9y
+IHRoaXMsIGJ1dCBJIGRvIHRoaW5rIGl0IG1pZ2h0IGFjdHVhbGx5IGRvIGl0IHJpZ2h0IGFzIHdl
+bGwuCj4KPiBTbyB0aGlzIGlzIHJlYWxseSBvbmx5IGEgaGFjayBmb3IgZmxha3kgdmVuZG9yLWJv
+b3Rsb2FkZXJzLgo+Cj4KPiBXaGljaCBicmluZ3MgbWUgdG8gLi4uCj4KPj4gU29ycnkgZm9yIG5v
+dCBzZWVpbmcgdGhpcyBlYXJsaWVyLiBDYW4geW91IHJlcGxhY2UgdGhlIGhhcmRjb2RlZAo+PiBS
+SzMwMzZfVElNRVJfUEhZUyBhbmQgUkszMjg4X1RJTUVSNl83X1BIWVMgY29uc3RhbnRzIHdpdGgg
+YSBEVAo+PiBsb29rdXAsIHRvIG1ha2UgaXQgc29tZXdoYXQgbGVzcyBoYWNreT8KPgo+IEknbSBu
+b3QgcmVhbGx5IHN1cmUgaG93IHRoYXQgaXMgc3VwcG9zZWQgdG8gbG9vayBsaWtlLiBUZWNobmlj
+YWxseSBub3RoaW5nCj4gc2hvdWxkIGV2ZXIgdG91Y2ggdGhhdCB0aW1lciwgYXMgaXQgd2lsbCBv
+bmx5IG1ha2UgdGhlIHN5c3RlbSBoYW5nIGlmIGl0IGdldHMKPiBkaXNhYmxlZC4KPgo+IFdlIGRv
+IGhhdmUgYSBiaW5kaW5nIGZvciB0aGUgdGltZXIgaXAgYmxvY2sgKHJvY2tjaGlwLHJrMzI4OC10
+aW1lcikgYnV0IG9mCj4gY291cnNlIGNhbm5vdCB1c2UgdGhhdCwgdG8gbWFrZSBzdXJlIHRoZSBy
+ZWd1bGFyIHRpbWVyIGRyaXZlciBkb2Vzbid0IGJpbmQgdG8KPiBpdC4gU28gSSBndWVzcyB3ZSBj
+b3VsZCBkbyBzb21ldGhpbmcgbGlrZToKPgo+Cj4gdGltZXJAMjAwNDQwYTAgewo+ICAgICAgICAg
+Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxhcmNoLXRpbWVyLXN1cHBseSI7Cj4gICAgICAgICByZWcg
+PSA8MHgyMDA0NDBhMCAweDIwPjsKPiB9Owo+Cj4gdHJ5IHRvIGZpbmQgdGhpcyBhbmQgZW5hYmxl
+IGl0LCBidXQgZHVwbGljYXRpbmcgdGhlIGhhY2sgYW5kIHNwcmVhZGluZyBpdCBpbnRvCj4gdGhl
+IGR0cyBhcyB3ZWxsIHNvbWVob3cgZG9lc24ndCBmZWVsIGxpa2UgYW4gaW1wcm92ZW1lbnQgOy0p
+IC4KPgo+IEJ1dCBJIG1heWJlIHlvdSBoYXZlIGEgbmljZXIgaWRlYSBvbiBob3cgdG8gZG8gdGhp
+cywgdGhhbiBtZS4KCkluIGEga2VybmVsIHRyZWUgZHJvcCBmcm9tIFJvY2tjaGlwIEkgbm90aWNl
+ZCB0aGF0IHRoZXkncmUgc3RpbGwKY2FycnlpbmcgYXJvdW5kIHRoZSBwYXRjaCAiQVJNOiByb2Nr
+Y2hpcDogbWFrZSBzdXJlIHRpbWVyNSBpcyBlbmFibGVkCm9uIHJrMzAzNiBwbGF0Zm9ybXMiIGFz
+IGlmIGl0IG1hZGUgaXQgdXBzdHJlYW0sIGJ1dCBhcyBwZXIgdGhpcyB0aHJlYWQKaXQgZGlkbid0
+LgoKRG9lcyBzb21lb25lIGhhdmUgb3duZXJzaGlwIHJlc29sdmluZyB0aGlzPyAgUGVyaGFwcyBl
+dmVyeW9uZSBoYXMKdXBkYXRlZCB0byBhIGJvb3Rsb2FkZXIgdGhhdCBhdm9pZHMgdGhlIG5lZWQg
+Zm9yIHRoaXMgcGF0Y2ggbm93PwoKLURvdWcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
