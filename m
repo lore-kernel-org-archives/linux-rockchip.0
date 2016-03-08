@@ -1,78 +1,90 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v5 5/6] dt/bindings: rockchip: modify document of Rockchip
- power domains
-Date: Tue, 8 Mar 2016 19:09:21 +0800
-Message-ID: <56DEB2E1.6060808@gmail.com>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
- <1456992557-25331-1-git-send-email-zhangqing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456992557-25331-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>, wxt@rock-chips.com
-Cc: heiko@sntech.de, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
+From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v5 0/4] add reboot mode driver
+Date: Tue,  8 Mar 2016 20:21:56 +0800
+Message-ID: <1457439716-8084-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dbaryshkov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, jwerner-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+This driver parse the reboot commands like "reboot loader"
+and "reboot recovery" to get a boot mode described in the
+device tree , then call the corresponding  write interfae
+to store the boot mode in some place like special register
+or ram , which can be read by the bootloader after system
+reboot.
 
-=E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:09, Elaine Zhang =E5=86=
-=99=E9=81=93:
-> Add binding documentation for the power domains
-> found on Rockchip RK3399 SoCs.
-> RK3399 pd on/off not need to enable clk which in this pd.
-> So remove the clocks in the rk3399 pd example.
->
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> ---
->   .../bindings/soc/rockchip/power_domain.txt         | 37 +++++++++++=
-+++++++++++
->   1 file changed, 37 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_dom=
-ain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.t=
-xt
-> index 13dc6a3..98085c8 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> @@ -7,6 +7,7 @@ Required properties for power domain controller:
->   - compatible: Should be one of the following.
-[....]
->  =20
->   Example of the node using power domain:
->  =20
-> @@ -65,3 +96,9 @@ Example of the node using power domain:
->                   power-domains =3D <&power RK3368_PD_GPU_1>;
->                   /* ... */
->           };
-> +
-> +	node {
-> +		/* ... */
-> +		power-domains =3D <&power RK3399_PD_VOPB>;
-> +		/* ... */
-> +	};
-
-Trivial: typo
-                 power: power-controller {
-@@ -92,10 +92,10 @@ Example of the node using power domain:
-         };
-
-         node {
--                /* ... */
--                power-domains =3D <&power RK3368_PD_GPU_1>;
--                /* ... */
--        };
-+               /* ... */
-+               power-domains =3D <&power RK3368_PD_GPU_1>;
-+               /* ... */
-+       };
+This is commonly done on Android based devices, in order to
+reboot the device into fastboot or recovery mode.
 
 
+Changes in v5:
+- delete a unnecessary blank line in syscon-reboot-mode.txt
+- rename macro BOOT_LOADER to BOOT_BL_DOWNLOAD, which gives a more clear mean
+- use two blank space under help in Kconfig
+- use unsigned int instead of int for member magic in struct mode_info
+
+Changes in v4:
+- remove mode-maskrom
+- rename mode-fastboot to mode-bootloader to keep compatible with the exiting Android device
+- make this driver depends on OF to avoid kbuild test error
+
+Changes in v3:
+- descirbe all reboot mode as properity instead of subnode
+- scan multi properities
+- add mask value for some platform which only use some bits of the register
+  to store boot mode magic value
+- descirbe all reboot mode as property instead of subnode
+- add rk3036 support
+- descirbe all reboot mode as properity instead of subnode
+
+Changes in v2:
+- move to dir drivers/power/reset/
+- make syscon-reboot-mode a generic driver
+- make this node as a subnode of PMU
+- make this node as a subnode of pmugrf
+
+Changes in v1:
+- fix the embarrassed compile warning
+- correct the maskrom magic number
+- check for the normal reboot
+- correct the maskrom magic number
+- use macro defined in rockchip_boot-mode.h for reboot-mode DT node
+
+Andy Yan (4):
+  dt-bindings: power: reset: add document for reboot-mode driver
+  power: reset: add reboot mode driver
+  ARM: dts: rockchip: add syscon-reboot-mode DT node
+  ARM64: dts: rockchip: add syscon-reboot-mode DT node
+
+ .../bindings/power/reset/reboot-mode.txt           |  24 +++++
+ .../bindings/power/reset/syscon-reboot-mode.txt    |  34 +++++++
+ arch/arm/boot/dts/rk3036.dtsi                      |  11 ++-
+ arch/arm/boot/dts/rk3288.dtsi                      |  10 ++
+ arch/arm/boot/dts/rk3xxx.dtsi                      |  12 ++-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  13 ++-
+ drivers/power/reset/Kconfig                        |  13 +++
+ drivers/power/reset/Makefile                       |   2 +
+ drivers/power/reset/reboot-mode.c                  | 106 +++++++++++++++++++++
+ drivers/power/reset/reboot-mode.h                  |   6 ++
+ drivers/power/reset/syscon-reboot-mode.c           |  65 +++++++++++++
+ include/dt-bindings/soc/rockchip_boot-mode.h       |  15 +++
+ 12 files changed, 308 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+ create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+ create mode 100644 drivers/power/reset/reboot-mode.c
+ create mode 100644 drivers/power/reset/reboot-mode.h
+ create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+ create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
+
+-- 
+1.9.1
 
 
 
---=20
-Thanks,
-Caesar
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
