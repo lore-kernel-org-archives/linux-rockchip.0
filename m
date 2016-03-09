@@ -1,55 +1,66 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [RESEND PATCH v2 5/5] clk: rockchip: add clock controller for the RK3399
-Date: Tue, 8 Mar 2016 15:34:44 -0800
-Message-ID: <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg@mail.gmail.com>
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 5/5] clk: rockchip: add clock controller for the
+ RK3399
+Date: Wed, 9 Mar 2016 08:51:31 +0800
+Message-ID: <56DF7393.4020600@rock-chips.com>
 References: <1456827275-8035-1-git-send-email-zhengxing@rock-chips.com>
-	<1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
+ <1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
+ <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>, Xu Jianqun <jay.xu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Tao Huang <huangtao@rock-chips.com>, elaine.zhang@rock-chips.com
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Xing Zheng,
-
-On Tue, Mar 1, 2016 at 2:15 AM, Xing Zheng <zhengxing@rock-chips.com> wrote:
-> +       MMC(SCLK_SDMMC_DRV,     "emmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
-> +       MMC(SCLK_SDMMC_SAMPLE,  "emmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
-
-Can you and Jianqun Xu please coordinate?  Though I don't have a TRM
-for rk3399 and I haven't looked through this whole patch, I know for
-sure there's a problem when I pick the latest patch series from both
-of you it doesn't compile.
-
-I believe this is the latest from each of you in patchwork:
-
-8462411   [v3,1/3] dt-bindings: add bindings for rk3399 clock controller
-8462431   [v3,2/3] clk: rockchip: add dt-binding header for rk3399
-8462441   [v3,3/3] ARM64: dts: rockchip: add core dtsi file for rk3399
-
-8463741   [RESEND,v2,1/5] clk: rockchip: add more mux parameters for
-new pll sources
-8463801   [RESEND,v2,2/5] clk: rockchip: Add support for multiple
-clock providers
-8463771   [RESEND,v2,3/5] clk: rockchip: add new pll-type for rk3399
-and similar socs
-8463781   [RESEND,v2,4/5] clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
-8463831   [RESEND,v2,5/5] clk: rockchip: add clock controller for the RK3399
-
-
-Specifically your patch from March 1st refers to SCLK_SDMMC_DRV and
-SCLK_SDMMC_SAMPLE.  Those defines existed in Jianqun Xu's patch back
-on Feb 19th <https://patchwork.kernel.org/patch/8355411/>, but his
-latest patch series from March 1st
-<https://patchwork.kernel.org/patch/8462431/> no longer has those
-#defines.
-
-Can you two resolve this so I can pick both patch series and see that
-they compile?  ...or let me know where I messed up, of course.
-
-Thanks!
-
--Doug
+SGkgRG91ZzoKCtTaIDA5LzAzLzIwMTYgMDc6MzQsIERvdWcgQW5kZXJzb24g0LS1wDoKPiBYaW5n
+IFpoZW5nLAo+Cj4gT24gVHVlLCBNYXIgMSwgMjAxNiBhdCAyOjE1IEFNLCBYaW5nIFpoZW5nIDx6
+aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiArICAgICAgIE1NQyhTQ0xLX1NETU1D
+X0RSViwgICAgICJlbW1jX2RydiIsICAgICJjbGtfc2RtbWMiLCBSSzMzOTlfU0RNTUNfQ09OMCwg
+MSksCj4+ICsgICAgICAgTU1DKFNDTEtfU0RNTUNfU0FNUExFLCAgImVtbWNfc2FtcGxlIiwgImNs
+a19zZG1tYyIsIFJLMzM5OV9TRE1NQ19DT04xLCAxKSwKPgo+IENhbiB5b3UgYW5kIEppYW5xdW4g
+WHUgcGxlYXNlIGNvb3JkaW5hdGU/ICBUaG91Z2ggSSBkb24ndCBoYXZlIGEgVFJNCj4gZm9yIHJr
+MzM5OSBhbmQgSSBoYXZlbid0IGxvb2tlZCB0aHJvdWdoIHRoaXMgd2hvbGUgcGF0Y2gsIEkga25v
+dyBmb3IKPiBzdXJlIHRoZXJlJ3MgYSBwcm9ibGVtIHdoZW4gSSBwaWNrIHRoZSBsYXRlc3QgcGF0
+Y2ggc2VyaWVzIGZyb20gYm90aAo+IG9mIHlvdSBpdCBkb2Vzbid0IGNvbXBpbGUuCj4KPiBJIGJl
+bGlldmUgdGhpcyBpcyB0aGUgbGF0ZXN0IGZyb20gZWFjaCBvZiB5b3UgaW4gcGF0Y2h3b3JrOgo+
+Cj4gODQ2MjQxMSAgIFt2MywxLzNdIGR0LWJpbmRpbmdzOiBhZGQgYmluZGluZ3MgZm9yIHJrMzM5
+OSBjbG9jayBjb250cm9sbGVyCj4gODQ2MjQzMSAgIFt2MywyLzNdIGNsazogcm9ja2NoaXA6IGFk
+ZCBkdC1iaW5kaW5nIGhlYWRlciBmb3IgcmszMzk5Cj4gODQ2MjQ0MSAgIFt2MywzLzNdIEFSTTY0
+OiBkdHM6IHJvY2tjaGlwOiBhZGQgY29yZSBkdHNpIGZpbGUgZm9yIHJrMzM5OQo+Cj4gODQ2Mzc0
+MSAgIFtSRVNFTkQsdjIsMS81XSBjbGs6IHJvY2tjaGlwOiBhZGQgbW9yZSBtdXggcGFyYW1ldGVy
+cyBmb3IKPiBuZXcgcGxsIHNvdXJjZXMKPiA4NDYzODAxICAgW1JFU0VORCx2MiwyLzVdIGNsazog
+cm9ja2NoaXA6IEFkZCBzdXBwb3J0IGZvciBtdWx0aXBsZQo+IGNsb2NrIHByb3ZpZGVycwo+IDg0
+NjM3NzEgICBbUkVTRU5ELHYyLDMvNV0gY2xrOiByb2NrY2hpcDogYWRkIG5ldyBwbGwtdHlwZSBm
+b3IgcmszMzk5Cj4gYW5kIHNpbWlsYXIgc29jcwo+IDg0NjM3ODEgICBbUkVTRU5ELHYyLDQvNV0g
+Y2xrOiByb2NrY2hpcDogYWRkIGEgQ09NUE9TSVRFX0ZSQUNNVVhfTk9HQVRFIHR5cGUKPiA4NDYz
+ODMxICAgW1JFU0VORCx2Miw1LzVdIGNsazogcm9ja2NoaXA6IGFkZCBjbG9jayBjb250cm9sbGVy
+IGZvciB0aGUgUkszMzk5Cj4KPgo+IFNwZWNpZmljYWxseSB5b3VyIHBhdGNoIGZyb20gTWFyY2gg
+MXN0IHJlZmVycyB0byBTQ0xLX1NETU1DX0RSViBhbmQKPiBTQ0xLX1NETU1DX1NBTVBMRS4gIFRo
+b3NlIGRlZmluZXMgZXhpc3RlZCBpbiBKaWFucXVuIFh1J3MgcGF0Y2ggYmFjawo+IG9uIEZlYiAx
+OXRoIDxodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzgzNTU0MTEvPiwgYnV0IGhp
+cwo+IGxhdGVzdCBwYXRjaCBzZXJpZXMgZnJvbSBNYXJjaCAxc3QKPiA8aHR0cHM6Ly9wYXRjaHdv
+cmsua2VybmVsLm9yZy9wYXRjaC84NDYyNDMxLz4gbm8gbG9uZ2VyIGhhcyB0aG9zZQo+ICNkZWZp
+bmVzLgo+Cj4gQ2FuIHlvdSB0d28gcmVzb2x2ZSB0aGlzIHNvIEkgY2FuIHBpY2sgYm90aCBwYXRj
+aCBzZXJpZXMgYW5kIHNlZSB0aGF0Cj4gdGhleSBjb21waWxlPyAgLi4ub3IgbGV0IG1lIGtub3cg
+d2hlcmUgSSBtZXNzZWQgdXAsIG9mIGNvdXJzZS4KPgpvaywgd2Ugd2lsbCB1cGxvYWQgZHRzaSBs
+YXRlciBhZnRlciB0aGUgY2xrLXJrMzM5OSBkcml2ZXIgYmVlbiBhcHBsaWVkLgp4aW5nIHdpbGwg
+c2VuZCB0aGUgcGF0Y2hlcyBmb3IgcmszMzk5IHRvZ2V0aGVyLgoKV2UgaG9wZSB0aGUgZHRzaSBj
+b3VsZCBiZSBhcHBsaWVkIGZpcnN0IGJ1dCBkZXBlbmRzIG9uIGNsayBkcml2ZXIsIGJ1dCAKaXQg
+c2VlbXMKbm90IGEgZ29vZCBpZGVhLCB3ZSB3aWxsIHJlc2VuZCBkdHNpIHBhdGNoIGFmdGVyIG1v
+cmUgZHJpdmVycyBhcmUgYXBwbGllZC4KClRoYW5rcyBEb3VnLgoKPiBUaGFua3MhCj4KPiAtRG91
+Zwo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
