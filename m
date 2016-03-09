@@ -1,71 +1,104 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 2/3] ARM: errata: Workaround erratum A12 821420
-Date: Wed,  9 Mar 2016 10:44:15 -0800
-Message-ID: <1457549056-22359-2-git-send-email-dianders@chromium.org>
-References: <1457549056-22359-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457549056-22359-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King <linux@arm.linux.org.uk>, Will Deacon <will.deacon@arm.com>, Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: olof@lixom.net, linux-rockchip@lists.infradead.org, Douglas Anderson <dianders@chromium.org>, nicolas.pitre@linaro.org, f.fainelli@gmail.com, shawn.guo@linaro.org, ard.biesheuvel@linaro.org, Anson.Huang@freescale.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 10/13] thermal: convert rockchip_thermal to use
+ devm_thermal_zone_of_sensor_register
+Date: Wed,  9 Mar 2016 13:35:32 -0800
+Message-ID: <1457559336-17652-11-git-send-email-edubezval@gmail.com>
+References: <1457559336-17652-1-git-send-email-edubezval@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1457559336-17652-1-git-send-email-edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rui Zhang <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux PM <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This erratum has a very simple workaround (set a bit in a register), so
-let's apply it.  Apparently the workaround's downside is a very slight
-power impact.
+This changes the driver to use the devm_ version
+of thermal_zone_of_sensor_register and cleans
+up the  local points and unregister calls.
 
-Note that applying this errata fixes deadlocks that are easy to
-reproduce with real world applications.
-
-The arguments for why this needs to be in the kernel are similar to the
-arugments made in the patch "Workaround errata A12 818325/852422 A17
-852423".
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
-Changes in v2:
-- A12 821420 new for v2.
+ drivers/thermal/rockchip_thermal.c | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
 
- arch/arm/Kconfig      | 10 ++++++++++
- arch/arm/mm/proc-v7.S |  5 +++++
- 2 files changed, 15 insertions(+)
-
-diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index a5e16e4e796b..c3e46c9aacf5 100644
---- a/arch/arm/Kconfig
-+++ b/arch/arm/Kconfig
-@@ -1171,6 +1171,16 @@ config ARM_ERRATA_818325_852422
- 	  Feature Register. This bit disables an optimisation applied to a
- 	  sequence of 2 instructions that use opposing condition codes.
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index b58e3fb..792c5d0 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -753,8 +753,8 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
  
-+config ARM_ERRATA_821420
-+	bool "ARM errata: A12: sequence of VMOV to core registers might lead to a dead lock"
-+	depends on CPU_V7
-+	help
-+	  This option enables the workaround for the 821420 Cortex-A12
-+	  (all revs) erratum. In very rare timing conditions, a sequence
-+	  of VMOV to Core registers instructions, for which the second
-+	  one is in the shadow of a branch or abort, can lead to a
-+	  deadlock when the VMOV instructions are issued out-of-order.
-+
- config ARM_ERRATA_852423
- 	bool "ARM errata: A17: some seqs of opposed cond code instrs => deadlock or corruption"
- 	depends on CPU_V7
-diff --git a/arch/arm/mm/proc-v7.S b/arch/arm/mm/proc-v7.S
-index 6cea0435f3f2..a7f9e7567878 100644
---- a/arch/arm/mm/proc-v7.S
-+++ b/arch/arm/mm/proc-v7.S
-@@ -368,6 +368,11 @@ __ca12_errata:
- 	orr	r10, r10, #1 << 12		@ set bit #12
- 	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
- #endif
-+#ifdef CONFIG_ARM_ERRATA_821420
-+	mrc	p15, 0, r10, c15, c0, 2		@ read internal feature reg
-+	orr	r10, r10, #1 << 1		@ set bit #1
-+	mcr	p15, 0, r10, c15, c0, 2		@ write internal feature reg
-+#endif
- 	b	__errata_finish
+ 	sensor->thermal = thermal;
+ 	sensor->id = id;
+-	sensor->tzd = thermal_zone_of_sensor_register(&pdev->dev, id, sensor,
+-						      &rockchip_of_thermal_ops);
++	sensor->tzd = devm_thermal_zone_of_sensor_register(&pdev->dev, id,
++					sensor, &rockchip_of_thermal_ops);
+ 	if (IS_ERR(sensor->tzd)) {
+ 		error = PTR_ERR(sensor->tzd);
+ 		dev_err(&pdev->dev, "failed to register sensor %d: %d\n",
+@@ -782,7 +782,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	const struct of_device_id *match;
+ 	struct resource *res;
+ 	int irq;
+-	int i, j;
++	int i;
+ 	int error;
  
- __ca17_errata:
+ 	match = of_match_node(of_rockchip_thermal_match, np);
+@@ -865,9 +865,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 			dev_err(&pdev->dev,
+ 				"failed to register sensor[%d] : error = %d\n",
+ 				i, error);
+-			for (j = 0; j < i; j++)
+-				thermal_zone_of_sensor_unregister(&pdev->dev,
+-						thermal->sensors[j].tzd);
+ 			goto err_disable_pclk;
+ 		}
+ 	}
+@@ -879,7 +876,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	if (error) {
+ 		dev_err(&pdev->dev,
+ 			"failed to request tsadc irq: %d\n", error);
+-		goto err_unregister_sensor;
++		goto err_disable_pclk;
+ 	}
+ 
+ 	thermal->chip->control(thermal->regs, true);
+@@ -891,11 +888,6 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
+-err_unregister_sensor:
+-	while (i--)
+-		thermal_zone_of_sensor_unregister(&pdev->dev,
+-						  thermal->sensors[i].tzd);
+-
+ err_disable_pclk:
+ 	clk_disable_unprepare(thermal->pclk);
+ err_disable_clk:
+@@ -913,7 +905,6 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
+ 		struct rockchip_thermal_sensor *sensor = &thermal->sensors[i];
+ 
+ 		rockchip_thermal_toggle_sensor(sensor, false);
+-		thermal_zone_of_sensor_unregister(&pdev->dev, sensor->tzd);
+ 	}
+ 
+ 	thermal->chip->control(thermal->regs, false);
 -- 
-2.7.0.rc3.207.g0ac5344
+2.1.4
