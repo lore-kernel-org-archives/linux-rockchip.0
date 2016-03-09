@@ -1,107 +1,61 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v5 4/6] dt/bindings: power: add RK3399 SoCs header for
- power-domain
-Date: Wed, 09 Mar 2016 16:43:22 +0800
-Message-ID: <56DFE22A.9090502@rock-chips.com>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com> <1456992233-25164-5-git-send-email-zhangqing@rock-chips.com> <56DEAD32.7090405@gmail.com>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 5/6] dt/bindings: rockchip: modify document of Rockchip
+ power domains
+Date: Wed, 09 Mar 2016 16:48:31 +0800
+Message-ID: <56DFE35F.3010400@rock-chips.com>
+References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
+ <1456992557-25331-1-git-send-email-zhangqing@rock-chips.com>
+ <56DEB2E1.6060808@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56DEAD32.7090405@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>, wxt@rock-chips.com
-Cc: heiko@sntech.de, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56DEB2E1.6060808-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 03/08/2016 06:45 PM, Caesar Wang wrote:
->
->
-> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:03, Elaine Zhang =E5=
-=86=99=E9=81=93:
->> According to a description from TRM, add all the power domains
->>
->> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->> ---
->>   include/dt-bindings/power/rk3399-power.h | 53
->> ++++++++++++++++++++++++++++++++
->>   1 file changed, 53 insertions(+)
->>   create mode 100644 include/dt-bindings/power/rk3399-power.h
->>
->> diff --git a/include/dt-bindings/power/rk3399-power.h
->> b/include/dt-bindings/power/rk3399-power.h
->> new file mode 100644
->> index 0000000..69fbd67
->> --- /dev/null
->> +++ b/include/dt-bindings/power/rk3399-power.h
->> @@ -0,0 +1,53 @@
->> +#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
->> +#define __DT_BINDINGS_POWER_RK3399_POWER_H__
->> +
->> +/* VD_CORE_L */
->> +#define RK3399_PD_A53_L0    0
->> +#define RK3399_PD_A53_L1    1
->> +#define RK3399_PD_A53_L2    2
->> +#define RK3399_PD_A53_L3    3
->> +#define RK3399_PD_SCU_L        4
->> +
->> +/* VD_CORE_B */
->> +#define RK3399_PD_A72_B0    5
->> +#define RK3399_PD_A72_B1    6
->> +#define RK3399_PD_SCU_B        7
->> +
->> +/* VD_CENTER */
->> +#define RK3399_PD_CENTER    8
->> +#define RK3399_PD_VCODEC    9
->> +#define RK3399_PD_RGA        10
->> +#define RK3399_PD_IEP        11
->> +#define RK3399_PD_VDU        12
->> +
->> +/* VD_LOGIC */
->> +#define RK3399_PD_PERILP    13
->> +#define RK3399_PD_PERIHP    14
->> +#define RK3399_PD_VIO        15
->> +#define RK3399_PD_VO        16
-> ...
-> ISP?
-#define RK3399_PD_ISP0        19
-#define RK3399_PD_ISP1        20
-
->> +#define RK3399_PD_VOPB        17
->> +#define RK3399_PD_VOPL        18
->> +#define RK3399_PD_ISP0        19
->> +#define RK3399_PD_ISP1        20
->> +#define RK3399_PD_HDCP        21
->> +#define RK3399_PD_TCPD0        22
->> +#define RK3399_PD_TCPD1        23
->> +#define RK3399_PD_GIC        24
->> +#define RK3399_PD_ALIVE        25
->> +#define RK3399_PD_USB3        26
->> +#define RK3399_PD_SD        27
->> +#define RK3399_PD_CCI        28
->> +#define RK3399_PD_CCI0        29
->> +#define RK3399_PD_CCI1        30
->> +#define RK3399_PD_GMAC        31
->> +#define RK3399_PD_EMMC        32
->> +#define RK3399_PD_EDP        33
->> +#define RK3399_PD_SDIOAUDIO    34
->> +
->> +/* VD_GPU */
->> +#define RK3399_PD_GPU        35
->> +
->> +/* VD_PMU */
->> +#define RK3399_PD_PMU        36
->> +
->
-> Would you please follow the TRM?
-Our pd group according to the voltage domain.Not nedd to follow the TRM=
-=2E
->
->
->
->> +#endif
->
->
+CgpPbiAwMy8wOC8yMDE2IDA3OjA5IFBNLCBDYWVzYXIgV2FuZyB3cm90ZToKPgo+Cj4g5ZyoIDIw
+MTblubQwM+aciDAz5pelIDE2OjA5LCBFbGFpbmUgWmhhbmcg5YaZ6YGTOgo+PiBBZGQgYmluZGlu
+ZyBkb2N1bWVudGF0aW9uIGZvciB0aGUgcG93ZXIgZG9tYWlucwo+PiBmb3VuZCBvbiBSb2NrY2hp
+cCBSSzMzOTkgU29Dcy4KPj4gUkszMzk5IHBkIG9uL29mZiBub3QgbmVlZCB0byBlbmFibGUgY2xr
+IHdoaWNoIGluIHRoaXMgcGQuCj4+IFNvIHJlbW92ZSB0aGUgY2xvY2tzIGluIHRoZSByazMzOTkg
+cGQgZXhhbXBsZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdA
+cm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIC4uLi9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93
+ZXJfZG9tYWluLnR4dCAgICAgICAgIHwgMzcKPj4gKysrKysrKysrKysrKysrKysrKysrKwo+PiAg
+IDEgZmlsZSBjaGFuZ2VkLCAzNyBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQKPj4gYS9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tjaGlwL3Bvd2VyX2RvbWFp
+bi50eHQKPj4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tjaGlw
+L3Bvd2VyX2RvbWFpbi50eHQKPj4gaW5kZXggMTNkYzZhMy4uOTgwODVjOCAxMDA2NDQKPj4gLS0t
+IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvYy9yb2NrY2hpcC9wb3dlcl9k
+b21haW4udHh0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2Mv
+cm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dAo+PiBAQCAtNyw2ICs3LDcgQEAgUmVxdWlyZWQgcHJv
+cGVydGllcyBmb3IgcG93ZXIgZG9tYWluIGNvbnRyb2xsZXI6Cj4+ICAgLSBjb21wYXRpYmxlOiBT
+aG91bGQgYmUgb25lIG9mIHRoZSBmb2xsb3dpbmcuCj4gWy4uLi5dCj4+ICAgRXhhbXBsZSBvZiB0
+aGUgbm9kZSB1c2luZyBwb3dlciBkb21haW46Cj4+IEBAIC02NSwzICs5Niw5IEBAIEV4YW1wbGUg
+b2YgdGhlIG5vZGUgdXNpbmcgcG93ZXIgZG9tYWluOgo+PiAgICAgICAgICAgICAgICAgICBwb3dl
+ci1kb21haW5zID0gPCZwb3dlciBSSzMzNjhfUERfR1BVXzE+Owo+PiAgICAgICAgICAgICAgICAg
+ICAvKiAuLi4gKi8KPj4gICAgICAgICAgIH07Cj4+ICsKPj4gKyAgICBub2RlIHsKPj4gKyAgICAg
+ICAgLyogLi4uICovCj4+ICsgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9Q
+RF9WT1BCPjsKPj4gKyAgICAgICAgLyogLi4uICovCj4+ICsgICAgfTsKPgo+IFRyaXZpYWw6IHR5
+cG8KPiAgICAgICAgICAgICAgICAgIHBvd2VyOiBwb3dlci1jb250cm9sbGVyIHsKPiBAQCAtOTIs
+MTAgKzkyLDEwIEBAIEV4YW1wbGUgb2YgdGhlIG5vZGUgdXNpbmcgcG93ZXIgZG9tYWluOgo+ICAg
+ICAgICAgIH07Cj4KPiAgICAgICAgICBub2RlIHsKPiAtICAgICAgICAgICAgICAgIC8qIC4uLiAq
+Lwo+IC0gICAgICAgICAgICAgICAgcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzY4X1BEX0dQ
+VV8xPjsKPiAtICAgICAgICAgICAgICAgIC8qIC4uLiAqLwo+IC0gICAgICAgIH07Cj4gKyAgICAg
+ICAgICAgICAgIC8qIC4uLiAqLwo+ICsgICAgICAgICAgICAgICBwb3dlci1kb21haW5zID0gPCZw
+b3dlciBSSzMzNjhfUERfR1BVXzE+Owo+ICsgICAgICAgICAgICAgICAvKiAuLi4gKi8KPiArICAg
+ICAgIH07ClRoaXMgaXMgYSBleGFtcGxlLkkgdGhpbmsgdGhlcmUgaXMgbm8gcHJvYmxlbS4KCj4K
+Pgo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
