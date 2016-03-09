@@ -1,161 +1,74 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v5 4/6] dt/bindings: power: add RK3399 SoCs header for
- power-domain
-Date: Wed, 9 Mar 2016 18:36:26 +0800
-Message-ID: <56DFFCAA.2030401@gmail.com>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
- <1456992233-25164-5-git-send-email-zhangqing@rock-chips.com>
- <56DEAD32.7090405@gmail.com> <2748667.mSDu940Rq4@diego>
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
+Date: Wed, 9 Mar 2016 11:53:29 +0100
+Message-ID: <CAAObsKBUzBXcamEyup44N1bYUzGr_ZZTsYcD5x3PXb-2E00cGA@mail.gmail.com>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+ <56DD7172.4000707@suse.de> <2714888.1DdqvJZ8cb@diego> <56DD7593.5060003@suse.de>
+ <56DD8176.2080603@st.com> <56DD8FBE.9010200@suse.de> <56DD99A4.5030004@st.com>
+ <56DDA26C.3050301@suse.de> <56DDA3D5.3090209@st.com> <56DDB749.1020808@suse.de>
+ <CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
+ <56DE7E1D.5070508@st.com> <CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>
+ <CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>
+ <56DFE55B.2090806@st.com> <56DFE64B.8060606@st.com> <CAAObsKBr9SXg1-wr9O-ypR8JozdGpeAwfDLMeUKi8ozxkKyTXg@mail.gmail.com>
+ <56DFF253.9050208@st.com> <56DFFA9E.7060602@st.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2748667.mSDu940Rq4@diego>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: wxt@rock-chips.com, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <56DFFA9E.7060602@st.com>
+Sender: netdev-owner@vger.kernel.org
+To: Giuseppe CAVALLARO <peppe.cavallaro@st.com>
+Cc: Fabrice GASNIER <fabrice.gasnier@st.com>, Dinh Nguyen <dinh.linux@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, netdev@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Gabriel Fernandez <gabriel.fernandez@linaro.org>, Alexandre TORGUE <alexandre.torgue@st.com>, =?UTF-8?Q?Frank_Sch=C3=A4fer?= <fschaefer.oss@googlemail.com>, LKML <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko & Elain,
-
-=E5=9C=A8 2016=E5=B9=B403=E6=9C=8809=E6=97=A5 17:55, Heiko St=C3=BCbner=
- =E5=86=99=E9=81=93:
-> Hi Caesar,
+On 9 March 2016 at 11:27, Giuseppe CAVALLARO <peppe.cavallaro@st.com> wrote:
+> Hello Tomeu, Andreas,
 >
-> Am Dienstag, 8. M=C3=A4rz 2016, 18:45:06 schrieb Caesar Wang:
->> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:03, Elaine Zhang =E5=
-=86=99=E9=81=93:
->>> According to a description from TRM, add all the power domains
+> On 3/9/2016 10:52 AM, Giuseppe CAVALLARO wrote:
 >>>
->>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
->>> ---
+>>> * today's linux-next: probe failed
 >>>
->>>    include/dt-bindings/power/rk3399-power.h | 53
->>>    ++++++++++++++++++++++++++++++++ 1 file changed, 53 insertions(+=
-)
->>>    create mode 100644 include/dt-bindings/power/rk3399-power.h
+>>> * today's linux-next + revert of 88f8b1bb41c6 stmmac: Fix 'eth0: No
+>>> PHY found' regression: probe succeeded but no network at all
 >>>
->>> diff --git a/include/dt-bindings/power/rk3399-power.h
->>> b/include/dt-bindings/power/rk3399-power.h new file mode 100644
->>> index 0000000..69fbd67
->>> --- /dev/null
->>> +++ b/include/dt-bindings/power/rk3399-power.h
->>> @@ -0,0 +1,53 @@
->>> +#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
->>> +#define __DT_BINDINGS_POWER_RK3399_POWER_H__
->>> +
->>> +/* VD_CORE_L */
->>> +#define RK3399_PD_A53_L0	0
->>> +#define RK3399_PD_A53_L1	1
->>> +#define RK3399_PD_A53_L2	2
->>> +#define RK3399_PD_A53_L3	3
->>> +#define RK3399_PD_SCU_L		4
->>> +
->>> +/* VD_CORE_B */
->>> +#define RK3399_PD_A72_B0	5
->>> +#define RK3399_PD_A72_B1	6
->>> +#define RK3399_PD_SCU_B		7
->>> +
->>> +/* VD_CENTER */
->>> +#define RK3399_PD_CENTER	8
->>> +#define RK3399_PD_VCODEC	9
->>> +#define RK3399_PD_RGA		10
->>> +#define RK3399_PD_IEP		11
->>> +#define RK3399_PD_VDU		12
->>> +
->>> +/* VD_LOGIC */
->>> +#define RK3399_PD_PERILP	13
->>> +#define RK3399_PD_PERIHP	14
->>> +#define RK3399_PD_VIO		15
->>> +#define RK3399_PD_VO		16
->> ...
->> ISP?
+>>> * today's linux-next + revert of 88f8b1bb41c6 (stmmac: Fix 'eth0: No
+>>> PHY found' regression) + revert of 0e80bdc9a72d (stmmac: first frame
+>>> prep at the end of xmit routine): probe succeeded, dhcp succeeds and
+>>> nfsroot works for a few seconds before timing out
 >>
->>> +#define RK3399_PD_VOPB		17
->>> +#define RK3399_PD_VOPL		18
->>> +#define RK3399_PD_ISP0		19
->>> +#define RK3399_PD_ISP1		20
->>> +#define RK3399_PD_HDCP		21
->>> +#define RK3399_PD_TCPD0		22
->>> +#define RK3399_PD_TCPD1		23
->>> +#define RK3399_PD_GIC		24
->>> +#define RK3399_PD_ALIVE		25
->>> +#define RK3399_PD_USB3		26
->>> +#define RK3399_PD_SD		27
->>> +#define RK3399_PD_CCI		28
->>> +#define RK3399_PD_CCI0		29
->>> +#define RK3399_PD_CCI1		30
->>> +#define RK3399_PD_GMAC		31
->>> +#define RK3399_PD_EMMC		32
->>> +#define RK3399_PD_EDP		33
->>> +#define RK3399_PD_SDIOAUDIO	34
->>> +
->>> +/* VD_GPU */
->>> +#define RK3399_PD_GPU		35
->>> +
->>> +/* VD_PMU */
->>> +#define RK3399_PD_PMU		36
->>> +
->> Would you please follow the TRM?
-> could you elaborate a bit on what you mean?
->
-> Looking at the "Table 11-1 RK3399 Power Domain and Voltage Domain Sum=
-mary" in
-> the TRM, Elaine's list seems to match that table quite nicely, so loo=
-ks ok to
-> me at first glance.
-
-That's also trivial...
-
-The comments from the first time I saw this file and TRM.:-)
-
-Can we define the lists according to order the TRM?
-
-=46or example:
-
-+/* VD_CORE_L */
-+#define RK3399_PD_A53_L0	0
-+#define RK3399_PD_A53_L1	1
-+#define RK3399_PD_A53_L2	2
-+#define RK3399_PD_A53_L3	3
-+#define RK3399_PD_SCU_L	4
-+
-+/* VD_CORE_B */
-+#define RK3399_PD_A72_B0	5
-+#define RK3399_PD_A72_B1	6
-+#define RK3399_PD_SCU_B	7
-+
-+/* VD_LOGIC */
-+#define RK3399_PD_PERILP	13
-+#define RK3399_PD_PERIHP	14
-+#define RK3399_PD_VIO		15
-+#define RK3399_PD_ISP0		16
-+#define RK3399_PD_ISP1		17
-+#define RK3399_PD_VO		18
-+#define RK3399_PD_HDCP	19
-+#define RK3399_PD_TCPD0	20
-+#define RK3399_PD_TCPD1	21
-=2E....
-
-+/* VD_CENTER */
-=2E...
-
-+/* VD_GPU */
-=2E...
-
-+/* VD_PMU */
-
-
-Please ignore it and sorry the noise if that's the wrong ideas.:-)
-
-
-
+>>
+>> ok, I was looking at this problem now that seems to related
+>> the "stmmac: first frame prep at the end of xmit routine"
+>> that, at first glance, is breaking the gmac 3.50 with normal descriptor.
 >
 >
-> Heiko
+> I have no Hw where to test this use case. So, I wonder if may I ask you to
+> test some patch.
 >
+> This first patch adds a missing barrier to the normal routine that inits the
+> descriptor. Barrier was needed to well manage the OWN
+> descriptor and it was not added in case of normal desc case after
+> the xmit rework.
+>
+> Then I will check the algo behind the new xmit and in case of problems,
+> if you agree, we will decide to revert it because it aimed to add an
+> optimization.
+>
+> Let me know if you agree.
 
---=20
-Thanks,
-Caesar
+I'm not sure what you would like to be tested, but just in case, I
+have just tried your patch on top of these commits and the result is
+the "transmit queue 0 timed out" error during boot:
+
+6542b30d0a67 Revert "stmmac: first frame prep at the end of xmit routine"
+eb5274cbc0f7 Revert "stmmac: do not poll phy handler when attach a switch"
+e88e625a68d9 Revert "stmmac: fix phy init when attached to a phy"
+ef5dd3777876 stmmac: fix MDIO settings
+77634ba1f25c Revert "stmmac: Fix 'eth0: No PHY found' regression"
+7811b4ffc312 Add linux-next specific files for 20160309
+
+Regards,
+
+Tomeu
+
+> Regards
+> Peppe
