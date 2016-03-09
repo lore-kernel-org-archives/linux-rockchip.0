@@ -1,16 +1,22 @@
-From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v5 5/6] dt/bindings: rockchip: modify document of Rockchip
- power domains
-Date: Wed, 09 Mar 2016 16:48:31 +0800
-Message-ID: <56DFE35F.3010400@rock-chips.com>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com>
- <1456992557-25331-1-git-send-email-zhangqing@rock-chips.com>
- <56DEB2E1.6060808@gmail.com>
+From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
+Date: Wed, 9 Mar 2016 09:56:59 +0100
+Message-ID: <56DFE55B.2090806@st.com>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+ <56DD7172.4000707@suse.de> <2714888.1DdqvJZ8cb@diego>
+ <56DD7593.5060003@suse.de> <56DD8176.2080603@st.com>
+ <56DD8FBE.9010200@suse.de> <56DD99A4.5030004@st.com>
+ <56DDA26C.3050301@suse.de> <56DDA3D5.3090209@st.com>
+ <56DDB749.1020808@suse.de>
+ <CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
+ <56DE7E1D.5070508@st.com>
+ <CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>
+ <CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56DEB2E1.6060808-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,42 +26,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tomeu Vizoso <tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org>, Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?ISO-8859-1?Q?Heiko_St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?ISO-8859-1?Q?Frank_Sch=E4?= =?ISO-8859-1?Q?fer?= <fschaefer.oss-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>, =?ISO-8859-1?Q?Andreas_F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiAwMy8wOC8yMDE2IDA3OjA5IFBNLCBDYWVzYXIgV2FuZyB3cm90ZToKPgo+Cj4g5ZyoIDIw
-MTblubQwM+aciDAz5pelIDE2OjA5LCBFbGFpbmUgWmhhbmcg5YaZ6YGTOgo+PiBBZGQgYmluZGlu
-ZyBkb2N1bWVudGF0aW9uIGZvciB0aGUgcG93ZXIgZG9tYWlucwo+PiBmb3VuZCBvbiBSb2NrY2hp
-cCBSSzMzOTkgU29Dcy4KPj4gUkszMzk5IHBkIG9uL29mZiBub3QgbmVlZCB0byBlbmFibGUgY2xr
-IHdoaWNoIGluIHRoaXMgcGQuCj4+IFNvIHJlbW92ZSB0aGUgY2xvY2tzIGluIHRoZSByazMzOTkg
-cGQgZXhhbXBsZS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdA
-cm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+PiAgIC4uLi9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93
-ZXJfZG9tYWluLnR4dCAgICAgICAgIHwgMzcKPj4gKysrKysrKysrKysrKysrKysrKysrKwo+PiAg
-IDEgZmlsZSBjaGFuZ2VkLCAzNyBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQKPj4gYS9E
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tjaGlwL3Bvd2VyX2RvbWFp
-bi50eHQKPj4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tjaGlw
-L3Bvd2VyX2RvbWFpbi50eHQKPj4gaW5kZXggMTNkYzZhMy4uOTgwODVjOCAxMDA2NDQKPj4gLS0t
-IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvYy9yb2NrY2hpcC9wb3dlcl9k
-b21haW4udHh0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2Mv
-cm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dAo+PiBAQCAtNyw2ICs3LDcgQEAgUmVxdWlyZWQgcHJv
-cGVydGllcyBmb3IgcG93ZXIgZG9tYWluIGNvbnRyb2xsZXI6Cj4+ICAgLSBjb21wYXRpYmxlOiBT
-aG91bGQgYmUgb25lIG9mIHRoZSBmb2xsb3dpbmcuCj4gWy4uLi5dCj4+ICAgRXhhbXBsZSBvZiB0
-aGUgbm9kZSB1c2luZyBwb3dlciBkb21haW46Cj4+IEBAIC02NSwzICs5Niw5IEBAIEV4YW1wbGUg
-b2YgdGhlIG5vZGUgdXNpbmcgcG93ZXIgZG9tYWluOgo+PiAgICAgICAgICAgICAgICAgICBwb3dl
-ci1kb21haW5zID0gPCZwb3dlciBSSzMzNjhfUERfR1BVXzE+Owo+PiAgICAgICAgICAgICAgICAg
-ICAvKiAuLi4gKi8KPj4gICAgICAgICAgIH07Cj4+ICsKPj4gKyAgICBub2RlIHsKPj4gKyAgICAg
-ICAgLyogLi4uICovCj4+ICsgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM5OV9Q
-RF9WT1BCPjsKPj4gKyAgICAgICAgLyogLi4uICovCj4+ICsgICAgfTsKPgo+IFRyaXZpYWw6IHR5
-cG8KPiAgICAgICAgICAgICAgICAgIHBvd2VyOiBwb3dlci1jb250cm9sbGVyIHsKPiBAQCAtOTIs
-MTAgKzkyLDEwIEBAIEV4YW1wbGUgb2YgdGhlIG5vZGUgdXNpbmcgcG93ZXIgZG9tYWluOgo+ICAg
-ICAgICAgIH07Cj4KPiAgICAgICAgICBub2RlIHsKPiAtICAgICAgICAgICAgICAgIC8qIC4uLiAq
-Lwo+IC0gICAgICAgICAgICAgICAgcG93ZXItZG9tYWlucyA9IDwmcG93ZXIgUkszMzY4X1BEX0dQ
-VV8xPjsKPiAtICAgICAgICAgICAgICAgIC8qIC4uLiAqLwo+IC0gICAgICAgIH07Cj4gKyAgICAg
-ICAgICAgICAgIC8qIC4uLiAqLwo+ICsgICAgICAgICAgICAgICBwb3dlci1kb21haW5zID0gPCZw
-b3dlciBSSzMzNjhfUERfR1BVXzE+Owo+ICsgICAgICAgICAgICAgICAvKiAuLi4gKi8KPiArICAg
-ICAgIH07ClRoaXMgaXMgYSBleGFtcGxlLkkgdGhpbmsgdGhlcmUgaXMgbm8gcHJvYmxlbS4KCj4K
-Pgo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Hello
+
+On 3/9/2016 9:35 AM, Tomeu Vizoso wrote:
+>
+> in order to get the onboard network on the Radxa Rock2 to work at all
+> on today's linux-next, I had to revert both commits:
+>
+> * "stmmac: Fix 'eth0: No PHY found' regression" for the drivers to
+> probe and the link to come up, and
+
+I've just sent two patches (on top of net.git) to fix this problem
+pls let me know if these help on your side too.
+
+>
+> * "stmmac: first frame prep at the end of the xmit routine" for the
+> network interface to work at all.
+
+I cannot reproduce it right now but I am looking at this again and let
+you know.
+I will check your output file too
+
+Regards
+peppe
+
+
+> But a few seconds into the nfsroot boot I start getting:
+>
+> [    9.136701] systemd[1]: Started Load Kernel Modules.
+> [   18.116321] nfs: server 10.42.0.1 not responding, still trying
+> [   18.516224] ------------[ cut here ]------------
+> [   18.521024] WARNING: CPU: 1 PID: 0 at net/sched/sch_generic.c:303
+> dev_watchdog+0x284/0x288
+> [   18.529456] NETDEV WATCHDOG: eth0 (rk_gmac-dwmac): transmit queue 0 timed out
+>
+> I'm attaching the full boot log.
+>
+> Regards,
+>
+> Tomeu
+>
