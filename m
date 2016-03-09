@@ -1,88 +1,60 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [RESEND PATCH v2 3/5] clk: rockchip: add new pll-type for rk3399
- and similar socs
-Date: Wed, 9 Mar 2016 10:20:24 +0800
-Message-ID: <56DF8868.6070706@rock-chips.com>
-References: <1456827275-8035-1-git-send-email-zhengxing@rock-chips.com>
- <1456827275-8035-4-git-send-email-zhengxing@rock-chips.com>
- <3286748.Col0jAfKKX@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Subject: [PATCH v3 0/7] Add more clock compatible features and support the RK3399 clock
+Date: Wed,  9 Mar 2016 10:37:00 +0800
+Message-ID: <1457491027-30936-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <3286748.Col0jAfKKX@phil>
 Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Michael Turquette <mturquette@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
 
-On 2016=E5=B9=B403=E6=9C=8809=E6=97=A5 09:22, Heiko Stuebner wrote:
-> Am Dienstag, 1. M=C3=A4rz 2016, 18:14:33 schrieb Xing Zheng:
->
->> +static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *=
-pll,
->> +				const struct rockchip_pll_rate_table *rate)
->> +{
->> +	const struct clk_ops *pll_mux_ops =3D pll->pll_mux_ops;
->> +	struct clk_mux *pll_mux =3D &pll->pll_mux;
->> +	struct rockchip_pll_rate_table cur;
->> +	u32 pllcon;
->> +	int rate_change_remuxed =3D 0;
->> +	int cur_parent;
->> +	int ret;
->> +
->> +	pr_debug("%s: rate settings for %lu fbdiv: %d, postdiv1: %d, refdi=
-v: %d,
->> postdiv2: %d, dsmpd: %d, frac: %d\n", +		__func__, rate->rate,
->> rate->fbdiv, rate->postdiv1, rate->refdiv, +		rate->postdiv2,
->> rate->dsmpd, rate->frac);
->> +
->> +	rockchip_rk3399_pll_get_params(pll, &cur);
->> +	cur.rate =3D 0;
->> +
->> +	cur_parent =3D pll_mux_ops->get_parent(&pll_mux->hw);
->> +	if (cur_parent =3D=3D PLL_MODE_NORM) {
->> +		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
->> +		rate_change_remuxed =3D 1;
->> +	}
->> +
->> +	/* update pll values */
->> +	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3399_PLLCON0_FBDIV_MAS=
-K,
->> +					  RK3399_PLLCON0_FBDIV_SHIFT),
-> indentation is strange ... I guess the plan was to move
-> RK3399_PLLCON0_FBDIV_SHIFT under RK3399_PLLCON0_FBDIV_MASK, currently=
- it's
-> having tabs + spaces but has no alignment whatsoever
-Yes, I think that it due to copy them from the RK3036 style ...
->
->> +		       pll->reg_base + RK3399_PLLCON(0));
->> +
->> +	writel_relaxed(HIWORD_UPDATE(rate->refdiv, RK3399_PLLCON1_REFDIV_M=
-ASK,
->> +						   RK3399_PLLCON1_REFDIV_SHIFT) |
->> +		       HIWORD_UPDATE(rate->postdiv1, RK3399_PLLCON1_POSTDIV1_MASK=
-,
->> +					     RK3399_PLLCON1_POSTDIV1_SHIFT) |
-> same for postdiv1
-Done.
->
->> +		       HIWORD_UPDATE(rate->postdiv2, RK3399_PLLCON1_POSTDIV2_MASK=
-,
->> +						     RK3399_PLLCON1_POSTDIV2_SHIFT),
->> +		       pll->reg_base + RK3399_PLLCON(1));
->
-> rest looks nice
->
->
-> Heiko
->
-Thanks.
+Hi,
+  The patch series add support more mux parameters and multiple
+clock providers for the rockchip features of the clock framework,
+and support the clock controller for the RK3399.
 
---=20
-- Xing Zheng
+
+Changes in v3:
+- rename pclkin_cif to pclkin_cifmux, add diagram and comment for
+  pclkin_cifmux
+- add the clk_test node
+- modify the cif_testout path
+- include two new patches that dt-bindings and header file from
+  Jianqun's patch series
+
+Changes in v2:
+- rename the aplll/apllb to lpll/bpll
+- add drv/sample clock nodes for sdmmc/sdio
+
+Xing Zheng (7):
+  dt-bindings: add bindings for rk3399 clock controller
+  clk: rockchip: add dt-binding header for rk3399
+  clk: rockchip: add more mux parameters for new pll sources
+  clk: rockchip: Add support for multiple clock providers
+  clk: rockchip: add new pll-type for rk3399 and similar socs
+  clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
+  clk: rockchip: add clock controller for the RK3399
+
+ .../bindings/clock/rockchip,rk3399-cru.txt         |   82 +
+ drivers/clk/rockchip/Makefile                      |    1 +
+ drivers/clk/rockchip/clk-cpu.c                     |   14 +-
+ drivers/clk/rockchip/clk-pll.c                     |  309 +++-
+ drivers/clk/rockchip/clk-rk3036.c                  |   20 +-
+ drivers/clk/rockchip/clk-rk3188.c                  |   54 +-
+ drivers/clk/rockchip/clk-rk3228.c                  |   20 +-
+ drivers/clk/rockchip/clk-rk3288.c                  |   22 +-
+ drivers/clk/rockchip/clk-rk3368.c                  |   27 +-
+ drivers/clk/rockchip/clk-rk3399.c                  | 1567 ++++++++++++++++++++
+ drivers/clk/rockchip/clk.c                         |  148 +-
+ drivers/clk/rockchip/clk.h                         |   98 +-
+ include/dt-bindings/clock/rk3399-cru.h             |  720 +++++++++
+ 13 files changed, 2957 insertions(+), 125 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3399.c
+ create mode 100644 include/dt-bindings/clock/rk3399-cru.h
+
+-- 
+1.7.9.5
 
 
