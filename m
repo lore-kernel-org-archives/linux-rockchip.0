@@ -1,7 +1,7 @@
 From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v6 2/6] power-domain: allow domains only handling idle requests
-Date: Thu, 10 Mar 2016 05:00:37 +0800
-Message-ID: <1457557241-21297-3-git-send-email-zhangqing@rock-chips.com>
+Subject: [PATCH v6 4/6] dt/bindings: power: add RK3399 SoCs header for power-domain
+Date: Thu, 10 Mar 2016 05:00:39 +0800
+Message-ID: <1457557241-21297-5-git-send-email-zhangqing@rock-chips.com>
 References: <1457557241-21297-1-git-send-email-zhangqing@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1457557241-21297-1-git-send-email-zhangqing@rock-chips.com>
@@ -10,64 +10,72 @@ To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
 Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On some Rockchip SoC there exist child-domains only handling their
-idle state with the actual power-state handled by a parent-domain.
-
-So allow such types of domains. For them, we can determine their
-state (on/of) by checking the inverse idle-state instead.
-
-There exist one special case if both idle as well power handling
-were set as not present, but as the domain-data is defined in the
-code itself, we can expect the reasonable developer to define them
-
-So allow such types of domains. For them, we can determine their
-state (on/of) by checking the inverse idle-state instead.
-
-There exist one special case if both idle as well power handling
-were set as not present, but as the domain-data is defined in the
-code itself, we can expect the reasonable developer to define them
-in a correct, without adding more checks.
+According to a description from TRM, add all the power domains
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- drivers/soc/rockchip/pm_domains.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ include/dt-bindings/power/rk3399-power.h | 53 ++++++++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3399-power.h
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index c46312d..0465a06 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -66,8 +66,8 @@ struct rockchip_pmu {
- 
- #define DOMAIN(pwr, status, req, idle, ack)	\
- {						\
--	.pwr_mask = BIT(pwr),			\
--	.status_mask = BIT(status),		\
-+	.pwr_mask = (pwr >= 0) ? BIT(pwr) : 0,		\
-+	.status_mask = (status >= 0) ? BIT(status) : 0,	\
- 	.req_mask = (req >= 0) ? BIT(req) : 0,		\
- 	.idle_mask = (idle >= 0) ? BIT(idle) : 0,	\
- 	.ack_mask = (ack >= 0) ? BIT(ack) : 0,		\
-@@ -119,6 +119,10 @@ static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
- 	struct rockchip_pmu *pmu = pd->pmu;
- 	unsigned int val;
- 
-+	/* check idle status for idle-only domains */
-+	if (pd->info->status_mask == 0)
-+		return !rockchip_pmu_domain_is_idle(pd);
+diff --git a/include/dt-bindings/power/rk3399-power.h b/include/dt-bindings/power/rk3399-power.h
+new file mode 100644
+index 0000000..22ea268
+--- /dev/null
++++ b/include/dt-bindings/power/rk3399-power.h
+@@ -0,0 +1,53 @@
++#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
++#define __DT_BINDINGS_POWER_RK3399_POWER_H__
 +
- 	regmap_read(pmu->regmap, pmu->info->status_offset, &val);
- 
- 	/* 1'b0: power on, 1'b1: power off */
-@@ -130,6 +134,9 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
- {
- 	struct rockchip_pmu *pmu = pd->pmu;
- 
-+	if (pd->info->pwr_mask == 0)
-+		return;
++/* VD_CORE_L */
++#define RK3399_PD_A53_L0	0
++#define RK3399_PD_A53_L1	1
++#define RK3399_PD_A53_L2	2
++#define RK3399_PD_A53_L3	3
++#define RK3399_PD_SCU_L		4
 +
- 	regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
- 			   pd->info->pwr_mask, on ? 0 : -1U);
- 
++/* VD_CORE_B */
++#define RK3399_PD_A72_B0	5
++#define RK3399_PD_A72_B1	6
++#define RK3399_PD_SCU_B		7
++
++/* VD_LOGIC */
++#define RK3399_PD_TCPD0         8
++#define RK3399_PD_TCPD1         9
++#define RK3399_PD_CCI           10
++#define RK3399_PD_CCI0          11
++#define RK3399_PD_CCI1          12
++#define RK3399_PD_PERILP	13
++#define RK3399_PD_PERIHP	14
++#define RK3399_PD_VIO		15
++#define RK3399_PD_VO		16
++#define RK3399_PD_VOPB		17
++#define RK3399_PD_VOPL		18
++#define RK3399_PD_ISP0		19
++#define RK3399_PD_ISP1		20
++#define RK3399_PD_HDCP		21
++#define RK3399_PD_GMAC          22
++#define RK3399_PD_EMMC          23
++#define RK3399_PD_USB3          24
++#define RK3399_PD_EDP           25
++#define RK3399_PD_GIC		26
++#define RK3399_PD_SD		27
++#define RK3399_PD_SDIOAUDIO	28
++#define RK3399_PD_ALIVE         29
++
++/* VD_CENTER */
++#define RK3399_PD_CENTER        30
++#define RK3399_PD_VCODEC        31
++#define RK3399_PD_VDU           32
++#define RK3399_PD_RGA           33
++#define RK3399_PD_IEP           34
++
++/* VD_GPU */
++#define RK3399_PD_GPU		35
++
++/* VD_PMU */
++#define RK3399_PD_PMU		36
++
++#endif
 -- 
 1.9.1
