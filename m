@@ -1,16 +1,15 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [RESEND PATCH v2 5/5] clk: rockchip: add clock controller for the
- RK3399
-Date: Wed, 9 Mar 2016 08:51:31 +0800
-Message-ID: <56DF7393.4020600@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [RESEND PATCH v2 1/5] clk: rockchip: add more mux parameters for
+ new pll sources
+Date: Wed, 09 Mar 2016 02:12:31 +0100
+Message-ID: <2242962.kh0Ty0L2C4@phil>
 References: <1456827275-8035-1-git-send-email-zhengxing@rock-chips.com>
- <1456827322-8130-1-git-send-email-zhengxing@rock-chips.com>
- <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg@mail.gmail.com>
+ <1456827275-8035-2-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=VhMY=YO7zVYeP-+LY0gPvQ8yjaAUEGVJrMGLwbGjqVmg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1456827275-8035-2-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,47 +19,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk <linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRG91ZzoKCtTaIDA5LzAzLzIwMTYgMDc6MzQsIERvdWcgQW5kZXJzb24g0LS1wDoKPiBYaW5n
-IFpoZW5nLAo+Cj4gT24gVHVlLCBNYXIgMSwgMjAxNiBhdCAyOjE1IEFNLCBYaW5nIFpoZW5nIDx6
-aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+PiArICAgICAgIE1NQyhTQ0xLX1NETU1D
-X0RSViwgICAgICJlbW1jX2RydiIsICAgICJjbGtfc2RtbWMiLCBSSzMzOTlfU0RNTUNfQ09OMCwg
-MSksCj4+ICsgICAgICAgTU1DKFNDTEtfU0RNTUNfU0FNUExFLCAgImVtbWNfc2FtcGxlIiwgImNs
-a19zZG1tYyIsIFJLMzM5OV9TRE1NQ19DT04xLCAxKSwKPgo+IENhbiB5b3UgYW5kIEppYW5xdW4g
-WHUgcGxlYXNlIGNvb3JkaW5hdGU/ICBUaG91Z2ggSSBkb24ndCBoYXZlIGEgVFJNCj4gZm9yIHJr
-MzM5OSBhbmQgSSBoYXZlbid0IGxvb2tlZCB0aHJvdWdoIHRoaXMgd2hvbGUgcGF0Y2gsIEkga25v
-dyBmb3IKPiBzdXJlIHRoZXJlJ3MgYSBwcm9ibGVtIHdoZW4gSSBwaWNrIHRoZSBsYXRlc3QgcGF0
-Y2ggc2VyaWVzIGZyb20gYm90aAo+IG9mIHlvdSBpdCBkb2Vzbid0IGNvbXBpbGUuCj4KPiBJIGJl
-bGlldmUgdGhpcyBpcyB0aGUgbGF0ZXN0IGZyb20gZWFjaCBvZiB5b3UgaW4gcGF0Y2h3b3JrOgo+
-Cj4gODQ2MjQxMSAgIFt2MywxLzNdIGR0LWJpbmRpbmdzOiBhZGQgYmluZGluZ3MgZm9yIHJrMzM5
-OSBjbG9jayBjb250cm9sbGVyCj4gODQ2MjQzMSAgIFt2MywyLzNdIGNsazogcm9ja2NoaXA6IGFk
-ZCBkdC1iaW5kaW5nIGhlYWRlciBmb3IgcmszMzk5Cj4gODQ2MjQ0MSAgIFt2MywzLzNdIEFSTTY0
-OiBkdHM6IHJvY2tjaGlwOiBhZGQgY29yZSBkdHNpIGZpbGUgZm9yIHJrMzM5OQo+Cj4gODQ2Mzc0
-MSAgIFtSRVNFTkQsdjIsMS81XSBjbGs6IHJvY2tjaGlwOiBhZGQgbW9yZSBtdXggcGFyYW1ldGVy
-cyBmb3IKPiBuZXcgcGxsIHNvdXJjZXMKPiA4NDYzODAxICAgW1JFU0VORCx2MiwyLzVdIGNsazog
-cm9ja2NoaXA6IEFkZCBzdXBwb3J0IGZvciBtdWx0aXBsZQo+IGNsb2NrIHByb3ZpZGVycwo+IDg0
-NjM3NzEgICBbUkVTRU5ELHYyLDMvNV0gY2xrOiByb2NrY2hpcDogYWRkIG5ldyBwbGwtdHlwZSBm
-b3IgcmszMzk5Cj4gYW5kIHNpbWlsYXIgc29jcwo+IDg0NjM3ODEgICBbUkVTRU5ELHYyLDQvNV0g
-Y2xrOiByb2NrY2hpcDogYWRkIGEgQ09NUE9TSVRFX0ZSQUNNVVhfTk9HQVRFIHR5cGUKPiA4NDYz
-ODMxICAgW1JFU0VORCx2Miw1LzVdIGNsazogcm9ja2NoaXA6IGFkZCBjbG9jayBjb250cm9sbGVy
-IGZvciB0aGUgUkszMzk5Cj4KPgo+IFNwZWNpZmljYWxseSB5b3VyIHBhdGNoIGZyb20gTWFyY2gg
-MXN0IHJlZmVycyB0byBTQ0xLX1NETU1DX0RSViBhbmQKPiBTQ0xLX1NETU1DX1NBTVBMRS4gIFRo
-b3NlIGRlZmluZXMgZXhpc3RlZCBpbiBKaWFucXVuIFh1J3MgcGF0Y2ggYmFjawo+IG9uIEZlYiAx
-OXRoIDxodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzgzNTU0MTEvPiwgYnV0IGhp
-cwo+IGxhdGVzdCBwYXRjaCBzZXJpZXMgZnJvbSBNYXJjaCAxc3QKPiA8aHR0cHM6Ly9wYXRjaHdv
-cmsua2VybmVsLm9yZy9wYXRjaC84NDYyNDMxLz4gbm8gbG9uZ2VyIGhhcyB0aG9zZQo+ICNkZWZp
-bmVzLgo+Cj4gQ2FuIHlvdSB0d28gcmVzb2x2ZSB0aGlzIHNvIEkgY2FuIHBpY2sgYm90aCBwYXRj
-aCBzZXJpZXMgYW5kIHNlZSB0aGF0Cj4gdGhleSBjb21waWxlPyAgLi4ub3IgbGV0IG1lIGtub3cg
-d2hlcmUgSSBtZXNzZWQgdXAsIG9mIGNvdXJzZS4KPgpvaywgd2Ugd2lsbCB1cGxvYWQgZHRzaSBs
-YXRlciBhZnRlciB0aGUgY2xrLXJrMzM5OSBkcml2ZXIgYmVlbiBhcHBsaWVkLgp4aW5nIHdpbGwg
-c2VuZCB0aGUgcGF0Y2hlcyBmb3IgcmszMzk5IHRvZ2V0aGVyLgoKV2UgaG9wZSB0aGUgZHRzaSBj
-b3VsZCBiZSBhcHBsaWVkIGZpcnN0IGJ1dCBkZXBlbmRzIG9uIGNsayBkcml2ZXIsIGJ1dCAKaXQg
-c2VlbXMKbm90IGEgZ29vZCBpZGVhLCB3ZSB3aWxsIHJlc2VuZCBkdHNpIHBhdGNoIGFmdGVyIG1v
-cmUgZHJpdmVycyBhcmUgYXBwbGllZC4KClRoYW5rcyBEb3VnLgoKPiBUaGFua3MhCj4KPiAtRG91
-Zwo+Cj4KPgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Am Dienstag, 1. M=E4rz 2016, 18:14:31 schrieb Xing Zheng:
+> Thers are only two parent PLLs that APLL and GPLL for core on the
+> previous SoCs (RK3066/RK3188/RK3288/RK3368). Hence, we set fixed
+> GPLL as alternate parent when core is switching freq.
+> =
+
+> Since RK3399 big.LITTLE architecture, we need to select and adapt
+> more PLLs (ALPLL/ABPLL/DPLL/GPLL) sources.
+> =
+
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
+note to self: looks good to go
