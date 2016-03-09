@@ -1,164 +1,100 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v5 4/6] dt/bindings: power: add RK3399 SoCs header for power-domain
-Date: Wed, 09 Mar 2016 11:57:30 +0100
-Message-ID: <1757559.IpfTQRFBYT@diego>
-References: <1456992233-25164-1-git-send-email-zhangqing@rock-chips.com> <2748667.mSDu940Rq4@diego> <56DFFCAA.2030401@gmail.com>
+Subject: Re: [PATCH v3 5/7] clk: rockchip: add new pll-type for rk3399 and similar socs
+Date: Wed, 09 Mar 2016 13:29:09 +0100
+Message-ID: <2688473.EyteJL2oqe@diego>
+References: <1457491027-30936-1-git-send-email-zhengxing@rock-chips.com> <1457491378-31077-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56DFFCAA.2030401@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, wxt@rock-chips.com, khilman@baylibre.com, huangtao@rock-chips.com, xxx@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, zyw@rock-chips.com, jay.xu@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1457491378-31077-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+Hi Xing,
 
-Am Mittwoch, 9. M=C3=A4rz 2016, 18:36:26 schrieb Caesar Wang:
-> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8809=E6=97=A5 17:55, Heiko St=C3=BCbn=
-er =E5=86=99=E9=81=93:
-> > Hi Caesar,
-> >=20
-> > Am Dienstag, 8. M=C3=A4rz 2016, 18:45:06 schrieb Caesar Wang:
-> >> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8803=E6=97=A5 16:03, Elaine Zhang =
-=E5=86=99=E9=81=93:
-> >>> According to a description from TRM, add all the power domains
-> >>>=20
-> >>> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> >>> ---
-> >>>=20
-> >>>    include/dt-bindings/power/rk3399-power.h | 53
-> >>>    ++++++++++++++++++++++++++++++++ 1 file changed, 53 insertions=
-(+)
-> >>>    create mode 100644 include/dt-bindings/power/rk3399-power.h
-> >>>=20
-> >>> diff --git a/include/dt-bindings/power/rk3399-power.h
-> >>> b/include/dt-bindings/power/rk3399-power.h new file mode 100644
-> >>> index 0000000..69fbd67
-> >>> --- /dev/null
-> >>> +++ b/include/dt-bindings/power/rk3399-power.h
-> >>> @@ -0,0 +1,53 @@
-> >>> +#ifndef __DT_BINDINGS_POWER_RK3399_POWER_H__
-> >>> +#define __DT_BINDINGS_POWER_RK3399_POWER_H__
-> >>> +
-> >>> +/* VD_CORE_L */
-> >>> +#define RK3399_PD_A53_L0	0
-> >>> +#define RK3399_PD_A53_L1	1
-> >>> +#define RK3399_PD_A53_L2	2
-> >>> +#define RK3399_PD_A53_L3	3
-> >>> +#define RK3399_PD_SCU_L		4
-> >>> +
-> >>> +/* VD_CORE_B */
-> >>> +#define RK3399_PD_A72_B0	5
-> >>> +#define RK3399_PD_A72_B1	6
-> >>> +#define RK3399_PD_SCU_B		7
-> >>> +
-> >>> +/* VD_CENTER */
-> >>> +#define RK3399_PD_CENTER	8
-> >>> +#define RK3399_PD_VCODEC	9
-> >>> +#define RK3399_PD_RGA		10
-> >>> +#define RK3399_PD_IEP		11
-> >>> +#define RK3399_PD_VDU		12
-> >>> +
-> >>> +/* VD_LOGIC */
-> >>> +#define RK3399_PD_PERILP	13
-> >>> +#define RK3399_PD_PERIHP	14
-> >>> +#define RK3399_PD_VIO		15
-> >>> +#define RK3399_PD_VO		16
-> >>=20
-> >> ...
-> >> ISP?
-> >>=20
-> >>> +#define RK3399_PD_VOPB		17
-> >>> +#define RK3399_PD_VOPL		18
-> >>> +#define RK3399_PD_ISP0		19
-> >>> +#define RK3399_PD_ISP1		20
-> >>> +#define RK3399_PD_HDCP		21
-> >>> +#define RK3399_PD_TCPD0		22
-> >>> +#define RK3399_PD_TCPD1		23
-> >>> +#define RK3399_PD_GIC		24
-> >>> +#define RK3399_PD_ALIVE		25
-> >>> +#define RK3399_PD_USB3		26
-> >>> +#define RK3399_PD_SD		27
-> >>> +#define RK3399_PD_CCI		28
-> >>> +#define RK3399_PD_CCI0		29
-> >>> +#define RK3399_PD_CCI1		30
-> >>> +#define RK3399_PD_GMAC		31
-> >>> +#define RK3399_PD_EMMC		32
-> >>> +#define RK3399_PD_EDP		33
-> >>> +#define RK3399_PD_SDIOAUDIO	34
-> >>> +
-> >>> +/* VD_GPU */
-> >>> +#define RK3399_PD_GPU		35
-> >>> +
-> >>> +/* VD_PMU */
-> >>> +#define RK3399_PD_PMU		36
-> >>> +
-> >>=20
-> >> Would you please follow the TRM?
-> >=20
-> > could you elaborate a bit on what you mean?
-> >=20
-> > Looking at the "Table 11-1 RK3399 Power Domain and Voltage Domain S=
-ummary"
-> > in the TRM, Elaine's list seems to match that table quite nicely, s=
-o
-> > looks ok to me at first glance.
+Am Mittwoch, 9. M=E4rz 2016, 10:42:58 schrieb Xing Zheng:
+> The rk3399's pll and clock are similar with rk3036's, it different
+> with base on the rk3066(rk3188, rk3288, rk3368 use it), there are
+> different adjust foctors and control registers, so these should be
+> independent and separate from the series of rk3066s.
 >=20
-> That's also trivial...
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> ---
 >=20
-> The comments from the first time I saw this file and TRM.:-)
+> Changes in v3: None
+> Changes in v2: None
 >=20
-> Can we define the lists according to order the TRM?
+>  drivers/clk/rockchip/clk-pll.c |  279
+> +++++++++++++++++++++++++++++++++++++++- drivers/clk/rockchip/clk.h  =
+   | =20
+>  3 +-
+>  2 files changed, 280 insertions(+), 2 deletions(-)
 >=20
-> For example:
+> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/cl=
+k-pll.c
+> index 27be66a..62d2f0e 100644
+> --- a/drivers/clk/rockchip/clk-pll.c
+> +++ b/drivers/clk/rockchip/clk-pll.c
+> @@ -593,6 +593,275 @@ static const struct clk_ops
+> rockchip_rk3066_pll_clk_ops =3D { .init =3D rockchip_rk3066_pll_init,
+>  };
 >=20
-> +/* VD_CORE_L */
-> +#define RK3399_PD_A53_L0	0
-> +#define RK3399_PD_A53_L1	1
-> +#define RK3399_PD_A53_L2	2
-> +#define RK3399_PD_A53_L3	3
-> +#define RK3399_PD_SCU_L	4
+> +/**
+> + * PLL used in RK3399
+> + */
 > +
-> +/* VD_CORE_B */
-> +#define RK3399_PD_A72_B0	5
-> +#define RK3399_PD_A72_B1	6
-> +#define RK3399_PD_SCU_B	7
+> +#define RK3399_PLLCON(i)			(i * 0x4)
+> +#define RK3399_PLLCON0_FBDIV_MASK		0xfff
+> +#define RK3399_PLLCON0_FBDIV_SHIFT		0
+> +#define RK3399_PLLCON1_REFDIV_MASK		0x3f
+> +#define RK3399_PLLCON1_REFDIV_SHIFT		0
+> +#define RK3399_PLLCON1_POSTDIV1_MASK		0x7
+> +#define RK3399_PLLCON1_POSTDIV1_SHIFT		8
+> +#define RK3399_PLLCON1_POSTDIV2_MASK		0x7
+> +#define RK3399_PLLCON1_POSTDIV2_SHIFT		12
+> +#define RK3399_PLLCON2_FRAC_MASK		0xffffff
+> +#define RK3399_PLLCON2_FRAC_SHIFT		0
+please move RK3399_PLLCON2_LOCK_STATUS here
+
+> +#define RK3399_PLLCON3_DSMPD_MASK		0x1
+> +#define RK3399_PLLCON3_DSMPD_SHIFT		12
+
+DSMPD_SHIFT should be 3, right?
+
 > +
-> +/* VD_LOGIC */
-> +#define RK3399_PD_PERILP	13
-> +#define RK3399_PD_PERIHP	14
-> +#define RK3399_PD_VIO		15
-> +#define RK3399_PD_ISP0		16
-> +#define RK3399_PD_ISP1		17
-> +#define RK3399_PD_VO		18
-> +#define RK3399_PD_HDCP	19
-> +#define RK3399_PD_TCPD0	20
-> +#define RK3399_PD_TCPD1	21
-> .....
->=20
-> +/* VD_CENTER */
-> ....
->=20
-> +/* VD_GPU */
-> ....
->=20
-> +/* VD_PMU */
->=20
->=20
-> Please ignore it and sorry the noise if that's the wrong ideas.:-)
+> +#define RK3399_PLLCON2_LOCK_STATUS		(31 << 0)
 
-I may be simply be blind, but I don't see the difference .... ah no, no=
-w I see=20
-it, some voltage domains are swapped in the original (VD_CENTER before=20
-VD_LOGIC, while in the TRM it's the other way around).
+that is wrong, you want (1 << 31), or even better BIT(31) here
 
-So while it doesn't matter much, I would slightly prefer the ordering b=
-eing=20
-according to the TRM table. Reason is the same as for ordering the cloc=
-k-tree=20
-according to the diagrams - it makes future reading easier ;-)
+
+> +#define RK3399_PLLCON3_PWRDOWN			(1 << 0)
+
+dito, BIT(0) please
+
+[...]
+
+> +static int rockchip_rk3399_pll_set_rate(struct clk_hw *hw, unsigned =
+long
+> drate, +					unsigned long prate)
+> +{
+> +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> +	const struct rockchip_pll_rate_table *rate;
+> +	unsigned long old_rate =3D rockchip_rk3399_pll_recalc_rate(hw, prat=
+e);
+> +	struct regmap *grf =3D rockchip_clk_get_grf(pll->ctx);
+> +
+> +	if (IS_ERR(grf)) {
+> +		pr_debug("%s: grf regmap not available, aborting rate change\n",
+> +			 __func__);
+> +		return PTR_ERR(grf);
+> +	}
+
+the pll lock-status moved to the pll registers it seems, so you don't n=
+eed to=20
+get the GRF here at all, as we don't need it for the lock status.
 
 
 Heiko
