@@ -1,115 +1,108 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v6 6/6] rockchip: power-domain: Modify power domain driver for rk3399
-Date: Thu, 10 Mar 2016 05:24:38 +0800
-Message-ID: <1457558678-22171-1-git-send-email-zhangqing@rock-chips.com>
-References: <1457558578-22049-1-git-send-email-zhangqing@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457558578-22049-1-git-send-email-zhangqing@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
-Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH v3 5/7] clk: rockchip: add new pll-type for rk3399 and
+ similar socs
+Date: Thu, 10 Mar 2016 11:25:34 +0800
+Message-ID: <56E0E92E.7000206@rock-chips.com>
+References: <1457491027-30936-1-git-send-email-zhengxing@rock-chips.com>
+ <1457491378-31077-1-git-send-email-zhengxing@rock-chips.com>
+ <2688473.EyteJL2oqe@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <2688473.EyteJL2oqe@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver is modified to support RK3399 SoC.
+Hi Heiko,
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/soc/rockchip/pm_domains.c | 55 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
+On 2016=E5=B9=B403=E6=9C=8809=E6=97=A5 20:29, Heiko St=C3=BCbner wrote:
+> Hi Xing,
+>
+> Am Mittwoch, 9. M=C3=A4rz 2016, 10:42:58 schrieb Xing Zheng:
+>> The rk3399's pll and clock are similar with rk3036's, it different
+>> with base on the rk3066(rk3188, rk3288, rk3368 use it), there are
+>> different adjust foctors and control registers, so these should be
+>> independent and separate from the series of rk3066s.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> ---
+>>
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>   drivers/clk/rockchip/clk-pll.c |  279
+>> +++++++++++++++++++++++++++++++++++++++- drivers/clk/rockchip/clk.h =
+    |
+>>   3 +-
+>>   2 files changed, 280 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/c=
+lk-pll.c
+>> index 27be66a..62d2f0e 100644
+>> --- a/drivers/clk/rockchip/clk-pll.c
+>> +++ b/drivers/clk/rockchip/clk-pll.c
+>> @@ -593,6 +593,275 @@ static const struct clk_ops
+>> rockchip_rk3066_pll_clk_ops =3D { .init =3D rockchip_rk3066_pll_init=
+,
+>>   };
+>>
+>> +/**
+>> + * PLL used in RK3399
+>> + */
+>> +
+>> +#define RK3399_PLLCON(i)			(i * 0x4)
+>> +#define RK3399_PLLCON0_FBDIV_MASK		0xfff
+>> +#define RK3399_PLLCON0_FBDIV_SHIFT		0
+>> +#define RK3399_PLLCON1_REFDIV_MASK		0x3f
+>> +#define RK3399_PLLCON1_REFDIV_SHIFT		0
+>> +#define RK3399_PLLCON1_POSTDIV1_MASK		0x7
+>> +#define RK3399_PLLCON1_POSTDIV1_SHIFT		8
+>> +#define RK3399_PLLCON1_POSTDIV2_MASK		0x7
+>> +#define RK3399_PLLCON1_POSTDIV2_SHIFT		12
+>> +#define RK3399_PLLCON2_FRAC_MASK		0xffffff
+>> +#define RK3399_PLLCON2_FRAC_SHIFT		0
+> please move RK3399_PLLCON2_LOCK_STATUS here
+Done.
+>> +#define RK3399_PLLCON3_DSMPD_MASK		0x1
+>> +#define RK3399_PLLCON3_DSMPD_SHIFT		12
+> DSMPD_SHIFT should be 3, right?
+Yes, I'm sorry to careless.
+>
+>> +
+>> +#define RK3399_PLLCON2_LOCK_STATUS		(31 << 0)
+> that is wrong, you want (1 << 31), or even better BIT(31) here
+Yes, done.
+>
+>> +#define RK3399_PLLCON3_PWRDOWN			(1 << 0)
+> dito, BIT(0) please
+Done.
+>> +static int rockchip_rk3399_pll_set_rate(struct clk_hw *hw, unsigned=
+ long
+>> drate, +					unsigned long prate)
+>> +{
+>> +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+>> +	const struct rockchip_pll_rate_table *rate;
+>> +	unsigned long old_rate =3D rockchip_rk3399_pll_recalc_rate(hw, pra=
+te);
+>> +	struct regmap *grf =3D rockchip_clk_get_grf(pll->ctx);
+>> +
+>> +	if (IS_ERR(grf)) {
+>> +		pr_debug("%s: grf regmap not available, aborting rate change\n",
+>> +			 __func__);
+>> +		return PTR_ERR(grf);
+>> +	}
+> the pll lock-status moved to the pll registers it seems, so you don't=
+ need to
+> get the GRF here at all, as we don't need it for the lock status.
+Yes, done.
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index e4ae94f..e0cfe5f 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -19,6 +19,7 @@
- #include <linux/mfd/syscon.h>
- #include <dt-bindings/power/rk3288-power.h>
- #include <dt-bindings/power/rk3368-power.h>
-+#include <dt-bindings/power/rk3399-power.h>
- 
- struct rockchip_domain_info {
- 	int pwr_mask;
-@@ -79,6 +80,9 @@ struct rockchip_pmu {
- #define DOMAIN_RK3368(pwr, status, req)		\
- 	DOMAIN(pwr, status, req, (req) + 16, req)
- 
-+#define DOMAIN_RK3399(pwr, status, req)                \
-+	DOMAIN(pwr, status, req, req, req)
-+
- static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
- {
- 	struct rockchip_pmu *pmu = pd->pmu;
-@@ -535,6 +539,36 @@ static const struct rockchip_domain_info rk3368_pm_domains[] = {
- 	[RK3368_PD_GPU_1]	= DOMAIN_RK3368(17, 16, 2),
- };
- 
-+static const struct rockchip_domain_info rk3399_pm_domains[] = {
-+	[RK3399_PD_TCPD0]	= DOMAIN_RK3399(8, 8, -1),
-+	[RK3399_PD_TCPD1]	= DOMAIN_RK3399(9, 9, -1),
-+	[RK3399_PD_CCI]	= DOMAIN_RK3399(10, 10, -1),
-+	[RK3399_PD_CCI0]	= DOMAIN_RK3399(-1, -1, 15),
-+	[RK3399_PD_CCI1]	= DOMAIN_RK3399(-1, -1, 16),
-+	[RK3399_PD_PERILP]	= DOMAIN_RK3399(11, 11, 1),
-+	[RK3399_PD_PERIHP]	= DOMAIN_RK3399(12, 12, 2),
-+	[RK3399_PD_CENTER]	= DOMAIN_RK3399(13, 13, 14),
-+	[RK3399_PD_VIO]	= DOMAIN_RK3399(14, 14, 17),
-+	[RK3399_PD_GPU]	= DOMAIN_RK3399(15, 15, 0),
-+	[RK3399_PD_VCODEC]	= DOMAIN_RK3399(16, 16, 3),
-+	[RK3399_PD_VDU]	= DOMAIN_RK3399(17, 17, 4),
-+	[RK3399_PD_RGA]	= DOMAIN_RK3399(18, 18, 5),
-+	[RK3399_PD_IEP]	= DOMAIN_RK3399(19, 19, 6),
-+	[RK3399_PD_VO]	= DOMAIN_RK3399(20, 20, -1),
-+	[RK3399_PD_VOPB]	= DOMAIN_RK3399(-1, -1, 7),
-+	[RK3399_PD_VOPL]	= DOMAIN_RK3399(-1, -1, 8),
-+	[RK3399_PD_ISP0]	= DOMAIN_RK3399(22, 22, 9),
-+	[RK3399_PD_ISP1]	= DOMAIN_RK3399(23, 23, 10),
-+	[RK3399_PD_HDCP]	= DOMAIN_RK3399(24, 24, 11),
-+	[RK3399_PD_GMAC]	= DOMAIN_RK3399(25, 25, 23),
-+	[RK3399_PD_EMMC]	= DOMAIN_RK3399(26, 26, 24),
-+	[RK3399_PD_USB3]	= DOMAIN_RK3399(27, 27, 12),
-+	[RK3399_PD_EDP]	= DOMAIN_RK3399(28, 28, 22),
-+	[RK3399_PD_GIC]	= DOMAIN_RK3399(29, 29, 27),
-+	[RK3399_PD_SD]	= DOMAIN_RK3399(30, 30, 28),
-+	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399(31, 31, 29),
-+};
-+
- static const struct rockchip_pmu_info rk3288_pmu = {
- 	.pwr_offset = 0x08,
- 	.status_offset = 0x0c,
-@@ -569,6 +603,23 @@ static const struct rockchip_pmu_info rk3368_pmu = {
- 	.domain_info = rk3368_pm_domains,
- };
- 
-+static const struct rockchip_pmu_info rk3399_pmu = {
-+	.pwr_offset = 0x14,
-+	.status_offset = 0x18,
-+	.req_offset = 0x60,
-+	.idle_offset = 0x64,
-+	.ack_offset = 0x68,
-+
-+	.core_pwrcnt_offset = 0x9c,
-+	.gpu_pwrcnt_offset = 0xa4,
-+
-+	.core_power_transition_time = 24,
-+	.gpu_power_transition_time = 24,
-+
-+	.num_domains = ARRAY_SIZE(rk3399_pm_domains),
-+	.domain_info = rk3399_pm_domains,
-+};
-+
- static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 	{
- 		.compatible = "rockchip,rk3288-power-controller",
-@@ -578,6 +629,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 		.compatible = "rockchip,rk3368-power-controller",
- 		.data = (void *)&rk3368_pmu,
- 	},
-+	{
-+		.compatible = "rockchip,rk3399-power-controller",
-+		.data = (void *)&rk3399_pmu,
-+	},
- 	{ /* sentinel */ },
- };
- 
--- 
-1.9.1
+Thanks.
+
+--=20
+- Xing Zheng
+
+
