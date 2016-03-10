@@ -1,95 +1,70 @@
-From: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Thu, 10 Mar 2016 10:47:45 -0600
-Message-ID: <CADhT+wd=vcph2y_OxkGNO5EwHvN=kBy-BrfZHmNjZHww4LxmTg@mail.gmail.com>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
-	<56DD7172.4000707@suse.de>
-	<2714888.1DdqvJZ8cb@diego>
-	<56DD7593.5060003@suse.de>
-	<56DD8176.2080603@st.com>
-	<56DD8FBE.9010200@suse.de>
-	<56DD99A4.5030004@st.com>
-	<56DDA26C.3050301@suse.de>
-	<56DDA3D5.3090209@st.com>
-	<56DDB749.1020808@suse.de>
-	<CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>
-	<56DE7E1D.5070508@st.com>
-	<CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>
-	<CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>
-	<56DFE55B.2090806@st.com>
-	<56DFE64B.8060606@st.com>
-	<CAAObsKBr9SXg1-wr9O-ypR8JozdGpeAwfDLMeUKi8ozxkKyTXg@mail.gmail.com>
-	<56DFF253.9050208@st.com>
-	<56DFFA9E.7060602@st.com>
-	<CAAObsKBUzBXcamEyup44N1bYUzGr_ZZTsYcD5x3PXb-2E00cGA@mail.gmail.com>
-	<56E033C8.40506@st.com>
-	<56E038CE.606@st.com>
-	<CADhT+wcMpzA_Coj8Z5OQZsc3bF3a7yOmsbazQMPtcdUWkJSuCA@mail.gmail.com>
-	<56E13AAB.2080900@st.com>
+From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
+Date: Thu, 10 Mar 2016 18:54:38 +0100
+Message-ID: <20160310175438.GA5648@ulmo.nvidia.com>
+References: <20160203145337.GD9650@ulmo>
+ <CAD=FV=U_x1cxx6RrHuVgVV8GbOwm9DXXJcyiArbbQySUOaxrvQ@mail.gmail.com>
+ <20160222175929.GA23899@ulmo>
+ <CAD=FV=UCErW3EjYRtwt49_ztNR7cyY4U0o4R_dxdomer-Ac2Dg@mail.gmail.com>
+ <20160223143859.GA27656@ulmo>
+ <CAD=FV=UvxG3MYD4MKQJqN7W68uMjd-s+FH-e8tkrLCpS0RLmZQ@mail.gmail.com>
+ <20160223181448.GA14754@ulmo.nvidia.com>
+ <CAD=FV=VM3cOQ0HqwLANBw9MVBCyFTrSyPe_dGzgPucuMUEWRKA@mail.gmail.com>
+ <CAD=FV=VckTVD8b1g+f0G2kMeoTjvY0pAGhoDnWQN_dAmqSxBxg@mail.gmail.com>
+ <CAD=FV=W3KPf8tyMviVNB9=HjefMdP+FBbN01Zhh7RKH+gkj2WQ@mail.gmail.com>
+Reply-To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56E13AAB.2080900-qxv4g6HH51o@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
-Cc: Tomeu Vizoso <tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, =?UTF-8?Q?Frank_Sch=C3=A4fer?= <fschaefer.oss-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="9jxsPFA5p3P2qPhR"
+Return-path: <linux-sunxi+bncBDTKFPPJUEHRBZHJQ23QKGQEG5YTZWQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=W3KPf8tyMviVNB9=HjefMdP+FBbN01Zhh7RKH+gkj2WQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel@lists>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 10, 2016 at 3:13 AM, Giuseppe CAVALLARO
-<peppe.cavallaro-qxv4g6HH51o@public.gmane.org> wrote:
-> On 3/9/2016 5:31 PM, Dinh Nguyen wrote:
->>
->> On Wed, Mar 9, 2016 at 8:53 AM, Giuseppe CAVALLARO
->> <peppe.cavallaro-qxv4g6HH51o@public.gmane.org> wrote:
->>>
->>> Hi Tomeu, Dinh, Andreas
->>>
->>> I need a sum and help from you to go ahead on the
->>> tx timeout.
->>>
->>> The "stmmac: MDIO fixes" seems to be the candidate to
->>> fix the phy connection and I will send the V2 asap (Andreas' comment).
->>>
->>> So, supposing the probe is ok and phy is connected,
->>> I need your input ...
->>>
->>>   Tomeu: after revering the 0e80bdc9a72d (stmmac: first frame
->>>          prep at the end of xmit routine) the network is
->>>          not stable and there is a timeout after a while.
->>>          The box has 3.50 with normal desc settings.
->>>
->>>   Dinh: the network is ok, I wonder if you can share a boot
->>>         log just to understand if the normal or enhanced
->>>         descriptors are used.
->>>
->>
->> Here it is:
->
-> ...
->>
->> [    0.850523] stmmac - user ID: 0x10, Synopsys ID: 0x37
->> [    0.855570]  Ring mode enabled
->> [    0.858611]  DMA HW capability register supported
->> [    0.863128]  Enhanced/Alternate descriptors
->> [    0.867482]  Enabled extended descriptors
->> [    0.871482]  RX Checksum Offload Engine supported (type 2)
->> [    0.876948]  TX Checksum insertion supported
->> [    0.881204]  Enable RX Mitigation via HW Watchdog Timer
->> [    0.886863] socfpga-dwmac ff702000.ethernet eth0: No MDIO subnode found
->> [    0.899090] libphy: stmmac: probed
->> [    0.902484] eth0: PHY ID 00221611 at 4 IRQ POLL (stmmac-0:04) active
->
->
-> Thx Dinh, so you are using the Enhanced/Alternate descriptors
-> I am debugging on my side on a setup with normal descriptors, I let you
-> know
->
+--9jxsPFA5p3P2qPhR
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
 
-Doesn't the printout "Enhanced/Alternate descriptors"  mean that I'm using
-Enhanced/Alternate descriptors?
+On Mon, Mar 07, 2016 at 08:34:19AM -0800, Doug Anderson wrote:
+> Thierry,
+> 
+> On Thu, Feb 25, 2016 at 3:14 PM, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org> wrote:
+> > So just to summarize:
+> >
+> > * Add pwm_get_state(), pwm_apply_state(), pwm_get_args().
+> > pwm_get_state() initially returns 0 for duty cycle if driver doesn't
+> > support readout.
+> >
+> > * Re-implement pwm_get_period() (and maybe other similar functions)
+> > atop pwm_get_state() as you describe earlier in the thread.
+> >
+> > * Document pwm_get_period() (and maybe other similar functions) as deprecated.
+> >
+> > * Fix drivers for all current 2 users of PWM regulator to support
+> > hardware readout.
+> >
+> > * Update PWM regulator as you described earlier in the thread (Feb 23).
+> >
+> > * If PWM regulator is ever used on a new board whose PWM doesn't
+> > support hardware readout, the voltage will change at probe time.
+> >
+> >
+> > Did I get all that right?  Thanks!
+> 
+> Can you provide a "yes, you got that right" or a "no, you didn't
+> understand"?  That will unblock Boris, I think.
 
-Dinh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Sounds about right. Hopefully this will eliminate any objections that
+others had about the series.
+
+Thierry
+--9jxsPFA5p3P2qPhR--
