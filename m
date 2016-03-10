@@ -1,68 +1,238 @@
-From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Thu, 10 Mar 2016 10:13:15 +0100
-Message-ID: <56E13AAB.2080900@st.com>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>	<56DD7172.4000707@suse.de>	<2714888.1DdqvJZ8cb@diego>	<56DD7593.5060003@suse.de>	<56DD8176.2080603@st.com>	<56DD8FBE.9010200@suse.de>	<56DD99A4.5030004@st.com>	<56DDA26C.3050301@suse.de>	<56DDA3D5.3090209@st.com>	<56DDB749.1020808@suse.de>	<CADhT+wfO8x4En78g5ixnnwbpaeXJGDo+Q1sOABYsbXzNZy0CPw@mail.gmail.com>	<56DE7E1D.5070508@st.com>	<CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>	<CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>	<56DFE55B.2090806@st.com>	<56DFE64B.8060606@st.com>	<CAAObsKBr9SXg1-wr9O-ypR8JozdGpeAwfDLMeUKi8ozxkKyTXg@mail.gmail.com>	<56DFF253.9050208@st.com>	<56DFFA9E.7060602@st.com>	<CAAObsKBUzBXcamEyup44N1bYUzGr_ZZTsYcD5x3PXb-2E00cGA@mail.gmail.com>	<56E033C8.40506@st.c
- om>	<56E038CE.606@st.com>
- <CADhT+wcMpzA_Coj8Z5OQZsc3bF3a7yOmsbazQMPtcdUWkJSuCA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CADhT+wcMpzA_Coj8Z5OQZsc3bF3a7yOmsbazQMPtcdUWkJSuCA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?RnJhbmsgU2Now6RmZXI=?= <fschaefer.oss-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Tomeu Vizoso <tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
+From: Alexander Kochetkov <al.kochet@gmail.com>
+Subject: [PATCH 1/3 v2] dmaengine: pl330: cleanup quirk pass code
+Date: Thu, 10 Mar 2016 13:57:34 +0300
+Message-ID: <1457607456-30458-1-git-send-email-al.kochet@gmail.com>
+References: <1455798674-10186-1-git-send-email-al.kochet@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1455798674-10186-1-git-send-email-al.kochet@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Vinod Koul <vinod.koul@intel.com>, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Caesar Wang <wxt@rock-chips.com>, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Alexander Kochetkov <al.kochet@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/9/2016 5:31 PM, Dinh Nguyen wrote:
-> On Wed, Mar 9, 2016 at 8:53 AM, Giuseppe CAVALLARO
-> <peppe.cavallaro-qxv4g6HH51o@public.gmane.org> wrote:
->> Hi Tomeu, Dinh, Andreas
->>
->> I need a sum and help from you to go ahead on the
->> tx timeout.
->>
->> The "stmmac: MDIO fixes" seems to be the candidate to
->> fix the phy connection and I will send the V2 asap (Andreas' comment).
->>
->> So, supposing the probe is ok and phy is connected,
->> I need your input ...
->>
->>   Tomeu: after revering the 0e80bdc9a72d (stmmac: first frame
->>          prep at the end of xmit routine) the network is
->>          not stable and there is a timeout after a while.
->>          The box has 3.50 with normal desc settings.
->>
->>   Dinh: the network is ok, I wonder if you can share a boot
->>         log just to understand if the normal or enhanced
->>         descriptors are used.
->>
->
-> Here it is:
-...
-> [    0.850523] stmmac - user ID: 0x10, Synopsys ID: 0x37
-> [    0.855570]  Ring mode enabled
-> [    0.858611]  DMA HW capability register supported
-> [    0.863128]  Enhanced/Alternate descriptors
-> [    0.867482]  Enabled extended descriptors
-> [    0.871482]  RX Checksum Offload Engine supported (type 2)
-> [    0.876948]  TX Checksum insertion supported
-> [    0.881204]  Enable RX Mitigation via HW Watchdog Timer
-> [    0.886863] socfpga-dwmac ff702000.ethernet eth0: No MDIO subnode found
-> [    0.899090] libphy: stmmac: probed
-> [    0.902484] eth0: PHY ID 00221611 at 4 IRQ POLL (stmmac-0:04) active
+The patch partially revert changes introduced by 271e1b86e691
+"dmaengine: pl330: add quirk for broken no flushp"
 
-Thx Dinh, so you are using the Enhanced/Alternate descriptors
-I am debugging on my side on a setup with normal descriptors, I let you
-know
+The patch add 'quirk' member to 'struct _xfer_spec' and
+remove 'struct pl330_dmac *pl330' parameter from
+many intermediate functions. The patch is intended to
+hide 'struct pl330_dmac' implementation from Microcode
+generation functions.
 
-peppe
+The patch is here to allow easy backporting following
+patches to longterm linux 4.1.x.
+
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+Reviewed-by: Caesar Wang <wxt@rock-chips.com>
+---
+ drivers/dma/pl330.c |   59 ++++++++++++++++++++++++---------------------------
+ 1 file changed, 28 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index 372b435..4abbc71 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -534,6 +534,7 @@ struct dma_pl330_desc {
+ struct _xfer_spec {
+ 	u32 ccr;
+ 	struct dma_pl330_desc *desc;
++	int quirks;
+ };
+ 
+ static inline bool _queue_empty(struct pl330_thread *thrd)
+@@ -1151,14 +1152,13 @@ static inline int _ldst_memtomem(unsigned dry_run, u8 buf[],
+ 	return off;
+ }
+ 
+-static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+-				 u8 buf[], const struct _xfer_spec *pxs,
+-				 int cyc)
++static inline int _ldst_devtomem(unsigned dry_run, u8 buf[],
++		const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
+ 	enum pl330_cond cond;
+ 
+-	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
++	if (pxs->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+ 		cond = BURST;
+ 	else
+ 		cond = SINGLE;
+@@ -1168,7 +1168,7 @@ static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+ 		off += _emit_LDP(dry_run, &buf[off], cond, pxs->desc->peri);
+ 		off += _emit_ST(dry_run, &buf[off], ALWAYS);
+ 
+-		if (!(pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
++		if (!(pxs->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
+ 			off += _emit_FLUSHP(dry_run, &buf[off],
+ 					    pxs->desc->peri);
+ 	}
+@@ -1176,14 +1176,13 @@ static inline int _ldst_devtomem(struct pl330_dmac *pl330, unsigned dry_run,
+ 	return off;
+ }
+ 
+-static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+-				 unsigned dry_run, u8 buf[],
+-				 const struct _xfer_spec *pxs, int cyc)
++static inline int _ldst_memtodev(unsigned dry_run, u8 buf[],
++		const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
+ 	enum pl330_cond cond;
+ 
+-	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
++	if (pxs->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
+ 		cond = BURST;
+ 	else
+ 		cond = SINGLE;
+@@ -1193,7 +1192,7 @@ static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+ 		off += _emit_LD(dry_run, &buf[off], ALWAYS);
+ 		off += _emit_STP(dry_run, &buf[off], cond, pxs->desc->peri);
+ 
+-		if (!(pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
++		if (!(pxs->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP))
+ 			off += _emit_FLUSHP(dry_run, &buf[off],
+ 					    pxs->desc->peri);
+ 	}
+@@ -1201,17 +1200,17 @@ static inline int _ldst_memtodev(struct pl330_dmac *pl330,
+ 	return off;
+ }
+ 
+-static int _bursts(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
++static int _bursts(unsigned dry_run, u8 buf[],
+ 		const struct _xfer_spec *pxs, int cyc)
+ {
+ 	int off = 0;
+ 
+ 	switch (pxs->desc->rqtype) {
+ 	case DMA_MEM_TO_DEV:
+-		off += _ldst_memtodev(pl330, dry_run, &buf[off], pxs, cyc);
++		off += _ldst_memtodev(dry_run, &buf[off], pxs, cyc);
+ 		break;
+ 	case DMA_DEV_TO_MEM:
+-		off += _ldst_devtomem(pl330, dry_run, &buf[off], pxs, cyc);
++		off += _ldst_devtomem(dry_run, &buf[off], pxs, cyc);
+ 		break;
+ 	case DMA_MEM_TO_MEM:
+ 		off += _ldst_memtomem(dry_run, &buf[off], pxs, cyc);
+@@ -1225,7 +1224,7 @@ static int _bursts(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ }
+ 
+ /* Returns bytes consumed and updates bursts */
+-static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
++static inline int _loop(unsigned dry_run, u8 buf[],
+ 		unsigned long *bursts, const struct _xfer_spec *pxs)
+ {
+ 	int cyc, cycmax, szlp, szlpend, szbrst, off;
+@@ -1233,7 +1232,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	struct _arg_LPEND lpend;
+ 
+ 	if (*bursts == 1)
+-		return _bursts(pl330, dry_run, buf, pxs, 1);
++		return _bursts(dry_run, buf, pxs, 1);
+ 
+ 	/* Max iterations possible in DMALP is 256 */
+ 	if (*bursts >= 256*256) {
+@@ -1251,7 +1250,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	}
+ 
+ 	szlp = _emit_LP(1, buf, 0, 0);
+-	szbrst = _bursts(pl330, 1, buf, pxs, 1);
++	szbrst = _bursts(1, buf, pxs, 1);
+ 
+ 	lpend.cond = ALWAYS;
+ 	lpend.forever = false;
+@@ -1283,7 +1282,7 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	off += _emit_LP(dry_run, &buf[off], 1, lcnt1);
+ 	ljmp1 = off;
+ 
+-	off += _bursts(pl330, dry_run, &buf[off], pxs, cyc);
++	off += _bursts(dry_run, &buf[off], pxs, cyc);
+ 
+ 	lpend.cond = ALWAYS;
+ 	lpend.forever = false;
+@@ -1306,9 +1305,8 @@ static inline int _loop(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
+ 	return off;
+ }
+ 
+-static inline int _setup_loops(struct pl330_dmac *pl330,
+-			       unsigned dry_run, u8 buf[],
+-			       const struct _xfer_spec *pxs)
++static inline int _setup_loops(unsigned dry_run, u8 buf[],
++		const struct _xfer_spec *pxs)
+ {
+ 	struct pl330_xfer *x = &pxs->desc->px;
+ 	u32 ccr = pxs->ccr;
+@@ -1317,16 +1315,15 @@ static inline int _setup_loops(struct pl330_dmac *pl330,
+ 
+ 	while (bursts) {
+ 		c = bursts;
+-		off += _loop(pl330, dry_run, &buf[off], &c, pxs);
++		off += _loop(dry_run, &buf[off], &c, pxs);
+ 		bursts -= c;
+ 	}
+ 
+ 	return off;
+ }
+ 
+-static inline int _setup_xfer(struct pl330_dmac *pl330,
+-			      unsigned dry_run, u8 buf[],
+-			      const struct _xfer_spec *pxs)
++static inline int _setup_xfer(unsigned dry_run, u8 buf[],
++		const struct _xfer_spec *pxs)
+ {
+ 	struct pl330_xfer *x = &pxs->desc->px;
+ 	int off = 0;
+@@ -1337,7 +1334,7 @@ static inline int _setup_xfer(struct pl330_dmac *pl330,
+ 	off += _emit_MOV(dry_run, &buf[off], DAR, x->dst_addr);
+ 
+ 	/* Setup Loop(s) */
+-	off += _setup_loops(pl330, dry_run, &buf[off], pxs);
++	off += _setup_loops(dry_run, &buf[off], pxs);
+ 
+ 	return off;
+ }
+@@ -1346,9 +1343,8 @@ static inline int _setup_xfer(struct pl330_dmac *pl330,
+  * A req is a sequence of one or more xfer units.
+  * Returns the number of bytes taken to setup the MC for the req.
+  */
+-static int _setup_req(struct pl330_dmac *pl330, unsigned dry_run,
+-		      struct pl330_thread *thrd, unsigned index,
+-		      struct _xfer_spec *pxs)
++static int _setup_req(unsigned dry_run, struct pl330_thread *thrd,
++		unsigned index, struct _xfer_spec *pxs)
+ {
+ 	struct _pl330_req *req = &thrd->req[index];
+ 	struct pl330_xfer *x;
+@@ -1365,7 +1361,7 @@ static int _setup_req(struct pl330_dmac *pl330, unsigned dry_run,
+ 	if (x->bytes % (BRST_SIZE(pxs->ccr) * BRST_LEN(pxs->ccr)))
+ 		return -EINVAL;
+ 
+-	off += _setup_xfer(pl330, dry_run, &buf[off], pxs);
++	off += _setup_xfer(dry_run, &buf[off], pxs);
+ 
+ 	/* DMASEV peripheral/event */
+ 	off += _emit_SEV(dry_run, &buf[off], thrd->ev);
+@@ -1457,9 +1453,10 @@ static int pl330_submit_req(struct pl330_thread *thrd,
+ 
+ 	xs.ccr = ccr;
+ 	xs.desc = desc;
++	xs.quirks = pl330->quirks;
+ 
+ 	/* First dry run to check if req is acceptable */
+-	ret = _setup_req(pl330, 1, thrd, idx, &xs);
++	ret = _setup_req(1, thrd, idx, &xs);
+ 	if (ret < 0)
+ 		goto xfer_exit;
+ 
+@@ -1473,7 +1470,7 @@ static int pl330_submit_req(struct pl330_thread *thrd,
+ 	/* Hook the request */
+ 	thrd->lstenq = idx;
+ 	thrd->req[idx].desc = desc;
+-	_setup_req(pl330, 0, thrd, idx, &xs);
++	_setup_req(0, thrd, idx, &xs);
+ 
+ 	ret = 0;
+ 
+-- 
+1.7.9.5
