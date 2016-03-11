@@ -1,129 +1,102 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 3/6] net: arc_emac: support the phy reset for emac driver
-Date: Fri, 11 Mar 2016 15:59:16 +0100
-Message-ID: <3840119.HSnZJI4qm4@diego>
-References: <1457693731-6966-1-git-send-email-wxt@rock-chips.com> <56E2CC8F.5040703@cogentembedded.com> <2693723.gBjS0iQk4I@diego>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH] drm/rockchip: cancel pending vblanks on close
+Date: Fri, 11 Mar 2016 17:21:17 +0000
+Message-ID: <1457716877-427-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <2693723.gBjS0iQk4I@diego>
-Sender: netdev-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, Alexander Kochetkov <al.kochet@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 11. M=E4rz 2016, 15:56:04 schrieb Heiko St=FCbner:
-> Hi Caesar,
->=20
-> Am Freitag, 11. M=E4rz 2016, 16:47:59 schrieb Sergei Shtylyov:
-> > On 3/11/2016 1:55 PM, Caesar Wang wrote:
-> > > This patch adds to support the emac phy reset.
-> > >=20
-> > > 1) phy-reset-gpios:
-> > > The phy-reset-gpios is an optional property for arc emac device t=
-ree
-> > > boot.
-> > > Change the binding document to match the driver code.
-> > >=20
-> > > 2) phy-reset-duration:
-> > > Different boards may require different phy reset duration. Add pr=
-operty
-> > > phy-reset-duration for device tree probe, so that the boards that=
- need
-> > > a longer reset duration can specify it in their device tree.
-> > >=20
-> > > 3) phy-reset-active-high:
-> > > We need that for a custom hardware that needs the reverse reset
-> > > sequence.
-> > >=20
-> > > Of course, this patch will fix the issue on
-> > > https://patchwork.kernel.org/patch/8186801/.
-> > >=20
-> > > In some cases, the emac couldn't work if you don't have reset the=
- phy.
-> > > Let's add it to happy work.
-> > >=20
-> > > Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> > > ---
-> > >=20
-> > >   drivers/net/ethernet/arc/emac_main.c | 41
-> > >   ++++++++++++++++++++++++++++++++++++ 1 file changed, 41 inserti=
-ons(+)
-> > >=20
-> > > diff --git a/drivers/net/ethernet/arc/emac_main.c
-> > > b/drivers/net/ethernet/arc/emac_main.c index 6446af1..42384f6a 10=
-0644
-> > > --- a/drivers/net/ethernet/arc/emac_main.c
-> > > +++ b/drivers/net/ethernet/arc/emac_main.c
-> > > @@ -764,6 +764,45 @@ static const struct net_device_ops
-> > > arc_emac_netdev_ops =3D {>
-> > >=20
-> > >   #endif
-> > >   };
-> > >=20
-> > > +#ifdef CONFIG_OF
-> > > +static void emac_reset_phy(struct net_device *pdev)
-> > > +{
-> > > +	int err, phy_reset;
-> > > +	bool active_high =3D false;
-> > > +	int msec =3D 10;
-> > > +	struct device *dev =3D pdev->dev.parent;
-> > > +	struct device_node *np =3D dev->of_node;
-> > > +
-> > > +	if (!np)
-> > > +		return;
-> > > +
-> > > +	of_property_read_u32(np, "phy-reset-duration", &msec);
-> > > +	/* A sane reset duration should not be longer than 1s */
-> > > +	if (msec > 1000)
-> > > +		msec =3D 1;
-> > > +
-> > > +	phy_reset =3D of_get_named_gpio(np, "phy-reset-gpios", 0);
-> > > +	if (!gpio_is_valid(phy_reset))
-> > > +		return;
-> > > +
-> > > +	active_high =3D of_property_read_bool(np, "phy-reset-active-hig=
-h");
-> > > +
-> > > +	err =3D devm_gpio_request_one(dev, phy_reset, active_high ?
-> > > +				    GPIOF_OUT_INIT_HIGH : GPIOF_OUT_INIT_LOW,
-> > > +				    "phy-reset");
-> > > +	if (err) {
-> > > +		dev_err(dev, "failed to get phy-reset-gpios: %d\n", err);
-> > > +		return;
-> > > +	}
-> > > +	msleep(msec);
-> > > +	gpio_set_value_cansleep(phy_reset, !active_high);
-> > > +}
-> >=20
-> > [...]
-> >=20
-> >     Why not make it the mii_bus::reset() method? It gets called bef=
-ore the
-> >=20
-> > MDIO bus scan.
->=20
-> while meddling with the emac, I've built some sort of preliminary var=
-iant of
-> Sergei's suggestion at [0] - maybe you could take a look for some sor=
-t of
-> inspiration ;-)
-
-forgot to add ... of course the newer gpiod_* infrastructure should be =
-used=20
-instead of the old integer-based gpio numbers
-
->=20
-> The code is lifted from the designware gmac driver, so the binding al=
-so is
-> similar.
->=20
->=20
-> Heiko
->=20
->=20
-> [0]
-> https://github.com/mmind/linux-rockchip/commit/a943c588783438ff1c508d=
-fa8c79
-> f1709aa5775e
+V2hlbiBjbG9zaW5nIHRoZSBEUk0gZGV2aWNlIHdoaWxlIGEgdmJsYW5rIGlzIHBlbmRpbmcsIHdl
+IGFjY2VzcwpmaWxlX3ByaXYgYWZ0ZXIgaXQgaGFzIGJlZW4gZnJlZSdkLCB3aGljaCBnaXZlczoK
+CiAgVW5hYmxlIHRvIGhhbmRsZSBrZXJuZWwgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIGF0IHZp
+cnR1YWwgYWRkcmVzcyAwMDAwMDAwMAogIC4uLgogIFBDIGlzIGF0IF9fbGlzdF9hZGQrMHg1Yy8w
+eGU4CiAgTFIgaXMgYXQgc2VuZF92YmxhbmtfZXZlbnQrMHg1NC8weDFmMAogIC4uLgogIFs8YzAy
+OTUyZTg+XSAoX19saXN0X2FkZCkgZnJvbSBbPGMwMzFhN2I0Pl0gKHNlbmRfdmJsYW5rX2V2ZW50
+KzB4NTQvMHgxZjApCiAgWzxjMDMxYTc2MD5dIChzZW5kX3ZibGFua19ldmVudCkgZnJvbSBbPGMw
+MzFhOWMwPl0gKGRybV9zZW5kX3ZibGFua19ldmVudCsweDcwLzB4NzgpCiAgWzxjMDMxYTk1MD5d
+IChkcm1fc2VuZF92YmxhbmtfZXZlbnQpIGZyb20gWzxjMDMxYTlmOD5dIChkcm1fY3J0Y19zZW5k
+X3ZibGFua19ldmVudCsweDMwLzB4MzQpCiAgWzxjMDMxYTljOD5dIChkcm1fY3J0Y19zZW5kX3Zi
+bGFua19ldmVudCkgZnJvbSBbPGMwMzM5YWQ4Pl0gKHZvcF9pc3IrMHgyMjQvMHgyOGMpCiAgWzxj
+MDMzOThiND5dICh2b3BfaXNyKSBmcm9tIFs8YzAwODE3ODA+XSAoaGFuZGxlX2lycV9ldmVudF9w
+ZXJjcHUrMHgxMmMvMHgzZTQpCgpUaGlzIGNhbiBiZSB0cmlnZ2VyZWQgc29tZXdoYXQgcmVsaWFi
+bHkgd2l0aDoKCgltb2RldGVzdCAtTSByb2NrY2hpcCAtdiAtcyAuLi4KCkFkZCBhIHByZWNsb3Nl
+IGhvb2sgdG8gdGhlIGRyaXZlciBzbyB0aGF0IHdlIGNhbiBkaXNjYXJkIGFueSBwZW5kaW5nCnZi
+bGFuayBldmVudHMgd2hlbiB0aGUgZGV2aWNlIGlzIGNsb3NlZC4KClNpZ25lZC1vZmYtYnk6IEpv
+aG4gS2VlcGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDIyICsrKysrKysrKysrKysrKysrKysrKysKIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgMSArCiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMjAgKysrKysrKysrKysrKysrKysr
+KysKIDMgZmlsZXMgY2hhbmdlZCwgNDMgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmluZGV4IGEwZDUxY2MuLjFjOGE5YmUgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMjUxLDYgKzI1
+MSwyNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV91bmxvYWQoc3RydWN0IGRybV9kZXZpY2Ug
+KmRybV9kZXYpCiAJcmV0dXJuIDA7CiB9CiAKK3N0YXRpYyB2b2lkIHJvY2tjaGlwX2RybV9jcnRj
+X2NhbmNlbF9wZW5kaW5nX3ZibGFuayhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCisJCQkJCQkgICAg
+c3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpCit7CisJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2
+YXRlICpwcml2ID0gY3J0Yy0+ZGV2LT5kZXZfcHJpdmF0ZTsKKwlpbnQgcGlwZSA9IGRybV9jcnRj
+X2luZGV4KGNydGMpOworCisJaWYgKHBpcGUgPCBST0NLQ0hJUF9NQVhfQ1JUQyAmJgorCSAgICBw
+cml2LT5jcnRjX2Z1bmNzW3BpcGVdICYmCisJICAgIHByaXYtPmNydGNfZnVuY3NbcGlwZV0tPmNh
+bmNlbF9wZW5kaW5nX3ZibGFuaykKKwkJcHJpdi0+Y3J0Y19mdW5jc1twaXBlXS0+Y2FuY2VsX3Bl
+bmRpbmdfdmJsYW5rKGNydGMsIGZpbGVfcHJpdik7Cit9CisKK3N0YXRpYyB2b2lkIHJvY2tjaGlw
+X2RybV9wcmVjbG9zZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAorCQkJCSAgc3RydWN0IGRybV9m
+aWxlICpmaWxlX3ByaXYpCit7CisJc3RydWN0IGRybV9jcnRjICpjcnRjOworCisJbGlzdF9mb3Jf
+ZWFjaF9lbnRyeShjcnRjLCAmZGV2LT5tb2RlX2NvbmZpZy5jcnRjX2xpc3QsIGhlYWQpCisJCXJv
+Y2tjaGlwX2RybV9jcnRjX2NhbmNlbF9wZW5kaW5nX3ZibGFuayhjcnRjLCBmaWxlX3ByaXYpOwor
+fQorCiB2b2lkIHJvY2tjaGlwX2RybV9sYXN0Y2xvc2Uoc3RydWN0IGRybV9kZXZpY2UgKmRldikK
+IHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXYgPSBkZXYtPmRldl9wcml2YXRl
+OwpAQCAtMjgxLDYgKzMwMiw3IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciByb2NrY2hpcF9k
+cm1fZHJpdmVyID0gewogCQkJCSAgRFJJVkVSX1BSSU1FIHwgRFJJVkVSX0FUT01JQywKIAkubG9h
+ZAkJCT0gcm9ja2NoaXBfZHJtX2xvYWQsCiAJLnVubG9hZAkJCT0gcm9ja2NoaXBfZHJtX3VubG9h
+ZCwKKwkucHJlY2xvc2UJCT0gcm9ja2NoaXBfZHJtX3ByZWNsb3NlLAogCS5sYXN0Y2xvc2UJCT0g
+cm9ja2NoaXBfZHJtX2xhc3RjbG9zZSwKIAkuZ2V0X3ZibGFua19jb3VudGVyCT0gZHJtX3ZibGFu
+a19ub19od19jb3VudGVyLAogCS5lbmFibGVfdmJsYW5rCQk9IHJvY2tjaGlwX2RybV9jcnRjX2Vu
+YWJsZV92YmxhbmssCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+aAppbmRleCBiYjhiMDc2Li4yYjQxZGQ0IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZHJ2LmgKQEAgLTQwLDYgKzQwLDcgQEAgc3RydWN0IHJvY2tjaGlwX2NydGNf
+ZnVuY3MgewogCWludCAoKmVuYWJsZV92YmxhbmspKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7CiAJ
+dm9pZCAoKmRpc2FibGVfdmJsYW5rKShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogCXZvaWQgKCp3
+YWl0X2Zvcl91cGRhdGUpKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7CisJdm9pZCAoKmNhbmNlbF9w
+ZW5kaW5nX3ZibGFuaykoc3RydWN0IGRybV9jcnRjICpjcnRjLCBzdHJ1Y3QgZHJtX2ZpbGUgKmZp
+bGVfcHJpdik7CiB9OwogCiBzdHJ1Y3Qgcm9ja2NoaXBfYXRvbWljX2NvbW1pdCB7CmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCA4YTVhYzU3Li41M2Rm
+ZTIxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAg
+LTg3NSwxMCArODc1LDMwIEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX3dhaXRfZm9yX3VwZGF0ZShz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJV0FSTl9PTighd2FpdF9mb3JfY29tcGxldGlvbl90aW1l
+b3V0KCZ2b3AtPndhaXRfdXBkYXRlX2NvbXBsZXRlLCAxMDApKTsKIH0KIAorc3RhdGljIHZvaWQg
+dm9wX2NydGNfY2FuY2VsX3BlbmRpbmdfdmJsYW5rKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKKwkJ
+CQkJICAgc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpCit7CisJc3RydWN0IGRybV9kZXZpY2Ug
+KmRybSA9IGNydGMtPmRldjsKKwlzdHJ1Y3Qgdm9wICp2b3AgPSB0b192b3AoY3J0Yyk7CisJc3Ry
+dWN0IGRybV9wZW5kaW5nX3ZibGFua19ldmVudCAqZTsKKwl1bnNpZ25lZCBsb25nIGZsYWdzOwor
+CisJc3Bpbl9sb2NrX2lycXNhdmUoJmRybS0+ZXZlbnRfbG9jaywgZmxhZ3MpOworCWUgPSB2b3At
+PmV2ZW50OworCWlmIChlICYmIGUtPmJhc2UuZmlsZV9wcml2ID09IGZpbGVfcHJpdikgeworCQl2
+b3AtPmV2ZW50ID0gTlVMTDsKKworCQllLT5iYXNlLmRlc3Ryb3koJmUtPmJhc2UpOworCQlmaWxl
+X3ByaXYtPmV2ZW50X3NwYWNlICs9IHNpemVvZihlLT5ldmVudCk7CisJfQorCXNwaW5fdW5sb2Nr
+X2lycXJlc3RvcmUoJmRybS0+ZXZlbnRfbG9jaywgZmxhZ3MpOworfQorCiBzdGF0aWMgY29uc3Qg
+c3RydWN0IHJvY2tjaGlwX2NydGNfZnVuY3MgcHJpdmF0ZV9jcnRjX2Z1bmNzID0gewogCS5lbmFi
+bGVfdmJsYW5rID0gdm9wX2NydGNfZW5hYmxlX3ZibGFuaywKIAkuZGlzYWJsZV92YmxhbmsgPSB2
+b3BfY3J0Y19kaXNhYmxlX3ZibGFuaywKIAkud2FpdF9mb3JfdXBkYXRlID0gdm9wX2NydGNfd2Fp
+dF9mb3JfdXBkYXRlLAorCS5jYW5jZWxfcGVuZGluZ192YmxhbmsgPSB2b3BfY3J0Y19jYW5jZWxf
+cGVuZGluZ192YmxhbmssCiB9OwogCiBzdGF0aWMgYm9vbCB2b3BfY3J0Y19tb2RlX2ZpeHVwKHN0
+cnVjdCBkcm1fY3J0YyAqY3J0YywKLS0gCjIuNy4wLjIyNi5nZmU5ODZmZQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
