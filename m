@@ -1,79 +1,136 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v3 00/12] pwm: add support for atomic update
-Date: Fri, 11 Mar 2016 10:51:46 +0100
-Message-ID: <20160311105146.510468ef@bbrezillon>
-References: <20160203145337.GD9650@ulmo>
-	<CAD=FV=U_x1cxx6RrHuVgVV8GbOwm9DXXJcyiArbbQySUOaxrvQ@mail.gmail.com>
-	<20160222175929.GA23899@ulmo>
-	<CAD=FV=UCErW3EjYRtwt49_ztNR7cyY4U0o4R_dxdomer-Ac2Dg@mail.gmail.com>
-	<20160223143859.GA27656@ulmo>
-	<CAD=FV=UvxG3MYD4MKQJqN7W68uMjd-s+FH-e8tkrLCpS0RLmZQ@mail.gmail.com>
-	<20160223181448.GA14754@ulmo.nvidia.com>
-	<CAD=FV=VM3cOQ0HqwLANBw9MVBCyFTrSyPe_dGzgPucuMUEWRKA@mail.gmail.com>
-	<CAD=FV=VckTVD8b1g+f0G2kMeoTjvY0pAGhoDnWQN_dAmqSxBxg@mail.gmail.com>
-	<CAD=FV=W3KPf8tyMviVNB9=HjefMdP+FBbN01Zhh7RKH+gkj2WQ@mail.gmail.com>
-	<20160310175438.GA5648@ulmo.nvidia.com>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBO5KRK3QKGQEY3RIAEY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-In-Reply-To: <20160310175438.GA5648-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pwm <linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, "open
- list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, Daniel Mack <daniel-cYrQPVfZoowdnm+yROfE0A@public.gmane.org>, Haojian Zhuang <haojian.zhuang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robert Jarzmik <robert.jarzmik-GANU6spQydw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>linu
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH 0/6] arc_emac: fixes the emac issues oand cleanup emac drivers
+Date: Fri, 11 Mar 2016 18:55:25 +0800
+Message-ID: <1457693731-6966-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, Caesar Wang <wxt@rock-chips.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Alexander Kochetkov <al.kochet@gmail.com>, Russell King <linux@arm.linux.org.uk>, Stephen Boyd <sboyd@codeaurora.org>, netdev@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, zhengxing <zhengxing@rock-chips.com>, Jiri Kosina <trivial@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thierry,
 
-On Thu, 10 Mar 2016 18:54:38 +0100
-Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+This series patches are based on kernel 4.5-rc7+ version.
+Linux version 4.5.0-rc7-next-20160310+ (wxt@nb) (...) #23 SMP Fri Mar 11 15:55:53
 
-> On Mon, Mar 07, 2016 at 08:34:19AM -0800, Doug Anderson wrote:
-> > Thierry,
-> > 
-> > On Thu, Feb 25, 2016 at 3:14 PM, Doug Anderson <dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org> wrote:
-> > > So just to summarize:
-> > >
-> > > * Add pwm_get_state(), pwm_apply_state(), pwm_get_args().
-> > > pwm_get_state() initially returns 0 for duty cycle if driver doesn't
-> > > support readout.
-> > >
-> > > * Re-implement pwm_get_period() (and maybe other similar functions)
-> > > atop pwm_get_state() as you describe earlier in the thread.
-> > >
-> > > * Document pwm_get_period() (and maybe other similar functions) as deprecated.
-> > >
-> > > * Fix drivers for all current 2 users of PWM regulator to support
-> > > hardware readout.
-> > >
-> > > * Update PWM regulator as you described earlier in the thread (Feb 23).
-> > >
-> > > * If PWM regulator is ever used on a new board whose PWM doesn't
-> > > support hardware readout, the voltage will change at probe time.
-> > >
-> > >
-> > > Did I get all that right?  Thanks!
-> > 
-> > Can you provide a "yes, you got that right" or a "no, you didn't
-> > understand"?  That will unblock Boris, I think.
-> 
-> Sounds about right. Hopefully this will eliminate any objections that
-> others had about the series.
+Verified on kylin board with my github.
+https://github.com/Caesar-github/rockchip/tree/kylin/next
 
-Okay, I'll rework the series accordingly and send a new version soon.
+That's verified on kylin board with ubuntu os.
 
-Thanks,
+How to test and verify?
 
-Boris
+You can refer to the following wiki document.
+http://rockchip.wikidot.com/linux-develop-guide
+
+bootup log:
+   1.268113] rockchip_emac 10200000.ethernet: no regulator found
+   [    1.286682] rockchip_emac 10200000.ethernet: ARC EMAC detected with id: 0x7fd02
+   [    1.294007] rockchip_emac 10200000.ethernet: IRQ is 29
+   [    1.299453] rockchip_emac 10200000.ethernet: MAC address is now 1e:cd:18:78:90:25
+   [    1.726564] rockchip_emac 10200000.ethernet: connected to Generic PHY phy with id 0x1cc816
+   [    8.936862] rockchip_emac 10200000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+
+root@localhost:/# busybox ping www.baidu.com
+PING www.baidu.com (14.215.177.38): 56 data bytes
+64 bytes from 14.215.177.38: seq=0 ttl=48 time=35.046 ms
+64 bytes from 14.215.177.38: seq=1 ttl=48 time=35.095 ms
+64 bytes from 14.215.177.38: seq=2 ttl=48 time=34.203 ms
+64 bytes from 14.215.177.38: seq=3 ttl=48 time=38.516 ms
+...
+---
+
+1) This series has 6 patches: (1--->6)
+net: arc_emac: make the rockchip emac document more compatible
+net: arc_emac: add phy-reset-* are optional for device tree
+net: arc_emac: support the phy reset for emac driver
+net: arc: trivial: cleanup the emac driver
+clk: rockchip: rk3036: fix and add node id for emac clock
+ARM: dts: rockchip: add support emac for RK3036
+
+2) This series patches have the following decriptions:
+
+Hi Rob, David:
+PATCH[1/6-2/6]: ====>
+net: arc_emac: make the rockchip emac document more compatible
+net: arc_emac: add phy-reset-* are optional for device tree
+
+The patches change the rockchip emac document for more compatible and
+Add the phy-reset-* property for document.
+
+This patch adds the following property for arc_emac.
+
+phy-reset-* include the following:
+1) phy-reset-gpios:
+The phy-reset-gpios is an optional property for arc emac device tree boot.
+Change the binding document to match the driver code.
+
+2) phy-reset-duration:
+Different boards may require different phy reset duration. Add property
+phy-reset-duration for device tree probe, so that the boards that need
+a longer reset duration can specify it in their device tree.
+
+3) phy-reset-active-high:
+We need that for a custom hardware that needs the reverse reset sequence.
+---
+
+Hi David
+PATCH[3/6]: ====>
+net: arc_emac: support the phy reset for emac driver
+
+The emac didn't work on kylin board since in some case the clocks parent changed.
+The kylin hardware connects the phy reset pin, we should use it with real world.
+
+As the previous patch discuss on https://patchwork.kernel.org/patch/8186801/
+
+Hi David
+PATCH[4/6]: ====>
+net: arc: trivial: cleanup the emac driver
+
+The first time to look the emac drivers, I think that have to cleanup the drivers with scripts.
+Although it's the trivial things, in order to be more read.
+---
+
+Hi Heiko,Michael,Stephen:
+PATCH[5/6]: ====>
+clk: rockchip: rk3036: fix and add node id for emac clock
+
+Add the emac needed clocks for rk3036 SOCs
+---
+
+Hi Heiko:
+PATCH[6/6]: ====>
+ARM: dts: rockchip: add support emac for RK3036
+
+Add the emac node info for rk3036 dts/dtsi.
+---
+
+Thanks your reviewing! :)
+
+
+
+Caesar Wang (4):
+  net: arc_emac: make the rockchip emac document more compatible
+  net: arc_emac: add phy-reset-* are optional for device tree
+  net: arc_emac: support the phy reset for emac driver
+  net: arc: trivial: cleanup the emac driver
+
+zhengxing (2):
+  clk: rockchip: rk3036: fix and add node id for emac clock
+  ARM: dts: rockchip: add support emac for RK3036
+
+ Documentation/devicetree/bindings/net/arc_emac.txt | 10 +++
+ .../devicetree/bindings/net/emac_rockchip.txt      |  8 ++-
+ arch/arm/boot/dts/rk3036-evb.dts                   | 23 +++++++
+ arch/arm/boot/dts/rk3036-kylin.dts                 | 20 ++++++
+ arch/arm/boot/dts/rk3036.dtsi                      | 39 +++++++++++
+ drivers/clk/rockchip/clk-rk3036.c                  |  9 ++-
+ drivers/net/ethernet/arc/emac.h                    | 54 +++++++--------
+ drivers/net/ethernet/arc/emac_main.c               | 76 +++++++++++++++++-----
+ drivers/net/ethernet/arc/emac_mdio.c               |  2 +-
+ drivers/net/ethernet/arc/emac_rockchip.c           | 41 ++++++++----
+ include/dt-bindings/clock/rk3036-cru.h             |  2 +
+ 11 files changed, 221 insertions(+), 63 deletions(-)
 
 -- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+1.9.1
+
