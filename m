@@ -1,7 +1,7 @@
 From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/6] net: arc_emac: support the phy reset for emac driver
-Date: Fri, 11 Mar 2016 18:55:28 +0800
-Message-ID: <1457693731-6966-4-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH 6/6] ARM: dts: rockchip: add support emac for RK3036
+Date: Fri, 11 Mar 2016 18:55:31 +0800
+Message-ID: <1457693731-6966-7-git-send-email-wxt@rock-chips.com>
 References: <1457693731-6966-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,93 +18,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Alexander Kochetkov <al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keescook-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, leozwang-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds to support the emac phy reset.
+From: zhengxing <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-1) phy-reset-gpios:
-The phy-reset-gpios is an optional property for arc emac device tree boot.
-Change the binding document to match the driver code.
+This patch adds the emac device node for rk3036.
+We need to let mac clock under the DPLL which is able to provide
+the accurate 50MHz what mac_ref need, since that will cause some
+unstable things if the cpufreq is working.
 
-2) phy-reset-duration:
-Different boards may require different phy reset duration. Add property
-phy-reset-duration for device tree probe, so that the boards that need
-a longer reset duration can specify it in their device tree.
-
-3) phy-reset-active-high:
-We need that for a custom hardware that needs the reverse reset sequence.
-
-Of course, this patch will fix the issue on
-https://patchwork.kernel.org/patch/8186801/.
-
-In some cases, the emac couldn't work if you don't have reset the phy.
-Let's add it to happy work.
-
+Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
- drivers/net/ethernet/arc/emac_main.c | 41 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ arch/arm/boot/dts/rk3036-evb.dts   | 23 ++++++++++++++++++++++
+ arch/arm/boot/dts/rk3036-kylin.dts | 20 +++++++++++++++++++
+ arch/arm/boot/dts/rk3036.dtsi      | 39 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 82 insertions(+)
 
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index 6446af1..42384f6a 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -764,6 +764,45 @@ static const struct net_device_ops arc_emac_netdev_ops = {
- #endif
+diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
+index 28a0336..d7d3719 100644
+--- a/arch/arm/boot/dts/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rk3036-evb.dts
+@@ -47,6 +47,17 @@
+ 	compatible = "rockchip,rk3036-evb", "rockchip,rk3036";
  };
  
-+#ifdef CONFIG_OF
-+static void emac_reset_phy(struct net_device *pdev)
-+{
-+	int err, phy_reset;
-+	bool active_high = false;
-+	int msec = 10;
-+	struct device *dev = pdev->dev.parent;
-+	struct device_node *np = dev->of_node;
++&emac {
++	pinctrl-names = "default";
++	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
++	phy = <&phy0>;
++	status = "okay";
 +
-+	if (!np)
-+		return;
++	phy0: ethernet-phy@0 {
++		reg = <0>;
++	};
++};
 +
-+	of_property_read_u32(np, "phy-reset-duration", &msec);
-+	/* A sane reset duration should not be longer than 1s */
-+	if (msec > 1000)
-+		msec = 1;
-+
-+	phy_reset = of_get_named_gpio(np, "phy-reset-gpios", 0);
-+	if (!gpio_is_valid(phy_reset))
-+		return;
-+
-+	active_high = of_property_read_bool(np, "phy-reset-active-high");
-+
-+	err = devm_gpio_request_one(dev, phy_reset, active_high ?
-+				    GPIOF_OUT_INIT_HIGH : GPIOF_OUT_INIT_LOW,
-+				    "phy-reset");
-+	if (err) {
-+		dev_err(dev, "failed to get phy-reset-gpios: %d\n", err);
-+		return;
-+	}
-+	msleep(msec);
-+	gpio_set_value_cansleep(phy_reset, !active_high);
-+}
-+#else
-+static void emac_reset_phy(struct platform_device *pdev)
-+{
-+}
-+#endif /* CONFIG_OF */
-+
- int arc_emac_probe(struct net_device *ndev, int interface)
- {
- 	struct device *dev = ndev->dev.parent;
-@@ -803,6 +842,8 @@ int arc_emac_probe(struct net_device *ndev, int interface)
- 	/* FIXME :: no multicast support yet */
- 	ndev->flags &= ~IFF_MULTICAST;
+ &i2c1 {
+ 	status = "okay";
  
-+	emac_reset_phy(ndev);
+@@ -62,3 +73,15 @@
+ &uart2 {
+ 	status = "okay";
+ };
 +
- 	priv = netdev_priv(ndev);
- 	priv->dev = dev;
++&pinctrl {
++	pcfg_output_high: pcfg-output-high {
++		output-high;
++	};
++
++	emac {
++		rmii_rst: rmii-rst {
++			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_output_high>;
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index eb9c979..ab2744c 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -112,6 +112,20 @@
+ 	status = "okay";
+ };
  
++&emac {
++	pinctrl-names = "default";
++	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
++	phy = <&phy0>;
++	phy-reset-gpios = <&gpio2 22 GPIO_ACTIVE_LOW>; /* PHY_RST */
++	phy-reset-duration = <10>; /* millisecond */
++
++	status = "okay";
++
++	phy0: ethernet-phy@0 {
++		reg = <0>;
++	};
++};
++
+ &emmc {
+ 	status = "okay";
+ };
+@@ -383,6 +397,12 @@
+ };
+ 
+ &pinctrl {
++	emac {
++		rmii_rst: rmii-rst {
++			rockchip,pins = <2 22 RK_FUNC_GPIO &pcfg_pull_default>;
++		};
++	};
++
+ 	leds {
+ 		led_ctl: led-ctl {
+ 			rockchip,pins = <2 30 RK_FUNC_GPIO &pcfg_pull_none>;
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 90faa86..5175a2a 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -223,6 +223,27 @@
+ 		status = "disabled";
+ 	};
+ 
++	emac: ethernet@10200000 {
++		compatible = "rockchip,rk3036-emac", "snps,arc-emac";
++		reg = <0x10200000 0x4000>;
++		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
++		clock-names = "hclk", "macref", "macclk";
++		/*
++		 * Fix the emac parent clock is DPLL instead of APLL.
++		 * since that will cause some unstable things if the cpufreq
++		 * is working. (e.g: the accurate 50MHz what mac_ref need)
++		 */
++		assigned-clocks = <&cru SCLK_MACPLL>;
++		assigned-clock-parents = <&cru PLL_DPLL>;
++		max-speed = <100>;
++		phy-mode = "rmii";
++		status = "disabled";
++	};
++
+ 	sdmmc: dwmmc@10214000 {
+ 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x10214000 0x4000>;
+@@ -628,6 +649,24 @@
+ 			};
+ 		};
+ 
++		emac {
++			emac_xfer: emac-xfer {
++				rockchip,pins = <2 10 RK_FUNC_1 &pcfg_pull_default>, /* crs_dvalid */
++						<2 13 RK_FUNC_1 &pcfg_pull_default>, /* tx_en */
++						<2 14 RK_FUNC_1 &pcfg_pull_default>, /* mac_clk */
++						<2 15 RK_FUNC_1 &pcfg_pull_default>, /* rx_err */
++						<2 16 RK_FUNC_1 &pcfg_pull_default>, /* rxd1 */
++						<2 17 RK_FUNC_1 &pcfg_pull_default>, /* rxd0 */
++						<2 18 RK_FUNC_1 &pcfg_pull_default>, /* txd1 */
++						<2 19 RK_FUNC_1 &pcfg_pull_default>; /* txd0 */
++			};
++
++			emac_mdio: emac-mdio {
++				rockchip,pins = <2 12 RK_FUNC_1 &pcfg_pull_default>, /* mac_md */
++						<2 25 RK_FUNC_1 &pcfg_pull_default>; /* mac_mdclk */
++			};
++		};
++
+ 		i2c0 {
+ 			i2c0_xfer: i2c0-xfer {
+ 				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
 -- 
 1.9.1
