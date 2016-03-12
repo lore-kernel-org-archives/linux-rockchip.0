@@ -1,7 +1,7 @@
 From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 4/7] clk: rockchip: release io resource when rk3188_common_clk_init failed
-Date: Sun, 13 Mar 2016 00:25:36 +0800
-Message-ID: <1457799936-3183-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 5/7] clk: rockchip: release io resource when rk3368_clk_init failed
+Date: Sun, 13 Mar 2016 00:25:44 +0800
+Message-ID: <1457799944-3226-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com>
@@ -11,24 +11,24 @@ Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.
 List-Id: linux-rockchip.vger.kernel.org
 
 We should call iounmap to relase reg_base since it's not going
-to be used any more.
+to be used any more.w
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- drivers/clk/rockchip/clk-rk3188.c | 1 +
+ drivers/clk/rockchip/clk-rk3368.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
-index 0fcce22..d0e722a 100644
---- a/drivers/clk/rockchip/clk-rk3188.c
-+++ b/drivers/clk/rockchip/clk-rk3188.c
-@@ -773,6 +773,7 @@ static struct rockchip_clk_provider *__init rk3188_common_clk_init(struct device
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 58690f2..3437289 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -875,6 +875,7 @@ static void __init rk3368_clk_init(struct device_node *np)
  	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
  	if (IS_ERR(ctx)) {
  		pr_err("%s: rockchip clk init failed\n", __func__);
 +		iounmap(reg_base);
- 		return ERR_PTR(-ENOMEM);
+ 		return;
  	}
  
 -- 
