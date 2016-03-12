@@ -1,28 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 3/4] clk: rockchip: add new pll-type for rk3399 and similar socs
-Date: Sat, 12 Mar 2016 12:13:49 +0100
-Message-ID: <2534564.6HRxTH61cO@diego>
-References: <1457581622-31192-1-git-send-email-zhengxing@rock-chips.com> <1457581622-31192-4-git-send-email-zhengxing@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 0/7] Some trivial patches for rockchip clk stuff
+Date: Sun, 13 Mar 2016 00:24:31 +0800
+Message-ID: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1457581622-31192-4-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 10. M=E4rz 2016, 11:47:01 schrieb Xing Zheng:
-> The rk3399's pll and clock are similar with rk3036's, it different
-> with base on the rk3066(rk3188, rk3288, rk3368 use it), there are
-> different adjust foctors and control registers, so these should be
-> independent and separate from the series of rk3066s.
->=20
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 
-applied to my clk-branch for 4.7
+Hi Heiko and Xing,
+
+After reviewing some clk patches for rk3399, I found some
+trivial problems. So this is another round of patches to
+slightly improve the code.
+
+Based on v4.7-clk/next branch
+git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
 
 
-Thanks
-Heiko
+
+Shawn Lin (7):
+  clk: rockchip: remove mux_core_reg from rockchip_cpuclk_reg_data
+  clk: rockchip: fix warning reported by kernel-doc
+  clk: rockchip: release io resource when rk3036_clk_init failed
+  clk: rockchip: release io resource when rk3188_common_clk_init failed
+  clk: rockchip: release io resource when rk3368_clk_init failed
+  clk: rockchip: remove redundant checking of device_node
+  clk: rockchip: fix a typo for rockchip_rk3399_pll_set_params
+
+ drivers/clk/rockchip/clk-pll.c    |  2 +-
+ drivers/clk/rockchip/clk-rk3036.c |  1 +
+ drivers/clk/rockchip/clk-rk3188.c |  1 +
+ drivers/clk/rockchip/clk-rk3368.c |  1 +
+ drivers/clk/rockchip/clk.c        |  8 +++-----
+ drivers/clk/rockchip/clk.h        | 10 +++++-----
+ 6 files changed, 12 insertions(+), 11 deletions(-)
+
+-- 
+2.3.7
+
+
