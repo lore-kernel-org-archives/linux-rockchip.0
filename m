@@ -1,73 +1,39 @@
-From: Shawn Lin <shawn.lin@kernel-upstream.org>
-Subject: Re: [PATCH 3/7] clk: rockchip: release io resource when
- rk3036_clk_init failed
-Date: Sun, 13 Mar 2016 09:49:40 +0800
-Message-ID: <56E4C734.6010702@kernel-upstream.org>
-References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com>
- <1457799925-3142-1-git-send-email-shawn.lin@rock-chips.com>
- <8447746.miDbEHA5rR@diego>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [PATCH v3] ARM, ARM64: dts: drop "arm, amba-bus" in favor of
+ "simple-bus"
+Date: Sat, 12 Mar 2016 17:40:53 -0800
+Message-ID: <20160313014053.GF5883@localhost>
+References: <1457497605-10079-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <8447746.miDbEHA5rR@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1457497605-10079-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, David Brown <david.brown-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/3/13 0:48, Heiko St=C3=BCbner =E5=86=99=E9=81=93:
-> Hi Shawn,
->
-> Am Sonntag, 13. M=C3=A4rz 2016, 00:25:25 schrieb Shawn Lin:
->> We should call iounmap to relase reg_base since it's not going
->> to be used any more.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> I see that change for rk3036, rk3188(+rk3066) and rk3368.
-> But it looks like rk3228 and rk3288 should also get that, or am I jus=
-t
-> overlooking something?
+On Wed, Mar 09, 2016 at 01:26:45PM +0900, Masahiro Yamada wrote:
+> The compatible string "simple-bus" is well defined in ePAPR, while
+> I see no documentation for the "arm,amba-bus" arnywhere in ePAPR or
+> Documentation/devicetree/.
+> 
+> DT is also used by other projects than Linux kernel.  It is not a
+> good idea to rely on such an unofficial binding.
+> 
+> This commit
+>   - replaces "arm,amba-bus" with "simple-bus"
+>   - drops "arm,amba-bus" where it is used along with "simple-bus"
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> ---
 
-My fault, we need to do that for 3228/3288 as well.
-Sorry for my slippy finger. I assign wrong patch-numbers to my
-script.
+Thanks, applied.
 
-I will squash up patch[3/7],[4/7],[5/7] as well as for 3228/3288, and
-resend a separate patch for it.
 
->
-> Also, I think we can fold these changes into one patch, as it's the c=
-ompletely
-> same addition for all clock-drivers.
->
->
-> Heiko
->
->> ---
->>
->>   drivers/clk/rockchip/clk-rk3036.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3036.c
->> b/drivers/clk/rockchip/clk-rk3036.c index 8c683cc..284c36f 100644
->> --- a/drivers/clk/rockchip/clk-rk3036.c
->> +++ b/drivers/clk/rockchip/clk-rk3036.c
->> @@ -453,6 +453,7 @@ static void __init rk3036_clk_init(struct device=
-_node
->> *np) ctx =3D rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
->>   	if (IS_ERR(ctx)) {
->>   		pr_err("%s: rockchip clk init failed\n", __func__);
->> +		iounmap(reg_base);
->>   		return;
->>   	}
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
-
+-Olof
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
