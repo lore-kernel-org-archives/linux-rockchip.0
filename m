@@ -1,135 +1,73 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v6 5/6] dt/bindings: rockchip: modify document of Rockchip
- power domains
-Date: Sat, 12 Mar 2016 21:22:29 +0100
-Message-ID: <3411414.M8tSXDEXFG@diego>
-References: <1457558578-22049-1-git-send-email-zhangqing@rock-chips.com>
- <1457558661-22125-1-git-send-email-zhangqing@rock-chips.com>
+From: Shawn Lin <shawn.lin@kernel-upstream.org>
+Subject: Re: [PATCH 3/7] clk: rockchip: release io resource when
+ rk3036_clk_init failed
+Date: Sun, 13 Mar 2016 09:49:40 +0800
+Message-ID: <56E4C734.6010702@kernel-upstream.org>
+References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com>
+ <1457799925-3142-1-git-send-email-shawn.lin@rock-chips.com>
+ <8447746.miDbEHA5rR@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1457558661-22125-1-git-send-email-zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <8447746.miDbEHA5rR@diego>
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+=E5=9C=A8 2016/3/13 0:48, Heiko St=C3=BCbner =E5=86=99=E9=81=93:
+> Hi Shawn,
+>
+> Am Sonntag, 13. M=C3=A4rz 2016, 00:25:25 schrieb Shawn Lin:
+>> We should call iounmap to relase reg_base since it's not going
+>> to be used any more.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> I see that change for rk3036, rk3188(+rk3066) and rk3368.
+> But it looks like rk3228 and rk3288 should also get that, or am I jus=
+t
+> overlooking something?
 
-Am Donnerstag, 10. M=E4rz 2016, 05:24:21 schrieb Elaine Zhang:
-> Add binding documentation for the power domains
-> found on Rockchip RK3399 SoCs
-> =
+My fault, we need to do that for 3228/3288 as well.
+Sorry for my slippy finger. I assign wrong patch-numbers to my
+script.
 
-> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+I will squash up patch[3/7],[4/7],[5/7] as well as for 3228/3288, and
+resend a separate patch for it.
 
-that already got Acked by Kevin, aka
-Acked-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+>
+> Also, I think we can fold these changes into one patch, as it's the c=
+ompletely
+> same addition for all clock-drivers.
+>
+>
+> Heiko
+>
+>> ---
+>>
+>>   drivers/clk/rockchip/clk-rk3036.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3036.c
+>> b/drivers/clk/rockchip/clk-rk3036.c index 8c683cc..284c36f 100644
+>> --- a/drivers/clk/rockchip/clk-rk3036.c
+>> +++ b/drivers/clk/rockchip/clk-rk3036.c
+>> @@ -453,6 +453,7 @@ static void __init rk3036_clk_init(struct device=
+_node
+>> *np) ctx =3D rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+>>   	if (IS_ERR(ctx)) {
+>>   		pr_err("%s: rockchip clk init failed\n", __func__);
+>> +		iounmap(reg_base);
+>>   		return;
+>>   	}
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
 
-When you get things like Acked-by, Reviewed-by, Tested-by tags in one versi=
-on, =
-
-please include them into new versions. That way these are preserved and =
-
-reviewers won't do work twice.
-
-
-Heiko
-
-
-> ---
->  .../bindings/soc/rockchip/power_domain.txt         | 37
-> ++++++++++++++++++++++ 1 file changed, 37 insertions(+)
-> =
-
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.=
-txt
-> b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt index
-> 13dc6a3..98085c8 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> @@ -7,6 +7,7 @@ Required properties for power domain controller:
->  - compatible: Should be one of the following.
->  	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
->  	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
-> +	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
->  - #power-domain-cells: Number of cells in a power-domain specifier.
->  	Should be 1 for multiple PM domains.
->  - #address-cells: Should be 1.
-> @@ -16,6 +17,7 @@ Required properties for power domain sub nodes:
->  - reg: index of the power domain, should use macros in:
->  	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power doma=
-in.
-> "include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
-> +	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power
-> domain. - clocks (optional): phandles to clocks which need to be enabled
-> while power domain switches state.
-> =
-
-> @@ -45,12 +47,41 @@ Example:
->                  };
->          };
-> =
-
-> +Example 2:
-> +		power: power-controller {
-> +			compatible =3D "rockchip,rk3399-power-controller";
-> +			#power-domain-cells =3D <1>;
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +
-> +			pd_vio {
-> +				#address-cells =3D <1>;
-> +				#size-cells =3D <0>;
-> +				reg =3D <RK3399_PD_VIO>;
-> +
-> +				pd_vo {
-> +					#address-cells =3D <1>;
-> +					#size-cells =3D <0>;
-> +					reg =3D <RK3399_PD_VO>;
-> +
-> +					pd_vopb {
-> +						reg =3D <RK3399_PD_VOPB>;
-> +					};
-> +
-> +					pd_vopl {
-> +						reg =3D <RK3399_PD_VOPL>;
-> +					};
-> +				};
-> +			};
-> +		};
-> +
->  Node of a device using power domains must have a power-domains property,
->  containing a phandle to the power device node and an index specifying wh=
-ich
-> power domain to use.
->  The index should use macros in:
->  	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power doma=
-in.
-> "include/dt-bindings/power/rk3368-power.h" - for rk3368 type power domain.
-> +	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power
-> domain.
-> =
-
->  Example of the node using power domain:
-> =
-
-> @@ -65,3 +96,9 @@ Example of the node using power domain:
->                  power-domains =3D <&power RK3368_PD_GPU_1>;
->                  /* ... */
->          };
-> +
-> +	node {
-> +		/* ... */
-> +		power-domains =3D <&power RK3399_PD_VOPB>;
-> +		/* ... */
-> +	};
