@@ -1,23 +1,24 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v2.1 3/9] net: arc_emac: support the phy reset for emac
- driver
-Date: Sun, 13 Mar 2016 14:02:31 -0400 (EDT)
-Message-ID: <20160313.140231.1768726602233933637.davem@davemloft.net>
-References: <1457860062-5514-1-git-send-email-wxt@rock-chips.com>
-	<1457863562-12037-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/7] clk: rockchip: remove mux_core_reg from rockchip_cpuclk_reg_data
+Date: Mon, 14 Mar 2016 01:13:10 +0100
+Message-ID: <8493494.xJRFTlmVnL@phil>
+References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com> <1457799900-3056-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1457863562-12037-1-git-send-email-wxt@rock-chips.com>
-Sender: netdev-owner@vger.kernel.org
-To: wxt@rock-chips.com
-Cc: heiko@sntech.de, robh+dt@kernel.org, sergei.shtylyov@cogentembedded.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1457799900-3056-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Sonntag, 13. M=E4rz 2016, 00:25:00 schrieb Shawn Lin:
+> mux_core_reg isn't been used anywhere, let's remove it.
+>=20
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-When you submit a new version of a patch that's part of a series,
-you must submit the entire series anew, not just the patch which is
-changing.
+applied for v4.7
 
-Thanks.
+Thanks
+Heiko
