@@ -1,25 +1,74 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: release io resource when failing to init clk
-Date: Mon, 14 Mar 2016 02:01:07 +0100
-Message-ID: <22451730.fGu0L5hvan@phil>
-References: <1457842402-23765-1-git-send-email-shawn.lin@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: vop: fix crtc size in plane check
+Date: Mon, 14 Mar 2016 10:39:16 +0800
+Message-ID: <56E62454.1070808@rock-chips.com>
+References: <56D8DF39.8020104@rock-chips.com>
+ <1457089443-6069-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1457842402-23765-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1457089443-6069-1-git-send-email-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 13. M=E4rz 2016, 12:13:22 schrieb Shawn Lin:
-> We should call iounmap to relase reg_base since it's not going
-> to be used any more if failing to init clk.
->=20
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-applied for v4.7
-
-Thanks
-Heiko
+T24gMjAxNuW5tDAz5pyIMDTml6UgMTk6MDQsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBJZiB0aGUg
+Z2VvbWV0cnkgb2YgYSBjcnRjIGlzIGNoYW5naW5nIGluIGFuIGF0b21pYyB1cGRhdGUgdGhlbiB3
+ZSBtdXN0Cj4gdmFsaWRhdGUgdGhlIHBsYW5lIHNpemUgYWdhaW5zdCB0aGUgbmV3IHN0YXRlIG9m
+IHRoZSBjcnRjIGFuZCBub3QgdGhlCj4gY3VycmVudCBzaXplLCBvdGhlcndpc2UgaWYgdGhlIGNy
+dGMgc2l6ZSBpcyBpbmNyZWFzaW5nIHRoZSBwbGFuZSB3aWxsIGJlCj4gY3JvcHBlZCBhdCB0aGUg
+cHJldmlvdXMgc2l6ZSBhbmQgd2lsbCBub3QgZmlsbCB0aGUgc2NyZWVuLgo+Cj4gU2lnbmVkLW9m
+Zi1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRlLmNvbT4KPiAtLS0KPiBPbiBGcmksIDA0
+IE1hciAyMDE2IDA5OjA0OjU3ICswODAwLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAxNuW5tDAy
+5pyIMjLml6UgMjA6MjIsIEpvaG4gS2VlcGluZyB3cm90ZToKPj4+IElmIHRoZSBnZW9tZXRyeSBv
+ZiBhIGNydGMgaXMgY2hhbmdpbmcgaW4gYW4gYXRvbWljIHVwZGF0ZSB0aGVuIHdlIG11Y2gKPj4g
+SSB0aGluayAid2UgbXVjaCB2YWxpZGF0ZSIgc2hvdWxkIGJlICJ3ZSBtdXN0IHZhbGlkYXRlIi46
+LSkKPiBZZXMsIGhlcmUncyB2MiB3aXRoIHRoYXQgZml4ZWQuCj4KPj4+IHZhbGlkYXRlIHRoZSBw
+bGFuZSBzaXplIGFnYWluc3QgdGhlIG5ldyBzdGF0ZSBvZiB0aGUgY3J0YyBhbmQgbm90IHRoZQo+
+Pj4gY3VycmVudCBzaXplLCBvdGhlcndpc2UgaWYgdGhlIGNydGMgc2l6ZSBpcyBpbmNyZWFzaW5n
+IHRoZSBwbGFuZSB3aWxsIGJlCj4+PiBjcm9wcGVkIGF0IHRoZSBwcmV2aW91cyBzaXplIGFuZCB3
+aWxsIG5vdCBmaWxsIHRoZSBzY3JlZW4uCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX3ZvcC5jIHwgMTQgKysrKysrKystLS0tLS0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA4
+IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCBmZDM3MDU0Li44MmQ1NWJkIDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiArKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gQEAgLTU0OSw2
+ICs1NDksNyBAQCBzdGF0aWMgaW50IHZvcF9wbGFuZV9hdG9taWNfY2hlY2soc3RydWN0IGRybV9w
+bGFuZSAqcGxhbmUsCj4gICAJCQkgICBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpzdGF0ZSkKPiAg
+IHsKPiAgIAlzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSBzdGF0ZS0+Y3J0YzsKPiArCXN0cnVjdCBk
+cm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKPiAgIAlzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpm
+YiA9IHN0YXRlLT5mYjsKPiAgIAlzdHJ1Y3Qgdm9wX3dpbiAqdm9wX3dpbiA9IHRvX3ZvcF93aW4o
+cGxhbmUpOwo+ICAgCXN0cnVjdCB2b3BfcGxhbmVfc3RhdGUgKnZvcF9wbGFuZV9zdGF0ZSA9IHRv
+X3ZvcF9wbGFuZV9zdGF0ZShzdGF0ZSk7Cj4gQEAgLTU2MywxMiArNTY0LDEzIEBAIHN0YXRpYyBp
+bnQgdm9wX3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgIAlp
+bnQgbWF4X3NjYWxlID0gd2luLT5waHktPnNjbCA/IEZSQUNfMTZfMTYoOCwgMSkgOgo+ICAgCQkJ
+CQlEUk1fUExBTkVfSEVMUEVSX05PX1NDQUxJTkc7Cj4gICAKPiAtCWNydGMgPSBjcnRjID8gY3J0
+YyA6IHBsYW5lLT5zdGF0ZS0+Y3J0YzsKPiAtCS8qCj4gLQkgKiBCb3RoIGNydGMgb3IgcGxhbmUt
+PnN0YXRlLT5jcnRjIGNhbiBiZSBudWxsLgo+IC0JICovCj4gICAJaWYgKCFjcnRjIHx8ICFmYikK
+PiAgIAkJZ290byBvdXRfZGlzYWJsZTsKPiArCj4gKwljcnRjX3N0YXRlID0gZHJtX2F0b21pY19n
+ZXRfZXhpc3RpbmdfY3J0Y19zdGF0ZShzdGF0ZS0+c3RhdGUsIGNydGMpOwo+ICsJaWYgKFdBUk5f
+T04oIWNydGNfc3RhdGUpKQo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsKPiAgIAlzcmMtPngxID0g
+c3RhdGUtPnNyY194Owo+ICAgCXNyYy0+eTEgPSBzdGF0ZS0+c3JjX3k7Cj4gICAJc3JjLT54MiA9
+IHN0YXRlLT5zcmNfeCArIHN0YXRlLT5zcmNfdzsKPiBAQCAtNTgwLDggKzU4Miw4IEBAIHN0YXRp
+YyBpbnQgdm9wX3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAg
+IAo+ICAgCWNsaXAueDEgPSAwOwo+ICAgCWNsaXAueTEgPSAwOwo+IC0JY2xpcC54MiA9IGNydGMt
+Pm1vZGUuaGRpc3BsYXk7Cj4gLQljbGlwLnkyID0gY3J0Yy0+bW9kZS52ZGlzcGxheTsKPiArCWNs
+aXAueDIgPSBjcnRjX3N0YXRlLT5hZGp1c3RlZF9tb2RlLmhkaXNwbGF5Owo+ICsJY2xpcC55MiA9
+IGNydGNfc3RhdGUtPmFkanVzdGVkX21vZGUudmRpc3BsYXk7Cj4gICAKPiAgIAlyZXQgPSBkcm1f
+cGxhbmVfaGVscGVyX2NoZWNrX3VwZGF0ZShwbGFuZSwgY3J0Yywgc3RhdGUtPmZiLAo+ICAgCQkJ
+CQkgICAgc3JjLCBkZXN0LCAmY2xpcCwKCkxvb2tzIGdvb2QgZm9yIG1lLCBhcHBsaWVkIGludG8g
+bXkgZHJtLWZpeGVzLgoKVGhhbmtzIGZvciB0aGUgZml4LgoKLS0gCu+8rWFyayBZYW8KCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
+bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
