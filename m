@@ -1,66 +1,97 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] i2c: rk3x: add support for rk3228
-Date: Mon, 14 Mar 2016 23:23:47 +0100
-Message-ID: <1737352.02BE0tcSEc@diego>
-References: <1457924955-29996-1-git-send-email-ykk@rock-chips.com>
+Subject: Re: [RESEND PATCH] pinctrl: rockchip: add support the get_direction
+Date: Mon, 14 Mar 2016 23:36:55 +0100
+Message-ID: <2329775.GrlpyGFbsF@diego>
+References: <1457935279-7881-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1457924955-29996-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1457935279-7881-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: linus.walleij@linaro.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 14. M=E4rz 2016, 11:09:15 schrieb Yakir Yang:
-> Enable the I2C core for this SoC.
+Hi Caesar,
+
+Am Montag, 14. M=E4rz 2016, 14:01:19 schrieb Caesar Wang:
+> This patch adds the get_direction to support the gpio
+> interface.
 >=20
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+> The gpio direction is not used on rockchip platform when use the gpio
+> debugfs.
+>=20
+> Tested on kylin board. (RK3036 SoCs)
+> The repro steps:
+> $/sys/class/gpio/
+> echo 53 > export
+> $/sys/class/gpio/gpio53# cat direction
+> in
+> In general, the gpio53 should be out value, but the direction is the
+> default value 'in',  since the get_direction didn't supported in rock=
+chip
+> pinctrl.
+>=20
+> So, we should add this patch to support it.
+>=20
+> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+>=20
+> ---
+>=20
+> Changes in RESEND:
+> - Remove the change-id
+>=20
+>  drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+>=20
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
+> b/drivers/pinctrl/pinctrl-rockchip.c index bf032b9..f22a186 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -1208,6 +1208,18 @@ static int rockchip_pmx_set(struct pinctrl_dev
+> *pctldev, unsigned selector, return 0;
+>  }
+>=20
+> +static int rockchip_gpio_get_direction(struct gpio_chip *chip, unsig=
+ned
+> offset) +{
+> +	struct rockchip_pin_bank *bank =3D gpiochip_get_data(chip);
+> +	int pin;
+> +	u32 data;
+> +
+> +	pin =3D offset - chip->base;
+> +	data =3D readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
+> +
+> +	return !!(data & BIT(pin));
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+TRM (at least rk3288 and rk3036) says for the SWPORT_DDR register:
+(data & BIT(pin)) =3D 0 =3D input
+(data & BIT(pin)) =3D 1 =3D output
+
+struct gpio_chip docs [0] says:
+@get_direction: returns 0=3Dout, 1=3Din,
 
 
+So shouldn't that be
+	return !(data & BIT(pin));
+with only one "!" instead of two?
+Or as happens sometimes, am I just blind? :-)
+
+
+Thanks
 Heiko
 
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt | 4 ++--
->  drivers/i2c/busses/i2c-rk3x.c                      | 1 +
->  2 files changed, 3 insertions(+), 2 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt index f0d71bc..0=
-b4a85f
-> 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> @@ -6,8 +6,8 @@ RK3xxx SoCs.
->  Required properties :
->=20
->   - reg : Offset and length of the register set for the device
-> - - compatible : should be "rockchip,rk3066-i2c", "rockchip,rk3188-i2=
-c" or
-> -		"rockchip,rk3288-i2c".
-> + - compatible : should be "rockchip,rk3066-i2c", "rockchip,rk3188-i2=
-c",
-> +		"rockchip,rk3228-i2c" or "rockchip,rk3288-i2c".
->   - interrupts : interrupt number
->   - clocks : parent clock
->=20
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-r=
-k3x.c
-> index 9096d17..3dcc5f3 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -855,6 +855,7 @@ static struct rk3x_i2c_soc_data soc_data[3] =3D {
->  static const struct of_device_id rk3x_i2c_match[] =3D {
->  	{ .compatible =3D "rockchip,rk3066-i2c", .data =3D (void *)&soc_dat=
-a[0] },
->  	{ .compatible =3D "rockchip,rk3188-i2c", .data =3D (void *)&soc_dat=
-a[1] },
-> +	{ .compatible =3D "rockchip,rk3228-i2c", .data =3D (void *)&soc_dat=
-a[2] },
->  	{ .compatible =3D "rockchip,rk3288-i2c", .data =3D (void *)&soc_dat=
-a[2] },
->  	{},
->  };
+[0] http://lxr.free-electrons.com/source/include/linux/gpio/driver.h#L3=
+3
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
+n
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
