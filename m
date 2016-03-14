@@ -1,40 +1,23 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/7] clk: rockchip: fix warning reported by kernel-doc
-Date: Mon, 14 Mar 2016 01:25:54 +0100
-Message-ID: <3159306.SvFJfiirsP@phil>
-References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com> <1457799914-3101-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 6/7] clk: rockchip: remove redundant checking of device_node
+Date: Mon, 14 Mar 2016 01:26:33 +0100
+Message-ID: <2962531.qNIN5DvN6o@phil>
+References: <1457799871-3015-1-git-send-email-shawn.lin@rock-chips.com> <1457799953-3267-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1457799914-3101-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1457799953-3267-1-git-send-email-shawn.lin@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 13. M=E4rz 2016, 00:25:14 schrieb Shawn Lin:
-> ./scripts/kernel-doc -man -v drivers/clk/rockchip/clk.h > /dev/null
->=20
-> drivers/clk/rockchip/clk.h:133: warning: missing initial short
-> description on line:
->  * struct rockchip_clk_provider: information about clock provider
-> drivers/clk/rockchip/clk.h:133: info: Scanning doc for struct
-> drivers/clk/rockchip/clk.h:164: warning: missing initial short
-> description on line:
->  * struct rockchip_pll_clock: information about pll clock
-> drivers/clk/rockchip/clk.h:164: info: Scanning doc for struct
-> drivers/clk/rockchip/clk.h:194: warning: No description found for
-> parameter 'parent_names'
-> drivers/clk/rockchip/clk.h:194: warning: No description found for
-> parameter 'num_parents'
-> drivers/clk/rockchip/clk.h:194: warning: Excess struct/union/enum/typ=
-edef
-> member 'parent_name' description in 'rockchip_pll_clock'
-> drivers/clk/rockchip/clk.h:235: warning: missing initial short
-> description on line:
->  * struct rockchip_cpuclk_reg_data: describes register offsets and
-> masks of the cpuclock
+Am Sonntag, 13. M=E4rz 2016, 00:25:53 schrieb Shawn Lin:
+> rockchip_clk_of_add_provider is used by sub-clk driver which
+> already call of_iomap before calling it. If device_node does
+> not exist, of_iomap returns NULL which will fail to init the
+> sub-clk driver. So really it's redundant.
 >=20
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
