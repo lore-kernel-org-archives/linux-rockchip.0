@@ -1,97 +1,53 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RESEND PATCH] pinctrl: rockchip: add support the get_direction
-Date: Mon, 14 Mar 2016 23:36:55 +0100
-Message-ID: <2329775.GrlpyGFbsF@diego>
-References: <1457935279-7881-1-git-send-email-wxt@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: [PATCH] mailbox: rockchip: avoid 64-bit division
+Date: Mon, 14 Mar 2016 23:46:55 +0100
+Message-ID: <1457995629-1480353-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1457935279-7881-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: linus.walleij@linaro.org, linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+The newly added rockchip mailbox driver causes a bug in
+the ARM allyesconfig build because of a division of a resource_size_t
+variable that may be 64 bit wide:
 
-Am Montag, 14. M=E4rz 2016, 14:01:19 schrieb Caesar Wang:
-> This patch adds the get_direction to support the gpio
-> interface.
->=20
-> The gpio direction is not used on rockchip platform when use the gpio
-> debugfs.
->=20
-> Tested on kylin board. (RK3036 SoCs)
-> The repro steps:
-> $/sys/class/gpio/
-> echo 53 > export
-> $/sys/class/gpio/gpio53# cat direction
-> in
-> In general, the gpio53 should be out value, but the direction is the
-> default value 'in',  since the get_direction didn't supported in rock=
-chip
-> pinctrl.
->=20
-> So, we should add this patch to support it.
->=20
-> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
->=20
-> ---
->=20
-> Changes in RESEND:
-> - Remove the change-id
->=20
->  drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
->=20
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c
-> b/drivers/pinctrl/pinctrl-rockchip.c index bf032b9..f22a186 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -1208,6 +1208,18 @@ static int rockchip_pmx_set(struct pinctrl_dev
-> *pctldev, unsigned selector, return 0;
->  }
->=20
-> +static int rockchip_gpio_get_direction(struct gpio_chip *chip, unsig=
-ned
-> offset) +{
-> +	struct rockchip_pin_bank *bank =3D gpiochip_get_data(chip);
-> +	int pin;
-> +	u32 data;
-> +
-> +	pin =3D offset - chip->base;
-> +	data =3D readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-> +
-> +	return !!(data & BIT(pin));
+drivers/mailbox/built-in.o: In function `rockchip_mbox_probe':
+:(.text+0x6614): undefined reference to `__aeabi_uldivmod'
 
-TRM (at least rk3288 and rk3036) says for the SWPORT_DDR register:
-(data & BIT(pin)) =3D 0 =3D input
-(data & BIT(pin)) =3D 1 =3D output
+This adds a cast to size_t, which turns it into a 32-bit division
+in this case. This is safe because we know that we cannot possibly
+map a resource that is longer than what a pointer contains, and
+in practice it will be very short instead.
 
-struct gpio_chip docs [0] says:
-@get_direction: returns 0=3Dout, 1=3Din,
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+---
+ drivers/mailbox/rockchip-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-So shouldn't that be
-	return !(data & BIT(pin));
-with only one "!" instead of two?
-Or as happens sometimes, am I just blind? :-)
-
-
-Thanks
-Heiko
-
-[0] http://lxr.free-electrons.com/source/include/linux/gpio/driver.h#L3=
-3
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
-n
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index b79a2871227c..d702a204f5c1 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -213,7 +213,7 @@ static int rockchip_mbox_probe(struct platform_device *pdev)
+ 		return PTR_ERR(mb->mbox_base);
+ 
+ 	/* Each channel has two buffers for A2B and B2A */
+-	mb->buf_size = resource_size(res) / (drv_data->num_chans * 2);
++	mb->buf_size = (size_t)resource_size(res) / (drv_data->num_chans * 2);
+ 
+ 	mb->pclk = devm_clk_get(&pdev->dev, "pclk_mailbox");
+ 	if (IS_ERR(mb->pclk)) {
+-- 
+2.7.0
