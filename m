@@ -1,119 +1,73 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: [PATCH 2/2] ARM: dts: rockchip: add i2c nodes RK3228 SoCs
-Date: Mon, 14 Mar 2016 11:11:42 +0800
-Message-ID: <1457925102-30476-1-git-send-email-ykk@rock-chips.com>
-References: <1457924955-29996-1-git-send-email-ykk@rock-chips.com>
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1457924955-29996-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: Kumar Gala <galak@codeaurora.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Yakir Yang <ykk@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH] pinctrl: rockchip: add support the get_direction
+Date: Mon, 14 Mar 2016 13:44:26 +0800
+Message-ID: <1457934266-29862-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linus.walleij@linaro.org, heiko@sntech.de
+Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add the i2c dt nodes for rk3228 SoCs.
+This patch adds the get_direction to support the gpio
+interface.
 
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+the gpio direction is not used on rockchip platform when use the gpio
+debugfs.
+
+Tested on kylin board. (RK3036 SoCs)
+The repro steps:
+$/sys/class/gpio/
+echo 53 > export
+$/sys/class/gpio/gpio53# cat direction
+in
+In general, the gpio53 should be out value, but the direction is the
+default value 'in',  since the get_direction didn't supported in rockchip
+pinctrl.
+
+So, we should add this patch to support it.
+
+Change-Id: I237c2e85ac7680b3d0de15bbbb923985b4827def
+Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
 ---
- arch/arm/boot/dts/rk3228.dtsi | 80 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 80 insertions(+)
+ drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3228.dtsi b/arch/arm/boot/dts/rk3228.dtsi
-index 119ff12..a159296 100644
---- a/arch/arm/boot/dts/rk3228.dtsi
-+++ b/arch/arm/boot/dts/rk3228.dtsi
-@@ -185,6 +185,58 @@
- 		status = "disabled";
- 	};
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index bf032b9..f22a186 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -1208,6 +1208,18 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 	return 0;
+ }
  
-+	i2c0: i2c@11050000 {
-+		compatible = "rockchip,rk3228-i2c";
-+		reg = <0x11050000 0x1000>;
-+		interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		clock-names = "i2c";
-+		clocks = <&cru PCLK_I2C0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c0_xfer>;
-+		status = "disabled";
-+	};
++static int rockchip_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
++{
++	struct rockchip_pin_bank *bank = gpiochip_get_data(chip);
++	int pin;
++	u32 data;
 +
-+	i2c1: i2c@11060000 {
-+		compatible = "rockchip,rk3228-i2c";
-+		reg = <0x11060000 0x1000>;
-+		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		clock-names = "i2c";
-+		clocks = <&cru PCLK_I2C1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c1_xfer>;
-+		status = "disabled";
-+	};
++	pin = offset - chip->base;
++	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
 +
-+	i2c2: i2c@11070000 {
-+		compatible = "rockchip,rk3228-i2c";
-+		reg = <0x11070000 0x1000>;
-+		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		clock-names = "i2c";
-+		clocks = <&cru PCLK_I2C2>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c2_xfer>;
-+		status = "disabled";
-+	};
++	return !!(data & BIT(pin));
++}
 +
-+	i2c3: i2c@11080000 {
-+		compatible = "rockchip,rk3228-i2c";
-+		reg = <0x11080000 0x1000>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		clock-names = "i2c";
-+		clocks = <&cru PCLK_I2C3>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c3_xfer>;
-+		status = "disabled";
-+	};
-+
- 	pwm0: pwm@110b0000 {
- 		compatible = "rockchip,rk3288-pwm";
- 		reg = <0x110b0000 0x10>;
-@@ -349,6 +401,34 @@
- 			bias-disable;
- 		};
- 
-+		i2c0 {
-+			i2c0_xfer: i2c0-xfer {
-+				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>,
-+						<0 1 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
-+		i2c1 {
-+			i2c1_xfer: i2c1-xfer {
-+				rockchip,pins = <0 2 RK_FUNC_1 &pcfg_pull_none>,
-+						<0 3 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
-+		i2c2 {
-+			i2c2_xfer: i2c2-xfer {
-+				rockchip,pins = <2 20 RK_FUNC_1 &pcfg_pull_none>,
-+						<2 21 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
-+		i2c3 {
-+			i2c3_xfer: i2c3-xfer {
-+				rockchip,pins = <0 6 RK_FUNC_1 &pcfg_pull_none>,
-+						<0 7 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		emmc {
- 			emmc_clk: emmc-clk {
- 				rockchip,pins = <2 7 RK_FUNC_2 &pcfg_pull_none>;
+ /*
+  * The calls to gpio_direction_output() and gpio_direction_input()
+  * leads to this function call (via the pinctrl_gpio_direction_{input|output}()
+@@ -1741,6 +1753,7 @@ static const struct gpio_chip rockchip_gpiolib_chip = {
+ 	.free = gpiochip_generic_free,
+ 	.set = rockchip_gpio_set,
+ 	.get = rockchip_gpio_get,
++	.get_direction	= rockchip_gpio_get_direction,
+ 	.direction_input = rockchip_gpio_direction_input,
+ 	.direction_output = rockchip_gpio_direction_output,
+ 	.to_irq = rockchip_gpio_to_irq,
 -- 
 1.9.1
+
