@@ -1,76 +1,148 @@
-From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] iio: adc: rockchip_saradc: add saradc support for rk3399
-Date: Wed, 16 Mar 2016 01:44:15 +0800
-Message-ID: <1458063855-4154-1-git-send-email-david.wu@rock-chips.com>
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rk3399
+Date: Wed, 16 Mar 2016 02:45:26 +0800
+Message-ID: <1458067526-11319-1-git-send-email-david.wu@rock-chips.com>
 Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: khilman@kernel.org, heiko@sntech.de
+Cc: nm@ti.com, huangtao@rock-chips.com, cf@rock-chips.com, zyw@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The ADC is a 6-channel signal-ended 10-bit Successive
-Approximation Register (SAR) A/D Converter.
+This adds the necessary data for handling io voltage domains on the rk3399.
+As interesting tidbit, the rk3399 contains two separate iodomain areas.
+One in the regular General Register Files (GRF) and one in PMUGRF in the
+pmu power domain.
 
-Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: David Wu <david.wu@rock-chips.com>
 ---
- .../devicetree/bindings/iio/adc/rockchip-saradc.txt   |  6 +++++-
- drivers/iio/adc/rockchip_saradc.c                     | 19 +++++++++++++++++++
- 2 files changed, 24 insertions(+), 1 deletion(-)
+ .../bindings/power/rockchip-io-domain.txt          | 11 ++++
+ drivers/power/avs/rockchip-io-domain.c             | 58 ++++++++++++++++++++++
+ 2 files changed, 69 insertions(+)
+ mode change 100644 => 100755 drivers/power/avs/rockchip-io-domain.c
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-index a9a5fe1..bf99e2f 100644
---- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-+++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-@@ -1,7 +1,11 @@
- Rockchip Successive Approximation Register (SAR) A/D Converter bindings
+diff --git a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+index b8627e7..c84fb47 100644
+--- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
++++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+@@ -35,6 +35,8 @@ Required properties:
+   - "rockchip,rk3288-io-voltage-domain" for rk3288
+   - "rockchip,rk3368-io-voltage-domain" for rk3368
+   - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
++  - "rockchip,rk3399-io-voltage-domain" for rk3399
++  - "rockchip,rk3399-pmu-io-voltage-domain" for rk3399 pmu-domains
+ - rockchip,grf: phandle to the syscon managing the "general register files"
  
- Required properties:
--- compatible: Should be "rockchip,saradc" or "rockchip,rk3066-tsadc"
-+- compatible: should be "rockchip,<name>-saradc" or "rockchip,rk3066-tsadc"
-+   - "rockchip,saradc": for rk3188, rk3288
-+   - "rockchip,rk3066-tsadc": for rk3036
-+   - "rockchip,rk3399-saradc": for rk3399
-+
- - reg: physical base address of the controller and length of memory mapped
-        region.
- - interrupts: The interrupt number to the cpu. The interrupt specifier format
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 9c311c1..f9ad6c2 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -159,6 +159,22 @@ static const struct rockchip_saradc_data rk3066_tsadc_data = {
- 	.clk_rate = 50000,
- };
  
-+static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
-+	ADC_CHANNEL(0, "adc0"),
-+	ADC_CHANNEL(1, "adc1"),
-+	ADC_CHANNEL(2, "adc2"),
-+	ADC_CHANNEL(3, "adc3"),
-+	ADC_CHANNEL(4, "adc4"),
-+	ADC_CHANNEL(5, "adc5"),
-+};
+@@ -79,6 +81,15 @@ Possible supplies for rk3368 pmu-domains:
+ - pmu-supply:    The supply connected to PMUIO_VDD.
+ - vop-supply:    The supply connected to LCDC_VDD.
+ 
++Possible supplies for rk3399:
++- bt656-supply:  The supply connected to APIO2_VDD.
++- audio-supply:  The supply connected to APIO5_VDD.
++- sdmmc-supply:  The supply connected to SDMMC0_VDD.
++- gpio1830       The supply connected to APIO4_VDD.
 +
-+static const struct rockchip_saradc_data rk3399_saradc_data = {
-+	.num_bits = 10,
-+	.channels = rockchip_rk3399_saradc_iio_channels,
-+	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
-+	.clk_rate = 1000000,
-+};
++Possible supplies for rk3399 pmu-domains:
++- pmu1830-supply:The supply connected to PMUIO2_VDD.
 +
- static const struct of_device_id rockchip_saradc_match[] = {
- 	{
- 		.compatible = "rockchip,saradc",
-@@ -166,6 +182,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
- 	}, {
- 		.compatible = "rockchip,rk3066-tsadc",
- 		.data = &rk3066_tsadc_data,
-+	}, {
-+		.compatible = "rockchip,rk3399-saradc",
-+		.data = &rk3399_saradc_data,
+ Example:
+ 
+ 	io-domains {
+diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
+old mode 100644
+new mode 100755
+index 8099456..8986382
+--- a/drivers/power/avs/rockchip-io-domain.c
++++ b/drivers/power/avs/rockchip-io-domain.c
+@@ -47,6 +47,10 @@
+ #define RK3368_SOC_CON15_FLASH0		BIT(14)
+ #define RK3368_SOC_FLASH_SUPPLY_NUM	2
+ 
++#define RK3399_PMUGRF_CON0		0x180
++#define RK3399_PMUGRF_CON0_VSEL		BIT(8)
++#define RK3399_PMUGRF_VSEL_SUPPLY_NUM	9
++
+ struct rockchip_iodomain;
+ 
+ /**
+@@ -181,6 +185,25 @@ static void rk3368_iodomain_init(struct rockchip_iodomain *iod)
+ 		dev_warn(iod->dev, "couldn't update flash0 ctrl\n");
+ }
+ 
++static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
++{
++	int ret;
++	u32 val;
++
++	/* if no pmu io supply we should leave things alone */
++	if (!iod->supplies[RK3399_PMUGRF_VSEL_SUPPLY_NUM].reg)
++		return;
++
++	/*
++	 * set pmu io iodomain to also use this framework
++	 * instead of a special gpio.
++	 */
++	val = RK3399_PMUGRF_CON0_VSEL | (RK3399_PMUGRF_CON0_VSEL << 16);
++	ret = regmap_write(iod->grf, RK3399_PMUGRF_CON0, val);
++	if (ret < 0)
++		dev_warn(iod->dev, "couldn't update pmu io iodomain ctrl\n");
++}
++
+ /*
+  * On the rk3188 the io-domains are handled by a shared register with the
+  * lower 8 bits being still being continuing drive-strength settings.
+@@ -252,6 +275,33 @@ static const struct rockchip_iodomain_soc_data soc_data_rk3368_pmu = {
  	},
- 	{},
  };
+ 
++static const struct rockchip_iodomain_soc_data soc_data_rk3399 = {
++	.grf_offset = 0xe640,
++	.supply_names = {
++		"bt656",		/* APIO2_VDD */
++		"audio",		/* APIO5_VDD */
++		"sdmmc",		/* SDMMC0_VDD */
++		"gpio1830",		/* APIO4_VDD */
++	},
++};
++
++static const struct rockchip_iodomain_soc_data soc_data_rk3399_pmu = {
++	.grf_offset = 0x180,
++	.supply_names = {
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		NULL,
++		"pmu1830",		/* PMUIO2_VDD */
++	},
++	.init = rk3399_pmu_iodomain_init,
++};
++
+ static const struct of_device_id rockchip_iodomain_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3188-io-voltage-domain",
+@@ -269,6 +319,14 @@ static const struct of_device_id rockchip_iodomain_match[] = {
+ 		.compatible = "rockchip,rk3368-pmu-io-voltage-domain",
+ 		.data = (void *)&soc_data_rk3368_pmu
+ 	},
++	{
++		.compatible = "rockchip,rk3399-io-voltage-domain",
++		.data = (void *)&soc_data_rk3399
++	},
++	{
++		.compatible = "rockchip,rk3399-pmu-io-voltage-domain",
++		.data = (void *)&soc_data_rk3399_pmu
++	},
+ 	{ /* sentinel */ },
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_iodomain_match);
 -- 
 1.9.1
+
+
