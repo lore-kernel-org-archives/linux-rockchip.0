@@ -1,31 +1,76 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2 6/9] clk: rockchip: associate the rk3036 HCLK_EMAC
- clock-id
-Date: Tue, 15 Mar 2016 11:45:39 -0700
-Message-ID: <20160315184539.GH25972@codeaurora.org>
-References: <1457860062-5514-1-git-send-email-wxt@rock-chips.com>
- <1457860062-5514-7-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1457860062-5514-7-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com, sergei.shtylyov@cogentembedded.com, netdev@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] iio: adc: rockchip_saradc: add saradc support for rk3399
+Date: Wed, 16 Mar 2016 01:44:15 +0800
+Message-ID: <1458063855-4154-1-git-send-email-david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/13, Caesar Wang wrote:
-> From: Xing Zheng <zhengxing@rock-chips.com>
-> 
-> Associate the new clock id the clock.
-> 
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> ---
+The ADC is a 6-channel signal-ended 10-bit Successive
+Approximation Register (SAR) A/D Converter.
 
-Acked-by: Stephen Boyd <sboyd@codeaurora.org>
+Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ .../devicetree/bindings/iio/adc/rockchip-saradc.txt   |  6 +++++-
+ drivers/iio/adc/rockchip_saradc.c                     | 19 +++++++++++++++++++
+ 2 files changed, 24 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+index a9a5fe1..bf99e2f 100644
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+@@ -1,7 +1,11 @@
+ Rockchip Successive Approximation Register (SAR) A/D Converter bindings
+ 
+ Required properties:
+-- compatible: Should be "rockchip,saradc" or "rockchip,rk3066-tsadc"
++- compatible: should be "rockchip,<name>-saradc" or "rockchip,rk3066-tsadc"
++   - "rockchip,saradc": for rk3188, rk3288
++   - "rockchip,rk3066-tsadc": for rk3036
++   - "rockchip,rk3399-saradc": for rk3399
++
+ - reg: physical base address of the controller and length of memory mapped
+        region.
+ - interrupts: The interrupt number to the cpu. The interrupt specifier format
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 9c311c1..f9ad6c2 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -159,6 +159,22 @@ static const struct rockchip_saradc_data rk3066_tsadc_data = {
+ 	.clk_rate = 50000,
+ };
+ 
++static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
++	ADC_CHANNEL(0, "adc0"),
++	ADC_CHANNEL(1, "adc1"),
++	ADC_CHANNEL(2, "adc2"),
++	ADC_CHANNEL(3, "adc3"),
++	ADC_CHANNEL(4, "adc4"),
++	ADC_CHANNEL(5, "adc5"),
++};
++
++static const struct rockchip_saradc_data rk3399_saradc_data = {
++	.num_bits = 10,
++	.channels = rockchip_rk3399_saradc_iio_channels,
++	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
++	.clk_rate = 1000000,
++};
++
+ static const struct of_device_id rockchip_saradc_match[] = {
+ 	{
+ 		.compatible = "rockchip,saradc",
+@@ -166,6 +182,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
+ 	}, {
+ 		.compatible = "rockchip,rk3066-tsadc",
+ 		.data = &rk3066_tsadc_data,
++	}, {
++		.compatible = "rockchip,rk3399-saradc",
++		.data = &rk3399_saradc_data,
+ 	},
+ 	{},
+ };
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+1.9.1
