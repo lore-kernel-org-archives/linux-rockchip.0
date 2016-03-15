@@ -1,208 +1,82 @@
-From: David Wu <wdc@rock-chips.com>
-Subject: [PATCH v4 1/3] i2c: rk3x: switch to i2c generic dt parsing
-Date: Tue, 15 Mar 2016 06:52:28 +0800
-Message-ID: <1457995950-46710-2-git-send-email-wdc@rock-chips.com>
-References: <1457995950-46710-1-git-send-email-wdc@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457995950-46710-1-git-send-email-wdc@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, wsa@the-dreams.de
-Cc: dianders@chromium.org, andy.shevchenko@gmail.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [GIT PULL 1/3] 2nd part of rockchip soc-driver changes for 4.6
+Date: Tue, 15 Mar 2016 16:30:45 +0100
+Message-ID: <4293420.gm3Wdi1Lsl@diego>
+References: <2165258.7vUftGQ1I7@diego>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2165258.7vUftGQ1I7@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: David Wu <david.wu@rock-chips.com>
+Hi,
 
-Switch to the new generic functions: i2c_parse_fw_timings().
+please scrap these 3 pull requests. I'm migrating the commits to v4.7 in my =
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
-change in v3:
-- parse timing information with common interface(Wolfram, Andy)
+tree.
 
- drivers/i2c/busses/i2c-rk3x.c | 87 ++++++++++++-------------------------------
- 1 file changed, 24 insertions(+), 63 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 9096d17..c4b0d89 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -101,10 +101,7 @@ struct rk3x_i2c {
- 	struct notifier_block clk_rate_nb;
- 
- 	/* Settings */
--	unsigned int scl_frequency;
--	unsigned int scl_rise_ns;
--	unsigned int scl_fall_ns;
--	unsigned int sda_fall_ns;
-+	struct i2c_timings t;
- 
- 	/* Synchronization & notification */
- 	spinlock_t lock;
-@@ -437,10 +434,7 @@ out:
-  * Calculate divider values for desired SCL frequency
-  *
-  * @clk_rate: I2C input clock rate
-- * @scl_rate: Desired SCL rate
-- * @scl_rise_ns: How many ns it takes for SCL to rise.
-- * @scl_fall_ns: How many ns it takes for SCL to fall.
-- * @sda_fall_ns: How many ns it takes for SDA to fall.
-+ * @t: Known I2C timing information.
-  * @div_low: Divider output for low
-  * @div_high: Divider output for high
-  *
-@@ -448,11 +442,10 @@ out:
-  * a best-effort divider value is returned in divs. If the target rate is
-  * too high, we silently use the highest possible rate.
-  */
--static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
--			      unsigned long scl_rise_ns,
--			      unsigned long scl_fall_ns,
--			      unsigned long sda_fall_ns,
--			      unsigned long *div_low, unsigned long *div_high)
-+static int rk3x_i2c_calc_divs(unsigned long clk_rate,
-+			      struct i2c_timings *t,
-+			      unsigned long *div_low,
-+			      unsigned long *div_high)
- {
- 	unsigned long spec_min_low_ns, spec_min_high_ns;
- 	unsigned long spec_setup_start, spec_max_data_hold_ns;
-@@ -472,12 +465,12 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	int ret = 0;
- 
- 	/* Only support standard-mode and fast-mode */
--	if (WARN_ON(scl_rate > 400000))
--		scl_rate = 400000;
-+	if (WARN_ON(t->bus_freq_hz > 400000))
-+		t->bus_freq_hz = 400000;
- 
- 	/* prevent scl_rate_khz from becoming 0 */
--	if (WARN_ON(scl_rate < 1000))
--		scl_rate = 1000;
-+	if (WARN_ON(t->bus_freq_hz < 1000))
-+		t->bus_freq_hz = 1000;
- 
- 	/*
- 	 * min_low_ns:  The minimum number of ns we need to hold low to
-@@ -491,7 +484,7 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	 *	 This is because the i2c host on Rockchip holds the data line
- 	 *	 for half the low time.
- 	 */
--	if (scl_rate <= 100000) {
-+	if (t->bus_freq_hz <= 100000) {
- 		/* Standard-mode */
- 		spec_min_low_ns = 4700;
- 		spec_setup_start = 4700;
-@@ -506,7 +499,7 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 		spec_max_data_hold_ns = 900;
- 		data_hold_buffer_ns = 50;
- 	}
--	min_high_ns = scl_rise_ns + spec_min_high_ns;
-+	min_high_ns = t->scl_rise_ns + spec_min_high_ns;
- 
- 	/*
- 	 * Timings for repeated start:
-@@ -517,18 +510,18 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	 * we meet tSU;STA and tHD;STA times.
- 	 */
- 	min_high_ns = max(min_high_ns,
--		DIV_ROUND_UP((scl_rise_ns + spec_setup_start) * 1000, 875));
-+		DIV_ROUND_UP((t->scl_rise_ns + spec_setup_start) * 1000, 875));
- 	min_high_ns = max(min_high_ns,
--		DIV_ROUND_UP((scl_rise_ns + spec_setup_start +
--			      sda_fall_ns + spec_min_high_ns), 2));
-+		DIV_ROUND_UP((t->scl_rise_ns + spec_setup_start +
-+			      t->sda_fall_ns + spec_min_high_ns), 2));
- 
--	min_low_ns = scl_fall_ns + spec_min_low_ns;
-+	min_low_ns = t->scl_fall_ns + spec_min_low_ns;
- 	max_low_ns = spec_max_data_hold_ns * 2 - data_hold_buffer_ns;
- 	min_total_ns = min_low_ns + min_high_ns;
- 
- 	/* Adjust to avoid overflow */
- 	clk_rate_khz = DIV_ROUND_UP(clk_rate, 1000);
--	scl_rate_khz = scl_rate / 1000;
-+	scl_rate_khz = t->bus_freq_hz / 1000;
- 
- 	/*
- 	 * We need the total div to be >= this number
-@@ -616,14 +609,13 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 
- static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- {
-+	struct i2c_timings *t = &i2c->t;
- 	unsigned long div_low, div_high;
- 	u64 t_low_ns, t_high_ns;
- 	int ret;
- 
--	ret = rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency, i2c->scl_rise_ns,
--				 i2c->scl_fall_ns, i2c->sda_fall_ns,
--				 &div_low, &div_high);
--	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", i2c->scl_frequency);
-+	ret = rk3x_i2c_calc_divs(clk_rate, t, &div_low, &div_high);
-+	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", t->bus_freq_hz);
- 
- 	clk_enable(i2c->clk);
- 	i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff), REG_CLKDIV);
-@@ -634,7 +626,7 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- 	dev_dbg(i2c->dev,
- 		"CLK %lukhz, Req %uns, Act low %lluns high %lluns\n",
- 		clk_rate / 1000,
--		1000000000 / i2c->scl_frequency,
-+		1000000000 / t->bus_freq_hz,
- 		t_low_ns, t_high_ns);
- }
- 
-@@ -664,9 +656,7 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
- 
- 	switch (event) {
- 	case PRE_RATE_CHANGE:
--		if (rk3x_i2c_calc_divs(ndata->new_rate, i2c->scl_frequency,
--				       i2c->scl_rise_ns, i2c->scl_fall_ns,
--				       i2c->sda_fall_ns,
-+		if (rk3x_i2c_calc_divs(ndata->new_rate, &i2c->t,
- 				       &div_low, &div_high) != 0)
- 			return NOTIFY_STOP;
- 
-@@ -879,37 +869,8 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
- 	match = of_match_node(rk3x_i2c_match, np);
- 	i2c->soc_data = (struct rk3x_i2c_soc_data *)match->data;
- 
--	if (of_property_read_u32(pdev->dev.of_node, "clock-frequency",
--				 &i2c->scl_frequency)) {
--		dev_info(&pdev->dev, "using default SCL frequency: %d\n",
--			 DEFAULT_SCL_RATE);
--		i2c->scl_frequency = DEFAULT_SCL_RATE;
--	}
--
--	if (i2c->scl_frequency == 0 || i2c->scl_frequency > 400 * 1000) {
--		dev_warn(&pdev->dev, "invalid SCL frequency specified.\n");
--		dev_warn(&pdev->dev, "using default SCL frequency: %d\n",
--			 DEFAULT_SCL_RATE);
--		i2c->scl_frequency = DEFAULT_SCL_RATE;
--	}
--
--	/*
--	 * Read rise and fall time from device tree. If not available use
--	 * the default maximum timing from the specification.
--	 */
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-scl-rising-time-ns",
--				 &i2c->scl_rise_ns)) {
--		if (i2c->scl_frequency <= 100000)
--			i2c->scl_rise_ns = 1000;
--		else
--			i2c->scl_rise_ns = 300;
--	}
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-scl-falling-time-ns",
--				 &i2c->scl_fall_ns))
--		i2c->scl_fall_ns = 300;
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-sda-falling-time-ns",
--				 &i2c->sda_fall_ns))
--		i2c->sda_fall_ns = i2c->scl_fall_ns;
-+	/* use common interface to get I2C timing properties */
-+	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
- 
- 	strlcpy(i2c->adap.name, "rk3x-i2c", sizeof(i2c->adap.name));
- 	i2c->adap.owner = THIS_MODULE;
--- 
-1.9.1
+Thanks
+Heiko
+
+Am Freitag, 4. M=E4rz 2016, 02:39:50 schrieb Heiko Stuebner:
+> Hi Arnd, Olof, Kevin,
+> =
+
+> this contains a fix for the error handling of the power-domain driver.
+> =
+
+> =
+
+> Thanks
+> Heiko
+> =
+
+> =
+
+> The following changes since commit 1d961f11a108af9f7fbe89cc950a8d16ddbdbb=
+28:
+> =
+
+>   soc: rockchip: power-domain: fix err handle while probing (2016-02-02
+> 22:18:31 +0100)
+> =
+
+> are available in the git repository at:
+> =
+
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+> tags/v4.6-rockchip-drivers2
+> =
+
+> for you to fetch changes up to 1503cfbbc7c62509c9b1188508d312ab9c90cb24:
+> =
+
+>   soc: rockchip: power-domain: check the existing of regmap (2016-02-15
+> 22:24:14 +0100)
+> =
+
+> ----------------------------------------------------------------
+> Fix handling the case when syscon_node_to_regmap returns an error
+> in the power-domain driver.
+> =
+
+> ----------------------------------------------------------------
+> Shawn Lin (1):
+>       soc: rockchip: power-domain: check the existing of regmap
+> =
+
+>  drivers/soc/rockchip/pm_domains.c | 4 ++++
+>  1 file changed, 4 insertions(+)
