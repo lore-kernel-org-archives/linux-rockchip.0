@@ -1,171 +1,85 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] PM / AVS: rockchip-io: add io selectors and supplies for rk3399
-Date: Wed, 16 Mar 2016 12:11:41 +0100
-Message-ID: <4748955.K1DVHdsoLd@diego>
-References: <1458067526-11319-1-git-send-email-david.wu@rock-chips.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: [PATCH v3 6/8] arm64: dts: rockchip: Add power key to GeekBox
+Date: Wed, 16 Mar 2016 14:52:33 +0100
+Message-ID: <56E96521.40304@suse.de>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>
+ <1457294038-14243-7-git-send-email-afaerber@suse.de>
+ <6BD669A2-4971-4702-8742-77C9994AA4E9@gmail.com> <56E93C43.1060500@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458067526-11319-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: khilman@kernel.org, nm@ti.com, huangtao@rock-chips.com, cf@rock-chips.com, zyw@rock-chips.com, xjq@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56E93C43.1060500-l3A5Bk7waGM@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+Am 16.03.2016 um 11:58 schrieb Andreas F=C3=A4rber:
+> Am 11.03.2016 um 00:04 schrieb Julien Chauveau:
+>>> @@ -70,6 +71,19 @@
+>>> 		pinctrl-0 =3D <&ir_int>;
+>>> 	};
+>>>
+>>> +	keys: gpio-keys {
+[...]
+>>> +		compatible =3D "gpio-keys";
+>>> +		pinctrl-names =3D "default";
+>>> +		pinctrl-0 =3D <&pwr_key>;
+>>> +
+>>> +		button@0 {
+[...]
+>>> +			gpios =3D <&gpio0 2 GPIO_ACTIVE_LOW>;
+>>> +			label =3D "GPIO Power";
+>>> +			linux,code =3D <KEY_POWER>;
+>>
+>> According to Documentation/input/event-codes.txt, there=E2=80=99s a =
+special event type for the power button.
+>> Should we use it here for that purpose?
+>>
+>> 			linux,input-type =3D <EV_PWR>
+>=20
+> The other RK3368 boards don't, so unless you can give a justification=
+ to
+> convert all boards yet again and test how this makes a difference, I'=
+d
+> rather not do experiments here but leave that to someone who knows wh=
+at
+> they're doing and then do it consistently...
 
-Am Mittwoch, 16. M=E4rz 2016, 02:45:26 schrieb David Wu:
-> This adds the necessary data for handling io voltage domains on the r=
-k3399.
-> As interesting tidbit, the rk3399 contains two separate iodomain area=
-s.
-> One in the regular General Register Files (GRF) and one in PMUGRF in =
-the
-> pmu power domain.
->=20
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+=46or the record here's an evtest log:
 
-looks good, so
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+geekbox:~ # evtest
+No device specified, trying to scan all of /dev/input/event*
+Available devices:
+/dev/input/event0:      gpio_ir_recv
+/dev/input/event1:      MCE IR Keyboard/Mouse (gpio-rc-recv)
+/dev/input/event2:      gpio-keys
+Select the device event number [0-2]: 2
+Input driver version is 1.0.1
+Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
+Input device name: "gpio-keys"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 116 (KEY_POWER)
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1458136008.850429, type 1 (EV_KEY), code 116 (KEY_POWER),
+value 1
+Event: time 1458136008.850429, -------------- SYN_REPORT ------------
 
+systemd then goes on to shut down the system cleanly.
 
-Heiko
+Regards,
+Andreas
 
-> ---
->  .../bindings/power/rockchip-io-domain.txt          | 11 ++++
->  drivers/power/avs/rockchip-io-domain.c             | 58
-> ++++++++++++++++++++++ 2 files changed, 69 insertions(+)
->  mode change 100644 =3D> 100755 drivers/power/avs/rockchip-io-domain.=
-c
->=20
-> diff --git a/Documentation/devicetree/bindings/power/rockchip-io-doma=
-in.txt
-> b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt inde=
-x
-> b8627e7..c84fb47 100644
-> --- a/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> +++ b/Documentation/devicetree/bindings/power/rockchip-io-domain.txt
-> @@ -35,6 +35,8 @@ Required properties:
->    - "rockchip,rk3288-io-voltage-domain" for rk3288
->    - "rockchip,rk3368-io-voltage-domain" for rk3368
->    - "rockchip,rk3368-pmu-io-voltage-domain" for rk3368 pmu-domains
-> +  - "rockchip,rk3399-io-voltage-domain" for rk3399
-> +  - "rockchip,rk3399-pmu-io-voltage-domain" for rk3399 pmu-domains
->  - rockchip,grf: phandle to the syscon managing the "general register=
- files"
->=20
->=20
-> @@ -79,6 +81,15 @@ Possible supplies for rk3368 pmu-domains:
->  - pmu-supply:    The supply connected to PMUIO_VDD.
->  - vop-supply:    The supply connected to LCDC_VDD.
->=20
-> +Possible supplies for rk3399:
-> +- bt656-supply:  The supply connected to APIO2_VDD.
-> +- audio-supply:  The supply connected to APIO5_VDD.
-> +- sdmmc-supply:  The supply connected to SDMMC0_VDD.
-> +- gpio1830       The supply connected to APIO4_VDD.
-> +
-> +Possible supplies for rk3399 pmu-domains:
-> +- pmu1830-supply:The supply connected to PMUIO2_VDD.
-> +
->  Example:
->=20
->  	io-domains {
-> diff --git a/drivers/power/avs/rockchip-io-domain.c
-> b/drivers/power/avs/rockchip-io-domain.c old mode 100644
-> new mode 100755
-> index 8099456..8986382
-> --- a/drivers/power/avs/rockchip-io-domain.c
-> +++ b/drivers/power/avs/rockchip-io-domain.c
-> @@ -47,6 +47,10 @@
->  #define RK3368_SOC_CON15_FLASH0		BIT(14)
->  #define RK3368_SOC_FLASH_SUPPLY_NUM	2
->=20
-> +#define RK3399_PMUGRF_CON0		0x180
-> +#define RK3399_PMUGRF_CON0_VSEL		BIT(8)
-> +#define RK3399_PMUGRF_VSEL_SUPPLY_NUM	9
-> +
->  struct rockchip_iodomain;
->=20
->  /**
-> @@ -181,6 +185,25 @@ static void rk3368_iodomain_init(struct
-> rockchip_iodomain *iod) dev_warn(iod->dev, "couldn't update flash0
-> ctrl\n");
->  }
->=20
-> +static void rk3399_pmu_iodomain_init(struct rockchip_iodomain *iod)
-> +{
-> +	int ret;
-> +	u32 val;
-> +
-> +	/* if no pmu io supply we should leave things alone */
-> +	if (!iod->supplies[RK3399_PMUGRF_VSEL_SUPPLY_NUM].reg)
-> +		return;
-> +
-> +	/*
-> +	 * set pmu io iodomain to also use this framework
-> +	 * instead of a special gpio.
-> +	 */
-> +	val =3D RK3399_PMUGRF_CON0_VSEL | (RK3399_PMUGRF_CON0_VSEL << 16);
-> +	ret =3D regmap_write(iod->grf, RK3399_PMUGRF_CON0, val);
-> +	if (ret < 0)
-> +		dev_warn(iod->dev, "couldn't update pmu io iodomain ctrl\n");
-> +}
-> +
->  /*
->   * On the rk3188 the io-domains are handled by a shared register wit=
-h the
->   * lower 8 bits being still being continuing drive-strength settings=
-=2E
-> @@ -252,6 +275,33 @@ static const struct rockchip_iodomain_soc_data
-> soc_data_rk3368_pmu =3D { },
->  };
->=20
-> +static const struct rockchip_iodomain_soc_data soc_data_rk3399 =3D {
-> +	.grf_offset =3D 0xe640,
-> +	.supply_names =3D {
-> +		"bt656",		/* APIO2_VDD */
-> +		"audio",		/* APIO5_VDD */
-> +		"sdmmc",		/* SDMMC0_VDD */
-> +		"gpio1830",		/* APIO4_VDD */
-> +	},
-> +};
-> +
-> +static const struct rockchip_iodomain_soc_data soc_data_rk3399_pmu =3D=
- {
-> +	.grf_offset =3D 0x180,
-> +	.supply_names =3D {
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		NULL,
-> +		"pmu1830",		/* PMUIO2_VDD */
-> +	},
-> +	.init =3D rk3399_pmu_iodomain_init,
-> +};
-> +
->  static const struct of_device_id rockchip_iodomain_match[] =3D {
->  	{
->  		.compatible =3D "rockchip,rk3188-io-voltage-domain",
-> @@ -269,6 +319,14 @@ static const struct of_device_id
-> rockchip_iodomain_match[] =3D { .compatible =3D
-> "rockchip,rk3368-pmu-io-voltage-domain",
->  		.data =3D (void *)&soc_data_rk3368_pmu
->  	},
-> +	{
-> +		.compatible =3D "rockchip,rk3399-io-voltage-domain",
-> +		.data =3D (void *)&soc_data_rk3399
-> +	},
-> +	{
-> +		.compatible =3D "rockchip,rk3399-pmu-io-voltage-domain",
-> +		.data =3D (void *)&soc_data_rk3399_pmu
-> +	},
->  	{ /* sentinel */ },
->  };
->  MODULE_DEVICE_TABLE(of, rockchip_iodomain_match);
+--=20
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG=
+ N=C3=BCrnberg)
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
