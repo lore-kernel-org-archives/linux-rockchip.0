@@ -1,86 +1,38 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: add saradc support for rk3399
-Date: Wed, 16 Mar 2016 20:51:34 +0000
-Message-ID: <56E9C756.10104@kernel.org>
-References: <1458063855-4154-1-git-send-email-david.wu@rock-chips.com>
-Mime-Version: 1.0
+From: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 5/8] arm64: dts: rockchip: Clean up gpio-keys nodes
+Date: Wed, 16 Mar 2016 22:55:44 +0100
+Message-ID: <27950358-06A9-4D97-8747-C32F56B73F11@gmail.com>
+References: <1458136727-32075-1-git-send-email-afaerber@suse.de> <1458136727-32075-6-git-send-email-afaerber@suse.de>
+Mime-Version: 1.0 (Mac OS X Mail 9.2 \(3112\))
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458063855-4154-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1458136727-32075-6-git-send-email-afaerber-l3A5Bk7waGM@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 15/03/16 17:44, David Wu wrote:
-> The ADC is a 6-channel signal-ended 10-bit Successive
-> Approximation Register (SAR) A/D Converter.
-> 
-> Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Looks straight forward so applied to the togreg branch of iio.git,
-pushed out as testing for the autobuilders to play with it.
+Hi Andreas,
 
-Thanks,
-
-Jonathan
+> Le 16 mars 2016 =C3=A0 14:58, Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org> =
+a =C3=A9crit :
+>=20
+> Drop superfluous #address-cells and #size-cells.
+> Use KEY_POWER define for 116.
+> Rename sub-nodes to avoid new dtc warnings.
+>=20
+> Reported-by: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Cc: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
 > ---
->  .../devicetree/bindings/iio/adc/rockchip-saradc.txt   |  6 +++++-
->  drivers/iio/adc/rockchip_saradc.c                     | 19 +++++++++++++++++++
->  2 files changed, 24 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> index a9a5fe1..bf99e2f 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
-> @@ -1,7 +1,11 @@
->  Rockchip Successive Approximation Register (SAR) A/D Converter bindings
->  
->  Required properties:
-> -- compatible: Should be "rockchip,saradc" or "rockchip,rk3066-tsadc"
-> +- compatible: should be "rockchip,<name>-saradc" or "rockchip,rk3066-tsadc"
-> +   - "rockchip,saradc": for rk3188, rk3288
-> +   - "rockchip,rk3066-tsadc": for rk3036
-> +   - "rockchip,rk3399-saradc": for rk3399
-> +
->  - reg: physical base address of the controller and length of memory mapped
->         region.
->  - interrupts: The interrupt number to the cpu. The interrupt specifier format
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index 9c311c1..f9ad6c2 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -159,6 +159,22 @@ static const struct rockchip_saradc_data rk3066_tsadc_data = {
->  	.clk_rate = 50000,
->  };
->  
-> +static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
-> +	ADC_CHANNEL(0, "adc0"),
-> +	ADC_CHANNEL(1, "adc1"),
-> +	ADC_CHANNEL(2, "adc2"),
-> +	ADC_CHANNEL(3, "adc3"),
-> +	ADC_CHANNEL(4, "adc4"),
-> +	ADC_CHANNEL(5, "adc5"),
-> +};
-> +
-> +static const struct rockchip_saradc_data rk3399_saradc_data = {
-> +	.num_bits = 10,
-> +	.channels = rockchip_rk3399_saradc_iio_channels,
-> +	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
-> +	.clk_rate = 1000000,
-> +};
-> +
->  static const struct of_device_id rockchip_saradc_match[] = {
->  	{
->  		.compatible = "rockchip,saradc",
-> @@ -166,6 +182,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
->  	}, {
->  		.compatible = "rockchip,rk3066-tsadc",
->  		.data = &rk3066_tsadc_data,
-> +	}, {
-> +		.compatible = "rockchip,rk3399-saradc",
-> +		.data = &rk3399_saradc_data,
->  	},
->  	{},
->  };
-> 
+
+It looks good to me.
+
+Reviewed-by: Julien Chauveau <chauveau.julien-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
