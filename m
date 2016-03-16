@@ -1,43 +1,61 @@
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: [PATCH v4 2/8] Documentation: devicetree: Add vendor prefix for
- GeekBuying.com
-Date: Wed, 16 Mar 2016 14:58:40 +0100
-Message-ID: <1458136727-32075-3-git-send-email-afaerber@suse.de>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH v4 01/24] pwm: rcar: make use of pwm_is_enabled()
+Date: Wed, 16 Mar 2016 15:30:22 +0100
+Message-ID: <20160316153022.164105d1@bbrezillon>
+References: <1447664207-24370-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1447664207-24370-2-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1458136727-32075-1-git-send-email-afaerber-l3A5Bk7waGM@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <1447664207-24370-2-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-input-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org
+Cc: Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-fbd
 List-Id: linux-rockchip.vger.kernel.org
 
-VXNlICJnZWVrYnV5aW5nIi4KCkFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3Jn
-PgpTaWduZWQtb2ZmLWJ5OiBBbmRyZWFzIEbDpHJiZXIgPGFmYWVyYmVyQHN1c2UuZGU+Ci0tLQog
-djMgLT4gdjQ6IFVuY2hhbmdlZAogCiB2MiAtPiB2MzoKICogUmViYXNlZCAoZ2UgdnMuIGdlZWti
-dXlpbmcpCgogdjI6IE5ldyAoSGVpa28pCiAKIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy92ZW5kb3ItcHJlZml4ZXMudHh0IHwgMSArCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
-b24oKykKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVu
-ZG9yLXByZWZpeGVzLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5k
-b3ItcHJlZml4ZXMudHh0CmluZGV4IGE0ZDNmYjVhMjQwNy4uMzE0NjU4MDViZmZjIDEwMDY0NAot
-LS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnR4
-dAorKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVz
-LnR4dApAQCAtOTAsNiArOTAsNyBAQCBmaXJlZmx5CUZpcmVmbHkKIGZvY2FsdGVjaAlGb2NhbFRl
-Y2ggU3lzdGVtcyBDby4sTHRkCiBmc2wJRnJlZXNjYWxlIFNlbWljb25kdWN0b3IKIGdlCUdlbmVy
-YWwgRWxlY3RyaWMgQ29tcGFueQorZ2Vla2J1eWluZwlHZWVrQnV5aW5nCiBHRUZhbnVjCUdFIEZh
-bnVjIEludGVsbGlnZW50IFBsYXRmb3JtcyBFbWJlZGRlZCBTeXN0ZW1zLCBJbmMuCiBnZWYJR0Ug
-RmFudWMgSW50ZWxsaWdlbnQgUGxhdGZvcm1zIEVtYmVkZGVkIFN5c3RlbXMsIEluYy4KIGdlbmlh
-dGVjaAlHZW5pYXRlY2gsIEluYy4KLS0gCjIuNi4yCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Thierry,
+
+Can you please apply this patch?
+It's completely independent from the rest of the series.
+
+Thanks,
+
+Boris
+
+On Mon, 16 Nov 2015 09:56:24 +0100
+Boris Brezillon <boris.brezillon@free-electrons.com> wrote:
+
+> Commit 5c31252c4a86 ("pwm: Add the pwm_is_enabled() helper") introduced a
+> new function to test whether a PWM device is enabled or not without
+> manipulating PWM internal fields.
+> Hiding this is necessary if we want to smoothly move to the atomic PWM
+> config approach without impacting PWM drivers.
+> Fix this driver to use pwm_is_enabled() instead of directly accessing the
+> ->flags field.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> ---
+>  drivers/pwm/pwm-rcar.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pwm/pwm-rcar.c b/drivers/pwm/pwm-rcar.c
+> index 6e99a63..70899c9 100644
+> --- a/drivers/pwm/pwm-rcar.c
+> +++ b/drivers/pwm/pwm-rcar.c
+> @@ -157,7 +157,7 @@ static int rcar_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  		return div;
+>  
+>  	/* Let the core driver set pwm->period if disabled and duty_ns == 0 */
+> -	if (!test_bit(PWMF_ENABLED, &pwm->flags) && !duty_ns)
+> +	if (!pwm_is_enabled(pwm) && !duty_ns)
+>  		return 0;
+>  
+>  	rcar_pwm_update(rp, RCAR_PWMCR_SYNC, RCAR_PWMCR_SYNC, RCAR_PWMCR);
+
+
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
