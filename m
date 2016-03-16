@@ -1,27 +1,21 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1 3/3] ARM64: dts: rk3368: Add mailbox device nodes
-Date: Thu, 17 Mar 2016 01:30:46 +0100
-Message-ID: <2297866.IOc3CjEvaT@diego>
-References: <1445931106-683-1-git-send-email-wxt@rock-chips.com> <1445931106-683-4-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v5 0/2] updates for rk3399 i2c support
+Date: Thu, 17 Mar 2016 00:57:16 +0800
+Message-ID: <1458147438-62387-1-git-send-email-david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445931106-683-4-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, frank.wang@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, Mark Rutland <mark.rutland@arm.com>, Olof Johansson <olof@lixom.net>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
+To: heiko@sntech.de, wsa@the-dreams.de
+Cc: dianders@chromium.org, andy.shevchenko@gmail.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 27. Oktober 2015, 15:31:46 schrieb Caesar Wang:
-> This adds mailbox device nodes in dts.
-> 
-> Mailbox is used by the Rockchip CPU cores to communicate
-> requests to MCU processor.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+David Wu (2):
+  i2c: rk3x: switch to i2c generic dt parsing
+  i2c: rk3x: add i2c support for rk3399 soc
 
-applied to my dts64 branch for 4.7
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |  32 +-
+ drivers/i2c/busses/i2c-rk3x.c                      | 524 ++++++++++++++++-----
+ 2 files changed, 440 insertions(+), 116 deletions(-)
 
-Thanks
-Heiko
+-- 
+1.9.1
