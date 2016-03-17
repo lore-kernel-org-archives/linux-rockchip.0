@@ -1,203 +1,107 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v5 1/2] i2c: rk3x: switch to i2c generic dt parsing
-Date: Thu, 17 Mar 2016 00:57:17 +0800
-Message-ID: <1458147438-62387-2-git-send-email-david.wu@rock-chips.com>
-References: <1458147438-62387-1-git-send-email-david.wu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1458147438-62387-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: heiko@sntech.de, wsa@the-dreams.de
-Cc: dianders@chromium.org, andy.shevchenko@gmail.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, david.wu@rock-chips.com
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v3 2/9] net: arc_emac: add phy reset is optional for
+ device tree
+Date: Thu, 17 Mar 2016 18:02:47 +0800
+Message-ID: <56EA80C7.30303@gmail.com>
+References: <1457942520-12859-1-git-send-email-wxt@rock-chips.com>
+ <1457942520-12859-3-git-send-email-wxt@rock-chips.com>
+ <56E96656.5000101@cogentembedded.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <56E96656.5000101@cogentembedded.com>
+Sender: netdev-owner@vger.kernel.org
+To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, "David S. Miller" <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, netdev@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, keescook@google.com, leozwang@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Switch to the new generic functions: i2c_parse_fw_timings().
+Hi Sergei,
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
+=E5=9C=A8 2016=E5=B9=B403=E6=9C=8816=E6=97=A5 21:57, Sergei Shtylyov =E5=
+=86=99=E9=81=93:
+> Hello.
+>
+> On 3/14/2016 11:01 AM, Caesar Wang wrote:
+>
+>> This patch adds the following property for arc_emac.
+>>
+>> 1) phy-reset-gpios:
+>> The phy-reset-gpio is an optional property for arc emac device tree=20
+>> boot.
+>> Change the binding document to match the driver code.
+>>
+>> 2) phy-reset-duration:
+>> Different boards may require different phy reset duration. Add prope=
+rty
+>> phy-reset-duration for device tree probe, so that the boards that ne=
+ed
+>> a longer reset duration can specify it in their device tree.
+>>
+>> Anyway, we can add the above property for arc emac.
+>>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>
+>   Could you have a look at drivers/net/ethernet/cadence/macb/? It=20
+> seems to be the only driver which places the PHY's "reset-gpios" prop=
+=20
+> correctly, into the PHY subnode? I'm currently working on adding=20
+> support of this prop into phylib...
+
+I see the driver on now.
+
+
+     /* Power up the PHY if there is a GPIO reset */
+     phy_node =3D  of_get_next_available_child(np, NULL);
+     if (phy_node) {
+         int gpio =3D of_get_named_gpio(phy_node, "reset-gpios", 0);
+         if (gpio_is_valid(gpio))
+             bp->reset_gpio =3D gpio_to_desc(gpio);
+         gpiod_set_value(bp->reset_gpio, GPIOD_OUT_HIGH);
+     }
+     of_node_put(phy_node);
+=2E..
+
+=46rankly, I don't like this way in device drivers.
+That's seem same with the /drivers/mmc/core/pwrseq_simple.c,  power up=20
+the device.
+Is it not really reset hardware PHY from the gpio reset pin?  Just powe=
+r up.
+
+Of course, I hope to see and test it if you improve the PHY framework t=
+o=20
+support the phy reset.:-)
+
 ---
- drivers/i2c/busses/i2c-rk3x.c | 87 ++++++++++++-------------------------------
- 1 file changed, 24 insertions(+), 63 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 9096d17..c4b0d89 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -101,10 +101,7 @@ struct rk3x_i2c {
- 	struct notifier_block clk_rate_nb;
- 
- 	/* Settings */
--	unsigned int scl_frequency;
--	unsigned int scl_rise_ns;
--	unsigned int scl_fall_ns;
--	unsigned int sda_fall_ns;
-+	struct i2c_timings t;
- 
- 	/* Synchronization & notification */
- 	spinlock_t lock;
-@@ -437,10 +434,7 @@ out:
-  * Calculate divider values for desired SCL frequency
-  *
-  * @clk_rate: I2C input clock rate
-- * @scl_rate: Desired SCL rate
-- * @scl_rise_ns: How many ns it takes for SCL to rise.
-- * @scl_fall_ns: How many ns it takes for SCL to fall.
-- * @sda_fall_ns: How many ns it takes for SDA to fall.
-+ * @t: Known I2C timing information.
-  * @div_low: Divider output for low
-  * @div_high: Divider output for high
-  *
-@@ -448,11 +442,10 @@ out:
-  * a best-effort divider value is returned in divs. If the target rate is
-  * too high, we silently use the highest possible rate.
-  */
--static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
--			      unsigned long scl_rise_ns,
--			      unsigned long scl_fall_ns,
--			      unsigned long sda_fall_ns,
--			      unsigned long *div_low, unsigned long *div_high)
-+static int rk3x_i2c_calc_divs(unsigned long clk_rate,
-+			      struct i2c_timings *t,
-+			      unsigned long *div_low,
-+			      unsigned long *div_high)
- {
- 	unsigned long spec_min_low_ns, spec_min_high_ns;
- 	unsigned long spec_setup_start, spec_max_data_hold_ns;
-@@ -472,12 +465,12 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	int ret = 0;
- 
- 	/* Only support standard-mode and fast-mode */
--	if (WARN_ON(scl_rate > 400000))
--		scl_rate = 400000;
-+	if (WARN_ON(t->bus_freq_hz > 400000))
-+		t->bus_freq_hz = 400000;
- 
- 	/* prevent scl_rate_khz from becoming 0 */
--	if (WARN_ON(scl_rate < 1000))
--		scl_rate = 1000;
-+	if (WARN_ON(t->bus_freq_hz < 1000))
-+		t->bus_freq_hz = 1000;
- 
- 	/*
- 	 * min_low_ns:  The minimum number of ns we need to hold low to
-@@ -491,7 +484,7 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	 *	 This is because the i2c host on Rockchip holds the data line
- 	 *	 for half the low time.
- 	 */
--	if (scl_rate <= 100000) {
-+	if (t->bus_freq_hz <= 100000) {
- 		/* Standard-mode */
- 		spec_min_low_ns = 4700;
- 		spec_setup_start = 4700;
-@@ -506,7 +499,7 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 		spec_max_data_hold_ns = 900;
- 		data_hold_buffer_ns = 50;
- 	}
--	min_high_ns = scl_rise_ns + spec_min_high_ns;
-+	min_high_ns = t->scl_rise_ns + spec_min_high_ns;
- 
- 	/*
- 	 * Timings for repeated start:
-@@ -517,18 +510,18 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 	 * we meet tSU;STA and tHD;STA times.
- 	 */
- 	min_high_ns = max(min_high_ns,
--		DIV_ROUND_UP((scl_rise_ns + spec_setup_start) * 1000, 875));
-+		DIV_ROUND_UP((t->scl_rise_ns + spec_setup_start) * 1000, 875));
- 	min_high_ns = max(min_high_ns,
--		DIV_ROUND_UP((scl_rise_ns + spec_setup_start +
--			      sda_fall_ns + spec_min_high_ns), 2));
-+		DIV_ROUND_UP((t->scl_rise_ns + spec_setup_start +
-+			      t->sda_fall_ns + spec_min_high_ns), 2));
- 
--	min_low_ns = scl_fall_ns + spec_min_low_ns;
-+	min_low_ns = t->scl_fall_ns + spec_min_low_ns;
- 	max_low_ns = spec_max_data_hold_ns * 2 - data_hold_buffer_ns;
- 	min_total_ns = min_low_ns + min_high_ns;
- 
- 	/* Adjust to avoid overflow */
- 	clk_rate_khz = DIV_ROUND_UP(clk_rate, 1000);
--	scl_rate_khz = scl_rate / 1000;
-+	scl_rate_khz = t->bus_freq_hz / 1000;
- 
- 	/*
- 	 * We need the total div to be >= this number
-@@ -616,14 +609,13 @@ static int rk3x_i2c_calc_divs(unsigned long clk_rate, unsigned long scl_rate,
- 
- static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- {
-+	struct i2c_timings *t = &i2c->t;
- 	unsigned long div_low, div_high;
- 	u64 t_low_ns, t_high_ns;
- 	int ret;
- 
--	ret = rk3x_i2c_calc_divs(clk_rate, i2c->scl_frequency, i2c->scl_rise_ns,
--				 i2c->scl_fall_ns, i2c->sda_fall_ns,
--				 &div_low, &div_high);
--	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", i2c->scl_frequency);
-+	ret = rk3x_i2c_calc_divs(clk_rate, t, &div_low, &div_high);
-+	WARN_ONCE(ret != 0, "Could not reach SCL freq %u", t->bus_freq_hz);
- 
- 	clk_enable(i2c->clk);
- 	i2c_writel(i2c, (div_high << 16) | (div_low & 0xffff), REG_CLKDIV);
-@@ -634,7 +626,7 @@ static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
- 	dev_dbg(i2c->dev,
- 		"CLK %lukhz, Req %uns, Act low %lluns high %lluns\n",
- 		clk_rate / 1000,
--		1000000000 / i2c->scl_frequency,
-+		1000000000 / t->bus_freq_hz,
- 		t_low_ns, t_high_ns);
- }
- 
-@@ -664,9 +656,7 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
- 
- 	switch (event) {
- 	case PRE_RATE_CHANGE:
--		if (rk3x_i2c_calc_divs(ndata->new_rate, i2c->scl_frequency,
--				       i2c->scl_rise_ns, i2c->scl_fall_ns,
--				       i2c->sda_fall_ns,
-+		if (rk3x_i2c_calc_divs(ndata->new_rate, &i2c->t,
- 				       &div_low, &div_high) != 0)
- 			return NOTIFY_STOP;
- 
-@@ -879,37 +869,8 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
- 	match = of_match_node(rk3x_i2c_match, np);
- 	i2c->soc_data = (struct rk3x_i2c_soc_data *)match->data;
- 
--	if (of_property_read_u32(pdev->dev.of_node, "clock-frequency",
--				 &i2c->scl_frequency)) {
--		dev_info(&pdev->dev, "using default SCL frequency: %d\n",
--			 DEFAULT_SCL_RATE);
--		i2c->scl_frequency = DEFAULT_SCL_RATE;
--	}
--
--	if (i2c->scl_frequency == 0 || i2c->scl_frequency > 400 * 1000) {
--		dev_warn(&pdev->dev, "invalid SCL frequency specified.\n");
--		dev_warn(&pdev->dev, "using default SCL frequency: %d\n",
--			 DEFAULT_SCL_RATE);
--		i2c->scl_frequency = DEFAULT_SCL_RATE;
--	}
--
--	/*
--	 * Read rise and fall time from device tree. If not available use
--	 * the default maximum timing from the specification.
--	 */
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-scl-rising-time-ns",
--				 &i2c->scl_rise_ns)) {
--		if (i2c->scl_frequency <= 100000)
--			i2c->scl_rise_ns = 1000;
--		else
--			i2c->scl_rise_ns = 300;
--	}
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-scl-falling-time-ns",
--				 &i2c->scl_fall_ns))
--		i2c->scl_fall_ns = 300;
--	if (of_property_read_u32(pdev->dev.of_node, "i2c-sda-falling-time-ns",
--				 &i2c->sda_fall_ns))
--		i2c->sda_fall_ns = i2c->scl_fall_ns;
-+	/* use common interface to get I2C timing properties */
-+	i2c_parse_fw_timings(&pdev->dev, &i2c->t, true);
- 
- 	strlcpy(i2c->adap.name, "rk3x-i2c", sizeof(i2c->adap.name));
- 	i2c->adap.owner = THIS_MODULE;
--- 
-1.9.1
+Anyway,  David had applied this series patches into net branch.
+
+Although the clock and dts patches should be applied into Heiko branch,=
+ =20
+I'm glad to see David's way.
+
+Heiko branch:
+https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/
+
+
+I wish won't destory Heiko to merge in the future.
+
+
+-Caesar
+
+
+
+>
+> MBR, Sergei
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+--=20
+Thanks,
+Caesar
