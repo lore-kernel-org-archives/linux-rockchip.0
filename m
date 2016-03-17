@@ -1,87 +1,126 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
- "discard"
-Date: Thu, 17 Mar 2016 23:46:05 +0800
-Message-ID: <56EAD13D.8050400@rock-chips.com>
-References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
- <56D641FA.8010606@samsung.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v5 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Thu, 17 Mar 2016 10:52:12 -0500
+Message-ID: <20160317155212.GA19171@rob-hp-laptop>
+References: <1457439716-8084-1-git-send-email-andy.yan@rock-chips.com>
+ <1457439785-8133-1-git-send-email-andy.yan@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56D641FA.8010606@samsung.com>
+Content-Disposition: inline
+In-Reply-To: <1457439785-8133-1-git-send-email-andy.yan@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: john.stultz@linaro.org, arnd@arndb.de, heiko@sntech.de, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, catalin.marinas@arm.com, olof@lixom.net, alexandre.belloni@free-electrons.com, dbaryshkov@gmail.com, sre@kernel.org, jun.nie@linaro.org, edubezval@gmail.com, f.fainelli@gmail.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, matthias.bgg@gmail.com, linux@arm.linux.org.uk, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, richard@nod.at, dwmw2@infradead.org, jwerner@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi jaehoon,
+On Tue, Mar 08, 2016 at 08:23:05PM +0800, Andy Yan wrote:
+> add device tree bindings document for reboot-mode driver
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v5:
+> - delete a unnecessary blank line in syscon-reboot-mode.txt
+> - rename macro BOOT_LOADER to BOOT_BL_DOWNLOAD, which gives a more clear mean
+> 
+> Changes in v4:
+> - remove mode-maskrom
+> - rename mode-fastboot to mode-bootloader to keep compatible with the exiting Android device
+> 
+> Changes in v3:
+> - descirbe all reboot mode as properity instead of subnode
+> 
+> Changes in v2: None
+> Changes in v1: None
+> 
+>  .../bindings/power/reset/reboot-mode.txt           | 24 +++++++++++++++
+>  .../bindings/power/reset/syscon-reboot-mode.txt    | 34 ++++++++++++++++++++++
+>  2 files changed, 58 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>  create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mode.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> new file mode 100644
+> index 0000000..3457949
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+> @@ -0,0 +1,24 @@
+> +Generic reboot mode core map driver
+> +
+> +This driver get reboot mode arguments and call the write
+> +interface to stores the magic value in special register
+> +or ram . Then the bootloader can read it and take different
+> +action according the argument stored.
+> +
+> +All mode properties are vendor specific, it is a indication to tell
+> +the bootloder what to do when the system reboot, and should be named
+> +as mode-xxx = <magic> (xxx is mode name).
+> +
+> +- mode-normal: Normal reboot mode, system reboot with command "reboot".
+> +- mode-recovery: Android Recovery mode, it is a mode to format the device or update a new image.
+> +- mode-bootloader: Android fastboot mode, it's a mode to re-flash partitions on the Android based device.
+> +- mode-loader: A bootloader mode, it's a mode used to download image on Rockchip platform,
+> +	       usually used in development.
+> +
+> +Example:
+> +	reboot-mode {
+> +		mode-normal = <BOOT_NORMAL>;
+> +		mode-recovery = <BOOT_RECOVERY>;
+> +		mode-bootloader = <BOOT_FASTBOOT>;
+> +		mode-loader = <BOOT_BL_DOWNLOAD>;
+> +	}
+> diff --git a/Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt b/Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+> new file mode 100644
+> index 0000000..d03cb52
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+> @@ -0,0 +1,34 @@
+> +SYSCON reboot mode driver
+> +
+> +This driver get reboot mode magic value form reboot-mode driver
+> +and stores it in a SYSCON mapped register. Then the bootloader
+> +can read it and take different action according to the magic
+> +value stored.
+> +
+> +This DT node should be represented as a sub-node of a "syscon", "simple-mfd"
+> +node.
+> +
+> +Required properties:
+> +- compatible: should be "syscon-reboot-mode"
+> +- offset: offset in the register map for the storage register (in bytes)
+> +
+> +Optional properity:
+> +- mask: the mask bits of the mode magic value, default set to 0xffffffff if missing.
 
-On 2016/3/2 9:29, Jaehoon Chung wrote:
-> Hi Shawn.
->
-> On 03/01/2016 04:12 PM, Shawn Lin wrote:
->> Without MMC_CAP_ERASE support, we fail to mount partition
->> with "discard" option since mmc_queue_setup_discard is limited
->> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
->> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
->> the following log from f2fs(actually similar to other file system):
->>
->> mounting with "discard" option, but the device does not support discard
->
-> We can enable MMC_CAP_ERASE by default, since other SoC also needs this capability.
-> I had sent some patch for enabling by default, but at that time i didn't remember why not enabled by default.
-> I will check that reason..and share the information.
->
+I can't see how this is used. I would drop it for now.
 
-Any good news? :)
-Or let add it for dw_mmc by default?
+With that change:
 
-> Best Regards,
-> Jaehoon Chung
->
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> ---
->>
->>   drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
->>   1 file changed, 9 insertions(+)
->>
->> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
->> index 84e50f3..2eda118 100644
->> --- a/drivers/mmc/host/dw_mmc-rockchip.c
->> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
->>   	return 0;
->>   }
->>
->> +/* Common capabilities of RK3288 SoC */
->> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +	MMC_CAP_ERASE,
->> +};
->> +
->>   static const struct dw_mci_drv_data rk2928_drv_data = {
->>   	.init			= dw_mci_rockchip_init,
->>   };
->>
->>   static const struct dw_mci_drv_data rk3288_drv_data = {
->> +	.caps			= dw_mci_rk3288_dwmmc_caps,
->>   	.set_ios		= dw_mci_rk3288_set_ios,
->>   	.execute_tuning		= dw_mci_rk3288_execute_tuning,
->>   	.parse_dt		= dw_mci_rk3288_parse_dt,
->>
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
+Acked-by: Rob Herring <robh@kernel.org>
 
-
--- 
-Best Regards
-Shawn Lin
+> +
+> +The rest of the properties should follow the generic reboot-mode discription
+> +found in reboot-mode.txt
+> +
+> +Example:
+> +	pmu: pmu@20004000 {
+> +		compatible = "rockchip,rk3066-pmu", "syscon", "simple-mfd";
+> +		reg = <0x20004000 0x100>;
+> +
+> +		reboot-mode {
+> +			compatible = "syscon-reboot-mode";
+> +			offset = <0x40>;
+> +			mode-normal = <BOOT_NORMAL>;
+> +			mode-recovery = <BOOT_RECOVERY>;
+> +			mode-bootloader = <BOOT_FASTBOOT>;
+> +			mode-loader = <BOOT_BL_DOWNLOAD>;
+> +		};
+> +	};
+> -- 
+> 1.9.1
+> 
+> 
+> 
