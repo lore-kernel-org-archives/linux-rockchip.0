@@ -1,64 +1,62 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2] ARM: rockchip: Fix use of plain integer as NULL pointer
-Date: Thu, 17 Mar 2016 14:54:47 +0100
-Message-ID: <3852103.Khn1BuqerF@diego>
+From: Peter Griffin <peter.griffin@linaro.org>
+Subject: Re: [PATCH v2] ARM: rockchip: Fix use of plain integer as NULL
+ pointer
+Date: Thu, 17 Mar 2016 14:04:30 +0000
+Message-ID: <20160317140430.GA26606@griffinp-ThinkPad-X1-Carbon-2nd>
 References: <1458222191-26023-1-git-send-email-peter.griffin@linaro.org>
+ <3852103.Khn1BuqerF@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458222191-26023-1-git-send-email-peter.griffin@linaro.org>
+Content-Disposition: inline
+In-Reply-To: <3852103.Khn1BuqerF@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Peter Griffin <peter.griffin@linaro.org>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, patches@linaro.org, lee.jones@linaro.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Peter,
+Hi Heiko,
 
-no need to resend for that (will be lost when applying anyway), but for=
- future=20
-patches please consider the things below:
+On Thu, 17 Mar 2016, Heiko St=FCbner wrote:
 
-Am Donnerstag, 17. M=E4rz 2016, 13:43:11 schrieb Peter Griffin:
-> This fixes the following sparse build warning:
+> Hi Peter,
 >=20
->      mach-rockchip/platsmp.c:68:43: Using plain integer as NULL point=
-er
+> no need to resend for that (will be lost when applying anyway), but f=
+or future=20
+> patches please consider the things below:
 >=20
-> Signed-off-by: Peter Griffin <peter.griffin@linaro.org>
-
-please bring aling tags received in previous versions to future ones, l=
-ike the=20
-one from Lee:
-
-Acked-by: Lee Jones <lee.jones@linaro.org>
-
-> ---
-
-changes in v2:
-- beautify commit message
-
-
-otherwise, patch looks nice and I'll pick it up shortly
-
-
-Thanks for catching this
-Heiko
-
->  arch/arm/mach-rockchip/platsmp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Am Donnerstag, 17. M=E4rz 2016, 13:43:11 schrieb Peter Griffin:
+> > This fixes the following sparse build warning:
+> >=20
+> >      mach-rockchip/platsmp.c:68:43: Using plain integer as NULL poi=
+nter
+> >=20
+> > Signed-off-by: Peter Griffin <peter.griffin@linaro.org>
 >=20
-> diff --git a/arch/arm/mach-rockchip/platsmp.c
-> b/arch/arm/mach-rockchip/platsmp.c index d42a07e..4d827a0 100644
-> --- a/arch/arm/mach-rockchip/platsmp.c
-> +++ b/arch/arm/mach-rockchip/platsmp.c
-> @@ -65,7 +65,7 @@ static struct reset_control *rockchip_get_core_rese=
-t(int
-> cpu) if (dev)
->  		np =3D dev->of_node;
->  	else
-> -		np =3D of_get_cpu_node(cpu, 0);
-> +		np =3D of_get_cpu_node(cpu, NULL);
+> please bring aling tags received in previous versions to future ones,=
+ like the=20
+> one from Lee:
 >=20
->  	return of_reset_control_get(np, NULL);
->  }
+> Acked-by: Lee Jones <lee.jones@linaro.org>
+
+Will do, I didn't notice Lee had also Acked it. I should have been payi=
+ng more
+attention and not re-spinning whilst in a conf call.
+>=20
+> > ---
+>=20
+> changes in v2:
+> - beautify commit message
+>=20
+>=20
+> otherwise, patch looks nice and I'll pick it up shortly
+>=20
+>=20
+> Thanks for catching this
+
+No problem, thanks for the feedback and taking the patch.
+
+regards,
+
+Peter.
