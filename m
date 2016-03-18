@@ -1,119 +1,71 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
- "discard"
-Date: Fri, 18 Mar 2016 12:46:07 +0800
-Message-ID: <56EB880F.1040606@rock-chips.com>
-References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
- <56D641FA.8010606@samsung.com> <56EAD13D.8050400@rock-chips.com>
- <56EB5E3F.7010701@samsung.com>
+From: Vignesh R <vigneshr-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH] spi: don't lock the bus in __spi_pump_messages if it is
+ already locked
+Date: Fri, 18 Mar 2016 10:53:07 +0530
+Message-ID: <56EB90BB.3070802@ti.com>
+References: <1848110.TJtF6nar8z@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <56EB5E3F.7010701@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1848110.TJtF6nar8z@diego>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jaehoon,
-
-On 2016-3-18 9:47, Jaehoon Chung wrote:
-> Hi Shawn,
->
-> On 03/18/2016 12:46 AM, Shawn Lin wrote:
->> Hi jaehoon,
->>
->> On 2016/3/2 9:29, Jaehoon Chung wrote:
->>> Hi Shawn.
->>>
->>> On 03/01/2016 04:12 PM, Shawn Lin wrote:
->>>> Without MMC_CAP_ERASE support, we fail to mount partition
->>>> with "discard" option since mmc_queue_setup_discard is limited
->>>> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
->>>> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
->>>> the following log from f2fs(actually similar to other file system):
->>>>
->>>> mounting with "discard" option, but the device does not support discard
->>>
->>> We can enable MMC_CAP_ERASE by default, since other SoC also needs this capability.
->>> I had sent some patch for enabling by default, but at that time i didn't remember why not enabled by default.
->>> I will check that reason..and share the information.
->>>
->>
->> Any good news? :)
->> Or let add it for dw_mmc by default?
->
-> Sorry for replying too late..I had other tasks..:(
-> Today or Tomorrow, i will apply the patches related with dw-mmcc controller.
-> And will request to pull to Ulf.
->
-> I didn't check...but i think this patch will be applied on dw_mmc-rockchip.
-> After then..we can use it by default in future.
->
-
-Thanks. That's a good plan.
-
-> Refer to below.
-> https://patchwork.kernel.org/patch/4240491/
-
-yes, I also found this patch and it was not merge yet.
-So we still need MMC_CAP_ERASE to make sure we can enable
-discard unless the cap is removed in future.
 
 
->
-> Best Regards,
-> Jaehoon Chung
->
->>
->>> Best Regards,
->>> Jaehoon Chung
->>>
->>>>
->>>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>>> ---
->>>>
->>>>    drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
->>>>    1 file changed, 9 insertions(+)
->>>>
->>>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
->>>> index 84e50f3..2eda118 100644
->>>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
->>>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
->>>> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
->>>>        return 0;
->>>>    }
->>>>
->>>> +/* Common capabilities of RK3288 SoC */
->>>> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
->>>> +    MMC_CAP_ERASE,
->>>> +    MMC_CAP_ERASE,
->>>> +    MMC_CAP_ERASE,
->>>> +    MMC_CAP_ERASE,
->>>> +};
->>>> +
->>>>    static const struct dw_mci_drv_data rk2928_drv_data = {
->>>>        .init            = dw_mci_rockchip_init,
->>>>    };
->>>>
->>>>    static const struct dw_mci_drv_data rk3288_drv_data = {
->>>> +    .caps            = dw_mci_rk3288_dwmmc_caps,
->>>>        .set_ios        = dw_mci_rk3288_set_ios,
->>>>        .execute_tuning        = dw_mci_rk3288_execute_tuning,
->>>>        .parse_dt        = dw_mci_rk3288_parse_dt,
->>>>
->>>
->>>
->>> _______________________________________________
->>> Linux-rockchip mailing list
->>> Linux-rockchip@lists.infradead.org
->>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>>
->>
->>
->
->
->
->
+On 03/18/2016 04:48 AM, Heiko St=FCbner wrote:
+> External users may use spi_bus_lock to get exclusive access. This wil=
+l
+> also grab the bus_lock_mutex and may therefore result in a deadlock i=
+f
+> __spi_pump_messages also tries to get the mutex.
 
+I suggest bus_locked flag passed to __spi_pump_messages() by
+__spi_sync() be updated to take care of the fact that spi_bus_lock() ma=
+y
+have acquired the mutex, so that below changes in __spi_pump_messages()
+are not needed.
+
+>=20
+> Fixes: 49023d2e4ead ("spi: core: Fix deadlock when sending messages")
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  drivers/spi/spi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index de2f2f9..62f962b 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -1160,7 +1160,7 @@ static void __spi_pump_messages(struct spi_mast=
+er *master, bool in_kthread,
+>  		}
+>  	}
+> =20
+> -	if (!bus_locked)
+> +	if (!bus_locked && !master->bus_lock_flag)
+>  		mutex_lock(&master->bus_lock_mutex);
+> =20
+>  	trace_spi_message_start(master->cur_msg);
+> @@ -1192,7 +1192,7 @@ static void __spi_pump_messages(struct spi_mast=
+er *master, bool in_kthread,
+>  	}
+> =20
+>  out:
+> -	if (!bus_locked)
+> +	if (!bus_locked && !master->bus_lock_flag)
+>  		mutex_unlock(&master->bus_lock_mutex);
+> =20
+>  	/* Prod the scheduler in case transfer_one() was busy waiting */
+>=20
+
+--=20
+Regards
+Vignesh
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
