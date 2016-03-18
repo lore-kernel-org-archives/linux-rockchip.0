@@ -1,160 +1,165 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 2/2] rockchip: power-domain: support qos save and restore
-Date: Fri, 18 Mar 2016 15:17:24 +0800
-Message-ID: <1458285444-31129-3-git-send-email-zhangqing@rock-chips.com>
-References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v5 1/4] dt-bindings: power: reset: add document for
+ reboot-mode driver
+Date: Fri, 18 Mar 2016 16:43:29 +0800
+Message-ID: <56EBBFB1.6000808@rock-chips.com>
+References: <1457439716-8084-1-git-send-email-andy.yan@rock-chips.com>
+ <1457439785-8133-1-git-send-email-andy.yan@rock-chips.com>
+ <20160317155212.GA19171@rob-hp-laptop>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com>
+In-Reply-To: <20160317155212.GA19171@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
-Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+To: Rob Herring <robh@kernel.org>
+Cc: john.stultz@linaro.org, arnd@arndb.de, heiko@sntech.de, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, catalin.marinas@arm.com, olof@lixom.net, alexandre.belloni@free-electrons.com, dbaryshkov@gmail.com, sre@kernel.org, jun.nie@linaro.org, edubezval@gmail.com, f.fainelli@gmail.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, matthias.bgg@gmail.com, linux@arm.linux.org.uk, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, richard@nod.at, dwmw2@infradead.org, jwerner@google.com
 List-Id: linux-rockchip.vger.kernel.org
 
-support qos save and restore when power domain on/off.
+Hi Rob:
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/soc/rockchip/pm_domains.c | 87 +++++++++++++++++++++++++++++++++++++--
- 1 file changed, 84 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 18aee6b..c5f4be6 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -45,10 +45,21 @@ struct rockchip_pmu_info {
- 	const struct rockchip_domain_info *domain_info;
- };
- 
-+#define MAX_QOS_NODE_NUM	20
-+#define MAX_QOS_REGS_NUM	5
-+#define QOS_PRIORITY		0x08
-+#define QOS_MODE		0x0c
-+#define QOS_BANDWIDTH		0x10
-+#define QOS_SATURATION		0x14
-+#define QOS_EXTCONTROL		0x18
-+
- struct rockchip_pm_domain {
- 	struct generic_pm_domain genpd;
- 	const struct rockchip_domain_info *info;
- 	struct rockchip_pmu *pmu;
-+	int num_qos;
-+	struct regmap *qos_regmap[MAX_QOS_NODE_NUM];
-+	u32 qos_save_regs[MAX_QOS_NODE_NUM][MAX_QOS_REGS_NUM];
- 	int num_clks;
- 	struct clk *clks[];
- };
-@@ -111,6 +122,55 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
- 	return 0;
- }
- 
-+static int rockchip_pmu_save_qos(struct rockchip_pm_domain *pd)
-+{
-+	int i;
-+
-+	for (i = 0; i < pd->num_qos; i++) {
-+		regmap_read(pd->qos_regmap[i],
-+			    QOS_PRIORITY,
-+			    &pd->qos_save_regs[i][0]);
-+		regmap_read(pd->qos_regmap[i],
-+			    QOS_MODE,
-+			    &pd->qos_save_regs[i][1]);
-+		regmap_read(pd->qos_regmap[i],
-+			    QOS_BANDWIDTH,
-+			    &pd->qos_save_regs[i][2]);
-+		regmap_read(pd->qos_regmap[i],
-+			    QOS_SATURATION,
-+			    &pd->qos_save_regs[i][3]);
-+		regmap_read(pd->qos_regmap[i],
-+			    QOS_EXTCONTROL,
-+			    &pd->qos_save_regs[i][4]);
-+	}
-+	return 0;
-+}
-+
-+static int rockchip_pmu_restore_qos(struct rockchip_pm_domain *pd)
-+{
-+	int i;
-+
-+	for (i = 0; i < pd->num_qos; i++) {
-+		regmap_write(pd->qos_regmap[i],
-+			     QOS_PRIORITY,
-+			     pd->qos_save_regs[i][0]);
-+		regmap_write(pd->qos_regmap[i],
-+			     QOS_MODE,
-+			     pd->qos_save_regs[i][1]);
-+		regmap_write(pd->qos_regmap[i],
-+			     QOS_BANDWIDTH,
-+			     pd->qos_save_regs[i][2]);
-+		regmap_write(pd->qos_regmap[i],
-+			     QOS_SATURATION,
-+			     pd->qos_save_regs[i][3]);
-+		regmap_write(pd->qos_regmap[i],
-+			     QOS_EXTCONTROL,
-+			     pd->qos_save_regs[i][4]);
-+	}
-+
-+	return 0;
-+}
-+
- static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
- {
- 	struct rockchip_pmu *pmu = pd->pmu;
-@@ -147,7 +207,7 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 			clk_enable(pd->clks[i]);
- 
- 		if (!power_on) {
--			/* FIXME: add code to save AXI_QOS */
-+			rockchip_pmu_save_qos(pd);
- 
- 			/* if powering down, idle request to NIU first */
- 			rockchip_pmu_set_idle_request(pd, true);
-@@ -159,7 +219,7 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 			/* if powering up, leave idle mode */
- 			rockchip_pmu_set_idle_request(pd, false);
- 
--			/* FIXME: add code to restore AXI_QOS */
-+			rockchip_pmu_restore_qos(pd);
- 		}
- 
- 		for (i = pd->num_clks - 1; i >= 0; i--)
-@@ -227,9 +287,10 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- {
- 	const struct rockchip_domain_info *pd_info;
- 	struct rockchip_pm_domain *pd;
-+	struct device_node *qos_node;
- 	struct clk *clk;
- 	int clk_cnt;
--	int i;
-+	int i, j;
- 	u32 id;
- 	int error;
- 
-@@ -289,6 +350,26 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 			clk, node->name);
- 	}
- 
-+	pd->num_qos = of_count_phandle_with_args(node, "pm_qos",
-+						 NULL);
-+	if (pd->num_qos > MAX_QOS_NODE_NUM) {
-+		dev_err(pmu->dev,
-+			"the qos node num is overflow qos_num = %d\n",
-+			pd->num_qos);
-+		error = -EINVAL;
-+		goto err_out;
-+	}
-+
-+	for (j = 0; j < pd->num_qos; j++) {
-+		qos_node = of_parse_phandle(node, "pm_qos", j);
-+		if (!qos_node) {
-+			error = -ENODEV;
-+			goto err_out;
-+		}
-+		pd->qos_regmap[j] = syscon_node_to_regmap(qos_node);
-+		of_node_put(qos_node);
-+	}
-+
- 	error = rockchip_pd_power(pd, true);
- 	if (error) {
- 		dev_err(pmu->dev,
--- 
-1.9.1
+On 2016=E5=B9=B403=E6=9C=8817=E6=97=A5 23:52, Rob Herring wrote:
+> On Tue, Mar 08, 2016 at 08:23:05PM +0800, Andy Yan wrote:
+>> add device tree bindings document for reboot-mode driver
+>>
+>> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v5:
+>> - delete a unnecessary blank line in syscon-reboot-mode.txt
+>> - rename macro BOOT_LOADER to BOOT_BL_DOWNLOAD, which gives a more c=
+lear mean
+>>
+>> Changes in v4:
+>> - remove mode-maskrom
+>> - rename mode-fastboot to mode-bootloader to keep compatible with th=
+e exiting Android device
+>>
+>> Changes in v3:
+>> - descirbe all reboot mode as properity instead of subnode
+>>
+>> Changes in v2: None
+>> Changes in v1: None
+>>
+>>   .../bindings/power/reset/reboot-mode.txt           | 24 ++++++++++=
++++++
+>>   .../bindings/power/reset/syscon-reboot-mode.txt    | 34 ++++++++++=
+++++++++++++
+>>   2 files changed, 58 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/power/reset/r=
+eboot-mode.txt
+>>   create mode 100644 Documentation/devicetree/bindings/power/reset/s=
+yscon-reboot-mode.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/power/reset/reboot-mo=
+de.txt b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>> new file mode 100644
+>> index 0000000..3457949
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+>> @@ -0,0 +1,24 @@
+>> +Generic reboot mode core map driver
+>> +
+>> +This driver get reboot mode arguments and call the write
+>> +interface to stores the magic value in special register
+>> +or ram . Then the bootloader can read it and take different
+>> +action according the argument stored.
+>> +
+>> +All mode properties are vendor specific, it is a indication to tell
+>> +the bootloder what to do when the system reboot, and should be name=
+d
+>> +as mode-xxx =3D <magic> (xxx is mode name).
+>> +
+>> +- mode-normal: Normal reboot mode, system reboot with command "rebo=
+ot".
+>> +- mode-recovery: Android Recovery mode, it is a mode to format the =
+device or update a new image.
+>> +- mode-bootloader: Android fastboot mode, it's a mode to re-flash p=
+artitions on the Android based device.
+>> +- mode-loader: A bootloader mode, it's a mode used to download imag=
+e on Rockchip platform,
+>> +	       usually used in development.
+>> +
+>> +Example:
+>> +	reboot-mode {
+>> +		mode-normal =3D <BOOT_NORMAL>;
+>> +		mode-recovery =3D <BOOT_RECOVERY>;
+>> +		mode-bootloader =3D <BOOT_FASTBOOT>;
+>> +		mode-loader =3D <BOOT_BL_DOWNLOAD>;
+>> +	}
+>> diff --git a/Documentation/devicetree/bindings/power/reset/syscon-re=
+boot-mode.txt b/Documentation/devicetree/bindings/power/reset/syscon-re=
+boot-mode.txt
+>> new file mode 100644
+>> index 0000000..d03cb52
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/power/reset/syscon-reboot-mo=
+de.txt
+>> @@ -0,0 +1,34 @@
+>> +SYSCON reboot mode driver
+>> +
+>> +This driver get reboot mode magic value form reboot-mode driver
+>> +and stores it in a SYSCON mapped register. Then the bootloader
+>> +can read it and take different action according to the magic
+>> +value stored.
+>> +
+>> +This DT node should be represented as a sub-node of a "syscon", "si=
+mple-mfd"
+>> +node.
+>> +
+>> +Required properties:
+>> +- compatible: should be "syscon-reboot-mode"
+>> +- offset: offset in the register map for the storage register (in b=
+ytes)
+>> +
+>> +Optional properity:
+>> +- mask: the mask bits of the mode magic value, default set to 0xfff=
+fffff if missing.
+> I can't see how this is used. I would drop it for now.
+>
+> With that change:
+>
+> Acked-by: Rob Herring <robh@kernel.org>
+
+The mask is suggested by Moritz Fischer in V2[0]. And I found Tegra did=
+=20
+indeed only use some bits of one register to store the reboot mode[1].
+
+@Heiko: It seems that this patch series can land now, but the dts parts=
+=20
+belong to  two different branch(arm32 and arm64) . And these
+two parts both depends on one head file rockchip_boot-mode.h, So I hope=
+=20
+some suggestions from you how to deal with it.
+
+    [0] https://lkml.org/lkml/2016/1/27/225
+    [1] drivers/soc/tegra/pmc.c  (tegra_pmc_restart_notify)
+>> +
+>> +The rest of the properties should follow the generic reboot-mode di=
+scription
+>> +found in reboot-mode.txt
+>> +
+>> +Example:
+>> +	pmu: pmu@20004000 {
+>> +		compatible =3D "rockchip,rk3066-pmu", "syscon", "simple-mfd";
+>> +		reg =3D <0x20004000 0x100>;
+>> +
+>> +		reboot-mode {
+>> +			compatible =3D "syscon-reboot-mode";
+>> +			offset =3D <0x40>;
+>> +			mode-normal =3D <BOOT_NORMAL>;
+>> +			mode-recovery =3D <BOOT_RECOVERY>;
+>> +			mode-bootloader =3D <BOOT_FASTBOOT>;
+>> +			mode-loader =3D <BOOT_BL_DOWNLOAD>;
+>> +		};
+>> +	};
+>> --=20
+>> 1.9.1
+>>
+>>
+>>
+>
+>
