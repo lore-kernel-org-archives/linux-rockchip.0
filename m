@@ -1,64 +1,119 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 00/10] ARM: dts: rockchip: enable edp functionality
-Date: Fri, 18 Mar 2016 10:08:51 +0800
-Message-ID: <56EB6333.3040104@rock-chips.com>
-References: <1458265206-15733-1-git-send-email-heiko@sntech.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
+ "discard"
+Date: Fri, 18 Mar 2016 12:46:07 +0800
+Message-ID: <56EB880F.1040606@rock-chips.com>
+References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
+ <56D641FA.8010606@samsung.com> <56EAD13D.8050400@rock-chips.com>
+ <56EB5E3F.7010701@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458265206-15733-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <56EB5E3F.7010701@samsung.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi Jaehoon,
 
-On 03/18/2016 09:39 AM, Heiko Stuebner wrote:
-> This is the companion series to Yakir's rework of the analogix-dp
-> driver used both by Exynos and Rockchip.
+On 2016-3-18 9:47, Jaehoon Chung wrote:
+> Hi Shawn,
 >
-> These patches have been sitting in my tree for some time, and already
-> got tested (and thus refined) by a number of people.
+> On 03/18/2016 12:46 AM, Shawn Lin wrote:
+>> Hi jaehoon,
+>>
+>> On 2016/3/2 9:29, Jaehoon Chung wrote:
+>>> Hi Shawn.
+>>>
+>>> On 03/01/2016 04:12 PM, Shawn Lin wrote:
+>>>> Without MMC_CAP_ERASE support, we fail to mount partition
+>>>> with "discard" option since mmc_queue_setup_discard is limited
+>>>> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
+>>>> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
+>>>> the following log from f2fs(actually similar to other file system):
+>>>>
+>>>> mounting with "discard" option, but the device does not support discard
+>>>
+>>> We can enable MMC_CAP_ERASE by default, since other SoC also needs this capability.
+>>> I had sent some patch for enabling by default, but at that time i didn't remember why not enabled by default.
+>>> I will check that reason..and share the information.
+>>>
+>>
+>> Any good news? :)
+>> Or let add it for dw_mmc by default?
 >
-> So I'll post them now, to get applied after the driver-side gets
-> accepted hopefully soonish.
-Thanks very much about this cool work ;)
-
-- Yakir
+> Sorry for replying too late..I had other tasks..:(
+> Today or Tomorrow, i will apply the patches related with dw-mmcc controller.
+> And will request to pull to Ulf.
 >
-> Caesar Wang (1):
->    ARM: dts: rockchip: add rk3288-veyron-jaq backlight and panel
->      overrides
->
-> Heiko Stuebner (9):
->    ARM: dts: rockchip: add rk3288 edp-phy node
->    ARM: dts: rockchip: add rk3288 displayport controller node
->    ARM: dts: rockchip: move edp-hpd pin definition into common location
->    ARM: dts: rockchip: add startup delay to rk3288-veyron
->      panel-regulators
->    ARM: dts: rockchip: add core rk3288-veyron backlight and panel nodes
->    ARM: dts: rockchip: add rk3288-veyron-minnie backlight and panel
->      settings
->    ARM: dts: rockchip: override edp hpd handling on veyron-pinky and
->      speedy
->    ARM: dts: rockchip: simple panel and backlight supplies on veyron
->      boards
->    ARM: dts: rockchip: enable the eDP on rk3288 veyron devices
->
->   arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 100 ++++++++++++++++++++++++
->   arch/arm/boot/dts/rk3288-veyron-jaq.dts         |  49 ++++++++++--
->   arch/arm/boot/dts/rk3288-veyron-jerry.dts       |   9 +++
->   arch/arm/boot/dts/rk3288-veyron-minnie.dts      |  44 +++++++++++
->   arch/arm/boot/dts/rk3288-veyron-pinky.dts       |   7 ++
->   arch/arm/boot/dts/rk3288-veyron-speedy.dts      |  16 ++++
->   arch/arm/boot/dts/rk3288.dtsi                   |  59 ++++++++++++++
->   7 files changed, 278 insertions(+), 6 deletions(-)
+> I didn't check...but i think this patch will be applied on dw_mmc-rockchip.
+> After then..we can use it by default in future.
 >
 
+Thanks. That's a good plan.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Refer to below.
+> https://patchwork.kernel.org/patch/4240491/
+
+yes, I also found this patch and it was not merge yet.
+So we still need MMC_CAP_ERASE to make sure we can enable
+discard unless the cap is removed in future.
+
+
+>
+> Best Regards,
+> Jaehoon Chung
+>
+>>
+>>> Best Regards,
+>>> Jaehoon Chung
+>>>
+>>>>
+>>>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>>> ---
+>>>>
+>>>>    drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
+>>>>    1 file changed, 9 insertions(+)
+>>>>
+>>>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+>>>> index 84e50f3..2eda118 100644
+>>>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+>>>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+>>>> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+>>>>        return 0;
+>>>>    }
+>>>>
+>>>> +/* Common capabilities of RK3288 SoC */
+>>>> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
+>>>> +    MMC_CAP_ERASE,
+>>>> +    MMC_CAP_ERASE,
+>>>> +    MMC_CAP_ERASE,
+>>>> +    MMC_CAP_ERASE,
+>>>> +};
+>>>> +
+>>>>    static const struct dw_mci_drv_data rk2928_drv_data = {
+>>>>        .init            = dw_mci_rockchip_init,
+>>>>    };
+>>>>
+>>>>    static const struct dw_mci_drv_data rk3288_drv_data = {
+>>>> +    .caps            = dw_mci_rk3288_dwmmc_caps,
+>>>>        .set_ios        = dw_mci_rk3288_set_ios,
+>>>>        .execute_tuning        = dw_mci_rk3288_execute_tuning,
+>>>>        .parse_dt        = dw_mci_rk3288_parse_dt,
+>>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> Linux-rockchip mailing list
+>>> Linux-rockchip@lists.infradead.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>>
+>>
+>>
+>
+>
+>
+>
+
