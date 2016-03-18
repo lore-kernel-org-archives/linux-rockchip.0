@@ -1,55 +1,41 @@
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH v4 7/8] Documentation: devicetree: rockchip: Document
- Landingship
-Date: Fri, 18 Mar 2016 22:37:25 +0100
-Message-ID: <56EC7515.1000900@suse.de>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
- <1458136727-32075-8-git-send-email-afaerber@suse.de>
- <20160318213031.GA10729@rob-hp-laptop>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/2] dt-bindings: modify document of Rockchip power domains
+Date: Fri, 18 Mar 2016 23:16:55 +0100
+Message-ID: <21140203.EjVS0MZtuq@phil>
+References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com> <1458285444-31129-2-git-send-email-zhangqing@rock-chips.com> <7hshznsqs4.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160318213031.GA10729@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7hshznsqs4.fsf@baylibre.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@baylibre.com>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, xf@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am 18.03.2016 um 22:30 schrieb Rob Herring:
-> On Wed, Mar 16, 2016 at 02:58:45PM +0100, Andreas F=E4rber wrote:
->> Use "geekbuying,geekbox-landingship" compatible string, plus those o=
-f
->> the GeekBox module.
->>
->> Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
->> ---
->>  v3 -> v4: Unchanged
->> =20
->>  v2 -> v3:
->>  * Changed compatible string to include geekbox- (Heiko)
->>    and clarify that this is for GeekBox module
->> =20
->>  v2: New
->> =20
->>  Documentation/devicetree/bindings/arm/rockchip.txt | 5 +++++
->>  1 file changed, 5 insertions(+)
+Am Freitag, 18. M=E4rz 2016, 09:18:51 schrieb Kevin Hilman:
+> Elaine Zhang <zhangqing@rock-chips.com> writes:
+> > Add qos example for power domain which found on Rockchip SoCs.
+> > These qos register description in TRMs
+> > (rk3036, rk3228, rk3288, rk3366, rk3368, rk3399) looks the same.
 >=20
-> Think I already acked v3, but:
->=20
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> This should describe in more detail what "qos" is in this context.  A=
+t
+> first glance, it's just a range of registers that lose context that n=
+eed
+> to be saved/restored.
 
-Yes, you did, but after I had already sent v4.
+I guess that should be something like
 
-Thanks,
-Andreas
+---- 8< ----
+Rockchip SoCs contain quality of service (qos) blocks managing priority=
+,=20
+bandwidth, etc of the connection of each domain to the interconnect.
+These blocks loose state when their domain gets disabled and therefore
+need to be saved when disabling and restored when enabling a power-doma=
+in.
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+These qos blocks also are similar over all currently available Rockchip=
+=20
+SoCs.
+---- 8< ----
