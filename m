@@ -1,52 +1,71 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v14 0/17] Add Analogix Core Display Port Driver
-Date: Fri, 18 Mar 2016 15:53:14 -0700
-Message-ID: <CAD=FV=XXESzA6n6MNEGH1Kbh7CeL8xWX8CifFLVf91+0JyFcJQ@mail.gmail.com>
-References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
-	<56EBA305.8030202@gmail.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: Reset yrgb_mst when re-enabling
+Date: Sat, 19 Mar 2016 09:15:45 +0800
+Message-ID: <56ECA841.40803@rock-chips.com>
+References: <1458300147-6472-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56EBA305.8030202@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>
-Cc: Yakir Yang <ykk@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, emil.l.velikov@gmail.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, Kukjin Kim <kgene@kernel.>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1458300147-6472-1-git-send-email-tomeu.vizoso@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Thu, Mar 17, 2016 at 11:41 PM, Caesar Wang <caesar.upstream@gmail.com> wrote:
-> Hi all,
->
-> I pick this series up and test on C101PA chromebook, after Heiko update the
-> 3 patches.
->
-> [v14.1,09/17] drm: rockchip: dp: add rockchip platform dp driver
-> [v14.1,04/17] drm: bridge: analogix/dp: fix some obvious code style
-> [v14.1,01/17] drm: bridge: analogix/dp: split exynos dp driver to bridge
-> directory
->
-> C101PA chromebook:
-> http://www.amazon.co.uk/10-1-Inch-Chromebook-Rockchip-Integrated-Graphics/dp/B0107N7WT6/ref=lp_758129031_1_4?s=computers&ie=UTF8&qid=1458282912&sr=1-4
->
-> So, verified for the rockchip eDp contrller on my github.
-> https://github.com/Caesar-github/rockchip/tree/veyron/next-stable-chromeos
-
-I did similar to Caesar but I tested on veyron-jerry instead of
-veyron-mickey.  Like Caesar, I picked these together Heiko's v14.1
-patches to resolve merge conflicts.  I also picked into a slightly
-different tree (mine was a 4.4-based tree with backports, including
-Heiko's latest eDP device tree patches).
-
-Tough I haven't reviewed the code and am not a graphics expert, I'd
-very much love to see this landed, presumably right after the merge
-window closes.  Yakir's first patch
-<https://patchwork.kernel.org/patch/6959211/> is nearly 1 year old and
-it really seems like if there were any major objections left they'd
-have been stated by now.  v14 appears to be about 1 month old with no
-major comments.
-
-Tested-by: Douglas Anderson <dianders@chromium.org>
-
-
--Doug
+T24gMjAxNuW5tDAz5pyIMTjml6UgMTk6MjIsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBXaGVuIHRo
+ZSBWT1AgaXMgcmUtZW5hYmxlZCwgaXQgd2lsbCBzdGFydCBzY2FubmluZyByaWdodCBhd2F5IHRo
+ZQo+IGZyYW1lYnVmZmVycyB0aGF0IHdlcmUgY29uZmlndXJlZCBmcm9tIHRoZSBsYXN0IHRpbWUs
+IGV2ZW4gaWYgdGhvc2UgaGF2ZQo+IGJlZW4gZGVzdHJveWVkIGFscmVhZHkuIFRvIHByZXZlbnQg
+dGhlIFZPUCBmcm9tIHRyeWluZyB0byBhY2Nlc3MgZnJlZWQKPiBtZW1vcnksIHJlc2V0IHRoZSBy
+ZWdpc3RlcnMgdGhhdCBob2xkIHBvaW50ZXJzIHRvIGZyYW1lYnVmZmVycyByaWdodAo+IGFmdGVy
+IHdlIGNhbiB3cml0ZSB0byB0aGVtLCBidXQgYmVmb3JlIHRoZSBWT1AgaXMgYXdha2VuIGZyb20g
+c3RhbmRieS4KPgo+IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNv
+bGxhYm9yYS5jb20+Cj4gTGluazogaHR0cDovL2xrbWwua2VybmVsLm9yZy9nL0NBQU9ic0tBdisw
+NWloNVUrPTRraWNfTnNqR01oZnhZaGVIUjh4WFhtYWNacytwNVNId0BtYWlsLmdtYWlsLmNvbQo+
+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDEz
+ICsrKysrKysrKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspCj4KPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCA1ZTU3
+ZjViMmU0YjAuLjBkZjkxYzI4NzQwYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC00MjksNiArNDI5LDcgQEAgc3RhdGljIHZvaWQgdm9w
+X2RzcF9ob2xkX3ZhbGlkX2lycV9kaXNhYmxlKHN0cnVjdCB2b3AgKnZvcCkKPiAgIHN0YXRpYyB2
+b2lkIHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAgewo+ICAgCXN0cnVjdCB2
+b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiArCWludCBpOwo+ICAgCWludCByZXQ7Cj4gICAKPiAg
+IAlpZiAodm9wLT5pc19lbmFibGVkKQo+IEBAIC00NzYsNiArNDc3LDE4IEBAIHN0YXRpYyB2b2lk
+IHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAgCSAqLwo+ICAgCXZvcC0+aXNf
+ZW5hYmxlZCA9IHRydWU7Cj4gICAKPiArCS8qCj4gKwkgKiBCZWZvcmUgdHVybmluZyB0aGUgVk9Q
+IGNvbXBsZXRlbHkgb24sIHVuc2V0IHRoZSByZWdpc3RlcnMKPiArCSAqIGNvbnRhaW5pbmcgRkIg
+YWRkcmVzc2VzIHRvIGF2b2lkIHRoZSBIVyBzdGFydCBzY2FubmluZyBvbGQgRkJzLgo+ICsJICov
+Cj4gKwlmb3IgKGkgPSAwOyBpIDwgdm9wLT5kYXRhLT53aW5fc2l6ZTsgaSsrKSB7Cj4gKwkJc3Ry
+dWN0IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07Cj4gKwkJY29uc3Qgc3RydWN0IHZv
+cF93aW5fZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsKPiArCj4gKwkJVk9QX1dJTl9TRVQodm9w
+LCB3aW4sIHlyZ2JfbXN0LCAweDApOwo+ICsJCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB1dl9tc3Qs
+IDB4MCk7Cj4gKwl9Cj4gKwpIaSBUb21ldQoKVGhhbmtzIGZvciB5b3VyIGZpeC4KClNldCB5cmdi
+X21zdCBhbmQgdXZfbXN0IGlzIG5vdCBhIGdvb2QgaWRlYSwgYmVjYXVzZSAweDAgYWxzbyBpcyBh
+IG1lbW9yeSAKYnVmZmVyIGFkZHJlc3MsIGRkciB3aWxsIGFjY2VzcyB0aGUgMHgwIGJ1ZmZlci4K
+SSB0aGluayB5b3UgbWF5IGVuYWJsZSBEUk1fRkJERVZfRU1VTEFUSU9OLCB0aGUgMHgwIGFkZHJl
+c3MgaXMgaW9tbXUgCm1tYXBlZCBhZGRyZXNzIGZvciBmYmRldiwgc28geW91ciB0ZXN0IGNhbiB3
+b3Jrcy4KYnV0IGlmIERSTV9GQkRFVl9FTVVMQVRJT04gaXMgbm90IGRlZmluZSwgbWF5IGJlIDB4
+MCBhZGRyZXNzIGlzIAp1bm1tYXBlZCwgd291bGQgZ2V0IHRoZSBpb21tdSBjcmFzaC4KCkkgdGhp
+bmsgd2UgY2FuIHVzZSBhdG9taWMgZGlzYWJsZSBmdW5jdGlvbiBsaWtlIHRoaXM6CmZvcl9lYWNo
+X3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUsIG9sZF9wbGFuZV9zdGF0ZSwgaSkgewog
+ICAgIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfaGVscGVyX2Z1bmNzICpmdW5jczsKICAgICBmdW5j
+cyA9IHBsYW5lLT5oZWxwZXJfcHJpdmF0ZTsKICAgICBmdW5jcy0+YXRvbWljX2Rpc2FibGUocGxh
+bmUsIG9sZF9wbGFuZV9zdGF0ZSk7Cn0KCkJ1dCBJIHRoaW5rIHdlJ2QgYmV0dGVyIGZpbmQgd2h5
+IHdlIG5lZWQgZG8gdGhpcyBoYWNrIGhlcmUuCgpEb2VzIHRoZSBvbGQgRkIgYWRkcmVzcyBpcyB1
+bW1hcGVkIHdoZW4gY3J0YyBkaXNhYmxpbmc/IHdoeSBwbGFuZSBpcyBub3QgCmRpc2FibGVkPwoK
+VGhhbmtzLgoKPiAgIAlzcGluX2xvY2soJnZvcC0+cmVnX2xvY2spOwo+ICAgCj4gICAJVk9QX0NU
+UkxfU0VUKHZvcCwgc3RhbmRieSwgMCk7CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
