@@ -1,71 +1,41 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop: Reset yrgb_mst when re-enabling
-Date: Sat, 19 Mar 2016 09:15:45 +0800
-Message-ID: <56ECA841.40803@rock-chips.com>
-References: <1458300147-6472-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
+Date: Sat, 19 Mar 2016 09:04:08 +0100
+Message-ID: <2027561.JLzKLXOoFO@phil>
+References: <1458136727-32075-1-git-send-email-afaerber@suse.de> <1458136727-32075-2-git-send-email-afaerber@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1458300147-6472-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1458136727-32075-2-git-send-email-afaerber-l3A5Bk7waGM@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAz5pyIMTjml6UgMTk6MjIsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBXaGVuIHRo
-ZSBWT1AgaXMgcmUtZW5hYmxlZCwgaXQgd2lsbCBzdGFydCBzY2FubmluZyByaWdodCBhd2F5IHRo
-ZQo+IGZyYW1lYnVmZmVycyB0aGF0IHdlcmUgY29uZmlndXJlZCBmcm9tIHRoZSBsYXN0IHRpbWUs
-IGV2ZW4gaWYgdGhvc2UgaGF2ZQo+IGJlZW4gZGVzdHJveWVkIGFscmVhZHkuIFRvIHByZXZlbnQg
-dGhlIFZPUCBmcm9tIHRyeWluZyB0byBhY2Nlc3MgZnJlZWQKPiBtZW1vcnksIHJlc2V0IHRoZSBy
-ZWdpc3RlcnMgdGhhdCBob2xkIHBvaW50ZXJzIHRvIGZyYW1lYnVmZmVycyByaWdodAo+IGFmdGVy
-IHdlIGNhbiB3cml0ZSB0byB0aGVtLCBidXQgYmVmb3JlIHRoZSBWT1AgaXMgYXdha2VuIGZyb20g
-c3RhbmRieS4KPgo+IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNv
-bGxhYm9yYS5jb20+Cj4gTGluazogaHR0cDovL2xrbWwua2VybmVsLm9yZy9nL0NBQU9ic0tBdisw
-NWloNVUrPTRraWNfTnNqR01oZnhZaGVIUjh4WFhtYWNacytwNVNId0BtYWlsLmdtYWlsLmNvbQo+
-IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDEz
-ICsrKysrKysrKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspCj4KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBpbmRleCA1ZTU3
-ZjViMmU0YjAuLjBkZjkxYzI4NzQwYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYwo+IEBAIC00MjksNiArNDI5LDcgQEAgc3RhdGljIHZvaWQgdm9w
-X2RzcF9ob2xkX3ZhbGlkX2lycV9kaXNhYmxlKHN0cnVjdCB2b3AgKnZvcCkKPiAgIHN0YXRpYyB2
-b2lkIHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAgewo+ICAgCXN0cnVjdCB2
-b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKPiArCWludCBpOwo+ICAgCWludCByZXQ7Cj4gICAKPiAg
-IAlpZiAodm9wLT5pc19lbmFibGVkKQo+IEBAIC00NzYsNiArNDc3LDE4IEBAIHN0YXRpYyB2b2lk
-IHZvcF9lbmFibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICAgCSAqLwo+ICAgCXZvcC0+aXNf
-ZW5hYmxlZCA9IHRydWU7Cj4gICAKPiArCS8qCj4gKwkgKiBCZWZvcmUgdHVybmluZyB0aGUgVk9Q
-IGNvbXBsZXRlbHkgb24sIHVuc2V0IHRoZSByZWdpc3RlcnMKPiArCSAqIGNvbnRhaW5pbmcgRkIg
-YWRkcmVzc2VzIHRvIGF2b2lkIHRoZSBIVyBzdGFydCBzY2FubmluZyBvbGQgRkJzLgo+ICsJICov
-Cj4gKwlmb3IgKGkgPSAwOyBpIDwgdm9wLT5kYXRhLT53aW5fc2l6ZTsgaSsrKSB7Cj4gKwkJc3Ry
-dWN0IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07Cj4gKwkJY29uc3Qgc3RydWN0IHZv
-cF93aW5fZGF0YSAqd2luID0gdm9wX3dpbi0+ZGF0YTsKPiArCj4gKwkJVk9QX1dJTl9TRVQodm9w
-LCB3aW4sIHlyZ2JfbXN0LCAweDApOwo+ICsJCVZPUF9XSU5fU0VUKHZvcCwgd2luLCB1dl9tc3Qs
-IDB4MCk7Cj4gKwl9Cj4gKwpIaSBUb21ldQoKVGhhbmtzIGZvciB5b3VyIGZpeC4KClNldCB5cmdi
-X21zdCBhbmQgdXZfbXN0IGlzIG5vdCBhIGdvb2QgaWRlYSwgYmVjYXVzZSAweDAgYWxzbyBpcyBh
-IG1lbW9yeSAKYnVmZmVyIGFkZHJlc3MsIGRkciB3aWxsIGFjY2VzcyB0aGUgMHgwIGJ1ZmZlci4K
-SSB0aGluayB5b3UgbWF5IGVuYWJsZSBEUk1fRkJERVZfRU1VTEFUSU9OLCB0aGUgMHgwIGFkZHJl
-c3MgaXMgaW9tbXUgCm1tYXBlZCBhZGRyZXNzIGZvciBmYmRldiwgc28geW91ciB0ZXN0IGNhbiB3
-b3Jrcy4KYnV0IGlmIERSTV9GQkRFVl9FTVVMQVRJT04gaXMgbm90IGRlZmluZSwgbWF5IGJlIDB4
-MCBhZGRyZXNzIGlzIAp1bm1tYXBlZCwgd291bGQgZ2V0IHRoZSBpb21tdSBjcmFzaC4KCkkgdGhp
-bmsgd2UgY2FuIHVzZSBhdG9taWMgZGlzYWJsZSBmdW5jdGlvbiBsaWtlIHRoaXM6CmZvcl9lYWNo
-X3BsYW5lX2luX3N0YXRlKG9sZF9zdGF0ZSwgcGxhbmUsIG9sZF9wbGFuZV9zdGF0ZSwgaSkgewog
-ICAgIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfaGVscGVyX2Z1bmNzICpmdW5jczsKICAgICBmdW5j
-cyA9IHBsYW5lLT5oZWxwZXJfcHJpdmF0ZTsKICAgICBmdW5jcy0+YXRvbWljX2Rpc2FibGUocGxh
-bmUsIG9sZF9wbGFuZV9zdGF0ZSk7Cn0KCkJ1dCBJIHRoaW5rIHdlJ2QgYmV0dGVyIGZpbmQgd2h5
-IHdlIG5lZWQgZG8gdGhpcyBoYWNrIGhlcmUuCgpEb2VzIHRoZSBvbGQgRkIgYWRkcmVzcyBpcyB1
-bW1hcGVkIHdoZW4gY3J0YyBkaXNhYmxpbmc/IHdoeSBwbGFuZSBpcyBub3QgCmRpc2FibGVkPwoK
-VGhhbmtzLgoKPiAgIAlzcGluX2xvY2soJnZvcC0+cmVnX2xvY2spOwo+ICAgCj4gICAJVk9QX0NU
-UkxfU0VUKHZvcCwgc3RhbmRieSwgMCk7CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
+> A dtc update results in warnings for nodes with reg property but with=
+out
+> unit address in the node name, so rename /memory to /memory@0.
+>=20
+> Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
+
+applied to a dts64-fixes branch for 4.6, after changing the commit mess=
+age to
+----
+A dtc update results in warnings for nodes with reg property but withou=
+t
+unit address in the node name, so rename /memory to /memory@startaddres=
+s
+(memory starts at 0 in the case of the rk3368).
+----
+
+To clarify that the @0 is not arbitary chosen.
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
