@@ -1,56 +1,127 @@
-From: Feng Xiao <xf@rock-chips.com>
-Subject: Re: [PATCH] cpufreq: rockchip: add driver
-Date: Mon, 21 Mar 2016 21:24:32 +0800
-Message-ID: <56EFF610.6040402@rock-chips.com>
-References: <1458303004-26445-1-git-send-email-xf@rock-chips.com>
- <1787319.AFAWVqkdk0@diego> <20160321095049.GD27778@vireshk-i7>
- <1505152.fhSnu3pvDr@diego> <20160321095855.GE27778@vireshk-i7>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: vop: Reset yrgb_mst when re-enabling
+Date: Mon, 21 Mar 2016 15:55:26 +0100
+Message-ID: <CAAObsKBt-+syM+btLdRj64OYBzZNV96a7zpmRyn5nSoTuwQsVg@mail.gmail.com>
+References: <1458300147-6472-1-git-send-email-tomeu.vizoso@collabora.com> <56ECA841.40803@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20160321095855.GE27778@vireshk-i7>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux@arm.linux.org.uk, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, tim.chen@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56ECA841.40803@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2016/3/21 17:58, Viresh Kumar =E5=86=99=E9=81=93:
-> On 21-03-16, 10:54, Heiko St=C3=BCbner wrote:
->> I hadn't seen that yet ... nice that cpufreq-dt now also supports cl=
-usters :-)
+On 19 March 2016 at 02:15, Mark yao <mark.yao@rock-chips.com> wrote:
+> On 2016=E5=B9=B403=E6=9C=8818=E6=97=A5 19:22, Tomeu Vizoso wrote:
 >>
->> The other part still stands though, as we probably should register t=
-he
->> platform-device somewhere else and not in some new special module.
+>> When the VOP is re-enabled, it will start scanning right away the
+>> framebuffers that were configured from the last time, even if those =
+have
+>> been destroyed already. To prevent the VOP from trying to access fre=
+ed
+>> memory, reset the registers that hold pointers to framebuffers right
+>> after we can write to them, but before the VOP is awaken from standb=
+y.
 >>
->> When everything is using cpufreq-dt now, I guess we could just add i=
-t to the
->> core rockchip clk-code. Or was there some agreement where this shoul=
-d be done
->> (obviously not the devicetree itself)?
-Of_clk_init is called early, and platform_device_register_simple should=
-=20
-be called after devices_init, it will be failed to do it from clk-code.
-So we need add a new file or add module_init to each clock controller=20
-driver(like clk-rk3368.c, clk-rk3399.c) ?
-> Yeah, there was a discussion around creating a white or black list of=
- platforms
-> that want to create a platform device for cpufreq-dt. That can be don=
-e in
-> cpufreq-dt.c or a new file, but I haven't worked out on that yet.
+>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+>> Link:
+>> http://lkml.kernel.org/g/CAAObsKAv+05ih5U+=3D4kic_NsjGMhfxYheHR8xXXm=
+acZs+p5SHw@mail.gmail.com
+>> ---
+>>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 13 +++++++++++++
+>>   1 file changed, 13 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> index 5e57f5b2e4b0..0df91c28740b 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> @@ -429,6 +429,7 @@ static void vop_dsp_hold_valid_irq_disable(struc=
+t vop
+>> *vop)
+>>   static void vop_enable(struct drm_crtc *crtc)
+>>   {
+>>         struct vop *vop =3D to_vop(crtc);
+>> +       int i;
+>>         int ret;
+>>         if (vop->is_enabled)
+>> @@ -476,6 +477,18 @@ static void vop_enable(struct drm_crtc *crtc)
+>>          */
+>>         vop->is_enabled =3D true;
+>>   +     /*
+>> +        * Before turning the VOP completely on, unset the registers
+>> +        * containing FB addresses to avoid the HW start scanning ol=
+d FBs.
+>> +        */
+>> +       for (i =3D 0; i < vop->data->win_size; i++) {
+>> +               struct vop_win *vop_win =3D &vop->win[i];
+>> +               const struct vop_win_data *win =3D vop_win->data;
+>> +
+>> +               VOP_WIN_SET(vop, win, yrgb_mst, 0x0);
+>> +               VOP_WIN_SET(vop, win, uv_mst, 0x0);
+>> +       }
+>> +
 >
-> You can do it from clk-code or from the driver that was added in this=
- thread.
-> Just that you need to match your platform's compatible string before =
-doing that.
-Rockchip-cpufreq.c depends on ARM_ROCKCHIP_CPUFREQ, it will not be=20
-compiled on non-Rockchip platforms.
-The driver can support all Rockchip SoCs up to now, add=20
-of_machine_is_compatible may be redundant ?
+> Hi Tomeu
 >
+> Thanks for your fix.
+>
+> Set yrgb_mst and uv_mst is not a good idea, because 0x0 also is a mem=
+ory
+> buffer address, ddr will access the 0x0 buffer.
+> I think you may enable DRM_FBDEV_EMULATION, the 0x0 address is iommu =
+mmaped
+> address for fbdev, so your test can works.
+> but if DRM_FBDEV_EMULATION is not define, may be 0x0 address is unmma=
+ped,
+> would get the iommu crash.
 
+I have checked with DRM_FBDEV_EMULATION disabled and seems to work equa=
+lly well.
 
+> I think we can use atomic disable function like this:
+> for_each_plane_in_state(old_state, plane, old_plane_state, i) {
+>     const struct drm_plane_helper_funcs *funcs;
+>     funcs =3D plane->helper_private;
+>     funcs->atomic_disable(plane, old_plane_state);
+> }
+>
+> But I think we'd better find why we need do this hack here.
+>
+> Does the old FB address is ummaped when crtc disabling? why plane is =
+not
+> disabled?
+
+Planes aren't being disabled because the CRTC is being disabled
+already, see http://lxr.free-electrons.com/source/drivers/gpu/drm/drm_a=
+tomic_helper.c#L1306
+
+Exynos is already disabling all planes when a crtc is disabled:
+
+http://lxr.free-electrons.com/source/drivers/gpu/drm/exynos/exynos_drm_=
+fimd.c#L782
+
+I don't like it because there's state in the drm core and in the
+drivers that is left inconsistent.
+
+Regards,
+
+Tomeu
+
+> Thanks.
+>
+>>         spin_lock(&vop->reg_lock);
+>>         VOP_CTRL_SET(vop, standby, 0);
+>
+>
+>
+> --
+> =EF=BC=ADark Yao
+>
+>
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
