@@ -1,104 +1,69 @@
-From: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: Add mdio node to ethernet node
-Date: Mon, 21 Mar 2016 09:32:58 +0100
-Message-ID: <CAOf5uw=jUeh0YDQu2SFjMsRzVH-WaXeZoq5mAbAQwD_dwttjnA@mail.gmail.com>
-References: <1458300056-6174-1-git-send-email-tomeu.vizoso@collabora.com>
-	<56EC744F.90308@suse.de>
-	<CAAObsKBXuTw37YJb+Fhq_NgZw2rjPQ14phF1yRG+N2mEu9uBmw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RFC PATCH v1 0/4] Add Rockchip RGA support
+Date: Mon, 21 Mar 2016 17:28:38 +0800
+Message-ID: <1458552518-25527-1-git-send-email-ykk@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAAObsKBXuTw37YJb+Fhq_NgZw2rjPQ14phF1yRG+N2mEu9uBmw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Giuseppe Cavallaro <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
 
-On Mon, Mar 21, 2016 at 9:23 AM, Tomeu Vizoso
-<tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-> On 18 March 2016 at 22:34, Andreas F=C3=A4rber <afaerber-l3A5Bk7waGM@public.gmane.org> wro=
-te:
->> Am 18.03.2016 um 12:20 schrieb Tomeu Vizoso:
->>> So the dwmac device manages to probe again.
->>>
->>> Signed-off-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>> Fixes: 88f8b1bb41c6 ("stmmac: Fix 'eth0: No PHY found' regression")
->>> ---
->>>  arch/arm/boot/dts/rk3288-rock2-som.dtsi | 8 ++++++++
->>>  1 file changed, 8 insertions(+)
->>>
->>> diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boo=
-t/dts/rk3288-rock2-som.dtsi
->>> index 1ece66f3e162..4ba7ddecb478 100644
->>> --- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
->>> @@ -101,6 +101,14 @@
->>>       snps,reset-delays-us =3D <0 10000 30000>;
->>>       rx_delay =3D <0x10>;
->>>       tx_delay =3D <0x30>;
->>> +     mdio0 {
->>> +             #address-cells =3D <1>;
->>> +             #size-cells =3D <0>;
->>> +             compatible =3D "snps,dwmac-mdio";
->>> +             ethphy1: ethernet-phy@1 {
->>> +                     reg =3D <1>;
->>> +             };
->>> +     };
->>
->> This is a) ugly for lack of white lines in between, b) unnecessary s=
-ince
->> this is being fixed in the stmmac driver where it will benefit more =
-than
->> just this one SoM.
->
-> So is this redundant information, or just not necessary with the
-> present kernel driver because of some assumption in its current
-> implementation?
->
+Hi, Mark and all.
 
-I have the same fix on my firefly tree. Look likes correct and describe=
- the
-connection
+This patch set would add the RGA direct rendering based 2d graphics
+acceleration module.
 
-Michael
+This patch set is based on git repository below:
+git://people.freedesktop.org/~airlied/linux drm-next
+commit id: 568d7c764ae01f3706085ac8f0d8a8ac7e826bd7
 
-> Thanks,
->
-> Tomeu
->
->> Regards,
->> Andreas
->>
->>>  };
->>>
->>>  &i2c0 {
->>
->> --
->> SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
->> GF: Felix Imend=C3=B6rffer, Jane Smithard, Graham Norton; HRB 21284 =
-(AG N=C3=BCrnberg)
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+And the RGA driver is based on Exynos G2D driver, it only manages the
+command lists received from user, so user should make the command list
+to data and registers needed by operation to use.
+
+I have prepared an userspace demo application for testing:
+	https://github.com/yakir-Yang/libdrm-rockchip
+That is a rockchip libdrm library, and I have write a simple test case
+"rockchip_rga_test" that would test the below RGA features:
+- solid
+- copy
+- rotation
+- flip
+- window clip
+- dithering
+
+Thanks,
+- Yakir
 
 
+Yakir Yang (4):
+  drm: rockchip: add a common subdrv interfaces
+  drm: rockchip: add RGA driver support
+  ARM: dts: rockchip: add RGA device node for RK3288
+  ARM: dst: rockchip: enable RGA support on veyron devices
 
---=20
-| Michael Nazzareno Trimarchi                     Amarula Solutions BV =
-|
-| COO  -  Founder                                      Cruquiuskade 47 =
-|
-| +31(0)851119172                                 Amsterdam 1018 AM NL =
-|
-|                  [`as] http://www.amarulasolutions.com               =
-|
+ .../bindings/display/rockchip/rockchip-rga.txt     |  36 +
+ arch/arm/boot/dts/rk3288-veyron.dtsi               |   4 +
+ arch/arm/boot/dts/rk3288.dtsi                      |  13 +
+ drivers/gpu/drm/rockchip/Kconfig                   |   9 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c        |  82 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h        |  19 +
+ drivers/gpu/drm/rockchip/rockchip_drm_rga.c        | 977 +++++++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_rga.h        | 108 +++
+ include/uapi/drm/rockchip_drm.h                    |  63 ++
+ 10 files changed, 1312 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-rga.txt
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_rga.c
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_rga.h
+ create mode 100644 include/uapi/drm/rockchip_drm.h
+
+-- 
+1.9.1
+
+
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
