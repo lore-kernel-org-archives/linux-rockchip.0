@@ -1,86 +1,61 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with EPROBE_DEFER
-Date: Mon, 21 Mar 2016 16:33:32 -0700
-Message-ID: <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
-References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
-	<1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RFC PATCH v1 0/4] Add Rockchip RGA support
+Date: Tue, 22 Mar 2016 01:42:50 +0100
+Message-ID: <1867694.1mDULrSexE@phil>
+References: <1458552518-25527-1-git-send-email-ykk@rock-chips.com>
+ <1511371.I0NIYzh3kP@diego> <56EFE66A.8020404@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1457511092-2216-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <56EFE66A.8020404@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Emil Velikov <emil.l.velikov@gmail.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Shawn,
-
-On Wed, Mar 9, 2016 at 12:11 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> Let's defer probing the driver if the return value of
-> dma_request_slave_channel is ERR_PTR(-EPROBE_DEFER) instead
-> of disabling dma capability directly.
->
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
->  drivers/spi/spi-rockchip.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-> index ca4f4e0..75fa990 100644
-> --- a/drivers/spi/spi-rockchip.c
-> +++ b/drivers/spi/spi-rockchip.c
-> @@ -737,8 +737,14 @@ static int rockchip_spi_probe(struct platform_device *pdev)
->         master->handle_err = rockchip_spi_handle_err;
->
->         rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
-> -       if (!rs->dma_tx.ch)
-> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
-> +               /* Check tx to see if we need defer probing driver */
-> +               if (PTR_ERR(rs->dma_tx.ch) == -EPROBE_DEFER) {
-> +                       ret = -EPROBE_DEFER;
-> +                       goto err_get_fifo_len;
-> +               }
->                 dev_warn(rs->dev, "Failed to request TX DMA channel\n");
-
-Presumably Dan would be happy if you just add this right after the dev_warn():
-  rs->dma_tx.ch = NULL;
-
-Presumably from Dan's email it would also be wise to make sure you
-don't pass NULL to PTR_ERR, which you could probably do by just using
-ERR_PTR instead of PTR_ERR.  I think you could structure like this:
-
-        rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
--       if (!rs->dma_tx.ch)
-+       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
-+               /* Check tx to see if we need defer probing driver */
-+               if (rs->dma_tx.ch == ERR_PTR(-EPROBE_DEFER)) {
-+                       ret = -EPROBE_DEFER;
-+                       goto err_get_fifo_len;
-+               }
-                dev_warn(rs->dev, "Failed to request TX DMA channel\n");
-+               rs->dma_tx.ch = NULL;
-+       }
-
-
-With that change your patch should be happy, I think.  If some new
-unknown error return gets added to dma_request_slave_channel() then
-your code will continue to work properly.  Such a change is simple and
-safe, so presumably you could just spin your patch with that fix.
-Although unlikely, it's probably good to check for IS_ERR_OR_NULL()
-when requesting the "rx" channel too.
-
-...but, looking at this, presumably before landing any patch that made
-dma_request_slave_channel() return -EPROBE_DEFER you'd need to modify
-_all_ users of dma_request_slave_channel to handle error pointers
-being returned.  Right now dma_request_slave_channel() says it returns
-a pointer to a channel or NULL and the function explicitly avoids
-returning any errors.  That might be possible, but it's a big
-change...
-
-
--Doug
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgWWFraXIsCgpBbSBNb250YWcsIDIxLiBNw6RyeiAyMDE2LCAyMDoxNzo0NiBzY2hyaWViIFlh
+a2lyIFlhbmc6Cj4gT24gMDMvMjEvMjAxNiAwNzoyOSBQTSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
+Cj4gPiBBbSBNb250YWcsIDIxLiBNw6RyeiAyMDE2LCAxNzoyODozOCBzY2hyaWViIFlha2lyIFlh
+bmc6Cj4gPj4gVGhpcyBwYXRjaCBzZXQgd291bGQgYWRkIHRoZSBSR0EgZGlyZWN0IHJlbmRlcmlu
+ZyBiYXNlZCAyZCBncmFwaGljcwo+ID4+IGFjY2VsZXJhdGlvbiBtb2R1bGUuCj4gPiAKPiA+IHZl
+cnkgY29vbCB0byBzZWUgdGhhdC4KPiAKPiA7KQo+IAo+ID4+IFRoaXMgcGF0Y2ggc2V0IGlzIGJh
+c2VkIG9uIGdpdCByZXBvc2l0b3J5IGJlbG93Ogo+ID4+IGdpdDovL3Blb3BsZS5mcmVlZGVza3Rv
+cC5vcmcvfmFpcmxpZWQvbGludXggZHJtLW5leHQKPiA+PiBjb21taXQgaWQ6IDU2OGQ3Yzc2NGFl
+MDFmMzcwNjA4NWFjOGYwZDhhOGFjN2U4MjZiZDcKPiA+PiAKPiA+PiBBbmQgdGhlIFJHQSBkcml2
+ZXIgaXMgYmFzZWQgb24gRXh5bm9zIEcyRCBkcml2ZXIsIGl0IG9ubHkgbWFuYWdlcyB0aGUKPiA+
+PiBjb21tYW5kIGxpc3RzIHJlY2VpdmVkIGZyb20gdXNlciwgc28gdXNlciBzaG91bGQgbWFrZSB0
+aGUgY29tbWFuZCBsaXN0Cj4gPj4gdG8gZGF0YSBhbmQgcmVnaXN0ZXJzIG5lZWRlZCBieSBvcGVy
+YXRpb24gdG8gdXNlLgo+ID4+IAo+ID4+IEkgaGF2ZSBwcmVwYXJlZCBhbiB1c2Vyc3BhY2UgZGVt
+byBhcHBsaWNhdGlvbiBmb3IgdGVzdGluZzoKPiA+PiAJaHR0cHM6Ly9naXRodWIuY29tL3lha2ly
+LVlhbmcvbGliZHJtLXJvY2tjaGlwCj4gPj4gCj4gPj4gVGhhdCBpcyBhIHJvY2tjaGlwIGxpYmRy
+bSBsaWJyYXJ5LCBhbmQgSSBoYXZlIHdyaXRlIGEgc2ltcGxlIHRlc3QgY2FzZQo+ID4+ICJyb2Nr
+Y2hpcF9yZ2FfdGVzdCIgdGhhdCB3b3VsZCB0ZXN0IHRoZSBiZWxvdyBSR0EgZmVhdHVyZXM6Cj4g
+Pj4gLSBzb2xpZAo+ID4+IC0gY29weQo+ID4+IC0gcm90YXRpb24KPiA+PiAtIGZsaXAKPiA+PiAt
+IHdpbmRvdyBjbGlwCj4gPj4gLSBkaXRoZXJpbmcKPiA+IAo+ID4gRGlkIHlvdSBzdWJtaXQgeW91
+ciBsaWJkcm0gY2hhbmdlcyBhcyB3ZWxsPwo+ID4gCj4gPiBVc2Vyc3BhY2UtaW50ZXJmYWNlcyBu
+ZWVkIHRvIGJlIHN0YWJsZSBzbyB0aGUgb3RoZXIgc2lkZSBtdXN0IGFsc28gZ2V0Cj4gPiBhY2Nl
+cHRlZCAtIGV2ZW4gYmVmb3JlIHRoZSBrZXJuZWwgY2hhbmdlIGlmIEkgcmVtZW1iZXIgY29ycmVj
+dGx5Lgo+IAo+IEdvdCBpdCwgYW5kIEkganVzdCBzYXcgZXh5bm9zX2ZpbWcyZCBhbHJlYWR5IGxh
+bmRlZCBhdCBtYWlubGluZSBsaWJkcm0uCj4gQnV0IEkgZG9uJ3QgZmluZCB0aGUgd2F5IHRvIHN1
+Ym1pdCBwYXRjaGVzIHRvIGxpYmRybSwgd291bGQgeW91IGxpa2UKPiBzaGFyZSBzb21lIGhlbHBz
+IGhlcmUgOykKCkxvb2tpbmcgYXQgdGhlIGxpYmRybSBzb3VyY2VzIG9uIGNnaXQuZnJlZWRlc2t0
+b3Aub3JnLCBJIGRpZCBub3QgZmluZCBhbnkgCnNwZWNpZmljIG1hbnVhbCBvbiBzdWJtaXR0aW5n
+IHBhdGNoZXMuCgpCdXQgbG9va2luZyBhdCB0aGUgZHJpLWxpc3QgYXJjaGl2ZSwgZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZyBpcyB0aGUgCnJpZ2h0IGxpc3QgYW5kIGxvb2tpbmcgYXQg
+dGhlIGxpYmRybSBoaXN0b3J5IGl0IGxvb2tzIGxpa2UgRW1pbCBWZWxpa292IAo8ZW1pbC5sLnZl
+bGlrb3ZAZ21haWwuY29tPiBzZWVtcyB0byBiZSBkb2luZyBtYWludGVuYW5jZS1zdHVmZiBpbiBs
+aWJkcm0uCkFuZCBhcyBhIDNyZCByZWNpcGllbnQsIHBsZWFzZSBhbHNvIGluY2x1ZGUgdGhlIGxp
+bnV4LXJvY2tjaGlwIGxpc3QuCgpARW1pbCwgcGxlYXNlIHNob3V0IGlmIEkgcmVhZCB0aGF0IHdy
+b25nIDotKQoKCkhvcGUgdGhhdCBoZWxwcwpIZWlrbwpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
