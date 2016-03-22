@@ -1,66 +1,51 @@
-From: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH] iommu/rockchip: Only log stall errors when attaching
-Date: Tue, 22 Mar 2016 16:04:33 +0100
-Message-ID: <1458659073-13553-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH v2] drm/rockchip: vop: Disable planes when disabling CRTC
+Date: Tue, 22 Mar 2016 16:08:04 +0100
+Message-ID: <1458659284-14039-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move the logging of timeouts when stalling the MMU to
-rk_iommu_attach_device, as it's expected that sometimes the MMU won't
-get stalled when detaching a device, and it's not a real problem that
-would need to be communicated to the user.
-
-Signed-off-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 0253ab35c33b..65325b6742e6 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -346,13 +346,7 @@ static int rk_iommu_enable_stall(struct rk_iommu *iommu)
- 
- 	rk_iommu_command(iommu, RK_MMU_CMD_ENABLE_STALL);
- 
--	ret = rk_wait_for(rk_iommu_is_stall_active(iommu), 1);
--	if (ret)
--		for (i = 0; i < iommu->num_mmu; i++)
--			dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
--				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
--
--	return ret;
-+	return rk_wait_for(rk_iommu_is_stall_active(iommu), 1);
- }
- 
- static int rk_iommu_disable_stall(struct rk_iommu *iommu)
-@@ -798,8 +792,12 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
- 		return 0;
- 
- 	ret = rk_iommu_enable_stall(iommu);
--	if (ret)
-+	if (ret) {
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
-+				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
- 		return ret;
-+	}
- 
- 	ret = rk_iommu_force_reset(iommu);
- 	if (ret)
--- 
-2.5.0
+V2hlbiBhIFZPUCBpcyByZS1lbmFibGVkLCBpdCB3aWxsIHN0YXJ0IHNjYW5uaW5nIHJpZ2h0IGF3
+YXkgdGhlCmZyYW1lYnVmZmVycyB0aGF0IHdlcmUgY29uZmlndXJlZCBmcm9tIHRoZSBsYXN0IHRp
+bWUsIGV2ZW4gaWYgdGhvc2UgaGF2ZQpiZWVuIGRlc3Ryb3llZCBhbHJlYWR5LgoKVG8gcHJldmVu
+dCB0aGUgVk9QIGZyb20gdHJ5aW5nIHRvIGFjY2VzcyBmcmVlZCBtZW1vcnksIGRpc2FibGUgYWxs
+IGl0cwp3aW5kb3dzIHdoZW4gdGhlIENSVEMgaXMgYmVpbmcgZGlzYWJsZWQsIHRoZW4gZWFjaCB3
+aW5kb3cgd2lsbCBnZXQgYQp2YWxpZCBmcmFtZWJ1ZmZlciBhZGRyZXNzIGJlZm9yZSBpdCdzIGVu
+YWJsZWQgYWdhaW4uCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bj
+b2xsYWJvcmEuY29tPgpMaW5rOiBodHRwOi8vbGttbC5rZXJuZWwub3JnL2cvQ0FBT2JzS0F2KzA1
+aWg1VSs9NGtpY19Oc2pHTWhmeFloZUhSOHhYWG1hY1pzK3A1U0h3QG1haWwuZ21haWwuY29tCi0t
+LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDE1ICsrKysr
+KysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCA1ZTU3ZjViMmU0YjAuLmUy
+MTE4ZTYyMzQ1YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCkBAIC00OTksMTAgKzQ5OSwyNSBAQCBlcnJfZGlzYWJsZV9oY2xrOgogc3RhdGljIHZvaWQg
+dm9wX2NydGNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiB7CiAJc3RydWN0IHZvcCAq
+dm9wID0gdG9fdm9wKGNydGMpOworCWludCBpOwogCiAJaWYgKCF2b3AtPmlzX2VuYWJsZWQpCiAJ
+CXJldHVybjsKIAorCS8qCisJICogV2UgbmVlZCB0byBtYWtlIHN1cmUgdGhhdCBhbGwgd2luZG93
+cyBhcmUgZGlzYWJsZWQgYmVmb3JlIHdlCisJICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lz
+ZSB3ZSBtaWdodCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCisJICogYnVmZmVyIGxhdGVy
+LgorCSAqLworCWZvciAoaSA9IDA7IGkgPCB2b3AtPmRhdGEtPndpbl9zaXplOyBpKyspIHsKKwkJ
+c3RydWN0IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07CisJCWNvbnN0IHN0cnVjdCB2
+b3Bfd2luX2RhdGEgKndpbiA9IHZvcF93aW4tPmRhdGE7CisKKwkJc3Bpbl9sb2NrKCZ2b3AtPnJl
+Z19sb2NrKTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGVuYWJsZSwgMCk7CisJCXNwaW5fdW5s
+b2NrKCZ2b3AtPnJlZ19sb2NrKTsKKwl9CisKIAlkcm1fY3J0Y192Ymxhbmtfb2ZmKGNydGMpOwog
+CiAJLyoKLS0gCjIuNS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
