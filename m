@@ -1,122 +1,93 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with
- EPROBE_DEFER
-Date: Tue, 22 Mar 2016 10:03:28 +0800
-Message-ID: <56F0A7F0.5000900@rock-chips.com>
-References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
- <1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
+From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [RFC PATCH v1 0/4] Add Rockchip RGA support
+Date: Tue, 22 Mar 2016 10:14:39 +0800
+Message-ID: <56F0AA8F.3050602@rock-chips.com>
+References: <1458552518-25527-1-git-send-email-ykk@rock-chips.com>
+ <1511371.I0NIYzh3kP@diego> <56EFE66A.8020404@rock-chips.com>
+ <1867694.1mDULrSexE@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1867694.1mDULrSexE@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Hi Heiko,
 
-On 2016/3/22 7:33, Doug Anderson wrote:
-> Shawn,
+On 03/22/2016 08:42 AM, Heiko Stuebner wrote:
+> Hi Yakir,
 >
-> On Wed, Mar 9, 2016 at 12:11 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> Let's defer probing the driver if the return value of
->> dma_request_slave_channel is ERR_PTR(-EPROBE_DEFER) instead
->> of disabling dma capability directly.
+> Am Montag, 21. M=E4rz 2016, 20:17:46 schrieb Yakir Yang:
+>> On 03/21/2016 07:29 PM, Heiko St=FCbner wrote:
+>>> Am Montag, 21. M=E4rz 2016, 17:28:38 schrieb Yakir Yang:
+>>>> This patch set would add the RGA direct rendering based 2d graphic=
+s
+>>>> acceleration module.
+>>> very cool to see that.
+>> ;)
 >>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>   drivers/spi/spi-rockchip.c | 8 +++++++-
->>   1 file changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
->> index ca4f4e0..75fa990 100644
->> --- a/drivers/spi/spi-rockchip.c
->> +++ b/drivers/spi/spi-rockchip.c
->> @@ -737,8 +737,14 @@ static int rockchip_spi_probe(struct platform_device *pdev)
->>          master->handle_err = rockchip_spi_handle_err;
->>
->>          rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
->> -       if (!rs->dma_tx.ch)
->> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
->> +               /* Check tx to see if we need defer probing driver */
->> +               if (PTR_ERR(rs->dma_tx.ch) == -EPROBE_DEFER) {
->> +                       ret = -EPROBE_DEFER;
->> +                       goto err_get_fifo_len;
->> +               }
->>                  dev_warn(rs->dev, "Failed to request TX DMA channel\n");
+>>>> This patch set is based on git repository below:
+>>>> git://people.freedesktop.org/~airlied/linux drm-next
+>>>> commit id: 568d7c764ae01f3706085ac8f0d8a8ac7e826bd7
+>>>>
+>>>> And the RGA driver is based on Exynos G2D driver, it only manages =
+the
+>>>> command lists received from user, so user should make the command =
+list
+>>>> to data and registers needed by operation to use.
+>>>>
+>>>> I have prepared an userspace demo application for testing:
+>>>> 	https://github.com/yakir-Yang/libdrm-rockchip
+>>>>
+>>>> That is a rockchip libdrm library, and I have write a simple test =
+case
+>>>> "rockchip_rga_test" that would test the below RGA features:
+>>>> - solid
+>>>> - copy
+>>>> - rotation
+>>>> - flip
+>>>> - window clip
+>>>> - dithering
+>>> Did you submit your libdrm changes as well?
+>>>
+>>> Userspace-interfaces need to be stable so the other side must also =
+get
+>>> accepted - even before the kernel change if I remember correctly.
+>> Got it, and I just saw exynos_fimg2d already landed at mainline libd=
+rm.
+>> But I don't find the way to submit patches to libdrm, would you like
+>> share some helps here ;)
+> Looking at the libdrm sources on cgit.freedesktop.org, I did not find=
+ any
+> specific manual on submitting patches.
 >
-> Presumably Dan would be happy if you just add this right after the dev_warn():
->    rs->dma_tx.ch = NULL;
->
-> Presumably from Dan's email it would also be wise to make sure you
-> don't pass NULL to PTR_ERR, which you could probably do by just using
-> ERR_PTR instead of PTR_ERR.  I think you could structure like this:
->
->          rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
-> -       if (!rs->dma_tx.ch)
-> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
-> +               /* Check tx to see if we need defer probing driver */
-> +               if (rs->dma_tx.ch == ERR_PTR(-EPROBE_DEFER)) {
-> +                       ret = -EPROBE_DEFER;
-> +                       goto err_get_fifo_len;
-> +               }
->                  dev_warn(rs->dev, "Failed to request TX DMA channel\n");
-> +               rs->dma_tx.ch = NULL;
-> +       }
->
->
-> With that change your patch should be happy, I think.  If some new
-> unknown error return gets added to dma_request_slave_channel() then
-> your code will continue to work properly.  Such a change is simple and
-> safe, so presumably you could just spin your patch with that fix.
-> Although unlikely, it's probably good to check for IS_ERR_OR_NULL()
-> when requesting the "rx" channel too.
+> But looking at the dri-list archive, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org =
+is the
+> right list and looking at the libdrm history it looks like Emil Velik=
+ov
+> <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> seems to be doing maintenance-stuff in lib=
+drm.
+> And as a 3rd recipient, please also include the linux-rockchip list.
+Great, thanks, I would improve my libdrm changes, and submit them soon =
+:)
 
-Thanks for reminding it. I was planing to fix it, so give me a little
-more time. :)
-
->
-> ...but, looking at this, presumably before landing any patch that made
-> dma_request_slave_channel() return -EPROBE_DEFER you'd need to modify
-> _all_ users of dma_request_slave_channel to handle error pointers
-> being returned.  Right now dma_request_slave_channel() says it returns
-> a pointer to a channel or NULL and the function explicitly avoids
-> returning any errors.  That might be possible, but it's a big
-> change...
-
-At first glance, it's a big change, but maybe not really.
-Almost all of them use the templet like:
-ch = dma_request_slave_channel
-if (!ch)
-	balabala....
-
-It's same for all the non-null return pointer/non-zero value ?
-
-So from my view, we can safely change dma_request_slave_channel,
-and leave the caller here. I presumably the respective
-drivers will graduately migrate to check the return value with
-EPROBE_DEFER if they do care this issue. Otherwise, we believe
-they don't suffer the changes we make, just as what they did in the
-past. Does that make sense?
-
-
+- Yakir
+> @Emil, please shout if I read that wrong :-)
 >
 >
-> -Doug
+> Hope that helps
+> Heiko
 >
 >
 >
 
-
--- 
-Best Regards
-Shawn Lin
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
