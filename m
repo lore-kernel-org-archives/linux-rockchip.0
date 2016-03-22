@@ -1,86 +1,56 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: Re: [PATCH v14 0/17] Add Analogix Core Display Port Driver
-Date: Tue, 22 Mar 2016 16:19:37 -0300
-Message-ID: <56F19AC9.5060507@osg.samsung.com>
-References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
- <56EBA305.8030202@gmail.com>
- <CAD=FV=XXESzA6n6MNEGH1Kbh7CeL8xWX8CifFLVf91+0JyFcJQ@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Who is going to merge it [Was: Re: [PATCH v14 0/17] Add Analogix Core Display Port Driver]
+Date: Tue, 22 Mar 2016 23:12:51 +0100
+Message-ID: <1919945.Y1tg0YzXlm@diego>
+References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com> <CAD=FV=XXESzA6n6MNEGH1Kbh7CeL8xWX8CifFLVf91+0JyFcJQ@mail.gmail.com> <56F19AC9.5060507@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XXESzA6n6MNEGH1Kbh7CeL8xWX8CifFLVf91+0JyFcJQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Inki Dae <inki.dae@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, David Airlie <airlied@linux.ie>
-Cc: Yakir Yang <ykk@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Mark Yao <mark.yao@rock-chips.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, emil.l.velikov@gmail.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, Kukjin Kim <kgene@kernel.>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56F19AC9.5060507-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Hi,
 
-On 03/18/2016 07:53 PM, Doug Anderson wrote:
-> Hi,
-> 
-> On Thu, Mar 17, 2016 at 11:41 PM, Caesar Wang <caesar.upstream@gmail.com> wrote:
->> Hi all,
->>
->> I pick this series up and test on C101PA chromebook, after Heiko update the
->> 3 patches.
->>
->> [v14.1,09/17] drm: rockchip: dp: add rockchip platform dp driver
->> [v14.1,04/17] drm: bridge: analogix/dp: fix some obvious code style
->> [v14.1,01/17] drm: bridge: analogix/dp: split exynos dp driver to bridge
->> directory
->>
->> C101PA chromebook:
->> http://www.amazon.co.uk/10-1-Inch-Chromebook-Rockchip-Integrated-Graphics/dp/B0107N7WT6/ref=lp_758129031_1_4?s=computers&ie=UTF8&qid=1458282912&sr=1-4
->>
->> So, verified for the rockchip eDp contrller on my github.
->> https://github.com/Caesar-github/rockchip/tree/veyron/next-stable-chromeos
-> 
-> I did similar to Caesar but I tested on veyron-jerry instead of
-> veyron-mickey.  Like Caesar, I picked these together Heiko's v14.1
-> patches to resolve merge conflicts.  I also picked into a slightly
-> different tree (mine was a 4.4-based tree with backports, including
-> Heiko's latest eDP device tree patches).
->
+Am Dienstag, 22. M=E4rz 2016, 16:19:37 schrieb Javier Martinez Canillas=
+:
+> On 03/18/2016 07:53 PM, Doug Anderson wrote:
+> > On Thu, Mar 17, 2016 at 11:41 PM, Caesar Wang <caesar.upstream@gmai=
+l.com>=20
+wrote:
+> Same here, this is the second time I tested this series (first time w=
+as
+> v6 on October 25 [2]) and I think that has been out there for too lon=
+g.
+>=20
+> > Tested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> Tested-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
 
-I also tested this series on an Exynos5800 Peach Pi Chromebook, using
-Heiko's branch [0] that is based on today's mainline (968f3e374fa).
+So we have 3 tests (Doug, Caesar and me) for the Rockchip side as well =
+as=20
+Javier for the Exynos side based on the most recent drm state.
 
-I've seen no regressions with these patches, DP is working fine and
-also comes up after a S2R and DPMS on/off using the exynos-drm sysfs.
+As said by a lot of people it would be cool to get this merged soon -=20
+hopefully directly after -rc1. The only remaining question is through w=
+hich=20
+tree it should go.
 
-NOTE: I had to cherry-pick a SPI core fix [1] in order to make the Pi
-to boot. Not related to this series of course but I just mention it in
-case someone else wants to do the same test on this machine.
- 
-> Tough I haven't reviewed the code and am not a graphics expert, I'd
-> very much love to see this landed, presumably right after the merge
-> window closes.  Yakir's first patch
-> <https://patchwork.kernel.org/patch/6959211/> is nearly 1 year old and
-> it really seems like if there were any major objections left they'd
-> have been stated by now.  v14 appears to be about 1 month old with no
-> major comments.
->
+I guess there are two basic options:
+- Inki takes the series - we could see the Rockchip-Ack being implied b=
+ut=20
+maybe Mark can provide an explicit one
+- Mark takes the series with an Ack from Inki for the shared parts
 
-Same here, this is the second time I tested this series (first time was
-v6 on October 25 [2]) and I think that has been out there for too long.
- 
-> Tested-by: Douglas Anderson <dianders@chromium.org>
-> 
+Inki, Mark do you have a preference?
 
-Tested-by: Javier Martinez Canillas <javier@osg.samsung.com>
 
-> 
-> -Doug
-> 
-
-[0]: git://github.com/mmind/linux-rockchip.git tmp/analogix-dp-clean
-[1]: http://comments.gmane.org/gmane.linux.kernel.spi.devel/23563
-[2]: http://lists.infradead.org/pipermail/linux-rockchip/2015-October/004884.html
-
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
