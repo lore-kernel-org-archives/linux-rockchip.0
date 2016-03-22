@@ -1,51 +1,106 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v2] drm/rockchip: vop: Disable planes when disabling CRTC
-Date: Tue, 22 Mar 2016 16:08:04 +0100
-Message-ID: <1458659284-14039-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v1] cpufreq: rockchip: add driver
+Date: Tue, 22 Mar 2016 17:07:36 +0100
+Message-ID: <1758347.rheI35MbRd@diego>
+References: <1458303004-26445-1-git-send-email-xf@rock-chips.com> <1458647848-48999-1-git-send-email-xf@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-kernel@vger.kernel.org
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1458647848-48999-1-git-send-email-xf@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Feng Xiao <xf@rock-chips.com>
+Cc: linux@arm.linux.org.uk, rjw@rjwysocki.net, viresh.kumar@linaro.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, tim.chen@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-V2hlbiBhIFZPUCBpcyByZS1lbmFibGVkLCBpdCB3aWxsIHN0YXJ0IHNjYW5uaW5nIHJpZ2h0IGF3
-YXkgdGhlCmZyYW1lYnVmZmVycyB0aGF0IHdlcmUgY29uZmlndXJlZCBmcm9tIHRoZSBsYXN0IHRp
-bWUsIGV2ZW4gaWYgdGhvc2UgaGF2ZQpiZWVuIGRlc3Ryb3llZCBhbHJlYWR5LgoKVG8gcHJldmVu
-dCB0aGUgVk9QIGZyb20gdHJ5aW5nIHRvIGFjY2VzcyBmcmVlZCBtZW1vcnksIGRpc2FibGUgYWxs
-IGl0cwp3aW5kb3dzIHdoZW4gdGhlIENSVEMgaXMgYmVpbmcgZGlzYWJsZWQsIHRoZW4gZWFjaCB3
-aW5kb3cgd2lsbCBnZXQgYQp2YWxpZCBmcmFtZWJ1ZmZlciBhZGRyZXNzIGJlZm9yZSBpdCdzIGVu
-YWJsZWQgYWdhaW4uCgpTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bj
-b2xsYWJvcmEuY29tPgpMaW5rOiBodHRwOi8vbGttbC5rZXJuZWwub3JnL2cvQ0FBT2JzS0F2KzA1
-aWg1VSs9NGtpY19Oc2pHTWhmeFloZUhSOHhYWG1hY1pzK3A1U0h3QG1haWwuZ21haWwuY29tCi0t
-LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDE1ICsrKysr
-KysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQg
-YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwppbmRleCA1ZTU3ZjViMmU0YjAuLmUy
-MTE4ZTYyMzQ1YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV92b3AuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jCkBAIC00OTksMTAgKzQ5OSwyNSBAQCBlcnJfZGlzYWJsZV9oY2xrOgogc3RhdGljIHZvaWQg
-dm9wX2NydGNfZGlzYWJsZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiB7CiAJc3RydWN0IHZvcCAq
-dm9wID0gdG9fdm9wKGNydGMpOworCWludCBpOwogCiAJaWYgKCF2b3AtPmlzX2VuYWJsZWQpCiAJ
-CXJldHVybjsKIAorCS8qCisJICogV2UgbmVlZCB0byBtYWtlIHN1cmUgdGhhdCBhbGwgd2luZG93
-cyBhcmUgZGlzYWJsZWQgYmVmb3JlIHdlCisJICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lz
-ZSB3ZSBtaWdodCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCisJICogYnVmZmVyIGxhdGVy
-LgorCSAqLworCWZvciAoaSA9IDA7IGkgPCB2b3AtPmRhdGEtPndpbl9zaXplOyBpKyspIHsKKwkJ
-c3RydWN0IHZvcF93aW4gKnZvcF93aW4gPSAmdm9wLT53aW5baV07CisJCWNvbnN0IHN0cnVjdCB2
-b3Bfd2luX2RhdGEgKndpbiA9IHZvcF93aW4tPmRhdGE7CisKKwkJc3Bpbl9sb2NrKCZ2b3AtPnJl
-Z19sb2NrKTsKKwkJVk9QX1dJTl9TRVQodm9wLCB3aW4sIGVuYWJsZSwgMCk7CisJCXNwaW5fdW5s
-b2NrKCZ2b3AtPnJlZ19sb2NrKTsKKwl9CisKIAlkcm1fY3J0Y192Ymxhbmtfb2ZmKGNydGMpOwog
-CiAJLyoKLS0gCjIuNS4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
-cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
-ZGV2ZWwK
+Hi,
+
+Am Dienstag, 22. M=E4rz 2016, 19:57:28 schrieb Feng Xiao:
+> This driver will directly use cpufreq-dt driver as backend.
+>=20
+> As there is not a generic devicetree board file(rockchip.c)
+> on ARM64 architecture, so remove platform_device_register_simple
+> in rockchip.c and add a new cpufreq driver to support Rockchip
+> SoCs.
+>=20
+> Signed-off-by: Feng Xiao <xf@rock-chips.com>
+
+some hints regarding the soc-selection below, otherwise this looks nice=
+=2E
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+[includes an Ack for the mach-rockchip change ;-) ]
+
+[...]
+
+> diff --git a/drivers/cpufreq/rockchip-cpufreq.c
+> b/drivers/cpufreq/rockchip-cpufreq.c new file mode 100644
+> index 0000000..65c1de9
+> --- /dev/null
+> +++ b/drivers/cpufreq/rockchip-cpufreq.c
+> @@ -0,0 +1,55 @@
+> +/*
+> + * Rockchip Platforms CPUFreq Support
+> + *
+> + * Copyright (C) 2016 Fuzhou Rockchip Electronics Co., Ltd
+> + *
+> + * Feng Xiao <xf@rock-chips.com>
+> + *
+> + * This program is free software; you can redistribute it and/or mod=
+ify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed "as is" WITHOUT ANY WARRANTY of any
+> + * kind, whether express or implied; without even the implied warran=
+ty
+> + * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/err.h>
+> +#include <linux/init.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +
+> +static const char * const rockchip_compat[] =3D {
+> +	"rockchip,rk2928",
+
++	"rockchip,rk3036",
+
+> +	"rockchip,rk3066a",
+> +	"rockchip,rk3066b",
+> +	"rockchip,rk3188",
+
++	"rockchip,rk3228",
+
+> +	"rockchip,rk3288",
+> +	"rockchip,rk3366",
+> +	"rockchip,rk3368",
+> +	"rockchip,rk3399",
+> +};
+> +
+> +static int __init rockchip_cpufreq_driver_init(void)
+> +{
+> +	struct platform_device *pdev;
+> +	int i;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(rockchip_compat); i++) {
+> +		if (of_machine_is_compatible(rockchip_compat[i])) {
+> +			pdev =3D platform_device_register_simple("cpufreq-dt",
+> +							       -1, NULL, 0);
+> +			return PTR_ERR_OR_ZERO(pdev);
+> +		}
+> +	}
+> +
+> +	return -ENODEV;
+> +}
+> +module_init(rockchip_cpufreq_driver_init);
+> +
+> +MODULE_AUTHOR("Feng Xiao <xf@rock-chips.com>");
+> +MODULE_DESCRIPTION("Rockchip cpufreq driver");
+> +MODULE_LICENSE("GPL v2");
+
