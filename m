@@ -1,165 +1,66 @@
-From: Vladimir Zapolskiy <vladimir_zapolskiy-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with
- EPROBE_DEFER
-Date: Tue, 22 Mar 2016 15:12:03 +0200
-Message-ID: <56F144A3.7070309@mentor.com>
-References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
- <1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
- <56F0A7F0.5000900@rock-chips.com>
- <CAD=FV=XUKoKq9_Ecx6F_c7XC6FbM6jK5B5XmKqmds_2zHW7i1g@mail.gmail.com>
- <56F0B3A1.9080509@rock-chips.com>
- <CAD=FV=UOfj8CBtjC+suM9dxtAN=0rX1E9rxYjjjbr5uLzgFCXg@mail.gmail.com>
+From: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] iommu/rockchip: Only log stall errors when attaching
+Date: Tue, 22 Mar 2016 16:04:33 +0100
+Message-ID: <1458659073-13553-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=UOfj8CBtjC+suM9dxtAN=0rX1E9rxYjjjbr5uLzgFCXg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Move the logging of timeouts when stalling the MMU to
+rk_iommu_attach_device, as it's expected that sometimes the MMU won't
+get stalled when detaching a device, and it's not a real problem that
+would need to be communicated to the user.
 
-On 22.03.2016 05:33, Doug Anderson wrote:
-> Shawn,
-> 
-> On Mon, Mar 21, 2016 at 7:53 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> + Vinod
->>
->>
->> On 2016/3/22 10:33, Doug Anderson wrote:
->>>
->>> Shawn,
->>>
->>> On Mon, Mar 21, 2016 at 7:03 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> wrote:
->>>>>
->>>>> ...but, looking at this, presumably before landing any patch that made
->>>>> dma_request_slave_channel() return -EPROBE_DEFER you'd need to modify
->>>>> _all_ users of dma_request_slave_channel to handle error pointers
->>>>> being returned.  Right now dma_request_slave_channel() says it returns
->>>>> a pointer to a channel or NULL and the function explicitly avoids
->>>>> returning any errors.  That might be possible, but it's a big
->>>>> change...
->>>>
->>>>
->>>>
->>>> At first glance, it's a big change, but maybe not really.
->>>> Almost all of them use the templet like:
->>>> ch = dma_request_slave_channel
->>>> if (!ch)
->>>>          balabala....
->>>>
->>>> It's same for all the non-null return pointer/non-zero value ?
->>>>
->>>> So from my view, we can safely change dma_request_slave_channel,
->>>> and leave the caller here. I presumably the respective
->>>> drivers will graduately migrate to check the return value with
->>>> EPROBE_DEFER if they do care this issue. Otherwise, we believe
->>>> they don't suffer the changes we make, just as what they did in the
->>>> past. Does that make sense?
->>>
->>>
->>> ...but if you return ERR_PTR(-EPROBE_DEFER) and don't change existing
->>> callers, then existing callers will think you've returned a valid
->>> pointer when you really returned an error pointer.  They'll pass this
->>> error pointer around like it's a valid "struct dma_chan", won't then?
->>>
->>
->> possibly, it depends on how caller deal with it. Should check it case by
->> case for each caller.
->>
->>> Actually, could your code just call
->>> dma_request_slave_channel_reason().  Oh, looks like that's exactly
->>> what you want.  See commit 0ad7c00057dc ("dma: add channel request API
->>> that supports deferred probe").  Oh, but I'm looking at 4.4.  Looking
->>> at linuxnext, it looks like this got renamed to dma_request_chan().
->>> ...so you need to use that, no?
->>>
->>> Strange, but on 4.4 there was some extra code in
->>> dma_request_slave_channel() that wasn't in
->>> dma_request_slave_channel_reason().  ...but looks like that all got
->>> cleaned up in the same CL that added the new name.
->>
->>
->> dma_request_chan already return ERR_PTR(-EPROBE_DEFER), but
->> dma_request_slave_channel ignore this and rewrite it to be NULL.
->> Strange behaviour looks to me. commit 0ad7c00057dc ("dma: add channel
->> request API that supports deferred probe")  did the right thing, but
->> what happened then?  It was drop for some reasons?
->>
->> Hello Vinod,
->>
->> Could you please elaborate some more infomation to commit 0ad7c00057dc
->> ("dma: add channel request API that supports deferred probe") :) ?
-> 
-> I think it's relatively straightforward.
-> 
-> The scheme they came up with allows them to more easily update one
-> client at a time.  AKA:
-> 
-> * If your code has been updated to handle ERR_PTR() returns, you call
-> dma_request_slave_channel_reason().
-> 
-> * If your code hasn't been updated, it will still call
-> dma_request_slave_channel().  In this case EPROBE_DEFER is treated
-> like any other failure.  That's not ideal but better than the
-> alternative.
-> 
-> * In recent kernels dma_request_slave_channel() was renamed to
-> dma_request_chan().  Old code can still use
-> dma_request_slave_channel_reason() but presumably they want you to use
-> dma_request_chan() for new code.  They are equivalent:
-> 
->> #define dma_request_slave_channel_reason(dev, name) dma_request_chan(dev, name)
-> 
-> 
-> So your patch should be:
-> 
-> -       rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
-> -       if (!rs->dma_tx.ch)
-> +       rs->dma_tx.ch = dma_request_slave_chan(rs->dev, "tx");
-> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
-> +               /* Check tx to see if we need defer probing driver */
-> +               if (rs->dma_tx.ch == ERR_PTR(-EPROBE_DEFER)) {
-> +                       ret = -EPROBE_DEFER;
-> +                       goto err_get_fifo_len;
-> +               }
->                 dev_warn(rs->dev, "Failed to request TX DMA channel\n");
-> +               rs->dma_tx.ch = NULL;
-> +       }
-> 
+Signed-off-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/iommu/rockchip-iommu.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-referencing my answer to v2 for clarity here is my version:
-
--       rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
--       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
-+       rs->dma_tx.ch = dma_request_chan(rs->dev, "tx");
-+       if (IS_ERR(rs->dma_tx.ch)) {
-                /* Check tx to see if we need defer probing driver */
-                if (PTR_ERR(rs->dma_tx.ch) == -EPROBE_DEFER) {
-                        ret = -EPROBE_DEFER;
-                        goto err_get_fifo_len;
-                }
-                dev_warn(rs->dev, "Failed to request TX DMA channel\n");
-+               rs->dma_tx.ch = NULL;
-        }
-
-
-You may also add some tweaks like checking for IS_ERR(rs->dma_tx.ch) in the
-following code instead of checking for NULL (then you don't need to do
-"rs->dma_tx.ch = NULL" on error), then skip "rx" channel request, if "tx"
-channel request failed and so on.
-
-> ...and then a similar patch for the "rx" side of things.
-> 
-
---
-With best wishes,
-Vladimir
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 0253ab35c33b..65325b6742e6 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -346,13 +346,7 @@ static int rk_iommu_enable_stall(struct rk_iommu *iommu)
+ 
+ 	rk_iommu_command(iommu, RK_MMU_CMD_ENABLE_STALL);
+ 
+-	ret = rk_wait_for(rk_iommu_is_stall_active(iommu), 1);
+-	if (ret)
+-		for (i = 0; i < iommu->num_mmu; i++)
+-			dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
+-				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
+-
+-	return ret;
++	return rk_wait_for(rk_iommu_is_stall_active(iommu), 1);
+ }
+ 
+ static int rk_iommu_disable_stall(struct rk_iommu *iommu)
+@@ -798,8 +792,12 @@ static int rk_iommu_attach_device(struct iommu_domain *domain,
+ 		return 0;
+ 
+ 	ret = rk_iommu_enable_stall(iommu);
+-	if (ret)
++	if (ret) {
++		for (i = 0; i < iommu->num_mmu; i++)
++			dev_err(iommu->dev, "Enable stall request timed out, status: %#08x\n",
++				rk_iommu_read(iommu->bases[i], RK_MMU_STATUS));
+ 		return ret;
++	}
+ 
+ 	ret = rk_iommu_force_reset(iommu);
+ 	if (ret)
+-- 
+2.5.0
