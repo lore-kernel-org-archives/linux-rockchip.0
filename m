@@ -1,139 +1,59 @@
-From: Feng Xiao <xf@rock-chips.com>
-Subject: [PATCH v1] cpufreq: rockchip: add driver
-Date: Tue, 22 Mar 2016 19:57:28 +0800
-Message-ID: <1458647848-48999-1-git-send-email-xf@rock-chips.com>
-References: <1458303004-26445-1-git-send-email-xf@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458303004-26445-1-git-send-email-xf@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux@arm.linux.org.uk, heiko@sntech.de, rjw@rjwysocki.net, viresh.kumar@linaro.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, tim.chen@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Feng Xiao <xf@rock-chips.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with
+ EPROBE_DEFER
+Date: Tue, 22 Mar 2016 14:59:56 +0300
+Message-ID: <20160322115956.GY5273@mwanda>
+References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
+ <1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This driver will directly use cpufreq-dt driver as backend.
+On Mon, Mar 21, 2016 at 04:33:32PM -0700, Doug Anderson wrote:
+> Presumably Dan would be happy if you just add this right after the dev_warn():
+>   rs->dma_tx.ch = NULL;
+> 
 
-As there is not a generic devicetree board file(rockchip.c)
-on ARM64 architecture, so remove platform_device_register_simple
-in rockchip.c and add a new cpufreq driver to support Rockchip
-SoCs.
+Yes.  Thanks.
 
-Signed-off-by: Feng Xiao <xf@rock-chips.com>
----
-change in v1:
-- add compatible check
+> Presumably from Dan's email it would also be wise to make sure you
+> don't pass NULL to PTR_ERR, which you could probably do by just using
+> ERR_PTR instead of PTR_ERR.  I think you could structure like this:
+> 
+>         rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
+> -       if (!rs->dma_tx.ch)
+> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
+> +               /* Check tx to see if we need defer probing driver */
+> +               if (rs->dma_tx.ch == ERR_PTR(-EPROBE_DEFER)) {
+> +                       ret = -EPROBE_DEFER;
+> +                       goto err_get_fifo_len;
+> +               }
+>                 dev_warn(rs->dev, "Failed to request TX DMA channel\n");
+> +               rs->dma_tx.ch = NULL;
+> +       }
 
- arch/arm/mach-rockchip/rockchip.c  |  1 -
- drivers/cpufreq/Kconfig.arm        | 10 +++++++
- drivers/cpufreq/Makefile           |  1 +
- drivers/cpufreq/rockchip-cpufreq.c | 55 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 66 insertions(+), 1 deletion(-)
- create mode 100644 drivers/cpufreq/rockchip-cpufreq.c
+My check doesn't care if you pass something to PTR_ERR() that might be
+NULL, it complains when PTR_ERR() can only be zero.  And it's ok to have
+the warning for a while and silence it in another patch when we update
+dma_request_slave_channel().
 
-diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
-index 3f07cc5..beb71da 100644
---- a/arch/arm/mach-rockchip/rockchip.c
-+++ b/arch/arm/mach-rockchip/rockchip.c
-@@ -74,7 +74,6 @@ static void __init rockchip_dt_init(void)
- {
- 	rockchip_suspend_init();
- 	of_platform_populate(NULL, of_default_bus_match_table, NULL, NULL);
--	platform_device_register_simple("cpufreq-dt", 0, NULL, 0);
- }
- 
- static const char * const rockchip_board_dt_compat[] = {
-diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
-index 14b1f93..1786315 100644
---- a/drivers/cpufreq/Kconfig.arm
-+++ b/drivers/cpufreq/Kconfig.arm
-@@ -97,6 +97,16 @@ config ARM_OMAP2PLUS_CPUFREQ
- 	depends on ARCH_OMAP2PLUS
- 	default ARCH_OMAP2PLUS
- 
-+config ARM_ROCKCHIP_CPUFREQ
-+	tristate "Rockchip CPUfreq driver"
-+	depends on ARCH_ROCKCHIP && CPUFREQ_DT
-+	select PM_OPP
-+	help
-+	  This adds the CPUFreq driver support for Rockchip SoCs.
-+	  The driver will directly use cpufreq-dt driver as backend.
-+
-+	  If in doubt, say N.
-+
- config ARM_S3C_CPUFREQ
- 	bool
- 	help
-diff --git a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
-index 9e63fb1..91d8bb7 100644
---- a/drivers/cpufreq/Makefile
-+++ b/drivers/cpufreq/Makefile
-@@ -61,6 +61,7 @@ obj-$(CONFIG_ARM_MT8173_CPUFREQ)	+= mt8173-cpufreq.o
- obj-$(CONFIG_ARM_OMAP2PLUS_CPUFREQ)	+= omap-cpufreq.o
- obj-$(CONFIG_ARM_PXA2xx_CPUFREQ)	+= pxa2xx-cpufreq.o
- obj-$(CONFIG_PXA3xx)			+= pxa3xx-cpufreq.o
-+obj-$(CONFIG_ARM_ROCKCHIP_CPUFREQ)	+= rockchip-cpufreq.o
- obj-$(CONFIG_ARM_S3C24XX_CPUFREQ)	+= s3c24xx-cpufreq.o
- obj-$(CONFIG_ARM_S3C24XX_CPUFREQ_DEBUGFS) += s3c24xx-cpufreq-debugfs.o
- obj-$(CONFIG_ARM_S3C2410_CPUFREQ)	+= s3c2410-cpufreq.o
-diff --git a/drivers/cpufreq/rockchip-cpufreq.c b/drivers/cpufreq/rockchip-cpufreq.c
-new file mode 100644
-index 0000000..65c1de9
---- /dev/null
-+++ b/drivers/cpufreq/rockchip-cpufreq.c
-@@ -0,0 +1,55 @@
-+/*
-+ * Rockchip Platforms CPUFreq Support
-+ *
-+ * Copyright (C) 2016 Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * Feng Xiao <xf@rock-chips.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed "as is" WITHOUT ANY WARRANTY of any
-+ * kind, whether express or implied; without even the implied warranty
-+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/err.h>
-+#include <linux/init.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+
-+static const char * const rockchip_compat[] = {
-+	"rockchip,rk2928",
-+	"rockchip,rk3066a",
-+	"rockchip,rk3066b",
-+	"rockchip,rk3188",
-+	"rockchip,rk3288",
-+	"rockchip,rk3366",
-+	"rockchip,rk3368",
-+	"rockchip,rk3399",
-+};
-+
-+static int __init rockchip_cpufreq_driver_init(void)
-+{
-+	struct platform_device *pdev;
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(rockchip_compat); i++) {
-+		if (of_machine_is_compatible(rockchip_compat[i])) {
-+			pdev = platform_device_register_simple("cpufreq-dt",
-+							       -1, NULL, 0);
-+			return PTR_ERR_OR_ZERO(pdev);
-+		}
-+	}
-+
-+	return -ENODEV;
-+}
-+module_init(rockchip_cpufreq_driver_init);
-+
-+MODULE_AUTHOR("Feng Xiao <xf@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip cpufreq driver");
-+MODULE_LICENSE("GPL v2");
--- 
-1.9.1
+But this also works well.
+
+regards,
+dan carpenter
