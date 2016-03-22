@@ -1,73 +1,122 @@
-From: Feng Xiao <xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] cpufreq: rockchip: add driver
-Date: Tue, 22 Mar 2016 09:28:00 +0800
-Message-ID: <56F09FA0.4030201@rock-chips.com>
-References: <1458303004-26445-1-git-send-email-xf@rock-chips.com>
- <56EFF610.6040402@rock-chips.com> <1971421.XfIKeB8O8v@diego>
- <1677635.LBekym086Y@diego>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with
+ EPROBE_DEFER
+Date: Tue, 22 Mar 2016 10:03:28 +0800
+Message-ID: <56F0A7F0.5000900@rock-chips.com>
+References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
+ <1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1677635.LBekym086Y@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tim.chen-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SSBnZXQgaXQsIHRoYW5rcy4KCuWcqCAyMDE2LzMvMjEgMjM6NTIsIEhlaWtvIFN0w7xibmVyIOWG
-memBkzoKPiBBbSBNb250YWcsIDIxLiBNw6RyeiAyMDE2LCAxNjoxMzo0MCBzY2hyaWViIEhlaWtv
-IFN0w7xibmVyOgo+PiBIaSwKPj4KPj4gQW0gTW9udGFnLCAyMS4gTcOkcnogMjAxNiwgMjE6MjQ6
-MzIgc2NocmllYiBGZW5nIFhpYW86Cj4+PiDlnKggMjAxNi8zLzIxIDE3OjU4LCBWaXJlc2ggS3Vt
-YXIg5YaZ6YGTOgo+Pj4+IE9uIDIxLTAzLTE2LCAxMDo1NCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6
-Cj4+Pj4+IEkgaGFkbid0IHNlZW4gdGhhdCB5ZXQgLi4uIG5pY2UgdGhhdCBjcHVmcmVxLWR0IG5v
-dyBhbHNvIHN1cHBvcnRzCj4+Pj4+IGNsdXN0ZXJzIDotKQo+Pj4+Pgo+Pj4+PiBUaGUgb3RoZXIg
-cGFydCBzdGlsbCBzdGFuZHMgdGhvdWdoLCBhcyB3ZSBwcm9iYWJseSBzaG91bGQgcmVnaXN0ZXIg
-dGhlCj4+Pj4+IHBsYXRmb3JtLWRldmljZSBzb21ld2hlcmUgZWxzZSBhbmQgbm90IGluIHNvbWUg
-bmV3IHNwZWNpYWwgbW9kdWxlLgo+Pj4+Pgo+Pj4+PiBXaGVuIGV2ZXJ5dGhpbmcgaXMgdXNpbmcg
-Y3B1ZnJlcS1kdCBub3csIEkgZ3Vlc3Mgd2UgY291bGQganVzdCBhZGQgaXQKPj4+Pj4gdG8KPj4+
-Pj4gdGhlIGNvcmUgcm9ja2NoaXAgY2xrLWNvZGUuIE9yIHdhcyB0aGVyZSBzb21lIGFncmVlbWVu
-dCB3aGVyZSB0aGlzCj4+Pj4+IHNob3VsZCBiZSBkb25lIChvYnZpb3VzbHkgbm90IHRoZSBkZXZp
-Y2V0cmVlIGl0c2VsZik/Cj4+PiBPZl9jbGtfaW5pdCBpcyBjYWxsZWQgZWFybHksIGFuZCBwbGF0
-Zm9ybV9kZXZpY2VfcmVnaXN0ZXJfc2ltcGxlIHNob3VsZAo+Pj4gYmUgY2FsbGVkIGFmdGVyIGRl
-dmljZXNfaW5pdCwgaXQgd2lsbCBiZSBmYWlsZWQgdG8gZG8gaXQgZnJvbSBjbGstY29kZS4KPj4+
-IFNvIHdlIG5lZWQgYWRkIGEgbmV3IGZpbGUgb3IgYWRkIG1vZHVsZV9pbml0IHRvIGVhY2ggY2xv
-Y2sgY29udHJvbGxlcgo+Pj4gZHJpdmVyKGxpa2UgY2xrLXJrMzM2OC5jLCBjbGstcmszMzk5LmMp
-ID8KPj4gYXMgVmlyZXNoIHNhaWQsIGl0IHNob3VsZCBiZSBvayB0byBkbyBpdCBsaWtlIHlvdXIg
-YXBwcm9hY2ggY3JlYXRpbmcgYQo+PiBtb2R1bGUgaW4gZHJpdmVycy9jcHVmcmVxLiBCdXQgdGhl
-IGNvbXBhdGlibGUgY2hlY2sgaXMgbmVjZXNzYXJ5Lgo+Pgo+PiBEb2luZyBpdCB0aGlzIHdheSBh
-bHNvIG1ha2VzIGl0IGVhc2llciB0byBoYXZlCj4gU2VlbSBsaWtlIEkgZm9yZ290IHRoZSBjb21w
-bGV0ZSBteSBzZW50ZW5jZSBoZXJlLiBUaGlzIHNob3VsZCd2ZSBiZWVuCj4KPiBEb2luZyBpdCB0
-aGlzIHdheSBhbHNvIG1ha2VzIGl0IGVhc2llciB0byBoYXZlIGV2ZXJ5dGhpbmcgZ28gaW50byBj
-cHVmcmVxLWR0Cj4gb25jZSB0aGF0IHdoaXRlbGlzdCBhcHBlYXJzIHRoYXQgVmlyZXNoIHdyb3Rl
-IGFib3V0LiBTbyB0aGlzIG1pZ2h0IGJlIGJldHRlcgo+IHRoYW4gdG8gZGlzdHJpYnV0ZSB0aGlz
-IHN0dWZmIGFyb3VuZCBvdGhlciBzdWJzeXN0ZW1zLCBhcyBJIG9yaWdpbmFsbHkKPiBzdWdnZXN0
-ZWQuCj4KPj4+PiBZZWFoLCB0aGVyZSB3YXMgYSBkaXNjdXNzaW9uIGFyb3VuZCBjcmVhdGluZyBh
-IHdoaXRlIG9yIGJsYWNrIGxpc3Qgb2YKPj4+PiBwbGF0Zm9ybXMgdGhhdCB3YW50IHRvIGNyZWF0
-ZSBhIHBsYXRmb3JtIGRldmljZSBmb3IgY3B1ZnJlcS1kdC4gVGhhdCBjYW4KPj4+PiBiZSBkb25l
-IGluIGNwdWZyZXEtZHQuYyBvciBhIG5ldyBmaWxlLCBidXQgSSBoYXZlbid0IHdvcmtlZCBvdXQg
-b24gdGhhdAo+Pj4+IHlldC4KPj4+Pgo+Pj4+IFlvdSBjYW4gZG8gaXQgZnJvbSBjbGstY29kZSBv
-ciBmcm9tIHRoZSBkcml2ZXIgdGhhdCB3YXMgYWRkZWQgaW4gdGhpcwo+Pj4+IHRocmVhZC4gSnVz
-dCB0aGF0IHlvdSBuZWVkIHRvIG1hdGNoIHlvdXIgcGxhdGZvcm0ncyBjb21wYXRpYmxlIHN0cmlu
-Zwo+Pj4+IGJlZm9yZSBkb2luZyB0aGF0Lgo+Pj4gUm9ja2NoaXAtY3B1ZnJlcS5jIGRlcGVuZHMg
-b24gQVJNX1JPQ0tDSElQX0NQVUZSRVEsIGl0IHdpbGwgbm90IGJlCj4+PiBjb21waWxlZCBvbiBu
-b24tUm9ja2NoaXAgcGxhdGZvcm1zLgo+Pj4gVGhlIGRyaXZlciBjYW4gc3VwcG9ydCBhbGwgUm9j
-a2NoaXAgU29DcyB1cCB0byBub3csIGFkZAo+Pj4gb2ZfbWFjaGluZV9pc19jb21wYXRpYmxlIG1h
-eSBiZSByZWR1bmRhbnQgPwo+PiBQbGVhc2UgYWx3YXlzIGtlZXAgbXVsdGlwbGF0Zm9ybSBpbiBt
-aW5kLiBUaGVzZSBkYXlzIHRoZSBrZXJuZWwgY2FuIGJlCj4+IGNvbXBpbGVkIGZvciBtdWx0aXBs
-ZSBhcmNoaXRlY3R1cmVzIGF0IHRoZSBzYW1lIHRpbWUsIHNvIHlvdSBjYW4gaGF2ZQo+PiBzdXBw
-b3J0IGZvciBSb2NrY2hpcCwgRXh5bm9zLCBRdWFsY29tIGFuZCB3aGF0ZXZlciBpbiB0aGUgc2Ft
-ZSBrZXJuZWwKPj4gaW1hZ2UuCj4+Cj4+IFRoZXJlZm9yZSBhIGNvbXBpbGUtdGltZSBjaGVjayBp
-cyBub3QgZW5vdWdoIGFuZCB5b3UgbmVlZCB0byBjaGVjayB0aGUKPj4gYWN0dWFsbHkgcnVubmlu
-ZyBtYWNoaW5lIGFzIHdlbGwuCj4+Cj4+Cj4+IEhlaWtvCj4KPgo+CgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Doug,
+
+On 2016/3/22 7:33, Doug Anderson wrote:
+> Shawn,
+>
+> On Wed, Mar 9, 2016 at 12:11 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>> Let's defer probing the driver if the return value of
+>> dma_request_slave_channel is ERR_PTR(-EPROBE_DEFER) instead
+>> of disabling dma capability directly.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>>   drivers/spi/spi-rockchip.c | 8 +++++++-
+>>   1 file changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+>> index ca4f4e0..75fa990 100644
+>> --- a/drivers/spi/spi-rockchip.c
+>> +++ b/drivers/spi/spi-rockchip.c
+>> @@ -737,8 +737,14 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>          master->handle_err = rockchip_spi_handle_err;
+>>
+>>          rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
+>> -       if (!rs->dma_tx.ch)
+>> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
+>> +               /* Check tx to see if we need defer probing driver */
+>> +               if (PTR_ERR(rs->dma_tx.ch) == -EPROBE_DEFER) {
+>> +                       ret = -EPROBE_DEFER;
+>> +                       goto err_get_fifo_len;
+>> +               }
+>>                  dev_warn(rs->dev, "Failed to request TX DMA channel\n");
+>
+> Presumably Dan would be happy if you just add this right after the dev_warn():
+>    rs->dma_tx.ch = NULL;
+>
+> Presumably from Dan's email it would also be wise to make sure you
+> don't pass NULL to PTR_ERR, which you could probably do by just using
+> ERR_PTR instead of PTR_ERR.  I think you could structure like this:
+>
+>          rs->dma_tx.ch = dma_request_slave_channel(rs->dev, "tx");
+> -       if (!rs->dma_tx.ch)
+> +       if (IS_ERR_OR_NULL(rs->dma_tx.ch)) {
+> +               /* Check tx to see if we need defer probing driver */
+> +               if (rs->dma_tx.ch == ERR_PTR(-EPROBE_DEFER)) {
+> +                       ret = -EPROBE_DEFER;
+> +                       goto err_get_fifo_len;
+> +               }
+>                  dev_warn(rs->dev, "Failed to request TX DMA channel\n");
+> +               rs->dma_tx.ch = NULL;
+> +       }
+>
+>
+> With that change your patch should be happy, I think.  If some new
+> unknown error return gets added to dma_request_slave_channel() then
+> your code will continue to work properly.  Such a change is simple and
+> safe, so presumably you could just spin your patch with that fix.
+> Although unlikely, it's probably good to check for IS_ERR_OR_NULL()
+> when requesting the "rx" channel too.
+
+Thanks for reminding it. I was planing to fix it, so give me a little
+more time. :)
+
+>
+> ...but, looking at this, presumably before landing any patch that made
+> dma_request_slave_channel() return -EPROBE_DEFER you'd need to modify
+> _all_ users of dma_request_slave_channel to handle error pointers
+> being returned.  Right now dma_request_slave_channel() says it returns
+> a pointer to a channel or NULL and the function explicitly avoids
+> returning any errors.  That might be possible, but it's a big
+> change...
+
+At first glance, it's a big change, but maybe not really.
+Almost all of them use the templet like:
+ch = dma_request_slave_channel
+if (!ch)
+	balabala....
+
+It's same for all the non-null return pointer/non-zero value ?
+
+So from my view, we can safely change dma_request_slave_channel,
+and leave the caller here. I presumably the respective
+drivers will graduately migrate to check the return value with
+EPROBE_DEFER if they do care this issue. Otherwise, we believe
+they don't suffer the changes we make, just as what they did in the
+past. Does that make sense?
+
+
+>
+>
+> -Doug
+>
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
