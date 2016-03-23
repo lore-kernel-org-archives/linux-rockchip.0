@@ -1,67 +1,81 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v2] cpufreq: rockchip: add driver
-Date: Wed, 23 Mar 2016 10:10:33 +0530
-Message-ID: <20160323044033.GQ5272@vireshk-i7>
-References: <1458647848-48999-1-git-send-email-xf@rock-chips.com>
- <1458699487-58470-1-git-send-email-xf@rock-chips.com>
+From: Thierry Reding <treding@nvidia.com>
+Subject: Re: Who is going to merge it [Was: Re: [PATCH v14 0/17] Add Analogix
+ Core Display Port Driver]
+Date: Wed, 23 Mar 2016 16:49:00 +0100
+Message-ID: <20160323154859.GB9442@ulmo.nvidia.com>
+References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
+ <1919945.Y1tg0YzXlm@diego>
+ <56F1CAEB.3080701@samsung.com>
+ <8949624.HmxDpZAlt2@diego>
+ <56F1D0AD.8030905@samsung.com>
+ <20160322233906.GP19428@n2100.arm.linux.org.uk>
+ <56F1DB27.4040001@samsung.com>
+ <20160323000835.GQ19428@n2100.arm.linux.org.uk>
+ <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="TRYliJ5NKNqkz5bu"
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
 Content-Disposition: inline
-In-Reply-To: <1458699487-58470-1-git-send-email-xf@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Feng Xiao <xf@rock-chips.com>
-Cc: linux@arm.linux.org.uk, heiko@sntech.de, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, tim.chen@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Dave Airlie <airlied@gmail.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Inki Dae <inki.dae@samsung.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Doug Anderson <dianders@chromium.org>, Jingoo Han <jingoohan1@gmail.com>, Yakir Yang <ykk@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>"open list:ARM/Rockchip SoC..." <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 23-03-16, 10:18, Feng Xiao wrote:
-> diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
-> index 14b1f93..1786315 100644
-> --- a/drivers/cpufreq/Kconfig.arm
-> +++ b/drivers/cpufreq/Kconfig.arm
-> @@ -97,6 +97,16 @@ config ARM_OMAP2PLUS_CPUFREQ
->  	depends on ARCH_OMAP2PLUS
->  	default ARCH_OMAP2PLUS
->  
-> +config ARM_ROCKCHIP_CPUFREQ
-> +	tristate "Rockchip CPUfreq driver"
+--TRYliJ5NKNqkz5bu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Since you are allowing it to be built as a module ...
+On Wed, Mar 23, 2016 at 10:41:58AM +1000, Dave Airlie wrote:
+> >
+> >> So although it's small framework or just subdirectory, we would need
+> >> someone who can manage the framework to avoid further confusion if
+> >> necessary.
+> >
+> > So maybe it just doesn't need a maintainer, and maybe those the owner
+> > of the bridge driver should be responsible for choosing the tree which
+> > it's merged through along with updates.  That's how dw-hdmi has been
+> > managed on the whole.
+> >
+> > It also means that the bridge driver maintainer is able to test changes
+> > to the bridge driver, rather than having some over-arching bridge
+> > subdirectory maintainer who doesn't have a clue whether the changes
+> > work on the hardware.
+> >
+> > IMHO, having bridge driver authors/maintainers look after their own
+> > code has many advantages.
+>=20
+> The author just send me a pull request with acks from a git tree
+> that hopefully both people agreed and tested from. No need to
+> send this via another maintainer layer.
 
-> +	depends on ARCH_ROCKCHIP && CPUFREQ_DT
-> +	select PM_OPP
-> +	help
-> +	  This adds the CPUFreq driver support for Rockchip SoCs.
-> +	  The driver will directly use cpufreq-dt driver as backend.
-> +
-> +	  If in doubt, say N.
+I have in the past "maintained" bridge drivers as part of the panel
+tree, but I have no objections at all for this to go in via one of the
+trees where it is used and can actually be tested.
 
-> +++ b/drivers/cpufreq/rockchip-cpufreq.c
-> +static int __init rockchip_cpufreq_driver_init(void)
-> +{
-> +	struct platform_device *pdev;
-> +	int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(rockchip_compat); i++) {
-> +		if (of_machine_is_compatible(rockchip_compat[i])) {
-> +			pdev = platform_device_register_simple("cpufreq-dt",
-> +							       -1, NULL, 0);
-> +			return PTR_ERR_OR_ZERO(pdev);
-> +		}
-> +	}
-> +
-> +	return -ENODEV;
-> +}
-> +module_init(rockchip_cpufreq_driver_init);
+Thierry
 
-You need a module exit as well to remove the device. Otherwise following
-sequence will give you errors:
+--TRYliJ5NKNqkz5bu
+Content-Type: application/pgp-signature; name="signature.asc"
 
-insmod rockchip-cpufreq.ko
-rmmod rockchip-cpufreq.ko
-insmod rockchip-cpufreq.ko //Errors on this..
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-So, either don't allow it to be built as a module or fix the module-exit path.
+iQIcBAABCAAGBQJW8rroAAoJEN0jrNd/PrOhdf4QAKBFIkm9CJfQeE5LyQUFFCRT
+F+0X/DUvdDtrzTiPxhlZ70+oMJzFimZXLn2N/usTuaJRwph2zUnsoZVG5DlDqp1U
+ye9SOAjCSCd7znRIvcKRxsnN0nMNTCYU4sCxzt5MzXZxbREsP/RloYMNOYRS0Zjx
+fsElUcmgCa/PfaUiqfDpQPzS0vjbu63GwUsgrmkMEIpNwzuKSUabg3JUI7ryHUwh
+TQV2XAEotVF02bmzHMnH/9e+sZjlz7XOfz6izTP91mHbOcSwPr1wmLZny10PiN3E
+dVSe7tObP9o+UqHGdyGNasyDe7Q/UyZCViXVDEahGKqfH+6BXOpgXonnXto8HIcc
+53k2ohVD/boI2RzKQXOycVMDUQlqZUS/3xyo5YPI1FNFDYgU53nHL8PcZUNF5wO4
+Uf1kK5ofAjKxe7KaEvTA7qb2Stax7nuGjh+NqQmXXQzFqg5CSq+nKA7mfZV3hipi
+1nLujxW0kWKkiwMxQpt2NuCQIu4F9Vb2hj65rMrPKlQLOhs7zlpa9XNl0ZtoTz/5
+wFhBNG08UgMx/AKRSxUSrLws0W6zxnMDJs+MOt1JTdJbR1BfhTzTlw4Eus5aE37t
+DjPEaPz1hBd9G0xCWaw+s0++CBE6PknqJHvN+anMQfb1WIJWGLF0Y5APGys4/nNc
+6eqLMqm8Zb4bjCvGR9Ei
+=HAAB
+-----END PGP SIGNATURE-----
 
--- 
-viresh
+--TRYliJ5NKNqkz5bu--
