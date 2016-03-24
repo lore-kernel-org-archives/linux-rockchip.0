@@ -1,54 +1,49 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: Who is going to merge it [Was: Re: [PATCH v14 0/17] Add Analogix
- Core Display Port Driver]
-Date: Thu, 24 Mar 2016 11:11:08 +0000 (UTC)
-Message-ID: <5A08F152.40705__7631.99678990549$1458817868$gmane$org@rock-chips.com>
-References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>	<1919945.Y1tg0YzXlm@diego>	<56F1CAEB.3080701@samsung.com>	<8949624.HmxDpZAlt2@diego>	<56F1D0AD.8030905@samsung.com>	<20160322233906.GP19428@n2100.arm.linux.org.uk>	<56F1DB27.4040001@samsung.com>	<20160323000835.GQ19428@n2100.arm.linux.org.uk>
- <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v14 0/17] Add Analogix Core Display Port Driver
+Date: Thu, 24 Mar 2016 14:01:33 +0100
+Message-ID: <14744174.gBEQWZv0K7@diego>
+References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Date: Sun, 12 Nov 2017 20:11:46 -0500
-In-Reply-To: <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Dave Airlie <airlied@gmail.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Seung-Woo Kim <sw0312.kim@samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Joonyoung Shim <jy0922.shim@samsung.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kishon Vijay Abraham I <kishon@ti.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Kukjin Kim <kgene@kernel.org>, Rob Herring <robherring2@gmail.com>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetr>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Andrzej Hajda <a.hajda@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Thierry Reding <treding@nvidia.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Yao <mark.yao@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, djkurtz@chromium.org, Sean Paul <seanpaul@chromium.org>, Kukjin Kim <kgene@kernel.org>, Kumar Gala <galak@codeaurora.org>, emil.l.velikov@gmail.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, ajaynumb@gmail.com, robherring2@gmail.com, javier@osg.samsung.com, Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Montag, 15. Februar 2016, 19:08:05 schrieb Yakir Yang:
+> Hi all,
+> 
+>   The Samsung Exynos eDP controller and Rockchip RK3288 eDP controller
+> share the same IP, so a lot of parts can be re-used. I split the common
+> code into bridge directory, then rk3288 and exynos only need to keep
+> some platform code. Cause I can't find the exact IP name of exynos dp
+> controller, so I decide to name dp core driver with "analogix" which I
+> find in rk3288 eDP TRM
+> 
+> But there are still three light registers setting different between
+> exynos and rk3288.
+> 1. RK3288 have five special pll registers which not indicate in exynos
+>    dp controller.
+> 2. The address of DP_PHY_PD(dp phy power manager register) are different
+>    between rk3288 and exynos.
+> 3. Rk3288 and exynos have different setting with AUX_HW_RETRY_CTL(dp debug
+>    register).
+> 
+> Due to Mark Yao have introduced the ATOMIC support to Rockchip drm, so it's
+> okay to use the ATOMIC helpers functions in connector_funcs. No need to
+> splict the connector init to platform driver anymore, and this is the
+> biggest change since version 11.
+> 
+> This v14 didn't have lots of new changes which seems not the correct time to
+> upgrade the version number, but I have changed ordering of patches (adding
+> 2 more, and removing 2 out). Especially to prevent confusing people, so I
+> updated the whole series.
 
-On 03/22/2016 08:41 PM, Dave Airlie wrote:
->>> So although it's small framework or just subdirectory, we would need
->>> someone who can manage the framework to avoid further confusion if
->>> necessary.
->> So maybe it just doesn't need a maintainer, and maybe those the owner
->> of the bridge driver should be responsible for choosing the tree which
->> it's merged through along with updates.  That's how dw-hdmi has been
->> managed on the whole.
->>
->> It also means that the bridge driver maintainer is able to test changes
->> to the bridge driver, rather than having some over-arching bridge
->> subdirectory maintainer who doesn't have a clue whether the changes
->> work on the hardware.
->>
->> IMHO, having bridge driver authors/maintainers look after their own
->> code has many advantages.
-> The author just send me a pull request with acks from a git tree
-> that hopefully both people agreed and tested from. No need to
-> send this via another maintainer layer.
->
-> Dave.
->
+I guess I never said that explicitly, but of course I have tested this 
+numerous times, so
 
-Wow, thanks all ! such cool news  :-D  I'll prepare my pull request soon
-
-
-- Yakir
+This series
+Tested-by: Heiko Stuebner <heiko@sntech.de>
