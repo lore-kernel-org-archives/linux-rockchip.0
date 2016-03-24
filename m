@@ -1,132 +1,48 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/2] phy: rockchip-emmc: should be a child device of the
- GRF
-Date: Thu, 24 Mar 2016 21:36:05 +0800
-Message-ID: <56F3ED45.40107@rock-chips.com>
-References: <1458825774-9957-1-git-send-email-heiko@sntech.de>
- <1458825774-9957-2-git-send-email-heiko@sntech.de>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: Who is going to merge it [Was: Re: [PATCH v14 0/17] Add Analogix
+ Core Display Port Driver]
+Date: Thu, 24 Mar 2016 15:00:32 +0000 (UTC)
+Message-ID: <5A08F152.40705__32430.2124245607$1458831632$gmane$org@rock-chips.com>
+References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>	<1919945.Y1tg0YzXlm@diego>	<56F1CAEB.3080701@samsung.com>	<8949624.HmxDpZAlt2@diego>	<56F1D0AD.8030905@samsung.com>	<20160322233906.GP19428@n2100.arm.linux.org.uk>	<56F1DB27.4040001@samsung.com>	<20160323000835.GQ19428@n2100.arm.linux.org.uk>
+ <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458825774-9957-2-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Date: Sun, 12 Nov 2017 20:11:46 -0500
+In-Reply-To: <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, Rob Herring <robherring2@gmail.com>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>"linux-arm-kernel@lists.infradead.org" <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-=D4=DA 2016/3/24 21:22, Heiko Stuebner =D0=B4=B5=C0:
-> The emmc-phy is fully enclosed in the general register files (GRF).
-> Therefore as seen from the device-tree it shouldn't be a separate pla=
-tform-
-> device but instead a sub-device of the GRF - using the simply-mfd mec=
-hanism.
->
-> The driver entered the kernel in the current merge-window, so we can =
-still
-> adapt the binding without needing a fallback, as the binding hasn't b=
-een
-> released with a full kernel yet.
->
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-> Hi Shawn, Kishon,
->
-> I didn't see this new phy driver until now, so I'd really like to get
-> this sorted before the old binding solidifies :-).
->
-> I'll convert the usbphy as well, but that has to have the fallback fo=
-r
-> the old binding, so is not as urgent as these two.
->
-> As mentioned in the patch description above, this is meant as a fixup=
- for
-> kernel 4.6.
->
->
-> One thing I noticed, the emmc phy is occupying the range 0xf780-0xf7a=
-0,
-> so shouldn't the reg property reflect that, like
->      reg =3D <0xf780 0x20>;
-> to stay with common conventions?
-
-yes, and I had a fix[0] for it waiting for Kishon's reviewing.
-
-
-[0]:
-http://lkml.org/lkml/2016/3/8/114
-
->
->
->   .../devicetree/bindings/phy/rockchip-emmc-phy.txt     | 19 ++++++++=
-++++-------
->   drivers/phy/phy-rockchip-emmc.c                       |  5 ++++-
->   2 files changed, 16 insertions(+), 8 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.=
-txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> index 61916f1..d711259 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> @@ -3,17 +3,22 @@ Rockchip EMMC PHY
->
->   Required properties:
->    - compatible: rockchip,rk3399-emmc-phy
-> - - rockchip,grf : phandle to the syscon managing the "general
-> -   register files"
->    - #phy-cells: must be 0
->    - reg: PHY configure reg address offset in "general
->      register files"
->
->   Example:
->
-> -emmcphy: phy {
-> -	compatible =3D "rockchip,rk3399-emmc-phy";
-> -	rockchip,grf =3D <&grf>;
-> -	reg =3D <0xf780>;
-> -	#phy-cells =3D <0>;
-> +
-> +grf: syscon@ff770000 {
-> +	compatible =3D "rockchip,rk3399-grf", "syscon", "simple-mfd";
-> +
-> +...
-> +
-> +	emmcphy: phy@f780 {
-> +		compatible =3D "rockchip,rk3399-emmc-phy";
-> +		rockchip,grf =3D <&grf>;
-> +		reg =3D <0xf780>;
-> +		#phy-cells =3D <0>;
-> +	};
->   };
-> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockch=
-ip-emmc.c
-> index 887b4c2..6ebcf3e 100644
-> --- a/drivers/phy/phy-rockchip-emmc.c
-> +++ b/drivers/phy/phy-rockchip-emmc.c
-> @@ -176,7 +176,10 @@ static int rockchip_emmc_phy_probe(struct platfo=
-rm_device *pdev)
->   	struct regmap *grf;
->   	unsigned int reg_offset;
->
-> -	grf =3D syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf=
-");
-> +	if (!dev->parent || !dev->parent->of_node)
-> +		return -ENODEV;
-> +
-> +	grf =3D syscon_node_to_regmap(dev->parent->of_node);
->   	if (IS_ERR(grf)) {
->   		dev_err(dev, "Missing rockchip,grf property\n");
->   		return PTR_ERR(grf);
->
-
-
---=20
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Ck9uIDAzLzIyLzIwMTYgMDg6NDEgUE0sIERhdmUgQWlybGllIHdyb3RlOgo+Pj4gU28gYWx0aG91
+Z2ggaXQncyBzbWFsbCBmcmFtZXdvcmsgb3IganVzdCBzdWJkaXJlY3RvcnksIHdlIHdvdWxkIG5l
+ZWQKPj4+IHNvbWVvbmUgd2hvIGNhbiBtYW5hZ2UgdGhlIGZyYW1ld29yayB0byBhdm9pZCBmdXJ0
+aGVyIGNvbmZ1c2lvbiBpZgo+Pj4gbmVjZXNzYXJ5Lgo+PiBTbyBtYXliZSBpdCBqdXN0IGRvZXNu
+J3QgbmVlZCBhIG1haW50YWluZXIsIGFuZCBtYXliZSB0aG9zZSB0aGUgb3duZXIKPj4gb2YgdGhl
+IGJyaWRnZSBkcml2ZXIgc2hvdWxkIGJlIHJlc3BvbnNpYmxlIGZvciBjaG9vc2luZyB0aGUgdHJl
+ZSB3aGljaAo+PiBpdCdzIG1lcmdlZCB0aHJvdWdoIGFsb25nIHdpdGggdXBkYXRlcy4gIFRoYXQn
+cyBob3cgZHctaGRtaSBoYXMgYmVlbgo+PiBtYW5hZ2VkIG9uIHRoZSB3aG9sZS4KPj4KPj4gSXQg
+YWxzbyBtZWFucyB0aGF0IHRoZSBicmlkZ2UgZHJpdmVyIG1haW50YWluZXIgaXMgYWJsZSB0byB0
+ZXN0IGNoYW5nZXMKPj4gdG8gdGhlIGJyaWRnZSBkcml2ZXIsIHJhdGhlciB0aGFuIGhhdmluZyBz
+b21lIG92ZXItYXJjaGluZyBicmlkZ2UKPj4gc3ViZGlyZWN0b3J5IG1haW50YWluZXIgd2hvIGRv
+ZXNuJ3QgaGF2ZSBhIGNsdWUgd2hldGhlciB0aGUgY2hhbmdlcwo+PiB3b3JrIG9uIHRoZSBoYXJk
+d2FyZS4KPj4KPj4gSU1ITywgaGF2aW5nIGJyaWRnZSBkcml2ZXIgYXV0aG9ycy9tYWludGFpbmVy
+cyBsb29rIGFmdGVyIHRoZWlyIG93bgo+PiBjb2RlIGhhcyBtYW55IGFkdmFudGFnZXMuCj4gVGhl
+IGF1dGhvciBqdXN0IHNlbmQgbWUgYSBwdWxsIHJlcXVlc3Qgd2l0aCBhY2tzIGZyb20gYSBnaXQg
+dHJlZQo+IHRoYXQgaG9wZWZ1bGx5IGJvdGggcGVvcGxlIGFncmVlZCBhbmQgdGVzdGVkIGZyb20u
+IE5vIG5lZWQgdG8KPiBzZW5kIHRoaXMgdmlhIGFub3RoZXIgbWFpbnRhaW5lciBsYXllci4KPgo+
+IERhdmUuCj4KCldvdywgdGhhbmtzIGFsbCAhIHN1Y2ggY29vbCBuZXdzICA6LUQgIEknbGwgcHJl
+cGFyZSBteSBwdWxsIHJlcXVlc3Qgc29vbgoKCi0gWWFraXIKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
