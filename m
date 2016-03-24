@@ -1,48 +1,82 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: Who is going to merge it [Was: Re: [PATCH v14 0/17] Add Analogix
- Core Display Port Driver]
-Date: Thu, 24 Mar 2016 15:00:32 +0000 (UTC)
-Message-ID: <5A08F152.40705__32430.2124245607$1458831632$gmane$org@rock-chips.com>
-References: <1455534485-1154-1-git-send-email-ykk@rock-chips.com>	<1919945.Y1tg0YzXlm@diego>	<56F1CAEB.3080701@samsung.com>	<8949624.HmxDpZAlt2@diego>	<56F1D0AD.8030905@samsung.com>	<20160322233906.GP19428@n2100.arm.linux.org.uk>	<56F1DB27.4040001@samsung.com>	<20160323000835.GQ19428@n2100.arm.linux.org.uk>
- <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
+From: Finley Xiao <finley.xiao@rock-chips.com>
+Subject: Re: [PATCH v2] cpufreq: rockchip: add driver
+Date: Thu, 24 Mar 2016 23:09:28 +0800
+Message-ID: <56F40328.5090001@rock-chips.com>
+References: <1458647848-48999-1-git-send-email-xf@rock-chips.com>
+ <1458699487-58470-1-git-send-email-xf@rock-chips.com>
+ <20160323044033.GQ5272@vireshk-i7> <56F35894.3020106@rock-chips.com>
+ <20160324064324.GG22062@vireshk-i7>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Date: Sun, 12 Nov 2017 20:11:46 -0500
-In-Reply-To: <CAPM=9tz9_rbGJFuv-+YN=Sicfng++tHTDLrOX5Ohtwft+VnwtA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Dave Airlie <airlied@gmail.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Gustavo Padovan <gustavo.padovan@collabora.co.uk>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Kukjin Kim <kgene@kernel.org>, Rob Herring <robherring2@gmail.com>, Thierry Reding <treding@nvidia.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>"linux-arm-kernel@lists.infradead.org" <l>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20160324064324.GG22062@vireshk-i7>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, Feng Xiao <xf@rock-chips.com>
+Cc: linux@arm.linux.org.uk, heiko@sntech.de, rjw@rjwysocki.net, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, tim.chen@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDAzLzIyLzIwMTYgMDg6NDEgUE0sIERhdmUgQWlybGllIHdyb3RlOgo+Pj4gU28gYWx0aG91
-Z2ggaXQncyBzbWFsbCBmcmFtZXdvcmsgb3IganVzdCBzdWJkaXJlY3RvcnksIHdlIHdvdWxkIG5l
-ZWQKPj4+IHNvbWVvbmUgd2hvIGNhbiBtYW5hZ2UgdGhlIGZyYW1ld29yayB0byBhdm9pZCBmdXJ0
-aGVyIGNvbmZ1c2lvbiBpZgo+Pj4gbmVjZXNzYXJ5Lgo+PiBTbyBtYXliZSBpdCBqdXN0IGRvZXNu
-J3QgbmVlZCBhIG1haW50YWluZXIsIGFuZCBtYXliZSB0aG9zZSB0aGUgb3duZXIKPj4gb2YgdGhl
-IGJyaWRnZSBkcml2ZXIgc2hvdWxkIGJlIHJlc3BvbnNpYmxlIGZvciBjaG9vc2luZyB0aGUgdHJl
-ZSB3aGljaAo+PiBpdCdzIG1lcmdlZCB0aHJvdWdoIGFsb25nIHdpdGggdXBkYXRlcy4gIFRoYXQn
-cyBob3cgZHctaGRtaSBoYXMgYmVlbgo+PiBtYW5hZ2VkIG9uIHRoZSB3aG9sZS4KPj4KPj4gSXQg
-YWxzbyBtZWFucyB0aGF0IHRoZSBicmlkZ2UgZHJpdmVyIG1haW50YWluZXIgaXMgYWJsZSB0byB0
-ZXN0IGNoYW5nZXMKPj4gdG8gdGhlIGJyaWRnZSBkcml2ZXIsIHJhdGhlciB0aGFuIGhhdmluZyBz
-b21lIG92ZXItYXJjaGluZyBicmlkZ2UKPj4gc3ViZGlyZWN0b3J5IG1haW50YWluZXIgd2hvIGRv
-ZXNuJ3QgaGF2ZSBhIGNsdWUgd2hldGhlciB0aGUgY2hhbmdlcwo+PiB3b3JrIG9uIHRoZSBoYXJk
-d2FyZS4KPj4KPj4gSU1ITywgaGF2aW5nIGJyaWRnZSBkcml2ZXIgYXV0aG9ycy9tYWludGFpbmVy
-cyBsb29rIGFmdGVyIHRoZWlyIG93bgo+PiBjb2RlIGhhcyBtYW55IGFkdmFudGFnZXMuCj4gVGhl
-IGF1dGhvciBqdXN0IHNlbmQgbWUgYSBwdWxsIHJlcXVlc3Qgd2l0aCBhY2tzIGZyb20gYSBnaXQg
-dHJlZQo+IHRoYXQgaG9wZWZ1bGx5IGJvdGggcGVvcGxlIGFncmVlZCBhbmQgdGVzdGVkIGZyb20u
-IE5vIG5lZWQgdG8KPiBzZW5kIHRoaXMgdmlhIGFub3RoZXIgbWFpbnRhaW5lciBsYXllci4KPgo+
-IERhdmUuCj4KCldvdywgdGhhbmtzIGFsbCAhIHN1Y2ggY29vbCBuZXdzICA6LUQgIEknbGwgcHJl
-cGFyZSBteSBwdWxsIHJlcXVlc3Qgc29vbgoKCi0gWWFraXIKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Viresh,
+
+can we add a of_match_table with a common compatible name as follows ?
+
+--- a/drivers/cpufreq/cpufreq-dt.c
++++ b/drivers/cpufreq/cpufreq-dt.c
+@@ -470,10 +470,16 @@ static int dt_cpufreq_remove(struct=20
+platform_device *pdev)
+         cpufreq_unregister_driver(&dt_cpufreq_driver);
+         return 0;
+  }
++static const struct of_device_id dt_cpufreq_of_match[] =3D {
++       { .compatible =3D "***,***", },
++       { }
++};
++MODULE_DEVICE_TABLE(of, dt_cpufreq_of_match);
+  static struct platform_driver dt_cpufreq_platdrv =3D {
+         .driver =3D {
+                 .name   =3D "cpufreq-dt",
++               .of_match_table =3D dt_cpufreq_of_match,
+         },
+
+--- a/arch/arm64/boot/dts/rockchip/rk3366.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3366.dtsi
++       cpufreq {
++               compatible =3D "***,***";
++       }
+
+Does it create a DT node for a dummy device too ?
+
+
+=E5=9C=A8 2016/3/24 14:43, Viresh Kumar =E5=86=99=E9=81=93:
+> On 24-03-16, 11:01, Feng Xiao wrote:
+>> hi all,
+>>       I found that it could match the cpufreq-dt driver succesfully =
+only with
+>> the following changes.
+>> --- a/arch/arm64/boot/dts/rockchip/rk3366.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3366.dtsi
+>> @@ -139,6 +139,10 @@
+>>                  };
+>>          };
+>>
+>> +       cpufreq-dt {   //the node name must be cpufreq-dt
+>> +               compatible =3D "rockchip,cpufreq";  //  the compatib=
+le name is
+>> insignificant
+>> +       };
+>> +
+> Its not allowed to create a DT node for a dummy device and so we neve=
+r
+> followed this way.
+>
+> I have just sent a patchset and cc'd you:
+> "[PATCH 0/3] cpufreq: dt: Create platform device from generic code"
+>
+> and so this patch shall get replaced now.
+>
+
+--=20
+=46inley
+
+
