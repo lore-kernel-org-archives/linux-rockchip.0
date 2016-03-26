@@ -1,57 +1,71 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH v5 0/4] Add more clock compatible features and support the RK3399 clock
-Date: Sat, 26 Mar 2016 14:37:52 +0800
-Message-ID: <1458974276-10325-1-git-send-email-zhengxing@rock-chips.com>
+Subject: [PATCH v5 1/4] clk: rockchip: fix big.LITTLE cores alternate reparent failed
+Date: Sat, 26 Mar 2016 14:37:53 +0800
+Message-ID: <1458974276-10325-2-git-send-email-zhengxing@rock-chips.com>
+References: <1458974276-10325-1-git-send-email-zhengxing@rock-chips.com>
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1458974276-10325-1-git-send-email-zhengxing@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On the RK3399, the order of the core's parents are LPLL/BPLL/DPLL/GPLL,
+there is incorrect to select bit_0 and bit_1 as the main and alternate
+parents for LPLL/BPLL. They should be configurable.
 
-Hi,
-  The patch series add support more mux parameters and multiple
-clock providers for the rockchip features of the clock framework,
-and support the clock controller for the RK3399.
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
 
+Changes in v5: None
+Changes in v3: None
+Changes in v2: None
 
-Changes in v5:
-- add some necessary clock IDs
-- keep PPLL independent into the part of the PMUCRU
-- fix PMUCRU IDs are out of range
-- add clock IDs to drivers reference
-- fix some important bugs
-- fix configuration for cpu tables
+ drivers/clk/rockchip/clk-cpu.c |   15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
-Changes in v3:
-- rename pclkin_cif to pclkin_cifmux, add diagram and comment for
-  pclkin_cifmux
-- add the clk_test node
-- modify the cif_testout path
-- include two new patches that dt-bindings and header file from
-  Jianqun's patch series
-
-Changes in v2:
-- rename the aplll/apllb to lpll/bpll
-- add drv/sample clock nodes for sdmmc/sdio
-
-Xing Zheng (4):
-  clk: rockchip: fix big.LITTLE cores alternate reparent failed
-  dt-bindings: add bindings for rk3399 clock controller
-  clk: rockchip: add dt-binding header for rk3399
-  clk: rockchip: add clock controller for the RK3399
-
- .../bindings/clock/rockchip,rk3399-cru.txt         |   83 ++
- drivers/clk/rockchip/Makefile                      |    1 +
- drivers/clk/rockchip/clk-cpu.c                     |   15 +-
- drivers/clk/rockchip/clk-rk3399.c                  | 1550 ++++++++++++++++++++
- drivers/clk/rockchip/clk.h                         |   24 +-
- include/dt-bindings/clock/rk3399-cru.h             |  752 ++++++++++
- 6 files changed, 2417 insertions(+), 8 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk3399.c
- create mode 100644 include/dt-bindings/clock/rk3399-cru.h
-
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index 5556849..4bb130c 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -258,7 +258,7 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	init.name = name;
+-	init.parent_names = &parent_names[0];
++	init.parent_names = &parent_names[reg_data->mux_core_main];
+ 	init.num_parents = 1;
+ 	init.ops = &rockchip_cpuclk_ops;
+ 
+@@ -276,10 +276,10 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 	cpuclk->clk_nb.notifier_call = rockchip_cpuclk_notifier_cb;
+ 	cpuclk->hw.init = &init;
+ 
+-	cpuclk->alt_parent = __clk_lookup(parent_names[1]);
++	cpuclk->alt_parent = __clk_lookup(parent_names[reg_data->mux_core_alt]);
+ 	if (!cpuclk->alt_parent) {
+-		pr_err("%s: could not lookup alternate parent\n",
+-		       __func__);
++		pr_err("%s: could not lookup alternate parent: (%d)\n",
++		       __func__, reg_data->mux_core_alt);
+ 		ret = -EINVAL;
+ 		goto free_cpuclk;
+ 	}
+@@ -291,10 +291,11 @@ struct clk *rockchip_clk_register_cpuclk(const char *name,
+ 		goto free_cpuclk;
+ 	}
+ 
+-	clk = __clk_lookup(parent_names[0]);
++	clk = __clk_lookup(parent_names[reg_data->mux_core_main]);
+ 	if (!clk) {
+-		pr_err("%s: could not lookup parent clock %s\n",
+-		       __func__, parent_names[0]);
++		pr_err("%s: could not lookup parent clock: (%d) %s\n",
++		       __func__, reg_data->mux_core_main,
++		       parent_names[reg_data->mux_core_main]);
+ 		ret = -EINVAL;
+ 		goto free_alt_parent;
+ 	}
 -- 
 1.7.9.5
 
