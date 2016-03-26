@@ -1,41 +1,58 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] phy: rockchip-emmc: adapt binding to specifiy
- register offset and length
-Date: Fri, 25 Mar 2016 09:53:13 -0500
-Message-ID: <20160325145313.GA506@rob-hp-laptop>
-References: <1458854943-17388-1-git-send-email-heiko@sntech.de>
- <1458854943-17388-3-git-send-email-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1458854943-17388-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: kishon-l0cyMroinI0@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH v5 0/4] Add more clock compatible features and support the RK3399 clock
+Date: Sat, 26 Mar 2016 14:37:52 +0800
+Message-ID: <1458974276-10325-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, devicetree@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 24, 2016 at 10:29:03PM +0100, Heiko Stuebner wrote:
-> The emmc-phy occupies a contiguous set of 8 registers inside the general
-> register files, so the reg property should specify this.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
-> This is essential a counter argument for Shawn's move from reg to reg_offset
-> in "phy: rockchip-emmc: fix compile issue on arm64 platform" [0].
-> With the move under the grf we now also are able to specify this stuff
-> cleanly using already present mechanisms.
-> 
-> Also meant to v4.6-rc before the binding solidifies.
-> 
-> 
-> [0] https://lkml.org/lkml/2016/3/8/114
-> 
->  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Hi,
+  The patch series add support more mux parameters and multiple
+clock providers for the rockchip features of the clock framework,
+and support the clock controller for the RK3399.
+
+
+Changes in v5:
+- add some necessary clock IDs
+- keep PPLL independent into the part of the PMUCRU
+- fix PMUCRU IDs are out of range
+- add clock IDs to drivers reference
+- fix some important bugs
+- fix configuration for cpu tables
+
+Changes in v3:
+- rename pclkin_cif to pclkin_cifmux, add diagram and comment for
+  pclkin_cifmux
+- add the clk_test node
+- modify the cif_testout path
+- include two new patches that dt-bindings and header file from
+  Jianqun's patch series
+
+Changes in v2:
+- rename the aplll/apllb to lpll/bpll
+- add drv/sample clock nodes for sdmmc/sdio
+
+Xing Zheng (4):
+  clk: rockchip: fix big.LITTLE cores alternate reparent failed
+  dt-bindings: add bindings for rk3399 clock controller
+  clk: rockchip: add dt-binding header for rk3399
+  clk: rockchip: add clock controller for the RK3399
+
+ .../bindings/clock/rockchip,rk3399-cru.txt         |   83 ++
+ drivers/clk/rockchip/Makefile                      |    1 +
+ drivers/clk/rockchip/clk-cpu.c                     |   15 +-
+ drivers/clk/rockchip/clk-rk3399.c                  | 1550 ++++++++++++++++++++
+ drivers/clk/rockchip/clk.h                         |   24 +-
+ include/dt-bindings/clock/rk3399-cru.h             |  752 ++++++++++
+ 6 files changed, 2417 insertions(+), 8 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3399.c
+ create mode 100644 include/dt-bindings/clock/rk3399-cru.h
+
+-- 
+1.7.9.5
+
+
