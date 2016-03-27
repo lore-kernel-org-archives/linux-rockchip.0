@@ -1,80 +1,161 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: veyron: enable the tsadc on pinky board
-Date: Sun, 27 Mar 2016 23:30:21 +0200
-Message-ID: <2666341.7YP6MciD7F@diego>
-References: <1450607434-6733-1-git-send-email-wxt@rock-chips.com> <2324215.uYLQVgh5FL@diego> <56F48D19.1050702@gmail.com>
+Subject: Re: [PATCH v5 2/4] dt-bindings: add bindings for rk3399 clock controller
+Date: Mon, 28 Mar 2016 01:52:12 +0200
+Message-ID: <1507551.YPleCY5ZQt@phil>
+References: <1458974276-10325-1-git-send-email-zhengxing@rock-chips.com> <1458974276-10325-3-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56F48D19.1050702-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <1458974276-10325-3-git-send-email-zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, elaine.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+Hi Xing,
 
-Am Freitag, 25. M=C3=A4rz 2016, 08:58:01 schrieb Caesar Wang:
-> =E5=9C=A8 2016=E5=B9=B403=E6=9C=8825=E6=97=A5 05:12, Heiko St=C3=BCbn=
-er =E5=86=99=E9=81=93:
-> > Am Sonntag, 20. Dezember 2015, 18:30:34 schrieb Caesar Wang:
-> >> I think the tsadc is fakly hand on pinky board,
-> >> maybe that's fixed in newest kernel.
-> >> As the following patch is a example:
-> >> https://patchwork.kernel.org/patch/7472051/
-> >>=20
-> >> I don't have meet this issue on pinky board.
-> >> Let me know if that's still hanging on pinky board.
-> >>=20
-> >> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> >=20
-> > I just gave that a try again on my pinky-rev2. And while the tsadc =
-did
-> > produce some results and didn't hang the system in my tries, the
-> > temperature values seemed to be frozen (only changing once on every
-> > reboot).
-> >=20
-> > Running the same kernel on a Jerry produced the expected results of=
- the
-> > temperature changing over time and differing cpu frequencies.
-> >=20
-> > Pinky also is a sort of dinosaur and only you and me seem to still =
-like
-> > them>=20
-> > :-) . And something is definitly strange here, and I'd tend to keep=
- the
-> > :tsadc>=20
-> > disabled for the time being.
+Am Samstag, 26. M=E4rz 2016, 14:37:54 schrieb Xing Zheng:
+> Add devicetree bindings for Rockchip cru which found on
+> Rockchip SoCs.
 >=20
-> I remember the same issue on
-> https://code.google.com/p/chrome-os-partner/issues/detail?id=3D35060 =
-in
-> the past
+> Signed-off-by: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> ---
 >=20
-> "thermal can 't work if  the hardware C1106 isn't removed in the
-> attachment."
+> Changes in v5: None
+> Changes in v3: None
+> Changes in v2: None
 >=20
-> So I think you can change this early board.
-
-As I'm a total noob when it comes to soldering (especially on such a ti=
-ny=20
-scale), I don't think that is an option ;-) .
-
-Reading that bug report again, brought back memories, that exactly this=
- was=20
-the issue why suspend didn't work correctly for me then.
-
-So I still think I'll keep the tsadc on pinky as it is now - as I said =
-before,=20
-it looks like you and me are the only people still caring for pinky and=
+>  .../bindings/clock/rockchip,rk3399-cru.txt         |   83
+> ++++++++++++++++++++ 1 file changed, 83 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+>=20
+> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-
+cru.txt
+> b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt new=
+ file
+> mode 100644
+> index 0000000..9427caa
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
+> @@ -0,0 +1,83 @@
+> +* Rockchip RK3399 Clock and Reset Unit
+> +
+> +The RK3399 clock controller generates and supplies clock to various
+> +controllers within the SoC and also implements a reset controller fo=
+r SoC
+> +peripherals.
+> +
+> +Required Properties:
+> +
+> +- compatible: PMU for CRU should be "rockchip,rk3399-pmucru"
+> +- compatible: CRU should be "rockchip,rk3399-cru"
+> +- reg: physical base address of the controller and length of memory=20
+mapped
+> +  region.
+> +- #clock-cells: should be 1.
+> +- #reset-cells: should be 1.
+> +
+> +Optional Properties:
+> +
+> +- rockchip,grf: phandle to the syscon managing the "general register=
 =20
-everybody else most likely put theirs into the trash already, so nothin=
-g=20
-terrible important is affected by this :-)
+files"
+> +  If missing, pll rates are not changeable, due to the missing pll l=
+ock
+> status. +
+
+the rk3399 doesn't need the GRF, so we should drop this block for now
+
+> +Each clock is assigned an identifier and client nodes can use this
+> identifier +to specify the clock which they consume. All available cl=
+ocks
+> are defined as +preprocessor macros in the dt-bindings/clock/rk3399-c=
+ru.h
+> headers and can be +used in device tree sources. Similar macros exist=
+ for
+> the reset sources in +these files.
+> +
+> +External clocks:
+> +
+> +There are several clocks that are generated outside the SoC. It is=20
+expected
+> +that they are defined using standard clock bindings with following
+> +clock-output-names:
+> + - "xin24m" - crystal input - required,
+> + - "xin32k" - rtc clock - optional,
+> + - "ext_i2s" - external I2S clock - optional,
+> + - "ext_gmac" - external GMAC clock - optional
+> + - "ext_hsadc" - external HSADC clock - optional,
+> + - "ext_isp" - external ISP clock - optional,
+> + - "ext_jtag" - external JTAG clock - optional
+> + - "ext_vip" - external VIP clock - optional,
+> + - "usbotg_out" - output clock of the pll in the otg phy
+
+external clock listing needs adjusting, something like
+
+- clkin_i2s
+- clkin_gmac
+--> remove ext_hsadc
+- clkin_cif
+--> remove ext_jtag
+--> remove ext_vip
+- clk_usbphy0_480m
+- clk_usbphy0_480m
+
+maybe?
+
+> +
+> +Example: General Register Files
+> +
+> +	pmugrf: syscon@ff320000 {
+> +		compatible =3D "rockchip,rk3399-pmugrf", "syscon";
+> +		reg =3D <0x0 0xff320000 0x0 0x1000>;
+> +	};
+> +
+> +	grf: syscon@ff770000 {
+> +		compatible =3D "rockchip,rk3399-grf", "syscon";
+> +		reg =3D <0x0 0xff770000 0x0 0x10000>;
+> +	};
+> +
+> +Example: Clock controller node:
+> +
+> +	pmucru: pmu-clock-controller@ff750000 {
+> +		compatible =3D "rockchip,rk3399-pmucru";
+> +		reg =3D <0x0 0xff750000 0x0 0x1000>;
+> +		rockchip,grf =3D <&pmugrf>;
+> +		#clock-cells =3D <1>;
+> +		#reset-cells =3D <1>;
+> +	};
+> +
+> +	cru: clock-controller@ff760000 {
+> +		compatible =3D "rockchip,rk3399-cru";
+> +		reg =3D <0x0 0xff760000 0x0 0x1000>;
+> +		rockchip,grf =3D <&grf>;
+> +		#clock-cells =3D <1>;
+> +		#reset-cells =3D <1>;
+> +	};
+
+also here drop grf nodes and rockchip,grf properties?
 
 
-Heiko
+> +
+> +Example: UART controller node that consumes the clock generated by t=
+he
+> clock +  controller:
+> +
+> +	uart0: serial@ff1a0000 {
+> +		compatible =3D "rockchip,rk3399-uart", "snps,dw-apb-uart";
+> +		reg =3D <0x0 0xff180000 0x0 0x100>;
+> +		clocks =3D <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +		clock-names =3D "baudclk", "apb_pclk";
+> +		interrupts =3D <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift =3D <2>;
+> +		reg-io-width =3D <4>;
+> +	};
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" i=
 n
