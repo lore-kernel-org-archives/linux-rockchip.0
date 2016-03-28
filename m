@@ -1,137 +1,217 @@
-From: Emil Velikov <emil.l.velikov@gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [RFC PATCH v1 0/4] Add Rockchip RGA support
-Date: Mon, 28 Mar 2016 23:07:59 +0100
-Message-ID: <CACvgo516ewfwGCpV=noX+re1x8t3Sp1t39Sha+A2-tQ5YsoihA@mail.gmail.com>
-References: <1458552518-25527-1-git-send-email-ykk@rock-chips.com>
- <13797722.SiyveTZ1bB@diego>
- <CACvgo52vL5_HQfgfnxRMzSJXYw-sWT3QozZaWswQXHr9-bwBSA@mail.gmail.com>
- <1571169.Hy8an0n7lM@diego>
+Date: Tue, 29 Mar 2016 00:13:55 +0200
+Message-ID: <17189219.y56YqHz6yR@diego>
+References: <1458552518-25527-1-git-send-email-ykk@rock-chips.com> <1571169.Hy8an0n7lM@diego> <CACvgo516ewfwGCpV=noX+re1x8t3Sp1t39Sha+A2-tQ5YsoihA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1571169.Hy8an0n7lM@diego>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: devicetree <devicetree@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CACvgo516ewfwGCpV=noX+re1x8t3Sp1t39Sha+A2-tQ5YsoihA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: Yakir Yang <ykk@rock-chips.com>, David Airlie <airlied@linux.ie>, Mark Yao <mark.yao@rock-chips.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Russell King <linux@arm.linux.org.uk>, devicetree <devicetree@vger.kernel.org>, linux-kernel@vger.kernel.org, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjggTWFyY2ggMjAxNiBhdCAyMjo0NiwgSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5k
-ZT4gd3JvdGU6Cj4gQW0gTW9udGFnLCAyOC4gTcOkcnogMjAxNiwgMjI6MzU6MzYgc2NocmllYiBF
-bWlsIFZlbGlrb3Y6Cj4+IE9uIDI4IE1hcmNoIDIwMTYgYXQgMTk6NDQsIEhlaWtvIFN0w7xibmVy
-IDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+PiA+IEFtIE1vbnRhZywgMjguIE3DpHJ6IDIwMTYs
-IDEzOjIxOjAyIHNjaHJpZWIgRW1pbCBWZWxpa292Ogo+PiA+PiBPbiAyMiBNYXJjaCAyMDE2IGF0
-IDAwOjQyLCBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPj4gPj4gPiBI
-aSBZYWtpciwKPj4gPj4gPgo+PiA+PiA+IEFtIE1vbnRhZywgMjEuIE3DpHJ6IDIwMTYsIDIwOjE3
-OjQ2IHNjaHJpZWIgWWFraXIgWWFuZzoKPj4gPj4gPj4gT24gMDMvMjEvMjAxNiAwNzoyOSBQTSwg
-SGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+ID4+ID4+ID4gQW0gTW9udGFnLCAyMS4gTcOkcnogMjAx
-NiwgMTc6Mjg6Mzggc2NocmllYiBZYWtpciBZYW5nOgo+PiA+PiA+PiA+PiBUaGlzIHBhdGNoIHNl
-dCB3b3VsZCBhZGQgdGhlIFJHQSBkaXJlY3QgcmVuZGVyaW5nIGJhc2VkIDJkIGdyYXBoaWNzCj4+
-ID4+ID4+ID4+IGFjY2VsZXJhdGlvbiBtb2R1bGUuCj4+ID4+ID4+ID4KPj4gPj4gPj4gPiB2ZXJ5
-IGNvb2wgdG8gc2VlIHRoYXQuCj4+ID4+ID4+Cj4+ID4+ID4+IDspCj4+ID4+ID4+Cj4+ID4+ID4+
-ID4+IFRoaXMgcGF0Y2ggc2V0IGlzIGJhc2VkIG9uIGdpdCByZXBvc2l0b3J5IGJlbG93Ogo+PiA+
-PiA+PiA+PiBnaXQ6Ly9wZW9wbGUuZnJlZWRlc2t0b3Aub3JnL35haXJsaWVkL2xpbnV4IGRybS1u
-ZXh0Cj4+ID4+ID4+ID4+IGNvbW1pdCBpZDogNTY4ZDdjNzY0YWUwMWYzNzA2MDg1YWM4ZjBkOGE4
-YWM3ZTgyNmJkNwo+PiA+PiA+PiA+Pgo+PiA+PiA+PiA+PiBBbmQgdGhlIFJHQSBkcml2ZXIgaXMg
-YmFzZWQgb24gRXh5bm9zIEcyRCBkcml2ZXIsIGl0IG9ubHkgbWFuYWdlcwo+PiA+PiA+PiA+PiB0
-aGUKPj4gPj4gPj4gPj4gY29tbWFuZCBsaXN0cyByZWNlaXZlZCBmcm9tIHVzZXIsIHNvIHVzZXIg
-c2hvdWxkIG1ha2UgdGhlIGNvbW1hbmQKPj4gPj4gPj4gPj4gbGlzdAo+PiA+PiA+PiA+PiB0byBk
-YXRhIGFuZCByZWdpc3RlcnMgbmVlZGVkIGJ5IG9wZXJhdGlvbiB0byB1c2UuCj4+ID4+ID4+ID4+
-Cj4+ID4+ID4+ID4+IEkgaGF2ZSBwcmVwYXJlZCBhbiB1c2Vyc3BhY2UgZGVtbyBhcHBsaWNhdGlv
-biBmb3IgdGVzdGluZzoKPj4gPj4gPj4gPj4gICAgaHR0cHM6Ly9naXRodWIuY29tL3lha2lyLVlh
-bmcvbGliZHJtLXJvY2tjaGlwCj4+ID4+ID4+ID4+Cj4+ID4+ID4+ID4+IFRoYXQgaXMgYSByb2Nr
-Y2hpcCBsaWJkcm0gbGlicmFyeSwgYW5kIEkgaGF2ZSB3cml0ZSBhIHNpbXBsZSB0ZXN0Cj4+ID4+
-ID4+ID4+IGNhc2UKPj4gPj4gPj4gPj4gInJvY2tjaGlwX3JnYV90ZXN0IiB0aGF0IHdvdWxkIHRl
-c3QgdGhlIGJlbG93IFJHQSBmZWF0dXJlczoKPj4gPj4gPj4gPj4gLSBzb2xpZAo+PiA+PiA+PiA+
-PiAtIGNvcHkKPj4gPj4gPj4gPj4gLSByb3RhdGlvbgo+PiA+PiA+PiA+PiAtIGZsaXAKPj4gPj4g
-Pj4gPj4gLSB3aW5kb3cgY2xpcAo+PiA+PiA+PiA+PiAtIGRpdGhlcmluZwo+PiA+PiA+PiA+Cj4+
-ID4+ID4+ID4gRGlkIHlvdSBzdWJtaXQgeW91ciBsaWJkcm0gY2hhbmdlcyBhcyB3ZWxsPwo+PiA+
-PiA+PiA+Cj4+ID4+ID4+ID4gVXNlcnNwYWNlLWludGVyZmFjZXMgbmVlZCB0byBiZSBzdGFibGUg
-c28gdGhlIG90aGVyIHNpZGUgbXVzdCBhbHNvCj4+ID4+ID4+ID4gZ2V0Cj4+ID4+ID4+ID4gYWNj
-ZXB0ZWQgLSBldmVuIGJlZm9yZSB0aGUga2VybmVsIGNoYW5nZSBpZiBJIHJlbWVtYmVyIGNvcnJl
-Y3RseS4KPj4gPj4gPj4KPj4gPj4gPj4gR290IGl0LCBhbmQgSSBqdXN0IHNhdyBleHlub3NfZmlt
-ZzJkIGFscmVhZHkgbGFuZGVkIGF0IG1haW5saW5lCj4+ID4+ID4+IGxpYmRybS4KPj4gPj4gPj4g
-QnV0IEkgZG9uJ3QgZmluZCB0aGUgd2F5IHRvIHN1Ym1pdCBwYXRjaGVzIHRvIGxpYmRybSwgd291
-bGQgeW91IGxpa2UKPj4gPj4gPj4gc2hhcmUgc29tZSBoZWxwcyBoZXJlIDspCj4+ID4+ID4KPj4g
-Pj4gPiBMb29raW5nIGF0IHRoZSBsaWJkcm0gc291cmNlcyBvbiBjZ2l0LmZyZWVkZXNrdG9wLm9y
-ZywgSSBkaWQgbm90IGZpbmQKPj4gPj4gPiBhbnkKPj4gPj4gPiBzcGVjaWZpYyBtYW51YWwgb24g
-c3VibWl0dGluZyBwYXRjaGVzLgo+PiA+PiA+Cj4+ID4+ID4gQnV0IGxvb2tpbmcgYXQgdGhlIGRy
-aS1saXN0IGFyY2hpdmUsIGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcgaXMKPj4gPj4g
-PiB0aGUKPj4gPj4gPiByaWdodCBsaXN0IGFuZCBsb29raW5nIGF0IHRoZSBsaWJkcm0gaGlzdG9y
-eSBpdCBsb29rcyBsaWtlIEVtaWwgVmVsaWtvdgo+PiA+PiA+IDxlbWlsLmwudmVsaWtvdkBnbWFp
-bC5jb20+IHNlZW1zIHRvIGJlIGRvaW5nIG1haW50ZW5hbmNlLXN0dWZmIGluCj4+ID4+ID4gbGli
-ZHJtLgo+PiA+PiA+IEFuZCBhcyBhIDNyZCByZWNpcGllbnQsIHBsZWFzZSBhbHNvIGluY2x1ZGUg
-dGhlIGxpbnV4LXJvY2tjaGlwIGxpc3QuCj4+ID4+ID4KPj4gPj4gPiBARW1pbCwgcGxlYXNlIHNo
-b3V0IGlmIEkgcmVhZCB0aGF0IHdyb25nIDotKQo+PiA+Pgo+PiA+PiBZb3UgZ290IGl0IHNwb3Qg
-b24gSGVpa28uIFRoZXJlIGFyZSBhIGZldyBub3RlcyB0aG91Z2guLi4KPj4gPj4KPj4gPj4gQXMg
-b25lIHJldXNlcyB0aGUgZXhpc3RpbmcgaGFyZHdhcmUvSVAgYmxvY2ssIGl0IHdvdWxkIGJlIGJl
-dHRlciB0bwo+PiA+PiBhdm9pZCBjb3B5L3Bhc3RpbmcgY29kZSBhcm91bmQuCj4+ID4+Cj4+ID4+
-IE5hbWVseToKPj4gPj4gIC0gKGlmIHBvc3NpYmxlKSBmYWN0b3Igb3V0IHRoZSBleHlub3MgZzJk
-IGtlcm5lbCBmdW5jdGlvbmFsaXR5IHRvIGEKPj4gPj4KPj4gPj4gc2VwYXJhdGUga2VybmVsIG1v
-ZHVsZSBhbmQgd2lyZSB1cCB0aGUgcm9ja2hpcCAodmlhIGR0ID8pIHRvIHVzZSBpdAo+PiA+Pgo+
-PiA+PiAgLSBmYWN0b3Igb3V0IHRoZSBnMmQgc3BlY2lmaWNzIG91dCBvZiBleHlub3NfZHJtLmgg
-KGludG8KPj4gPj4KPj4gPj4gZXh5bm9zX2cyZF9kcm0uaCBwZXJoYXBzID8pIGFuZCBtYWtlIHN1
-cmUgZXh5bm9zX2RybS5oIGluY2x1ZGVzIHRoZQo+PiA+PiBuZXcgaGVhZGVyCj4+ID4KPj4gPiBJ
-IHRoaW5rIHRoZSBJUCBibG9ja3MgdGhlbXNlbGYgYXJlIHF1aXRlIGRpZmZlcmVudCBiZXR3ZWVu
-IFJvY2tjaGlwJ3MgUkdBCj4+ID4gYW5kIFNhbXN1bmcncyBnMmQgYW5kIEkgZ3Vlc3MgdGhlIHNp
-bWlsYXJpdGllcyBhcmUgbW9yZSBhbG9uZyB0aGUgbGluZXMKPj4gPiBvbiBob3cgdGhhdCBnZXRz
-IGludGVncmF0ZWQgaW50byB0aGUgcmVzcGVjdGl2ZSBkcm0gZHJpdmVyIGFuZCB1c2Vyc3BhY2Uu
-Cj4+IEluIHRoaXMgY2FzZSwgdGhlIGV4eW5vc19nMmRfZHJtLmggc2VlbXMgbGlrZSBhIGdvb2Qg
-aWRlYS4gQXMgSSdtCj4+IG9idmlvdXNseSBiaWFzZWQsIGl0J3MgYmV0dGVyIHRvIGNoZWNrIGhv
-dyBvdGhlcnMgZmVlbCBvbiB0aGUgdG9waWMuCj4+Cj4+ID4+ICAtIGlmIG5laXRoZXIgb2YgdGhl
-c2UgYXJlIHBvc3NpYmxlLCB0aGVuIHBsZWFzZSBlbnN1cmUgdGhhdCB0aGUgbmV3Cj4+ID4+Cj4+
-ID4+IGhlYWRlciB1c2VzIGNvcnJlY3QgdHlwZXMgKHNlZSB0aGUgZG9jcyBbMV0pLCB1c2UgTUlU
-L1gxMSBsaWNlbnNlIChpZgo+PiA+PiBwb3NzaWJsZSkgYW5kIGxpbmsgd2hlcmUgdXBzdHJlYW0g
-dXNlcnNwYWNlIGlzIGhhcHB5IHdpdGggdGhlCj4+ID4+IGludGVyZmFjZSAoaWRlYWxseSBtb3Jl
-IHRoYW4gYSBzaW1wbGUgdGVzdCBhcHAgbGlrZSBsaWJkcm0pCj4+ID4+IFRoZXNlIG1pZ2h0IHNv
-dW5kIGxpa2UgYW4gb3ZlcmtpbGwsIGFsdGhvdWdoIGdldHRpbmcgVUFQSSByaWdodCBhbmQKPj4g
-Pj4gbWFpbnRhaW5pbmcgaXQgZm9yZXZlciBmb3JjZXMgdXMgdG8gZG8gc28uCj4+ID4KPj4gPiBB
-cyBmb3IgYSByZWFsLXdvcmxkIHVzZWNhc2UsIG1heWJlIHRoZSBhcm1zb2MgeHNlcnZlciBtaWdo
-dCBiZSBzb21ld2hhdAo+PiA+IGVhc3kgdG8gdXNlLiBXaGlsZSB0aGUgY29yZSBjaGFuZ2VzIEkg
-ZGlkIGFyZSBpbiB0aGUgY29yZSBwcm9qZWN0Cj4+ID4gYWxyZWFkeSwgSSdtIHN0aWxsIGtlZXBp
-bmcgdGhlIGFjdHVhbCBSb2NrY2hpcCBzdXBwb3J0IHNlcGFyYXRlIFswXSBkdWUKPj4gPiB0byB0
-aGUgbm90LXlldC0gcmVzb2x2ZWQgY3JlYXRlX2dlbSBpb2N0bC4KPj4gPgo+PiA+IEFueXdheSwg
-dGhlIGFybXNvYyB4c2VydmVyIGhhcyBzb21lIGV4YSBpbXBsZW1lbnRhdGlvbiBob29rcyB3ZXJl
-IEkgZ3Vlc3MKPj4gPiBpdCBtaWdodCBiZSByZWxhdGl2ZWx5IGVhc3kgdG8gaG9vayB1cCBzb2Mt
-c3BlY2lmaWMgdGhpbmdzLgo+Pgo+PiBPdWNoIHRoZSBhcm1zb2MgZGR4Li4uIExhc3QgdGltZSBJ
-J3ZlIGNoZWNrZWQgaXQgZmVsdCBsaWtlIGEgcGxhY2UKPj4gd2hlcmUgZXZlcnlvbmUgaXMgZG9p
-bmcgaGlzIG93biB0aGluZywgd2l0aCBubyBhY3R1YWwgcmV2aWV3cyBhbmQvb3IKPj4gbWFpbnRh
-aW5lci4KPgo+IFRoZSBkZXZlbG9wbWVudCByYXRlIGlzIHByZXR0eSBsb3cgYW5kIG1haW50YWlu
-ZXJzaGlwIGlzIHVuY2xlYXIgYnV0IHRoZSBwZXItCj4gc29jIHZvb2RvbyBpcyBxdWl0ZSBsaW1p
-dGVkIHRvIHRoZSBHRU0tY3JlYXRpb24gYW5kIGV2ZXJ5dGhpbmcgZWxzZSBzZWVtcwo+IHNvbWV3
-aGF0IG5pY2Ugd2hlbiBjb21wYXJlZCBmb3IgZXhhbXBsZSB0byB0aGUgb2xkZXIgdmVyc2lvbnMg
-b2YgdGhlIGRkeC4KPgo+Cj4+IElpcmMgbW9zdC9hbGwgb2YgaXQncyBmdW5jdGlvbmFsaXR5IHdh
-cyBhY2hpZXZhYmxlIHdpdGgKPj4gbW9kZXNldHRpbmcgZGR4ICh3aXRoIG9yIHdpdGhvdXQgZ2xh
-bW9yKSA/IEkgdGFrZSBpdCB0aGF0IHRoaW5ncyBoYXZlCj4+IGNoYW5nZWQgYW5kL29yIEkgbWlz
-dW5kZXJzdG9vZCBzb21ldGhpbmcgPwo+Cj4gSSBkb24ndCByZWFsbHkgdW5kZXJzdGFuZCB0aGF0
-IHdob2xlIHN0YWNrIG9yIGhvdyB4c2VydmVycyB3b3JrIG9uIGEgd2hvbGUgOy0pCj4gSSB3YXMg
-bWVyZWx5IGFibGUgdG8gbWFrZSB0aGUgX2JpbmFyeV8gbWFsaS1kcml2ZXIgd29yayB3aXRoIHRo
-aXMgb25lIGFuZAo+IHJlbWVtYmVyZWQgdGhhdCB0aGVyZSB3ZXJlIGhvb2tzIGZvciBmdXR1cmUg
-cGVyLXNvYyBleGEgZnVuY3Rpb25zLgo+Cj4gSSBndWVzcyBmb3IgdGhhdCBnbGFtb3IgdGhpbmcg
-eW91J2QgbmVlZCBhbiBhY3R1YWwgZ3B1IGRyaXZlciBhbmQgbm90IHRoYXQKPiBsaWJHTC1vdmVy
-cmlkZSB2b29kb28gdGhvc2UgY3JhenkgYmluYXJ5IGRyaXZlcnMgZG8uCj4KPiBBdCBsZWFzdCB0
-aGUgbW9kZXNldHRpbmcgZGR4IGRpZG4ndCBsaWtlIG1hbGktYmluYXJ5LWRyaXZlci4KPgpBIHF1
-aWNrIHJ1bmRvd24gb2YgdGhlIHdob2xlIHRoaW5nIChzaW1wbGlmaWVkIGFuZCBtYXliZSBzbGln
-aHRseSBvZmYpCi0gdGhlIG1vZGVzZXR0aW5nIEREWCAobWVyZ2VkIGluIHhzZXJ2ZXIgZm9yIGEg
-ZmV3IHJlbGVhc2VzIG5vdyksCnJlbGllcyBvbiBHQk0gZm9yIGJ1ZmZlciBtYW5hZ2VtZW50IGFu
-ZCBHTHssRVN9IGZvciBhY2NlbGVyYXRpb24uIE9uCnRoZSBLTVMgc2lkZSBpdCdzIGFzIGdlbmVy
-aWMgYXMgYW55IG90aGVyIGRyaXZlciBzaG91bGQgYmUuCgpJJ20gbm90IHN1cmUgaG93IHdlbGwg
-bW9kZXNldHRpbmcgd29ya3Mgd2l0aG91dCBnYm0sIGJ1dCBpdCBzaG91bGQgYmUKYWJsZSB0byBi
-dWlsZCBhdCBsZWFzdC4gQWJvdXQgZ2V0dGluZyBpdCAob3Igb3RoZXJzKSB0byB3b3JrIHdpdGgK
-YmluYXJ5IGJsb2JzLi4uIEkgZ3Vlc3MgeW91IGtub3cgd2hhdCBteSBhbmQgb3RoZXJzJyB2aWV3
-IGlzLiBQbGFjZQp0aGUgZmFjdCB0aGF0IG9uZSB0cmllcyB0byB1cHN0cmVhbSBhIGtlcm5lbCBp
-bnRlcmZhY2Ugd2hpY2gsCmluZGlyZWN0bHksIGludGVyYWN0cyB3aXRoIHN1Y2ggYSBtb2R1bGUg
-bWFrZXMgdGhpbmdzIGV2ZW4gbW9yZSAuLi4KbG92ZWx5LgoKU29ycnkgdG8gYmUgdGhlIGJlYXJl
-ciBvZiBiYWQgbmV3cy4gSWYgeW91IGhhdmUgb3RoZXIgaWRlYXMgb3Igb3RoZXJzCmZlZWxzIGxp
-a2UgSSdtIG92ZXJseSBkcmFtYXRpYyBsZXQgbWUga25vdywgcGxlYXNlLgoKLUVtaWwKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
-bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Am Montag, 28. M=E4rz 2016, 23:07:59 schrieb Emil Velikov:
+> On 28 March 2016 at 22:46, Heiko St=FCbner <heiko@sntech.de> wrote:
+> > Am Montag, 28. M=E4rz 2016, 22:35:36 schrieb Emil Velikov:
+> >> On 28 March 2016 at 19:44, Heiko St=FCbner <heiko@sntech.de> wrote=
+:
+> >> > Am Montag, 28. M=E4rz 2016, 13:21:02 schrieb Emil Velikov:
+> >> >> On 22 March 2016 at 00:42, Heiko Stuebner <heiko@sntech.de> wro=
+te:
+> >> >> > Hi Yakir,
+> >> >> >=20
+> >> >> > Am Montag, 21. M=E4rz 2016, 20:17:46 schrieb Yakir Yang:
+> >> >> >> On 03/21/2016 07:29 PM, Heiko St=FCbner wrote:
+> >> >> >> > Am Montag, 21. M=E4rz 2016, 17:28:38 schrieb Yakir Yang:
+> >> >> >> >> This patch set would add the RGA direct rendering based 2=
+d
+> >> >> >> >> graphics
+> >> >> >> >> acceleration module.
+> >> >> >> >=20
+> >> >> >> > very cool to see that.
+> >> >> >>=20
+> >> >> >> ;)
+> >> >> >>=20
+> >> >> >> >> This patch set is based on git repository below:
+> >> >> >> >> git://people.freedesktop.org/~airlied/linux drm-next
+> >> >> >> >> commit id: 568d7c764ae01f3706085ac8f0d8a8ac7e826bd7
+> >> >> >> >>=20
+> >> >> >> >> And the RGA driver is based on Exynos G2D driver, it only
+> >> >> >> >> manages
+> >> >> >> >> the
+> >> >> >> >> command lists received from user, so user should make the
+> >> >> >> >> command
+> >> >> >> >> list
+> >> >> >> >> to data and registers needed by operation to use.
+> >> >> >> >>=20
+> >> >> >> >> I have prepared an userspace demo application for testing=
+:
+> >> >> >> >>    https://github.com/yakir-Yang/libdrm-rockchip
+> >> >> >> >>=20
+> >> >> >> >> That is a rockchip libdrm library, and I have write a sim=
+ple
+> >> >> >> >> test
+> >> >> >> >> case
+> >> >> >> >> "rockchip_rga_test" that would test the below RGA feature=
+s:
+> >> >> >> >> - solid
+> >> >> >> >> - copy
+> >> >> >> >> - rotation
+> >> >> >> >> - flip
+> >> >> >> >> - window clip
+> >> >> >> >> - dithering
+> >> >> >> >=20
+> >> >> >> > Did you submit your libdrm changes as well?
+> >> >> >> >=20
+> >> >> >> > Userspace-interfaces need to be stable so the other side m=
+ust
+> >> >> >> > also
+> >> >> >> > get
+> >> >> >> > accepted - even before the kernel change if I remember cor=
+rectly.
+> >> >> >>=20
+> >> >> >> Got it, and I just saw exynos_fimg2d already landed at mainl=
+ine
+> >> >> >> libdrm.
+> >> >> >> But I don't find the way to submit patches to libdrm, would =
+you
+> >> >> >> like
+> >> >> >> share some helps here ;)
+> >> >> >=20
+> >> >> > Looking at the libdrm sources on cgit.freedesktop.org, I did =
+not
+> >> >> > find
+> >> >> > any
+> >> >> > specific manual on submitting patches.
+> >> >> >=20
+> >> >> > But looking at the dri-list archive, dri-devel@lists.freedesk=
+top.org
+> >> >> > is
+> >> >> > the
+> >> >> > right list and looking at the libdrm history it looks like Em=
+il
+> >> >> > Velikov
+> >> >> > <emil.l.velikov@gmail.com> seems to be doing maintenance-stuf=
+f in
+> >> >> > libdrm.
+> >> >> > And as a 3rd recipient, please also include the linux-rockchi=
+p list.
+> >> >> >=20
+> >> >> > @Emil, please shout if I read that wrong :-)
+> >> >>=20
+> >> >> You got it spot on Heiko. There are a few notes though...
+> >> >>=20
+> >> >> As one reuses the existing hardware/IP block, it would be bette=
+r to
+> >> >> avoid copy/pasting code around.
+> >> >>=20
+> >> >> Namely:
+> >> >>  - (if possible) factor out the exynos g2d kernel functionality=
+ to a
+> >> >>=20
+> >> >> separate kernel module and wire up the rockhip (via dt ?) to us=
+e it
+> >> >>=20
+> >> >>  - factor out the g2d specifics out of exynos_drm.h (into
+> >> >>=20
+> >> >> exynos_g2d_drm.h perhaps ?) and make sure exynos_drm.h includes=
+ the
+> >> >> new header
+> >> >=20
+> >> > I think the IP blocks themself are quite different between Rockc=
+hip's
+> >> > RGA
+> >> > and Samsung's g2d and I guess the similarities are more along th=
+e lines
+> >> > on how that gets integrated into the respective drm driver and
+> >> > userspace.
+> >>=20
+> >> In this case, the exynos_g2d_drm.h seems like a good idea. As I'm
+> >> obviously biased, it's better to check how others feel on the topi=
+c.
+> >>=20
+> >> >>  - if neither of these are possible, then please ensure that th=
+e new
+> >> >>=20
+> >> >> header uses correct types (see the docs [1]), use MIT/X11 licen=
+se (if
+> >> >> possible) and link where upstream userspace is happy with the
+> >> >> interface (ideally more than a simple test app like libdrm)
+> >> >> These might sound like an overkill, although getting UAPI right=
+ and
+> >> >> maintaining it forever forces us to do so.
+> >> >=20
+> >> > As for a real-world usecase, maybe the armsoc xserver might be s=
+omewhat
+> >> > easy to use. While the core changes I did are in the core projec=
+t
+> >> > already, I'm still keeping the actual Rockchip support separate =
+[0] due
+> >> > to the not-yet- resolved create_gem ioctl.
+> >> >=20
+> >> > Anyway, the armsoc xserver has some exa implementation hooks wer=
+e I
+> >> > guess
+> >> > it might be relatively easy to hook up soc-specific things.
+> >>=20
+> >> Ouch the armsoc ddx... Last time I've checked it felt like a place
+> >> where everyone is doing his own thing, with no actual reviews and/=
+or
+> >> maintainer.
+> >=20
+> > The development rate is pretty low and maintainership is unclear bu=
+t the
+> > per- soc voodoo is quite limited to the GEM-creation and everything=
+ else
+> > seems somewhat nice when compared for example to the older versions=
+ of
+> > the ddx.>=20
+> >> Iirc most/all of it's functionality was achievable with
+> >> modesetting ddx (with or without glamor) ? I take it that things h=
+ave
+> >> changed and/or I misunderstood something ?
+> >=20
+> > I don't really understand that whole stack or how xservers work on =
+a whole
+> > ;-) I was merely able to make the _binary_ mali-driver work with th=
+is one
+> > and remembered that there were hooks for future per-soc exa functio=
+ns.
+> >=20
+> > I guess for that glamor thing you'd need an actual gpu driver and n=
+ot that
+> > libGL-override voodoo those crazy binary drivers do.
+> >=20
+> > At least the modesetting ddx didn't like mali-binary-driver.
+>=20
+> A quick rundown of the whole thing (simplified and maybe slightly off=
+)
+> - the modesetting DDX (merged in xserver for a few releases now),
+> relies on GBM for buffer management and GL{,ES} for acceleration. On
+> the KMS side it's as generic as any other driver should be.
+>=20
+> I'm not sure how well modesetting works without gbm, but it should be
+> able to build at least. About getting it (or others) to work with
+> binary blobs... I guess you know what my and others' view is. Place
+> the fact that one tries to upstream a kernel interface which,
+> indirectly, interacts with such a module makes things even more ...
+> lovely.
+>=20
+> Sorry to be the bearer of bad news. If you have other ideas or others
+> feels like I'm overly dramatic let me know, please.
+
+I have the feeling we're going quite a bit off-topic right now :-) .
+The binary-driver-crazyness, hasn't really anything to do with Yakir's =
+support=20
+for the RGA (which is about raster-graphics-acceleration, so 2d stuff).
+
+And me mentioning the armsoc-ddx was merely a means to allow some sort =
+of=20
+different userspace user, as requested in your original mail ;-) .
+
+Maybe you know a better use-case on where to demonstrate the viability =
+of the=20
+userspace API for it as originally requested.
