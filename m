@@ -1,160 +1,57 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH v6 2/4] power: reset: add reboot mode driver
-Date: Mon, 28 Mar 2016 15:34:32 +0900
-Message-ID: <56F8D078.6040503@samsung.com>
-References: <1458646525-491-1-git-send-email-andy.yan@rock-chips.com>
- <1458646642-591-1-git-send-email-andy.yan@rock-chips.com>
- <CAJKOXPcKzGTAicbsXK-cC9WQT0vBhpSG_q2GCn37+72x2hdhsQ@mail.gmail.com>
- <56F39F36.5050702@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: vop: Disable planes when disabling CRTC
+Date: Mon, 28 Mar 2016 14:39:32 +0800
+Message-ID: <56F8D1A4.2080603@rock-chips.com>
+References: <1458659284-14039-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-reply-to: <56F39F36.5050702@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de, galak@codeaurora.org, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, olof@lixom.net, alexandre.belloni@free-electrons.com, dbaryshkov@gmail.com, jun.nie@linaro.org, pawel.moll@arm.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, f.fainelli@gmail.com, linux@arm.linux.org.uk, mbrugger@suse.com, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dwmw2@infradead.org, mark.rutland@arm.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1458659284-14039-1-git-send-email-tomeu.vizoso@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 24.03.2016 17:03, Andy Yan wrote:
-> Hi Krzystof:
-
-(...)
-
->>> +static int get_reboot_mode_magic(struct reboot_mode_driver *reboot,
->>> +                                const char *cmd)
->>> +{
->>> +       const char *normal = "normal";
->>> +       int magic = 0;
->>> +       struct mode_info *info;
->>> +
->>> +       if (!cmd)
->>> +               cmd = normal;
->>> +
->>> +       list_for_each_entry(info, &reboot->head, list) {
->>> +               if (!strcmp(info->mode, cmd)) {
->>> +                       magic = info->magic;
->>> +                       break;
->>> +               }
->>> +       }
->>> +
->>> +       return magic;
->> In absence of 'normal' mode (it is not described as required property)
->> the magic will be '0'. It would be nice to document that in bindings.
->> Imagine someone forgets about this and will wonder why 0x0 is written
->> to his precious register on normal reboot...
-> 
->     If the magic value is '0', we won't touch the register, please see
-> reboot_mode_notify bellow.
-
-Ah, indeed... so we cannot use value of '0' for magic (e.g. to clear any
-existing value for normal reboot)?
-
->> It would be nice to document that 'mode-normal' has a special
->> (hard-coded) meaning.
->>
->>> +}
->>> +
->>> +static int reboot_mode_notify(struct notifier_block *this,
->>> +                             unsigned long mode, void *cmd)
->>> +{
->>> +       struct reboot_mode_driver *reboot;
->>> +       int magic;
->>> +
->>> +       reboot = container_of(this, struct reboot_mode_driver,
->>> reboot_notifier);
->>> +       magic = get_reboot_mode_magic(reboot, cmd);
->>> +       if (magic)
->>> +               reboot->write(magic);
->>> +
->>> +       return NOTIFY_DONE;
->>> +}
->>> +
->>> +int reboot_mode_register(struct device *dev, int (*write)(int))
->>> +{
->>> +       struct reboot_mode_driver *reboot;
->>> +       struct mode_info *info;
->>> +       struct property *prop;
->>> +       size_t len = strlen(PREFIX);
->>> +       int ret;
->>> +
->>> +       reboot = devm_kzalloc(dev, sizeof(*reboot), GFP_KERNEL);
->>> +       if (!reboot)
->>> +               return -ENOMEM;
->>> +
->>> +       reboot->write = write;
->>> +       INIT_LIST_HEAD(&reboot->head);
->>> +       for_each_property_of_node(dev->of_node, prop) {
->>> +               if (len > strlen(prop->name) || strncmp(prop->name,
->>> PREFIX, len))
->>> +                       continue;
->> New line please for readability.
-> 
->     Okay
->>
->>> +               info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
->>> +               if (!info)
->>> +                       return -ENOMEM;
->> Ditto.
-> 
->     Okay
->>
->>> +               strcpy(info->mode, prop->name + len);
->> Ehm, and how do you protect that name of mode is shorter than 32
->> characters?
-> 
->     How about info->mode = prop->name + len ?
-
-I don't get your answer.
-As fair as I read the code, the prop->name can be very long and you are
-copying it from 5 character. If the name of the mode has bazillion
-characters then again my question: how do you protect that it will fit
-in 32 bytes of 'mode'?
-
-
->>
->>> +               if (of_property_read_u32(dev->of_node, prop->name,
->>> &info->magic)) {
->>> +                       dev_err(dev, "reboot mode %s without magic
->>> number\n",
->>> +                               info->mode);
->>> +                       devm_kfree(dev, info);
->>> +                       continue;
->>> +               }
->>> +               list_add_tail(&info->list, &reboot->head);
->>> +       }
->>> +       reboot->reboot_notifier.notifier_call = reboot_mode_notify;
->>> +       ret = register_reboot_notifier(&reboot->reboot_notifier);
->>> +       if (ret)
->>> +               dev_err(dev, "can't register reboot notifier\n");
->>> +
->>> +       return ret;
->>> +}
->>> +EXPORT_SYMBOL_GPL(reboot_mode_register);
->>> +
->>> +MODULE_AUTHOR("Andy Yan <andy.yan@rock-chips.com");
->>> +MODULE_DESCRIPTION("System reboot mode driver");
->>> +MODULE_LICENSE("GPL v2");
->>> diff --git a/drivers/power/reset/reboot-mode.h
->>> b/drivers/power/reset/reboot-mode.h
->>> new file mode 100644
->>> index 0000000..44ed34f
->>> --- /dev/null
->>> +++ b/drivers/power/reset/reboot-mode.h
->>> @@ -0,0 +1,6 @@
->>> +#ifndef __REBOOT_MODE_H__
->>> +#define __REBOOT_MODE_H__
->>> +
->>> +int reboot_mode_register(struct device *dev, int (*write)(int));
->> Documentation would be appreciated. Although it is local header but
->> you decoupled them and you are exporting the function.
-> 
->     I think I should remove the EXPORT_SYMBOL_GPL.
-
-You need to export symbols which are located in modules. Is it located
-in module?
-
-Best regards,
-Krzysztof
-
-
+T24gMjAxNuW5tDAz5pyIMjLml6UgMjM6MDgsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBXaGVuIGEg
+Vk9QIGlzIHJlLWVuYWJsZWQsIGl0IHdpbGwgc3RhcnQgc2Nhbm5pbmcgcmlnaHQgYXdheSB0aGUK
+PiBmcmFtZWJ1ZmZlcnMgdGhhdCB3ZXJlIGNvbmZpZ3VyZWQgZnJvbSB0aGUgbGFzdCB0aW1lLCBl
+dmVuIGlmIHRob3NlIGhhdmUKPiBiZWVuIGRlc3Ryb3llZCBhbHJlYWR5Lgo+Cj4gVG8gcHJldmVu
+dCB0aGUgVk9QIGZyb20gdHJ5aW5nIHRvIGFjY2VzcyBmcmVlZCBtZW1vcnksIGRpc2FibGUgYWxs
+IGl0cwo+IHdpbmRvd3Mgd2hlbiB0aGUgQ1JUQyBpcyBiZWluZyBkaXNhYmxlZCwgdGhlbiBlYWNo
+IHdpbmRvdyB3aWxsIGdldCBhCj4gdmFsaWQgZnJhbWVidWZmZXIgYWRkcmVzcyBiZWZvcmUgaXQn
+cyBlbmFibGVkIGFnYWluLgo+Cj4gU2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52
+aXpvc29AY29sbGFib3JhLmNvbT4KPiBMaW5rOiBodHRwOi8vbGttbC5rZXJuZWwub3JnL2cvQ0FB
+T2JzS0F2KzA1aWg1VSs9NGtpY19Oc2pHTWhmeFloZUhSOHhYWG1hY1pzK3A1U0h3QG1haWwuZ21h
+aWwuY29tCj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIHwgMTUgKysrKysrKysrKysrKysrCj4gICAxIGZpbGUgY2hhbmdlZCwgMTUgaW5zZXJ0aW9u
+cygrKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
+aW5kZXggNWU1N2Y1YjJlNGIwLi5lMjExOGU2MjM0NWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtNDk5LDEwICs0OTksMjUgQEAgZXJy
+X2Rpc2FibGVfaGNsazoKPiAgIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2Rpc2FibGUoc3RydWN0IGRy
+bV9jcnRjICpjcnRjKQo+ICAgewo+ICAgCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsK
+PiArCWludCBpOwo+ICAgCj4gICAJaWYgKCF2b3AtPmlzX2VuYWJsZWQpCj4gICAJCXJldHVybjsK
+PiAgIAo+ICsJLyoKPiArCSAqIFdlIG5lZWQgdG8gbWFrZSBzdXJlIHRoYXQgYWxsIHdpbmRvd3Mg
+YXJlIGRpc2FibGVkIGJlZm9yZSB3ZQo+ICsJICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lz
+ZSB3ZSBtaWdodCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCj4gKwkgKiBidWZmZXIgbGF0
+ZXIuCj4gKwkgKi8KPiArCWZvciAoaSA9IDA7IGkgPCB2b3AtPmRhdGEtPndpbl9zaXplOyBpKysp
+IHsKPiArCQlzdHJ1Y3Qgdm9wX3dpbiAqdm9wX3dpbiA9ICZ2b3AtPndpbltpXTsKPiArCQljb25z
+dCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhICp3aW4gPSB2b3Bfd2luLT5kYXRhOwo+ICsKPiArCQlzcGlu
+X2xvY2soJnZvcC0+cmVnX2xvY2spOwo+ICsJCVZPUF9XSU5fU0VUKHZvcCwgd2luLCBlbmFibGUs
+IDApOwo+ICsJCXNwaW5fdW5sb2NrKCZ2b3AtPnJlZ19sb2NrKTsKPiArCX0KPiArCj4gICAJZHJt
+X2NydGNfdmJsYW5rX29mZihjcnRjKTsKPiAgIAo+ICAgCS8qCkxvb2tzIGdvb2QgZm9yIG1lLCBh
+bmQgaXQgd29ya3Mgb24gbXkgYm9hcmQuCgpBcHBsaWVkIHRvIG15IGRybS1maXhlcy4KClRoYW5r
+cwoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
+cmktZGV2ZWwK
