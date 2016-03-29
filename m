@@ -1,41 +1,65 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH v6 0/3] Add more clock compatible features and support the
- RK3399 clock
-Date: Tue, 29 Mar 2016 09:17:04 +0800
-Message-ID: <56F9D790.1080608@rock-chips.com>
-References: <1459158697-8218-1-git-send-email-zhengxing@rock-chips.com>
- <4649399.g7v7zsVJik@diego>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
+ "discard"
+Date: Tue, 29 Mar 2016 10:17:42 +0900
+Message-ID: <56F9D7B6.1070108@samsung.com>
+References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <4649399.g7v7zsVJik@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, huangtao@rock-chips.com, jay.xu@rock-chips.com, elaine.zhang@rock-chips.com, dianders@chromium.org, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Michael Turquette <mturquette@baylibre.com>, Mark Rutland <mark.rutland@arm.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Shawn,
 
-On 2016=E5=B9=B403=E6=9C=8828=E6=97=A5 20:59, Heiko St=C3=BCbner wrote:
-> Am Montag, 28. M=C3=A4rz 2016, 17:51:34 schrieb Xing Zheng:
->>    The patch series add support more mux parameters and multiple
->> clock providers for the rockchip features of the clock framework,
->> and support the clock controller for the RK3399.
-> applied all 3 for 4.7 with one change:
->
-> I've dropped the grf paragraph from the binding doc (as it is not use=
-d
-> anymore) and also dropped the gmac_phy_rx_clk input clock.
->
-> We can add these back once they are getting used in the future.
->
->
-> Heiko
->
-OK, thanks Heiko. :-)
+Sorry for applying late.
+Applied on my repository.
 
---=20
-- Xing Zheng
+Best Regards,
+Jaehoon Chung
 
-
+On 03/01/2016 04:12 PM, Shawn Lin wrote:
+> Without MMC_CAP_ERASE support, we fail to mount partition
+> with "discard" option since mmc_queue_setup_discard is limited
+> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
+> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
+> the following log from f2fs(actually similar to other file system):
+> 
+> mounting with "discard" option, but the device does not support discard
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 84e50f3..2eda118 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+>  	return 0;
+>  }
+>  
+> +/* Common capabilities of RK3288 SoC */
+> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +	MMC_CAP_ERASE,
+> +};
+> +
+>  static const struct dw_mci_drv_data rk2928_drv_data = {
+>  	.init			= dw_mci_rockchip_init,
+>  };
+>  
+>  static const struct dw_mci_drv_data rk3288_drv_data = {
+> +	.caps			= dw_mci_rk3288_dwmmc_caps,
+>  	.set_ios		= dw_mci_rk3288_set_ios,
+>  	.execute_tuning		= dw_mci_rk3288_execute_tuning,
+>  	.parse_dt		= dw_mci_rk3288_parse_dt,
+> 
