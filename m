@@ -1,65 +1,117 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: dw_mmc-rockchip: fix failing to mount partition with
- "discard"
-Date: Tue, 29 Mar 2016 10:17:42 +0900
-Message-ID: <56F9D7B6.1070108@samsung.com>
-References: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 2/3] phy: rockchip-emmc: should be a child device of
+ the GRF
+Date: Tue, 29 Mar 2016 09:53:14 +0800
+Message-ID: <56F9E00A.8040303@rock-chips.com>
+References: <1458854943-17388-1-git-send-email-heiko@sntech.de>
+ <1458854943-17388-2-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=gbk;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1456816373-32518-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1458854943-17388-2-git-send-email-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, kishon@ti.com
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, ykk@rock-chips.com, devicetree@vger.kernel.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-Sorry for applying late.
-Applied on my repository.
-
-Best Regards,
-Jaehoon Chung
-
-On 03/01/2016 04:12 PM, Shawn Lin wrote:
-> Without MMC_CAP_ERASE support, we fail to mount partition
-> with "discard" option since mmc_queue_setup_discard is limited
-> for checking mmc_can_erase. Without doing mmc_queue_setup_discard,
-> blk_queue_discard fails to test QUEUE_FLAG_DISCARD flag, so we get
-> the following log from f2fs(actually similar to other file system):
-> 
-> mounting with "discard" option, but the device does not support discard
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+=D4=DA 2016/3/25 5:29, Heiko Stuebner =D0=B4=B5=C0:
+> The emmc-phy is fully enclosed in the general register files (GRF).
+> Therefore as seen from the device-tree it shouldn't be a separate pla=
+tform-
+> device but instead a sub-device of the GRF - using the simply-mfd mec=
+hanism.
+>
+> The driver entered the kernel in the current merge-window, so we can =
+still
+> adapt the binding without needing a fallback, as the binding hasn't b=
+een
+> released with a full kernel yet.
+>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 > ---
-> 
->  drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 84e50f3..2eda118 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -234,11 +234,20 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
->  	return 0;
->  }
->  
-> +/* Common capabilities of RK3288 SoC */
-> +static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
-> +	MMC_CAP_ERASE,
-> +	MMC_CAP_ERASE,
-> +	MMC_CAP_ERASE,
-> +	MMC_CAP_ERASE,
-> +};
+> Hi Shawn, Kishon,
+>
+> I didn't see this new phy driver until now, so I'd really like to get
+> this sorted before the old binding solidifies :-).
+>
+> I'll convert the usbphy as well, but that has to have the fallback fo=
+r
+> the old binding, so is not as urgent as these two.
+>
+> As mentioned in the patch description above, this is meant as a fixup=
+ for
+> kernel 4.6.
+>
+>
+
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> changes in v2: drop forgotten rockchip,grf from example
+>
+>
+>   .../devicetree/bindings/phy/rockchip-emmc-phy.txt     | 19 ++++++++=
+++++-------
+>   drivers/phy/phy-rockchip-emmc.c                       |  5 ++++-
+>   2 files changed, 16 insertions(+), 8 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.=
+txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> index 61916f1..d711259 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+> @@ -3,17 +3,21 @@ Rockchip EMMC PHY
+>
+>   Required properties:
+>    - compatible: rockchip,rk3399-emmc-phy
+> - - rockchip,grf : phandle to the syscon managing the "general
+> -   register files"
+>    - #phy-cells: must be 0
+>    - reg: PHY configure reg address offset in "general
+>      register files"
+>
+>   Example:
+>
+> -emmcphy: phy {
+> -	compatible =3D "rockchip,rk3399-emmc-phy";
+> -	rockchip,grf =3D <&grf>;
+> -	reg =3D <0xf780>;
+> -	#phy-cells =3D <0>;
 > +
->  static const struct dw_mci_drv_data rk2928_drv_data = {
->  	.init			= dw_mci_rockchip_init,
->  };
->  
->  static const struct dw_mci_drv_data rk3288_drv_data = {
-> +	.caps			= dw_mci_rk3288_dwmmc_caps,
->  	.set_ios		= dw_mci_rk3288_set_ios,
->  	.execute_tuning		= dw_mci_rk3288_execute_tuning,
->  	.parse_dt		= dw_mci_rk3288_parse_dt,
-> 
+> +grf: syscon@ff770000 {
+> +	compatible =3D "rockchip,rk3399-grf", "syscon", "simple-mfd";
+> +
+> +...
+> +
+> +	emmcphy: phy@f780 {
+> +		compatible =3D "rockchip,rk3399-emmc-phy";
+> +		reg =3D <0xf780>;
+> +		#phy-cells =3D <0>;
+> +	};
+>   };
+> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockch=
+ip-emmc.c
+> index 887b4c2..6ebcf3e 100644
+> --- a/drivers/phy/phy-rockchip-emmc.c
+> +++ b/drivers/phy/phy-rockchip-emmc.c
+> @@ -176,7 +176,10 @@ static int rockchip_emmc_phy_probe(struct platfo=
+rm_device *pdev)
+>   	struct regmap *grf;
+>   	unsigned int reg_offset;
+>
+> -	grf =3D syscon_regmap_lookup_by_phandle(dev->of_node, "rockchip,grf=
+");
+> +	if (!dev->parent || !dev->parent->of_node)
+> +		return -ENODEV;
+> +
+> +	grf =3D syscon_node_to_regmap(dev->parent->of_node);
+>   	if (IS_ERR(grf)) {
+>   		dev_err(dev, "Missing rockchip,grf property\n");
+>   		return PTR_ERR(grf);
+>
+
+
+--=20
+Best Regards
+Shawn Lin
