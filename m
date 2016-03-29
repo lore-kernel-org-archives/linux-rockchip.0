@@ -1,121 +1,55 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [RFC PATCH v1 2/4] drm: rockchip: add RGA driver support
-Date: Tue, 29 Mar 2016 19:50:12 +0800
-Message-ID: <56FA6BF4.20205@rock-chips.com>
+From: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RFC PATCH v1 0/4] Add Rockchip RGA support
+Date: Tue, 29 Mar 2016 14:13:26 +0100
+Message-ID: <CACvgo50REvRxN2_qdw=2NeTTSgjpA+9c8OZgPE0q19meH6ArKA@mail.gmail.com>
 References: <1458552518-25527-1-git-send-email-ykk@rock-chips.com>
- <1458553206-26880-1-git-send-email-ykk@rock-chips.com>
- <20160323142021.GA19977@rob-hp-laptop>
+	<1571169.Hy8an0n7lM@diego>
+	<CACvgo516ewfwGCpV=noX+re1x8t3Sp1t39Sha+A2-tQ5YsoihA@mail.gmail.com>
+	<17189219.y56YqHz6yR@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160323142021.GA19977@rob-hp-laptop>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <17189219.y56YqHz6yR@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKKyByb2NrY2hpcCAvIGRyaSBlbWFpbCBsaXN0IGJhY2sKCk9uIDAzLzIzLzIwMTYg
-MTA6MjAgUE0sIFJvYiBIZXJyaW5nIHdyb3RlOgo+IE9uIE1vbiwgTWFyIDIxLCAyMDE2IGF0IDA1
-OjQwOjA2UE0gKzA4MDAsIFlha2lyIFlhbmcgd3JvdGU6Cj4+IFJvY2tjaGlwIFJHQSBpcyBhIHNl
-cGFyYXRlIDJEIHJhc3RlciBncmFwaGljIGFjY2VsZXJhdGlvbiB1bml0LiBJdAo+PiBhY2NlbGVy
-YXRlcyAyRCBncmFwaGljcyBvcGVyYXRpb25zLCBzdWNoIGFzIHBvaW50L2xpbmUgZHJhd2luZywg
-aW1hZ2UKPj4gc2NhbGluZywgcm90YXRpb24sIEJpdEJMVCwgYWxwaGEgYmxlbmRpbmcgYW5kIGlt
-YWdlIGJsdXIvc2hhcnBuZXNzLgo+Pgo+PiBUaGUgUkdBIGRyaXZlciBpcyBiYXNlZCBvbiBFeHlu
-b3MgRzJEIGRyaXZlciwgaXQgaXMgcGVyZm9ybWVkIGJ5IHR3bwo+PiB0YXNrcyBzaW1wbHkuCj4+
-IDEuIENvbmZpZ3VyZXMgdGhlIHJlbmRlcmluZyBwYXJhbWV0ZXJzLCBzdWNoIGFzIGZvcmVncm91
-bmQgY29sb3IgYW5kCj4+ICAgICBjb29yZGluYXRlcyBkYXRhIGJ5IHNldHRpbmcgdGhlIGRyYXdp
-bmcgY29udGV4dCByZWdpc3RlcnMuCj4+IDIuIFN0YXJ0IHRoZSByZW5kZXJpbmcgcHJvY2VzcyBi
-eSBjYWxsaW5nIHJnYV9leGVjKCkgaW9jdGwuCj4+Cj4+IFRoZSBSR0Egc3VwcG9ydHMgRE1BIG1v
-ZGUgYXMgaG9zdCBpbnRlcmZhY2UuIFVzZXIgY2FuIG1ha2UgY29tbWFuZCBsaXN0Cj4+IHRvIHJl
-ZHVjZSBIT1NUKEFSTSkgbG9hZHMuIFRoZSBjb250ZW50cyBvZiBUaGUgY29tbWFuZCBsaXN0IGlz
-IHNldHRlZCB0bwo+PiByZWxldmFudCByZWdpc3RlcnMgb2YgUkdBIGJ5IERNQS4KPj4KPj4gVGhl
-IGNvbW1hbmQgbGlzdCBpcyBjb21wb3NlZCBIZWFkZXIgYW5kIGNvbW1hbmQgc2V0cyBhbmQgVGFp
-bC4KPj4gLSBIZWFkZXI6IFRoZSBudW1iZXIgb2YgY29tbWFuZCBzZXQoNEJ5dGVzKQo+PiAtIENv
-bW1hbmQgc2V0OiBSZWdpc3RlciBvZmZzZXQoNEJ5dGVzKSArIFJlZ2lzdGVyIGRhdGEoNEJ5dGVz
-KQo+PiAtIFRhaWw6IFBvaW50ZXIgb2YgYmFzZSBhZGRyZXNzIG9mIHRoZSBvdGhlciBjb21tYW5k
-IGxpc3QoNEJ5dGVzKQo+Pgo+PiBCeSBUYWlsIGZpZWxkLCB0aGUgRzJEIGNhbiBwcm9jZXNzIG1h
-bnkgY29tbWFuZCBsaXN0cyB3aXRob3V0IGhhbHQgYXQKPj4gb25lIGdvLgo+Pgo+PiBUaGUgRzJE
-IGhhcyBmb2xsb3dpbmcgdGhlIHJlbmRlcmluZyBwaXBlbGluZS4KPj4gICAgICAgICAgICAgICAg
-IC0tLT4gICAgIENvbG9yIEZpbGwgICAgIC0tLT4KPj4gICAgICAgICAgICAgICAgIHwgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHwKPj4gLS0+IERNQSAocmVhZCkgLS0tPiBTcmMgQml0bWFwIFBy
-b2Nlc3MgLS0tLT4gQWxwaGEvUk9QIC0tLT4gRm9ybWF0IGNvbnZlcnQgLS0tPiBETUEgKFdyaXRl
-KQo+PiAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgfAo+PiAgICAg
-ICAgICAgICAgICAgLS0tPiBEc3QgQml0bWFwIFByb2Nlc3MgLS0tPgo+Pgo+PiBBbmQgc3VwcG9y
-dHMgdmFyaW91cyBvcGVyYXRpb25zIGZyb20gdGhlIHJlbmRlcmluZyBwaXBlbGluZS4KPj4gLSBj
-b3B5Cj4+IC0gZmFzdCBzb2xpZCBjb2xvciBmaWxsCj4+IC0gcm90YXRpb24KPj4gLSBmbGlwCj4+
-IC0gNCBvcGVyYW5kIHJhc3RlciBvcGVyYXRpb24oUk9QNCkKPj4gLSBhbHBoYSBibGVuZGluZwo+
-PiAtIGNvbG9yIGtleQo+PiAtIGRpdGhlcmluZwo+PiAtIGV0Ywo+Pgo+PiBVc2VyIHNob3VsZCBt
-YWtlIHRoZSBjb21tYW5kIGxpc3QgdG8gZGF0YSBhbmQgcmVnaXN0ZXJzIG5lZWRlZCBieQo+PiBv
-cGVyYXRpb24gdG8gdXNlLiBUaGUgUm9ja2NoaXAgUkdBIGRyaXZlciBvbmx5IG1hbmFnZXMgdGhl
-IGNvbW1hbmQgbGlzdHMKPj4gcmVjZWl2ZWQgZnJvbSB1c2VyLiBTb21lIHJlZ2lzdGVycyBuZWVk
-cyBtZW1vcnkgYmFzZSBhZGRyZXNzKHBoeXNpY2FsCj4+IGFkZHJlc3MpIG9mIGltYWdlLiBVc2Vy
-IGRvZXNuJ3Qga25vdyBpdHMgcGh5c2ljYWwgYWRkcmVzcywgc28gZmlsbHMgdGhlCj4+IGdlbSBo
-YW5kbGUgb2YgdGhhdCBtZW1vcnkgdGhhbiBhZGRyZXNzIHRvIGNvbW1hbmQgc2V0cywgdGhlbiBS
-R0EgZHJpdmVyCj4+IGNvbnZlcnRzIGl0IHRvIG1lbW9yeSBiYXNlIGFkZHJlc3MuCj4+Cj4+IFdl
-IGFkZHMgdGhyZWUgaW9jdGxzIGZvciBSb2NrY2hpcCBSR0EuCj4+Cj4+IC0gaW9jdGxzCj4+IERS
-TV9ST0NLQ0hJUF9SR0FfR0VUX1ZFUjogZ2V0IHRoZSBSR0EgaGFyZHdhcmUgdmVyc2lvbgo+PiBE
-Uk1fUk9DS0NISVBfUkdBX1NFVF9DTURMSVNUOiBzZXQgdGhlIGNvbW1hbmQgbGlzdCBmcm9tIHVz
-ZXIgdG8gZHJpdmVyCj4+IERSTV9ST0NLQ0hJUF9SR0FfRVhFQzogZXhlY3V0ZSB0aGUgY29tbWFu
-ZCBsaXN0cyBzZXR0ZWQgdG8gZHJpdmVyCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFlha2lyIFlhbmcg
-PHlra0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+ICAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvcm9j
-a2NoaXAvcm9ja2NoaXAtcmdhLnR4dCAgICAgfCAgMzYgKwo+PiAgIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAgIHwgICA5ICsKPj4gICBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICB8ICAgMSArCj4+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgICAgICAgfCAgMzUgKy0K
-Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgICAgICB8
-ICAgNCArCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9yZ2EuYyAg
-ICAgICAgfCA5NzcgKysrKysrKysrKysrKysrKysrKysrCj4+ICAgZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9yZ2EuaCAgICAgICAgfCAxMDggKysrCj4+ICAgaW5jbHVkZS91
-YXBpL2RybS9yb2NrY2hpcF9kcm0uaCAgICAgICAgICAgICAgICAgICAgfCAgNjMgKysKPj4gICA4
-IGZpbGVzIGNoYW5nZWQsIDEyMzIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+PiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
-eS9yb2NrY2hpcC9yb2NrY2hpcC1yZ2EudHh0Cj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fcmdhLmMKPj4gICBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9yZ2EuaAo+PiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL3VhcGkvZHJtL3JvY2tjaGlwX2RybS5oCj4+Cj4+IGRp
-ZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2Nr
-Y2hpcC9yb2NrY2hpcC1yZ2EudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtcmdhLnR4dAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0
-NAo+PiBpbmRleCAwMDAwMDAwLi4wYzYwNmNiCj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIvRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAt
-cmdhLnR4dAo+PiBAQCAtMCwwICsxLDM2IEBACj4+ICtkZXZpY2UtdHJlZSBiaW5kaW5ncyBmb3Ig
-cm9ja2NoaXAgMkQgcmFzdGVyIGdyYXBoaWMgYWNjZWxlcmF0aW9uIGNvbnRyb2xsZXIgKFJHQSkK
-PiBzL3JvY2tjaGlwL1JvY2tDaGlwLwpEb25lCj4+ICsKPj4gK1JHQSBpcyBhIHNlcGFyYXRlIDJE
-IHJhc3RlciBncmFwaGljIGFjY2VsZXJhdGlvbiB1bml0LiBJdCBhY2NlbGVyYXRlcyAyRAo+PiAr
-Z3JhcGhpY3Mgb3BlcmF0aW9ucywgc3VjaCBhcyBwb2ludC9saW5lIGRyYXdpbmcsIGltYWdlIHNj
-YWxpbmcsIHJvdGF0aW9uLAo+PiArQml0QkxULCBhbHBoYSBibGVuZGluZyBhbmQgaW1hZ2UgYmx1
-ci9zaGFycG5lc3MuCj4+ICsKPj4gK1JlcXVpcmVkIHByb3BlcnRpZXM6Cj4+ICstIGNvbXBhdGli
-bGU6IHZhbHVlIHNob3VsZCBiZSBvbmUgb2YgdGhlIGZvbGxvd2luZwo+PiArCQkicm9ja2NoaXAs
-cmszMjI4LXJnYSI7Cj4+ICsJCSJyb2NrY2hpcCxyazMyODgtcmdhIjsKPj4gKwkJInJvY2tjaGlw
-LHJrMzM5OS1yZ2EiOwo+PiArCj4+ICstIGludGVycnVwdHM6IFJHQSBpbnRlcnJ1cHQgbnVtYmVy
-Lgo+PiArCj4+ICstIGNsb2NrczogcGhhbmRsZSB0byBSR0Egc2Nsay9oY2xrL2FjbGsgY2xvY2tz
-Cj4+ICsKPj4gKy0gY2xvY2stbmFtZXM6IHNob3VsZCBiZSAiYWNsayIgImhjbGsiIGFuZCAic2Ns
-ayIKPiBjb21tYSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgo+Cj4gWW91IGhhdmUgZGlm
-ZmVyZW50IG9yZGVycyBmb3IgY2xvY2tzIGFuZCBjbG9jay1uYW1lcy4gUGxlYXNlIGJlIGNsZWFy
-Cj4gd2hhdCB0aGUgb3JkZXIgaXMuCj4KT2theQo+PiArCj4+ICstIHJlc2V0czogTXVzdCBjb250
-YWluIGFuIGVudHJ5IGZvciBlYWNoIGVudHJ5IGluIHJlc2V0LW5hbWVzLgo+PiArICBTZWUgLi4v
-cmVzZXQvcmVzZXQudHh0IGZvciBkZXRhaWxzLgo+PiArLSByZXNldC1uYW1lczogc2hvdWxkIGJl
-ICJhY2xrIiAiaGNsayIgYW5kICJzY2xrIgo+IFNhbWUgYXMgY2xvY2tzPwpJIHNob3VsZCByZW5h
-bWUgdGhlbSB0byAiY29yZSIsICJheGkiIGFuZCAiYWhiIgo+PiArCj4+ICtFeGFtcGxlOgo+PiAr
-U29DIHNwZWNpZmljIERUIGVudHJ5Ogo+PiArCXJnYTogcmdhQGZmNjgwMDAwIHsKPiBncHVALi4u
-IHRvIGJlIGdlbmVyaWMKRG9uZQo+PiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1y
-Z2EiOwo+PiArCQlyZWcgPSA8MHhmZjY4MDAwMCAweDEwMDAwPjsKPj4gKwkJaW50ZXJydXB0cyA9
-IDxHSUNfU1BJIDU1IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+PiArCQlpbnRlcnJ1cHQtbmFtZXMg
-PSAicmdhIjsKPiBOb3QgZG9jdW1lbnRlZC4gaW50ZXJydXB0LW5hbWVzIGlzIHBvaW50bGVzcyBm
-b3Igc2luZ2xlIGlycSwgc28ganVzdAo+IGRyb3AgaXQuCk9rYXkKPj4gKwkJY2xvY2tzID0gPCZj
-cnUgQUNMS19SR0E+LCA8JmNydSBIQ0xLX1JHQT4sIDwmY3J1IFNDTEtfUkdBPjsKPj4gKwkJY2xv
-Y2stbmFtZXMgPSAiYWNsayIsICJoY2xrIiwgInNjbGsiOwo+PiArCj4+ICsJCXJlc2V0cyA9IDwm
-Y3J1IFNSU1RfQV9SR0E+LCA8JmNydSBTUlNUX0hfUkdBPiwgPCZjcnUgU1JTVF9SR0FfQ09SRT47
-Cj4+ICsJCXJlc2V0LW5hbWVzID0gImFjbGsiLCAiaGNsayIsICJzY2xrIjsKPj4gKwkJc3RhdHVz
-ID0gImRpc2FibGVkIjsKPj4gKwl9Owo+Cj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On 28 March 2016 at 23:13, Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+
+> I have the feeling we're going quite a bit off-topic right now :-) .
+> The binary-driver-crazyness, hasn't really anything to do with Yakir'=
+s support
+> for the RGA (which is about raster-graphics-acceleration, so 2d stuff=
+).
+>
+> And me mentioning the armsoc-ddx was merely a means to allow some sor=
+t of
+> different userspace user, as requested in your original mail ;-) .
+>
+Seems like I forgot to state the obvious - for all the reasons
+mentioned, the armsoc ddx seems like a bad example.
+
+> Maybe you know a better use-case on where to demonstrate the viabilit=
+y of the
+> userspace API for it as originally requested.
+I'm afraid that my RockChip-foo is extremely limited. Perhaps the
+actual user of these should be mentioned ? xf86-video-rockhip (is
+there one ?) or any other effort/project that lacks some (all?) of the
+criticism listed.
+
+(Sort of) the bottom line - either reuse the existing interfaces or
+provide an approved, full blown userspace (libdrm demos/programs do
+not count) that uses the new interfaces.
+
+I haven't made these rules, just a fool^Wguy that repeats them so that
+people don't abuse them much. If in doubt check with Dave and Daniel V
+- they had enough repeating these.
+
+-Emil
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
