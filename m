@@ -1,67 +1,72 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/5] drm/imx: dw_hdmi: Call drm_encoder_cleanup() in
- error path
-Date: Wed, 30 Mar 2016 15:35:23 +0200
-Message-ID: <1459344923.2505.35.camel@pengutronix.de>
-References: <1457388054-23077-1-git-send-email-dianders@chromium.org>
- <1457388054-23077-2-git-send-email-dianders@chromium.org>
- <CAD=FV=Vq2JPYxDpa3kH97wnVTTJ-AsyWHQ2nSNSR2sw7aQKwOQ@mail.gmail.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending flip
+ event
+Date: Wed, 30 Mar 2016 15:48:25 +0200
+Message-ID: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAD=FV=Vq2JPYxDpa3kH97wnVTTJ-AsyWHQ2nSNSR2sw7aQKwOQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, John Keeping <john-HPTTJ/6qucUJ3nxcUk3PyQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
-
-Am Montag, den 28.03.2016, 08:14 -0700 schrieb Doug Anderson:
-> Hi,
-> 
-> On Mon, Mar 7, 2016 at 2:00 PM, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > The drm_encoder_cleanup() was missing both from the error path of
-> > dw_hdmi_imx_bind().  This caused a crash when slub_debug was
-> > enabled and we ended up deferring probe of HDMI at boot.
-> >
-> > This call isn't needed from unbind() because if dw_hdmi_bind() returns
-> > no error then it takes over the job of freeing the encoder (in
-> > dw_hdmi_unbind).
-> >
-> > Signed-off-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> > ---
-> > Changes in v2:
-> > - IMX patch new in v2
-> >
-> >  drivers/gpu/drm/imx/dw_hdmi-imx.c | 11 ++++++++++-
-> >  1 file changed, 10 insertions(+), 1 deletion(-)
-> 
-> Mark picked up:
-> 
->   [PATCH v2 1/5] drm/rockchip: dw_hdmi: Call drm_encoder_cleanup() in error path
->   [PATCH v2 3/5] drm/rockchip: vop: Fix vop crtc cleanup
->   [PATCH v2 4/5] drm/rockchip: dw_hdmi: Don't call platform_set_drvdata()
-> 
-> ...for Rockchip, as you can see at
-> <https://patchwork.kernel.org/patch/8523301/>.
-> 
-> Does someone want to pick up:
->   [PATCH v2 2/5] drm/imx: dw_hdmi: Call drm_encoder_cleanup() in error path
->   [PATCH v2 5/5] drm/imx: dw_hdmi: Don't call platform_set_drvdata()
-> 
-> Thanks!
-
-Thank you for the reminder, both patches applied.
-
-regards
-Philipp
+QXMgcGVyIHRoZSBkb2NzLCBhdG9taWNfY29tbWl0IHNob3VsZCByZXR1cm4gLUVCVVNZICJpZiBh
+biBhc3ljbmhyb25vdXMKdXBkYXRlZCBpcyByZXF1ZXN0ZWQgYW5kIHRoZXJlIGlzIGFuIGVhcmxp
+ZXIgdXBkYXRlZCBwZW5kaW5nIi4KCkFsc28gd2FpdCBmb3IgdGhlIHBlbmRpbmcgZXZlbnQgdG8g
+Y29tcGxldGUgd2hlbiBhIHN5bmMgdXBkYXRlIGlzCnJlcXVlc3RlZC4KClNpZ25lZC1vZmYtYnk6
+IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxhYm9yYS5jb20+Ci0tLQogZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCB8ICAxICsKIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYyAgfCAxNCArKysrKysrKysrKysrLQogZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA2ICsrKysrKwogMyBmaWxl
+cyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaCBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKaW5kZXggMzUyOWY2OTJlZGI4Li4zNzk1
+MmVlZmQzM2QgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZHJ2LmgKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+aApAQCAtNjksNiArNjksNyBAQCBpbnQgcm9ja2NoaXBfcmVnaXN0ZXJfY3J0Y19mdW5jcyhzdHJ1
+Y3QgZHJtX2NydGMgKmNydGMsCiB2b2lkIHJvY2tjaGlwX3VucmVnaXN0ZXJfY3J0Y19mdW5jcyhz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogaW50IHJvY2tjaGlwX2RybV9jcnRjX21vZGVfY29uZmln
+KHN0cnVjdCBkcm1fY3J0YyAqY3J0YywgaW50IGNvbm5lY3Rvcl90eXBlLAogCQkJCSAgaW50IG91
+dF9tb2RlKTsKK2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0
+IGRybV9jcnRjICpjcnRjKTsKIGludCByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3Ry
+dWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAJCQkJICAgc3RydWN0IGRldmljZSAqZGV2KTsKIHZv
+aWQgcm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1f
+ZGV2LApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9m
+Yi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCmluZGV4IDNi
+OGY2NTI2OThmOC4uMDI4ZmQyZjhmNDdiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9mYi5jCkBAIC0yODAsNyArMjgwLDE5IEBAIGludCByb2NrY2hpcF9kcm1fYXRv
+bWljX2NvbW1pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAogewogCXN0cnVjdCByb2NrY2hpcF9k
+cm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRldi0+ZGV2X3ByaXZhdGU7CiAJc3RydWN0IHJvY2tjaGlw
+X2F0b21pY19jb21taXQgKmNvbW1pdCA9ICZwcml2YXRlLT5jb21taXQ7Ci0JaW50IHJldDsKKwlz
+dHJ1Y3QgZHJtX2NydGNfc3RhdGUgKmNydGNfc3RhdGU7CisJc3RydWN0IGRybV9jcnRjICpjcnRj
+OworCWludCBpLCByZXQ7CisKKwlmb3JfZWFjaF9jcnRjX2luX3N0YXRlKHN0YXRlLCBjcnRjLCBj
+cnRjX3N0YXRlLCBpKSB7CisJCWlmIChjcnRjLT5zdGF0ZS0+ZXZlbnQgfHwKKwkJICAgIHJvY2tj
+aGlwX2RybV9jcnRjX2hhc19wZW5kaW5nX2V2ZW50KGNydGMpKSB7CisJCQlpZiAoYXN5bmMpCisJ
+CQkJcmV0dXJuIC1FQlVTWTsKKwkJCWVsc2UKKwkJCQlyb2NrY2hpcF9jcnRjX3dhaXRfZm9yX3Vw
+ZGF0ZShjcnRjKTsKKwkJfQorCX0KIAogCXJldCA9IGRybV9hdG9taWNfaGVscGVyX3ByZXBhcmVf
+cGxhbmVzKGRldiwgc3RhdGUpOwogCWlmIChyZXQpCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
+L3JvY2tjaGlwX2RybV92b3AuYwppbmRleCBlMjExOGU2MjM0NWIuLjUyNDBiYzhmZTA4OCAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYworKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCkBAIC04NDgsNiAr
+ODQ4LDEyIEBAIGludCByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2NvbmZpZyhzdHJ1Y3QgZHJtX2Ny
+dGMgKmNydGMsCiB9CiBFWFBPUlRfU1lNQk9MX0dQTChyb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2Nv
+bmZpZyk7CiAKK2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0
+IGRybV9jcnRjICpjcnRjKQoreworCXJldHVybiB0b192b3AoY3J0YyktPmV2ZW50OworfQorRVhQ
+T1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQpOworCiBz
+dGF0aWMgaW50IHZvcF9jcnRjX2VuYWJsZV92Ymxhbmsoc3RydWN0IGRybV9jcnRjICpjcnRjKQog
+ewogCXN0cnVjdCB2b3AgKnZvcCA9IHRvX3ZvcChjcnRjKTsKLS0gCjIuNS41CgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
