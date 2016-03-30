@@ -1,96 +1,96 @@
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH v4 8/8] arm64: dts: rockchip: Add Landingship config
-Date: Wed, 30 Mar 2016 00:18:58 +0200
-Message-ID: <56FAFF52.3000301@suse.de>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
- <1458136727-32075-9-git-send-email-afaerber@suse.de>
- <3754303.PKl0CGdnnX@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3754303.PKl0CGdnnX@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v7 0/4] add reboot mode driver
+Date: Wed, 30 Mar 2016 10:18:24 +0800
+Message-ID: <1459304304-9713-1-git-send-email-andy.yan@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de
+Cc: galak@codeaurora.org, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, olof@lixom.net, alexandre.belloni@free-electrons.com, dbaryshkov@gmail.com, jun.nie@linaro.org, pawel.moll@arm.com, will.deacon@arm.com, linux-rockchip@lists.infradead.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, f.fainelli@gmail.com, linux@arm.linux.org.uk, mbrugger@suse.com, linux-arm-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, moritz.fischer@ettus.com, linux-kernel@vger.kernel.org, wxt@rock-chips.com, dwmw2@infradead.org, mark.rutland@arm.com, k.kozlowski@samsung.com, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am 29.03.2016 um 22:18 schrieb Heiko St=FCbner:
-> This needs a commit message explaining the i2c1/i2c2 voodoo below - e=
-specially=20
-> as this is the only difference to the core geekbox board.
 
-You're probably right about the commit message, but there is no voodoo
-about i2c2 below.
+This driver parses the reboot commands like "reboot bootloader"
+and "reboot recovery" to get a boot mode described in the
+device tree , then call the corresponding  write interfae
+to store the boot mode in some place like special register
+or ram, which can be read by the bootloader after system
+reboot.
 
-Would you rather have i2c1 dropped for now? Having it disabled at least
-documents that the connectors are there.
+This is commonly done on Android based devices, in order to
+reboot the device into fastboot or recovery mode.
 
-=46rom a distro perspective I like dtb filename stability and not needi=
-ng
-to mess with filename changing from .dtb to -landingship.dtb, so I
-rather add it from the start than later as more nodes get added.
 
-> And I'm still not fully convinced about having the landing ship separ=
-ate.
+Changes in v7:
+- fix some spelling mistakes
+- declare that the mode magic should be none-zero value
+- address some suggestions from Krzysztof, make syscon-reboot-mode driver data self-contained.
 
-Separate would've been copy&paste! It's using the preprocessor
-specifically to avoid having them be separate.
+Changes in v6:
+- fix a typo with "property"
+- describe property "mask" more clear
 
-> I guess I'll just go to the talk about "Portable Device Tree Connecto=
-r:=20
-> Painless Expansion Board Support" [0] on monday to help make up my mi=
-nd ;-) .
+Changes in v5:
+- delete a unnecessary blank line in syscon-reboot-mode.txt
+- rename mode-fastoboot to mode-bootloader in syscon-reboot-mode.txt
+- rename macro BOOT_LOADER to BOOT_BL_DOWNLOAD, which gives a more clear mean
+- use two blank space under help in Kconfig
+- use unsigned int instead of int for member magic in struct mode_info
 
-This is not a random expansion board to exchange, it's a baseboard and
-as we found out one very specific to this module, so no reuse unlike
-Shields. As mentioned elsewhere, I2C are not the only difference,
-they're the only difference _for now_. USB-SATA bridge comes for free
-via USB node; there's four GPIO buttons to be figured out, an I2S codec
-somewhere, display options (that I cannot test myself) and additional
-regulator(s) needed.
+Changes in v4:
+- remove mode-maskrom
+- rename mode-fastboot to mode-bootloader to keep compatible with the exiting Android device
+- make this driver depends on OF to avoid kbuild test error
 
-Do enjoy the talk and report your findings. The pure existence of
-overlays for Beagleboard is not convincing to me for dropping this patc=
-h
-though - we've had similar discussions among distro people before
-settling for EFI boot. Reality is messy, unfortunately. For an FPGA I'v=
-e
-grudgingly agreed that given a sane U-Boot one can use dtb commands to
-add a couple nodes via a boot.scr, sanitizing the matrix of hardware
-models x FPGA bitstreams to just the hardware models; however this
-Landingship board is actually sold in hardware and is the only sane
-rk3368 devboard to date rather than just some bitstream file, and we at
-openSUSE are looking to abandon boot.scr in favor of generic bootefi,
-running counter to that idea. Here I'm still dealing with a vendor
-U-Boot, so neither works for now, only supplying a feature-complete .dt=
-b
-in the resource image partition does, which I need to build from
-something - this patch. So no is not a solution. And it's not like
-you're swamped in rk3368 .dts files anyway.
+Changes in v3:
+- descirbe all reboot mode as properity instead of subnode
+- scan multi properities
+- add mask value for some platform which only use some bits of the register
+  to store boot mode magic value
+- descirbe all reboot mode as property instead of subnode
+- add rk3036 support
+- descirbe all reboot mode as property instead of subnode
 
-Thanks for queuing the core bits,
+Changes in v2:
+- move to dir drivers/power/reset/
+- make syscon-reboot-mode a generic driver
+- make this node as a subnode of PMU
+- make this node as a subnode of pmugrf
 
-Andreas
+Changes in v1:
+- fix the embarrassed compile warning
+- correct the maskrom magic number
+- check for the normal reboot
+- correct the maskrom magic number
+- use macro defined in rockchip_boot-mode.h for reboot-mode DT node
 
-> [0] http://openiotelc2016.sched.org/event/6DA4/portable-device-tree-c=
-onnector-painless-expansion-board-support-pantelis-antoniou-konsulko-gr=
-oup
-[...]
->> +&i2c1 {
->> +	status =3D "disabled";
->> +};
->> +
->> +&i2c2 {
->> +	status =3D "okay";
->> +};
+Andy Yan (4):
+  dt-bindings: power: reset: add document for reboot-mode driver
+  power: reset: add reboot mode driver
+  ARM: dts: rockchip: add syscon-reboot-mode DT node
+  ARM64: dts: rockchip: add syscon-reboot-mode DT node
 
---=20
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-GF: Felix Imend=F6rffer, Jane Smithard, Graham Norton; HRB 21284 (AG N=FC=
-rnberg)
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ .../bindings/power/reset/reboot-mode.txt           |  25 +++++
+ .../bindings/power/reset/syscon-reboot-mode.txt    |  35 +++++++
+ arch/arm/boot/dts/rk3036.dtsi                      |  11 +-
+ arch/arm/boot/dts/rk3288.dtsi                      |  10 ++
+ arch/arm/boot/dts/rk3xxx.dtsi                      |  12 ++-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  12 ++-
+ drivers/power/reset/Kconfig                        |  13 +++
+ drivers/power/reset/Makefile                       |   2 +
+ drivers/power/reset/reboot-mode.c                  | 115 +++++++++++++++++++++
+ drivers/power/reset/reboot-mode.h                  |   6 ++
+ drivers/power/reset/syscon-reboot-mode.c           |  86 +++++++++++++++
+ include/dt-bindings/soc/rockchip_boot-mode.h       |  15 +++
+ 12 files changed, 339 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/reset/reboot-mode.txt
+ create mode 100644 Documentation/devicetree/bindings/power/reset/syscon-reboot-mode.txt
+ create mode 100644 drivers/power/reset/reboot-mode.c
+ create mode 100644 drivers/power/reset/reboot-mode.h
+ create mode 100644 drivers/power/reset/syscon-reboot-mode.c
+ create mode 100644 include/dt-bindings/soc/rockchip_boot-mode.h
+
+-- 
+1.9.1
+
+
+
