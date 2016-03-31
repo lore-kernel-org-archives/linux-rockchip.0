@@ -1,62 +1,103 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v5 05/46] pwm: introduce the pwm_args concept
-Date: Thu, 31 Mar 2016 09:57:49 +0200
-Message-ID: <20160331095749.4be1e76b@bbrezillon>
-References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1459368249-13241-6-git-send-email-boris.brezillon@free-electrons.com>
-	<20160330215510.GS18567@codeaurora.org>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
+ flip event
+Date: Thu, 31 Mar 2016 10:00:17 +0200
+Message-ID: <CAAObsKCD665onmzKtiiR2fE0jJtNLAZ2VUZyLbF7kPJKpqxXRg@mail.gmail.com>
+References: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
+ <56FC7C97.8000506@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-input-owner@vger.kernel.org>
-In-Reply-To: <20160330215510.GS18567@codeaurora.org>
-Sender: linux-input-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <56FC7C97.8000506@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 30 Mar 2016 14:55:10 -0700
-Stephen Boyd <sboyd@codeaurora.org> wrote:
-
-> On 03/30, Boris Brezillon wrote:
-> > @@ -74,6 +74,23 @@ enum pwm_polarity {
-> >  	PWM_POLARITY_INVERSED,
-> >  };
-> >  
-> > +/**
-> > + * struct pwm_args - PWM arguments
-> > + * @period: reference period
-> > + * @polarity: reference polarity
-> > + *
-> > + * This structure describe board-dependent arguments attached to a PWM
-> 
-> s/describe/describes/
-> 
-> > + * device. Those arguments are usually retrieved from the PWM lookup table or
-> > + * DT definition.
-> > + * This should not be confused with the PWM state: PWM args not representing
-> 
-> s/not representing/don't represent/ ?
-
-Yes, I meant "are not representing", but "don't represent" is fine.
-
-> 
-> > + * the current PWM state, but the configuration the PWM user plan to use
-> 
-> s/plan/plans/
-> 
-> > + * on this PWM device.
-> > + */
-> > +struct pwm_args {
-> > +	unsigned int period;
-> > +	enum pwm_polarity polarity;
-> > +};
-> > +
-> 
-
-
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+T24gMzEgTWFyY2ggMjAxNiBhdCAwMzoyNSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMu
+Y29tPiB3cm90ZToKPiBPbiAyMDE25bm0MDPmnIgzMOaXpSAyMTo0OCwgVG9tZXUgVml6b3NvIHdy
+b3RlOgo+Pgo+PiBBcyBwZXIgdGhlIGRvY3MsIGF0b21pY19jb21taXQgc2hvdWxkIHJldHVybiAt
+RUJVU1kgImlmIGFuIGFzeWNuaHJvbm91cwo+PiB1cGRhdGVkIGlzIHJlcXVlc3RlZCBhbmQgdGhl
+cmUgaXMgYW4gZWFybGllciB1cGRhdGVkIHBlbmRpbmciLgo+Pgo+PiBBbHNvIHdhaXQgZm9yIHRo
+ZSBwZW5kaW5nIGV2ZW50IHRvIGNvbXBsZXRlIHdoZW4gYSBzeW5jIHVwZGF0ZSBpcwo+PiByZXF1
+ZXN0ZWQuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNv
+bGxhYm9yYS5jb20+Cj4+IC0tLQo+PiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmggfCAgMSArCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV9mYi5jICB8IDE0ICsrKysrKysrKysrKystCj4+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA2ICsrKysrKwo+PiAgIDMgZmlsZXMgY2hhbmdlZCwg
+MjAgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+PiBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPj4gaW5kZXggMzUyOWY2OTJlZGI4Li4zNzk1
+MmVlZmQzM2QgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZHJ2LmgKPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
+bV9kcnYuaAo+PiBAQCAtNjksNiArNjksNyBAQCBpbnQgcm9ja2NoaXBfcmVnaXN0ZXJfY3J0Y19m
+dW5jcyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4+ICAgdm9pZCByb2NrY2hpcF91bnJlZ2lzdGVy
+X2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjKTsKPj4gICBpbnQgcm9ja2NoaXBfZHJt
+X2NydGNfbW9kZV9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjLCBpbnQKPj4gY29ubmVjdG9y
+X3R5cGUsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbnQgb3V0X21vZGUp
+Owo+PiArYm9vbCByb2NrY2hpcF9kcm1fY3J0Y19oYXNfcGVuZGluZ19ldmVudChzdHJ1Y3QgZHJt
+X2NydGMgKmNydGMpOwo+PiAgIGludCByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3Ry
+dWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgc3RydWN0IGRldmljZSAqZGV2KTsKPj4gICB2b2lkIHJvY2tjaGlwX2RybV9kbWFfZGV0
+YWNoX2RldmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKPj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+PiBiL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+PiBpbmRleCAzYjhmNjUyNjk4ZjguLjAy
+OGZkMmY4ZjQ3YiAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9mYi5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fZmIuYwo+PiBAQCAtMjgwLDcgKzI4MCwxOSBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19j
+b21taXQoc3RydWN0IGRybV9kZXZpY2UKPj4gKmRldiwKPj4gICB7Cj4+ICAgICAgICAgc3RydWN0
+IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPj4gICAg
+ICAgICBzdHJ1Y3Qgcm9ja2NoaXBfYXRvbWljX2NvbW1pdCAqY29tbWl0ID0gJnByaXZhdGUtPmNv
+bW1pdDsKPj4gLSAgICAgICBpbnQgcmV0Owo+PiArICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0
+ZSAqY3J0Y19zdGF0ZTsKPj4gKyAgICAgICBzdHJ1Y3QgZHJtX2NydGMgKmNydGM7Cj4+ICsgICAg
+ICAgaW50IGksIHJldDsKPj4gKwo+PiArICAgICAgIGZvcl9lYWNoX2NydGNfaW5fc3RhdGUoc3Rh
+dGUsIGNydGMsIGNydGNfc3RhdGUsIGkpIHsKPj4gKyAgICAgICAgICAgICAgIGlmIChjcnRjLT5z
+dGF0ZS0+ZXZlbnQgfHwKPj4gKyAgICAgICAgICAgICAgICAgICByb2NrY2hpcF9kcm1fY3J0Y19o
+YXNfcGVuZGluZ19ldmVudChjcnRjKSkgewo+PiArICAgICAgICAgICAgICAgICAgICAgICBpZiAo
+YXN5bmMpCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FQlVTWTsK
+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgZWxzZQo+PiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHJvY2tjaGlwX2NydGNfd2FpdF9mb3JfdXBkYXRlKGNydGMpOwo+Cj4KPj4gKyAg
+ICAgICAgICAgICAgIH0KPj4gKyAgICAgICB9Cj4+ICAgICAgICAgcmV0ID0gZHJtX2F0b21pY19o
+ZWxwZXJfcHJlcGFyZV9wbGFuZXMoZGV2LCBzdGF0ZSk7Cj4+ICAgICAgICAgaWYgKHJldCkKPj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMK
+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGluZGV4
+IGUyMTE4ZTYyMzQ1Yi4uNTI0MGJjOGZlMDg4IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gQEAgLTg0OCw2ICs4NDgsMTIgQEAgaW50IHJv
+Y2tjaGlwX2RybV9jcnRjX21vZGVfY29uZmlnKHN0cnVjdCBkcm1fY3J0Ywo+PiAqY3J0YywKPj4g
+ICB9Cj4+ICAgRVhQT1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2NydGNfbW9kZV9jb25maWcp
+Owo+PiAgICtib29sIHJvY2tjaGlwX2RybV9jcnRjX2hhc19wZW5kaW5nX2V2ZW50KHN0cnVjdCBk
+cm1fY3J0YyAqY3J0YykKPj4gK3sKPj4gKyAgICAgICByZXR1cm4gdG9fdm9wKGNydGMpLT5ldmVu
+dDsKPj4gK30KPj4gK0VYUE9SVF9TWU1CT0xfR1BMKHJvY2tjaGlwX2RybV9jcnRjX2hhc19wZW5k
+aW5nX2V2ZW50KTsKPj4gKwo+Cj4KPiBObyBuZWVkIHRvIGRvIEVYUE9SVF9TWU1CT0xfR1BMLCBy
+b2NrY2hpcF9kcm1fdm9wLmMgYW5kIHJvY2tjaGlwX2RybV9mYi5jCj4gd2lsbCBidWlsZCBpbnRv
+IHNhbWUgb2JqZWN0Lgo+Cj4KPj4gICBzdGF0aWMgaW50IHZvcF9jcnRjX2VuYWJsZV92Ymxhbmso
+c3RydWN0IGRybV9jcnRjICpjcnRjKQo+PiAgIHsKPj4gICAgICAgICBzdHJ1Y3Qgdm9wICp2b3Ag
+PSB0b192b3AoY3J0Yyk7Cj4KPiBIaSBUb21ldQo+Cj4gU2luY2Ugcm9ja2NoaXAgYXRvbWljIGFz
+eW5jIHVzZSAic2VyaWFsaXplIG91dHN0YW5kaW5nIGFzeW5jaHJvbm91cwo+IGNvbW1pdHMiLCBh
+c3luYyBjb21taXQgd2lsbCB3YWl0IG9uICJmbHVzaF93b3JrKCZjb21taXQtPndvcmspOyIgdG8g
+ZW5zdXJlCj4gbGFzdCBwZW5kaW5nIGV2ZW50IGlzIGRvbmUsIHNvIHZvcC0+ZXZlbnQgc2hvdWxk
+IGJlIE5VTEwgYWZ0ZXIgZmx1c2guIGlmCj4gbm90LCBpdCBzaG91bGQgYmUgYSBCVUcuCgpJIG1p
+c3NlZCB0aGF0LCB0aGFua3MuCgo+IEFueXdheSwgc2VyaWFsaXplIGFzeW5jIGNvbW1pdHMgaXMg
+bm90IGEgZ29vZCB3YXksIGJ1dCBJIGRvbid0IHRoaW5rIHlvdXIKPiBwYXRjaCBpcyBiZXR0ZXIg
+d2F5LgoKUGVyLUNSVEMgd29ya3F1ZXVlcyBzaG91bGQgaW1wcm92ZSB0aGF0LCBidXQgSSdtIHJp
+Z2h0IG5vdyBtb3JlCmludGVyZXN0ZWQgaW4gY29ycmVjdG5lc3MgdGhhbiBwZXJmb3JtYW5jZS4K
+Cj4gSSB0aGluayBtYXliZSB3ZSBjYW4gY2hlY2sgdGhlICJjb21taXQtPndvcmsiIHN0YXR1cyhm
+aW5pc2ggb3IgcnVubmluZykgdG8KPiBqdWRnZSByZXR1cm4gQlVTWSBvciBub3QsIGluc3RlYWQg
+b2YgZmx1c2ggaXQuCgpUaGF0IHNvdW5kcyBiZXR0ZXIgaW5kZWVkLgoKVGhhbmtzLAoKVG9tZXUK
+Cj4gVGhhbmtzLgo+Cj4gLS0KPiDvvK1hcmsgWWFvCj4KPgo+IF9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
