@@ -1,14 +1,14 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
-Date: Thu, 31 Mar 2016 22:45:52 +0200
-Message-ID: <11405116.V0u286Y0bM@phil>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
- <2027561.JLzKLXOoFO@phil> <1776429.KtRq374vTa@phil>
+Subject: [PATCH 4/5] ARM: dts: rockchip: drop unneeded properties from mipi
+ node
+Date: Thu, 31 Mar 2016 22:54:10 +0200
+Message-ID: <1459457651-4727-5-git-send-email-heiko@sntech.de>
+References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1776429.KtRq374vTa@phil>
+In-Reply-To: <1459457651-4727-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,47 +18,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. M=E4rz 2016, 19:15:43 schrieb Heiko Stuebner:
-> Am Samstag, 19. M=E4rz 2016, 09:04:08 schrieb Heiko Stuebner:
-> > Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
-> > > A dtc update results in warnings for nodes with reg property but
-> > > without
-> > > unit address in the node name, so rename /memory to /memory@0.
-> > > =
+The mipi controller node does contain an unused reg property as well as
+unnecessary #address-cells and #size-cells properties for subnodes
+not using addresses, so remove those to also make dtc happy.
 
-> > > Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
-> > =
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
 
-> > applied to a dts64-fixes branch for 4.6, after changing the commit
-> > message to ----
-> > A dtc update results in warnings for nodes with reg property but without
-> > unit address in the node name, so rename /memory to /memory@startaddress
-> > (memory starts at 0 in the case of the rk3368).
-> > ----
-> > =
-
-> > To clarify that the @0 is not arbitary chosen.
-> =
-
-> This dtc update in question hasn't landed in v4.6-rc1 and from what I
-> gathered will need some changes. The patch is obviously still correct, but
-> I have now moved it from v4.6-fixes to the regular v4.7 64bit dts
-> changes.
-
-also it seems "memory" is special and memory without unitname will stay =
-
-allowed [0], especially as uboot or other bootloaders may expect such a nod=
-e =
-
-to insert the actual amount of memory into it.
-
-Looking at uboot, fdt_fixup_memory_banks seems to look explicitly for a =
-
-"memory" node, so I'm actually not sure, if this is safe to keep at all.
-
-
-[0] http://www.spinics.net/lists/arm-kernel/msg494038.html
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index ee4085d..9114c7b 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -888,10 +888,6 @@
+ 		status = "disabled";
+ 
+ 		ports {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			reg = <1>;
+-
+ 			mipi_in: port {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+-- 
+2.6.4
