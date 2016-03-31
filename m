@@ -1,88 +1,76 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
- flip event
-Date: Thu, 31 Mar 2016 09:25:43 +0800
-Message-ID: <56FC7C97.8000506@rock-chips.com>
-References: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v5 34/46] clk: pwm: switch to the atomic API
+Date: Thu, 31 Mar 2016 08:57:35 +0200
+Message-ID: <20160331085735.3574970b@bbrezillon>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1459368249-13241-35-git-send-email-boris.brezillon@free-electrons.com>
+	<20160330220149.GU18567@codeaurora.org>
+Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBY4U6O3QKGQECI4INZQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+In-Reply-To: <20160330220149.GU18567-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jo>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDAz5pyIMzDml6UgMjE6NDgsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBBcyBwZXIg
-dGhlIGRvY3MsIGF0b21pY19jb21taXQgc2hvdWxkIHJldHVybiAtRUJVU1kgImlmIGFuIGFzeWNu
-aHJvbm91cwo+IHVwZGF0ZWQgaXMgcmVxdWVzdGVkIGFuZCB0aGVyZSBpcyBhbiBlYXJsaWVyIHVw
-ZGF0ZWQgcGVuZGluZyIuCj4KPiBBbHNvIHdhaXQgZm9yIHRoZSBwZW5kaW5nIGV2ZW50IHRvIGNv
-bXBsZXRlIHdoZW4gYSBzeW5jIHVwZGF0ZSBpcwo+IHJlcXVlc3RlZC4KPgo+IFNpZ25lZC1vZmYt
-Ynk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4gICBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgIDEgKwo+ICAgZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICB8IDE0ICsrKysrKysrKysr
-KystCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDYg
-KysrKysrCj4gICAzIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24o
-LSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+IGlu
-ZGV4IDM1MjlmNjkyZWRiOC4uMzc5NTJlZWZkMzNkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCj4gQEAgLTY5LDYgKzY5LDcgQEAgaW50IHJvY2tj
-aGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgdm9pZCBy
-b2NrY2hpcF91bnJlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjKTsKPiAg
-IGludCByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2NvbmZpZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
-IGludCBjb25uZWN0b3JfdHlwZSwKPiAgIAkJCQkgIGludCBvdXRfbW9kZSk7Cj4gK2Jvb2wgcm9j
-a2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0IGRybV9jcnRjICpjcnRjKTsK
-PiAgIGludCByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2Ug
-KmRybV9kZXYsCj4gICAJCQkJICAgc3RydWN0IGRldmljZSAqZGV2KTsKPiAgIHZvaWQgcm9ja2No
-aXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiBpbmRleCAzYjhmNjUy
-Njk4ZjguLjAyOGZkMmY4ZjQ3YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX2ZiLmMKPiBAQCAtMjgwLDcgKzI4MCwxOSBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0
-b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgIHsKPiAgIAlzdHJ1Y3Qgcm9j
-a2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkZXYtPmRldl9wcml2YXRlOwo+ICAgCXN0cnVj
-dCByb2NrY2hpcF9hdG9taWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0ZS0+Y29tbWl0Owo+IC0J
-aW50IHJldDsKPiArCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKPiArCXN0cnVj
-dCBkcm1fY3J0YyAqY3J0YzsKPiArCWludCBpLCByZXQ7Cj4gKwo+ICsJZm9yX2VhY2hfY3J0Y19p
-bl9zdGF0ZShzdGF0ZSwgY3J0YywgY3J0Y19zdGF0ZSwgaSkgewo+ICsJCWlmIChjcnRjLT5zdGF0
-ZS0+ZXZlbnQgfHwKPiArCQkgICAgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQo
-Y3J0YykpIHsKPiArCQkJaWYgKGFzeW5jKQo+ICsJCQkJcmV0dXJuIC1FQlVTWTsKPiArCQkJZWxz
-ZQo+ICsJCQkJcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0Yyk7Cgo+ICsJCX0KPiAr
-CX0KPiAgIAo+ICAgCXJldCA9IGRybV9hdG9taWNfaGVscGVyX3ByZXBhcmVfcGxhbmVzKGRldiwg
-c3RhdGUpOwo+ICAgCWlmIChyZXQpCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jCj4gaW5kZXggZTIxMThlNjIzNDViLi41MjQwYmM4ZmUwODggMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtODQ4LDYg
-Kzg0OCwxMiBAQCBpbnQgcm9ja2NoaXBfZHJtX2NydGNfbW9kZV9jb25maWcoc3RydWN0IGRybV9j
-cnRjICpjcnRjLAo+ICAgfQo+ICAgRVhQT1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2NydGNf
-bW9kZV9jb25maWcpOwo+ICAgCj4gK2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdf
-ZXZlbnQoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICt7Cj4gKwlyZXR1cm4gdG9fdm9wKGNydGMp
-LT5ldmVudDsKPiArfQo+ICtFWFBPUlRfU1lNQk9MX0dQTChyb2NrY2hpcF9kcm1fY3J0Y19oYXNf
-cGVuZGluZ19ldmVudCk7Cj4gKwoKTm8gbmVlZCB0byBkbyBFWFBPUlRfU1lNQk9MX0dQTCwgcm9j
-a2NoaXBfZHJtX3ZvcC5jIGFuZCByb2NrY2hpcF9kcm1fZmIuYyB3aWxsIGJ1aWxkIGludG8gc2Ft
-ZSBvYmplY3QuCgoKPiAgIHN0YXRpYyBpbnQgdm9wX2NydGNfZW5hYmxlX3ZibGFuayhzdHJ1Y3Qg
-ZHJtX2NydGMgKmNydGMpCj4gICB7Cj4gICAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMp
-OwpIaSBUb21ldQoKU2luY2Ugcm9ja2NoaXAgYXRvbWljIGFzeW5jIHVzZSAic2VyaWFsaXplIG91
-dHN0YW5kaW5nIGFzeW5jaHJvbm91cyAKY29tbWl0cyIsIGFzeW5jIGNvbW1pdCB3aWxsIHdhaXQg
-b24gImZsdXNoX3dvcmsoJmNvbW1pdC0+d29yayk7IiB0byAKZW5zdXJlIGxhc3QgcGVuZGluZyBl
-dmVudCBpcyBkb25lLCBzbyB2b3AtPmV2ZW50IHNob3VsZCBiZSBOVUxMIGFmdGVyIApmbHVzaC4g
-aWYgbm90LCBpdCBzaG91bGQgYmUgYSBCVUcuCgpBbnl3YXksIHNlcmlhbGl6ZSBhc3luYyBjb21t
-aXRzIGlzIG5vdCBhIGdvb2Qgd2F5LCBidXQgSSBkb24ndCB0aGluayAKeW91ciBwYXRjaCBpcyBi
-ZXR0ZXIgd2F5LgoKSSB0aGluayBtYXliZSB3ZSBjYW4gY2hlY2sgdGhlICJjb21taXQtPndvcmsi
-IHN0YXR1cyhmaW5pc2ggb3IgcnVubmluZykgCnRvIGp1ZGdlIHJldHVybiBCVVNZIG9yIG5vdCwg
-aW5zdGVhZCBvZiBmbHVzaCBpdC4KClRoYW5rcy4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Stephen,
+
+On Wed, 30 Mar 2016 15:01:49 -0700
+Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+
+> On 03/30, Boris Brezillon wrote:
+> > diff --git a/drivers/clk/clk-pwm.c b/drivers/clk/clk-pwm.c
+> > index ebcd738..49ec5b1 100644
+> > --- a/drivers/clk/clk-pwm.c
+> > +++ b/drivers/clk/clk-pwm.c
+> > @@ -28,15 +28,29 @@ static inline struct clk_pwm *to_clk_pwm(struct clk_hw *hw)
+> >  static int clk_pwm_prepare(struct clk_hw *hw)
+> >  {
+> >  	struct clk_pwm *clk_pwm = to_clk_pwm(hw);
+> > +	struct pwm_state pstate;
+> >  
+> > -	return pwm_enable(clk_pwm->pwm);
+> > +	pwm_get_state(clk_pwm->pwm, &pstate);
+> > +	if (pstate.enabled)
+> > +		return 0;
+> > +
+> > +	pstate.enabled = true;
+> > +
+> > +	return pwm_apply_state(clk_pwm->pwm, &pstate);
+> 
+> This doesn't seem atomic anymore if we're checking the state and
+> then not calling apply_state if it's already enabled. But I
+> assume this doesn't matter because we "own" the pwm here?
+
+Yep. Actually it's not atomic in term of concurrency (maybe the
+'atomic' word is not appropriate here). Atomicity is here referring to
+the fact that we're now providing all the PWM parameters in the same
+request instead of splitting it in pwm_config() + pwm_enable/disable()
+calls.
+
+Concurrent accesses still have to be controlled by the PWM user (which
+is already the case for this driver, thanks to the locking
+infrastructure in the CCF).
+
+> Otherwise I would think this would be unconditional apply state
+> and duplicates would be ignored in the pwm framework.
+> 
+
+Yep, I'll remove the if (pstate.enabled) branch.
+
+Thanks for your review.
+
+Boris
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
