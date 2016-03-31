@@ -1,14 +1,11 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 4/5] ARM: dts: rockchip: drop unneeded properties from mipi
- node
-Date: Thu, 31 Mar 2016 22:54:10 +0200
-Message-ID: <1459457651-4727-5-git-send-email-heiko@sntech.de>
-References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
+Subject: [PATCH 0/5] ARM: dts: rockchip: small cleanups
+Date: Thu, 31 Mar 2016 22:54:06 +0200
+Message-ID: <1459457651-4727-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459457651-4727-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -22,29 +19,36 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The mipi controller node does contain an unused reg property as well as
-unnecessary #address-cells and #size-cells properties for subnodes
-not using addresses, so remove those to also make dtc happy.
+Fix some missing unitnames on nodes having a reg property
+and drop unitnames on gpio-keys.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
+This explicitly leaves out the memory nodes, as it seems
+memory without unitname will keep being allowed, also
+to keep compatibility with bootloaders who may insert the
+actual amount of memory into those nodes. [0]
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index ee4085d..9114c7b 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -888,10 +888,6 @@
- 		status = "disabled";
- 
- 		ports {
--			#address-cells = <1>;
--			#size-cells = <0>;
--			reg = <1>;
--
- 			mipi_in: port {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
+
+[0] http://www.spinics.net/lists/arm-kernel/msg494038.html
+
+Heiko Stuebner (5):
+  ARM: dts: rockchip: fix rk3288 power-domain unit names
+  ARM: dts: rockchip: fix missing usbphy unit-names
+  ARM: dts: rockchip: clean up gpio-keys nodes
+  ARM: dts: rockchip: drop unneeded properties from mipi node
+  ARM: dts: rockchip: add missing unitname to cpu_leakage efuse
+
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts | 11 +++++------
+ arch/arm/boot/dts/rk3066a-rayeager.dts |  7 +++----
+ arch/arm/boot/dts/rk3066a.dtsi         |  6 +++---
+ arch/arm/boot/dts/rk3188-radxarock.dts |  7 +++----
+ arch/arm/boot/dts/rk3188.dtsi          |  6 +++---
+ arch/arm/boot/dts/rk3288-evb.dtsi      |  7 +++----
+ arch/arm/boot/dts/rk3288-firefly.dtsi  |  7 +++----
+ arch/arm/boot/dts/rk3288-popmetal.dts  |  8 +++-----
+ arch/arm/boot/dts/rk3288-r89.dts       |  7 +++----
+ arch/arm/boot/dts/rk3288.dtsi          | 18 +++++++-----------
+ drivers/spi/spi.c                      |  4 ++--
+ 11 files changed, 38 insertions(+), 50 deletions(-)
+
 -- 
 2.6.4
