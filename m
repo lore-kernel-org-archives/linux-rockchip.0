@@ -1,227 +1,88 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 3/5] ARM: dts: rockchip: move rk3288 io-domain nodes to the grf
-Date: Thu, 31 Mar 2016 15:48:44 +0200
-Message-ID: <1459432126-6395-4-git-send-email-heiko@sntech.de>
-References: <1459432126-6395-1-git-send-email-heiko@sntech.de>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1459432126-6395-1-git-send-email-heiko@sntech.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: rjw@rjwysocki.net, khilman@kernel.org
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: move rk3036 memory definition to board
+ files
+Date: Thu, 31 Mar 2016 15:50:38 +0200
+Message-ID: <1459432238-6469-1-git-send-email-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-io-voltage control is actually part of the grf, so move the node under the
-newly available grf simple-mfd.
+The amount of available memory is clearly a board-specific value, so
+the core per-soc dtsi should not define a default of any sort.
+Therefore move the memory-nodes to the two board files.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Also fix the amount of memory on Kylin (512MB instead of 1GB).
+While in most cases the bootloader will override this with the
+actual amount of memory, there is no need to keep known wrong values
+in the board-dts.
+
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3288-firefly.dtsi   | 33 ++++++++++++++++----------------
- arch/arm/boot/dts/rk3288-popmetal.dts   | 34 +++++++++++++++++----------------
- arch/arm/boot/dts/rk3288-rock2-som.dtsi | 34 +++++++++++++++++----------------
- arch/arm/boot/dts/rk3288-veyron.dtsi    | 28 ++++++++++++++-------------
- 4 files changed, 68 insertions(+), 61 deletions(-)
+ arch/arm/boot/dts/rk3036-evb.dts   | 5 +++++
+ arch/arm/boot/dts/rk3036-kylin.dts | 5 +++++
+ arch/arm/boot/dts/rk3036.dtsi      | 5 -----
+ 3 files changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 98c586a4..6c5f510d 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -63,22 +63,6 @@
- 		clock-output-names = "ext_gmac";
- 	};
- 
--	io_domains: io-domains {
--		compatible = "rockchip,rk3288-io-voltage-domain";
--		rockchip,grf = <&grf>;
--
--		audio-supply = <&vcca_33>;
--		bb-supply = <&vcc_io>;
--		dvp-supply = <&dovdd_1v8>;
--		flash0-supply = <&vcc_flash>;
--		flash1-supply = <&vcc_lan>;
--		gpio30-supply = <&vcc_io>;
--		gpio1830-supply = <&vcc_io>;
--		lcdc-supply = <&vcc_io>;
--		sdcard-supply = <&vccio_sd>;
--		wifi-supply = <&vccio_wl>;
--	};
--
- 	ir: ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		pinctrl-names = "default";
-@@ -237,6 +221,23 @@
- 	status = "ok";
+diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
+index b3d6ec8..8db9e9b 100644
+--- a/arch/arm/boot/dts/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rk3036-evb.dts
+@@ -45,6 +45,11 @@
+ / {
+ 	model = "Rockchip RK3036 Evaluation board";
+ 	compatible = "rockchip,rk3036-evb", "rockchip,rk3036";
++
++	memory {
++		device_type = "memory";
++		reg = <0x60000000 0x40000000>;
++	};
  };
  
-+&grf {
-+	io_domains: io-domains {
-+		compatible = "rockchip,rk3288-io-voltage-domain";
-+
-+		audio-supply = <&vcca_33>;
-+		bb-supply = <&vcc_io>;
-+		dvp-supply = <&dovdd_1v8>;
-+		flash0-supply = <&vcc_flash>;
-+		flash1-supply = <&vcc_lan>;
-+		gpio30-supply = <&vcc_io>;
-+		gpio1830-supply = <&vcc_io>;
-+		lcdc-supply = <&vcc_io>;
-+		sdcard-supply = <&vccio_sd>;
-+		wifi-supply = <&vccio_wl>;
+ &emac {
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 6251d10..819d608 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -46,6 +46,11 @@
+ 	model = "Rockchip RK3036 KylinBoard";
+ 	compatible = "rockchip,rk3036-kylin", "rockchip,rk3036";
+ 
++	memory {
++		device_type = "memory";
++		reg = <0x60000000 0x20000000>;
 +	};
-+};
 +
- &hdmi {
- 	ddc-i2c-bus = <&i2c5>;
- 	status = "okay";
-diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
-index 2ff9689..4322eaf 100644
---- a/arch/arm/boot/dts/rk3288-popmetal.dts
-+++ b/arch/arm/boot/dts/rk3288-popmetal.dts
-@@ -79,22 +79,6 @@
- 		};
+ 	leds: gpio-leds {
+ 		compatible = "gpio-leds";
+ 
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index d0f4bb7..eb44a33 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -63,11 +63,6 @@
+ 		spi = &spi;
  	};
  
--	io_domains: io-domains {
--		compatible = "rockchip,rk3288-io-voltage-domain";
--		rockchip,grf = <&grf>;
--
--		audio-supply = <&vcca_33>;
--		bb-supply = <&vcc_io>;
--		dvp-supply = <&vcc18_dvp>;
--		flash0-supply = <&vcc_flash>;
--		flash1-supply = <&vcc_lan>;
--		gpio30-supply = <&vcc_io>;
--		gpio1830-supply = <&vcc_io>;
--		lcdc-supply = <&vcc_io>;
--		sdcard-supply = <&vccio_sd>;
--		wifi-supply = <&vccio_wl>;
+-	memory {
+-		device_type = "memory";
+-		reg = <0x60000000 0x40000000>;
 -	};
 -
- 	ir: ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
-@@ -205,6 +189,24 @@
- 	status = "ok";
- };
- 
-+&grf {
-+	io_domains: io-domains {
-+		compatible = "rockchip,rk3288-io-voltage-domain";
-+		rockchip,grf = <&grf>;
-+
-+		audio-supply = <&vcca_33>;
-+		bb-supply = <&vcc_io>;
-+		dvp-supply = <&vcc18_dvp>;
-+		flash0-supply = <&vcc_flash>;
-+		flash1-supply = <&vcc_lan>;
-+		gpio30-supply = <&vcc_io>;
-+		gpio1830-supply = <&vcc_io>;
-+		lcdc-supply = <&vcc_io>;
-+		sdcard-supply = <&vccio_sd>;
-+		wifi-supply = <&vccio_wl>;
-+	};
-+};
-+
- &hdmi {
- 	ddc-i2c-bus = <&i2c5>;
- 	status = "okay";
-diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-index e1ee9f9..8660b8a 100644
---- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-+++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-@@ -61,22 +61,6 @@
- 		clock-output-names = "ext_gmac";
- 	};
- 
--	io_domains: io-domains {
--		compatible = "rockchip,rk3288-io-voltage-domain";
--		rockchip,grf = <&grf>;
--
--		audio-supply = <&vcc_io>;
--		bb-supply = <&vcc_io>;
--		dvp-supply = <&vcc_18>;
--		flash0-supply = <&vcc_flash>;
--		flash1-supply = <&vccio_pmu>;
--		gpio30-supply = <&vccio_pmu>;
--		gpio1830 = <&vcc_io>;
--		lcdc-supply = <&vcc_io>;
--		sdcard-supply = <&vccio_sd>;
--		wifi-supply = <&vcc_18>;
--	};
--
- 	vcc_flash: flash-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -129,6 +113,24 @@
- 	tx_delay = <0x30>;
- };
- 
-+&grf {
-+	io_domains: io-domains {
-+		compatible = "rockchip,rk3288-io-voltage-domain";
-+		rockchip,grf = <&grf>;
-+
-+		audio-supply = <&vcc_io>;
-+		bb-supply = <&vcc_io>;
-+		dvp-supply = <&vcc_18>;
-+		flash0-supply = <&vcc_flash>;
-+		flash1-supply = <&vccio_pmu>;
-+		gpio30-supply = <&vccio_pmu>;
-+		gpio1830 = <&vcc_io>;
-+		lcdc-supply = <&vcc_io>;
-+		sdcard-supply = <&vccio_sd>;
-+		wifi-supply = <&vcc_18>;
-+	};
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 412809c..df44735 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -83,19 +83,6 @@
- 		reset-gpios = <&gpio2 9 GPIO_ACTIVE_HIGH>;
- 	};
- 
--	io_domains: io-domains {
--		compatible = "rockchip,rk3288-io-voltage-domain";
--		rockchip,grf = <&grf>;
--
--		bb-supply = <&vcc33_io>;
--		dvp-supply = <&vcc_18>;
--		flash0-supply = <&vcc18_flashio>;
--		gpio1830-supply = <&vcc33_io>;
--		gpio30-supply = <&vcc33_io>;
--		lcdc-supply = <&vcc33_lcd>;
--		wifi-supply = <&vcc18_wl>;
--	};
--
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&rk808 RK808_CLKOUT1>;
-@@ -159,6 +146,21 @@
- 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
- };
- 
-+&grf {
-+	io_domains: io-domains {
-+		compatible = "rockchip,rk3288-io-voltage-domain";
-+		rockchip,grf = <&grf>;
-+
-+		bb-supply = <&vcc33_io>;
-+		dvp-supply = <&vcc_18>;
-+		flash0-supply = <&vcc18_flashio>;
-+		gpio1830-supply = <&vcc33_io>;
-+		gpio30-supply = <&vcc33_io>;
-+		lcdc-supply = <&vcc33_lcd>;
-+		wifi-supply = <&vcc18_wl>;
-+	};
-+};
-+
- &hdmi {
- 	ddc-i2c-bus = <&i2c5>;
- 	status = "okay";
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
 -- 
 2.6.4
-
