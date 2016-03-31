@@ -1,79 +1,62 @@
-From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
-Date: Thu, 31 Mar 2016 09:53:26 +0200
-Message-ID: <56FCD776.2090206@st.com>
-References: <1457294038-14243-1-git-send-email-afaerber@suse.de>	<56DE7E1D.5070508@st.com>	<CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>	<CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>	<56DFE55B.2090806@st.com>	<56DFE64B.8060606@st.com>	<CAAObsKBr9SXg1-wr9O-ypR8JozdGpeAwfDLMeUKi8ozxkKyTXg@mail.gmail.com>	<56DFF253.9050208@st.com>	<56DFFA9E.7060602@st.com>	<CAAObsKBUzBXcamEyup44N1bYUzGr_ZZTsYcD5x3PXb-2E00cGA@mail.gmail.com>	<56E033C8.40506@st.com>	<56E038CE.606@st.com>	<CADhT+wcMpzA_Coj8Z5OQZsc3bF3a7yOmsbazQMPtcdUWkJSuCA@mail.gmail.com>	<56E13AAB.2080900@st.com>	<CADhT+wd=vcph2y_OxkGNO5EwHvN=kBy-BrfZHmNjZHww4LxmTg@mail.gmail.com>	<56E28B5D.6000708@st.com>	<CAAObsKB-tSCu5KMYk2Zi-oX9zMKEOwwT93sMkiZKiYvtexmHaQ@mail.gmail.com>	<56E6E4B0.8060408@st.com
- >	<CAAObsKCdk+6HdzFYxRKZbPiaKcfMCLjbpngurat47YvyvSgH-w@mail.gmail.com>	<56E801EB.6030107@st.com>
- <CADhT+wdXXp322vmgFmWTUiiRZTsCWeJSSdU=BMEEbSyb_bnrUw@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH v5 05/46] pwm: introduce the pwm_args concept
+Date: Thu, 31 Mar 2016 09:57:49 +0200
+Message-ID: <20160331095749.4be1e76b@bbrezillon>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1459368249-13241-6-git-send-email-boris.brezillon@free-electrons.com>
+	<20160330215510.GS18567@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CADhT+wdXXp322vmgFmWTUiiRZTsCWeJSSdU=BMEEbSyb_bnrUw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?RnJhbmsgU2Now6RmZXI=?= <fschaefer.oss-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Tomeu Vizoso <tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <20160330215510.GS18567@codeaurora.org>
+Sender: linux-input-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee
 List-Id: linux-rockchip.vger.kernel.org
 
-On 3/30/2016 6:44 PM, Dinh Nguyen wrote:
-> On Tue, Mar 15, 2016 at 7:36 AM, Giuseppe CAVALLARO
-> <peppe.cavallaro-qxv4g6HH51o@public.gmane.org> wrote:
->> Hello Tomeu
->>
->> On 3/15/2016 8:23 AM, Tomeu Vizoso wrote:
->>>
->>> Thanks.
->>>
->>> Btw, I have rebased on top of 4.5 this morning and I have noticed that
->>> 88f8b1bb41c6 ("stmmac: Fix 'eth0: No PHY found' regression") got in
->>> there, so I guess we have now a bunch of boards with broken network on
->>> that release:(
->>
->>
->>
->> This is the status on my side: I am testing on an HW that has the
->> Enhanced descriptors and all works fine.
->>
->> On this HW, if I force the driver to use the normal descriptor
->> layout, I meet problems but using both net.git and net-next.
->> So I suspect I cannot ply with this HW forcing the normal descriptors.
->> But! That is helping me to check if, on net-next, the stmmac is
->> actually  programming fine the normal desc case.
->> I have just found another fix so I kindly ask you to apply the temp
->> patch  attached and let me know.
->> In details, I have noticed that the OWN bit was not set in the right
->> TDES0.
->>
->> I also ask you to give me a log of the kernel where the stmmac was
->> running fine. I would like to see which configuration it is selected
->> at runtime by the driver on your box.
->>  From your previous logs (where the stmmac failed), it seems that
->> the  problem is on normal desc but, to be honest, this is the first
->> case I see a 3.50a with HW capability register and w/o Enhanced
->> descriptors.
->>
->
-> Are you still working on a fix for:
->
-> [    1.196110] libphy: PHY stmmac-0:ffffffff not found
-> [    1.200972] eth0: Could not attach to PHY
-> [    1.204991] stmmac_open: Cannot attach to PHY (error: -19)
->
-> I see the error still there as of linux-next 20160330.
+On Wed, 30 Mar 2016 14:55:10 -0700
+Stephen Boyd <sboyd@codeaurora.org> wrote:
 
-this could be because the fixes have been not applied on net-next
-I will check and resend all asap
+> On 03/30, Boris Brezillon wrote:
+> > @@ -74,6 +74,23 @@ enum pwm_polarity {
+> >  	PWM_POLARITY_INVERSED,
+> >  };
+> >  
+> > +/**
+> > + * struct pwm_args - PWM arguments
+> > + * @period: reference period
+> > + * @polarity: reference polarity
+> > + *
+> > + * This structure describe board-dependent arguments attached to a PWM
+> 
+> s/describe/describes/
+> 
+> > + * device. Those arguments are usually retrieved from the PWM lookup table or
+> > + * DT definition.
+> > + * This should not be confused with the PWM state: PWM args not representing
+> 
+> s/not representing/don't represent/ ?
 
-peppe
+Yes, I meant "are not representing", but "don't represent" is fine.
 
->
-> Dinh
->
+> 
+> > + * the current PWM state, but the configuration the PWM user plan to use
+> 
+> s/plan/plans/
+> 
+> > + * on this PWM device.
+> > + */
+> > +struct pwm_args {
+> > +	unsigned int period;
+> > +	enum pwm_polarity polarity;
+> > +};
+> > +
+> 
+
+
+
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
