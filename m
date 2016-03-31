@@ -1,7 +1,8 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 1/5] ARM: dts: rockchip: fix rk3288 power-domain unit names
-Date: Thu, 31 Mar 2016 22:54:07 +0200
-Message-ID: <1459457651-4727-2-git-send-email-heiko@sntech.de>
+Subject: [PATCH 5/5] ARM: dts: rockchip: add missing unitname to cpu_leakage
+ efuse
+Date: Thu, 31 Mar 2016 22:54:11 +0200
+Message-ID: <1459457651-4727-6-git-send-email-heiko@sntech.de>
 References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,53 +22,40 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The power-domain sub-nodes do have reg properties, but so far are
-missing the expected unit names. So add the missing ones.
+The cpu_leakage efuse on rk3288 did get it right including the
+unitname but on both rk3066a and rk3188 it was missing, fix that.
 
 Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm/boot/dts/rk3066a.dtsi | 2 +-
+ arch/arm/boot/dts/rk3188.dtsi  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 74eae99..f445d19 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -659,7 +659,7 @@
- 			 *	*_HDMI		HDMI
- 			 *	*_MIPI_*	MIPI
- 			 */
--			pd_vio {
-+			pd_vio@RK3288_PD_VIO {
- 				reg = <RK3288_PD_VIO>;
- 				clocks = <&cru ACLK_IEP>,
- 					 <&cru ACLK_ISP>,
-@@ -692,7 +692,7 @@
- 			 * Note: The following 3 are HEVC(H.265) clocks,
- 			 * and on the ACLK_HEVC_NIU (NOC).
- 			 */
--			pd_hevc {
-+			pd_hevc@RK3288_PD_HEVC {
- 				reg = <RK3288_PD_HEVC>;
- 				clocks = <&cru ACLK_HEVC>,
- 					 <&cru SCLK_HEVC_CABAC>,
-@@ -704,7 +704,7 @@
- 			 * (video endecoder & decoder) clocks that on the
- 			 * ACLK_VCODEC_NIU and HCLK_VCODEC_NIU (NOC).
- 			 */
--			pd_video {
-+			pd_video@RK3288_PD_VIDEO {
- 				reg = <RK3288_PD_VIDEO>;
- 				clocks = <&cru ACLK_VCODEC>,
- 					 <&cru HCLK_VCODEC>;
-@@ -714,7 +714,7 @@
- 			 * Note: ACLK_GPU is the GPU clock,
- 			 * and on the ACLK_GPU_NIU (NOC).
- 			 */
--			pd_gpu {
-+			pd_gpu@RK3288_PD_GPU {
- 				reg = <RK3288_PD_GPU>;
- 				clocks = <&cru ACLK_GPU>;
- 			};
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index c84a306..c0ba86c 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -169,7 +169,7 @@
+ 		clocks = <&cru PCLK_EFUSE>;
+ 		clock-names = "pclk_efuse";
+ 
+-		cpu_leakage: cpu_leakage {
++		cpu_leakage: cpu_leakage@17 {
+ 			reg = <0x17 0x1>;
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index c44c318..31f81b2 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -154,7 +154,7 @@
+ 		clocks = <&cru PCLK_EFUSE>;
+ 		clock-names = "pclk_efuse";
+ 
+-		cpu_leakage: cpu_leakage {
++		cpu_leakage: cpu_leakage@17 {
+ 			reg = <0x17 0x1>;
+ 		};
+ 	};
 -- 
 2.6.4
