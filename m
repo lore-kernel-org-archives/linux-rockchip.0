@@ -1,13 +1,15 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 3/3] mmc: dw_mmc: remove setup_clock callback
-Date: Thu, 31 Mar 2016 15:34:10 +0800
-Message-ID: <1459409650-20429-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
+From: Giuseppe CAVALLARO <peppe.cavallaro-qxv4g6HH51o@public.gmane.org>
+Subject: Re: [PATCH v3 0/8] arm64: rockchip: Initial GeekBox enablement
+Date: Thu, 31 Mar 2016 09:53:26 +0200
+Message-ID: <56FCD776.2090206@st.com>
+References: <1457294038-14243-1-git-send-email-afaerber@suse.de>	<56DE7E1D.5070508@st.com>	<CADhT+weKf+F98uxCQhRa2RfMm8+4p=rrNZc-Vf=w_HPycXto=A@mail.gmail.com>	<CAAObsKD9HoEbtV_JMz_R=bcrQseDmhncRAWP9k8djksL-LMQqw@mail.gmail.com>	<56DFE55B.2090806@st.com>	<56DFE64B.8060606@st.com>	<CAAObsKBr9SXg1-wr9O-ypR8JozdGpeAwfDLMeUKi8ozxkKyTXg@mail.gmail.com>	<56DFF253.9050208@st.com>	<56DFFA9E.7060602@st.com>	<CAAObsKBUzBXcamEyup44N1bYUzGr_ZZTsYcD5x3PXb-2E00cGA@mail.gmail.com>	<56E033C8.40506@st.com>	<56E038CE.606@st.com>	<CADhT+wcMpzA_Coj8Z5OQZsc3bF3a7yOmsbazQMPtcdUWkJSuCA@mail.gmail.com>	<56E13AAB.2080900@st.com>	<CADhT+wd=vcph2y_OxkGNO5EwHvN=kBy-BrfZHmNjZHww4LxmTg@mail.gmail.com>	<56E28B5D.6000708@st.com>	<CAAObsKB-tSCu5KMYk2Zi-oX9zMKEOwwT93sMkiZKiYvtexmHaQ@mail.gmail.com>	<56E6E4B0.8060408@st.com
+ >	<CAAObsKCdk+6HdzFYxRKZbPiaKcfMCLjbpngurat47YvyvSgH-w@mail.gmail.com>	<56E801EB.6030107@st.com>
+ <CADhT+wdXXp322vmgFmWTUiiRZTsCWeJSSdU=BMEEbSyb_bnrUw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459409616-20306-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <CADhT+wdXXp322vmgFmWTUiiRZTsCWeJSSdU=BMEEbSyb_bnrUw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,61 +19,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Dinh Nguyen <dinh.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Gabriel Fernandez <gabriel.fernandez-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?B?RnJhbmsgU2Now6RmZXI=?= <fschaefer.oss-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Fabrice GASNIER <fabrice.gasnier-qxv4g6HH51o@public.gmane.org>, =?UTF-8?B?QW5kcmVhcyBGw6RyYmVy?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Tomeu Vizoso <tomeu-XCtybt49RKsYaV1qd6yewg@public.gmane.org>, Alexandre TORGUE <alexandre.torgue-qxv4g6HH51o@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Now, no dw_mmc variant drivers use this callback, let's
-remove it.
+On 3/30/2016 6:44 PM, Dinh Nguyen wrote:
+> On Tue, Mar 15, 2016 at 7:36 AM, Giuseppe CAVALLARO
+> <peppe.cavallaro-qxv4g6HH51o@public.gmane.org> wrote:
+>> Hello Tomeu
+>>
+>> On 3/15/2016 8:23 AM, Tomeu Vizoso wrote:
+>>>
+>>> Thanks.
+>>>
+>>> Btw, I have rebased on top of 4.5 this morning and I have noticed that
+>>> 88f8b1bb41c6 ("stmmac: Fix 'eth0: No PHY found' regression") got in
+>>> there, so I guess we have now a bunch of boards with broken network on
+>>> that release:(
+>>
+>>
+>>
+>> This is the status on my side: I am testing on an HW that has the
+>> Enhanced descriptors and all works fine.
+>>
+>> On this HW, if I force the driver to use the normal descriptor
+>> layout, I meet problems but using both net.git and net-next.
+>> So I suspect I cannot ply with this HW forcing the normal descriptors.
+>> But! That is helping me to check if, on net-next, the stmmac is
+>> actually  programming fine the normal desc case.
+>> I have just found another fix so I kindly ask you to apply the temp
+>> patch  attached and let me know.
+>> In details, I have noticed that the OWN bit was not set in the right
+>> TDES0.
+>>
+>> I also ask you to give me a log of the kernel where the stmmac was
+>> running fine. I would like to see which configuration it is selected
+>> at runtime by the driver on your box.
+>>  From your previous logs (where the stmmac failed), it seems that
+>> the  problem is on normal desc but, to be honest, this is the first
+>> case I see a 3.50a with HW capability register and w/o Enhanced
+>> descriptors.
+>>
+>
+> Are you still working on a fix for:
+>
+> [    1.196110] libphy: PHY stmmac-0:ffffffff not found
+> [    1.200972] eth0: Could not attach to PHY
+> [    1.204991] stmmac_open: Cannot attach to PHY (error: -19)
+>
+> I see the error still there as of linux-next 20160330.
 
-Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+this could be because the fixes have been not applied on net-next
+I will check and resend all asap
 
-Changes in v2: None
+peppe
 
- drivers/mmc/host/dw_mmc.c | 9 ---------
- drivers/mmc/host/dw_mmc.h | 2 --
- 2 files changed, 11 deletions(-)
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 242f9a0..e03cc66 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -3003,15 +3003,6 @@ int dw_mci_probe(struct dw_mci *host)
- 		}
- 	}
- 
--	if (drv_data && drv_data->setup_clock) {
--		ret = drv_data->setup_clock(host);
--		if (ret) {
--			dev_err(host->dev,
--				"implementation specific clock setup failed\n");
--			goto err_clk_ciu;
--		}
--	}
--
- 	setup_timer(&host->cmd11_timer,
- 		    dw_mci_cmd11_timer, (unsigned long)host);
- 
-diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
-index 68d5da2..1e8d838 100644
---- a/drivers/mmc/host/dw_mmc.h
-+++ b/drivers/mmc/host/dw_mmc.h
-@@ -277,7 +277,6 @@ struct dw_mci_slot {
-  * dw_mci driver data - dw-mshc implementation specific driver data.
-  * @caps: mmc subsystem specified capabilities of the controller(s).
-  * @init: early implementation specific initialization.
-- * @setup_clock: implementation specific clock configuration.
-  * @set_ios: handle bus specific extensions.
-  * @parse_dt: parse implementation specific device tree properties.
-  * @execute_tuning: implementation specific tuning procedure.
-@@ -289,7 +288,6 @@ struct dw_mci_slot {
- struct dw_mci_drv_data {
- 	unsigned long	*caps;
- 	int		(*init)(struct dw_mci *host);
--	int		(*setup_clock)(struct dw_mci *host);
- 	void		(*set_ios)(struct dw_mci *host, struct mmc_ios *ios);
- 	int		(*parse_dt)(struct dw_mci *host);
- 	int		(*execute_tuning)(struct dw_mci_slot *slot, u32 opcode);
--- 
-2.3.7
+>
+> Dinh
+>
