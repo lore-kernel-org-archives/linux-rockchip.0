@@ -1,45 +1,31 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 0/5] ARM: dts: rockchip: small cleanups
-Date: Thu, 31 Mar 2016 16:26:08 -0500
-Message-ID: <CAL_JsqJGwutf8C2b69a9zM=gj8zwgbumF-6qp4gSZ6k99QujSA@mail.gmail.com>
-References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v3 0/3] Rockchip: rk3399: Add core dtsi for rk3399
+Date: Thu, 31 Mar 2016 23:48:40 +0200
+Message-ID: <1983379.kJSqISDtbX@phil>
+References: <1456456341-14282-1-git-send-email-jay.xu@rock-chips.com> <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459457651-4727-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, huangtao@rock-chips.com, zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org, jwerner@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 31, 2016 at 3:54 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Fix some missing unitnames on nodes having a reg property
-> and drop unitnames on gpio-keys.
->
-> This explicitly leaves out the memory nodes, as it seems
-> memory without unitname will keep being allowed, also
-> to keep compatibility with bootloaders who may insert the
-> actual amount of memory into those nodes. [0]
->
->
-> [0] http://www.spinics.net/lists/arm-kernel/msg494038.html
->
-> Heiko Stuebner (5):
->   ARM: dts: rockchip: fix rk3288 power-domain unit names
->   ARM: dts: rockchip: fix missing usbphy unit-names
->   ARM: dts: rockchip: clean up gpio-keys nodes
->   ARM: dts: rockchip: drop unneeded properties from mipi node
->   ARM: dts: rockchip: add missing unitname to cpu_leakage efuse
+Hi Jianqun,
 
-For the series:
+Am Dienstag, 1. M=E4rz 2016, 14:39:58 schrieb Jianqun Xu:
+> There is the new SoCs from Rockchip which named rk3399, the
+> patches are added to support them.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+is this still valid or does it need an update?
+The clock-series from Xing saw changes, so I'm guessing the devicetree =
+side=20
+might also need some update?
+
+Especially an actual board-file would be nice ;-) .
+
+
+Thanks
+Heiko
