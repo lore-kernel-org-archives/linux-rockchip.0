@@ -1,137 +1,64 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v5 36/46] input: misc: max77693: switch to
- the atomic API
-Date: Thu, 31 Mar 2016 20:57:18 +0200
-Message-ID: <20160331205718.057a6f38@bbrezillon>
-References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1459368249-13241-37-git-send-email-boris.brezillon@free-electrons.com>
-	<20160331174801.GC39098@dtor-ws>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
+Date: Thu, 31 Mar 2016 22:45:52 +0200
+Message-ID: <11405116.V0u286Y0bM@phil>
+References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
+ <2027561.JLzKLXOoFO@phil> <1776429.KtRq374vTa@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBEPG6W3QKGQECBDIUNY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-In-Reply-To: <20160331174801.GC39098@dtor-ws>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones@lin>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1776429.KtRq374vTa@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 31 Mar 2016 10:48:01 -0700
-Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+Am Donnerstag, 31. M=E4rz 2016, 19:15:43 schrieb Heiko Stuebner:
+> Am Samstag, 19. M=E4rz 2016, 09:04:08 schrieb Heiko Stuebner:
+> > Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
+> > > A dtc update results in warnings for nodes with reg property but
+> > > without
+> > > unit address in the node name, so rename /memory to /memory@0.
+> > > =
 
-> Hi Boris,
-> 
-> On Wed, Mar 30, 2016 at 10:03:59PM +0200, Boris Brezillon wrote:
-> > pwm_config/enable/disable() have been deprecated and should be replaced
-> > by pwm_apply_state().
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> > ---
-> >  drivers/input/misc/max77693-haptic.c | 23 +++++++++++++++++------
-> >  1 file changed, 17 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/input/misc/max77693-haptic.c b/drivers/input/misc/max77693-haptic.c
-> > index cf6aac0..aef7dc4 100644
-> > --- a/drivers/input/misc/max77693-haptic.c
-> > +++ b/drivers/input/misc/max77693-haptic.c
-> > @@ -70,13 +70,16 @@ struct max77693_haptic {
-> >  
-> >  static int max77693_haptic_set_duty_cycle(struct max77693_haptic *haptic)
-> >  {
-> > +	struct pwm_state pstate;
-> >  	struct pwm_args pargs = { };
-> > -	int delta;
-> >  	int error;
-> >  
-> >  	pwm_get_args(haptic->pwm_dev, &pargs);
-> > -	delta = (pargs.period + haptic->pwm_duty) / 2;
-> > -	error = pwm_config(haptic->pwm_dev, delta, pargs.period);
-> > +	pwm_get_state(haptic->pwm_dev, &pstate);
-> > +
-> > +	pstate.period = pargs.period;
-> > +	pstate.duty_cycle = (pargs.period + haptic->pwm_duty) / 2;
-> > +	error = pwm_apply_state(haptic->pwm_dev, &pstate);
-> 
-> This does not make sense with regard to the atomic API. If you look in
-> max77693_haptic_play_work(), right after calling
-> max77693_haptic_set_duty_cycle() we either try to enable or disable the
-> pwm. When switching to this new API we should combine both actions.
+> > > Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
+> > =
 
-True. I'll address that, unless Thierry is fine keeping the non-atomic
-API, in which case I'll just drop patches 32 to 46.
+> > applied to a dts64-fixes branch for 4.6, after changing the commit
+> > message to ----
+> > A dtc update results in warnings for nodes with reg property but without
+> > unit address in the node name, so rename /memory to /memory@startaddress
+> > (memory starts at 0 in the case of the rk3368).
+> > ----
+> > =
 
-> 
-> >  	if (error) {
-> >  		dev_err(haptic->dev, "failed to configure pwm: %d\n", error);
-> >  		return error;
-> > @@ -161,12 +164,16 @@ static int max77693_haptic_lowsys(struct max77693_haptic *haptic, bool enable)
-> >  
-> >  static void max77693_haptic_enable(struct max77693_haptic *haptic)
-> >  {
-> > +	struct pwm_state pstate;
-> >  	int error;
-> >  
-> >  	if (haptic->enabled)
-> >  		return;
-> >  
-> > -	error = pwm_enable(haptic->pwm_dev);
-> > +	pwm_get_state(haptic->pwm_dev, &pstate);
-> > +	pstate.enabled = true;
-> > +
-> > +	error = pwm_apply_state(haptic->pwm_dev, &pstate);
-> 
-> As I mentioned I'd rather we did not deprecate pwm_enable() and
-> pwm_disable() (and maybe others), as it forces us to add unnecessary
-> boilerplate code to the drivers.
->  
-> >  	if (error) {
-> >  		dev_err(haptic->dev,
-> >  			"failed to enable haptic pwm device: %d\n", error);
-> > @@ -188,11 +195,13 @@ static void max77693_haptic_enable(struct max77693_haptic *haptic)
-> >  err_enable_config:
-> >  	max77693_haptic_lowsys(haptic, false);
-> >  err_enable_lowsys:
-> > -	pwm_disable(haptic->pwm_dev);
-> > +	pstate.enabled = false;
-> > +	pwm_apply_state(haptic->pwm_dev, &pstate);
-> >  }
-> >  
-> >  static void max77693_haptic_disable(struct max77693_haptic *haptic)
-> >  {
-> > +	struct pwm_state pstate;
-> >  	int error;
-> >  
-> >  	if (!haptic->enabled)
-> > @@ -206,7 +215,9 @@ static void max77693_haptic_disable(struct max77693_haptic *haptic)
-> >  	if (error)
-> >  		goto err_disable_lowsys;
-> >  
-> > -	pwm_disable(haptic->pwm_dev);
-> > +	pwm_get_state(haptic->pwm_dev, &pstate);
-> > +	pstate.enabled = false;
-> > +	pwm_apply_state(haptic->pwm_dev, &pstate);
-> 
-> Same here.
-> 
-> >  	haptic->enabled = false;
-> >  
-> >  	return;
-> > -- 
-> > 2.5.0
-> > 
-> 
-> Thanks.
-> 
+> > To clarify that the @0 is not arbitary chosen.
+> =
+
+> This dtc update in question hasn't landed in v4.6-rc1 and from what I
+> gathered will need some changes. The patch is obviously still correct, but
+> I have now moved it from v4.6-fixes to the regular v4.7 64bit dts
+> changes.
+
+also it seems "memory" is special and memory without unitname will stay =
+
+allowed [0], especially as uboot or other bootloaders may expect such a nod=
+e =
+
+to insert the actual amount of memory into it.
+
+Looking at uboot, fdt_fixup_memory_banks seems to look explicitly for a =
+
+"memory" node, so I'm actually not sure, if this is safe to keep at all.
 
 
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+[0] http://www.spinics.net/lists/arm-kernel/msg494038.html
