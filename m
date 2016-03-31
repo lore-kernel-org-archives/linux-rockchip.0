@@ -1,119 +1,88 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v5 08/46] hwmon: pwm-fan: use pwm_get_args() where
- appropriate
-Date: Wed, 30 Mar 2016 15:52:44 -0700
-Message-ID: <20160330225244.GA24044@roeck-us.net>
-References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
- <1459368249-13241-9-git-send-email-boris.brezillon@free-electrons.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
+ flip event
+Date: Thu, 31 Mar 2016 09:25:43 +0800
+Message-ID: <56FC7C97.8000506@rock-chips.com>
+References: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1459368249-13241-9-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1459345705-4473-1-git-send-email-tomeu.vizoso@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 30, 2016 at 10:03:31PM +0200, Boris Brezillon wrote:
-> The PWM framework has clarified the concept of reference PWM config
-> (the platform dependent config retrieved from the DT or the PWM
-> lookup table) and real PWM state.
-> 
-> Use pwm_get_args() when the PWM user wants to retrieve this reference
-> config and not the current state.
-> 
-> This is part of the rework allowing the PWM framework to support
-> hardware readout and expose real PWM state even when the PWM has
-> just been requested (before the user calls pwm_config/enable/disable()).
-> 
-> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> ---
->  drivers/hwmon/pwm-fan.c | 19 +++++++++++++------
->  1 file changed, 13 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/hwmon/pwm-fan.c b/drivers/hwmon/pwm-fan.c
-> index 3e23003..82c5656 100644
-> --- a/drivers/hwmon/pwm-fan.c
-> +++ b/drivers/hwmon/pwm-fan.c
-> @@ -40,15 +40,18 @@ struct pwm_fan_ctx {
->  
->  static int  __set_pwm(struct pwm_fan_ctx *ctx, unsigned long pwm)
->  {
-> +	struct pwm_args pargs = { };
-
-Hi Boris,
-
-I guess I am missing some context; sorry for that. Unfortunately,
-I did not easily find an explanation, so please bear with me.
-
-Two questions: Why do we need a local copy of struct pwm_args instead
-of a pointer to it ? If it can change while being used, isn't it
-inconsistent anyway ?
-
-Also, assuming the local copy is necessary, why initialize pargs ? 
-After all, pwm_get_args() just overwrites it.
-
-Thanks,
-Guenter
-
->  	unsigned long duty;
->  	int ret = 0;
->  
-> +	pwm_get_args(ctx->pwm, &pargs);
-> +
->  	mutex_lock(&ctx->lock);
->  	if (ctx->pwm_value == pwm)
->  		goto exit_set_pwm_err;
->  
-> -	duty = DIV_ROUND_UP(pwm * (ctx->pwm->period - 1), MAX_PWM);
-> -	ret = pwm_config(ctx->pwm, duty, ctx->pwm->period);
-> +	duty = DIV_ROUND_UP(pwm * (pargs.period - 1), MAX_PWM);
-> +	ret = pwm_config(ctx->pwm, duty, pargs.period);
->  	if (ret)
->  		goto exit_set_pwm_err;
->  
-> @@ -214,6 +217,7 @@ static int pwm_fan_of_get_cooling_data(struct device *dev,
->  static int pwm_fan_probe(struct platform_device *pdev)
->  {
->  	struct thermal_cooling_device *cdev;
-> +	struct pwm_args pargs = { };
->  	struct pwm_fan_ctx *ctx;
->  	struct device *hwmon;
->  	int duty_cycle;
-> @@ -234,10 +238,11 @@ static int pwm_fan_probe(struct platform_device *pdev)
->  	platform_set_drvdata(pdev, ctx);
->  
->  	/* Set duty cycle to maximum allowed */
-> -	duty_cycle = ctx->pwm->period - 1;
-> +	pwm_get_args(ctx->pwm, &pargs);
-> +	duty_cycle = pargs.period - 1;
->  	ctx->pwm_value = MAX_PWM;
->  
-> -	ret = pwm_config(ctx->pwm, duty_cycle, ctx->pwm->period);
-> +	ret = pwm_config(ctx->pwm, duty_cycle, pargs.period);
->  	if (ret) {
->  		dev_err(&pdev->dev, "Failed to configure PWM\n");
->  		return ret;
-> @@ -303,14 +308,16 @@ static int pwm_fan_suspend(struct device *dev)
->  static int pwm_fan_resume(struct device *dev)
->  {
->  	struct pwm_fan_ctx *ctx = dev_get_drvdata(dev);
-> +	struct pwm_args pargs = { };
->  	unsigned long duty;
->  	int ret;
->  
->  	if (ctx->pwm_value == 0)
->  		return 0;
->  
-> -	duty = DIV_ROUND_UP(ctx->pwm_value * (ctx->pwm->period - 1), MAX_PWM);
-> -	ret = pwm_config(ctx->pwm, duty, ctx->pwm->period);
-> +	pwm_get_args(ctx->pwm, &pargs);
-> +	duty = DIV_ROUND_UP(ctx->pwm_value * (pargs.period - 1), MAX_PWM);
-> +	ret = pwm_config(ctx->pwm, duty, pargs.period);
->  	if (ret)
->  		return ret;
->  	return pwm_enable(ctx->pwm);
-> -- 
-> 2.5.0
-> 
+T24gMjAxNuW5tDAz5pyIMzDml6UgMjE6NDgsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBBcyBwZXIg
+dGhlIGRvY3MsIGF0b21pY19jb21taXQgc2hvdWxkIHJldHVybiAtRUJVU1kgImlmIGFuIGFzeWNu
+aHJvbm91cwo+IHVwZGF0ZWQgaXMgcmVxdWVzdGVkIGFuZCB0aGVyZSBpcyBhbiBlYXJsaWVyIHVw
+ZGF0ZWQgcGVuZGluZyIuCj4KPiBBbHNvIHdhaXQgZm9yIHRoZSBwZW5kaW5nIGV2ZW50IHRvIGNv
+bXBsZXRlIHdoZW4gYSBzeW5jIHVwZGF0ZSBpcwo+IHJlcXVlc3RlZC4KPgo+IFNpZ25lZC1vZmYt
+Ynk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4gICBk
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIHwgIDEgKwo+ICAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jICB8IDE0ICsrKysrKysrKysr
+KystCj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgIDYg
+KysrKysrCj4gICAzIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24o
+LSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
+X2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAo+IGlu
+ZGV4IDM1MjlmNjkyZWRiOC4uMzc5NTJlZWZkMzNkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCj4gQEAgLTY5LDYgKzY5LDcgQEAgaW50IHJvY2tj
+aGlwX3JlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgdm9pZCBy
+b2NrY2hpcF91bnJlZ2lzdGVyX2NydGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjKTsKPiAg
+IGludCByb2NrY2hpcF9kcm1fY3J0Y19tb2RlX2NvbmZpZyhzdHJ1Y3QgZHJtX2NydGMgKmNydGMs
+IGludCBjb25uZWN0b3JfdHlwZSwKPiAgIAkJCQkgIGludCBvdXRfbW9kZSk7Cj4gK2Jvb2wgcm9j
+a2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0IGRybV9jcnRjICpjcnRjKTsK
+PiAgIGludCByb2NrY2hpcF9kcm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2Ug
+KmRybV9kZXYsCj4gICAJCQkJICAgc3RydWN0IGRldmljZSAqZGV2KTsKPiAgIHZvaWQgcm9ja2No
+aXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiBpbmRleCAzYjhmNjUy
+Njk4ZjguLjAyOGZkMmY4ZjQ3YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX2ZiLmMKPiBAQCAtMjgwLDcgKzI4MCwxOSBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0
+b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiAgIHsKPiAgIAlzdHJ1Y3Qgcm9j
+a2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkZXYtPmRldl9wcml2YXRlOwo+ICAgCXN0cnVj
+dCByb2NrY2hpcF9hdG9taWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0ZS0+Y29tbWl0Owo+IC0J
+aW50IHJldDsKPiArCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKPiArCXN0cnVj
+dCBkcm1fY3J0YyAqY3J0YzsKPiArCWludCBpLCByZXQ7Cj4gKwo+ICsJZm9yX2VhY2hfY3J0Y19p
+bl9zdGF0ZShzdGF0ZSwgY3J0YywgY3J0Y19zdGF0ZSwgaSkgewo+ICsJCWlmIChjcnRjLT5zdGF0
+ZS0+ZXZlbnQgfHwKPiArCQkgICAgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQo
+Y3J0YykpIHsKPiArCQkJaWYgKGFzeW5jKQo+ICsJCQkJcmV0dXJuIC1FQlVTWTsKPiArCQkJZWxz
+ZQo+ICsJCQkJcm9ja2NoaXBfY3J0Y193YWl0X2Zvcl91cGRhdGUoY3J0Yyk7Cgo+ICsJCX0KPiAr
+CX0KPiAgIAo+ICAgCXJldCA9IGRybV9hdG9taWNfaGVscGVyX3ByZXBhcmVfcGxhbmVzKGRldiwg
+c3RhdGUpOwo+ICAgCWlmIChyZXQpCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jCj4gaW5kZXggZTIxMThlNjIzNDViLi41MjQwYmM4ZmUwODggMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtODQ4LDYg
+Kzg0OCwxMiBAQCBpbnQgcm9ja2NoaXBfZHJtX2NydGNfbW9kZV9jb25maWcoc3RydWN0IGRybV9j
+cnRjICpjcnRjLAo+ICAgfQo+ICAgRVhQT1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfZHJtX2NydGNf
+bW9kZV9jb25maWcpOwo+ICAgCj4gK2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdf
+ZXZlbnQoc3RydWN0IGRybV9jcnRjICpjcnRjKQo+ICt7Cj4gKwlyZXR1cm4gdG9fdm9wKGNydGMp
+LT5ldmVudDsKPiArfQo+ICtFWFBPUlRfU1lNQk9MX0dQTChyb2NrY2hpcF9kcm1fY3J0Y19oYXNf
+cGVuZGluZ19ldmVudCk7Cj4gKwoKTm8gbmVlZCB0byBkbyBFWFBPUlRfU1lNQk9MX0dQTCwgcm9j
+a2NoaXBfZHJtX3ZvcC5jIGFuZCByb2NrY2hpcF9kcm1fZmIuYyB3aWxsIGJ1aWxkIGludG8gc2Ft
+ZSBvYmplY3QuCgoKPiAgIHN0YXRpYyBpbnQgdm9wX2NydGNfZW5hYmxlX3ZibGFuayhzdHJ1Y3Qg
+ZHJtX2NydGMgKmNydGMpCj4gICB7Cj4gICAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMp
+OwpIaSBUb21ldQoKU2luY2Ugcm9ja2NoaXAgYXRvbWljIGFzeW5jIHVzZSAic2VyaWFsaXplIG91
+dHN0YW5kaW5nIGFzeW5jaHJvbm91cyAKY29tbWl0cyIsIGFzeW5jIGNvbW1pdCB3aWxsIHdhaXQg
+b24gImZsdXNoX3dvcmsoJmNvbW1pdC0+d29yayk7IiB0byAKZW5zdXJlIGxhc3QgcGVuZGluZyBl
+dmVudCBpcyBkb25lLCBzbyB2b3AtPmV2ZW50IHNob3VsZCBiZSBOVUxMIGFmdGVyIApmbHVzaC4g
+aWYgbm90LCBpdCBzaG91bGQgYmUgYSBCVUcuCgpBbnl3YXksIHNlcmlhbGl6ZSBhc3luYyBjb21t
+aXRzIGlzIG5vdCBhIGdvb2Qgd2F5LCBidXQgSSBkb24ndCB0aGluayAKeW91ciBwYXRjaCBpcyBi
+ZXR0ZXIgd2F5LgoKSSB0aGluayBtYXliZSB3ZSBjYW4gY2hlY2sgdGhlICJjb21taXQtPndvcmsi
+IHN0YXR1cyhmaW5pc2ggb3IgcnVubmluZykgCnRvIGp1ZGdlIHJldHVybiBCVVNZIG9yIG5vdCwg
+aW5zdGVhZCBvZiBmbHVzaCBpdC4KClRoYW5rcy4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
