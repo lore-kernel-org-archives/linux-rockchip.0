@@ -1,53 +1,121 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
-Date: Thu, 31 Mar 2016 19:15:43 +0200
-Message-ID: <1776429.KtRq374vTa@phil>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
- <1458136727-32075-2-git-send-email-afaerber@suse.de>
- <2027561.JLzKLXOoFO@phil>
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Subject: Re: [PATCH v5 32/46] pwm: deprecate pwm_config(), pwm_enable() and
+ pwm_disable()
+Date: Thu, 31 Mar 2016 10:38:58 -0700
+Message-ID: <20160331173858.GB39098@dtor-ws>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1459368249-13241-33-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2027561.JLzKLXOoFO@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-doc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1459368249-13241-33-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-doc-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, linux-pwm@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Kamil Debski <k.debski@samsung.com>, lm-sensors@lm-sensors.org, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, linux-input@vger.kernel.org, Bryan Wu <cooloney@gmail.com>, Richard Purdie <rpurdie@rpsys.net>, Jacek Anaszewski <j.anaszewski@samsung.com>, linux-leds@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, linux-sunxi@googlegroups.com, Joachim Eastwood <manabian@gmail.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jo>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 19. M=E4rz 2016, 09:04:08 schrieb Heiko Stuebner:
-> Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
-> > A dtc update results in warnings for nodes with reg property but without
-> > unit address in the node name, so rename /memory to /memory@0.
-> > =
+Hi Boris,
 
-> > Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
-> =
+On Wed, Mar 30, 2016 at 10:03:55PM +0200, Boris Brezillon wrote:
+> Prefix those function as deprecated to encourage all existing users to
+> switch to pwm_apply_state().
 
-> applied to a dts64-fixes branch for 4.6, after changing the commit message
-> to ----
-> A dtc update results in warnings for nodes with reg property but without
-> unit address in the node name, so rename /memory to /memory@startaddress
-> (memory starts at 0 in the case of the rk3368).
-> ----
-> =
+Why not keep at least some of them as wrappers where we do not need to
+chnage several parameters at once? It is much easier to have a driver
+do:
 
-> To clarify that the @0 is not arbitary chosen.
+	error = pwm_enable(pwm);
+	if (error)
+		...
 
-This dtc update in question hasn't landed in v4.6-rc1 and from what I =
+rather than declaring the state variable, fectch it, adjust and then
+apply.
 
-gathered will need some changes. The patch is obviously still correct, but =
-I =
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> ---
+>  include/linux/pwm.h | 24 ++++++++++++------------
+>  1 file changed, 12 insertions(+), 12 deletions(-)
+> 
+> diff --git a/include/linux/pwm.h b/include/linux/pwm.h
+> index 4aad4eb..9bac10f 100644
+> --- a/include/linux/pwm.h
+> +++ b/include/linux/pwm.h
+> @@ -225,8 +225,8 @@ int pwm_apply_state(struct pwm_device *pwm, struct pwm_state *state);
+>   *
+>   * Returns: 0 on success or a negative error code on failure.
+>   */
+> -static inline int pwm_config(struct pwm_device *pwm, int duty_ns,
+> -			     int period_ns)
+> +static inline int __deprecated pwm_config(struct pwm_device *pwm, int duty_ns,
+> +					  int period_ns)
+>  {
+>  	struct pwm_state pstate;
+>  
+> @@ -252,8 +252,8 @@ static inline int pwm_config(struct pwm_device *pwm, int duty_ns,
+>   *
+>   * Returns: 0 on success or a negative error code on failure.
+>   */
+> -static inline int pwm_set_polarity(struct pwm_device *pwm,
+> -				   enum pwm_polarity polarity)
+> +static inline int __deprecated pwm_set_polarity(struct pwm_device *pwm,
+> +						enum pwm_polarity polarity)
+>  {
+>  	struct pwm_state pstate;
+>  
+> @@ -284,7 +284,7 @@ static inline int pwm_set_polarity(struct pwm_device *pwm,
+>   *
+>   * Returns: 0 on success or a negative error code on failure.
+>   */
+> -static inline int pwm_enable(struct pwm_device *pwm)
+> +static inline int __deprecated pwm_enable(struct pwm_device *pwm)
+>  {
+>  	struct pwm_state pstate;
+>  
+> @@ -303,7 +303,7 @@ static inline int pwm_enable(struct pwm_device *pwm)
+>   * pwm_disable() - stop a PWM output toggling
+>   * @pwm: PWM device
+>   */
+> -static inline void pwm_disable(struct pwm_device *pwm)
+> +static inline void __deprecated pwm_disable(struct pwm_device *pwm)
+>  {
+>  	struct pwm_state pstate;
+>  
+> @@ -360,24 +360,24 @@ static inline int pwm_apply_state(struct pwm_device *pwm,
+>  	return -ENOTSUPP;
+>  }
+>  
+> -static inline int pwm_config(struct pwm_device *pwm, int duty_ns,
+> -			     int period_ns)
+> +static inline int __deprecated pwm_config(struct pwm_device *pwm, int duty_ns,
+> +					  int period_ns)
+>  {
+>  	return -EINVAL;
+>  }
+>  
+> -static inline int pwm_set_polarity(struct pwm_device *pwm,
+> -				   enum pwm_polarity polarity)
+> +static inline int __deprecated pwm_set_polarity(struct pwm_device *pwm,
+> +						enum pwm_polarity polarity)
+>  {
+>  	return -ENOTSUPP;
+>  }
+>  
+> -static inline int pwm_enable(struct pwm_device *pwm)
+> +static inline int __deprecated pwm_enable(struct pwm_device *pwm)
+>  {
+>  	return -EINVAL;
+>  }
+>  
+> -static inline void pwm_disable(struct pwm_device *pwm)
+> +static inline void __deprecated pwm_disable(struct pwm_device *pwm)
+>  {
+>  }
+>  
+> -- 
+> 2.5.0
+> 
 
-have now moved it from v4.6-fixes to the regular v4.7 64bit dts changes.
-
-
-Heiko
+-- 
+Dmitry
