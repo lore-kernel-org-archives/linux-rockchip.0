@@ -1,40 +1,45 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: update rk3288-veyron cpu operating
- points
-Date: Fri, 01 Apr 2016 18:34:46 +0200
-Message-ID: <2836722.CXoAAzut2Z@phil>
-References: <1459459483-5356-1-git-send-email-heiko@sntech.de>
+Subject: Issues with cros_ec and "spi: rockchip: check return value of dmaengine_prep_slave_sg"
+Date: Sat, 02 Apr 2016 01:52:19 +0200
+Message-ID: <5681888.LvkE41Ux3K@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459459483-5356-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. M=E4rz 2016, 23:24:43 schrieb Heiko Stuebner:
-> The generic operating points specified in rk3288.dtsi are specified by
-> Rockchip as conservative and for all cases.
-> =
+Hi Shawn,
 
-> In contrast the Veyron ChromeOS devices are supposed to use a special
-> chip variant often called rk3288-c and use different operating points
-> in their kernel also including a higher max frequency.
-> =
+it looks like commit ea9849113343 ("spi: rockchip: check return value of
+dmaengine_prep_slave_sg") negatively affects the cros_ec spi backend.
 
-> So override the operating points for veyron devices.
-> =
+During boot on the most recent mainline kernel I get:
 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+[    1.025480] cros-ec-spi spi0.0: Chrome EC device registered
+[    1.641636] input: cros_ec as /devices/platform/ff110000.spi/spi_master/spi0/spi0.0/ff110000.spi:ec@0:keyboard-controller/input/input0
+[    2.340214] cros-ec-spi spi0.0: EC failed to respond in time
+[    2.357735] cros-ec-spi spi0.0: packet too long (249 bytes, expected 4)
+[    2.470353] cros-ec-spi spi0.0: EC failed to respond in time
+[    2.508495] cros-ec-spi spi0.0: packet too long (249 bytes, expected 4)
+[    2.620176] cros-ec-spi spi0.0: EC failed to respond in time
+[    2.637345] cros-ec-spi spi0.0: packet too long (249 bytes, expected 4)
+[    2.750245] cros-ec-spi spi0.0: EC failed to respond in time
+[    2.767519] cros-ec-spi spi0.0: packet too long (249 bytes, expected 4)
 
-applied to my dts32 branch for 4.7
+The cros-ec works ok after boot without further errors [aka keyboard
+and everything working correctly] and I haven't been able to figure out
+what goes wrong, but was able to bisect the issue down to the commit
+mentioned above.
+
+Reverting the patch silences the cros-ec again. I'll try to look into it
+further, but maybe you also have an idea what might go wrong.
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
