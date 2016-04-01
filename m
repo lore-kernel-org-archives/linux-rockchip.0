@@ -1,13 +1,15 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 1/2] phy: Group vendor specific phy drivers
-Date: Fri, 1 Apr 2016 18:35:56 +0530
-Message-ID: <56FE7234.5000505@ti.com>
-References: <1459510156-9147-1-git-send-email-gautam.vivek@samsung.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2 2/5] ARM: dts: rockchip: fix missing usbphy unit-names
+Date: Fri, 01 Apr 2016 15:27:14 +0200
+Message-ID: <19745485.m78qU7o4un@phil>
+References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
+ <1459457651-4727-3-git-send-email-heiko@sntech.de>
+ <56FE6A4F.2010609@phytec.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459510156-9147-1-git-send-email-gautam.vivek-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+In-Reply-To: <56FE6A4F.2010609-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,186 +19,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Vivek Gautam <gautam.vivek-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, shiraz.linux.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org
-Cc: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org, spear-devel-nkJGhpqTU55BDgjK7y7TUQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cpgs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+The usbphy subnodes do have a reg property but no unitname, add them.
 
-On Friday 01 April 2016 04:59 PM, Vivek Gautam wrote:
-> Adding vendor specific directories in phy to group
-> phy drivers under their respective vendor umbrella.
-> 
-> Signed-off-by: Vivek Gautam <gautam.vivek-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> ---
-> 
-> With growing number of phy drivers, it makes sense to
-> group these drivers under their respective vendor/platform
-> umbrella directory.
-> 
-> Build-tested 'multi_v7_defconfig'.
-> 
->  drivers/phy/Kconfig                               | 386 +---------------------
->  drivers/phy/Makefile                              |  57 +---
->  drivers/phy/bcom/Kconfig                          |  27 ++
->  drivers/phy/bcom/Makefile                         |   3 +
->  drivers/phy/{ => bcom}/phy-bcm-cygnus-pcie.c      |   0
->  drivers/phy/{ => bcom}/phy-bcm-kona-usb2.c        |   0
->  drivers/phy/{ => bcom}/phy-brcmstb-sata.c         |   0
->  drivers/phy/hisi/Kconfig                          |  20 ++
->  drivers/phy/hisi/Makefile                         |   2 +
->  drivers/phy/{ => hisi}/phy-hi6220-usb.c           |   0
->  drivers/phy/{ => hisi}/phy-hix5hd2-sata.c         |   0
->  drivers/phy/marvell/Kconfig                       |  50 +++
->  drivers/phy/marvell/Makefile                      |   6 +
->  drivers/phy/{ => marvell}/phy-armada375-usb2.c    |   0
->  drivers/phy/{ => marvell}/phy-berlin-sata.c       |   0
->  drivers/phy/{ => marvell}/phy-berlin-usb.c        |   0
->  drivers/phy/{ => marvell}/phy-mvebu-sata.c        |   0
->  drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c     |   0
->  drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c     |   0
->  drivers/phy/qcom/Kconfig                          |  23 ++
->  drivers/phy/qcom/Makefile                         |   5 +
->  drivers/phy/{ => qcom}/phy-qcom-apq8064-sata.c    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ipq806x-sata.c    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs-i.h           |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-14nm.c    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-14nm.h    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-20nm.c    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-20nm.h    |   0
->  drivers/phy/{ => qcom}/phy-qcom-ufs.c             |   0
->  drivers/phy/rcar/Kconfig                          |  16 +
->  drivers/phy/rcar/Makefile                         |   2 +
->  drivers/phy/{ => rcar}/phy-rcar-gen2.c            |   0
->  drivers/phy/{ => rcar}/phy-rcar-gen3-usb2.c       |   0
->  drivers/phy/rockchip/Kconfig                      |  23 ++
->  drivers/phy/rockchip/Makefile                     |   3 +
->  drivers/phy/{ => rockchip}/phy-rockchip-dp.c      |   0
->  drivers/phy/{ => rockchip}/phy-rockchip-emmc.c    |   0
->  drivers/phy/{ => rockchip}/phy-rockchip-usb.c     |   0
->  drivers/phy/samsung/Kconfig                       |  87 +++++
->  drivers/phy/samsung/Makefile                      |  10 +
->  drivers/phy/{ => samsung}/phy-exynos-dp-video.c   |   0
->  drivers/phy/{ => samsung}/phy-exynos-mipi-video.c |   0
->  drivers/phy/{ => samsung}/phy-exynos4210-usb2.c   |   0
->  drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c   |   0
->  drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c    |   0
->  drivers/phy/{ => samsung}/phy-exynos5250-sata.c   |   0
->  drivers/phy/{ => samsung}/phy-exynos5250-usb2.c   |   0
->  drivers/phy/{ => samsung}/phy-s5pv210-usb2.c      |   0
->  drivers/phy/{ => samsung}/phy-samsung-usb2.c      |   0
->  drivers/phy/{ => samsung}/phy-samsung-usb2.h      |   0
->  drivers/phy/st/Kconfig                            |  51 +++
->  drivers/phy/st/Makefile                           |   6 +
->  drivers/phy/{ => st}/phy-miphy28lp.c              |   0
->  drivers/phy/{ => st}/phy-miphy365x.c              |   0
->  drivers/phy/{ => st}/phy-spear1310-miphy.c        |   0
->  drivers/phy/{ => st}/phy-spear1340-miphy.c        |   0
->  drivers/phy/{ => st}/phy-stih407-usb.c            |   0
->  drivers/phy/{ => st}/phy-stih41x-usb.c            |   0
->  drivers/phy/sunxi/Kconfig                         |  28 ++
->  drivers/phy/sunxi/Makefile                        |   2 +
->  drivers/phy/{ => sunxi}/phy-sun4i-usb.c           |   0
->  drivers/phy/{ => sunxi}/phy-sun9i-usb.c           |   0
->  drivers/phy/ti/Kconfig                            |  67 ++++
->  drivers/phy/ti/Makefile                           |   6 +
->  drivers/phy/{ => ti}/phy-dm816x-usb.c             |   0
->  drivers/phy/{ => ti}/phy-omap-control.c           |   0
->  drivers/phy/{ => ti}/phy-omap-usb2.c              |   0
->  drivers/phy/{ => ti}/phy-ti-pipe3.c               |   0
->  drivers/phy/{ => ti}/phy-tusb1210.c               |   0
->  drivers/phy/{ => ti}/phy-twl4030-usb.c            |   0
->  drivers/phy/{ => ti}/ulpi_phy.h                   |   0
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Hi Wadim,
 
-ulpi_phy.h is not specific to TI though at this point tusb1210 is the only ULPI
-driver.
->  71 files changed, 464 insertions(+), 416 deletions(-)
->  create mode 100644 drivers/phy/bcom/Kconfig
->  create mode 100644 drivers/phy/bcom/Makefile
->  rename drivers/phy/{ => bcom}/phy-bcm-cygnus-pcie.c (100%)
->  rename drivers/phy/{ => bcom}/phy-bcm-kona-usb2.c (100%)
->  rename drivers/phy/{ => bcom}/phy-brcmstb-sata.c (100%)
->  create mode 100644 drivers/phy/hisi/Kconfig
->  create mode 100644 drivers/phy/hisi/Makefile
->  rename drivers/phy/{ => hisi}/phy-hi6220-usb.c (100%)
->  rename drivers/phy/{ => hisi}/phy-hix5hd2-sata.c (100%)
->  create mode 100644 drivers/phy/marvell/Kconfig
->  create mode 100644 drivers/phy/marvell/Makefile
->  rename drivers/phy/{ => marvell}/phy-armada375-usb2.c (100%)
->  rename drivers/phy/{ => marvell}/phy-berlin-sata.c (100%)
->  rename drivers/phy/{ => marvell}/phy-berlin-usb.c (100%)
->  rename drivers/phy/{ => marvell}/phy-mvebu-sata.c (100%)
->  rename drivers/phy/{ => marvell}/phy-pxa-28nm-hsic.c (100%)
->  rename drivers/phy/{ => marvell}/phy-pxa-28nm-usb2.c (100%)
->  create mode 100644 drivers/phy/qcom/Kconfig
->  create mode 100644 drivers/phy/qcom/Makefile
->  rename drivers/phy/{ => qcom}/phy-qcom-apq8064-sata.c (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ipq806x-sata.c (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs-i.h (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-14nm.c (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-14nm.h (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-20nm.c (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs-qmp-20nm.h (100%)
->  rename drivers/phy/{ => qcom}/phy-qcom-ufs.c (100%)
->  create mode 100644 drivers/phy/rcar/Kconfig
->  create mode 100644 drivers/phy/rcar/Makefile
->  rename drivers/phy/{ => rcar}/phy-rcar-gen2.c (100%)
->  rename drivers/phy/{ => rcar}/phy-rcar-gen3-usb2.c (100%)
->  create mode 100644 drivers/phy/rockchip/Kconfig
->  create mode 100644 drivers/phy/rockchip/Makefile
->  rename drivers/phy/{ => rockchip}/phy-rockchip-dp.c (100%)
->  rename drivers/phy/{ => rockchip}/phy-rockchip-emmc.c (100%)
->  rename drivers/phy/{ => rockchip}/phy-rockchip-usb.c (100%)
->  create mode 100644 drivers/phy/samsung/Kconfig
->  create mode 100644 drivers/phy/samsung/Makefile
->  rename drivers/phy/{ => samsung}/phy-exynos-dp-video.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos-mipi-video.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos4210-usb2.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos4x12-usb2.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos5-usbdrd.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos5250-sata.c (100%)
->  rename drivers/phy/{ => samsung}/phy-exynos5250-usb2.c (100%)
->  rename drivers/phy/{ => samsung}/phy-s5pv210-usb2.c (100%)
->  rename drivers/phy/{ => samsung}/phy-samsung-usb2.c (100%)
->  rename drivers/phy/{ => samsung}/phy-samsung-usb2.h (100%)
->  create mode 100644 drivers/phy/st/Kconfig
->  create mode 100644 drivers/phy/st/Makefile
->  rename drivers/phy/{ => st}/phy-miphy28lp.c (100%)
->  rename drivers/phy/{ => st}/phy-miphy365x.c (100%)
->  rename drivers/phy/{ => st}/phy-spear1310-miphy.c (100%)
->  rename drivers/phy/{ => st}/phy-spear1340-miphy.c (100%)
->  rename drivers/phy/{ => st}/phy-stih407-usb.c (100%)
->  rename drivers/phy/{ => st}/phy-stih41x-usb.c (100%)
->  create mode 100644 drivers/phy/sunxi/Kconfig
->  create mode 100644 drivers/phy/sunxi/Makefile
->  rename drivers/phy/{ => sunxi}/phy-sun4i-usb.c (100%)
->  rename drivers/phy/{ => sunxi}/phy-sun9i-usb.c (100%)
->  create mode 100644 drivers/phy/ti/Kconfig
->  create mode 100644 drivers/phy/ti/Makefile
->  rename drivers/phy/{ => ti}/phy-dm816x-usb.c (100%)
->  rename drivers/phy/{ => ti}/phy-omap-control.c (100%)
->  rename drivers/phy/{ => ti}/phy-omap-usb2.c (100%)
->  rename drivers/phy/{ => ti}/phy-ti-pipe3.c (100%)
->  rename drivers/phy/{ => ti}/phy-tusb1210.c (100%)
->  rename drivers/phy/{ => ti}/phy-twl4030-usb.c (100%)
->  rename drivers/phy/{ => ti}/ulpi_phy.h (100%)
-> 
-> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> index 26566db..80c8c68 100644
-> --- a/drivers/phy/Kconfig
-> +++ b/drivers/phy/Kconfig
-> @@ -15,45 +15,6 @@ config GENERIC_PHY
->  	  phy users can obtain reference to the PHY. All the users of this
->  	  framework should select this config.
->  
+thanks for catching this. I needed this change to make my veyron board
+boot on 4.6-rc1 (it is in the spi-fixes branch already now), and seem to
+have accidentially commited it after testing.
 
-> +menuconfig PHY_PLAT
-> +	bool "Platform Phy drivers"
+ arch/arm/boot/dts/rk3066a.dtsi | 4 ++--
+ arch/arm/boot/dts/rk3188.dtsi  | 4 ++--
+ arch/arm/boot/dts/rk3288.dtsi  | 6 +++---
+ 4 files changed, 7 insertions(+), 7 deletions(-)
 
-Not really convinced about adding a new config here. This will create new
-dependencies and will also start breaking users of oldconfig.
-
-Also not all of them are platform drivers (e.g ULPI PHY drivers).
-
-Thanks
-Kishon
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index cb0a552..c84a306 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -207,7 +207,7 @@
+ 		#size-cells = <0>;
+ 		status = "disabled";
+ 
+-		usbphy0: usb-phy0 {
++		usbphy0: usb-phy@17c {
+ 			#phy-cells = <0>;
+ 			reg = <0x17c>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+@@ -215,7 +215,7 @@
+ 			#clock-cells = <0>;
+ 		};
+ 
+-		usbphy1: usb-phy1 {
++		usbphy1: usb-phy@188 {
+ 			#phy-cells = <0>;
+ 			reg = <0x188>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 9271833..c44c318 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -166,7 +166,7 @@
+ 		#size-cells = <0>;
+ 		status = "disabled";
+ 
+-		usbphy0: usb-phy0 {
++		usbphy0: usb-phy@10c {
+ 			#phy-cells = <0>;
+ 			reg = <0x10c>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+@@ -174,7 +174,7 @@
+ 			#clock-cells = <0>;
+ 		};
+ 
+-		usbphy1: usb-phy1 {
++		usbphy1: usb-phy@11c {
+ 			#phy-cells = <0>;
+ 			reg = <0x11c>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index f445d19..ee4085d 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -967,7 +967,7 @@
+ 		#size-cells = <0>;
+ 		status = "disabled";
+ 
+-		usbphy0: usb-phy0 {
++		usbphy0: usb-phy@320 {
+ 			#phy-cells = <0>;
+ 			reg = <0x320>;
+ 			clocks = <&cru SCLK_OTGPHY0>;
+@@ -975,7 +975,7 @@
+ 			#clock-cells = <0>;
+ 		};
+ 
+-		usbphy1: usb-phy1 {
++		usbphy1: usb-phy@334 {
+ 			#phy-cells = <0>;
+ 			reg = <0x334>;
+ 			clocks = <&cru SCLK_OTGPHY1>;
+@@ -983,7 +983,7 @@
+ 			#clock-cells = <0>;
+ 		};
+ 
+-		usbphy2: usb-phy2 {
++		usbphy2: usb-phy@348 {
+ 			#phy-cells = <0>;
+ 			reg = <0x348>;
+ 			clocks = <&cru SCLK_OTGPHY2>;
+-- 
+2.6.4
