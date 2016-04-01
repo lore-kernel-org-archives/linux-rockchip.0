@@ -1,56 +1,44 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH v2 0/3] Cleanup setup_clock callback from dw_mmc
-Date: Fri, 01 Apr 2016 09:27:32 +0900
-Message-ID: <56FDC074.2010501@samsung.com>
-References: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: update rk3288-veyron cpu operating
+ points
+Date: Thu, 31 Mar 2016 17:53:02 -0700
+Message-ID: <CAD=FV=XHFvHuxogFfVk5z5f8T9f1LOysPQKKK7y+EiGmvtYDRQ@mail.gmail.com>
+References: <1459459483-5356-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-reply-to: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459459483-5356-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Heiko
 
-On 03/31/2016 04:33 PM, Shawn Lin wrote:
-> Hello Jeahoon
-> 
-> Currently dw_mmc is a little too queen-size. As we had cleanup
-> prepare_command callback some days before, there are also some
-> ones deserve to remove. Also we should avoid add new quirks or
-> callbacks into dw_mmc in order to avoid the dilemma sdhci meets
-> now.
-> 
-> This patchset remove setup_clock callback. Obviously, add a callback
-> just for one-time-used clk stuff make no sense. We combine what
-> setup_clock does before into init callback. For exynos platfrom, it
-> needs call init hook after resume, so we add new argument in init hook
-> to indicate whether it needs do clk stuff or not.
+On Thu, Mar 31, 2016 at 2:24 PM, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> The generic operating points specified in rk3288.dtsi are specified by
+> Rockchip as conservative and for all cases.
+>
+> In contrast the Veyron ChromeOS devices are supposed to use a special
+> chip variant often called rk3288-c and use different operating points
+> in their kernel also including a higher max frequency.
+>
+> So override the operating points for veyron devices.
+>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3288-veyron.dtsi | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
 
-Thanks for resending these. This message looks like previous message..
-Anyway, i will pick you patch with my patch..
+Matches the Chrome OS tree.
 
-Best Regards,
-Jaehoon Chung
-
-> 
-> 
-> Changes in v2:
-> - rebase on linux-mmc next
-> - remove add setup_clk flag for init callback
-> 
-> Shawn Lin (3):
->   mmc: dw_mmc-rockchip: remove setup_clock for rockchip
->   mmc: dw_mmc-exynos: remove dw_mci_exynos_setup_clock
->   mmc: dw_mmc: remove setup_clock callback
-> 
->  drivers/mmc/host/dw_mmc-exynos.c   |  8 --------
->  drivers/mmc/host/dw_mmc-rockchip.c | 12 ++++--------
->  drivers/mmc/host/dw_mmc.c          |  9 ---------
->  drivers/mmc/host/dw_mmc.h          |  2 --
->  4 files changed, 4 insertions(+), 27 deletions(-)
-> 
-
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
