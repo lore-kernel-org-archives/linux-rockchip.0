@@ -1,128 +1,40 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 2/2] rockchip: power-domain: support qos save and restore
-Date: Fri, 01 Apr 2016 18:19:47 +0200
-Message-ID: <3121335.t9IV1BMS6Y@phil>
-References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com> <6919893.LfaTZNRxZs@phil> <56FDDE09.9080601@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: update rk3288-veyron cpu operating
+ points
+Date: Fri, 01 Apr 2016 18:34:46 +0200
+Message-ID: <2836722.CXoAAzut2Z@phil>
+References: <1459459483-5356-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56FDDE09.9080601@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459459483-5356-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Elaine,
+Am Donnerstag, 31. M=E4rz 2016, 23:24:43 schrieb Heiko Stuebner:
+> The generic operating points specified in rk3288.dtsi are specified by
+> Rockchip as conservative and for all cases.
+> =
 
-Am Freitag, 1. April 2016, 10:33:45 schrieb Elaine Zhang:
-> I agree with most of your modifications.
-> Except, the u32 *qos_save_regs below
+> In contrast the Veyron ChromeOS devices are supposed to use a special
+> chip variant often called rk3288-c and use different operating points
+> in their kernel also including a higher max frequency.
+> =
 
-you're right. I didn't take that into account when my open-coding my id=
-ea.
-A bit more below:
+> So override the operating points for veyron devices.
+> =
 
-> On 04/01/2016 12:31 AM, Heiko Stuebner wrote:
-> > Hi Elaine,
-> >=20
-> > Am Freitag, 18. M=E4rz 2016, 15:17:24 schrieb Elaine Zhang:
-> >> support qos save and restore when power domain on/off.
-> >>=20
-> >> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> >=20
-> > overall looks nice already ... some implementation-specific comment=
-s
-> > below.>=20
-> >> ---
-> >>=20
-> >>   drivers/soc/rockchip/pm_domains.c | 87
-> >>=20
-> >> +++++++++++++++++++++++++++++++++++++-- 1 file changed, 84
-> >> insertions(+),
-> >> 3 deletions(-)
-> >>=20
-> >> diff --git a/drivers/soc/rockchip/pm_domains.c
-> >> b/drivers/soc/rockchip/pm_domains.c index 18aee6b..c5f4be6 100644
-> >> --- a/drivers/soc/rockchip/pm_domains.c
-> >> +++ b/drivers/soc/rockchip/pm_domains.c
-> >> @@ -45,10 +45,21 @@ struct rockchip_pmu_info {
-> >>=20
-> >>   	const struct rockchip_domain_info *domain_info;
-> >>  =20
-> >>   };
-> >>=20
-> >> +#define MAX_QOS_NODE_NUM	20
-> >> +#define MAX_QOS_REGS_NUM	5
-> >> +#define QOS_PRIORITY		0x08
-> >> +#define QOS_MODE		0x0c
-> >> +#define QOS_BANDWIDTH		0x10
-> >> +#define QOS_SATURATION		0x14
-> >> +#define QOS_EXTCONTROL		0x18
-> >> +
-> >>=20
-> >>   struct rockchip_pm_domain {
-> >>  =20
-> >>   	struct generic_pm_domain genpd;
-> >>   	const struct rockchip_domain_info *info;
-> >>   	struct rockchip_pmu *pmu;
-> >>=20
-> >> +	int num_qos;
-> >> +	struct regmap *qos_regmap[MAX_QOS_NODE_NUM];
-> >> +	u32 qos_save_regs[MAX_QOS_NODE_NUM][MAX_QOS_REGS_NUM];
-> >=20
-> > struct regmap **qos_regmap;
-> > u32 *qos_save_regs;
->=20
-> when we save and restore qos registers we need save five regs for eve=
-ry
-> qos. like this :
-> for (i =3D 0; i < pd->num_qos; i++) {
-> 		regmap_read(pd->qos_regmap[i],
-> 			    QOS_PRIORITY,
-> 			    &pd->qos_save_regs[i][0]);
-> 		regmap_read(pd->qos_regmap[i],
-> 			    QOS_MODE,
-> 			    &pd->qos_save_regs[i][1]);
-> 		regmap_read(pd->qos_regmap[i],
-> 			    QOS_BANDWIDTH,
-> 			    &pd->qos_save_regs[i][2]);
-> 		regmap_read(pd->qos_regmap[i],
-> 			    QOS_SATURATION,
-> 			    &pd->qos_save_regs[i][3]);
-> 		regmap_read(pd->qos_regmap[i],
-> 			    QOS_EXTCONTROL,
-> 			    &pd->qos_save_regs[i][4]);
-> 	}
-> so we can not define qos_save_regs like u32 *qos_save_regs;,
-> and apply buff like
-> pd->qos_save_regs =3D kcalloc(pd->num_qos * MAX_QOS_REGS_NUM, sizeof(=
-u32),
-> GFP_KERNEL);
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-so how about simply swapping indices and doing it like
-
-u32 *qos_save_regs[MAX_QOS_REGS_NUM];
-
-for (i =3D 0; i < MAX_QOS_REGS_NUM; i++) {
-	qos_save_regs[i] =3D kcalloc(pd->num_qos, sizeof(u32));
-	/* error handling here */
-}
-
-=2E..
-		regmap_read(pd->qos_regmap[i],
-			    QOS_SATURATION,
-			    &pd->qos_save_regs[3][i]);
-=2E..
-
-
-Asked the other way around, how did you measure to set MAX_QOS_REGS_NUM=
- to=20
-20? From looking at the rk3399 TRM, it seems there are only 38 QoS=20
-generators on the SoC in general (24 on the rk3288 with PD_VIO having a=
-=20
-maximum of 9 qos generators), so preparing for 20 seems a bit overkill =
-;-)
-
-
-Heiko
+applied to my dts32 branch for 4.7
