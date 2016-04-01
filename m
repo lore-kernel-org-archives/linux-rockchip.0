@@ -1,44 +1,56 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] pinctrl: rockchip: add support the get_direction
-Date: Fri, 01 Apr 2016 02:21:07 +0200
-Message-ID: <4521590.yHkfr458Oq@phil>
-References: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH v2 0/3] Cleanup setup_clock callback from dw_mmc
+Date: Fri, 01 Apr 2016 09:27:32 +0900
+Message-ID: <56FDC074.2010501@samsung.com>
+References: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: linus.walleij@linaro.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 15. M=E4rz 2016, 15:55:45 schrieb Caesar Wang:
-> This patch adds the get_direction to support the gpio
-> interface.
->=20
-> The gpio direction is not used on rockchip platform when use the gpio
-> debugfs.
->=20
-> Tested on kylin board. (RK3036 SoCs)
-> The repro steps:
-> $/sys/class/gpio/
-> echo 53 > export
-> $/sys/class/gpio/gpio53# cat direction
-> in
-> In general, the gpio53 should be out value, but the direction is the
-> default value 'in',  since the get_direction didn't supported in rock=
-chip
-> pinctrl.
->=20
-> So, we should add this patch to support it.
->=20
-> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Hi,
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
---
-To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
-n
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On 03/31/2016 04:33 PM, Shawn Lin wrote:
+> Hello Jeahoon
+> 
+> Currently dw_mmc is a little too queen-size. As we had cleanup
+> prepare_command callback some days before, there are also some
+> ones deserve to remove. Also we should avoid add new quirks or
+> callbacks into dw_mmc in order to avoid the dilemma sdhci meets
+> now.
+> 
+> This patchset remove setup_clock callback. Obviously, add a callback
+> just for one-time-used clk stuff make no sense. We combine what
+> setup_clock does before into init callback. For exynos platfrom, it
+> needs call init hook after resume, so we add new argument in init hook
+> to indicate whether it needs do clk stuff or not.
+
+Thanks for resending these. This message looks like previous message..
+Anyway, i will pick you patch with my patch..
+
+Best Regards,
+Jaehoon Chung
+
+> 
+> 
+> Changes in v2:
+> - rebase on linux-mmc next
+> - remove add setup_clk flag for init callback
+> 
+> Shawn Lin (3):
+>   mmc: dw_mmc-rockchip: remove setup_clock for rockchip
+>   mmc: dw_mmc-exynos: remove dw_mci_exynos_setup_clock
+>   mmc: dw_mmc: remove setup_clock callback
+> 
+>  drivers/mmc/host/dw_mmc-exynos.c   |  8 --------
+>  drivers/mmc/host/dw_mmc-rockchip.c | 12 ++++--------
+>  drivers/mmc/host/dw_mmc.c          |  9 ---------
+>  drivers/mmc/host/dw_mmc.h          |  2 --
+>  4 files changed, 4 insertions(+), 27 deletions(-)
+> 
+
