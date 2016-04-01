@@ -1,236 +1,47 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v1 2/2] rockchip: power-domain: support qos save and restore
-Date: Fri, 01 Apr 2016 10:33:45 +0800
-Message-ID: <56FDDE09.9080601@rock-chips.com>
-References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com> <1458285444-31129-3-git-send-email-zhangqing@rock-chips.com> <6919893.LfaTZNRxZs@phil>
+From: "jay.xu" <jay.xu@rock-chips.com>
+Subject: Re: [PATCH v3 0/3] Rockchip: rk3399: Add core dtsi for rk3399
+Date: Fri, 1 Apr 2016 10:55:09 +0800
+Message-ID: <56FDE30D.6040008@rock-chips.com>
+References: <1456456341-14282-1-git-send-email-jay.xu@rock-chips.com>
+ <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
+ <1983379.kJSqISDtbX@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252;
+Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <6919893.LfaTZNRxZs@phil>
+In-Reply-To: <1983379.kJSqISDtbX@phil>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, huangtao@rock-chips.com, zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org, jwerner@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Heiko:
 
-hi, Heiko
+After talking with xing, we plan to summit dtsi after xing's patches ar=
+e=20
+applied,
+and I will update the patch for rk3399 core dtsi quickly
 
-I agree with most of your modifications.
-Except, the u32 *qos_save_regs below
+Best regards
+Jianqun Xu
 
-On 04/01/2016 12:31 AM, Heiko Stuebner wrote:
-> Hi Elaine,
+On 2016=E5=B9=B404=E6=9C=8801=E6=97=A5 05:48, Heiko Stuebner wrote:
+> Hi Jianqun,
 >
-> Am Freitag, 18. M=E4rz 2016, 15:17:24 schrieb Elaine Zhang:
->> support qos save and restore when power domain on/off.
->>
->> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Am Dienstag, 1. M=C3=A4rz 2016, 14:39:58 schrieb Jianqun Xu:
+>> There is the new SoCs from Rockchip which named rk3399, the
+>> patches are added to support them.
+> is this still valid or does it need an update?
+> The clock-series from Xing saw changes, so I'm guessing the devicetre=
+e side
+> might also need some update?
 >
-> overall looks nice already ... some implementation-specific comments =
-below.
->
->> ---
->>   drivers/soc/rockchip/pm_domains.c | 87
->> +++++++++++++++++++++++++++++++++++++-- 1 file changed, 84 insertion=
-s(+),
->> 3 deletions(-)
->>
->> diff --git a/drivers/soc/rockchip/pm_domains.c
->> b/drivers/soc/rockchip/pm_domains.c index 18aee6b..c5f4be6 100644
->> --- a/drivers/soc/rockchip/pm_domains.c
->> +++ b/drivers/soc/rockchip/pm_domains.c
->> @@ -45,10 +45,21 @@ struct rockchip_pmu_info {
->>   	const struct rockchip_domain_info *domain_info;
->>   };
->>
->> +#define MAX_QOS_NODE_NUM	20
->> +#define MAX_QOS_REGS_NUM	5
->> +#define QOS_PRIORITY		0x08
->> +#define QOS_MODE		0x0c
->> +#define QOS_BANDWIDTH		0x10
->> +#define QOS_SATURATION		0x14
->> +#define QOS_EXTCONTROL		0x18
->> +
->>   struct rockchip_pm_domain {
->>   	struct generic_pm_domain genpd;
->>   	const struct rockchip_domain_info *info;
->>   	struct rockchip_pmu *pmu;
->> +	int num_qos;
->> +	struct regmap *qos_regmap[MAX_QOS_NODE_NUM];
->> +	u32 qos_save_regs[MAX_QOS_NODE_NUM][MAX_QOS_REGS_NUM];
->
-> struct regmap **qos_regmap;
-> u32 *qos_save_regs;
-when we save and restore qos registers we need save five regs for every=
- qos.
-like this :
-for (i =3D 0; i < pd->num_qos; i++) {
-		regmap_read(pd->qos_regmap[i],
-			    QOS_PRIORITY,
-			    &pd->qos_save_regs[i][0]);
-		regmap_read(pd->qos_regmap[i],
-			    QOS_MODE,
-			    &pd->qos_save_regs[i][1]);
-		regmap_read(pd->qos_regmap[i],
-			    QOS_BANDWIDTH,
-			    &pd->qos_save_regs[i][2]);
-		regmap_read(pd->qos_regmap[i],
-			    QOS_SATURATION,
-			    &pd->qos_save_regs[i][3]);
-		regmap_read(pd->qos_regmap[i],
-			    QOS_EXTCONTROL,
-			    &pd->qos_save_regs[i][4]);
-	}
-so we can not define qos_save_regs like u32 *qos_save_regs;,
-and apply buff like
-pd->qos_save_regs =3D kcalloc(pd->num_qos * MAX_QOS_REGS_NUM, sizeof(u3=
-2),
-GFP_KERNEL);
+> Especially an actual board-file would be nice ;-) .
 >
 >
->>   	int num_clks;
->>   	struct clk *clks[];
->>   };
->> @@ -111,6 +122,55 @@ static int rockchip_pmu_set_idle_request(struct
->> rockchip_pm_domain *pd, return 0;
->>   }
->>
->> +static int rockchip_pmu_save_qos(struct rockchip_pm_domain *pd)
->> +{
->> +	int i;
->> +
->> +	for (i =3D 0; i < pd->num_qos; i++) {
->> +		regmap_read(pd->qos_regmap[i],
->> +			    QOS_PRIORITY,
->> +			    &pd->qos_save_regs[i][0]);
->> +		regmap_read(pd->qos_regmap[i],
->> +			    QOS_MODE,
->> +			    &pd->qos_save_regs[i][1]);
->> +		regmap_read(pd->qos_regmap[i],
->> +			    QOS_BANDWIDTH,
->> +			    &pd->qos_save_regs[i][2]);
->> +		regmap_read(pd->qos_regmap[i],
->> +			    QOS_SATURATION,
->> +			    &pd->qos_save_regs[i][3]);
->> +		regmap_read(pd->qos_regmap[i],
->> +			    QOS_EXTCONTROL,
->> +			    &pd->qos_save_regs[i][4]);
->> +	}
->> +	return 0;
->> +}
->> +
->> +static int rockchip_pmu_restore_qos(struct rockchip_pm_domain *pd)
->> +{
->> +	int i;
->> +
->> +	for (i =3D 0; i < pd->num_qos; i++) {
->> +		regmap_write(pd->qos_regmap[i],
->> +			     QOS_PRIORITY,
->> +			     pd->qos_save_regs[i][0]);
->> +		regmap_write(pd->qos_regmap[i],
->> +			     QOS_MODE,
->> +			     pd->qos_save_regs[i][1]);
->> +		regmap_write(pd->qos_regmap[i],
->> +			     QOS_BANDWIDTH,
->> +			     pd->qos_save_regs[i][2]);
->> +		regmap_write(pd->qos_regmap[i],
->> +			     QOS_SATURATION,
->> +			     pd->qos_save_regs[i][3]);
->> +		regmap_write(pd->qos_regmap[i],
->> +			     QOS_EXTCONTROL,
->> +			     pd->qos_save_regs[i][4]);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->>   static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *p=
-d)
->>   {
->>   	struct rockchip_pmu *pmu =3D pd->pmu;
->> @@ -147,7 +207,7 @@ static int rockchip_pd_power(struct rockchip_pm_=
-domain
->> *pd, bool power_on) clk_enable(pd->clks[i]);
->>
->>   		if (!power_on) {
->> -			/* FIXME: add code to save AXI_QOS */
->> +			rockchip_pmu_save_qos(pd);
->>
->>   			/* if powering down, idle request to NIU first */
->>   			rockchip_pmu_set_idle_request(pd, true);
->> @@ -159,7 +219,7 @@ static int rockchip_pd_power(struct rockchip_pm_=
-domain
->> *pd, bool power_on) /* if powering up, leave idle mode */
->>   			rockchip_pmu_set_idle_request(pd, false);
->>
->> -			/* FIXME: add code to restore AXI_QOS */
->> +			rockchip_pmu_restore_qos(pd);
->>   		}
->>
->>   		for (i =3D pd->num_clks - 1; i >=3D 0; i--)
->> @@ -227,9 +287,10 @@ static int rockchip_pm_add_one_domain(struct
->> rockchip_pmu *pmu, {
->>   	const struct rockchip_domain_info *pd_info;
->>   	struct rockchip_pm_domain *pd;
->> +	struct device_node *qos_node;
->>   	struct clk *clk;
->>   	int clk_cnt;
->> -	int i;
->> +	int i, j;
->>   	u32 id;
->>   	int error;
->>
->> @@ -289,6 +350,26 @@ static int rockchip_pm_add_one_domain(struct
->> rockchip_pmu *pmu, clk, node->name);
->>   	}
->>
->> +	pd->num_qos =3D of_count_phandle_with_args(node, "pm_qos",
->> +						 NULL);
->
-> missing error handling here:
->
-> if (pd->num_qos < 0) {
-> 	error =3D pd->num_qos;
-> 	goto err_out;
-> }
->
-> Right now, you always allocate MAX_QOS_NODE_NUM entries for regmaps a=
-nd
-> registers for each domain - a bit of a waste over all domains, so may=
-be
-> like:
->
-> pd->qos_regmap =3D kcalloc(pd->num_qos, sizeof(*pd->qos_regmap), GFP_=
-KERNEL);
->
-> pd->qos_save_regs =3D kcalloc, pd->num_qos * MAX_QOS_REGS_NUM, sizeof=
-(u32),
-> GFP_KERNEL);
->
-> + of course error handling for both + cleanup in rockchip_remove_one_=
-domain
->
->> +
->> +	for (j =3D 0; j < pd->num_qos; j++) {
->> +		qos_node =3D of_parse_phandle(node, "pm_qos", j);
->> +		if (!qos_node) {
->> +			error =3D -ENODEV;
->> +			goto err_out;
->> +		}
->> +		pd->qos_regmap[j] =3D syscon_node_to_regmap(qos_node);
->
-> missing
-> if (IS_ERR(pd->qos_regmap[j])) { ...}
->
->> +		of_node_put(qos_node);
->> +	}
->> +
->>   	error =3D rockchip_pd_power(pd, true);
->>   	if (error) {
->>   		dev_err(pmu->dev,
->
+> Thanks
+> Heiko
 >
 >
 >
