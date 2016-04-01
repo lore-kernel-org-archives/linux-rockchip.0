@@ -1,136 +1,51 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/5] ARM: dts: rockchip: fix missing usbphy unit-names
-Date: Fri, 1 Apr 2016 14:32:15 +0200
-Message-ID: <56FE6A4F.2010609@phytec.de>
-References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
- <1459457651-4727-3-git-send-email-heiko@sntech.de>
+From: Vivek Gautam <gautamvivek1987@gmail.com>
+Subject: Re: [PATCH 1/2] phy: Group vendor specific phy drivers
+Date: Fri, 1 Apr 2016 05:51:53 -0700
+Message-ID: <CAFp+6iEt+RwoBVft_ve9s5On1rnpKmfg1p+i2Herhqz61d3DPg@mail.gmail.com>
+References: <1459510156-9147-1-git-send-email-gautam.vivek@samsung.com>
+	<20160401114219.GG4227@lukather>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459457651-4727-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20160401114219.GG4227@lukather>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: Vivek Gautam <gautam.vivek@samsung.com>, vireshk@kernel.org, shiraz.linux.kernel@gmail.com, kishon <kishon@ti.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, wens@csie.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, spear-devel@list.st.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Linux USB Mailing List <linux-usb@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, CPGS <cpgs@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hi,
 
-you have changes in the spi.c file here.
 
-On 31.03.2016 22:54, Heiko Stuebner wrote:
-> The usbphy subnodes do have a reg property but no unitname, add them.
+On Fri, Apr 1, 2016 at 4:42 AM, Maxime Ripard
+<maxime.ripard@free-electrons.com> wrote:
+> Hi,
 >
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> ---
->  arch/arm/boot/dts/rk3066a.dtsi | 4 ++--
->  arch/arm/boot/dts/rk3188.dtsi  | 4 ++--
->  arch/arm/boot/dts/rk3288.dtsi  | 6 +++---
->  drivers/spi/spi.c              | 4 ++--
->  4 files changed, 9 insertions(+), 9 deletions(-)
+> On Fri, Apr 01, 2016 at 04:59:15PM +0530, Vivek Gautam wrote:
+>>  create mode 100644 drivers/phy/sunxi/Kconfig
+>>  create mode 100644 drivers/phy/sunxi/Makefile
+>>  rename drivers/phy/{ => sunxi}/phy-sun4i-usb.c (100%)
+>>  rename drivers/phy/{ => sunxi}/phy-sun9i-usb.c (100%)
 >
-> diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-> index cb0a552..c84a306 100644
-> --- a/arch/arm/boot/dts/rk3066a.dtsi
-> +++ b/arch/arm/boot/dts/rk3066a.dtsi
-> @@ -207,7 +207,7 @@
->  		#size-cells = <0>;
->  		status = "disabled";
->  
-> -		usbphy0: usb-phy0 {
-> +		usbphy0: usb-phy@17c {
->  			#phy-cells = <0>;
->  			reg = <0x17c>;
->  			clocks = <&cru SCLK_OTGPHY0>;
-> @@ -215,7 +215,7 @@
->  			#clock-cells = <0>;
->  		};
->  
-> -		usbphy1: usb-phy1 {
-> +		usbphy1: usb-phy@188 {
->  			#phy-cells = <0>;
->  			reg = <0x188>;
->  			clocks = <&cru SCLK_OTGPHY1>;
-> diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-> index 9271833..c44c318 100644
-> --- a/arch/arm/boot/dts/rk3188.dtsi
-> +++ b/arch/arm/boot/dts/rk3188.dtsi
-> @@ -166,7 +166,7 @@
->  		#size-cells = <0>;
->  		status = "disabled";
->  
-> -		usbphy0: usb-phy0 {
-> +		usbphy0: usb-phy@10c {
->  			#phy-cells = <0>;
->  			reg = <0x10c>;
->  			clocks = <&cru SCLK_OTGPHY0>;
-> @@ -174,7 +174,7 @@
->  			#clock-cells = <0>;
->  		};
->  
-> -		usbphy1: usb-phy1 {
-> +		usbphy1: usb-phy@11c {
->  			#phy-cells = <0>;
->  			reg = <0x11c>;
->  			clocks = <&cru SCLK_OTGPHY1>;
-> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-> index f445d19..ee4085d 100644
-> --- a/arch/arm/boot/dts/rk3288.dtsi
-> +++ b/arch/arm/boot/dts/rk3288.dtsi
-> @@ -967,7 +967,7 @@
->  		#size-cells = <0>;
->  		status = "disabled";
->  
-> -		usbphy0: usb-phy0 {
-> +		usbphy0: usb-phy@320 {
->  			#phy-cells = <0>;
->  			reg = <0x320>;
->  			clocks = <&cru SCLK_OTGPHY0>;
-> @@ -975,7 +975,7 @@
->  			#clock-cells = <0>;
->  		};
->  
-> -		usbphy1: usb-phy1 {
-> +		usbphy1: usb-phy@334 {
->  			#phy-cells = <0>;
->  			reg = <0x334>;
->  			clocks = <&cru SCLK_OTGPHY1>;
-> @@ -983,7 +983,7 @@
->  			#clock-cells = <0>;
->  		};
->  
-> -		usbphy2: usb-phy2 {
-> +		usbphy2: usb-phy@348 {
->  			#phy-cells = <0>;
->  			reg = <0x348>;
->  			clocks = <&cru SCLK_OTGPHY2>;
-> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-> index de2f2f9..0239b45 100644
-> --- a/drivers/spi/spi.c
-> +++ b/drivers/spi/spi.c
-> @@ -1209,7 +1209,7 @@ static void spi_pump_messages(struct kthread_work *work)
->  	struct spi_master *master =
->  		container_of(work, struct spi_master, pump_messages);
->  
-> -	__spi_pump_messages(master, true, false);
-> +	__spi_pump_messages(master, true, master->bus_lock_flag);
->  }
->  
->  static int spi_init_queue(struct spi_master *master)
-> @@ -2853,7 +2853,7 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message,
->   */
->  int spi_sync(struct spi_device *spi, struct spi_message *message)
->  {
-> -	return __spi_sync(spi, message, 0);
-> +	return __spi_sync(spi, message, spi->master->bus_lock_flag);
->  }
->  EXPORT_SYMBOL_GPL(spi_sync);
->  
+> That would be allwinner in this case, sunxi is the SoC family
+> Allwinner produces.
+
+Sure, will change this.
+I will change rcar --> renesas too. That should make the directory
+names homogeneous (vendor-name).
+Thanks for reviewing.
+
+>
+> Maxime
+>
+> --
+> Maxime Ripard, Free Electrons
+> Embedded Linux, Kernel and Android engineering
+> http://free-electrons.com
+
+
+
+-- 
+Best Regards
+Vivek Gautam
+Samsung R&D Institute, Bangalore
+India
