@@ -1,31 +1,44 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/3] Rockchip: rk3399: Add core dtsi for rk3399
-Date: Thu, 31 Mar 2016 23:48:40 +0200
-Message-ID: <1983379.kJSqISDtbX@phil>
-References: <1456456341-14282-1-git-send-email-jay.xu@rock-chips.com> <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
+Subject: Re: [PATCH v2] pinctrl: rockchip: add support the get_direction
+Date: Fri, 01 Apr 2016 02:21:07 +0200
+Message-ID: <4521590.yHkfr458Oq@phil>
+References: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456814401-10711-1-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, sboyd@codeaurora.org, huangtao@rock-chips.com, zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, dianders@chromium.org, davidriley@chromium.org, smbarber@chromium.org, jwerner@chromium.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: linus.walleij@linaro.org, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jianqun,
+Am Dienstag, 15. M=E4rz 2016, 15:55:45 schrieb Caesar Wang:
+> This patch adds the get_direction to support the gpio
+> interface.
+>=20
+> The gpio direction is not used on rockchip platform when use the gpio
+> debugfs.
+>=20
+> Tested on kylin board. (RK3036 SoCs)
+> The repro steps:
+> $/sys/class/gpio/
+> echo 53 > export
+> $/sys/class/gpio/gpio53# cat direction
+> in
+> In general, the gpio53 should be out value, but the direction is the
+> default value 'in',  since the get_direction didn't supported in rock=
+chip
+> pinctrl.
+>=20
+> So, we should add this patch to support it.
+>=20
+> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 
-Am Dienstag, 1. M=E4rz 2016, 14:39:58 schrieb Jianqun Xu:
-> There is the new SoCs from Rockchip which named rk3399, the
-> patches are added to support them.
-
-is this still valid or does it need an update?
-The clock-series from Xing saw changes, so I'm guessing the devicetree =
-side=20
-might also need some update?
-
-Especially an actual board-file would be nice ;-) .
-
-
-Thanks
-Heiko
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+--
+To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
+n
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
