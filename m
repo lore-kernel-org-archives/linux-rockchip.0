@@ -1,53 +1,59 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 2/2] arm: mach-spear: Enable PHY_PLAT to meet dependency
-Date: Fri, 1 Apr 2016 17:12:26 +0530
-Message-ID: <20160401114226.GD2987@vireshk-i7>
-References: <1459510156-9147-1-git-send-email-gautam.vivek@samsung.com>
- <1459510156-9147-2-git-send-email-gautam.vivek@samsung.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
+ flip event v2
+Date: Fri, 1 Apr 2016 13:47:30 +0200
+Message-ID: <56FE5FD2.2050106@collabora.com>
+References: <1459411680-6176-1-git-send-email-tomeu.vizoso@collabora.com>
+ <56FE5AE9.40806@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1459510156-9147-2-git-send-email-gautam.vivek@samsung.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Vivek Gautam <gautam.vivek@samsung.com>
-Cc: vireshk@kernel.org, shiraz.linux.kernel@gmail.com, kishon@ti.com, heiko@sntech.de, maxime.ripard@free-electrons.com, wens@csie.org, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, spear-devel@list.st.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org, cpgs@samsung.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <56FE5AE9.40806@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>, linux-kernel@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 01-04-16, 16:59, Vivek Gautam wrote:
-> mach-spear enables PHY_ST_SPEAR1310_MIPHY and
-> PHY_ST_SPEAR1340_MIPHY, which now fall under PHY_PLAT
-> config. So select CONFIG_PHY_PLAT as well to resolve
-> dependencies.
-> 
-> Signed-off-by: Vivek Gautam <gautam.vivek@samsung.com>
-> Cc: Shiraz Hashim <shiraz.linux.kernel@gmail.com>
-> ---
->  arch/arm/mach-spear/Kconfig | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm/mach-spear/Kconfig b/arch/arm/mach-spear/Kconfig
-> index ea9ea95..c0a62fd 100644
-> --- a/arch/arm/mach-spear/Kconfig
-> +++ b/arch/arm/mach-spear/Kconfig
-> @@ -29,6 +29,7 @@ if ARCH_SPEAR13XX
->  config MACH_SPEAR1310
->  	bool "SPEAr1310 Machine support with Device Tree"
->  	select PINCTRL_SPEAR1310
-> +	select PHY_PLAT
->  	select PHY_ST_SPEAR1310_MIPHY
->  	help
->  	  Supports ST SPEAr1310 machine configured via the device-tree
-> @@ -36,6 +37,7 @@ config MACH_SPEAR1310
->  config MACH_SPEAR1340
->  	bool "SPEAr1340 Machine support with Device Tree"
->  	select PINCTRL_SPEAR1340
-> +	select PHY_PLAT
->  	select PHY_ST_SPEAR1340_MIPHY
->  	help
->  	  Supports ST SPEAr1340 machine configured via the device-tree
-
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-
--- 
-viresh
+T24gMDQvMDEvMjAxNiAwMToyNiBQTSwgTWFyayB5YW8gd3JvdGU6Cj4gT24gMjAxNuW5tDAz5pyI
+MzHml6UgMTY6MDgsIFRvbWV1IFZpem9zbyB3cm90ZToKPj4gQXMgcGVyIHRoZSBkb2NzLCBhdG9t
+aWNfY29tbWl0IHNob3VsZCByZXR1cm4gLUVCVVNZICJpZiBhbiBhc3ljbmhyb25vdXMKPj4gdXBk
+YXRlZCBpcyByZXF1ZXN0ZWQgYW5kIHRoZXJlIGlzIGFuIGVhcmxpZXIgdXBkYXRlZCBwZW5kaW5n
+Ii4KPj4KPj4gdjI6IFVzZSB0aGUgc3RhdHVzIG9mIHRoZSB3b3JrcXVldWUgaW5zdGVhZCBvZiB2
+b3AtPmV2ZW50LCBhbmQgZG9uJ3QgYWRkCj4+IGEgc3VwZXJmbHVvdXMgd2FpdCBvbiB0aGUgd29y
+a3F1ZXVlLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bj
+b2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fZmIuYyB8IDMgKysrCj4+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4+
+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Zi
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4gaW5kZXgg
+M2I4ZjY1MjY5OGY4Li4yODVmOGNkNWFmZTEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4gQEAgLTI4Miw2ICsyODIsOSBAQCBpbnQgcm9ja2No
+aXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPj4gIAlzdHJ1Y3Qg
+cm9ja2NoaXBfYXRvbWljX2NvbW1pdCAqY29tbWl0ID0gJnByaXZhdGUtPmNvbW1pdDsKPj4gIAlp
+bnQgcmV0Owo+PiAgCj4+ICsJaWYgKGFzeW5jICYmIHdvcmtfYnVzeSgmY29tbWl0LT53b3JrKSkK
+Pj4gKwkJcmV0dXJuIC1FQlVTWTsKPj4gKwo+IAo+IFNvcnJ5IGZvciByZXBseSBsYXRlLgo+IAo+
+IFRoZXJlIGlzIGEgY29tbWVudCBvbiB3b3JrX2J1c3kgZnVuY3Rpb24gZGVzY3JpYmUgOgo+IAo+
+ICAgICAidGhlIHRlc3QgcmVzdWx0IGlzICB1bnJlbGlhYmxlIGFuZCBvbmx5IHVzZWZ1bCBhcyBh
+ZHZpc29yeSBoaW50cyBvcgo+IGZvciBkZWJ1Z2dpbmcuIgo+IAo+IEkgZG9uJ3Qga25vdyBpZiBp
+dCdzIHN1aXRhYmxlIHRvIHVzZSBpdCBoZXJlLCBkb2VzIHNvbWUgZ3V5cyBrbm93IGl0PwoKSSdt
+IG5vdCBzdXJlLCBidXQgaWYgdGhlIHJlYXNvbiBpcyB0aGUgY2F2ZWF0IGV4cGxhaW5lZCBpbgpm
+aW5kX3dvcmtlcl9leGVjdXRpbmdfd29yaygpLCB0aGVuIGl0J3MgcHJvYmFibHkgc2FmZSAoYW5k
+IHdvdWxkIGV4cGxhaW4KaG93IHRoZSBmdW5jdGlvbiBpcyB1c2VkIGluIG90aGVyIHBhcnRzIGlu
+IHRoZSBrZXJuZWwpLgoKPiBBbmQgdGhlbiwgdGhlICJmbHVzaF93b3JrKCZjb21taXQtPndvcmsp
+OyIgaXMgbm8gbmVlZGVkIGlmIHJldHVybiAtRUJVU1kKPiBoZXJlLgo+IHlvdSBjYW4gcmVtb3Zl
+IGl0IGF0IHRoaXMgcGF0Y2guCgpXZSBzdGlsbCBuZWVkIHRvIHdhaXQgaWYgaXQncyBiZWluZyBj
+YWxsZWQgaW4gc3luYyBtb2RlLgoKUmVnYXJkcywKClRvbWV1Cgo+PiAgCXJldCA9IGRybV9hdG9t
+aWNfaGVscGVyX3ByZXBhcmVfcGxhbmVzKGRldiwgc3RhdGUpOwo+PiAgCWlmIChyZXQpCj4+ICAJ
+CXJldHVybiByZXQ7Cj4gCj4gCj4gCj4gLS0gCj4g77ytYXJrIFlhbwo+IAoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
