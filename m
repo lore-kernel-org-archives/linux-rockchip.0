@@ -1,66 +1,136 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
- flip event v2
-Date: Fri, 01 Apr 2016 19:54:47 +0800
-Message-ID: <56FE6187.1010004@rock-chips.com>
-References: <1459411680-6176-1-git-send-email-tomeu.vizoso@collabora.com>
- <56FE5AE9.40806@rock-chips.com> <56FE5FD2.2050106@collabora.com>
+From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/5] ARM: dts: rockchip: fix missing usbphy unit-names
+Date: Fri, 1 Apr 2016 14:32:15 +0200
+Message-ID: <56FE6A4F.2010609@phytec.de>
+References: <1459457651-4727-1-git-send-email-heiko@sntech.de>
+ <1459457651-4727-3-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <56FE5FD2.2050106@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459457651-4727-3-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA05pyIMDHml6UgMTk6NDcsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBPbiAwNC8w
-MS8yMDE2IDAxOjI2IFBNLCBNYXJrIHlhbyB3cm90ZToKPj4gT24gMjAxNuW5tDAz5pyIMzHml6Ug
-MTY6MDgsIFRvbWV1IFZpem9zbyB3cm90ZToKPj4+IEFzIHBlciB0aGUgZG9jcywgYXRvbWljX2Nv
-bW1pdCBzaG91bGQgcmV0dXJuIC1FQlVTWSAiaWYgYW4gYXN5Y25ocm9ub3VzCj4+PiB1cGRhdGVk
-IGlzIHJlcXVlc3RlZCBhbmQgdGhlcmUgaXMgYW4gZWFybGllciB1cGRhdGVkIHBlbmRpbmciLgo+
-Pj4KPj4+IHYyOiBVc2UgdGhlIHN0YXR1cyBvZiB0aGUgd29ya3F1ZXVlIGluc3RlYWQgb2Ygdm9w
-LT5ldmVudCwgYW5kIGRvbid0IGFkZAo+Pj4gYSBzdXBlcmZsdW91cyB3YWl0IG9uIHRoZSB3b3Jr
-cXVldWUuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29A
-Y29sbGFib3JhLmNvbT4KPj4+IC0tLQo+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfZHJtX2ZiLmMgfCAzICsrKwo+Pj4gICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25z
-KCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
-cF9kcm1fZmIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+
-Pj4gaW5kZXggM2I4ZjY1MjY5OGY4Li4yODVmOGNkNWFmZTEgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4+ICsrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYwo+Pj4gQEAgLTI4Miw2ICsyODIsOSBA
-QCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwK
-Pj4+ICAgCXN0cnVjdCByb2NrY2hpcF9hdG9taWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0ZS0+
-Y29tbWl0Owo+Pj4gICAJaW50IHJldDsKPj4+ICAgCj4+PiArCWlmIChhc3luYyAmJiB3b3JrX2J1
-c3koJmNvbW1pdC0+d29yaykpCj4+PiArCQlyZXR1cm4gLUVCVVNZOwo+Pj4gKwo+PiBTb3JyeSBm
-b3IgcmVwbHkgbGF0ZS4KPj4KPj4gVGhlcmUgaXMgYSBjb21tZW50IG9uIHdvcmtfYnVzeSBmdW5j
-dGlvbiBkZXNjcmliZSA6Cj4+Cj4+ICAgICAgInRoZSB0ZXN0IHJlc3VsdCBpcyAgdW5yZWxpYWJs
-ZSBhbmQgb25seSB1c2VmdWwgYXMgYWR2aXNvcnkgaGludHMgb3IKPj4gZm9yIGRlYnVnZ2luZy4i
-Cj4+Cj4+IEkgZG9uJ3Qga25vdyBpZiBpdCdzIHN1aXRhYmxlIHRvIHVzZSBpdCBoZXJlLCBkb2Vz
-IHNvbWUgZ3V5cyBrbm93IGl0Pwo+IEknbSBub3Qgc3VyZSwgYnV0IGlmIHRoZSByZWFzb24gaXMg
-dGhlIGNhdmVhdCBleHBsYWluZWQgaW4KPiBmaW5kX3dvcmtlcl9leGVjdXRpbmdfd29yaygpLCB0
-aGVuIGl0J3MgcHJvYmFibHkgc2FmZSAoYW5kIHdvdWxkIGV4cGxhaW4KPiBob3cgdGhlIGZ1bmN0
-aW9uIGlzIHVzZWQgaW4gb3RoZXIgcGFydHMgaW4gdGhlIGtlcm5lbCkuCj4KPj4gQW5kIHRoZW4s
-IHRoZSAiZmx1c2hfd29yaygmY29tbWl0LT53b3JrKTsiIGlzIG5vIG5lZWRlZCBpZiByZXR1cm4g
-LUVCVVNZCj4+IGhlcmUuCj4+IHlvdSBjYW4gcmVtb3ZlIGl0IGF0IHRoaXMgcGF0Y2guCj4gV2Ug
-c3RpbGwgbmVlZCB0byB3YWl0IGlmIGl0J3MgYmVpbmcgY2FsbGVkIGluIHN5bmMgbW9kZS4KPgo+
-IFJlZ2FyZHMsCj4KPiBUb21ldQpIaSBUb21lde+8qO+9iQoKb24gc3luYyBtb2RlLCBmbHVzaCBp
-cyBubyBuZWVkZWQsIGJlY2F1c2UgdGhhdDoKMSwgdGhlcmUgaXMgbXV0ZXhfbG9jay9tdXRleF91
-bmxvY2sgb24gdGhpcyBjb250ZXh0LCBTbyBvbmx5IHNpbmdsZSAKcHJvY2VzcyBydW4gaW50byBj
-b21taXQgd29yazsKCjIsIHN5bmMgbW9kZSB3aWxsIGJsb2NrIG9uOgpyb2NrY2hpcF9hdG9taWNf
-Y29tbWl0X2NvbXBsZXRlLS0+cm9ja2NoaXBfYXRvbWljX3dhaXRfZm9yX2NvbXBsZXRlLAoKVGhh
-bmtzLgoKPgo+Pj4gICAJcmV0ID0gZHJtX2F0b21pY19oZWxwZXJfcHJlcGFyZV9wbGFuZXMoZGV2
-LCBzdGF0ZSk7Cj4+PiAgIAlpZiAocmV0KQo+Pj4gICAJCXJldHVybiByZXQ7Cj4+Cj4+Cj4+IC0t
-IAo+PiDvvK1hcmsgWWFvCj4+Cj4KPgo+CgoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Hi Heiko,
+
+you have changes in the spi.c file here.
+
+On 31.03.2016 22:54, Heiko Stuebner wrote:
+> The usbphy subnodes do have a reg property but no unitname, add them.
+>
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3066a.dtsi | 4 ++--
+>  arch/arm/boot/dts/rk3188.dtsi  | 4 ++--
+>  arch/arm/boot/dts/rk3288.dtsi  | 6 +++---
+>  drivers/spi/spi.c              | 4 ++--
+>  4 files changed, 9 insertions(+), 9 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+> index cb0a552..c84a306 100644
+> --- a/arch/arm/boot/dts/rk3066a.dtsi
+> +++ b/arch/arm/boot/dts/rk3066a.dtsi
+> @@ -207,7 +207,7 @@
+>  		#size-cells = <0>;
+>  		status = "disabled";
+>  
+> -		usbphy0: usb-phy0 {
+> +		usbphy0: usb-phy@17c {
+>  			#phy-cells = <0>;
+>  			reg = <0x17c>;
+>  			clocks = <&cru SCLK_OTGPHY0>;
+> @@ -215,7 +215,7 @@
+>  			#clock-cells = <0>;
+>  		};
+>  
+> -		usbphy1: usb-phy1 {
+> +		usbphy1: usb-phy@188 {
+>  			#phy-cells = <0>;
+>  			reg = <0x188>;
+>  			clocks = <&cru SCLK_OTGPHY1>;
+> diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+> index 9271833..c44c318 100644
+> --- a/arch/arm/boot/dts/rk3188.dtsi
+> +++ b/arch/arm/boot/dts/rk3188.dtsi
+> @@ -166,7 +166,7 @@
+>  		#size-cells = <0>;
+>  		status = "disabled";
+>  
+> -		usbphy0: usb-phy0 {
+> +		usbphy0: usb-phy@10c {
+>  			#phy-cells = <0>;
+>  			reg = <0x10c>;
+>  			clocks = <&cru SCLK_OTGPHY0>;
+> @@ -174,7 +174,7 @@
+>  			#clock-cells = <0>;
+>  		};
+>  
+> -		usbphy1: usb-phy1 {
+> +		usbphy1: usb-phy@11c {
+>  			#phy-cells = <0>;
+>  			reg = <0x11c>;
+>  			clocks = <&cru SCLK_OTGPHY1>;
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index f445d19..ee4085d 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -967,7 +967,7 @@
+>  		#size-cells = <0>;
+>  		status = "disabled";
+>  
+> -		usbphy0: usb-phy0 {
+> +		usbphy0: usb-phy@320 {
+>  			#phy-cells = <0>;
+>  			reg = <0x320>;
+>  			clocks = <&cru SCLK_OTGPHY0>;
+> @@ -975,7 +975,7 @@
+>  			#clock-cells = <0>;
+>  		};
+>  
+> -		usbphy1: usb-phy1 {
+> +		usbphy1: usb-phy@334 {
+>  			#phy-cells = <0>;
+>  			reg = <0x334>;
+>  			clocks = <&cru SCLK_OTGPHY1>;
+> @@ -983,7 +983,7 @@
+>  			#clock-cells = <0>;
+>  		};
+>  
+> -		usbphy2: usb-phy2 {
+> +		usbphy2: usb-phy@348 {
+>  			#phy-cells = <0>;
+>  			reg = <0x348>;
+>  			clocks = <&cru SCLK_OTGPHY2>;
+> diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+> index de2f2f9..0239b45 100644
+> --- a/drivers/spi/spi.c
+> +++ b/drivers/spi/spi.c
+> @@ -1209,7 +1209,7 @@ static void spi_pump_messages(struct kthread_work *work)
+>  	struct spi_master *master =
+>  		container_of(work, struct spi_master, pump_messages);
+>  
+> -	__spi_pump_messages(master, true, false);
+> +	__spi_pump_messages(master, true, master->bus_lock_flag);
+>  }
+>  
+>  static int spi_init_queue(struct spi_master *master)
+> @@ -2853,7 +2853,7 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message,
+>   */
+>  int spi_sync(struct spi_device *spi, struct spi_message *message)
+>  {
+> -	return __spi_sync(spi, message, 0);
+> +	return __spi_sync(spi, message, spi->master->bus_lock_flag);
+>  }
+>  EXPORT_SYMBOL_GPL(spi_sync);
+>  
