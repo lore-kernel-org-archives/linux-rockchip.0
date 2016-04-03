@@ -1,33 +1,53 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH 1/2] phy: Group vendor specific phy drivers
-Date: Sun, 3 Apr 2016 15:05:27 +0900
-Message-ID: <20160403060527.GA5034@kozik-lap>
-References: <1459510156-9147-1-git-send-email-gautam.vivek@samsung.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH v2 0/3] Cleanup setup_clock callback from dw_mmc
+Date: Mon, 04 Apr 2016 08:46:48 +0900
+Message-ID: <5701AB68.2080208@samsung.com>
+References: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1459510156-9147-1-git-send-email-gautam.vivek@samsung.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Vivek Gautam <gautam.vivek@samsung.com>
-Cc: vireshk@kernel.org, shiraz.linux.kernel@gmail.com, kishon@ti.com, heiko@sntech.de, maxime.ripard@free-electrons.com, wens@csie.org, linux@arm.linux.org.uk, linux-arm-kernel@lists.infradead.org, spear-devel@list.st.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org, cpgs@samsung.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Apr 01, 2016 at 04:59:15PM +0530, Vivek Gautam wrote:
-> Adding vendor specific directories in phy to group
-> phy drivers under their respective vendor umbrella.
-> 
-> Signed-off-by: Vivek Gautam <gautam.vivek@samsung.com>
-> ---
-> 
-> With growing number of phy drivers, it makes sense to
-> group these drivers under their respective vendor/platform
-> umbrella directory.
-> 
-> Build-tested 'multi_v7_defconfig'.
+Hi,
 
-Please update also the MAINTAINERS file. For many entires the path won't
-match anymore.
+Picked this patch-set on my repository.
 
-Best regards,
-Krzysztof
+Best Regards,
+Jaehoon Chung
+
+On 03/31/2016 04:33 PM, Shawn Lin wrote:
+> Hello Jeahoon
+> 
+> Currently dw_mmc is a little too queen-size. As we had cleanup
+> prepare_command callback some days before, there are also some
+> ones deserve to remove. Also we should avoid add new quirks or
+> callbacks into dw_mmc in order to avoid the dilemma sdhci meets
+> now.
+> 
+> This patchset remove setup_clock callback. Obviously, add a callback
+> just for one-time-used clk stuff make no sense. We combine what
+> setup_clock does before into init callback. For exynos platfrom, it
+> needs call init hook after resume, so we add new argument in init hook
+> to indicate whether it needs do clk stuff or not.
+> 
+> 
+> Changes in v2:
+> - rebase on linux-mmc next
+> - remove add setup_clk flag for init callback
+> 
+> Shawn Lin (3):
+>   mmc: dw_mmc-rockchip: remove setup_clock for rockchip
+>   mmc: dw_mmc-exynos: remove dw_mci_exynos_setup_clock
+>   mmc: dw_mmc: remove setup_clock callback
+> 
+>  drivers/mmc/host/dw_mmc-exynos.c   |  8 --------
+>  drivers/mmc/host/dw_mmc-rockchip.c | 12 ++++--------
+>  drivers/mmc/host/dw_mmc.c          |  9 ---------
+>  drivers/mmc/host/dw_mmc.h          |  2 --
+>  4 files changed, 4 insertions(+), 27 deletions(-)
+> 
