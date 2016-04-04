@@ -1,53 +1,76 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH v2 0/3] Cleanup setup_clock callback from dw_mmc
-Date: Mon, 04 Apr 2016 08:46:48 +0900
-Message-ID: <5701AB68.2080208@samsung.com>
-References: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending flip
+ event v3
+Date: Mon,  4 Apr 2016 15:55:34 +0200
+Message-ID: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1459409616-20306-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Picked this patch-set on my repository.
-
-Best Regards,
-Jaehoon Chung
-
-On 03/31/2016 04:33 PM, Shawn Lin wrote:
-> Hello Jeahoon
-> 
-> Currently dw_mmc is a little too queen-size. As we had cleanup
-> prepare_command callback some days before, there are also some
-> ones deserve to remove. Also we should avoid add new quirks or
-> callbacks into dw_mmc in order to avoid the dilemma sdhci meets
-> now.
-> 
-> This patchset remove setup_clock callback. Obviously, add a callback
-> just for one-time-used clk stuff make no sense. We combine what
-> setup_clock does before into init callback. For exynos platfrom, it
-> needs call init hook after resume, so we add new argument in init hook
-> to indicate whether it needs do clk stuff or not.
-> 
-> 
-> Changes in v2:
-> - rebase on linux-mmc next
-> - remove add setup_clk flag for init callback
-> 
-> Shawn Lin (3):
->   mmc: dw_mmc-rockchip: remove setup_clock for rockchip
->   mmc: dw_mmc-exynos: remove dw_mci_exynos_setup_clock
->   mmc: dw_mmc: remove setup_clock callback
-> 
->  drivers/mmc/host/dw_mmc-exynos.c   |  8 --------
->  drivers/mmc/host/dw_mmc-rockchip.c | 12 ++++--------
->  drivers/mmc/host/dw_mmc.c          |  9 ---------
->  drivers/mmc/host/dw_mmc.h          |  2 --
->  4 files changed, 4 insertions(+), 27 deletions(-)
-> 
+QXMgcGVyIHRoZSBkb2NzLCBhdG9taWNfY29tbWl0IHNob3VsZCByZXR1cm4gLUVCVVNZICJpZiBh
+biBhc3ljbmhyb25vdXMKdXBkYXRlZCBpcyByZXF1ZXN0ZWQgYW5kIHRoZXJlIGlzIGFuIGVhcmxp
+ZXIgdXBkYXRlZCBwZW5kaW5nIi4KCnYyOiBVc2UgdGhlIHN0YXR1cyBvZiB0aGUgd29ya3F1ZXVl
+IGluc3RlYWQgb2Ygdm9wLT5ldmVudCwgYW5kIGRvbid0IGFkZAphIHN1cGVyZmx1b3VzIHdhaXQg
+b24gdGhlIHdvcmtxdWV1ZS4KCnYzOiBEcm9wIHdvcmtfYnVzeSwgYXMgdGhlcmUncyBhIHNpemVh
+YmxlIGRlbGF5IHdoZW4gdGhlIHdvcmtlcgpmaW5pc2hlcywgd2hpY2ggaW50cm9kdWNlcyBhIHJh
+Y2UgaW4gd2hpY2ggdGhlIGNsaWVudCBoYXMgYWxyZWFkeQpyZWNlaXZlZCB0aGUgbGFzdCBmbGlw
+IGV2ZW50IGJ1dCB0aGUgbmV4dCBwYWdlIGZsaXAgaW9jdGwgd2lsbCBzdGlsbApyZXR1cm4gLUVC
+VVNZIGJlY2F1c2Ugd29ya19idXN5IHJldHVybnMgb3V0ZGF0ZWQgaW5mb3JtYXRpb24uCgpTaWdu
+ZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgotLS0K
+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgMSArCiBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgIHwgMTMgKysrKysrKysrKysr
+LQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA1ICsrKysr
+CiAzIGZpbGVzIGNoYW5nZWQsIDE4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYg
+LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuaAppbmRleCAzNTI5ZjY5MmVk
+YjguLjM3OTUyZWVmZDMzZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9kcnYuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2Rydi5oCkBAIC02OSw2ICs2OSw3IEBAIGludCByb2NrY2hpcF9yZWdpc3Rlcl9jcnRjX2Z1
+bmNzKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIHZvaWQgcm9ja2NoaXBfdW5yZWdpc3Rlcl9jcnRj
+X2Z1bmNzKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7CiBpbnQgcm9ja2NoaXBfZHJtX2NydGNfbW9k
+ZV9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjLCBpbnQgY29ubmVjdG9yX3R5cGUsCiAJCQkJ
+ICBpbnQgb3V0X21vZGUpOworYm9vbCByb2NrY2hpcF9kcm1fY3J0Y19oYXNfcGVuZGluZ19ldmVu
+dChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpOwogaW50IHJvY2tjaGlwX2RybV9kbWFfYXR0YWNoX2Rl
+dmljZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAkJCQkgICBzdHJ1Y3QgZGV2aWNlICpk
+ZXYpOwogdm9pZCByb2NrY2hpcF9kcm1fZG1hX2RldGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZp
+Y2UgKmRybV9kZXYsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMK
+aW5kZXggM2I4ZjY1MjY5OGY4Li44MzA1YmJkMmE0ZDcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKQEAgLTI4MCw3ICsyODAsMTggQEAgaW50IHJvY2tjaGlw
+X2RybV9hdG9taWNfY29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCiB7CiAJc3RydWN0IHJv
+Y2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKIAlzdHJ1Y3Qg
+cm9ja2NoaXBfYXRvbWljX2NvbW1pdCAqY29tbWl0ID0gJnByaXZhdGUtPmNvbW1pdDsKLQlpbnQg
+cmV0OworCXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKKwlzdHJ1Y3QgZHJtX2Ny
+dGMgKmNydGM7CisJaW50IGksIHJldDsKKworCWlmIChhc3luYykgeworCQlmb3JfZWFjaF9jcnRj
+X2luX3N0YXRlKHN0YXRlLCBjcnRjLCBjcnRjX3N0YXRlLCBpKSB7CisJCQlpZiAoY3J0Yy0+c3Rh
+dGUtPmV2ZW50IHx8CisJCQkgICAgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQo
+Y3J0YykpIHsKKwkJCQlyZXR1cm4gLUVCVVNZOworCQkJfQorCQl9CisJfQogCiAJcmV0ID0gZHJt
+X2F0b21pY19oZWxwZXJfcHJlcGFyZV9wbGFuZXMoZGV2LCBzdGF0ZSk7CiAJaWYgKHJldCkKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IGUyMTE4ZTYy
+MzQ1Yi4uNWJjZGQ4ZGM3NDk5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fdm9wLmMKQEAgLTg0OCw2ICs4NDgsMTEgQEAgaW50IHJvY2tjaGlwX2RybV9jcnRjX21v
+ZGVfY29uZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIH0KIEVYUE9SVF9TWU1CT0xfR1BMKHJv
+Y2tjaGlwX2RybV9jcnRjX21vZGVfY29uZmlnKTsKIAorYm9vbCByb2NrY2hpcF9kcm1fY3J0Y19o
+YXNfcGVuZGluZ19ldmVudChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCit7CisJcmV0dXJuIHRvX3Zv
+cChjcnRjKS0+ZXZlbnQ7Cit9CisKIHN0YXRpYyBpbnQgdm9wX2NydGNfZW5hYmxlX3ZibGFuayhz
+dHJ1Y3QgZHJtX2NydGMgKmNydGMpCiB7CiAJc3RydWN0IHZvcCAqdm9wID0gdG9fdm9wKGNydGMp
+OwotLSAKMi41LjUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9y
+ZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZl
+bAo=
