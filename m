@@ -1,82 +1,52 @@
-From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v5 36/46] input: misc: max77693: switch to
- the atomic API
-Date: Mon, 4 Apr 2016 17:34:33 +0200
-Message-ID: <20160404153433.GD17856@ulmo>
-References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
- <1459368249-13241-37-git-send-email-boris.brezillon@free-electrons.com>
- <20160331174801.GC39098@dtor-ws>
- <20160331205718.057a6f38@bbrezillon>
-Reply-To: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+From: Daniel Stone <daniel@fooishbar.org>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
+ flip event v3
+Date: Mon, 4 Apr 2016 16:44:17 +0100
+Message-ID: <CAPj87rPtP1ph-1FMxSKUANjeKwwjwgfMzbUGHvqudEx7nYCESQ@mail.gmail.com>
+References: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8w3uRX/HFJGApMzv"
-Return-path: <linux-sunxi+bncBDTKFPPJUEHRBDETRK4AKGQEP54XSRQ-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-Content-Disposition: inline
-In-Reply-To: <20160331205718.057a6f38@bbrezillon>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jon>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---8w3uRX/HFJGApMzv
-Content-Type: text/plain; charset=UTF-8
-Content-Disposition: inline
-
-On Thu, Mar 31, 2016 at 08:57:18PM +0200, Boris Brezillon wrote:
-> On Thu, 31 Mar 2016 10:48:01 -0700
-> Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> 
-> > Hi Boris,
-> > 
-> > On Wed, Mar 30, 2016 at 10:03:59PM +0200, Boris Brezillon wrote:
-> > > pwm_config/enable/disable() have been deprecated and should be replaced
-> > > by pwm_apply_state().
-> > > 
-> > > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> > > ---
-> > >  drivers/input/misc/max77693-haptic.c | 23 +++++++++++++++++------
-> > >  1 file changed, 17 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/input/misc/max77693-haptic.c b/drivers/input/misc/max77693-haptic.c
-> > > index cf6aac0..aef7dc4 100644
-> > > --- a/drivers/input/misc/max77693-haptic.c
-> > > +++ b/drivers/input/misc/max77693-haptic.c
-> > > @@ -70,13 +70,16 @@ struct max77693_haptic {
-> > >  
-> > >  static int max77693_haptic_set_duty_cycle(struct max77693_haptic *haptic)
-> > >  {
-> > > +	struct pwm_state pstate;
-> > >  	struct pwm_args pargs = { };
-> > > -	int delta;
-> > >  	int error;
-> > >  
-> > >  	pwm_get_args(haptic->pwm_dev, &pargs);
-> > > -	delta = (pargs.period + haptic->pwm_duty) / 2;
-> > > -	error = pwm_config(haptic->pwm_dev, delta, pargs.period);
-> > > +	pwm_get_state(haptic->pwm_dev, &pstate);
-> > > +
-> > > +	pstate.period = pargs.period;
-> > > +	pstate.duty_cycle = (pargs.period + haptic->pwm_duty) / 2;
-> > > +	error = pwm_apply_state(haptic->pwm_dev, &pstate);
-> > 
-> > This does not make sense with regard to the atomic API. If you look in
-> > max77693_haptic_play_work(), right after calling
-> > max77693_haptic_set_duty_cycle() we either try to enable or disable the
-> > pwm. When switching to this new API we should combine both actions.
-> 
-> True. I'll address that, unless Thierry is fine keeping the non-atomic
-> API, in which case I'll just drop patches 32 to 46.
-
-I'm fine with keeping the pwm_enable(), pwm_disable() and pwm_config()
-APIs, but they should only be used as shortcuts. Where possible the new
-atomic API should be used to combine multiple operations into one.
-
-Thierry
---8w3uRX/HFJGApMzv--
+SGkgVG9tZXUsCgpPbiA0IEFwcmlsIDIwMTYgYXQgMTQ6NTUsIFRvbWV1IFZpem9zbyA8dG9tZXUu
+dml6b3NvQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiLmMKPiBpbmRleCAzYjhmNjUyNjk4ZjguLjgzMDViYmQyYTRkNyAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiBAQCAtMjgw
+LDcgKzI4MCwxOCBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9k
+ZXZpY2UgKmRldiwKPiAgewo+ICAgICAgICAgc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpw
+cml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPiAgICAgICAgIHN0cnVjdCByb2NrY2hpcF9hdG9t
+aWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0ZS0+Y29tbWl0Owo+IC0gICAgICAgaW50IHJldDsK
+PiArICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKPiArICAgICAgIHN0
+cnVjdCBkcm1fY3J0YyAqY3J0YzsKPiArICAgICAgIGludCBpLCByZXQ7Cj4gKwo+ICsgICAgICAg
+aWYgKGFzeW5jKSB7Cj4gKyAgICAgICAgICAgICAgIGZvcl9lYWNoX2NydGNfaW5fc3RhdGUoc3Rh
+dGUsIGNydGMsIGNydGNfc3RhdGUsIGkpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBpZiAo
+Y3J0Yy0+c3RhdGUtPmV2ZW50IHx8Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgIHJvY2tj
+aGlwX2RybV9jcnRjX2hhc19wZW5kaW5nX2V2ZW50KGNydGMpKSB7Cj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICByZXR1cm4gLUVCVVNZOwo+ICsgICAgICAgICAgICAgICAgICAgICAg
+IH0KPiArICAgICAgICAgICAgICAgfQo+ICsgICAgICAgfQoKSG1tbSAuLi4KCkRvZXNuJ3QgdGhp
+cyB0cmlnZ2VyIGJlZm9yZSB0aGUgVk9QIGF0b21pY19iZWdpbigpIGhlbHBlciwgbWVhbmluZwp0
+aGF0IGFueXRoaW5nIHdpdGggYW4gZXZlbnQgc2V0IHdpbGwgdHJpZ2dlciB0aGUgY2hlY2s/IFNl
+ZW1zIGxpa2UgaXQKc2hvdWxkIGJlICYmIHJhdGhlciB0aGFuIHx8LgoKQWxzbywgSSBrbm93IHJv
+Y2tjaGlwX2RybV92b3AuYyBpc24ndCBob2xkaW5nIGRldi0+ZXZlbnRfbG9jayB3aGVuIGl0CmNo
+ZWNrcyB2b3AtPmV2ZW50LCBidXQgaXQgcmVhbGx5IHNob3VsZCBiZSAuLi4gYW5kIHNvIHNob3Vs
+ZCB0aGlzCmNoZWNrLiBPdGhlcndpc2UgeW91IGNhbiByYWNlIHdpdGggdGhlIElSUSBoYW5kbGVy
+LCB3aGljaCBpc24ndApyZXF1aXJlZCB0byBob2xkIHRoZSBDUlRDIGxvY2suCgpDaGVlcnMsCkRh
+bmllbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
