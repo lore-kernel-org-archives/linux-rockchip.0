@@ -1,52 +1,56 @@
-From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
- flip event v3
-Date: Mon, 4 Apr 2016 16:44:17 +0100
-Message-ID: <CAPj87rPtP1ph-1FMxSKUANjeKwwjwgfMzbUGHvqudEx7nYCESQ@mail.gmail.com>
-References: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [RFC PATCH] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
+Date: Mon, 4 Apr 2016 17:03:03 -0700
+Message-ID: <20160405000303.GA15936@localhost>
+References: <1454610017-25499-1-git-send-email-grygorii.strashko@ti.com>
+ <20160204224128.GG4215@xsjsorenbubuntu>
+ <CAAtXAHcV-9gXcZOX8dzUOBZUwj9M=O4MAsMCJNQYAP+os-D7Tg@mail.gmail.com>
+ <20160204233950.GH4215@xsjsorenbubuntu>
+ <56D04D17.6030502@ti.com>
+ <20160226152714.GD3173@xsjsorenbubuntu>
+ <56DEAFB7.50105@ti.com>
+ <56EAB44D.7020902@linaro.org>
+ <5702845E.90606@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5702845E.90606@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Grygorii Strashko <grygorii.strashko@ti.com>
+Cc: S??ren Brinkmann <soren.brinkmann@xilinx.com>, Olof Johansson <olof@lixom.net>, Moritz Fischer <moritz.fischer@ettus.com>, kernel@stlinux.com, tony@atomide.com, nsekhar@ti.com, Masahiro Yamada <yamada.masahiro@socionext.com>, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@arm.linux.org.uk>, Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, Arnd Bergmann <arnd@arndb.de>, Liviu Dudau <liviu.dudau@arm.com>, linux-omap@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Maxime Coquelin <maxime.coquelin@st.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>, Jun Nie <jun.nie@linaro.org>, Shawn Guo <shawn>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgVG9tZXUsCgpPbiA0IEFwcmlsIDIwMTYgYXQgMTQ6NTUsIFRvbWV1IFZpem9zbyA8dG9tZXUu
-dml6b3NvQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2ZiLmMKPiBpbmRleCAzYjhmNjUyNjk4ZjguLjgzMDViYmQyYTRkNyAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPiBAQCAtMjgw
-LDcgKzI4MCwxOCBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9k
-ZXZpY2UgKmRldiwKPiAgewo+ICAgICAgICAgc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpw
-cml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPiAgICAgICAgIHN0cnVjdCByb2NrY2hpcF9hdG9t
-aWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0ZS0+Y29tbWl0Owo+IC0gICAgICAgaW50IHJldDsK
-PiArICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKPiArICAgICAgIHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YzsKPiArICAgICAgIGludCBpLCByZXQ7Cj4gKwo+ICsgICAgICAg
-aWYgKGFzeW5jKSB7Cj4gKyAgICAgICAgICAgICAgIGZvcl9lYWNoX2NydGNfaW5fc3RhdGUoc3Rh
-dGUsIGNydGMsIGNydGNfc3RhdGUsIGkpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBpZiAo
-Y3J0Yy0+c3RhdGUtPmV2ZW50IHx8Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgIHJvY2tj
-aGlwX2RybV9jcnRjX2hhc19wZW5kaW5nX2V2ZW50KGNydGMpKSB7Cj4gKyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICByZXR1cm4gLUVCVVNZOwo+ICsgICAgICAgICAgICAgICAgICAgICAg
-IH0KPiArICAgICAgICAgICAgICAgfQo+ICsgICAgICAgfQoKSG1tbSAuLi4KCkRvZXNuJ3QgdGhp
-cyB0cmlnZ2VyIGJlZm9yZSB0aGUgVk9QIGF0b21pY19iZWdpbigpIGhlbHBlciwgbWVhbmluZwp0
-aGF0IGFueXRoaW5nIHdpdGggYW4gZXZlbnQgc2V0IHdpbGwgdHJpZ2dlciB0aGUgY2hlY2s/IFNl
-ZW1zIGxpa2UgaXQKc2hvdWxkIGJlICYmIHJhdGhlciB0aGFuIHx8LgoKQWxzbywgSSBrbm93IHJv
-Y2tjaGlwX2RybV92b3AuYyBpc24ndCBob2xkaW5nIGRldi0+ZXZlbnRfbG9jayB3aGVuIGl0CmNo
-ZWNrcyB2b3AtPmV2ZW50LCBidXQgaXQgcmVhbGx5IHNob3VsZCBiZSAuLi4gYW5kIHNvIHNob3Vs
-ZCB0aGlzCmNoZWNrLiBPdGhlcndpc2UgeW91IGNhbiByYWNlIHdpdGggdGhlIElSUSBoYW5kbGVy
-LCB3aGljaCBpc24ndApyZXF1aXJlZCB0byBob2xkIHRoZSBDUlRDIGxvY2suCgpDaGVlcnMsCkRh
-bmllbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Mon, Apr 04, 2016 at 06:12:30PM +0300, Grygorii Strashko wrote:
+> Hi Daniel,
+> On 03/17/2016 03:42 PM, Daniel Lezcano wrote:
+> > On 03/08/2016 11:55 AM, Grygorii Strashko wrote:
+> >> Yeah. Thanks
+> >>
+> >> I'll re-send it after 4.6-rc.
+> >> But What I'm not fully understand is how to get it merged taking into 
+> >> account that
+> >> it touches few maches & clocksource :(
+> > 
+> > This is not a problem. Send it based on timers/core from the tip tree 
+> > and Cc the maintainers for the maches dir. As soon as they ack the 
+> > patches, I will merge it through my tree.
+> > 
+> 
+> I've rebased my patch on top of 4.6-rc2 and extended it on new mach
+> arch/arm/mach-artpec.
+> 
+> Then, as you've suggested, I've tried to apply it on top of 
+> kernel-tip/timers/core
+> kernel-tip := git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git
+> 
+> but seems timers/core is obsolete (It doesn't contain arch/arm/mach-artpec yet).
+> 
+> Should I wait more or can resend it basing on top of  4.6-rc2?
+> 
+
+Yes, wait a bit the tip tree is updated.
+
+Thanks
+
+  -- Daniel
