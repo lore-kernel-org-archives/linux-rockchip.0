@@ -1,15 +1,16 @@
-From: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [v14, 01/17] drm: bridge: analogix/dp: split exynos dp driver to
- bridge directory
-Date: Tue, 5 Apr 2016 09:49:28 +0800
-Message-ID: <570319A8.8080400@rock-chips.com>
-References: <1455534576-1486-1-git-send-email-ykk@rock-chips.com>
- <20160330203204.GA24156@roeck-us.net>
+From: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v1 2/2] rockchip: power-domain: support qos save and
+ restore
+Date: Tue, 05 Apr 2016 09:57:20 +0800
+Message-ID: <57031B80.1080602@rock-chips.com>
+References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com>
+ <6919893.LfaTZNRxZs@phil> <56FDDE09.9080601@rock-chips.com>
+ <3121335.t9IV1BMS6Y@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160330203204.GA24156-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+In-Reply-To: <3121335.t9IV1BMS6Y@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,67 +20,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Gustavo Padovan <gustavo.padovan-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, robherring2-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Yao <mark.yao@rock>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, xxx-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Guenter
+hi, Heiko:
 
-On 03/31/2016 04:32 AM, Guenter Roeck wrote:
-> Hi,
->
-> On Mon, Feb 15, 2016 at 07:09:36PM +0800, Yakir Yang wrote:
->> Split the dp core driver from exynos directory to bridge directory,
->> and rename the core driver to analogix_dp_*, rename the platform
->> code to exynos_dp.
->>
->> Beside the new analogix_dp driver would export six hooks.
->> "analogix_dp_bind()" and "analogix_dp_unbind()"
->> "analogix_dp_suspned()" and "analogix_dp_resume()"
->> "analogix_dp_detect()" and "analogix_dp_get_modes()"
->>
->> The bind/unbind symbols is used for analogix platform driver to connect
->> with analogix_dp core driver. And the detect/get_modes is used for analogix
->> platform driver to init the connector.
->>
->> They reason why connector need register in helper driver is rockchip drm
->> haven't implement the atomic API, but Exynos drm have implement it, so
->> there would need two different connector helper functions, that's why we
->> leave the connector register in helper driver.
->>
->> Signed-off-by: Yakir Yang <ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>
-> [ ... ]
->
->> diff --git a/drivers/gpu/drm/bridge/analogix/Makefile b/drivers/gpu/drm/bridge/analogix/Makefile
->> new file mode 100644
->> index 0000000..9107b86
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/analogix/Makefile
->> @@ -0,0 +1 @@
->> +obj-$(CONFIG_DRM_ANALOGIX_DP) += analogix_dp_core.o analogix_dp_reg.o
-> This results in the following build errors if DRM_ANALOGIX_DP
-> is configured as module.
->
-> ERROR: "analogix_dp_start_video" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_lane0_link_training" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_lane1_link_training" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_lane2_link_training" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_lane3_link_training" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_lane_count" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
-> ERROR: "analogix_dp_get_link_bandwidth" [drivers/gpu/drm/bridge/analogix/analogix_dp_core.ko] undefined!
->
-> [ and so on ]
->
-> It should probably be something like
->
-> analogix_dp-objs := analogix_dp_core.o analogix_dp_reg.o
-> obj-$(CONFIG_DRM_ANALOGIX_DP) += analogix_dp.o
+Thanks for your replay.
+For your questions, I also have the same concerns.
 
-Thanks, good catch, will fix it now.
+On 04/02/2016 12:19 AM, Heiko Stuebner wrote:
+> Hi Elaine,
+>
+> Am Freitag, 1. April 2016, 10:33:45 schrieb Elaine Zhang:
+>> I agree with most of your modifications.
+>> Except, the u32 *qos_save_regs below
+>
+> you're right. I didn't take that into account when my open-coding my idea.
+> A bit more below:
+>
+>> On 04/01/2016 12:31 AM, Heiko Stuebner wrote:
+>>> Hi Elaine,
+>>>
+>>> Am Freitag, 18. M=E4rz 2016, 15:17:24 schrieb Elaine Zhang:
+>>>> support qos save and restore when power domain on/off.
+>>>>
+>>>> Signed-off-by: Elaine Zhang <zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>>>
+>>> overall looks nice already ... some implementation-specific comments
+>>> below.>
+>>>> ---
+>>>>
+>>>>    drivers/soc/rockchip/pm_domains.c | 87
+>>>>
+>>>> +++++++++++++++++++++++++++++++++++++-- 1 file changed, 84
+>>>> insertions(+),
+>>>> 3 deletions(-)
+>>>>
+>>>> diff --git a/drivers/soc/rockchip/pm_domains.c
+>>>> b/drivers/soc/rockchip/pm_domains.c index 18aee6b..c5f4be6 100644
+>>>> --- a/drivers/soc/rockchip/pm_domains.c
+>>>> +++ b/drivers/soc/rockchip/pm_domains.c
+>>>> @@ -45,10 +45,21 @@ struct rockchip_pmu_info {
+>>>>
+>>>>    	const struct rockchip_domain_info *domain_info;
+>>>>
+>>>>    };
+>>>>
+>>>> +#define MAX_QOS_NODE_NUM	20
+>>>> +#define MAX_QOS_REGS_NUM	5
+>>>> +#define QOS_PRIORITY		0x08
+>>>> +#define QOS_MODE		0x0c
+>>>> +#define QOS_BANDWIDTH		0x10
+>>>> +#define QOS_SATURATION		0x14
+>>>> +#define QOS_EXTCONTROL		0x18
+>>>> +
+>>>>
+>>>>    struct rockchip_pm_domain {
+>>>>
+>>>>    	struct generic_pm_domain genpd;
+>>>>    	const struct rockchip_domain_info *info;
+>>>>    	struct rockchip_pmu *pmu;
+>>>>
+>>>> +	int num_qos;
+>>>> +	struct regmap *qos_regmap[MAX_QOS_NODE_NUM];
+>>>> +	u32 qos_save_regs[MAX_QOS_NODE_NUM][MAX_QOS_REGS_NUM];
+>>>
+>>> struct regmap **qos_regmap;
+>>> u32 *qos_save_regs;
+>>
+>> when we save and restore qos registers we need save five regs for every
+>> qos. like this :
+>> for (i =3D 0; i < pd->num_qos; i++) {
+>> 		regmap_read(pd->qos_regmap[i],
+>> 			    QOS_PRIORITY,
+>> 			    &pd->qos_save_regs[i][0]);
+>> 		regmap_read(pd->qos_regmap[i],
+>> 			    QOS_MODE,
+>> 			    &pd->qos_save_regs[i][1]);
+>> 		regmap_read(pd->qos_regmap[i],
+>> 			    QOS_BANDWIDTH,
+>> 			    &pd->qos_save_regs[i][2]);
+>> 		regmap_read(pd->qos_regmap[i],
+>> 			    QOS_SATURATION,
+>> 			    &pd->qos_save_regs[i][3]);
+>> 		regmap_read(pd->qos_regmap[i],
+>> 			    QOS_EXTCONTROL,
+>> 			    &pd->qos_save_regs[i][4]);
+>> 	}
+>> so we can not define qos_save_regs like u32 *qos_save_regs;,
+>> and apply buff like
+>> pd->qos_save_regs =3D kcalloc(pd->num_qos * MAX_QOS_REGS_NUM, sizeof(u32=
+),
+>> GFP_KERNEL);
+>
+> so how about simply swapping indices and doing it like
+>
+> u32 *qos_save_regs[MAX_QOS_REGS_NUM];
+>
+> for (i =3D 0; i < MAX_QOS_REGS_NUM; i++) {
+> 	qos_save_regs[i] =3D kcalloc(pd->num_qos, sizeof(u32));
+> 	/* error handling here */
+> }
+>
+> ...
+> 		regmap_read(pd->qos_regmap[i],
+> 			    QOS_SATURATION,
+> 			    &pd->qos_save_regs[3][i]);
+> ...
 
-- Yakir
-> Guenter
+I agree with you on this modification.
+
+>
+>
+> Asked the other way around, how did you measure to set MAX_QOS_REGS_NUM to
+> 20? From looking at the rk3399 TRM, it seems there are only 38 QoS
+> generators on the SoC in general (24 on the rk3288 with PD_VIO having a
+> maximum of 9 qos generators), so preparing for 20 seems a bit overkill ;-)
+>
+About the MAX_QOS_NODE_NUM I also have some uncertaibty.
+Although there are only 38 QoS on the RK3399(24 on the rk3288),but not =
+
+all of the pd need to power on/off.So not all QOS need save and restore.
+So about the MAX_QOS_NODE_NUM, what do you suggest.
+
+MAX_QOS_REGS_NUM is 5 because the QOS register is just 5 need save and =
+
+restore.
+like :
+#define QOS_PRIORITY		0x08
+#define QOS_MODE		0x0c
+#define QOS_BANDWIDTH		0x10
+#define QOS_SATURATION		0x14
+#define QOS_EXTCONTROL		0x18
+>
+> Heiko
 >
 >
 >
