@@ -1,51 +1,109 @@
-From: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 3/3] spi: rockchip: check requesting dma channel with
- EPROBE_DEFER
-Date: Tue, 5 Apr 2016 11:08:05 -0700
-Message-ID: <20160405180804.GB8930@vkoul-mobl.iind.intel.com>
-References: <1457511043-2058-1-git-send-email-shawn.lin@rock-chips.com>
- <1457511092-2216-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=Wi9SEtM+o4AEPW6kpuGU+NH1uhW9hk5OQ5U8inyr1y1w@mail.gmail.com>
- <56F0A7F0.5000900@rock-chips.com>
- <CAD=FV=XUKoKq9_Ecx6F_c7XC6FbM6jK5B5XmKqmds_2zHW7i1g@mail.gmail.com>
- <56F0B3A1.9080509@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: Fix "is stall active" check
+Date: Tue, 05 Apr 2016 12:10:05 -0700
+Message-ID: <9799340.GJHE2cZK7r@phil>
+References: <1459865146-25308-1-git-send-email-john@metanate.com>
+	<5389576.zuTxjFsmO4@phil>
+	<20160405182858.382ea465.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <56F0B3A1.9080509-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20160405182858.382ea465.john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 22, 2016 at 10:53:21AM +0800, Shawn Lin wrote:
-> >Strange, but on 4.4 there was some extra code in
-> >dma_request_slave_channel() that wasn't in
-> >dma_request_slave_channel_reason().  ...but looks like that all got
-> >cleaned up in the same CL that added the new name.
+Am Dienstag, 5. April 2016, 18:28:58 schrieb John Keeping:
+> On Tue, 05 Apr 2016 10:21:27 -0700, Heiko Stuebner wrote:
+> > Am Dienstag, 5. April 2016, 15:05:46 schrieb John Keeping:
+> > > Since commit cd6438c5f844 ("iommu/rockchip: Reconstruct to support
+> > > multi
+> > > slaves") rk_iommu_is_stall_active() always returns false because the
+> > > bitwise AND operates on the boolean flag promoted to an integer and a
+> > > value that is either zero or BIT(2).
+> > > 
+> > > Explicitly convert the right-hand value to a boolean so that both
+> > > sides
+> > > are guaranteed to be either zero or one.
+> > > 
+> > > rk_iommu_is_paging_enabled() does not suffer from the same problem
+> > > since
+> > > RK_MMU_STATUS_PAGING_ENABLED is BIT(0), but let's apply the same
+> > > change
+> > > for consistency and to make it clear that it's correct without needing
+> > > to lookup the value.
+> > > 
+> > > Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
+> > > slaves") Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> > 
+> > Nice catch, thanks.
+> > 
+> > Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> > 
+> > John, out of curiosity, how did you find that problem? Excess stall
+> > error
+> > messages or something else?
 > 
-> dma_request_chan already return ERR_PTR(-EPROBE_DEFER), but
-> dma_request_slave_channel ignore this and rewrite it to be NULL.
-> Strange behaviour looks to me. commit 0ad7c00057dc ("dma: add channel
-> request API that supports deferred probe")  did the right thing, but
-> what happened then?  It was drop for some reasons?
+> I was testing the drm iommu patches I posted today [1] and noticed an
+> "Enable stall request timed out" error when unbinding the
+> display-subsystem, but the RK_MMU_STATUS value printed in the error
+> message indicated that stall active was set.
 > 
-> Hello Vinod,
-> 
-> Could you please elaborate some more infomation to commit 0ad7c00057dc
-> ("dma: add channel request API that supports deferred probe") :) ?
+> [1] http://article.gmane.org/gmane.comp.video.dri.devel/150721
 
-The request API was cleaned up here and please see the Documentation on how
-to do this.
+So it seems both you and Tomeu were working to resolve the same issue [2].
 
-See the commit a8135d0d7 - dmaengine: core: Introduce new, universal API to
-request a channel
+And John's patch seems to actually fix the underlying problem.
 
-Thanks
--- 
-~Vinod
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+[2] https://lkml.org/lkml/2016/3/22/493
+
+
+> > > ---
+> > > 
+> > >  drivers/iommu/rockchip-iommu.c | 8 ++++----
+> > >  1 file changed, 4 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/drivers/iommu/rockchip-iommu.c
+> > > b/drivers/iommu/rockchip-iommu.c index a6f593a0a29e..5710a06c3049
+> > > 100644
+> > > --- a/drivers/iommu/rockchip-iommu.c
+> > > +++ b/drivers/iommu/rockchip-iommu.c
+> > > @@ -315,8 +315,8 @@ static bool rk_iommu_is_stall_active(struct
+> > > rk_iommu
+> > > *iommu) int i;
+> > > 
+> > >  	for (i = 0; i < iommu->num_mmu; i++)
+> > > 
+> > > -		active &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+> > > -					RK_MMU_STATUS_STALL_ACTIVE;
+> > > +		active &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+> > > +					   RK_MMU_STATUS_STALL_ACTIVE);
+> > > 
+> > >  	return active;
+> > >  
+> > >  }
+> > > 
+> > > @@ -327,8 +327,8 @@ static bool rk_iommu_is_paging_enabled(struct
+> > > rk_iommu *iommu) int i;
+> > > 
+> > >  	for (i = 0; i < iommu->num_mmu; i++)
+> > > 
+> > > -		enable &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+> > > -					RK_MMU_STATUS_PAGING_ENABLED;
+> > > +		enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+> > > +					   RK_MMU_STATUS_PAGING_ENABLED);
+> > > 
+> > >  	return enable;
+> > >  
+> > >  }
