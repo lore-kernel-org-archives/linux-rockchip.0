@@ -1,68 +1,69 @@
-From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] iommu/rockchip: Fix "is stall active" check
-Date: Tue,  5 Apr 2016 15:05:46 +0100
-Message-ID: <1459865146-25308-1-git-send-email-john@metanate.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
+ flip event v3
+Date: Tue, 5 Apr 2016 16:07:36 +0200
+Message-ID: <CAAObsKAyeg9JsPhCyWqLpg3n6V9Ab8OCJKXX41A86rQWWs+SdQ@mail.gmail.com>
+References: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
+ <CAPj87rPtP1ph-1FMxSKUANjeKwwjwgfMzbUGHvqudEx7nYCESQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPj87rPtP1ph-1FMxSKUANjeKwwjwgfMzbUGHvqudEx7nYCESQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: linux-rockchip <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Since commit cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
-slaves") rk_iommu_is_stall_active() always returns false because the
-bitwise AND operates on the boolean flag promoted to an integer and a
-value that is either zero or BIT(2).
-
-Explicitly convert the right-hand value to a boolean so that both sides
-are guaranteed to be either zero or one.
-
-rk_iommu_is_paging_enabled() does not suffer from the same problem since
-RK_MMU_STATUS_PAGING_ENABLED is BIT(0), but let's apply the same change
-for consistency and to make it clear that it's correct without needing
-to lookup the value.
-
-Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi slaves")
-Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
----
- drivers/iommu/rockchip-iommu.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index a6f593a0a29e..5710a06c3049 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -315,8 +315,8 @@ static bool rk_iommu_is_stall_active(struct rk_iommu *iommu)
- 	int i;
- 
- 	for (i = 0; i < iommu->num_mmu; i++)
--		active &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
--					RK_MMU_STATUS_STALL_ACTIVE;
-+		active &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-+					   RK_MMU_STATUS_STALL_ACTIVE);
- 
- 	return active;
- }
-@@ -327,8 +327,8 @@ static bool rk_iommu_is_paging_enabled(struct rk_iommu *iommu)
- 	int i;
- 
- 	for (i = 0; i < iommu->num_mmu; i++)
--		enable &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
--					RK_MMU_STATUS_PAGING_ENABLED;
-+		enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-+					   RK_MMU_STATUS_PAGING_ENABLED);
- 
- 	return enable;
- }
--- 
-2.8.0.rc4.238.g874082a
+T24gNCBBcHJpbCAyMDE2IGF0IDE3OjQ0LCBEYW5pZWwgU3RvbmUgPGRhbmllbEBmb29pc2hiYXIu
+b3JnPiB3cm90ZToKPiBIaSBUb21ldSwKPgo+IE9uIDQgQXByaWwgMjAxNiBhdCAxNDo1NSwgVG9t
+ZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4gaW5kZXggM2I4ZjY1MjY5OGY4
+Li44MzA1YmJkMmE0ZDcgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZmIuYwo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX2ZiLmMKPj4gQEAgLTI4MCw3ICsyODAsMTggQEAgaW50IHJvY2tjaGlwX2RybV9hdG9t
+aWNfY29tbWl0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsCj4+ICB7Cj4+ICAgICAgICAgc3RydWN0
+IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZGV2LT5kZXZfcHJpdmF0ZTsKPj4gICAg
+ICAgICBzdHJ1Y3Qgcm9ja2NoaXBfYXRvbWljX2NvbW1pdCAqY29tbWl0ID0gJnByaXZhdGUtPmNv
+bW1pdDsKPj4gLSAgICAgICBpbnQgcmV0Owo+PiArICAgICAgIHN0cnVjdCBkcm1fY3J0Y19zdGF0
+ZSAqY3J0Y19zdGF0ZTsKPj4gKyAgICAgICBzdHJ1Y3QgZHJtX2NydGMgKmNydGM7Cj4+ICsgICAg
+ICAgaW50IGksIHJldDsKPj4gKwo+PiArICAgICAgIGlmIChhc3luYykgewo+PiArICAgICAgICAg
+ICAgICAgZm9yX2VhY2hfY3J0Y19pbl9zdGF0ZShzdGF0ZSwgY3J0YywgY3J0Y19zdGF0ZSwgaSkg
+ewo+PiArICAgICAgICAgICAgICAgICAgICAgICBpZiAoY3J0Yy0+c3RhdGUtPmV2ZW50IHx8Cj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICByb2NrY2hpcF9kcm1fY3J0Y19oYXNfcGVuZGlu
+Z19ldmVudChjcnRjKSkgewo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVy
+biAtRUJVU1k7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIH0KPj4gKyAgICAgICAgICAgICAg
+IH0KPj4gKyAgICAgICB9Cj4KPiBIbW1tIC4uLgo+Cj4gRG9lc24ndCB0aGlzIHRyaWdnZXIgYmVm
+b3JlIHRoZSBWT1AgYXRvbWljX2JlZ2luKCkgaGVscGVyLCBtZWFuaW5nCj4gdGhhdCBhbnl0aGlu
+ZyB3aXRoIGFuIGV2ZW50IHNldCB3aWxsIHRyaWdnZXIgdGhlIGNoZWNrPyBTZWVtcyBsaWtlIGl0
+Cj4gc2hvdWxkIGJlICYmIHJhdGhlciB0aGFuIHx8LgoKU28sIHRoZXNlIGFyZSB0aGUgdHdvIGNh
+c2VzIHRoYXQgdGhpcyBjb2RlIGFpbXMgdG8gaGFuZGxlOgoKMS4gQSBwcmV2aW91cyByZXF1ZXN0
+IHdpdGggYW4gZXZlbnQgc2V0IGhhc24ndCBwcm9ncmVzc2VkIHRvCmF0b21pY19iZWdpbiB5ZXQs
+IHNvIHRoZSBldmVudCBmaWVsZCBpbiBkcm1fY3J0Y19zdGF0ZSAoYXQgdGhpcyBwb2ludCwKdGhl
+IG9sZCBzdGF0ZSkgaXMgc3RpbGwgcG9wdWxhdGVkIGJ1dCB2b3AtPmV2ZW50IHN0aWxsIGlzbid0
+LgoKMi4gQSBwcmV2aW91cyByZXF1ZXN0IGhhcyBhbHJlYWR5IHByb2dyZXNzZWQgdG8gYXRvbWlj
+X2JlZ2luIGJ1dCB3ZQpoYXZlbid0IGdvdHRlbiB5ZXQgdGhlIGludGVycnVwdCB0aGF0IHNpZ25h
+bHMgaXRzIGNvbXBsZXRpb24sIHNvCnZvcC0+ZXZlbnQgaXMgcG9wdWxhdGVkIGJ1dCBjcnRjLT5z
+dGF0ZS0+ZXZlbnQgaXNuJ3QgYW55bW9yZS4KCk15IHVuZGVyc3RhbmRpbmcgaXMgdGhhdCBpbiBi
+b3RoIGNhc2VzIHRoZXJlJ3MgYSBwZW5kaW5nIGZsaXAgZXZlbnQKYW5kIHdlIGhhdmUgdG8gcmV0
+dXJuIC1FQlVTWSBpZiBpdCdzIGFzIGFzeW5jIHJlcXVlc3QuCgo+IEFsc28sIEkga25vdyByb2Nr
+Y2hpcF9kcm1fdm9wLmMgaXNuJ3QgaG9sZGluZyBkZXYtPmV2ZW50X2xvY2sgd2hlbiBpdAo+IGNo
+ZWNrcyB2b3AtPmV2ZW50LCBidXQgaXQgcmVhbGx5IHNob3VsZCBiZSAuLi4gYW5kIHNvIHNob3Vs
+ZCB0aGlzCj4gY2hlY2suIE90aGVyd2lzZSB5b3UgY2FuIHJhY2Ugd2l0aCB0aGUgSVJRIGhhbmRs
+ZXIsIHdoaWNoIGlzbid0Cj4gcmVxdWlyZWQgdG8gaG9sZCB0aGUgQ1JUQyBsb2NrLgoKQ29vbCwg
+dGhhbmtzLgoKVG9tZXUKCj4gQ2hlZXJzLAo+IERhbmllbAo+IF9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwK
