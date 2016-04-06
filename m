@@ -1,80 +1,119 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH v7 2/4] power: reset: add reboot mode driver
-Date: Wed, 06 Apr 2016 10:00:13 +0900
-Message-ID: <57045F9D.1000502@samsung.com>
-References: <1459304304-9713-1-git-send-email-andy.yan@rock-chips.com>
- <1459304443-9811-1-git-send-email-andy.yan@rock-chips.com>
- <56FB49B3.2040505@samsung.com> <57045D6B.2080907@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: Fix "is stall active" check
+Date: Wed, 6 Apr 2016 09:45:46 +0200
+Message-ID: <CAAObsKC9d17jh1xOfGGSo6ULesYFAENYSNEFrr4ee4h_JgahYw@mail.gmail.com>
+References: <1459865146-25308-1-git-send-email-john@metanate.com>
+	<5389576.zuTxjFsmO4@phil> <20160405182858.382ea465.john@metanate.com>
+	<9799340.GJHE2cZK7r@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-reply-to: <57045D6B.2080907@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Andy Yan <andy.yan@rock-chips.com>, robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de
-Cc: mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, alexandre.belloni@free-electrons.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, mbrugger@suse.com, linux-kernel@vger.kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <9799340.GJHE2cZK7r@phil>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 06.04.2016 09:50, Andy Yan wrote:
-
-(...)
-
->>> +            return -ENOMEM;
->>> +
->>> +        info->mode = kstrdup_const(prop->name + len, GFP_KERNEL);
->>> +        if (of_property_read_u32(np, prop->name, &info->magic)) {
->>> +            dev_err(dev, "reboot mode %s without magic number\n",
->>> +                info->mode);
->>> +            devm_kfree(dev, info);
->>> +            continue;
->>> +        }
->>> +        list_add_tail(&info->list, &reboot->head);
->>> +    }
->>> +    of_node_put(np);
->> If you of_node_put() here, there is no sense in getting it before. I
->> mentioned of_node_get() only because I am not sure about life-cycle of
->> nodes in case of DT overlays and you are storing the pointer to string
->> from DT.
+On 5 April 2016 at 21:10, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Am Dienstag, 5. April 2016, 18:28:58 schrieb John Keeping:
+>> On Tue, 05 Apr 2016 10:21:27 -0700, Heiko Stuebner wrote:
+>> > Am Dienstag, 5. April 2016, 15:05:46 schrieb John Keeping:
+>> > > Since commit cd6438c5f844 ("iommu/rockchip: Reconstruct to support
+>> > > multi
+>> > > slaves") rk_iommu_is_stall_active() always returns false because the
+>> > > bitwise AND operates on the boolean flag promoted to an integer and a
+>> > > value that is either zero or BIT(2).
+>> > >
+>> > > Explicitly convert the right-hand value to a boolean so that both
+>> > > sides
+>> > > are guaranteed to be either zero or one.
+>> > >
+>> > > rk_iommu_is_paging_enabled() does not suffer from the same problem
+>> > > since
+>> > > RK_MMU_STATUS_PAGING_ENABLED is BIT(0), but let's apply the same
+>> > > change
+>> > > for consistency and to make it clear that it's correct without needing
+>> > > to lookup the value.
+>> > >
+>> > > Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
+>> > > slaves") Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+>> >
+>> > Nice catch, thanks.
+>> >
+>> > Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+>> >
+>> > John, out of curiosity, how did you find that problem? Excess stall
+>> > error
+>> > messages or something else?
 >>
->> The doubts I have are concerning only the case of freeing nodes from
->> overlay.
+>> I was testing the drm iommu patches I posted today [1] and noticed an
+>> "Enable stall request timed out" error when unbinding the
+>> display-subsystem, but the RK_MMU_STATUS value printed in the error
+>> message indicated that stall active was set.
 >>
->> I don't know if of_node_get() is needed but of_node_get()+of_node_put()
->> seems useless.
-> 
-> 
->  I am also not sure about it. Maybe just drop of_node_get/put ?
+>> [1] http://article.gmane.org/gmane.comp.video.dri.devel/150721
+>
+> So it seems both you and Tomeu were working to resolve the same issue [2].
+>
+> And John's patch seems to actually fix the underlying problem.
 
-OK, let's drop both get() and put().
+Indeed, I don't get spurious messages any more with this patch.
 
-(...)
+Tested-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
->>> +
->>> +static const struct of_device_id syscon_reboot_mode_of_match[] = {
->>> +    { .compatible = "syscon-reboot-mode" },
->>> +    {}
->>> +};
->>> +
->>> +static struct platform_driver syscon_reboot_mode_driver = {
->>> +    .probe = syscon_reboot_mode_probe,
->> Cleanup needed. What will happen after device unbind? Memory will be
->> released (devm-*()) but reboot notifier won't thus leading to OOPS on
->> reboot.
-> 
->     From the kernel_restart_prepare function, the reboot notifier will
-> be called before device_shutdown. Is there any other case the device
-> unbind before reboot notifier
-> called?
+Thanks,
 
-This is a regular module platform driver so unbind can happen any time
-initiated by user, either by unbind command or by module removal. User
-can then re-bind device or not - probably does not matter. Anyway after
-such first unbind, the restart will kaboom instead of do a restart.
+Tomeu
 
-Beside that, you always should clean up, regardless of restart or not.
-If you do not want unbind (thus no need of cleanup) then forbid it by
-making it a non-module with suppressed bind.
-
-Best regards,
-Krzysztof
-
+>
+> [2] https://lkml.org/lkml/2016/3/22/493
+>
+>
+>> > > ---
+>> > >
+>> > >  drivers/iommu/rockchip-iommu.c | 8 ++++----
+>> > >  1 file changed, 4 insertions(+), 4 deletions(-)
+>> > >
+>> > > diff --git a/drivers/iommu/rockchip-iommu.c
+>> > > b/drivers/iommu/rockchip-iommu.c index a6f593a0a29e..5710a06c3049
+>> > > 100644
+>> > > --- a/drivers/iommu/rockchip-iommu.c
+>> > > +++ b/drivers/iommu/rockchip-iommu.c
+>> > > @@ -315,8 +315,8 @@ static bool rk_iommu_is_stall_active(struct
+>> > > rk_iommu
+>> > > *iommu) int i;
+>> > >
+>> > >   for (i = 0; i < iommu->num_mmu; i++)
+>> > >
+>> > > -         active &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+>> > > -                                 RK_MMU_STATUS_STALL_ACTIVE;
+>> > > +         active &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+>> > > +                                    RK_MMU_STATUS_STALL_ACTIVE);
+>> > >
+>> > >   return active;
+>> > >
+>> > >  }
+>> > >
+>> > > @@ -327,8 +327,8 @@ static bool rk_iommu_is_paging_enabled(struct
+>> > > rk_iommu *iommu) int i;
+>> > >
+>> > >   for (i = 0; i < iommu->num_mmu; i++)
+>> > >
+>> > > -         enable &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+>> > > -                                 RK_MMU_STATUS_PAGING_ENABLED;
+>> > > +         enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+>> > > +                                    RK_MMU_STATUS_PAGING_ENABLED);
+>> > >
+>> > >   return enable;
+>> > >
+>> > >  }
+>
