@@ -1,152 +1,49 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: i2s: configure the sdio pins'
-	iomux mode
-Date: Wed,  6 Apr 2016 16:38:22 +0800
-Message-ID: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH 2/2] drm/rockchip: vop: Wait for pending events when disabling
+ a CRTC
+Date: Wed,  6 Apr 2016 12:14:46 +0200
+Message-ID: <1459937686-9142-2-git-send-email-tomeu.vizoso@collabora.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: heiko@sntech.de, broonie@kernel.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are 3 i2s sdio pins, which iomux mode is as follows:
-
- - sdi3_sdo1
- - sdi2_sdo2
- - sdi1_sdo3
-
-we need to configure these pins' iomux mode via the GRF register
-when use multi channel playback/capture.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
-
- .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 +++
- sound/soc/rockchip/rockchip_i2s.c                  | 39 +++++++++++++++++++++-
- sound/soc/rockchip/rockchip_i2s.h                  |  8 +++++
- 3 files changed, 51 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-index 6e86d8a..ad72a7d 100644
---- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-+++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
-@@ -23,6 +23,11 @@ Required properties:
- - rockchip,playback-channels: max playback channels, if not set, 8 channels default.
- - rockchip,capture-channels: max capture channels, if not set, 2 channels default.
- 
-+Required properties for controller which support multi channels playback/capture:
-+
-+- rockchip,grf: Should be phandle/offset pair. the phandle of the syscon node for GRF register,
-+  and the offset of the GRF for control register.
-+
- Example for rk3288 I2S controller:
- 
- i2s@ff890000 {
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 2f8e204..bc72780 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include <linux/module.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/delay.h>
- #include <linux/of_gpio.h>
- #include <linux/clk.h>
-@@ -33,6 +34,8 @@ struct rk_i2s_dev {
- 	struct snd_dmaengine_dai_dma_data playback_dma_data;
- 
- 	struct regmap *regmap;
-+	struct regmap *grf;
-+	u32 iocfg_reg;
- 
- 	bool is_master_mode;
- };
-@@ -277,6 +280,29 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 				   I2S_TXCR_VDW_MASK | I2S_TXCR_CSR_MASK,
- 				   val);
- 
-+	if (!IS_ERR(i2s->grf)) {
-+		regmap_read(i2s->regmap, I2S_TXCR, &val);
-+		val &= I2S_TXCR_CSR_MASK;
-+
-+		switch (val) {
-+		case I2S_CHN_4:
-+			val = I2S_IO_4CH_OUT_6CH_IN;
-+			break;
-+		case I2S_CHN_6:
-+			val = I2S_IO_6CH_OUT_4CH_IN;
-+			break;
-+		case I2S_CHN_8:
-+			val = I2S_IO_8CH_OUT_2CH_IN;
-+			break;
-+		default:
-+			val = I2S_IO_2CH_OUT_8CH_IN;
-+			break;
-+		}
-+
-+		regmap_write(i2s->grf, i2s->iocfg_reg,
-+			     I2S_IO_DIRECTION_MASK << 16 | val);
-+	}
-+
- 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_TDL_MASK,
- 			   I2S_DMACR_TDL(16));
- 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
-@@ -478,6 +504,18 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 	}
- 
-+	i2s->dev = &pdev->dev;
-+
-+	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
-+	if (!IS_ERR(i2s->grf)) {
-+		ret = of_property_read_u32_index(node, "rockchip,grf",
-+						 1, &i2s->iocfg_reg);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Can't get iocfg_reg offset\n");
-+			return ret;
-+		}
-+	}
-+
- 	/* try to prepare related clocks */
- 	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
- 	if (IS_ERR(i2s->hclk)) {
-@@ -517,7 +555,6 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
- 	i2s->capture_dma_data.maxburst = 4;
- 
--	i2s->dev = &pdev->dev;
- 	dev_set_drvdata(&pdev->dev, i2s);
- 
- 	pm_runtime_enable(&pdev->dev);
-diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
-index dc6e2c7..9a6aabf 100644
---- a/sound/soc/rockchip/rockchip_i2s.h
-+++ b/sound/soc/rockchip/rockchip_i2s.h
-@@ -236,4 +236,12 @@ enum {
- #define I2S_TXDR	(0x0024)
- #define I2S_RXDR	(0x0028)
- 
-+/* io direction cfg register */
-+#define I2S_IO_DIRECTION_SHIFT	11
-+#define I2S_IO_DIRECTION_MASK	(7 << I2S_IO_DIRECTION_SHIFT)
-+#define I2S_IO_8CH_OUT_2CH_IN	(0 << I2S_IO_DIRECTION_SHIFT)
-+#define I2S_IO_6CH_OUT_4CH_IN	(1 << I2S_IO_DIRECTION_SHIFT)
-+#define I2S_IO_4CH_OUT_6CH_IN	(3 << I2S_IO_DIRECTION_SHIFT)
-+#define I2S_IO_2CH_OUT_8CH_IN	(7 << I2S_IO_DIRECTION_SHIFT)
-+
- #endif /* _ROCKCHIP_IIS_H */
--- 
-1.9.1
+V2hlbiBhIFZPUCBpcyBkaXNhYmxlZCwgaXQgd2lsbCBzdG9wIHJhaXNpbmcgaW50ZXJydXB0cy4g
+SWYgd2UgaGFkIGEKcGVuZGluZyBwYWdlZmxpcCB3aGVuIHRoZSBWT1AgaXMgZGlzYWJsZWQsIHVz
+ZXJzcGFjZSB3b24ndCBnZXQgdGhhdApldmVudCB1bnRpbCB0aGUgY29ycmVzcG9uZGluZyBDUlRD
+IGlzIGVuYWJsZWQgYWdhaW4uCgpTbyBsZXQncyB3YWl0IGZvciBhbnkgcGVuZGluZyBldmVudHMg
+dGhhdCBtYXkgYmUgcmlnaHQgYmVmb3JlIGRpc2FibGluZwphIENSVEMuCgpTaWduZWQtb2ZmLWJ5
+OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgfCA1ICsrKysrCiAxIGZpbGUgY2hh
+bmdlZCwgNSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hp
+cF9kcm1fdm9wLmMKaW5kZXggZjQ2YjFmZDE4ODdiLi42ZGM4N2ZhOTZmMjkgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtMTQyLDYgKzE0Miw4IEBA
+IHN0cnVjdCB2b3AgewogCXN0cnVjdCB2b3Bfd2luIHdpbltdOwogfTsKIAorc3RhdGljIHZvaWQg
+dm9wX2NydGNfd2FpdF9mb3JfdXBkYXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yyk7CisKIHN0YXRp
+YyBpbmxpbmUgdm9pZCB2b3Bfd3JpdGVsKHN0cnVjdCB2b3AgKnZvcCwgdWludDMyX3Qgb2Zmc2V0
+LCB1aW50MzJfdCB2KQogewogCXdyaXRlbCh2LCB2b3AtPnJlZ3MgKyBvZmZzZXQpOwpAQCAtNTA0
+LDYgKzUwNiw5IEBAIHN0YXRpYyB2b2lkIHZvcF9jcnRjX2Rpc2FibGUoc3RydWN0IGRybV9jcnRj
+ICpjcnRjKQogCWlmICghdm9wLT5pc19lbmFibGVkKQogCQlyZXR1cm47CiAKKwlpZiAoY3J0Yy0+
+c3RhdGUtPmV2ZW50IHx8IHZvcC0+ZXZlbnQpCisJCXZvcF9jcnRjX3dhaXRfZm9yX3VwZGF0ZShj
+cnRjKTsKKwogCS8qCiAJICogV2UgbmVlZCB0byBtYWtlIHN1cmUgdGhhdCBhbGwgd2luZG93cyBh
+cmUgZGlzYWJsZWQgYmVmb3JlIHdlCiAJICogZGlzYWJsZSB0aGF0IGNydGMuIE90aGVyd2lzZSB3
+ZSBtaWdodCB0cnkgdG8gc2NhbiBmcm9tIGEgZGVzdHJveWVkCi0tIAoyLjUuNQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
