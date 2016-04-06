@@ -1,119 +1,152 @@
-From: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH] iommu/rockchip: Fix "is stall active" check
-Date: Wed, 6 Apr 2016 09:45:46 +0200
-Message-ID: <CAAObsKC9d17jh1xOfGGSo6ULesYFAENYSNEFrr4ee4h_JgahYw@mail.gmail.com>
-References: <1459865146-25308-1-git-send-email-john@metanate.com>
-	<5389576.zuTxjFsmO4@phil> <20160405182858.382ea465.john@metanate.com>
-	<9799340.GJHE2cZK7r@phil>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: [PATCH] ASoC: rockchip: i2s: configure the sdio pins'
+	iomux mode
+Date: Wed,  6 Apr 2016 16:38:22 +0800
+Message-ID: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <9799340.GJHE2cZK7r@phil>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: heiko@sntech.de, broonie@kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5 April 2016 at 21:10, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Am Dienstag, 5. April 2016, 18:28:58 schrieb John Keeping:
->> On Tue, 05 Apr 2016 10:21:27 -0700, Heiko Stuebner wrote:
->> > Am Dienstag, 5. April 2016, 15:05:46 schrieb John Keeping:
->> > > Since commit cd6438c5f844 ("iommu/rockchip: Reconstruct to support
->> > > multi
->> > > slaves") rk_iommu_is_stall_active() always returns false because the
->> > > bitwise AND operates on the boolean flag promoted to an integer and a
->> > > value that is either zero or BIT(2).
->> > >
->> > > Explicitly convert the right-hand value to a boolean so that both
->> > > sides
->> > > are guaranteed to be either zero or one.
->> > >
->> > > rk_iommu_is_paging_enabled() does not suffer from the same problem
->> > > since
->> > > RK_MMU_STATUS_PAGING_ENABLED is BIT(0), but let's apply the same
->> > > change
->> > > for consistency and to make it clear that it's correct without needing
->> > > to lookup the value.
->> > >
->> > > Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
->> > > slaves") Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
->> >
->> > Nice catch, thanks.
->> >
->> > Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->> >
->> > John, out of curiosity, how did you find that problem? Excess stall
->> > error
->> > messages or something else?
->>
->> I was testing the drm iommu patches I posted today [1] and noticed an
->> "Enable stall request timed out" error when unbinding the
->> display-subsystem, but the RK_MMU_STATUS value printed in the error
->> message indicated that stall active was set.
->>
->> [1] http://article.gmane.org/gmane.comp.video.dri.devel/150721
->
-> So it seems both you and Tomeu were working to resolve the same issue [2].
->
-> And John's patch seems to actually fix the underlying problem.
+There are 3 i2s sdio pins, which iomux mode is as follows:
 
-Indeed, I don't get spurious messages any more with this patch.
+ - sdi3_sdo1
+ - sdi2_sdo2
+ - sdi1_sdo3
 
-Tested-by: Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+we need to configure these pins' iomux mode via the GRF register
+when use multi channel playback/capture.
 
-Thanks,
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+---
 
-Tomeu
+ .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 +++
+ sound/soc/rockchip/rockchip_i2s.c                  | 39 +++++++++++++++++++++-
+ sound/soc/rockchip/rockchip_i2s.h                  |  8 +++++
+ 3 files changed, 51 insertions(+), 1 deletion(-)
 
->
-> [2] https://lkml.org/lkml/2016/3/22/493
->
->
->> > > ---
->> > >
->> > >  drivers/iommu/rockchip-iommu.c | 8 ++++----
->> > >  1 file changed, 4 insertions(+), 4 deletions(-)
->> > >
->> > > diff --git a/drivers/iommu/rockchip-iommu.c
->> > > b/drivers/iommu/rockchip-iommu.c index a6f593a0a29e..5710a06c3049
->> > > 100644
->> > > --- a/drivers/iommu/rockchip-iommu.c
->> > > +++ b/drivers/iommu/rockchip-iommu.c
->> > > @@ -315,8 +315,8 @@ static bool rk_iommu_is_stall_active(struct
->> > > rk_iommu
->> > > *iommu) int i;
->> > >
->> > >   for (i = 0; i < iommu->num_mmu; i++)
->> > >
->> > > -         active &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
->> > > -                                 RK_MMU_STATUS_STALL_ACTIVE;
->> > > +         active &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
->> > > +                                    RK_MMU_STATUS_STALL_ACTIVE);
->> > >
->> > >   return active;
->> > >
->> > >  }
->> > >
->> > > @@ -327,8 +327,8 @@ static bool rk_iommu_is_paging_enabled(struct
->> > > rk_iommu *iommu) int i;
->> > >
->> > >   for (i = 0; i < iommu->num_mmu; i++)
->> > >
->> > > -         enable &= rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
->> > > -                                 RK_MMU_STATUS_PAGING_ENABLED;
->> > > +         enable &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
->> > > +                                    RK_MMU_STATUS_PAGING_ENABLED);
->> > >
->> > >   return enable;
->> > >
->> > >  }
->
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 6e86d8a..ad72a7d 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -23,6 +23,11 @@ Required properties:
+ - rockchip,playback-channels: max playback channels, if not set, 8 channels default.
+ - rockchip,capture-channels: max capture channels, if not set, 2 channels default.
+ 
++Required properties for controller which support multi channels playback/capture:
++
++- rockchip,grf: Should be phandle/offset pair. the phandle of the syscon node for GRF register,
++  and the offset of the GRF for control register.
++
+ Example for rk3288 I2S controller:
+ 
+ i2s@ff890000 {
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 2f8e204..bc72780 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include <linux/module.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/delay.h>
+ #include <linux/of_gpio.h>
+ #include <linux/clk.h>
+@@ -33,6 +34,8 @@ struct rk_i2s_dev {
+ 	struct snd_dmaengine_dai_dma_data playback_dma_data;
+ 
+ 	struct regmap *regmap;
++	struct regmap *grf;
++	u32 iocfg_reg;
+ 
+ 	bool is_master_mode;
+ };
+@@ -277,6 +280,29 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 				   I2S_TXCR_VDW_MASK | I2S_TXCR_CSR_MASK,
+ 				   val);
+ 
++	if (!IS_ERR(i2s->grf)) {
++		regmap_read(i2s->regmap, I2S_TXCR, &val);
++		val &= I2S_TXCR_CSR_MASK;
++
++		switch (val) {
++		case I2S_CHN_4:
++			val = I2S_IO_4CH_OUT_6CH_IN;
++			break;
++		case I2S_CHN_6:
++			val = I2S_IO_6CH_OUT_4CH_IN;
++			break;
++		case I2S_CHN_8:
++			val = I2S_IO_8CH_OUT_2CH_IN;
++			break;
++		default:
++			val = I2S_IO_2CH_OUT_8CH_IN;
++			break;
++		}
++
++		regmap_write(i2s->grf, i2s->iocfg_reg,
++			     I2S_IO_DIRECTION_MASK << 16 | val);
++	}
++
+ 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_TDL_MASK,
+ 			   I2S_DMACR_TDL(16));
+ 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
+@@ -478,6 +504,18 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
++	i2s->dev = &pdev->dev;
++
++	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
++	if (!IS_ERR(i2s->grf)) {
++		ret = of_property_read_u32_index(node, "rockchip,grf",
++						 1, &i2s->iocfg_reg);
++		if (ret) {
++			dev_err(&pdev->dev, "Can't get iocfg_reg offset\n");
++			return ret;
++		}
++	}
++
+ 	/* try to prepare related clocks */
+ 	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
+ 	if (IS_ERR(i2s->hclk)) {
+@@ -517,7 +555,6 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
+ 	i2s->capture_dma_data.maxburst = 4;
+ 
+-	i2s->dev = &pdev->dev;
+ 	dev_set_drvdata(&pdev->dev, i2s);
+ 
+ 	pm_runtime_enable(&pdev->dev);
+diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
+index dc6e2c7..9a6aabf 100644
+--- a/sound/soc/rockchip/rockchip_i2s.h
++++ b/sound/soc/rockchip/rockchip_i2s.h
+@@ -236,4 +236,12 @@ enum {
+ #define I2S_TXDR	(0x0024)
+ #define I2S_RXDR	(0x0028)
+ 
++/* io direction cfg register */
++#define I2S_IO_DIRECTION_SHIFT	11
++#define I2S_IO_DIRECTION_MASK	(7 << I2S_IO_DIRECTION_SHIFT)
++#define I2S_IO_8CH_OUT_2CH_IN	(0 << I2S_IO_DIRECTION_SHIFT)
++#define I2S_IO_6CH_OUT_4CH_IN	(1 << I2S_IO_DIRECTION_SHIFT)
++#define I2S_IO_4CH_OUT_6CH_IN	(3 << I2S_IO_DIRECTION_SHIFT)
++#define I2S_IO_2CH_OUT_8CH_IN	(7 << I2S_IO_DIRECTION_SHIFT)
++
+ #endif /* _ROCKCHIP_IIS_H */
+-- 
+1.9.1
