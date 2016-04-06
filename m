@@ -1,36 +1,39 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 00/10] ARM: dts: rockchip: enable edp functionality
-Date: Wed, 06 Apr 2016 16:28:39 -0700
-Message-ID: <4680905.hz878VKtzl@phil>
-References: <1458265206-15733-1-git-send-email-heiko@sntech.de>
+Subject: Re: [PATCH] ARM: dts: rockchip: move rk3036 memory definition to
+ board files
+Date: Wed, 06 Apr 2016 16:31:13 -0700
+Message-ID: <7054534.T1DuSsWYMd@phil>
+References: <1459432238-6469-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458265206-15733-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459432238-6469-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 18. M=E4rz 2016, 02:39:56 schrieb Heiko Stuebner:
-> This is the companion series to Yakir's rework of the analogix-dp
-> driver used both by Exynos and Rockchip.
->=20
-> These patches have been sitting in my tree for some time, and already
-> got tested (and thus refined) by a number of people.
->=20
-> So I'll post them now, to get applied after the driver-side gets
-> accepted hopefully soonish.
+Am Donnerstag, 31. M=E4rz 2016, 15:50:38 schrieb Heiko Stuebner:
+> The amount of available memory is clearly a board-specific value, so
+> the core per-soc dtsi should not define a default of any sort.
+> Therefore move the memory-nodes to the two board files.
+> =
 
-with the edp driver entering the drm tree for 4.7, I've now applied the=
- dt-
-side for 4.7 as well.
+> Also fix the amount of memory on Kylin (512MB instead of 1GB).
+> While in most cases the bootloader will override this with the
+> actual amount of memory, there is no need to keep known wrong values
+> in the board-dts.
+> =
 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+applied to my dts32 branch for 4.7
