@@ -1,106 +1,69 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH] phy: rockchip-emmc: fix compile issue on arm64 platform
-Date: Thu, 7 Apr 2016 19:01:35 +0530
-Message-ID: <57066137.4040807@ti.com>
-References: <1457425453-1996-1-git-send-email-shawn.lin@rock-chips.com>
- <570659EA.9000706@ti.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: configure the sdio
+	pins' iomux mode
+Date: Thu, 7 Apr 2016 12:58:11 -0500
+Message-ID: <20160407175811.GP32257@rob-hp-laptop>
+References: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <570659EA.9000706-l0cyMroinI0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Sjoerd Simons <sjoerd.simons@collabora.co.uk>, broonie@kernel.org, Kumar Gala <galak@codeaurora.org>, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Wed, Apr 06, 2016 at 04:38:22PM +0800, Sugar Zhang wrote:
+> There are 3 i2s sdio pins, which iomux mode is as follows:
 
-On Thursday 07 April 2016 06:30 PM, Kishon Vijay Abraham I wrote:
-> Hi,
+s/i2s sdio/I2S\/SDIO muxed/
+
 > 
-> On Tuesday 08 March 2016 01:54 PM, Shawn Lin wrote:
->> This patch rename "reg" property to "reg_offset".
->> We rename it to fix the compile issue on ARM64 platform:
->> (reg_format): "reg" property in /phy has invalid length (4 bytes)
->> (#address-cells == 2, #size-cells == 2)
+>  - sdi3_sdo1
+>  - sdi2_sdo2
+>  - sdi1_sdo3
 > 
-> Is the same node used for both ARM32 and ARM64 platforms?
+> we need to configure these pins' iomux mode via the GRF register
+> when use multi channel playback/capture.
+
+Why not a pinctrl binding here? If you want SDIO mode, then you need 
+similar code in the SDIO driver (or just rely on default mode).
+
 > 
-> Thanks
-> Kishon
->>
->> This's because "reg" is very special one which should keep the
->> *-cells with its parent node and can't be overwrited even if we
->> do that explicitly. On 32-bit plafform, the default *-cells
->> fit for what we assign to "reg". But that's not correct for 64-bit
->> platform. So we can see two possible solutions to fix this problem:
->> A) make phy-rockchip-emmc as a child phy node and overwrite its
->> parent's #address-cells and #size-cells.
->> B) avoid using this special property.
->>
->> we use it just for passing on a offset for different Socs, and there's
->> no requirement to change the code to make phy-rockchip-emmc as a child
->> node. so choose option B) is sane.
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> ---
+> 
+>  .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 +++
+>  sound/soc/rockchip/rockchip_i2s.c                  | 39 +++++++++++++++++++++-
+>  sound/soc/rockchip/rockchip_i2s.h                  |  8 +++++
+>  3 files changed, 51 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> index 6e86d8a..ad72a7d 100644
+> --- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> @@ -23,6 +23,11 @@ Required properties:
+>  - rockchip,playback-channels: max playback channels, if not set, 8 channels default.
+>  - rockchip,capture-channels: max capture channels, if not set, 2 channels default.
+>  
+> +Required properties for controller which support multi channels playback/capture:
+> +
+> +- rockchip,grf: Should be phandle/offset pair. the phandle of the syscon node for GRF register,
 
-I just looked at the Heiko's patch and it makes more sense to have the binding
-that he described in his patch [1]. Can you fix it accordingly?
+Wrap your lines at less than 80 chars.
 
-I seem to have only this patch and Heiko's patch for this -rc cycle. Once you
-send your patch, I can send a pull request to Greg.
-
-Thanks
-Kishon
-
-[1]- > https://patchwork.ozlabs.org/patch/601580/
->>
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 4 ++--
->>  drivers/phy/phy-rockchip-emmc.c                             | 2 +-
->>  2 files changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> index 61916f1..ed964ef 100644
->> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> @@ -6,7 +6,7 @@ Required properties:
->>   - rockchip,grf : phandle to the syscon managing the "general
->>     register files"
->>   - #phy-cells: must be 0
->> - - reg: PHY configure reg address offset in "general
->> + - reg_offset: PHY configure reg address offset in "general
->>     register files"
->>  
->>  Example:
->> @@ -14,6 +14,6 @@ Example:
->>  emmcphy: phy {
->>  	compatible = "rockchip,rk3399-emmc-phy";
->>  	rockchip,grf = <&grf>;
->> -	reg = <0xf780>;
->> +	reg_offset = <0xf780>;
->>  	#phy-cells = <0>;
->>  };
->> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
->> index 887b4c2..3f55c0d 100644
->> --- a/drivers/phy/phy-rockchip-emmc.c
->> +++ b/drivers/phy/phy-rockchip-emmc.c
->> @@ -186,7 +186,7 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
->>  	if (!rk_phy)
->>  		return -ENOMEM;
->>  
->> -	if (of_property_read_u32(dev->of_node, "reg", &reg_offset)) {
->> +	if (of_property_read_u32(dev->of_node, "reg_offset", &reg_offset)) {
->>  		dev_err(dev, "missing reg property in node %s\n",
->>  			dev->of_node->name);
->>  		return -EINVAL;
->>
+> +  and the offset of the GRF for control register.
+> +
+>  Example for rk3288 I2S controller:
+>  
+>  i2s@ff890000 {
