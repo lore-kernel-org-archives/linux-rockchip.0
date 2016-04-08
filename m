@@ -1,122 +1,89 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
- during disable
-Date: Fri, 08 Apr 2016 09:07:09 +0800
-Message-ID: <5707043D.6060706@rock-chips.com>
-References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] phy: rockchip-emmc: fix compile issue on arm64 platform
+Date: Fri, 8 Apr 2016 09:14:38 +0800
+Message-ID: <570705FE.2000202@rock-chips.com>
+References: <1457425453-1996-1-git-send-email-shawn.lin@rock-chips.com>
+ <570659EA.9000706@ti.com> <57066137.4040807@ti.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0014463278=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <57066137.4040807-l0cyMroinI0@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============0014463278==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-  <head>
-    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
-pe">
-  </head>
-  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
-    <div class=3D"moz-cite-prefix">On 2016=E5=B9=B404=E6=9C=8806=E6=97=A5=
- 18:14, Tomeu Vizoso
-      wrote:<br>
-    </div>
-    <blockquote
-      cite=3D"mid:1459937686-9142-1-git-send-email-tomeu.vizoso@collabora=
-.com"
-      type=3D"cite">
-      <pre wrap=3D"">When a plane is being disabled but it's still enable=
-d, do check if the
-previous update has been completed by reading yrgb_mst back.
-
-Otherwise, pending pageflips would remain pending after a CRTC is
-disabled.
-
-Signed-off-by: Tomeu Vizoso <a class=3D"moz-txt-link-rfc2396E" href=3D"ma=
-ilto:tomeu.vizoso@collabora.com">&lt;tomeu.vizoso@collabora.com&gt;</a>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/dr=
-m/rockchip/rockchip_drm_vop.c
-index a9b1e8b5ac85..f46b1fd1887b 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1064,8 +1064,9 @@ static bool vop_win_pending_is_complete(struct vop_=
-win *vop_win)
- 	struct vop_plane_state *state =3D to_vop_plane_state(plane-&gt;state);
- 	dma_addr_t yrgb_mst;
-=20
--	if (!state-&gt;enable)
--		return VOP_WIN_GET(vop_win-&gt;vop, vop_win-&gt;data, enable) =3D=3D 0=
-;
-+	if (!state-&gt;enable &amp;&amp;
-+	    VOP_WIN_GET(vop_win-&gt;vop, vop_win-&gt;data, enable) =3D=3D 0)
-+		return true;</pre>
-    </blockquote>
-    <br>
-    It is wrong, the patch would cause a bug.<br>
-    <br>
-    when state-&gt;enable is 0, check yrgb_mst =3D=3D state-&gt;yrgb_mst
-    always be true, because state-&gt;yrgb_mst not update on plane
-    disabled funtion, that would cause iommu crash.<br>
-    <br>
-    About pending pageflips would remain pending, can you=C2=A0
-    <meta http-equiv=3D"content-type" content=3D"text/html; charset=3Dutf=
--8">
-    describe more info about it? I think those pending <span
-      style=3D"color: rgb(51, 51, 51); font-family: arial; font-size:
-      13px; font-style: normal; font-variant: normal; font-weight:
-      normal; letter-spacing: normal; line-height: 20.0200004577637px;
-      orphans: auto; text-align: start; text-indent: 0px;
-      text-transform: none; white-space: normal; widows: 1;
-      word-spacing: 0px; -webkit-text-stroke-width: 0px; display: inline
-      !important; float: none; background-color: rgb(255, 255, 255);"></s=
-pan>pageflips
-    should be ignore when CRTC is disabled.<br>
-    <br>
-    Thanks.<br>
-    <br>
-    <blockquote
-      cite=3D"mid:1459937686-9142-1-git-send-email-tomeu.vizoso@collabora=
-.com"
-      type=3D"cite">
-      <pre wrap=3D"">
-=20
- 	yrgb_mst =3D VOP_WIN_GET_YRGBADDR(vop_win-&gt;vop, vop_win-&gt;data);
-=20
-</pre>
-    </blockquote>
-    <br>
-    <pre class=3D"moz-signature" cols=3D"72">--=20
-=EF=BC=ADark Yao</pre>
-  </body>
-</html>
-
-
---===============0014463278==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============0014463278==--
+5ZyoIDIwMTYvNC83IDIxOjMxLCBLaXNob24gVmlqYXkgQWJyYWhhbSBJIOWGmemBkzoKPiBIaSwK
+Pgo+IE9uIFRodXJzZGF5IDA3IEFwcmlsIDIwMTYgMDY6MzAgUE0sIEtpc2hvbiBWaWpheSBBYnJh
+aGFtIEkgd3JvdGU6Cj4+IEhpLAo+Pgo+PiBPbiBUdWVzZGF5IDA4IE1hcmNoIDIwMTYgMDE6NTQg
+UE0sIFNoYXduIExpbiB3cm90ZToKPj4+IFRoaXMgcGF0Y2ggcmVuYW1lICJyZWciIHByb3BlcnR5
+IHRvICJyZWdfb2Zmc2V0Ii4KPj4+IFdlIHJlbmFtZSBpdCB0byBmaXggdGhlIGNvbXBpbGUgaXNz
+dWUgb24gQVJNNjQgcGxhdGZvcm06Cj4+PiAocmVnX2Zvcm1hdCk6ICJyZWciIHByb3BlcnR5IGlu
+IC9waHkgaGFzIGludmFsaWQgbGVuZ3RoICg0IGJ5dGVzKQo+Pj4gKCNhZGRyZXNzLWNlbGxzID09
+IDIsICNzaXplLWNlbGxzID09IDIpCj4+Cj4+IElzIHRoZSBzYW1lIG5vZGUgdXNlZCBmb3IgYm90
+aCBBUk0zMiBhbmQgQVJNNjQgcGxhdGZvcm1zPwo+Pgo+PiBUaGFua3MKPj4gS2lzaG9uCj4+Pgo+
+Pj4gVGhpcydzIGJlY2F1c2UgInJlZyIgaXMgdmVyeSBzcGVjaWFsIG9uZSB3aGljaCBzaG91bGQg
+a2VlcCB0aGUKPj4+ICotY2VsbHMgd2l0aCBpdHMgcGFyZW50IG5vZGUgYW5kIGNhbid0IGJlIG92
+ZXJ3cml0ZWQgZXZlbiBpZiB3ZQo+Pj4gZG8gdGhhdCBleHBsaWNpdGx5LiBPbiAzMi1iaXQgcGxh
+ZmZvcm0sIHRoZSBkZWZhdWx0ICotY2VsbHMKPj4+IGZpdCBmb3Igd2hhdCB3ZSBhc3NpZ24gdG8g
+InJlZyIuIEJ1dCB0aGF0J3Mgbm90IGNvcnJlY3QgZm9yIDY0LWJpdAo+Pj4gcGxhdGZvcm0uIFNv
+IHdlIGNhbiBzZWUgdHdvIHBvc3NpYmxlIHNvbHV0aW9ucyB0byBmaXggdGhpcyBwcm9ibGVtOgo+
+Pj4gQSkgbWFrZSBwaHktcm9ja2NoaXAtZW1tYyBhcyBhIGNoaWxkIHBoeSBub2RlIGFuZCBvdmVy
+d3JpdGUgaXRzCj4+PiBwYXJlbnQncyAjYWRkcmVzcy1jZWxscyBhbmQgI3NpemUtY2VsbHMuCj4+
+PiBCKSBhdm9pZCB1c2luZyB0aGlzIHNwZWNpYWwgcHJvcGVydHkuCj4+Pgo+Pj4gd2UgdXNlIGl0
+IGp1c3QgZm9yIHBhc3Npbmcgb24gYSBvZmZzZXQgZm9yIGRpZmZlcmVudCBTb2NzLCBhbmQgdGhl
+cmUncwo+Pj4gbm8gcmVxdWlyZW1lbnQgdG8gY2hhbmdlIHRoZSBjb2RlIHRvIG1ha2UgcGh5LXJv
+Y2tjaGlwLWVtbWMgYXMgYSBjaGlsZAo+Pj4gbm9kZS4gc28gY2hvb3NlIG9wdGlvbiBCKSBpcyBz
+YW5lLgo+Cj4gSSBqdXN0IGxvb2tlZCBhdCB0aGUgSGVpa28ncyBwYXRjaCBhbmQgaXQgbWFrZXMg
+bW9yZSBzZW5zZSB0byBoYXZlIHRoZSBiaW5kaW5nCj4gdGhhdCBoZSBkZXNjcmliZWQgaW4gaGlz
+IHBhdGNoIFsxXS4gQ2FuIHlvdSBmaXggaXQgYWNjb3JkaW5nbHk/Cgp5ZXMsIEhlaWtvJ3MgcGF0
+Y2ggaXMgbW9yZSByZWFzb25hYmxlIHRvIG1lLiBXaXRoIGhpcyBwYXRjaCBhcHBsaWVkLAp0aGlz
+IGlzc3VlIGlzIGdvbmUgaWYgYXNzaWduaW5nIGFkZHJlc3MtY2VsbHMgaW4gZHQgZm9yIGdyZi4K
+ClNvIHdlIGNhbiBkcm9wIHRoaXMgcGF0Y2guCgo+Cj4gSSBzZWVtIHRvIGhhdmUgb25seSB0aGlz
+IHBhdGNoIGFuZCBIZWlrbydzIHBhdGNoIGZvciB0aGlzIC1yYyBjeWNsZS4gT25jZSB5b3UKPiBz
+ZW5kIHlvdXIgcGF0Y2gsIEkgY2FuIHNlbmQgYSBwdWxsIHJlcXVlc3QgdG8gR3JlZy4KPgo+IFRo
+YW5rcwo+IEtpc2hvbgo+Cj4gWzFdLSA+IGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcGF0
+Y2gvNjAxNTgwLwo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJv
+Y2stY2hpcHMuY29tPgo+Pj4gLS0tCj4+Pgo+Pj4gICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvcGh5L3JvY2tjaGlwLWVtbWMtcGh5LnR4dCB8IDQgKystLQo+Pj4gICBkcml2ZXJz
+L3BoeS9waHktcm9ja2NoaXAtZW1tYy5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDIg
+Ky0KPj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0p
+Cj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9w
+aHkvcm9ja2NoaXAtZW1tYy1waHkudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL3BoeS9yb2NrY2hpcC1lbW1jLXBoeS50eHQKPj4+IGluZGV4IDYxOTE2ZjEuLmVkOTY0ZWYg
+MTAwNjQ0Cj4+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3Jv
+Y2tjaGlwLWVtbWMtcGh5LnR4dAo+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL3BoeS9yb2NrY2hpcC1lbW1jLXBoeS50eHQKPj4+IEBAIC02LDcgKzYsNyBAQCBSZXF1
+aXJlZCBwcm9wZXJ0aWVzOgo+Pj4gICAgLSByb2NrY2hpcCxncmYgOiBwaGFuZGxlIHRvIHRoZSBz
+eXNjb24gbWFuYWdpbmcgdGhlICJnZW5lcmFsCj4+PiAgICAgIHJlZ2lzdGVyIGZpbGVzIgo+Pj4g
+ICAgLSAjcGh5LWNlbGxzOiBtdXN0IGJlIDAKPj4+IC0gLSByZWc6IFBIWSBjb25maWd1cmUgcmVn
+IGFkZHJlc3Mgb2Zmc2V0IGluICJnZW5lcmFsCj4+PiArIC0gcmVnX29mZnNldDogUEhZIGNvbmZp
+Z3VyZSByZWcgYWRkcmVzcyBvZmZzZXQgaW4gImdlbmVyYWwKPj4+ICAgICAgcmVnaXN0ZXIgZmls
+ZXMiCj4+Pgo+Pj4gICBFeGFtcGxlOgo+Pj4gQEAgLTE0LDYgKzE0LDYgQEAgRXhhbXBsZToKPj4+
+ICAgZW1tY3BoeTogcGh5IHsKPj4+ICAgCWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMzk5LWVt
+bWMtcGh5IjsKPj4+ICAgCXJvY2tjaGlwLGdyZiA9IDwmZ3JmPjsKPj4+IC0JcmVnID0gPDB4Zjc4
+MD47Cj4+PiArCXJlZ19vZmZzZXQgPSA8MHhmNzgwPjsKPj4+ICAgCSNwaHktY2VsbHMgPSA8MD47
+Cj4+PiAgIH07Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcGh5LXJvY2tjaGlwLWVtbWMu
+YyBiL2RyaXZlcnMvcGh5L3BoeS1yb2NrY2hpcC1lbW1jLmMKPj4+IGluZGV4IDg4N2I0YzIuLjNm
+NTVjMGQgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtZW1tYy5jCj4+
+PiArKysgYi9kcml2ZXJzL3BoeS9waHktcm9ja2NoaXAtZW1tYy5jCj4+PiBAQCAtMTg2LDcgKzE4
+Niw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZW1tY19waHlfcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldikKPj4+ICAgCWlmICghcmtfcGh5KQo+Pj4gICAJCXJldHVybiAtRU5PTUVN
+Owo+Pj4KPj4+IC0JaWYgKG9mX3Byb3BlcnR5X3JlYWRfdTMyKGRldi0+b2Zfbm9kZSwgInJlZyIs
+ICZyZWdfb2Zmc2V0KSkgewo+Pj4gKwlpZiAob2ZfcHJvcGVydHlfcmVhZF91MzIoZGV2LT5vZl9u
+b2RlLCAicmVnX29mZnNldCIsICZyZWdfb2Zmc2V0KSkgewo+Pj4gICAJCWRldl9lcnIoZGV2LCAi
+bWlzc2luZyByZWcgcHJvcGVydHkgaW4gbm9kZSAlc1xuIiwKPj4+ICAgCQkJZGV2LT5vZl9ub2Rl
+LT5uYW1lKTsKPj4+ICAgCQlyZXR1cm4gLUVJTlZBTDsKPj4+Cj4KPgo+CgoKLS0gCkJlc3QgUmVn
+YXJkcwpTaGF3biBMaW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
