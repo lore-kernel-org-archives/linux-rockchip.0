@@ -1,91 +1,136 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
- during disable
-Date: Fri, 8 Apr 2016 12:54:10 +0200
-Message-ID: <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
-References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
- <5707043D.6060706@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: configure the sdio pins' iomux mode
+Date: Fri, 08 Apr 2016 19:14:57 +0200
+Message-ID: <3304388.ZeDefZvcUO@phil>
+References: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5707043D.6060706@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1459931902-77324-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gOCBBcHJpbCAyMDE2IGF0IDAzOjA3LCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
-b20+IHdyb3RlOgo+IE9uIDIwMTblubQwNOaciDA25pelIDE4OjE0LCBUb21ldSBWaXpvc28gd3Jv
-dGU6Cj4KPiBXaGVuIGEgcGxhbmUgaXMgYmVpbmcgZGlzYWJsZWQgYnV0IGl0J3Mgc3RpbGwgZW5h
-YmxlZCwgZG8gY2hlY2sgaWYgdGhlCj4gcHJldmlvdXMgdXBkYXRlIGhhcyBiZWVuIGNvbXBsZXRl
-ZCBieSByZWFkaW5nIHlyZ2JfbXN0IGJhY2suCj4KPiBPdGhlcndpc2UsIHBlbmRpbmcgcGFnZWZs
-aXBzIHdvdWxkIHJlbWFpbiBwZW5kaW5nIGFmdGVyIGEgQ1JUQyBpcwo+IGRpc2FibGVkLgo+Cj4g
-U2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4K
-PiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDUg
-KysrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
-Pgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cC5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5k
-ZXggYTliMWU4YjVhYzg1Li5mNDZiMWZkMTg4N2IgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTA2NCw4ICsxMDY0LDkgQEAgc3RhdGlj
-IGJvb2wgdm9wX3dpbl9wZW5kaW5nX2lzX2NvbXBsZXRlKHN0cnVjdCB2b3Bfd2luCj4gKnZvcF93
-aW4pCj4gICBzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICpzdGF0ZSA9IHRvX3ZvcF9wbGFuZV9zdGF0
-ZShwbGFuZS0+c3RhdGUpOwo+ICAgZG1hX2FkZHJfdCB5cmdiX21zdDsKPgo+IC0gaWYgKCFzdGF0
-ZS0+ZW5hYmxlKQo+IC0gcmV0dXJuIFZPUF9XSU5fR0VUKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+
-ZGF0YSwgZW5hYmxlKSA9PSAwOwo+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4gKyAgICBWT1Bf
-V0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMCkKPiArIHJl
-dHVybiB0cnVlOwo+Cj4KPiBJdCBpcyB3cm9uZywgdGhlIHBhdGNoIHdvdWxkIGNhdXNlIGEgYnVn
-Lgo+Cj4gd2hlbiBzdGF0ZS0+ZW5hYmxlIGlzIDAsIGNoZWNrIHlyZ2JfbXN0ID09IHN0YXRlLT55
-cmdiX21zdCBhbHdheXMgYmUgdHJ1ZSwKPiBiZWNhdXNlIHN0YXRlLT55cmdiX21zdCBub3QgdXBk
-YXRlIG9uIHBsYW5lIGRpc2FibGVkIGZ1bnRpb24sIHRoYXQgd291bGQKPiBjYXVzZSBpb21tdSBj
-cmFzaC4KClNvcnJ5LCBidXQgSSBkb24ndCB1bmRlcnN0YW5kIHdoZXJlJ3MgdGhlIGJ1ZyBhbmQg
-d2hhdCBjb3VsZCBjYXVzZQp0aGF0IGNyYXNoLiBXaGF0IHRoZSBleGlzdGluZyBjb2RlIHdhcyBk
-b2luZyBpcyBzYXlpbmcgdGhhdCBhIHBhZ2VmbGlwCmV2ZW50IGlzIHN0aWxsIHBlbmRpbmcgaWYg
-d2UgaGF2ZSB0b2xkIHRoZSBwbGFuZSB0byBkaXNhYmxlIGJ1dCBmb3IKc29tZSByZWFzb24gaXQg
-aGFzbid0IHlldC4KCldpdGggdGhpcyBtb2RpZmljYXRpb24sIGlmIHdlIHJlYWQgYmFjayB0aGF0
-IGl0J3MgYWxyZWFkeSBkaXNhYmxlZCwgd2UKcmV0dXJuIHRydWUgYXMgYmVmb3JlLiBCdXQgaWYg
-d2UgcmVhZCBiYWNrIHRoYXQgaXQgaXNuJ3QgZGlzYWJsZWQgeWV0LAp0aGVuIHdlIHN0aWxsIGNo
-ZWNrIHRoZSBmYiBwb2ludGVycyBhbmQgY29tcGFyZSB0aGVtLgoKVGhlIGlvbW11IG1hcHBpbmcg
-aXMgcmVtb3ZlZCB3aGVuIHRoZSBfQ1JUQ18gaXMgZGlzYWJsZWQsIGFuZCB3aGF0CnRoaXMgc2Vy
-aWVzIGRvZXMgaXMgdG8gd2FpdCBmb3IgdGhlIHBlbmRpbmcgcGFnZWZsaXAgdG8gZmluaXNoIGJl
-Zm9yZQpjb25pdG51aW5nIHdpdGggQ1JUQyBkaXNhYmxlbWVudC4KCj4gQWJvdXQgcGVuZGluZyBw
-YWdlZmxpcHMgd291bGQgcmVtYWluIHBlbmRpbmcsIGNhbiB5b3UgIGRlc2NyaWJlIG1vcmUgaW5m
-bwo+IGFib3V0IGl0PyBJIHRoaW5rIHRob3NlIHBlbmRpbmcgcGFnZWZsaXBzIHNob3VsZCBiZSBp
-Z25vcmUgd2hlbiBDUlRDIGlzCj4gZGlzYWJsZWQuCgpXZWxsLCByaWdodCBub3cgaW4gcm9ja2No
-aXAtZHJtIHBlbmRpbmcgcGFnZWZsaXBzIHdvbid0IGJlIGlnbm9yZWQKd2hlbiBhIENSVEMgaXMg
-ZGlzYWJsZWQsIGJ1dCB3aWxsIGJlIGRlbGl2ZXJlZCB3aGVuIGl0J3MgcmUtZW5hYmxlZC4KCklm
-IHRoZXkgd291bGQgYmUgdG8gYmUgaWdub3JlZCAodW5kZXJzdGFuZGluZyB0aGF0IGFzIGRyb3Bw
-ZWQpLCB0aGF0CndvdWxkIHJlcXVpcmUgbW9kaWZpY2F0aW9ucyB0byBjbGllbnRzIHNvIHRoZXkg
-a2VlcCB0cmFjayBvZiB3aGljaCBmYnMKd2VyZSB1c2VkIGluIGEgcGFydGljdWxhciBjcnRjIGFu
-ZCBkZXN0cm95IHRoZW0gd2hlbiB0aGUgY3J0YyBpcwpkaXNhYmxlZCwgYnV0IHRoYXQgd291bGQg
-YmUgaW5jb3JyZWN0IHdoZW4gdXNpbmcgdGhlIGk5MTUgRFJNIGRyaXZlcgooSSBhbHNvIGFzc3Vt
-ZSBvdGhlcnMgZG8gdGhlIHNhbWUpLiBHaXZlbiB0aGF0IHRoZSBwYWdlZmxpcCBpb2N0bAppc24n
-dCBkcml2ZXItc3BlY2lmaWMsIEkgdGhpbmsgdGhlcmUgY2Fubm90IGJlIHN1Y2ggYSBkaWZmZXJl
-bmNlIGluCmJlaGF2aW9yIGJldHdlZW4gZHJpdmVycy4KCldpdGggdGhlIGN1cnJlbnQgYmVoYXZp
-b3IgKHBlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGJlaW5nIGRlbGF5ZWQgdW50aWwKdGhlIENSVEMg
-aXMgZW5hYmxlZCBhZ2FpbiksIGNvbXBvc2l0b3JzIGFuZCBvdGhlciBjbGllbnRzIHdpbGwgYmUK
-aG9sZGluZyBvbiB0byB0aGUgZmIgaW4gdGhlIHBlbmRpbmcgcGFnZWZsaXAgdW50aWwgYW4gYXJi
-aXRyYXJ5IHBvaW50CmluIHRoZSBmdXR1cmUgdGhhdCBtYXkgbm90IGV2ZXIgY29tZS4gVG8gbWUg
-dGhhdCBzb3VuZHMgbGlrZSBhIHNlcmlvdXMKbW9kaWZpY2F0aW9uIG9mIHRoZSBhc3N1bXB0aW9u
-cyBvbiBmYiBsaWZlY3ljbGUgdGhhdCBtaWdodCBub3QgYmUKd2FycmFudGVkLgoKU28gaW4gc3Vt
-bWFyeSwgZXZlbiBpZiBJIGhhdmVuJ3QgZm91bmQgYW55IGV4cGxpY2l0IGRvY3VtZW50YXRpb24g
-b24KdGhpcywgSSB0aGluayB0aGUgQUJJIGlzIHRoYXQgYW55IHBlbmRpbmcgcGFnZWZsaXBzIGFy
-ZSB0byBiZQpkZWxpdmVyZWQgd2hlbiB0aGF0IENSVEMgaXMgYmVpbmcgZGlzYWJsZWQgYW5kIG5v
-dCBsYXRlci4KClRoYW5rcywKClRvbWV1Cgo+IFRoYW5rcy4KPgo+Cj4gICB5cmdiX21zdCA9IFZP
-UF9XSU5fR0VUX1lSR0JBRERSKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSk7Cj4KPgo+Cj4g
-LS0KPiDvvK1hcmsgWWFvCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
-dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aS1kZXZlbAo=
+Hi,
+
+Am Mittwoch, 6. April 2016, 16:38:22 schrieb Sugar Zhang:
+> There are 3 i2s sdio pins, which iomux mode is as follows:
+> 
+>  - sdi3_sdo1
+>  - sdi2_sdo2
+>  - sdi1_sdo3
+> 
+> we need to configure these pins' iomux mode via the GRF register
+> when use multi channel playback/capture.
+> 
+> Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+>  .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 +++
+>  sound/soc/rockchip/rockchip_i2s.c                  | 39
+> +++++++++++++++++++++- sound/soc/rockchip/rockchip_i2s.h                 
+> |  8 +++++
+>  3 files changed, 51 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt index
+> 6e86d8a..ad72a7d 100644
+> --- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+> @@ -23,6 +23,11 @@ Required properties:
+>  - rockchip,playback-channels: max playback channels, if not set, 8
+> channels default. - rockchip,capture-channels: max capture channels, if
+> not set, 2 channels default.
+> 
+> +Required properties for controller which support multi channels
+> playback/capture: +
+> +- rockchip,grf: Should be phandle/offset pair. the phandle of the syscon
+> node for GRF register, +  and the offset of the GRF for control register.
+
+I think I'd like it more to use the generic grf-binding we always use 
+everwhere else (just the phandle without any offset) and keep the actual 
+offset in the driver on a per-soc basis.
+
+That way rockchip,grf stays consistent over all users.
+
+We already have the per-soc compatible values, so it should a easy to add a 
+.data element with the necessary offset-information.
+
+> +
+>  Example for rk3288 I2S controller:
+> 
+>  i2s@ff890000 {
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c
+> b/sound/soc/rockchip/rockchip_i2s.c index 2f8e204..bc72780 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+
+[...]
+
+> @@ -478,6 +504,18 @@ static int rockchip_i2s_probe(struct platform_device
+> *pdev) return -ENOMEM;
+>  	}
+> 
+> +	i2s->dev = &pdev->dev;
+> +
+> +	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
+> +	if (!IS_ERR(i2s->grf)) {
+> +		ret = of_property_read_u32_index(node, "rockchip,grf",
+> +						 1, &i2s->iocfg_reg);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "Can't get iocfg_reg offset\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+
+as said in the binding part, please use the generic grf handling and get the 
+io-offset from per-soc devicetree data in the driver itself.
+
+
+>  	/* try to prepare related clocks */
+>  	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
+>  	if (IS_ERR(i2s->hclk)) {
+> @@ -517,7 +555,6 @@ static int rockchip_i2s_probe(struct platform_device
+> *pdev) i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
+> i2s->capture_dma_data.maxburst = 4;
+> 
+> -	i2s->dev = &pdev->dev;
+>  	dev_set_drvdata(&pdev->dev, i2s);
+> 
+>  	pm_runtime_enable(&pdev->dev);
+> diff --git a/sound/soc/rockchip/rockchip_i2s.h
+> b/sound/soc/rockchip/rockchip_i2s.h index dc6e2c7..9a6aabf 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.h
+> +++ b/sound/soc/rockchip/rockchip_i2s.h
+> @@ -236,4 +236,12 @@ enum {
+>  #define I2S_TXDR	(0x0024)
+>  #define I2S_RXDR	(0x0028)
+> 
+> +/* io direction cfg register */
+> +#define I2S_IO_DIRECTION_SHIFT	11
+
+this setting is sitting in GRF_SOC_CON8 on the rk3399. That is part of the 
+very volatile register set where settings move around a lot for each soc.
+
+So if we're having the io-offset in per-soc data, we can easily put the 
+shift into it as well.
+
+> +#define I2S_IO_DIRECTION_MASK	(7 << I2S_IO_DIRECTION_SHIFT)
+> +#define I2S_IO_8CH_OUT_2CH_IN	(0 << I2S_IO_DIRECTION_SHIFT)
+> +#define I2S_IO_6CH_OUT_4CH_IN	(1 << I2S_IO_DIRECTION_SHIFT)
+> +#define I2S_IO_4CH_OUT_6CH_IN	(3 << I2S_IO_DIRECTION_SHIFT)
+> +#define I2S_IO_2CH_OUT_8CH_IN	(7 << I2S_IO_DIRECTION_SHIFT)
+
+Keep the settings without the shift here and do the shift dynamically with 
+the per-soc setting when changing the setting.
+
+
+Thanks
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
