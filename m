@@ -1,100 +1,91 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: [RFC 3/3] mfd: dt-bindings: Add RK818 device tree bindings document
-Date: Fri, 8 Apr 2016 11:47:41 +0200
-Message-ID: <1460108861-32818-4-git-send-email-w.egorov@phytec.de>
-References: <1460108861-32818-1-git-send-email-w.egorov@phytec.de>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
+ during disable
+Date: Fri, 8 Apr 2016 12:54:10 +0200
+Message-ID: <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+ <5707043D.6060706@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1460108861-32818-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5707043D.6060706@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for rockchip's RK818 pmic.
-
-Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 37 +++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 3 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 4ca6aab..8cceb07 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,7 +1,11 @@
--RK808 Power Management Integrated Circuit
-+RK8xx Power Management Integrated Circuit
-+
-+The rk8xx family current members:
-+rk808
-+rk818
- 
- Required properties:
--- compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk808", "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -13,6 +17,8 @@ Optional properties:
-   default output clock name
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
-+
-+Optional rk808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
- - vcc3-supply:  The input supply for DCDC_REG3
-@@ -29,7 +35,20 @@ Optional properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
- 
--Regulators: All the regulators of RK808 to be instantiated shall be
-+Optional rk818 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- boost-supply: The input supply for DCDC_BOOST
-+- vcc6-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc7-supply:  The input supply for LDO_REG3, LDO_REG5 and LDO_REG7
-+- vcc8-supply:  The input supply for LDO_REG4, LDO_REG6 and LDO_REG8
-+- vcc9-supply:  The input supply for LDO_REG9 and SWITCH_REG
-+- h_5v-supply:  The input supply for HDMI_SWITCH
-+- usb-supply:   The input supply for OTG_SWITCH
-+
-+Regulators: All the regulators of RK8xx to be instantiated shall be
- listed in a child node named 'regulators'. Each regulator is represented
- by a child node of the 'regulators' node.
- 
-@@ -48,6 +67,18 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
- 
-+Following regulators of the RK818 PMIC block are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK818 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9.
-+	- SWITCH_REG
-+	- HDMI_SWITCH
-+	- OTG_SWITCH
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
--- 
-1.9.1
+T24gOCBBcHJpbCAyMDE2IGF0IDAzOjA3LCBNYXJrIHlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+IHdyb3RlOgo+IE9uIDIwMTblubQwNOaciDA25pelIDE4OjE0LCBUb21ldSBWaXpvc28gd3Jv
+dGU6Cj4KPiBXaGVuIGEgcGxhbmUgaXMgYmVpbmcgZGlzYWJsZWQgYnV0IGl0J3Mgc3RpbGwgZW5h
+YmxlZCwgZG8gY2hlY2sgaWYgdGhlCj4gcHJldmlvdXMgdXBkYXRlIGhhcyBiZWVuIGNvbXBsZXRl
+ZCBieSByZWFkaW5nIHlyZ2JfbXN0IGJhY2suCj4KPiBPdGhlcndpc2UsIHBlbmRpbmcgcGFnZWZs
+aXBzIHdvdWxkIHJlbWFpbiBwZW5kaW5nIGFmdGVyIGEgQ1JUQyBpcwo+IGRpc2FibGVkLgo+Cj4g
+U2lnbmVkLW9mZi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4K
+PiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDUg
+KysrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkK
+Pgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4gaW5k
+ZXggYTliMWU4YjVhYzg1Li5mNDZiMWZkMTg4N2IgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPiBAQCAtMTA2NCw4ICsxMDY0LDkgQEAgc3RhdGlj
+IGJvb2wgdm9wX3dpbl9wZW5kaW5nX2lzX2NvbXBsZXRlKHN0cnVjdCB2b3Bfd2luCj4gKnZvcF93
+aW4pCj4gICBzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICpzdGF0ZSA9IHRvX3ZvcF9wbGFuZV9zdGF0
+ZShwbGFuZS0+c3RhdGUpOwo+ICAgZG1hX2FkZHJfdCB5cmdiX21zdDsKPgo+IC0gaWYgKCFzdGF0
+ZS0+ZW5hYmxlKQo+IC0gcmV0dXJuIFZPUF9XSU5fR0VUKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+
+ZGF0YSwgZW5hYmxlKSA9PSAwOwo+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4gKyAgICBWT1Bf
+V0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMCkKPiArIHJl
+dHVybiB0cnVlOwo+Cj4KPiBJdCBpcyB3cm9uZywgdGhlIHBhdGNoIHdvdWxkIGNhdXNlIGEgYnVn
+Lgo+Cj4gd2hlbiBzdGF0ZS0+ZW5hYmxlIGlzIDAsIGNoZWNrIHlyZ2JfbXN0ID09IHN0YXRlLT55
+cmdiX21zdCBhbHdheXMgYmUgdHJ1ZSwKPiBiZWNhdXNlIHN0YXRlLT55cmdiX21zdCBub3QgdXBk
+YXRlIG9uIHBsYW5lIGRpc2FibGVkIGZ1bnRpb24sIHRoYXQgd291bGQKPiBjYXVzZSBpb21tdSBj
+cmFzaC4KClNvcnJ5LCBidXQgSSBkb24ndCB1bmRlcnN0YW5kIHdoZXJlJ3MgdGhlIGJ1ZyBhbmQg
+d2hhdCBjb3VsZCBjYXVzZQp0aGF0IGNyYXNoLiBXaGF0IHRoZSBleGlzdGluZyBjb2RlIHdhcyBk
+b2luZyBpcyBzYXlpbmcgdGhhdCBhIHBhZ2VmbGlwCmV2ZW50IGlzIHN0aWxsIHBlbmRpbmcgaWYg
+d2UgaGF2ZSB0b2xkIHRoZSBwbGFuZSB0byBkaXNhYmxlIGJ1dCBmb3IKc29tZSByZWFzb24gaXQg
+aGFzbid0IHlldC4KCldpdGggdGhpcyBtb2RpZmljYXRpb24sIGlmIHdlIHJlYWQgYmFjayB0aGF0
+IGl0J3MgYWxyZWFkeSBkaXNhYmxlZCwgd2UKcmV0dXJuIHRydWUgYXMgYmVmb3JlLiBCdXQgaWYg
+d2UgcmVhZCBiYWNrIHRoYXQgaXQgaXNuJ3QgZGlzYWJsZWQgeWV0LAp0aGVuIHdlIHN0aWxsIGNo
+ZWNrIHRoZSBmYiBwb2ludGVycyBhbmQgY29tcGFyZSB0aGVtLgoKVGhlIGlvbW11IG1hcHBpbmcg
+aXMgcmVtb3ZlZCB3aGVuIHRoZSBfQ1JUQ18gaXMgZGlzYWJsZWQsIGFuZCB3aGF0CnRoaXMgc2Vy
+aWVzIGRvZXMgaXMgdG8gd2FpdCBmb3IgdGhlIHBlbmRpbmcgcGFnZWZsaXAgdG8gZmluaXNoIGJl
+Zm9yZQpjb25pdG51aW5nIHdpdGggQ1JUQyBkaXNhYmxlbWVudC4KCj4gQWJvdXQgcGVuZGluZyBw
+YWdlZmxpcHMgd291bGQgcmVtYWluIHBlbmRpbmcsIGNhbiB5b3UgIGRlc2NyaWJlIG1vcmUgaW5m
+bwo+IGFib3V0IGl0PyBJIHRoaW5rIHRob3NlIHBlbmRpbmcgcGFnZWZsaXBzIHNob3VsZCBiZSBp
+Z25vcmUgd2hlbiBDUlRDIGlzCj4gZGlzYWJsZWQuCgpXZWxsLCByaWdodCBub3cgaW4gcm9ja2No
+aXAtZHJtIHBlbmRpbmcgcGFnZWZsaXBzIHdvbid0IGJlIGlnbm9yZWQKd2hlbiBhIENSVEMgaXMg
+ZGlzYWJsZWQsIGJ1dCB3aWxsIGJlIGRlbGl2ZXJlZCB3aGVuIGl0J3MgcmUtZW5hYmxlZC4KCklm
+IHRoZXkgd291bGQgYmUgdG8gYmUgaWdub3JlZCAodW5kZXJzdGFuZGluZyB0aGF0IGFzIGRyb3Bw
+ZWQpLCB0aGF0CndvdWxkIHJlcXVpcmUgbW9kaWZpY2F0aW9ucyB0byBjbGllbnRzIHNvIHRoZXkg
+a2VlcCB0cmFjayBvZiB3aGljaCBmYnMKd2VyZSB1c2VkIGluIGEgcGFydGljdWxhciBjcnRjIGFu
+ZCBkZXN0cm95IHRoZW0gd2hlbiB0aGUgY3J0YyBpcwpkaXNhYmxlZCwgYnV0IHRoYXQgd291bGQg
+YmUgaW5jb3JyZWN0IHdoZW4gdXNpbmcgdGhlIGk5MTUgRFJNIGRyaXZlcgooSSBhbHNvIGFzc3Vt
+ZSBvdGhlcnMgZG8gdGhlIHNhbWUpLiBHaXZlbiB0aGF0IHRoZSBwYWdlZmxpcCBpb2N0bAppc24n
+dCBkcml2ZXItc3BlY2lmaWMsIEkgdGhpbmsgdGhlcmUgY2Fubm90IGJlIHN1Y2ggYSBkaWZmZXJl
+bmNlIGluCmJlaGF2aW9yIGJldHdlZW4gZHJpdmVycy4KCldpdGggdGhlIGN1cnJlbnQgYmVoYXZp
+b3IgKHBlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGJlaW5nIGRlbGF5ZWQgdW50aWwKdGhlIENSVEMg
+aXMgZW5hYmxlZCBhZ2FpbiksIGNvbXBvc2l0b3JzIGFuZCBvdGhlciBjbGllbnRzIHdpbGwgYmUK
+aG9sZGluZyBvbiB0byB0aGUgZmIgaW4gdGhlIHBlbmRpbmcgcGFnZWZsaXAgdW50aWwgYW4gYXJi
+aXRyYXJ5IHBvaW50CmluIHRoZSBmdXR1cmUgdGhhdCBtYXkgbm90IGV2ZXIgY29tZS4gVG8gbWUg
+dGhhdCBzb3VuZHMgbGlrZSBhIHNlcmlvdXMKbW9kaWZpY2F0aW9uIG9mIHRoZSBhc3N1bXB0aW9u
+cyBvbiBmYiBsaWZlY3ljbGUgdGhhdCBtaWdodCBub3QgYmUKd2FycmFudGVkLgoKU28gaW4gc3Vt
+bWFyeSwgZXZlbiBpZiBJIGhhdmVuJ3QgZm91bmQgYW55IGV4cGxpY2l0IGRvY3VtZW50YXRpb24g
+b24KdGhpcywgSSB0aGluayB0aGUgQUJJIGlzIHRoYXQgYW55IHBlbmRpbmcgcGFnZWZsaXBzIGFy
+ZSB0byBiZQpkZWxpdmVyZWQgd2hlbiB0aGF0IENSVEMgaXMgYmVpbmcgZGlzYWJsZWQgYW5kIG5v
+dCBsYXRlci4KClRoYW5rcywKClRvbWV1Cgo+IFRoYW5rcy4KPgo+Cj4gICB5cmdiX21zdCA9IFZP
+UF9XSU5fR0VUX1lSR0JBRERSKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSk7Cj4KPgo+Cj4g
+LS0KPiDvvK1hcmsgWWFvCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aS1kZXZlbAo=
