@@ -1,87 +1,43 @@
-From: Finlye Xiao <finley.xiao@rock-chips.com>
-Subject: [PATCH v1] clk: Add clk_composite_set_rate_and_parent
-Date: Mon, 11 Apr 2016 09:54:12 +0800
-Message-ID: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: remove redundant statement
+Date: Mon, 11 Apr 2016 10:52:33 +0800
+Message-ID: <570B1171.7040402@rock-chips.com>
+References: <1459864232-25033-1-git-send-email-john@metanate.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1459864232-25033-1-git-send-email-john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
-
-Some of Rockchip's clocks should consider the priority of .set_parent
-and .set_rate to prevent a too large temporary clock rate.
-
-For example, the gpu clock can be parented to cpll(750MHz) and
-usbphy_480m(480MHz), 375MHz comes from cpll and the div is set
-to 2, 480MHz comes from usbphy_480m and the div is set to 1.
-
-From the code, when change rate from 480MHz to 375MHz, it changes
-the gpu's parent from USBPHY_480M to cpll first(.set_parent), but the
-div value is still 1 and the gpu's rate will be 750MHz at the moment,
-then it changes the div value from 1 to 2(.set_rate) and the gpu's
-rate will be changed to 375MHz(480MHZ->750MHz->375MHz), here temporary
-rate is 750MHz, the voltage which supply for 480MHz certainly can not
-supply for 750MHz, so the gpu will crash.
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
----
- drivers/clk/clk-composite.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
-
-diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
-index 1f903e1f8..4d4b5ab 100644
---- a/drivers/clk/clk-composite.c
-+++ b/drivers/clk/clk-composite.c
-@@ -151,6 +151,33 @@ static int clk_composite_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return rate_ops->set_rate(rate_hw, rate, parent_rate);
- }
- 
-+static int clk_composite_set_rate_and_parent(struct clk_hw *hw,
-+					     unsigned long rate,
-+					     unsigned long parent_rate,
-+					     u8 index)
-+{
-+	struct clk_composite *composite = to_clk_composite(hw);
-+	const struct clk_ops *rate_ops = composite->rate_ops;
-+	const struct clk_ops *mux_ops = composite->mux_ops;
-+	struct clk_hw *rate_hw = composite->rate_hw;
-+	struct clk_hw *mux_hw = composite->mux_hw;
-+	unsigned long temp_rate;
-+
-+	__clk_hw_set_clk(rate_hw, hw);
-+	__clk_hw_set_clk(mux_hw, hw);
-+
-+	temp_rate = rate_ops->recalc_rate(rate_hw, parent_rate);
-+	if (temp_rate > rate) {
-+		rate_ops->set_rate(rate_hw, rate, parent_rate);
-+		mux_ops->set_parent(mux_hw, index);
-+	} else {
-+		mux_ops->set_parent(mux_hw, index);
-+		rate_ops->set_rate(rate_hw, rate, parent_rate);
-+	}
-+
-+	return 0;
-+}
-+
- static int clk_composite_is_enabled(struct clk_hw *hw)
- {
- 	struct clk_composite *composite = to_clk_composite(hw);
-@@ -250,6 +277,12 @@ struct clk *clk_register_composite(struct device *dev, const char *name,
- 		composite->rate_ops = rate_ops;
- 	}
- 
-+	if (mux_hw && mux_ops && rate_hw && rate_ops) {
-+		if (mux_ops->set_parent && rate_ops->set_rate)
-+			clk_composite_ops->set_rate_and_parent =
-+			clk_composite_set_rate_and_parent;
-+	}
-+
- 	if (gate_hw && gate_ops) {
- 		if (!gate_ops->is_enabled || !gate_ops->enable ||
- 		    !gate_ops->disable) {
--- 
-1.9.1
-
-
+T24gMjAxNuW5tDA05pyIMDXml6UgMjE6NTAsIEpvaG4gS2VlcGluZyB3cm90ZToKPiBUaGUgY2Fs
+bCB0byBhcm1faW9tbXVfZGV0YWNoX2RldmljZSgpIG9uIHRoZSBwcmV2aW91cyBsaW5lIHNldHMK
+PiBkZXYtPmFyY2hkYXRhLm1hcHBpbmcgdG8gTlVMTCBzbyB0aGlzIGNhbGwgaXMgYWx3YXlzIGEg
+bm8tb3AuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUuY29t
+Pgo+IC0tLQo+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8
+IDEgLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUv
+ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+IGluZGV4IGY1NTZhOGYuLjc2OTVjNzkg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBA
+QCAtMjQ0LDcgKzI0NCw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3VubG9hZChzdHJ1Y3Qg
+ZHJtX2RldmljZSAqZHJtX2RldikKPiAgIAlkcm1fa21zX2hlbHBlcl9wb2xsX2ZpbmkoZHJtX2Rl
+dik7Cj4gICAJY29tcG9uZW50X3VuYmluZF9hbGwoZGV2LCBkcm1fZGV2KTsKPiAgIAlhcm1faW9t
+bXVfZGV0YWNoX2RldmljZShkZXYpOwo+IC0JYXJtX2lvbW11X3JlbGVhc2VfbWFwcGluZyhkZXYt
+PmFyY2hkYXRhLm1hcHBpbmcpOwo+ICAgCWRybV9tb2RlX2NvbmZpZ19jbGVhbnVwKGRybV9kZXYp
+Owo+ICAgCWRybV9kZXYtPmRldl9wcml2YXRlID0gTlVMTDsKPiAgIApBcHBsaWVkIHRvIG15IGRy
+bS1maXhlcwoKVGhhbmtzLjotKQoKLS0gCu+8rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
