@@ -1,151 +1,87 @@
-From: sugar <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] ASoC: rockchip: i2s: configure the sdio pins' iomux mode
-Date: Mon, 11 Apr 2016 09:18:40 +0800
-Message-ID: <570AFB70.8040003@rock-chips.com>
-References: <1459931902-77324-1-git-send-email-sugar.zhang@rock-chips.com>
- <3304388.ZeDefZvcUO@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3304388.ZeDefZvcUO@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Finlye Xiao <finley.xiao@rock-chips.com>
+Subject: [PATCH v1] clk: Add clk_composite_set_rate_and_parent
+Date: Mon, 11 Apr 2016 09:54:12 +0800
+Message-ID: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-Got it, thanks for your advice, these will be done in next version.
+Some of Rockchip's clocks should consider the priority of .set_parent
+and .set_rate to prevent a too large temporary clock rate.
 
-On 4/9/2016 01:14, Heiko Stuebner Wrote:
-> Hi,
->
-> Am Mittwoch, 6. April 2016, 16:38:22 schrieb Sugar Zhang:
->> There are 3 i2s sdio pins, which iomux mode is as follows:
->>
->>   - sdi3_sdo1
->>   - sdi2_sdo2
->>   - sdi1_sdo3
->>
->> we need to configure these pins' iomux mode via the GRF register
->> when use multi channel playback/capture.
->>
->> Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>   .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 +++
->>   sound/soc/rockchip/rockchip_i2s.c                  | 39
->> +++++++++++++++++++++- sound/soc/rockchip/rockchip_i2s.h
->> |  8 +++++
->>   3 files changed, 51 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
->> b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt index
->> 6e86d8a..ad72a7d 100644
->> --- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
->> +++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
->> @@ -23,6 +23,11 @@ Required properties:
->>   - rockchip,playback-channels: max playback channels, if not set, 8
->> channels default. - rockchip,capture-channels: max capture channels, if
->> not set, 2 channels default.
->>
->> +Required properties for controller which support multi channels
->> playback/capture: +
->> +- rockchip,grf: Should be phandle/offset pair. the phandle of the syscon
->> node for GRF register, +  and the offset of the GRF for control register.
->
-> I think I'd like it more to use the generic grf-binding we always use
-> everwhere else (just the phandle without any offset) and keep the actual
-> offset in the driver on a per-soc basis.
->
-> That way rockchip,grf stays consistent over all users.
->
-> We already have the per-soc compatible values, so it should a easy to add a
-> .data element with the necessary offset-information.
->
->> +
->>   Example for rk3288 I2S controller:
->>
->>   i2s@ff890000 {
->> diff --git a/sound/soc/rockchip/rockchip_i2s.c
->> b/sound/soc/rockchip/rockchip_i2s.c index 2f8e204..bc72780 100644
->> --- a/sound/soc/rockchip/rockchip_i2s.c
->> +++ b/sound/soc/rockchip/rockchip_i2s.c
->
-> [...]
->
->> @@ -478,6 +504,18 @@ static int rockchip_i2s_probe(struct platform_device
->> *pdev) return -ENOMEM;
->>   	}
->>
->> +	i2s->dev = &pdev->dev;
->> +
->> +	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
->> +	if (!IS_ERR(i2s->grf)) {
->> +		ret = of_property_read_u32_index(node, "rockchip,grf",
->> +						 1, &i2s->iocfg_reg);
->> +		if (ret) {
->> +			dev_err(&pdev->dev, "Can't get iocfg_reg offset\n");
->> +			return ret;
->> +		}
->> +	}
->> +
->
-> as said in the binding part, please use the generic grf handling and get the
-> io-offset from per-soc devicetree data in the driver itself.
->
->
->>   	/* try to prepare related clocks */
->>   	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
->>   	if (IS_ERR(i2s->hclk)) {
->> @@ -517,7 +555,6 @@ static int rockchip_i2s_probe(struct platform_device
->> *pdev) i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
->> i2s->capture_dma_data.maxburst = 4;
->>
->> -	i2s->dev = &pdev->dev;
->>   	dev_set_drvdata(&pdev->dev, i2s);
->>
->>   	pm_runtime_enable(&pdev->dev);
->> diff --git a/sound/soc/rockchip/rockchip_i2s.h
->> b/sound/soc/rockchip/rockchip_i2s.h index dc6e2c7..9a6aabf 100644
->> --- a/sound/soc/rockchip/rockchip_i2s.h
->> +++ b/sound/soc/rockchip/rockchip_i2s.h
->> @@ -236,4 +236,12 @@ enum {
->>   #define I2S_TXDR	(0x0024)
->>   #define I2S_RXDR	(0x0028)
->>
->> +/* io direction cfg register */
->> +#define I2S_IO_DIRECTION_SHIFT	11
->
-> this setting is sitting in GRF_SOC_CON8 on the rk3399. That is part of the
-> very volatile register set where settings move around a lot for each soc.
->
-> So if we're having the io-offset in per-soc data, we can easily put the
-> shift into it as well.
->
->> +#define I2S_IO_DIRECTION_MASK	(7 << I2S_IO_DIRECTION_SHIFT)
->> +#define I2S_IO_8CH_OUT_2CH_IN	(0 << I2S_IO_DIRECTION_SHIFT)
->> +#define I2S_IO_6CH_OUT_4CH_IN	(1 << I2S_IO_DIRECTION_SHIFT)
->> +#define I2S_IO_4CH_OUT_6CH_IN	(3 << I2S_IO_DIRECTION_SHIFT)
->> +#define I2S_IO_2CH_OUT_8CH_IN	(7 << I2S_IO_DIRECTION_SHIFT)
->
-> Keep the settings without the shift here and do the shift dynamically with
-> the per-soc setting when changing the setting.
->
->
-> Thanks
-> Heiko
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
+For example, the gpu clock can be parented to cpll(750MHz) and
+usbphy_480m(480MHz), 375MHz comes from cpll and the div is set
+to 2, 480MHz comes from usbphy_480m and the div is set to 1.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+From the code, when change rate from 480MHz to 375MHz, it changes
+the gpu's parent from USBPHY_480M to cpll first(.set_parent), but the
+div value is still 1 and the gpu's rate will be 750MHz at the moment,
+then it changes the div value from 1 to 2(.set_rate) and the gpu's
+rate will be changed to 375MHz(480MHZ->750MHz->375MHz), here temporary
+rate is 750MHz, the voltage which supply for 480MHz certainly can not
+supply for 750MHz, so the gpu will crash.
+
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+---
+ drivers/clk/clk-composite.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
+index 1f903e1f8..4d4b5ab 100644
+--- a/drivers/clk/clk-composite.c
++++ b/drivers/clk/clk-composite.c
+@@ -151,6 +151,33 @@ static int clk_composite_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	return rate_ops->set_rate(rate_hw, rate, parent_rate);
+ }
+ 
++static int clk_composite_set_rate_and_parent(struct clk_hw *hw,
++					     unsigned long rate,
++					     unsigned long parent_rate,
++					     u8 index)
++{
++	struct clk_composite *composite = to_clk_composite(hw);
++	const struct clk_ops *rate_ops = composite->rate_ops;
++	const struct clk_ops *mux_ops = composite->mux_ops;
++	struct clk_hw *rate_hw = composite->rate_hw;
++	struct clk_hw *mux_hw = composite->mux_hw;
++	unsigned long temp_rate;
++
++	__clk_hw_set_clk(rate_hw, hw);
++	__clk_hw_set_clk(mux_hw, hw);
++
++	temp_rate = rate_ops->recalc_rate(rate_hw, parent_rate);
++	if (temp_rate > rate) {
++		rate_ops->set_rate(rate_hw, rate, parent_rate);
++		mux_ops->set_parent(mux_hw, index);
++	} else {
++		mux_ops->set_parent(mux_hw, index);
++		rate_ops->set_rate(rate_hw, rate, parent_rate);
++	}
++
++	return 0;
++}
++
+ static int clk_composite_is_enabled(struct clk_hw *hw)
+ {
+ 	struct clk_composite *composite = to_clk_composite(hw);
+@@ -250,6 +277,12 @@ struct clk *clk_register_composite(struct device *dev, const char *name,
+ 		composite->rate_ops = rate_ops;
+ 	}
+ 
++	if (mux_hw && mux_ops && rate_hw && rate_ops) {
++		if (mux_ops->set_parent && rate_ops->set_rate)
++			clk_composite_ops->set_rate_and_parent =
++			clk_composite_set_rate_and_parent;
++	}
++
+ 	if (gate_hw && gate_ops) {
+ 		if (!gate_ops->is_enabled || !gate_ops->enable ||
+ 		    !gate_ops->disable) {
+-- 
+1.9.1
+
+
