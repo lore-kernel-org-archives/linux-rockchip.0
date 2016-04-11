@@ -1,64 +1,104 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC 2/3] regulator: rk808: Add support for rk818
-Date: Sun, 10 Apr 2016 20:04:41 +0100
-Message-ID: <20160410190441.GC18319@sirena.org.uk>
-References: <1460108861-32818-1-git-send-email-w.egorov@phytec.de>
- <1460108861-32818-3-git-send-email-w.egorov@phytec.de>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
+ during disable
+Date: Mon, 11 Apr 2016 09:15:46 +0800
+Message-ID: <570AFAC2.8080907@rock-chips.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+ <5707043D.6060706@rock-chips.com>
+ <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="1SQmhf2mF2YjsYvc"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1460108861-32818-3-git-send-email-w.egorov@phytec.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, dianders@chromium.org, zyw@rock-chips.com
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---1SQmhf2mF2YjsYvc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Apr 08, 2016 at 11:47:40AM +0200, Wadim Egorov wrote:
-
-> +static const struct regulator_linear_range rk818_buck4_voltage_ranges[] = {
-> +	REGULATOR_LINEAR_RANGE(1800000, 0, 18, 100000),
-> +};
-> +
-> +static const struct regulator_linear_range rk818_boost_voltage_ranges[] = {
-> +	REGULATOR_LINEAR_RANGE(4700000, 0, 7, 100000),
-> +};
-
-Why are these done as linear ranges when there's only one range?  This
-just adds overhead, just specify the one range directly in the desc and
-use the appropriate ops.
-
-> +	if (rk808->variant == RK808_ID)
-> +		ret = of_regulator_match(dev, np, rk808_reg_matches,
-> +					 RK808_NUM_REGULATORS);
-> +	else if (rk808->variant == RK818_ID)
-> +		ret = of_regulator_match(dev, np, rk818_reg_matches,
-> +					RK818_NUM_REGULATORS);
-
-Don't use of_regulator_match, just specify the DT names for the
-regulator in the desc.  Also it looks like you're trying to write a
-switch statement with ifs here, just write a switch statement.  It's
-clearer and less error prone.
-
---1SQmhf2mF2YjsYvc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXCqPIAAoJECTWi3JdVIfQPGYH/A/ZgJZAnQYrDnJ+wHU8PzK7
-aaPM3HoGSJ2bsY5f4NXBd7JeKirjBSrehLNXxKzgGjcVT644msQ88je5Pdu5OH6L
-jyqOrW24TUv8eUA1xLh4/RRUSoIjTtVdGJOz3IdTZ88WJGYkXu7dhnR/8hejd3pk
-uU5lL0RSlD/1pM0mH9bfZSjqYcQZnzuNCZF29Cx/QbzaPeSgwcduBE6xLveeiIaQ
-Xb32MLaajRz+P4XrIRlabIXx5LiL0WWFbhRkFmJ47dCz0xutbQNgwnYq5WFwCOJE
-lMZRiH8uO93BGqkTobY9KoOBw8RklpIy3+2eSRNxwcdZdUaU5xls7NQ0cUW31x0=
-=FpIx
------END PGP SIGNATURE-----
-
---1SQmhf2mF2YjsYvc--
+T24gMjAxNuW5tDA05pyIMDjml6UgMTg6NTQsIFRvbWV1IFZpem9zbyB3cm90ZToKPiBPbiA4IEFw
+cmlsIDIwMTYgYXQgMDM6MDcsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3Jv
+dGU6Cj4+IE9uIDIwMTblubQwNOaciDA25pelIDE4OjE0LCBUb21ldSBWaXpvc28gd3JvdGU6Cj4+
+Cj4+IFdoZW4gYSBwbGFuZSBpcyBiZWluZyBkaXNhYmxlZCBidXQgaXQncyBzdGlsbCBlbmFibGVk
+LCBkbyBjaGVjayBpZiB0aGUKPj4gcHJldmlvdXMgdXBkYXRlIGhhcyBiZWVuIGNvbXBsZXRlZCBi
+eSByZWFkaW5nIHlyZ2JfbXN0IGJhY2suCj4+Cj4+IE90aGVyd2lzZSwgcGVuZGluZyBwYWdlZmxp
+cHMgd291bGQgcmVtYWluIHBlbmRpbmcgYWZ0ZXIgYSBDUlRDIGlzCj4+IGRpc2FibGVkLgo+Pgo+
+PiBTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29t
+Pgo+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
+IHwgNSArKystLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDIgZGVsZXRp
+b25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jCj4+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92
+b3AuYwo+PiBpbmRleCBhOWIxZThiNWFjODUuLmY0NmIxZmQxODg3YiAxMDA2NDQKPj4gLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+PiArKysgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IEBAIC0xMDY0LDggKzEw
+NjQsOSBAQCBzdGF0aWMgYm9vbCB2b3Bfd2luX3BlbmRpbmdfaXNfY29tcGxldGUoc3RydWN0IHZv
+cF93aW4KPj4gKnZvcF93aW4pCj4+ICAgIHN0cnVjdCB2b3BfcGxhbmVfc3RhdGUgKnN0YXRlID0g
+dG9fdm9wX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7Cj4+ICAgIGRtYV9hZGRyX3QgeXJnYl9t
+c3Q7Cj4+Cj4+IC0gaWYgKCFzdGF0ZS0+ZW5hYmxlKQo+PiAtIHJldHVybiBWT1BfV0lOX0dFVCh2
+b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMDsKPj4gKyBpZiAoIXN0YXRl
+LT5lbmFibGUgJiYKPj4gKyAgICBWT1BfV0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRh
+dGEsIGVuYWJsZSkgPT0gMCkKPj4gKyByZXR1cm4gdHJ1ZTsKPj4KPj4KPj4gSXQgaXMgd3Jvbmcs
+IHRoZSBwYXRjaCB3b3VsZCBjYXVzZSBhIGJ1Zy4KPj4KPj4gd2hlbiBzdGF0ZS0+ZW5hYmxlIGlz
+IDAsIGNoZWNrIHlyZ2JfbXN0ID09IHN0YXRlLT55cmdiX21zdCBhbHdheXMgYmUgdHJ1ZSwKPj4g
+YmVjYXVzZSBzdGF0ZS0+eXJnYl9tc3Qgbm90IHVwZGF0ZSBvbiBwbGFuZSBkaXNhYmxlZCBmdW50
+aW9uLCB0aGF0IHdvdWxkCj4+IGNhdXNlIGlvbW11IGNyYXNoLgo+IFNvcnJ5LCBidXQgSSBkb24n
+dCB1bmRlcnN0YW5kIHdoZXJlJ3MgdGhlIGJ1ZyBhbmQgd2hhdCBjb3VsZCBjYXVzZQo+IHRoYXQg
+Y3Jhc2guIFdoYXQgdGhlIGV4aXN0aW5nIGNvZGUgd2FzIGRvaW5nIGlzIHNheWluZyB0aGF0IGEg
+cGFnZWZsaXAKPiBldmVudCBpcyBzdGlsbCBwZW5kaW5nIGlmIHdlIGhhdmUgdG9sZCB0aGUgcGxh
+bmUgdG8gZGlzYWJsZSBidXQgZm9yCj4gc29tZSByZWFzb24gaXQgaGFzbid0IHlldC4KPgo+IFdp
+dGggdGhpcyBtb2RpZmljYXRpb24sIGlmIHdlIHJlYWQgYmFjayB0aGF0IGl0J3MgYWxyZWFkeSBk
+aXNhYmxlZCwgd2UKPiByZXR1cm4gdHJ1ZSBhcyBiZWZvcmUuIEJ1dCBpZiB3ZSByZWFkIGJhY2sg
+dGhhdCBpdCBpc24ndCBkaXNhYmxlZCB5ZXQsCj4gdGhlbiB3ZSBzdGlsbCBjaGVjayB0aGUgZmIg
+cG9pbnRlcnMgYW5kIGNvbXBhcmUgdGhlbS4KPgo+IFRoZSBpb21tdSBtYXBwaW5nIGlzIHJlbW92
+ZWQgd2hlbiB0aGUgX0NSVENfIGlzIGRpc2FibGVkLCBhbmQgd2hhdAo+IHRoaXMgc2VyaWVzIGRv
+ZXMgaXMgdG8gd2FpdCBmb3IgdGhlIHBlbmRpbmcgcGFnZWZsaXAgdG8gZmluaXNoIGJlZm9yZQo+
+IGNvbml0bnVpbmcgd2l0aCBDUlRDIGRpc2FibGVtZW50LgoKdGhlIGlvbW11IG1hcHBpbmcgd2ls
+bCB1bm1hcCBhZnRlciBwbGFuZSBkaXNhYmxlZCwgd2UgbmVlZCBzdXJlIHRoYXQgdGhlIApwbGFu
+ZSByZWFsbHkgZGlzYWJsZWQgYmVmb3JlIHVubWFwLCBpZiBub3QsIHRoZSB1bm1hcCBtYXkgY2Fs
+bCBiZWZvcmUgCnBsYW5lIHJlYWxseSBkaXNhYmxlLCB2b3AgbWF5IGFjY2VzcyB1bm1hcCBhZGRy
+ZXNzLCB0aGVuIHdvdWxkIGdldCBpb21tdSAKcGFnZSBmYXVsdC4KCj4+IEFib3V0IHBlbmRpbmcg
+cGFnZWZsaXBzIHdvdWxkIHJlbWFpbiBwZW5kaW5nLCBjYW4geW91ICBkZXNjcmliZSBtb3JlIGlu
+Zm8KPj4gYWJvdXQgaXQ/IEkgdGhpbmsgdGhvc2UgcGVuZGluZyBwYWdlZmxpcHMgc2hvdWxkIGJl
+IGlnbm9yZSB3aGVuIENSVEMgaXMKPj4gZGlzYWJsZWQuCj4gV2VsbCwgcmlnaHQgbm93IGluIHJv
+Y2tjaGlwLWRybSBwZW5kaW5nIHBhZ2VmbGlwcyB3b24ndCBiZSBpZ25vcmVkCj4gd2hlbiBhIENS
+VEMgaXMgZGlzYWJsZWQsIGJ1dCB3aWxsIGJlIGRlbGl2ZXJlZCB3aGVuIGl0J3MgcmUtZW5hYmxl
+ZC4KPgo+IElmIHRoZXkgd291bGQgYmUgdG8gYmUgaWdub3JlZCAodW5kZXJzdGFuZGluZyB0aGF0
+IGFzIGRyb3BwZWQpLCB0aGF0Cj4gd291bGQgcmVxdWlyZSBtb2RpZmljYXRpb25zIHRvIGNsaWVu
+dHMgc28gdGhleSBrZWVwIHRyYWNrIG9mIHdoaWNoIGZicwo+IHdlcmUgdXNlZCBpbiBhIHBhcnRp
+Y3VsYXIgY3J0YyBhbmQgZGVzdHJveSB0aGVtIHdoZW4gdGhlIGNydGMgaXMKPiBkaXNhYmxlZCwg
+YnV0IHRoYXQgd291bGQgYmUgaW5jb3JyZWN0IHdoZW4gdXNpbmcgdGhlIGk5MTUgRFJNIGRyaXZl
+cgo+IChJIGFsc28gYXNzdW1lIG90aGVycyBkbyB0aGUgc2FtZSkuIEdpdmVuIHRoYXQgdGhlIHBh
+Z2VmbGlwIGlvY3RsCj4gaXNuJ3QgZHJpdmVyLXNwZWNpZmljLCBJIHRoaW5rIHRoZXJlIGNhbm5v
+dCBiZSBzdWNoIGEgZGlmZmVyZW5jZSBpbgo+IGJlaGF2aW9yIGJldHdlZW4gZHJpdmVycy4KPgo+
+IFdpdGggdGhlIGN1cnJlbnQgYmVoYXZpb3IgKHBlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGJlaW5n
+IGRlbGF5ZWQgdW50aWwKPiB0aGUgQ1JUQyBpcyBlbmFibGVkIGFnYWluKSwgY29tcG9zaXRvcnMg
+YW5kIG90aGVyIGNsaWVudHMgd2lsbCBiZQo+IGhvbGRpbmcgb24gdG8gdGhlIGZiIGluIHRoZSBw
+ZW5kaW5nIHBhZ2VmbGlwIHVudGlsIGFuIGFyYml0cmFyeSBwb2ludAo+IGluIHRoZSBmdXR1cmUg
+dGhhdCBtYXkgbm90IGV2ZXIgY29tZS4gVG8gbWUgdGhhdCBzb3VuZHMgbGlrZSBhIHNlcmlvdXMK
+PiBtb2RpZmljYXRpb24gb2YgdGhlIGFzc3VtcHRpb25zIG9uIGZiIGxpZmVjeWNsZSB0aGF0IG1p
+Z2h0IG5vdCBiZQo+IHdhcnJhbnRlZC4KPgo+IFNvIGluIHN1bW1hcnksIGV2ZW4gaWYgSSBoYXZl
+bid0IGZvdW5kIGFueSBleHBsaWNpdCBkb2N1bWVudGF0aW9uIG9uCj4gdGhpcywgSSB0aGluayB0
+aGUgQUJJIGlzIHRoYXQgYW55IHBlbmRpbmcgcGFnZWZsaXBzIGFyZSB0byBiZQo+IGRlbGl2ZXJl
+ZCB3aGVuIHRoYXQgQ1JUQyBpcyBiZWluZyBkaXNhYmxlZCBhbmQgbm90IGxhdGVyLgoKb24gZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCgpkcm1fYXRvbWljX2hlbHBl
+cl9jb21taXRfcGxhbmVzKGRldiwgc3RhdGUsIHRydWUpOwpyb2NrY2hpcF9hdG9taWNfd2FpdF9m
+b3JfY29tcGxldGUoZGV2LCBzdGF0ZSk7CgpXZSBzZXQgYWN0aXZlX29ubHkgPSB0cnVlLCBJIHRo
+aW5rIHBsYW5lcyBjYW4gb25seSB1cGRhdGUgd2hlbiBjcnRjIGlzIAphY3RpdmUuIGFuZCByb2Nr
+Y2hpcF9hdG9taWNfd2FpdF9mb3JfY29tcGxldGUgb25seSB3YWl0IHdoZW4gY3J0YyBpcyBhY3Rp
+dmUuCgpUaGFua3MuCj4gVGhhbmtzLAo+Cj4gVG9tZXUKPgo+PiBUaGFua3MuCj4+Cj4+Cj4+ICAg
+IHlyZ2JfbXN0ID0gVk9QX1dJTl9HRVRfWVJHQkFERFIodm9wX3dpbi0+dm9wLCB2b3Bfd2luLT5k
+YXRhKTsKPj4KPj4KPj4KPj4gLS0KPj4g77ytYXJrIFlhbwo+Pgo+Pgo+PiBfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0Cj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPj4gaHR0cHM6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwKPj4KPgo+CgoKLS0gCu+8
+rWFyayBZYW8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
