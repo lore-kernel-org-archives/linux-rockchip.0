@@ -1,91 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.7 part 1
-Date: Tue, 12 Apr 2016 08:38:11 +0200
-Message-ID: <1640921.TBVHP9NGjj@phil>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v5 30/46] regulator: pwm: retrieve correct voltage
+Date: Tue, 12 Apr 2016 10:37:22 +0200
+Message-ID: <20160412103722.0bfe1d4d@bbrezillon>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+	<1459368249-13241-31-git-send-email-boris.brezillon@free-electrons.com>
+	<20160330212410.GX2350@sirena.org.uk>
+	<20160407235431.788dc24a@bbrezillon>
+	<20160412044203.GW3351@sirena.org.uk>
+Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBRPHWK4AKGQE5ZF4KBA-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+In-Reply-To: <20160412044203.GW3351-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>Lee Jones <l>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Mark,
 
-please find below clock changes for 4.7. As the tag explains it is mainly
-the rk3399 support + necessary plumbing.
+On Tue, 12 Apr 2016 05:42:03 +0100
+Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 
-So if it looks ok, please pull.
+> On Thu, Apr 07, 2016 at 11:54:31PM +0200, Boris Brezillon wrote:
+> 
+> > Is there any reason for calling set_machine_constraints() after
+> > device_register() in regulator_register()?
+> 
+> I'm not sure there's a strong one, we don't really use the class device
+> for anything, but without doing a full audit I couldn't guarantee that.
 
+At first glance I don't see any problem (even the rdev_err/info/...()
+functions do not use dev_err/info/...()). The patch will be part of v6
+(unless you want me to send it independently).
 
-Thanks
-Heiko
+Thanks,
 
-The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
+Boris
 
-  Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk1
-
-for you to fetch changes up to 115510053e5e5872f1f19a2220b04aab5542c5c4:
-
-  clk: rockchip: add clock controller for the RK3399 (2016-03-28 14:57:07 +0200)
-
-----------------------------------------------------------------
-This is first big chunk of Rockchip clock-related changes for 4.7.
-
-Main change is probably the added support for the new rk3399 soc
-and necessary infrastructure changes surrounding it.
-
-The biggest chunk is probably that clock code is now able to
-handle multiple clock providers in one system, as the rk3399
-has two of those. A general one and another smaller one in a
-separate power domain. The rk3399 also uses another new pll type.
-Thankfully it just fits nicely into our current structure.
-It also needs some parts like the cpuclk mux parameters to be
-a bit more flexible and an new fractional divider subtype without
-gate.
-
-Apart from this big change we have some more fixes and removal
-of forgotten variables.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      Merge branch 'v4.7-shared/clkids' into v4.7-clk/next
-
-Shawn Lin (4):
-      clk: rockchip: remove mux_core_reg from rockchip_cpuclk_reg_data
-      clk: rockchip: fix warning reported by kernel-doc
-      clk: rockchip: remove redundant checking of device_node
-      clk: rockchip: release io resource when failing to init clk
-
-Xing Zheng (7):
-      clk: rockchip: add a COMPOSITE_FRACMUX_NOGATE type
-      clk: rockchip: allow varying mux parameters for cpuclk pll-sources
-      clk: rockchip: Add support for multiple clock providers
-      clk: rockchip: add new pll-type for rk3399 and similar socs
-      clk: rockchip: add dt-binding header for rk3399
-      dt-bindings: add bindings for rk3399 clock controller
-      clk: rockchip: add clock controller for the RK3399
-
- .../bindings/clock/rockchip,rk3399-cru.txt         |   62 +
- drivers/clk/rockchip/Makefile                      |    1 +
- drivers/clk/rockchip/clk-cpu.c                     |   29 +-
- drivers/clk/rockchip/clk-pll.c                     |  301 +++-
- drivers/clk/rockchip/clk-rk3036.c                  |   21 +-
- drivers/clk/rockchip/clk-rk3188.c                  |   51 +-
- drivers/clk/rockchip/clk-rk3228.c                  |   21 +-
- drivers/clk/rockchip/clk-rk3288.c                  |   23 +-
- drivers/clk/rockchip/clk-rk3368.c                  |   28 +-
- drivers/clk/rockchip/clk-rk3399.c                  | 1540 ++++++++++++++++++++
- drivers/clk/rockchip/clk.c                         |  146 +-
- drivers/clk/rockchip/clk.h                         |  106 +-
- include/dt-bindings/clock/rk3399-cru.h             |  752 ++++++++++
- 13 files changed, 2945 insertions(+), 136 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk3399.c
- create mode 100644 include/dt-bindings/clock/rk3399-cru.h
-
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
