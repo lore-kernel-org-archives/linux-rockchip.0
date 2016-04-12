@@ -1,50 +1,90 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v5 30/46] regulator: pwm: retrieve correct voltage
-Date: Tue, 12 Apr 2016 10:37:22 +0200
-Message-ID: <20160412103722.0bfe1d4d@bbrezillon>
-References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
-	<1459368249-13241-31-git-send-email-boris.brezillon@free-electrons.com>
-	<20160330212410.GX2350@sirena.org.uk>
-	<20160407235431.788dc24a@bbrezillon>
-	<20160412044203.GW3351@sirena.org.uk>
-Reply-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-sunxi+bncBCIPJ6FA2QLBBRPHWK4AKGQE5ZF4KBA-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
-In-Reply-To: <20160412044203.GW3351-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Archive: <https://groups.google.com/group/linux-sunxi
-List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
-List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
- <https://groups.google.com/group/linux-sunxi/subscribe>
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>Lee Jones <l>
+From: Finlye Xiao <finley.xiao@rock-chips.com>
+Subject: [PATCH v2] clk: Add clk_composite_set_rate_and_parent
+Date: Tue, 12 Apr 2016 16:43:39 +0800
+Message-ID: <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
+References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mark,
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-On Tue, 12 Apr 2016 05:42:03 +0100
-Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+When changing the clock-rate, currently a new parent is set first and a
+divider adapted thereafter. This may result in the clock-rate overflowing
+its target rate for a short time if the new parent has a higher rate than
+the old parent.
 
-> On Thu, Apr 07, 2016 at 11:54:31PM +0200, Boris Brezillon wrote:
-> 
-> > Is there any reason for calling set_machine_constraints() after
-> > device_register() in regulator_register()?
-> 
-> I'm not sure there's a strong one, we don't really use the class device
-> for anything, but without doing a full audit I couldn't guarantee that.
+While this often doesn't produce negative effects, it can affect components
+in a voltage-scaling environment, like the GPU on the rk3399 socs, where
+the voltage than simply is to low for the temporarily to high clock rate.
 
-At first glance I don't see any problem (even the rdev_err/info/...()
-functions do not use dev_err/info/...()). The patch will be part of v6
-(unless you want me to send it independently).
+For general clock hirarchies this may need more extensive adaptions to
+the common clock-framework, but at least for composite clocks having
+both parent and rate settings it is easy to create a short-term solution to
+make sure the clock-rate does not overflow the target.
 
-Thanks,
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+v1->v2:
+- change the commit message
 
-Boris
+ drivers/clk/clk-composite.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
+diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
+index 1f903e1f8..4d4b5ab 100644
+--- a/drivers/clk/clk-composite.c
++++ b/drivers/clk/clk-composite.c
+@@ -151,6 +151,33 @@ static int clk_composite_set_rate(struct clk_hw *hw, unsigned long rate,
+ 	return rate_ops->set_rate(rate_hw, rate, parent_rate);
+ }
+ 
++static int clk_composite_set_rate_and_parent(struct clk_hw *hw,
++					     unsigned long rate,
++					     unsigned long parent_rate,
++					     u8 index)
++{
++	struct clk_composite *composite = to_clk_composite(hw);
++	const struct clk_ops *rate_ops = composite->rate_ops;
++	const struct clk_ops *mux_ops = composite->mux_ops;
++	struct clk_hw *rate_hw = composite->rate_hw;
++	struct clk_hw *mux_hw = composite->mux_hw;
++	unsigned long temp_rate;
++
++	__clk_hw_set_clk(rate_hw, hw);
++	__clk_hw_set_clk(mux_hw, hw);
++
++	temp_rate = rate_ops->recalc_rate(rate_hw, parent_rate);
++	if (temp_rate > rate) {
++		rate_ops->set_rate(rate_hw, rate, parent_rate);
++		mux_ops->set_parent(mux_hw, index);
++	} else {
++		mux_ops->set_parent(mux_hw, index);
++		rate_ops->set_rate(rate_hw, rate, parent_rate);
++	}
++
++	return 0;
++}
++
+ static int clk_composite_is_enabled(struct clk_hw *hw)
+ {
+ 	struct clk_composite *composite = to_clk_composite(hw);
+@@ -250,6 +277,12 @@ struct clk *clk_register_composite(struct device *dev, const char *name,
+ 		composite->rate_ops = rate_ops;
+ 	}
+ 
++	if (mux_hw && mux_ops && rate_hw && rate_ops) {
++		if (mux_ops->set_parent && rate_ops->set_rate)
++			clk_composite_ops->set_rate_and_parent =
++			clk_composite_set_rate_and_parent;
++	}
++
+ 	if (gate_hw && gate_ops) {
+ 		if (!gate_ops->is_enabled || !gate_ops->enable ||
+ 		    !gate_ops->disable) {
 -- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+1.9.1
