@@ -1,69 +1,234 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
-Date: Tue, 12 Apr 2016 07:24:31 +0200
-Message-ID: <1991772.fLocq5xWEX@phil>
-References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
- <1776429.KtRq374vTa@phil> <11405116.V0u286Y0bM@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <11405116.V0u286Y0bM@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "ASoC: rockchip: i2s: configure the sdio pins' iomux mode" to the asoc tree
+Date: Tue, 12 Apr 2016 07:30:55 +0100
+Message-ID: <E1aprqh-0008Dx-S8@debutante>
+References: <1460366763-25658-1-git-send-email-sugar.zhang@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1460366763-25658-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.orgbroonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. M=E4rz 2016, 22:45:52 schrieb Heiko Stuebner:
-> Am Donnerstag, 31. M=E4rz 2016, 19:15:43 schrieb Heiko Stuebner:
-> > Am Samstag, 19. M=E4rz 2016, 09:04:08 schrieb Heiko Stuebner:
-> > > Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
-> > > > A dtc update results in warnings for nodes with reg property but
-> > > > without
-> > > > unit address in the node name, so rename /memory to /memory@0.
-> > > > =
+The patch
 
-> > > > Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
-> > > =
+   ASoC: rockchip: i2s: configure the sdio pins' iomux mode
 
-> > > applied to a dts64-fixes branch for 4.6, after changing the commit
-> > > message to ----
-> > > A dtc update results in warnings for nodes with reg property but
-> > > without
-> > > unit address in the node name, so rename /memory to
-> > > /memory@startaddress
-> > > (memory starts at 0 in the case of the rk3368).
-> > > ----
-> > > =
+has been applied to the asoc tree at
 
-> > > To clarify that the @0 is not arbitary chosen.
-> > =
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-> > This dtc update in question hasn't landed in v4.6-rc1 and from what I
-> > gathered will need some changes. The patch is obviously still correct,
-> > but I have now moved it from v4.6-fixes to the regular v4.7 64bit dts
-> > changes.
-> =
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-> also it seems "memory" is special and memory without unitname will stay
-> allowed [0], especially as uboot or other bootloaders may expect such a
-> node to insert the actual amount of memory into it.
-> =
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-> Looking at uboot, fdt_fixup_memory_banks seems to look explicitly for a
-> "memory" node, so I'm actually not sure, if this is safe to keep at all.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-so after pondering this some more, I decided to drop this change again.
-/memory will stay allowed and might produce less issues with bootloaders =
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-touching the memory values.
+Thanks,
+Mark
 
-> [0] http://www.spinics.net/lists/arm-kernel/msg494038.html
+From 72b7ba1f1477f1b9b0a3ddf2dd4b5392ce88a8a3 Mon Sep 17 00:00:00 2001
+From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Date: Mon, 11 Apr 2016 17:26:03 +0800
+Subject: [PATCH] ASoC: rockchip: i2s: configure the sdio pins' iomux mode
+
+There are 3 i2s sdio pins, which iomux mode is as follows:
+
+ - sdi3_sdo1
+ - sdi2_sdo2
+ - sdi1_sdo3
+
+we need to configure these pins' iomux mode via the GRF register
+when use multi channel playback/capture.
+
+Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ .../devicetree/bindings/sound/rockchip-i2s.txt     |  5 ++
+ sound/soc/rockchip/rockchip_i2s.c                  | 67 +++++++++++++++++++---
+ sound/soc/rockchip/rockchip_i2s.h                  |  7 +++
+ 3 files changed, 70 insertions(+), 9 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+index 6e86d8aa29b4..4ea29aa9af59 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.txt
+@@ -23,6 +23,11 @@ Required properties:
+ - rockchip,playback-channels: max playback channels, if not set, 8 channels default.
+ - rockchip,capture-channels: max capture channels, if not set, 2 channels default.
+ 
++Required properties for controller which support multi channels
++playback/capture:
++
++- rockchip,grf: the phandle of the syscon node for GRF register.
++
+ Example for rk3288 I2S controller:
+ 
+ i2s@ff890000 {
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 2f8e20416bd3..d4f7eac5cfd4 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -11,8 +11,10 @@
+  */
+ 
+ #include <linux/module.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/delay.h>
+ #include <linux/of_gpio.h>
++#include <linux/of_device.h>
+ #include <linux/clk.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+@@ -23,6 +25,11 @@
+ 
+ #define DRV_NAME "rockchip-i2s"
+ 
++struct rk_i2s_pins {
++	u32 reg_offset;
++	u32 shift;
++};
++
+ struct rk_i2s_dev {
+ 	struct device *dev;
+ 
+@@ -33,8 +40,10 @@ struct rk_i2s_dev {
+ 	struct snd_dmaengine_dai_dma_data playback_dma_data;
+ 
+ 	struct regmap *regmap;
++	struct regmap *grf;
+ 
+ 	bool is_master_mode;
++	const struct rk_i2s_pins *pins;
+ };
+ 
+ static int i2s_runtime_suspend(struct device *dev)
+@@ -277,6 +286,30 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 				   I2S_TXCR_VDW_MASK | I2S_TXCR_CSR_MASK,
+ 				   val);
+ 
++	if (!IS_ERR(i2s->grf) && i2s->pins) {
++		regmap_read(i2s->regmap, I2S_TXCR, &val);
++		val &= I2S_TXCR_CSR_MASK;
++
++		switch (val) {
++		case I2S_CHN_4:
++			val = I2S_IO_4CH_OUT_6CH_IN;
++			break;
++		case I2S_CHN_6:
++			val = I2S_IO_6CH_OUT_4CH_IN;
++			break;
++		case I2S_CHN_8:
++			val = I2S_IO_8CH_OUT_2CH_IN;
++			break;
++		default:
++			val = I2S_IO_2CH_OUT_8CH_IN;
++			break;
++		}
++
++		val <<= i2s->pins->shift;
++		val |= (I2S_IO_DIRECTION_MASK << i2s->pins->shift) << 16;
++		regmap_write(i2s->grf, i2s->pins->reg_offset, val);
++	}
++
+ 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_TDL_MASK,
+ 			   I2S_DMACR_TDL(16));
+ 	regmap_update_bits(i2s->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
+@@ -462,9 +495,23 @@ static const struct regmap_config rockchip_i2s_regmap_config = {
+ 	.cache_type = REGCACHE_FLAT,
+ };
+ 
++static const struct rk_i2s_pins rk3399_i2s_pins = {
++	.reg_offset = 0xe220,
++	.shift = 11,
++};
++
++static const struct of_device_id rockchip_i2s_match[] = {
++	{ .compatible = "rockchip,rk3066-i2s", },
++	{ .compatible = "rockchip,rk3188-i2s", },
++	{ .compatible = "rockchip,rk3288-i2s", },
++	{ .compatible = "rockchip,rk3399-i2s", .data = &rk3399_i2s_pins },
++	{},
++};
++
+ static int rockchip_i2s_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *node = pdev->dev.of_node;
++	const struct of_device_id *of_id;
+ 	struct rk_i2s_dev *i2s;
+ 	struct snd_soc_dai_driver *soc_dai;
+ 	struct resource *res;
+@@ -478,6 +525,17 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 	}
+ 
++	i2s->dev = &pdev->dev;
++
++	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
++	if (!IS_ERR(i2s->grf)) {
++		of_id = of_match_device(rockchip_i2s_match, &pdev->dev);
++		if (!of_id || !of_id->data)
++			return -EINVAL;
++
++		i2s->pins = of_id->data;
++	}
++
+ 	/* try to prepare related clocks */
+ 	i2s->hclk = devm_clk_get(&pdev->dev, "i2s_hclk");
+ 	if (IS_ERR(i2s->hclk)) {
+@@ -517,7 +575,6 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
+ 	i2s->capture_dma_data.maxburst = 4;
+ 
+-	i2s->dev = &pdev->dev;
+ 	dev_set_drvdata(&pdev->dev, i2s);
+ 
+ 	pm_runtime_enable(&pdev->dev);
+@@ -583,14 +640,6 @@ static int rockchip_i2s_remove(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static const struct of_device_id rockchip_i2s_match[] = {
+-	{ .compatible = "rockchip,rk3066-i2s", },
+-	{ .compatible = "rockchip,rk3188-i2s", },
+-	{ .compatible = "rockchip,rk3288-i2s", },
+-	{ .compatible = "rockchip,rk3399-i2s", },
+-	{},
+-};
+-
+ static const struct dev_pm_ops rockchip_i2s_pm_ops = {
+ 	SET_RUNTIME_PM_OPS(i2s_runtime_suspend, i2s_runtime_resume,
+ 			   NULL)
+diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
+index dc6e2c74d088..8e239d301bc7 100644
+--- a/sound/soc/rockchip/rockchip_i2s.h
++++ b/sound/soc/rockchip/rockchip_i2s.h
+@@ -236,4 +236,11 @@ enum {
+ #define I2S_TXDR	(0x0024)
+ #define I2S_RXDR	(0x0028)
+ 
++/* io direction cfg register */
++#define I2S_IO_DIRECTION_MASK	(7)
++#define I2S_IO_8CH_OUT_2CH_IN	(0)
++#define I2S_IO_6CH_OUT_4CH_IN	(4)
++#define I2S_IO_4CH_OUT_6CH_IN	(6)
++#define I2S_IO_2CH_OUT_8CH_IN	(7)
++
+ #endif /* _ROCKCHIP_IIS_H */
+-- 
+2.8.0.rc3
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
