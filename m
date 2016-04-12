@@ -1,42 +1,38 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/5] PM / AVS: rockchip-io: make io-domains a child of the GRF
-Date: Tue, 12 Apr 2016 04:23:14 +0200
-Message-ID: <3991738.xMQYlxyb28@phil>
-References: <1459432126-6395-1-git-send-email-heiko@sntech.de> <1459432126-6395-2-git-send-email-heiko@sntech.de>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 30/46] regulator: pwm: retrieve correct voltage
+Date: Tue, 12 Apr 2016 05:42:03 +0100
+Message-ID: <20160412044203.GW3351@sirena.org.uk>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1459368249-13241-31-git-send-email-boris.brezillon@free-electrons.com>
+ <20160330212410.GX2350@sirena.org.uk>
+ <20160407235431.788dc24a@bbrezillon>
+Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1459432126-6395-2-git-send-email-heiko@sntech.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: rjw@rjwysocki.net
-Cc: khilman@kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="xsILJLaVOAbiPmXa"
+Return-path: <linux-sunxi+bncBDQ2L75W5QGBBZXZWG4AKGQE5T2WI6A-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+Content-Disposition: inline
+In-Reply-To: <20160407235431.788dc24a@bbrezillon>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rafael,
+--xsILJLaVOAbiPmXa
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
 
-Am Donnerstag, 31. M=E4rz 2016, 15:48:42 schrieb Heiko Stuebner:
-> IO-domain handling is part of the general register files, so should l=
-ive
-> under the grf directly. This change allows the grf to be a simple-mfd=
- and
-> the io-domains fetching the syscon regmap from that parent-node.
->=20
-> The old binding is of course preserved, though deprecated.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Acked-by: Kevin Hilman <khilman@baylibre.com>
-> Tested-by: David Wu <david.wu@rock-chips.com>
+On Thu, Apr 07, 2016 at 11:54:31PM +0200, Boris Brezillon wrote:
 
-could you look into picking up this patch 1/5 please?
+> Is there any reason for calling set_machine_constraints() after
+> device_register() in regulator_register()?
 
-The others are to much interwined into other devicetree changes, so I'l=
-l=20
-apply them for 4.8, but it would be nice if you could pick up this one =
-for=20
-4.7 so the code change becomes available at 4.8-rc1
-
-
-Thanks
-Heiko
-
+I'm not sure there's a strong one, we don't really use the class device
+for anything, but without doing a full audit I couldn't guarantee that.
+--xsILJLaVOAbiPmXa--
