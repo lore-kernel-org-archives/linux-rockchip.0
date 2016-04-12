@@ -1,77 +1,69 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1] clk: Add clk_composite_set_rate_and_parent
-Date: Tue, 12 Apr 2016 07:04:21 +0200
-Message-ID: <3986787.PS6VzOpSAJ@phil>
-References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v4 1/8] arm64: dts: rockchip: Clean up /memory nodes
+Date: Tue, 12 Apr 2016 07:24:31 +0200
+Message-ID: <1991772.fLocq5xWEX@phil>
+References: <1458136727-32075-1-git-send-email-afaerber@suse.de>
+ <1776429.KtRq374vTa@phil> <11405116.V0u286Y0bM@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Finlye Xiao <finley.xiao@rock-chips.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <11405116.V0u286Y0bM@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Finley,
+Am Donnerstag, 31. M=E4rz 2016, 22:45:52 schrieb Heiko Stuebner:
+> Am Donnerstag, 31. M=E4rz 2016, 19:15:43 schrieb Heiko Stuebner:
+> > Am Samstag, 19. M=E4rz 2016, 09:04:08 schrieb Heiko Stuebner:
+> > > Am Mittwoch, 16. M=E4rz 2016, 14:58:39 schrieb Andreas F=E4rber:
+> > > > A dtc update results in warnings for nodes with reg property but
+> > > > without
+> > > > unit address in the node name, so rename /memory to /memory@0.
+> > > > =
 
-Am Montag, 11. April 2016, 09:54:12 schrieb Finlye Xiao:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
-> 
-> Some of Rockchip's clocks should consider the priority of .set_parent
-> and .set_rate to prevent a too large temporary clock rate.
-> 
-> For example, the gpu clock can be parented to cpll(750MHz) and
-> usbphy_480m(480MHz), 375MHz comes from cpll and the div is set
-> to 2, 480MHz comes from usbphy_480m and the div is set to 1.
-> 
-> From the code, when change rate from 480MHz to 375MHz, it changes
-> the gpu's parent from USBPHY_480M to cpll first(.set_parent), but the
-> div value is still 1 and the gpu's rate will be 750MHz at the moment,
-> then it changes the div value from 1 to 2(.set_rate) and the gpu's
-> rate will be changed to 375MHz(480MHZ->750MHz->375MHz), here temporary
-> rate is 750MHz, the voltage which supply for 480MHz certainly can not
-> supply for 750MHz, so the gpu will crash.
+> > > > Signed-off-by: Andreas F=E4rber <afaerber-l3A5Bk7waGM@public.gmane.org>
+> > > =
 
-We did talk about this internally and while we refined the actual code 
-change, it seems I forgot to look at the commit message itself.
+> > > applied to a dts64-fixes branch for 4.6, after changing the commit
+> > > message to ----
+> > > A dtc update results in warnings for nodes with reg property but
+> > > without
+> > > unit address in the node name, so rename /memory to
+> > > /memory@startaddress
+> > > (memory starts at 0 in the case of the rk3368).
+> > > ----
+> > > =
 
-This behaviour (and the wish to not overflow a target clock rate) should be 
-the same on all socs, so the commit message is quite a bit to Rockchip 
-specific. I think I would go with something like:
+> > > To clarify that the @0 is not arbitary chosen.
+> > =
 
------------ 8< ------------
-When changing the clock-rate, currently a new parent is set first and a 
-divider adapted thereafter. This may result in the clock-rate overflowing
-its target rate for a short time if the new parent has a higher rate than
-the old parent.
+> > This dtc update in question hasn't landed in v4.6-rc1 and from what I
+> > gathered will need some changes. The patch is obviously still correct,
+> > but I have now moved it from v4.6-fixes to the regular v4.7 64bit dts
+> > changes.
+> =
 
-While this often doesn't produce negative effects, it can affect components
-in a voltage-scaling environment, like the GPU on the rk3399 socs, where the
-voltage than simply is to low for the temporarily to high clock rate.
+> also it seems "memory" is special and memory without unitname will stay
+> allowed [0], especially as uboot or other bootloaders may expect such a
+> node to insert the actual amount of memory into it.
+> =
 
-For general clock hirarchies this may need more extensive adaptions to
-the common clock-framework, but at least for composite clocks having
-both parent and rate settings it is easy to create a short-term solution to
-make sure the clock-rate does not overflow the target.
------------ 8< ------------
+> Looking at uboot, fdt_fixup_memory_banks seems to look explicitly for a
+> "memory" node, so I'm actually not sure, if this is safe to keep at all.
 
-But of course feel free to extend or change that as you wish ;-) .
+so after pondering this some more, I decided to drop this change again.
+/memory will stay allowed and might produce less issues with bootloaders =
 
+touching the memory values.
 
-> 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-
-I remember having clocks not overflow their target rate came up in some ELC 
-talk last week (probably in Stephens Qualcomm-kernel-talk) and a general 
-solution might need some changes closer to the core.
-
-But at least for composite clocks where we can control the rate+parent 
-process easily, Finley's change is a nice low-hanging fruit which at least 
-improves behaviour for those clock-types in the short term, so
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-Heiko
-
+> [0] http://www.spinics.net/lists/arm-kernel/msg494038.html
