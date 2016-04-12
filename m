@@ -1,102 +1,48 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v7 2/4] power: reset: add reboot mode driver
-Date: Tue, 12 Apr 2016 17:27:27 +0800
-Message-ID: <570CBF7F.9090300@rock-chips.com>
-References: <1459304304-9713-1-git-send-email-andy.yan@rock-chips.com>
- <1459304443-9811-1-git-send-email-andy.yan@rock-chips.com>
- <56FB49B3.2040505@samsung.com> <57045D6B.2080907@rock-chips.com>
- <57045F9D.1000502@samsung.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 30/46] regulator: pwm: retrieve correct voltage
+Date: Tue, 12 Apr 2016 11:09:38 +0100
+Message-ID: <20160412100938.GA14664@sirena.org.uk>
+References: <1459368249-13241-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1459368249-13241-31-git-send-email-boris.brezillon@free-electrons.com>
+ <20160330212410.GX2350@sirena.org.uk>
+ <20160407235431.788dc24a@bbrezillon>
+ <20160412044203.GW3351@sirena.org.uk>
+ <20160412103722.0bfe1d4d@bbrezillon>
+Reply-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <57045F9D.1000502@samsung.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de
-Cc: mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, alexandre.belloni@free-electrons.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, mbrugger@suse.com, linux-kernel@vger.kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="qMm9M+Fa2AknHoGS"
+Return-path: <linux-sunxi+bncBDQ2L75W5QGBBLMTWO4AKGQEPWOUTBY-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+Content-Disposition: inline
+In-Reply-To: <20160412103722.0bfe1d4d@bbrezillon>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Krzysztof:
+--qMm9M+Fa2AknHoGS
+Content-Type: text/plain; charset=UTF-8
+Content-Disposition: inline
 
-On 2016=E5=B9=B404=E6=9C=8806=E6=97=A5 09:00, Krzysztof Kozlowski wrote=
-:
-> On 06.04.2016 09:50, Andy Yan wrote:
->
-> (...)
->
->>>> +            return -ENOMEM;
->>>> +
->>>> +        info->mode =3D kstrdup_const(prop->name + len, GFP_KERNEL=
-);
->>>> +        if (of_property_read_u32(np, prop->name, &info->magic)) {
->>>> +            dev_err(dev, "reboot mode %s without magic number\n",
->>>> +                info->mode);
->>>> +            devm_kfree(dev, info);
->>>> +            continue;
->>>> +        }
->>>> +        list_add_tail(&info->list, &reboot->head);
->>>> +    }
->>>> +    of_node_put(np);
->>> If you of_node_put() here, there is no sense in getting it before. =
-I
->>> mentioned of_node_get() only because I am not sure about life-cycle=
- of
->>> nodes in case of DT overlays and you are storing the pointer to str=
-ing
->>> from DT.
->>>
->>> The doubts I have are concerning only the case of freeing nodes fro=
-m
->>> overlay.
->>>
->>> I don't know if of_node_get() is needed but of_node_get()+of_node_p=
-ut()
->>> seems useless.
->>
->>   I am also not sure about it. Maybe just drop of_node_get/put ?
-> OK, let's drop both get() and put().
->
-> (...)
->
->>>> +
->>>> +static const struct of_device_id syscon_reboot_mode_of_match[] =3D=
- {
->>>> +    { .compatible =3D "syscon-reboot-mode" },
->>>> +    {}
->>>> +};
->>>> +
->>>> +static struct platform_driver syscon_reboot_mode_driver =3D {
->>>> +    .probe =3D syscon_reboot_mode_probe,
->>> Cleanup needed. What will happen after device unbind? Memory will b=
-e
->>> released (devm-*()) but reboot notifier won't thus leading to OOPS =
-on
->>> reboot.
->>      From the kernel_restart_prepare function, the reboot notifier w=
-ill
->> be called before device_shutdown. Is there any other case the device
->> unbind before reboot notifier
->> called?
-> This is a regular module platform driver so unbind can happen any tim=
-e
-> initiated by user, either by unbind command or by module removal. Use=
-r
-> can then re-bind device or not - probably does not matter. Anyway aft=
-er
-> such first unbind, the restart will kaboom instead of do a restart.
+On Tue, Apr 12, 2016 at 10:37:22AM +0200, Boris Brezillon wrote:
+> Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+> > On Thu, Apr 07, 2016 at 11:54:31PM +0200, Boris Brezillon wrote:
 
-     I just need to do clean up in remove?
-> Beside that, you always should clean up, regardless of restart or not=
-=2E
-> If you do not want unbind (thus no need of cleanup) then forbid it by
-> making it a non-module with suppressed bind.
->
-> Best regards,
-> Krzysztof
->
->
->
->
+> > I'm not sure there's a strong one, we don't really use the class device
+> > for anything, but without doing a full audit I couldn't guarantee that.
 
+> At first glance I don't see any problem (even the rdev_err/info/...()
+> functions do not use dev_err/info/...()). The patch will be part of v6
+> (unless you want me to send it independently).
 
+I'd rather it didn't get sucked into this series since it seems that
+it's getting delayed indefinitely - I can apply it to the regulator tree
+and create a tag that can be pulled into other trees as needed if things
+do get applied.
+--qMm9M+Fa2AknHoGS--
