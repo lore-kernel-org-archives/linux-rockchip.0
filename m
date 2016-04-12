@@ -1,51 +1,52 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/2] ARM: multi_v7_defconfig: Enable new Rockchip
- display-controller drivers
-Date: Tue, 12 Apr 2016 03:20:04 +0200
-Message-ID: <4195825.sRqdISUi1R@phil>
-References: <10307860.X4SVE35FiH@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/2] dt-bindings: modify document of Rockchip power domains
+Date: Tue, 12 Apr 2016 04:00:10 +0200
+Message-ID: <1560475.Omi7ovI7oB@phil>
+References: <1458285444-31129-1-git-send-email-zhangqing@rock-chips.com> <7hshznsqs4.fsf@baylibre.com> <21140203.EjVS0MZtuq@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <10307860.X4SVE35FiH@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <21140203.EjVS0MZtuq@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@baylibre.com>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, xf@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Three types of display controller-drivers where added recently. The
-Analogix Displayport variant and Designware MIPI DSI used for example
-on the rk3288 as well as the Innosilicon HDMI controller used on the
-rk3036.
+Hi Kevin,
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm/configs/multi_v7_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
+Am Freitag, 18. M=E4rz 2016, 23:16:55 schrieb Heiko Stuebner:
+> Am Freitag, 18. M=E4rz 2016, 09:18:51 schrieb Kevin Hilman:
+> > Elaine Zhang <zhangqing@rock-chips.com> writes:
+> > > Add qos example for power domain which found on Rockchip SoCs.
+> > > These qos register description in TRMs
+> > > (rk3036, rk3228, rk3288, rk3366, rk3368, rk3399) looks the same.
+> >=20
+> > This should describe in more detail what "qos" is in this context. =
+ At
+> > first glance, it's just a range of registers that lose context that=
+ need
+> > to be saved/restored.
+>=20
+> I guess that should be something like
+>=20
+> ---- 8< ----
+> Rockchip SoCs contain quality of service (qos) blocks managing priori=
+ty,
+> bandwidth, etc of the connection of each domain to the interconnect.
+> These blocks loose state when their domain gets disabled and therefor=
+e
+> need to be saved when disabling and restored when enabling a power-do=
+main.
+>=20
+> These qos blocks also are similar over all currently available Rockch=
+ip
+> SoCs.
+> ---- 8< ----
 
-diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
-index 66d15ed..b4489e0 100644
---- a/arch/arm/configs/multi_v7_defconfig
-+++ b/arch/arm/configs/multi_v7_defconfig
-@@ -532,7 +532,10 @@ CONFIG_DRM_EXYNOS_DSI=y
- CONFIG_DRM_EXYNOS_FIMD=y
- CONFIG_DRM_EXYNOS_HDMI=y
- CONFIG_DRM_ROCKCHIP=m
-+CONFIG_ROCKCHIP_ANALOGIX_DP=m
- CONFIG_ROCKCHIP_DW_HDMI=m
-+CONFIG_ROCKCHIP_DW_MIPI_DSI=m
-+CONFIG_ROCKCHIP_INNO_HDMI=m
- CONFIG_DRM_RCAR_DU=m
- CONFIG_DRM_RCAR_HDMI=y
- CONFIG_DRM_RCAR_LVDS=y
--- 
-2.6.4
+does this look sane to you in terms of description, or do we need somet=
+hing=20
+more?
+
+
+Heiko
