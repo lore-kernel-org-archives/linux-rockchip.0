@@ -1,90 +1,102 @@
-From: Finlye Xiao <finley.xiao@rock-chips.com>
-Subject: [PATCH v2] clk: Add clk_composite_set_rate_and_parent
-Date: Tue, 12 Apr 2016 16:43:39 +0800
-Message-ID: <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
-References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org, heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v7 2/4] power: reset: add reboot mode driver
+Date: Tue, 12 Apr 2016 17:27:27 +0800
+Message-ID: <570CBF7F.9090300@rock-chips.com>
+References: <1459304304-9713-1-git-send-email-andy.yan@rock-chips.com>
+ <1459304443-9811-1-git-send-email-andy.yan@rock-chips.com>
+ <56FB49B3.2040505@samsung.com> <57045D6B.2080907@rock-chips.com>
+ <57045F9D.1000502@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <57045F9D.1000502@samsung.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>, robh+dt@kernel.org, sre@kernel.org, heiko@sntech.de, john.stultz@linaro.org, arnd@arndb.de
+Cc: mark.rutland@arm.com, catalin.marinas@arm.com, will.deacon@arm.com, alexandre.belloni@free-electrons.com, f.fainelli@gmail.com, linux@arm.linux.org.uk, dbaryshkov@gmail.com, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, wxt@rock-chips.com, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, lorenzo.pieralisi@arm.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, moritz.fischer@ettus.com, mbrugger@suse.com, linux-kernel@vger.kernel.org, galak@codeaurora.org, olof@lixom.net, jun.nie@linaro.org, dwmw2@infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+Hi Krzysztof:
 
-When changing the clock-rate, currently a new parent is set first and a
-divider adapted thereafter. This may result in the clock-rate overflowing
-its target rate for a short time if the new parent has a higher rate than
-the old parent.
-
-While this often doesn't produce negative effects, it can affect components
-in a voltage-scaling environment, like the GPU on the rk3399 socs, where
-the voltage than simply is to low for the temporarily to high clock rate.
-
-For general clock hirarchies this may need more extensive adaptions to
-the common clock-framework, but at least for composite clocks having
-both parent and rate settings it is easy to create a short-term solution to
-make sure the clock-rate does not overflow the target.
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-v1->v2:
-- change the commit message
-
- drivers/clk/clk-composite.c | 33 +++++++++++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
-
-diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
-index 1f903e1f8..4d4b5ab 100644
---- a/drivers/clk/clk-composite.c
-+++ b/drivers/clk/clk-composite.c
-@@ -151,6 +151,33 @@ static int clk_composite_set_rate(struct clk_hw *hw, unsigned long rate,
- 	return rate_ops->set_rate(rate_hw, rate, parent_rate);
- }
- 
-+static int clk_composite_set_rate_and_parent(struct clk_hw *hw,
-+					     unsigned long rate,
-+					     unsigned long parent_rate,
-+					     u8 index)
-+{
-+	struct clk_composite *composite = to_clk_composite(hw);
-+	const struct clk_ops *rate_ops = composite->rate_ops;
-+	const struct clk_ops *mux_ops = composite->mux_ops;
-+	struct clk_hw *rate_hw = composite->rate_hw;
-+	struct clk_hw *mux_hw = composite->mux_hw;
-+	unsigned long temp_rate;
-+
-+	__clk_hw_set_clk(rate_hw, hw);
-+	__clk_hw_set_clk(mux_hw, hw);
-+
-+	temp_rate = rate_ops->recalc_rate(rate_hw, parent_rate);
-+	if (temp_rate > rate) {
-+		rate_ops->set_rate(rate_hw, rate, parent_rate);
-+		mux_ops->set_parent(mux_hw, index);
-+	} else {
-+		mux_ops->set_parent(mux_hw, index);
-+		rate_ops->set_rate(rate_hw, rate, parent_rate);
-+	}
-+
-+	return 0;
-+}
-+
- static int clk_composite_is_enabled(struct clk_hw *hw)
+On 2016=E5=B9=B404=E6=9C=8806=E6=97=A5 09:00, Krzysztof Kozlowski wrote=
+:
+> On 06.04.2016 09:50, Andy Yan wrote:
+>
+> (...)
+>
+>>>> +            return -ENOMEM;
+>>>> +
+>>>> +        info->mode =3D kstrdup_const(prop->name + len, GFP_KERNEL=
+);
+>>>> +        if (of_property_read_u32(np, prop->name, &info->magic)) {
+>>>> +            dev_err(dev, "reboot mode %s without magic number\n",
+>>>> +                info->mode);
+>>>> +            devm_kfree(dev, info);
+>>>> +            continue;
+>>>> +        }
+>>>> +        list_add_tail(&info->list, &reboot->head);
+>>>> +    }
+>>>> +    of_node_put(np);
+>>> If you of_node_put() here, there is no sense in getting it before. =
+I
+>>> mentioned of_node_get() only because I am not sure about life-cycle=
+ of
+>>> nodes in case of DT overlays and you are storing the pointer to str=
+ing
+>>> from DT.
+>>>
+>>> The doubts I have are concerning only the case of freeing nodes fro=
+m
+>>> overlay.
+>>>
+>>> I don't know if of_node_get() is needed but of_node_get()+of_node_p=
+ut()
+>>> seems useless.
+>>
+>>   I am also not sure about it. Maybe just drop of_node_get/put ?
+> OK, let's drop both get() and put().
+>
+> (...)
+>
+>>>> +
+>>>> +static const struct of_device_id syscon_reboot_mode_of_match[] =3D=
  {
- 	struct clk_composite *composite = to_clk_composite(hw);
-@@ -250,6 +277,12 @@ struct clk *clk_register_composite(struct device *dev, const char *name,
- 		composite->rate_ops = rate_ops;
- 	}
- 
-+	if (mux_hw && mux_ops && rate_hw && rate_ops) {
-+		if (mux_ops->set_parent && rate_ops->set_rate)
-+			clk_composite_ops->set_rate_and_parent =
-+			clk_composite_set_rate_and_parent;
-+	}
-+
- 	if (gate_hw && gate_ops) {
- 		if (!gate_ops->is_enabled || !gate_ops->enable ||
- 		    !gate_ops->disable) {
--- 
-1.9.1
+>>>> +    { .compatible =3D "syscon-reboot-mode" },
+>>>> +    {}
+>>>> +};
+>>>> +
+>>>> +static struct platform_driver syscon_reboot_mode_driver =3D {
+>>>> +    .probe =3D syscon_reboot_mode_probe,
+>>> Cleanup needed. What will happen after device unbind? Memory will b=
+e
+>>> released (devm-*()) but reboot notifier won't thus leading to OOPS =
+on
+>>> reboot.
+>>      From the kernel_restart_prepare function, the reboot notifier w=
+ill
+>> be called before device_shutdown. Is there any other case the device
+>> unbind before reboot notifier
+>> called?
+> This is a regular module platform driver so unbind can happen any tim=
+e
+> initiated by user, either by unbind command or by module removal. Use=
+r
+> can then re-bind device or not - probably does not matter. Anyway aft=
+er
+> such first unbind, the restart will kaboom instead of do a restart.
+
+     I just need to do clean up in remove?
+> Beside that, you always should clean up, regardless of restart or not=
+=2E
+> If you do not want unbind (thus no need of cleanup) then forbid it by
+> making it a non-module with suppressed bind.
+>
+> Best regards,
+> Krzysztof
+>
+>
+>
+>
+
+
