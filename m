@@ -1,75 +1,51 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] phy: rockchip-emmc: adapt binding to specifiy
- register offset and length
-Date: Wed, 13 Apr 2016 18:32:50 +0530
-Message-ID: <570E437A.1010900@ti.com>
-References: <1458854943-17388-1-git-send-email-heiko@sntech.de>
- <1458854943-17388-3-git-send-email-heiko@sntech.de> <570E4328.4050501@ti.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2] pinctrl: rockchip: add support the get_direction
+Date: Wed, 13 Apr 2016 15:26:50 +0200
+Message-ID: <CACRpkdbKG5bvv=rXd+osJorvP2gUmhMWMKGfwz56r+HTYiBmOA@mail.gmail.com>
+References: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <570E4328.4050501-l0cyMroinI0@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, ykk-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Tue, Mar 15, 2016 at 8:55 AM, Caesar Wang <wxt@rock-chips.com> wrote:
 
-On Wednesday 13 April 2016 06:31 PM, Kishon Vijay Abraham I wrote:
-> Hi,
-> 
-> On Friday 25 March 2016 02:59 AM, Heiko Stuebner wrote:
->> The emmc-phy occupies a contiguous set of 8 registers inside the general
->> register files, so the reg property should specify this.
->>
->> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->> ---
->> This is essential a counter argument for Shawn's move from reg to reg_offset
->> in "phy: rockchip-emmc: fix compile issue on arm64 platform" [0].
->> With the move under the grf we now also are able to specify this stuff
->> cleanly using already present mechanisms.
->>
->> Also meant to v4.6-rc before the binding solidifies.
->>
->>
->> [0] https://lkml.org/lkml/2016/3/8/114
->>
->>  Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt | 6 ++++--
->>  1 file changed, 4 insertions(+), 2 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> index 461e958..555cb0f 100644
->> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
->> @@ -4,7 +4,7 @@ Rockchip EMMC PHY
->>  Required properties:
->>   - compatible: rockchip,rk3399-emmc-phy
->>   - #phy-cells: must be 0
->> - - reg: PHY configure reg address offset in "general
->> + - reg: PHY register address offset and length in "general
->>     register files"
->>  
->>  Example:
->> @@ -12,12 +12,14 @@ Example:
->>  
->>  grf: syscon@ff770000 {
->>  	compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
->> +	#address-cells = <1>;
->> +	#size-cells = <1>;
-> 
-> This patch is not applying. Care to resend based on linux-phy fixes?
+> This patch adds the get_direction to support the gpio
+> interface.
+>
+> The gpio direction is not used on rockchip platform when use the gpio
+> debugfs.
+>
+> Tested on kylin board. (RK3036 SoCs)
+> The repro steps:
+> $/sys/class/gpio/
+> echo 53 > export
+> $/sys/class/gpio/gpio53# cat direction
+> in
+> In general, the gpio53 should be out value, but the direction is the
+> default value 'in',  since the get_direction didn't supported in rockchip
+> pinctrl.
+>
+> So, we should add this patch to support it.
+>
+> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-rockchip@lists.infradead.org
+>
+> ---
+>
+> Changes in v2:
+> - As Heiko comments on (https://patchwork.kernel.org/patch/8576661/),
+>   fixes the wrong offset from original patch.
 
-sorry for the noise. I have applied this to linux-phy fixes now.
+Patch applied.
 
-Thanks
-Kishon
+Yours,
+Linus Walleij
