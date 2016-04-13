@@ -1,15 +1,15 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL 1/4] Rockchip driver updates for v4.7 - part1
-Date: Wed, 13 Apr 2016 15:26:46 -0700
-Message-ID: <20160413222646.GH19945@localhost>
-References: <2557248.QNyQ7BnmgO@diego>
- <16791666.09OigPW6oN@diego>
+Subject: Re: [PATCH 1/2] ARM: multi_v7_defconfig: Enable Rockchip displayport
+ phy
+Date: Wed, 13 Apr 2016 15:24:52 -0700
+Message-ID: <20160413222452.GF19945@localhost>
+References: <10307860.X4SVE35FiH@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <16791666.09OigPW6oN@diego>
+In-Reply-To: <10307860.X4SVE35FiH@phil>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,29 +19,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko St?bner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 13, 2016 at 11:21:48AM +0200, Heiko St?bner wrote:
-> The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
+On Tue, Apr 12, 2016 at 03:18:39AM +0200, Heiko Stuebner wrote:
+> The displayport phy controls the output of the Analogix displayport
+> controller on Rockchip SoCs and is therefore one component to enable
+> veyron devices to use their internal display.
 > 
->   Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
-> 
-> are available in the git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-drivers-1
-> 
-> for you to fetch changes up to 4506697d9f8537a8d33e9e002f8efceb32d10757:
-> 
->   soc: rockchip: power-domain: check the existing of regmap (2016-04-12 03:28:08 +0200)
-> 
-> ----------------------------------------------------------------
-> Rockchip soc-specific driver changes containing support for the
-> rk3399 powerdomains and necessary infrastructure changes to
-> accomodate them - like supporting nested powerdomains here.
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+> to be applied directly to arm-soc
 
-Merged, thanks.
+Applied, thanks.
 
 
 -Olof
