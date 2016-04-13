@@ -1,51 +1,26 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2] pinctrl: rockchip: add support the get_direction
-Date: Wed, 13 Apr 2016 15:26:50 +0200
-Message-ID: <CACRpkdbKG5bvv=rXd+osJorvP2gUmhMWMKGfwz56r+HTYiBmOA@mail.gmail.com>
-References: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] ARM: dts: rockchip: add i2c nodes RK3228 SoCs
+Date: Wed, 13 Apr 2016 22:57:01 +0200
+Message-ID: <5295818.srcnokibua@diego>
+References: <1457924955-29996-1-git-send-email-ykk@rock-chips.com> <1457925102-30476-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458028545-1202-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1457925102-30476-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Kumar Gala <galak@codeaurora.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 15, 2016 at 8:55 AM, Caesar Wang <wxt@rock-chips.com> wrote:
+Am Montag, 14. M=E4rz 2016, 11:11:42 schrieb Yakir Yang:
+> This patch add the i2c dt nodes for rk3228 SoCs.
+>=20
+> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 
-> This patch adds the get_direction to support the gpio
-> interface.
->
-> The gpio direction is not used on rockchip platform when use the gpio
-> debugfs.
->
-> Tested on kylin board. (RK3036 SoCs)
-> The repro steps:
-> $/sys/class/gpio/
-> echo 53 > export
-> $/sys/class/gpio/gpio53# cat direction
-> in
-> In general, the gpio53 should be out value, but the direction is the
-> default value 'in',  since the get_direction didn't supported in rockchip
-> pinctrl.
->
-> So, we should add this patch to support it.
->
-> Reported-by: Jeffy Chen <jeffy.chen@rock-chips.com>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
->
-> ---
->
-> Changes in v2:
-> - As Heiko comments on (https://patchwork.kernel.org/patch/8576661/),
->   fixes the wrong offset from original patch.
+applied to my dts32 branch for 4.7, after moving the i2c pinctrl nodes =
+in=20
+between emmc and pwm* (please try to keep alphabetical ordering there)
 
-Patch applied.
 
-Yours,
-Linus Walleij
+Heiko
