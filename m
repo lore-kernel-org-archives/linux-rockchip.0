@@ -1,27 +1,77 @@
-From: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v2 0/2]  rockchip: power-domain: support qos save and restore
-Date: Thu, 14 Apr 2016 10:10:54 +0800
-Message-ID: <1460599856-4224-1-git-send-email-zhangqing@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/2] dt-bindings: modify document of Rockchip power domains
+Date: Thu, 14 Apr 2016 06:52:53 +0200
+Message-ID: <21803486.DAfo7MBcca@diego>
+References: <1460599856-4224-1-git-send-email-zhangqing@rock-chips.com> <1460599856-4224-2-git-send-email-zhangqing@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460599856-4224-2-git-send-email-zhangqing@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
-Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com, linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-add qos document in dt-bingings.
-modify power domain driver to support qos save and restore.
+Hi Elaine,
 
-Changes in v2:
-[PATCH V2 2/2]: add some error handling.
-		fix up the define and request space for qos_regmap and qos_save_regs. 
+Am Donnerstag, 14. April 2016, 10:10:55 schrieb Elaine Zhang:
+> Add qos example for power domain which found on Rockchip SoCs.
+> These qos register description in TRMs
+> (rk3036, rk3228, rk3288, rk3366, rk3368, rk3399) looks the same.
+> 
+> Changes in v2:
+> 	No Changes.
 
-Elaine Zhang (2):
-  dt-bindings: modify document of Rockchip power domains
-  rockchip: power-domain: support qos save and restore
+Changelogs please below the "---" below your Signed-off-by and not as part of 
+the commit message.
 
- .../bindings/soc/rockchip/power_domain.txt         |   8 ++
- drivers/soc/rockchip/pm_domains.c                  | 104 ++++++++++++++++++++-
- 2 files changed, 109 insertions(+), 3 deletions(-)
+Also could please check if a commit message like
 
--- 
-1.9.1
+---- 8< ----
+Rockchip SoCs contain quality of service (qos) blocks managing priority, 
+bandwidth, etc of the connection of each domain to the interconnect.
+These blocks loose state when their domain gets disabled and therefore
+need to be saved when disabling and restored when enabling a power-domain.
+
+These qos blocks also are similar over all currently available Rockchip 
+SoCs.
+---- 8< ----
+
+works for you? [See replies to your v1 series]
+
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+
+[changelog here]
+
+>  Documentation/devicetree/bindings/soc/rockchip/power_domain.txt | 8
+> ++++++++ 1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt index
+> 98085c888d65..6c571a40cd31 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> @@ -21,6 +21,13 @@ Required properties for power domain sub nodes:
+>  - clocks (optional): phandles to clocks which need to be enabled while
+> power domain switches state.
+> 
+> +Qos Example:
+> +
+> +	qos_gpu: qos_gpu@ffaf0000 {
+> +		compatible ="syscon";
+> +		reg = <0x0 0xffaf0000 0x0 0x20>;
+> +	};
+> +
+>  Example:
+> 
+>  	power: power-controller {
+> @@ -32,6 +39,7 @@ Example:
+>  		pd_gpu {
+>  			reg = <RK3288_PD_GPU>;
+>  			clocks = <&cru ACLK_GPU>;
+> +			pm_qos = <&qos_gpu>;
+>  		};
+>  	};
