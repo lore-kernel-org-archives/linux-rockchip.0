@@ -1,32 +1,28 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v1] clk: Add clk_composite_set_rate_and_parent
-Date: Thu, 14 Apr 2016 06:56:08 +0200
-Message-ID: <4176514.rpsd1Fqbyv@diego>
-References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com> <3986787.PS6VzOpSAJ@phil> <20160414004331.GK14441@codeaurora.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160414004331.GK14441@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Finlye Xiao <finley.xiao@rock-chips.com>, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [RESEND PATCH v2 0/2]  rockchip: power-domain: support qos save and restore
+Date: Thu, 14 Apr 2016 14:20:18 +0800
+Message-ID: <1460614820-18865-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 13. April 2016, 17:43:31 schrieb Stephen Boyd:
-> On 04/12, Heiko Stuebner wrote:
-> > I remember having clocks not overflow their target rate came up in some
-> > ELC
-> > talk last week (probably in Stephens Qualcomm-kernel-talk) and a general
-> > solution might need some changes closer to the core.
-> 
-> Yep. It's on the list. Hopefully coordinated clk rate changes
-> will help here. Composite clks are sort of already coordinated
-> rates in a minor form though.
+add qos document in dt-bingings.
+modify power domain driver to support qos save and restore.
 
-Which is why I hope we can land this (meaning v2 from tuesday) in the 
-meantime, as it fixes an issue we're seeing on the rk3399 and shouldn't affect 
-any part of the core clock-framework ;-) .
+Changes in v2:
+[PATCH V2 1/2]: fix up the commit message.
+[PATCH V2 2/2]: add some error handling.
+		fix up the define and request space for qos_regmap and qos_save_regs. 
 
+Elaine Zhang (2):
+  dt-bindings: modify document of Rockchip power domains
+  rockchip: power-domain: support qos save and restore
 
-Heiko
+ .../bindings/soc/rockchip/power_domain.txt         |   8 ++
+ drivers/soc/rockchip/pm_domains.c                  | 104 ++++++++++++++++++++-
+ 2 files changed, 109 insertions(+), 3 deletions(-)
+
+-- 
+1.9.1
