@@ -1,29 +1,52 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v1] clk: Add clk_composite_set_rate_and_parent
-Date: Wed, 13 Apr 2016 17:43:31 -0700
-Message-ID: <20160414004331.GK14441@codeaurora.org>
-References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
- <3986787.PS6VzOpSAJ@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3986787.PS6VzOpSAJ@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Finlye Xiao <finley.xiao@rock-chips.com>, mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
+From: Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 1/2] dt-bindings: modify document of Rockchip power domains
+Date: Thu, 14 Apr 2016 10:10:55 +0800
+Message-ID: <1460599856-4224-2-git-send-email-zhangqing@rock-chips.com>
+References: <1460599856-4224-1-git-send-email-zhangqing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460599856-4224-1-git-send-email-zhangqing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, khilman@baylibre.com, xf@rock-chips.com, wxt@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, huangtao@rock-chips.com, zyw@rock-chips.com, xxx@rock-chips.com, jay.xu@rock-chips.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/12, Heiko Stuebner wrote:
-> 
-> I remember having clocks not overflow their target rate came up in some ELC 
-> talk last week (probably in Stephens Qualcomm-kernel-talk) and a general 
-> solution might need some changes closer to the core.
+Add qos example for power domain which found on Rockchip SoCs.
+These qos register description in TRMs
+(rk3036, rk3228, rk3288, rk3366, rk3368, rk3399) looks the same.
 
-Yep. It's on the list. Hopefully coordinated clk rate changes
-will help here. Composite clks are sort of already coordinated
-rates in a minor form though.
+Changes in v2:
+	No Changes.
 
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ Documentation/devicetree/bindings/soc/rockchip/power_domain.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+index 98085c888d65..6c571a40cd31 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
++++ b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+@@ -21,6 +21,13 @@ Required properties for power domain sub nodes:
+ - clocks (optional): phandles to clocks which need to be enabled while power domain
+ 	switches state.
+ 
++Qos Example:
++
++	qos_gpu: qos_gpu@ffaf0000 {
++		compatible ="syscon";
++		reg = <0x0 0xffaf0000 0x0 0x20>;
++	};
++
+ Example:
+ 
+ 	power: power-controller {
+@@ -32,6 +39,7 @@ Example:
+ 		pd_gpu {
+ 			reg = <RK3288_PD_GPU>;
+ 			clocks = <&cru ACLK_GPU>;
++			pm_qos = <&qos_gpu>;
+ 		};
+ 	};
+ 
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+1.9.1
