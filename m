@@ -1,41 +1,67 @@
 From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2] clk: Add clk_composite_set_rate_and_parent
-Date: Fri, 15 Apr 2016 15:15:28 -0700
-Message-ID: <20160415221528.GO14441@codeaurora.org>
-References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
- <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
+Subject: Re: [GIT PULL] rockchip clock changes for 4.7 part 1
+Date: Fri, 15 Apr 2016 15:52:16 -0700
+Message-ID: <20160415225216.GY14441@codeaurora.org>
+References: <1640921.TBVHP9NGjj@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
+In-Reply-To: <1640921.TBVHP9NGjj@phil>
 Sender: linux-clk-owner@vger.kernel.org
-To: Finlye Xiao <finley.xiao@rock-chips.com>
-Cc: mturquette@baylibre.com, heiko@sntech.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/12, Finlye Xiao wrote:
-> From: Finley Xiao <finley.xiao@rock-chips.com>
+On 04/12, Heiko Stuebner wrote:
+> Hi Mike, Stephen,
 > 
-> When changing the clock-rate, currently a new parent is set first and a
-> divider adapted thereafter. This may result in the clock-rate overflowing
-> its target rate for a short time if the new parent has a higher rate than
-> the old parent.
+> The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
 > 
-> While this often doesn't produce negative effects, it can affect components
-> in a voltage-scaling environment, like the GPU on the rk3399 socs, where
-> the voltage than simply is to low for the temporarily to high clock rate.
+>   Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
 > 
-> For general clock hirarchies this may need more extensive adaptions to
-> the common clock-framework, but at least for composite clocks having
-> both parent and rate settings it is easy to create a short-term solution to
-> make sure the clock-rate does not overflow the target.
+> are available in the git repository at:
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> ---
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk1
+> 
+> for you to fetch changes up to 115510053e5e5872f1f19a2220b04aab5542c5c4:
+> 
+>   clk: rockchip: add clock controller for the RK3399 (2016-03-28 14:57:07 +0200)
+> 
+> ----------------------------------------------------------------
+> This is first big chunk of Rockchip clock-related changes for 4.7.
+> 
+> Main change is probably the added support for the new rk3399 soc
+> and necessary infrastructure changes surrounding it.
+> 
+> The biggest chunk is probably that clock code is now able to
+> handle multiple clock providers in one system, as the rk3399
+> has two of those. A general one and another smaller one in a
+> separate power domain. The rk3399 also uses another new pll type.
+> Thankfully it just fits nicely into our current structure.
+> It also needs some parts like the cpuclk mux parameters to be
+> a bit more flexible and an new fractional divider subtype without
+> gate.
+> 
+> Apart from this big change we have some more fixes and removal
+> of forgotten variables.
+> 
 
-Applied to clk-next
+Pulled into clk-next.
+
+BUT, this has some checkpatch annoyances, mostly spaces before
+tabs in the DT headers. For example:
+
+WARNING: please, no space before tabs
+#162: FILE: include/dt-bindings/clock/rk3399-cru.h:139:
++#define FCLK_CM0S ^I^I^I190$
+
+WARNING: please, no space before tabs
+#233: FILE: include/dt-bindings/clock/rk3399-cru.h:210:
++#define ACLK_PERF_CORE_L ^I^I260$
+
+Please send another patch to fix those or do it in another pull,
+whatever works for you.
 
 -- 
 Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
