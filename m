@@ -1,31 +1,42 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/5] ARM: dts: rockchip: make rk3288-grf a simple-mfd
-Date: Fri, 15 Apr 2016 23:21:53 +0200
-Message-ID: <2780445.ZUVl1WxXtY@diego>
-References: <1459432126-6395-1-git-send-email-heiko@sntech.de> <1459432126-6395-3-git-send-email-heiko@sntech.de>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v2] clk: Add clk_composite_set_rate_and_parent
+Date: Fri, 15 Apr 2016 15:15:28 -0700
+Message-ID: <20160415221528.GO14441@codeaurora.org>
+References: <1460339652-63498-1-git-send-email-finley.xiao@rock-chips.com>
+ <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1459432126-6395-3-git-send-email-heiko@sntech.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: rjw@rjwysocki.net
-Cc: khilman@kernel.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1460450619-1118-1-git-send-email-finley.xiao@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Finlye Xiao <finley.xiao@rock-chips.com>
+Cc: mturquette@baylibre.com, heiko@sntech.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, wxt@rock-chips.com, zyw@rock-chips.com, jay.xu@rock-chips.com, zhangqing@rock-chips.com, xxx@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 31. M=E4rz 2016, 15:48:43 schrieb Heiko Stuebner:
-> Similar to the pmu, the general register files contain a lot of diffe=
-rent
-> setting bits grouped into general registers, but also some somewhat s=
-pecial
-> entities like the controls for some phy-blocks or the io-voltage cont=
-rol.
-> To be able to move these blocks under the grf node where they actuall=
-y
-> belong, make it a simple-mfd.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+On 04/12, Finlye Xiao wrote:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
+> 
+> When changing the clock-rate, currently a new parent is set first and a
+> divider adapted thereafter. This may result in the clock-rate overflowing
+> its target rate for a short time if the new parent has a higher rate than
+> the old parent.
+> 
+> While this often doesn't produce negative effects, it can affect components
+> in a voltage-scaling environment, like the GPU on the rk3399 socs, where
+> the voltage than simply is to low for the temporarily to high clock rate.
+> 
+> For general clock hirarchies this may need more extensive adaptions to
+> the common clock-framework, but at least for composite clocks having
+> both parent and rate settings it is easy to create a short-term solution to
+> make sure the clock-rate does not overflow the target.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> ---
 
-I've picked this patch into my dts32 branch for v4.7, as I need it as b=
-ase for=20
-some other change as well.
+Applied to clk-next
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
