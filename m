@@ -1,94 +1,40 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v5 2/2] i2c: rk3x: add i2c support for rk3399 soc
-Date: Fri, 15 Apr 2016 14:17:58 +0200
-Message-ID: <4971788.LeT208jGID@diego>
-References: <1458147438-62387-1-git-send-email-david.wu@rock-chips.com> <1458147438-62387-3-git-send-email-david.wu@rock-chips.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH 3/6] regulator: rk808: Make rk808 generic, rename
+ rk808-regulator.c
+Date: Fri, 15 Apr 2016 18:24:06 +0200
+Message-ID: <20160415162406.GD25196@piout.net>
+References: <1460711790-22646-1-git-send-email-w.egorov@phytec.de>
+ <1460711790-22646-4-git-send-email-w.egorov@phytec.de>
+ <20160415102602.GE3217@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1458147438-62387-3-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: wsa@the-dreams.de, dianders@chromium.org, andy.shevchenko@gmail.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <wdc@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20160415102602.GE3217@sirena.org.uk>
+Sender: linux-clk-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Wadim Egorov <w.egorov@phytec.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux@arm.linux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, dianders@chromium.org, zyw@rock-chips.com, arnd@arndb.de, k.kozlowski@samsung.com, javier@osg.samsung.com, kgene@kernel.org, olof@lixom.net, geert+renesas@glider.be, sjoerd.simons@collabora.co.uk, treding@nvidia.com, public_timo.s@silentcreek.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi David,
+On 15/04/2016 at 11:26:02 +0100, Mark Brown wrote :
+> On Fri, Apr 15, 2016 at 11:16:27AM +0200, Wadim Egorov wrote:
+> 
+> > This patch just renames the rk808 driver so we can reuse this driver
+> > to add more regulator devices from the RK8XX PMIC family later.
+> 
+> We normally manage to cope fine without renaming things - it's quite
+> common to have drivers that were initially named after one part
+> supporting multiple parts, avoiding the rename makes things like
+> backports easier and avoids needing git log --follow and so on.
 
-Am Donnerstag, 17. M=E4rz 2016, 00:57:18 schrieb David Wu:
-> From: David Wu <wdc@rock-chips.com>
->=20
-> - new method to caculate i2c timings for rk3399:
->   There was an timing issue about "repeated start" time at the I2C
->   controller of version0, controller appears to drop SDA at .875x (7/=
-8)
->   programmed clk high. On version 1 of the controller, the rule(.875x=
-)
->   isn't enough to meet tSU;STA
->   requirements on 100k's Standard-mode. To resolve this issue,
->   sda_update_config, start_setup_config and stop_setup_config for I2C
->   timing information are added, new rules are designed to calculate
->   the timing information at new v1.
-> - pclk and function clk are separated at rk3399.
-> - support i2c highspeed mode: 1.7MHz for rk3399
->=20
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
+I agree with that and I will also add that probably at some point in
+time a new part may appear with a name matching rk8xx but may not be
+compatible with the rk8xx driver and that is when the real mess starts.
 
-[...]
+Finally, renaming the config options and the modules is not nice for the
+user.
 
-> @@ -83,11 +88,34 @@ enum rk3x_i2c_state {
->  	STATE_STOP
->  };
->=20
-> +struct rk3x_i2c;
-> +
-> +/**
-> + * struct rk3x_i2c_calced_timings:
-> + * @div_low: Divider output for low
-> + * @div_high: Divider output for high
-> + * @sda_update_cfg: Used to config sda change state when scl is low,
-> + * used to adjust setup/hold time
-> + * @stp_sta_cfg: Start setup config for setup start time and hold st=
-art
-> time + * @stp_sto_cfg: Stop setup config for setup stop time
-> + */
-> +struct rk3x_i2c_calced_timings {
-> +	unsigned long div_low;
-> +	unsigned long div_high;
-> +	unsigned int sda_update_cfg;
-> +	unsigned int stp_sta_cfg;
-> +	unsigned int stp_sto_cfg;
-> +};
-> +
->  /**
->   * @grf_offset: offset inside the grf regmap for setting the i2c typ=
-e
->   */
->  struct rk3x_i2c_soc_data {
->  	int grf_offset;
-> +
-> +	int (*clk_init)(struct rk3x_i2c *, unsigned long *);
-> +	int (*calc_timings)(unsigned long, struct i2c_timings *,
-> +			    struct rk3x_i2c_calced_timings *);
->  };
->=20
->  struct rk3x_i2c {
-> @@ -97,11 +125,13 @@ struct rk3x_i2c {
->=20
->  	/* Hardware resources */
->  	void __iomem *regs;
-> -	struct clk *clk;
-> +	struct clk *pclk; /* APB clock */
-> +	struct clk *clk; /* Func clk for rk3399 or Func & APB clks for othe=
-rs */
->  	struct notifier_block clk_rate_nb;
-
-please use regular kernel-doc for the struct elements (aka @pclk: somet=
-hing)=20
-like some of the other fields already have.
-
-I can't spot anything else, but also don't know enough about i2c itself=
- :-)
-
-
-Heiko
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
