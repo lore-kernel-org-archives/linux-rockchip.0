@@ -1,68 +1,67 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [GIT PULL] rockchip clock changes for 4.7 part 1
-Date: Fri, 15 Apr 2016 15:52:16 -0700
-Message-ID: <20160415225216.GY14441@codeaurora.org>
-References: <1640921.TBVHP9NGjj@phil>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: move rk3288 edp phy under the GRF
+Date: Sat, 16 Apr 2016 02:49:14 +0200
+Message-ID: <1640976.sZtsTTlDpl@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1640921.TBVHP9NGjj@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/12, Heiko Stuebner wrote:
-> Hi Mike, Stephen,
-> 
-> The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
-> 
->   Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
-> 
-> are available in the git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk1
-> 
-> for you to fetch changes up to 115510053e5e5872f1f19a2220b04aab5542c5c4:
-> 
->   clk: rockchip: add clock controller for the RK3399 (2016-03-28 14:57:07 +0200)
-> 
-> ----------------------------------------------------------------
-> This is first big chunk of Rockchip clock-related changes for 4.7.
-> 
-> Main change is probably the added support for the new rk3399 soc
-> and necessary infrastructure changes surrounding it.
-> 
-> The biggest chunk is probably that clock code is now able to
-> handle multiple clock providers in one system, as the rk3399
-> has two of those. A general one and another smaller one in a
-> separate power domain. The rk3399 also uses another new pll type.
-> Thankfully it just fits nicely into our current structure.
-> It also needs some parts like the cpuclk mux parameters to be
-> a bit more flexible and an new fractional divider subtype without
-> gate.
-> 
-> Apart from this big change we have some more fixes and removal
-> of forgotten variables.
-> 
+The edp-phy control is a part of the General Register Files and
+with a recent patch in 4.6 the phy driver can now also handle this
+correctly, so move the dts node under the GRF as well.
 
-Pulled into clk-next.
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-BUT, this has some checkpatch annoyances, mostly spaces before
-tabs in the DT headers. For example:
-
-WARNING: please, no space before tabs
-#162: FILE: include/dt-bindings/clock/rk3399-cru.h:139:
-+#define FCLK_CM0S ^I^I^I190$
-
-WARNING: please, no space before tabs
-#233: FILE: include/dt-bindings/clock/rk3399-cru.h:210:
-+#define ACLK_PERF_CORE_L ^I^I260$
-
-Please send another patch to fix those or do it in another pull,
-whatever works for you.
-
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 180eb97..9068189 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -201,15 +201,6 @@
+ 		#clock-cells = <0>;
+ 	};
+ 
+-	edp_phy: edp-phy {
+-		compatible = "rockchip,rk3288-dp-phy";
+-		clocks = <&cru SCLK_EDP_24M>;
+-		clock-names = "24m";
+-		rockchip,grf = <&grf>;
+-		#phy-cells = <0>;
+-		status = "disabled";
+-	};
+-
+ 	timer {
+ 		compatible = "arm,armv7-timer";
+ 		arm,cpu-registers-not-fw-configured;
+@@ -756,6 +747,14 @@
+ 	grf: syscon@ff770000 {
+ 		compatible = "rockchip,rk3288-grf", "syscon", "simple-mfd";
+ 		reg = <0xff770000 0x1000>;
++
++		edp_phy: edp-phy {
++			compatible = "rockchip,rk3288-dp-phy";
++			clocks = <&cru SCLK_EDP_24M>;
++			clock-names = "24m";
++			#phy-cells = <0>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	wdt: watchdog@ff800000 {
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+2.7.0
