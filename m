@@ -1,67 +1,61 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [GIT PULL] rockchip clock changes for 4.7 part 1
-Date: Sun, 17 Apr 2016 11:07:04 +0200
-Message-ID: <3923400.OTUUWMXD8f@diego>
-References: <1640921.TBVHP9NGjj@phil> <20160415225216.GY14441@codeaurora.org>
+From: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v5 13/24] input: misc: max8997: explicitly
+ apply PWM config extracted from pwm_args
+Date: Sun, 17 Apr 2016 05:45:48 -0700
+Message-ID: <20160417124548.GE33215@dtor-ws>
+References: <1460661464-11216-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1460661464-11216-14-git-send-email-boris.brezillon@free-electrons.com>
+Reply-To: dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160415225216.GY14441@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-sunxi+bncBDP6N55ZUYDRBAELZ24AKGQE4G2DHLI-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+Content-Disposition: inline
+In-Reply-To: <1460661464-11216-14-git-send-email-boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+List-Post: <https://groups.google.com/group/linux-sunxi/post>, <mailto:linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:linux-sunxi+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/linux-sunxi
+List-Subscribe: <https://groups.google.com/group/linux-sunxi/subscribe>, <mailto:linux-sunxi+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+1076902468213+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/linux-sunxi/subscribe>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Jean Delvare <jdelvare-IBi9RG/b67k@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Bryan Wu <cooloney-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Purdie <rpurdie-Fm38FmjxZ/leoWH0uzbU5w@public.gmane.org>, Jacek Anaszewski <j.anaszewski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-sunxi-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 15. April 2016, 15:52:16 schrieb Stephen Boyd:
-> On 04/12, Heiko Stuebner wrote:
-> > Hi Mike, Stephen,
-> > 
-> > The following changes since commit 
-f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
-> >   Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
-> > 
-> > are available in the git repository at:
-> >   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-> >   tags/v4.7-rockchip-clk1> 
-> > for you to fetch changes up to 115510053e5e5872f1f19a2220b04aab5542c5c4:
-> >   clk: rockchip: add clock controller for the RK3399 (2016-03-28 14:57:07
-> >   +0200)> 
-> > ----------------------------------------------------------------
-> > This is first big chunk of Rockchip clock-related changes for 4.7.
-> > 
-> > Main change is probably the added support for the new rk3399 soc
-> > and necessary infrastructure changes surrounding it.
-> > 
-> > The biggest chunk is probably that clock code is now able to
-> > handle multiple clock providers in one system, as the rk3399
-> > has two of those. A general one and another smaller one in a
-> > separate power domain. The rk3399 also uses another new pll type.
-> > Thankfully it just fits nicely into our current structure.
-> > It also needs some parts like the cpuclk mux parameters to be
-> > a bit more flexible and an new fractional divider subtype without
-> > gate.
-> > 
-> > Apart from this big change we have some more fixes and removal
-> > of forgotten variables.
+On Thu, Apr 14, 2016 at 09:17:33PM +0200, Boris Brezillon wrote:
+> Call pwm_apply_args() just after requesting the PWM device so that the
+> polarity and period are initialized according to the information provided
+> in pwm_args.
 > 
-> Pulled into clk-next.
+> This is an intermediate state, and pwm_apply_args() should be dropped as
+> soon as the atomic PWM infrastructure is in place and the driver makes
+> use of it.
 > 
-> BUT, this has some checkpatch annoyances, mostly spaces before
-> tabs in the DT headers. For example:
+> Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> ---
+>  drivers/input/misc/max8997_haptic.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
-> WARNING: please, no space before tabs
-> #162: FILE: include/dt-bindings/clock/rk3399-cru.h:139:
-> +#define FCLK_CM0S ^I^I^I190$
-> 
-> WARNING: please, no space before tabs
-> #233: FILE: include/dt-bindings/clock/rk3399-cru.h:210:
-> +#define ACLK_PERF_CORE_L ^I^I260$
-> 
-> Please send another patch to fix those or do it in another pull,
-> whatever works for you.
+> diff --git a/drivers/input/misc/max8997_haptic.c b/drivers/input/misc/max8997_haptic.c
+> index a806ba3..bf17f65 100644
+> --- a/drivers/input/misc/max8997_haptic.c
+> +++ b/drivers/input/misc/max8997_haptic.c
+> @@ -304,6 +304,12 @@ static int max8997_haptic_probe(struct platform_device *pdev)
+>  				error);
+>  			goto err_free_mem;
+>  		}
+> +
+> +		/*
+> +		 * FIXME: pwm_apply_args() should be removed when switching to
+> +		 * the atomic PWM API.
+> +		 */
+> +		pwm_apply_args(chip->pwm);
 
-sorry about that. Will send a fixup hopefully today or tomorrow.
+I do not understand. We did not fetch/modify any args, what are we
+applying and why? Especially since we saying we want to remove this
+later.
 
+Thanks.
 
-Heiko
+-- 
+Dmitry
