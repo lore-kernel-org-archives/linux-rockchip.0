@@ -1,77 +1,37 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/3] ASoC: jack: Add a jack detect callback via codec
-Date: Mon, 18 Apr 2016 10:53:02 +0100
-Message-ID: <20160418095302.GN3217@sirena.org.uk>
-References: <1460967452-24574-1-git-send-email-zhengxing@rock-chips.com>
- <1460967452-24574-2-git-send-email-zhengxing@rock-chips.com>
- <20160418092218.GL3217@sirena.org.uk>
- <5714AC57.2070901@rock-chips.com>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: get rid of rockchip_drm_crtc_mode_config
+Date: Mon, 18 Apr 2016 17:54:09 +0800
+Message-ID: <5714AEC1.7050409@rock-chips.com>
+References: <1460948611-32259-1-git-send-email-mark.yao@rock-chips.com>
+ <20160418102538.0ed730ca.john@metanate.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3798963268299913748=="
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5714AC57.2070901-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Xing Zheng <zhengxing-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Adam.Thomson-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org, jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160418102538.0ed730ca.john@metanate.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: John Keeping <john@metanate.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
---===============3798963268299913748==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="fpolVoprVozDR81Y"
-Content-Disposition: inline
-
-
---fpolVoprVozDR81Y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Apr 18, 2016 at 05:43:51PM +0800, Xing Zheng wrote:
-
-> The patch_1/3 add an export of a function that calls the _detect_jack_
-> function
-> when a codec supports jack detection and fill the _detect_jack_ function in
-> the
-> struct snd_soc_codec_driver.
-
-But why would anything ever call this function?  How is this supposed to
-be used?
-
---fpolVoprVozDR81Y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXFK59AAoJECTWi3JdVIfQoIkH/11rNOsK3IY82eHAhlPRvn4c
-qZPm1puFWdfye0GlLf/hkzuXAj2yX/IDiUoOsKo8tqG3hl01+34dMLrpbwK2yzJV
-OOW//DGzsBAhg4aDWJ9XYs5cF7eHDcici/mwavcUASJ4AaxyxcPAIelGMub52E35
-AAJiseqfVg+tGbkRjfwNA+jJJ3TrzZ+jwbgjGVYDlXM1IIt6dPcaxFjzd+nsoSuf
-Qn3ZqvAf2/YYHIZL30ih0WDQx6fC+kngRdrZe6TB1I06exLAtXwdwQ3X3+NUtejf
-HsX1rHKU4TChVb9X3J0msPlDh09ykK+U1pQqTqlIryW3wUOrk/u8WkdWp02f4Vw=
-=KI4t
------END PGP SIGNATURE-----
-
---fpolVoprVozDR81Y--
-
-
---===============3798963268299913748==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3798963268299913748==--
+T24gMjAxNuW5tDA05pyIMTjml6UgMTc6MjUsIEpvaG4gS2VlcGluZyB3cm90ZToKPj4gPldlIG5l
+ZWQgdG8gdGFrZSBjYXJlIG9mIHRoZSB2b3Agc3RhdHVzIHdoZW4gdXNlCj4+ID5yb2NrY2hpcF9k
+cm1fY3J0Y19tb2RlX2NvbmZpZywgaWYgdm9wIGlzIGRpc2FibGVkLAo+PiA+dGhlIGZ1bmN0aW9u
+IHdvdWxkIGZhaWxlZCwgdGhhdCBpcyB0ZXJyaWJsZS4KPj4gPgo+PiA+U2F2ZSBjb25uZWN0b3Ig
+dHlwZSBhbmQgb3V0cHV0IG1vZGUgb24gZHJtX2Rpc3BsYXlfbW9kZS0+cHJpdmF0ZV9mbGFncwo+
+PiA+YXQgZW5jb2RlciBtb2RlX2ZpeHVwLCB0aGVuIHdlIGNhbiBjb25maWd1cmUgdGhlIHR5cGUg
+YW5kIG1vZGUgc2FmZWx5Cj4+ID5vbiBjcnRjIG1vZGVfc2V0Lgo+IFNpbmNlIFJvY2tjaGlwIGlz
+IGF0b21pYywgc2hvdWxkbid0IHRoaXMgYmUgdXNpbmcgYXRvbWljX2NoZWNrIGhvb2tzIGFuZAo+
+IGEgc3ViY2xhc3NlZCBjcnRjX3N0YXRlIHN0cnVjdHVyZT8KPgoKUmlnaHQsIEdvb2QgaWRlYS4K
+ClRoYW5rcy4KCi0tIArvvK1hcmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
