@@ -1,52 +1,29 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 3/6] regulator: rk808: Make rk808 generic, rename
- rk808-regulator.c
-Date: Mon, 18 Apr 2016 18:03:11 +0100
-Message-ID: <20160418170311.GK3217@sirena.org.uk>
-References: <1460711790-22646-1-git-send-email-w.egorov@phytec.de>
- <1460711790-22646-4-git-send-email-w.egorov@phytec.de>
- <20160415102602.GE3217@sirena.org.uk>
- <20160415162406.GD25196@piout.net>
- <57148C05.4090900@phytec.de>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: add vendor-prefix for mqmaker
+Date: Mon, 18 Apr 2016 12:28:03 -0500
+Message-ID: <20160418172803.GA31975@rob-hp-laptop>
+References: <1460933375-6718-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="3NJww9yp20AXRsxZ"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <57148C05.4090900@phytec.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux@arm.linux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, dianders@chromium.org, zyw@rock-chips.com, arnd@arndb.de, k.kozlowski@samsung.com, javier@osg.samsung.com, kgene@kernel.org, olof@lixom.net, geert+renesas@glider.be, sjoerd.simons@collabora.co.uk, treding@nvidia.com, public_timo.s@silentcreek.de
+In-Reply-To: <1460933375-6718-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Apr 18, 2016 at 12:49:34AM +0200, Heiko Stuebner wrote:
+> Add vendor-prefix for Shenzen-based mqmaker Inc.
+> 
+> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/vendor-prefixes.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
---3NJww9yp20AXRsxZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Mon, Apr 18, 2016 at 09:25:57AM +0200, Wadim Egorov wrote:
-
-> It seems this topic has been already discussed here [1].
-> So the right solution is just to rename the rk808 struct in rk808.h,
-> don't touch the driver names and config options and naming the
-> additional RK818 PMIC in the Kconfig?
-
-Something like that, yes.  If it's really useful for clarification some
-renaming of code might be useful.
-
---3NJww9yp20AXRsxZ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXFRNMAAoJECTWi3JdVIfQ9ucH/2UcY+YmZyUcGyDgMIayC9dd
-ua6QDXSgx1W/VNkI+ddPNUHgaIjG4uor6mhhRIE7ltFkVWcyoCqzhnArzPP6GYAX
-WXTLm5BetM6vv2gnJXXnUmFWG9TlXa+7uTbR7QdANPdP1Qk3URHecS0O4W8gNyoI
-0pA/4ndRrs9q2Gq23W+810jCyl/M26uO7f6xdRir8hugCJWnJgXzQ2VWI55uhRXR
-r5Z3wqhnhIPmu0W9y3r0yfND7Fw0NiJOL+lzXNVH1gJYK0zK9JKtrrqAR1tD+7Eh
-pv4G1G9N7NnreQcwC3ijQ9UFVyXQ74dGEUL3EGT+7DvmYIVcGVFqbRQAmD/Uvjg=
-=/lfo
------END PGP SIGNATURE-----
-
---3NJww9yp20AXRsxZ--
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
