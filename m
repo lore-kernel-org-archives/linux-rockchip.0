@@ -1,17 +1,12 @@
 From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH 1/3] ASoC: jack: Add a jack detect callback
-	via codec
-Date: Mon, 18 Apr 2016 18:20:00 +0800
-Message-ID: <5714B4D0.90406@rock-chips.com>
-References: <1460967452-24574-1-git-send-email-zhengxing@rock-chips.com>
- <1460967452-24574-2-git-send-email-zhengxing@rock-chips.com>
- <20160418092218.GL3217@sirena.org.uk> <5714AC57.2070901@rock-chips.com>
- <20160418095302.GN3217@sirena.org.uk> <5714B0D4.7080506@rock-chips.com>
+Subject: [PATCH v2 0/3] Add support simple-card parse jack
+	detection via external codec
+Date: Mon, 18 Apr 2016 19:20:00 +0800
+Message-ID: <1460978403-4754-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <5714B0D4.7080506@rock-chips.com>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -21,35 +16,40 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, heiko@sntech.de, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org, Adam.Thomson@diasemi.com, jay.xu@rock-chips.com
+To: linux-rockchip@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, alsa-devel@alsa-project.org, Mengdong Lin <mengdong.lin@linux.intel.com>, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>, Aaro Koskinen <aaro.koskinen@iki.fi>, Takashi Iwai <tiwai@suse.com>, sugar.zhang@rock-chips.com, jay.xu@rock-chips.com, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Jyri Sarha <jsarha@ti.com>, Rob Herring <robh+dt@kernel.org>, Support Opensource <support.opensource@diasemi.com>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, linux-kernel@vger.kernel.org, Adam.Thomson@diasemi.com, broonie@kernel.org, Kumar Gala <galak@codeaurora.org>, Jun Nie <jun.nie@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjAxNuW5tDA05pyIMTjml6UgMTg6MDMsIFhpbmcgWmhlbmcgd3JvdGU6Cj4gSEkgTWFyaywK
-Pgo+IE9uIDIwMTblubQwNOaciDE45pelIDE3OjUzLCBNYXJrIEJyb3duIHdyb3RlOgo+PiBPbiBN
-b24sIEFwciAxOCwgMjAxNiBhdCAwNTo0Mzo1MVBNICswODAwLCBYaW5nIFpoZW5nIHdyb3RlOgo+
-Pgo+Pj4gVGhlIHBhdGNoXzEvMyBhZGQgYW4gZXhwb3J0IG9mIGEgZnVuY3Rpb24gdGhhdCBjYWxs
-cyB0aGUgX2RldGVjdF9qYWNrXwo+Pj4gZnVuY3Rpb24KPj4+IHdoZW4gYSBjb2RlYyBzdXBwb3J0
-cyBqYWNrIGRldGVjdGlvbiBhbmQgZmlsbCB0aGUgX2RldGVjdF9qYWNrXyAKPj4+IGZ1bmN0aW9u
-IGluCj4+PiB0aGUKPj4+IHN0cnVjdCBzbmRfc29jX2NvZGVjX2RyaXZlci4KPj4gQnV0IHdoeSB3
-b3VsZCBhbnl0aGluZyBldmVyIGNhbGwgdGhpcyBmdW5jdGlvbj8gIEhvdyBpcyB0aGlzIHN1cHBv
-c2VkIHRvCj4+IGJlIHVzZWQ/Cj4gSW4gbXkgb3BpbmlvbiwgdGhpcyBmdW5jdGlvbiBpcyBtYWlu
-bHkgdG8gcHJvdmlkZSBzaW1wbGUtY2FyZCAKPiAocGF0Y2hfMi8zKS4KPgo+IFRoaXMgZnVuY3Rp
-b24gd2lsbCBjYWxsIGFuZCBpbml0aWFsaXplIGphY2sgZGV0ZWN0aW9uIGlmIGEgY29kZWMgCj4g
-c3VwcG9ydHMgaXQgYW5kIGZpbGwgdGhlIGRldGVjdF9qYWNrIGZ1bmN0aW9uIChwYXRjaF8zLzMg
-dXNlIGl0KSwKPiBhbmQsIHdlIGRvbid0IG5lZWQgdG8gY3JlYXRlIGEgY3VzdG9taXplZCBtYWNo
-aW5lIGRyaXZlciB0byBjYWxsIHRoZSAKPiBjb2RlYyBqYWNrIGRldGVjdGlvbiwgdGhlIHNpbXBs
-ZS1jYXJkIGlzIGFibGUgdG8KPiBwYXJzZSB0aGVtLgo+Cj4gVGhhbmtzLgo+ClRoZSBkdHMgdXNh
-Z2UgbGlrZSB0aGlzOgoKc291bmQgewogICAgICAgICAuLi4uLi4KICAgICAgICAgc2ltcGxlLWF1
-ZGlvLWNhcmQsZGFpLWxpbmtAMCB7CiAgICAgICAgICAgICBmb3JtYXQgPSAiaTJzIjsKICAgICAg
-ICAgICAgIGNwdSB7CiAgICAgICAgICAgICAgICAgc291bmQtZGFpID0gPCZpMnMwPjsKICAgICAg
-ICAgICAgIH07CgogICAgICAgICAgICAgY29kZWMgewogICAgICAgICAgICAgICAgIHNvdW5kLWRh
-aSA9IDwmY29kZWM+OwoKICAgICAgICAgICAgICAgICBzaW1wbGUtYXVkaW8tY2FyZCxjb2RlYy1q
-YWNrID0KICAgICAgICAgICAgICAgICAgICAgIkpBQ0tfSEVBRFNFVCIsCiAgICAgICAgICAgICAg
-ICAgICAgICJKQUNLX0JUTl8wIiwKICAgICAgICAgICAgICAgICAgICAgIkpBQ0tfQlROXzEiLAog
-ICAgICAgICAgICAgICAgICAgICAiSkFDS19CVE5fMiIsCiAgICAgICAgICAgICAgICAgICAgICJK
-QUNLX0JUTl8zIjsKICAgICAgICAgICAgIH07CiAgICAgICAgIH07CiAgICAgICAgIC4uLi4uLgp9
-OwoKLS0gCi0gWGluZyBaaGVuZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2EtZGV2ZWxAYWxzYS1wcm9q
-ZWN0Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8v
-YWxzYS1kZXZlbAo=
+
+Hi,
+    In most cases, many codecs already supports jack detection,
+previouslly, we need to create a customized machine driver every time.
+
+    In my opinion, the codec fill the detect_jack explicitly and tell
+sound framework it supports the jack detection, the simple-card is
+able to parse the dts file and call the export function to initialize
+the jace detection via the codec.
+
+    I think that it will bring better flexibility.
+
+    Thanks.
+
+Changes in v1:
+- clean up the commit message and notes
+
+Xing Zheng (3):
+  ASoC: jack: Add an export of a function that calls the codec jack
+    detection
+  ASoC: simple-card: Add support call the codec jack detection after
+    parse dts
+  ASoC: da7219: Add detect_jack callback in the snd_soc_codec_driver
+
+ .../devicetree/bindings/sound/simple-card.txt      |   17 +++
+ include/sound/soc.h                                |    7 ++
+ sound/soc/codecs/da7219.c                          |    2 +
+ sound/soc/generic/simple-card.c                    |  126 +++++++++++++++++++-
+ sound/soc/soc-jack.c                               |   17 +++
+ 5 files changed, 166 insertions(+), 3 deletions(-)
+
+-- 
+1.7.9.5
