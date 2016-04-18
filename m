@@ -1,63 +1,52 @@
-From: Dylan Reid <dgreid@chromium.org>
-Subject: Re: [PATCH 1/3] ASoC: jack: Add a jack detect callback via codec
-Date: Mon, 18 Apr 2016 09:40:50 -0700
-Message-ID: <CAEUnVG6FWM5ud8FH7FyhNTSxOYg8GM_eeyUX7ynrSRC6uhOePg@mail.gmail.com>
-References: <1460967452-24574-1-git-send-email-zhengxing@rock-chips.com>
- <1460967452-24574-2-git-send-email-zhengxing@rock-chips.com>
- <20160418092218.GL3217@sirena.org.uk> <5714AC57.2070901@rock-chips.com>
- <20160418095302.GN3217@sirena.org.uk> <5714B0D4.7080506@rock-chips.com>
- <5714B4D0.90406@rock-chips.com> <20160418114618.GW3217@sirena.org.uk>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 3/6] regulator: rk808: Make rk808 generic, rename
+ rk808-regulator.c
+Date: Mon, 18 Apr 2016 18:03:11 +0100
+Message-ID: <20160418170311.GK3217@sirena.org.uk>
+References: <1460711790-22646-1-git-send-email-w.egorov@phytec.de>
+ <1460711790-22646-4-git-send-email-w.egorov@phytec.de>
+ <20160415102602.GE3217@sirena.org.uk>
+ <20160415162406.GD25196@piout.net>
+ <57148C05.4090900@phytec.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="3NJww9yp20AXRsxZ"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160418114618.GW3217@sirena.org.uk>
+Content-Disposition: inline
+In-Reply-To: <57148C05.4090900@phytec.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Xing Zheng <zhengxing@rock-chips.com>, linux-rockchip@lists.infradead.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Adam.Thomson@diasemi.com, sugar.zhang@rock-chips.com, Xu Jianqun <jay.xu@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Wadim Egorov <w.egorov@phytec.de>
+Cc: Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux@arm.linux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, dianders@chromium.org, zyw@rock-chips.com, arnd@arndb.de, k.kozlowski@samsung.com, javier@osg.samsung.com, kgene@kernel.org, olof@lixom.net, geert+renesas@glider.be, sjoerd.simons@collabora.co.uk, treding@nvidia.com, public_timo.s@silentcreek.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 18, 2016 at 4:46 AM, Mark Brown <broonie@kernel.org> wrote:
-> On Mon, Apr 18, 2016 at 06:20:00PM +0800, Xing Zheng wrote:
->> On 2016=E5=B9=B404=E6=9C=8818=E6=97=A5 18:03, Xing Zheng wrote:
->
->> sound {
->>         ......
->>         simple-audio-card,dai-link@0 {
->>             format =3D "i2s";
->>             cpu {
->>                 sound-dai =3D <&i2s0>;
->>             };
->>
->>             codec {
->>                 sound-dai =3D <&codec>;
->>
->>                 simple-audio-card,codec-jack =3D
->>                     "JACK_HEADSET",
->>                     "JACK_BTN_0",
->>                     "JACK_BTN_1",
->>                     "JACK_BTN_2",
->>                     "JACK_BTN_3";
->>             };
->>         };
->
-> This seems like it's only half the job and worryingly close to Linux
-> internals.  In particular the fact that the binding is specific to
-> simple-card and the fact that it's being placed on the CODEC (rather
-> than a separate object that the CODEC references) so that we can't
-> combine multiple devices are both a concern.
->
-> Dylan Reid did have an earlier go at defining a binding for this:
->
->   http://thread.gmane.org/gmane.linux.alsa.devel/138906
->
-> which went through a couple more iterations but the work on that seem=
-ed
-> to die off a bit.
 
-Thanks for forwarding this.  I did intend to get back to that.  But,
-almost a year later, obviously I haven't.
+--3NJww9yp20AXRsxZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Xing if you want to pick this up it would be great.  Lars had some
-good points on that original discussion, which I think we can
-integrate into a single solution.
+On Mon, Apr 18, 2016 at 09:25:57AM +0200, Wadim Egorov wrote:
+
+> It seems this topic has been already discussed here [1].
+> So the right solution is just to rename the rk808 struct in rk808.h,
+> don't touch the driver names and config options and naming the
+> additional RK818 PMIC in the Kconfig?
+
+Something like that, yes.  If it's really useful for clarification some
+renaming of code might be useful.
+
+--3NJww9yp20AXRsxZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXFRNMAAoJECTWi3JdVIfQ9ucH/2UcY+YmZyUcGyDgMIayC9dd
+ua6QDXSgx1W/VNkI+ddPNUHgaIjG4uor6mhhRIE7ltFkVWcyoCqzhnArzPP6GYAX
+WXTLm5BetM6vv2gnJXXnUmFWG9TlXa+7uTbR7QdANPdP1Qk3URHecS0O4W8gNyoI
+0pA/4ndRrs9q2Gq23W+810jCyl/M26uO7f6xdRir8hugCJWnJgXzQ2VWI55uhRXR
+r5Z3wqhnhIPmu0W9y3r0yfND7Fw0NiJOL+lzXNVH1gJYK0zK9JKtrrqAR1tD+7Eh
+pv4G1G9N7NnreQcwC3ijQ9UFVyXQ74dGEUL3EGT+7DvmYIVcGVFqbRQAmD/Uvjg=
+=/lfo
+-----END PGP SIGNATURE-----
+
+--3NJww9yp20AXRsxZ--
