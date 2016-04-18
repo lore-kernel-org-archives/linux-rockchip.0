@@ -1,227 +1,49 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 9/9] arm64: dts: rockchip: move the rk3368 thermal data into rk3368.dtsi
-Date: Mon, 18 Apr 2016 11:36:01 +0800
-Message-ID: <1460950562-20652-10-git-send-email-wxt@rock-chips.com>
-References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+From: Wadim Egorov <w.egorov@phytec.de>
+Subject: Re: [PATCH 3/6] regulator: rk808: Make rk808 generic, rename
+ rk808-regulator.c
+Date: Mon, 18 Apr 2016 09:25:57 +0200
+Message-ID: <57148C05.4090900@phytec.de>
+References: <1460711790-22646-1-git-send-email-w.egorov@phytec.de>
+ <1460711790-22646-4-git-send-email-w.egorov@phytec.de>
+ <20160415102602.GE3217@sirena.org.uk> <20160415162406.GD25196@piout.net>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <20160415162406.GD25196@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
-To: edubezval@gmail.com
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Olof Johansson <olof@lixom.net>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Matthias Brugger <mbrugger@suse.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Alexandre Belloni <alexandre.belloni@free-electrons.com>, Mark Brown <broonie@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, linux@arm.linux.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, dianders@chromium.org, zyw@rock-chips.com, arnd@arndb.de, k.kozlowski@samsung.com, javier@osg.samsung.com, kgene@kernel.org, olof@lixom.net, geert+renesas@glider.be, sjoerd.simons@collabora.co.uk, treding@nvidia.com, public_timo.s@silentcreek.de
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to be standard to manage for rockchip SoCs,  move the thermal
-data into rk3368 dtsi, we needn't to add a new file for thermal.
 
-Fixes commit f990238f859e
-("arm64: dts: rockchip: Add main thermal info to rk3368.dtsi")
 
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-Cc: Zhang Rui <rui.zhang@intel.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
+On 15.04.2016 18:24, Alexandre Belloni wrote:
+> On 15/04/2016 at 11:26:02 +0100, Mark Brown wrote :
+>> On Fri, Apr 15, 2016 at 11:16:27AM +0200, Wadim Egorov wrote:
+>>
+>>> This patch just renames the rk808 driver so we can reuse this driver
+>>> to add more regulator devices from the RK8XX PMIC family later.
+>> We normally manage to cope fine without renaming things - it's quite
+>> common to have drivers that were initially named after one part
+>> supporting multiple parts, avoiding the rename makes things like
+>> backports easier and avoids needing git log --follow and so on.
+> I agree with that and I will also add that probably at some point in
+> time a new part may appear with a name matching rk8xx but may not be
+> compatible with the rk8xx driver and that is when the real mess starts.
+>
+> Finally, renaming the config options and the modules is not nice for the
+> user.
+>
 
----
+OK, renaming the driver and it's config options is not the best idea.
+But how about renaming the variables and function names within the drivers?
+It would be more clearer which driver parts are generic and are used by
+multiple PMIC devices.
 
- arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112 -----------------------
- arch/arm64/boot/dts/rockchip/rk3368.dtsi         |  66 ++++++++++++-
- 2 files changed, 65 insertions(+), 113 deletions(-)
- delete mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+It seems this topic has been already discussed here [1].
+So the right solution is just to rename the rk808 struct in rk808.h,
+don't touch the driver names and config options and naming the
+additional RK818 PMIC in the Kconfig?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
-deleted file mode 100644
-index a10010f..0000000
---- a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
-+++ /dev/null
-@@ -1,112 +0,0 @@
--/*
-- * Device Tree Source for RK3368 SoC thermal
-- *
-- * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
-- * Caesar Wang <wxt@rock-chips.com>
-- *
-- * This file is dual-licensed: you can use it either under the terms
-- * of the GPL or the X11 license, at your option. Note that this dual
-- * licensing only applies to this file, and not this project as a
-- * whole.
-- *
-- *  a) This file is free software; you can redistribute it and/or
-- *     modify it under the terms of the GNU General Public License as
-- *     published by the Free Software Foundation; either version 2 of the
-- *     License, or (at your option) any later version.
-- *
-- *     This file is distributed in the hope that it will be useful,
-- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-- *     GNU General Public License for more details.
-- *
-- * Or, alternatively,
-- *
-- *  b) Permission is hereby granted, free of charge, to any person
-- *     obtaining a copy of this software and associated documentation
-- *     files (the "Software"), to deal in the Software without
-- *     restriction, including without limitation the rights to use,
-- *     copy, modify, merge, publish, distribute, sublicense, and/or
-- *     sell copies of the Software, and to permit persons to whom the
-- *     Software is furnished to do so, subject to the following
-- *     conditions:
-- *
-- *     The above copyright notice and this permission notice shall be
-- *     included in all copies or substantial portions of the Software.
-- *
-- *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-- *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-- *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-- *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-- *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-- *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-- *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-- *     OTHER DEALINGS IN THE SOFTWARE.
-- */
--
--#include <dt-bindings/thermal/thermal.h>
--
--cpu_thermal: cpu_thermal {
--	polling-delay-passive = <100>; /* milliseconds */
--	polling-delay = <5000>; /* milliseconds */
--
--	thermal-sensors = <&tsadc 0>;
--
--	trips {
--		cpu_alert0: cpu_alert0 {
--			temperature = <75000>; /* millicelsius */
--			hysteresis = <2000>; /* millicelsius */
--			type = "passive";
--		};
--		cpu_alert1: cpu_alert1 {
--			temperature = <80000>; /* millicelsius */
--			hysteresis = <2000>; /* millicelsius */
--			type = "passive";
--		};
--		cpu_crit: cpu_crit {
--			temperature = <95000>; /* millicelsius */
--			hysteresis = <2000>; /* millicelsius */
--			type = "critical";
--		};
--	};
--
--	cooling-maps {
--		map0 {
--			trip = <&cpu_alert0>;
--			cooling-device =
--				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
--		};
--		map1 {
--			trip = <&cpu_alert1>;
--			cooling-device =
--				<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
--		};
--	};
--};
--
--gpu_thermal: gpu_thermal {
--	polling-delay-passive = <100>; /* milliseconds */
--	polling-delay = <5000>; /* milliseconds */
--
--	thermal-sensors = <&tsadc 1>;
--
--	trips {
--		gpu_alert0: gpu_alert0 {
--			temperature = <80000>; /* millicelsius */
--			hysteresis = <2000>; /* millicelsius */
--			type = "passive";
--		};
--		gpu_crit: gpu_crit {
--			temperature = <1150000>; /* millicelsius */
--			hysteresis = <2000>; /* millicelsius */
--			type = "critical";
--		};
--	};
--
--	cooling-maps {
--		map0 {
--			trip = <&gpu_alert0>;
--			cooling-device =
--				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
--		};
--	};
--};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index 7056a0f..8b4a7c9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -413,7 +413,71 @@
- 	};
- 
- 	thermal-zones {
--		#include "rk3368-thermal.dtsi"
-+		cpu {
-+			polling-delay-passive = <100>; /* milliseconds */
-+			polling-delay = <5000>; /* milliseconds */
-+
-+			thermal-sensors = <&tsadc 0>;
-+
-+			trips {
-+				cpu_alert0: cpu_alert0 {
-+					temperature = <75000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				cpu_alert1: cpu_alert1 {
-+					temperature = <80000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				cpu_crit: cpu_crit {
-+					temperature = <95000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_alert0>;
-+					cooling-device =
-+					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+				map1 {
-+					trip = <&cpu_alert1>;
-+					cooling-device =
-+					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		gpu {
-+			polling-delay-passive = <100>; /* milliseconds */
-+			polling-delay = <5000>; /* milliseconds */
-+
-+			thermal-sensors = <&tsadc 1>;
-+
-+			trips {
-+				gpu_alert0: gpu_alert0 {
-+					temperature = <80000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				gpu_crit: gpu_crit {
-+					temperature = <115000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&gpu_alert0>;
-+					cooling-device =
-+					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
- 	};
- 
- 	tsadc: tsadc@ff280000 {
--- 
-1.9.1
+[1] https://lkml.org/lkml/2015/12/31/13
