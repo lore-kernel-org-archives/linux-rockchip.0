@@ -1,136 +1,52 @@
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/3] phy: rockchip-usb: should be a child device of the GRF
-Date: Tue, 19 Apr 2016 08:13:47 +0200
-Message-ID: <2045729.fIbxLc8i6o@diego>
-References: <1459431812-6286-1-git-send-email-heiko@sntech.de> <1459431812-6286-2-git-send-email-heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: support non-iommu buffer path
+Date: Tue, 19 Apr 2016 08:27:10 +0200
+Message-ID: <2221474.O4M7g09IWn@diego>
+References: <1461032372-14630-1-git-send-email-mark.yao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1459431812-6286-2-git-send-email-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: kishon@ti.com
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1461032372-14630-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon.
-
-Am Donnerstag, 31. M=E4rz 2016, 15:43:30 schrieb Heiko Stuebner:
-> The usb-phy is fully enclosed in the general register files (GRF).
-> Therefore as seen from the device-tree it shouldn't be a separate pla=
-tform-
-> device but instead a sub-device of the GRF - using the simply-mfd mec=
-hanism.
->=20
-> As the usb-phy is part of the kernel for some releases now, we keep
-> the old (and now deprecated) binding for compatibility purposes.
->=20
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-
-could you look into picking this patch up for 4.7?
-
-Same principle as for the other phy drivers, but it's already in the ke=
-rnel=20
-for a while, so it gets a fallback for the old binding and can go throu=
-gh the=20
-normal way.
-
-The other two (devicetree-)patches I would then simply queue for 4.8 my=
-self=20
-after you're fine with the driver-side.
-
-
-Thanks
-Heiko
-
-> ---
->  .../devicetree/bindings/phy/rockchip-usb-phy.txt   | 27
-> ++++++++++++++-------- drivers/phy/phy-rockchip-usb.c                =
-     |
-> 14 ++++++++--- 2 files changed, 28 insertions(+), 13 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.t=
-xt
-> b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt index
-> 68498d5..cc6be96 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-usb-phy.txt
-> @@ -5,11 +5,13 @@ Required properties:
->       "rockchip,rk3066a-usb-phy"
->       "rockchip,rk3188-usb-phy"
->       "rockchip,rk3288-usb-phy"
-> - - rockchip,grf : phandle to the syscon managing the "general
-> -   register files"
->   - #address-cells: should be 1
->   - #size-cells: should be 0
->=20
-> +Deprecated properties:
-> + - rockchip,grf : phandle to the syscon managing the "general
-> +   register files" - phy should be a child of the GRF instead
-> +
->  Sub-nodes:
->  Each PHY should be represented as a sub-node.
->=20
-> @@ -28,14 +30,19 @@ Optional Properties:
->=20
->  Example:
->=20
-> -usbphy: phy {
-> -	compatible =3D "rockchip,rk3288-usb-phy";
-> -	rockchip,grf =3D <&grf>;
-> -	#address-cells =3D <1>;
-> -	#size-cells =3D <0>;
-> +grf: syscon@ff770000 {
-> +	compatible =3D "rockchip,rk3288-grf", "syscon", "simple-mfd";
-> +
-> +...
-> +
-> +	usbphy: phy {
-> +		compatible =3D "rockchip,rk3288-usb-phy";
-> +		#address-cells =3D <1>;
-> +		#size-cells =3D <0>;
->=20
-> -	usbphy0: usb-phy0 {
-> -		#phy-cells =3D <0>;
-> -		reg =3D <0x320>;
-> +		usbphy0: usb-phy0 {
-> +			#phy-cells =3D <0>;
-> +			reg =3D <0x320>;
-> +		};
->  	};
->  };
-> diff --git a/drivers/phy/phy-rockchip-usb.c b/drivers/phy/phy-rockchi=
-p-usb.c
-> index f62d899..23f33db 100644
-> --- a/drivers/phy/phy-rockchip-usb.c
-> +++ b/drivers/phy/phy-rockchip-usb.c
-> @@ -397,8 +397,12 @@ static int rockchip_usb_phy_probe(struct
-> platform_device *pdev) phy_base->pdata =3D match->data;
->=20
->  	phy_base->dev =3D dev;
-> -	phy_base->reg_base =3D syscon_regmap_lookup_by_phandle(dev->of_node=
-,
-> -							     "rockchip,grf");
-> +	phy_base->reg_base =3D ERR_PTR(-ENODEV);
-> +	if (dev->parent && dev->parent->of_node)
-> +		phy_base->reg_base =3D syscon_node_to_regmap(dev->parent->of_node)=
-;
-> +	if (IS_ERR(phy_base->reg_base))
-> +		phy_base->reg_base =3D syscon_regmap_lookup_by_phandle(
-> +						dev->of_node, "rockchip,grf");
->  	if (IS_ERR(phy_base->reg_base)) {
->  		dev_err(&pdev->dev, "Missing rockchip,grf property\n");
->  		return PTR_ERR(phy_base->reg_base);
-> @@ -463,7 +467,11 @@ static int __init rockchip_init_usb_uart(void)
->  		return -ENOTSUPP;
->  	}
->=20
-> -	grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-> +	grf =3D ERR_PTR(-ENODEV);
-> +	if (np->parent)
-> +		grf =3D syscon_node_to_regmap(np->parent);
-> +	if (IS_ERR(grf))
-> +		grf =3D syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
->  	if (IS_ERR(grf)) {
->  		pr_err("%s: Missing rockchip,grf property, %lu\n",
->  		       __func__, PTR_ERR(grf));
+QW0gRGllbnN0YWcsIDE5LiBBcHJpbCAyMDE2LCAxMDoxOTozMiBzY2hyaWViIE1hcmsgWWFvOgo+
+IFNvbWUgcm9ja2NoaXAgdm9wIG5vdCBzdXBwb3J0IGlvbW11LCBuZWVkIHVzZSBub24taW9tbXUK
+PiBidWZmZXIgZm9yIGl0LiBBbmQgaWYgd2UgZ2V0IGlvbW11IGlzc3Vlcywgd2UgY2FuIGNvbXBh
+cmUKPiB0aGUgaXNzdWVzIHdpdGggbm9uLWlvbW11IHBhdGgsIHRoZSB3b3VsZCBoZWxwIHRoZSBk
+ZWJ1Zy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5j
+b20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMg
+fCAgIDY1Cj4gKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tIDEgZmlsZSBjaGFuZ2VkLCA0NyBp
+bnNlcnRpb25zKCspLCAxOAo+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gYi9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGluZGV4IGY1NTZhOGYuLjkwNzI5YzAgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKClsuLi5dCgo+
+IEBAIC00OTcsNiArNTE0LDE4IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX3BsYXRmb3JtX3By
+b2JlKHN0cnVjdAo+IHBsYXRmb3JtX2RldmljZSAqcGRldikgY29udGludWU7Cj4gIAkJfQo+IAo+
+ICsJCWlvbW11ID0gb2ZfcGFyc2VfcGhhbmRsZShwb3J0LT5wYXJlbnQsICJpb21tdXMiLCAwKTsK
+PiArCQlpZiAoIWlvbW11IHx8ICFvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKGlvbW11LT5wYXJlbnQp
+KSB7Cj4gKwkJCWRldl93YXJuKGRldiwgIk5vIGF2YWlsYWJsZSBpb21tdSBmb3VuZCBmb3IgJXNc
+biIsCj4gKwkJCQkgcG9ydC0+cGFyZW50LT5mdWxsX25hbWUpOwo+ICsJCQlkZXZfd2FybihkZXYs
+ICJGb3JjZSBub24taW9tbXUgYnVmZmVyIGZvciBhbGwgY3J0Y1xuIik7CgpBcyBzdGF0ZWQgaW4g
+dGhlIHBhdGNoLWRlc2NyaXB0aW9uLCB0aGlzIGlzIHNvbWV3aGF0IGNvbW1vbiBmb3IgX3NvbWVf
+IHZvcHMgCltsaWtlIHRoZSBDb3J0ZXgtQTlzIEknbSBzdGlsbCBob3BpbmcgdG8gc3VwcG9ydCBh
+dCBzb21lIHBvaW50IGluIHRoZSBmdXR1cmUgCjotRCBdLCBzbyB0aGlzIHNob3VsZCBwcm9iYWJs
+eSBiZSBlaXRoZXIgYSBkZXZfZGJnIG9yIGEgZGV2X2luZm8gYXMgbWF4aW11bSAKYW5kIGFsc28g
+Y29uZGVuc2VkIGludG8gb25lIGxpbmUgb2Ygb3V0cHV0IGxpa2U6CgoJZGV2X2RiZyhkZXYsICJu
+byBpb21tdSBhdHRhY2hlZCBmb3IgJXMsIHVzaW5nIG5vbi1pb21tdSBidWZmZXJzXG4iLAoJCQkg
+IHBvcnQtPnBhcmVudC0+ZnVsbF9uYW1lKTsKCgpIZWlrbwpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
