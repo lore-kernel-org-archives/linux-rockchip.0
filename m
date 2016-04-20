@@ -1,31 +1,52 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [GIT PULL] rockchip clock changes for 4.7 part 2 - fixups
-Date: Wed, 20 Apr 2016 11:43:44 -0700
-Message-ID: <20160420184344.GK15324@codeaurora.org>
-References: <2965049.JkTOR6r5pq@diego>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH 7/9] thermal: of: Add support for hardware-tracked trip
+ points
+Date: Wed, 20 Apr 2016 16:48:18 -0700
+Message-ID: <20160420234818.GB2558@localhost.localdomain>
+References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+ <1460950562-20652-8-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <2965049.JkTOR6r5pq@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <1460950562-20652-8-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Mikko Perttunen <mperttunen@nvidia.com>, Paul Walmsley <pwalmsley@nvidia.com>, Wei Ni <wni@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/20, Heiko Stuebner wrote:
-> Hi Mike, Stephen,
+On Mon, Apr 18, 2016 at 11:35:59AM +0800, Caesar Wang wrote:
+> From: Mikko Perttunen <mperttunen@nvidia.com>
 > 
-> as Stephen pointed out in the last pull-request, some unfortinuate style
-> errors slipped in. This pull fixes these up. In the header file as well as a
-> general sweep in terms of overly long lines in general code areas.
-> 
-> 
-> So if it looks ok, please pull.
-> 
+> This adds support for hardware-tracked trip points to the device tree
+<cut>
 
-Thanks. Pulled into clk-next.
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index 97b86c5..6ef932a 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -335,12 +335,14 @@ struct thermal_genl_event {
+>   * @get_trend: a pointer to a function that reads the sensor temperature trend.
+>   * @set_emul_temp: a pointer to a function that sets sensor emulated
+>   *		   temperature.
+> + * @set_trips: a pointer to a function that set low/high trip temperature.
+>   */
+>  struct thermal_zone_of_device_ops {
+>  	int (*get_temp)(void *, int *);
+>  	int (*get_trend)(void *, long *);
+>  	int (*set_emul_temp)(void *, int);
+>  	int (*set_trip_temp)(void *, int, int);
+> +	int (*set_trips)(void *, int, int);
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+This is unfortunately a diverges from API available on thermal core. Can
+you please add first on thermal core then, use it in of thermal?
+
+I don't want to have callbacks available only via of thermal. If we
+allow it, OF thermal becomes a separate API.
+
+>  };
+>  
+>  /**
+> -- 
+> 1.9.1
+> 
