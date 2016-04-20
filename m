@@ -1,43 +1,35 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH 6/6] clk: rockchip: rk3399: fix the gate bit for i2c4 and i2c8
-Date: Wed, 20 Apr 2016 19:12:10 +0800
-Message-ID: <1461150730-29787-1-git-send-email-zhengxing@rock-chips.com>
-References: <1461150414-29638-1-git-send-email-zhengxing@rock-chips.com>
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1461150414-29638-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org, heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, huangtao@rock-chips.com, elaine.zhang@rock-chips.com, jay.xu@rock-chips.com, dianders@chromium.org, Xing Zheng <zhengxing@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: Re: [PATCH v3] drm/rockchip: get rid of rockchip_drm_crtc_mode_config
+Date: Wed, 20 Apr 2016 12:26:32 +0100
+Message-ID: <20160420122632.69378803.john@metanate.com>
+References: <1461119505-27076-1-git-send-email-mark.yao@rock-chips.com>
+ <1461120102-32054-1-git-send-email-mark.yao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1461120102-32054-1-git-send-email-mark.yao@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark Yao <mark.yao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The gate bits of the i2c4 and i2c8 are incorrect due to the manual
-error, we need to fix them.
-
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
-
- drivers/clk/rockchip/clk-rk3399.c |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index e81cc85..3c5ab39 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1411,11 +1411,11 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
- 
- 	COMPOSITE_NOMUX(SCLK_I2C4_PMU, "clk_i2c4_pmu", "ppll", 0,
- 			RK3399_PMU_CLKSEL_CON(3), 0, 7, DFLAGS,
--			RK3399_PMU_CLKGATE_CON(0), 11, GFLAGS),
-+			RK3399_PMU_CLKGATE_CON(0), 10, GFLAGS),
- 
- 	COMPOSITE_NOMUX(SCLK_I2C8_PMU, "clk_i2c8_pmu", "ppll", 0,
- 			RK3399_PMU_CLKSEL_CON(2), 8, 7, DFLAGS,
--			RK3399_PMU_CLKGATE_CON(0), 10, GFLAGS),
-+			RK3399_PMU_CLKGATE_CON(0), 11, GFLAGS),
- 
- 	DIV(0, "clk_32k_suspend_pmu", "xin24m", CLK_IGNORE_UNUSED,
- 			RK3399_PMU_CLKSEL_CON(4), 0, 10, DFLAGS),
--- 
-1.7.9.5
-
-
+T24gV2VkLCAyMCBBcHIgMjAxNiAxMDo0MTo0MiArMDgwMCwgTWFyayBZYW8gd3JvdGU6Cgo+IFdl
+IG5lZWQgdG8gdGFrZSBjYXJlIG9mIHRoZSB2b3Agc3RhdHVzIHdoZW4gdXNlCj4gcm9ja2NoaXBf
+ZHJtX2NydGNfbW9kZV9jb25maWcsIGlmIHZvcCBpcyBkaXNhYmxlZCwKPiB0aGUgZnVuY3Rpb24g
+d291bGQgZmFpbGVkLCB0aGF0IGlzIHRlcnJpYmxlLgo+IAo+IFNhdmUgb3V0cHV0X3R5cGUgYW5k
+IG91dHB1dF9tb2RlIGludG8gcm9ja2NoaXBfY3J0Y19zdGF0ZSwKPiBpdCdzIG5pY2UgdG8gbWFr
+ZSB0aGVtIGludG8gYXRvbWljLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hcmsgWWFvIDxtYXJrLnlh
+b0Byb2NrLWNoaXBzLmNvbT4KClRlc3RlZC1ieTogSm9obiBLZWVwaW5nIDxqb2huQG1ldGFuYXRl
+LmNvbT4KKGZvciBIRE1JIG91dHB1dCkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
