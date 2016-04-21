@@ -1,105 +1,439 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for RK3399
- SoCs
-Date: Thu, 21 Apr 2016 12:30:18 +0100
-Message-ID: <20160421123018.096d4a75@arm.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
-	<1461211092-26331-1-git-send-email-jay.xu@rock-chips.com>
-	<20160421101930.GG6879@leverpostej>
-	<5718AFB8.5070004@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5718AFB8.5070004-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, will.deacon-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Wadim Egorov <w.egorov@phytec.de>
+Subject: [PATCH v2 1/7] drivers: mfd: rk808: rename rk808 struct to rk8xx
+Date: Thu, 21 Apr 2016 15:12:35 +0200
+Message-ID: <1461244361-45686-2-git-send-email-w.egorov@phytec.de>
+References: <1461244361-45686-1-git-send-email-w.egorov@phytec.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1461244361-45686-1-git-send-email-w.egorov@phytec.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, broonie@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 21 Apr 2016 18:47:20 +0800
-"Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+This patch renames the rk808 struct. So it is more clear that this
+struct can be shared between all RK8XX related PMIC drivers.
 
-> Hi, Mark:
-> On 2016=E5=B9=B404=E6=9C=8821=E6=97=A5 18:19, Mark Rutland wrote:
-> > On Thu, Apr 21, 2016 at 11:58:12AM +0800, Jianqun Xu wrote:
-> >> +		cpu_l0: cpu@0 {
-> >> +			device_type =3D "cpu";
-> >> +			compatible =3D "arm,cortex-a53", "arm,armv8";
-> >> +			reg =3D <0x0 0x0>;
-> >> +			enable-method =3D "psci";
-> >> +			#cooling-cells =3D <2>; /* min followed by max */
-> >> +			clocks =3D <&cru ARMCLKL>;
-> >> +		};
-> >> +		cpu_b0: cpu@100 {
-> >> +			device_type =3D "cpu";
-> >> +			compatible =3D "arm,cortex-a72", "arm,armv8";
-> >> +			reg =3D <0x0 0x100>;
-> >> +			enable-method =3D "psci";
-> >> +			#cooling-cells =3D <2>; /* min followed by max */
-> >> +			clocks =3D <&cru ARMCLKB>;
-> >> +		};
-> >> +
-> >> +	arm-pmu {
-> >> +		compatible =3D "arm,armv8-pmuv3";
-> >> +		interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
-> >> +	};
-> > This is wrong, and must go. There should be a separate node for the=
- PMU
-> > of each microarchitecture, with the appropriate compatible string t=
-o
-> > represent that (see the juno dts).
-> You are right. The first version we wrote is:
->     pmu_a53 {
->         compatible =3D "arm,cortex-a53-pmu";
->         interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->         interrupt-affinity =3D <&cpu_l0>,
->                      <&cpu_l1>,
->                      <&cpu_l2>,
->                      <&cpu_l3>;
->     };
->=20
->     pmu_a72 {
->         compatible =3D "arm,cortex-a72-pmu";
->         interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->         interrupt-affinity =3D <&cpu_b0>,
->                      <&cpu_b1>;
->     };
-> but unfortunately, the arm pmu driver do not support PPI in two clust=
-er
-> well,
-> so we have to replace with this implementation.
-> > In this case things are messier as the same PPI number is being use=
-d
-> > across clusters. Marc (Cc'd) has been working on PPI partitions, wh=
-ich
-> > should allow us to support that.
-> Great! So what we can do right now? Wait this feature, and delete
-> arm-pmu node?
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+---
+ drivers/clk/clk-rk808.c             | 20 +++++++--------
+ drivers/mfd/rk808.c                 | 36 +++++++++++++-------------
+ drivers/regulator/rk808-regulator.c |  8 +++---
+ drivers/rtc/rtc-rk808.c             | 50 ++++++++++++++++++-------------------
+ include/linux/mfd/rk808.h           |  2 +-
+ 5 files changed, 58 insertions(+), 58 deletions(-)
 
-I'd rather you have a look at the patches, test them with your HW,
-and comment on what doesn't work!
+diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
+index 0fee2f4..6df2e72 100644
+--- a/drivers/clk/clk-rk808.c
++++ b/drivers/clk/clk-rk808.c
+@@ -25,7 +25,7 @@
+ #define RK808_NR_OUTPUT 2
+ 
+ struct rk808_clkout {
+-	struct rk808 *rk808;
++	struct rk8xx *rk8xx;
+ 	struct clk_onecell_data clk_data;
+ 	struct clk_hw		clkout1_hw;
+ 	struct clk_hw		clkout2_hw;
+@@ -42,9 +42,9 @@ static int rk808_clkout2_enable(struct clk_hw *hw, bool enable)
+ 	struct rk808_clkout *rk808_clkout = container_of(hw,
+ 							 struct rk808_clkout,
+ 							 clkout2_hw);
+-	struct rk808 *rk808 = rk808_clkout->rk808;
++	struct rk8xx *rk8xx = rk808_clkout->rk8xx;
+ 
+-	return regmap_update_bits(rk808->regmap, RK808_CLK32OUT_REG,
++	return regmap_update_bits(rk8xx->regmap, RK808_CLK32OUT_REG,
+ 				  CLK32KOUT2_EN, enable ? CLK32KOUT2_EN : 0);
+ }
+ 
+@@ -63,10 +63,10 @@ static int rk808_clkout2_is_prepared(struct clk_hw *hw)
+ 	struct rk808_clkout *rk808_clkout = container_of(hw,
+ 							 struct rk808_clkout,
+ 							 clkout2_hw);
+-	struct rk808 *rk808 = rk808_clkout->rk808;
++	struct rk8xx *rk8xx = rk808_clkout->rk8xx;
+ 	uint32_t val;
+ 
+-	int ret = regmap_read(rk808->regmap, RK808_CLK32OUT_REG, &val);
++	int ret = regmap_read(rk8xx->regmap, RK808_CLK32OUT_REG, &val);
+ 
+ 	if (ret < 0)
+ 		return ret;
+@@ -87,8 +87,8 @@ static const struct clk_ops rk808_clkout2_ops = {
+ 
+ static int rk808_clkout_probe(struct platform_device *pdev)
+ {
+-	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+-	struct i2c_client *client = rk808->i2c;
++	struct rk8xx *rk8xx = dev_get_drvdata(pdev->dev.parent);
++	struct i2c_client *client = rk8xx->i2c;
+ 	struct device_node *node = client->dev.of_node;
+ 	struct clk_init_data init = {};
+ 	struct clk **clk_table;
+@@ -99,7 +99,7 @@ static int rk808_clkout_probe(struct platform_device *pdev)
+ 	if (!rk808_clkout)
+ 		return -ENOMEM;
+ 
+-	rk808_clkout->rk808 = rk808;
++	rk808_clkout->rk8xx = rk8xx;
+ 
+ 	clk_table = devm_kcalloc(&client->dev, RK808_NR_OUTPUT,
+ 				 sizeof(struct clk *), GFP_KERNEL);
+@@ -144,8 +144,8 @@ static int rk808_clkout_probe(struct platform_device *pdev)
+ 
+ static int rk808_clkout_remove(struct platform_device *pdev)
+ {
+-	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+-	struct i2c_client *client = rk808->i2c;
++	struct rk8xx *rk8xx = dev_get_drvdata(pdev->dev.parent);
++	struct i2c_client *client = rk8xx->i2c;
+ 	struct device_node *node = client->dev.of_node;
+ 
+ 	of_clk_del_provider(node);
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 4b1e439..0386251 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -152,15 +152,15 @@ static struct i2c_client *rk808_i2c_client;
+ static void rk808_device_shutdown(void)
+ {
+ 	int ret;
+-	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
++	struct rk8xx *rk8xx = i2c_get_clientdata(rk808_i2c_client);
+ 
+-	if (!rk808) {
++	if (!rk8xx) {
+ 		dev_warn(&rk808_i2c_client->dev,
+ 			 "have no rk808, so do nothing here\n");
+ 		return;
+ 	}
+ 
+-	ret = regmap_update_bits(rk808->regmap,
++	ret = regmap_update_bits(rk8xx->regmap,
+ 				 RK808_DEVCTRL_REG,
+ 				 DEV_OFF_RST, DEV_OFF_RST);
+ 	if (ret)
+@@ -171,7 +171,7 @@ static int rk808_probe(struct i2c_client *client,
+ 		       const struct i2c_device_id *id)
+ {
+ 	struct device_node *np = client->dev.of_node;
+-	struct rk808 *rk808;
++	struct rk8xx *rk8xx;
+ 	int pm_off = 0;
+ 	int ret;
+ 	int i;
+@@ -181,18 +181,18 @@ static int rk808_probe(struct i2c_client *client,
+ 		return -EINVAL;
+ 	}
+ 
+-	rk808 = devm_kzalloc(&client->dev, sizeof(*rk808), GFP_KERNEL);
+-	if (!rk808)
++	rk8xx = devm_kzalloc(&client->dev, sizeof(*rk8xx), GFP_KERNEL);
++	if (!rk8xx)
+ 		return -ENOMEM;
+ 
+-	rk808->regmap = devm_regmap_init_i2c(client, &rk808_regmap_config);
+-	if (IS_ERR(rk808->regmap)) {
++	rk8xx->regmap = devm_regmap_init_i2c(client, &rk808_regmap_config);
++	if (IS_ERR(rk8xx->regmap)) {
+ 		dev_err(&client->dev, "regmap initialization failed\n");
+-		return PTR_ERR(rk808->regmap);
++		return PTR_ERR(rk8xx->regmap);
+ 	}
+ 
+ 	for (i = 0; i < ARRAY_SIZE(pre_init_reg); i++) {
+-		ret = regmap_update_bits(rk808->regmap, pre_init_reg[i].addr,
++		ret = regmap_update_bits(rk8xx->regmap, pre_init_reg[i].addr,
+ 					 pre_init_reg[i].mask,
+ 					 pre_init_reg[i].value);
+ 		if (ret) {
+@@ -202,20 +202,20 @@ static int rk808_probe(struct i2c_client *client,
+ 		}
+ 	}
+ 
+-	ret = regmap_add_irq_chip(rk808->regmap, client->irq,
++	ret = regmap_add_irq_chip(rk8xx->regmap, client->irq,
+ 				  IRQF_ONESHOT, -1,
+-				  &rk808_irq_chip, &rk808->irq_data);
++				  &rk808_irq_chip, &rk8xx->irq_data);
+ 	if (ret) {
+ 		dev_err(&client->dev, "Failed to add irq_chip %d\n", ret);
+ 		return ret;
+ 	}
+ 
+-	rk808->i2c = client;
+-	i2c_set_clientdata(client, rk808);
++	rk8xx->i2c = client;
++	i2c_set_clientdata(client, rk8xx);
+ 
+ 	ret = mfd_add_devices(&client->dev, -1,
+ 			      rk808s, ARRAY_SIZE(rk808s),
+-			      NULL, 0, regmap_irq_get_domain(rk808->irq_data));
++			      NULL, 0, regmap_irq_get_domain(rk8xx->irq_data));
+ 	if (ret) {
+ 		dev_err(&client->dev, "failed to add MFD devices %d\n", ret);
+ 		goto err_irq;
+@@ -231,15 +231,15 @@ static int rk808_probe(struct i2c_client *client,
+ 	return 0;
+ 
+ err_irq:
+-	regmap_del_irq_chip(client->irq, rk808->irq_data);
++	regmap_del_irq_chip(client->irq, rk8xx->irq_data);
+ 	return ret;
+ }
+ 
+ static int rk808_remove(struct i2c_client *client)
+ {
+-	struct rk808 *rk808 = i2c_get_clientdata(client);
++	struct rk8xx *rk8xx = i2c_get_clientdata(client);
+ 
+-	regmap_del_irq_chip(client->irq, rk808->irq_data);
++	regmap_del_irq_chip(client->irq, rk8xx->irq_data);
+ 	mfd_remove_devices(&client->dev);
+ 	pm_power_off = NULL;
+ 
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index d86a3dc..37aaba9 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -568,8 +568,8 @@ dt_parse_end:
+ 
+ static int rk808_regulator_probe(struct platform_device *pdev)
+ {
+-	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+-	struct i2c_client *client = rk808->i2c;
++	struct rk8xx *rk8xx = dev_get_drvdata(pdev->dev.parent);
++	struct i2c_client *client = rk8xx->i2c;
+ 	struct regulator_config config = {};
+ 	struct regulator_dev *rk808_rdev;
+ 	struct rk808_regulator_data *pdata;
+@@ -580,7 +580,7 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	ret = rk808_regulator_dt_parse_pdata(&pdev->dev, &client->dev,
+-					     rk808->regmap, pdata);
++					     rk8xx->regmap, pdata);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -594,7 +594,7 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+ 
+ 		config.dev = &client->dev;
+ 		config.driver_data = pdata;
+-		config.regmap = rk808->regmap;
++		config.regmap = rk8xx->regmap;
+ 		config.of_node = rk808_reg_matches[i].of_node;
+ 		config.init_data = rk808_reg_matches[i].init_data;
+ 
+diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
+index 35c9aad..b3fe5a8 100644
+--- a/drivers/rtc/rtc-rk808.c
++++ b/drivers/rtc/rtc-rk808.c
+@@ -51,7 +51,7 @@
+ #define NUM_ALARM_REGS	(RK808_ALARM_YEARS_REG - RK808_ALARM_SECONDS_REG + 1)
+ 
+ struct rk808_rtc {
+-	struct rk808 *rk808;
++	struct rk8xx *rk8xx;
+ 	struct rtc_device *rtc;
+ 	int irq;
+ };
+@@ -96,12 +96,12 @@ static void gregorian_to_rockchip(struct rtc_time *tm)
+ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	u8 rtc_data[NUM_TIME_REGS];
+ 	int ret;
+ 
+ 	/* Force an update of the shadowed registers right now */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_CTRL_REG,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
+ 	if (ret) {
+@@ -115,7 +115,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
+ 	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
+ 	 */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_CTRL_REG,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 0);
+ 	if (ret) {
+@@ -123,7 +123,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_bulk_read(rk808->regmap, RK808_SECONDS_REG,
++	ret = regmap_bulk_read(rk8xx->regmap, RK808_SECONDS_REG,
+ 			       rtc_data, NUM_TIME_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
+@@ -149,7 +149,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	u8 rtc_data[NUM_TIME_REGS];
+ 	int ret;
+ 
+@@ -166,7 +166,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 	rtc_data[6] = bin2bcd(tm->tm_wday);
+ 
+ 	/* Stop RTC while updating the RTC registers */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_CTRL_REG,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M);
+ 	if (ret) {
+@@ -174,14 +174,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_bulk_write(rk808->regmap, RK808_SECONDS_REG,
++	ret = regmap_bulk_write(rk8xx->regmap, RK808_SECONDS_REG,
+ 				rtc_data, NUM_TIME_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
+ 		return ret;
+ 	}
+ 	/* Start RTC again */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_CTRL_REG,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to update RTC control: %d\n", ret);
+@@ -194,12 +194,12 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	u8 alrm_data[NUM_ALARM_REGS];
+ 	uint32_t int_reg;
+ 	int ret;
+ 
+-	ret = regmap_bulk_read(rk808->regmap, RK808_ALARM_SECONDS_REG,
++	ret = regmap_bulk_read(rk8xx->regmap, RK808_ALARM_SECONDS_REG,
+ 			       alrm_data, NUM_ALARM_REGS);
+ 
+ 	alrm->time.tm_sec = bcd2bin(alrm_data[0] & SECONDS_REG_MSK);
+@@ -210,7 +210,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
+ 	rockchip_to_gregorian(&alrm->time);
+ 
+-	ret = regmap_read(rk808->regmap, RK808_RTC_INT_REG, &int_reg);
++	ret = regmap_read(rk8xx->regmap, RK808_RTC_INT_REG, &int_reg);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
+ 		return ret;
+@@ -228,10 +228,10 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 
+ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+ {
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_INT_REG,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
+ 
+ 	return ret;
+@@ -239,10 +239,10 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+ 
+ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+ {
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_INT_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_INT_REG,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
+ 
+@@ -252,7 +252,7 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
+ 	u8 alrm_data[NUM_ALARM_REGS];
+ 	int ret;
+ 
+@@ -274,7 +274,7 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
+ 	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
+ 
+-	ret = regmap_bulk_write(rk808->regmap, RK808_ALARM_SECONDS_REG,
++	ret = regmap_bulk_write(rk8xx->regmap, RK808_ALARM_SECONDS_REG,
+ 				alrm_data, NUM_ALARM_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bulk write: %d\n", ret);
+@@ -314,11 +314,11 @@ static int rk808_rtc_alarm_irq_enable(struct device *dev,
+ static irqreturn_t rk808_alarm_irq(int irq, void *data)
+ {
+ 	struct rk808_rtc *rk808_rtc = data;
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+-	struct i2c_client *client = rk808->i2c;
++	struct rk8xx *rk8xx = rk808_rtc->rk8xx;
++	struct i2c_client *client = rk8xx->i2c;
+ 	int ret;
+ 
+-	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
++	ret = regmap_write(rk8xx->regmap, RK808_RTC_STATUS_REG,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+ 		dev_err(&client->dev,
+@@ -373,7 +373,7 @@ static SIMPLE_DEV_PM_OPS(rk808_rtc_pm_ops,
+ 
+ static int rk808_rtc_probe(struct platform_device *pdev)
+ {
+-	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
++	struct rk8xx *rk8xx = dev_get_drvdata(pdev->dev.parent);
+ 	struct rk808_rtc *rk808_rtc;
+ 	struct rtc_time tm;
+ 	int ret;
+@@ -383,10 +383,10 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	platform_set_drvdata(pdev, rk808_rtc);
+-	rk808_rtc->rk808 = rk808;
++	rk808_rtc->rk8xx = rk8xx;
+ 
+ 	/* start rtc running by default, and use shadowed timer. */
+-	ret = regmap_update_bits(rk808->regmap, RK808_RTC_CTRL_REG,
++	ret = regmap_update_bits(rk8xx->regmap, RK808_RTC_CTRL_REG,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M |
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
+@@ -396,7 +396,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	ret = regmap_write(rk808->regmap, RK808_RTC_STATUS_REG,
++	ret = regmap_write(rk8xx->regmap, RK808_RTC_STATUS_REG,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 441b6ee..117d79f 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -191,7 +191,7 @@ enum {
+ 	BOOST_ILMIN_250MA,
+ };
+ 
+-struct rk808 {
++struct rk8xx {
+ 	struct i2c_client *i2c;
+ 	struct regmap_irq_chip_data *irq_data;
+ 	struct regmap *regmap;
+-- 
+1.9.1
 
-You can find the patches over there:
-
-https://lkml.org/lkml/2016/4/11/182
-
-and on the following branch:
-
-git://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms.git
-irq/percpu-partition
-
-Of course, you'll have to hack a bit in the PMU code to make it
-understand per-PMU affinity together with percpu interrupts, but it
-wouldn't be fun if there was nothing to do...
-
-Thanks,
-
-	M.
---=20
-Jazz is not dead. It just smells funny.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
