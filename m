@@ -1,55 +1,41 @@
-From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for rk3399 SoCs
-Date: Thu, 21 Apr 2016 14:48:26 -0700
-Message-ID: <20160421214826.GA69116@google.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Subject: Re: [PATCH v6] i2c: rk3x: add i2c support for rk3399 soc
+Date: Fri, 22 Apr 2016 01:00:08 +0300
+Message-ID: <CAHp75VdWz2sgWmBW30Jb5D4YCgUyM-LQQxzmGZ_3uW=iKUuKKQ@mail.gmail.com>
+References: <1458147438-62387-3-git-send-email-david.wu@rock-chips.com>
+	<1461074137-23899-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1461122150-9042-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rockchip-discuss-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1461074137-23899-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Doug Anderson <dianders@chromium.org>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, David Wu <wdc@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Tue, Apr 19, 2016 at 4:55 PM, David Wu <david.wu@rock-chips.com> wrote:
+> From: David Wu <wdc@rock-chips.com>
+>
+> - new method to caculate i2c timings for rk3399:
+>   There was an timing issue about "repeated start" time at the I2C
+>   controller of version0, controller appears to drop SDA at .875x (7/8)
+>   programmed clk high. On version 1 of the controller, the rule(.875x)
+>   isn't enough to meet tSU;STA
+>   requirements on 100k's Standard-mode. To resolve this issue,
+>   sda_update_config, start_setup_config and stop_setup_config for I2C
+>   timing information are added, new rules are designed to calculate
+>   the timing information at new v1.
+> - pclk and function clk are separated at rk3399.
+> - support i2c highspeed mode: 1.7MHz for rk3399
+>
 
-On Wed, Apr 20, 2016 at 11:15:50AM +0800, Jianqun Xu wrote:
-> This patch adds core dtsi file for rk3399 found on Rockchip
-> rk3399 SoCs, tested on rk3399 evb.
-> 
-> Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1744 ++++++++++++++++++++++++++++++
->  1 file changed, 1744 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> new file mode 100644
-> index 0000000..fa6fc2c
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -0,0 +1,1744 @@
-[...]
+Remove redundant parens in cases like
+1. x * (a->b)
+2. x = (a + b);
 
-> +	emmc_phy: phy {
-> +		compatible = "rockchip,rk3399-emmc-phy";
-> +		reg-offset = <0xf780>;
+Don't touch pieces of code that are not related (you removed one empty
+line without any reason).
 
-This property is not documented. The current doc says we "require" reg,
-but you're kinda misusing it, I believe. At any rate, the current phy
-driver won't probe without 'reg'.
-
-> +		#phy-cells = <0>;
-> +		rockchip,grf = <&grf>;
-> +		status = "disabled";
-> +	};
-
-[...]
-
-Brian
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+With Best Regards,
+Andy Shevchenko
