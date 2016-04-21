@@ -1,52 +1,36 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2 7/7] rtc: Kconfig: Name RK818 in Kconfig for RTC_DRV_RK808
-Date: Thu, 21 Apr 2016 15:12:41 +0200
-Message-ID: <1461244361-45686-8-git-send-email-w.egorov@phytec.de>
-References: <1461244361-45686-1-git-send-email-w.egorov@phytec.de>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [patch] drm/rockchip: inno_hdmi: fix an error code
+Date: Thu, 21 Apr 2016 17:03:54 +0300
+Message-ID: <20160421140354.GB17913@mwanda>
+References: <20160225213029.GA18267@mwanda> <56CFF00F.3030309@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461244361-45686-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <56CFF00F.3030309@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yakir Yang <ykk@rock-chips.com>
+Cc: kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The RK808 and RK818 PMICs are using a similar register map.
-We can reuse the rtc driver for the RK818 PMIC. So let's add
-the RK818 in the Kconfig description.
-
-Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
----
- drivers/rtc/Kconfig | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
-index 3e84315..acc2651 100644
---- a/drivers/rtc/Kconfig
-+++ b/drivers/rtc/Kconfig
-@@ -324,11 +324,11 @@ config RTC_DRV_MAX77686
- 	  will be called rtc-max77686.
- 
- config RTC_DRV_RK808
--	tristate "Rockchip RK808 RTC"
-+	tristate "Rockchip RK808/RK818 RTC"
- 	depends on MFD_RK808
- 	help
- 	  If you say yes here you will get support for the
--	  RTC of RK808 PMIC.
-+	  RTC of RK808 and RK818 PMIC.
- 
- 	  This driver can also be built as a module. If so, the module
- 	  will be called rk808-rtc.
--- 
-1.9.1
+T24gRnJpLCBGZWIgMjYsIDIwMTYgYXQgMDI6MjY6MjNQTSArMDgwMCwgWWFraXIgWWFuZyB3cm90
+ZToKPiBEYW4sCj4gCj4gT24gMDIvMjYvMjAxNiAwNTozMCBBTSwgRGFuIENhcnBlbnRlciB3cm90
+ZToKPiA+V2Ugd2VyZSBhY2NpZGVudGFsbHkgcmV0dXJuaW5nIFBUUl9FUlIoTlVMTCkgd2hpY2gg
+bWVhbnMgc3VjY2VzcyB3aGVuIHdlCj4gPndhbnRlZCB0byByZXR1cm4gYSBuZWdhdGl2ZSBlcnJv
+ciBjb2RlLgo+ID4KPiA+Rml4ZXM6IDQxMmQ0YWU2YjdhNSAoJ2RybS9yb2NrY2hpcDogaGRtaTog
+YWRkIElubm9zaWxpY29uIEhETUkgc3VwcG9ydCcpCj4gPlNpZ25lZC1vZmYtYnk6IERhbiBDYXJw
+ZW50ZXIgPGRhbi5jYXJwZW50ZXJAb3JhY2xlLmNvbT4KPiBSZXZpZXdlZC1ieTogWWFraXIgWWFu
+ZyA8eWtrQHJvY2stY2hpcHMuY29tPgoKV2Ugc3RpbGwgbmVlZCB0byBhcHBseSB0aGlzLgoKcmVn
+YXJkcywKZGFuIGNhcnBlbnRlcgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
