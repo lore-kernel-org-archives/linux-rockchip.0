@@ -1,120 +1,252 @@
-From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
-Date: Fri, 22 Apr 2016 08:44:07 +0100
-Message-ID: <5719D647.6000407@arm.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
- <5718AFB8.5070004@rock-chips.com> <20160421123018.096d4a75@arm.com>
- <2131452.5tyGOfVRfi@diego> <20160421221228.359fab3c@arm.com>
- <57198351.2060608@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 9/9] arm64: dts: rockchip: move the rk3368 thermal data
+ into rk3368.dtsi
+Date: Fri, 22 Apr 2016 10:18:44 +0200
+Message-ID: <8615749.P3ApjY2l50@diego>
+References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+ <1460950562-20652-10-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <57198351.2060608-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "jay.xu" <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, will.deacon-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1460950562-20652-10-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22/04/16 02:50, jay.xu wrote:
-> Hi Marc:
->=20
-> On 2016=E5=B9=B404=E6=9C=8822=E6=97=A5 05:12, Marc Zyngier wrote:
->> On Thu, 21 Apr 2016 22:24:09 +0200
->> Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
->>
->>> Am Donnerstag, 21. April 2016, 12:30:18 schrieb Marc Zyngier:
->>>> On Thu, 21 Apr 2016 18:47:20 +0800
->>>>
->>>> "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->>>>> Hi, Mark:
->>>>>
->>>>> On 2016=E5=B9=B404=E6=9C=8821=E6=97=A5 18:19, Mark Rutland wrote:
->>>>>> On Thu, Apr 21, 2016 at 11:58:12AM +0800, Jianqun Xu wrote:
->>>>>>> +		cpu_l0: cpu@0 {
->>>>>>> +			device_type =3D "cpu";
->>>>>>> +			compatible =3D "arm,cortex-a53", "arm,armv8";
->>>>>>> +			reg =3D <0x0 0x0>;
->>>>>>> +			enable-method =3D "psci";
->>>>>>> +			#cooling-cells =3D <2>; /* min followed by max */
->>>>>>> +			clocks =3D <&cru ARMCLKL>;
->>>>>>> +		};
->>>>>>> +		cpu_b0: cpu@100 {
->>>>>>> +			device_type =3D "cpu";
->>>>>>> +			compatible =3D "arm,cortex-a72", "arm,armv8";
->>>>>>> +			reg =3D <0x0 0x100>;
->>>>>>> +			enable-method =3D "psci";
->>>>>>> +			#cooling-cells =3D <2>; /* min followed by max */
->>>>>>> +			clocks =3D <&cru ARMCLKB>;
->>>>>>> +		};
->>>>>>> +
->>>>>>> +	arm-pmu {
->>>>>>> +		compatible =3D "arm,armv8-pmuv3";
->>>>>>> +		interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>>>> +	};
->>>>>> This is wrong, and must go. There should be a separate node for =
-the PMU
->>>>>> of each microarchitecture, with the appropriate compatible strin=
-g to
->>>>>> represent that (see the juno dts).
->>>>> You are right. The first version we wrote is:
->>>>>      pmu_a53 {
->>>>>     =20
->>>>>          compatible =3D "arm,cortex-a53-pmu";
->>>>>          interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>>          interrupt-affinity =3D <&cpu_l0>,
->>>>>         =20
->>>>>                       <&cpu_l1>,
->>>>>                       <&cpu_l2>,
->>>>>                       <&cpu_l3>;
->>>>>     =20
->>>>>      };
->>>>>     =20
->>>>>      pmu_a72 {
->>>>>     =20
->>>>>          compatible =3D "arm,cortex-a72-pmu";
->>>>>          interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>>          interrupt-affinity =3D <&cpu_b0>,
->>>>>         =20
->>>>>                       <&cpu_b1>;
->>>>>     =20
->>>>>      };
->>>>>
->>>>> but unfortunately, the arm pmu driver do not support PPI in two c=
-luster
->>>>> well,
->>>>> so we have to replace with this implementation.
->>>>>
->>>>>> In this case things are messier as the same PPI number is being =
-used
->>>>>> across clusters. Marc (Cc'd) has been working on PPI partitions,=
- which
->>>>>> should allow us to support that.
->>>>> Great! So what we can do right now? Wait this feature, and delete
->>>>> arm-pmu node?
->>>> I'd rather you have a look at the patches, test them with your HW,
->>>> and comment on what doesn't work!
->>> I would think we could do it in two tracks, testing and fixing but =
-also letting
->>> the rk3399 devicetrees move forward without the pmu at first :-) .
->> Where would the fun be then? ;-)
-> thanks for your advices, and I will try to test the percpu-partition=20
-> patches.
->=20
-> by the way, do you think it's better to let the dtsi be reviewed firs=
-t,
-> then the percpu-partition patches could be tested by more people ?
+Am Montag, 18. April 2016, 11:36:01 schrieb Caesar Wang:
+> In order to be standard to manage for rockchip SoCs,  move the thermal
+> data into rk3368 dtsi, we needn't to add a new file for thermal.
+> 
+> Fixes commit f990238f859e
+> ("arm64: dts: rockchip: Add main thermal info to rk3368.dtsi")
+> 
+> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+> Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-Up to you. As long as what is in the DT is correct and Acked by the DT
-maintainers, I'm fine with it.
+I'm pondering this change for some days now and am still undecided :-) 
+On the one hand you're right ... this doesn't need to be its own file on the 
+other hand it creates churn, but I'm inclined to pick it up.
 
-Thanks,
+Can you at least provide another patch doing the same for rk3288, so that we 
+really standardize on one form for Rockchip SoCs?
 
-	M.
---=20
-Jazz is not dead. It just smells funny...
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+Thanks
+Heiko
+
+
+> 
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112
+> ----------------------- arch/arm64/boot/dts/rockchip/rk3368.dtsi         | 
+> 66 ++++++++++++- 2 files changed, 65 insertions(+), 113 deletions(-)
+>  delete mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi deleted file mode 100644
+> index a10010f..0000000
+> --- a/arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+> +++ /dev/null
+> @@ -1,112 +0,0 @@
+> -/*
+> - * Device Tree Source for RK3368 SoC thermal
+> - *
+> - * Copyright (c) 2015, Fuzhou Rockchip Electronics Co., Ltd
+> - * Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> - *
+> - * This file is dual-licensed: you can use it either under the terms
+> - * of the GPL or the X11 license, at your option. Note that this dual
+> - * licensing only applies to this file, and not this project as a
+> - * whole.
+> - *
+> - *  a) This file is free software; you can redistribute it and/or
+> - *     modify it under the terms of the GNU General Public License as
+> - *     published by the Free Software Foundation; either version 2 of the
+> - *     License, or (at your option) any later version.
+> - *
+> - *     This file is distributed in the hope that it will be useful,
+> - *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - *     GNU General Public License for more details.
+> - *
+> - * Or, alternatively,
+> - *
+> - *  b) Permission is hereby granted, free of charge, to any person
+> - *     obtaining a copy of this software and associated documentation
+> - *     files (the "Software"), to deal in the Software without
+> - *     restriction, including without limitation the rights to use,
+> - *     copy, modify, merge, publish, distribute, sublicense, and/or
+> - *     sell copies of the Software, and to permit persons to whom the
+> - *     Software is furnished to do so, subject to the following
+> - *     conditions:
+> - *
+> - *     The above copyright notice and this permission notice shall be
+> - *     included in all copies or substantial portions of the Software.
+> - *
+> - *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> - *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+> - *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> - *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+> - *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+> - *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+> - *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+> - *     OTHER DEALINGS IN THE SOFTWARE.
+> - */
+> -
+> -#include <dt-bindings/thermal/thermal.h>
+> -
+> -cpu_thermal: cpu_thermal {
+> -	polling-delay-passive = <100>; /* milliseconds */
+> -	polling-delay = <5000>; /* milliseconds */
+> -
+> -	thermal-sensors = <&tsadc 0>;
+> -
+> -	trips {
+> -		cpu_alert0: cpu_alert0 {
+> -			temperature = <75000>; /* millicelsius */
+> -			hysteresis = <2000>; /* millicelsius */
+> -			type = "passive";
+> -		};
+> -		cpu_alert1: cpu_alert1 {
+> -			temperature = <80000>; /* millicelsius */
+> -			hysteresis = <2000>; /* millicelsius */
+> -			type = "passive";
+> -		};
+> -		cpu_crit: cpu_crit {
+> -			temperature = <95000>; /* millicelsius */
+> -			hysteresis = <2000>; /* millicelsius */
+> -			type = "critical";
+> -		};
+> -	};
+> -
+> -	cooling-maps {
+> -		map0 {
+> -			trip = <&cpu_alert0>;
+> -			cooling-device =
+> -				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> -		};
+> -		map1 {
+> -			trip = <&cpu_alert1>;
+> -			cooling-device =
+> -				<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> -		};
+> -	};
+> -};
+> -
+> -gpu_thermal: gpu_thermal {
+> -	polling-delay-passive = <100>; /* milliseconds */
+> -	polling-delay = <5000>; /* milliseconds */
+> -
+> -	thermal-sensors = <&tsadc 1>;
+> -
+> -	trips {
+> -		gpu_alert0: gpu_alert0 {
+> -			temperature = <80000>; /* millicelsius */
+> -			hysteresis = <2000>; /* millicelsius */
+> -			type = "passive";
+> -		};
+> -		gpu_crit: gpu_crit {
+> -			temperature = <1150000>; /* millicelsius */
+> -			hysteresis = <2000>; /* millicelsius */
+> -			type = "critical";
+> -		};
+> -	};
+> -
+> -	cooling-maps {
+> -		map0 {
+> -			trip = <&gpu_alert0>;
+> -			cooling-device =
+> -				<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> -		};
+> -	};
+> -};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk3368.dtsi index 7056a0f..8b4a7c9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -413,7 +413,71 @@
+>  	};
+> 
+>  	thermal-zones {
+> -		#include "rk3368-thermal.dtsi"
+> +		cpu {
+> +			polling-delay-passive = <100>; /* milliseconds */
+> +			polling-delay = <5000>; /* milliseconds */
+> +
+> +			thermal-sensors = <&tsadc 0>;
+> +
+> +			trips {
+> +				cpu_alert0: cpu_alert0 {
+> +					temperature = <75000>; /* millicelsius */
+> +					hysteresis = <2000>; /* millicelsius */
+> +					type = "passive";
+> +				};
+> +				cpu_alert1: cpu_alert1 {
+> +					temperature = <80000>; /* millicelsius */
+> +					hysteresis = <2000>; /* millicelsius */
+> +					type = "passive";
+> +				};
+> +				cpu_crit: cpu_crit {
+> +					temperature = <95000>; /* millicelsius */
+> +					hysteresis = <2000>; /* millicelsius */
+> +					type = "critical";
+> +				};
+> +			};
+> +
+> +			cooling-maps {
+> +				map0 {
+> +					trip = <&cpu_alert0>;
+> +					cooling-device =
+> +					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +				};
+> +				map1 {
+> +					trip = <&cpu_alert1>;
+> +					cooling-device =
+> +					<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +				};
+> +			};
+> +		};
+> +
+> +		gpu {
+> +			polling-delay-passive = <100>; /* milliseconds */
+> +			polling-delay = <5000>; /* milliseconds */
+> +
+> +			thermal-sensors = <&tsadc 1>;
+> +
+> +			trips {
+> +				gpu_alert0: gpu_alert0 {
+> +					temperature = <80000>; /* millicelsius */
+> +					hysteresis = <2000>; /* millicelsius */
+> +					type = "passive";
+> +				};
+> +				gpu_crit: gpu_crit {
+> +					temperature = <115000>; /* millicelsius */
+> +					hysteresis = <2000>; /* millicelsius */
+> +					type = "critical";
+> +				};
+> +			};
+> +
+> +			cooling-maps {
+> +				map0 {
+> +					trip = <&gpu_alert0>;
+> +					cooling-device =
+> +					<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +				};
+> +			};
+> +		};
+>  	};
+> 
+>  	tsadc: tsadc@ff280000 {
