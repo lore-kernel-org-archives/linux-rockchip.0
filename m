@@ -1,33 +1,17 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [RESEND PATCH 4/8] thermal: rockchip: handle the power sequence for tsadc controller
-Date: Fri, 22 Apr 2016 18:02:50 +0800
-Message-ID: <1461319374-10024-5-git-send-email-wxt@rock-chips.com>
+Subject: [RESEND PATCH 7/8] ARM: dts: rockchip: move the rk3288 thermal data into rk3288.dtsi
+Date: Fri, 22 Apr 2016 18:02:53 +0800
+Message-ID: <1461319374-10024-8-git-send-email-wxt@rock-chips.com>
 References: <1461319374-10024-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1461319374-10024-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds the grf property to handle the tsadc power sequence on
-rockchip some SoCs.
-
-Verified on rk3399 can work with this patch on now.
-
-while true; do grep "" /sys/class/thermal/thermal_zone[0-1]/temp
-sleep .5; done
-/sys/class/thermal/thermal_zone0/temp:40555
-/sys/class/thermal/thermal_zone1/temp:41111
-/sys/class/thermal/thermal_zone0/temp:40555
-/sys/class/thermal/thermal_zone1/temp:41111
-/sys/class/thermal/thermal_zone0/temp:40555
-/sys/class/thermal/thermal_zone1/temp:41666
-/sys/class/thermal/thermal_zone0/temp:40555
-/sys/class/thermal/thermal_zone1/temp:41111
-/sys/class/thermal/thermal_zone0/temp:40555
-/sys/class/thermal/thermal_zone1/temp:41111
-/sys/class/thermal/thermal_zone0/temp:40555
+In order to be standard to manage for rockchip SoCs,  move the thermal
+data into rk3288 dtsi, we needn't to add a new file for thermal.
 
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 Cc: Zhang Rui <rui.zhang@intel.com>
@@ -35,194 +19,218 @@ Cc: Eduardo Valentin <edubezval@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>
 ---
 
- drivers/thermal/rockchip_thermal.c | 103 ++++++++++++++++++++++++++++++++++---
- 1 file changed, 96 insertions(+), 7 deletions(-)
+ arch/arm/boot/dts/rk3288-thermal.dtsi | 118 ----------------------------------
+ arch/arm/boot/dts/rk3288.dtsi         |  73 ++++++++++++++++++++-
+ 2 files changed, 72 insertions(+), 119 deletions(-)
+ delete mode 100644 arch/arm/boot/dts/rk3288-thermal.dtsi
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index e5064d7..6436c00 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -23,8 +23,10 @@
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/thermal.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/pinctrl/consumer.h>
+diff --git a/arch/arm/boot/dts/rk3288-thermal.dtsi b/arch/arm/boot/dts/rk3288-thermal.dtsi
+deleted file mode 100644
+index 651b962..0000000
+--- a/arch/arm/boot/dts/rk3288-thermal.dtsi
++++ /dev/null
+@@ -1,118 +0,0 @@
+-/*
+- * Device Tree Source for RK3288 SoC thermal
+- *
+- * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
+- *
+- * This file is dual-licensed: you can use it either under the terms
+- * of the GPL or the X11 license, at your option. Note that this dual
+- * licensing only applies to this file, and not this project as a
+- * whole.
+- *
+- *  a) This file is free software; you can redistribute it and/or
+- *     modify it under the terms of the GNU General Public License as
+- *     published by the Free Software Foundation; either version 2 of the
+- *     License, or (at your option) any later version.
+- *
+- *     This file is distributed in the hope that it will be useful,
+- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- *     GNU General Public License for more details.
+- *
+- * Or, alternatively,
+- *
+- *  b) Permission is hereby granted, free of charge, to any person
+- *     obtaining a copy of this software and associated documentation
+- *     files (the "Software"), to deal in the Software without
+- *     restriction, including without limitation the rights to use,
+- *     copy, modify, merge, publish, distribute, sublicense, and/or
+- *     sell copies of the Software, and to permit persons to whom the
+- *     Software is furnished to do so, subject to the following
+- *     conditions:
+- *
+- *     The above copyright notice and this permission notice shall be
+- *     included in all copies or substantial portions of the Software.
+- *
+- *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+- *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+- *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+- *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+- *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+- *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+- *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+- *     OTHER DEALINGS IN THE SOFTWARE.
+- */
+-
+-#include <dt-bindings/thermal/thermal.h>
+-
+-reserve_thermal: reserve_thermal {
+-	polling-delay-passive = <1000>; /* milliseconds */
+-	polling-delay = <5000>; /* milliseconds */
+-
+-	thermal-sensors = <&tsadc 0>;
+-};
+-
+-cpu_thermal: cpu_thermal {
+-	polling-delay-passive = <100>; /* milliseconds */
+-	polling-delay = <5000>; /* milliseconds */
+-
+-	thermal-sensors = <&tsadc 1>;
+-
+-	trips {
+-		cpu_alert0: cpu_alert0 {
+-			temperature = <70000>; /* millicelsius */
+-			hysteresis = <2000>; /* millicelsius */
+-			type = "passive";
+-		};
+-		cpu_alert1: cpu_alert1 {
+-			temperature = <75000>; /* millicelsius */
+-			hysteresis = <2000>; /* millicelsius */
+-			type = "passive";
+-		};
+-		cpu_crit: cpu_crit {
+-			temperature = <90000>; /* millicelsius */
+-			hysteresis = <2000>; /* millicelsius */
+-			type = "critical";
+-		};
+-	};
+-
+-	cooling-maps {
+-		map0 {
+-			trip = <&cpu_alert0>;
+-			cooling-device =
+-				<&cpu0 THERMAL_NO_LIMIT 6>;
+-		};
+-		map1 {
+-			trip = <&cpu_alert1>;
+-			cooling-device =
+-				<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-		};
+-	};
+-};
+-
+-gpu_thermal: gpu_thermal {
+-	polling-delay-passive = <100>; /* milliseconds */
+-	polling-delay = <5000>; /* milliseconds */
+-
+-	thermal-sensors = <&tsadc 2>;
+-
+-	trips {
+-		gpu_alert0: gpu_alert0 {
+-			temperature = <70000>; /* millicelsius */
+-			hysteresis = <2000>; /* millicelsius */
+-			type = "passive";
+-		};
+-		gpu_crit: gpu_crit {
+-			temperature = <90000>; /* millicelsius */
+-			hysteresis = <2000>; /* millicelsius */
+-			type = "critical";
+-		};
+-	};
+-
+-	cooling-maps {
+-		map0 {
+-			trip = <&gpu_alert0>;
+-			cooling-device =
+-				<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+-		};
+-	};
+-};
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 3071e94..0db8b35 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -454,7 +454,78 @@
+ 	};
  
- /**
-@@ -97,7 +99,8 @@ struct rockchip_tsadc_chip {
- 	enum tshut_polarity tshut_polarity;
- 
- 	/* Chip-wide methods */
--	void (*initialize)(void __iomem *reg, enum tshut_polarity p);
-+	void (*initialize)(struct regmap *grf,
-+			   void __iomem *reg, enum tshut_polarity p);
- 	void (*irq_ack)(void __iomem *reg);
- 	void (*control)(void __iomem *reg, bool on);
- 
-@@ -128,6 +131,7 @@ struct rockchip_thermal_data {
- 	struct clk *clk;
- 	struct clk *pclk;
- 
-+	struct regmap *grf;
- 	void __iomem *regs;
- 
- 	int tshut_temp;
-@@ -142,6 +146,7 @@ struct rockchip_thermal_data {
-  * TSADCV3_* are used for newer SoCs than RK3288. (e.g: RK3228, RK3399)
-  *
-  */
-+#define TSADCV2_USER_CON			0x00
- #define TSADCV2_AUTO_CON			0x04
- #define TSADCV2_INT_EN				0x08
- #define TSADCV2_INT_PD				0x0c
-@@ -175,8 +180,21 @@ struct rockchip_thermal_data {
- 
- #define TSADCV2_HIGHT_INT_DEBOUNCE_COUNT	4
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT	4
--#define TSADCV2_AUTO_PERIOD_TIME		250 /* msec */
--#define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* msec */
-+#define TSADCV2_AUTO_PERIOD_TIME		250 /* 250ms */
-+#define TSADCV2_AUTO_PERIOD_HT_TIME		50  /* 50ms */
-+#define TSADCV3_AUTO_PERIOD_TIME		187500 /* 250ms */
-+#define TSADCV3_AUTO_PERIOD_HT_TIME		37500  /* 50ms */
+ 	thermal-zones {
+-		#include "rk3288-thermal.dtsi"
++		reserve_thermal: reserve_thermal {
++			polling-delay-passive = <1000>; /* milliseconds */
++			polling-delay = <5000>; /* milliseconds */
 +
-+#define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
++			thermal-sensors = <&tsadc 0>;
++		};
 +
-+#define GRF_SARADC_TESTBIT			0x0e644
-+#define GRF_TSADC_TESTBIT_L			0x0e648
-+#define GRF_TSADC_TESTBIT_H			0x0e64c
++		cpu_thermal: cpu_thermal {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <5000>; /* milliseconds */
 +
-+#define GRF_TSADC_TSEN_PD_ON			(0x30003 << 0)
-+#define GRF_TSADC_TSEN_PD_OFF			(0x30000 << 0)
-+#define GRF_SARADC_TESTBIT_ON			(0x10001 << 2)
-+#define GRF_TSADC_TESTBIT_H_ON			(0x10001 << 2)
- 
- struct tsadc_table {
- 	u32 code;
-@@ -449,7 +467,7 @@ static int rk_tsadcv2_code_to_temp(struct chip_tsadc_table table, u32 code,
-  *     If the temperature is higher than COMP_INT or COMP_SHUT for
-  *     "debounce" times, TSADC controller will generate interrupt or TSHUT.
-  */
--static void rk_tsadcv2_initialize(void __iomem *regs,
-+static void rk_tsadcv2_initialize(struct regmap *grf, void __iomem *regs,
- 				  enum tshut_polarity tshut_polarity)
- {
- 	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-@@ -466,6 +484,70 @@ static void rk_tsadcv2_initialize(void __iomem *regs,
- 		       regs + TSADCV2_AUTO_PERIOD_HT);
- 	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
- 		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
++			thermal-sensors = <&tsadc 1>;
 +
-+	if (IS_ERR(grf)) {
-+		pr_warn("%s: Missing rockchip,grf property\n", __func__);
-+		return;
-+	}
-+}
++			trips {
++				cpu_alert0: cpu_alert0 {
++					temperature = <70000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_alert1: cpu_alert1 {
++					temperature = <75000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_crit: cpu_crit {
++					temperature = <90000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
 +
-+/**
-+ * rk_tsadcv3_initialize - initialize TASDC Controller.
-+ * (1) The tsadc control power sequence.
-+ *
-+ * (2) Set TSADC_V2_AUTO_PERIOD:
-+ *     Configure the interleave between every two accessing of
-+ *     TSADC in normal operation.
-+ *
-+ * (2) Set TSADCV2_AUTO_PERIOD_HT:
-+ *     Configure the interleave between every two accessing of
-+ *     TSADC after the temperature is higher than COM_SHUT or COM_INT.
-+ *
-+ * (3) Set TSADCV2_HIGH_INT_DEBOUNCE and TSADC_HIGHT_TSHUT_DEBOUNCE:
-+ *     If the temperature is higher than COMP_INT or COMP_SHUT for
-+ *     "debounce" times, TSADC controller will generate interrupt or TSHUT.
-+ */
-+static void rk_tsadcv3_initialize(struct regmap *grf, void __iomem *regs,
-+				  enum tshut_polarity tshut_polarity)
-+{
-+	/* The tsadc control power sequence */
-+	if (IS_ERR(grf)) {
-+		/* Set interleave value to workround ic time sync issue */
-+		writel_relaxed(TSADCV2_USER_INTER_PD_SOC, regs +
-+			       TSADCV2_USER_CON);
++			cooling-maps {
++				map0 {
++					trip = <&cpu_alert0>;
++					cooling-device =
++						<&cpu0 THERMAL_NO_LIMIT 6>;
++				};
++				map1 {
++					trip = <&cpu_alert1>;
++					cooling-device =
++						<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
 +
-+		writel_relaxed(TSADCV2_AUTO_PERIOD_TIME, regs + TSADCV2_AUTO_PERIOD);
-+		writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
-+		writel_relaxed(TSADCV2_AUTO_PERIOD_HT_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD_HT);
-+		writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
++		gpu_thermal: gpu_thermal {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <5000>; /* milliseconds */
 +
-+	} else {
-+		regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_ON);
-+		mdelay(10);
-+		regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_OFF);
-+		udelay(100); /* The spec note says at least 15 us */
-+		regmap_write(grf, GRF_SARADC_TESTBIT, GRF_SARADC_TESTBIT_ON);
-+		regmap_write(grf, GRF_TSADC_TESTBIT_H, GRF_TSADC_TESTBIT_H_ON);
-+		udelay(200); /* The spec note says at least 90 us */
++			thermal-sensors = <&tsadc 2>;
 +
-+		writel_relaxed(TSADCV3_AUTO_PERIOD_TIME, regs + TSADCV2_AUTO_PERIOD);
-+		writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
-+		writel_relaxed(TSADCV3_AUTO_PERIOD_HT_TIME,
-+			       regs + TSADCV2_AUTO_PERIOD_HT);
-+		writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+			       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
-+	}
++			trips {
++				gpu_alert0: gpu_alert0 {
++					temperature = <70000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				gpu_crit: gpu_crit {
++					temperature = <90000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
 +
-+	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-+		writel_relaxed(0U | TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
-+			       regs + TSADCV2_AUTO_CON);
-+	else
-+		writel_relaxed(0U & ~TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
-+			       regs + TSADCV2_AUTO_CON);
- }
++			cooling-maps {
++				map0 {
++					trip = <&gpu_alert0>;
++					cooling-device =
++						<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
+ 	};
  
- static void rk_tsadcv2_irq_ack(void __iomem *regs)
-@@ -636,7 +718,7 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
- 	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
- 	.tshut_temp = 95000,
- 
--	.initialize = rk_tsadcv2_initialize,
-+	.initialize = rk_tsadcv3_initialize,
- 	.irq_ack = rk_tsadcv3_irq_ack,
- 	.control = rk_tsadcv3_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-@@ -768,6 +850,11 @@ static int rockchip_configure_from_dt(struct device *dev,
- 		return -EINVAL;
- 	}
- 
-+	/* The tsadc wont to handle the error in here since some SoCs didn't
-+	 * need this property.
-+	 */
-+	thermal->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+
- 	return 0;
- }
- 
-@@ -888,7 +975,8 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 		goto err_disable_pclk;
- 	}
- 
--	thermal->chip->initialize(thermal->regs, thermal->tshut_polarity);
-+	thermal->chip->initialize(thermal->grf, thermal->regs,
-+				  thermal->tshut_polarity);
- 
- 	for (i = 0; i < thermal->chip->chn_num; i++) {
- 		error = rockchip_thermal_register_sensor(pdev, thermal,
-@@ -986,7 +1074,8 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
- 
- 	rockchip_thermal_reset_controller(thermal->reset);
- 
--	thermal->chip->initialize(thermal->regs, thermal->tshut_polarity);
-+	thermal->chip->initialize(thermal->grf, thermal->regs,
-+				  thermal->tshut_polarity);
- 
- 	for (i = 0; i < thermal->chip->chn_num; i++) {
- 		int id = thermal->sensors[i].id;
+ 	tsadc: tsadc@ff280000 {
 -- 
 1.9.1
