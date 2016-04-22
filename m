@@ -1,175 +1,122 @@
-From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 4/4] ARM64: dts: rockchip: add dts file for RK3399 evaluation board
-Date: Fri, 22 Apr 2016 13:36:56 +0800
-Message-ID: <1461303416-13731-1-git-send-email-jay.xu@rock-chips.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1461122150-9042-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 7/9] thermal: of: Add support for hardware-tracked trip
+ points
+Date: Fri, 22 Apr 2016 07:41:47 +0200
+Message-ID: <20160422054147.GI21638@pengutronix.de>
+References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+ <1460950562-20652-8-git-send-email-wxt@rock-chips.com>
+ <20160420234818.GB2558@localhost.localdomain>
+ <20160421011230.GA118377@google.com>
+ <5719844B.3040703@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5719844B.3040703@gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <caesar.upstream@gmail.com>
+Cc: Brian Norris <briannorris@chromium.org>, Eduardo Valentin <edubezval@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, huangtao@rock-chips.com, Wei Ni <wni@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, dianders@chromium.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, smbarber@google.com, Paul Walmsley <pwalmsley@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, Mikko Perttunen <mperttunen@nvidia.com>, Caesar Wang <wxt@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch add rk3399-evb.dts for RK3399 evaluation board.
-Tested on RK3399 evb.
+On Fri, Apr 22, 2016 at 09:54:19AM +0800, Caesar Wang wrote:
+> Hi Brian, Eduardo, Sascha
+>=20
+> =E5=9C=A8 2016=E5=B9=B404=E6=9C=8821=E6=97=A5 09:12, Brian Norris =E5=
+=86=99=E9=81=93:
+> >+ Sascha
+> >
+> >On Wed, Apr 20, 2016 at 04:48:18PM -0700, Eduardo Valentin wrote:
+> >>On Mon, Apr 18, 2016 at 11:35:59AM +0800, Caesar Wang wrote:
+> >>>From: Mikko Perttunen <mperttunen@nvidia.com>
+> >>>
+> >>>This adds support for hardware-tracked trip points to the device t=
+ree
+> >><cut>
+> >>
+> >>>diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> >>>index 97b86c5..6ef932a 100644
+> >>>--- a/include/linux/thermal.h
+> >>>+++ b/include/linux/thermal.h
+> >>>@@ -335,12 +335,14 @@ struct thermal_genl_event {
+> >>>   * @get_trend: a pointer to a function that reads the sensor tem=
+perature trend.
+> >>>   * @set_emul_temp: a pointer to a function that sets sensor emul=
+ated
+> >>>   *		   temperature.
+> >>>+ * @set_trips: a pointer to a function that set low/high trip tem=
+perature.
+> >>>   */
+> >>>  struct thermal_zone_of_device_ops {
+> >>>  	int (*get_temp)(void *, int *);
+> >>>  	int (*get_trend)(void *, long *);
+> >>>  	int (*set_emul_temp)(void *, int);
+> >>>  	int (*set_trip_temp)(void *, int, int);
+> >>>+	int (*set_trips)(void *, int, int);
+> >>This is unfortunately a diverges from API available on thermal core=
+=2E Can
+> >>you please add first on thermal core then, use it in of thermal?
+> >>
+> >>I don't want to have callbacks available only via of thermal. If we
+> >>allow it, OF thermal becomes a separate API.
+> >What ever happened to this effort?
+> >
+> >http://thread.gmane.org/gmane.linux.power-management.general/59451
+> >
+> >Patch 12 and 13 look to accomplish something similar, yet they do wh=
+at
+> >Eduardo suggested. I was testing that series at my previous job, but
+> >unfortunately (for the fate of this series) I left that employer bef=
+ore
+> >I could finish reviewing and testing it. Perhaps Caesar can resurrec=
+t
+> >and test it?
+>=20
+> @Brian
+> Yes, I can
+>=20
+> Sure, I can.
+>=20
+> I see the Sascha's newest thermal patches in patchwork.
+> The following patches are still needed, right?
+>=20
+> 6446191 New          [06/16] thermal: inline only once used function
+> 6446111 New          [07/16] thermal: streamline get_trend callbacks
+> 6445871 New          [08/16] thermal: Allow sensor ops to fail with -=
+ENOSYS
+> 6445861 New          [09/16] thermal: of: always set sensor related
+> callbacks
+> 6446221 New          [10/16] thermal: Make struct thermal_zone_device=
+_ops
+> const
+> 6446201 New          [11/16] thermal: bang-bang governor: act on lowe=
+r trip
+> boundary
+> 6445891 New          [12/16] thermal: thermal: Add support for
+> hardware-tracked trip points
+> 6445911 New          [13/16] thermal: of: implement .set_trips for de=
+vice
+> tree thermal zones
+>=20
+> @Sascha, Eduardo
+> Can you share your discussion content for the above patches as rememb=
+ered?
 
-Signed-off-by: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-changes in v2:
-- remove rk808 since without i2c, which will upstream independently
-- remove es8316 since without i2c, which will upstream independently
-- fix codingstyle issues
+These are still the newest patches. I won't have any resources in the
+near future for continuing the work on them, so feel free to pick them
+up. There hasn't been much discussion around these patches which was th=
+e
+reason I abandoned them.
 
- arch/arm64/boot/dts/rockchip/Makefile       |   1 +
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 122 ++++++++++++++++++++++++++++
- 2 files changed, 123 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index df37865..7037a16 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,6 +1,7 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
- 
- always		:= $(dtb-y)
- subdir-y	:= $(dts-dirs)
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-new file mode 100644
-index 0000000..309f870
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -0,0 +1,122 @@
-+/*
-+ * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
-+ *
-+ * This file is dual-licensed: you can use it either under the terms
-+ * of the GPL or the X11 license, at your option. Note that this dual
-+ * licensing only applies to this file, and not this project as a
-+ * whole.
-+ *
-+ *  a) This file is free software; you can redistribute it and/or
-+ *     modify it under the terms of the GNU General Public License as
-+ *     published by the Free Software Foundation; either version 2 of the
-+ *     License, or (at your option) any later version.
-+ *
-+ *     This file is distributed in the hope that it will be useful,
-+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *     GNU General Public License for more details.
-+ *
-+ * Or, alternatively,
-+ *
-+ *  b) Permission is hereby granted, free of charge, to any person
-+ *     obtaining a copy of this software and associated documentation
-+ *     files (the "Software"), to deal in the Software without
-+ *     restriction, including without limitation the rights to use,
-+ *     copy, modify, merge, publish, distribute, sublicense, and/or
-+ *     sell copies of the Software, and to permit persons to whom the
-+ *     Software is furnished to do so, subject to the following
-+ *     conditions:
-+ *
-+ *     The above copyright notice and this permission notice shall be
-+ *     included in all copies or substantial portions of the Software.
-+ *
-+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-+ *     OTHER DEALINGS IN THE SOFTWARE.
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/pwm/pwm.h>
-+#include "rk3399.dtsi"
-+
-+/ {
-+	compatible = "rockchip,rk3399-evb", "rockchip,rk3399";
-+
-+	vdd_center: vdd-center {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm3 0 25000 0>;
-+		regulator-name = "vdd_center";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1400000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		status = "okay";
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+	};
-+
-+	vcc_phy: vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_phy";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&pwm3 {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins =
-+				<1 21 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		pmic_dvs2: pmic-dvs2 {
-+			rockchip,pins =
-+				<1 18 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+};
--- 
-1.9.1
+Sascha
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--=20
+Pengutronix e.K.                           |                           =
+  |
+Industrial Linux Solutions                 | http://www.pengutronix.de/=
+  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0  =
+  |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-555=
+5 |
