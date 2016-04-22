@@ -1,66 +1,60 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 3/7] regulator: rk808: Migrate to regulator core's
- simplified DT parsing code
-Date: Fri, 22 Apr 2016 10:41:37 +0100
-Message-ID: <20160422094137.GB3217@sirena.org.uk>
-References: <1461244361-45686-1-git-send-email-w.egorov@phytec.de>
- <1461244361-45686-4-git-send-email-w.egorov@phytec.de>
- <20160421160120.GT3217@sirena.org.uk>
- <5719E8CD.1070304@phytec.de>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="0TJQK8JvXJ+EbTps"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <5719E8CD.1070304-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [RESEND PATCH 0/8] thermal: rockchip: Support rk3366/rk3399 SoCS and fixes the driver
+Date: Fri, 22 Apr 2016 18:02:46 +0800
+Message-ID: <1461319374-10024-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Russell King <linux@arm.linux.org.uk>, Will Deacon <will.deacon@arm.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>, Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <mbrugger@suse.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hello Eduardo, Heiko
+This series pacthes to support the rk3366/rk3399 SoCs thermal, and fixes the driver.
 
---0TJQK8JvXJ+EbTps
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+a83d083 thermal: rockchip: disable thermal->clk in err case
+5ea5556 thermal: rockchip: fixes the code_to_temp for tsadc driver
+da69a2 thermal: rockchip: update the tsadc table for rk3399
+571a5b5 thermal: rockchip: handle the power sequence for tsadc controller
+e9eb603 thermal: rockchip: Support RK3366 SoCs in the thermal driver
+bc0e86f thermal: rockchip: add the notes for better reading
+4dc79deb ARM: dts: rockchip: move the rk3288 thermal data into rk3288.dtsi
+5e66f50 arm64: dts: rockchip: move the rk3368 thermal data into rk3368.dtsi
 
-On Fri, Apr 22, 2016 at 11:03:09AM +0200, Wadim Egorov wrote:
-> On 21.04.2016 18:01, Mark Brown wrote:
+Verified on url =
+https://github.com/Caesar-github/rockchip/tree/wip/fixes-rockchip-thermal
+Based on linux-next kernel for 20160422
 
-> >> +static int rk808_set_suspend_voltage(struct regulator_dev *rdev, int uv)
-> >> +{
+Verified on rk3288/rk3366/rk3399 SoCs with rockchip inside kernel(develop4.4).
 
-> > This is fine but is adding a new feature and not part of the refactoring
-> > that the changelog talked about so should be in a separate commit.
+The rk3399 dtsi has benn sent on https://patchwork.kernel.org/patch/8905841/.
 
-> This is not really a new feature.
-> rk808_set_suspend_voltage() was using regulator_map_voltage_linear_range().
-> I have just renamed the function to rk808_set_suspend_voltage_range()
-> and added an ops struct for ranges.
-> Yes, I have also added rk808_set_suspend_voltage(), but this is just a split
-> for the two types of ops that the driver needs now.
-> This was needed, because the driver used only linear ranges.
-> IMO it should be a part of the refactoring.
+---
 
-If that's the case then split this into multiple refactorings each doing
-one change so this can be more easily reviewed.
 
---0TJQK8JvXJ+EbTps
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Caesar Wang (6):
+  thermal: rockchip: fixes the code_to_temp for tsadc driver
+  thermal: rockchip: update the tsadc table for rk3399
+  thermal: rockchip: handle the power sequence for tsadc controller
+  thermal: rockchip: add the notes for better reading
+  ARM: dts: rockchip: move the rk3288 thermal data into rk3288.dtsi
+  arm64: dts: rockchip: move the rk3368 thermal data into rk3368.dtsi
 
-iQEcBAEBCAAGBQJXGfHQAAoJECTWi3JdVIfQ9PYH/juXorEZfekYWBQuYa0LChNX
-KZFbpGU/TXrPqbkGquD536ZzJZTeEKlKta0HlLMz4sMIZX/NyGx60eVHCWzU57rx
-Tf2pUhVP7nmOIin//5psLXhgmYp95OUmJTJScNmpSvwaKpcDt9ye4O1xWVr8hjej
-CUz88/GaJXKGLTvEg/9F/RMKFoKsiVQQpX2n9UVm2hDqa60dB/BcQah4JPbTOfJ7
-G699Bis4ygsbmUDRkCHotb1v0kvjDLpKDEUoPDDiVGksGnPcVV9rQ/1mudv1RSUi
-icDvoYg+7HsxTulJPHZJQzEzBzgm5GTqv9YIhvjzNuLiyTjrahVVfVmhrxQrB2A=
-=wVTn
------END PGP SIGNATURE-----
+Elaine Zhang (1):
+  thermal: rockchip: Support RK3366 SoCs in the thermal driver
 
---0TJQK8JvXJ+EbTps--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Shawn Lin (1):
+  thermal: rockchip: disable thermal->clk in err case
+
+ arch/arm/boot/dts/rk3288-thermal.dtsi            | 118 ----------
+ arch/arm/boot/dts/rk3288.dtsi                    |  73 +++++-
+ arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi | 112 ---------
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi         |  66 +++++-
+ drivers/thermal/rockchip_thermal.c               | 279 +++++++++++++++++------
+ 5 files changed, 352 insertions(+), 296 deletions(-)
+ delete mode 100644 arch/arm/boot/dts/rk3288-thermal.dtsi
+ delete mode 100644 arch/arm64/boot/dts/rockchip/rk3368-thermal.dtsi
+
+-- 
+1.9.1
+
