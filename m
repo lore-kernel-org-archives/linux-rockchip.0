@@ -1,43 +1,53 @@
-From: "Huang, Tao" <huangtao@rock-chips.com>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
-Date: Fri, 22 Apr 2016 12:23:06 +0800
-Message-ID: <5719A72A.4070603@rock-chips.com>
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 0/4] ARM64: dts: rockchip: add support for RK3399
+Date: Fri, 22 Apr 2016 13:21:31 +0800
+Message-ID: <1461302491-13233-1-git-send-email-jay.xu@rock-chips.com>
 References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
- <1461211092-26331-1-git-send-email-jay.xu@rock-chips.com>
- <3937420.4aN2rRBlcO@diego>
- <CAD=FV=X9S4z2WLEJ-KaaCZxfkdO4+-i2hUd3dsYJi5qXEvpVBQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=X9S4z2WLEJ-KaaCZxfkdO4+-i2hUd3dsYJi5qXEvpVBQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Jianqun Xu <jay.xu@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, David Riley <davidriley@chromium.org>, Julius Werner <jwerner@chromium.org>, smbarber@chromium.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1461122150-9042-1-git-send-email-jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Doug:
-On 2016=E5=B9=B404=E6=9C=8822=E6=97=A5 06:38, Doug Anderson wrote:
->
->>> +     i2c1: i2c@ff110000 {
->>> +             compatible =3D "rockchip,rk3399-i2c";
->> David respun the rk3399 i2c-support on tuesday, so this and the othe=
-rs below
->> are waiting on Wolfram to take a look.
-> I think it can work with the rk3288-i2c as a fallback, at least for
-> low speed stuff, right?  Should this be:
->
-> compatible =3D "rockchip,rk3399-i2c", "rockchip,rk3288-i2c"
->
-> Looks like that was done for rk3368.
-No. For RK3399 I2C controller:
-The I2C controller uses the APB clock/clk_i2c as the working clock. The
-APB clock will determine the I2C bus clock, clk_i2c is the function clk=
-,
-up to 200MHz.
-Chips such as RK3288/3368 only uses APB clock. So old driver do not wor=
-k
-on RK3399.
+Add dtsi file for RK3399 SoCs, and evb dts file for RK3399 evb.
 
-Thanks,
-Huang, Tao
+To make patch more easily to be reviewed, some nodes have been removed
+temporarily, after this base file been applied, more patches will be
+upstreamed independently.
+
+Jianqun Xu (3):
+  ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
+  ARM64: dts: rockchip: add RK3399 evaluation board
+  ARM64: dts: rockchip: add dts file for RK3399 evaluation board
+
+Shawn Lin (1):
+  Documentation: rockchip-dw-mshc: add description for rk3399
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |    6 +-
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  122 +++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 1022 ++++++++++++++++++++
+ 5 files changed, 1151 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399.dtsi
+
+--
+changes in v2:
+- split into more patches. (Heiko)
+- remove arm-pmu at first. (Marc, Heiko, Mark)
+- remove rga, emmc, usb3, mipi, edp, pd, i2c, gpu, thermal, tsadc, saradc, which will upstream independently
+- remove rk808 since without i2c, which will upstream independently
+- remove es8316 since without i2c, which will upstream independently
+- add rockchip-dw-mshc binding patch
+- add rockchip,rk3399-evb binding patch
+- fix codingstyle issues
+
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
