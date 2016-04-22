@@ -1,108 +1,108 @@
-From: "jay.xu" <jay.xu@rock-chips.com>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
-Date: Fri, 22 Apr 2016 09:50:09 +0800
-Message-ID: <57198351.2060608@rock-chips.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
- <5718AFB8.5070004@rock-chips.com> <20160421123018.096d4a75@arm.com>
- <2131452.5tyGOfVRfi@diego> <20160421221228.359fab3c@arm.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH 7/9] thermal: of: Add support for hardware-tracked trip
+ points
+Date: Fri, 22 Apr 2016 09:54:19 +0800
+Message-ID: <5719844B.3040703@gmail.com>
+References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
+ <1460950562-20652-8-git-send-email-wxt@rock-chips.com>
+ <20160420234818.GB2558@localhost.localdomain>
+ <20160421011230.GA118377@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
+Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160421221228.359fab3c@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Marc Zyngier <marc.zyngier@arm.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: "Huang, Tao" <huangtao@rock-chips.com>, Mark Rutland <mark.rutland@arm.com>, will.deacon@arm.com, robh+dt@kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, davidriley@chromium.org, dianders@chromium.org, jwerner@chromium.org, smbarber@chromium.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20160421011230.GA118377@google.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>, Eduardo Valentin <edubezval@gmail.com>, Sascha Hauer <kernel@pengutronix.de>
+Cc: Wei Ni <wni@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, dianders@chromium.org, Mikko Perttunen <mperttunen@nvidia.com>, linux-rockchip@lists.infradead.org, smbarber@google.com, Paul Walmsley <pwalmsley@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, Caesar Wang <wxt@rock-chips.com>, eddie.cai@rock-chips.com, huangtao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Marc:
+Hi Brian, Eduardo, Sascha
 
-On 2016=E5=B9=B404=E6=9C=8822=E6=97=A5 05:12, Marc Zyngier wrote:
-> On Thu, 21 Apr 2016 22:24:09 +0200
-> Heiko St=C3=BCbner <heiko@sntech.de> wrote:
+=E5=9C=A8 2016=E5=B9=B404=E6=9C=8821=E6=97=A5 09:12, Brian Norris =E5=86=
+=99=E9=81=93:
+> + Sascha
 >
->> Am Donnerstag, 21. April 2016, 12:30:18 schrieb Marc Zyngier:
->>> On Thu, 21 Apr 2016 18:47:20 +0800
+> On Wed, Apr 20, 2016 at 04:48:18PM -0700, Eduardo Valentin wrote:
+>> On Mon, Apr 18, 2016 at 11:35:59AM +0800, Caesar Wang wrote:
+>>> From: Mikko Perttunen <mperttunen@nvidia.com>
 >>>
->>> "Huang, Tao" <huangtao@rock-chips.com> wrote:
->>>> Hi, Mark:
->>>>
->>>> On 2016=E5=B9=B404=E6=9C=8821=E6=97=A5 18:19, Mark Rutland wrote:
->>>>> On Thu, Apr 21, 2016 at 11:58:12AM +0800, Jianqun Xu wrote:
->>>>>> +		cpu_l0: cpu@0 {
->>>>>> +			device_type =3D "cpu";
->>>>>> +			compatible =3D "arm,cortex-a53", "arm,armv8";
->>>>>> +			reg =3D <0x0 0x0>;
->>>>>> +			enable-method =3D "psci";
->>>>>> +			#cooling-cells =3D <2>; /* min followed by max */
->>>>>> +			clocks =3D <&cru ARMCLKL>;
->>>>>> +		};
->>>>>> +		cpu_b0: cpu@100 {
->>>>>> +			device_type =3D "cpu";
->>>>>> +			compatible =3D "arm,cortex-a72", "arm,armv8";
->>>>>> +			reg =3D <0x0 0x100>;
->>>>>> +			enable-method =3D "psci";
->>>>>> +			#cooling-cells =3D <2>; /* min followed by max */
->>>>>> +			clocks =3D <&cru ARMCLKB>;
->>>>>> +		};
->>>>>> +
->>>>>> +	arm-pmu {
->>>>>> +		compatible =3D "arm,armv8-pmuv3";
->>>>>> +		interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>>> +	};
->>>>> This is wrong, and must go. There should be a separate node for t=
-he PMU
->>>>> of each microarchitecture, with the appropriate compatible string=
- to
->>>>> represent that (see the juno dts).
->>>> You are right. The first version we wrote is:
->>>>      pmu_a53 {
->>>>     =20
->>>>          compatible =3D "arm,cortex-a53-pmu";
->>>>          interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>          interrupt-affinity =3D <&cpu_l0>,
->>>>         =20
->>>>                       <&cpu_l1>,
->>>>                       <&cpu_l2>,
->>>>                       <&cpu_l3>;
->>>>     =20
->>>>      };
->>>>     =20
->>>>      pmu_a72 {
->>>>     =20
->>>>          compatible =3D "arm,cortex-a72-pmu";
->>>>          interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
->>>>          interrupt-affinity =3D <&cpu_b0>,
->>>>         =20
->>>>                       <&cpu_b1>;
->>>>     =20
->>>>      };
->>>>
->>>> but unfortunately, the arm pmu driver do not support PPI in two cl=
-uster
->>>> well,
->>>> so we have to replace with this implementation.
->>>>
->>>>> In this case things are messier as the same PPI number is being u=
-sed
->>>>> across clusters. Marc (Cc'd) has been working on PPI partitions, =
-which
->>>>> should allow us to support that.
->>>> Great! So what we can do right now? Wait this feature, and delete
->>>> arm-pmu node?
->>> I'd rather you have a look at the patches, test them with your HW,
->>> and comment on what doesn't work!
->> I would think we could do it in two tracks, testing and fixing but a=
-lso letting
->> the rk3399 devicetrees move forward without the pmu at first :-) .
-> Where would the fun be then? ;-)
-thanks for your advices, and I will try to test the percpu-partition=20
-patches.
-
-by the way, do you think it's better to let the dtsi be reviewed first,
-then the percpu-partition patches could be tested by more people ?
-
-Jianqun
+>>> This adds support for hardware-tracked trip points to the device tr=
+ee
+>> <cut>
+>>
+>>> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+>>> index 97b86c5..6ef932a 100644
+>>> --- a/include/linux/thermal.h
+>>> +++ b/include/linux/thermal.h
+>>> @@ -335,12 +335,14 @@ struct thermal_genl_event {
+>>>    * @get_trend: a pointer to a function that reads the sensor temp=
+erature trend.
+>>>    * @set_emul_temp: a pointer to a function that sets sensor emula=
+ted
+>>>    *		   temperature.
+>>> + * @set_trips: a pointer to a function that set low/high trip temp=
+erature.
+>>>    */
+>>>   struct thermal_zone_of_device_ops {
+>>>   	int (*get_temp)(void *, int *);
+>>>   	int (*get_trend)(void *, long *);
+>>>   	int (*set_emul_temp)(void *, int);
+>>>   	int (*set_trip_temp)(void *, int, int);
+>>> +	int (*set_trips)(void *, int, int);
+>> This is unfortunately a diverges from API available on thermal core.=
+ Can
+>> you please add first on thermal core then, use it in of thermal?
+>>
+>> I don't want to have callbacks available only via of thermal. If we
+>> allow it, OF thermal becomes a separate API.
+> What ever happened to this effort?
 >
-> 	M.
+> http://thread.gmane.org/gmane.linux.power-management.general/59451
+>
+> Patch 12 and 13 look to accomplish something similar, yet they do wha=
+t
+> Eduardo suggested. I was testing that series at my previous job, but
+> unfortunately (for the fate of this series) I left that employer befo=
+re
+> I could finish reviewing and testing it. Perhaps Caesar can resurrect
+> and test it?
+
+@Brian
+Yes, I can
+
+Sure, I can.
+
+I see the Sascha's newest thermal patches in patchwork.
+The following patches are still needed, right?
+
+6446191 New          [06/16] thermal: inline only once used function
+6446111 New          [07/16] thermal: streamline get_trend callbacks
+6445871 New          [08/16] thermal: Allow sensor ops to fail with -EN=
+OSYS
+6445861 New          [09/16] thermal: of: always set sensor related=20
+callbacks
+6446221 New          [10/16] thermal: Make struct=20
+thermal_zone_device_ops const
+6446201 New          [11/16] thermal: bang-bang governor: act on lower=20
+trip boundary
+6445891 New          [12/16] thermal: thermal: Add support for=20
+hardware-tracked trip points
+6445911 New          [13/16] thermal: of: implement .set_trips for=20
+device tree thermal zones
+
+@Sascha, Eduardo
+Can you share your discussion content for the above patches as remember=
+ed?
+
+Thanks,
+
+-Caesar
+
+> Brian
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
