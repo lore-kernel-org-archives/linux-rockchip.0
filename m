@@ -1,25 +1,43 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] dt-bindings: add vendor-prefix for mqmaker
-Date: Sun, 24 Apr 2016 23:54:06 +0200
-Message-ID: <2655085.QVfvX50HM9@diego>
-References: <1460933375-6718-1-git-send-email-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1460933375-6718-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] clk: rockchip: trivial fix of spelling mistake on unsuccessful
+Date: Sun, 24 Apr 2016 23:44:13 +0100
+Message-ID: <1461537853-10569-1-git-send-email-colin.king@canonical.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Jiri Kosina <trivial@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 18. April 2016, 00:49:34 schrieb Heiko Stuebner:
-> Add vendor-prefix for Shenzen-based mqmaker Inc.
-> 
-> Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+From: Colin Ian King <colin.king@canonical.com>
 
-applied both to my dts32 branch for 4.7
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+fix spelling mistake, unsucessful -> unsuccessful
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/clk/rockchip/clk-pll.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 128a6b2..8ac73bc 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -236,7 +236,7 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
+ 	/* wait for the pll to lock */
+ 	ret = rockchip_pll_wait_lock(pll);
+ 	if (ret) {
+-		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
++		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
+ 			__func__);
+ 		rockchip_rk3036_pll_set_params(pll, &cur);
+ 	}
+@@ -475,7 +475,7 @@ static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
+ 	/* wait for the pll to lock */
+ 	ret = rockchip_pll_wait_lock(pll);
+ 	if (ret) {
+-		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
++		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
+ 			__func__);
+ 		rockchip_rk3066_pll_set_params(pll, &cur);
+ 	}
+-- 
+2.7.4
