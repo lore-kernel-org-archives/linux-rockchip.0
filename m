@@ -1,34 +1,59 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v2 6/7] clk: Kconfig: Name RK818 in Kconfig for
- COMMON_CLK_RK808
-Date: Fri, 22 Apr 2016 14:37:57 -0700
-Message-ID: <20160422213757.GG13149@codeaurora.org>
-References: <1461244361-45686-1-git-send-email-w.egorov@phytec.de>
- <1461244361-45686-7-git-send-email-w.egorov@phytec.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1461244361-45686-7-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Subject: [PATCH 00/12] nvmem: remove regmap dependency
+Date: Sun, 24 Apr 2016 20:28:04 +0100
+Message-ID: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Joachim Eastwood <manabian@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, andrew@lunn.ch
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/21, Wadim Egorov wrote:
-> The RK808 and RK818 PMICs are using a similar register map.
-> We can reuse the clk driver for the RK818 PMIC. So let's add
-> the RK818 in the Kconfig description.
-> 
-> Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-> ---
+nvmem uses regmap_raw_read/write apis to read/write data from providers,
+With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
+and fix accessor usage") nvmem providers based on regmap-mmio stopped
+working, as nvmem core was using raw accessors.
+This issue can be fixed temporarly by moving to other regmap apis,
+but we might hit same issue in future, and regmap looks like an
+overdo for nvmem. Moving to interfaces based on read/write callbacks
+from providers would be more robust.
 
-Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+This patchset converts the nvmem core and nvmem provider drivers to
+use the new callbacks. Tested this patchset on qfprom and at24 drivers.
+Other driver are only compile tested, any testing on them would be great.
+
+Thanks,
+srini
+
+Srinivas Kandagatla (12):
+  nvmem: core: remove regmap dependency
+  eeprom: at24: remove nvmem regmap dependency
+  eeprom: at25: remove nvmem regmap dependency
+  nvmem: qfprom: remove nvmem regmap dependency
+  nvmem: vif610-ocotp: remove nvmem regmap dependency
+  nvmem: sunxi-sid: remove nvmem regmap dependency
+  nvmem: rockchip-efuse: remove nvmem regmap dependency
+  nvmem: mtk-efuse: remove nvmem regmap dependency
+  nvmem: imx-ocotp: remove nvmem regmap dependency
+  nvmem: lpc18xx-eeprom: remove nvmem regmap dependency
+  nvmem: mxs-ocotp: remove nvmem regmap dependency
+  nvmem: 93xx46: remove nvmem regmap dependency
+
+ drivers/misc/eeprom/Kconfig         |   2 -
+ drivers/misc/eeprom/at24.c          | 103 ++++++++----------------------------
+ drivers/misc/eeprom/at25.c          |  89 +++++++------------------------
+ drivers/misc/eeprom/eeprom_93xx46.c |  90 +++++++------------------------
+ drivers/nvmem/Kconfig               |   4 --
+ drivers/nvmem/core.c                |  67 +++++++++++++----------
+ drivers/nvmem/imx-ocotp.c           |  55 ++++---------------
+ drivers/nvmem/lpc18xx_eeprom.c      |  94 +++++++++-----------------------
+ drivers/nvmem/mtk-efuse.c           |  47 ++++++++++------
+ drivers/nvmem/mxs-ocotp.c           |  79 ++++++++-------------------
+ drivers/nvmem/qfprom.c              |  56 +++++++++++++-------
+ drivers/nvmem/rockchip-efuse.c      |  49 ++++-------------
+ drivers/nvmem/sunxi_sid.c           |  54 ++++---------------
+ drivers/nvmem/vf610-ocotp.c         |  44 ++++-----------
+ include/linux/nvmem-provider.h      |  10 ++++
+ 15 files changed, 264 insertions(+), 579 deletions(-)
 
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.5.0
