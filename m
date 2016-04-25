@@ -1,43 +1,60 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] clk: rockchip: trivial fix of spelling mistake on unsuccessful
-Date: Sun, 24 Apr 2016 23:44:13 +0100
-Message-ID: <1461537853-10569-1-git-send-email-colin.king@canonical.com>
+From: Eric Engestrom <eric@engestrom.ch>
+Subject: [PATCH 09/41] Documentation: dt: clock: fix spelling mistakes
+Date: Mon, 25 Apr 2016 01:24:06 +0100
+Message-ID: <1461543878-3639-10-git-send-email-eric@engestrom.ch>
+References: <1461543878-3639-1-git-send-email-eric@engestrom.ch>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1461543878-3639-1-git-send-email-eric@engestrom.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, Jiri Kosina <trivial@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Eric Engestrom <eric@engestrom.ch>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Colin Ian King <colin.king@canonical.com>
-
-fix spelling mistake, unsucessful -> unsuccessful
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Signed-off-by: Eric Engestrom <eric@engestrom.ch>
 ---
- drivers/clk/rockchip/clk-pll.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt | 2 +-
+ Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt | 2 +-
+ Documentation/devicetree/bindings/clock/st/st,clkgen.txt        | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 128a6b2..8ac73bc 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -236,7 +236,7 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 	/* wait for the pll to lock */
- 	ret = rockchip_pll_wait_lock(pll);
- 	if (ret) {
--		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
-+		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
- 			__func__);
- 		rockchip_rk3036_pll_set_params(pll, &cur);
- 	}
-@@ -475,7 +475,7 @@ static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
- 	/* wait for the pll to lock */
- 	ret = rockchip_pll_wait_lock(pll);
- 	if (ret) {
--		pr_warn("%s: pll update unsucessful, trying to restore old params\n",
-+		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
- 			__func__);
- 		rockchip_rk3066_pll_set_params(pll, &cur);
- 	}
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
+index 0c2bf5e..7f36853 100644
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
+@@ -16,7 +16,7 @@ Required Properties:
+ Optional Properties:
+ 
+ - rockchip,grf: phandle to the syscon managing the "general register files"
+-  If missing pll rates are not changable, due to the missing pll lock status.
++  If missing pll rates are not changeable, due to the missing pll lock status.
+ 
+ Each clock is assigned an identifier and client nodes can use this identifier
+ to specify the clock which they consume. All available clocks are defined as
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
+index c9fbb76..8cb47c3 100644
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
+@@ -15,7 +15,7 @@ Required Properties:
+ Optional Properties:
+ 
+ - rockchip,grf: phandle to the syscon managing the "general register files"
+-  If missing pll rates are not changable, due to the missing pll lock status.
++  If missing pll rates are not changeable, due to the missing pll lock status.
+ 
+ Each clock is assigned an identifier and client nodes can use this identifier
+ to specify the clock which they consume. All available clocks are defined as
+diff --git a/Documentation/devicetree/bindings/clock/st/st,clkgen.txt b/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
+index 78978f1..426bdda 100644
+--- a/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
++++ b/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
+@@ -40,7 +40,7 @@ address is common of all subnode.
+ 	};
+ 
+ This binding uses the common clock binding[1].
+-Each subnode should use the binding discribe in [2]..[7]
++Each subnode should use the binding describe in [2]..[7]
+ 
+ [1] Documentation/devicetree/bindings/clock/clock-bindings.txt
+ [2] Documentation/devicetree/bindings/clock/st,clkgen-divmux.txt
 -- 
-2.7.4
+2.8.0
