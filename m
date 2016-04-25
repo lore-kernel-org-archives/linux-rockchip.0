@@ -1,79 +1,47 @@
-From: Randy Dunlap <rdunlap-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Subject: Re: [PATCH 09/41] Documentation: dt: clock: fix spelling mistakes
-Date: Sun, 24 Apr 2016 20:00:51 -0700
-Message-ID: <571D8863.3030202@infradead.org>
-References: <1461543878-3639-1-git-send-email-eric@engestrom.ch>
- <1461543878-3639-10-git-send-email-eric@engestrom.ch>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461543878-3639-10-git-send-email-eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Eric Engestrom <eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH 0/4] Thermal: Support for hardware-tracked trip points
+Date: Mon, 25 Apr 2016 11:02:43 +0800
+Message-ID: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: edubezval@gmail.com
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, eddie.cai@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, linux-pm@vger.kernel.org, Keerthy <j-keerthy@ti.com>, linux-kernel@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-omap@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 04/24/16 17:24, Eric Engestrom wrote:
-> Signed-off-by: Eric Engestrom <eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt | 2 +-
->  Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt | 2 +-
->  Documentation/devicetree/bindings/clock/st/st,clkgen.txt        | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
-> index 0c2bf5e..7f36853 100644
-> --- a/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
-> @@ -16,7 +16,7 @@ Required Properties:
->  Optional Properties:
->  
->  - rockchip,grf: phandle to the syscon managing the "general register files"
-> -  If missing pll rates are not changable, due to the missing pll lock status.
-> +  If missing pll rates are not changeable, due to the missing pll lock status.
->  
->  Each clock is assigned an identifier and client nodes can use this identifier
->  to specify the clock which they consume. All available clocks are defined as
-> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-> index c9fbb76..8cb47c3 100644
-> --- a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-> @@ -15,7 +15,7 @@ Required Properties:
->  Optional Properties:
->  
->  - rockchip,grf: phandle to the syscon managing the "general register files"
-> -  If missing pll rates are not changable, due to the missing pll lock status.
-> +  If missing pll rates are not changeable, due to the missing pll lock status.
->  
->  Each clock is assigned an identifier and client nodes can use this identifier
->  to specify the clock which they consume. All available clocks are defined as
-> diff --git a/Documentation/devicetree/bindings/clock/st/st,clkgen.txt b/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
-> index 78978f1..426bdda 100644
-> --- a/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
-> +++ b/Documentation/devicetree/bindings/clock/st/st,clkgen.txt
-> @@ -40,7 +40,7 @@ address is common of all subnode.
->  	};
->  
->  This binding uses the common clock binding[1].
-> -Each subnode should use the binding discribe in [2]..[7]
-> +Each subnode should use the binding describe in [2]..[7]
+The history patches come from Mikko and Sascha.
+http://thread.gmane.org/gmane.linux.power-management.general/59451
 
-described ?
+Now, I pick them up to continue upstream.
+Nevermind!
 
->  
->  [1] Documentation/devicetree/bindings/clock/clock-bindings.txt
->  [2] Documentation/devicetree/bindings/clock/st,clkgen-divmux.txt
-> 
+Tis series adds support for hardware trip points. It picks up earlier
+work from Mikko Perttunen. Mikko implemented hardware trip points as part
+of the device tree support. It was suggested back then to move the
+functionality to the thermal core instead of putting more code into the
+device tree support. This series does exactly that.
 
+This series patches rebase the conflicts.
+Note that the hardware-tracked trip points are very well tested currently.
+
+Verified and tested on https://github.com/Caesar-github/rockchip/tree/wip/fixes-thermal-0425
+That's based on linux-kernel 20160422.
+
+[    0.000000] Linux version 4.6.0-rc4-next-20160422-00016-g0ac0bfb-dirty
+
+
+
+Sascha Hauer (4):
+  thermal: Add support for hardware-tracked trip points
+  thermal: of: implement .set_trips for device tree thermal zones
+  thermal: streamline get_trend callbacks
+  thermal: bang-bang governor: act on lower trip boundary
+
+ drivers/thermal/gov_bang_bang.c                    |  2 +-
+ drivers/thermal/of-thermal.c                       | 23 ++++++-----
+ drivers/thermal/thermal_core.c                     | 48 ++++++++++++++++++++++
+ drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 ++++-------
+ include/linux/thermal.h                            |  9 +++-
+ 5 files changed, 78 insertions(+), 29 deletions(-)
 
 -- 
-~Randy
+1.9.1
