@@ -1,74 +1,81 @@
-From: "Huang, Tao" <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH] ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
-Date: Mon, 25 Apr 2016 20:27:07 +0800
-Message-ID: <571E0D1B.9080909@rock-chips.com>
-References: <1461122150-9042-1-git-send-email-jay.xu@rock-chips.com>
- <1461211092-26331-1-git-send-email-jay.xu@rock-chips.com>
- <20160421101930.GG6879@leverpostej> <5718AFB8.5070004@rock-chips.com>
- <20160421123018.096d4a75@arm.com> <571DE803.3010902@rock-chips.com>
- <20160425100531.GC25087@leverpostej> <571DEF30.90604@rock-chips.com>
- <20160425104746.GE25087@leverpostej>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/3] ASoC: simple-card: Add support jack
+ detection via codec
+Date: Mon, 25 Apr 2016 13:55:04 +0100
+Message-ID: <20160425125504.GL3217@sirena.org.uk>
+References: <1460967452-24574-1-git-send-email-zhengxing@rock-chips.com>
+ <1460967452-24574-3-git-send-email-zhengxing@rock-chips.com>
+ <20160421141921.GA25900@rob-hp-laptop>
+ <57197BBA.50304@rock-chips.com>
+ <20160422092250.GA3217@sirena.org.uk>
+ <3C927D46-BC52-4B5C-B5B4-CCBA3AAE6F87@xenotropic.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160425104746.GE25087@leverpostej>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============0679803396192724603=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <3C927D46-BC52-4B5C-B5B4-CCBA3AAE6F87@xenotropic.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jeremy McDermond <mcdermj@xenotropic.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Andrew Lunn <andrew@lunn.ch>, alsa-devel@alsa-project.org, Mengdong Lin <mengdong.lin@linux.intel.com>, heiko@sntech.de, Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, Xing Zheng <zhengxing@rock-chips.com>, Aaro Koskinen <aaro.koskinen@iki.fi>, Takashi Iwai <tiwai@suse.com>, sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Jyri Sarha <jsarha@ti.com>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, linux-kernel@vger.kernel.org, Adam.Thomson@diasemi.com, Kumar Gala <galak@codeaurora.org>, Jun Nie <jun.nie@linaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi, Mark:
-On 2016=E5=B9=B404=E6=9C=8825=E6=97=A5 18:47, Mark Rutland wrote:
-> On Mon, Apr 25, 2016 at 06:19:28PM +0800, Huang, Tao wrote:
->> Hi, Mark:
->> On 2016=E5=B9=B404=E6=9C=8825=E6=97=A5 18:05, Mark Rutland wrote:
->>> On Mon, Apr 25, 2016 at 05:48:51PM +0800, Huang, Tao wrote:
->>>> and pmu define as:
->>>>     pmu_a53 {
->>>>         compatible =3D "arm,cortex-a53-pmu";
->>>>         interrupts =3D <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW &part0>;
->>>>         interrupt-affinity =3D <&cpu_l0>,
->>>>                      <&cpu_l1>,
->>>>                      <&cpu_l2>,
->>>>                      <&cpu_l3>;
->>>>     };
->>>>
->>>>     pmu_a72 {
->>>>         compatible =3D "arm,cortex-a72-pmu", "arm,cortex-a57-pmu";
->>> That Cortex-A57 PMU fallback should just go. We already have Cortex=
--A72
->>> PMU support upstream, and I believe there are sufficient difference=
-s
->>> such that the Cortex-A72 PMU is not a strict superset of the Cortex=
--A57
->>> PMU.
->> As I say, I tested on v4.4, I don't back port
->> arch/arm64/kernel/perf_event.c, so I use "arm,cortex-a57-pmu". Upstr=
-eam
->> will use "arm,cortex-a72-pmu" only.
->> BTW, I don't see any differences between A72/A57 in source code:
-> The PMU name is exposed to userspace, so the user will be told they h=
-ave
-> a Cortex-A57 PMU, with all of the IMPLEMENTATION DEFINED events that
-> implies.
->
-> We don't handle those IMPLEMENTATION DEFINED events in the kernel, bu=
-t
-> for the sake of the userspace ABI, we should not expose the Cortex-A7=
-2
-> PMU as a Cortex-A57 PMU.
->
-> Given the code is otherwise identical, it should be relatively simple=
- to
-> backport the A72 support.
->
-Understood, thank you!
 
-Huang, Tao
+--===============0679803396192724603==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="8Km4OLyaxUtVIPha"
+Content-Disposition: inline
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+--8Km4OLyaxUtVIPha
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Apr 22, 2016 at 09:37:39AM -0700, Jeremy McDermond wrote:
+
+> components fairly well.  I=E2=80=99m just trying to wrap my head around
+> where this all would fit in.  Should the codec driver just register
+> a bunch of clock components in its initialization somewhere?
+> I=E2=80=99m thinking that it can=E2=80=99t have its own CCF driver separa=
+te from
+> the codec driver because you won=E2=80=99t have proper access to the
+> registers over I2C or SPI.  I don=E2=80=99t find a lot of examples in the
+> codec drivers, and there aren=E2=80=99t very many other drivers in the tr=
+ee
+> that seem to register clocks with CCF that I can find.
+
+If the clock code is worth splitting off into a separate driver that's
+what drivers/mfd is for.
+
+--8Km4OLyaxUtVIPha
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXHhOmAAoJECTWi3JdVIfQAcAH/j75szg8/VKCpHvhAc75ilq2
+ibJGnlJtBW0OtsmPem0rSXULDqk1vQQbjzHPO4eTNPZEpy7PLYC0YQ85sjqtQ0AQ
+Yk5cdckj8qyxRXEdPjre0896xz88N71kZ5q+ANxA+SYjyeSI2ztVV+hEH8w0t9J2
+4bbZYK3LMFYXlDrff/HrNvLqAH9hNRSoNKefQthsC3V9HxNid4YRnojERhOnTEUi
+taUey6o6ecnKjNcQ0QcbWUiFCdFGHmoREOFRaJP12LDCYe4AWeIuetGNVf0wWhXD
+9ygY3OLuGKgT6UqNShSqHT0Gp4aI5FgXEIJSp2OYjDIiErmFAGxb0YsjjlLR5VE=
+=clqe
+-----END PGP SIGNATURE-----
+
+--8Km4OLyaxUtVIPha--
+
+--===============0679803396192724603==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============0679803396192724603==--
