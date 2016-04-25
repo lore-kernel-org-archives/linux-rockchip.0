@@ -1,105 +1,25 @@
-From: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v3 6/8] mfd: dt-bindings: Add RK818 device tree bindings
- document
-Date: Mon, 25 Apr 2016 15:20:46 +0200
-Message-ID: <1461590448-47685-7-git-send-email-w.egorov@phytec.de>
-References: <1461590448-47685-1-git-send-email-w.egorov@phytec.de>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 09/41] Documentation: dt: clock: fix spelling mistakes
+Date: Mon, 25 Apr 2016 08:53:28 -0500
+Message-ID: <CAL_JsqKNJv3jKd0_xu8inKWewnTYdS7q_RBsEiewi-u=AwOSvA@mail.gmail.com>
+References: <1461543878-3639-1-git-send-email-eric@engestrom.ch> <1461543878-3639-10-git-send-email-eric@engestrom.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461590448-47685-1-git-send-email-w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1461543878-3639-10-git-send-email-eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eric Engestrom <eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>
+Cc: "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add device tree bindings documentation for Rockchip's RK818 PMIC.
+On Sun, Apr 24, 2016 at 7:24 PM, Eric Engestrom <eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org> wrote:
+> Signed-off-by: Eric Engestrom <eric-op+oiCINJLTt9jDmeYuA0g@public.gmane.org>
+> ---
 
-Signed-off-by: Wadim Egorov <w.egorov-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
-Changes since v2:
-- Added Acked-by
----
- Documentation/devicetree/bindings/mfd/rk808.txt | 37 +++++++++++++++++++++++--
- 1 file changed, 34 insertions(+), 3 deletions(-)
+Applied with Randy's fix.
 
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 4ca6aab..9636ae8 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -1,7 +1,11 @@
--RK808 Power Management Integrated Circuit
-+RK8XX Power Management Integrated Circuit
-+
-+The rk8xx family current members:
-+rk808
-+rk818
- 
- Required properties:
--- compatible: "rockchip,rk808"
-+- compatible: "rockchip,rk808", "rockchip,rk818"
- - reg: I2C slave address
- - interrupt-parent: The parent interrupt controller.
- - interrupts: the interrupt outputs of the controller.
-@@ -13,6 +17,8 @@ Optional properties:
-   default output clock name
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
-+
-+Optional RK808 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
- - vcc2-supply:  The input supply for DCDC_REG2
- - vcc3-supply:  The input supply for DCDC_REG3
-@@ -29,7 +35,20 @@ Optional properties:
-   the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
-   very quickly with no slow ramp time.
- 
--Regulators: All the regulators of RK808 to be instantiated shall be
-+Optional RK818 properties:
-+- vcc1-supply:  The input supply for DCDC_REG1
-+- vcc2-supply:  The input supply for DCDC_REG2
-+- vcc3-supply:  The input supply for DCDC_REG3
-+- vcc4-supply:  The input supply for DCDC_REG4
-+- boost-supply: The input supply for DCDC_BOOST
-+- vcc6-supply:  The input supply for LDO_REG1 and LDO_REG2
-+- vcc7-supply:  The input supply for LDO_REG3, LDO_REG5 and LDO_REG7
-+- vcc8-supply:  The input supply for LDO_REG4, LDO_REG6 and LDO_REG8
-+- vcc9-supply:  The input supply for LDO_REG9 and SWITCH_REG
-+- h_5v-supply:  The input supply for HDMI_SWITCH
-+- usb-supply:   The input supply for OTG_SWITCH
-+
-+Regulators: All the regulators of RK8XX to be instantiated shall be
- listed in a child node named 'regulators'. Each regulator is represented
- by a child node of the 'regulators' node.
- 
-@@ -48,6 +67,18 @@ number as described in RK808 datasheet.
- 	- SWITCH_REGn
- 		- valid values for n are 1 to 2
- 
-+Following regulators of the RK818 PMIC block are supported. Note that
-+the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
-+number as described in RK818 datasheet.
-+
-+	- DCDC_REGn
-+		- valid values for n are 1 to 4.
-+	- LDO_REGn
-+		- valid values for n are 1 to 9.
-+	- SWITCH_REG
-+	- HDMI_SWITCH
-+	- OTG_SWITCH
-+
- Standard regulator bindings are used inside regulator subnodes. Check
-   Documentation/devicetree/bindings/regulator/regulator.txt
- for more details
--- 
-1.9.1
+Rob
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
