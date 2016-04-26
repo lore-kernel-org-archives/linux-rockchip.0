@@ -1,104 +1,58 @@
-From: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v1] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Tue, 26 Apr 2016 22:35:08 +0300
-Message-ID: <571FC2EC.9090605@ti.com>
-References: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
- <20160426160245.GI28464@e106497-lin.cambridge.arm.com>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 4/4] ARM64: dts: rockchip: add dts file for RK3399
+ evaluation board
+Date: Tue, 26 Apr 2016 13:53:58 -0700
+Message-ID: <CAD=FV=Wgnz-vBo71f3mqFxcOpL7fJX58hXPJ+vk9uHpymqdN5Q@mail.gmail.com>
+References: <1461638206-20473-1-git-send-email-jay.xu@rock-chips.com>
+	<1461638206-20473-5-git-send-email-jay.xu@rock-chips.com>
+	<9945516.Q6LYCrkl5z@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160426160245.GI28464-2JSQmVVBSi7ZROr8t4l/smS4ubULX0JqMm0uRHvK7Nw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>
-Cc: kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Mike Looijmans <mike.looijmans-Oq418RWZeHk@public.gmane.org>, Lars Persson <lars.persson-VrBV9hrLPhE@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>J
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <9945516.Q6LYCrkl5z@diego>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, lintao <lintao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Tao Huang <huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, David Riley <davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Julius Werner <jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMDQvMjYvMjAxNiAwNzowMiBQTSwgTGl2aXUgRHVkYXUgd3JvdGU6Cj4gT24gVHVlLCBBcHIg
-MjYsIDIwMTYgYXQgMDY6Mjg6NTJQTSArMDMwMCwgR3J5Z29yaWkgU3RyYXNoa28gd3JvdGU6Cj4g
-Cj4gSGkgR3J5Z29yaWksCj4gCj4gRmlyc3QgdGltZSBJJ20gc2VlaW5nIHRoaXMgcGF0Y2gsIHNv
-IEkgaGF2ZSBhIGZldyBxdWVzdGlvbnMsIG1vc3RseQo+IHJlbGF0ZWQgdG8gdGhlIGNvbW1pdCBt
-ZXNzYWdlOgoKSG0uIFlvdSBhcmUgaW4gY2MgZm9yIFJGQy4KU3J5LCBmb3Jnb3QgdG8gYWRkIGxp
-bmsgWzFdLgoKPiAKPj4gVGhpcyBwYXRjaCBpbnRlbmRlZCB0byBmaXggZm9sbG93aW5nIGNhc2Vz
-Ogo+PiAtIFNvQy1BIGhhcyBBUk0gR1QsIGRlZmluZXMgRFQgbm9kZSBmb3IgQVJNIEdUIGFuZCBz
-ZWxlY3RzCj4+IEFSTV9HTE9CQUxfVElNRVIgc3RhdGljYWxseSBpbiBLY29uZmlnIGZpbGUuIFNv
-Qy1CIGhhcyBBUk0gR1QgYW5kCj4+IGRlZmluZXMgRFQgbm9kZSBmb3IgQVJNIEdULCBidXQgZG8g
-bm90IHNlbGVjdHMgQVJNX0dMT0JBTF9USU1FUgo+PiBzdGF0aWNhbGx5IGluIEtjb25maWcgZmls
-ZS4gSW4gY2FzZSBvZiBtdWx0aXBsYXRmb3JtIGJ1aWxkIEFSTSBHVCB3aWxsCj4+IGJlIGltcGxp
-Y2l0bHkgZW5hYmxlZCBmb3IgU29DLUIuCj4gCj4gV2VsbCwgU29DLUIgaGFzIHRoZSBHVCAqYW5k
-KiB0aGUgRFQgbm9kZSwgc28gd2hhdCBpcyB0aGUgcHJvYmxlbSB3aXRoCj4gZW5hYmxpbmcgaXQg
-Zm9yIFNvQy1CPyBJZiB0aGVyZSBhcmUgcmVhc29ucyBub3QgdG8gdXNlIHRoZSBHbG9iYWwgVGlt
-ZXIKPiBvbiBTb0MtQiwgc3VyZWx5IGEgYmV0dGVyIG9wdGlvbiB3b3VsZCBiZSB0byBtYXJrIGl0
-IGluIERUIHdpdGggc3RhdHVzID0gImRpc2FibGVkIjsKClRoaXMgd2FzIHJlamVjdGVkIFsyXS4g
-RFQgZGVzY3JpYmVzIEhXIGFuZCBpZiBpdCBpcyBmdW5jdGlvbmFsIHRoZSBzdGF0dXMgPSAiZGlz
-YWJsZWQiCmlzIG5vdCBnb29kIGNob2ljZS4KQVJNIEdUIGNhbid0IGJlIHVzZWQgYXMgY2xvY2tz
-b3VyY2Uvc2NoZWRfY2xvY2svY2xvY2tldmVudCB3aGVuIENQVUZyZXEgb3IKQ1BVSWRsZSBhcmUg
-ZW5hYmxlZCA6KCwgYW5kIHRoaXMgaXMgTGludXggc3BlY2lmaWMgZnVuY3Rpb25hbGl0eSBhbmQK
-bm90IEhXIGRlc2NyaXB0aW9uLiAKCj4gCj4+Cj4+IC0gVGhlcmUgaXMgbm8gd2F5IHRvIGRpc2Fi
-bGUgQVJNIEdUIHdpdGhvdXQgbW9kaWZ5aW5nIEtjb25maWcgZmlsZSwKPj4gb25jZSBBUk1fR0xP
-QkFMX1RJTUVSIGlzIHNlbGVjdGVkIHN0YXRpY2FsbHkgaW4gS2NvbmZpZyBmaWxlLgo+IAo+IFdo
-YXQgYWJvdXQgZGlzYWJsaW5nIHRoZSBEVCBub2RlPwo+IAo+IE5vdCBzdXJlIEkgcHJvcGVybHkg
-dW5kZXJzdGFuZCB0aGUgcHJvYmxlbSB5b3UgYXJlIHRyeWluZyB0byBzb2x2ZSBoZXJlLgoKSSdk
-IGxpa2UgdG8gaGF2ZSB3YXkgdG8gZW5hYmxlL2Rpc2FibGUgQVJNIEdUIHdpdGhvdXQgbW9kaWZ5
-aW5nIEtlcm5lbCBzb3VyY2VzCihLY29uZmlnIHNwZWNpZmljYWxseSkgd2hpY2ggaXMgbm93IGlt
-cG9zc2libGUuCgo+IAo+Pgo+PiBIZW5jZSwgZml4IGFib3ZlIGNhc2UgYnkgZGVmaW5pbmcgYm90
-aCBIQVZFX0FSTV9HTE9CQUxfVElNRVIgYW5kCj4+IEFSTV9HTE9CQUxfVElNRVIgYXMgcmVjb21t
-ZW5kZWQgYnkgJ0FkZGluZyBjb21tb24gZmVhdHVyZXMgYW5kIG1ha2UKPj4gdGhlIHVzYWdlIGNv
-bmZpZ3VyYWJsZScgc2VjdGlvbiBpbiBrY29uZmlnLWxhbmd1YWdlLnR4dC4gQWxsIHBsYWNlcyBp
-bgo+PiBBUk0gZm9sZGVyIHdoZXJlIEFSTV9HTE9CQUxfVElNRVIgd2FzIHVzZWQgbm93IHJlcGxh
-Y2VkIG9uCj4+IEhBVkVfQVJNX0dMT0JBTF9USU1FUi4KPiAKPiBJJ20gT0sgd2l0aCB0aGUgd2F5
-IHlvdSBoYXZlIGNoYW5nZWQgQVJNX0dMT0JBTF9USU1FUiBmcm9tIGEgc3RpY2t5IGNvbmZpZwo+
-IG9wdGlvbiB0byBhIHNlbGVjdGFibGUgb25lLCBidXQgSSB3b3VsZCBsaWtlIG1vcmUgZGV0YWls
-cyBvbiB0aGUgcHJvYmxlbQo+IHRoaXMgd2FzIGNhdXNpbmcgeW91Lgo+IAoKVGhlIHNhbWUgSFcg
-KGJvYXJkKSBjb3VsZCBiZSB1c2VkIHdpdGggUE0gZmVhdHVyZXMgZW5hYmxlZCAocG93ZXIgc2F2
-aW5nKQphbmQgZGlzYWJsZWQgKC1SVCkuIFdpdGhvdXQgdGhpcyBjaGFuZ2UgaXQgd2lsbCByZXF1
-aXJlIHRvIGhhdmUKYW5kIG1haW50YWluIHR3byBicmFuY2hlcywgYnV0IHdpdGggaXQgLSBqdXN0
-IHNlcGFyYXRlIGRlZmNvbmZpZy4KClsxXSBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9waXBl
-cm1haWwvbGludXgtcm9ja2NoaXAvMjAxNi1GZWJydWFyeS8wMDcxNTkuaHRtbApbMl0gaHR0cDov
-L3d3dy5zcGluaWNzLm5ldC9saXN0cy9kZXZpY2V0cmVlL21zZzEwMjkxOC5odG1sCgo+IAo+Pgo+
-PiBDYzogRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+Cj4+IENjOiBG
-bG9yaWFuIEZhaW5lbGxpIDxmLmZhaW5lbGxpQGdtYWlsLmNvbT4KPj4gQ2M6IFJ1c3NlbGwgS2lu
-ZyA8bGludXhAYXJtLmxpbnV4Lm9yZy51az4KPj4gQ2M6IFdlaSBYdSA8eHV3ZWk1QGhpc2lsaWNv
-bi5jb20+Cj4+IENjOiBTaGF3biBHdW8gPHNoYXduZ3VvQGtlcm5lbC5vcmc+Cj4+IENjOiBTYXNj
-aGEgSGF1ZXIgPGtlcm5lbEBwZW5ndXRyb25peC5kZT4KPj4gQ2M6IFNyaW5pdmFzIEthbmRhZ2F0
-bGEgPHNyaW5pdmFzLmthbmRhZ2F0bGFAZ21haWwuY29tPgo+PiBDYzogTWF4aW1lIENvcXVlbGlu
-IDxtYXhpbWUuY29xdWVsaW5Ac3QuY29tPgo+PiBDYzogTWFzYWhpcm8gWWFtYWRhIDx5YW1hZGEu
-bWFzYWhpcm9Ac29jaW9uZXh0LmNvbT4KPj4gQ2M6IExpdml1IER1ZGF1IDxsaXZpdS5kdWRhdUBh
-cm0uY29tPgo+PiBDYzogU3VkZWVwIEhvbGxhIDxzdWRlZXAuaG9sbGFAYXJtLmNvbT4KPj4gQ2M6
-IEp1biBOaWUgPGp1bi5uaWVAbGluYXJvLm9yZz4KPj4gQ2M6IE1pY2hhbCBTaW1layA8bWljaGFs
-LnNpbWVrQHhpbGlueC5jb20+Cj4+IENjOiBKZXNwZXIgTmlsc3NvbiA8amVzcGVyLm5pbHNzb25A
-YXhpcy5jb20+Cj4+IENjOiBMYXJzIFBlcnNzb24gPGxhcnMucGVyc3NvbkBheGlzLmNvbT4KPj4g
-Q2M6IE1pa2UgTG9vaWptYW5zIDxtaWtlLmxvb2lqbWFuc0B0b3BpYy5ubD4KPj4gQWNrZWQtYnk6
-IFPDtnJlbiBCcmlua21hbm4gPHNvcmVuLmJyaW5rbWFubkB4aWxpbnguY29tPgo+PiBBY2tlZC1i
-eTogTW9yaXR6IEZpc2NoZXIgPG1vcml0ei5maXNjaGVyQGV0dHVzLmNvbT4KPj4gU2lnbmVkLW9m
-Zi1ieTogR3J5Z29yaWkgU3RyYXNoa28gPGdyeWdvcmlpLnN0cmFzaGtvQHRpLmNvbT4KPj4gLS0t
-Cj4+IENoYW5nZXMgaXMgdjE6Cj4+IC0gdXBkYXRlZCBtYWNoLWFydHBlYwo+PiAtIHJlYmFzZWQg
-b24gdG9wIG9mIHRpcDogdGltZXJzL2NvcmUKPj4gICAgY29tbWl0OiA4NmQzNDczIHRpbWU6IElu
-dHJvZHVjZSBkb19zeXNfc2V0dGltZW9mZGF5NjQoKQo+Pgo+PiAgIGFyY2gvYXJtL21hY2gtYXJ0
-cGVjL0tjb25maWcgICB8IDIgKy0KPj4gICBhcmNoL2FybS9tYWNoLWJjbS9LY29uZmlnICAgICAg
-fCA0ICsrLS0KPj4gICBhcmNoL2FybS9tYWNoLWhpc2kvS2NvbmZpZyAgICAgfCAyICstCj4+ICAg
-YXJjaC9hcm0vbWFjaC1pbXgvS2NvbmZpZyAgICAgIHwgMiArLQo+PiAgIGFyY2gvYXJtL21hY2gt
-cm9ja2NoaXAvS2NvbmZpZyB8IDIgKy0KPj4gICBhcmNoL2FybS9tYWNoLXN0aS9LY29uZmlnICAg
-ICAgfCAyICstCj4+ICAgYXJjaC9hcm0vbWFjaC11bmlwaGllci9LY29uZmlnIHwgMiArLQo+PiAg
-IGFyY2gvYXJtL21hY2gtdmV4cHJlc3MvS2NvbmZpZyB8IDIgKy0KPj4gICBhcmNoL2FybS9tYWNo
-LXp4L0tjb25maWcgICAgICAgfCAyICstCj4+ICAgYXJjaC9hcm0vbWFjaC16eW5xL0tjb25maWcg
-ICAgIHwgMiArLQo+PiAgIGRyaXZlcnMvY2xvY2tzb3VyY2UvS2NvbmZpZyAgICB8IDcgKysrKysr
-LQo+PiAgIDExIGZpbGVzIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygt
-KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1hcnRwZWMvS2NvbmZpZyBiL2FyY2gv
-YXJtL21hY2gtYXJ0cGVjL0tjb25maWcKPj4gaW5kZXggNmNiZTVhMi4uNmNiY2E3NyAxMDA2NDQK
-Pj4gLS0tIGEvYXJjaC9hcm0vbWFjaC1hcnRwZWMvS2NvbmZpZwo+PiArKysgYi9hcmNoL2FybS9t
-YWNoLWFydHBlYy9LY29uZmlnCj4+IEBAIC05LDcgKzksNyBAQCBjb25maWcgTUFDSF9BUlRQRUM2
-Cj4+ICAgCWRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNwo+PiAgIAlzZWxlY3QgQVJNX0FNQkEKPj4g
-ICAJc2VsZWN0IEFSTV9HSUMKPj4gLQlzZWxlY3QgQVJNX0dMT0JBTF9USU1FUgoKWy4uLl0KCi0t
-IApyZWdhcmRzLAotZ3J5Z29yaWkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+On Tue, Apr 26, 2016 at 5:37 AM, Heiko St=C3=BCbner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> w=
+rote:
+>> +     model =3D "Rockchip RK3399 Evaluation Board";
+>> +     compatible =3D "rockchip,rk3399-evb", "rockchip,rk3399",
+>> +                  "google,rk3399evb-rev2", google,rk3399evb-rev1",
+>> +                  "google,rk3399evb-rev0" ;
+>
+> can you check against which compatibles that coreboot really matches?
+>
+> As we said that the evb changed between rev1 and rev2, I would expect=
+ the
+> compatible to be something like
+>
+>         compatible =3D "rockchip,rk3399-evb",  "google,rk3399evb-rev2=
+",
+>                         "rockchip,rk3399";
+>
+> leaving out the rev1 and rev0
+
+What Heiko suggests seems reasonable to me.
+
+It all depends on what your bootloader is doing and what you guys want
+to do.  Chrome OS designs that I've worked on have had board
+strappings that you can read a board ID from and that's how the BIOS
+(like coreboot) will figure out which board ID it is running on.  I'm
+not aware of such strappings on rk3399-evb.  Do they exist?
+
+Of course, even without strappings it's possible to get the bootloader
+to work sanely.  You can either define the revision number at build
+time or you can store the revision number somewhere non-volatile.
+
+
+-Doug
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
