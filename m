@@ -1,190 +1,77 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 4/4] ARM64: dts: rockchip: add dts file for RK3399 evaluation board
-Date: Tue, 26 Apr 2016 14:37 +0200
-Message-ID: <9945516.Q6LYCrkl5z@diego>
-References: <1461638206-20473-1-git-send-email-jay.xu@rock-chips.com> <1461638206-20473-5-git-send-email-jay.xu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Wadim Egorov <w.egorov@phytec.de>
+Subject: [PATCH v4 1/7] regulator: rk808: Add rk808_reg_ops_ranges for LDO3
+Date: Tue, 26 Apr 2016 16:54:04 +0200
+Message-ID: <1461682450-22173-2-git-send-email-w.egorov@phytec.de>
+References: <1461682450-22173-1-git-send-email-w.egorov@phytec.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1461638206-20473-5-git-send-email-jay.xu@rock-chips.com>
+In-Reply-To: <1461682450-22173-1-git-send-email-w.egorov@phytec.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: lintao@rock-chips.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, huangtao@rock-chips.com, davidriley@chromium.org, dianders@chromium.org, jwerner@chromium.org, smbarber@chromium.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, lee.jones@linaro.org
+Cc: robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lgirdwood@gmail.com, broonie@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 26. April 2016, 10:36:46 schrieb Jianqun Xu:
-> This patch add rk3399-evb.dts for RK3399 evaluation board.
-> Tested on RK3399 evb.
-> 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
-> changes in v3:
-> - add more compatible (Doug)
-> - add modle
-> 
->  arch/arm64/boot/dts/rockchip/Makefile       |   1 +
->  arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 125
-> ++++++++++++++++++++++++++++ 2 files changed, 126 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
-> b/arch/arm64/boot/dts/rockchip/Makefile index df37865..7037a16 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -1,6 +1,7 @@
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-evb.dtb
-> 
->  always		:= $(dtb-y)
->  subdir-y	:= $(dts-dirs)
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts new file mode 100644
-> index 0000000..c3370bd
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> @@ -0,0 +1,125 @@
-> +/*
-> + * Copyright (c) 2016 Fuzhou Rockchip Electronics Co., Ltd
-> + *
-> + * This file is dual-licensed: you can use it either under the terms
-> + * of the GPL or the X11 license, at your option. Note that this dual
-> + * licensing only applies to this file, and not this project as a
-> + * whole.
-> + *
-> + *  a) This file is free software; you can redistribute it and/or
-> + *     modify it under the terms of the GNU General Public License as
-> + *     published by the Free Software Foundation; either version 2 of the
-> + *     License, or (at your option) any later version.
-> + *
-> + *     This file is distributed in the hope that it will be useful,
-> + *     but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + *     GNU General Public License for more details.
-> + *
-> + * Or, alternatively,
-> + *
-> + *  b) Permission is hereby granted, free of charge, to any person
-> + *     obtaining a copy of this software and associated documentation
-> + *     files (the "Software"), to deal in the Software without
-> + *     restriction, including without limitation the rights to use,
-> + *     copy, modify, merge, publish, distribute, sublicense, and/or
-> + *     sell copies of the Software, and to permit persons to whom the
-> + *     Software is furnished to do so, subject to the following
-> + *     conditions:
-> + *
-> + *     The above copyright notice and this permission notice shall be
-> + *     included in all copies or substantial portions of the Software.
-> + *
-> + *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-> + *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-> + *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-> + *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-> + *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-> + *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-> + *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> + *     OTHER DEALINGS IN THE SOFTWARE.
-> + */
-> +
-> +/dts-v1/;
-> +#include <dt-bindings/pwm/pwm.h>
-> +#include "rk3399.dtsi"
-> +
-> +/ {
-> +	model = "Rockchip RK3399 Evaluation Board";
-> +	compatible = "rockchip,rk3399-evb", "rockchip,rk3399",
-> +		     "google,rk3399evb-rev2", google,rk3399evb-rev1",
-> +		     "google,rk3399evb-rev0" ;
+LDO_REG3 descriptor is using linear_ranges.
+Add and use proper ops for LDO_REG3.
 
-can you check against which compatibles that coreboot really matches?
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+---
+ drivers/regulator/rk808-regulator.c | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
 
-As we said that the evb changed between rev1 and rev2, I would expect the 
-compatible to be something like
-
-	compatible = "rockchip,rk3399-evb",  "google,rk3399evb-rev2", 
-			"rockchip,rk3399";
-
-leaving out the rev1 and rev0
-
-> +
-> +	vdd_center: vdd-center {
-> +		compatible = "pwm-regulator";
-> +		pwms = <&pwm3 0 25000 0>;
-> +		regulator-name = "vdd_center";
-> +		regulator-min-microvolt = <800000>;
-> +		regulator-max-microvolt = <1400000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		status = "okay";
-> +	};
-
-Can you check if this runs stable with the pwm-regulator in mainline please?
-I.e. Boris' rework series hasn't landed yet and at least on Veyron I remember 
-the pwm-regulator having reliability issues or something like that.
-
-
-> +
-> +	vcc3v3_sys: vcc3v3-sys {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc3v3_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +	};
-> +
-> +	vcc_phy: vcc-phy-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_phy";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
-> +};
-> +
-> +&pwm0 {
-> +	status = "okay";
-> +};
-> +
-> +&pwm2 {
-> +	status = "okay";
-> +};
-> +
-> +&pwm3 {
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ohci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host1_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host1_ohci {
-> +	status = "okay";
-> +};
-> +
-> +&pinctrl {
-> +	pmic {
-> +		pmic_int_l: pmic-int-l {
-> +			rockchip,pins =
-> +				<1 21 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +
-> +		pmic_dvs2: pmic-dvs2 {
-> +			rockchip,pins =
-> +				<1 18 RK_FUNC_GPIO &pcfg_pull_down>;
-> +		};
-> +	};
-> +};
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index 67f72fe..6601ab5 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -238,6 +238,21 @@ static int rk808_set_suspend_voltage(struct regulator_dev *rdev, int uv)
+ 				  sel);
+ }
+ 
++static int rk808_set_suspend_voltage_range(struct regulator_dev *rdev, int uv)
++{
++	unsigned int reg;
++	int sel = regulator_map_voltage_linear_range(rdev, uv, uv);
++
++	if (sel < 0)
++		return -EINVAL;
++
++	reg = rdev->desc->vsel_reg + RK808_SLP_REG_OFFSET;
++
++	return regmap_update_bits(rdev->regmap, reg,
++				  rdev->desc->vsel_mask,
++				  sel);
++}
++
+ static int rk808_set_suspend_enable(struct regulator_dev *rdev)
+ {
+ 	unsigned int reg;
+@@ -288,6 +303,19 @@ static struct regulator_ops rk808_reg_ops = {
+ 	.set_suspend_disable	= rk808_set_suspend_disable,
+ };
+ 
++static struct regulator_ops rk808_reg_ops_ranges = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
++	.set_suspend_voltage	= rk808_set_suspend_voltage_range,
++	.set_suspend_enable	= rk808_set_suspend_enable,
++	.set_suspend_disable	= rk808_set_suspend_disable,
++};
++
+ static struct regulator_ops rk808_switch_ops = {
+ 	.enable			= regulator_enable_regmap,
+ 	.disable		= regulator_disable_regmap,
+@@ -383,7 +411,7 @@ static const struct regulator_desc rk808_reg[] = {
+ 		.name = "LDO_REG3",
+ 		.supply_name = "vcc7",
+ 		.id = RK808_ID_LDO3,
+-		.ops = &rk808_reg_ops,
++		.ops = &rk808_reg_ops_ranges,
+ 		.type = REGULATOR_VOLTAGE,
+ 		.n_voltages = 16,
+ 		.linear_ranges = rk808_ldo3_voltage_ranges,
+-- 
+1.9.1
