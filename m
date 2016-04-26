@@ -1,153 +1,279 @@
-From: Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>
-Subject: [PATCH v1] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Tue, 26 Apr 2016 18:28:52 +0300
-Message-ID: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
+From: Liviu Dudau <liviu.dudau@arm.com>
+Subject: Re: [PATCH v1] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
+Date: Tue, 26 Apr 2016 17:02:45 +0100
+Message-ID: <20160426160245.GI28464@e106497-lin.cambridge.arm.com>
+References: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-VrBV9hrLPhE@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Grygorii Strashko <grygorii.strashko-l0cyMroinI0@public.gmane.org>, Mike Looijmans <mike.looijmans-Oq418RWZeHk@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Lars Persson <lars.persson-VrBV9hrLPhE@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Jun Nie <jun.nie-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Grygorii Strashko <grygorii.strashko@ti.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org, Sekhar Nori <nsekhar@ti.com>, linux-omap@vger.kernel.org, Tony Lindgren <tony@atomide.com>, bcm-kernel-feedback-list@broadcom.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@stlinux.com, linux-arm-kernel@axis.com, Florian Fainelli <f.fainelli@gmail.com>, Russell King <linux@arm.linux.org.uk>, Wei Xu <xuwei5@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Sudeep Holla <sudeep.holla@arm.com>, Jun Nie <jun.nie@linaro.org>, Michal Simek <michal.simek@xilinx.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Lars
 List-Id: linux-rockchip.vger.kernel.org
 
-VGhpcyBwYXRjaCBpbnRlbmRlZCB0byBmaXggZm9sbG93aW5nIGNhc2VzOgotIFNvQy1BIGhhcyBB
-Uk0gR1QsIGRlZmluZXMgRFQgbm9kZSBmb3IgQVJNIEdUIGFuZCBzZWxlY3RzCkFSTV9HTE9CQUxf
-VElNRVIgc3RhdGljYWxseSBpbiBLY29uZmlnIGZpbGUuIFNvQy1CIGhhcyBBUk0gR1QgYW5kCmRl
-ZmluZXMgRFQgbm9kZSBmb3IgQVJNIEdULCBidXQgZG8gbm90IHNlbGVjdHMgQVJNX0dMT0JBTF9U
-SU1FUgpzdGF0aWNhbGx5IGluIEtjb25maWcgZmlsZS4gSW4gY2FzZSBvZiBtdWx0aXBsYXRmb3Jt
-IGJ1aWxkIEFSTSBHVCB3aWxsCmJlIGltcGxpY2l0bHkgZW5hYmxlZCBmb3IgU29DLUIuCgotIFRo
-ZXJlIGlzIG5vIHdheSB0byBkaXNhYmxlIEFSTSBHVCB3aXRob3V0IG1vZGlmeWluZyBLY29uZmln
-IGZpbGUsCm9uY2UgQVJNX0dMT0JBTF9USU1FUiBpcyBzZWxlY3RlZCBzdGF0aWNhbGx5IGluIEtj
-b25maWcgZmlsZS4KCkhlbmNlLCBmaXggYWJvdmUgY2FzZSBieSBkZWZpbmluZyBib3RoIEhBVkVf
-QVJNX0dMT0JBTF9USU1FUiBhbmQKQVJNX0dMT0JBTF9USU1FUiBhcyByZWNvbW1lbmRlZCBieSAn
-QWRkaW5nIGNvbW1vbiBmZWF0dXJlcyBhbmQgbWFrZQp0aGUgdXNhZ2UgY29uZmlndXJhYmxlJyBz
-ZWN0aW9uIGluIGtjb25maWctbGFuZ3VhZ2UudHh0LiBBbGwgcGxhY2VzIGluCkFSTSBmb2xkZXIg
-d2hlcmUgQVJNX0dMT0JBTF9USU1FUiB3YXMgdXNlZCBub3cgcmVwbGFjZWQgb24KSEFWRV9BUk1f
-R0xPQkFMX1RJTUVSLgoKQ2M6IERhbmllbCBMZXpjYW5vIDxkYW5pZWwubGV6Y2Fub0BsaW5hcm8u
-b3JnPgpDYzogRmxvcmlhbiBGYWluZWxsaSA8Zi5mYWluZWxsaUBnbWFpbC5jb20+CkNjOiBSdXNz
-ZWxsIEtpbmcgPGxpbnV4QGFybS5saW51eC5vcmcudWs+CkNjOiBXZWkgWHUgPHh1d2VpNUBoaXNp
-bGljb24uY29tPgpDYzogU2hhd24gR3VvIDxzaGF3bmd1b0BrZXJuZWwub3JnPgpDYzogU2FzY2hh
-IEhhdWVyIDxrZXJuZWxAcGVuZ3V0cm9uaXguZGU+CkNjOiBTcmluaXZhcyBLYW5kYWdhdGxhIDxz
-cmluaXZhcy5rYW5kYWdhdGxhQGdtYWlsLmNvbT4KQ2M6IE1heGltZSBDb3F1ZWxpbiA8bWF4aW1l
-LmNvcXVlbGluQHN0LmNvbT4KQ2M6IE1hc2FoaXJvIFlhbWFkYSA8eWFtYWRhLm1hc2FoaXJvQHNv
-Y2lvbmV4dC5jb20+CkNjOiBMaXZpdSBEdWRhdSA8bGl2aXUuZHVkYXVAYXJtLmNvbT4KQ2M6IFN1
-ZGVlcCBIb2xsYSA8c3VkZWVwLmhvbGxhQGFybS5jb20+CkNjOiBKdW4gTmllIDxqdW4ubmllQGxp
-bmFyby5vcmc+CkNjOiBNaWNoYWwgU2ltZWsgPG1pY2hhbC5zaW1la0B4aWxpbnguY29tPgpDYzog
-SmVzcGVyIE5pbHNzb24gPGplc3Blci5uaWxzc29uQGF4aXMuY29tPgpDYzogTGFycyBQZXJzc29u
-IDxsYXJzLnBlcnNzb25AYXhpcy5jb20+CkNjOiBNaWtlIExvb2lqbWFucyA8bWlrZS5sb29pam1h
-bnNAdG9waWMubmw+CkFja2VkLWJ5OiBTw7ZyZW4gQnJpbmttYW5uIDxzb3Jlbi5icmlua21hbm5A
-eGlsaW54LmNvbT4KQWNrZWQtYnk6IE1vcml0eiBGaXNjaGVyIDxtb3JpdHouZmlzY2hlckBldHR1
-cy5jb20+ClNpZ25lZC1vZmYtYnk6IEdyeWdvcmlpIFN0cmFzaGtvIDxncnlnb3JpaS5zdHJhc2hr
-b0B0aS5jb20+Ci0tLQpDaGFuZ2VzIGlzIHYxOgotIHVwZGF0ZWQgbWFjaC1hcnRwZWMKLSByZWJh
-c2VkIG9uIHRvcCBvZiB0aXA6IHRpbWVycy9jb3JlCiAgY29tbWl0OiA4NmQzNDczIHRpbWU6IElu
-dHJvZHVjZSBkb19zeXNfc2V0dGltZW9mZGF5NjQoKQoKIGFyY2gvYXJtL21hY2gtYXJ0cGVjL0tj
-b25maWcgICB8IDIgKy0KIGFyY2gvYXJtL21hY2gtYmNtL0tjb25maWcgICAgICB8IDQgKystLQog
-YXJjaC9hcm0vbWFjaC1oaXNpL0tjb25maWcgICAgIHwgMiArLQogYXJjaC9hcm0vbWFjaC1pbXgv
-S2NvbmZpZyAgICAgIHwgMiArLQogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9LY29uZmlnIHwgMiAr
-LQogYXJjaC9hcm0vbWFjaC1zdGkvS2NvbmZpZyAgICAgIHwgMiArLQogYXJjaC9hcm0vbWFjaC11
-bmlwaGllci9LY29uZmlnIHwgMiArLQogYXJjaC9hcm0vbWFjaC12ZXhwcmVzcy9LY29uZmlnIHwg
-MiArLQogYXJjaC9hcm0vbWFjaC16eC9LY29uZmlnICAgICAgIHwgMiArLQogYXJjaC9hcm0vbWFj
-aC16eW5xL0tjb25maWcgICAgIHwgMiArLQogZHJpdmVycy9jbG9ja3NvdXJjZS9LY29uZmlnICAg
-IHwgNyArKysrKystCiAxMSBmaWxlcyBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAxMiBkZWxl
-dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLWFydHBlYy9LY29uZmlnIGIvYXJj
-aC9hcm0vbWFjaC1hcnRwZWMvS2NvbmZpZwppbmRleCA2Y2JlNWEyLi42Y2JjYTc3IDEwMDY0NAot
-LS0gYS9hcmNoL2FybS9tYWNoLWFydHBlYy9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtYXJ0
-cGVjL0tjb25maWcKQEAgLTksNyArOSw3IEBAIGNvbmZpZyBNQUNIX0FSVFBFQzYKIAlkZXBlbmRz
-IG9uIEFSQ0hfTVVMVElfVjcKIAlzZWxlY3QgQVJNX0FNQkEKIAlzZWxlY3QgQVJNX0dJQwotCXNl
-bGVjdCBBUk1fR0xPQkFMX1RJTUVSCisJc2VsZWN0IEhBVkVfQVJNX0dMT0JBTF9USU1FUgogCXNl
-bGVjdCBBUk1fUFNDSQogCXNlbGVjdCBIQVZFX0FSTV9BUkNIX1RJTUVSCiAJc2VsZWN0IEhBVkVf
-QVJNX1NDVQpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1iY20vS2NvbmZpZyBiL2FyY2gvYXJt
-L21hY2gtYmNtL0tjb25maWcKaW5kZXggN2VmMTIxNC4uZDRkMDc5YTcgMTAwNjQ0Ci0tLSBhL2Fy
-Y2gvYXJtL21hY2gtYmNtL0tjb25maWcKKysrIGIvYXJjaC9hcm0vbWFjaC1iY20vS2NvbmZpZwpA
-QCAtMTQsNyArMTQsNyBAQCBjb25maWcgQVJDSF9CQ01fSVBST0MKIAlzZWxlY3QgQ0FDSEVfTDJY
-MAogCXNlbGVjdCBIQVZFX0FSTV9TQ1UgaWYgU01QCiAJc2VsZWN0IEhBVkVfQVJNX1RXRCBpZiBT
-TVAKLQlzZWxlY3QgQVJNX0dMT0JBTF9USU1FUgorCXNlbGVjdCBIQVZFX0FSTV9HTE9CQUxfVElN
-RVIKIAlzZWxlY3QgQ09NTU9OX0NMS19JUFJPQwogCXNlbGVjdCBDTEtTUkNfTU1JTwogCXNlbGVj
-dCBBUkNIX1JFUVVJUkVfR1BJT0xJQgpAQCAtMTU2LDcgKzE1Niw3IEBAIGNvbmZpZyBBUkNIX0JD
-TV82M1hYCiAJc2VsZWN0IEFSTV9FUlJBVEFfNzU0MzIyCiAJc2VsZWN0IEFSTV9FUlJBVEFfNzY0
-MzY5IGlmIFNNUAogCXNlbGVjdCBBUk1fR0lDCi0Jc2VsZWN0IEFSTV9HTE9CQUxfVElNRVIKKwlz
-ZWxlY3QgSEFWRV9BUk1fR0xPQkFMX1RJTUVSCiAJc2VsZWN0IENBQ0hFX0wyWDAKIAlzZWxlY3Qg
-SEFWRV9BUk1fQVJDSF9USU1FUgogCXNlbGVjdCBIQVZFX0FSTV9UV0QgaWYgU01QCmRpZmYgLS1n
-aXQgYS9hcmNoL2FybS9tYWNoLWhpc2kvS2NvbmZpZyBiL2FyY2gvYXJtL21hY2gtaGlzaS9LY29u
-ZmlnCmluZGV4IGEzYjA5MWEuLjI1MWJiMDMgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtaGlz
-aS9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtaGlzaS9LY29uZmlnCkBAIC0yOCw3ICsyOCw3
-IEBAIGNvbmZpZyBBUkNIX0hJUDAxCiAgICAgICAgZGVwZW5kcyBvbiBBUkNIX01VTFRJX1Y3CiAg
-ICAgICAgc2VsZWN0IEhBVkVfQVJNX1NDVSBpZiBTTVAKICAgICAgICBzZWxlY3QgSEFWRV9BUk1f
-VFdEIGlmIFNNUAotICAgICAgIHNlbGVjdCBBUk1fR0xPQkFMX1RJTUVSCisgICAgICAgc2VsZWN0
-IEhBVkVfQVJNX0dMT0JBTF9USU1FUgogICAgICAgIGhlbHAKICAgICAgICAgIFN1cHBvcnQgZm9y
-IEhpc2lsaWNvbiBISVAwMSBTb0MgZmFtaWx5CiAKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gt
-aW14L0tjb25maWcgYi9hcmNoL2FybS9tYWNoLWlteC9LY29uZmlnCmluZGV4IDg5NzNmYWUuLjNm
-YmYzOGMgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtaW14L0tjb25maWcKKysrIGIvYXJjaC9h
-cm0vbWFjaC1pbXgvS2NvbmZpZwpAQCAtNjAyLDcgKzYwMiw3IEBAIGNob2ljZQogCWNvbmZpZyBW
-Rl9VU0VfQVJNX0dMT0JBTF9USU1FUgogCQlib29sICJVc2UgQVJNIEdsb2JhbCBUaW1lciIKIAkJ
-ZGVwZW5kcyBvbiBBUkNIX01VTFRJX1Y3Ci0JCXNlbGVjdCBBUk1fR0xPQkFMX1RJTUVSCisJCXNl
-bGVjdCBIQVZFX0FSTV9HTE9CQUxfVElNRVIKIAkJc2VsZWN0IENMS1NSQ19BUk1fR0xPQkFMX1RJ
-TUVSX1NDSEVEX0NMT0NLCiAJCWhlbHAKIAkJICBVc2UgdGhlIEFSTSBHbG9iYWwgVGltZXIgYXMg
-Y2xvY2tzb3VyY2UKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyBi
-L2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZwppbmRleCBjZWY0MmZkLi5hNTNiNzg3IDEw
-MDY0NAotLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL0tjb25maWcKKysrIGIvYXJjaC9hcm0v
-bWFjaC1yb2NrY2hpcC9LY29uZmlnCkBAIC0xNCw3ICsxNCw3IEBAIGNvbmZpZyBBUkNIX1JPQ0tD
-SElQCiAJc2VsZWN0IERXX0FQQl9USU1FUl9PRgogCXNlbGVjdCBSRUdVTEFUT1IgaWYgUE0KIAlz
-ZWxlY3QgUk9DS0NISVBfVElNRVIKLQlzZWxlY3QgQVJNX0dMT0JBTF9USU1FUgorCXNlbGVjdCBI
-QVZFX0FSTV9HTE9CQUxfVElNRVIKIAlzZWxlY3QgQ0xLU1JDX0FSTV9HTE9CQUxfVElNRVJfU0NI
-RURfQ0xPQ0sKIAloZWxwCiAJICBTdXBwb3J0IGZvciBSb2NrY2hpcCdzIENvcnRleC1BOSBTaW5n
-bGUtdG8tUXVhZC1Db3JlLVNvQ3MKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtc3RpL0tjb25m
-aWcgYi9hcmNoL2FybS9tYWNoLXN0aS9LY29uZmlnCmluZGV4IGExOTZkMTQuLmM3OTlmOWQgMTAw
-NjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtc3RpL0tjb25maWcKKysrIGIvYXJjaC9hcm0vbWFjaC1z
-dGkvS2NvbmZpZwpAQCAtMyw3ICszLDcgQEAgbWVudWNvbmZpZyBBUkNIX1NUSQogCWRlcGVuZHMg
-b24gQVJDSF9NVUxUSV9WNwogCXNlbGVjdCBBUk1fR0lDCiAJc2VsZWN0IFNUX0lSUUNISVAKLQlz
-ZWxlY3QgQVJNX0dMT0JBTF9USU1FUgorCXNlbGVjdCBIQVZFX0FSTV9HTE9CQUxfVElNRVIKIAlz
-ZWxlY3QgQ0xLU1JDX1NUX0xQQwogCXNlbGVjdCBQSU5DVFJMCiAJc2VsZWN0IFBJTkNUUkxfU1QK
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtdW5pcGhpZXIvS2NvbmZpZyBiL2FyY2gvYXJtL21h
-Y2gtdW5pcGhpZXIvS2NvbmZpZwppbmRleCA4MmRkZGVlLi44MWJkZjc3IDEwMDY0NAotLS0gYS9h
-cmNoL2FybS9tYWNoLXVuaXBoaWVyL0tjb25maWcKKysrIGIvYXJjaC9hcm0vbWFjaC11bmlwaGll
-ci9LY29uZmlnCkBAIC0yLDcgKzIsNyBAQCBjb25maWcgQVJDSF9VTklQSElFUgogCWJvb2wgIlNv
-Y2lvbmV4dCBVbmlQaGllciBTb0NzIgogCWRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNwogCXNlbGVj
-dCBBUk1fQU1CQQotCXNlbGVjdCBBUk1fR0xPQkFMX1RJTUVSCisJc2VsZWN0IEhBVkVfQVJNX0dM
-T0JBTF9USU1FUgogCXNlbGVjdCBBUk1fR0lDCiAJc2VsZWN0IEhBVkVfQVJNX1NDVQogCXNlbGVj
-dCBIQVZFX0FSTV9UV0QgaWYgU01QCmRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXZleHByZXNz
-L0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXZleHByZXNzL0tjb25maWcKaW5kZXggMzk4YTI5Ny4u
-ZTg5OTQxZCAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC12ZXhwcmVzcy9LY29uZmlnCisrKyBi
-L2FyY2gvYXJtL21hY2gtdmV4cHJlc3MvS2NvbmZpZwpAQCAtNSw3ICs1LDcgQEAgbWVudWNvbmZp
-ZyBBUkNIX1ZFWFBSRVNTCiAJc2VsZWN0IEFSQ0hfU1VQUE9SVFNfQklHX0VORElBTgogCXNlbGVj
-dCBBUk1fQU1CQQogCXNlbGVjdCBBUk1fR0lDCi0Jc2VsZWN0IEFSTV9HTE9CQUxfVElNRVIKKwlz
-ZWxlY3QgSEFWRV9BUk1fR0xPQkFMX1RJTUVSCiAJc2VsZWN0IEFSTV9USU1FUl9TUDgwNAogCXNl
-bGVjdCBDT01NT05fQ0xLX1ZFUlNBVElMRQogCXNlbGVjdCBIQVZFX0FSTV9TQ1UgaWYgU01QCmRp
-ZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXp4L0tjb25maWcgYi9hcmNoL2FybS9tYWNoLXp4L0tj
-b25maWcKaW5kZXggMjA5Yzk3OS4uZTg0YjBjMiAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC16
-eC9LY29uZmlnCisrKyBiL2FyY2gvYXJtL21hY2gtengvS2NvbmZpZwpAQCAtMTEsNyArMTEsNyBA
-QCBpZiBBUkNIX1pYCiBjb25maWcgU09DX1pYMjk2NzAyCiAJZGVmX2Jvb2wgeQogCXNlbGVjdCBB
-Uk1fR0lDCi0Jc2VsZWN0IEFSTV9HTE9CQUxfVElNRVIKKwlzZWxlY3QgSEFWRV9BUk1fR0xPQkFM
-X1RJTUVSCiAJc2VsZWN0IEhBVkVfQVJNX1NDVSBpZiBTTVAKIAlzZWxlY3QgSEFWRV9BUk1fVFdE
-IGlmIFNNUAogCXNlbGVjdCBQTV9HRU5FUklDX0RPTUFJTlMgaWYgUE0KZGlmZiAtLWdpdCBhL2Fy
-Y2gvYXJtL21hY2gtenlucS9LY29uZmlnIGIvYXJjaC9hcm0vbWFjaC16eW5xL0tjb25maWcKaW5k
-ZXggZmQwYWVlYi4uMzE2NTcyMCAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vbWFjaC16eW5xL0tjb25m
-aWcKKysrIGIvYXJjaC9hcm0vbWFjaC16eW5xL0tjb25maWcKQEAgLTUsNyArNSw3IEBAIGNvbmZp
-ZyBBUkNIX1pZTlEKIAlzZWxlY3QgQVJDSF9TVVBQT1JUU19CSUdfRU5ESUFOCiAJc2VsZWN0IEFS
-TV9BTUJBCiAJc2VsZWN0IEFSTV9HSUMKLQlzZWxlY3QgQVJNX0dMT0JBTF9USU1FUiBpZiAhQ1BV
-X0ZSRVEKKwlzZWxlY3QgSEFWRV9BUk1fR0xPQkFMX1RJTUVSIGlmICFDUFVfRlJFUQogCXNlbGVj
-dCBDQURFTkNFX1RUQ19USU1FUgogCXNlbGVjdCBIQVZFX0FSTV9TQ1UgaWYgU01QCiAJc2VsZWN0
-IEhBVkVfQVJNX1RXRCBpZiBTTVAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xvY2tzb3VyY2UvS2Nv
-bmZpZyBiL2RyaXZlcnMvY2xvY2tzb3VyY2UvS2NvbmZpZwppbmRleCBjMzQ2YmU2Li5jNjg2ODEx
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL2Nsb2Nrc291cmNlL0tjb25maWcKKysrIGIvZHJpdmVycy9j
-bG9ja3NvdXJjZS9LY29uZmlnCkBAIC0yMDcsOSArMjA3LDE0IEBAIGNvbmZpZyBBUk1fQVJDSF9U
-SU1FUl9FVlRTVFJFQU0KIAkgIFRoaXMgbXVzdCBiZSBkaXNhYmxlZCBmb3IgaGFyZHdhcmUgdmFs
-aWRhdGlvbiBwdXJwb3NlcyB0byBkZXRlY3QgYW55CiAJICBoYXJkd2FyZSBhbm9tYWxpZXMgb2Yg
-bWlzc2luZyBldmVudHMuCiAKLWNvbmZpZyBBUk1fR0xPQkFMX1RJTUVSCitjb25maWcgSEFWRV9B
-Uk1fR0xPQkFMX1RJTUVSCiAJYm9vbAorCitjb25maWcgQVJNX0dMT0JBTF9USU1FUgorCWJvb2wg
-IlN1cHBvcnQgZm9yIEFSTSBnbG9iYWwgdGltZXIgdW5pdCIKIAlzZWxlY3QgQ0xLU1JDX09GIGlm
-IE9GCisJZGVmYXVsdCB5CisJZGVwZW5kcyBvbiBIQVZFX0FSTV9HTE9CQUxfVElNRVIKIAloZWxw
-CiAJICBUaGlzIG9wdGlvbnMgZW5hYmxlcyBzdXBwb3J0IGZvciB0aGUgQVJNIGdsb2JhbCB0aW1l
-ciB1bml0CiAKLS0gCjIuOC4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Apr 26, 2016 at 06:28:52PM +0300, Grygorii Strashko wrote:
+
+Hi Grygorii,
+
+=46irst time I'm seeing this patch, so I have a few questions, mostly
+related to the commit message:
+
+> This patch intended to fix following cases:
+> - SoC-A has ARM GT, defines DT node for ARM GT and selects
+> ARM_GLOBAL_TIMER statically in Kconfig file. SoC-B has ARM GT and
+> defines DT node for ARM GT, but do not selects ARM_GLOBAL_TIMER
+> statically in Kconfig file. In case of multiplatform build ARM GT wil=
+l
+> be implicitly enabled for SoC-B.
+
+Well, SoC-B has the GT *and* the DT node, so what is the problem with
+enabling it for SoC-B? If there are reasons not to use the Global Timer
+on SoC-B, surely a better option would be to mark it in DT with status =
+=3D "disabled";
+
+>=20
+> - There is no way to disable ARM GT without modifying Kconfig file,
+> once ARM_GLOBAL_TIMER is selected statically in Kconfig file.
+
+What about disabling the DT node?
+
+Not sure I properly understand the problem you are trying to solve here=
+=2E
+
+>=20
+> Hence, fix above case by defining both HAVE_ARM_GLOBAL_TIMER and
+> ARM_GLOBAL_TIMER as recommended by 'Adding common features and make
+> the usage configurable' section in kconfig-language.txt. All places i=
+n
+> ARM folder where ARM_GLOBAL_TIMER was used now replaced on
+> HAVE_ARM_GLOBAL_TIMER.
+
+I'm OK with the way you have changed ARM_GLOBAL_TIMER from a sticky con=
+fig
+option to a selectable one, but I would like more details on the proble=
+m
+this was causing you.
+
+Best regards,
+Liviu
+
+>=20
+> Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Cc: Florian Fainelli <f.fainelli@gmail.com>
+> Cc: Russell King <linux@arm.linux.org.uk>
+> Cc: Wei Xu <xuwei5@hisilicon.com>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <kernel@pengutronix.de>
+> Cc: Srinivas Kandagatla <srinivas.kandagatla@gmail.com>
+> Cc: Maxime Coquelin <maxime.coquelin@st.com>
+> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Cc: Liviu Dudau <liviu.dudau@arm.com>
+> Cc: Sudeep Holla <sudeep.holla@arm.com>
+> Cc: Jun Nie <jun.nie@linaro.org>
+> Cc: Michal Simek <michal.simek@xilinx.com>
+> Cc: Jesper Nilsson <jesper.nilsson@axis.com>
+> Cc: Lars Persson <lars.persson@axis.com>
+> Cc: Mike Looijmans <mike.looijmans@topic.nl>
+> Acked-by: S=C3=B6ren Brinkmann <soren.brinkmann@xilinx.com>
+> Acked-by: Moritz Fischer <moritz.fischer@ettus.com>
+> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
+> ---
+> Changes is v1:
+> - updated mach-artpec
+> - rebased on top of tip: timers/core
+>   commit: 86d3473 time: Introduce do_sys_settimeofday64()
+>=20
+>  arch/arm/mach-artpec/Kconfig   | 2 +-
+>  arch/arm/mach-bcm/Kconfig      | 4 ++--
+>  arch/arm/mach-hisi/Kconfig     | 2 +-
+>  arch/arm/mach-imx/Kconfig      | 2 +-
+>  arch/arm/mach-rockchip/Kconfig | 2 +-
+>  arch/arm/mach-sti/Kconfig      | 2 +-
+>  arch/arm/mach-uniphier/Kconfig | 2 +-
+>  arch/arm/mach-vexpress/Kconfig | 2 +-
+>  arch/arm/mach-zx/Kconfig       | 2 +-
+>  arch/arm/mach-zynq/Kconfig     | 2 +-
+>  drivers/clocksource/Kconfig    | 7 ++++++-
+>  11 files changed, 17 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/arch/arm/mach-artpec/Kconfig b/arch/arm/mach-artpec/Kcon=
+fig
+> index 6cbe5a2..6cbca77 100644
+> --- a/arch/arm/mach-artpec/Kconfig
+> +++ b/arch/arm/mach-artpec/Kconfig
+> @@ -9,7 +9,7 @@ config MACH_ARTPEC6
+>  	depends on ARCH_MULTI_V7
+>  	select ARM_AMBA
+>  	select ARM_GIC
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select ARM_PSCI
+>  	select HAVE_ARM_ARCH_TIMER
+>  	select HAVE_ARM_SCU
+> diff --git a/arch/arm/mach-bcm/Kconfig b/arch/arm/mach-bcm/Kconfig
+> index 7ef1214..d4d079a7 100644
+> --- a/arch/arm/mach-bcm/Kconfig
+> +++ b/arch/arm/mach-bcm/Kconfig
+> @@ -14,7 +14,7 @@ config ARCH_BCM_IPROC
+>  	select CACHE_L2X0
+>  	select HAVE_ARM_SCU if SMP
+>  	select HAVE_ARM_TWD if SMP
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select COMMON_CLK_IPROC
+>  	select CLKSRC_MMIO
+>  	select ARCH_REQUIRE_GPIOLIB
+> @@ -156,7 +156,7 @@ config ARCH_BCM_63XX
+>  	select ARM_ERRATA_754322
+>  	select ARM_ERRATA_764369 if SMP
+>  	select ARM_GIC
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select CACHE_L2X0
+>  	select HAVE_ARM_ARCH_TIMER
+>  	select HAVE_ARM_TWD if SMP
+> diff --git a/arch/arm/mach-hisi/Kconfig b/arch/arm/mach-hisi/Kconfig
+> index a3b091a..251bb03 100644
+> --- a/arch/arm/mach-hisi/Kconfig
+> +++ b/arch/arm/mach-hisi/Kconfig
+> @@ -28,7 +28,7 @@ config ARCH_HIP01
+>         depends on ARCH_MULTI_V7
+>         select HAVE_ARM_SCU if SMP
+>         select HAVE_ARM_TWD if SMP
+> -       select ARM_GLOBAL_TIMER
+> +       select HAVE_ARM_GLOBAL_TIMER
+>         help
+>           Support for Hisilicon HIP01 SoC family
+> =20
+> diff --git a/arch/arm/mach-imx/Kconfig b/arch/arm/mach-imx/Kconfig
+> index 8973fae..3fbf38c 100644
+> --- a/arch/arm/mach-imx/Kconfig
+> +++ b/arch/arm/mach-imx/Kconfig
+> @@ -602,7 +602,7 @@ choice
+>  	config VF_USE_ARM_GLOBAL_TIMER
+>  		bool "Use ARM Global Timer"
+>  		depends on ARCH_MULTI_V7
+> -		select ARM_GLOBAL_TIMER
+> +		select HAVE_ARM_GLOBAL_TIMER
+>  		select CLKSRC_ARM_GLOBAL_TIMER_SCHED_CLOCK
+>  		help
+>  		  Use the ARM Global Timer as clocksource
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/=
+Kconfig
+> index cef42fd..a53b787 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -14,7 +14,7 @@ config ARCH_ROCKCHIP
+>  	select DW_APB_TIMER_OF
+>  	select REGULATOR if PM
+>  	select ROCKCHIP_TIMER
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select CLKSRC_ARM_GLOBAL_TIMER_SCHED_CLOCK
+>  	help
+>  	  Support for Rockchip's Cortex-A9 Single-to-Quad-Core-SoCs
+> diff --git a/arch/arm/mach-sti/Kconfig b/arch/arm/mach-sti/Kconfig
+> index a196d14..c799f9d 100644
+> --- a/arch/arm/mach-sti/Kconfig
+> +++ b/arch/arm/mach-sti/Kconfig
+> @@ -3,7 +3,7 @@ menuconfig ARCH_STI
+>  	depends on ARCH_MULTI_V7
+>  	select ARM_GIC
+>  	select ST_IRQCHIP
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select CLKSRC_ST_LPC
+>  	select PINCTRL
+>  	select PINCTRL_ST
+> diff --git a/arch/arm/mach-uniphier/Kconfig b/arch/arm/mach-uniphier/=
+Kconfig
+> index 82dddee..81bdf77 100644
+> --- a/arch/arm/mach-uniphier/Kconfig
+> +++ b/arch/arm/mach-uniphier/Kconfig
+> @@ -2,7 +2,7 @@ config ARCH_UNIPHIER
+>  	bool "Socionext UniPhier SoCs"
+>  	depends on ARCH_MULTI_V7
+>  	select ARM_AMBA
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select ARM_GIC
+>  	select HAVE_ARM_SCU
+>  	select HAVE_ARM_TWD if SMP
+> diff --git a/arch/arm/mach-vexpress/Kconfig b/arch/arm/mach-vexpress/=
+Kconfig
+> index 398a297..e89941d 100644
+> --- a/arch/arm/mach-vexpress/Kconfig
+> +++ b/arch/arm/mach-vexpress/Kconfig
+> @@ -5,7 +5,7 @@ menuconfig ARCH_VEXPRESS
+>  	select ARCH_SUPPORTS_BIG_ENDIAN
+>  	select ARM_AMBA
+>  	select ARM_GIC
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select ARM_TIMER_SP804
+>  	select COMMON_CLK_VERSATILE
+>  	select HAVE_ARM_SCU if SMP
+> diff --git a/arch/arm/mach-zx/Kconfig b/arch/arm/mach-zx/Kconfig
+> index 209c979..e84b0c2 100644
+> --- a/arch/arm/mach-zx/Kconfig
+> +++ b/arch/arm/mach-zx/Kconfig
+> @@ -11,7 +11,7 @@ if ARCH_ZX
+>  config SOC_ZX296702
+>  	def_bool y
+>  	select ARM_GIC
+> -	select ARM_GLOBAL_TIMER
+> +	select HAVE_ARM_GLOBAL_TIMER
+>  	select HAVE_ARM_SCU if SMP
+>  	select HAVE_ARM_TWD if SMP
+>  	select PM_GENERIC_DOMAINS if PM
+> diff --git a/arch/arm/mach-zynq/Kconfig b/arch/arm/mach-zynq/Kconfig
+> index fd0aeeb..3165720 100644
+> --- a/arch/arm/mach-zynq/Kconfig
+> +++ b/arch/arm/mach-zynq/Kconfig
+> @@ -5,7 +5,7 @@ config ARCH_ZYNQ
+>  	select ARCH_SUPPORTS_BIG_ENDIAN
+>  	select ARM_AMBA
+>  	select ARM_GIC
+> -	select ARM_GLOBAL_TIMER if !CPU_FREQ
+> +	select HAVE_ARM_GLOBAL_TIMER if !CPU_FREQ
+>  	select CADENCE_TTC_TIMER
+>  	select HAVE_ARM_SCU if SMP
+>  	select HAVE_ARM_TWD if SMP
+> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfi=
+g
+> index c346be6..c686811 100644
+> --- a/drivers/clocksource/Kconfig
+> +++ b/drivers/clocksource/Kconfig
+> @@ -207,9 +207,14 @@ config ARM_ARCH_TIMER_EVTSTREAM
+>  	  This must be disabled for hardware validation purposes to detect =
+any
+>  	  hardware anomalies of missing events.
+> =20
+> -config ARM_GLOBAL_TIMER
+> +config HAVE_ARM_GLOBAL_TIMER
+>  	bool
+> +
+> +config ARM_GLOBAL_TIMER
+> +	bool "Support for ARM global timer unit"
+>  	select CLKSRC_OF if OF
+> +	default y
+> +	depends on HAVE_ARM_GLOBAL_TIMER
+>  	help
+>  	  This options enables support for the ARM global timer unit
+> =20
+> --=20
+> 2.8.0
+>=20
+
+--=20
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    =C2=AF\_(=E3=83=84)_/=C2=AF
