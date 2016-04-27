@@ -1,35 +1,58 @@
-From: Wadim Egorov <w.egorov@phytec.de>
-Subject: Re: Applied "regulator: rk808: remove linear range definitions with a
- single range" to the regulator tree
-Date: Wed, 27 Apr 2016 08:35:46 +0200
-Message-ID: <57205DC2.7070506@phytec.de>
-References: <E1aukkg-0007km-6s@debutante> <2754883.PYP7KbpM33@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <2754883.PYP7KbpM33@diego>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, a.zummo@towertech.it, pawel.moll@arm.com, rtc-linux@googlegroups.com, ijc+devicetree@hellion.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, alexandre.belloni@free-electrons.com, dianders@chromium.org, galak@codeaurora.org, zyw@rock-chips.com, lee.jones@linaro.org, linux-clk@vger.kernel.org
+From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/4] ARM64: dts: rockchip: add support for RK3399
+Date: Wed, 27 Apr 2016 15:54:49 +0800
+Message-ID: <1461743693-10671-1-git-send-email-jay.xu@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: lintao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Add dtsi file for RK3399 SoCs, and evb dts file for RK3399 evb.
+
+To make patch more easily to be reviewed, some nodes have been removed
+temporarily, after this base file been applied, more patches will be
+upstreamed independently.
+
+Jianqun Xu (3):
+  ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
+  Documentation: devicetree: rockchip: Document rk3399-evb
+  ARM64: dts: rockchip: add dts file for RK3399 evaluation board
+
+Shawn Lin (1):
+  Documentation: rockchip-dw-mshc: add description for rk3399
+
+ Documentation/devicetree/bindings/arm/rockchip.txt |    6 +-
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |    1 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts        |  124 +++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 1022 ++++++++++++++++++++
+ 5 files changed, 1153 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399.dtsi
+
+--
+changes in v4:
+- add google,rk3399evb-rev2 compatible (Doug, Heiko)
+
+changes in v3:
+- modify title for patch 3/4 (Brian)
+- add more compatible for evb dts (Doug)
+
+changes in v2:
+- split into more patches. (Heiko)
+- remove arm-pmu at first. (Marc, Heiko, Mark)
+- remove rga, emmc, usb3, mipi, edp, pd, i2c, gpu, thermal, tsadc, saradc, which will upstream independently
+- remove rk808 since without i2c, which will upstream independently
+- remove es8316 since without i2c, which will upstream independently
+- add rockchip-dw-mshc binding patch
+- add rockchip,rk3399-evb binding patch
+- fix codingstyle issues
+
+1.9.1
 
 
-On 26.04.2016 21:33, Heiko St=FCbner wrote:
-> Am Montag, 25. April 2016, 18:56:54 schrieb Mark Brown:
->> The patch
->>
->>    regulator: rk808: remove linear range definitions with a single r=
-ange
->>
->> has been applied to the regulator tree at
->>
->>    git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.g=
-it
-> with this patch applied, 4.6.0-rc5-next-20160426 fails to boot on=20
-> rk3288-veyron devices with the bug below. Reverting this one patch
-> results in the system booting again:
->
-This is because I missed to add the correct ops for LDO_REG3 in this pa=
-tch.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
