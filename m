@@ -1,55 +1,30 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v1] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Wed, 27 Apr 2016 22:06:41 +0100
-Message-ID: <20160427210641.GV5783@n2100.arm.linux.org.uk>
-References: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
- <20160426160245.GI28464@e106497-lin.cambridge.arm.com>
- <571FC2EC.9090605@ti.com>
- <20160427104110.GU5783@n2100.arm.linux.org.uk>
- <5720BF19.6040600@ti.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 2/4] ARM64: dts: rockchip: add core dtsi file for RK3399 SoCs
+Date: Wed, 27 Apr 2016 23:30:08 +0200
+Message-ID: <4859199.VscuxbHbWK@diego>
+References: <1461743693-10671-1-git-send-email-jay.xu@rock-chips.com> <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5720BF19.6040600@ti.com>
+In-Reply-To: <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: Liviu Dudau <liviu.dudau@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org, Sekhar Nori <nsekhar@ti.com>, linux-omap@vger.kernel.org, Tony Lindgren <tony@atomide.com>, bcm-kernel-feedback-list@broadcom.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@stlinux.com, linux-arm-kernel@axis.com, Florian Fainelli <f.fainelli@gmail.com>, Wei Xu <xuwei5@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Sudeep Holla <sudeep.holla@arm.com>, Jun Nie <jun.nie@linaro.org>, Michal Simek <michal.simek@xilinx.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Lars Persson <lar>
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: lintao@rock-chips.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, huangtao@rock-chips.com, davidriley@chromium.org, dianders@chromium.org, jwerner@chromium.org, smbarber@chromium.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 27, 2016 at 04:31:05PM +0300, Grygorii Strashko wrote:
-> Sorry, but this patch doesn't disable anything. It provides possibility
-> to do a custom build with disabled ARM GT driver without Kernel code
-> modification - in my case RT-kernel and non-RT Kernel should run on same
-> HW and RT kernel should use ARM GT as clocksource/sched_clock, but 
-> non-RT Kernel shouldn't.
+Am Mittwoch, 27. April 2016, 15:54:51 schrieb Jianqun Xu:
+> This patch adds core dtsi file for Rockchip RK3399 SoCs.
 > 
-> I think RT can't be part of single zImage - it make no sense.
+> The RK3399 has big/little architecture, which needs a separate
+> node for the PMU of each microarchitecture, for now it missing
+> the pmu node since the old one could not work well.
 > 
-> > 
-> > Maybe a linux-specific property is needed here - "linux,low-power-unstable"
-> > or something like that?
-> > 
-> 
-> I've tried smth. like this [1]
-> 
-> And it is not "unstable", it's will just stop in C3 (CPUIdle) and there no possibility 
-> (at least I've not found how to do this) to adjust Freq in case of CPUFreq.
-> [above is about clocksource/sched_clock]
-> 
-> [1] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-November/386858.html
+> Tested-by: Brian Norris <briannorris@chromium.org>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
-Don't think I'm going to follow URLs - I don't use a desktop mail
-client, and as I'm several days behind with email, I don't have time
-to go looking through a crappy pipermail web archive at the moment
-either.
+with some minor reorganizations, applied to my dts64 branch for 4.7
 
-Anyway, why can't we use the priority system for clocksources?  If
-ARM GT is problematical, we need a way to register it with a lower
-priority than the preferred time keeping source.  That's exactly
-what the clocksource priority field is for.
 
--- 
-RMK's Patch system: http://www.arm.linux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+Thanks
+Heiko
