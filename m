@@ -1,50 +1,111 @@
-From: Tony Lindgren <tony@atomide.com>
-Subject: Re: [PATCH v1] ARM: clocksource: make ARM_GLOBAL_TIMER selectable
-Date: Wed, 27 Apr 2016 09:24:52 -0700
-Message-ID: <20160427162452.GY5995@atomide.com>
-References: <1461684532-16848-1-git-send-email-grygorii.strashko@ti.com>
- <20160426160245.GI28464@e106497-lin.cambridge.arm.com>
- <571FC2EC.9090605@ti.com>
- <20160427104110.GU5783@n2100.arm.linux.org.uk>
- <5720BF19.6040600@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5720BF19.6040600@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Grygorii Strashko <grygorii.strashko@ti.com>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Liviu Dudau <liviu.dudau@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org, Sekhar Nori <nsekhar@ti.com>, linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kernel@stlinux.com, linux-arm-kernel@axis.com, Florian Fainelli <f.fainelli@gmail.com>, Wei Xu <xuwei5@hisilicon.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Sudeep Holla <sudeep.holla@arm.com>, Jun Nie <jun.nie@linaro.org>, Michal Simek <michal.simek@xilinx.com>, Jesper Nilsson <jesper.nilsson@axis.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "regulator: rk808: Add rk808_reg_ops_ranges for LDO3" to the regulator tree
+Date: Wed, 27 Apr 2016 17:35:12 +0100
+Message-ID: <E1avSQi-0004XP-Kn@debutante>
+References: <1461682450-22173-2-git-send-email-w.egorov@phytec.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1461682450-22173-2-git-send-email-w.egorov@phytec.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Wadim Egorov <w.egorov@phytec.de>
+Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, lee.jones@linaro.org, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lgirdwood@gmail.combroonie@kernel.org, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-* Grygorii Strashko <grygorii.strashko@ti.com> [160427 06:32]:
-> Hi Russell,
-> 
-> On 04/27/2016 01:41 PM, Russell King - ARM Linux wrote:
-> > On Tue, Apr 26, 2016 at 10:35:08PM +0300, Grygorii Strashko wrote:
-> >> On 04/26/2016 07:02 PM, Liviu Dudau wrote:
-> >>> Well, SoC-B has the GT *and* the DT node, so what is the problem with
-> >>> enabling it for SoC-B? If there are reasons not to use the Global Timer
-> >>> on SoC-B, surely a better option would be to mark it in DT with status = "disabled";
-> >>
-> >> This was rejected [2]. DT describes HW and if it is functional the status = "disabled"
-> >> is not good choice.
-> >> ARM GT can't be used as clocksource/sched_clock/clockevent when CPUFreq or
-> >> CPUIdle are enabled :(, and this is Linux specific functionality and
-> >> not HW description.
-> > 
-> > Sorry, but we don't want to have to disable drivers in the kernel just
-> > because one platform has a problem (consider the single zImage case
-> > where it may be required that the global timer is enabled for some
-> > platform to boot - it becomes mandatory in single zImage at that point.)
-> 
-> Sorry, but this patch doesn't disable anything. It provides possibility
-> to do a custom build with disabled ARM GT driver without Kernel code modification -
-> in my case RT-kernel and non-RT Kernel should run on same HW and 
-> RT kernel should use ARM GT as clocksource/sched_clock, but 
-> non-RT Kernel shouldn't.
+The patch
 
-How about a kernel cmdline option for both local timers to disable
-the selected timer(s)?
+   regulator: rk808: Add rk808_reg_ops_ranges for LDO3
 
-Tony
+has been applied to the regulator tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 129d7cf98f5c739014ae5aa0311e48f6a64b0758 Mon Sep 17 00:00:00 2001
+From: Wadim Egorov <w.egorov@phytec.de>
+Date: Tue, 26 Apr 2016 16:54:04 +0200
+Subject: [PATCH] regulator: rk808: Add rk808_reg_ops_ranges for LDO3
+
+LDO_REG3 descriptor is using linear_ranges.
+Add and use proper ops for LDO_REG3.
+
+Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ drivers/regulator/rk808-regulator.c | 30 +++++++++++++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index 67f72feed815..6601ab5fcc2d 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -238,6 +238,21 @@ static int rk808_set_suspend_voltage(struct regulator_dev *rdev, int uv)
+ 				  sel);
+ }
+ 
++static int rk808_set_suspend_voltage_range(struct regulator_dev *rdev, int uv)
++{
++	unsigned int reg;
++	int sel = regulator_map_voltage_linear_range(rdev, uv, uv);
++
++	if (sel < 0)
++		return -EINVAL;
++
++	reg = rdev->desc->vsel_reg + RK808_SLP_REG_OFFSET;
++
++	return regmap_update_bits(rdev->regmap, reg,
++				  rdev->desc->vsel_mask,
++				  sel);
++}
++
+ static int rk808_set_suspend_enable(struct regulator_dev *rdev)
+ {
+ 	unsigned int reg;
+@@ -288,6 +303,19 @@ static struct regulator_ops rk808_reg_ops = {
+ 	.set_suspend_disable	= rk808_set_suspend_disable,
+ };
+ 
++static struct regulator_ops rk808_reg_ops_ranges = {
++	.list_voltage		= regulator_list_voltage_linear_range,
++	.map_voltage		= regulator_map_voltage_linear_range,
++	.get_voltage_sel	= regulator_get_voltage_sel_regmap,
++	.set_voltage_sel	= regulator_set_voltage_sel_regmap,
++	.enable			= regulator_enable_regmap,
++	.disable		= regulator_disable_regmap,
++	.is_enabled		= regulator_is_enabled_regmap,
++	.set_suspend_voltage	= rk808_set_suspend_voltage_range,
++	.set_suspend_enable	= rk808_set_suspend_enable,
++	.set_suspend_disable	= rk808_set_suspend_disable,
++};
++
+ static struct regulator_ops rk808_switch_ops = {
+ 	.enable			= regulator_enable_regmap,
+ 	.disable		= regulator_disable_regmap,
+@@ -383,7 +411,7 @@ static const struct regulator_desc rk808_reg[] = {
+ 		.name = "LDO_REG3",
+ 		.supply_name = "vcc7",
+ 		.id = RK808_ID_LDO3,
+-		.ops = &rk808_reg_ops,
++		.ops = &rk808_reg_ops_ranges,
+ 		.type = REGULATOR_VOLTAGE,
+ 		.n_voltages = 16,
+ 		.linear_ranges = rk808_ldo3_voltage_ranges,
+-- 
+2.8.0.rc3
+
