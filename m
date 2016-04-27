@@ -1,57 +1,27 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH 4/4] thermal: bang-bang governor: act on lower trip
- boundary
-Date: Wed, 27 Apr 2016 14:54:26 -0700
-Message-ID: <20160427215425.GD6438@localhost.localdomain>
-References: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
- <1461553367-24744-5-git-send-email-wxt@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v4 1/7] regulator: rk808: Add rk808_reg_ops_ranges for LDO3
+Date: Wed, 27 Apr 2016 23:54:36 +0200
+Message-ID: <1574567.Qm9YHLQrGG@diego>
+References: <1461682450-22173-1-git-send-email-w.egorov@phytec.de> <1461682450-22173-2-git-send-email-w.egorov@phytec.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1461553367-24744-5-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, eddie.cai@rock-chips.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1461682450-22173-2-git-send-email-w.egorov@phytec.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: Wadim Egorov <w.egorov@phytec.de>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, lee.jones@linaro.org, mark.rutland@arm.com, a.zummo@towertech.it, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lgirdwood@gmail.com, dianders@chromium.org, robh+dt@kernel.org, alexandre.belloni@free-electrons.com, broonie@kernel.org, galak@codeaurora.org, zyw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 25, 2016 at 11:02:47AM +0800, Caesar Wang wrote:
-> From: Sascha Hauer <s.hauer@pengutronix.de>
+Am Dienstag, 26. April 2016, 16:54:04 schrieb Wadim Egorov:
+> LDO_REG3 descriptor is using linear_ranges.
+> Add and use proper ops for LDO_REG3.
 > 
-> With interrupt driven thermal zones we pass the lower and upper
-> temperature on which shall be acted, so in the governor we have to act on
-> the exact lower temperature to be consistent. Otherwise an interrupt maybe
-> generated on the exact lower temperature, but the bang bang governor does
-> not react.
+> Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
 
-What is the expected impact on polling driven zones that use bang bang
-after this change?
+I'm to late to the party judging by Mark's "Aplied" message, but just to 
+confirm, this patch sucessfully fixes the issue on veyron-devices reported 
+yesterday.
 
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
-> Cc: linux-pm@vger.kernel.org
-> 
-> ---
-> 
->  drivers/thermal/gov_bang_bang.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/gov_bang_bang.c b/drivers/thermal/gov_bang_bang.c
-> index 70836c5..9d1dfea 100644
-> --- a/drivers/thermal/gov_bang_bang.c
-> +++ b/drivers/thermal/gov_bang_bang.c
-> @@ -59,7 +59,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
->  		if (instance->target == 0 && tz->temperature >= trip_temp)
->  			instance->target = 1;
->  		else if (instance->target == 1 &&
-> -				tz->temperature < trip_temp - trip_hyst)
-> +				tz->temperature <= trip_temp - trip_hyst)
->  			instance->target = 0;
->  
->  		dev_dbg(&instance->cdev->device, "target=%d\n",
-> -- 
-> 1.9.1
-> 
+
+Heiko
