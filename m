@@ -1,71 +1,41 @@
-From: Vivek Gautam <gautamvivek1987@gmail.com>
-Subject: Re: [PATCH v2 2/2] phy: Group vendor specific phy drivers
-Date: Thu, 28 Apr 2016 10:55:33 +0530
-Message-ID: <CAFp+6iHphrtt5wQi5jdVXF_e=EOHgqCUXMmKRfh23u9-awT4nA@mail.gmail.com>
-References: <1459951665-28708-1-git-send-email-gautam.vivek@samsung.com>
-	<1459951665-28708-2-git-send-email-gautam.vivek@samsung.com>
-	<CAFp+6iHGSuTGbyWv4dV3GCNr=7VDRnBpcodwnoeB1i0zocUg5g@mail.gmail.com>
-	<5721988E.7000105@ti.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 4/4] thermal: bang-bang governor: act on lower trip
+ boundary
+Date: Thu, 28 Apr 2016 08:30:18 +0200
+Message-ID: <20160428063018.GX7860@pengutronix.de>
+References: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
+ <1461553367-24744-5-git-send-email-wxt@rock-chips.com>
+ <20160427215425.GD6438@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <5721988E.7000105@ti.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: vireshk@kernel.org, Shiraz Hashim <shiraz.linux.kernel@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, =?UTF-8?Q?Krzysztof_Koz=C5=82owski?= <k.kozlowski@samsung.com>, Russell King - ARM Linux <linux@arm.linux.org.uk>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Linux USB Mailing List <linux-usb@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, CPGS <cpgs@samsung.com>, Vivek Gautam <gautam.vivek@samsung.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20160427215425.GD6438@localhost.localdomain>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, eddie.cai@rock-chips.com, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
+On Wed, Apr 27, 2016 at 02:54:26PM -0700, Eduardo Valentin wrote:
+> On Mon, Apr 25, 2016 at 11:02:47AM +0800, Caesar Wang wrote:
+> > From: Sascha Hauer <s.hauer@pengutronix.de>
+> > 
+> > With interrupt driven thermal zones we pass the lower and upper
+> > temperature on which shall be acted, so in the governor we have to act on
+> > the exact lower temperature to be consistent. Otherwise an interrupt maybe
+> > generated on the exact lower temperature, but the bang bang governor does
+> > not react.
+> 
+> What is the expected impact on polling driven zones that use bang bang
+> after this change?
 
+Polling driven zones may have to be one step cooler before the governor
+reacts, otherwise the behaviour should be unaffected.
 
-On Thu, Apr 28, 2016 at 10:28 AM, Kishon Vijay Abraham I <kishon@ti.com> wrote:
-> Hi,
->
-> On Tuesday 26 April 2016 11:36 AM, Vivek Gautam wrote:
->> Hi Kishon,
->>
->>
->> On Wed, Apr 6, 2016 at 7:37 PM, Vivek Gautam <gautam.vivek@samsung.com> wrote:
->>> Adding vendor specific directories in phy to group
->>> phy drivers under their respective vendor umbrella.
->>>
->>> Also updated the MAINTAINERS file to reflect the correct
->>> directory structure for phy drivers.
->>>
->>> Signed-off-by: Vivek Gautam <gautam.vivek@samsung.com>
->>> Acked-by: Heiko Stuebner <heiko@sntech.de>
->>> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
->>> ---
->>>
->>> Changes from v1:
->>>  - Updated the MAINTAINERS file to reflect the same change
->>>    in directory structure.
->>>  - Removed PHY_PLAT config as pointed out by Kishon.
->>>    So we don't require the second patch in the v1 of this series:
->>>    [PATCH 2/2] arm: mach-spear: Enable PHY_PLAT to meet dependency
->>>  - Renamed sunxi --> allwinner; rcar --> renesas.
->>>  - Fixed error coming with qcom Makefile.
->>
->> Does this change looks okay now ?
->> I think you must be planning to take this in after 4.7 rc1 is out, isn't it ?
->
-> I'm not sure. I'm thinking which should be the right way to group the phy
-> drivers, by vendors or by type (usb, pcie, etc..). I'm more inclined to group
-> it by type.
-
-I guess there are atleast couple of phy drivers (PIPE and ST's MiPHY) that
-have multiple roles - USB or PCIe or SATA.
-
-So grouping such drivers in one of the phy-types will be tricky, WDUT
-
->
-> Thanks
-> Kishon
-
-
+Sascha
 
 -- 
-Best Regards
-Vivek Gautam
-Samsung R&D Institute, Bangalore
-India
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
