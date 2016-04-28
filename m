@@ -1,74 +1,69 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [GIT PULL 3/3] Rockchip dts64 updates for v4.7 - part2
-Date: Fri, 29 Apr 2016 00:25:22 +0200
-Message-ID: <14339181.jSmLu3hG44@diego>
-References: <5544434.9tA8JHBIkp@diego>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v4 2/4] ARM64: dts: rockchip: add core dtsi file for
+ RK3399 SoCs
+Date: Thu, 28 Apr 2016 15:28:19 -0700
+Message-ID: <20160428222819.GA98045@google.com>
+References: <1461743693-10671-1-git-send-email-jay.xu@rock-chips.com>
+ <20160428160353.GA95284@google.com>
+ <20160428182938.GA3079@google.com>
+ <2138015.GmMsjTUH7U@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5544434.9tA8JHBIkp@diego>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <2138015.GmMsjTUH7U@diego>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: mark.rutland@arm.com, huangtao@rock-chips.com, davidriley@chromium.org, linux-kernel@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, catalin.marinas@arm.com, will.deacon@arm.com, dianders@chromium.org, smbarber@chromium.org, lintao@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, galak@codeaurora.org, jwerner@chromium.org, Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 40ac568d0ef07b60ba8cc0f2e88ccdd4dd0e176a:
+On Thu, Apr 28, 2016 at 10:33:07PM +0200, Heiko Stuebner wrote:
+> Am Donnerstag, 28. April 2016, 11:29:38 schrieb Brian Norris:
+> > On Thu, Apr 28, 2016 at 09:03:53AM -0700, Brian Norris wrote:
+> > > On Wed, Apr 27, 2016 at 03:54:51PM +0800, Jianqun Xu wrote:
+> > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > > b/arch/arm64/boot/dts/rockchip/rk3399.dtsi new file mode 100644
+> > > > index 0000000..5a8a915
+> > > > --- /dev/null
+> > > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > > @@ -0,0 +1,1022 @@
+> > > 
+> > > [...]
+> > > 
+> > > > +	sdhci: sdhci@fe330000 {
+> > > > +		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
+> > > 
+> > > Not to rain on the parade too much, as this is already applied, but is
+> > > the "rockchip,rk3399-sdhci-5.1" string documented anywhere? I don't see
+> > > it.
+> 
+> I don't think it is. I'm still not sure how those dangling (aka spare bindings 
+> for later use) should be handled.
+> 
+> Their use is suggested by dt maintainers, to be able to handle ip-block quirks 
+> later on without needing to touch the devicetree, but in this case spamming 
+> the arasan dt-binding document with numerous of those compatible values also 
+> feels wrong.
 
-  Documentation: devicetree: rockchip: Document rk3368-GeekBox (2016-03-31 19:00:09 +0200)
+Hmm, good point. I was mostly tipped off by checkpatch when applying
+locally, and I also didn't have any context for whether there were any
+known quirks for rk3399 vs. the "standard" core. Given your comments, I
+suppose it's fair to use without documenting it (do I get burned at the
+stake for saying that?).
 
-are available in the git repository at:
+> > According to the latest binding for "arasan,sdhci-5.1", the "phy" and
+> > "phy-names" properties are required. Fortunately, this device stays
+> > "disabled" for now in your EVB DTS. But just FYI.
+> 
+> Thanks for catching this. As the patch was still local to my repository, I've 
+> amended the commit and dropped the whole emmc block for now.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-dts64-2
+No problem.
 
-for you to fetch changes up to 51c454d2610571404917fa027c73048599dc6c3d:
+> The emmc phy-binding just moved under the GRF (in 4.6-rc5 I think), so I guess 
+> we should handle that whole thing in the next version, as we're nearing (or 
+> are [nearly] over the armsoc cutoff already).
 
-  dt-bindings: document rockchip rk3399-evb board (2016-04-28 22:25:49 +0200)
+Sounds good. I'm already tracking/testing that modification.
 
-----------------------------------------------------------------
-Adding the new rk3399 core devicetree support as well as a board
-dts for the evaluation board of this chip and similar to the arm32
-side also move the rk3368 thermal data into the core soc dtsi, as
-there really is no need to keep it separate.
-
-----------------------------------------------------------------
-Caesar Wang (1):
-      arm64: dts: rockchip: move the rk3368 thermal data into rk3368.dtsi
-
-Heiko Stuebner (2):
-      clk: rockchip: fix checkpatch errors in rk3399 dt-binding header
-      Merge branch 'v4.7-shared/clkids' into v4.7-armsoc/dts64
-
-Jianqun Xu (3):
-      arm64: dts: rockchip: add core dtsi file for RK3399 SoCs
-      arm64: dts: rockchip: add dts file for RK3399 evaluation board
-      dt-bindings: document rockchip rk3399-evb board
-
-Shawn Lin (1):
-      dt-bindings: rockchip-dw-mshc: add description for rk3399
-
-Xing Zheng (4):
-      clk: rockchip: add dt-binding header for rk3399
-      clk: rockchip: add general gpu soft-reset on rk3399
-      clk: rockchip: rename rga clock-id on rk3399
-      clk: rockchip: export some necessary rk3399 clock ids
-
- Documentation/devicetree/bindings/arm/rockchip.txt |    6 +-
- .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |    1 +
- arch/arm64/boot/dts/rockchip/Makefile              |    1 +
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   66 +-
- .../{rk3368-thermal.dtsi => rk3399-evb.dts}        |  124 +--
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 1013 ++++++++++++++++++++
- include/dt-bindings/clock/rk3399-cru.h             |  755 +++++++++++++++
- 7 files changed, 1908 insertions(+), 58 deletions(-)
- rename arch/arm64/boot/dts/rockchip/{rk3368-thermal.dtsi => rk3399-evb.dts} (55%)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399.dtsi
- create mode 100644 include/dt-bindings/clock/rk3399-cru.h
+Brian
