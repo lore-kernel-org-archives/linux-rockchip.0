@@ -1,59 +1,39 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: [GIT PULL] rockchip clock changes for 4.7 part 3 - some more fixes
-Date: Fri, 29 Apr 2016 00:06 +0200
-Message-ID: <3990329.NB1U7jJjZj@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL 0/3] Rockchip updates for v4.7 - part2
+Date: Fri, 29 Apr 2016 00:23:22 +0200
+Message-ID: <5544434.9tA8JHBIkp@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+Hi Arnd, Kevin, Olof,
 
-some more fixes for the new rk3399 have come up addressing small errors
-found in the manual during bringup of the soc, so please pull.
+please find in reply to this mail a second set of pull requests with stuff for 
+4.7 going on top of the previous round 1.
+
+Some more work on the power-domain driver, a new rk3288 board + some smaller 
+changes and on the arm64 side basic devicetree support for the new and shiny 
+rk3399 and its evaluation board.
+
+The individual signed tags also explain the changes a bit more. And the arm64 
+branch contains a branch shared with the clock-tree that contains the new 
+clock-binding header for the rk3399.
+
+So if it looks ok, please pull.
 
 
 Thanks
 Heiko
-
-The following changes since commit 03ae1747869437a8e4d0d4e79d4c88c25c6df39c:
-
-  clk: rockchip: fix checkpatch warning in core code (2016-04-20 09:53:39 +0200)
-
-are available in the git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk3
-
-for you to fetch changes up to fd8bc829336a24b770247eb893111bcb8f1ddedb:
-
-  clk: rockchip: fix the rk3399 cifout clock (2016-04-25 22:54:51 +0200)
-
-----------------------------------------------------------------
-A spelling fix and a bunch of rk3399 clock fixes.
-
-----------------------------------------------------------------
-Colin Ian King (1):
-      clk: rockchip: fix of spelling mistake on unsuccessful in pll clock type
-
-Heiko Stuebner (1):
-      Merge branch 'v4.7-shared/clkids' into v4.7-clk/next
-
-Xing Zheng (8):
-      clk: rockchip: fix the gate bit for i2c4 and i2c8 on rk3399
-      clk: rockchip: add general gpu soft-reset on rk3399
-      clk: rockchip: rename rga clock-id on rk3399
-      clk: rockchip: export some necessary rk3399 clock ids
-      clk: rockchip: assign more necessary rk3399 clock ids
-      clk: rockchip: add some frequencies on the rk3399 PLL table
-      clk: rockchip: drop unnecessary CLK_IGNORE_UNUSED flags from rk3399
-      clk: rockchip: fix the rk3399 cifout clock
-
- drivers/clk/rockchip/clk-pll.c         |   4 +-
- drivers/clk/rockchip/clk-rk3399.c      | 344 +++++++++++++++++----------------
- include/dt-bindings/clock/rk3399-cru.h |   5 +-
- 3 files changed, 183 insertions(+), 170 deletions(-)
-
