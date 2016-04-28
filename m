@@ -1,80 +1,44 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH 4/9] thermal: rockchip: handle the power sequence for
- tsadc controller
-Date: Thu, 28 Apr 2016 08:04:33 -0700
-Message-ID: <20160428150432.GA20009@localhost.localdomain>
-References: <1460950562-20652-1-git-send-email-wxt@rock-chips.com>
- <1460950562-20652-5-git-send-email-wxt@rock-chips.com>
- <20160427234818.GB2590@localhost.localdomain>
- <57216C65.5040501@gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH v4 2/4] ARM64: dts: rockchip: add core dtsi file for
+ RK3399 SoCs
+Date: Thu, 28 Apr 2016 09:03:53 -0700
+Message-ID: <20160428160353.GA95284@google.com>
+References: <1461743693-10671-1-git-send-email-jay.xu@rock-chips.com>
+ <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <57216C65.5040501@gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: lintao@rock-chips.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, heiko@sntech.de, huangtao@rock-chips.com, davidriley@chromium.org, dianders@chromium.org, jwerner@chromium.org, smbarber@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Apr 28, 2016 at 09:50:29AM +0800, Caesar Wang wrote:
->=20
->=20
-> =E5=9C=A8 2016=E5=B9=B404=E6=9C=8828=E6=97=A5 07:48, Eduardo Valentin=
- =E5=86=99=E9=81=93:
-> >On Mon, Apr 18, 2016 at 11:35:56AM +0800, Caesar Wang wrote:
-> >>+		regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_ON);
-> >>+		mdelay(10);
-> >>+		regmap_write(grf, GRF_TSADC_TESTBIT_L, GRF_TSADC_TSEN_PD_OFF);
-> >>+		udelay(100); /* The spec note says at least 15 us */
-> >>+		regmap_write(grf, GRF_SARADC_TESTBIT, GRF_SARADC_TESTBIT_ON);
-> >>+		regmap_write(grf, GRF_TSADC_TESTBIT_H, GRF_TSADC_TESTBIT_H_ON);
-> >>+		udelay(200); /* The spec note says at least 90 us */
-> >Does it make sense to use usleep_range() instead?
->=20
-> I think so in the past, but I'm digging into the the udelay/usleep fo=
-r
-> kernel.
+Hi Heiko, Jianqun,
 
-What do you mean by in the past? timekeeping doc still recommends the
-range 10us to 20ms for usleep_range()
+On Wed, Apr 27, 2016 at 03:54:51PM +0800, Jianqun Xu wrote:
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> new file mode 100644
+> index 0000000..5a8a915
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -0,0 +1,1022 @@
+[...]
+> +	sdhci: sdhci@fe330000 {
+> +		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
 
->=20
-> In general,
->=20
-> udelay < 10us ~100us
-> mdelay > 1m, <1000ms/HZ
-> usleep_range(min,max) > 100us, <20ms
+Not to rain on the parade too much, as this is already applied, but is
+the "rockchip,rk3399-sdhci-5.1" string documented anywhere? I don't see
+it.
 
-even here, your udelays could be replaced by usleep_range().
+> +		reg = <0x0 0xfe330000 0x0 0x10000>;
+> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
+> +		clock-names = "clk_xin", "clk_ahb";
+> +		status = "disabled";
+> +	};
 
-Any particular reason you believe spining is better than sleeping in
-your case?
+[...]
 
-> msleep > 20ms,  < 1000ms
->=20
-> So the udelay is suit for tsadc power sequence.
-> ---
->=20
->=20
-> Also,  we have used the mdelay(10), so it doesn't matter if use the u=
-delay.
-> After all the udelay is stable than the usleep_range.
-
-What do you mean udelay is stable than usleep_range? usleep_range will
-give the opportunity to the scheduler to coalesce wakeups. udelay is a
-busyloop spin. Besides, I am not sure the current situation, but
-busylooping may be affected by cpu frequency.
-
->=20
-> -Caesar
->=20
-> >1.9.1
-> >
-> >
-> >
-> >
-> >--=20
-> >Thanks,
-> >Caesar
+Brian
