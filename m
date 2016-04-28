@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 6/7] clk: rockchip: move pll rate-comparison into a callable function
-Date: Thu, 28 Apr 2016 15:11:14 +0200
-Message-ID: <1461849075-8310-7-git-send-email-heiko@sntech.de>
+Subject: [PATCH 7/7] clk: rockchip: fold pll init functions into a common one
+Date: Thu, 28 Apr 2016 15:11:15 +0200
+Message-ID: <1461849075-8310-8-git-send-email-heiko@sntech.de>
 References: <1461849075-8310-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1461849075-8310-1-git-send-email-heiko@sntech.de>
@@ -10,184 +10,196 @@ To: mturquette@baylibre.com, sboyd@codeaurora.org
 Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-The init callback in our pll clk_ops allows us to re-set the same rate
-of a pll with different parameters if these became updated with more
-suitable values over time.
+The pll init functions are now all the same, so we can generalize them
+into one common function used by all to save some duplication.
 
-The init mechanism is similar over all pll types with the exception of
-the comparison of old and new parameters. So move these out to callbable
-functions to allow us to fold the generic init-handling into one.
+The parent-check in the original functions does not do anything useful
+at all, as we're not doing any real rate-handling at this point anymore,
+so can just go away.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/rockchip/clk-pll.c | 91 ++++++++++++++++++++++++++++--------------
- 1 file changed, 61 insertions(+), 30 deletions(-)
+ drivers/clk/rockchip/clk-pll.c | 125 ++++++++++-------------------------------
+ 1 file changed, 29 insertions(+), 96 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 081713c..5bd0545 100644
+index 5bd0545..1223eee 100644
 --- a/drivers/clk/rockchip/clk-pll.c
 +++ b/drivers/clk/rockchip/clk-pll.c
-@@ -36,6 +36,9 @@ struct rockchip_pll_data {
- 			   struct rockchip_pll_rate_table *rate);
- 	int (*set_params)(struct rockchip_clk_pll *pll,
- 			  const struct rockchip_pll_rate_table *rate);
-+	int (*compare_params)(struct rockchip_clk_pll *pll,
-+			const struct rockchip_pll_rate_table *rate,
-+			const struct rockchip_pll_rate_table *cur);
- };
- 
- struct rockchip_clk_pll {
-@@ -271,6 +274,25 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
+@@ -117,6 +117,32 @@ static int rockchip_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 	return pll->data->set_params(pll, rate);
  }
  
-+static int rockchip_rk3036_pll_compare_params(struct rockchip_clk_pll *pll,
-+				const struct rockchip_pll_rate_table *rate,
-+				const struct rockchip_pll_rate_table *cur)
++static void rockchip_pll_init(struct clk_hw *hw)
 +{
-+	const struct clk_hw *hw = &pll->hw;
++	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
++	const struct rockchip_pll_rate_table *rate;
++	struct rockchip_pll_rate_table cur;
++	unsigned long drate;
 +
-+	pr_debug("%s: pll %s\n", __func__, clk_hw_get_name(hw));
-+	pr_debug("old - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		 cur->fbdiv, cur->postdiv1, cur->refdiv, cur->postdiv2,
-+		 cur->dsmpd, cur->frac);
-+	pr_debug("new - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		 rate->fbdiv, rate->postdiv1, rate->refdiv, rate->postdiv2,
-+		 rate->dsmpd, rate->frac);
++	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
++		return;
 +
-+	return (rate->fbdiv == cur->fbdiv && rate->postdiv1 == cur->postdiv1 &&
-+		rate->refdiv == cur->refdiv && rate->postdiv2 == cur->postdiv2 &&
-+		rate->dsmpd == cur->dsmpd && rate->frac == cur->frac);
++	drate = clk_hw_get_rate(hw);
++	rate = rockchip_get_pll_settings(pll, drate);
++
++	/* when no rate setting for the current rate, rely on clk_set_rate */
++	if (!rate)
++		return;
++
++	pll->data->get_params(pll, &cur);
++
++	if (!pll->data->compare_params(pll, rate, &cur)) {
++		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
++			 __func__, clk_hw_get_name(hw));
++		pll->data->set_params(pll, rate);
++	}
 +}
 +
- static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -316,19 +338,7 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
- 		return;
+ /*
+  * Wait for the pll to reach the locked state.
+  * The calling set_rate function is responsible for making sure the
+@@ -320,39 +346,6 @@ static int rockchip_rk3036_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3036_PLLCON1_PWRDOWN);
+ }
  
- 	pll->data->get_params(pll, &cur);
+-static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+-{
+-	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	const struct rockchip_pll_rate_table *rate;
+-	struct rockchip_pll_rate_table cur;
+-	unsigned long drate;
 -
--	pr_debug("%s: pll %s@%lu: Hz\n", __func__, __clk_get_name(hw->clk),
--		 drate);
--	pr_debug("old - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
--		 cur.fbdiv, cur.postdiv1, cur.refdiv, cur.postdiv2,
--		 cur.dsmpd, cur.frac);
--	pr_debug("new - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
--		 rate->fbdiv, rate->postdiv1, rate->refdiv, rate->postdiv2,
--		 rate->dsmpd, rate->frac);
+-	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
 -
--	if (rate->fbdiv != cur.fbdiv || rate->postdiv1 != cur.postdiv1 ||
--		rate->refdiv != cur.refdiv || rate->postdiv2 != cur.postdiv2 ||
--		rate->dsmpd != cur.dsmpd || rate->frac != cur.frac) {
-+	if (!pll->data->compare_params(pll, rate, &cur)) {
- 		struct clk *parent = clk_get_parent(hw->clk);
- 
- 		if (!parent) {
-@@ -346,6 +356,7 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+-	drate = clk_hw_get_rate(hw);
+-	rate = rockchip_get_pll_settings(pll, drate);
+-
+-	/* when no rate setting for the current rate, rely on clk_set_rate */
+-	if (!rate)
+-		return;
+-
+-	pll->data->get_params(pll, &cur);
+-	if (!pll->data->compare_params(pll, rate, &cur)) {
+-		struct clk *parent = clk_get_parent(hw->clk);
+-
+-		if (!parent) {
+-			pr_warn("%s: parent of %s not available\n",
+-				__func__, __clk_get_name(hw->clk));
+-			return;
+-		}
+-
+-		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+-			 __func__, __clk_get_name(hw->clk));
+-		pll->data->set_params(pll, rate);
+-	}
+-}
+-
  static const struct rockchip_pll_data rockchip_rk3036_pll_data = {
  	.get_params = rockchip_rk3036_pll_get_params,
  	.set_params = rockchip_rk3036_pll_set_params,
-+	.compare_params = rockchip_rk3036_pll_compare_params,
+@@ -373,7 +366,7 @@ static const struct clk_ops rockchip_rk3036_pll_clk_ops = {
+ 	.enable = rockchip_rk3036_pll_enable,
+ 	.disable = rockchip_rk3036_pll_disable,
+ 	.is_enabled = rockchip_rk3036_pll_is_enabled,
+-	.init = rockchip_rk3036_pll_init,
++	.init = rockchip_pll_init,
  };
  
- static const struct clk_ops rockchip_rk3036_pll_clk_norate_ops = {
-@@ -487,6 +498,20 @@ static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
+ /**
+@@ -539,32 +532,6 @@ static int rockchip_rk3066_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3066_PLLCON3_PWRDOWN);
  }
  
-+static int rockchip_rk3066_pll_compare_params(struct rockchip_clk_pll *pll,
-+				const struct rockchip_pll_rate_table *rate,
-+				const struct rockchip_pll_rate_table *cur)
-+{
-+	const struct clk_hw *hw = &pll->hw;
-+
-+	pr_debug("%s: pll %s: nr (%d:%d); no (%d:%d); nf(%d:%d), nb(%d:%d)\n",
-+		 __func__, clk_hw_get_name(hw), rate->nr, cur->nr,
-+		 rate->no, cur->no, rate->nf, cur->nf, rate->nb, cur->nb);
-+
-+	return (rate->nr == cur->nr && rate->no == cur->no &&
-+				 rate->nf == cur->nf && rate->nb == cur->nb);
-+}
-+
- static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -533,11 +558,7 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
- 
- 	pll->data->get_params(pll, &cur);
- 
--	pr_debug("%s: pll %s@%lu: nr (%d:%d); no (%d:%d); nf(%d:%d), nb(%d:%d)\n",
--		 __func__, clk_hw_get_name(hw), drate, rate->nr, cur.nr,
--		 rate->no, cur.no, rate->nf, cur.nf, rate->nb, cur.nb);
--	if (rate->nr != cur.nr || rate->no != cur.no || rate->nf != cur.nf
--						     || rate->nb != cur.nb) {
-+	if (!pll->data->compare_params(pll, rate, &cur)) {
- 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
- 			 __func__, clk_hw_get_name(hw));
- 		pll->data->set_params(pll, rate);
-@@ -547,6 +568,7 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+-static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+-{
+-	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	const struct rockchip_pll_rate_table *rate;
+-	struct rockchip_pll_rate_table cur;
+-	unsigned long drate;
+-
+-	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
+-
+-	drate = clk_hw_get_rate(hw);
+-	rate = rockchip_get_pll_settings(pll, drate);
+-
+-	/* when no rate setting for the current rate, rely on clk_set_rate */
+-	if (!rate)
+-		return;
+-
+-	pll->data->get_params(pll, &cur);
+-
+-	if (!pll->data->compare_params(pll, rate, &cur)) {
+-		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+-			 __func__, clk_hw_get_name(hw));
+-		pll->data->set_params(pll, rate);
+-	}
+-}
+-
  static const struct rockchip_pll_data rockchip_rk3066_pll_data = {
  	.get_params = rockchip_rk3066_pll_get_params,
  	.set_params = rockchip_rk3066_pll_set_params,
-+	.compare_params = rockchip_rk3066_pll_compare_params,
+@@ -585,7 +552,7 @@ static const struct clk_ops rockchip_rk3066_pll_clk_ops = {
+ 	.enable = rockchip_rk3066_pll_enable,
+ 	.disable = rockchip_rk3066_pll_disable,
+ 	.is_enabled = rockchip_rk3066_pll_is_enabled,
+-	.init = rockchip_rk3066_pll_init,
++	.init = rockchip_pll_init,
  };
  
- static const struct clk_ops rockchip_rk3066_pll_clk_norate_ops = {
-@@ -717,6 +739,25 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
+ /**
+@@ -785,40 +752,6 @@ static int rockchip_rk3399_pll_is_enabled(struct clk_hw *hw)
+ 	return !(pllcon & RK3399_PLLCON3_PWRDOWN);
  }
  
-+static int rockchip_rk3399_pll_compare_params(struct rockchip_clk_pll *pll,
-+				const struct rockchip_pll_rate_table *rate,
-+				const struct rockchip_pll_rate_table *cur)
-+{
-+	const struct clk_hw *hw = &pll->hw;
-+
-+	pr_debug("%s: pll %s: Hz\n", __func__, __clk_get_name(hw->clk));
-+	pr_debug("old - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		 cur->fbdiv, cur->postdiv1, cur->refdiv, cur->postdiv2,
-+		 cur->dsmpd, cur->frac);
-+	pr_debug("new - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
-+		 rate->fbdiv, rate->postdiv1, rate->refdiv, rate->postdiv2,
-+		 rate->dsmpd, rate->frac);
-+
-+	return (rate->fbdiv == cur->fbdiv && rate->postdiv1 == cur->postdiv1 &&
-+		rate->refdiv == cur->refdiv && rate->postdiv2 == cur->postdiv2 &&
-+		rate->dsmpd == cur->dsmpd && rate->frac == cur->frac);
-+}
-+
- static int rockchip_rk3399_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -763,18 +804,7 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
- 
- 	pll->data->get_params(pll, &cur);
- 
--	pr_debug("%s: pll %s@%lu: Hz\n", __func__, __clk_get_name(hw->clk),
--		 drate);
--	pr_debug("old - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
--		 cur.fbdiv, cur.postdiv1, cur.refdiv, cur.postdiv2,
--		 cur.dsmpd, cur.frac);
--	pr_debug("new - fbdiv: %d, postdiv1: %d, refdiv: %d, postdiv2: %d, dsmpd: %d, frac: %d\n",
--		 rate->fbdiv, rate->postdiv1, rate->refdiv, rate->postdiv2,
--		 rate->dsmpd, rate->frac);
+-static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+-{
+-	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+-	const struct rockchip_pll_rate_table *rate;
+-	struct rockchip_pll_rate_table cur;
+-	unsigned long drate;
 -
--	if (rate->fbdiv != cur.fbdiv || rate->postdiv1 != cur.postdiv1 ||
--		rate->refdiv != cur.refdiv || rate->postdiv2 != cur.postdiv2 ||
--		rate->dsmpd != cur.dsmpd || rate->frac != cur.frac) {
-+	if (!pll->data->compare_params(pll, rate, &cur)) {
- 		struct clk *parent = clk_get_parent(hw->clk);
- 
- 		if (!parent) {
-@@ -792,6 +822,7 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+-	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+-		return;
+-
+-	drate = clk_hw_get_rate(hw);
+-	rate = rockchip_get_pll_settings(pll, drate);
+-
+-	/* when no rate setting for the current rate, rely on clk_set_rate */
+-	if (!rate)
+-		return;
+-
+-	pll->data->get_params(pll, &cur);
+-
+-	if (!pll->data->compare_params(pll, rate, &cur)) {
+-		struct clk *parent = clk_get_parent(hw->clk);
+-
+-		if (!parent) {
+-			pr_warn("%s: parent of %s not available\n",
+-				__func__, __clk_get_name(hw->clk));
+-			return;
+-		}
+-
+-		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+-			 __func__, __clk_get_name(hw->clk));
+-		pll->data->set_params(pll, rate);
+-	}
+-}
+-
  static const struct rockchip_pll_data rockchip_rk3399_pll_data = {
  	.get_params = rockchip_rk3399_pll_get_params,
  	.set_params = rockchip_rk3399_pll_set_params,
-+	.compare_params = rockchip_rk3399_pll_compare_params,
+@@ -839,7 +772,7 @@ static const struct clk_ops rockchip_rk3399_pll_clk_ops = {
+ 	.enable = rockchip_rk3399_pll_enable,
+ 	.disable = rockchip_rk3399_pll_disable,
+ 	.is_enabled = rockchip_rk3399_pll_is_enabled,
+-	.init = rockchip_rk3399_pll_init,
++	.init = rockchip_pll_init,
  };
  
- static const struct clk_ops rockchip_rk3399_pll_clk_norate_ops = {
+ /*
 -- 
 2.6.4
 
