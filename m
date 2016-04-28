@@ -1,7 +1,7 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 5/7] clk: rockchip: generalize pll set-rate operation
-Date: Thu, 28 Apr 2016 15:11:13 +0200
-Message-ID: <1461849075-8310-6-git-send-email-heiko@sntech.de>
+Subject: [PATCH 4/7] clk: rockchip: abstract pll get-params and set-params operations
+Date: Thu, 28 Apr 2016 15:11:12 +0200
+Message-ID: <1461849075-8310-5-git-send-email-heiko@sntech.de>
 References: <1461849075-8310-1-git-send-email-heiko@sntech.de>
 Return-path: <linux-clk-owner@vger.kernel.org>
 In-Reply-To: <1461849075-8310-1-git-send-email-heiko@sntech.de>
@@ -10,156 +10,199 @@ To: mturquette@baylibre.com, sboyd@codeaurora.org
 Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-The currently pll-specific set_rate operations are now identical,
-and with the actual register access already being abstracted away
-will also stay that way.
-
-Therefore merge them into one function used by each PLL.
+This moves the pll-specific get_params and set_params functions into a
+per-pll struct that gets associated at init time and will help us reign
+in some code duplication we're faced with right now.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/clk/rockchip/clk-pll.c | 86 +++++++++++-------------------------------
- 1 file changed, 23 insertions(+), 63 deletions(-)
+ drivers/clk/rockchip/clk-pll.c | 54 ++++++++++++++++++++++++++++++++----------
+ 1 file changed, 42 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 2c30f52..081713c 100644
+index e56637d..2c30f52 100644
 --- a/drivers/clk/rockchip/clk-pll.c
 +++ b/drivers/clk/rockchip/clk-pll.c
-@@ -94,6 +94,26 @@ static long rockchip_pll_round_rate(struct clk_hw *hw,
- 	return rate_table[i - 1].rate;
- }
+@@ -30,6 +30,14 @@
+ #define PLL_MODE_NORM		0x1
+ #define PLL_MODE_DEEP		0x2
  
-+static int rockchip_pll_set_rate(struct clk_hw *hw, unsigned long drate,
-+				 unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	const struct rockchip_pll_rate_table *rate;
++struct rockchip_clk_pll;
++struct rockchip_pll_data {
++	void (*get_params)(struct rockchip_clk_pll *pll,
++			   struct rockchip_pll_rate_table *rate);
++	int (*set_params)(struct rockchip_clk_pll *pll,
++			  const struct rockchip_pll_rate_table *rate);
++};
 +
-+	pr_debug("%s: changing %s to %lu with a parent rate of %lu\n",
-+		 __func__, clk_hw_get_name(hw), drate, prate);
-+
-+	/* Get required rate settings from table */
-+	rate = rockchip_get_pll_settings(pll, drate);
-+	if (!rate) {
-+		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
-+			drate, clk_hw_get_name(hw));
-+		return -EINVAL;
-+	}
-+
+ struct rockchip_clk_pll {
+ 	struct clk_hw		hw;
+ 
+@@ -48,6 +56,7 @@ struct rockchip_clk_pll {
+ 	spinlock_t		*lock;
+ 
+ 	struct rockchip_clk_provider *ctx;
++	const struct rockchip_pll_data *data;
+ };
+ 
+ #define to_rockchip_clk_pll(_hw) container_of(_hw, struct rockchip_clk_pll, hw)
+@@ -164,7 +173,7 @@ static unsigned long rockchip_rk3036_pll_recalc_rate(struct clk_hw *hw,
+ 	struct rockchip_pll_rate_table cur;
+ 	u64 rate64 = prate;
+ 
+-	rockchip_rk3036_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	rate64 *= cur.fbdiv;
+ 	do_div(rate64, cur.refdiv);
+@@ -259,7 +268,7 @@ static int rockchip_rk3036_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 		return -EINVAL;
+ 	}
+ 
+-	return rockchip_rk3036_pll_set_params(pll, rate);
 +	return pll->data->set_params(pll, rate);
-+}
-+
- /*
-  * Wait for the pll to reach the locked state.
-  * The calling set_rate function is responsible for making sure the
-@@ -251,26 +271,6 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
  }
  
--static int rockchip_rk3036_pll_set_rate(struct clk_hw *hw, unsigned long drate,
--					unsigned long prate)
--{
--	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--	const struct rockchip_pll_rate_table *rate;
--
--	pr_debug("%s: changing %s to %lu with a parent rate of %lu\n",
--		 __func__, __clk_get_name(hw->clk), drate, prate);
--
--	/* Get required rate settings from table */
--	rate = rockchip_get_pll_settings(pll, drate);
--	if (!rate) {
--		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
--			drate, __clk_get_name(hw->clk));
--		return -EINVAL;
--	}
--
--	return pll->data->set_params(pll, rate);
--}
--
  static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -358,7 +358,7 @@ static const struct clk_ops rockchip_rk3036_pll_clk_norate_ops = {
- static const struct clk_ops rockchip_rk3036_pll_clk_ops = {
+@@ -306,7 +315,7 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+ 	if (!rate)
+ 		return;
+ 
+-	rockchip_rk3036_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	pr_debug("%s: pll %s@%lu: Hz\n", __func__, __clk_get_name(hw->clk),
+ 		 drate);
+@@ -330,10 +339,15 @@ static void rockchip_rk3036_pll_init(struct clk_hw *hw)
+ 
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, __clk_get_name(hw->clk));
+-		rockchip_rk3036_pll_set_params(pll, rate);
++		pll->data->set_params(pll, rate);
+ 	}
+ }
+ 
++static const struct rockchip_pll_data rockchip_rk3036_pll_data = {
++	.get_params = rockchip_rk3036_pll_get_params,
++	.set_params = rockchip_rk3036_pll_set_params,
++};
++
+ static const struct clk_ops rockchip_rk3036_pll_clk_norate_ops = {
  	.recalc_rate = rockchip_rk3036_pll_recalc_rate,
- 	.round_rate = rockchip_pll_round_rate,
--	.set_rate = rockchip_rk3036_pll_set_rate,
-+	.set_rate = rockchip_pll_set_rate,
  	.enable = rockchip_rk3036_pll_enable,
- 	.disable = rockchip_rk3036_pll_disable,
- 	.is_enabled = rockchip_rk3036_pll_is_enabled,
-@@ -487,26 +487,6 @@ static int rockchip_rk3066_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
+@@ -405,7 +419,7 @@ static unsigned long rockchip_rk3066_pll_recalc_rate(struct clk_hw *hw,
+ 		return prate;
+ 	}
+ 
+-	rockchip_rk3066_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	rate64 *= cur.nf;
+ 	do_div(rate64, cur.nr);
+@@ -490,7 +504,7 @@ static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 		return -EINVAL;
+ 	}
+ 
+-	return rockchip_rk3066_pll_set_params(pll, rate);
++	return pll->data->set_params(pll, rate);
  }
  
--static int rockchip_rk3066_pll_set_rate(struct clk_hw *hw, unsigned long drate,
--					unsigned long prate)
--{
--	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--	const struct rockchip_pll_rate_table *rate;
--
--	pr_debug("%s: changing %s to %lu with a parent rate of %lu\n",
--		 __func__, clk_hw_get_name(hw), drate, prate);
--
--	/* Get required rate settings from table */
--	rate = rockchip_get_pll_settings(pll, drate);
--	if (!rate) {
--		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
--			drate, clk_hw_get_name(hw));
--		return -EINVAL;
--	}
--
--	return pll->data->set_params(pll, rate);
--}
--
  static int rockchip_rk3066_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -579,7 +559,7 @@ static const struct clk_ops rockchip_rk3066_pll_clk_norate_ops = {
- static const struct clk_ops rockchip_rk3066_pll_clk_ops = {
- 	.recalc_rate = rockchip_rk3066_pll_recalc_rate,
- 	.round_rate = rockchip_pll_round_rate,
--	.set_rate = rockchip_rk3066_pll_set_rate,
-+	.set_rate = rockchip_pll_set_rate,
- 	.enable = rockchip_rk3066_pll_enable,
- 	.disable = rockchip_rk3066_pll_disable,
- 	.is_enabled = rockchip_rk3066_pll_is_enabled,
-@@ -737,26 +717,6 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
- 	return ret;
+@@ -537,7 +551,7 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ 	if (!rate)
+ 		return;
+ 
+-	rockchip_rk3066_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	pr_debug("%s: pll %s@%lu: nr (%d:%d); no (%d:%d); nf(%d:%d), nb(%d:%d)\n",
+ 		 __func__, clk_hw_get_name(hw), drate, rate->nr, cur.nr,
+@@ -546,10 +560,15 @@ static void rockchip_rk3066_pll_init(struct clk_hw *hw)
+ 						     || rate->nb != cur.nb) {
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, clk_hw_get_name(hw));
+-		rockchip_rk3066_pll_set_params(pll, rate);
++		pll->data->set_params(pll, rate);
+ 	}
  }
  
--static int rockchip_rk3399_pll_set_rate(struct clk_hw *hw, unsigned long drate,
--					unsigned long prate)
--{
--	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
--	const struct rockchip_pll_rate_table *rate;
--
--	pr_debug("%s: changing %s to %lu with a parent rate of %lu\n",
--		 __func__, __clk_get_name(hw->clk), drate, prate);
--
--	/* Get required rate settings from table */
--	rate = rockchip_get_pll_settings(pll, drate);
--	if (!rate) {
--		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
--			drate, __clk_get_name(hw->clk));
--		return -EINVAL;
--	}
--
--	return pll->data->set_params(pll, rate);
--}
--
++static const struct rockchip_pll_data rockchip_rk3066_pll_data = {
++	.get_params = rockchip_rk3066_pll_get_params,
++	.set_params = rockchip_rk3066_pll_set_params,
++};
++
+ static const struct clk_ops rockchip_rk3066_pll_clk_norate_ops = {
+ 	.recalc_rate = rockchip_rk3066_pll_recalc_rate,
+ 	.enable = rockchip_rk3066_pll_enable,
+@@ -638,7 +657,7 @@ static unsigned long rockchip_rk3399_pll_recalc_rate(struct clk_hw *hw,
+ 	struct rockchip_pll_rate_table cur;
+ 	u64 rate64 = prate;
+ 
+-	rockchip_rk3399_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	rate64 *= cur.fbdiv;
+ 	do_div(rate64, cur.refdiv);
+@@ -735,7 +754,7 @@ static int rockchip_rk3399_pll_set_rate(struct clk_hw *hw, unsigned long drate,
+ 		return -EINVAL;
+ 	}
+ 
+-	return rockchip_rk3399_pll_set_params(pll, rate);
++	return pll->data->set_params(pll, rate);
+ }
+ 
  static int rockchip_rk3399_pll_enable(struct clk_hw *hw)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -844,7 +804,7 @@ static const struct clk_ops rockchip_rk3399_pll_clk_norate_ops = {
- static const struct clk_ops rockchip_rk3399_pll_clk_ops = {
+@@ -782,7 +801,7 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+ 	if (!rate)
+ 		return;
+ 
+-	rockchip_rk3399_pll_get_params(pll, &cur);
++	pll->data->get_params(pll, &cur);
+ 
+ 	pr_debug("%s: pll %s@%lu: Hz\n", __func__, __clk_get_name(hw->clk),
+ 		 drate);
+@@ -806,10 +825,15 @@ static void rockchip_rk3399_pll_init(struct clk_hw *hw)
+ 
+ 		pr_debug("%s: pll %s: rate params do not match rate table, adjusting\n",
+ 			 __func__, __clk_get_name(hw->clk));
+-		rockchip_rk3399_pll_set_params(pll, rate);
++		pll->data->set_params(pll, rate);
+ 	}
+ }
+ 
++static const struct rockchip_pll_data rockchip_rk3399_pll_data = {
++	.get_params = rockchip_rk3399_pll_get_params,
++	.set_params = rockchip_rk3399_pll_set_params,
++};
++
+ static const struct clk_ops rockchip_rk3399_pll_clk_norate_ops = {
  	.recalc_rate = rockchip_rk3399_pll_recalc_rate,
- 	.round_rate = rockchip_pll_round_rate,
--	.set_rate = rockchip_rk3399_pll_set_rate,
-+	.set_rate = rockchip_pll_set_rate,
  	.enable = rockchip_rk3399_pll_enable,
- 	.disable = rockchip_rk3399_pll_disable,
- 	.is_enabled = rockchip_rk3399_pll_is_enabled,
+@@ -916,18 +940,24 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
+ 
+ 	switch (pll_type) {
+ 	case pll_rk3036:
++		pll->data = &rockchip_rk3036_pll_data;
++
+ 		if (!pll->rate_table || IS_ERR(ctx->grf))
+ 			init.ops = &rockchip_rk3036_pll_clk_norate_ops;
+ 		else
+ 			init.ops = &rockchip_rk3036_pll_clk_ops;
+ 		break;
+ 	case pll_rk3066:
++		pll->data = &rockchip_rk3066_pll_data;
++
+ 		if (!pll->rate_table || IS_ERR(ctx->grf))
+ 			init.ops = &rockchip_rk3066_pll_clk_norate_ops;
+ 		else
+ 			init.ops = &rockchip_rk3066_pll_clk_ops;
+ 		break;
+ 	case pll_rk3399:
++		pll->data = &rockchip_rk3399_pll_data;
++
+ 		if (!pll->rate_table)
+ 			init.ops = &rockchip_rk3399_pll_clk_norate_ops;
+ 		else
 -- 
 2.6.4
 
