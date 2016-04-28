@@ -1,44 +1,54 @@
-From: Brian Norris <briannorris@chromium.org>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: [PATCH v4 2/4] ARM64: dts: rockchip: add core dtsi file for
  RK3399 SoCs
-Date: Thu, 28 Apr 2016 09:03:53 -0700
-Message-ID: <20160428160353.GA95284@google.com>
+Date: Thu, 28 Apr 2016 11:29:38 -0700
+Message-ID: <20160428182938.GA3079@google.com>
 References: <1461743693-10671-1-git-send-email-jay.xu@rock-chips.com>
  <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
+ <20160428160353.GA95284@google.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1461743693-10671-3-git-send-email-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: lintao@rock-chips.com, robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, heiko@sntech.de, huangtao@rock-chips.com, davidriley@chromium.org, dianders@chromium.org, jwerner@chromium.org, smbarber@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20160428160353.GA95284-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, davidriley-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, smbarber-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, lintao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, jwerner-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko, Jianqun,
+One more thing:
 
-On Wed, Apr 27, 2016 at 03:54:51PM +0800, Jianqun Xu wrote:
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> new file mode 100644
-> index 0000000..5a8a915
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -0,0 +1,1022 @@
-[...]
-> +	sdhci: sdhci@fe330000 {
-> +		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
+On Thu, Apr 28, 2016 at 09:03:53AM -0700, Brian Norris wrote:
+> Hi Heiko, Jianqun,
+> 
+> On Wed, Apr 27, 2016 at 03:54:51PM +0800, Jianqun Xu wrote:
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > new file mode 100644
+> > index 0000000..5a8a915
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > @@ -0,0 +1,1022 @@
+> [...]
+> > +	sdhci: sdhci@fe330000 {
+> > +		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
+> 
+> Not to rain on the parade too much, as this is already applied, but is
+> the "rockchip,rk3399-sdhci-5.1" string documented anywhere? I don't see
+> it.
 
-Not to rain on the parade too much, as this is already applied, but is
-the "rockchip,rk3399-sdhci-5.1" string documented anywhere? I don't see
-it.
+According to the latest binding for "arasan,sdhci-5.1", the "phy" and
+"phy-names" properties are required. Fortunately, this device stays
+"disabled" for now in your EVB DTS. But just FYI.
 
-> +		reg = <0x0 0xfe330000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
-> +		clock-names = "clk_xin", "clk_ahb";
-> +		status = "disabled";
-> +	};
-
-[...]
+> > +		reg = <0x0 0xfe330000 0x0 0x10000>;
+> > +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+> > +		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
+> > +		clock-names = "clk_xin", "clk_ahb";
+> > +		status = "disabled";
+> > +	};
 
 Brian
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
