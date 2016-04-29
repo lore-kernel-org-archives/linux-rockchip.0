@@ -1,54 +1,175 @@
-From: Mark Yao <mark.yao@rock-chips.com>
-Subject: [PATCH v2] drm/rockchip: vop: fix iommu crash with async atomic
-Date: Fri, 29 Apr 2016 15:48:54 +0800
-Message-ID: <1461916134-24156-1-git-send-email-mark.yao@rock-chips.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: separate capture
+	and playback
+Date: Fri, 29 Apr 2016 16:55:15 +0200
+Message-ID: <CAFqH_50U0mS-OKSo4XTUMcGkh9piK2LxpDWhsXLRHUkt4i3eow@mail.gmail.com>
+References: <1449657147-26959-1-git-send-email-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1449657147-26959-1-git-send-email-john@metanate.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: John Keeping <john@metanate.com>
+Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWZ0ZXIgYXN5bmMgYXRvbWljX2NvbW1pdCBjYWxsYmFjaywgZHJtX2F0b21pY19jbGVhbl9vbGRf
-ZmIgd2lsbApjbGVhbnVwIGFsbCBvbGQgZmIsIGJ1dCBiZWNhdXNlIGFzeW5jLCB0aGUgb2xkIGZi
-IG1heSBiZSBhbHNvIG9uCnRoZSB2b3AgaGFyZHdhcmUsIGRtYSB3aWxsIGFjY2VzcyB0aGUgb2xk
-IGZiIGJ1ZmZlciwgY2xlYW4gb2xkCmZiIHdpbGwgY2F1c2UgaW9tbXUgcGFnZSBmYXVsdC4KCkZp
-eCB0aGUgcHJvYmxlbSBieSByZWZlcmVuY2UgdGhlIGZiIGFuZCB1bnJlZmVyZW5jZSBpdCB3aGVu
-IHRoZSBmYgphY3R1YWxseSBzd2FwIG91dCBmcm9tIHZvcCBoYXJkd2FyZS4KClNpZ25lZC1vZmYt
-Ynk6IE1hcmsgWWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjI6
-Ci0gZml4IHNvbWUgZm9ybWF0IHByb2JsZW0uCgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYyB8IDE4ICsrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQs
-IDE4IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AuYwppbmRleCAyODU5NmU3Li44NjUyYmIxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTU2MCw2ICs1NjAsMjIgQEAgc3RhdGljIHZvaWQg
-dm9wX3BsYW5lX2Rlc3Ryb3koc3RydWN0IGRybV9wbGFuZSAqcGxhbmUpCiAJZHJtX3BsYW5lX2Ns
-ZWFudXAocGxhbmUpOwogfQogCitzdGF0aWMgaW50IHZvcF9wbGFuZV9wcmVwYXJlX2ZiKHN0cnVj
-dCBkcm1fcGxhbmUgKnBsYW5lLAorCQkJCWNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm5l
-d19zdGF0ZSkKK3sKKwlpZiAocGxhbmUtPnN0YXRlLT5mYikKKwkJZHJtX2ZyYW1lYnVmZmVyX3Jl
-ZmVyZW5jZShwbGFuZS0+c3RhdGUtPmZiKTsKKworCXJldHVybiAwOworfQorCitzdGF0aWMgdm9p
-ZCB2b3BfcGxhbmVfY2xlYW51cF9mYihzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKKwkJCQkgY29u
-c3Qgc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqb2xkX3N0YXRlKQoreworCWlmIChvbGRfc3RhdGUt
-PmZiKQorCQlkcm1fZnJhbWVidWZmZXJfdW5yZWZlcmVuY2Uob2xkX3N0YXRlLT5mYik7Cit9CisK
-IHN0YXRpYyBpbnQgdm9wX3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZSwKIAkJCSAgIHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKnN0YXRlKQogewpAQCAtNzU2LDYgKzc3
-Miw4IEBAIHN0YXRpYyB2b2lkIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxh
-bmUgKnBsYW5lLAogfQogCiBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9wbGFuZV9oZWxwZXJfZnVu
-Y3MgcGxhbmVfaGVscGVyX2Z1bmNzID0geworCS5wcmVwYXJlX2ZiID0gdm9wX3BsYW5lX3ByZXBh
-cmVfZmIsCisJLmNsZWFudXBfZmIgPSB2b3BfcGxhbmVfY2xlYW51cF9mYiwKIAkuYXRvbWljX2No
-ZWNrID0gdm9wX3BsYW5lX2F0b21pY19jaGVjaywKIAkuYXRvbWljX3VwZGF0ZSA9IHZvcF9wbGFu
-ZV9hdG9taWNfdXBkYXRlLAogCS5hdG9taWNfZGlzYWJsZSA9IHZvcF9wbGFuZV9hdG9taWNfZGlz
-YWJsZSwKLS0gCjEuOS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-LWRldmVsCg==
+Hi John,
+
+2015-12-09 11:32 GMT+01:00 John Keeping <john@metanate.com>:
+
+> If we only clear the tx/rx state when both are disabled it is not
+> possible to start/stop one multiple times while the other is running.
+> Since the two are independently controlled, treat them as such and
+> remove the false dependency between capture and playback.
+>
+> Signed-off-by: John Keeping <john@metanate.com>
+> ---
+>  sound/soc/rockchip/rockchip_i2s.c | 72
+> +++++++++++++++++----------------------
+>  1 file changed, 32 insertions(+), 40 deletions(-)
+>
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c
+> b/sound/soc/rockchip/rockchip_i2s.c
+> index 83b1b9c..acc6225 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+> @@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s,
+> int on)
+>                                    I2S_DMACR_TDE_ENABLE,
+> I2S_DMACR_TDE_ENABLE);
+>
+>                 regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> -                                  I2S_XFER_TXS_START |
+> I2S_XFER_RXS_START);
+> +                                  I2S_XFER_TXS_START,
+> +                                  I2S_XFER_TXS_START);
+>
+>                 i2s->tx_start = true;
+>         } else {
+> @@ -92,27 +92,23 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev
+> *i2s, int on)
+>                 regmap_update_bits(i2s->regmap, I2S_DMACR,
+>                                    I2S_DMACR_TDE_ENABLE,
+> I2S_DMACR_TDE_DISABLE);
+>
+> -               if (!i2s->rx_start) {
+> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                          I2S_XFER_TXS_START |
+> -                                          I2S_XFER_RXS_START,
+> -                                          I2S_XFER_TXS_STOP |
+> -                                          I2S_XFER_RXS_STOP);
+> +               regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                  I2S_XFER_TXS_START,
+> +                                  I2S_XFER_TXS_STOP);
+>
+> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> +               regmap_update_bits(i2s->regmap, I2S_CLR,
+> +                                  I2S_CLR_TXC,
+> +                                  I2S_CLR_TXC);
+>
+> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> +               regmap_read(i2s->regmap, I2S_CLR, &val);
+>
+> -                       /* Should wait for clear operation to finish */
+> -                       while (val) {
+> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
+> -                               retry--;
+> -                               if (!retry) {
+> -                                       dev_warn(i2s->dev, "fail to
+> clear\n");
+> -                                       break;
+> -                               }
+> +               /* Should wait for clear operation to finish */
+> +               while (val & I2S_CLR_TXC) {
+> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> +                       retry--;
+> +                       if (!retry) {
+> +                               dev_warn(i2s->dev, "fail to clear\n");
+> +                               break;
+>                         }
+>                 }
+>         }
+> @@ -128,8 +124,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev
+> *i2s, int on)
+>                                    I2S_DMACR_RDE_ENABLE,
+> I2S_DMACR_RDE_ENABLE);
+>
+>                 regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> -                                  I2S_XFER_TXS_START |
+> I2S_XFER_RXS_START);
+> +                                  I2S_XFER_RXS_START,
+> +                                  I2S_XFER_RXS_START);
+>
+>                 i2s->rx_start = true;
+>         } else {
+> @@ -138,27 +134,23 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev
+> *i2s, int on)
+>                 regmap_update_bits(i2s->regmap, I2S_DMACR,
+>                                    I2S_DMACR_RDE_ENABLE,
+> I2S_DMACR_RDE_DISABLE);
+>
+> -               if (!i2s->tx_start) {
+> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                          I2S_XFER_TXS_START |
+> -                                          I2S_XFER_RXS_START,
+> -                                          I2S_XFER_TXS_STOP |
+> -                                          I2S_XFER_RXS_STOP);
+> +               regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                  I2S_XFER_RXS_START,
+> +                                  I2S_XFER_RXS_STOP);
+>
+> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> +               regmap_update_bits(i2s->regmap, I2S_CLR,
+> +                                  I2S_CLR_RXC,
+> +                                  I2S_CLR_RXC);
+>
+> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> +               regmap_read(i2s->regmap, I2S_CLR, &val);
+>
+> -                       /* Should wait for clear operation to finish */
+> -                       while (val) {
+> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
+> -                               retry--;
+> -                               if (!retry) {
+> -                                       dev_warn(i2s->dev, "fail to
+> clear\n");
+> -                                       break;
+> -                               }
+> +               /* Should wait for clear operation to finish */
+> +               while (val & I2S_CLR_RXC) {
+> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> +                       retry--;
+> +                       if (!retry) {
+> +                               dev_warn(i2s->dev, "fail to clear\n");
+> +                               break;
+>                         }
+>                 }
+>         }
+> --
+>
+
+
+Using my Veyron Jerry Chromebook wiht latest kernel I found that the
+speakers doesn't work. Bisect points to this patch as the offending commit.
+However your changes looks reasonable the fact is that reverting the patch
+makes the audio work again on my device. I need to dig a bit more into the
+issue, but meanwhile, any idea on what is happening ? Can I ask which
+device did you test?
+
+Best regards,
+ Enric
