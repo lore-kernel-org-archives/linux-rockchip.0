@@ -1,157 +1,56 @@
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: separate capture and playback
-Date: Fri, 29 Apr 2016 16:59:27 +0200
-Message-ID: <CAFqH_52C4JKno4uyt54UdWKAJKM4FPGRiQaQQ9_H-Mz1Cr+Hqg@mail.gmail.com>
-References: <1449657147-26959-1-git-send-email-john@metanate.com>
+From: =?utf-8?B?U8O2cmVu?= Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH v2 6/6] mmc: sdhci-of-arasan: overwrite enhanced strobe
+ callback
+Date: Fri, 29 Apr 2016 09:01:58 -0700
+Message-ID: <20160429160158.GZ3766@xsjsorenbubuntu>
+References: <1461897751-28810-1-git-send-email-shawn.lin@rock-chips.com>
+ <1461898114-29067-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1449657147-26959-1-git-send-email-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1461898114-29067-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi John,
-
-2015-12-09 11:32 GMT+01:00 John Keeping <john@metanate.com>:
-> If we only clear the tx/rx state when both are disabled it is not
-> possible to start/stop one multiple times while the other is running.
-> Since the two are independently controlled, treat them as such and
-> remove the false dependency between capture and playback.
->
-> Signed-off-by: John Keeping <john@metanate.com>
+On Fri, 2016-04-29 at 10:48:34 +0800, Shawn Lin wrote:
+> Currently sdhci-arasan 5.1 can support enhanced strobe function,
+> and we now limit it just for "arasan,sdhci-5.1". Add
+> mmc-hs400-enhanced-strobe in DT to enable the function if we'r sure
+> our controller can support it.
+>=20
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  sound/soc/rockchip/rockchip_i2s.c | 72 +++++++++++++++++----------------------
->  1 file changed, 32 insertions(+), 40 deletions(-)
->
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 83b1b9c..acc6225 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
->                                    I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
->
->                 regmap_update_bits(i2s->regmap, I2S_XFER,
-> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
-> +                                  I2S_XFER_TXS_START,
-> +                                  I2S_XFER_TXS_START);
->
->                 i2s->tx_start = true;
->         } else {
-> @@ -92,27 +92,23 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
->                 regmap_update_bits(i2s->regmap, I2S_DMACR,
->                                    I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
->
-> -               if (!i2s->rx_start) {
-> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
-> -                                          I2S_XFER_TXS_START |
-> -                                          I2S_XFER_RXS_START,
-> -                                          I2S_XFER_TXS_STOP |
-> -                                          I2S_XFER_RXS_STOP);
-> +               regmap_update_bits(i2s->regmap, I2S_XFER,
-> +                                  I2S_XFER_TXS_START,
-> +                                  I2S_XFER_TXS_STOP);
->
-> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
-> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
-> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
-> +               regmap_update_bits(i2s->regmap, I2S_CLR,
-> +                                  I2S_CLR_TXC,
-> +                                  I2S_CLR_TXC);
->
-> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
-> +               regmap_read(i2s->regmap, I2S_CLR, &val);
->
-> -                       /* Should wait for clear operation to finish */
-> -                       while (val) {
-> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
-> -                               retry--;
-> -                               if (!retry) {
-> -                                       dev_warn(i2s->dev, "fail to clear\n");
-> -                                       break;
-> -                               }
-> +               /* Should wait for clear operation to finish */
-> +               while (val & I2S_CLR_TXC) {
-> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
-> +                       retry--;
-> +                       if (!retry) {
-> +                               dev_warn(i2s->dev, "fail to clear\n");
-> +                               break;
->                         }
->                 }
->         }
-> @@ -128,8 +124,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
->                                    I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
->
->                 regmap_update_bits(i2s->regmap, I2S_XFER,
-> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
-> +                                  I2S_XFER_RXS_START,
-> +                                  I2S_XFER_RXS_START);
->
->                 i2s->rx_start = true;
->         } else {
-> @@ -138,27 +134,23 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
->                 regmap_update_bits(i2s->regmap, I2S_DMACR,
->                                    I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
->
-> -               if (!i2s->tx_start) {
-> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
-> -                                          I2S_XFER_TXS_START |
-> -                                          I2S_XFER_RXS_START,
-> -                                          I2S_XFER_TXS_STOP |
-> -                                          I2S_XFER_RXS_STOP);
-> +               regmap_update_bits(i2s->regmap, I2S_XFER,
-> +                                  I2S_XFER_RXS_START,
-> +                                  I2S_XFER_RXS_STOP);
->
-> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
-> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
-> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
-> +               regmap_update_bits(i2s->regmap, I2S_CLR,
-> +                                  I2S_CLR_RXC,
-> +                                  I2S_CLR_RXC);
->
-> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
-> +               regmap_read(i2s->regmap, I2S_CLR, &val);
->
-> -                       /* Should wait for clear operation to finish */
-> -                       while (val) {
-> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
-> -                               retry--;
-> -                               if (!retry) {
-> -                                       dev_warn(i2s->dev, "fail to clear\n");
-> -                                       break;
-> -                               }
-> +               /* Should wait for clear operation to finish */
-> +               while (val & I2S_CLR_RXC) {
-> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
-> +                       retry--;
-> +                       if (!retry) {
-> +                               dev_warn(i2s->dev, "fail to clear\n");
-> +                               break;
->                         }
->                 }
->         }
-> --
-> 2.6.3.462.gbe2c914
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+>=20
+> Changes in v2: None
+>=20
+>  drivers/mmc/host/sdhci-of-arasan.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>=20
+> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sd=
+hci-of-arasan.c
+> index 20b859e..a0e4536 100644
+> --- a/drivers/mmc/host/sdhci-of-arasan.c
+> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+> @@ -25,7 +25,9 @@
+>  #include "sdhci-pltfm.h"
+> =20
+>  #define SDHCI_ARASAN_CLK_CTRL_OFFSET	0x2c
+> +#define SDHCI_ARASAN_VENDOR_REGISTER	0x78
 
-Using my Veyron Jerry Chromebook wiht latest kernel I found that the
-speakers doesn't work. Bisect points to this patch as the offending
-commit. However your changes looks reasonable the fact is that
-reverting the patch makes the audio work again on my device. I need to
-dig a bit more into the issue, but meanwhile, any idea on what is
-happening ? Can I ask which device did you test?
+Just as a note: This register doesn't seem to exist in the IP version
+Zynq is using. So, as long as we exclude that version from accessing it=
+,
+things should be fine (IIUC, that is the case).
 
-PS: Sorry for the noise if you received the email twice.
+Acked-by: S=C3=B6ren Brinkmann <soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>
 
-Best regards,
- Enric
+	S=C3=B6ren
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
