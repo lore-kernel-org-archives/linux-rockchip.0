@@ -1,89 +1,168 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk numbering
- w/ device tree
-Date: Fri, 29 Apr 2016 19:29:22 -0700
-Message-ID: <CAD=FV=UuGdbagFgK-EpF_0RKw35pdcm-92qDgRf_Csrwj6seLA@mail.gmail.com>
-References: <20160429195741.GY19428@n2100.arm.linux.org.uk>
-	<CAD=FV=UGyi0r3kDmc1cpcANTP-2u+7UEgW3r9kRvF2f8qcWH+g@mail.gmail.com>
-	<20160429211328.GZ19428@n2100.arm.linux.org.uk>
-	<CAD=FV=V8BOsO36eUOGAcXp04xCiN13UGG0Vaf2yhh1MQn85FjA@mail.gmail.com>
-	<20160429212920.GA19428@n2100.arm.linux.org.uk>
-	<CAD=FV=V9V8P=d59RX1eaAdVxJgMxub1F6hzQNw1QW+7t=3POBw@mail.gmail.com>
-	<20160429215017.GC19428@n2100.arm.linux.org.uk>
-	<CAD=FV=VgQX_EVhUUCugzv+CZqjzTS8LwyeU5419aX9FbDnWJDg@mail.gmail.com>
-	<20160429221606.GE19428@n2100.arm.linux.org.uk>
-	<CAD=FV=WzgGFzzpeYAPrOpMS684_G=XRoSRjTegK-vre=fX=kpw@mail.gmail.com>
-	<20160429224407.GF19428@n2100.arm.linux.org.uk>
-	<CAD=FV=U5jnJJ3v=nFGFecoKB5KGv1ufC+aKbHx2iCqBTWpDTww@mail.gmail.com>
-	<5723F514.4@hurleysoftware.com>
-	<CAD=FV=V_YyfBOSs7BLkyhv=_5HBmf3djUWACbL6d-bwnrueDjA@mail.gmail.com>
-	<5723FCE3.9070308@hurleysoftware.com>
+From: John Keeping <john-HPTTJ/6qucUJ3nxcUk3PyQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: separate capture and playback
+Date: Sat, 30 Apr 2016 08:00:49 +0100
+Message-ID: <20160430070049.GF14612@serenity.lan>
+References: <1449657147-26959-1-git-send-email-john@metanate.com>
+ <CAFqH_52C4JKno4uyt54UdWKAJKM4FPGRiQaQQ9_H-Mz1Cr+Hqg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5723FCE3.9070308@hurleysoftware.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Peter Hurley <peter@hurleysoftware.com>
-Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Ulf Hansson <ulf.hansson@linaro.org>, Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>, Adrian Hunter <adrian.hunter@intel.com>, Stefan Agner <stefan@agner.ch>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Brian Norris <computersforpeace@gmail.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Jisheng Zhang <jszhang@marvell.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree-spec@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Venu Byravarasu <vbyravarasu@nvidia.com>, Lars-Peter Clausen <lars@metafoo.de>, Jon Hunter <jonathanh@nvidia.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, devicetree@vger.kern
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAFqH_52C4JKno4uyt54UdWKAJKM4FPGRiQaQQ9_H-Mz1Cr+Hqg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Enric,
 
-On Fri, Apr 29, 2016 at 5:31 PM, Peter Hurley <peter@hurleysoftware.com> wrote:
-> On 04/29/2016 05:03 PM, Doug Anderson wrote:
->> Hi,
->>
->> On Fri, Apr 29, 2016 at 4:58 PM, Peter Hurley <peter@hurleysoftware.com> wrote:
->>
->>     On 04/29/2016 04:01 PM, Doug Anderson wrote:
->>     > * serial allows numbering devices by alias.
->>
->>     Which is in fact a total nightmare.
->>
->>     While stable device order is mandatory in serial because of
->>     console command line parameters and existing userspace expectations,
->>     it is the number one barrier to providing a shared ttyS namespace
->>     for mixed uart platforms.
->>
->>     Stable device order has a very real (and often unforeseen) maintenance
->>     burden.
->>
->>
->> Interesting. I wonder if these burdens are unique to serial or shared
->> by all the other subsystems that allow ordering? Maybe this is all
->> because of legacy reasons?
->
-> Well, the specific issue is certainly unique to serial.
-> But what I was suggesting is that 5 years from now, these patches
-> could be the "legacy reasons" in mmc.
->
-> FWIW, there is already a defacto expectation by boot configurations in the
-> field that a given mmc block device is stable across boots. The reality
-> is that 100000's of kernel command lines look like:
->
->         root=/dev/mmcblk0p2
->
-> This was a recent regression fixed by Ulf in commit 9aaf3437aa72
-> ("mmc: block: Use the mmc host device index as the mmcblk device index")
+On Fri, Apr 29, 2016 at 04:59:27PM +0200, Enric Balletbo Serra wrote:
+> 2015-12-09 11:32 GMT+01:00 John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>:
+> > If we only clear the tx/rx state when both are disabled it is not
+> > possible to start/stop one multiple times while the other is running.
+> > Since the two are independently controlled, treat them as such and
+> > remove the false dependency between capture and playback.
+> >
+> > Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  sound/soc/rockchip/rockchip_i2s.c | 72 +++++++++++++++++----------------------
+> >  1 file changed, 32 insertions(+), 40 deletions(-)
+> >
+> > diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+> > index 83b1b9c..acc6225 100644
+> > --- a/sound/soc/rockchip/rockchip_i2s.c
+> > +++ b/sound/soc/rockchip/rockchip_i2s.c
+> > @@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+> >                                    I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
+> >
+> >                 regmap_update_bits(i2s->regmap, I2S_XFER,
+> > -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> > -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> > +                                  I2S_XFER_TXS_START,
+> > +                                  I2S_XFER_TXS_START);
+> >
+> >                 i2s->tx_start = true;
+> >         } else {
+> > @@ -92,27 +92,23 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+> >                 regmap_update_bits(i2s->regmap, I2S_DMACR,
+> >                                    I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
+> >
+> > -               if (!i2s->rx_start) {
+> > -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> > -                                          I2S_XFER_TXS_START |
+> > -                                          I2S_XFER_RXS_START,
+> > -                                          I2S_XFER_TXS_STOP |
+> > -                                          I2S_XFER_RXS_STOP);
+> > +               regmap_update_bits(i2s->regmap, I2S_XFER,
+> > +                                  I2S_XFER_TXS_START,
+> > +                                  I2S_XFER_TXS_STOP);
+> >
+> > -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> > -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> > -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> > +               regmap_update_bits(i2s->regmap, I2S_CLR,
+> > +                                  I2S_CLR_TXC,
+> > +                                  I2S_CLR_TXC);
+> >
+> > -                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> > +               regmap_read(i2s->regmap, I2S_CLR, &val);
+> >
+> > -                       /* Should wait for clear operation to finish */
+> > -                       while (val) {
+> > -                               regmap_read(i2s->regmap, I2S_CLR, &val);
+> > -                               retry--;
+> > -                               if (!retry) {
+> > -                                       dev_warn(i2s->dev, "fail to clear\n");
+> > -                                       break;
+> > -                               }
+> > +               /* Should wait for clear operation to finish */
+> > +               while (val & I2S_CLR_TXC) {
+> > +                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> > +                       retry--;
+> > +                       if (!retry) {
+> > +                               dev_warn(i2s->dev, "fail to clear\n");
+> > +                               break;
+> >                         }
+> >                 }
+> >         }
+> > @@ -128,8 +124,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+> >                                    I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
+> >
+> >                 regmap_update_bits(i2s->regmap, I2S_XFER,
+> > -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> > -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> > +                                  I2S_XFER_RXS_START,
+> > +                                  I2S_XFER_RXS_START);
+> >
+> >                 i2s->rx_start = true;
+> >         } else {
+> > @@ -138,27 +134,23 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+> >                 regmap_update_bits(i2s->regmap, I2S_DMACR,
+> >                                    I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
+> >
+> > -               if (!i2s->tx_start) {
+> > -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> > -                                          I2S_XFER_TXS_START |
+> > -                                          I2S_XFER_RXS_START,
+> > -                                          I2S_XFER_TXS_STOP |
+> > -                                          I2S_XFER_RXS_STOP);
+> > +               regmap_update_bits(i2s->regmap, I2S_XFER,
+> > +                                  I2S_XFER_RXS_START,
+> > +                                  I2S_XFER_RXS_STOP);
+> >
+> > -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> > -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> > -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> > +               regmap_update_bits(i2s->regmap, I2S_CLR,
+> > +                                  I2S_CLR_RXC,
+> > +                                  I2S_CLR_RXC);
+> >
+> > -                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> > +               regmap_read(i2s->regmap, I2S_CLR, &val);
+> >
+> > -                       /* Should wait for clear operation to finish */
+> > -                       while (val) {
+> > -                               regmap_read(i2s->regmap, I2S_CLR, &val);
+> > -                               retry--;
+> > -                               if (!retry) {
+> > -                                       dev_warn(i2s->dev, "fail to clear\n");
+> > -                                       break;
+> > -                               }
+> > +               /* Should wait for clear operation to finish */
+> > +               while (val & I2S_CLR_RXC) {
+> > +                       regmap_read(i2s->regmap, I2S_CLR, &val);
+> > +                       retry--;
+> > +                       if (!retry) {
+> > +                               dev_warn(i2s->dev, "fail to clear\n");
+> > +                               break;
+> >                         }
+> >                 }
+> >         }
+> > --
+> > 2.6.3.462.gbe2c914
+> 
+> Using my Veyron Jerry Chromebook wiht latest kernel I found that the
+> speakers doesn't work. Bisect points to this patch as the offending
+> commit. However your changes looks reasonable the fact is that
+> reverting the patch makes the audio work again on my device. I need to
+> dig a bit more into the issue, but meanwhile, any idea on what is
+> happening ? Can I ask which device did you test?
 
-Ah.  Well, in this case it sounds like we've already got an
-expectation of stable numbering from boot to boot.  I had missed Ulf's
-patch, so I guess part 3 of my series isn't actually needed and can be
-dropped.
-
-So it's just a question of whether we allow people to manually specify
-via device tree.
-
-
-Note: if we really think using root=/dev/mmcblkNpM is a bad idea then
-we should deprecate it and yell about it in the boot log.  Then 5 (or
-20) years down the road we could remove the feature when the legacy
-burden become a pain.  Note that even if we deprecated
-root=/dev/mmcblkNpM I'd still love to see the numbering be consistent
-to help folks parse dmesg.
+I tested this on a Radxa Rock2 square.  This change fixed an issue I
+found when running separate processes for playback and recording (I was
+testing with arecord and speaker-test IIRC) but I don't think that
+should be relevant.  I just read through the patch again and I can't see
+anything obviously wrong so I'm afraid I don't have any idea what's
+causing the problem you're seeing.
 
 
-Thanks for your thoughts!
-
-
--Doug
+John
