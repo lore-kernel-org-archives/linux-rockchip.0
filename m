@@ -1,80 +1,59 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH 1/4] thermal: Add support for hardware-tracked trip points
-Date: Tue, 3 May 2016 17:25:47 +0800
-Message-ID: <57286E9B.5060804@gmail.com>
-References: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
- <1461553367-24744-2-git-send-email-wxt@rock-chips.com>
- <20160427214843.GA6438@localhost.localdomain>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20160427214843.GA6438@localhost.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, huangtao@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, dmitry.torokhov@gmail.com, dianders@chromium.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, eddie.cai@rock-chips.com, smbarber@google.com, briannorris@google.com, Zhang Rui <rui.zhang@intel.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH v2 0/5] Thermal: Support for hardware-tracked trip points
+Date: Tue,  3 May 2016 17:33:28 +0800
+Message-ID: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-doc-owner@vger.kernel.org>
+Sender: linux-doc-owner@vger.kernel.org
+To: edubezval@gmail.com
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, Caesar Wang <wxt@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Keerthy <j-keerthy@ti.com>, linux-doc@vger.kernel.org, Ni Wade <wni@nvidia.com>, linux-pm@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-kernel@vger.kernel.org, Durgadoss R <durgadoss.r@intel.com>, Andy Champ <andycham@amazon.com>, Javi Merino <javi.merino@arm.com>, Leo Yan <leo.yan@linaro.org>, Laxman Dewangan <ldewangan@nvidia.com>, Zhang Rui <rui.zhang@intel.com>, linux-omap@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-rockchip.vger.kernel.org
 
+The history patches come from Mikko and Sascha.
+http://thread.gmane.org/gmane.linux.power-management.general/59451
+
+Now, I pick them up to continue upstream.
+Nevermind!
+
+This series history patches:
+v1: https://lkml.org/lkml/2016/4/24/227
+
+This series adds support for hardware trip points. It picks up earlier
+work from Mikko Perttunen. Mikko implemented hardware trip points as part
+of the device tree support. It was suggested back then to move the
+functionality to the thermal core instead of putting more code into the
+device tree support. This series does exactly that.
+
+This series patches rebase the conflicts.
+Note that the hardware-tracked trip points are very well tested currently.
+
+Verified and tested on https://github.com/Caesar-github/rockchip/tree/wip/fixes-thermal-0503
+That's based on linux-kernel 20160502.
+.Linux version 4.6.0-rc6-next-20160502-08922-g860ed34 (wxt@nb)
 
 
-=E5=9C=A8 2016=E5=B9=B404=E6=9C=8828=E6=97=A5 05:48, Eduardo Valentin =E5=
-=86=99=E9=81=93:
-> This patch is based on an earlier version from Mikko Perttunen
-> <mikko.perttunen@kapsi.fi>
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
-> Cc: linux-pm@vger.kernel.org
-> ---
->
->   drivers/thermal/thermal_core.c | 48 +++++++++++++++++++++++++++++++=
-+++++++++++
->   include/linux/thermal.h        |  3 +++
->>
->
->   static void update_temperature(struct thermal_zone_device *tz)
->   {
->   	int temp, ret;
-> @@ -569,6 +610,8 @@ void thermal_zone_device_update(struct thermal_zo=
-ne_device *tz)
->  =20
->   	update_temperature(tz);
->  =20
-> +	thermal_zone_set_trips(tz);
-> +
->   	for (count =3D 0; count < tz->trips; count++)
->   		handle_thermal_trip(tz, count);
->   }
-> @@ -754,6 +797,9 @@ trip_point_hyst_store(struct device *dev, struct =
-device_attribute *attr,
->   	 */
->   	ret =3D tz->ops->set_trip_hyst(tz, trip, temperature);
->  =20
-> +	if (!ret)
-> +		thermal_zone_set_trips(tz);
-> +
-> You would probably want to do the same on trip_point_temp_store().
->
+Changes in v2:
+- update the sysfs-api.txt for set_trips
+- add the commit in patch[v2 2/5].
+- Update the commit for patch[v2 4/5].
 
-Sorry, that has been set in thermal_zone_device_update().
+Caesar Wang (1):
+  thermal: rockchip: add the set_trips function
 
-static ssize_t trip_point_temp_store()
-{
-     ..
-     thermal_zone_device_update(tz);
-     ..
-}
+Sascha Hauer (4):
+  thermal: Add support for hardware-tracked trip points
+  thermal: of: implement .set_trips for device tree thermal zones
+  thermal: streamline get_trend callbacks
+  thermal: bang-bang governor: act on lower trip boundary
 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+ Documentation/thermal/sysfs-api.txt                |  7 +++
+ drivers/thermal/gov_bang_bang.c                    |  2 +-
+ drivers/thermal/of-thermal.c                       | 23 +++++-----
+ drivers/thermal/rockchip_thermal.c                 | 39 ++++++++++++++++
+ drivers/thermal/thermal_core.c                     | 52 ++++++++++++++++++++++
+ drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 ++++-------
+ include/linux/thermal.h                            |  9 +++-
+ 7 files changed, 128 insertions(+), 29 deletions(-)
 
-
---=20
-Thanks,
-Caesar
+-- 
+1.9.1
 
