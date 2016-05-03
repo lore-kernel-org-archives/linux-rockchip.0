@@ -1,57 +1,113 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: some fixes
-Date: Tue, 3 May 2016 14:21:39 +0800
-Message-ID: <57284373.9090005@rock-chips.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH 2/4] thermal: of: implement .set_trips for device tree
+ thermal zones
+Date: Tue, 3 May 2016 14:32:46 +0800
+Message-ID: <5728460E.4000009@rock-chips.com>
+References: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
+ <1461553367-24744-3-git-send-email-wxt@rock-chips.com>
+ <20160427215209.GC6438@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20160427215209.GC6438@localhost.localdomain>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, dmitry.torokhov@gmail.com, huangtao@rock-chips.com, eddie.cai@rock-chips.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZQogICAgIEhlcmUgYXJlIHNvbWUgbGl0dGxlIGZpeGVzIGZvciByb2NrY2hpcCBkcm0s
-IGxvb2tzIGdvb2QgZm9yIG1lLCBhbmQgCnNlZW1zIHRoZXJlIGlzIG5vIGRvdWJ0IG9uIHRoZW0s
-IFNvIEknZCBsaWtlIHlvdSBjYW4gbGFuZCB0aGVtLgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNp
-bmNlIGNvbW1pdCBiODkzNTliZGYwZjFlOTVhNGM1ZjkyMzAwNTk0YmE5ZGRlMzIzZmM0OgoKICAg
-TWVyZ2UgYnJhbmNoICdmb3ItbmV4dCcgb2YgaHR0cDovL2dpdC5hZ25lci5jaC9naXQvbGludXgt
-ZHJtLWZzbC1kY3UgCmludG8gZHJtLW5leHQgKDIwMTYtMDQtMjkgMTQ6NTc6NTEgKzEwMDApCgph
-cmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoKCgogICBodHRwczovL2dpdGh1
-Yi5jb20vbWFya3l6cS9rZXJuZWwtZHJtLXJvY2tjaGlwLmdpdCAKZHJtLXJvY2tjaGlwLW5leHQt
-Zml4ZXMtMDUtMDMKCmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAyZGIwMGNmNWEwN2I3
-YzU0MzM5MmZmODgxNjM0Mjg1MDljZGEzOGFlOgoKICAgZHJtL3JvY2tjaGlwOiB2b3A6IEluaXRp
-YWxpemUgdnNraXBsaW5lcyB0byB6ZXJvICgyMDE2LTA1LTAzIDE0OjExOjIzIAorMDgwMCkKCi0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0KRGFuIENhcnBlbnRlciAoMSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IGlubm9faGRtaTog
-Zml4IGFuIGVycm9yIGNvZGUKCkpvaG4gS2VlcGluZyAoMik6CiAgICAgICBkcm0vcm9ja2NoaXA6
-IHJlbW92ZSByZWR1bmRhbnQgc3RhdGVtZW50CiAgICAgICBkcm0vcm9ja2NoaXA6IGRvbid0IGxl
-YWsgaW9tbXUgbWFwcGluZwoKTWFyayBZYW8gKDQpOgogICAgICAgZHJtL3JvY2tjaGlwOiBnZXQg
-cmlkIG9mIHJvY2tjaGlwX2RybV9jcnRjX21vZGVfY29uZmlnCiAgICAgICBkcm0vcm9ja2NoaXA6
-IHN1cHBvcnQgbm9uLWlvbW11IGJ1ZmZlciBwYXRoCiAgICAgICBkcm0vcm9ja2NoaXA6IHZvcDog
-Zml4IGlvbW11IGNyYXNoIHdpdGggYXN5bmMgYXRvbWljCiAgICAgICBkcm0vcm9ja2NoaXA6IHZv
-cDogSW5pdGlhbGl6ZSB2c2tpcGxpbmVzIHRvIHplcm8KCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlwLmMgfCA0OCAKKysrKysrKysrKysrKysrKysrKysrKysr
-KysrLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1p
-cGktZHNpLmMgICAgICAgICAgfCAzOCAKKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0t
-LS0tLS0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jICAgICB8
-IDE3ICsrKysrKysrKysrKysrLS0tCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2lubm9faGRt
-aS5jICAgICAgICAgICAgfCAyMCArKysrKysrKysrKysrKysrLS0tLQogIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgICAgIHwgNjYgCisrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tLS0tLQogIGRyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggICAgIHwgMTAgKysrKysrKyst
-LQogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMgICAgIHwgOTUg
-CisrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAgNyBmaWxlcyBjaGFuZ2Vk
-LCAxOTYgaW5zZXJ0aW9ucygrKSwgOTggZGVsZXRpb25zKC0pCgotLSAK77ytYXJrIFlhbwoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+
+=E5=9C=A8 2016=E5=B9=B404=E6=9C=8828=E6=97=A5 05:52, Eduardo Valentin =E5=
+=86=99=E9=81=93:
+> On Mon, Apr 25, 2016 at 11:02:45AM +0800, Caesar Wang wrote:
+>> From: Sascha Hauer <s.hauer@pengutronix.de>
+>>
+>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>> Cc: Zhang Rui <rui.zhang@intel.com>
+>> Cc: Eduardo Valentin <edubezval@gmail.com>
+>> Cc: linux-pm@vger.kernel.org
+>> ---
+>>
+>>   drivers/thermal/of-thermal.c | 12 ++++++++++++
+>>   include/linux/thermal.h      |  4 ++++
+>>   2 files changed, 16 insertions(+)
+>>
+>> diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-therm=
+al.c
+>> index b8e509c..8722e63 100644
+>> --- a/drivers/thermal/of-thermal.c
+>> +++ b/drivers/thermal/of-thermal.c
+>> @@ -101,6 +101,17 @@ static int of_thermal_get_temp(struct thermal_z=
+one_device *tz,
+>>   	return data->ops->get_temp(data->sensor_data, temp);
+>>   }
+>>  =20
+>> +static int of_thermal_set_trips(struct thermal_zone_device *tz,
+>> +				int low, int high)
+>> +{
+>> +	struct __thermal_zone *data =3D tz->devdata;
+>> +
+>> +	if (!data->ops || !data->ops->set_trips)
+>> +		return -EINVAL;
+>> +
+>> +	return data->ops->set_trips(data->sensor_data, low, high);
+>> +}
+>> +
+>>   /**
+>>    * of_thermal_get_ntrips - function to export number of available =
+trip
+>>    *			   points.
+>> @@ -427,6 +438,7 @@ thermal_zone_of_add_sensor(struct device_node *z=
+one,
+>>  =20
+>>   	tzd->ops->get_temp =3D of_thermal_get_temp;
+>>   	tzd->ops->get_trend =3D of_thermal_get_trend;
+>> +	tzd->ops->set_trips =3D of_thermal_set_trips;
+>>   	tzd->ops->set_emul_temp =3D of_thermal_set_emul_temp;
+>>   	mutex_unlock(&tzd->lock);
+>>  =20
+>> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+>> index e258359..cb64866 100644
+>> --- a/include/linux/thermal.h
+>> +++ b/include/linux/thermal.h
+>> @@ -336,12 +336,16 @@ struct thermal_genl_event {
+>>    *
+>>    * Optional:
+>>    * @get_trend: a pointer to a function that reads the sensor tempe=
+rature trend.
+>> + * @@set_trips: a pointer to a function that sets a temperature win=
+dow. When
+>> + *		this window is left the driver must inform the thermal core via
+>> + *              thermal_zone_device_update.
+> Ok. We start to see some documentation and expectation being stated
+> here. Nice. Please respin the comment on thermal core too, so drivers
+> that dont use OF will also be aware of this feature and how to use th=
+em.
+
+Okay, done
+
+>
+>>    * @set_emul_temp: a pointer to a function that sets sensor emulat=
+ed
+>>    *		   temperature.
+>>    */
+>>   struct thermal_zone_of_device_ops {
+>>   	int (*get_temp)(void *, int *);
+>>   	int (*get_trend)(void *, long *);
+>> +	int (*set_trips)(void *, int, int);
+>>   	int (*set_emul_temp)(void *, int);
+>>   	int (*set_trip_temp)(void *, int, int);
+>>   };
+>> --=20
+>> 1.9.1
+>>
+>
+>
+
+--=20
+caesar wang | software engineer | wxt@rock-chip.com
+
+
