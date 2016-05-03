@@ -1,191 +1,156 @@
-From: sugar <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH 1/2] ASoC: rockchip: i2s: separate capture
-	and playback
-Date: Tue, 3 May 2016 12:12:34 +0800
-Message-ID: <57282532.7000402@rock-chips.com>
-References: <1449657147-26959-1-git-send-email-john@metanate.com>
- <CAFqH_52C4JKno4uyt54UdWKAJKM4FPGRiQaQQ9_H-Mz1Cr+Hqg@mail.gmail.com>
- <20160430070049.GF14612@serenity.lan>
+From: Caesar Wang <caesar.upstream-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/4] thermal: Add support for hardware-tracked trip points
+Date: Tue, 3 May 2016 14:19:10 +0800
+Message-ID: <572842DE.7080301@gmail.com>
+References: <1461553367-24744-1-git-send-email-wxt@rock-chips.com>
+ <1461553367-24744-2-git-send-email-wxt@rock-chips.com>
+ <20160427214843.GA6438@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160430070049.GF14612@serenity.lan>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: John Keeping <john@keeping.me.uk>, Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160427214843.GA6438-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi John,
-
-On 4/30/2016 15:00, John Keeping Wrote:
-> Hi Enric,
->
-> On Fri, Apr 29, 2016 at 04:59:27PM +0200, Enric Balletbo Serra wrote:
->> 2015-12-09 11:32 GMT+01:00 John Keeping <john@metanate.com>:
->>> If we only clear the tx/rx state when both are disabled it is not
->>> possible to start/stop one multiple times while the other is running.
->>> Since the two are independently controlled, treat them as such and
->>> remove the false dependency between capture and playback.
->>>
->>> Signed-off-by: John Keeping <john@metanate.com>
->>> ---
->>>   sound/soc/rockchip/rockchip_i2s.c | 72 +++++++++++++++++----------------------
->>>   1 file changed, 32 insertions(+), 40 deletions(-)
->>>
->>> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
->>> index 83b1b9c..acc6225 100644
->>> --- a/sound/soc/rockchip/rockchip_i2s.c
->>> +++ b/sound/soc/rockchip/rockchip_i2s.c
->>> @@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
->>>                                     I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
->>>
->>>                  regmap_update_bits(i2s->regmap, I2S_XFER,
->>> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
->>> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
->>> +                                  I2S_XFER_TXS_START,
->>> +                                  I2S_XFER_TXS_START);
->>>
->>>                  i2s->tx_start = true;
->>>          } else {
->>> @@ -92,27 +92,23 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
->>>                  regmap_update_bits(i2s->regmap, I2S_DMACR,
->>>                                     I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
->>>
->>> -               if (!i2s->rx_start) {
->>> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
->>> -                                          I2S_XFER_TXS_START |
->>> -                                          I2S_XFER_RXS_START,
->>> -                                          I2S_XFER_TXS_STOP |
->>> -                                          I2S_XFER_RXS_STOP);
->>> +               regmap_update_bits(i2s->regmap, I2S_XFER,
->>> +                                  I2S_XFER_TXS_START,
->>> +                                  I2S_XFER_TXS_STOP);
->>>
->>> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
->>> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
->>> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
->>> +               regmap_update_bits(i2s->regmap, I2S_CLR,
->>> +                                  I2S_CLR_TXC,
->>> +                                  I2S_CLR_TXC);
->>>
->>> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
->>> +               regmap_read(i2s->regmap, I2S_CLR, &val);
->>>
->>> -                       /* Should wait for clear operation to finish */
->>> -                       while (val) {
->>> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
->>> -                               retry--;
->>> -                               if (!retry) {
->>> -                                       dev_warn(i2s->dev, "fail to clear\n");
->>> -                                       break;
->>> -                               }
->>> +               /* Should wait for clear operation to finish */
->>> +               while (val & I2S_CLR_TXC) {
->>> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
->>> +                       retry--;
->>> +                       if (!retry) {
->>> +                               dev_warn(i2s->dev, "fail to clear\n");
->>> +                               break;
->>>                          }
->>>                  }
->>>          }
->>> @@ -128,8 +124,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
->>>                                     I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
->>>
->>>                  regmap_update_bits(i2s->regmap, I2S_XFER,
->>> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
->>> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
->>> +                                  I2S_XFER_RXS_START,
->>> +                                  I2S_XFER_RXS_START);
->>>
->>>                  i2s->rx_start = true;
->>>          } else {
->>> @@ -138,27 +134,23 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
->>>                  regmap_update_bits(i2s->regmap, I2S_DMACR,
->>>                                     I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
->>>
->>> -               if (!i2s->tx_start) {
->>> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
->>> -                                          I2S_XFER_TXS_START |
->>> -                                          I2S_XFER_RXS_START,
->>> -                                          I2S_XFER_TXS_STOP |
->>> -                                          I2S_XFER_RXS_STOP);
->>> +               regmap_update_bits(i2s->regmap, I2S_XFER,
->>> +                                  I2S_XFER_RXS_START,
->>> +                                  I2S_XFER_RXS_STOP);
->>>
->>> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
->>> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
->>> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
->>> +               regmap_update_bits(i2s->regmap, I2S_CLR,
->>> +                                  I2S_CLR_RXC,
->>> +                                  I2S_CLR_RXC);
->>>
->>> -                       regmap_read(i2s->regmap, I2S_CLR, &val);
->>> +               regmap_read(i2s->regmap, I2S_CLR, &val);
->>>
->>> -                       /* Should wait for clear operation to finish */
->>> -                       while (val) {
->>> -                               regmap_read(i2s->regmap, I2S_CLR, &val);
->>> -                               retry--;
->>> -                               if (!retry) {
->>> -                                       dev_warn(i2s->dev, "fail to clear\n");
->>> -                                       break;
->>> -                               }
->>> +               /* Should wait for clear operation to finish */
->>> +               while (val & I2S_CLR_RXC) {
->>> +                       regmap_read(i2s->regmap, I2S_CLR, &val);
->>> +                       retry--;
->>> +                       if (!retry) {
->>> +                               dev_warn(i2s->dev, "fail to clear\n");
->>> +                               break;
->>>                          }
->>>                  }
->>>          }
->>> --
->>> 2.6.3.462.gbe2c914
->>
->> Using my Veyron Jerry Chromebook wiht latest kernel I found that the
->> speakers doesn't work. Bisect points to this patch as the offending
->> commit. However your changes looks reasonable the fact is that
->> reverting the patch makes the audio work again on my device. I need to
->> dig a bit more into the issue, but meanwhile, any idea on what is
->> happening ? Can I ask which device did you test?
->
-> I tested this on a Radxa Rock2 square.  This change fixed an issue I
-> found when running separate processes for playback and recording (I was
-> testing with arecord and speaker-test IIRC) but I don't think that
-> should be relevant.  I just read through the patch again and I can't see
-> anything obviously wrong so I'm afraid I don't have any idea what's
-> causing the problem you're seeing.
->
-Do you have test playback/capture at the same time? I think you may 
-reproduce this issue if you do as follows:
-
-step 1: tinyplay test.wav -D 0 -d 0 -p 1024 -n 4 &
-step 2: tinycap r.wav -D 0 -d 0 -p 1024 -n 4 &
-
-you will find that there is no music now.
-
-because of this problem, we enable tx/rx at the same time to WA this issue.
-
-May I know what's the issue that you met before?
->
-> John
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
->
+CgrlnKggMjAxNuW5tDA05pyIMjjml6UgMDU6NDgsIEVkdWFyZG8gVmFsZW50aW4g5YaZ6YGTOgo+
+IEEgY291cGxlIG9mIGNvbW1lbnRzIGFzIGZvbGxvd3MsCj4KPiBPbiBNb24sIEFwciAyNSwgMjAx
+NiBhdCAxMTowMjo0NEFNICswODAwLCBDYWVzYXIgV2FuZyB3cm90ZToKPj4gRnJvbTogU2FzY2hh
+IEhhdWVyIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPgo+Pgo+PiBUaGlzIGFkZHMgc3VwcG9ydCBm
+b3IgaGFyZHdhcmUtdHJhY2tlZCB0cmlwIHBvaW50cyB0byB0aGUgZGV2aWNlIHRyZWUKPj4gdGhl
+cm1hbCBzZW5zb3IgZnJhbWV3b3JrLgo+Pgo+PiBUaGUgZnJhbWV3b3JrIHN1cHBvcnRzIGFuIGFy
+Yml0cmFyeSBudW1iZXIgb2YgdHJpcCBwb2ludHMuIFdoZW5ldmVyCj4+IHRoZSBjdXJyZW50IHRl
+bXBlcmF0dXJlIGlzIHVwZGF0ZWQsIHRoZSB0cmlwIHBvaW50cyBpbW1lZGlhdGVseQo+PiBiZWxv
+dyBhbmQgYWJvdmUgdGhlIGN1cnJlbnQgdGVtcGVyYXR1cmUgYXJlIGZvdW5kLiBBIC5zZXRfdHJp
+cHMKPj4gY2FsbGJhY2sgaXMgdGhlbiBjYWxsZWQgd2l0aCB0aGUgdGVtcGVyYXR1cmVzLiBJZiB0
+aGVyZSBpcyBubyB0cmlwCj4+IHBvaW50IGFib3ZlIG9yIGJlbG93IHRoZSBjdXJyZW50IHRlbXBl
+cmF0dXJlLCB0aGUgcGFzc2VkIHRyaXAKPj4gdGVtcGVyYXR1cmUgd2lsbCBiZSAtSU5UX01BWCBv
+ciBJTlRfTUFYIHJlc3BlY3RpdmVseS4gSW4gdGhpcyBjYWxsYmFjaywKPj4gdGhlIGRyaXZlciBz
+aG91bGQgcHJvZ3JhbSB0aGUgaGFyZHdhcmUgc3VjaCB0aGF0IGl0IGlzIG5vdGlmaWVkCj4+IHdo
+ZW4gZWl0aGVyIG9mIHRoZXNlIHRyaXAgcG9pbnRzIGFyZSB0cmlnZ2VyZWQuIFdoZW4gYSB0cmlw
+IHBvaW50Cj4+IGlzIHRyaWdnZXJlZCwgdGhlIGRyaXZlciBzaG91bGQgY2FsbCBgdGhlcm1hbF96
+b25lX2RldmljZV91cGRhdGUnCj4+IGZvciB0aGUgcmVzcGVjdGl2ZSB0aGVybWFsIHpvbmUuIFRo
+aXMgd2lsbCBjYXVzZSB0aGUgdHJpcCBwb2ludHMKPj4gdG8gYmUgdXBkYXRlZCBhZ2Fpbi4KPj4K
+Pj4gSWYgLnNldF90cmlwcyBpcyBub3QgaW1wbGVtZW50ZWQsIHRoZSBmcmFtZXdvcmsgYmVoYXZl
+cyBhcyBiZWZvcmUuCj4+Cj4+IFRoaXMgcGF0Y2ggaXMgYmFzZWQgb24gYW4gZWFybGllciB2ZXJz
+aW9uIGZyb20gTWlra28gUGVydHR1bmVuCj4+IDxtaWtrby5wZXJ0dHVuZW5Aa2Fwc2kuZmk+Cj4+
+Cj4+IFNpZ25lZC1vZmYtYnk6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4K
+Pj4gU2lnbmVkLW9mZi1ieTogQ2Flc2FyIFdhbmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KPj4gQ2M6
+IFpoYW5nIFJ1aSA8cnVpLnpoYW5nQGludGVsLmNvbT4KPj4gQ2M6IEVkdWFyZG8gVmFsZW50aW4g
+PGVkdWJlenZhbEBnbWFpbC5jb20+Cj4+IENjOiBsaW51eC1wbUB2Z2VyLmtlcm5lbC5vcmcKPj4g
+LS0tCj4+Cj4+ICAgZHJpdmVycy90aGVybWFsL3RoZXJtYWxfY29yZS5jIHwgNDggKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4+ICAgaW5jbHVkZS9saW51eC90aGVy
+bWFsLmggICAgICAgIHwgIDMgKysrCj4gR2l2ZW4gdGhhdCB0aGlzIGlzIGFkZGluZyBhIG5ldyBm
+ZWF0dXJlIGluIHRoZSBmcmFtZXdvcmssIEkgd291bGQgcHJlZmVyCj4gaWYgeW91IGNvdWxkIGFs
+c28gZGVzY3JpYmUgdGhlIC5zZXRfdHJpcHMoKSBpbiB0aGUgc3lzZnMtYXBpLnR4dAo+IGRvY3Vt
+ZW50YXRpb24gZmlsZS4KCk9rYXksIGRvbmUuCj4KPiBBIHNob3J0IGRlc2NyaXB0aW9uIG9mIHRo
+ZSBleHBlY3RhdGlvbiBvZiB3aGF0IHRoZSBmcmFtZXdvcmsgaXMgZ29pbmcgdG8KPiBkbyBpcyBh
+bHNvIHdlbGNvbWUuIEZvciBleGFtcGxlLCBhcmUgZHJpdmVycyBzdXBwb3NlZCB0byBzZXR1cCB0
+aGUKPiBwb2xsaW5nIHRvZ2V0aGVyIHdpdGggdGhlIHRocmVzaG9sZCBiYXNlZCBhcHByb2FjaD8K
+Pgo+PiAgIDIgZmlsZXMgY2hhbmdlZCwgNTEgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy90aGVybWFsL3RoZXJtYWxfY29yZS5jIGIvZHJpdmVycy90aGVybWFsL3RoZXJt
+YWxfY29yZS5jCj4+IGluZGV4IGYxZGI0OTYuLmNmZWY4Y2MgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZl
+cnMvdGhlcm1hbC90aGVybWFsX2NvcmUuYwo+PiArKysgYi9kcml2ZXJzL3RoZXJtYWwvdGhlcm1h
+bF9jb3JlLmMKPj4gQEAgLTUyMCw2ICs1MjAsNDcgQEAgZXhpdDoKPj4gICB9Cj4+ICAgRVhQT1JU
+X1NZTUJPTF9HUEwodGhlcm1hbF96b25lX2dldF90ZW1wKTsKPj4gICAKPj4gK3N0YXRpYyB2b2lk
+IHRoZXJtYWxfem9uZV9zZXRfdHJpcHMoc3RydWN0IHRoZXJtYWxfem9uZV9kZXZpY2UgKnR6KQo+
+PiArewo+PiArCWludCBsb3cgPSAtSU5UX01BWDsKPj4gKwlpbnQgaGlnaCA9IElOVF9NQVg7Cj4+
+ICsJaW50IHRyaXBfdGVtcCwgaHlzdGVyZXNpczsKPj4gKwlpbnQgdGVtcCA9IHR6LT50ZW1wZXJh
+dHVyZTsKPj4gKwlpbnQgaSwgcmV0Owo+PiArCj4+ICsJaWYgKCF0ei0+b3BzLT5zZXRfdHJpcHMp
+Cj4+ICsJCXJldHVybjsKPj4gKwo+PiArCWZvciAoaSA9IDA7IGkgPCB0ei0+dHJpcHM7IGkrKykg
+ewo+PiArCQlpbnQgdHJpcF9sb3c7Cj4+ICsKPj4gKwkJdHotPm9wcy0+Z2V0X3RyaXBfdGVtcCh0
+eiwgaSwgJnRyaXBfdGVtcCk7Cj4+ICsJCXR6LT5vcHMtPmdldF90cmlwX2h5c3QodHosIGksICZo
+eXN0ZXJlc2lzKTsKPj4gKwo+PiArCQl0cmlwX2xvdyA9IHRyaXBfdGVtcCAtIGh5c3RlcmVzaXM7
+Cj4+ICsKPj4gKwkJaWYgKHRyaXBfbG93IDwgdGVtcCAmJiB0cmlwX2xvdyA+IGxvdykKPj4gKwkJ
+CWxvdyA9IHRyaXBfbG93Owo+PiArCj4+ICsJCWlmICh0cmlwX3RlbXAgPiB0ZW1wICYmIHRyaXBf
+dGVtcCA8IGhpZ2gpCj4+ICsJCQloaWdoID0gdHJpcF90ZW1wOwo+PiArCX0KPiBEaWQgSSB1bmRl
+cnN0YW5kIGNvcnJlY3RseSB0aGF0IHlvdSB3aWxsIGJlIGZsb29kZWQgYnkgSVJRcyB3aGVuIHlv
+dQo+IGhhdmU6Cj4gMS4gT25lIHNpbmdsZSB0cmlwIHBvaW50Lgo+IDIuIFlvdXIgdGVtcCBpcyBh
+Ym92ZSB0cmlwX3RlbXAKPgo+IFdpdGggdGhlIGFib3ZlLCB5b3Ugd291bGQgcHJvZ3JhbSBhcyB0
+aHJlc2hvbGQ6Cj4gaGlnaCA9PSB0cmlwX3RlbXAKPiBsb3cgPT0gdHJpcF90ZW1wIC0gaHlzdAo+
+Cj4gQW5kIHRoZSBJUlEgd291bGQgZmlyZSBpbW1lZGlhdHRlbHksIGNhdXNpbmcgYSBkZXZpY2Ug
+dXBkYXRlLCBjYXVzaW5nIGEKPiByZXByb2dyYW1taW5nLCBjYXVzaW5nIGFub3RoZXIgaXJxLCBh
+bmQgdGhpcyB3b3VsZCBjb250aW51ZSwgdW50aWwgdGhlCj4gdGVtcGVyYXR1cmUgZ29lcyBiZWxv
+dyB0cmlwX3RlbXAsIHJpZ2h0PwoKUmlnaHQsIEFzIHRoZSBleGFtcGxlIHRlc3RlZCBieSB0aGUg
+cm9ja2NoaXAgcGxhdGZvcm0uICg3MC83NS8gZGVncmVlIGlzIAp0aGUgdHJpcCBwb2ludCkKCi4u
+ClsgIDY2My45ODQzMjddIHJvY2tjaGlwLXRoZXJtYWwgZmYyNjAwMDAudHNhZGM6IHNlbnNvciAw
+IC0gdGVtcDogNjYxMTEsIApyZXR2YWw6IDAKWyAgNjY0LjA0ODMyNl0gcm9ja2NoaXAtdGhlcm1h
+bCBmZjI2MDAwMC50c2FkYzogc2Vuc29yIDEgLSB0ZW1wOiA2ODMzMywgCnJldHZhbDogMApbICA2
+NjQuMDU1NjAwXSByb2NrY2hpcC10aGVybWFsIGZmMjYwMDAwLnRzYWRjOiAKcm9ja2NoaXBfdGhl
+cm1hbF9zZXRfdHJpcHM6IHNlbnNvciAxOiBsb3c6IDY4MDAwLCBoaWdoIDcwMDAwClsgIDY2NC45
+OTIzMjJdIHJvY2tjaGlwLXRoZXJtYWwgZmYyNjAwMDAudHNhZGM6IHNlbnNvciAwIC0gdGVtcDog
+Njg4ODgsIApyZXR2YWw6IDAKWyAgNjY0Ljk5OTU3OV0gcm9ja2NoaXAtdGhlcm1hbCBmZjI2MDAw
+MC50c2FkYzogCnJvY2tjaGlwX3RoZXJtYWxfc2V0X3RyaXBzOiBzZW5zb3IgMDogbG93OiA2ODAw
+MCwgaGlnaCA3MDAwMApbICA2NjUuMDY2MzIyXSByb2NrY2hpcC10aGVybWFsIGZmMjYwMDAwLnRz
+YWRjOiBzZW5zb3IgMSAtIHRlbXA6IDY4MzMzLCAKcmV0dmFsOiAwCi4uLgoKWyA0MjUwLjQ3NDEw
+Ml0gcm9ja2NoaXAtdGhlcm1hbCBmZjI2MDAwMC50c2FkYzogc2Vuc29yIDAgLSB0ZW1wOiA3MzMz
+MywgCnJldHZhbDogMApbIDQyNTAuNDgxNDMyXSByb2NrY2hpcC10aGVybWFsIGZmMjYwMDAwLnRz
+YWRjOiBzZW5zb3IgMSAtIHRlbXA6IDc0NDQ0LCAKcmV0dmFsOiAwClsgNDI1MC40ODg3OTJdIHJv
+Y2tjaGlwLXRoZXJtYWwgZmYyNjAwMDAudHNhZGM6IApyb2NrY2hpcF90aGVybWFsX3NldF90cmlw
+czogc2Vuc29yIDE6IGxvdzogNzMwMDAsIGhpZ2ggNzUwMDAKWyA0MjUwLjU4MTM2MF0gcm9ja2No
+aXAtdGhlcm1hbCBmZjI2MDAwMC50c2FkYzogc2Vuc29yIDAgLSB0ZW1wOiA3Mjc3NywgCnJldHZh
+bDogMApbIDQyNTAuNTg4NzY3XSByb2NrY2hpcC10aGVybWFsIGZmMjYwMDAwLnRzYWRjOiAKcm9j
+a2NoaXBfdGhlcm1hbF9zZXRfdHJpcHM6IHNlbnNvciAwOiBsb3c6IDY4MDAwLCBoaWdoIDc1MDAw
+ClsgNDI1MC41OTg3MzVdIHJvY2tjaGlwLXRoZXJtYWwgZmYyNjAwMDAudHNhZGM6IHNlbnNvciAx
+IC0gdGVtcDogNzUwMDAsIApyZXR2YWw6IDAKWyA0MjUwLjYwNjA2NV0gcm9ja2NoaXAtdGhlcm1h
+bCBmZjI2MDAwMC50c2FkYzogCnJvY2tjaGlwX3RoZXJtYWxfc2V0X3RyaXBzOiBzZW5zb3IgMTog
+bG93OiA3MzAwMCwgaGlnaCA5NTAwMAouLi4KCgo+PiArCj4+ICsJLyogTm8gbmVlZCB0byBjaGFu
+Z2UgdHJpcCBwb2ludHMgKi8KPj4gKwlpZiAodHotPnByZXZfbG93X3RyaXAgPT0gbG93ICYmIHR6
+LT5wcmV2X2hpZ2hfdHJpcCA9PSBoaWdoKQo+PiArCQlyZXR1cm47Cj4+ICsKPj4gKwl0ei0+cHJl
+dl9sb3dfdHJpcCA9IGxvdzsKPj4gKwl0ei0+cHJldl9oaWdoX3RyaXAgPSBoaWdoOwo+PiArCj4+
+ICsJZGV2X2RiZygmdHotPmRldmljZSwgIm5ldyB0ZW1wZXJhdHVyZSBib3VuZGFyaWVzOiAlZCA8
+IHggPCAlZFxuIiwKPj4gKwkJCWxvdywgaGlnaCk7Cj4+ICsKPj4gKwlyZXQgPSB0ei0+b3BzLT5z
+ZXRfdHJpcHModHosIGxvdywgaGlnaCk7Cj4+ICsJaWYgKHJldCkKPj4gKwkJZGV2X2VycigmdHot
+PmRldmljZSwgIkZhaWxlZCB0byBzZXQgdHJpcHM6ICVkXG4iLCByZXQpOwo+PiArfQo+PiArCj4+
+ICAgc3RhdGljIHZvaWQgdXBkYXRlX3RlbXBlcmF0dXJlKHN0cnVjdCB0aGVybWFsX3pvbmVfZGV2
+aWNlICp0eikKPj4gICB7Cj4+ICAgCWludCB0ZW1wLCByZXQ7Cj4+IEBAIC01NjksNiArNjEwLDgg
+QEAgdm9pZCB0aGVybWFsX3pvbmVfZGV2aWNlX3VwZGF0ZShzdHJ1Y3QgdGhlcm1hbF96b25lX2Rl
+dmljZSAqdHopCj4+ICAgCj4+ICAgCXVwZGF0ZV90ZW1wZXJhdHVyZSh0eik7Cj4+ICAgCj4+ICsJ
+dGhlcm1hbF96b25lX3NldF90cmlwcyh0eik7Cj4+ICsKPj4gICAJZm9yIChjb3VudCA9IDA7IGNv
+dW50IDwgdHotPnRyaXBzOyBjb3VudCsrKQo+PiAgIAkJaGFuZGxlX3RoZXJtYWxfdHJpcCh0eiwg
+Y291bnQpOwo+PiAgIH0KPj4gQEAgLTc1NCw2ICs3OTcsOSBAQCB0cmlwX3BvaW50X2h5c3Rfc3Rv
+cmUoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlX2F0dHJpYnV0ZSAqYXR0ciwKPj4g
+ICAJICovCj4+ICAgCXJldCA9IHR6LT5vcHMtPnNldF90cmlwX2h5c3QodHosIHRyaXAsIHRlbXBl
+cmF0dXJlKTsKPj4gICAKPj4gKwlpZiAoIXJldCkKPj4gKwkJdGhlcm1hbF96b25lX3NldF90cmlw
+cyh0eik7Cj4+ICsKPiBZb3Ugd291bGQgcHJvYmFibHkgd2FudCB0byBkbyB0aGUgc2FtZSBvbiB0
+cmlwX3BvaW50X3RlbXBfc3RvcmUoKS4KClN1cmUuCj4+ICAgCXJldHVybiByZXQgPyByZXQgOiBj
+b3VudDsKPj4gICB9Cj4+ICAgCj4+IEBAIC0xODQzLDYgKzE4ODksOCBAQCBzdHJ1Y3QgdGhlcm1h
+bF96b25lX2RldmljZSAqdGhlcm1hbF96b25lX2RldmljZV9yZWdpc3Rlcihjb25zdCBjaGFyICp0
+eXBlLAo+PiAgIAl0ei0+dHJpcHMgPSB0cmlwczsKPj4gICAJdHotPnBhc3NpdmVfZGVsYXkgPSBw
+YXNzaXZlX2RlbGF5Owo+PiAgIAl0ei0+cG9sbGluZ19kZWxheSA9IHBvbGxpbmdfZGVsYXk7Cj4+
+ICsJdHotPnByZXZfbG93X3RyaXAgPSBJTlRfTUFYOwo+PiArCXR6LT5wcmV2X2hpZ2hfdHJpcCA9
+IC1JTlRfTUFYOwo+PiAgIAkvKiBBIG5ldyB0aGVybWFsIHpvbmUgbmVlZHMgdG8gYmUgdXBkYXRl
+ZCBhbnl3YXkuICovCj4+ICAgCWF0b21pY19zZXQoJnR6LT5uZWVkX3VwZGF0ZSwgMSk7Cj4+ICAg
+Cj4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L3RoZXJtYWwuaCBiL2luY2x1ZGUvbGludXgv
+dGhlcm1hbC5oCj4+IGluZGV4IGU0NWFiZTcuLmUyNTgzNTkgMTAwNjQ0Cj4+IC0tLSBhL2luY2x1
+ZGUvbGludXgvdGhlcm1hbC5oCj4+ICsrKyBiL2luY2x1ZGUvbGludXgvdGhlcm1hbC5oCj4+IEBA
+IC05OCw2ICs5OCw3IEBAIHN0cnVjdCB0aGVybWFsX3pvbmVfZGV2aWNlX29wcyB7Cj4+ICAgCWlu
+dCAoKnVuYmluZCkgKHN0cnVjdCB0aGVybWFsX3pvbmVfZGV2aWNlICosCj4+ICAgCQkgICAgICAg
+c3RydWN0IHRoZXJtYWxfY29vbGluZ19kZXZpY2UgKik7Cj4+ICAgCWludCAoKmdldF90ZW1wKSAo
+c3RydWN0IHRoZXJtYWxfem9uZV9kZXZpY2UgKiwgaW50ICopOwo+PiArCWludCAoKnNldF90cmlw
+cykgKHN0cnVjdCB0aGVybWFsX3pvbmVfZGV2aWNlICosIGludCwgaW50KTsKPj4gICAJaW50ICgq
+Z2V0X21vZGUpIChzdHJ1Y3QgdGhlcm1hbF96b25lX2RldmljZSAqLAo+PiAgIAkJCSBlbnVtIHRo
+ZXJtYWxfZGV2aWNlX21vZGUgKik7Cj4+ICAgCWludCAoKnNldF9tb2RlKSAoc3RydWN0IHRoZXJt
+YWxfem9uZV9kZXZpY2UgKiwKPj4gQEAgLTE5OSw2ICsyMDAsOCBAQCBzdHJ1Y3QgdGhlcm1hbF96
+b25lX2RldmljZSB7Cj4+ICAgCWludCBsYXN0X3RlbXBlcmF0dXJlOwo+PiAgIAlpbnQgZW11bF90
+ZW1wZXJhdHVyZTsKPj4gICAJaW50IHBhc3NpdmU7Cj4+ICsJaW50IHByZXZfbG93X3RyaXA7Cj4+
+ICsJaW50IHByZXZfaGlnaF90cmlwOwo+PiAgIAl1bnNpZ25lZCBpbnQgZm9yY2VkX3Bhc3NpdmU7
+Cj4+ICAgCWF0b21pY190IG5lZWRfdXBkYXRlOwo+PiAgIAlzdHJ1Y3QgdGhlcm1hbF96b25lX2Rl
+dmljZV9vcHMgKm9wczsKPj4gLS0gCj4+IDEuOS4xCj4+Cj4gX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAoKCi0tIApUaGFua3MsCkNh
+ZXNhcgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
