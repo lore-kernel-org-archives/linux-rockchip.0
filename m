@@ -1,150 +1,36 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH v2 2/2] ASoC: rockchip: Revert "ASoC: rockchip: i2s: separate
- capture and playback"
-Date: Wed,  4 May 2016 17:21:57 +0100
-Message-ID: <1462378917-24135-2-git-send-email-john@metanate.com>
-References: <1462378917-24135-1-git-send-email-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1462378917-24135-1-git-send-email-john@metanate.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: alsa-devel@alsa-project.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Enric Balletbo Serra <eballetbo@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, John Keeping <john@metanate.com>, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] clk: rockchip: fix the rk3399 sdmmc sample / drv name
+Date: Wed,  4 May 2016 16:36:25 -0700
+Message-ID: <1462404985-27957-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, briannorris@chromium.org, Douglas Anderson <dianders@chromium.org>, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This reverts commit eba65d179c1149cf79e68608d452631f33d7f017.
+The rk3399 clock table had a simple typo in it, calling the SDMMC sample
+and drive clocks by the wrong name.  Fix this minor typo.
 
-This broke audio on Veyron Jerry Chromebooks and I now cannot reproduce
-the problem I was trying to fix even with this commit reverted, so it
-seems that this was completely the wrong thing to do.
-
-Reported-by: Enric Balletbo Serra <eballetbo@gmail.com>
-Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
-v2: Add "ASoC: rockchip: " prefix to subject
+ drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- sound/soc/rockchip/rockchip_i2s.c | 72 ++++++++++++++++++++++-----------------
- 1 file changed, 40 insertions(+), 32 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 34743ec61c49..574c6af28c06 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 5248726af86d..291543f52caa 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -894,8 +894,8 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+ 			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7, DFLAGS,
+ 			RK3399_CLKGATE_CON(6), 1, GFLAGS),
  
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_TXS_START,
--				   I2S_XFER_TXS_START);
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+-	MMC(SCLK_SDMMC_DRV,     "emmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
+-	MMC(SCLK_SDMMC_SAMPLE,  "emmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
++	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
++	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
  
- 		i2s->tx_start = true;
- 	} else {
-@@ -92,23 +92,27 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
- 
--		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_TXS_START,
--				   I2S_XFER_TXS_STOP);
--
--		regmap_update_bits(i2s->regmap, I2S_CLR,
--				   I2S_CLR_TXC,
--				   I2S_CLR_TXC);
-+		if (!i2s->rx_start) {
-+			regmap_update_bits(i2s->regmap, I2S_XFER,
-+					   I2S_XFER_TXS_START |
-+					   I2S_XFER_RXS_START,
-+					   I2S_XFER_TXS_STOP |
-+					   I2S_XFER_RXS_STOP);
- 
--		regmap_read(i2s->regmap, I2S_CLR, &val);
-+			regmap_update_bits(i2s->regmap, I2S_CLR,
-+					   I2S_CLR_TXC | I2S_CLR_RXC,
-+					   I2S_CLR_TXC | I2S_CLR_RXC);
- 
--		/* Should wait for clear operation to finish */
--		while (val & I2S_CLR_TXC) {
- 			regmap_read(i2s->regmap, I2S_CLR, &val);
--			retry--;
--			if (!retry) {
--				dev_warn(i2s->dev, "fail to clear\n");
--				break;
-+
-+			/* Should wait for clear operation to finish */
-+			while (val) {
-+				regmap_read(i2s->regmap, I2S_CLR, &val);
-+				retry--;
-+				if (!retry) {
-+					dev_warn(i2s->dev, "fail to clear\n");
-+					break;
-+				}
- 			}
- 		}
- 	}
-@@ -124,8 +128,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
- 
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_RXS_START,
--				   I2S_XFER_RXS_START);
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START);
- 
- 		i2s->rx_start = true;
- 	} else {
-@@ -134,23 +138,27 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
- 
--		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_RXS_START,
--				   I2S_XFER_RXS_STOP);
--
--		regmap_update_bits(i2s->regmap, I2S_CLR,
--				   I2S_CLR_RXC,
--				   I2S_CLR_RXC);
-+		if (!i2s->tx_start) {
-+			regmap_update_bits(i2s->regmap, I2S_XFER,
-+					   I2S_XFER_TXS_START |
-+					   I2S_XFER_RXS_START,
-+					   I2S_XFER_TXS_STOP |
-+					   I2S_XFER_RXS_STOP);
- 
--		regmap_read(i2s->regmap, I2S_CLR, &val);
-+			regmap_update_bits(i2s->regmap, I2S_CLR,
-+					   I2S_CLR_TXC | I2S_CLR_RXC,
-+					   I2S_CLR_TXC | I2S_CLR_RXC);
- 
--		/* Should wait for clear operation to finish */
--		while (val & I2S_CLR_RXC) {
- 			regmap_read(i2s->regmap, I2S_CLR, &val);
--			retry--;
--			if (!retry) {
--				dev_warn(i2s->dev, "fail to clear\n");
--				break;
-+
-+			/* Should wait for clear operation to finish */
-+			while (val) {
-+				regmap_read(i2s->regmap, I2S_CLR, &val);
-+				retry--;
-+				if (!retry) {
-+					dev_warn(i2s->dev, "fail to clear\n");
-+					break;
-+				}
- 			}
- 		}
- 	}
+ 	MMC(SCLK_SDIO_DRV,      "sdio_drv",    "clk_sdio",  RK3399_SDIO_CON0,  1),
+ 	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  1),
 -- 
-2.8.0.rc4.238.g874082a
+2.8.0.rc3.226.g39d4020
+
