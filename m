@@ -1,61 +1,36 @@
-From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: [patch] spi: rockchip: potential NULL dereference on error
-Date: Wed, 4 May 2016 09:25:46 +0300
-Message-ID: <20160504062546.GG22064@mwanda>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH v2 0/4] Patches to allow consistent mmc / mmcblk
+ numbering w/ device tree
+Date: Wed, 4 May 2016 09:18:01 +0200
+Message-ID: <20160504071801.GA17045@amd>
+References: <1461951139-6109-1-git-send-email-dianders@chromium.org>
+ <20160429181248.GW19428@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20160429181248.GW19428@n2100.arm.linux.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Cc: Douglas Anderson <dianders@chromium.org>, ulf.hansson@linaro.org, jh80.chung@samsung.com, shawn.lin@rock-chips.com, adrian.hunter@intel.com, stefan@agner.ch, linux-mmc@vger.kernel.org, computersforpeace@gmail.com, dmitry.torokhov@gmail.com, Heiko Stuebner <heiko@sntech.de>, jszhang@marvell.com, linux-rockchip@lists.infradead.org, devicetree-spec@vger.kernel.org, mark.rutland@arm.com, linux-kernel@vger.kernel.org, vbyravarasu@nvidia.com, lars@metafoo.de, jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, grundler@chromium.org, galak@codeaurora.org, lporzio@micron.com, robh+dt@kernel.org, chaotian.jing@mediatek.com, sergei.shtylyov@cogentembedded.com, sudeep.holla@arm.com, zhonghui.fu@linux.intel.com, kirill.shutemov@linux.intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
-We were calling dma_release_channel(rs->dma_tx.ch) when "rs->dma_tx.ch"
-is potentially NULL.  There is actually a call to that in the unwind
-code at the bottom of the function so we can just re-arrange this a bit
-and remove the call.  Also there is no need to set rs->dma_tx.ch to
-NULL on this error path.
+On Fri 2016-04-29 19:12:48, Russell King - ARM Linux wrote:
+> On Fri, Apr 29, 2016 at 10:32:15AM -0700, Douglas Anderson wrote:
+> > This series picks patches from various different places to produce what
+> > I consider the best solution to getting consistent mmc and mmcblk
+> > ordering.
+> > 
+> > Why consistent ordering and why not just use UUIDs?  IMHO consistent
+> > ordering solves a few different problems:
+> 
+> NAK.  Really.  Use UUIDs, that's the proper solution here.
 
-Fixes: e4c0e06f949b ('spi: rockchip: fix probe deferral handling')
-Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Except that UUIDs do not solve the problem.
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 6c6c001..cd89682 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -744,10 +744,8 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	rs->dma_rx.ch = dma_request_chan(rs->dev, "rx");
- 	if (IS_ERR(rs->dma_rx.ch)) {
- 		if (PTR_ERR(rs->dma_rx.ch) == -EPROBE_DEFER) {
--			dma_release_channel(rs->dma_tx.ch);
--			rs->dma_tx.ch = NULL;
- 			ret = -EPROBE_DEFER;
--			goto err_get_fifo_len;
-+			goto err_free_dma_tx;
- 		}
- 		dev_warn(rs->dev, "Failed to request RX DMA channel\n");
- 		rs->dma_rx.ch = NULL;
-@@ -775,10 +773,11 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 
- err_register_master:
- 	pm_runtime_disable(&pdev->dev);
--	if (rs->dma_tx.ch)
--		dma_release_channel(rs->dma_tx.ch);
- 	if (rs->dma_rx.ch)
- 		dma_release_channel(rs->dma_rx.ch);
-+err_free_dma_tx:
-+	if (rs->dma_tx.ch)
-+		dma_release_channel(rs->dma_tx.ch);
- err_get_fifo_len:
- 	clk_disable_unprepare(rs->spiclk);
- err_spiclk_enable:
+You have just booted of nfsroot, and you want to format u-SD card in
+the external slot. How do you do that?
+									Pavel
+-- 
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
