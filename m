@@ -1,67 +1,64 @@
-From: David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v7 9/9] i2c: rk3x: support fast-mode plus for rk3399
-Date: Wed,  4 May 2016 22:37:48 +0800
-Message-ID: <1462372668-6583-1-git-send-email-david.wu@rock-chips.com>
-References: <1462371194-5809-1-git-send-email-david.wu@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1462371194-5809-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: heiko@sntech.de, wsa@the-dreams.de
-Cc: robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH 1/2] Revert "ASoC: rockchip: i2s: remove unused variables"
+Date: Wed,  4 May 2016 15:54:45 +0100
+Message-ID: <1462373686-21794-1-git-send-email-john@metanate.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: alsa-devel@alsa-project.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Enric Balletbo Serra <eballetbo@gmail.com>, John Keeping <john@metanate.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
----
- drivers/i2c/busses/i2c-rk3x.c | 21 +++++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+This reverts commit 5938448b99275cba95167c3f9d39ca9225fdad38.
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 47368c4..c66cc39 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -124,6 +124,17 @@ static const struct i2c_spec_values fast_mode_spec = {
- 	.min_hold_buffer_ns = 1300,
+It turns out that the commit that made these variables unused is wrong
+so we're about to revert it.  Bring back the variables in prepration.
+
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 2f8e20416bd3..34743ec61c49 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -34,6 +34,13 @@ struct rk_i2s_dev {
+ 
+ 	struct regmap *regmap;
+ 
++/*
++ * Used to indicate the tx/rx status.
++ * I2S controller hopes to start the tx and rx together,
++ * also to stop them when they are both try to stop.
++*/
++	bool tx_start;
++	bool rx_start;
+ 	bool is_master_mode;
  };
  
-+static const struct i2c_spec_values fast_mode_plus_spec = {
-+	.min_hold_start_ns = 260,
-+	.min_low_ns = 500,
-+	.min_high_ns = 260,
-+	.min_setup_start_ns = 260,
-+	.max_data_hold_ns = 400,
-+	.min_data_setup_ns = 50,
-+	.min_setup_stop_ns = 260,
-+	.min_hold_buffer_ns = 500,
-+};
+@@ -77,7 +84,11 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+ 		regmap_update_bits(i2s->regmap, I2S_XFER,
+ 				   I2S_XFER_TXS_START,
+ 				   I2S_XFER_TXS_START);
 +
- /**
-  * struct rk3x_i2c_calced_timings:
-  * @div_low: Divider output for low
-@@ -534,8 +545,10 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
- {
- 	if (speed <= 100000)
- 		return &standard_mode_spec;
--	else
-+	else if (speed <= 400000)
- 		return &fast_mode_spec;
-+	else
-+		return &fast_mode_plus_spec;
- }
++		i2s->tx_start = true;
+ 	} else {
++		i2s->tx_start = false;
++
+ 		regmap_update_bits(i2s->regmap, I2S_DMACR,
+ 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
  
- /**
-@@ -746,9 +759,9 @@ static int rk3x_i2c_v1_calc_timings(unsigned long clk_rate,
- 	const struct i2c_spec_values *spec;
- 	int ret = 0;
+@@ -115,7 +126,11 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+ 		regmap_update_bits(i2s->regmap, I2S_XFER,
+ 				   I2S_XFER_RXS_START,
+ 				   I2S_XFER_RXS_START);
++
++		i2s->rx_start = true;
+ 	} else {
++		i2s->rx_start = false;
++
+ 		regmap_update_bits(i2s->regmap, I2S_DMACR,
+ 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
  
--	/* Support standard-mode and fast-mode */
--	if (WARN_ON(t->bus_freq_hz > 400000))
--		t->bus_freq_hz = 400000;
-+	/* Support standard-mode, fast-mode and fast-mode plus */
-+	if (WARN_ON(t->bus_freq_hz > 1000000))
-+		t->bus_freq_hz = 1000000;
- 
- 	/* prevent scl_rate_khz from becoming 0 */
- 	if (WARN_ON(t->bus_freq_hz < 1000))
 -- 
-1.9.1
+2.8.0.rc4.238.g874082a
