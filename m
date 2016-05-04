@@ -1,92 +1,74 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH 02/12] eeprom: at24: remove nvmem regmap dependency
-Date: Wed, 4 May 2016 03:32:12 +0200
-Message-ID: <20160504013212.GA7972@lunn.ch>
-References: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
- <1461526096-29584-3-git-send-email-srinivas.kandagatla@linaro.org>
- <20160502073254.GA2015@tetsubishi>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160502073254.GA2015@tetsubishi>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Joachim Eastwood <manabian@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3] mmc: sdhci-of-arasan: fix set_clock when a phy is supported
+Date: Wed,  4 May 2016 09:43:24 +0800
+Message-ID: <1462326204-5090-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Michal Simek <michal.simek@xilinx.com>, soren.brinkmann@xilinx.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 02, 2016 at 09:32:54AM +0200, Wolfram Sang wrote:
-> On Sun, Apr 24, 2016 at 08:28:06PM +0100, Srinivas Kandagatla wrote:
-> > This patch moves to nvmem support in the driver to use callback instead
-> > of regmap.
-> > 
-> > Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-> 
-> Andrew, since you did the NVMEM implementation, could you have a look at
-> this? That would be awesome. Thanks!
-> 
-> > ---
-> >  drivers/misc/eeprom/Kconfig |   1 -
-> >  drivers/misc/eeprom/at24.c  | 103 ++++++++++----------------------------------
-> >  2 files changed, 22 insertions(+), 82 deletions(-)
-> > 
-> > diff --git a/drivers/misc/eeprom/Kconfig b/drivers/misc/eeprom/Kconfig
-> > index cfc493c..2d70464 100644
-> > --- a/drivers/misc/eeprom/Kconfig
-> > +++ b/drivers/misc/eeprom/Kconfig
-> > @@ -3,7 +3,6 @@ menu "EEPROM support"
-> >  config EEPROM_AT24
-> >  	tristate "I2C EEPROMs / RAMs / ROMs from most vendors"
-> >  	depends on I2C && SYSFS
-> > -	select REGMAP
-> >  	select NVMEM
-> >  	help
-> >  	  Enable this driver to get read/write support to most I2C EEPROMs
-> > diff --git a/drivers/misc/eeprom/at24.c b/drivers/misc/eeprom/at24.c
-> > index 089d694..de550a6 100644
-> > --- a/drivers/misc/eeprom/at24.c
-> > +++ b/drivers/misc/eeprom/at24.c
-> > @@ -23,7 +23,6 @@
-> >  #include <linux/acpi.h>
-> >  #include <linux/i2c.h>
-> >  #include <linux/nvmem-provider.h>
-> > -#include <linux/regmap.h>
-> >  #include <linux/platform_data/at24.h>
-> >  
-> >  /*
-> > @@ -69,7 +68,6 @@ struct at24_data {
-> >  	unsigned write_max;
-> >  	unsigned num_addresses;
-> >  
-> > -	struct regmap_config regmap_config;
-> >  	struct nvmem_config nvmem_config;
-> >  	struct nvmem_device *nvmem;
-> >  
-> > @@ -252,10 +250,10 @@ static ssize_t at24_eeprom_read(struct at24_data *at24, char *buf,
-> >  	return -ETIMEDOUT;
-> >  }
-> >  
-> > -static ssize_t at24_read(struct at24_data *at24,
-> > -		char *buf, loff_t off, size_t count)
-> > +static int at24_read(void *priv, unsigned int off, void *val, size_t count)
-> >  {
-> > -	ssize_t retval = 0;
-> > +	struct at24_data *at24 = priv;
-> > +	char *buf = val;
-> >  
-> >  	if (unlikely(!count))
-> >  		return count;
-> > @@ -267,23 +265,21 @@ static ssize_t at24_read(struct at24_data *at24,
-> >  	mutex_lock(&at24->lock);
-> >  
-> >  	while (count) {
-> > -		ssize_t	status;
-> > +		int	status;
-> >  
-> >  		status = at24_eeprom_read(at24, buf, off, count);
+commit 61b914eb81f8 ("mmc: sdhci-of-arasan: add phy support for
+sdhci-of-arasan") introduce phy support for arasan. According to
+the vendor's databook, we should make sure the phy is in poweroff
+status before we configure the clk stuff. Otherwise it may cause
+some IO sample timing issues from the test. And we don't need this
+extra operation while running in low performance mode since phy
+doesn't trigger sampling block.
 
-Since the patch replaces ssize_t with int here, it would also make
-sense to do the same to at24_eeprom_read and at24_eeprom_write. Either
-use ssize_t everywhere or nowhere.
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-      Andrew
+---
+
+Changes in v3:
+- avoid use sleep function with the scope of spinlock because
+phy APIs call mutex.
+
+Changes in v2:
+- Rename commit msg title to indicate it's a fix
+
+ drivers/mmc/host/sdhci-of-arasan.c | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index 2e482b1..b6f4c1d 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -55,8 +55,32 @@ static unsigned int sdhci_arasan_get_timeout_clock(struct sdhci_host *host)
+ 	return freq;
+ }
+ 
++static void sdhci_arasan_set_clock(struct sdhci_host *host, unsigned int clock)
++{
++	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
++	struct sdhci_arasan_data *sdhci_arasan = sdhci_pltfm_priv(pltfm_host);
++	bool ctrl_phy = false;
++
++	if (clock > MMC_HIGH_52_MAX_DTR && (!IS_ERR(sdhci_arasan->phy)))
++		ctrl_phy = true;
++
++	if (ctrl_phy) {
++		spin_unlock_irq(&host->lock);
++		phy_power_off(sdhci_arasan->phy);
++		spin_lock_irq(&host->lock);
++	}
++
++	sdhci_set_clock(host, clock);
++
++	if (ctrl_phy) {
++		spin_unlock_irq(&host->lock);
++		phy_power_on(sdhci_arasan->phy);
++		spin_lock_irq(&host->lock);
++	}
++}
++
+ static struct sdhci_ops sdhci_arasan_ops = {
+-	.set_clock = sdhci_set_clock,
++	.set_clock = sdhci_arasan_set_clock,
+ 	.get_max_clock = sdhci_pltfm_clk_get_max_clock,
+ 	.get_timeout_clock = sdhci_arasan_get_timeout_clock,
+ 	.set_bus_width = sdhci_set_bus_width,
+-- 
+2.3.7
+
+
