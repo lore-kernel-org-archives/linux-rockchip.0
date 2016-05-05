@@ -1,170 +1,47 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: rockchip: Revert "ASoC: rockchip: i2s: separate capture and playback"" to the asoc tree
-Date: Thu, 05 May 2016 16:56:20 +0100
-Message-ID: <E1ayLdU-0004jH-K0@debutante>
-References: <1462373686-21794-2-git-send-email-john@metanate.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462373686-21794-2-git-send-email-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>, Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>Enric Balletbo Serra <eballetbo@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH] clk: rockchip: fix the rk3399 sdmmc sample / drv name
+Date: Thu, 5 May 2016 09:37:48 -0700
+Message-ID: <20160505163748.GA97052@google.com>
+References: <1462404985-27957-1-git-send-email-dianders@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1462404985-27957-1-git-send-email-dianders@chromium.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+On Wed, May 04, 2016 at 04:36:25PM -0700, Douglas Anderson wrote:
+> The rk3399 clock table had a simple typo in it, calling the SDMMC sample
+> and drive clocks by the wrong name.  Fix this minor typo.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-   ASoC: rockchip: Revert "ASoC: rockchip: i2s: separate capture and playback"
+LGTM.
 
-has been applied to the asoc tree at
+Tested-by: Brian Norris <briannorris@chromium.org>
+Acked-by: Brian Norris <briannorris@chromium.org>
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 7e885d211f023dfd201fad8246bbf3c3bd126c61 Mon Sep 17 00:00:00 2001
-From: John Keeping <john@metanate.com>
-Date: Wed, 4 May 2016 17:21:57 +0100
-Subject: [PATCH] ASoC: rockchip: Revert "ASoC: rockchip: i2s: separate capture
- and playback"
-
-This reverts commit eba65d179c1149cf79e68608d452631f33d7f017.
-
-This broke audio on Veyron Jerry Chromebooks and I now cannot reproduce
-the problem I was trying to fix even with this commit reverted, so it
-seems that this was completely the wrong thing to do.
-
-Reported-by: Enric Balletbo Serra <eballetbo@gmail.com>
-Signed-off-by: John Keeping <john@metanate.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 72 ++++++++++++++++++++++-----------------
- 1 file changed, 40 insertions(+), 32 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 34743ec61c49..574c6af28c06 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -82,8 +82,8 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
- 
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_TXS_START,
--				   I2S_XFER_TXS_START);
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START);
- 
- 		i2s->tx_start = true;
- 	} else {
-@@ -92,23 +92,27 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
- 
--		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_TXS_START,
--				   I2S_XFER_TXS_STOP);
--
--		regmap_update_bits(i2s->regmap, I2S_CLR,
--				   I2S_CLR_TXC,
--				   I2S_CLR_TXC);
-+		if (!i2s->rx_start) {
-+			regmap_update_bits(i2s->regmap, I2S_XFER,
-+					   I2S_XFER_TXS_START |
-+					   I2S_XFER_RXS_START,
-+					   I2S_XFER_TXS_STOP |
-+					   I2S_XFER_RXS_STOP);
- 
--		regmap_read(i2s->regmap, I2S_CLR, &val);
-+			regmap_update_bits(i2s->regmap, I2S_CLR,
-+					   I2S_CLR_TXC | I2S_CLR_RXC,
-+					   I2S_CLR_TXC | I2S_CLR_RXC);
- 
--		/* Should wait for clear operation to finish */
--		while (val & I2S_CLR_TXC) {
- 			regmap_read(i2s->regmap, I2S_CLR, &val);
--			retry--;
--			if (!retry) {
--				dev_warn(i2s->dev, "fail to clear\n");
--				break;
-+
-+			/* Should wait for clear operation to finish */
-+			while (val) {
-+				regmap_read(i2s->regmap, I2S_CLR, &val);
-+				retry--;
-+				if (!retry) {
-+					dev_warn(i2s->dev, "fail to clear\n");
-+					break;
-+				}
- 			}
- 		}
- 	}
-@@ -124,8 +128,8 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
- 
- 		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_RXS_START,
--				   I2S_XFER_RXS_START);
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+				   I2S_XFER_TXS_START | I2S_XFER_RXS_START);
- 
- 		i2s->rx_start = true;
- 	} else {
-@@ -134,23 +138,27 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
- 
--		regmap_update_bits(i2s->regmap, I2S_XFER,
--				   I2S_XFER_RXS_START,
--				   I2S_XFER_RXS_STOP);
--
--		regmap_update_bits(i2s->regmap, I2S_CLR,
--				   I2S_CLR_RXC,
--				   I2S_CLR_RXC);
-+		if (!i2s->tx_start) {
-+			regmap_update_bits(i2s->regmap, I2S_XFER,
-+					   I2S_XFER_TXS_START |
-+					   I2S_XFER_RXS_START,
-+					   I2S_XFER_TXS_STOP |
-+					   I2S_XFER_RXS_STOP);
- 
--		regmap_read(i2s->regmap, I2S_CLR, &val);
-+			regmap_update_bits(i2s->regmap, I2S_CLR,
-+					   I2S_CLR_TXC | I2S_CLR_RXC,
-+					   I2S_CLR_TXC | I2S_CLR_RXC);
- 
--		/* Should wait for clear operation to finish */
--		while (val & I2S_CLR_RXC) {
- 			regmap_read(i2s->regmap, I2S_CLR, &val);
--			retry--;
--			if (!retry) {
--				dev_warn(i2s->dev, "fail to clear\n");
--				break;
-+
-+			/* Should wait for clear operation to finish */
-+			while (val) {
-+				regmap_read(i2s->regmap, I2S_CLR, &val);
-+				retry--;
-+				if (!retry) {
-+					dev_warn(i2s->dev, "fail to clear\n");
-+					break;
-+				}
- 			}
- 		}
- 	}
--- 
-2.8.1
+> ---
+>  drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+> index 5248726af86d..291543f52caa 100644
+> --- a/drivers/clk/rockchip/clk-rk3399.c
+> +++ b/drivers/clk/rockchip/clk-rk3399.c
+> @@ -894,8 +894,8 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+>  			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7, DFLAGS,
+>  			RK3399_CLKGATE_CON(6), 1, GFLAGS),
+>  
+> -	MMC(SCLK_SDMMC_DRV,     "emmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
+> -	MMC(SCLK_SDMMC_SAMPLE,  "emmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
+> +	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
+> +	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
+>  
+>  	MMC(SCLK_SDIO_DRV,      "sdio_drv",    "clk_sdio",  RK3399_SDIO_CON0,  1),
+>  	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  1),
+> -- 
+> 2.8.0.rc3.226.g39d4020
