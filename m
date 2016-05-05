@@ -1,144 +1,126 @@
-From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 6/7] ARM: dts: rockchip: Add shared file for audio related
- nodes for veyron boards
-Date: Thu,  5 May 2016 10:03:40 +0200
-Message-ID: <1462435421-21205-7-git-send-email-enric.balletbo@collabora.com>
-References: <1462435421-21205-1-git-send-email-enric.balletbo@collabora.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
+ during disable
+Date: Thu, 5 May 2016 11:34:26 +0200
+Message-ID: <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+ <5707043D.6060706@rock-chips.com>
+ <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
+ <570AFAC2.8080907@rock-chips.com>
+ <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1462435421-21205-1-git-send-email-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Set i2s block to "okay", add sound node for max98090 with gpios for
-HP and Mic detect and pinctrl, and add a max98090 device and ts3a227e to
-the correct i2c bus.
-
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi | 102 ++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-
-diff --git a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-new file mode 100644
-index 0000000..f045e1a
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
-@@ -0,0 +1,102 @@
-+/*
-+ * Google Veyron (and derivatives) fragment for the  max98090 audio
-+ * codec and analog headphone jack.
-+ *
-+ * Copyright 2016 Google, Inc
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
-+
-+/ {
-+
-+	sound {
-+		compatible = "rockchip,rockchip-audio-max98090";
-+		rockchip,model = "ROCKCHIP-I2S";
-+		rockchip,i2s-controller = <&i2s>;
-+		rockchip,audio-codec = <&max98090>;
-+		rockchip,hp-det-gpios = <&gpio6 5 GPIO_ACTIVE_HIGH>;
-+		rockchip,mic-det-gpios = <&gpio6 11 GPIO_ACTIVE_LOW>;
-+		rockchip,headset-codec = <&headsetcodec>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&mic_det>, <&hp_det>;
-+	};
-+
-+	io-domains {
-+		audio-supply = <&vcc18_codec>;
-+	};
-+};
-+
-+&rk808 {
-+	vcc10-supply = <&vcc33_sys>;
-+
-+	regulators {
-+		vcc18_codec: LDO_REG6 {
-+			regulator-always-on;
-+			regulator-boot-on;
-+			regulator-min-microvolt = <1800000>;
-+			regulator-max-microvolt = <1800000>;
-+			regulator-name = "vcc18_codec";
-+			regulator-suspend-mem-disabled;
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	max98090: max98090@10 {
-+		compatible = "maxim,max98090";
-+		reg = <0x10>;
-+		clock-names = "mclk";
-+		clocks = <&cru SCLK_I2S0_OUT>;
-+		interrupt-parent = <&gpio6>;
-+		interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&int_codec>;
-+	};
-+};
-+
-+&i2c4 {
-+	headsetcodec: ts3a227e@3b {
-+		compatible = "ti,ts3a227e";
-+		reg = <0x3b>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <3 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ts3a227e_int_l>;
-+		ti,micbias = <7>;		/* MICBIAS = 2.8V */
-+	};
-+};
-+
-+&i2s {
-+	status = "okay";
-+	clock-names = "i2s_hclk", "i2s_clk";
-+	clocks = <&cru HCLK_I2S0>, <&cru SCLK_I2S0>;
-+};
-+
-+&pinctrl {
-+	codec {
-+		hp_det: hp-det {
-+			rockchip,pins = <6 5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		/*
-+		 * HACK: We're going to _pull down_ this _active low_ interrupt
-+		 * so that it never fires.  We don't need this interrupt because
-+		 * we've got a ts3a227e chip but the driver requires it.
-+		 */
-+		int_codec: int-codec {
-+			rockchip,pins = <6 7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		mic_det: mic-det {
-+			rockchip,pins = <6 11 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	headset {
-+		ts3a227e_int_l: ts3a227e-int-l {
-+			rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
--- 
-2.1.0
+T24gMjAgQXByaWwgMjAxNiBhdCAxNjoyMywgVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29s
+bGFib3JhLmNvbT4gd3JvdGU6Cj4gT24gMTEgQXByaWwgMjAxNiBhdCAwMzoxNSwgTWFyayB5YW8g
+PG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4gT24gMjAxNuW5tDA05pyIMDjml6Ug
+MTg6NTQsIFRvbWV1IFZpem9zbyB3cm90ZToKPj4+Cj4+PiBPbiA4IEFwcmlsIDIwMTYgYXQgMDM6
+MDcsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pj4KPj4+PiBP
+biAyMDE25bm0MDTmnIgwNuaXpSAxODoxNCwgVG9tZXUgVml6b3NvIHdyb3RlOgo+Pj4+Cj4+Pj4g
+V2hlbiBhIHBsYW5lIGlzIGJlaW5nIGRpc2FibGVkIGJ1dCBpdCdzIHN0aWxsIGVuYWJsZWQsIGRv
+IGNoZWNrIGlmIHRoZQo+Pj4+IHByZXZpb3VzIHVwZGF0ZSBoYXMgYmVlbiBjb21wbGV0ZWQgYnkg
+cmVhZGluZyB5cmdiX21zdCBiYWNrLgo+Pj4+Cj4+Pj4gT3RoZXJ3aXNlLCBwZW5kaW5nIHBhZ2Vm
+bGlwcyB3b3VsZCByZW1haW4gcGVuZGluZyBhZnRlciBhIENSVEMgaXMKPj4+PiBkaXNhYmxlZC4K
+Pj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IFRvbWV1IFZpem9zbyA8dG9tZXUudml6b3NvQGNvbGxh
+Ym9yYS5jb20+Cj4+Pj4gLS0tCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfZHJtX3ZvcC5jIHwgNSArKystLQo+Pj4+ICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
+cygrKSwgMiBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4gaW5kZXggYTliMWU4YjVhYzg1Li5mNDZiMWZk
+MTg4N2IgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
+X2RybV92b3AuYwo+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
+cm1fdm9wLmMKPj4+PiBAQCAtMTA2NCw4ICsxMDY0LDkgQEAgc3RhdGljIGJvb2wgdm9wX3dpbl9w
+ZW5kaW5nX2lzX2NvbXBsZXRlKHN0cnVjdAo+Pj4+IHZvcF93aW4KPj4+PiAqdm9wX3dpbikKPj4+
+PiAgICBzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICpzdGF0ZSA9IHRvX3ZvcF9wbGFuZV9zdGF0ZShw
+bGFuZS0+c3RhdGUpOwo+Pj4+ICAgIGRtYV9hZGRyX3QgeXJnYl9tc3Q7Cj4+Pj4KPj4+PiAtIGlm
+ICghc3RhdGUtPmVuYWJsZSkKPj4+PiAtIHJldHVybiBWT1BfV0lOX0dFVCh2b3Bfd2luLT52b3As
+IHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMDsKPj4+PiArIGlmICghc3RhdGUtPmVuYWJsZSAm
+Jgo+Pj4+ICsgICAgVk9QX1dJTl9HRVQodm9wX3dpbi0+dm9wLCB2b3Bfd2luLT5kYXRhLCBlbmFi
+bGUpID09IDApCj4+Pj4gKyByZXR1cm4gdHJ1ZTsKPj4+Pgo+Pj4+Cj4+Pj4gSXQgaXMgd3Jvbmcs
+IHRoZSBwYXRjaCB3b3VsZCBjYXVzZSBhIGJ1Zy4KPj4+Pgo+Pj4+IHdoZW4gc3RhdGUtPmVuYWJs
+ZSBpcyAwLCBjaGVjayB5cmdiX21zdCA9PSBzdGF0ZS0+eXJnYl9tc3QgYWx3YXlzIGJlCj4+Pj4g
+dHJ1ZSwKPj4+PiBiZWNhdXNlIHN0YXRlLT55cmdiX21zdCBub3QgdXBkYXRlIG9uIHBsYW5lIGRp
+c2FibGVkIGZ1bnRpb24sIHRoYXQgd291bGQKPj4+PiBjYXVzZSBpb21tdSBjcmFzaC4KPj4+Cj4+
+PiBTb3JyeSwgYnV0IEkgZG9uJ3QgdW5kZXJzdGFuZCB3aGVyZSdzIHRoZSBidWcgYW5kIHdoYXQg
+Y291bGQgY2F1c2UKPj4+IHRoYXQgY3Jhc2guIFdoYXQgdGhlIGV4aXN0aW5nIGNvZGUgd2FzIGRv
+aW5nIGlzIHNheWluZyB0aGF0IGEgcGFnZWZsaXAKPj4+IGV2ZW50IGlzIHN0aWxsIHBlbmRpbmcg
+aWYgd2UgaGF2ZSB0b2xkIHRoZSBwbGFuZSB0byBkaXNhYmxlIGJ1dCBmb3IKPj4+IHNvbWUgcmVh
+c29uIGl0IGhhc24ndCB5ZXQuCj4+Pgo+Pj4gV2l0aCB0aGlzIG1vZGlmaWNhdGlvbiwgaWYgd2Ug
+cmVhZCBiYWNrIHRoYXQgaXQncyBhbHJlYWR5IGRpc2FibGVkLCB3ZQo+Pj4gcmV0dXJuIHRydWUg
+YXMgYmVmb3JlLiBCdXQgaWYgd2UgcmVhZCBiYWNrIHRoYXQgaXQgaXNuJ3QgZGlzYWJsZWQgeWV0
+LAo+Pj4gdGhlbiB3ZSBzdGlsbCBjaGVjayB0aGUgZmIgcG9pbnRlcnMgYW5kIGNvbXBhcmUgdGhl
+bS4KPj4+Cj4+PiBUaGUgaW9tbXUgbWFwcGluZyBpcyByZW1vdmVkIHdoZW4gdGhlIF9DUlRDXyBp
+cyBkaXNhYmxlZCwgYW5kIHdoYXQKPj4+IHRoaXMgc2VyaWVzIGRvZXMgaXMgdG8gd2FpdCBmb3Ig
+dGhlIHBlbmRpbmcgcGFnZWZsaXAgdG8gZmluaXNoIGJlZm9yZQo+Pj4gY29uaXRudWluZyB3aXRo
+IENSVEMgZGlzYWJsZW1lbnQuCj4+Cj4+Cj4+IHRoZSBpb21tdSBtYXBwaW5nIHdpbGwgdW5tYXAg
+YWZ0ZXIgcGxhbmUgZGlzYWJsZWQsIHdlIG5lZWQgc3VyZSB0aGF0IHRoZQo+PiBwbGFuZSByZWFs
+bHkgZGlzYWJsZWQgYmVmb3JlIHVubWFwLCBpZiBub3QsIHRoZSB1bm1hcCBtYXkgY2FsbCBiZWZv
+cmUgcGxhbmUKPj4gcmVhbGx5IGRpc2FibGUsIHZvcCBtYXkgYWNjZXNzIHVubWFwIGFkZHJlc3Ms
+IHRoZW4gd291bGQgZ2V0IGlvbW11IHBhZ2UKPj4gZmF1bHQuCj4KPiBTb3JyeSwgYnV0IEkgc3Rp
+bGwgZG9uJ3Qgc2VlIHRoZSBlcnJvciBjb25kaXRpb24gdGhhdCB5b3UgYXJlCj4gZGVzY3JpYmlu
+Zy4gQUZBSUNTLCB0aGUgdW5tYXAgd2lsbCBoYXBwZW4gYWZ0ZXIgdGhlIGxhc3QgcGFnZWZsaXAg
+aGFzCj4gY29tcGxldGVkLgo+Cj4+Pj4gQWJvdXQgcGVuZGluZyBwYWdlZmxpcHMgd291bGQgcmVt
+YWluIHBlbmRpbmcsIGNhbiB5b3UgIGRlc2NyaWJlIG1vcmUgaW5mbwo+Pj4+IGFib3V0IGl0PyBJ
+IHRoaW5rIHRob3NlIHBlbmRpbmcgcGFnZWZsaXBzIHNob3VsZCBiZSBpZ25vcmUgd2hlbiBDUlRD
+IGlzCj4+Pj4gZGlzYWJsZWQuCj4+Pgo+Pj4gV2VsbCwgcmlnaHQgbm93IGluIHJvY2tjaGlwLWRy
+bSBwZW5kaW5nIHBhZ2VmbGlwcyB3b24ndCBiZSBpZ25vcmVkCj4+PiB3aGVuIGEgQ1JUQyBpcyBk
+aXNhYmxlZCwgYnV0IHdpbGwgYmUgZGVsaXZlcmVkIHdoZW4gaXQncyByZS1lbmFibGVkLgo+Pj4K
+Pj4+IElmIHRoZXkgd291bGQgYmUgdG8gYmUgaWdub3JlZCAodW5kZXJzdGFuZGluZyB0aGF0IGFz
+IGRyb3BwZWQpLCB0aGF0Cj4+PiB3b3VsZCByZXF1aXJlIG1vZGlmaWNhdGlvbnMgdG8gY2xpZW50
+cyBzbyB0aGV5IGtlZXAgdHJhY2sgb2Ygd2hpY2ggZmJzCj4+PiB3ZXJlIHVzZWQgaW4gYSBwYXJ0
+aWN1bGFyIGNydGMgYW5kIGRlc3Ryb3kgdGhlbSB3aGVuIHRoZSBjcnRjIGlzCj4+PiBkaXNhYmxl
+ZCwgYnV0IHRoYXQgd291bGQgYmUgaW5jb3JyZWN0IHdoZW4gdXNpbmcgdGhlIGk5MTUgRFJNIGRy
+aXZlcgo+Pj4gKEkgYWxzbyBhc3N1bWUgb3RoZXJzIGRvIHRoZSBzYW1lKS4gR2l2ZW4gdGhhdCB0
+aGUgcGFnZWZsaXAgaW9jdGwKPj4+IGlzbid0IGRyaXZlci1zcGVjaWZpYywgSSB0aGluayB0aGVy
+ZSBjYW5ub3QgYmUgc3VjaCBhIGRpZmZlcmVuY2UgaW4KPj4+IGJlaGF2aW9yIGJldHdlZW4gZHJp
+dmVycy4KPj4+Cj4+PiBXaXRoIHRoZSBjdXJyZW50IGJlaGF2aW9yIChwZW5kaW5nIHBhZ2VmbGlw
+IGV2ZW50cyBiZWluZyBkZWxheWVkIHVudGlsCj4+PiB0aGUgQ1JUQyBpcyBlbmFibGVkIGFnYWlu
+KSwgY29tcG9zaXRvcnMgYW5kIG90aGVyIGNsaWVudHMgd2lsbCBiZQo+Pj4gaG9sZGluZyBvbiB0
+byB0aGUgZmIgaW4gdGhlIHBlbmRpbmcgcGFnZWZsaXAgdW50aWwgYW4gYXJiaXRyYXJ5IHBvaW50
+Cj4+PiBpbiB0aGUgZnV0dXJlIHRoYXQgbWF5IG5vdCBldmVyIGNvbWUuIFRvIG1lIHRoYXQgc291
+bmRzIGxpa2UgYSBzZXJpb3VzCj4+PiBtb2RpZmljYXRpb24gb2YgdGhlIGFzc3VtcHRpb25zIG9u
+IGZiIGxpZmVjeWNsZSB0aGF0IG1pZ2h0IG5vdCBiZQo+Pj4gd2FycmFudGVkLgo+Pj4KPj4+IFNv
+IGluIHN1bW1hcnksIGV2ZW4gaWYgSSBoYXZlbid0IGZvdW5kIGFueSBleHBsaWNpdCBkb2N1bWVu
+dGF0aW9uIG9uCj4+PiB0aGlzLCBJIHRoaW5rIHRoZSBBQkkgaXMgdGhhdCBhbnkgcGVuZGluZyBw
+YWdlZmxpcHMgYXJlIHRvIGJlCj4+PiBkZWxpdmVyZWQgd2hlbiB0aGF0IENSVEMgaXMgYmVpbmcg
+ZGlzYWJsZWQgYW5kIG5vdCBsYXRlci4KPj4KPj4KPj4gb24gZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9mYi5jCj4+Cj4+IGRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9wbGFu
+ZXMoZGV2LCBzdGF0ZSwgdHJ1ZSk7Cj4+IHJvY2tjaGlwX2F0b21pY193YWl0X2Zvcl9jb21wbGV0
+ZShkZXYsIHN0YXRlKTsKPj4KPj4gV2Ugc2V0IGFjdGl2ZV9vbmx5ID0gdHJ1ZSwgSSB0aGluayBw
+bGFuZXMgY2FuIG9ubHkgdXBkYXRlIHdoZW4gY3J0YyBpcwo+PiBhY3RpdmUuIGFuZCByb2NrY2hp
+cF9hdG9taWNfd2FpdF9mb3JfY29tcGxldGUgb25seSB3YWl0IHdoZW4gY3J0YyBpcyBhY3RpdmUu
+Cj4KPiBUaGF0J3MgZmluZSwgYnV0IGlmIGEgcGFnZWZsaXAgaXMgcGVuZGluZyB3aGVuIHRoZSBj
+bGllbnQgcmVxdWVzdHMgdGhlCj4gQ1JUQyB0byBiZSBkaXNhYmxlZCwgd2UgbmVlZCB0byB3YWl0
+IGZvciB0aGUgZXZlbnQgdG8gYmUgZW1pdHRlZAo+IGJlZm9yZSB3ZSBhY3R1YWxseSBkaXNhYmxl
+IHRoZSBIVy4KCkhpIE1hcmssCgpjb3VsZCB5b3UgdGVsbCBtZSBpZiB5b3UgYWdyZWUgdGhhdCB0
+aGVyZSdzIGEgYnVnIHRoYXQgbmVlZHMgdG8gYmUKc29sdmVkLCBhbmQgaWYgc28sIHdoYXQgZG8g
+eW91IHRoaW5rIHdlIHNob3VsZCBkbyBhYm91dCBpdD8KClRoYW5rcywKClRvbWV1Cgo+IFJlZ2Fy
+ZHMsCj4KPiBUb21ldQo+Cj4+IFRoYW5rcy4KPj4KPj4+IFRoYW5rcywKPj4+Cj4+PiBUb21ldQo+
+Pj4KPj4+PiBUaGFua3MuCj4+Pj4KPj4+Pgo+Pj4+ICAgIHlyZ2JfbXN0ID0gVk9QX1dJTl9HRVRf
+WVJHQkFERFIodm9wX3dpbi0+dm9wLCB2b3Bfd2luLT5kYXRhKTsKPj4+Pgo+Pj4+Cj4+Pj4KPj4+
+PiAtLQo+Pj4+IO+8rWFyayBZYW8KPj4+Pgo+Pj4+Cj4+Pj4gX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KPj4+PiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4+
+Pj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+Pj4+IGh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCj4+Pj4KPj4+Cj4+Pgo+Pgo+
+Pgo+PiAtLQo+PiDvvK1hcmsgWWFvCj4+Cj4+Cj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCj4+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPj4gZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+PiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
