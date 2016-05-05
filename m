@@ -1,47 +1,91 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: Re: [PATCH] clk: rockchip: fix the rk3399 sdmmc sample / drv name
-Date: Thu, 5 May 2016 09:37:48 -0700
-Message-ID: <20160505163748.GA97052@google.com>
-References: <1462404985-27957-1-git-send-email-dianders@chromium.org>
+Subject: Re: usb: dwc3: host: inherit dma configuration from parent dev
+Date: Thu, 5 May 2016 10:07:52 -0700
+Message-ID: <20160505170752.GA118697@google.com>
+References: <1461612094-30939-1-git-send-email-grygorii.strashko@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1462404985-27957-1-git-send-email-dianders@chromium.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, zhengxing@rock-chips.com, mturquette@baylibre.com, sboyd@codeaurora.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1461612094-30939-1-git-send-email-grygorii.strashko@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Strashko, Grygorii" <grygorii.strashko@ti.com>
+Cc: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, David Fisher <david.fisher1@synopsys.com>, Catalin Marinas <catalin.marinas@arm.com>, "Thang Q. Nguyen" <tqnguyen@apm.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, wulf@rock-chips.com, Brian Norris <computersforpeace@gmail.com>, Arnd Bergmann <arnd@arndb.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 04, 2016 at 04:36:25PM -0700, Douglas Anderson wrote:
-> The rk3399 clock table had a simple typo in it, calling the SDMMC sample
-> and drive clocks by the wrong name.  Fix this minor typo.
+On Mon, Apr 25, 2016 at 10:21:34PM +0300, Strashko, Grygorii wrote:
+> Now not all DMA paremters configured properly for "xhci-hcd" platform
+> device which is created manually. For example: dma_pfn_offset, dam_ops
+> and iommu configuration will not corresponds "dwc3" devices
+> configuration. As result, this will cause problems like wrong DMA
+> addresses translation on platforms with LPAE enabled like Keystone 2.
 > 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-LGTM.
+> When platform is using DT boot mode the DMA configuration will be
+> parsed and applied from DT, so, to fix this issue, reuse
+> of_dma_configure() API and retrieve DMA configuartion for "xhci-hcd"
+> from DWC3 device node.
+> 
+> Cc: David Fisher <david.fisher1@synopsys.com>
+> Cc: Catalin Marinas <catalin.marinas@arm.com>
+> Cc: "Thang Q. Nguyen" <tqnguyen@apm.com>
+> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
 
 Tested-by: Brian Norris <briannorris@chromium.org>
-Acked-by: Brian Norris <briannorris@chromium.org>
+
+What's the status of this? I see that there was some divergent
+discussion about the merits of a dma_inherit() API...
+
+FWIW, I'll reiterate Grygorii's note that Felipe's alternative patch
+does NOT resolve the problem with the creation of the xhci-hcd platform
+device:
+
+https://patchwork.kernel.org/patch/8952721/
+
+Brian
 
 > ---
->  drivers/clk/rockchip/clk-rk3399.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> drivers/usb/dwc3/host.c | 15 ++++++++++-----
+>  1 file changed, 10 insertions(+), 5 deletions(-)
 > 
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 5248726af86d..291543f52caa 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -894,8 +894,8 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
->  			RK3399_CLKSEL_CON(16), 8, 3, MFLAGS, 0, 7, DFLAGS,
->  			RK3399_CLKGATE_CON(6), 1, GFLAGS),
+> diff --git a/drivers/usb/dwc3/host.c b/drivers/usb/dwc3/host.c
+> index c679f63..93c8ef9 100644
+> --- a/drivers/usb/dwc3/host.c
+> +++ b/drivers/usb/dwc3/host.c
+> @@ -17,6 +17,7 @@
 >  
-> -	MMC(SCLK_SDMMC_DRV,     "emmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
-> -	MMC(SCLK_SDMMC_SAMPLE,  "emmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
-> +	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
-> +	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
+>  #include <linux/platform_device.h>
+>  #include <linux/usb/xhci_pdriver.h>
+> +#include <linux/of_device.h>
 >  
->  	MMC(SCLK_SDIO_DRV,      "sdio_drv",    "clk_sdio",  RK3399_SDIO_CON0,  1),
->  	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  1),
-> -- 
-> 2.8.0.rc3.226.g39d4020
+>  #include "core.h"
+>  
+> @@ -32,12 +33,7 @@ int dwc3_host_init(struct dwc3 *dwc)
+>  		return -ENOMEM;
+>  	}
+>  
+> -	dma_set_coherent_mask(&xhci->dev, dwc->dev->coherent_dma_mask);
+> -
+>  	xhci->dev.parent	= dwc->dev;
+> -	xhci->dev.dma_mask	= dwc->dev->dma_mask;
+> -	xhci->dev.dma_parms	= dwc->dev->dma_parms;
+> -
+>  	dwc->xhci = xhci;
+>  
+>  	ret = platform_device_add_resources(xhci, dwc->xhci_resources,
+> @@ -62,6 +58,15 @@ int dwc3_host_init(struct dwc3 *dwc)
+>  	phy_create_lookup(dwc->usb3_generic_phy, "usb3-phy",
+>  			  dev_name(&xhci->dev));
+>  
+> +	if (IS_ENABLED(CONFIG_OF) && dwc->dev->of_node) {
+> +		of_dma_configure(&xhci->dev, dwc->dev->of_node);
+> +	} else {
+> +		dma_set_coherent_mask(&xhci->dev, dwc->dev->coherent_dma_mask);
+> +
+> +		xhci->dev.dma_mask	= dwc->dev->dma_mask;
+> +		xhci->dev.dma_parms	= dwc->dev->dma_parms;
+> +	}
+> +
+>  	ret = platform_device_add(xhci);
+>  	if (ret) {
+>  		dev_err(dwc->dev, "failed to register xHCI device\n");
