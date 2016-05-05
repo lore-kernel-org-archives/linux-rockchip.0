@@ -1,56 +1,48 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v7 1/9] i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
-Date: Wed, 4 May 2016 16:50:25 -0700
-Message-ID: <CAD=FV=VUaq6-_NNy-K2BrTDHY1pzJGA6wGtPTvc8H1ABgDqf0w@mail.gmail.com>
-References: <1462371194-5809-1-git-send-email-david.wu@rock-chips.com>
-	<1462371194-5809-2-git-send-email-david.wu@rock-chips.com>
-	<CAD=FV=VyAie7NcO3q4qQWEdHaiUUHbRN-6iWV3y+kvgSYPpkEg@mail.gmail.com>
+From: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: move rk3288 edp phy under the GRF
+Date: Wed, 4 May 2016 18:11:12 -0700
+Message-ID: <20160505011112.GA131923@google.com>
+References: <1640976.sZtsTTlDpl@diego>
+ <4275673.EbRsbqkhH8@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VyAie7NcO3q4qQWEdHaiUUHbRN-6iWV3y+kvgSYPpkEg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <4275673.EbRsbqkhH8@diego>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-David,
+On Fri, Apr 22, 2016 at 03:56:27PM +0200, Heiko Stuebner wrote:
+> Am Samstag, 16. April 2016, 02:49:14 schrieb Heiko St=FCbner:
+> > The edp-phy control is a part of the General Register Files and
+> > with a recent patch in 4.6 the phy driver can now also handle this
+> > correctly, so move the dts node under the GRF as well.
+> > =
 
-On Wed, May 4, 2016 at 4:45 PM, Doug Anderson <dianders@chromium.org> wrote:
-> David,
->
-> On Wed, May 4, 2016 at 7:13 AM, David Wu <david.wu@rock-chips.com> wrote:
->> Signed-off-by: David Wu <david.wu@rock-chips.com>
->> ---
->> Change in v7:
->> - none
->>
->>  drivers/i2c/busses/i2c-rk3x.c | 22 +++++++++++++++++++++-
->>  1 file changed, 21 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
->> index 80bed02..7e45d51 100644
->> --- a/drivers/i2c/busses/i2c-rk3x.c
->> +++ b/drivers/i2c/busses/i2c-rk3x.c
->> @@ -90,6 +90,26 @@ struct rk3x_i2c_soc_data {
->>         int grf_offset;
->>  };
->>
->> +/**
->> + * struct rk3x_i2c - private data of the controller
->> + * @adap: corresponding I2C adapter
->> + * @dev: device for this controller
->> + * @soc_data: related soc data struct
->> + * @regs: virtual memory area
->> + * @clk: clock of i2c bus
->> + * @clk_rate_nb: i2c clk rate change notify
->> + * @t: I2C known timing information
->
-> You're a little ahead of yourself.  The @t element doesn't exist as of
-> this patch.  Instead all the sub-elements are there.  This in this
-> patch you need to document scl_frequency, scl_rise_ns, ....  In a
-> later patch you'd change it to t.
+> > Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> =
 
-Or I'm an idiot and applied to the wrong branch.  Your patch is fine.
+> the change in the phy-driver has made it into Greg's usb tree as fix for =
+4.6, =
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> so I've picked this patch for 4.7 now.
+
+Not sure if it's intentional, but the phy binding change (which is in
+4.6) broke the DP support in 4.6/rk3288.dtsi, and this patch is
+necessary to bring it back. Shouldn't this DTS change have gone to 4.7
+too? Or (when convincing ourselves we're not breaking the DT ABI here),
+could we just claim that eDP wasn't supported in 4.6, and 4.7 will just
+be bug-fixing the rk3288 DTS?
+
+Brian
