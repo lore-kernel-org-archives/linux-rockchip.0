@@ -1,91 +1,53 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: Re: usb: dwc3: host: inherit dma configuration from parent dev
-Date: Thu, 5 May 2016 10:07:52 -0700
-Message-ID: <20160505170752.GA118697@google.com>
-References: <1461612094-30939-1-git-send-email-grygorii.strashko@ti.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 4/7] ASoC: rockchip-max98090: Fix the Headset Mic route.
+Date: Thu, 5 May 2016 20:18:44 +0100
+Message-ID: <20160505191844.GL6292@sirena.org.uk>
+References: <1462435421-21205-1-git-send-email-enric.balletbo@collabora.com>
+ <1462435421-21205-5-git-send-email-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="FC52J0nKTzya17Ed"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1461612094-30939-1-git-send-email-grygorii.strashko@ti.com>
+In-Reply-To: <1462435421-21205-5-git-send-email-enric.balletbo@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Strashko, Grygorii" <grygorii.strashko@ti.com>
-Cc: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Sekhar Nori <nsekhar@ti.com>, David Fisher <david.fisher1@synopsys.com>, Catalin Marinas <catalin.marinas@arm.com>, "Thang Q. Nguyen" <tqnguyen@apm.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-rockchip@lists.infradead.org, dianders@chromium.org, wulf@rock-chips.com, Brian Norris <computersforpeace@gmail.com>, Arnd Bergmann <arnd@arndb.de>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 25, 2016 at 10:21:34PM +0300, Strashko, Grygorii wrote:
-> Now not all DMA paremters configured properly for "xhci-hcd" platform
-> device which is created manually. For example: dma_pfn_offset, dam_ops
-> and iommu configuration will not corresponds "dwc3" devices
-> configuration. As result, this will cause problems like wrong DMA
-> addresses translation on platforms with LPAE enabled like Keystone 2.
-> 
-> When platform is using DT boot mode the DMA configuration will be
-> parsed and applied from DT, so, to fix this issue, reuse
-> of_dma_configure() API and retrieve DMA configuartion for "xhci-hcd"
-> from DWC3 device node.
-> 
-> Cc: David Fisher <david.fisher1@synopsys.com>
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: "Thang Q. Nguyen" <tqnguyen@apm.com>
-> Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-> Signed-off-by: Grygorii Strashko <grygorii.strashko@ti.com>
 
-Tested-by: Brian Norris <briannorris@chromium.org>
+--FC52J0nKTzya17Ed
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-What's the status of this? I see that there was some divergent
-discussion about the merits of a dma_inherit() API...
+On Thu, May 05, 2016 at 10:03:38AM +0200, Enric Balletbo i Serra wrote:
+> Since commit e409dfbfccf9a49 ("ASoC: dapm: Add a few supply widget
+> sanity checks") the following error is seen:
 
-FWIW, I'll reiterate Grygorii's note that Felipe's alternative patch
-does NOT resolve the problem with the creation of the xhci-hcd platform
-device:
 
-https://patchwork.kernel.org/patch/8952721/
+>  rockchip-snd-max98090 sound: Connecting non-supply widget to supply widget is not supported (Headset Mic -> MICBIAS)
+>  rockchip-snd-max98090 sound: ASoC: no dapm match for Headset Mic --> (null) --> MICBIAS
+>  rockchip-snd-max98090 sound: ASoC: Failed to add route Headset Mic -> direct -> MICBIAS
+>  input: ROCKCHIP-I2S Headset Jack as /devices/platform/sound/sound/card0/input3
 
-Brian
+> Invert the route between the Headset Mic and the bias in order to fix it.
 
-> ---
-> drivers/usb/dwc3/host.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/usb/dwc3/host.c b/drivers/usb/dwc3/host.c
-> index c679f63..93c8ef9 100644
-> --- a/drivers/usb/dwc3/host.c
-> +++ b/drivers/usb/dwc3/host.c
-> @@ -17,6 +17,7 @@
->  
->  #include <linux/platform_device.h>
->  #include <linux/usb/xhci_pdriver.h>
-> +#include <linux/of_device.h>
->  
->  #include "core.h"
->  
-> @@ -32,12 +33,7 @@ int dwc3_host_init(struct dwc3 *dwc)
->  		return -ENOMEM;
->  	}
->  
-> -	dma_set_coherent_mask(&xhci->dev, dwc->dev->coherent_dma_mask);
-> -
->  	xhci->dev.parent	= dwc->dev;
-> -	xhci->dev.dma_mask	= dwc->dev->dma_mask;
-> -	xhci->dev.dma_parms	= dwc->dev->dma_parms;
-> -
->  	dwc->xhci = xhci;
->  
->  	ret = platform_device_add_resources(xhci, dwc->xhci_resources,
-> @@ -62,6 +58,15 @@ int dwc3_host_init(struct dwc3 *dwc)
->  	phy_create_lookup(dwc->usb3_generic_phy, "usb3-phy",
->  			  dev_name(&xhci->dev));
->  
-> +	if (IS_ENABLED(CONFIG_OF) && dwc->dev->of_node) {
-> +		of_dma_configure(&xhci->dev, dwc->dev->of_node);
-> +	} else {
-> +		dma_set_coherent_mask(&xhci->dev, dwc->dev->coherent_dma_mask);
-> +
-> +		xhci->dev.dma_mask	= dwc->dev->dma_mask;
-> +		xhci->dev.dma_parms	= dwc->dev->dma_parms;
-> +	}
-> +
->  	ret = platform_device_add(xhci);
->  	if (ret) {
->  		dev_err(dwc->dev, "failed to register xHCI device\n");
+This isn't just noise, this is telling you that the route has always
+been broken...
+
+--FC52J0nKTzya17Ed
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXK5yUAAoJECTWi3JdVIfQ1CkH/0c+++cCuT13A+zKyKlrwUKH
+zxAqk1bXr2zmWlY90zYFcPCQRFH4kD1KCi485BSDaxM6sPOMF2LUst1m+XqGFobq
+2Shd7Ro/XQCZZ+QpDXvdJ/VD22MTSSn7EuwwWw9WXSjCkt9lhRJp8mmOY2VAvDba
+3xCBkPMjim6Y3l+uxLJVceKxPEt6QkhzVqYt3LAf+wHl9z5oJhDPB8PPbrqUIIC5
+2z2Ac0MpBuHo9yXKJC6Iw2VdRpakoq95gLKlx9LokqA8ynO7JeuI/ZsveBCuKyG+
+qygPKJlpzr11PIrw+Bj21LlC3ygxfS1neosUr99DRX6m3Im+gW53p1rdIlG+AYw=
+=6ivC
+-----END PGP SIGNATURE-----
+
+--FC52J0nKTzya17Ed--
