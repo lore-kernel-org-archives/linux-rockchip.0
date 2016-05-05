@@ -1,78 +1,100 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [RFC PATCH 0/3] clk: attempt to keep requested rate on parent changes
-Date: Thu, 05 May 2016 17:07:41 +0200
-Message-ID: <4828628.D4nfByUg7D@diego>
-References: <1462206982-10444-1-git-send-email-heiko@sntech.de> <572B4AF8.6070509@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <572B4AF8.6070509@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, zhangqing@rock-chips.com, Doug Anderson <dianders@google.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: rockchip: Revert "ASoC: rockchip: i2s: remove unused variables"" to the asoc tree
+Date: Thu, 05 May 2016 16:56:23 +0100
+Message-ID: <E1ayLdX-0004kH-IJ@debutante>
+References: <1462373686-21794-1-git-send-email-john@metanate.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462373686-21794-1-git-send-email-john@metanate.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Mark Brown <broonie@kernel.org>, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, Enric Balletbo Serra <eballetbo@gmail.com>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.orgMark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomeu,
+The patch
 
-Am Donnerstag, 5. Mai 2016, 15:30:32 schrieb Tomeu Vizoso:
-> On 05/02/2016 06:36 PM, Heiko Stuebner wrote:
-> > I remember reading about people discussing that problem in the past, but
-> > haven't been able to find another approach to it yet [or I'm just blind
-> > as happens to often].
-> > 
-> > Our problem is the following clock structure:
-> > 
-> > [anotherPLL]
-> > 
-> >     ------ [div] ----- dclk_vop
-> > 
-> > [   vpll   ] --------- hdmi_phy
-> > 
-> > 
-> > We need to set the vpll dynamically but still want to retain
-> 
-> Guess something is missing here?
+   ASoC: rockchip: Revert "ASoC: rockchip: i2s: remove unused variables"
 
-looks like I forgot to finish my thought "... the vpll as regular dclk_vop 
-source".
+has been applied to the asoc tree at
 
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-> > The other option that comes to mind, would be to have a clock-notifier,
-> > in the drm driver, but calling clk_set_rate from their looks like it
-> > shouldn't work due to the prepare mutex already being held.
-> > 
-> > 
-> > The whole thing is labeled RFC because while it works for us and solves
-> > the problem, I'm not sure if I'm overlooking some important aspect or
-> > am interferring with some other planned approach for that issue.
-> 
-> I like this approach very much and wonder in what cases it wouldn't be
-> desirable to re-try to achieve the requested rate after a change in an
-> ancestor clock.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
-I guess that is mainly me being overly careful and not overlooking if the 
-clock-framework can get into any troubled state if all clocks do this, but I 
-guess it should just work ;-) .
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-> Besides that, do you know already if it would solve the conflicts
-> described by Doug in the thread below?
-> 
-> http://thread.gmane.org/gmane.linux.kernel/1820653/focus=3298
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-I think the big issue on the rk3288 is, who is actually in charge of 
-controlling the npll frequency.
+Thanks,
+Mark
 
-On the rk3399 the vpll is supplied unmodified to the hdmiphy, while as a 
-dclk_vop source it goes through a divider first. So it's pretty clear that the 
-hdmiphy will control the core frequency while other users need to adapt to 
-what they get.
+From a6e806c49e3265494ac6fe6ec88ed5c010652e0d Mon Sep 17 00:00:00 2001
+From: John Keeping <john@metanate.com>
+Date: Wed, 4 May 2016 17:21:56 +0100
+Subject: [PATCH] ASoC: rockchip: Revert "ASoC: rockchip: i2s: remove unused
+ variables"
 
-On the rk3288 the npll is a possible source to both the hdmi- as well as the 
-edp-clock (and some others as well), so when it gets adapted dynamically, wo 
-is going to be in charge and who needs to adapt ... and how do we set this 
-hierarchy.
+This reverts commit 5938448b99275cba95167c3f9d39ca9225fdad38.
 
+It turns out that the commit that made these variables unused is wrong
+so we're about to revert it.  Bring back the variables in prepration.
 
-Heiko
+Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 2f8e20416bd3..34743ec61c49 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -34,6 +34,13 @@ struct rk_i2s_dev {
+ 
+ 	struct regmap *regmap;
+ 
++/*
++ * Used to indicate the tx/rx status.
++ * I2S controller hopes to start the tx and rx together,
++ * also to stop them when they are both try to stop.
++*/
++	bool tx_start;
++	bool rx_start;
+ 	bool is_master_mode;
+ };
+ 
+@@ -77,7 +84,11 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+ 		regmap_update_bits(i2s->regmap, I2S_XFER,
+ 				   I2S_XFER_TXS_START,
+ 				   I2S_XFER_TXS_START);
++
++		i2s->tx_start = true;
+ 	} else {
++		i2s->tx_start = false;
++
+ 		regmap_update_bits(i2s->regmap, I2S_DMACR,
+ 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
+ 
+@@ -115,7 +126,11 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+ 		regmap_update_bits(i2s->regmap, I2S_XFER,
+ 				   I2S_XFER_RXS_START,
+ 				   I2S_XFER_RXS_START);
++
++		i2s->rx_start = true;
+ 	} else {
++		i2s->rx_start = false;
++
+ 		regmap_update_bits(i2s->regmap, I2S_DMACR,
+ 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
+ 
+-- 
+2.8.1
