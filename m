@@ -1,76 +1,53 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v7 8/9] i2c: rk3x: add i2c support for rk3399 soc
-Date: Fri, 6 May 2016 11:00:02 -0700
-Message-ID: <CAD=FV=XOOAbKxqJsxGU4pXbNJtbq_Q4Pj2=9P48NCze5NTJyrw@mail.gmail.com>
-References: <1462371194-5809-1-git-send-email-david.wu@rock-chips.com>
-	<1462372609-6535-1-git-send-email-david.wu@rock-chips.com>
-	<CAD=FV=VhMJiowNWm+0=jzzK0vajg1=3PutaWbzhGPN_BU2+19w@mail.gmail.com>
-	<572C64B5.6080607@rock-chips.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 4/7] clk: rockchip: abstract pll get-params and
+ set-params operations
+Date: Fri, 6 May 2016 15:55:43 -0700
+Message-ID: <20160506225543.GF3492@codeaurora.org>
+References: <1461849075-8310-1-git-send-email-heiko@sntech.de>
+ <1461849075-8310-5-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <572C64B5.6080607@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: "David.Wu" <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1461849075-8310-5-git-send-email-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+On 04/28, Heiko Stuebner wrote:
+> This moves the pll-specific get_params and set_params functions into a
+> per-pll struct that gets associated at init time and will help us reign
+> in some code duplication we're faced with right now.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  drivers/clk/rockchip/clk-pll.c | 54 ++++++++++++++++++++++++++++++++----------
+>  1 file changed, 42 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+> index e56637d..2c30f52 100644
+> --- a/drivers/clk/rockchip/clk-pll.c
+> +++ b/drivers/clk/rockchip/clk-pll.c
+> @@ -30,6 +30,14 @@
+>  #define PLL_MODE_NORM		0x1
+>  #define PLL_MODE_DEEP		0x2
+>  
+> +struct rockchip_clk_pll;
+> +struct rockchip_pll_data {
+> +	void (*get_params)(struct rockchip_clk_pll *pll,
+> +			   struct rockchip_pll_rate_table *rate);
+> +	int (*set_params)(struct rockchip_clk_pll *pll,
+> +			  const struct rockchip_pll_rate_table *rate);
+> +};
 
-On Fri, May 6, 2016 at 2:32 AM, David.Wu <david.wu@rock-chips.com> wrote:
->> Also (optional): once you do that, there becomes much less of a reason
->> to store "t_calc" in "struct rk3x_i2c".  Already you're never using
->> the "div_low" and "div_high" that you store in the "struct rk3x_i2c".
->> Of course, to do that you've got to change other places not to clobber
->> these bits in REG_CON.
->>
->
-> So, I only just need to store tuning value in the "struct rk3x_i2c", but not
-> to store the "div_low" and "div_high"?
+I'm not a huge fan of function pointer indirection on top of
+function pointer indirection (clk_ops). It would be nice if this
+was more flat design and different clk_ops existed for different
+PLL types that all used the same rockchip_clk_pll structure. But
+I don't care too much because I'm not looking at this code all
+the time, so if you like this approach then I'm fine.
 
-I was suggesting not adding anything to what's stored in "struct
-rk3x_i2c" (AKA don't add t_calc there).  Just set the value directly
-in the register here then change all other bits of code to respect it.
-
-That is:
-
-In rk3x_i2c_start(), write:
-
-  u32 val = i2c_readl(i2c, REG_CON) & REG_CON_TUNING_MASK;
-
-In rk3x_i2c_xfer(), write:
-  val = i2c_readl(i2c, REG_CON) & REG_CON_TUNING_MASK
-  val |= REG_CON_EN | REG_CON_STOP, REG_CON;
-  i2c_writel(i2c, val);
-
-
-You could get fancy and add a new "i2c_update_bits", but that might be overkill.
-
-
-> The patches we have already used in our projects, they are verified by the
-> basic tests. I would ask them to do more tests. Because we didn't change the
-> clock rate now, it was a fixed value when clk inited, so we could not find
-> the bug here.
-
-OK.  Presumably a rk3066 w/ DVS enabled would be a good test?  Reading
-the description of commit 249051f49907 ("i2c: rk3x: handle dynamic
-clock rate changes correctly"), I see:
-
-    The i2c input clock can change dynamically, e.g. on the RK3066 where
-    pclk_i2c0 and pclk_i2c1 are connected to the armclk, which changes
-    rate on cpu frequency scaling.
-
-
->> If you take that advice, you can get rid of all of the "if
->> (i2c->pclk)" statements in your code.
->>
->
-> It would make i2c->clk to be enabled and prepared twice when uses
-> rk3x_i2c_v0_calc_timings for old hardware. But if do the opposite
-> disabled and unprepated twice, that is okay.
-
-Right.  The same clock will get an enable / prepare count of "2"
-(instead of two different clocks getting a count of "1).  ...but
-nothing should be hurt by that.
-
--Doug
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
