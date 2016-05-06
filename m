@@ -1,32 +1,76 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/2] mmc: dw_mmc-rockchip: add default drv phase support
-Date: Fri, 6 May 2016 10:28:18 -0700
-Message-ID: <CAD=FV=XZOJuD=kgSHQM3v63xtVGvxp4m-Y7KAzCRNkqy3tVSyA@mail.gmail.com>
-References: <1462527648-24443-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v7 8/9] i2c: rk3x: add i2c support for rk3399 soc
+Date: Fri, 6 May 2016 11:00:02 -0700
+Message-ID: <CAD=FV=XOOAbKxqJsxGU4pXbNJtbq_Q4Pj2=9P48NCze5NTJyrw@mail.gmail.com>
+References: <1462371194-5809-1-git-send-email-david.wu@rock-chips.com>
+	<1462372609-6535-1-git-send-email-david.wu@rock-chips.com>
+	<CAD=FV=VhMJiowNWm+0=jzzK0vajg1=3PutaWbzhGPN_BU2+19w@mail.gmail.com>
+	<572C64B5.6080607@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1462527648-24443-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <572C64B5.6080607@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: "David.Wu" <david.wu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi
 
-On Fri, May 6, 2016 at 2:40 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
-> This patch introduces default drv phase exposed to dts for
-> users to set drv phase. If default-drv-phase is not assigned,
-> let's set it to 180 degrees.
+On Fri, May 6, 2016 at 2:32 AM, David.Wu <david.wu@rock-chips.com> wrote:
+>> Also (optional): once you do that, there becomes much less of a reason
+>> to store "t_calc" in "struct rk3x_i2c".  Already you're never using
+>> the "div_low" and "div_high" that you store in the "struct rk3x_i2c".
+>> Of course, to do that you've got to change other places not to clobber
+>> these bits in REG_CON.
+>>
 >
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->
->  drivers/mmc/host/dw_mmc-rockchip.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+> So, I only just need to store tuning value in the "struct rk3x_i2c", but not
+> to store the "div_low" and "div_high"?
 
-Replying to this patch in case someone isn't reading the bindings
-patch.  See my reply there that it's probably wrong to specify it this
-way in the device tree.  Let's continue the discussion there.
+I was suggesting not adding anything to what's stored in "struct
+rk3x_i2c" (AKA don't add t_calc there).  Just set the value directly
+in the register here then change all other bits of code to respect it.
+
+That is:
+
+In rk3x_i2c_start(), write:
+
+  u32 val = i2c_readl(i2c, REG_CON) & REG_CON_TUNING_MASK;
+
+In rk3x_i2c_xfer(), write:
+  val = i2c_readl(i2c, REG_CON) & REG_CON_TUNING_MASK
+  val |= REG_CON_EN | REG_CON_STOP, REG_CON;
+  i2c_writel(i2c, val);
+
+
+You could get fancy and add a new "i2c_update_bits", but that might be overkill.
+
+
+> The patches we have already used in our projects, they are verified by the
+> basic tests. I would ask them to do more tests. Because we didn't change the
+> clock rate now, it was a fixed value when clk inited, so we could not find
+> the bug here.
+
+OK.  Presumably a rk3066 w/ DVS enabled would be a good test?  Reading
+the description of commit 249051f49907 ("i2c: rk3x: handle dynamic
+clock rate changes correctly"), I see:
+
+    The i2c input clock can change dynamically, e.g. on the RK3066 where
+    pclk_i2c0 and pclk_i2c1 are connected to the armclk, which changes
+    rate on cpu frequency scaling.
+
+
+>> If you take that advice, you can get rid of all of the "if
+>> (i2c->pclk)" statements in your code.
+>>
+>
+> It would make i2c->clk to be enabled and prepared twice when uses
+> rk3x_i2c_v0_calc_timings for old hardware. But if do the opposite
+> disabled and unprepated twice, that is okay.
+
+Right.  The same clock will get an enable / prepare count of "2"
+(instead of two different clocks getting a count of "1).  ...but
+nothing should be hurt by that.
 
 -Doug
