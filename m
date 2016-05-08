@@ -1,26 +1,31 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: fix the rk3399 sdmmc sample / drv name
-Date: Sun, 08 May 2016 22:51:14 +0200
-Message-ID: <4645491.pfFL9jxaO2@phil>
-References: <1462404985-27957-1-git-send-email-dianders@chromium.org>
+Subject: Re: [PATCH] ARM: dts: rk3288: add SPI flash node for veyron
+Date: Sun, 08 May 2016 23:22:47 +0200
+Message-ID: <2761761.rShBrpNQKd@phil>
+References: <1462496564-76530-1-git-send-email-computersforpeace@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1462404985-27957-1-git-send-email-dianders@chromium.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>
-Cc: zhengxing@rock-chips.com, linux-rockchip@lists.infradead.org, briannorris@chromium.org, mturquette@baylibre.com, sboyd@codeaurora.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462496564-76530-1-git-send-email-computersforpeace@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <computersforpeace@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 4. Mai 2016, 16:36:25 schrieb Douglas Anderson:
-> The rk3399 clock table had a simple typo in it, calling the SDMMC sample
-> and drive clocks by the wrong name.  Fix this minor typo.
+Am Donnerstag, 5. Mai 2016, 18:02:44 schrieb Brian Norris:
+> This is a standard binding for describing SPI flash that can be
+> identified by reading their JEDEC ID. Let's use it.
 > 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> Tested on Veyron Jaq.
+> 
+> Signed-off-by: Brian Norris <computersforpeace@gmail.com>
 
-applied to my clk-branch
+I've adapted the subject to
+	ARM: dts: rockchip: add SPI flash node for rk3288-veyron
+
+and applied the patch to a temporary dts32-branch for 4.8
 
 
-Thanks for catching this
+Thanks
 Heiko
