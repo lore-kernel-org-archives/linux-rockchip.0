@@ -1,59 +1,44 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 4/7] clk: rockchip: abstract pll get-params and set-params operations
-Date: Sun, 08 May 2016 22:24:37 +0200
-Message-ID: <3451726.6PKcY6Rd6y@phil>
-References: <1461849075-8310-1-git-send-email-heiko@sntech.de> <1461849075-8310-5-git-send-email-heiko@sntech.de> <20160506225543.GF3492@codeaurora.org>
+Subject: Re: [RFC PATCH 2/3] clk: adjust clocks to their requested rate after parent changes
+Date: Sun, 08 May 2016 22:34:41 +0200
+Message-ID: <3005442.vcrD3GKCxP@phil>
+References: <1462206982-10444-1-git-send-email-heiko@sntech.de> <CAD=FV=X6at49s-8Wh3+RnLwNQr5RqDMvfJJF+TwvuhnurmQk1w@mail.gmail.com> <CAD=FV=WegPb3AMsUM+Rx_uZ3sMCGUFz-vEh_8WDTqTp1MHWOUQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160506225543.GF3492@codeaurora.org>
+In-Reply-To: <CAD=FV=WegPb3AMsUM+Rx_uZ3sMCGUFz-vEh_8WDTqTp1MHWOUQ@mail.gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Xing Zheng <zhengxing@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, zhangqing <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 6. Mai 2016, 15:55:43 schrieb Stephen Boyd:
-> On 04/28, Heiko Stuebner wrote:
-> > This moves the pll-specific get_params and set_params functions into a
-> > per-pll struct that gets associated at init time and will help us reign
-> > in some code duplication we're faced with right now.
-> > 
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> > 
-> >  drivers/clk/rockchip/clk-pll.c | 54
-> >  ++++++++++++++++++++++++++++++++---------- 1 file changed, 42
-> >  insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/drivers/clk/rockchip/clk-pll.c
-> > b/drivers/clk/rockchip/clk-pll.c index e56637d..2c30f52 100644
-> > --- a/drivers/clk/rockchip/clk-pll.c
-> > +++ b/drivers/clk/rockchip/clk-pll.c
-> > @@ -30,6 +30,14 @@
-> > 
-> >  #define PLL_MODE_NORM		0x1
-> >  #define PLL_MODE_DEEP		0x2
-> > 
-> > +struct rockchip_clk_pll;
-> > +struct rockchip_pll_data {
-> > +	void (*get_params)(struct rockchip_clk_pll *pll,
-> > +			   struct rockchip_pll_rate_table *rate);
-> > +	int (*set_params)(struct rockchip_clk_pll *pll,
-> > +			  const struct rockchip_pll_rate_table *rate);
-> > +};
+Am Donnerstag, 5. Mai 2016, 17:49:39 schrieb Doug Anderson:
+> Hi,
 > 
-> I'm not a huge fan of function pointer indirection on top of
-> function pointer indirection (clk_ops). It would be nice if this
-> was more flat design and different clk_ops existed for different
-> PLL types that all used the same rockchip_clk_pll structure. But
-> I don't care too much because I'm not looking at this code all
-> the time, so if you like this approach then I'm fine.
+> On Thu, May 5, 2016 at 5:35 PM, Doug Anderson <dianders@chromium.org> wrote:
+> > I guess we don't care about errors here?
+> > 
+> > ...maybe (?) we could ignore errors if we validated this rate change
+> > with PRE_RATE_CHANGE before attempting to change the parent clock, but
+> > I don't see the code doing this unless I missed it.
+> 
+> One other related thought: it seems like there should be code
+> _somewhere_ that decides whether to adjust the child dividers before
+> or after the parent clock changes.  Specifically if the parent clock
+> is increasing in speed we probably want to slow down the child clock
+> ahead of the parent's increase.  I don't see such code here, but again
+> I'm pretty good at missing things unless they are slapping me in the
+> face.  ;)
 
-I think the "flat design" is what we have right now. The problem is that the 
-core code is pretty similar and only the hardware-specific accesses are 
-special, thus the later indirection.
+yep, but that problem of a divider exceeding a requested rate temporarily
+exist currently already, even before this change ;-)
 
-As we don't save to much right now with the currently handled PLLs, I guess 
-we could simply only do the first 3 patches and revisit the pll-changes later 
-once the next pll-type shows up.
+Recently we did fix it on a small-scale for composite-clocks though [0].
+
+
+Heiko
+
+
+[0] https://git.kernel.org/cgit/linux/kernel/git/clk/linux.git/commit/drivers/clk/clk-composite.c?h=clk-next&id=9e52cec04fd3b9b686f9256151b47fe61f7c28ef
+
