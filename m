@@ -1,34 +1,127 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v2] net: arc/emac: Move arc_emac_tx_clean() into
- arc_emac_tx() and disable tx interrut
-Date: Sun, 08 May 2016 23:42:56 -0400 (EDT)
-Message-ID: <20160508.234256.359620681931531068.davem@davemloft.net>
-References: <1462537156-10489-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1462537156-10489-1-git-send-email-wxt@rock-chips.com>
-Sender: netdev-owner@vger.kernel.org
-To: wxt@rock-chips.com
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, sy.w@outlook.com, al.kochet@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v2 1/5] ASoC: rockchip-max98090: Fix NULL pointer dereference while accessing to jack.
+Date: Mon,  9 May 2016 12:46:31 +0200
+Message-ID: <1462790795-25345-2-git-send-email-enric.balletbo@collabora.com>
+References: <1462790795-25345-1-git-send-email-enric.balletbo@collabora.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462790795-25345-1-git-send-email-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org
+Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Caesar Wang <wxt@rock-chips.com>
-Date: Fri,  6 May 2016 20:19:16 +0800
+Commit f2ed6b07645e ("ASoC: Make aux_dev more like a generic
+component") caused a regression on this driver, since now a
+kernel oops is seen when rockchip-mac98090 driver is loaded.
 
-> Doing tx_clean() inside poll() may scramble the tx ring buffer if
-> tx() is running. This will cause tx to stop working, which can be
-> reproduced by simultaneously downloading two large files at high speed.
-> 
-> Moving tx_clean() into tx() will prevent this. And tx interrupt is no
-> longer needed now.
+That commit changed the probing of aux_devs before checking
+new DAI links, so for this driver rk_98090_headset_init is
+called before rk_init and then the kernel oops due a NULL
+pointer dereference inside rk_98090_headset_init function
+since there is a call that tries to access the jack pointer
+which has not been allocated yet.
 
-TX completion work is always recommended to be done in the ->poll()
-handler.
+This is the call chain that causes the crash:
 
-Fix the race or whatever bug there is rather than working around it,
-and regressing the driver, by handling TX completion in the interrupt
-handler.
+ rk_98090_headset_init
+   -> ts3a227e_enable_jack_detect
+      -> snd_jack_set_key
+ rk_init
+   -> snd_soc_card_jack_new
 
-Thanks.
+This patch moves the new jack object creation from rk_init
+to rk_98090_headset_init function making sure the jack is
+created before is accessed.
+
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+Changes since v1:
+ - Improve log message.
+
+ sound/soc/rockchip/rockchip_max98090.c | 50 ++++++++++++++++++----------------
+ 1 file changed, 27 insertions(+), 23 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+index 5436102..abb64a5 100644
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -114,43 +114,27 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
+ 	return ret;
+ }
+ 
+-static int rk_init(struct snd_soc_pcm_runtime *runtime)
+-{
+-	/* Enable Headset and 4 Buttons Jack detection */
+-	return snd_soc_card_jack_new(runtime->card, "Headset Jack",
+-			       SND_JACK_HEADSET |
+-			       SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+-			       SND_JACK_BTN_2 | SND_JACK_BTN_3,
+-			       &headset_jack,
+-			       headset_jack_pins,
+-			       ARRAY_SIZE(headset_jack_pins));
+-}
+-
+-static int rk_98090_headset_init(struct snd_soc_component *component)
+-{
+-	return ts3a227e_enable_jack_detect(component, &headset_jack);
+-}
+-
+ static struct snd_soc_ops rk_aif1_ops = {
+ 	.hw_params = rk_aif1_hw_params,
+ };
+ 
+-static struct snd_soc_aux_dev rk_98090_headset_dev = {
+-	.name = "Headset Chip",
+-	.init = rk_98090_headset_init,
+-};
+-
+ static struct snd_soc_dai_link rk_dailink = {
+ 	.name = "max98090",
+ 	.stream_name = "Audio",
+ 	.codec_dai_name = "HiFi",
+-	.init = rk_init,
+ 	.ops = &rk_aif1_ops,
+ 	/* set max98090 as slave */
+ 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+ 		SND_SOC_DAIFMT_CBS_CFS,
+ };
+ 
++static int rk_98090_headset_init(struct snd_soc_component *component);
++
++static struct snd_soc_aux_dev rk_98090_headset_dev = {
++	.name = "Headset Chip",
++	.init = rk_98090_headset_init,
++};
++
+ static struct snd_soc_card snd_soc_card_rk = {
+ 	.name = "ROCKCHIP-I2S",
+ 	.owner = THIS_MODULE,
+@@ -166,6 +150,26 @@ static struct snd_soc_card snd_soc_card_rk = {
+ 	.num_controls = ARRAY_SIZE(rk_mc_controls),
+ };
+ 
++static int rk_98090_headset_init(struct snd_soc_component *component)
++{
++	int ret;
++
++	/* Enable Headset and 4 Buttons Jack detection */
++	ret = snd_soc_card_jack_new(&snd_soc_card_rk, "Headset Jack",
++				    SND_JACK_HEADSET |
++				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
++				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
++				    &headset_jack,
++				    headset_jack_pins,
++				    ARRAY_SIZE(headset_jack_pins));
++	if (ret)
++		return ret;
++
++	ret = ts3a227e_enable_jack_detect(component, &headset_jack);
++
++	return ret;
++}
++
+ static int snd_rk_mc_probe(struct platform_device *pdev)
+ {
+ 	int ret = 0;
+-- 
+2.1.0
