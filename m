@@ -1,152 +1,160 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/2] dt-bindings: rockchip-dw-mshc: add
- rockchip,default-drv-phase
-Date: Mon, 9 May 2016 19:12:17 +0800
-Message-ID: <b15dcb4f-1584-8219-2fe0-97eecb0c64a6@rock-chips.com>
-References: <1462527648-24443-1-git-send-email-shawn.lin@rock-chips.com>
- <1462527673-24711-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=WSkBwBjVsRoDsfjD+sNfR70mKGRA0khjPKKW0zS2=PTw@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [RFC PATCH 2/3] clk: adjust clocks to their requested rate after parent changes
+Date: Mon, 09 May 2016 13:40:27 +0200
+Message-ID: <2927458.4ozSLghtXU@phil>
+References: <1462206982-10444-1-git-send-email-heiko@sntech.de> <1462206982-10444-3-git-send-email-heiko@sntech.de> <CAD=FV=X6at49s-8Wh3+RnLwNQr5RqDMvfJJF+TwvuhnurmQk1w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=WSkBwBjVsRoDsfjD+sNfR70mKGRA0khjPKKW0zS2=PTw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=X6at49s-8Wh3+RnLwNQr5RqDMvfJJF+TwvuhnurmQk1w@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Xing Zheng <zhengxing@rock-chips.com>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, zhangqing <zhangqing@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/7 1:26, Doug Anderson wrote:
-> Shawn,
->
-> On Fri, May 6, 2016 at 2:41 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->> rockchip,default-drv-phase is used to set the default drv degrees.
->> drv phases will decide the write timing of mmc controller.
->
-> Device tree bindings should probably have been patch 1/2, then the
-> code patch 2/2.
->
->
->> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->> ---
->>
->>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->> index ea5614b..c48dba6 100644
->> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->> @@ -29,6 +29,9 @@ Optional Properties:
->>    probing, low speeds or in case where all phases work at tuning time.
->>    If not specified 0 deg will be used.
->>
->> +* rockchip,default-drv-phase: The default phase to set ciu_drv at probing
->> +  for host to write data to devices. If not specified 180 deg will be used.
->
-> This is probably not right for a few reasons.
->
-> 1. Specifying a single number for this property in terms of "degrees"
-> is probably not right.  The whole point of setting the "drive phase"
-> is to meet hold times, which are specified in the spec in terms of ns
-> in the spec and also specified differently for different SD/MMC speed
-> modes.  Note also that "phase" translates to very different delays (in
-> terms of ns) depending on the clock rate:
->
-> At 400 kHz, period is 2.5 us, so 90 degree phase offset is a delay of 625 ns
-> At 25 MHz, period is 40 ns, so a 90 degree phase offset represents a
-> delay of 10 ns.
-> At 50 MHz, period is 20 ns, so a 90 degree phase offset represents a
-> delay of 5 ns.
-> At 200 MHz, period is period is 5 ns, so a 90 degree phase offset
-> represents a delay of 1.25 ns.
+Am Donnerstag, 5. Mai 2016, 17:35:03 schrieb Doug Anderson:
+> Heiko,
+> 
+> On Mon, May 2, 2016 at 9:36 AM, Heiko Stuebner <heiko@sntech.de> wrote:
+> > Given a hirarchy of clk1 -> [div] -> clk2, when the rate of clk1 gets
+> > changed, clk2 changes as well as the divider stays the same. There may
+> > be cases where a user of clk2 needs it at a specific rate, so clk2
+> > needs to be readjusted for the changed rate of clk1.
+> > 
+> > So if a rate was requested for the clock, and its rate changed during
+> > the underlying rate-change, with this change the clock framework now
+> > tries to readjust the rate back to/near the requested one.
+> > 
+> > The whole process is protected by a new clock-flag to not force this
+> > behaviour change onto every clock defined in the ccf.
+> 
+> I'm not an expert on CCF details, but presumably you need to be really
+> careful here.  Is there any way you could get an infinite loop here
+> where you ping-pong between two people trying to control their parent
+> clock?  Right now I see mutual recursion between
+> clk_core_set_rate_nolock() and clk_change_rate() and no base case.
+> 
+> Specifically if there's a path (because of CLK_SET_RATE_PARENT) where
+> setting a clock rate on "clk2" in your example can cause a rate change
+> of "clk1" I worry that we'll be in trouble.  Maybe a requirement of
+> your patch is that no such path exists?  ...or maybe something in the
+> code prevents this...
 
-yes, if we use degrees only(0/90/180/270), the timing is always right.
-But considering the delay number, we need to do some crazy calculation
-in the set_ios callback.
-
->
->
-> 2. As I understand it, the value needed for the drive phase is not
-> board specific unless you've got super crazy layout on a board (where
-> the clock line takes a very different path than everything else).
-> It's also not even terribly SoC-specific unless you've got some very
-> strange incarnation of dw_mmc that has very different internal delays
-> than everyone else.  Said another way, until we see an instance of an
-> SoC/board that really needs to do things special I'd say that we
-> should just implement this all in code (no device tree bindings).
->
-
-I'm prone to think it should be Soc specific if making sure the layout
-for data lines is in equal length.
-
->
->
-> 3. If this property was actually board specific and actually needed to
-> be tuned board-by-board, you'd have a bug because your new device tree
-> bindings are not backward compatible and you'd probably be breaking
-> old boards.  Specifically you're changing the definition of what
-> happens when "rockchip,default-drv-phase" is not specified.  Old
-> behavior was to leave the value that was setup by the firmware (or
-> perhaps the hardware default if the firmware didn't touch this).
-
-drv_phase is for all the data lines instead of tuning the lines
-one-by-one. So this patch can't save the terrible board layout.
-But I agree that it will break the compatibility backward if firware
-touch this value.
-
->
-> ---
->
-> OK, so what should we do?
->
-> We could certainly do lots of crazy math to come up with the ideal
-> hold time for all different speed modes and all different types of
-> cards.  With my reading of the Designware Databook this would mean
-> that somewhere we'd want to specify which delay method we're using
-> (phase shift vs. delay line) and how long all the delays timings all
-> are on your particular SoC.  That all sounds quite difficult, though.
-
-delay line is diff from chip to chip, soc-to-soc, board-to-board. For 
-sample-phase we have tuning process and re-tune, but not for drv-phase.
-So We bascially should avoid to use it for drv-phase. Another
-consideration is the temperature drift of delay line.
-
-Maybe we should do some tricky limitation on clk-mmc-phase to only
-support fixed degrees?
-
->
-> Probably you could just add a simple function that looked at the clock
-> and speed mode and always chose an offset of 90 or 180 degrees.  At
-> least on Rockchip devices you can be certain that you can make 90 and
-> 180 degrees using phase shifts and thus the timings should be
-> consistent.  By default you could just always choose 180.  The
-> Designware databook has some examples where it picked 90 degrees
-> (SDR50, DDR50, SDR25, MMC High Speed), but I'm not enough of an MMC
-> expert to know if there is some benefit to choosing 90.  Would we
-> violate any specs if we just chose 180 degrees all the time everywhere
-> on all Rockchip devices?
-
-It needs more waveform test to see how things going. But most of
-rockchip platforms in the pass years didn't touch drv-phase stuff not
-only in kernel but also in firmware, then we still cannot see the
-violation against the spec when using defalut reset value, namely 180, 
-for drv-phase.
-
->
->
->
-> -Doug
->
->
->
+This was one of my worries as well, which is why the flag exists in the first 
+place, right now offloading the requirement to check for such conflict cases to 
+the clock-tree creator.
 
 
--- 
-Best Regards
-Shawn Lin
+I think one possible test to add could be to check for conflicts between 
+CLK_SET_RATE_PARENT and this new flag.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Aka in clk-init once encountering the CLK_KEEP_REQRATE, go up through parent 
+clocks as long as CLK_SET_RATE_PARENT is set and if we encounter a parent 
+with num_children > 1 (aka a shared base-clock, like a PLL on rockchip) 
+unset CLK_KEEP_REQRATE, as it would like introduce that ping-pong game.
+
+Hmm, although this test would also fire in cases like Rockchip's fractional 
+dividers, where there is the common pll-select-mux+divider and after that 
+the mux selecting between that or having the fractional-divider in between 
+as well.
+
+I guess it can get hairy to detect such cases sucessfully.
+
+
+> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> > ---
+> > 
+> >  drivers/clk/clk.c            | 13 +++++++++++--
+> >  include/linux/clk-provider.h |  1 +
+> >  2 files changed, 12 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> > index 65e0aad..22be369 100644
+> > --- a/drivers/clk/clk.c
+> > +++ b/drivers/clk/clk.c
+> > @@ -1410,6 +1410,9 @@ static struct clk_core
+> > *clk_propagate_rate_change(struct clk_core *core,> 
+> >         return fail_clk;
+> >  
+> >  }
+> > 
+> > +static int clk_core_set_rate_nolock(struct clk_core *core,
+> > +                                   unsigned long req_rate);
+> > +
+> > 
+> >  /*
+> >  
+> >   * walk down a subtree and set the new rates notifying the rate
+> >   * change on the way
+> > 
+> > @@ -1494,6 +1497,12 @@ static void clk_change_rate(struct clk_core
+> > *core)
+> > 
+> >         /* handle the new child who might not be in core->children yet
+> >         */
+> >         if (core->new_child)
+> >         
+> >                 clk_change_rate(core->new_child);
+> > 
+> > +
+> > +       /* handle a changed clock that needs to readjust its rate */
+> > +       if (core->flags & CLK_KEEP_REQ_RATE && core->req_rate
+> > +                                           && core->new_rate !=
+> > old_rate
+> > +                                           && core->new_rate !=
+> > core->req_rate) +               clk_core_set_rate_nolock(core,
+> > core->req_rate);
+> 
+> I guess we don't care about errors here?
+> 
+> ...maybe (?) we could ignore errors if we validated this rate change
+> with PRE_RATE_CHANGE before attempting to change the parent clock, but
+> I don't see the code doing this unless I missed it.
+
+It's more like what would you want to do in the error/failure cases.
+
+So far I was going by the assumption we're going to change the clock anyway 
+and just try to pull marked clocks along, so in the error case it would just 
+fall back to the current behaviour.
+
+
+Heiko
+
+> >  }
+> >  
+> >  static int clk_core_set_rate_nolock(struct clk_core *core,
+> > 
+> > @@ -1529,11 +1538,11 @@ static int clk_core_set_rate_nolock(struct
+> > clk_core *core,> 
+> >                 return -EBUSY;
+> >         
+> >         }
+> > 
+> > +       core->req_rate = req_rate;
+> > +
+> > 
+> >         /* change the rates */
+> >         clk_change_rate(top);
+> > 
+> > -       core->req_rate = req_rate;
+> > -
+> > 
+> >         return ret;
+> >  
+> >  }
+> > 
+> > diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+> > index 0c72204..06f189e 100644
+> > --- a/include/linux/clk-provider.h
+> > +++ b/include/linux/clk-provider.h
+> > @@ -33,6 +33,7 @@
+> > 
+> >  #define CLK_RECALC_NEW_RATES   BIT(9) /* recalc rates after
+> >  notifications */ #define CLK_SET_RATE_UNGATE    BIT(10) /* clock needs
+> >  to run to set rate */ #define CLK_IS_CRITICAL                BIT(11)
+> >  /* do not gate, ever */> 
+> > +#define CLK_KEEP_REQ_RATE      BIT(12) /* keep reqrate on parent rate
+> > change */
+> s/reqrate/req_rate/
+
