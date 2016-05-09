@@ -1,13 +1,11 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL 1/3] Rockchip driver updates for v4.7 - part2
-Date: Mon, 09 May 2016 16:17:43 +0200
-Message-ID: <7857890.rMVEHqflgb@wuerfel>
-References: <5544434.9tA8JHBIkp@diego> <2744609.Je9E5Knv0x@diego>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [GIT PULL] rockchip clock changes for 4.7 part 4 - some more fixes
+Date: Mon, 09 May 2016 16:22:24 +0200
+Message-ID: <16076636.fp1YCeqDWQ@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2744609.Je9E5Knv0x@diego>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,18 +15,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday 29 April 2016 00:24:10 Heiko St=FCbner wrote:
-> Ability to save and restore the power-domain quality of service
-> settings that get lost and reset on power-domain power cycles.
-> =
+Hi Mike, Stephen,
 
-> =
+A fixup for a rk3399 clock name as well as the GRF-portions of
+my cleanup series. As Stephen had some mild reservations about the
+introduced indirection in the pll parts and we don't save to much lines
+with my modifications for the currently supported pll-types, I think it's
+easier to postpone those until the next new pll type comes around.
+
+Maybe it even has some completely different properties to handle where
+the current "simplification" might even be counter-productive :-) .
+
+So please pull if possible.
+
+Thanks
+Heiko
 
 
-Pulled into next/drivers, thanks!
+The following changes since commit fd8bc829336a24b770247eb893111bcb8f1ddedb:
 
-	Arnd
+  clk: rockchip: fix the rk3399 cifout clock (2016-04-25 22:54:51 +0200)
+
+are available in the git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v4.7-rockchip-clk4
+
+for you to fetch changes up to 7e5385dc722258c862f969ab7e67907156ad0e3f:
+
+  clk: rockchip: drop old_rate calculation on pll rate changes (2016-05-09 16:04:39 +0200)
+
+----------------------------------------------------------------
+Another small rk3399 fixup as well as simplifications around
+our handling of the General-Register-Files syscon.
+
+----------------------------------------------------------------
+Douglas Anderson (1):
+      clk: rockchip: fix the rk3399 sdmmc sample / drv name
+
+Heiko Stuebner (3):
+      clk: rockchip: lookup General Register Files in rockchip_clk_init
+      clk: rockchip: simplify GRF handling in pll clocks
+      clk: rockchip: drop old_rate calculation on pll rate changes
+
+ drivers/clk/rockchip/clk-pll.c    | 45 ++++++++-------------------------------
+ drivers/clk/rockchip/clk-rk3399.c |  4 ++--
+ drivers/clk/rockchip/clk.c        | 11 +++-------
+ drivers/clk/rockchip/clk.h        |  1 -
+ 4 files changed, 14 insertions(+), 47 deletions(-)
