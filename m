@@ -1,7 +1,7 @@
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH v2 5/5] ARM: dts: rockchip: veyron: Add analog audio codecs.
-Date: Mon,  9 May 2016 12:46:35 +0200
-Message-ID: <1462790795-25345-6-git-send-email-enric.balletbo@collabora.com>
+Subject: [PATCH v2 2/5] ASoC: rockchip-max98090: Fix the Headset Mic route.
+Date: Mon,  9 May 2016 12:46:32 +0200
+Message-ID: <1462790795-25345-3-git-send-email-enric.balletbo@collabora.com>
 References: <1462790795-25345-1-git-send-email-enric.balletbo@collabora.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1462790795-25345-1-git-send-email-enric.balletbo@collabora.com>
@@ -10,27 +10,38 @@ To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alsa-devel
 Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add analog-audio functionality for Veyron devices.
+The path Headset Mic --> MICBIAS is wrong because connects a non-supply
+widget as a source with a supply widget as a sink. It's the other way
+around:
+
+  MICBIAS (source) --> Headset Mic (sink).
+
+This patch also shut up the following error message:
+
+ rockchip-snd-max98090 sound: Connecting non-supply widget to supply widget is not supported (Headset Mic -> MICBIAS)
+ rockchip-snd-max98090 sound: ASoC: no dapm match for Headset Mic --> (null) --> MICBIAS
+ rockchip-snd-max98090 sound: ASoC: Failed to add route Headset Mic -> direct -> MICBIAS
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 Changes since v1:
- - None
+ - Improve log message.
 
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ sound/soc/rockchip/rockchip_max98090.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index 610769d..e25bb1a 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -46,6 +46,7 @@
- #include <dt-bindings/clock/rockchip,rk808.h>
- #include <dt-bindings/input/input.h>
- #include "rk3288-veyron.dtsi"
-+#include "rk3288-veyron-analog-audio.dtsi"
- #include "rk3288-veyron-sdmmc.dtsi"
- 
- / {
+diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+index abb64a5..3da7891 100644
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -53,7 +53,7 @@ static const struct snd_soc_dapm_widget rk_dapm_widgets[] = {
+ static const struct snd_soc_dapm_route rk_audio_map[] = {
+ 	{"IN34", NULL, "Headset Mic"},
+ 	{"IN34", NULL, "MICBIAS"},
+-	{"MICBIAS", NULL, "Headset Mic"},
++	{"Headset Mic", NULL, "MICBIAS"},
+ 	{"DMICL", NULL, "Int Mic"},
+ 	{"Headphone", NULL, "HPL"},
+ 	{"Headphone", NULL, "HPR"},
 -- 
 2.1.0
