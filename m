@@ -1,249 +1,324 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] dt-bindings: rockchip-dw-mshc: add
- rockchip,default-drv-phase
-Date: Tue, 10 May 2016 18:19:49 +0800
-Message-ID: <1f2f43c7-2672-e448-eddb-2d613bb8dc48@rock-chips.com>
-References: <1462527648-24443-1-git-send-email-shawn.lin@rock-chips.com>
- <1462527673-24711-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=WSkBwBjVsRoDsfjD+sNfR70mKGRA0khjPKKW0zS2=PTw@mail.gmail.com>
- <b15dcb4f-1584-8219-2fe0-97eecb0c64a6@rock-chips.com>
- <CAD=FV=XToSzqSh=SShHuQU9W_m7gfyQn8wRXkLy79t+tnqZknA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XToSzqSh=SShHuQU9W_m7gfyQn8wRXkLy79t+tnqZknA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: shawn.lin@rock-chips.com, Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH] pinctrl: rockchip: fix pull setting error for rk3399
+Date: Tue, 10 May 2016 19:14:56 +0800
+Message-ID: <1462878896-28956-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, David Wu <david.wu@rock-chips.com>, Caesar Wang <wxt@rock-chips.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/5/10 0:31, Doug Anderson =E5=86=99=E9=81=93:
-> Hi,
->
-> On Mon, May 9, 2016 at 4:12 AM, Shawn Lin <shawn.lin@rock-chips.com> =
-wrote:
->>> 1. Specifying a single number for this property in terms of "degree=
-s"
->>> is probably not right.  The whole point of setting the "drive phase=
-"
->>> is to meet hold times, which are specified in the spec in terms of =
-ns
->>> in the spec and also specified differently for different SD/MMC spe=
-ed
->>> modes.  Note also that "phase" translates to very different delays =
-(in
->>> terms of ns) depending on the clock rate:
->>>
->>> At 400 kHz, period is 2.5 us, so 90 degree phase offset is a delay =
-of 625
->>> ns
->>> At 25 MHz, period is 40 ns, so a 90 degree phase offset represents =
-a
->>> delay of 10 ns.
->>> At 50 MHz, period is 20 ns, so a 90 degree phase offset represents =
-a
->>> delay of 5 ns.
->>> At 200 MHz, period is period is 5 ns, so a 90 degree phase offset
->>> represents a delay of 1.25 ns.
->>
->>
->> yes, if we use degrees only(0/90/180/270), the timing is always righ=
-t.
->> But considering the delay number, we need to do some crazy calculati=
-on
->> in the set_ios callback.
->
-> Great, so let's limit it to 0/90/180/270 for the drive phase offset.
-> We don't need lots of precision for the drive phase offset (right?)
-> and accuracy is more important.
+From: David Wu <david.wu@rock-chips.com>
 
-yes.
+This patch fixes the pinctrl pull bias setting, since the pull up/down
+setting is the contrary for gpio0.
 
->
->
->>> 2. As I understand it, the value needed for the drive phase is not
->>> board specific unless you've got super crazy layout on a board (whe=
-re
->>> the clock line takes a very different path than everything else).
->>> It's also not even terribly SoC-specific unless you've got some ver=
-y
->>> strange incarnation of dw_mmc that has very different internal dela=
-ys
->>> than everyone else.  Said another way, until we see an instance of =
-an
->>> SoC/board that really needs to do things special I'd say that we
->>> should just implement this all in code (no device tree bindings).
->>>
->>
->> I'm prone to think it should be Soc specific if making sure the layo=
-ut
->> for data lines is in equal length.
->
-> Sure, it can be SoC specific.  ...though at the moment, I'd bet that
-> you can come up with a single rule for the drive phase offset that
-> will work for every Rockchip SoC produced so far, especially if you
-> are using only 0/90/180/270.  I'd imagine that they all have similar
-> enough internal delays.
+From the TRM said, the gpio0 pull polarity setting:
+gpio0a_p (gpio0 )
+GPIO0A PE/PS programmation section, every
+GPIO bit corresponding to 2bits[PS:PE]
+2'b00: Z(Noraml operaton);
+2'b11: weak 1(pull-up);
+2'b01: weak 0(pull-down);
+2'b10: Z(Noraml operaton);
 
-=46or a specific Soc, it's the basic rule to make sure the internal del=
-ays
-is the same(nearly the same) for all of the lines.
+Then, the other gpios setting as the following:
+gpio1a_p (gpio1, gpio2, gpio3...)
+GPIO1A PU/PD programmation section, every
+GPIO bit corresponding to 2bits
+2'b00: Z(Noraml operaton);
+2'b01: weak 1(pull-up);
+2'b10: weak 0(pull-down);
+2'b11: Repeater(Bus keeper)
 
->
->
->>> 3. If this property was actually board specific and actually needed=
- to
->>> be tuned board-by-board, you'd have a bug because your new device t=
-ree
->>> bindings are not backward compatible and you'd probably be breaking
->>> old boards.  Specifically you're changing the definition of what
->>> happens when "rockchip,default-drv-phase" is not specified.  Old
->>> behavior was to leave the value that was setup by the firmware (or
->>> perhaps the hardware default if the firmware didn't touch this).
->>
->>
->> drv_phase is for all the data lines instead of tuning the lines
->> one-by-one. So this patch can't save the terrible board layout.
->> But I agree that it will break the compatibility backward if firware
->> touch this value.
->>
->>>
->>> ---
->>>
->>> OK, so what should we do?
->>>
->>> We could certainly do lots of crazy math to come up with the ideal
->>> hold time for all different speed modes and all different types of
->>> cards.  With my reading of the Designware Databook this would mean
->>> that somewhere we'd want to specify which delay method we're using
->>> (phase shift vs. delay line) and how long all the delays timings al=
-l
->>> are on your particular SoC.  That all sounds quite difficult, thoug=
-h.
->>
->>
->> delay line is diff from chip to chip, soc-to-soc, board-to-board. Fo=
-r
->> sample-phase we have tuning process and re-tune, but not for drv-pha=
-se.
->> So We bascially should avoid to use it for drv-phase. Another
->> consideration is the temperature drift of delay line.
->>
->> Maybe we should do some tricky limitation on clk-mmc-phase to only
->> support fixed degrees?
->
-> As per above, let's not use delay line for drive delay.  On all
-> Rockchip SoCs that I have seen it's possible to make 0/90/180/270 ver=
-y
-> accurately.  That means no board-to-board differences.  Current
-> mainline Linux kernel source code will always make 0/90/180/270 using
-> phase offset (not delay line).
+For example,(rk3399evb board)
+sdmmc_cd --->gpio0_a7
+localhost / # io -r -4 0xff320040
+ff320040: 00004d5f
+In general,the value should be 0x0000cd5f since the pin set in the dts.
 
-yes, 0/90/180/270 is very accurate and mainline kernel use phase offset
-for these four phase.
+Signed-off-by: David Wu <david.wu@rock-chips.com>
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org
+---
 
->
-> For sampling we use tuning and using the delay elements makes some
-> sense (since 90 degrees is not quite accurate enough to fully tune
-> UHS).  ...but for driving where the only requirement is hold times we
-> don't need delay elements.
+ drivers/pinctrl/pinctrl-rockchip.c | 178 ++++++++++++++++++++++++++-----------
+ 1 file changed, 126 insertions(+), 52 deletions(-)
 
-Right. We care hold time here.
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 596b869..38be9c7 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -99,6 +99,15 @@ enum rockchip_pin_drv_type {
+ };
+ 
+ /**
++ * enum type index corresponding to rockchip_pull_list arrays index.
++ */
++enum rockchip_pin_pull_type {
++	PULL_TYPE_IO_DEFAULT = 0,
++	PULL_TYPE_IO_1V8_ONLY,
++	PULL_TYPE_MAX
++};
++
++/**
+  * @drv_type: drive strength variant using rockchip_perpin_drv_type
+  * @offset: if initialized to -1 it will be autocalculated, by specifying
+  *	    an initial offset value the relevant source offset can be reset
+@@ -123,6 +132,7 @@ struct rockchip_drv {
+  * @bank_num: number of the bank, to account for holes
+  * @iomux: array describing the 4 iomux sources of the bank
+  * @drv: array describing the 4 drive strength sources of the bank
++ * @pull_type: array describing the 4 pull type sources of the bank
+  * @valid: are all necessary informations present
+  * @of_node: dt node of this bank
+  * @drvdata: common pinctrl basedata
+@@ -143,6 +153,7 @@ struct rockchip_pin_bank {
+ 	u8				bank_num;
+ 	struct rockchip_iomux		iomux[4];
+ 	struct rockchip_drv		drv[4];
++	enum rockchip_pin_pull_type	pull_type[4];
+ 	bool				valid;
+ 	struct device_node		*of_node;
+ 	struct rockchip_pinctrl		*drvdata;
+@@ -198,6 +209,31 @@ struct rockchip_pin_bank {
+ 		},							\
+ 	}
+ 
++#define PIN_BANK_DRV_FLAGS_PULL_FLAGS(id, pins, label, drv0, drv1,	\
++				      drv2, drv3, pull0, pull1,		\
++				      pull2, pull3)			\
++	{								\
++		.bank_num	= id,					\
++		.nr_pins	= pins,					\
++		.name		= label,				\
++		.iomux		= {					\
++			{ .offset = -1 },				\
++			{ .offset = -1 },				\
++			{ .offset = -1 },				\
++			{ .offset = -1 },				\
++		},							\
++		.drv		= {					\
++			{ .drv_type = drv0, .offset = -1 },		\
++			{ .drv_type = drv1, .offset = -1 },		\
++			{ .drv_type = drv2, .offset = -1 },		\
++			{ .drv_type = drv3, .offset = -1 },		\
++		},							\
++		.pull_type[0] = pull0,					\
++		.pull_type[1] = pull1,					\
++		.pull_type[2] = pull2,					\
++		.pull_type[3] = pull3,					\
++	}
++
+ #define PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(id, pins, label, iom0, iom1,	\
+ 					iom2, iom3, drv0, drv1, drv2,	\
+ 					drv3, offset0, offset1,		\
+@@ -220,6 +256,34 @@ struct rockchip_pin_bank {
+ 		},							\
+ 	}
+ 
++#define PIN_BANK_IOMUX_FLAGS_DRV_FLAGS_OFFSET_PULL_FLAGS(id, pins,	\
++					      label, iom0, iom1, iom2,  \
++					      iom3, drv0, drv1, drv2,   \
++					      drv3, offset0, offset1,   \
++					      offset2, offset3, pull0,  \
++					      pull1, pull2, pull3)	\
++	{								\
++		.bank_num	= id,					\
++		.nr_pins	= pins,					\
++		.name		= label,				\
++		.iomux		= {					\
++			{ .type = iom0, .offset = -1 },			\
++			{ .type = iom1, .offset = -1 },			\
++			{ .type = iom2, .offset = -1 },			\
++			{ .type = iom3, .offset = -1 },			\
++		},							\
++		.drv		= {					\
++			{ .drv_type = drv0, .offset = offset0 },	\
++			{ .drv_type = drv1, .offset = offset1 },	\
++			{ .drv_type = drv2, .offset = offset2 },	\
++			{ .drv_type = drv3, .offset = offset3 },	\
++		},							\
++		.pull_type[0] = pull0,					\
++		.pull_type[1] = pull1,					\
++		.pull_type[2] = pull2,					\
++		.pull_type[3] = pull3,					\
++	}
++
+ /**
+  */
+ struct rockchip_pin_ctrl {
+@@ -1020,12 +1084,27 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 	return ret;
+ }
+ 
++static int rockchip_pull_list[PULL_TYPE_MAX][4] = {
++	{
++		PIN_CONFIG_BIAS_DISABLE,
++		PIN_CONFIG_BIAS_PULL_UP,
++		PIN_CONFIG_BIAS_PULL_DOWN,
++		PIN_CONFIG_BIAS_BUS_HOLD
++	},
++	{
++		PIN_CONFIG_BIAS_DISABLE,
++		PIN_CONFIG_BIAS_PULL_DOWN,
++		PIN_CONFIG_BIAS_DISABLE,
++		PIN_CONFIG_BIAS_PULL_UP
++	},
++};
++
+ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+ 	struct regmap *regmap;
+-	int reg, ret;
++	int reg, ret, pull_type;
+ 	u8 bit;
+ 	u32 data;
+ 
+@@ -1048,22 +1127,11 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ 	case RK3288:
+ 	case RK3368:
+ 	case RK3399:
++		pull_type = bank->pull_type[pin_num / 8];
+ 		data >>= bit;
+ 		data &= (1 << RK3188_PULL_BITS_PER_PIN) - 1;
+ 
+-		switch (data) {
+-		case 0:
+-			return PIN_CONFIG_BIAS_DISABLE;
+-		case 1:
+-			return PIN_CONFIG_BIAS_PULL_UP;
+-		case 2:
+-			return PIN_CONFIG_BIAS_PULL_DOWN;
+-		case 3:
+-			return PIN_CONFIG_BIAS_BUS_HOLD;
+-		}
+-
+-		dev_err(info->dev, "unknown pull setting\n");
+-		return -EIO;
++		return rockchip_pull_list[pull_type][data];
+ 	default:
+ 		dev_err(info->dev, "unsupported pinctrl type\n");
+ 		return -EINVAL;
+@@ -1076,7 +1144,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+ 	struct regmap *regmap;
+-	int reg, ret;
++	int reg, ret, i, pull_type;
+ 	unsigned long flags;
+ 	u8 bit;
+ 	u32 data, rmask;
+@@ -1105,30 +1173,27 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 	case RK3288:
+ 	case RK3368:
+ 	case RK3399:
++		pull_type = bank->pull_type[pin_num / 8];
++		ret = -EINVAL;
++		for (i = 0; i < ARRAY_SIZE(rockchip_pull_list[pull_type]);
++			i++) {
++			if (rockchip_pull_list[pull_type][i] == pull) {
++				ret = i;
++				break;
++			}
++		}
++
++		if (ret < 0) {
++			dev_err(info->dev, "unknown pull setting %d\n", pull);
++			return ret;
++		}
++
+ 		spin_lock_irqsave(&bank->slock, flags);
+ 
+ 		/* enable the write to the equivalent lower bits */
+ 		data = ((1 << RK3188_PULL_BITS_PER_PIN) - 1) << (bit + 16);
+ 		rmask = data | (data >> 16);
+-
+-		switch (pull) {
+-		case PIN_CONFIG_BIAS_DISABLE:
+-			break;
+-		case PIN_CONFIG_BIAS_PULL_UP:
+-			data |= (1 << bit);
+-			break;
+-		case PIN_CONFIG_BIAS_PULL_DOWN:
+-			data |= (2 << bit);
+-			break;
+-		case PIN_CONFIG_BIAS_BUS_HOLD:
+-			data |= (3 << bit);
+-			break;
+-		default:
+-			spin_unlock_irqrestore(&bank->slock, flags);
+-			dev_err(info->dev, "unsupported pull setting %d\n",
+-				pull);
+-			return -EINVAL;
+-		}
++		data |= (ret << bit);
+ 
+ 		ret = regmap_update_bits(regmap, reg, rmask, data);
+ 
+@@ -2552,19 +2617,24 @@ static struct rockchip_pin_ctrl rk3368_pin_ctrl = {
+ };
+ 
+ static struct rockchip_pin_bank rk3399_pin_banks[] = {
+-	PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(0, 32, "gpio0", IOMUX_SOURCE_PMU,
+-					IOMUX_SOURCE_PMU,
+-					IOMUX_SOURCE_PMU,
+-					IOMUX_SOURCE_PMU,
+-					DRV_TYPE_IO_1V8_ONLY,
+-					DRV_TYPE_IO_1V8_ONLY,
+-					DRV_TYPE_IO_DEFAULT,
+-					DRV_TYPE_IO_DEFAULT,
+-					0x0,
+-					0x8,
+-					-1,
+-					-1
+-					),
++	PIN_BANK_IOMUX_FLAGS_DRV_FLAGS_OFFSET_PULL_FLAGS(0, 32, "gpio0",
++							 IOMUX_SOURCE_PMU,
++							 IOMUX_SOURCE_PMU,
++							 IOMUX_SOURCE_PMU,
++							 IOMUX_SOURCE_PMU,
++							 DRV_TYPE_IO_1V8_ONLY,
++							 DRV_TYPE_IO_1V8_ONLY,
++							 DRV_TYPE_IO_DEFAULT,
++							 DRV_TYPE_IO_DEFAULT,
++							 0x0,
++							 0x8,
++							 -1,
++							 -1,
++							 PULL_TYPE_IO_1V8_ONLY,
++							 PULL_TYPE_IO_1V8_ONLY,
++							 PULL_TYPE_IO_DEFAULT,
++							 PULL_TYPE_IO_DEFAULT
++							),
+ 	PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(1, 32, "gpio1", IOMUX_SOURCE_PMU,
+ 					IOMUX_SOURCE_PMU,
+ 					IOMUX_SOURCE_PMU,
+@@ -2578,11 +2648,15 @@ static struct rockchip_pin_bank rk3399_pin_banks[] = {
+ 					0x30,
+ 					0x38
+ 					),
+-	PIN_BANK_DRV_FLAGS(2, 32, "gpio2", DRV_TYPE_IO_1V8_OR_3V0,
+-			   DRV_TYPE_IO_1V8_OR_3V0,
+-			   DRV_TYPE_IO_1V8_ONLY,
+-			   DRV_TYPE_IO_1V8_ONLY
+-			   ),
++	PIN_BANK_DRV_FLAGS_PULL_FLAGS(2, 32, "gpio2", DRV_TYPE_IO_1V8_OR_3V0,
++				      DRV_TYPE_IO_1V8_OR_3V0,
++				      DRV_TYPE_IO_1V8_ONLY,
++				      DRV_TYPE_IO_1V8_ONLY,
++				      PULL_TYPE_IO_DEFAULT,
++				      PULL_TYPE_IO_DEFAULT,
++				      PULL_TYPE_IO_1V8_ONLY,
++				      PULL_TYPE_IO_1V8_ONLY
++				      ),
+ 	PIN_BANK_DRV_FLAGS(3, 32, "gpio3", DRV_TYPE_IO_3V3_ONLY,
+ 			   DRV_TYPE_IO_3V3_ONLY,
+ 			   DRV_TYPE_IO_3V3_ONLY,
+-- 
+1.9.1
 
->
->
->>> Probably you could just add a simple function that looked at the cl=
-ock
->>> and speed mode and always chose an offset of 90 or 180 degrees.  At
->>> least on Rockchip devices you can be certain that you can make 90 a=
-nd
->>> 180 degrees using phase shifts and thus the timings should be
->>> consistent.  By default you could just always choose 180.  The
->>> Designware databook has some examples where it picked 90 degrees
->>> (SDR50, DDR50, SDR25, MMC High Speed), but I'm not enough of an MMC
->>> expert to know if there is some benefit to choosing 90.  Would we
->>> violate any specs if we just chose 180 degrees all the time everywh=
-ere
->>> on all Rockchip devices?
->>
->>
->> It needs more waveform test to see how things going. But most of
->> rockchip platforms in the pass years didn't touch drv-phase stuff no=
-t
->> only in kernel but also in firmware, then we still cannot see the
->> violation against the spec when using defalut reset value, namely 18=
-0, for
->> drv-phase.
->
-> Right, most Rockchip platforms simply don't touch this and it works
-> OK.  ...but I don't think it defaults to 180.  Grepping through on my
-> veyron (rk3288) device shows
->
->        sdio1_drv - 90
->        sdio0_drv - 90
->        sdmmc_drv - 90
->        emmc_drv -180
->
-> ...and, as we've seen, these values appear to be 270 on some other So=
-Cs.
->
-
-Have your code touched them? I check the TRM and find it should be 180
-always.
-
-Also for rk3036/3368/3399/3228.... the reset vaule is 180...
-
->
-> The claim from the Designware Databook says that SDR104 and SDR12, an=
-d
-> identification mode need 180 degrees to work properly.  It would be
-> interesting to hook up rk3288 to a signal analyzer and see hold times
-> are OK or if we need to move up to 180 degrees for those modes.
->
-> Note that the Designware Databook assumes "Delay_O" of 1.4ns.  If
-> yours is shorter then maybe 90 degrees is OK for those modes?
->
-
-maybe. But I think 180(downside) is the better.
-
->
-> Also: I still haven't heard whether there is any downside to using 18=
-0
-> degrees for modes that only require 90 degrees.  Does it cause
-> problems to just always use 180 degrees?  If not, we could possibly
-> use 180 degrees everywhere and just hardcode it?
-
- From tons of test on rockchip products which always use 180, I didn't
-see failure. Hardcoding it doesn't look so decent maybe... but anyway
-it works.
-
->
->
-> ...but if 180 is ideal everywhere, can you answer:
->
-> * Why does dw_mmc manual spend so much time talking about it?  It
-> could just say "set to 180 degrees".
-
-I'm sure all the rockchip Socs defaultly use 180 for drv_phase if I got
-the right TRMs these years.
-
-Anyway let me check it with my ASIC team and I will let you know
-the result.
-
-
-Thanks.
-
->
-> * Why do Rockchip SoCs default to values that are not 180 degrees?
->
-> -Doug
->
->
->
-
-
---=20
-Best Regards
-Shawn Lin
