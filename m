@@ -1,86 +1,91 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH 3/3] drm/rockchip: fix "should it be static?" warnings
-Date: Tue, 10 May 2016 17:03:56 +0100
-Message-ID: <20160510160356.1167-4-john@metanate.com>
-References: <20160510160356.1167-1-john@metanate.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160510160356.1167-1-john@metanate.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark Yao <mark.yao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH] mmc: dw_mmc: rockchip: Set the drive phase to 180 degrees
+Date: Tue, 10 May 2016 11:16:35 -0700
+Message-ID: <1462904195-18229-1-git-send-email-dianders@chromium.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, briannorris@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Q29tYmluZWQgd2l0aCB0aGUgcHJldmlvdXMgY29tbWl0LCB0aGlzIGZpeGVzIGFsbCBvZiB0aGUg
-c3BhcnNlIHdhcm5pbmdzCmluIGRybS9yb2NrY2hpcC4KClNpZ25lZC1vZmYtYnk6IEpvaG4gS2Vl
-cGluZyA8am9obkBtZXRhbmF0ZS5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9kcnYuYyB8IDQgKystLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9mYi5jICB8IDYgKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX3ZvcC5jIHwgNCArKy0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-dm9wX3JlZy5jIHwgMiArLQogNCBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDggZGVs
-ZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlw
-X2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
-aW5kZXggMzk5YWRmM2M0MjI0Li5iMjUzZjY1YzNlMTQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3Jv
-Y2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwpAQCAtMjg3LDcgKzI4Nyw3IEBAIHN0YXRpYyB2b2lk
-IHJvY2tjaGlwX2RybV9wcmVjbG9zZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAogCQlyb2NrY2hp
-cF9kcm1fY3J0Y19jYW5jZWxfcGVuZGluZ192YmxhbmsoY3J0YywgZmlsZV9wcml2KTsKIH0KIAot
-dm9pZCByb2NrY2hpcF9kcm1fbGFzdGNsb3NlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCitzdGF0
-aWMgdm9pZCByb2NrY2hpcF9kcm1fbGFzdGNsb3NlKHN0cnVjdCBkcm1fZGV2aWNlICpkZXYpCiB7
-CiAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2ID0gZGV2LT5kZXZfcHJpdmF0ZTsK
-IApAQCAtMzA3LDcgKzMwNyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZmlsZV9vcGVyYXRpb25z
-IHJvY2tjaGlwX2RybV9kcml2ZXJfZm9wcyA9IHsKIAkucmVsZWFzZSA9IGRybV9yZWxlYXNlLAog
-fTsKIAotY29uc3Qgc3RydWN0IHZtX29wZXJhdGlvbnNfc3RydWN0IHJvY2tjaGlwX2RybV92bV9v
-cHMgPSB7CitzdGF0aWMgY29uc3Qgc3RydWN0IHZtX29wZXJhdGlvbnNfc3RydWN0IHJvY2tjaGlw
-X2RybV92bV9vcHMgPSB7CiAJLm9wZW4gPSBkcm1fZ2VtX3ZtX29wZW4sCiAJLmNsb3NlID0gZHJt
-X2dlbV92bV9jbG9zZSwKIH07CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2ZiLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X2ZiLmMKaW5kZXggODVhYTg3ZWUxMmY1Li45NmQ5MWYxNmUwMDEgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmIuYworKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKQEAgLTI3NSw5ICsyNzUsOSBAQCB2b2lkIHJv
-Y2tjaGlwX2RybV9hdG9taWNfd29yayhzdHJ1Y3Qgd29ya19zdHJ1Y3QgKndvcmspCiAJcm9ja2No
-aXBfYXRvbWljX2NvbW1pdF9jb21wbGV0ZShjb21taXQpOwogfQogCi1pbnQgcm9ja2NoaXBfZHJt
-X2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKLQkJCSAgICAgICBzdHJ1Y3Qg
-ZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUsCi0JCQkgICAgICAgYm9vbCBub25ibG9jaykKK3N0YXRp
-YyBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwK
-KwkJCQkgICAgICBzdHJ1Y3QgZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUsCisJCQkJICAgICAgYm9v
-bCBub25ibG9jaykKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBk
-ZXYtPmRldl9wcml2YXRlOwogCXN0cnVjdCByb2NrY2hpcF9hdG9taWNfY29tbWl0ICpjb21taXQg
-PSAmcHJpdmF0ZS0+Y29tbWl0OwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L3JvY2tjaGlwX2RybV92b3AuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fdm9wLmMKaW5kZXggYmY1NWNkYTM1NmJhLi45NDkxNzFhODA2MzEgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKKysrIGIvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwpAQCAtNzc5LDcgKzc3OSw3IEBAIHN0
-YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX3BsYW5lX2hlbHBlcl9mdW5jcyBwbGFuZV9oZWxwZXJfZnVu
-Y3MgPSB7CiAJLmF0b21pY19kaXNhYmxlID0gdm9wX3BsYW5lX2F0b21pY19kaXNhYmxlLAogfTsK
-IAotdm9pZCB2b3BfYXRvbWljX3BsYW5lX3Jlc2V0KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQor
-c3RhdGljIHZvaWQgdm9wX2F0b21pY19wbGFuZV9yZXNldChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZSkKIHsKIAlzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICp2b3BfcGxhbmVfc3RhdGUgPQogCQkJCQl0
-b192b3BfcGxhbmVfc3RhdGUocGxhbmUtPnN0YXRlKTsKQEAgLTc5Niw3ICs3OTYsNyBAQCB2b2lk
-IHZvcF9hdG9taWNfcGxhbmVfcmVzZXQoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUpCiAJcGxhbmUt
-PnN0YXRlLT5wbGFuZSA9IHBsYW5lOwogfQogCi1zdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICoKK3N0
-YXRpYyBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICoKIHZvcF9hdG9taWNfcGxhbmVfZHVwbGljYXRl
-X3N0YXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQogewogCXN0cnVjdCB2b3BfcGxhbmVfc3Rh
-dGUgKm9sZF92b3BfcGxhbmVfc3RhdGU7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX3ZvcF9yZWcuYwppbmRleCAzMTY2YjQ2YTU4OTMuLjUyNjYxZDExNmVjMiAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3ZvcF9yZWcuYworKysgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCkBAIC0yOTksNyArMjk5LDcg
-QEAgc3RhdGljIGludCB2b3BfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCiAJ
-cmV0dXJuIDA7CiB9CiAKLXN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgdm9wX3BsYXRmb3JtX2RyaXZl
-ciA9IHsKK3N0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHZvcF9wbGF0Zm9ybV9kcml2ZXIg
-PSB7CiAJLnByb2JlID0gdm9wX3Byb2JlLAogCS5yZW1vdmUgPSB2b3BfcmVtb3ZlLAogCS5kcml2
-ZXIgPSB7Ci0tIAoyLjguMi41NjUuZ2RiODRmNjguZGlydHkKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Historically for Rockchip devices we've relied on the power-on
+default (or perhaps the firmware setting) to get the correct drive
+phase for dw_mmc devices.  This worked OK for the most part, but:
+
+* Relying on the setting just "being right" is a bit fragile.
+
+* As soon as there is an instance where the power on default is wrong or
+  where the firmware didn't configure this properly then we'll get a
+  mysterious failure.
+
+Let's explicitly set this phase in the kernel.
+
+You might notice that this patch is currently very dumb and just always
+sets this phase to 180 degrees.  As far as I can tell this is actually a
+sane thing to do.  From reading through the Designware Databook it
+appears that there are instances where you could still meet hold time
+requirements and set this phase to 90 degrees, but nothing I've read
+indicates that 180 degrees is not OK also.
+
+As indicated above, adding a delay to the drive is used to achieve
+proper hold times.  For a given speed mode hold times are listed in the
+spec in terms of nanoseconds.  The hold times are different for
+different speed modes.  The actual hold time achieved is actually a
+function of Delay_O (an internal delay in dw_mmc, which could vary from
+SoC model to SoC model), pad delays, and the drive delay (which we're
+setting here).  Note also that by setting the drive delay as a phase we
+will get a different number of nanoseconds of delay depending on the
+input clock.
+
+Note that, as far as I can tell, this _does_ change the behavior of
+rk3288 devices.  On devices I tested, which use coreboot/depthcharge as
+BIOS, the SDMMC/SDIO0/SDIO1 drive phase used to be 90 degrees.  Now it
+will be 180 degrees.  With my understanding from the Designware Databook
+the 180 degrees ought to be more correct and should increase
+compatibility.
+
+I have tested this by inserting my collection of uSD cards (mostly UHS,
+though a few not) into a veyron_minnie and confirmed that they still
+seem to enumerate properly.  For a subset of them I tried putting a
+filesystem on them and also tried running mmc_test.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+---
+ drivers/mmc/host/dw_mmc-rockchip.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 8c20b81cafd8..62cbd33a07cd 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -66,6 +66,27 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	/* Make sure we use phases which we can enumerate with */
+ 	if (!IS_ERR(priv->sample_clk))
+ 		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
++
++	/*
++	 * Set the drive phase to 180 degrees.  This helps us achieve proper
++	 * hold times.
++	 *
++	 * Note that this is _not_ a value that is tuned and is also _not_ a
++	 * value that will vary from board to board.  It is a value that
++	 * _could_ vary between different SoC models (could be different on
++	 * rk3066 vs. rk3288 for instance).  It is also a value that _could_
++	 * need to be adjusted based on our clock frequency and speed mode
++	 * since different speed modes have different hold time requirements
++	 * and hold time requirements are in "ns" (a phase offset adds a
++	 * different "ns" delay for different input clocks).
++	 *
++	 * Despite these theoretical needs, it has been observed that 180
++	 * degrees gives us good signaling across all tested SoCs and all
++	 * tested speed modes.  If when we find someone that needs 90 degrees
++	 * here we can add a table based on speed mode / SoC compatible ID.
++	 */
++	if (!IS_ERR(priv->drv_clk))
++		clk_set_phase(priv->drv_clk, 180);
+ }
+ 
+ #define NUM_PHASES			360
+-- 
+2.8.0.rc3.226.g39d4020
+
