@@ -1,637 +1,332 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v4 3/7] mfd: RK808: Add RK818 support
-Date: Tue, 10 May 2016 08:54:38 +0100
-Message-ID: <20160510075438.GJ19473@dell>
-References: <1461682450-22173-1-git-send-email-w.egorov@phytec.de>
- <1461682450-22173-4-git-send-email-w.egorov@phytec.de>
- <57318501.4060900@phytec.de>
+From: Shawn Lin <shawn.lin-NgiFYW8Wbx6Ta72+1OMJgUB+6BGkLq7r@public.gmane.org>
+Subject: Re: [PATCH v2 3/6] mmc: core: implement enhanced strobe support
+Date: Tue, 10 May 2016 16:29:52 +0800
+Message-ID: <d566fb19-2565-66d8-023a-bd9a7ef987b6@kernel-upstream.org>
+References: <1461897751-28810-1-git-send-email-shawn.lin@rock-chips.com>
+ <1461898029-28944-1-git-send-email-shawn.lin@rock-chips.com>
+ <57307AF6.8030401@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <57318501.4060900@phytec.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, a.zummo@towertech.it, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, mturquette@baylibre.com, sboyd@codeaurora.org, lgirdwood@gmail.com, dianders@chromium.org, robh+dt@kernel.org, alexandre.belloni@free-electrons.com, broonie@kernel.org, galak@codeaurora.org, zyw@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <57307AF6.8030401-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 10 May 2016, Wadim Egorov wrote:
+On 2016/5/9 19:56, Adrian Hunter wrote:
+> On 29/04/16 05:47, Shawn Lin wrote:
+>> Controllers use data strobe line to latch data from devices
+>> under hs400 mode, but not for cmd line. So since emmc 5.1, JEDEC
+>> introduces enhanced strobe mode for latching cmd response from
+>> emmc devices to host controllers. This new feature is optional,
+>> so it depends both on device's cap and host's cap to decide
+>> whether to use it or not.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> Thanks for doing this.  There are a couple of comments below, but generally
+> I tend to think you should split out selecting HS400ES as a separate function.
+>
+>> ---
+>>
+>> Changes in v2: None
+>>
+>>  drivers/mmc/core/bus.c   |  3 +-
+>>  drivers/mmc/core/mmc.c   | 77 ++++++++++++++++++++++++++++++++++++++++++++----
+>>  include/linux/mmc/card.h |  1 +
+>>  include/linux/mmc/host.h | 12 ++++++++
+>>  include/linux/mmc/mmc.h  |  3 ++
+>>  5 files changed, 89 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/drivers/mmc/core/bus.c b/drivers/mmc/core/bus.c
+>> index 4bc48f1..7e94b9d 100644
+>> --- a/drivers/mmc/core/bus.c
+>> +++ b/drivers/mmc/core/bus.c
+>> @@ -332,12 +332,13 @@ int mmc_add_card(struct mmc_card *card)
+>>  			mmc_card_ddr52(card) ? "DDR " : "",
+>>  			type);
+>>  	} else {
+>> -		pr_info("%s: new %s%s%s%s%s card at address %04x\n",
+>> +		pr_info("%s: new %s%s%s%s%s%s card at address %04x\n",
+>>  			mmc_hostname(card->host),
+>>  			mmc_card_uhs(card) ? "ultra high speed " :
+>>  			(mmc_card_hs(card) ? "high speed " : ""),
+>>  			mmc_card_hs400(card) ? "HS400 " :
+>>  			(mmc_card_hs200(card) ? "HS200 " : ""),
+>> +			mmc_card_hs400es(card) ? "Enhanced strobe" : "",
+>>  			mmc_card_ddr52(card) ? "DDR " : "",
+>>  			uhs_bus_speed_mode, type, card->rca);
+>>  	}
+>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+>> index 28b477d..f45ed10 100644
+>> --- a/drivers/mmc/core/mmc.c
+>> +++ b/drivers/mmc/core/mmc.c
+>> @@ -235,6 +235,12 @@ static void mmc_select_card_type(struct mmc_card *card)
+>>  		avail_type |= EXT_CSD_CARD_TYPE_HS400_1_2V;
+>>  	}
+>>
+>> +	if ((caps2 & MMC_CAP2_HS400_ENHANCED_STROBE) &&
+>> +	    card->ext_csd.strobe_support &&
+>> +	    ((card_type & EXT_CSD_CARD_TYPE_HS400_1_2V) ||
+>> +	     (card_type & EXT_CSD_CARD_TYPE_HS400_1_8V)))
+>
+> Could use just "card_type & EXT_CSD_CARD_TYPE_HS400" here
 
-> Ping.
+okay, EXT_CSD_CARD_TYPE_HS400 contains 1_2V & 1_8V, so I will
+use it.
 
-Don't ping.  It only serves to annoy!
+>
+>> +		avail_type |= EXT_CSD_CARD_TYPE_HS400ES;
+>> +
+>>  	card->ext_csd.hs_max_dtr = hs_max_dtr;
+>>  	card->ext_csd.hs200_max_dtr = hs200_max_dtr;
+>>  	card->mmc_avail_type = avail_type;
+>> @@ -383,6 +389,7 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+>>  			mmc_card_set_blockaddr(card);
+>>  	}
+>>
+>> +	card->ext_csd.strobe_support = ext_csd[EXT_CSD_STROBE_SUPPORT];
+>>  	card->ext_csd.raw_card_type = ext_csd[EXT_CSD_CARD_TYPE];
+>>  	mmc_select_card_type(card);
+>>
+>> @@ -1062,9 +1069,10 @@ static int mmc_select_hs400(struct mmc_card *card)
+>>  	u8 val;
+>>
+>>  	/*
+>> -	 * HS400 mode requires 8-bit bus width
+>> +	 * HS400(ES) mode requires 8-bit bus width
+>>  	 */
+>> -	if (!(card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400 &&
+>> +	if (!(((card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400) ||
+>> +		(card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES)) &&
+>>  	      host->ios.bus_width == MMC_BUS_WIDTH_8))
+>>  		return 0;
+>>
+>> @@ -1097,9 +1105,26 @@ static int mmc_select_hs400(struct mmc_card *card)
+>>  	}
+>>
+>>  	/* Switch card to DDR */
+>> +	val = EXT_CSD_DDR_BUS_WIDTH_8;
+>> +	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES) {
+>> +		val |= EXT_CSD_BUS_WIDTH_STROBE;
+>> +		/*
+>> +		* Make sure we are in non-enhanced strobe mode before we
+>> +		* actually enable it in ext_csd.
+>> +		*/
+>> +		if (host->ops->prepare_enhanced_strobe)
+>> +			err = host->ops->prepare_enhanced_strobe(host, false);
+>> +
+>> +		if (err) {
+>> +			pr_err("%s: unprepare_enhanced strobe failed, err:%d\n",
+>> +				mmc_hostname(host), err);
+>> +			return err;
+>> +		}
+>> +	}
+>> +
+>>  	err = mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>>  			 EXT_CSD_BUS_WIDTH,
+>> -			 EXT_CSD_DDR_BUS_WIDTH_8,
+>> +			 val,
+>>  			 card->ext_csd.generic_cmd6_time);
+>>  	if (err) {
+>>  		pr_err("%s: switch to bus width for hs400 failed, err:%d\n",
+>> @@ -1124,6 +1149,35 @@ static int mmc_select_hs400(struct mmc_card *card)
+>>  	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
+>>  	mmc_set_bus_speed(card);
+>>
+>> +	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES) {
+>> +		/* Controller enable enhanced strobe function */
+>> +		if (host->ops->prepare_enhanced_strobe)
+>> +			err = host->ops->prepare_enhanced_strobe(host, true);
+>> +
+>> +		if (err) {
+>> +			pr_err("%s: prepare enhanced strobe failed, err:%d\n",
+>> +				mmc_hostname(host), err);
+>> +			return err;
+>> +		}
+>> +
+>> +		/*
+>> +		 * After switching to hs400 enhanced strobe mode, we expect to
+>> +		 * verify whether it works or not. If controller can't handle
+>> +		 * bus width test, compare ext_csd previously read in 1 bit mode
+>> +		 * against ext_csd at new bus width
+>> +		 */
+>
+> I don't think we need this.  Just checking (host->caps & MMC_CAP_8_BIT_DATA)
+> ought to be enough.  But if you want to play if safe, you could use
+> mmc_select_bus_width() in advance.
 
-> Do you have any more comments?
+Ulf also questioned the requirment of doing this.
+I consider droping this checking for the next version.
 
-Just re-submit the set with the Acks you've collected.
+>
+>> +		if (!(host->caps & MMC_CAP_BUS_WIDTH_TEST))
+>> +			err = mmc_compare_ext_csds(card, MMC_BUS_WIDTH_8);
+>> +		else
+>> +			err = mmc_bus_test(card, MMC_BUS_WIDTH_8);
+>> +
+>> +		if (err) {
+>> +			pr_warn("%s: switch to enhanced strobe failed\n",
+>> +				mmc_hostname(host));
+>> +			return err;
+>> +		}
+>> +	}
+>> +
+>>  	if (!send_status) {
+>>  		err = mmc_switch_status(card);
+>>  		if (err)
+>> @@ -1297,7 +1351,8 @@ err:
+>>  }
+>>
+>>  /*
+>> - * Activate High Speed or HS200 mode if supported.
+>> + * Activate High Speed or HS200 mode if supported. For HS400
+>> + * with enhanced strobe mode, we should activate High Speed.
+>>   */
+>>  static int mmc_select_timing(struct mmc_card *card)
+>>  {
+>> @@ -1306,7 +1361,9 @@ static int mmc_select_timing(struct mmc_card *card)
+>>  	if (!mmc_can_ext_csd(card))
+>>  		goto bus_speed;
+>>
+>> -	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>> +	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES)
+>> +		err = mmc_select_hs(card);
+>
+> In my view, you should just make a new function: mmc_select_hs400es()
 
-> On 26.04.2016 16:54, Wadim Egorov wrote:
-> > The RK818 chip is a power management IC for multimedia and handheld
-> > devices. It contains the following components:
-> >
-> > - Regulators
-> > - RTC
-> > - Clkout
-> > - battery support
-> >
-> > Both chips RK808 and RK818 are using a similar register map.
-> > So we can reuse the RTC and Clkout functionality.
-> >
-> > Signed-off-by: Wadim Egorov <w.egorov@phytec.de>
-> > ---
-> > Changes since v3:
-> > - fixed file and module descriptions
-> > ---
-> >  drivers/mfd/Kconfig       |   4 +-
-> >  drivers/mfd/rk808.c       | 229 ++++++++++++++++++++++++++++++++++=
-+++++-------
-> >  include/linux/mfd/rk808.h | 162 ++++++++++++++++++++++++++++++--
-> >  3 files changed, 349 insertions(+), 46 deletions(-)
-> >
-> > diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
-> > index eea61e3..0a5b1c0 100644
-> > --- a/drivers/mfd/Kconfig
-> > +++ b/drivers/mfd/Kconfig
-> > @@ -814,13 +814,13 @@ config MFD_RC5T583
-> >  	  different functionality of the device.
-> > =20
-> >  config MFD_RK808
-> > -	tristate "Rockchip RK808 Power Management chip"
-> > +	tristate "Rockchip RK808/RK818 Power Management chip"
-> >  	depends on I2C && OF
-> >  	select MFD_CORE
-> >  	select REGMAP_I2C
-> >  	select REGMAP_IRQ
-> >  	help
-> > -	  If you say yes here you get support for the RK808
-> > +	  If you say yes here you get support for the RK808 and RK818
-> >  	  Power Management chips.
-> >  	  This driver provides common support for accessing the device
-> >  	  through I2C interface. The device supports multiple sub-devices
-> > diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-> > index 4b1e439..9bb7e8c 100644
-> > --- a/drivers/mfd/rk808.c
-> > +++ b/drivers/mfd/rk808.c
-> > @@ -1,11 +1,15 @@
-> >  /*
-> > - * MFD core driver for Rockchip RK808
-> > + * MFD core driver for Rockchip RK808/RK818
-> >   *
-> >   * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-> >   *
-> >   * Author: Chris Zhong <zyw@rock-chips.com>
-> >   * Author: Zhang Qing <zhangqing@rock-chips.com>
-> >   *
-> > + * Copyright (C) 2016 PHYTEC Messtechnik GmbH
-> > + *
-> > + * Author: Wadim Egorov <w.egorov@phytec.de>
-> > + *
-> >   * This program is free software; you can redistribute it and/or m=
-odify it
-> >   * under the terms and conditions of the GNU General Public Licens=
-e,
-> >   * version 2, as published by the Free Software Foundation.
-> > @@ -22,12 +26,7 @@
-> >  #include <linux/mfd/core.h>
-> >  #include <linux/module.h>
-> >  #include <linux/regmap.h>
-> > -
-> > -struct rk808_reg_data {
-> > -	int addr;
-> > -	int mask;
-> > -	int value;
-> > -};
-> > +#include <linux/of_device.h>
-> > =20
-> >  static bool rk808_is_volatile_reg(struct device *dev, unsigned int=
- reg)
-> >  {
-> > @@ -57,6 +56,14 @@ static bool rk808_is_volatile_reg(struct device =
-*dev, unsigned int reg)
-> >  	return false;
-> >  }
-> > =20
-> > +static const struct regmap_config rk818_regmap_config =3D {
-> > +	.reg_bits =3D 8,
-> > +	.val_bits =3D 8,
-> > +	.max_register =3D RK818_USB_CTRL_REG,
-> > +	.cache_type =3D REGCACHE_RBTREE,
-> > +	.volatile_reg =3D rk808_is_volatile_reg,
-> > +};
-> > +
-> >  static const struct regmap_config rk808_regmap_config =3D {
-> >  	.reg_bits =3D 8,
-> >  	.val_bits =3D 8,
-> > @@ -83,7 +90,17 @@ static const struct mfd_cell rk808s[] =3D {
-> >  	},
-> >  };
-> > =20
-> > -static const struct rk808_reg_data pre_init_reg[] =3D {
-> > +static const struct mfd_cell rk818s[] =3D {
-> > +	{ .name =3D "rk808-clkout", },
-> > +	{ .name =3D "rk808-regulator", },
-> > +	{
-> > +		.name =3D "rk808-rtc",
-> > +		.num_resources =3D ARRAY_SIZE(rtc_resources),
-> > +		.resources =3D &rtc_resources[0],
-> > +	},
-> > +};
-> > +
-> > +static const struct rk8xx_reg_data rk808_pre_init_reg[] =3D {
-> >  	{ RK808_BUCK3_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_150MA },
-> >  	{ RK808_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_200MA },
-> >  	{ RK808_BOOST_CONFIG_REG, BOOST_ILMIN_MASK, BOOST_ILMIN_100MA },
-> > @@ -94,6 +111,22 @@ static const struct rk808_reg_data pre_init_reg=
-[] =3D {
-> >  						    VB_LO_SEL_3500MV },
-> >  };
-> > =20
-> > +static const struct rk8xx_reg_data rk818_pre_init_reg[] =3D {
-> > +	{ RK818_USB_CTRL_REG,	RK818_USB_ILIM_SEL_MASK,
-> > +						RK818_USB_ILMIN_2000MA },
-> > +	/* close charger when usb lower then 3.4V */
-> > +	{ RK818_USB_CTRL_REG,	RK818_USB_CHG_SD_VSEL_MASK, (0x7 << 4) },
-> > +	/* no action when vref */
-> > +	{ RK818_H5V_EN_REG,	BIT(1),		RK818_REF_RDY_CTRL },
-> > +	/* enable HDMI 5V */
-> > +	{ RK818_H5V_EN_REG,	BIT(0),		RK818_H5V_EN },
-> > +	/* improve efficiency */
-> > +	{ RK818_BUCK2_CONFIG_REG, BUCK2_RATE_MASK,	BUCK_ILMIN_250MA },
-> > +	{ RK818_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK,	BUCK_ILMIN_250MA },
-> > +	{ RK818_BOOST_CONFIG_REG, BOOST_ILMIN_MASK,	BOOST_ILMIN_100MA },
-> > +	{ RK808_VB_MON_REG,	MASK_ALL,	VB_LO_ACT | VB_LO_SEL_3500MV },
-> > +};
-> > +
-> >  static const struct regmap_irq rk808_irqs[] =3D {
-> >  	/* INT_STS */
-> >  	[RK808_IRQ_VOUT_LO] =3D {
-> > @@ -136,6 +169,76 @@ static const struct regmap_irq rk808_irqs[] =3D=
- {
-> >  	},
-> >  };
-> > =20
-> > +static const struct regmap_irq rk818_irqs[] =3D {
-> > +	/* INT_STS */
-> > +	[RK818_IRQ_VOUT_LO] =3D {
-> > +		.mask =3D RK818_IRQ_VOUT_LO_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_VB_LO] =3D {
-> > +		.mask =3D RK818_IRQ_VB_LO_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_PWRON] =3D {
-> > +		.mask =3D RK818_IRQ_PWRON_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_PWRON_LP] =3D {
-> > +		.mask =3D RK818_IRQ_PWRON_LP_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_HOTDIE] =3D {
-> > +		.mask =3D RK818_IRQ_HOTDIE_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_RTC_ALARM] =3D {
-> > +		.mask =3D RK818_IRQ_RTC_ALARM_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_RTC_PERIOD] =3D {
-> > +		.mask =3D RK818_IRQ_RTC_PERIOD_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +	[RK818_IRQ_USB_OV] =3D {
-> > +		.mask =3D RK818_IRQ_USB_OV_MSK,
-> > +		.reg_offset =3D 0,
-> > +	},
-> > +
-> > +	/* INT_STS2 */
-> > +	[RK818_IRQ_PLUG_IN] =3D {
-> > +		.mask =3D RK818_IRQ_PLUG_IN_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_PLUG_OUT] =3D {
-> > +		.mask =3D RK818_IRQ_PLUG_OUT_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_CHG_OK] =3D {
-> > +		.mask =3D RK818_IRQ_CHG_OK_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_CHG_TE] =3D {
-> > +		.mask =3D RK818_IRQ_CHG_TE_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_CHG_TS1] =3D {
-> > +		.mask =3D RK818_IRQ_CHG_TS1_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_TS2] =3D {
-> > +		.mask =3D RK818_IRQ_TS2_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_CHG_CVTLIM] =3D {
-> > +		.mask =3D RK818_IRQ_CHG_CVTLIM_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +	[RK818_IRQ_DISCHG_ILIM] =3D {
-> > +		.mask =3D RK818_IRQ_DISCHG_ILIM_MSK,
-> > +		.reg_offset =3D 1,
-> > +	},
-> > +};
-> > +
-> >  static struct regmap_irq_chip rk808_irq_chip =3D {
-> >  	.name =3D "rk808",
-> >  	.irqs =3D rk808_irqs,
-> > @@ -148,6 +251,18 @@ static struct regmap_irq_chip rk808_irq_chip =3D=
- {
-> >  	.init_ack_masked =3D true,
-> >  };
-> > =20
-> > +static struct regmap_irq_chip rk818_irq_chip =3D {
-> > +	.name =3D "rk818",
-> > +	.irqs =3D rk818_irqs,
-> > +	.num_irqs =3D ARRAY_SIZE(rk818_irqs),
-> > +	.num_regs =3D 2,
-> > +	.irq_reg_stride =3D 2,
-> > +	.status_base =3D RK818_INT_STS_REG1,
-> > +	.mask_base =3D RK818_INT_STS_MSK_REG1,
-> > +	.ack_base =3D RK818_INT_STS_REG1,
-> > +	.init_ack_masked =3D true,
-> > +};
-> > +
-> >  static struct i2c_client *rk808_i2c_client;
-> >  static void rk808_device_shutdown(void)
-> >  {
-> > @@ -167,6 +282,48 @@ static void rk808_device_shutdown(void)
-> >  		dev_err(&rk808_i2c_client->dev, "power off error!\n");
-> >  }
-> > =20
-> > +static const struct of_device_id rk808_of_match[] =3D {
-> > +	{ .compatible =3D "rockchip,rk808", .data =3D (void *) RK808_ID }=
-,
-> > +	{ .compatible =3D "rockchip,rk818", .data =3D (void *) RK818_ID }=
-,
-> > +	{ },
-> > +};
-> > +MODULE_DEVICE_TABLE(of, rk808_of_match);
-> > +
-> > +static int rk8xx_match_device(struct rk808 *rk808, struct device *=
-dev)
-> > +{
-> > +	const struct of_device_id *of_id;
-> > +
-> > +	of_id =3D of_match_device(rk808_of_match, dev);
-> > +	if (!of_id) {
-> > +		dev_err(dev, "Unable to match OF ID\n");
-> > +		return -ENODEV;
-> > +	}
-> > +	rk808->variant =3D (long) of_id->data;
-> > +
-> > +	switch (rk808->variant) {
-> > +	case RK808_ID:
-> > +		rk808->nr_cells =3D ARRAY_SIZE(rk808s);
-> > +		rk808->cells =3D rk808s;
-> > +		rk808->regmap_cfg =3D &rk808_regmap_config;
-> > +		rk808->regmap_irq_chip =3D &rk808_irq_chip;
-> > +		rk808->pre_init_reg =3D rk808_pre_init_reg;
-> > +		rk808->nr_pre_init_regs =3D ARRAY_SIZE(rk808_pre_init_reg);
-> > +		break;
-> > +	case RK818_ID:
-> > +		rk808->nr_cells =3D ARRAY_SIZE(rk818s);
-> > +		rk808->cells =3D rk818s;
-> > +		rk808->regmap_cfg =3D &rk818_regmap_config;
-> > +		rk808->regmap_irq_chip =3D &rk818_irq_chip;
-> > +		rk808->pre_init_reg =3D rk818_pre_init_reg;
-> > +		rk808->nr_pre_init_regs =3D ARRAY_SIZE(rk818_pre_init_reg);
-> > +		break;
-> > +	default:
-> > +		dev_err(dev, "unsupported RK8XX ID %lu\n", rk808->variant);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> >  static int rk808_probe(struct i2c_client *client,
-> >  		       const struct i2c_device_id *id)
-> >  {
-> > @@ -176,45 +333,51 @@ static int rk808_probe(struct i2c_client *cli=
-ent,
-> >  	int ret;
-> >  	int i;
-> > =20
-> > -	if (!client->irq) {
-> > -		dev_err(&client->dev, "No interrupt support, no core IRQ\n");
-> > -		return -EINVAL;
-> > -	}
-> > -
-> >  	rk808 =3D devm_kzalloc(&client->dev, sizeof(*rk808), GFP_KERNEL);
-> >  	if (!rk808)
-> >  		return -ENOMEM;
-> > =20
-> > -	rk808->regmap =3D devm_regmap_init_i2c(client, &rk808_regmap_conf=
-ig);
-> > +	ret =3D rk8xx_match_device(rk808, &client->dev);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	rk808->i2c =3D client;
-> > +	i2c_set_clientdata(client, rk808);
-> > +
-> > +	rk808->regmap =3D devm_regmap_init_i2c(client, rk808->regmap_cfg)=
-;
-> >  	if (IS_ERR(rk808->regmap)) {
-> >  		dev_err(&client->dev, "regmap initialization failed\n");
-> >  		return PTR_ERR(rk808->regmap);
-> >  	}
-> > =20
-> > -	for (i =3D 0; i < ARRAY_SIZE(pre_init_reg); i++) {
-> > -		ret =3D regmap_update_bits(rk808->regmap, pre_init_reg[i].addr,
-> > -					 pre_init_reg[i].mask,
-> > -					 pre_init_reg[i].value);
-> > -		if (ret) {
-> > -			dev_err(&client->dev,
-> > -				"0x%x write err\n", pre_init_reg[i].addr);
-> > -			return ret;
-> > -		}
-> > +	if (!client->irq) {
-> > +		dev_err(&client->dev, "No interrupt support, no core IRQ\n");
-> > +		return -EINVAL;
-> >  	}
-> > =20
-> >  	ret =3D regmap_add_irq_chip(rk808->regmap, client->irq,
-> >  				  IRQF_ONESHOT, -1,
-> > -				  &rk808_irq_chip, &rk808->irq_data);
-> > +				  rk808->regmap_irq_chip, &rk808->irq_data);
-> >  	if (ret) {
-> >  		dev_err(&client->dev, "Failed to add irq_chip %d\n", ret);
-> >  		return ret;
-> >  	}
-> > =20
-> > -	rk808->i2c =3D client;
-> > -	i2c_set_clientdata(client, rk808);
-> > +	for (i =3D 0; i < rk808->nr_pre_init_regs; i++) {
-> > +		ret =3D regmap_update_bits(rk808->regmap,
-> > +					rk808->pre_init_reg[i].addr,
-> > +					rk808->pre_init_reg[i].mask,
-> > +					rk808->pre_init_reg[i].value);
-> > +		if (ret) {
-> > +			dev_err(&client->dev,
-> > +				"0x%x write err\n",
-> > +				rk808->pre_init_reg[i].addr);
-> > +			return ret;
-> > +		}
-> > +	}
-> > =20
-> > -	ret =3D mfd_add_devices(&client->dev, -1,
-> > -			      rk808s, ARRAY_SIZE(rk808s),
-> > +	ret =3D mfd_add_devices(&client->dev, PLATFORM_DEVID_NONE,
-> > +			      rk808->cells, rk808->nr_cells,
-> >  			      NULL, 0, regmap_irq_get_domain(rk808->irq_data));
-> >  	if (ret) {
-> >  		dev_err(&client->dev, "failed to add MFD devices %d\n", ret);
-> > @@ -246,14 +409,9 @@ static int rk808_remove(struct i2c_client *cli=
-ent)
-> >  	return 0;
-> >  }
-> > =20
-> > -static const struct of_device_id rk808_of_match[] =3D {
-> > -	{ .compatible =3D "rockchip,rk808" },
-> > -	{ },
-> > -};
-> > -MODULE_DEVICE_TABLE(of, rk808_of_match);
-> > -
-> >  static const struct i2c_device_id rk808_ids[] =3D {
-> >  	{ "rk808" },
-> > +	{ "rk818" },
-> >  	{ },
-> >  };
-> >  MODULE_DEVICE_TABLE(i2c, rk808_ids);
-> > @@ -273,4 +431,5 @@ module_i2c_driver(rk808_i2c_driver);
-> >  MODULE_LICENSE("GPL");
-> >  MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
-> >  MODULE_AUTHOR("Zhang Qing <zhangqing@rock-chips.com>");
-> > -MODULE_DESCRIPTION("RK808 PMIC driver");
-> > +MODULE_AUTHOR("Wadim Egorov <w.egorov@phytec.de>");
-> > +MODULE_DESCRIPTION("RK808/RK818 PMIC driver");
-> > diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-> > index 441b6ee..5ce810c 100644
-> > --- a/include/linux/mfd/rk808.h
-> > +++ b/include/linux/mfd/rk808.h
-> > @@ -1,11 +1,15 @@
-> >  /*
-> > - * rk808.h for Rockchip RK808
-> > + * Register definitions for Rockchip's RK808/RK818 PMIC
-> >   *
-> >   * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
-> >   *
-> >   * Author: Chris Zhong <zyw@rock-chips.com>
-> >   * Author: Zhang Qing <zhangqing@rock-chips.com>
-> >   *
-> > + * Copyright (C) 2016 PHYTEC Messtechnik GmbH
-> > + *
-> > + * Author: Wadim Egorov <w.egorov@phytec.de>
-> > + *
-> >   * This program is free software; you can redistribute it and/or m=
-odify it
-> >   * under the terms and conditions of the GNU General Public Licens=
-e,
-> >   * version 2, as published by the Free Software Foundation.
-> > @@ -16,8 +20,8 @@
-> >   * more details.
-> >   */
-> > =20
-> > -#ifndef __LINUX_REGULATOR_rk808_H
-> > -#define __LINUX_REGULATOR_rk808_H
-> > +#ifndef __LINUX_REGULATOR_RK808_H
-> > +#define __LINUX_REGULATOR_RK808_H
-> > =20
-> >  #include <linux/regulator/machine.h>
-> >  #include <linux/regmap.h>
-> > @@ -28,7 +32,7 @@
-> > =20
-> >  #define RK808_DCDC1	0 /* (0+RK808_START) */
-> >  #define RK808_LDO1	4 /* (4+RK808_START) */
-> > -#define RK808_NUM_REGULATORS   14
-> > +#define RK808_NUM_REGULATORS	14
-> > =20
-> >  enum rk808_reg {
-> >  	RK808_ID_DCDC1,
-> > @@ -115,7 +119,92 @@ enum rk808_reg {
-> >  #define RK808_INT_STS_MSK_REG2	0x4f
-> >  #define RK808_IO_POL_REG	0x50
-> > =20
-> > -/* IRQ Definitions */
-> > +/* RK818 */
-> > +#define RK818_DCDC1			0
-> > +#define RK818_LDO1			4
-> > +#define RK818_NUM_REGULATORS		17
-> > +
-> > +enum rk818_reg {
-> > +	RK818_ID_DCDC1,
-> > +	RK818_ID_DCDC2,
-> > +	RK818_ID_DCDC3,
-> > +	RK818_ID_DCDC4,
-> > +	RK818_ID_BOOST,
-> > +	RK818_ID_LDO1,
-> > +	RK818_ID_LDO2,
-> > +	RK818_ID_LDO3,
-> > +	RK818_ID_LDO4,
-> > +	RK818_ID_LDO5,
-> > +	RK818_ID_LDO6,
-> > +	RK818_ID_LDO7,
-> > +	RK818_ID_LDO8,
-> > +	RK818_ID_LDO9,
-> > +	RK818_ID_SWITCH,
-> > +	RK818_ID_HDMI_SWITCH,
-> > +	RK818_ID_OTG_SWITCH,
-> > +};
-> > +
-> > +#define RK818_DCDC_EN_REG		0x23
-> > +#define RK818_LDO_EN_REG		0x24
-> > +#define RK818_SLEEP_SET_OFF_REG1	0x25
-> > +#define RK818_SLEEP_SET_OFF_REG2	0x26
-> > +#define RK818_DCDC_UV_STS_REG		0x27
-> > +#define RK818_DCDC_UV_ACT_REG		0x28
-> > +#define RK818_LDO_UV_STS_REG		0x29
-> > +#define RK818_LDO_UV_ACT_REG		0x2a
-> > +#define RK818_DCDC_PG_REG		0x2b
-> > +#define RK818_LDO_PG_REG		0x2c
-> > +#define RK818_VOUT_MON_TDB_REG		0x2d
-> > +#define RK818_BUCK1_CONFIG_REG		0x2e
-> > +#define RK818_BUCK1_ON_VSEL_REG		0x2f
-> > +#define RK818_BUCK1_SLP_VSEL_REG	0x30
-> > +#define RK818_BUCK2_CONFIG_REG		0x32
-> > +#define RK818_BUCK2_ON_VSEL_REG		0x33
-> > +#define RK818_BUCK2_SLP_VSEL_REG	0x34
-> > +#define RK818_BUCK3_CONFIG_REG		0x36
-> > +#define RK818_BUCK4_CONFIG_REG		0x37
-> > +#define RK818_BUCK4_ON_VSEL_REG		0x38
-> > +#define RK818_BUCK4_SLP_VSEL_REG	0x39
-> > +#define RK818_BOOST_CONFIG_REG		0x3a
-> > +#define RK818_LDO1_ON_VSEL_REG		0x3b
-> > +#define RK818_LDO1_SLP_VSEL_REG		0x3c
-> > +#define RK818_LDO2_ON_VSEL_REG		0x3d
-> > +#define RK818_LDO2_SLP_VSEL_REG		0x3e
-> > +#define RK818_LDO3_ON_VSEL_REG		0x3f
-> > +#define RK818_LDO3_SLP_VSEL_REG		0x40
-> > +#define RK818_LDO4_ON_VSEL_REG		0x41
-> > +#define RK818_LDO4_SLP_VSEL_REG		0x42
-> > +#define RK818_LDO5_ON_VSEL_REG		0x43
-> > +#define RK818_LDO5_SLP_VSEL_REG		0x44
-> > +#define RK818_LDO6_ON_VSEL_REG		0x45
-> > +#define RK818_LDO6_SLP_VSEL_REG		0x46
-> > +#define RK818_LDO7_ON_VSEL_REG		0x47
-> > +#define RK818_LDO7_SLP_VSEL_REG		0x48
-> > +#define RK818_LDO8_ON_VSEL_REG		0x49
-> > +#define RK818_LDO8_SLP_VSEL_REG		0x4a
-> > +#define RK818_BOOST_LDO9_ON_VSEL_REG	0x54
-> > +#define RK818_BOOST_LDO9_SLP_VSEL_REG	0x55
-> > +#define RK818_DEVCTRL_REG		0x4b
-> > +#define RK818_INT_STS_REG1		0X4c
-> > +#define RK818_INT_STS_MSK_REG1		0x4d
-> > +#define RK818_INT_STS_REG2		0x4e
-> > +#define RK818_INT_STS_MSK_REG2		0x4f
-> > +#define RK818_IO_POL_REG		0x50
-> > +#define RK818_H5V_EN_REG		0x52
-> > +#define RK818_SLEEP_SET_OFF_REG3	0x53
-> > +#define RK818_BOOST_LDO9_ON_VSEL_REG	0x54
-> > +#define RK818_BOOST_LDO9_SLP_VSEL_REG	0x55
-> > +#define RK818_BOOST_CTRL_REG		0x56
-> > +#define RK818_DCDC_ILMAX		0x90
-> > +#define RK818_USB_CTRL_REG		0xa1
-> > +
-> > +#define RK818_H5V_EN			BIT(0)
-> > +#define RK818_REF_RDY_CTRL		BIT(1)
-> > +#define RK818_USB_ILIM_SEL_MASK		0xf
-> > +#define RK818_USB_ILMIN_2000MA		0x7
-> > +#define RK818_USB_CHG_SD_VSEL_MASK	0x70
-> > +
-> > +/* RK808 IRQ Definitions */
-> >  #define RK808_IRQ_VOUT_LO	0
-> >  #define RK808_IRQ_VB_LO		1
-> >  #define RK808_IRQ_PWRON		2
-> > @@ -137,6 +226,43 @@ enum rk808_reg {
-> >  #define RK808_IRQ_PLUG_IN_INT_MSK	BIT(0)
-> >  #define RK808_IRQ_PLUG_OUT_INT_MSK	BIT(1)
-> > =20
-> > +/* RK818 IRQ Definitions */
-> > +#define RK818_IRQ_VOUT_LO	0
-> > +#define RK818_IRQ_VB_LO		1
-> > +#define RK818_IRQ_PWRON		2
-> > +#define RK818_IRQ_PWRON_LP	3
-> > +#define RK818_IRQ_HOTDIE	4
-> > +#define RK818_IRQ_RTC_ALARM	5
-> > +#define RK818_IRQ_RTC_PERIOD	6
-> > +#define RK818_IRQ_USB_OV	7
-> > +#define RK818_IRQ_PLUG_IN	8
-> > +#define RK818_IRQ_PLUG_OUT	9
-> > +#define RK818_IRQ_CHG_OK	10
-> > +#define RK818_IRQ_CHG_TE	11
-> > +#define RK818_IRQ_CHG_TS1	12
-> > +#define RK818_IRQ_TS2		13
-> > +#define RK818_IRQ_CHG_CVTLIM	14
-> > +#define RK818_IRQ_DISCHG_ILIM	7
-> > +
-> > +#define RK818_IRQ_VOUT_LO_MSK		BIT(0)
-> > +#define RK818_IRQ_VB_LO_MSK		BIT(1)
-> > +#define RK818_IRQ_PWRON_MSK		BIT(2)
-> > +#define RK818_IRQ_PWRON_LP_MSK		BIT(3)
-> > +#define RK818_IRQ_HOTDIE_MSK		BIT(4)
-> > +#define RK818_IRQ_RTC_ALARM_MSK		BIT(5)
-> > +#define RK818_IRQ_RTC_PERIOD_MSK	BIT(6)
-> > +#define RK818_IRQ_USB_OV_MSK		BIT(7)
-> > +#define RK818_IRQ_PLUG_IN_MSK		BIT(0)
-> > +#define RK818_IRQ_PLUG_OUT_MSK		BIT(1)
-> > +#define RK818_IRQ_CHG_OK_MSK		BIT(2)
-> > +#define RK818_IRQ_CHG_TE_MSK		BIT(3)
-> > +#define RK818_IRQ_CHG_TS1_MSK		BIT(4)
-> > +#define RK818_IRQ_TS2_MSK		BIT(5)
-> > +#define RK818_IRQ_CHG_CVTLIM_MSK	BIT(6)
-> > +#define RK818_IRQ_DISCHG_ILIM_MSK	BIT(7)
-> > +
-> > +#define RK818_NUM_IRQ		16
-> > +
-> >  #define RK808_VBAT_LOW_2V8	0x00
-> >  #define RK808_VBAT_LOW_2V9	0x01
-> >  #define RK808_VBAT_LOW_3V0	0x02
-> > @@ -191,9 +317,27 @@ enum {
-> >  	BOOST_ILMIN_250MA,
-> >  };
-> > =20
-> > +enum {
-> > +	RK808_ID,
-> > +	RK818_ID,
-> > +};
-> > +
-> > +struct rk8xx_reg_data {
-> > +	int addr;
-> > +	int mask;
-> > +	int value;
-> > +};
-> > +
-> >  struct rk808 {
-> > -	struct i2c_client *i2c;
-> > -	struct regmap_irq_chip_data *irq_data;
-> > -	struct regmap *regmap;
-> > +	struct i2c_client		*i2c;
-> > +	struct regmap_irq_chip_data	*irq_data;
-> > +	struct regmap			*regmap;
-> > +	long				variant;
-> > +	int				nr_cells;
-> > +	const struct mfd_cell		*cells;
-> > +	const struct regmap_config	*regmap_cfg;
-> > +	const struct regmap_irq_chip	*regmap_irq_chip;
-> > +	const struct rk8xx_reg_data	*pre_init_reg;
-> > +	int				nr_pre_init_regs;
-> >  };
-> > -#endif /* __LINUX_REGULATOR_rk808_H */
-> > +#endif /* __LINUX_REGULATOR_RK808_H */
->=20
+I will spilt a new function to handle the hs400es timing slection.
 
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+>
+>> +	else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>>  		err = mmc_select_hs200(card);
+>>  	else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS)
+>>  		err = mmc_select_hs(card);
+>> @@ -1578,7 +1635,15 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+>>  	} else if (mmc_card_hs(card)) {
+>>  		/* Select the desired bus width optionally */
+>>  		err = mmc_select_bus_width(card);
+>> -		if (!IS_ERR_VALUE(err)) {
+>> +		if (IS_ERR_VALUE(err))
+>> +			goto free_card;
+>> +
+>> +		if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES) {
+>> +			/* Directly from HS to HS400-ES */
+>> +			err = mmc_select_hs400(card);
+>> +			if (err)
+>> +				goto free_card;
+>> +		} else {
+>>  			err = mmc_select_hs_ddr(card);
+>>  			if (err)
+>>  				goto free_card;
+>> diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+>> index eb0151b..22defc2 100644
+>> --- a/include/linux/mmc/card.h
+>> +++ b/include/linux/mmc/card.h
+>> @@ -95,6 +95,7 @@ struct mmc_ext_csd {
+>>  	u8			raw_partition_support;	/* 160 */
+>>  	u8			raw_rpmb_size_mult;	/* 168 */
+>>  	u8			raw_erased_mem_count;	/* 181 */
+>> +	u8			strobe_support;		/* 184 */
+>>  	u8			raw_ext_csd_structure;	/* 194 */
+>>  	u8			raw_card_type;		/* 196 */
+>>  	u8			raw_driver_strength;	/* 197 */
+>> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+>> index 11e89d3..19de56c 100644
+>> --- a/include/linux/mmc/host.h
+>> +++ b/include/linux/mmc/host.h
+>> @@ -19,6 +19,7 @@
+>>
+>>  #include <linux/mmc/core.h>
+>>  #include <linux/mmc/card.h>
+>> +#include <linux/mmc/mmc.h>
+>>  #include <linux/mmc/pm.h>
+>>
+>>  struct mmc_ios {
+>> @@ -143,6 +144,8 @@ struct mmc_host_ops {
+>>
+>>  	/* Prepare HS400 target operating frequency depending host driver */
+>>  	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct mmc_ios *ios);
+>> +	/* Prepare enhanced strobe depending host driver */
+>> +	int	(*prepare_enhanced_strobe)(struct mmc_host *host, bool enable);
+>
+> I don't see any need for an error return, so maybe make this return void.
+> Also, we could put "bool enhanced_strobe" in struct mmc_ios and pass ios
+> instead of enable.
+
+yep, currently there's no need to check it.
+I will change the name to hs400_enhacned_strobe as Ulf's suggestion,
+and pass mmc_ios to this callback as well.
+
+>
+>>  	int	(*select_drive_strength)(struct mmc_card *card,
+>>  					 unsigned int max_dtr, int host_drv,
+>>  					 int card_drv, int *drv_type);
+>> @@ -518,6 +521,15 @@ static inline bool mmc_card_hs400(struct mmc_card *card)
+>>  	return card->host->ios.timing == MMC_TIMING_MMC_HS400;
+>>  }
+>>
+>> +static inline bool mmc_card_hs400es(struct mmc_card *card)
+>> +{
+>> +	if (mmc_card_hs400(card) &&
+>> +	    (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES))
+>> +		return 1;
+>
+> We shouldn't assume that we are using it, just because it is available.
+> How about putting "bool enhanced_strobe" in struct mmc_ios and checking that.
+>
+
+Good catch. Thanks.
+
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>  void mmc_retune_timer_stop(struct mmc_host *host);
+>>
+>>  static inline void mmc_retune_needed(struct mmc_host *host)
+>> diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
+>> index 15f2c4a..c376209 100644
+>> --- a/include/linux/mmc/mmc.h
+>> +++ b/include/linux/mmc/mmc.h
+>> @@ -297,6 +297,7 @@ struct _mmc_csd {
+>>  #define EXT_CSD_PART_CONFIG		179	/* R/W */
+>>  #define EXT_CSD_ERASED_MEM_CONT		181	/* RO */
+>>  #define EXT_CSD_BUS_WIDTH		183	/* R/W */
+>> +#define EXT_CSD_STROBE_SUPPORT		184	/* RO */
+>>  #define EXT_CSD_HS_TIMING		185	/* R/W */
+>>  #define EXT_CSD_POWER_CLASS		187	/* R/W */
+>>  #define EXT_CSD_REV			192	/* RO */
+>> @@ -380,12 +381,14 @@ struct _mmc_csd {
+>>  #define EXT_CSD_CARD_TYPE_HS400_1_2V	(1<<7)	/* Card can run at 200MHz DDR, 1.2V */
+>>  #define EXT_CSD_CARD_TYPE_HS400		(EXT_CSD_CARD_TYPE_HS400_1_8V | \
+>>  					 EXT_CSD_CARD_TYPE_HS400_1_2V)
+>> +#define EXT_CSD_CARD_TYPE_HS400ES	(1<<8)	/* Card can run at HS400ES */
+>>
+>>  #define EXT_CSD_BUS_WIDTH_1	0	/* Card is in 1 bit mode */
+>>  #define EXT_CSD_BUS_WIDTH_4	1	/* Card is in 4 bit mode */
+>>  #define EXT_CSD_BUS_WIDTH_8	2	/* Card is in 8 bit mode */
+>>  #define EXT_CSD_DDR_BUS_WIDTH_4	5	/* Card is in 4 bit DDR mode */
+>>  #define EXT_CSD_DDR_BUS_WIDTH_8	6	/* Card is in 8 bit DDR mode */
+>> +#define EXT_CSD_BUS_WIDTH_STROBE BIT(7)	/* Enhanced strobe mode */
+>>
+>>  #define EXT_CSD_TIMING_BC	0	/* Backwards compatility */
+>>  #define EXT_CSD_TIMING_HS	1	/* High speed */
+>>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
