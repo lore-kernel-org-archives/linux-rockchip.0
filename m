@@ -1,88 +1,78 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 2/2] dt-bindings: rockchip-dw-mshc: add
- rockchip,default-drv-phase
-Date: Wed, 11 May 2016 10:50:17 +0800
-Message-ID: <e202f663-88d7-693b-a765-c130e68d1c2d@rock-chips.com>
-References: <1462527648-24443-1-git-send-email-shawn.lin@rock-chips.com>
- <1462527673-24711-1-git-send-email-shawn.lin@rock-chips.com>
- <CAD=FV=WSkBwBjVsRoDsfjD+sNfR70mKGRA0khjPKKW0zS2=PTw@mail.gmail.com>
- <b15dcb4f-1584-8219-2fe0-97eecb0c64a6@rock-chips.com>
- <CAD=FV=XToSzqSh=SShHuQU9W_m7gfyQn8wRXkLy79t+tnqZknA@mail.gmail.com>
- <1f2f43c7-2672-e448-eddb-2d613bb8dc48@rock-chips.com>
- <CAD=FV=UGbrJRyUbbgzbcYf9GjPG+Fh_gpQ3rX2G=wi2w5Lw=Sg@mail.gmail.com>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH] pinctrl: rockchip: fix pull setting error for rk3399
+Date: Wed, 11 May 2016 11:31:25 +0800
+Message-ID: <5732A78D.7040308@rock-chips.com>
+References: <1462878896-28956-1-git-send-email-wxt@rock-chips.com>
+ <CAD=FV=VrE=9=sgqUXBMwmoQin8S+yPbAgnrO1VUgx5QafYWXhA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAD=FV=UGbrJRyUbbgzbcYf9GjPG+Fh_gpQ3rX2G=wi2w5Lw=Sg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAD=FV=VrE=9=sgqUXBMwmoQin8S+yPbAgnrO1VUgx5QafYWXhA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Stephen Barber <smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Norris <briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/10 23:57, Doug Anderson wrote:
-> (again, but not HTML)
->
-
-------8<------------------
-
->
-> I have less faith than you in the TRM.  The TRM is full of minor
-> errors and is often wrong about the default state of things.  IMHO the
-> only true way to find out is to boot up some SoCs and check.
->
-
-Okay, I should not have too much confidence on my TRM maybe :).
-
-Again, We SHOULD refer to the Mobile Storage Host section (Variable
-Delay/Clock Generation) instead of CRU section, otherwise even you will
-see inconsistent decription of mmc_clock->shift.
-
-
-
-> As far as whether code touches these values:
->
-
----------8<-----------------
-
->>
->> maybe. But I think 180(downside) is the better.
-
-NAK my previous comments here. Downside is better for SRD, but won't
-work for DDR mode. When running in DDR mode, we should use 90 instead.
-
-So let me elaborate a bit more here.
-For DDR mode, one single clk cycle should sending two data bits outside
-to the devices. We need a hold time for both. If 180 is used, the first
-bit occurs around the downside area, which won't be sampled by devices
-on the upside.  So on the upside, the devices will see a zero bit if you
-actually send a one-bit, which makes the devices  generate CRC finally.
-
-
-For this above, 180 for all SDR mode is ok, but 90 should be deployed
-for DDR mode. So simply checking the timing to hardcode it should be
-fine.
-
->
-> I'm OK with using 180 always as long as SD cards continue to work OK.
-> Best would be if someone could actually run a protocol analyzer for
-> all the different speed modes.
->
->
->>> Also: I still haven't heard whether there is any downside to using 180
->>> degrees for modes that only require 90 degrees.  Does it cause
->>> problems to just always use 180 degrees?  If not, we could possibly
->>> use 180 degrees everywhere and just hardcode it?
->>
->>
-
-
-
--- 
-Best Regards
-Shawn Lin
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+RG91ZywKCuS6jiAyMDE25bm0MDXmnIgxMeaXpSAwNTowNywgRG91ZyBBbmRlcnNvbiDlhpnpgZM6
+Cj4gQ2Flc2FyIC8gRGF2aWQsCj4KPiBPbiBUdWUsIE1heSAxMCwgMjAxNiBhdCA0OjE0IEFNLCBD
+YWVzYXIgV2FuZyA8d3h0QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4gRnJvbTogRGF2aWQgV3Ug
+PGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPgo+Pgo+PiBUaGlzIHBhdGNoIGZpeGVzIHRoZSBwaW5j
+dHJsIHB1bGwgYmlhcyBzZXR0aW5nLCBzaW5jZSB0aGUgcHVsbCB1cC9kb3duCj4+IHNldHRpbmcg
+aXMgdGhlIGNvbnRyYXJ5IGZvciBncGlvMC4KPiBDb21taXQgbWVzc2FnZSBvbmx5IG1lbnRpb25z
+IGdwaW8wLCBidXQgZ3BpbzIgaXMgYWxzbyBmaXhlZCBpbiB0aGUKPiBjb21taXQuICBQbGVhc2Ug
+bWVudGlvbiBncGlvMiBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCgpGaXggaXQgaW4gbmV4dCB2ZXJz
+aW9uLgoKPgo+PiAgRnJvbSB0aGUgVFJNIHNhaWQsIHRoZSBncGlvMCBwdWxsIHBvbGFyaXR5IHNl
+dHRpbmc6Cj4+IGdwaW8wYV9wIChncGlvMCApCj4+IEdQSU8wQSBQRS9QUyBwcm9ncmFtbWF0aW9u
+IHNlY3Rpb24sIGV2ZXJ5Cj4+IEdQSU8gYml0IGNvcnJlc3BvbmRpbmcgdG8gMmJpdHNbUFM6UEVd
+Cj4+IDInYjAwOiBaKE5vcmFtbCBvcGVyYXRvbik7Cj4+IDInYjExOiB3ZWFrIDEocHVsbC11cCk7
+Cj4+IDInYjAxOiB3ZWFrIDAocHVsbC1kb3duKTsKPj4gMidiMTA6IFooTm9yYW1sIG9wZXJhdG9u
+KTsKPiBEZXNwaXRlIHRoZSBmYWN0IHRoYXQgdGhlIHR5cG8gKE5vcmFsbSB2cy4gTm9ybWFsKSBp
+cyBwcmVzZW50IGluIHRoZQo+IFRSTSwgbWF5YmUgd2Ugc2hvdWxkIGZpeCBpdCBoZXJlPwoKWWVw
+LCBkaXR0by4KCj4gPGN1dD4KPgo+ICsKPiArICAgICAgICAgICAgICAgaWYgKHJldCA8IDApIHsK
+PiArICAgICAgICAgICAgICAgICAgICAgICBkZXZfZXJyKGluZm8tPmRldiwgInVua25vd24gcHVs
+bCBzZXR0aW5nICVkXG4iLCBwdWxsKTsKPiBuaXQ6IHdoeSBjaGFuZ2UgdGhlIGVycm9yIG1lc3Nh
+Z2U/ICBPbGQgbWVzc2FnZSB3YXMgInVuc3VwcG9ydGVkIgo+IGluc3RlYWQgb2YgeW91ciBuZXcg
+InVua25vd24iLiAgInVuc3VwcG9ydGVkIiB3YXMgYmV0dGVyIElNSE8uCgpPa2F5LCBzb3VuZCBy
+ZXNvbmFibGUuCgo+Cj4KPj4gLSAgICAgICBQSU5fQkFOS19EUlZfRkxBR1MoMiwgMzIsICJncGlv
+MiIsIERSVl9UWVBFX0lPXzFWOF9PUl8zVjAsCj4+IC0gICAgICAgICAgICAgICAgICAgICAgICAg
+IERSVl9UWVBFX0lPXzFWOF9PUl8zVjAsCj4+IC0gICAgICAgICAgICAgICAgICAgICAgICAgIERS
+Vl9UWVBFX0lPXzFWOF9PTkxZLAo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICBEUlZfVFlQ
+RV9JT18xVjhfT05MWQo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICApLAo+PiArICAgICAg
+IFBJTl9CQU5LX0RSVl9GTEFHU19QVUxMX0ZMQUdTKDIsIDMyLCAiZ3BpbzIiLCBEUlZfVFlQRV9J
+T18xVjhfT1JfM1YwLAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERS
+Vl9UWVBFX0lPXzFWOF9PUl8zVjAsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgRFJWX1RZUEVfSU9fMVY4X09OTFksCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgRFJWX1RZUEVfSU9fMVY4X09OTFksCj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgUFVMTF9UWVBFX0lPX0RFRkFVTFQsCj4+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgUFVMTF9UWVBFX0lPX0RFRkFVTFQsCj4+Cj4gQXJlIHlv
+dSBjZXJ0YWluIHRoYXQgZ3BpbzIgYmVoYXZlcyB0aGUgc2FtZSB3YXk/ICBUaGUgVFJNIEkgaGF2
+ZSBzYXlzCj4gdGhpcyBmb3IgR1BJTzJDIGFuZCBHUElPMkQ6CgorICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIFBVTExfVFlQRV9JT18xVjhfT05MWSwKKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBQVUxMX1RZUEVfSU9fMVY4X09OTFkKClllcCwgc28gdGhp
+cyBqdXN0IHNldCB0aGUgZ3BpbzJjJmdwaW8yZCBpbiB0aGlzIGZ1bmN0aW9uLgoKPgo+IDInYjAw
+OiBwZXJ2aW91cy1zdGF0ZQo+IDInYjAxOiB3ZWFrIDAocHVsbC1kb3duKTsKPiAyJ2IxMDogcGVy
+dmlvdXMtc3RhdGUKPiAyJ2IxMTogd2VhayAxKHB1bGwtdXApOwo+Cj4gQXNzdW1pbmcgdGhhdCAi
+cGVydmlvdXMtc3RhdGUiIGlzIGEgc2ltcGxlIHR5cG8gZm9yICJwcmV2aW91cyBzdGF0ZSIKPiB0
+aGF0IHdvdWxkIGltcGx5IHRoYXQgaXQgd2FzIGJlaGF2aW5nIGFzICJidXMgaG9sZCIgYW5kIF9u
+b3RfICJiaWFzCj4gZGlzYWJsZSIuCgpJIHdpbGwgc2F5IHRoYXQgVFJNIG1hZGUgdGhlIG1pc3Rh
+a2Ugc2luY2UgdGhpcyBpcyAqbm90KiBleGlzdC4KT2theSwgZml4ZXMgYnkgdGhlIG5ld2VyIFRS
+TS4KCj4KPiBOb3RlOiBpZiBpdCBhY3R1YWxseSBpcyBhICJidXMgaG9sZCIgc3RhdGUgdGhlbiB3
+ZSdsbCBoYXZlIHRvIGZpZ3VyZQo+IG91dCBob3cgdGhpcyB3b3VsZCB3b3JrIHdpdGggZXhpc3Rp
+bmcgZGV2aWNlIHRyZWVzLiAgSSdkIGltYWdpbmUgdGhhdAo+IHRoZXkgYXJlIGN1cnJlbnRseSBz
+cGVjaWZ5aW5nICJiaWFzIGRpc2FibGUiIGFuZCB0ZWNobmljYWxseSB0aGF0Cj4gbWlnaHQgbm90
+IGJlIHBvc3NpYmxlPwo+Cj4KPgo+IC1Eb3VnCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
