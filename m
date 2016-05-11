@@ -1,61 +1,73 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v8 6/8] dt-bindings: i2c: rk3x: add support for rk3399
-Date: Wed, 11 May 2016 09:35:29 -0700
-Message-ID: <CAD=FV=VzL8AfzUnPYgsf_NqPgbp2_o_qJC7-DWHmekWVQ-Es=A@mail.gmail.com>
+Subject: Re: [PATCH v8 7/8] i2c: rk3x: add i2c support for rk3399 soc
+Date: Wed, 11 May 2016 10:37:57 -0700
+Message-ID: <CAD=FV=Uf-U3RBpgFbR3LkPAJTWqz3d02+H7iyA-SS-y=r3cXjA@mail.gmail.com>
 References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com>
-	<1462908647-27236-1-git-send-email-david.wu@rock-chips.com>
+	<1462908698-27284-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462908647-27236-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1462908698-27284-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-i2c-owner@vger.kernel.org
 To: David Wu <david.wu@rock-chips.com>
 Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Tue, May 10, 2016 at 12:30 PM, David Wu <david.wu@rock-chips.com> wrote:
-> The bus clock and function clock are separated at rk3399,
-> and others use one clock as the bus clock and function clock.
+On Tue, May 10, 2016 at 12:31 PM, David Wu <david.wu@rock-chips.com> wrote:
+>  static void rk3x_i2c_adapt_div(struct rk3x_i2c *i2c, unsigned long clk_rate)
+>  {
+>         struct i2c_timings *t = &i2c->t;
+>         struct rk3x_i2c_calced_timings calc;
+>         u64 t_low_ns, t_high_ns;
+> +       u32 val;
+>         int ret;
 >
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Change in v8:
-> - remove error description.
+> -       ret = rk3x_i2c_calc_divs(clk_rate, t, &calc);
+> +       ret = i2c->soc_data->calc_timings(clk_rate, t, &calc);
+>         WARN_ONCE(ret != 0, "Could not reach SCL freq %u", t->bus_freq_hz);
 >
->  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt | 16 +++++++++++++---
->  1 file changed, 13 insertions(+), 3 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> index 0b4a85f..5429301 100644
-> --- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> @@ -6,10 +6,20 @@ RK3xxx SoCs.
->  Required properties :
->
->   - reg : Offset and length of the register set for the device
-> - - compatible : should be "rockchip,rk3066-i2c", "rockchip,rk3188-i2c",
-> -               "rockchip,rk3228-i2c" or "rockchip,rk3288-i2c".
-> + - compatible: should be one of the following:
-> +   - "rockchip,rk3066-i2c": for rk3066
-> +   - "rockchip,rk3188-i2c": for rk3188
-> +   - "rockchip,rk3228-i2c": for rk3228
-> +   - "rockchip,rk3288-i2c": for rk3288
-> +   - "rockchip,rk3399-i2c": for rk3399
->   - interrupts : interrupt number
-> - - clocks : parent clock
-> + - clocks: See ../clock/clock-bindings.txt
-> +   - For older hardware (rk3066, rk3188, rk3228, rk3288):
-> +     - There is one clock that's used both to derive the functional clock
-> +       for the device and as the bus clock.
-> +   - For newer hardware (rk3399): specified by name
-> +     - "i2c": REQUIRED. This is used to derive the functional clock.
-> +     - "pclk": REQUIRED. This is the bus clock.
+> -       clk_enable(i2c->clk);
+> +       clk_enable(i2c->pclk);
+> +
+>         i2c_writel(i2c, (calc.div_high << 16) | (calc.div_low & 0xffff),
+>                    REG_CLKDIV);
+> -       clk_disable(i2c->clk);
+> +
+> +       val = i2c_readl(i2c, REG_CON);
+> +       val &= ~REG_CON_TUNING_MASK;
+> +       val |= calc.tuning;
+> +       i2c_writel(i2c, val, REG_CON);
 
-Depending on what Rob thinks, it might make sense to remove the above
-two "REQUIRED" bits.  That would match his earlier feedback since
-we're still in the "Required" section and thus it is redundant.
+Another subtle bug here.  You need to be holding the spinlock here
+since you're doing a read-modify-write of a register that is also
+touched by the interrupt handler.  We never needed it before because
+the previous register update wasn't touched by anyone else and it was
+a single atomic write.
+
+Also: technically if we are midway through a transfer when all this
+happens then there will be a very short period of time when the two
+timing-related registers won't match with each other.  I have no idea
+how much that would matter, but in the very least it seems wise to
+minimize the time where they mismatch.  So I'd probably write:
+
+       spin_lock_irqsave(&i2c->lock, flags);
+       val = i2c_readl(i2c, REG_CON);
+       val &= ~REG_CON_TUNING_MASK;
+       val |= calc.tuning;
+       i2c_writel(i2c, val, REG_CON);
+       i2c_writel(i2c, (calc.div_high << 16) | (calc.div_low & 0xffff),
+                  REG_CLKDIV);
+       spin_unlock_irqrestore(&i2c->lock, flags);
+
+...if we really end up with on a system with a dynamically changing
+clock that uses the new-style timing and we see real problems, we can
+always try to come up with a way to avoid any problems.  Sound OK?
+
+
+Otherwise, I think things look good to me.  Caesar's comments would
+also be good to fix.
+
 
 -Doug
