@@ -1,45 +1,32 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
-Date: Thu, 12 May 2016 00:36:20 +0200
-Message-ID: <8868581.lJFUogXGzy@phil>
-References: <1462924975-69072-1-git-send-email-briannorris@chromium.org> <4355979.JCGxOmTVBW@phil> <20160511223233.GB65449@google.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v8 8/8] i2c: rk3x: support fast-mode plus for rk3399
+Date: Wed, 11 May 2016 16:41:54 -0700
+Message-ID: <CAD=FV=VzQ8PRokgAaTV00L31mcXFEzBG8c1NB4+Rqyx75hwwDg@mail.gmail.com>
+References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com>
+	<1462908794-27333-1-git-send-email-david.wu@rock-chips.com>
+	<5153288.jNhUuzGC3g@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160511223233.GB65449-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <5153288.jNhUuzGC3g@phil>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: David Wu <david.wu@rock-chips.com>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 11. Mai 2016, 15:32:33 schrieb Brian Norris:
-> On Wed, May 11, 2016 at 04:51:58PM +0200, Heiko Stuebner wrote:
-> > Hi Brian,
-> > 
-> > Am Dienstag, 10. Mai 2016, 17:02:55 schrieb Brian Norris:
-> > > The 'mmc-hs400-enhanced-strobe' property has been acked by Rob
-> > > Herring,
-> > > though it's still not merged.
-> > 
-> > The commit message should describe the actual change not the volatile
-> > environment surrounding it :-) .
-> > 
-> > When I apply this patch the property-binding will have made it into a
-> > maintainer-tree so is not valid anymore then. That is more material for
-> > the "comment-section" below the "---"
-> 
-> Of course. I think I just felt guilty without a commit message :)
+Heiko,
 
-I really prefer a (even simple) message being there - although I'm not as 
-strict as Greg and Felipe ;-) , and in cases like this I think something 
-like "enable the newly added emmc node on the rk3399 evaluation board" 
-should be sufficient.
+On Wed, May 11, 2016 at 2:09 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Additionally, the i2c-noob in me would wish for a short sentence on where
+> the timing values come from (measured, somewhere in the TRM I didn't find or
+> something completely different).
 
+If you search for "UM10204" you'll find the first link is
+<http://www.nxp.com/documents/user_manual/UM10204.pdf>.  That appears
+to be the official standard.  At least that's what
+<http://www.i2c-bus.org/fast-mode-plus/> says (though they have an old
+link).
 
-Heiko
+Agree that it wouldn't hurt to mention that in the commit message.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Doug
