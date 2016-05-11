@@ -1,60 +1,82 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/2] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
-Date: Wed, 11 May 2016 16:51:58 +0200
-Message-ID: <4355979.JCGxOmTVBW@phil>
-References: <1462924975-69072-1-git-send-email-briannorris@chromium.org> <1462924975-69072-2-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH v8 1/8] i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
+Date: Wed, 11 May 2016 17:04:49 +0200
+Message-ID: <4217955.sKb92Wcadr@phil>
+References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com> <1462908252-27016-2-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462924975-69072-2-git-send-email-briannorris@chromium.org>
+In-Reply-To: <1462908252-27016-2-git-send-email-david.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: wsa@the-dreams.de, robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+Am Mittwoch, 11. Mai 2016, 03:24:05 schrieb David Wu:
 
-Am Dienstag, 10. Mai 2016, 17:02:55 schrieb Brian Norris:
-> The 'mmc-hs400-enhanced-strobe' property has been acked by Rob Herring,
-> though it's still not merged.
+In general, all patches should have a commit message (even if it's obvious) 
+and some maintainers even enforce this in a hard way.
 
-The commit message should describe the actual change not the volatile 
-environment surrounding it :-) .
+How about something like:
 
-When I apply this patch the property-binding will have made it into a 
-maintainer-tree so is not valid anymore then. That is more material for the 
-"comment-section" below the "---"
+----
+Add kernel-doc documentation for the elements of the previously
+undocumented struct rk3x_i2c.
+----
 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+Some minor nitpicks below, otherwise
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+> Change in v8:
+> - none
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts index
-> 1a3eb1482050..ccfd2bcf02e1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-> @@ -89,6 +89,18 @@
->  	status = "okay";
+>  drivers/i2c/busses/i2c-rk3x.c | 22 +++++++++++++++++++++-
+>  1 file changed, 21 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> index 80bed02..7e45d51 100644
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
+> @@ -90,6 +90,26 @@ struct rk3x_i2c_soc_data {
+>  	int grf_offset;
 >  };
 > 
-> +&emmc_phy {
-> +	status = "okay";
-> +};
-> +
-> +&sdhci {
-> +	bus-width = <8>;
-> +	mmc-hs400-1_8v;
-> +	non-removable;
-> +	mmc-hs400-enhanced-strobe;
+> +/**
+> + * struct rk3x_i2c - private data of the controller
+> + * @adap: corresponding I2C adapter
+> + * @dev: device for this controller
+> + * @soc_data: related soc data struct
+> + * @regs: virtual memory area
+> + * @clk: clock of i2c bus
+> + * @clk_rate_nb: i2c clk rate change notify
+		^ i2c clk rate change notifier block
 
-alphabetic ordering of properties please
+> + * @t: I2C known timing information
+> + * @lock: spinlock for the i2c bus
+> + * @wait: the waitqueue to wait for i2c transfer
+> + * @busy: the condition for the event to wait for
+> + * @msg: current i2c message
+> + * @addr: addr of i2c slave device
+> + * @mode: mode of i2c transfer
+> + * @is_last_msg: flag determines whether it is the last msg in this
+> transfer + * @state: state of i2c transfer
+> + * @processed: byte length which has been send or received
+										^ sent (with a "t")
 
-> +	status = "okay";
-> +};
-> +
->  &uart2 {
->  	status = "okay";
+> + * @error: error code for i2c transfer
+> + */
+>  struct rk3x_i2c {
+>  	struct i2c_adapter adap;
+>  	struct device *dev;
+> @@ -116,7 +136,7 @@ struct rk3x_i2c {
+> 
+>  	/* I2C state machine */
+>  	enum rk3x_i2c_state state;
+> -	unsigned int processed; /* sent/received bytes */
+> +	unsigned int processed;
+>  	int error;
 >  };
