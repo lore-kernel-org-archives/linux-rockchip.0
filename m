@@ -1,88 +1,107 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v8 8/8] i2c: rk3x: support fast-mode plus for rk3399
-Date: Wed, 11 May 2016 19:44:58 +0800
-Message-ID: <57331B3A.7050801@gmail.com>
-References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com>
- <1462908794-27333-1-git-send-email-david.wu@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] mmc: dw_mmc: rockchip: Set the drive phase to 180 degrees
+Date: Wed, 11 May 2016 14:42:23 +0200
+Message-ID: <6174748.3ugS9uJXKS@phil>
+References: <1462904195-18229-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462908794-27333-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: heiko@sntech.de, wsa@the-dreams.de, mark.rutland@arm.com, huangtao@rock-chips.com, xjq@rock-chips.com, hl@rock-chips.com, pawel.moll@arm.com, ijc+devicetree@hellion.org.uk, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, dianders@chromium.org, linux-kernel@vger.kernel.org, cf@rock-chips.com, andy.shevchenko@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org, galak@codeaurora.org, zyw@rock-chips.com, briannorris@google.com, davidriley@google.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1462904195-18229-1-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>
+Cc: jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-=E5=9C=A8 2016=E5=B9=B405=E6=9C=8811=E6=97=A5 03:33, David Wu =E5=86=99=
-=E9=81=93:
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-
-Tested-by: Caesar Wang <wxt@rock-chips.com>
+Am Dienstag, 10. Mai 2016, 11:16:35 schrieb Douglas Anderson:
+> Historically for Rockchip devices we've relied on the power-on
+> default (or perhaps the firmware setting) to get the correct drive
+> phase for dw_mmc devices.  This worked OK for the most part, but:
+> 
+> * Relying on the setting just "being right" is a bit fragile.
+> 
+> * As soon as there is an instance where the power on default is wrong or
+>   where the firmware didn't configure this properly then we'll get a
+>   mysterious failure.
+> 
+> Let's explicitly set this phase in the kernel.
+> 
+> You might notice that this patch is currently very dumb and just always
+> sets this phase to 180 degrees.  As far as I can tell this is actually a
+> sane thing to do.  From reading through the Designware Databook it
+> appears that there are instances where you could still meet hold time
+> requirements and set this phase to 90 degrees, but nothing I've read
+> indicates that 180 degrees is not OK also.
+> 
+> As indicated above, adding a delay to the drive is used to achieve
+> proper hold times.  For a given speed mode hold times are listed in the
+> spec in terms of nanoseconds.  The hold times are different for
+> different speed modes.  The actual hold time achieved is actually a
+> function of Delay_O (an internal delay in dw_mmc, which could vary from
+> SoC model to SoC model), pad delays, and the drive delay (which we're
+> setting here).  Note also that by setting the drive delay as a phase we
+> will get a different number of nanoseconds of delay depending on the
+> input clock.
+> 
+> Note that, as far as I can tell, this _does_ change the behavior of
+> rk3288 devices.  On devices I tested, which use coreboot/depthcharge as
+> BIOS, the SDMMC/SDIO0/SDIO1 drive phase used to be 90 degrees.  Now it
+> will be 180 degrees.  With my understanding from the Designware Databook
+> the 180 degrees ought to be more correct and should increase
+> compatibility.
+> 
+> I have tested this by inserting my collection of uSD cards (mostly UHS,
+> though a few not) into a veyron_minnie and confirmed that they still
+> seem to enumerate properly.  For a subset of them I tried putting a
+> filesystem on them and also tried running mmc_test.
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
-> Change in v8:
-> - None
->
->   drivers/i2c/busses/i2c-rk3x.c | 21 +++++++++++++++++----
->   1 file changed, 17 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-r=
-k3x.c
-> index 25ed1ad..0ba25ee 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -126,6 +126,17 @@ static const struct i2c_spec_values fast_mode_sp=
-ec =3D {
->   	.min_hold_buffer_ns =3D 1300,
->   };
->  =20
-> +static const struct i2c_spec_values fast_mode_plus_spec =3D {
-> +	.min_hold_start_ns =3D 260,
-> +	.min_low_ns =3D 500,
-> +	.min_high_ns =3D 260,
-> +	.min_setup_start_ns =3D 260,
-> +	.max_data_hold_ns =3D 400,
-> +	.min_data_setup_ns =3D 50,
-> +	.min_setup_stop_ns =3D 260,
-> +	.min_hold_buffer_ns =3D 500,
-> +};
+>  drivers/mmc/host/dw_mmc-rockchip.c | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c
+> b/drivers/mmc/host/dw_mmc-rockchip.c index 8c20b81cafd8..62cbd33a07cd
+> 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -66,6 +66,27 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host,
+> struct mmc_ios *ios) /* Make sure we use phases which we can enumerate
+> with */
+>  	if (!IS_ERR(priv->sample_clk))
+>  		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
 > +
->   /**
->    * struct rk3x_i2c_calced_timings:
->    * @div_low: Divider output for low
-> @@ -531,8 +542,10 @@ static const struct i2c_spec_values *rk3x_i2c_ge=
-t_spec(unsigned int speed)
->   {
->   	if (speed <=3D 100000)
->   		return &standard_mode_spec;
-> -	else
-> +	else if (speed <=3D 400000)
->   		return &fast_mode_spec;
-> +	else
-> +		return &fast_mode_plus_spec;
->   }
->  =20
->   /**
-> @@ -743,9 +756,9 @@ static int rk3x_i2c_v1_calc_timings(unsigned long=
- clk_rate,
->   	const struct i2c_spec_values *spec;
->   	int ret =3D 0;
->  =20
-> -	/* Support standard-mode and fast-mode */
-> -	if (WARN_ON(t->bus_freq_hz > 400000))
-> -		t->bus_freq_hz =3D 400000;
-> +	/* Support standard-mode, fast-mode and fast-mode plus */
-> +	if (WARN_ON(t->bus_freq_hz > 1000000))
-> +		t->bus_freq_hz =3D 1000000;
->  =20
->   	/* prevent scl_rate_khz from becoming 0 */
->   	if (WARN_ON(t->bus_freq_hz < 1000))
+> +	/*
+> +	 * Set the drive phase to 180 degrees.  This helps us achieve proper
+> +	 * hold times.
+> +	 *
+> +	 * Note that this is _not_ a value that is tuned and is also _not_ a
+> +	 * value that will vary from board to board.  It is a value that
+> +	 * _could_ vary between different SoC models (could be different on
+> +	 * rk3066 vs. rk3288 for instance).  It is also a value that _could_
+
+I saw you talking with Shawn in the other thread on doing this in a 
+different way, but that statement itself is incorrect and should not land in 
+the kernel.
+
+At least rk3066/rk3188 (and most likely earlier) do not support the tuning 
+at all and the drive-clock is going through a static non-controllable 
+inverter (according to the CRU docs), so should always be at 180 degrees.
 
 
---=20
-Thanks,
-Caesar
+> +	 * need to be adjusted based on our clock frequency and speed mode
+> +	 * since different speed modes have different hold time requirements
+> +	 * and hold time requirements are in "ns" (a phase offset adds a
+> +	 * different "ns" delay for different input clocks).
+> +	 *
+> +	 * Despite these theoretical needs, it has been observed that 180
+> +	 * degrees gives us good signaling across all tested SoCs and all
+> +	 * tested speed modes.  If when we find someone that needs 90 degrees
+> +	 * here we can add a table based on speed mode / SoC compatible ID.
+> +	 */
+> +	if (!IS_ERR(priv->drv_clk))
+> +		clk_set_phase(priv->drv_clk, 180);
+>  }
+> 
+>  #define NUM_PHASES			360
+
