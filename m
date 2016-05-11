@@ -1,90 +1,136 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v8 8/8] i2c: rk3x: support fast-mode plus for rk3399
-Date: Wed, 11 May 2016 23:09:43 +0200
-Message-ID: <5153288.jNhUuzGC3g@phil>
-References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com> <1462908794-27333-1-git-send-email-david.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+From: Douglas Anderson <dianders@chromium.org>
+Subject: [PATCH v2] mmc: dw_mmc: rockchip: Set the drive phase properly
+Date: Wed, 11 May 2016 14:40:48 -0700
+Message-ID: <1463002848-580-1-git-send-email-dianders@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462908794-27333-1-git-send-email-david.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: wsa@the-dreams.de, robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, shawn.lin@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, briannorris@chromium.org, Douglas Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 11. Mai 2016, 03:33:14 schrieb David Wu:
+Historically for Rockchip devices we've relied on the power-on
+default (or perhaps the firmware setting) to get the correct drive
+phase for dw_mmc devices.  This worked OK for the most part, but:
 
-please always try to also provide some sort of commit message.
+* Relying on the setting just "being right" is a bit fragile.
 
+* As soon as there is an instance where the power on default is wrong or
+  where the firmware didn't configure this properly then we'll get a
+  mysterious failure.
+
+Let's explicitly set this phase in the kernel.
+
+The comments inside this patch try to explain the situation quite
+throughly, but the high level overview of this is:
+
+Before this patch on rk3288 devices tested:
+* eMMC: 180 degrees
+* SDMMC/SDIO0/SDIO1: 90 degrees
+
+After this patch:
+* Use 90 degree phase offset usually.
+* Use 180 degree phase offset for MMC_DDR52, SDR104, HS200.
+
+That means we are _changing_ behavior for those devices in this way:
+
+* If we have HS200 eMMC or DDR52 eMMC, we'll run ID mode at 90
+  degrees (vs 180) but otherwise have no change.
+
+* For any non-HS200 / non-DDR52 eMMC devices we'll now _always_ run at
+  90 degrees (vs 180).  It seems fairly unlikely that building modern
+  hardware is using an eMMC that isn't using DDR52 or HS200, of course.
+
+* For SDR104 cards we'll now run with 180 degree phase offset (vs 90).
+  It's expected that 90 degree phase offset would have worked OK, but
+  this gives us extra margin.
+
+I have tested this by inserting my collection of uSD cards (mostly UHS,
+though a few not) into a veyron_minnie and confirmed that they still
+seem to enumerate properly.  For a subset of them I tried putting a
+filesystem on them and also tried running mmc_test.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
 ---
-Implement fast mode plus that allows bus speeds of up to 1MHz.
-.....
+Changes in v2:
+- Now use 90 degrees for some modes; updated comments to say why.
 
----
+ drivers/mmc/host/dw_mmc-rockchip.c | 64 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
 
-Additionally, the i2c-noob in me would wish for a short sentence on where 
-the timing values come from (measured, somewhere in the TRM I didn't find or 
-something completely different).
-
-
-Patch content itself looks good, so with a suitable commit message,
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Change in v8:
-> - None
-> 
->  drivers/i2c/busses/i2c-rk3x.c | 21 +++++++++++++++++----
->  1 file changed, 17 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 25ed1ad..0ba25ee 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -126,6 +126,17 @@ static const struct i2c_spec_values fast_mode_spec =
-> { .min_hold_buffer_ns = 1300,
->  };
-> 
-> +static const struct i2c_spec_values fast_mode_plus_spec = {
-> +	.min_hold_start_ns = 260,
-> +	.min_low_ns = 500,
-> +	.min_high_ns = 260,
-> +	.min_setup_start_ns = 260,
-> +	.max_data_hold_ns = 400,
-> +	.min_data_setup_ns = 50,
-> +	.min_setup_stop_ns = 260,
-> +	.min_hold_buffer_ns = 500,
-> +};
-> +
->  /**
->   * struct rk3x_i2c_calced_timings:
->   * @div_low: Divider output for low
-> @@ -531,8 +542,10 @@ static const struct i2c_spec_values
-> *rk3x_i2c_get_spec(unsigned int speed) {
->  	if (speed <= 100000)
->  		return &standard_mode_spec;
-> -	else
-> +	else if (speed <= 400000)
->  		return &fast_mode_spec;
-> +	else
-> +		return &fast_mode_plus_spec;
->  }
-> 
->  /**
-> @@ -743,9 +756,9 @@ static int rk3x_i2c_v1_calc_timings(unsigned long
-> clk_rate, const struct i2c_spec_values *spec;
->  	int ret = 0;
-> 
-> -	/* Support standard-mode and fast-mode */
-> -	if (WARN_ON(t->bus_freq_hz > 400000))
-> -		t->bus_freq_hz = 400000;
-> +	/* Support standard-mode, fast-mode and fast-mode plus */
-> +	if (WARN_ON(t->bus_freq_hz > 1000000))
-> +		t->bus_freq_hz = 1000000;
-> 
->  	/* prevent scl_rate_khz from becoming 0 */
->  	if (WARN_ON(t->bus_freq_hz < 1000))
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 8c20b81cafd8..8068fa887db8 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -66,6 +66,70 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	/* Make sure we use phases which we can enumerate with */
+ 	if (!IS_ERR(priv->sample_clk))
+ 		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
++
++	/*
++	 * Set the drive phase offset based on speed mode to achieve hold times.
++	 *
++	 * That this is _not_ a value that is dynamically tuned and is also
++	 * _not_ a value that will vary from board to board.  It is a value
++	 * that could vary between different SoC models if they had massively
++	 * different output clock delays inside their dw_mmc IP block (delay_o),
++	 * but since it's OK to overshoot a little we don't need to do complex
++	 * calculations and can pick values that will just work for everyone.
++	 *
++	 * When picking values we'll stick with picking 0/90/180/270 since
++	 * those can be made very accurately on all known Rockchip SoCs.
++	 *
++	 * Note that these values match values from the DesignWare Databook
++	 * tables for the most part except for SDR12 and "ID mode".  For those
++	 * two modes the databook calculations assume a clock in of 50MHz.  As
++	 * seen above, we always use a clock in rate that is exactly the
++	 * card's input clock (times RK3288_CLKGEN_DIV, but that gets divided
++	 * back out before the controller sees it).
++	 *
++	 * From measurement of a single device, it appears that delay_o is
++	 * about .5 ns.  Since we try to leave a bit of margin, it's expected
++	 * that numbers here will be fine even with much larger delay_o
++	 * (the 1.4 ns assumed by the DesignWare Databook would result in the
++	 * same results, for instance).
++	 */
++	if (!IS_ERR(priv->drv_clk)) {
++		int phase;
++
++		/*
++		 * In almost all cases a 90 degree phase offset will provide
++		 * sufficient hold times across all valid input clock rates
++		 * assuming delay_o is not absurd for a given SoC.  We'll use
++		 * that as a default.
++		 */
++		phase = 90;
++
++		switch (ios->timing) {
++		case MMC_TIMING_MMC_DDR52:
++			/*
++			 * Since clock in rate with MMC_DDR52 is doubled when
++			 * bus width is 8 we need to double the phase offset
++			 * to get the same timings.
++			 */
++			if (ios->bus_width == MMC_BUS_WIDTH_8)
++				phase = 180;
++			break;
++		case MMC_TIMING_UHS_SDR104:
++		case MMC_TIMING_MMC_HS200:
++			/*
++			 * In the case of 150 MHz clock (typical max for
++			 * Rockchip SoCs), 90 degree offset will add a delay
++			 * of 1.67 ns.  That will meet min hold time of .8 ns
++			 * as long as clock output delay is < .87 ns.  On
++			 * SoCs measured this seems to be OK, but it doesn't
++			 * hurt to give margin here, so we use 180.
++			 */
++			phase = 180;
++			break;
++		}
++
++		clk_set_phase(priv->drv_clk, phase);
++	}
+ }
+ 
+ #define NUM_PHASES			360
+-- 
+2.8.0.rc3.226.g39d4020
