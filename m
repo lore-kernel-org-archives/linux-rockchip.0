@@ -1,82 +1,61 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v8 1/8] i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
-Date: Wed, 11 May 2016 17:04:49 +0200
-Message-ID: <4217955.sKb92Wcadr@phil>
-References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com> <1462908252-27016-2-git-send-email-david.wu@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v8 6/8] dt-bindings: i2c: rk3x: add support for rk3399
+Date: Wed, 11 May 2016 09:35:29 -0700
+Message-ID: <CAD=FV=VzL8AfzUnPYgsf_NqPgbp2_o_qJC7-DWHmekWVQ-Es=A@mail.gmail.com>
+References: <1462908252-27016-1-git-send-email-david.wu@rock-chips.com>
+	<1462908647-27236-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462908252-27016-2-git-send-email-david.wu@rock-chips.com>
+In-Reply-To: <1462908647-27236-1-git-send-email-david.wu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: David Wu <david.wu@rock-chips.com>
-Cc: wsa@the-dreams.de, robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 11. Mai 2016, 03:24:05 schrieb David Wu:
+Hi,
 
-In general, all patches should have a commit message (even if it's obvious) 
-and some maintainers even enforce this in a hard way.
-
-How about something like:
-
-----
-Add kernel-doc documentation for the elements of the previously
-undocumented struct rk3x_i2c.
-----
-
-Some minor nitpicks below, otherwise
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
+On Tue, May 10, 2016 at 12:30 PM, David Wu <david.wu@rock-chips.com> wrote:
+> The bus clock and function clock are separated at rk3399,
+> and others use one clock as the bus clock and function clock.
+>
 > Signed-off-by: David Wu <david.wu@rock-chips.com>
 > Reviewed-by: Douglas Anderson <dianders@chromium.org>
 > ---
 > Change in v8:
-> - none
-> 
->  drivers/i2c/busses/i2c-rk3x.c | 22 +++++++++++++++++++++-
->  1 file changed, 21 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 80bed02..7e45d51 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -90,6 +90,26 @@ struct rk3x_i2c_soc_data {
->  	int grf_offset;
->  };
-> 
-> +/**
-> + * struct rk3x_i2c - private data of the controller
-> + * @adap: corresponding I2C adapter
-> + * @dev: device for this controller
-> + * @soc_data: related soc data struct
-> + * @regs: virtual memory area
-> + * @clk: clock of i2c bus
-> + * @clk_rate_nb: i2c clk rate change notify
-		^ i2c clk rate change notifier block
+> - remove error description.
+>
+>  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt | 16 +++++++++++++---
+>  1 file changed, 13 insertions(+), 3 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+> index 0b4a85f..5429301 100644
+> --- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+> +++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+> @@ -6,10 +6,20 @@ RK3xxx SoCs.
+>  Required properties :
+>
+>   - reg : Offset and length of the register set for the device
+> - - compatible : should be "rockchip,rk3066-i2c", "rockchip,rk3188-i2c",
+> -               "rockchip,rk3228-i2c" or "rockchip,rk3288-i2c".
+> + - compatible: should be one of the following:
+> +   - "rockchip,rk3066-i2c": for rk3066
+> +   - "rockchip,rk3188-i2c": for rk3188
+> +   - "rockchip,rk3228-i2c": for rk3228
+> +   - "rockchip,rk3288-i2c": for rk3288
+> +   - "rockchip,rk3399-i2c": for rk3399
+>   - interrupts : interrupt number
+> - - clocks : parent clock
+> + - clocks: See ../clock/clock-bindings.txt
+> +   - For older hardware (rk3066, rk3188, rk3228, rk3288):
+> +     - There is one clock that's used both to derive the functional clock
+> +       for the device and as the bus clock.
+> +   - For newer hardware (rk3399): specified by name
+> +     - "i2c": REQUIRED. This is used to derive the functional clock.
+> +     - "pclk": REQUIRED. This is the bus clock.
 
-> + * @t: I2C known timing information
-> + * @lock: spinlock for the i2c bus
-> + * @wait: the waitqueue to wait for i2c transfer
-> + * @busy: the condition for the event to wait for
-> + * @msg: current i2c message
-> + * @addr: addr of i2c slave device
-> + * @mode: mode of i2c transfer
-> + * @is_last_msg: flag determines whether it is the last msg in this
-> transfer + * @state: state of i2c transfer
-> + * @processed: byte length which has been send or received
-										^ sent (with a "t")
+Depending on what Rob thinks, it might make sense to remove the above
+two "REQUIRED" bits.  That would match his earlier feedback since
+we're still in the "Required" section and thus it is redundant.
 
-> + * @error: error code for i2c transfer
-> + */
->  struct rk3x_i2c {
->  	struct i2c_adapter adap;
->  	struct device *dev;
-> @@ -116,7 +136,7 @@ struct rk3x_i2c {
-> 
->  	/* I2C state machine */
->  	enum rk3x_i2c_state state;
-> -	unsigned int processed; /* sent/received bytes */
-> +	unsigned int processed;
->  	int error;
->  };
+-Doug
