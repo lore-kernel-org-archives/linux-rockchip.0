@@ -1,46 +1,86 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3] mmc: dw_mmc: rockchip: Set the drive phase properly
-Date: Fri, 13 May 2016 00:52:51 +0200
-Message-ID: <2865073.LogD6IIKLp@phil>
-References: <1463077910-25914-1-git-send-email-dianders@chromium.org>
+From: Brian Norris <briannorris@chromium.org>
+Subject: Re: [PATCH 2/2] clk: rockchip: fix the rk3399 sdmmc sample shift
+Date: Thu, 12 May 2016 16:10:23 -0700
+Message-ID: <20160512231023.GA63308@google.com>
+References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
+ <1463076197-15900-2-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1463077910-25914-1-git-send-email-dianders@chromium.org>
-Sender: linux-mmc-owner@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1463076197-15900-2-git-send-email-dianders@chromium.org>
+Sender: linux-clk-owner@vger.kernel.org
 To: Douglas Anderson <dianders@chromium.org>
-Cc: jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, sboyd@codeaurora.org, zhengxing@rock-chips.com, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 12. Mai 2016, 11:31:50 schrieb Douglas Anderson:
+On Thu, May 12, 2016 at 11:03:17AM -0700, Doug Anderson wrote:
+> Just like every other Rockhip device, the MMC "_sample" clocks should
+> have a shift of 0, not a shift of 1.  The rk3399 TRM agrees.  Presumably
+> these values were set to 0 because of a typo.
 
-[...]
+I'll semi-disagree about the TRM: the TRM doesn't seem to agree with
+itself, so it sometimes agrees with you and sometimes doesn't :)
 
-> In commit 7a03fe6f48f3 ("clk: rockchip: reset init state before mmc card
-> initialization") we actually started setting this explicitly in the
-> kernel, but that commit wasn't quite right and also wasn't quite
-> enough.  See <https://patchwork.kernel.org/patch/9085311/> for some
-> details.
+On page 79 of the 2nd (?) book, it looks like {SDMMC,SDIO}_CON{0,}[2:1]
+are {drv,sample}_degree. But on page 208 of the 1st book, those are put
+at bits [1:0].
+
+Perhaps we can get a straight answer from Rockchip though.
+
+Brian
+
+> Things _sorta_ would have worked with the incorrect sample phase shift
+> because of the register layout but wouldn't have been ideal and we would
+> have skipped lots of phases.  Also: we would never actually enabled the
+> fine delay unless we happened to have 128 or more delay elements.
 > 
-> Let's explicitly set this phase in dw_mmc.
-
-[...]
-
-> Fixes: 7a03fe6f48f3 ("clk: rockchip: reset init state before mmc card
-> initialization") Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-I've tested this patch together with the two clock patches linked above on a 
-rk3288-firefly and a rk3288-veyron-jerry. On the firefly tuning still does not 
-work (probably really some regulator issue) and on veyron tuning still works 
-as expected, so
-
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-
-Doug's explanations both in the commit message and the code look sane to me, 
-but I don't feel confident enough in my understanding of the matter to 
-transform that into a Reviewed-by tag.
-
-
-Heiko
+> This is expected behavior before this patch:
+> * Try to set:     0 degrees +   1 delay elements
+>   Actually get:   0 degrees +   0 delay elements
+> * Try to set:    90 degrees +   0 delay elements
+>   Actually get: 180 degrees +   0 delay elements
+> * Try to set:   180 degrees +   0 delay elements
+>   Actually get:   0 degrees +   0 delay elements
+> * Try to set:   270 degrees +   0 delay elements
+>   Actually get: 180 degrees +   0 delay elements
+> * Try to set:     0 degrees + 129 delay elements
+>   Actually get:   0 degrees +   2 delay elements
+> * Try to set:   180 degrees + 129 delay elements
+>   Actually get:   0 degrees +   3 delay elements
+> * Try to set:     0 degrees + 130 delay elements
+>   Actually get:   0 degrees +   4 delay elements
+> 
+> I verified that old code had a problem by turning on debug printouts and
+> seeing that the old code would report this for one SD card I had:
+>   Good phase range 347-101 (115 len)
+>   Good phase range 202-326 (125 len)
+> 
+> After my fix, it went down to one big good range for the same card.
+> This is more expected:
+>   Good phase range 189-1 (173 len)
+>   Good phase range 82-85 (4 len)
+>   Good phase range 166-168 (3 len)
+> 
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+>  drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+> index 291543f52caa..14ff3e109e1e 100644
+> --- a/drivers/clk/rockchip/clk-rk3399.c
+> +++ b/drivers/clk/rockchip/clk-rk3399.c
+> @@ -895,10 +895,10 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
+>  			RK3399_CLKGATE_CON(6), 1, GFLAGS),
+>  
+>  	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
+> -	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
+> +	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 0),
+>  
+>  	MMC(SCLK_SDIO_DRV,      "sdio_drv",    "clk_sdio",  RK3399_SDIO_CON0,  1),
+> -	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  1),
+> +	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  0),
+>  
+>  	/* pcie */
+>  	COMPOSITE(SCLK_PCIE_PM, "clk_pcie_pm", mux_pll_src_cpll_gpll_npll_24m_p, 0,
