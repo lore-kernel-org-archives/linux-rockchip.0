@@ -1,151 +1,77 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v2] mmc: dw_mmc: rockchip: Set the drive phase properly
-Date: Thu, 12 May 2016 11:13:54 +0800
-Message-ID: <4ea71cf9-873f-960a-67cb-54da603fd628@rock-chips.com>
-References: <1463002848-580-1-git-send-email-dianders@chromium.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463002848-580-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, jh80.chung@samsung.com, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: shawn.lin@rock-chips.com, shawn.lin@kernel-upstream.org, linux-rockchip@lists.infradead.org, briannorris@chromium.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v9 1/8] i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
+Date: Thu, 12 May 2016 15:52:59 +0800
+Message-ID: <1463039586-8134-2-git-send-email-david.wu@rock-chips.com>
+References: <1463039586-8134-1-git-send-email-david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1463039586-8134-1-git-send-email-david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, pawel.moll-5wv7dgnIgG8@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, davidriley-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, hl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, xjq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/12 5:40, Douglas Anderson wrote:
-> Historically for Rockchip devices we've relied on the power-on
-> default (or perhaps the firmware setting) to get the correct drive
-> phase for dw_mmc devices.  This worked OK for the most part, but:
->
-> * Relying on the setting just "being right" is a bit fragile.
->
-> * As soon as there is an instance where the power on default is wrong or
->   where the firmware didn't configure this properly then we'll get a
->   mysterious failure.
->
-> Let's explicitly set this phase in the kernel.
->
-> The comments inside this patch try to explain the situation quite
-> throughly, but the high level overview of this is:
->
-> Before this patch on rk3288 devices tested:
-> * eMMC: 180 degrees
-> * SDMMC/SDIO0/SDIO1: 90 degrees
->
-> After this patch:
-> * Use 90 degree phase offset usually.
-> * Use 180 degree phase offset for MMC_DDR52, SDR104, HS200.
+Add kernel-doc documentation for the elements of the previously
+undocumented struct rk3x_i2c.
 
-Thanks for doing this.
+Signed-off-by: David Wu <david.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+Change in v9:
+- add commit description.
 
-Reviewed-by: Shawn Lin<shawn.lin@rock-chips.com>
+Change in v8:
+- none
 
->
-> That means we are _changing_ behavior for those devices in this way:
->
-> * If we have HS200 eMMC or DDR52 eMMC, we'll run ID mode at 90
->   degrees (vs 180) but otherwise have no change.
->
-> * For any non-HS200 / non-DDR52 eMMC devices we'll now _always_ run at
->   90 degrees (vs 180).  It seems fairly unlikely that building modern
->   hardware is using an eMMC that isn't using DDR52 or HS200, of course.
->
-> * For SDR104 cards we'll now run with 180 degree phase offset (vs 90).
->   It's expected that 90 degree phase offset would have worked OK, but
->   this gives us extra margin.
->
-> I have tested this by inserting my collection of uSD cards (mostly UHS,
-> though a few not) into a veyron_minnie and confirmed that they still
-> seem to enumerate properly.  For a subset of them I tried putting a
-> filesystem on them and also tried running mmc_test.
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> Changes in v2:
-> - Now use 90 degrees for some modes; updated comments to say why.
->
->  drivers/mmc/host/dw_mmc-rockchip.c | 64 ++++++++++++++++++++++++++++++++++++++
->  1 file changed, 64 insertions(+)
->
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 8c20b81cafd8..8068fa887db8 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -66,6 +66,70 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->  	/* Make sure we use phases which we can enumerate with */
->  	if (!IS_ERR(priv->sample_clk))
->  		clk_set_phase(priv->sample_clk, priv->default_sample_phase);
-> +
-> +	/*
-> +	 * Set the drive phase offset based on speed mode to achieve hold times.
-> +	 *
-> +	 * That this is _not_ a value that is dynamically tuned and is also
-> +	 * _not_ a value that will vary from board to board.  It is a value
-> +	 * that could vary between different SoC models if they had massively
-> +	 * different output clock delays inside their dw_mmc IP block (delay_o),
-> +	 * but since it's OK to overshoot a little we don't need to do complex
-> +	 * calculations and can pick values that will just work for everyone.
-> +	 *
-> +	 * When picking values we'll stick with picking 0/90/180/270 since
-> +	 * those can be made very accurately on all known Rockchip SoCs.
-> +	 *
-> +	 * Note that these values match values from the DesignWare Databook
-> +	 * tables for the most part except for SDR12 and "ID mode".  For those
-> +	 * two modes the databook calculations assume a clock in of 50MHz.  As
-> +	 * seen above, we always use a clock in rate that is exactly the
-> +	 * card's input clock (times RK3288_CLKGEN_DIV, but that gets divided
-> +	 * back out before the controller sees it).
-> +	 *
-> +	 * From measurement of a single device, it appears that delay_o is
-> +	 * about .5 ns.  Since we try to leave a bit of margin, it's expected
-> +	 * that numbers here will be fine even with much larger delay_o
-> +	 * (the 1.4 ns assumed by the DesignWare Databook would result in the
-> +	 * same results, for instance).
-> +	 */
-> +	if (!IS_ERR(priv->drv_clk)) {
-> +		int phase;
-> +
-> +		/*
-> +		 * In almost all cases a 90 degree phase offset will provide
-> +		 * sufficient hold times across all valid input clock rates
-> +		 * assuming delay_o is not absurd for a given SoC.  We'll use
-> +		 * that as a default.
-> +		 */
-> +		phase = 90;
-> +
-> +		switch (ios->timing) {
-> +		case MMC_TIMING_MMC_DDR52:
-> +			/*
-> +			 * Since clock in rate with MMC_DDR52 is doubled when
-> +			 * bus width is 8 we need to double the phase offset
-> +			 * to get the same timings.
-> +			 */
-> +			if (ios->bus_width == MMC_BUS_WIDTH_8)
-> +				phase = 180;
-> +			break;
-> +		case MMC_TIMING_UHS_SDR104:
-> +		case MMC_TIMING_MMC_HS200:
-> +			/*
-> +			 * In the case of 150 MHz clock (typical max for
-> +			 * Rockchip SoCs), 90 degree offset will add a delay
-> +			 * of 1.67 ns.  That will meet min hold time of .8 ns
-> +			 * as long as clock output delay is < .87 ns.  On
-> +			 * SoCs measured this seems to be OK, but it doesn't
-> +			 * hurt to give margin here, so we use 180.
-> +			 */
-> +			phase = 180;
-> +			break;
-> +		}
-> +
-> +		clk_set_phase(priv->drv_clk, phase);
-> +	}
->  }
->
->  #define NUM_PHASES			360
->
+ drivers/i2c/busses/i2c-rk3x.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
 
-
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 80bed02..7e45d51 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -90,6 +90,26 @@ struct rk3x_i2c_soc_data {
+ 	int grf_offset;
+ };
+ 
++/**
++ * struct rk3x_i2c - private data of the controller
++ * @adap: corresponding I2C adapter
++ * @dev: device for this controller
++ * @soc_data: related soc data struct
++ * @regs: virtual memory area
++ * @clk: clock of i2c bus
++ * @clk_rate_nb: i2c clk rate change notify
++ * @t: I2C known timing information
++ * @lock: spinlock for the i2c bus
++ * @wait: the waitqueue to wait for i2c transfer
++ * @busy: the condition for the event to wait for
++ * @msg: current i2c message
++ * @addr: addr of i2c slave device
++ * @mode: mode of i2c transfer
++ * @is_last_msg: flag determines whether it is the last msg in this transfer
++ * @state: state of i2c transfer
++ * @processed: byte length which has been send or received
++ * @error: error code for i2c transfer
++ */
+ struct rk3x_i2c {
+ 	struct i2c_adapter adap;
+ 	struct device *dev;
+@@ -116,7 +136,7 @@ struct rk3x_i2c {
+ 
+ 	/* I2C state machine */
+ 	enum rk3x_i2c_state state;
+-	unsigned int processed; /* sent/received bytes */
++	unsigned int processed;
+ 	int error;
+ };
+ 
 -- 
-Best Regards
-Shawn Lin
+1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
