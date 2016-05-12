@@ -1,72 +1,74 @@
-From: Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH 2/2] clk: rockchip: fix the rk3399 sdmmc sample shift
-Date: Thu, 12 May 2016 11:03:17 -0700
-Message-ID: <1463076197-15900-2-git-send-email-dianders@chromium.org>
-References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463076197-15900-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, zhengxing@rock-chips.com, Douglas Anderson <dianders@chromium.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2] mmc: dw_mmc: rockchip: Set the drive phase properly
+Date: Thu, 12 May 2016 11:15:52 -0700
+Message-ID: <CAD=FV=UiPo5EnsX+erm5PDsuCHczr1qbhwz8s4FcLeNGPdVuGQ@mail.gmail.com>
+References: <1463002848-580-1-git-send-email-dianders@chromium.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1463002848-580-1-git-send-email-dianders@chromium.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <briannorris@chromium.org>, Douglas Anderson <dianders@chromium.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Just like every other Rockhip device, the MMC "_sample" clocks should
-have a shift of 0, not a shift of 1.  The rk3399 TRM agrees.  Presumably
-these values were set to 0 because of a typo.
+Hi,
 
-Things _sorta_ would have worked with the incorrect sample phase shift
-because of the register layout but wouldn't have been ideal and we would
-have skipped lots of phases.  Also: we would never actually enabled the
-fine delay unless we happened to have 128 or more delay elements.
+On Wed, May 11, 2016 at 2:40 PM, Douglas Anderson <dianders@chromium.org> wrote:
+> Historically for Rockchip devices we've relied on the power-on
+> default (or perhaps the firmware setting) to get the correct drive
+> phase for dw_mmc devices.  This worked OK for the most part, but:
+>
+> * Relying on the setting just "being right" is a bit fragile.
+>
+> * As soon as there is an instance where the power on default is wrong or
+>   where the firmware didn't configure this properly then we'll get a
+>   mysterious failure.
+>
+> Let's explicitly set this phase in the kernel.
+>
+> The comments inside this patch try to explain the situation quite
+> throughly, but the high level overview of this is:
+>
+> Before this patch on rk3288 devices tested:
+> * eMMC: 180 degrees
+> * SDMMC/SDIO0/SDIO1: 90 degrees
+>
+> After this patch:
+> * Use 90 degree phase offset usually.
+> * Use 180 degree phase offset for MMC_DDR52, SDR104, HS200.
+>
+> That means we are _changing_ behavior for those devices in this way:
+>
+> * If we have HS200 eMMC or DDR52 eMMC, we'll run ID mode at 90
+>   degrees (vs 180) but otherwise have no change.
+>
+> * For any non-HS200 / non-DDR52 eMMC devices we'll now _always_ run at
+>   90 degrees (vs 180).  It seems fairly unlikely that building modern
+>   hardware is using an eMMC that isn't using DDR52 or HS200, of course.
+>
+> * For SDR104 cards we'll now run with 180 degree phase offset (vs 90).
+>   It's expected that 90 degree phase offset would have worked OK, but
+>   this gives us extra margin.
+>
+> I have tested this by inserting my collection of uSD cards (mostly UHS,
+> though a few not) into a veyron_minnie and confirmed that they still
+> seem to enumerate properly.  For a subset of them I tried putting a
+> filesystem on them and also tried running mmc_test.
+>
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Changes in v2:
+> - Now use 90 degrees for some modes; updated comments to say why.
+>
+>  drivers/mmc/host/dw_mmc-rockchip.c | 64 ++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 64 insertions(+)
 
-This is expected behavior before this patch:
-* Try to set:     0 degrees +   1 delay elements
-  Actually get:   0 degrees +   0 delay elements
-* Try to set:    90 degrees +   0 delay elements
-  Actually get: 180 degrees +   0 delay elements
-* Try to set:   180 degrees +   0 delay elements
-  Actually get:   0 degrees +   0 delay elements
-* Try to set:   270 degrees +   0 delay elements
-  Actually get: 180 degrees +   0 delay elements
-* Try to set:     0 degrees + 129 delay elements
-  Actually get:   0 degrees +   2 delay elements
-* Try to set:   180 degrees + 129 delay elements
-  Actually get:   0 degrees +   3 delay elements
-* Try to set:     0 degrees + 130 delay elements
-  Actually get:   0 degrees +   4 delay elements
+Just a note that I have since found out that recent patches in the
+kernel in fact _do_ init the drive phase and apparently do it
+improperly.  That means that $SUBJECT patch actually is expected to
+fix real problems on real devices.
 
-I verified that old code had a problem by turning on debug printouts and
-seeing that the old code would report this for one SD card I had:
-  Good phase range 347-101 (115 len)
-  Good phase range 202-326 (125 len)
+See <https://patchwork.kernel.org/patch/9085311/> for some details.
 
-After my fix, it went down to one big good range for the same card.
-This is more expected:
-  Good phase range 189-1 (173 len)
-  Good phase range 82-85 (4 len)
-  Good phase range 166-168 (3 len)
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
----
- drivers/clk/rockchip/clk-rk3399.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 291543f52caa..14ff3e109e1e 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -895,10 +895,10 @@ static struct rockchip_clk_branch rk3399_clk_branches[] __initdata = {
- 			RK3399_CLKGATE_CON(6), 1, GFLAGS),
- 
- 	MMC(SCLK_SDMMC_DRV,     "sdmmc_drv",    "clk_sdmmc", RK3399_SDMMC_CON0, 1),
--	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 1),
-+	MMC(SCLK_SDMMC_SAMPLE,  "sdmmc_sample", "clk_sdmmc", RK3399_SDMMC_CON1, 0),
- 
- 	MMC(SCLK_SDIO_DRV,      "sdio_drv",    "clk_sdio",  RK3399_SDIO_CON0,  1),
--	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  1),
-+	MMC(SCLK_SDIO_SAMPLE,   "sdio_sample", "clk_sdio",  RK3399_SDIO_CON1,  0),
- 
- 	/* pcie */
- 	COMPOSITE(SCLK_PCIE_PM, "clk_pcie_pm", mux_pll_src_cpll_gpll_npll_24m_p, 0,
--- 
-2.8.0.rc3.226.g39d4020
+-Doug
