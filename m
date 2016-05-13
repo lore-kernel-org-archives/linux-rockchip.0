@@ -1,53 +1,81 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v3 2/2] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
-Date: Fri, 13 May 2016 14:47:25 -0700
-Message-ID: <1463176045-109748-2-git-send-email-briannorris@chromium.org>
-References: <1463176045-109748-1-git-send-email-briannorris@chromium.org>
+Subject: [PATCH v3 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
+Date: Fri, 13 May 2016 14:47:24 -0700
+Message-ID: <1463176045-109748-1-git-send-email-briannorris@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463176045-109748-1-git-send-email-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip's rk3399 evaluation board has eMMC. Let's enable the
-newly-added node.
+Add description for the SDHCI v5.1 eMMC controller on rk3399. Fix it to
+200 MHz, to support all supported timing modes.
+
+Note that 'rockchip,rk3399-sdhci-5.1' is not documented; we presumably
+have a compliant Arasan controller, but let's have a rockchip property
+as the canonical backup/precautionary measure. Per Heiko's previous
+suggestion, let's not clutter the arasan doc with it.
 
 Signed-off-by: Brian Norris <briannorris@chromium.org>
+Reviewed-by: Doug Anderson <dianders@chromium.org>
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 v3:
 
- * no change
+ * correct emmc_phy reg length to 0x24
 
 v2:
 
- * better commit description
+ * improved commit message
+ * assign eMMC clock to 200 MHz
 
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 1a3eb1482050..0b27d91084c4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -89,6 +89,18 @@
- 	status = "okay";
- };
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 46f325a143b0..99078f5ebeb9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -215,6 +215,19 @@
+ 		status = "disabled";
+ 	};
  
-+&emmc_phy {
-+	status = "okay";
-+};
++	sdhci: sdhci@fe330000 {
++		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
++		reg = <0x0 0xfe330000 0x0 0x10000>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
++		clock-names = "clk_xin", "clk_ahb";
++		assigned-clocks = <&cru SCLK_EMMC>;
++		assigned-clock-rates = <200000000>;
++		phys = <&emmc_phy>;
++		phy-names = "phy_arasan";
++		status = "disabled";
++	};
 +
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	non-removable;
-+	status = "okay";
-+};
+ 	usb_host0_ehci: usb@fe380000 {
+ 		compatible = "generic-ehci";
+ 		reg = <0x0 0xfe380000 0x0 0x20000>;
+@@ -481,8 +494,18 @@
+ 	};
+ 
+ 	grf: syscon@ff770000 {
+-		compatible = "rockchip,rk3399-grf", "syscon";
++		compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff770000 0x0 0x10000>;
 +
- &uart2 {
- 	status = "okay";
- };
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		emmc_phy: phy@f780 {
++			compatible = "rockchip,rk3399-emmc-phy";
++			reg = <0xf780 0x24>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	watchdog@ff840000 {
 -- 
 2.8.0.rc3.226.g39d4020
