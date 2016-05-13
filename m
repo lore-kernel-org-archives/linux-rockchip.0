@@ -1,45 +1,48 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v5 3/6] regulator: rk808: Add regulator driver for RK818
-Date: Fri, 13 May 2016 12:20:56 +0100
-Message-ID: <20160513112055.GE22038@sirena.org.uk>
-References: <1462886340-7893-1-git-send-email-w.egorov@phytec.de>
- <1462886340-7893-4-git-send-email-w.egorov@phytec.de>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/2] clk: rockchip: fix the rk3399 sdmmc sample shift
+Date: Fri, 13 May 2016 09:38:16 -0700
+Message-ID: <CAD=FV=UNVHrGeKj0N_1WQvL+PNBTrPTj1xmk-63F4hJhPuvkug@mail.gmail.com>
+References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
+	<1463076197-15900-2-git-send-email-dianders@chromium.org>
+	<20160512231023.GA63308@google.com>
+	<84673e7c-dd64-b2ca-5c7c-5c7f34d239d8@rock-chips.com>
+	<CAD=FV=WEAOwhDDBHBtuzSz35i0XRZw4LbFEnFCFYd-4NVH5d-g@mail.gmail.com>
+	<0261c4b4-7398-fe15-5e26-f92bfbe79f3c@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/2994txjAzEdQwm5"
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1462886340-7893-4-git-send-email-w.egorov@phytec.de>
+In-Reply-To: <0261c4b4-7398-fe15-5e26-f92bfbe79f3c@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Wadim Egorov <w.egorov@phytec.de>
-Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Xing Zheng <zhengxing@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Shawn,
 
---/2994txjAzEdQwm5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Fri, May 13, 2016 at 12:46 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>> This should be possible to verify in one of two ways.  If the TRM has
+>> a typo and things truly _do_ start at 0 instead of 1, then:
+>>
+>> 1. There will be roughly mirrors of valid ranges.
+>> 2. Things won't match up if we change tuning to use 180 course offsets
+>> and the rest fine offsets.
+>>
+>> It would be ideal if you could confirm with the chip guys, but if you
+>
+>
+> I have checked it before Xing upstreamed the code, but as your question on
+> the TRM, I check it with the  chip guys again.
+>
+> So the answer is that drv/sample stuff should refer to  Mobile Strorage
+> Host Controller section, and it will fit the future Socs from now on.
 
-On Tue, May 10, 2016 at 03:18:57PM +0200, Wadim Egorov wrote:
-> Add support for the rk818 regulator. The regulator module consists
-> of 4 DCDCs, 9 LDOs, 1 switch and 1 BOOST converter which is used to
-> power OTG and HDMI5V.
+OK, awesome.  I also did more quick tests by forcing dw_mmc to give me
+extra details about the tuning.  These tests agree with you.
 
-Acked-by: Mark Brown <broonie@kernel.org>
+Please consider this patch abandoned.  Note that the previous patch
+(1/2) is still good as far as I know, so just this patch (2/2) should
+be abandoned.
 
---/2994txjAzEdQwm5
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks!  :)
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXNbiWAAoJECTWi3JdVIfQ82IH/0WRYTRTlQk/OPon4FIaa0IO
-oBFGlMS/tz6UgBysOleM8JPoDrX4wKImWQHYurbJ8IGOqpGfScZ7o1g5h79t05RQ
-HABbHNz+BDHg49foowhQGAKBW7enpzIkKEbsXEj/Bt76g5l3Mdoj9Gzn6HuJILM4
-HmGm05lSdLtxJE1zXZXcl74MqAWRgbVA9jw+KoHOMnSumLLHso1vue5A+UtvJImE
-Q5J9L1BGjCyxXfGXWq7JAFtBcPPokFv/A3vbdsLMlHfFHYkZLHR74IAXWM2IIiSh
-NoaM234W/hluaDT+P4ftX45ZInqqo6S8KbEznQsTAuKMWopfgeu2L27C4vqbXBg=
-=hJT+
------END PGP SIGNATURE-----
-
---/2994txjAzEdQwm5--
+-Doug
