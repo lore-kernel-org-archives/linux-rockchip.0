@@ -1,65 +1,86 @@
 From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2] usb: dwc3: add DWC3_GUCTL1 reg for debug
-Date: Fri, 13 May 2016 18:13:46 +0800
-Message-ID: <1463134426-16599-1-git-send-email-william.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Subject: [PATCH] usb: gadget: composite: don't queue OS desc req if length is invalid
+Date: Fri, 13 May 2016 18:30:42 +0800
+Message-ID: <1463135442-15970-1-git-send-email-william.wu@rock-chips.com>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-GUCTL1 reg has some useful functions which can be
-written by user. For rockchip platform, we set
-GUCTL1.DEV_FORCE_20_CLK_FOR_30_CLK (bit26, applicable
-for the core is programmed to operate in 2.0 device
-only) to 1 in bootrom, and after start the kernel,
-we want to check whether this bit can be reset to
-default 0 after the core reset. Dump GUCTL1 reg from
-debugfs is more convenient for us.
+In OS descriptors handling, if ctrl->bRequestType is
+USB_RECIP_DEVICE and w_index != 0x4 or (w_value >> 8)
+is true, it will not assign a valid value to req->length,
+but use the default value(-EOPNOTSUPP), and queue an
+OS desc request with the invalid req->length. It always
+happens on the platforms which use os_desc (for example:
+rk3366, rk3399), and cause kernel panic as follows
+(use dwc3 driver):
+
+Unable to handle kernel paging request at virtual address ffffffc0f7e00000
+Internal error: Oops: 96000146 [#1] PREEMPT SMP
+PC is at __dma_clean_range+0x18/0x30
+LR is at __swiotlb_map_page+0x50/0x64
+Call trace:
+[<ffffffc0000930f8>] __dma_clean_range+0x18/0x30
+[<ffffffc00062214c>] usb_gadget_map_request+0x134/0x1b0
+[<ffffffc0005c289c>] __dwc3_ep0_do_control_data+0x110/0x14c
+[<ffffffc0005c2d38>] __dwc3_gadget_ep0_queue+0x198/0x1b8
+[<ffffffc0005c2e18>] dwc3_gadget_ep0_queue+0xc0/0xe8
+[<ffffffc00061cfec>] composite_ep0_queue.constprop.14+0x34/0x98
+[<ffffffc00061dfb0>] composite_setup+0xf60/0x100c
+[<ffffffc0006204dc>] android_setup+0xd8/0x138
+[<ffffffc0005c29a4>] dwc3_ep0_delegate_req+0x34/0x50
+[<ffffffc0005c3534>] dwc3_ep0_interrupt+0x5dc/0xb58
+[<ffffffc0005c0c3c>] dwc3_thread_interrupt+0x15c/0xa24
+
+With this patch, the gadget driver will not queue
+a request and return immediately if req->length is
+invalid. And the usb controller driver can handle
+the unsupport request correctly.
 
 Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
-Changes in v2:
-- add commit log
+ drivers/usb/gadget/composite.c | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
 
- drivers/usb/dwc3/core.h    | 1 +
- drivers/usb/dwc3/debugfs.c | 1 +
- 2 files changed, 2 insertions(+)
-
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index abed84f..c4758d5 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -86,6 +86,7 @@
- #define DWC3_GCTL		0xc110
- #define DWC3_GEVTEN		0xc114
- #define DWC3_GSTS		0xc118
-+#define DWC3_GUCTL1		0xc11c
- #define DWC3_GSNPSID		0xc120
- #define DWC3_GGPIO		0xc124
- #define DWC3_GUID		0xc128
-diff --git a/drivers/usb/dwc3/debugfs.c b/drivers/usb/dwc3/debugfs.c
-index b1dd3c6..f3c9f44 100644
---- a/drivers/usb/dwc3/debugfs.c
-+++ b/drivers/usb/dwc3/debugfs.c
-@@ -47,6 +47,7 @@ static const struct debugfs_reg32 dwc3_regs[] = {
- 	dump_register(GCTL),
- 	dump_register(GEVTEN),
- 	dump_register(GSTS),
-+	dump_register(GUCTL1),
- 	dump_register(GSNPSID),
- 	dump_register(GGPIO),
- 	dump_register(GUID),
+diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
+index d67de0d..eb64848 100644
+--- a/drivers/usb/gadget/composite.c
++++ b/drivers/usb/gadget/composite.c
+@@ -1868,14 +1868,19 @@ unknown:
+ 				}
+ 				break;
+ 			}
+-			req->length = value;
+-			req->context = cdev;
+-			req->zero = value < w_length;
+-			value = composite_ep0_queue(cdev, req, GFP_ATOMIC);
+-			if (value < 0) {
+-				DBG(cdev, "ep_queue --> %d\n", value);
+-				req->status = 0;
+-				composite_setup_complete(gadget->ep0, req);
++
++			if (value >= 0) {
++				req->length = value;
++				req->context = cdev;
++				req->zero = value < w_length;
++				value = composite_ep0_queue(cdev, req,
++							    GFP_ATOMIC);
++				if (value < 0) {
++					DBG(cdev, "ep_queue --> %d\n", value);
++					req->status = 0;
++					composite_setup_complete(gadget->ep0,
++								 req);
++				}
+ 			}
+ 			return value;
+ 		}
 -- 
 1.9.1
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
