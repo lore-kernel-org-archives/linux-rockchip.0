@@ -1,87 +1,58 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
-Date: Fri, 13 May 2016 23:47:57 +0200
-Message-ID: <5607915.FAWxOoA1QB@phil>
-References: <1463092552-60696-1-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH v2 2/2] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
+Date: Fri, 13 May 2016 23:49:52 +0200
+Message-ID: <1537214.5jQgtQP16t@phil>
+References: <1463092552-60696-1-git-send-email-briannorris@chromium.org> <1463092552-60696-2-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463092552-60696-1-git-send-email-briannorris@chromium.org>
+In-Reply-To: <1463092552-60696-2-git-send-email-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 12. Mai 2016, 15:35:51 schrieb Brian Norris:
-> Add description for the SDHCI v5.1 eMMC controller on rk3399. Fix it to
-> 200 MHz, to support all supported timing modes.
-> 
-> Note that 'rockchip,rk3399-sdhci-5.1' is not documented; we presumably
-> have a compliant Arasan controller, but let's have a rockchip property
-> as the canonical backup/precautionary measure. Per Heiko's previous
-> suggestion, let's not clutter the arasan doc with it.
+Am Donnerstag, 12. Mai 2016, 15:35:52 schrieb Brian Norris:
+> Rockchip's rk3399 evaluation board has eMMC. Let's enable the
+> newly-added node.
 > 
 > Signed-off-by: Brian Norris <briannorris@chromium.org>
-
-At least one split is necessary.
-So please at least split out the simple-mfd addition into a separate patch
-(I should've seen that in v1 already, but sadly didn't)
-
-I'm undecided if the emmc-phy addition also should get its own patch, but I 
-guess it can stay together with the emmc controller.
-
 > ---
 > v2:
 > 
->  * improved commit message
->  * assign eMMC clock to 200 MHz
+>  * better commit description
 > 
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++-
->  1 file changed, 24 insertions(+), 1 deletion(-)
+>  arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> b/arch/arm64/boot/dts/rockchip/rk3399.dtsi index
-> 46f325a143b0..9980c2eab4e9 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -215,6 +215,19 @@
->  		status = "disabled";
->  	};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts index
+> 1a3eb1482050..0b27d91084c4 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+> @@ -89,6 +89,18 @@
+>  	status = "okay";
+>  };
 > 
-> +	sdhci: sdhci@fe330000 {
-> +		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
-> +		reg = <0x0 0xfe330000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
-> +		clock-names = "clk_xin", "clk_ahb";
-> +		assigned-clocks = <&cru SCLK_EMMC>;
-> +		assigned-clock-rates = <200000000>;
-> +		phys = <&emmc_phy>;
-> +		phy-names = "phy_arasan";
-> +		status = "disabled";
-> +	};
+> +&emmc_phy {
+> +	status = "okay";
+> +};
+
+another thing I should've seen yesterday, emmc_phy should not be below the 
+&pwm nodes (aka alphabetically please)
+
+
+Heiko
+
+> +&sdhci {
+> +	bus-width = <8>;
+> +	mmc-hs400-1_8v;
+> +	mmc-hs400-enhanced-strobe;
+> +	non-removable;
+> +	status = "okay";
+> +};
 > +
->  	usb_host0_ehci: usb@fe380000 {
->  		compatible = "generic-ehci";
->  		reg = <0x0 0xfe380000 0x0 0x20000>;
-> @@ -481,8 +494,18 @@
->  	};
-> 
->  	grf: syscon@ff770000 {
-> -		compatible = "rockchip,rk3399-grf", "syscon";
-> +		compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
->  		reg = <0x0 0xff770000 0x0 0x10000>;
-> +
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +
-> +		emmc_phy: phy@f780 {
-> +			compatible = "rockchip,rk3399-emmc-phy";
-> +			reg = <0xf780 0x20>;
-> +			#phy-cells = <0>;
-> +			status = "disabled";
-> +		};
->  	};
-> 
->  	watchdog@ff840000 {
+>  &uart2 {
+>  	status = "okay";
+>  };
