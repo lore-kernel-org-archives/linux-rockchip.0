@@ -1,30 +1,32 @@
 From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 4/4] phy: rockchip-emmc: reindent the register definitions
-Date: Fri, 13 May 2016 15:26:37 -0700
-Message-ID: <CAD=FV=XkJTrUD-+KBCoZkzyN9_XRH+uE=AjEiVvaNf5iad=jow@mail.gmail.com>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
-	<1463092986-61777-4-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH v4 1/3] ARM64: dts: rockchip: make rk3399's grf a "simple-mfd"
+Date: Fri, 13 May 2016 15:53:14 -0700
+Message-ID: <CAD=FV=UGbNsneP_Vm_YYOrjWYn=zVKB5pZYvOOJczKAuRztCkw@mail.gmail.com>
+References: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463092986-61777-4-git-send-email-briannorris@chromium.org>
+In-Reply-To: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Thu, May 12, 2016 at 3:43 PM, Brian Norris <briannorris@chromium.org> wrote:
-> Some of the spacing was wrong (spaces instead of tabs), and due to
-> longer entries added later, the columns weren't aligned. Let's get
-> everything consistent.
+On Fri, May 13, 2016 at 3:12 PM, Brian Norris <briannorris@chromium.org> wrote:
+> Per the examples in
+> Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt, we need the
+> grf node to be a simple-mfd in order to properly enumerate child devices
+> like our eMMC PHY.
 >
 > Signed-off-by: Brian Norris <briannorris@chromium.org>
 > ---
->  drivers/phy/phy-rockchip-emmc.c | 76 ++++++++++++++++++++---------------------
->  1 file changed, 38 insertions(+), 38 deletions(-)
-
-Sure, why not?
+> v4:
+>
+>  * New, split out of patch 2, per Heiko's recommendation
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 
 Reviewed-by: Douglas Anderson <dianders@chromium.org>
