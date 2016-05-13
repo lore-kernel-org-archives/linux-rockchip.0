@@ -1,48 +1,40 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 2/2] clk: rockchip: fix the rk3399 sdmmc sample shift
-Date: Fri, 13 May 2016 09:38:16 -0700
-Message-ID: <CAD=FV=UNVHrGeKj0N_1WQvL+PNBTrPTj1xmk-63F4hJhPuvkug@mail.gmail.com>
-References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
-	<1463076197-15900-2-git-send-email-dianders@chromium.org>
-	<20160512231023.GA63308@google.com>
-	<84673e7c-dd64-b2ca-5c7c-5c7f34d239d8@rock-chips.com>
-	<CAD=FV=WEAOwhDDBHBtuzSz35i0XRZw4LbFEnFCFYd-4NVH5d-g@mail.gmail.com>
-	<0261c4b4-7398-fe15-5e26-f92bfbe79f3c@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Brian Norris <briannorris@chromium.org>
+Subject: [PATCH 1/2] clk: rockchip: mark rk3399 GIC clocks as critical
+Date: Fri, 13 May 2016 11:42:16 -0700
+Message-ID: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <0261c4b4-7398-fe15-5e26-f92bfbe79f3c@rock-chips.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Xing Zheng <zhengxing@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-clk@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Brian Norris <computersforpeace@gmail.com>, Xing Zheng <zhengxing@rock-chips.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Shawn,
+We never want to kill the GIC.
 
-On Fri, May 13, 2016 at 12:46 AM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->> This should be possible to verify in one of two ways.  If the TRM has
->> a typo and things truly _do_ start at 0 instead of 1, then:
->>
->> 1. There will be roughly mirrors of valid ranges.
->> 2. Things won't match up if we change tuning to use 180 course offsets
->> and the rest fine offsets.
->>
->> It would be ideal if you could confirm with the chip guys, but if you
->
->
-> I have checked it before Xing upstreamed the code, but as your question on
-> the TRM, I check it with the  chip guys again.
->
-> So the answer is that drv/sample stuff should refer to  Mobile Strorage
-> Host Controller section, and it will fit the future Socs from now on.
+Noticed when making other clock fixups, and seeing the newly-constructed
+clock tree try to disable cpll, where we had this parent structure:
 
-OK, awesome.  I also did more quick tests by forcing dw_mmc to give me
-extra details about the tuning.  These tests agree with you.
+  aclk_gic <------\
+                  |--- aclk_gic_pre <-- cpll <-- pll_cpll
+  aclk_gic_noc <--/
 
-Please consider this patch abandoned.  Note that the previous patch
-(1/2) is still good as far as I know, so just this patch (2/2) should
-be abandoned.
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+ drivers/clk/rockchip/clk-rk3399.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks!  :)
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 291543f52caa..145756c4f3c8 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1466,6 +1466,8 @@ static struct rockchip_clk_branch rk3399_clk_pmu_branches[] __initdata = {
+ 
+ static const char *const rk3399_cru_critical_clocks[] __initconst = {
+ 	"aclk_cci_pre",
++	"aclk_gic",
++	"aclk_gic_noc",
+ 	"pclk_perilp0",
+ 	"pclk_perilp0",
+ 	"hclk_perilp0",
+-- 
+2.8.0.rc3.226.g39d4020
 
--Doug
