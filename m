@@ -1,127 +1,66 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/2] Revert "clk: rockchip: reset init state before mmc
- card initialization"
-Date: Fri, 13 May 2016 08:19:54 +0800
-Message-ID: <78aecdae-7b9b-d687-a8d3-44f476ddd73e@rock-chips.com>
-References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
+Date: Fri, 13 May 2016 08:42:29 +0800
+Message-ID: <d0aaec3a-65a2-5d0f-b37b-e3f174afc0c8@rock-chips.com>
+References: <1463092552-60696-1-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463076197-15900-1-git-send-email-dianders@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, sboyd@codeaurora.org
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1463092552-60696-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/13 2:03, Douglas Anderson wrote:
-> This reverts commit 7a03fe6f48f3 ("clk: rockchip: reset init state
-> before mmc card initialization").
->
-> Though not totally obvious from the commit message nor from the source
-> code, that commit appears to be trying to reset the "_drv" MMC clocks to
-> 90 degrees (note that the "_sample" MMC clocks have a shift of 0 so are
-> not touched).
-
-Hrrr...my fault, anyway it should be reverted in case of new register
-layout in the future.
-
-Have you found the difference of sample shift between rk3399 and former
-Socs?  Per Mobile Storage Host Controller section, it migrate from
-bit[1:0] to bit[2:1]...
-
-Acutally there are three register layouts about sdmmc/sdio tuning
-stuff I found. Although just two types were upstreamed, it still
-caused difficulty. With your patch for dw_mmc to explictly assign
-dr_phase, we keep the phase policy better to be unstood and traced.
-
-Again sorry for commit 7a03fe6f48!
-
->
-> The major problem here is that it doesn't properly reset things.  The
-> phase is a two bit field and the commit only touches one of the two
-> bits.  Thus the commit had the following affect:
-> - phase   0  => phase  90
-> - phase  90  => phase  90
-> - phase 180  => phase 270
-> - phase 270  => phase 270
->
-> Things get even weirder if you happen to have a bootloader that was
-> actually using delay elements (should be no reason to, but you never
-> know), since those are additional bits that weren't touched by the
-> original patch.
->
-> This is unlikely to be what we actually want.  Checking on rk3288-veyron
-> devices, I can see that the bootloader leaves these clocks as:
-> - emmc:  phase 180
-> - sdmmc: phase 90
-> - sdio0: phase 90
->
-> Thus on rk3288-veyron devices the commit we're reverting had the effect
-> of changing the eMMC clock to phase 270.  This probably explains the
-> scattered reports I've heard of eMMC devices not working on some veyron
-> devices when using the upstream kernel.
->
-> The original commit was presumably made because previously the kernel
-> didn't touch the "_drv" phase at all and relied on whatever value was
-> there when the kernel started.  If someone was using a bootloader that
-> touched the "_drv" phase then, indeed, we should have code in the kernel
-> to fix that.  ...and also, to get ideal timings, we should also have the
-> kernel change the phase depending on the speed mode.  In fact, that's
-> the subject of a recent patch I posted at
-> <https://patchwork.kernel.org/patch/9075141/>.
->
-> Ideally, we should take both the patch posted to dw_mmc and this
-> revert.  Since those will likely go through different trees, here I
-> describe behavior with the combos:
->
-> 1. Just this revert: likely will fix rk3288-veyron eMMC on some devices
->    + other cases; might break someone with a strange bootloader that
->    sets the phase to 0 or one that uses delay elements (pretty
->    unpredicable what would happen in that case).
-> 2. Just dw_mmc patch: fixes everyone.  Effectly the dw_mmc patch will
->    totally override the broken patch and fix everything.
-> 3. Both patches: fixes everyone.  Once dw_mmc is initting properly then
->    any defaults from the clock code doesn't mattery.
->
-> Fixes: 7a03fe6f48f3 ("clk: rockchip: reset init state before mmc card initialization")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
->  drivers/clk/rockchip/clk-mmc-phase.c | 11 -----------
->  1 file changed, 11 deletions(-)
->
-> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
-> index bc856f21f6b2..5b18265c2306 100644
-> --- a/drivers/clk/rockchip/clk-mmc-phase.c
-> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
-> @@ -41,8 +41,6 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
->  #define ROCKCHIP_MMC_DEGREE_MASK 0x3
->  #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
->  #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
-> -#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
-> -#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
->
->  #define PSECS_PER_SEC 1000000000000LL
->
-> @@ -162,15 +160,6 @@ struct clk *rockchip_clk_register_mmc(const char *name,
->  	mmc_clock->reg = reg;
->  	mmc_clock->shift = shift;
->
-> -	/*
-> -	 * Assert init_state to soft reset the CLKGEN
-> -	 * for mmc tuning phase and degree
-> -	 */
-> -	if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT)
-> -		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
-> -				     ROCKCHIP_MMC_INIT_STATE_RESET,
-> -				     mmc_clock->shift), mmc_clock->reg);
-> -
->  	clk = clk_register(NULL, &mmc_clock->hw);
->  	if (IS_ERR(clk))
->  		kfree(mmc_clock);
->
-
-
--- 
-Best Regards
-Shawn Lin
+1NogMjAxNi81LzEzIDY6MzUsIEJyaWFuIE5vcnJpcyDQtLXAOgo+IEFkZCBkZXNjcmlwdGlvbiBm
+b3IgdGhlIFNESENJIHY1LjEgZU1NQyBjb250cm9sbGVyIG9uIHJrMzM5OS4gRml4IGl0IHRvCj4g
+MjAwIE1IeiwgdG8gc3VwcG9ydCBhbGwgc3VwcG9ydGVkIHRpbWluZyBtb2Rlcy4KPgo+IE5vdGUg
+dGhhdCAncm9ja2NoaXAscmszMzk5LXNkaGNpLTUuMScgaXMgbm90IGRvY3VtZW50ZWQ7IHdlIHBy
+ZXN1bWFibHkKPiBoYXZlIGEgY29tcGxpYW50IEFyYXNhbiBjb250cm9sbGVyLCBidXQgbGV0J3Mg
+aGF2ZSBhIHJvY2tjaGlwIHByb3BlcnR5Cj4gYXMgdGhlIGNhbm9uaWNhbCBiYWNrdXAvcHJlY2F1
+dGlvbmFyeSBtZWFzdXJlLiBQZXIgSGVpa28ncyBwcmV2aW91cwo+IHN1Z2dlc3Rpb24sIGxldCdz
+IG5vdCBjbHV0dGVyIHRoZSBhcmFzYW4gZG9jIHdpdGggaXQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBC
+cmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KCkV4Y2VwdCBmb3IgYWRkaW5n
+ICJyb2NrY2hpcCxyazMzOTktc2RoY2ktNS4xIiwgaXQgbG9va3MgbmljZSBhbmQga2VlcHMKY29u
+c2lzdGVudCB3aXRoIG91ciBsb2NhbCBrZXJuZWwtNC40IHRyZWUuCgpSZXZpZXdlZC1ieTogU2hh
+d24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cgo+IC0tLQo+IHYyOgo+Cj4gICogaW1w
+cm92ZWQgY29tbWl0IG1lc3NhZ2UKPiAgKiBhc3NpZ24gZU1NQyBjbG9jayB0byAyMDAgTUh6Cj4K
+PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSB8IDI1ICsrKysrKysr
+KysrKysrKysrKysrKysrKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKyksIDEg
+ZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
+IGluZGV4IDQ2ZjMyNWExNDNiMC4uOTk4MGMyZWFiNGU5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4gQEAgLTIxNSw2ICsyMTUsMTkgQEAKPiAgCQlzdGF0
+dXMgPSAiZGlzYWJsZWQiOwo+ICAJfTsKPgo+ICsJc2RoY2k6IHNkaGNpQGZlMzMwMDAwIHsKPiAr
+CQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1zZGhjaS01LjEiLCAiYXJhc2FuLHNkaGNp
+LTUuMSI7Cj4gKwkJcmVnID0gPDB4MCAweGZlMzMwMDAwIDB4MCAweDEwMDAwPjsKPiArCQlpbnRl
+cnJ1cHRzID0gPEdJQ19TUEkgMTEgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gKwkJY2xvY2tzID0g
+PCZjcnUgU0NMS19FTU1DPiwgPCZjcnUgQUNMS19FTU1DPjsKPiArCQljbG9jay1uYW1lcyA9ICJj
+bGtfeGluIiwgImNsa19haGIiOwo+ICsJCWFzc2lnbmVkLWNsb2NrcyA9IDwmY3J1IFNDTEtfRU1N
+Qz47Cj4gKwkJYXNzaWduZWQtY2xvY2stcmF0ZXMgPSA8MjAwMDAwMDAwPjsKPiArCQlwaHlzID0g
+PCZlbW1jX3BoeT47Cj4gKwkJcGh5LW5hbWVzID0gInBoeV9hcmFzYW4iOwo+ICsJCXN0YXR1cyA9
+ICJkaXNhYmxlZCI7Cj4gKwl9Owo+ICsKPiAgCXVzYl9ob3N0MF9laGNpOiB1c2JAZmUzODAwMDAg
+ewo+ICAJCWNvbXBhdGlibGUgPSAiZ2VuZXJpYy1laGNpIjsKPiAgCQlyZWcgPSA8MHgwIDB4ZmUz
+ODAwMDAgMHgwIDB4MjAwMDA+Owo+IEBAIC00ODEsOCArNDk0LDE4IEBACj4gIAl9Owo+Cj4gIAln
+cmY6IHN5c2NvbkBmZjc3MDAwMCB7Cj4gLQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTkt
+Z3JmIiwgInN5c2NvbiI7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktZ3JmIiwg
+InN5c2NvbiIsICJzaW1wbGUtbWZkIjsKPiAgCQlyZWcgPSA8MHgwIDB4ZmY3NzAwMDAgMHgwIDB4
+MTAwMDA+Owo+ICsKPiArCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArCQkjc2l6ZS1jZWxscyA9
+IDwxPjsKPiArCj4gKwkJZW1tY19waHk6IHBoeUBmNzgwIHsKPiArCQkJY29tcGF0aWJsZSA9ICJy
+b2NrY2hpcCxyazMzOTktZW1tYy1waHkiOwo+ICsJCQlyZWcgPSA8MHhmNzgwIDB4MjA+Owo+ICsJ
+CQkjcGh5LWNlbGxzID0gPDA+Owo+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsJCX07Cj4g
+IAl9Owo+Cj4gIAl3YXRjaGRvZ0BmZjg0MDAwMCB7Cj4KCgotLSAKQmVzdCBSZWdhcmRzClNoYXdu
+IExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
