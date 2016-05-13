@@ -1,57 +1,56 @@
 From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] ARM64: dts: rockchip: assign default rates for core rk3399 clocks
-Date: Fri, 13 May 2016 13:50:18 -0700
-Message-ID: <1463172618-96001-1-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH 2/4] phy: rockchip-emmc: configure frequency range and
+ drive impedance
+Date: Fri, 13 May 2016 14:04:40 -0700
+Message-ID: <20160513210440.GA99074@google.com>
+References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
+ <1463092986-61777-2-git-send-email-briannorris@chromium.org>
+ <3695875b-09c3-cd80-3062-55d985e51f70@rock-chips.com>
+ <CAD=FV=UwocUy_bOUrJZB47taHWdV1KGkvi5CyZf74Y8cvGgVmw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=UwocUy_bOUrJZB47taHWdV1KGkvi5CyZf74Y8cvGgVmw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, Xing Zheng <zhengxing@rock-chips.com>, Brian Norris <briannorris@chromium.org>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Xing Zheng <zhengxing@rock-chips.com>
+On Fri, May 13, 2016 at 11:46:33AM -0700, Doug Anderson wrote:
+> On Thu, May 12, 2016 at 6:02 PM, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+> > On 2016/5/13 6:43, Brian Norris wrote:
+> >> @@ -154,6 +167,20 @@ static int rockchip_emmc_phy_power_on(struct phy
+> >> *phy)
+> >>         struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+> >>         int ret = 0;
+> >>
+> >> +       /* DLL operation: 170 to 200 MHz */
+> >
+> >
+> > What is 170 here? Should we expose them to dt instead of hardcoding
+> > them?
+> 
+> This was probably my fault.  I did some searching and found
+> <https://arasan.com/wp-content/media/eMMC-5-1-Total-Solution_Rev-1-3.pdf>.
+> It appears to be docs for a similar (but not identical) PHY.  We were
+> looking at it to try to get more clarity on some bits that were hard
+> to understand in the docs we had.
+> 
+> In that doc there appear to be 3 bits for selecting the DLL operation
+> and they have ranges defined.  In Rockchip's PHY there are only 2
+> bits.  Thus things don't map totally properly.
+> 
+> Anyway, comment should probably be removed.
 
-These clocks are all core clocks used by many blocks/peripherals, many
-of whose drivers don't set their clock rates at all. Let's assign
-reasonable default clock rates for these core clocks, so that these
-peripherals get something reasonable by default, and also so that if
-child devices want to select a clock rate themselves, their muxes have
-some reasonable parent clock rates to branch off of (rather than just
-the boot-time defaults).
+[...]
 
-This helps the eMMC PHY, for one, to get a reasonable ACLK rate.
+> So overall:
+> 
+> * Should re-spin and remove the comment about 170 MHz.
+> 
+> * I think this could land as-is other than the comment.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Right, will fix the first bullet point.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 46f325a143b0..6fa9cc332482 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -478,6 +478,22 @@
- 		reg = <0x0 0xff760000 0x0 0x1000>;
- 		#clock-cells = <1>;
- 		#reset-cells = <1>;
-+		assigned-clocks =
-+			<&cru PLL_GPLL>, <&cru PLL_CPLL>,
-+			<&cru PLL_NPLL>,
-+			<&cru ACLK_PERIHP>, <&cru HCLK_PERIHP>,
-+			<&cru PCLK_PERIHP>,
-+			<&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
-+			<&cru PCLK_PERILP0>,
-+			<&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>;
-+		assigned-clock-rates =
-+			 <594000000>,  <800000000>,
-+			<1000000000>,
-+			 <150000000>,   <75000000>,
-+			  <37500000>,
-+			 <100000000>,  <100000000>,
-+			  <50000000>,
-+			 <100000000>,   <50000000>;
- 	};
- 
- 	grf: syscon@ff770000 {
--- 
-2.8.0.rc3.226.g39d4020
+Brian
