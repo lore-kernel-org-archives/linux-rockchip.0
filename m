@@ -1,101 +1,72 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/4] phy: rockchip-emmc: configure frequency range and
- drive impedance
-Date: Fri, 13 May 2016 09:02:41 +0800
-Message-ID: <3695875b-09c3-cd80-3062-55d985e51f70@rock-chips.com>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
- <1463092986-61777-2-git-send-email-briannorris@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/2] Revert "clk: rockchip: reset init state before mmc
+ card initialization"
+Date: Thu, 12 May 2016 19:11:25 -0700
+Message-ID: <CAD=FV=XVMQ025Z-+C4fVQUuof=9wnjvJKr2PtuJhxOVwo7TjSg@mail.gmail.com>
+References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
+	<2083095.luTHhmZ9EO@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463092986-61777-2-git-send-email-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <2083095.luTHhmZ9EO@phil>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Brian,
+Heiko,
 
-On 2016/5/13 6:43, Brian Norris wrote:
-> From: Shawn Lin <shawn.lin@rock-chips.com>
+On Thu, May 12, 2016 at 4:41 PM, Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Donnerstag, 12. Mai 2016, 11:03:16 schrieb Douglas Anderson:
 >
-> Signal integrity analysis has suggested we set these values. Do this in
-> power_on(), so that they get reconfigured after suspend/resume.
+> Not sure what the policy is for revert-subjects in the clock-tree, but I
+> guess
 >
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->  drivers/phy/phy-rockchip-emmc.c | 27 +++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
+> clk: rockchip: Revert "reset init state before mmc card initialization"
 >
-> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
-> index 48cbe691a889..5641dede32f6 100644
-> --- a/drivers/phy/phy-rockchip-emmc.c
-> +++ b/drivers/phy/phy-rockchip-emmc.c
-> @@ -56,6 +56,19 @@
->  #define PHYCTRL_DLLRDY_SHIFT	0x5
->  #define PHYCTRL_DLLRDY_DONE	0x1
->  #define PHYCTRL_DLLRDY_GOING	0x0
-> +#define PHYCTRL_FREQSEL_200M	0x0
-> +#define PHYCTRL_FREQSEL_50M	0x1
-> +#define PHYCTRL_FREQSEL_100M	0x2
-> +#define PHYCTRL_FREQSEL_150M	0x3
-> +#define PHYCTRL_FREQSEL_MASK	0x3
-> +#define PHYCTRL_FREQSEL_SHIFT	0xc
-> +#define PHYCTRL_DR_MASK		0x7
-> +#define PHYCTRL_DR_SHIFT	0x4
-> +#define PHYCTRL_DR_50OHM	0x0
-> +#define PHYCTRL_DR_33OHM	0x1
-> +#define PHYCTRL_DR_66OHM	0x2
-> +#define PHYCTRL_DR_100OHM	0x3
-> +#define PHYCTRL_DR_40OHM	0x4
+> might look nicer?
+
+Sure.  If you want me to re-post with that, let me know.  Else feel
+free to fix when applying.
+
+
+>> This reverts commit 7a03fe6f48f3 ("clk: rockchip: reset init state
+>> before mmc card initialization").
 >
->  struct rockchip_emmc_phy {
->  	unsigned int	reg_offset;
-> @@ -154,6 +167,20 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
->  	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
->  	int ret = 0;
+> I've tested these two patches together with the dw_mmc one and everything
+> that worked before still works (tuning on veyron-jerry) and everything that
+> didn't work still doesn't work (tuning on firefly [likely a regulator issue]).
 >
-> +	/* DLL operation: 170 to 200 MHz */
-
-What is 170 here? Should we expose them to dt instead of hardcoding
-them?
-
-Per the commit msg, signal may vary from board to board, so I guess
-50ohm may not always be the best selection?
-
-Another thing I need to elaborate more here is that emmc phy only
-supports 50/100/150/200Mhz. Presumably people love to use the highest
-speed mode with its upper limiting frequency, but in case of some
-special requirement or bad board design, they want to add max-frequency
-in dts for emmc controller. In this case PHYCTRL_FREQSEL_XXXM should
-meet the actual max-frequency, take 100M for example, otherwise
-emmc_phy's  tuning block will use 200M to do some calculation but it
-certainly should be 100M. This leads emmc_phy to choose the wrong
-phase. Finally maybe you will see triggering re-tune easily or some
-worse case of even tuning failure when probing card.
-
-
-> +	regmap_write(rk_phy->reg_base,
-> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON0,
-> +		     HIWORD_UPDATE(PHYCTRL_FREQSEL_200M,
-> +				   PHYCTRL_FREQSEL_MASK,
-> +				   PHYCTRL_FREQSEL_SHIFT));
-> +
-> +	/* Drive impedance: 50 Ohm */
-> +	regmap_write(rk_phy->reg_base,
-> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
-> +		     HIWORD_UPDATE(PHYCTRL_DR_50OHM,
-> +				   PHYCTRL_DR_MASK,
-> +				   PHYCTRL_DR_SHIFT));
-> +
->  	/* Power up emmc phy analog blocks */
->  	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
->  	if (ret)
+> And re-checking the code against the TRM I now also see the mask that is to
+> short (1 bit in the code vs. the actual 2 bits described in the manual)
 >
+> [...]
+>
+>> 1. Just this revert: likely will fix rk3288-veyron eMMC on some devices
+>>    + other cases; might break someone with a strange bootloader that
+>>    sets the phase to 0 or one that uses delay elements (pretty
+>>    unpredicable what would happen in that case).
+>> 2. Just dw_mmc patch: fixes everyone.  Effectly the dw_mmc patch will
+>>    totally override the broken patch and fix everything.
+>> 3. Both patches: fixes everyone.  Once dw_mmc is initting properly then
+>>    any defaults from the clock code doesn't mattery.
+>
+> I'm still trying to make up my mind on how to proceed - aka in which order
+> patches should get picked up.
+>
+> Going with the "if it isn't upstream it doesn't exist" mantra Rob wrote
+> somewhere some days ago, taking this revert should not hurt anything, as all
+> the non-veyron devices currently don't support any tuning at all.
+
+Note that this patch can still affect devices that don't use tuning.
+MMC Hold times are important not just for high speed modes but even
+for low speed modes.
 
 
--- 
-Best Regards
-Shawn Lin
+> So I'd think except for the issue Shawn was originally trying to fix (for
+> some non-mainline board?) it should be possible to take this patch any time
+> independently of the dw_mmc part.
+
+Yeah, just not sure.  Shawn: do you know which specific device you
+were trying to fix with the original patch?  Is it OK to revert for
+now until the dw_mmc patch lands?
