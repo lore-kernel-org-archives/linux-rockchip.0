@@ -1,64 +1,40 @@
-From: Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v4 3/3] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
-Date: Fri, 13 May 2016 15:12:04 -0700
-Message-ID: <1463177524-113856-3-git-send-email-briannorris@chromium.org>
-References: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
+Date: Sat, 14 May 2016 00:14:40 +0200
+Message-ID: <1647746.RHuiZHceXs@phil>
+References: <1463092552-60696-1-git-send-email-briannorris@chromium.org> <5607915.FAWxOoA1QB@phil> <20160513215724.GB109473@google.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
+In-Reply-To: <20160513215724.GB109473@google.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, Brian Norris <briannorris@chromium.org>
+To: Brian Norris <briannorris@chromium.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip's rk3399 evaluation board has eMMC. Let's enable the
-newly-added nodes.
+Am Freitag, 13. Mai 2016, 14:57:24 schrieb Brian Norris:
+> On Fri, May 13, 2016 at 11:47:57PM +0200, Heiko Stuebner wrote:
+> > Am Donnerstag, 12. Mai 2016, 15:35:51 schrieb Brian Norris:
+> > > Add description for the SDHCI v5.1 eMMC controller on rk3399. Fix it
+> > > to
+> > > 200 MHz, to support all supported timing modes.
+> > > 
+> > > Note that 'rockchip,rk3399-sdhci-5.1' is not documented; we presumably
+> > > have a compliant Arasan controller, but let's have a rockchip property
+> > > as the canonical backup/precautionary measure. Per Heiko's previous
+> > > suggestion, let's not clutter the arasan doc with it.
+> > > 
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > 
+> > At least one split is necessary.
+> > So please at least split out the simple-mfd addition into a separate
+> > patch
+> Will do.
+> 
+> BTW, should this be noted in
+> Documentation/devicetree/bindings/soc/rockchip/grf.txt now?
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-v4:
-
- * alphabetize &node references
-
-v3:
-
- * no change
-
-v2:
-
- * better commit description
-
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 1a3eb1482050..d33aa06d46f5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -77,6 +77,10 @@
- 	};
- };
- 
-+&emmc_phy {
-+	status = "okay";
-+};
-+
- &pwm0 {
- 	status = "okay";
- };
-@@ -89,6 +93,14 @@
- 	status = "okay";
- };
- 
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	non-removable;
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-2.8.0.rc3.226.g39d4020
+The simple-mfd is already documented in mfd/mfd.txt in a general way, so I 
+don't think every instance needs to have that, especially as it mainly 
+affects sub-nodes alone.
