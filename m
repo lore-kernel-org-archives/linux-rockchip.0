@@ -1,40 +1,56 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
-Date: Sat, 14 May 2016 00:14:40 +0200
-Message-ID: <1647746.RHuiZHceXs@phil>
-References: <1463092552-60696-1-git-send-email-briannorris@chromium.org> <5607915.FAWxOoA1QB@phil> <20160513215724.GB109473@google.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 3/4] phy: rockchip-emmc: configure default output tap delay
+Date: Fri, 13 May 2016 15:25:30 -0700
+Message-ID: <CAD=FV=WupNv+z86BgmR1n8bj+b6GKA5Ew7U9hgoAxV9dxF7gjQ@mail.gmail.com>
+References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
+	<1463092986-61777-3-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160513215724.GB109473@google.com>
+In-Reply-To: <1463092986-61777-3-git-send-email-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 13. Mai 2016, 14:57:24 schrieb Brian Norris:
-> On Fri, May 13, 2016 at 11:47:57PM +0200, Heiko Stuebner wrote:
-> > Am Donnerstag, 12. Mai 2016, 15:35:51 schrieb Brian Norris:
-> > > Add description for the SDHCI v5.1 eMMC controller on rk3399. Fix it
-> > > to
-> > > 200 MHz, to support all supported timing modes.
-> > > 
-> > > Note that 'rockchip,rk3399-sdhci-5.1' is not documented; we presumably
-> > > have a compliant Arasan controller, but let's have a rockchip property
-> > > as the canonical backup/precautionary measure. Per Heiko's previous
-> > > suggestion, let's not clutter the arasan doc with it.
-> > > 
-> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > 
-> > At least one split is necessary.
-> > So please at least split out the simple-mfd addition into a separate
-> > patch
-> Will do.
-> 
-> BTW, should this be noted in
-> Documentation/devicetree/bindings/soc/rockchip/grf.txt now?
+Hi,
 
-The simple-mfd is already documented in mfd/mfd.txt in a general way, so I 
-don't think every instance needs to have that, especially as it mainly 
-affects sub-nodes alone.
+On Thu, May 12, 2016 at 3:43 PM, Brian Norris <briannorris@chromium.org> wrote:
+> The output tap delay controls helps maintain the hold requirements for
+> eMMC. The exact value is dependent on the SoC and other factors, though
+> it isn't really an exact science. But the default of 0 is not very good,
+> as it doesn't give the eMMC much hold time, so let's bump up to 4
+> (approx 90 degree phase?). If we need to configure this any further
+> (e.g., based on board or speed factors), we may need to consider a
+> device tree representation.
+
+As I understand it, this solves much the same problem as my patch in
+<https://patchwork.kernel.org/patch/9085581/>, but for the eMMC port
+on rk3399 (which doesn't use dw_mmc).  As argued in that patch and
+also in the discussion from
+<https://patchwork.kernel.org/patch/9030621/>, if we eventually end up
+needing to put something in the device tree we need to be really
+careful.  Specifically to get the exact right value here I think you
+need to consider the input clock, speed mode, and any SoC-specific
+delays differences between the clock and the data lines.  That would
+imply that, if anything, the device tree data would only contain
+information about the SoC-specific delay differences and all other
+work to set this value would involve coordination between the PHY and
+the SDHCI controller.
+
+
+However, as also discussed previously, we don't appear to need to be
+very exact about the value here.  It seems like setting this to 4 (~90
+degrees?) is a much better starting point than leaving it at the
+default of 0.
+
+
+...so I'd be all for landing this patch.  Perhaps Shawn can chime in
+and confirm that our understanding is correct and possibly we can
+update the commit message.  Then presumably someone at Rockchip can
+keep working to find a better way to set this long term.
+
+Sound good?
+
+
+-Doug
