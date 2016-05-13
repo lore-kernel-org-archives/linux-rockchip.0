@@ -1,66 +1,101 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] ARM64: dts: rockchip: add sdhci/emmc for rk3399
-Date: Fri, 13 May 2016 08:42:29 +0800
-Message-ID: <d0aaec3a-65a2-5d0f-b37b-e3f174afc0c8@rock-chips.com>
-References: <1463092552-60696-1-git-send-email-briannorris@chromium.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/4] phy: rockchip-emmc: configure frequency range and
+ drive impedance
+Date: Fri, 13 May 2016 09:02:41 +0800
+Message-ID: <3695875b-09c3-cd80-3062-55d985e51f70@rock-chips.com>
+References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
+ <1463092986-61777-2-git-send-email-briannorris@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1463092552-60696-1-git-send-email-briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463092986-61777-2-git-send-email-briannorris@chromium.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Brian Norris <briannorris@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-1NogMjAxNi81LzEzIDY6MzUsIEJyaWFuIE5vcnJpcyDQtLXAOgo+IEFkZCBkZXNjcmlwdGlvbiBm
-b3IgdGhlIFNESENJIHY1LjEgZU1NQyBjb250cm9sbGVyIG9uIHJrMzM5OS4gRml4IGl0IHRvCj4g
-MjAwIE1IeiwgdG8gc3VwcG9ydCBhbGwgc3VwcG9ydGVkIHRpbWluZyBtb2Rlcy4KPgo+IE5vdGUg
-dGhhdCAncm9ja2NoaXAscmszMzk5LXNkaGNpLTUuMScgaXMgbm90IGRvY3VtZW50ZWQ7IHdlIHBy
-ZXN1bWFibHkKPiBoYXZlIGEgY29tcGxpYW50IEFyYXNhbiBjb250cm9sbGVyLCBidXQgbGV0J3Mg
-aGF2ZSBhIHJvY2tjaGlwIHByb3BlcnR5Cj4gYXMgdGhlIGNhbm9uaWNhbCBiYWNrdXAvcHJlY2F1
-dGlvbmFyeSBtZWFzdXJlLiBQZXIgSGVpa28ncyBwcmV2aW91cwo+IHN1Z2dlc3Rpb24sIGxldCdz
-IG5vdCBjbHV0dGVyIHRoZSBhcmFzYW4gZG9jIHdpdGggaXQuCj4KPiBTaWduZWQtb2ZmLWJ5OiBC
-cmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KCkV4Y2VwdCBmb3IgYWRkaW5n
-ICJyb2NrY2hpcCxyazMzOTktc2RoY2ktNS4xIiwgaXQgbG9va3MgbmljZSBhbmQga2VlcHMKY29u
-c2lzdGVudCB3aXRoIG91ciBsb2NhbCBrZXJuZWwtNC40IHRyZWUuCgpSZXZpZXdlZC1ieTogU2hh
-d24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cgo+IC0tLQo+IHYyOgo+Cj4gICogaW1w
-cm92ZWQgY29tbWl0IG1lc3NhZ2UKPiAgKiBhc3NpZ24gZU1NQyBjbG9jayB0byAyMDAgTUh6Cj4K
-PiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSB8IDI1ICsrKysrKysr
-KysrKysrKysrKysrKysrKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDI0IGluc2VydGlvbnMoKyksIDEg
-ZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzM5OS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+
-IGluZGV4IDQ2ZjMyNWExNDNiMC4uOTk4MGMyZWFiNGU5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4gQEAgLTIxNSw2ICsyMTUsMTkgQEAKPiAgCQlzdGF0
-dXMgPSAiZGlzYWJsZWQiOwo+ICAJfTsKPgo+ICsJc2RoY2k6IHNkaGNpQGZlMzMwMDAwIHsKPiAr
-CQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1zZGhjaS01LjEiLCAiYXJhc2FuLHNkaGNp
-LTUuMSI7Cj4gKwkJcmVnID0gPDB4MCAweGZlMzMwMDAwIDB4MCAweDEwMDAwPjsKPiArCQlpbnRl
-cnJ1cHRzID0gPEdJQ19TUEkgMTEgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gKwkJY2xvY2tzID0g
-PCZjcnUgU0NMS19FTU1DPiwgPCZjcnUgQUNMS19FTU1DPjsKPiArCQljbG9jay1uYW1lcyA9ICJj
-bGtfeGluIiwgImNsa19haGIiOwo+ICsJCWFzc2lnbmVkLWNsb2NrcyA9IDwmY3J1IFNDTEtfRU1N
-Qz47Cj4gKwkJYXNzaWduZWQtY2xvY2stcmF0ZXMgPSA8MjAwMDAwMDAwPjsKPiArCQlwaHlzID0g
-PCZlbW1jX3BoeT47Cj4gKwkJcGh5LW5hbWVzID0gInBoeV9hcmFzYW4iOwo+ICsJCXN0YXR1cyA9
-ICJkaXNhYmxlZCI7Cj4gKwl9Owo+ICsKPiAgCXVzYl9ob3N0MF9laGNpOiB1c2JAZmUzODAwMDAg
-ewo+ICAJCWNvbXBhdGlibGUgPSAiZ2VuZXJpYy1laGNpIjsKPiAgCQlyZWcgPSA8MHgwIDB4ZmUz
-ODAwMDAgMHgwIDB4MjAwMDA+Owo+IEBAIC00ODEsOCArNDk0LDE4IEBACj4gIAl9Owo+Cj4gIAln
-cmY6IHN5c2NvbkBmZjc3MDAwMCB7Cj4gLQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTkt
-Z3JmIiwgInN5c2NvbiI7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktZ3JmIiwg
-InN5c2NvbiIsICJzaW1wbGUtbWZkIjsKPiAgCQlyZWcgPSA8MHgwIDB4ZmY3NzAwMDAgMHgwIDB4
-MTAwMDA+Owo+ICsKPiArCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArCQkjc2l6ZS1jZWxscyA9
-IDwxPjsKPiArCj4gKwkJZW1tY19waHk6IHBoeUBmNzgwIHsKPiArCQkJY29tcGF0aWJsZSA9ICJy
-b2NrY2hpcCxyazMzOTktZW1tYy1waHkiOwo+ICsJCQlyZWcgPSA8MHhmNzgwIDB4MjA+Owo+ICsJ
-CQkjcGh5LWNlbGxzID0gPDA+Owo+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsJCX07Cj4g
-IAl9Owo+Cj4gIAl3YXRjaGRvZ0BmZjg0MDAwMCB7Cj4KCgotLSAKQmVzdCBSZWdhcmRzClNoYXdu
-IExpbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hi Brian,
+
+On 2016/5/13 6:43, Brian Norris wrote:
+> From: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> Signal integrity analysis has suggested we set these values. Do this in
+> power_on(), so that they get reconfigured after suspend/resume.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>  drivers/phy/phy-rockchip-emmc.c | 27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+>
+> diff --git a/drivers/phy/phy-rockchip-emmc.c b/drivers/phy/phy-rockchip-emmc.c
+> index 48cbe691a889..5641dede32f6 100644
+> --- a/drivers/phy/phy-rockchip-emmc.c
+> +++ b/drivers/phy/phy-rockchip-emmc.c
+> @@ -56,6 +56,19 @@
+>  #define PHYCTRL_DLLRDY_SHIFT	0x5
+>  #define PHYCTRL_DLLRDY_DONE	0x1
+>  #define PHYCTRL_DLLRDY_GOING	0x0
+> +#define PHYCTRL_FREQSEL_200M	0x0
+> +#define PHYCTRL_FREQSEL_50M	0x1
+> +#define PHYCTRL_FREQSEL_100M	0x2
+> +#define PHYCTRL_FREQSEL_150M	0x3
+> +#define PHYCTRL_FREQSEL_MASK	0x3
+> +#define PHYCTRL_FREQSEL_SHIFT	0xc
+> +#define PHYCTRL_DR_MASK		0x7
+> +#define PHYCTRL_DR_SHIFT	0x4
+> +#define PHYCTRL_DR_50OHM	0x0
+> +#define PHYCTRL_DR_33OHM	0x1
+> +#define PHYCTRL_DR_66OHM	0x2
+> +#define PHYCTRL_DR_100OHM	0x3
+> +#define PHYCTRL_DR_40OHM	0x4
+>
+>  struct rockchip_emmc_phy {
+>  	unsigned int	reg_offset;
+> @@ -154,6 +167,20 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
+>  	struct rockchip_emmc_phy *rk_phy = phy_get_drvdata(phy);
+>  	int ret = 0;
+>
+> +	/* DLL operation: 170 to 200 MHz */
+
+What is 170 here? Should we expose them to dt instead of hardcoding
+them?
+
+Per the commit msg, signal may vary from board to board, so I guess
+50ohm may not always be the best selection?
+
+Another thing I need to elaborate more here is that emmc phy only
+supports 50/100/150/200Mhz. Presumably people love to use the highest
+speed mode with its upper limiting frequency, but in case of some
+special requirement or bad board design, they want to add max-frequency
+in dts for emmc controller. In this case PHYCTRL_FREQSEL_XXXM should
+meet the actual max-frequency, take 100M for example, otherwise
+emmc_phy's  tuning block will use 200M to do some calculation but it
+certainly should be 100M. This leads emmc_phy to choose the wrong
+phase. Finally maybe you will see triggering re-tune easily or some
+worse case of even tuning failure when probing card.
+
+
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON0,
+> +		     HIWORD_UPDATE(PHYCTRL_FREQSEL_200M,
+> +				   PHYCTRL_FREQSEL_MASK,
+> +				   PHYCTRL_FREQSEL_SHIFT));
+> +
+> +	/* Drive impedance: 50 Ohm */
+> +	regmap_write(rk_phy->reg_base,
+> +		     rk_phy->reg_offset + GRF_EMMCPHY_CON6,
+> +		     HIWORD_UPDATE(PHYCTRL_DR_50OHM,
+> +				   PHYCTRL_DR_MASK,
+> +				   PHYCTRL_DR_SHIFT));
+> +
+>  	/* Power up emmc phy analog blocks */
+>  	ret = rockchip_emmc_phy_power(rk_phy, PHYCTRL_PDB_PWR_ON);
+>  	if (ret)
+>
+
+
+-- 
+Best Regards
+Shawn Lin
