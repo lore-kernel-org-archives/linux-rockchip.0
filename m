@@ -1,42 +1,78 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v2 2/4] phy: rockchip-emmc: configure frequency range and
- drive impedance
-Date: Fri, 13 May 2016 15:04:53 -0700
-Message-ID: <CAD=FV=VyzaPEQvY57AF65VGzv600uBZT9jQy4N=s4Z_YPzphxw@mail.gmail.com>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
-	<1463092986-61777-2-git-send-email-briannorris@chromium.org>
-	<20160513210943.GB99074@google.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Brian Norris <briannorris@chromium.org>
+Subject: [PATCH v4 2/3] ARM64: dts: rockchip: add sdhci/emmc for rk3399
+Date: Fri, 13 May 2016 15:12:03 -0700
+Message-ID: <1463177524-113856-2-git-send-email-briannorris@chromium.org>
+References: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160513210943.GB99074@google.com>
+In-Reply-To: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, Brian Norris <briannorris@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Add description for the SDHCI v5.1 eMMC controller on rk3399. Fix it to
+200 MHz, to support all supported timing modes.
 
-On Fri, May 13, 2016 at 2:09 PM, Brian Norris <briannorris@chromium.org> wrote:
-> From: Shawn Lin <shawn.lin@rock-chips.com>
->
-> Signal integrity analysis has suggested we set these values. Do this in
-> power_on(), so that they get reconfigured after suspend/resume.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> v2:
->  * Sent only patch 2/4 with version 2, to avoid spamming; will move on to v3
->    for all patches if I need to send another
->  * Drop 170 MHz comment; this was only applicable to a subtly different Arasan
->    PHY
->
->  drivers/phy/phy-rockchip-emmc.c | 27 +++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
+Note that 'rockchip,rk3399-sdhci-5.1' is not documented; we presumably
+have a compliant Arasan controller, but let's have a rockchip property
+as the canonical backup/precautionary measure. Per Heiko's previous
+suggestion, let's not clutter the arasan doc with it.
 
-As per my comments on v1, this is a sane starting point and seems like
-a good idea to land.  Hopefully someone at Rockchip can pick things up
-and continue making this more configurable.
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+v4:
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+ * split "simple-mfd" out into patch 1
+
+v3:
+
+ * correct emmc_phy reg length to 0x24
+
+v2:
+
+ * improved commit message
+ * assign eMMC clock to 200 MHz
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index e1c3667a9bea..99078f5ebeb9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -215,6 +215,19 @@
+ 		status = "disabled";
+ 	};
+ 
++	sdhci: sdhci@fe330000 {
++		compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
++		reg = <0x0 0xfe330000 0x0 0x10000>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
++		clock-names = "clk_xin", "clk_ahb";
++		assigned-clocks = <&cru SCLK_EMMC>;
++		assigned-clock-rates = <200000000>;
++		phys = <&emmc_phy>;
++		phy-names = "phy_arasan";
++		status = "disabled";
++	};
++
+ 	usb_host0_ehci: usb@fe380000 {
+ 		compatible = "generic-ehci";
+ 		reg = <0x0 0xfe380000 0x0 0x20000>;
+@@ -486,6 +499,13 @@
+ 
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
++
++		emmc_phy: phy@f780 {
++			compatible = "rockchip,rk3399-emmc-phy";
++			reg = <0xf780 0x24>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
+ 	};
+ 
+ 	watchdog@ff840000 {
+-- 
+2.8.0.rc3.226.g39d4020
