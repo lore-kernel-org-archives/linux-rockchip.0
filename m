@@ -1,96 +1,129 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] clk: rockchip: fix the rk3399 sdmmc sample shift
-Date: Fri, 13 May 2016 15:46:54 +0800
-Message-ID: <0261c4b4-7398-fe15-5e26-f92bfbe79f3c@rock-chips.com>
-References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
- <1463076197-15900-2-git-send-email-dianders@chromium.org>
- <20160512231023.GA63308@google.com>
- <84673e7c-dd64-b2ca-5c7c-5c7f34d239d8@rock-chips.com>
- <CAD=FV=WEAOwhDDBHBtuzSz35i0XRZw4LbFEnFCFYd-4NVH5d-g@mail.gmail.com>
+From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v2 2/5] usb: dwc3: add dis_u2_freeclk_exists_quirk
+Date: Fri, 13 May 2016 17:24:58 +0800
+Message-ID: <1463131501-22551-3-git-send-email-william.wu@rock-chips.com>
+References: <1462794377-6528-1-git-send-email-william.wu@rock-chips.com>
+ <1463131501-22551-1-git-send-email-william.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WEAOwhDDBHBtuzSz35i0XRZw4LbFEnFCFYd-4NVH5d-g@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: shawn.lin@rock-chips.com, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Xing Zheng <zhengxing@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1463131501-22551-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/5/13 12:36, Doug Anderson =E5=86=99=E9=81=93:
-> Shawn,
->
-> On Thu, May 12, 2016 at 4:47 PM, Shawn Lin <shawn.lin@rock-chips.com>=
- wrote:
->> =E5=9C=A8 2016/5/13 7:10, Brian Norris =E5=86=99=E9=81=93:
->>>
->>> On Thu, May 12, 2016 at 11:03:17AM -0700, Doug Anderson wrote:
->>>>
->>>> Just like every other Rockhip device, the MMC "_sample" clocks sho=
-uld
->>>> have a shift of 0, not a shift of 1.  The rk3399 TRM agrees.  Pres=
-umably
->>>> these values were set to 0 because of a typo.
->>>
->>>
->>> I'll semi-disagree about the TRM: the TRM doesn't seem to agree wit=
-h
->>> itself, so it sometimes agrees with you and sometimes doesn't :)
->>>
->>> On page 79 of the 2nd (?) book, it looks like {SDMMC,SDIO}_CON{0,}[=
-2:1]
->>> are {drv,sample}_degree. But on page 208 of the 1st book, those are=
- put
->>> at bits [1:0].
->>>
->>
->>
->> Please refer to Mobile Strorage Host Controller section for anything
->> about sdmmc/sdio. So shift should be 1.
->>
->> Sometime I also get bothered to address it. Anyway, I will always ke=
-ep
->> a eye on it from now on.....
->
-> I still in general have mistrust for TRM docs for things like this.
-> Have you verified that this was an intentional change for rk3399, or
-> could it be a  typo?  Typically SoCs don't change this type of stuff
-> for no reason.
->
+Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
+which specifies whether the USB2.0 PHY provides a free-running
+PHY clock, which is active when the clock control input is active.
 
-Typically it doesn't, but the reality is that {SDMMC,SDIO}_CON{0,}[2:1]
-for drv/sample_degree both. Obviously they want to make drv stuff the
-same layout as sampe stuff...
+Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+Changes in v2:
+- None
 
-> This should be possible to verify in one of two ways.  If the TRM has
-> a typo and things truly _do_ start at 0 instead of 1, then:
->
-> 1. There will be roughly mirrors of valid ranges.
-> 2. Things won't match up if we change tuning to use 180 course offset=
-s
-> and the rest fine offsets.
->
-> It would be ideal if you could confirm with the chip guys, but if you
+ Documentation/devicetree/bindings/usb/dwc3.txt | 3 +++
+ drivers/usb/dwc3/core.c                        | 7 +++++++
+ drivers/usb/dwc3/core.h                        | 5 +++++
+ drivers/usb/dwc3/platform_data.h               | 1 +
+ 4 files changed, 16 insertions(+)
 
-I have checked it before Xing upstreamed the code, but as your question=
-=20
-on the TRM, I check it with the  chip guys again.
-
-So the answer is that drv/sample stuff should refer to  Mobile Strorage
-Host Controller section, and it will fit the future Socs from now on.
-
-
-> can't I'll try to do more tests tomorrow.
-
-
-
->
->
->
-
-
---=20
-Best Regards
-Shawn Lin
-
+diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
+index 7d7ce08..1ada121 100644
+--- a/Documentation/devicetree/bindings/usb/dwc3.txt
++++ b/Documentation/devicetree/bindings/usb/dwc3.txt
+@@ -39,6 +39,9 @@ Optional properties:
+ 			disabling the suspend signal to the PHY.
+  - snps,dis_rxdet_inp3_quirk: when set core will disable receiver detection
+ 			in PHY P3 power state.
++ - snps,dis_u2_freeclk_exists_quirk: when set, clear the u2_freeclk_exists
++			in GUSB2PHYCFG, specify that USB2 PHY doesn't provide
++			a free-running PHY clock.
+  - snps,is-utmi-l1-suspend: true when DWC3 asserts output signal
+ 			utmi_l1_suspend_n, false when asserts utmi_sleep_n
+  - snps,hird-threshold: HIRD threshold
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index a590cd2..8bcd3cc 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -502,6 +502,9 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
+ 	if (dwc->dis_enblslpm_quirk)
+ 		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
+ 
++	if (dwc->dis_u2_freeclk_exists_quirk)
++		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
++
+ 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
+ 
+ 	return 0;
+@@ -901,6 +904,8 @@ static int dwc3_probe(struct platform_device *pdev)
+ 				"snps,dis_enblslpm_quirk");
+ 	dwc->dis_rxdet_inp3_quirk = device_property_read_bool(dev,
+ 				"snps,dis_rxdet_inp3_quirk");
++	dwc->dis_u2_freeclk_exists_quirk = device_property_read_bool(dev,
++				"snps,dis_u2_freeclk_exists_quirk");
+ 
+ 	dwc->tx_de_emphasis_quirk = device_property_read_bool(dev,
+ 				"snps,tx_de_emphasis_quirk");
+@@ -935,6 +940,8 @@ static int dwc3_probe(struct platform_device *pdev)
+ 		dwc->dis_u2_susphy_quirk = pdata->dis_u2_susphy_quirk;
+ 		dwc->dis_enblslpm_quirk = pdata->dis_enblslpm_quirk;
+ 		dwc->dis_rxdet_inp3_quirk = pdata->dis_rxdet_inp3_quirk;
++		dwc->dis_u2_freeclk_exists_quirk =
++					pdata->dis_u2_freeclk_exists_quirk;
+ 
+ 		dwc->tx_de_emphasis_quirk = pdata->tx_de_emphasis_quirk;
+ 		if (pdata->tx_de_emphasis)
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index 7ddf944..ac2e6b5 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -196,6 +196,7 @@
+ 
+ /* Global USB2 PHY Configuration Register */
+ #define DWC3_GUSB2PHYCFG_PHYSOFTRST	(1 << 31)
++#define	DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS	(1 << 30)
+ #define DWC3_GUSB2PHYCFG_SUSPHY		(1 << 6)
+ #define DWC3_GUSB2PHYCFG_ULPI_UTMI	(1 << 4)
+ #define DWC3_GUSB2PHYCFG_ENBLSLPM	(1 << 8)
+@@ -770,6 +771,9 @@ struct dwc3_scratchpad_array {
+  * @dis_u2_susphy_quirk: set if we disable usb2 suspend phy
+  * @dis_enblslpm_quirk: set if we clear enblslpm in GUSB2PHYCFG,
+  *                      disabling the suspend signal to the PHY.
++ * @dis_u2_freeclk_exists_quirk : set if we clear u2_freeclk_exists
++ *			in GUSB2PHYCFG, specify that USB2 PHY doesn't
++ *			provide a free-running PHY clock.
+  * @tx_de_emphasis_quirk: set if we enable Tx de-emphasis quirk
+  * @tx_de_emphasis: Tx de-emphasis value
+  * 	0	- -6dB de-emphasis
+@@ -913,6 +917,7 @@ struct dwc3 {
+ 	unsigned		dis_u2_susphy_quirk:1;
+ 	unsigned		dis_enblslpm_quirk:1;
+ 	unsigned		dis_rxdet_inp3_quirk:1;
++	unsigned		dis_u2_freeclk_exists_quirk:1;
+ 
+ 	unsigned		tx_de_emphasis_quirk:1;
+ 	unsigned		tx_de_emphasis:2;
+diff --git a/drivers/usb/dwc3/platform_data.h b/drivers/usb/dwc3/platform_data.h
+index 8826cca..e1a1631 100644
+--- a/drivers/usb/dwc3/platform_data.h
++++ b/drivers/usb/dwc3/platform_data.h
+@@ -43,6 +43,7 @@ struct dwc3_platform_data {
+ 	unsigned dis_u2_susphy_quirk:1;
+ 	unsigned dis_enblslpm_quirk:1;
+ 	unsigned dis_rxdet_inp3_quirk:1;
++	unsigned dis_u2_freeclk_exists_quirk:1;
+ 
+ 	unsigned tx_de_emphasis_quirk:1;
+ 	unsigned tx_de_emphasis:2;
+-- 
+1.9.1
