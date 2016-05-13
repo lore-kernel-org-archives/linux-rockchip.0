@@ -1,86 +1,45 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] usb: gadget: composite: don't queue OS desc req if length is invalid
-Date: Fri, 13 May 2016 18:30:42 +0800
-Message-ID: <1463135442-15970-1-git-send-email-william.wu@rock-chips.com>
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v5 3/6] regulator: rk808: Add regulator driver for RK818
+Date: Fri, 13 May 2016 12:20:56 +0100
+Message-ID: <20160513112055.GE22038@sirena.org.uk>
+References: <1462886340-7893-1-git-send-email-w.egorov@phytec.de>
+ <1462886340-7893-4-git-send-email-w.egorov@phytec.de>
+Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="/2994txjAzEdQwm5"
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1462886340-7893-4-git-send-email-w.egorov@phytec.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Wadim Egorov <w.egorov@phytec.de>
+Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, rtc-linux@googlegroups.com, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, mturquette@baylibre.com, sboyd@codeaurora.org, lee.jones@linaro.org, lgirdwood@gmail.com, a.zummo@towertech.it, alexandre.belloni@free-electrons.com, dianders@chromium.org, zyw@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-In OS descriptors handling, if ctrl->bRequestType is
-USB_RECIP_DEVICE and w_index != 0x4 or (w_value >> 8)
-is true, it will not assign a valid value to req->length,
-but use the default value(-EOPNOTSUPP), and queue an
-OS desc request with the invalid req->length. It always
-happens on the platforms which use os_desc (for example:
-rk3366, rk3399), and cause kernel panic as follows
-(use dwc3 driver):
 
-Unable to handle kernel paging request at virtual address ffffffc0f7e00000
-Internal error: Oops: 96000146 [#1] PREEMPT SMP
-PC is at __dma_clean_range+0x18/0x30
-LR is at __swiotlb_map_page+0x50/0x64
-Call trace:
-[<ffffffc0000930f8>] __dma_clean_range+0x18/0x30
-[<ffffffc00062214c>] usb_gadget_map_request+0x134/0x1b0
-[<ffffffc0005c289c>] __dwc3_ep0_do_control_data+0x110/0x14c
-[<ffffffc0005c2d38>] __dwc3_gadget_ep0_queue+0x198/0x1b8
-[<ffffffc0005c2e18>] dwc3_gadget_ep0_queue+0xc0/0xe8
-[<ffffffc00061cfec>] composite_ep0_queue.constprop.14+0x34/0x98
-[<ffffffc00061dfb0>] composite_setup+0xf60/0x100c
-[<ffffffc0006204dc>] android_setup+0xd8/0x138
-[<ffffffc0005c29a4>] dwc3_ep0_delegate_req+0x34/0x50
-[<ffffffc0005c3534>] dwc3_ep0_interrupt+0x5dc/0xb58
-[<ffffffc0005c0c3c>] dwc3_thread_interrupt+0x15c/0xa24
+--/2994txjAzEdQwm5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-With this patch, the gadget driver will not queue
-a request and return immediately if req->length is
-invalid. And the usb controller driver can handle
-the unsupport request correctly.
+On Tue, May 10, 2016 at 03:18:57PM +0200, Wadim Egorov wrote:
+> Add support for the rk818 regulator. The regulator module consists
+> of 4 DCDCs, 9 LDOs, 1 switch and 1 BOOST converter which is used to
+> power OTG and HDMI5V.
 
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
- drivers/usb/gadget/composite.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
+Acked-by: Mark Brown <broonie@kernel.org>
 
-diff --git a/drivers/usb/gadget/composite.c b/drivers/usb/gadget/composite.c
-index d67de0d..eb64848 100644
---- a/drivers/usb/gadget/composite.c
-+++ b/drivers/usb/gadget/composite.c
-@@ -1868,14 +1868,19 @@ unknown:
- 				}
- 				break;
- 			}
--			req->length = value;
--			req->context = cdev;
--			req->zero = value < w_length;
--			value = composite_ep0_queue(cdev, req, GFP_ATOMIC);
--			if (value < 0) {
--				DBG(cdev, "ep_queue --> %d\n", value);
--				req->status = 0;
--				composite_setup_complete(gadget->ep0, req);
-+
-+			if (value >= 0) {
-+				req->length = value;
-+				req->context = cdev;
-+				req->zero = value < w_length;
-+				value = composite_ep0_queue(cdev, req,
-+							    GFP_ATOMIC);
-+				if (value < 0) {
-+					DBG(cdev, "ep_queue --> %d\n", value);
-+					req->status = 0;
-+					composite_setup_complete(gadget->ep0,
-+								 req);
-+				}
- 			}
- 			return value;
- 		}
--- 
-1.9.1
+--/2994txjAzEdQwm5
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+iQEcBAEBCAAGBQJXNbiWAAoJECTWi3JdVIfQ82IH/0WRYTRTlQk/OPon4FIaa0IO
+oBFGlMS/tz6UgBysOleM8JPoDrX4wKImWQHYurbJ8IGOqpGfScZ7o1g5h79t05RQ
+HABbHNz+BDHg49foowhQGAKBW7enpzIkKEbsXEj/Bt76g5l3Mdoj9Gzn6HuJILM4
+HmGm05lSdLtxJE1zXZXcl74MqAWRgbVA9jw+KoHOMnSumLLHso1vue5A+UtvJImE
+Q5J9L1BGjCyxXfGXWq7JAFtBcPPokFv/A3vbdsLMlHfFHYkZLHR74IAXWM2IIiSh
+NoaM234W/hluaDT+P4ftX45ZInqqo6S8KbEznQsTAuKMWopfgeu2L27C4vqbXBg=
+=hJT+
+-----END PGP SIGNATURE-----
+
+--/2994txjAzEdQwm5--
