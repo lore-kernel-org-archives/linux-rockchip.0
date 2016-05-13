@@ -1,120 +1,39 @@
-From: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 4/5] usb: dwc3: add dis_del_phy_power_chg_quirk
-Date: Fri, 13 May 2016 17:25:00 +0800
-Message-ID: <1463131501-22551-5-git-send-email-william.wu@rock-chips.com>
+From: William Wu <william.wu@rock-chips.com>
+Subject: [PATCH v2 1/5] usb: dwc3: of-simple: add compatible for rockchip
+Date: Fri, 13 May 2016 17:24:57 +0800
+Message-ID: <1463131501-22551-2-git-send-email-william.wu@rock-chips.com>
 References: <1462794377-6528-1-git-send-email-william.wu@rock-chips.com>
  <1463131501-22551-1-git-send-email-william.wu@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1463131501-22551-1-git-send-email-william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.cai-TNX95d0MmH7DzftRWevZcw@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, John.Youn-HKixBCOQz3hWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463131501-22551-1-git-send-email-william.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: gregkh@linuxfoundation.org, balbi@kernel.org, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, William Wu <william.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a quirk to clear the GUSB3PIPECTL.DELAYP1TRANS bit,
-which specifies whether disable delay PHY power change
-from P0 to P1/P2/P3 when link state changing from U0
-to U1/U2/U3 respectively.
+Rockchip platform merely enable usb3 clocks and
+populate its children. So we can use this generic
+glue layer to support Rockchip dwc3.
 
-Signed-off-by: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: William Wu <william.wu@rock-chips.com>
 ---
 Changes in v2:
-- None
+- sort the list of_dwc3_simple_match (Doug)
 
- Documentation/devicetree/bindings/usb/dwc3.txt | 2 ++
- drivers/usb/dwc3/core.c                        | 7 +++++++
- drivers/usb/dwc3/core.h                        | 3 +++
- drivers/usb/dwc3/platform_data.h               | 1 +
- 4 files changed, 13 insertions(+)
+ drivers/usb/dwc3/dwc3-of-simple.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
-index 34d13a5..bd5bef0 100644
---- a/Documentation/devicetree/bindings/usb/dwc3.txt
-+++ b/Documentation/devicetree/bindings/usb/dwc3.txt
-@@ -42,6 +42,8 @@ Optional properties:
-  - snps,dis_u2_freeclk_exists_quirk: when set, clear the u2_freeclk_exists
- 			in GUSB2PHYCFG, specify that USB2 PHY doesn't provide
- 			a free-running PHY clock.
-+ - snps,dis_del_phy_power_chg_quirk: when set core will change PHY power
-+			from P0 to P1/P2/P3 without delay.
-  - snps,phyif_utmi_quirk: when set core will set phyif UTMI+ interface.
-  - snps,phyif_utmi: the value to configure the core to support a UTMI+ PHY
- 			with an 8- or 16-bit interface. Value 0 select 8-bit
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index d99c170..c06870c 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -451,6 +451,9 @@ static int dwc3_phy_setup(struct dwc3 *dwc)
- 	if (dwc->dis_u3_susphy_quirk)
- 		reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
+diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+index 9743353..6da9656 100644
+--- a/drivers/usb/dwc3/dwc3-of-simple.c
++++ b/drivers/usb/dwc3/dwc3-of-simple.c
+@@ -161,6 +161,7 @@ static const struct dev_pm_ops dwc3_of_simple_dev_pm_ops = {
  
-+	if (dwc->dis_del_phy_power_chg_quirk)
-+		reg &= ~DWC3_GUSB3PIPECTL_DEPOCHANGE;
-+
- 	dwc3_writel(dwc->regs, DWC3_GUSB3PIPECTL(0), reg);
- 
- 	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-@@ -920,6 +923,8 @@ static int dwc3_probe(struct platform_device *pdev)
- 				"snps,dis_rxdet_inp3_quirk");
- 	dwc->dis_u2_freeclk_exists_quirk = device_property_read_bool(dev,
- 				"snps,dis_u2_freeclk_exists_quirk");
-+	dwc->dis_del_phy_power_chg_quirk = device_property_read_bool(dev,
-+				"snps,dis_del_phy_power_chg_quirk");
- 
- 	dwc->phyif_utmi_quirk = device_property_read_bool(dev,
- 				"snps,phyif_utmi_quirk");
-@@ -960,6 +965,8 @@ static int dwc3_probe(struct platform_device *pdev)
- 		dwc->dis_rxdet_inp3_quirk = pdata->dis_rxdet_inp3_quirk;
- 		dwc->dis_u2_freeclk_exists_quirk =
- 					pdata->dis_u2_freeclk_exists_quirk;
-+		dwc->dis_del_phy_power_chg_quirk =
-+					pdata->dis_del_phy_power_chg_quirk;
- 
- 		dwc->phyif_utmi_quirk = pdata->phyif_utmi_quirk;
- 		if (pdata->phyif_utmi)
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index e1fcae8..abed84f 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -780,6 +780,8 @@ struct dwc3_scratchpad_array {
-  * @dis_u2_freeclk_exists_quirk : set if we clear u2_freeclk_exists
-  *			in GUSB2PHYCFG, specify that USB2 PHY doesn't
-  *			provide a free-running PHY clock.
-+ * @dis_del_phy_power_chg_quirk: set if we disable delay phy power
-+ *			change quirk.
-  * @phyif_utmi_quirk: set if we enable phyif UTMI+ quirk
-  * @phyif_utmi: UTMI+ PHY interface value
-  *	0	- 8 bits
-@@ -928,6 +930,7 @@ struct dwc3 {
- 	unsigned		dis_enblslpm_quirk:1;
- 	unsigned		dis_rxdet_inp3_quirk:1;
- 	unsigned		dis_u2_freeclk_exists_quirk:1;
-+	unsigned		dis_del_phy_power_chg_quirk:1;
- 
- 	unsigned		phyif_utmi_quirk:1;
- 	unsigned		phyif_utmi:1;
-diff --git a/drivers/usb/dwc3/platform_data.h b/drivers/usb/dwc3/platform_data.h
-index b521565..ab45d91 100644
---- a/drivers/usb/dwc3/platform_data.h
-+++ b/drivers/usb/dwc3/platform_data.h
-@@ -44,6 +44,7 @@ struct dwc3_platform_data {
- 	unsigned dis_enblslpm_quirk:1;
- 	unsigned dis_rxdet_inp3_quirk:1;
- 	unsigned dis_u2_freeclk_exists_quirk:1;
-+	unsigned dis_del_phy_power_chg_quirk:1;
- 
- 	unsigned phyif_utmi_quirk:1;
- 	unsigned phyif_utmi:1;
+ static const struct of_device_id of_dwc3_simple_match[] = {
+ 	{ .compatible = "qcom,dwc3" },
++	{ .compatible = "rockchip,dwc3" },
+ 	{ .compatible = "xlnx,zynqmp-dwc3" },
+ 	{ /* Sentinel */ }
+ };
 -- 
 1.9.1
