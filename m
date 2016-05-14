@@ -1,39 +1,97 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v4 3/3] ARM64: dts: rockchip: enable eMMC for rk3399 EVB
-Date: Fri, 13 May 2016 15:54:35 -0700
-Message-ID: <CAD=FV=VffvTEVyCpVn20rRsGRYKPVy_6qjTBoiOvMX4EjeWFrQ@mail.gmail.com>
-References: <1463177524-113856-1-git-send-email-briannorris@chromium.org>
-	<1463177524-113856-3-git-send-email-briannorris@chromium.org>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [PATCH 2/2] clk: rockchip: fix incorrect parent for rk3399's
+ {c,g}pll_aclk_perihp_src
+Date: Sat, 14 May 2016 11:36:14 +0800
+Message-ID: <57369D2E.3030002@rock-chips.com>
+References: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
+ <1463164937-91089-2-git-send-email-briannorris@chromium.org>
+ <CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463177524-113856-3-git-send-email-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Doug,
 
-On Fri, May 13, 2016 at 3:12 PM, Brian Norris <briannorris@chromium.org> wrote:
-> Rockchip's rk3399 evaluation board has eMMC. Let's enable the
-> newly-added nodes.
+On 2016=E5=B9=B405=E6=9C=8814=E6=97=A5 04:10, Doug Anderson wrote:
+> Hi,
 >
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> v4:
+> On Fri, May 13, 2016 at 11:42 AM, Brian Norris <briannorris@chromium.=
+org> wrote:
+>> From: Xing Zheng <zhengxing@rock-chips.com>
+>>
+>> There was a typo, swapping 'c' <--> 'g'.
+>>
+>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>> Signed-off-by: Brian Norris <briannorris@chromium.org>
+>> ---
+>>   drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchi=
+p/clk-rk3399.c
+>> index 145756c4f3c8..9f86bfef70f7 100644
+>> --- a/drivers/clk/rockchip/clk-rk3399.c
+>> +++ b/drivers/clk/rockchip/clk-rk3399.c
+>> @@ -832,9 +832,9 @@ static struct rockchip_clk_branch rk3399_clk_bra=
+nches[] __initdata =3D {
+>>                          RK3399_CLKGATE_CON(13), 1, GFLAGS),
+>>
+>>          /* perihp */
+>> -       GATE(0, "cpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+>> +       GATE(0, "cpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+>>                          RK3399_CLKGATE_CON(5), 0, GFLAGS),
+>> -       GATE(0, "gpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+>> +       GATE(0, "gpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+>>                          RK3399_CLKGATE_CON(5), 1, GFLAGS),
+>>          COMPOSITE(ACLK_PERIHP, "aclk_perihp", mux_aclk_perihp_p, CL=
+K_IGNORE_UNUSED,
+>>                          RK3399_CLKSEL_CON(14), 7, 1, MFLAGS, 0, 5, =
+DFLAGS,
+> Definitely there was a bug since this table itself was inconsistent.
+> ...and I _think_ this fix is correct, but I'll note that the TRM has
+> more inconsistency here.
 >
->  * alphabetize &node references
+> In the big clock table 'CRU Clock Architecture Diagram', I see:
+>    CLK 4 is CPLL
+>    CLK 5 is GPLL
+>    CLK 125 is aclk_perihp_cpll_src and has 4 (CPLL) as source, with
+> g5[0] as the bit
+>    CLK 126 is aclk_perihp_gpll_src and has 5 (GPLL) as source, with
+> g5[1] as the bit
 >
-> v3:
+> In the definition of CRU_CLKGATE_CON5:
+>    bit 0 shows aclk_perihp_gpll_src_en
+>    bit 1 shows aclk_perihp_cpll_src_en
 >
->  * no change
 >
-> v2:
+> Thus the table shows CPLL as gate5[0] and GPLL as gate5[1].  The
+> register definition shows the opposite.  I'll tend to believe the
+> table over the register definition, but I figured I'd bring it up
+> anyway.
 >
->  * better commit description
 >
->  arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
+> Xing Zheng: can you confirm that the table is correct and ask
+> documentation folks to fix the register definition for
+> CRU_CLKGATE_CON5?
+Yes, previously, our IC & DOC partner confirmed that the definition of=20
+CRU_CLKGATE_CON5 should be:
+   bit 0 shows aclk_perihp_cpll_src_en
+   bit 1 shows aclk_perihp_gpll_src_en
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Sorry to the incorrect register definition, we will fix them and review=
+=20
+the TRM again.
+
+Thanks.
+
+--=20
+- Xing Zheng
+
+
