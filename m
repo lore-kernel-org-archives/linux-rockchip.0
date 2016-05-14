@@ -1,92 +1,40 @@
-From: Francois Romieu <romieu@fr.zoreil.com>
-Subject: Re: [PATCH] ethernet:arc: Fix racing of TX ring buffer
-Date: Sat, 14 May 2016 22:03:56 +0200
-Message-ID: <20160514200356.GA14105@electric-eye.fr.zoreil.com>
-References: <20160514161602.GA3347@debian-dorm>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: fix zap cache during device attach
+Date: Sat, 14 May 2016 22:19:43 +0200
+Message-ID: <11003810.ccjcAXkzhi@phil>
+References: <20160510155046.24515-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160514161602.GA3347@debian-dorm>
-Sender: netdev-owner@vger.kernel.org
-To: Shuyu Wei <wsy2220@gmail.com>
-Cc: wxt@rock-chips.com, davem@davemloft.net, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20160510155046.24515-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Shuyu Wei <wsy2220@gmail.com> :
-> The tail of the ring buffer(txbd_dirty) should never go ahead of the
-> head(txbd_curr) or the ring buffer will corrupt. 
+Am Dienstag, 10. Mai 2016, 16:50:46 schrieb John Keeping:
+> rk_iommu_command() takes a struct rk_iommu and iterates over the slave
+> MMUs, so this is doubly wrong in that we're passing in the wrong pointer
+> and talking to MMUs that we shouldn't be.
 > 
-> This is the root cause of racing.
+> Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
+> slaves") Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
 
-No (see below).
+on a rk3288-veyron
+Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-It may suffer from some barrier illness though.
+I was wondering for a short time why this didn't spew warnings until I 
+realized that the iommu->bases[i] is of course a void* .
 
-> Besides, setting the FOR_EMAC flag should be the last step of modifying
-> the buffer descriptor, or possible racing will occur.
 
-(s/Besides//)
-
-Yes. Good catch.
-
-> Signed-off-by: Shuyu Wei <sy.w@outlook.com>
-> ---
-> 
-> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-> index a3a9392..5ece05b 100644
-> --- a/drivers/net/ethernet/arc/emac_main.c
-> +++ b/drivers/net/ethernet/arc/emac_main.c
-> @@ -155,7 +155,7 @@ static void arc_emac_tx_clean(struct net_device *ndev)
->         struct net_device_stats *stats = &ndev->stats;
->         unsigned int i;
->  
-> -       for (i = 0; i < TX_BD_NUM; i++) {
-> +       for (i = priv->txbd_dirty; i != priv->txbd_curr; i = (i + 1) % TX_BD_NUM) {
->                 unsigned int *txbd_dirty = &priv->txbd_dirty;
->                 struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
->                 struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
-
-"i" is only used as a loop counter in arc_emac_tx_clean. It is not even
-used as an index to dereference an array or whatever. Only "priv->txbd_dirty"
-is used.
-
-arc_emac_tx_clean() checks FOR_EMAC, skb, and dirty tx data. It takes care of
-clearing those itself. Thus, (memory / io barrier considerations apart) it can
-only proceed beyond its own "if ((info & FOR_EMAC) || !txbd->data || !skb)"
-check if arc_emac_tx wrote all of those.
-
-Where they are used as loop counters, both TX_BD_NUM and txbd_curr - txbd_dirty
-can be considered as hints (please note that unsigned arithmetic can replace
-the "%" sludgehammer here).
-
-> @@ -686,12 +686,12 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
->  
->         skb_tx_timestamp(skb);
-
-> +       priv->tx_buff[*txbd_curr].skb = skb;
-
-	dma_wmb();
-
-(sync writes to memory before releasing descriptor)
-
->         *info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
->  
->         /* Make sure info word is set */
->         wmb();
-
-arc_emac_tx_clean can run from this point.
-
-txbd_curr is still not set (and it does need to). So, if you insist
-on txbd_curr appearing in arc_emac_tx_clean::for(...), it's perfectly
-possible to ignore a sent packet.
-
-I ignored arc_reg_set() at the end of arc_emac_tx(). I have no idea
-if it is posted nor if it forces the chipset to read the descriptors
-(synchronously ?) so part of the sentence above could be wrong.
-
-You have found a big offender in arc_emac_tx() but the arc_emac_tx_clean()
-part is imho useless, incorrectly understood or misworded.
-
--- 
-Ueimor
+Heiko
