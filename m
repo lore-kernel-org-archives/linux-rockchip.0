@@ -1,32 +1,51 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] ARM64: dts: rockchip: assign default rates for core rk3399 clocks
-Date: Sat, 14 May 2016 13:57:12 +0200
-Message-ID: <25672526.OH6Oxq7zkd@phil>
-References: <1463172618-96001-1-git-send-email-briannorris@chromium.org>
+From: Shuyu Wei <wsy2220@gmail.com>
+Subject: [PATCH] ethernet:arc: Fix racing of TX ring buffer
+Date: Sun, 15 May 2016 00:16:02 +0800
+Message-ID: <20160514161602.GA3347@debian-dorm>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463172618-96001-1-git-send-email-briannorris@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>, Brian Norris <computersforpeace@gmail.com>, Xing Zheng <zhengxing@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline; filename="mail1.txt"
+Sender: netdev-owner@vger.kernel.org
+To: wxt@rock-chips.com, davem@davemloft.net
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 13. Mai 2016, 13:50:18 schrieb Brian Norris:
-> From: Xing Zheng <zhengxing@rock-chips.com>
-> 
-> These clocks are all core clocks used by many blocks/peripherals, many
-> of whose drivers don't set their clock rates at all. Let's assign
-> reasonable default clock rates for these core clocks, so that these
-> peripherals get something reasonable by default, and also so that if
-> child devices want to select a clock rate themselves, their muxes have
-> some reasonable parent clock rates to branch off of (rather than just
-> the boot-time defaults).
-> 
-> This helps the eMMC PHY, for one, to get a reasonable ACLK rate.
-> 
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+The tail of the ring buffer(txbd_dirty) should never go ahead of the
+head(txbd_curr) or the ring buffer will corrupt. 
 
-applied for 4.8 with Doug's review-tag (after making the ARM64 lower-case)
+This is the root cause of racing.
+
+Besides, setting the FOR_EMAC flag should be the last step of modifying
+the buffer descriptor, or possible racing will occur.
+
+Signed-off-by: Shuyu Wei <sy.w@outlook.com>
+---
+
+diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+index a3a9392..5ece05b 100644
+--- a/drivers/net/ethernet/arc/emac_main.c
++++ b/drivers/net/ethernet/arc/emac_main.c
+@@ -155,7 +155,7 @@ static void arc_emac_tx_clean(struct net_device *ndev)
+        struct net_device_stats *stats = &ndev->stats;
+        unsigned int i;
+ 
+-       for (i = 0; i < TX_BD_NUM; i++) {
++       for (i = priv->txbd_dirty; i != priv->txbd_curr; i = (i + 1) % TX_BD_NUM) {
+                unsigned int *txbd_dirty = &priv->txbd_dirty;
+                struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
+                struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
+@@ -686,12 +686,12 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+ 
+        skb_tx_timestamp(skb);
+ 
++       priv->tx_buff[*txbd_curr].skb = skb;
+        *info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
+ 
+        /* Make sure info word is set */
+        wmb();
+ 
+-       priv->tx_buff[*txbd_curr].skb = skb;
+ 
+        /* Increment index to point to the next BD */
+        *txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
