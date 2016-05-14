@@ -1,97 +1,30 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [PATCH 2/2] clk: rockchip: fix incorrect parent for rk3399's
- {c,g}pll_aclk_perihp_src
-Date: Sat, 14 May 2016 11:36:14 +0800
-Message-ID: <57369D2E.3030002@rock-chips.com>
-References: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
- <1463164937-91089-2-git-send-email-briannorris@chromium.org>
- <CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v9 0/8] add i2c driver supported for rk3399
+Date: Sat, 14 May 2016 13:30:41 +0200
+Message-ID: <1649653.55gUf8lt1c@phil>
+References: <1463039586-8134-1-git-send-email-david.wu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463039586-8134-1-git-send-email-david.wu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Wu <david.wu@rock-chips.com>
+Cc: wsa@the-dreams.de, robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+Am Donnerstag, 12. Mai 2016, 15:52:58 schrieb David Wu:
+> There are three points differert from others:
+>  - new method to caculate i2c timings for rk3399
+>  - pclk and function clk are separated at rk3399
+>  - add fast-plus mode supported for rk3399
 
-On 2016=E5=B9=B405=E6=9C=8814=E6=97=A5 04:10, Doug Anderson wrote:
-> Hi,
->
-> On Fri, May 13, 2016 at 11:42 AM, Brian Norris <briannorris@chromium.=
-org> wrote:
->> From: Xing Zheng <zhengxing@rock-chips.com>
->>
->> There was a typo, swapping 'c' <--> 'g'.
->>
->> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
->> Signed-off-by: Brian Norris <briannorris@chromium.org>
->> ---
->>   drivers/clk/rockchip/clk-rk3399.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchi=
-p/clk-rk3399.c
->> index 145756c4f3c8..9f86bfef70f7 100644
->> --- a/drivers/clk/rockchip/clk-rk3399.c
->> +++ b/drivers/clk/rockchip/clk-rk3399.c
->> @@ -832,9 +832,9 @@ static struct rockchip_clk_branch rk3399_clk_bra=
-nches[] __initdata =3D {
->>                          RK3399_CLKGATE_CON(13), 1, GFLAGS),
->>
->>          /* perihp */
->> -       GATE(0, "cpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
->> +       GATE(0, "cpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
->>                          RK3399_CLKGATE_CON(5), 0, GFLAGS),
->> -       GATE(0, "gpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
->> +       GATE(0, "gpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
->>                          RK3399_CLKGATE_CON(5), 1, GFLAGS),
->>          COMPOSITE(ACLK_PERIHP, "aclk_perihp", mux_aclk_perihp_p, CL=
-K_IGNORE_UNUSED,
->>                          RK3399_CLKSEL_CON(14), 7, 1, MFLAGS, 0, 5, =
-DFLAGS,
-> Definitely there was a bug since this table itself was inconsistent.
-> ...and I _think_ this fix is correct, but I'll note that the TRM has
-> more inconsistency here.
->
-> In the big clock table 'CRU Clock Architecture Diagram', I see:
->    CLK 4 is CPLL
->    CLK 5 is GPLL
->    CLK 125 is aclk_perihp_cpll_src and has 4 (CPLL) as source, with
-> g5[0] as the bit
->    CLK 126 is aclk_perihp_gpll_src and has 5 (GPLL) as source, with
-> g5[1] as the bit
->
-> In the definition of CRU_CLKGATE_CON5:
->    bit 0 shows aclk_perihp_gpll_src_en
->    bit 1 shows aclk_perihp_cpll_src_en
->
->
-> Thus the table shows CPLL as gate5[0] and GPLL as gate5[1].  The
-> register definition shows the opposite.  I'll tend to believe the
-> table over the register definition, but I figured I'd bring it up
-> anyway.
->
->
-> Xing Zheng: can you confirm that the table is correct and ask
-> documentation folks to fix the register definition for
-> CRU_CLKGATE_CON5?
-Yes, previously, our IC & DOC partner confirmed that the definition of=20
-CRU_CLKGATE_CON5 should be:
-   bit 0 shows aclk_perihp_cpll_src_en
-   bit 1 shows aclk_perihp_gpll_src_en
+On a rk3288
 
-Sorry to the incorrect register definition, we will fix them and review=
-=20
-the TRM again.
+Tested-by: Heiko Stuebner <heiko@sntech.de>
 
-Thanks.
-
---=20
-- Xing Zheng
+to make sure nothing currently working broke - and everything is running 
+still fine.
 
 
+Heiko
