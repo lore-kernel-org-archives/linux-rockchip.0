@@ -1,70 +1,43 @@
-From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
-Subject: Re: [PATCH] ethernet:arc: Fix racing of TX ring buffer
-Date: Sun, 15 May 2016 11:19:53 +0200
-Message-ID: <20160515091953.GA19983@electric-eye.fr.zoreil.com>
-References: <20160514161602.GA3347@debian-dorm>
- <20160514200356.GA14105@electric-eye.fr.zoreil.com>
- <20160514231044.GA2968@debian-dorm>
+From: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] iommu/rockchip: fix zap cache during device attach
+Date: Sun, 15 May 2016 12:16:39 +0100
+Message-ID: <20160515111638.GA9715@river>
+References: <20160510155046.24515-1-john@metanate.com>
+	<11003810.ccjcAXkzhi@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20160514231044.GA2968@debian-dorm>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+In-Reply-To: <11003810.ccjcAXkzhi@phil>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, ZhengShunQian <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> :
-[...]
-> I don't think taking txbd_curr and txbd_dirty only as hints is a good idea.
-> That could be a big waste, since tx_clean have to go through all the txbds.
+On Sat, May 14, 2016 at 10:19:43PM +0200, Heiko Stuebner wrote:
+> Am Dienstag, 10. Mai 2016, 16:50:46 schrieb John Keeping:
+> > rk_iommu_command() takes a struct rk_iommu and iterates over the slave
+> > MMUs, so this is doubly wrong in that we're passing in the wrong pointer
+> > and talking to MMUs that we shouldn't be.
+> > 
+> > Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi
+> > slaves") Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> 
+> on a rk3288-veyron
+> Tested-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> 
+> I was wondering for a short time why this didn't spew warnings until I 
+> realized that the iommu->bases[i] is of course a void* .
 
-Sorry if my point was not clear: arc_emac_tx_clean() does not need
-to change (at least not for the reason given in the commit message) :o)
-
-Current code:
-
-static void arc_emac_tx_clean(struct net_device *ndev)
-{
-[...]
-        for (i = 0; i < TX_BD_NUM; i++) {
-                unsigned int *txbd_dirty = &priv->txbd_dirty;
-                struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
-                struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
-                struct sk_buff *skb = tx_buff->skb;
-                unsigned int info = le32_to_cpu(txbd->info);
-
-                if ((info & FOR_EMAC) || !txbd->data || !skb)
-                        break;
-                        ^^^^^
-
--> the "break" statement prevents reading all txbds. At most one extra
-   descriptor is read and this driver isn't in the Mpps business.
-
-> I tried your advice, Tx throughput can only reach 5.52MB/s.
-
-Even with the original code above ?
-
-> Leaving one sent packet in tx_clean is acceptable if we respect to txbd_curr
-> and txbd_dirty, since the ignored packet will be cleaned when new packets
-> arrive.
-
-There is no reason to leave tx packet roting in the first place. Really.
-I doubt it would help bql for one.
-
-Packet may rot because of unexpected hardware behavior and driver should
-cope with it when it is diagnosed, sure. However, you don't want the driver
-to opens it own unbounded window. Next packet: 10 us, 10 ms, 10 s ?
-
--- 
-Ueimor
+Yes, although sparse catches it because iommu->bases[i] is __iomem so it
+shows up as a namespace warning.
