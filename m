@@ -1,91 +1,107 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 3/4] phy: rockchip-emmc: configure default output tap delay
-Date: Mon, 16 May 2016 08:12:57 -0700
-Message-ID: <CAD=FV=Xq3=B0NC7of-h_q8vCUDGz=33MU4vjY6EyQxQS+CC8=Q@mail.gmail.com>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
- <1463092986-61777-3-git-send-email-briannorris@chromium.org>
- <CAD=FV=WupNv+z86BgmR1n8bj+b6GKA5Ew7U9hgoAxV9dxF7gjQ@mail.gmail.com>
- <52567d92-d1d3-f089-65c2-a30f3a00386b@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/2] clk: rockchip: fix incorrect parent for rk3399's {c,g}pll_aclk_perihp_src
+Date: Mon, 16 May 2016 08:49:01 -0700
+Message-ID: <CAD=FV=Wda=kXYf4MnjXsW6g8sPAAEv7JO1ZoGXOnJW=aL0yv-w@mail.gmail.com>
+References: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
+	<1463164937-91089-2-git-send-email-briannorris@chromium.org>
+	<CAD=FV=XstYhqpStSGw5PObWvpsvd3Nwp_hfEE-56bpFoVUyu+g@mail.gmail.com>
+	<57369D2E.3030002@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <52567d92-d1d3-f089-65c2-a30f3a00386b-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <57369D2E.3030002@rock-chips.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk <linux-clk@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-On Sun, May 15, 2016 at 9:15 PM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+On Fri, May 13, 2016 at 8:36 PM, Xing Zheng <zhengxing@rock-chips.com> =
+wrote:
 > Hi Doug,
 >
 >
-> On 2016/5/14 6:25, Doug Anderson wrote:
+> On 2016=E5=B9=B405=E6=9C=8814=E6=97=A5 04:10, Doug Anderson wrote:
 >>
 >> Hi,
 >>
->> On Thu, May 12, 2016 at 3:43 PM, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+>> On Fri, May 13, 2016 at 11:42 AM, Brian Norris <briannorris@chromium=
+=2Eorg>
 >> wrote:
 >>>
->>> The output tap delay controls helps maintain the hold requirements for
->>> eMMC. The exact value is dependent on the SoC and other factors, though
->>> it isn't really an exact science. But the default of 0 is not very good,
->>> as it doesn't give the eMMC much hold time, so let's bump up to 4
->>> (approx 90 degree phase?). If we need to configure this any further
->>> (e.g., based on board or speed factors), we may need to consider a
->>> device tree representation.
+>>> From: Xing Zheng <zhengxing@rock-chips.com>
+>>>
+>>> There was a typo, swapping 'c' <--> 'g'.
+>>>
+>>> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+>>> Signed-off-by: Brian Norris <briannorris@chromium.org>
+>>> ---
+>>>   drivers/clk/rockchip/clk-rk3399.c | 4 ++--
+>>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/clk/rockchip/clk-rk3399.c
+>>> b/drivers/clk/rockchip/clk-rk3399.c
+>>> index 145756c4f3c8..9f86bfef70f7 100644
+>>> --- a/drivers/clk/rockchip/clk-rk3399.c
+>>> +++ b/drivers/clk/rockchip/clk-rk3399.c
+>>> @@ -832,9 +832,9 @@ static struct rockchip_clk_branch
+>>> rk3399_clk_branches[] __initdata =3D {
+>>>                          RK3399_CLKGATE_CON(13), 1, GFLAGS),
+>>>
+>>>          /* perihp */
+>>> -       GATE(0, "cpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+>>> +       GATE(0, "cpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+>>>                          RK3399_CLKGATE_CON(5), 0, GFLAGS),
+>>> -       GATE(0, "gpll_aclk_perihp_src", "cpll", CLK_IGNORE_UNUSED,
+>>> +       GATE(0, "gpll_aclk_perihp_src", "gpll", CLK_IGNORE_UNUSED,
+>>>                          RK3399_CLKGATE_CON(5), 1, GFLAGS),
+>>>          COMPOSITE(ACLK_PERIHP, "aclk_perihp", mux_aclk_perihp_p,
+>>> CLK_IGNORE_UNUSED,
+>>>                          RK3399_CLKSEL_CON(14), 7, 1, MFLAGS, 0, 5,
+>>> DFLAGS,
+>>
+>> Definitely there was a bug since this table itself was inconsistent.
+>> ...and I _think_ this fix is correct, but I'll note that the TRM has
+>> more inconsistency here.
+>>
+>> In the big clock table 'CRU Clock Architecture Diagram', I see:
+>>    CLK 4 is CPLL
+>>    CLK 5 is GPLL
+>>    CLK 125 is aclk_perihp_cpll_src and has 4 (CPLL) as source, with
+>> g5[0] as the bit
+>>    CLK 126 is aclk_perihp_gpll_src and has 5 (GPLL) as source, with
+>> g5[1] as the bit
+>>
+>> In the definition of CRU_CLKGATE_CON5:
+>>    bit 0 shows aclk_perihp_gpll_src_en
+>>    bit 1 shows aclk_perihp_cpll_src_en
 >>
 >>
->> As I understand it, this solves much the same problem as my patch in
->> <https://patchwork.kernel.org/patch/9085581/>, but for the eMMC port
->> on rk3399 (which doesn't use dw_mmc).  As argued in that patch and
->> also in the discussion from
->> <https://patchwork.kernel.org/patch/9030621/>, if we eventually end up
->> needing to put something in the device tree we need to be really
->> careful.  Specifically to get the exact right value here I think you
->> need to consider the input clock, speed mode, and any SoC-specific
->> delays differences between the clock and the data lines.  That would
->> imply that, if anything, the device tree data would only contain
->> information about the SoC-specific delay differences and all other
->> work to set this value would involve coordination between the PHY and
->> the SDHCI controller.
+>> Thus the table shows CPLL as gate5[0] and GPLL as gate5[1].  The
+>> register definition shows the opposite.  I'll tend to believe the
+>> table over the register definition, but I figured I'd bring it up
+>> anyway.
 >>
 >>
->> However, as also discussed previously, we don't appear to need to be
->> very exact about the value here.  It seems like setting this to 4 (~90
->> degrees?) is a much better starting point than leaving it at the
->> default of 0.
+>> Xing Zheng: can you confirm that the table is correct and ask
+>> documentation folks to fix the register definition for
+>> CRU_CLKGATE_CON5?
 >
+> Yes, previously, our IC & DOC partner confirmed that the definition o=
+f
+> CRU_CLKGATE_CON5 should be:
+>   bit 0 shows aclk_perihp_cpll_src_en
+>   bit 1 shows aclk_perihp_gpll_src_en
 >
-> The value, 4, is based on real silicon test observed from the
-> oscilloscope, and of course it meets the requirement of speed modes.
-> For arasan't phy, its phase is very accurate, so the real timing of
-> the value you set almost won't vary too much for different Socs.
->
-> So explicitly assigning 4 here looks sane currently except for crazy
-> PCB layout...
+> Sorry to the incorrect register definition, we will fix them and revi=
+ew the
+> TRM again.
 
-Great to hear.  So we can probably just use your email as the basis of
-the commit message?  How about this for the commit text then:
+Great!
 
-The output tap delay controls helps maintain the hold requirements for
-eMMC.  The value, 4, is based on real silicon test observed from the
-oscilloscope, and of course it meets the requirement of speed modes.
-For arasan't phy, its phase is very accurate, so the real timing of
-the value you set won't vary too much for different SoCs.
+Since we now have extra confirmation that Brian's patch is indeed corre=
+ct:
 
-If / when we find an instance of a crazy PCB layout that needs a value
-different than 4, we will figure out how to best specify that,
-possibly using the device tree in some way.
-
--Doug
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
