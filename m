@@ -1,80 +1,32 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 3/4] phy: rockchip-emmc: configure default output tap
- delay
-Date: Mon, 16 May 2016 12:15:29 +0800
-Message-ID: <52567d92-d1d3-f089-65c2-a30f3a00386b@rock-chips.com>
-References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
- <1463092986-61777-3-git-send-email-briannorris@chromium.org>
- <CAD=FV=WupNv+z86BgmR1n8bj+b6GKA5Ew7U9hgoAxV9dxF7gjQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: David Wu <david.wu@rock-chips.com>
+Subject: [PATCH v10 0/8] add i2c driver supported for rk3399
+Date: Mon, 16 May 2016 21:57:35 +0800
+Message-ID: <1463407063-41218-1-git-send-email-david.wu@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=WupNv+z86BgmR1n8bj+b6GKA5Ew7U9hgoAxV9dxF7gjQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>
-Cc: shawn.lin@rock-chips.com, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
+To: heiko@sntech.de, wsa@the-dreams.de
+Cc: robh+dt@kernel.org, dianders@chromium.org, andy.shevchenko@gmail.com, pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, briannorris@google.com, davidriley@google.com, huangtao@rock-chips.com, hl@rock-chips.com, xjq@rock-chips.com, zyw@rock-chips.com, cf@rock-chips.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, David Wu <david.wu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Doug,
+There are three points differert from others:
+ - new method to caculate i2c timings for rk3399
+ - pclk and function clk are separated at rk3399
+ - add fast-plus mode supported for rk3399
 
-On 2016/5/14 6:25, Doug Anderson wrote:
-> Hi,
->
-> On Thu, May 12, 2016 at 3:43 PM, Brian Norris <briannorris@chromium.org> wrote:
->> The output tap delay controls helps maintain the hold requirements for
->> eMMC. The exact value is dependent on the SoC and other factors, though
->> it isn't really an exact science. But the default of 0 is not very good,
->> as it doesn't give the eMMC much hold time, so let's bump up to 4
->> (approx 90 degree phase?). If we need to configure this any further
->> (e.g., based on board or speed factors), we may need to consider a
->> device tree representation.
->
-> As I understand it, this solves much the same problem as my patch in
-> <https://patchwork.kernel.org/patch/9085581/>, but for the eMMC port
-> on rk3399 (which doesn't use dw_mmc).  As argued in that patch and
-> also in the discussion from
-> <https://patchwork.kernel.org/patch/9030621/>, if we eventually end up
-> needing to put something in the device tree we need to be really
-> careful.  Specifically to get the exact right value here I think you
-> need to consider the input clock, speed mode, and any SoC-specific
-> delays differences between the clock and the data lines.  That would
-> imply that, if anything, the device tree data would only contain
-> information about the SoC-specific delay differences and all other
-> work to set this value would involve coordination between the PHY and
-> the SDHCI controller.
->
->
-> However, as also discussed previously, we don't appear to need to be
-> very exact about the value here.  It seems like setting this to 4 (~90
-> degrees?) is a much better starting point than leaving it at the
-> default of 0.
+David Wu (8):
+  i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
+  i2c: rk3x: use struct "rk3x_i2c_calced_timings"
+  i2c: rk3x: Remove redundant rk3x_i2c_clean_ipd()
+  i2c: rk3x: Change SoC data to not use array
+  i2c: rk3x: Move spec timing data to "static const" structs
+  dt-bindings: i2c: rk3x: add support for rk3399
+  i2c: rk3x: add i2c support for rk3399 soc
+  i2c: rk3x: support fast-mode plus for rk3399
 
-The value, 4, is based on real silicon test observed from the
-oscilloscope, and of course it meets the requirement of speed modes.
-For arasan't phy, its phase is very accurate, so the real timing of
-the value you set almost won't vary too much for different Socs.
-
-So explicitly assigning 4 here looks sane currently except for crazy
-PCB layout...
-
-
->
->
-> ...so I'd be all for landing this patch.  Perhaps Shawn can chime in
-> and confirm that our understanding is correct and possibly we can
-> update the commit message.  Then presumably someone at Rockchip can
-> keep working to find a better way to set this long term.
->
-> Sound good?
->
->
-> -Doug
->
->
->
-
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |  16 +-
+ drivers/i2c/busses/i2c-rk3x.c                      | 498 +++++++++++++++++----
+ 2 files changed, 434 insertions(+), 80 deletions(-)
 
 -- 
-Best Regards
-Shawn Lin
+1.9.1
