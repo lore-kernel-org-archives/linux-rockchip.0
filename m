@@ -1,34 +1,80 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] clk: rockchip: mark rk3399 GIC clocks as critical
-Date: Tue, 17 May 2016 23:10:51 +0200
-Message-ID: <2111538.t2M7m4hXj2@phil>
-References: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
+Subject: Re: [PATCH 1/2] Revert "clk: rockchip: reset init state before mmc card initialization"
+Date: Tue, 17 May 2016 23:56:44 +0200
+Message-ID: <1546506.kPA2J5E1Tb@phil>
+References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1463164937-91089-1-git-send-email-briannorris@chromium.org>
+In-Reply-To: <1463076197-15900-1-git-send-email-dianders@chromium.org>
 Sender: linux-clk-owner@vger.kernel.org
-To: Brian Norris <briannorris@chromium.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Doug Anderson <dianders@chromium.org>, Brian Norris <computersforpeace@gmail.com>, Xing Zheng <zhengxing@rock-chips.com>
+To: Douglas Anderson <dianders@chromium.org>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 13. Mai 2016, 11:42:16 schrieb Brian Norris:
-> We never want to kill the GIC.
+Am Donnerstag, 12. Mai 2016, 11:03:16 schrieb Douglas Anderson:
+> This reverts commit 7a03fe6f48f3 ("clk: rockchip: reset init state
+> before mmc card initialization").
 > 
-> Noticed when making other clock fixups, and seeing the newly-constructed
-> clock tree try to disable cpll, where we had this parent structure:
+> Though not totally obvious from the commit message nor from the source
+> code, that commit appears to be trying to reset the "_drv" MMC clocks to
+> 90 degrees (note that the "_sample" MMC clocks have a shift of 0 so are
+> not touched).
 > 
->   aclk_gic <------\
+> The major problem here is that it doesn't properly reset things.  The
+> phase is a two bit field and the commit only touches one of the two
+> bits.  Thus the commit had the following affect:
+> - phase   0  => phase  90
+> - phase  90  => phase  90
+> - phase 180  => phase 270
+> - phase 270  => phase 270
 > 
->                   |--- aclk_gic_pre <-- cpll <-- pll_cpll
+> Things get even weirder if you happen to have a bootloader that was
+> actually using delay elements (should be no reason to, but you never
+> know), since those are additional bits that weren't touched by the
+> original patch.
 > 
->   aclk_gic_noc <--/
+> This is unlikely to be what we actually want.  Checking on rk3288-veyron
+> devices, I can see that the bootloader leaves these clocks as:
+> - emmc:  phase 180
+> - sdmmc: phase 90
+> - sdio0: phase 90
 > 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> Thus on rk3288-veyron devices the commit we're reverting had the effect
+> of changing the eMMC clock to phase 270.  This probably explains the
+> scattered reports I've heard of eMMC devices not working on some veyron
+> devices when using the upstream kernel.
+> 
+> The original commit was presumably made because previously the kernel
+> didn't touch the "_drv" phase at all and relied on whatever value was
+> there when the kernel started.  If someone was using a bootloader that
+> touched the "_drv" phase then, indeed, we should have code in the kernel
+> to fix that.  ...and also, to get ideal timings, we should also have the
+> kernel change the phase depending on the speed mode.  In fact, that's
+> the subject of a recent patch I posted at
+> <https://patchwork.kernel.org/patch/9075141/>.
+> 
+> Ideally, we should take both the patch posted to dw_mmc and this
+> revert.  Since those will likely go through different trees, here I
+> describe behavior with the combos:
+> 
+> 1. Just this revert: likely will fix rk3288-veyron eMMC on some devices
+>    + other cases; might break someone with a strange bootloader that
+>    sets the phase to 0 or one that uses delay elements (pretty
+>    unpredicable what would happen in that case).
+> 2. Just dw_mmc patch: fixes everyone.  Effectly the dw_mmc patch will
+>    totally override the broken patch and fix everything.
+> 3. Both patches: fixes everyone.  Once dw_mmc is initting properly then
+>    any defaults from the clock code doesn't mattery.
+> 
+> Fixes: 7a03fe6f48f3 ("clk: rockchip: reset init state before mmc card
+> initialization") Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-applied both patches to my clk-fixes branch with Dougs review-tags.
+I've tested this revert myself on rk3288-veyron-jerry and rk3288-firefly 
+[everything still works] and have put it temporarily into my clk-fixes branch 
+to hopefully get a report from kernelci for rk3288-rock2, but may drop it 
+again if necessary.
 
 
-Thanks
 Heiko
