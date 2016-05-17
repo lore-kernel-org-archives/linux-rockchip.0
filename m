@@ -1,52 +1,203 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH v10 0/8] add i2c driver supported for rk3399
-Date: Mon, 16 May 2016 13:17:38 -0700
-Message-ID: <CAD=FV=VqEpmODcnKOGb5P=Fu84c5pBOJXD9pfFMRc2aERfWmRg@mail.gmail.com>
-References: <1463407063-41218-1-git-send-email-david.wu@rock-chips.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH v2 4/5] ARM: dts: rockchip: Add shared file
+ for audio related nodes for veyron boards
+Date: Tue, 17 May 2016 10:14:55 +0200
+Message-ID: <CAFqH_51XmijOmfY2K1Yxcq1=x8T6m5nC0C5_2Qz-7FVR02HrMA@mail.gmail.com>
+References: <1462790795-25345-1-git-send-email-enric.balletbo@collabora.com>
+ <1462790795-25345-5-git-send-email-enric.balletbo@collabora.com>
+ <1769207.YFf2RsNhBy@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1463407063-41218-1-git-send-email-david.wu@rock-chips.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: David Wu <david.wu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Rob Herring <robh+dt@kernel.org>, Andy Shevchenko <andy.shevchenko@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Brian Norris <briannorris@google.com>, David Riley <davidriley@google.com>, Tao Huang <huangtao@rock-chips.com>, Lin Huang <hl@rock-chips.com>, Jianqun Xu <xjq@rock-chips.com>, Chris <zyw@rock-chips.com>, Eddie Cai <cf@rock-chips.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1769207.YFf2RsNhBy@phil>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Heiko,
 
-On Mon, May 16, 2016 at 6:57 AM, David Wu <david.wu@rock-chips.com> wrote:
-> There are three points differert from others:
->  - new method to caculate i2c timings for rk3399
->  - pclk and function clk are separated at rk3399
->  - add fast-plus mode supported for rk3399
+2016-05-16 0:06 GMT+02:00 Heiko Stuebner <heiko@sntech.de>:
+> Am Montag, 9. Mai 2016, 12:46:34 schrieb Enric Balletbo i Serra:
+>> Set i2s block to "okay", add sound node for max98090 with gpios for
+>> HP and Mic detect and pinctrl, and add a max98090 device and ts3a227e to
+>> the correct i2c bus.
+>>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 >
-> David Wu (8):
->   i2c: rk3x: add documentation to fields in "struct rk3x_i2c"
->   i2c: rk3x: use struct "rk3x_i2c_calced_timings"
->   i2c: rk3x: Remove redundant rk3x_i2c_clean_ipd()
->   i2c: rk3x: Change SoC data to not use array
->   i2c: rk3x: Move spec timing data to "static const" structs
->   dt-bindings: i2c: rk3x: add support for rk3399
->   i2c: rk3x: add i2c support for rk3399 soc
->   i2c: rk3x: support fast-mode plus for rk3399
+> I only got a "applied" reply from Marks scripts for patch 3/5, so only today
+> saw that all 3 actually got applied.
 >
->  Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |  16 +-
->  drivers/i2c/busses/i2c-rk3x.c                      | 498 +++++++++++++++++----
->  2 files changed, 434 insertions(+), 80 deletions(-)
+> Anyway, I've applied this to my dts32-branch for 4.8 now [0] with some
+> modifications regarding
+> - the commit subject+message
+> - ordering
+> - io_domains access (via the phandle now)
+> - regulator suspend property
+> so maybe take a look and holler if you see a mistake.
+>
 
-I haven't put these on the scope or anything, but I have:
+The changes looks good to me, thanks.
 
-* Tested that my i2c busses on rk3288-veyron still seem to work OK
-after these patches.
+> I was able to get audio over the headphones (so definitly an improvement),
+> but so far not over the built-in speakers. Did you need to do something
+> special in the configuration for this?
+>
 
-* Tested that my i2c busses on an rk3399 board seem to work after
-these patches (plus device tree changes).
+I added an UCM file [1] to my setup to test this and tested as follows
+(you can also use alsamixer but as you know this is not safe though ;)
+)
 
-Thus, for the series:
+# enable the speaker at bootup:
+alsaucm -c ROCKCHIP-I2S set _verb HiFi
+# set speaker to half loudness:
+amixer set Speaker 50%
+# play something
+aplay music.wav
+# enable headphones (disable speaker):
+alsaucm -c ROCKCHIP-I2S set _verb HiFi set _enadev Headphone
+# set headphones to half loudness:
+amixer set Headphone 50%
+# play something
+aplay music.wav
+# disable headphones (enable speaker):
+alsaucm -c ROCKCHIP-I2S set _verb HiFi set _disdev Headphone
 
-Tested-by: Douglas Anderson <dianders@chromium.org>
 
-...possibly could leave off the Tested-by tag for the last in the
-series since I have no Fast Mode Plus devices to test against.  ;)
+[1] http://git.alsa-project.org/?p=alsa-lib.git;a=commit;h=a192f52fc63a86e1fbb9a09adb0bc2a6bbc8dab1
 
--Doug
+>
+> Heiko
+>
+> [0] https://git.kernel.org/cgit/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=volatile-v4.8-armsoc/dts32&id=1452aee5a7acc03518ef5215dd3dbac4444efe52
+>
+>> ---
+>> Changes since v1:
+>>  - None
+>>
+>>  arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi | 102
+>> ++++++++++++++++++++++ 1 file changed, 102 insertions(+)
+>>  create mode 100644 arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+>>
+>> diff --git a/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+>> b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi new file mode 100644
+>> index 0000000..f045e1a
+>> --- /dev/null
+>> +++ b/arch/arm/boot/dts/rk3288-veyron-analog-audio.dtsi
+>> @@ -0,0 +1,102 @@
+>> +/*
+>> + * Google Veyron (and derivatives) fragment for the  max98090 audio
+>> + * codec and analog headphone jack.
+>> + *
+>> + * Copyright 2016 Google, Inc
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License version 2 as
+>> + * published by the Free Software Foundation.
+>> + */
+>> +
+>> +/ {
+>> +
+>> +     sound {
+>> +             compatible = "rockchip,rockchip-audio-max98090";
+>> +             rockchip,model = "ROCKCHIP-I2S";
+>> +             rockchip,i2s-controller = <&i2s>;
+>> +             rockchip,audio-codec = <&max98090>;
+>> +             rockchip,hp-det-gpios = <&gpio6 5 GPIO_ACTIVE_HIGH>;
+>> +             rockchip,mic-det-gpios = <&gpio6 11 GPIO_ACTIVE_LOW>;
+>> +             rockchip,headset-codec = <&headsetcodec>;
+>> +             pinctrl-names = "default";
+>> +             pinctrl-0 = <&mic_det>, <&hp_det>;
+>> +     };
+>> +
+>> +     io-domains {
+>> +             audio-supply = <&vcc18_codec>;
+>> +     };
+>> +};
+>> +
+>> +&rk808 {
+>> +     vcc10-supply = <&vcc33_sys>;
+>> +
+>> +     regulators {
+>> +             vcc18_codec: LDO_REG6 {
+>> +                     regulator-always-on;
+>> +                     regulator-boot-on;
+>> +                     regulator-min-microvolt = <1800000>;
+>> +                     regulator-max-microvolt = <1800000>;
+>> +                     regulator-name = "vcc18_codec";
+>> +                     regulator-suspend-mem-disabled;
+>> +             };
+>> +     };
+>> +};
+>> +
+>> +&i2c2 {
+>> +     max98090: max98090@10 {
+>> +             compatible = "maxim,max98090";
+>> +             reg = <0x10>;
+>> +             clock-names = "mclk";
+>> +             clocks = <&cru SCLK_I2S0_OUT>;
+>> +             interrupt-parent = <&gpio6>;
+>> +             interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
+>> +             pinctrl-names = "default";
+>> +             pinctrl-0 = <&int_codec>;
+>> +     };
+>> +};
+>> +
+>> +&i2c4 {
+>> +     headsetcodec: ts3a227e@3b {
+>> +             compatible = "ti,ts3a227e";
+>> +             reg = <0x3b>;
+>> +             interrupt-parent = <&gpio0>;
+>> +             interrupts = <3 IRQ_TYPE_LEVEL_LOW>;
+>> +             pinctrl-names = "default";
+>> +             pinctrl-0 = <&ts3a227e_int_l>;
+>> +             ti,micbias = <7>;               /* MICBIAS = 2.8V */
+>> +     };
+>> +};
+>> +
+>> +&i2s {
+>> +     status = "okay";
+>> +     clock-names = "i2s_hclk", "i2s_clk";
+>> +     clocks = <&cru HCLK_I2S0>, <&cru SCLK_I2S0>;
+>> +};
+>> +
+>> +&pinctrl {
+>> +     codec {
+>> +             hp_det: hp-det {
+>> +                     rockchip,pins = <6 5 RK_FUNC_GPIO &pcfg_pull_up>;
+>> +             };
+>> +
+>> +             /*
+>> +              * HACK: We're going to _pull down_ this _active low_ interrupt
+>> +              * so that it never fires.  We don't need this interrupt because
+>> +              * we've got a ts3a227e chip but the driver requires it.
+>> +              */
+>> +             int_codec: int-codec {
+>> +                     rockchip,pins = <6 7 RK_FUNC_GPIO &pcfg_pull_down>;
+>> +             };
+>> +
+>> +             mic_det: mic-det {
+>> +                     rockchip,pins = <6 11 RK_FUNC_GPIO &pcfg_pull_up>;
+>> +             };
+>> +     };
+>> +
+>> +     headset {
+>> +             ts3a227e_int_l: ts3a227e-int-l {
+>> +                     rockchip,pins = <0 3 RK_FUNC_GPIO &pcfg_pull_up>;
+>> +             };
+>> +     };
+>> +};
+>
+> _______________________________________________
+> Alsa-devel mailing list
+> Alsa-devel@alsa-project.org
+> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
