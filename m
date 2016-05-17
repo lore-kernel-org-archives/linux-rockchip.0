@@ -1,60 +1,47 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Tue, 17 May 2016 14:24:56 -0400 (EDT)
-Message-ID: <20160517.142456.2247845107325931733.davem@davemloft.net>
-References: <20160517152520.GA2750@debian-dorm>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] clk: rockchip: initialize flags of clk_init_data in mmc-phase clock
+Date: Tue, 17 May 2016 21:48:43 +0200
+Message-ID: <5857488.K3ESyq6uAh@phil>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20160517152520.GA2750@debian-dorm>
-Sender: netdev-owner@vger.kernel.org
-To: wsy2220@gmail.com
-Cc: wxt@rock-chips.com, romieu@fr.zoreil.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Shuyu Wei <wsy2220@gmail.com>
-Date: Tue, 17 May 2016 23:25:20 +0800
+The flags element of clk_init_data was never initialized for mmc-
+phase-clocks resulting in the element containing a random value
+and thus possibly enabling unwanted clock flags.
 
-> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-> index a3a9392..df3dfef 100644
-> --- a/drivers/net/ethernet/arc/emac_main.c
-> +++ b/drivers/net/ethernet/arc/emac_main.c
-> @@ -153,9 +153,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
->  {
->  	struct arc_emac_priv *priv = netdev_priv(ndev);
->  	struct net_device_stats *stats = &ndev->stats;
-> -	unsigned int i;
->  
-> -	for (i = 0; i < TX_BD_NUM; i++) {
-> +	while (priv->txbd_dirty != priv->txbd_curr) {
->  		unsigned int *txbd_dirty = &priv->txbd_dirty;
->  		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
->  		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
-> @@ -685,13 +684,15 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
->  	wmb();
->  
->  	skb_tx_timestamp(skb);
-> +	priv->tx_buff[*txbd_curr].skb = skb;
-> +
-> +	dma_wmb();
->  
->  	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
->  
->  	/* Make sure info word is set */
->  	wmb();
->  
-> -	priv->tx_buff[*txbd_curr].skb = skb;
->  
->  	/* Increment index to point to the next BD */
->  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
-> 
+Fixes: 89bf26cbc1a0 ("clk: rockchip: Add support for the mmc clock phases using the framework")
+Cc: stable@vger.kernel.org
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+Found while investigating the critical clock locking in __clk_core_init
+as it generated a bunch of warnings due to the (random) flags containing
+the critical clock bit in most cases.
 
-These memory barriers do not look correct to me.
+I've also already applied this to my fixes branch, so posted for
+reference / shouting if it's terrible wrong :-)
 
-dma_wmb() is about visibility between CPU reads/writes and device
-accesses to a piece of memory.  But what you're concerned about wrt.
-the SKB pointer assignment is CPU to CPU accesses.  Therefore something
-like smp_wmb() would be appropriate.
+ drivers/clk/rockchip/clk-mmc-phase.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-And the wmb() looks like it should be a dma_wmb().
+diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
+index bc856f2..4601130 100644
+--- a/drivers/clk/rockchip/clk-mmc-phase.c
++++ b/drivers/clk/rockchip/clk-mmc-phase.c
+@@ -154,6 +154,7 @@ struct clk *rockchip_clk_register_mmc(const char *name,
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	init.name = name;
++	init.flags = 0;
+ 	init.num_parents = num_parents;
+ 	init.parent_names = parent_names;
+ 	init.ops = &rockchip_mmc_clk_ops;
+-- 
+2.6.4
+
+
