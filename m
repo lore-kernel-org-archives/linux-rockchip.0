@@ -1,29 +1,36 @@
-From: "Lino Sanfilippo" <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
-Subject: Aw: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Tue, 17 May 2016 18:36:11 +0200
-Message-ID: <trinity-eed4d6ab-f658-4f47-94ff-5162845ba335-1463502971177@3capp-gmx-bs64>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Tue, 17 May 2016 14:24:56 -0400 (EDT)
+Message-ID: <20160517.142456.2247845107325931733.davem@davemloft.net>
 References: <20160517152520.GA2750@debian-dorm>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <20160517152520.GA2750@debian-dorm>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Sender: netdev-owner@vger.kernel.org
+To: wsy2220@gmail.com
+Cc: wxt@rock-chips.com, romieu@fr.zoreil.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+From: Shuyu Wei <wsy2220@gmail.com>
+Date: Tue, 17 May 2016 23:25:20 +0800
 
-> Von: "Shuyu Wei" <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+> index a3a9392..df3dfef 100644
+> --- a/drivers/net/ethernet/arc/emac_main.c
+> +++ b/drivers/net/ethernet/arc/emac_main.c
+> @@ -153,9 +153,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
+>  {
+>  	struct arc_emac_priv *priv = netdev_priv(ndev);
+>  	struct net_device_stats *stats = &ndev->stats;
+> -	unsigned int i;
+>  
+> -	for (i = 0; i < TX_BD_NUM; i++) {
+> +	while (priv->txbd_dirty != priv->txbd_curr) {
+>  		unsigned int *txbd_dirty = &priv->txbd_dirty;
+>  		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
+>  		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
 > @@ -685,13 +684,15 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
 >  	wmb();
 >  
@@ -43,9 +50,11 @@ Hi,
 >  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
 > 
 
-I wonder if this is correct. AFAIK a dma_wmb() only guarantees ordering of writes to DMA memory.
-The assignment of the skb however is to RAM not to DMA.
+These memory barriers do not look correct to me.
 
+dma_wmb() is about visibility between CPU reads/writes and device
+accesses to a piece of memory.  But what you're concerned about wrt.
+the SKB pointer assignment is CPU to CPU accesses.  Therefore something
+like smp_wmb() would be appropriate.
 
-Regards,
-Lino
+And the wmb() looks like it should be a dma_wmb().
