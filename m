@@ -1,58 +1,113 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command errors
-Date: Tue, 17 May 2016 21:13:12 -0700
-Message-ID: <CAD=FV=XFUKXRRRyVLOTV1ORtYfG1ngEqic-CYLp9S=C=8eJYkw@mail.gmail.com>
-References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
- <5502CA4E.9060401@samsung.com> <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
- <5506707D.40708@samsung.com> <55189F04.8000404@samsung.com>
- <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
- <CAD=FV=UJGcwa_biSCGhD=kS-T+fppCniBFfOHb5ohnwSwSwMMA@mail.gmail.com> <573BCEB5.8020905@samsung.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] Revert "clk: rockchip: reset init state before mmc
+ card initialization"
+Date: Wed, 18 May 2016 15:25:12 +0800
+Message-ID: <573C18D8.5050508@rock-chips.com>
+References: <1463076197-15900-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <573BCEB5.8020905@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Content-Type: text/plain; charset=gbk; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1463076197-15900-1-git-send-email-dianders@chromium.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com, sboyd@codeaurora.org
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org, zhengxing@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Tue, May 17, 2016 at 7:08 PM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
-> On 05/18/2016 09:47 AM, Doug Anderson wrote:
->> Jaehoon,
->>
->> On Mon, Mar 30, 2015 at 8:47 AM, Doug Anderson <dianders@chromium.org> wrote:
->>> Jaehoon,
->>>
->>> On Sun, Mar 29, 2015 at 5:55 PM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
->>>> Dear Doug,
->>>>
->>>> I'm considering to control HLE error..So holding this patch.
->>>> If this is absolutely necessary patch, let me know, plz.
->>>>
->>>> Best Regards,
->>>> Jaehoon Chung
->>>
->>> Sounds OK.  I have certainly applied this locally and the driver isn't
->>> robust against insertions / removals without it, but once the card is
->>> inserted things are OK so it's probably not urgent that it be applied
->>> upstream.  Hopefully we can figure out a better solution...
->>
->> I'm now testing a nice new rebased kernel and I'm hitting this again.
->>
->> Of course I'll just pick my same patch to my new kernel tree, but
->> since it's been a year and nobody has done anything better, would you
->> consider landing my patch?  It is certainly better than nothing.
+On 2016-5-13 2:03, Douglas Anderson wrote:
+> This reverts commit 7a03fe6f48f3 ("clk: rockchip: reset init state
+> before mmc card initialization").
 >
-> Sure, it's right.
-> I think that main reason of HLE is wait_prvdata_complete. (I'm guessing..)
-> On other hands, dwmmc controller is handling something wrong. (I found that HLE is occurred the similar case.)
-> After find the main solution, it's not bad that your patch is applied on dwmmc controller.
+> Though not totally obvious from the commit message nor from the source
+> code, that commit appears to be trying to reset the "_drv" MMC clocks to
+> 90 degrees (note that the "_sample" MMC clocks have a shift of 0 so are
+> not touched).
 >
-> Ulf have sent PR for next..So if we needs to apply this, i will apply on fix.
+> The major problem here is that it doesn't properly reset things.  The
+> phase is a two bit field and the commit only touches one of the two
+> bits.  Thus the commit had the following affect:
+> - phase   0  => phase  90
+> - phase  90  => phase  90
+> - phase 180  => phase 270
+> - phase 270  => phase 270
+>
+> Things get even weirder if you happen to have a bootloader that was
+> actually using delay elements (should be no reason to, but you never
+> know), since those are additional bits that weren't touched by the
+> original patch.
+>
+> This is unlikely to be what we actually want.  Checking on rk3288-veyron
+> devices, I can see that the bootloader leaves these clocks as:
+> - emmc:  phase 180
+> - sdmmc: phase 90
+> - sdio0: phase 90
+>
+> Thus on rk3288-veyron devices the commit we're reverting had the effect
+> of changing the eMMC clock to phase 270.  This probably explains the
+> scattered reports I've heard of eMMC devices not working on some veyron
+> devices when using the upstream kernel.
+>
+> The original commit was presumably made because previously the kernel
+> didn't touch the "_drv" phase at all and relied on whatever value was
+> there when the kernel started.  If someone was using a bootloader that
+> touched the "_drv" phase then, indeed, we should have code in the kernel
+> to fix that.  ...and also, to get ideal timings, we should also have the
+> kernel change the phase depending on the speed mode.  In fact, that's
+> the subject of a recent patch I posted at
+> <https://patchwork.kernel.org/patch/9075141/>.
+>
+> Ideally, we should take both the patch posted to dw_mmc and this
+> revert.  Since those will likely go through different trees, here I
+> describe behavior with the combos:
+>
+> 1. Just this revert: likely will fix rk3288-veyron eMMC on some devices
+>     + other cases; might break someone with a strange bootloader that
+>     sets the phase to 0 or one that uses delay elements (pretty
+>     unpredicable what would happen in that case).
+> 2. Just dw_mmc patch: fixes everyone.  Effectly the dw_mmc patch will
+>     totally override the broken patch and fix everything.
+> 3. Both patches: fixes everyone.  Once dw_mmc is initting properly then
+>     any defaults from the clock code doesn't mattery.
+>
+> Fixes: 7a03fe6f48f3 ("clk: rockchip: reset init state before mmc card initialization")
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 
-It's not new, so I'd say just queue it up for the next version
-whenever it's convenient.
+Thanks for this fix.
 
--Doug
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> ---
+>   drivers/clk/rockchip/clk-mmc-phase.c | 11 -----------
+>   1 file changed, 11 deletions(-)
+>
+> diff --git a/drivers/clk/rockchip/clk-mmc-phase.c b/drivers/clk/rockchip/clk-mmc-phase.c
+> index bc856f21f6b2..5b18265c2306 100644
+> --- a/drivers/clk/rockchip/clk-mmc-phase.c
+> +++ b/drivers/clk/rockchip/clk-mmc-phase.c
+> @@ -41,8 +41,6 @@ static unsigned long rockchip_mmc_recalc(struct clk_hw *hw,
+>   #define ROCKCHIP_MMC_DEGREE_MASK 0x3
+>   #define ROCKCHIP_MMC_DELAYNUM_OFFSET 2
+>   #define ROCKCHIP_MMC_DELAYNUM_MASK (0xff << ROCKCHIP_MMC_DELAYNUM_OFFSET)
+> -#define ROCKCHIP_MMC_INIT_STATE_RESET 0x1
+> -#define ROCKCHIP_MMC_INIT_STATE_SHIFT 1
+>
+>   #define PSECS_PER_SEC 1000000000000LL
+>
+> @@ -162,15 +160,6 @@ struct clk *rockchip_clk_register_mmc(const char *name,
+>   	mmc_clock->reg = reg;
+>   	mmc_clock->shift = shift;
+>
+> -	/*
+> -	 * Assert init_state to soft reset the CLKGEN
+> -	 * for mmc tuning phase and degree
+> -	 */
+> -	if (mmc_clock->shift == ROCKCHIP_MMC_INIT_STATE_SHIFT)
+> -		writel(HIWORD_UPDATE(ROCKCHIP_MMC_INIT_STATE_RESET,
+> -				     ROCKCHIP_MMC_INIT_STATE_RESET,
+> -				     mmc_clock->shift), mmc_clock->reg);
+> -
+>   	clk = clk_register(NULL, &mmc_clock->hw);
+>   	if (IS_ERR(clk))
+>   		kfree(mmc_clock);
+>
+
