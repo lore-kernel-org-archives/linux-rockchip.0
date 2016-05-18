@@ -1,114 +1,42 @@
-From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Wed, 18 May 2016 02:01:53 +0200
-Message-ID: <20160518000153.GA21757@electric-eye.fr.zoreil.com>
-References: <20160517152520.GA2750@debian-dorm>
- <20160517.142456.2247845107325931733.davem@davemloft.net>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command errors
+Date: Tue, 17 May 2016 17:47:34 -0700
+Message-ID: <CAD=FV=UJGcwa_biSCGhD=kS-T+fppCniBFfOHb5ohnwSwSwMMA@mail.gmail.com>
+References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
+ <5502CA4E.9060401@samsung.com> <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
+ <5506707D.40708@samsung.com> <55189F04.8000404@samsung.com> <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160517.142456.2247845107325931733.davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chris Ball <chris@printf.net>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org> :
-> From: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Date: Tue, 17 May 2016 23:25:20 +0800
-> 
-> > diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-> > index a3a9392..df3dfef 100644
-> > --- a/drivers/net/ethernet/arc/emac_main.c
-> > +++ b/drivers/net/ethernet/arc/emac_main.c
-> > @@ -153,9 +153,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
-> >  {
-> >  	struct arc_emac_priv *priv = netdev_priv(ndev);
-> >  	struct net_device_stats *stats = &ndev->stats;
-> > -	unsigned int i;
-> >  
-> > -	for (i = 0; i < TX_BD_NUM; i++) {
-> > +	while (priv->txbd_dirty != priv->txbd_curr) {
-> >  		unsigned int *txbd_dirty = &priv->txbd_dirty;
-> >  		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
-> >  		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
-> > @@ -685,13 +684,15 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
-> >  	wmb();
-> >  
-> >  	skb_tx_timestamp(skb);
-> > +	priv->tx_buff[*txbd_curr].skb = skb;
-> > +
-> > +	dma_wmb();
-> >  
-> >  	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
-> >  
-> >  	/* Make sure info word is set */
-> >  	wmb();
-> >  
-> > -	priv->tx_buff[*txbd_curr].skb = skb;
-> >  
-> >  	/* Increment index to point to the next BD */
-> >  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
-> > 
-> 
-> These memory barriers do not look correct to me.
-> 
-> dma_wmb() is about visibility between CPU reads/writes and device
-> accesses to a piece of memory.  But what you're concerned about wrt.
-> the SKB pointer assignment is CPU to CPU accesses.  Therefore something
-> like smp_wmb() would be appropriate.
+Jaehoon,
 
-Something like:
+On Mon, Mar 30, 2015 at 8:47 AM, Doug Anderson <dianders@chromium.org> wrote:
+> Jaehoon,
+>
+> On Sun, Mar 29, 2015 at 5:55 PM, Jaehoon Chung <jh80.chung@samsung.com> wrote:
+>> Dear Doug,
+>>
+>> I'm considering to control HLE error..So holding this patch.
+>> If this is absolutely necessary patch, let me know, plz.
+>>
+>> Best Regards,
+>> Jaehoon Chung
+>
+> Sounds OK.  I have certainly applied this locally and the driver isn't
+> robust against insertions / removals without it, but once the card is
+> inserted things are OK so it's probably not urgent that it be applied
+> upstream.  Hopefully we can figure out a better solution...
 
- 	skb_tx_timestamp(skb);
+I'm now testing a nice new rebased kernel and I'm hitting this again.
 
-	/* CPU write vs device access. Must be done before releasing control
-	 * of the descriptor (*info).
-	 */
-	dma_wmb();
+Of course I'll just pick my same patch to my new kernel tree, but
+since it's been a year and nobody has done anything better, would you
+consider landing my patch?  It is certainly better than nothing.
 
-	priv->tx_buff[*txbd_curr].skb = skb;
-
-	/* CPU arc_emac_tx_clean vs CPU arc_emac_tx. Must be done before
-	 * index (tx_curr) update. Does not necessarily deserves to be done
-	 * before releasing control of the descriptor (*info) due to
-	 * descriptor vs index ordering.
-	 *
-	 * FIXME: missing smp_rmb before the while loop in arc_emac_tx_clean.
-	 */
-	smp_wmb();
-
- 	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
-
-	/* local descriptor (*info) update vs index (tx_curr) update. */
- 	wmb();
-
-	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
-
-	smp_mb();	// The driver alreay contains this one.
-
-The smp_wmb() and wmb() could be made side-by-side once *info is
-updated but I don't see the adequate idiom to improve the smp_wmb + wmb
-combo. :o/
-
-> And the wmb() looks like it should be a dma_wmb().
-
-I see two points against it:
-- it could be too late for skb_tx_timestamp().
-- arc_emac_tx_clean must not see an index update before the device
-  got a chance to acquire the descriptor. arc_emac_tx_clean can't
-  tell the difference between an about-to-be-released descriptor
-  and a returned-from-device one.
-
--- 
-Ueimor
+-Doug
