@@ -1,116 +1,58 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command
- errors
-Date: Wed, 18 May 2016 17:14:43 +0800
-Message-ID: <573C3283.1040606@rock-chips.com>
-References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
- <5502CA4E.9060401@samsung.com>
- <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
- <5506707D.40708@samsung.com> <55189F04.8000404@samsung.com>
- <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
- <CAD=FV=UJGcwa_biSCGhD=kS-T+fppCniBFfOHb5ohnwSwSwMMA@mail.gmail.com>
- <573BCC8D.5090606@kernel-upstream.org>
- <CAD=FV=VneQR3wurjezBkRhtQiH+q-FfhDN8=Ym=XqtZpVmsdUw@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VneQR3wurjezBkRhtQiH+q-FfhDN8=Ym=XqtZpVmsdUw@mail.gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: shawn.lin@rock-chips.com, Jaehoon Chung <jh80.chung@samsung.com>, Seungwon Jeon <tgih.jun@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru Stan <amstan@chromium.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: fixes the gic400 2nd region size for rk3368
+Date: Wed, 18 May 2016 22:41:50 +0800
+Message-ID: <1463582510-29156-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <mbrugger-IBi9RG/b67k@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
+The 2nd additional region is the GIC virtual cpu interface register
+base and size.
 
-On 2016-5-18 12:12, Doug Anderson wrote:
-> Hi,
->
-> On Tue, May 17, 2016 at 6:59 PM, Shawn Lin
-> <shawn.lin@kernel-upstream.org> wrote:
->> Could you try this patch to see if you can still find HLE?
->>
->> @@ -2356,12 +2356,22 @@ static void dw_mci_cmd_interrupt(struct dw_mci
->> *host, u32 status)
->>   static void dw_mci_handle_cd(struct dw_mci *host)
->>   {
->>          int i;
->> +       int present;
->>
->>          for (i = 0; i < host->num_slots; i++) {
->>                  struct dw_mci_slot *slot = host->slot[i];
->>
->>                  if (!slot)
->>                          continue;
->>
->> +               present = !(mci_readl(slot->host, CDETECT) & (1 <<
->> slot->id));
->> +               if (present)
->> +                       set_bit(DW_MMC_CARD_PRESENT, &slot->flags);
->> +               else
->> +                       clear_bit(DW_MMC_CARD_PRESENT, &slot->flags);
->
-> No, because we don't use the builtin card detect on veyron.  ;)
->
-> We use GPIO card detect because we didn't like the way JTAG and SD
-> interacted.  Also on rk3288 the builtin card detect line had the wrong
-> voltage domain (you couldn't detect a card when the IO lines were
-> powered off).  The builtin card detect line is always driven low on
-> veyron.
+As the gic400 of rk3368 says, the cpu interface register map as below
 
-Okay, I see.
+:
 
->
->
-> I'm nearly certain that the root cause of my HLE errors is actually
-> related to the same problem addressed by the commit 7c5209c315ea
-> ("mmc: core: Increase delay for voltage to stabilize from 3.3V to
-> 1.8V").  I think that on minnie we're still on the hairy edge and
-> sometimes the line doesn't transition fast enough.
+-0x0000 GICC_CTRL
+.
+.
+.
+-0x00fc GICC_IIDR
+-0x1000 GICC_IDR
 
-Things are not so simple from your details.
+Obviously, the region size should be greater than 0x1000.
+So we should make sure to include the GICC_IDR since the kernel will access
+it in some cases.
 
-I was not enabling SD3.0 support, then I also found HLE sometimes.
-So it seems commit 7c5209c315ea does not contibute to this phenomenon.
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 
-The scenario looks like:
-remove sd-card -> mmc_sd_detect -> send status(CMD13) ->power_off ->
-set_ios -> setup_bus -> disabled clk , then HLE irq storm coming
+---
 
- From the code of dw_mci_prepare_command:
-SDMMC_CMD_PRV_DAT_WAIT will not be used for CMD13, so we don't
-wait_busy here, then cmd code is loding into queue of dw_mmc but
-still failing send out because it's in busy?
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-With my patch, things go well:
-remove sd-card -> clear bit of DW_MMC_CARD_PRESENT  -> send
-status(CMD13) return directly -> power_off -> set_ios -> setup_bus -> 
-disable clk
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 8b4a7c9..080203e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -670,7 +670,7 @@
+ 		#address-cells = <0>;
+ 
+ 		reg = <0x0 0xffb71000 0x0 0x1000>,
+-		      <0x0 0xffb72000 0x0 0x1000>,
++		      <0x0 0xffb72000 0x0 0x2000>,
+ 		      <0x0 0xffb74000 0x0 0x2000>,
+ 		      <0x0 0xffb76000 0x0 0x2000>;
+ 		interrupts = <GIC_PPI 9
+-- 
+2.7.4
 
-So why should we allow inquiry of card status if we sure the card is
-removed? I mean no any further cmds should be delivered.
-
-And another question: should we wait busy for cmd13?
-
->
-> It appears that increasing this to 30ms avoids the HLE errors.
->
-> I _think_ I can actually fully fix this properly by temporarily
-> engaging the internal pull-ups while the voltage switch is happening.
-> This will bleed away the voltage just a little bit faster (since lines
-> are driven low here).  I'll try to confirm that.
->
->
-> In any case, it seems like we should take this patch since (without
-> this patch) the failure case when you get HLE errors is that the
-> interrupt controller fires over and over again (with no printouts) and
-> your system stalls with no error messages.
-
-Sure, at least we need to address this irq storm...
-
->
-> -Doug
->
->
->
-
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
