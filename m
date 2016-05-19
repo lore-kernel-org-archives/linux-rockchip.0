@@ -1,164 +1,241 @@
-From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Thu, 19 May 2016 00:55:29 +0200
-Message-ID: <20160518225529.GA18671@electric-eye.fr.zoreil.com>
-References: <20160517152520.GA2750@debian-dorm>
- <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com>
- <573CD09D.1060307@gmx.de>
+From: "David.Wu" <david.wu@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: add i2c nodes for rk3399
+Date: Thu, 19 May 2016 16:09:13 +0800
+Message-ID: <466d93c8-e405-51d7-401d-3d7cbd8560cf@rock-chips.com>
+References: <1463429371-10950-1-git-send-email-dianders@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <573CD09D.1060307-Mmb7MZpHnFY@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
-Cc: wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=gbk;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <1463429371-10950-1-git-send-email-dianders@chromium.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com, briannorris@chromium.org, wsa@the-dreams.de, linux-i2c@vger.kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org> :
-[...]
-> what about the (only compile tested) code below?
+Hi Doug,
 
-I may have misunderstood some parts but it nonetheless seems broken.
+=D4=DA 2016/5/17 4:09, Douglas Anderson =D0=B4=B5=C0:
+> From: David Wu <david.wu@rock-chips.com>
+>
+> We've got 9 (count em!) i2c controllers on rk3399, some of which are =
+in
+> the PMU power domain and some of which are normal peripherals.  Add t=
+hem
+> all to the main rk3399 dtsi file so future patches can turn them on i=
+n
+> the board dts files.
+>
+> Note: by default we try to set the i2c clock rate to 200 MHz so that =
+we
+> can achieve good i2c functional clock rates.  200 MHz gives us the
+> ability to make very close to 100 kHz / 400 kHz / 1 MHz rates.  If
+> boards want to tune clock rates further they can always override.
+> Possibly boards could want to tune this if:
+> - they wanted to save an infinitesimal amount of power and they knew
+>   their i2c bus was slow anyway.  Since we gate the functional clock
+>   when the i2c bus is not active, power savings would only be while i=
+2c
+>   transfers were happening and probably won't be very big anyway.
+> - they wanted to eek out a bit more speed by carefully tuning the sou=
+rce
+>   clock to make divisions work out perfectly, accounting for the rise=
+ /
+>   fall time measured on an actual board.
+>
+> Note also that we still request 200 MHz for the PMU i2c busses even
+> though we expect that we won't make that exactly (currently PPLL is 6=
+76
+> MHz which gives us 169 MHz).
 
-> The smp_wmb() in tx function combined with the smp_rmb() in tx_clean ensures
-> that the CPU running tx_clean sees consistent values for info, data and skb 
-> (thus no need to check for validity of all three values any more).
-> The mb() fulfills several tasks:
-> 1. makes sure that DMA writes to descriptor are completed before the HW is
->     informed.
+Yeah, this looks like you got all the right bits in the right places an=
+d=20
+didn't mess it up.
+This patch is looking really good to me, thanks for doing it.
 
-"DMA writes" == "CPU writes" ?
-
-> 2. On multi processor systems: ensures that txbd_curr is updated (this is paired
->     with the smp_mb() at the end of tx_clean).
-
-Smells like using barrier side-effects to control smp coherency. It isn't
-the recommended style.
-
-> 3. Ensure we see the most recent value for tx_dirty. With this we do not have to
->     recheck after we stopped the tx queue.
-> 
-> 
-> --- a/drivers/net/ethernet/arc/emac_main.c
-> +++ b/drivers/net/ethernet/arc/emac_main.c
-> @@ -162,8 +162,13 @@ static void arc_emac_tx_clean(struct net_device *ndev)
->  		struct sk_buff *skb = tx_buff->skb;
->  		unsigned int info = le32_to_cpu(txbd->info);
->  
-> -		if ((info & FOR_EMAC) || !txbd->data || !skb)
-> +		if (info & FOR_EMAC) {
-> +			/* Make sure we see consistent values for info, skb
-> +			 * and data.
-> +			 */
-> +			smp_rmb();
->  			break;
-> +		}
-
-?
-
-smp_rmb should appear before the variables you want coherency for.
-
->  
->  		if (unlikely(info & (DROP | DEFR | LTCL | UFLO))) {
->  			stats->tx_errors++;
-> @@ -679,36 +684,33 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
->  	dma_unmap_addr_set(&priv->tx_buff[*txbd_curr], addr, addr);
->  	dma_unmap_len_set(&priv->tx_buff[*txbd_curr], len, len);
->  
-> -	priv->txbd[*txbd_curr].data = cpu_to_le32(addr);
->  
-> -	/* Make sure pointer to data buffer is set */
-> -	wmb();
-> +	priv->txbd[*txbd_curr].data = cpu_to_le32(addr);
-> +	priv->tx_buff[*txbd_curr].skb = skb;
->  
-> -	skb_tx_timestamp(skb);
-> +	/* Make sure info is set after data and skb with respect to
-> +	 * other tx_clean().
-> +	 */
-> +	smp_wmb();
->  
->  	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
-
-Afaik smp_wmb() does not imply wmb(). So priv->txbd[*txbd_curr].data and
-*info (aka priv->txbd[*txbd_curr].info) are not necessarily written in
-an orderly manner.
-
->  
-> -	/* Make sure info word is set */
-> -	wmb();
-> -
-> -	priv->tx_buff[*txbd_curr].skb = skb;
-> -
->  	/* Increment index to point to the next BD */
->  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
-
-With this change it's possible that tx_clean() reads new value for
-tx_curr and old value (0) for *info.
-
->  
-> -	/* Ensure that tx_clean() sees the new txbd_curr before
-> +	/* 1.Ensure that tx_clean() sees the new txbd_curr before
->  	 * checking the queue status. This prevents an unneeded wake
->  	 * of the queue in tx_clean().
-> +	 * 2.Ensure that all values are written to RAM and to DMA
-> +	 * before hardware is informed.
-
-(I am not sure what "DMA" is supposed to mean here.)
-
-> +	 * 3.Ensure we see the most recent value for tx_dirty.
->  	 */
-> -	smp_mb();
-> +	mb();
->  
-> -	if (!arc_emac_tx_avail(priv)) {
-> +	if (!arc_emac_tx_avail(priv))
->  		netif_stop_queue(ndev);
-> -		/* Refresh tx_dirty */
-> -		smp_mb();
-> -		if (arc_emac_tx_avail(priv))
-> -			netif_start_queue(ndev);
-> -	}
-
-Xmit thread                        | Clean thread
-
-mb();
-
-arc_emac_tx_avail() test with old
-tx_dirty - tx_clean has not issued
-any mb yet - and new tx_curr
-
-                                     smp_mb();
-
-                                     if (netif_queue_stopped(ndev) && ...
-                                             netif_wake_queue(ndev);
-
-netif_stop_queue()
-
--> queue stopped.
-
-You can't remove the revalidation step.
-
-arc_emac_tx_avail() is essentially pessimistic. Even if arc_emac_tx_avail()
-was "right", there would be a tx_clean window between arc_emac_tx_avail()
-and netif_stop_queue().
-
+>
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> [dianders: wrote desc; put in assigned-clocks; reordered nodes]
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
+> ---
+> Note: this patch is based upon David Wu's patch series to add rk3399
+> support to i2c-rk3x.c and shouldn't land until at least device tree
+> bindings land.
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 144 +++++++++++++++++++++=
+++++++++++
+>  1 file changed, 144 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/rk3399.dtsi
+> index 46f325a143b0..753a91728b4c 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -54,6 +54,15 @@
+>  	#size-cells =3D <2>;
+>
+>  	aliases {
+> +		i2c0 =3D &i2c0;
+> +		i2c1 =3D &i2c1;
+> +		i2c2 =3D &i2c2;
+> +		i2c3 =3D &i2c3;
+> +		i2c4 =3D &i2c4;
+> +		i2c5 =3D &i2c5;
+> +		i2c6 =3D &i2c6;
+> +		i2c7 =3D &i2c7;
+> +		i2c8 =3D &i2c8;
+>  		serial0 =3D &uart0;
+>  		serial1 =3D &uart1;
+>  		serial2 =3D &uart2;
+> @@ -272,6 +281,96 @@
+>  		};
+>  	};
+>
+> +	i2c1: i2c@ff110000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff110000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C1>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C1>, <&cru PCLK_I2C1>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c1_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
 > +
-> +	skb_tx_timestamp(skb);
-
-You don't want to issue skb_tx_timestamp after releasing control of the
-descriptor (*info = ...): skb may be long gone.
-
--- 
-Ueimor
+> +	i2c2: i2c@ff120000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff120000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C2>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C2>, <&cru PCLK_I2C2>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c2_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c3: i2c@ff130000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff130000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C3>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C3>, <&cru PCLK_I2C3>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c3_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c5: i2c@ff140000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff140000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C5>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C5>, <&cru PCLK_I2C5>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c5_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c6: i2c@ff150000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff150000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C6>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C6>, <&cru PCLK_I2C6>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c6_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c7: i2c@ff160000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff160000 0x0 0x1000>;
+> +		assigned-clocks =3D <&cru SCLK_I2C7>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&cru SCLK_I2C7>, <&cru PCLK_I2C7>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c7_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+>  	uart0: serial@ff180000 {
+>  		compatible =3D "rockchip,rk3399-uart", "snps,dw-apb-uart";
+>  		reg =3D <0x0 0xff180000 0x0 0x100>;
+> @@ -420,6 +519,51 @@
+>  		status =3D "disabled";
+>  	};
+>
+> +	i2c0: i2c@ff3c0000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff3c0000 0x0 0x1000>;
+> +		assigned-clocks =3D <&pmucru SCLK_I2C0_PMU>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&pmucru SCLK_I2C0_PMU>, <&pmucru PCLK_I2C0_PMU>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c0_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c4: i2c@ff3d0000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff3d0000 0x0 0x1000>;
+> +		assigned-clocks =3D <&pmucru SCLK_I2C4_PMU>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&pmucru SCLK_I2C4_PMU>, <&pmucru PCLK_I2C4_PMU>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c4_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+> +	i2c8: i2c@ff3e0000 {
+> +		compatible =3D "rockchip,rk3399-i2c";
+> +		reg =3D <0x0 0xff3e0000 0x0 0x1000>;
+> +		assigned-clocks =3D <&pmucru SCLK_I2C8_PMU>;
+> +		assigned-clock-rates =3D <200000000>;
+> +		clocks =3D <&pmucru SCLK_I2C8_PMU>, <&pmucru PCLK_I2C8_PMU>;
+> +		clock-names =3D "i2c", "pclk";
+> +		interrupts =3D <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
+> +		pinctrl-names =3D "default";
+> +		pinctrl-0 =3D <&i2c8_xfer>;
+> +		#address-cells =3D <1>;
+> +		#size-cells =3D <0>;
+> +		status =3D "disabled";
+> +	};
+> +
+>  	pwm0: pwm@ff420000 {
+>  		compatible =3D "rockchip,rk3399-pwm", "rockchip,rk3288-pwm";
+>  		reg =3D <0x0 0xff420000 0x0 0x10>;
+>
