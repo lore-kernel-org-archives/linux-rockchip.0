@@ -1,177 +1,375 @@
-From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Fri, 20 May 2016 02:31:45 +0200
-Message-ID: <20160520003145.GA22420@electric-eye.fr.zoreil.com>
-References: <20160517152520.GA2750@debian-dorm>
- <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com>
- <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com>
- <573E2D0C.604@gmx.de>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 3/5] mmc: core: implement enhanced strobe support
+Date: Fri, 20 May 2016 09:48:04 +0800
+Message-ID: <573E6CD4.4010806@rock-chips.com>
+References: <1462871343-32361-1-git-send-email-shawn.lin@rock-chips.com>
+ <1462871391-32484-1-git-send-email-shawn.lin@rock-chips.com>
+ <CAD=FV=Xv-c2owh+dDT1EJYPrKsahxOoQUhJiZFprtk4FxHAK1A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <573E2D0C.604-Mmb7MZpHnFY@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
-Cc: wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD=FV=Xv-c2owh+dDT1EJYPrKsahxOoQUhJiZFprtk4FxHAK1A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org> :
-[...]
-> 2. requires a smp_wmb, while 3. requires a rmb(). AFAIK the mb() implies all we need, 
-> the dma_rmb() for 1., the smp_wmb() for 2. and the rmb() for 3. 
+Hi
 
-A revalidation of tx_dirty is still needed (see below) despite the rmb()
-for 3. The rmb() for 3. is close to useless.
+=E5=9C=A8 2016-5-20 8:18, Doug Anderson =E5=86=99=E9=81=93:
+> Hi,
+>
+> On Tue, May 10, 2016 at 2:09 AM, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>=
+ wrote:
+>> Controllers use data strobe line to latch data from devices
+>> under hs400 mode, but not for cmd line. So since emmc 5.1, JEDEC
+>> introduces enhanced strobe mode for latching cmd response from
+>> emmc devices to host controllers. This new feature is optional,
+>> so it depends both on device's cap and host's cap to decide
+>> whether to use it or not.
+>
+> I don't totally understand it, but two boards I'm working with have
+> eMMC devices that claim to be eMMC 5.0 devices but also have support
+> for strobe.  Did people just cherry-pick this feature from eMMC 5.1 t=
+o
+> their eMMC 5.0 devices?
 
-> >> 2. On multi processor systems: ensures that txbd_curr is updated (this is paired
-> >>     with the smp_mb() at the end of tx_clean).
-> > 
-> > Smells like using barrier side-effects to control smp coherency. It isn't
-> > the recommended style.
-> > 
-> 
-> As I wrote above, the mb() implies the smp_wmb() so this is a regular pairing
-> of smp_wmb() in xmit and smb_mb() in tx_clean, nothing uncommon.
+Presumably I guess your "support for strobe" means "support for
+enhanced strobe", right?
 
-Since you are quoting Documentation/memory-barriers.txt:
-[...]
-CPU MEMORY BARRIERS
--------------------
-[...]
-Mandatory barriers should not be used to control SMP effects, since mandatory
-barriers impose unnecessary overhead on both SMP and UP systems.
+hs400es is also optional for emmc 5.1, so it's impossible to find a
+emmc 5.0 claiming to support hs400es.
 
-> >> -		if ((info & FOR_EMAC) || !txbd->data || !skb)
-> >> +		if (info & FOR_EMAC) {
-> >> +			/* Make sure we see consistent values for info, skb
-> >> +			 * and data.
-> >> +			 */
-> >> +			smp_rmb();
-> >>  			break;
-> >> +		}
-> > 
-> > ?
-> > 
-> > smp_rmb should appear before the variables you want coherency for.
-> 
-> I dont think so. Please take a look into the memory barriers documentation.
+Coud you share me the device's ID number on its package or from the
+device's manual?
 
-> There is an example that is pretty close to the situation that we have in this driver:
-> 
-> http://lxr.free-electrons.com/source/Documentation/memory-barriers.txt#L1819
-> 
-> In that example the barrier is also _between_ the variables that are to be
-> ordered, not before. 
 
-Err, which barrier ?
+>
+>
+>> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>> ---
+>>
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>   drivers/mmc/core/bus.c   |  3 +-
+>>   drivers/mmc/core/core.c  |  8 +++++
+>>   drivers/mmc/core/mmc.c   | 79 ++++++++++++++++++++++++++++++++++++=
+++++++++++--
+>>   include/linux/mmc/card.h |  1 +
+>>   include/linux/mmc/host.h | 11 +++++++
+>>   include/linux/mmc/mmc.h  |  3 ++
+>>   6 files changed, 102 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/mmc/core/bus.c b/drivers/mmc/core/bus.c
+>> index 4bc48f1..7e94b9d 100644
+>> --- a/drivers/mmc/core/bus.c
+>> +++ b/drivers/mmc/core/bus.c
+>> @@ -332,12 +332,13 @@ int mmc_add_card(struct mmc_card *card)
+>>                          mmc_card_ddr52(card) ? "DDR " : "",
+>>                          type);
+>>          } else {
+>> -               pr_info("%s: new %s%s%s%s%s card at address %04x\n",
+>> +               pr_info("%s: new %s%s%s%s%s%s card at address %04x\n=
+",
+>>                          mmc_hostname(card->host),
+>>                          mmc_card_uhs(card) ? "ultra high speed " :
+>>                          (mmc_card_hs(card) ? "high speed " : ""),
+>>                          mmc_card_hs400(card) ? "HS400 " :
+>>                          (mmc_card_hs200(card) ? "HS200 " : ""),
+>> +                       mmc_card_hs400es(card) ? "Enhanced strobe" :=
+ "",
+>
+> Nit: there should be a space before the quote.  Otherwise the message
+> runs together, like:
+>
+> new HS400 Enhanced strobeMMC card at address 0001
 
-- dma_rmb() ?
-  The device (obviously) set the 'status' member of the descriptor.
-  dma_rmb() ensures that device-initiated DMA is complete for the 'data'
-  member as well.
+Good catch, thanks.
 
-- dma_wmb() ?
-  It ensures that the updated 'data' member will be set before any
-  DMA resulting from the change of descriptor ownership takes place.
+>
+>
+>>                          mmc_card_ddr52(card) ? "DDR " : "",
+>>                          uhs_bus_speed_mode, type, card->rca);
+>>          }
+>> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+>> index 99275e4..a559501 100644
+>> --- a/drivers/mmc/core/core.c
+>> +++ b/drivers/mmc/core/core.c
+>> @@ -1127,6 +1127,14 @@ void mmc_set_initial_state(struct mmc_host *h=
+ost)
+>>          host->ios.bus_width =3D MMC_BUS_WIDTH_1;
+>>          host->ios.timing =3D MMC_TIMING_LEGACY;
+>>          host->ios.drv_type =3D 0;
+>> +       host->ios.enhanced_strobe =3D false;
+>> +
+>> +       /*
+>> +        * Make sure we are in non-enhanced strobe mode before we
+>> +        * actually enable it in ext_csd.
+>> +        */
+>> +       if (host->ops->hs400_enhanced_strobe)
+>> +               host->ops->hs400_enhanced_strobe(host, &host->ios);
+>>
+>>          mmc_set_ios(host);
+>>   }
+>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+>> index f99c47e..c2d1981 100644
+>> --- a/drivers/mmc/core/mmc.c
+>> +++ b/drivers/mmc/core/mmc.c
+>> @@ -235,6 +235,11 @@ static void mmc_select_card_type(struct mmc_car=
+d *card)
+>>                  avail_type |=3D EXT_CSD_CARD_TYPE_HS400_1_2V;
+>>          }
+>>
+>> +       if ((caps2 & MMC_CAP2_HS400_ES) &&
+>> +           card->ext_csd.strobe_support &&
+>> +           (card_type & EXT_CSD_CARD_TYPE_HS400))
+>> +               avail_type |=3D EXT_CSD_CARD_TYPE_HS400ES;
+>> +
+>>          card->ext_csd.hs_max_dtr =3D hs_max_dtr;
+>>          card->ext_csd.hs200_max_dtr =3D hs200_max_dtr;
+>>          card->mmc_avail_type =3D avail_type;
+>> @@ -383,6 +388,7 @@ static int mmc_decode_ext_csd(struct mmc_card *c=
+ard, u8 *ext_csd)
+>>                          mmc_card_set_blockaddr(card);
+>>          }
+>>
+>> +       card->ext_csd.strobe_support =3D ext_csd[EXT_CSD_STROBE_SUPP=
+ORT];
+>>          card->ext_csd.raw_card_type =3D ext_csd[EXT_CSD_CARD_TYPE];
+>>          mmc_select_card_type(card);
+>>
+>> @@ -1216,6 +1222,73 @@ out_err:
+>>          return err;
+>>   }
+>>
+>> +static int mmc_select_hs400es(struct mmc_card *card)
+>> +{
+>> +       struct mmc_host *host =3D card->host;
+>> +       int err =3D 0;
+>> +       u8 val;
+>> +
+>> +       err =3D mmc_select_bus_width(card);
+>> +       if (IS_ERR_VALUE(err))
+>> +               goto out_err;
+>> +
+>> +       /* Switch card to HS mode */
+>> +       err =3D mmc_select_hs(card);
+>> +       if (err) {
+>> +               pr_err("%s: switch to high-speed failed, err:%d\n",
+>> +                       mmc_hostname(host), err);
+>> +               goto out_err;
+>> +       }
+>> +
+>> +       err =3D mmc_switch_status(card);
+>> +       if (err)
+>> +               goto out_err;
+>> +
+>> +       /* Switch card to DDR with strobe bit */
+>> +       val =3D EXT_CSD_DDR_BUS_WIDTH_8 | EXT_CSD_BUS_WIDTH_STROBE;
+>
+> In the hs400 function earlier in the file the check to confirm that
+> the bus width is 8 before doing this.  Should we do that here, too?
 
-- wmb() ?
-  It ensures that the previous write to descriptor (coherent memory)
-  completes before write is posted to I/O mailbox.
+yes, will fix it. And we can just check host's cap to see
+if it supports 8bit before mmc_select_bus_width because we don't
+need to do anything without 8-bit support.
 
-None of these is "pretty close" to the "smp_rmb() before return" situation.
+>
+>> +       err =3D mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>> +                        EXT_CSD_BUS_WIDTH,
+>> +                        val,
+>> +                        card->ext_csd.generic_cmd6_time);
+>> +       if (err) {
+>> +               pr_err("%s: switch to bus width for hs400es failed, =
+err:%d\n",
+>> +                       mmc_hostname(host), err);
+>> +               goto out_err;
+>> +       }
+>> +
+>> +       /* Switch card to HS400 */
+>> +       val =3D EXT_CSD_TIMING_HS400 |
+>> +             card->drive_strength << EXT_CSD_DRV_STR_SHIFT;
+>> +       err =3D __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>> +                          EXT_CSD_HS_TIMING, val,
+>> +                          card->ext_csd.generic_cmd6_time,
+>> +                          true, false, true);
+>> +       if (err) {
+>> +               pr_err("%s: switch to hs400es failed, err:%d\n",
+>> +                       mmc_hostname(host), err);
+>> +               goto out_err;
+>> +       }
+>> +
+>> +       /* Set host controller to HS400 timing and frequency */
+>> +       mmc_set_timing(host, MMC_TIMING_MMC_HS400);
+>> +
+>> +       /* Controller enable enhanced strobe function */
+>> +       host->ios.enhanced_strobe =3D true;
+>> +       if (host->ops->hs400_enhanced_strobe)
+>> +               host->ops->hs400_enhanced_strobe(host, &host->ios);
+>> +
+>> +       err =3D mmc_switch_status(card);
+>> +       if (err)
+>> +               goto out_err;
+>> +
+>> +       return 0;
+>> +
+>> +out_err:
+>> +       pr_err("%s: %s failed, error %d\n", mmc_hostname(card->host)=
+,
+>> +              __func__, err);
+>> +       return err;
+>> +}
+>> +
+>>   static void mmc_select_driver_type(struct mmc_card *card)
+>>   {
+>>          int card_drv_type, drive_strength, drv_type;
+>> @@ -1297,7 +1370,7 @@ err:
+>>   }
+>>
+>>   /*
+>> - * Activate High Speed or HS200 mode if supported.
+>> + * Activate High Speed, HS200 or HS400ES mode if supported.
+>>    */
+>>   static int mmc_select_timing(struct mmc_card *card)
+>>   {
+>> @@ -1306,7 +1379,9 @@ static int mmc_select_timing(struct mmc_card *=
+card)
+>>          if (!mmc_can_ext_csd(card))
+>>                  goto bus_speed;
+>>
+>> -       if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>> +       if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES)
+>> +               err =3D mmc_select_hs400es(card);
+>> +       else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>>                  err =3D mmc_select_hs200(card);
+>>          else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS)
+>>                  err =3D mmc_select_hs(card);
+>> diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+>> index eb0151b..22defc2 100644
+>> --- a/include/linux/mmc/card.h
+>> +++ b/include/linux/mmc/card.h
+>> @@ -95,6 +95,7 @@ struct mmc_ext_csd {
+>>          u8                      raw_partition_support;  /* 160 */
+>>          u8                      raw_rpmb_size_mult;     /* 168 */
+>>          u8                      raw_erased_mem_count;   /* 181 */
+>> +       u8                      strobe_support;         /* 184 */
+>>          u8                      raw_ext_csd_structure;  /* 194 */
+>>          u8                      raw_card_type;          /* 196 */
+>>          u8                      raw_driver_strength;    /* 197 */
+>> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+>> index 2a06fb0..f98bd0e 100644
+>> --- a/include/linux/mmc/host.h
+>> +++ b/include/linux/mmc/host.h
+>> @@ -19,6 +19,7 @@
+>>
+>>   #include <linux/mmc/core.h>
+>>   #include <linux/mmc/card.h>
+>> +#include <linux/mmc/mmc.h>
+>>   #include <linux/mmc/pm.h>
+>>
+>>   struct mmc_ios {
+>> @@ -77,6 +78,8 @@ struct mmc_ios {
+>>   #define MMC_SET_DRIVER_TYPE_A  1
+>>   #define MMC_SET_DRIVER_TYPE_C  2
+>>   #define MMC_SET_DRIVER_TYPE_D  3
+>> +
+>> +       bool enhanced_strobe;                   /* hs400es selection=
+ */
+>>   };
+>>
+>>   struct mmc_host_ops {
+>> @@ -143,6 +146,9 @@ struct mmc_host_ops {
+>>
+>>          /* Prepare HS400 target operating frequency depending host =
+driver */
+>>          int     (*prepare_hs400_tuning)(struct mmc_host *host, stru=
+ct mmc_ios *ios);
+>> +       /* Prepare enhanced strobe depending host driver */
+>> +       void    (*hs400_enhanced_strobe)(struct mmc_host *host,
+>> +                                        struct mmc_ios *ios);
+>>          int     (*select_drive_strength)(struct mmc_card *card,
+>>                                           unsigned int max_dtr, int =
+host_drv,
+>>                                           int card_drv, int *drv_typ=
+e);
+>> @@ -513,6 +519,11 @@ static inline bool mmc_card_hs400(struct mmc_ca=
+rd *card)
+>>          return card->host->ios.timing =3D=3D MMC_TIMING_MMC_HS400;
+>>   }
+>>
+>> +static inline bool mmc_card_hs400es(struct mmc_card *card)
+>> +{
+>> +       return card->host->ios.enhanced_strobe =3D=3D true;
+>
+> nit: never need "=3D=3D true".  Just:
+>
+>    return card->host->ios.enhanced_strobe;
+>
 
-> >> -	skb_tx_timestamp(skb);
-> >> +	/* Make sure info is set after data and skb with respect to
-> >> +	 * other tx_clean().
-> >> +	 */
-> >> +	smp_wmb();
-> >>  
-> >>  	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
-> > 
-> > Afaik smp_wmb() does not imply wmb(). So priv->txbd[*txbd_curr].data and
-> > *info (aka priv->txbd[*txbd_curr].info) are not necessarily written in
-> > an orderly manner.
-> 
-> Right, as I already wrote above I changed the smp barriers to mandatory ones.
-> 
-> > 
-> >>  
-> >> -	/* Make sure info word is set */
-> >> -	wmb();
-> >> -
-> >> -	priv->tx_buff[*txbd_curr].skb = skb;
-> >> -
-> >>  	/* Increment index to point to the next BD */
-> >>  	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
-> > 
-> > With this change it's possible that tx_clean() reads new value for
-> > tx_curr and old value (0) for *info.
-> 
-> Even if this could happen, what is the problem? I cant see an issue
-> that results from such a scenario.
+yes, thanks.
 
-tx_clean() misunderstands the 0 in *info as a descriptor updated by the
-device. tx_clean() thus kfrees the skb before the device DMAed from it.
+>> +}
+>> +
+>>   void mmc_retune_timer_stop(struct mmc_host *host);
+>>
+>>   static inline void mmc_retune_needed(struct mmc_host *host)
+>> diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
+>> index 15f2c4a..c376209 100644
+>> --- a/include/linux/mmc/mmc.h
+>> +++ b/include/linux/mmc/mmc.h
+>> @@ -297,6 +297,7 @@ struct _mmc_csd {
+>>   #define EXT_CSD_PART_CONFIG            179     /* R/W */
+>>   #define EXT_CSD_ERASED_MEM_CONT                181     /* RO */
+>>   #define EXT_CSD_BUS_WIDTH              183     /* R/W */
+>> +#define EXT_CSD_STROBE_SUPPORT         184     /* RO */
+>>   #define EXT_CSD_HS_TIMING              185     /* R/W */
+>>   #define EXT_CSD_POWER_CLASS            187     /* R/W */
+>>   #define EXT_CSD_REV                    192     /* RO */
+>> @@ -380,12 +381,14 @@ struct _mmc_csd {
+>>   #define EXT_CSD_CARD_TYPE_HS400_1_2V   (1<<7)  /* Card can run at =
+200MHz DDR, 1.2V */
+>>   #define EXT_CSD_CARD_TYPE_HS400                (EXT_CSD_CARD_TYPE_=
+HS400_1_8V | \
+>>                                           EXT_CSD_CARD_TYPE_HS400_1_=
+2V)
+>> +#define EXT_CSD_CARD_TYPE_HS400ES      (1<<8)  /* Card can run at H=
+S400ES */
+>>
+>>   #define EXT_CSD_BUS_WIDTH_1    0       /* Card is in 1 bit mode */
+>>   #define EXT_CSD_BUS_WIDTH_4    1       /* Card is in 4 bit mode */
+>>   #define EXT_CSD_BUS_WIDTH_8    2       /* Card is in 8 bit mode */
+>>   #define EXT_CSD_DDR_BUS_WIDTH_4        5       /* Card is in 4 bit=
+ DDR mode */
+>>   #define EXT_CSD_DDR_BUS_WIDTH_8        6       /* Card is in 8 bit=
+ DDR mode */
+>> +#define EXT_CSD_BUS_WIDTH_STROBE BIT(7)        /* Enhanced strobe m=
+ode */
+>
+> nit: while your code should be OK, it seems better to be BIT(3), sinc=
+e
+> above is really:
+>
 
-[...]
-> > Xmit thread                        | Clean thread
-> > 
-> > mb();
-> > 
-> > arc_emac_tx_avail() test with old
-> > tx_dirty - tx_clean has not issued
-> > any mb yet - and new tx_curr
-> > 
-> >                                      smp_mb();
-> > 
-> >                                      if (netif_queue_stopped(ndev) && ...
-> >                                              netif_wake_queue(ndev);
-> > 
-> > netif_stop_queue()
-> > 
-> > -> queue stopped.
-> > 
-> 
-> Again, the mb() we have now implies the smb_mb() we had before. So nothing
-> changed except that we can be sure to see the new value for tx_dirty at
-> our first attempt.
+I don't unstand here. EXT_CSD_BUS_WIDTH_STROBE is the MSB of
+BUS_WIDTH[183] which is a 8-bit reg.
 
-Nothing changed except you removed the revalidation part !
 
-The smp_mb() we had before wasn't about seeing tx_dirty in the xmit thread
-but about balancing the (read) barrier in the cleaning thread so that the
-latter stood a chance to see the new (tx thread updated) tx_curr.
+> 0
+> BIT(0)
+> BIT(1)
+> BIT(2) | BIT(0)
+> BIT(2) | BIT(1)
+>
+> ...at least that's my understanding...
+>
+>
+>
 
-Consider the two lines below:
-
-	if (!arc_emac_tx_avail(priv))
-		netif_stop_queue(ndev);
-
-Nothing prevents a complete run of the cleaning thread between these
-two lines. It may or it may not happen but there is one thing sure:
-mb() before arc_emac_tx_avail() can't tell the future.
-
-[...]
-> New patch is below. 
-
-The arc_emac_tx_clean() change is wrong.
-
-tx_drity revalidation is still needed in arc_emac_tx after netif_stop_queue.
-
-A barrier is still missing in arc_emac_tx between descriptor release and
-tx_curr increase.
-
--- 
-Ueimor
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
