@@ -1,89 +1,455 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] ARM: dts: rockchip: fixes the spi compatible for
- rk3036
-Date: Fri, 20 May 2016 21:09:55 +0800
-Message-ID: <3c1e174e-035b-78ae-b045-fe89990826da@rock-chips.com>
-References: <1463702182-5188-1-git-send-email-wxt@rock-chips.com>
- <1463702182-5188-3-git-send-email-wxt@rock-chips.com>
- <8f662b3b-e359-efdf-72e5-c4f862dd1cf6@kernel-upstream.org>
- <28155403.nCsUkeXQB1@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Fri, 20 May 2016 23:13:14 +0200
+Message-ID: <3647622.McCjKUuZmz@phil>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com> <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <28155403.nCsUkeXQB1@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/20 20:58, Heiko Stuebner wrote:
-> Am Freitag, 20. Mai 2016, 20:35:53 schrieb Shawn Lin:
->> =E5=9C=A8 2016/5/20 7:56, Caesar Wang =E5=86=99=E9=81=93:
->>> That's seem the incorrect string to match the spi driver.
->>
->> Will it break the backward compatibility for some dtb if not
->> falling back to "rockchip,rockchip-spi" ?
->
-> in what dtb did you see "rockchip,rockchip-spi"?
+Hi Shawn,
 
-I'm not 100% sure, but I remember we toke this name on local
-branch for rk3036 when we were developing this Soc.
+I haven't had any contact with PCI yet, so my comments below will likely 
+address more generic findings only.
 
-> I.e. it isn't part of any current _mainline_ devicetree files.
->
+As you might've guessed from the binding comments, to me it looks like the 
+phy handling should be in a separate phy driver and looking below all phy 
+accesses seem very separate from the actual pci controller interactions - 
+they are even in port_init only as well.
 
-Caesar, Could you check our develop-3.10 branch to see if it does
-exist?
-
-Anyway, "rockchip,rockchip-spi" isn't a part of mainline dt property.
+While I already added some comments about that below, the driver seems full 
+of raw register bit handling (including wild shifts). Please abstract that 
+using contants, so that stuff stays readable for the future.
 
 
->
-> Heiko
->
->>
->>> Fixes commit f629fcfab2cd
->>> ("ARM: dts: rockchip: support the spi for rk3036")
->>>
->>> Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->>> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
->>> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->>>
->>> ---
->>>
->>> Changes in v2: None
->>>
->>>  arch/arm/boot/dts/rk3036.dtsi | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm/boot/dts/rk3036.dtsi
->>> b/arch/arm/boot/dts/rk3036.dtsi index d0f4bb7..a30700a 100644
->>> --- a/arch/arm/boot/dts/rk3036.dtsi
->>> +++ b/arch/arm/boot/dts/rk3036.dtsi
->>> @@ -431,7 +431,7 @@
->>>
->>>  	};
->>>  =09
->>>  	spi: spi@20074000 {
->>>
->>> -		compatible =3D "rockchip,rockchip-spi";
->>> +		compatible =3D "rockchip,rk3036-spi";
->>>
->>>  		reg =3D <0x20074000 0x1000>;
->>>  		interrupts =3D <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
->>>  		clocks =3D<&cru PCLK_SPI>, <&cru SCLK_SPI>;
->
->
+Am Freitag, 20. Mai 2016, 18:29:16 schrieb Shawn Lin:
+> RK3399 has a PCIe controller which can be used as Root Complex.
+> This driver supports a PCIe controller as Root Complex mode.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+
+[...]
+
+> diff --git a/drivers/pci/host/pcie-rockchip.c
+> b/drivers/pci/host/pcie-rockchip.c new file mode 100644
+> index 0000000..4063fd3
+> --- /dev/null
+> +++ b/drivers/pci/host/pcie-rockchip.c
+> @@ -0,0 +1,1181 @@
+> +/*
+> + * Rockchip AXI PCIe host controller driver
+> + *
+> + * Copyright (c) 2016 Rockchip, Inc.
+> + *
+> + * Author: Shawn Lin <shawn.lin@rock-chips.com>
+> + *         Wenrui Li <wenrui.li@rock-chips.com>
+> + * Bits taken from Synopsys Designware Host controller driver and
+> + * ARM PCI Host generic driver.
+> + *
+> + * This program is free software: you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation, either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+> +#include <linux/irqdomain.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/msi.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_pci.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/pci.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/reset.h>
+> +#include <linux/regmap.h>
+> +
+> +#define REF_CLK_100MHZ			(100 * 1000 * 1000)
+
+seems unused
+
+> +#define PCIE_CLIENT_BASE		0x0
+> +#define PCIE_RC_CONFIG_BASE		0xa00000
+> +#define PCIE_CORE_CTRL_MGMT_BASE	0x900000
+> +#define PCIE_CORE_AXI_CONF_BASE		0xc00000
+> +#define PCIE_CORE_AXI_INBOUND_BASE	0xc00800
+> +
+> +#define PCIE_CLIENT_BASIC_STATUS0	0x44
+> +#define PCIE_CLIENT_BASIC_STATUS1	0x48
+> +#define PCIE_CLIENT_INT_MASK		0x4c
+> +#define PCIE_CLIENT_INT_STATUS		0x50
+> +#define PCIE_CORE_INT_MASK		0x900210
+> +#define PCIE_CORE_INT_STATUS		0x90020c
+> +
+> +/** Size of one AXI Region (not Region 0) */
+> +#define	AXI_REGION_SIZE			(0x1 << 20)
+
+for those generic (1 << x) things please use BIT(x) instead
+Also constants intertwined with constants is hard to read,
+so ideally add a blank line above each comment and comment style for single 
+line comments only has one * in the beginning
+	/* foo */
+
+> +/** Overall size of AXI area */
+> +#define	AXI_OVERALL_SIZE		(64 * (0x1 << 20))
+> +/** Size of Region 0, equal to sum of sizes of other regions */
+> +#define	AXI_REGION_0_SIZE		(32 * (0x1 << 20))
+> +#define OB_REG_SIZE_SHIFT		5
+> +#define IB_ROOT_PORT_REG_SIZE_SHIFT	3
+> +
+> +#define AXI_WRAPPER_IO_WRITE		0x6
+> +#define AXI_WRAPPER_MEM_WRITE		0x2
+> +#define MAX_AXI_IB_ROOTPORT_REGION_NUM	3
+> +#define	MIN_AXI_ADDR_BITS_PASSED	8
+
+strange spacing after #define
+
+[...]
+
+> +/**
+> + * rockchip_pcie_init_port - Initialize hardware
+> + * @port: PCIe port information
+> + */
+> +static int rockchip_pcie_init_port(struct rockchip_pcie_port *port)
+> +{
+> +	int err;
+> +	u32 status;
+> +	unsigned long timeout = jiffies + msecs_to_jiffies(1000);
+
+this timeout only seems to be initialized once here but used for multiple 
+loops below resulting in all waitloops combined together being allowed to 
+take 1 second ... is this intended?
+
+> +	gpiod_set_value(port->ep_gpio, 0);
+> +
+> +	/* Make sure PCIe relate block is in reset state */
+> +	err = reset_control_assert(port->phy_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "assert phy_rst err %d\n", err);
+> +		return err;
+> +	}
+
+should move to phy driver probe or so
+
+> +	err = reset_control_assert(port->core_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "assert core_rst err %d\n", err);
+> +		return err;
+> +	}
+
+blank line
+
+> +	err = reset_control_assert(port->mgmt_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "assert mgmt_rst err %d\n", err);
+> +		return err;
+> +	}
+
+blank line
+
+> +	err = reset_control_assert(port->mgmt_sticky_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "assert mgmt_sticky_rst err %d\n", err);
+> +		return err;
+> +	}
+
+blank line
+
+> +	err = reset_control_assert(port->pipe_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "assert pipe_rst err %d\n", err);
+> +		return err;
+> +	}
+> +
+> +	pcie_write(port, (0xf << 20) | (0x1 << 16) | PCIE_CLIENT_GEN_SEL_2 |
+> +			  (0x1 << 19) | (0x1 << 3) |
+> +			  PCIE_CLIENT_MODE_RC |
+> +			  PCIE_CLIENT_CONF_LANE_NUM(port->lanes) |
+> +			  PCIE_CLIENT_CONF_ENABLE, PCIE_CLIENT_BASE);
+> +
+
+------ phy_enable begin ------
+
+As mentioned above, the whole phy handling seems pretty separate, so should 
+be easily being able to live in a real phy driver?
+
+This of course also needs to handle the phy clock in it.
+
+> +	err = reset_control_deassert(port->phy_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "deassert phy_rst err %d\n", err);
+> +		return err;
+> +	}
+> +	regmap_write(port->grf, port->pcie_conf,
+> +		     (0x3f << 17) | (0x10 << 1));
+
+the bits above should use some sort of constant / description. Also see 
+HIWORD_UPDATE in other drivers for the write-enable mask
+
+also add blank line here
+
+> +	err = -EINVAL;
+> +	while (time_before(jiffies, timeout)) {
+> +		regmap_read(port->grf, port->pcie_status, &status);
+> +		if ((status & (1 << 9))) {
+
+use a constant for the (1 << 9) [aka BIT(9)] please
+
+> +			dev_info(port->dev, "pll locked!\n");
+
+dev_dbg instead?
+
+> +			err = 0;
+> +			break;
+> +		}
+> +	}
+> +	if (err) {
+> +		dev_err(port->dev, "pll lock timeout!\n");
+> +		return err;
+> +	}
+> +	pcie_pb_wr_cfg(port, 0x10, 0x8);
+> +	pcie_pb_wr_cfg(port, 0x12, 0x8);
+> +
+> +	err = -ETIMEDOUT;
+> +	while (time_before(jiffies, timeout)) {
+> +		regmap_read(port->grf, port->pcie_status, &status);
+> +		if (!(status & (1 << 10))) {
+
+constant again
+
+> +			dev_info(port->dev, "pll output enable done!\n");
+
+dev_dbg or leave it out
+
+> +			err = 0;
+> +			break;
+> +		}
+> +	}
+> +
+> +	if (err) {
+> +		dev_err(port->dev, "pll output enable timeout!\n");
+> +		return err;
+> +	}
+> +
+> +	regmap_write(port->grf, port->pcie_conf,
+> +		     (0x3f << 17) | (0x10 << 1));
+> +	err = -EINVAL;
+> +	while (time_before(jiffies, timeout)) {
+> +		regmap_read(port->grf, port->pcie_status, &status);
+> +		if ((status & (1 << 9))) {
+> +			dev_info(port->dev, "pll relocked!\n");
+> +			err = 0;
+> +			break;
+> +		}
+> +	}
+> +	if (err) {
+> +		dev_err(port->dev, "pll relock timeout!\n");
+> +		return err;
+> +	}
+
+------ phy_enable end ------
 
 
---=20
-Best Regards
-Shawn Lin
+> +	err = reset_control_deassert(port->core_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "deassert core_rst err %d\n", err);
+> +		return err;
+> +	}
+> +	err = reset_control_deassert(port->mgmt_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "deassert mgmt_rst err %d\n", err);
+> +		return err;
+> +	}
+> +	err = reset_control_deassert(port->mgmt_sticky_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "deassert mgmt_sticky_rst err %d\n", err);
+> +		return err;
+> +	}
+> +	err = reset_control_deassert(port->pipe_rst);
+> +	if (err) {
+> +		dev_err(port->dev, "deassert pipe_rst err %d\n", err);
+> +		return err;
+> +	}
+> +
+> +	pcie_write(port, 1 << 17 | 1 << 1, PCIE_CLIENT_BASE);
+> +
+> +	gpiod_set_value(port->ep_gpio, 1);
+> +	err = -ETIMEDOUT;
+> +	while (time_before(jiffies, timeout)) {
+> +		status = pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
+> +		if (((status >> 20) & 0x3) == 0x3) {
+> +			dev_info(port->dev, "pcie link training gen1 pass!\n");
+> +			err = 0;
+> +			break;
+> +		}
+> +	}
+> +	if (err) {
+> +		dev_err(port->dev, "pcie link training gen1 timeout!\n");
+> +		return err;
+> +	}
+> +
+> +	status = pcie_read(port, 0x9000d0);
+> +	status |= 0x20;
+> +	pcie_write(port, status, 0x9000d0);
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+just to mention it again, bit handling as descriptive constant please and 
+also please give that register a name :-)
+
+[...]
+
+> +static int rockchip_pcie_parse_dt(struct rockchip_pcie_port *port)
+> +{
+
+[...]
+
+> +	port->lanes = 1;
+> +	err = of_property_read_u32(node, "num-lanes", &port->lanes);
+> +	if (!err && ((port->lanes == 0) ||
+> +		     (port->lanes == 3) ||
+> +		     (port->lanes > 4))) {
+> +		dev_info(dev, "invalid num-lanes, default use one lane\n");
+
+dev_warn might be more appropriate
+
+> +		port->lanes = 1;
+> +	}
+
+[...]
+
+> +static void rockchip_pcie_msi_enable(struct rockchip_pcie_port *pp)
+> +{
+> +	struct device_node *msi_node;
+> +
+> +	msi_node = of_parse_phandle(pp->dev->of_node,
+> +				    "msi-parent", 0);
+
+I would assume this should live in the general parse_dt function?
+Also is that MSI enablement really allow to fail silently without any affect 
+on the PCI functionality?
+
+> +	if (!msi_node)
+> +		return;
+> +
+> +	pp->msi = of_pci_find_msi_chip_by_node(msi_node);
+> +	of_node_put(msi_node);
+> +
+> +	if (pp->msi)
+> +		pp->msi->dev = pp->dev;
+> +}
+
+[...]
+
+> +static int rockchip_pcie_probe(struct platform_device *pdev)
+> +{
+> +	struct rockchip_pcie_port *port;
+> +	struct device *dev = &pdev->dev;
+> +	struct pci_bus *bus, *child;
+> +	struct resource_entry *win;
+> +	int reg_no;
+> +	int err = 0;
+> +	int irq;
+> +	LIST_HEAD(res);
+> +
+> +	if (!dev->of_node)
+> +		return -ENODEV;
+> +
+> +	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+> +	if (!port)
+> +		return -ENOMEM;
+> +
+> +	irq = platform_get_irq_byname(pdev, "pcie-sys");
+> +	if (irq < 0) {
+> +		dev_err(dev, "missing pcie_sys IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+
+blank line
+
+> +	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
+> +			       IRQF_SHARED, "pcie-sys", port);
+> +	if (err) {
+> +		dev_err(dev, "failed to request pcie subsystem irq\n");
+> +		return err;
+> +	}
+> +
+> +	port->irq = platform_get_irq_byname(pdev, "pcie-legacy");
+> +	if (port->irq < 0) {
+> +		dev_err(dev, "missing pcie_legacy IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+
+blank line
+
+> +	err = devm_request_irq(dev, port->irq,
+> +			       rockchip_pcie_legacy_int_handler,
+> +			       IRQF_SHARED,
+> +			       "pcie-legacy",
+> +			       port);
+> +	if (err) {
+> +		dev_err(&pdev->dev, "failed to request pcie-legacy irq\n");
+> +		return err;
+> +	}
+> +
+> +	irq = platform_get_irq_byname(pdev, "pcie-client");
+> +	if (irq < 0) {
+> +		dev_err(dev, "missing pcie-client IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+
+blank line
+
+> +	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
+> +			       IRQF_SHARED, "pcie-client", port);
+> +	if (err) {
+> +		dev_err(dev, "failed to request pcie client irq\n");
+> +		return err;
+> +	}
+> +
+> +	port->dev = dev;
+> +	err = rockchip_pcie_parse_dt(port);
+> +	if (err) {
+> +		dev_err(dev, "Parsing DT failed\n");
+> +		return err;
+> +	}
+
+rockchip_pcie_parse_dt already emits error messages that are a lot more 
+specific to the actual problem, so you don't need another error message here 
+and can just return the error code.
+
+
+> +	err = rockchip_pcie_init_port(port);
+> +	if (err)
+> +		return err;
+> +
+> +	platform_set_drvdata(pdev, port);
+> +
+> +	rockchip_pcie_enable_interrupts(port);
+> +	if (!IS_ENABLED(CONFIG_PCI_MSI)) {
+> +		err = rockchip_pcie_init_irq_domain(port);
+> +		if (err < 0)
+> +			return err;
+> +	}
+> +
+> +	err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
+> +					       &res, &port->io_base);
+> +	if (err)
+> +		return err;
+
+add blank line
+
+
+Heiko
