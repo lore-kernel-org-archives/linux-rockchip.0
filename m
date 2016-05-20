@@ -1,123 +1,85 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] Documentation: add binding description of Rockchip PCIe controller
-Date: Fri, 20 May 2016 13:20:06 +0200
-Message-ID: <3930626.4a3xBnzHhK@phil>
-References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com> <1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH v4 5/5] mmc: sdhci-of-arasan: implement enhanced strobe
+ callback
+Date: Fri, 20 May 2016 14:44:34 +0300
+Message-ID: <573EF8A2.5070305@intel.com>
+References: <1463733285-770-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463733377-986-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1463733377-986-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, Michal Simek <michal.simek@xilinx.com>, soren.brinkmann@xilinx.com, Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-Am Freitag, 20. Mai 2016, 18:29:06 schrieb Shawn Lin:
-> This patch add some required and optional properties for Rockchip
-> PCIe controller. Also we add a example for how to use it.
+On 20/05/16 11:36, Shawn Lin wrote:
+> Currently sdhci-arasan 5.1 can support enhanced strobe function,
+> and we now limit it just for "arasan,sdhci-5.1". Add
+> mmc-hs400-enhanced-strobe in DT to enable the function if we're
+> sure our controller can support it.
 > 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
+> Reviewed-by: Doug Anderson <dianders@chromium.org>
+
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+
 > ---
 > 
->  .../devicetree/bindings/pci/rockchip-pcie.txt      | 93
-> ++++++++++++++++++++++ 1 file changed, 93 insertions(+)
->  create mode 100644
-> Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt new file mode
-> 100644
-> index 0000000..69a0804
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
-> @@ -0,0 +1,93 @@
-> +* Rockchip AXI PCIe Root Port Bridge DT description
+>  drivers/mmc/host/sdhci-of-arasan.c | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+> 
+> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+> index b6f4c1d..533e2bc 100644
+> --- a/drivers/mmc/host/sdhci-of-arasan.c
+> +++ b/drivers/mmc/host/sdhci-of-arasan.c
+> @@ -25,7 +25,9 @@
+>  #include "sdhci-pltfm.h"
+>  
+>  #define SDHCI_ARASAN_CLK_CTRL_OFFSET	0x2c
+> +#define SDHCI_ARASAN_VENDOR_REGISTER	0x78
+>  
+> +#define VENDOR_ENHANCED_STROBE		BIT(0)
+>  #define CLK_CTRL_TIMEOUT_SHIFT		16
+>  #define CLK_CTRL_TIMEOUT_MASK		(0xf << CLK_CTRL_TIMEOUT_SHIFT)
+>  #define CLK_CTRL_TIMEOUT_MIN_EXP	13
+> @@ -79,6 +81,21 @@ static void sdhci_arasan_set_clock(struct sdhci_host *host, unsigned int clock)
+>  	}
+>  }
+>  
+> +static void sdhci_arasan_hs400_enhanced_strobe(struct mmc_host *mmc,
+> +					struct mmc_ios *ios)
+> +{
+> +	u32 vendor;
+> +	struct sdhci_host *host = mmc_priv(mmc);
 > +
-> +Required properties:
-> +- #address-cells: Address representation for root ports, set to <3>
-> +- #size-cells: Size representation for root ports, set to <2>
-> +- #interrupt-cells: specifies the number of cells needed to encode an
-> +		interrupt source. The value must be 1.
-> +- compatible: Should contain "rockchip,rk3399-pcie"
-> +- reg: Two register ranges as listed in the reg-names property
-> +- reg-names: The first entry must be "axi-base" for the core registers
-> +	The second entry must be "apb-base" for the client pcie registers
-> +- clocks: Must contain an entry for each entry in clock-names.
-> +		See ../clocks/clock-bindings.txt for details.
-> +- clock-names: Must include the following entries:
-> +	- "aclk_pcie"
-> +	- "aclk_perf_pcie"
-> +	- "hclk_pcie"
-> +	- "clk_pciephy_ref"
-
-clock names are always in the scope of the node/driver, so the names could 
-easily be "aclk", "aclk-perf", "hclk", "phy".
-
-Although from my cursory-glance at the phy-related code, it looks more like 
-it shouldn't be in the pcie-driver itself, but in a an actual phy-driver 
-(together with the phy reset and clock)?
-
-> +- interrupts: Three interrupt entries must be specified.
-> +- interrupt-names: Must include the following names
-> +	- "pcie-sys"
-> +	- "pcie-legacy"
-> +	- "pcie-client"
-
-Same as above, names could simply be "sys", "legacy", "client"
-
-
-> +- resets: Must contain five entries for each entry in reset-names.
-> +	   See ../reset/reset.txt for details.
-> +- reset-names: Must include the following names
-> +	- "phy-rst"
-> +	- "core-rst"
-> +	- "mgmt-rst"
-> +	- "mgmt-sticky-rst"
-> +	- "pipe-rst"
-
-and again (= without the "-rst")
-
-
-> +- rockchip,grf: phandle to the syscon managing the "general register
-> files" 
-
-> +- pcie-conf: offset of pcie client block for  configuration
-> +- pcie-status: offset of pcie client block for status
-> +- pcie-laneoff: offset of pcie client block for lane
-
-These are GRF offsets (GRF_SOC_CON8, GRF_SOC_CON5_PCIE, GRF_SOC_STATUS1)
-Those registers are generally prone to change (even their layout) for future 
-socs and I'd suggest instead of declaring them in the devicetree, move them 
-to the per-soc data in the rockchip_pcie_of_match struct.
-
-But it looks as if they're pretty phy-specific, so see comment about possible 
-separate phy driver above.
-
-
-> +- msi-parent: Link to the hardware entity that serves as the Message
-> +- pinctrl-names : The pin control state names
-> +- pinctrl-0: The "default" pinctrl state
-
-I'm not sure if pinctrl-properties need to be described when you don't need 
-special handling in the form of additional pin states. The pcie part does 
-not do any pin-handling of its own.
-
-
-> +- interrupt-map-mask and interrupt-map: standard PCI properties
-> +- interrupt-controller: identifies the node as an interrupt controller
+> +	vendor = readl(host->ioaddr + SDHCI_ARASAN_VENDOR_REGISTER);
+> +	if (ios->enhanced_strobe)
+> +		vendor |= VENDOR_ENHANCED_STROBE;
+> +	else
+> +		vendor &= ~VENDOR_ENHANCED_STROBE;
 > +
-> +Optional Property:
-> +- ep-gpios: contain the entry for pre-reset gpio
-> +- num-lanes: number of lanes to use
-> +- assigned-clocks, assigned-clock-parents and assigned-clock-rates:
-> standard +		   clock bindings. See ../clock/clock-bindings.txt
+> +	writel(vendor, host->ioaddr + SDHCI_ARASAN_VENDOR_REGISTER);
+> +}
+> +
+>  static struct sdhci_ops sdhci_arasan_ops = {
+>  	.set_clock = sdhci_arasan_set_clock,
+>  	.get_max_clock = sdhci_pltfm_clk_get_max_clock,
+> @@ -245,6 +262,9 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+>  			dev_err(&pdev->dev, "phy_power_on err.\n");
+>  			goto err_phy_power;
+>  		}
+> +
+> +		host->mmc_host_ops.hs400_enhanced_strobe =
+> +					sdhci_arasan_hs400_enhanced_strobe;
+>  	}
+>  
+>  	ret = sdhci_add_host(host);
+> 
 
-Again that (assigned-clocks handling) is not actual part of the pci-
-controllers actions, but other parts and also described already elsewhere.
-
-
-Heiko
