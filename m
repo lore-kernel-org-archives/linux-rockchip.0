@@ -1,46 +1,179 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: fixes the gic400 2nd region size for rk3368
-Date: Fri, 20 May 2016 23:19:52 +0200
-Message-ID: <2773450.t8WTDyMWXy@phil>
-References: <1463582510-29156-1-git-send-email-wxt@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/2] Documentation: add binding description of Rockchip
+ PCIe controller
+Date: Sat, 21 May 2016 11:55:35 +0800
+Message-ID: <766c3fc9-7e92-6235-76d5-803cc116845a@rock-chips.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
+ <3930626.4a3xBnzHhK@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463582510-29156-1-git-send-email-wxt@rock-chips.com>
+In-Reply-To: <3930626.4a3xBnzHhK@phil>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Olof Johansson <olof@lixom.net>, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Shawn Lin <shawn.lin@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <mbrugger@suse.com>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Eduardo Valentin <edubezval@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
+On 2016/5/20 19:20, Heiko Stuebner wrote:
+> Hi Shawn,
+>
+> Am Freitag, 20. Mai 2016, 18:29:06 schrieb Shawn Lin:
+>> This patch add some required and optional properties for Rockchip
+>> PCIe controller. Also we add a example for how to use it.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>
+>> ---
+>>
+>>  .../devicetree/bindings/pci/rockchip-pcie.txt      | 93
+>> ++++++++++++++++++++++ 1 file changed, 93 insertions(+)
+>>  create mode 100644
+>> Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>> b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt new file m=
+ode
+>> 100644
+>> index 0000000..69a0804
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
+>> @@ -0,0 +1,93 @@
+>> +* Rockchip AXI PCIe Root Port Bridge DT description
+>> +
+>> +Required properties:
+>> +- #address-cells: Address representation for root ports, set to <3>
+>> +- #size-cells: Size representation for root ports, set to <2>
+>> +- #interrupt-cells: specifies the number of cells needed to encode =
+an
+>> +		interrupt source. The value must be 1.
+>> +- compatible: Should contain "rockchip,rk3399-pcie"
+>> +- reg: Two register ranges as listed in the reg-names property
+>> +- reg-names: The first entry must be "axi-base" for the core regist=
+ers
+>> +	The second entry must be "apb-base" for the client pcie registers
+>> +- clocks: Must contain an entry for each entry in clock-names.
+>> +		See ../clocks/clock-bindings.txt for details.
+>> +- clock-names: Must include the following entries:
+>> +	- "aclk_pcie"
+>> +	- "aclk_perf_pcie"
+>> +	- "hclk_pcie"
+>> +	- "clk_pciephy_ref"
+>
+> clock names are always in the scope of the node/driver, so the names =
+could
+> easily be "aclk", "aclk-perf", "hclk", "phy".
+>
+> Although from my cursory-glance at the phy-related code, it looks mor=
+e like
+> it shouldn't be in the pcie-driver itself, but in a an actual phy-dri=
+ver
+> (together with the phy reset and clock)?
+>
+>> +- interrupts: Three interrupt entries must be specified.
+>> +- interrupt-names: Must include the following names
+>> +	- "pcie-sys"
+>> +	- "pcie-legacy"
+>> +	- "pcie-client"
+>
+> Same as above, names could simply be "sys", "legacy", "client"
+>
+>
+>> +- resets: Must contain five entries for each entry in reset-names.
+>> +	   See ../reset/reset.txt for details.
+>> +- reset-names: Must include the following names
+>> +	- "phy-rst"
+>> +	- "core-rst"
+>> +	- "mgmt-rst"
+>> +	- "mgmt-sticky-rst"
+>> +	- "pipe-rst"
+>
+> and again (=3D without the "-rst")
+>
 
-Am Mittwoch, 18. Mai 2016, 22:41:50 schrieb Caesar Wang:
-> The 2nd additional region is the GIC virtual cpu interface register
-> base and size.
-> 
-> As the gic400 of rk3368 says, the cpu interface register map as below
-> 
-> 
-> 
-> -0x0000 GICC_CTRL
-> .
-> .
-> .
-> -0x00fc GICC_IIDR
-> -0x1000 GICC_IDR
-> 
-> Obviously, the region size should be greater than 0x1000.
-> So we should make sure to include the GICC_IDR since the kernel will
-> access it in some cases.
-> 
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
+okay, will simplify clk, int and rst mentioned above.
 
-applied to a fixes branch for 4.7 with Shawn's review-tag.
+>
+>> +- rockchip,grf: phandle to the syscon managing the "general registe=
+r
+>> files"
+>
+>> +- pcie-conf: offset of pcie client block for  configuration
+>> +- pcie-status: offset of pcie client block for status
+>> +- pcie-laneoff: offset of pcie client block for lane
+>
+> These are GRF offsets (GRF_SOC_CON8, GRF_SOC_CON5_PCIE, GRF_SOC_STATU=
+S1)
+> Those registers are generally prone to change (even their layout) for=
+ future
+> socs and I'd suggest instead of declaring them in the devicetree, mov=
+e them
+> to the per-soc data in the rockchip_pcie_of_match struct.
+
+sure.
+
+>
+> But it looks as if they're pretty phy-specific, so see comment about =
+possible
+> separate phy driver above.
+>
+>
+>> +- msi-parent: Link to the hardware entity that serves as the Messag=
+e
+>> +- pinctrl-names : The pin control state names
+>> +- pinctrl-0: The "default" pinctrl state
+>
+> I'm not sure if pinctrl-properties need to be described when you don'=
+t need
+> special handling in the form of additional pin states. The pcie part =
+does
+> not do any pin-handling of its own.
+>
+
+We need it in prevention of any firmwares change the default state
+of #CLKREQ which is useful for ASPM. Also we have a backup pin for
+clkreqn called clkreqnb, which should be taken more consideration since
+when refering to any one of these two, pinctrl should configure the
+bit[14] of GRF_SOC_CON7 automatically. But it is unfortunately beyound
+the implementation of pinctrl-rk3399.
+
+BTW, I don't know if we wanna support this action inside the pinctrl
+code?
+
+>
+>> +- interrupt-map-mask and interrupt-map: standard PCI properties
+>> +- interrupt-controller: identifies the node as an interrupt control=
+ler
+>> +
+>> +Optional Property:
+>> +- ep-gpios: contain the entry for pre-reset gpio
+>> +- num-lanes: number of lanes to use
+>> +- assigned-clocks, assigned-clock-parents and assigned-clock-rates:
+>> standard +		   clock bindings. See ../clock/clock-bindings.txt
+>
+> Again that (assigned-clocks handling) is not actual part of the pci-
+> controllers actions, but other parts and also described already elsew=
+here.
+>
+
+Basically it does. But this is an alternative choice for pcie-phy to
+generate the ref_clk. When we want 100MHz src clk for PLL inside the
+pcie-phy=EF=BC=8Cwe should add them, otherwise it's taken from xin 24MH=
+z.
+
+This is useful for SI testing or some others special cases. So should w=
+e
+add it as an option and leave a sample here?
+
+>
+> Heiko
+>
+>
+>
 
 
-Thanks for catching this
-Heiko
+--=20
+Best Regards
+Shawn Lin
