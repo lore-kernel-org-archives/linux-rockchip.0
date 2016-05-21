@@ -1,179 +1,41 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 1/2] Documentation: add binding description of Rockchip
- PCIe controller
-Date: Sat, 21 May 2016 11:55:35 +0800
-Message-ID: <766c3fc9-7e92-6235-76d5-803cc116845a@rock-chips.com>
-References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
- <1463740146-7106-1-git-send-email-shawn.lin@rock-chips.com>
- <3930626.4a3xBnzHhK@phil>
+From: Andrea Gelmini <andrea.gelmini-PT7Us6ch6G9eoWH0uzbU5w@public.gmane.org>
+Subject: [PATCH 0114/1529] Fix typo
+Date: Sat, 21 May 2016 13:51:09 +0200
+Message-ID: <20160521115109.5318-1-andrea.gelmini@gelma.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3930626.4a3xBnzHhK@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: andrea.gelmini-PT7Us6ch6G9eoWH0uzbU5w@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, trivial-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2016/5/20 19:20, Heiko Stuebner wrote:
-> Hi Shawn,
->
-> Am Freitag, 20. Mai 2016, 18:29:06 schrieb Shawn Lin:
->> This patch add some required and optional properties for Rockchip
->> PCIe controller. Also we add a example for how to use it.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->>
->> ---
->>
->>  .../devicetree/bindings/pci/rockchip-pcie.txt      | 93
->> ++++++++++++++++++++++ 1 file changed, 93 insertions(+)
->>  create mode 100644
->> Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->>
->> diff --git a/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt new file m=
-ode
->> 100644
->> index 0000000..69a0804
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/pci/rockchip-pcie.txt
->> @@ -0,0 +1,93 @@
->> +* Rockchip AXI PCIe Root Port Bridge DT description
->> +
->> +Required properties:
->> +- #address-cells: Address representation for root ports, set to <3>
->> +- #size-cells: Size representation for root ports, set to <2>
->> +- #interrupt-cells: specifies the number of cells needed to encode =
-an
->> +		interrupt source. The value must be 1.
->> +- compatible: Should contain "rockchip,rk3399-pcie"
->> +- reg: Two register ranges as listed in the reg-names property
->> +- reg-names: The first entry must be "axi-base" for the core regist=
-ers
->> +	The second entry must be "apb-base" for the client pcie registers
->> +- clocks: Must contain an entry for each entry in clock-names.
->> +		See ../clocks/clock-bindings.txt for details.
->> +- clock-names: Must include the following entries:
->> +	- "aclk_pcie"
->> +	- "aclk_perf_pcie"
->> +	- "hclk_pcie"
->> +	- "clk_pciephy_ref"
->
-> clock names are always in the scope of the node/driver, so the names =
-could
-> easily be "aclk", "aclk-perf", "hclk", "phy".
->
-> Although from my cursory-glance at the phy-related code, it looks mor=
-e like
-> it shouldn't be in the pcie-driver itself, but in a an actual phy-dri=
-ver
-> (together with the phy reset and clock)?
->
->> +- interrupts: Three interrupt entries must be specified.
->> +- interrupt-names: Must include the following names
->> +	- "pcie-sys"
->> +	- "pcie-legacy"
->> +	- "pcie-client"
->
-> Same as above, names could simply be "sys", "legacy", "client"
->
->
->> +- resets: Must contain five entries for each entry in reset-names.
->> +	   See ../reset/reset.txt for details.
->> +- reset-names: Must include the following names
->> +	- "phy-rst"
->> +	- "core-rst"
->> +	- "mgmt-rst"
->> +	- "mgmt-sticky-rst"
->> +	- "pipe-rst"
->
-> and again (=3D without the "-rst")
->
+Signed-off-by: Andrea Gelmini <andrea.gelmini-PT7Us6ch6G9eoWH0uzbU5w@public.gmane.org>
+---
+ arch/arm/mach-rockchip/pm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-okay, will simplify clk, int and rst mentioned above.
-
->
->> +- rockchip,grf: phandle to the syscon managing the "general registe=
-r
->> files"
->
->> +- pcie-conf: offset of pcie client block for  configuration
->> +- pcie-status: offset of pcie client block for status
->> +- pcie-laneoff: offset of pcie client block for lane
->
-> These are GRF offsets (GRF_SOC_CON8, GRF_SOC_CON5_PCIE, GRF_SOC_STATU=
-S1)
-> Those registers are generally prone to change (even their layout) for=
- future
-> socs and I'd suggest instead of declaring them in the devicetree, mov=
-e them
-> to the per-soc data in the rockchip_pcie_of_match struct.
-
-sure.
-
->
-> But it looks as if they're pretty phy-specific, so see comment about =
-possible
-> separate phy driver above.
->
->
->> +- msi-parent: Link to the hardware entity that serves as the Messag=
-e
->> +- pinctrl-names : The pin control state names
->> +- pinctrl-0: The "default" pinctrl state
->
-> I'm not sure if pinctrl-properties need to be described when you don'=
-t need
-> special handling in the form of additional pin states. The pcie part =
-does
-> not do any pin-handling of its own.
->
-
-We need it in prevention of any firmwares change the default state
-of #CLKREQ which is useful for ASPM. Also we have a backup pin for
-clkreqn called clkreqnb, which should be taken more consideration since
-when refering to any one of these two, pinctrl should configure the
-bit[14] of GRF_SOC_CON7 automatically. But it is unfortunately beyound
-the implementation of pinctrl-rk3399.
-
-BTW, I don't know if we wanna support this action inside the pinctrl
-code?
-
->
->> +- interrupt-map-mask and interrupt-map: standard PCI properties
->> +- interrupt-controller: identifies the node as an interrupt control=
-ler
->> +
->> +Optional Property:
->> +- ep-gpios: contain the entry for pre-reset gpio
->> +- num-lanes: number of lanes to use
->> +- assigned-clocks, assigned-clock-parents and assigned-clock-rates:
->> standard +		   clock bindings. See ../clock/clock-bindings.txt
->
-> Again that (assigned-clocks handling) is not actual part of the pci-
-> controllers actions, but other parts and also described already elsew=
-here.
->
-
-Basically it does. But this is an alternative choice for pcie-phy to
-generate the ref_clk. When we want 100MHz src clk for PLL inside the
-pcie-phy=EF=BC=8Cwe should add them, otherwise it's taken from xin 24MH=
-z.
-
-This is useful for SI testing or some others special cases. So should w=
-e
-add it as an option and leave a sample here?
-
->
-> Heiko
->
->
->
-
-
---=20
-Best Regards
-Shawn Lin
+diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
+index bee8c80..309d672 100644
+--- a/arch/arm/mach-rockchip/pm.c
++++ b/arch/arm/mach-rockchip/pm.c
+@@ -280,7 +280,7 @@ static int rk3288_suspend_init(struct device_node *np)
+ 
+ 	rk3288_config_bootdata();
+ 
+-	/* copy resume code and data to bootsram */
++	/* copy resume code and data to bootram */
+ 	memcpy(rk3288_bootram_base, rockchip_slp_cpu_resume,
+ 	       rk3288_bootram_sz);
+ 
+-- 
+2.8.2.534.g1f66975
