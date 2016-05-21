@@ -1,13 +1,12 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 3/3] arm64: dts: rockchip: add rk3399 io-domain core nodes
-Date: Sat, 21 May 2016 23:23:48 +0200
-Message-ID: <1463865828-14583-4-git-send-email-heiko@sntech.de>
-References: <1463865828-14583-1-git-send-email-heiko@sntech.de>
+Subject: [PATCH 0/3] arm64: dts: rockchip: add io-domain support for rk3368
+ and rk3399
+Date: Sat, 21 May 2016 23:23:45 +0200
+Message-ID: <1463865828-14583-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1463865828-14583-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,41 +20,22 @@ To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the core io-domain nodes to grf and pmugrf which individual
-boards than just have to enable and add the necessary supplies to.
+This adds the core io-domain nodes for both the rk3368 and rk3399
+as well as the actual supplies on the rk3368-r88 board.
 
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+This of course needs
+    PM / AVS: rockchip-io: make io-domains a child of the GRF
+that went into mainline during the 4.7 merge window.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index a6a60fa..12acae6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -407,6 +407,11 @@
- 		reg = <0x0 0xff320000 0x0 0x1000>;
- 		#address-cells = <1>;
- 		#size-cells = <1>;
-+
-+		pmu_io_domains: io-domains {
-+			compatible = "rockchip,rk3399-pmu-io-voltage-domain";
-+			status = "disabled";
-+		};
- 	};
- 
- 	spi3: spi@ff350000 {
-@@ -517,6 +522,11 @@
- 		#address-cells = <1>;
- 		#size-cells = <1>;
- 
-+		io_domains: io-domains {
-+			compatible = "rockchip,rk3399-io-voltage-domain";
-+			status = "disabled";
-+		};
-+
- 		emmc_phy: phy@f780 {
- 			compatible = "rockchip,rk3399-emmc-phy";
- 			reg = <0xf780 0x24>;
+Heiko Stuebner (3):
+  arm64: dts: rockchip: add rk3368 io-domain core nodes
+  arm64: dts: rockchip: add rk3368-r88 iodomains
+  arm64: dts: rockchip: add rk3399 io-domain core nodes
+
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts | 16 ++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi    | 10 ++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi    | 10 ++++++++++
+ 3 files changed, 36 insertions(+)
+
 -- 
 2.6.4
