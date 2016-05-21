@@ -1,41 +1,61 @@
-From: Francois Romieu <romieu@fr.zoreil.com>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Sat, 21 May 2016 21:47:33 +0200
-Message-ID: <20160521194733.GA30557@electric-eye.fr.zoreil.com>
-References: <20160517152520.GA2750@debian-dorm>
- <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com>
- <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com>
- <573E2D0C.604@gmx.de>
- <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 1/3] arm64: dts: rockchip: add rk3368 io-domain core nodes
+Date: Sat, 21 May 2016 23:23:46 +0200
+Message-ID: <1463865828-14583-2-git-send-email-heiko@sntech.de>
+References: <1463865828-14583-1-git-send-email-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160521160910.GA14945@debian-dorm>
-Sender: netdev-owner@vger.kernel.org
-To: Shuyu Wei <wsy2220@gmail.com>
-Cc: Lino Sanfilippo <LinoSanfilippo@gmx.de>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1463865828-14583-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Shuyu Wei <wsy2220@gmail.com> :
-[...]
-> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-> index a3a9392..c2447b0 100644
-> --- a/drivers/net/ethernet/arc/emac_main.c
-> +++ b/drivers/net/ethernet/arc/emac_main.c
-> @@ -686,6 +686,9 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
->  
->         skb_tx_timestamp(skb);
->  
-> +       /* Make sure timestamp is set */
-> +       smp_wmb();
+Add the core io-domain nodes to grf and pmugrf which individual
+boards than just have to enable and add the necessary supplies to.
 
-Should be dma_wmb() (see davem's message).
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-It's completely unrelated to SMP.
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 4fb8484..58c2585 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -634,6 +634,11 @@
+ 	pmugrf: syscon@ff738000 {
+ 		compatible = "rockchip,rk3368-pmugrf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff738000 0x0 0x1000>;
++
++		pmu_io_domains: io-domains {
++			compatible = "rockchip,rk3368-pmu-io-voltage-domain";
++			status = "disabled";
++		};
+ 	};
+ 
+ 	cru: clock-controller@ff760000 {
+@@ -647,6 +652,11 @@
+ 	grf: syscon@ff770000 {
+ 		compatible = "rockchip,rk3368-grf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff770000 0x0 0x1000>;
++
++		io_domains: io-domains {
++			compatible = "rockchip,rk3368-io-voltage-domain";
++			status = "disabled";
++		};
+ 	};
+ 
+ 	wdt: watchdog@ff800000 {
 -- 
-Ueimor
+2.6.4
