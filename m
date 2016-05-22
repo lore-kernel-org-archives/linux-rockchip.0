@@ -1,19 +1,23 @@
-From: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
+From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
 Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Sun, 22 May 2016 13:30:27 +0200
-Message-ID: <57419853.9050701@gmx.de>
+Date: Sun, 22 May 2016 23:21:23 +0200
+Message-ID: <20160522212123.GA5086@electric-eye.fr.zoreil.com>
 References: <20160517152520.GA2750@debian-dorm>
  <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com> <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com> <573E2D0C.604@gmx.de>
+ <20160518000153.GA21757@electric-eye.fr.zoreil.com>
+ <573CD09D.1060307@gmx.de>
+ <20160518225529.GA18671@electric-eye.fr.zoreil.com>
+ <573E2D0C.604@gmx.de>
  <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
- <20160522091742.GA8681@debian-dorm>
+ <20160521160910.GA14945@debian-dorm>
+ <20160521194733.GA30557@electric-eye.fr.zoreil.com>
+ <5740E98A.5050803@gmx.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160522091742.GA8681@debian-dorm>
+Content-Disposition: inline
+In-Reply-To: <5740E98A.5050803-Mmb7MZpHnFY@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,142 +27,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+To: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
+Cc: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22.05.2016 11:17, Shuyu Wei wrote:
-
-> Hi Lino,
+Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org> :
+> On 21.05.2016 21:47, Francois Romieu wrote:
+> > Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> :
+> > [...]
+> >> diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+> >> index a3a9392..c2447b0 100644
+> >> --- a/drivers/net/ethernet/arc/emac_main.c
+> >> +++ b/drivers/net/ethernet/arc/emac_main.c
+> >> @@ -686,6 +686,9 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+> >>  
+> >>         skb_tx_timestamp(skb);
+> >>  
+> >> +       /* Make sure timestamp is set */
+> >> +       smp_wmb();
+> > 
+> > Should be dma_wmb() (see davem's message).
+> > 
+> > It's completely unrelated to SMP.
+> > 
 > 
-> I tested this patch, it still got panic under stress.
-> Just wget 2 large files simultaneously and it failed.
-> 
-> Looks like the problem comes from the if statement in tx_clean().
-> I changed your patch to use 
-> 
-> -               if (info & FOR_EMAC)
-> +               if ((info & FOR_EMAC) || !txbd->data || !skb)
-> 
-> and it worked. 
+> Its also completely unrelated to dma so I doubt that this is what davem meant.
 
-Thanks for testing. However that extra check for skb not being NULL should not be
-necessary if the code were correct. The changes I suggested were all about having
-skb and info consistent with txbd_curr.
-But I just realized that there is still a big flaw in the last changes. While
-tx() looks correct now (we first set up the descriptor and assign the skb and _then_
-advance txbd_curr) tx_clean still is not:
+It's related to dma: nobody wants the device to perform dma from memory
+while the CPU is writing timestamp.
 
-We _first_ have to read tx_curr and _then_ read the corresponding descriptor and its skb.
-(The last patch implemented just the reverse - and thus wrong - order, first get skb and 
-descriptor and then read tx_curr).
+The device must enforce a commit of any network buffer memory write before
+releasing control, i.e. before writing *info.
 
-So the patch below hopefully handles also tx_clean correctly. Could you please do once more a test
-with this one?
+See 'git log -p --grep=dma_[rw]mb': it appears several times.
 
+> As far as I understood he was referring to the dma descriptor.
 
-> 
-> After further test, my patch to barrier timestamp() didn't work.
-> Just like the original code in the tree, the emac still got stuck under
-> high load, even if I changed the smp_wmb() to dma_wmb(). So the original
-> code do have race somewhere.
+If the wmb() between *info = ... and *txbd_curr = ... is replaced by a
+dma_wmb(), the device will see a consistent descriptor when if performs
+a DMA read after the CPU wrote into the mailbox (arc_reg_set(..., TXPL_MASK)).
 
-So to make this clear: with the current code in net-next you still see a problem (lockup), right?
+Ok, I agree on this one.
 
-> 
-> I'm new to kernel development, and still trying to understand how memory
-> barrier works
+However, it doesn't help with the (SMP) requirement that no CPU sees
+the txbd_curr write before *info is written by the local CPU. Afaiui
+dma_wmb() is too weak for this part. If we don't want wmb() here,
+it will have to be dma_wmb() + smp_wmb().
 
-Its an interresting topic and thats what I am trying to understand, too :)
-
-
-> ... and why Francois' fix worked. Please be patient with me :-).
-
-So which fix(es) exactly work for you and solve your lockup issue?
-
-
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -159,12 +159,22 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- 		unsigned int *txbd_dirty = &priv->txbd_dirty;
- 		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
- 		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
--		struct sk_buff *skb = tx_buff->skb;
- 		unsigned int info = le32_to_cpu(txbd->info);
-+		struct sk_buff *skb;
- 
--		if ((info & FOR_EMAC) || !txbd->data || !skb)
-+		if (*txbd_dirty == priv->txbd_curr)
- 			break;
- 
-+		/* Make sure curr pointer is consistent with info */
-+		rmb();
-+
-+		info = le32_to_cpu(txbd->info);
-+
-+		if (info & FOR_EMAC)
-+			break;
-+
-+		skb = tx_buff->skb;
-+
- 		if (unlikely(info & (DROP | DEFR | LTCL | UFLO))) {
- 			stats->tx_errors++;
- 			stats->tx_dropped++;
-@@ -195,8 +205,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- 		*txbd_dirty = (*txbd_dirty + 1) % TX_BD_NUM;
- 	}
- 
--	/* Ensure that txbd_dirty is visible to tx() before checking
--	 * for queue stopped.
-+	/* Ensure that txbd_dirty is visible to tx() and we see the most recent
-+	 * value for txbd_curr.
- 	 */
- 	smp_mb();
- 
-@@ -680,35 +690,29 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 	dma_unmap_len_set(&priv->tx_buff[*txbd_curr], len, len);
- 
- 	priv->txbd[*txbd_curr].data = cpu_to_le32(addr);
--
--	/* Make sure pointer to data buffer is set */
--	wmb();
-+	priv->tx_buff[*txbd_curr].skb = skb;
- 
- 	skb_tx_timestamp(skb);
- 
- 	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
- 
--	/* Make sure info word is set */
-+	/* 1. Make sure that with respect to tx_clean everything is set up
-+	 * properly before we advance txbd_curr.
-+	 * 2. Make sure writes to DMA descriptors are completed before we inform
-+	 * the hardware.
-+	 */
- 	wmb();
- 
--	priv->tx_buff[*txbd_curr].skb = skb;
--
- 	/* Increment index to point to the next BD */
- 	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
- 
--	/* Ensure that tx_clean() sees the new txbd_curr before
--	 * checking the queue status. This prevents an unneeded wake
--	 * of the queue in tx_clean().
-+	/* Ensure we see the most recent value of txbd_dirty and tx_clean() sees
-+	 * the updated value of txbd_curr.
- 	 */
- 	smp_mb();
- 
--	if (!arc_emac_tx_avail(priv)) {
-+	if (!arc_emac_tx_avail(priv))
- 		netif_stop_queue(ndev);
--		/* Refresh tx_dirty */
--		smp_mb();
--		if (arc_emac_tx_avail(priv))
--			netif_start_queue(ndev);
--	}
- 
- 	arc_reg_set(priv, R_STATUS, TXPL_MASK);
- 
 -- 
-1.9.1
+Ueimor
