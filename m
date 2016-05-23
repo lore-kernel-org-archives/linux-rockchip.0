@@ -1,57 +1,82 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: [GIT PULL] drm/rockchip: new feature to support rk3399 vop and some
- fixes
-Date: Mon, 23 May 2016 14:51:23 +0800
-Message-ID: <5742A86B.5050307@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v2 0/5] Thermal: Support for hardware-tracked trip points
+Date: Mon, 23 May 2016 15:32:39 +0800
+Message-ID: <5742B217.4080405@gmail.com>
+References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: edubezval@gmail.com, Zhang Rui <rui.zhang@intel.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Durgadoss R <durgadoss.r@intel.com>, Jonathan Corbet <corbet@lwn.net>, linux-rockchip@lists.infradead.org, briannorris@google.com, Andy Champ <andycham@amazon.com>, huangtao@rock-chips.com, linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, Javi Merino <javi.merino@arm.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ni Wade <wni@nvidia.com>, Keerthy <j-keerthy@ti.com>, dmitry.torokhov@gmail.com, dianders@chromium.org, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRGF2ZQoKVGhpcyBzZXJpZXMgb2YgcGF0Y2hlcyBhZGQgcmszMzk5IHZvcCBzdXBwb3J0IGFu
-ZCBmaXggc29tZSBzcGFyc2Ugd2FybmluZ3MuCgpOb3cgc2VlbXMgbm8gZG91YnQgb24gdGhlbSwg
-YW5kIGxvb2tzIGdvb2QgZm9yIG1lLCBTbyBJJ2QgbGlrZSB5b3UgY2FuIApsYW5kIHRoZW0uCgpU
-aGFua3MuCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IGZjZWU1OTA2NWU1ODQ5
-ODY4MmM2MDA2OWNjNmZiOTA2OTRiYWIyN2U6CgogICBkcm06IE51a2UgLT52YmxhbmtfZGlzYWJs
-ZV9hbGxvd2VkICgyMDE2LTA1LTIxIDA3OjAzOjMxICsxMDAwKQoKYXJlIGF2YWlsYWJsZSBpbiB0
-aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogICBodHRwczovL2dpdGh1Yi5jb20vbWFya3l6cS9rZXJu
-ZWwtZHJtLXJvY2tjaGlwLmdpdCAKZHJtLXJvY2tjaGlwLW5leHQtMjAxNi0wNS0yMwoKZm9yIHlv
-dSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIGNjNjllYmZhZmZmNDNmNDllZWMzZGVkMTg3OTRkYzlj
-M2M4YzA3MzU6CgogICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50YXRpb24gZm9yIFJvY2tjaGlw
-IHJrMzM5OSBkaXNwbGF5IApjb250cm9sbGVycyAoMjAxNi0wNS0yMyAxNDozOTozNyArMDgwMCkK
-Ci0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0KSm9obiBLZWVwaW5nICgzKToKICAgICAgIGRybS9yb2NrY2hpcDogZHdfaGRtaTog
-cmVtb3ZlIHVudXNlZCAjaW5jbHVkZQogICAgICAgZHJtL3JvY2tjaGlwOiBmYjogYWRkIG1pc3Np
-bmcgaGVhZGVyCiAgICAgICBkcm0vcm9ja2NoaXA6IGZpeCAic2hvdWxkIGl0IGJlIHN0YXRpYz8i
-IHdhcm5pbmdzCgpNYXJrIFlhbyAoNSk6CiAgICAgICBkcm0vcm9ja2NoaXA6IHNvcnQgcmVnaXN0
-ZXJzIGRlZmluZSBieSBjaGlwJ3MgbnVtYmVyCiAgICAgICBkdC1iaW5kaW5nczogc29ydCBSb2Nr
-Y2hpcCB2b3AgY29tcGF0aWJsZSBieSBjaGlwJ3MgbnVtYmVyCiAgICAgICBkcm0vcm9ja2NoaXA6
-IHZvcDogaW50cm9kdWNlIFZPUF9SRUdfTUFTSwogICAgICAgZHJtL3JvY2tjaGlwOiB2b3A6IGFk
-ZCByazMzOTkgdm9wIHN1cHBvcnQKICAgICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnRhdGlv
-biBmb3IgUm9ja2NoaXAgcmszMzk5IGRpc3BsYXkgCmNvbnRyb2xsZXJzCgogIERvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcC50eHQg
-CnwgICA3ICsrLQogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMg
-fCAgIDEgLQogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCAg
-IDQgKy0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgfCAgIDcg
-KystCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA2NCAr
-KysrKysrKysrLS0tLS0tLS0tCiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AuaCB8ICAgNSArKwogIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3Bf
-cmVnLmMgfCAyMzggCisrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0KICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfdm9wX3JlZy5oIHwgMjc5IAorKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQogIDggZmls
-ZXMgY2hhbmdlZCwgNDU2IGluc2VydGlvbnMoKyksIDE0OSBkZWxldGlvbnMoLSkKCi0tIArvvK1h
-cmsgWWFvCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
-dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hello Eduardo & 'Zhang Rui'
+
+Do we have the chance to merge this series patches for next kernel?
+I had picked them up in my github, and tested for a period of time with=
+=20
+rockchip inside kernel.
+
+Let me know if someone have some suggestions or against opinios.
+Thanks,
+
+-Caesar
+On 2016=E5=B9=B405=E6=9C=8803=E6=97=A5 17:33, Caesar Wang wrote:
+> The history patches come from Mikko and Sascha.
+> http://thread.gmane.org/gmane.linux.power-management.general/59451
+>
+> Now, I pick them up to continue upstream.
+> Nevermind!
+>
+> This series history patches:
+> v1: https://lkml.org/lkml/2016/4/24/227
+>
+> This series adds support for hardware trip points. It picks up earlie=
+r
+> work from Mikko Perttunen. Mikko implemented hardware trip points as =
+part
+> of the device tree support. It was suggested back then to move the
+> functionality to the thermal core instead of putting more code into t=
+he
+> device tree support. This series does exactly that.
+>
+> This series patches rebase the conflicts.
+> Note that the hardware-tracked trip points are very well tested curre=
+ntly.
+>
+> Verified and tested on https://github.com/Caesar-github/rockchip/tree=
+/wip/fixes-thermal-0503
+> That's based on linux-kernel 20160502.
+> .Linux version 4.6.0-rc6-next-20160502-08922-g860ed34 (wxt@nb)
+>
+>
+> Changes in v2:
+> - update the sysfs-api.txt for set_trips
+> - add the commit in patch[v2 2/5].
+> - Update the commit for patch[v2 4/5].
+>
+> Caesar Wang (1):
+>    thermal: rockchip: add the set_trips function
+>
+> Sascha Hauer (4):
+>    thermal: Add support for hardware-tracked trip points
+>    thermal: of: implement .set_trips for device tree thermal zones
+>    thermal: streamline get_trend callbacks
+>    thermal: bang-bang governor: act on lower trip boundary
+>
+>   Documentation/thermal/sysfs-api.txt                |  7 +++
+>   drivers/thermal/gov_bang_bang.c                    |  2 +-
+>   drivers/thermal/of-thermal.c                       | 23 +++++-----
+>   drivers/thermal/rockchip_thermal.c                 | 39 +++++++++++=
++++++
+>   drivers/thermal/thermal_core.c                     | 52 +++++++++++=
++++++++++++
+>   drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 ++++-------
+>   include/linux/thermal.h                            |  9 +++-
+>   7 files changed, 128 insertions(+), 29 deletions(-)
+>
+
