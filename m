@@ -1,74 +1,63 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/5] iommu/rockchip: fix devm_request_irq and devm_free_irq parameter
-Date: Mon, 23 May 2016 11:28:32 +0200
-Message-ID: <3963127.FSql0rTeZT@phil>
-References: <1463967439-13354-1-git-send-email-zhengsq@rock-chips.com> <1463967439-13354-2-git-send-email-zhengsq@rock-chips.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 4/5] iommu/rockchip: add ARM64 cache flush operation for
+	iommu
+Date: Mon, 23 May 2016 11:44:14 +0100
+Message-ID: <5742DEFE.1040902@arm.com>
+References: <1463967439-13354-1-git-send-email-zhengsq@rock-chips.com>
+	<1463967439-13354-5-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463967439-13354-2-git-send-email-zhengsq@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shunqian Zheng <zhengsq@rock-chips.com>
-Cc: joro@8bytes.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Simon <xxm@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1463967439-13354-5-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 23. Mai 2016, 09:37:15 schrieb Shunqian Zheng:
-> From: Simon <xxm@rock-chips.com>
-
-generally a "firstname surename <mail>" is expected, so a first name is not 
-really enough.
-
-> 
-> When rk_iommu_attach_device or rk_iommu_detach_device be called, the
-> second parameter "dev" represent the device who own the iommu, so it is
-> not resonable using "dev" for devm_request_irq's first parameter. To
-> avoid potential error, we must use iommu device itself "iommu->dev"
-> instead, the same as devm_free_irq.
-> 
-> Signed-off-by: Simon <xxm@rock-chips.com>
-
-same here, and the person sending in the patch also needs a signed-off-by 
-line, so that should look like
-
-Signed-off-by: Simon <xxm@rock-chips.com>
-Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-
-The same applies of course for all other affected patches of this series.
-
-
-After looking at the iommu code, I think the change itself looks sane, so
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-although I wonder what we need the devm_* for if we request and free the 
-irqs manually all the time anyway?
-
-
-Heiko
-
+On 23/05/16 02:37, Shunqian Zheng wrote:
+> From: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+>
+> Signed-off-by: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > ---
->  drivers/iommu/rockchip-iommu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c
-> b/drivers/iommu/rockchip-iommu.c index c7d6156..ec0ce62 100644
+>   drivers/iommu/rockchip-iommu.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 043d18c..1741b65 100644
 > --- a/drivers/iommu/rockchip-iommu.c
 > +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -807,7 +807,7 @@ static int rk_iommu_attach_device(struct iommu_domain
-> *domain,
-> 
->  	iommu->domain = domain;
-> 
-> -	ret = devm_request_irq(dev, iommu->irq, rk_iommu_irq,
-> +	ret = devm_request_irq(iommu->dev, iommu->irq, rk_iommu_irq,
->  			       IRQF_SHARED, dev_name(dev), iommu);
->  	if (ret)
->  		return ret;
-> @@ -860,7 +860,7 @@ static void rk_iommu_detach_device(struct iommu_domain
-> *domain, }
->  	rk_iommu_disable_stall(iommu);
-> 
-> -	devm_free_irq(dev, iommu->irq, iommu);
-> +	devm_free_irq(iommu->dev, iommu->irq, iommu);
-> 
->  	iommu->domain = NULL;
+> @@ -95,12 +95,16 @@ struct rk_iommu {
+>
+>   static inline void rk_table_flush(u32 *va, unsigned int count)
+>   {
+> +#if defined(CONFIG_ARM)
+>   	phys_addr_t pa_start = virt_to_phys(va);
+>   	phys_addr_t pa_end = virt_to_phys(va + count);
+>   	size_t size = pa_end - pa_start;
+>
+>   	__cpuc_flush_dcache_area(va, size);
+>   	outer_flush_range(pa_start, pa_end);
+> +#elif defined(CONFIG_ARM64)
+> +	__dma_flush_range(va, va + count);
+> +#endif
+
+Ugh, please don't use arch-private cache maintenance functions directly 
+from a driver. Allocating/mapping page tables to be read by the IOMMU is 
+still DMA, so using the DMA APIs is the correct way to manage them, 
+*especially* if it needs to work across multiple architectures.
+
+Robin.
+
+>   }
+>
+>   static struct rk_iommu_domain *to_rk_domain(struct iommu_domain *dom)
+>
