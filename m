@@ -1,82 +1,74 @@
-From: Caesar Wang <caesar.upstream@gmail.com>
-Subject: Re: [PATCH v2 0/5] Thermal: Support for hardware-tracked trip points
-Date: Mon, 23 May 2016 15:32:39 +0800
-Message-ID: <5742B217.4080405@gmail.com>
-References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/5] iommu/rockchip: fix devm_request_irq and devm_free_irq parameter
+Date: Mon, 23 May 2016 11:28:32 +0200
+Message-ID: <3963127.FSql0rTeZT@phil>
+References: <1463967439-13354-1-git-send-email-zhengsq@rock-chips.com> <1463967439-13354-2-git-send-email-zhengsq@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: edubezval@gmail.com, Zhang Rui <rui.zhang@intel.com>
-Cc: Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Durgadoss R <durgadoss.r@intel.com>, Jonathan Corbet <corbet@lwn.net>, linux-rockchip@lists.infradead.org, briannorris@google.com, Andy Champ <andycham@amazon.com>, huangtao@rock-chips.com, linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, Javi Merino <javi.merino@arm.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ni Wade <wni@nvidia.com>, Keerthy <j-keerthy@ti.com>, dmitry.torokhov@gmail.com, dianders@chromium.org, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463967439-13354-2-git-send-email-zhengsq@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shunqian Zheng <zhengsq@rock-chips.com>
+Cc: joro@8bytes.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Simon <xxm@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Eduardo & 'Zhang Rui'
+Am Montag, 23. Mai 2016, 09:37:15 schrieb Shunqian Zheng:
+> From: Simon <xxm@rock-chips.com>
 
-Do we have the chance to merge this series patches for next kernel?
-I had picked them up in my github, and tested for a period of time with=
-=20
-rockchip inside kernel.
+generally a "firstname surename <mail>" is expected, so a first name is not 
+really enough.
 
-Let me know if someone have some suggestions or against opinios.
-Thanks,
+> 
+> When rk_iommu_attach_device or rk_iommu_detach_device be called, the
+> second parameter "dev" represent the device who own the iommu, so it is
+> not resonable using "dev" for devm_request_irq's first parameter. To
+> avoid potential error, we must use iommu device itself "iommu->dev"
+> instead, the same as devm_free_irq.
+> 
+> Signed-off-by: Simon <xxm@rock-chips.com>
 
--Caesar
-On 2016=E5=B9=B405=E6=9C=8803=E6=97=A5 17:33, Caesar Wang wrote:
-> The history patches come from Mikko and Sascha.
-> http://thread.gmane.org/gmane.linux.power-management.general/59451
->
-> Now, I pick them up to continue upstream.
-> Nevermind!
->
-> This series history patches:
-> v1: https://lkml.org/lkml/2016/4/24/227
->
-> This series adds support for hardware trip points. It picks up earlie=
-r
-> work from Mikko Perttunen. Mikko implemented hardware trip points as =
-part
-> of the device tree support. It was suggested back then to move the
-> functionality to the thermal core instead of putting more code into t=
-he
-> device tree support. This series does exactly that.
->
-> This series patches rebase the conflicts.
-> Note that the hardware-tracked trip points are very well tested curre=
-ntly.
->
-> Verified and tested on https://github.com/Caesar-github/rockchip/tree=
-/wip/fixes-thermal-0503
-> That's based on linux-kernel 20160502.
-> .Linux version 4.6.0-rc6-next-20160502-08922-g860ed34 (wxt@nb)
->
->
-> Changes in v2:
-> - update the sysfs-api.txt for set_trips
-> - add the commit in patch[v2 2/5].
-> - Update the commit for patch[v2 4/5].
->
-> Caesar Wang (1):
->    thermal: rockchip: add the set_trips function
->
-> Sascha Hauer (4):
->    thermal: Add support for hardware-tracked trip points
->    thermal: of: implement .set_trips for device tree thermal zones
->    thermal: streamline get_trend callbacks
->    thermal: bang-bang governor: act on lower trip boundary
->
->   Documentation/thermal/sysfs-api.txt                |  7 +++
->   drivers/thermal/gov_bang_bang.c                    |  2 +-
->   drivers/thermal/of-thermal.c                       | 23 +++++-----
->   drivers/thermal/rockchip_thermal.c                 | 39 +++++++++++=
-+++++
->   drivers/thermal/thermal_core.c                     | 52 +++++++++++=
-+++++++++++
->   drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 25 ++++-------
->   include/linux/thermal.h                            |  9 +++-
->   7 files changed, 128 insertions(+), 29 deletions(-)
->
+same here, and the person sending in the patch also needs a signed-off-by 
+line, so that should look like
 
+Signed-off-by: Simon <xxm@rock-chips.com>
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+
+The same applies of course for all other affected patches of this series.
+
+
+After looking at the iommu code, I think the change itself looks sane, so
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+although I wonder what we need the devm_* for if we request and free the 
+irqs manually all the time anyway?
+
+
+Heiko
+
+> ---
+>  drivers/iommu/rockchip-iommu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c
+> b/drivers/iommu/rockchip-iommu.c index c7d6156..ec0ce62 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -807,7 +807,7 @@ static int rk_iommu_attach_device(struct iommu_domain
+> *domain,
+> 
+>  	iommu->domain = domain;
+> 
+> -	ret = devm_request_irq(dev, iommu->irq, rk_iommu_irq,
+> +	ret = devm_request_irq(iommu->dev, iommu->irq, rk_iommu_irq,
+>  			       IRQF_SHARED, dev_name(dev), iommu);
+>  	if (ret)
+>  		return ret;
+> @@ -860,7 +860,7 @@ static void rk_iommu_detach_device(struct iommu_domain
+> *domain, }
+>  	rk_iommu_disable_stall(iommu);
+> 
+> -	devm_free_irq(dev, iommu->irq, iommu);
+> +	devm_free_irq(iommu->dev, iommu->irq, iommu);
+> 
+>  	iommu->domain = NULL;
