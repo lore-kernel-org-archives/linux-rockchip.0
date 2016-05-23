@@ -1,63 +1,90 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH 4/5] iommu/rockchip: add ARM64 cache flush operation for
-	iommu
-Date: Mon, 23 May 2016 11:44:14 +0100
-Message-ID: <5742DEFE.1040902@arm.com>
-References: <1463967439-13354-1-git-send-email-zhengsq@rock-chips.com>
-	<1463967439-13354-5-git-send-email-zhengsq@rock-chips.com>
+From: Shuyu Wei <wsy2220@gmail.com>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Mon, 23 May 2016 19:36:09 +0800
+Message-ID: <20160523113609.GA21019@debian-dorm>
+References: <20160517.142456.2247845107325931733.davem@davemloft.net>
+ <20160518000153.GA21757@electric-eye.fr.zoreil.com>
+ <573CD09D.1060307@gmx.de>
+ <20160518225529.GA18671@electric-eye.fr.zoreil.com>
+ <573E2D0C.604@gmx.de>
+ <20160520003145.GA22420@electric-eye.fr.zoreil.com>
+ <20160521160910.GA14945@debian-dorm>
+ <5740E82F.8040903@gmx.de>
+ <20160522091742.GA8681@debian-dorm>
+ <57419853.9050701@gmx.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1463967439-13354-5-git-send-email-zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <57419853.9050701@gmx.de>
+Sender: netdev-owner@vger.kernel.org
+To: Lino Sanfilippo <LinoSanfilippo@gmx.de>
+Cc: Francois Romieu <romieu@fr.zoreil.com>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, al.kochet@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 23/05/16 02:37, Shunqian Zheng wrote:
-> From: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
->
-> Signed-off-by: Simon <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->   drivers/iommu/rockchip-iommu.c | 4 ++++
->   1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 043d18c..1741b65 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -95,12 +95,16 @@ struct rk_iommu {
->
->   static inline void rk_table_flush(u32 *va, unsigned int count)
->   {
-> +#if defined(CONFIG_ARM)
->   	phys_addr_t pa_start = virt_to_phys(va);
->   	phys_addr_t pa_end = virt_to_phys(va + count);
->   	size_t size = pa_end - pa_start;
->
->   	__cpuc_flush_dcache_area(va, size);
->   	outer_flush_range(pa_start, pa_end);
-> +#elif defined(CONFIG_ARM64)
-> +	__dma_flush_range(va, va + count);
-> +#endif
+On Sun, May 22, 2016 at 01:30:27PM +0200, Lino Sanfilippo wrote:
+> 
+> Thanks for testing. However that extra check for skb not being NULL should not be
+> necessary if the code were correct. The changes I suggested were all about having
+> skb and info consistent with txbd_curr.
+> But I just realized that there is still a big flaw in the last changes. While
+> tx() looks correct now (we first set up the descriptor and assign the skb and _then_
+> advance txbd_curr) tx_clean still is not:
+> 
+> We _first_ have to read tx_curr and _then_ read the corresponding descriptor and its skb.
+> (The last patch implemented just the reverse - and thus wrong - order, first get skb and 
+> descriptor and then read tx_curr).
+> 
+> So the patch below hopefully handles also tx_clean correctly. Could you please do once more a test
+> with this one?
 
-Ugh, please don't use arch-private cache maintenance functions directly 
-from a driver. Allocating/mapping page tables to be read by the IOMMU is 
-still DMA, so using the DMA APIs is the correct way to manage them, 
-*especially* if it needs to work across multiple architectures.
+Hi Lino, 
+This patch worked after a whole night of stress testing.
 
-Robin.
+> > 
+> > After further test, my patch to barrier timestamp() didn't work.
+> > Just like the original code in the tree, the emac still got stuck under
+> > high load, even if I changed the smp_wmb() to dma_wmb(). So the original
+> > code do have race somewhere.
+> 
+> So to make this clear: with the current code in net-next you still see a problem (lockup), right?
+Yes, I mean the mainline kernel, which should be the same as net-next.
 
->   }
->
->   static struct rk_iommu_domain *to_rk_domain(struct iommu_domain *dom)
->
+
+> > ... and why Francois' fix worked. Please be patient with me :-).
+> 
+> So which fix(es) exactly work for you and solve your lockup issue?
+I mean the patch below, starting this thread.
+
+diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
+index a3a9392..df3dfef 100644
+--- a/drivers/net/ethernet/arc/emac_main.c
++++ b/drivers/net/ethernet/arc/emac_main.c
+@@ -153,9 +153,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
+ {
+ 	struct arc_emac_priv *priv = netdev_priv(ndev);
+ 	struct net_device_stats *stats = &ndev->stats;
+-	unsigned int i;
+ 
+-	for (i = 0; i < TX_BD_NUM; i++) {
++	while (priv->txbd_dirty != priv->txbd_curr) {
+ 		unsigned int *txbd_dirty = &priv->txbd_dirty;
+ 		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
+ 		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
+@@ -685,13 +684,15 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
+ 	wmb();
+ 
+ 	skb_tx_timestamp(skb);
++	priv->tx_buff[*txbd_curr].skb = skb;
++
++	dma_wmb();
+ 
+ 	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
+ 
+ 	/* Make sure info word is set */
+ 	wmb();
+ 
+-	priv->tx_buff[*txbd_curr].skb = skb;
+ 
+ 	/* Increment index to point to the next BD */
+ 	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
