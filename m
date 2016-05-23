@@ -1,231 +1,80 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/3] soc: rockchip: add driver handling grf setup
-Date: Mon, 23 May 2016 16:58:58 +0200
-Message-ID: <1464015539-19521-3-git-send-email-heiko@sntech.de>
-References: <1464015539-19521-1-git-send-email-heiko@sntech.de>
+From: Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>
+Subject: RE: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Mon, 23 May 2016 15:15:20 +0000
+Message-ID: <8520D5D51A55D047800579B094147198258ACE47@XAP-PVEXMBX01.xlnx.xilinx.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1464015539-19521-1-git-send-email-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The General Register Files are an area of registers containing a lot
-of single-bit settings for numerous components as well full components
-like usbphy control. Therefore all used components are accessed
-via the syscon provided by the grf nodes or from the sub-devices
-created through the simple-mfd created from the grf node.
+> +
+> +	irq = platform_get_irq_byname(pdev, "pcie-sys");
+> +	if (irq < 0) {
+> +		dev_err(dev, "missing pcie_sys IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+> +	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
+> +			       IRQF_SHARED, "pcie-sys", port);
+> +	if (err) {
+> +		dev_err(dev, "failed to request pcie subsystem irq\n");
+> +		return err;
+> +	}
+> +
+> +	port->irq = platform_get_irq_byname(pdev, "pcie-legacy");
+> +	if (port->irq < 0) {
+> +		dev_err(dev, "missing pcie_legacy IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+> +	err = devm_request_irq(dev, port->irq,
+> +			       rockchip_pcie_legacy_int_handler,
+> +			       IRQF_SHARED,
+> +			       "pcie-legacy",
+> +			       port);
+> +	if (err) {
+> +		dev_err(&pdev->dev, "failed to request pcie-legacy irq\n");
+> +		return err;
+> +	}
+> +
+> +	irq = platform_get_irq_byname(pdev, "pcie-client");
+> +	if (irq < 0) {
+> +		dev_err(dev, "missing pcie-client IRQ resource\n");
+> +		return -EINVAL;
+> +	}
+> +	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
+> +			       IRQF_SHARED, "pcie-client", port);
+> +	if (err) {
+> +		dev_err(dev, "failed to request pcie client irq\n");
+> +		return err;
+> +	}
+> +
 
-Some settings are not used by anything but will need to be set up
-according to expectations on the kernel side.
+All of the above interrupt number details are being obtained from device tree, why not move above API's to rockchip_pcie_parse_dt.
 
-Best example is the force_jtag setting, which defaults to on and
-results in the soc switching the pin-outputs between jtag and sdmmc
-automatically depending on the card-detect status. This conflicts
-heavily with how the dw_mmc driver expects to do its work and also
-with the clock-controller, which has most likely deactivated the
-jtag clock due to it being unused.
+> +	port->dev = dev;
+> +	err = rockchip_pcie_parse_dt(port);
+> +	if (err) {
+> +		dev_err(dev, "Parsing DT failed\n");
+> +		return err;
+> +	}
+> +
+> +	pcie_write(port, 0x6040000, PCIE_RC_CONFIG_BASE + 0x8);
+> +	pcie_write(port, 0x0, PCIE_CORE_CTRL_MGMT_BASE + 0x300);
+> +
+> +	pcie_write(port, (RC_REGION_0_ADDR_TRANS_L +
+> RC_REGION_0_PASS_BITS),
+> +		   PCIE_CORE_AXI_CONF_BASE);
+> +	pcie_write(port, RC_REGION_0_ADDR_TRANS_H,
+> +		   PCIE_CORE_AXI_CONF_BASE + 0x4);
+> +	pcie_write(port, 0x0080000a, PCIE_CORE_AXI_CONF_BASE + 0x8);
+> +	pcie_write(port, 0x00000000, PCIE_CORE_AXI_CONF_BASE + 0xc);
 
-So far the handling of this setting was living in the mach-rockchip
-code for the arm32-based rk3288 but that of course doesn't work
-for arm64 socs and would also look ugly for further arm32 socs.
-
-So introduce a top-level driver for the grf that handles these
-settings that need to be a certain way but nobody cares about.
-
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
----
- drivers/soc/rockchip/Kconfig  |  10 +++
- drivers/soc/rockchip/Makefile |   1 +
- drivers/soc/rockchip/grf.c    | 138 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 149 insertions(+)
- create mode 100644 drivers/soc/rockchip/grf.c
-
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index 7140ff8..20da55d 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -3,6 +3,16 @@ if ARCH_ROCKCHIP || COMPILE_TEST
- #
- # Rockchip Soc drivers
- #
-+
-+config ROCKCHIP_GRF
-+	bool
-+	default y
-+	help
-+	  The General Register Files are a central component providing
-+	  special additional settings registers for a lot of soc-components.
-+	  In a lot of cases there also need to be default settings initialized
-+	  to make some of them conform to expectations of the kernel.
-+
- config ROCKCHIP_PM_DOMAINS
-         bool "Rockchip generic power domain"
-         depends on PM
-diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
-index 3d73d06..c851fa0 100644
---- a/drivers/soc/rockchip/Makefile
-+++ b/drivers/soc/rockchip/Makefile
-@@ -1,4 +1,5 @@
- #
- # Rockchip Soc drivers
- #
-+obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
- obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-new file mode 100644
-index 0000000..25a1fd3
---- /dev/null
-+++ b/drivers/soc/rockchip/grf.c
-@@ -0,0 +1,138 @@
-+/*
-+ * Rockchip Generic Register Files setup
-+ *
-+ * Copyright (c) 2016 Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
-+
-+#include <linux/err.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define HIWORD_UPDATE(val, mask, shift) \
-+		((val) << (shift) | (mask) << ((shift) + 16))
-+
-+struct rockchip_grf_value {
-+	const char *desc;
-+	u32 reg;
-+	u32 val;
-+};
-+
-+struct rockchip_grf_info {
-+	const struct rockchip_grf_value *values;
-+	int num_values;
-+};
-+
-+#define RK3036_GRF_SOC_CON0		0x140
-+
-+static const struct rockchip_grf_value rk3036_defaults[] = {
-+	/*
-+	 * Disable auto jtag/sdmmc switching that causes issues with the
-+	 * clock-framework and the mmc controllers making them unreliable.
-+	 */
-+	{ "jtag switching", RK3036_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 11) },
-+};
-+
-+static const struct rockchip_grf_info rk3036_grf = {
-+	.values = rk3036_defaults,
-+	.num_values = ARRAY_SIZE(rk3036_defaults),
-+};
-+
-+#define RK3288_GRF_SOC_CON0		0x244
-+
-+static const struct rockchip_grf_value rk3288_defaults[] = {
-+	{ "jtag switching", RK3288_GRF_SOC_CON0, HIWORD_UPDATE(0, 1, 12) },
-+};
-+
-+static const struct rockchip_grf_info rk3288_grf = {
-+	.values = rk3288_defaults,
-+	.num_values = ARRAY_SIZE(rk3288_defaults),
-+};
-+
-+#define RK3399_GRF_SOC_CON7		0xe21c
-+
-+static const struct rockchip_grf_value rk3399_defaults[] = {
-+	{ "jtag switching", RK3399_GRF_SOC_CON7, HIWORD_UPDATE(0, 1, 12) },
-+
-+};
-+
-+static const struct rockchip_grf_info rk3399_grf = {
-+	.values = rk3399_defaults,
-+	.num_values = ARRAY_SIZE(rk3399_defaults),
-+};
-+
-+static const struct of_device_id rockchip_grf_dt_match[] = {
-+	{
-+		.compatible = "rockchip,rk3036-grf",
-+		.data = (void *)&rk3036_grf,
-+	}, {
-+		.compatible = "rockchip,rk3288-grf",
-+		.data = (void *)&rk3288_grf,
-+	}, {
-+		.compatible = "rockchip,rk3399-grf",
-+		.data = (void *)&rk3399_grf,
-+	},
-+	{ /* sentinel */ },
-+};
-+
-+static int rockchip_grf_probe(struct platform_device *pdev)
-+{
-+	const struct rockchip_grf_info *grf_info;
-+	const struct of_device_id *match;
-+	struct device *dev = &pdev->dev;
-+	struct regmap *grf;
-+	int i;
-+
-+	if (!dev->of_node)
-+		return -ENODEV;
-+
-+	match = of_match_device(rockchip_grf_dt_match, dev);
-+	if (!match || !match->data) {
-+		dev_err(dev, "missing grf data\n");
-+		return -EINVAL;
-+	}
-+
-+	grf_info = match->data;
-+
-+	grf = syscon_node_to_regmap(dev->of_node);
-+	if (IS_ERR(grf)) {
-+		dev_err(dev, "rockchip: could not get grf syscon\n");
-+		return PTR_ERR(grf);
-+	}
-+
-+	for (i = 0; i < grf_info->num_values; i++) {
-+		const struct rockchip_grf_value *val = &grf_info->values[i];
-+
-+		dev_dbg(dev, "adjusting %s in 0x%x to 0x%x\n",
-+			val->desc, val->reg, val->val);
-+		regmap_write(grf, val->reg, val->val);
-+	}
-+
-+	return 0;
-+}
-+
-+static struct platform_driver rockchip_grf_driver = {
-+	.probe = rockchip_grf_probe,
-+	.driver = {
-+		.name   = "rockchip-grf",
-+		.of_match_table = rockchip_grf_dt_match,
-+		/*
-+		 * The General Register Files are a central component
-+		 * accessed by numerous ip blocks and we're setting
-+		 * defaults which should only happen once.
-+		 */
-+		.suppress_bind_attrs = true,
-+	},
-+};
-+
-+static int __init rockchip_grf_drv_register(void)
-+{
-+	return platform_driver_register(&rockchip_grf_driver);
-+}
-+postcore_initcall(rockchip_grf_drv_register);
--- 
-2.6.4
+Why not move the above steps to rockchip_pcie_init_port function ? 
+Please use macros instead of using values.
