@@ -1,424 +1,539 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: Add machine driver for MAX98357A/RT5514/DA7219
-Date: Mon, 23 May 2016 11:11:48 +0800
-Message-ID: <1463973108-8699-1-git-send-email-zhengxing@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Mon, 23 May 2016 11:27:57 +0800
+Message-ID: <ba4bc10c-a757-81ff-713d-5aa85012c64f@rock-chips.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+ <3647622.McCjKUuZmz@phil>
+ <d0d2648a-a2d7-b57c-a434-490aab8d7958@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d0d2648a-a2d7-b57c-a434-490aab8d7958@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: dianders@chromium.org, heiko@sntech.de, Xing Zheng <zhengxing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are multi codec devices on the RK3399 platform, we can use
-this patch support and control these codecs.
+On 2016/5/23 8:48, Shawn Lin wrote:
+> On 2016/5/21 5:13, Heiko Stuebner wrote:
+>> Hi Shawn,
+>>
+>> I haven't had any contact with PCI yet, so my comments below will likely
+>> address more generic findings only.
+>>
+>> As you might've guessed from the binding comments, to me it looks like
+>> the
+>> phy handling should be in a separate phy driver and looking below all phy
+>> accesses seem very separate from the actual pci controller interactions -
+>> they are even in port_init only as well.
+>>
+>
+> yes, the main reason for not to seperate a new pcie-phy driver for this
+> prototype design is that I just wonder whether it's worth to create a
+> new driver for just a small piece of code. And a bit more forward is
+> that I think phy api is no so scalable for just init/power_on in
+> case of too much interactions between controller and phy from which I
+> suffer a bit for emmc.
+>
+> Should I really need to seperate the phy part into pcie-phy? ;)
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+Currently, We still need some more interactions between phy and 
+controller here, not just what you point out in the comments. so if we
+need a seperate phy driver, could it allows me to export some functions
+for pcie driver?
 
- .../sound/rockchip-max98357a-rt5514-da7219.txt     |   15 +
- sound/soc/rockchip/Kconfig                         |   11 +
- sound/soc/rockchip/Makefile                        |    2 +
- .../rockchip/rockchip_max98357a_rt5514_da7219.c    |  339 ++++++++++++++++++++
- 4 files changed, 367 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
- create mode 100644 sound/soc/rockchip/rockchip_max98357a_rt5514_da7219.c
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt b/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
-new file mode 100644
-index 0000000..5928384
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
-@@ -0,0 +1,15 @@
-+ROCKCHIP with MAX98357A/RT5514/DA7219 codecs
-+
-+Required properties:
-+- compatible: "rockchip,rockchip-sound"
-+- rockchip,cpu: The phandle of the Rockchip I2S controller that's
-+  connected to the codecs
-+- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
-+
-+Example:
-+
-+sound {
-+	compatible = "rockchip,rockchip-sound";
-+	rockchip,cpu = <&i2s0 &i2s0 &i2s1>;
-+	rockchip,codec = <&max98357a &headsetcodec &codec>;
-+};
-diff --git a/sound/soc/rockchip/Kconfig b/sound/soc/rockchip/Kconfig
-index f1e0c70..d02aa94 100644
---- a/sound/soc/rockchip/Kconfig
-+++ b/sound/soc/rockchip/Kconfig
-@@ -41,3 +41,14 @@ config SND_SOC_ROCKCHIP_RT5645
- 	help
- 	  Say Y or M here if you want to add support for SoC audio on Rockchip
- 	  boards using the RT5645/RT5650 codec, such as Veyron.
-+
-+config SND_SOC_ROCKCHIP_MAX98357A_RT5514_DA7219
-+	tristate "ASoC support for Rockchip boards using the MAX98357A/RT5514/DA7219"
-+	depends on SND_SOC_ROCKCHIP && GPIOLIB
-+	select SND_SOC_ROCKCHIP_I2S
-+	select SND_SOC_MAX98357A
-+	select SND_SOC_RT5514
-+	select SND_SOC_DA7219
-+	help
-+	  Say Y or M here if you want to add support for SoC audio on Rockchip
-+	  boards using the MAX98357A/RT5514/DA7219.
-diff --git a/sound/soc/rockchip/Makefile b/sound/soc/rockchip/Makefile
-index c0bf560..ca97489 100644
---- a/sound/soc/rockchip/Makefile
-+++ b/sound/soc/rockchip/Makefile
-@@ -7,6 +7,8 @@ obj-$(CONFIG_SND_SOC_ROCKCHIP_SPDIF) += snd-soc-rockchip-spdif.o
- 
- snd-soc-rockchip-max98090-objs := rockchip_max98090.o
- snd-soc-rockchip-rt5645-objs := rockchip_rt5645.o
-+snd-soc-rockchip-max98357a-rt5514-da7219-objs := rockchip_max98357a_rt5514_da7219.o
- 
- obj-$(CONFIG_SND_SOC_ROCKCHIP_MAX98090) += snd-soc-rockchip-max98090.o
- obj-$(CONFIG_SND_SOC_ROCKCHIP_RT5645) += snd-soc-rockchip-rt5645.o
-+obj-$(CONFIG_SND_SOC_ROCKCHIP_MAX98357A_RT5514_DA7219) += snd-soc-rockchip-max98357a-rt5514-da7219.o
-diff --git a/sound/soc/rockchip/rockchip_max98357a_rt5514_da7219.c b/sound/soc/rockchip/rockchip_max98357a_rt5514_da7219.c
-new file mode 100644
-index 0000000..50c0d35
---- /dev/null
-+++ b/sound/soc/rockchip/rockchip_max98357a_rt5514_da7219.c
-@@ -0,0 +1,339 @@
-+/*
-+ * Rockchip machine ASoC driver for boards using MAX98357A/RT5514/DA7219
-+ *
-+ * Copyright (c) 2016, ROCKCHIP CORPORATION.  All rights reserved.
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2, as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-+ * more details.
-+ *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+#include <linux/gpio.h>
-+#include <linux/of_gpio.h>
-+#include <linux/delay.h>
-+#include <linux/spi/spi.h>
-+#include <sound/core.h>
-+#include <sound/jack.h>
-+#include <sound/pcm.h>
-+#include <sound/pcm_params.h>
-+#include <sound/soc.h>
-+#include "rockchip_i2s.h"
-+#include "../codecs/da7219.h"
-+#include "../codecs/da7219-aad.h"
-+#include "../codecs/rt5514.h"
-+
-+#define DRV_NAME "rockchip-sound"
-+
-+static struct snd_soc_jack rockchip_sound_jack;
-+
-+static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
-+	SND_SOC_DAPM_HP("Headphones", NULL),
-+	SND_SOC_DAPM_SPK("Speakers", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-+	SND_SOC_DAPM_MIC("Int Mic", NULL),
-+};
-+
-+static const struct snd_soc_dapm_route rockchip_dapm_routes[] = {
-+	/* Input Lines */
-+	{"MIC", NULL, "Headset Mic"},
-+	{"DMIC1L", NULL, "Int Mic"},
-+	{"DMIC1R", NULL, "Int Mic"},
-+
-+	/* Output Lines */
-+	{"Headphones", NULL, "HPL"},
-+	{"Headphones", NULL, "HPR"},
-+	{"Speakers", NULL, "Speakers"},
-+};
-+
-+static const struct snd_kcontrol_new rockchip_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Headphones"),
-+	SOC_DAPM_PIN_SWITCH("Speakers"),
-+	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-+	SOC_DAPM_PIN_SWITCH("Int Mic"),
-+};
-+
-+static int rockchip_sound_max98357a_hw_params(struct snd_pcm_substream *substream,
-+			     struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_dapm_context *dapm = &rtd->card->dapm;
-+	unsigned int mclk;
-+	int ret;
-+
-+	switch (params_rate(params)) {
-+	case 8000:
-+	case 16000:
-+	case 48000:
-+	case 96000:
-+		mclk = 12288000;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(rtd->cpu_dai, 0, mclk, 0);
-+	if (ret) {
-+		dev_err(rtd->card->dev, "%s() error setting sysclk to %u: %d\n",
-+				__func__, mclk, ret);
-+		return ret;
-+	}
-+
-+	snd_soc_dapm_disable_pin(dapm, "Headphones");
-+	snd_soc_dapm_enable_pin(dapm, "Speakers");
-+	snd_soc_dapm_sync(dapm);
-+
-+	return 0;
-+}
-+
-+static int rockchip_sound_rt5514_hw_params(struct snd_pcm_substream *substream,
-+			     struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
-+	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	unsigned int mclk;
-+	int ret;
-+
-+	switch (params_rate(params)) {
-+	case 8000:
-+	case 16000:
-+	case 32000:
-+	case 48000:
-+	case 96000:
-+		mclk = 12288000;
-+		break;
-+	case 11025:
-+	case 22050:
-+	case 44100:
-+		mclk = 11289600;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
-+				     SND_SOC_CLOCK_OUT);
-+	if (ret < 0) {
-+		dev_err(rtd->card->dev, "Can't set cpu clock out %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(codec_dai, RT5514_SCLK_S_MCLK,
-+				     mclk, SND_SOC_CLOCK_IN);
-+	if (ret) {
-+		dev_err(rtd->card->dev, "%s() error setting sysclk to %u: %d\n",
-+				__func__, params_rate(params) * 512, ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_sound_da7219_hw_params(struct snd_pcm_substream *substream,
-+			     struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
-+	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	struct snd_soc_dapm_context *dapm = &rtd->card->dapm;
-+	int mclk, ret;
-+
-+	switch (params_rate(params)) {
-+	case 8000:
-+	case 16000:
-+	case 32000:
-+	case 48000:
-+	case 96000:
-+		mclk = 12288000;
-+		break;
-+	case 11025:
-+	case 22050:
-+	case 44100:
-+		mclk = 11289600;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(cpu_dai, 0, mclk,
-+				     SND_SOC_CLOCK_OUT);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev, "Can't set cpu clock out %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_sysclk(codec_dai, 0, mclk,
-+				     SND_SOC_CLOCK_IN);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev, "Can't set codec clock in %d\n", ret);
-+		return ret;
-+	}
-+
-+	ret = snd_soc_dai_set_pll(codec_dai, 0, DA7219_SYSCLK_MCLK, 0, 0);
-+	if (ret < 0) {
-+		dev_err(codec_dai->dev, "Can't set pll sysclk mclk %d\n", ret);
-+		return ret;
-+	}
-+
-+	snd_soc_dapm_disable_pin(dapm, "Speakers");
-+	snd_soc_dapm_enable_pin(dapm, "Headphones");
-+	snd_soc_dapm_sync(dapm);
-+
-+	return 0;
-+}
-+
-+static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct snd_soc_codec *codec = rtd->codec_dais[0]->codec;
-+	int ret;
-+
-+	/* Enable Headset and 4 Buttons Jack detection */
-+	ret = snd_soc_card_jack_new(rtd->card, "Headset Jack",
-+				    SND_JACK_HEADSET |
-+				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
-+				    &rockchip_sound_jack, NULL, 0);
-+
-+	if (ret) {
-+		dev_err(rtd->card->dev, "New Headset Jack failed! (%d)\n", ret);
-+		return ret;
-+	}
-+
-+	da7219_aad_jack_det(codec, &rockchip_sound_jack);
-+
-+	return 0;
-+}
-+
-+static struct snd_soc_ops rockchip_sound_max98357a_ops = {
-+	.hw_params = rockchip_sound_max98357a_hw_params,
-+};
-+
-+static struct snd_soc_ops rockchip_sound_rt5514_ops = {
-+	.hw_params = rockchip_sound_rt5514_hw_params,
-+};
-+
-+static struct snd_soc_ops rockchip_sound_da7219_ops = {
-+	.hw_params = rockchip_sound_da7219_hw_params,
-+};
-+
-+enum {
-+	DAILINK_MAX98357A,
-+	DAILINK_RT5514,
-+	DAILINK_DA7219,
-+};
-+
-+static struct snd_soc_dai_link rockchip_dailinks[] = {
-+	[DAILINK_MAX98357A] = {
-+		.name = "MAX98357A",
-+		.stream_name = "MAX98357A PCM",
-+		.codec_dai_name = "HiFi",
-+		.ops = &rockchip_sound_max98357a_ops,
-+		/* set max98357a as slave */
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBS_CFS,
-+	},
-+	[DAILINK_RT5514] = {
-+		.name = "RT5514",
-+		.stream_name = "RT5514 PCM",
-+		.codec_dai_name = "rt5514-aif1",
-+		.ops = &rockchip_sound_rt5514_ops,
-+		/* set rt5514 as slave */
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBS_CFS,
-+	},
-+	[DAILINK_DA7219] = {
-+		.name = "DA7219",
-+		.stream_name = "DA7219 PCM",
-+		.codec_dai_name = "da7219-hifi",
-+		.init = rockchip_sound_da7219_init,
-+		.ops = &rockchip_sound_da7219_ops,
-+		/* set da7219 as slave */
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			SND_SOC_DAIFMT_CBS_CFS,
-+	},
-+};
-+
-+static struct snd_soc_card rockchip_sound_card = {
-+	.name = "rockchip-sound",
-+	.owner = THIS_MODULE,
-+	.dai_link = rockchip_dailinks,
-+	.num_links =  ARRAY_SIZE(rockchip_dailinks),
-+	.dapm_widgets = rockchip_dapm_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(rockchip_dapm_widgets),
-+	.dapm_routes = rockchip_dapm_routes,
-+	.num_dapm_routes = ARRAY_SIZE(rockchip_dapm_routes),
-+	.controls = rockchip_controls,
-+	.num_controls = ARRAY_SIZE(rockchip_controls),
-+};
-+
-+static int rockchip_sound_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &rockchip_sound_card;
-+	struct device_node *cpu_node;
-+	int i, ret;
-+
-+	for (i = 0; i < card->num_links; i++) {
-+		cpu_node = of_parse_phandle(pdev->dev.of_node,
-+					 "rockchip,cpu", i);
-+		if (!cpu_node) {
-+			dev_err(&pdev->dev, "Property[%d] 'rockchip,cpu' missing or invalid\n", i);
-+			return -EINVAL;
-+		}
-+
-+		rockchip_dailinks[i].platform_of_node = cpu_node;
-+		rockchip_dailinks[i].cpu_of_node = cpu_node;
-+
-+		rockchip_dailinks[i].codec_of_node =
-+			of_parse_phandle(pdev->dev.of_node, "rockchip,codec", i);
-+		if (!rockchip_dailinks[i].codec_of_node) {
-+			dev_err(&pdev->dev,
-+				"Property[%d] 'rockchip,codec' missing or invalid\n", i);
-+			return -EINVAL;
-+		}
-+	}
-+
-+	card->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, card);
-+
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+
-+	return ret;
-+}
-+
-+static const struct of_device_id rockchip_sound_of_match[] = {
-+	{ .compatible = "rockchip,rockchip-sound", },
-+	{},
-+};
-+
-+static struct platform_driver rockchip_sound_driver = {
-+	.probe = rockchip_sound_probe,
-+	.driver = {
-+		.name = DRV_NAME,
-+		.of_match_table = rockchip_sound_of_match,
-+#ifdef CONFIG_PM
-+		.pm = &snd_soc_pm_ops,
-+#endif
-+	},
-+};
-+
-+module_platform_driver(rockchip_sound_driver);
-+
-+MODULE_AUTHOR("Xing Zheng <zhengxing@rock-chips.com>");
-+MODULE_DESCRIPTION("Rockchip ASoC Machine Driver");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:" DRV_NAME);
-+MODULE_DEVICE_TABLE(of, rockchip_sound_of_match);
+>
+>> While I already added some comments about that below, the driver seems
+>> full
+>> of raw register bit handling (including wild shifts). Please abstract
+>> that
+>> using contants, so that stuff stays readable for the future.
+>
+> okay, let me migrate these magic number and raw reg bit handling into a
+> new header file.
+>
+>>
+>>
+>> Am Freitag, 20. Mai 2016, 18:29:16 schrieb Shawn Lin:
+>>> RK3399 has a PCIe controller which can be used as Root Complex.
+>>> This driver supports a PCIe controller as Root Complex mode.
+>>>
+>>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>>> ---
+>>
+>> [...]
+>>
+>>> diff --git a/drivers/pci/host/pcie-rockchip.c
+>>> b/drivers/pci/host/pcie-rockchip.c new file mode 100644
+>>> index 0000000..4063fd3
+>>> --- /dev/null
+>>> +++ b/drivers/pci/host/pcie-rockchip.c
+>>> @@ -0,0 +1,1181 @@
+>>> +/*
+>>> + * Rockchip AXI PCIe host controller driver
+>>> + *
+>>> + * Copyright (c) 2016 Rockchip, Inc.
+>>> + *
+>>> + * Author: Shawn Lin <shawn.lin@rock-chips.com>
+>>> + *         Wenrui Li <wenrui.li@rock-chips.com>
+>>> + * Bits taken from Synopsys Designware Host controller driver and
+>>> + * ARM PCI Host generic driver.
+>>> + *
+>>> + * This program is free software: you can redistribute it and/or modify
+>>> + * it under the terms of the GNU General Public License as published by
+>>> + * the Free Software Foundation, either version 2 of the License, or
+>>> + * (at your option) any later version.
+>>> + */
+>>> +#include <linux/clk.h>
+>>> +#include <linux/delay.h>
+>>> +#include <linux/gpio/consumer.h>
+>>> +#include <linux/interrupt.h>
+>>> +#include <linux/irq.h>
+>>> +#include <linux/irqdomain.h>
+>>> +#include <linux/kernel.h>
+>>> +#include <linux/mfd/syscon.h>
+>>> +#include <linux/module.h>
+>>> +#include <linux/msi.h>
+>>> +#include <linux/of_address.h>
+>>> +#include <linux/of_device.h>
+>>> +#include <linux/of_pci.h>
+>>> +#include <linux/of_platform.h>
+>>> +#include <linux/of_irq.h>
+>>> +#include <linux/pci.h>
+>>> +#include <linux/platform_device.h>
+>>> +#include <linux/reset.h>
+>>> +#include <linux/regmap.h>
+>>> +
+>>> +#define REF_CLK_100MHZ            (100 * 1000 * 1000)
+>>
+>> seems unused
+>
+> will be removed.
+>
+>>
+>>> +#define PCIE_CLIENT_BASE        0x0
+>>> +#define PCIE_RC_CONFIG_BASE        0xa00000
+>>> +#define PCIE_CORE_CTRL_MGMT_BASE    0x900000
+>>> +#define PCIE_CORE_AXI_CONF_BASE        0xc00000
+>>> +#define PCIE_CORE_AXI_INBOUND_BASE    0xc00800
+>>> +
+>>> +#define PCIE_CLIENT_BASIC_STATUS0    0x44
+>>> +#define PCIE_CLIENT_BASIC_STATUS1    0x48
+>>> +#define PCIE_CLIENT_INT_MASK        0x4c
+>>> +#define PCIE_CLIENT_INT_STATUS        0x50
+>>> +#define PCIE_CORE_INT_MASK        0x900210
+>>> +#define PCIE_CORE_INT_STATUS        0x90020c
+>>> +
+>>> +/** Size of one AXI Region (not Region 0) */
+>>> +#define    AXI_REGION_SIZE            (0x1 << 20)
+>>
+>> for those generic (1 << x) things please use BIT(x) instead
+>> Also constants intertwined with constants is hard to read,
+>> so ideally add a blank line above each comment and comment style for
+>> single
+>> line comments only has one * in the beginning
+>
+> Ahh yep.
+>
+>>     /* foo */
+>>
+>>> +/** Overall size of AXI area */
+>>> +#define    AXI_OVERALL_SIZE        (64 * (0x1 << 20))
+>>> +/** Size of Region 0, equal to sum of sizes of other regions */
+>>> +#define    AXI_REGION_0_SIZE        (32 * (0x1 << 20))
+>>> +#define OB_REG_SIZE_SHIFT        5
+>>> +#define IB_ROOT_PORT_REG_SIZE_SHIFT    3
+>>> +
+>>> +#define AXI_WRAPPER_IO_WRITE        0x6
+>>> +#define AXI_WRAPPER_MEM_WRITE        0x2
+>>> +#define MAX_AXI_IB_ROOTPORT_REGION_NUM    3
+>>> +#define    MIN_AXI_ADDR_BITS_PASSED    8
+>>
+>> strange spacing after #define
+>
+> Generally I use one space after #define, but I donnot somehow...
+> I will check it twice.
+>
+>>
+>> [...]
+>>
+>>> +/**
+>>> + * rockchip_pcie_init_port - Initialize hardware
+>>> + * @port: PCIe port information
+>>> + */
+>>> +static int rockchip_pcie_init_port(struct rockchip_pcie_port *port)
+>>> +{
+>>> +    int err;
+>>> +    u32 status;
+>>> +    unsigned long timeout = jiffies + msecs_to_jiffies(1000);
+>>
+>> this timeout only seems to be initialized once here but used for multiple
+>> loops below resulting in all waitloops combined together being allowed to
+>> take 1 second ... is this intended?
+>
+> a big timeout value to make sure we leave enough margin. No any data
+> is provided about how long should we wait for pll lock/re-lock/tainning
+> finish stuff. As it also related to the Socs/devices. Currently I
+> test pci-ethernet/wifi/SATA-bridge/USB-bridge, and it seems can be
+> reduced. But as you know, I cannot guarantee not to augment it once we
+> find some SSD/GPU in the failure state of trainning in the future.
+> Anyway I think here we use loop-break method, so it should be not
+> harmful?
+>
+>>
+>>> +    gpiod_set_value(port->ep_gpio, 0);
+>>> +
+>>> +    /* Make sure PCIe relate block is in reset state */
+>>> +    err = reset_control_assert(port->phy_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "assert phy_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>
+>> should move to phy driver probe or so
+>>
+>>> +    err = reset_control_assert(port->core_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "assert core_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = reset_control_assert(port->mgmt_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "assert mgmt_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = reset_control_assert(port->mgmt_sticky_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "assert mgmt_sticky_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = reset_control_assert(port->pipe_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "assert pipe_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    pcie_write(port, (0xf << 20) | (0x1 << 16) |
+>>> PCIE_CLIENT_GEN_SEL_2 |
+>>> +              (0x1 << 19) | (0x1 << 3) |
+>>> +              PCIE_CLIENT_MODE_RC |
+>>> +              PCIE_CLIENT_CONF_LANE_NUM(port->lanes) |
+>>> +              PCIE_CLIENT_CONF_ENABLE, PCIE_CLIENT_BASE);
+>>> +
+>>
+>> ------ phy_enable begin ------
+>>
+>> As mentioned above, the whole phy handling seems pretty separate, so
+>> should
+>> be easily being able to live in a real phy driver?
+>>
+>> This of course also needs to handle the phy clock in it.
+>>
+>>> +    err = reset_control_deassert(port->phy_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "deassert phy_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +    regmap_write(port->grf, port->pcie_conf,
+>>> +             (0x3f << 17) | (0x10 << 1));
+>>
+>> the bits above should use some sort of constant / description. Also see
+>> HIWORD_UPDATE in other drivers for the write-enable mask
+>>
+>> also add blank line here
+>>
+>>> +    err = -EINVAL;
+>>> +    while (time_before(jiffies, timeout)) {
+>>> +        regmap_read(port->grf, port->pcie_status, &status);
+>>> +        if ((status & (1 << 9))) {
+>>
+>> use a constant for the (1 << 9) [aka BIT(9)] please
+>>
+>>> +            dev_info(port->dev, "pll locked!\n");
+>>
+>> dev_dbg instead?
+>
+> yep
+>
+>>
+>>> +            err = 0;
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "pll lock timeout!\n");
+>>> +        return err;
+>>> +    }
+>>> +    pcie_pb_wr_cfg(port, 0x10, 0x8);
+>>> +    pcie_pb_wr_cfg(port, 0x12, 0x8);
+>>> +
+>>> +    err = -ETIMEDOUT;
+>>> +    while (time_before(jiffies, timeout)) {
+>>> +        regmap_read(port->grf, port->pcie_status, &status);
+>>> +        if (!(status & (1 << 10))) {
+>>
+>> constant again
+>>
+>>> +            dev_info(port->dev, "pll output enable done!\n");
+>>
+>> dev_dbg or leave it out
+>
+> dev_dbg should be fine.
+>
+>>
+>>> +            err = 0;
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "pll output enable timeout!\n");
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    regmap_write(port->grf, port->pcie_conf,
+>>> +             (0x3f << 17) | (0x10 << 1));
+>>> +    err = -EINVAL;
+>>> +    while (time_before(jiffies, timeout)) {
+>>> +        regmap_read(port->grf, port->pcie_status, &status);
+>>> +        if ((status & (1 << 9))) {
+>>> +            dev_info(port->dev, "pll relocked!\n");
+>>> +            err = 0;
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "pll relock timeout!\n");
+>>> +        return err;
+>>> +    }
+>>
+>> ------ phy_enable end ------
+>>
+>>
+>>> +    err = reset_control_deassert(port->core_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "deassert core_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +    err = reset_control_deassert(port->mgmt_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "deassert mgmt_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +    err = reset_control_deassert(port->mgmt_sticky_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "deassert mgmt_sticky_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +    err = reset_control_deassert(port->pipe_rst);
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "deassert pipe_rst err %d\n", err);
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    pcie_write(port, 1 << 17 | 1 << 1, PCIE_CLIENT_BASE);
+>>> +
+>>> +    gpiod_set_value(port->ep_gpio, 1);
+>>> +    err = -ETIMEDOUT;
+>>> +    while (time_before(jiffies, timeout)) {
+>>> +        status = pcie_read(port, PCIE_CLIENT_BASIC_STATUS1);
+>>> +        if (((status >> 20) & 0x3) == 0x3) {
+>>> +            dev_info(port->dev, "pcie link training gen1 pass!\n");
+>>> +            err = 0;
+>>> +            break;
+>>> +        }
+>>> +    }
+>>> +    if (err) {
+>>> +        dev_err(port->dev, "pcie link training gen1 timeout!\n");
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    status = pcie_read(port, 0x9000d0);
+>>> +    status |= 0x20;
+>>> +    pcie_write(port, status, 0x9000d0);
+>>
+>> just to mention it again, bit handling as descriptive constant please and
+>> also please give that register a name :-)
+>
+> will address this magic number all above using a new header file :)
+>
+>>
+>> [...]
+>>
+>>> +static int rockchip_pcie_parse_dt(struct rockchip_pcie_port *port)
+>>> +{
+>>
+>> [...]
+>>
+>>> +    port->lanes = 1;
+>>> +    err = of_property_read_u32(node, "num-lanes", &port->lanes);
+>>> +    if (!err && ((port->lanes == 0) ||
+>>> +             (port->lanes == 3) ||
+>>> +             (port->lanes > 4))) {
+>>> +        dev_info(dev, "invalid num-lanes, default use one lane\n");
+>>
+>> dev_warn might be more appropriate
+>
+> sure.
+>
+>>
+>>> +        port->lanes = 1;
+>>> +    }
+>>
+>> [...]
+>>
+>>> +static void rockchip_pcie_msi_enable(struct rockchip_pcie_port *pp)
+>>> +{
+>>> +    struct device_node *msi_node;
+>>> +
+>>> +    msi_node = of_parse_phandle(pp->dev->of_node,
+>>> +                    "msi-parent", 0);
+>>
+>> I would assume this should live in the general parse_dt function?
+>> Also is that MSI enablement really allow to fail silently without any
+>> affect
+>> on the PCI functionality?
+>
+> yes, we should check this as well as CONFIG_PCI_MSI.
+> Will fix it.
+>
+>
+>>
+>>> +    if (!msi_node)
+>>> +        return;
+>>> +
+>>> +    pp->msi = of_pci_find_msi_chip_by_node(msi_node);
+>>> +    of_node_put(msi_node);
+>>> +
+>>> +    if (pp->msi)
+>>> +        pp->msi->dev = pp->dev;
+>>> +}
+>>
+>> [...]
+>>
+>>> +static int rockchip_pcie_probe(struct platform_device *pdev)
+>>> +{
+>>> +    struct rockchip_pcie_port *port;
+>>> +    struct device *dev = &pdev->dev;
+>>> +    struct pci_bus *bus, *child;
+>>> +    struct resource_entry *win;
+>>> +    int reg_no;
+>>> +    int err = 0;
+>>> +    int irq;
+>>> +    LIST_HEAD(res);
+>>> +
+>>> +    if (!dev->of_node)
+>>> +        return -ENODEV;
+>>> +
+>>> +    port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+>>> +    if (!port)
+>>> +        return -ENOMEM;
+>>> +
+>>> +    irq = platform_get_irq_byname(pdev, "pcie-sys");
+>>> +    if (irq < 0) {
+>>> +        dev_err(dev, "missing pcie_sys IRQ resource\n");
+>>> +        return -EINVAL;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
+>>> +                   IRQF_SHARED, "pcie-sys", port);
+>>> +    if (err) {
+>>> +        dev_err(dev, "failed to request pcie subsystem irq\n");
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    port->irq = platform_get_irq_byname(pdev, "pcie-legacy");
+>>> +    if (port->irq < 0) {
+>>> +        dev_err(dev, "missing pcie_legacy IRQ resource\n");
+>>> +        return -EINVAL;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = devm_request_irq(dev, port->irq,
+>>> +                   rockchip_pcie_legacy_int_handler,
+>>> +                   IRQF_SHARED,
+>>> +                   "pcie-legacy",
+>>> +                   port);
+>>> +    if (err) {
+>>> +        dev_err(&pdev->dev, "failed to request pcie-legacy irq\n");
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    irq = platform_get_irq_byname(pdev, "pcie-client");
+>>> +    if (irq < 0) {
+>>> +        dev_err(dev, "missing pcie-client IRQ resource\n");
+>>> +        return -EINVAL;
+>>> +    }
+>>
+>> blank line
+>>
+>>> +    err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
+>>> +                   IRQF_SHARED, "pcie-client", port);
+>>> +    if (err) {
+>>> +        dev_err(dev, "failed to request pcie client irq\n");
+>>> +        return err;
+>>> +    }
+>>> +
+>>> +    port->dev = dev;
+>>> +    err = rockchip_pcie_parse_dt(port);
+>>> +    if (err) {
+>>> +        dev_err(dev, "Parsing DT failed\n");
+>>> +        return err;
+>>> +    }
+>>
+>> rockchip_pcie_parse_dt already emits error messages that are a lot more
+>> specific to the actual problem, so you don't need another error
+>> message here
+>> and can just return the error code.
+>>
+>
+> okay.
+>
+>>
+>>> +    err = rockchip_pcie_init_port(port);
+>>> +    if (err)
+>>> +        return err;
+>>> +
+>>> +    platform_set_drvdata(pdev, port);
+>>> +
+>>> +    rockchip_pcie_enable_interrupts(port);
+>>> +    if (!IS_ENABLED(CONFIG_PCI_MSI)) {
+>>> +        err = rockchip_pcie_init_irq_domain(port);
+>>> +        if (err < 0)
+>>> +            return err;
+>>> +    }
+>>> +
+>>> +    err = of_pci_get_host_bridge_resources(dev->of_node, 0, 0xff,
+>>> +                           &res, &port->io_base);
+>>> +    if (err)
+>>> +        return err;
+>>
+>> add blank line
+>>
+>>
+>> Heiko
+>>
+>>
+>>
+>
+>
+
+
 -- 
-1.7.9.5
+Best Regards
+Shawn Lin
