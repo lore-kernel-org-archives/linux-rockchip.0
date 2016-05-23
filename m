@@ -1,90 +1,29 @@
-From: Shuyu Wei <wsy2220@gmail.com>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Mon, 23 May 2016 19:36:09 +0800
-Message-ID: <20160523113609.GA21019@debian-dorm>
-References: <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com>
- <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com>
- <573E2D0C.604@gmx.de>
- <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm>
- <5740E82F.8040903@gmx.de>
- <20160522091742.GA8681@debian-dorm>
- <57419853.9050701@gmx.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <57419853.9050701@gmx.de>
-Sender: netdev-owner@vger.kernel.org
-To: Lino Sanfilippo <LinoSanfilippo@gmx.de>
-Cc: Francois Romieu <romieu@fr.zoreil.com>, David Miller <davem@davemloft.net>, wxt@rock-chips.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, al.kochet@gmail.com
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: [PATCH 0/3] Add the eDP/VOP device node for rk3399
+Date: Mon, 23 May 2016 21:10:56 +0800
+Message-ID: <1464009056-32158-1-git-send-email-ykk@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Kumar Gala <galak@codeaurora.org>, Rob Herring <robh+dt@kernel.org>, Olof Johansson <olof@lixom.net>, Jianqun Xu <jay.xu@rock-chips.com>, Pawel Moll <pawel.moll@arm.com>
+Cc: mark.yao@rock-chips.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Yakir Yang <ykk@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, May 22, 2016 at 01:30:27PM +0200, Lino Sanfilippo wrote:
-> 
-> Thanks for testing. However that extra check for skb not being NULL should not be
-> necessary if the code were correct. The changes I suggested were all about having
-> skb and info consistent with txbd_curr.
-> But I just realized that there is still a big flaw in the last changes. While
-> tx() looks correct now (we first set up the descriptor and assign the skb and _then_
-> advance txbd_curr) tx_clean still is not:
-> 
-> We _first_ have to read tx_curr and _then_ read the corresponding descriptor and its skb.
-> (The last patch implemented just the reverse - and thus wrong - order, first get skb and 
-> descriptor and then read tx_curr).
-> 
-> So the patch below hopefully handles also tx_clean correctly. Could you please do once more a test
-> with this one?
+This thread is rely on Mark's VOP thread[1] and Yakir's eDP thread[2].
 
-Hi Lino, 
-This patch worked after a whole night of stress testing.
-
-> > 
-> > After further test, my patch to barrier timestamp() didn't work.
-> > Just like the original code in the tree, the emac still got stuck under
-> > high load, even if I changed the smp_wmb() to dma_wmb(). So the original
-> > code do have race somewhere.
-> 
-> So to make this clear: with the current code in net-next you still see a problem (lockup), right?
-Yes, I mean the mainline kernel, which should be the same as net-next.
+[1]: https://lkml.org/lkml/2016/4/20/36
+[2]: https://patchwork.freedesktop.org/patch/83406/
 
 
-> > ... and why Francois' fix worked. Please be patient with me :-).
-> 
-> So which fix(es) exactly work for you and solve your lockup issue?
-I mean the patch below, starting this thread.
+Mark Yao (1):
+  arm64: dts: rockchip: add VOP and VOP iommu node for rk3399
 
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index a3a9392..df3dfef 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -153,9 +153,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
- 	struct net_device_stats *stats = &ndev->stats;
--	unsigned int i;
- 
--	for (i = 0; i < TX_BD_NUM; i++) {
-+	while (priv->txbd_dirty != priv->txbd_curr) {
- 		unsigned int *txbd_dirty = &priv->txbd_dirty;
- 		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
- 		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
-@@ -685,13 +684,15 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 	wmb();
- 
- 	skb_tx_timestamp(skb);
-+	priv->tx_buff[*txbd_curr].skb = skb;
-+
-+	dma_wmb();
- 
- 	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
- 
- 	/* Make sure info word is set */
- 	wmb();
- 
--	priv->tx_buff[*txbd_curr].skb = skb;
- 
- 	/* Increment index to point to the next BD */
- 	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
+Yakir Yang (2):
+  arm64: dts: rockchip: add eDP device node for rk3399
+  arm64: dts: rockchip: add backlight support for rk3399 evb board
+
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts |  40 ++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi    | 110 ++++++++++++++++++++++++++++
+ 2 files changed, 150 insertions(+)
+
+-- 
+1.9.1
