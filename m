@@ -1,12 +1,14 @@
 From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
 Subject: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending flip
- event v4
-Date: Tue, 24 May 2016 09:26:01 +0200
-Message-ID: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com>
+ event v5
+Date: Tue, 24 May 2016 09:27:37 +0200
+Message-ID: <1464074857-5515-1-git-send-email-tomeu.vizoso@collabora.com>
+References: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
