@@ -1,72 +1,46 @@
-From: "Peter Feuerer" <peter@piie.net>
-Subject: Re: [PATCH v2 4/5] thermal: bang-bang governor: act on lower trip
- boundary
-Date: Tue, 24 May 2016 17:34:58 +0000
-Message-ID: <a942e788aa285dcf88db38c6d03a36ce@mail.piie.net>
-References: <20160524130610.GC8979@e104805>
- <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
- <1462268013-14992-5-git-send-email-wxt@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
+Date: Tue, 24 May 2016 11:12:20 -0700
+Message-ID: <CAD=FV=WH6xYE6UiDxVK=cLnhoHnCvecSL4tk7FUVAnkGbQ-QOg@mail.gmail.com>
+References: <1464066147-22734-1-git-send-email-ykk@rock-chips.com>
+ <1464073043-4931-1-git-send-email-ykk@rock-chips.com>
+ <6183955.XzKjc41sjW@phil>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160524130610.GC8979@e104805>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javi Merino <javi.merino@arm.com>, Caesar Wang <wxt@rock-chips.com>
-Cc: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <6183955.XzKjc41sjW@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mark Yao <yzq@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-24. Mai 2016 15:06 Uhr, "Javi Merino" <javi.merino@arm.com> schrieb:
-> Ccing Peter Feuerer, author of the bang bang governor.
-> 
-> On Tue, May 03, 2016 at 05:33:32PM +0800, Caesar Wang wrote:
-> 
->> From: Sascha Hauer <s.hauer@pengutronix.de>
->> 
->> With interrupt driven thermal zones we pass the lower and upper
->> temperature on which shall be acted, so in the governor we have to act on
->> the exact lower temperature to be consistent. Otherwise an interrupt maybe
->> generated on the exact lower temperature, but the bang bang governor does
->> not react since The polling driven zones have to be one step cooler before
->> the governor reacts.
->> 
->> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->> Cc: Zhang Rui <rui.zhang@intel.com>
->> Cc: Eduardo Valentin <edubezval@gmail.com>
->> Cc: linux-pm@vger.kernel.org
-
-Acked-by: Peter Feuerer <peter@piie.net>
-
-
->> 
->> ---
->> 
->> Changes in v2:
->> - Update the commit for patch[v2 4/5].
->> 
->> drivers/thermal/gov_bang_bang.c | 2 +-
->> 1 file changed, 1 insertion(+), 1 deletion(-)
->> 
->> diff --git a/drivers/thermal/gov_bang_bang.c b/drivers/thermal/gov_bang_bang.c
->> index 70836c5..9d1dfea 100644
->> --- a/drivers/thermal/gov_bang_bang.c
->> +++ b/drivers/thermal/gov_bang_bang.c
->> @@ -59,7 +59,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
->> if (instance->target == 0 && tz->temperature >= trip_temp)
->> instance->target = 1;
->> else if (instance->target == 1 &&
->> - tz->temperature < trip_temp - trip_hyst)
->> + tz->temperature <= trip_temp - trip_hyst)
->> instance->target = 0;
->> 
->> dev_dbg(&instance->cdev->device, "target=%d\n",
->> --
->> 1.9.1
->> 
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at http://vger.kernel.org/majordomo-info.html
+SGksCgpPbiBUdWUsIE1heSAyNCwgMjAxNiBhdCAzOjE3IEFNLCBIZWlrbyBTdHVlYm5lciA8aGVp
+a29Ac250ZWNoLmRlPiB3cm90ZToKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvYnJpZGdlL2FuYWxvZ2l4X2RwLnR4dAo+PiArKysgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAudHh0Cj4+
+IEBAIC01LDYgKzUsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzIGZvciBkcC1jb250cm9sbGVyOgo+
+PiAgICAgICAgICAgICAgIHBsYXRmb3JtIHNwZWNpZmljIHN1Y2ggYXM6Cj4+ICAgICAgICAgICAg
+ICAgICogInNhbXN1bmcsZXh5bm9zNS1kcCIKPj4gICAgICAgICAgICAgICAgKiAicm9ja2NoaXAs
+cmszMjg4LWRwIgo+PiArICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMzOTktZWRwIgo+Cj4g
+dGhlIGNsZWFubGluZXMtZnJlYWsgaW4gbXkgbGlrZXMgdG8ga25vdyBpZiB0aGVyZSBpcyBhIGRp
+ZmZlcmVuY2UgYmV0d2Vlbgo+IHRoZSByazMzOTkgYmVpbmcgY2FsbGVkIC1lZHAgaGVyZSBhbmQg
+LWRwIG9uIHRoZSByazMyODggOi0pCj4KPiBbLi4uXQoKSWYgSSB3YXMgYSBndWVzc2luZyBtYW4g
+KHdoaWNoIEknbSBub3QsIGJ1dCBpZiBJIHdhcyksIEknZCBndWVzcyB0aGF0CnRoaXMgaXMgYmVj
+YXVzZSBvbiByazMyODggdGhlcmUgd2FzIG9ubHkgb25lIERQIHBvcnQgYW5kIGl0IHdhcyBhbiBF
+RFAKcG9ydC4gIC4uLmJ1dCBzaW5jZSB0aGVyZSB3YXMgb25seSBvbmUgcGVvcGxlIGp1c3QgcmVm
+ZXJyZWQgdG8gaXQgYXMKdGhlICJEUCIgcG9ydCBhbmQgdGhhdCB3YXMgY29kaWZpZWQgaW4gdGhl
+IGJpbmRpbmdzLiAgT24gcmszMzk5IHRoZXJlCmFyZSB0d28gcG9ydHM6IG9uZSBFRFAgYW5kIG9u
+ZSBEUC4gIEFsbCBvZiBhIHN1ZGRlbiB3ZSBuZWVkIHRvCmRpZmZlcmVudGlhdGUuCgpBbnkgYmV0
+dGVyIHN1Z2dlc3Rpb25zIGZvciBob3cgdG8gZGVhbCB3aXRoIHRoYXQ/CgoKLURvdWcKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
