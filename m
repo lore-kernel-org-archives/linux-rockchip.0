@@ -1,43 +1,99 @@
-From: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Tue, 24 May 2016 03:14:47 +0200
-Message-ID: <5743AB07.5020206@gmx.de>
-References: <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com> <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com> <573E2D0C.604@gmx.de>
- <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
- <20160522091742.GA8681@debian-dorm> <57419853.9050701@gmx.de>
- <20160523113609.GA21019@debian-dorm>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Tue, 24 May 2016 09:28:55 +0800
+Message-ID: <0f470ba9-78ac-4822-2cd0-6f028123271d@rock-chips.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+ <8520D5D51A55D047800579B094147198258ACE47@XAP-PVEXMBX01.xlnx.xilinx.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160523113609.GA21019@debian-dorm>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <8520D5D51A55D047800579B094147198258ACE47@XAP-PVEXMBX01.xlnx.xilinx.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, Wenrui Li <wenrui.li@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 23.05.2016 13:36, Shuyu Wei wrote:
-> On Sun, May 22, 2016 at 01:30:27PM +0200, Lino Sanfilippo wrote:
->> 
+Hi Bharat,
 
-> 
-> Hi Lino, 
-> This patch worked after a whole night of stress testing.
-> 
+On 2016/5/23 23:15, Bharat Kumar Gogada wrote:
+>> +
+>> +	irq = platform_get_irq_byname(pdev, "pcie-sys");
+>> +	if (irq < 0) {
+>> +		dev_err(dev, "missing pcie_sys IRQ resource\n");
+>> +		return -EINVAL;
+>> +	}
+>> +	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
+>> +			       IRQF_SHARED, "pcie-sys", port);
+>> +	if (err) {
+>> +		dev_err(dev, "failed to request pcie subsystem irq\n");
+>> +		return err;
+>> +	}
+>> +
+>> +	port->irq = platform_get_irq_byname(pdev, "pcie-legacy");
+>> +	if (port->irq < 0) {
+>> +		dev_err(dev, "missing pcie_legacy IRQ resource\n");
+>> +		return -EINVAL;
+>> +	}
+>> +	err = devm_request_irq(dev, port->irq,
+>> +			       rockchip_pcie_legacy_int_handler,
+>> +			       IRQF_SHARED,
+>> +			       "pcie-legacy",
+>> +			       port);
+>> +	if (err) {
+>> +		dev_err(&pdev->dev, "failed to request pcie-legacy irq\n");
+>> +		return err;
+>> +	}
+>> +
+>> +	irq = platform_get_irq_byname(pdev, "pcie-client");
+>> +	if (irq < 0) {
+>> +		dev_err(dev, "missing pcie-client IRQ resource\n");
+>> +		return -EINVAL;
+>> +	}
+>> +	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
+>> +			       IRQF_SHARED, "pcie-client", port);
+>> +	if (err) {
+>> +		dev_err(dev, "failed to request pcie client irq\n");
+>> +		return err;
+>> +	}
+>> +
+>
+> All of the above interrupt number details are being obtained from device tree, why not move above API's to rockchip_pcie_parse_dt.
 
-Thats great! I will nevertheless make the changes discussed with Francois and hopefully we have a final
-solution, soon.
+Ok, I will move these above into parse_dt function.
 
-Regards,
-Lino
+>
+>> +	port->dev = dev;
+>> +	err = rockchip_pcie_parse_dt(port);
+>> +	if (err) {
+>> +		dev_err(dev, "Parsing DT failed\n");
+>> +		return err;
+>> +	}
+>> +
+>> +	pcie_write(port, 0x6040000, PCIE_RC_CONFIG_BASE + 0x8);
+>> +	pcie_write(port, 0x0, PCIE_CORE_CTRL_MGMT_BASE + 0x300);
+>> +
+>> +	pcie_write(port, (RC_REGION_0_ADDR_TRANS_L +
+>> RC_REGION_0_PASS_BITS),
+>> +		   PCIE_CORE_AXI_CONF_BASE);
+>> +	pcie_write(port, RC_REGION_0_ADDR_TRANS_H,
+>> +		   PCIE_CORE_AXI_CONF_BASE + 0x4);
+>> +	pcie_write(port, 0x0080000a, PCIE_CORE_AXI_CONF_BASE + 0x8);
+>> +	pcie_write(port, 0x00000000, PCIE_CORE_AXI_CONF_BASE + 0xc);
+>
+> Why not move the above steps to rockchip_pcie_init_port function ?
+> Please use macros instead of using values.
+
+okay, will improve them.
+
+Thanks for comment.
+
+>
+>
+>
+
+
+-- 
+Best Regards
+Shawn Lin
