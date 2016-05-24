@@ -1,161 +1,64 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
-Date: Tue, 24 May 2016 15:03:13 +0200
-Message-ID: <9836736.6VjP1ug4kE@wuerfel>
-References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
- <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+From: Javi Merino <javi.merino@arm.com>
+Subject: Re: [PATCH v2 4/5] thermal: bang-bang governor: act on lower trip
+ boundary
+Date: Tue, 24 May 2016 14:06:10 +0100
+Message-ID: <20160524130610.GC8979@e104805>
+References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
+ <1462268013-14992-5-git-send-email-wxt@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1463740156-7148-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1462268013-14992-5-git-send-email-wxt@rock-chips.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Caesar Wang <wxt@rock-chips.com>
+Cc: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Peter Feuerer <peter@piie.net>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Friday, May 20, 2016 6:29:16 PM CEST Shawn Lin wrote:
+Ccing Peter Feuerer, author of the bang bang governor.
 
-> +static int rockchip_pcie_wr_own_conf(struct rockchip_pcie_port *pp,
-> +				     int where, int size, u32 val)
-> +{
-> +	u32 tmp;
-> +	int offset;
-> +
-> +	offset = (where & (~0x3));
-> +	tmp = readl(pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
-> +	if (size == 4) {
-> +		writel(val, pp->apb_base + PCIE_RC_CONFIG_BASE + where);
-> +	} else if (size == 2) {
-> +		if (where & 0x2)
-> +			tmp = ((tmp & 0xffff) | (val << 16));
-> +		else
-> +			tmp = ((tmp & 0xffff0000) | val);
-> +
-> +		writel(tmp, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
-> +	} else if (size == 1) {
-> +		if ((where & 0x3) == 0)
-> +			tmp = ((tmp & (~0xff)) | val);
-> +		else if ((where & 0x3) == 1)
-> +			tmp = ((tmp & (~0xff00)) | (val << 8));
-> +		else if ((where & 0x3) == 2)
-> +			tmp = ((tmp & (~0xff0000)) | (val << 16));
-> +		else if ((where & 0x3) == 3)
-> +			tmp = ((tmp & (~0xff000000)) | (val << 24));
-> +
-> +		writel(tmp, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
-> +	} else {
-> +		return PCIBIOS_BAD_REGISTER_NUMBER;
-> +	}
-> +	return PCIBIOS_SUCCESSFUL;
-> +}
-
-Why can't you access the individual sub-word registers here?
-
-> +
-> +static int rockchip_pcie_rd_other_conf(struct rockchip_pcie_port *pp,
-> +				       struct pci_bus *bus, u32 devfn,
-> +				       int where, int size, u32 *val)
-> +{
-> +	u32 busdev;
-> +
-> +	busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
-> +				PCI_FUNC(devfn), where);
-> +
-> +	if (busdev & (size - 1)) {
-> +		*val = 0;
-> +		return PCIBIOS_BAD_REGISTER_NUMBER;
-> +	}
-> +
-> +	if (size == 4) {
-> +		*val = readl(pp->reg_base + busdev);
-> +	} else if (size == 2) {
-> +		*val = readw(pp->reg_base + busdev);
-> +	} else if (size == 1) {
-> +		*val = readb(pp->reg_base + busdev);
-> +	} else {
-> +		*val = 0;
-> +		return PCIBIOS_BAD_REGISTER_NUMBER;
-> +	}
-> +	return PCIBIOS_SUCCESSFUL;
-> +}
-> +
-
-This looks like the normal ECAM operations, you could just call those.
-
-> +	while (time_before(jiffies, timeout)) {
-> +		regmap_read(port->grf, port->pcie_status, &status);
-> +		if ((status & (1 << 9))) {
-> +			dev_info(port->dev, "pll locked!\n");
-> +			err = 0;
-> +			break;
-> +		}
-> +	}
-
-Maybe add an msleep(1) here to avoid busy-looping?
-
-
-> +	for (reg_no = 0; reg_no < (port->mem_size >> 20); reg_no++) {
-> +		err = rockchip_pcie_prog_ob_atu(port, reg_no + 1,
-> +						AXI_WRAPPER_MEM_WRITE,
-> +						20 - 1,
-> +						port->mem_bus_addr +
-> +							(reg_no << 20),
-> +						0);
-> +		if (err) {
-> +			dev_err(dev, "Program RC outbound atu failed\n");
-> +			return err;
-> +		}
-> +	}
-
-What if there is more than one outbound memory window, e.g. prefetchable
-and non-prefetchable?
-
-Where do you set the I/O window?
-
-> +	err = rockchip_pcie_prog_ib_atu(port, 2, 32 - 1, 0x0, 0);
-> +	if (err) {
-> +		dev_err(dev, "Program RC inbound atu failed\n");
-> +		return err;
-> +	}
-
-And this doesn't seem to reflect the DMA ranges.
-
-> +
-> +	port->root_bus_nr = port->busn->start;
-> +	if (IS_ENABLED(CONFIG_PCI_MSI)) {
-> +		bus = pci_scan_root_bus_msi(port->dev, port->root_bus_nr,
-> +					    &rockchip_pcie_ops, port, &res,
-> +					    port->msi);
-> +	} else {
-> +		bus = pci_scan_root_bus(&pdev->dev, 0,
-> +					&rockchip_pcie_ops, port, &res);
-
-
-PCI_MSI is selected unconditionally from Kconfig for this driver, so no
-need for the compile-time check here.
-
-> +
-> +static int rockchip_pcie_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_pcie_port *port = platform_get_drvdata(pdev);
-> +
-> +	clk_disable_unprepare(port->hclk_pcie);
-> +	clk_disable_unprepare(port->aclk_perf_pcie);
-> +	clk_disable_unprepare(port->aclk_pcie);
-> +	clk_disable_unprepare(port->clk_pciephy_ref);
-> +
-> +	return 0;
-> +}
-
-You don't seem to remove the child devices here. Have you tried unloading the module?
-
-	Arnd
+On Tue, May 03, 2016 at 05:33:32PM +0800, Caesar Wang wrote:
+> From: Sascha Hauer <s.hauer@pengutronix.de>
+> 
+> With interrupt driven thermal zones we pass the lower and upper
+> temperature on which shall be acted, so in the governor we have to act on
+> the exact lower temperature to be consistent. Otherwise an interrupt maybe
+> generated on the exact lower temperature, but the bang bang governor does
+> not react since The polling driven zones have to be one step cooler before
+> the governor reacts.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Cc: Zhang Rui <rui.zhang@intel.com>
+> Cc: Eduardo Valentin <edubezval@gmail.com>
+> Cc: linux-pm@vger.kernel.org
+> 
+> ---
+> 
+> Changes in v2:
+> - Update the commit for patch[v2 4/5].
+> 
+>  drivers/thermal/gov_bang_bang.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/thermal/gov_bang_bang.c b/drivers/thermal/gov_bang_bang.c
+> index 70836c5..9d1dfea 100644
+> --- a/drivers/thermal/gov_bang_bang.c
+> +++ b/drivers/thermal/gov_bang_bang.c
+> @@ -59,7 +59,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
+>  		if (instance->target == 0 && tz->temperature >= trip_temp)
+>  			instance->target = 1;
+>  		else if (instance->target == 1 &&
+> -				tz->temperature < trip_temp - trip_hyst)
+> +				tz->temperature <= trip_temp - trip_hyst)
+>  			instance->target = 0;
+>  
+>  		dev_dbg(&instance->cdev->device, "target=%d\n",
+> -- 
+> 1.9.1
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
