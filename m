@@ -1,64 +1,69 @@
-From: Javi Merino <javi.merino@arm.com>
-Subject: Re: [PATCH v2 4/5] thermal: bang-bang governor: act on lower trip
- boundary
-Date: Tue, 24 May 2016 14:06:10 +0100
-Message-ID: <20160524130610.GC8979@e104805>
-References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
- <1462268013-14992-5-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/3] soc: rockchip: add driver handling grf setup
+Date: Tue, 24 May 2016 15:07:52 +0200
+Message-ID: <7631878.OiMWPcBrqd@phil>
+References: <1464015539-19521-1-git-send-email-heiko@sntech.de> <1464015539-19521-3-git-send-email-heiko@sntech.de> <6a6e87ee-688d-90a3-2407-22847bd80971@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1462268013-14992-5-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Peter Feuerer <peter@piie.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <6a6e87ee-688d-90a3-2407-22847bd80971-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ccing Peter Feuerer, author of the bang bang governor.
+Am Dienstag, 24. Mai 2016, 10:22:09 schrieb Shawn Lin:
+> Hi Heiko,
+> 
+> On 2016/5/23 22:58, Heiko Stuebner wrote:
+> > The General Register Files are an area of registers containing a lot
+> > of single-bit settings for numerous components as well full components
+> > like usbphy control. Therefore all used components are accessed
+> > via the syscon provided by the grf nodes or from the sub-devices
+> > created through the simple-mfd created from the grf node.
+> > 
+> > Some settings are not used by anything but will need to be set up
+> > according to expectations on the kernel side.
+> > 
+> > Best example is the force_jtag setting, which defaults to on and
+> > results in the soc switching the pin-outputs between jtag and sdmmc
+> > automatically depending on the card-detect status. This conflicts
+> > heavily with how the dw_mmc driver expects to do its work and also
+> > with the clock-controller, which has most likely deactivated the
+> > jtag clock due to it being unused.
+> 
+> I agree we should disable force_jtag for real product. But on my local
+> branch we add a callback to parse a tag from cmdline. Sometime it's
+> useful for debugging in case of we need to setup JTAG for reproducing
+> and comfirming serious issue in which state the CPU cannot reponse to
+> any console input or FIQ-debug triggering.
+>
+> Should we need it for upstream as you move all related code in this
+> new driver?  I'm not sure.
 
-On Tue, May 03, 2016 at 05:33:32PM +0800, Caesar Wang wrote:
-> From: Sascha Hauer <s.hauer@pengutronix.de>
-> 
-> With interrupt driven thermal zones we pass the lower and upper
-> temperature on which shall be acted, so in the governor we have to act on
-> the exact lower temperature to be consistent. Otherwise an interrupt maybe
-> generated on the exact lower temperature, but the bang bang governor does
-> not react since The polling driven zones have to be one step cooler before
-> the governor reacts.
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
-> Cc: linux-pm@vger.kernel.org
-> 
-> ---
-> 
-> Changes in v2:
-> - Update the commit for patch[v2 4/5].
-> 
->  drivers/thermal/gov_bang_bang.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/gov_bang_bang.c b/drivers/thermal/gov_bang_bang.c
-> index 70836c5..9d1dfea 100644
-> --- a/drivers/thermal/gov_bang_bang.c
-> +++ b/drivers/thermal/gov_bang_bang.c
-> @@ -59,7 +59,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
->  		if (instance->target == 0 && tz->temperature >= trip_temp)
->  			instance->target = 1;
->  		else if (instance->target == 1 &&
-> -				tz->temperature < trip_temp - trip_hyst)
-> +				tz->temperature <= trip_temp - trip_hyst)
->  			instance->target = 0;
->  
->  		dev_dbg(&instance->cdev->device, "target=%d\n",
-> -- 
-> 1.9.1
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
+This driver really _should not_ become a catchall for settings stuff.
+I.e. the jtag/sdmmc switch handles the automatic switching done inside the 
+soc based on the card-detect state. Which confuses the dw_mmc driver.
+
+If I'm reading that correctly in the TRM, jtag on Rockchip SoCs is part of 
+the coresight infrastructure - in the DAP block.
+There are generic drivers + devicetree bindings for (I think most) coresight 
+blocks existing now, but I haven't found anything related to the DAP itself.
+
+In theory I'd think real handling of jtag pins/clocks should be done 
+somewhere in that area and and if jtag is to be used,it could then be set up 
+using in-kernel mechanics, like disabling sdmmc that claims the shared pins 
+and enabling the jtag pinctrl and clocks.
+
+This could even be doable at runtime via devicetree overlays.
+
+
+Most likely way out of scope for now, but that is where I would imagine this 
+stuff to be.
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
