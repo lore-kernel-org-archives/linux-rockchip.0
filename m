@@ -1,108 +1,85 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
-Date: Tue, 24 May 2016 12:17:12 +0200
-Message-ID: <6183955.XzKjc41sjW@phil>
-References: <1464066147-22734-1-git-send-email-ykk@rock-chips.com> <1464073043-4931-1-git-send-email-ykk@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [PATCH v5 2/5] mmc: core: add mmc-hs400-enhanced-strobe support
+Date: Tue, 24 May 2016 19:20:08 +0900
+Message-ID: <57442AD8.6030708@samsung.com>
+References: <1463976789-29618-1-git-send-email-shawn.lin@rock-chips.com>
+ <CGME20160523041400epcas1p479b50d4a8b5e8e0464657225c164c327@epcas1p4.samsung.com>
+ <1463976823-29739-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1464073043-4931-1-git-send-email-ykk@rock-chips.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Yakir Yang <ykk@rock-chips.com>
-Cc: David Airlie <airlied@linux.ie>, Inki Dae <inki.dae@samsung.com>, Mark Yao <yzq@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Douglas Anderson <dianders@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Javier Martinez Canillas <javier@osg.samsung.com>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-reply-to: <1463976823-29739-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Adrian Hunter <adrian.hunter@intel.com>, Michal Simek <michal.simek@xilinx.com>, soren.brinkmann@xilinx.com, Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 24. Mai 2016, 14:57:23 schrieb Yakir Yang:
-> RK3399 and RK3288 shared the same eDP IP controller, only some light
-> difference with VOP configure and GRF configure.
->=20
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+On 05/23/2016 01:13 PM, Shawn Lin wrote:
+> This patch introduce mmc-hs400-enhanced-strobe for platforms
+> which want to enable enhanced strobe function from DT if the
+> mmc host controller claims to support enhanced strobe.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+Tested-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+Best Regards,
+Jaehoon Chung
+
+> 
 > ---
+> 
+> Changes in v5:
+> - avoid to call hs400_enhanced+_strobe in mmc_set_initial_state
+>   if no setting MMC_CAP2_HS400_ES.
+> - add Adrian's ack for patch[5/5]
+> 
+> Changes in v4:
+> - check avail_type with EXT_CSD_CARD_TYPE_HS400 instead of
+>   card_type
+> - check if host support 8-bit when selecting hs400es
+> - some minor fix suggested by Douglas and add his review tag
+> 
+> Changes in v3:
+> - remove helper function and shorten cap2 to MMC_CAP2_HS400_ES
+> - rename callback to hs400_enhanced_strobe and make it return void
+> - add enhanced_strobe in mmc_ios and pass it to hs400_enhanced_strobe
+> - disable host's enhanced strobe in mmc_set_initial_state
+> - remove bus checking after switching hs400es
+> - add new function for hs400es timing selection
+> - fix wrong judgement of mmc_card_hs400es
+> 
 > Changes in v2:
-> - rebase with drm-next, fix some conflicts
->=20
->  .../bindings/display/bridge/analogix_dp.txt        |  1 +
->  .../display/rockchip/analogix_dp-rockchip.txt      |  2 +-
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 36
-> ++++++++++++++++++++-- include/drm/bridge/analogix_dp.h              =
-   =20
-> |  1 +
->  4 files changed, 37 insertions(+), 3 deletions(-)
->=20
-> diff --git
-> a/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt
-> b/Documentation/devicetree/bindings/display/bridge/analogix_dp.txt in=
-dex
-> 4f2ba8c..4a0f4f7 100644
-> --- a/Documentation/devicetree/bindings/display/bridge/analogix_dp.tx=
-t
-> +++ b/Documentation/devicetree/bindings/display/bridge/analogix_dp.tx=
-t
-> @@ -5,6 +5,7 @@ Required properties for dp-controller:
->  		platform specific such as:
->  		 * "samsung,exynos5-dp"
->  		 * "rockchip,rk3288-dp"
-> +		 * "rockchip,rk3399-edp"
-
-the cleanlines-freak in my likes to know if there is a difference betwe=
-en=20
-the rk3399 being called -edp here and -dp on the rk3288 :-)
-
-[...]
-
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c index 29c4105..d5d4=
-e04
-> 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -148,6 +148,10 @@ rockchip_dp_drm_encoder_atomic_check(struct
-> drm_encoder *encoder, struct drm_connector_state *conn_state)
->  {
->  	struct rockchip_crtc_state *s =3D to_rockchip_crtc_state(crtc_state=
-);
-> +	struct rockchip_dp_device *dp =3D to_dp(encoder);
-> +	int ret;
-> +
-> +	s->output_type =3D DRM_MODE_CONNECTOR_eDP;
->=20
->  	/*
->  	 * FIXME(Yakir): driver should configure the CRTC output video
-> @@ -162,8 +166,27 @@ rockchip_dp_drm_encoder_atomic_check(struct
-> drm_encoder *encoder, * But if I configure CTRC to RGBaaa, and eDP dr=
-iver
-> still keep * RGB666 input video mode, then screen would works prefect=
-=2E
->  	 */
-> -	s->output_mode =3D ROCKCHIP_OUT_MODE_AAAA;
-> -	s->output_type =3D DRM_MODE_CONNECTOR_eDP;
-> +
-> +	ret =3D drm_of_encoder_active_endpoint_id(dp->dev->of_node, encoder=
-);
-> +	if (ret < 0)
-> +		return;
-
-this needs a value returned (probably ret), otherwise you create a=20
-warning: =E2=80=98return=E2=80=99 with no value, in function returning =
-non-void
-
-drm_of_encoder_active_endpoint_id also always returns -EINVAL on rk3288=
--
-veyron-jerry because encoder->crtc is unset in=20
-drm_of_encoder_active_endpoint and that breaks display output right now=
-=2E
-
-Looking through drm code it seems only two functions would set encoder-=
->crtc
-- drm_atomic_helper_update_legacy_modeset_state
-- drm_crtc_helper_set_config
-
-drm_crtc_helper_set_config callback got dropped in the atomic-conversio=
-n and=20
-the other sounds to be somewhat in the legacy area.
-
-After that drm-internals get a bit confusing.
-
-
-Heiko
+> - switch to HS400ES from Highspeed mode directly
+> 
+>  drivers/mmc/core/host.c  | 2 ++
+>  include/linux/mmc/host.h | 1 +
+>  2 files changed, 3 insertions(+)
+> 
+> diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+> index e0a3ee1..45773e4 100644
+> --- a/drivers/mmc/core/host.c
+> +++ b/drivers/mmc/core/host.c
+> @@ -289,6 +289,8 @@ int mmc_of_parse(struct mmc_host *host)
+>  		host->caps2 |= MMC_CAP2_HS400_1_8V | MMC_CAP2_HS200_1_8V_SDR;
+>  	if (of_property_read_bool(np, "mmc-hs400-1_2v"))
+>  		host->caps2 |= MMC_CAP2_HS400_1_2V | MMC_CAP2_HS200_1_2V_SDR;
+> +	if (of_property_read_bool(np, "mmc-hs400-enhanced-strobe"))
+> +		host->caps2 |= MMC_CAP2_HS400_ES;
+>  
+>  	host->dsr_req = !of_property_read_u32(np, "dsr", &host->dsr);
+>  	if (host->dsr_req && (host->dsr & ~0xffff)) {
+> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+> index 85800b4..2a06fb0 100644
+> --- a/include/linux/mmc/host.h
+> +++ b/include/linux/mmc/host.h
+> @@ -302,6 +302,7 @@ struct mmc_host {
+>  #define MMC_CAP2_SDIO_IRQ_NOTHREAD (1 << 17)
+>  #define MMC_CAP2_NO_WRITE_PROTECT (1 << 18)	/* No physical write protect pin, assume that card is always read-write */
+>  #define MMC_CAP2_NO_SDIO	(1 << 19)	/* Do not send SDIO commands during initialization */
+> +#define MMC_CAP2_HS400_ES	(1 << 20)	/* Host supports enhanced strobe */
+>  
+>  	mmc_pm_flag_t		pm_caps;	/* supported pm features */
+>  
+> 
