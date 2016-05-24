@@ -1,72 +1,141 @@
-From: Catalin Marinas <catalin.marinas@arm.com>
-Subject: Re: [PATCH 4/5] iommu/rockchip: add ARM64 cache flush operation for
- iommu
-Date: Tue, 24 May 2016 10:59:27 +0100
-Message-ID: <20160524095927.GS4892@e104818-lin.cambridge.arm.com>
-References: <1463967439-13354-1-git-send-email-zhengsq@rock-chips.com>
- <1463967439-13354-5-git-send-email-zhengsq@rock-chips.com>
- <5742DEFE.1040902@arm.com>
- <20160523133500.GF4892@e104818-lin.cambridge.arm.com>
- <5743BCF5.8030607@rock-chips.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
+ during disable
+Date: Tue, 24 May 2016 12:11:27 +0200
+Message-ID: <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+ <5707043D.6060706@rock-chips.com>
+ <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
+ <570AFAC2.8080907@rock-chips.com>
+ <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
+ <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
+ <5742A41B.8030308@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5743BCF5.8030607@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Shunqian Zheng <zhengsq@rock-chips.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, joro@8bytes.org, heiko@sntech.de, Mark Rutland <mark.rutland@arm.com>, linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, Simon <xxm@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <5742A41B.8030308@rock-chips.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Mark yao <mark.yao@rock-chips.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 24, 2016 at 10:31:17AM +0800, Shunqian Zheng wrote:
-> On 2016=E5=B9=B405=E6=9C=8823=E6=97=A5 21:35, Catalin Marinas wrote:
-> >On Mon, May 23, 2016 at 11:44:14AM +0100, Robin Murphy wrote:
-> >>On 23/05/16 02:37, Shunqian Zheng wrote:
-> >>>From: Simon <xxm@rock-chips.com>
-> >>>
-> >>>Signed-off-by: Simon <xxm@rock-chips.com>
-> >>>---
-> >>>  drivers/iommu/rockchip-iommu.c | 4 ++++
-> >>>  1 file changed, 4 insertions(+)
-> >>>
-> >>>diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockch=
-ip-iommu.c
-> >>>index 043d18c..1741b65 100644
-> >>>--- a/drivers/iommu/rockchip-iommu.c
-> >>>+++ b/drivers/iommu/rockchip-iommu.c
-> >>>@@ -95,12 +95,16 @@ struct rk_iommu {
-> >>>
-> >>>  static inline void rk_table_flush(u32 *va, unsigned int count)
-> >>>  {
-> >>>+#if defined(CONFIG_ARM)
-> >>>  	phys_addr_t pa_start =3D virt_to_phys(va);
-> >>>  	phys_addr_t pa_end =3D virt_to_phys(va + count);
-> >>>  	size_t size =3D pa_end - pa_start;
-> >>>
-> >>>  	__cpuc_flush_dcache_area(va, size);
-> >>>  	outer_flush_range(pa_start, pa_end);
-> >>>+#elif defined(CONFIG_ARM64)
-> >>>+	__dma_flush_range(va, va + count);
-> >>>+#endif
-> >>Ugh, please don't use arch-private cache maintenance functions dire=
-ctly from
-> >>a driver. Allocating/mapping page tables to be read by the IOMMU is=
- still
-> >>DMA, so using the DMA APIs is the correct way to manage them, *espe=
-cially*
-> >>if it needs to work across multiple architectures.
->=20
-> It's easier for us if changing  the __dma_flush_range() to
-> __flush_dcache_area() is acceptable here?
-
-It's not really acceptable for arm64, nor for arm32. Please fix this
-driver in a similar way to commit e3c971960fd4 ("iommu/tegra-smmu:
-Convert to use DMA API").
-
-The only place where we allowed __flush_dcache_area() is in the GICv3
-driver and that's because it hasn't been wired as a platform device
-(yet).
-
---=20
-Catalin
+T24gMjMgTWF5IDIwMTYgYXQgMDg6MzIsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNv
+bT4gd3JvdGU6Cj4gT24gMjAxNuW5tDA15pyIMDXml6UgMTc6MzQsIFRvbWV1IFZpem9zbyB3cm90
+ZToKPj4KPj4gT24gMjAgQXByaWwgMjAxNiBhdCAxNjoyMywgVG9tZXUgVml6b3NvIDx0b21ldS52
+aXpvc29AY29sbGFib3JhLmNvbT4KPj4gd3JvdGU6Cj4+Pgo+Pj4gT24gMTEgQXByaWwgMjAxNiBh
+dCAwMzoxNSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Pgo+
+Pj4+IE9uIDIwMTblubQwNOaciDA45pelIDE4OjU0LCBUb21ldSBWaXpvc28gd3JvdGU6Cj4+Pj4+
+Cj4+Pj4+IE9uIDggQXByaWwgMjAxNiBhdCAwMzowNywgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
+Y2hpcHMuY29tPiB3cm90ZToKPj4+Pj4+Cj4+Pj4+PiBPbiAyMDE25bm0MDTmnIgwNuaXpSAxODox
+NCwgVG9tZXUgVml6b3NvIHdyb3RlOgo+Pj4+Pj4KPj4+Pj4+IFdoZW4gYSBwbGFuZSBpcyBiZWlu
+ZyBkaXNhYmxlZCBidXQgaXQncyBzdGlsbCBlbmFibGVkLCBkbyBjaGVjayBpZiB0aGUKPj4+Pj4+
+IHByZXZpb3VzIHVwZGF0ZSBoYXMgYmVlbiBjb21wbGV0ZWQgYnkgcmVhZGluZyB5cmdiX21zdCBi
+YWNrLgo+Pj4+Pj4KPj4+Pj4+IE90aGVyd2lzZSwgcGVuZGluZyBwYWdlZmxpcHMgd291bGQgcmVt
+YWluIHBlbmRpbmcgYWZ0ZXIgYSBDUlRDIGlzCj4+Pj4+PiBkaXNhYmxlZC4KPj4+Pj4+Cj4+Pj4+
+PiBTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29t
+Pgo+Pj4+Pj4gLS0tCj4+Pj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jIHwgNSArKystLQo+Pj4+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
+cygrKSwgMiBkZWxldGlvbnMoLSkKPj4+Pj4+Cj4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4+Pj4gYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4+PiBpbmRleCBhOWIxZThiNWFjODUu
+LmY0NmIxZmQxODg3YiAxMDA2NDQKPj4+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+Pj4+IEBAIC0xMDY0LDggKzEwNjQsOSBAQCBzdGF0aWMg
+Ym9vbCB2b3Bfd2luX3BlbmRpbmdfaXNfY29tcGxldGUoc3RydWN0Cj4+Pj4+PiB2b3Bfd2luCj4+
+Pj4+PiAqdm9wX3dpbikKPj4+Pj4+ICAgICBzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICpzdGF0ZSA9
+IHRvX3ZvcF9wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+Pj4+Pj4gICAgIGRtYV9hZGRyX3Qg
+eXJnYl9tc3Q7Cj4+Pj4+Pgo+Pj4+Pj4gLSBpZiAoIXN0YXRlLT5lbmFibGUpCj4+Pj4+PiAtIHJl
+dHVybiBWT1BfV0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0g
+MDsKPj4+Pj4+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4+Pj4+PiArICAgIFZPUF9XSU5fR0VU
+KHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSwgZW5hYmxlKSA9PSAwKQo+Pj4+Pj4gKyByZXR1
+cm4gdHJ1ZTsKPj4+Pj4+Cj4+Pj4+Pgo+Pj4+Pj4gSXQgaXMgd3JvbmcsIHRoZSBwYXRjaCB3b3Vs
+ZCBjYXVzZSBhIGJ1Zy4KPj4+Pj4+Cj4+Pj4+PiB3aGVuIHN0YXRlLT5lbmFibGUgaXMgMCwgY2hl
+Y2sgeXJnYl9tc3QgPT0gc3RhdGUtPnlyZ2JfbXN0IGFsd2F5cyBiZQo+Pj4+Pj4gdHJ1ZSwKPj4+
+Pj4+IGJlY2F1c2Ugc3RhdGUtPnlyZ2JfbXN0IG5vdCB1cGRhdGUgb24gcGxhbmUgZGlzYWJsZWQg
+ZnVudGlvbiwgdGhhdAo+Pj4+Pj4gd291bGQKPj4+Pj4+IGNhdXNlIGlvbW11IGNyYXNoLgo+Pj4+
+Pgo+Pj4+PiBTb3JyeSwgYnV0IEkgZG9uJ3QgdW5kZXJzdGFuZCB3aGVyZSdzIHRoZSBidWcgYW5k
+IHdoYXQgY291bGQgY2F1c2UKPj4+Pj4gdGhhdCBjcmFzaC4gV2hhdCB0aGUgZXhpc3RpbmcgY29k
+ZSB3YXMgZG9pbmcgaXMgc2F5aW5nIHRoYXQgYSBwYWdlZmxpcAo+Pj4+PiBldmVudCBpcyBzdGls
+bCBwZW5kaW5nIGlmIHdlIGhhdmUgdG9sZCB0aGUgcGxhbmUgdG8gZGlzYWJsZSBidXQgZm9yCj4+
+Pj4+IHNvbWUgcmVhc29uIGl0IGhhc24ndCB5ZXQuCj4+Pj4+Cj4+Pj4+IFdpdGggdGhpcyBtb2Rp
+ZmljYXRpb24sIGlmIHdlIHJlYWQgYmFjayB0aGF0IGl0J3MgYWxyZWFkeSBkaXNhYmxlZCwgd2UK
+Pj4+Pj4gcmV0dXJuIHRydWUgYXMgYmVmb3JlLiBCdXQgaWYgd2UgcmVhZCBiYWNrIHRoYXQgaXQg
+aXNuJ3QgZGlzYWJsZWQgeWV0LAo+Pj4+PiB0aGVuIHdlIHN0aWxsIGNoZWNrIHRoZSBmYiBwb2lu
+dGVycyBhbmQgY29tcGFyZSB0aGVtLgo+Pj4+Pgo+Pj4+PiBUaGUgaW9tbXUgbWFwcGluZyBpcyBy
+ZW1vdmVkIHdoZW4gdGhlIF9DUlRDXyBpcyBkaXNhYmxlZCwgYW5kIHdoYXQKPj4+Pj4gdGhpcyBz
+ZXJpZXMgZG9lcyBpcyB0byB3YWl0IGZvciB0aGUgcGVuZGluZyBwYWdlZmxpcCB0byBmaW5pc2gg
+YmVmb3JlCj4+Pj4+IGNvbml0bnVpbmcgd2l0aCBDUlRDIGRpc2FibGVtZW50Lgo+Pj4+Cj4+Pj4K
+Pj4+PiB0aGUgaW9tbXUgbWFwcGluZyB3aWxsIHVubWFwIGFmdGVyIHBsYW5lIGRpc2FibGVkLCB3
+ZSBuZWVkIHN1cmUgdGhhdCB0aGUKPj4+PiBwbGFuZSByZWFsbHkgZGlzYWJsZWQgYmVmb3JlIHVu
+bWFwLCBpZiBub3QsIHRoZSB1bm1hcCBtYXkgY2FsbCBiZWZvcmUKPj4+PiBwbGFuZQo+Pj4+IHJl
+YWxseSBkaXNhYmxlLCB2b3AgbWF5IGFjY2VzcyB1bm1hcCBhZGRyZXNzLCB0aGVuIHdvdWxkIGdl
+dCBpb21tdSBwYWdlCj4+Pj4gZmF1bHQuCj4+Pgo+Pj4gU29ycnksIGJ1dCBJIHN0aWxsIGRvbid0
+IHNlZSB0aGUgZXJyb3IgY29uZGl0aW9uIHRoYXQgeW91IGFyZQo+Pj4gZGVzY3JpYmluZy4gQUZB
+SUNTLCB0aGUgdW5tYXAgd2lsbCBoYXBwZW4gYWZ0ZXIgdGhlIGxhc3QgcGFnZWZsaXAgaGFzCj4+
+PiBjb21wbGV0ZWQuCj4+Pgo+Pj4+Pj4gQWJvdXQgcGVuZGluZyBwYWdlZmxpcHMgd291bGQgcmVt
+YWluIHBlbmRpbmcsIGNhbiB5b3UgIGRlc2NyaWJlIG1vcmUKPj4+Pj4+IGluZm8KPj4+Pj4+IGFi
+b3V0IGl0PyBJIHRoaW5rIHRob3NlIHBlbmRpbmcgcGFnZWZsaXBzIHNob3VsZCBiZSBpZ25vcmUg
+d2hlbiBDUlRDCj4+Pj4+PiBpcwo+Pj4+Pj4gZGlzYWJsZWQuCj4+Pj4+Cj4+Pj4+IFdlbGwsIHJp
+Z2h0IG5vdyBpbiByb2NrY2hpcC1kcm0gcGVuZGluZyBwYWdlZmxpcHMgd29uJ3QgYmUgaWdub3Jl
+ZAo+Pj4+PiB3aGVuIGEgQ1JUQyBpcyBkaXNhYmxlZCwgYnV0IHdpbGwgYmUgZGVsaXZlcmVkIHdo
+ZW4gaXQncyByZS1lbmFibGVkLgo+Pj4+Pgo+Pj4+PiBJZiB0aGV5IHdvdWxkIGJlIHRvIGJlIGln
+bm9yZWQgKHVuZGVyc3RhbmRpbmcgdGhhdCBhcyBkcm9wcGVkKSwgdGhhdAo+Pj4+PiB3b3VsZCBy
+ZXF1aXJlIG1vZGlmaWNhdGlvbnMgdG8gY2xpZW50cyBzbyB0aGV5IGtlZXAgdHJhY2sgb2Ygd2hp
+Y2ggZmJzCj4+Pj4+IHdlcmUgdXNlZCBpbiBhIHBhcnRpY3VsYXIgY3J0YyBhbmQgZGVzdHJveSB0
+aGVtIHdoZW4gdGhlIGNydGMgaXMKPj4+Pj4gZGlzYWJsZWQsIGJ1dCB0aGF0IHdvdWxkIGJlIGlu
+Y29ycmVjdCB3aGVuIHVzaW5nIHRoZSBpOTE1IERSTSBkcml2ZXIKPj4+Pj4gKEkgYWxzbyBhc3N1
+bWUgb3RoZXJzIGRvIHRoZSBzYW1lKS4gR2l2ZW4gdGhhdCB0aGUgcGFnZWZsaXAgaW9jdGwKPj4+
+Pj4gaXNuJ3QgZHJpdmVyLXNwZWNpZmljLCBJIHRoaW5rIHRoZXJlIGNhbm5vdCBiZSBzdWNoIGEg
+ZGlmZmVyZW5jZSBpbgo+Pj4+PiBiZWhhdmlvciBiZXR3ZWVuIGRyaXZlcnMuCj4+Pj4+Cj4+Pj4+
+IFdpdGggdGhlIGN1cnJlbnQgYmVoYXZpb3IgKHBlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGJlaW5n
+IGRlbGF5ZWQgdW50aWwKPj4+Pj4gdGhlIENSVEMgaXMgZW5hYmxlZCBhZ2FpbiksIGNvbXBvc2l0
+b3JzIGFuZCBvdGhlciBjbGllbnRzIHdpbGwgYmUKPj4+Pj4gaG9sZGluZyBvbiB0byB0aGUgZmIg
+aW4gdGhlIHBlbmRpbmcgcGFnZWZsaXAgdW50aWwgYW4gYXJiaXRyYXJ5IHBvaW50Cj4+Pj4+IGlu
+IHRoZSBmdXR1cmUgdGhhdCBtYXkgbm90IGV2ZXIgY29tZS4gVG8gbWUgdGhhdCBzb3VuZHMgbGlr
+ZSBhIHNlcmlvdXMKPj4+Pj4gbW9kaWZpY2F0aW9uIG9mIHRoZSBhc3N1bXB0aW9ucyBvbiBmYiBs
+aWZlY3ljbGUgdGhhdCBtaWdodCBub3QgYmUKPj4+Pj4gd2FycmFudGVkLgo+Pj4+Pgo+Pj4+PiBT
+byBpbiBzdW1tYXJ5LCBldmVuIGlmIEkgaGF2ZW4ndCBmb3VuZCBhbnkgZXhwbGljaXQgZG9jdW1l
+bnRhdGlvbiBvbgo+Pj4+PiB0aGlzLCBJIHRoaW5rIHRoZSBBQkkgaXMgdGhhdCBhbnkgcGVuZGlu
+ZyBwYWdlZmxpcHMgYXJlIHRvIGJlCj4+Pj4+IGRlbGl2ZXJlZCB3aGVuIHRoYXQgQ1JUQyBpcyBi
+ZWluZyBkaXNhYmxlZCBhbmQgbm90IGxhdGVyLgo+Pj4+Cj4+Pj4KPj4+PiBvbiBkcml2ZXJzL2dw
+dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4+Pgo+Pj4+IGRybV9hdG9taWNfaGVs
+cGVyX2NvbW1pdF9wbGFuZXMoZGV2LCBzdGF0ZSwgdHJ1ZSk7Cj4+Pj4gcm9ja2NoaXBfYXRvbWlj
+X3dhaXRfZm9yX2NvbXBsZXRlKGRldiwgc3RhdGUpOwo+Pj4+Cj4+Pj4gV2Ugc2V0IGFjdGl2ZV9v
+bmx5ID0gdHJ1ZSwgSSB0aGluayBwbGFuZXMgY2FuIG9ubHkgdXBkYXRlIHdoZW4gY3J0YyBpcwo+
+Pj4+IGFjdGl2ZS4gYW5kIHJvY2tjaGlwX2F0b21pY193YWl0X2Zvcl9jb21wbGV0ZSBvbmx5IHdh
+aXQgd2hlbiBjcnRjIGlzCj4+Pj4gYWN0aXZlLgo+Pj4KPj4+IFRoYXQncyBmaW5lLCBidXQgaWYg
+YSBwYWdlZmxpcCBpcyBwZW5kaW5nIHdoZW4gdGhlIGNsaWVudCByZXF1ZXN0cyB0aGUKPj4+IENS
+VEMgdG8gYmUgZGlzYWJsZWQsIHdlIG5lZWQgdG8gd2FpdCBmb3IgdGhlIGV2ZW50IHRvIGJlIGVt
+aXR0ZWQKPj4+IGJlZm9yZSB3ZSBhY3R1YWxseSBkaXNhYmxlIHRoZSBIVy4KPj4KPj4gSGkgTWFy
+aywKPj4KPj4gY291bGQgeW91IHRlbGwgbWUgaWYgeW91IGFncmVlIHRoYXQgdGhlcmUncyBhIGJ1
+ZyB0aGF0IG5lZWRzIHRvIGJlCj4+IHNvbHZlZCwgYW5kIGlmIHNvLCB3aGF0IGRvIHlvdSB0aGlu
+ayB3ZSBzaG91bGQgZG8gYWJvdXQgaXQ/Cj4KPiBIaSBUb21ldQo+Cj4gU29ycnkgZm9yIHJlcGx5
+IGxhdGUuCj4gSSBkb24ndCBhZ3JlZSB0aGUgY2hhbmdlczoKPgo+IC0gaWYgKCFzdGF0ZS0+ZW5h
+YmxlKQo+IC0gcmV0dXJuIFZPUF9XSU5fR0VUKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSwg
+ZW5hYmxlKSA9PSAwOwo+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4gKyAgICBWT1BfV0lOX0dF
+VCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMCkKPiArIHJldHVybiB0
+cnVlOwo+Cj4gVGhpcyBjaGFuZ2VzIGFjdHVhbGx5IHdvdWxkIGxlYWQgYSBidWcuCj4gd2hlbiB3
+ZSBkaXNhYmxlIGEgcGxhbmUsIHRoZSB2b3Bfd2luX3BlbmRpbmdfaXNfY29tcGxldGUgd291bGQg
+YWx3YXlzIHJldHVybgo+IHRydWUsIFRoYXQgaXMgbm90IGFsbG93ZWQsIHdvdWxkIGNhdXNlIGZi
+IGZyZWUgdG9vIGVhcmx5LgoKT2ssIG1heWJlIEkgbmVlZCB0byBhc2sgeW91IGZpcnN0IHdoYXQg
+dGhlIG9yaWdpbmFsIGJsb2NrIG9mIGNvZGUKaW50ZW5kZWQgdG8gYWNoaWV2ZS4gVGhlIFRSTSBJ
+IGhhdmUgaXMgdmVyeSB0ZXJzZSBhbmQgSSBkb24ndCBmaW5kIGFueQpleHBsYW5hdGlvbiB0aGVy
+ZS4gVGhlIGJhdHRlcnkgb2YgdGVzdHMgSSBoYXZlIHBhc3MganVzdCBmaW5lIHdpdGhvdXQKaXQu
+Cgo+IERvZXMgdGhpcyBwYXRjaCBpcyBuZWVkZWQgZm9yICJbUEFUQ0ggMi8yXSBkcm0vcm9ja2No
+aXA6IHZvcDogV2FpdCBmb3IKPiBwZW5kaW5nIGV2ZW50cyB3aGVuIGRpc2FibGluZyBhIENSVEMi
+CgpZZXMsIHRoaXMgZnVuY3Rpb24gaXMgY3VycmVudGx5IHJldHVybmluZyBmYWxzZSB3aGVuIHRo
+ZSBwYWdlZmxpcCBoYXMKYmVlbiBjb21wbGV0ZWQgYnV0IHRoZSBwbGFuIGhhcyBiZWVuIGFscmVh
+ZHkgZGlzYWJsZWQuCgpJZiB5b3UgaGF2ZSBhbnkgZGlmZmVyZW50IGlkZWEgb2YgaG93IHRvIGZp
+eCB0aGlzIGJ1ZywgcGxlYXNlIHNoYXJlLgoKVGhhbmtzLAoKVG9tZXUKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
