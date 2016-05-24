@@ -1,48 +1,88 @@
-From: Daniel Stone <daniel@fooishbar.org>
-Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
- flip event v3
-Date: Tue, 24 May 2016 09:19:10 +0200
-Message-ID: <CAPj87rPgvjs5W68Cou6ODDqbqbPXQvFxLPtegBkdxdtPaRMX7A@mail.gmail.com>
-References: <1459778134-30693-1-git-send-email-tomeu.vizoso@collabora.com>
-	<CAPj87rPtP1ph-1FMxSKUANjeKwwjwgfMzbUGHvqudEx7nYCESQ@mail.gmail.com>
-	<CAAObsKAyeg9JsPhCyWqLpg3n6V9Ab8OCJKXX41A86rQWWs+SdQ@mail.gmail.com>
+From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending flip
+ event v4
+Date: Tue, 24 May 2016 09:26:01 +0200
+Message-ID: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAObsKAyeg9JsPhCyWqLpg3n6V9Ab8OCJKXX41A86rQWWs+SdQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: linux-kernel@vger.kernel.org
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tomeu,
-
-On 5 April 2016 at 16:07, Tomeu Vizoso <tomeu.vizoso@collabora.com> wrote:
-> On 4 April 2016 at 17:44, Daniel Stone <daniel@fooishbar.org> wrote:
->> On 4 April 2016 at 14:55, Tomeu Vizoso <tomeu.vizoso@collabora.com> wrote:
->>> +       if (async) {
->>> +               for_each_crtc_in_state(state, crtc, crtc_state, i) {
->>> +                       if (crtc->state->event ||
->>> +                           rockchip_drm_crtc_has_pending_event(crtc)) {
->>> +                               return -EBUSY;
->>> +                       }
->>> +               }
->>> +       }
->>
->> Hmmm ...
->>
->> Doesn't this trigger before the VOP atomic_begin() helper, meaning
->> that anything with an event set will trigger the check? Seems like it
->> should be && rather than ||.
->
-> So, these are the two cases that this code aims to handle:
->
-> 1. A previous request with an event set hasn't progressed to
-> atomic_begin yet, so the event field in drm_crtc_state (at this point,
-> the old state) is still populated but vop->event still isn't.
-
-Ah right, this was what I was missing: the async (non-blocking)
-implementation. Sounds good to me then.
-
-Cheers,
-Daniel
+QXMgcGVyIHRoZSBkb2NzLCBhdG9taWNfY29tbWl0IHNob3VsZCByZXR1cm4gLUVCVVNZICJpZiBh
+biBhc3ljbmhyb25vdXMKdXBkYXRlZCBpcyByZXF1ZXN0ZWQgYW5kIHRoZXJlIGlzIGFuIGVhcmxp
+ZXIgdXBkYXRlZCBwZW5kaW5nIi4KCnYyOiBVc2UgdGhlIHN0YXR1cyBvZiB0aGUgd29ya3F1ZXVl
+IGluc3RlYWQgb2Ygdm9wLT5ldmVudCwgYW5kIGRvbid0IGFkZAphIHN1cGVyZmx1b3VzIHdhaXQg
+b24gdGhlIHdvcmtxdWV1ZS4KCnYzOiBEcm9wIHdvcmtfYnVzeSwgYXMgdGhlcmUncyBhIHNpemVh
+YmxlIGRlbGF5IHdoZW4gdGhlIHdvcmtlcgpmaW5pc2hlcywgd2hpY2ggaW50cm9kdWNlcyBhIHJh
+Y2UgaW4gd2hpY2ggdGhlIGNsaWVudCBoYXMgYWxyZWFkeQpyZWNlaXZlZCB0aGUgbGFzdCBmbGlw
+IGV2ZW50IGJ1dCB0aGUgbmV4dCBwYWdlIGZsaXAgaW9jdGwgd2lsbCBzdGlsbApyZXR1cm4gLUVC
+VVNZIGJlY2F1c2Ugd29ya19idXN5IHJldHVybnMgb3V0ZGF0ZWQgaW5mb3JtYXRpb24uCgp2NDog
+SG9sZCBkZXYtPmV2ZW50X2xvY2sgd2hpbGUgY2hlY2tpbmcgdGhlIFZPUCdzIGV2ZW50IGZpZWxk
+IGFzCnN1Z2dlc3RlZCBieSBEYW5pZWwgU3RvbmUuCgp2NTogT25seSBibG9jayBpZiB0aGVyZSdz
+IG91dHN0YW5kaW5nIHdvcmsgaWYgaXQncyBhIGJsb2NraW5nIGNhbGwuCgpTaWduZWQtb2ZmLWJ5
+OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29tPgotLS0KIGRyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmggfCAgMSArCiBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMgIHwgMjUgKysrKysrKysrKysrKysrKysrKysr
+Ky0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8ICA2ICsr
+KysrKwogMyBmaWxlcyBjaGFuZ2VkLCAyOSBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2Lmgg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oCmluZGV4IDU2ZjQz
+YTM2NGM3Zi4uMGI0NjYxN2RlY2Q5IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZHJ2LmgKQEAgLTc2LDYgKzc2LDcgQEAgdm9pZCByb2NrY2hpcF9kcm1fYXRvbWlj
+X3dvcmsoc3RydWN0IHdvcmtfc3RydWN0ICp3b3JrKTsKIGludCByb2NrY2hpcF9yZWdpc3Rlcl9j
+cnRjX2Z1bmNzKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAkJCQkgY29uc3Qgc3RydWN0IHJvY2tj
+aGlwX2NydGNfZnVuY3MgKmNydGNfZnVuY3MpOwogdm9pZCByb2NrY2hpcF91bnJlZ2lzdGVyX2Ny
+dGNfZnVuY3Moc3RydWN0IGRybV9jcnRjICpjcnRjKTsKK2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNf
+aGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0IGRybV9jcnRjICpjcnRjKTsKIGludCByb2NrY2hpcF9k
+cm1fZG1hX2F0dGFjaF9kZXZpY2Uoc3RydWN0IGRybV9kZXZpY2UgKmRybV9kZXYsCiAJCQkJICAg
+c3RydWN0IGRldmljZSAqZGV2KTsKIHZvaWQgcm9ja2NoaXBfZHJtX2RtYV9kZXRhY2hfZGV2aWNl
+KHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9mYi5jCmluZGV4IDc1NWNmZGJhNjFjZC4uZTk1MzEzNTNiOGQyIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKKysrIGIvZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYi5jCkBAIC0yNzksMTUgKzI3OSwz
+NCBAQCBpbnQgcm9ja2NoaXBfZHJtX2F0b21pY19jb21taXQoc3RydWN0IGRybV9kZXZpY2UgKmRl
+diwKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkZXYtPmRldl9w
+cml2YXRlOwogCXN0cnVjdCByb2NrY2hpcF9hdG9taWNfY29tbWl0ICpjb21taXQgPSAmcHJpdmF0
+ZS0+Y29tbWl0OwotCWludCByZXQ7CisJc3RydWN0IGRybV9jcnRjX3N0YXRlICpjcnRjX3N0YXRl
+OworCXN0cnVjdCBkcm1fY3J0YyAqY3J0YzsKKwl1bnNpZ25lZCBsb25nIGZsYWdzOworCWludCBp
+LCByZXQ7CisKKwlpZiAobm9uYmxvY2spIHsKKwkJZm9yX2VhY2hfY3J0Y19pbl9zdGF0ZShzdGF0
+ZSwgY3J0YywgY3J0Y19zdGF0ZSwgaSkgeworCQkJc3Bpbl9sb2NrX2lycXNhdmUoJmRldi0+ZXZl
+bnRfbG9jaywgZmxhZ3MpOworCisJCQlpZiAoY3J0Yy0+c3RhdGUtPmV2ZW50IHx8CisJCQkgICAg
+cm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoY3J0YykpIHsKKwkJCQlzcGluX3Vu
+bG9ja19pcnFyZXN0b3JlKCZkZXYtPmV2ZW50X2xvY2ssIGZsYWdzKTsKKwkJCQlyZXR1cm4gLUVC
+VVNZOworCQkJfQorCisJCQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZkZXYtPmV2ZW50X2xvY2ss
+IGZsYWdzKTsKKwkJfQorCX0KIAogCXJldCA9IGRybV9hdG9taWNfaGVscGVyX3ByZXBhcmVfcGxh
+bmVzKGRldiwgc3RhdGUpOwogCWlmIChyZXQpCiAJCXJldHVybiByZXQ7CiAKLQkvKiBzZXJpYWxp
+emUgb3V0c3RhbmRpbmcgbm9uYmxvY2tpbmcgY29tbWl0cyAqLwogCW11dGV4X2xvY2soJmNvbW1p
+dC0+bG9jayk7Ci0JZmx1c2hfd29yaygmY29tbWl0LT53b3JrKTsKKworCS8qIHNlcmlhbGl6ZSBv
+dXRzdGFuZGluZyBub25ibG9ja2luZyBjb21taXRzICovCisJaWYgKCFub25ibG9jaykKKwkJZmx1
+c2hfd29yaygmY29tbWl0LT53b3JrKTsKIAogCWRybV9hdG9taWNfaGVscGVyX3N3YXBfc3RhdGUo
+ZGV2LCBzdGF0ZSk7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jCmluZGV4IDFjNGQ1YjVhNzBhMi4uM2Y5ODBmNTJjNjQwIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKQEAgLTgzNiw2ICs4MzYsMTIgQEAgc3RhdGlj
+IGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVfZnVuY3Mgdm9wX3BsYW5lX2Z1bmNzID0gewogCS5hdG9t
+aWNfZGVzdHJveV9zdGF0ZSA9IHZvcF9hdG9taWNfcGxhbmVfZGVzdHJveV9zdGF0ZSwKIH07CiAK
+K2Jvb2wgcm9ja2NoaXBfZHJtX2NydGNfaGFzX3BlbmRpbmdfZXZlbnQoc3RydWN0IGRybV9jcnRj
+ICpjcnRjKQoreworCWFzc2VydF9zcGluX2xvY2tlZCgmY3J0Yy0+ZGV2LT5ldmVudF9sb2NrKTsK
+KwlyZXR1cm4gdG9fdm9wKGNydGMpLT5ldmVudDsKK30KKwogc3RhdGljIGludCB2b3BfY3J0Y19l
+bmFibGVfdmJsYW5rKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKIHsKIAlzdHJ1Y3Qgdm9wICp2b3Ag
+PSB0b192b3AoY3J0Yyk7Ci0tIAoyLjUuNQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
