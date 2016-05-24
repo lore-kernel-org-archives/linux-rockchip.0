@@ -1,59 +1,111 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: i2s: rename I2S_CKR_TRCM_TX/RXSHARE to I2S_CKR_TRCM_TX/RXONLY
-Date: Tue, 24 May 2016 11:47:46 +0800
-Message-ID: <1464061667-16477-1-git-send-email-zhengxing@rock-chips.com>
+From: Doug Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 2/4] phy: rockchip-emmc: configure frequency range and
+ drive impedance
+Date: Mon, 23 May 2016 21:51:19 -0700
+Message-ID: <CAD=FV=VYPs22rGX9Latecb0EWFA0kOCFmoSQ83wPecrFkL0m7w@mail.gmail.com>
+References: <1463092986-61777-1-git-send-email-briannorris@chromium.org>
+ <1463092986-61777-2-git-send-email-briannorris@chromium.org>
+ <3695875b-09c3-cd80-3062-55d985e51f70@rock-chips.com> <CAD=FV=UwocUy_bOUrJZB47taHWdV1KGkvi5CyZf74Y8cvGgVmw@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=UwocUy_bOUrJZB47taHWdV1KGkvi5CyZf74Y8cvGgVmw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, Sugar Zhang <sugar.zhang@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Brian Norris <briannorris@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Hi,
 
-this patch make it more reasonable and readable, because when we chose
-I2S_CKR_TRCM_TXONLY, we only output clk_lrck_tx, and hardware need to
-confirm this signal is wired to external codec lrck_tx/rx at the same time.
+On Fri, May 13, 2016 at 11:46 AM, Doug Anderson <dianders@chromium.org> wrote:
+>> Per the commit msg, signal may vary from board to board, so I guess
+>> 50ohm may not always be the best selection?
+>
+> Starting out with something sane like 50 ohms seems like it makes
+> sense for now.  It's OK to start with a default for now to get things
+> basically working and then add device tree support once we have a
+> second user.
+>
+>
+> When we're ready to make this more generic, IMHO we might consider
+> having the PHY implement the pinctrl API and officially be a pin
+> controller and we use those bindings.  We are controlling pins so
+> using the pinctrl API seems like it might make sense?
+>
+> I _think_ that perhaps what we're specifying here is actually slew
+> rate, but feel free to correct me if I'm wrong.  It looks as if "drive
+> strength" is supposed to be specified in terms of mA and the docs I
+> find show that we're actually controlling how fast the pins will
+> toggle.
+>
+> I'm not 100% certain I know how the pinctrl bindings apply in this
+> case (maybe Heiko has ideas, or maybe we should send a proposal to
+> Linus W?), but from the bindings they look like they offer some
+> flexibility.
+>
+> Maybe this would look like below (or maybe you need some extra sub-nodes)
+>
+>        sdhci: sdhci@fe330000 {
+>                compatible = "rockchip,rk3399-sdhci-5.1", "arasan,sdhci-5.1";
+>                reg = <0x0 0xfe330000 0x0 0x10000>;
+>                interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+>                clocks = <&cru SCLK_EMMC>, <&cru ACLK_EMMC>;
+>                clock-names = "clk_xin", "clk_ahb";
+>                assigned-clocks = <&cru SCLK_EMMC>;
+>                assigned-clock-rates = <200000000>;
+>                phys = <&emmc_phy>;
+>                phy-names = "phy_arasan";
+>                pinctrl-names = "default";
+>                pinctrl-0 = <&pcfg_emmc_slew_rate_x1_00>;
+>                status = "disabled";
+>        };
+>
+>                emmc_phy: phy@f780 {
+>                        compatible = "rockchip,rk3399-emmc-phy";
+>                        reg = <0xf780 0x20>;
+>                        #phy-cells = <0>;
+>                        status = "disabled";
+>
+>                        pcfg_emmc_slew_rate_x1_00: pcfg-emmc-slew-rate-x1-00 {
+>                                slew-rate = <100>;
+>                        };
+>                        pcfg_emmc_slew_rate_x1_50: pcfg-emmc-slew-rate-x1-50 {
+>                                slew-rate = <150>;
+>                        };
+>                        pcfg_emmc_slew_rate_x0_75: pcfg-emmc-slew-rate-x0-75 {
+>                                slew-rate = <75>;
+>                        };
+>                        pcfg_emmc_slew_rate_x0_50: pcfg-emmc-slew-rate-x0-50 {
+>                                slew-rate = <50>;
+>                        };
+>                        pcfg_emmc_slew_rate_x1_20: pcfg-emmc-slew-rate-x1-20 {
+>                                slew-rate = <120>;
+>                        };
+>                        pcfg_emmc_slew_rate_x1_20: pcfg-emmc-slew-rate-x1-20 {
+>                                slew-rate = <120>;
+>                        };
+>            };
+>
+> The nice thing about using the pinctrl API is that:
+>
+> * It allows us to _also_ control pullups / pulldowns.  We probably
+> want to control those also since some boards may use external pullups
+> and others may want to use the internal ones.
+>
+> * If SDHCI needs to dynamically adjust things (like turning on pulls,
+> adjusting drive strengths, etc) it can do it in a sane API.
 
-for convenience, we just handle lrck_txonly if we enable symmetric_rates
-in driver and dai_link. otherwise, we use the separate lrck_tx/rx.
+Note that I still believe that we could land the 50 Ohm first (AKA
+land the patch Brian posted), but I'm also convinced that my pinctrl
+proposal above is not a good idea for the way to move forward, at
+least in terms of the "driver strength" part.  Specifically it seems
+like the 50 Ohm / 33 Ohm / 66 Ohm / 100 Ohm / 40 Ohm is a concept from
+eMMC 5.0 and probably doesn't fit to pinctrl.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
+I also _think_ it needs to be matched against what's available from
+the card (card->drive_strength) and the card needs to be told about
+it, but I could be wrong about that.
 
- sound/soc/rockchip/rockchip_i2s.c |    4 ++--
- sound/soc/rockchip/rockchip_i2s.h |    4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 574c6af..92a405f 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -306,8 +306,8 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
- 			   I2S_DMACR_RDL(16));
- 
- 	val = I2S_CKR_TRCM_TXRX;
--	if (dai->driver->symmetric_rates || rtd->dai_link->symmetric_rates)
--		val = I2S_CKR_TRCM_TXSHARE;
-+	if (dai->driver->symmetric_rates && rtd->dai_link->symmetric_rates)
-+		val = I2S_CKR_TRCM_TXONLY;
- 
- 	regmap_update_bits(i2s->regmap, I2S_CKR,
- 			   I2S_CKR_TRCM_MASK,
-diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
-index dc6e2c7..13b1d44 100644
---- a/sound/soc/rockchip/rockchip_i2s.h
-+++ b/sound/soc/rockchip/rockchip_i2s.h
-@@ -81,8 +81,8 @@
- #define I2S_CKR_TRCM_SHIFT	28
- #define I2S_CKR_TRCM(x)	(x << I2S_CKR_TRCM_SHIFT)
- #define I2S_CKR_TRCM_TXRX	(0 << I2S_CKR_TRCM_SHIFT)
--#define I2S_CKR_TRCM_TXSHARE	(1 << I2S_CKR_TRCM_SHIFT)
--#define I2S_CKR_TRCM_RXSHARE	(2 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_TXONLY	(1 << I2S_CKR_TRCM_SHIFT)
-+#define I2S_CKR_TRCM_RXONLY	(2 << I2S_CKR_TRCM_SHIFT)
- #define I2S_CKR_TRCM_MASK	(3 << I2S_CKR_TRCM_SHIFT)
- #define I2S_CKR_MSS_SHIFT	27
- #define I2S_CKR_MSS_MASTER	(0 << I2S_CKR_MSS_SHIFT)
--- 
-1.7.9.5
+
+-Doug
