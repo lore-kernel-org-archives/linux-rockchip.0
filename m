@@ -1,66 +1,62 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending
- flip event v5
-Date: Tue, 24 May 2016 10:37:49 +0200
-Message-ID: <20160524083749.GR27098@phenom.ffwll.local>
-References: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com>
- <1464074857-5515-1-git-send-email-tomeu.vizoso@collabora.com>
- <7363560.k3ytHeYgtM@phil>
- <20160524083050.GQ27098@phenom.ffwll.local>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: Return -EBUSY if there's already a pending flip event v5
+Date: Tue, 24 May 2016 10:41:30 +0200
+Message-ID: <1885816.5oayNdNrp7@phil>
+References: <1464074761-5194-1-git-send-email-tomeu.vizoso@collabora.com> <20160524083050.GQ27098@phenom.ffwll.local> <20160524083749.GR27098@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20160524083050.GQ27098@phenom.ffwll.local>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Heiko Stuebner <heiko@sntech.de>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160524083749.GR27098@phenom.ffwll.local>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBNYXkgMjQsIDIwMTYgYXQgMTA6MzA6NTBBTSArMDIwMCwgRGFuaWVsIFZldHRlciB3
-cm90ZToKPiBPbiBUdWUsIE1heSAyNCwgMjAxNiBhdCAxMDoyODo0MkFNICswMjAwLCBIZWlrbyBT
-dHVlYm5lciB3cm90ZToKPiA+IEhpIFRvbWV1LAo+ID4gCj4gPiBQYXRjaCBzdWJqZWN0OiBwbGVh
-c2UgcHV0IHRoZSB2ZXJzaW9uIGludG8gdGhlIGJyYWNrZXRzLCBzbyBbUEFUQ0ggdjVdIGFzIGl0
-IAo+ID4gc2hvdWxkbid0IGJlIHBhcnQgb2YgdGhlIGNvbW1pdCBsb2cuCj4gPiAKPiA+IEFtIERp
-ZW5zdGFnLCAyNC4gTWFpIDIwMTYsIDA5OjI3OjM3IHNjaHJpZWIgVG9tZXUgVml6b3NvOgo+ID4g
-PiBBcyBwZXIgdGhlIGRvY3MsIGF0b21pY19jb21taXQgc2hvdWxkIHJldHVybiAtRUJVU1kgImlm
-IGFuIGFzeWNuaHJvbm91cwo+ID4gPiB1cGRhdGVkIGlzIHJlcXVlc3RlZCBhbmQgdGhlcmUgaXMg
-YW4gZWFybGllciB1cGRhdGVkIHBlbmRpbmciLgo+ID4gCj4gPiA+IHYyOiBVc2UgdGhlIHN0YXR1
-cyBvZiB0aGUgd29ya3F1ZXVlIGluc3RlYWQgb2Ygdm9wLT5ldmVudCwgYW5kIGRvbid0IGFkZAo+
-ID4gPiBhIHN1cGVyZmx1b3VzIHdhaXQgb24gdGhlIHdvcmtxdWV1ZS4KPiA+ID4gCj4gPiA+IHYz
-OiBEcm9wIHdvcmtfYnVzeSwgYXMgdGhlcmUncyBhIHNpemVhYmxlIGRlbGF5IHdoZW4gdGhlIHdv
-cmtlcgo+ID4gPiBmaW5pc2hlcywgd2hpY2ggaW50cm9kdWNlcyBhIHJhY2UgaW4gd2hpY2ggdGhl
-IGNsaWVudCBoYXMgYWxyZWFkeQo+ID4gPiByZWNlaXZlZCB0aGUgbGFzdCBmbGlwIGV2ZW50IGJ1
-dCB0aGUgbmV4dCBwYWdlIGZsaXAgaW9jdGwgd2lsbCBzdGlsbAo+ID4gPiByZXR1cm4gLUVCVVNZ
-IGJlY2F1c2Ugd29ya19idXN5IHJldHVybnMgb3V0ZGF0ZWQgaW5mb3JtYXRpb24uCj4gPiA+IAo+
-ID4gPiB2NDogSG9sZCBkZXYtPmV2ZW50X2xvY2sgd2hpbGUgY2hlY2tpbmcgdGhlIFZPUCdzIGV2
-ZW50IGZpZWxkIGFzCj4gPiA+IHN1Z2dlc3RlZCBieSBEYW5pZWwgU3RvbmUuCj4gPiA+IAo+ID4g
-PiB2NTogT25seSBibG9jayBpZiB0aGVyZSdzIG91dHN0YW5kaW5nIHdvcmsgaWYgaXQncyBhIGJs
-b2NraW5nIGNhbGwuCj4gPiAKPiA+IHNpbWlsYXJseSwgcGxlYXNlIHB1dCB0aGUgY2hhbmdlbG9n
-IGJlbG93IHRoZSAiLS0tIiBhbmQgYWJvdmUgdGhlIGRpZmZzdGF0Lgo+IAo+IGRybSBjdWx0dXJl
-IGlzIHRvIGtlZXAgaXQgYWJvdmUsIHNpbmNlIGl0J3Mga2luZGEgdXNlZnVsIHNvbWV0aW1lcyB3
-aGVuCj4gbGF0ZXIgb24gdHJ5aW5nIHRvIHJlY29uc3RydWN0IHd0ZiB3YXMgZGlzY3Vzc2VkIGFu
-ZCB3aHkgYSBwYXRjaCB3YXMKPiBtZXJnZWQuCgpNYXliZSBuZWVkcyBhIGJpdCBtb3JlIGNvbnRl
-eHQ6IFRoZSBvbmx5IHN0dWZmIHlvdSByYWlzZWQgaW4geW91ciByZXZpZXcKaXMgdGlueSBzdHls
-ZSBuaXRzIG9mIHByZXR0eSBtdWNoIHV0dGVyIGlycmVsZXZhbmNlLiBObyBzdWJzdGFudGlhbCBh
-bmQKbWF0ZXJpYWwgZmVlZGJhY2sgYW55d2VoZXJlLCBhbmQgaW4gbXkgb3BpbmlvbiBpbiBzdWNo
-IGEgY2FzZSBlaXRoZXIgZml4CnVwIHRoZSBuaXRzIHdoZW4gYXBwbHlpbmcgKHdoZW4geW91IGZl
-ZWwgcmVhbGx5IHN0cm9uZ2x5IGFib3V0IHBlcmZlY3QKcGF0Y2hlcyksIG9yIGp1c3QgbWVyZ2Ug
-YXMtaXMuCgpCdXQgc2VuZGluZyBvdXQgY29udGVudC1sZXNzIGJpa2VzaGVkcyBsaWtlIHRoZXNl
-IGp1c3QgYWRkcyBub2lzZSBhbmQKaGVscHMgbm8tb25lLiBJIHRoaW5rIGF0IGxlYXN0IHNvbWUg
-c3BlbGxpbmcgc3R1ZmYgaXMgdGhlIG1pbmltYWwgYmFyIChidXQKdGhlbiBqdXN0IGluY2x1ZGUg
-eW91ciByLWIgdGFnKSwgYnV0IHBlcnNvbmFsbHkgSSBkb24ndCBldmVuIGNhcmUgYWJvdXQKdGhh
-dCBzbyBtdWNoLCBhcyBsb25nIGFzIGl0J3Mgc3RpbGwgbGVnaWJsZS4KClRoYW5rcywgRGFuaWVs
-Ci0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgpo
-dHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Am Dienstag, 24. Mai 2016, 10:37:49 schrieb Daniel Vetter:
+> On Tue, May 24, 2016 at 10:30:50AM +0200, Daniel Vetter wrote:
+> > On Tue, May 24, 2016 at 10:28:42AM +0200, Heiko Stuebner wrote:
+> > > Hi Tomeu,
+> > > 
+> > > Patch subject: please put the version into the brackets, so [PATCH v5]
+> > > as it shouldn't be part of the commit log.
+> > > 
+> > > Am Dienstag, 24. Mai 2016, 09:27:37 schrieb Tomeu Vizoso:
+> > > > As per the docs, atomic_commit should return -EBUSY "if an
+> > > > asycnhronous
+> > > > updated is requested and there is an earlier updated pending".
+> > > > 
+> > > > v2: Use the status of the workqueue instead of vop->event, and don't
+> > > > add
+> > > > a superfluous wait on the workqueue.
+> > > > 
+> > > > v3: Drop work_busy, as there's a sizeable delay when the worker
+> > > > finishes, which introduces a race in which the client has already
+> > > > received the last flip event but the next page flip ioctl will still
+> > > > return -EBUSY because work_busy returns outdated information.
+> > > > 
+> > > > v4: Hold dev->event_lock while checking the VOP's event field as
+> > > > suggested by Daniel Stone.
+> > > > 
+> > > > v5: Only block if there's outstanding work if it's a blocking call.
+> > > 
+> > > similarly, please put the changelog below the "---" and above the
+> > > diffstat.> 
+> > drm culture is to keep it above, since it's kinda useful sometimes when
+> > later on trying to reconstruct wtf was discussed and why a patch was
+> > merged.
+> 
+> Maybe needs a bit more context: The only stuff you raised in your review
+> is tiny style nits of pretty much utter irrelevance. No substantial and
+> material feedback anywehere, and in my opinion in such a case either fix
+> up the nits when applying (when you feel really strongly about perfect
+> patches), or just merge as-is.
+> 
+> But sending out content-less bikesheds like these just adds noise and
+> helps no-one. I think at least some spelling stuff is the minimal bar (but
+> then just include your r-b tag), but personally I don't even care about
+> that so much, as long as it's still legible.
+
+ok, will keep that (both mails) in mind for future stuff.
+
+Heiko
