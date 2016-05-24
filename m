@@ -1,30 +1,59 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v2 0/5] Thermal: Support for hardware-tracked trip points
-Date: Mon, 23 May 2016 20:08:27 -0700
-Message-ID: <20160524030825.GA3489@localhost.localdomain>
-References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
- <5742B217.4080405@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5742B217.4080405@gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <caesar.upstream@gmail.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Caesar Wang <wxt@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Durgadoss R <durgadoss.r@intel.com>, Jonathan Corbet <corbet@lwn.net>, linux-rockchip@lists.infradead.org, briannorris@google.com, Andy Champ <andycham@amazon.com>, huangtao@rock-chips.com, linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, Javi Merino <javi.merino@arm.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Ni Wade <wni@nvidia.com>, Keerthy <j-keerthy@ti.com>, dmitry.torokhov@gmail.com, dianders@chromium.org, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: [PATCH] ASoC: rockchip: i2s: rename I2S_CKR_TRCM_TX/RXSHARE to I2S_CKR_TRCM_TX/RXONLY
+Date: Tue, 24 May 2016 11:47:46 +0800
+Message-ID: <1464061667-16477-1-git-send-email-zhengxing@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, Sugar Zhang <sugar.zhang@rock-chips.com>, Xing Zheng <zhengxing@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 23, 2016 at 03:32:39PM +0800, Caesar Wang wrote:
-> Hello Eduardo & 'Zhang Rui'
-> 
-> Do we have the chance to merge this series patches for next kernel?
-> I had picked them up in my github, and tested for a period of time with
-> rockchip inside kernel.
-> 
-> Let me know if someone have some suggestions or against opinios.
-> Thanks,
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-I will have a look after after the current merge window.
+this patch make it more reasonable and readable, because when we chose
+I2S_CKR_TRCM_TXONLY, we only output clk_lrck_tx, and hardware need to
+confirm this signal is wired to external codec lrck_tx/rx at the same time.
 
-Thanks.
+for convenience, we just handle lrck_txonly if we enable symmetric_rates
+in driver and dai_link. otherwise, we use the separate lrck_tx/rx.
 
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
+
+ sound/soc/rockchip/rockchip_i2s.c |    4 ++--
+ sound/soc/rockchip/rockchip_i2s.h |    4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 574c6af..92a405f 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -306,8 +306,8 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 			   I2S_DMACR_RDL(16));
+ 
+ 	val = I2S_CKR_TRCM_TXRX;
+-	if (dai->driver->symmetric_rates || rtd->dai_link->symmetric_rates)
+-		val = I2S_CKR_TRCM_TXSHARE;
++	if (dai->driver->symmetric_rates && rtd->dai_link->symmetric_rates)
++		val = I2S_CKR_TRCM_TXONLY;
+ 
+ 	regmap_update_bits(i2s->regmap, I2S_CKR,
+ 			   I2S_CKR_TRCM_MASK,
+diff --git a/sound/soc/rockchip/rockchip_i2s.h b/sound/soc/rockchip/rockchip_i2s.h
+index dc6e2c7..13b1d44 100644
+--- a/sound/soc/rockchip/rockchip_i2s.h
++++ b/sound/soc/rockchip/rockchip_i2s.h
+@@ -81,8 +81,8 @@
+ #define I2S_CKR_TRCM_SHIFT	28
+ #define I2S_CKR_TRCM(x)	(x << I2S_CKR_TRCM_SHIFT)
+ #define I2S_CKR_TRCM_TXRX	(0 << I2S_CKR_TRCM_SHIFT)
+-#define I2S_CKR_TRCM_TXSHARE	(1 << I2S_CKR_TRCM_SHIFT)
+-#define I2S_CKR_TRCM_RXSHARE	(2 << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_TXONLY	(1 << I2S_CKR_TRCM_SHIFT)
++#define I2S_CKR_TRCM_RXONLY	(2 << I2S_CKR_TRCM_SHIFT)
+ #define I2S_CKR_TRCM_MASK	(3 << I2S_CKR_TRCM_SHIFT)
+ #define I2S_CKR_MSS_SHIFT	27
+ #define I2S_CKR_MSS_MASTER	(0 << I2S_CKR_MSS_SHIFT)
+-- 
+1.7.9.5
