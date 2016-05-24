@@ -1,108 +1,161 @@
-From: Javi Merino <javi.merino@arm.com>
-Subject: Re: [PATCH v2 2/5] thermal: of: implement .set_trips for device tree
- thermal zones
-Date: Tue, 24 May 2016 14:01:39 +0100
-Message-ID: <20160524130139.GB8979@e104805>
-References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com>
- <1462268013-14992-3-git-send-email-wxt@rock-chips.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Tue, 24 May 2016 15:03:13 +0200
+Message-ID: <9836736.6VjP1ug4kE@wuerfel>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1462268013-14992-3-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: edubezval@gmail.com, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1463740156-7148-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wenrui Li <wenrui.li-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, May 03, 2016 at 05:33:30PM +0800, Caesar Wang wrote:
-> From: Sascha Hauer <s.hauer@pengutronix.de>
-> 
-> This patch implemnets .set_trips for device tree thermal zones.
-> As the hardware-tracked trip points is supported by thermal core patch[0].
-> 
-> patch[0]
-> "thermal: Add support for hardware-tracked trip points".
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
-> Cc: linux-pm@vger.kernel.org
-> 
-> ---
-> 
-> Changes in v2:
-> - add the commit in patch[v2 2/5].
-> 
->  drivers/thermal/of-thermal.c | 12 ++++++++++++
->  include/linux/thermal.h      |  4 ++++
->  2 files changed, 16 insertions(+)
-> 
-> diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-thermal.c
-> index b8e509c..8722e63 100644
-> --- a/drivers/thermal/of-thermal.c
-> +++ b/drivers/thermal/of-thermal.c
-> @@ -101,6 +101,17 @@ static int of_thermal_get_temp(struct thermal_zone_device *tz,
->  	return data->ops->get_temp(data->sensor_data, temp);
->  }
->  
-> +static int of_thermal_set_trips(struct thermal_zone_device *tz,
-> +				int low, int high)
+On Friday, May 20, 2016 6:29:16 PM CEST Shawn Lin wrote:
+
+> +static int rockchip_pcie_wr_own_conf(struct rockchip_pcie_port *pp,
+> +				     int where, int size, u32 val)
 > +{
-> +	struct __thermal_zone *data = tz->devdata;
+> +	u32 tmp;
+> +	int offset;
 > +
-> +	if (!data->ops || !data->ops->set_trips)
-> +		return -EINVAL;
+> +	offset = (where & (~0x3));
+> +	tmp = readl(pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
+> +	if (size == 4) {
+> +		writel(val, pp->apb_base + PCIE_RC_CONFIG_BASE + where);
+> +	} else if (size == 2) {
+> +		if (where & 0x2)
+> +			tmp = ((tmp & 0xffff) | (val << 16));
+> +		else
+> +			tmp = ((tmp & 0xffff0000) | val);
 > +
-> +	return data->ops->set_trips(data->sensor_data, low, high);
+> +		writel(tmp, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
+> +	} else if (size == 1) {
+> +		if ((where & 0x3) == 0)
+> +			tmp = ((tmp & (~0xff)) | val);
+> +		else if ((where & 0x3) == 1)
+> +			tmp = ((tmp & (~0xff00)) | (val << 8));
+> +		else if ((where & 0x3) == 2)
+> +			tmp = ((tmp & (~0xff0000)) | (val << 16));
+> +		else if ((where & 0x3) == 3)
+> +			tmp = ((tmp & (~0xff000000)) | (val << 24));
+> +
+> +		writel(tmp, pp->apb_base + PCIE_RC_CONFIG_BASE + offset);
+> +	} else {
+> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+> +	}
+> +	return PCIBIOS_SUCCESSFUL;
+> +}
+
+Why can't you access the individual sub-word registers here?
+
+> +
+> +static int rockchip_pcie_rd_other_conf(struct rockchip_pcie_port *pp,
+> +				       struct pci_bus *bus, u32 devfn,
+> +				       int where, int size, u32 *val)
+> +{
+> +	u32 busdev;
+> +
+> +	busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
+> +				PCI_FUNC(devfn), where);
+> +
+> +	if (busdev & (size - 1)) {
+> +		*val = 0;
+> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+> +	}
+> +
+> +	if (size == 4) {
+> +		*val = readl(pp->reg_base + busdev);
+> +	} else if (size == 2) {
+> +		*val = readw(pp->reg_base + busdev);
+> +	} else if (size == 1) {
+> +		*val = readb(pp->reg_base + busdev);
+> +	} else {
+> +		*val = 0;
+> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+> +	}
+> +	return PCIBIOS_SUCCESSFUL;
 > +}
 > +
->  /**
->   * of_thermal_get_ntrips - function to export number of available trip
->   *			   points.
-> @@ -427,6 +438,7 @@ thermal_zone_of_add_sensor(struct device_node *zone,
->  
->  	tzd->ops->get_temp = of_thermal_get_temp;
->  	tzd->ops->get_trend = of_thermal_get_trend;
-> +	tzd->ops->set_trips = of_thermal_set_trips;
 
-Why not do it only if ops->set_trips is set?  Something like
+This looks like the normal ECAM operations, you could just call those.
 
-	if (ops->set_trips)
-		tzd->ops->set_trips = of_thermal_set_trips;
+> +	while (time_before(jiffies, timeout)) {
+> +		regmap_read(port->grf, port->pcie_status, &status);
+> +		if ((status & (1 << 9))) {
+> +			dev_info(port->dev, "pll locked!\n");
+> +			err = 0;
+> +			break;
+> +		}
+> +	}
 
-Otherwise, the thermal zone core will calculate the window for all
-device tree thermal zones, even if they haven't set the optional
-set_trips pointer.
+Maybe add an msleep(1) here to avoid busy-looping?
 
-Cheers,
-Javi
 
->  	tzd->ops->set_emul_temp = of_thermal_set_emul_temp;
->  	mutex_unlock(&tzd->lock);
->  
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index e258359..09053eb 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -336,12 +336,16 @@ struct thermal_genl_event {
->   *
->   * Optional:
->   * @get_trend: a pointer to a function that reads the sensor temperature trend.
-> + * @set_trips: a pointer to a function that sets a temperature window. When
-> + *	       this window is left the driver must inform the thermal core via
-> + *	       thermal_zone_device_update.
->   * @set_emul_temp: a pointer to a function that sets sensor emulated
->   *		   temperature.
->   */
->  struct thermal_zone_of_device_ops {
->  	int (*get_temp)(void *, int *);
->  	int (*get_trend)(void *, long *);
-> +	int (*set_trips)(void *, int, int);
->  	int (*set_emul_temp)(void *, int);
->  	int (*set_trip_temp)(void *, int, int);
->  };
-> -- 
-> 1.9.1
-> 
+> +	for (reg_no = 0; reg_no < (port->mem_size >> 20); reg_no++) {
+> +		err = rockchip_pcie_prog_ob_atu(port, reg_no + 1,
+> +						AXI_WRAPPER_MEM_WRITE,
+> +						20 - 1,
+> +						port->mem_bus_addr +
+> +							(reg_no << 20),
+> +						0);
+> +		if (err) {
+> +			dev_err(dev, "Program RC outbound atu failed\n");
+> +			return err;
+> +		}
+> +	}
+
+What if there is more than one outbound memory window, e.g. prefetchable
+and non-prefetchable?
+
+Where do you set the I/O window?
+
+> +	err = rockchip_pcie_prog_ib_atu(port, 2, 32 - 1, 0x0, 0);
+> +	if (err) {
+> +		dev_err(dev, "Program RC inbound atu failed\n");
+> +		return err;
+> +	}
+
+And this doesn't seem to reflect the DMA ranges.
+
+> +
+> +	port->root_bus_nr = port->busn->start;
+> +	if (IS_ENABLED(CONFIG_PCI_MSI)) {
+> +		bus = pci_scan_root_bus_msi(port->dev, port->root_bus_nr,
+> +					    &rockchip_pcie_ops, port, &res,
+> +					    port->msi);
+> +	} else {
+> +		bus = pci_scan_root_bus(&pdev->dev, 0,
+> +					&rockchip_pcie_ops, port, &res);
+
+
+PCI_MSI is selected unconditionally from Kconfig for this driver, so no
+need for the compile-time check here.
+
+> +
+> +static int rockchip_pcie_remove(struct platform_device *pdev)
+> +{
+> +	struct rockchip_pcie_port *port = platform_get_drvdata(pdev);
+> +
+> +	clk_disable_unprepare(port->hclk_pcie);
+> +	clk_disable_unprepare(port->aclk_perf_pcie);
+> +	clk_disable_unprepare(port->aclk_pcie);
+> +	clk_disable_unprepare(port->clk_pciephy_ref);
+> +
+> +	return 0;
+> +}
+
+You don't seem to remove the child devices here. Have you tried unloading the module?
+
+	Arnd
