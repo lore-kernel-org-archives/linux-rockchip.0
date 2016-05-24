@@ -1,53 +1,55 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
-Date: Tue, 24 May 2016 20:23:48 +0200
-Message-ID: <8988677.GHLC4rSfsM@phil>
-References: <1464066147-22734-1-git-send-email-ykk@rock-chips.com>
- <6183955.XzKjc41sjW@phil>
- <CAD=FV=WH6xYE6UiDxVK=cLnhoHnCvecSL4tk7FUVAnkGbQ-QOg@mail.gmail.com>
+From: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
+Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
+Date: Tue, 24 May 2016 21:02:35 +0200
+Message-ID: <20160524190235.GA31006@electric-eye.fr.zoreil.com>
+References: <573CD09D.1060307@gmx.de>
+ <20160518225529.GA18671@electric-eye.fr.zoreil.com>
+ <573E2D0C.604@gmx.de>
+ <20160520003145.GA22420@electric-eye.fr.zoreil.com>
+ <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
+ <20160522091742.GA8681@debian-dorm> <57419853.9050701@gmx.de>
+ <20160522223659.GB5086@electric-eye.fr.zoreil.com>
+ <5743A9DD.8010202@gmx.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAD=FV=WH6xYE6UiDxVK=cLnhoHnCvecSL4tk7FUVAnkGbQ-QOg@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Doug Anderson <dianders@chromium.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mark Yao <yzq@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <5743A9DD.8010202-Mmb7MZpHnFY@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
+Cc: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-QW0gRGllbnN0YWcsIDI0LiBNYWkgMjAxNiwgMTE6MTI6MjAgc2NocmllYiBEb3VnIEFuZGVyc29u
-Ogo+IEhpLAo+IAo+IE9uIFR1ZSwgTWF5IDI0LCAyMDE2IGF0IDM6MTcgQU0sIEhlaWtvIFN0dWVi
-bmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+ID4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPiA+PiArKysg
-Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9n
-aXhfZHAudHh0Cj4gPj4gCj4gPj4gQEAgLTUsNiArNSw3IEBAIFJlcXVpcmVkIHByb3BlcnRpZXMg
-Zm9yIGRwLWNvbnRyb2xsZXI6Cj4gPj4gICAgICAgICAgICAgICBwbGF0Zm9ybSBzcGVjaWZpYyBz
-dWNoIGFzOgo+ID4+ICAgICAgICAgICAgICAgICogInNhbXN1bmcsZXh5bm9zNS1kcCIKPiA+PiAg
-ICAgICAgICAgICAgICAqICJyb2NrY2hpcCxyazMyODgtZHAiCj4gPj4gCj4gPj4gKyAgICAgICAg
-ICAgICAgKiAicm9ja2NoaXAscmszMzk5LWVkcCIKPiA+IAo+ID4gdGhlIGNsZWFubGluZXMtZnJl
-YWsgaW4gbXkgbGlrZXMgdG8ga25vdyBpZiB0aGVyZSBpcyBhIGRpZmZlcmVuY2UKPiA+IGJldHdl
-ZW4KPiA+IHRoZSByazMzOTkgYmVpbmcgY2FsbGVkIC1lZHAgaGVyZSBhbmQgLWRwIG9uIHRoZSBy
-azMyODggOi0pCj4gPiAKPiA+IFsuLi5dCj4gCj4gSWYgSSB3YXMgYSBndWVzc2luZyBtYW4gKHdo
-aWNoIEknbSBub3QsIGJ1dCBpZiBJIHdhcyksIEknZCBndWVzcyB0aGF0Cj4gdGhpcyBpcyBiZWNh
-dXNlIG9uIHJrMzI4OCB0aGVyZSB3YXMgb25seSBvbmUgRFAgcG9ydCBhbmQgaXQgd2FzIGFuIEVE
-UAo+IHBvcnQuICAuLi5idXQgc2luY2UgdGhlcmUgd2FzIG9ubHkgb25lIHBlb3BsZSBqdXN0IHJl
-ZmVycmVkIHRvIGl0IGFzCj4gdGhlICJEUCIgcG9ydCBhbmQgdGhhdCB3YXMgY29kaWZpZWQgaW4g
-dGhlIGJpbmRpbmdzLiAgT24gcmszMzk5IHRoZXJlCj4gYXJlIHR3byBwb3J0czogb25lIEVEUCBh
-bmQgb25lIERQLiAgQWxsIG9mIGEgc3VkZGVuIHdlIG5lZWQgdG8KPiBkaWZmZXJlbnRpYXRlLgo+
-IAo+IEFueSBiZXR0ZXIgc3VnZ2VzdGlvbnMgZm9yIGhvdyB0byBkZWFsIHdpdGggdGhhdD8KCm5v
-cGUgLSBldmVyeXRoaW5nIGFzIGl0IHNob3VsZCBiZSBpbiB0aGF0IHJlZ2FyZCB0aGVuIC0gdGhl
-IHJrMzI4OC1kcCBpcyAKcGVybWFuZW50IG5vdyBhbnl3YXkuCgpCdXQgaXQgbG9va3MgbGlrZSBJ
-J20gc29ydCBvZiBibGluZCBibGluZCBhbmQgb25seSBub3cgaGF2ZSBzZWVuIHRoZSAKc2VwYXJh
-dGUgRFAgY29udHJvbGxlciBjaGFwdGVyIGluIHRoZSBUUk0gKHByb2JhYmx5IGJlY2F1c2UgSSBz
-b21laG93IGRpZG4ndCAKZXhwZWN0IGEgc2Vjb25kIGNvbnRyb2xsZXIpLgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
-CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
-cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org> :
+[...]
+> I dont agree here. A dma_wmb would have an effect to "data" and "info", yes,
+> but it would have absolutely no effect to skb_tx_timestamp(), since there
+> is no dma access involved here. In fact skb_tx_timestamp() could probably
+> be even reordered to appear after the dma_wmb.
+>
+> Anyway, there is the wmb() directly after the assignment to "info". _This_
+> barrier  should ensure that skb_tx_timestamp() (along with a flush of data
+> and info to DMA) is executed before "txbd_curr" is advanced.
+> This means that the corresponding skb cant be freed prematurely by tx_clean().
+
+The concern here is about sending adequate PTP payload on the network.
+
+skb_tx_timestamp() is used for network clock synchronization. Some extra
+information must be transmitted. Be it through direct payload change
+or through indirect control, it _is_ related to dma.
+
+Several (most ?) skb_tx_timestamp() misuses blur the picture: CPU vs device
+sync is of course way below the radar when the driver crashes because of
+plain use-after-free skb_tx_timestamp() :o/
+
+-- 
+Ueimor
