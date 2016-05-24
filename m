@@ -1,141 +1,341 @@
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
- during disable
-Date: Tue, 24 May 2016 12:11:27 +0200
-Message-ID: <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
-References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
- <5707043D.6060706@rock-chips.com>
- <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
- <570AFAC2.8080907@rock-chips.com>
- <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
- <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
- <5742A41B.8030308@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v5 3/5] mmc: core: implement enhanced strobe support
+Date: Tue, 24 May 2016 18:11:50 +0800
+Message-ID: <1f67fa2e-9a14-819d-8d75-3b35be819f0d@rock-chips.com>
+References: <1463976789-29618-1-git-send-email-shawn.lin@rock-chips.com>
+ <CGME20160523041529epcas1p3ab7a79120c0ef135fbca109eede66883@epcas1p3.samsung.com>
+ <1463976835-29780-1-git-send-email-shawn.lin@rock-chips.com>
+ <574425A3.6090303@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5742A41B.8030308@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Mark yao <mark.yao@rock-chips.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <574425A3.6090303@samsung.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: shawn.lin@rock-chips.com, Adrian Hunter <adrian.hunter@intel.com>, Michal Simek <michal.simek@xilinx.com>, soren.brinkmann@xilinx.com, Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjMgTWF5IDIwMTYgYXQgMDg6MzIsIE1hcmsgeWFvIDxtYXJrLnlhb0Byb2NrLWNoaXBzLmNv
-bT4gd3JvdGU6Cj4gT24gMjAxNuW5tDA15pyIMDXml6UgMTc6MzQsIFRvbWV1IFZpem9zbyB3cm90
-ZToKPj4KPj4gT24gMjAgQXByaWwgMjAxNiBhdCAxNjoyMywgVG9tZXUgVml6b3NvIDx0b21ldS52
-aXpvc29AY29sbGFib3JhLmNvbT4KPj4gd3JvdGU6Cj4+Pgo+Pj4gT24gMTEgQXByaWwgMjAxNiBh
-dCAwMzoxNSwgTWFyayB5YW8gPG1hcmsueWFvQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Pgo+
-Pj4+IE9uIDIwMTblubQwNOaciDA45pelIDE4OjU0LCBUb21ldSBWaXpvc28gd3JvdGU6Cj4+Pj4+
-Cj4+Pj4+IE9uIDggQXByaWwgMjAxNiBhdCAwMzowNywgTWFyayB5YW8gPG1hcmsueWFvQHJvY2st
-Y2hpcHMuY29tPiB3cm90ZToKPj4+Pj4+Cj4+Pj4+PiBPbiAyMDE25bm0MDTmnIgwNuaXpSAxODox
-NCwgVG9tZXUgVml6b3NvIHdyb3RlOgo+Pj4+Pj4KPj4+Pj4+IFdoZW4gYSBwbGFuZSBpcyBiZWlu
-ZyBkaXNhYmxlZCBidXQgaXQncyBzdGlsbCBlbmFibGVkLCBkbyBjaGVjayBpZiB0aGUKPj4+Pj4+
-IHByZXZpb3VzIHVwZGF0ZSBoYXMgYmVlbiBjb21wbGV0ZWQgYnkgcmVhZGluZyB5cmdiX21zdCBi
-YWNrLgo+Pj4+Pj4KPj4+Pj4+IE90aGVyd2lzZSwgcGVuZGluZyBwYWdlZmxpcHMgd291bGQgcmVt
-YWluIHBlbmRpbmcgYWZ0ZXIgYSBDUlRDIGlzCj4+Pj4+PiBkaXNhYmxlZC4KPj4+Pj4+Cj4+Pj4+
-PiBTaWduZWQtb2ZmLWJ5OiBUb21ldSBWaXpvc28gPHRvbWV1LnZpem9zb0Bjb2xsYWJvcmEuY29t
-Pgo+Pj4+Pj4gLS0tCj4+Pj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
-ZHJtX3ZvcC5jIHwgNSArKystLQo+Pj4+Pj4gICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
-cygrKSwgMiBkZWxldGlvbnMoLSkKPj4+Pj4+Cj4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+Pj4+Pj4gYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+Pj4+PiBpbmRleCBhOWIxZThiNWFjODUu
-LmY0NmIxZmQxODg3YiAxMDA2NDQKPj4+Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4+Pj4+IEBAIC0xMDY0LDggKzEwNjQsOSBAQCBzdGF0aWMg
-Ym9vbCB2b3Bfd2luX3BlbmRpbmdfaXNfY29tcGxldGUoc3RydWN0Cj4+Pj4+PiB2b3Bfd2luCj4+
-Pj4+PiAqdm9wX3dpbikKPj4+Pj4+ICAgICBzdHJ1Y3Qgdm9wX3BsYW5lX3N0YXRlICpzdGF0ZSA9
-IHRvX3ZvcF9wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+Pj4+Pj4gICAgIGRtYV9hZGRyX3Qg
-eXJnYl9tc3Q7Cj4+Pj4+Pgo+Pj4+Pj4gLSBpZiAoIXN0YXRlLT5lbmFibGUpCj4+Pj4+PiAtIHJl
-dHVybiBWT1BfV0lOX0dFVCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0g
-MDsKPj4+Pj4+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4+Pj4+PiArICAgIFZPUF9XSU5fR0VU
-KHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSwgZW5hYmxlKSA9PSAwKQo+Pj4+Pj4gKyByZXR1
-cm4gdHJ1ZTsKPj4+Pj4+Cj4+Pj4+Pgo+Pj4+Pj4gSXQgaXMgd3JvbmcsIHRoZSBwYXRjaCB3b3Vs
-ZCBjYXVzZSBhIGJ1Zy4KPj4+Pj4+Cj4+Pj4+PiB3aGVuIHN0YXRlLT5lbmFibGUgaXMgMCwgY2hl
-Y2sgeXJnYl9tc3QgPT0gc3RhdGUtPnlyZ2JfbXN0IGFsd2F5cyBiZQo+Pj4+Pj4gdHJ1ZSwKPj4+
-Pj4+IGJlY2F1c2Ugc3RhdGUtPnlyZ2JfbXN0IG5vdCB1cGRhdGUgb24gcGxhbmUgZGlzYWJsZWQg
-ZnVudGlvbiwgdGhhdAo+Pj4+Pj4gd291bGQKPj4+Pj4+IGNhdXNlIGlvbW11IGNyYXNoLgo+Pj4+
-Pgo+Pj4+PiBTb3JyeSwgYnV0IEkgZG9uJ3QgdW5kZXJzdGFuZCB3aGVyZSdzIHRoZSBidWcgYW5k
-IHdoYXQgY291bGQgY2F1c2UKPj4+Pj4gdGhhdCBjcmFzaC4gV2hhdCB0aGUgZXhpc3RpbmcgY29k
-ZSB3YXMgZG9pbmcgaXMgc2F5aW5nIHRoYXQgYSBwYWdlZmxpcAo+Pj4+PiBldmVudCBpcyBzdGls
-bCBwZW5kaW5nIGlmIHdlIGhhdmUgdG9sZCB0aGUgcGxhbmUgdG8gZGlzYWJsZSBidXQgZm9yCj4+
-Pj4+IHNvbWUgcmVhc29uIGl0IGhhc24ndCB5ZXQuCj4+Pj4+Cj4+Pj4+IFdpdGggdGhpcyBtb2Rp
-ZmljYXRpb24sIGlmIHdlIHJlYWQgYmFjayB0aGF0IGl0J3MgYWxyZWFkeSBkaXNhYmxlZCwgd2UK
-Pj4+Pj4gcmV0dXJuIHRydWUgYXMgYmVmb3JlLiBCdXQgaWYgd2UgcmVhZCBiYWNrIHRoYXQgaXQg
-aXNuJ3QgZGlzYWJsZWQgeWV0LAo+Pj4+PiB0aGVuIHdlIHN0aWxsIGNoZWNrIHRoZSBmYiBwb2lu
-dGVycyBhbmQgY29tcGFyZSB0aGVtLgo+Pj4+Pgo+Pj4+PiBUaGUgaW9tbXUgbWFwcGluZyBpcyBy
-ZW1vdmVkIHdoZW4gdGhlIF9DUlRDXyBpcyBkaXNhYmxlZCwgYW5kIHdoYXQKPj4+Pj4gdGhpcyBz
-ZXJpZXMgZG9lcyBpcyB0byB3YWl0IGZvciB0aGUgcGVuZGluZyBwYWdlZmxpcCB0byBmaW5pc2gg
-YmVmb3JlCj4+Pj4+IGNvbml0bnVpbmcgd2l0aCBDUlRDIGRpc2FibGVtZW50Lgo+Pj4+Cj4+Pj4K
-Pj4+PiB0aGUgaW9tbXUgbWFwcGluZyB3aWxsIHVubWFwIGFmdGVyIHBsYW5lIGRpc2FibGVkLCB3
-ZSBuZWVkIHN1cmUgdGhhdCB0aGUKPj4+PiBwbGFuZSByZWFsbHkgZGlzYWJsZWQgYmVmb3JlIHVu
-bWFwLCBpZiBub3QsIHRoZSB1bm1hcCBtYXkgY2FsbCBiZWZvcmUKPj4+PiBwbGFuZQo+Pj4+IHJl
-YWxseSBkaXNhYmxlLCB2b3AgbWF5IGFjY2VzcyB1bm1hcCBhZGRyZXNzLCB0aGVuIHdvdWxkIGdl
-dCBpb21tdSBwYWdlCj4+Pj4gZmF1bHQuCj4+Pgo+Pj4gU29ycnksIGJ1dCBJIHN0aWxsIGRvbid0
-IHNlZSB0aGUgZXJyb3IgY29uZGl0aW9uIHRoYXQgeW91IGFyZQo+Pj4gZGVzY3JpYmluZy4gQUZB
-SUNTLCB0aGUgdW5tYXAgd2lsbCBoYXBwZW4gYWZ0ZXIgdGhlIGxhc3QgcGFnZWZsaXAgaGFzCj4+
-PiBjb21wbGV0ZWQuCj4+Pgo+Pj4+Pj4gQWJvdXQgcGVuZGluZyBwYWdlZmxpcHMgd291bGQgcmVt
-YWluIHBlbmRpbmcsIGNhbiB5b3UgIGRlc2NyaWJlIG1vcmUKPj4+Pj4+IGluZm8KPj4+Pj4+IGFi
-b3V0IGl0PyBJIHRoaW5rIHRob3NlIHBlbmRpbmcgcGFnZWZsaXBzIHNob3VsZCBiZSBpZ25vcmUg
-d2hlbiBDUlRDCj4+Pj4+PiBpcwo+Pj4+Pj4gZGlzYWJsZWQuCj4+Pj4+Cj4+Pj4+IFdlbGwsIHJp
-Z2h0IG5vdyBpbiByb2NrY2hpcC1kcm0gcGVuZGluZyBwYWdlZmxpcHMgd29uJ3QgYmUgaWdub3Jl
-ZAo+Pj4+PiB3aGVuIGEgQ1JUQyBpcyBkaXNhYmxlZCwgYnV0IHdpbGwgYmUgZGVsaXZlcmVkIHdo
-ZW4gaXQncyByZS1lbmFibGVkLgo+Pj4+Pgo+Pj4+PiBJZiB0aGV5IHdvdWxkIGJlIHRvIGJlIGln
-bm9yZWQgKHVuZGVyc3RhbmRpbmcgdGhhdCBhcyBkcm9wcGVkKSwgdGhhdAo+Pj4+PiB3b3VsZCBy
-ZXF1aXJlIG1vZGlmaWNhdGlvbnMgdG8gY2xpZW50cyBzbyB0aGV5IGtlZXAgdHJhY2sgb2Ygd2hp
-Y2ggZmJzCj4+Pj4+IHdlcmUgdXNlZCBpbiBhIHBhcnRpY3VsYXIgY3J0YyBhbmQgZGVzdHJveSB0
-aGVtIHdoZW4gdGhlIGNydGMgaXMKPj4+Pj4gZGlzYWJsZWQsIGJ1dCB0aGF0IHdvdWxkIGJlIGlu
-Y29ycmVjdCB3aGVuIHVzaW5nIHRoZSBpOTE1IERSTSBkcml2ZXIKPj4+Pj4gKEkgYWxzbyBhc3N1
-bWUgb3RoZXJzIGRvIHRoZSBzYW1lKS4gR2l2ZW4gdGhhdCB0aGUgcGFnZWZsaXAgaW9jdGwKPj4+
-Pj4gaXNuJ3QgZHJpdmVyLXNwZWNpZmljLCBJIHRoaW5rIHRoZXJlIGNhbm5vdCBiZSBzdWNoIGEg
-ZGlmZmVyZW5jZSBpbgo+Pj4+PiBiZWhhdmlvciBiZXR3ZWVuIGRyaXZlcnMuCj4+Pj4+Cj4+Pj4+
-IFdpdGggdGhlIGN1cnJlbnQgYmVoYXZpb3IgKHBlbmRpbmcgcGFnZWZsaXAgZXZlbnRzIGJlaW5n
-IGRlbGF5ZWQgdW50aWwKPj4+Pj4gdGhlIENSVEMgaXMgZW5hYmxlZCBhZ2FpbiksIGNvbXBvc2l0
-b3JzIGFuZCBvdGhlciBjbGllbnRzIHdpbGwgYmUKPj4+Pj4gaG9sZGluZyBvbiB0byB0aGUgZmIg
-aW4gdGhlIHBlbmRpbmcgcGFnZWZsaXAgdW50aWwgYW4gYXJiaXRyYXJ5IHBvaW50Cj4+Pj4+IGlu
-IHRoZSBmdXR1cmUgdGhhdCBtYXkgbm90IGV2ZXIgY29tZS4gVG8gbWUgdGhhdCBzb3VuZHMgbGlr
-ZSBhIHNlcmlvdXMKPj4+Pj4gbW9kaWZpY2F0aW9uIG9mIHRoZSBhc3N1bXB0aW9ucyBvbiBmYiBs
-aWZlY3ljbGUgdGhhdCBtaWdodCBub3QgYmUKPj4+Pj4gd2FycmFudGVkLgo+Pj4+Pgo+Pj4+PiBT
-byBpbiBzdW1tYXJ5LCBldmVuIGlmIEkgaGF2ZW4ndCBmb3VuZCBhbnkgZXhwbGljaXQgZG9jdW1l
-bnRhdGlvbiBvbgo+Pj4+PiB0aGlzLCBJIHRoaW5rIHRoZSBBQkkgaXMgdGhhdCBhbnkgcGVuZGlu
-ZyBwYWdlZmxpcHMgYXJlIHRvIGJlCj4+Pj4+IGRlbGl2ZXJlZCB3aGVuIHRoYXQgQ1JUQyBpcyBi
-ZWluZyBkaXNhYmxlZCBhbmQgbm90IGxhdGVyLgo+Pj4+Cj4+Pj4KPj4+PiBvbiBkcml2ZXJzL2dw
-dS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2ZiLmMKPj4+Pgo+Pj4+IGRybV9hdG9taWNfaGVs
-cGVyX2NvbW1pdF9wbGFuZXMoZGV2LCBzdGF0ZSwgdHJ1ZSk7Cj4+Pj4gcm9ja2NoaXBfYXRvbWlj
-X3dhaXRfZm9yX2NvbXBsZXRlKGRldiwgc3RhdGUpOwo+Pj4+Cj4+Pj4gV2Ugc2V0IGFjdGl2ZV9v
-bmx5ID0gdHJ1ZSwgSSB0aGluayBwbGFuZXMgY2FuIG9ubHkgdXBkYXRlIHdoZW4gY3J0YyBpcwo+
-Pj4+IGFjdGl2ZS4gYW5kIHJvY2tjaGlwX2F0b21pY193YWl0X2Zvcl9jb21wbGV0ZSBvbmx5IHdh
-aXQgd2hlbiBjcnRjIGlzCj4+Pj4gYWN0aXZlLgo+Pj4KPj4+IFRoYXQncyBmaW5lLCBidXQgaWYg
-YSBwYWdlZmxpcCBpcyBwZW5kaW5nIHdoZW4gdGhlIGNsaWVudCByZXF1ZXN0cyB0aGUKPj4+IENS
-VEMgdG8gYmUgZGlzYWJsZWQsIHdlIG5lZWQgdG8gd2FpdCBmb3IgdGhlIGV2ZW50IHRvIGJlIGVt
-aXR0ZWQKPj4+IGJlZm9yZSB3ZSBhY3R1YWxseSBkaXNhYmxlIHRoZSBIVy4KPj4KPj4gSGkgTWFy
-aywKPj4KPj4gY291bGQgeW91IHRlbGwgbWUgaWYgeW91IGFncmVlIHRoYXQgdGhlcmUncyBhIGJ1
-ZyB0aGF0IG5lZWRzIHRvIGJlCj4+IHNvbHZlZCwgYW5kIGlmIHNvLCB3aGF0IGRvIHlvdSB0aGlu
-ayB3ZSBzaG91bGQgZG8gYWJvdXQgaXQ/Cj4KPiBIaSBUb21ldQo+Cj4gU29ycnkgZm9yIHJlcGx5
-IGxhdGUuCj4gSSBkb24ndCBhZ3JlZSB0aGUgY2hhbmdlczoKPgo+IC0gaWYgKCFzdGF0ZS0+ZW5h
-YmxlKQo+IC0gcmV0dXJuIFZPUF9XSU5fR0VUKHZvcF93aW4tPnZvcCwgdm9wX3dpbi0+ZGF0YSwg
-ZW5hYmxlKSA9PSAwOwo+ICsgaWYgKCFzdGF0ZS0+ZW5hYmxlICYmCj4gKyAgICBWT1BfV0lOX0dF
-VCh2b3Bfd2luLT52b3AsIHZvcF93aW4tPmRhdGEsIGVuYWJsZSkgPT0gMCkKPiArIHJldHVybiB0
-cnVlOwo+Cj4gVGhpcyBjaGFuZ2VzIGFjdHVhbGx5IHdvdWxkIGxlYWQgYSBidWcuCj4gd2hlbiB3
-ZSBkaXNhYmxlIGEgcGxhbmUsIHRoZSB2b3Bfd2luX3BlbmRpbmdfaXNfY29tcGxldGUgd291bGQg
-YWx3YXlzIHJldHVybgo+IHRydWUsIFRoYXQgaXMgbm90IGFsbG93ZWQsIHdvdWxkIGNhdXNlIGZi
-IGZyZWUgdG9vIGVhcmx5LgoKT2ssIG1heWJlIEkgbmVlZCB0byBhc2sgeW91IGZpcnN0IHdoYXQg
-dGhlIG9yaWdpbmFsIGJsb2NrIG9mIGNvZGUKaW50ZW5kZWQgdG8gYWNoaWV2ZS4gVGhlIFRSTSBJ
-IGhhdmUgaXMgdmVyeSB0ZXJzZSBhbmQgSSBkb24ndCBmaW5kIGFueQpleHBsYW5hdGlvbiB0aGVy
-ZS4gVGhlIGJhdHRlcnkgb2YgdGVzdHMgSSBoYXZlIHBhc3MganVzdCBmaW5lIHdpdGhvdXQKaXQu
-Cgo+IERvZXMgdGhpcyBwYXRjaCBpcyBuZWVkZWQgZm9yICJbUEFUQ0ggMi8yXSBkcm0vcm9ja2No
-aXA6IHZvcDogV2FpdCBmb3IKPiBwZW5kaW5nIGV2ZW50cyB3aGVuIGRpc2FibGluZyBhIENSVEMi
-CgpZZXMsIHRoaXMgZnVuY3Rpb24gaXMgY3VycmVudGx5IHJldHVybmluZyBmYWxzZSB3aGVuIHRo
-ZSBwYWdlZmxpcCBoYXMKYmVlbiBjb21wbGV0ZWQgYnV0IHRoZSBwbGFuIGhhcyBiZWVuIGFscmVh
-ZHkgZGlzYWJsZWQuCgpJZiB5b3UgaGF2ZSBhbnkgZGlmZmVyZW50IGlkZWEgb2YgaG93IHRvIGZp
-eCB0aGlzIGJ1ZywgcGxlYXNlIHNoYXJlLgoKVGhhbmtzLAoKVG9tZXUKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
-cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+=E5=9C=A8 2016/5/24 17:57, Jaehoon Chung =E5=86=99=E9=81=93:
+> On 05/23/2016 01:13 PM, Shawn Lin wrote:
+>> Controllers use data strobe line to latch data from devices
+>> under hs400 mode, but not for cmd line. So since emmc 5.1, JEDEC
+>> introduces enhanced strobe mode for latching cmd response from
+>> emmc devices to host controllers. This new feature is optional,
+>> so it depends both on device's cap and host's cap to decide
+>> whether to use it or not.
+>>
+>> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>> ---
+>>
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>  drivers/mmc/core/bus.c   |  3 +-
+>>  drivers/mmc/core/core.c  |  9 ++++++
+>>  drivers/mmc/core/mmc.c   | 84 +++++++++++++++++++++++++++++++++++++=
++++++++++--
+>>  include/linux/mmc/card.h |  1 +
+>>  include/linux/mmc/host.h | 11 +++++++
+>>  include/linux/mmc/mmc.h  |  3 ++
+>>  6 files changed, 108 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/mmc/core/bus.c b/drivers/mmc/core/bus.c
+>> index 4bc48f1..c64266f 100644
+>> --- a/drivers/mmc/core/bus.c
+>> +++ b/drivers/mmc/core/bus.c
+>> @@ -332,12 +332,13 @@ int mmc_add_card(struct mmc_card *card)
+>>  			mmc_card_ddr52(card) ? "DDR " : "",
+>>  			type);
+>>  	} else {
+>> -		pr_info("%s: new %s%s%s%s%s card at address %04x\n",
+>> +		pr_info("%s: new %s%s%s%s%s%s card at address %04x\n",
+>>  			mmc_hostname(card->host),
+>>  			mmc_card_uhs(card) ? "ultra high speed " :
+>>  			(mmc_card_hs(card) ? "high speed " : ""),
+>>  			mmc_card_hs400(card) ? "HS400 " :
+>>  			(mmc_card_hs200(card) ? "HS200 " : ""),
+>> +			mmc_card_hs400es(card) ? "Enhanced strobe " : "",
+>>  			mmc_card_ddr52(card) ? "DDR " : "",
+>>  			uhs_bus_speed_mode, type, card->rca);
+>>  	}
+>> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+>> index 99275e4..b0c1f07 100644
+>> --- a/drivers/mmc/core/core.c
+>> +++ b/drivers/mmc/core/core.c
+>> @@ -1127,6 +1127,15 @@ void mmc_set_initial_state(struct mmc_host *h=
+ost)
+>>  	host->ios.bus_width =3D MMC_BUS_WIDTH_1;
+>>  	host->ios.timing =3D MMC_TIMING_LEGACY;
+>>  	host->ios.drv_type =3D 0;
+>> +	host->ios.enhanced_strobe =3D false;
+>> +
+>> +	/*
+>> +	 * Make sure we are in non-enhanced strobe mode before we
+>> +	 * actually enable it in ext_csd.
+>> +	 */
+>> +	if ((host->caps2 & MMC_CAP2_HS400_ES) &&
+>> +	     host->ops->hs400_enhanced_strobe)
+>> +		host->ops->hs400_enhanced_strobe(host, &host->ios);
+>
+>
+> I wonder what is enhanced_strobe's purpose.
+> When i saw your patches, this is used to check whether timing is stro=
+be or not in sdhci-of-arasan, right?
+
+
+Also we use it for debugfs.
+
+> If ios.enhanced_strobe is used only this purpose, is it possible to u=
+se the below?
+>
+> host->ops->hs400_enhanced_strobe(host, false/true); ?
+>
+> This callback is also called only two locations..init (false) and swi=
+tch hs400es (true).
+
+It was suggested by Adrian. I'm ok with both of them.
+
+>
+>>
+>>  	mmc_set_ios(host);
+>>  }
+>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+>> index f99c47e..9dc91ba 100644
+>> --- a/drivers/mmc/core/mmc.c
+>> +++ b/drivers/mmc/core/mmc.c
+>> @@ -235,6 +235,11 @@ static void mmc_select_card_type(struct mmc_car=
+d *card)
+>>  		avail_type |=3D EXT_CSD_CARD_TYPE_HS400_1_2V;
+>>  	}
+>>
+>> +	if ((caps2 & MMC_CAP2_HS400_ES) &&
+>> +	    card->ext_csd.strobe_support &&
+>> +	    (avail_type & EXT_CSD_CARD_TYPE_HS400))
+>> +		avail_type |=3D EXT_CSD_CARD_TYPE_HS400ES;
+>> +
+>>  	card->ext_csd.hs_max_dtr =3D hs_max_dtr;
+>>  	card->ext_csd.hs200_max_dtr =3D hs200_max_dtr;
+>>  	card->mmc_avail_type =3D avail_type;
+>> @@ -383,6 +388,7 @@ static int mmc_decode_ext_csd(struct mmc_card *c=
+ard, u8 *ext_csd)
+>>  			mmc_card_set_blockaddr(card);
+>>  	}
+>>
+>> +	card->ext_csd.strobe_support =3D ext_csd[EXT_CSD_STROBE_SUPPORT];
+>>  	card->ext_csd.raw_card_type =3D ext_csd[EXT_CSD_CARD_TYPE];
+>>  	mmc_select_card_type(card);
+>>
+>> @@ -1216,6 +1222,78 @@ out_err:
+>>  	return err;
+>>  }
+>>
+>> +static int mmc_select_hs400es(struct mmc_card *card)
+>> +{
+>> +	struct mmc_host *host =3D card->host;
+>> +	int err =3D 0;
+>> +	u8 val;
+>> +
+>> +	if (!(host->caps & MMC_CAP_8_BIT_DATA)) {
+>> +		err =3D -ENOTSUPP;
+>> +		goto out_err;
+>> +	}
+>> +
+>> +	err =3D mmc_select_bus_width(card);
+>> +	if (IS_ERR_VALUE(err))
+>> +		goto out_err;
+>> +
+>> +	/* Switch card to HS mode */
+>> +	err =3D mmc_select_hs(card);
+>> +	if (err) {
+>> +		pr_err("%s: switch to high-speed failed, err:%d\n",
+>> +			mmc_hostname(host), err);
+>> +		goto out_err;
+>> +	}
+>> +
+>> +	err =3D mmc_switch_status(card);
+>> +	if (err)
+>> +		goto out_err;
+>> +
+>> +	/* Switch card to DDR with strobe bit */
+>> +	val =3D EXT_CSD_DDR_BUS_WIDTH_8 | EXT_CSD_BUS_WIDTH_STROBE;
+>> +	err =3D mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>> +			 EXT_CSD_BUS_WIDTH,
+>> +			 val,
+>> +			 card->ext_csd.generic_cmd6_time);
+>> +	if (err) {
+>> +		pr_err("%s: switch to bus width for hs400es failed, err:%d\n",
+>> +			mmc_hostname(host), err);
+>> +		goto out_err;
+>> +	}
+>> +
+>> +	/* Switch card to HS400 */
+>> +	val =3D EXT_CSD_TIMING_HS400 |
+>> +	      card->drive_strength << EXT_CSD_DRV_STR_SHIFT;
+>> +	err =3D __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>> +			   EXT_CSD_HS_TIMING, val,
+>> +			   card->ext_csd.generic_cmd6_time,
+>> +			   true, false, true);
+>> +	if (err) {
+>> +		pr_err("%s: switch to hs400es failed, err:%d\n",
+>> +			mmc_hostname(host), err);
+>> +		goto out_err;
+>> +	}
+>> +
+>> +	/* Set host controller to HS400 timing and frequency */
+>> +	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
+>> +
+>> +	/* Controller enable enhanced strobe function */
+>> +	host->ios.enhanced_strobe =3D true;
+>> +	if (host->ops->hs400_enhanced_strobe)
+>> +		host->ops->hs400_enhanced_strobe(host, &host->ios);
+>> +
+>> +	err =3D mmc_switch_status(card);
+>> +	if (err)
+>> +		goto out_err;
+>> +
+>> +	return 0;
+>> +
+>> +out_err:
+>
+> If ios.ehanced_strobe is really needs, you need to set from true to f=
+alse at here?
+
+I don't think so. If failing to run into HS400es, I'd not expect it
+fallback to HS400, and why not let mmc core retring it. We currently
+don't have speed-mode fallback mechanism,  right?
+
+>
+> Best Regards,
+> Jaehoon Chung
+>
+>> +	pr_err("%s: %s failed, error %d\n", mmc_hostname(card->host),
+>> +	       __func__, err);
+>> +	return err;
+>> +}
+>> +
+>>  static void mmc_select_driver_type(struct mmc_card *card)
+>>  {
+>>  	int card_drv_type, drive_strength, drv_type;
+>> @@ -1297,7 +1375,7 @@ err:
+>>  }
+>>
+>>  /*
+>> - * Activate High Speed or HS200 mode if supported.
+>> + * Activate High Speed, HS200 or HS400ES mode if supported.
+>>   */
+>>  static int mmc_select_timing(struct mmc_card *card)
+>>  {
+>> @@ -1306,7 +1384,9 @@ static int mmc_select_timing(struct mmc_card *=
+card)
+>>  	if (!mmc_can_ext_csd(card))
+>>  		goto bus_speed;
+>>
+>> -	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>> +	if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS400ES)
+>> +		err =3D mmc_select_hs400es(card);
+>> +	else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS200)
+>>  		err =3D mmc_select_hs200(card);
+>>  	else if (card->mmc_avail_type & EXT_CSD_CARD_TYPE_HS)
+>>  		err =3D mmc_select_hs(card);
+>> diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+>> index eb0151b..22defc2 100644
+>> --- a/include/linux/mmc/card.h
+>> +++ b/include/linux/mmc/card.h
+>> @@ -95,6 +95,7 @@ struct mmc_ext_csd {
+>>  	u8			raw_partition_support;	/* 160 */
+>>  	u8			raw_rpmb_size_mult;	/* 168 */
+>>  	u8			raw_erased_mem_count;	/* 181 */
+>> +	u8			strobe_support;		/* 184 */
+>>  	u8			raw_ext_csd_structure;	/* 194 */
+>>  	u8			raw_card_type;		/* 196 */
+>>  	u8			raw_driver_strength;	/* 197 */
+>> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+>> index 2a06fb0..0eabb72 100644
+>> --- a/include/linux/mmc/host.h
+>> +++ b/include/linux/mmc/host.h
+>> @@ -19,6 +19,7 @@
+>>
+>>  #include <linux/mmc/core.h>
+>>  #include <linux/mmc/card.h>
+>> +#include <linux/mmc/mmc.h>
+>>  #include <linux/mmc/pm.h>
+>>
+>>  struct mmc_ios {
+>> @@ -77,6 +78,8 @@ struct mmc_ios {
+>>  #define MMC_SET_DRIVER_TYPE_A	1
+>>  #define MMC_SET_DRIVER_TYPE_C	2
+>>  #define MMC_SET_DRIVER_TYPE_D	3
+>> +
+>> +	bool enhanced_strobe;			/* hs400es selection */
+>>  };
+>>
+>>  struct mmc_host_ops {
+>> @@ -143,6 +146,9 @@ struct mmc_host_ops {
+>>
+>>  	/* Prepare HS400 target operating frequency depending host driver =
+*/
+>>  	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct mmc_ios =
+*ios);
+>> +	/* Prepare enhanced strobe depending host driver */
+>> +	void	(*hs400_enhanced_strobe)(struct mmc_host *host,
+>> +					 struct mmc_ios *ios);
+>>  	int	(*select_drive_strength)(struct mmc_card *card,
+>>  					 unsigned int max_dtr, int host_drv,
+>>  					 int card_drv, int *drv_type);
+>> @@ -513,6 +519,11 @@ static inline bool mmc_card_hs400(struct mmc_ca=
+rd *card)
+>>  	return card->host->ios.timing =3D=3D MMC_TIMING_MMC_HS400;
+>>  }
+>>
+>> +static inline bool mmc_card_hs400es(struct mmc_card *card)
+>> +{
+>> +	return card->host->ios.enhanced_strobe;
+>> +}
+>> +
+>>  void mmc_retune_timer_stop(struct mmc_host *host);
+>>
+>>  static inline void mmc_retune_needed(struct mmc_host *host)
+>> diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
+>> index 15f2c4a..c376209 100644
+>> --- a/include/linux/mmc/mmc.h
+>> +++ b/include/linux/mmc/mmc.h
+>> @@ -297,6 +297,7 @@ struct _mmc_csd {
+>>  #define EXT_CSD_PART_CONFIG		179	/* R/W */
+>>  #define EXT_CSD_ERASED_MEM_CONT		181	/* RO */
+>>  #define EXT_CSD_BUS_WIDTH		183	/* R/W */
+>> +#define EXT_CSD_STROBE_SUPPORT		184	/* RO */
+>>  #define EXT_CSD_HS_TIMING		185	/* R/W */
+>>  #define EXT_CSD_POWER_CLASS		187	/* R/W */
+>>  #define EXT_CSD_REV			192	/* RO */
+>> @@ -380,12 +381,14 @@ struct _mmc_csd {
+>>  #define EXT_CSD_CARD_TYPE_HS400_1_2V	(1<<7)	/* Card can run at 200M=
+Hz DDR, 1.2V */
+>>  #define EXT_CSD_CARD_TYPE_HS400		(EXT_CSD_CARD_TYPE_HS400_1_8V | \
+>>  					 EXT_CSD_CARD_TYPE_HS400_1_2V)
+>> +#define EXT_CSD_CARD_TYPE_HS400ES	(1<<8)	/* Card can run at HS400ES=
+ */
+>>
+>>  #define EXT_CSD_BUS_WIDTH_1	0	/* Card is in 1 bit mode */
+>>  #define EXT_CSD_BUS_WIDTH_4	1	/* Card is in 4 bit mode */
+>>  #define EXT_CSD_BUS_WIDTH_8	2	/* Card is in 8 bit mode */
+>>  #define EXT_CSD_DDR_BUS_WIDTH_4	5	/* Card is in 4 bit DDR mode */
+>>  #define EXT_CSD_DDR_BUS_WIDTH_8	6	/* Card is in 8 bit DDR mode */
+>> +#define EXT_CSD_BUS_WIDTH_STROBE BIT(7)	/* Enhanced strobe mode */
+>>
+>>  #define EXT_CSD_TIMING_BC	0	/* Backwards compatility */
+>>  #define EXT_CSD_TIMING_HS	1	/* High speed */
+>>
+>
+>
+>
+>
+
+
+--=20
+Best Regards
+Shawn Lin
+
