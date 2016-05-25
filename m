@@ -1,39 +1,67 @@
-From: Javi Merino <javi.merino@arm.com>
-Subject: Re: [PATCH v3 2/5] thermal: of: implement .set_trips for device tree
- thermal zones
-Date: Wed, 25 May 2016 17:47:04 +0100
-Message-ID: <20160525164704.GC11807@e104805>
-References: <1464148069-26254-1-git-send-email-wxt@rock-chips.com>
- <1464148069-26254-3-git-send-email-wxt@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RESEND PATCH v2] ASoC: rockchip: Add machine driver for
+ MAX98357A/RT5514/DA7219
+Date: Wed, 25 May 2016 12:32:46 -0500
+Message-ID: <20160525173246.GA5125@rob-hp-laptop>
+References: <1464053774-15914-1-git-send-email-zhengxing@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1464148069-26254-3-git-send-email-wxt@rock-chips.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Caesar Wang <wxt@rock-chips.com>
-Cc: edubezval@gmail.com, linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, cf@rock-chips.com, huangtao@rock-chips.com, dmitry.torokhov@gmail.com, peter@piie.net, Sascha Hauer <s.hauer@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org
+In-Reply-To: <1464053774-15914-1-git-send-email-zhengxing@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Caesar,
-
-On Wed, May 25, 2016 at 11:47:46AM +0800, Caesar Wang wrote:
-> From: Sascha Hauer <s.hauer@pengutronix.de>
+On Tue, May 24, 2016 at 09:36:14AM +0800, Xing Zheng wrote:
+> There are multi codec devices on the RK3399 platform, we can use
+> this patch support and control these codecs.
 > 
-> This patch implemnets .set_trips for device tree thermal zones.
-             ^
-             implements
-
-> As the hardware-tracked trip points is supported by thermal core patch[0].
+> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+> ---
 > 
-> patch[0]
-> "thermal: Add support for hardware-tracked trip points".
+> Changes in v2:
+> - use the FS 256 to set mclks of the max98357a and rt5514 danamically
+> - add more sample rate for da7219
 > 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
-> Cc: Zhang Rui <rui.zhang@intel.com>
-> Cc: Eduardo Valentin <edubezval@gmail.com>
+>  .../sound/rockchip-max98357a-rt5514-da7219.txt     |   15 +
+>  sound/soc/rockchip/Kconfig                         |   11 +
+>  sound/soc/rockchip/Makefile                        |    2 +
+>  .../rockchip/rockchip_max98357a_rt5514_da7219.c    |  333 ++++++++++++++++++++
+>  4 files changed, 361 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
+>  create mode 100644 sound/soc/rockchip/rockchip_max98357a_rt5514_da7219.c
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt b/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
+> new file mode 100644
+> index 0000000..5928384
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-max98357a-rt5514-da7219.txt
+> @@ -0,0 +1,15 @@
+> +ROCKCHIP with MAX98357A/RT5514/DA7219 codecs
+> +
+> +Required properties:
+> +- compatible: "rockchip,rockchip-sound"
 
-Other than that, it looks good to me.  You can add my
+This is generic, but the binding seems to be very specific to only 3 
+specific codecs. Listing all 3 codecs seems a bit strange. Perhaps a 
+name related to the board name would be better.
 
-Reviewed-by: Javi Merino <javi.merino@arm.com>
+> +- rockchip,cpu: The phandle of the Rockchip I2S controller that's
+> +  connected to the codecs
+
+What's the size? always 3?
+
+> +- rockchip,codec: The phandle of the MAX98357A/RT5514/DA7219 codecs
+
+Please make the size and ordering clear.
+
+> +
+> +Example:
+> +
+> +sound {
+> +	compatible = "rockchip,rockchip-sound";
+> +	rockchip,cpu = <&i2s0 &i2s0 &i2s1>;
+> +	rockchip,codec = <&max98357a &headsetcodec &codec>;
+> +};
