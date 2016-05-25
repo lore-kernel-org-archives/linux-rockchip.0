@@ -1,51 +1,49 @@
 From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH 3/5] clocksource: rockchip: add dynamic irq flag to the timer
-Date: Wed, 25 May 2016 17:50:00 +0800
-Message-ID: <1464169802-6033-4-git-send-email-wxt@rock-chips.com>
+Subject: [PATCH 5/5] ARM64: dts: rockchip: add rktimer device node for rk3399
+Date: Wed, 25 May 2016 17:50:02 +0800
+Message-ID: <1464169802-6033-6-git-send-email-wxt@rock-chips.com>
 References: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1464169802-6033-1-git-send-email-wxt@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: daniel.lezcano@linaro.org, Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>, cf@rock-chips.com, huangtao@rock-chips.com, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Huang Tao <huangtao@rock-chips.com>
 
-The rockchip timer is broadcast timer. Add CLOCK_EVT_FEAT_DYNIRQ
-flag and set cpumask to all cpu to save power by avoid unnecessary
-wakeups and IPIs.
+Select rktimer0 as broadcast timer.
 
 Signed-off-by: Huang Tao <huangtao@rock-chips.com>
 Cc: Daniel Lezcano <daniel.lezcano@linaro.org>
 Cc: Thomas Gleixner <tglx@linutronix.de>
 Cc: Heiko Stuebner <heiko@sntech.de>
 Tested-by: Jianqun Xu <jay.xu@rock-chips.com>
+
 Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
- drivers/clocksource/rockchip_timer.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/clocksource/rockchip_timer.c b/drivers/clocksource/rockchip_timer.c
-index b93fed6..f3dfb1a 100644
---- a/drivers/clocksource/rockchip_timer.c
-+++ b/drivers/clocksource/rockchip_timer.c
-@@ -150,12 +150,13 @@ static void __init rk_timer_init(struct device_node *np)
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 46f325a..f0c0d76 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -492,6 +492,14 @@
+ 		interrupts = <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>;
+ 	};
  
- 	ce->name = TIMER_NAME;
--	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT;
-+	ce->features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT |
-+		       CLOCK_EVT_FEAT_DYNIRQ;
- 	ce->set_next_event = rk_timer_set_next_event;
- 	ce->set_state_shutdown = rk_timer_shutdown;
- 	ce->set_state_periodic = rk_timer_set_periodic;
- 	ce->irq = irq;
--	ce->cpumask = cpumask_of(0);
-+	ce->cpumask = cpu_all_mask;
- 	ce->rating = 250;
- 
- 	ret = request_irq(irq, rk_timer_interrupt, IRQF_TIMER, TIMER_NAME, ce);
++	rktimer: rktimer@ff850000 {
++		compatible = "rockchip,rk3399-timer";
++		reg = <0x0 0xff850000 0x0 0x1000>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER00>;
++		clock-names = "pclk", "timer";
++	};
++
+ 	spdif: spdif@ff870000 {
+ 		compatible = "rockchip,rk3399-spdif";
+ 		reg = <0x0 0xff870000 0x0 0x1000>;
 -- 
 1.9.1
