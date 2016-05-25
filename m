@@ -1,175 +1,58 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: [PATCH] ARM64: dts: rockchip: add thermal zone node for rk3399 SoCs
-Date: Wed, 25 May 2016 12:27:04 +0800
-Message-ID: <1464150424-27809-1-git-send-email-wxt@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: edubezval@gmail.com, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v2 05/10] drm/rockchip: analogix_dp: add rk3399 eDP support
+Date: Wed, 25 May 2016 13:54:30 +0800
+Message-ID: <57453E16.4060805@rock-chips.com>
+References: <1464066147-22734-1-git-send-email-ykk@rock-chips.com>
+ <6183955.XzKjc41sjW@phil>
+ <CAD=FV=WH6xYE6UiDxVK=cLnhoHnCvecSL4tk7FUVAnkGbQ-QOg@mail.gmail.com>
+ <8988677.GHLC4rSfsM@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <8988677.GHLC4rSfsM@phil>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, Doug Anderson <dianders@chromium.org>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Javier Martinez Canillas <javier@osg.samsung.com>, Jingoo Han <jingoohan1@gmail.com>, Emil Velikov <emil.l.velikov@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Mark Yao <yzq@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Thierry Reding <treding@nvidia.com>, Dan Carpenter <dan.carpenter@oracle.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This adds thermal zone node to rk3399 dtsi, rk3399 thermal data is
-including the cpu and gpu sensor zone node.
-At the moment, remove the rk3368 thermal data from rk399 dtsi.
-
-The thermal zone node is the node containing all the required info
-for describing a thermal zone, including its cooling device bindings.
-The thermal zone node must contain, apart from its own properties, one
-sub-node containing trip nodes and one sub-node containing all the zone
-cooling maps.
-
-The following is the parameter is introduced:
-* polling-delay:
-The maximum number of milliseconds to wait between polls
-
-* polling-delay-passive:
-The maximum number of milliseconds to wait between polls when performing
-passive cooling.
-
-* trips:
-A sub-node which is a container of only trip point nodes required to
-describe the thermal zone.
-
-* cooling-maps:
-A sub-node which is a container of only cooling device map nodes, used to
-describe the relation between trips and cooling devices.
-
-* cooling-device:
-A phandle of a cooling device with its specifier, referring to which
-cooling device is used in this cooling specifier binding. In the cooling
-specifier, the first cell is the minimum cooling state and the second cell
-is the maximum cooling state used in this map.
-
-Signed-off-by: Caesar Wang <wxt@rock-chips.com>
----
-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 100 +++++++++++++++++++++++++++++++
- 1 file changed, 100 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 46f325a..cc4ca2a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -45,6 +45,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/thermal/thermal.h>
- 
- / {
- 	compatible = "rockchip,rk3399";
-@@ -389,6 +390,95 @@
- 		status = "disabled";
- 	};
- 
-+	thermal-zones {
-+		cpu-thermal: cpu {
-+			polling-delay-passive = <100>; /* milliseconds */
-+			polling-delay = <1000>; /* milliseconds */
-+
-+			thermal-sensors = <&tsadc 0>;
-+
-+			trips {
-+				cpu_alert0: cpu_alert0 {
-+					temperature = <70000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				cpu_alert1: cpu_alert1 {
-+					temperature = <75000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				cpu_crit: cpu_crit {
-+					temperature = <95000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&cpu_alert0>;
-+					cooling-device =
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+				map1 {
-+					trip = <&cpu_alert1>;
-+					cooling-device =
-+						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+
-+		gpu-thermal: gpu {
-+			polling-delay-passive = <100>; /* milliseconds */
-+			polling-delay = <1000>; /* milliseconds */
-+
-+			thermal-sensors = <&tsadc 1>;
-+
-+			trips {
-+				gpu_alert0: gpu_alert0 {
-+					temperature = <75000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+				gpu_crit: gpu_crit {
-+					temperature = <95000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&gpu_alert0>;
-+					cooling-device =
-+						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
-+		};
-+	};
-+
-+	tsadc: tsadc@ff260000 {
-+		compatible = "rockchip,rk3399-tsadc";
-+		reg = <0x0 0xff260000 0x0 0x100>;
-+		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
-+		rockchip,grf = <&grf>;
-+		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
-+		clock-names = "tsadc", "apb_pclk";
-+		assigned-clocks = <&cru SCLK_TSADC>;
-+		assigned-clock-rates = <750000>;
-+		resets = <&cru SRST_TSADC>;
-+		reset-names = "tsadc-apb";
-+		pinctrl-names = "init", "default", "sleep";
-+		pinctrl-0 = <&otp_gpio>;
-+		pinctrl-1 = <&otp_out>;
-+		pinctrl-2 = <&otp_gpio>;
-+		#thermal-sensor-cells = <1>;
-+		rockchip,hw-tshut-temp = <95000>;
-+		status = "disabled";
-+	};
-+
- 	pmugrf: syscon@ff320000 {
- 		compatible = "rockchip,rk3399-pmugrf", "syscon";
- 		reg = <0x0 0xff320000 0x0 0x1000>;
-@@ -881,6 +971,16 @@
- 			};
- 		};
- 
-+		tsadc {
-+			otp_gpio: otp-gpio {
-+				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
-+			};
-+
-+			otp_out: otp-out {
-+				rockchip,pins = <1 6 RK_FUNC_1 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		uart0 {
- 			uart0_xfer: uart0-xfer {
- 				rockchip,pins =
--- 
-1.9.1
+Ck9uIDA1LzI1LzIwMTYgMDI6MjMgQU0sIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+IEFtIERpZW5z
+dGFnLCAyNC4gTWFpIDIwMTYsIDExOjEyOjIwIHNjaHJpZWIgRG91ZyBBbmRlcnNvbjoKPj4gSGks
+Cj4+Cj4+IE9uIFR1ZSwgTWF5IDI0LCAyMDE2IGF0IDM6MTcgQU0sIEhlaWtvIFN0dWVibmVyIDxo
+ZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Pj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9kaXNwbGF5L2JyaWRnZS9hbmFsb2dpeF9kcC50eHQKPj4+PiArKysgYi9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2UvYW5hbG9naXhfZHAu
+dHh0Cj4+Pj4KPj4+PiBAQCAtNSw2ICs1LDcgQEAgUmVxdWlyZWQgcHJvcGVydGllcyBmb3IgZHAt
+Y29udHJvbGxlcjoKPj4+PiAgICAgICAgICAgICAgICBwbGF0Zm9ybSBzcGVjaWZpYyBzdWNoIGFz
+Ogo+Pj4+ICAgICAgICAgICAgICAgICAqICJzYW1zdW5nLGV4eW5vczUtZHAiCj4+Pj4gICAgICAg
+ICAgICAgICAgICogInJvY2tjaGlwLHJrMzI4OC1kcCIKPj4+Pgo+Pj4+ICsgICAgICAgICAgICAg
+ICogInJvY2tjaGlwLHJrMzM5OS1lZHAiCj4+PiB0aGUgY2xlYW5saW5lcy1mcmVhayBpbiBteSBs
+aWtlcyB0byBrbm93IGlmIHRoZXJlIGlzIGEgZGlmZmVyZW5jZQo+Pj4gYmV0d2Vlbgo+Pj4gdGhl
+IHJrMzM5OSBiZWluZyBjYWxsZWQgLWVkcCBoZXJlIGFuZCAtZHAgb24gdGhlIHJrMzI4OCA6LSkK
+Pj4+Cj4+PiBbLi4uXQo+PiBJZiBJIHdhcyBhIGd1ZXNzaW5nIG1hbiAod2hpY2ggSSdtIG5vdCwg
+YnV0IGlmIEkgd2FzKSwgSSdkIGd1ZXNzIHRoYXQKPj4gdGhpcyBpcyBiZWNhdXNlIG9uIHJrMzI4
+OCB0aGVyZSB3YXMgb25seSBvbmUgRFAgcG9ydCBhbmQgaXQgd2FzIGFuIEVEUAo+PiBwb3J0LiAg
+Li4uYnV0IHNpbmNlIHRoZXJlIHdhcyBvbmx5IG9uZSBwZW9wbGUganVzdCByZWZlcnJlZCB0byBp
+dCBhcwo+PiB0aGUgIkRQIiBwb3J0IGFuZCB0aGF0IHdhcyBjb2RpZmllZCBpbiB0aGUgYmluZGlu
+Z3MuICBPbiByazMzOTkgdGhlcmUKPj4gYXJlIHR3byBwb3J0czogb25lIEVEUCBhbmQgb25lIERQ
+LiAgQWxsIG9mIGEgc3VkZGVuIHdlIG5lZWQgdG8KPj4gZGlmZmVyZW50aWF0ZS4KPj4KPj4gQW55
+IGJldHRlciBzdWdnZXN0aW9ucyBmb3IgaG93IHRvIGRlYWwgd2l0aCB0aGF0Pwo+IG5vcGUgLSBl
+dmVyeXRoaW5nIGFzIGl0IHNob3VsZCBiZSBpbiB0aGF0IHJlZ2FyZCB0aGVuIC0gdGhlIHJrMzI4
+OC1kcCBpcwo+IHBlcm1hbmVudCBub3cgYW55d2F5Lgo+Cj4gQnV0IGl0IGxvb2tzIGxpa2UgSSdt
+IHNvcnQgb2YgYmxpbmQgYmxpbmQgYW5kIG9ubHkgbm93IGhhdmUgc2VlbiB0aGUKPiBzZXBhcmF0
+ZSBEUCBjb250cm9sbGVyIGNoYXB0ZXIgaW4gdGhlIFRSTSAocHJvYmFibHkgYmVjYXVzZSBJIHNv
+bWVob3cgZGlkbid0Cj4gZXhwZWN0IGEgc2Vjb25kIGNvbnRyb2xsZXIpLgpSSzMzOTkgZURQIGNv
+bnRyb2xsZXIgaGF2ZSBjdXQgb2ZmIHRoZSBEUC1BdWRpbyBmdW5jdGlvbiBhbmQgRFAtSERDUCAK
+ZnVuY3Rpb24sIHNvIGl0IGNhbid0IGJlIHRyZWF0ZWQgYXMgRFAgaW50ZXJmYWNlcyBhbnkgbW9y
+ZSwgdGhhdCdzIHdoeSBJIApjYWxsIGl0ICJlRFAiLgo+Cj4KCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
+ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
