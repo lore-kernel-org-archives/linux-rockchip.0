@@ -1,124 +1,149 @@
-From: Lino Sanfilippo <LinoSanfilippo-Mmb7MZpHnFY@public.gmane.org>
-Subject: Re: [PATCH v2] ethernet:arc: Fix racing of TX ring buffer
-Date: Wed, 25 May 2016 01:56:20 +0200
-Message-ID: <5744EA24.7060806@gmx.de>
-References: <20160517.142456.2247845107325931733.davem@davemloft.net>
- <20160518000153.GA21757@electric-eye.fr.zoreil.com> <573CD09D.1060307@gmx.de>
- <20160518225529.GA18671@electric-eye.fr.zoreil.com> <573E2D0C.604@gmx.de>
- <20160520003145.GA22420@electric-eye.fr.zoreil.com>
- <20160521160910.GA14945@debian-dorm> <5740E82F.8040903@gmx.de>
- <20160522091742.GA8681@debian-dorm> <57419853.9050701@gmx.de>
- <20160522223659.GB5086@electric-eye.fr.zoreil.com> <5743A9DD.8010202@gmx.de>
+From: Mark yao <mark.yao@rock-chips.com>
+Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
+ during disable
+Date: Wed, 25 May 2016 09:06:04 +0800
+Message-ID: <5744FA7C.3080802@rock-chips.com>
+References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
+ <5707043D.6060706@rock-chips.com>
+ <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
+ <570AFAC2.8080907@rock-chips.com>
+ <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
+ <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
+ <5742A41B.8030308@rock-chips.com>
+ <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5743A9DD.8010202-Mmb7MZpHnFY@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Francois Romieu <romieu-W8zweXLXuWQS+FvcfC7Uqw@public.gmane.org>
-Cc: Shuyu Wei <wsy2220-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, al.kochet-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: multipart/mixed; boundary="===============1487749255=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Francois, Shuyu,
+--===============1487749255==
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-this is the patch with the discussed changes.
+<html>
+  <head>
+    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">
+  </head>
+  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
+    <div class=3D"moz-cite-prefix">On 2016=E5=B9=B405=E6=9C=8824=E6=97=A5=
+ 18:11, Tomeu Vizoso
+      wrote:<br>
+    </div>
+    <blockquote
+cite=3D"mid:CAAObsKAj9Ja56buTixvp0EVBk=3DxE4JCXPPwXdviweHkmUQb2xg@mail.gm=
+ail.com"
+      type=3D"cite">
+      <blockquote type=3D"cite" style=3D"color: #000000;">
+        <pre wrap=3D"">Hi Tomeu
+<span class=3D"moz-txt-citetags">&gt;</span>
+<span class=3D"moz-txt-citetags">&gt; </span>Sorry for reply late.
+<span class=3D"moz-txt-citetags">&gt; </span>I don't agree the changes:
+<span class=3D"moz-txt-citetags">&gt;</span>
+<span class=3D"moz-txt-citetags">&gt; </span>- if (!state-&gt;enable)
+<span class=3D"moz-txt-citetags">&gt; </span>- return VOP_WIN_GET(vop_win=
+-&gt;vop, vop_win-&gt;data, enable) =3D=3D 0;
+<span class=3D"moz-txt-citetags">&gt; </span>+ if (!state-&gt;enable &amp=
+;&amp;
+<span class=3D"moz-txt-citetags">&gt; </span>+    VOP_WIN_GET(vop_win-&gt=
+;vop, vop_win-&gt;data, enable) =3D=3D 0)
+<span class=3D"moz-txt-citetags">&gt; </span>+ return true;
+<span class=3D"moz-txt-citetags">&gt;</span>
+<span class=3D"moz-txt-citetags">&gt; </span>This changes actually would =
+lead a bug.
+<span class=3D"moz-txt-citetags">&gt; </span>when we disable a plane, the=
+ vop_win_pending_is_complete would always return
+<span class=3D"moz-txt-citetags">&gt; </span>true, That is not allowed, w=
+ould cause fb free too early.
+</pre>
+      </blockquote>
+      <pre wrap=3D"">Ok, maybe I need to ask you first what the original =
+block of code
+intended to achieve. The TRM I have is very terse and I don't find any
+explanation there. The battery of tests I have pass just fine without
+it.
 
-Shuyu it would be great if you could test this one. If it passes
-and there are no further objections I will resend it as a regular patch
-(including commit message, etc.) to the mailing list.
+</pre>
+      <blockquote type=3D"cite" style=3D"color: #000000;">
+        <pre wrap=3D""><span class=3D"moz-txt-citetags">&gt; </span>Does =
+this patch is needed for "[PATCH 2/2] drm/rockchip: vop: Wait for
+<span class=3D"moz-txt-citetags">&gt; </span>pending events when disablin=
+g a CRTC"
+</pre>
+      </blockquote>
+      <pre wrap=3D"">Yes, this function is currently returning false when=
+ the pageflip has
+been completed but the plan has been already disabled.
+
+If you have any different idea of how to fix this bug, please share.
+
+Thanks,
+
+Tomeu
 
 
-diff --git a/drivers/net/ethernet/arc/emac_main.c b/drivers/net/ethernet/arc/emac_main.c
-index a3a9392..ec656b3 100644
---- a/drivers/net/ethernet/arc/emac_main.c
-+++ b/drivers/net/ethernet/arc/emac_main.c
-@@ -153,18 +153,29 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- {
- 	struct arc_emac_priv *priv = netdev_priv(ndev);
- 	struct net_device_stats *stats = &ndev->stats;
-+	unsigned int curr = priv->txbd_curr;
- 	unsigned int i;
- 
-+	/* Make sure buffers and txbd_curr are consistent */
-+	smp_rmb();
-+
- 	for (i = 0; i < TX_BD_NUM; i++) {
- 		unsigned int *txbd_dirty = &priv->txbd_dirty;
- 		struct arc_emac_bd *txbd = &priv->txbd[*txbd_dirty];
- 		struct buffer_state *tx_buff = &priv->tx_buff[*txbd_dirty];
--		struct sk_buff *skb = tx_buff->skb;
--		unsigned int info = le32_to_cpu(txbd->info);
-+		unsigned int info;
-+		struct sk_buff *skb;
- 
--		if ((info & FOR_EMAC) || !txbd->data || !skb)
-+		if (*txbd_dirty == curr)
- 			break;
- 
-+		info = le32_to_cpu(txbd->info);
-+
-+		if (info & FOR_EMAC)
-+			break;
-+
-+		skb = tx_buff->skb;
-+
- 		if (unlikely(info & (DROP | DEFR | LTCL | UFLO))) {
- 			stats->tx_errors++;
- 			stats->tx_dropped++;
-@@ -195,8 +206,8 @@ static void arc_emac_tx_clean(struct net_device *ndev)
- 		*txbd_dirty = (*txbd_dirty + 1) % TX_BD_NUM;
- 	}
- 
--	/* Ensure that txbd_dirty is visible to tx() before checking
--	 * for queue stopped.
-+	/* Ensure that txbd_dirty is visible to tx() and we see the most recent
-+	 * value for txbd_curr.
- 	 */
- 	smp_mb();
- 
-@@ -680,27 +691,24 @@ static int arc_emac_tx(struct sk_buff *skb, struct net_device *ndev)
- 	dma_unmap_len_set(&priv->tx_buff[*txbd_curr], len, len);
- 
- 	priv->txbd[*txbd_curr].data = cpu_to_le32(addr);
--
--	/* Make sure pointer to data buffer is set */
--	wmb();
-+	priv->tx_buff[*txbd_curr].skb = skb;
- 
- 	skb_tx_timestamp(skb);
- 
- 	*info = cpu_to_le32(FOR_EMAC | FIRST_OR_LAST_MASK | len);
- 
--	/* Make sure info word is set */
-+	/* 1. Make sure that with respect to tx_clean everything is set up
-+	 * properly before we advance txbd_curr.
-+	 * 2. Make sure writes to DMA descriptors are completed before we inform
-+	 * the hardware.
-+	 */
- 	wmb();
- 
--	priv->tx_buff[*txbd_curr].skb = skb;
--
- 	/* Increment index to point to the next BD */
- 	*txbd_curr = (*txbd_curr + 1) % TX_BD_NUM;
- 
--	/* Ensure that tx_clean() sees the new txbd_curr before
--	 * checking the queue status. This prevents an unneeded wake
--	 * of the queue in tx_clean().
--	 */
--	smp_mb();
-+	/* Ensure tx_clean() sees the updated value of txbd_curr */
-+	smp_wmb();
- 
- 	if (!arc_emac_tx_avail(priv)) {
- 		netif_stop_queue(ndev);
--- 
-1.9.1
+
+</pre>
+    </blockquote>
+    Hi Tomeu<br>
+    <br>
+    <pre wrap=3D""><i>@@ -504,6 +506,9 @@ static void vop_crtc_disable(st=
+ruct drm_crtc *crtc)
+ 	if (!vop-&gt;is_enabled)
+ 		return;
+=20
++	if (crtc-&gt;state-&gt;event || vop-&gt;event)
++		vop_crtc_wait_for_update(crtc);
++</i><i>
+</i>
+I think above change has some problem,
+
+the function stack:
+-&gt;drm swap state
+-&gt;vop_crtc_disable
+-&gt;vop_atomic_begin
+-&gt;vop_atomic_flush
+
+on vop_crtc_disable, crtc-&gt;state is new state, the crtc-&gt;state-&gt;=
+event not yet update to vop, wait for  crtc-&gt;state-&gt;event here is w=
+rong.
+
+So I think the patch should be:
+<i>+	if (vop-&gt;event)
++		vop_crtc_wait_for_update(crtc);
++</i>
+
+Then the patch "drm/rockchip: vop: Do check if an update is pending durin=
+g disable" should be no needed.
+
+Thanks.
+
+</pre>
+    -- =EF=BC=ADark Yao
+  </body>
+</html>
+
+
+--===============1487749255==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============1487749255==--
