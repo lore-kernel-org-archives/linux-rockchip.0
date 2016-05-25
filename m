@@ -1,185 +1,179 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: vop: Do check if an update is pending
- during disable
-Date: Wed, 25 May 2016 09:33:50 +0800
-Message-ID: <574500FE.4050708@rock-chips.com>
-References: <1459937686-9142-1-git-send-email-tomeu.vizoso@collabora.com>
- <5707043D.6060706@rock-chips.com>
- <CAAObsKAeAjUP1retiZqo5geOK2OkVjKvSB6g6nvGTh_rdNiFJQ@mail.gmail.com>
- <570AFAC2.8080907@rock-chips.com>
- <CAAObsKCmPZBaSudVJy8BPThhoZw8VVqxicqsmc8diApajD57nA@mail.gmail.com>
- <CAAObsKBXxb8ZS3CqLy4qsDRWLvT=w2ACANCcDLE5B47nRKtvBw@mail.gmail.com>
- <5742A41B.8030308@rock-chips.com>
- <CAAObsKAj9Ja56buTixvp0EVBk=xE4JCXPPwXdviweHkmUQb2xg@mail.gmail.com>
- <5744FA7C.3080802@rock-chips.com>
+From: Caesar Wang <caesar.upstream@gmail.com>
+Subject: Re: [PATCH v2 1/5] thermal: Add support for hardware-tracked trip
+ points
+Date: Wed, 25 May 2016 11:27:24 +0800
+Message-ID: <57451B9C.7070705@gmail.com>
+References: <1462268013-14992-1-git-send-email-wxt@rock-chips.com> <1462268013-14992-2-git-send-email-wxt@rock-chips.com> <20160524125741.GA8979@e104805>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1995230926=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <5744FA7C.3080802@rock-chips.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-doc-owner@vger.kernel.org>
+In-Reply-To: <20160524125741.GA8979@e104805>
+Sender: linux-doc-owner@vger.kernel.org
+To: Javi Merino <javi.merino@arm.com>
+Cc: Caesar Wang <wxt@rock-chips.com>, huangtao@rock-chips.com, Jonathan Corbet <corbet@lwn.net>, Ni Wade <wni@nvidia.com>, Durgadoss R <durgadoss.r@intel.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, dmitry.torokhov@gmail.com, linux-doc@vger.kernel.org, dianders@chromium.org, linux-kernel@vger.kernel.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com, briannorris@google.com, Zhang Rui <rui.zhang@intel.com>, Andy Champ <andycham@amazon.com>
 List-Id: linux-rockchip.vger.kernel.org
 
---===============1995230926==
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Hi Javi,
 
-<html>
-  <head>
-    <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
-pe">
-  </head>
-  <body bgcolor=3D"#FFFFFF" text=3D"#000000">
-    <div class=3D"moz-cite-prefix">On 2016=E5=B9=B405=E6=9C=8825=E6=97=A5=
- 09:06, Mark yao wrote:<br>
-    </div>
-    <blockquote cite=3D"mid:5744FA7C.3080802@rock-chips.com" type=3D"cite=
-">
-      <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-=
-Type">
-      <div class=3D"moz-cite-prefix">On 2016=E5=B9=B405=E6=9C=8824=E6=97=A5=
- 18:11, Tomeu Vizoso
-        wrote:<br>
-      </div>
-      <blockquote
-cite=3D"mid:CAAObsKAj9Ja56buTixvp0EVBk=3DxE4JCXPPwXdviweHkmUQb2xg@mail.gm=
-ail.com"
-        type=3D"cite">
-        <blockquote type=3D"cite" style=3D"color: #000000;">
-          <pre wrap=3D"">Hi Tomeu
-<span class=3D"moz-txt-citetags">&gt;</span>
-<span class=3D"moz-txt-citetags">&gt; </span>Sorry for reply late.
-<span class=3D"moz-txt-citetags">&gt; </span>I don't agree the changes:
-<span class=3D"moz-txt-citetags">&gt;</span>
-<span class=3D"moz-txt-citetags">&gt; </span>- if (!state-&gt;enable)
-<span class=3D"moz-txt-citetags">&gt; </span>- return VOP_WIN_GET(vop_win=
--&gt;vop, vop_win-&gt;data, enable) =3D=3D 0;
-<span class=3D"moz-txt-citetags">&gt; </span>+ if (!state-&gt;enable &amp=
-;&amp;
-<span class=3D"moz-txt-citetags">&gt; </span>+    VOP_WIN_GET(vop_win-&gt=
-;vop, vop_win-&gt;data, enable) =3D=3D 0)
-<span class=3D"moz-txt-citetags">&gt; </span>+ return true;
-<span class=3D"moz-txt-citetags">&gt;</span>
-<span class=3D"moz-txt-citetags">&gt; </span>This changes actually would =
-lead a bug.
-<span class=3D"moz-txt-citetags">&gt; </span>when we disable a plane, the=
- vop_win_pending_is_complete would always return
-<span class=3D"moz-txt-citetags">&gt; </span>true, That is not allowed, w=
-ould cause fb free too early.
-</pre>
-        </blockquote>
-        <pre wrap=3D"">Ok, maybe I need to ask you first what the origina=
-l block of code
-intended to achieve. The TRM I have is very terse and I don't find any
-explanation there. The battery of tests I have pass just fine without
-it.
+Thanks your reviewing.
 
-</pre>
-        <blockquote type=3D"cite" style=3D"color: #000000;">
-          <pre wrap=3D""><span class=3D"moz-txt-citetags">&gt; </span>Doe=
-s this patch is needed for "[PATCH 2/2] drm/rockchip: vop: Wait for
-<span class=3D"moz-txt-citetags">&gt; </span>pending events when disablin=
-g a CRTC"
-</pre>
-        </blockquote>
-        <pre wrap=3D"">Yes, this function is currently returning false wh=
-en the pageflip has
-been completed but the plan has been already disabled.
+On 2016=E5=B9=B405=E6=9C=8824=E6=97=A5 20:57, Javi Merino wrote:
+> On Tue, May 03, 2016 at 05:33:29PM +0800, Caesar Wang wrote:
+>> From: Sascha Hauer <s.hauer@pengutronix.de>
+>>
+>> This adds support for hardware-tracked trip points to the device tre=
+e
+>> thermal sensor framework.
+>>
+>> The framework supports an arbitrary number of trip points. Whenever
+>> the current temperature is updated, the trip points immediately
+>> below and above the current temperature are found. A .set_trips
+>> callback is then called with the temperatures. If there is no trip
+>> point above or below the current temperature, the passed trip
+>> temperature will be -INT_MAX or INT_MAX respectively. In this callba=
+ck,
+>> the driver should program the hardware such that it is notified
+>> when either of these trip points are triggered. When a trip point
+>> is triggered, the driver should call `thermal_zone_device_update'
+>> for the respective thermal zone. This will cause the trip points
+>> to be updated again.
+>>
+>> If .set_trips is not implemented, the framework behaves as before.
+>>
+>> This patch is based on an earlier version from Mikko Perttunen
+>> <mikko.perttunen@kapsi.fi>
+>>
+>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>> Cc: Zhang Rui <rui.zhang@intel.com>
+>> Cc: Eduardo Valentin <edubezval@gmail.com>
+>> Cc: linux-pm@vger.kernel.org
+>>
+>> ---
+>>
+>> Changes in v2:
+>> - update the sysfs-api.txt for set_trips
+>>
+>>   Documentation/thermal/sysfs-api.txt |  7 +++++
+>>   drivers/thermal/thermal_core.c      | 52 +++++++++++++++++++++++++=
+++++++++++++
+>>   include/linux/thermal.h             |  3 +++
+>>   3 files changed, 62 insertions(+)
+<cut..>
+>> +	/*
+>> +	 * Set a temperature window. When this window is left the driver
+>> +	 * must inform the thermal core via thermal_zone_device_update.
+>> +	 */
+>> +	ret =3D tz->ops->set_trips(tz, low, high);
+>> +	if (ret)
+>> +		dev_err(&tz->device, "Failed to set trips: %d\n", ret);
+> This function can be called at the same time from multiple places so
+> it should be reentrant.  I think you should call mutex_lock(tz->lock)
+> before "if (tz->prev_low_trip =3D=3D low && ..." and unlock it here.
 
-If you have any different idea of how to fix this bug, please share.
+Sound reasonable, fixes it in next version.
 
-Thanks,
+>> +}
+>> +
+>>   static void update_temperature(struct thermal_zone_device *tz)
+>>   {
+>>   	int temp, ret;
+>> @@ -569,6 +614,8 @@ void thermal_zone_device_update(struct thermal_z=
+one_device *tz)
+>>  =20
+>>   	update_temperature(tz);
+>>  =20
+>> +	thermal_zone_set_trips(tz);
+>> +
+>>   	for (count =3D 0; count < tz->trips; count++)
+>>   		handle_thermal_trip(tz, count);
+>>   }
+>> @@ -754,6 +801,9 @@ trip_point_hyst_store(struct device *dev, struct=
+ device_attribute *attr,
+>>   	 */
+>>   	ret =3D tz->ops->set_trip_hyst(tz, trip, temperature);
+>>  =20
+>> +	if (!ret)
+>> +		thermal_zone_set_trips(tz);
+>> +
+> You should add a similar call to thermal_zone_set_trips() in trip_poi=
+nt_temp_store()
 
-Tomeu
+No, this patch has been done.
 
+if you see the linux next kernel.
+72f3ada UPSTREAM: thermal: trip_point_temp_store() calls=20
+thermal_zone_device_update()
 
+--- a/drivers/thermal/thermal_core.c
++++ b/drivers/thermal/thermal_core.c
+@@ -733,8 +733,12 @@ trip_point_temp_store(struct device *dev, struct=20
+device_attribute *attr,
+return -EINVAL;
 
-</pre>
-      </blockquote>
-      Hi Tomeu<br>
-      <br>
-      <pre wrap=3D""><i>@@ -504,6 +506,9 @@ static void vop_crtc_disable(=
-struct drm_crtc *crtc)
- 	if (!vop-&gt;is_enabled)
- 		return;
-=20
-+	if (crtc-&gt;state-&gt;event || vop-&gt;event)
-+		vop_crtc_wait_for_update(crtc);
-+</i><i>
-</i>
-I think above change has some problem,
+ret =3D tz->ops->set_trip_temp(tz, trip, temperature);
++ if (ret)
++ return ret;
 
-the function stack:
--&gt;drm swap state
--&gt;vop_crtc_disable
--&gt;vop_atomic_begin
--&gt;vop_atomic_flush
+- return ret ? ret : count;
++ thermal_zone_device_update(tz);
++
++ return count;
+}
 
-on vop_crtc_disable, crtc-&gt;state is new state, the crtc-&gt;state-&gt;=
-event not yet update to vop, wait for  crtc-&gt;state-&gt;event here is w=
-rong.
+So the "thermal_zone_set_trips(tz)" have been set in=20
+thermal_zone_device_update.
 
-So I think the patch should be:
-<i>+	if (vop-&gt;event)
-+		vop_crtc_wait_for_update(crtc);
-+</i></pre>
-    </blockquote>
-    <br>
-    call vop_crtc_wait_for_update(crtc) here also is unsafe, it will
-    reinit the vop-&gt;wait_update_complete.<br>
-    <br>
-    I doubt that, since use the serialize outstanding nonblocking
-    commits, only one process can run into the update stack, old
-    vop-&gt;event should be free on last time, if we get vop-&gt;event
-    here, that should be a bug.<br>
-    <br>
-    <blockquote cite=3D"mid:5744FA7C.3080802@rock-chips.com" type=3D"cite=
-">
-      <pre wrap=3D"">
+>>   	return ret ? ret : count;
+>>   }
+>>  =20
+>> @@ -1843,6 +1893,8 @@ struct thermal_zone_device *thermal_zone_devic=
+e_register(const char *type,
+>>   	tz->trips =3D trips;
+>>   	tz->passive_delay =3D passive_delay;
+>>   	tz->polling_delay =3D polling_delay;
+>> +	tz->prev_low_trip =3D INT_MAX;
+>> +	tz->prev_high_trip =3D -INT_MAX;
+>>   	/* A new thermal zone needs to be updated anyway. */
+>>   	atomic_set(&tz->need_update, 1);
+>>  =20
+>> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+>> index e45abe7..e258359 100644
+>> --- a/include/linux/thermal.h
+>> +++ b/include/linux/thermal.h
+>> @@ -98,6 +98,7 @@ struct thermal_zone_device_ops {
+>>   	int (*unbind) (struct thermal_zone_device *,
+>>   		       struct thermal_cooling_device *);
+>>   	int (*get_temp) (struct thermal_zone_device *, int *);
+>> +	int (*set_trips) (struct thermal_zone_device *, int, int);
+>>   	int (*get_mode) (struct thermal_zone_device *,
+>>   			 enum thermal_device_mode *);
+>>   	int (*set_mode) (struct thermal_zone_device *,
+>> @@ -199,6 +200,8 @@ struct thermal_zone_device {
+>>   	int last_temperature;
+>>   	int emul_temperature;
+>>   	int passive;
+>> +	int prev_low_trip;
+>> +	int prev_high_trip;
+> Please document these fields in the kerneldoc comment before struct
+> thermal_zone_device.
 
-Then the patch "drm/rockchip: vop: Do check if an update is pending durin=
-g disable" should be no needed.
+Okay, done.
 
-Thanks.
+Thanks!
 
-</pre>
-      -- =EF=BC=ADark Yao <br>
-      <fieldset class=3D"mimeAttachmentHeader"></fieldset>
-      <br>
-      <pre wrap=3D"">_______________________________________________
-dri-devel mailing list
-<a class=3D"moz-txt-link-abbreviated" href=3D"mailto:dri-devel@lists.free=
-desktop.org">dri-devel@lists.freedesktop.org</a>
-<a class=3D"moz-txt-link-freetext" href=3D"https://lists.freedesktop.org/=
-mailman/listinfo/dri-devel">https://lists.freedesktop.org/mailman/listinf=
-o/dri-devel</a>
-</pre>
-    </blockquote>
-    <br>
-    <br>
-    <pre class=3D"moz-signature" cols=3D"72">--=20
-=EF=BC=ADark Yao</pre>
-  </body>
-</html>
+-
+Caesar
+>>   	unsigned int forced_passive;
+>>   	atomic_t need_update;
+>>   	struct thermal_zone_device_ops *ops;
+> Cheers,
+> Javi
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
-
---===============1995230926==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============1995230926==--
