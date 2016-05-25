@@ -1,65 +1,175 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 4/5] thermal: bang-bang governor: act on lower trip boundary
-Date: Wed, 25 May 2016 11:47:48 +0800
-Message-ID: <1464148069-26254-5-git-send-email-wxt@rock-chips.com>
-References: <1464148069-26254-1-git-send-email-wxt@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1464148069-26254-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, javi.merino-5wv7dgnIgG8@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peter-p08lbbvQ7EI@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: [PATCH] ARM64: dts: rockchip: add thermal zone node for rk3399 SoCs
+Date: Wed, 25 May 2016 12:27:04 +0800
+Message-ID: <1464150424-27809-1-git-send-email-wxt@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: edubezval@gmail.com, dianders@chromium.org, briannorris@google.com, smbarber@google.com, linux-rockchip@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Jianqun Xu <jay.xu@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+This adds thermal zone node to rk3399 dtsi, rk3399 thermal data is
+including the cpu and gpu sensor zone node.
+At the moment, remove the rk3368 thermal data from rk399 dtsi.
 
-With interrupt driven thermal zones we pass the lower and upper
-temperature on which shall be acted, so in the governor we have to act on
-the exact lower temperature to be consistent. Otherwise an interrupt maybe
-generated on the exact lower temperature, but the bang bang governor does
-not react since The polling driven zones have to be one step cooler before
-the governor reacts.
+The thermal zone node is the node containing all the required info
+for describing a thermal zone, including its cooling device bindings.
+The thermal zone node must contain, apart from its own properties, one
+sub-node containing trip nodes and one sub-node containing all the zone
+cooling maps.
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Acked-by: Peter Feuerer <peter-p08lbbvQ7EI@public.gmane.org>
+The following is the parameter is introduced:
+* polling-delay:
+The maximum number of milliseconds to wait between polls
 
+* polling-delay-passive:
+The maximum number of milliseconds to wait between polls when performing
+passive cooling.
+
+* trips:
+A sub-node which is a container of only trip point nodes required to
+describe the thermal zone.
+
+* cooling-maps:
+A sub-node which is a container of only cooling device map nodes, used to
+describe the relation between trips and cooling devices.
+
+* cooling-device:
+A phandle of a cooling device with its specifier, referring to which
+cooling device is used in this cooling specifier binding. In the cooling
+specifier, the first cell is the minimum cooling state and the second cell
+is the maximum cooling state used in this map.
+
+Signed-off-by: Caesar Wang <wxt@rock-chips.com>
 ---
 
-Changes in v3:
-- Add the peter's ACK.
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 100 +++++++++++++++++++++++++++++++
+ 1 file changed, 100 insertions(+)
 
-Changes in v2:
-- Update the commit for patch[v2 4/5].
-
- drivers/thermal/gov_bang_bang.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/thermal/gov_bang_bang.c b/drivers/thermal/gov_bang_bang.c
-index 70836c5..9d1dfea 100644
---- a/drivers/thermal/gov_bang_bang.c
-+++ b/drivers/thermal/gov_bang_bang.c
-@@ -59,7 +59,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz, int trip)
- 		if (instance->target == 0 && tz->temperature >= trip_temp)
- 			instance->target = 1;
- 		else if (instance->target == 1 &&
--				tz->temperature < trip_temp - trip_hyst)
-+				tz->temperature <= trip_temp - trip_hyst)
- 			instance->target = 0;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 46f325a..cc4ca2a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -45,6 +45,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/thermal/thermal.h>
  
- 		dev_dbg(&instance->cdev->device, "target=%d\n",
+ / {
+ 	compatible = "rockchip,rk3399";
+@@ -389,6 +390,95 @@
+ 		status = "disabled";
+ 	};
+ 
++	thermal-zones {
++		cpu-thermal: cpu {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <1000>; /* milliseconds */
++
++			thermal-sensors = <&tsadc 0>;
++
++			trips {
++				cpu_alert0: cpu_alert0 {
++					temperature = <70000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_alert1: cpu_alert1 {
++					temperature = <75000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_crit: cpu_crit {
++					temperature = <95000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
++
++			cooling-maps {
++				map0 {
++					trip = <&cpu_alert0>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				map1 {
++					trip = <&cpu_alert1>;
++					cooling-device =
++						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++
++		gpu-thermal: gpu {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <1000>; /* milliseconds */
++
++			thermal-sensors = <&tsadc 1>;
++
++			trips {
++				gpu_alert0: gpu_alert0 {
++					temperature = <75000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				gpu_crit: gpu_crit {
++					temperature = <95000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
++
++			cooling-maps {
++				map0 {
++					trip = <&gpu_alert0>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++	};
++
++	tsadc: tsadc@ff260000 {
++		compatible = "rockchip,rk3399-tsadc";
++		reg = <0x0 0xff260000 0x0 0x100>;
++		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
++		clock-names = "tsadc", "apb_pclk";
++		assigned-clocks = <&cru SCLK_TSADC>;
++		assigned-clock-rates = <750000>;
++		resets = <&cru SRST_TSADC>;
++		reset-names = "tsadc-apb";
++		pinctrl-names = "init", "default", "sleep";
++		pinctrl-0 = <&otp_gpio>;
++		pinctrl-1 = <&otp_out>;
++		pinctrl-2 = <&otp_gpio>;
++		#thermal-sensor-cells = <1>;
++		rockchip,hw-tshut-temp = <95000>;
++		status = "disabled";
++	};
++
+ 	pmugrf: syscon@ff320000 {
+ 		compatible = "rockchip,rk3399-pmugrf", "syscon";
+ 		reg = <0x0 0xff320000 0x0 0x1000>;
+@@ -881,6 +971,16 @@
+ 			};
+ 		};
+ 
++		tsadc {
++			otp_gpio: otp-gpio {
++				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++
++			otp_out: otp-out {
++				rockchip,pins = <1 6 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins =
 -- 
 1.9.1
