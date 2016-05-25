@@ -1,85 +1,179 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v2 05/10] drm/rockchip: analogix_dp: add rk3399 eDP
- support
-Date: Wed, 25 May 2016 13:55:11 +0800
-Message-ID: <57453E3F.8030600@rock-chips.com>
-References: <1464066147-22734-1-git-send-email-ykk@rock-chips.com>
- <1464073043-4931-1-git-send-email-ykk@rock-chips.com>
- <6183955.XzKjc41sjW@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <6183955.XzKjc41sjW@phil>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: David Airlie <airlied@linux.ie>, Inki Dae <inki.dae@samsung.com>, Mark Yao <yzq@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Douglas Anderson <dianders@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, Javier Martinez Canillas <javier@osg.samsung.com>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [RESEND PATCH] ARM64: dts: rockchip: add thermal zone node for rk3399 SoCs
+Date: Wed, 25 May 2016 15:39:35 +0800
+Message-ID: <1464161975-31299-1-git-send-email-wxt@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+This adds thermal zone node to rk3399 dtsi, rk3399 thermal data is
+including the cpu and gpu sensor zone node.
 
+The thermal zone node is the node containing all the required info
+for describing a thermal zone, including its cooling device bindings.
+The thermal zone node must contain, apart from its own properties, one
+sub-node containing trip nodes and one sub-node containing all the zone
+cooling maps.
 
-On 05/24/2016 06:17 PM, Heiko Stuebner wrote:
-> Am Dienstag, 24. Mai 2016, 14:57:23 schrieb Yakir Yang:
-> [........]
->> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c index 29c4105..d5d=
-4e04
->> 100644
->> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
->> @@ -148,6 +148,10 @@ rockchip_dp_drm_encoder_atomic_check(struct
->> drm_encoder *encoder, struct drm_connector_state *conn_state)
->>   {
->>   	struct rockchip_crtc_state *s =3D to_rockchip_crtc_state(crtc_sta=
-te);
->> +	struct rockchip_dp_device *dp =3D to_dp(encoder);
->> +	int ret;
->> +
->> +	s->output_type =3D DRM_MODE_CONNECTOR_eDP;
->>
->>   	/*
->>   	 * FIXME(Yakir): driver should configure the CRTC output video
->> @@ -162,8 +166,27 @@ rockchip_dp_drm_encoder_atomic_check(struct
->> drm_encoder *encoder, * But if I configure CTRC to RGBaaa, and eDP d=
-river
->> still keep * RGB666 input video mode, then screen would works prefec=
-t.
->>   	 */
->> -	s->output_mode =3D ROCKCHIP_OUT_MODE_AAAA;
->> -	s->output_type =3D DRM_MODE_CONNECTOR_eDP;
->> +
->> +	ret =3D drm_of_encoder_active_endpoint_id(dp->dev->of_node, encode=
-r);
->> +	if (ret < 0)
->> +		return;
-> this needs a value returned (probably ret), otherwise you create a
-> warning: =E2=80=98return=E2=80=99 with no value, in function returnin=
-g non-void
-Done,
+The following is the parameter is introduced:
+* polling-delay:
+The maximum number of milliseconds to wait between polls
 
-Thanks,
-- Yakir
->
-> drm_of_encoder_active_endpoint_id also always returns -EINVAL on rk32=
-88-
-> veyron-jerry because encoder->crtc is unset in
-> drm_of_encoder_active_endpoint and that breaks display output right n=
-ow.
->
-> Looking through drm code it seems only two functions would set encode=
-r->crtc
-> - drm_atomic_helper_update_legacy_modeset_state
-> - drm_crtc_helper_set_config
->
-> drm_crtc_helper_set_config callback got dropped in the atomic-convers=
-ion and
-> the other sounds to be somewhat in the legacy area.
->
-> After that drm-internals get a bit confusing.
->
->
-> Heiko
->
->
->
+* polling-delay-passive:
+The maximum number of milliseconds to wait between polls when performing
+passive cooling.
+
+* trips:
+A sub-node which is a container of only trip point nodes required to
+describe the thermal zone.
+
+* cooling-maps:
+A sub-node which is a container of only cooling device map nodes, used to
+describe the relation between trips and cooling devices.
+
+* cooling-device:
+A phandle of a cooling device with its specifier, referring to which
+cooling device is used in this cooling specifier binding. In the cooling
+specifier, the first cell is the minimum cooling state and the second cell
+is the maximum cooling state used in this map.
+
+Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 100 +++++++++++++++++++++++++++++++
+ 1 file changed, 100 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 46f325a..f8a80c2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -45,6 +45,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+ 	compatible = "rockchip,rk3399";
+@@ -389,6 +390,95 @@
+ 		status = "disabled";
+ 	};
+ 
++	thermal-zones {
++		cpu_thermal: cpu {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <1000>; /* milliseconds */
++
++			thermal-sensors = <&tsadc 0>;
++
++			trips {
++				cpu_alert0: cpu_alert0 {
++					temperature = <70000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_alert1: cpu_alert1 {
++					temperature = <75000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				cpu_crit: cpu_crit {
++					temperature = <95000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
++
++			cooling-maps {
++				map0 {
++					trip = <&cpu_alert0>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++				map1 {
++					trip = <&cpu_alert1>;
++					cooling-device =
++						<&cpu_l0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++
++		gpu_thermal: gpu {
++			polling-delay-passive = <100>; /* milliseconds */
++			polling-delay = <1000>; /* milliseconds */
++
++			thermal-sensors = <&tsadc 1>;
++
++			trips {
++				gpu_alert0: gpu_alert0 {
++					temperature = <75000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "passive";
++				};
++				gpu_crit: gpu_crit {
++					temperature = <95000>; /* millicelsius */
++					hysteresis = <2000>; /* millicelsius */
++					type = "critical";
++				};
++			};
++
++			cooling-maps {
++				map0 {
++					trip = <&gpu_alert0>;
++					cooling-device =
++						<&cpu_b0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++	};
++
++	tsadc: tsadc@ff260000 {
++		compatible = "rockchip,rk3399-tsadc";
++		reg = <0x0 0xff260000 0x0 0x100>;
++		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
++		rockchip,grf = <&grf>;
++		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
++		clock-names = "tsadc", "apb_pclk";
++		assigned-clocks = <&cru SCLK_TSADC>;
++		assigned-clock-rates = <750000>;
++		resets = <&cru SRST_TSADC>;
++		reset-names = "tsadc-apb";
++		pinctrl-names = "init", "default", "sleep";
++		pinctrl-0 = <&otp_gpio>;
++		pinctrl-1 = <&otp_out>;
++		pinctrl-2 = <&otp_gpio>;
++		#thermal-sensor-cells = <1>;
++		rockchip,hw-tshut-temp = <95000>;
++		status = "disabled";
++	};
++
+ 	pmugrf: syscon@ff320000 {
+ 		compatible = "rockchip,rk3399-pmugrf", "syscon";
+ 		reg = <0x0 0xff320000 0x0 0x1000>;
+@@ -881,6 +971,16 @@
+ 			};
+ 		};
+ 
++		tsadc {
++			otp_gpio: otp-gpio {
++				rockchip,pins = <1 6 RK_FUNC_GPIO &pcfg_pull_none>;
++			};
++
++			otp_out: otp-out {
++				rockchip,pins = <1 6 RK_FUNC_1 &pcfg_pull_none>;
++			};
++		};
++
+ 		uart0 {
+ 			uart0_xfer: uart0-xfer {
+ 				rockchip,pins =
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
