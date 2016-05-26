@@ -1,299 +1,233 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] mmc: dw_mmc: Consider HLE errors to be data and command
- errors
-Date: Thu, 26 May 2016 12:07:25 +0800
-Message-ID: <10d2520b-0919-0a5b-f5b6-23b133e63dbb@rock-chips.com>
-References: <1426002490-2014-1-git-send-email-dianders@chromium.org>
- <5502CA4E.9060401@samsung.com>
- <CAD=FV=VX3ix-j4y95W1q8b-aVuVEN+4xsd8WLx2xcE7KPNJwRw@mail.gmail.com>
- <5506707D.40708@samsung.com> <55189F04.8000404@samsung.com>
- <CAD=FV=WFAZqAsXOqunt0fxw87M-FruwUrxuzW0MJsG6UvfSjzA@mail.gmail.com>
- <CAD=FV=UJGcwa_biSCGhD=kS-T+fppCniBFfOHb5ohnwSwSwMMA@mail.gmail.com>
- <573BCC8D.5090606@kernel-upstream.org>
- <CAD=FV=VneQR3wurjezBkRhtQiH+q-FfhDN8=Ym=XqtZpVmsdUw@mail.gmail.com>
- <573C3283.1040606@rock-chips.com>
- <CAD=FV=UoT2GRYWJWXEn_ccvKGgC+PzQM_BCtLHAa7jxzbaQ9SA@mail.gmail.com>
- <10b3dc0e-aebf-664b-b36b-c54692cd9983@rock-chips.com>
- <573DBAA5.2070706@samsung.com>
- <CGME20160526022412epcas1p1408431e9596aaf84e8b58510ee81d4c4@epcas1p1.samsung.com>
- <4d8f3992-a1d3-6010-4964-8ca13cddc1c5@rock-chips.com>
- <5746748B.7080305@samsung.com>
+From: Caesar Wang <wxt@rock-chips.com>
+Subject: Re: [PATCH v3 1/5] thermal: Add support for hardware-tracked trip
+ points
+Date: Thu, 26 May 2016 12:17:20 +0800
+Message-ID: <574678D0.1080301@rock-chips.com>
+References: <1464148069-26254-1-git-send-email-wxt@rock-chips.com> <1464148069-26254-2-git-send-email-wxt@rock-chips.com> <20160525164258.GA11807@e104805> <5746449A.7070803@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
+Content-Type: text/plain; charset=UTF-8;
 	format=flowed
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5746748B.7080305@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: shawn.lin@rock-chips.com, Doug Anderson <dianders@chromium.org>, Ulf Hansson <ulf.hansson@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, Sonny Rao <sonnyrao@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Alexandru Stan <amstan@chromium.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-doc-owner@vger.kernel.org>
+In-Reply-To: <5746449A.7070803@rock-chips.com>
+Sender: linux-doc-owner@vger.kernel.org
+To: Javi Merino <javi.merino@arm.com>
+Cc: huangtao@rock-chips.com, Jonathan Corbet <corbet@lwn.net>, Ni Wade <wni@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, dmitry.torokhov@gmail.com, peter@piie.net, dianders@chromium.org, linux-doc@vger.kernel.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com, briannorris@google.com, Zhang Rui <rui.zhang@intel.com>, Andy Champ <andycham@amazon.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/5/26 11:59, Jaehoon Chung =E5=86=99=E9=81=93:
-> On 05/26/2016 11:23 AM, Shawn Lin wrote:
->> Hi Jaehoon,
+
+On 2016=E5=B9=B405=E6=9C=8826=E6=97=A5 08:34, Caesar Wang wrote:
+>
+> On 2016=E5=B9=B405=E6=9C=8826=E6=97=A5 00:42, Javi Merino wrote:
+>> Hi Caesar,
 >>
->> On 2016/5/19 21:07, Jaehoon Chung wrote:
->>> On 05/19/2016 08:31 PM, Shawn Lin wrote:
->>>> Hi,
->>>>
->>>> On 2016/5/19 1:37, Doug Anderson wrote:
->>>>> Hi,
->>>>>
->>>>> On Wed, May 18, 2016 at 2:14 AM, Shawn Lin <shawn.lin@rock-chips.=
-com> wrote:
->>>>>> Hi
->>>>>>
->>>>>>
->>>>>> On 2016-5-18 12:12, Doug Anderson wrote:
->>>>>>>
->>>>>>> Hi,
->>>>>>>
->>>>>>> On Tue, May 17, 2016 at 6:59 PM, Shawn Lin
->>>>>>> <shawn.lin@kernel-upstream.org> wrote:
->>>>>>>>
->>>>>>>> Could you try this patch to see if you can still find HLE?
->>>>>>>>
->>>>>>>> @@ -2356,12 +2356,22 @@ static void dw_mci_cmd_interrupt(struc=
-t dw_mci
->>>>>>>> *host, u32 status)
->>>>>>>>   static void dw_mci_handle_cd(struct dw_mci *host)
->>>>>>>>   {
->>>>>>>>          int i;
->>>>>>>> +       int present;
->>>>>>>>
->>>>>>>>          for (i =3D 0; i < host->num_slots; i++) {
->>>>>>>>                  struct dw_mci_slot *slot =3D host->slot[i];
->>>>>>>>
->>>>>>>>                  if (!slot)
->>>>>>>>                          continue;
->>>>>>>>
->>>>>>>> +               present =3D !(mci_readl(slot->host, CDETECT) &=
- (1 <<
->>>>>>>> slot->id));
->>>>>>>> +               if (present)
->>>>>>>> +                       set_bit(DW_MMC_CARD_PRESENT, &slot->fl=
-ags);
->>>>>>>> +               else
->>>>>>>> +                       clear_bit(DW_MMC_CARD_PRESENT, &slot->=
-flags);
->>>>>>>
->>>>>>>
->>>>>>> No, because we don't use the builtin card detect on veyron.  ;)
->>>>>>>
->>>>>>> We use GPIO card detect because we didn't like the way JTAG and=
- SD
->>>>>>> interacted.  Also on rk3288 the builtin card detect line had th=
-e wrong
->>>>>>> voltage domain (you couldn't detect a card when the IO lines we=
-re
->>>>>>> powered off).  The builtin card detect line is always driven lo=
-w on
->>>>>>> veyron.
->>>>>>
->>>>>>
->>>>>> Okay, I see.
->>>>>>
->>>>>>>
->>>>>>>
->>>>>>> I'm nearly certain that the root cause of my HLE errors is actu=
-ally
->>>>>>> related to the same problem addressed by the commit 7c5209c315e=
-a
->>>>>>> ("mmc: core: Increase delay for voltage to stabilize from 3.3V =
-to
->>>>>>> 1.8V").  I think that on minnie we're still on the hairy edge a=
-nd
->>>>>>> sometimes the line doesn't transition fast enough.
->>>>>>
->>>>>>
->>>>>> Things are not so simple from your details.
->>>>>>
->>>>>> I was not enabling SD3.0 support, then I also found HLE sometime=
-s.
->>>>>> So it seems commit 7c5209c315ea does not contibute to this pheno=
-menon.
->>>>>
->>>>> Just to clarify, in my case commit 7c5209c315ea didn't make the
->>>>> problem worse, but made it better.  Just not better enough.  ;)
->>>>>
->>>>>
->>>>>> The scenario looks like:
->>>>>> remove sd-card -> mmc_sd_detect -> send status(CMD13) ->power_of=
-f ->
->>>>>> set_ios -> setup_bus -> disabled clk , then HLE irq storm coming
->>>>>>
->>>>>> From the code of dw_mci_prepare_command:
->>>>>> SDMMC_CMD_PRV_DAT_WAIT will not be used for CMD13, so we don't
->>>>>> wait_busy here, then cmd code is loding into queue of dw_mmc but
->>>>>> still failing send out because it's in busy?
->>>>>>
->>>>>> With my patch, things go well:
->>>>>> remove sd-card -> clear bit of DW_MMC_CARD_PRESENT  -> send
->>>>>> status(CMD13) return directly -> power_off -> set_ios -> setup_b=
-us ->
->>>>>> disable clk
->>>>>>
->>>>>> So why should we allow inquiry of card status if we sure the car=
-d is
->>>>>> removed? I mean no any further cmds should be delivered.
->>>>>
->>>>> Quite honestly just dealing with the HLE error (my patch or
->>>>> equivalent) might be a sane solution for the problem you describe=
+>> On Wed, May 25, 2016 at 11:47:45AM +0800, Caesar Wang wrote:
+>>> From: Sascha Hauer <s.hauer@pengutronix.de>
+>>>
+>>> This adds support for hardware-tracked trip points to the device tr=
+ee
+>>> thermal sensor framework.
+>>>
+>>> The framework supports an arbitrary number of trip points. Whenever
+>>> the current temperature is updated, the trip points immediately
+>>> below and above the current temperature are found. A .set_trips
+>>> callback is then called with the temperatures. If there is no trip
+>>> point above or below the current temperature, the passed trip
+>>> temperature will be -INT_MAX or INT_MAX respectively. In this callb=
+ack,
+>>> the driver should program the hardware such that it is notified
+>>> when either of these trip points are triggered. When a trip point
+>>> is triggered, the driver should call `thermal_zone_device_update'
+>>> for the respective thermal zone. This will cause the trip points
+>>> to be updated again.
+>>>
+>>> If .set_trips is not implemented, the framework behaves as before.
+>>>
+>>> This patch is based on an earlier version from Mikko Perttunen
+>>> <mikko.perttunen@kapsi.fi>
+>>>
+>>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+>>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+>>> Cc: Zhang Rui <rui.zhang@intel.com>
+>>> Cc: Eduardo Valentin <edubezval@gmail.com>
+>>> Cc: linux-pm@vger.kernel.org
+>>>
+>>> ---
+>>>
+>>> Changes in v3:
+>>> - as Javi comments on https://patchwork.kernel.org/patch/9001281/.
+>>> - add the lock for preventing the called from multi placce
+>>> - add the note for pre_low/high_trip.
+>>>
+>>> Changes in v2:
+>>> - update the sysfs-api.txt for set_trips.
+>>>
+>>>   Documentation/thermal/sysfs-api.txt |  7 +++++
+>>>   drivers/thermal/thermal_core.c      | 52=20
+>>> +++++++++++++++++++++++++++++++++++++
+>>>   include/linux/thermal.h             |  7 +++++
+>>>   3 files changed, 66 insertions(+)
+>>>
+>>> diff --git a/Documentation/thermal/sysfs-api.txt=20
+>>> b/Documentation/thermal/sysfs-api.txt
+>>> index efc3f3d..75d8838 100644
+>>> --- a/Documentation/thermal/sysfs-api.txt
+>>> +++ b/Documentation/thermal/sysfs-api.txt
+>>> @@ -49,6 +49,9 @@ temperature) and throttle appropriate devices.
+>>>       .bind: bind the thermal zone device with a thermal cooling=20
+>>> device.
+>>>       .unbind: unbind the thermal zone device with a thermal coolin=
+g=20
+>>> device.
+>>>       .get_temp: get the current temperature of the thermal zone.
+>>> +    .set_trips: set the trip points window. Whenever the current=20
+>>> temperature
+>>> +            is updated, the trip points immediately below and abov=
+e=20
+>>> the
+>>> +            current temperature are found.
+>>>       .get_mode: get the current mode (enabled/disabled) of the=20
+>>> thermal zone.
+>>>           - "enabled" means the kernel thermal management is enable=
+d.
+>>>           - "disabled" will prevent kernel thermal driver action=20
+>>> upon trip points
+>>> @@ -95,6 +98,10 @@ temperature) and throttle appropriate devices.
+>>>               get_temp:    a pointer to a function that reads the
+>>>                       sensor temperature. This is mandatory
+>>>                       callback provided by sensor driver.
+>>> +            set_trips:      a pointer to a function that sets a
+>>> +                    temperature window. When this window is
+>>> +                    left the driver must inform the thermal
+>>> +                    core via thermal_zone_device_update.
+>>>               get_trend:     a pointer to a function that reads the
+>>>                       sensor temperature trend.
+>>>               set_emul_temp:    a pointer to a function that sets
+>>> diff --git a/drivers/thermal/thermal_core.c=20
+>>> b/drivers/thermal/thermal_core.c
+>>> index 5133cd1..e5bfbd3 100644
+>>> --- a/drivers/thermal/thermal_core.c
+>>> +++ b/drivers/thermal/thermal_core.c
+>>> @@ -520,6 +520,51 @@ exit:
+>>>   }
+>>>   EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
+>>>   +static void thermal_zone_set_trips(struct thermal_zone_device *t=
+z)
+>>> +{
+>>> +    int low =3D -INT_MAX;
+>>> +    int high =3D INT_MAX;
+>>> +    int trip_temp, hysteresis;
+>>> +    int temp =3D tz->temperature;
+>>> +    int i, ret;
+>>> +
+>>> +    if (!tz->ops->set_trips)
+>>> +        return;
+>>> +
+>>> +    for (i =3D 0; i < tz->trips; i++) {
+>>> +        int trip_low;
+>>> +
+>>> +        tz->ops->get_trip_temp(tz, i, &trip_temp);
+>>> +        tz->ops->get_trip_hyst(tz, i, &hysteresis);
+>>> +
+>>> +        trip_low =3D trip_temp - hysteresis;
+>>> +
+>>> +        if (trip_low < temp && trip_low > low)
+>>> +            low =3D trip_low;
+>>> +
+>>> +        if (trip_temp > temp && trip_temp < high)
+>>> +            high =3D trip_temp;
+>>> +    }
+>>> +
+>>> +    /* No need to change trip points */
+>>> +    if (tz->prev_low_trip =3D=3D low && tz->prev_high_trip =3D=3D =
+high)
+>>> +        return;
+>>> +
+>>> +    tz->prev_low_trip =3D low;
+>>> +    tz->prev_high_trip =3D high;
+>>> +
+>>> +    dev_dbg(&tz->device, "new temperature boundaries: %d < x < %d\=
+n",
+>>> +            low, high);
+>>> +
+>>> +    /*
+>>> +     * Set a temperature window. When this window is left the driv=
+er
+>>> +     * must inform the thermal core via thermal_zone_device_update=
 =2E
->>>>
->>>> Yes, your patch looks good to me, so it should be merged firstly. =
-:)
->>>> Then let's push it a bit further more that when HLEs are coming,
->>>> somethings must be wrong(currently I don't see a obvious clue from
->>>> the code itself although, I'm prone to think it belongs to the
->>>> software issue).
->>>
->>> We don't know what's main cause for HLE..But i also think it's rele=
-vant to SW issue.
->>> But we need to consider all possibilities..
->>>
->>>>
->>>>
->>>>>
->>>>> dw_mmc needs to be able to work with an external card detect GPIO=
-=2E
->>>>> It's been part of the dw_mmc driver for a long time and is (in fa=
-ct)
->>>>> in use upstream at least by rk3288-veyron.  Any solution that onl=
-y
->>>>> works for internal card detect is not enough.  Just handling the =
-HLE
->>>>> error to deal with the interrupt storm and then letting Linux rem=
-ove
->>>>> the card (because of the card detect interrupt) seems totally OK =
-to
->>>>> me.
->>>>>
->>>>
->>>> Sure, some of rockchip Socs use gpio for CD because they don't
->>>> have a internal CD, such as RK3036, right?
->>>>
->>>>> Note: I'd be very curious if your problems get better if you disa=
-ble
->>>>
->>>> Not at all.
->>>>
->>>>> the "grf_force_jtag" bit in the GRF.  If you're using the builtin=
- card
->>>>> detect and you use the boot default of "grf_force_jtag" then your=
- pins
->>>>> will be unmuxed behind your back when the card is ejected.  This =
-could
->>>>> be causing the dw_mmc controller to get confused.
->>>>
->>>> Right, grf_force_jtag is also not a friend of mine. :)
->>>> So I had disabled this function before I was debugging it.
->>>>
->>>>>
->>>>>
->>>>>> And another question: should we wait busy for cmd13?
->>>>>
->>>>> I don't think so.  As I understand it CMD13 uses only the CMD lin=
-e for
->>>>> communication and it should be appropriate to send this when the =
-bus
->>>>> is "busy" (which means that the DATA lines are low).
->>>>
->>>> Ahh... take back my question.. I was just considering a wired situ=
-ation
->>>> that pins are unmuxed on the background(cmd line as well) when cmd=
-13 is
->>>> delivering....
->>>>
->>>>
->>>>>
->>>>> Also: it seems odd that the HLE IRQ storm didn't come right after=
- the
->>>>> CMD 13 in your description above.  Are you sure it was the CMD 13=
- that
->>>>> caused the HLEs, or could it has been something else?
->>>>
->>>> Actually no. Any cmds be issued can trigger HLEs, I think, after s=
-d card is removed When I hacked mmc_sd_detecd to send other cmds intead
->>>> of cmd13.
->>>>
->>>> From dw_mmc databook v270a(7.2.3 Clock Programming) we can see:
->>>> The DWC_mobile_storage loads each of these registers only when the
->>>> start_cmd bit and the Update_clk_regs_only bit in the CMD register=
- are
->>>> set. When a command is successfully loaded, the DWC_mobile_storage
->>>> clears this bit, unless the DWC_mobile_storage already has another
->>>> command in the queue, at which point it gives an HLE (Hardware Loc=
-ked
->>>> Error); for details on HLEs, refer to =E2=80=9CError Handling=E2=80=
-=9D on page 233.
->>>> Software should look for the start_cmd and the Update_clk_regs_onl=
-y
->>>> bits, and should also set the wait_prvdata_complete bit to ensure =
-that
->>>> clock parameters do not change during data transfer.
->>>>
->>>> Maybe the cmd is trying to load(or somethings wrong with the
->>>> controller?) when we disable the clk? That may explain my observat=
-ion
->>>> that HLEs came after disabling clk.
->>>
->>> I agreed.
->>>
->>> To Disable clock, it sends cmd with update_clk_regs_only and wait_p=
-rvdata_complete bit.
->>> I think it's problem..(waiting for prvdata..)
->>>
->>> If there are ongoing some data(read/write), then before disabling c=
-lock, waiting for completing previous data.
->>> (But card was already removed, and it couldn't do anything.)
->>> It's difficult to analyze the HLE..So After applying first, then we=
- can solve this problem, step by step.
->>>
->>
->> I saw you send a PR for v4.7-fix to Ulf which didn't include this on=
-e.
->> Do you plan to add it into 4.8 materials? :)
+>>> +     */
+>>> +    ret =3D tz->ops->set_trips(tz, low, high);
+>>> +    if (ret)
+>>> +        dev_err(&tz->device, "Failed to set trips: %d\n", ret);
+>> In the v2 review
+>> (http://article.gmane.org/gmane.linux.documentation/38442) you agree=
+d
+>> to add locking but you haven't done it.  Maybe you sent the wrong
+>> version?
 >
-> Yes, I think good that this is prepared for next. (Will apply on this=
- weekend.)
-> Do you have other opinion? :)
-
-No, thanks. I just wanna make sure this one will be merged. :)
-
+> My god!
+> Yep, I remember to change it. Somehow why ...
 >
-> If you have other opinion, i will reflect yours. Thanks!
+> Thanks Javi for looking over it.
 >
-> Best Regards,
-> Jaehoon Chung
->
->>
->>> Best Regards,
->>> Jaehoon Chung
->>>
->>>>
->>>>
->>>>>
->>>>>
->>>>> -Doug
->>>>>
->>>>>
->>>>>
->>>>
->>>>
->>>
->>>
->>>
->>>
->>
->>
->
->
->
+> Hoping the next version is the final version.:-)
 >
 
+If add the lock, there is a deadlock for board,  maybe I will keep to=20
+stay with this version.
+
+   2.895038] [ INFO: possible recursive locking detected ]
+[    2.900459] 4.4.4 #56 Not tainted
+[    2.903774] ---------------------------------------------
+[    2.909171] swapper/0/1 is trying to acquire lock:
+[    2.913974]  (&tz->lock){+.+.+.}, at: [<ffffffc00069b428>]=20
+handle_thermal_trip+0x230/0x304
+[    2.922336]
+[    2.922336] but task is already holding lock:
+[    2.928166]  (&tz->lock){+.+.+.}, at: [<ffffffc000699194>]=20
+thermal_zone_set_trips+0xd8/0x180
+[    2.936670]
+[    2.936670] other info that might help us debug this:
+[    2.943199]  Possible unsafe locking scenario:
+[    2.943199]
+[    2.949117]        CPU0
+[    2.951565]        ----
+[    2.954012]   lock(&tz->lock);
+[    2.957098]   lock(&tz->lock);
+[    2.960176]
+[    2.960176]  *** DEADLOCK ***
+[    2.960176]
+[    2.966098]  May be due to missing lock nesting notation
+[    2.966098]
+[    2.972885] 3 locks held by swapper/0/1:
+[    2.976809]  #0:  (&dev->mutex){......}, at: [<ffffffc0005920b0>]=20
+__driver_attach+0x40/0xa8
+[    2.985243]  #1:  (&dev->mutex){......}, at: [<ffffffc0005920d8>]=20
+__driver_attach+0x68/0xa8
+[    2.993671]  #2:  (&tz->lock){+.+.+.}, at: [<ffffffc000699194>]=20
+thermal_zone_set_trips+0xd8/0x180
+=2E..
+
+
+
+
+
+
+
+> -Caesar
+>
+>>
+>> Cheers,
+>> Javi
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+>
 
 --=20
-Best Regards
-Shawn Lin
+caesar wang | software engineer | wxt@rock-chip.com
+
+
