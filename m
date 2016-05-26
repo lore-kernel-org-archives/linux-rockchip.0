@@ -1,65 +1,77 @@
-From: Xing Zheng <zhengxing@rock-chips.com>
-Subject: Re: [RESEND PATCH v2] ASoC: rockchip: Add machine
- driver for MAX98357A/RT5514/DA7219
-Date: Thu, 26 May 2016 17:04:39 +0800
-Message-ID: <5746BC27.1030008@rock-chips.com>
-References: <1464053774-15914-1-git-send-email-zhengxing@rock-chips.com>
- <20160525173246.GA5125@rob-hp-laptop>
+From: Yakir Yang <ykk@rock-chips.com>
+Subject: Re: [PATCH v2 0/10] Add RK3399 eDP support and fix some bugs to
+ analogix_dp driver.
+Date: Thu, 26 May 2016 17:34:25 +0800
+Message-ID: <5746C321.9000707@rock-chips.com>
+References: <1464066086-21967-1-git-send-email-ykk@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160525173246.GA5125@rob-hp-laptop>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1464066086-21967-1-git-send-email-ykk@rock-chips.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Javier Martinez Canillas <javier@osg.samsung.com>
+Cc: David Airlie <airlied@linux.ie>, Inki Dae <inki.dae@samsung.com>, Mark Yao <yzq@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKT24gMjAxNuW5tDA15pyIMjbml6UgMDE6MzIsIFJvYiBIZXJyaW5nIHdyb3RlOgo+
-IE9uIFR1ZSwgTWF5IDI0LCAyMDE2IGF0IDA5OjM2OjE0QU0gKzA4MDAsIFhpbmcgWmhlbmcgd3Jv
-dGU6Cj4+IFRoZXJlIGFyZSBtdWx0aSBjb2RlYyBkZXZpY2VzIG9uIHRoZSBSSzMzOTkgcGxhdGZv
-cm0sIHdlIGNhbiB1c2UKPj4gdGhpcyBwYXRjaCBzdXBwb3J0IGFuZCBjb250cm9sIHRoZXNlIGNv
-ZGVjcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hp
-cHMuY29tPgo+PiAtLS0KPj4KPj4gQ2hhbmdlcyBpbiB2MjoKPj4gLSB1c2UgdGhlIEZTIDI1NiB0
-byBzZXQgbWNsa3Mgb2YgdGhlIG1heDk4MzU3YSBhbmQgcnQ1NTE0IGRhbmFtaWNhbGx5Cj4+IC0g
-YWRkIG1vcmUgc2FtcGxlIHJhdGUgZm9yIGRhNzIxOQo+Pgo+PiAgIC4uLi9zb3VuZC9yb2NrY2hp
-cC1tYXg5ODM1N2EtcnQ1NTE0LWRhNzIxOS50eHQgICAgIHwgICAxNSArCj4+ICAgc291bmQvc29j
-L3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDExICsKPj4gICBz
-b3VuZC9zb2Mvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDIg
-Kwo+PiAgIC4uLi9yb2NrY2hpcC9yb2NrY2hpcF9tYXg5ODM1N2FfcnQ1NTE0X2RhNzIxOS5jICAg
-IHwgIDMzMyArKysrKysrKysrKysrKysrKysrKwo+PiAgIDQgZmlsZXMgY2hhbmdlZCwgMzYxIGlu
-c2VydGlvbnMoKykKPj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4dAo+
-PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBzb3VuZC9zb2Mvcm9ja2NoaXAvcm9ja2NoaXBfbWF4OTgz
-NTdhX3J0NTUxNF9kYTcyMTkuYwo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4
-dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcC1tYXg5
-ODM1N2EtcnQ1NTE0LWRhNzIxOS50eHQKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXgg
-MDAwMDAwMC4uNTkyODM4NAo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcC1tYXg5ODM1N2EtcnQ1NTE0LWRhNzIx
-OS50eHQKPj4gQEAgLTAsMCArMSwxNSBAQAo+PiArUk9DS0NISVAgd2l0aCBNQVg5ODM1N0EvUlQ1
-NTE0L0RBNzIxOSBjb2RlY3MKPj4gKwo+PiArUmVxdWlyZWQgcHJvcGVydGllczoKPj4gKy0gY29t
-cGF0aWJsZTogInJvY2tjaGlwLHJvY2tjaGlwLXNvdW5kIgo+IFRoaXMgaXMgZ2VuZXJpYywgYnV0
-IHRoZSBiaW5kaW5nIHNlZW1zIHRvIGJlIHZlcnkgc3BlY2lmaWMgdG8gb25seSAzCj4gc3BlY2lm
-aWMgY29kZWNzLiBMaXN0aW5nIGFsbCAzIGNvZGVjcyBzZWVtcyBhIGJpdCBzdHJhbmdlLiBQZXJo
-YXBzIGEKPiBuYW1lIHJlbGF0ZWQgdG8gdGhlIGJvYXJkIG5hbWUgd291bGQgYmUgYmV0dGVyLgpZ
-ZXMsIEkgdGhpbmsgdGhhdCBJIHNob3VsZCByZW5hbWUgdG8gcmszMzk5X21heDk4MzU3YV9ydDU1
-MTRfZGE3MjE5LmMsIAppdCBpcyByZWxhdGVkIHRvIHRoZSByazMzOTkgYm9hcmRzLgo+PiArLSBy
-b2NrY2hpcCxjcHU6IFRoZSBwaGFuZGxlIG9mIHRoZSBSb2NrY2hpcCBJMlMgY29udHJvbGxlciB0
-aGF0J3MKPj4gKyAgY29ubmVjdGVkIHRvIHRoZSBjb2RlY3MKPiBXaGF0J3MgdGhlIHNpemU/IGFs
-d2F5cyAzPwpOb3QgYWx3YXlzIDMsIHRoZSBzaXplIGlzIGxpbWl0ZWQgYnkgbWFjaGluZSBkcml2
-ZXIsIFRoZSBzaW1pbGFyIAphcHByb2FjaCB3aXRoIG10ODE3My1ydDU2NTAtcnQ1Njc2LnR4dC4K
-Pj4gKy0gcm9ja2NoaXAsY29kZWM6IFRoZSBwaGFuZGxlIG9mIHRoZSBNQVg5ODM1N0EvUlQ1NTE0
-L0RBNzIxOSBjb2RlY3MKPiBQbGVhc2UgbWFrZSB0aGUgc2l6ZSBhbmQgb3JkZXJpbmcgY2xlYXIu
-CkRpdHRvLgoKVGhhbmtzLgoKLS0gCi0gWGluZyBaaGVuZwoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2Et
-ZGV2ZWxAYWxzYS1wcm9qZWN0Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21h
-aWxtYW4vbGlzdGluZm8vYWxzYS1kZXZlbAo=
+Hi Javier,
+
+On 05/24/2016 01:01 PM, Yakir Yang wrote:
+> Hi all,
+>
+> This series have been posted about one month, still no comments, help here :(
+This series works rightly on Rockchip platform, and most of them haven't 
+touch the
+common analogix_dp driver (except for the hotplug fixed). So i guess 
+Exynos platform
+should also happy with this changes.
+
+But not sure about that. So, is it possible that you could help to check 
+this on Exynos
+Chromebook, if so i would be very grateful about that.
+
+Thanks,
+- Yakir
+>
+> RK3399 and RK3288 shared the same eDP IP controller, only some light
+> difference with VOP configure and GRF configure.
+>
+> Also same misc fix to analogix_dp driver:
+> - Hotplug invalid which report by Dan Carpenter
+> - Make panel detect to an optional action
+> - correct the register bit define error in ANALOGIX_DP_PLL_REG_1
+>
+>
+> Changes in v2:
+> - new patch in v2
+> - rebase with drm-next, fix some conflicts
+> - new patch in v2
+>
+> Yakir Yang (10):
+>    drm/bridge: analogix_dp: rename RK3288_DP to ROCKCHIP_DP
+>    drm/rockchip: analogix_dp: split the lcdc select setting into device
+>      data
+>    drm/bridge: analogix_dp: correct the register bit define error in
+>      ANALOGIX_DP_PLL_REG_1
+>    drm/bridge: analogix_dp: some rockchip chips need to flip REF_CLK bit
+>      setting
+>    drm/rockchip: analogix_dp: add rk3399 eDP support
+>    drm/rockchip: analogix_dp: make panel detect to an optional action
+>    drm/bridge: analogix_dp: introduce connector mode_valid callback to
+>      plat driver
+>    drm/rockchip: analogix_dp: correct the connector display color format
+>      and bpc
+>    drm/rockchip: analogix_dp: update the comments about why need to
+>      hardcode VOP output mode
+>    drm/bridge: analogix_dp: fix no drm hpd event when panel plug in
+>
+>   .../bindings/display/bridge/analogix_dp.txt        |   1 +
+>   .../display/rockchip/analogix_dp-rockchip.txt      |   2 +-
+>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  19 ++-
+>   drivers/gpu/drm/bridge/analogix/analogix_dp_core.h |   8 +-
+>   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  |  12 +-
+>   drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h  |   5 +-
+>   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 157 ++++++++++++++-------
+>   include/drm/bridge/analogix_dp.h                   |  10 ++
+>   8 files changed, 152 insertions(+), 62 deletions(-)
+>
