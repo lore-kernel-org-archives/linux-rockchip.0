@@ -1,233 +1,65 @@
-From: Caesar Wang <wxt@rock-chips.com>
-Subject: Re: [PATCH v3 1/5] thermal: Add support for hardware-tracked trip
- points
-Date: Thu, 26 May 2016 12:17:20 +0800
-Message-ID: <574678D0.1080301@rock-chips.com>
-References: <1464148069-26254-1-git-send-email-wxt@rock-chips.com> <1464148069-26254-2-git-send-email-wxt@rock-chips.com> <20160525164258.GA11807@e104805> <5746449A.7070803@rock-chips.com>
+From: Xing Zheng <zhengxing@rock-chips.com>
+Subject: Re: [RESEND PATCH v2] ASoC: rockchip: Add machine
+ driver for MAX98357A/RT5514/DA7219
+Date: Thu, 26 May 2016 17:04:39 +0800
+Message-ID: <5746BC27.1030008@rock-chips.com>
+References: <1464053774-15914-1-git-send-email-zhengxing@rock-chips.com>
+ <20160525173246.GA5125@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <5746449A.7070803@rock-chips.com>
-Sender: linux-doc-owner@vger.kernel.org
-To: Javi Merino <javi.merino@arm.com>
-Cc: huangtao@rock-chips.com, Jonathan Corbet <corbet@lwn.net>, Ni Wade <wni@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, dmitry.torokhov@gmail.com, peter@piie.net, dianders@chromium.org, linux-doc@vger.kernel.org, edubezval@gmail.com, linux-rockchip@lists.infradead.org, Laxman Dewangan <ldewangan@nvidia.com>, smbarber@google.com, Leo Yan <leo.yan@linaro.org>, cf@rock-chips.com, briannorris@google.com, Zhang Rui <rui.zhang@intel.com>, Andy Champ <andycham@amazon.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160525173246.GA5125@rob-hp-laptop>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Rob Herring <robh@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>, dianders@chromium.org, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, Kumar Gala <galak@codeaurora.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2016=E5=B9=B405=E6=9C=8826=E6=97=A5 08:34, Caesar Wang wrote:
->
-> On 2016=E5=B9=B405=E6=9C=8826=E6=97=A5 00:42, Javi Merino wrote:
->> Hi Caesar,
->>
->> On Wed, May 25, 2016 at 11:47:45AM +0800, Caesar Wang wrote:
->>> From: Sascha Hauer <s.hauer@pengutronix.de>
->>>
->>> This adds support for hardware-tracked trip points to the device tr=
-ee
->>> thermal sensor framework.
->>>
->>> The framework supports an arbitrary number of trip points. Whenever
->>> the current temperature is updated, the trip points immediately
->>> below and above the current temperature are found. A .set_trips
->>> callback is then called with the temperatures. If there is no trip
->>> point above or below the current temperature, the passed trip
->>> temperature will be -INT_MAX or INT_MAX respectively. In this callb=
-ack,
->>> the driver should program the hardware such that it is notified
->>> when either of these trip points are triggered. When a trip point
->>> is triggered, the driver should call `thermal_zone_device_update'
->>> for the respective thermal zone. This will cause the trip points
->>> to be updated again.
->>>
->>> If .set_trips is not implemented, the framework behaves as before.
->>>
->>> This patch is based on an earlier version from Mikko Perttunen
->>> <mikko.perttunen@kapsi.fi>
->>>
->>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->>> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
->>> Cc: Zhang Rui <rui.zhang@intel.com>
->>> Cc: Eduardo Valentin <edubezval@gmail.com>
->>> Cc: linux-pm@vger.kernel.org
->>>
->>> ---
->>>
->>> Changes in v3:
->>> - as Javi comments on https://patchwork.kernel.org/patch/9001281/.
->>> - add the lock for preventing the called from multi placce
->>> - add the note for pre_low/high_trip.
->>>
->>> Changes in v2:
->>> - update the sysfs-api.txt for set_trips.
->>>
->>>   Documentation/thermal/sysfs-api.txt |  7 +++++
->>>   drivers/thermal/thermal_core.c      | 52=20
->>> +++++++++++++++++++++++++++++++++++++
->>>   include/linux/thermal.h             |  7 +++++
->>>   3 files changed, 66 insertions(+)
->>>
->>> diff --git a/Documentation/thermal/sysfs-api.txt=20
->>> b/Documentation/thermal/sysfs-api.txt
->>> index efc3f3d..75d8838 100644
->>> --- a/Documentation/thermal/sysfs-api.txt
->>> +++ b/Documentation/thermal/sysfs-api.txt
->>> @@ -49,6 +49,9 @@ temperature) and throttle appropriate devices.
->>>       .bind: bind the thermal zone device with a thermal cooling=20
->>> device.
->>>       .unbind: unbind the thermal zone device with a thermal coolin=
-g=20
->>> device.
->>>       .get_temp: get the current temperature of the thermal zone.
->>> +    .set_trips: set the trip points window. Whenever the current=20
->>> temperature
->>> +            is updated, the trip points immediately below and abov=
-e=20
->>> the
->>> +            current temperature are found.
->>>       .get_mode: get the current mode (enabled/disabled) of the=20
->>> thermal zone.
->>>           - "enabled" means the kernel thermal management is enable=
-d.
->>>           - "disabled" will prevent kernel thermal driver action=20
->>> upon trip points
->>> @@ -95,6 +98,10 @@ temperature) and throttle appropriate devices.
->>>               get_temp:    a pointer to a function that reads the
->>>                       sensor temperature. This is mandatory
->>>                       callback provided by sensor driver.
->>> +            set_trips:      a pointer to a function that sets a
->>> +                    temperature window. When this window is
->>> +                    left the driver must inform the thermal
->>> +                    core via thermal_zone_device_update.
->>>               get_trend:     a pointer to a function that reads the
->>>                       sensor temperature trend.
->>>               set_emul_temp:    a pointer to a function that sets
->>> diff --git a/drivers/thermal/thermal_core.c=20
->>> b/drivers/thermal/thermal_core.c
->>> index 5133cd1..e5bfbd3 100644
->>> --- a/drivers/thermal/thermal_core.c
->>> +++ b/drivers/thermal/thermal_core.c
->>> @@ -520,6 +520,51 @@ exit:
->>>   }
->>>   EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
->>>   +static void thermal_zone_set_trips(struct thermal_zone_device *t=
-z)
->>> +{
->>> +    int low =3D -INT_MAX;
->>> +    int high =3D INT_MAX;
->>> +    int trip_temp, hysteresis;
->>> +    int temp =3D tz->temperature;
->>> +    int i, ret;
->>> +
->>> +    if (!tz->ops->set_trips)
->>> +        return;
->>> +
->>> +    for (i =3D 0; i < tz->trips; i++) {
->>> +        int trip_low;
->>> +
->>> +        tz->ops->get_trip_temp(tz, i, &trip_temp);
->>> +        tz->ops->get_trip_hyst(tz, i, &hysteresis);
->>> +
->>> +        trip_low =3D trip_temp - hysteresis;
->>> +
->>> +        if (trip_low < temp && trip_low > low)
->>> +            low =3D trip_low;
->>> +
->>> +        if (trip_temp > temp && trip_temp < high)
->>> +            high =3D trip_temp;
->>> +    }
->>> +
->>> +    /* No need to change trip points */
->>> +    if (tz->prev_low_trip =3D=3D low && tz->prev_high_trip =3D=3D =
-high)
->>> +        return;
->>> +
->>> +    tz->prev_low_trip =3D low;
->>> +    tz->prev_high_trip =3D high;
->>> +
->>> +    dev_dbg(&tz->device, "new temperature boundaries: %d < x < %d\=
-n",
->>> +            low, high);
->>> +
->>> +    /*
->>> +     * Set a temperature window. When this window is left the driv=
-er
->>> +     * must inform the thermal core via thermal_zone_device_update=
-=2E
->>> +     */
->>> +    ret =3D tz->ops->set_trips(tz, low, high);
->>> +    if (ret)
->>> +        dev_err(&tz->device, "Failed to set trips: %d\n", ret);
->> In the v2 review
->> (http://article.gmane.org/gmane.linux.documentation/38442) you agree=
-d
->> to add locking but you haven't done it.  Maybe you sent the wrong
->> version?
->
-> My god!
-> Yep, I remember to change it. Somehow why ...
->
-> Thanks Javi for looking over it.
->
-> Hoping the next version is the final version.:-)
->
-
-If add the lock, there is a deadlock for board,  maybe I will keep to=20
-stay with this version.
-
-   2.895038] [ INFO: possible recursive locking detected ]
-[    2.900459] 4.4.4 #56 Not tainted
-[    2.903774] ---------------------------------------------
-[    2.909171] swapper/0/1 is trying to acquire lock:
-[    2.913974]  (&tz->lock){+.+.+.}, at: [<ffffffc00069b428>]=20
-handle_thermal_trip+0x230/0x304
-[    2.922336]
-[    2.922336] but task is already holding lock:
-[    2.928166]  (&tz->lock){+.+.+.}, at: [<ffffffc000699194>]=20
-thermal_zone_set_trips+0xd8/0x180
-[    2.936670]
-[    2.936670] other info that might help us debug this:
-[    2.943199]  Possible unsafe locking scenario:
-[    2.943199]
-[    2.949117]        CPU0
-[    2.951565]        ----
-[    2.954012]   lock(&tz->lock);
-[    2.957098]   lock(&tz->lock);
-[    2.960176]
-[    2.960176]  *** DEADLOCK ***
-[    2.960176]
-[    2.966098]  May be due to missing lock nesting notation
-[    2.966098]
-[    2.972885] 3 locks held by swapper/0/1:
-[    2.976809]  #0:  (&dev->mutex){......}, at: [<ffffffc0005920b0>]=20
-__driver_attach+0x40/0xa8
-[    2.985243]  #1:  (&dev->mutex){......}, at: [<ffffffc0005920d8>]=20
-__driver_attach+0x68/0xa8
-[    2.993671]  #2:  (&tz->lock){+.+.+.}, at: [<ffffffc000699194>]=20
-thermal_zone_set_trips+0xd8/0x180
-=2E..
-
-
-
-
-
-
-
-> -Caesar
->
->>
->> Cheers,
->> Javi
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->
->
-
---=20
-caesar wang | software engineer | wxt@rock-chip.com
-
-
+SGkgUm9iLAoKT24gMjAxNuW5tDA15pyIMjbml6UgMDE6MzIsIFJvYiBIZXJyaW5nIHdyb3RlOgo+
+IE9uIFR1ZSwgTWF5IDI0LCAyMDE2IGF0IDA5OjM2OjE0QU0gKzA4MDAsIFhpbmcgWmhlbmcgd3Jv
+dGU6Cj4+IFRoZXJlIGFyZSBtdWx0aSBjb2RlYyBkZXZpY2VzIG9uIHRoZSBSSzMzOTkgcGxhdGZv
+cm0sIHdlIGNhbiB1c2UKPj4gdGhpcyBwYXRjaCBzdXBwb3J0IGFuZCBjb250cm9sIHRoZXNlIGNv
+ZGVjcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hp
+cHMuY29tPgo+PiAtLS0KPj4KPj4gQ2hhbmdlcyBpbiB2MjoKPj4gLSB1c2UgdGhlIEZTIDI1NiB0
+byBzZXQgbWNsa3Mgb2YgdGhlIG1heDk4MzU3YSBhbmQgcnQ1NTE0IGRhbmFtaWNhbGx5Cj4+IC0g
+YWRkIG1vcmUgc2FtcGxlIHJhdGUgZm9yIGRhNzIxOQo+Pgo+PiAgIC4uLi9zb3VuZC9yb2NrY2hp
+cC1tYXg5ODM1N2EtcnQ1NTE0LWRhNzIxOS50eHQgICAgIHwgICAxNSArCj4+ICAgc291bmQvc29j
+L3JvY2tjaGlwL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDExICsKPj4gICBz
+b3VuZC9zb2Mvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDIg
+Kwo+PiAgIC4uLi9yb2NrY2hpcC9yb2NrY2hpcF9tYXg5ODM1N2FfcnQ1NTE0X2RhNzIxOS5jICAg
+IHwgIDMzMyArKysrKysrKysrKysrKysrKysrKwo+PiAgIDQgZmlsZXMgY2hhbmdlZCwgMzYxIGlu
+c2VydGlvbnMoKykKPj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4dAo+
+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBzb3VuZC9zb2Mvcm9ja2NoaXAvcm9ja2NoaXBfbWF4OTgz
+NTdhX3J0NTUxNF9kYTcyMTkuYwo+Pgo+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL3NvdW5kL3JvY2tjaGlwLW1heDk4MzU3YS1ydDU1MTQtZGE3MjE5LnR4
+dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcC1tYXg5
+ODM1N2EtcnQ1NTE0LWRhNzIxOS50eHQKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXgg
+MDAwMDAwMC4uNTkyODM4NAo+PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9zb3VuZC9yb2NrY2hpcC1tYXg5ODM1N2EtcnQ1NTE0LWRhNzIx
+OS50eHQKPj4gQEAgLTAsMCArMSwxNSBAQAo+PiArUk9DS0NISVAgd2l0aCBNQVg5ODM1N0EvUlQ1
+NTE0L0RBNzIxOSBjb2RlY3MKPj4gKwo+PiArUmVxdWlyZWQgcHJvcGVydGllczoKPj4gKy0gY29t
+cGF0aWJsZTogInJvY2tjaGlwLHJvY2tjaGlwLXNvdW5kIgo+IFRoaXMgaXMgZ2VuZXJpYywgYnV0
+IHRoZSBiaW5kaW5nIHNlZW1zIHRvIGJlIHZlcnkgc3BlY2lmaWMgdG8gb25seSAzCj4gc3BlY2lm
+aWMgY29kZWNzLiBMaXN0aW5nIGFsbCAzIGNvZGVjcyBzZWVtcyBhIGJpdCBzdHJhbmdlLiBQZXJo
+YXBzIGEKPiBuYW1lIHJlbGF0ZWQgdG8gdGhlIGJvYXJkIG5hbWUgd291bGQgYmUgYmV0dGVyLgpZ
+ZXMsIEkgdGhpbmsgdGhhdCBJIHNob3VsZCByZW5hbWUgdG8gcmszMzk5X21heDk4MzU3YV9ydDU1
+MTRfZGE3MjE5LmMsIAppdCBpcyByZWxhdGVkIHRvIHRoZSByazMzOTkgYm9hcmRzLgo+PiArLSBy
+b2NrY2hpcCxjcHU6IFRoZSBwaGFuZGxlIG9mIHRoZSBSb2NrY2hpcCBJMlMgY29udHJvbGxlciB0
+aGF0J3MKPj4gKyAgY29ubmVjdGVkIHRvIHRoZSBjb2RlY3MKPiBXaGF0J3MgdGhlIHNpemU/IGFs
+d2F5cyAzPwpOb3QgYWx3YXlzIDMsIHRoZSBzaXplIGlzIGxpbWl0ZWQgYnkgbWFjaGluZSBkcml2
+ZXIsIFRoZSBzaW1pbGFyIAphcHByb2FjaCB3aXRoIG10ODE3My1ydDU2NTAtcnQ1Njc2LnR4dC4K
+Pj4gKy0gcm9ja2NoaXAsY29kZWM6IFRoZSBwaGFuZGxlIG9mIHRoZSBNQVg5ODM1N0EvUlQ1NTE0
+L0RBNzIxOSBjb2RlY3MKPiBQbGVhc2UgbWFrZSB0aGUgc2l6ZSBhbmQgb3JkZXJpbmcgY2xlYXIu
+CkRpdHRvLgoKVGhhbmtzLgoKLS0gCi0gWGluZyBaaGVuZwoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkFsc2EtZGV2ZWwgbWFpbGluZyBsaXN0CkFsc2Et
+ZGV2ZWxAYWxzYS1wcm9qZWN0Lm9yZwpodHRwOi8vbWFpbG1hbi5hbHNhLXByb2plY3Qub3JnL21h
+aWxtYW4vbGlzdGluZm8vYWxzYS1kZXZlbAo=
