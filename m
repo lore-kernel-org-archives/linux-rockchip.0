@@ -1,86 +1,73 @@
-From: Chris Zhong <zyw@rock-chips.com>
-Subject: Re: [PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB
- Type-C PHY
-Date: Fri, 27 May 2016 16:46:07 +0800
-Message-ID: <5748094F.6030204@rock-chips.com>
-References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com>
- <1464328939-8073-3-git-send-email-zyw@rock-chips.com>
- <2812026.ptEv4ktvbn@phil>
+From: Wenrui Li <wenrui.li@rock-chips.com>
+Subject: Re: [PATCH 2/2] pci: Add PCIe driver for Rockchip Soc
+Date: Fri, 27 May 2016 18:31:28 +0800
+Message-ID: <57482200.9090008@rock-chips.com>
+References: <1463740105-7061-1-git-send-email-shawn.lin@rock-chips.com>
+ <1463740156-7148-1-git-send-email-shawn.lin@rock-chips.com>
+ <9836736.6VjP1ug4kE@wuerfel> <5747EDC9.2080603@rock-chips.com>
+ <8520D5D51A55D047800579B094147198258AF22F@XAP-PVEXMBX01.xlnx.xilinx.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2812026.ptEv4ktvbn@phil>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dianders@chromium.org, tfiga@chromium.org, yzq@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <8520D5D51A55D047800579B094147198258AF22F@XAP-PVEXMBX01.xlnx.xilinx.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>, Arnd Bergmann <arnd@arndb.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Doug Anderson <dianders@chromium.org>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko
+Hi,
 
-On 05/27/2016 04:29 PM, Heiko Stuebner wrote:
-> Hi Chris,
->
-> Am Freitag, 27. Mai 2016, 14:02:15 schrieb Chris Zhong:
->> This patch adds a binding that describes the Rockchip USB Type-C PHY
->> for rk3399.
+On 2016/5/27 15:13, Bharat Kumar Gogada wrote:
+>>>
+>>>> +
+>>>> +static int rockchip_pcie_rd_other_conf(struct rockchip_pcie_port *pp,
+>>>> +				       struct pci_bus *bus, u32 devfn,
+>>>> +				       int where, int size, u32 *val)
+>>>> +{
+>>>> +	u32 busdev;
+>>>> +
+>>>> +	busdev = PCIE_ECAM_ADDR(bus->number, PCI_SLOT(devfn),
+>>>> +				PCI_FUNC(devfn), where);
+>>>> +
+>>>> +	if (busdev & (size - 1)) {
+>>>> +		*val = 0;
+>>>> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+>>>> +	}
+>>>> +
+>>>> +	if (size == 4) {
+>>>> +		*val = readl(pp->reg_base + busdev);
+>>>> +	} else if (size == 2) {
+>>>> +		*val = readw(pp->reg_base + busdev);
+>>>> +	} else if (size == 1) {
+>>>> +		*val = readb(pp->reg_base + busdev);
+>>>> +	} else {
+>>>> +		*val = 0;
+>>>> +		return PCIBIOS_BAD_REGISTER_NUMBER;
+>>>> +	}
+>>>> +	return PCIBIOS_SUCCESSFUL;
+>>>> +}
+>>>> +
+>>>
+>>> This looks like the normal ECAM operations, you could just call those.
 >>
->> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
->> ---
+>> I read ECAM reference code, I found it not support ioremap config space
+>> for each bus individually on 64-bit systems. Our soc is 64-bit system,
+>> and bus0 config space base address is 0xfda00000, bus1 base address is
+>> 0xf8100000. So I think it is not normal ECAM operations, I do not know
+>> if I have understood correctly?
 >>
->>   .../devicetree/bindings/phy/phy-rockchip-typec.txt | 55
->> ++++++++++++++++++++++ 1 file changed, 55 insertions(+)
->>   create mode 100644
->> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->>
->> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
->> mode 100644
->> index 0000000..402f667
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
->> @@ -0,0 +1,55 @@
->> +ROCKCHIP type-c PHY
->> +
->> +Required properties:
->> + - compatible: should be "rockchip,rk3399-typec-phy"
->> + - reg : Address and length of the usb phy control register set
->> + - rockchip,grf : phandle to the syscon managing the "general
->> +   register files"
->> + - clocks : phandle + clock specifier for the phy clocks
->> + - clock-names: string, clock name, must be "tcpdcore", "tcpdphy_ref";
->> + - resets : a list of phandle + reset specifier pairs
->> + - reset-names : string reset name, must be:
->> +		 "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst"
->> + - #phy-cells: Must be 0.  See ./phy-bindings.txt for details.
->> + - rockchip,usb3phy*: phy registers embed in grf
->> +
->> +Example:
->> +	tcphy0: phy@ff7c0000 {
->> +		compatible = "rockchip,rk3399-typec-phy";
->> +		reg = <0x0 0xff7c0000 0x0 0x40000>;
->> +		#phy-cells = <0>;
->> +		rockchip,grf = <&grf>;
->> +		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
->> +			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
->> +		clock-names = "tcpdcore", "tcpdphy_ref";
->> +		resets = <&cru SRST_UPHY0>,
->> +			 <&cru SRST_UPHY0_PIPE_L00>,
->> +			 <&cru SRST_P_UPHY0_TCPHY>;
->> +		reset-names = "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst";
->> +		rockchip,usb3phy_con0 = <0x0e580 0 16>;
->> +		rockchip,usb3phy_con1 = <0x0e584 0 16>;
->> +		rockchip,usb3phy_con2 = <0x0e588 0 16>;
->> +		rockchip,usb3phy_status0 = <0x0e5c0 0 13>;
->> +		rockchip,usb3phy_status1 = <0x0e5c4 0 12>;
-> please embedded this register data in the driver instead (not in the
-> devicetree), matched against the compatible value.
-> See Frank's usb2phy driver for reference if needed.
-Okay, I will move them to driver file next version, Thanks.
+> Hi,
 >
-> Thanks
-> Heiko
+> I think Arnd was suggesting to use generic config read/write calls, pci_generic_config_read/pci_generic_config_write
+> which does above functionality.
+
+Yeah, I seem the pci_generic_config_write use writew/writeb for byte and 
+word write. but our SOC not support byte and word write in RC config 
+spcace. So I redefine the the pci_ops.write
+
 >
+> Bharat
 >
 >
 >
