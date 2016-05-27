@@ -1,47 +1,42 @@
-From: Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v2 0/10] Add RK3399 eDP support and fix some bugs to
- analogix_dp driver.
-Date: Fri, 27 May 2016 14:16:40 +0800
-Message-ID: <5747E648.6020100@rock-chips.com>
-References: <1464066086-21967-1-git-send-email-ykk@rock-chips.com>
- <5746C321.9000707@rock-chips.com>
- <4e1c65f8-5a5b-dbb9-35fe-ef09c0758536@osg.samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4e1c65f8-5a5b-dbb9-35fe-ef09c0758536@osg.samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>
-Cc: David Airlie <airlied@linux.ie>, Inki Dae <inki.dae@samsung.com>, Mark Yao <yzq@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Jingoo Han <jingoohan1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, emil.l.velikov@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/2] mmc: dw_mmc: remove redundant of set_bit and clear_bit
+Date: Fri, 27 May 2016 14:36:40 +0800
+Message-ID: <1464331000-16230-1-git-send-email-shawn.lin@rock-chips.com>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Javier,
+dw_mci_get_cd have already dealt with these for
+both of internal card-detect and gpio card-detect.
 
-On 05/26/2016 08:48 PM, Javier Martinez Canillas wrote:
-> Hello Yakir,
->
-> On 05/26/2016 05:34 AM, Yakir Yang wrote:
->> Hi Javier,
->>
->> On 05/24/2016 01:01 PM, Yakir Yang wrote:
->>> Hi all,
->>>
->>> This series have been posted about one month, still no comments, help here :(
->> This series works rightly on Rockchip platform, and most of them haven't touch the
->> common analogix_dp driver (except for the hotplug fixed). So i guess Exynos platform
->> should also happy with this changes.
->>
->> But not sure about that. So, is it possible that you could help to check this on Exynos
->> Chromebook, if so i would be very grateful about that.
->>
-> Of course, I' ll test. Could you please provide me a branch that I can
-> pull directly to avoid cherry-picking all the patches from the list?
->   
-Ah, thanks a lot, I do have a tree 
-https://github.com/yakir-Yang/linux/tree/fromlist/3399-edp
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-- Yakir
->> Thanks,
->> - Yakir
-> Best regards,
+---
+
+Changes in v2: None
+
+ drivers/mmc/host/dw_mmc.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 829a6ee..cb30e91 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -2616,10 +2616,7 @@ static int dw_mci_init_slot(struct dw_mci *host, unsigned int id)
+ 		mmc->max_seg_size = mmc->max_req_size;
+ 	}
+ 
+-	if (dw_mci_get_cd(mmc))
+-		set_bit(DW_MMC_CARD_PRESENT, &slot->flags);
+-	else
+-		clear_bit(DW_MMC_CARD_PRESENT, &slot->flags);
++	dw_mci_get_cd(mmc);
+ 
+ 	ret = mmc_add_host(mmc);
+ 	if (ret)
+-- 
+2.3.7
+
+
