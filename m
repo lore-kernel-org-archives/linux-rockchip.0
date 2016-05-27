@@ -1,89 +1,86 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH 2/2] mmc: dw_mmc: check card present before starting
- request
-Date: Fri, 27 May 2016 12:13:18 +0800
-Message-ID: <e130d6fa-3fca-9925-603e-8f410cfb0297@rock-chips.com>
-References: <CGME20160527030403epcas1p48a308b374e994de0e9e80b1b7ff1da10@epcas1p4.samsung.com>
- <1464318141-5360-1-git-send-email-shawn.lin@rock-chips.com>
- <5747C306.7030909@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <5747C306.7030909@samsung.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Jaehoon Chung <jh80.chung@samsung.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
+From: Chris Zhong <zyw@rock-chips.com>
+Subject: [PATCH 0/6] Rockchip Type-C and DispplayPort driver
+Date: Fri, 27 May 2016 14:02:13 +0800
+Message-ID: <1464328939-8073-1-git-send-email-zyw@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dianders@chromium.org, tfiga@chromium.org, heiko@sntech.de, yzq@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org, Chris Zhong <zyw@rock-chips.com>, Charles Keepax <ckeepax@opensource.wolfsonmicro.com>, alsa-devel@alsa-project.org, Kumar Gala <galak@codeaurora.org>, dri-devel@lists.freedesktop.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, "Subhransu S. Prusty" <subhransu.s.prusty@intel.com>, Rob Herring <robh+dt@kernel.org>, David Airlie <airlied@linux.ie>, Richard Fitzgerald <rf@opensource.wolfsonmicro.com>, Jacob Siverskog <jacob@teenage.engineering>, Oder Chiou <oder_chiou@realtek.com>, Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, Pawel Moll <pawel.moll@arm.com>, Johan Hovold <johan@kernel.org>, "Damien.Horsley" <Damien.Horsley@imgtec.com>, devicetree@vger.kernel.org, Michael Trimarchi <michael@amarulasolutions.com>, Takashi Iwai <tiwai@suse.com>, Vinod Koul <vinod.koul@intel.com>, Liam Girdwood <lgirdwood@gmail.com>, anish
 List-Id: linux-rockchip.vger.kernel.org
 
-=E5=9C=A8 2016/5/27 11:46, Jaehoon Chung =E5=86=99=E9=81=93:
-> Hi Shawn,
->
-> On 05/27/2016 12:02 PM, Shawn Lin wrote:
->> The main reason to add this check is to avoid unnecessary
->> mmc_request like the on-going cmd and the corresponding sbc
->> if the card is removed. Although we have already checked this in
->> dw_mci_handle_cd for runtime usage of sd card and dw_mci_init_slot
->> for noremovable devices, but there is a timing gap before it really
->> calls dw_mci_get_cd as mmc_detect_change needs some delay here.
->>
->> Another gain here is that we could save some checkings of card statu=
-s
->> after sd card been removed.
->>
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->> ---
->>
->>  drivers/mmc/host/dw_mmc.c | 3 ++-
->>  1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
->> index cb30e91..8eb7898 100644
->> --- a/drivers/mmc/host/dw_mmc.c
->> +++ b/drivers/mmc/host/dw_mmc.c
->> @@ -105,6 +105,7 @@ struct idmac_desc {
->>  static bool dw_mci_reset(struct dw_mci *host);
->>  static bool dw_mci_ctrl_reset(struct dw_mci *host, u32 reset);
->>  static int dw_mci_card_busy(struct mmc_host *mmc);
->> +static int dw_mci_get_cd(struct mmc_host *mmc);
->>
->>  #if defined(CONFIG_DEBUG_FS)
->>  static int dw_mci_req_show(struct seq_file *s, void *v)
->> @@ -1255,7 +1256,7 @@ static void dw_mci_request(struct mmc_host *mm=
-c, struct mmc_request *mrq)
->>  	 */
->>  	spin_lock_bh(&host->lock);
->>
->> -	if (!test_bit(DW_MMC_CARD_PRESENT, &slot->flags)) {
->> +	if (!dw_mci_get_cd(mmc)) {
->>  		spin_unlock_bh(&host->lock);
->>  		mrq->cmd->error =3D -ENOMEDIUM;
->>  		mmc_request_done(mmc, mrq);
->
-> I think spin_lock/unlock_bh() should be removed at here.
+Hi all
 
-yes, we should hole the lock before dw_mci_queue_request as
-dw_mci_get_cd release it, in which state we do the minmum changes
-for achieving what we need here.
+This series patch is for rockchip Type-C phy and DisplayPort controller
+driver.
 
-I will fix it.
+The USB Type-C PHY is designed to support the USB3 and DP applications.
+The PHY basically has two main components: USB3 and DisplyPort. USB3
+operates in SuperSpeed mode and the DP can operate at RBR, HBR and HBR2
+data rates. The Type-C cable orientation detection and Power Delivery
+(PD) is accomplished using a PD PHY or a exernal PD chip.
 
-> Instead, Can it locate before calling dw_mci_queue_request()?
->
-> Anyway, it looks good to me.
->
-> Best Regards,
-> Jaehoon Chung
->
->>
->
->
->
->
+The DP controller is compliant with DisplayPort Specification,
+Version 1.3, This IP is compatible with the rockchip type-c PHY IP.
+There is a uCPU in DP controller, it need a firmware to work, please
+put the firmware file to /lib/firmware/cdn/dptx.bin. The uCPU in charge
+of aux communication and link training, the host use mailbox to
+communicate with the ucpu.
+
+The PHY driver has register a notification, to get the alt mode from PD,
+the PD driver need call the tcphy_notifier_call_chain to notify PHY and
+DP controller.
+
+This series is based on Mark Yao's branch:
+https://github.com/markyzq/kernel-drm-rockchip/tree/drm-rockchip-next-2016-05-23
+
+I test this patches on the rk3399-evb board, with a fusb302 driver,
+this branch has no rk3399.dtsi, so the patch about dts is not included
+in this series.
 
 
---=20
-Best Regards
-Shawn Lin
 
+Chris Zhong (6):
+  phy: Add USB Type-C PHY driver for rk3399
+  Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+  drm/rockchip: vop: add cdn DP support for rk3399
+  Documentation: bindings: add dt documentation for cdn DP controller
+  ASoC: cdn-dp: Add cdn DP codec driver
+  ASoC: rockchip: Add machine driver for cdn dp codec
+
+ .../bindings/display/rockchip/cdn-dp-rockchip.txt  |  57 ++
+ .../devicetree/bindings/phy/phy-rockchip-typec.txt |  55 ++
+ .../bindings/sound/rockchip-cdn-dp-audio.txt       |  12 +
+ drivers/gpu/drm/rockchip/Kconfig                   |   9 +
+ drivers/gpu/drm/rockchip/Makefile                  |   1 +
+ drivers/gpu/drm/rockchip/cdn-dp-core.c             | 620 ++++++++++++++++
+ drivers/gpu/drm/rockchip/cdn-dp-core.h             |  95 +++
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c              | 730 ++++++++++++++++++
+ drivers/gpu/drm/rockchip/cdn-dp-reg.h              | 404 ++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c        |   9 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h        |   2 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c        |   2 +
+ drivers/phy/Kconfig                                |   7 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-rockchip-typec.c                   | 823 +++++++++++++++++++++
+ include/sound/cdn-dp-audio.h                       |  51 ++
+ sound/soc/codecs/Kconfig                           |   3 +
+ sound/soc/codecs/Makefile                          |   2 +
+ sound/soc/codecs/cdn-dp-audio.c                    | 246 ++++++
+ sound/soc/rockchip/Kconfig                         |   9 +
+ sound/soc/rockchip/Makefile                        |   2 +
+ sound/soc/rockchip/rockchip-cdn-dp-audio.c         | 167 +++++
+ 22 files changed, 3306 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/cdn-dp-rockchip.txt
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip-cdn-dp-audio.txt
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.c
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-core.h
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
+ create mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.h
+ create mode 100644 drivers/phy/phy-rockchip-typec.c
+ create mode 100644 include/sound/cdn-dp-audio.h
+ create mode 100644 sound/soc/codecs/cdn-dp-audio.c
+ create mode 100644 sound/soc/rockchip/rockchip-cdn-dp-audio.c
+
+-- 
+2.6.3
