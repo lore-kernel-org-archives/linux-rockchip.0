@@ -1,30 +1,56 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] clk: rockchip: add a dummy clock for the watchdog pclk on rk3399
-Date: Fri, 27 May 2016 01:17:27 +0200
-Message-ID: <7878987.CKGkxk3Y7s@phil>
-References: <1464166316-22480-1-git-send-email-zhengxing@rock-chips.com>
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Subject: Re: [RFC PATCH 1/2] mmc: dw_mmc: remove redundant of set_bit and
+ clear_bit
+Date: Fri, 27 May 2016 09:53:18 +0900
+Message-ID: <57479A7E.3050103@samsung.com>
+References: <CGME20160526030828epcas1p16b97a230c35c2599a2b8fcada376c9de@epcas1p1.samsung.com>
+ <1464232063-24841-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1464166316-22480-1-git-send-email-zhengxing@rock-chips.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, dianders@chromium.org, huangtao@rock-chips.com, elaine.zhang@rock-chips.com, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-reply-to: <1464232063-24841-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 25. Mai 2016, 16:51:56 schrieb Xing Zheng:
-> Like rk3288, the pclk supplying the watchdog is controlled via the
-> SGRF register area. Additionally the SGRF isn't even writable in
-> every boot mode.
-> 
-> But still the clock control is available and in the future someone
-> might want to use it. Therefore define a simple clock for the time
-> being so that the watchdog driver can read its rate.
-> 
-> Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+Hi Shawn,
 
-applied for 4.8
+On 05/26/2016 12:07 PM, Shawn Lin wrote:
+> dw_mci_get_cd have already dealed with these for
+> both of internal card-detect and gpio card-detect.
 
-Thanks
-Heiko
+s/dealed/dealt
+
+This patch looks good to me. Could you resend the patch? not RFC.
+
+Best Regards,
+Jaehoon Chung
+
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> 
+> ---
+> 
+>  drivers/mmc/host/dw_mmc.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+> index 829a6ee..cb30e91 100644
+> --- a/drivers/mmc/host/dw_mmc.c
+> +++ b/drivers/mmc/host/dw_mmc.c
+> @@ -2616,10 +2616,7 @@ static int dw_mci_init_slot(struct dw_mci *host, unsigned int id)
+>  		mmc->max_seg_size = mmc->max_req_size;
+>  	}
+>  
+> -	if (dw_mci_get_cd(mmc))
+> -		set_bit(DW_MMC_CARD_PRESENT, &slot->flags);
+> -	else
+> -		clear_bit(DW_MMC_CARD_PRESENT, &slot->flags);
+> +	dw_mci_get_cd(mmc);
+>  
+>  	ret = mmc_add_host(mmc);
+>  	if (ret)
+> 
+
