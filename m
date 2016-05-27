@@ -1,166 +1,77 @@
-From: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v4 4/4] thermal: rockchip: add the set_trips function
-Date: Fri, 27 May 2016 16:23:28 +0800
-Message-ID: <1464337408-7123-5-git-send-email-wxt@rock-chips.com>
-References: <1464337408-7123-1-git-send-email-wxt@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/6] Documentation: bindings: add dt doc for Rockchip USB Type-C PHY
+Date: Fri, 27 May 2016 10:29:57 +0200
+Message-ID: <2812026.ptEv4ktvbn@phil>
+References: <1464328939-8073-1-git-send-email-zyw@rock-chips.com> <1464328939-8073-3-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1464337408-7123-1-git-send-email-wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, javi.merino-5wv7dgnIgG8@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, peter-p08lbbvQ7EI@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, smbarber-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, cf-TNX95d0MmH7DzftRWevZcw@public.gmane.org, briannorris-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1464328939-8073-3-git-send-email-zyw@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chris Zhong <zyw@rock-chips.com>
+Cc: dianders@chromium.org, tfiga@chromium.org, yzq@rock-chips.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Kumar Gala <galak@codeaurora.org>, linux-kernel@vger.kernel.org, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Whenever the current temperature is updated, the trip points immediately
-below and above the current temperature are found. A sensor driver
-callback `set_trips' is then called with the temperatures.
-Lastly, The sensor will trigger the hardware high temperature interrupts
-to increase the sampleing rate and throttle frequency to limit the
-temperature rising When performing passive cooling.
+Hi Chris,
 
-Signed-off-by: Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Am Freitag, 27. Mai 2016, 14:02:15 schrieb Chris Zhong:
+> This patch adds a binding that describes the Rockchip USB Type-C PHY
+> for rk3399.
+> 
+> Signed-off-by: Chris Zhong <zyw@rock-chips.com>
+> ---
+> 
+>  .../devicetree/bindings/phy/phy-rockchip-typec.txt | 55
+> ++++++++++++++++++++++ 1 file changed, 55 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt new file
+> mode 100644
+> index 0000000..402f667
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
+> @@ -0,0 +1,55 @@
+> +ROCKCHIP type-c PHY
+> +
+> +Required properties:
+> + - compatible: should be "rockchip,rk3399-typec-phy"
+> + - reg : Address and length of the usb phy control register set
+> + - rockchip,grf : phandle to the syscon managing the "general
+> +   register files"
+> + - clocks : phandle + clock specifier for the phy clocks
+> + - clock-names: string, clock name, must be "tcpdcore", "tcpdphy_ref";
+> + - resets : a list of phandle + reset specifier pairs
+> + - reset-names : string reset name, must be:
+> +		 "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst"
+> + - #phy-cells: Must be 0.  See ./phy-bindings.txt for details.
+> + - rockchip,usb3phy*: phy registers embed in grf
+> +
+> +Example:
+> +	tcphy0: phy@ff7c0000 {
+> +		compatible = "rockchip,rk3399-typec-phy";
+> +		reg = <0x0 0xff7c0000 0x0 0x40000>;
+> +		#phy-cells = <0>;
+> +		rockchip,grf = <&grf>;
+> +		clocks = <&cru SCLK_UPHY0_TCPDCORE>,
+> +			 <&cru SCLK_UPHY0_TCPDPHY_REF>;
+> +		clock-names = "tcpdcore", "tcpdphy_ref";
+> +		resets = <&cru SRST_UPHY0>,
+> +			 <&cru SRST_UPHY0_PIPE_L00>,
+> +			 <&cru SRST_P_UPHY0_TCPHY>;
+> +		reset-names = "tcphy_rst", "tcphy_pipe_rst", "uphy_tcphy_rst";
+> +		rockchip,usb3phy_con0 = <0x0e580 0 16>;
+> +		rockchip,usb3phy_con1 = <0x0e584 0 16>;
+> +		rockchip,usb3phy_con2 = <0x0e588 0 16>;
+> +		rockchip,usb3phy_status0 = <0x0e5c0 0 13>;
+> +		rockchip,usb3phy_status1 = <0x0e5c4 0 12>;
 
----
+please embedded this register data in the driver instead (not in the 
+devicetree), matched against the compatible value.
+See Frank's usb2phy driver for reference if needed.
 
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
 
- drivers/thermal/rockchip_thermal.c | 39 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index 86a1ab0..39e2eec 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -96,6 +96,7 @@ struct chip_tsadc_table {
-  * @initialize: SoC special initialize tsadc controller method
-  * @irq_ack: clear the interrupt
-  * @get_temp: get the temperature
-+ * @set_alarm_temp: set the high temperature interrupt
-  * @set_tshut_temp: set the hardware-controlled shutdown temperature
-  * @set_tshut_mode: set the hardware-controlled shutdown mode
-  * @table: the chip-specific conversion table
-@@ -119,6 +120,8 @@ struct rockchip_tsadc_chip {
- 	/* Per-sensor methods */
- 	int (*get_temp)(struct chip_tsadc_table table,
- 			int chn, void __iomem *reg, int *temp);
-+	void (*set_alarm_temp)(struct chip_tsadc_table table,
-+			       int chn, void __iomem *reg, int temp);
- 	void (*set_tshut_temp)(struct chip_tsadc_table table,
- 			       int chn, void __iomem *reg, int temp);
- 	void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
-@@ -183,6 +186,7 @@ struct rockchip_thermal_data {
- #define TSADCV2_INT_EN				0x08
- #define TSADCV2_INT_PD				0x0c
- #define TSADCV2_DATA(chn)			(0x20 + (chn) * 0x04)
-+#define TSADCV2_COMP_INT(chn)		        (0x30 + (chn) * 0x04)
- #define TSADCV2_COMP_SHUT(chn)		        (0x40 + (chn) * 0x04)
- #define TSADCV2_HIGHT_INT_DEBOUNCE		0x60
- #define TSADCV2_HIGHT_TSHUT_DEBOUNCE		0x64
-@@ -628,6 +632,20 @@ static int rk_tsadcv2_get_temp(struct chip_tsadc_table table,
- 	return rk_tsadcv2_code_to_temp(table, val, temp);
- }
- 
-+static void rk_tsadcv2_alarm_temp(struct chip_tsadc_table table,
-+				  int chn, void __iomem *regs, int temp)
-+{
-+	u32 alarm_value, int_en;
-+
-+	alarm_value = rk_tsadcv2_temp_to_code(table, temp);
-+	writel_relaxed(alarm_value & table.data_mask,
-+		       regs + TSADCV2_COMP_INT(chn));
-+
-+	int_en = readl_relaxed(regs + TSADCV2_INT_EN);
-+	int_en |= TSADCV2_INT_SRC_EN(chn);
-+	writel_relaxed(int_en, regs + TSADCV2_INT_EN);
-+}
-+
- static void rk_tsadcv2_tshut_temp(struct chip_tsadc_table table,
- 				  int chn, void __iomem *regs, int temp)
- {
-@@ -670,6 +688,7 @@ static const struct rockchip_tsadc_chip rk3228_tsadc_data = {
- 	.irq_ack = rk_tsadcv3_irq_ack,
- 	.control = rk_tsadcv3_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
- 
-@@ -694,6 +713,7 @@ static const struct rockchip_tsadc_chip rk3288_tsadc_data = {
- 	.irq_ack = rk_tsadcv2_irq_ack,
- 	.control = rk_tsadcv2_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
- 
-@@ -718,6 +738,7 @@ static const struct rockchip_tsadc_chip rk3366_tsadc_data = {
- 	.irq_ack = rk_tsadcv3_irq_ack,
- 	.control = rk_tsadcv3_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
- 
-@@ -742,6 +763,7 @@ static const struct rockchip_tsadc_chip rk3368_tsadc_data = {
- 	.irq_ack = rk_tsadcv2_irq_ack,
- 	.control = rk_tsadcv2_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
- 
-@@ -766,6 +788,7 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
- 	.irq_ack = rk_tsadcv3_irq_ack,
- 	.control = rk_tsadcv3_control,
- 	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
- 	.set_tshut_temp = rk_tsadcv2_tshut_temp,
- 	.set_tshut_mode = rk_tsadcv2_tshut_mode,
- 
-@@ -826,6 +849,21 @@ static irqreturn_t rockchip_thermal_alarm_irq_thread(int irq, void *dev)
- 	return IRQ_HANDLED;
- }
- 
-+static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
-+{
-+	struct rockchip_thermal_sensor *sensor = _sensor;
-+	struct rockchip_thermal_data *thermal = sensor->thermal;
-+	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
-+
-+	dev_dbg(&thermal->pdev->dev, "%s: sensor %d: low: %d, high %d\n",
-+		__func__, sensor->id, low, high);
-+
-+	tsadc->set_alarm_temp(tsadc->table,
-+			      sensor->id, thermal->regs, high);
-+
-+	return 0;
-+}
-+
- static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
- {
- 	struct rockchip_thermal_sensor *sensor = _sensor;
-@@ -843,6 +881,7 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
- 
- static const struct thermal_zone_of_device_ops rockchip_of_thermal_ops = {
- 	.get_temp = rockchip_thermal_get_temp,
-+	.set_trips = rockchip_thermal_set_trips,
- };
- 
- static int rockchip_configure_from_dt(struct device *dev,
--- 
-1.9.1
+Thanks
+Heiko
