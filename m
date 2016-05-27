@@ -1,55 +1,72 @@
-From: Felipe Balbi <balbi@kernel.org>
-Subject: Re: [PATCH v3 2/5] usb: dwc3: add dis_u2_freeclk_exists_quirk
-Date: Fri, 27 May 2016 15:54:14 +0300
-Message-ID: <87eg8npsp5.fsf@linux.intel.com>
-References: <1464348488-20760-1-git-send-email-william.wu@rock-chips.com> <1464348488-20760-3-git-send-email-william.wu@rock-chips.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH 5/6] ASoC: cdn-dp: Add cdn DP codec driver
+Date: Fri, 27 May 2016 21:23:12 +0100
+Message-ID: <20160527202312.GB29837@sirena.org.uk>
+References: <1464345942-4795-1-git-send-email-zyw@rock-chips.com>
+ <1464345942-4795-6-git-send-email-zyw@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464348488-20760-3-git-send-email-william.wu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: gregkh@linuxfoundation.org, heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, briannorris@google.com, dianders@google.com, kever.yang@rock-chips.com, huangtao@rock-chips.com, frank.wang@rock-chips.com, eddie.cai@rock-chips.com, John.Youn@synopsys.com, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, William Wu <william.wu@rock-chips.com>
+Content-Type: multipart/mixed; boundary="===============6083020064919794152=="
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1464345942-4795-6-git-send-email-zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chris Zhong <zyw-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jacob Siverskog <jacob-EZCvousvhKUZux3j3Bed6dkegs52MxvZ@public.gmane.org>, Bard Liao <bardliao-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, Richard Fitzgerald <rf-yzvPICuk2AATkU/dhu1WVueM+bqZidxxQQ4Iyu8u01E@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Adam Thomson <Adam.Thomson.Opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, anish kumar <yesanishhere-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yzq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, "Damien.Horsley" <Damien.Horsley-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, Charles Keepax <ckeepax-yzvPICuk2AATkU/dhu1WVueM+bqZidxxQQ4Iyu8u01E@public.gmane.org>, Jaroslav Kysela <perex-/Fr2/VpizcU@public.gmane.org>, Oder Chiou <oder_chiou-Rasf1IRRPZFBDgjK7y7TUQ@public.gmane.org>, Takashi Iwai <tiwai-IBi9RG/b67k@public.gmane.org>, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+
+--===============6083020064919794152==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="DKU6Jbt7q3WqK7+M"
+Content-Disposition: inline
 
 
-Hi,
+--DKU6Jbt7q3WqK7+M
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-William Wu <william.wu@rock-chips.com> writes:
-> Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
-> which specifies whether the USB2.0 PHY provides a free-running
-> PHY clock, which is active when the clock control input is active.
->
-> Signed-off-by: William Wu <william.wu@rock-chips.com>
+On Fri, May 27, 2016 at 06:45:41PM +0800, Chris Zhong wrote:
+> codec driver get some interfaces from cdn-dp driver, than using those
+> to set DP audio formats, corresponding to alsa formats.
 
-can you rebase on top of my testing/next? We're dropping pdata support.
+I'm not seeing anything Rockchip specific in here...  DisplayPort is
+backwards compatible with HDMI, shouldn't this be using the existing
+hdmi-codec code?
 
-=2D-=20
-balbi
-
---=-=-=
+--DKU6Jbt7q3WqK7+M
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJXSEN2AAoJEIaOsuA1yqREWF8P/1F15YZ61dfk2hVJR3lAGB6a
-cMPi12yQmjqJm1WLVpZbG0xlbzTSfGbEIiBfCTzAJoR0NqV26bFSmgx6Mbb1/Zb7
-j5v6aEhCsxHnaGp0m8W7psoOE0Q8NZGdf3W1FqhZ8YOTSaclXFvJjut9IP3ywNca
-zW58CFphlB9iVOdkw6R0F2MYmvvvfB0UOGs6KoWLXs4XqmxNBQw04q89EyDQYZA6
-HWEgomqIffoC9hR82l1wqTNS1/IPJ5Q2LlSX4NpA4ianjFMUVOOIel9NJ/D2ERoY
-3nSS2I+Pvm/Lkbtidf7M+JooxsWdDdbX4CXG1nWaB3mxnB1tnJWQooJZwmYTGjyp
-tjeyE69Q9L/0JvVnLjKiruys5OjcIQ9uhdEXmkcEh0LLbIASXBdZ0yFdzEg+HBhP
-+BRAyHMiGbDdR8YIWIrzP7+Jhy1cgGcRW2klhY+M187PVMD19IS+/rzkA+pfVxIr
-2UMZWmuen42LEwYP5swdbOY1ZMTmGw8ARuWCyqz4I9uczY1SH/T+HGwwu2Y5SMY+
-77uofQJN5ValzcN4EBiwBPoBfk0L5FBe786Pp7fAJD4eRN3nVAlNkSaOsdVEBu3g
-/ljxO6n2grzbRyGupNt+PsAhmCZlDFxNx+TLnAym2Dways+MVOHI9mFL1c8wlRJw
-IyNmh6hlMZWvqhFQkkNg
-=Ym0K
+iQEcBAEBCAAGBQJXSKyvAAoJECTWi3JdVIfQPFUH/279S+euRZtxQ99ytiWz2/Ey
+fFE2/gBYPwGIeGad3t5emZroeNevh9acOKTaPuLdvj2LcRZTSzm1YI6gHG7cP+dz
+qvKWnULhscpAsO4OztpqFXlD9OUP/dUPB21J5SUH0x0zFO8CwIwqaJS6btm7gEP0
+UpoAojHFDNbZbt5S0jUwOIyL2EUWeAL2WURQ7tlq7JhLvxZHxP5KldDrKu4m0+1U
+RuW6A7zivghh6F30oUMbmI1mxDQZeIzbYU+/Dqysk8BcEhe2j+1lOx2PaQxjl1np
+yVMWv714uVUEwSSsBzitqaYtIzOyZf8sEW9A+Ktw0UwKcJBDOYanDPFmXh6IuRk=
+=cUMZ
 -----END PGP SIGNATURE-----
---=-=-=--
+
+--DKU6Jbt7q3WqK7+M--
+
+
+--===============6083020064919794152==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6083020064919794152==--
